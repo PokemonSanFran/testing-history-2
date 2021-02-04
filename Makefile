@@ -32,14 +32,9 @@ EXE :=
 endif
 
 TITLE       := POKEMON EMER
-# ifeq ($(UK),1)
-# GAME_CODE   := BPEP
-# else
 GAME_CODE   := BPEE
-# endif
 MAKER_CODE  := 01
 REVISION    := 0
-# UK          ?= 0
 MODERN      ?= 0
 
 SHELL := /bin/bash -o pipefail
@@ -80,13 +75,17 @@ OBJ_DIR := build/modern
 LIBPATH := -L "$(dir $(shell $(CC) -mthumb -print-file-name=libgcc.a))" -L "$(dir $(shell $(CC) -mthumb -print-file-name=libc.a))"
 endif
 
-ifeq ($(UK),1)
-CC1             := tools/agbcc/bin/agbcc$(EXE)
-override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
-ROM := pokeemerald_uk.gba
-OBJ_DIR := build/emerald_uk
-LIBPATH := -L ../../tools/agbcc/lib
-endif
+# convert pory scripts
+# https://github.com/huderlem/poryscript#building-from-source
+SCRIPT := tools/poryscript/poryscript$(EXE)
+# don't think I need this stuff
+# ifeq ($(UK),1)
+# CC1             := tools/agbcc/bin/agbcc$(EXE)
+# override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
+# ROM := pokeemerald_uk.gba
+# OBJ_DIR := build/emerald_uk
+# LIBPATH := -L ../../tools/agbcc/lib
+# endif
 
 CPPFLAGS := -iquote include -iquote $(GFLIB_SUBDIR) -Wno-trigraphs -DMODERN=$(MODERN) -DUK=$(UK)
 ifeq ($(MODERN),0)
@@ -108,7 +107,9 @@ FIX := tools/gbafix/gbafix$(EXE)
 MAPJSON := tools/mapjson/mapjson$(EXE)
 JSONPROC := tools/jsonproc/jsonproc$(EXE)
 
-TOOLDIRS := $(filter-out tools/agbcc tools/binutils,$(wildcard tools/*))
+# convert pory scripts
+# https://github.com/huderlem/poryscript#building-from-source
+TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/poryscript,$(wildcard tools/*))
 TOOLBASE = $(TOOLDIRS:tools/%=%)
 TOOLS = $(foreach tool,$(TOOLBASE),tools/$(tool)/$(tool)$(EXE))
 
@@ -201,6 +202,9 @@ mostlyclean: tidy
 	rm -f $(AUTO_GEN_TARGETS)
 	@$(MAKE) clean -C berry_fix
 	@$(MAKE) clean -C libagbsyscall
+# 	convert pory scripts
+#  https://github.com/huderlem/poryscript#building-from-source
+	rm -f $(patsubst %.pory,%.inc,$(shell find data/ -type f -name '*.pory'))
 
 tidy:
 	rm -f $(ROM) $(ELF) $(MAP)
@@ -225,6 +229,9 @@ include songs.mk
 %.png: ;
 %.pal: ;
 %.aif: ;
+# convert pory scripts
+# https://github.com/huderlem/poryscript#building-from-source
+%.pory: ;
 
 %.1bpp: %.png  ; $(GFX) $< $@
 %.4bpp: %.png  ; $(GFX) $< $@
@@ -235,6 +242,9 @@ include songs.mk
 %.rl: % ; $(GFX) $< $@
 $(CRY_SUBDIR)/%.bin: $(CRY_SUBDIR)/%.aif ; $(AIF) $< $@
 sound/%.bin: sound/%.aif ; $(AIF) $< $@
+# convert pory scripts
+# https://github.com/huderlem/poryscript#building-from-source
+data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -fw tools/poryscript/font_widths.json
 
 
 ifeq ($(MODERN),0)
