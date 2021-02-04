@@ -1,0 +1,4 @@
+g++ -Wall -std=c++11 -O2 json11.cpp mapjson.cpp -o mapjson 
+tools/ramscrgen/ramscrgen .bss sym_bss.txt ENGLISH > build/emerald/sym_bss.ld
+../tools/preproc/preproc data/data.s charmap.txt | arm-none-eabi-cpp -I include - | arm-none-eabi-as -mcpu=arm7tdmi -o build/data/data.o
+../../tools/ramscrgen/ramscrgen .bss sym_bss.txt ENGLISH > build/sym_bss.ld
