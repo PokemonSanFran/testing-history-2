@@ -32,9 +32,14 @@ EXE :=
 endif
 
 TITLE       := POKEMON EMER
+# ifeq ($(UK),1)
+# GAME_CODE   := BPEP
+# else
 GAME_CODE   := BPEE
+# endif
 MAKER_CODE  := 01
 REVISION    := 0
+# UK          ?= 0
 MODERN      ?= 0
 
 SHELL := /bin/bash -o pipefail
@@ -59,23 +64,31 @@ DATA_ASM_BUILDDIR = $(OBJ_DIR)/$(DATA_ASM_SUBDIR)
 SONG_BUILDDIR = $(OBJ_DIR)/$(SONG_SUBDIR)
 MID_BUILDDIR = $(OBJ_DIR)/$(MID_SUBDIR)
 
-ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN)
+ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN) --defsym UK=$(UK)
 
 ifeq ($(MODERN),0)
 CC1             := tools/agbcc/bin/agbcc$(EXE)
-override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -g
+override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
 ROM := pokeemerald.gba
 OBJ_DIR := build/emerald
 LIBPATH := -L ../../tools/agbcc/lib
 else
 CC1              = $(shell $(CC) --print-prog-name=cc1) -quiet
-override CFLAGS += -mthumb -mthumb-interwork -O2 -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -fno-toplevel-reorder -Wno-pointer-to-int-cast -g
+override CFLAGS += -mthumb -mthumb-interwork -O2 -mabi=apcs-gnu -mcpu=arm7tdmi -fno-toplevel-reorder -Wno-pointer-to-int-cast
 ROM := pokeemerald_modern.gba
 OBJ_DIR := build/modern
 LIBPATH := -L "$(dir $(shell $(CC) -mthumb -print-file-name=libgcc.a))" -L "$(dir $(shell $(CC) -mthumb -print-file-name=libc.a))"
 endif
 
-CPPFLAGS := -iquote include -iquote $(GFLIB_SUBDIR) -Wno-trigraphs -DMODERN=$(MODERN)
+ifeq ($(UK),1)
+CC1             := tools/agbcc/bin/agbcc$(EXE)
+override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
+ROM := pokeemerald_uk.gba
+OBJ_DIR := build/emerald_uk
+LIBPATH := -L ../../tools/agbcc/lib
+endif
+
+CPPFLAGS := -iquote include -iquote $(GFLIB_SUBDIR) -Wno-trigraphs -DMODERN=$(MODERN) -DUK=$(UK)
 ifeq ($(MODERN),0)
 CPPFLAGS += -I tools/agbcc/include -I tools/agbcc
 endif
@@ -111,7 +124,7 @@ MAKEFLAGS += --no-print-directory
 # Secondary expansion is required for dependency variables in object rules.
 .SECONDEXPANSION:
 
-.PHONY: all rom clean compare tidy tools mostlyclean clean-tools $(TOOLDIRS) berry_fix libagbsyscall modern debug modern_debug
+.PHONY: all rom clean compare tidy tools mostlyclean clean-tools $(TOOLDIRS) berry_fix libagbsyscall modern debug modern_debug uk
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
 
@@ -135,9 +148,6 @@ C_ASM_OBJS := $(patsubst $(C_SUBDIR)/%.s,$(C_BUILDDIR)/%.o,$(C_ASM_SRCS))
 
 ASM_SRCS := $(wildcard $(ASM_SUBDIR)/*.s)
 ASM_OBJS := $(patsubst $(ASM_SUBDIR)/%.s,$(ASM_BUILDDIR)/%.o,$(ASM_SRCS))
-
-# get all the data/*.s files EXCEPT the ones with specific rules
-REGULAR_DATA_ASM_SRCS := $(filter-out $(DATA_ASM_SUBDIR)/maps.s $(DATA_ASM_SUBDIR)/map_events.s, $(wildcard $(DATA_ASM_SUBDIR)/*.s))
 
 DATA_ASM_SRCS := $(wildcard $(DATA_ASM_SUBDIR)/*.s)
 DATA_ASM_OBJS := $(patsubst $(DATA_ASM_SUBDIR)/%.s,$(DATA_ASM_BUILDDIR)/%.o,$(DATA_ASM_SRCS))
@@ -181,7 +191,7 @@ mostlyclean: tidy
 	rm -f $(SAMPLE_SUBDIR)/*.bin
 	rm -f $(CRY_SUBDIR)/*.bin
 	rm -f $(MID_SUBDIR)/*.s
-	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.rl' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
+	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
 	rm -f $(DATA_ASM_SUBDIR)/layouts/layouts.inc $(DATA_ASM_SUBDIR)/layouts/layouts_table.inc
 	rm -f $(DATA_ASM_SUBDIR)/maps/connections.inc $(DATA_ASM_SUBDIR)/maps/events.inc $(DATA_ASM_SUBDIR)/maps/groups.inc $(DATA_ASM_SUBDIR)/maps/headers.inc
 	find $(DATA_ASM_SUBDIR)/maps \( -iname 'connections.inc' -o -iname 'events.inc' -o -iname 'header.inc' \) -exec rm {} +
@@ -195,7 +205,9 @@ tidy:
 ifeq ($(MODERN),0)
 	@$(MAKE) tidy MODERN=1
 endif
-
+ifeq ($(UK),0)
+	@$(MAKE) tidy UK=1
+endif
 ifneq ($(MODERN),0)
 $(C_BUILDDIR)/berry_crush.o: override CFLAGS += -Wno-address-of-packed-member
 endif
@@ -218,9 +230,7 @@ include songs.mk
 %.gbapal: %.png ; $(GFX) $< $@
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
-
-$(CRY_SUBDIR)/cry_not_%.bin: $(CRY_SUBDIR)/cry_not_%.aif ; $(AIF) $< $@
-$(CRY_SUBDIR)/cry_%.bin: $(CRY_SUBDIR)/cry_%.aif ; $(AIF) $< $@ --compress
+$(CRY_SUBDIR)/%.bin: $(CRY_SUBDIR)/%.aif ; $(AIF) $< $@
 sound/%.bin: sound/%.aif ; $(AIF) $< $@
 
 
@@ -253,12 +263,6 @@ ifeq ($(DINFO),1)
 override CFLAGS += -g
 endif
 
-# DebugMenu
-ifeq ($(DDEBUG),1)
-override ASFLAGS += --defsym DEBUG=1
-override CPPFLAGS += -D DEBUG=1
-endif
-
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
 	@$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
 	@$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CFLAGS) -o $(C_BUILDDIR)/$*.s
@@ -286,32 +290,23 @@ endif
 $(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s $$(c_asm_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
 
-# The dep rules have to be explicit or else missing files won't be reported.
-# As a side effect, they're evaluated immediately instead of when the rule is invoked.
-# It doesn't look like $(shell) can be deferred so there might not be a better way.
-
-
 ifeq ($(NODEP),1)
-$(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s
+$(ASM_BUILDDIR)/%.o: asm_dep :=
+else
+$(ASM_BUILDDIR)/%.o: asm_dep = $(shell $(SCANINC) -I "" $(ASM_SUBDIR)/$*.s)
+endif
+
+$(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s $$(asm_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
-else
-define ASM_DEP
-$1: $2 $$(shell $(SCANINC) -I include -I "" $2)
-	$$(AS) $$(ASFLAGS) -o $$@ $$<
-endef
-$(foreach src, $(ASM_SRCS), $(eval $(call ASM_DEP,$(patsubst $(ASM_SUBDIR)/%.s,$(ASM_BUILDDIR)/%.o, $(src)),$(src))))
-endif
 
 ifeq ($(NODEP),1)
-$(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
-	$(PREPROC) $< charmap.txt | $(CPP) -I include | $(AS) $(ASFLAGS) -o $@
+$(DATA_ASM_BUILDDIR)/%.o: data_dep :=
 else
-define DATA_ASM_DEP
-$1: $2 $$(shell $(SCANINC) -I include -I "" $2)
-	$$(PREPROC) $$< charmap.txt | $$(CPP) -I include | $$(AS) $$(ASFLAGS) -o $$@
-endef
-$(foreach src, $(REGULAR_DATA_ASM_SRCS), $(eval $(call DATA_ASM_DEP,$(patsubst $(DATA_ASM_SUBDIR)/%.s,$(DATA_ASM_BUILDDIR)/%.o, $(src)),$(src))))
+$(DATA_ASM_BUILDDIR)/%.o: data_dep = $(shell $(SCANINC) -I include -I "" $(DATA_ASM_SUBDIR)/$*.s)
 endif
+
+$(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s $$(data_dep)
+	$(PREPROC) $< charmap.txt | $(CPP) -I include | $(AS) $(ASFLAGS) -o $@
 
 $(SONG_BUILDDIR)/%.o: $(SONG_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -I sound -o $@ $<
@@ -324,6 +319,11 @@ $(OBJ_DIR)/sym_common.ld: sym_common.txt $(C_OBJS) $(wildcard common_syms/*.txt)
 
 $(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
 	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
+
+ifeq ($(UK),1)
+LD_SCRIPT := ld_script.txt
+LD_SCRIPT_DEPS := $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
+endif
 
 ifeq ($(MODERN),0)
 LD_SCRIPT := ld_script.txt
@@ -345,6 +345,7 @@ $(ROM): $(ELF)
 	$(FIX) $@ -p --silent
 
 modern: ; @$(MAKE) MODERN=1
+uk:     ; @$(MAKE) UK=1
 
 berry_fix/berry_fix.gba: berry_fix
 
