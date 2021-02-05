@@ -78,14 +78,6 @@ endif
 # convert pory scripts
 # https://github.com/huderlem/poryscript#building-from-source
 SCRIPT := tools/poryscript/poryscript$(EXE)
-# don't think I need this stuff
-# ifeq ($(UK),1)
-# CC1             := tools/agbcc/bin/agbcc$(EXE)
-# override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
-# ROM := pokeemerald_uk.gba
-# OBJ_DIR := build/emerald_uk
-# LIBPATH := -L ../../tools/agbcc/lib
-# endif
 
 CPPFLAGS := -iquote include -iquote $(GFLIB_SUBDIR) -Wno-trigraphs -DMODERN=$(MODERN) -DUK=$(UK)
 ifeq ($(MODERN),0)
