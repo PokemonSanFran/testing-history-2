@@ -440,7 +440,7 @@ RusturfTunnel_Text_ComeAndGetSome: @ 822D1C8
 	.string "Come and get some, then!$"
 
 RusturfTunnel_Text_Peeko: @ 822D1F7
-	.string "PEEKO: Pii pihyoh!$"
+	.string "Peeko: Pii pihyoh!$"
 
 RusturfTunnel_Text_GruntIntro: @ 822D20A
 	.string "Grah, keelhaul it all!\p"
