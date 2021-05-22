@@ -882,7 +882,7 @@ MauvilleCity_PokemonCenter_1F_EventScript_StorytellerEnd:: @ 829022D
 
 @ Giddy
 MauvilleCity_PokemonCenter_1F_Text_HearMyStory: @ 829022F
-	.string "I'm GIDDY!\n"
+	.string "I'm Giddy!\n"
 	.string "I have a scintillating story for you!\p"
 	.string "Would you like to hear my story?$"
 
