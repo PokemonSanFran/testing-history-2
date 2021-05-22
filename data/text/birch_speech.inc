@@ -1,3 +1,31 @@
+gNewGameAdventureIntro1::
+    .string "In the world which you are about to\n"
+    .string "enter, you will embark on a grand\n"
+    .string "adventure with you as the hero.\n"
+    .string "\n"
+    .string "Speak to people and check things\n"
+    .string "wherever you go, be it towns, roads,\n"
+    .string "or caves. Gather information and\n"
+    .string "hints from every source.$"
+
+gNewGameAdventureIntro2::
+    .string "New paths will open to you by helping\n"
+    .string "people in need, overcoming challenges,\n"
+    .string "and solving mysteries.\n"
+    .string "\n"
+    .string "At times, you will be challenged by\n"
+    .string "others and attacked by wild creatures.\n"
+    .string "Be brave and keep pushing on.$"
+
+gNewGameAdventureIntro3::
+    .string "Through your adventure, we hope\n"
+    .string "that you will interact with all sorts\n"
+    .string "of people and achieve personal growth.\n"
+    .string "That is our biggest objective.\n"
+    .string "\n"
+    .string "Press the A Button, and let your\n"
+    .string "adventure begin!$"
+
 gText_Birch_Welcome:: @ 82C897B
 	.string "Hi! Sorry to keep you waiting!\p"
 	.string "Welcome to the world of POKéMON!\p"
