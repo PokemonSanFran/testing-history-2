@@ -322,7 +322,7 @@ MauvilleCity_BikeShop_Text_Jumps: @ 820F898
 	.string "Pad at the same time to jump.\p"
 	.string "Press the + Control Pad to the side\n"
 	.string "to jump sideways.\p"
-	.string "Press it backwards to make the BIKE\n"
+	.string "Press it backwards to make the Bike\n"
 	.string "change directions while jumping.\p"
 	.string "Want to read a different page?$"
 
