@@ -194,7 +194,7 @@ static void Task_HandleMainMenuBPressed(u8);
 static void Task_NewGameBirchSpeech_Init(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
 static void AddBirchSpeechObjects(u8);
-static void Task_NewGameWelcomeScreen(u8);
+//static void Task_NewGameWelcomeScreen(u8);
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8);
 static void NewGameBirchSpeech_StartFadeInTarget1OutTarget2(u8, u8);
 static void NewGameBirchSpeech_StartFadePlatformOut(u8, u8);
@@ -1288,7 +1288,8 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's sp
     AddBirchSpeechObjects(taskId);
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
     gTasks[taskId].tBG1HOFS = 0;
-    gTasks[taskId].func = Task_NewGameWelcomeSpeech;
+    //gTasks[taskId].func = Task_NewGameWelcomeSpeech;
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch;
     gTasks[taskId].tPlayerSpriteId = 0xFF;
     gTasks[taskId].data[3] = 0xFF;
     gTasks[taskId].tTimer = 0xD8;
@@ -1297,11 +1298,11 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's sp
     ShowBg(1);
 }
 
-static void Task_NewGameWelcomeScreen(u8 taskId)
-{
-    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch;
+// static void Task_NewGameWelcomeScreen(u8 taskId)
+// {
+//     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch;
 
-}
+// }
 
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
 {
