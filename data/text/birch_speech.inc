@@ -1,39 +1,21 @@
 gText_Birch_Welcome:: @ 82C897B
-	.string "Hi! Sorry to keep you waiting!\p"
-	.string "Welcome to the world of POKéMON!\p"
-	.string "My name is BIRCH.\p"
-	.string "But everyone calls me the POKéMON\n"
-	.string "PROFESSOR.\p"
+	.string "Sup.\p"
 	.string "$"
 
 gText_Birch_Pokemon:: @ 82C89FB
-	.string "This is what we call a “POKéMON.”\p"
-	.string "\n"
+	.string "This is what we call a “POKéMON.”\n"
 	.string "$"
 
 gText_Birch_MainSpeech:: @ 82C8A1F
-	.string "This world is widely inhabited by\n"
-	.string "creatures known as POKéMON.\p"
-	.string "We humans live alongside POKéMON,\n"
-	.string "at times as friendly playmates, and\l"
-	.string "at times as cooperative workmates.\p"
-	.string "And sometimes, we band together\n"
-	.string "and battle others like us.\p"
-	.string "But despite our closeness, we don't\n"
-	.string "know everything about POKéMON.\p"
-	.string "In fact, there are many, many\n"
-	.string "secrets surrounding POKéMON.\p"
-	.string "To unravel POKéMON mysteries,\n"
-	.string "I've been undertaking research.\l"
-	.string "That's what I do.\p"
 	.string "$"
 
 gText_Birch_AndYouAre:: @ 82C8BD0
-	.string "And you are?$"
+	.string "And you are?\p"
+	.string "$"
 
 gText_Birch_BoyOrGirl:: @ 82C8BDD
-	.string "Are you a boy?\n"
-	.string "Or are you a girl?$"
+	.string "Which body would you like to use?\p"
+	.string "$"
 
 gText_Birch_WhatsYourName:: @ 82C8BFF
 	.string "All right.\n"
@@ -59,3 +41,28 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 	.string "Well, I'll be expecting you later.\n"
 	.string "Come see me in my POKéMON LAB.\p"
 	.string "$"
+
+gNewGameAdventureIntro1::
+    .string "Welcome to Pokémon San Fran!\n"
+    .string "Before we get started...\n"
+    .string "\n"
+    .string "If you paid for this game,\n"
+    .string "you have been scammed.\n\n"
+    .string "We will never charge for the\n"
+    .string "base version of the game.$"
+
+gNewGameAdventureIntro2::
+    .string "If you have any questions, comments\n"
+    .string "concerns, or complaints,\n"
+    .string "look at our website:\n"
+    .string "\n"
+    .string "http://pkmnsnfrn.io\n"
+    .string "\n"
+    .string "Join our community!\n"
+    .string "http://discord.io/pkmnsnfrn$"
+
+gNewGameAdventureIntro3::
+    .string "Have fun!\n\n"
+    .string "We worked really hard to make an\n" 
+    .string "experience that we hope\n"
+    .string "all can enjoy!$"
