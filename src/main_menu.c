@@ -38,6 +38,31 @@
 #include "window.h"
 #include "mystery_gift.h"
 
+#define COPYWIN_BOTH 3 //stolen from FRLG (\pokefirered\include\window.h)
+ALIGNED(4) const u8 gText_ABUTTONNext[] = _("{A_BUTTON}NEXT"); //stolen from FRLG (pokefirered\src\strings.c)
+
+//import FRLG variables and structs
+
+struct OakSpeechResources
+{
+    void * solidColorsGfx;
+    void * trainerPicTilemapBuffer;
+    void * unk_0008;
+    u8 filler_000C[4];
+    u16 unk_0010;
+    u16 unk_0012;
+    u16 unk_0014[4];
+    u8 textColor[3];
+    u8 textSpeed;
+    u8 filler_0020[0x1800];
+    u8 bg2TilemapBuffer[0x400];
+    u8 bg1TilemapBuffer[0x800];
+}; //size=0x2420
+
+EWRAM_DATA struct OakSpeechResources * sOakSpeechResources = NULL;
+
+//end import FRLG
+
 /*
  * Main menu state machine
  * -----------------------
@@ -191,7 +216,10 @@ static void HighlightSelectedMainMenuItem(u8, u8, s16);
 static void Task_HandleMainMenuInput(u8);
 static void Task_HandleMainMenuAPressed(u8);
 static void Task_HandleMainMenuBPressed(u8);
-static void Task_NewGameWelcomeScreenInit(u8);
+static void Task_NewGameWelcomeScreenVisualInit(u8);
+static void Task_NewGameWelcomeScreenTextInit(u8);
+static void Task_NewGameWelcomeScreenRun(u8);
+static void Task_NewGameWelcomeScreenCleanUp(u8);
 static void Task_NewGameBirchSpeech_Init(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
 static void AddBirchSpeechObjects(u8);
@@ -1063,7 +1091,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
                 //gTasks[taskId].func = Task_NewGameBirchSpeech_Init; //Task_NewGameBirchSpeech_Init starts the Birch speech cycle
-                gTasks[taskId].func = Task_NewGameWelcomeScreenInit;
+                gTasks[taskId].func = Task_NewGameWelcomeScreenVisualInit;
                 break;
             case ACTION_CONTINUE:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
@@ -1266,18 +1294,86 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
-static void Task_NewGameWelcomeScreenInit(u8 taskId) //initalize and setup everything for the opening bit
+static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen
 {
+    //FRLG import
+    int x = 99;
+    u8 i = 0;
+
+    if (!gPaletteFade.active)
+    {
+        for (i = 0; i < 3; i++)
+        {
+            FillWindowPixelBuffer(sOakSpeechResources->unk_0014[i], 0x00);
+            ClearWindowTilemap(sOakSpeechResources->unk_0014[i]);
+            CopyWindowToVram(sOakSpeechResources->unk_0014[i], COPYWIN_BOTH);
+            RemoveWindow(sOakSpeechResources->unk_0014[i]);
+            sOakSpeechResources->unk_0014[i] = 0;
+        }
+        FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);
+        CopyBgTilemapBufferToVram(1);
+        //DestroyTextCursorSprite(gTasks[taskId].data[5]); i think we can drop this, there is no cursor present prior
+        sOakSpeechResources->unk_0014[0] = RGB_BLACK;
+        LoadPalette(sOakSpeechResources->unk_0014, 0, 2);
+        gTasks[taskId].data[3] = 32;
+    }
+    //End FRLG import
+
     PlayBGM(MUS_B_FRONTIER);
-    gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
-
+    gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
 }
 
-static void Task_NewGameWelcomeScreen(u8 taskId) //start the welcome screen
+static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //data set up of welcome screen
 {
-    ;
+    //FRLG import
+
+    s16 * data = gTasks[taskId].data;
+    u32 sp14 = 0;
+    int q = 0;
+
+    if (data[3] != 0)
+        data[3]--;
+    else
+    {
+        //PlayBGM(MUS_NEW_GAME_INTRO); need to port this song or find a new one
+        ClearTopBarWindow();
+        TopBarWindowPrintString(gText_ABUTTONNext, 0, 1);
+        sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14);
+        CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19);
+        CopyBgTilemapBufferToVram(1);
+        Free(sOakSpeechResources->unk_0008);
+        sOakSpeechResources->unk_0008 = NULL;
+        data[14] = AddWindow(&sNewGameAdventureIntroWindowTemplates[0]);
+        PutWindowTilemap(data[14]);
+        FillWindowPixelBuffer(data[14], 0x00);
+        CopyWindowToVram(data[14], COPYWIN_BOTH);
+        sOakSpeechResources->unk_0012 = 0;
+        gMain.state = 0;
+        data[15] = 16;
+        q = 1;
+        AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[0]);
+        data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);
+        gSprites[data[5]].oam.objMode = ST_OAM_OBJ_BLEND;
+        gSprites[data[5]].oam.priority = 0;
+        CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(taskId, 0);
+        BeginNormalPaletteFade(0xFFFFFFFF, 2, 16, 0, 0);
+        gTasks[taskId].func = Task_NewGameWelcomeScreenRun;
+    }
+
+    //End FRLG import
+
+    //gTasks[taskId].func = Task_NewGameWelcomeScreenRun;
 }
 
+static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen pages
+{
+    gTasks[taskId].func = Task_NewGameWelcomeScreenCleanUp;
+}
+
+static void Task_NewGameWelcomeScreenCleanUp(u8 taskId) //clean up everything from adventure, fade to black
+{
+    gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+}
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's speech, sets up everything
 {
