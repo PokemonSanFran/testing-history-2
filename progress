@@ -1,3 +1,9 @@
+MAY 29
+- compiler was ignoring file changes
+- i did a commit, pushed, then make clean, and now assembler is looking for main.menu.s which... doesn't exist at all and never did. 
+- unsure what i broke!
+- need to investigate why it won't compile at all:
+
 MAY 27
 - moving functions from FRLG to Emerald, line by line
 
