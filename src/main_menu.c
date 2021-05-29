@@ -11,6 +11,8 @@
 #include "graphics.h"
 #include "international_string_util.h"
 #include "link.h"
+#include "malloc.h" //used to get the Free function to get FRLG intro working
+#include "data/text/birch_speech.inc" //calling event_scripts to call birch
 #include "main.h"
 #include "menu.h"
 #include "list_menu.h"
@@ -38,10 +40,11 @@
 #include "window.h"
 #include "mystery_gift.h"
 
+//import FRLG variables and structs
 #define COPYWIN_BOTH 3 //stolen from FRLG (\pokefirered\include\window.h)
 ALIGNED(4) const u8 gText_ABUTTONNext[] = _("{A_BUTTON}NEXT"); //stolen from FRLG (pokefirered\src\strings.c)
 
-//import FRLG variables and structs
+static const u32 sNewGameAdventureIntroTilemap[] = INCBIN_U32("graphics/birch_speech/new_game_adventure_intro_tilemap.bin.lz");
 
 struct OakSpeechResources
 {
@@ -60,6 +63,52 @@ struct OakSpeechResources
 }; //size=0x2420
 
 EWRAM_DATA struct OakSpeechResources * sOakSpeechResources = NULL;
+
+static const struct WindowTemplate sNewGameAdventureIntroWindowTemplates[] = {
+    {
+        .bg = 0x00,
+        .tilemapLeft = 0x01,
+        .tilemapTop = 0x04,
+        .width = 0x1c,
+        .height = 0x0f,
+        .paletteNum = 0x0f,
+        .baseBlock = 0x0001
+    }, {
+        .bg = 0x00,
+        .tilemapLeft = 0x12,
+        .tilemapTop = 0x09,
+        .width = 0x09,
+        .height = 0x04,
+        .paletteNum = 0x0f,
+        .baseBlock = 0x0174
+    }, {
+        .bg = 0x00,
+        .tilemapLeft = 0x02,
+        .tilemapTop = 0x02,
+        .width = 0x06,
+        .height = 0x04,
+        .paletteNum = 0x0f,
+        .baseBlock = 0x0180
+    }, {
+        .bg = 0x00,
+        .tilemapLeft = 0x02,
+        .tilemapTop = 0x02,
+        .width = 0x0c,
+        .height = 0x0a,
+        .paletteNum = 0x0f,
+        .baseBlock = 0x0001
+    }, DUMMY_WIN_TEMPLATE
+};
+
+static const u8 sTextColor_OakSpeech[4] = {
+    0x00, 0x02, 0x03
+};
+
+static const u8 *const sNewGameAdventureIntroTextPointers[] = {
+    gNewGameAdventureIntro1,
+    gNewGameAdventureIntro2,
+    gNewGameAdventureIntro3
+};
 
 //end import FRLG
 
@@ -1294,6 +1343,14 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
+/*
+
+TODO
+
+I am importing pieces of the intro from FRLG's intro into Emerald in order to get the Welcome Screen going.
+
+*/
+
 static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen
 {
     //FRLG import
@@ -1319,7 +1376,7 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     }
     //End FRLG import
 
-    PlayBGM(MUS_B_FRONTIER);
+    //PlayBGM(MUS_B_FRONTIER);
     gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
 }
 
@@ -1336,8 +1393,8 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //data set up of welcom
     else
     {
         //PlayBGM(MUS_NEW_GAME_INTRO); need to port this song or find a new one
-        ClearTopBarWindow();
-        TopBarWindowPrintString(gText_ABUTTONNext, 0, 1);
+        //ClearTopBarWindow(); I think we can comment this out, there is no previous top bar window
+        //TopBarWindowPrintString(gText_ABUTTONNext, 0, 1); //see pokefirered\src\menu.c
         sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14);
         CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19);
         CopyBgTilemapBufferToVram(1);
@@ -1367,6 +1424,107 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //data set up of welcom
 
 static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen pages
 {
+    s16 * data = gTasks[taskId].data;
+    switch (gMain.state)
+    {
+    case 0:
+        if (!gPaletteFade.active)
+        {
+            PlayBGM(MUS_ROUTE24);
+            SetGpuReg(REG_OFFSET_WIN0H, 0x00F0);
+            SetGpuReg(REG_OFFSET_WIN0V, 0x10A0);
+            SetGpuReg(REG_OFFSET_WININ, 0x003F);
+            SetGpuReg(REG_OFFSET_WINOUT, 0x001F);
+            SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
+            gMain.state = 1;
+        }
+        break;
+    case 1:
+        PlayBGM(MUS_ROUTE24);
+        if (JOY_NEW((A_BUTTON | B_BUTTON)))
+        {
+            if (JOY_NEW(A_BUTTON))
+            {
+                sOakSpeechResources->unk_0012++;
+            }
+            else if (sOakSpeechResources->unk_0012 != 0)
+            {
+                sOakSpeechResources->unk_0012--;
+            }
+            else
+            {
+                break;
+            }
+            PlaySE(SE_SELECT);
+            if (sOakSpeechResources->unk_0012 == 3)
+            {
+                gMain.state = 4;
+            }
+            else
+            {
+                SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG1);
+                SetGpuReg(REG_OFFSET_BLDALPHA, (16 - data[15]) | data[15]);
+                gMain.state++;
+            }
+        }
+        break;
+    case 2:
+        PlayBGM(MUS_ROUTE24);
+        data[15] -= 2;
+        SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
+        if (data[15] <= 0)
+        {
+            FillWindowPixelBuffer(data[14], 0x00);
+            AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[sOakSpeechResources->unk_0012]);
+            if (sOakSpeechResources->unk_0012 == 0)
+            {
+                ClearTopBarWindow();
+                TopBarWindowPrintString(gText_ABUTTONNext, 0, 1);
+            }
+            else
+            {
+                ClearTopBarWindow();
+                TopBarWindowPrintString(gText_ABUTTONNext_BBUTTONBack, 0, 1);
+            }
+            gMain.state++;
+        }
+        break;
+    case 3:
+        PlayBGM(MUS_ROUTE24);
+        data[15] += 2;
+        SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
+        if (data[15] >= 16)
+        {
+            data[15] = 16;
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            gMain.state = 1;
+        }
+        break;
+    case 4: //we hit this part of the loop right after we hit A on the last screen
+        DestroyTextCursorSprite(gTasks[taskId].data[5]);
+        PlayBGM(MUS_NEW_GAME_EXIT);
+        data[15] = 24;
+        gMain.state++;
+        break;
+    default: //, this is the fade to black
+        if (data[15] != 0)
+            data[15]--;
+        else
+        {
+            gMain.state = 0;
+            sOakSpeechResources->unk_0012 = 0;
+            SetGpuReg(REG_OFFSET_WIN0H, 0);
+            SetGpuReg(REG_OFFSET_WIN0V, 0);
+            SetGpuReg(REG_OFFSET_WININ, 0);
+            SetGpuReg(REG_OFFSET_WINOUT, 0);
+            ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
+            BeginNormalPaletteFade(0xFFFFFFFF, 2, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_NewGameWelcomeScreenCleanUp;
+        }
+        break;
+    }
+
     gTasks[taskId].func = Task_NewGameWelcomeScreenCleanUp;
 }
 

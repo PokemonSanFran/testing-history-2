@@ -20,6 +20,10 @@
 #include "window.h"
 #include "constants/songs.h"
 
+
+static EWRAM_DATA u8 sTopBarWindowId = 0; //import from FRLG
+static const u8 gUnknown_8456618[3] = {15, 1, 2}; //import from FRLG
+
 #define DLG_WINDOW_PALETTE_NUM 15
 #define DLG_WINDOW_BASE_TILE_NUM 0x200
 #define STD_WINDOW_PALETTE_NUM 14
@@ -2169,3 +2173,106 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
             break;
     }
 }
+
+//import from FRLG
+void ClearTopBarWindow(void)
+{
+    if (sTopBarWindowId != 0xFF)
+    {
+        FillWindowPixelBuffer(sTopBarWindowId, PIXEL_FILL(15));
+        CopyWindowToVram(sTopBarWindowId, COPYWIN_BOTH);
+    }
+}
+
+void TopBarWindowPrintString(const u8 *string, u8 unused, bool8 copyToVram)
+{
+    s32 width;
+
+    if (sTopBarWindowId != 0xFF)
+    {
+        PutWindowTilemap(sTopBarWindowId);
+        FillWindowPixelBuffer(sTopBarWindowId, PIXEL_FILL(15));
+        width = GetStringWidth(0, string, 0);
+        AddTextPrinterParameterized3(sTopBarWindowId, 0, -20 - width, 1, gUnknown_8456618, 0, string);
+        if (copyToVram)
+            CopyWindowToVram(sTopBarWindowId, COPYWIN_BOTH);
+    }
+}
+
+u8 CreateTopBarWindowLoadPalette(u8 bg, u8 width, u8 yPos, u8 palette, u16 baseTile)
+{
+    struct WindowTemplate window;
+
+    memset(&window, 0, sizeof(window));
+    if (bg > 3)
+        window.bg = 0;
+    else
+        window.bg = bg;
+    window.tilemapTop = yPos;
+    window.height = 2;
+    window.tilemapLeft = 0x1E - width;
+    window.width = width;
+    window.paletteNum = palette;
+    window.baseBlock = baseTile;
+    sTopBarWindowId = AddWindow(&window);
+    if (palette > 15)
+        palette = 15 * 16;
+    else
+        palette *= 16;
+    //LoadPalette(stdpal_get(2), palette, 0x20); //going to pass 0x20 instead of stdpal_get, please see pokefirered\src\text_window.c line 154
+    //LoadPalette(0x20, palette, 0x20); comment this line out entirely, testing without
+    return sTopBarWindowId;
+}
+
+
+void TopBarWindowPrintTwoStrings(const u8 *string, const u8 *string2, bool8 fgColorChooser, u8 unused, bool8 copyToVram)
+{
+    u8 color[3];
+    s32 fgColor, width;
+
+    if ( sTopBarWindowId != 0xFF )
+    {
+        if (fgColorChooser)
+        {
+            color[0] = 0;
+            color[1] = 1;
+            color[2] = 2;
+        }
+        else
+        {
+            color[0] = 15;
+            color[1] = 1;
+            color[2] = 2;
+        }
+
+        PutWindowTilemap(sTopBarWindowId);
+        FillWindowPixelBuffer(sTopBarWindowId, PIXEL_FILL(15));
+        if (string2)
+        {
+            width = GetStringWidth(0, string2, 0);
+            AddTextPrinterParameterized3(sTopBarWindowId, 0, -20 - width, 1, color, 0, string2);
+        }
+        AddTextPrinterParameterized4(sTopBarWindowId, 1, 4, 1, 0, 0, color, 0, string);
+        if (copyToVram)
+            CopyWindowToVram(sTopBarWindowId, COPYWIN_BOTH);
+    }
+}
+
+void *MallocAndDecompress(const void *src, u32 *size)
+{
+    void *ptr;
+    u8 *sizeAsBytes = (u8 *)size;
+    const u8 *srcAsBytes = src;
+
+    sizeAsBytes[0] = srcAsBytes[1];
+    sizeAsBytes[1] = srcAsBytes[2];
+    sizeAsBytes[2] = srcAsBytes[3];
+    sizeAsBytes[3] = 0;
+
+    ptr = Alloc(*size);
+    if (ptr)
+        LZ77UnCompWram(src, ptr);
+    return ptr;
+}
+
+//end FRLG import

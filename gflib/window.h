@@ -75,4 +75,17 @@ extern u32 filler_03002F58;
 extern u32 filler_03002F5C;
 extern u32 filler_03002F64;
 
+//begin FRLG import
+
+//pokefirered\include\window.h to get FRLG intro working
+
+#define COPYWIN_MAP  1
+#define COPYWIN_GFX  2
+#define COPYWIN_BOTH 3
+
+//
+
+//end FRLG import
+
+
 #endif // GUARD_WINDOW_H

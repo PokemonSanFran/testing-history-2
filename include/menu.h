@@ -126,4 +126,11 @@ void AddTextPrinterWithCustomSpeedForMessage(bool8 allowSkippingDelayWithButtonP
 void sub_8198C78(void);
 void PrintTextArray(u8 windowId, u8 fontId, u8 left, u8 top, u8 lineHeight, u8 itemCount, const struct MenuAction *strs);
 
+//begin FRLG import
+
+//taken from FRLG for Oak intro pokefirered\src\new_menu_helpers.c
+void * MallocAndDecompress(const void * src, u32 * size);
+
+//end FRLG import
+
 #endif // GUARD_MENU_H
