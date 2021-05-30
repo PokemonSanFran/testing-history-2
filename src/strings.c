@@ -1817,3 +1817,5 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
+
+ALIGNED(4) const u8 gText_ABUTTONNext[] = _("{A_BUTTON}NEXT"); //stolen from FRLG (pokefirered\src\strings.c), used for NewGameAdventureIntro

@@ -83,8 +83,6 @@ extern u32 filler_03002F64;
 #define COPYWIN_GFX  2
 #define COPYWIN_BOTH 3
 
-//
-
 //end FRLG import
 
 

@@ -131,6 +131,10 @@ void PrintTextArray(u8 windowId, u8 fontId, u8 left, u8 top, u8 lineHeight, u8 i
 //taken from FRLG for Oak intro pokefirered\src\new_menu_helpers.c
 void * MallocAndDecompress(const void * src, u32 * size);
 
+
+//take from pokefirered\include\menu.h for NewGameAdventure
+void ClearTopBarWindow(void);
+
 //end FRLG import
 
 #endif // GUARD_MENU_H

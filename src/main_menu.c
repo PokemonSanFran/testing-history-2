@@ -12,7 +12,7 @@
 #include "international_string_util.h"
 #include "link.h"
 #include "malloc.h" //used to get the Free function to get FRLG intro working
-#include "data/text/birch_speech.inc" //calling event_scripts to call birch
+//#include "data/text/birch_speech.inc" //calling event_scripts to call birch
 #include "main.h"
 #include "menu.h"
 #include "list_menu.h"
@@ -41,8 +41,8 @@
 #include "mystery_gift.h"
 
 //import FRLG variables and structs
-#define COPYWIN_BOTH 3 //stolen from FRLG (\pokefirered\include\window.h)
-ALIGNED(4) const u8 gText_ABUTTONNext[] = _("{A_BUTTON}NEXT"); //stolen from FRLG (pokefirered\src\strings.c)
+
+
 
 static const u32 sNewGameAdventureIntroTilemap[] = INCBIN_U32("graphics/birch_speech/new_game_adventure_intro_tilemap.bin.lz");
 
@@ -326,6 +326,9 @@ static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
+//FRLG import begin
+static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state);
+//FRLG import end
 
 // .rodata
 
@@ -1409,7 +1412,7 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //data set up of welcom
         data[15] = 16;
         q = 1;
         AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[0]);
-        data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);
+        //data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);  I think we can comment this out, Oak does not get a cursor, but Birch does
         gSprites[data[5]].oam.objMode = ST_OAM_OBJ_BLEND;
         gSprites[data[5]].oam.priority = 0;
         CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(taskId, 0);
@@ -1430,7 +1433,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen
     case 0:
         if (!gPaletteFade.active)
         {
-            PlayBGM(MUS_ROUTE24);
+            PlayBGM(MUS_RG_HALL_OF_FAME);
             SetGpuReg(REG_OFFSET_WIN0H, 0x00F0);
             SetGpuReg(REG_OFFSET_WIN0V, 0x10A0);
             SetGpuReg(REG_OFFSET_WININ, 0x003F);
@@ -1440,7 +1443,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen
         }
         break;
     case 1:
-        PlayBGM(MUS_ROUTE24);
+        PlayBGM(MUS_RG_HALL_OF_FAME);
         if (JOY_NEW((A_BUTTON | B_BUTTON)))
         {
             if (JOY_NEW(A_BUTTON))
@@ -1469,7 +1472,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen
         }
         break;
     case 2:
-        PlayBGM(MUS_ROUTE24);
+        PlayBGM(MUS_RG_HALL_OF_FAME);
         data[15] -= 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
         if (data[15] <= 0)
@@ -1490,7 +1493,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen
         }
         break;
     case 3:
-        PlayBGM(MUS_ROUTE24);
+        PlayBGM(MUS_RG_HALL_OF_FAME);
         data[15] += 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
         if (data[15] >= 16)
@@ -1503,7 +1506,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen
         break;
     case 4: //we hit this part of the loop right after we hit A on the last screen
         DestroyTextCursorSprite(gTasks[taskId].data[5]);
-        PlayBGM(MUS_NEW_GAME_EXIT);
+        //PlayBGM(MUS_NEW_GAME_EXIT); //need a new song here
         data[15] = 24;
         gMain.state++;
         break;
@@ -1524,7 +1527,6 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen
         }
         break;
     }
-
     gTasks[taskId].func = Task_NewGameWelcomeScreenCleanUp;
 }
 
@@ -1646,7 +1648,7 @@ static void Task_NewGameBirchSpeechSub_InitPokeBall(u8 taskId)
     gSprites[spriteId].invisible = FALSE;
     gSprites[spriteId].data[0] = 0;
 
-    CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 112, 58, 0, 0, 32, 0x0000FFFF, SPECIES_DUSKULL);
+    CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 112, 58, 0, 0, 32, 0x0000FFFF, SPECIES_PIKACHU);
     gTasks[taskId].func = Task_NewGameBirchSpeechSub_WaitForLotad;
     gTasks[sBirchSpeechMainTaskId].tTimer = 0;
 }
@@ -2153,7 +2155,7 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *sprite)
 
 static u8 NewGameBirchSpeech_CreateLotadSprite(u8 a, u8 b)
 {
-    return CreatePicSprite2(SPECIES_DUSKULL, SHINY_ODDS, 0, 1, a, b, 14, -1);
+    return CreatePicSprite2(SPECIES_PIKACHU, SHINY_ODDS, 0, 1, a, b, 14, -1);
 }
 
 static void AddBirchSpeechObjects(u8 taskId)
