@@ -266,10 +266,7 @@ static void HighlightSelectedMainMenuItem(u8, u8, s16);
 static void Task_HandleMainMenuInput(u8);
 static void Task_HandleMainMenuAPressed(u8);
 static void Task_HandleMainMenuBPressed(u8);
-static void Task_NewGameWelcomeScreenVisualInit(u8);
-static void Task_NewGameWelcomeScreenTextInit(u8);
-static void Task_NewGameWelcomeScreenRun(u8);
-static void Task_NewGameWelcomeScreenCleanUp(u8);
+static void Task_NewGameWelcomeScreenInit(u8);
 static void Task_NewGameBirchSpeech_Init(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
 static void AddBirchSpeechObjects(u8);
@@ -1144,7 +1141,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
                 //gTasks[taskId].func = Task_NewGameBirchSpeech_Init; //Task_NewGameBirchSpeech_Init starts the Birch speech cycle
-                gTasks[taskId].func = Task_NewGameWelcomeScreenVisualInit;
+                gTasks[taskId].func = Task_NewGameWelcomeScreenInit;
                 break;
             case ACTION_CONTINUE:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
@@ -1347,7 +1344,6 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
-
 //begin FRLG import
 static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state)
 {
@@ -1458,11 +1454,9 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //data set up of welcom
     }
 
     //End FRLG import
-
-    //gTasks[taskId].func = Task_NewGameWelcomeScreenRun;
 }
 
-static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen pages
+static void Task_NewGameWelcomeScreen(u8 taskId) //start the welcome screen
 {
     s16 * data = gTasks[taskId].data;
     switch (gMain.state)
@@ -1567,10 +1561,6 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen
     gTasks[taskId].func = Task_NewGameWelcomeScreenCleanUp;
 }
 
-static void Task_NewGameWelcomeScreenCleanUp(u8 taskId) //clean up everything from adventure, fade to black
-{
-    gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
-}
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's speech, sets up everything
 {
