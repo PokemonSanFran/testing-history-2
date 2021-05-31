@@ -22,13 +22,13 @@ gNewGameAdventureIntro3::
     .string "We worked really hard to make an\n" 
     .string "experience that we hope\n"
     .string "all can enjoy!$"
-    
+
 gText_Birch_Welcome:: @ 82C897B
 	.string "Sup!!\p"
 	.string "$"
 
 gText_Birch_Pokemon:: @ 82C89FB
-	.string "This is what we call a “POKéMON.”\n"
+	.string "This is a “POKéMON.”\n"
 	.string "$"
 
 gText_Birch_MainSpeech:: @ 82C8A1F

@@ -1818,4 +1818,11 @@ const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
 
-ALIGNED(4) const u8 gText_ABUTTONNext[] = _("{A_BUTTON}NEXT"); //stolen from FRLG (pokefirered\src\strings.c), used for NewGameAdventureIntro
+//begin FRLG import
+
+//(pokefirered\src\strings.c), used for NewGameAdventureIntro
+
+ALIGNED(4) const u8 gText_ABUTTONNext[] = _("{A_BUTTON}NEXT"); 
+ALIGNED(4) const u8 gText_ABUTTONNext_BBUTTONBack[] = _("{A_BUTTON}NEXT {B_BUTTON}BACK");
+
+//end FRLG import

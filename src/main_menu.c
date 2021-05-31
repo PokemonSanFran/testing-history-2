@@ -42,7 +42,8 @@
 
 //import FRLG variables and structs
 
-
+extern const u8 gText_ABUTTONNext[];
+extern const u8 gText_ABUTTONNext_BBUTTONBack[];
 
 static const u32 sNewGameAdventureIntroTilemap[] = INCBIN_U32("graphics/birch_speech/new_game_adventure_intro_tilemap.bin.lz");
 
@@ -1346,13 +1347,49 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
-/*
 
-TODO
+//begin FRLG import
+static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state)
+{
+    u8 spriteId;
+    u8 i = 0;
 
-I am importing pieces of the intro from FRLG's intro into Emerald in order to get the Welcome Screen going.
-
-*/
+    switch (state)
+    {
+    case 0:
+        LoadCompressedSpriteSheet(&sOakSpeech_PikaSpriteSheets[0]);
+        LoadCompressedSpriteSheet(&sOakSpeech_PikaSpriteSheets[1]);
+        LoadCompressedSpriteSheet(&sOakSpeech_PikaSpriteSheets[2]);
+        LoadSpritePalette(&sOakSpeech_PikaSpritePal);
+        spriteId = CreateSprite(&sOakSpeech_PikaSpriteTemplates[0], 0x10, 0x11, 2);
+        gSprites[spriteId].oam.priority = 0;
+        gTasks[taskId].data[7] = spriteId;
+        spriteId = CreateSprite(&sOakSpeech_PikaSpriteTemplates[1], 0x10, 0x09, 3);
+        gSprites[spriteId].oam.priority = 0;
+        gSprites[spriteId].data[0] = gTasks[taskId].data[7];
+        gSprites[spriteId].callback = SpriteCB_PikaSync;
+        gTasks[taskId].data[8] = spriteId;
+        spriteId = CreateSprite(&sOakSpeech_PikaSpriteTemplates[2], 0x18, 0x0D, 1);
+        gSprites[spriteId].oam.priority = 0;
+        gSprites[spriteId].data[0] = gTasks[taskId].data[7];
+        gSprites[spriteId].callback = SpriteCB_PikaSync;
+        gTasks[taskId].data[9] = spriteId;
+        break;
+    case 1:
+        LoadCompressedSpriteSheet(&sOakSpeech_GrassPlatformSpriteSheet);
+        LoadSpritePalette(&sOakSpeech_GrassPlatformSpritePal);
+        for (i = 0; i < 3; i++)
+        {
+            spriteId = CreateSprite(&sOakSpeech_GrassPlatformSpriteTemplates[i], i * 32 + 88, 0x70, 1);
+            gSprites[spriteId].oam.priority = 2;
+            gSprites[spriteId].animPaused = TRUE;
+            gSprites[spriteId].coordOffsetEnabled = TRUE;
+            gTasks[taskId].data[7 + i] = spriteId;
+        }
+        break;
+    }
+}
+//end FRLG import
 
 static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen
 {
@@ -1505,7 +1542,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId) //run through welcome screen
         }
         break;
     case 4: //we hit this part of the loop right after we hit A on the last screen
-        DestroyTextCursorSprite(gTasks[taskId].data[5]);
+        //DestroyTextCursorSprite(gTasks[taskId].data[5]); There is no TextCursorSprite to delete... i think.
         //PlayBGM(MUS_NEW_GAME_EXIT); //need a new song here
         data[15] = 24;
         gMain.state++;

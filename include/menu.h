@@ -133,7 +133,9 @@ void * MallocAndDecompress(const void * src, u32 * size);
 
 
 //take from pokefirered\include\menu.h for NewGameAdventure
+void TopBarWindowPrintString(const u8 *string, u8 unUsed, bool8 copyToVram);
 void ClearTopBarWindow(void);
+void DestroyTopBarWindow(void);
 
 //end FRLG import
 
