@@ -323,6 +323,13 @@ extern const u8 gText_FemaleSymbol[];
 extern const u8 gText_SelectorArrow3[];
 extern const u8 gText_YesNo[];
 
+//welcome screen adventure text
+//stolen from pokefirered\include\event_scripts.h
+
+extern const u8 gNewGameAdventureIntro1[];
+extern const u8 gNewGameAdventureIntro2[];
+extern const u8 gNewGameAdventureIntro3[];
+
 // main menu/birch speech text
 extern const u8 gText_SaveFileErased[];
 extern const u8 gText_SaveFileCorrupted[];

@@ -1,3 +1,8 @@
+MAY 31
+- game compiles with black text and then crashes
+- need to move over graphics (Pika / Grass) and see if that's the problem
+- diagnose from there
+
 MAY 29
 - compiler was ignoring file changes
 - i did a commit, pushed, then make clean, and now assembler is looking for main.menu.s which... doesn't exist at all and never did. 

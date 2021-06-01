@@ -1,28 +1,3 @@
-gNewGameAdventureIntro1::
-    .string "Welcome to Pokémon San Fran!\n"
-    .string "Before we get started...\n"
-    .string "\n"
-    .string "If you paid for this game,\n"
-    .string "you have been scammed.\n\n"
-    .string "We will never charge for the\n"
-    .string "base version of the game.$"
-
-gNewGameAdventureIntro2::
-    .string "If you have any questions, comments\n"
-    .string "concerns, or complaints,\n"
-    .string "look at our website:\n"
-    .string "\n"
-    .string "http://pkmnsnfrn.io\n"
-    .string "\n"
-    .string "Join our community!\n"
-    .string "http://discord.io/pkmnsnfrn$"
-
-gNewGameAdventureIntro3::
-    .string "Have fun!\n\n"
-    .string "We worked really hard to make an\n" 
-    .string "experience that we hope\n"
-    .string "all can enjoy!$"
-
 gText_Birch_Welcome:: @ 82C897B
 	.string "Sup!!\p"
 	.string "$"
@@ -67,4 +42,27 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 	.string "Come see me in my POKéMON LAB.\p"
 	.string "$"
 
+gNewGameAdventureIntro1::
+    .string "Welcome to Pokémon San Fran!\n"
+    .string "Before we get started...\n"
+    .string "\n"
+    .string "If you paid for this game,\n"
+    .string "you have been scammed.\n\n"
+    .string "We will never charge for the\n"
+    .string "base version of the game.$"
 
+gNewGameAdventureIntro2::
+    .string "If you have any questions, comments\n"
+    .string "concerns, or complaints,\n"
+    .string "look at our website:\n"
+    .string "\n"
+    .string "http://pkmnsnfrn.io\n"
+    .string "\n"
+    .string "Join our community!\n"
+    .string "http://discord.io/pkmnsnfrn$"
+
+gNewGameAdventureIntro3::
+    .string "Have fun!\n\n"
+    .string "We worked really hard to make an\n"
+    .string "experience that we hope\n"
+    .string "all can enjoy!$"
