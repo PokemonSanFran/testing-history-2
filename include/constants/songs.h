@@ -540,6 +540,9 @@
 #define PH_NURSE_BLEND              607
 #define PH_NURSE_HELD               608
 #define PH_NURSE_SOLO               609
+#define MUS_NEW_GAME_INSTRUCT     610 // MUS_RG_SOUSA
+#define MUS_NEW_GAME_INTRO        611 // MUS_RG_SEKAIKAN
+#define MUS_NEW_GAME_EXIT         612 // MUS_RG_SEIBETU
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 

@@ -6,14 +6,12 @@
 #include "constants/trainers.h"
 #include "decompress.h"
 #include "event_data.h"
-//#include "event_scripts.h" //calling this to define text for WelcomeScreen
 #include "field_effect.h"
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "international_string_util.h"
 #include "link.h"
 #include "malloc.h" //used to get the Free function to get FRLG intro working
-//#include "data/text/birch_speech.inc" //calling event_scripts to call birch
 #include "main.h"
 #include "menu.h"
 #include "list_menu.h"
@@ -1551,9 +1549,12 @@ static void DestroyLinkedPikaOrGrassPlatformSprites(u8 taskId, u8 state)
 
 static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen
 {
+
     //FRLG import
     int x = 99;
     u8 i = 0;
+
+    PlayBGM(MUS_NEW_GAME_INSTRUCT);
 
     if (!gPaletteFade.active)
     {
@@ -1567,15 +1568,15 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
         }
         FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);
         CopyBgTilemapBufferToVram(1);
-        DestroyTextCursorSprite(gTasks[taskId].data[5]); //i think we can drop this, there is no cursor present prior
+        DestroyTextCursorSprite(gTasks[taskId].data[5]);
         sOakSpeechResources->unk_0014[0] = RGB_BLACK;
         LoadPalette(sOakSpeechResources->unk_0014, 0, 2);
         gTasks[taskId].data[3] = 32;
+        gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
     }
     //End FRLG import
 
-    PlayBGM(MUS_B_FRONTIER);
-    gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
+    
 }
 
 static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome screen
@@ -1590,8 +1591,8 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
         data[3]--;
     else
     {
-        //PlayBGM(MUS_NEW_GAME_INTRO); need to port this song or find a new one
-        ClearTopBarWindow(); //I think we can comment this out, there is no previous top bar window
+        PlayBGM(MUS_NEW_GAME_INTRO);
+        ClearTopBarWindow();
         TopBarWindowPrintString(gText_ABUTTONNext, 0, 1); //see pokefirered\src\menu.c
         sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14);
         CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19);
@@ -1607,15 +1608,13 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
         data[15] = 16;
         q = 1;
         AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[0]);
-        data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);  //I think we can comment this out, Oak does not get a cursor, but Birch does
+        data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);
         gSprites[data[5]].oam.objMode = ST_OAM_OBJ_BLEND;
         gSprites[data[5]].oam.priority = 0;
         CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(taskId, 0);
         BeginNormalPaletteFade(0xFFFFFFFF, 2, 16, 0, 0);
         gTasks[taskId].func = Task_NewGameWelcomeScreenRun;
-    }
-
-    //End FRLG import
+    }     //End FRLG import
 }
 
 static void Task_NewGameWelcomeScreenRun(u8 taskId)
@@ -1626,7 +1625,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
     case 0:
         if (!gPaletteFade.active)
         {
-            //PlayBGM(MUS_ROUTE24);
+            PlayBGM(MUS_ROUTE111);
             SetGpuReg(REG_OFFSET_WIN0H, 0x00F0);
             SetGpuReg(REG_OFFSET_WIN0V, 0x10A0);
             SetGpuReg(REG_OFFSET_WININ, 0x003F);
@@ -1636,7 +1635,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         }
         break;
     case 1:
-        //PlayBGM(MUS_ROUTE24);
+        PlayBGM(MUS_ROUTE113);
         if (JOY_NEW((A_BUTTON | B_BUTTON)))
         {
             if (JOY_NEW(A_BUTTON))
@@ -1665,7 +1664,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         }
         break;
     case 2:
-        //PlayBGM(MUS_ROUTE24);
+        //PlayBGM(MUS_ROUTE119);
         data[15] -= 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
         if (data[15] <= 0)
@@ -1686,7 +1685,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         }
         break;
     case 3:
-        //PlayBGM(MUS_ROUTE24);
+        PlayBGM(MUS_ROUTE120);
         data[15] += 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
         if (data[15] >= 16)
@@ -1699,11 +1698,11 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         break;
     case 4: //we hit this part of the loop right after we hit A on the last screen
         DestroyTextCursorSprite(gTasks[taskId].data[5]);
-        //PlayBGM(MUS_NEW_GAME_EXIT);
+        PlayBGM(MUS_NEW_GAME_EXIT);
         data[15] = 24;
         gMain.state++;
         break;
-    default: //, this is the fade to black
+    default: // this is the fade to black
         if (data[15] != 0)
             data[15]--;
         else
@@ -1744,6 +1743,18 @@ static void Task_AdventureScreenClean(u8 taskId) //this is cleaning up everythin
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's speech, sets up everything
 {
+
+ /*   //begin FRLG import
+    s16 * data = gTasks[taskId].data;
+    u32 size = 0;
+    
+    if (data[3] != 0)
+        data[3]--;
+    else
+    {
+
+    //end FRLG import*/
+
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
     InitBgFromTemplate(&sBirchBgTemplate);
@@ -1771,9 +1782,10 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's sp
     gTasks[taskId].data[3] = 0xFF;
     gTasks[taskId].tTimer = 0xD8;
 
-    //PlayBGM(MUS_ROUTE122);
+    PlayBGM(MUS_ROUTE122);
     ShowBg(0);
     ShowBg(1);
+//} //from commented out if statement stolen from FRLG
 }
 
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)

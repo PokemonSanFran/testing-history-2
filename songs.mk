@@ -1262,3 +1262,12 @@ $(MID_SUBDIR)/se_m_leer.s: %.s: %.mid
 
 $(MID_SUBDIR)/se_dex_search.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -v100 -P5
+
+$(MID_SUBDIR)/mus_new_game_instruct.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G182 -V085
+
+$(MID_SUBDIR)/mus_new_game_exit.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G182 -V088
+
+$(MID_SUBDIR)/mus_new_game_intro.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G182 -V088
