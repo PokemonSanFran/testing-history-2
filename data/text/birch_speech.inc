@@ -43,7 +43,7 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 	.string "$"
 
 gNewGameAdventureIntro1::
-    .string "Welcome to Pokémon San Fran!\n"
+    .string "Welcome to Pokémon!\n"
     .string "Before we get started...\n"
     .string "\n"
     .string "If you paid for this game,\n"

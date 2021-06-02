@@ -1594,6 +1594,8 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
     u32 sp14 = 0;
     int q = 0;
 
+    mgba_printf(MGBA_LOG_DEBUG, "this is taskid %d", taskId);
+
     if (data[3] != 0)
         data[3]--;
     else

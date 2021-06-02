@@ -1,3 +1,9 @@
+JUNE 2
+- got intro sorta working
+- need to investigate gMain tasks and taskId to figure out how to move things along
+- why don't other messages print on screen?
+- why doesn't background render?
+
 MAY 31
 - game compiles with black text and then crashes
 - need to move over graphics (Pika / Grass) and see if that's the problem
