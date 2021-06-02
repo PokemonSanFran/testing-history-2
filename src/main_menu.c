@@ -198,6 +198,7 @@ static void Task_NewGameWelcomeScreenVisualInit(u8);
 static void Task_NewGameWelcomeScreenTextInit(u8);
 static void Task_NewGameWelcomeScreenRun(u8);
 static void Task_NewGameBirchSpeech_Init(u8);
+static void Task_AdventureScreenClean(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
 static void AddBirchSpeechObjects(u8);
 static void Task_NewGameWelcomeScreen(u8);
@@ -256,6 +257,7 @@ static void MainMenu_FormatSavegameBadges(void);
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
 //FRLG import begin
 static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state);
+static void DestroyLinkedPikaOrGrassPlatformSprites(u8 taskId, u8 state);
 //FRLG import end
 
 // .rodata
@@ -302,6 +304,18 @@ static const u16 sBirchSpeechPlatformBlackPal[] = {RGB_BLACK, RGB_BLACK, RGB_BLA
 
 //defines the tilemap for the New Game Adventure
 static const u32 sNewGameAdventureIntroTilemap[] = INCBIN_U32("graphics/birch_speech/new_game_adventure_intro_tilemap.bin.lz");
+
+//used for Adventure Screen
+extern const u8 gText_Controls[];
+extern const u8 gText_ABUTTONNext[];
+extern const u8 gText_ABUTTONNext_BBUTTONBack[];
+
+static const u16 sOakSpeech_PikaPalette[] = INCBIN_U16("graphics/birch_speech/pika_palette.gbapal");
+static const u32 sOakSpeechGfx_GrassPlatform[] = INCBIN_U32("graphics/birch_speech/grass_platform.4bpp.lz");
+static const u16 sOakSpeech_GrassPlatformPalette[] = INCBIN_U16("graphics/birch_speech/grass_platform_palette.gbapal");
+static const u32 sOakSpeechGfx_Pika1[] = INCBIN_U32("graphics/birch_speech/pika1.4bpp.lz");
+static const u32 sOakSpeechGfx_Pika2[] = INCBIN_U32("graphics/birch_speech/pika2.4bpp.lz");
+static const u32 sOakSpeechGfx_PikaEyes[] = INCBIN_U32("graphics/birch_speech/pika_eyes.4bpp.lz");
 
 //this is a struct used for WelcomeScreen, pulled from FRLG
 struct OakSpeechResources
@@ -376,6 +390,116 @@ static const struct CompressedSpriteSheet sOakSpeech_PikaSpriteSheets[3] = {
     { (const void *)sOakSpeechGfx_Pika2, 0x0200, 0x1002 },
     { (const void *)sOakSpeechGfx_PikaEyes, 0x0080, 0x1003 },
 };
+
+static const struct CompressedSpriteSheet sOakSpeech_GrassPlatformSpriteSheet = {
+    (const void *)sOakSpeechGfx_GrassPlatform, 0x0600, 0x1000
+};
+
+static const struct SpritePalette sOakSpeech_PikaSpritePal = {
+    (const void *)sOakSpeech_PikaPalette, 0x1001
+};
+
+static const struct SpritePalette sOakSpeech_GrassPlatformSpritePal = {
+    (const void *)sOakSpeech_GrassPlatformPalette, 0x1000
+};
+
+static const union AnimCmd sGrassPlatformAnim1[] = {
+    ANIMCMD_FRAME( 0, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sGrassPlatformAnim2[] = {
+    ANIMCMD_FRAME(16, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sGrassPlatformAnim3[] = {
+    ANIMCMD_FRAME(32, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sGrassPlatformAnims1[] = {
+    sGrassPlatformAnim1
+};
+static const union AnimCmd *const sGrassPlatformAnims2[] = {
+    sGrassPlatformAnim2
+};
+static const union AnimCmd *const sGrassPlatformAnims3[] = {
+    sGrassPlatformAnim3
+};
+
+extern const struct OamData gOamData_AffineOff_ObjBlend_32x32;
+
+static const struct SpriteTemplate sOakSpeech_GrassPlatformSpriteTemplates[3] = {
+    { 0x1000, 0x1000, &gOamData_AffineOff_ObjBlend_32x32, sGrassPlatformAnims1, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy },
+    { 0x1000, 0x1000, &gOamData_AffineOff_ObjBlend_32x32, sGrassPlatformAnims2, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy },
+    { 0x1000, 0x1000, &gOamData_AffineOff_ObjBlend_32x32, sGrassPlatformAnims3, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy },
+};
+
+static const union AnimCmd sPikaAnim1[] = {
+    ANIMCMD_FRAME( 0, 30),
+    ANIMCMD_FRAME(16, 30),
+    ANIMCMD_JUMP(0)
+};
+
+static const union AnimCmd sPikaAnim2[] = {
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(8, 12),
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(8, 12),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(8, 12),
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(8, 12),
+    ANIMCMD_JUMP(0)
+};
+
+static const union AnimCmd sPikaAnim3[] = {
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(2,  8),
+    ANIMCMD_FRAME(0,  8),
+    ANIMCMD_FRAME(2,  8),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(2,  8),
+    ANIMCMD_FRAME(0,  8),
+    ANIMCMD_FRAME(2,  8),
+    ANIMCMD_JUMP(0)
+};
+
+static const union AnimCmd *const sPikaAnims1[] = {
+    sPikaAnim1
+};
+static const union AnimCmd *const sPikaAnims2[] = {
+    sPikaAnim2
+};
+static const union AnimCmd *const sPikaAnims3[] = {
+    sPikaAnim3
+};
+
+extern const struct OamData gOamData_AffineOff_ObjNormal_32x32;
+extern const struct OamData gOamData_AffineOff_ObjNormal_32x16;
+extern const struct OamData gOamData_AffineOff_ObjNormal_16x8;
+
+static const struct SpriteTemplate sOakSpeech_PikaSpriteTemplates[3] = {
+    { 0x1001, 0x1001, &gOamData_AffineOff_ObjNormal_32x32, sPikaAnims1, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy },
+    { 0x1002, 0x1001, &gOamData_AffineOff_ObjNormal_32x16, sPikaAnims2, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy },
+    { 0x1003, 0x1001, &gOamData_AffineOff_ObjNormal_16x8, sPikaAnims3, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy }
+};
+
+
 
 //end FRLG import
 
@@ -1355,6 +1479,11 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
+static void SpriteCB_PikaSync(struct Sprite * sprite)
+{
+    sprite->pos2.y = gSprites[sprite->data[0]].animCmdIndex;
+}
+
 static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state)
 {
     u8 spriteId;
@@ -1396,6 +1525,30 @@ static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 st
     }
 }
 
+static void DestroyLinkedPikaOrGrassPlatformSprites(u8 taskId, u8 state)
+{
+    u8 i;
+
+    for (i = 0; i < 3; i++)
+    {
+        DestroySprite(&gSprites[gTasks[taskId].data[7 + i]]);
+    }
+
+    switch (state)
+    {
+    case 0:
+        FreeSpriteTilesByTag(0x1003);
+        FreeSpriteTilesByTag(0x1002);
+        FreeSpriteTilesByTag(0x1001);
+        FreeSpritePaletteByTag(0x1001);
+        break;
+    case 1:
+        FreeSpriteTilesByTag(0x1000);
+        FreeSpritePaletteByTag(0x1000);
+        break;
+    }
+}
+
 static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen
 {
     //FRLG import
@@ -1414,14 +1567,14 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
         }
         FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);
         CopyBgTilemapBufferToVram(1);
-        //DestroyTextCursorSprite(gTasks[taskId].data[5]); i think we can drop this, there is no cursor present prior
+        DestroyTextCursorSprite(gTasks[taskId].data[5]); //i think we can drop this, there is no cursor present prior
         sOakSpeechResources->unk_0014[0] = RGB_BLACK;
         LoadPalette(sOakSpeechResources->unk_0014, 0, 2);
         gTasks[taskId].data[3] = 32;
     }
     //End FRLG import
 
-    //PlayBGM(MUS_B_FRONTIER);
+    PlayBGM(MUS_B_FRONTIER);
     gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
 }
 
@@ -1438,8 +1591,8 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
     else
     {
         //PlayBGM(MUS_NEW_GAME_INTRO); need to port this song or find a new one
-        //ClearTopBarWindow(); I think we can comment this out, there is no previous top bar window
-        //TopBarWindowPrintString(gText_ABUTTONNext, 0, 1); //see pokefirered\src\menu.c
+        ClearTopBarWindow(); //I think we can comment this out, there is no previous top bar window
+        TopBarWindowPrintString(gText_ABUTTONNext, 0, 1); //see pokefirered\src\menu.c
         sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14);
         CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19);
         CopyBgTilemapBufferToVram(1);
@@ -1454,7 +1607,7 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
         data[15] = 16;
         q = 1;
         AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[0]);
-        //data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);  I think we can comment this out, Oak does not get a cursor, but Birch does
+        data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);  //I think we can comment this out, Oak does not get a cursor, but Birch does
         gSprites[data[5]].oam.objMode = ST_OAM_OBJ_BLEND;
         gSprites[data[5]].oam.priority = 0;
         CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(taskId, 0);
@@ -1467,7 +1620,126 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
 
 static void Task_NewGameWelcomeScreenRun(u8 taskId)
 {
-//    gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+    s16 * data = gTasks[taskId].data;
+    switch (gMain.state)
+    {
+    case 0:
+        if (!gPaletteFade.active)
+        {
+            //PlayBGM(MUS_ROUTE24);
+            SetGpuReg(REG_OFFSET_WIN0H, 0x00F0);
+            SetGpuReg(REG_OFFSET_WIN0V, 0x10A0);
+            SetGpuReg(REG_OFFSET_WININ, 0x003F);
+            SetGpuReg(REG_OFFSET_WINOUT, 0x001F);
+            SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
+            gMain.state = 1;
+        }
+        break;
+    case 1:
+        //PlayBGM(MUS_ROUTE24);
+        if (JOY_NEW((A_BUTTON | B_BUTTON)))
+        {
+            if (JOY_NEW(A_BUTTON))
+            {
+                sOakSpeechResources->unk_0012++;
+            }
+            else if (sOakSpeechResources->unk_0012 != 0)
+            {
+                sOakSpeechResources->unk_0012--;
+            }
+            else
+            {
+                break;
+            }
+            PlaySE(SE_SELECT);
+            if (sOakSpeechResources->unk_0012 == 3)
+            {
+                gMain.state = 4;
+            }
+            else
+            {
+                SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG1);
+                SetGpuReg(REG_OFFSET_BLDALPHA, (16 - data[15]) | data[15]);
+                gMain.state++;
+            }
+        }
+        break;
+    case 2:
+        //PlayBGM(MUS_ROUTE24);
+        data[15] -= 2;
+        SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
+        if (data[15] <= 0)
+        {
+            FillWindowPixelBuffer(data[14], 0x00);
+            AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[sOakSpeechResources->unk_0012]);
+            if (sOakSpeechResources->unk_0012 == 0)
+            {
+                ClearTopBarWindow();
+                TopBarWindowPrintString(gText_ABUTTONNext, 0, 1);
+            }
+            else
+            {
+                ClearTopBarWindow();
+                TopBarWindowPrintString(gText_ABUTTONNext_BBUTTONBack, 0, 1);
+            }
+            gMain.state++;
+        }
+        break;
+    case 3:
+        //PlayBGM(MUS_ROUTE24);
+        data[15] += 2;
+        SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
+        if (data[15] >= 16)
+        {
+            data[15] = 16;
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            gMain.state = 1;
+        }
+        break;
+    case 4: //we hit this part of the loop right after we hit A on the last screen
+        DestroyTextCursorSprite(gTasks[taskId].data[5]);
+        //PlayBGM(MUS_NEW_GAME_EXIT);
+        data[15] = 24;
+        gMain.state++;
+        break;
+    default: //, this is the fade to black
+        if (data[15] != 0)
+            data[15]--;
+        else
+        {
+            gMain.state = 0;
+            sOakSpeechResources->unk_0012 = 0;
+            SetGpuReg(REG_OFFSET_WIN0H, 0);
+            SetGpuReg(REG_OFFSET_WIN0V, 0);
+            SetGpuReg(REG_OFFSET_WININ, 0);
+            SetGpuReg(REG_OFFSET_WINOUT, 0);
+            ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
+            BeginNormalPaletteFade(0xFFFFFFFF, 2, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_AdventureScreenClean;
+        }
+        break;
+    }
+}
+
+static void Task_AdventureScreenClean(u8 taskId) //this is cleaning up everything from Adventure Screen
+{
+    s16 * data = gTasks[taskId].data;
+
+    if (!gPaletteFade.active)
+    {
+        DestroyTopBarWindow();
+        FillWindowPixelBuffer(data[14], 0x00);
+        ClearWindowTilemap(data[14]);
+        CopyWindowToVram(data[14], COPYWIN_BOTH);
+        RemoveWindow(data[14]);
+        data[14] = 0;
+        FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 0, 30, 20);
+        CopyBgTilemapBufferToVram(1);
+        DestroyLinkedPikaOrGrassPlatformSprites(taskId, 0);
+        data[3] = 80;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+    }
 }
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's speech, sets up everything

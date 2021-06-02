@@ -2184,6 +2184,18 @@ void ClearTopBarWindow(void)
     }
 }
 
+void DestroyTopBarWindow(void)
+{
+    if (sTopBarWindowId != 0xFF)
+    {
+        FillWindowPixelBuffer(sTopBarWindowId, PIXEL_FILL(0));
+        ClearWindowTilemap(sTopBarWindowId);
+        CopyWindowToVram(sTopBarWindowId, COPYWIN_BOTH);
+        RemoveWindow(sTopBarWindowId);
+        sTopBarWindowId = 0xFF;
+    }
+}
+
 void TopBarWindowPrintString(const u8 *string, u8 unused, bool8 copyToVram)
 {
     s32 width;

@@ -5014,4 +5014,10 @@ extern const u16 gPokenavMessageBox_Pal[];
 extern const u32 gPokenavOptions_Gfx[];
 extern const u16 gPokenavOptions_Pal[];
 
+//begin FRLG import
+//extern const u16 gTMCaseMainWindowPalette[];
+//const u16 gTMCaseMainWindowPalette[] = INCBIN_U16("graphics/tm_case/unk_841F408.gbapal");
+//end FRLG import
+
+
 #endif //GUARD_GRAPHICS_H

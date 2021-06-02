@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_anim.h" //used to get FRLG WelcomeScreenWorking
 #include "main.h"
 #include "m4a.h"
 #include "palette.h"
@@ -52,6 +53,32 @@ const u8 gUnusedFRLGDownArrow[] = INCBIN_U8("graphics/fonts/unused_frlg_down_arr
 const u8 gDownArrowYCoords[] = { 0x0, 0x1, 0x2, 0x1 };
 const u8 gWindowVerticalScrollSpeeds[] = { 0x1, 0x2, 0x4, 0x0 };
 
+//begin FRLG import
+static const u8 sTinyArrowTiles[]         = INCBIN_U8("graphics/fonts/down_arrow_2.4bpp");
+static const u8 sTinyDarkDownArrowTiles[] = INCBIN_U8("graphics/fonts/down_arrow_RS_2.4bpp");
+static const u8 sDoubleArrowTiles1[]       = INCBIN_U8("graphics/fonts/down_arrow_3.4bpp");
+static const u8 sDoubleArrowTiles2[]       = INCBIN_U8("graphics/fonts/down_arrow_4.4bpp");
+
+const u16 gTMCaseMainWindowPalette[] = INCBIN_U16("graphics/tm_case/unk_841F408.gbapal");
+
+static const struct SpritePalette sUnknown_81EA6A4[] =
+{
+    {gTMCaseMainWindowPalette, 0x8000},
+    {NULL}
+};
+
+static const struct SpriteTemplate sUnknown_81EA6B4 =
+{
+    .tileTag = 0x8000,
+    .paletteTag = 0x8000,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = sub_80062B0,
+};
+//end FRLG import
+
 const struct GlyphWidthFunc gGlyphWidthFuncs[] =
 {
     { 0x0, GetGlyphWidthFont0 },
@@ -63,6 +90,13 @@ const struct GlyphWidthFunc gGlyphWidthFuncs[] =
     { 0x6, GetGlyphWidthFont6 },
     { 0x7, GetGlyphWidthFont7 },
     { 0x8, GetGlyphWidthFont8 }
+};
+
+static const struct SpriteSheet sUnknown_81EA68C[] =
+{
+    {sDoubleArrowTiles1, sizeof(sDoubleArrowTiles1), 0x8000},
+    {sDoubleArrowTiles2, sizeof(sDoubleArrowTiles2), 0x8000},
+    {NULL}
 };
 
 const struct KeypadIcon gKeypadIcons[] =
@@ -1811,3 +1845,53 @@ void DecompressGlyphFont9(u16 glyphId)
     gUnknown_03002F90.width = 8;
     gUnknown_03002F90.height = 12;
 }
+
+//begin FRLG import
+void sub_80062B0(struct Sprite *sprite)
+{
+    if(sprite->data[0])
+    {
+        sprite->data[0]--;
+    }
+    else
+    {
+        sprite->data[0] = 8;
+        switch(sprite->data[1])
+        {
+            case 0:
+                sprite->pos2.y = 0;
+                break;
+            case 1:
+                sprite->pos2.y = 1;
+                break;
+            case 2:
+                sprite->pos2.y = 2;
+                break;
+            case 3:
+                sprite->pos2.y = 1;
+                sprite->data[1] = 0;
+                return;
+        }
+        sprite->data[1]++;
+    }
+}
+
+u8 CreateTextCursorSpriteForOakSpeech(u8 sheetId, u16 x, u16 y, u8 priority, u8 subpriority)
+{
+    u8 spriteId;
+    LoadSpriteSheet(&sUnknown_81EA68C[sheetId & 1]);
+    LoadSpritePalette(sUnknown_81EA6A4);
+    spriteId = CreateSprite(&sUnknown_81EA6B4, x + 3, y + 4, subpriority);
+    gSprites[spriteId].oam.priority = (priority & 3);
+    gSprites[spriteId].oam.matrixNum = 0;
+    gSprites[spriteId].data[0] = 8;
+    return spriteId;
+}
+
+void DestroyTextCursorSprite(u8 spriteId)
+{
+    DestroySprite(&gSprites[spriteId]);
+    FreeSpriteTilesByTag(0x8000);
+    FreeSpritePaletteByTag(0x8000);
+}
+//end FRLG import

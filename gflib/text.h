@@ -435,4 +435,14 @@ void DecompressGlyphFont9(u16 glyphId);
 u16 Font6Func(struct TextPrinter *textPrinter);
 u32 GetGlyphWidthFont6(u16 glyphId, bool32 isJapanese);
 
+//begin FRLG import
+
+//used for AdventureScreen
+void DestroyTextCursorSprite(u8 spriteId);
+void sub_80062B0(struct Sprite *sprite);
+u8 CreateTextCursorSpriteForOakSpeech(u8 sheetId, u16 x, u16 y, u8 priority, u8 subpriority);
+
+//end FRLG import
+
+
 #endif // GUARD_TEXT_H
