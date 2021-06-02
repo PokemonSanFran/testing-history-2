@@ -39,6 +39,12 @@
 #include "window.h"
 #include "mystery_gift.h"
 
+//https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
+#include "printf.h"
+#include "mgba.h"
+#include "../gflib/string_util.h" // for ConvertToAscii()
+
+
 /*
  * Main menu state machine
  * -----------------------
@@ -1576,7 +1582,8 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     }
     //End FRLG import
 
-    
+    //mgba_printf(MGBA_LOG_DEBUG, "You are in the function Task_NewGameWelcomeScreenVisualInit");
+
 }
 
 static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome screen
@@ -1591,6 +1598,7 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
         data[3]--;
     else
     {
+    //mgba_printf(MGBA_LOG_DEBUG, "This is line 1601");
         PlayBGM(MUS_NEW_GAME_INTRO);
         ClearTopBarWindow();
         TopBarWindowPrintString(gText_ABUTTONNext, 0, 1); //see pokefirered\src\menu.c
@@ -1615,14 +1623,17 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
         BeginNormalPaletteFade(0xFFFFFFFF, 2, 16, 0, 0);
         gTasks[taskId].func = Task_NewGameWelcomeScreenRun;
     }     //End FRLG import
+    //mgba_printf(MGBA_LOG_DEBUG, "This is line 1626");
 }
 
 static void Task_NewGameWelcomeScreenRun(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
+
     switch (gMain.state)
     {
     case 0:
+    //mgba_printf(MGBA_LOG_DEBUG, "This is case 0");
         if (!gPaletteFade.active)
         {
             PlayBGM(MUS_ROUTE111);
@@ -1635,6 +1646,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         }
         break;
     case 1:
+    //mgba_printf(MGBA_LOG_DEBUG, "This is case 1");
         PlayBGM(MUS_ROUTE113);
         if (JOY_NEW((A_BUTTON | B_BUTTON)))
         {
@@ -1664,6 +1676,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         }
         break;
     case 2:
+    //mgba_printf(MGBA_LOG_DEBUG, "This is case 2");
         //PlayBGM(MUS_ROUTE119);
         data[15] -= 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
@@ -1685,6 +1698,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         }
         break;
     case 3:
+    //mgba_printf(MGBA_LOG_DEBUG, "This is case 3");
         PlayBGM(MUS_ROUTE120);
         data[15] += 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
@@ -1697,12 +1711,14 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         }
         break;
     case 4: //we hit this part of the loop right after we hit A on the last screen
+    //mgba_printf(MGBA_LOG_DEBUG, "This is case 4");
         DestroyTextCursorSprite(gTasks[taskId].data[5]);
         PlayBGM(MUS_NEW_GAME_EXIT);
         data[15] = 24;
         gMain.state++;
         break;
     default: // this is the fade to black
+    //mgba_printf(MGBA_LOG_DEBUG, "This is case 5");
         if (data[15] != 0)
             data[15]--;
         else
