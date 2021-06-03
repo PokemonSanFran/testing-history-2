@@ -1,3 +1,12 @@
+JUNE 3
+- working backwards to figure out why functions are throwing errors
+- TopBarWindowString in mainmenu.c is throwing an error
+- Go to the source of TopBarWindowString, which is menu.c, turns out FillWindowPixelBuffer is the problem
+- Need to add printing functions in FillWindowPixelBuffer to find out where in THERE things are breaking and go from there
+- this is in line 457 in window.c
+
+- SEPERATELY, line 2241 in menu.c needs to be permanently fixed
+
 JUNE 2
 - got intro sorta working
 - need to investigate gMain tasks and taskId to figure out how to move things along

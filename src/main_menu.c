@@ -14,6 +14,7 @@
 #include "malloc.h" //used to get the Free function to get FRLG intro working
 #include "main.h"
 #include "menu.h"
+#include "menu_helpers.h" //used to
 #include "list_menu.h"
 #include "mystery_event_menu.h"
 #include "naming_screen.h"
@@ -311,8 +312,8 @@ static const u32 sNewGameAdventureIntroTilemap[] = INCBIN_U32("graphics/birch_sp
 
 //used for Adventure Screen
 extern const u8 gText_Controls[];
-extern const u8 gText_ABUTTONNext[];
-extern const u8 gText_ABUTTONNext_BBUTTONBack[];
+extern const u8 gText_Next[];
+extern const u8 gText_NextBack[];
 
 static const u16 sOakSpeech_PikaPalette[] = INCBIN_U16("graphics/birch_speech/pika_palette.gbapal");
 static const u32 sOakSpeechGfx_GrassPlatform[] = INCBIN_U32("graphics/birch_speech/grass_platform.4bpp.lz");
@@ -1560,22 +1561,30 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     int x = 99;
     u8 i = 0;
 
+    CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4);
+
+    mgba_printf(MGBA_LOG_DEBUG, "Called function is: %s",__func__);
     PlayBGM(MUS_NEW_GAME_INSTRUCT);
 
     if (!gPaletteFade.active)
     {
         for (i = 0; i < 3; i++)
         {
+            /*
+
+            //commenting all this out to see if I need it at all
+
+            mgba_printf(MGBA_LOG_DEBUG, "here is sOakSpeechResources %d", &sOakSpeechResources->unk_0014[i]);
             FillWindowPixelBuffer(sOakSpeechResources->unk_0014[i], 0x00);
             ClearWindowTilemap(sOakSpeechResources->unk_0014[i]);
             CopyWindowToVram(sOakSpeechResources->unk_0014[i], COPYWIN_BOTH);
             RemoveWindow(sOakSpeechResources->unk_0014[i]);
-            sOakSpeechResources->unk_0014[i] = 0;
+            sOakSpeechResources->unk_0014[i] = 0;*/
         }
         FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);
         CopyBgTilemapBufferToVram(1);
         DestroyTextCursorSprite(gTasks[taskId].data[5]);
-        sOakSpeechResources->unk_0014[0] = RGB_BLACK;
+        //sOakSpeechResources->unk_0014[0] = RGB_BLACK; //when enabled, throws Bad memory Store16: 0x00000014
         LoadPalette(sOakSpeechResources->unk_0014, 0, 2);
         gTasks[taskId].data[3] = 32;
         gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
@@ -1594,26 +1603,29 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
     u32 sp14 = 0;
     int q = 0;
 
-    mgba_printf(MGBA_LOG_DEBUG, "this is taskid %d", taskId);
 
     if (data[3] != 0)
         data[3]--;
     else
     {
-    //mgba_printf(MGBA_LOG_DEBUG, "This is line 1601");
+    //mgba_printf(MGBA_LOG_DEBUG, "Called function is: %s",__func__);
+/*      
+
+        THIS IS A FULL WORKING BLOCK. ONLY UNCOMMENT WHEN DONE DONE.
+
         PlayBGM(MUS_NEW_GAME_INTRO);
-        ClearTopBarWindow();
-        TopBarWindowPrintString(gText_ABUTTONNext, 0, 1); //see pokefirered\src\menu.c
-        sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14);
-        CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19);
+        ClearTopBarWindow(); //this throws some errors, probably because there is no top bar window to clear. I'm going to leave it commented out until I see a reason to let it back in.
+        TopBarWindowPrintString(gText_Next, 0, 1); //see pokefirered\src\menu.c //this throws some errors, unknown reason rn
+        sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14); //this throws some errors, unknown reason rn
+        CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19); //this throws some errors, unknown reason rn
         CopyBgTilemapBufferToVram(1);
-        Free(sOakSpeechResources->unk_0008);
-        sOakSpeechResources->unk_0008 = NULL;
+        Free(sOakSpeechResources->unk_0008); //this throws some errors, unknown reason rn
+        sOakSpeechResources->unk_0008 = NULL; //this throws some errors, unknown reason rn
         data[14] = AddWindow(&sNewGameAdventureIntroWindowTemplates[0]);
         PutWindowTilemap(data[14]);
         FillWindowPixelBuffer(data[14], 0x00);
         CopyWindowToVram(data[14], COPYWIN_BOTH);
-        sOakSpeechResources->unk_0012 = 0;
+        sOakSpeechResources->unk_0012 = 0; //this throws some errors, unknown reason rn
         gMain.state = 0;
         data[15] = 16;
         q = 1;
@@ -1623,18 +1635,50 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
         gSprites[data[5]].oam.priority = 0;
         CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(taskId, 0);
         BeginNormalPaletteFade(0xFFFFFFFF, 2, 16, 0, 0);
+        gTasks[taskId].func = Task_NewGameWelcomeScreenRun;*/
+            
+        PlayBGM(MUS_NEW_GAME_INTRO);
+            mgba_printf(MGBA_LOG_DEBUG,"TopBarWindowPrintString(gText_Next, 0, 1);");
+        TopBarWindowPrintString(gText_Next, 0, 1); //see pokefirered\src\menu.c
+
+            mgba_printf(MGBA_LOG_DEBUG,"sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14);");
+        sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14);
+            mgba_printf(MGBA_LOG_DEBUG,"CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19);");
+        CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19);
+            
+        CopyBgTilemapBufferToVram(1);
+            mgba_printf(MGBA_LOG_DEBUG,"Free(sOakSpeechResources->unk_0008);");
+        Free(sOakSpeechResources->unk_0008);
+            mgba_printf(MGBA_LOG_DEBUG,"sOakSpeechResources->unk_0008 = NULL;");
+        sOakSpeechResources->unk_0008 = NULL;            
+        data[14] = AddWindow(&sNewGameAdventureIntroWindowTemplates[0]);            
+        PutWindowTilemap(data[14]);            
+        FillWindowPixelBuffer(data[14], 0x00);            
+        CopyWindowToVram(data[14], COPYWIN_BOTH);
+            mgba_printf(MGBA_LOG_DEBUG,"sOakSpeechResources->unk_0012 = 0;");
+        sOakSpeechResources->unk_0012 = 0;
+        gMain.state = 0;            
+        data[15] = 16;            
+        q = 1;
+        AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[0]);            
+        data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);            
+        gSprites[data[5]].oam.objMode = ST_OAM_OBJ_BLEND;            
+        gSprites[data[5]].oam.priority = 0;            
+        CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(taskId, 0);            
+        BeginNormalPaletteFade(0xFFFFFFFF, 2, 16, 0, 0);            
         gTasks[taskId].func = Task_NewGameWelcomeScreenRun;
     }     //End FRLG import
-    //mgba_printf(MGBA_LOG_DEBUG, "This is line 1626");
 }
 
 static void Task_NewGameWelcomeScreenRun(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
 
+
     switch (gMain.state)
     {
     case 0:
+    mgba_printf(MGBA_LOG_DEBUG, "Called function is: %s",__func__);
     //mgba_printf(MGBA_LOG_DEBUG, "This is case 0");
         if (!gPaletteFade.active)
         {
@@ -1689,12 +1733,12 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
             if (sOakSpeechResources->unk_0012 == 0)
             {
                 ClearTopBarWindow();
-                TopBarWindowPrintString(gText_ABUTTONNext, 0, 1);
+                TopBarWindowPrintString(gText_Next, 0, 1);
             }
             else
             {
                 ClearTopBarWindow();
-                TopBarWindowPrintString(gText_ABUTTONNext_BBUTTONBack, 0, 1);
+                TopBarWindowPrintString(gText_NextBack, 0, 1);
             }
             gMain.state++;
         }

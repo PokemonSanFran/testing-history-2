@@ -48,8 +48,8 @@ const u8 gText_ControlPad[] = _("+ Control Pad"); // Unused
 const u8 gText_LButtonRButton[] = _("L Button  R Button"); // Unused
 const u8 gText_Controls[] = _("CONTROLS"); // Unused
 ALIGNED(4) const u8 gText_PickOk[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}OK"); // Unused
-ALIGNED(4) const u8 gText_Next[] = _("{A_BUTTON}NEXT"); // Unused
-ALIGNED(4) const u8 gText_NextBack[] = _("{A_BUTTON}NEXT {B_BUTTON}BACK"); // Unused
+ALIGNED(4) const u8 gText_Next[] = _("{A_BUTTON}NEXT"); // used for FRLG NewGameAdventureIntro
+ALIGNED(4) const u8 gText_NextBack[] = _("{A_BUTTON}NEXT {B_BUTTON}BACK"); // used for FRLG NewGameAdventureIntro
 ALIGNED(4) const u8 gText_PickNextCancel[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}NEXT {B_BUTTON}CANCEL");
 ALIGNED(4) const u8 gText_PickCancel[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}{B_BUTTON}CANCEL");
 ALIGNED(4) const u8 gText_AButtonExit[] = _("{A_BUTTON}EXIT");
@@ -1817,12 +1817,3 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
-
-//begin FRLG import
-
-//(pokefirered\src\strings.c), used for NewGameAdventureIntro
-
-ALIGNED(4) const u8 gText_ABUTTONNext[] = _("{A_BUTTON}NEXT"); 
-ALIGNED(4) const u8 gText_ABUTTONNext_BBUTTONBack[] = _("{A_BUTTON}NEXT {B_BUTTON}BACK");
-
-//end FRLG import

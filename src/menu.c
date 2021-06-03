@@ -20,6 +20,11 @@
 #include "window.h"
 #include "constants/songs.h"
 
+//https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
+#include "printf.h"
+#include "mgba.h"
+#include "../gflib/string_util.h" // for ConvertToAscii()
+
 
 static EWRAM_DATA u8 sTopBarWindowId = 0; //import from FRLG
 static const u8 gUnknown_8456618[3] = {15, 1, 2}; //import from FRLG
@@ -2202,8 +2207,9 @@ void TopBarWindowPrintString(const u8 *string, u8 unused, bool8 copyToVram)
 
     if (sTopBarWindowId != 0xFF)
     {
-        PutWindowTilemap(sTopBarWindowId);
-        FillWindowPixelBuffer(sTopBarWindowId, PIXEL_FILL(15));
+        PutWindowTilemap(sTopBarWindowId);        
+            mgba_printf(MGBA_LOG_DEBUG,"$$$FillWindowPixelBuffer(sTopBarWindowId, PIXEL_FILL(15));");
+        FillWindowPixelBuffer(sTopBarWindowId, PIXEL_FILL(15)); //throws error, unknown why
         width = GetStringWidth(0, string, 0);
         AddTextPrinterParameterized3(sTopBarWindowId, 0, -20 - width, 1, gUnknown_8456618, 0, string);
         if (copyToVram)
@@ -2232,7 +2238,7 @@ u8 CreateTopBarWindowLoadPalette(u8 bg, u8 width, u8 yPos, u8 palette, u16 baseT
     else
         palette *= 16;
     //LoadPalette(stdpal_get(2), palette, 0x20); //going to pass 0x20 instead of stdpal_get, please see pokefirered\src\text_window.c line 154
-    //LoadPalette(0x20, palette, 0x20); comment this line out entirely, testing without
+    //LoadPalette(0x20, palette, 0x20); //need to actually fix this TODO
     return sTopBarWindowId;
 }
 
