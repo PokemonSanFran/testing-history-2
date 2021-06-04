@@ -4,6 +4,11 @@
 #include "bg.h"
 #include "blit.h"
 
+//https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
+#include "printf.h"
+#include "mgba.h"
+#include "../gflib/string_util.h" // for ConvertToAscii()
+
 u32 filler_03002F58;
 u32 filler_03002F5C;
 // This global is set to 0 and never changed.

@@ -1,3 +1,8 @@
+JUNE 4
+- line 2241 in menu.c still needs to be fixed
+- sound does not work at all, need to figure that out
+- why does background palette not load? (probably line 2241)
+
 JUNE 3
 - working backwards to figure out why functions are throwing errors
 - TopBarWindowString in mainmenu.c is throwing an error

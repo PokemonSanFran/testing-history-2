@@ -2207,8 +2207,7 @@ void TopBarWindowPrintString(const u8 *string, u8 unused, bool8 copyToVram)
 
     if (sTopBarWindowId != 0xFF)
     {
-        PutWindowTilemap(sTopBarWindowId);        
-            mgba_printf(MGBA_LOG_DEBUG,"$$$FillWindowPixelBuffer(sTopBarWindowId, PIXEL_FILL(15));");
+        PutWindowTilemap(sTopBarWindowId);
         FillWindowPixelBuffer(sTopBarWindowId, PIXEL_FILL(15)); //throws error, unknown why
         width = GetStringWidth(0, string, 0);
         AddTextPrinterParameterized3(sTopBarWindowId, 0, -20 - width, 1, gUnknown_8456618, 0, string);

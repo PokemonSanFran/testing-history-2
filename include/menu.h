@@ -137,6 +137,9 @@ void TopBarWindowPrintString(const u8 *string, u8 unUsed, bool8 copyToVram);
 void ClearTopBarWindow(void);
 void DestroyTopBarWindow(void);
 
+//\\wsl$\Ubuntu-20.04\home\psf\Decomps\pokefirered\include\menu.h
+u8 CreateTopBarWindowLoadPalette(u8 bg, u8 width, u8 yPos, u8 palette, u16 baseTile);
+
 //end FRLG import
 
 #endif // GUARD_MENU_H

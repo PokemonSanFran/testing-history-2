@@ -263,7 +263,6 @@ static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8
 //FRLG import begin
 static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state);
 static void DestroyLinkedPikaOrGrassPlatformSprites(u8 taskId, u8 state);
-//FRLG import end
 
 // .rodata
 
@@ -1561,19 +1560,25 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     int x = 99;
     u8 i = 0;
 
-    CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4);
+    CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4); //create the top bar of the welcome screen
+
+    //stolen from FRLG src\oak_speech.c to set up OakSpeechResources
+    sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources)); //Task_OaksSpeech1
+    SetBgTilemapBuffer(1, sOakSpeechResources->bg1TilemapBuffer); //Task_OaksSpeech1
+    SetBgTilemapBuffer(2, sOakSpeechResources->bg2TilemapBuffer); //Task_OaksSpeech1
 
     mgba_printf(MGBA_LOG_DEBUG, "Called function is: %s",__func__);
     PlayBGM(MUS_NEW_GAME_INSTRUCT);
+    
 
     if (!gPaletteFade.active)
     {
         for (i = 0; i < 3; i++)
         {
-            /*
+            
 
             //commenting all this out to see if I need it at all
-
+/*
             mgba_printf(MGBA_LOG_DEBUG, "here is sOakSpeechResources %d", &sOakSpeechResources->unk_0014[i]);
             FillWindowPixelBuffer(sOakSpeechResources->unk_0014[i], 0x00);
             ClearWindowTilemap(sOakSpeechResources->unk_0014[i]);
@@ -1584,7 +1589,7 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
         FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);
         CopyBgTilemapBufferToVram(1);
         DestroyTextCursorSprite(gTasks[taskId].data[5]);
-        //sOakSpeechResources->unk_0014[0] = RGB_BLACK; //when enabled, throws Bad memory Store16: 0x00000014
+        sOakSpeechResources->unk_0014[0] = RGB_BLACK; //when enabled, throws Bad memory Store16: 0x00000014
         LoadPalette(sOakSpeechResources->unk_0014, 0, 2);
         gTasks[taskId].data[3] = 32;
         gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
@@ -1615,7 +1620,7 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
 
         PlayBGM(MUS_NEW_GAME_INTRO);
         ClearTopBarWindow(); //this throws some errors, probably because there is no top bar window to clear. I'm going to leave it commented out until I see a reason to let it back in.
-        TopBarWindowPrintString(gText_Next, 0, 1); //see pokefirered\src\menu.c //this throws some errors, unknown reason rn
+        TopBarWindowPrintString(gText_Next, 0, 1); //see pokefirered\src\menu.c
         sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14); //this throws some errors, unknown reason rn
         CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19); //this throws some errors, unknown reason rn
         CopyBgTilemapBufferToVram(1);
@@ -1642,7 +1647,9 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
         TopBarWindowPrintString(gText_Next, 0, 1); //see pokefirered\src\menu.c
 
             mgba_printf(MGBA_LOG_DEBUG,"sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14);");
+            //mgba_printf(MGBA_LOG_DEBUG, "sOakSpeechResources->unk_0008: %s",sOakSpeechResources->unk_0008);
         sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14);
+
             mgba_printf(MGBA_LOG_DEBUG,"CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19);");
         CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19);
             
@@ -1693,7 +1700,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         break;
     case 1:
     //mgba_printf(MGBA_LOG_DEBUG, "This is case 1");
-        PlayBGM(MUS_ROUTE113);
+        PlayBGM(MUS_ROUTE111);
         if (JOY_NEW((A_BUTTON | B_BUTTON)))
         {
             if (JOY_NEW(A_BUTTON))
@@ -1723,7 +1730,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         break;
     case 2:
     //mgba_printf(MGBA_LOG_DEBUG, "This is case 2");
-        //PlayBGM(MUS_ROUTE119);
+        PlayBGM(MUS_ROUTE111);
         data[15] -= 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
         if (data[15] <= 0)
@@ -1745,7 +1752,7 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         break;
     case 3:
     //mgba_printf(MGBA_LOG_DEBUG, "This is case 3");
-        PlayBGM(MUS_ROUTE120);
+        PlayBGM(MUS_ROUTE111);
         data[15] += 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
         if (data[15] >= 16)
