@@ -1,4 +1,7 @@
 JUNE 4
+- Task_OaksSpeech1 in FRLG is the key to getting the background to load... need to break that down further.
+
+JUNE 4
 - line 2241 in menu.c still needs to be fixed
 - sound does not work at all, need to figure that out
 - why does background palette not load? (probably line 2241)

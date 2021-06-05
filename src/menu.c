@@ -2236,8 +2236,7 @@ u8 CreateTopBarWindowLoadPalette(u8 bg, u8 width, u8 yPos, u8 palette, u16 baseT
         palette = 15 * 16;
     else
         palette *= 16;
-    //LoadPalette(stdpal_get(2), palette, 0x20); //going to pass 0x20 instead of stdpal_get, please see pokefirered\src\text_window.c line 154
-    //LoadPalette(0x20, palette, 0x20); //need to actually fix this TODO
+    LoadPalette(stdpal_get(2), palette, 0x20);
     return sTopBarWindowId;
 }
 

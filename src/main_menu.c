@@ -321,6 +321,35 @@ static const u32 sOakSpeechGfx_Pika1[] = INCBIN_U32("graphics/birch_speech/pika1
 static const u32 sOakSpeechGfx_Pika2[] = INCBIN_U32("graphics/birch_speech/pika2.4bpp.lz");
 static const u32 sOakSpeechGfx_PikaEyes[] = INCBIN_U32("graphics/birch_speech/pika_eyes.4bpp.lz");
 
+//struct holding background images for welcome screen
+/*static const struct BgTemplate sBgTemplates[3] = {
+    {
+        .bg = 0,
+        .charBaseIndex = 2,
+        .mapBaseIndex = 31,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 0,
+        .baseTile = 0x000
+    }, {
+        .bg = 1,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 30,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 2,
+        .baseTile = 0x000
+    }, {
+        .bg = 2,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 28,
+        .screenSize = 1,
+        .paletteMode = 1,
+        .priority = 1,
+        .baseTile = 0x000
+    }
+};*/
+
 //this is a struct used for WelcomeScreen, pulled from FRLG
 struct OakSpeechResources
 {
@@ -1553,6 +1582,8 @@ static void DestroyLinkedPikaOrGrassPlatformSprites(u8 taskId, u8 state)
     }
 }
 
+
+
 static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen
 {
 
@@ -1560,12 +1591,14 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     int x = 99;
     u8 i = 0;
 
-    CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4); //create the top bar of the welcome screen
 
     //stolen from FRLG src\oak_speech.c to set up OakSpeechResources
     sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources)); //Task_OaksSpeech1
+
     SetBgTilemapBuffer(1, sOakSpeechResources->bg1TilemapBuffer); //Task_OaksSpeech1
     SetBgTilemapBuffer(2, sOakSpeechResources->bg2TilemapBuffer); //Task_OaksSpeech1
+
+    CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4); //create the top bar of the welcome screen
 
     mgba_printf(MGBA_LOG_DEBUG, "Called function is: %s",__func__);
     PlayBGM(MUS_NEW_GAME_INSTRUCT);
@@ -1578,9 +1611,9 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
             
 
             //commenting all this out to see if I need it at all
-/*
+
             mgba_printf(MGBA_LOG_DEBUG, "here is sOakSpeechResources %d", &sOakSpeechResources->unk_0014[i]);
-            FillWindowPixelBuffer(sOakSpeechResources->unk_0014[i], 0x00);
+            /*FillWindowPixelBuffer(sOakSpeechResources->unk_0014[i], 0x00);
             ClearWindowTilemap(sOakSpeechResources->unk_0014[i]);
             CopyWindowToVram(sOakSpeechResources->unk_0014[i], COPYWIN_BOTH);
             RemoveWindow(sOakSpeechResources->unk_0014[i]);
@@ -1689,7 +1722,6 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
     //mgba_printf(MGBA_LOG_DEBUG, "This is case 0");
         if (!gPaletteFade.active)
         {
-            PlayBGM(MUS_ROUTE111);
             SetGpuReg(REG_OFFSET_WIN0H, 0x00F0);
             SetGpuReg(REG_OFFSET_WIN0V, 0x10A0);
             SetGpuReg(REG_OFFSET_WININ, 0x003F);
@@ -1700,7 +1732,6 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         break;
     case 1:
     //mgba_printf(MGBA_LOG_DEBUG, "This is case 1");
-        PlayBGM(MUS_ROUTE111);
         if (JOY_NEW((A_BUTTON | B_BUTTON)))
         {
             if (JOY_NEW(A_BUTTON))
@@ -1730,7 +1761,6 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         break;
     case 2:
     //mgba_printf(MGBA_LOG_DEBUG, "This is case 2");
-        PlayBGM(MUS_ROUTE111);
         data[15] -= 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
         if (data[15] <= 0)
@@ -1752,7 +1782,6 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
         break;
     case 3:
     //mgba_printf(MGBA_LOG_DEBUG, "This is case 3");
-        PlayBGM(MUS_ROUTE111);
         data[15] += 2;
         SetGpuReg(REG_OFFSET_BLDALPHA, ((16 - data[15]) << 8) | data[15]);
         if (data[15] >= 16)

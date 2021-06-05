@@ -24,4 +24,13 @@ const u16 *GetTextWindowPalette(u8 id);
 const u16 *GetOverworldTextboxPalettePtr(void);
 void sub_8098C6C(u8 bg, u16 destOffset, u8 palOffset);
 
+//begin FRLG import
+
+const u16* stdpal_get(u8 id);
+
+// \include\text_window_graphics.h
+extern const u16 gUnknown_8471DEC[][16];
+
+//end FRLG import
+
 #endif // GUARD_TEXT_WINDOW_H
