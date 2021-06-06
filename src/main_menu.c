@@ -321,35 +321,6 @@ static const u32 sOakSpeechGfx_Pika1[] = INCBIN_U32("graphics/birch_speech/pika1
 static const u32 sOakSpeechGfx_Pika2[] = INCBIN_U32("graphics/birch_speech/pika2.4bpp.lz");
 static const u32 sOakSpeechGfx_PikaEyes[] = INCBIN_U32("graphics/birch_speech/pika_eyes.4bpp.lz");
 
-//struct holding background images for welcome screen
-/*static const struct BgTemplate sBgTemplates[3] = {
-    {
-        .bg = 0,
-        .charBaseIndex = 2,
-        .mapBaseIndex = 31,
-        .screenSize = 0,
-        .paletteMode = 0,
-        .priority = 0,
-        .baseTile = 0x000
-    }, {
-        .bg = 1,
-        .charBaseIndex = 0,
-        .mapBaseIndex = 30,
-        .screenSize = 0,
-        .paletteMode = 0,
-        .priority = 2,
-        .baseTile = 0x000
-    }, {
-        .bg = 2,
-        .charBaseIndex = 0,
-        .mapBaseIndex = 28,
-        .screenSize = 1,
-        .paletteMode = 1,
-        .priority = 1,
-        .baseTile = 0x000
-    }
-};*/
-
 //this is a struct used for WelcomeScreen, pulled from FRLG
 struct OakSpeechResources
 {
@@ -1590,25 +1561,11 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     //FRLG import
     int x = 99;
     u8 i = 0;
-
-/*    ResetBgsAndClearDma3BusyFlags(0);
-    mgba_printf(MGBA_LOG_DEBUG, "InitBgsFromTemplates(1, sBgTemplates, NELEMS(sBgTemplates));");
-    InitBgsFromTemplates(1, sBgTemplates, NELEMS(sBgTemplates));
-*/
     //stolen from FRLG src\oak_speech.c to set up OakSpeechResources
     sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources)); //Task_OaksSpeech1
 
-    ResetBgsAndClearDma3BusyFlags(0);
-    //InitBgsFromTemplates(1, sBgTemplates, NELEMS(sBgTemplates));
     SetBgTilemapBuffer(1, sOakSpeechResources->bg1TilemapBuffer); //Task_OaksSpeech1
     SetBgTilemapBuffer(2, sOakSpeechResources->bg2TilemapBuffer); //Task_OaksSpeech1
-    ChangeBgX(1, 0, 0);
-    ChangeBgY(1, 0, 0);
-    ChangeBgX(2, 0, 0);
-    ChangeBgY(2, 0, 0);
-
-    ShowBg(0);
-    ShowBg(1);
 
     CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4); //create the top bar of the welcome screen
 
