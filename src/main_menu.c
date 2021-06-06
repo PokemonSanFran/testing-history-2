@@ -1591,12 +1591,24 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     int x = 99;
     u8 i = 0;
 
-
+/*    ResetBgsAndClearDma3BusyFlags(0);
+    mgba_printf(MGBA_LOG_DEBUG, "InitBgsFromTemplates(1, sBgTemplates, NELEMS(sBgTemplates));");
+    InitBgsFromTemplates(1, sBgTemplates, NELEMS(sBgTemplates));
+*/
     //stolen from FRLG src\oak_speech.c to set up OakSpeechResources
     sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources)); //Task_OaksSpeech1
 
+    ResetBgsAndClearDma3BusyFlags(0);
+    //InitBgsFromTemplates(1, sBgTemplates, NELEMS(sBgTemplates));
     SetBgTilemapBuffer(1, sOakSpeechResources->bg1TilemapBuffer); //Task_OaksSpeech1
     SetBgTilemapBuffer(2, sOakSpeechResources->bg2TilemapBuffer); //Task_OaksSpeech1
+    ChangeBgX(1, 0, 0);
+    ChangeBgY(1, 0, 0);
+    ChangeBgX(2, 0, 0);
+    ChangeBgY(2, 0, 0);
+
+    ShowBg(0);
+    ShowBg(1);
 
     CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4); //create the top bar of the welcome screen
 

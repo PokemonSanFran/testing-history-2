@@ -1,3 +1,9 @@
+JUNE 5
+- GO through each case in the switch statment, comment them out line by line
+- Mark anything that impacts seeing the background
+- port it all to emerald until a background renders
+- try to rip out what doesn't actually matter
+
 JUNE 4
 - Task_OaksSpeech1 in FRLG is the key to getting the background to load... need to break that down further.
 
