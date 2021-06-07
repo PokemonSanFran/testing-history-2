@@ -14,8 +14,10 @@ gText_Birch_AndYouAre:: @ 82C8BD0
 	.string "$"
 
 gText_Birch_BoyOrGirl:: @ 82C8BDD
-	.string "Which body would you like to use?\p"
-	.string "$"
+	.string "Which body would you like to use?$"
+
+gText_Birch_BoyOrGirl2:: @ 
+	.string "Which body would you like to use?$"
 
 gText_Birch_WhatsYourName:: @ 82C8BFF
 	.string "All right.\n"
@@ -43,7 +45,7 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 	.string "$"
 
 gNewGameAdventureIntro1::
-    .string "Welcome to Pokémon!\n"
+    .string "Welcome to Pokémon San Fran!\n"
     .string "Before we get started...\n"
     .string "\n"
     .string "If you paid for this game,\n"

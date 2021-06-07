@@ -1575,29 +1575,30 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     //stolen from FRLG src\oak_speech.c to set up OakSpeechResources
     sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources)); //Allocates memory for OakSpeechResources, stolen from Task_OaksSpeech1
 
+
     SetGpuReg(REG_OFFSET_BLDY,0); //makes sure first page's text isn't too dark, stolen from OaksSpeech1
+
 
     SetBgTilemapBuffer(1, sOakSpeechResources->bg1TilemapBuffer); //Task_OaksSpeech1
     SetBgTilemapBuffer(2, sOakSpeechResources->bg2TilemapBuffer); //Task_OaksSpeech1
 
-    // LoadPalette(sHelpDocsPalette, 0x000, 0x080); //loads the palette for the Adventure Welcome Screen
+    gPaletteFade.bufferTransferDisabled = TRUE;
+    LoadPalette(sHelpDocsPalette, 0x000, 0x080); //loads the palette for the Adventure Welcome Screen
+
+
     DecompressAndCopyTileDataToVram(1, sOakSpeechGfx_GameStartHelpUI, 0, 0, 0);
 
     CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4); //create the top bar of the welcome screen
-
     gPaletteFade.bufferTransferDisabled = FALSE;
-
+    
     ShowBg(1);
     SetVBlankCallback(VBlankCB_NewGameOaksSpeech);
-
-    mgba_printf(MGBA_LOG_DEBUG, "Called function is: %s",__func__);
     PlayBGM(MUS_NEW_GAME_INSTRUCT);
     
-
     if (!gPaletteFade.active)
     {
-        for (i = 0; i < 3; i++)
-        {
+        {        for (i = 0; i < 3; i++)
+
             
 
             //commenting all this out to see if I need it at all
