@@ -307,12 +307,16 @@ static const u16 sBirchSpeechPlatformBlackPal[] = {RGB_BLACK, RGB_BLACK, RGB_BLA
 //begin FRLG import
 
 //defines the tilemap for the New Game Adventure
-static const u32 sNewGameAdventureIntroTilemap[] = INCBIN_U32("graphics/birch_speech/new_game_adventure_intro_tilemap.bin.lz");
 
 //used for Adventure Screen
 extern const u8 gText_Controls[];
 extern const u8 gText_Next[];
 extern const u8 gText_NextBack[];
+
+ALIGNED(4) static const u16 sHelpDocsPalette[] = INCBIN_U16("graphics/birch_speech/help_docs_palette.gbapal");
+static const u32 sOakSpeechGfx_GameStartHelpUI[] = INCBIN_U32("graphics/birch_speech/game_start_help_ui.4bpp.lz");
+static const u32 sNewGameAdventureIntroTilemap[] = INCBIN_U32("graphics/birch_speech/new_game_adventure_intro_tilemap.bin.lz");
+
 
 static const u16 sOakSpeech_PikaPalette[] = INCBIN_U16("graphics/birch_speech/pika_palette.gbapal");
 static const u32 sOakSpeechGfx_GrassPlatform[] = INCBIN_U32("graphics/birch_speech/grass_platform.4bpp.lz");
@@ -1553,6 +1557,12 @@ static void DestroyLinkedPikaOrGrassPlatformSprites(u8 taskId, u8 state)
     }
 }
 
+static void VBlankCB_NewGameOaksSpeech(void)
+{
+    LoadOam();
+    ProcessSpriteCopyRequests();
+    TransferPlttBuffer();
+}
 
 
 static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen
@@ -1561,13 +1571,24 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     //FRLG import
     int x = 99;
     u8 i = 0;
+
     //stolen from FRLG src\oak_speech.c to set up OakSpeechResources
-    sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources)); //Task_OaksSpeech1
+    sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources)); //Allocates memory for OakSpeechResources, stolen from Task_OaksSpeech1
+
+    SetGpuReg(REG_OFFSET_BLDY,0); //makes sure first page's text isn't too dark, stolen from OaksSpeech1
 
     SetBgTilemapBuffer(1, sOakSpeechResources->bg1TilemapBuffer); //Task_OaksSpeech1
     SetBgTilemapBuffer(2, sOakSpeechResources->bg2TilemapBuffer); //Task_OaksSpeech1
 
+    // LoadPalette(sHelpDocsPalette, 0x000, 0x080); //loads the palette for the Adventure Welcome Screen
+    DecompressAndCopyTileDataToVram(1, sOakSpeechGfx_GameStartHelpUI, 0, 0, 0);
+
     CreateTopBarWindowLoadPalette(0, 30, 0, 13, 0x1C4); //create the top bar of the welcome screen
+
+    gPaletteFade.bufferTransferDisabled = FALSE;
+
+    ShowBg(1);
+    SetVBlankCallback(VBlankCB_NewGameOaksSpeech);
 
     mgba_printf(MGBA_LOG_DEBUG, "Called function is: %s",__func__);
     PlayBGM(MUS_NEW_GAME_INSTRUCT);
