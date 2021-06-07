@@ -1,0 +1,11 @@
+NOTES
+
+\\wsl$\Ubuntu-20.04\home\psf\Decomps\pokeemerald_egg\src\main_menu.c
+birch speech has birch's text for the intro
+
+birch's text is located in \\wsl$\Ubuntu-20.04\home\psf\Decomps\pokeemerald_egg\data\text\birch_speech.inc
+
+birch_speech.inc is called in \\wsl$\Ubuntu-20.04\home\psf\Decomps\pokeemerald_egg\data\event_scripts.s
+
+what is the relationship between event_script.s and main_menu.c
+
