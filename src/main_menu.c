@@ -207,6 +207,7 @@ static void Task_AdventureScreenClean(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
 static void AddBirchSpeechObjects(u8);
 static void Task_NewGameWelcomeScreen(u8);
+static void Task_NewGameBirchSpeech_WhatIsYourName(u8);
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8);
 static void NewGameBirchSpeech_StartFadeInTarget1OutTarget2(u8, u8);
 static void NewGameBirchSpeech_StartFadePlatformOut(u8, u8);
@@ -1866,7 +1867,8 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's sp
     AddBirchSpeechObjects(taskId);
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
     gTasks[taskId].tBG1HOFS = 0;
-    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch;
+    //gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch; //this is the original function, leaving this out for now
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WhatIsYourName;
     gTasks[taskId].tPlayerSpriteId = 0xFF;
     gTasks[taskId].data[3] = 0xFF;
     gTasks[taskId].tTimer = 0xD8;
@@ -1876,6 +1878,20 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's sp
     ShowBg(1);
 //} //from commented out if statement stolen from FRLG
 }
+
+static void Task_NewGameBirchSpeech_WhatIsYourName(u8 taskId)
+{
+/*
+display text box
+ask question
+press A
+show naming screen with Steven NPC sprite
+*/
+    StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
+    AddTextPrinterForMessage(1);
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint;
+}
+
 
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
 {
@@ -1890,7 +1906,7 @@ static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
         spriteId = gTasks[taskId].tBirchSpriteId;
         gSprites[spriteId].pos1.x = 136;
         gSprites[spriteId].pos1.y = 60;
-        gSprites[spriteId].invisible = FALSE;
+        gSprites[spriteId].invisible = TRUE; //changed to TRUE to make Birch invisible.
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 10);
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 20);

@@ -16,9 +16,6 @@ gText_Birch_AndYouAre:: @ 82C8BD0
 gText_Birch_BoyOrGirl:: @ 82C8BDD
 	.string "Which body would you like to use?$"
 
-gText_Birch_BoyOrGirl2:: @ 
-	.string "Which body would you like to use?$"
-
 gText_Birch_WhatsYourName:: @ 82C8BFF
 	.string "All right.\n"
 	.string "What's your name?$"
