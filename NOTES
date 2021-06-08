@@ -1,10 +1,11 @@
 NOTES
 
 Make Birch invisible for the entire intro, don't ever load his sprite
-Set player gender to Male
 Make multichoice menu for player sprite, just a list for now of both gender options for
 	Schoolkids
 	Ace Trainers
 	Veterans
+Set player gender to Male
+Get player name
 Present multi step menu for eye, hair, and skin color that does nothing
 Shrink down, start in truck

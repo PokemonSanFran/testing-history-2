@@ -682,7 +682,8 @@ static const union AffineAnimCmd *const sSpriteAffineAnimTable_PlayerShrink[] =
 
 static const struct MenuAction sMenuActions_Gender[] = {
     {gText_BirchBoy, NULL},
-    {gText_BirchGirl, NULL}
+    {gText_BirchGirl, NULL},
+    {gText_BirchThird, NULL}
 };
 
 static const u8 *const gMalePresetNames[] = {
@@ -1569,7 +1570,6 @@ static void VBlankCB_NewGameOaksSpeech(void)
 static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of welcome screen
 {
 
-    //FRLG import
     int x = 99;
     u8 i = 0;
 
@@ -1598,19 +1598,15 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
     
     if (!gPaletteFade.active)
     {
-        {        for (i = 0; i < 3; i++)
-
-            
-
+            /* for (i = 0; i < 3; i++)
             //commenting all this out to see if I need it at all
 
-            mgba_printf(MGBA_LOG_DEBUG, "here is sOakSpeechResources %d", &sOakSpeechResources->unk_0014[i]);
-            /*FillWindowPixelBuffer(sOakSpeechResources->unk_0014[i], 0x00);
+            FillWindowPixelBuffer(sOakSpeechResources->unk_0014[i], 0x00);
             ClearWindowTilemap(sOakSpeechResources->unk_0014[i]);
             CopyWindowToVram(sOakSpeechResources->unk_0014[i], COPYWIN_BOTH);
             RemoveWindow(sOakSpeechResources->unk_0014[i]);
             sOakSpeechResources->unk_0014[i] = 0;*/
-        }
+        
         FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);
         CopyBgTilemapBufferToVram(1);
         DestroyTextCursorSprite(gTasks[taskId].data[5]);
@@ -1619,9 +1615,7 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
         gTasks[taskId].data[3] = 32;
         gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
     }
-    //End FRLG import
 
-    //mgba_printf(MGBA_LOG_DEBUG, "You are in the function Task_NewGameWelcomeScreenVisualInit");
 
 }
 
@@ -1637,36 +1631,7 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
     if (data[3] != 0)
         data[3]--;
     else
-    {
-    //mgba_printf(MGBA_LOG_DEBUG, "Called function is: %s",__func__);
-/*      
-
-        THIS IS A FULL WORKING BLOCK. ONLY UNCOMMENT WHEN DONE DONE.
-
-        PlayBGM(MUS_NEW_GAME_INTRO);
-        ClearTopBarWindow(); //this throws some errors, probably because there is no top bar window to clear. I'm going to leave it commented out until I see a reason to let it back in.
-        TopBarWindowPrintString(gText_Next, 0, 1); //see pokefirered\src\menu.c
-        sOakSpeechResources->unk_0008 = MallocAndDecompress(sNewGameAdventureIntroTilemap, &sp14); //this throws some errors, unknown reason rn
-        CopyToBgTilemapBufferRect(1, sOakSpeechResources->unk_0008, 0, 2, 30, 19); //this throws some errors, unknown reason rn
-        CopyBgTilemapBufferToVram(1);
-        Free(sOakSpeechResources->unk_0008); //this throws some errors, unknown reason rn
-        sOakSpeechResources->unk_0008 = NULL; //this throws some errors, unknown reason rn
-        data[14] = AddWindow(&sNewGameAdventureIntroWindowTemplates[0]);
-        PutWindowTilemap(data[14]);
-        FillWindowPixelBuffer(data[14], 0x00);
-        CopyWindowToVram(data[14], COPYWIN_BOTH);
-        sOakSpeechResources->unk_0012 = 0; //this throws some errors, unknown reason rn
-        gMain.state = 0;
-        data[15] = 16;
-        q = 1;
-        AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[0]);
-        data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);
-        gSprites[data[5]].oam.objMode = ST_OAM_OBJ_BLEND;
-        gSprites[data[5]].oam.priority = 0;
-        CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(taskId, 0);
-        BeginNormalPaletteFade(0xFFFFFFFF, 2, 16, 0, 0);
-        gTasks[taskId].func = Task_NewGameWelcomeScreenRun;*/
-            
+    {          
         PlayBGM(MUS_NEW_GAME_INTRO);
             mgba_printf(MGBA_LOG_DEBUG,"TopBarWindowPrintString(gText_Next, 0, 1);");
         TopBarWindowPrintString(gText_Next, 0, 1); //see pokefirered\src\menu.c
@@ -1867,8 +1832,7 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's sp
     AddBirchSpeechObjects(taskId);
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
     gTasks[taskId].tBG1HOFS = 0;
-    //gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch; //this is the original function, leaving this out for now
-    gTasks[taskId].func = Task_NewGameBirchSpeech_WhatIsYourName;
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch; //this is the original function, leaving this out for now
     gTasks[taskId].tPlayerSpriteId = 0xFF;
     gTasks[taskId].data[3] = 0xFF;
     gTasks[taskId].tTimer = 0xD8;
@@ -1887,8 +1851,16 @@ ask question
 press A
 show naming screen with Steven NPC sprite
 */
+    InitWindows(gNewGameBirchSpeechTextWindows);
+    LoadMainMenuWindowFrameTiles(0, 0xF3);
+    LoadMessageBoxGfx(0, 0xFC, 0xF0);
+    NewGameBirchSpeech_ShowDialogueWindow(0, 1);
+    PutWindowTilemap(0);
+    CopyWindowToVram(0, 2);
+    NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
     AddTextPrinterForMessage(1);
+
     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint;
 }
 
@@ -2695,7 +2667,7 @@ static void NewGameBirchSpeech_ShowGenderMenu(void)
 {
     DrawMainMenuWindowBorder(&gNewGameBirchSpeechTextWindows[1], 0xF3);
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    PrintMenuTable(1, 2, sMenuActions_Gender);
+    PrintMenuTable(1, 3, sMenuActions_Gender);
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(1, 2, 0);
     PutWindowTilemap(1);
     CopyWindowToVram(1, 3);
@@ -2711,11 +2683,18 @@ static void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
     const u8* name;
     u8 i;
 
-    if (gSaveBlock2Ptr->playerGender == MALE)
+    //A randomly generated number is passed to this function. If the number is even, the player will get a randomly assigned "male" name. If odd, the player will get a randomly assigned "female" name.
+
+    if (nameId % 2 == 0)
         name = gMalePresetNames[nameId];
     else
         name = gFemalePresetNames[nameId];
-    for (i = 0; i < 7; i++)
+
+    /*if (gSaveBlock2Ptr->playerGender == MALE)
+        name = gMalePresetNames[nameId];
+    else
+        name = gFemalePresetNames[nameId];
+    */for (i = 0; i < 7; i++)
         gSaveBlock2Ptr->playerName[i] = name[i];
     gSaveBlock2Ptr->playerName[7] = 0xFF;
 }
