@@ -1024,7 +1024,7 @@ s8 Menu_ProcessInputNoWrap(void)
     {
         if (!sMenu.APressMuted)
             PlaySE(SE_SELECT);
-        return sMenu.cursorPos;
+            return sMenu.cursorPos;
     }
     else if (JOY_NEW(B_BUTTON))
     {
