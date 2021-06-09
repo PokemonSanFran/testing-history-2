@@ -2074,12 +2074,19 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
     int gender = NewGameBirchSpeech_ProcessGenderMenuInput();
     int gender2;
 
-    PlaySE(SE_SELECT);
-    gSaveBlock2Ptr->playerGender = 0; //set gender to male no matter what
-    NewGameBirchSpeech_ClearGenderWindow(1,1);
-    gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
-
 /*    switch (gender)
+    {
+        default:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 0; //set gender to male no matter what
+            NewGameBirchSpeech_ClearGenderWindow(1,1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+
+    }*/
+
+
+    switch (gender)
     {
         case MALE:
             PlaySE(SE_SELECT);
@@ -2093,7 +2100,31 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
             break;
-    }*/
+        case 2:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 0;
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+        case 3:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 0;
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+        case 4:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 0;
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+        case 5:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 0;
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+    }
     gender2 = Menu_GetCursorPos();
     if (gender2 != gTasks[taskId].tPlayerGender)
     {
