@@ -53,12 +53,36 @@ ALIGNED(4) const u8 gText_NextBack[] = _("{A_BUTTON}NEXT {B_BUTTON}BACK"); // us
 ALIGNED(4) const u8 gText_PickNextCancel[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}NEXT {B_BUTTON}CANCEL");
 ALIGNED(4) const u8 gText_PickCancel[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}{B_BUTTON}CANCEL");
 ALIGNED(4) const u8 gText_AButtonExit[] = _("{A_BUTTON}EXIT");
-const u8 gText_BirchBody1[] = _("TEEN 1");
-const u8 gText_BirchBody2[] = _("TEEN 2");
-const u8 gText_BirchBody3[] = _("CHILD 1");
-const u8 gText_BirchBody4[] = _("CHILD 2");
-const u8 gText_BirchBody5[] = _("OLD 1");
-const u8 gText_BirchBody6[] = _("OLD 2");
+
+//menu options for customnizing a player's physical attributes
+const u8 gText_BirchBody1[] = _("Teen 1");
+const u8 gText_BirchBody2[] = _("Teen 2");
+const u8 gText_BirchBody3[] = _("Child 1");
+const u8 gText_BirchBody4[] = _("Child 2");
+const u8 gText_BirchBody5[] = _("Old 1");
+const u8 gText_BirchBody6[] = _("Old 2");
+
+const u8 gText_BirchCustom1[] = _("Hair");
+const u8 gText_BirchCustom2[] = _("Eyes");
+const u8 gText_BirchCustom3[] = _("Skin");
+
+const u8 gText_BirchCustomHair1[] = _("Black");
+const u8 gText_BirchCustomHair2[] = _("Blonde");
+const u8 gText_BirchCustomHair3[] = _("Red");
+const u8 gText_BirchCustomHair4[] = _("Gray");
+const u8 gText_BirchCustomHair5[] = _("Brown");
+
+const u8 gText_BirchCustomEyes1[] = _("Brown");
+const u8 gText_BirchCustomEyes2[] = _("Blue");
+const u8 gText_BirchCustomEyes3[] = _("Green");
+
+const u8 gText_BirchCustomSkin1[] = _("0%");
+const u8 gText_BirchCustomSkin2[] = _("20%");
+const u8 gText_BirchCustomSkin3[] = _("40%");
+const u8 gText_BirchCustomSkin4[] = _("60%");
+const u8 gText_BirchCustomSkin5[] = _("80%");
+const u8 gText_BirchCustomSkin6[] = _("100%");
+
 const u8 gText_DefaultNameStu[] = _("STU");
 const u8 gText_DefaultNameMilton[] = _("MILTON");
 const u8 gText_DefaultNameTom[] = _("TOM");

@@ -357,12 +357,32 @@ extern const u8 gText_ContinueMenuPlayer[];
 extern const u8 gText_ContinueMenuTime[];
 extern const u8 gText_ContinueMenuPokedex[];
 extern const u8 gText_ContinueMenuBadges[];
+
 extern const u8 gText_BirchBody1[];
 extern const u8 gText_BirchBody2[];
 extern const u8 gText_BirchBody3[];
 extern const u8 gText_BirchBody4[];
 extern const u8 gText_BirchBody5[];
 extern const u8 gText_BirchBody6[];
+
+extern const u8 gText_BirchCustom1[];
+extern const u8 gText_BirchCustom2[];
+extern const u8 gText_BirchCustom3[];
+extern const u8 gText_BirchCustomHair1[];
+extern const u8 gText_BirchCustomHair2[];
+extern const u8 gText_BirchCustomHair3[];
+extern const u8 gText_BirchCustomHair4[];
+extern const u8 gText_BirchCustomHair5[];
+extern const u8 gText_BirchCustomEyes1[];
+extern const u8 gText_BirchCustomEyes2[];
+extern const u8 gText_BirchCustomEyes3[];
+extern const u8 gText_BirchCustomSkin1[];
+extern const u8 gText_BirchCustomSkin2[];
+extern const u8 gText_BirchCustomSkin3[];
+extern const u8 gText_BirchCustomSkin4[];
+extern const u8 gText_BirchCustomSkin5[];
+extern const u8 gText_BirchCustomSkin6[];
+
 extern const u8 gText_DefaultNameStu[];
 extern const u8 gText_DefaultNameMilton[];
 extern const u8 gText_DefaultNameTom[];

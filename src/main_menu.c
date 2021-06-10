@@ -244,6 +244,10 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void);
 static void NewGameBirchSpeech_SetDefaultPlayerName(u8);
 static void Task_NewGameBirchSpeech_CreateNameYesNo(u8);
 static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8);
+static void Task_NewGameBirchSpeech_WaitToShowCustomizeMenu(u8);
+static void Task_NewGameBirchSpeech_ChooseParentCustomize(u8);
+static void NewGameBirchSpeech_ShowCustomizeMenu(void);
+static s8 NewGameBirchSpeech_ProcessCustomizeMenuInput(void);
 void CreateYesNoMenuParameterized(u8, u8, u16, u16, u8, u8);
 static void Task_NewGameBirchSpeech_SlidePlatformAway2(u8);
 static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8);
@@ -610,7 +614,7 @@ static const struct WindowTemplate gNewGameBirchSpeechTextWindows[] =
         .paletteNum = 15,
         .baseBlock = 1
     },
-    { //this conludes the gender menu. I've adjusted the height and tilemap top in order to fit more choices.
+    { //this is the custom body menu. I've adjusted the height and tilemap top in order to fit more choices.
         .bg = 0,
         .tilemapLeft = 3,
         .tilemapTop = 1,
@@ -627,6 +631,15 @@ static const struct WindowTemplate gNewGameBirchSpeechTextWindows[] =
         .height = 10,
         .paletteNum = 15,
         .baseBlock = 0x85
+    },
+    { //this is parentCustomize menu
+        .bg = 0,
+        .tilemapLeft = 3,
+        .tilemapTop = 5,
+        .width = 6,
+        .height = 5,
+        .paletteNum = 15,
+        .baseBlock = 0x6D
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -687,6 +700,12 @@ static const struct MenuAction sMenuActions_Gender[] = {
     {gText_BirchBody4, NULL},
     {gText_BirchBody5, NULL},
     {gText_BirchBody6, NULL},
+};
+
+static const struct MenuAction sMenuActions_ParentCustomize[] = {
+    {gText_BirchCustom1, NULL},
+    {gText_BirchCustom2, NULL},
+    {gText_BirchCustom3, NULL},
 };
 
 static const u8 *const gMalePresetNames[] = {
@@ -2224,13 +2243,95 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
             gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
             NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway2;
+            //gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway2;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowCustomizeMenu;
             break;
         case -1:
         case 1:
             PlaySE(SE_SELECT);
             gTasks[taskId].func = Task_NewGameBirchSpeech_BoyOrGirl;
     }
+}
+
+//making customization menus here
+
+static void Task_NewGameBirchSpeech_WaitToShowCustomizeMenu(u8 taskId)
+{
+    if (!RunTextPrintersAndIsPrinter0Active())
+    {
+        NewGameBirchSpeech_ShowCustomizeMenu();
+        gTasks[taskId].func = Task_NewGameBirchSpeech_ChooseParentCustomize;
+    }
+}
+
+static void Task_NewGameBirchSpeech_ChooseParentCustomize(u8 taskId)
+{
+    int gender = NewGameBirchSpeech_ProcessGenderMenuInput();
+    int gender2;
+
+    switch (gender)
+    {
+        case 0:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 0; 
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+        case 1:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 1;
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+        case 2:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 2;
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+        case 3:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 3;
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+        case 4:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 4;
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+        case 5:
+            PlaySE(SE_SELECT);
+            gSaveBlock2Ptr->playerGender = 5;
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+    }
+    gender2 = Menu_GetCursorPos();
+    if (gender2 != gTasks[taskId].tPlayerGender)
+    {
+        gTasks[taskId].tPlayerGender = gender2;
+        gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+        NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 0);
+        gTasks[taskId].func = Task_NewGameBirchSpeech_SlideOutOldGenderSprite;
+    }
+}
+//end customization menus
+
+static void NewGameBirchSpeech_ShowCustomizeMenu(void)
+{
+    DrawMainMenuWindowBorder(&gNewGameBirchSpeechTextWindows[3], 0xF3);
+    FillWindowPixelBuffer(1, PIXEL_FILL(1));
+    PrintMenuTable(2, ARRAY_COUNT(sMenuActions_ParentCustomize), sMenuActions_ParentCustomize);
+    InitMenuInUpperLeftCornerPlaySoundWhenAPressed(1, 3, 0);
+    PutWindowTilemap(1);
+    CopyWindowToVram(1, 3);
+}
+
+static s8 NewGameBirchSpeech_ProcessCustomizeMenuInput(void)
+{
+    return Menu_ProcessInputNoWrap();
 }
 
 static void Task_NewGameBirchSpeech_SlidePlatformAway2(u8 taskId)
@@ -2784,7 +2885,7 @@ static void NewGameBirchSpeech_ShowGenderMenu(void)
 {
     DrawMainMenuWindowBorder(&gNewGameBirchSpeechTextWindows[1], 0xF3);
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    PrintMenuTable(1, 6, sMenuActions_Gender);
+    PrintMenuTable(1, ARRAY_COUNT(sMenuActions_Gender), sMenuActions_Gender);
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(1, 6, 0);
     PutWindowTilemap(1);
     CopyWindowToVram(1, 3);
