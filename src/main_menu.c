@@ -2088,39 +2088,39 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
 
     switch (gender)
     {
-        case MALE:
+        case 0:
             PlaySE(SE_SELECT);
-            gSaveBlock2Ptr->playerGender = gender;
+            gSaveBlock2Ptr->playerGender = 0; 
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
             break;
-        case FEMALE:
+        case 1:
             PlaySE(SE_SELECT);
-            gSaveBlock2Ptr->playerGender = gender;
+            gSaveBlock2Ptr->playerGender = 1;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
             break;
         case 2:
             PlaySE(SE_SELECT);
-            gSaveBlock2Ptr->playerGender = 0;
+            gSaveBlock2Ptr->playerGender = 2;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
             break;
         case 3:
             PlaySE(SE_SELECT);
-            gSaveBlock2Ptr->playerGender = 0;
+            gSaveBlock2Ptr->playerGender = 3;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
             break;
         case 4:
             PlaySE(SE_SELECT);
-            gSaveBlock2Ptr->playerGender = 0;
+            gSaveBlock2Ptr->playerGender = 4;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
             break;
         case 5:
             PlaySE(SE_SELECT);
-            gSaveBlock2Ptr->playerGender = 0;
+            gSaveBlock2Ptr->playerGender = 5;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
             break;
@@ -2234,6 +2234,7 @@ static void Task_NewGameBirchSpeech_StartNamingScreen(u8 taskId)
         NewGameBirchSpeech_SetDefaultPlayerName(Random() % 20);
         DestroyTask(taskId);
         DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_NewGameBirchSpeech_ReturnFromNamingScreen);
+  
     }
 }
 

@@ -1,3 +1,8 @@
+JUN 9
+writing a new array in field_player_avatar to index all the platable sprites
+then writing a function in event_objects.h to look in that function
+then calling that function on line 1408 of naming.screen.c to grab the right icon
+
 JUN 8
 working on Birch speech. need to figure out how to add more options to gender menu in order to pick a body.
 

@@ -28,6 +28,11 @@
 #include "constants/event_objects.h"
 #include "constants/rgb.h"
 
+//https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
+#include "printf.h"
+#include "mgba.h"
+#include "../gflib/string_util.h" // for ConvertToAscii()
+
 enum {
     INPUT_NONE,
     INPUT_DPAD_UP,
@@ -1389,7 +1394,7 @@ static void CreateInputTargetIcon(void)
 {
     sIconFunctions[sNamingScreen->template->iconFunction]();
 }
-
+37 
 static void NamingScreen_NoIcon(void)
 {
 
@@ -1400,8 +1405,16 @@ static void NamingScreen_CreatePlayerIcon(void)
     u8 rivalGfxId;
     u8 spriteId;
 
-    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(0, sNamingScreen->monSpecies);
+    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(0, sNamingScreen->monSpecies); //from the original game, commented out, need to write a new function for associating gender (monspecies) with sprite
+
     spriteId = AddPseudoObjectEvent(rivalGfxId, SpriteCallbackDummy, 56, 37, 0);
+/*    13 is teen 1
+    14 is teen 2
+    11 is child 1
+    12 is child 2
+    37 is old 1
+    40 is old 2*/
+    spriteId = AddPseudoObjectEvent(21, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], 4);
 }
