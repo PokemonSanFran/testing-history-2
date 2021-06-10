@@ -64,5 +64,6 @@ bool32 sub_808D1E8(void);
 void SetPlayerInvisibility(bool8 invisible);
 u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y);
 void StartFishing(u8 rod);
+u8 GetPlayerAvatarGraphicsByGender(u8); //custom PSF function for showing the correct avatar on naming screen based on player's body choice
 
 #endif // GUARD_FIELD_PLAYER_AVATAR_H

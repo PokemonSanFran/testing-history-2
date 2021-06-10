@@ -1622,8 +1622,6 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
         gTasks[taskId].data[3] = 32;
         gTasks[taskId].func = Task_NewGameWelcomeScreenTextInit;
     }
-
-
 }
 
 static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome screen
@@ -1827,7 +1825,7 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's sp
     AddBirchSpeechObjects(taskId);
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
     gTasks[taskId].tBG1HOFS = 0;
-    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch; //this is the original function, leaving this out for now
+    gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch;
     gTasks[taskId].tPlayerSpriteId = 0xFF;
     gTasks[taskId].data[3] = 0xFF;
     gTasks[taskId].tTimer = 0xD8;
@@ -1890,7 +1888,7 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
         if (gTasks[taskId].tTimer)
         {
             gTasks[taskId].tTimer--;
-        }
+        }  
         else
         {
             InitWindows(gNewGameBirchSpeechTextWindows);
@@ -1900,9 +1898,13 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
             PutWindowTilemap(0);
             CopyWindowToVram(0, 2);
             NewGameBirchSpeech_ClearWindow(0);
-            StringExpandPlaceholders(gStringVar4, gText_Birch_Welcome);
+
+            //commenting out this block so we never load Birch's speech and get right to choosing a body
+
+            /*StringExpandPlaceholders(gStringVar4, gText_Birch_Welcome);
             AddTextPrinterForMessage(1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_ThisIsAPokemon;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_ThisIsAPokemon;*/
+        gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway;
         }
     }
 }
@@ -2034,8 +2036,7 @@ static void Task_NewGameBirchSpeech_StartPlayerFadeIn(u8 taskId)
             gSprites[spriteId].invisible = FALSE;
             gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             gTasks[taskId].tPlayerSpriteId = spriteId;
-            //this is where tPlayerGender is first set to male. Where is it set to female?
-            gTasks[taskId].tPlayerGender = MALE; //changed from MALE to TEEN1
+            gTasks[taskId].tPlayerGender = MALE; 
             NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
             NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForPlayerFadeIn;
@@ -2073,18 +2074,6 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
 {
     int gender = NewGameBirchSpeech_ProcessGenderMenuInput();
     int gender2;
-
-/*    switch (gender)
-    {
-        default:
-            PlaySE(SE_SELECT);
-            gSaveBlock2Ptr->playerGender = 0; //set gender to male no matter what
-            NewGameBirchSpeech_ClearGenderWindow(1,1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
-            break;
-
-    }*/
-
 
     switch (gender)
     {
@@ -2138,7 +2127,6 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
 static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8 taskId)
 {
     u8 spriteId = gTasks[taskId].tPlayerSpriteId;
-    //mgba_printf(MGBA_LOG_DEBUG,"it's time: %s. spriteId is %ld", __func__, spriteId);
     if (gTasks[taskId].tIsDoneFadingSprites == 0)
     {
         gSprites[spriteId].pos1.x += 4;
@@ -2146,10 +2134,6 @@ static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8 taskId)
     else
     {
         gSprites[spriteId].invisible = TRUE;
-/*        if (gTasks[taskId].tPlayerGender != FEMALE)
-            spriteId = gTasks[taskId].tTeen1SpriteId;
-        else
-            spriteId = gTasks[taskId].tTeen2SpriteId;*/
 
       switch (gTasks[taskId].tPlayerGender)
         {
@@ -2348,10 +2332,34 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
             gTasks[taskId].tTimer--;
             return;
         }
+/*      //original function to determine the sprite of the player based on their gender
         if (gSaveBlock2Ptr->playerGender != MALE)
             spriteId = gTasks[taskId].tTeen2SpriteId;
         else
-            spriteId = gTasks[taskId].tTeen1SpriteId;
+            spriteId = gTasks[taskId].tTeen1SpriteId;*/
+
+        //new switch statement to accomodate playerchoice
+        switch(gSaveBlock2Ptr->playerGender)
+        {
+            case 0:
+                spriteId = gTasks[taskId].tTeen1SpriteId;
+                break;
+            case 1:
+                spriteId = gTasks[taskId].tTeen2SpriteId;
+                break;
+            case 2:
+                spriteId = gTasks[taskId].tChild1SpriteId;
+                break;
+            case 3:
+                spriteId = gTasks[taskId].tChild2SpriteId;
+                break;
+            case 4:
+                spriteId = gTasks[taskId].tOld1SpriteId;
+                break;
+            case 5:
+                spriteId = gTasks[taskId].tOld2SpriteId;
+                break;
+        }
         gSprites[spriteId].pos1.x = 120;
         gSprites[spriteId].pos1.y = 60;
         gSprites[spriteId].invisible = FALSE;
@@ -2382,6 +2390,8 @@ static void Task_NewGameBirchSpeech_ShrinkPlayer(u8 taskId)
             gSprites[spriteId].callback = SpriteCB_MovePlayerDownWhileShrinking;
             BeginNormalPaletteFade(0x0000FFFF, 0, 0, 16, RGB_BLACK);
             FadeOutBGM(4);
+            gSaveBlock2Ptr->playerGender = MALE;
+            //make sure player gender is always male before starting. when this value is not binary, player start location changes for some reason
             gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForPlayerShrink;
         }
     }
@@ -2459,7 +2469,10 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     FreeAllSpritePalettes();
     ResetAllPicSprites();
     AddBirchSpeechObjects(taskId);
-    if (gSaveBlock2Ptr->playerGender != MALE)
+/*   
+    //original function showing the male or female sprite based on what you picked before the naming screen
+
+ if (gSaveBlock2Ptr->playerGender != MALE)
     {
         gTasks[taskId].tPlayerGender = FEMALE;
         spriteId = gTasks[taskId].tTeen2SpriteId;
@@ -2468,7 +2481,29 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     {
         gTasks[taskId].tPlayerGender = MALE;
         spriteId = gTasks[taskId].tTeen1SpriteId;
-    }
+    }*/
+          switch (gSaveBlock2Ptr->playerGender)
+        {
+            case 0:
+                spriteId = gTasks[taskId].tTeen1SpriteId;
+                break;
+            case 1:
+                spriteId = gTasks[taskId].tTeen2SpriteId;
+                break;
+            case 2:
+                spriteId = gTasks[taskId].tChild1SpriteId;
+                break;
+            case 3:
+                spriteId = gTasks[taskId].tChild2SpriteId;
+                break;
+            case 4:
+                spriteId = gTasks[taskId].tOld1SpriteId;
+                break;
+            case 5:
+                spriteId = gTasks[taskId].tOld2SpriteId;
+                break;
+        }
+
     gSprites[spriteId].pos1.x = 180;
     gSprites[spriteId].pos1.y = 60;
     gSprites[spriteId].invisible = FALSE;
@@ -2623,8 +2658,6 @@ static void NewGameBirchSpeech_StartFadeOutTarget1InTarget2(u8 taskId, u8 delay)
 //START FADE IN TARGET 2
 {
     u8 taskId2;
-
-mgba_printf(MGBA_LOG_DEBUG,"we are fading out 1 and fading in 2");
 
     SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT1_OBJ);
     SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(16, 0));

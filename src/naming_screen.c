@@ -1394,7 +1394,7 @@ static void CreateInputTargetIcon(void)
 {
     sIconFunctions[sNamingScreen->template->iconFunction]();
 }
-37 
+
 static void NamingScreen_NoIcon(void)
 {
 
@@ -1405,16 +1405,12 @@ static void NamingScreen_CreatePlayerIcon(void)
     u8 rivalGfxId;
     u8 spriteId;
 
-    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(0, sNamingScreen->monSpecies); //from the original game, commented out, need to write a new function for associating gender (monspecies) with sprite
+    //rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(0, sNamingScreen->monSpecies); //from the original game, commented out, need to write a new function for associating gender (monspecies) with sprite
+
+    rivalGfxId = GetPlayerAvatarGraphicsByGender(sNamingScreen->monSpecies);
+    //rivalGfxId = 29;
 
     spriteId = AddPseudoObjectEvent(rivalGfxId, SpriteCallbackDummy, 56, 37, 0);
-/*    13 is teen 1
-    14 is teen 2
-    11 is child 1
-    12 is child 2
-    37 is old 1
-    40 is old 2*/
-    spriteId = AddPseudoObjectEvent(21, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], 4);
 }

@@ -243,6 +243,28 @@ static const u8 sRivalAvatarGfxIds[][2] =
     {OBJ_EVENT_GFX_BRENDAN_WATERING,         OBJ_EVENT_GFX_MAY_WATERING}
 };
 
+
+//Takes gender from main_menu and passes it in order to find the right person icon
+/*static const u8 sPlayerAvatarGfxIds[5] =
+{
+    {OBJ_EVENT_GFX_BOY_3},
+    {OBJ_EVENT_GFX_GIRL_3},
+    {OBJ_EVENT_GFX_LITTLE_BOY},
+    {OBJ_EVENT_GFX_LITTLE_GIRL},
+    {OBJ_EVENT_GFX_PSYCHIC_M},
+    {OBJ_EVENT_GFX_HEX_MANIAC}
+};*/
+
+static const u8 sPlayerChoiceAvatarGfxIds[6] =
+{
+    OBJ_EVENT_GFX_BOY_3,
+    OBJ_EVENT_GFX_GIRL_3,
+    OBJ_EVENT_GFX_LITTLE_BOY,
+    OBJ_EVENT_GFX_LITTLE_GIRL,
+    OBJ_EVENT_GFX_PSYCHIC_M,
+    OBJ_EVENT_GFX_HEX_MANIAC,
+};
+
 static const u8 sPlayerAvatarGfxIds[][2] =
 {
     {OBJ_EVENT_GFX_BRENDAN_NORMAL,     OBJ_EVENT_GFX_MAY_NORMAL},
@@ -1219,9 +1241,17 @@ void sub_808BCF4(void)
     }
 }
 
+
 u8 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
     return sRivalAvatarGfxIds[state][gender];
+//the original array where May and Brendan's sprites were located
+}
+
+//custom function for PSF for grabbing PlayerChoiceAvatars
+u8 GetPlayerAvatarGraphicsByGender(u8 gender) 
+{
+    return sPlayerChoiceAvatarGfxIds[gender];
 }
 
 u8 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)

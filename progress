@@ -1,3 +1,6 @@
+JUN 10
+Task_NewGameBirchSpeech_SlidePlatformAway is where i'm starting from on line 1907 of main_menu.c. How do I make it so that the platform is insivible until after the platform slides to the left?
+
 JUN 9
 writing a new array in field_player_avatar to index all the platable sprites
 then writing a function in event_objects.h to look in that function
