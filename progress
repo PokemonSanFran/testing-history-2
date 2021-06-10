@@ -1,4 +1,9 @@
 JUN 10
+Need to write a new function for asking about hair, eye and skin colors
+
+should probably live on line 2234 and just copy the gender menu for now
+
+JUN 10
 Task_NewGameBirchSpeech_SlidePlatformAway is where i'm starting from on line 1907 of main_menu.c. How do I make it so that the platform is insivible until after the platform slides to the left?
 
 JUN 9

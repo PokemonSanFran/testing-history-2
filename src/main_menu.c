@@ -1674,7 +1674,6 @@ static void Task_NewGameWelcomeScreenRun(u8 taskId)
     switch (gMain.state)
     {
     case 0:
-    mgba_printf(MGBA_LOG_DEBUG, "Called function is: %s",__func__);
         if (!gPaletteFade.active)
         {
             SetGpuReg(REG_OFFSET_WIN0H, 0x00F0);
@@ -1792,30 +1791,8 @@ static void Task_AdventureScreenClean(u8 taskId) //this is cleaning up everythin
 static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's speech, sets up everything
 {
 
- /*   //begin FRLG import
-    s16 * data = gTasks[taskId].data;
-    u32 size = 0;
-    
-    if (data[3] != 0)
-        data[3]--;
-    else
-    {
-
-    //end FRLG import*/
-
-    SetGpuReg(REG_OFFSET_DISPCNT, 0);
-    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
-    InitBgFromTemplate(&sBirchBgTemplate);
-    SetGpuReg(REG_OFFSET_WIN0H, 0);
-    SetGpuReg(REG_OFFSET_WIN0V, 0);
-    SetGpuReg(REG_OFFSET_WININ, 0);
-    SetGpuReg(REG_OFFSET_WINOUT, 0);
-    SetGpuReg(REG_OFFSET_BLDCNT, 0);
-    SetGpuReg(REG_OFFSET_BLDALPHA, 0);
-    SetGpuReg(REG_OFFSET_BLDY, 0);
-
     LZ77UnCompVram(sBirchSpeechShadowGfx, (void*)VRAM);
-    LZ77UnCompVram(sBirchSpeechBgMap, (void*)(BG_SCREEN_ADDR(7)));
+    LZ77UnCompVram(sBirchSpeechBgMap, (void*)(BG_SCREEN_ADDR(7))); //background and platform do not load when this is commented out
     LoadPalette(sBirchSpeechBgPals, 0, 64);
     LoadPalette(sBirchSpeechPlatformBlackPal, 1, 16);
     ScanlineEffect_Stop();
@@ -1828,7 +1805,10 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's sp
     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch;
     gTasks[taskId].tPlayerSpriteId = 0xFF;
     gTasks[taskId].data[3] = 0xFF;
-    gTasks[taskId].tTimer = 0xD8;
+    //gTasks[taskId].tTimer = 0xD8; commented out to see if we can speed up the intro a little
+
+    gTasks[taskId].tTimer = 0;
+
 
     PlayBGM(MUS_ROUTE122);
     ShowBg(0);
@@ -1838,12 +1818,6 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId) //This initalizes Birch's sp
 
 static void Task_NewGameBirchSpeech_WhatIsYourName(u8 taskId)
 {
-/*
-display text box
-ask question
-press A
-show naming screen with Steven NPC sprite
-*/
     InitWindows(gNewGameBirchSpeechTextWindows);
     LoadMainMenuWindowFrameTiles(0, 0xF3);
     LoadMessageBoxGfx(0, 0xFC, 0xF0);
@@ -1874,8 +1848,9 @@ static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
         gSprites[spriteId].invisible = TRUE; //changed to TRUE to make Birch invisible.
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 10);
-        NewGameBirchSpeech_StartFadePlatformOut(taskId, 20);
+        //NewGameBirchSpeech_StartFadePlatformOut(taskId, 20); //when this is commented out, the game will evantually start
         gTasks[taskId].tTimer = 80;
+
         gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome;
     }
 }
@@ -2000,10 +1975,11 @@ static void Task_NewGameBirchSpeech_StartBirchLotadPlatformFade(u8 taskId)
         NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
         gTasks[taskId].tTimer = 64;
         gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway;
+
     }
 }
 
-static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)
+static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)//when this does run, the platform does not move to the right before spawning the player avatar
 {
     if (gTasks[taskId].tBG1HOFS != -60)
     {
