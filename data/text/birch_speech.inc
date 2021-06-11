@@ -3,7 +3,7 @@ gText_Birch_Welcome:: @ 82C897B
 	.string "$"
 
 gText_Birch_Pokemon:: @ 82C89FB
-	.string "This is a “POKéMON.”\n"
+	.string "This is a “Pokémon.”\n"
 	.string "$"
 
 gText_Birch_MainSpeech:: @ 82C8A1F

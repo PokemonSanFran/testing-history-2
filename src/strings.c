@@ -128,13 +128,8 @@ const u8 gText_DefaultNameLillie[] = _("Lillie");
 const u8 gText_DefaultNameTerra[] = _("Terra");
 const u8 gText_DefaultNameLucy[] = _("Lucy");
 const u8 gText_DefaultNameHalie[] = _("Halie");
-<<<<<<< HEAD
-const u8 gText_ThisIsAPokemon[] = _("This is what we call a “POKéMON.”{PAUSE 96}\p");
-const u8 gText_5MarksPokemon[] = _("????? POKéMON");
-=======
 const u8 gText_ThisIsAPokemon[] = _("This is what we call a “Pokémon.”{PAUSE 96}\p");
 const u8 gText_5MarksPokemon[] = _("????? Pokémon");
->>>>>>> 1b7b997195934a1908a800055a3207496bdab362
 const u8 gText_UnkHeight[] = _("{CLEAR_TO 0x0C}??'??”");
 const u8 gText_UnkWeight[] = _("????.? lbs.");
 const u8 gText_EmptyPkmnCategory[] = _("                       Pokémon"); // Unused
@@ -1832,31 +1827,6 @@ const u8 gText_ProfBirchMatchCallDesc[] = _("{PKMN} Prof.");
 const u8 gText_CommStandbyAwaitingOtherPlayer[] = _("Communication standby…\nAwaiting another player to choose.");
 const u8 gText_BattleWasRefused[] = _("The battle was refused.{PAUSE 60}");
 const u8 gText_RefusedBattle[] = _("Refused the battle.{PAUSE 60}");
-<<<<<<< HEAD
-const u8 gText_NoWeather[] = _("NO WEATHER"); // Below are unused debug names for weather types
-const u8 gText_Sunny[] = _("SUNNY"); // Unused
-const u8 gText_Sunny2[] = _("SUNNY2"); // Unused
-const u8 gText_Rain[] = _("RAIN"); // Unused
-const u8 gText_Snow[] = _("SNOW"); // Unused
-const u8 gText_Lightning[] = _("LIGHTNING"); // Unused
-const u8 gText_Fog[] = _("FOG"); // Unused
-const u8 gText_VolcanoAsh[] = _("VOLCANO ASH"); // Unused
-const u8 gText_Sandstorm[] = _("SANDSTORM"); // Unused
-const u8 gText_Fog2[] = _("FOG2"); // Unused
-const u8 gText_Seafloor[] = _("SEAFLOOR"); // Unused
-const u8 gText_Cloudy[] = _("CLOUDY"); // Unused
-const u8 gText_Sunny3[] = _("SUNNY3"); // Unused
-const u8 gText_HeavyRain[] = _("HEAVY RAIN"); // Unused
-const u8 gText_Seafloor2[] = _("SEAFLOOR2"); // Unused
-const u8 gText_DelAll[] = _("DEL. ALL");
-const u8 gText_Cancel5[] = _("CANCEL");
-const u8 gText_Ok2[] = _("OK");
-const u8 gText_Quiz[] = _("QUIZ");
-const u8 gText_Answer[] = _("ANSWER");
-const u8 gText_PokeBalls[] = _("POKé BALLS");
-const u8 gText_Berry[] = _("BERRY");
-const u8 gText_Berries[] = _("BERRIES");
-=======
 const u8 gText_NoWeather[] = _("No Weather"); // Below are unused debug names for weather types
 const u8 gText_Sunny[] = _("Sunny"); // Unused
 const u8 gText_Sunny2[] = _("Sunny2"); // Unused
@@ -1880,4 +1850,3 @@ const u8 gText_Answer[] = _("Answer");
 const u8 gText_PokeBalls[] = _("Poké Balls");
 const u8 gText_Berry[] = _("Berry");
 const u8 gText_Berries[] = _("Berries");
->>>>>>> 1b7b997195934a1908a800055a3207496bdab362
