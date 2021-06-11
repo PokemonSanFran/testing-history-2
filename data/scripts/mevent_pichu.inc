@@ -30,7 +30,7 @@ SurfPichu_FullParty: @ 8674D73
 
 SurfPichu_GiveEgg: @ 8674D7E
 	giveegg SPECIES_PICHU
-	setmonobedient VAR_EVENT_PICHU_SLOT
+	setmoneventlegal VAR_EVENT_PICHU_SLOT
 	setmonmetlocation VAR_EVENT_PICHU_SLOT, METLOC_FATEFUL_ENCOUNTER
 	compare VAR_EVENT_PICHU_SLOT, 1
 	vgoto_if_eq SurfPichu_Slot1
@@ -65,14 +65,14 @@ SurfPichu_Slot5: @ 8674DD8
 	return
 
 sText_MysteryGiftEgg:
-	.string "Thank you for using the MYSTERY\n"
-	.string "GIFT System.\p"
-	.string "From the POKéMON CENTER we\n"
-	.string "have a gift--a POKéMON EGG!\p"
+	.string "Thank you for using the Mystery\n"
+	.string "Gift System.\p"
+	.string "From the Pokémon Center we\n"
+	.string "have a gift--a Pokémon Egg!\p"
 	.string "Please raise it with love and\n"
 	.string "kindness.$"
 
 sText_FullParty:
 	.string "Oh, your party appears to be full.\p"
 	.string "Please come see me after storing\n"
-	.string "a POKéMON on a PC.$"
+	.string "a Pokémon on a PC.$"

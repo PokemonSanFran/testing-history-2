@@ -113,7 +113,7 @@ FallarborTown_BattleTentLobby_EventScript_Attendant:: @ 8200001
 FallarborTown_BattleTentLobby_EventScript_AskEnterChallenge:: @ 8200021
 	message FallarborTown_BattleTentLobby_Text_TakeChallenge
 	waitmessage
-	multichoice 17, 6, MULTI_CHALLENGEINFO, 0
+	multichoice 17, 6, MULTI_CHALLENGEINFO, FALSE
 	switch VAR_RESULT
 	case 0, FallarborTown_BattleTentLobby_EventScript_TryEnterChallenge
 	case 1, FallarborTown_BattleTentLobby_EventScript_ExplainChallenge
@@ -266,7 +266,7 @@ FallarborTown_BattleTentLobby_EventScript_RulesBoard:: @ 820024F
 FallarborTown_BattleTentLobby_EventScript_ReadRulesBoard:: @ 820025E
 	message BattleFrontier_BattleArenaLobby_Text_ReadWhichHeading
 	waitmessage
-	multichoice 17, 0, MULTI_FALLARBOR_TENT_RULES, 0
+	multichoice 17, 0, MULTI_FALLARBOR_TENT_RULES, FALSE
 	switch VAR_RESULT
 	case 0, FallarborTown_BattleTentLobby_EventScript_RulesLevel
 	case 1, FallarborTown_BattleTentLobby_EventScript_RulesBattle
@@ -314,13 +314,13 @@ FallarborTown_BattleTentLobby_Text_MakeThinkImJustKid: @ 8200304
 	.string "the title!$"
 
 FallarborTown_BattleTentLobby_Text_FallarborTentMyFavorite: @ 8200382
-	.string "You know how BATTLE TENTS offer\n"
+	.string "You know how Battle Tents offer\n"
 	.string "different events in different towns?\p"
-	.string "My favorite is definitely the BATTLE\n"
-	.string "TENT in FALLARBOR TOWN.\p"
-	.string "I think it's fantastic how TRAINERS\n"
+	.string "My favorite is definitely the Battle\n"
+	.string "Tent in Fallarbor Town.\p"
+	.string "I think it's fantastic how Trainers\n"
 	.string "try to win with all their faith in\l"
-	.string "their POKéMON.$"
+	.string "their Pokémon.$"
 
 FallarborTown_BattleTentLobby_Text_CameToCampOut: @ 820045A
 	.string "I heard something about some tent,\n"
@@ -331,8 +331,8 @@ FallarborTown_BattleTentLobby_Text_CameToCampOut: @ 820045A
 	.string "my hand at battling!$"
 
 FallarborTown_BattleTentLobby_Text_ScottLookingForSomeone: @ 8200501
-	.string "SCOTT: Hi, {PLAYER}{KUN}!\n"
-	.string "So you came out to this BATTLE TENT!\p"
+	.string "Scott: Hi, {PLAYER}{KUN}!\n"
+	.string "So you came out to this Battle Tent!\p"
 	.string "The people in these parts tend to be\n"
 	.string "easygoing and laid-back.\p"
 	.string "But, you see, what I'm looking for are\n"
@@ -340,13 +340,13 @@ FallarborTown_BattleTentLobby_Text_ScottLookingForSomeone: @ 8200501
 	.string "How should I say this?\p"
 	.string "Someone bursting with the desire\n"
 	.string "and the drive to win.\p"
-	.string "If there were a TRAINER like that,\n"
+	.string "If there were a Trainer like that,\n"
 	.string "I'd immediately…\p"
 	.string "Whoops! Never mind!\n"
 	.string "Keep working at it!$"
 
 FallarborTown_BattleTentLobby_Text_ScottMakeChallenge: @ 8200653
-	.string "SCOTT: Instead of wasting your\n"
+	.string "Scott: Instead of wasting your\n"
 	.string "time with the likes of me, why not\l"
 	.string "make a challenge?$"
 

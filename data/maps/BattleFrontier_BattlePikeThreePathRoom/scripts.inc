@@ -143,7 +143,7 @@ BattleFrontier_BattlePikeThreePathRoom_EventScript_AskSaveChallenge:: @ 825CA2A
 BattleFrontier_BattlePikeThreePathRoom_EventScript_AskRetireChallenge:: @ 825CA5A
 	message BattleFrontier_BattlePikeThreePathRoom_Text_RetireFromChallenge
 	waitmessage
-	multichoicedefault 20, 8, MULTI_YESNO, 1, 0
+	multichoicedefault 20, 8, MULTI_YESNO, 1, FALSE
 	switch VAR_RESULT
 	case 0, BattleFrontier_BattlePike_EventScript_Retire
 	release
@@ -345,10 +345,10 @@ BattleFrontier_BattlePikeThreePathRoom_Text_SomethingAboutLeftPath: @ 825CF64
 
 BattleFrontier_BattlePikeThreePathRoom_Text_AromaOfPokemon: @ 825CFA3
 	.string "It seems to have the distinct aroma\n"
-	.string "of POKéMON wafting around it…$"
+	.string "of Pokémon wafting around it…$"
 
 BattleFrontier_BattlePikeThreePathRoom_Text_PresenceOfPeople: @ 825CFE5
-	.string "Is it… A TRAINER?\n"
+	.string "Is it… A Trainer?\n"
 	.string "I sense the presence of people…$"
 
 BattleFrontier_BattlePikeThreePathRoom_Text_HeardWhispering: @ 825D017

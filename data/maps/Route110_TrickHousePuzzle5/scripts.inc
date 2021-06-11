@@ -334,7 +334,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll5Activate:: @ 826CEF2
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll1Quiz1:: @ 826CF45
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll1Quiz1, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL1_Q1, 1
+	multichoice 0, 0, MULTI_MECHADOLL1_Q1, TRUE
 	switch VAR_RESULT
 	case 2, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -342,7 +342,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll1Quiz1:: @ 826CF45
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll1Quiz2:: @ 826CF68
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll1Quiz2, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL1_Q2, 1
+	multichoice 0, 0, MULTI_MECHADOLL1_Q2, TRUE
 	switch VAR_RESULT
 	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -350,7 +350,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll1Quiz2:: @ 826CF68
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll1Quiz3:: @ 826CF8B
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll1Quiz3, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL1_Q3, 1
+	multichoice 0, 0, MULTI_MECHADOLL1_Q3, TRUE
 	switch VAR_RESULT
 	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -358,7 +358,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll1Quiz3:: @ 826CF8B
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz1:: @ 826CFAE
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL2_Q1, 1
+	multichoice 0, 0, MULTI_MECHADOLL2_Q1, TRUE
 	switch VAR_RESULT
 	case 1, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -366,7 +366,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz1:: @ 826CFAE
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz2:: @ 826CFD1
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL2_Q2, 1
+	multichoice 0, 0, MULTI_MECHADOLL2_Q2, TRUE
 	switch VAR_RESULT
 	case 2, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -374,7 +374,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz2:: @ 826CFD1
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz3:: @ 826CFF4
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz3, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL2_Q3, 1
+	multichoice 0, 0, MULTI_MECHADOLL2_Q3, TRUE
 	switch VAR_RESULT
 	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -382,7 +382,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz3:: @ 826CFF4
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll3Quiz1:: @ 826D017
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll3Quiz1, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL3_Q1, 1
+	multichoice 0, 0, MULTI_MECHADOLL3_Q1, TRUE
 	switch VAR_RESULT
 	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -390,7 +390,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll3Quiz1:: @ 826D017
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll3Quiz2:: @ 826D03A
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll3Quiz2, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL3_Q2, 1
+	multichoice 0, 0, MULTI_MECHADOLL3_Q2, TRUE
 	switch VAR_RESULT
 	case 2, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -398,7 +398,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll3Quiz2:: @ 826D03A
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll3Quiz3:: @ 826D05D
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll3Quiz3, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL3_Q3, 1
+	multichoice 0, 0, MULTI_MECHADOLL3_Q3, TRUE
 	switch VAR_RESULT
 	case 1, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -406,7 +406,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll3Quiz3:: @ 826D05D
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll4Quiz1:: @ 826D080
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll4Quiz1, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL4_Q1, 1
+	multichoice 0, 0, MULTI_MECHADOLL4_Q1, TRUE
 	switch VAR_RESULT
 	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -414,7 +414,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll4Quiz1:: @ 826D080
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll4Quiz2:: @ 826D0A3
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll4Quiz2, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL4_Q2, 1
+	multichoice 0, 0, MULTI_MECHADOLL4_Q2, TRUE
 	switch VAR_RESULT
 	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -422,7 +422,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll4Quiz2:: @ 826D0A3
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll4Quiz3:: @ 826D0C6
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll4Quiz3, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL4_Q3, 1
+	multichoice 0, 0, MULTI_MECHADOLL4_Q3, TRUE
 	switch VAR_RESULT
 	case 1, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -430,7 +430,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll4Quiz3:: @ 826D0C6
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll5Quiz1:: @ 826D0E9
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll5Quiz1, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL5_Q1, 1
+	multichoice 0, 0, MULTI_MECHADOLL5_Q1, TRUE
 	switch VAR_RESULT
 	case 1, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -438,7 +438,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll5Quiz1:: @ 826D0E9
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll5Quiz2:: @ 826D10C
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll5Quiz2, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL5_Q2, 1
+	multichoice 0, 0, MULTI_MECHADOLL5_Q2, TRUE
 	switch VAR_RESULT
 	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -446,7 +446,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll5Quiz2:: @ 826D10C
 
 Route110_TrickHousePuzzle5_EventScript_Mechadoll5Quiz3:: @ 826D12F
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll5Quiz3, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_MECHADOLL5_Q3, 1
+	multichoice 0, 0, MULTI_MECHADOLL5_Q3, TRUE
 	switch VAR_RESULT
 	case 2, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
@@ -977,125 +977,125 @@ Route110_TrickHousePuzzle5_Movement_MechadollShake: @ 826D632
 Route110_TrickHousePuzzle5_Text_WroteSecretCodeLockOpened: @ 826D660
 	.string "{PLAYER} wrote down the secret code\n"
 	.string "on the door.\p"
-	.string "“TRICK MASTER is a genius.”\n"
+	.string "“Trick Master is a genius.”\n"
 	.string "… … … … … … … …\p"
 	.string "The lock clicked open!$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll1Intro: @ 826D6CE
-	.string "CLICKETY-CLACK…\n"
-	.string "MECHADOLL 1 AM I!\p"
-	.string "IF YOU ANSWER QUIZZES CORRECTLY,\n"
-	.string "THEN YOU WILL GO TO MECHADOLL 5.\l"
-	.string "THEN YOU CAN OBTAIN THE SECRET CODE.$"
+	.string "Clickety-Clack…\n"
+	.string "Mechadoll 1 Am I!\p"
+	.string "If You Answer Quizzes Correctly,\n"
+	.string "Then You Will Go To Mechadoll 5.\l"
+	.string "Then You Can Obtain The Secret Code.$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll1Quiz1: @ 826D757
-	.string "MECHADOLL 1 QUIZ.\p"
-	.string "One of these POKéMON is not found\n"
-	.string "on ROUTE 110. Which one is it?$"
+	.string "Mechadoll 1 Quiz.\p"
+	.string "One of these Pokémon is not found\n"
+	.string "on Route 110. Which one is it?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll1Quiz2: @ 826D7AA
-	.string "MECHADOLL 1 QUIZ.\p"
-	.string "One of these POKéMON is not of the\n"
-	.string "WATER type. Which one is it?$"
+	.string "Mechadoll 1 Quiz.\p"
+	.string "One of these Pokémon is not of the\n"
+	.string "Water type. Which one is it?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll1Quiz3: @ 826D7FC
-	.string "MECHADOLL 1 QUIZ.\p"
-	.string "One of these POKéMON does not use\n"
-	.string "LEECH LIFE. Which one is it?$"
+	.string "Mechadoll 1 Quiz.\p"
+	.string "One of these Pokémon does not use\n"
+	.string "Leech Life. Which one is it?$"
 
 Route110_TrickHousePuzzle5_Text_CorrectGoThrough: @ 826D84D
-	.string "CONGRATULATIONS. CORRECT YOU ARE.\n"
-	.string "GO THROUGH. PLEASE.$"
+	.string "Congratulations. Correct You Are.\n"
+	.string "Go Through. Please.$"
 
 Route110_TrickHousePuzzle5_Text_DisappointmentError: @ 826D883
-	.string "BZZZT. DISAPPOINTMENT.\n"
-	.string "ERROR.$"
+	.string "Bzzzt. Disappointment.\n"
+	.string "Error.$"
 
 Route110_TrickHousePuzzle5_Text_Wahahahaha: @ 826D8A1
-	.string "WAHAHAHAHA! WAHAHAHAHA!\n"
-	.string "CLICKETY-CLACK!$"
+	.string "Wahahahaha! Wahahahaha!\n"
+	.string "Clickety-Clack!$"
 
 Route110_TrickHousePuzzle5_Text_WaitForNextChallenge: @ 826D8C9
-	.string "YOUR NEXT CHALLENGE WE WAIT FOR.$"
+	.string "Your Next Challenge We Wait For.$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll2Intro: @ 826D8EA
-	.string "CLICKETY-CLACK…\n"
-	.string "MECHADOLL 2 AM I!\p"
-	.string "MECHADOLL 1'S QUIZ DIFFICULTY LEVEL\n"
-	.string "IS SET TOO LOW.$"
+	.string "Clickety-Clack…\n"
+	.string "Mechadoll 2 Am I!\p"
+	.string "Mechadoll 1's Quiz Difficulty Level\n"
+	.string "Is Set Too Low.$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1: @ 826D940
-	.string "MECHADOLL 2 QUIZ.\p"
-	.string "Which of these POKéMON did WALLY\n"
+	.string "Mechadoll 2 Quiz.\p"
+	.string "Which of these Pokémon did Wally\n"
 	.string "borrow from your father?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2: @ 826D98C
-	.string "MECHADOLL 2 QUIZ.\p"
-	.string "Which of these POKéMON was chasing\n"
-	.string "PROF. BIRCH?$"
+	.string "Mechadoll 2 Quiz.\p"
+	.string "Which of these Pokémon was chasing\n"
+	.string "Prof. Birch?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz3: @ 826D9CE
-	.string "MECHADOLL 2 QUIZ.\p"
-	.string "Which of these POKéMON did TEAM AQUA\n"
-	.string "use in PETALBURG FOREST?$"
+	.string "Mechadoll 2 Quiz.\p"
+	.string "Which of these Pokémon did Team Aqua\n"
+	.string "use in Petalburg Forest?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll3Intro: @ 826DA1E
-	.string "CLICKETY-CLACK…\n"
-	.string "MECHADOLL 3 AM I!\p"
-	.string "MATTERS OF MONEY ARE MY SOLE FOCUS.$"
+	.string "Clickety-Clack…\n"
+	.string "Mechadoll 3 Am I!\p"
+	.string "Matters Of Money Are My Sole Focus.$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll3Quiz1: @ 826DA64
-	.string "MECHADOLL 3 QUIZ.\p"
+	.string "Mechadoll 3 Quiz.\p"
 	.string "Which costs more?\n"
-	.string "Three HARBOR MAILS or one BURN HEAL?$"
+	.string "Three Harbor Mails or one Burn Heal?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll3Quiz2: @ 826DAAD
-	.string "MECHADOLL 3 QUIZ.\p"
-	.string "Sell one GREAT BALL and buy\n"
-	.string "one POTION. How much money remains?$"
+	.string "Mechadoll 3 Quiz.\p"
+	.string "Sell one Great Ball and buy\n"
+	.string "one Potion. How much money remains?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll3Quiz3: @ 826DAFF
-	.string "MECHADOLL 3 QUIZ.\p"
-	.string "Do one REPEL and SODA POP cost\n"
-	.string "more than one SUPER POTION?$"
+	.string "Mechadoll 3 Quiz.\p"
+	.string "Do one Repel and Soda Pop cost\n"
+	.string "more than one Super Potion?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll4Intro: @ 826DB4C
-	.string "CLICKETY-CLACK…\n"
-	.string "MECHADOLL 4 THAT IS ME!\p"
-	.string "MY QUIZ IS AN OBJECT OF BEAUTY.$"
+	.string "Clickety-Clack…\n"
+	.string "Mechadoll 4 That Is Me!\p"
+	.string "My Quiz Is An Object Of Beauty.$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll4Quiz1: @ 826DB94
-	.string "MECHADOLL 4 QUIZ.\p"
-	.string "In SEASHORE HOUSE, were there more men\n"
+	.string "Mechadoll 4 Quiz.\p"
+	.string "In Seashore House, were there more men\n"
 	.string "or women?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll4Quiz2: @ 826DBD7
-	.string "MECHADOLL 4 QUIZ.\p"
-	.string "In LAVARIDGE TOWN, were there more\n"
+	.string "Mechadoll 4 Quiz.\p"
+	.string "In Lavaridge Town, were there more\n"
 	.string "elderly men or elderly women?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll4Quiz3: @ 826DC2A
-	.string "MECHADOLL 4 QUIZ.\p"
-	.string "In the TRAINER'S SCHOOL, how many\n"
+	.string "Mechadoll 4 Quiz.\p"
+	.string "In the Trainer's School, how many\n"
 	.string "girl students were there?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll5Intro: @ 826DC78
-	.string "CLICKETY-CLACK…\n"
-	.string "MECHADOLL 5 AM I!\p"
-	.string "THE MASTER'S BEST AND PROUDEST\n"
-	.string "ACHIEVEMENT AM I.$"
+	.string "Clickety-Clack…\n"
+	.string "Mechadoll 5 Am I!\p"
+	.string "The Master's Best And Proudest\n"
+	.string "Achievement Am I.$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll5Quiz1: @ 826DCCB
-	.string "MECHADOLL 5 QUIZ.\p"
-	.string "In SLATEPORT's POKéMON FAN CLUB,\n"
-	.string "how many POKéMON were there?$"
+	.string "Mechadoll 5 Quiz.\p"
+	.string "In Slateport's Pokémon Fan Club,\n"
+	.string "how many Pokémon were there?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll5Quiz2: @ 826DD1B
-	.string "MECHADOLL 5 QUIZ.\p"
-	.string "In FORTREE CITY, how many\n"
+	.string "Mechadoll 5 Quiz.\p"
+	.string "In Fortree City, how many\n"
 	.string "tree houses were there?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll5Quiz3: @ 826DD5F
-	.string "MECHADOLL 5 QUIZ.\p"
-	.string "On the CYCLING ROAD, how many\n"
-	.string "TRIATHLETES were there?$"
+	.string "Mechadoll 5 Quiz.\p"
+	.string "On the Cycling Road, how many\n"
+	.string "Triathletes were there?$"

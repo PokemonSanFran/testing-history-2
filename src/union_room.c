@@ -319,8 +319,13 @@ static void StringExpandPlaceholders_AwaitingCommFromAnother(u8 *dst, u8 caseId)
     case ACTIVITY_CONTEST_CUTE:
     case ACTIVITY_CONTEST_SMART:
     case ACTIVITY_CONTEST_TOUGH:
-        // UB: argument *dst isn't used, instead it always prints to gStringVar4
+        // BUG: argument *dst isn't used, instead it always prints to gStringVar4
+        // not an issue in practice since Gamefreak never used any other arguments here besides gStringVar4
+        #ifndef BUGFIX
         StringExpandPlaceholders(gStringVar4, sText_AwaitingCommunication);
+        #else
+        StringExpandPlaceholders(dst, sText_AwaitingCommunication);
+        #endif
         break;
     }
 }
@@ -478,7 +483,11 @@ static void Task_TryBecomeLinkLeader(u8 taskId)
         // BUG: sPlayerActivityGroupSize was meant below, not gPlayerCurrActivity
         //      This will be false for all but ACTIVITY_BATTLE_DOUBLE and ACTIVITY_DECLINE
         //      All this changes is which of two texts gets printed
+        #ifdef BUGFIX
+        id = (GROUP_MAX(sPlayerActivityGroupSize) == 2) ? 0 : 1;
+        #else
         id = (GROUP_MAX(gPlayerCurrActivity) == 2) ? 1 : 0;
+        #endif
         if (PrintOnTextbox(&data->textState, sPlayerUnavailableTexts[id]))
         {
             data->playerCount = sub_8013398(data->field_0);
@@ -1320,7 +1329,11 @@ static bool32 IsPartnerActivityAcceptable(u32 activity, u32 linkGroup)
     if (linkGroup == 0xFF)
         return TRUE;
 
-    if (linkGroup <= ARRAY_COUNT(sAcceptedActivityIds)) // UB: <= may access data outside the array
+    #ifdef UBFIX
+    if (linkGroup < ARRAY_COUNT(sAcceptedActivityIds))
+    #else
+    if (linkGroup <= ARRAY_COUNT(sAcceptedActivityIds))
+    #endif
     {
         const u8 *bytes = sAcceptedActivityIds[linkGroup];
 
@@ -2978,7 +2991,7 @@ static void Task_RunUnionRoom(u8 taskId)
         uroom->state = UR_STATE_START_ACTIVITY_FADE;
         break;
     case UR_STATE_START_ACTIVITY_FADE:
-        BeginNormalPaletteFade(-1, 0, 0, 0x10, RGB_BLACK);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
         uroom->state = UR_STATE_START_ACTIVITY;
         break;
     case UR_STATE_START_ACTIVITY:
@@ -3042,7 +3055,7 @@ static void Task_RunUnionRoom(u8 taskId)
         }
         break;
     case UR_STATE_REGISTER_SELECT_MON_FADE:
-        BeginNormalPaletteFade(-1, 0, 0, 0x10, RGB_BLACK);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
         uroom->state = UR_STATE_REGISTER_SELECT_MON;
         break;
     case UR_STATE_REGISTER_SELECT_MON:
@@ -3761,9 +3774,9 @@ static void UR_AddTextPrinterParameterized(u8 windowId, u8 fontId, const u8 *str
     case UR_COLOR_DKE_WHT_LTE:
         printerTemplate.letterSpacing = 0;
         printerTemplate.lineSpacing = 0;
-        printerTemplate.fgColor = TEXT_COLOR_DARK_GREY;
+        printerTemplate.fgColor = TEXT_COLOR_DARK_GRAY;
         printerTemplate.bgColor = TEXT_COLOR_WHITE;
-        printerTemplate.shadowColor = TEXT_COLOR_LIGHT_GREY;
+        printerTemplate.shadowColor = TEXT_COLOR_LIGHT_GRAY;
         break;
     case UR_COLOR_RED_WHT_LTR:
         printerTemplate.letterSpacing = 0;
@@ -3784,14 +3797,14 @@ static void UR_AddTextPrinterParameterized(u8 windowId, u8 fontId, const u8 *str
         printerTemplate.lineSpacing = 0;
         printerTemplate.fgColor = TEXT_COLOR_WHITE;
         printerTemplate.bgColor = TEXT_COLOR_WHITE;
-        printerTemplate.shadowColor = TEXT_COLOR_LIGHT_GREY;
+        printerTemplate.shadowColor = TEXT_COLOR_LIGHT_GRAY;
         break;
     case UR_COLOR_WHT_DKE_LTE:
         printerTemplate.letterSpacing = 0;
         printerTemplate.lineSpacing = 0;
         printerTemplate.fgColor = TEXT_COLOR_WHITE;
-        printerTemplate.bgColor = TEXT_COLOR_DARK_GREY;
-        printerTemplate.shadowColor = TEXT_COLOR_LIGHT_GREY;
+        printerTemplate.bgColor = TEXT_COLOR_DARK_GRAY;
+        printerTemplate.shadowColor = TEXT_COLOR_LIGHT_GRAY;
         break;
     case UR_COLOR_GRN_DN6_LTB:
         printerTemplate.letterSpacing = 0;

@@ -48,7 +48,7 @@ SecretBase_EventScript_PCCancel:: @ 823B4E8
     end
 
 SecretBase_EventScript_PCMainMenuWithRegister:: @ 823B4EF
-    multichoice 0, 0, MULTI_BASE_PC_WITH_REGISTRY, 0
+    multichoice 0, 0, MULTI_BASE_PC_WITH_REGISTRY, FALSE
     switch VAR_RESULT
     case 0, SecretBase_EventScript_PCDecorationMenu
     case 1, SecretBase_EventScript_PCPackUp
@@ -58,7 +58,7 @@ SecretBase_EventScript_PCMainMenuWithRegister:: @ 823B4EF
     end
 
 SecretBase_EventScript_PCMainMenuWithoutRegister:: @ 823B531
-    multichoice 0, 0, MULTI_BASE_PC_NO_REGISTRY, 0
+    multichoice 0, 0, MULTI_BASE_PC_NO_REGISTRY, FALSE
     switch VAR_RESULT
     case 0, SecretBase_EventScript_PCDecorationMenu
     case 1, SecretBase_EventScript_PCPackUp
@@ -98,7 +98,7 @@ SecretBase_EventScript_RecordMixingPC:: @ 823B589
 SecretBase_EventScript_PCRegisterMenu:: @ 823B5A1
     message SecretBase_Text_WhatWouldYouLikeToDo
     waitmessage
-    multichoice 0, 0, MULTI_REGISTER_MENU, 0
+    multichoice 0, 0, MULTI_REGISTER_MENU, FALSE
     switch VAR_RESULT
     case 0, SecretBase_EventScript_PCRegister
     case 1, SecretBase_EventScript_PCRegistryMenu
@@ -215,10 +215,10 @@ SecretBase_Text_SmallIndentInWall:: @ 823B6E0
 
 SecretBase_Text_IndentUseSecretPower:: @ 823B704
     .string "There's a small indent in the wall.\p"
-    .string "Use the SECRET POWER?$"
+    .string "Use the Secret Power?$"
 
 SecretBase_Text_DiscoveredSmallCavern:: @ 823B73E
     .string "Discovered a small cavern!$"
 
 SecretBase_Text_WantToMakeYourSecretBaseHere: @ 823B759
-    .string "Want to make your SECRET BASE here?$"
+    .string "Want to make your Secret Base here?$"

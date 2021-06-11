@@ -49,7 +49,7 @@ LilycoveCity_ContestLobby_EventScript_ContestArtist:: @ 821A264
 	msgbox LilycoveCity_ContestLobby_Text_YourPokemonSpurredMeToPaint, MSGBOX_DEFAULT
 	lockall
 	fadescreen FADE_TO_BLACK
-	showcontestwinner CONTEST_WINNER_ARTIST
+	showcontestpainting CONTEST_WINNER_ARTIST
 	lockall
 	msgbox LilycoveCity_ContestLobby_Text_ShouldITakePaintingToMuseum, MSGBOX_YESNO
 	compare VAR_RESULT, YES
@@ -108,7 +108,7 @@ LilycoveCity_ContestLobby_EventScript_ReceivedArtistRibbon:: @ 821A314
 	return
 
 LilycoveCity_ContestLobby_EventScript_UpdateMuseumPatrons:: @ 821A360
-	specialvar VAR_0x8004, CountPlayerContestPaintings
+	specialvar VAR_0x8004, CountPlayerMuseumPaintings
 	switch VAR_0x8004
 	case 1, LilycoveCity_ContestLobby_EventScript_ShowPatron1
 	case 2, LilycoveCity_ContestLobby_EventScript_ShowPatron2
@@ -223,7 +223,7 @@ LilycoveCity_ContestLobby_EventScript_LinkContestArtist:: @ 821A436
 	msgbox LilycoveCity_ContestLobby_Text_YourPokemonSpurredMeToPaint, MSGBOX_DEFAULT
 	lockall
 	fadescreen FADE_TO_BLACK
-	showcontestwinner CONTEST_WINNER_ARTIST
+	showcontestpainting CONTEST_WINNER_ARTIST
 	msgbox LilycoveCity_ContestLobby_Text_ShouldITakePaintingToMuseum, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq LilycoveCity_ContestLobby_EventScript_TakePaintingToMuseumLink
@@ -511,42 +511,42 @@ LilycoveCity_ContestLobby_EventScript_NinjaBoy:: @ 821A735
 LilycoveCity_ContestLobby_EventScript_ContestWinner1:: @ 821A73E
 	lockall
 	fadescreen FADE_TO_BLACK
-	showcontestwinner CONTEST_WINNER_HALL_1
+	showcontestpainting CONTEST_WINNER_HALL_1
 	releaseall
 	end
 
 LilycoveCity_ContestLobby_EventScript_ContestWinner2:: @ 821A745
 	lockall
 	fadescreen FADE_TO_BLACK
-	showcontestwinner CONTEST_WINNER_HALL_2
+	showcontestpainting CONTEST_WINNER_HALL_2
 	releaseall
 	end
 
 LilycoveCity_ContestLobby_EventScript_ContestWinner3:: @ 821A74C
 	lockall
 	fadescreen FADE_TO_BLACK
-	showcontestwinner CONTEST_WINNER_HALL_3
+	showcontestpainting CONTEST_WINNER_HALL_3
 	releaseall
 	end
 
 LilycoveCity_ContestLobby_EventScript_ContestWinner4:: @ 821A753
 	lockall
 	fadescreen FADE_TO_BLACK
-	showcontestwinner CONTEST_WINNER_HALL_4
+	showcontestpainting CONTEST_WINNER_HALL_4
 	releaseall
 	end
 
 LilycoveCity_ContestLobby_EventScript_ContestWinner5:: @ 821A75A
 	lockall
 	fadescreen FADE_TO_BLACK
-	showcontestwinner CONTEST_WINNER_HALL_5
+	showcontestpainting CONTEST_WINNER_HALL_5
 	releaseall
 	end
 
 LilycoveCity_ContestLobby_EventScript_ContestWinner6:: @ 821A761
 	lockall
 	fadescreen FADE_TO_BLACK
-	showcontestwinner CONTEST_WINNER_HALL_6
+	showcontestpainting CONTEST_WINNER_HALL_6
 	releaseall
 	end
 
@@ -638,7 +638,7 @@ LilycoveCity_ContestLobby_EventScript_LinkContestReceptionist:: @ 821A806
 LilycoveCity_ContestLobby_EventScript_AskEnterLinkContest:: @ 821A819
 	message LilycoveCity_ContestLobby_Text_EnterContest3
 	waitmessage
-	multichoice 0, 0, MULTI_ENTERINFO, 0
+	multichoice 0, 0, MULTI_ENTERINFO, FALSE
 	switch VAR_RESULT
 	case 0, LilycoveCity_ContestLobby_EventScript_TryEnterLinkContest
 	case 1, LilycoveCity_ContestLobby_EventScript_LinkContestInfo
@@ -656,7 +656,7 @@ LilycoveCity_ContestLobby_EventScript_TryEnterLinkContest:: @ 821A856
 	message LilycoveCity_ContestLobby_Text_WhichContestMode
 	waitmessage
 	specialvar VAR_TEMP_D, IsWirelessAdapterConnected
-	multichoice 0, 0, MULTI_LINK_CONTEST_MODE, 0
+	multichoice 0, 0, MULTI_LINK_CONTEST_MODE, FALSE
 	switch VAR_RESULT
 	case 0, LilycoveCity_ContestLobby_EventScript_EmeraldMode  @ Shortened to E-Mode
 	case 1, LilycoveCity_ContestLobby_EventScript_GlobalMode   @ Shortened to G-Mode
@@ -679,7 +679,7 @@ LilycoveCity_ContestLobby_EventScript_GlobalMode:: @ 821A8C6
 LilycoveCity_ContestLobby_EventScript_ChooseLinkContestType:: @ 821A8DC
 	message LilycoveCity_ContestLobby_Text_EnterWhichContest3
 	waitmessage
-	multichoice 0, 0, MULTI_CONTEST_TYPE, 0
+	multichoice 0, 0, MULTI_CONTEST_TYPE, FALSE
 	switch VAR_RESULT
 	case CONTEST_CATEGORIES_COUNT, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
 	case MULTI_B_PRESSED, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
@@ -690,7 +690,7 @@ LilycoveCity_ContestLobby_EventScript_ChooseLinkContestType:: @ 821A8DC
 LilycoveCity_ContestLobby_EventScript_LinkContestInfo:: @ 821A90D
 	message LilycoveCity_ContestLobby_Text_WhichTopic2
 	waitmessage
-	multichoice 0, 0, MULTI_LINK_CONTEST_INFO, 0
+	multichoice 0, 0, MULTI_LINK_CONTEST_INFO, FALSE
 	switch VAR_RESULT
 	case 0, LilycoveCity_ContestLobby_EventScript_ExplainLinkContest
 	case 1, LilycoveCity_ContestLobby_EventScript_ExplainEMode
@@ -783,7 +783,7 @@ LilycoveCity_ContestLobby_EventScript_TrySetUpLinkContest:: @ 821AA15
 	goto_if_eq LilycoveCity_ContestLobby_EventScript_CancelLinkError
 	compare VAR_RESULT, LINKUP_FAILED_CONTEST_GMODE
 	goto_if_eq LilycoveCity_ContestLobby_EventScript_CancelLinkModeDifference
-	message3 LilycoveCity_ContestLobby_Text_Transmitting
+	messageinstant LilycoveCity_ContestLobby_Text_Transmitting
 	contestlinktransfer
 	switch VAR_0x8004
 	case 0, LilycoveCity_ContestLobby_EventScript_StartLinkContest
@@ -885,7 +885,7 @@ LilycoveCity_ContestLobby_EventScript_SetLinkGroupToughContest:: @ 821ABA0
 LilycoveCity_ContestLobby_EventScript_DecideLinkLeader:: @ 821ABA6
 	message LilycoveCity_ContestLobby_Text_PleaseDecideLinkLeader
 	waitmessage
-	multichoice 16, 6, MULTI_LINK_LEADER, 0
+	multichoice 16, 6, MULTI_LINK_LEADER, FALSE
 	switch VAR_RESULT
 	case 0, LilycoveCity_ContestLobby_EventScript_TryJoinGroup
 	case 1, LilycoveCity_ContestLobby_EventScript_TryLeadGroup
@@ -926,7 +926,7 @@ LilycoveCity_ContestLobby_EventScript_TryJoinLinkGroup:: @ 821AC38
 	return
 
 LilycoveCity_ContestLobby_EventScript_LinkLeaderDecided:: @ 821AC3D
-	message3 LilycoveCity_ContestLobby_Text_Transmitting
+	messageinstant LilycoveCity_ContestLobby_Text_Transmitting
 	contestlinktransfer
 	goto LilycoveCity_ContestLobby_EventScript_StartLinkContest
 	end
@@ -1025,18 +1025,18 @@ LilycoveCity_ContestLobby_EventScript_LittleGirlHaveCase:: @ 821AD06
 LilycoveCity_ContestLobby_Text_LadyGaveMePokeblockCase: @ 821AD10
 	.string "Yippee!\p"
 	.string "The lady at the reception counter\n"
-	.string "gave me a case for {POKEBLOCK}S!$"
+	.string "gave me a case for {POKEBLOCK}s!$"
 
 LilycoveCity_ContestLobby_Text_MakePokeblocksDifferentBerries: @ 821AD55
-	.string "Make {POKEBLOCK}S and put them in there.\p"
+	.string "Make {POKEBLOCK}s and put them in there.\p"
 	.string "When you make a {POKEBLOCK}, everyone\n"
-	.string "has to put in a different BERRY.$"
+	.string "has to put in a different Berry.$"
 
 LilycoveCity_ContestLobby_Text_YourPokemonSpurredMeToPaint: @ 821ADB9
 	.string "Congratulations!\p"
-	.string "I did a painting of your POKéMON to\n"
+	.string "I did a painting of your Pokémon to\n"
 	.string "commemorate its victory…\p"
-	.string "Well, your POKéMON's appeals were\n"
+	.string "Well, your Pokémon's appeals were\n"
 	.string "so fantastic, it spurred me into\l"
 	.string "painting better than I usually do.\l"
 	.string "Look, see?$"
@@ -1062,13 +1062,13 @@ LilycoveCity_ContestLobby_Text_IllTakePaintingToMuseum: @ 821AF63
 LilycoveCity_ContestLobby_Text_TakeMementoOfPainting: @ 821B030
 	.string "Oh, that's right!\p"
 	.string "As a memento of me painting your\n"
-	.string "POKéMON, please take this.$"
+	.string "Pokémon, please take this.$"
 
 LilycoveCity_ContestLobby_Text_ReceivedARibbon: @ 821B07E
-	.string "{PLAYER} received a RIBBON.$"
+	.string "{PLAYER} received a Ribbon.$"
 
 LilycoveCity_ContestLobby_Text_PutTheRibbonOnMon: @ 821B094
-	.string "{PLAYER} put the RIBBON on\n"
+	.string "{PLAYER} put the Ribbon on\n"
 	.string "{STR_VAR_1}.$"
 
 LilycoveCity_ContestLobby_Text_OkaySeeYou: @ 821B0AD
@@ -1087,40 +1087,40 @@ LilycoveCity_ContestLobby_Text_FineThatsTheWayItIs: @ 821B132
 	.string "Well, be seeing you.$"
 
 LilycoveCity_ContestLobby_Text_MasterRankHereICome: @ 821B1B1
-	.string "Hoo, boy… Master Rank CONTESTS,\n"
+	.string "Hoo, boy… Master Rank Contests,\n"
 	.string "here I come.\p"
 	.string "The world will know that my dearest\n"
-	.string "POKéMON is the cutest being in all\l"
+	.string "Pokémon is the cutest being in all\l"
 	.string "existence. The time has come!\l"
 	.string "Uheheheh.$"
 
 LilycoveCity_ContestLobby_Text_WholeVarietyOfPokemonHere: @ 821B24D
 	.string "You can see a whole variety of\n"
-	.string "POKéMON here.\p"
+	.string "Pokémon here.\p"
 	.string "That's why I make this place a regular\n"
 	.string "part of my daily stroll.$"
 
 LilycoveCity_ContestLobby_Text_ContestFeastForEyes: @ 821B2BA
-	.string "Wow, coming out to a CONTEST is\n"
+	.string "Wow, coming out to a Contest is\n"
 	.string "a feast for these eyes!\p"
-	.string "Would you look at all the POKéMON\n"
+	.string "Would you look at all the Pokémon\n"
 	.string "that just scream to be painted?$"
 
 LilycoveCity_ContestLobby_Text_ToughContestIsExtreme: @ 821B334
-	.string "The TOUGHNESS CONTEST is like\n"
+	.string "The Toughness Contest is like\n"
 	.string "extreme, man!\p"
 	.string "Those muscular appeals…\n"
 	.string "Cascading sweat… I swoon!$"
 
 LilycoveCity_ContestLobby_Text_LavishedCareOnMon: @ 821B392
 	.string "Day in and day out, I lavished my care\n"
-	.string "on this POKéMON.\p"
+	.string "on this Pokémon.\p"
 	.string "Its condition is peaking.\n"
 	.string "Today, victory is mine!$"
 
 LilycoveCity_ContestLobby_Text_MadePokeblocksWithFamily: @ 821B3FC
-	.string "I made {POKEBLOCK}S with Mom, Dad, and\n"
+	.string "I made {POKEBLOCK}s with Mom, Dad, and\n"
 	.string "Big Sister. They turned out great!\p"
 	.string "I bet you can make smoother, better\n"
-	.string "{POKEBLOCK}S if you have more people.$"
+	.string "{POKEBLOCK}s if you have more people.$"
 

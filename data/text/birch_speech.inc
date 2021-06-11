@@ -41,7 +41,7 @@ gText_Birch_SoItsPlayer:: @ 82C8C1C
 gText_Birch_YourePlayer:: @ 82C8C2A
 	.string "Ah, okay!\p"
 	.string "You're {PLAYER}{KUN} who's moving to my\n"
-	.string "hometown of LITTLEROOT.\l"
+	.string "hometown of Littleroot.\l"
 	.string "I get it now!\p"
 	.string "$"
 
@@ -50,10 +50,10 @@ gText_Birch_AreYouReady:: @ 82C8C7A
 	.string "Your very own adventure is about\n"
 	.string "to unfold.\p"
 	.string "Take courage, and leap into the\n"
-	.string "world of POKéMON where dreams,\l"
+	.string "world of Pokémon where dreams,\l"
 	.string "adventure, and friendships await!\p"
 	.string "Well, I'll be expecting you later.\n"
-	.string "Come see me in my POKéMON LAB.\p"
+	.string "Come see me in my Pokémon Lab.\p"
 	.string "$"
 
 gNewGameAdventureIntro1::
