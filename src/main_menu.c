@@ -648,21 +648,30 @@ static const struct WindowTemplate gNewGameBirchSpeechTextWindows[] =
 
 static const struct WindowTemplate gNewGameBirchSpeechCustomizationWindows[] =
 {
+    {//this is text window
+        .bg = 0,
+        .tilemapLeft = 2,
+        .tilemapTop = 15,
+        .width = 27,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 1
+    },
     { //this is parentCustomize menu
         .bg = 0,
         .tilemapLeft = 3,
         .tilemapTop = 5,
         .width = 6,
-        .height = 6,
+        .height = 8,
         .paletteNum = 15,
         .baseBlock = 0x6D
     },
     { //this is customization hair menu
         .bg = 0,
         .tilemapLeft = 3,
-        .tilemapTop = 5,
+        .tilemapTop = 3,
         .width = 6,
-        .height = 8,
+        .height = 10,
         .paletteNum = 15,
         .baseBlock = 0x6D
     },
@@ -678,12 +687,13 @@ static const struct WindowTemplate gNewGameBirchSpeechCustomizationWindows[] =
     { //this is customization skin menu
         .bg = 0,
         .tilemapLeft = 3,
-        .tilemapTop = 2,
+        .tilemapTop = 1,
         .width = 9,
-        .height = 10,
+        .height = 12,
         .paletteNum = 15,
         .baseBlock = 0x85
-    }
+    },
+    DUMMY_WIN_TEMPLATE
 };
 
 static const u16 sMainMenuBgPal[] = INCBIN_U16("graphics/misc/main_menu_bg.gbapal");
@@ -2304,7 +2314,9 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
             gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
             NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway2;
+            //gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway2;
+            InitWindows(gNewGameBirchSpeechCustomizationWindows);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatCustom;
             break;
         case -1:
         case 1:
@@ -2370,7 +2382,7 @@ static void Task_NewGameBirchSpeech_WaitToShowCustomizeSkinMenu(u8 taskId)
 
 static void NewGameBirchSpeech_ShowParentCustomizeMenu(void)
 {
-    DrawMainMenuWindowBorder(&gNewGameBirchSpeechCustomizationWindows[0], 0xF3);
+    DrawMainMenuWindowBorder(&gNewGameBirchSpeechCustomizationWindows[1], 0xF3);
     FillWindowPixelBuffer(1, PIXEL_FILL(1)); //fills in everythign with white
     PrintMenuTable(1, ARRAY_COUNT(sMenuActions_ParentCustomize), sMenuActions_ParentCustomize); //prints text on previously filled bg
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(1, ARRAY_COUNT(sMenuActions_ParentCustomize), 0);
@@ -2383,32 +2395,32 @@ static void NewGameBirchSpeech_ShowParentCustomizeMenu(void)
 
 static void NewGameBirchSpeech_ShowHairCustomizeMenu(void)
 {
-    DrawMainMenuWindowBorder(&gNewGameBirchSpeechCustomizationWindows[1], 0xF3);
-    FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    PrintMenuTable(1, ARRAY_COUNT(sMenuActions_HairCustomize), sMenuActions_HairCustomize);
-    InitMenuInUpperLeftCornerPlaySoundWhenAPressed(1, ARRAY_COUNT(sMenuActions_HairCustomize), 0);
-    PutWindowTilemap(1);
-    CopyWindowToVram(1, 3);
+    DrawMainMenuWindowBorder(&gNewGameBirchSpeechCustomizationWindows[2], 0xF3);
+    FillWindowPixelBuffer(2, PIXEL_FILL(1));
+    PrintMenuTable(2, ARRAY_COUNT(sMenuActions_HairCustomize), sMenuActions_HairCustomize);
+    InitMenuInUpperLeftCornerPlaySoundWhenAPressed(2, ARRAY_COUNT(sMenuActions_HairCustomize), 0);
+    PutWindowTilemap(2);
+    CopyWindowToVram(2, 3);
 }
 
 static void NewGameBirchSpeech_ShowEyesCustomizeMenu(void)
 {
-    DrawMainMenuWindowBorder(&gNewGameBirchSpeechCustomizationWindows[2], 0xF3);
-    FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    PrintMenuTable(1, ARRAY_COUNT(sMenuActions_EyesCustomize), sMenuActions_EyesCustomize);
-    InitMenuInUpperLeftCornerPlaySoundWhenAPressed(1, ARRAY_COUNT(sMenuActions_EyesCustomize), 0);
-    PutWindowTilemap(1);
-    CopyWindowToVram(1, 3);
+    DrawMainMenuWindowBorder(&gNewGameBirchSpeechCustomizationWindows[3], 0xF3);
+    FillWindowPixelBuffer(3, PIXEL_FILL(1));
+    PrintMenuTable(3, ARRAY_COUNT(sMenuActions_EyesCustomize), sMenuActions_EyesCustomize);
+    InitMenuInUpperLeftCornerPlaySoundWhenAPressed(3,ARRAY_COUNT(sMenuActions_EyesCustomize), 0);
+    PutWindowTilemap(3);
+    CopyWindowToVram(3, 3);
 }
 
 static void NewGameBirchSpeech_ShowSkinCustomizeMenu(void)
 {
-    DrawMainMenuWindowBorder(&gNewGameBirchSpeechCustomizationWindows[3], 0xF3);
-    FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    PrintMenuTable(1, ARRAY_COUNT(sMenuActions_SkinCustomize), sMenuActions_SkinCustomize);
-    InitMenuInUpperLeftCornerPlaySoundWhenAPressed(1, ARRAY_COUNT(sMenuActions_SkinCustomize), 0);
-    PutWindowTilemap(1);
-    CopyWindowToVram(1, 3);
+    DrawMainMenuWindowBorder(&gNewGameBirchSpeechCustomizationWindows[4], 0xF3);
+    FillWindowPixelBuffer(4, PIXEL_FILL(1));
+    PrintMenuTable(4, ARRAY_COUNT(sMenuActions_SkinCustomize), sMenuActions_SkinCustomize);
+    InitMenuInUpperLeftCornerPlaySoundWhenAPressed(4, ARRAY_COUNT(sMenuActions_SkinCustomize), 0);
+    PutWindowTilemap(4);
+    CopyWindowToVram(4, 3);
 }
 
 static void Task_NewGameBirchSpeech_ChooseParentCustomize(u8 taskId)
@@ -2419,22 +2431,22 @@ static void Task_NewGameBirchSpeech_ChooseParentCustomize(u8 taskId)
     {
         case 0: //hair
             PlaySE(SE_SELECT); 
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(0, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowCustomizeHairMenu;
             break;
         case 1: //eyes
             PlaySE(SE_SELECT);
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(0, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowCustomizeEyesMenu;
             break;
         case 2: //skin
             PlaySE(SE_SELECT);
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(0, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowCustomizeSkinMenu;
             break;
         case 3: //done
             PlaySE(SE_SELECT);
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(0, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway3;
             break;
     }
@@ -2456,27 +2468,27 @@ static void Task_NewGameBirchSpeech_ChooseHairCustomize(u8 taskId)
     {
         case 0:
             PlaySE(SE_SELECT); 
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = gTasks[taskId].func = Task_NewGameBirchSpeech_WhatCustom;
             break;
         case 1:
             PlaySE(SE_SELECT);
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = gTasks[taskId].func = Task_NewGameBirchSpeech_WhatCustom;
             break;
         case 2:
             PlaySE(SE_SELECT);
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = gTasks[taskId].func = Task_NewGameBirchSpeech_WhatCustom;
             break;
         case 3:
             PlaySE(SE_SELECT); 
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = gTasks[taskId].func = Task_NewGameBirchSpeech_WhatCustom;
             break;
         case 4:
             PlaySE(SE_SELECT);
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = gTasks[taskId].func = Task_NewGameBirchSpeech_WhatCustom;
             break;
     }
@@ -2498,17 +2510,17 @@ static void Task_NewGameBirchSpeech_ChooseEyesCustomize(u8 taskId)
     {
         case 0:
             PlaySE(SE_SELECT); 
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(2, 1);
             gTasks[taskId].func = gTasks[taskId].func = Task_NewGameBirchSpeech_WhatCustom;
             break;
         case 1:
             PlaySE(SE_SELECT);
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(2, 1);
             gTasks[taskId].func = gTasks[taskId].func = Task_NewGameBirchSpeech_WhatCustom;
             break;
         case 2:
             PlaySE(SE_SELECT);
-            NewGameBirchSpeech_ClearGenderWindow(3, 1);
+            NewGameBirchSpeech_ClearGenderWindow(2, 1);
             gTasks[taskId].func = gTasks[taskId].func = Task_NewGameBirchSpeech_WhatCustom;
             break;
     }
