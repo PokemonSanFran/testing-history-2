@@ -1,3 +1,7 @@
+mgba_printf(MGBA_LOG_DEBUG,"Func:%s",__func__);
+
+
+
 NOTES
 
 ☑ Make Birch invisible for the entire intro, don't ever load his sprite
@@ -5,4 +9,11 @@ NOTES
 ☑ Set player gender to Male
 ☑ Get player name
 Present multi step menu for eye, hair, and skin color that does nothing
+
+ISSUES:
+text in sub menus does not print
+
+
+
+
 Shrink down, start in truck

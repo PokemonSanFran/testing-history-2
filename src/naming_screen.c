@@ -401,6 +401,7 @@ static bool8 IsWideLetter(u8);
 
 void DoNamingScreen(u8 templateNum, u8 *destBuffer, u16 monSpecies, u16 monGender, u32 monPersonality, MainCallback returnCallback)
 {
+
     sNamingScreen = Alloc(sizeof(struct NamingScreenData));
     if (!sNamingScreen)
     {
@@ -465,6 +466,7 @@ static void CB2_LoadNamingScreen(void)
     default:
         CreateHelperTasks();
         CreateNamingScreenTask();
+
         break;
     }
 }
@@ -676,8 +678,11 @@ static bool8 MainState_MoveToOKButton(void)
 static bool8 MainState_PressedOKButton(void)
 {
     SaveInputText();
+    
     SetInputState(INPUT_STATE_DISABLED);
+    
     SetCursorFlashing(FALSE);
+    
     TryStartButtonFlash(BUTTON_COUNT, FALSE, TRUE);
     if (sNamingScreen->templateNum == NAMING_SCREEN_CAUGHT_MON 
         && CalculatePlayerPartyCount() >= PARTY_SIZE)
@@ -695,6 +700,7 @@ static bool8 MainState_PressedOKButton(void)
 
 static bool8 MainState_FadeOut(void)
 {
+    
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     sNamingScreen->state++;
     return FALSE;
@@ -705,7 +711,7 @@ static bool8 MainState_Exit(void)
     if (!gPaletteFade.active)
     {
         if (sNamingScreen->templateNum == NAMING_SCREEN_PLAYER)
-            SeedRngAndSetTrainerId();
+        SeedRngAndSetTrainerId();
         SetMainCallback2(sNamingScreen->returnCallback);
         DestroyTask(FindTaskIdByFunc(Task_NamingScreen));
         FreeAllWindowBuffers();
@@ -1406,10 +1412,7 @@ static void NamingScreen_CreatePlayerIcon(void)
     u8 spriteId;
 
     //rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(0, sNamingScreen->monSpecies); //from the original game, commented out, need to write a new function for associating gender (monspecies) with sprite
-
     rivalGfxId = GetPlayerAvatarGraphicsByGender(sNamingScreen->monSpecies);
-    //rivalGfxId = 29;
-
     spriteId = AddPseudoObjectEvent(rivalGfxId, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], 4);

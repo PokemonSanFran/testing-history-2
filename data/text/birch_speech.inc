@@ -18,22 +18,16 @@ gText_Birch_BoyOrGirl:: @ 82C8BDD
 
 gText_Birch_WhatCustom::
 	.string "What would you like to customize?\n"
-	.string "$"
-
-gText_Birch_WhatEyes::
-	.string "What eye color would you like to use?\n"
-	.string "You can change this at a Salon."
-	.string "$"
+	.string "You can change these at a Salon.$"
 
 gText_Birch_WhatHair::
-	.string "What hair color would you like to use?\n"
-	.string "You can change this at a Salon."
-	.string "$"
+	.string "What hair color would you like?$"
+
+gText_Birch_WhatEyes::
+	.string "What eye color would you like?$"
 
 gText_Birch_WhatSkin::
-	.string "What percent melanin skin would you like to use?\n"
-	.string "You can change this at a Salon."
-	.string "$"
+	.string "What percent dark skin would you like?$"
 
 gText_Birch_WhatsYourName:: @ 82C8BFF
 	.string "All right.\n"
