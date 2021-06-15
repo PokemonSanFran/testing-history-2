@@ -14,7 +14,7 @@
 #include "malloc.h" //used to get the Free function to get FRLG intro working
 #include "main.h"
 #include "menu.h"
-#include "menu_helpers.h" //used to
+#include "menu_helpers.h"
 #include "list_menu.h"
 #include "mystery_event_menu.h"
 #include "naming_screen.h"
@@ -2401,7 +2401,7 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
 
 static void Task_NewGameBirchSpeech_WhatCustom(u8 taskId)
 {
-    FillWindowPixelBuffer(0, PIXEL_FILL(1));
+    //FillWindowPixelBuffer(0, PIXEL_FILL(1));
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_WhatCustom);
     AddTextPrinterForMessage(1);
@@ -2410,7 +2410,7 @@ static void Task_NewGameBirchSpeech_WhatCustom(u8 taskId)
 
 static void Task_NewGameBirchSpeech_WhatHair(u8 taskId)
 {
-    FillWindowPixelBuffer(0, PIXEL_FILL(1));
+    //FillWindowPixelBuffer(0, PIXEL_FILL(1));
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_WhatHair);
     AddTextPrinterForMessage(1);
@@ -2419,7 +2419,7 @@ static void Task_NewGameBirchSpeech_WhatHair(u8 taskId)
 
 static void Task_NewGameBirchSpeech_WhatEyes(u8 taskId)
 {
-    FillWindowPixelBuffer(0, PIXEL_FILL(1));
+    //FillWindowPixelBuffer(0, PIXEL_FILL(1));
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_WhatEyes);
     AddTextPrinterForMessage(1);
@@ -2428,7 +2428,7 @@ static void Task_NewGameBirchSpeech_WhatEyes(u8 taskId)
 
 static void Task_NewGameBirchSpeech_WhatSkin(u8 taskId)
 {
-    FillWindowPixelBuffer(0, PIXEL_FILL(1));
+    //FillWindowPixelBuffer(0, PIXEL_FILL(1));
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_WhatSkin);
     AddTextPrinterForMessage(1);
@@ -2800,7 +2800,7 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
 
-        FillWindowPixelBuffer(0, PIXEL_FILL(1));
+        //FillWindowPixelBuffer(0, PIXEL_FILL(1));
         NewGameBirchSpeech_ClearWindow(0);
 
         StringExpandPlaceholders(gStringVar4, gText_Birch_AreYouReady);
