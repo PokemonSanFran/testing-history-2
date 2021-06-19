@@ -4,6 +4,7 @@
 #include "battle_setup.h"
 #include "berry.h"
 #include "bg.h"
+#include "cutscene_yc_acceptance_letter.h"
 #include "cable_club.h"
 #include "clock.h"
 #include "event_data.h"
