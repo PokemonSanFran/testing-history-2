@@ -70,7 +70,7 @@ text should cut off on bottom to show scroll
 
 https://discordapp.com/channels/442462691542695948/533083367818657792/846780935864582175
 */
-
+static void AcceptanceLetter_SetUp(void);
 static void AcceptanceLetter_VisualInit(void);
 static void AcceptanceLetter_TextInit(void);
 static void AcceptanceLetter_AllowScroll(void);
@@ -142,42 +142,21 @@ static void AcceptanceLetter_VBlankCB(void)
     TransferPlttBuffer();
 }
 
-static bool8 AcceptanceLetter_VisualInit(void)
+static bool8 AcceptanceLetter_SetUp(void)
 {
-    u8 taskId;
-    switch (gMain.state)
-    {
-    case 0:
-        SetVBlankHBlankCallbacksToNull();
-        ClearScheduledBgCopiesToVram();
-        gMain.state++;
-        break;
-    case 1:
-        ScanlineEffect_Stop();
-        gMain.state++;
-        break;
-    case 2:
-        FreeAllSpritePalettes();
-        gMain.state++;
-        break;
-    case 3:
-        ResetPaletteFade();
-        gMain.state++;
-        break;
-    case 4:
-        ResetSpriteData();
-        gMain.state++;
-        break;
-    case 5:
-        ResetItemMenuIconState();
-        gMain.state++;
-        break;
-    case 6:
-        ResetTasks();
+    SetVBlankHBlankCallbacksToNull();
+    ClearScheduledBgCopiesToVram();
+    ScanlineEffect_Stop();
+    FreeAllSpritePalettes();
+    ResetPaletteFade();
+    ResetSpriteData();
+    ResetItemMenuIconState();
+    ResetTasks();
+        
         gMain.state++;
         break;
     case 7:
-        if (QuestMenu_InitBgs())
+        if (AcceptanceLetter_VisualInit())
         {
             sStateDataPtr->data[0] = 0;
             gMain.state++;
@@ -267,6 +246,10 @@ static bool8 AcceptanceLetter_VisualInit(void)
         return TRUE;
     }
     return FALSE;
+}
+static void AcceptanceLetter_VisualInit(void)
+{
+
 }
 
 static void AcceptanceLetter_TextInit(void)
