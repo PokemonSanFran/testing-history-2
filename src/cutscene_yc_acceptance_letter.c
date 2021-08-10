@@ -4,6 +4,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
+#include "include/cutscene_yc_acceptance_letter.h"
 #include "decompress.h"
 #include "event_data.h"
 #include "field_effect.h"
@@ -69,7 +70,6 @@ text should cut off on bottom to show scroll
 "press A to continue" should appear in bottom right. or maybe an "A" button press?
 
 https://discordapp.com/channels/442462691542695948/533083367818657792/846780935864582175
-*/
 static bool8 AcceptanceLetter_SetUp(void);
 static void AcceptanceLetter_VisualInit(void);
 static void AcceptanceLetter_TextInit(void);
@@ -273,14 +273,17 @@ static void AcceptanceLetter_PushAToContinue(void)
 }
 
 //ghouslash said to use this. still unsure what it means rn.
+*/
+static void MySpecial(void);
+static void Task_WaitPlayerInput(u8);
+
 void MySpecial(void)
 {
-	u8 taskId;
 	//create a struct of type Window Template with the name template
 	struct WindowTemplate template;
 
 	//create a task
-	taskId = CreateTask(Task_WaitPlayerInput, 0);
+	u8 taskId = CreateTask(Task_WaitPlayerInput, 0);
 
 	//create the window
 	
@@ -300,7 +303,7 @@ void MySpecial(void)
 	//run FillWindowPixelBuffer, using the windowId stored in data[0] and fill the pixels with 0 (pretty sure that's black)
 	FillWindowPixelBuffer(gTasks[taskId].data[0], PIXEL_FILL(0));
 	//Place the window stored at data[0] i guess?
-	PutWindowTimemap(gTasks[taskId].data[0]);
+	PutWindowTilemap(gTasks[taskId].data[0]);
 	
 	//draw the window frame, using the window id of template
 	//do not copy to vram
@@ -309,16 +312,16 @@ void MySpecial(void)
 	DrawStdFramewithCustomTileandPalette(gTasks[taskId].data[0], FALSE, 0x214, 14);
 
 	//print stuff to it if you like
-	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, string, x, y, 0, NULL);
+	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, "hello", 1, 1, 0, NULL);
 	CopyWindowtoVram(gTasks[taskId].data[0],3);
 	}
 
 void Task_WaitPlayerInput(u8 taskId)
 {
 	if (JOY_NEW(A_BUTTON))
-		return 0;
 		//switch page
+		return;
 	else if (JOY_NEW(DPAD_DOWN))
 		//scroll
-		return 0;
+		return;
 }

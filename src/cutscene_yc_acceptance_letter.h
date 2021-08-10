@@ -1,4 +1,0 @@
-#ifndef GUARD_MAIN_MENU_H
-#define GUARD_MAIN_MENU_H
-
-#endif // GUARD_MAIN_MENU_H

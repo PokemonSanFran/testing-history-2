@@ -1,5 +1,5 @@
 gLetter_Header::
-	.string "Congratulations, {playerName}, you’ve been selected!\n"
+	.string "Congratulations, {PLAYER}, you've been selected!\n"
 	.string "$"
 gLetter_Body::
 	.string "We are pleased to inform you that your application to the YC Kickstart Grant has been accepted. \n"
@@ -11,7 +11,7 @@ gLetter_Body::
 	.string "Please sign the attached documents and mail them to YC Headquarters by April 17, 2019, to finalize your acceptance.\n"
 	.string "$"
 gLetter_Footer::
-	.string "We’re stoked to see what you can do!\n"
+	.string "We're stoked to see what you can do!\n"
 	.string "Sincerely,\n"
 	.string "The YC Family\n"
 	.string "$"
