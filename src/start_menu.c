@@ -45,6 +45,7 @@
 #include "constants/songs.h"
 #include "union_room.h"
 #include "constants/rgb.h"
+#include "cutscene_yc_acceptance_letter.h"
 
 // Menu actions
 enum
@@ -61,7 +62,8 @@ enum
     MENU_ACTION_PLAYER_LINK,
     MENU_ACTION_REST_FRONTIER,
     MENU_ACTION_RETIRE_FRONTIER,
-    MENU_ACTION_PYRAMID_BAG
+    MENU_ACTION_PYRAMID_BAG,
+    MENU_ACTION_DEBUG_MENU,
 };
 
 // Save status
@@ -102,6 +104,7 @@ static bool8 StartMenuSafariZoneRetireCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
 static bool8 StartMenuBattlePyramidRetireCallback(void);
 static bool8 StartMenuBattlePyramidBagCallback(void);
+static bool8 DebugMenuCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -153,6 +156,7 @@ static const u8* const sPyramidFloorNames[] =
 static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 1, 0xA, 4, 0xF, 8};
 static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC, 4, 0xF, 8};
 
+static const u8 sText_DebugMenu[] = _("DEBUG");
 static const struct MenuAction sStartMenuItems[] =
 {
     {gText_MenuPokedex, {.u8_void = StartMenuPokedexCallback}},
@@ -168,7 +172,8 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuRest, {.u8_void = StartMenuSaveCallback}},
     {gText_MenuRetire, {.u8_void = StartMenuBattlePyramidRetireCallback}},
     {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}}
-};
+},
+	{gText_DebugMenu, {.u8_void = DebugMenuCallBack
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
 {
