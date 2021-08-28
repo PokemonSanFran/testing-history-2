@@ -4,7 +4,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
-#include "include/cutscene_yc_acceptance_letter.h"
+#include "cutscene_yc_acceptance_letter.h"
 #include "decompress.h"
 #include "event_data.h"
 #include "field_effect.h"
@@ -274,7 +274,7 @@ static void AcceptanceLetter_PushAToContinue(void)
 
 //ghouslash said to use this. still unsure what it means rn.
 */
-static void MySpecial(void);
+void MySpecial(void);
 static void Task_WaitPlayerInput(u8);
 
 void MySpecial(void)

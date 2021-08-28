@@ -76,7 +76,7 @@ enum
 };
 
 // IWRAM common
-bool8 (*gMenuCallback)(void);
+bool8 (*gMenCallback)(void);
 
 // EWRAM
 EWRAM_DATA static u8 sSafariBallsWindowId = 0;
@@ -156,7 +156,7 @@ static const u8* const sPyramidFloorNames[] =
 static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 1, 0xA, 4, 0xF, 8};
 static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC, 4, 0xF, 8};
 
-static const u8 sText_DebugMenu[] = _("DEBUG");
+static const u8 gText_MenuDebug[] = _("DEBUG");
 static const struct MenuAction sStartMenuItems[] =
 {
     {gText_MenuPokedex, {.u8_void = StartMenuPokedexCallback}},
@@ -171,9 +171,10 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuPlayer, {.u8_void = StartMenuLinkModePlayerNameCallback}},
     {gText_MenuRest, {.u8_void = StartMenuSaveCallback}},
     {gText_MenuRetire, {.u8_void = StartMenuBattlePyramidRetireCallback}},
-    {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}}
-},
-	{gText_DebugMenu, {.u8_void = DebugMenuCallBack
+    {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}},
+    //{gText_MenuDebug, {.u8_void = DebugMenuCallBack}}
+    {gText_MenuDebug, {.u8_void = DebugMenuCallback}}
+};
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
 {
@@ -231,7 +232,6 @@ static void InitStartMenu(void);
 static void CreateStartMenuTask(TaskFunc followupFunc);
 static void InitSave(void);
 static u8 RunSaveCallback(void);
-static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
 static void HideSaveMessageWindow(void);
 static void HideSaveInfoWindow(void);
 static void SaveStartTimer(void);
@@ -313,6 +313,9 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
+    
+    if (1 == 1)
+        AddStartMenuAction(MENU_ACTION_DEBUG_MENU);
 }
 
 static void BuildSafariZoneStartMenu(void)
@@ -1414,5 +1417,10 @@ void HideStartMenu(void)
 void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 {
     list[*pos] = newEntry;
-    (*pos)++;
+}
+
+static bool8 DebugMenuCallback(void)
+{
+    MySpecial();
+    return TRUE;
 }
