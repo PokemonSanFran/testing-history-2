@@ -309,11 +309,10 @@ void MySpecial(void)
 	//do not copy to vram
 	//base tile 214
 	//palette number 14
-	DrawStdFramewithCustomTileandPalette(gTasks[taskId].data[0], FALSE, 0x214, 14);
-
+    DrawStdFrameWithCustomTileAndPalette(gTasks[taskId].data[0], FALSE, 0x214, 14);
 	//print stuff to it if you like
 	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, "hello", 1, 1, 0, NULL);
-	CopyWindowtoVram(gTasks[taskId].data[0],3);
+	CopyWindowToVram(gTasks[taskId].data[0],3);
 	}
 
 void Task_WaitPlayerInput(u8 taskId)

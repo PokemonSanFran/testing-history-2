@@ -76,7 +76,7 @@ enum
 };
 
 // IWRAM common
-bool8 (*gMenCallback)(void);
+bool8 (*gMenuCallback)(void);
 
 // EWRAM
 EWRAM_DATA static u8 sSafariBallsWindowId = 0;
@@ -172,7 +172,6 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuRest, {.u8_void = StartMenuSaveCallback}},
     {gText_MenuRetire, {.u8_void = StartMenuBattlePyramidRetireCallback}},
     {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}},
-    //{gText_MenuDebug, {.u8_void = DebugMenuCallBack}}
     {gText_MenuDebug, {.u8_void = DebugMenuCallback}}
 };
 
@@ -293,6 +292,8 @@ static void AddStartMenuAction(u8 action)
 
 static void BuildNormalStartMenu(void)
 {
+    //AddStartMenuAction(MENU_ACTION_DEBUG_MENU);
+
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
     {
         AddStartMenuAction(MENU_ACTION_POKEDEX);
@@ -313,9 +314,6 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
-    
-    if (1 == 1)
-        AddStartMenuAction(MENU_ACTION_DEBUG_MENU);
 }
 
 static void BuildSafariZoneStartMenu(void)
@@ -1421,6 +1419,6 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 
 static bool8 DebugMenuCallback(void)
 {
-    MySpecial();
+    //MySpecial();
     return TRUE;
 }
