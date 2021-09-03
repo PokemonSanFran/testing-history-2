@@ -45,7 +45,7 @@
 #include "constants/songs.h"
 #include "union_room.h"
 #include "constants/rgb.h"
-#include "cutscene_yc_acceptance_letter.h"
+#include "omni.h"
 
 // Menu actions
 enum
