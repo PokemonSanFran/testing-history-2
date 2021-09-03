@@ -1,3 +1,6 @@
+SEP 2
+Got MySpecial to work, need to stop screen from turning black and then focus on printing tex
+
 AUG 31
 After I compile, there is only one option in the start menu. figure out why.
 once done, make MySpecial run in the DebugMenuCallback function..

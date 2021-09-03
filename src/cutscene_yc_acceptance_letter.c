@@ -274,8 +274,6 @@ static void AcceptanceLetter_PushAToContinue(void)
 
 //ghouslash said to use this. still unsure what it means rn.
 */
-void MySpecial(void);
-static void Task_WaitPlayerInput(u8);
 
 void MySpecial(void)
 {
@@ -311,7 +309,7 @@ void MySpecial(void)
 	//palette number 14
     DrawStdFrameWithCustomTileAndPalette(gTasks[taskId].data[0], FALSE, 0x214, 14);
 	//print stuff to it if you like
-	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, "hello", 1, 1, 0, NULL);
+	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, "", 1, 1, 0, NULL);
 	CopyWindowToVram(gTasks[taskId].data[0],3);
 	}
 

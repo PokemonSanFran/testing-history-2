@@ -50,6 +50,7 @@
 // Menu actions
 enum
 {
+    MENU_ACTION_DEBUG_MENU,
     MENU_ACTION_POKEDEX,
     MENU_ACTION_POKEMON,
     MENU_ACTION_BAG,
@@ -63,7 +64,6 @@ enum
     MENU_ACTION_REST_FRONTIER,
     MENU_ACTION_RETIRE_FRONTIER,
     MENU_ACTION_PYRAMID_BAG,
-    MENU_ACTION_DEBUG_MENU,
 };
 
 // Save status
@@ -159,6 +159,7 @@ static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC
 static const u8 gText_MenuDebug[] = _("DEBUG");
 static const struct MenuAction sStartMenuItems[] =
 {
+    {gText_MenuDebug, {.u8_void = DebugMenuCallback}},
     {gText_MenuPokedex, {.u8_void = StartMenuPokedexCallback}},
     {gText_MenuPokemon, {.u8_void = StartMenuPokemonCallback}},
     {gText_MenuBag, {.u8_void = StartMenuBagCallback}},
@@ -171,8 +172,7 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuPlayer, {.u8_void = StartMenuLinkModePlayerNameCallback}},
     {gText_MenuRest, {.u8_void = StartMenuSaveCallback}},
     {gText_MenuRetire, {.u8_void = StartMenuBattlePyramidRetireCallback}},
-    {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}},
-    {gText_MenuDebug, {.u8_void = DebugMenuCallback}}
+    {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}}
 };
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
@@ -292,10 +292,10 @@ static void AddStartMenuAction(u8 action)
 
 static void BuildNormalStartMenu(void)
 {
-    //AddStartMenuAction(MENU_ACTION_DEBUG_MENU);
 
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
     {
+        AddStartMenuAction(MENU_ACTION_DEBUG_MENU);
         AddStartMenuAction(MENU_ACTION_POKEDEX);
     }
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
@@ -1415,10 +1415,12 @@ void HideStartMenu(void)
 void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 {
     list[*pos] = newEntry;
+    (*pos)++;
 }
+
 
 static bool8 DebugMenuCallback(void)
 {
-    //MySpecial();
+    MySpecial();
     return TRUE;
 }

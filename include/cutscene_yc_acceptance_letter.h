@@ -7,3 +7,4 @@
 #endif // GUARD_MAIN_MENU_H
 
 void MySpecial(void);
+void Task_WaitPlayerInput(u8);
