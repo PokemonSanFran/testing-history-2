@@ -281,7 +281,9 @@ void MySpecial(void)
 	struct WindowTemplate template;
 
 	//create a task
-	u8 taskId = CreateTask(Task_WaitPlayerInput, 0);
+	u8 taskId = 8;
+//	u8 taskId = CreateTask(Task_WaitPlayerInput, 0);
+    mgba_printf(MGBA_LOG_DEBUG, "%d", taskId);
 
 	//create the window
 	
@@ -310,6 +312,7 @@ void MySpecial(void)
     DrawStdFrameWithCustomTileAndPalette(gTasks[taskId].data[0], FALSE, 0x214, 14);
 	//print stuff to it if you like
 	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, "", 1, 1, 0, NULL);
+    mgba_printf(MGBA_LOG_DEBUG, "%s", gText_MainMenuContinue);
 	CopyWindowToVram(gTasks[taskId].data[0],3);
 	}
 
