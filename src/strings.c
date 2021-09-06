@@ -1850,3 +1850,6 @@ const u8 gText_Answer[] = _("Answer");
 const u8 gText_PokeBalls[] = _("Poké Balls");
 const u8 gText_Berry[] = _("Berry");
 const u8 gText_Berries[] = _("Berries");
+
+//strings for testing for ROMHack
+const u8 gText_SampleMonolougeText1[] = _("Lorem ipsum motherfuckers!");

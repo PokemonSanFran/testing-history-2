@@ -17,7 +17,6 @@
 #include "menu_helpers.h"
 #include "list_menu.h"
 #include "mystery_event_menu.h"
-#include "naming_screen.h"
 #include "option_menu.h"
 #include "overworld.h"
 #include "palette.h"
@@ -38,6 +37,9 @@
 #include "title_screen.h"
 #include "window.h"
 #include "mystery_gift.h"
+
+//sample text files
+//#include "data/text/omni.inc"
 
 //https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
 #include "printf.h"
@@ -272,7 +274,6 @@ static void AcceptanceLetter_PushAToContinue(void)
 
 }
 
-//ghouslash said to use this. still unsure what it means rn.
 */
 
 void MySpecial(void)
@@ -280,22 +281,23 @@ void MySpecial(void)
 	//create a struct of type Window Template with the name template
 	struct WindowTemplate template;
 
+
 	//create a task
-	u8 taskId = 8;
-//	u8 taskId = CreateTask(Task_WaitPlayerInput, 0);
+	u8 taskId = CreateTask(Task_WaitPlayerInput, 0);
     mgba_printf(MGBA_LOG_DEBUG, "%d", taskId);
 
 	//create the window
 	
-	//invoke SetWindowTemplateFields,
+	//invoke SetWindowTemplateFields, defaults listed in comment
 	// use the address of the struct template,
-	// 0th font id, 
-	// left coordinate 1, 
-	// up coordinate 1, 
-	// basetile number 28, 
-	// palette 15, 
-	// cursor positon 8
-	SetWindowTemplateFields(&template, 0, 1, 1, 28, 3, 15, 8);
+    // bg id 0
+    // left id 
+    // top id 1
+    // width 28
+    // height 3
+    // paletteNum 15
+    // baseblock 8
+	SetWindowTemplateFields(&template, 0, 1, 1, 28, 30, 15, 8);
 
 	//0th spot in the data array will invoke AddWindow with the address of the template
 	gTasks[taskId].data[0] = AddWindow(&template); // save window id
@@ -311,9 +313,9 @@ void MySpecial(void)
 	//palette number 14
     DrawStdFrameWithCustomTileAndPalette(gTasks[taskId].data[0], FALSE, 0x214, 14);
 	//print stuff to it if you like
-	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, "", 1, 1, 0, NULL);
-    mgba_printf(MGBA_LOG_DEBUG, "%s", gText_MainMenuContinue);
+	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, "",1, 1, 0, NULL);
 	CopyWindowToVram(gTasks[taskId].data[0],3);
+    //mgba_printf(MGBA_LOG_DEBUG, "we're trying to print a string %s",gText_SampleMonolougeText1);
 	}
 
 void Task_WaitPlayerInput(u8 taskId)
