@@ -39,7 +39,7 @@
 #include "mystery_gift.h"
 
 //sample text files
-//#include "data/text/omni.inc"
+#include "data/event_scripts.h"
 
 //https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
 #include "printf.h"
@@ -315,7 +315,7 @@ void MySpecial(void)
 	//print stuff to it if you like
 	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, "",1, 1, 0, NULL);
 	CopyWindowToVram(gTasks[taskId].data[0],3);
-    //mgba_printf(MGBA_LOG_DEBUG, "we're trying to print a string %s",gText_SampleMonolougeText1);
+    mgba_printf(MGBA_LOG_DEBUG, "we're trying to print a string %s",gText_SuperMonolougeText1);
 	}
 
 void Task_WaitPlayerInput(u8 taskId)
