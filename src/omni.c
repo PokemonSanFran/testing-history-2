@@ -40,7 +40,7 @@
 
 //sample text files
 #include "omni.h"
-#include "include/omni_text.h" //TODO why do I need to use include to show the file name here? https://discordapp.com/channels/442462691542695948/884605548560011284/884605550019620894
+#include "omni_text.h" 
 
 //https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
 #include "printf.h"
@@ -115,10 +115,13 @@ void MySpecial(void)
 
 void Task_WaitPlayerInput(u8 taskId)
 {
-	if (JOY_NEW(A_BUTTON))
-		//switch page
-		return;
-	else if (JOY_NEW(DPAD_DOWN))
+	if (JOY_NEW(A_BUTTON)){
+        BeginNormalPaletteFade(PALETTES_ALL,0,0,16, RGB_BLACK);
+        //ReturnToFieldOpenStartMenu();
+		return;}
+    else if (JOY_NEW(DPAD_DOWN)){
 		//scroll
-		return;
+        BeginNormalPaletteFade(PALETTES_ALL,0,0,16, RGB_BLACK);
+   //     ReturnToFieldOpenStartMenu();
+		return;}
 }
