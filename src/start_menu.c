@@ -63,7 +63,7 @@ enum
     MENU_ACTION_PLAYER_LINK,
     MENU_ACTION_REST_FRONTIER,
     MENU_ACTION_RETIRE_FRONTIER,
-    MENU_ACTION_PYRAMID_BAG,
+    MENU_ACTION_PYRAMID_BAG
 };
 
 // Save status
@@ -231,6 +231,7 @@ static void InitStartMenu(void);
 static void CreateStartMenuTask(TaskFunc followupFunc);
 static void InitSave(void);
 static u8 RunSaveCallback(void);
+static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
 static void HideSaveMessageWindow(void);
 static void HideSaveInfoWindow(void);
 static void SaveStartTimer(void);
@@ -292,7 +293,6 @@ static void AddStartMenuAction(u8 action)
 
 static void BuildNormalStartMenu(void)
 {
-
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
     {
         AddStartMenuAction(MENU_ACTION_DEBUG_MENU);
