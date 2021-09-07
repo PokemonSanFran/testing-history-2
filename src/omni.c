@@ -39,18 +39,16 @@
 #include "mystery_gift.h"
 
 //sample text files
-#include "data/event_scripts.h"
+#include "omni.h"
+#include "include/omni_text.h" //TODO why do I need to use include to show the file name here? https://discordapp.com/channels/442462691542695948/884605548560011284/884605550019620894
 
 //https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
 #include "printf.h"
 #include "mgba.h"
 #include "../gflib/string_util.h" // for ConvertToAscii()
 
-
+//extern const u8 gText_SuperMonolougeText1[];
 /*
-
-\\wsl$\Ubuntu-20.04\home\psf\Decomps\quest-menu\src\quests.c
-
 
 FUNCTION LIST
 
@@ -69,210 +67,7 @@ scroll up or down with direction pad
 can we reuse the "go outside arrow" but point it downward?
 text should cut off on bottom to show scroll
 
-"press A to continue" should appear in bottom right. or maybe an "A" button press?
-
-https://discordapp.com/channels/442462691542695948/533083367818657792/846780935864582175
-static bool8 AcceptanceLetter_SetUp(void);
-static void AcceptanceLetter_VisualInit(void);
-static void AcceptanceLetter_TextInit(void);
-static void AcceptanceLetter_AllowScroll(void);
-static void AcceptanceLetter_CreateArrow(void);
-static void AcceptanceLetter_CreateLetter(void);
-static void AcceptanceLetter_PushAToContinue(void);
-
-static const struct BgTemplate sQuestMenuBgTemplates[2] =
-{
-    {
-        .bg = 0,
-        .charBaseIndex = 0,
-        .mapBaseIndex = 31,
-        .priority = 0
-    }, 
-    {
-        .bg = 1,
-        .charBaseIndex = 3,
-        .mapBaseIndex = 30,
-        .priority = 1
-    }
-};
-
-static const struct WindowTemplate sLetterWindowSections[] =
-{
-    {
-        .bg = 0,
-        .tilemapLeft = 0x07,
-        .tilemapTop = 0x01,
-        .width = 0x13,
-        .height = 0x0c,
-        .paletteNum = 0x0f,
-        .baseBlock = 0x02bf
-    }, 
-    {
-        .bg = 0,
-        .tilemapLeft = 0x05,
-        .tilemapTop = 0x0e,
-        .width = 0x19,
-        .height = 0x06,
-        .paletteNum = 0x0d,
-        .baseBlock = 0x0229
-    }, 
-    {
-        .bg = 0,
-        .tilemapLeft = 0x01,
-        .tilemapTop = 0x01,
-        .width = 0x05,
-        .height = 0x04,
-        .paletteNum = 15,
-        .baseBlock = 0x0215
-    },
-    DUMMY_WIN_TEMPLATE
-};
-
-static void AcceptanceLetter_MainCB(void)
-{
-    RunTasks();
-    AnimateSprites();
-    BuildOamBuffer();
-    DoScheduledBgTilemapCopiesToVram();
-    UpdatePaletteFade();
-}
-
-static void AcceptanceLetter_VBlankCB(void)
-{
-    LoadOam();
-    ProcessSpriteCopyRequests();
-    TransferPlttBuffer();
-}
-
-static bool8 AcceptanceLetter_SetUp(void)
-{
-    SetVBlankHBlankCallbacksToNull();
-    ClearScheduledBgCopiesToVram();
-    ScanlineEffect_Stop();
-    FreeAllSpritePalettes();
-    ResetPaletteFade();
-    ResetSpriteData();
-    ResetItemMenuIconState();
-    ResetTasks();
-        
-        gMain.state++;
-    case 7:
-        if (AcceptanceLetter_VisualInit())
-        {
-            sStateDataPtr->data[0] = 0;
-            gMain.state++;
-        }
-        else
-        {
-            QuestMenu_FadeAndBail();
-            return TRUE;
-        }
-        break;
-    case 8:
-        if (QuestMenu_LoadGraphics() == TRUE)
-            gMain.state++;
-        break;
-    case 9:
-        QuestMenu_InitWindows();
-        gMain.state++;
-        break;
-    case 10:
-        QuestMenu_InitItems();
-        QuestMenu_SetCursorPosition();
-        QuestMenu_SetScrollPosition();
-        gMain.state++;
-        break;
-    case 11:
-        if (QuestMenu_AllocateResourcesForListMenu())
-        {
-            gMain.state++;
-        }
-        else
-        {
-            QuestMenu_FadeAndBail();
-            return TRUE;
-        }
-        break;
-    case 12:
-        QuestMenu_BuildListMenuTemplate();
-        gMain.state++;
-        break;
-    case 13:
-        QuestMenu_PrintHeader();
-        gMain.state++;
-        break;
-    case 14:
-        //sub_80985E4();
-        gMain.state++;
-        break;
-    case 15:
-        taskId = CreateTask(Task_QuestMenuMain, 0);
-        gTasks[taskId].data[0] = ListMenuInit(&gMultiuseListMenuTemplate, sListMenuState.scroll, sListMenuState.row);
-        gMain.state++;
-        break;
-    case 16:
-        QuestMenu_PlaceTopMenuScrollIndicatorArrows();
-        gMain.state++;
-        break;
-    case 17:
-        //HelpSystem_SetSomeVariable2(29);
-        gMain.state++;
-        break;
-    case 18:
-        if (sListMenuState.initialized == 1)
-        {
-            BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
-        }
-        gMain.state++;
-        break;
-    case 19:
-        if (sListMenuState.initialized == 1)
-        {
-            BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
-        }
-        else
-        {
-            BeginPCScreenEffect_TurnOn(0, 0, 0);
-            QuestMenu_SetInitializedFlag(1);
-            PlaySE(SE_PC_LOGIN);
-        }
-        gMain.state++;
-        break;
-    case 20:
-        gMain.state++;
-        break;
-    default:
-        SetVBlankCallback(QuestMenu_VBlankCB);
-        SetMainCallback2(QuestMenu_MainCB);
-        return TRUE;
-    }
-    return FALSE;
-}
-static void AcceptanceLetter_VisualInit(void)
-{
-
-}
-
-static void AcceptanceLetter_TextInit(void)
-{
-
-}
-static void AcceptanceLetter_AllowScroll(void)
-{
-
-}
-static void AcceptanceLetter_CreateArrow(void)
-{
-
-}
-static void AcceptanceLetter_CreateLetter(void)
-{
-
-}
-static void AcceptanceLetter_PushAToContinue(void)
-{
-
-}
+"press a to continue" should appear in bottom right. or maybe an "a" button press?
 
 */
 
@@ -284,7 +79,7 @@ void MySpecial(void)
 
 	//create a task
 	u8 taskId = CreateTask(Task_WaitPlayerInput, 0);
-    mgba_printf(MGBA_LOG_DEBUG, "%d", taskId);
+    mgba_printf(MGBA_LOG_DEBUG, "this is taskId: %d", taskId);
 
 	//create the window
 	
@@ -313,9 +108,9 @@ void MySpecial(void)
 	//palette number 14
     DrawStdFrameWithCustomTileAndPalette(gTasks[taskId].data[0], FALSE, 0x214, 14);
 	//print stuff to it if you like
-	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, "",1, 1, 0, NULL);
+	AddTextPrinterParameterized(gTasks[taskId].data[0], 0, gText_SuperMonolougeText1,1, 1, 0, NULL);
+     
 	CopyWindowToVram(gTasks[taskId].data[0],3);
-    mgba_printf(MGBA_LOG_DEBUG, "we're trying to print a string %s",gText_SuperMonolougeText1);
 	}
 
 void Task_WaitPlayerInput(u8 taskId)

@@ -1,0 +1,4 @@
+#include "global.h"
+#include "omni_text.h"
+
+ALIGNED(4) const u8 gText_SuperMonolougeText1[] = _(" Congratulations, {PLAYER}, you've been selected! \n We are pleased to inform you that your application to the YC Kickstart Grant has been accepted. Our mission is to find the best and brightest young Pokémon Trainers and help accelerate their careers. \n As a YC Kickstart Grant recipient, you will: \n Be flown to the SanFran region in September. \n Participate in the first season of the NEW YC Sanctioned Pokémon League! \n Receive all the benefits of joining the YC family, including housing, a stipend, and a toolkit of the best swag around. \n Please sign the attached documents and mail them to YC Headquarters by April 17, 2019, to finalize your acceptance. \n We're stoked to see what you can do! \n Sincerely, \n The YC Family ");
