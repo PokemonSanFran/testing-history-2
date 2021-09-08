@@ -1420,6 +1420,6 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 
 static bool8 DebugMenuCallback(void)
 {
-    //MySpecial();
+    MySpecial();
     return TRUE;
 }

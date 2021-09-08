@@ -1304,8 +1304,12 @@ SECTIONS {
     .debug_macinfo  0 : { *(.debug_macinfo) }
 
     /* Discard everything not specifically mentioned above. */
+
+/* https://discordapp.com/channels/442462691542695948/648346198175907859/828339692788645959 */
+
+/*
     /DISCARD/ :
     {
         *(*);
-    }
+    }*/
 }
