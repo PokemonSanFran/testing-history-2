@@ -1,8 +1,0 @@
-gSampleMonolougeText1::
-    .string "Welcome to Pokémon San Fran!\n"
-    .string "Before we get started...\n"
-    .string "\n"
-    .string "If you paid for this game,\n"
-    .string "you have been scammed.\n\n"
-    .string "We will never charge for the\n"
-    .string "base version of the game.$"
