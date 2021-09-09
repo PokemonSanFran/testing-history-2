@@ -1,4 +1,5 @@
 #include "global.h"
+#include "main_menu.h"
 #include "diploma.h"
 #include "palette.h"
 #include "main.h"
@@ -48,9 +49,8 @@ static const u16 sDiplomaPalettes[][16] =
 static const u32 sDiplomaTilemap[] = INCBIN_U32("graphics/misc/diploma_map.bin.lz");
 static const u32 sDiplomaTiles[] = INCBIN_U32("graphics/misc/diploma.4bpp.lz");
 
-void MySpecial(void)
+void DisplayLetter(void)
 {
-    mgba_printf(MGBA_LOG_DEBUG, "nice");
     SetVBlankCallback(NULL);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0);
     SetGpuReg(REG_OFFSET_BG3CNT, 0);
@@ -123,13 +123,15 @@ static void Task_DiplomaFadeOut(u8 taskId)
         Free(sDiplomaTilemapPtr);
         FreeAllWindowBuffers();
         DestroyTask(taskId);
-        SetMainCallback2(CB2_ReturnToFieldFadeFromBlack);
+        //SetMainCallback2(CB2_ReturnToFieldFadeFromBlack); //original code
+        //SetMainCallback2(CB2_NewGame);
+        CB2_NewGame();
     }
 }
 
 static void DisplayDiplomaText(void)
 {
-    StringExpandPlaceholders(gStringVar4, gText_SuperMonolougeText1);
+    StringExpandPlaceholders(gStringVar4, gText_AcceptLetterText1);
     PrintDiplomaText(gStringVar4, 0, 0);
     PutWindowTilemap(0);
     CopyWindowToVram(0, 3);

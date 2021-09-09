@@ -1,0 +1,1 @@
+void MySpecial(void);

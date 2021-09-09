@@ -39,6 +39,7 @@
 #include "window.h"
 #include "mystery_gift.h"
 
+#include "accept_letter.h"
 //https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
 #include "printf.h"
 #include "mgba.h"
@@ -2780,18 +2781,20 @@ static void Task_NewGameBirchSpeech_Cleanup(u8 taskId)
         FreeAllWindowBuffers();
         FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
         ResetAllPicSprites();
-        SetMainCallback2(CB2_NewGame);
-        DestroyTask(taskId);
+        //SetMainCallback2(CB2_NewGame); //original code
+        //DestroyTask(taskId); //original code
+        DisplayLetter();
+        //CB2_NewGame();
     }
 }
 
 static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
 {
-
     u8 taskId;
     u8 spriteId;
     u16 savedIme;
-        ResetBgsAndClearDma3BusyFlags(0);
+
+    ResetBgsAndClearDma3BusyFlags(0);
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
     InitBgsFromTemplates(0, sMainMenuBgTemplates, ARRAY_COUNT(sMainMenuBgTemplates));

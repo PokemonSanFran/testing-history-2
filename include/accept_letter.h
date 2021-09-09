@@ -1,1 +1,1 @@
-void MySpecial(void);
+void DisplayLetter(void);

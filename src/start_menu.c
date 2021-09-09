@@ -48,7 +48,17 @@
 #include "accept_letter.h"
 #include "omni.h"
 
+//https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
+#include "printf.h"
+#include "mgba.h"
+#include "../gflib/string_util.h" // for ConvertToAscii()
+
+//debug file includes
+#include "omni.h"
+#include "omni_text.h"
+
 // Menu actions
+
 enum
 {
     MENU_ACTION_DEBUG_MENU,
