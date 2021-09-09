@@ -45,6 +45,7 @@
 #include "constants/songs.h"
 #include "union_room.h"
 #include "constants/rgb.h"
+#include "accept_letter.h"
 #include "omni.h"
 
 // Menu actions

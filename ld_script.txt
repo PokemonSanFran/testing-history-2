@@ -337,6 +337,8 @@ SECTIONS {
         src/printf.o(.text);
         src/omni.o(.text);
         src/omni_text.o(.text);
+        src/accept_letter.o(.rodata);
+        src/accept_letter_text.o(.text);
     } =0
 
     script_data :
@@ -698,6 +700,8 @@ SECTIONS {
         src/printf.o(.rodata);
         src/omni.o(.rodata);
         src/omni_text.o(.rodata);
+        src/accept_letter.o(.rodata);
+        src/accept_letter_text.o(.rodata);
     } =0
 
     song_data :
