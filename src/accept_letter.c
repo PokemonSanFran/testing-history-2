@@ -1,3 +1,11 @@
+/*
+ * TODO
+ * Why does this screen take so long to load?
+ * What bloat can I get rid of?
+ * How do I display a second screen or allow the player to scroll down?
+ * How do I change the background?
+ * Why does this throw errors when run?
+ */
 #include "global.h"
 #include "main_menu.h"
 #include "diploma.h"

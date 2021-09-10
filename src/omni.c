@@ -17,8 +17,11 @@ give pokemon to player
 
 */
 #include "global.h"
-#include "save.h"
+#include "save.h" //enable saving
 #include "pokemon.h"
+#include "event_scripts.h" //for needed script text
+#include "data/event_scripts.s" //function for calling bag
+#include "../gflib/text.h" //expanded defines
 
 //https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
 #include "printf.h"
@@ -26,5 +29,6 @@ give pokemon to player
 #include "../gflib/string_util.h" // for ConvertToAscii()
 
 void MySpecial(){
-    return;
+    ScriptContext1_SetupScript(EventScript_SelectWithoutRegisteredItem);
+    return TRUE;
 };
