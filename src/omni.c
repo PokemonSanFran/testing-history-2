@@ -29,7 +29,9 @@ give pokemon to player
 #include "mgba.h"
 #include "../gflib/string_util.h" // for ConvertToAscii()
 
+extern const u8 EventScript_SelectWithoutRegisteredItem[];
+
 void MySpecial(){
-//    ScriptContext1_SetupScript(EventScript_SelectWithoutRegisteredItem);
+    ScriptContext1_SetupScript(EventScript_SelectWithoutRegisteredItem);
     return;
 };

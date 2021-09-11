@@ -36,15 +36,10 @@ MauvilleCity_PokemonCenter_1F_EventScript_Youngster:: @ 8210E98
 	end
 
 MauvilleCity_PokemonCenter_1F_Text_ManOverThereSaysWeirdThings: @ 8210EA1
-    .string "{RIVAL}'s high Special Attack and \n"
-    .string "Special Defense makes it ideal for\p"
-    .string "special support.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
-
-	//.string "That man over there, he says weird\n"
-	//.string "things!\p"
-	//.string "He's funny in a weird way.\n"
-	//.string "I doubt I'll forget about him!$"
+	.string "That man over there, he says weird\n"
+	.string "things!\p"
+	.string "He's funny in a weird way.\n"
+	.string "I doubt I'll forget about him!$"
 
 MauvilleCity_PokemonCenter_1F_Text_MyDataUpdatedFromRecordCorner: @ 8210F06
 	.string "When I accessed the Record Corner,\n"
