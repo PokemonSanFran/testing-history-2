@@ -46,11 +46,11 @@ gText_StarterSelectZoeyText2::
 
 gText_StarterSelectGameText1::
     .string "Due to the delicate ecosystem of\n"
-    .string "the region, Trainers are permitted\n"
+    .string "the region, Trainers are permitted\p"
     .string "to bring one Pokémon from outside\n"
     .string "the region into the region with them.\p"
-    .string "Please choose one Pokémonto accompany\n"
-    .string "you on your adventure. You will not\n"
+    .string "Please choose one Pokémon to accompany\n"
+    .string "you on your adventure. You will not\p"
     .string "be able to access the others during\n"
     .string "your playthrough, so choose wisely.$"
 
@@ -95,7 +95,7 @@ gText_StarterSelectSwinubDesc::
 
 gText_StarterSelectHattremDesc::
     .string "{RIVAL}'s high Special Attack and \n"
-    .string "Special Defense makes it ideal for\n"
+    .string "Special Defense makes it ideal for\p"
     .string "special support.\p"
     .string "Are you sure you want to choose {RIVAL}?$"
 
