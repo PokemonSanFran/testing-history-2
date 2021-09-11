@@ -1,38 +1,14 @@
 	.align 2
-    /*
-gText_ConfirmSave:: @ 82C87B4
-	.string "Would you like to save the game?$"
+/*
+Script_StarterSelectScript::
+    fadescreen 1
+    lock
+    msgbox gText_StarterSelectZoeyText1, MSGBOX_DEFAULT
+    msgbox gText_StarterSelectZoeyText2, MSGBOX_DEFAULT
+    fadescreen 0
+    release
+    end
 
-gText_AlreadySavedFile:: @ 82C87D5
-	.string "There is already a saved file.\n"
-	.string "Is it okay to overwrite it?$"
-
-gText_SavingDontTurnOff:: @ 82C8810
-	.string "Saving…\n"
-	.string "Don't Turn Off The Power.$"
-
-gText_PlayerSavedGame:: @ 82C8832
-	.string "{PLAYER} saved the game.$"
-
-gText_DifferentSaveFile:: @ 82C8845
-	.string "Warning!\p"
-	.string "There is a different game file that\n"
-	.string "is already saved.\p"
-	.string "If you save now, the other file's\n"
-	.string "adventure, including items and\l"
-	.string "Pokémon, will be entirely lost.\p"
-	.string "Are you sure you want to save now\n"
-	.string "and overwrite the other save file?$"
-
-gText_SaveError:: @ 82C892A
-	.string "Save error.\p"
-	.string "Please exchange the\n"
-	.string "backup memory.$"
-
-gText_SavingDontTurnOffPower:: @ 82C8959
-	.string "Saving…\n"
-	.string "Don't Turn Off The Power.$"
-*/
 gText_StarterSelectZoeyText1::
     .string "Almost packed and ready to go!\n"
     .string "I still can't believe I made it...$"
@@ -42,22 +18,22 @@ gText_StarterSelectZoeyText2::
     .string "one of you guys. Man, this sucks.\p"
     .string "I promise, once we're the Champion,\n"
     .string "we'll come back for the rest of you!\p"
-    .string "But for now, it's all business..."
-
+    .string "But for now, it's all business...$"
 gText_StarterSelectGameText1::
     .string "Due to the delicate ecosystem of\n"
-    .string "the region, Trainers are permitted\p"
-    .string "to bring one Pokémon from outside\n"
+    .string "the region, Trainers are permitted\l"
+    .string "to bring one Pokémon from outside\l"
     .string "the region into the region with them.\p"
     .string "Please choose one Pokémon to accompany\n"
-    .string "you on your adventure. You will not\p"
-    .string "be able to access the others during\n"
+    .string "you on your adventure. You will not\l"
+    .string "be able to access the others during\l"
     .string "your playthrough, so choose wisely.$"
 
 gText_StarterSelectGameText2::
     .string "Please choose a Pokémon to bring\n"
     .string "with you to SanFran.$"
 
+*/
 gText_StarterSelectPoliwhirlDesc::
     .string "{RIVAL} excels in the rain and\n"
     .string "gives plenty of options for Trainers.\p"
@@ -95,7 +71,7 @@ gText_StarterSelectSwinubDesc::
 
 gText_StarterSelectHattremDesc::
     .string "{RIVAL}'s high Special Attack and \n"
-    .string "Special Defense makes it ideal for\p"
+    .string "Special Defense makes it ideal for\l"
     .string "special support.\p"
     .string "Are you sure you want to choose {RIVAL}?$"
 

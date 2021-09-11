@@ -1,6 +1,44 @@
 LilycoveCity_CoveLilyMotel_2F_MapScripts:: @ 82186D2
 	.byte 0
 
+Script_StarterSelectScript::
+    fadescreen 1
+    lock
+    msgbox gText_StarterSelectZoeyText1, MSGBOX_DEFAULT
+    msgbox gText_StarterSelectZoeyText2, MSGBOX_DEFAULT
+//    msgbox gText_StarterSelectGameText1, MSGBOX_NPC
+  //  msgbox gText_StarterSelectGameText2, MSGBOX_NPC
+    message gText_StarterSelectGameText1
+    message gText_StarterSelectGameText2
+    call Common_EventScript_SaveGame
+    fadescreen 0
+    release
+    end
+
+gText_StarterSelectZoeyText1::
+    .string "Almost packed and ready to go!\n"
+    .string "I still can't believe I made it...$"
+
+gText_StarterSelectZoeyText2::
+    .string "But the rules say I can only bring\n"
+    .string "one of you guys. Man, this sucks.\p"
+    .string "I promise, once we're the Champion,\n"
+    .string "we'll come back for the rest of you!\p"
+    .string "But for now, it's all business...$"
+
+gText_StarterSelectGameText1::
+    .string "Due to the delicate ecosystem of\n"
+    .string "the region, Trainers are permitted\l"
+    .string "to bring one Pokémon from outside\l"
+    .string "the region into the region with them.\p"
+    .string "Please choose one Pokémon to accompany\n"
+    .string "you on your adventure. You will not\l"
+    .string "be able to access the others during\l"
+    .string "your playthrough, so choose wisely.\p$"
+
+gText_StarterSelectGameText2::
+    .string "Please choose a Pokémon to bring\n"
+    .string "with you to SanFran.$"
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner:: @ 82186D3
 	lock
 	faceplayer
