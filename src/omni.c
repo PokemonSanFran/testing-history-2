@@ -20,7 +20,7 @@ give pokemon to player
 #include "save.h" //enable saving
 #include "pokemon.h"
 #include "event_scripts.h" //for needed script text
-#include "../gflib/text.h" //expanded defines
+//#include "../gflib/text.h" //expanded defines
 #include "script.h"
 
 
@@ -31,7 +31,7 @@ give pokemon to player
 
 extern const u8 EventScript_SelectWithoutRegisteredItem[];
 
-void MySpecial(){
+bool8 MySpecial(void){
     ScriptContext1_SetupScript(EventScript_SelectWithoutRegisteredItem);
-    return;
+    return TRUE;
 };
