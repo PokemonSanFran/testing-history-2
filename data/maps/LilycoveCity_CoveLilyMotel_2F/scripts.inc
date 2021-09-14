@@ -2,10 +2,13 @@ LilycoveCity_CoveLilyMotel_2F_MapScripts:: @ 82186D2
 	.byte 0
 
 Script_StarterSelectScript::
+    setvar VAR_0x8000, MUGSHOT_LYRA
     fadescreen 1
     lock
+    callnative DrawMugshot
     msgbox gText_StarterSelectZoeyText1, MSGBOX_DEFAULT
     msgbox gText_StarterSelectZoeyText2, MSGBOX_DEFAULT
+    callnative ClearMugshot
 //    msgbox gText_StarterSelectGameText1, MSGBOX_NPC
   //  msgbox gText_StarterSelectGameText2, MSGBOX_NPC
     message gText_StarterSelectGameText1
@@ -39,6 +42,7 @@ gText_StarterSelectGameText1::
 gText_StarterSelectGameText2::
     .string "Please choose a Pokémon to bring\n"
     .string "with you to SanFran.$"
+
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner:: @ 82186D3
 	lock
 	faceplayer
