@@ -2,7 +2,7 @@ LilycoveCity_CoveLilyMotel_2F_MapScripts:: @ 82186D2
 	.byte 0
 
 Script_StarterSelectScript::
-    setvar VAR_0x8000, MUGSHOT_LYRA
+    setvar VAR_0x8000, MUGSHOT_HILDA
     fadescreen 1
     lock
     callnative DrawMugshot
