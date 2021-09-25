@@ -11,8 +11,8 @@ Script_StarterSelectScript::
     callnative ClearMugshot
 //    msgbox gText_StarterSelectGameText1, MSGBOX_NPC
   //  msgbox gText_StarterSelectGameText2, MSGBOX_NPC
-    message gText_StarterSelectGameText1
-    message gText_StarterSelectGameText2
+    msgbox gText_StarterSelectGameText1, MSGBOX_DEFAULT
+    msgbox gText_StarterSelectGameText2, MSGBOX_DEFAULT
     call Common_EventScript_SaveGame
     fadescreen 0
     release
