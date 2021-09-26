@@ -1852,12 +1852,12 @@ const u8 gText_Berry[] = _("Berry");
 const u8 gText_Berries[] = _("Berries");
 
 // Starter Select Menu
-const u8 gText_Starter0[] = _("Tai");
-const u8 gText_Starter1[] = _("Matt");
-const u8 gText_Starter2[] = _("Sora");
-const u8 gText_Starter3[] = _("Izzy");
-const u8 gText_Starter4[] = _("Mimi");
-const u8 gText_Starter5[] = _("Joe");
-const u8 gText_Starter6[] = _("TK");
-const u8 gText_Starter7[] = _("Kari");
-const u8 gText_Starter8[] = _("Meiko");
+const u8 gText_Starter0[] = _("Poliwhirl");
+const u8 gText_Starter1[] = _("Fletchinder");
+const u8 gText_Starter2[] = _("Petilil");
+const u8 gText_Starter3[] = _("Flaaffy");
+const u8 gText_Starter4[] = _("Mareanie");
+const u8 gText_Starter5[] = _("Aron");
+const u8 gText_Starter6[] = _("Swinub");
+const u8 gText_Starter7[] = _("Hattrem");
+const u8 gText_Starter8[] = _("Pancham");

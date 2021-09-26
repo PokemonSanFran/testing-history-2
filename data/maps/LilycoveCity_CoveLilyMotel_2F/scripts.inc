@@ -10,9 +10,9 @@ Script_StarterSelectScript::
     msgbox gText_StarterSelectZoeyText2, MSGBOX_DEFAULT
     callnative ClearMugshot
     msgbox gText_StarterSelectGameText1, MSGBOX_DEFAULT
-    msgbox gText_StarterSelectGameText2, MSGBOX_DEFAULT
     call Common_EventScript_SaveGame
-    multichoice 17, 6, MULTI_STARTER_SELECT, TRUE
+    multichoice 0, 0, MULTI_STARTER_SELECT, TRUE
+    msgbox gText_StarterSelectGameText2, MSGBOX_DEFAULT
     /*uncomment once multi is working
     switch VAR_RESULT
     case 0, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
