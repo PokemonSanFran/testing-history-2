@@ -9,11 +9,22 @@ Script_StarterSelectScript::
     msgbox gText_StarterSelectZoeyText1, MSGBOX_DEFAULT
     msgbox gText_StarterSelectZoeyText2, MSGBOX_DEFAULT
     callnative ClearMugshot
-//    msgbox gText_StarterSelectGameText1, MSGBOX_NPC
-  //  msgbox gText_StarterSelectGameText2, MSGBOX_NPC
     msgbox gText_StarterSelectGameText1, MSGBOX_DEFAULT
     msgbox gText_StarterSelectGameText2, MSGBOX_DEFAULT
     call Common_EventScript_SaveGame
+    multichoice 17, 6, MULTI_STARTER_SELECT, TRUE
+    /*uncomment once multi is working
+    switch VAR_RESULT
+    case 0, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
+    case 1, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
+    case 2, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
+    case 3, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
+    case 4, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
+    case 5, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
+    case 6, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
+    case 7, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
+    case 8, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
+*/
     fadescreen 0
     release
     end

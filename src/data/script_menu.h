@@ -898,6 +898,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_SLATEPORT_TENT_RULES]       = MULTICHOICE(MultichoiceList_SlateportTentRules),
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
+    [MULTI_STARTER_SELECT]             = MULTICHOICE(MultichoiceList_Starter_Select),
 };
 
 const u8 *const gStdStrings[] =
@@ -1004,3 +1005,17 @@ static const u8 *const sWirelessOptions_NoRecordMixBerryCrush[] =
     CableClub_Text_YouMayBattleHere,
     CableClub_Text_CancelSelectedItem,
 };
+
+static const struct MenuAction MultichoiceList_Starter_Select[] = 
+{
+    {gText_Starter0},
+    {gText_Starter1},
+    {gText_Starter2},
+    {gText_Starter3},
+    {gText_Starter4},
+    {gText_Starter5},
+    {gText_Starter6},
+    {gText_Starter7},
+    {gText_Starter8},
+};
+
