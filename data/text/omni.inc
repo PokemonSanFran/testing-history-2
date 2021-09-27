@@ -33,7 +33,7 @@ gText_StarterSelectGameText2::
     .string "Please choose a Pokémon to bring\n"
     .string "with you to SanFran.$"
 
-*/
+
 gText_StarterSelectPoliwhirlDesc::
     .string "{RIVAL} excels in the rain and\n"
     .string "gives plenty of options for Trainers.\p"
@@ -78,4 +78,4 @@ gText_StarterSelectHattremDesc::
 gText_StarterSelectPanchamDesc::
     .string "{RIVAL} makes up for low Speed\n"
     .string "with high Attack and unique typing.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "Are you sure you want to choose {RIVAL}?$"*/
