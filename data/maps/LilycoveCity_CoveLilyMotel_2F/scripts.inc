@@ -3,7 +3,7 @@ LilycoveCity_CoveLilyMotel_2F_MapScripts:: @ 82186D2
 
 Script_StarterSelectScript::
     setvar VAR_0x8000, MUGSHOT_HILDA
-    fadescreen 1
+    fadescreen FADE_TO_BLACK
     lock
     callnative DrawMugshot
     msgbox gText_StarterSelectZoeyText1, MSGBOX_DEFAULT
@@ -13,24 +13,124 @@ Script_StarterSelectScript::
     closemessage
     call Common_EventScript_SaveGame
     closemessage
+    goto Script_StarterSelectMenu
+
+Script_StarterSelectMenu::
     msgbox gText_StarterSelectGameText2, MSGBOX_DEFAULT
     closemessage
     multichoice 0, 0, MULTI_STARTER_SELECT, TRUE
     switch VAR_RESULT
     case 0, StarterSelect_0_Script
+    case 1, StarterSelect_1_Script
+    case 2, StarterSelect_2_Script
+    case 3, StarterSelect_3_Script
+    case 4, StarterSelect_4_Script
+    case 5, StarterSelect_5_Script
+    case 6, StarterSelect_6_Script
+    case 7, StarterSelect_7_Script
+    case 8, StarterSelect_8_Script
 
 StarterSelect_0_Script::
-    msgbox gText_StarterSelectPoliwhirlDesc, MSGBOX_DEFAULT
-    /*uncomment once multi is working
-    case 1, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
-    case 2, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
-    case 3, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
-    case 4, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
-    case 5, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
-    case 6, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
-    case 7, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
-    case 8, BattleFrontier_BattleArenaLobby_EventSCript_TryEnterCHallenge
-*/
+    msgbox gText_StarterSelectPoliwhirlDesc, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq Script_StarterSelectMenu
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+StarterSelect_1_Script::
+    msgbox gText_StarterSelectFletchinderDesc, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq Script_StarterSelectMenu
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+StarterSelect_2_Script::
+    msgbox gText_StarterSelectPetililDesc, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq Script_StarterSelectMenu
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+StarterSelect_3_Script::
+    msgbox gText_StarterSelectFlaaffyDesc, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq Script_StarterSelectMenu
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    givemon SPECIES_FLAAFFY, 22, ITEM_NONE
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+StarterSelect_4_Script::
+    msgbox gText_StarterSelectMareanieDesc, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq Script_StarterSelectMenu
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+StarterSelect_5_Script::
+    msgbox gText_StarterSelectAronDesc, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq Script_StarterSelectMenu
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    givemon SPECIES_ARON, 22, ITEM_NONE
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+StarterSelect_6_Script::
+    msgbox gText_StarterSelectSwinubDesc, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq Script_StarterSelectMenu
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    givemon SPECIES_SWINUB, 22, ITEM_NONE
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+StarterSelect_7_Script::
+    msgbox gText_StarterSelectHattremDesc, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq Script_StarterSelectMenu
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+StarterSelect_8_Script::
+    msgbox gText_StarterSelectPanchamDesc, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq Script_StarterSelectMenu
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+
+    setflag FLAG_SYS_POKEMON_GET
     fadescreen 0
     release
     end
@@ -65,7 +165,7 @@ gText_StarterSelectPoliwhirlDesc::
     .string "gives plenty of options for Trainers.\p"
     .string "Are you sure you want to choose {RIVAL}?$"
 
-gText_StarterSelectFletchhinderDesc::
+gText_StarterSelectFletchinderDesc::
     .string "{RIVAL} can provide offense or\n"
     .string "support with its high Speed.\p"
     .string "Are you sure you want to choose {RIVAL}?$"
@@ -105,6 +205,9 @@ gText_StarterSelectPanchamDesc::
     .string "{RIVAL} makes up for low Speed\n"
     .string "with high Attack and unique typing.\p"
     .string "Are you sure you want to choose {RIVAL}?$"
+
+gText_StarterSelectionChosen::
+    .string "You chose to bring {RIVAL} to SanFran.$"
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner:: @ 82186D3
 	lock
