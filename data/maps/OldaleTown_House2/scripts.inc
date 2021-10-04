@@ -1,15 +1,15 @@
-OldaleTown_House2_MapScripts:: @ 81FBF5A
+OldaleTown_House2_MapScripts::
 	.byte 0
 
-OldaleTown_House2_EventScript_Woman:: @ 81FBF5B
+OldaleTown_House2_EventScript_Woman::
 	msgbox OldaleTown_House2_Text_PokemonLevelUp, MSGBOX_NPC
 	end
 
-OldaleTown_House2_EventScript_Man:: @ 81FBF64
+OldaleTown_House2_EventScript_Man::
 	msgbox OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon, MSGBOX_NPC
 	end
 
-OldaleTown_House2_Text_PokemonLevelUp: @ 81FBF6D
+OldaleTown_House2_Text_PokemonLevelUp: 
 	.string "When Pokémon battle, they eventually\n"
 	.string "level up and become stronger.$"
 

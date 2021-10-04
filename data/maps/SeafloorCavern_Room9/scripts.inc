@@ -5,10 +5,10 @@
 .set LOCALID_GRUNT_2, 5
 .set LOCALID_KYOGRE_SLEEPING, 7
 
-SeafloorCavern_Room9_MapScripts:: @ 8234DC8
+SeafloorCavern_Room9_MapScripts::
 	.byte 0
 
-SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre:: @ 8234DC9
+SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	lockall
 	setvar VAR_0x8004, LOCALID_ARCHIE
 	setvar VAR_0x8005, LOCALID_MAXIE
@@ -150,7 +150,7 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre:: @ 8234DC9
 	releaseall
 	end
 
-SeafloorCavern_Room9_Movement_ArchieApproachPlayer: @ 823502A
+SeafloorCavern_Room9_Movement_ArchieApproachPlayer:
 	walk_right
 	walk_right
 	walk_right
@@ -160,21 +160,21 @@ SeafloorCavern_Room9_Movement_ArchieApproachPlayer: @ 823502A
 	walk_right
 	step_end
 
-SeafloorCavern_Room9_Movement_Unused1: @ 8235032
+SeafloorCavern_Room9_Movement_Unused1:
 	walk_left
 	walk_left
 	step_end
 
-SeafloorCavern_Room9_Movement_ArchieListenMessage: @ 8235035
+SeafloorCavern_Room9_Movement_ArchieListenMessage:
 	walk_left
 	delay_16
 	step_end
 
-SeafloorCavern_Room9_Movement_Unused2: @ 8235038
+SeafloorCavern_Room9_Movement_Unused2:
 	walk_right
 	step_end
 
-SeafloorCavern_Room9_Movement_ArchieExit: @ 823503A
+SeafloorCavern_Room9_Movement_ArchieExit:
 	face_up
 	lock_facing_direction
 	walk_down
@@ -182,7 +182,7 @@ SeafloorCavern_Room9_Movement_ArchieExit: @ 823503A
 	walk_in_place_fastest_right
 	step_end
 
-SeafloorCavern_Room9_Movement_KyogreApproach: @ 8235040
+SeafloorCavern_Room9_Movement_KyogreApproach:
 	delay_16
 	delay_16
 	walk_slow_down
@@ -195,12 +195,12 @@ SeafloorCavern_Room9_Movement_KyogreApproach: @ 8235040
 	delay_16
 	step_end
 
-SeafloorCavern_Room9_Movement_KyogreExit: @ 823504B
+SeafloorCavern_Room9_Movement_KyogreExit:
 	slide_up
 	slide_up
 	step_end
 
-SeafloorCavern_Room9_Movement_MaxieArrive: @ 823504E
+SeafloorCavern_Room9_Movement_MaxieArrive:
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
@@ -208,24 +208,24 @@ SeafloorCavern_Room9_Movement_MaxieArrive: @ 823504E
 	walk_fast_right
 	step_end
 
-SeafloorCavern_Room9_Movement_MaxieExit: @ 8235054
+SeafloorCavern_Room9_Movement_MaxieExit:
 	walk_right
 	walk_right
 	step_end
 
-SeafloorCavern_Room9_Movement_MagmaGruntArrive: @ 8235057
+SeafloorCavern_Room9_Movement_MagmaGruntArrive:
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
 	step_end
 
-SeafloorCavern_Room9_Movement_Delay32: @ 823505C
+SeafloorCavern_Room9_Movement_Delay32:
 	delay_16
 	delay_16
 	step_end
 
-SeafloorCavern_Room9_Text_ArchieHoldItRightThere: @ 823505F
+SeafloorCavern_Room9_Text_ArchieHoldItRightThere: 
 	.string "Archie: Hold it right there.$"
 
 SeafloorCavern_Room9_Text_ArchieSoItWasYou: @ 823507C
@@ -239,18 +239,18 @@ SeafloorCavern_Room9_Text_ArchieBeholdKyogre: @ 82350A6
 	.string "I have waited so long for this day to\n"
 	.string "come…$"
 
-SeafloorCavern_Room9_Text_ArchieYouMustDisappear: @ 823512C
+SeafloorCavern_Room9_Text_ArchieYouMustDisappear: 
 	.string "Archie: It surprises me, how you've\n"
 	.string "managed to chase me here.\p"
 	.string "But that's all over now.\p"
 	.string "For the realization of my dream,\n"
 	.string "you must disappear now!$"
 
-SeafloorCavern_Room9_Text_ArchieDefeat: @ 82351BC
+SeafloorCavern_Room9_Text_ArchieDefeat:
 	.string "What?!\n"
 	.string "I lost to a mere child like you?!$"
 
-SeafloorCavern_Room9_Text_ArchieWithThisRedOrb: @ 82351E5
+SeafloorCavern_Room9_Text_ArchieWithThisRedOrb: 
 	.string "Archie: Fufufu…\p"
 	.string "I commend you. I must recognize that\n"
 	.string "you are truly gifted.\p"
@@ -258,7 +258,7 @@ SeafloorCavern_Room9_Text_ArchieWithThisRedOrb: @ 82351E5
 	.string "I have this in my possession!\p"
 	.string "With this Red Orb, I can make Kyogre…$"
 
-SeafloorCavern_Room9_Text_RedOrbShinesByItself: @ 8235279
+SeafloorCavern_Room9_Text_RedOrbShinesByItself: 
 	.string "The Red Orb suddenly began shining\n"
 	.string "by itself!$"
 
@@ -268,7 +268,7 @@ SeafloorCavern_Room9_Text_ArchieWhereDidKyogreGo: @ 82352A7
 	.string "Why did the Red Orb…\p"
 	.string "Where did Kyogre go?$"
 
-SeafloorCavern_Room9_Text_ArchieAMessageFromOutside: @ 82352F6
+SeafloorCavern_Room9_Text_ArchieAMessageFromOutside: 
 	.string "Archie: Hm? It's a message from our\n"
 	.string "members outside…$"
 
@@ -288,7 +288,7 @@ SeafloorCavern_Room9_Text_ArchieWhatRainingTooHard: @ 823532B
 	.string "Hold your position and monitor\n"
 	.string "the situation!$"
 
-SeafloorCavern_Room9_Text_ArchieWhyDidKyogreDisappear: @ 823546F
+SeafloorCavern_Room9_Text_ArchieWhyDidKyogreDisappear: 
 	.string "Archie: There's something wrong…\p"
 	.string "The Red Orb is supposed to awaken\n"
 	.string "and control Kyogre…\p"
@@ -296,7 +296,7 @@ SeafloorCavern_Room9_Text_ArchieWhyDidKyogreDisappear: @ 823546F
 	.string "Why did Kyogre disappear?\p"
 	.string "Why?!$"
 
-SeafloorCavern_Room9_Text_MaxieWhatHaveYouWrought: @ 82354F0
+SeafloorCavern_Room9_Text_MaxieWhatHaveYouWrought: 
 	.string "Maxie: What have you wrought?\p"
 	.string "Archie… You've finally awoken Kyogre,\n"
 	.string "haven't you?\p"
@@ -305,7 +305,7 @@ SeafloorCavern_Room9_Text_MaxieWhatHaveYouWrought: @ 82354F0
 	.string "The world's landmass will drown in\n"
 	.string "the deepening sea…$"
 
-SeafloorCavern_Room9_Text_ArchieDontGetAllHighAndMighty: @ 82355C2
+SeafloorCavern_Room9_Text_ArchieDontGetAllHighAndMighty: 
 	.string "Archie: W-what?!\n"
 	.string "Don't get all high and mighty with me!\p"
 	.string "Wasn't it you, Team Magma, that\n"
@@ -314,13 +314,13 @@ SeafloorCavern_Room9_Text_ArchieDontGetAllHighAndMighty: @ 82355C2
 	.string "I should be able to control Kyogre…\p"
 	.string "I should be able to control it…$"
 
-SeafloorCavern_Room9_Text_MaxieWeDontHaveTimeToArgue: @ 8235692
+SeafloorCavern_Room9_Text_MaxieWeDontHaveTimeToArgue: 
 	.string "Maxie: We don't have the time to\n"
 	.string "argue about it here!\p"
 	.string "Get outside and see for yourself!\p"
 	.string "See if what you've wrought is the\n"
 	.string "world that we desired!$"
 
-SeafloorCavern_Room9_Text_MaxieComeOnPlayer: @ 8235723
+SeafloorCavern_Room9_Text_MaxieComeOnPlayer: 
 	.string "Maxie: {PLAYER}, come on, you have\n"
 	.string "to get out of here, too!$"

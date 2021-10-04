@@ -1,0 +1,30 @@
+Text_BootUpPC:
+	.string "{PLAYER} booted up the PC.$"
+
+gText_WhichPCShouldBeAccessed::
+	.string "Which PC should be accessed?$"
+
+<<<<<<< HEAD
+gText_AccessedSomeonesPC:: @ 827268C
+	.string "Accessed Someone's PC.$"
+
+gText_StorageSystemOpened:: @ 82726A3
+	.string "Pokémon Storage System opened.$"
+=======
+gText_AccessedSomeonesPC::
+	.string "Accessed SOMEONE'S PC.$"
+
+gText_StorageSystemOpened::
+	.string "POKéMON Storage System opened.$"
+>>>>>>> 142a83ca96a1d199882f9e19e1a3100052e264c9
+
+gText_AccessedPlayersPC::
+	.string "Accessed {PLAYER}'s PC.$"
+
+<<<<<<< HEAD
+gText_AccessedLanettesPC:: @ 82726D4
+	.string "Accessed Lanette's PC.$"
+=======
+gText_AccessedLanettesPC::
+	.string "Accessed LANETTE's PC.$"
+>>>>>>> 142a83ca96a1d199882f9e19e1a3100052e264c9

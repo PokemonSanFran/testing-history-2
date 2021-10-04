@@ -1,0 +1,40 @@
+<<<<<<< HEAD
+Text_PictureBookShelf: @ 82A81E5
+	.string "There's a set of Pokémon picture books.$"
+=======
+Text_PictureBookShelf:
+	.string "There's a set of POKéMON picture books.$"
+>>>>>>> 142a83ca96a1d199882f9e19e1a3100052e264c9
+
+Text_BookShelf:
+	.string "It's filled with all sorts of books.$"
+
+<<<<<<< HEAD
+Text_PokemonCenterBookShelf: @ 82A8232
+	.string "Pokémon magazines!\n"
+	.string "Pokémon Pal…\p"
+	.string "Pokémon Handbook…\n"
+	.string "Adorable Pokémon…$"
+=======
+Text_PokemonCenterBookShelf:
+	.string "POKéMON magazines!\n"
+	.string "POKéMON PAL…\p"
+	.string "POKéMON HANDBOOK…\n"
+	.string "ADORABLE POKéMON…$"
+>>>>>>> 142a83ca96a1d199882f9e19e1a3100052e264c9
+
+Text_Vase:
+	.string "This vase looks expensive…\n"
+	.string "Peered inside…\p"
+	.string "But, it was empty.$"
+
+Text_EmptyTrashCan:
+	.string "It's empty.$"
+
+Text_ShopShelf:
+	.string "The shelves brim with all sorts of\n"
+	.string "Pokémon merchandise.$"
+
+Text_Blueprint:
+	.string "A blueprint of some sort?\n"
+	.string "It's too complicated!$"

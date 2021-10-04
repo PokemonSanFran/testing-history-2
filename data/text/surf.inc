@@ -1,4 +1,4 @@
-gText_WantToUseSurf:: @ 8272FD6
+gText_WantToUseSurf:: 
 	.string "The water is dyed a deep blue…\nWould you like to Surf?$"
 
 gText_PlayerUsedSurf:: @ 827300D

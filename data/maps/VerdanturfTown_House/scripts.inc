@@ -1,15 +1,15 @@
-VerdanturfTown_House_MapScripts:: @ 820335E
+VerdanturfTown_House_MapScripts::
 	.byte 0
 
-VerdanturfTown_House_EventScript_Woman1:: @ 820335F
+VerdanturfTown_House_EventScript_Woman1::
 	msgbox VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague, MSGBOX_NPC
 	end
 
-VerdanturfTown_House_EventScript_Woman2:: @ 8203368
+VerdanturfTown_House_EventScript_Woman2::
 	msgbox VerdanturfTown_House_Text_DefeatEliteFourInARow, MSGBOX_NPC
 	end
 
-VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague: @ 8203371
+VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague: 
 	.string "Far away, deep in Ever Grande City,\n"
 	.string "is the Pokémon League.\p"
 	.string "The Trainers who gather there are\n"
