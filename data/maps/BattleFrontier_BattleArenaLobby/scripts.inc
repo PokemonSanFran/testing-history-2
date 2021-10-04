@@ -394,7 +394,6 @@ BattleFrontier_BattleArenaLobby_Text_ExplainChallenge:
 	.string "seven Trainers in succession,\l"
 	.string "we will present you with Battle Points.$"
 
-<<<<<<< HEAD
 BattleFrontier_BattleArenaLobby_Text_OkayToSave:
 	.string "Before showing you to the Battle\n"
 	.string "Arena, you must save. Is that okay?$"
