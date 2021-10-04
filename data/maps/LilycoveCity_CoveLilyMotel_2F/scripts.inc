@@ -48,7 +48,7 @@ StarterSelect_1_Script::
     playfanfare MUS_OBTAIN_ITEM
     msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
     waitfanfare
-    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    givemon SPECIES_FLETCHINDER, 22, ITEM_NONE
     fadescreen FADE_FROM_BLACK
     release
     end
@@ -59,7 +59,7 @@ StarterSelect_2_Script::
     playfanfare MUS_OBTAIN_ITEM
     msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
     waitfanfare
-    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    givemon SPECIES_PETILIL, 22, ITEM_NONE
     fadescreen FADE_FROM_BLACK
     release
     end
@@ -81,7 +81,7 @@ StarterSelect_4_Script::
     playfanfare MUS_OBTAIN_ITEM
     msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
     waitfanfare
-    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    givemon SPECIES_MAREANIE, 22, ITEM_NONE
     fadescreen FADE_FROM_BLACK
     release
     end
@@ -114,7 +114,7 @@ StarterSelect_7_Script::
     playfanfare MUS_OBTAIN_ITEM
     msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
     waitfanfare
-    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    givemon SPECIES_HATTREM, 22, ITEM_NONE
     fadescreen FADE_FROM_BLACK
     release
     end
@@ -125,7 +125,7 @@ StarterSelect_8_Script::
     playfanfare MUS_OBTAIN_ITEM
     msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
     waitfanfare
-    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    givemon SPECIES_PANCHAM, 22, ITEM_NONE
     fadescreen FADE_FROM_BLACK
     release
     end
