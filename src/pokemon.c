@@ -339,8 +339,6 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     else
         personality = Random32();
 
-    SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
-
     //Determine original trainer ID
     if (otIdType == OT_ID_RANDOM_NO_SHINY) //Pokemon cannot be shiny
     {
@@ -361,8 +359,21 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
               | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
               | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
+        
+        if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
+        {
+            u32 shinyValue;
+            u32 rolls = 0;
+            do
+            {
+                personality = Random32();
+                shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
+                rolls++;
+            } while (shinyValue >= SHINY_ODDS && rolls < I_SHINY_CHARM_REROLLS);
+        }
     }
 
+    SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
     SetBoxMonData(boxMon, MON_DATA_OT_ID, &value);
 
     checksum = CalculateBoxMonChecksum(boxMon);
@@ -1660,7 +1671,7 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         retVal = substruct3->metGame;
         break;
     case MON_DATA_POKEBALL:
-        retVal = substruct3->pokeball;
+        retVal = substruct0->pokeball;
         break;
     case MON_DATA_OT_GENDER:
         retVal = substruct3->otGender;
@@ -2034,7 +2045,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
     case MON_DATA_POKEBALL:
     {
         u8 pokeball = *data;
-        substruct3->pokeball = pokeball;
+        substruct0->pokeball = pokeball;
         break;
     }
     case MON_DATA_OT_GENDER:
@@ -2489,7 +2500,7 @@ bool8 ExecuteTableBasedItemEffect(struct Pokemon *mon, u16 item, u8 partyIndex, 
 bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 moveIndex, bool8 usedByAI)
 {
     u32 dataUnsigned;
-    s32 dataSigned;
+    s32 dataSigned, evCap;
     s32 friendship;
     s32 i;
     bool8 retVal = TRUE;
@@ -2827,12 +2838,18 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             // Has EV increase limit already been reached?
                             if (evCount >= MAX_TOTAL_EVS)
                                 return TRUE;
-                            if (dataSigned >= EV_ITEM_RAISE_LIMIT)
+
+                            if (itemEffect[10] & ITEM10_IS_VITAMIN)
+                                evCap = EV_ITEM_RAISE_LIMIT;
+                            else
+                                evCap = 252;
+
+                            if (dataSigned >= evCap)
                                 break;
 
                             // Limit the increase
-                            if (dataSigned + evChange > EV_ITEM_RAISE_LIMIT)
-                                temp2 = EV_ITEM_RAISE_LIMIT - (dataSigned + evChange) + evChange;
+                            if (dataSigned + evChange > evCap)
+                                temp2 = evCap - (dataSigned + evChange) + evChange;
                             else
                                 temp2 = evChange;
 
@@ -2911,6 +2928,11 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             break;
                         case ITEM6_HEAL_HP_LVL_UP:
                             dataUnsigned = gBattleScripting.levelUpHP;
+                            break;
+                        case ITEM6_HEAL_HP_QUARTER:
+                            dataUnsigned = GetMonData(mon, MON_DATA_MAX_HP, NULL) / 4;
+                            if (dataUnsigned == 0)
+                                dataUnsigned = 1;
                             break;
                         }
 
@@ -3056,12 +3078,18 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             // Has EV increase limit already been reached?
                             if (evCount >= MAX_TOTAL_EVS)
                                 return TRUE;
-                            if (dataSigned >= EV_ITEM_RAISE_LIMIT)
+
+                            if (itemEffect[10] & ITEM10_IS_VITAMIN)
+                                evCap = EV_ITEM_RAISE_LIMIT;
+                            else
+                                evCap = 252;
+
+                            if (dataSigned >= evCap)
                                 break;
 
                             // Limit the increase
-                            if (dataSigned + evChange > EV_ITEM_RAISE_LIMIT)
-                                temp2 = EV_ITEM_RAISE_LIMIT - (dataSigned + evChange) + evChange;
+                            if (dataSigned + evChange > evCap)
+                                temp2 = evCap - (dataSigned + evChange) + evChange;
                             else
                                 temp2 = evChange;
 
