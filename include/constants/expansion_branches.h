@@ -5,8 +5,11 @@
 // Each define must be here for each of RHH's branch you have pulled.
 // e.g. If you have both the battle_engine and pokemon_expansion branch,
 //      then both BATTLE_ENGINE and POKEMON_EXPANSION must be defined here.
+<<<<<<< HEAD
 #define BATTLE_ENGINE
 #define POKEMON_EXPANSION
+=======
+>>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
 #define ITEM_EXPANSION
 
 #endif

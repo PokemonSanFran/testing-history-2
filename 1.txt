@@ -1,22 +1,1063 @@
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokemon.o src/pokemon.c
-agbcc: warnings being treated as errors
-In file included from src/pokemon.c:1845:
-src/data/pokemon/base_stats.h:3102: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:3131: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:24800: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:25218: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:25274: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:25302: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:25330: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:25358: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:27349: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:27378: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:27437: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:27499: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:27644: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:33747: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:33855: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:33911: warning: large integer implicitly truncated to unsigned type
-src/data/pokemon/base_stats.h:33939: warning: large integer implicitly truncated to unsigned type
-make: *** [Makefile:340: build/emerald/src/pokemon.o] Error 1
-make: *** Deleting file 'build/emerald/src/pokemon.o'
+From https://github.com/rh-hideout/pokeemerald-expansion
+ * branch                item_expansion -> FETCH_HEAD
+warning: Cannot merge binary files: graphics/types/fairy.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/yache.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/tanga.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/shuca.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/roseli.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/payapa.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/occa.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/kebia.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/kasib.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/haban.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/colbur.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/object_events/pics/berry_trees/chople.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/zoom_lens.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/zap_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/z_ring.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/yellow_nectar.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/yellow_apricorn.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/yache_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/x_special_defense.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/wise_glasses.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/wide_lens.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/white_apricorn.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/whipped_dream.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/weakness_policy.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/wave_incense.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/waterium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/water_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/water_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/wacan_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/venusaurite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ultranecrozium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/tyranitarite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/toxic_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/toxic_orb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/terrain_extender.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/tapunium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/tanga_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/swift_feather.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/sweet_heart.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/swampertite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/stone_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/sticky_barb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/steelixite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/steelium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/steel_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/steel_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/sport_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/spooky_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/splash_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/solganium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/snowball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/snorlium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/smooth_rock.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/slowbronite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/sky_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/skull_fossil.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/shuca_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/shock_drive.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/shiny_stone.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/shiny_charm.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/shed_shell.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/sharpedonite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/scizorite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/sceptilite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/salamencite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/sail_fossil.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/safety_goggles.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/sachet.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/sablenite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/rowap_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/roseli_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/rose_incense.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/rocky_helmet.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/rockium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/rock_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/rock_incense.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/rock_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ring_target.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/rindo_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/resist_feather.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/red_nectar.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/red_card.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/red_apricorn.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/reaper_cloth.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/razor_fang.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/razor_claw.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/rare_bone.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/quick_powder.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/quick_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/purple_nectar.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/pure_incense.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/psychium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/psychic_seed.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/psychic_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/psychic_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/protector.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/protective_pads.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/prism_scale.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/primarium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/pretty_feather.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/power_weight.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/power_lens.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/power_herb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/power_bracer.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/power_belt.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/power_band.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/power_anklet.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/poisonium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/poison_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/poison_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/plume_fossil.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/pixie_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/pinsirite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/pink_nectar.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/pink_apricorn.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/pikashunium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/pikanium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/pidgeotite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/payapa_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/passho_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/park_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/oval_stone.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/oval_charm.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/old_gateau.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/odd_keystone.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/odd_incense.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/occa_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/normalium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/normal_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/muscle_feather.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/muscle_band.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/moon_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/misty_seed.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/mind_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/mimikium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/micle_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/mewtwonite_y.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/mewtwonite_x.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/mewnium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/metronome.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/metagrossite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/mega_bracelet.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/medichamite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/meadow_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/mawilite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/marshadium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/maranga_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/manectite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/magmarizer.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/lycanium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/lustrous_orb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/lure_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/lunalium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/luminous_moss.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/luck_incense.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/lucarionite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/love_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/lopunnite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/light_clay.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/life_orb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/level_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/latiosite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/latiasite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/lagging_tail.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/kommonium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/kee_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/kebia_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/kasib_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/kangaskhanite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/jaw_fossil.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/jaboca_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/iron_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/iron_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/insect_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/incinium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/icy_rock.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/icium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/icicle_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ice_stone.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ice_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ice_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/houndoominite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/honey.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/heracronite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/heavy_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/heat_rock.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/health_feather.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/heal_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/haban_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/gyaradosite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/groundium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ground_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ground_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/griseous_orb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/grip_claw.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/green_apricorn.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/grassy_seed.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/grassium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/grass_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/grass_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/gracidea.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/glalitite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ghostium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ghost_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ghost_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/genius_feather.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/gengarite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/gardevoirite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/garchompite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/galladite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/full_incense.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/friend_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/focus_sash.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/flyinium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/flying_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/flying_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/float_stone.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/flame_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/flame_orb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fist_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/firium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fire_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fire_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fightinium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fighting_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fighting_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fast_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fairy_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fairy_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/fairium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/expert_belt.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/eviolite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/electrium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/electric_seed.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/electric_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/electric_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/electirizer.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/eject_button.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/eevium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/earth_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dusk_stone.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dusk_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dubious_disc.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dream_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dread_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dragonium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dragon_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dragon_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/draco_plate.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/douse_drive.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/diancite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/destiny_knot.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/decidium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dawn_stone.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/darkinium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dark_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/dark_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/damp_rock.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/custap_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/cover_fossil.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/colbur_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/coba_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/clever_feather.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/chople_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/choice_specs.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/choice_scarf.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/chill_drive.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/chilan_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/cherish_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/charti_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/charizardite_y.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/charizardite_x.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/cell_battery.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/cameruptite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/burn_drive.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/buginium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/bug_memory.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/bug_gem.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/blue_apricorn.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/blazikenite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/blastoisinite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/black_sludge.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/black_apricorn.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/binding_band.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/big_root.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/big_malasada.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/beedrillite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/beast_ball.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/banettite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/babiri_berry.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/audinite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/assault_vest.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/armor_fossil.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ampharosite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/altarianite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/aloraichium_z.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/alakazite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/air_balloon.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/aggronite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/aerodactylite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/adrenaline_orb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/adamant_orb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/absorb_bulb.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/absolite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/abomasite.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/items/icons/ability_capsule.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface_fr/menu.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/sport.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/quick.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/particles2.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/park.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/moon.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/lure.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/love.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/level.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/heavy.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/heal.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/friend.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/fast.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/dusk.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/dream.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/cherish.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/interface/ball/beast.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/yache.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/wacan.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/tanga.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/shuca.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/roseli.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/rindo.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/payapa.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/passho.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/occa.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/kebia.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/kasib.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/haban.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/colbur.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/coba.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/chople.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/chilan.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/charti.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+warning: Cannot merge binary files: graphics/berries/babiri.png (HEAD vs. 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1)
+Auto-merging src/wild_encounter.c
+Auto-merging src/pokemon_summary_screen.c
+Auto-merging src/pokemon.c
+Auto-merging src/pokeball.c
+Auto-merging src/party_menu.c
+Auto-merging src/menu.c
+Auto-merging src/item_use.c
+Auto-merging src/daycare.c
+Auto-merging src/data/items.h
+CONFLICT (content): Merge conflict in src/data/items.h
+Auto-merging src/berry.c
+Auto-merging src/battle_util.c
+Auto-merging src/battle_script_commands.c
+Auto-merging src/battle_main.c
+Auto-merging src/battle_anim_throw.c
+Auto-merging include/wild_encounter.h
+Auto-merging include/pokemon.h
+Auto-merging include/party_menu.h
+Auto-merging include/item_use.h
+Auto-merging include/item.h
+Auto-merging include/graphics.h
+Auto-merging include/global.h
+Auto-merging include/constants/pokemon.h
+Auto-merging include/constants/item_effects.h
+CONFLICT (add/add): Merge conflict in include/constants/expansion_branches.h
+Auto-merging include/constants/expansion_branches.h
+Auto-merging graphics_file_rules.mk
+CONFLICT (add/add): Merge conflict in graphics/types/fairy.png
+Auto-merging graphics/types/fairy.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/yache.png
+Auto-merging graphics/object_events/pics/berry_trees/yache.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/tanga.png
+Auto-merging graphics/object_events/pics/berry_trees/tanga.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/shuca.png
+Auto-merging graphics/object_events/pics/berry_trees/shuca.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/roseli.png
+Auto-merging graphics/object_events/pics/berry_trees/roseli.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/payapa.png
+Auto-merging graphics/object_events/pics/berry_trees/payapa.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/occa.png
+Auto-merging graphics/object_events/pics/berry_trees/occa.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/kebia.png
+Auto-merging graphics/object_events/pics/berry_trees/kebia.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/kasib.png
+Auto-merging graphics/object_events/pics/berry_trees/kasib.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/haban.png
+Auto-merging graphics/object_events/pics/berry_trees/haban.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/colbur.png
+Auto-merging graphics/object_events/pics/berry_trees/colbur.png
+CONFLICT (add/add): Merge conflict in graphics/object_events/pics/berry_trees/chople.png
+Auto-merging graphics/object_events/pics/berry_trees/chople.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/zoom_lens.png
+Auto-merging graphics/items/icons/zoom_lens.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/zap_plate.png
+Auto-merging graphics/items/icons/zap_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/z_ring.png
+Auto-merging graphics/items/icons/z_ring.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/yellow_nectar.png
+Auto-merging graphics/items/icons/yellow_nectar.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/yellow_apricorn.png
+Auto-merging graphics/items/icons/yellow_apricorn.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/yache_berry.png
+Auto-merging graphics/items/icons/yache_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/x_special_defense.png
+Auto-merging graphics/items/icons/x_special_defense.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/wise_glasses.png
+Auto-merging graphics/items/icons/wise_glasses.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/wide_lens.png
+Auto-merging graphics/items/icons/wide_lens.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/white_apricorn.png
+Auto-merging graphics/items/icons/white_apricorn.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/whipped_dream.png
+Auto-merging graphics/items/icons/whipped_dream.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/weakness_policy.png
+Auto-merging graphics/items/icons/weakness_policy.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/wave_incense.png
+Auto-merging graphics/items/icons/wave_incense.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/waterium_z.png
+Auto-merging graphics/items/icons/waterium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/water_memory.png
+Auto-merging graphics/items/icons/water_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/water_gem.png
+Auto-merging graphics/items/icons/water_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/wacan_berry.png
+Auto-merging graphics/items/icons/wacan_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/venusaurite.png
+Auto-merging graphics/items/icons/venusaurite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ultranecrozium_z.png
+Auto-merging graphics/items/icons/ultranecrozium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/tyranitarite.png
+Auto-merging graphics/items/icons/tyranitarite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/toxic_plate.png
+Auto-merging graphics/items/icons/toxic_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/toxic_orb.png
+Auto-merging graphics/items/icons/toxic_orb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/terrain_extender.png
+Auto-merging graphics/items/icons/terrain_extender.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/tapunium_z.png
+Auto-merging graphics/items/icons/tapunium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/tanga_berry.png
+Auto-merging graphics/items/icons/tanga_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/swift_feather.png
+Auto-merging graphics/items/icons/swift_feather.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/sweet_heart.png
+Auto-merging graphics/items/icons/sweet_heart.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/swampertite.png
+Auto-merging graphics/items/icons/swampertite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/stone_plate.png
+Auto-merging graphics/items/icons/stone_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/sticky_barb.png
+Auto-merging graphics/items/icons/sticky_barb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/steelixite.png
+Auto-merging graphics/items/icons/steelixite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/steelium_z.png
+Auto-merging graphics/items/icons/steelium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/steel_memory.png
+Auto-merging graphics/items/icons/steel_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/steel_gem.png
+Auto-merging graphics/items/icons/steel_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/sport_ball.png
+Auto-merging graphics/items/icons/sport_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/spooky_plate.png
+Auto-merging graphics/items/icons/spooky_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/splash_plate.png
+Auto-merging graphics/items/icons/splash_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/solganium_z.png
+Auto-merging graphics/items/icons/solganium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/snowball.png
+Auto-merging graphics/items/icons/snowball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/snorlium_z.png
+Auto-merging graphics/items/icons/snorlium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/smooth_rock.png
+Auto-merging graphics/items/icons/smooth_rock.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/slowbronite.png
+Auto-merging graphics/items/icons/slowbronite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/sky_plate.png
+Auto-merging graphics/items/icons/sky_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/skull_fossil.png
+Auto-merging graphics/items/icons/skull_fossil.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/shuca_berry.png
+Auto-merging graphics/items/icons/shuca_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/shock_drive.png
+Auto-merging graphics/items/icons/shock_drive.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/shiny_stone.png
+Auto-merging graphics/items/icons/shiny_stone.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/shiny_charm.png
+Auto-merging graphics/items/icons/shiny_charm.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/shed_shell.png
+Auto-merging graphics/items/icons/shed_shell.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/sharpedonite.png
+Auto-merging graphics/items/icons/sharpedonite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/scizorite.png
+Auto-merging graphics/items/icons/scizorite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/sceptilite.png
+Auto-merging graphics/items/icons/sceptilite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/salamencite.png
+Auto-merging graphics/items/icons/salamencite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/sail_fossil.png
+Auto-merging graphics/items/icons/sail_fossil.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/safety_goggles.png
+Auto-merging graphics/items/icons/safety_goggles.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/sachet.png
+Auto-merging graphics/items/icons/sachet.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/sablenite.png
+Auto-merging graphics/items/icons/sablenite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/rowap_berry.png
+Auto-merging graphics/items/icons/rowap_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/roseli_berry.png
+Auto-merging graphics/items/icons/roseli_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/rose_incense.png
+Auto-merging graphics/items/icons/rose_incense.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/rocky_helmet.png
+Auto-merging graphics/items/icons/rocky_helmet.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/rockium_z.png
+Auto-merging graphics/items/icons/rockium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/rock_memory.png
+Auto-merging graphics/items/icons/rock_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/rock_incense.png
+Auto-merging graphics/items/icons/rock_incense.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/rock_gem.png
+Auto-merging graphics/items/icons/rock_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ring_target.png
+Auto-merging graphics/items/icons/ring_target.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/rindo_berry.png
+Auto-merging graphics/items/icons/rindo_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/resist_feather.png
+Auto-merging graphics/items/icons/resist_feather.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/red_nectar.png
+Auto-merging graphics/items/icons/red_nectar.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/red_card.png
+Auto-merging graphics/items/icons/red_card.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/red_apricorn.png
+Auto-merging graphics/items/icons/red_apricorn.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/reaper_cloth.png
+Auto-merging graphics/items/icons/reaper_cloth.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/razor_fang.png
+Auto-merging graphics/items/icons/razor_fang.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/razor_claw.png
+Auto-merging graphics/items/icons/razor_claw.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/rare_bone.png
+Auto-merging graphics/items/icons/rare_bone.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/quick_powder.png
+Auto-merging graphics/items/icons/quick_powder.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/quick_ball.png
+Auto-merging graphics/items/icons/quick_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/purple_nectar.png
+Auto-merging graphics/items/icons/purple_nectar.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/pure_incense.png
+Auto-merging graphics/items/icons/pure_incense.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/psychium_z.png
+Auto-merging graphics/items/icons/psychium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/psychic_seed.png
+Auto-merging graphics/items/icons/psychic_seed.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/psychic_memory.png
+Auto-merging graphics/items/icons/psychic_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/psychic_gem.png
+Auto-merging graphics/items/icons/psychic_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/protector.png
+Auto-merging graphics/items/icons/protector.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/protective_pads.png
+Auto-merging graphics/items/icons/protective_pads.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/prism_scale.png
+Auto-merging graphics/items/icons/prism_scale.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/primarium_z.png
+Auto-merging graphics/items/icons/primarium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/pretty_feather.png
+Auto-merging graphics/items/icons/pretty_feather.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/power_weight.png
+Auto-merging graphics/items/icons/power_weight.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/power_lens.png
+Auto-merging graphics/items/icons/power_lens.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/power_herb.png
+Auto-merging graphics/items/icons/power_herb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/power_bracer.png
+Auto-merging graphics/items/icons/power_bracer.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/power_belt.png
+Auto-merging graphics/items/icons/power_belt.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/power_band.png
+Auto-merging graphics/items/icons/power_band.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/power_anklet.png
+Auto-merging graphics/items/icons/power_anklet.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/poisonium_z.png
+Auto-merging graphics/items/icons/poisonium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/poison_memory.png
+Auto-merging graphics/items/icons/poison_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/poison_gem.png
+Auto-merging graphics/items/icons/poison_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/plume_fossil.png
+Auto-merging graphics/items/icons/plume_fossil.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/pixie_plate.png
+Auto-merging graphics/items/icons/pixie_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/pinsirite.png
+Auto-merging graphics/items/icons/pinsirite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/pink_nectar.png
+Auto-merging graphics/items/icons/pink_nectar.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/pink_apricorn.png
+Auto-merging graphics/items/icons/pink_apricorn.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/pikashunium_z.png
+Auto-merging graphics/items/icons/pikashunium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/pikanium_z.png
+Auto-merging graphics/items/icons/pikanium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/pidgeotite.png
+Auto-merging graphics/items/icons/pidgeotite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/payapa_berry.png
+Auto-merging graphics/items/icons/payapa_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/passho_berry.png
+Auto-merging graphics/items/icons/passho_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/park_ball.png
+Auto-merging graphics/items/icons/park_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/oval_stone.png
+Auto-merging graphics/items/icons/oval_stone.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/oval_charm.png
+Auto-merging graphics/items/icons/oval_charm.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/old_gateau.png
+Auto-merging graphics/items/icons/old_gateau.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/odd_keystone.png
+Auto-merging graphics/items/icons/odd_keystone.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/odd_incense.png
+Auto-merging graphics/items/icons/odd_incense.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/occa_berry.png
+Auto-merging graphics/items/icons/occa_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/normalium_z.png
+Auto-merging graphics/items/icons/normalium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/normal_gem.png
+Auto-merging graphics/items/icons/normal_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/muscle_feather.png
+Auto-merging graphics/items/icons/muscle_feather.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/muscle_band.png
+Auto-merging graphics/items/icons/muscle_band.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/moon_ball.png
+Auto-merging graphics/items/icons/moon_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/misty_seed.png
+Auto-merging graphics/items/icons/misty_seed.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/mind_plate.png
+Auto-merging graphics/items/icons/mind_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/mimikium_z.png
+Auto-merging graphics/items/icons/mimikium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/micle_berry.png
+Auto-merging graphics/items/icons/micle_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/mewtwonite_y.png
+Auto-merging graphics/items/icons/mewtwonite_y.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/mewtwonite_x.png
+Auto-merging graphics/items/icons/mewtwonite_x.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/mewnium_z.png
+Auto-merging graphics/items/icons/mewnium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/metronome.png
+Auto-merging graphics/items/icons/metronome.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/metagrossite.png
+Auto-merging graphics/items/icons/metagrossite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/mega_bracelet.png
+Auto-merging graphics/items/icons/mega_bracelet.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/medichamite.png
+Auto-merging graphics/items/icons/medichamite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/meadow_plate.png
+Auto-merging graphics/items/icons/meadow_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/mawilite.png
+Auto-merging graphics/items/icons/mawilite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/marshadium_z.png
+Auto-merging graphics/items/icons/marshadium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/maranga_berry.png
+Auto-merging graphics/items/icons/maranga_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/manectite.png
+Auto-merging graphics/items/icons/manectite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/magmarizer.png
+Auto-merging graphics/items/icons/magmarizer.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/lycanium_z.png
+Auto-merging graphics/items/icons/lycanium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/lustrous_orb.png
+Auto-merging graphics/items/icons/lustrous_orb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/lure_ball.png
+Auto-merging graphics/items/icons/lure_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/lunalium_z.png
+Auto-merging graphics/items/icons/lunalium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/luminous_moss.png
+Auto-merging graphics/items/icons/luminous_moss.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/luck_incense.png
+Auto-merging graphics/items/icons/luck_incense.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/lucarionite.png
+Auto-merging graphics/items/icons/lucarionite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/love_ball.png
+Auto-merging graphics/items/icons/love_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/lopunnite.png
+Auto-merging graphics/items/icons/lopunnite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/light_clay.png
+Auto-merging graphics/items/icons/light_clay.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/life_orb.png
+Auto-merging graphics/items/icons/life_orb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/level_ball.png
+Auto-merging graphics/items/icons/level_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/latiosite.png
+Auto-merging graphics/items/icons/latiosite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/latiasite.png
+Auto-merging graphics/items/icons/latiasite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/lagging_tail.png
+Auto-merging graphics/items/icons/lagging_tail.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/kommonium_z.png
+Auto-merging graphics/items/icons/kommonium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/kee_berry.png
+Auto-merging graphics/items/icons/kee_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/kebia_berry.png
+Auto-merging graphics/items/icons/kebia_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/kasib_berry.png
+Auto-merging graphics/items/icons/kasib_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/kangaskhanite.png
+Auto-merging graphics/items/icons/kangaskhanite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/jaw_fossil.png
+Auto-merging graphics/items/icons/jaw_fossil.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/jaboca_berry.png
+Auto-merging graphics/items/icons/jaboca_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/iron_plate.png
+Auto-merging graphics/items/icons/iron_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/iron_ball.png
+Auto-merging graphics/items/icons/iron_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/insect_plate.png
+Auto-merging graphics/items/icons/insect_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/incinium_z.png
+Auto-merging graphics/items/icons/incinium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/icy_rock.png
+Auto-merging graphics/items/icons/icy_rock.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/icium_z.png
+Auto-merging graphics/items/icons/icium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/icicle_plate.png
+Auto-merging graphics/items/icons/icicle_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ice_stone.png
+Auto-merging graphics/items/icons/ice_stone.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ice_memory.png
+Auto-merging graphics/items/icons/ice_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ice_gem.png
+Auto-merging graphics/items/icons/ice_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/houndoominite.png
+Auto-merging graphics/items/icons/houndoominite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/honey.png
+Auto-merging graphics/items/icons/honey.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/heracronite.png
+Auto-merging graphics/items/icons/heracronite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/heavy_ball.png
+Auto-merging graphics/items/icons/heavy_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/heat_rock.png
+Auto-merging graphics/items/icons/heat_rock.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/health_feather.png
+Auto-merging graphics/items/icons/health_feather.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/heal_ball.png
+Auto-merging graphics/items/icons/heal_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/haban_berry.png
+Auto-merging graphics/items/icons/haban_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/gyaradosite.png
+Auto-merging graphics/items/icons/gyaradosite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/groundium_z.png
+Auto-merging graphics/items/icons/groundium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ground_memory.png
+Auto-merging graphics/items/icons/ground_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ground_gem.png
+Auto-merging graphics/items/icons/ground_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/griseous_orb.png
+Auto-merging graphics/items/icons/griseous_orb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/grip_claw.png
+Auto-merging graphics/items/icons/grip_claw.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/green_apricorn.png
+Auto-merging graphics/items/icons/green_apricorn.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/grassy_seed.png
+Auto-merging graphics/items/icons/grassy_seed.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/grassium_z.png
+Auto-merging graphics/items/icons/grassium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/grass_memory.png
+Auto-merging graphics/items/icons/grass_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/grass_gem.png
+Auto-merging graphics/items/icons/grass_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/gracidea.png
+Auto-merging graphics/items/icons/gracidea.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/glalitite.png
+Auto-merging graphics/items/icons/glalitite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ghostium_z.png
+Auto-merging graphics/items/icons/ghostium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ghost_memory.png
+Auto-merging graphics/items/icons/ghost_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ghost_gem.png
+Auto-merging graphics/items/icons/ghost_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/genius_feather.png
+Auto-merging graphics/items/icons/genius_feather.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/gengarite.png
+Auto-merging graphics/items/icons/gengarite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/gardevoirite.png
+Auto-merging graphics/items/icons/gardevoirite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/garchompite.png
+Auto-merging graphics/items/icons/garchompite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/galladite.png
+Auto-merging graphics/items/icons/galladite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/full_incense.png
+Auto-merging graphics/items/icons/full_incense.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/friend_ball.png
+Auto-merging graphics/items/icons/friend_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/focus_sash.png
+Auto-merging graphics/items/icons/focus_sash.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/flyinium_z.png
+Auto-merging graphics/items/icons/flyinium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/flying_memory.png
+Auto-merging graphics/items/icons/flying_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/flying_gem.png
+Auto-merging graphics/items/icons/flying_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/float_stone.png
+Auto-merging graphics/items/icons/float_stone.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/flame_plate.png
+Auto-merging graphics/items/icons/flame_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/flame_orb.png
+Auto-merging graphics/items/icons/flame_orb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fist_plate.png
+Auto-merging graphics/items/icons/fist_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/firium_z.png
+Auto-merging graphics/items/icons/firium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fire_memory.png
+Auto-merging graphics/items/icons/fire_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fire_gem.png
+Auto-merging graphics/items/icons/fire_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fightinium_z.png
+Auto-merging graphics/items/icons/fightinium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fighting_memory.png
+Auto-merging graphics/items/icons/fighting_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fighting_gem.png
+Auto-merging graphics/items/icons/fighting_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fast_ball.png
+Auto-merging graphics/items/icons/fast_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fairy_memory.png
+Auto-merging graphics/items/icons/fairy_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fairy_gem.png
+Auto-merging graphics/items/icons/fairy_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/fairium_z.png
+Auto-merging graphics/items/icons/fairium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/expert_belt.png
+Auto-merging graphics/items/icons/expert_belt.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/eviolite.png
+Auto-merging graphics/items/icons/eviolite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/electrium_z.png
+Auto-merging graphics/items/icons/electrium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/electric_seed.png
+Auto-merging graphics/items/icons/electric_seed.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/electric_memory.png
+Auto-merging graphics/items/icons/electric_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/electric_gem.png
+Auto-merging graphics/items/icons/electric_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/electirizer.png
+Auto-merging graphics/items/icons/electirizer.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/eject_button.png
+Auto-merging graphics/items/icons/eject_button.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/eevium_z.png
+Auto-merging graphics/items/icons/eevium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/earth_plate.png
+Auto-merging graphics/items/icons/earth_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dusk_stone.png
+Auto-merging graphics/items/icons/dusk_stone.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dusk_ball.png
+Auto-merging graphics/items/icons/dusk_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dubious_disc.png
+Auto-merging graphics/items/icons/dubious_disc.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dream_ball.png
+Auto-merging graphics/items/icons/dream_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dread_plate.png
+Auto-merging graphics/items/icons/dread_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dragonium_z.png
+Auto-merging graphics/items/icons/dragonium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dragon_memory.png
+Auto-merging graphics/items/icons/dragon_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dragon_gem.png
+Auto-merging graphics/items/icons/dragon_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/draco_plate.png
+Auto-merging graphics/items/icons/draco_plate.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/douse_drive.png
+Auto-merging graphics/items/icons/douse_drive.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/diancite.png
+Auto-merging graphics/items/icons/diancite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/destiny_knot.png
+Auto-merging graphics/items/icons/destiny_knot.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/decidium_z.png
+Auto-merging graphics/items/icons/decidium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dawn_stone.png
+Auto-merging graphics/items/icons/dawn_stone.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/darkinium_z.png
+Auto-merging graphics/items/icons/darkinium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dark_memory.png
+Auto-merging graphics/items/icons/dark_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/dark_gem.png
+Auto-merging graphics/items/icons/dark_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/damp_rock.png
+Auto-merging graphics/items/icons/damp_rock.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/custap_berry.png
+Auto-merging graphics/items/icons/custap_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/cover_fossil.png
+Auto-merging graphics/items/icons/cover_fossil.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/colbur_berry.png
+Auto-merging graphics/items/icons/colbur_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/coba_berry.png
+Auto-merging graphics/items/icons/coba_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/clever_feather.png
+Auto-merging graphics/items/icons/clever_feather.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/chople_berry.png
+Auto-merging graphics/items/icons/chople_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/choice_specs.png
+Auto-merging graphics/items/icons/choice_specs.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/choice_scarf.png
+Auto-merging graphics/items/icons/choice_scarf.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/chill_drive.png
+Auto-merging graphics/items/icons/chill_drive.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/chilan_berry.png
+Auto-merging graphics/items/icons/chilan_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/cherish_ball.png
+Auto-merging graphics/items/icons/cherish_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/charti_berry.png
+Auto-merging graphics/items/icons/charti_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/charizardite_y.png
+Auto-merging graphics/items/icons/charizardite_y.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/charizardite_x.png
+Auto-merging graphics/items/icons/charizardite_x.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/cell_battery.png
+Auto-merging graphics/items/icons/cell_battery.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/cameruptite.png
+Auto-merging graphics/items/icons/cameruptite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/burn_drive.png
+Auto-merging graphics/items/icons/burn_drive.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/buginium_z.png
+Auto-merging graphics/items/icons/buginium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/bug_memory.png
+Auto-merging graphics/items/icons/bug_memory.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/bug_gem.png
+Auto-merging graphics/items/icons/bug_gem.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/blue_apricorn.png
+Auto-merging graphics/items/icons/blue_apricorn.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/blazikenite.png
+Auto-merging graphics/items/icons/blazikenite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/blastoisinite.png
+Auto-merging graphics/items/icons/blastoisinite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/black_sludge.png
+Auto-merging graphics/items/icons/black_sludge.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/black_apricorn.png
+Auto-merging graphics/items/icons/black_apricorn.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/binding_band.png
+Auto-merging graphics/items/icons/binding_band.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/big_root.png
+Auto-merging graphics/items/icons/big_root.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/big_malasada.png
+Auto-merging graphics/items/icons/big_malasada.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/beedrillite.png
+Auto-merging graphics/items/icons/beedrillite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/beast_ball.png
+Auto-merging graphics/items/icons/beast_ball.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/banettite.png
+Auto-merging graphics/items/icons/banettite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/babiri_berry.png
+Auto-merging graphics/items/icons/babiri_berry.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/audinite.png
+Auto-merging graphics/items/icons/audinite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/assault_vest.png
+Auto-merging graphics/items/icons/assault_vest.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/armor_fossil.png
+Auto-merging graphics/items/icons/armor_fossil.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ampharosite.png
+Auto-merging graphics/items/icons/ampharosite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/altarianite.png
+Auto-merging graphics/items/icons/altarianite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/aloraichium_z.png
+Auto-merging graphics/items/icons/aloraichium_z.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/alakazite.png
+Auto-merging graphics/items/icons/alakazite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/air_balloon.png
+Auto-merging graphics/items/icons/air_balloon.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/aggronite.png
+Auto-merging graphics/items/icons/aggronite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/aerodactylite.png
+Auto-merging graphics/items/icons/aerodactylite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/adrenaline_orb.png
+Auto-merging graphics/items/icons/adrenaline_orb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/adamant_orb.png
+Auto-merging graphics/items/icons/adamant_orb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/absorb_bulb.png
+Auto-merging graphics/items/icons/absorb_bulb.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/absolite.png
+Auto-merging graphics/items/icons/absolite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/abomasite.png
+Auto-merging graphics/items/icons/abomasite.png
+CONFLICT (add/add): Merge conflict in graphics/items/icons/ability_capsule.png
+Auto-merging graphics/items/icons/ability_capsule.png
+Auto-merging graphics/interface_fr/menu.png
+CONFLICT (content): Merge conflict in graphics/interface_fr/menu.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/sport.png
+Auto-merging graphics/interface/ball/sport.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/quick.png
+Auto-merging graphics/interface/ball/quick.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/particles2.png
+Auto-merging graphics/interface/ball/particles2.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/park.png
+Auto-merging graphics/interface/ball/park.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/moon.png
+Auto-merging graphics/interface/ball/moon.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/lure.png
+Auto-merging graphics/interface/ball/lure.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/love.png
+Auto-merging graphics/interface/ball/love.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/level.png
+Auto-merging graphics/interface/ball/level.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/heavy.png
+Auto-merging graphics/interface/ball/heavy.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/heal.png
+Auto-merging graphics/interface/ball/heal.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/friend.png
+Auto-merging graphics/interface/ball/friend.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/fast.png
+Auto-merging graphics/interface/ball/fast.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/dusk.png
+Auto-merging graphics/interface/ball/dusk.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/dream.png
+Auto-merging graphics/interface/ball/dream.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/cherish.png
+Auto-merging graphics/interface/ball/cherish.png
+CONFLICT (add/add): Merge conflict in graphics/interface/ball/beast.png
+Auto-merging graphics/interface/ball/beast.png
+CONFLICT (add/add): Merge conflict in graphics/berries/yache.png
+Auto-merging graphics/berries/yache.png
+CONFLICT (add/add): Merge conflict in graphics/berries/wacan.png
+Auto-merging graphics/berries/wacan.png
+CONFLICT (add/add): Merge conflict in graphics/berries/tanga.png
+Auto-merging graphics/berries/tanga.png
+CONFLICT (add/add): Merge conflict in graphics/berries/shuca.png
+Auto-merging graphics/berries/shuca.png
+CONFLICT (add/add): Merge conflict in graphics/berries/roseli.png
+Auto-merging graphics/berries/roseli.png
+CONFLICT (add/add): Merge conflict in graphics/berries/rindo.png
+Auto-merging graphics/berries/rindo.png
+CONFLICT (add/add): Merge conflict in graphics/berries/payapa.png
+Auto-merging graphics/berries/payapa.png
+CONFLICT (add/add): Merge conflict in graphics/berries/passho.png
+Auto-merging graphics/berries/passho.png
+CONFLICT (add/add): Merge conflict in graphics/berries/occa.png
+Auto-merging graphics/berries/occa.png
+CONFLICT (add/add): Merge conflict in graphics/berries/kebia.png
+Auto-merging graphics/berries/kebia.png
+CONFLICT (add/add): Merge conflict in graphics/berries/kasib.png
+Auto-merging graphics/berries/kasib.png
+CONFLICT (add/add): Merge conflict in graphics/berries/haban.png
+Auto-merging graphics/berries/haban.png
+CONFLICT (add/add): Merge conflict in graphics/berries/colbur.png
+Auto-merging graphics/berries/colbur.png
+CONFLICT (add/add): Merge conflict in graphics/berries/coba.png
+Auto-merging graphics/berries/coba.png
+CONFLICT (add/add): Merge conflict in graphics/berries/chople.png
+Auto-merging graphics/berries/chople.png
+CONFLICT (add/add): Merge conflict in graphics/berries/chilan.png
+Auto-merging graphics/berries/chilan.png
+CONFLICT (add/add): Merge conflict in graphics/berries/charti.png
+Auto-merging graphics/berries/charti.png
+CONFLICT (add/add): Merge conflict in graphics/berries/babiri.png
+Auto-merging graphics/berries/babiri.png
+Auto-merging data/maps/VerdanturfTown_Mart/scripts.inc
+Auto-merging data/maps/TrainerHill_Entrance/scripts.inc
+Auto-merging data/maps/SootopolisCity_Mart/scripts.inc
+Auto-merging data/maps/RustboroCity_Mart/scripts.inc
+Auto-merging data/maps/PetalburgCity_Mart/scripts.inc
+Auto-merging data/maps/MossdeepCity_Mart/scripts.inc
+Auto-merging data/maps/MauvilleCity_Mart/scripts.inc
+Auto-merging data/maps/LilycoveCity_DepartmentStore_3F/scripts.inc
+Auto-merging data/maps/FallarborTown_Mart/scripts.inc
+Auto-merging data/battle_scripts_2.s
+Automatic merge failed; fix conflicts and then commit the result.
