@@ -2921,9 +2921,6 @@ static void BattleStartClearSetData(void)
     gBattleStruct->arenaLostOpponentMons = 0;
 
     gBattleStruct->mega.triggerSpriteId = 0xFF;
-    
-    for (i = 0; i < PARTY_SIZE; i++)
-        gBattleStruct->itemStolen[i].originalItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
 }
 
 void SwitchInClearSetData(void)
@@ -3024,10 +3021,6 @@ void SwitchInClearSetData(void)
     gBattleResources->flags->flags[gActiveBattler] = 0;
     gCurrentMove = 0;
     gBattleStruct->arenaTurnCounter = 0xFF;
-    
-    // Reset damage to prevent things like red card activating if the switched-in mon is holding it
-    gSpecialStatuses[gActiveBattler].physicalDmg = 0;
-    gSpecialStatuses[gActiveBattler].specialDmg = 0;
 
     ClearBattlerMoveHistory(gActiveBattler);
     ClearBattlerAbilityHistory(gActiveBattler);
@@ -3063,7 +3056,6 @@ void FaintClearSetData(void)
     gProtectStructs[gActiveBattler].spikyShielded = 0;
     gProtectStructs[gActiveBattler].kingsShielded = 0;
     gProtectStructs[gActiveBattler].banefulBunkered = 0;
-    gProtectStructs[gActiveBattler].obstructed = 0;
     gProtectStructs[gActiveBattler].endured = 0;
     gProtectStructs[gActiveBattler].noValidMoves = 0;
     gProtectStructs[gActiveBattler].helpingHand = 0;
@@ -3071,7 +3063,7 @@ void FaintClearSetData(void)
     gProtectStructs[gActiveBattler].stealMove = 0;
     gProtectStructs[gActiveBattler].prlzImmobility = 0;
     gProtectStructs[gActiveBattler].confusionSelfDmg = 0;
-    gProtectStructs[gActiveBattler].targetAffected = 0;
+    gProtectStructs[gActiveBattler].targetNotAffected = 0;
     gProtectStructs[gActiveBattler].chargingTurn = 0;
     gProtectStructs[gActiveBattler].fleeFlag = 0;
     gProtectStructs[gActiveBattler].usedImprisonedMove = 0;
@@ -3085,8 +3077,6 @@ void FaintClearSetData(void)
     gProtectStructs[gActiveBattler].usesBouncedMove = 0;
     gProtectStructs[gActiveBattler].usedGravityPreventedMove = 0;
     gProtectStructs[gActiveBattler].usedThroatChopPreventedMove = 0;
-    gProtectStructs[gActiveBattler].statRaised = 0;
-    gProtectStructs[gActiveBattler].statFell = 0;
 
     gDisableStructs[gActiveBattler].isFirstTurn = 2;
 
@@ -3456,16 +3446,6 @@ static void TryDoEventsBeforeFirstTurn(void)
     if (gBattleControllerExecFlags)
         return;
 
-    // Set invalid mons as absent(for example when starting a double battle with only one pokemon).
-    if (!(gBattleTypeFlags & BATTLE_TYPE_SAFARI))
-    {
-        for (i = 0; i < gBattlersCount; i++)
-        {
-            if (gBattleMons[i].hp == 0 || gBattleMons[i].species == SPECIES_NONE)
-                gAbsentBattlerFlags |= gBitTable[i];
-        }
-    }
-
     if (gBattleStruct->switchInAbilitiesCounter == 0)
     {
         for (i = 0; i < gBattlersCount; i++)
@@ -3677,7 +3657,7 @@ u8 IsRunningFromBattleImpossible(void)
         return 0;
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
         return 0;
-    if (GetBattlerAbility(gActiveBattler) == ABILITY_RUN_AWAY)
+    if (gBattleMons[gActiveBattler].ability == ABILITY_RUN_AWAY)
         return 0;
 
     if ((i = IsAbilityPreventingEscape(gActiveBattler)))
@@ -4092,10 +4072,10 @@ static void HandleTurnActionSelectionState(void)
             }
             break;
         case STATE_WAIT_ACTION_CONFIRMED_STANDBY:
-            if (!(gBattleControllerExecFlags & ((gBitTable[gActiveBattler])
+            if (!(gBattleControllerExecFlags & ((gBitTable[gActiveBattler]) 
                                                 | (0xF << 28)
-                                                | (gBitTable[gActiveBattler] << 4)
-                                                | (gBitTable[gActiveBattler] << 8)
+                                                | (gBitTable[gActiveBattler] << 4) 
+                                                | (gBitTable[gActiveBattler] << 8) 
                                                 | (gBitTable[gActiveBattler] << 12))))
             {
                 if (AllAtActionConfirmed())
@@ -4298,7 +4278,6 @@ s8 GetChosenMovePriority(u32 battlerId)
 {
     u16 move;
 
-    gProtectStructs[battlerId].pranksterElevated = 0;
     if (gProtectStructs[battlerId].noValidMoves)
         move = MOVE_STRUGGLE;
     else
@@ -4319,11 +4298,6 @@ s8 GetMovePriority(u32 battlerId, u16 move)
         priority++;
     }
     else if (GetBattlerAbility(battlerId) == ABILITY_PRANKSTER && IS_MOVE_STATUS(move))
-    {
-        gProtectStructs[battlerId].pranksterElevated = 1;
-        priority++;
-    }
-    else if (gBattleMoves[move].effect == EFFECT_GRASSY_GLIDE && gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && IsBattlerGrounded(battlerId))
     {
         priority++;
     }
@@ -4664,7 +4638,7 @@ static void CheckQuickClaw_CustapBerryActivation(void)
             }
         }
     }
-
+    
     // setup stuff before turns/actions
     TryClearRageAndFuryCutter();
     gCurrentTurnActionNumber = 0;
@@ -4893,15 +4867,10 @@ static void HandleEndTurn_FinishBattle(void)
         sub_8186444();
         BeginFastPaletteFade(3);
         FadeOutMapMusic(5);
-        #if B_TRAINERS_KNOCK_OFF_ITEMS
-        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-            TryRestoreStolenItems();
-        #endif
         for (i = 0; i < PARTY_SIZE; i++)
         {
             UndoMegaEvolution(i);
             UndoFormChange(i, B_SIDE_PLAYER, FALSE);
-            DoBurmyFormChange(i);
         }
         gBattleMainFunc = FreeResetData_ReturnToOvOrDoEvolutions;
         gCB2_AfterEvolution = BattleMainCB2;

@@ -1191,12 +1191,12 @@ const struct Item gItems[] =
         .itemId = ITEM_ESCAPE_ROPE,
         .description = sEscapeRopeDesc,
         #if I_KEY_ESCAPE_ROPE >= GEN_8
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
+        .price = 0,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
         #else
-            .price = 1000,
-            .pocket = POCKET_ITEMS,
+        .price = 1000,
+        .pocket = POCKET_ITEMS,
         #endif
         .type = ITEM_USE_FIELD,
         .fieldUseFunc = ItemUseOutOfBattle_EscapeRope,
@@ -1501,14 +1501,8 @@ const struct Item gItems[] =
         .holdEffectParam = 0,
         .description = sRedNectarDesc,
         .pocket = POCKET_ITEMS,
-        #ifdef POKEMON_EXPANSION
-            .type = ITEM_USE_PARTY_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_FormChange_ConsumedOnUse,
-            .secondaryId = FORM_ITEM_USE,
-        #else
-            .type = ITEM_USE_BAG_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        #endif
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse, // Placeholder
     },
 
     [ITEM_YELLOW_NECTAR] =
@@ -1519,14 +1513,8 @@ const struct Item gItems[] =
         .holdEffectParam = 0,
         .description = sYellowNectarDesc,
         .pocket = POCKET_ITEMS,
-        #ifdef POKEMON_EXPANSION
-            .type = ITEM_USE_PARTY_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_FormChange_ConsumedOnUse,
-            .secondaryId = FORM_ITEM_USE,
-        #else
-            .type = ITEM_USE_BAG_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        #endif
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse, // Placeholder
     },
 
     [ITEM_PINK_NECTAR] =
@@ -1537,14 +1525,8 @@ const struct Item gItems[] =
         .holdEffectParam = 0,
         .description = sPinkNectarDesc,
         .pocket = POCKET_ITEMS,
-        #ifdef POKEMON_EXPANSION
-            .type = ITEM_USE_PARTY_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_FormChange_ConsumedOnUse,
-            .secondaryId = FORM_ITEM_USE,
-        #else
-            .type = ITEM_USE_BAG_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        #endif
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse, // Placeholder
     },
 
     [ITEM_PURPLE_NECTAR] =
@@ -1555,14 +1537,8 @@ const struct Item gItems[] =
         .holdEffectParam = 0,
         .description = sPurpleNectarDesc,
         .pocket = POCKET_ITEMS,
-        #ifdef POKEMON_EXPANSION
-            .type = ITEM_USE_PARTY_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_FormChange_ConsumedOnUse,
-            .secondaryId = FORM_ITEM_USE,
-        #else
-            .type = ITEM_USE_BAG_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        #endif
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse, // Placeholder
     },
 
     [ITEM_RARE_BONE] =
@@ -1856,13 +1832,8 @@ const struct Item gItems[] =
         .name = _("Sitrus Berry"),
         .itemId = ITEM_SITRUS_BERRY,
         .price = 20,
-        #if defined(BATTLE_ENGINE) && I_SITRUS_BERRY_HEAL >= GEN_4
-            .holdEffect = HOLD_EFFECT_RESTORE_PCT_HP,
-            .holdEffectParam = 25,
-        #else
-            .holdEffect = HOLD_EFFECT_RESTORE_HP,
-            .holdEffectParam = 30,
-        #endif
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 30,
         .description = sSitrusBerryDesc,
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
@@ -2383,7 +2354,7 @@ const struct Item gItems[] =
         .itemId = ITEM_COBA_BERRY,
         .price = 20,
         .holdEffect = HOLD_EFFECT_RESIST_BERRY,
-        .holdEffectParam = TYPE_FLYING,
+        .holdEffectParam = TYPE_FIGHTING,
         .description = sCobaBerryDesc,
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_BAG_MENU,
@@ -2649,7 +2620,7 @@ const struct Item gItems[] =
         .name = _("Mental Herb"),
         .itemId = ITEM_MENTAL_HERB,
         .price = 4000,
-        .holdEffect = HOLD_EFFECT_MENTAL_HERB,
+        .holdEffect = HOLD_EFFECT_CURE_ATTRACT,
         .description = sMentalHerbDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -3685,7 +3656,7 @@ const struct Item gItems[] =
 
     [ITEM_POKEBLOCK_CASE] =
     {
-        .name = _("{POKEBLOCK} Case"),
+        .name = _("{POKEBLOCK} CASE"),
         .itemId = ITEM_POKEBLOCK_CASE,
         .price = 0,
         .description = sPokeblockCaseDesc,
@@ -5360,15 +5331,9 @@ const struct Item gItems[] =
         .price = 0,
         .holdEffect = HOLD_EFFECT_GRACIDEA,
         .description = sGracideaDesc,
-        .pocket = POCKET_KEY_ITEMS,
-        #ifdef POKEMON_EXPANSION
-            .type = ITEM_USE_PARTY_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_FormChange,
-            .secondaryId = FORM_ITEM_USE_TIME,
-        #else
-            .type = ITEM_USE_BAG_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        #endif
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
     [ITEM_BUG_MEMORY] =
@@ -6949,7 +6914,6 @@ const struct Item gItems[] =
         .itemId = ITEM_ELECTRIC_SEED,
         .price = 4000,
         .holdEffect = HOLD_EFFECT_SEEDS,
-        .holdEffectParam = HOLD_EFFECT_PARAM_ELECTRIC_TERRAIN,
         .description = sElectricSeedDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -6962,7 +6926,6 @@ const struct Item gItems[] =
         .itemId = ITEM_GRASSY_SEED,
         .price = 4000,
         .holdEffect = HOLD_EFFECT_SEEDS,
-        .holdEffectParam = HOLD_EFFECT_PARAM_GRASSY_TERRAIN,
         .description = sGrassySeedDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -6975,7 +6938,6 @@ const struct Item gItems[] =
         .itemId = ITEM_MISTY_SEED,
         .price = 4000,
         .holdEffect = HOLD_EFFECT_SEEDS,
-        .holdEffectParam = HOLD_EFFECT_PARAM_MISTY_TERRAIN,
         .description = sMistySeedDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -6988,2770 +6950,6 @@ const struct Item gItems[] =
         .itemId = ITEM_PSYCHIC_SEED,
         .price = 4000,
         .holdEffect = HOLD_EFFECT_SEEDS,
-        .holdEffectParam = HOLD_EFFECT_PARAM_PSYCHIC_TERRAIN,
-        .description = sPsychicSeedDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ADRENALINE_ORB] =
-    {
-        .name = _("AdrenalineOrb"),
-        .itemId = ITEM_ADRENALINE_ORB,
-        .price = 300,
-        .holdEffect = HOLD_EFFECT_ADRENALINE_ORB,
-        .description = sAdrenalineOrbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_HONEY] =
-    {
-        .name = _("Honey"),
-        .itemId = ITEM_HONEY,
-        .price = 300,
-        .description = sHoneyDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_HEALTH_FEATHER] =
-    {
-        .name = _("HealthFeather"),
-        .itemId = ITEM_HEALTH_FEATHER,
-        .price = 300,
-        .description = sHealthFeatherDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-    },
-
-    [ITEM_MUSCLE_FEATHER] =
-    {
-        .name = _("MuscleFeather"),
-        .itemId = ITEM_MUSCLE_FEATHER,
-        .price = 300,
-        .description = sMuscleFeatherDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-    },
-
-    [ITEM_RESIST_FEATHER] =
-    {
-        .name = _("ResistFeather"),
-        .itemId = ITEM_RESIST_FEATHER,
-        .price = 300,
-        .description = sResistFeatherDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-    },
-
-    [ITEM_GENIUS_FEATHER] =
-    {
-        .name = _("GeniusFeather"),
-        .itemId = ITEM_GENIUS_FEATHER,
-        .price = 300,
-        .description = sGeniusFeatherDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-    },
-
-    [ITEM_CLEVER_FEATHER] =
-    {
-        .name = _("CleverFeather"),
-        .itemId = ITEM_CLEVER_FEATHER,
-        .price = 300,
-        .description = sCleverFeatherDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-    },
-
-    [ITEM_SWIFT_FEATHER] =
-    {
-        .name = _("SwiftFeather"),
-        .itemId = ITEM_SWIFT_FEATHER,
-        .price = 300,
-        .description = sSwiftFeatherDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-    },
-
-    [ITEM_PRETTY_FEATHER] =
-    {
-        .name = _("PrettyFeather"),
-        .itemId = ITEM_PRETTY_FEATHER,
-        .price = 1000,
-        .description = sPrettyFeatherDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SHINY_CHARM] =
-    {
-        .name = _("Shiny Charm"),
-        .itemId = ITEM_SHINY_CHARM,
-        .price = 0,
-        .importance = 1,
-        .description = sShinyCharmDesc,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_OVAL_CHARM] =
-    {
-        .name = _("Oval Charm"),
-        .itemId = ITEM_OVAL_CHARM,
-        .price = 0,
-        .importance = 1,
-        .description = sOvalCharmDesc,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_Z_RING] =
-    {
-        .name = _("Z-Ring"),
-        .itemId = ITEM_Z_RING,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_NONE,
-        .description = sZRingDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-<<<<<<< HEAD
-    [ITEM_NORMALIUM_Z] =
-    {
-        .name = _("Normalium Z"),
-        .itemId = ITEM_NORMALIUM_Z,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
-        .description = sNormaliumZDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_NORMAL
-    },
-
-    [ITEM_FIGHTINIUM_Z] =
-    {
-        .name = _("Fightinium Z"),
-        .itemId = ITEM_FIGHTINIUM_Z,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
-        .description = sFightiniumZDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FIGHTING
-    },
-
-    [ITEM_FLYINIUM_Z] =
-    {
-        .name = _("Flyinium Z"),
-        .itemId = ITEM_FLYINIUM_Z,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
-        .description = sFlyiniumZDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FLYING
-    },
-
-    [ITEM_POISONIUM_Z] =
-    {
-        .name = _("Poisinium Z"),
-        .itemId = ITEM_POISONIUM_Z,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
-        .description = sPoisoniumZDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_POISON
-    },
-
-    [ITEM_GROUNDIUM_Z] =
-    {
-        .name = _("Groundium Z"),
-        .itemId = ITEM_GROUNDIUM_Z,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
-        .description = sGroundiumZDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GROUND
-    },
-
-    [ITEM_ROCKIUM_Z] =
-    {
-        .name = _("Rockium Z"),
-        .itemId = ITEM_ROCKIUM_Z,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
-        .description = sRockiumZDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ROCK
-    },
-
-    [ITEM_BUGINIUM_Z] =
-    {
-        .name = _("Oak's Parcel"),
-        .itemId = ITEM_OAKS_PARCEL,
-=======
-    [ITEM_HM05_FLASH] =
-    {
-        .name = _("HM05"),
-        .itemId = ITEM_HM05_FLASH,
-        .price = 0,
-        .description = sHM05Desc,
-        .importance = 1,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-    },
-
-    [ITEM_HM06_ROCK_SMASH] =
-    {
-        .name = _("HM06"),
-        .itemId = ITEM_HM06_ROCK_SMASH,
-        .price = 0,
-        .description = sHM06Desc,
-        .importance = 1,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-    },
-
-    [ITEM_HM07_WATERFALL] =
-    {
-        .name = _("HM07"),
-        .itemId = ITEM_HM07_WATERFALL,
-        .price = 0,
-        .description = sHM07Desc,
-        .importance = 1,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-    },
-
-    [ITEM_HM08_DIVE] =
-    {
-        .name = _("HM08"),
-        .itemId = ITEM_HM08_DIVE,
-        .price = 0,
-        .description = sHM08Desc,
-        .importance = 1,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-    },
-
-// FireRed/LeafGreen key items
-
-    [ITEM_OAKS_PARCEL] =
-    {
-        .name = _("Parcel"),
-        .itemId = ITEM_OAKS_PARCEL,
-        .price = 0,
-        .description = sOaksParcelDesc,
-        .importance = 2,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_POKE_FLUTE] =
-    {
-        .name = _("Poké Flute"),
-        .itemId = ITEM_POKE_FLUTE,
-        .price = 0,
-        .description = sPokeFluteDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SECRET_KEY] =
-    {
-        .name = _("Secret Key"),
-        .itemId = ITEM_SECRET_KEY,
-        .price = 0,
-        .description = sSecretKeyDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BIKE_VOUCHER] =
-    {
-        .name = _("Bike Voucher"),
-        .itemId = ITEM_BIKE_VOUCHER,
-        .price = 0,
-        .description = sBikeVoucherDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GOLD_TEETH] =
-    {
-        .name = _("Gold Teeth"),
-        .itemId = ITEM_GOLD_TEETH,
-        .price = 0,
-        .description = sGoldTeethDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_OLD_AMBER] =
-    {
-        .name = _("Old Amber"),
-        .itemId = ITEM_OLD_AMBER,
-        .description = sOldAmberDesc,
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = 10000,
-            .pocket = POCKET_ITEMS,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CARD_KEY] =
-    {
-        .name = _("Card Key"),
-        .itemId = ITEM_CARD_KEY,
-        .price = 0,
-        .description = sCardKeyDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LIFT_KEY] =
-    {
-        .name = _("Lift Key"),
-        .itemId = ITEM_LIFT_KEY,
-        .price = 0,
-        .description = sLiftKeyDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ARMOR_FOSSIL] =
-    {
-        .name = _("Armor Fossil"),
-        .itemId = ITEM_ARMOR_FOSSIL,
-        .price = 7000,
-        .description = sArmorFossilDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SKULL_FOSSIL] =
-    {
-        .name = _("Skull Fossil"),
-        .itemId = ITEM_SKULL_FOSSIL,
-        .price = 7000,
-        .description = sSkullFossilDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_HELIX_FOSSIL] =
-    {
-        .name = _("Helix Fossil"),
-        .itemId = ITEM_HELIX_FOSSIL,
-        .description = sHelixFossilDesc,
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = 7000,
-            .pocket = POCKET_ITEMS,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_DOME_FOSSIL] =
-    {
-        .name = _("Dome Fossil"),
-        .itemId = ITEM_DOME_FOSSIL,
-        .description = sDomeFossilDesc,
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = 7000,
-            .pocket = POCKET_ITEMS,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ROOT_FOSSIL] =
-    {
-        .name = _("Root Fossil"),
-        .itemId = ITEM_ROOT_FOSSIL,
-        .description = sRootFossilDesc,
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = 7000,
-            .pocket = POCKET_ITEMS,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CLAW_FOSSIL] =
-    {
-        .name = _("Claw Fossil"),
-        .itemId = ITEM_CLAW_FOSSIL,
-        .description = sClawFossilDesc,
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = 7000,
-            .pocket = POCKET_ITEMS,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_COVER_FOSSIL] =
-    {
-        .name = _("Cover Fossil"),
-        .itemId = ITEM_COVER_FOSSIL,
-        .price = 7000,
-        .description = sCoverFossilDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_PLUME_FOSSIL] =
-    {
-        .name = _("Plume Fossil"),
-        .itemId = ITEM_PLUME_FOSSIL,
-        .price = 7000,
-        .description = sPlumeFossilDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_JAW_FOSSIL] =
-    {
-        .name = _("Jaw Fossil"),
-        .itemId = ITEM_JAW_FOSSIL,
-        .price = 7000,
-        .description = sJawFossilDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SAIL_FOSSIL] =
-    {
-        .name = _("Sail Fossil"),
-        .itemId = ITEM_SAIL_FOSSIL,
-        .price = 7000,
-        .description = sSailFossilDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SILPH_SCOPE] =
-    {
-        .name = _("Silph Scope"),
-        .itemId = ITEM_SILPH_SCOPE,
-        .price = 0,
-        .description = sSilphScopeDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BICYCLE] =
-    {
-        .name = _("Bicycle"),
-        .itemId = ITEM_BICYCLE,
-        .price = 0,
-        .description = sBicycleDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_FIELD,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_TOWN_MAP] =
-    {
-        .name = _("Town Map"),
-        .itemId = ITEM_TOWN_MAP,
-        .price = 0,
-        .description = sTownMapDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_VS_SEEKER] =
-    {
-        .name = _("Vs. Seeker"),
-        .itemId = ITEM_VS_SEEKER,
-        .price = 0,
-        .description = sVSSeekerDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_FIELD,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_FAME_CHECKER] =
-    {
-        .name = _("Fame Checker"),
-        .itemId = ITEM_FAME_CHECKER,
-        .price = 0,
-        .description = sFameCheckerDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_TM_CASE] =
-    {
-        .name = _("TM Case"),
-        .itemId = ITEM_TM_CASE,
-        .price = 0,
-        .description = sTMCaseDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BERRY_POUCH] =
-    {
-        .name = _("Berry Pouch"),
-        .itemId = ITEM_BERRY_POUCH,
-        .price = 0,
-        .description = sBerryPouchDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_TEACHY_TV] =
-    {
-        .name = _("Teachy TV"),
-        .itemId = ITEM_TEACHY_TV,
-        .price = 0,
-        .description = sTeachyTVDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_FIELD,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_TRI_PASS] =
-    {
-        .name = _("Tri-Pass"),
-        .itemId = ITEM_TRI_PASS,
-        .price = 0,
-        .description = sTriPassDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_RAINBOW_PASS] =
-    {
-        .name = _("Rainbow Pass"),
-        .itemId = ITEM_RAINBOW_PASS,
-        .price = 0,
-        .description = sRainbowPassDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_TEA] =
-    {
-        .name = _("Tea"),
-        .itemId = ITEM_TEA,
-        .price = 0,
-        .description = sTeaDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_MYSTIC_TICKET] =
-    {
-        .name = _("Mystic Ticket"),
-        .itemId = ITEM_MYSTIC_TICKET,
-        .price = 0,
-        .description = sMysticTicketDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_AURORA_TICKET] =
-    {
-        .name = _("Aurora Ticket"),
-        .itemId = ITEM_AURORA_TICKET,
-        .price = 0,
-        .description = sAuroraTicketDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_POWDER_JAR] =
-    {
-        .name = _("Powder Jar"),
-        .itemId = ITEM_POWDER_JAR,
-        .price = 0,
-        .description = sPowderJarDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_PowderJar,
-    },
-
-    [ITEM_RUBY] =
-    {
-        .name = _("Ruby"),
-        .itemId = ITEM_RUBY,
-        .price = 0,
-        .description = sRubyDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SAPPHIRE] =
-    {
-        .name = _("Sapphire"),
-        .itemId = ITEM_SAPPHIRE,
-        .price = 0,
-        .description = sSapphireDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-// Emerald-specific key items
-
-    [ITEM_MAGMA_EMBLEM] =
-    {
-        .name = _("Magma Emblem"),
-        .itemId = ITEM_MAGMA_EMBLEM,
-        .price = 0,
-        .description = sMagmaEmblemDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_OLD_SEA_MAP] =
-    {
-        .name = _("Old Sea Map"),
-        .itemId = ITEM_OLD_SEA_MAP,
-        .price = 0,
-        .description = sOldSeaMapDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-// New items
-
-    [ITEM_WIDE_LENS] =
-    {
-        .name = _("Wide Lens"),
-        .itemId = ITEM_WIDE_LENS,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_WIDE_LENS,
-        .holdEffectParam = 10,
-        .description = sWideLensDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_MUSCLE_BAND] =
-    {
-        .name = _("Muscle Band"),
-        .itemId = ITEM_MUSCLE_BAND,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_MUSCLE_BAND,
-        .holdEffectParam = 10,
-        .description = sMuscleBandDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_WISE_GLASSES] =
-    {
-        .name = _("Wise Glasses"),
-        .itemId = ITEM_WISE_GLASSES,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_WISE_GLASSES,
-        .holdEffectParam = 10,
-        .description = sWiseGlassesDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_EXPERT_BELT] =
-    {
-        .name = _("Expert Belt"),
-        .itemId = ITEM_EXPERT_BELT,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_EXPERT_BELT,
-        .holdEffectParam = 20,
-        .description = sExpertBeltDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LIGHT_CLAY] =
-    {
-        .name = _("Light Clay"),
-        .itemId = ITEM_LIGHT_CLAY,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_LIGHT_CLAY,
-        .description = sLightClayDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LIFE_ORB] =
-    {
-        .name = _("Life Orb"),
-        .itemId = ITEM_LIFE_ORB,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_LIFE_ORB,
-        .description = sLifeOrbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_POWER_HERB] =
-    {
-        .name = _("Power Herb"),
-        .itemId = ITEM_POWER_HERB,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_POWER_HERB,
-        .description = sPowerHerbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_TOXIC_ORB] =
-    {
-        .name = _("Toxic Orb"),
-        .itemId = ITEM_TOXIC_ORB,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_TOXIC_ORB,
-        .description = sToxicOrbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_FLAME_ORB] =
-    {
-        .name = _("Flame Orb"),
-        .itemId = ITEM_FLAME_ORB,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_FLAME_ORB,
-        .description = sFlameOrbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_QUICK_POWDER] =
-    {
-        .name = _("Quick Powder"),
-        .itemId = ITEM_QUICK_POWDER,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_QUICK_POWDER,
-        .description = sQuickPowderDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_FOCUS_SASH] =
-    {
-        .name = _("Focus Sash"),
-        .itemId = ITEM_FOCUS_SASH,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_FOCUS_SASH,
-        .description = sFocusSashDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ZOOM_LENS] =
-    {
-        .name = _("Zoom Lens"),
-        .itemId = ITEM_ZOOM_LENS,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_ZOOM_LENS,
-        .holdEffectParam = 20,
-        .description = sZoomLensDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_METRONOME] =
-    {
-        .name = _("Metronome"),
-        .itemId = ITEM_METRONOME,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_METRONOME,
-        .holdEffectParam = 20,
-        .description = sMetronomeDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_IRON_BALL] =
-    {
-        .name = _("Iron Ball"),
-        .itemId = ITEM_IRON_BALL,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_IRON_BALL,
-        .description = sIronBallDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LAGGING_TAIL] =
-    {
-        .name = _("Lagging Tail"),
-        .itemId = ITEM_LAGGING_TAIL,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_LAGGING_TAIL,
-        .description = sLaggingTailDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_DESTINY_KNOT] =
-    {
-        .name = _("Destiny Knot"),
-        .itemId = ITEM_DESTINY_KNOT,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_DESTINY_KNOT,
-        .description = sDestinyKnotDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BLACK_SLUDGE] =
-    {
-        .name = _("Black Sludge"),
-        .itemId = ITEM_BLACK_SLUDGE,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_BLACK_SLUDGE,
-        .description = sBlackSludgeDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ICY_ROCK] =
-    {
-        .name = _("Icy Rock"),
-        .itemId = ITEM_ICY_ROCK,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_ICY_ROCK,
-        .description = sIcyRockDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SMOOTH_ROCK] =
-    {
-        .name = _("Smooth Rock"),
-        .itemId = ITEM_SMOOTH_ROCK,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_SMOOTH_ROCK,
-        .description = sSmoothRockDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_HEAT_ROCK] =
-    {
-        .name = _("Heat Rock"),
-        .itemId = ITEM_HEAT_ROCK,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_HEAT_ROCK,
-        .description = sHeatRockDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_DAMP_ROCK] =
-    {
-        .name = _("Damp Rock"),
-        .itemId = ITEM_DAMP_ROCK,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_DAMP_ROCK,
-        .description = sDampRockDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GRIP_CLAW] =
-    {
-        .name = _("Grip Claw"),
-        .itemId = ITEM_GRIP_CLAW,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GRIP_CLAW,
-        .description = sGripClawDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CHOICE_SCARF] =
-    {
-        .name = _("Choice Scarf"),
-        .itemId = ITEM_CHOICE_SCARF,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_CHOICE_SCARF,
-        .description = sChoiceScarfDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_STICKY_BARB] =
-    {
-        .name = _("Sticky Barb"),
-        .itemId = ITEM_STICKY_BARB,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_STICKY_BARB,
-        .description = sStickyBarbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SHED_SHELL] =
-    {
-        .name = _("Shed Shell"),
-        .itemId = ITEM_SHED_SHELL,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_SHED_SHELL,
-        .description = sShedShellDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BIG_ROOT] =
-    {
-        .name = _("Big Root"),
-        .itemId = ITEM_BIG_ROOT,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_BIG_ROOT,
-        .holdEffectParam = 30,
-        .description = sBigRootDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CHOICE_SPECS] =
-    {
-        .name = _("Choice Specs"),
-        .itemId = ITEM_CHOICE_SPECS,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_CHOICE_SPECS,
-        .description = sChoiceSpecsDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ODD_KEYSTONE] =
-    {
-        .name = _("Odd Keystone"),
-        .itemId = ITEM_ODD_KEYSTONE,
-        .price = 2100,
-        .description = sOddKeystoneDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ADAMANT_ORB] =
-    {
-        .name = _("Adamant Orb"),
-        .itemId = ITEM_ADAMANT_ORB,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_ADAMANT_ORB,
-        .description = sAdamantOrbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LUSTROUS_ORB] =
-    {
-        .name = _("Lustrous Orb"),
-        .itemId = ITEM_LUSTROUS_ORB,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_LUSTROUS_ORB,
-        .description = sLustrousOrbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GRISEOUS_ORB] =
-    {
-        .name = _("Griseous Orb"),
-        .itemId = ITEM_GRISEOUS_ORB,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_GRISEOUS_ORB,
-        .description = sGriseousOrbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GRACIDEA] =
-    {
-        .name = _("Gracidea"),
-        .itemId = ITEM_GRACIDEA,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_GRACIDEA,
-        .description = sGracideaDesc,
-        .pocket = POCKET_KEY_ITEMS,
-        #ifdef POKEMON_EXPANSION
-            .type = ITEM_USE_PARTY_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_FormChange,
-            .secondaryId = FORM_ITEM_USE_TIME,
-        #else
-            .type = ITEM_USE_BAG_MENU,
-            .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        #endif
-    },
-
-    [ITEM_BUG_MEMORY] =
-    {
-        .name = _("Bug Memory"),
-        .itemId = ITEM_BUG_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sBugMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_BUG,
-    },
-
-    [ITEM_DARK_MEMORY] =
-    {
-        .name = _("Dark Memory"),
-        .itemId = ITEM_DARK_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sDarkMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_DARK,
-    },
-
-    [ITEM_DRAGON_MEMORY] =
-    {
-        .name = _("Dragon Memory"),
-        .itemId = ITEM_DRAGON_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sDragonMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_DRAGON,
-    },
-
-    [ITEM_ELECTRIC_MEMORY] =
-    {
-        .name = _("ElectrcMemory"),
-        .itemId = ITEM_ELECTRIC_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sElectricMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ELECTRIC,
-    },
-
-    [ITEM_FAIRY_MEMORY] =
-    {
-        .name = _("Fairy Memory"),
-        .itemId = ITEM_FAIRY_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sFairyMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FAIRY,
-    },
-
-    [ITEM_FIGHTING_MEMORY] =
-    {
-        .name = _("FightngMemory"),
-        .itemId = ITEM_FIGHTING_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sFightingMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FIGHTING,
-    },
-
-    [ITEM_FIRE_MEMORY] =
-    {
-        .name = _("Fire Memory"),
-        .itemId = ITEM_FIRE_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sFireMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FIRE,
-    },
-
-    [ITEM_FLYING_MEMORY] =
-    {
-        .name = _("Flying Memory"),
-        .itemId = ITEM_FLYING_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sFlyingMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FLYING,
-    },
-
-    [ITEM_GHOST_MEMORY] =
-    {
-        .name = _("Ghost Memory"),
-        .itemId = ITEM_GHOST_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sGhostMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GHOST,
-    },
-
-    [ITEM_GRASS_MEMORY] =
-    {
-        .name = _("Grass Memory"),
-        .itemId = ITEM_GRASS_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sGrassMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GRASS,
-    },
-
-    [ITEM_GROUND_MEMORY] =
-    {
-        .name = _("Ground Memory"),
-        .itemId = ITEM_GROUND_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sGroundMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GROUND,
-    },
-
-    [ITEM_ICE_MEMORY] =
-    {
-        .name = _("Ice Memory"),
-        .itemId = ITEM_ICE_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sIceMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ICE,
-    },
-
-    [ITEM_POISON_MEMORY] =
-    {
-        .name = _("Poison Memory"),
-        .itemId = ITEM_POISON_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sPoisonMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_POISON,
-    },
-
-    [ITEM_PSYCHIC_MEMORY] =
-    {
-        .name = _("PsychicMemory"),
-        .itemId = ITEM_PSYCHIC_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sPsychicMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_PSYCHIC,
-    },
-
-    [ITEM_ROCK_MEMORY] =
-    {
-        .name = _("Rock Memory"),
-        .itemId = ITEM_ROCK_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sRockMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ROCK,
-    },
-
-    [ITEM_STEEL_MEMORY] =
-    {
-        .name = _("Steel Memory"),
-        .itemId = ITEM_STEEL_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sSteelMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_STEEL,
-    },
-
-    [ITEM_WATER_MEMORY] =
-    {
-        .name = _("Water Memory"),
-        .itemId = ITEM_WATER_MEMORY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_MEMORY,
-        .holdEffectParam = 0,
-        .description = sWaterMemoryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_WATER,
-    },
-
-    [ITEM_FLAME_PLATE] =
-    {
-        .name = _("Flame Plate"),
-        .itemId = ITEM_FLAME_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sFlamePlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FIRE,
-    },
-
-    [ITEM_SPLASH_PLATE] =
-    {
-        .name = _("Splash Plate"),
-        .itemId = ITEM_SPLASH_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sSplashPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_WATER,
-    },
-
-    [ITEM_ZAP_PLATE] =
-    {
-        .name = _("Zap Plate"),
-        .itemId = ITEM_ZAP_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sZapPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ELECTRIC,
-    },
-
-    [ITEM_MEADOW_PLATE] =
-    {
-        .name = _("Meadow Plate"),
-        .itemId = ITEM_MEADOW_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sMeadowPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GRASS,
-    },
-
-    [ITEM_ICICLE_PLATE] =
-    {
-        .name = _("Icicle Plate"),
-        .itemId = ITEM_ICICLE_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sIciclePlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ICE,
-    },
-
-    [ITEM_FIST_PLATE] =
-    {
-        .name = _("Fist Plate"),
-        .itemId = ITEM_FIST_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sFistPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FIGHTING,
-    },
-
-    [ITEM_TOXIC_PLATE] =
-    {
-        .name = _("Toxic Plate"),
-        .itemId = ITEM_TOXIC_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sToxicPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_POISON,
-    },
-
-    [ITEM_EARTH_PLATE] =
-    {
-        .name = _("Earth Plate"),
-        .itemId = ITEM_EARTH_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sEarthPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GROUND,
-    },
-
-    [ITEM_SKY_PLATE] =
-    {
-        .name = _("Sky Plate"),
-        .itemId = ITEM_SKY_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sSkyPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FLYING,
-    },
-
-    [ITEM_MIND_PLATE] =
-    {
-        .name = _("Mind Plate"),
-        .itemId = ITEM_MIND_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sMindPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_PSYCHIC,
-    },
-
-    [ITEM_INSECT_PLATE] =
-    {
-        .name = _("Insect Plate"),
-        .itemId = ITEM_INSECT_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sInsectPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_BUG,
-    },
-
-    [ITEM_STONE_PLATE] =
-    {
-        .name = _("Stone Plate"),
-        .itemId = ITEM_STONE_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sStonePlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ROCK,
-    },
-
-    [ITEM_SPOOKY_PLATE] =
-    {
-        .name = _("Spooky Plate"),
-        .itemId = ITEM_SPOOKY_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sSpookyPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GHOST,
-    },
-
-    [ITEM_DRACO_PLATE] =
-    {
-        .name = _("Draco Plate"),
-        .itemId = ITEM_DRACO_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sDracoPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_DRAGON,
-    },
-
-    [ITEM_DREAD_PLATE] =
-    {
-        .name = _("Dread Plate"),
-        .itemId = ITEM_DREAD_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sDreadPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_DARK,
-    },
-
-    [ITEM_IRON_PLATE] =
-    {
-        .name = _("Iron Plate"),
-        .itemId = ITEM_IRON_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sIronPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_STEEL,
-    },
-
-    [ITEM_EVIOLITE] =
-    {
-        .name = _("Eviolite"),
-        .itemId = ITEM_EVIOLITE,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_EVIOLITE,
-        .holdEffectParam = 50,
-        .description = sEvioliteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_FLOAT_STONE] =
-    {
-        .name = _("Float Stone"),
-        .itemId = ITEM_FLOAT_STONE,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_FLOAT_STONE,
-        .description = sFloatStoneDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ROCKY_HELMET] =
-    {
-        .name = _("Rocky Helmet"),
-        .itemId = ITEM_ROCKY_HELMET,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_ROCKY_HELMET,
-        .holdEffectParam = 0,
-        .description = sRockyHelmetDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_AIR_BALLOON] =
-    {
-        .name = _("Air Balloon"),
-        .itemId = ITEM_AIR_BALLOON,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_AIR_BALLOON,
-        .holdEffectParam = 0,
-        .description = sAirBalloonDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_RED_CARD] =
-    {
-        .name = _("Red Card"),
-        .itemId = ITEM_RED_CARD,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_RED_CARD,
-        .holdEffectParam = 0,
-        .description = sRedCardDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_RING_TARGET] =
-    {
-        .name = _("Ring Target"),
-        .itemId = ITEM_RING_TARGET,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_RING_TARGET,
-        .holdEffectParam = 0,
-        .description = sRingTargetDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BINDING_BAND] =
-    {
-        .name = _("Binding Band"),
-        .itemId = ITEM_BINDING_BAND,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_BINDING_BAND,
-        .description = sBindingBandDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_EJECT_BUTTON] =
-    {
-        .name = _("Eject Button"),
-        .itemId = ITEM_EJECT_BUTTON,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_EJECT_BUTTON,
-        .holdEffectParam = 0,
-        .description = sEjectButtonDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ABSORB_BULB] =
-    {
-        .name = _("Absorb Bulb"),
-        .itemId = ITEM_ABSORB_BULB,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_ABSORB_BULB,
-        .holdEffectParam = 0,
-        .description = sAbsorbBulbDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CELL_BATTERY] =
-    {
-        .name = _("Cell Battery"),
-        .itemId = ITEM_CELL_BATTERY,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_CELL_BATTERY,
-        .holdEffectParam = 0,
-        .description = sCellBatteryDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LUMINOUS_MOSS] =
-    {
-        .name = _("Luminous Moss"),
-        .itemId = ITEM_LUMINOUS_MOSS,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_LUMINOUS_MOSS,
-        .holdEffectParam = 0,
-        .description = sLuminousMossDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SNOWBALL] =
-    {
-        .name = _("Snowball"),
-        .itemId = ITEM_SNOWBALL,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_SNOWBALL,
-        .holdEffectParam = 0,
-        .description = sSnowballDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_WEAKNESS_POLICY] =
-    {
-        .name = _("WeaknssPolicy"),
-        .itemId = ITEM_WEAKNESS_POLICY,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_WEAKNESS_POLICY,
-        .holdEffectParam = 0,
-        .description = sWeaknessPolicyDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_DOUSE_DRIVE] =
-    {
-        .name = _("Douse Drive"),
-        .itemId = ITEM_DOUSE_DRIVE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_DRIVE,
-        .description = sDouseDriveDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_WATER,
-    },
-
-    [ITEM_SHOCK_DRIVE] =
-    {
-        .name = _("Shock Drive"),
-        .itemId = ITEM_SHOCK_DRIVE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_DRIVE,
-        .description = sShockDriveDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ELECTRIC,
-    },
-
-    [ITEM_BURN_DRIVE] =
-    {
-        .name = _("Burn Drive"),
-        .itemId = ITEM_BURN_DRIVE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_DRIVE,
-        .description = sBurnDriveDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FIRE,
-    },
-
-    [ITEM_CHILL_DRIVE] =
-    {
-        .name = _("Chill Drive"),
-        .itemId = ITEM_CHILL_DRIVE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_DRIVE,
-        .description = sChillDriveDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ICE,
-    },
-
-    [ITEM_FIRE_GEM] =
-    {
-        .name = _("Fire Gem"),
-        .itemId = ITEM_FIRE_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sFireGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FIRE,
-    },
-
-    [ITEM_WATER_GEM] =
-    {
-        .name = _("Water Gem"),
-        .itemId = ITEM_WATER_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sWaterGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_WATER,
-    },
-
-    [ITEM_ELECTRIC_GEM] =
-    {
-        .name = _("Electric Gem"),
-        .itemId = ITEM_ELECTRIC_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sElectricGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ELECTRIC,
-    },
-
-    [ITEM_GRASS_GEM] =
-    {
-        .name = _("Grass Gem"),
-        .itemId = ITEM_GRASS_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sGrassGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GRASS,
-    },
-
-    [ITEM_ICE_GEM] =
-    {
-        .name = _("Ice Gem"),
-        .itemId = ITEM_ICE_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sIceGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ICE,
-    },
-
-    [ITEM_FIGHTING_GEM] =
-    {
-        .name = _("Fighting Gem"),
-        .itemId = ITEM_FIGHTING_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sFightingGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FIGHTING,
-    },
-
-    [ITEM_POISON_GEM] =
-    {
-        .name = _("Poison Gem"),
-        .itemId = ITEM_POISON_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sPoisonGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_POISON,
-    },
-
-    [ITEM_GROUND_GEM] =
-    {
-        .name = _("Ground Gem"),
-        .itemId = ITEM_GROUND_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sGroundGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GROUND,
-    },
-
-    [ITEM_FLYING_GEM] =
-    {
-        .name = _("Flying Gem"),
-        .itemId = ITEM_FLYING_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sFlyingGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FLYING,
-    },
-
-    [ITEM_PSYCHIC_GEM] =
-    {
-        .name = _("Psychic Gem"),
-        .itemId = ITEM_PSYCHIC_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sPsychicGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_PSYCHIC,
-    },
-
-    [ITEM_BUG_GEM] =
-    {
-        .name = _("Bug Gem"),
-        .itemId = ITEM_BUG_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sBugGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_BUG,
-    },
-
-    [ITEM_ROCK_GEM] =
-    {
-        .name = _("Rock Gem"),
-        .itemId = ITEM_ROCK_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sRockGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_ROCK,
-    },
-
-    [ITEM_GHOST_GEM] =
-    {
-        .name = _("Ghost Gem"),
-        .itemId = ITEM_GHOST_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sGhostGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GHOST,
-    },
-
-    [ITEM_DRAGON_GEM] =
-    {
-        .name = _("Dragon Gem"),
-        .itemId = ITEM_DRAGON_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sDragonGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_DRAGON,
-    },
-
-    [ITEM_DARK_GEM] =
-    {
-        .name = _("Dark Gem"),
-        .itemId = ITEM_DARK_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sDarkGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_DARK,
-    },
-
-    [ITEM_STEEL_GEM] =
-    {
-        .name = _("Steel Gem"),
-        .itemId = ITEM_STEEL_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sSteelGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_STEEL,
-    },
-
-    [ITEM_NORMAL_GEM] =
-    {
-        .name = _("Normal Gem"),
-        .itemId = ITEM_NORMAL_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sNormalGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_NORMAL,
-    },
-
-    [ITEM_FAIRY_GEM] =
-    {
-        .name = _("Fairy Gem"),
-        .itemId = ITEM_FAIRY_GEM,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_GEMS,
-        .holdEffectParam = 30,
-        .description = sFairyGemDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FAIRY,
-    },
-
-    [ITEM_ASSAULT_VEST] =
-    {
-        .name = _("Assault Vest"),
-        .itemId = ITEM_ASSAULT_VEST,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_ASSAULT_VEST,
-        .holdEffectParam = 50,
-        .description = sAssaultVestDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_PIXIE_PLATE] =
-    {
-        .name = _("Pixie Plate"),
-        .itemId = ITEM_PIXIE_PLATE,
-        .price = 1000,
-        .holdEffect = HOLD_EFFECT_PLATE,
-        .holdEffectParam = 20,
-        .description = sPixiePlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_FAIRY,
-    },
-
-    [ITEM_SAFETY_GOGGLES] =
-    {
-        .name = _("SafetyGoggles"),
-        .itemId = ITEM_SAFETY_GOGGLES,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_SAFETY_GOOGLES,
-        .description = sSafetyGogglesDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GENGARITE] =
-    {
-        .name = _("Gengarite"),
-        .itemId = ITEM_GENGARITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sGengariteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GARDEVOIRITE] =
-    {
-        .name = _("Gardevoirite"),
-        .itemId = ITEM_GARDEVOIRITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sGardevoiriteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_AMPHAROSITE] =
-    {
-        .name = _("Ampharosite"),
-        .itemId = ITEM_AMPHAROSITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sAmpharositeDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_VENUSAURITE] =
-    {
-        .name = _("Venusaurite"),
-        .itemId = ITEM_VENUSAURITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sVenusauriteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CHARIZARDITE_X] =
-    {
-        .name = _("CharizarditeX"),
-        .itemId = ITEM_CHARIZARDITE_X,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sCharizarditeDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BLASTOISINITE] =
-    {
-        .name = _("Blastoisinite"),
-        .itemId = ITEM_BLASTOISINITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sBlastoisiniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_MEWTWONITE_X] =
-    {
-        .name = _("Mewtwonite X"),
-        .itemId = ITEM_MEWTWONITE_X,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sMewtwoniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_MEWTWONITE_Y] =
-    {
-        .name = _("Mewtwonite Y"),
-        .itemId = ITEM_MEWTWONITE_Y,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sMewtwoniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BLAZIKENITE] =
-    {
-        .name = _("Blazikenite"),
-        .itemId = ITEM_BLAZIKENITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sBlazikeniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_MEDICHAMITE] =
-    {
-        .name = _("Medichamite"),
-        .itemId = ITEM_MEDICHAMITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sMedichamiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_HOUNDOOMINITE] =
-    {
-        .name = _("Houndoominite"),
-        .itemId = ITEM_HOUNDOOMINITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sHoundoominiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_AGGRONITE] =
-    {
-        .name = _("Aggronite"),
-        .itemId = ITEM_AGGRONITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sAggroniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BANETTITE] =
-    {
-        .name = _("Banettite"),
-        .itemId = ITEM_BANETTITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sBanettiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_TYRANITARITE] =
-    {
-        .name = _("Tyranitarite"),
-        .itemId = ITEM_TYRANITARITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sTyranitariteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SCIZORITE] =
-    {
-        .name = _("Scizorite"),
-        .itemId = ITEM_SCIZORITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sScizoriteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_PINSIRITE] =
-    {
-        .name = _("Pinsirite"),
-        .itemId = ITEM_PINSIRITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sPinsiriteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_AERODACTYLITE] =
-    {
-        .name = _("Aerodactylite"),
-        .itemId = ITEM_AERODACTYLITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sAerodactyliteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LUCARIONITE] =
-    {
-        .name = _("Lucarionite"),
-        .itemId = ITEM_LUCARIONITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sLucarioniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ABOMASITE] =
-    {
-        .name = _("Abomasite"),
-        .itemId = ITEM_ABOMASITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sAbomasiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_KANGASKHANITE] =
-    {
-        .name = _("Kangaskhanite"),
-        .itemId = ITEM_KANGASKHANITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sKangaskhaniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GYARADOSITE] =
-    {
-        .name = _("Gyaradosite"),
-        .itemId = ITEM_GYARADOSITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sGyaradositeDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ABSOLITE] =
-    {
-        .name = _("Absolite"),
-        .itemId = ITEM_ABSOLITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sAbsoliteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CHARIZARDITE_Y] =
-    {
-        .name = _("CharizarditeY"),
-        .itemId = ITEM_CHARIZARDITE_Y,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sCharizarditeDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ALAKAZITE] =
-    {
-        .name = _("Alakazite"),
-        .itemId = ITEM_ALAKAZITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sAlakaziteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_HERACRONITE] =
-    {
-        .name = _("Heracronite"),
-        .itemId = ITEM_HERACRONITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sHeracroniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_MAWILITE] =
-    {
-        .name = _("Mawilite"),
-        .itemId = ITEM_MAWILITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sMawiliteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_MANECTITE] =
-    {
-        .name = _("Manectite"),
-        .itemId = ITEM_MANECTITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sManectiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GARCHOMPITE] =
-    {
-        .name = _("Garchompite"),
-        .itemId = ITEM_GARCHOMPITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sGarchompiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LATIASITE] =
-    {
-        .name = _("Latiasite"),
-        .itemId = ITEM_LATIASITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sLatiasiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LATIOSITE] =
-    {
-        .name = _("Latiosite"),
-        .itemId = ITEM_LATIOSITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sLatiositeDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SWAMPERTITE] =
-    {
-        .name = _("Swampertite"),
-        .itemId = ITEM_SWAMPERTITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sSwampertiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SCEPTILITE] =
-    {
-        .name = _("Sceptilite"),
-        .itemId = ITEM_SCEPTILITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sSceptiliteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SABLENITE] =
-    {
-        .name = _("Sablenite"),
-        .itemId = ITEM_SABLENITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sSableniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ALTARIANITE] =
-    {
-        .name = _("Altarianite"),
-        .itemId = ITEM_ALTARIANITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sAltarianiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GALLADITE] =
-    {
-        .name = _("Galladite"),
-        .itemId = ITEM_GALLADITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sGalladiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_AUDINITE] =
-    {
-        .name = _("Audinite"),
-        .itemId = ITEM_AUDINITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sAudiniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_METAGROSSITE] =
-    {
-        .name = _("Metagrossite"),
-        .itemId = ITEM_METAGROSSITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sMetagrossiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SHARPEDONITE] =
-    {
-        .name = _("Sharpedonite"),
-        .itemId = ITEM_SHARPEDONITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sSharpedoniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SLOWBRONITE] =
-    {
-        .name = _("Slowbronite"),
-        .itemId = ITEM_SLOWBRONITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sSlowbroniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_STEELIXITE] =
-    {
-        .name = _("Steelixite"),
-        .itemId = ITEM_STEELIXITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sSteelixiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_PIDGEOTITE] =
-    {
-        .name = _("Pidgeotite"),
-        .itemId = ITEM_PIDGEOTITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sPidgeotiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GLALITITE] =
-    {
-        .name = _("Glalitite"),
-        .itemId = ITEM_GLALITITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sGlalititeDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_DIANCITE] =
-    {
-        .name = _("Diancite"),
-        .itemId = ITEM_DIANCITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sDianciteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CAMERUPTITE] =
-    {
-        .name = _("Cameruptite"),
-        .itemId = ITEM_CAMERUPTITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sCameruptiteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_LOPUNNITE] =
-    {
-        .name = _("Lopunnite"),
-        .itemId = ITEM_LOPUNNITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sLopunniteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_SALAMENCITE] =
-    {
-        .name = _("Salamencite"),
-        .itemId = ITEM_SALAMENCITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sSalamenciteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_BEEDRILLITE] =
-    {
-        .name = _("Beedrillite"),
-        .itemId = ITEM_BEEDRILLITE,
-        .price = 0,
-        .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = sBeedrilliteDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_MEGA_BRACELET] =
-    {
-        .name = _("Mega Bracelet"),
-        .itemId = ITEM_MEGA_BRACELET,
-        .price = 0,
-        .importance = 1,
-        .description = sMegaBraceletDesc,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_PROTECTIVE_PADS] =
-    {
-        .name = _("ProtectvePads"),
-        .itemId = ITEM_PROTECTIVE_PADS,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_PROTECTIVE_PADS,
-        .description = sProtectPadsDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_TERRAIN_EXTENDER] =
-    {
-        .name = _("TerainExtendr"),
-        .itemId = ITEM_TERRAIN_EXTENDER,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_TERRAIN_EXTENDER,
-        .description = sTerrainExtenderDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_ELECTRIC_SEED] =
-    {
-        .name = _("Electric Seed"),
-        .itemId = ITEM_ELECTRIC_SEED,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_SEEDS,
-        .holdEffectParam = HOLD_EFFECT_PARAM_ELECTRIC_TERRAIN,
-        .description = sElectricSeedDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_GRASSY_SEED] =
-    {
-        .name = _("Grassy Seed"),
-        .itemId = ITEM_GRASSY_SEED,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_SEEDS,
-        .holdEffectParam = HOLD_EFFECT_PARAM_GRASSY_TERRAIN,
-        .description = sGrassySeedDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_MISTY_SEED] =
-    {
-        .name = _("Misty Seed"),
-        .itemId = ITEM_MISTY_SEED,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_SEEDS,
-        .holdEffectParam = HOLD_EFFECT_PARAM_MISTY_TERRAIN,
-        .description = sMistySeedDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_PSYCHIC_SEED] =
-    {
-        .name = _("Psychic Seed"),
-        .itemId = ITEM_PSYCHIC_SEED,
-        .price = 4000,
-        .holdEffect = HOLD_EFFECT_SEEDS,
-        .holdEffectParam = HOLD_EFFECT_PARAM_PSYCHIC_TERRAIN,
         .description = sPsychicSeedDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -9977,7 +7175,6 @@ const struct Item gItems[] =
     {
         .name = _("Buginium Z"),
         .itemId = ITEM_BUGINIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sBuginiumZDesc,
@@ -9989,13 +7186,8 @@ const struct Item gItems[] =
 
     [ITEM_GHOSTIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Poké Flute"),
-        .itemId = ITEM_POKE_FLUTE,
-=======
         .name = _("Ghostium Z"),
         .itemId = ITEM_GHOSTIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sGhostiumZDesc,
@@ -10007,13 +7199,8 @@ const struct Item gItems[] =
 
     [ITEM_STEELIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Secret Key"),
-        .itemId = ITEM_SECRET_KEY,
-=======
         .name = _("Steelium Z"),
         .itemId = ITEM_STEELIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sSteeliumZDesc,
@@ -10025,13 +7212,8 @@ const struct Item gItems[] =
 
     [ITEM_FIRIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Bike Voucher"),
-        .itemId = ITEM_BIKE_VOUCHER,
-=======
         .name = _("Firium Z"),
         .itemId = ITEM_FIRIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sFiriumZDesc,
@@ -10043,13 +7225,8 @@ const struct Item gItems[] =
 
     [ITEM_WATERIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Gold Teeth"),
-        .itemId = ITEM_GOLD_TEETH,
-=======
         .name = _("Waterium Z"),
         .itemId = ITEM_WATERIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sWateriumZDesc,
@@ -10061,13 +7238,8 @@ const struct Item gItems[] =
 
     [ITEM_GRASSIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Old Amber"),
-        .itemId = ITEM_OLD_AMBER,
-=======
         .name = _("Grassium Z"),
         .itemId = ITEM_GRASSIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sGrassiumZDesc,
@@ -10079,13 +7251,8 @@ const struct Item gItems[] =
 
     [ITEM_ELECTRIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Card Key"),
-        .itemId = ITEM_CARD_KEY,
-=======
         .name = _("Electrium Z"),
         .itemId = ITEM_ELECTRIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sElectriumZDesc,
@@ -10097,13 +7264,8 @@ const struct Item gItems[] =
 
     [ITEM_PSYCHIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Lift Key"),
-        .itemId = ITEM_LIFT_KEY,
-=======
         .name = _("Psychium Z"),
         .itemId = ITEM_PSYCHIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sPsychiumZDesc,
@@ -10115,13 +7277,8 @@ const struct Item gItems[] =
 
     [ITEM_ICIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Helix Fossil"),
-        .itemId = ITEM_HELIX_FOSSIL,
-=======
         .name = _("Icium Z"),
         .itemId = ITEM_ICIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sIciumZDesc,
@@ -10133,13 +7290,8 @@ const struct Item gItems[] =
 
     [ITEM_DRAGONIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Dome Fossil"),
-        .itemId = ITEM_DOME_FOSSIL,
-=======
         .name = _("Dragonium Z"),
         .itemId = ITEM_DRAGONIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sDragoniumZDesc,
@@ -10151,13 +7303,8 @@ const struct Item gItems[] =
 
     [ITEM_DARKINIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Silph Scope"),
-        .itemId = ITEM_SILPH_SCOPE,
-=======
         .name = _("Darkinium Z"),
         .itemId = ITEM_DARKINIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sDarkiniumZDesc,
@@ -10169,13 +7316,8 @@ const struct Item gItems[] =
 
     [ITEM_FAIRIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Bicycle"),
-        .itemId = ITEM_BICYCLE,
-=======
         .name = _("Fairium Z"),
         .itemId = ITEM_FAIRIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sFairiumZDesc,
@@ -10187,13 +7329,8 @@ const struct Item gItems[] =
 
     [ITEM_ALORAICHIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Town Map"),
-        .itemId = ITEM_TOWN_MAP,
-=======
         .name = _("Aloraichium Z"),
         .itemId = ITEM_ALORAICHIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sAloraichiumZDesc,
@@ -10205,13 +7342,8 @@ const struct Item gItems[] =
 
     [ITEM_DECIDIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("VS Seeker"),
-        .itemId = ITEM_VS_SEEKER,
-=======
         .name = _("Decidium Z"),
         .itemId = ITEM_DECIDIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sDecidiumZDesc,
@@ -10223,13 +7355,8 @@ const struct Item gItems[] =
 
     [ITEM_EEVIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Fame Checker"),
-        .itemId = ITEM_FAME_CHECKER,
-=======
         .name = _("Eevium Z"),
         .itemId = ITEM_EEVIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sEeviumZDesc,
@@ -10241,13 +7368,8 @@ const struct Item gItems[] =
 
     [ITEM_INCINIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("TM Case"),
-        .itemId = ITEM_TM_CASE,
-=======
         .name = _("Incinium Z"),
         .itemId = ITEM_INCINIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sInciniumZDesc,
@@ -10259,13 +7381,8 @@ const struct Item gItems[] =
 
     [ITEM_KOMMONIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Berry Pouch"),
-        .itemId = ITEM_BERRY_POUCH,
-=======
         .name = _("Kommonium Z"),
         .itemId = ITEM_KOMMONIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sKommoniumZDesc,
@@ -10277,13 +7394,8 @@ const struct Item gItems[] =
 
     [ITEM_LUNALIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Teachy TV"),
-        .itemId = ITEM_TEACHY_TV,
-=======
         .name = _("Lunalium Z"),
         .itemId = ITEM_LUNALIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sLunaliumZDesc,
@@ -10295,13 +7407,8 @@ const struct Item gItems[] =
 
     [ITEM_LYCANIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Tri-Pass"),
-        .itemId = ITEM_TRI_PASS,
-=======
         .name = _("Lycanium Z"),
         .itemId = ITEM_LYCANIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sLycaniumZDesc,
@@ -10313,13 +7420,8 @@ const struct Item gItems[] =
 
     [ITEM_MARSHADIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Rainbow Pass"),
-        .itemId = ITEM_RAINBOW_PASS,
-=======
         .name = _("Marshadium Z"),
         .itemId = ITEM_MARSHADIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sMarshadiumZDesc,
@@ -10331,13 +7433,8 @@ const struct Item gItems[] =
 
     [ITEM_MEWNIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Tea"),
-        .itemId = ITEM_TEA,
-=======
         .name = _("Mewnium Z"),
         .itemId = ITEM_MEWNIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sMewniumZDesc,
@@ -10349,13 +7446,8 @@ const struct Item gItems[] =
 
     [ITEM_MIMIKIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("MysticTicket"),
-        .itemId = ITEM_MYSTIC_TICKET,
-=======
         .name = _("Mimikium Z"),
         .itemId = ITEM_MIMIKIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sMimikiumZDesc,
@@ -10367,13 +7459,8 @@ const struct Item gItems[] =
 
     [ITEM_PIKANIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("AuroraTicket"),
-        .itemId = ITEM_AURORA_TICKET,
-=======
         .name = _("Pikanium Z"),
         .itemId = ITEM_PIKANIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sPikaniumZDesc,
@@ -10385,13 +7472,8 @@ const struct Item gItems[] =
 
     [ITEM_PIKASHUNIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Powder Jar"),
-        .itemId = ITEM_POWDER_JAR,
-=======
         .name = _("Pikashunium Z"),
         .itemId = ITEM_PIKASHUNIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sPikashuniumZDesc,
@@ -10403,13 +7485,8 @@ const struct Item gItems[] =
 
     [ITEM_PRIMARIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Ruby"),
-        .itemId = ITEM_RUBY,
-=======
         .name = _("Primarium Z"),
         .itemId = ITEM_PRIMARIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sPrimariumZDesc,
@@ -10421,13 +7498,8 @@ const struct Item gItems[] =
 
     [ITEM_SNORLIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Sapphire"),
-        .itemId = ITEM_SAPPHIRE,
-=======
         .name = _("Snorlium Z"),
         .itemId = ITEM_SNORLIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sSnorliumZDesc,
@@ -10452,13 +7524,8 @@ const struct Item gItems[] =
 
     [ITEM_TAPUNIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Magma Emblem"),
-        .itemId = ITEM_MAGMA_EMBLEM,
-=======
         .name = _("Tapunium Z"),
         .itemId = ITEM_TAPUNIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sTapuniumZDesc,
@@ -10470,13 +7537,8 @@ const struct Item gItems[] =
 
     [ITEM_ULTRANECROZIUM_Z] =
     {
-<<<<<<< HEAD
-        .name = _("Old Sea Map"),
-        .itemId = ITEM_OLD_SEA_MAP,
-=======
         .name = _("U-Necrozium Z"),
         .itemId = ITEM_ULTRANECROZIUM_Z,
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sUltranecroziumZDesc,
