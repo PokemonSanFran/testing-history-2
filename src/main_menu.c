@@ -1580,7 +1580,7 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 
 static void SpriteCB_PikaSync(struct Sprite * sprite)
 {
-    sprite->pos2.y = gSprites[sprite->data[0]].animCmdIndex;
+    sprite->y = gSprites[sprite->data[0]].animCmdIndex;
 }
 
 static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state)
@@ -1698,7 +1698,7 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
         
         FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);
         CopyBgTilemapBufferToVram(1);
-        DestroyTextCursorSprite(gTasks[taskId].data[5]);
+        DestroyTextCursorSprite(gTasks[taskId].data[5]); //this stopped compiling when i updated, but unsure why
         sOakSpeechResources->unk_0014[0] = RGB_BLACK; //when enabled, throws Bad memory Store16: 0x00000014
         LoadPalette(sOakSpeechResources->unk_0014, 0, 2);
         gTasks[taskId].data[3] = 32;
@@ -1925,8 +1925,8 @@ static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
     else
     {
         spriteId = gTasks[taskId].tBirchSpriteId;
-        gSprites[spriteId].pos1.x = 136;
-        gSprites[spriteId].pos1.y = 60;
+        gSprites[spriteId].x = 136;
+        gSprites[spriteId].y = 60;
         gSprites[spriteId].invisible = TRUE; //changed to TRUE to make Birch invisible.
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 10);

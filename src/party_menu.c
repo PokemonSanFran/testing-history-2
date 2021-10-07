@@ -409,8 +409,6 @@ static bool8 SetUpFieldMove_Dive(void);
 #include "data/pokemon/tutor_learnsets.h"
 #include "data/party_menu.h"
 
-static const u8 ChangedForm[] = _("{STR_VAR_1} changed Forme!{PAUSE_UNTIL_PRESS}");
-
 // code
 static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCursorPos, u8 messageId, TaskFunc task, MainCallback callback)
 {
@@ -4310,13 +4308,7 @@ static bool8 IsItemFlute(u16 item)
 static bool8 ExecuteTableBasedItemEffect_(u8 partyMonIndex, u16 item, u8 monMoveIndex)
 {
     if (gMain.inBattle)
-    {
-        if ((partyMonIndex == 0 && gStatuses3[B_POSITION_PLAYER_LEFT] & STATUS3_EMBARGO)
-          || (partyMonIndex == 1 && gStatuses3[B_POSITION_PLAYER_RIGHT] & STATUS3_EMBARGO))
-            return TRUE;    // cannot use on this mon
-        else
-            return ExecuteTableBasedItemEffect(&gPlayerParty[partyMonIndex], item, GetPartyIdFromBattleSlot(partyMonIndex), monMoveIndex);
-    }
+        return ExecuteTableBasedItemEffect(&gPlayerParty[partyMonIndex], item, GetPartyIdFromBattleSlot(partyMonIndex), monMoveIndex);
     else
         return ExecuteTableBasedItemEffect(&gPlayerParty[partyMonIndex], item, partyMonIndex, monMoveIndex);
 }
@@ -5270,53 +5262,6 @@ void ItemUseCB_EvolutionStone(u8 taskId, TaskFunc task)
     {
         RemoveBagItem(gSpecialVar_ItemId, 1);
         FreePartyPointers();
-    }
-}
-
-bool32 TryItemUseFormChange(u8 taskId, TaskFunc task)
-{
-    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
-    u16 species = GetMonData(mon, MON_DATA_SPECIES);
-    u16 targetSpecies = GetFormChangeTargetSpecies(mon, FORM_ITEM_USE_DAY, gSpecialVar_ItemId);
-    if (targetSpecies == SPECIES_NONE)
-        targetSpecies = GetFormChangeTargetSpecies(mon, FORM_ITEM_USE, gSpecialVar_ItemId);
-    if (targetSpecies != SPECIES_NONE)
-    {
-        gPartyMenuUseExitCallback = TRUE;
-        PlaySE(SE_USE_ITEM);
-        PlayCry2(targetSpecies, 0, 0x7D, 0xA);
-        SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
-        FreeAndDestroyMonIconSprite(&gSprites[sPartyMenuBoxes[gPartyMenu.slotId].monSpriteId]);
-        CreatePartyMonIconSpriteParameterized(targetSpecies, GetMonData(mon, MON_DATA_PERSONALITY, NULL), &sPartyMenuBoxes[gPartyMenu.slotId], 1);
-        CalculateMonStats(mon);
-        GetMonNickname(mon, gStringVar1);
-        StringExpandPlaceholders(gStringVar4, ChangedForm);
-        DisplayPartyMenuMessage(gStringVar4, FALSE);
-        ScheduleBgCopyTilemapToVram(2);
-        gTasks[taskId].func = task;
-        return TRUE;
-    }
-    else
-    {
-        gPartyMenuUseExitCallback = FALSE;
-        PlaySE(SE_SELECT);
-        DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
-        ScheduleBgCopyTilemapToVram(2);
-        gTasks[taskId].func = task;
-        return FALSE;
-    }
-}
-
-void ItemUseCB_FormChange(u8 taskId, TaskFunc task)
-{
-    TryItemUseFormChange(taskId, task);
-}
-
-void ItemUseCB_FormChange_ConsumedOnUse(u8 taskId, TaskFunc task)
-{
-    if (TryItemUseFormChange(taskId, task))
-    {
-        RemoveBagItem(gSpecialVar_ItemId, 1);
     }
 }
 
