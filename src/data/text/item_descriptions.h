@@ -173,20 +173,12 @@ static const u8 sMaxPotionDesc[] = _(
 static const u8 sHyperPotionDesc[] = _(
     "Restores the HP of\n"
     "a Pokémon by\n"
-<<<<<<< HEAD
-    "200 points.");
-=======
     "120 points.");
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
 
 static const u8 sSuperPotionDesc[] = _(
     "Restores the HP of\n"
     "a Pokémon by\n"
-<<<<<<< HEAD
-    "50 points.");
-=======
     "60 points.");
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
 
 static const u8 sFullHealDesc[] = _(
     "Heals all the\n"
@@ -430,11 +422,7 @@ static const u8 sXSpecialAttackDesc[] = _(
 
 static const u8 sXSpecialDefenseDesc[] = _(
     "Raises the stat\n"
-<<<<<<< HEAD
-    "Sp. Atk during one\n"
-=======
     "Sp. Def during one\n"
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
     "battle.");
 
 static const u8 sPokeDollDesc[] = _(
@@ -501,8 +489,6 @@ static const u8 sWaterStoneDesc[] = _(
 static const u8 sLeafStoneDesc[] = _(
     "Makes certain\n"
     "species of Pokémon\n"
-<<<<<<< HEAD
-=======
     "evolve.");
 
 static const u8 sDawnStoneDesc[] = _(
@@ -523,7 +509,6 @@ static const u8 sShinyStoneDesc[] = _(
 static const u8 sIceStoneDesc[] = _(
     "Makes certain\n"
     "species of Pokémon\n"
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
     "evolve.");
 
 // Valuable items
@@ -1147,13 +1132,6 @@ static const u8 sDragonScaleDesc[] = _(
     "A strange scale\n"
     "held by Dragon-\n"
     "type Pokémon.");
-<<<<<<< HEAD
-
-static const u8 sLightBallDesc[] = _(
-    "A hold item that\n"
-    "raises the Sp. Atk\n"
-    "of Pikachu.");
-=======
 
 static const u8 sOvalStoneDesc[] = _(
     "Makes a certain\n"
@@ -1214,7 +1192,6 @@ static const u8 sLightBallDesc[] = _(
     "A hold item that\n"
     "raises the Atk and\n"
     "Sp. Atk of Pikachu.");
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
 
 static const u8 sSoftSandDesc[] = _(
     "A hold item that\n"
@@ -1487,11 +1464,7 @@ static const u8 sAcroBikeDesc[] = _(
 
 static const u8 sPokeblockCaseDesc[] = _(
     "A case for holding\n"
-<<<<<<< HEAD
-    "{POKEBLOCK}s made with\n"
-=======
     "Pokéblocks made with\n"
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
     "a Berry Blender.");
 
 static const u8 sLetterDesc[] = _(
@@ -1900,8 +1873,6 @@ static const u8 sLiftKeyDesc[] = _(
     "An elevator key\n"
     "used in Team\n"
     "Rocket's Hideout.");
-<<<<<<< HEAD
-=======
 
 static const u8 sArmorFossilDesc[] = _(
     "A piece of a\n"
@@ -1912,7 +1883,6 @@ static const u8 sSkullFossilDesc[] = _(
     "A piece of a\n"
     "prehistoric Poké-\n"
     "mon's head.");
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
 
 static const u8 sHelixFossilDesc[] = _(
     "A piece of an\n"
@@ -1923,8 +1893,6 @@ static const u8 sDomeFossilDesc[] = _(
     "A piece of an\n"
     "ancient marine\n"
     "Pokémon's shell.");
-<<<<<<< HEAD
-=======
 
 static const u8 sCoverFossilDesc[] = _(
     "A piece of a\n"
@@ -1945,7 +1913,6 @@ static const u8 sSailFossilDesc[] = _(
     "A piece of a prehis-\n"
     "toric Pokémon's\n"
     "skin sail.");
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
 
 static const u8 sSilphScopeDesc[] = _(
     "Silph Co's scope\n"

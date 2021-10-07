@@ -258,9 +258,9 @@ static const u8 sAsOneShadowRiderDescription[] = _("Unnerve and Grim Neigh.");
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
     [ABILITY_NONE] = _("-------"),
-    [ABILITY_CACOPHONY] = _("Cacophony"),
+    //[ABILITY_CACOPHONY] = _("Cacophony"),
     [ABILITY_AIR_LOCK] = _("Air Lock"),
-    [ABILITY_AIR_LOCK] = _("Air Lock"),
+    //[ABILITY_AIR_LOCK] = _("Air Lock"),
     [ABILITY_TANGLED_FEET] = _("Tangled Feet"),
     [ABILITY_MOTOR_DRIVE] = _("Motor Drive"),
     [ABILITY_RIVALRY] = _("Rivalry"),
@@ -527,7 +527,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_WHITE_SMOKE] = _("WHITE SMOKE"),
     [ABILITY_PURE_POWER] = _("PURE POWER"),
     [ABILITY_SHELL_ARMOR] = _("SHELL ARMOR"),
-//    [ABILITY_CACOPHONY] = _("CACOPHONY"),
+    //[ABILITY_CACOPHONY] = _("CACOPHONY"),
     [ABILITY_AIR_LOCK] = _("AIR LOCK"),
 };
 
@@ -609,7 +609,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_WHITE_SMOKE] = sWhiteSmokeDescription,
     [ABILITY_PURE_POWER] = sPurePowerDescription,
     [ABILITY_SHELL_ARMOR] = sShellArmorDescription,
-//    [ABILITY_CACOPHONY] = sCacophonyDescription,
+    //[ABILITY_CACOPHONY] = sCacophonyDescription,
     [ABILITY_AIR_LOCK] = sAirLockDescription,
     [ABILITY_TANGLED_FEET] = sTangledFeetDescription,
     [ABILITY_MOTOR_DRIVE] = sMotorDriveDescription,

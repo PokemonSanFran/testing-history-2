@@ -5169,28 +5169,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             {
                 switch (effect)
                 {
-<<<<<<< HEAD
-                case 1: // status cleared
-                    gBattleMons[battler].status1 = 0;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_AbilityCuredStatus;
-                    break;
-                case 2: // get rid of confusion
-                    gBattleMons[battler].status2 &= ~(STATUS2_CONFUSION);
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_AbilityCuredStatus;
-                    break;
-                case 3: // get rid of infatuation
-                    gBattleMons[battler].status2 &= ~(STATUS2_INFATUATION);
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_BattlerGotOverItsInfatuation;
-                    break;
-                case 4: // get rid of taunt
-                    gDisableStructs[battler].tauntTimer = 0;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_BattlerShookOffTaunt;
-                    break;
-=======
                     i = 0;
                     if (gBattleMons[battlerId].status1 & STATUS1_PSN_ANY)
                     {
@@ -5241,7 +5219,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                     BattleScriptExecute(BattleScript_BerryCureChosenStatusEnd2);
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     effect = ITEM_EFFECT_OTHER;
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
                 }
 
                 gBattleScripting.battler = gActiveBattler = gBattlerAbility = battler;
@@ -5352,13 +5329,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                     else if (!sAbilitiesNotTraced[gBattleMons[target2].ability] && gBattleMons[target2].hp != 0)
                         gActiveBattler = target2, effect++;
                 }
-<<<<<<< HEAD
-                else
-=======
                 break;
             case HOLD_EFFECT_MENTAL_HERB:
                 if (gBattleMons[battlerId].status2 & STATUS2_INFATUATION)
->>>>>>> 2e9eb0e49095e9b9e8ade0425d79d6519ea23bb1
                 {
                     if (!sAbilitiesNotTraced[gBattleMons[target1].ability] && gBattleMons[target1].hp != 0)
                         gActiveBattler = target1, effect++;
