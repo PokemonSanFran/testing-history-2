@@ -1580,7 +1580,7 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 
 static void SpriteCB_PikaSync(struct Sprite * sprite)
 {
-    sprite->y = gSprites[sprite->data[0]].animCmdIndex;
+    sprite->y2 = gSprites[sprite->data[0]].animCmdIndex;
 }
 
 static void CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(u8 taskId, u8 state)
@@ -1698,7 +1698,7 @@ static void Task_NewGameWelcomeScreenVisualInit(u8 taskId) //visual set up of we
         
         FillBgTilemapBufferRect_Palette0(1, 0x000, 0, 2, 30, 18);
         CopyBgTilemapBufferToVram(1);
-        DestroyTextCursorSprite(gTasks[taskId].data[5]); //this stopped compiling when i updated, but unsure why
+        DestroyTextCursorSprite(gTasks[taskId].data[5]); 
         sOakSpeechResources->unk_0014[0] = RGB_BLACK; //when enabled, throws Bad memory Store16: 0x00000014
         LoadPalette(sOakSpeechResources->unk_0014, 0, 2);
         gTasks[taskId].data[3] = 32;
@@ -1739,7 +1739,8 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
         data[15] = 16;            
         q = 1;
         AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[0]);            
-        data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);            
+        //data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0); //original line, stopped working after pulling in battle_engine TODO: figure out why this broke on oct 7 2021
+        data[5] = CreateTextCursorSpriteForOakSpeech(0, 225, 0, 0, 0);
         gSprites[data[5]].oam.objMode = ST_OAM_OBJ_BLEND;            
         gSprites[data[5]].oam.priority = 0;            
         CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(taskId, 0);            
@@ -2637,12 +2638,12 @@ static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8 taskId)
         spriteId = gTasks[taskId].tBirchSpriteId;
         gSprites[spriteId].x = 136;
         gSprites[spriteId].y = 60;
-        gSprites[spriteId].invisible = FALSE;
+        gSprites[spriteId].invisible = TRUE;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         spriteId = gTasks[taskId].tLotadSpriteId;
         gSprites[spriteId].x = 100;
         gSprites[spriteId].y = 75;
-        gSprites[spriteId].invisible = FALSE;
+        gSprites[spriteId].invisible = TRUE;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
         //NewGameBirchSpeech_StartFadePlatformOut(taskId, 1); //turning this off, since we're going to fadein and text instead
