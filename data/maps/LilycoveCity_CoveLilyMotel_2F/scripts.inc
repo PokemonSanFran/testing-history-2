@@ -1,7 +1,7 @@
 LilycoveCity_CoveLilyMotel_2F_MapScripts::
 	.byte 0
 
-Script_StarterSelectScript::
+StarterSelect_Script::
     setvar VAR_0x8000, MUGSHOT_HILDA
     fadescreen FADE_TO_BLACK
     lock
@@ -13,9 +13,9 @@ Script_StarterSelectScript::
     closemessage
     call Common_EventScript_SaveGame
     closemessage
-    goto Script_StarterSelectMenu
+    goto StarterSelectMenu_Script
 
-Script_StarterSelectMenu::
+StarterSelectMenu_Script::
     msgbox gText_StarterSelectGameText2, MSGBOX_DEFAULT
     closemessage
     multichoice 0, 0, MULTI_STARTER_SELECT, TRUE
@@ -31,107 +31,94 @@ Script_StarterSelectMenu::
     case 8, StarterSelect_8_Script
 
 StarterSelect_0_Script::
-    msgbox gText_StarterSelectPoliwhirlDesc, MSGBOX_YESNO
+    bufferspeciesname 0, SPECIES_POLIWHIRL
+    msgbox gText_StarterSelectPoliwhirlDesc, MSGBOX_DEFAULT
+    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-    goto_if_eq Script_StarterSelectMenu
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
+    goto_if_eq StarterSelectMenu_Script
     givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
-    fadescreen FADE_FROM_BLACK
-    release
-    end
-StarterSelect_1_Script::
-    msgbox gText_StarterSelectFletchinderDesc, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq Script_StarterSelectMenu
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
-    givemon SPECIES_FLETCHINDER, 22, ITEM_NONE
-    fadescreen FADE_FROM_BLACK
-    release
-    end
-StarterSelect_2_Script::
-    msgbox gText_StarterSelectPetililDesc, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq Script_StarterSelectMenu
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
-    givemon SPECIES_PETILIL, 22, ITEM_NONE
-    fadescreen FADE_FROM_BLACK
-    release
-    end
-StarterSelect_3_Script::
-    msgbox gText_StarterSelectFlaaffyDesc, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq Script_StarterSelectMenu
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
-    givemon SPECIES_FLAAFFY, 22, ITEM_NONE
-    fadescreen FADE_FROM_BLACK
-    release
-    end
-StarterSelect_4_Script::
-    msgbox gText_StarterSelectMareanieDesc, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq Script_StarterSelectMenu
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
-    givemon SPECIES_MAREANIE, 22, ITEM_NONE
-    fadescreen FADE_FROM_BLACK
-    release
-    end
-StarterSelect_5_Script::
-    msgbox gText_StarterSelectAronDesc, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq Script_StarterSelectMenu
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
-    givemon SPECIES_ARON, 22, ITEM_NONE
-    fadescreen FADE_FROM_BLACK
-    release
-    end
-StarterSelect_6_Script::
-    msgbox gText_StarterSelectSwinubDesc, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq Script_StarterSelectMenu
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
-    givemon SPECIES_SWINUB, 22, ITEM_NONE
-    fadescreen FADE_FROM_BLACK
-    release
-    end
-StarterSelect_7_Script::
-    msgbox gText_StarterSelectHattremDesc, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq Script_StarterSelectMenu
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
-    givemon SPECIES_HATTREM, 22, ITEM_NONE
-    fadescreen FADE_FROM_BLACK
-    release
-    end
-StarterSelect_8_Script::
-    msgbox gText_StarterSelectPanchamDesc, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq Script_StarterSelectMenu
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
-    givemon SPECIES_PANCHAM, 22, ITEM_NONE
-    fadescreen FADE_FROM_BLACK
-    release
-    end
+    goto StarterChosen_Script
 
+StarterSelect_1_Script::
+    bufferspeciesname 0, SPECIES_FLETCHINDER
+    msgbox gText_StarterSelectFletchinderDesc, MSGBOX_DEFAULT
+    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq StarterSelectMenu_Script
+    givemon SPECIES_FLETCHINDER, 22, ITEM_NONE
+    goto StarterChosen_Script
+
+StarterSelect_2_Script::
+    bufferspeciesname 0, SPECIES_PETILIL
+    msgbox gText_StarterSelectPetililDesc, MSGBOX_DEFAULT
+    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq StarterSelectMenu_Script
+    givemon SPECIES_PETILIL, 22, ITEM_NONE
+    goto StarterChosen_Script
+
+StarterSelect_3_Script::
+    bufferspeciesname 0, SPECIES_FLAAFFY
+    msgbox gText_StarterSelectFlaaffyDesc, MSGBOX_DEFAULT
+    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq StarterSelectMenu_Script
+    givemon SPECIES_FLAAFFY, 22, ITEM_NONE
+    goto StarterChosen_Script
+
+StarterSelect_4_Script::
+    bufferspeciesname 0, SPECIES_MAREANIE
+    msgbox gText_StarterSelectMareanieDesc, MSGBOX_DEFAULT
+    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq StarterSelectMenu_Script
+    givemon SPECIES_MAREANIE, 22, ITEM_NONE
+    goto StarterChosen_Script
+
+StarterSelect_5_Script::
+    bufferspeciesname 0, SPECIES_ARON
+    msgbox gText_StarterSelectAronDesc, MSGBOX_DEFAULT
+    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq StarterSelectMenu_Script
+    givemon SPECIES_ARON, 22, ITEM_NONE
+    goto StarterChosen_Script
+
+StarterSelect_6_Script::
+    bufferspeciesname 0, SPECIES_SWINUB
+    msgbox gText_StarterSelectSwinubDesc, MSGBOX_DEFAULT
+    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq StarterSelectMenu_Script
+    givemon SPECIES_SWINUB, 22, ITEM_NONE
+    goto StarterChosen_Script
+
+StarterSelect_7_Script::
+    bufferspeciesname 0, SPECIES_HATTREM
+    msgbox gText_StarterSelectHattremDesc, MSGBOX_DEFAULT
+    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq StarterSelectMenu_Script
+    givemon SPECIES_HATTREM, 22, ITEM_NONE
+    goto StarterChosen_Script
+
+StarterSelect_8_Script::
+    bufferspeciesname 0, SPECIES_PANCHAM
+    msgbox gText_StarterSelectPanchamDesc, MSGBOX_DEFAULT
+    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+    goto_if_eq StarterSelectMenu_Script
+    givemon SPECIES_PANCHAM, 22, ITEM_NONE
+    goto StarterChosen_Script
+
+StarterChosen_Script::
     setflag FLAG_SYS_POKEMON_GET
-    fadescreen 0
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
+    waitfanfare
+    call Common_EventScript_SaveGame
+    closemessage
+    fadescreen FADE_FROM_BLACK
     release
     end
 
@@ -161,53 +148,49 @@ gText_StarterSelectGameText2::
     .string "with you to SanFran.$"
 
 gText_StarterSelectPoliwhirlDesc::
-    .string "{RIVAL} excels in the rain and\n"
-    .string "gives plenty of options for Trainers.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "{STR_VAR_1} excels in the rain and\n"
+    .string "gives plenty of options for Trainers.$"
 
 gText_StarterSelectFletchinderDesc::
-    .string "{RIVAL} can provide offense or\n"
-    .string "support with its high Speed.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "{STR_VAR_1} can provide offense or\n"
+    .string "support with its high Speed.$"
 
 gText_StarterSelectPetililDesc::
-    .string "{RIVAL} best utilizies its high\n"
-    .string "Special Attack in the sun.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "{STR_VAR_1} best utilizies its high\n"
+    .string "Special Attack in the sun.$"
 
 gText_StarterSelectFlaaffyDesc::
-    .string "{RIVAL} boasts a high Special Attack\n"
-    .string "and diverse move pool.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "{STR_VAR_1} boasts a high Special Attack\n"
+    .string "and diverse move pool.$"
 
 gText_StarterSelectMareanieDesc::
-    .string "{RIVAL} uses Defense and Special\n"
-    .string "Defense to wear down foes.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "{STR_VAR_1} uses Defense and Special\n"
+    .string "Defense to wear down foes.$"
 
 gText_StarterSelectAronDesc::
-    .string "{RIVAL} leverages its high Attack\n"
-    .string "and Defense to provide physical support.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "{STR_VAR_1} leverages its high Attack\n"
+    .string "and Defense to provide\l" 
+    .string "physical support.$"
 
 gText_StarterSelectSwinubDesc::
-    .string "{RIVAL} hits most types for super-\n"
-    .string "effective damage with its high attack.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "{STR_VAR_1} hits most types for super-\n"
+    .string "effective damage with its high attack.$"
 
 gText_StarterSelectHattremDesc::
-    .string "{RIVAL}'s high Special Attack and \n"
+    .string "{STR_VAR_1}'s high Special Attack and \n"
     .string "Special Defense makes it ideal for\l"
-    .string "special support.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "special support.$"
 
 gText_StarterSelectPanchamDesc::
-    .string "{RIVAL} makes up for low Speed\n"
-    .string "with high Attack and unique typing.\p"
-    .string "Are you sure you want to choose {RIVAL}?$"
+    .string "{STR_VAR_1} makes up for low Speed\n"
+    .string "with high Attack and unique typing.$"
+
+gText_StarterAreYouSure::
+    .string "Are you sure you want to choose\n"
+    .string "{STR_VAR_1}?$"
 
 gText_StarterSelectionChosen::
-    .string "You chose to bring {RIVAL} to SanFran.$"
+    .string "You chose to bring {STR_VAR_1} to SanFran.$"
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner:: @ 82186D3
 	lock

@@ -1,4 +1,19 @@
 * * * * * * * * * * * *
+OCT 10
+Finish up "There Can Only Be One."
+- can I add abilities to givemon?
+- ...where IS givemon? look in pret.
+- can I add a multichoice menu when selecting a pokemon/
+- can I fake a summary screen?
+
+OCT 9
+Finish up "There Can Only Be One."
+- can I add abilities to givemon?
+- can I add a multichoice menu?
+- can I fake a summary screen?
+- Replace rival's name with Pokémon's name, use setvar or buffer to get the name
+- Add final save prompt after getting starter
+
 OCT 6
 Reposition the avatar in speech, and figure out why graphics are corrupted
 Why are pointer and Pikachu messed up in the intro?
