@@ -1,4 +1,8 @@
 * * * * * * * * * * * *
+OCT 12
+givespecialmon created, start modifying it slowly to figure out how to add ability
+want to make sure we're adding the last ability in the array, not the 2nd (or 3rd) ability in order to defensively guard against Pokémon that only have one ability
+
 OCT 11
 Start writing a function to hand out abilities
 Write a new function on line 4995 of pokemon.c, add new parameters there

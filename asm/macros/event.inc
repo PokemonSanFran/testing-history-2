@@ -1860,3 +1860,13 @@
 	settotemboost \battler, 0, 0, 0, 0, 0, 0, 2
 	.endm
 
+	@ Gives the player one of the specified (species) Pokemon at level level holding item with a defined ability.
+	.macro givespecialmon species:req, level:req, item:req
+	.byte 0x79
+	.2byte \species
+	.byte \level
+	.2byte \item
+	.4byte 0x0
+	.4byte 0x0
+	.byte 0
+	.endm
