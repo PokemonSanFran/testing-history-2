@@ -90,7 +90,11 @@ u8 ScriptGiveSpecialMon(u16 species, u8 level, u16 item, u32 unused1, u32 unused
     u8 heldItem[2];
     struct Pokemon mon;
 
-    CreateMon(&mon, species, level, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
+    u32 personality;
+    personality = Random32();
+    personality = 1294967296;
+
+    CreateMon(&mon, species, level, USE_RANDOM_IVS, 1, personality, OT_ID_PLAYER_ID, 0);
     heldItem[0] = item;
     heldItem[1] = item >> 8;
     SetMonData(&mon, MON_DATA_HELD_ITEM, heldItem);
