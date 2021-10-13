@@ -45,7 +45,7 @@ StarterSelect_1_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_FLETCHINDER, 22, ITEM_NONE
+    givespecialmon SPECIES_FLETCHINDER, 22, ITEM_NONE
     goto StarterChosen_Script
 
 StarterSelect_2_Script::
