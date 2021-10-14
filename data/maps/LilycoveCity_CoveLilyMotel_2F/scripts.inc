@@ -32,27 +32,46 @@ StarterSelectMenu_Script::
 
 StarterSelect_0_Script::
     bufferspeciesname 0, SPECIES_POLIWHIRL
-    msgbox gText_StarterSelectGameText3, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
     msgbox gText_StarterSelectPoliwhirlDesc, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
+    switch VAR_RESULT
+    case 0, StarterSelectSummary
+    case 1, StarterSelect_0_ChoiceConfirm
+    case 2, StarterSelectMenu_Script 
+
+StarterSelect_0_ChoiceConfirm::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_POLIWHIRL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, ,2
+    givecustommon SPECIES_POLIWHIRL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,2
     goto StarterChosen_Script
 
 StarterSelect_1_Script::
     bufferspeciesname 0, SPECIES_FLETCHINDER
     msgbox gText_StarterSelectFletchinderDesc, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
+    switch VAR_RESULT
+    case 0, StarterSelectSummary
+    case 1, StarterSelect_1_ChoiceConfirm
+    case 2, StarterSelectMenu_Script 
+
+StarterSelect_1_ChoiceConfirm::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_FLETCHINDER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, ,1
+    givecustommon SPECIES_FLETCHINDER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,1
     goto StarterChosen_Script
 
 StarterSelect_2_Script::
     bufferspeciesname 0, SPECIES_PETILIL
     msgbox gText_StarterSelectPetililDesc, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
+    switch VAR_RESULT
+    case 0, StarterSelectSummary
+    case 1, StarterSelect_2_ChoiceConfirm
+    case 2, StarterSelectMenu_Script 
+
+StarterSelect_2_ChoiceConfirm::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
@@ -62,6 +81,13 @@ StarterSelect_2_Script::
 StarterSelect_3_Script::
     bufferspeciesname 0, SPECIES_FLAAFFY
     msgbox gText_StarterSelectFlaaffyDesc, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
+    switch VAR_RESULT
+    case 0, StarterSelectSummary
+    case 1, StarterSelect_3_ChoiceConfirm
+    case 2, StarterSelectMenu_Script 
+
+StarterSelect_3_ChoiceConfirm::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
@@ -71,6 +97,13 @@ StarterSelect_3_Script::
 StarterSelect_4_Script::
     bufferspeciesname 0, SPECIES_MAREANIE
     msgbox gText_StarterSelectMareanieDesc, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
+    switch VAR_RESULT
+    case 0, StarterSelectSummary
+    case 1, StarterSelect_4_ChoiceConfirm
+    case 2, StarterSelectMenu_Script 
+
+StarterSelect_4_ChoiceConfirm::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
@@ -80,6 +113,13 @@ StarterSelect_4_Script::
 StarterSelect_5_Script::
     bufferspeciesname 0, SPECIES_ARON
     msgbox gText_StarterSelectAronDesc, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
+    switch VAR_RESULT
+    case 0, StarterSelectSummary
+    case 1, StarterSelect_5_ChoiceConfirm
+    case 2, StarterSelectMenu_Script 
+
+StarterSelect_5_ChoiceConfirm::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
@@ -89,6 +129,13 @@ StarterSelect_5_Script::
 StarterSelect_6_Script::
     bufferspeciesname 0, SPECIES_SWINUB
     msgbox gText_StarterSelectSwinubDesc, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
+    switch VAR_RESULT
+    case 0, StarterSelectSummary
+    case 1, StarterSelect_6_ChoiceConfirm
+    case 2, StarterSelectMenu_Script 
+
+StarterSelect_6_ChoiceConfirm::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
@@ -98,6 +145,13 @@ StarterSelect_6_Script::
 StarterSelect_7_Script::
     bufferspeciesname 0, SPECIES_HATTREM
     msgbox gText_StarterSelectHattremDesc, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
+    switch VAR_RESULT
+    case 0, StarterSelectSummary
+    case 1, StarterSelect_7_ChoiceConfirm
+    case 2, StarterSelectMenu_Script 
+
+StarterSelect_7_ChoiceConfirm::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
@@ -107,11 +161,22 @@ StarterSelect_7_Script::
 StarterSelect_8_Script::
     bufferspeciesname 0, SPECIES_PANCHAM
     msgbox gText_StarterSelectPanchamDesc, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
+    switch VAR_RESULT
+    case 0, StarterSelectSummary
+    case 1, StarterSelect_8_ChoiceConfirm
+    case 2, StarterSelectMenu_Script 
+
+StarterSelect_8_ChoiceConfirm::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
     givecustommon SPECIES_PANCHAM, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,0
     goto StarterChosen_Script
+
+StarterSelectSummary::
+    msgbox gText_StarterSelectSummaryErrorMessage, MSGBOX_DEFAULT
+    goto StarterSelectMenu_Script
 
 StarterChosen_Script::
     setflag FLAG_SYS_POKEMON_GET
@@ -151,6 +216,10 @@ gText_StarterSelectGameText2::
 
 gText_StarterSelectGameText3::
     .string "You have selected {STR_VAR_1}.$"
+
+gText_StarterSelectSummaryErrorMessage::
+    .string "In the next version, this will\n"
+    .string "lead to the Pokémon summary screen.$"
 
 gText_StarterSelectPoliwhirlDesc::
     .string "{STR_VAR_1} excels in the rain and\n"
