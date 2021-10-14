@@ -1862,3 +1862,8 @@ const u8 gText_Starter5[] = _("Aron");
 const u8 gText_Starter6[] = _("Swinub");
 const u8 gText_Starter7[] = _("Hattrem");
 const u8 gText_Starter8[] = _("Pancham");
+
+//Starter Choose / Summary / Cancel Menu
+const u8 gText_StarterSummary0[] = _("Summary");
+const u8 gText_StarterSummary1[] = _("Choose");
+const u8 gText_StarterSummary2[] = _("Cancel");

@@ -3064,4 +3064,11 @@ extern const u8 gText_Starter5[];
 extern const u8 gText_Starter6[];
 extern const u8 gText_Starter7[];
 extern const u8 gText_Starter8[];
+
+//Starter Summary / Choice / Cancel Menu
+extern const u8 gText_StarterSummary0[];
+extern const u8 gText_StarterSummary1[];
+extern const u8 gText_StarterSummary2[];
+
 #endif // GUARD_STRINGS_H
+

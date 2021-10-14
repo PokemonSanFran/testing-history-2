@@ -32,6 +32,8 @@ StarterSelectMenu_Script::
 
 StarterSelect_0_Script::
     bufferspeciesname 0, SPECIES_POLIWHIRL
+    msgbox gText_StarterSelectGameText3, MSGBOX_DEFAULT
+    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
     msgbox gText_StarterSelectPoliwhirlDesc, MSGBOX_DEFAULT
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -146,6 +148,9 @@ gText_StarterSelectGameText1::
 gText_StarterSelectGameText2::
     .string "Please choose a Pokémon to bring\n"
     .string "with you to SanFran.$"
+
+gText_StarterSelectGameText3::
+    .string "You have selected {STR_VAR_1}.$"
 
 gText_StarterSelectPoliwhirlDesc::
     .string "{STR_VAR_1} excels in the rain and\n"
