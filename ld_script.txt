@@ -812,7 +812,6 @@ SECTIONS {
         sound/songs/midi/se_contest_mons_turn.o(.rodata);
         sound/songs/midi/se_shiny.o(.rodata);
         sound/songs/midi/se_intro_blast.o(.rodata);
-        sound/songs/midi/se_mugshot.o(.rodata);
         sound/songs/midi/se_applause.o(.rodata);
         sound/songs/midi/se_vend.o(.rodata);
         sound/songs/midi/se_orb.o(.rodata);

@@ -1,0 +1,67 @@
+script StaterSelectScript {
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    fadescreen(FADE_TO_BLACK)
+    lockall
+    callnative(DrawMugshot)
+    msgbox(format(gText_StarterSelectZoeyText1))
+    msgbox(format(gText_StarterSelectZoeyText2))
+    callnative(ClearMugshot) 
+    msgbox(format(gText_StarterSelectGameText1))
+    closemessage
+    call Common_EventScript_SaveGame
+    closemessage
+    goto StarterSelectMenu_Script
+}
+
+script StarterSelectMenu_Script {
+    msgbox(format(gText_StarterSelectGameText2))
+    closemessage
+    multichoice(0,0,MULTI_STARTER_SELECT,TRUE)
+    switch (var(VAR_RESULT)) {
+        case 0:
+            StarterSelect_0_Script
+        case 1:
+            StarterSelect_1_Script
+        case 2:
+            StarterSelect_2_Script
+        case 3:
+            StarterSelect_3_Script
+        case 4:
+            StarterSelect_4_Script
+        case 5:
+            StarterSelect_5_Script
+        case 6:
+            StarterSelect_6_Script
+        case 7:
+            StarterSelect_7_Script
+        case 8:
+            StarterSelect_8_Script
+    }
+
+script StarterSelect_0_Script {
+    bufferspeciesname(0, SPECIES_POLIWHIRL)
+    msgbox(format(gText_StarterSelectPoliwhirlDesc))
+    multichoice(50,6,MULTI_STARTER_SUMMARY,TRUE)
+    
+    switch (var(VAR_RESULT)) {
+        case 0:
+            StarterSelectSummary
+        case 1:
+            StarterSelect_0_ChoiceConfirm
+        case 2:
+            StarterSelectMenu_Script
+     }
+
+script StarterSelect_0_ChoiceConfirm {
+    msgbox(format(gText_StarterAreYouSure),MSGBOX_YESNO)
+    if (var(VAR_RESULT)== NO) {
+        StarterSelectMenu_Script
+    } else {
+        givecustommon(SPECIES_FLETCHINDER,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,1)
+        StarterChosenScript
+    }
+}
+
+
+        
+    _ 

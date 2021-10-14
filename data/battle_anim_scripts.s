@@ -532,7 +532,7 @@ gBattleAnims_Moves::
 	.4byte Move_QUASH
 	.4byte Move_ACROBATICS
 	.4byte Move_REFLECT_TYPE
-	.4byte Move_RETALIATE
+	.4byte Move_RETALITATE
 	.4byte Move_FINAL_GAMBIT
 	.4byte Move_BESTOW
 	.4byte Move_INFERNO
@@ -822,7 +822,6 @@ gBattleAnims_General::
 	.4byte General_SlideOffScreen           @ B_ANIM_SLIDE_OFFSCREEN
 	.4byte General_RestoreBg                @ B_ANIM_RESTORE_BG
 	.4byte General_TotemFlare               @ B_ANIM_TOTEM_FLARE
-	.4byte General_GulpMissile              @ B_ANIM_GULP_MISSILE
 
 	.align 2
 gBattleAnims_Special::
@@ -5611,7 +5610,7 @@ Move_REFLECT_TYPE:
 	blendoff
 	end
 
-Move_RETALIATE:
+Move_RETALITATE:
 	loadspritegfx ANIM_TAG_CUT @Cut
 	monbg ANIM_DEF_PARTNER
 	setalpha 9, 8
@@ -13482,7 +13481,7 @@ Move_BODY_PRESS::
 	end
 
 Move_DECORATE::
-	goto Move_FLOWER_SHIELD
+	end @to do:
 
 Move_DRUM_BEATING::
 	loadspritegfx ANIM_TAG_MUSIC_NOTES
@@ -13958,7 +13957,7 @@ Move_EXPANDING_FORCE::
 	end @to do:
 
 Move_STEEL_ROLLER::
-	goto Move_GYRO_BALL
+	end @to do:
 
 Move_SCALE_SHOT::
 	end @to do:
@@ -13985,7 +13984,7 @@ Move_SKITTER_SMACK::
 	end @to do:
 
 Move_BURNING_JEALOUSY::
-	goto Move_OVERHEAT
+	end @to do:
 
 Move_LASH_OUT::
 	end @to do:
@@ -14012,7 +14011,7 @@ Move_SCORCHING_SANDS::
 	end @to do:
 
 Move_JUNGLE_HEALING::
-	goto Move_AROMATHERAPY
+	end @to do:
 
 Move_WICKED_BLOW::
 	end @to do:
@@ -24396,20 +24395,6 @@ General_TotemFlare::
 	waitforvisualfinish
 	blendoff
 	clearmonbg ANIM_ATTACKER
-	end
-
-General_GulpMissile: @ Tackle anim (placeholder)
-	loadspritegfx ANIM_TAG_IMPACT
-	monbg ANIM_ATTACKER
-	setalpha 12, 8
-	createsprite gHorizontalLungeSpriteTemplate, ANIM_ATTACKER, 2, 4, 4
-	delay 6
-	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_ATTACKER, 2
-	createvisualtask AnimTask_ShakeMon, 2, ANIM_ATTACKER, 3, 0, 6, 1
-	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	waitforvisualfinish
-	clearmonbg ANIM_ATTACKER
-	blendoff
 	end
 
 RainbowEndureEffect:

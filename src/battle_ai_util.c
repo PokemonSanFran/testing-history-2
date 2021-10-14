@@ -711,8 +711,7 @@ static bool32 AI_GetIfCrit(u32 move, u8 battlerAtk, u8 battlerDef)
 
 s32 AI_CalcDamage(u16 move, u8 battlerAtk, u8 battlerDef)
 {
-    s32 dmg, moveType, critDmg, normalDmg;
-    s8 critChance;
+    s32 dmg, moveType;
 
     SaveBattlerData(battlerAtk);
     SaveBattlerData(battlerDef);
@@ -723,22 +722,12 @@ s32 AI_CalcDamage(u16 move, u8 battlerAtk, u8 battlerDef)
     gBattleStruct->dynamicMoveType = 0;
     SetTypeBeforeUsingMove(move, battlerAtk);
     GET_MOVE_TYPE(move, moveType);
-
-    critChance = GetInverseCritChance(battlerAtk, battlerDef, move);
-    normalDmg = CalculateMoveDamage(move, battlerAtk, battlerDef, moveType, 0, FALSE, FALSE, FALSE);
-    critDmg = CalculateMoveDamage(move, battlerAtk, battlerDef, moveType, 0, TRUE, FALSE, FALSE);
-
-    if(critChance == -1)
-        dmg = normalDmg;
-    else
-        dmg = (critDmg + normalDmg * (critChance - 1)) / critChance;
+    dmg = CalculateMoveDamage(move, battlerAtk, battlerDef, moveType, 0, AI_GetIfCrit(move, battlerAtk, battlerDef), FALSE, FALSE);
 
     // handle dynamic move damage
     switch (gBattleMoves[move].effect)
     {
     case EFFECT_LEVEL_DAMAGE:
-    case EFFECT_PSYWAVE:
-        //psywave's expected damage is equal to the user's level
         dmg = gBattleMons[battlerAtk].level;
         break;
     case EFFECT_DRAGON_RAGE:
@@ -747,11 +736,20 @@ s32 AI_CalcDamage(u16 move, u8 battlerAtk, u8 battlerDef)
     case EFFECT_SONICBOOM:
         dmg = 20;
         break;
+    case EFFECT_PSYWAVE:
+        {
+            u32 randDamage;
+            if (B_PSYWAVE_DMG >= GEN_6)
+                randDamage = (Random() % 101);
+            else
+                randDamage = (Random() % 11) * 10;
+            dmg = gBattleMons[battlerAtk].level * (randDamage + 50) / 100;
+        }
+        break;
     //case EFFECT_METAL_BURST:
     //case EFFECT_COUNTER:
     default:
-        //do not add the random factor, it's an average case analysis
-        //dmg *= (100 - (Random() % 10)) / 100;   // add random factor
+        dmg *= (100 - (Random() % 10)) / 100;   // add random factor
         break;
     }
 
@@ -2591,7 +2589,7 @@ bool32 IsBattlerIncapacitated(u8 battler, u16 ability)
     return FALSE;
 }
 
-bool32 AI_CanSleep(u8 battler, u16 ability)
+bool32 CanSleep(u8 battler, u16 ability)
 {
     if (ability == ABILITY_INSOMNIA
       || ability == ABILITY_VITAL_SPIRIT
@@ -2605,7 +2603,7 @@ bool32 AI_CanSleep(u8 battler, u16 ability)
 
 bool32 AI_CanPutToSleep(u8 battlerAtk, u8 battlerDef, u16 defAbility, u16 move, u16 partnerMove)
 {
-    if (!AI_CanSleep(battlerDef, defAbility)
+    if (!CanSleep(battlerDef, defAbility)
       || AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || PartnerMoveEffectIsStatusSameTarget(BATTLE_PARTNER(battlerAtk), battlerDef, partnerMove))   // shouldn't try to sleep mon that partner is trying to make sleep
@@ -2613,7 +2611,7 @@ bool32 AI_CanPutToSleep(u8 battlerAtk, u8 battlerDef, u16 defAbility, u16 move, 
     return TRUE;
 }
 
-bool32 AI_CanBePoisoned(u8 battler, u16 ability)
+bool32 CanBePoisoned(u8 battler, u16 ability)
 {
     if (ability == ABILITY_IMMUNITY
       || ability == ABILITY_PASTEL_VEIL
@@ -2626,7 +2624,7 @@ bool32 AI_CanBePoisoned(u8 battler, u16 ability)
 
 bool32 ShouldPoisonSelf(u8 battler, u16 ability)
 {
-    if (AI_CanBePoisoned(battler, ability) && (
+    if (CanBePoisoned(battler, ability) && (
      ability == ABILITY_MARVEL_SCALE
       || ability == ABILITY_POISON_HEAL
       || ability == ABILITY_QUICK_FEET
@@ -2641,7 +2639,7 @@ bool32 ShouldPoisonSelf(u8 battler, u16 ability)
 
 bool32 AI_CanPoison(u8 battlerAtk, u8 battlerDef, u16 defAbility, u16 move, u16 partnerMove)
 {
-    if (!AI_CanBePoisoned(battlerDef, defAbility)
+    if (!CanBePoisoned(battlerDef, defAbility)
       || AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || PartnerMoveEffectIsStatusSameTarget(BATTLE_PARTNER(battlerAtk), battlerDef, partnerMove))
@@ -2675,7 +2673,7 @@ bool32 AI_CanParalyze(u8 battlerAtk, u8 battlerDef, u16 defAbility, u16 move, u1
     return TRUE;
 }
 
-bool32 AI_CanBeConfused(u8 battler, u16 ability)
+bool32 CanBeConfused(u8 battler, u16 ability)
 {
     if ((gBattleMons[battler].status2 & STATUS2_CONFUSION)
       || (ability == ABILITY_OWN_TEMPO)
@@ -2686,7 +2684,7 @@ bool32 AI_CanBeConfused(u8 battler, u16 ability)
 
 bool32 AI_CanConfuse(u8 battlerAtk, u8 battlerDef, u16 defAbility, u8 battlerAtkPartner, u16 move, u16 partnerMove)
 {
-    if (!AI_CanBeConfused(battlerDef, defAbility)
+    if (!CanBeConfused(battlerDef, defAbility)
       || AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0
       || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_SAFEGUARD
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
@@ -2698,7 +2696,7 @@ bool32 AI_CanConfuse(u8 battlerAtk, u8 battlerDef, u16 defAbility, u8 battlerAtk
     return TRUE;
 }
 
-bool32 AI_CanBeBurned(u8 battler, u16 ability)
+bool32 CanBeBurned(u8 battler, u16 ability)
 {
     if (ability == ABILITY_WATER_VEIL
       || ability == ABILITY_WATER_BUBBLE
@@ -2712,7 +2710,7 @@ bool32 AI_CanBeBurned(u8 battler, u16 ability)
 
 bool32 ShouldBurnSelf(u8 battler, u16 ability)
 {
-    if (AI_CanBeBurned(battler, ability) && (
+    if (CanBeBurned(battler, ability) && (
      ability == ABILITY_QUICK_FEET
       || ability == ABILITY_HEATPROOF
       || ability == ABILITY_MAGIC_GUARD
@@ -2726,7 +2724,7 @@ bool32 ShouldBurnSelf(u8 battler, u16 ability)
 
 bool32 AI_CanBurn(u8 battlerAtk, u8 battlerDef, u16 defAbility, u8 battlerAtkPartner, u16 move, u16 partnerMove)
 {
-    if (!AI_CanBeBurned(battlerDef, defAbility)
+    if (!CanBeBurned(battlerDef, defAbility)
       || AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || PartnerMoveEffectIsStatusSameTarget(battlerAtkPartner, battlerDef, partnerMove))
