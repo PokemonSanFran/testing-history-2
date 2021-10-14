@@ -36,7 +36,7 @@ StarterSelect_0_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_POLIWHIRL, 22, ITEM_NONE
+    givecustommon SPECIES_POLIWHIRL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, ,2
     goto StarterChosen_Script
 
 StarterSelect_1_Script::
@@ -45,7 +45,7 @@ StarterSelect_1_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_FLETCHINDER, 22, ITEM_NONE
+    givecustommon SPECIES_FLETCHINDER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, ,1
     goto StarterChosen_Script
 
 StarterSelect_2_Script::
@@ -54,7 +54,7 @@ StarterSelect_2_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_PETILIL, 22, ITEM_NONE
+    givecustommon SPECIES_PETILIL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,0
     goto StarterChosen_Script
 
 StarterSelect_3_Script::
@@ -63,7 +63,7 @@ StarterSelect_3_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_FLAAFFY, 22, ITEM_NONE
+    givecustommon SPECIES_FLAAFFY, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,0
     goto StarterChosen_Script
 
 StarterSelect_4_Script::
@@ -72,7 +72,7 @@ StarterSelect_4_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_MAREANIE, 22, ITEM_NONE
+    givecustommon SPECIES_MAREANIE, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,2
     goto StarterChosen_Script
 
 StarterSelect_5_Script::
@@ -81,7 +81,7 @@ StarterSelect_5_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_ARON, 22, ITEM_NONE
+    givecustommon SPECIES_ARON, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,0
     goto StarterChosen_Script
 
 StarterSelect_6_Script::
@@ -90,7 +90,7 @@ StarterSelect_6_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_SWINUB, 22, ITEM_NONE
+    givecustommon SPECIES_SWINUB, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,2
     goto StarterChosen_Script
 
 StarterSelect_7_Script::
@@ -99,7 +99,7 @@ StarterSelect_7_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_HATTREM, 22, ITEM_NONE
+    givecustommon SPECIES_HATTREM, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,2
     goto StarterChosen_Script
 
 StarterSelect_8_Script::
@@ -108,7 +108,7 @@ StarterSelect_8_Script::
     msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
     goto_if_eq StarterSelectMenu_Script
-    givemon SPECIES_PANCHAM, 22, ITEM_NONE
+    givecustommon SPECIES_PANCHAM, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,0
     goto StarterChosen_Script
 
 StarterChosen_Script::
