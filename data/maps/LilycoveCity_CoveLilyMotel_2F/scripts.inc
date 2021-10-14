@@ -1,270 +1,5 @@
-LilycoveCity_CoveLilyMotel_2F_MapScripts::
+LilycoveCity_CoveLilyMotel_2F_MapScripts:: @ 82186D2
 	.byte 0
-
-StarterSelect_Script::
-    setvar VAR_0x8000, MUGSHOT_HILDA
-    fadescreen FADE_TO_BLACK
-    lock
-    callnative DrawMugshot
-    msgbox gText_StarterSelectZoeyText1, MSGBOX_DEFAULT
-    msgbox gText_StarterSelectZoeyText2, MSGBOX_DEFAULT
-    callnative ClearMugshot
-    msgbox gText_StarterSelectGameText1, MSGBOX_DEFAULT
-    closemessage
-    call Common_EventScript_SaveGame
-    closemessage
-    goto StarterSelectMenu_Script
-
-StarterSelectMenu_Script::
-    msgbox gText_StarterSelectGameText2, MSGBOX_DEFAULT
-    closemessage
-    multichoice 0, 0, MULTI_STARTER_SELECT, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelect_0_Script
-    case 1, StarterSelect_1_Script
-    case 2, StarterSelect_2_Script
-    case 3, StarterSelect_3_Script
-    case 4, StarterSelect_4_Script
-    case 5, StarterSelect_5_Script
-    case 6, StarterSelect_6_Script
-    case 7, StarterSelect_7_Script
-    case 8, StarterSelect_8_Script
-
-StarterSelect_0_Script::
-    bufferspeciesname 0, SPECIES_POLIWHIRL
-    msgbox gText_StarterSelectPoliwhirlDesc, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelectSummary
-    case 1, StarterSelect_0_ChoiceConfirm
-    case 2, StarterSelectMenu_Script 
-
-StarterSelect_0_ChoiceConfirm::
-    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_POLIWHIRL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,2
-    goto StarterChosen_Script
-
-StarterSelect_1_Script::
-    bufferspeciesname 0, SPECIES_FLETCHINDER
-    msgbox gText_StarterSelectFletchinderDesc, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelectSummary
-    case 1, StarterSelect_1_ChoiceConfirm
-    case 2, StarterSelectMenu_Script 
-
-StarterSelect_1_ChoiceConfirm::
-    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_FLETCHINDER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,1
-    goto StarterChosen_Script
-
-StarterSelect_2_Script::
-    bufferspeciesname 0, SPECIES_PETILIL
-    msgbox gText_StarterSelectPetililDesc, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelectSummary
-    case 1, StarterSelect_2_ChoiceConfirm
-    case 2, StarterSelectMenu_Script 
-
-StarterSelect_2_ChoiceConfirm::
-    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_PETILIL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,0
-    goto StarterChosen_Script
-
-StarterSelect_3_Script::
-    bufferspeciesname 0, SPECIES_FLAAFFY
-    msgbox gText_StarterSelectFlaaffyDesc, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelectSummary
-    case 1, StarterSelect_3_ChoiceConfirm
-    case 2, StarterSelectMenu_Script 
-
-StarterSelect_3_ChoiceConfirm::
-    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_FLAAFFY, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,0
-    goto StarterChosen_Script
-
-StarterSelect_4_Script::
-    bufferspeciesname 0, SPECIES_MAREANIE
-    msgbox gText_StarterSelectMareanieDesc, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelectSummary
-    case 1, StarterSelect_4_ChoiceConfirm
-    case 2, StarterSelectMenu_Script 
-
-StarterSelect_4_ChoiceConfirm::
-    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_MAREANIE, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,2
-    goto StarterChosen_Script
-
-StarterSelect_5_Script::
-    bufferspeciesname 0, SPECIES_ARON
-    msgbox gText_StarterSelectAronDesc, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelectSummary
-    case 1, StarterSelect_5_ChoiceConfirm
-    case 2, StarterSelectMenu_Script 
-
-StarterSelect_5_ChoiceConfirm::
-    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_ARON, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,0
-    goto StarterChosen_Script
-
-StarterSelect_6_Script::
-    bufferspeciesname 0, SPECIES_SWINUB
-    msgbox gText_StarterSelectSwinubDesc, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelectSummary
-    case 1, StarterSelect_6_ChoiceConfirm
-    case 2, StarterSelectMenu_Script 
-
-StarterSelect_6_ChoiceConfirm::
-    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_SWINUB, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,2
-    goto StarterChosen_Script
-
-StarterSelect_7_Script::
-    bufferspeciesname 0, SPECIES_HATTREM
-    msgbox gText_StarterSelectHattremDesc, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelectSummary
-    case 1, StarterSelect_7_ChoiceConfirm
-    case 2, StarterSelectMenu_Script 
-
-StarterSelect_7_ChoiceConfirm::
-    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_HATTREM, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,2
-    goto StarterChosen_Script
-
-StarterSelect_8_Script::
-    bufferspeciesname 0, SPECIES_PANCHAM
-    msgbox gText_StarterSelectPanchamDesc, MSGBOX_DEFAULT
-    multichoice 50, 6, MULTI_STARTER_SUMMARY, TRUE
-    switch VAR_RESULT
-    case 0, StarterSelectSummary
-    case 1, StarterSelect_8_ChoiceConfirm
-    case 2, StarterSelectMenu_Script 
-
-StarterSelect_8_ChoiceConfirm::
-    msgbox gText_StarterAreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-    goto_if_eq StarterSelectMenu_Script
-    givecustommon SPECIES_PANCHAM, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL,,0
-    goto StarterChosen_Script
-
-StarterSelectSummary::
-    msgbox gText_StarterSelectSummaryErrorMessage, MSGBOX_DEFAULT
-    goto StarterSelectMenu_Script
-
-StarterChosen_Script::
-    setflag FLAG_SYS_POKEMON_GET
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox gText_StarterSelectionChosen, MSGBOX_DEFAULT
-    waitfanfare
-    call Common_EventScript_SaveGame
-    closemessage
-    fadescreen FADE_FROM_BLACK
-    release
-    end
-
-gText_StarterSelectZoeyText1::
-    .string "Almost packed and ready to go!\n"
-    .string "I still can't believe I made it...$"
-
-gText_StarterSelectZoeyText2::
-    .string "But the rules say I can only bring\n"
-    .string "one of you guys. Man, this sucks.\p"
-    .string "I promise, once we're the Champion,\n"
-    .string "we'll come back for the rest of you!\p"
-    .string "But for now, it's all business...$"
-
-gText_StarterSelectGameText1::
-    .string "Due to the delicate ecosystem of\n"
-    .string "the region, Trainers are permitted\l"
-    .string "to bring one Pokémon from outside\l"
-    .string "the region into the region with them.\p"
-    .string "Please choose one Pokémon to accompany\n"
-    .string "you on your adventure. You will not\l"
-    .string "be able to access the others during\l"
-    .string "your playthrough, so choose wisely.$"
-
-gText_StarterSelectGameText2::
-    .string "Please choose a Pokémon to bring\n"
-    .string "with you to SanFran.$"
-
-gText_StarterSelectGameText3::
-    .string "You have selected {STR_VAR_1}.$"
-
-gText_StarterSelectSummaryErrorMessage::
-    .string "In the next version, this will\n"
-    .string "lead to the Pokémon summary screen.$"
-
-gText_StarterSelectPoliwhirlDesc::
-    .string "{STR_VAR_1} excels in the rain and\n"
-    .string "gives plenty of options for Trainers.$"
-
-gText_StarterSelectFletchinderDesc::
-    .string "{STR_VAR_1} can provide offense or\n"
-    .string "support with its high Speed.$"
-
-gText_StarterSelectPetililDesc::
-    .string "{STR_VAR_1} best utilizies its high\n"
-    .string "Special Attack in the sun.$"
-
-gText_StarterSelectFlaaffyDesc::
-    .string "{STR_VAR_1} boasts a high Special Attack\n"
-    .string "and diverse move pool.$"
-
-gText_StarterSelectMareanieDesc::
-    .string "{STR_VAR_1} uses Defense and Special\n"
-    .string "Defense to wear down foes.$"
-
-gText_StarterSelectAronDesc::
-    .string "{STR_VAR_1} leverages its high Attack\n"
-    .string "and Defense to provide\l" 
-    .string "physical support.$"
-
-gText_StarterSelectSwinubDesc::
-    .string "{STR_VAR_1} hits most types for super-\n"
-    .string "effective damage with its high attack.$"
-
-gText_StarterSelectHattremDesc::
-    .string "{STR_VAR_1}'s high Special Attack and \n"
-    .string "Special Defense makes it ideal for\l"
-    .string "special support.$"
-
-gText_StarterSelectPanchamDesc::
-    .string "{STR_VAR_1} makes up for low Speed\n"
-    .string "with high Attack and unique typing.$"
-
-gText_StarterAreYouSure::
-    .string "Are you sure you want to choose\n"
-    .string "{STR_VAR_1}?$"
-
-gText_StarterSelectionChosen::
-    .string "You chose to bring {STR_VAR_1} to SanFran.$"
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner:: @ 82186D3
 	lock
@@ -277,18 +12,18 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner:: @ 82186D3
 	release
 	end
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex::
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex:: @ 82186F9
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex, MSGBOX_DEFAULT
 	return
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare::
+LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare:: @ 8218702
 	setflag FLAG_TEMP_2
 	playfanfare MUS_OBTAIN_ITEM
 	waitfanfare
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
 	end
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma::
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma:: @ 821870F
 	message LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
@@ -297,27 +32,27 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma::
 	release
 	end
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_Programmer::
+LilycoveCity_CoveLilyMotel_2F_EventScript_Programmer:: @ 8218720
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer, MSGBOX_NPC
 	end
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_GraphicArtist::
+LilycoveCity_CoveLilyMotel_2F_EventScript_GraphicArtist:: @ 8218729
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist, MSGBOX_NPC
 	end
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_FatMan::
+LilycoveCity_CoveLilyMotel_2F_EventScript_FatMan:: @ 8218732
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute, MSGBOX_NPC
 	end
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_Woman::
+LilycoveCity_CoveLilyMotel_2F_EventScript_Woman:: @ 821873B
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart, MSGBOX_NPC
 	end
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_GameBoyKid::
+LilycoveCity_CoveLilyMotel_2F_EventScript_GameBoyKid:: @ 8218744
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy, MSGBOX_NPC
 	end
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_Scott::
+LilycoveCity_CoveLilyMotel_2F_EventScript_Scott:: @ 821874D
 	lock
 	faceplayer
 	goto_if_set FLAG_MET_SCOTT_IN_LILYCOVE, LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott
@@ -327,12 +62,12 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_Scott::
 	release
 	end
 
-LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott::
+LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott:: @ 821876A
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy, MSGBOX_DEFAULT
 	release
 	end
 
-LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex: 
+LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex: @ 8218774
 	.string "I'm the Game Designer.\p"
 	.string "Oh, is that right?\n"
 	.string "You're working on a Pokédex?\p"
@@ -341,7 +76,7 @@ LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex:
 	.string "If you do complete it, please come\n"
 	.string "show me.$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis:
+LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis: @ 821881C
 	.string "Wow! That's awesome!\n"
 	.string "Yep, it's totally awesome!\p"
 	.string "This Pokédex is completely filled!\n"
@@ -350,13 +85,13 @@ LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis:
 	.string "Let me give you something in\n"
 	.string "recognition of your feat!$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer:
+LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer: @ 82188D6
 	.string "Me? You're talking to me?\n"
 	.string "I'm the Programmer.\p"
 	.string "I wonder what the Slots are\n"
 	.string "like here.$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist: 
+LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist: @ 821892B
 	.string "I'm the Graphic Artist! Aren't the\n"
 	.string "Pokémon of Hoenn interesting?$"
 
@@ -368,17 +103,17 @@ LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute: @ 821896C
 	.string "A 2-on-2 battle with Twins…\p"
 	.string "Whoop, it's unbearably fun!$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart:
+LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart: @ 8218A21
 	.string "The sea breeze tickles my heart.\n"
 	.string "It feels wonderful here!$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy:
+LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy: @ 8218A5B
 	.string "You never know when and where\n"
 	.string "people will challenge you.\p"
 	.string "That's why I never leave home without\n"
 	.string "my Game Boy Advance.$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles: 
+LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles: @ 8218ACF
 	.string "Scott: … … … … …\n"
 	.string "… … … … … Zzz…\p"
 	.string "… … … … … Huh?!\n"
@@ -394,7 +129,7 @@ LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles:
 	.string "like the Gyms, Contests, Battle Tent,\l"
 	.string "the whole works!$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy: 
+LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy: @ 8218C33
 	.string "Scott: I think it does take strategy\n"
 	.string "to win a Contest.\p"
 	.string "Devising Contest strategies is one way\n"
