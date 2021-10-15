@@ -1,69 +1,69 @@
 LilycoveCity_CoveLilyMotel_2F_MapScripts:: @ 82186D2
 	.byte 0
 
-lilycovecity_covelilymotel_2f_eventscript_gamedesigner:: @ 82186d3
+LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner:: @ 82186D3
 	lock
 	faceplayer
-	call_if_unset flag_temp_2, lilycovecity_covelilymotel_2f_eventscript_showmecompleteddex
-	call_if_set flag_temp_2, lilycovecity_covelilymotel_2f_eventscript_showdiploma
-	specialvar var_result, hasallhoennmons
-	compare var_result, true
-	goto_if_eq lilycovecity_covelilymotel_2f_eventscript_allhoennmonsfanfare
+	call_if_unset FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex
+	call_if_set FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
+	specialvar VAR_RESULT, HasAllHoennMons
+	compare VAR_RESULT, TRUE
+	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare
 	release
 	end
 
-lilycovecity_covelilymotel_2f_eventscript_showmecompleteddex:: @ 82186f9
-	msgbox lilycovecity_covelilymotel_2f_text_showmecompleteddex, msgbox_default
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex:: @ 82186F9
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex, MSGBOX_DEFAULT
 	return
 
-lilycovecity_covelilymotel_2f_eventscript_allhoennmonsfanfare:: @ 8218702
-	setflag flag_temp_2
-	playfanfare mus_obtain_item
+LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare:: @ 8218702
+	setflag FLAG_TEMP_2
+	playfanfare MUS_OBTAIN_ITEM
 	waitfanfare
-	goto lilycovecity_covelilymotel_2f_eventscript_showdiploma
+	goto LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
 	end
 
-lilycovecity_covelilymotel_2f_eventscript_showdiploma:: @ 821870f
-	message lilycovecity_covelilymotel_2f_text_filledpokedexgiveyouthis
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma:: @ 821870F
+	message LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis
 	waitmessage
-	call common_eventscript_playgymbadgefanfare
-	special special_showdiploma
+	call Common_EventScript_PlayGymBadgeFanfare
+	special Special_ShowDiploma
 	waitstate
 	release
 	end
 
-lilycovecity_covelilymotel_2f_eventscript_programmer:: @ 8218720
-	msgbox lilycovecity_covelilymotel_2f_text_imtheprogrammer, msgbox_npc
+LilycoveCity_CoveLilyMotel_2F_EventScript_Programmer:: @ 8218720
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer, MSGBOX_NPC
 	end
 
-lilycovecity_covelilymotel_2f_eventscript_graphicartist:: @ 8218729
-	msgbox lilycovecity_covelilymotel_2f_text_imthegraphicartist, msgbox_npc
+LilycoveCity_CoveLilyMotel_2F_EventScript_GraphicArtist:: @ 8218729
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist, MSGBOX_NPC
 	end
 
-lilycovecity_covelilymotel_2f_eventscript_fatman:: @ 8218732
-	msgbox lilycovecity_covelilymotel_2f_text_girlsarecute, msgbox_npc
+LilycoveCity_CoveLilyMotel_2F_EventScript_FatMan:: @ 8218732
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute, MSGBOX_NPC
 	end
 
-lilycovecity_covelilymotel_2f_eventscript_woman:: @ 821873b
-	msgbox lilycovecity_covelilymotel_2f_text_seabreezeticklesheart, msgbox_npc
+LilycoveCity_CoveLilyMotel_2F_EventScript_Woman:: @ 821873B
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart, MSGBOX_NPC
 	end
 
-lilycovecity_covelilymotel_2f_eventscript_gameboykid:: @ 8218744
-	msgbox lilycovecity_covelilymotel_2f_text_neverleavewithoutgameboy, msgbox_npc
+LilycoveCity_CoveLilyMotel_2F_EventScript_GameBoyKid:: @ 8218744
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy, MSGBOX_NPC
 	end
 
-lilycovecity_covelilymotel_2f_eventscript_scott:: @ 821874d
+LilycoveCity_CoveLilyMotel_2F_EventScript_Scott:: @ 821874D
 	lock
 	faceplayer
-	goto_if_set flag_met_scott_in_lilycove, lilycovecity_covelilymotel_2f_eventscript_metscott
-	msgbox lilycovecity_covelilymotel_2f_text_snoozingpreferbattles, msgbox_default
-	addvar var_scott_state, 1
-	setflag flag_met_scott_in_lilycove
+	goto_if_set FLAG_MET_SCOTT_IN_LILYCOVE, LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles, MSGBOX_DEFAULT
+	addvar VAR_SCOTT_STATE, 1
+	setflag FLAG_MET_SCOTT_IN_LILYCOVE
 	release
 	end
 
-lilycovecity_covelilymotel_2f_eventscript_metscott:: @ 821876a
-	msgbox lilycovecity_covelilymotel_2f_text_contestsdotakestrategy, msgbox_default
+LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott:: @ 821876A
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy, MSGBOX_DEFAULT
 	release
 	end
 
