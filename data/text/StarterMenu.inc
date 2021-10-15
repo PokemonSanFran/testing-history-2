@@ -31,42 +31,65 @@ StarterSelectMenu_Script::
 	return
 
 StarterSelectMenu_Script_2:
+	setvar VAR_TEMP_0, 0
 	bufferspeciesname 0, SPECIES_POLIWHIRL
 	msgbox gText_StarterSelectPoliwhirlDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelectMenu_Script_3:
+	setvar VAR_TEMP_0, 1
 	bufferspeciesname 0, SPECIES_FLETCHINDER
 	msgbox gText_StarterSelectFletchinderDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelectMenu_Script_4:
+	setvar VAR_TEMP_0, 2
+	bufferspeciesname 0, SPECIES_PETILIL
+	msgbox gText_StarterSelectFletchinderDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelectMenu_Script_5:
+	setvar VAR_TEMP_0, 3
+	bufferspeciesname 0, SPECIES_FLAAFFY
+	msgbox gText_StarterSelectFlaaffyDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelectMenu_Script_6:
+	setvar VAR_TEMP_0, 4
+	bufferspeciesname 0, SPECIES_MAREANIE
+	msgbox gText_StarterSelectMareanieDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelectMenu_Script_7:
+	setvar VAR_TEMP_0, 5
+	bufferspeciesname 0, SPECIES_ARON
+	msgbox gText_StarterSelectAronDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelectMenu_Script_8:
+	setvar VAR_TEMP_0, 6
+	bufferspeciesname 0, SPECIES_SWINUB
+	msgbox gText_StarterSelectSwinubDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelectMenu_Script_9:
+	setvar VAR_TEMP_0, 7
+	bufferspeciesname 0, SPECIES_HATTREM
+	msgbox gText_StarterSelectHattremDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelectMenu_Script_10:
+	setvar VAR_TEMP_0, 8
+	bufferspeciesname 0, SPECIES_PANCHAM
+	msgbox gText_StarterSelectPanchamDesc
 	goto StarterChoice_Menu
 	return
 
@@ -85,7 +108,7 @@ StarterChoice_Menu_2:
 	return
 
 StarterChoice_Menu_3:
-	goto StarterSelect_0_ChoiceConfirm
+	goto StarterSelectChoiceConfirm
 	return
 
 StarterChoice_Menu_4:
@@ -93,17 +116,63 @@ StarterChoice_Menu_4:
 	return
 
 
-StarterSelect_0_ChoiceConfirm::
+StarterSelectChoiceConfirm::
 	msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq StarterSelect_0_ChoiceConfirm_1
-	givecustommon SPECIES_FLETCHINDER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 1
+	goto_if_eq StarterSelectChoiceConfirm_1
+	switch VAR_TEMP_0
+	case 0, StarterSelectChoiceConfirm_6
+	case 1, StarterSelectChoiceConfirm_7
+	case 2, StarterSelectChoiceConfirm_8
+	case 3, StarterSelectChoiceConfirm_9
+	case 4, StarterSelectChoiceConfirm_10
+	case 5, StarterSelectChoiceConfirm_11
+	case 6, StarterSelectChoiceConfirm_12
+	case 7, StarterSelectChoiceConfirm_13
+	case 8, StarterSelectChoiceConfirm_14
+StarterSelectChoiceConfirm_4:
 	goto StarterChosen_Script
 	return
 
-StarterSelect_0_ChoiceConfirm_1:
+StarterSelectChoiceConfirm_1:
 	goto StarterSelectMenu_Script
 	return
+
+StarterSelectChoiceConfirm_6:
+	givecustommon SPECIES_POLIWHIRL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
+	goto StarterSelectChoiceConfirm_4
+
+StarterSelectChoiceConfirm_7:
+	givecustommon SPECIES_FLETCHINDER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 1
+	goto StarterSelectChoiceConfirm_4
+
+StarterSelectChoiceConfirm_8:
+	givecustommon SPECIES_PETILIL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 0
+	goto StarterSelectChoiceConfirm_4
+
+StarterSelectChoiceConfirm_9:
+	givecustommon SPECIES_FLAAFFY, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 0
+	goto StarterSelectChoiceConfirm_4
+
+StarterSelectChoiceConfirm_10:
+	givecustommon SPECIES_MAREANIE, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
+	goto StarterSelectChoiceConfirm_4
+
+StarterSelectChoiceConfirm_11:
+	givecustommon SPECIES_ARON, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 0
+	goto StarterSelectChoiceConfirm_4
+
+StarterSelectChoiceConfirm_12:
+	givecustommon SPECIES_SWINUB, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
+	goto StarterSelectChoiceConfirm_4
+
+StarterSelectChoiceConfirm_13:
+	givecustommon SPECIES_HATTREM, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
+	goto StarterSelectChoiceConfirm_4
+
+StarterSelectChoiceConfirm_14:
+	givecustommon SPECIES_PANCHAM, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 1
+	goto StarterSelectChoiceConfirm_4
 
 
 StarterChosen_Script::
@@ -112,7 +181,10 @@ StarterChosen_Script::
 	msgbox gText_StarterSelectionChosen
 	waitfanfare
 	call Common_EventScript_SaveGame
-	return
+	closemessage
+	fadescreen FADE_FROM_BLACK
+	release
+	end
 
 
 gText_StarterSelectZoeyText1::
