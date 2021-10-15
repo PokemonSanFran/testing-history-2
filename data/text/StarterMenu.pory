@@ -1,67 +1,129 @@
-script StaterSelectScript {
+script StarterSelect_Script {
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     fadescreen(FADE_TO_BLACK)
     lockall
     callnative(DrawMugshot)
-    msgbox(format(gText_StarterSelectZoeyText1))
-    msgbox(format(gText_StarterSelectZoeyText2))
+    msgbox(gText_StarterSelectZoeyText1)
+    msgbox(gText_StarterSelectZoeyText2)
     callnative(ClearMugshot) 
-    msgbox(format(gText_StarterSelectGameText1))
+    msgbox(gText_StarterSelectGameText1)
     closemessage
-    call Common_EventScript_SaveGame
+    call(Common_EventScript_SaveGame)
     closemessage
-    goto StarterSelectMenu_Script
+    goto(StarterSelectMenu_Script)
 }
 
 script StarterSelectMenu_Script {
-    msgbox(format(gText_StarterSelectGameText2))
+    msgbox(gText_StarterSelectGameText2)
     closemessage
     multichoice(0,0,MULTI_STARTER_SELECT,TRUE)
     switch (var(VAR_RESULT)) {
         case 0:
-            StarterSelect_0_Script
+            bufferspeciesname(0, SPECIES_POLIWHIRL)
+            msgbox(gText_StarterSelectPoliwhirlDesc)
+            goto(StarterChoice_Menu)
         case 1:
-            StarterSelect_1_Script
+            bufferspeciesname(0, SPECIES_FLETCHINDER)
+            msgbox(gText_StarterSelectFletchinderDesc)
+            goto(StarterChoice_Menu)
         case 2:
-            StarterSelect_2_Script
+            bufferspeciesname(0, SPECIES_PETILIL)
+            msgbox(gText_StarterSelectFletchinderDesc)
+            goto(StarterChoice_Menu)
         case 3:
-            StarterSelect_3_Script
+            goto(StarterChoice_Menu)
         case 4:
-            StarterSelect_4_Script
+            goto(StarterChoice_Menu)
         case 5:
-            StarterSelect_5_Script
+            goto(StarterChoice_Menu)
         case 6:
-            StarterSelect_6_Script
+            goto(StarterChoice_Menu)
         case 7:
-            StarterSelect_7_Script
+            goto(StarterChoice_Menu)
         case 8:
-            StarterSelect_8_Script
-    }
+            goto(StarterChoice_Menu)
+}
 
-script StarterSelect_0_Script {
-    bufferspeciesname(0, SPECIES_POLIWHIRL)
-    msgbox(format(gText_StarterSelectPoliwhirlDesc))
+script StarterChoice_Menu{
     multichoice(50,6,MULTI_STARTER_SUMMARY,TRUE)
-    
     switch (var(VAR_RESULT)) {
         case 0:
-            StarterSelectSummary
+            msgbox(gText_StarterSelectSummaryErrorMessage)
+            goto(StarterSelectMenu_Script)
         case 1:
-            StarterSelect_0_ChoiceConfirm
+            goto(StarterSelect_0_ChoiceConfirm)
         case 2:
-            StarterSelectMenu_Script
+            goto(StarterSelectMenu_Script)
      }
+}
 
 script StarterSelect_0_ChoiceConfirm {
-    msgbox(format(gText_StarterAreYouSure),MSGBOX_YESNO)
+    msgbox(gText_StarterAreYouSure,MSGBOX_YESNO)
     if (var(VAR_RESULT)== NO) {
-        StarterSelectMenu_Script
+        goto(StarterSelectMenu_Script)
     } else {
         givecustommon(SPECIES_FLETCHINDER,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,1)
-        StarterChosenScript
+        goto(StarterChosen_Script)
     }
 }
 
+script StarterChosen_Script {
+    setflag(FLAG_SYS_POKEMON_GET)
+    playfanfare(MUS_OBTAIN_ITEM)
+    msgbox(gText_StarterSelectionChosen)
+    waitfanfare
+    call(Common_EventScript_SaveGame)
+}
 
-        
-    _ 
+text gText_StarterSelectZoeyText1 {
+    format("Almost packed and ready to go! I still can't believe I made it...")}
+
+text gText_StarterSelectZoeyText2 {
+    format("But the rules say I can only bring one of you guys. Man, this sucks. I promise, once we're the Champion, we'll come back for the rest of you! But for now, it's all business...")}
+
+text gText_StarterSelectGameText1 {
+    format("Due to the delicate ecosystem of the region, Trainers are permitted to bring one Pokémon from outside the region into the region with them. Please choose one Pokémon to accompany you on your adventure. You will not be able to access the others during your playthrough, so choose wisely.")}
+
+text gText_StarterSelectGameText2 {
+ format("Please choose a Pokémon to bring with you to SanFran.")}
+
+text gText_StarterSelectGameText3 {
+ format("You have selected {STR_VAR_1}.")}
+
+text gText_StarterSelectSummaryErrorMessage {
+ format("In the next version, this will lead to the Pokémon summary screen.")}
+
+text gText_StarterSelectPoliwhirlDesc {
+ format("{STR_VAR_1} excels in the rain and gives plenty of options for Trainers.")}
+
+text gText_StarterSelectFletchinderDesc {
+ format("{STR_VAR_1} can provide offense or support with its high Speed.")}
+
+text gText_StarterSelectPetililDesc {
+ format("{STR_VAR_1} best utilizies its high Special Attack in the sun.")}
+
+text gText_StarterSelectFlaaffyDesc {
+ format("{STR_VAR_1} boasts a high Special Attack and diverse move pool.")}
+
+text gText_StarterSelectMareanieDesc {
+ format("{STR_VAR_1} uses Defense and Special Defense to wear down foes.")}
+
+text gText_StarterSelectAronDesc {
+ format("{STR_VAR_1} leverages its high Attack and Defense to provide 
+ physical support.")}
+
+text gText_StarterSelectSwinubDesc {
+ format("{STR_VAR_1} hits most types for super- effective damage with its high attack.")}
+
+text gText_StarterSelectHattremDesc {
+ format("{STR_VAR_1}'s high Special Attack and  Special Defense makes it ideal for special support.")}
+
+text gText_StarterSelectPanchamDesc {
+ format("{STR_VAR_1} makes up for low Speed with high Attack and unique typing.")}
+
+text gText_StarterAreYouSure {
+ format("Are you sure you want to choose {STR_VAR_1}?")}
+
+text gText_StarterSelectionChosen {
+ format("You chose to bring {STR_VAR_1} to SanFran.")}
+
