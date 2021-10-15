@@ -4,7 +4,7 @@
 *.elf
 *.gba
 *.sgm
-*.sa1
+*.sa[0-9]
 *.ss[0-9]
 *.sg1
 *.1bpp
