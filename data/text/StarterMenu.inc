@@ -1,6 +1,5 @@
 StarterSelect_Script::
 	setvar VAR_0x8000, MUGSHOT_HILDA
-	fadescreen FADE_TO_BLACK
 	lockall
 	callnative DrawMugshot
 	msgbox gText_StarterSelectZoeyText1
@@ -155,7 +154,7 @@ StarterSelectChoiceConfirm_9:
 	goto StarterSelectChoiceConfirm_4
 
 StarterSelectChoiceConfirm_10:
-	givecustommon SPECIES_MAREANIE, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
+	givecustommon SPECIES_MAREANIE, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 0
 	goto StarterSelectChoiceConfirm_4
 
 StarterSelectChoiceConfirm_11:

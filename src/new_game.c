@@ -192,6 +192,7 @@ void NewGameInitData(void)
     InitDewfordTrend();
     ResetFanClub();
     ResetLotteryCorner();
+    FadeScreen(FADE_TO_BLACK,0);
     WarpToTruck();
     ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
     ResetMiniGamesRecords();

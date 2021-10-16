@@ -9,6 +9,7 @@
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
+//#include "data/event_scripts.s"
 #include "field_camera.h"
 #include "field_control_avatar.h"
 #include "field_effect.h"
@@ -1530,10 +1531,14 @@ void CB2_NewGame(void)
     NewGameInitData();
     ResetInitialPlayerAvatarState();
     PlayTimeCounter_Start();
+    /* original scripts and callbacks from emerald
     ScriptContext1_Init();
     ScriptContext2_Disable();
     gFieldCallback = ExecuteTruckSequence;
     gFieldCallback2 = NULL;
+    */
+    ScriptContext1_SetupScript(StarterSelect_Script);
+    ScriptContext2_Enable();
     DoMapLoadLoop(&gMain.state);
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);

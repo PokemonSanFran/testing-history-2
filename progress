@@ -1,4 +1,9 @@
 * * * * * * * * * * * *
+OCT 15
+change WarpToTruck in src/new_game.c to warp to black map
+at the end of StarterSlect, create warp to in front of South Bay YC House
+
+
 OCT 14
 need to figure out how to hook up monolouge to the end of the diploma speech
 finish porting data/text/StartersMenu to poryscript

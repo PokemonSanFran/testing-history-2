@@ -2785,7 +2785,6 @@ static void Task_NewGameBirchSpeech_Cleanup(u8 taskId)
         //SetMainCallback2(CB2_NewGame); //original code
         //DestroyTask(taskId); //original code
         DisplayLetter();
-        //CB2_NewGame();
     }
 }
 
