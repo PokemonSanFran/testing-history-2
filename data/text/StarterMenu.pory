@@ -31,47 +31,47 @@ script StarterSelect_Menu {
     multichoice(0,0,MULTI_STARTER_SELECT,TRUE)
     switch (var(VAR_RESULT)) {
         case 0:
-            setvar(VAR_TEMP_0,0)
+            setvar(VAR_STARTER_MON,0)
             bufferspeciesname(0, SPECIES_POLIWHIRL)
             msgbox(gText_StarterSelectPoliwhirlDesc)
             goto(StarterChoice_Menu)
         case 1:
-            setvar(VAR_TEMP_0,1)
+            setvar(VAR_STARTER_MON,1)
             bufferspeciesname(0, SPECIES_FLETCHINDER)
             msgbox(gText_StarterSelectFletchinderDesc)
             goto(StarterChoice_Menu)
         case 2:
-            setvar(VAR_TEMP_0,2)
+            setvar(VAR_STARTER_MON,2)
             bufferspeciesname(0, SPECIES_PETILIL)
             msgbox(gText_StarterSelectFletchinderDesc)
             goto(StarterChoice_Menu)
         case 3:
-            setvar(VAR_TEMP_0,3)
+            setvar(VAR_STARTER_MON,3)
             bufferspeciesname(0, SPECIES_FLAAFFY)
             msgbox(gText_StarterSelectFlaaffyDesc)
             goto(StarterChoice_Menu)
         case 4:
-            setvar(VAR_TEMP_0,4)
+            setvar(VAR_STARTER_MON,4)
             bufferspeciesname(0, SPECIES_MAREANIE)
             msgbox(gText_StarterSelectMareanieDesc)
             goto(StarterChoice_Menu)
         case 5:
-            setvar(VAR_TEMP_0,5)
+            setvar(VAR_STARTER_MON,5)
             bufferspeciesname(0, SPECIES_ARON)
             msgbox(gText_StarterSelectAronDesc)
             goto(StarterChoice_Menu)
         case 6:
-            setvar(VAR_TEMP_0,6)
+            setvar(VAR_STARTER_MON,6)
             bufferspeciesname(0, SPECIES_SWINUB)
             msgbox(gText_StarterSelectSwinubDesc)
             goto(StarterChoice_Menu)
         case 7:
-            setvar(VAR_TEMP_0,7)
+            setvar(VAR_STARTER_MON,7)
             bufferspeciesname(0, SPECIES_HATTREM)
             msgbox(gText_StarterSelectHattremDesc)
             goto(StarterChoice_Menu)
         case 8:
-            setvar(VAR_TEMP_0,8)
+            setvar(VAR_STARTER_MON,8)
             bufferspeciesname(0, SPECIES_PANCHAM)
             msgbox(gText_StarterSelectPanchamDesc)
             goto(StarterChoice_Menu)
@@ -97,7 +97,7 @@ script StarterSelectConfirm {
     if (var(VAR_RESULT)== NO) {
         goto(StarterSelect_Menu)
     } else {
-        switch (var(VAR_TEMP_0)) {
+        switch (var(VAR_STARTER_MON)) {
             //TODO need to make sure these guys have 3 perfect IVs
             case 0:
                 givecustommon(SPECIES_POLIWHIRL,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,2)
@@ -147,42 +147,42 @@ text gText_StarterSelectGameText2 {
  format("Please choose a Pokémon to bring with you to SanFran.")}
 
 text gText_StarterSelectGameText3 {
- format("You have selected {STR_VAR_1}.")}
+ format("You have selected {VAR_0x8001}.")}
 
 text gText_StarterSelectSummaryErrorMessage {
  format("In the next version, this will lead to the Pokémon summary screen.")}
 
 text gText_StarterSelectPoliwhirlDesc {
- format("{STR_VAR_1} excels in the rain and gives plenty of options for Trainers.")}
+ format("{VAR_0x8001} excels in the rain and gives plenty of options for Trainers.")}
 
 text gText_StarterSelectFletchinderDesc {
- format("{STR_VAR_1} can provide offense or support with its high Speed.")}
+ format("{VAR_0x8001} can provide offense or support with its high Speed.")}
 
 text gText_StarterSelectPetililDesc {
- format("{STR_VAR_1} best utilizies its high Special Attack in the sun.")}
+ format("{VAR_0x8001} best utilizies its high Special Attack in the sun.")}
 
 text gText_StarterSelectFlaaffyDesc {
- format("{STR_VAR_1} boasts a high Special Attack and diverse move pool.")}
+ format("{VAR_0x8001} boasts a high Special Attack and diverse move pool.")}
 
 text gText_StarterSelectMareanieDesc {
- format("{STR_VAR_1} uses Defense and Special Defense to wear down foes.")}
+ format("{VAR_0x8001} uses Defense and Special Defense to wear down foes.")}
 
 text gText_StarterSelectAronDesc {
- format("{STR_VAR_1} leverages its high Attack and Defense to provide 
+ format("{VAR_0x8001} leverages its high Attack and Defense to provide 
  physical support.")}
 
 text gText_StarterSelectSwinubDesc {
- format("{STR_VAR_1} hits most types for super- effective damage with its high attack.")}
+ format("{VAR_0x8001} hits most types for super- effective damage with its high attack.")}
 
 text gText_StarterSelectHattremDesc {
- format("{STR_VAR_1}'s high Special Attack and  Special Defense makes it ideal for special support.")}
+ format("{VAR_0x8001}'s high Special Attack and  Special Defense makes it ideal for special support.")}
 
 text gText_StarterSelectPanchamDesc {
- format("{STR_VAR_1} makes up for low Speed with high Attack and unique typing.")}
+ format("{VAR_0x8001} makes up for low Speed with high Attack and unique typing.")}
 
 text gText_StarterAreYouSure {
- format("Are you sure you want to choose {STR_VAR_1}?")}
+ format("Are you sure you want to choose {VAR_0x8001}?")}
 
 text gText_StarterSelectionChosen {
- format("You chose to bring {STR_VAR_1} to SanFran.")}
+ format("You chose to bring {VAR_0x8001} to SanFran.")}
 

@@ -41,63 +41,63 @@ StarterSelect_Menu::
 	return
 
 StarterSelect_Menu_2:
-	setvar VAR_TEMP_0, 0
+	setvar VAR_STARTER_MON, 0
 	bufferspeciesname 0, SPECIES_POLIWHIRL
 	msgbox gText_StarterSelectPoliwhirlDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelect_Menu_3:
-	setvar VAR_TEMP_0, 1
+	setvar VAR_STARTER_MON, 1
 	bufferspeciesname 0, SPECIES_FLETCHINDER
 	msgbox gText_StarterSelectFletchinderDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelect_Menu_4:
-	setvar VAR_TEMP_0, 2
+	setvar VAR_STARTER_MON, 2
 	bufferspeciesname 0, SPECIES_PETILIL
 	msgbox gText_StarterSelectFletchinderDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelect_Menu_5:
-	setvar VAR_TEMP_0, 3
+	setvar VAR_STARTER_MON, 3
 	bufferspeciesname 0, SPECIES_FLAAFFY
 	msgbox gText_StarterSelectFlaaffyDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelect_Menu_6:
-	setvar VAR_TEMP_0, 4
+	setvar VAR_STARTER_MON, 4
 	bufferspeciesname 0, SPECIES_MAREANIE
 	msgbox gText_StarterSelectMareanieDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelect_Menu_7:
-	setvar VAR_TEMP_0, 5
+	setvar VAR_STARTER_MON, 5
 	bufferspeciesname 0, SPECIES_ARON
 	msgbox gText_StarterSelectAronDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelect_Menu_8:
-	setvar VAR_TEMP_0, 6
+	setvar VAR_STARTER_MON, 6
 	bufferspeciesname 0, SPECIES_SWINUB
 	msgbox gText_StarterSelectSwinubDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelect_Menu_9:
-	setvar VAR_TEMP_0, 7
+	setvar VAR_STARTER_MON, 7
 	bufferspeciesname 0, SPECIES_HATTREM
 	msgbox gText_StarterSelectHattremDesc
 	goto StarterChoice_Menu
 	return
 
 StarterSelect_Menu_10:
-	setvar VAR_TEMP_0, 8
+	setvar VAR_STARTER_MON, 8
 	bufferspeciesname 0, SPECIES_PANCHAM
 	msgbox gText_StarterSelectPanchamDesc
 	goto StarterChoice_Menu
@@ -130,7 +130,7 @@ StarterSelectConfirm::
 	msgbox gText_StarterAreYouSure, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq StarterSelectConfirm_1
-	switch VAR_TEMP_0
+	switch VAR_STARTER_MON
 	case 0, StarterSelectConfirm_6
 	case 1, StarterSelectConfirm_7
 	case 2, StarterSelectConfirm_8
@@ -223,55 +223,51 @@ gText_StarterSelectGameText2::
 	.string "you to SanFran.$"
 
 gText_StarterSelectGameText3::
-	.string "You have selected {STR_VAR_1}.$"
+	.string "You have selected {VAR_0x8001}.$"
 
 gText_StarterSelectSummaryErrorMessage::
 	.string "In the next version, this will lead to\n"
 	.string "the Pokémon summary screen.$"
 
 gText_StarterSelectPoliwhirlDesc::
-	.string "{STR_VAR_1} excels in the rain and\n"
-	.string "gives plenty of options for Trainers.$"
+	.string "{VAR_0x8001} excels in the rain and gives plenty of\n"
+	.string "options for Trainers.$"
 
 gText_StarterSelectFletchinderDesc::
-	.string "{STR_VAR_1} can provide offense or\n"
-	.string "support with its high Speed.$"
+	.string "{VAR_0x8001} can provide offense or support with\n"
+	.string "its high Speed.$"
 
 gText_StarterSelectPetililDesc::
-	.string "{STR_VAR_1} best utilizies its high\n"
-	.string "Special Attack in the sun.$"
+	.string "{VAR_0x8001} best utilizies its high Special Attack\n"
+	.string "in the sun.$"
 
 gText_StarterSelectFlaaffyDesc::
-	.string "{STR_VAR_1} boasts a high Special\n"
-	.string "Attack and diverse move pool.$"
+	.string "{VAR_0x8001} boasts a high Special Attack and\n"
+	.string "diverse move pool.$"
 
 gText_StarterSelectMareanieDesc::
-	.string "{STR_VAR_1} uses Defense and\n"
-	.string "Special Defense to wear down foes.$"
+	.string "{VAR_0x8001} uses Defense and Special Defense to\n"
+	.string "wear down foes.$"
 
 gText_StarterSelectAronDesc::
-	.string "{STR_VAR_1} leverages its high\n"
-	.string "Attack and Defense to provide\l"
-	.string "physical support.$"
+	.string "{VAR_0x8001} leverages its high Attack and Defense\n"
+	.string "to provide physical support.$"
 
 gText_StarterSelectSwinubDesc::
-	.string "{STR_VAR_1} hits most types for\n"
-	.string "super- effective damage with its high\l"
-	.string "attack.$"
+	.string "{VAR_0x8001} hits most types for super- effective\n"
+	.string "damage with its high attack.$"
 
 gText_StarterSelectHattremDesc::
-	.string "{STR_VAR_1}'s high Special Attack\n"
-	.string "and Special Defense makes it ideal for\l"
-	.string "special support.$"
+	.string "{VAR_0x8001}'s high Special Attack and Special\n"
+	.string "Defense makes it ideal for special\l"
+	.string "support.$"
 
 gText_StarterSelectPanchamDesc::
-	.string "{STR_VAR_1} makes up for low Speed\n"
-	.string "with high Attack and unique typing.$"
+	.string "{VAR_0x8001} makes up for low Speed with high\n"
+	.string "Attack and unique typing.$"
 
 gText_StarterAreYouSure::
-	.string "Are you sure you want to choose\n"
-	.string "{STR_VAR_1}?$"
+	.string "Are you sure you want to choose {VAR_0x8001}?$"
 
 gText_StarterSelectionChosen::
-	.string "You chose to bring {STR_VAR_1} to\n"
-	.string "SanFran.$"
+	.string "You chose to bring {VAR_0x8001} to SanFran.$"

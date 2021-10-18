@@ -1,0 +1,9 @@
+script BlackMap_MapScripts {
+    map_script(ON FRAME,ResumeStarterSelectReset)
+}
+
+script ResumeStarterSelectReset {
+    goto_if_set(FLAG_SYS_POKEMON_GET,StarterSelectEnd)
+    goto(StarterSelectConfirm)
+}
+
