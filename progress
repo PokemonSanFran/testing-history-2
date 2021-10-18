@@ -1,4 +1,10 @@
 * * * * * * * * * * * *
+OCT 16
+How do I load a script right when the player loads the game?
+Menu should launch as soon as game is loaded
+do I need a seperate ShinyReset script to be called for new game stuff?
+
+
 OCT 15
 change WarpToTruck in src/new_game.c to warp to black map
 at the end of StarterSlect, create warp to in front of South Bay YC House

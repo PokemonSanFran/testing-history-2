@@ -9,7 +9,6 @@
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
-//#include "data/event_scripts.s"
 #include "field_camera.h"
 #include "field_control_avatar.h"
 #include "field_effect.h"
@@ -1537,7 +1536,7 @@ void CB2_NewGame(void)
     gFieldCallback = ExecuteTruckSequence;
     gFieldCallback2 = NULL;
     */
-    ScriptContext1_SetupScript(StarterSelect_Script);
+    ScriptContext1_SetupScript(WarpToBlackMap);
     ScriptContext2_Enable();
     DoMapLoadLoop(&gMain.state);
     SetFieldVBlankCallback();

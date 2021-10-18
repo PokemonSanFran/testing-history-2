@@ -1,22 +1,31 @@
-script StarterSelect_Script {
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+script WarpToBlackMap{
+    map_script(MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, NewGameZoeyDialogue)
+}
+
+script NewGameZoeyDialogue {
     lockall
+    applymovement(OBJ_EVENT_ID_PLAYER, Movement_SetInvisible)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_StarterSelectZoeyText1)
     msgbox(gText_StarterSelectZoeyText2)
     callnative(ClearMugshot) 
+    goto(NewGameNarratorDialogue)
+}
+
+script NewGameNarratorDialogue {
     msgbox(gText_StarterSelectGameText1)
     closemessage
     call(Common_EventScript_SaveGame)
     closemessage
-    goto(StarterSelectMenu_Script)
+    goto(StarterSelect_Menu)
 }
 
 //TODO hook up a fake summary screen to this. I think the correct implemention would be to use givecustommon to generate all nine starters, then fire up the summary screen to look at the first pokemon in the box. when the user makes a decision, delete the other pokemon in the box, and generate that SAME pokemon and put it in the first slot of the party.
 //
 //need to figure out how to store the personality ID of the generated mon(seems totally doable ngl)
 
-script StarterSelectMenu_Script {
+script StarterSelect_Menu {
     msgbox(gText_StarterSelectGameText2)
     closemessage
     multichoice(0,0,MULTI_STARTER_SELECT,TRUE)
@@ -75,18 +84,18 @@ script StarterChoice_Menu{
         case 0:
             //TODO when a user selects this option, I want them to go back to the StarterChoiceMenu with the same flavor text displayed. possible?
             msgbox(gText_StarterSelectSummaryErrorMessage)
-            goto(StarterSelectMenu_Script)
+            goto(StarterSelect_Menu)
         case 1:
-            goto(StarterSelectChoiceConfirm)
+            goto(StarterSelectConfirm)
         case 2:
-            goto(StarterSelectMenu_Script)
+            goto(StarterSelect_Menu)
      }
 }
 
-script StarterSelectChoiceConfirm {
+script StarterSelectConfirm {
     msgbox(gText_StarterAreYouSure,MSGBOX_YESNO)
     if (var(VAR_RESULT)== NO) {
-        goto(StarterSelectMenu_Script)
+        goto(StarterSelect_Menu)
     } else {
         switch (var(VAR_TEMP_0)) {
             //TODO need to make sure these guys have 3 perfect IVs
@@ -109,19 +118,19 @@ script StarterSelectChoiceConfirm {
             case 8:
                 givecustommon(SPECIES_PANCHAM,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,1)
         }
-        goto(StarterChosen_Script)
+        goto(StarterSelectEnd)
     }
 }
 
-script StarterChosen_Script {
+script StarterSelectEnd {
     setflag(FLAG_SYS_POKEMON_GET)
     playfanfare(MUS_OBTAIN_ITEM)
     msgbox(gText_StarterSelectionChosen)
     waitfanfare
     call(Common_EventScript_SaveGame)
     closemessage
-    fadescreen(FADE_FROM_BLACK)
-    release
+    warpsilent(MAP_SOOTOPOLIS_CITY,255,31,22)
+    releaseall
     end
 }
 

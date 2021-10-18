@@ -1643,4 +1643,5 @@
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 
+// Custom Flags
 #endif // GUARD_CONSTANTS_FLAGS_H
