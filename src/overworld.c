@@ -1536,8 +1536,11 @@ void CB2_NewGame(void)
     gFieldCallback = ExecuteTruckSequence;
     gFieldCallback2 = NULL;
     */
-    ScriptContext1_SetupScript(WarpToBlackMap);
-    ScriptContext2_Enable();
+    //ScriptContext1_SetupScript(WarpToBlackMap);
+    //ScriptContext2_Enable();
+    ScriptContext1_Init();
+    ScriptContext2_Disable();
+
     DoMapLoadLoop(&gMain.state);
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);

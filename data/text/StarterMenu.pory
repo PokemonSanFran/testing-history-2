@@ -1,11 +1,16 @@
 script WarpToBlackMap{
-    map_script(MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, NewGameZoeyDialogue)
+//    map_script(MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, NewGameZoeyDialogue)
 }
 
 script NewGameZoeyDialogue {
     lockall
     applymovement(OBJ_EVENT_ID_PLAYER, Movement_SetInvisible)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
+
+    if (flag(FLAG_SYS_POKEMON_GET)) {
+        goto(StarterSelectEnd)
+    }
+
     callnative(DrawMugshot)
     msgbox(gText_StarterSelectZoeyText1)
     msgbox(gText_StarterSelectZoeyText2)
@@ -101,22 +106,31 @@ script StarterSelectConfirm {
             //TODO need to make sure these guys have 3 perfect IVs
             case 0:
                 givecustommon(SPECIES_POLIWHIRL,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,2)
+                bufferspeciesname(0, SPECIES_POLIWHIRL)
             case 1:
                 givecustommon(SPECIES_FLETCHINDER,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,1)
+                bufferspeciesname(0, SPECIES_FLETCHINDER)
             case 2:
                 givecustommon(SPECIES_PETILIL,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,0)
+                bufferspeciesname(0, SPECIES_PETILIL)
             case 3:
                 givecustommon(SPECIES_FLAAFFY,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,0)
+                bufferspeciesname(0, SPECIES_FLAAFFY)
             case 4:
                 givecustommon(SPECIES_MAREANIE,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,0)
+                bufferspeciesname(0, SPECIES_MAREANIE)
             case 5:
                 givecustommon(SPECIES_ARON,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,0)
+                bufferspeciesname(0, SPECIES_ARON)
             case 6:
                 givecustommon(SPECIES_SWINUB,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,2)
+                bufferspeciesname(0, SPECIES_SWINUB)
             case 7:
                 givecustommon(SPECIES_HATTREM,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,2)
+                bufferspeciesname(0, SPECIES_HATTREM)
             case 8:
                 givecustommon(SPECIES_PANCHAM,22,ITEM_SITRUS_BERRY,ITEM_GREAT_BALL,,1)
+                bufferspeciesname(0, SPECIES_PANCHAM)
         }
         goto(StarterSelectEnd)
     }
@@ -147,42 +161,42 @@ text gText_StarterSelectGameText2 {
  format("Please choose a Pokémon to bring with you to SanFran.")}
 
 text gText_StarterSelectGameText3 {
- format("You have selected {VAR_0x8001}.")}
+ format("You have selected {STR_VAR_1}.")}
 
 text gText_StarterSelectSummaryErrorMessage {
  format("In the next version, this will lead to the Pokémon summary screen.")}
 
 text gText_StarterSelectPoliwhirlDesc {
- format("{VAR_0x8001} excels in the rain and gives plenty of options for Trainers.")}
+ format("{STR_VAR_1} excels in the rain and gives plenty of options for Trainers.")}
 
 text gText_StarterSelectFletchinderDesc {
- format("{VAR_0x8001} can provide offense or support with its high Speed.")}
+ format("{STR_VAR_1} can provide offense or support with its high Speed.")}
 
 text gText_StarterSelectPetililDesc {
- format("{VAR_0x8001} best utilizies its high Special Attack in the sun.")}
+ format("{STR_VAR_1} best utilizies its high Special Attack in the sun.")}
 
 text gText_StarterSelectFlaaffyDesc {
- format("{VAR_0x8001} boasts a high Special Attack and diverse move pool.")}
+ format("{STR_VAR_1} boasts a high Special Attack and diverse move pool.")}
 
 text gText_StarterSelectMareanieDesc {
- format("{VAR_0x8001} uses Defense and Special Defense to wear down foes.")}
+ format("{STR_VAR_1} uses Defense and Special Defense to wear down foes.")}
 
 text gText_StarterSelectAronDesc {
- format("{VAR_0x8001} leverages its high Attack and Defense to provide 
+ format("{STR_VAR_1} leverages its high Attack and Defense to provide 
  physical support.")}
 
 text gText_StarterSelectSwinubDesc {
- format("{VAR_0x8001} hits most types for super- effective damage with its high attack.")}
+ format("{STR_VAR_1} hits most types for super- effective damage with its high attack.")}
 
 text gText_StarterSelectHattremDesc {
- format("{VAR_0x8001}'s high Special Attack and  Special Defense makes it ideal for special support.")}
+ format("{STR_VAR_1}'s high Special Attack and  Special Defense makes it ideal for special support.")}
 
 text gText_StarterSelectPanchamDesc {
- format("{VAR_0x8001} makes up for low Speed with high Attack and unique typing.")}
+ format("{STR_VAR_1} makes up for low Speed with high Attack and unique typing.")}
 
 text gText_StarterAreYouSure {
- format("Are you sure you want to choose {VAR_0x8001}?")}
+ format("Are you sure you want to choose {STR_VAR_1}?")}
 
 text gText_StarterSelectionChosen {
- format("You chose to bring {VAR_0x8001} to SanFran.")}
+ format("You chose to bring {STR_VAR_1} to SanFran.")}
 

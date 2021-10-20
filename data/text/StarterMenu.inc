@@ -1,5 +1,4 @@
 WarpToBlackMap::
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, NewGameZoeyDialogue
 	return
 
 
@@ -7,12 +6,18 @@ NewGameZoeyDialogue::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, Movement_SetInvisible
 	setvar VAR_0x8000, MUGSHOT_HILDA
+	goto_if_set FLAG_SYS_POKEMON_GET, NewGameZoeyDialogue_2
+NewGameZoeyDialogue_1:
 	callnative DrawMugshot
 	msgbox gText_StarterSelectZoeyText1
 	msgbox gText_StarterSelectZoeyText2
 	callnative ClearMugshot
 	goto NewGameNarratorDialogue
 	return
+
+NewGameZoeyDialogue_2:
+	goto StarterSelectEnd
+	goto NewGameZoeyDialogue_1
 
 
 NewGameNarratorDialogue::
@@ -150,38 +155,47 @@ StarterSelectConfirm_1:
 
 StarterSelectConfirm_6:
 	givecustommon SPECIES_POLIWHIRL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
+	bufferspeciesname 0, SPECIES_POLIWHIRL
 	goto StarterSelectConfirm_4
 
 StarterSelectConfirm_7:
 	givecustommon SPECIES_FLETCHINDER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 1
+	bufferspeciesname 0, SPECIES_FLETCHINDER
 	goto StarterSelectConfirm_4
 
 StarterSelectConfirm_8:
 	givecustommon SPECIES_PETILIL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 0
+	bufferspeciesname 0, SPECIES_PETILIL
 	goto StarterSelectConfirm_4
 
 StarterSelectConfirm_9:
 	givecustommon SPECIES_FLAAFFY, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 0
+	bufferspeciesname 0, SPECIES_FLAAFFY
 	goto StarterSelectConfirm_4
 
 StarterSelectConfirm_10:
 	givecustommon SPECIES_MAREANIE, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 0
+	bufferspeciesname 0, SPECIES_MAREANIE
 	goto StarterSelectConfirm_4
 
 StarterSelectConfirm_11:
 	givecustommon SPECIES_ARON, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 0
+	bufferspeciesname 0, SPECIES_ARON
 	goto StarterSelectConfirm_4
 
 StarterSelectConfirm_12:
 	givecustommon SPECIES_SWINUB, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
+	bufferspeciesname 0, SPECIES_SWINUB
 	goto StarterSelectConfirm_4
 
 StarterSelectConfirm_13:
 	givecustommon SPECIES_HATTREM, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
+	bufferspeciesname 0, SPECIES_HATTREM
 	goto StarterSelectConfirm_4
 
 StarterSelectConfirm_14:
 	givecustommon SPECIES_PANCHAM, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 1
+	bufferspeciesname 0, SPECIES_PANCHAM
 	goto StarterSelectConfirm_4
 
 
@@ -223,51 +237,55 @@ gText_StarterSelectGameText2::
 	.string "you to SanFran.$"
 
 gText_StarterSelectGameText3::
-	.string "You have selected {VAR_0x8001}.$"
+	.string "You have selected {STR_VAR_1}.$"
 
 gText_StarterSelectSummaryErrorMessage::
 	.string "In the next version, this will lead to\n"
 	.string "the Pokémon summary screen.$"
 
 gText_StarterSelectPoliwhirlDesc::
-	.string "{VAR_0x8001} excels in the rain and gives plenty of\n"
-	.string "options for Trainers.$"
+	.string "{STR_VAR_1} excels in the rain and\n"
+	.string "gives plenty of options for Trainers.$"
 
 gText_StarterSelectFletchinderDesc::
-	.string "{VAR_0x8001} can provide offense or support with\n"
-	.string "its high Speed.$"
+	.string "{STR_VAR_1} can provide offense or\n"
+	.string "support with its high Speed.$"
 
 gText_StarterSelectPetililDesc::
-	.string "{VAR_0x8001} best utilizies its high Special Attack\n"
-	.string "in the sun.$"
+	.string "{STR_VAR_1} best utilizies its high\n"
+	.string "Special Attack in the sun.$"
 
 gText_StarterSelectFlaaffyDesc::
-	.string "{VAR_0x8001} boasts a high Special Attack and\n"
-	.string "diverse move pool.$"
+	.string "{STR_VAR_1} boasts a high Special\n"
+	.string "Attack and diverse move pool.$"
 
 gText_StarterSelectMareanieDesc::
-	.string "{VAR_0x8001} uses Defense and Special Defense to\n"
-	.string "wear down foes.$"
+	.string "{STR_VAR_1} uses Defense and\n"
+	.string "Special Defense to wear down foes.$"
 
 gText_StarterSelectAronDesc::
-	.string "{VAR_0x8001} leverages its high Attack and Defense\n"
-	.string "to provide physical support.$"
+	.string "{STR_VAR_1} leverages its high\n"
+	.string "Attack and Defense to provide\l"
+	.string "physical support.$"
 
 gText_StarterSelectSwinubDesc::
-	.string "{VAR_0x8001} hits most types for super- effective\n"
-	.string "damage with its high attack.$"
+	.string "{STR_VAR_1} hits most types for\n"
+	.string "super- effective damage with its high\l"
+	.string "attack.$"
 
 gText_StarterSelectHattremDesc::
-	.string "{VAR_0x8001}'s high Special Attack and Special\n"
-	.string "Defense makes it ideal for special\l"
-	.string "support.$"
+	.string "{STR_VAR_1}'s high Special Attack\n"
+	.string "and Special Defense makes it ideal for\l"
+	.string "special support.$"
 
 gText_StarterSelectPanchamDesc::
-	.string "{VAR_0x8001} makes up for low Speed with high\n"
-	.string "Attack and unique typing.$"
+	.string "{STR_VAR_1} makes up for low Speed\n"
+	.string "with high Attack and unique typing.$"
 
 gText_StarterAreYouSure::
-	.string "Are you sure you want to choose {VAR_0x8001}?$"
+	.string "Are you sure you want to choose\n"
+	.string "{STR_VAR_1}?$"
 
 gText_StarterSelectionChosen::
-	.string "You chose to bring {VAR_0x8001} to SanFran.$"
+	.string "You chose to bring {STR_VAR_1} to\n"
+	.string "SanFran.$"
