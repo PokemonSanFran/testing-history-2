@@ -1,16 +1,17 @@
-script WarpToBlackMap{
-//    map_script(MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, NewGameZoeyDialogue)
+script ShinyResetSupport {
+    if (flag(FLAG_SYS_POKEMON_GET)) {
+        goto(StarterSelectEndWarp)
+    } elif (var(VAR_STARTER_MON)) {
+        goto(StarterSelect_Menu) 
+    } else {
+        goto(NewGameZoeyDialogue)
+    }
 }
 
 script NewGameZoeyDialogue {
     lockall
     applymovement(OBJ_EVENT_ID_PLAYER, Movement_SetInvisible)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
-
-    if (flag(FLAG_SYS_POKEMON_GET)) {
-        goto(StarterSelectEnd)
-    }
-
     callnative(DrawMugshot)
     msgbox(gText_StarterSelectZoeyText1)
     msgbox(gText_StarterSelectZoeyText2)
@@ -21,6 +22,7 @@ script NewGameZoeyDialogue {
 script NewGameNarratorDialogue {
     msgbox(gText_StarterSelectGameText1)
     closemessage
+    setvar(VAR_STARTER_MON,9)
     call(Common_EventScript_SaveGame)
     closemessage
     goto(StarterSelect_Menu)
@@ -143,8 +145,12 @@ script StarterSelectEnd {
     waitfanfare
     call(Common_EventScript_SaveGame)
     closemessage
+    goto(StarterSelectEndWarp)
+}
+
+script StarterSelectEndWarp {
+    lockall //TODO figure out why the game stalls without this
     warpsilent(MAP_SOOTOPOLIS_CITY,255,31,22)
-    releaseall
     end
 }
 

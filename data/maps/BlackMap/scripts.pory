@@ -1,7 +1,5 @@
 mapscripts BlackMap_MapScripts {
-    if (!flag(FLAG_SYS_POKEMON_GET)) {
         MAP_SCRIPT_ON_FRAME_TABLE [
-            VAR_TEMP_0, 0:  NewGameZoeyDialogue
+            VAR_TEMP_0, 0:  ShinyResetSupport
         ]
-    }
 }
