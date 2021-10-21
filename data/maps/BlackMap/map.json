@@ -3,7 +3,7 @@
   "name": "BlackMap",
   "layout": "LAYOUT_BLACK_MAP",
   "music": "MUS_BIRCH_LAB",
-  "region_map_section": "MAPSEC_BERRY_FOREST",
+  "region_map_section": "MAPSEC_ORRE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
