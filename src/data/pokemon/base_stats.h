@@ -10432,7 +10432,9 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_WATER_1,
         .eggGroup2 = EGG_GROUP_WATER_1,
         #ifdef BATTLE_ENGINE
-            .abilityHidden = ABILITY_HYDRATION,
+            .abilities = {ABILITY_SWIFT_SWIM, ABILITY_NONE, ABILITY_HYDRATION},
+        #else
+            .abilities = {ABILITY_SWIFT_SWIM, ABILITY_NONE, ABILITY_NONE},
         #endif
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,

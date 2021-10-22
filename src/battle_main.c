@@ -191,7 +191,6 @@ EWRAM_DATA u8 gUnusedFirstBattleVar2 = 0; // Never read
 EWRAM_DATA u32 gSideStatuses[2] = {0};
 EWRAM_DATA struct SideTimer gSideTimers[2] = {0};
 EWRAM_DATA u32 gStatuses3[MAX_BATTLERS_COUNT] = {0};
-EWRAM_DATA u32 gStatuses4[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA struct DisableStruct gDisableStructs[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA u16 gPauseCounterBattle = 0;
 EWRAM_DATA u16 gPaydayMoney = 0;
@@ -232,7 +231,6 @@ EWRAM_DATA u16 gPartnerSpriteId = 0;
 EWRAM_DATA struct TotemBoost gTotemBoosts[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA bool8 gHasFetchedBall = FALSE;
 EWRAM_DATA u8 gLastUsedBall = 0;
-EWRAM_DATA u16 gLastThrownBall = 0;
 
 // IWRAM common vars
 void (*gPreBattleCallback1)(void);
@@ -404,7 +402,6 @@ static void (* const sTurnActionsFuncsTable[])(void) =
     [B_ACTION_TRY_FINISH] = HandleAction_TryFinish,
     [B_ACTION_FINISHED] = HandleAction_ActionFinished,
     [B_ACTION_NOTHING_FAINTED] = HandleAction_NothingIsFainted,
-    [B_ACTION_THROW_BALL] = HandleAction_ThrowBall,
 };
 
 static void (* const sEndTurnFuncsTable[])(void) =
@@ -2842,7 +2839,6 @@ static void BattleStartClearSetData(void)
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
         gStatuses3[i] = 0;
-        gStatuses4[i] = 0;
         gDisableStructs[i].isFirstTurn = 2;
         gLastMoves[i] = 0;
         gLastLandedMoves[i] = 0;
@@ -2951,9 +2947,7 @@ void SwitchInClearSetData(void)
     if (gBattleMoves[gCurrentMove].effect == EFFECT_BATON_PASS)
     {
         gBattleMons[gActiveBattler].status2 &= (STATUS2_CONFUSION | STATUS2_FOCUS_ENERGY | STATUS2_SUBSTITUTE | STATUS2_ESCAPE_PREVENTION | STATUS2_CURSED);
-        gStatuses3[gActiveBattler] &= (STATUS3_LEECHSEED_BATTLER | STATUS3_LEECHSEED | STATUS3_ALWAYS_HITS | STATUS3_PERISH_SONG | STATUS3_ROOTED
-                                       | STATUS3_GASTRO_ACID | STATUS3_EMBARGO | STATUS3_TELEKINESIS | STATUS3_MAGNET_RISE | STATUS3_HEAL_BLOCK
-                                       | STATUS3_AQUA_RING | STATUS3_POWER_TRICK);
+        gStatuses3[gActiveBattler] &= (STATUS3_LEECHSEED_BATTLER | STATUS3_LEECHSEED | STATUS3_ALWAYS_HITS | STATUS3_PERISH_SONG | STATUS3_ROOTED);
 
         for (i = 0; i < gBattlersCount; i++)
         {
@@ -2973,8 +2967,6 @@ void SwitchInClearSetData(void)
         gBattleMons[gActiveBattler].status2 = 0;
         gStatuses3[gActiveBattler] = 0;
     }
-    
-    gStatuses4[gActiveBattler] = 0;
 
     for (i = 0; i < gBattlersCount; i++)
     {
@@ -3044,7 +3036,6 @@ void FaintClearSetData(void)
 
     gBattleMons[gActiveBattler].status2 = 0;
     gStatuses3[gActiveBattler] = 0;
-    gStatuses4[gActiveBattler] = 0;
 
     for (i = 0; i < gBattlersCount; i++)
     {
@@ -3086,9 +3077,6 @@ void FaintClearSetData(void)
     gProtectStructs[gActiveBattler].usesBouncedMove = 0;
     gProtectStructs[gActiveBattler].usedGravityPreventedMove = 0;
     gProtectStructs[gActiveBattler].usedThroatChopPreventedMove = 0;
-    gProtectStructs[gActiveBattler].statRaised = 0;
-    gProtectStructs[gActiveBattler].statFell = 0;
-    gProtectStructs[gActiveBattler].pranksterElevated = 0;
 
     gDisableStructs[gActiveBattler].isFirstTurn = 2;
 
@@ -3836,7 +3824,7 @@ static void HandleTurnActionSelectionState(void)
                     }
                     break;
                 case B_ACTION_USE_ITEM:
-                    if (FlagGet(FLAG_SYS_NO_BAG_USE) || gBattleTypeFlags & (BATTLE_TYPE_LINK //DEBUG
+                    if (gBattleTypeFlags & (BATTLE_TYPE_LINK
                                             | BATTLE_TYPE_FRONTIER_NO_PYRAMID
                                             | BATTLE_TYPE_EREADER_TRAINER
                                             | BATTLE_TYPE_RECORDED_LINK))
@@ -4057,10 +4045,6 @@ static void HandleTurnActionSelectionState(void)
                 case B_ACTION_SAFARI_BALL:
                     gBattleCommunication[gActiveBattler]++;
                     break;
-                case B_ACTION_THROW_BALL:
-                    gBattleStruct->throwingPokeBall = TRUE;
-                    gBattleCommunication[gActiveBattler]++;
-                    break;
                 case B_ACTION_SAFARI_POKEBLOCK:
                     if ((gBattleResources->bufferB[gActiveBattler][1] | (gBattleResources->bufferB[gActiveBattler][2] << 8)) != 0)
                     {
@@ -4174,13 +4158,6 @@ static void HandleTurnActionSelectionState(void)
     if (gBattleCommunication[ACTIONS_CONFIRMED_COUNT] == gBattlersCount)
     {
         sub_818603C(1);
-        
-        if (WILD_DOUBLE_BATTLE && gBattleStruct->throwingPokeBall) {
-            // if we choose to throw a ball with our second mon, skip the action of the first
-            // (if we have chosen throw ball with first, second's is already skipped)
-            gChosenActionByBattler[B_POSITION_PLAYER_LEFT] = B_ACTION_NOTHING_FAINTED;
-        }
-        
         gBattleMainFunc = SetActionsAndBattlersTurnOrder;
 
         if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
@@ -4496,9 +4473,7 @@ static void SetActionsAndBattlersTurnOrder(void)
         {
             for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
             {
-                if (gChosenActionByBattler[gActiveBattler] == B_ACTION_USE_ITEM
-                  || gChosenActionByBattler[gActiveBattler] == B_ACTION_SWITCH
-                  || gChosenActionByBattler[gActiveBattler] == B_ACTION_THROW_BALL)
+                if (gChosenActionByBattler[gActiveBattler] == B_ACTION_USE_ITEM || gChosenActionByBattler[gActiveBattler] == B_ACTION_SWITCH)
                 {
                     gActionsByTurnOrder[turnOrderId] = gChosenActionByBattler[gActiveBattler];
                     gBattlerByTurnOrder[turnOrderId] = gActiveBattler;
@@ -4507,9 +4482,7 @@ static void SetActionsAndBattlersTurnOrder(void)
             }
             for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
             {
-                if (gChosenActionByBattler[gActiveBattler] != B_ACTION_USE_ITEM
-                  && gChosenActionByBattler[gActiveBattler] != B_ACTION_SWITCH
-                  && gChosenActionByBattler[gActiveBattler] != B_ACTION_THROW_BALL)
+                if (gChosenActionByBattler[gActiveBattler] != B_ACTION_USE_ITEM && gChosenActionByBattler[gActiveBattler] != B_ACTION_SWITCH)
                 {
                     gActionsByTurnOrder[turnOrderId] = gChosenActionByBattler[gActiveBattler];
                     gBattlerByTurnOrder[turnOrderId] = gActiveBattler;
@@ -4525,9 +4498,7 @@ static void SetActionsAndBattlersTurnOrder(void)
                     if (gActionsByTurnOrder[i] != B_ACTION_USE_ITEM
                         && gActionsByTurnOrder[j] != B_ACTION_USE_ITEM
                         && gActionsByTurnOrder[i] != B_ACTION_SWITCH
-                        && gActionsByTurnOrder[j] != B_ACTION_SWITCH
-                        && gActionsByTurnOrder[i] != B_ACTION_THROW_BALL
-                        && gActionsByTurnOrder[j] != B_ACTION_THROW_BALL)
+                        && gActionsByTurnOrder[j] != B_ACTION_SWITCH)
                     {
                         if (GetWhoStrikesFirst(battler1, battler2, FALSE))
                             SwapTurnOrder(i, j);
@@ -5091,7 +5062,7 @@ void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
     attackerAbility = GetBattlerAbility(battlerAtk);
     GET_MOVE_TYPE(move, moveType);
     if ((gFieldStatuses & STATUS_FIELD_ION_DELUGE && moveType == TYPE_NORMAL)
-        || gStatuses4[battlerAtk] & STATUS4_ELECTRIFIED)
+        || gStatuses3[battlerAtk] & STATUS3_ELECTRIFIED)
     {
         gBattleStruct->dynamicMoveType = 0x80 | TYPE_ELECTRIC;
     }
