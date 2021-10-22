@@ -31,8 +31,6 @@
 #define ITEMEFFECT_KINGSROCK_SHELLBELL          0x4
 #define ITEMEFFECT_TARGET                       0x5
 #define ITEMEFFECT_ORBS                         0x6
-#define ITEMEFFECT_LIFEORB_SHELLBELL            0x7
-#define ITEMEFFECT_BATTLER_MOVE_END             0x8 // move end effects for just the battler, not whole field
 
 #define WEATHER_HAS_EFFECT ((!IsAbilityOnField(ABILITY_CLOUD_NINE) && !IsAbilityOnField(ABILITY_AIR_LOCK)))
 
@@ -48,8 +46,7 @@ struct TypePower
 
 extern const struct TypePower gNaturalGiftTable[];
 
-void HandleAction_ThrowBall(void);
-bool32 IsAffectedByFollowMe(u32 battlerAtk, u32 defSide, u32 move);
+bool32 IsAffectedByFollowMe(u32 battlerAtk, u32 defSide);
 void HandleAction_UseMove(void);
 void HandleAction_Switch(void);
 void HandleAction_UseItem(void);
@@ -109,7 +106,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn);
 void ClearFuryCutterDestinyBondGrudge(u8 battlerId);
 void HandleAction_RunBattleScript(void);
 u32 SetRandomTarget(u32 battlerId);
-u32 GetMoveTarget(u16 move, u8 setTarget);
+u8 GetMoveTarget(u16 move, u8 setTarget);
 u8 IsMonDisobedient(void);
 u32 GetBattlerHoldEffect(u8 battlerId, bool32 checkNegating);
 u32 GetBattlerHoldEffectParam(u8 battlerId);
@@ -141,20 +138,6 @@ bool32 CanFling(u8 battlerId);
 bool32 IsTelekinesisBannedSpecies(u16 species);
 bool32 IsHealBlockPreventingMove(u32 battler, u32 move);
 bool32 HasEnoughHpToEatBerry(u32 battlerId, u32 hpFraction, u32 itemId);
-void SortBattlersBySpeed(u8 *battlers, bool8 slowToFast);
-bool32 TestSheerForceFlag(u8 battler, u16 move);
-void TryRestoreStolenItems(void);
-bool32 CanStealItem(u8 battlerStealing, u8 battlerItem, u16 item);
-void TrySaveExchangedItem(u8 battlerId, u16 stolenItem);
-bool32 IsPartnerMonFromSameTrainer(u8 battlerId);
-u8 TryHandleSeed(u8 battler, u32 terrainFlag, u8 statId, u16 itemId, bool32 execute);
-bool32 IsBattlerAffectedByHazards(u8 battlerId, bool32 toxicSpikes);
-void SortBattlersBySpeed(u8 *battlers, bool8 slowToFast);
-bool32 CompareStat(u8 battlerId, u8 statId, u8 cmpTo, u8 cmpKind);
-bool32 TryRoomService(u8 battlerId);
-void BufferStatChange(u8 battlerId, u8 statId, u8 stringId);
-void DoBurmyFormChange(u32 monId);
-bool32 BlocksPrankster(u16 move, u8 battlerPrankster, u8 battlerDef, bool32 checkTarget);
 
 // ability checks
 bool32 IsRolePlayBannedAbilityAtk(u16 ability);

@@ -1,28 +1,4 @@
-gNewGameAdventureIntro1::
-    .string "Welcome to Pokémon San Fran!\n"
-    .string "Before we get started...\n"
-    .string "\n"
-    .string "If you paid for this game,\n"
-    .string "you have been scammed.\n"
-    .string "We will never charge for the\n"
-    .string "base version of the game.$"
-
-gNewGameAdventureIntro2::
-    .string "If you have any questions,\n"
-    .string "comments, concerns, or complaints,\n"
-    .string "we encourage you to look at our website:\n"
-    .string "\n"
-    .string "http://pkmnsnfrn.io\n"
-    .string "\n"
-    .string "Join our community!\n"
-    .string "http://discord.io/pkmnsnfrn.$"
-
-gNewGameAdventureIntro3::
-    .string "Have fun!\n"
-    .string "We worked really hard to make an\n"
-    .string "experience that we hope all can enjoy!$"
-
-gText_Birch_Welcome:: @ 82C897B
+gText_Birch_Welcome:: 
 	.string "Hi! Sorry to keep you waiting!\p"
 	.string "Welcome to the main stage of\p"
 	.string "Professor Birch's Drag Race!\p"	
@@ -36,16 +12,16 @@ gText_Birch_Pokemon::
 	.string "This is “Pokémon.”\n"
 	.string "$"
 
-gText_Birch_MainSpeech:: @ 82C8A1F
+gText_Birch_MainSpeech:: 
 	.string "This world is widely inhabited by\n"
 	.string "creatures known as POKéMON.\p"
 	.string "$"
 
-gText_Birch_AndYouAre:: @ 82C8BD0
+gText_Birch_AndYouAre:: 
 	.string "And you are?\p"
 	.string "$"
 
-gText_Birch_BoyOrGirl:: @ 82C8BDD
+gText_Birch_BoyOrGirl:: 
 	.string "Who do you want to look like?$"
 
 gText_Birch_WhatCustom::

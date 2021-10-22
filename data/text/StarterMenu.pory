@@ -149,7 +149,7 @@ script StarterSelectEnd {
 }
 
 script StarterSelectEndWarp {
-    lockplayer //TODO figure out why the game stalls without this
+    lockall //TODO figure out why the game stalls without this
     warpsilent(MAP_SOOTOPOLIS_CITY,255,31,22)
     end
 }
