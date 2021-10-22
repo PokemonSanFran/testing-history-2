@@ -218,7 +218,7 @@ StarterSelectEnd::
 
 
 StarterSelectEndWarp::
-	lockall
+	lockplayer
 	warpsilent MAP_SOOTOPOLIS_CITY, 255, 31, 22
 	end
 
