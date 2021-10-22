@@ -96,7 +96,7 @@ DATA_ASM_BUILDDIR = $(OBJ_DIR)/$(DATA_ASM_SUBDIR)
 SONG_BUILDDIR = $(OBJ_DIR)/$(SONG_SUBDIR)
 MID_BUILDDIR = $(OBJ_DIR)/$(MID_SUBDIR)
 
-ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN) --defsym UK=$(UK)
+ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN)
 
 ifeq ($(MODERN),0)
 CC1             := tools/agbcc/bin/agbcc$(EXE)
@@ -247,9 +247,6 @@ mostlyclean: tidynonmodern tidymodern
 	rm -f $(patsubst %.pory,%.inc,$(shell find data/ -type f -name '*.pory'))
 	@$(MAKE) clean -C berry_fix
 	@$(MAKE) clean -C libagbsyscall
-# 	convert pory scripts
-#  https://github.com/huderlem/poryscript#building-from-source
-	rm -f $(patsubst %.pory,%.inc,$(shell find data/ -type f -name '*.pory'))
 
 tidy: tidynonmodern tidymodern
 
@@ -284,10 +281,10 @@ include songs.mk
 %.gbapal: %.png ; $(GFX) $< $@
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
-$(CRY_SUBDIR)/%.bin: $(CRY_SUBDIR)/%.aif ; $(AIF) $< $@
+
+$(CRY_SUBDIR)/uncomp_%.bin: $(CRY_SUBDIR)/uncomp_%.aif ; $(AIF) $< $@
+$(CRY_SUBDIR)/%.bin: $(CRY_SUBDIR)/%.aif ; $(AIF) $< $@ --compress
 sound/%.bin: sound/%.aif ; $(AIF) $< $@
-# convert pory scripts
-# https://github.com/huderlem/poryscript#building-from-source
 data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -fw tools/poryscript/font_widths.json
 
 
@@ -314,13 +311,17 @@ ifeq ($(DINFO),1)
 override CFLAGS += -g
 endif
 
-# Debug menu
-ifeq ($(DDEBUGGING),1)
-override ASFLAGS += --defsym DEBUGGING=1
-override CPPFLAGS += -D DEBUGGING=1
-endif
+# The dep rules have to be explicit or else missing files won't be reported.
+# As a side effect, they're evaluated immediately instead of when the rule is invoked.
+# It doesn't look like $(shell) can be deferred so there might not be a better way.
 
-$(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
+ifeq ($(SCAN_DEPS),1)
+ifeq ($(NODEP),1)
+$(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.c
+ifeq (,$(KEEP_TEMPS))
+	@echo "$(CC1) <flags> -o $@ $<"
+	@$(CPP) $(CPPFLAGS) $< | $(PREPROC) $< charmap.txt -i | $(CC1) $(CFLAGS) -o - - | cat - <(echo -e ".text\n\t.align\t2, 0") | $(AS) $(ASFLAGS) -o $@ -
+else
 	@$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
 	@$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CFLAGS) -o $(C_BUILDDIR)/$*.s
 	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
@@ -411,11 +412,6 @@ $(OBJ_DIR)/sym_common.ld: sym_common.txt $(C_OBJS) $(wildcard common_syms/*.txt)
 $(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
 	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
 
-ifeq ($(UK),1)
-LD_SCRIPT := ld_script.txt
-LD_SCRIPT_DEPS := $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
-endif
-
 ifeq ($(MODERN),0)
 LD_SCRIPT := ld_script.txt
 LD_SCRIPT_DEPS := $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
@@ -436,8 +432,7 @@ $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 	$(FIX) $@ -p --silent
 
-modern: ; @$(MAKE) MODERN=1
-uk:     ; @$(MAKE) UK=1
+modern: all
 
 berry_fix/berry_fix.gba: berry_fix
 
@@ -445,8 +440,13 @@ berry_fix:
 	@$(MAKE) -C berry_fix COMPARE=$(COMPARE) TOOLCHAIN=$(TOOLCHAIN) MODERN=$(MODERN)
 
 libagbsyscall:
-	@$(MAKE) -C libagbsyscall TOOLCHAIN=$(TOOLCHAIN)
+	@$(MAKE) -C libagbsyscall TOOLCHAIN=$(TOOLCHAIN) MODERN=$(MODERN)
 
-# Debug menu
-debugging: ; @$(MAKE) DDEBUGGING=1 DINFO=1
-debugging_modern: ; @$(MAKE) MODERN=1 DDEBUGGING=1 DINFO=1
+###################
+### Symbol file ###
+###################
+
+$(SYM): $(ELF)
+	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+
+SCRIPT := tools/poryscript/poryscript$(EXE)

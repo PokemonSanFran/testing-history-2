@@ -822,8 +822,11 @@ gBattleAnims_General::
 	.4byte General_SlideOffScreen           @ B_ANIM_SLIDE_OFFSCREEN
 	.4byte General_RestoreBg                @ B_ANIM_RESTORE_BG
 	.4byte General_TotemFlare               @ B_ANIM_TOTEM_FLARE
+<<<<<<< HEAD
+=======
 	.4byte General_GulpMissile              @ B_ANIM_GULP_MISSILE
 	.4byte General_StrongWinds              @ B_ANIM_STRONG_WINDS
+>>>>>>> 2bd8ded9d2fc56d441983e3798b3a869918f6178
 
 	.align 2
 gBattleAnims_Special::
@@ -24424,6 +24427,8 @@ General_TotemFlare::
 	clearmonbg ANIM_ATTACKER
 	end
 
+<<<<<<< HEAD
+=======
 General_GulpMissile: @ Tackle anim (placeholder)
 	loadspritegfx ANIM_TAG_IMPACT
 	monbg ANIM_ATTACKER
@@ -24449,6 +24454,7 @@ General_StrongWinds::
 	stopsound
 	end
 
+>>>>>>> 2bd8ded9d2fc56d441983e3798b3a869918f6178
 RainbowEndureEffect:
 	launchtemplate gBlueEndureEnergySpriteTemplate 0x2 0x4 0x0 0xffe8 0x1a 0x2
 	delay 0x3

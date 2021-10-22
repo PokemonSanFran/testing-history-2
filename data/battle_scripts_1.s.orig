@@ -369,6 +369,8 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSleepHit                @ EFFECT_SLEEP_HIT
 	.4byte BattleScript_EffectAttackerDefenseDownHit  @ EFFECT_ATTACKER_DEFENSE_DOWN_HIT
 	.4byte BattleScript_EffectHit                     @ EFFECT_BODY_PRESS
+<<<<<<< HEAD
+=======
 	.4byte BattleScript_EffectEerieSpell              @ EFFECT_EERIE_SPELL
 	.4byte BattleScript_EffectJungleHealing           @ EFFECT_JUNGLE_HEALING
 	.4byte BattleScript_EffectCoaching                @ EFFECT_COACHING
@@ -672,6 +674,7 @@ BattleScript_JungleHealingTryRestoreAlly:
 	jumpifnoally BS_TARGET, BattleScript_MoveEnd
 	setallytonexttarget JungleHealing_RestoreTargetHealth
 	goto BattleScript_MoveEnd
+>>>>>>> 2bd8ded9d2fc56d441983e3798b3a869918f6178
 
 BattleScript_EffectAttackerDefenseDownHit:
 	setmoveeffect MOVE_EFFECT_DEF_MINUS_1 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
@@ -3997,8 +4000,12 @@ BattleScript_PerishSongLoopIncrement::
 	jumpifbytenotequal sBATTLER, gBattlersCount, BattleScript_PerishSongLoop
 	goto BattleScript_MoveEnd
 
+<<<<<<< HEAD
+BattleScript_PerishSongNotAffected::
+=======
 BattleScript_PerishSongBlocked::
 	copybyte sBATTLER, gBattlerTarget
+>>>>>>> 2bd8ded9d2fc56d441983e3798b3a869918f6178
 	printstring STRINGID_PKMNSXBLOCKSY2
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_PerishSongLoopIncrement
@@ -7467,8 +7474,11 @@ BattleScript_MoveStatDrain::
 	waitanimation
 	printstring STRINGID_TARGETABILITYSTATRAISE
 	waitmessage B_WAIT_TIME_LONG
+<<<<<<< HEAD
+=======
 	clearsemiinvulnerablebit
 	tryfaintmon BS_ATTACKER, FALSE, NULL
+>>>>>>> 2bd8ded9d2fc56d441983e3798b3a869918f6178
 	goto BattleScript_MoveEnd
 
 BattleScript_MonMadeMoveUseless_PPLoss::
@@ -8424,6 +8434,8 @@ BattleScript_JabocaRowapBerryActivate_Dmg:
 	call BattleScript_HurtAttacker
 	removeitem BS_TARGET
 	return
+<<<<<<< HEAD
+=======
 
 BattleScript_Pickpocket::
 	call BattleScript_AbilityPopUp
@@ -8518,3 +8530,4 @@ BattleScript_DarkTypePreventsPrankster::
 	waitmessage B_WAIT_TIME_LONG
 	orhalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
 	goto BattleScript_MoveEnd
+>>>>>>> 2bd8ded9d2fc56d441983e3798b3a869918f6178

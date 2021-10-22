@@ -956,6 +956,14 @@ u32 CanThrowBall(void)
     {
         return 2;   // No room for mon
     }
+<<<<<<< HEAD
+
+    if (FlagGet(FLAG_SYS_NO_CATCHING)){ //DEBUG
+        static const u8 sText_BallsCannotBeUsed[] = _("Poké Balls cannot be used\nright now!\p");
+        DisplayItemMessage(taskId, 1, sText_BallsCannotBeUsed, BagMenu_InitListsMenu);        
+    } //
+    else if (IsPlayerPartyAndPokemonStorageFull() == FALSE) // have room for mon?
+=======
     #if B_SEMI_INVULNERABLE_CATCH >= GEN_4
     else if (gStatuses3[GetCatchingBattler()] & STATUS3_SEMI_INVULNERABLE)
     {
@@ -971,6 +979,7 @@ static const u8 sText_CantThrowPokeBall_SemiInvulnerable[] = _("Cannot throw a b
 void ItemUseInBattle_PokeBall(u8 taskId)
 {
     switch (CanThrowBall())
+>>>>>>> 2bd8ded9d2fc56d441983e3798b3a869918f6178
     {
     case 0: // usable
     default:

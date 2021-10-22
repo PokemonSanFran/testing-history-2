@@ -370,6 +370,8 @@ extern const u8 BattleScript_JabocaRowapBerryActivates[];
 extern const u8 BattleScript_NotAffectedAbilityPopUp[];
 extern const u8 BattleScript_BattlerShookOffTaunt[];
 extern const u8 BattleScript_BattlerGotOverItsInfatuation[];
+<<<<<<< HEAD
+=======
 extern const u8 BattleScript_Pickpocket[];
 extern const u8 BattleScript_StickyBarbTransfer[];
 extern const u8 BattleScript_AttackerItemStatRaise[];
@@ -396,5 +398,6 @@ extern const u8 BattleScript_MysteriousAirCurrentBlowsOn[];
 extern const u8 BattleScript_AttackWeakenedByStrongWinds[];
 extern const u8 BattleScript_BlockedByPrimalWeatherEnd3[];
 extern const u8 BattleScript_BlockedByPrimalWeatherRet[];
+>>>>>>> 2bd8ded9d2fc56d441983e3798b3a869918f6178
 
 #endif // GUARD_BATTLE_SCRIPTS_H
