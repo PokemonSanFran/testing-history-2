@@ -771,6 +771,27 @@ static const struct MenuAction MultichoiceList_TagMatchType[] =
     {gText_Exit},
 };
 
+//Stater Select Menu
+static const struct MenuAction MultichoiceList_StarterSelect[] = 
+{
+    {gText_Starter0},
+    {gText_Starter1},
+    {gText_Starter2},
+    {gText_Starter3},
+    {gText_Starter4},
+    {gText_Starter5},
+    {gText_Starter6},
+    {gText_Starter7},
+    {gText_Starter8},
+};
+
+static const struct MenuAction MultichoiceList_StarterSummarySelect[] =
+{
+    {gText_StarterSummary0},
+    {gText_StarterSummary1},
+    {gText_StarterSummary2},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -898,6 +919,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_SLATEPORT_TENT_RULES]       = MULTICHOICE(MultichoiceList_SlateportTentRules),
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
+    [MULTI_STARTER_SELECT]             = MULTICHOICE(MultichoiceList_StarterSelect), //Starter Select Menu
+    [MULTI_STARTER_SUMMARY]             = MULTICHOICE(MultichoiceList_StarterSummarySelect), //Starter Choose / Summary / Cancel Menu
 };
 
 const u8 *const gStdStrings[] =
@@ -1004,3 +1027,4 @@ static const u8 *const sWirelessOptions_NoRecordMixBerryCrush[] =
     CableClub_Text_YouMayBattleHere,
     CableClub_Text_CancelSelectedItem,
 };
+

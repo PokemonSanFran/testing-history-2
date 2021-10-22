@@ -1,4 +1,4 @@
-MysteryEventScript_AuroraTicket:: @ 867533C
+MysteryEventScript_AuroraTicket::
 	setvaddress MysteryEventScript_AuroraTicket
 	lock
 	faceplayer
@@ -22,14 +22,14 @@ MysteryEventScript_AuroraTicket:: @ 867533C
 	release
 	end
 
-AuroraTicket_NoBagSpace: @ 8675397
+AuroraTicket_NoBagSpace:
 	vmessage sText_AuroraTicketBagFull
 	waitmessage
 	waitbuttonpress
 	release
 	end
 
-AuroraTicket_Obtained: @ 86753A0
+AuroraTicket_Obtained:
 	vmessage sText_AuroraTicketThankYou
 	waitmessage
 	waitbuttonpress
@@ -37,23 +37,23 @@ AuroraTicket_Obtained: @ 86753A0
 	end
 
 sText_AuroraTicketForYou:
-	.string "Thank you for using the MYSTERY\n"
-	.string "GIFT System.\p"
+	.string "Thank you for using the Mystery\n"
+	.string "Gift System.\p"
 	.string "You must be {PLAYER}.\n"
 	.string "There is a ticket here for you.$"
 
 sText_AuroraTicketUseAtPort:
 	.string "It appears to be for use at the\n"
-	.string "LILYCOVE CITY port.\p"
+	.string "Lilycove City port.\p"
 	.string "Why not give it a try and see what\n"
 	.string "it is about?$"
 
 sText_AuroraTicketThankYou:
-	.string "Thank you for using the MYSTERY\n"
-	.string "GIFT System.$"
+	.string "Thank you for using the Mystery\n"
+	.string "Gift System.$"
 
 sText_AuroraTicketBagFull:
 	.string "Oh, I'm sorry, {PLAYER}.\n"
-	.string "Your BAG's KEY ITEMS POCKET is full.\p"
+	.string "Your Bag's Key Items Pocket is full.\p"
 	.string "Please store something on your PC,\n"
 	.string "then come back for this.$"

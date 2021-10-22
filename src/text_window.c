@@ -195,3 +195,42 @@ void sub_8098C6C(u8 bg, u16 destOffset, u8 palOffset)
     LoadBgTiles(bg, sWindowFrames[gSaveBlock2Ptr->optionsWindowFrameType].tiles, 0x120, destOffset);
     LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, palOffset, 0x20);
 }
+
+//begin FRLG import
+
+// \src\text_window.c
+const u16 *stdpal_get(u8 id)
+{
+    switch (id)
+    {
+    case 0:
+        id = 0;
+        break;
+    case 1:
+        id = 0x10;
+        break;
+    case 2:
+        id = 0x20;
+        break;
+    case 3:
+        id = 0x30;
+        break;
+    case 4:
+    default:
+        id = 0x40;
+        break;
+    }
+
+    return (const u16 *)(gUnknown_8471DEC) + id;
+}
+
+// \src\text_window_graphics.c
+
+const u16 gUnknown_8471DEC[][16] = {
+    INCBIN_U16("graphics/text_window/stdpal_0.gbapal"),
+    INCBIN_U16("graphics/text_window/stdpal_1.gbapal"),
+    INCBIN_U16("graphics/text_window/stdpal_2.gbapal"),
+    INCBIN_U16("graphics/text_window/stdpal_3.gbapal"),
+    INCBIN_U16("graphics/text_window/stdpal_4.gbapal")
+};
+//begin FRLG end

@@ -3,7 +3,7 @@
 *.i
 *.elf
 *.sgm
-*.sa1
+*.sa[0-9]
 *.ss[0-9]
 *.sg1
 *.1bpp
@@ -22,7 +22,7 @@ tools/agbcc
 *.ld
 *.bat
 *.dump
-*.sa*
+*.sa
 Thumbs.db
 build/
 .DS_Store
@@ -33,4 +33,6 @@ porymap.project.cfg
 *.a
 .fuse_hidden*
 *.sna
-mgba.sh
+tools/poryscript
+misc/log.txt
+*.swp

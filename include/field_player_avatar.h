@@ -6,7 +6,7 @@ void ClearPlayerAvatarInfo(void);
 void SetPlayerAvatarExtraStateTransition(u8, u8);
 u8 GetPlayerAvatarGenderByGraphicsId(u8);
 bool8 TestPlayerAvatarFlags(u8);
-u8 GetPlayerAvatarObjectId(void);
+u8 GetPlayerAvatarSpriteId(void);
 void PlayerGetDestCoords(s16 *, s16 *);
 u8 GetPlayerFacingDirection(void);
 u8 GetPlayerMovementDirection(void);
@@ -34,7 +34,7 @@ u8 PlayerGetZCoord(void);
 void SetPlayerAvatarTransitionFlags(u16 a);
 void sub_808BCE8(void);
 void InitPlayerAvatar(s16 a, s16 b, u8 c, u8 d);
-void sub_808B864(void);
+void PlayerFreeze(void);
 void sub_808BCF4(void);
 void SetSpinStartFacingDir(u8);
 void GetXYCoordsOneStepInFrontOfPlayer(s16 *xPtr, s16 *yPtr);
@@ -64,5 +64,6 @@ bool32 IsPlayerSpinExitActive(void);
 void SetPlayerInvisibility(bool8 invisible);
 u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y);
 void StartFishing(u8 rod);
+u8 GetPlayerAvatarGraphicsByGender(u8); //custom PSF function for showing the correct avatar on naming screen based on player's body choice
 
 #endif // GUARD_FIELD_PLAYER_AVATAR_H

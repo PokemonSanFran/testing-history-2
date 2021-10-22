@@ -323,6 +323,13 @@ extern const u8 gText_FemaleSymbol[];
 extern const u8 gText_SelectorArrow3[];
 extern const u8 gText_YesNo[];
 
+//welcome screen adventure text
+//stolen from pokefirered\include\event_scripts.h
+
+extern const u8 gNewGameAdventureIntro1[];
+extern const u8 gNewGameAdventureIntro2[];
+extern const u8 gNewGameAdventureIntro3[];
+
 // main menu/birch speech text
 extern const u8 gText_SaveFileErased[];
 extern const u8 gText_SaveFileCorrupted[];
@@ -342,6 +349,10 @@ extern const u8 gText_ThisIsAPokemon[];
 extern const u8 gText_Birch_MainSpeech[];
 extern const u8 gText_Birch_AndYouAre[];
 extern const u8 gText_Birch_BoyOrGirl[];
+extern const u8 gText_Birch_WhatCustom[];
+extern const u8 gText_Birch_WhatHair[];
+extern const u8 gText_Birch_WhatEyes[];
+extern const u8 gText_Birch_WhatSkin[];
 extern const u8 gText_Birch_WhatsYourName[];
 extern const u8 gText_Birch_SoItsPlayer[];
 extern const u8 gText_Birch_YourePlayer[];
@@ -350,8 +361,34 @@ extern const u8 gText_ContinueMenuPlayer[];
 extern const u8 gText_ContinueMenuTime[];
 extern const u8 gText_ContinueMenuPokedex[];
 extern const u8 gText_ContinueMenuBadges[];
-extern const u8 gText_BirchBoy[];
-extern const u8 gText_BirchGirl[];
+
+extern const u8 gText_BirchBody1[];
+extern const u8 gText_BirchBody2[];
+extern const u8 gText_BirchBody3[];
+extern const u8 gText_BirchBody4[];
+extern const u8 gText_BirchBody5[];
+extern const u8 gText_BirchBody6[];
+
+extern const u8 gText_BirchCustom1[];
+extern const u8 gText_BirchCustom2[];
+extern const u8 gText_BirchCustom3[];
+extern const u8 gText_BirchCustom4[];
+
+extern const u8 gText_BirchCustomHair1[];
+extern const u8 gText_BirchCustomHair2[];
+extern const u8 gText_BirchCustomHair3[];
+extern const u8 gText_BirchCustomHair4[];
+extern const u8 gText_BirchCustomHair5[];
+extern const u8 gText_BirchCustomEyes1[];
+extern const u8 gText_BirchCustomEyes2[];
+extern const u8 gText_BirchCustomEyes3[];
+extern const u8 gText_BirchCustomSkin1[];
+extern const u8 gText_BirchCustomSkin2[];
+extern const u8 gText_BirchCustomSkin3[];
+extern const u8 gText_BirchCustomSkin4[];
+extern const u8 gText_BirchCustomSkin5[];
+extern const u8 gText_BirchCustomSkin6[];
+
 extern const u8 gText_DefaultNameStu[];
 extern const u8 gText_DefaultNameMilton[];
 extern const u8 gText_DefaultNameTom[];
@@ -419,8 +456,8 @@ extern const u8 gText_FirmSlash[];
 
 // item menu screen text
 extern const u8 gText_CloseBag[];
-extern const u8 gText_ClearTo11Var1Clear5Var2[];
-extern const u8 gText_NumberVar1Clear7Var2[];
+extern const u8 gText_NumberItem_HM[];
+extern const u8 gText_NumberItem_TMBerry[];
 extern const u8 gText_xVar1[];
 extern const u8 gText_ReturnToVar1[];
 extern const u8 gText_SelectorArrow2[];
@@ -442,6 +479,7 @@ extern const u8 gText_CantStoreImportantItems[];
 extern const u8 gText_DepositedVar2Var1s[];
 extern const u8 gText_NoRoomForItems[];
 extern const u8 gText_ThreeDashes[];
+extern const u8 *const gPocketNamesStringsTable[];
 
 // party menu text
 extern const u8 gText_PkmnHPRestoredByVar2[];
@@ -596,7 +634,7 @@ extern const u8 gText_TooImportantToToss[];
 extern const u8 gText_ConfirmTossItems[];
 extern const u8 gText_MoveVar1Where[];
 
-extern const u8 gText_ColorLightShadowDarkGrey[];
+extern const u8 gText_ColorLightShadowDarkGray[];
 extern const u8 gText_ColorBlue[];
 extern const u8 gText_Friend[];
 extern const u8 gText_Tristan[];
@@ -982,7 +1020,8 @@ extern const u8 gText_RibbonsVar1[];
 extern const u8 gText_OneDash[];
 extern const u8 gText_TwoDashes[];
 
-extern const u8 *const gReturnToXStringsTable2[];
+extern const u8 *const gBagMenu_ReturnToStrings[];
+extern const u8 *const gPyramidBagMenu_ReturnToStrings[];
 
 extern const u8 gText_NumPlayerLink[];
 extern const u8 gText_ConfirmLinkWhenPlayersReady[];
@@ -2511,7 +2550,7 @@ extern const u8 gText_MatchCallMay_Intro1[];
 extern const u8 gText_MatchCallMay_Intro2[];
 
 // Contest Link
-extern const u8 gText_ColorDarkGrey[];
+extern const u8 gText_ColorDarkGray[];
 extern const u8 gText_CommunicationStandby[];
 extern const u8 gText_AnnouncingResults[];
 extern const u8 gText_PreliminaryResults[];
@@ -2904,7 +2943,7 @@ extern const u8 gText_CrushingResults[];
 extern const u8 gText_BerryCrush2[];
 extern const u8 gText_PressingSpeedRankings[];
 extern const u8 gText_Var1Players[];
-extern const u8 gText_ReadyToBerryCrush[];
+extern const u8 gText_ReadyPickBerry[];
 extern const u8 gText_WaitForAllChooseBerry[];
 extern const u8 gText_EndedWithXUnitsPowder[];
 extern const u8 gText_RecordingGameResults[];
@@ -3015,4 +3054,21 @@ extern const u8 gText_PkmnForSwap[];
 extern const u8 gText_SamePkmnInPartyAlready[];
 extern const u8 gText_Cancel3[];
 
+//Starter Select Menu
+extern const u8 gText_Starter0[];
+extern const u8 gText_Starter1[];
+extern const u8 gText_Starter2[];
+extern const u8 gText_Starter3[];
+extern const u8 gText_Starter4[];
+extern const u8 gText_Starter5[];
+extern const u8 gText_Starter6[];
+extern const u8 gText_Starter7[];
+extern const u8 gText_Starter8[];
+
+//Starter Summary / Choice / Cancel Menu
+extern const u8 gText_StarterSummary0[];
+extern const u8 gText_StarterSummary1[];
+extern const u8 gText_StarterSummary2[];
+
 #endif // GUARD_STRINGS_H
+
