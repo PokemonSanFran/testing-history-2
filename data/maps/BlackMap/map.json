@@ -3,7 +3,6 @@
   "name": "BlackMap",
   "layout": "LAYOUT_BLACK_MAP",
   "music": "MUS_BIRCH_LAB",
-  "__region_map_section": "MAPSEC_ORRE",
   "region_map_section": "MAPSEC_ORRE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
