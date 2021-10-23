@@ -1065,3 +1065,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/StarterMenu.inc"
 
 	.include "data/maps/BlackMap/scripts.inc"
+
+	.include "data/maps/SouthBay/scripts.inc"

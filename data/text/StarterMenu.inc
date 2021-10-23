@@ -219,8 +219,9 @@ StarterSelectEnd::
 
 StarterSelectEndWarp::
 	lockall
-	warpsilent MAP_SOOTOPOLIS_CITY, 255, 31, 22
-	end
+	warpsilent MAP_SOUTH_BAY, 255, 3, 10
+	goto ImProbablyBetterThanYou_Intro
+	return
 
 
 gText_StarterSelectZoeyText1::

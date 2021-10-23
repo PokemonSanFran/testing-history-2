@@ -1,0 +1,41 @@
+{
+  "id": "MAP_SOUTH_BAY",
+  "name": "SouthBay",
+  "layout": "LAYOUT_SOUTH_BAY",
+  "music": "MUS_RUSTBORO",
+  "region_map_section": "MAPSEC_SOUTH_BAY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 0,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_SOUTH_BAY",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 10,
+      "y": 26,
+      "elevation": 0,
+      "dest_map": "MAP_FARAWAY_ISLAND_ENTRANCE",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}
