@@ -220,7 +220,6 @@ StarterSelectEnd::
 StarterSelectEndWarp::
 	lockall
 	warpsilent MAP_SOUTH_BAY, 255, 3, 10
-	goto ImProbablyBetterThanYou_Intro
 	return
 
 

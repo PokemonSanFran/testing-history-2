@@ -614,5 +614,6 @@ extern const u8 EventScript_TerminateLink[];
 
 //new scripts from PSF
 extern const u8 WarpToBlackMap[];
+extern const u8 ImProbablyBetterThanYou_Intro[];
 
 #endif // GUARD_EVENT_SCRIPTS_H

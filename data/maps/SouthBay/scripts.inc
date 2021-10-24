@@ -13,10 +13,10 @@ ImProbablyBetterThanYou_Intro::
 
 
 ImProbablyBetterThanYou_WalkInside::
-	applymovement 2, Zoey_WalkInside
-	waitmovement 0
-	release
-	return
+	warpdoor MAP_SOOTOPOLIS_CITY, 255, 7, 11
+	closemessage
+	waitstate
+	end
 
 
 Zoey_WalkInside:

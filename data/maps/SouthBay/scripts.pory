@@ -10,15 +10,15 @@ script ImProbablyBetterThanYou_Intro {
 }
 
 script ImProbablyBetterThanYou_WalkInside {
-    applymovement(2, Zoey_WalkInside)
-    waitmovement(0)
-    release
+    warpdoor(MAP_SOOTOPOLIS_CITY,255,7,11)
+    closemessage
+    waitstate
+    end
 }
 
 movement Zoey_WalkInside {
     walk_up
 }
-
 
 text gText_ImProbablyBetterThanYou_ZoeyText1 {
     format("deep breath Let's do this.")

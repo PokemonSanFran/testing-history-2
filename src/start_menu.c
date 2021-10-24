@@ -306,11 +306,11 @@ static void BuildNormalStartMenu(void)
 {
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
     {
-        AddStartMenuAction(MENU_ACTION_DEBUG_MENU);
         AddStartMenuAction(MENU_ACTION_POKEDEX);
     }
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
     {
+        AddStartMenuAction(MENU_ACTION_DEBUG_MENU);
         AddStartMenuAction(MENU_ACTION_POKEMON);
     }
 
@@ -1432,6 +1432,8 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 
 static bool8 DebugMenuCallback(void)
 {
+    RemoveExtraStartMenuWindows();
+    HideStartMenu();
     MySpecial();
     return TRUE;
 }
