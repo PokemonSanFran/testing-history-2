@@ -1067,3 +1067,9 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/BlackMap/scripts.inc"
 
 	.include "data/maps/SouthBay/scripts.inc"
+
+	.include "data/maps/SouthBay_YCCompound_1F/scripts.inc"
+
+	.include "data/maps/SouthBay_YCCompound_2F/scripts.inc"
+
+	.include "data/maps/SouthBay_PokemonCenter_1F/scripts.inc"

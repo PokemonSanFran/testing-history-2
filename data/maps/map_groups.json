@@ -622,9 +622,9 @@
     "Route119_House"
   ],
   "gMapGroup_IndoorRoute124": [
-    "Route124_DivingTreasureHuntersHouse"
-  ],
-  "gMapGroup_SouthBay": [
-    "SouthBay_YCCompound_1F"
+    "Route124_DivingTreasureHuntersHouse",
+    "SouthBay_YCCompound_1F",
+    "SouthBay_YCCompound_2F",
+    "SouthBay_PokemonCenter_1F"
   ]
 }

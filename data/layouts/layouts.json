@@ -4430,6 +4430,36 @@
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/SouthBay/border.bin",
       "blockdata_filepath": "data/layouts/SouthBay/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOUTH_BAY_YCCOMPOUND_1F",
+      "name": "SouthBay_YCCompound_1F_Layout",
+      "width": 12,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/SouthBay_YCCompound_1F/border.bin",
+      "blockdata_filepath": "data/layouts/SouthBay_YCCompound_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOUTH_BAY_YCCOMPOUND_2F",
+      "name": "SouthBay_YCCompound_2F_Layout",
+      "width": 12,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/SouthBay_YCCompound_2F/border.bin",
+      "blockdata_filepath": "data/layouts/SouthBay_YCCompound_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOUTH_BAY_POKEMON_CENTER_1F",
+      "name": "SouthBay_PokemonCenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/SouthBay_PokemonCenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/SouthBay_PokemonCenter_1F/map.bin"
     }
   ]
 }

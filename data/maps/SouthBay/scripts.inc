@@ -24,4 +24,4 @@ Zoey_WalkInside:
 	step_end
 
 gText_ImProbablyBetterThanYou_ZoeyText1::
-	.string "deep breath Let's do this.$"
+	.string "*deep breath* Let's do this.$"
