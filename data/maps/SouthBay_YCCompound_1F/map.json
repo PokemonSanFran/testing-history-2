@@ -17,7 +17,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
       "x": 4,
-      "y": 5,
+      "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -70,14 +70,14 @@
   "warp_events": [
     {
       "x": 5,
-      "y": 11,
+      "y": 9,
       "elevation": 0,
       "dest_map": "MAP_SOUTH_BAY",
       "dest_warp_id": 1
     },
     {
       "x": 6,
-      "y": 11,
+      "y": 9,
       "elevation": 0,
       "dest_map": "MAP_SOUTH_BAY",
       "dest_warp_id": 1
@@ -91,7 +91,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "ImProbablyBetterThanYou_BiancaIntro_Dialogue"
+    }
   ],
   "bg_events": [
 

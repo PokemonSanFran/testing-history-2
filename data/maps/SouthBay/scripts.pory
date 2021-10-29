@@ -10,7 +10,7 @@ script ImProbablyBetterThanYou_Intro {
 }
 
 script ImProbablyBetterThanYou_WalkInside {
-    warpdoor(MAP_SOOTOPOLIS_CITY,255,7,11)
+    warpdoor(MAP_SOUTH_BAY_YCCOMPOUND_1F,255,6,9)
     closemessage
     waitstate
     end
@@ -18,8 +18,9 @@ script ImProbablyBetterThanYou_WalkInside {
 
 movement Zoey_WalkInside {
     walk_up
+    step_end
 }
 
 text gText_ImProbablyBetterThanYou_ZoeyText1 {
-    format("*deep breath* Let's do this.")
+    format("*deep breath* Let's do this.") //TODO add asterisk to font, look at SKiLpVg.png
 }

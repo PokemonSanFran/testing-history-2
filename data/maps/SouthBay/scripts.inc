@@ -13,7 +13,7 @@ ImProbablyBetterThanYou_Intro::
 
 
 ImProbablyBetterThanYou_WalkInside::
-	warpdoor MAP_SOOTOPOLIS_CITY, 255, 7, 11
+	warpdoor MAP_SOUTH_BAY_YCCOMPOUND_1F, 255, 6, 9
 	closemessage
 	waitstate
 	end

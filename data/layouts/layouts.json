@@ -4435,7 +4435,7 @@
       "id": "LAYOUT_SOUTH_BAY_YCCOMPOUND_1F",
       "name": "SouthBay_YCCompound_1F_Layout",
       "width": 12,
-      "height": 12,
+      "height": 10,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/SouthBay_YCCompound_1F/border.bin",

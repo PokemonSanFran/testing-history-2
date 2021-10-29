@@ -1,0 +1,118 @@
+mapscripts SouthBay_YCCompound_1F_MapScripts {
+}
+
+script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+	applymovement(1,Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(1,BiancaIntro_Movement)
+    waitmovement(0)
+    callnative(DrawMugshot)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text1)
+    closemessage
+    waitstate
+    //applymovement(1,BiancaLookAround_Movement)
+   // goto(BiancaLookAround_Movement)
+    turnobject(1,DIR_WEST) 
+    turnobject(1,DIR_EAST) 
+    turnobject(1,DIR_SOUTH)
+    waitstate
+    waitmovement(0)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text2)
+    callnative(ClearMugshot)
+    closemessage
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text3)
+    callnative(ClearMugshot)
+    closemessage
+    callnative(DrawMugshot)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text4)
+    callnative(ClearMugshot)
+    closemessage
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text5)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text6)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text7)
+    closemessage
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text8)
+    callnative(ClearMugshot)
+    closemessage
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text9)
+    callnative(ClearMugshot)
+    closemessage
+    
+}
+
+movement BiancaIntro_Movement {
+    walk_right
+    walk_down * 3
+    step_end
+}
+
+script BiancaLookAround_Movement {
+   turnobject(1,DIR_WEST) 
+   turnobject(2,DIR_EAST) 
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text1 {
+    format("You must be {PLAYER}. Great to meet you!")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text2 {
+    format("Kinda shabby, huh? I thought YC was pulling out all the stops for us ,but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text3 {
+    format("Oh yeah uh, it's too bad...")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text4 {
+    format("*internal* This house is friggin' huge! Bigger than anywhere I've ever stayed, that's for sure...")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text5 {
+    format("My flight was earlier today, so I've just been waiting around.")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text6 {
+    format("I ordered some food too - Doordash is the same here as it is back in Unova, and my Mom's card is still on the account! I'm sure she gets... points or something, right?")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text7 {
+    format("Where are you from?")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text8 {
+    format("Agate Village, Orre. You?")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text9 {
+    format("Undella Town, Unova. Agate, right? I don't think I've heard of it... oh well. Probably just as boring as Undella. SO GLAD to be out of there!")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text10 {
+    format("I know our orientation is supposed to start soon, or something like that. I took the bedroom on the left, so the one to the right is yours. I tried to take the good one because I got here first...")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaIntro_Text11 {
+    format("but both rooms are exactly the same! Let's chill after you unpack.")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaAnnoy_Text1 {
+    format("Go check out your room!")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2 {
+    format("Oh man, are you trying to do some bonding or something? Lemme finish this truffle burger first...")
+}
+
+text gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3 {
+    format("Nom nom nom...")
+}
