@@ -12,14 +12,12 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text1
 	closemessage
-	waitstate
 	turnobject 1, DIR_WEST
 	turnobject 1, DIR_EAST
 	turnobject 1, DIR_SOUTH
-	waitmovement 0
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text2
-	callnative ClearMugshot
 	closemessage
+	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text3
@@ -43,9 +41,41 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text9
+	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text10
+	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text11
+	callnative ClearMugshot
+	applymovement 1, BiancaBackToCouch_Movement
+	closemessage
+	return
+
+
+BiancaAnnoyed_Dialogue::
+	faceplayer
+	switch VAR_0x8000
+	case 1, BiancaAnnoyed_Dialogue_3
+	case 2, BiancaAnnoyed_Dialogue_4
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_ImProbablyBetterThanYou_BiancaAnnoy_Text1
+	setvar VAR_0x8000, 1
+BiancaAnnoyed_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	return
+
+BiancaAnnoyed_Dialogue_3:
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2
+	setvar VAR_0x8000, 2
+	goto BiancaAnnoyed_Dialogue_1
+
+BiancaAnnoyed_Dialogue_4:
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3
+	setvar VAR_0x8000, 2
+	goto BiancaAnnoyed_Dialogue_1
 
 
 BiancaIntro_Movement:
@@ -53,6 +83,12 @@ BiancaIntro_Movement:
 	walk_down
 	walk_down
 	walk_down
+	step_end
+
+BiancaBackToCouch_Movement:
+	walk_up
+	walk_up
+	walk_left
 	step_end
 
 BiancaLookAround_Movement::

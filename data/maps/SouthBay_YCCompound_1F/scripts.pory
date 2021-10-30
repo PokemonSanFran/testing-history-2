@@ -11,17 +11,14 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text1)
     closemessage
-    waitstate
     //applymovement(1,BiancaLookAround_Movement)
    // goto(BiancaLookAround_Movement)
     turnobject(1,DIR_WEST) 
     turnobject(1,DIR_EAST) 
     turnobject(1,DIR_SOUTH)
-    waitstate
-    waitmovement(0)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text2)
-    callnative(ClearMugshot)
     closemessage
+    callnative(ClearMugshot)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text3)
@@ -45,14 +42,46 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text9)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text10)
+    msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text11)
+    callnative(ClearMugshot)
+    applymovement(1,BiancaBackToCouch_Movement)
+    closemessage
+}
+
+script BiancaAnnoyed_Dialogue {
+    faceplayer
+
+    switch(var(VAR_0x8000)) {
+            case 1:
+                setvar(VAR_0x8000, MUGSHOT_BIANCA)
+                callnative(DrawMugshot)
+                msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2)
+                setvar(VAR_0x8000, 2)
+            case 2:
+                setvar(VAR_0x8000, MUGSHOT_BIANCA)
+                callnative(DrawMugshot)
+                msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3)
+                setvar(VAR_0x8000, 2)
+            default:
+                setvar(VAR_0x8000, MUGSHOT_BIANCA)
+                callnative(DrawMugshot)
+                msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text1)
+                setvar(VAR_0x8000, 1)
+    }
     callnative(ClearMugshot)
     closemessage
-    
 }
 
 movement BiancaIntro_Movement {
     walk_right
     walk_down * 3
+    step_end
+}
+
+movement BiancaBackToCouch_Movement {
+    walk_up * 2
+    walk_left
     step_end
 }
 
