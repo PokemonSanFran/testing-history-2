@@ -12,9 +12,8 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text1
 	closemessage
-	turnobject 1, DIR_WEST
-	turnobject 1, DIR_EAST
-	turnobject 1, DIR_SOUTH
+	applymovement 1, BiancaLookAround_Movement
+	waitmovement 3
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text2
 	closemessage
 	callnative ClearMugshot
@@ -42,6 +41,7 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text9
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text10
+	applymovement 1, BiancaGestureUpstairs_Movement
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text11
 	callnative ClearMugshot
 	applymovement 1, BiancaBackToCouch_Movement
@@ -50,37 +50,32 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 
 
 BiancaAnnoyed_Dialogue::
-	faceplayer
-	switch VAR_0x8000
-	case 1, BiancaAnnoyed_Dialogue_3
-	case 2, BiancaAnnoyed_Dialogue_4
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
+	faceplayer
+	switch VAR_TEMP_0
+	case 1, BiancaAnnoyed_Dialogue_3
+	case 2, BiancaAnnoyed_Dialogue_4
 	msgbox gText_ImProbablyBetterThanYou_BiancaAnnoy_Text1
-	setvar VAR_0x8000, 1
+	setvar VAR_TEMP_0, 1
 BiancaAnnoyed_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	return
 
 BiancaAnnoyed_Dialogue_3:
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2
-	setvar VAR_0x8000, 2
+	setvar VAR_TEMP_0, 2
 	goto BiancaAnnoyed_Dialogue_1
 
 BiancaAnnoyed_Dialogue_4:
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3
-	setvar VAR_0x8000, 2
+	setvar VAR_TEMP_0, 2
 	goto BiancaAnnoyed_Dialogue_1
 
 
 BiancaIntro_Movement:
 	walk_right
-	walk_down
 	walk_down
 	walk_down
 	step_end
@@ -91,11 +86,24 @@ BiancaBackToCouch_Movement:
 	walk_left
 	step_end
 
-BiancaLookAround_Movement::
-	turnobject 1, DIR_WEST
-	turnobject 2, DIR_EAST
-	return
+BiancaGestureUpstairs_Movement:
+	face_up
+	delay_16
+	face_down
+	delay_16
+	step_end
 
+BiancaLookAround_Movement:
+	face_left
+	delay_16
+	delay_16
+	face_right
+	delay_16
+	delay_16
+	face_down
+	delay_16
+	delay_16
+	step_end
 
 gText_ImProbablyBetterThanYou_BiancaIntro_Text1::
 	.string "You must be {PLAYER}. Great to meet\n"

@@ -11,11 +11,12 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text1)
     closemessage
-    //applymovement(1,BiancaLookAround_Movement)
+    applymovement(1,BiancaLookAround_Movement)
    // goto(BiancaLookAround_Movement)
-    turnobject(1,DIR_WEST) 
-    turnobject(1,DIR_EAST) 
-    turnobject(1,DIR_SOUTH)
+    //applymovement(1,Common_Movement_WalkInPlaceFastestLeft)
+    //applymovement(1,Common_Movement_WalkInPlaceFastestRight)
+    //applymovement(1,Common_Movement_WalkInPlaceFastestDown)
+    waitmovement(3)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text2)
     closemessage
     callnative(ClearMugshot)
@@ -43,6 +44,7 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text9)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text10)
+    applymovement(1,BiancaGestureUpstairs_Movement)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text11)
     callnative(ClearMugshot)
     applymovement(1,BiancaBackToCouch_Movement)
@@ -50,24 +52,20 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
 }
 
 script BiancaAnnoyed_Dialogue {
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
     faceplayer
 
-    switch(var(VAR_0x8000)) {
+    switch(var(VAR_TEMP_0)) {
             case 1:
-                setvar(VAR_0x8000, MUGSHOT_BIANCA)
-                callnative(DrawMugshot)
                 msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2)
-                setvar(VAR_0x8000, 2)
+                setvar(VAR_TEMP_0, 2)
             case 2:
-                setvar(VAR_0x8000, MUGSHOT_BIANCA)
-                callnative(DrawMugshot)
                 msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3)
-                setvar(VAR_0x8000, 2)
+                setvar(VAR_TEMP_0, 2)
             default:
-                setvar(VAR_0x8000, MUGSHOT_BIANCA)
-                callnative(DrawMugshot)
                 msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text1)
-                setvar(VAR_0x8000, 1)
+                setvar(VAR_TEMP_0, 1)
     }
     callnative(ClearMugshot)
     closemessage
@@ -75,7 +73,7 @@ script BiancaAnnoyed_Dialogue {
 
 movement BiancaIntro_Movement {
     walk_right
-    walk_down * 3
+    walk_down * 2
     step_end
 }
 
@@ -85,9 +83,25 @@ movement BiancaBackToCouch_Movement {
     step_end
 }
 
-script BiancaLookAround_Movement {
-   turnobject(1,DIR_WEST) 
-   turnobject(2,DIR_EAST) 
+movement BiancaGestureUpstairs_Movement {
+    face_up
+    delay_16
+    face_down
+    delay_16
+    step_end
+}
+
+movement BiancaLookAround_Movement {
+    face_left
+    delay_16
+    delay_16
+    face_right
+    delay_16
+    delay_16
+    face_down
+    delay_16
+    delay_16
+    step_end
 }
 
 text gText_ImProbablyBetterThanYou_BiancaIntro_Text1 {
@@ -95,7 +109,7 @@ text gText_ImProbablyBetterThanYou_BiancaIntro_Text1 {
 }
 
 text gText_ImProbablyBetterThanYou_BiancaIntro_Text2 {
-    format("Kinda shabby, huh? I thought YC was pulling out all the stops for us ,but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
+    format("Kinda shabby, huh? I thought YC was pulling out all the stops for us, but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
 }
 
 text gText_ImProbablyBetterThanYou_BiancaIntro_Text3 {
