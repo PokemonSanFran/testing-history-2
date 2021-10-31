@@ -9,7 +9,7 @@ SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	goto Swagbag_SetUpRoom
+	goto Swagbag_ObjectSetUp
 	return
 
 SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -17,19 +17,20 @@ SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-Swagbag_SetUpRoom::
-	setobjectxyperm 1, 8, -1
-	hideobjectat 1, MAP_SOUTH_BAY_YCCOMPOUND_1F
+Swagbag_ObjectSetUp::
+	setobjectxyperm 1, -8, -8
 	setobjectxyperm 2, 6, 4
 	setobjectxyperm 3, 7, 4
 	return
 
 
 ImProbablyBetterThanYou_BiancaIntro_Dialogue::
+	setvar VAR_LITTLEROOT_INTRO_STATE, 2
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInside_Movement
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement 1, BiancaIntro_Movement
@@ -67,12 +68,15 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text9
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text10
 	applymovement 1, BiancaGestureUpstairs_Movement
+	waitmovement 0
 	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text11
 	callnative ClearMugshot
-	applymovement 1, BiancaBackToCouch_Movement
 	closemessage
-	setvar VAR_LITTLEROOT_INTRO_STATE, 2
-	return
+	applymovement 1, BiancaBackToCouch_Movement
+	waitmovement 0
+	fadedefaultbgm
+	releaseall
+	end
 
 
 BiancaAnnoyed_Dialogue::
@@ -141,6 +145,8 @@ BiancaLookAround_Movement:
 BiancaGestureUpstairs_Movement:
 	face_up
 	delay_16
+	delay_16
+	face_down
 	step_end
 
 gText_ImProbablyBetterThanYou_BiancaIntro_Text1::

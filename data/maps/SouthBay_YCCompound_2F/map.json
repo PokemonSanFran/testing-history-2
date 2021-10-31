@@ -2,7 +2,7 @@
   "id": "MAP_SOUTH_BAY_YCCOMPOUND_2F",
   "name": "SouthBay_YCCompound_2F",
   "layout": "LAYOUT_SOUTH_BAY_YCCOMPOUND_2F",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_BIRCH_LAB",
   "region_map_section": "MAPSEC_SOUTH_BAY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

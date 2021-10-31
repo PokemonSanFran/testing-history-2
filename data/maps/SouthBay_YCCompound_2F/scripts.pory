@@ -5,5 +5,5 @@ mapscripts SouthBay_YCCompound_2F_MapScripts {
 }
 script Swagbag_IncrementIntroState_Script {
     setvar(VAR_LITTLEROOT_INTRO_STATE,3)
-    waitmovement(0)
+    end
 }
