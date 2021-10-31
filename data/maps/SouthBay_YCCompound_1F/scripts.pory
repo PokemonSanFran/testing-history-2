@@ -1,21 +1,44 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const RIVAL_B = 1
+const RIVAL_B2 = 2
+const OAK = 3
+const OAK2 = 4
+
 mapscripts SouthBay_YCCompound_1F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+    
+        switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
+            case 3: goto(Swagbag_SetUpRoom)
+        }
+    }
+
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_BiancaIntro_Dialogue //Started game, has not met Bianca
+        VAR_LITTLEROOT_INTRO_STATE, 3: //Has checked out room
+    //    VAR_LITTLEROOT_INTRO_STATE, 4: //Has met Oak and left compound
+    ]
+}
+
+script Swagbag_SetUpRoom {
+    setobjectxyperm(RIVAL_B,8,-1) 
+    hideobjectat(RIVAL_B, MAP_SOUTH_BAY_YCCOMPOUND_1F)
+    setobjectxyperm(RIVAL_B2,6,4)
+    setobjectxyperm(OAK,7,4)
 }
 
 script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
     lockall
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-	applymovement(1,Common_Movement_ExclamationMark)
+    applymovement(PLAYER,WalkInside_Movement)
     waitmovement(0)
-    applymovement(1,BiancaIntro_Movement)
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+	applymovement(RIVAL_B,Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(RIVAL_B,BiancaIntro_Movement)
     waitmovement(0)
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text1)
     closemessage
-    applymovement(1,BiancaLookAround_Movement)
-   // goto(BiancaLookAround_Movement)
-    //applymovement(1,Common_Movement_WalkInPlaceFastestLeft)
-    //applymovement(1,Common_Movement_WalkInPlaceFastestRight)
-    //applymovement(1,Common_Movement_WalkInPlaceFastestDown)
+    applymovement(RIVAL_B,BiancaLookAround_Movement)
     waitmovement(3)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text2)
     closemessage
@@ -44,52 +67,63 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text9)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text10)
-    applymovement(1,BiancaGestureUpstairs_Movement)
+    applymovement(RIVAL_B,BiancaGestureUpstairs_Movement)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text11)
     callnative(ClearMugshot)
-    applymovement(1,BiancaBackToCouch_Movement)
+    applymovement(RIVAL_B,BiancaBackToCouch_Movement)
     closemessage
+    setvar(VAR_LITTLEROOT_INTRO_STATE,2)
 }
 
 script BiancaAnnoyed_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
     callnative(DrawMugshot)
-    faceplayer
 
     switch(var(VAR_TEMP_0)) {
             case 1:
-                msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2)
+                msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2,MSGBOX_NPC)
                 setvar(VAR_TEMP_0, 2)
             case 2:
-                msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3)
+                msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3,MSGBOX_NPC)
                 setvar(VAR_TEMP_0, 2)
             default:
-                msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text1)
+                msgbox(gText_ImProbablyBetterThanYou_BiancaAnnoy_Text1,MSGBOX_NPC)
                 setvar(VAR_TEMP_0, 1)
     }
+
     callnative(ClearMugshot)
     closemessage
 }
 
+script ImProbablyBetterThanYou_ShouldUnpack {
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue)
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PLAYER,WalkInside_Movement)
+    waitmovement(0)
+    releaseall
+}
+
+movement WalkInside_Movement {
+    walk_up    
+    step_end
+}
+
 movement BiancaIntro_Movement {
     walk_right
-    walk_down * 2
+    walk_down
     step_end
 }
 
 movement BiancaBackToCouch_Movement {
-    walk_up * 2
+    walk_up
     walk_left
     step_end
 }
 
-movement BiancaGestureUpstairs_Movement {
-    face_up
-    delay_16
-    face_down
-    delay_16
-    step_end
-}
 
 movement BiancaLookAround_Movement {
     face_left
@@ -100,6 +134,12 @@ movement BiancaLookAround_Movement {
     delay_16
     face_down
     delay_16
+    delay_16
+    step_end
+}
+
+movement BiancaGestureUpstairs_Movement {
+    face_up
     delay_16
     step_end
 }
@@ -158,4 +198,8 @@ text gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2 {
 
 text gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3 {
     format("Nom nom nom...")
+}
+
+text gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue {
+    format("I should check out my room!")
 }

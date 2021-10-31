@@ -1,24 +1,24 @@
-mapscripts SouthBay_MapScripts {}
+mapscripts SouthBay_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_LITTLEROOT_INTRO_STATE, 0: ImProbablyBetterThanYou_Intro
+    ]
+}
 
 script ImProbablyBetterThanYou_Intro {
     lockall
+    setvar(VAR_LITTLEROOT_INTRO_STATE,1)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_ZoeyText1)
     callnative(ClearMugshot)
+    closemessage
     goto(ImProbablyBetterThanYou_WalkInside)
 }
 
 script ImProbablyBetterThanYou_WalkInside {
-    warpdoor(MAP_SOUTH_BAY_YCCOMPOUND_1F,255,6,9)
-    closemessage
+    warpdoor(MAP_SOUTH_BAY_YCCOMPOUND_1F,255,5,9)
     waitstate
     end
-}
-
-movement Zoey_WalkInside {
-    walk_up
-    step_end
 }
 
 text gText_ImProbablyBetterThanYou_ZoeyText1 {
