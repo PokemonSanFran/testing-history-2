@@ -15,6 +15,6 @@
 #include "../gflib/string_util.h" // for ConvertToAscii()
 
 bool8 MySpecial(void){
-    ScriptContext1_SetupScript(ImProbablyBetterThanYou_Intro);
+    ScriptContext1_SetupScript(Swagbag_WelcomeToSanFran_Dialogue);
     return TRUE;
 };

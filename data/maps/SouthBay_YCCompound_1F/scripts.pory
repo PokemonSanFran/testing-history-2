@@ -8,22 +8,28 @@ mapscripts SouthBay_YCCompound_1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
     
         switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
+            case 1: goto(ImProbablyBetterThanYou_ObjectSetUp)
             case 3: goto(Swagbag_ObjectSetUp)
             case 4: goto(Started2HoursAgo_ObjectSetUp)
-            case 4: goto(TwoHoursAgo_ObjectSetUp)
+            case 5: goto(TwoHoursAgo_ObjectSetUp)
         }
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_BiancaIntro_Dialogue //Started game, has not met Bianca
-        VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_OakIntro_Dialogue //Has checked out room
+        VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToSanFran_Dialogue //Has checked out room
     ]
 }
-
+script ImProbablyBetterThanYou_ObjectSetUp {
+    setflag(FLAG_HIDE_SOUTHBAY_POKEDEX_LEFT)
+    setflag(FLAG_HIDE_SOUTHBAY_POKEDEX_RIGHT)
+}
 script Swagbag_ObjectSetUp {
     setobjectxyperm(RIVAL_B,-8,-8)
     setobjectxyperm(RIVAL_B2,6,4)
     setobjectxyperm(OAK,7,4)
+    clearflag(FLAG_HIDE_SOUTHBAY_POKEDEX_LEFT)
+    clearflag(FLAG_HIDE_SOUTHBAY_POKEDEX_RIGHT)
 }
 
 script Started2HoursAgo_ObjectSetUp {
@@ -46,8 +52,9 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text1)
     closemessage
-    goto (ImProbablyBetterThanYou_KindaShabby_Dialogue)
+    goto (ImProbablyBetterThanYou_KindaShabby_Dialogue) 
     end
+}
 
 script ImProbablyBetterThanYou_KindaShabby_Dialogue {
     applymovement(RIVAL_B,BiancaLookAround_Movement)
@@ -67,7 +74,7 @@ script ImProbablyBetterThanYou_KindaShabby_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_BiancaIntro_Text5)
-    goto(ImProbablyBetterThanYou_FoodandWhereYouFrom_Dialogue)
+    goto(ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue) 
     end
 }
 
@@ -124,6 +131,7 @@ script BiancaAnnoyed_Dialogue {
 script ImProbablyBetterThanYou_ShouldUnpack {
     lockall
     setvar(VAR_0x8000, MUGSHOT_HILDA)
+    waitmovement(0)
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue)
     callnative(ClearMugshot)
@@ -131,8 +139,63 @@ script ImProbablyBetterThanYou_ShouldUnpack {
     applymovement(PLAYER,WalkInside_Movement)
     waitmovement(0)
     releaseall
+    end
 }
 
+script Swagbag_WelcomeToSanFran_Dialogue {
+    setvar(VAR_LITTLEROOT_INTRO_STATE,5)
+	lockall
+	applymovement(OAK,Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(OAK,OakGreetPlayer_Movement)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_Swagbag_WelcomeToSanFran_Text1)
+    callnative(ClearMugshot)
+    closemessage
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Swagbag_WelcomeToSanFran_Text2)
+    callnative(ClearMugshot)
+    closemessage
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_Swagbag_WelcomeToSanFran_Text3)
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(OAK,OakWalkToTable_Movement)
+    waitmovement(0)
+    applymovement(PLAYER,PlayerFollowOakToTable_Movement)
+    applymovement(RIVAL_B2,BiancaFollowOakToTable_Movement)
+    waitmovement(0)
+    goto(Swagbag_LeagueStipend_Dialogue)
+    end
+}
+
+script Swagbag_LeagueStipend_Dialogue {
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_Swagbag_LeagueStipend_Text1)
+    msgbox(gText_Swagbag_LeagueStipend_Text2)
+    callnative(ClearMugshot)
+    closemessage
+    addmoney(50000,0)
+    goto(Swagbag_PokedexApps_Dialogue)
+    end
+}
+
+script Swagbag_PokedexApps_Dialogue {
+    return
+}
+
+script Swagbag_WhenCanWeStart_Dialogue {
+    return
+}
+
+script Swagbag_DontLeaveSouthBay {
+    return
+}
 movement WalkInside_Movement {
     walk_up    
     step_end
@@ -168,6 +231,32 @@ movement BiancaGestureUpstairs_Movement {
     delay_16
     delay_16
     face_down
+    step_end
+}
+
+movement OakGreetPlayer_Movement {
+    face_up
+    walk_up
+    delay_16
+    step_end
+}
+
+movement OakWalkToTable_Movement{
+    walk_down * 2
+    walk_right * 3
+    face_down
+    step_end
+}
+movement BiancaFollowOakToTable_Movement{
+    walk_down * 3
+    walk_right * 5
+    face_up
+    step_end
+}
+movement PlayerFollowOakToTable_Movement{
+    walk_down * 5
+    walk_right * 3
+    face_up
     step_end
 }
 
@@ -248,70 +337,70 @@ text gText_Swagbag_LeagueStipend_Text1{
 }
 
 text gText_Swagbag_LeagueStipend_Text2{
-    format("(muttering) Because the board absolutely won't let us give you any more...")
+    format("*muttering* Because the board absolutely won't let us give you any more...")
 }
 
 text gText_Swagbag_PokedexApps_Text1{
     format("Next, a newly upgraded PokéDex. It tracks all of the Pokémon you'll see and capture. There's some more habitat functionality, but it wasn't quite ready for primetime yet. By the time you visit the Research Institute in Berkeley, it might be ready.")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_PokedexApps_Text2{
     format("Also, we've gone ahead and pre-loaded our internal apps onto your phones last night.")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_PokedexApps_Text3{
     format("Invasive much?")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_PokedexApps_Text4{
     format("Ha ha, we'll ask next time. You've now got access to our internal versions of QuestLog, Teachy TV, and Fame Checker.")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_PokedexApps_Text5{
     format("Teachy TV... so I should use that if I have a question or get stuck?")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_PokedexApps_Text6{
     format("Correct.")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_PokedexApps_Text7{
     format("And the Fame Checker - that's the app that logs important facts about important people, right?")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_PokedexApps_Text8{
     format("Bingo! You're actually the beta testers of QuestLog, but it's used to keep track of all the things you're working on. We'll occasionally send you things to do, so don't forget to read those notifications!")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_PokedexApps_Text9{
     format("Hmmm... those all sound pretty useful. Sweet, thanks!")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_PokedexApps_Text10{
     format("You received $50000, a PokéDex, and new phone Apps from YC!")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_WhenCanWeStart_Text1{
     format("I believe that's everything. Questions?")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_WhenCanWeStart_Text2{
     format("Yeah, when's the tutorial over? I wanna get a move on!")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_WhenCanWeStart_Text3{
     format("The Gym Challenge officially starts tomorrow. I suggest you get a good night's sleep, and over breakfast, I'll explain how it all works.")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_WhenCanWeStart_Text4{
     format("...fine. I'll explore the city a bit! Maybe I'll see you around, {PLAYER}.")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_DontLeaveSouthBay_Text1{
     format("{PLAYER}, I'll be working on my laptop here for the next few hours. If you've got any questions, don't be afraid to ask. It's fine if you explore, but don't leave South Bay, okay?")
 }
 
-text gText_Swagbag_{
+text gText_Swagbag_DontLeaveSouthBay_Text2{
     format("Got it. Thanks for all the help, Oak! I'm still so stoked for the opportunity and the Challenge!")
 }
 
