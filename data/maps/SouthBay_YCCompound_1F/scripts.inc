@@ -34,17 +34,17 @@ SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 ImProbablyBetterThanYou_ObjectSetUp::
-	setflag FLAG_HIDE_SOUTHBAY_POKEDEX_LEFT
-	setflag FLAG_HIDE_SOUTHBAY_POKEDEX_RIGHT
+	setflag FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT
+	setflag FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT
 	return
 
 
 Swagbag_ObjectSetUp::
-	setobjectxyperm 1, -8, -8
 	setobjectxyperm 2, 6, 4
 	setobjectxyperm 3, 7, 4
-	clearflag FLAG_HIDE_SOUTHBAY_POKEDEX_LEFT
-	clearflag FLAG_HIDE_SOUTHBAY_POKEDEX_RIGHT
+	clearflag FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT
+	clearflag FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT
+	setflag FLAG_HIDE_YCCOMPOUND_RIVALB
 	return
 
 
@@ -200,7 +200,6 @@ Swagbag_LeagueStipend_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_Swagbag_LeagueStipend_Text1
 	msgbox gText_Swagbag_LeagueStipend_Text2
-	callnative ClearMugshot
 	closemessage
 	addmoney 50000, 0
 	goto Swagbag_PokedexApps_Dialogue
@@ -208,15 +207,102 @@ Swagbag_LeagueStipend_Dialogue::
 
 
 Swagbag_PokedexApps_Dialogue::
+	msgbox gText_Swagbag_PokedexApps_Text1
+	msgbox gText_Swagbag_PokedexApps_Text2
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_Swagbag_PokedexApps_Text3
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	msgbox gText_Swagbag_PokedexApps_Text4
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Swagbag_PokedexApps_Text5
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	msgbox gText_Swagbag_PokedexApps_Text6
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_Swagbag_PokedexApps_Text7
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	msgbox gText_Swagbag_PokedexApps_Text8
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_Swagbag_PokedexApps_Text9
+	callnative ClearMugshot
+	removeobject 5
+	removeobject 6
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox gText_Swagbag_PokedexApps_Text10
+	waitmessage
+	waitfanfare
+	goto Swagbag_WhenCanWeStart_Dialogue
 	return
 
 
 Swagbag_WhenCanWeStart_Dialogue::
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	msgbox gText_Swagbag_WhenCanWeStart_Text1
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_Swagbag_WhenCanWeStart_Text2
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	msgbox gText_Swagbag_WhenCanWeStart_Text3
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_Swagbag_WhenCanWeStart_Text4
+	callnative ClearMugshot
+	closemessage
+	applymovement 2, BiancaWalkOutside_Movement
+	waitmovement 0
+	playse SE_EXIT
+	removeobject 2
+	setflag FLAG_HIDE_YCCOMPOUND_RIVALB2
+	delay 30
+	goto Swagbag_DontLeaveSouthBay
 	return
 
 
 Swagbag_DontLeaveSouthBay::
-	return
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	msgbox gText_Swagbag_DontLeaveSouthBay_Text1
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Swagbag_DontLeaveSouthBay_Text2
+	closemessage
+	callnative ClearMugshot
+	applymovement 3, OakWalkToLaptop_Movement
+	waitmovement 0
+	releaseall
+	end
+
+
+Swagbag_AnnoyOak::
+	lockall
+	faceplayer
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	msgbox gText_Swagbag_AnnoyOak_Text1, MSGBOX_NPC
+	callnative ClearMugshot
+	closemessage
+	turnobject 3, DIR_EAST
+	releaseall
+	end
 
 
 WalkInside_Movement:
@@ -289,6 +375,23 @@ PlayerFollowOakToTable_Movement:
 	walk_right
 	walk_right
 	face_up
+	step_end
+
+BiancaWalkOutside_Movement:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	step_end
+
+OakWalkToLaptop_Movement:
+	walk_left
+	walk_left
+	walk_down
+	face_right
 	step_end
 
 gText_ImProbablyBetterThanYou_BiancaIntro_Text1::
@@ -433,8 +536,8 @@ gText_Swagbag_PokedexApps_Text9::
 	.string "Sweet, thanks!$"
 
 gText_Swagbag_PokedexApps_Text10::
-	.string "You received $50000, a PokéDex, and new\n"
-	.string "phone Apps from YC!$"
+	.string "{PLAYER} received ¥50000, a PokéDex,\n"
+	.string "and new phone applications from YC.$"
 
 gText_Swagbag_WhenCanWeStart_Text1::
 	.string "I believe that's everything. Questions?$"
@@ -464,3 +567,8 @@ gText_Swagbag_DontLeaveSouthBay_Text2::
 	.string "Got it. Thanks for all the help, Oak! I'm\n"
 	.string "still so stoked for the opportunity\l"
 	.string "and the Challenge!$"
+
+gText_Swagbag_AnnoyOak_Text1::
+	.string "In the actual game, this will be a list of\n"
+	.string "questions that the player can ask and\l"
+	.string "getr answers to. Tutorial level shit.$"
