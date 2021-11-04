@@ -20,7 +20,7 @@ SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
 	return
 
 SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	goto Started2HoursAgo_ObjectSetUp
+	goto ExploreSouthBay_ObjectSetUp
 	return
 
 SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
@@ -42,13 +42,16 @@ ImProbablyBetterThanYou_ObjectSetUp::
 Swagbag_ObjectSetUp::
 	setobjectxyperm 2, 6, 4
 	setobjectxyperm 3, 7, 4
+	turnobject 3, DIR_WEST
 	clearflag FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT
 	clearflag FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT
 	setflag FLAG_HIDE_YCCOMPOUND_RIVALB
 	return
 
 
-Started2HoursAgo_ObjectSetUp::
+ExploreSouthBay_ObjectSetUp::
+	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm 3, 8, 6
 	return
 
 
@@ -277,6 +280,7 @@ Swagbag_WhenCanWeStart_Dialogue::
 
 
 Swagbag_DontLeaveSouthBay::
+	setvar VAR_LITTLEROOT_INTRO_STATE, 4
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_DontLeaveSouthBay_Text1

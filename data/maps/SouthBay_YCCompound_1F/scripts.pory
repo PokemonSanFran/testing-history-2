@@ -10,7 +10,7 @@ mapscripts SouthBay_YCCompound_1F_MapScripts {
         switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
             case 1: goto(ImProbablyBetterThanYou_ObjectSetUp)
             case 3: goto(Swagbag_ObjectSetUp)
-            case 4: goto(Started2HoursAgo_ObjectSetUp)
+            case 4: goto(ExploreSouthBay_ObjectSetUp)
             case 5: goto(TwoHoursAgo_ObjectSetUp)
         }
     }
@@ -25,15 +25,17 @@ script ImProbablyBetterThanYou_ObjectSetUp {
     setflag(FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT)
 }
 script Swagbag_ObjectSetUp {
-    //setobjectxyperm(RIVAL_B,-8,-8)
     setobjectxyperm(RIVAL_B2,6,4)
     setobjectxyperm(OAK,7,4)
+    turnobject(OAK, DIR_WEST) 
     clearflag(FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT)
     clearflag(FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT)
     setflag(FLAG_HIDE_YCCOMPOUND_RIVALB)
 }
 
-script Started2HoursAgo_ObjectSetUp {
+script ExploreSouthBay_ObjectSetUp {
+    setobjectmovementtype(OAK, MOVEMENT_TYPE_FACE_RIGHT) 
+    setobjectxyperm(OAK,8,6)
 }
 
 script TwoHoursAgo_ObjectSetUp {
@@ -254,6 +256,7 @@ script Swagbag_WhenCanWeStart_Dialogue {
 }
 
 script Swagbag_DontLeaveSouthBay {
+    setvar(VAR_LITTLEROOT_INTRO_STATE,4)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_Swagbag_DontLeaveSouthBay_Text1)
@@ -269,7 +272,7 @@ script Swagbag_DontLeaveSouthBay {
     end
 }
 
-script Swagbag_AnnoyOak {
+script Swagbag_AnnoyOak { //TODO Set up actual question / answer for Oak here
     lockall
     faceplayer
     setvar(VAR_0x8000, MUGSHOT_LANCE)
