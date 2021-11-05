@@ -3015,3 +3015,8 @@ static const u8 sUltranecroziumZDesc[] = _(
     "A crystal to turn\n"
     "fused Necrozma\n"
     "into a new form.");
+
+static const u8 sFashionCaseDesc[] = _(
+    "A fancy case\n"
+    "for the tidy arragement of\n"
+    "clothes and accessories.");

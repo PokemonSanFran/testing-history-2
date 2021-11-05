@@ -627,4 +627,7 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_SOLGANIUM_Z] = {gItemIcon_SolganiumZ, gItemIconPalette_SolganiumZ},
     [ITEM_TAPUNIUM_Z] = {gItemIcon_TapuniumZ, gItemIconPalette_TapuniumZ},
     [ITEM_ULTRANECROZIUM_Z] = {gItemIcon_UltranecroziumZ, gItemIconPalette_UltranecroziumZ},
+
+    //New PSF Items
+    [ITEM_FASHION_CASE] = {gItemIcon_FashionCase, gItemIconPalette_FashionCase},
 };

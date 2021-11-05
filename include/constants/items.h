@@ -705,7 +705,10 @@
 #define ITEM_TAPUNIUM_Z               602
 #define ITEM_ULTRANECROZIUM_Z         603
 
-#define ITEMS_COUNT 604
+//New Items for PSF
+#define ITEM_FASHION_CASE          604
+
+#define ITEMS_COUNT 60r54
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // Range of berries given out by various NPCS

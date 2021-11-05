@@ -26,4 +26,5 @@ ImProbablyBetterThanYou_WalkInside::
 
 
 gText_ImProbablyBetterThanYou_ZoeyText1::
-	.string "*deep breath* Let's do this.$"
+	.string "{COLOR 09}<deep breath>\n"
+	.string "{COLOR DARK_GRAY}Let's do this.$"

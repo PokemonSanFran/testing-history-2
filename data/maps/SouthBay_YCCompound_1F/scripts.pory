@@ -23,10 +23,12 @@ mapscripts SouthBay_YCCompound_1F_MapScripts {
 script ImProbablyBetterThanYou_ObjectSetUp {
     setflag(FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT)
     setflag(FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT)
+    setflag(FLAG_HIDE_YCCOMPOUND_RIVALB2)
+    setflag(FLAG_HIDE_YCCOMPOUND_OAK)
 }
 script Swagbag_ObjectSetUp {
-    setobjectxyperm(RIVAL_B2,6,4)
-    setobjectxyperm(OAK,7,4)
+    clearflag(FLAG_HIDE_YCCOMPOUND_RIVALB2)
+    clearflag(FLAG_HIDE_YCCOMPOUND_OAK)
     turnobject(OAK, DIR_WEST) 
     clearflag(FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT)
     clearflag(FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT)
@@ -510,3 +512,4 @@ text gText_Swagbag_DontLeaveSouthBay_Text2{
 text gText_Swagbag_AnnoyOak_Text1 {
     format("In the actual game, this will be a list of questions that the player can ask and getr answers to. Tutorial level shit.")
 }
+

@@ -7,3 +7,22 @@ script Swagbag_IncrementIntroState_Script {
     setvar(VAR_LITTLEROOT_INTRO_STATE,3)
     end
 }
+
+script RestInBed_Script {
+
+    if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
+        setvar(VAR_LITTLEROOT_INTRO_STATE,5)
+    }
+
+    lockall
+    msgbox(gText_RestInBed_Text1)
+    closemessage
+    call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
+    call(Common_EventScript_OutOfCenterPartyHeal)
+    releaseall
+    end
+}
+
+text gText_RestInBed_Text1 {
+    format("Let's get some rest...when should we wake up?")
+}

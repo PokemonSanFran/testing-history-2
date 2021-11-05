@@ -22,5 +22,5 @@ script ImProbablyBetterThanYou_WalkInside {
 }
 
 text gText_ImProbablyBetterThanYou_ZoeyText1 {
-    format("*deep breath* Let's do this.") //TODO add asterisk to font, look at SKiLpVg.png
+    format("{COLOR 09}<deep breath>\n{COLOR DARK_GRAY}Let's do this.") //TODO add asterisk to font, look at SKiLpVg.png and find best treatment for actions (color? bracket?)
 }

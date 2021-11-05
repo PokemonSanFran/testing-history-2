@@ -36,12 +36,14 @@ SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 ImProbablyBetterThanYou_ObjectSetUp::
 	setflag FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT
 	setflag FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT
+	setflag FLAG_HIDE_YCCOMPOUND_RIVALB2
+	setflag FLAG_HIDE_YCCOMPOUND_OAK
 	return
 
 
 Swagbag_ObjectSetUp::
-	setobjectxyperm 2, 6, 4
-	setobjectxyperm 3, 7, 4
+	clearflag FLAG_HIDE_YCCOMPOUND_RIVALB2
+	clearflag FLAG_HIDE_YCCOMPOUND_OAK
 	turnobject 3, DIR_WEST
 	clearflag FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT
 	clearflag FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT

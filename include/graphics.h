@@ -8148,6 +8148,9 @@ extern const u32 gItemIconPalette_TapuniumZ[];
 extern const u32 gItemIcon_UltranecroziumZ[];
 extern const u32 gItemIconPalette_UltranecroziumZ[];
 
+//New to PSF
+extern const u32 gItemIcon_FashionCase[];
+
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 

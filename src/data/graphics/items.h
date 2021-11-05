@@ -1632,3 +1632,6 @@ const u32 gItemIconPalette_TapuniumZ[] = INCBIN_U32("graphics/items/icon_palette
 const u32 gItemIcon_UltranecroziumZ[] = INCBIN_U32("graphics/items/icons/ultranecrozium_z.4bpp.lz");
 const u32 gItemIconPalette_UltranecroziumZ[] = INCBIN_U32("graphics/items/icon_palettes/ultranecrozium_z.gbapal.lz");
 
+const u32 gItemIcon_FashionCase[] = INCBIN_U32("graphics/items/icons/fashion_case.4bpp.lz");
+const u32 gItemIconPalette_FashionCase[] = INCBIN_U32("graphics/items/icon_palettes/fashion_case.gbapal.lz");
+

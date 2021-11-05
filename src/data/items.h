@@ -3628,6 +3628,7 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
+
     [ITEM_BASEMENT_KEY] =
     {
         .name = _("Basement Key"),
@@ -7546,5 +7547,18 @@ const struct Item gItems[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 255  //signature z move
+    },
+
+    //New to PSF
+    [ITEM_FASHION_CASE] =
+    {
+        .name = _("Fashion Case"),
+        .itemId = ITEM_FASHION_CASE,
+        .price = 0,
+        .description = sFashionCaseDesc,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 };

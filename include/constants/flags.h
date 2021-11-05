@@ -654,8 +654,8 @@
 #define FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT 0x265 //Previously Unused Flag
 #define FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT 0x266 //Previously Unused Flag
 #define FLAG_HIDE_YCCOMPOUND_RIVALB2    0x267 //Previously Unused Flag
-#define FLAG_UNUSED_0x268  0x268 // Unused Flag
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
+#define FLAG_HIDE_YCCOMPOUND_OAK    0x268//Previously Unused Flag
+#define FLAG_HIDE_YCCOMPOUND_OAK2  0x269//Previously Unused Flag
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag
