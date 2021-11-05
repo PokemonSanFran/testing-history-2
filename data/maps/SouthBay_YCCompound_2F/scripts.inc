@@ -21,13 +21,20 @@ RestInBed_Script_1:
 	closemessage
 	call PlayersHouse_2F_EventScript_SetWallClock
 	call Common_EventScript_OutOfCenterPartyHeal
-	giveitem ITEM_FASHION_CASE
+	checkitem ITEM_FASHION_CASE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq RestInBed_Script_5
+RestInBed_Script_4:
 	releaseall
 	end
 
 RestInBed_Script_2:
 	setvar VAR_LITTLEROOT_INTRO_STATE, 5
 	goto RestInBed_Script_1
+
+RestInBed_Script_5:
+	giveitem ITEM_FASHION_CASE
+	goto RestInBed_Script_4
 
 
 gText_RestInBed_Text1::

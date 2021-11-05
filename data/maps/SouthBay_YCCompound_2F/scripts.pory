@@ -19,7 +19,13 @@ script RestInBed_Script {
     closemessage
     call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
     call(Common_EventScript_OutOfCenterPartyHeal)
-    giveitem(ITEM_FASHION_CASE)
+    
+    checkitem(ITEM_FASHION_CASE,1)
+    
+    if (var(VAR_RESULT) == 0) {
+        giveitem(ITEM_FASHION_CASE)
+    }
+
     releaseall
     end
 }
