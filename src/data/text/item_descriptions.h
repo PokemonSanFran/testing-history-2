@@ -3017,6 +3017,6 @@ static const u8 sUltranecroziumZDesc[] = _(
     "into a new form.");
 
 static const u8 sFashionCaseDesc[] = _(
-    "A fancy case\n"
-    "for the tidy arragement of\n"
-    "clothes and accessories.");
+    "A fancy case for\n"
+    "the arragement of\n"
+    "clothes.");

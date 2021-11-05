@@ -708,7 +708,7 @@
 //New Items for PSF
 #define ITEM_FASHION_CASE          604
 
-#define ITEMS_COUNT 60r54
+#define ITEMS_COUNT 605
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // Range of berries given out by various NPCS

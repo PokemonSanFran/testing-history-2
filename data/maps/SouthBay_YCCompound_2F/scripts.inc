@@ -21,6 +21,7 @@ RestInBed_Script_1:
 	closemessage
 	call PlayersHouse_2F_EventScript_SetWallClock
 	call Common_EventScript_OutOfCenterPartyHeal
+	giveitem ITEM_FASHION_CASE
 	releaseall
 	end
 
