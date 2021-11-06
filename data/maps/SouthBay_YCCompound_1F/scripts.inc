@@ -34,6 +34,7 @@ SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 ImProbablyBetterThanYou_ObjectSetUp::
+	setflag FLAG_HIDE_YCCOMPOUND_OAK2
 	setflag FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT
 	setflag FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT
 	setflag FLAG_HIDE_YCCOMPOUND_RIVALB2
@@ -58,8 +59,8 @@ ExploreSouthBay_ObjectSetUp::
 
 
 TwoHoursAgo_ObjectSetUp::
-	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectxyperm 3, 8, 6
+	setflag FLAG_HIDE_YCCOMPOUND_OAK
+	clearflag FLAG_HIDE_YCCOMPOUND_OAK2
 	return
 
 
@@ -316,31 +317,72 @@ Swagbag_AnnoyOak_Script::
 	end
 
 
-TwoHoursAgo_ExplainLeague_Script::
+TwoHoursAgo_TheyreEager_Dialogue::
+	goto_if_set FLAG_RECIEVED_LEFTOVERS_OAK, TwoHoursAgo_TheyreEager_Dialogue_2
+TwoHoursAgo_TheyreEager_Dialogue_1:
 	lockall
 	faceplayer
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	msgbox gText_TwoHoursAgo_ExplainLeague_Text1, MSGBOX_NPC
+	msgbox gText_TwoHoursAgo_TheyreEager_Text1, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
+	goto TwoHoursAgo_ExplainLeague_SetUp
+	return
+
+TwoHoursAgo_TheyreEager_Dialogue_2:
+	goto TwoHoursAgo_ExplainLeftovers_Dialouge
+	goto TwoHoursAgo_TheyreEager_Dialogue_1
+
+
+TwoHoursAgo_ExplainLeague_SetUp::
 	fadescreen FADE_TO_BLACK
 	setobjectxy 7, 4, 6
-	turnobject 3, DIR_WEST
+	setobjectmovementtype 7, MOVEMENT_TYPE_FACE_LEFT
 	setobjectxy OBJ_EVENT_ID_PLAYER, 1, 6
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-	special Script_DoRayquazaScene
-	call TestingMovement
-	waitstate
-	waitmovement 0
+	goto TwoHoursAgo_ExplainLeague_Script
 	return
 
 
-TestingMovement::
+TwoHoursAgo_ExplainLeague_Script::
+	special Script_DoRayquazaScene
+	waitstate
+	call CameraToPlayer_Movement
+	goto TwoHoursAgo_LeftoversPokeballs_Dialogue
+	return
+
+
+TwoHoursAgo_LeftoversPokeballs_Dialogue::
+	setflag FLAG_RECIEVED_LEFTOVERS_OAK
+	callnative DrawMugshot
+	msgbox gText_TwoHoursAgo_LeftoversPokeballs_Text1, MSGBOX_NPC
+	lockall
+	giveitem ITEM_LEFTOVERS
+	giveitem ITEM_POKE_BALL, 5
+	callnative ClearMugshot
+	closemessage
+	releaseall
+	end
+
+
+TwoHoursAgo_ExplainLeftovers_Dialouge::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	bufferleadmonspeciesname 0
+	msgbox gText_TwoHoursAgo_ExplainLeftovers_Text1, MSGBOX_NPC
+	callnative ClearMugshot
+	closemessage
+	releaseall
+	end
+
+
+CameraToPlayer_Movement::
 	setvar VAR_0x8004, 1
 	setvar VAR_0x8005, 6
 	special TeleportCamera
-	end
+	return
 
 
 WalkInside_Movement:
@@ -611,8 +653,43 @@ gText_Swagbag_AnnoyOak_Text1::
 	.string "questions that the player can ask and\l"
 	.string "getr answers to. Tutorial level shit.$"
 
-gText_TwoHoursAgo_ExplainLeague_Text1::
+gText_TwoHoursAgo_TheyreEager_Text1::
 	.string "Looks like Bianca woke up early and\n"
 	.string "already left! They're eager, I'll give\l"
 	.string "them that. I guess they didn't need the\l"
 	.string "explanation... or breakfast.$"
+
+gText_TwoHoursAgo_ExplainLeague_Text1::
+	.string "You're in a race against hundreds of\n"
+	.string "other Pokémon Trainers, to see who can\l"
+	.string "beat our 8 Gym Leaders first. The first\l"
+	.string "16 Trainers to do so, will qualify for\l"
+	.string "the Championship Tournament, held in a\l"
+	.string "few weeks.$"
+
+gText_TwoHoursAgo_ExplainLeague_Text2::
+	.string "The tournament will test all of your\n"
+	.string "skills as a Trainer, but the win will\l"
+	.string "become a YC sponsored career Pokémon\l"
+	.string "Trainer.$"
+
+gText_TwoHoursAgo_ExplainLeague_Text3::
+	.string "We expect the best from you and Bianca!\n"
+	.string "If you fail to qualify for the\l"
+	.string "Championship, we'll be terminating your\l"
+	.string "contract, and you'll be on your own...\l"
+	.string "but we know that won't be the case! So\l"
+	.string "don't worry.$"
+
+gText_TwoHoursAgo_LeftoversPokeballs_Text1::
+	.string "Cafe Venetia is always so delicious! Too\n"
+	.string "bad Bianca didn't eat with us. I guess\l"
+	.string "you can take their portion of the food,\l"
+	.string "and I bought you both PokéBalls, but\l"
+	.string "you can have theirs too!$"
+
+gText_TwoHoursAgo_ExplainLeftovers_Text1::
+	.string "Your {STR_VAR_1} can hold those\n"
+	.string "Leftovers to restore HP during battle.\l"
+	.string "Now, you should get a move on! Don't let\l"
+	.string "Bianca get too far ahead of you!$"

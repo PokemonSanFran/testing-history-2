@@ -657,7 +657,7 @@
 #define FLAG_HIDE_YCCOMPOUND_OAK    0x268//Previously Unused Flag
 #define FLAG_HIDE_YCCOMPOUND_OAK2  0x269//Previously Unused Flag
 #define FLAG_USED_FASHION_CASE  0x26A//Previously Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
+#define FLAG_RECIEVED_LEFTOVERS_OAK 0x26B //Previously Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag
 #define FLAG_UNUSED_0x26D  0x26D // Unused Flag
 #define FLAG_UNUSED_0x26E  0x26E // Unused Flag
