@@ -330,7 +330,17 @@ TwoHoursAgo_ExplainLeague_Script::
 	setobjectxy OBJ_EVENT_ID_PLAYER, 1, 6
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	special Script_DoRayquazaScene
+	call TestingMovement
+	waitstate
+	waitmovement 0
 	return
+
+
+TestingMovement::
+	setvar VAR_0x8004, 1
+	setvar VAR_0x8005, 6
+	special TeleportCamera
+	end
 
 
 WalkInside_Movement:
