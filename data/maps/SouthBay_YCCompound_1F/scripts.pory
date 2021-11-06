@@ -2,16 +2,16 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const RIVAL_B = 1
 const RIVAL_B2 = 2
 const OAK = 3
-const OAK2 = 4
+const OAK2 = 7
 
 mapscripts SouthBay_YCCompound_1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
     
         switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
-            case 1: goto(ImProbablyBetterThanYou_ObjectSetUp)
-            case 3: goto(Swagbag_ObjectSetUp)
-            case 4: goto(ExploreSouthBay_ObjectSetUp)
-            case 5: goto(TwoHoursAgo_ObjectSetUp)
+            case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) //Started game, has not met Bianca
+            case 3: goto(Swagbag_ObjectSetUp) //Has checked out bedroom
+            case 4: goto(ExploreSouthBay_ObjectSetUp) //Has met Oak and recieved items
+            case 5: goto(TwoHoursAgo_ObjectSetUp) //Has slept in bed after getting Pokedex
         }
     }
 
@@ -41,6 +41,8 @@ script ExploreSouthBay_ObjectSetUp {
 }
 
 script TwoHoursAgo_ObjectSetUp {
+    setobjectmovementtype(OAK, MOVEMENT_TYPE_FACE_RIGHT) 
+    setobjectxyperm(OAK,8,6)
 }
 
 script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
@@ -50,6 +52,7 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
     playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+    playse(SE_PIN)
 	applymovement(RIVAL_B,Common_Movement_ExclamationMark)
     waitmovement(0)
     applymovement(RIVAL_B,BiancaIntro_Movement)
@@ -108,7 +111,7 @@ script ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue {
     closemessage
     applymovement(RIVAL_B,BiancaBackToCouch_Movement)
     waitmovement(0)
-    fadedefaultbgm
+    playbgm(MUS_BIRCH_LAB,TRUE)
     releaseall
     end
 }
@@ -136,7 +139,6 @@ script BiancaAnnoyed_Dialogue {
 script ImProbablyBetterThanYou_ShouldUnpack {
     lockall
     setvar(VAR_0x8000, MUGSHOT_HILDA)
-    waitmovement(0)
     callnative(DrawMugshot)
     msgbox(gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue)
     callnative(ClearMugshot)
@@ -150,6 +152,8 @@ script ImProbablyBetterThanYou_ShouldUnpack {
 script Swagbag_WelcomeToSanFran_Dialogue {
     setvar(VAR_LITTLEROOT_INTRO_STATE,5)
 	lockall
+    playse(SE_PIN)
+    playbgm(MUS_RG_FOLLOW_ME,TRUE)
 	applymovement(OAK,Common_Movement_ExclamationMark)
     waitmovement(0)
     applymovement(OAK,OakGreetPlayer_Movement)
@@ -270,11 +274,12 @@ script Swagbag_DontLeaveSouthBay {
     callnative(ClearMugshot)
     applymovement(OAK,OakWalkToLaptop_Movement) 
     waitmovement(0)
+    playbgm(MUS_BIRCH_LAB,TRUE)
     releaseall
     end
 }
 
-script Swagbag_AnnoyOak { //TODO Set up actual question / answer for Oak here
+script Swagbag_AnnoyOak_Script { //TODO Set up actual question / answer for Oak here
     lockall
     faceplayer
     setvar(VAR_0x8000, MUGSHOT_LANCE)
@@ -285,6 +290,25 @@ script Swagbag_AnnoyOak { //TODO Set up actual question / answer for Oak here
     turnobject(OAK, DIR_EAST) 
     releaseall
     end
+}
+
+script TwoHoursAgo_ExplainLeague_Script {
+    lockall
+    faceplayer
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TwoHoursAgo_ExplainLeague_Text1,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    setobjectxy(OAK2,4,6)
+    turnobject(OAK, DIR_WEST) 
+    setobjectxy(PLAYER,1,6)
+    turnobject(PLAYER, DIR_EAST)
+    special(Script_DoRayquazaScene)
+    waitstate
+    special(SpawnCameraObject)
+    waitmovement(0)
 }
 
 movement WalkInside_Movement {
@@ -513,3 +537,6 @@ text gText_Swagbag_AnnoyOak_Text1 {
     format("In the actual game, this will be a list of questions that the player can ask and getr answers to. Tutorial level shit.")
 }
 
+text gText_TwoHoursAgo_ExplainLeague_Text1 {
+    format("Looks like Bianca woke up early and already left! They're eager, I'll give them that. I guess they didn't need the explanation... or breakfast.")
+}

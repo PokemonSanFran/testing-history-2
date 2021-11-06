@@ -18,7 +18,7 @@
   ],
   "warp_events": [
     {
-      "x": 9,
+      "x": 8,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_SOUTH_BAY_YCCOMPOUND_1F",
@@ -26,7 +26,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_LITTLEROOT_INTRO_STATE",
+      "var_value": "5",
+      "script": "FashionCaseReminder_Script"
+    }
   ],
   "bg_events": [
     {

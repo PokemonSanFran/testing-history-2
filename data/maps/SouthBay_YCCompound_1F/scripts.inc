@@ -58,6 +58,8 @@ ExploreSouthBay_ObjectSetUp::
 
 
 TwoHoursAgo_ObjectSetUp::
+	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm 3, 8, 6
 	return
 
 
@@ -68,6 +70,7 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement 1, BiancaIntro_Movement
@@ -126,7 +129,7 @@ ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue::
 	closemessage
 	applymovement 1, BiancaBackToCouch_Movement
 	waitmovement 0
-	fadedefaultbgm
+	playbgm MUS_BIRCH_LAB, TRUE
 	releaseall
 	end
 
@@ -158,7 +161,6 @@ BiancaAnnoyed_Dialogue_4:
 ImProbablyBetterThanYou_ShouldUnpack::
 	lockall
 	setvar VAR_0x8000, MUGSHOT_HILDA
-	waitmovement 0
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue
 	callnative ClearMugshot
@@ -172,6 +174,8 @@ ImProbablyBetterThanYou_ShouldUnpack::
 Swagbag_WelcomeToSanFran_Dialogue::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 5
 	lockall
+	playse SE_PIN
+	playbgm MUS_RG_FOLLOW_ME, TRUE
 	applymovement 3, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement 3, OakGreetPlayer_Movement
@@ -294,11 +298,12 @@ Swagbag_DontLeaveSouthBay::
 	callnative ClearMugshot
 	applymovement 3, OakWalkToLaptop_Movement
 	waitmovement 0
+	playbgm MUS_BIRCH_LAB, TRUE
 	releaseall
 	end
 
 
-Swagbag_AnnoyOak::
+Swagbag_AnnoyOak_Script::
 	lockall
 	faceplayer
 	setvar VAR_0x8000, MUGSHOT_LANCE
@@ -309,6 +314,23 @@ Swagbag_AnnoyOak::
 	turnobject 3, DIR_EAST
 	releaseall
 	end
+
+
+TwoHoursAgo_ExplainLeague_Script::
+	lockall
+	faceplayer
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	msgbox gText_TwoHoursAgo_ExplainLeague_Text1, MSGBOX_NPC
+	callnative ClearMugshot
+	closemessage
+	fadescreen FADE_TO_BLACK
+	setobjectxy 7, 4, 6
+	turnobject 3, DIR_WEST
+	setobjectxy OBJ_EVENT_ID_PLAYER, 1, 6
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	special Script_DoRayquazaScene
+	return
 
 
 WalkInside_Movement:
@@ -578,3 +600,9 @@ gText_Swagbag_AnnoyOak_Text1::
 	.string "In the actual game, this will be a list of\n"
 	.string "questions that the player can ask and\l"
 	.string "getr answers to. Tutorial level shit.$"
+
+gText_TwoHoursAgo_ExplainLeague_Text1::
+	.string "Looks like Bianca woke up early and\n"
+	.string "already left! They're eager, I'll give\l"
+	.string "them that. I guess they didn't need the\l"
+	.string "explanation... or breakfast.$"

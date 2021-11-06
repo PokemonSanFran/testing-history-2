@@ -1,3 +1,5 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
 mapscripts SouthBay_YCCompound_2F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_LITTLEROOT_INTRO_STATE, 2: Swagbag_IncrementIntroState_Script 
@@ -12,6 +14,7 @@ script RestInBed_Script {
 
     if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
         setvar(VAR_LITTLEROOT_INTRO_STATE,5)
+        setflag(FLAG_HIDE_YCCOMPOUND_OAK)
     }
 
     lockall
@@ -19,10 +22,9 @@ script RestInBed_Script {
     closemessage
     call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
     call(Common_EventScript_OutOfCenterPartyHeal)
-    
     checkitem(ITEM_FASHION_CASE,1)
     
-    if (var(VAR_RESULT) == 0) {
+    if (var(VAR_RESULT) == 0 && var(VAR_LITTLEROOT_INTRO_STATE) == 5) {
         giveitem(ITEM_FASHION_CASE)
     }
 
@@ -30,6 +32,31 @@ script RestInBed_Script {
     end
 }
 
+script FashionCaseReminder_Script {
+    if (!flag(FLAG_USED_FASHION_CASE)) {
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        waitmovement(0)
+        setflag(FLAG_USED_FASHION_CASE)
+        lockall
+        msgbox(gText_FashionCaseReminder_Text1)
+        special(OpenPokeblockCaseOnFeeder)
+        waitstate
+        msgbox(gText_FashionCaseReminder_Text2)
+        closemessage
+        release  
+        end
+    } else {
+        release
+    }
+}
+
 text gText_RestInBed_Text1 {
     format("Let's get some rest...when should we wake up?")
+}
+
+text gText_FashionCaseReminder_Text1 {
+    format("What outfit do you want to wear today?")
+}
+text gText_FashionCaseReminder_Text2 {
+    format("You can change your outfit whenever you like by using the Fashion Case, found in your Bag's Key Items pocket.")
 }
