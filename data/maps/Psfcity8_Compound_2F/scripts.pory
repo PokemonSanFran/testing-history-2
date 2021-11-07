@@ -33,6 +33,7 @@ script RestInBed_Script {
 }
 
 script FashionCaseReminder_Script {
+//TODO Add FLAG_USED_FASHION_CASE to the fashion case script when I write it... someday.
     if (!flag(FLAG_USED_FASHION_CASE)) {
         applymovement(PLAYER,Common_Movement_ExclamationMark)
         waitmovement(0)

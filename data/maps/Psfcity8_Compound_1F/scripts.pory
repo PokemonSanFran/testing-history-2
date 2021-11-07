@@ -227,7 +227,7 @@ script Swagbag_PokedexApps_Dialogue {
     msgbox(gText_Swagbag_PokedexApps_Text9)
     callnative(ClearMugshot)
     removeobject(5)
-    removeobject(6)
+    removeobject(4)
     playfanfare(MUS_OBTAIN_ITEM)  
     msgbox(gText_Swagbag_PokedexApps_Text10)
     waitmessage
