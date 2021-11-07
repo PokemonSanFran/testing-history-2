@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 
-mapscripts SouthBay_YCCompound_2F_MapScripts {
+mapscripts Psfcity8_Compound_2F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_LITTLEROOT_INTRO_STATE, 2: Swagbag_IncrementIntroState_Script 
     ]
@@ -14,7 +14,7 @@ script RestInBed_Script {
 
     if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
         setvar(VAR_LITTLEROOT_INTRO_STATE,5)
-        setflag(FLAG_HIDE_YCCOMPOUND_OAK)
+        setflag(FLAG_HIDE_COMPOUND_PSFBADGUY1)
     }
 
     lockall

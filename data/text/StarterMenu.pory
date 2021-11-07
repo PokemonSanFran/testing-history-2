@@ -4,17 +4,17 @@ script ShinyResetSupport {
     } elif (var(VAR_STARTER_MON)) {
         goto(StarterSelect_Menu) 
     } else {
-        goto(NewGameZoeyDialogue)
+        goto(NewGamePsfchara1Dialogue)
     }
 }
 
-script NewGameZoeyDialogue {
+script NewGamePsfchara1Dialogue {
     lockall
     applymovement(OBJ_EVENT_ID_PLAYER, Movement_SetInvisible)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
-    msgbox(gText_StarterSelectZoeyText1)
-    msgbox(gText_StarterSelectZoeyText2)
+    msgbox(gText_StarterSelectPsfchara1Text1)
+    msgbox(gText_StarterSelectPsfchara1Text2)
     callnative(ClearMugshot) 
     goto(NewGameNarratorDialogue)
 }
@@ -29,7 +29,6 @@ script NewGameNarratorDialogue {
 }
 
 //TODO hook up a fake summary screen to this. I think the correct implemention would be to use givecustommon to generate all nine starters, then fire up the summary screen to look at the first pokemon in the box. when the user makes a decision, delete the other pokemon in the box, and generate that SAME pokemon and put it in the first slot of the party.
-//
 //need to figure out how to store the personality ID of the generated mon(seems totally doable ngl)
 
 script StarterSelect_Menu {
@@ -150,21 +149,20 @@ script StarterSelectEnd {
 
 script StarterSelectEndWarp {
     lockall //TODO figure out why the game stalls without this
-    warpsilent(MAP_SOUTH_BAY,255,3,10)
-//    end
+    warpsilent(MAP_PSFCITY8,255,3,10)
 }
 
-text gText_StarterSelectZoeyText1 {
+text gText_StarterSelectPsfchara1Text1 {
     format("Almost packed and ready to go! I still can't believe I made it...")}
 
-text gText_StarterSelectZoeyText2 {
+text gText_StarterSelectPsfchara1Text2 {
     format("But the rules say I can only bring one of you guys. Man, this sucks. I promise, once we're the Champion, we'll come back for the rest of you! But for now, it's all business...")}
 
 text gText_StarterSelectGameText1 {
     format("Due to the delicate ecosystem of the region, Trainers are permitted to bring one Pokémon from outside the region into the region with them. Please choose one Pokémon to accompany you on your adventure. You will not be able to access the others during your playthrough, so choose wisely.")}
 
 text gText_StarterSelectGameText2 {
- format("Please choose a Pokémon to bring with you to SanFran.")}
+ format("Please choose a Pokémon to bring with you to Psfregion1.")}
 
 text gText_StarterSelectGameText3 {
  format("You have selected {STR_VAR_1}.")}
@@ -204,5 +202,5 @@ text gText_StarterAreYouSure {
  format("Are you sure you want to choose {STR_VAR_1}?")}
 
 text gText_StarterSelectionChosen {
- format("You chose to bring {STR_VAR_1} to SanFran.")}
+ format("You chose to bring {STR_VAR_1} to Psfregion1.")}
 

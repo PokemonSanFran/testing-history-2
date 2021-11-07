@@ -15,6 +15,6 @@
 #include "../gflib/string_util.h" // for ConvertToAscii()
 
 bool8 MySpecial(void){
-    ScriptContext1_SetupScript(Swagbag_WelcomeToSanFran_Dialogue);
+    ScriptContext1_SetupScript(Swagbag_WelcomeToPsfregion1_Dialogue);
     return TRUE;
 };

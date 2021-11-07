@@ -2,6 +2,7 @@
   "layouts_table_label": "gMapLayouts",
   "group_order": [
     "gMapGroup_TownsAndRoutes",
+    "gMapGroup_IndoorPsfcity8",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -37,6 +38,7 @@
     "gMapGroup_IndoorRoute124"
   ],
   "gMapGroup_TownsAndRoutes": [
+    "Psfcity8",
     "PetalburgCity",
     "SlateportCity",
     "MauvilleCity",
@@ -93,8 +95,12 @@
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125",
-    "SouthBay"
+    "Underwater_Route125"
+  ],
+  "gMapGroup_IndoorPsfcity8": [
+    "Psfcity8_Compound_1F",
+    "Psfcity8_Compound_2F",
+    "Psfcity8_PokemonCenter_1F"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -622,9 +628,6 @@
     "Route119_House"
   ],
   "gMapGroup_IndoorRoute124": [
-    "Route124_DivingTreasureHuntersHouse",
-    "SouthBay_YCCompound_1F",
-    "SouthBay_YCCompound_2F",
-    "SouthBay_PokemonCenter_1F"
+    "Route124_DivingTreasureHuntersHouse"
   ]
 }

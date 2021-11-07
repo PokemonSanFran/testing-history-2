@@ -215,7 +215,7 @@
 #define MAPSEC_NAVEL_ROCK                   0xD3
 #define MAPSEC_TRAINER_HILL                 0xD4
 #define MAPSEC_ORRE                         0xD5
-#define MAPSEC_SOUTH_BAY                    0xD6
+#define MAPSEC_PSFCITY8                    0xD6
 
 
 

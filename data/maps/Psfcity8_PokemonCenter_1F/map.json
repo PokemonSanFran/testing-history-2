@@ -1,9 +1,9 @@
 {
-  "id": "MAP_SOUTH_BAY_POKEMON_CENTER_1F",
-  "name": "SouthBay_PokemonCenter_1F",
-  "layout": "LAYOUT_SOUTH_BAY_POKEMON_CENTER_1F",
+  "id": "MAP_PSFCITY8_POKEMON_CENTER_1F",
+  "name": "Psfcity8_PokemonCenter_1F",
+  "layout": "LAYOUT_PSFCITY8_POKEMON_CENTER_1F",
   "music": "MUS_ABANDONED_SHIP",
-  "region_map_section": "MAPSEC_SOUTH_BAY",
+  "region_map_section": "MAPSEC_PSFCITY8",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -21,15 +21,15 @@
       "x": 6,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_SOUTH_BAY",
-      "dest_warp_id": 0
+      "dest_map": "MAP_PSFCITY8",
+      "dest_warp_id": 1
     },
     {
       "x": 7,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_SOUTH_BAY",
-      "dest_warp_id": 0
+      "dest_map": "MAP_PSFCITY8",
+      "dest_warp_id": 1
     }
   ],
   "coord_events": [

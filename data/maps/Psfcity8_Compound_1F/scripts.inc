@@ -1,70 +1,70 @@
-SouthBay_YCCompound_1F_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+Psfcity8_Compound_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
-SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	switch VAR_LITTLEROOT_INTRO_STATE
-	case 1, SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
-	case 3, SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
-	case 4, SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
-	case 5, SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+	case 1, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	case 3, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
+	case 4, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	case 5, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
 	return
 
-SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	goto ImProbablyBetterThanYou_ObjectSetUp
 	return
 
-SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
 	goto Swagbag_ObjectSetUp
 	return
 
-SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	goto ExploreSouthBay_ObjectSetUp
+Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	goto ExplorePsfcity8_ObjectSetUp
 	return
 
-SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
+Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
 	goto TwoHoursAgo_ObjectSetUp
 	return
 
-SouthBay_YCCompound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_BiancaIntro_Dialogue
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, Swagbag_WelcomeToSanFran_Dialogue
+Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_Psfchara4Intro_Dialogue
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, Swagbag_WelcomeToPsfregion1_Dialogue
 	.2byte 0
 
 
 ImProbablyBetterThanYou_ObjectSetUp::
-	setflag FLAG_HIDE_YCCOMPOUND_OAK2
-	setflag FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT
-	setflag FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT
-	setflag FLAG_HIDE_YCCOMPOUND_RIVALB2
-	setflag FLAG_HIDE_YCCOMPOUND_OAK
+	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1_2
+	setflag FLAG_HIDE_COMPOUND_POKEDEX_LEFT
+	setflag FLAG_HIDE_COMPOUND_POKEDEX_RIGHT
+	setflag FLAG_HIDE_COMPOUND_PSFCHARA4_2
+	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1
 	return
 
 
 Swagbag_ObjectSetUp::
-	clearflag FLAG_HIDE_YCCOMPOUND_RIVALB2
-	clearflag FLAG_HIDE_YCCOMPOUND_OAK
+	clearflag FLAG_HIDE_COMPOUND_PSFCHARA4_2
+	clearflag FLAG_HIDE_COMPOUND_PSFBADGUY1
 	turnobject 3, DIR_WEST
-	clearflag FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT
-	clearflag FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT
-	setflag FLAG_HIDE_YCCOMPOUND_RIVALB
+	clearflag FLAG_HIDE_COMPOUND_POKEDEX_LEFT
+	clearflag FLAG_HIDE_COMPOUND_POKEDEX_RIGHT
+	setflag FLAG_HIDE_COMPOUND_PSFCHARA4
 	return
 
 
-ExploreSouthBay_ObjectSetUp::
+ExplorePsfcity8_ObjectSetUp::
 	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_RIGHT
 	setobjectxyperm 3, 8, 6
 	return
 
 
 TwoHoursAgo_ObjectSetUp::
-	setflag FLAG_HIDE_YCCOMPOUND_OAK
-	clearflag FLAG_HIDE_YCCOMPOUND_OAK2
+	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1
+	clearflag FLAG_HIDE_COMPOUND_PSFBADGUY1_2
 	return
 
 
-ImProbablyBetterThanYou_BiancaIntro_Dialogue::
+ImProbablyBetterThanYou_Psfchara4Intro_Dialogue::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 2
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInside_Movement
@@ -74,89 +74,89 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement 1, BiancaIntro_Movement
+	applymovement 1, Psfchara4Intro_Movement
 	waitmovement 0
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text1
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text1
 	closemessage
 	goto ImProbablyBetterThanYou_KindaShabby_Dialogue
 	end
 
 
 ImProbablyBetterThanYou_KindaShabby_Dialogue::
-	applymovement 1, BiancaLookAround_Movement
+	applymovement 1, Psfchara4LookAround_Movement
 	waitmovement 3
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text2
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text2
 	closemessage
 	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text3
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text3
 	callnative ClearMugshot
 	closemessage
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text4
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text4
 	callnative ClearMugshot
 	closemessage
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text5
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text5
 	goto ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue
 	end
 
 
 ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue::
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text6
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text7
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text6
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text7
 	closemessage
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text8
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text8
 	callnative ClearMugshot
 	closemessage
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text9
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text9
 	goto ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue
 	end
 
 
 ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue::
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text10
-	applymovement 1, BiancaGestureUpstairs_Movement
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text10
+	applymovement 1, Psfchara4GestureUpstairs_Movement
 	waitmovement 0
-	msgbox gText_ImProbablyBetterThanYou_BiancaIntro_Text11
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text11
 	callnative ClearMugshot
 	closemessage
-	applymovement 1, BiancaBackToCouch_Movement
+	applymovement 1, Psfchara4BackToCouch_Movement
 	waitmovement 0
 	playbgm MUS_BIRCH_LAB, TRUE
 	releaseall
 	end
 
 
-BiancaAnnoyed_Dialogue::
+Psfchara4Annoyed_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	switch VAR_TEMP_0
-	case 1, BiancaAnnoyed_Dialogue_3
-	case 2, BiancaAnnoyed_Dialogue_4
-	msgbox gText_ImProbablyBetterThanYou_BiancaAnnoy_Text1, MSGBOX_NPC
+	case 1, Psfchara4Annoyed_Dialogue_3
+	case 2, Psfchara4Annoyed_Dialogue_4
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text1, MSGBOX_NPC
 	setvar VAR_TEMP_0, 1
-BiancaAnnoyed_Dialogue_1:
+Psfchara4Annoyed_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	return
 
-BiancaAnnoyed_Dialogue_3:
-	msgbox gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2, MSGBOX_NPC
+Psfchara4Annoyed_Dialogue_3:
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text2, MSGBOX_NPC
 	setvar VAR_TEMP_0, 2
-	goto BiancaAnnoyed_Dialogue_1
+	goto Psfchara4Annoyed_Dialogue_1
 
-BiancaAnnoyed_Dialogue_4:
-	msgbox gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3, MSGBOX_NPC
+Psfchara4Annoyed_Dialogue_4:
+	msgbox gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text3, MSGBOX_NPC
 	setvar VAR_TEMP_0, 2
-	goto BiancaAnnoyed_Dialogue_1
+	goto Psfchara4Annoyed_Dialogue_1
 
 
 ImProbablyBetterThanYou_ShouldUnpack::
@@ -172,34 +172,34 @@ ImProbablyBetterThanYou_ShouldUnpack::
 	end
 
 
-Swagbag_WelcomeToSanFran_Dialogue::
+Swagbag_WelcomeToPsfregion1_Dialogue::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 5
 	lockall
 	playse SE_PIN
 	playbgm MUS_RG_FOLLOW_ME, TRUE
 	applymovement 3, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement 3, OakGreetPlayer_Movement
+	applymovement 3, Psfbadguy1GreetPlayer_Movement
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	msgbox gText_Swagbag_WelcomeToSanFran_Text1
+	msgbox gText_Swagbag_WelcomeToPsfregion1_Text1
 	callnative ClearMugshot
 	closemessage
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_Swagbag_WelcomeToSanFran_Text2
+	msgbox gText_Swagbag_WelcomeToPsfregion1_Text2
 	callnative ClearMugshot
 	closemessage
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	msgbox gText_Swagbag_WelcomeToSanFran_Text3
+	msgbox gText_Swagbag_WelcomeToPsfregion1_Text3
 	callnative ClearMugshot
 	closemessage
-	applymovement 3, OakWalkToTable_Movement
+	applymovement 3, Psfbadguy1WalkToTable_Movement
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, PlayerFollowOakToTable_Movement
-	applymovement 2, BiancaFollowOakToTable_Movement
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerFollowPsfbadguy1ToTable_Movement
+	applymovement 2, Psfchara4FollowPsfbadguy1ToTable_Movement
 	waitmovement 0
 	goto Swagbag_LeagueStipend_Dialogue
 	end
@@ -276,40 +276,40 @@ Swagbag_WhenCanWeStart_Dialogue::
 	msgbox gText_Swagbag_WhenCanWeStart_Text4
 	callnative ClearMugshot
 	closemessage
-	applymovement 2, BiancaWalkOutside_Movement
+	applymovement 2, Psfchara4WalkOutside_Movement
 	waitmovement 0
 	playse SE_EXIT
 	removeobject 2
-	setflag FLAG_HIDE_YCCOMPOUND_RIVALB2
+	setflag FLAG_HIDE_COMPOUND_PSFCHARA4_2
 	delay 30
-	goto Swagbag_DontLeaveSouthBay
+	goto Swagbag_DontLeavePsfcity8
 	return
 
 
-Swagbag_DontLeaveSouthBay::
+Swagbag_DontLeavePsfcity8::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 4
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	msgbox gText_Swagbag_DontLeaveSouthBay_Text1
+	msgbox gText_Swagbag_DontLeavePsfcity8_Text1
 	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_Swagbag_DontLeaveSouthBay_Text2
+	msgbox gText_Swagbag_DontLeavePsfcity8_Text2
 	closemessage
 	callnative ClearMugshot
-	applymovement 3, OakWalkToLaptop_Movement
+	applymovement 3, Psfbadguy1WalkToLaptop_Movement
 	waitmovement 0
 	playbgm MUS_BIRCH_LAB, TRUE
 	releaseall
 	end
 
 
-Swagbag_AnnoyOak_Script::
+Swagbag_AnnoyPsfbadguy1_Script::
 	lockall
 	faceplayer
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	msgbox gText_Swagbag_AnnoyOak_Text1, MSGBOX_NPC
+	msgbox gText_Swagbag_AnnoyPsfbadguy1_Text1, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
 	turnobject 3, DIR_EAST
@@ -318,7 +318,7 @@ Swagbag_AnnoyOak_Script::
 
 
 TwoHoursAgo_TheyreEager_Dialogue::
-	goto_if_set FLAG_RECIEVED_LEFTOVERS_OAK, TwoHoursAgo_TheyreEager_Dialogue_2
+	goto_if_set FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1, TwoHoursAgo_TheyreEager_Dialogue_2
 TwoHoursAgo_TheyreEager_Dialogue_1:
 	lockall
 	faceplayer
@@ -354,7 +354,7 @@ TwoHoursAgo_ExplainLeague_Script::
 
 
 TwoHoursAgo_LeftoversPokeballs_Dialogue::
-	setflag FLAG_RECIEVED_LEFTOVERS_OAK
+	setflag FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1
 	callnative DrawMugshot
 	msgbox gText_TwoHoursAgo_LeftoversPokeballs_Text1, MSGBOX_NPC
 	lockall
@@ -389,17 +389,17 @@ WalkInside_Movement:
 	walk_up
 	step_end
 
-BiancaIntro_Movement:
+Psfchara4Intro_Movement:
 	walk_right
 	walk_down
 	step_end
 
-BiancaBackToCouch_Movement:
+Psfchara4BackToCouch_Movement:
 	walk_up
 	walk_left
 	step_end
 
-BiancaLookAround_Movement:
+Psfchara4LookAround_Movement:
 	face_left
 	delay_16
 	delay_16
@@ -411,20 +411,20 @@ BiancaLookAround_Movement:
 	delay_16
 	step_end
 
-BiancaGestureUpstairs_Movement:
+Psfchara4GestureUpstairs_Movement:
 	face_up
 	delay_16
 	delay_16
 	face_down
 	step_end
 
-OakGreetPlayer_Movement:
+Psfbadguy1GreetPlayer_Movement:
 	face_up
 	walk_up
 	delay_16
 	step_end
 
-OakWalkToTable_Movement:
+Psfbadguy1WalkToTable_Movement:
 	walk_down
 	walk_down
 	walk_right
@@ -433,7 +433,7 @@ OakWalkToTable_Movement:
 	face_down
 	step_end
 
-BiancaFollowOakToTable_Movement:
+Psfchara4FollowPsfbadguy1ToTable_Movement:
 	walk_down
 	walk_down
 	walk_down
@@ -445,7 +445,7 @@ BiancaFollowOakToTable_Movement:
 	face_up
 	step_end
 
-PlayerFollowOakToTable_Movement:
+PlayerFollowPsfbadguy1ToTable_Movement:
 	walk_down
 	walk_down
 	walk_down
@@ -457,7 +457,7 @@ PlayerFollowOakToTable_Movement:
 	face_up
 	step_end
 
-BiancaWalkOutside_Movement:
+Psfchara4WalkOutside_Movement:
 	walk_down
 	walk_left
 	walk_left
@@ -467,57 +467,57 @@ BiancaWalkOutside_Movement:
 	walk_down
 	step_end
 
-OakWalkToLaptop_Movement:
+Psfbadguy1WalkToLaptop_Movement:
 	walk_left
 	walk_left
 	walk_down
 	face_right
 	step_end
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text1::
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text1::
 	.string "You must be {PLAYER}. Great to meet\n"
 	.string "you!$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text2::
-	.string "Kinda shabby, huh? I thought YC was\n"
-	.string "pulling out all the stops for us, but\l"
-	.string "there's not a butler in sight! And no\l"
-	.string "private tennis courts! Not that I ever\l"
-	.string "play, but it's the principle of the\l"
-	.string "thing...$"
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text2::
+	.string "Kinda shabby, huh? I thought\n"
+	.string "Psfbadguy1 was pulling out all the\l"
+	.string "stops for us, but there's not a butler\l"
+	.string "in sight! And no private tennis courts!\l"
+	.string "Not that I ever play, but it's the\l"
+	.string "principle of the thing...$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text3::
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text3::
 	.string "Oh yeah uh, it's too bad...$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text4::
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text4::
 	.string "*internal* This house is friggin' huge!\n"
 	.string "Bigger than anywhere I've ever stayed,\l"
 	.string "that's for sure...$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text5::
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text5::
 	.string "My flight was earlier today, so I've just\n"
 	.string "been waiting around.$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text6::
-	.string "I ordered some food too - Doordash is\n"
-	.string "the same here as it is back in Unova,\l"
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text6::
+	.string "I ordered some food too - Psfcompany1\n"
+	.string "is the same here as it is back in Unova,\l"
 	.string "and my Mom's card is still on the\l"
 	.string "account! I'm sure she gets... points or\l"
 	.string "something, right?$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text7::
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text7::
 	.string "Where are you from?$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text8::
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text8::
 	.string "Agate Village, Orre. You?$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text9::
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text9::
 	.string "Undella Town, Unova. Agate, right? I\n"
 	.string "don't think I've heard of it... oh well.\l"
 	.string "Probably just as boring as Undella. SO\l"
 	.string "GLAD to be out of there!$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text10::
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text10::
 	.string "I know our orientation is supposed to\n"
 	.string "start soon, or something like that. I\l"
 	.string "took the bedroom on the left, so the\l"
@@ -525,34 +525,34 @@ gText_ImProbablyBetterThanYou_BiancaIntro_Text10::
 	.string "take the good one because I got here\l"
 	.string "first...$"
 
-gText_ImProbablyBetterThanYou_BiancaIntro_Text11::
+gText_ImProbablyBetterThanYou_Psfchara4Intro_Text11::
 	.string "but both rooms are exactly the same!\n"
 	.string "Let's chill after you unpack.$"
 
-gText_ImProbablyBetterThanYou_BiancaAnnoy_Text1::
+gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text1::
 	.string "Go check out your room!$"
 
-gText_ImProbablyBetterThanYou_BiancaAnnoy_Text2::
+gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text2::
 	.string "Oh man, are you trying to do some\n"
 	.string "bonding or something? Lemme finish\l"
 	.string "this truffle burger first...$"
 
-gText_ImProbablyBetterThanYou_BiancaAnnoy_Text3::
+gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text3::
 	.string "Nom nom nom...$"
 
 gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue::
 	.string "I should check out my room!$"
 
-gText_Swagbag_WelcomeToSanFran_Text1::
-	.string "{PLAYER}! Welcome to SanFran! How was\n"
-	.string "your flight?$"
+gText_Swagbag_WelcomeToPsfregion1_Text1::
+	.string "{PLAYER}! Welcome to Psfregion1! How\n"
+	.string "was your flight?$"
 
-gText_Swagbag_WelcomeToSanFran_Text2::
+gText_Swagbag_WelcomeToPsfregion1_Text2::
 	.string "Great! The private car from the airport\n"
 	.string "was a surprise, but everything was\l"
 	.string "super smooth, thanks!$"
 
-gText_Swagbag_WelcomeToSanFran_Text3::
+gText_Swagbag_WelcomeToPsfregion1_Text3::
 	.string "Excellent. You've already seen the\n"
 	.string "house, so we can skip the tour... I have\l"
 	.string "some presents!$"
@@ -576,7 +576,7 @@ gText_Swagbag_PokedexApps_Text1::
 	.string "functionality, but it wasn't quite\l"
 	.string "ready for primetime yet. By the time\l"
 	.string "you visit the Research Institute in\l"
-	.string "Berkeley, it might be ready.$"
+	.string "Psfcity11, it might be ready.$"
 
 gText_Swagbag_PokedexApps_Text2::
 	.string "Also, we've gone ahead and pre-loaded\n"
@@ -617,7 +617,8 @@ gText_Swagbag_PokedexApps_Text9::
 
 gText_Swagbag_PokedexApps_Text10::
 	.string "{PLAYER} received ¥50000, a PokéDex,\n"
-	.string "and new phone applications from YC.$"
+	.string "and new phone applications from\l"
+	.string "Psfbadguy1.$"
 
 gText_Swagbag_WhenCanWeStart_Text1::
 	.string "I believe that's everything. Questions?$"
@@ -636,25 +637,25 @@ gText_Swagbag_WhenCanWeStart_Text4::
 	.string "...fine. I'll explore the city a bit! Maybe\n"
 	.string "I'll see you around, {PLAYER}.$"
 
-gText_Swagbag_DontLeaveSouthBay_Text1::
+gText_Swagbag_DontLeavePsfcity8_Text1::
 	.string "{PLAYER}, I'll be working on my laptop\n"
 	.string "here for the next few hours. If you've\l"
 	.string "got any questions, don't be afraid to\l"
 	.string "ask. It's fine if you explore, but don't\l"
 	.string "leave South Bay, okay?$"
 
-gText_Swagbag_DontLeaveSouthBay_Text2::
-	.string "Got it. Thanks for all the help, Oak! I'm\n"
-	.string "still so stoked for the opportunity\l"
-	.string "and the Challenge!$"
+gText_Swagbag_DontLeavePsfcity8_Text2::
+	.string "Got it. Thanks for all the help,\n"
+	.string "Psfbadguy1! I'm still so stoked for the\l"
+	.string "opportunity and the Challenge!$"
 
-gText_Swagbag_AnnoyOak_Text1::
+gText_Swagbag_AnnoyPsfbadguy1_Text1::
 	.string "In the actual game, this will be a list of\n"
 	.string "questions that the player can ask and\l"
 	.string "getr answers to. Tutorial level shit.$"
 
 gText_TwoHoursAgo_TheyreEager_Text1::
-	.string "Looks like Bianca woke up early and\n"
+	.string "Looks like Psfchara4 woke up early and\n"
 	.string "already left! They're eager, I'll give\l"
 	.string "them that. I guess they didn't need the\l"
 	.string "explanation... or breakfast.$"
@@ -670,26 +671,26 @@ gText_TwoHoursAgo_ExplainLeague_Text1::
 gText_TwoHoursAgo_ExplainLeague_Text2::
 	.string "The tournament will test all of your\n"
 	.string "skills as a Trainer, but the win will\l"
-	.string "become a YC sponsored career Pokémon\l"
-	.string "Trainer.$"
+	.string "become a Psfbadguy1 sponsored career\l"
+	.string "Pokémon Trainer.$"
 
 gText_TwoHoursAgo_ExplainLeague_Text3::
-	.string "We expect the best from you and Bianca!\n"
-	.string "If you fail to qualify for the\l"
-	.string "Championship, we'll be terminating your\l"
-	.string "contract, and you'll be on your own...\l"
-	.string "but we know that won't be the case! So\l"
-	.string "don't worry.$"
+	.string "We expect the best from you and\n"
+	.string "Psfchara4! If you fail to qualify for\l"
+	.string "the Championship, we'll be terminating\l"
+	.string "your contract, and you'll be on your\l"
+	.string "own... but we know that won't be the\l"
+	.string "case! So don't worry.$"
 
 gText_TwoHoursAgo_LeftoversPokeballs_Text1::
-	.string "Cafe Venetia is always so delicious! Too\n"
-	.string "bad Bianca didn't eat with us. I guess\l"
-	.string "you can take their portion of the food,\l"
-	.string "and I bought you both PokéBalls, but\l"
-	.string "you can have theirs too!$"
+	.string "Psfcompany2 is always so delicious! Too\n"
+	.string "bad Psfchara4 didn't eat with us. I\l"
+	.string "guess you can take their portion of\l"
+	.string "the food, and I bought you both\l"
+	.string "PokéBalls, but you can have theirs too!$"
 
 gText_TwoHoursAgo_ExplainLeftovers_Text1::
 	.string "Your {STR_VAR_1} can hold those\n"
 	.string "Leftovers to restore HP during battle.\l"
 	.string "Now, you should get a move on! Don't let\l"
-	.string "Bianca get too far ahead of you!$"
+	.string "Psfchara4 get too far ahead of you!$"

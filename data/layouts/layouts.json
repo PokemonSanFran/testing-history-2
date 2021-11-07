@@ -4422,44 +4422,44 @@
       "blockdata_filepath": "data/layouts/BlackMap/map.bin"
     },
     {
-      "id": "LAYOUT_SOUTH_BAY",
-      "name": "SouthBay_Layout",
+      "id": "LAYOUT_PSFCITY8",
+      "name": "Psfcity8_Layout",
       "width": 19,
       "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
-      "border_filepath": "data/layouts/SouthBay/border.bin",
-      "blockdata_filepath": "data/layouts/SouthBay/map.bin"
+      "border_filepath": "data/layouts/Psfcity8/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity8/map.bin"
     },
     {
-      "id": "LAYOUT_SOUTH_BAY_YCCOMPOUND_1F",
-      "name": "SouthBay_YCCompound_1F_Layout",
+      "id": "LAYOUT_PSFCITY8_COMPOUND_1F",
+      "name": "Psfcity8_Compound_1F_Layout",
       "width": 12,
       "height": 10,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/SouthBay_YCCompound_1F/border.bin",
-      "blockdata_filepath": "data/layouts/SouthBay_YCCompound_1F/map.bin"
+      "border_filepath": "data/layouts/Psfcity8_Compound_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity8_Compound_1F/map.bin"
     },
     {
-      "id": "LAYOUT_SOUTH_BAY_YCCOMPOUND_2F",
-      "name": "SouthBay_YCCompound_2F_Layout",
+      "id": "LAYOUT_PSFCITY8_COMPOUND_2F",
+      "name": "Psfcity8_Compound_2F_Layout",
       "width": 12,
       "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BrendansMaysHouse",
-      "border_filepath": "data/layouts/SouthBay_YCCompound_2F/border.bin",
-      "blockdata_filepath": "data/layouts/SouthBay_YCCompound_2F/map.bin"
+      "border_filepath": "data/layouts/Psfcity8_Compound_2F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity8_Compound_2F/map.bin"
     },
     {
-      "id": "LAYOUT_SOUTH_BAY_POKEMON_CENTER_1F",
-      "name": "SouthBay_PokemonCenter_1F_Layout",
+      "id": "LAYOUT_PSFCITY8_POKEMON_CENTER_1F",
+      "name": "Psfcity8_PokemonCenter_1F_Layout",
       "width": 14,
       "height": 9,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_PokemonCenter",
-      "border_filepath": "data/layouts/SouthBay_PokemonCenter_1F/border.bin",
-      "blockdata_filepath": "data/layouts/SouthBay_PokemonCenter_1F/map.bin"
+      "border_filepath": "data/layouts/Psfcity8_PokemonCenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity8_PokemonCenter_1F/map.bin"
     }
   ]
 }

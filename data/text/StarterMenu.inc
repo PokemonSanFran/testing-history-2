@@ -2,7 +2,7 @@ ShinyResetSupport::
 	goto_if_set FLAG_SYS_POKEMON_GET, ShinyResetSupport_1
 	compare VAR_STARTER_MON, 0
 	goto_if_ne ShinyResetSupport_2
-	goto NewGameZoeyDialogue
+	goto NewGamePsfchara1Dialogue
 	return
 
 ShinyResetSupport_1:
@@ -14,13 +14,13 @@ ShinyResetSupport_2:
 	return
 
 
-NewGameZoeyDialogue::
+NewGamePsfchara1Dialogue::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, Movement_SetInvisible
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_StarterSelectZoeyText1
-	msgbox gText_StarterSelectZoeyText2
+	msgbox gText_StarterSelectPsfchara1Text1
+	msgbox gText_StarterSelectPsfchara1Text2
 	callnative ClearMugshot
 	goto NewGameNarratorDialogue
 	return
@@ -219,15 +219,15 @@ StarterSelectEnd::
 
 StarterSelectEndWarp::
 	lockall
-	warpsilent MAP_SOUTH_BAY, 255, 3, 10
+	warpsilent MAP_PSFCITY8, 255, 3, 10
 	return
 
 
-gText_StarterSelectZoeyText1::
+gText_StarterSelectPsfchara1Text1::
 	.string "Almost packed and ready to go! I still\n"
 	.string "can't believe I made it...$"
 
-gText_StarterSelectZoeyText2::
+gText_StarterSelectPsfchara1Text2::
 	.string "But the rules say I can only bring one\n"
 	.string "of you guys. Man, this sucks. I promise,\l"
 	.string "once we're the Champion, we'll come\l"
@@ -246,7 +246,7 @@ gText_StarterSelectGameText1::
 
 gText_StarterSelectGameText2::
 	.string "Please choose a Pokémon to bring with\n"
-	.string "you to SanFran.$"
+	.string "you to Psfregion1.$"
 
 gText_StarterSelectGameText3::
 	.string "You have selected {STR_VAR_1}.$"
@@ -300,4 +300,4 @@ gText_StarterAreYouSure::
 
 gText_StarterSelectionChosen::
 	.string "You chose to bring {STR_VAR_1} to\n"
-	.string "SanFran.$"
+	.string "Psfregion1.$"

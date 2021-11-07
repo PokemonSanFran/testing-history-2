@@ -650,14 +650,14 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_HIDE_YCCOMPOUND_RIVALB   0x264 // Previously Unused Flag
-#define FLAG_HIDE_YCCOMPOUND_POKEDEX_LEFT 0x265 //Previously Unused Flag
-#define FLAG_HIDE_YCCOMPOUND_POKEDEX_RIGHT 0x266 //Previously Unused Flag
-#define FLAG_HIDE_YCCOMPOUND_RIVALB2    0x267 //Previously Unused Flag
-#define FLAG_HIDE_YCCOMPOUND_OAK    0x268//Previously Unused Flag
-#define FLAG_HIDE_YCCOMPOUND_OAK2  0x269//Previously Unused Flag
+#define FLAG_HIDE_COMPOUND_PSFCHARA4   0x264 // Previously Unused Flag
+#define FLAG_HIDE_COMPOUND_POKEDEX_LEFT 0x265 //Previously Unused Flag
+#define FLAG_HIDE_COMPOUND_POKEDEX_RIGHT 0x266 //Previously Unused Flag
+#define FLAG_HIDE_COMPOUND_PSFCHARA4_2    0x267 //Previously Unused Flag
+#define FLAG_HIDE_COMPOUND_PSFBADGUY1    0x268//Previously Unused Flag
+#define FLAG_HIDE_COMPOUND_PSFBADGUY1_2  0x269//Previously Unused Flag
 #define FLAG_USED_FASHION_CASE  0x26A//Previously Unused Flag
-#define FLAG_RECIEVED_LEFTOVERS_OAK 0x26B //Previously Unused Flag
+#define FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1 0x26B //Previously Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag
 #define FLAG_UNUSED_0x26D  0x26D // Unused Flag
 #define FLAG_UNUSED_0x26E  0x26E // Unused Flag
