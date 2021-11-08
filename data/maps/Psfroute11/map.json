@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFROUTE17",
-  "name": "Psfroute17",
-  "layout": "LAYOUT_PSFROUTE17",
-  "music": "MUS_RG_ROUTE1",
-  "region_map_section": "MAPSEC_PSFROUTE17",
+  "id": "MAP_PSFROUTE11",
+  "name": "Psfroute11",
+  "layout": "LAYOUT_PSFROUTE11",
+  "music": "MUS_ROUTE104",
+  "region_map_section": "MAPSEC_PSFROUTE11",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -15,16 +15,6 @@
   "connections": [
     {
       "direction": "down",
-      "offset": 1,
-      "map": "MAP_PSFCITY8"
-    },
-    {
-      "direction": "up",
-      "offset": 0,
-      "map": "MAP_PSFCITYY16"
-    },
-    {
-      "direction": "up",
       "offset": 0,
       "map": "MAP_PSFCITYY16"
     }
