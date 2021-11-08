@@ -64,6 +64,8 @@
 #define MAP_UNDERWATER_ROUTE129 (55 | (0 << 8))
 #define MAP_UNDERWATER_ROUTE105 (56 | (0 << 8))
 #define MAP_UNDERWATER_ROUTE125 (57 | (0 << 8))
+#define MAP_PSFROUTE17          (58 | (0 << 8))
+#define MAP_PSFCITYY16          (59 | (0 << 8))
 
 // gMapGroup_IndoorPsfcity8
 #define MAP_PSFCITY8_COMPOUND_1F       (0 | (1 << 8))

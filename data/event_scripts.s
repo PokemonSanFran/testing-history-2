@@ -1070,3 +1070,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Psfcity8_Compound_1F/scripts.inc"
 	.include "data/maps/Psfcity8_Compound_2F/scripts.inc"
 	.include "data/maps/Psfcity8_PokemonCenter_1F/scripts.inc"
+
+	.include "data/maps/Psfroute17/scripts.inc"
+
+	.include "data/maps/Psfcityy16/scripts.inc"

@@ -4460,6 +4460,26 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/Psfcity8_PokemonCenter_1F/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity8_PokemonCenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE17",
+      "name": "Psfroute17_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute17/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute17/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITYY16",
+      "name": "Psfcityy16_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Psfcityy16/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcityy16/map.bin"
     }
   ]
 }
