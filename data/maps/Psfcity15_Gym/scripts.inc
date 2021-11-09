@@ -1,21 +1,25 @@
 Psfcity15_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	switch VAR_GYM_3_STATE
 	case 1, Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	case 2, Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
+	case 3, Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	return
 
 Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	goto ArrangementMuseum_ObjectSetUp
 	return
 
-Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_GYM_3_STATE, 2, Psfleader3StartBattle_ObjectSetup
-	map_script_2 VAR_GYM_3_STATE, 3, Psfleader3StartBattle_ObjectSetup
-	.2byte 0
+Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+	goto Psfleader3StartBattle_ObjectSetup
+	return
+
+Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	goto Psfleader3StartBattle_ObjectSetup
+	return
 
 
 ArrangementMuseum_ObjectSetUp::
@@ -24,7 +28,7 @@ ArrangementMuseum_ObjectSetUp::
 
 
 Psfleader3StartBattle_ObjectSetup::
-	setobjectxy 1, 10, 6
+	setobjectxyperm 1, 10, 6
 	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_LEFT
 	end
 
