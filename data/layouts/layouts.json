@@ -4530,6 +4530,16 @@
       "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/Psfcity15/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity15/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY15_GYM",
+      "name": "Psfcity15_Gym_Layout",
+      "width": 20,
+      "height": 9,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_OceanicMuseum",
+      "border_filepath": "data/layouts/Psfcity15_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity15_Gym/map.bin"
     }
   ]
 }
