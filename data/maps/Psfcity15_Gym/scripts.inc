@@ -1,5 +1,6 @@
 Psfcity15_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
@@ -11,10 +12,21 @@ Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	goto ArrangementMuseum_ObjectSetUp
 	return
 
+Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_GYM_3_STATE, 2, Psfleader3StartBattle_ObjectSetup
+	map_script_2 VAR_GYM_3_STATE, 3, Psfleader3StartBattle_ObjectSetup
+	.2byte 0
+
 
 ArrangementMuseum_ObjectSetUp::
 	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_LEFT
-	return
+	end
+
+
+Psfleader3StartBattle_ObjectSetup::
+	setobjectxy 1, 10, 6
+	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_LEFT
+	end
 
 
 AutomaticSolvePuzzle_Script::
@@ -36,8 +48,34 @@ Psfleader3WalkToBattlefield_Script::
 	end
 
 
+Psfleader3_Event_Script::
+	switch VAR_GYM_3_STATE
+	case 2, Psfleader3_Event_Script_2
+	case 3, Psfleader3_Event_Script_3
+	case 4, Psfleader3_Event_Script_4
+	case 5, Psfleader3_Event_Script_5
+	return
+
+Psfleader3_Event_Script_2:
+	goto MuseumArrangement_Dialogue
+	return
+
+Psfleader3_Event_Script_3:
+	goto Psfleader3StartBattle_Script
+	return
+
+Psfleader3_Event_Script_4:
+	goto Psfleader3PostBattle_Dialogue
+	return
+
+Psfleader3_Event_Script_5:
+	goto Psfleader3PostBattle_Dialogue2
+	return
+
+
 MuseumArrangement_Dialogue::
 	lockall
+	setvar VAR_GYM_3_STATE, 3
 	setvar VAR_0x8000, MUGSHOT_WHITNEY
 	callnative DrawMugshot
 	msgbox gText_MuseumArrangement_Text1
@@ -51,11 +89,61 @@ MuseumArrangement_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_MuseumArrangement_Text3
 	callnative ClearMugshot
-	closemessage
 	setvar VAR_0x8000, MUGSHOT_WHITNEY
 	callnative DrawMugshot
-	trainerbattle_single TRAINER_CALVIN_1, gText_MuseumArrangement_Text4, MuseumArrangement_Dialogue_Text_0, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
+	msgbox gText_MuseumArrangement_Text4
+	callnative ClearMugshot
+	call Common_EventScript_SaveGame
+	closemessage
+	goto Psfleader3StartBattle_Script
 	return
+
+
+Psfleader3StartBattle_Script::
+	givecustommon SPECIES_ARCEUS, 100, ITEM_LIFE_ORB, ITEM_CHERISH_BALL, NATURE_JOLLY, , 4, 252, , 252, , , 31, 31, 31, 31, 31, 31, MOVE_SWORDS_DANCE, MOVE_EXTREME_SPEED, MOVE_SHADOW_CLAW, MOVE_EARTHQUAKE
+	setvar VAR_0x8000, MUGSHOT_WHITNEY
+	callnative DrawMugshot
+	trainerbattle_single TRAINER_WATTSON_1, gText_MuseumArrangement_Text5, gText_Psfleader3_1_HumanWin, Psfleader3Defeated_Script, NO_MUSIC
+	return
+
+
+Psfleader3Defeated_Script::
+	lockall
+	setflag FLAG_BADGE03_GET
+	setvar VAR_GYM_3_STATE, 4
+	setvar VAR_0x8000, MUGSHOT_WHITNEY
+	callnative DrawMugshot
+	msgbox gText_Psfleader3PostBattle_Text1
+	closemessage
+	callnative ClearMugshot
+	msgbox gText_Psfleader3BadgeGet_Text1
+	call Common_EventScript_PlayGymBadgeFanfare
+	giveitem ITEM_TM34
+	releaseall
+	end
+
+
+Psfleader3PostBattle_Dialogue::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_WHITNEY
+	callnative DrawMugshot
+	msgbox gText_Psfleader3PostBattle_Text2, MSGBOX_NPC
+	callnative ClearMugshot
+	closemessage
+	releaseall
+	setvar VAR_GYM_3_STATE, 5
+	end
+
+
+Psfleader3PostBattle_Dialogue2::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_WHITNEY
+	callnative DrawMugshot
+	msgbox gText_Psfleader3PostBattle_Text3, MSGBOX_NPC
+	callnative ClearMugshot
+	closemessage
+	releaseall
+	end
 
 
 Psfleader3WalkToBattlefield_Movement:
@@ -85,9 +173,6 @@ Psfleader3LookAround_Movement:
 AutomaticSolvePuzzle_Script_Text_0:
 	.string "Puzzle is solved. Leave and come back.$"
 
-MuseumArrangement_Dialogue_Text_0:
-	.string "yep$"
-
 gText_MuseumArrangement_Text1::
 	.string "I was thinking about the arrangement\n"
 	.string "of the museum. Museums tend to\l"
@@ -108,18 +193,38 @@ gText_MuseumArrangement_Text3::
 	.string "Uh... yup. Yeah. It's cool.$"
 
 gText_MuseumArrangement_Text4::
-	.string "I can hear the Orre in you. Enchanting.\n"
-	.string "Let's see how your socialization\l"
+	.string "I can hear the Orre in you. Enchanting.$"
+
+gText_MuseumArrangement_Text5::
+	.string "Let's see how your socialization\n"
 	.string "impacted your battling ability!$"
 
-gText_Psfleader4_1_AIWin::
+gText_Psfleader3_1_AIWin::
 	.string "Time to pay your tribute.$"
 
-gText_Psfleader4_1_HumanWin::
+gText_Psfleader3_1_HumanWin::
 	.string "If this battle is any indication, your\n"
 	.string "assimilation is going perfectly!$"
 
-gText_Psfleader4_1_PostBattle::
+gText_Psfleader3BadgeGet_Text1::
+	.string "You recieved the Psfbadge3 Badge!$"
+
+gText_Psfleader3PostBattle_Text1::
 	.string "Wow, I'll really need to re-think my\n"
 	.string "tactical core values. Awesome battle,\l"
 	.string "{PLAYER}!$"
+
+gText_Psfleader3PostBattle_Text2::
+	.string "That positive sanction means that\n"
+	.string "traded Pokémon up to Level Psflevel3\l"
+	.string "will obey you. Psfgymattacknum3 is like\l"
+	.string "a shaman in your pocket and will teach\l"
+	.string "Psfgymattacknum1, allowing your clan\l"
+	.string "to Psfgymattackdesc3.$"
+
+gText_Psfleader3PostBattle_Text3::
+	.string "We'll need to battle again in the future.\n"
+	.string "I want to increase our data set - a\l"
+	.string "sample size of one isn't enough for any\l"
+	.string "conclusions about our relative skill\l"
+	.string "levels!$"

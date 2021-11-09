@@ -3,22 +3,32 @@ const PSFLEADER3 = 1
 
 //VAR_GYM_3_STATE
 //1: Solved puzzles, ready to fight
-//2: Completed initial intro text with Psfleader3
-//3: Defeated Psfleader3
-
-//If FLAG_GYM_3_PUZZLE_SOLVED, they are ready to fight Psfleader3
+//2: Psfleader3 has walked to the battlefield
+//3: Saved in front of Psfleader3
+//4: Defeated Psfleader3
+//5: Hear explanation of badge and TM
 
 mapscripts Psfcity15_Gym_MapScripts {
-
     MAP_SCRIPT_ON_TRANSITION {
         switch (var(VAR_GYM_3_STATE)) {
             case 1: goto(ArrangementMuseum_ObjectSetUp)
         }
     }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        //VAR_GYM_3_STATE, 2: Psfleader3StartBattle_ObjectSetup
+        //VAR_GYM_3_STATE, 3: Psfleader3StartBattle_ObjectSetup
+    ]
 }
 
 script ArrangementMuseum_ObjectSetUp {
     setobjectmovementtype(PSFLEADER3, MOVEMENT_TYPE_FACE_LEFT)
+    end
+}
+
+script Psfleader3StartBattle_ObjectSetup {
+    setobjectxy(PSFLEADER3,10,6)
+    setobjectmovementtype(PSFLEADER3, MOVEMENT_TYPE_FACE_LEFT)
+    end
 }
 
 script AutomaticSolvePuzzle_Script {
@@ -39,8 +49,18 @@ script Psfleader3WalkToBattlefield_Script{
     end
 }
 
+script Psfleader3_Event_Script {
+    switch(var(VAR_GYM_3_STATE)) {
+        case 2: goto(MuseumArrangement_Dialogue)
+        case 3: goto(Psfleader3StartBattle_Script)
+        case 4: goto(Psfleader3PostBattle_Dialogue)  
+        case 5: goto(Psfleader3PostBattle_Dialogue2)  
+    }
+}
+
 script MuseumArrangement_Dialogue {
     lockall
+    setvar(VAR_GYM_3_STATE,3)
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     callnative(DrawMugshot)
     msgbox(gText_MuseumArrangement_Text1)
@@ -54,10 +74,59 @@ script MuseumArrangement_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_MuseumArrangement_Text3)
     callnative(ClearMugshot)
-    closemessage
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     callnative(DrawMugshot)
-    trainerbattle_single(TRAINER_CALVIN_1, gText_MuseumArrangement_Text4, "yep", FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC)
+    msgbox(gText_MuseumArrangement_Text4)
+    callnative(ClearMugshot)
+    call(Common_EventScript_SaveGame)
+    closemessage
+    goto (Psfleader3StartBattle_Script)
+}
+
+script Psfleader3StartBattle_Script {
+
+    givecustommon(SPECIES_ARCEUS,100,ITEM_LIFE_ORB,ITEM_CHERISH_BALL,NATURE_JOLLY,,4,252,,252,,,31,31,31,31,31,31,MOVE_SWORDS_DANCE,MOVE_EXTREME_SPEED,MOVE_SHADOW_CLAW,MOVE_EARTHQUAKE)
+    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
+    callnative(DrawMugshot)
+    trainerbattle_single(TRAINER_WATTSON_1, gText_MuseumArrangement_Text5,gText_Psfleader3_1_HumanWin, Psfleader3Defeated_Script, NO_MUSIC)
+}
+
+script Psfleader3Defeated_Script {
+    lockall
+    setflag(FLAG_BADGE03_GET)
+    setvar(VAR_GYM_3_STATE,4)
+    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
+    callnative(DrawMugshot)
+    msgbox(gText_Psfleader3PostBattle_Text1)
+    closemessage
+    callnative(ClearMugshot)
+    msgbox(gText_Psfleader3BadgeGet_Text1)
+	call(Common_EventScript_PlayGymBadgeFanfare)
+    giveitem(ITEM_TM34)
+    releaseall
+    end
+}
+
+script Psfleader3PostBattle_Dialogue{
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
+    callnative(DrawMugshot)
+    msgbox(gText_Psfleader3PostBattle_Text2,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    closemessage
+    releaseall
+    setvar(VAR_GYM_3_STATE,5)
+    end
+}
+script Psfleader3PostBattle_Dialogue2{
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
+    callnative(DrawMugshot)
+    msgbox(gText_Psfleader3PostBattle_Text3,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    closemessage
+    releaseall
+    end
 }
 
 movement Psfleader3WalkToBattlefield_Movement {
@@ -88,14 +157,28 @@ text gText_MuseumArrangement_Text3 {
     format("Uh... yup. Yeah. It's cool.")
 }
 text gText_MuseumArrangement_Text4 {
-    format("I can hear the Orre in you. Enchanting. Let's see how your socialization impacted your battling ability!")
+    format("I can hear the Orre in you. Enchanting.")
 }
-text gText_Psfleader4_1_AIWin {
+text gText_MuseumArrangement_Text5 {
+    format("Let's see how your socialization impacted your battling ability!")
+}
+text gText_Psfleader3_1_AIWin {
    format("Time to pay your tribute.") 
 }
-text gText_Psfleader4_1_HumanWin {
+text gText_Psfleader3_1_HumanWin {
    format("If this battle is any indication, your assimilation is going perfectly!") 
 }
-text gText_Psfleader4_1_PostBattle {
+text gText_Psfleader3BadgeGet_Text1 {
+    format("You recieved the Psfbadge3 Badge!")
+}
+
+text gText_Psfleader3PostBattle_Text1 {
     format("Wow, I'll really need to re-think my tactical core values. Awesome battle, {PLAYER}!")
+}
+
+text gText_Psfleader3PostBattle_Text2 {
+    format("That positive sanction means that traded Pokémon up to Level Psflevel3 will obey you. Psfgymattacknum3 is like a shaman in your pocket and will teach Psfgymattacknum1, allowing your clan to Psfgymattackdesc3.")
+}
+text gText_Psfleader3PostBattle_Text3 {
+    format("We'll need to battle again in the future. I want to increase our data set - a sample size of one isn't enough for any conclusions about our relative skill levels!")
 }
