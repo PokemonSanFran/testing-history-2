@@ -114,6 +114,8 @@ Psfleader3StartBattle_Script::
 Psfleader3Defeated_Script::
 	lockall
 	setflag FLAG_BADGE03_GET
+	clearflag FLAG_HIDE_PSFCITY15_PSFBADBOSS
+	setvar VAR_PSFCITY15_STATE, 1
 	setvar VAR_GYM_3_STATE, 4
 	setvar VAR_0x8000, MUGSHOT_WHITNEY
 	callnative DrawMugshot
