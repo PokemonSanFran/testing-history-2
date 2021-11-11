@@ -1086,3 +1086,9 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Psfcity15/scripts.inc"
 
 	.include "data/maps/Psfcity15_Gym/scripts.inc"
+
+	.include "data/maps/Psfcity15_PsfbadguyTower_1F/scripts.inc"
+
+	.include "data/maps/Psfcity15_PsfbadguyTower_10F/scripts.inc"
+
+	.include "data/maps/Psfcity15_PsfbadguyTower_7F/scripts.inc"

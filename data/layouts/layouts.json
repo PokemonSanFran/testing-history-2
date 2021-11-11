@@ -4540,6 +4540,36 @@
       "secondary_tileset": "gTileset_OceanicMuseum",
       "border_filepath": "data/layouts/Psfcity15_Gym/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity15_Gym/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY15_PSFBADGUY_TOWER_1F",
+      "name": "Psfcity15_PsfbadguyTower_1F_Layout",
+      "width": 19,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfcity15_PsfbadguyTower_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity15_PsfbadguyTower_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY15_PSFBADGUY_TOWER_10F",
+      "name": "Psfcity15_PsfbadguyTower_10F_Layout",
+      "width": 19,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfcity15_PsfbadguyTower_10F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity15_PsfbadguyTower_10F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY15_PSFBADGUY_TOWER_7F",
+      "name": "Psfcity15_PsfbadguyTower_7F_Layout",
+      "width": 19,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfcity15_PsfbadguyTower_7F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity15_PsfbadguyTower_7F/map.bin"
     }
   ]
 }

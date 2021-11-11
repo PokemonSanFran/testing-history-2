@@ -111,7 +111,10 @@
     "Psfcity8_PokemonCenter_1F"
   ],
   "gMapGroup_IndoorPsfcity15": [
-    "Psfcity15_Gym"
+    "Psfcity15_Gym",
+    "Psfcity15_PsfbadguyTower_1F",
+    "Psfcity15_PsfbadguyTower_10F",
+    "Psfcity15_PsfbadguyTower_7F"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
