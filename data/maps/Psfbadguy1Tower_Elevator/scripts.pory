@@ -3,7 +3,7 @@ mapscripts Psfbadguy1Tower_Elevator_MapScripts {}
 script Psfbadguy1Tower_ElevatorAttendant_Script {
     lock
     faceplayer
-    setvar(VAR_0x8004,0)
+    //setvar(VAR_0x8004,0) //don't know what purpose this serves
     if (flag(FLAG_TEMP_2)){
         call(Psfbadguy1TowerElevator_EventScript_SetFloor)
     }
@@ -11,7 +11,7 @@ script Psfbadguy1Tower_ElevatorAttendant_Script {
 	special(ShowDeptStoreElevatorFloorSelect)
     message(gText_WhichFloorWouldYouLike)
     waitmessage
-    setvar(VAR_0x8004,0)
+    //setvar(VAR_0x8004,0) //don't know what purpose this serves
     specialvar(VAR_RESULT,GetDeptStoreDefaultFloorChoice)
     switch(var(VAR_RESULT))
        {

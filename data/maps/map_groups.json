@@ -452,7 +452,10 @@
     "TerraCave_Entrance",
     "TerraCave_End",
     "AlteringCave",
-    "MeteorFalls_StevensCave"
+    "MeteorFalls_StevensCave",
+    "Psfbadguy1Tower_2F",
+    "Psfbadguy1Tower_5F",
+    "Psfbadguy1Tower_11F"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

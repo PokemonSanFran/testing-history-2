@@ -4580,6 +4580,36 @@
       "secondary_tileset": "gTileset_BattleFrontier",
       "border_filepath": "data/layouts/Psfbadguy1Tower_Elevator/border.bin",
       "blockdata_filepath": "data/layouts/Psfbadguy1Tower_Elevator/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFBADGUY1TOWER_2F",
+      "name": "Psfbadguy1Tower_2F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfbadguy1Tower_2F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFBADGUY1TOWER_5F",
+      "name": "Psfbadguy1Tower_5F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfbadguy1Tower_5F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_5F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFBADGUY1TOWER_11F",
+      "name": "Psfbadguy1Tower_11F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfbadguy1Tower_11F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_11F/map.bin"
     }
   ]
 }

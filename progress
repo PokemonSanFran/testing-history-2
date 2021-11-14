@@ -1,4 +1,7 @@
 * * * * * * * * * * * *
+NOV 12
+src/field_specials.c - working on the elevator script
+
 NOV 9
 need to support when you leave and come back. map scripts?
 

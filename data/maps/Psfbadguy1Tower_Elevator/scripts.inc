@@ -6,8 +6,7 @@ Psfbadguy1Tower_ElevatorAttendant_Script::
 	lock
 	faceplayer
 	setvar VAR_0x8004, 0
-	goto_if_set FLAG_TEMP_2, Psfbadguy1Tower_ElevatorAttendant_Script_2
-Psfbadguy1Tower_ElevatorAttendant_Script_1:
+	call Psfbadguy1TowerElevator_EventScript_SetFloor
 	copyvar VAR_0x8006, VAR_DEPT_STORE_FLOOR
 	special ShowDeptStoreElevatorFloorSelect
 	message gText_WhichFloorWouldYouLike
@@ -15,37 +14,33 @@ Psfbadguy1Tower_ElevatorAttendant_Script_1:
 	setvar VAR_0x8004, 0
 	specialvar VAR_RESULT, GetDeptStoreDefaultFloorChoice
 	switch VAR_RESULT
-	case 0, Psfbadguy1Tower_ElevatorAttendant_Script_6
-	case 1, Psfbadguy1Tower_ElevatorAttendant_Script_7
-	case 2, Psfbadguy1Tower_ElevatorAttendant_Script_8
-	case 3, Psfbadguy1Tower_ElevatorAttendant_Script_9
-	case 4, Psfbadguy1Tower_ElevatorAttendant_Script_10
-Psfbadguy1Tower_ElevatorAttendant_Script_4:
+	case 0, Psfbadguy1Tower_ElevatorAttendant_Script_3
+	case 1, Psfbadguy1Tower_ElevatorAttendant_Script_4
+	case 2, Psfbadguy1Tower_ElevatorAttendant_Script_5
+	case 3, Psfbadguy1Tower_ElevatorAttendant_Script_6
+	case 4, Psfbadguy1Tower_ElevatorAttendant_Script_7
+Psfbadguy1Tower_ElevatorAttendant_Script_1:
 	end
 
-Psfbadguy1Tower_ElevatorAttendant_Script_2:
-	call Psfbadguy1TowerElevator_EventScript_SetFloor
+Psfbadguy1Tower_ElevatorAttendant_Script_3:
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_1
+
+Psfbadguy1Tower_ElevatorAttendant_Script_4:
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom4th
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_1
+
+Psfbadguy1Tower_ElevatorAttendant_Script_5:
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom3rd
 	goto Psfbadguy1Tower_ElevatorAttendant_Script_1
 
 Psfbadguy1Tower_ElevatorAttendant_Script_6:
-	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th
-	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom2nd
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_1
 
 Psfbadguy1Tower_ElevatorAttendant_Script_7:
-	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom4th
-	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
-
-Psfbadguy1Tower_ElevatorAttendant_Script_8:
-	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom3rd
-	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
-
-Psfbadguy1Tower_ElevatorAttendant_Script_9:
-	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom2nd
-	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
-
-Psfbadguy1Tower_ElevatorAttendant_Script_10:
 	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom1st
-	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_1
 
 
 Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th::
