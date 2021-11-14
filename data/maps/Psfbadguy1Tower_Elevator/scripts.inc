@@ -1,0 +1,134 @@
+Psfbadguy1Tower_Elevator_MapScripts::
+	.byte 0
+
+
+Psfbadguy1Tower_ElevatorAttendant_Script::
+	lock
+	faceplayer
+	setvar VAR_0x8004, 0
+	goto_if_set FLAG_TEMP_2, Psfbadguy1Tower_ElevatorAttendant_Script_2
+Psfbadguy1Tower_ElevatorAttendant_Script_1:
+	copyvar VAR_0x8006, VAR_DEPT_STORE_FLOOR
+	special ShowDeptStoreElevatorFloorSelect
+	message gText_WhichFloorWouldYouLike
+	waitmessage
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, GetDeptStoreDefaultFloorChoice
+	switch VAR_RESULT
+	case 0, Psfbadguy1Tower_ElevatorAttendant_Script_6
+	case 1, Psfbadguy1Tower_ElevatorAttendant_Script_7
+	case 2, Psfbadguy1Tower_ElevatorAttendant_Script_8
+	case 3, Psfbadguy1Tower_ElevatorAttendant_Script_9
+	case 4, Psfbadguy1Tower_ElevatorAttendant_Script_10
+Psfbadguy1Tower_ElevatorAttendant_Script_4:
+	end
+
+Psfbadguy1Tower_ElevatorAttendant_Script_2:
+	call Psfbadguy1TowerElevator_EventScript_SetFloor
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_1
+
+Psfbadguy1Tower_ElevatorAttendant_Script_6:
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+
+Psfbadguy1Tower_ElevatorAttendant_Script_7:
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom4th
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+
+Psfbadguy1Tower_ElevatorAttendant_Script_8:
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom3rd
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+
+Psfbadguy1Tower_ElevatorAttendant_Script_9:
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom2nd
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+
+Psfbadguy1Tower_ElevatorAttendant_Script_10:
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom1st
+	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+
+
+Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th::
+	multichoicedefault 0, 0, MULTI_FLOORS, 0, FALSE
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+	end
+
+
+Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom4th::
+	multichoicedefault 0, 0, MULTI_FLOORS, 1, FALSE
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+	end
+
+
+Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom3rd::
+	multichoicedefault 0, 0, MULTI_FLOORS, 2, FALSE
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+	end
+
+
+Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom2nd::
+	multichoicedefault 0, 0, MULTI_FLOORS, 3, FALSE
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+	end
+
+
+Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom1st::
+	multichoicedefault 0, 0, MULTI_FLOORS, 4, FALSE
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+	end
+
+
+Psfbadguy1TowerElevator_EventScript_ChooseFloor::
+	switch VAR_RESULT
+	case 4, Psfbadguy1TowerElevator_EventScript_ChooseFloor_3
+	case ( MULTI_B_PRESSED ), Psfbadguy1TowerElevator_EventScript_ChooseFloor_4
+Psfbadguy1TowerElevator_EventScript_ChooseFloor_1:
+	end
+
+Psfbadguy1TowerElevator_EventScript_ChooseFloor_3:
+	goto Psfbadguy1TowerElevator_EventScript_1stFloor
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor_1
+
+Psfbadguy1TowerElevator_EventScript_ChooseFloor_4:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor_1
+
+
+Psfbadguy1TowerElevator_EventScript_1stFloor::
+	setvar VAR_0x8006, DEPT_STORE_FLOORNUM_1F
+	setdynamicwarp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F, 255, 2, 1
+	compare VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto_if_eq Psfbadguy1TowerElevator_EventScript_1stFloor_2
+Psfbadguy1TowerElevator_EventScript_1stFloor_1:
+	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	end
+
+Psfbadguy1TowerElevator_EventScript_1stFloor_2:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_1stFloor_1
+
+
+Psfbadguy1TowerElevator_EventScript_ExitFloorSelect::
+	special CloseDeptStoreElevatorWindow
+	release
+	end
+
+
+Psfbadguy1TowerElevator_EventScript_MoveElevator::
+	special CloseDeptStoreElevatorWindow
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 0
+	waitse
+	special MoveElevator
+	waitstate
+	setflag FLAG_TEMP_2
+	return
+
+
+Psfbadguy1TowerElevator_EventScript_SetFloor::
+	special SetDeptStoreFloor
+	return
+

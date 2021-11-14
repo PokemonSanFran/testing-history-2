@@ -163,6 +163,7 @@
 #define MAPSEC_PSFROUTE72	0x9F
 #define MAPSEC_PSFROUTE76	0xA0
 #define MAPSEC_PSFCAVE9	0xA1
+#define MAPSEC_PSFBADGUY1TOWER   0xA2
 //#define MAPSEC_VIRIDIAN_CITY                0x59
 //#define MAPSEC_PEWTER_CITY                  0x5A
 //#define MAPSEC_CERULEAN_CITY                0x5B

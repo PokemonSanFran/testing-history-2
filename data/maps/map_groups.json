@@ -111,11 +111,7 @@
     "Psfcity8_PokemonCenter_1F"
   ],
   "gMapGroup_IndoorPsfcity15": [
-    "Psfcity15_Gym",
-    "Psfcity15_PsfbadguyTower_1F",
-    "Psfcity15_PsfbadguyTower_10F",
-    "Psfcity15_PsfbadguyTower_7F",
-    "PsfbadguyTower_Elevator"
+    "Psfcity15_Gym"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -345,6 +341,10 @@
     "Route121_SafariZoneEntrance"
   ],
   "gMapGroup_Dungeons": [
+    "Psfbadguy1Tower_1F",
+    "Psfbadguy1Tower_10F",
+    "Psfbadguy1Tower_7F",
+    "Psfbadguy1Tower_Elevator",
     "MeteorFalls_1F_1R",
     "MeteorFalls_1F_2R",
     "MeteorFalls_B1F_1R",

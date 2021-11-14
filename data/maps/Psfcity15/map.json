@@ -46,7 +46,7 @@
       "x": 2,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY15_PSFBADGUY_TOWER_1F",
+      "dest_map": "MAP_PSFBADGUY1_TOWER_1F",
       "dest_warp_id": 0
     }
   ],

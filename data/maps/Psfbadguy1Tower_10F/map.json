@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY15_PSFBADGUY_TOWER_10F",
-  "name": "Psfcity15_PsfbadguyTower_10F",
-  "layout": "LAYOUT_PSFCITY15_PSFBADGUY_TOWER_10F",
+  "id": "MAP_PSFBADGUY1_TOWER_10F",
+  "name": "Psfbadguy1Tower_10F",
+  "layout": "LAYOUT_PSFBADGUY1_TOWER_10F",
   "music": "MUS_RG_SILPH",
-  "region_map_section": "MAPSEC_PSFCITY15",
+  "region_map_section": "MAPSEC_PSFBADGUY1TOWER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
