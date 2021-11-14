@@ -654,10 +654,10 @@
 #define FLAG_HIDE_COMPOUND_POKEDEX_LEFT 0x265 //Previously Unused Flag
 #define FLAG_HIDE_COMPOUND_POKEDEX_RIGHT 0x266 //Previously Unused Flag
 #define FLAG_HIDE_COMPOUND_PSFCHARA4_2    0x267 //Previously Unused Flag
-#define FLAG_HIDE_COMPOUND_PSFBADGUY1    0x268//Previously Unused Flag
-#define FLAG_HIDE_COMPOUND_PSFBADGUY1_2  0x269//Previously Unused Flag
+#define FLAG_HIDE_COMPOUND_PSFBADADMIN1    0x268//Previously Unused Flag
+#define FLAG_HIDE_COMPOUND_PSFBADADMIN1_2  0x269//Previously Unused Flag
 #define FLAG_USED_FASHION_CASE  0x26A//Previously Unused Flag
-#define FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1 0x26B //Previously Unused Flag
+#define FLAG_RECIEVED_LEFTOVERS_PSFBADADMIN1 0x26B //Previously Unused Flag
 #define FLAG_SOLVED_GYM_3_PUZZLE  0x26C // Previously Unused Flag
 #define FLAG_HIDE_PSFCITY15_PSFBADBOSS 0x26D// Previously Unused Flag
 #define FLAG_UNUSED_0x26E  0x26E // Unused Flag

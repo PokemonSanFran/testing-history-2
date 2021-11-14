@@ -88,7 +88,7 @@ text gText_Psfchara1YouWorkAt_Text1 {
 }
 
 text gText_PsfbadbossWhereMyManners_Text1 {
-	format("Hah! Oh my, I'm sorry. Where are my manners? My name is Rose, and I'm the Psfbadguy1 League Commissioner.")
+	format("Hah! Oh my, I'm sorry. Where are my manners? My name is Psfbadboss, and I'm the Psfbadguy1 League Commissioner.")
 }
 
 text gText_Psfchara1ShouldHaveKnown_Text1 {

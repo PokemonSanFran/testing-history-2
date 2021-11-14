@@ -1,0 +1,478 @@
+../pokeemerald_egg/data/scripts/cutscene_psfbadguy1_acceptance_letter.inc:5:	.string "We are pleased to inform you that your application to the PSFBADGUY1 Kickstart Grant has been accepted. \n"
+../pokeemerald_egg/data/scripts/cutscene_psfbadguy1_acceptance_letter.inc:7:	.string "As a PSFBADGUY1 Kickstart Grant recipient, you will:\n"
+../pokeemerald_egg/data/scripts/cutscene_psfbadguy1_acceptance_letter.inc:9:	.string "Participate in the first season of the NEW PSFBADGUY1 Sanctioned Pokémon League!\n"
+../pokeemerald_egg/data/scripts/cutscene_psfbadguy1_acceptance_letter.inc:10:	.string "Receive all the benefits of joining the PSFBADGUY1 family, including housing, a stipend, and a toolkit of the best swag around.\n"
+../pokeemerald_egg/data/scripts/cutscene_psfbadguy1_acceptance_letter.inc:11:	.string "Please sign the attached documents and mail them to PSFBADGUY1 Headquarters by April 17, 2019, to finalize your acceptance.\n"
+../pokeemerald_egg/data/scripts/cutscene_psfbadguy1_acceptance_letter.inc:16:	.string "The PSFBADGUY1 Family\n"
+../pokeemerald_egg/data/layouts/layouts.json:4545:      "id": "LAYOUT_PSFBADGUY1_TOWER_1F",
+../pokeemerald_egg/data/layouts/layouts.json:4546:      "name": "Psfbadguy1Tower_1F_Layout",
+../pokeemerald_egg/data/layouts/layouts.json:4551:      "border_filepath": "data/layouts/Psfbadguy1Tower_1F/border.bin",
+../pokeemerald_egg/data/layouts/layouts.json:4552:      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_1F/map.bin"
+../pokeemerald_egg/data/layouts/layouts.json:4555:      "id": "LAYOUT_PSFBADGUY1_TOWER_10F",
+../pokeemerald_egg/data/layouts/layouts.json:4556:      "name": "Psfbadguy1Tower_10F_Layout",
+../pokeemerald_egg/data/layouts/layouts.json:4561:      "border_filepath": "data/layouts/Psfbadguy1Tower_10F/border.bin",
+../pokeemerald_egg/data/layouts/layouts.json:4562:      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_10F/map.bin"
+../pokeemerald_egg/data/layouts/layouts.json:4565:      "id": "LAYOUT_PSFBADGUY1_TOWER_7F",
+../pokeemerald_egg/data/layouts/layouts.json:4566:      "name": "Psfbadguy1Tower_7F_Layout",
+../pokeemerald_egg/data/layouts/layouts.json:4571:      "border_filepath": "data/layouts/Psfbadguy1Tower_7F/border.bin",
+../pokeemerald_egg/data/layouts/layouts.json:4572:      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_7F/map.bin"
+../pokeemerald_egg/data/layouts/layouts.json:4575:      "id": "LAYOUT_PSFBADGUY1_TOWER_ELEVATOR",
+../pokeemerald_egg/data/layouts/layouts.json:4576:      "name": "Psfbadguy1Tower_Elevator_Layout",
+../pokeemerald_egg/data/layouts/layouts.json:4581:      "border_filepath": "data/layouts/Psfbadguy1Tower_Elevator/border.bin",
+../pokeemerald_egg/data/layouts/layouts.json:4582:      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_Elevator/map.bin"
+../pokeemerald_egg/data/layouts/layouts.inc:6815:Psfbadguy1Tower_1F_Layout_Border::
+../pokeemerald_egg/data/layouts/layouts.inc:6816:	.incbin "data/layouts/Psfbadguy1Tower_1F/border.bin"
+../pokeemerald_egg/data/layouts/layouts.inc:6818:Psfbadguy1Tower_1F_Layout_Blockdata::
+../pokeemerald_egg/data/layouts/layouts.inc:6819:	.incbin "data/layouts/Psfbadguy1Tower_1F/map.bin"
+../pokeemerald_egg/data/layouts/layouts.inc:6822:Psfbadguy1Tower_1F_Layout::
+../pokeemerald_egg/data/layouts/layouts.inc:6825:	.4byte Psfbadguy1Tower_1F_Layout_Border
+../pokeemerald_egg/data/layouts/layouts.inc:6826:	.4byte Psfbadguy1Tower_1F_Layout_Blockdata
+../pokeemerald_egg/data/layouts/layouts.inc:6830:Psfbadguy1Tower_10F_Layout_Border::
+../pokeemerald_egg/data/layouts/layouts.inc:6831:	.incbin "data/layouts/Psfbadguy1Tower_10F/border.bin"
+../pokeemerald_egg/data/layouts/layouts.inc:6833:Psfbadguy1Tower_10F_Layout_Blockdata::
+../pokeemerald_egg/data/layouts/layouts.inc:6834:	.incbin "data/layouts/Psfbadguy1Tower_10F/map.bin"
+../pokeemerald_egg/data/layouts/layouts.inc:6837:Psfbadguy1Tower_10F_Layout::
+../pokeemerald_egg/data/layouts/layouts.inc:6840:	.4byte Psfbadguy1Tower_10F_Layout_Border
+../pokeemerald_egg/data/layouts/layouts.inc:6841:	.4byte Psfbadguy1Tower_10F_Layout_Blockdata
+../pokeemerald_egg/data/layouts/layouts.inc:6845:Psfbadguy1Tower_7F_Layout_Border::
+../pokeemerald_egg/data/layouts/layouts.inc:6846:	.incbin "data/layouts/Psfbadguy1Tower_7F/border.bin"
+../pokeemerald_egg/data/layouts/layouts.inc:6848:Psfbadguy1Tower_7F_Layout_Blockdata::
+../pokeemerald_egg/data/layouts/layouts.inc:6849:	.incbin "data/layouts/Psfbadguy1Tower_7F/map.bin"
+../pokeemerald_egg/data/layouts/layouts.inc:6852:Psfbadguy1Tower_7F_Layout::
+../pokeemerald_egg/data/layouts/layouts.inc:6855:	.4byte Psfbadguy1Tower_7F_Layout_Border
+../pokeemerald_egg/data/layouts/layouts.inc:6856:	.4byte Psfbadguy1Tower_7F_Layout_Blockdata
+../pokeemerald_egg/data/layouts/layouts.inc:6860:Psfbadguy1Tower_Elevator_Layout_Border::
+../pokeemerald_egg/data/layouts/layouts.inc:6861:	.incbin "data/layouts/Psfbadguy1Tower_Elevator/border.bin"
+../pokeemerald_egg/data/layouts/layouts.inc:6863:Psfbadguy1Tower_Elevator_Layout_Blockdata::
+../pokeemerald_egg/data/layouts/layouts.inc:6864:	.incbin "data/layouts/Psfbadguy1Tower_Elevator/map.bin"
+../pokeemerald_egg/data/layouts/layouts.inc:6867:Psfbadguy1Tower_Elevator_Layout::
+../pokeemerald_egg/data/layouts/layouts.inc:6870:	.4byte Psfbadguy1Tower_Elevator_Layout_Border
+../pokeemerald_egg/data/layouts/layouts.inc:6871:	.4byte Psfbadguy1Tower_Elevator_Layout_Blockdata
+../pokeemerald_egg/data/layouts/layouts_table.inc:461:	.4byte Psfbadguy1Tower_1F_Layout
+../pokeemerald_egg/data/layouts/layouts_table.inc:462:	.4byte Psfbadguy1Tower_10F_Layout
+../pokeemerald_egg/data/layouts/layouts_table.inc:463:	.4byte Psfbadguy1Tower_7F_Layout
+../pokeemerald_egg/data/layouts/layouts_table.inc:464:	.4byte Psfbadguy1Tower_Elevator_Layout
+../pokeemerald_egg/data/event_scripts.s:1090:	.include "data/maps/Psfbadguy1Tower_1F/scripts.inc"
+../pokeemerald_egg/data/event_scripts.s:1092:	.include "data/maps/Psfbadguy1Tower_10F/scripts.inc"
+../pokeemerald_egg/data/event_scripts.s:1094:	.include "data/maps/Psfbadguy1Tower_7F/scripts.inc"
+../pokeemerald_egg/data/event_scripts.s:1096:	.include "data/maps/Psfbadguy1Tower_Elevator/scripts.inc"
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/map.json:2:  "id": "MAP_PSFBADGUY1_TOWER_10F",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/map.json:3:  "name": "Psfbadguy1Tower_10F",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/map.json:4:  "layout": "LAYOUT_PSFBADGUY1_TOWER_10F",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/map.json:6:  "region_map_section": "MAPSEC_PSFBADGUY1TOWER",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/header.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_10F/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/header.inc:5:Psfbadguy1Tower_10F:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/header.inc:6:	.4byte Psfbadguy1Tower_10F_Layout
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/header.inc:7:	.4byte Psfbadguy1Tower_10F_MapEvents
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/header.inc:8:	.4byte Psfbadguy1Tower_10F_MapScripts
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/header.inc:11:	.2byte LAYOUT_PSFBADGUY1_TOWER_10F
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/header.inc:12:	.byte MAPSEC_PSFBADGUY1TOWER
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/scripts.pory:1:mapscripts Psfbadguy1Tower_10F_MapScripts {}
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/events.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_10F/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/events.inc:5:Psfbadguy1Tower_10F_MapEvents::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/connections.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_10F/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/connections.inc:5:Psfbadguy1Tower_10F_MapConnectionsList:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/connections.inc:7:Psfbadguy1Tower_10F_MapConnections:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/connections.inc:9:	.4byte Psfbadguy1Tower_10F_MapConnectionsList
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_10F/scripts.inc:1:Psfbadguy1Tower_10F_MapScripts::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/map.json:2:  "id": "MAP_PSFBADGUY1_TOWER_7F",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/map.json:3:  "name": "Psfbadguy1Tower_7F",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/map.json:4:  "layout": "LAYOUT_PSFBADGUY1_TOWER_7F",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/map.json:6:  "region_map_section": "MAPSEC_PSFBADGUY1TOWER",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/header.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_7F/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/header.inc:5:Psfbadguy1Tower_7F:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/header.inc:6:	.4byte Psfbadguy1Tower_7F_Layout
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/header.inc:7:	.4byte Psfbadguy1Tower_7F_MapEvents
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/header.inc:8:	.4byte Psfbadguy1Tower_7F_MapScripts
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/header.inc:11:	.2byte LAYOUT_PSFBADGUY1_TOWER_7F
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/header.inc:12:	.byte MAPSEC_PSFBADGUY1TOWER
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/scripts.pory:1:mapscripts Psfbadguy1Tower_7F_MapScripts {}
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/events.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_7F/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/events.inc:5:Psfbadguy1Tower_7F_MapEvents::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/connections.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_7F/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/connections.inc:5:Psfbadguy1Tower_7F_MapConnectionsList:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/connections.inc:7:Psfbadguy1Tower_7F_MapConnections:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/connections.inc:9:	.4byte Psfbadguy1Tower_7F_MapConnectionsList
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_7F/scripts.inc:1:Psfbadguy1Tower_7F_MapScripts::
+../pokeemerald_egg/data/maps/Psfcity15/map.json:49:      "dest_map": "MAP_PSFBADGUY1_TOWER_1F",
+../pokeemerald_egg/data/maps/Psfcity15/scripts.pory:87:	format("Oh uh, thanks a lot, that's very nice. I'm guessing you work at Psfbadguy1…?")
+../pokeemerald_egg/data/maps/Psfcity15/scripts.pory:91:	format("Hah! Oh my, I'm sorry. Where are my manners? My name is Rose, and I'm the Psfbadguy1 League Commissioner.")
+../pokeemerald_egg/data/maps/Psfcity15/scripts.pory:99:	format("Dream big {PLAYER}! That's the attitude we wanna see. We're big dreamers over at Psfbadguy1 too. That's why we built the Psfcompany3 Tower!")
+../pokeemerald_egg/data/maps/Psfcity15/events.inc:10:	warp_def 2, 4, 0, 0, MAP_PSFBADGUY1_TOWER_1F
+../pokeemerald_egg/data/maps/Psfcity15/scripts.inc:109:	.string "guessing you work at Psfbadguy1…?$"
+../pokeemerald_egg/data/maps/Psfcity15/scripts.inc:114:	.string "Psfbadguy1 League Commissioner.$"
+../pokeemerald_egg/data/maps/Psfcity15/scripts.inc:125:	.string "dreamers over at Psfbadguy1 too.\l"
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/map.json:53:      "script": "Swagbag_AnnoyPsfbadguy1_Script",
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/map.json:54:      "flag": "FLAG_HIDE_COMPOUND_PSFBADGUY1"
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/map.json:93:      "flag": "FLAG_HIDE_COMPOUND_PSFBADGUY1_2"
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:4:const PSFBADGUY1 = 3
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:5:const PSFBADGUY1_2 = 6
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:13:            case 4: goto(ExplorePsfcity8_ObjectSetUp) //Has met Psfbadguy1 and recieved items
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:24:    setflag(FLAG_HIDE_COMPOUND_PSFBADGUY1_2)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:28:    setflag(FLAG_HIDE_COMPOUND_PSFBADGUY1)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:32:    clearflag(FLAG_HIDE_COMPOUND_PSFBADGUY1)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:33:    turnobject(PSFBADGUY1, DIR_WEST) 
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:40:    setobjectmovementtype(PSFBADGUY1, MOVEMENT_TYPE_FACE_RIGHT) 
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:41:    setobjectxyperm(PSFBADGUY1,8,6)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:45:    setflag(FLAG_HIDE_COMPOUND_PSFBADGUY1)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:46:    clearflag(FLAG_HIDE_COMPOUND_PSFBADGUY1_2)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:158:	applymovement(PSFBADGUY1,Common_Movement_ExclamationMark)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:160:    applymovement(PSFBADGUY1,Psfbadguy1GreetPlayer_Movement)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:177:    applymovement(PSFBADGUY1,Psfbadguy1WalkToTable_Movement)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:179:    applymovement(PLAYER,PlayerFollowPsfbadguy1ToTable_Movement)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:180:    applymovement(PSFCHARA4_2,Psfchara4FollowPsfbadguy1ToTable_Movement)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:276:    applymovement(PSFBADGUY1,Psfbadguy1WalkToLaptop_Movement) 
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:283:script Swagbag_AnnoyPsfbadguy1_Script { //TODO Set up actual question a answer for Psfbadguy1 here
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:288:    msgbox(gText_Swagbag_AnnoyPsfbadguy1_Text1,MSGBOX_NPC)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:291:    turnobject(PSFBADGUY1, DIR_EAST) 
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:298:    if(flag(FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1)){
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:315:    setobjectxy(PSFBADGUY1_2,4,6)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:316:    turnobject(PSFBADGUY1_2,DIR_WEST)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:317:    setobjectmovementtype(PSFBADGUY1_2,MOVEMENT_TYPE_FACE_LEFT)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:336:    setflag(FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:404:movement Psfbadguy1GreetPlayer_Movement {
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:411:movement Psfbadguy1WalkToTable_Movement{
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:417:movement Psfchara4FollowPsfbadguy1ToTable_Movement{
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:423:movement PlayerFollowPsfbadguy1ToTable_Movement{
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:437:movement Psfbadguy1WalkToLaptop_Movement {
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:449:    format("Kinda shabby, huh? I thought Psfbadguy1 was pulling out all the stops for us, but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:561:    format("{PLAYER} received ¥50000, a PokéDex, and new phone applications from Psfbadguy1.")
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:585:    format("Got it. Thanks for all the help, Psfbadguy1! I'm still so stoked for the opportunity and the Challenge!")
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:588:text gText_Swagbag_AnnoyPsfbadguy1_Text1 {
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.pory:601:    format("The tournament will test all of your skills as a Trainer, but the win will become a Psfbadguy1 sponsored career Pokémon Trainer.")
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/events.inc:8:	object_event 3, OBJ_EVENT_GFX_PROF_BIRCH, 0, 7, 4, 3, MOVEMENT_TYPE_FACE_LEFT, 0, 0, TRAINER_TYPE_NONE, 0, Swagbag_AnnoyPsfbadguy1_Script, FLAG_HIDE_COMPOUND_PSFBADGUY1
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/events.inc:11:	object_event 6, OBJ_EVENT_GFX_PROF_BIRCH, 0, 6, 5, 3, MOVEMENT_TYPE_WANDER_AROUND, 0, 0, TRAINER_TYPE_NONE, 0, TwoHoursAgo_TheyreEager_Dialogue, FLAG_HIDE_COMPOUND_PSFBADGUY1_2
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:37:	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1_2
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:41:	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:47:	clearflag FLAG_HIDE_COMPOUND_PSFBADGUY1
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:62:	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:63:	clearflag FLAG_HIDE_COMPOUND_PSFBADGUY1_2
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:182:	applymovement 3, Psfbadguy1GreetPlayer_Movement
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:199:	applymovement 3, Psfbadguy1WalkToTable_Movement
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:201:	applymovement OBJ_EVENT_ID_PLAYER, PlayerFollowPsfbadguy1ToTable_Movement
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:202:	applymovement 2, Psfchara4FollowPsfbadguy1ToTable_Movement
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:300:	applymovement 3, Psfbadguy1WalkToLaptop_Movement
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:307:Swagbag_AnnoyPsfbadguy1_Script::
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:312:	msgbox gText_Swagbag_AnnoyPsfbadguy1_Text1, MSGBOX_NPC
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:321:	goto_if_set FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1, TwoHoursAgo_TheyreEager_Dialogue_2
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:363:	setflag FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:426:Psfbadguy1GreetPlayer_Movement:
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:432:Psfbadguy1WalkToTable_Movement:
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:441:Psfchara4FollowPsfbadguy1ToTable_Movement:
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:453:PlayerFollowPsfbadguy1ToTable_Movement:
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:475:Psfbadguy1WalkToLaptop_Movement:
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:488:	.string "Psfbadguy1 was pulling out all the\l"
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:626:	.string "Psfbadguy1.$"
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:654:	.string "Psfbadguy1! I'm still so stoked for the\l"
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:657:gText_Swagbag_AnnoyPsfbadguy1_Text1::
+../pokeemerald_egg/data/maps/Psfcity8_Compound_1F/scripts.inc:679:	.string "become a Psfbadguy1 sponsored career\l"
+../pokeemerald_egg/data/maps/headers.inc:255:	.include "data/maps/Psfbadguy1Tower_1F/header.inc"
+../pokeemerald_egg/data/maps/headers.inc:256:	.include "data/maps/Psfbadguy1Tower_10F/header.inc"
+../pokeemerald_egg/data/maps/headers.inc:257:	.include "data/maps/Psfbadguy1Tower_7F/header.inc"
+../pokeemerald_egg/data/maps/headers.inc:258:	.include "data/maps/Psfbadguy1Tower_Elevator/header.inc"
+../pokeemerald_egg/data/maps/groups.inc:308:	.4byte Psfbadguy1Tower_1F
+../pokeemerald_egg/data/maps/groups.inc:309:	.4byte Psfbadguy1Tower_10F
+../pokeemerald_egg/data/maps/groups.inc:310:	.4byte Psfbadguy1Tower_7F
+../pokeemerald_egg/data/maps/groups.inc:311:	.4byte Psfbadguy1Tower_Elevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/map.json:2:  "id": "MAP_PSFBADGUY1_TOWER_1F",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/map.json:3:  "name": "Psfbadguy1Tower_1F",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/map.json:4:  "layout": "LAYOUT_PSFBADGUY1_TOWER_1F",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/map.json:6:  "region_map_section": "MAPSEC_PSFBADGUY1TOWER",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/map.json:38:      "dest_map": "MAP_PSFBADGUY1_TOWER_ELEVATOR",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/header.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_1F/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/header.inc:5:Psfbadguy1Tower_1F:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/header.inc:6:	.4byte Psfbadguy1Tower_1F_Layout
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/header.inc:7:	.4byte Psfbadguy1Tower_1F_MapEvents
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/header.inc:8:	.4byte Psfbadguy1Tower_1F_MapScripts
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/header.inc:11:	.2byte LAYOUT_PSFBADGUY1_TOWER_1F
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/header.inc:12:	.byte MAPSEC_PSFBADGUY1TOWER
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/scripts.pory:1:mapscripts Psfbadguy1Tower_1F_MapScripts {}
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/events.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_1F/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/events.inc:5:Psfbadguy1Tower_1F_MapWarps:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/events.inc:8:	warp_def 15, 1, 0, 0, MAP_PSFBADGUY1_TOWER_ELEVATOR
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/events.inc:10:Psfbadguy1Tower_1F_MapEvents::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/events.inc:11:	map_events 0x0, Psfbadguy1Tower_1F_MapWarps, 0x0, 0x0
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/connections.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_1F/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/connections.inc:5:Psfbadguy1Tower_1F_MapConnectionsList:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/connections.inc:7:Psfbadguy1Tower_1F_MapConnections:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/connections.inc:9:	.4byte Psfbadguy1Tower_1F_MapConnectionsList
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_1F/scripts.inc:1:Psfbadguy1Tower_1F_MapScripts::
+../pokeemerald_egg/data/maps/events.inc:255:	.include "data/maps/Psfbadguy1Tower_1F/events.inc"
+../pokeemerald_egg/data/maps/events.inc:256:	.include "data/maps/Psfbadguy1Tower_10F/events.inc"
+../pokeemerald_egg/data/maps/events.inc:257:	.include "data/maps/Psfbadguy1Tower_7F/events.inc"
+../pokeemerald_egg/data/maps/events.inc:258:	.include "data/maps/Psfbadguy1Tower_Elevator/events.inc"
+../pokeemerald_egg/data/maps/map_groups.json:344:    "Psfbadguy1Tower_1F",
+../pokeemerald_egg/data/maps/map_groups.json:345:    "Psfbadguy1Tower_10F",
+../pokeemerald_egg/data/maps/map_groups.json:346:    "Psfbadguy1Tower_7F",
+../pokeemerald_egg/data/maps/map_groups.json:347:    "Psfbadguy1Tower_Elevator",
+../pokeemerald_egg/data/maps/connections.inc:255:	.include "data/maps/Psfbadguy1Tower_1F/connections.inc"
+../pokeemerald_egg/data/maps/connections.inc:256:	.include "data/maps/Psfbadguy1Tower_10F/connections.inc"
+../pokeemerald_egg/data/maps/connections.inc:257:	.include "data/maps/Psfbadguy1Tower_7F/connections.inc"
+../pokeemerald_egg/data/maps/connections.inc:258:	.include "data/maps/Psfbadguy1Tower_Elevator/connections.inc"
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/map.json:2:  "id": "MAP_PSFBADGUY1_TOWER_ELEVATOR",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/map.json:3:  "name": "Psfbadguy1Tower_Elevator",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/map.json:4:  "layout": "LAYOUT_PSFBADGUY1_TOWER_ELEVATOR",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/map.json:6:  "region_map_section": "MAPSEC_PSFBADGUY1TOWER",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/map.json:27:      "script": "Psfbadguy1Tower_ElevatorAttendant_Script",
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/header.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_Elevator/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/header.inc:5:Psfbadguy1Tower_Elevator:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/header.inc:6:	.4byte Psfbadguy1Tower_Elevator_Layout
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/header.inc:7:	.4byte Psfbadguy1Tower_Elevator_MapEvents
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/header.inc:8:	.4byte Psfbadguy1Tower_Elevator_MapScripts
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/header.inc:11:	.2byte LAYOUT_PSFBADGUY1_TOWER_ELEVATOR
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/header.inc:12:	.byte MAPSEC_PSFBADGUY1TOWER
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:1:mapscripts Psfbadguy1Tower_Elevator_MapScripts {}
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:3:script Psfbadguy1Tower_ElevatorAttendant_Script {
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:8:        call(Psfbadguy1TowerElevator_EventScript_SetFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:18:        case 0: goto(Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th )
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:19:        case 1: goto(Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom4th )
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:20:        case 2: goto(Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom3rd)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:21:        case 3: goto(Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom2nd )
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:22:        case 4: goto(Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom1st )
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:27:script Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th{ 
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:29:    goto(Psfbadguy1TowerElevator_EventScript_ChooseFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:32:script Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom4th{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:34:    goto(Psfbadguy1TowerElevator_EventScript_ChooseFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:37:script Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom3rd{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:39:    goto(Psfbadguy1TowerElevator_EventScript_ChooseFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:42:script Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom2nd{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:44:    goto(Psfbadguy1TowerElevator_EventScript_ChooseFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:47:script Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom1st{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:49:    goto(Psfbadguy1TowerElevator_EventScript_ChooseFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:53:script Psfbadguy1TowerElevator_EventScript_ChooseFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:55:        //case 0: goto(Psfbadguy1TowerElevator_EventScript_5thFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:56:        //case 1: goto(Psfbadguy1TowerElevator_EventScript_4thFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:57:        //case 2: goto(Psfbadguy1TowerElevator_EventScript_3rdFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:58:        //case 3: goto(Psfbadguy1TowerElevator_EventScript_2ndFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:59:        case 4: goto(Psfbadguy1TowerElevator_EventScript_1stFloor)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:60:        //case 5: goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:61:        case(MULTI_B_PRESSED): goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:66:script Psfbadguy1TowerElevator_EventScript_1stFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:70:        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:72:    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:74:	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:77:script Psfbadguy1TowerElevator_EventScript_2ndFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:81:        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:83:    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:85:	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:88:script Psfbadguy1TowerElevator_EventScript_3rdFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:92:        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:94:    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:96:	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:99:script Psfbadguy1TowerElevator_EventScript_4thFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:103:        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:105:    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:107:	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:110:script Psfbadguy1TowerElevator_EventScript_5thFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:114:        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:116:    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:118:	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:121:script Psfbadguy1TowerElevator_EventScript_6thFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:125:        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:127:    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:129:	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:132:script Psfbadguy1TowerElevator_EventScript_7thFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:136:        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:138:    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:140:	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:143:script Psfbadguy1TowerElevator_EventScript_8thFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:147:        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:149:    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:151:	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:154:script Psfbadguy1TowerElevator_EventScript_9thFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:158:        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:160:    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:162:	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:166:script Psfbadguy1TowerElevator_EventScript_ExitFloorSelect{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:172:script Psfbadguy1TowerElevator_EventScript_MoveElevator{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.pory:184:script Psfbadguy1TowerElevator_EventScript_SetFloor{
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/events.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_Elevator/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/events.inc:5:Psfbadguy1Tower_Elevator_ObjectEvents:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/events.inc:6:	object_event 1, OBJ_EVENT_GFX_TEALA, 0, 0, 5, 3, MOVEMENT_TYPE_FACE_RIGHT, 0, 0, TRAINER_TYPE_NONE, 0, Psfbadguy1Tower_ElevatorAttendant_Script, 0
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/events.inc:8:Psfbadguy1Tower_Elevator_MapWarps:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/events.inc:12:Psfbadguy1Tower_Elevator_MapEvents::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/events.inc:13:	map_events Psfbadguy1Tower_Elevator_ObjectEvents, Psfbadguy1Tower_Elevator_MapWarps, 0x0, 0x0
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/connections.inc:2:@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/Psfbadguy1Tower_Elevator/map.json
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/connections.inc:5:Psfbadguy1Tower_Elevator_MapConnectionsList:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/connections.inc:7:Psfbadguy1Tower_Elevator_MapConnections:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/connections.inc:9:	.4byte Psfbadguy1Tower_Elevator_MapConnectionsList
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:1:Psfbadguy1Tower_Elevator_MapScripts::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:5:Psfbadguy1Tower_ElevatorAttendant_Script::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:9:	goto_if_set FLAG_TEMP_2, Psfbadguy1Tower_ElevatorAttendant_Script_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:10:Psfbadguy1Tower_ElevatorAttendant_Script_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:18:	case 0, Psfbadguy1Tower_ElevatorAttendant_Script_6
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:19:	case 1, Psfbadguy1Tower_ElevatorAttendant_Script_7
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:20:	case 2, Psfbadguy1Tower_ElevatorAttendant_Script_8
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:21:	case 3, Psfbadguy1Tower_ElevatorAttendant_Script_9
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:22:	case 4, Psfbadguy1Tower_ElevatorAttendant_Script_10
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:23:Psfbadguy1Tower_ElevatorAttendant_Script_4:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:26:Psfbadguy1Tower_ElevatorAttendant_Script_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:27:	call Psfbadguy1TowerElevator_EventScript_SetFloor
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:28:	goto Psfbadguy1Tower_ElevatorAttendant_Script_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:30:Psfbadguy1Tower_ElevatorAttendant_Script_6:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:31:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:32:	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:34:Psfbadguy1Tower_ElevatorAttendant_Script_7:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:35:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom4th
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:36:	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:38:Psfbadguy1Tower_ElevatorAttendant_Script_8:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:39:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom3rd
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:40:	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:42:Psfbadguy1Tower_ElevatorAttendant_Script_9:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:43:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom2nd
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:44:	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:46:Psfbadguy1Tower_ElevatorAttendant_Script_10:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:47:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom1st
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:48:	goto Psfbadguy1Tower_ElevatorAttendant_Script_4
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:51:Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:53:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:57:Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom4th::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:59:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:63:Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom3rd::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:65:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:69:Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom2nd::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:71:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:75:Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom1st::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:77:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:81:Psfbadguy1TowerElevator_EventScript_ChooseFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:83:	case 4, Psfbadguy1TowerElevator_EventScript_ChooseFloor_3
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:84:	case ( MULTI_B_PRESSED ), Psfbadguy1TowerElevator_EventScript_ChooseFloor_4
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:85:Psfbadguy1TowerElevator_EventScript_ChooseFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:88:Psfbadguy1TowerElevator_EventScript_ChooseFloor_3:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:89:	goto Psfbadguy1TowerElevator_EventScript_1stFloor
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:90:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:92:Psfbadguy1TowerElevator_EventScript_ChooseFloor_4:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:93:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:94:	goto Psfbadguy1TowerElevator_EventScript_ChooseFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:97:Psfbadguy1TowerElevator_EventScript_1stFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:101:	goto_if_eq Psfbadguy1TowerElevator_EventScript_1stFloor_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:102:Psfbadguy1TowerElevator_EventScript_1stFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:103:	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:105:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:108:Psfbadguy1TowerElevator_EventScript_1stFloor_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:109:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:110:	goto Psfbadguy1TowerElevator_EventScript_1stFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:113:Psfbadguy1TowerElevator_EventScript_2ndFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:117:	goto_if_eq Psfbadguy1TowerElevator_EventScript_2ndFloor_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:118:Psfbadguy1TowerElevator_EventScript_2ndFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:119:	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:121:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:124:Psfbadguy1TowerElevator_EventScript_2ndFloor_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:125:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:126:	goto Psfbadguy1TowerElevator_EventScript_2ndFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:129:Psfbadguy1TowerElevator_EventScript_3rdFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:133:	goto_if_eq Psfbadguy1TowerElevator_EventScript_3rdFloor_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:134:Psfbadguy1TowerElevator_EventScript_3rdFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:135:	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:137:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:140:Psfbadguy1TowerElevator_EventScript_3rdFloor_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:141:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:142:	goto Psfbadguy1TowerElevator_EventScript_3rdFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:145:Psfbadguy1TowerElevator_EventScript_4thFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:149:	goto_if_eq Psfbadguy1TowerElevator_EventScript_4thFloor_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:150:Psfbadguy1TowerElevator_EventScript_4thFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:151:	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:153:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:156:Psfbadguy1TowerElevator_EventScript_4thFloor_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:157:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:158:	goto Psfbadguy1TowerElevator_EventScript_4thFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:161:Psfbadguy1TowerElevator_EventScript_5thFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:165:	goto_if_eq Psfbadguy1TowerElevator_EventScript_5thFloor_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:166:Psfbadguy1TowerElevator_EventScript_5thFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:167:	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:169:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:172:Psfbadguy1TowerElevator_EventScript_5thFloor_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:173:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:174:	goto Psfbadguy1TowerElevator_EventScript_5thFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:177:Psfbadguy1TowerElevator_EventScript_6thFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:181:	goto_if_eq Psfbadguy1TowerElevator_EventScript_6thFloor_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:182:Psfbadguy1TowerElevator_EventScript_6thFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:183:	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:185:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:188:Psfbadguy1TowerElevator_EventScript_6thFloor_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:189:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:190:	goto Psfbadguy1TowerElevator_EventScript_6thFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:193:Psfbadguy1TowerElevator_EventScript_7thFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:197:	goto_if_eq Psfbadguy1TowerElevator_EventScript_7thFloor_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:198:Psfbadguy1TowerElevator_EventScript_7thFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:199:	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:201:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:204:Psfbadguy1TowerElevator_EventScript_7thFloor_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:205:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:206:	goto Psfbadguy1TowerElevator_EventScript_7thFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:209:Psfbadguy1TowerElevator_EventScript_8thFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:213:	goto_if_eq Psfbadguy1TowerElevator_EventScript_8thFloor_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:214:Psfbadguy1TowerElevator_EventScript_8thFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:215:	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:217:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:220:Psfbadguy1TowerElevator_EventScript_8thFloor_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:221:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:222:	goto Psfbadguy1TowerElevator_EventScript_8thFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:225:Psfbadguy1TowerElevator_EventScript_9thFloor::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:229:	goto_if_eq Psfbadguy1TowerElevator_EventScript_9thFloor_2
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:230:Psfbadguy1TowerElevator_EventScript_9thFloor_1:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:231:	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:233:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:236:Psfbadguy1TowerElevator_EventScript_9thFloor_2:
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:237:	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:238:	goto Psfbadguy1TowerElevator_EventScript_9thFloor_1
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:241:Psfbadguy1TowerElevator_EventScript_ExitFloorSelect::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:247:Psfbadguy1TowerElevator_EventScript_MoveElevator::
+../pokeemerald_egg/data/maps/Psfbadguy1Tower_Elevator/scripts.inc:259:Psfbadguy1TowerElevator_EventScript_SetFloor::
+../pokeemerald_egg/data/maps/Psfcity8_Compound_2F/scripts.pory:17:        setflag(FLAG_HIDE_COMPOUND_PSFBADGUY1)
+../pokeemerald_egg/data/maps/Psfcity8_Compound_2F/scripts.inc:33:	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1
+../pokeemerald_egg/src/data/region_map/region_map_entries.h:264:static const u8 sMapName_Psfbadguy1Tower[] =_("Psfbadguy Tower");
+../pokeemerald_egg/src/data/region_map/region_map_entries.h:440:    [MAPSEC_PSFBADGUY1TOWER]     = {0, 0, 1, 1, sMapName_Psfbadguy1Tower},
+../pokeemerald_egg/include/constants/flags.h:657:#define FLAG_HIDE_COMPOUND_PSFBADGUY1    0x268//Previously Unused Flag
+../pokeemerald_egg/include/constants/flags.h:658:#define FLAG_HIDE_COMPOUND_PSFBADGUY1_2  0x269//Previously Unused Flag
+../pokeemerald_egg/include/constants/flags.h:660:#define FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1 0x26B //Previously Unused Flag
+../pokeemerald_egg/include/constants/region_map_sections.h:166:#define MAPSEC_PSFBADGUY1TOWER   0xA2
+../pokeemerald_egg/include/constants/layouts.h:462:#define LAYOUT_PSFBADGUY1_TOWER_1F 455
+../pokeemerald_egg/include/constants/layouts.h:463:#define LAYOUT_PSFBADGUY1_TOWER_10F 456
+../pokeemerald_egg/include/constants/layouts.h:464:#define LAYOUT_PSFBADGUY1_TOWER_7F 457
+../pokeemerald_egg/include/constants/layouts.h:465:#define LAYOUT_PSFBADGUY1_TOWER_ELEVATOR 458
+../pokeemerald_egg/include/constants/map_groups.h:311:#define MAP_PSFBADGUY1_TOWER_1F                      (0 | (26 << 8))
+../pokeemerald_egg/include/constants/map_groups.h:312:#define MAP_PSFBADGUY1_TOWER_10F                     (1 | (26 << 8))
+../pokeemerald_egg/include/constants/map_groups.h:313:#define MAP_PSFBADGUY1_TOWER_7F                      (2 | (26 << 8))
+../pokeemerald_egg/include/constants/map_groups.h:314:#define MAP_PSFBADGUY1_TOWER_ELEVATOR                (3 | (26 << 8))
+../pokeemerald_egg/pokeemerald.map:19651:                0x00000000082ef18d                Swagbag_AnnoyPsfbadguy1_Script
+../pokeemerald_egg/pokeemerald.map:19694:                0x00000000082effa4                gText_Swagbag_AnnoyPsfbadguy1_Text1
+../pokeemerald_egg/pokeemerald.map:19749:                0x00000000082f101a                Psfbadguy1Tower_1F_MapScripts
+../pokeemerald_egg/pokeemerald.map:19750:                0x00000000082f101b                Psfbadguy1Tower_10F_MapScripts
+../pokeemerald_egg/pokeemerald.map:19751:                0x00000000082f101c                Psfbadguy1Tower_7F_MapScripts
+../pokeemerald_egg/pokeemerald.map:19752:                0x00000000082f101d                Psfbadguy1Tower_Elevator_MapScripts
+../pokeemerald_egg/pokeemerald.map:19753:                0x00000000082f101e                Psfbadguy1Tower_ElevatorAttendant_Script
+../pokeemerald_egg/pokeemerald.map:19754:                0x00000000082f10bf                Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom5th
+../pokeemerald_egg/pokeemerald.map:19755:                0x00000000082f10cb                Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom4th
+../pokeemerald_egg/pokeemerald.map:19756:                0x00000000082f10d7                Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom3rd
+../pokeemerald_egg/pokeemerald.map:19757:                0x00000000082f10e3                Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom2nd
+../pokeemerald_egg/pokeemerald.map:19758:                0x00000000082f10ef                Psfbadguy1TowerElevator_EventScript_ChooseFloorFrom1st
+../pokeemerald_egg/pokeemerald.map:19759:                0x00000000082f10fb                Psfbadguy1TowerElevator_EventScript_ChooseFloor
+../pokeemerald_egg/pokeemerald.map:19760:                0x00000000082f112b                Psfbadguy1TowerElevator_EventScript_1stFloor
+../pokeemerald_egg/pokeemerald.map:19761:                0x00000000082f115d                Psfbadguy1TowerElevator_EventScript_2ndFloor
+../pokeemerald_egg/pokeemerald.map:19762:                0x00000000082f118f                Psfbadguy1TowerElevator_EventScript_3rdFloor
+../pokeemerald_egg/pokeemerald.map:19763:                0x00000000082f11c1                Psfbadguy1TowerElevator_EventScript_4thFloor
+../pokeemerald_egg/pokeemerald.map:19764:                0x00000000082f11f3                Psfbadguy1TowerElevator_EventScript_5thFloor
+../pokeemerald_egg/pokeemerald.map:19765:                0x00000000082f1225                Psfbadguy1TowerElevator_EventScript_6thFloor
+../pokeemerald_egg/pokeemerald.map:19766:                0x00000000082f1257                Psfbadguy1TowerElevator_EventScript_7thFloor
+../pokeemerald_egg/pokeemerald.map:19767:                0x00000000082f1289                Psfbadguy1TowerElevator_EventScript_8thFloor
+../pokeemerald_egg/pokeemerald.map:19768:                0x00000000082f12bb                Psfbadguy1TowerElevator_EventScript_9thFloor
+../pokeemerald_egg/pokeemerald.map:19769:                0x00000000082f12ed                Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+../pokeemerald_egg/pokeemerald.map:19770:                0x00000000082f12f2                Psfbadguy1TowerElevator_EventScript_MoveElevator
+../pokeemerald_egg/pokeemerald.map:19771:                0x00000000082f1309                Psfbadguy1TowerElevator_EventScript_SetFloor
+../pokeemerald_egg/pokeemerald.map:24566:                0x000000000850e8ac                Psfbadguy1Tower_1F_Layout_Border
+../pokeemerald_egg/pokeemerald.map:24567:                0x000000000850e8b4                Psfbadguy1Tower_1F_Layout_Blockdata
+../pokeemerald_egg/pokeemerald.map:24568:                0x000000000850ea0c                Psfbadguy1Tower_1F_Layout
+../pokeemerald_egg/pokeemerald.map:24569:                0x000000000850ea24                Psfbadguy1Tower_10F_Layout_Border
+../pokeemerald_egg/pokeemerald.map:24570:                0x000000000850ea2c                Psfbadguy1Tower_10F_Layout_Blockdata
+../pokeemerald_egg/pokeemerald.map:24571:                0x000000000850eb84                Psfbadguy1Tower_10F_Layout
+../pokeemerald_egg/pokeemerald.map:24572:                0x000000000850eb9c                Psfbadguy1Tower_7F_Layout_Border
+../pokeemerald_egg/pokeemerald.map:24573:                0x000000000850eba4                Psfbadguy1Tower_7F_Layout_Blockdata
+../pokeemerald_egg/pokeemerald.map:24574:                0x000000000850ecfc                Psfbadguy1Tower_7F_Layout
+../pokeemerald_egg/pokeemerald.map:24575:                0x000000000850ed14                Psfbadguy1Tower_Elevator_Layout_Border
+../pokeemerald_egg/pokeemerald.map:24576:                0x000000000850ed1c                Psfbadguy1Tower_Elevator_Layout_Blockdata
+../pokeemerald_egg/pokeemerald.map:24577:                0x000000000850ed58                Psfbadguy1Tower_Elevator_Layout
+../pokeemerald_egg/pokeemerald.map:26171:                0x00000000085c6668                Psfbadguy1Tower_1F_MapEvents
+../pokeemerald_egg/pokeemerald.map:26172:                0x00000000085c667c                Psfbadguy1Tower_10F_MapEvents
+../pokeemerald_egg/pokeemerald.map:26173:                0x00000000085c6690                Psfbadguy1Tower_7F_MapEvents
+../pokeemerald_egg/pokeemerald.map:26174:                0x00000000085c66cc                Psfbadguy1Tower_Elevator_MapEvents

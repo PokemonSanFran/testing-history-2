@@ -110,8 +110,9 @@ gText_Psfchara1YouWorkAt_Text1::
 
 gText_PsfbadbossWhereMyManners_Text1::
 	.string "Hah! Oh my, I'm sorry. Where are my\n"
-	.string "manners? My name is Rose, and I'm the\l"
-	.string "Psfbadguy1 League Commissioner.$"
+	.string "manners? My name is Psfbadboss, and\l"
+	.string "I'm the Psfbadguy1 League\l"
+	.string "Commissioner.$"
 
 gText_Psfchara1ShouldHaveKnown_Text1::
 	.string "Oh! I guess I should have known that.\n"

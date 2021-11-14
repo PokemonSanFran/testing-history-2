@@ -30,7 +30,7 @@ RestInBed_Script_4:
 
 RestInBed_Script_2:
 	setvar VAR_LITTLEROOT_INTRO_STATE, 5
-	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1
+	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
 	goto RestInBed_Script_1
 
 RestInBed_Script_5:

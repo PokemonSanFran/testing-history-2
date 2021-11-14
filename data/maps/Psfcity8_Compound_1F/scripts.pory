@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFCHARA4 = 1
 const PSFCHARA4_2 = 2
-const PSFBADGUY1 = 3
-const PSFBADGUY1_2 = 6
+const PSFBADADMIN1 = 3
+const PSFBADADMIN1_2 = 6
 
 mapscripts Psfcity8_Compound_1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -10,7 +10,7 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
         switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
             case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) //Started game, has not met Psfchara4
             case 3: goto(Swagbag_ObjectSetUp) //Has checked out bedroom
-            case 4: goto(ExplorePsfcity8_ObjectSetUp) //Has met Psfbadguy1 and recieved items
+            case 4: goto(ExplorePsfcity8_ObjectSetUp) //Has met Psfbadadmin1 and recieved items
             case 5: goto(TwoHoursAgo_ObjectSetUp) //Has slept in bed after getting Pokedex
         }
     }
@@ -21,29 +21,29 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
     ]
 }
 script ImProbablyBetterThanYou_ObjectSetUp {
-    setflag(FLAG_HIDE_COMPOUND_PSFBADGUY1_2)
+    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
     setflag(FLAG_HIDE_COMPOUND_POKEDEX_LEFT)
     setflag(FLAG_HIDE_COMPOUND_POKEDEX_RIGHT)
     setflag(FLAG_HIDE_COMPOUND_PSFCHARA4_2)
-    setflag(FLAG_HIDE_COMPOUND_PSFBADGUY1)
+    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
 }
 script Swagbag_ObjectSetUp {
     clearflag(FLAG_HIDE_COMPOUND_PSFCHARA4_2)
-    clearflag(FLAG_HIDE_COMPOUND_PSFBADGUY1)
-    turnobject(PSFBADGUY1, DIR_WEST) 
+    clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
+    turnobject(PSFBADADMIN1, DIR_WEST) 
     clearflag(FLAG_HIDE_COMPOUND_POKEDEX_LEFT)
     clearflag(FLAG_HIDE_COMPOUND_POKEDEX_RIGHT)
     setflag(FLAG_HIDE_COMPOUND_PSFCHARA4)
 }
 
 script ExplorePsfcity8_ObjectSetUp {
-    setobjectmovementtype(PSFBADGUY1, MOVEMENT_TYPE_FACE_RIGHT) 
-    setobjectxyperm(PSFBADGUY1,8,6)
+    setobjectmovementtype(PSFBADADMIN1, MOVEMENT_TYPE_FACE_RIGHT) 
+    setobjectxyperm(PSFBADADMIN1,8,6)
 }
 
 script TwoHoursAgo_ObjectSetUp {
-    setflag(FLAG_HIDE_COMPOUND_PSFBADGUY1)
-    clearflag(FLAG_HIDE_COMPOUND_PSFBADGUY1_2)
+    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
+    clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
 }
 
 script ImProbablyBetterThanYou_Psfchara4Intro_Dialogue {
@@ -155,9 +155,9 @@ script Swagbag_WelcomeToPsfregion1_Dialogue {
 	lockall
     playse(SE_PIN)
     playbgm(MUS_RG_FOLLOW_ME,TRUE)
-	applymovement(PSFBADGUY1,Common_Movement_ExclamationMark)
+	applymovement(PSFBADADMIN1,Common_Movement_ExclamationMark)
     waitmovement(0)
-    applymovement(PSFBADGUY1,Psfbadguy1GreetPlayer_Movement)
+    applymovement(PSFBADADMIN1,Psfbadadmin1GreetPlayer_Movement)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
@@ -174,10 +174,10 @@ script Swagbag_WelcomeToPsfregion1_Dialogue {
     msgbox(gText_Swagbag_WelcomeToPsfregion1_Text3)
     callnative(ClearMugshot)
     closemessage
-    applymovement(PSFBADGUY1,Psfbadguy1WalkToTable_Movement)
+    applymovement(PSFBADADMIN1,Psfbadadmin1WalkToTable_Movement)
     waitmovement(0)
-    applymovement(PLAYER,PlayerFollowPsfbadguy1ToTable_Movement)
-    applymovement(PSFCHARA4_2,Psfchara4FollowPsfbadguy1ToTable_Movement)
+    applymovement(PLAYER,PlayerFollowPsfbadadmin1ToTable_Movement)
+    applymovement(PSFCHARA4_2,Psfchara4FollowPsfbadadmin1ToTable_Movement)
     waitmovement(0)
     goto(Swagbag_LeagueStipend_Dialogue)
     end
@@ -273,29 +273,29 @@ script Swagbag_DontLeavePsfcity8 {
     msgbox(gText_Swagbag_DontLeavePsfcity8_Text2)
     closemessage
     callnative(ClearMugshot)
-    applymovement(PSFBADGUY1,Psfbadguy1WalkToLaptop_Movement) 
+    applymovement(PSFBADADMIN1,Psfbadadmin1WalkToLaptop_Movement) 
     waitmovement(0)
     playbgm(MUS_BIRCH_LAB,TRUE)
     releaseall
     end
 }
 
-script Swagbag_AnnoyPsfbadguy1_Script { //TODO Set up actual question a answer for Psfbadguy1 here
+script Swagbag_AnnoyPsfbadadmin1_Script { //TODO Set up actual question a answer for Psfbadadmin1 here
     lockall
     faceplayer
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
-    msgbox(gText_Swagbag_AnnoyPsfbadguy1_Text1,MSGBOX_NPC)
+    msgbox(gText_Swagbag_AnnoyPsfbadadmin1_Text1,MSGBOX_NPC)
     callnative(ClearMugshot)
     closemessage
-    turnobject(PSFBADGUY1, DIR_EAST) 
+    turnobject(PSFBADADMIN1, DIR_EAST) 
     releaseall
     end
 }
 
 script TwoHoursAgo_TheyreEager_Dialogue {
     
-    if(flag(FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1)){
+    if(flag(FLAG_RECIEVED_LEFTOVERS_PSFBADADMIN1)){
         goto(TwoHoursAgo_ExplainLeftovers_Dialouge)
     }
 
@@ -312,9 +312,9 @@ script TwoHoursAgo_TheyreEager_Dialogue {
 script TwoHoursAgo_ExplainLeague_SetUp {
     lock
     fadescreen(FADE_TO_BLACK)
-    setobjectxy(PSFBADGUY1_2,4,6)
-    turnobject(PSFBADGUY1_2,DIR_WEST)
-    setobjectmovementtype(PSFBADGUY1_2,MOVEMENT_TYPE_FACE_LEFT)
+    setobjectxy(PSFBADADMIN1_2,4,6)
+    turnobject(PSFBADADMIN1_2,DIR_WEST)
+    setobjectmovementtype(PSFBADADMIN1_2,MOVEMENT_TYPE_FACE_LEFT)
     setobjectxy(PLAYER,1,6)
     turnobject(PLAYER, DIR_EAST)
     call(CameraToPlayer_Movement)
@@ -333,7 +333,7 @@ script TwoHoursAgo_ExplainLeague_Script {
 }
 
 script TwoHoursAgo_LeftoversPokeballs_Dialogue {
-    setflag(FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1)
+    setflag(FLAG_RECIEVED_LEFTOVERS_PSFBADADMIN1)
     callnative(DrawMugshot)
     msgbox(gText_TwoHoursAgo_LeftoversPokeballs_Text1)
     lockall
@@ -401,26 +401,26 @@ movement Psfchara4GestureUpstairs_Movement {
     step_end
 }
 
-movement Psfbadguy1GreetPlayer_Movement {
+movement Psfbadadmin1GreetPlayer_Movement {
     face_up
     walk_up
     delay_16
     step_end
 }
 
-movement Psfbadguy1WalkToTable_Movement{
+movement Psfbadadmin1WalkToTable_Movement{
     walk_down * 2
     walk_right * 3
     face_down
     step_end
 }
-movement Psfchara4FollowPsfbadguy1ToTable_Movement{
+movement Psfchara4FollowPsfbadadmin1ToTable_Movement{
     walk_down * 3
     walk_right * 5
     face_up
     step_end
 }
-movement PlayerFollowPsfbadguy1ToTable_Movement{
+movement PlayerFollowPsfbadadmin1ToTable_Movement{
     walk_down * 5
     walk_right * 3
     face_up
@@ -434,7 +434,7 @@ movement Psfchara4WalkOutside_Movement {
     step_end
 }
 
-movement Psfbadguy1WalkToLaptop_Movement {
+movement Psfbadadmin1WalkToLaptop_Movement {
     walk_left * 2
     walk_down * 1
     face_right
@@ -558,7 +558,7 @@ text gText_Swagbag_PokedexApps_Text9{
 }
 
 text gText_Swagbag_PokedexApps_Text10{
-    format("{PLAYER} received ¥50000, a PokéDex, and new phone applications from Psfbadguy1.")
+    format("{PLAYER} received ¥50000, a PokéDex, and new phone applications from Psfbadadmin1.")
 }
 
 text gText_Swagbag_WhenCanWeStart_Text1{
@@ -582,10 +582,10 @@ text gText_Swagbag_DontLeavePsfcity8_Text1{
 }
 
 text gText_Swagbag_DontLeavePsfcity8_Text2{
-    format("Got it. Thanks for all the help, Psfbadguy1! I'm still so stoked for the opportunity and the Challenge!")
+    format("Got it. Thanks for all the help, Psfbadadmin1! I'm still so stoked for the opportunity and the Challenge!")
 }
 
-text gText_Swagbag_AnnoyPsfbadguy1_Text1 {
+text gText_Swagbag_AnnoyPsfbadadmin1_Text1 {
     format("In the actual game, this will be a list of questions that the player can ask and getr answers to. Tutorial level shit.")
 }
 

@@ -34,17 +34,17 @@ Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 ImProbablyBetterThanYou_ObjectSetUp::
-	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1_2
+	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1_2
 	setflag FLAG_HIDE_COMPOUND_POKEDEX_LEFT
 	setflag FLAG_HIDE_COMPOUND_POKEDEX_RIGHT
 	setflag FLAG_HIDE_COMPOUND_PSFCHARA4_2
-	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1
+	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
 	return
 
 
 Swagbag_ObjectSetUp::
 	clearflag FLAG_HIDE_COMPOUND_PSFCHARA4_2
-	clearflag FLAG_HIDE_COMPOUND_PSFBADGUY1
+	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
 	turnobject 3, DIR_WEST
 	clearflag FLAG_HIDE_COMPOUND_POKEDEX_LEFT
 	clearflag FLAG_HIDE_COMPOUND_POKEDEX_RIGHT
@@ -59,8 +59,8 @@ ExplorePsfcity8_ObjectSetUp::
 
 
 TwoHoursAgo_ObjectSetUp::
-	setflag FLAG_HIDE_COMPOUND_PSFBADGUY1
-	clearflag FLAG_HIDE_COMPOUND_PSFBADGUY1_2
+	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
+	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN1_2
 	return
 
 
@@ -179,7 +179,7 @@ Swagbag_WelcomeToPsfregion1_Dialogue::
 	playbgm MUS_RG_FOLLOW_ME, TRUE
 	applymovement 3, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement 3, Psfbadguy1GreetPlayer_Movement
+	applymovement 3, Psfbadadmin1GreetPlayer_Movement
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -196,10 +196,10 @@ Swagbag_WelcomeToPsfregion1_Dialogue::
 	msgbox gText_Swagbag_WelcomeToPsfregion1_Text3
 	callnative ClearMugshot
 	closemessage
-	applymovement 3, Psfbadguy1WalkToTable_Movement
+	applymovement 3, Psfbadadmin1WalkToTable_Movement
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, PlayerFollowPsfbadguy1ToTable_Movement
-	applymovement 2, Psfchara4FollowPsfbadguy1ToTable_Movement
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerFollowPsfbadadmin1ToTable_Movement
+	applymovement 2, Psfchara4FollowPsfbadadmin1ToTable_Movement
 	waitmovement 0
 	goto Swagbag_LeagueStipend_Dialogue
 	end
@@ -297,19 +297,19 @@ Swagbag_DontLeavePsfcity8::
 	msgbox gText_Swagbag_DontLeavePsfcity8_Text2
 	closemessage
 	callnative ClearMugshot
-	applymovement 3, Psfbadguy1WalkToLaptop_Movement
+	applymovement 3, Psfbadadmin1WalkToLaptop_Movement
 	waitmovement 0
 	playbgm MUS_BIRCH_LAB, TRUE
 	releaseall
 	end
 
 
-Swagbag_AnnoyPsfbadguy1_Script::
+Swagbag_AnnoyPsfbadadmin1_Script::
 	lockall
 	faceplayer
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	msgbox gText_Swagbag_AnnoyPsfbadguy1_Text1, MSGBOX_NPC
+	msgbox gText_Swagbag_AnnoyPsfbadadmin1_Text1, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
 	turnobject 3, DIR_EAST
@@ -318,7 +318,7 @@ Swagbag_AnnoyPsfbadguy1_Script::
 
 
 TwoHoursAgo_TheyreEager_Dialogue::
-	goto_if_set FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1, TwoHoursAgo_TheyreEager_Dialogue_2
+	goto_if_set FLAG_RECIEVED_LEFTOVERS_PSFBADADMIN1, TwoHoursAgo_TheyreEager_Dialogue_2
 TwoHoursAgo_TheyreEager_Dialogue_1:
 	lockall
 	faceplayer
@@ -360,7 +360,8 @@ TwoHoursAgo_ExplainLeague_Script::
 
 
 TwoHoursAgo_LeftoversPokeballs_Dialogue::
-	setflag FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1
+	setflag FLAG_RECIEVED_LEFTOVERS_PSFBADADMIN1
+	callnative DrawMugshot
 	msgbox gText_TwoHoursAgo_LeftoversPokeballs_Text1
 	lockall
 	giveitem ITEM_LEFTOVERS
@@ -423,13 +424,13 @@ Psfchara4GestureUpstairs_Movement:
 	face_down
 	step_end
 
-Psfbadguy1GreetPlayer_Movement:
+Psfbadadmin1GreetPlayer_Movement:
 	face_up
 	walk_up
 	delay_16
 	step_end
 
-Psfbadguy1WalkToTable_Movement:
+Psfbadadmin1WalkToTable_Movement:
 	walk_down
 	walk_down
 	walk_right
@@ -438,7 +439,7 @@ Psfbadguy1WalkToTable_Movement:
 	face_down
 	step_end
 
-Psfchara4FollowPsfbadguy1ToTable_Movement:
+Psfchara4FollowPsfbadadmin1ToTable_Movement:
 	walk_down
 	walk_down
 	walk_down
@@ -450,7 +451,7 @@ Psfchara4FollowPsfbadguy1ToTable_Movement:
 	face_up
 	step_end
 
-PlayerFollowPsfbadguy1ToTable_Movement:
+PlayerFollowPsfbadadmin1ToTable_Movement:
 	walk_down
 	walk_down
 	walk_down
@@ -472,7 +473,7 @@ Psfchara4WalkOutside_Movement:
 	walk_down
 	step_end
 
-Psfbadguy1WalkToLaptop_Movement:
+Psfbadadmin1WalkToLaptop_Movement:
 	walk_left
 	walk_left
 	walk_down
@@ -623,7 +624,7 @@ gText_Swagbag_PokedexApps_Text9::
 gText_Swagbag_PokedexApps_Text10::
 	.string "{PLAYER} received ¥50000, a PokéDex,\n"
 	.string "and new phone applications from\l"
-	.string "Psfbadguy1.$"
+	.string "Psfbadadmin1.$"
 
 gText_Swagbag_WhenCanWeStart_Text1::
 	.string "I believe that's everything. Questions?$"
@@ -651,10 +652,10 @@ gText_Swagbag_DontLeavePsfcity8_Text1::
 
 gText_Swagbag_DontLeavePsfcity8_Text2::
 	.string "Got it. Thanks for all the help,\n"
-	.string "Psfbadguy1! I'm still so stoked for the\l"
-	.string "opportunity and the Challenge!$"
+	.string "Psfbadadmin1! I'm still so stoked for\l"
+	.string "the opportunity and the Challenge!$"
 
-gText_Swagbag_AnnoyPsfbadguy1_Text1::
+gText_Swagbag_AnnoyPsfbadadmin1_Text1::
 	.string "In the actual game, this will be a list of\n"
 	.string "questions that the player can ask and\l"
 	.string "getr answers to. Tutorial level shit.$"

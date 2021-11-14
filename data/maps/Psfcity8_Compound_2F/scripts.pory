@@ -14,7 +14,7 @@ script RestInBed_Script {
 
     if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
         setvar(VAR_LITTLEROOT_INTRO_STATE,5)
-        setflag(FLAG_HIDE_COMPOUND_PSFBADGUY1)
+        setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
     }
 
     lockall
