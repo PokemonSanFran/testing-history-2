@@ -4570,6 +4570,16 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Psfcity15_PsfbadguyTower_7F/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity15_PsfbadguyTower_7F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFBADGUY_TOWER_ELEVATOR",
+      "name": "PsfbadguyTower_Elevator_Layout",
+      "width": 5,
+      "height": 6,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleFrontier",
+      "border_filepath": "data/layouts/PsfbadguyTower_Elevator/border.bin",
+      "blockdata_filepath": "data/layouts/PsfbadguyTower_Elevator/map.bin"
     }
   ]
 }
