@@ -85,7 +85,7 @@ script Psfbadguy1TowerElevator_EventScript_2ndFloor{
 	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
     end
 }
-script Psfbadguy1TowerElevator_EventScript_1stFloor{
+script Psfbadguy1TowerElevator_EventScript_3rdFloor{
     setvar(VAR_0x8006,DEPT_STORE_FLOORNUM_1F)
     setdynamicwarp(MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F,255,2,1)
     if (var(VAR_DEPT_STORE_FLOOR) == DEPT_STORE_FLOORNUM_1F)    {
@@ -96,7 +96,7 @@ script Psfbadguy1TowerElevator_EventScript_1stFloor{
 	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
     end
 }
-script Psfbadguy1TowerElevator_EventScript_1stFloor{
+script Psfbadguy1TowerElevator_EventScript_4thFloor{
     setvar(VAR_0x8006,DEPT_STORE_FLOORNUM_1F)
     setdynamicwarp(MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F,255,2,1)
     if (var(VAR_DEPT_STORE_FLOOR) == DEPT_STORE_FLOORNUM_1F)    {
@@ -107,7 +107,7 @@ script Psfbadguy1TowerElevator_EventScript_1stFloor{
 	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
     end
 }
-script Psfbadguy1TowerElevator_EventScript_1stFloor{
+script Psfbadguy1TowerElevator_EventScript_5thFloor{
     setvar(VAR_0x8006,DEPT_STORE_FLOORNUM_1F)
     setdynamicwarp(MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F,255,2,1)
     if (var(VAR_DEPT_STORE_FLOOR) == DEPT_STORE_FLOORNUM_1F)    {
@@ -118,7 +118,7 @@ script Psfbadguy1TowerElevator_EventScript_1stFloor{
 	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
     end
 }
-script Psfbadguy1TowerElevator_EventScript_1stFloor{
+script Psfbadguy1TowerElevator_EventScript_6thFloor{
     setvar(VAR_0x8006,DEPT_STORE_FLOORNUM_1F)
     setdynamicwarp(MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F,255,2,1)
     if (var(VAR_DEPT_STORE_FLOOR) == DEPT_STORE_FLOORNUM_1F)    {
@@ -129,7 +129,7 @@ script Psfbadguy1TowerElevator_EventScript_1stFloor{
 	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
     end
 }
-script Psfbadguy1TowerElevator_EventScript_1stFloor{
+script Psfbadguy1TowerElevator_EventScript_7thFloor{
     setvar(VAR_0x8006,DEPT_STORE_FLOORNUM_1F)
     setdynamicwarp(MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F,255,2,1)
     if (var(VAR_DEPT_STORE_FLOOR) == DEPT_STORE_FLOORNUM_1F)    {
@@ -140,7 +140,7 @@ script Psfbadguy1TowerElevator_EventScript_1stFloor{
 	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
     end
 }
-script Psfbadguy1TowerElevator_EventScript_1stFloor{
+script Psfbadguy1TowerElevator_EventScript_8thFloor{
     setvar(VAR_0x8006,DEPT_STORE_FLOORNUM_1F)
     setdynamicwarp(MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F,255,2,1)
     if (var(VAR_DEPT_STORE_FLOOR) == DEPT_STORE_FLOORNUM_1F)    {
@@ -151,18 +151,7 @@ script Psfbadguy1TowerElevator_EventScript_1stFloor{
 	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
     end
 }
-script Psfbadguy1TowerElevator_EventScript_1stFloor{
-    setvar(VAR_0x8006,DEPT_STORE_FLOORNUM_1F)
-    setdynamicwarp(MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F,255,2,1)
-    if (var(VAR_DEPT_STORE_FLOOR) == DEPT_STORE_FLOORNUM_1F)    {
-        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    }
-    call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
-	setvar(VAR_DEPT_STORE_FLOOR,DEPT_STORE_FLOORNUM_1F)
-	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    end
-}
-script Psfbadguy1TowerElevator_EventScript_1stFloor{
+script Psfbadguy1TowerElevator_EventScript_9thFloor{
     setvar(VAR_0x8006,DEPT_STORE_FLOORNUM_1F)
     setdynamicwarp(MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F,255,2,1)
     if (var(VAR_DEPT_STORE_FLOOR) == DEPT_STORE_FLOORNUM_1F)    {

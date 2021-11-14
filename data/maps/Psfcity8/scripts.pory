@@ -1,3 +1,5 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
 mapscripts Psfcity8_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_LITTLEROOT_INTRO_STATE, 0: ImProbablyBetterThanYou_Intro
@@ -12,15 +14,36 @@ script ImProbablyBetterThanYou_Intro {
     msgbox(gText_ImProbablyBetterThanYou_Psfchara1Text1)
     callnative(ClearMugshot)
     closemessage
-    goto(ImProbablyBetterThanYou_WalkInside)
+    goto(ImProbablyBetterThanYou_WalkInside_Movement)
 }
 
-script ImProbablyBetterThanYou_WalkInside {
+script DontLeavePsfcity8_Script {
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_DontLeavePsfcity8_Text1) 
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PLAYER,DontLeavePsfcity_Movement)
+}
+    
+
+
+script ImProbablyBetterThanYou_WalkInside_Movement {
     warpdoor(MAP_PSFCITY8_COMPOUND_1F,255,5,9)
     waitstate
     end
 }
 
+movement DontLeavePsfcity_Movement {
+    walk_down
+    step_end
+}
+
 text gText_ImProbablyBetterThanYou_Psfchara1Text1 {
     format("{COLOR 09}<deep breath>\n{COLOR DARK_GRAY}Let's do this.") //TODO add asterisk to font, look at SKiLpVg.png and find best treatment for actions (color? bracket?)
+}
+
+text gText_DontLeavePsfcity8_Text1 {
+   format("I don't think I should leave Psfcity8 yet...")
 }

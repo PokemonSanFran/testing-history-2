@@ -336,27 +336,32 @@ TwoHoursAgo_TheyreEager_Dialogue_2:
 
 
 TwoHoursAgo_ExplainLeague_SetUp::
+	lock
 	fadescreen FADE_TO_BLACK
-	setobjectxy 7, 4, 6
-	setobjectmovementtype 7, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxy 6, 4, 6
+	turnobject 6, DIR_WEST
+	setobjectmovementtype 6, MOVEMENT_TYPE_FACE_LEFT
 	setobjectxy OBJ_EVENT_ID_PLAYER, 1, 6
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	call CameraToPlayer_Movement
 	goto TwoHoursAgo_ExplainLeague_Script
 	return
 
 
 TwoHoursAgo_ExplainLeague_Script::
-	special Script_DoRayquazaScene
-	waitstate
-	call CameraToPlayer_Movement
+	lockall
+	msgbox gText_TwoHoursAgo_ExplainLeague_Text1
+	msgbox gText_TwoHoursAgo_ExplainLeague_Text2
+	msgbox gText_TwoHoursAgo_ExplainLeague_Text3
+	closemessage
+	fadescreen FADE_FROM_BLACK
 	goto TwoHoursAgo_LeftoversPokeballs_Dialogue
 	return
 
 
 TwoHoursAgo_LeftoversPokeballs_Dialogue::
 	setflag FLAG_RECIEVED_LEFTOVERS_PSFBADGUY1
-	callnative DrawMugshot
-	msgbox gText_TwoHoursAgo_LeftoversPokeballs_Text1, MSGBOX_NPC
+	msgbox gText_TwoHoursAgo_LeftoversPokeballs_Text1
 	lockall
 	giveitem ITEM_LEFTOVERS
 	giveitem ITEM_POKE_BALL, 5

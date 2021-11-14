@@ -15,16 +15,35 @@ ImProbablyBetterThanYou_Intro::
 	msgbox gText_ImProbablyBetterThanYou_Psfchara1Text1
 	callnative ClearMugshot
 	closemessage
-	goto ImProbablyBetterThanYou_WalkInside
+	goto ImProbablyBetterThanYou_WalkInside_Movement
 	return
 
 
-ImProbablyBetterThanYou_WalkInside::
+DontLeavePsfcity8_Script::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_DontLeavePsfcity8_Text1
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, DontLeavePsfcity_Movement
+	return
+
+
+ImProbablyBetterThanYou_WalkInside_Movement::
 	warpdoor MAP_PSFCITY8_COMPOUND_1F, 255, 5, 9
 	waitstate
 	end
 
 
+DontLeavePsfcity_Movement:
+	walk_down
+	step_end
+
 gText_ImProbablyBetterThanYou_Psfchara1Text1::
 	.string "{COLOR 09}<deep breath>\n"
 	.string "{COLOR DARK_GRAY}Let's do this.$"
+
+gText_DontLeavePsfcity8_Text1::
+	.string "I don't think I should leave Psfcity8\n"
+	.string "yet...$"

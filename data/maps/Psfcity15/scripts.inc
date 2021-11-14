@@ -95,6 +95,7 @@ PsfBadbossWalkToMayor_Movement:
 	walk_right
 	walk_right
 	walk_right
+	walk_right
 	step_end
 
 gText_PsfbadbossWhatAShow_Text1::

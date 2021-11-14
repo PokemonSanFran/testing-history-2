@@ -110,6 +110,134 @@ Psfbadguy1TowerElevator_EventScript_1stFloor_2:
 	goto Psfbadguy1TowerElevator_EventScript_1stFloor_1
 
 
+Psfbadguy1TowerElevator_EventScript_2ndFloor::
+	setvar VAR_0x8006, DEPT_STORE_FLOORNUM_2F
+	setdynamicwarp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F, 255, 2, 1
+	compare VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto_if_eq Psfbadguy1TowerElevator_EventScript_2ndFloor_2
+Psfbadguy1TowerElevator_EventScript_2ndFloor_1:
+	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	end
+
+Psfbadguy1TowerElevator_EventScript_2ndFloor_2:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_2ndFloor_1
+
+
+Psfbadguy1TowerElevator_EventScript_3rdFloor::
+	setvar VAR_0x8006, DEPT_STORE_FLOORNUM_1F
+	setdynamicwarp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F, 255, 2, 1
+	compare VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto_if_eq Psfbadguy1TowerElevator_EventScript_3rdFloor_2
+Psfbadguy1TowerElevator_EventScript_3rdFloor_1:
+	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	end
+
+Psfbadguy1TowerElevator_EventScript_3rdFloor_2:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_3rdFloor_1
+
+
+Psfbadguy1TowerElevator_EventScript_4thFloor::
+	setvar VAR_0x8006, DEPT_STORE_FLOORNUM_1F
+	setdynamicwarp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F, 255, 2, 1
+	compare VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto_if_eq Psfbadguy1TowerElevator_EventScript_4thFloor_2
+Psfbadguy1TowerElevator_EventScript_4thFloor_1:
+	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	end
+
+Psfbadguy1TowerElevator_EventScript_4thFloor_2:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_4thFloor_1
+
+
+Psfbadguy1TowerElevator_EventScript_5thFloor::
+	setvar VAR_0x8006, DEPT_STORE_FLOORNUM_1F
+	setdynamicwarp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F, 255, 2, 1
+	compare VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto_if_eq Psfbadguy1TowerElevator_EventScript_5thFloor_2
+Psfbadguy1TowerElevator_EventScript_5thFloor_1:
+	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	end
+
+Psfbadguy1TowerElevator_EventScript_5thFloor_2:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_5thFloor_1
+
+
+Psfbadguy1TowerElevator_EventScript_6thFloor::
+	setvar VAR_0x8006, DEPT_STORE_FLOORNUM_1F
+	setdynamicwarp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F, 255, 2, 1
+	compare VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto_if_eq Psfbadguy1TowerElevator_EventScript_6thFloor_2
+Psfbadguy1TowerElevator_EventScript_6thFloor_1:
+	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	end
+
+Psfbadguy1TowerElevator_EventScript_6thFloor_2:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_6thFloor_1
+
+
+Psfbadguy1TowerElevator_EventScript_7thFloor::
+	setvar VAR_0x8006, DEPT_STORE_FLOORNUM_1F
+	setdynamicwarp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F, 255, 2, 1
+	compare VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto_if_eq Psfbadguy1TowerElevator_EventScript_7thFloor_2
+Psfbadguy1TowerElevator_EventScript_7thFloor_1:
+	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	end
+
+Psfbadguy1TowerElevator_EventScript_7thFloor_2:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_7thFloor_1
+
+
+Psfbadguy1TowerElevator_EventScript_8thFloor::
+	setvar VAR_0x8006, DEPT_STORE_FLOORNUM_1F
+	setdynamicwarp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F, 255, 2, 1
+	compare VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto_if_eq Psfbadguy1TowerElevator_EventScript_8thFloor_2
+Psfbadguy1TowerElevator_EventScript_8thFloor_1:
+	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	end
+
+Psfbadguy1TowerElevator_EventScript_8thFloor_2:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_8thFloor_1
+
+
+Psfbadguy1TowerElevator_EventScript_9thFloor::
+	setvar VAR_0x8006, DEPT_STORE_FLOORNUM_1F
+	setdynamicwarp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F, 255, 2, 1
+	compare VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto_if_eq Psfbadguy1TowerElevator_EventScript_9thFloor_2
+Psfbadguy1TowerElevator_EventScript_9thFloor_1:
+	call Psfbadguy1TowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, DEPT_STORE_FLOORNUM_1F
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	end
+
+Psfbadguy1TowerElevator_EventScript_9thFloor_2:
+	goto Psfbadguy1TowerElevator_EventScript_ExitFloorSelect
+	goto Psfbadguy1TowerElevator_EventScript_9thFloor_1
+
+
 Psfbadguy1TowerElevator_EventScript_ExitFloorSelect::
 	special CloseDeptStoreElevatorWindow
 	release
