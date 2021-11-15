@@ -4542,7 +4542,7 @@
       "blockdata_filepath": "data/layouts/Psfcity15_Gym/map.bin"
     },
     {
-      "id": "LAYOUT_PSFBADGUY1_TOWER_1F",
+      "id": "LAYOUT_PSFBADGUY1TOWER_1F",
       "name": "Psfbadguy1Tower_1F_Layout",
       "width": 19,
       "height": 9,
@@ -4552,7 +4552,7 @@
       "blockdata_filepath": "data/layouts/Psfbadguy1Tower_1F/map.bin"
     },
     {
-      "id": "LAYOUT_PSFBADGUY1_TOWER_10F",
+      "id": "LAYOUT_PSFBADGUY1TOWER_10F",
       "name": "Psfbadguy1Tower_10F_Layout",
       "width": 19,
       "height": 9,
@@ -4562,7 +4562,7 @@
       "blockdata_filepath": "data/layouts/Psfbadguy1Tower_10F/map.bin"
     },
     {
-      "id": "LAYOUT_PSFBADGUY1_TOWER_7F",
+      "id": "LAYOUT_PSFBADGUY1TOWER_7F",
       "name": "Psfbadguy1Tower_7F_Layout",
       "width": 19,
       "height": 9,
@@ -4572,7 +4572,7 @@
       "blockdata_filepath": "data/layouts/Psfbadguy1Tower_7F/map.bin"
     },
     {
-      "id": "LAYOUT_PSFBADGUY1_TOWER_ELEVATOR",
+      "id": "LAYOUT_PSFBADGUY1TOWER_ELEVATOR",
       "name": "Psfbadguy1Tower_Elevator_Layout",
       "width": 5,
       "height": 6,
@@ -4584,8 +4584,8 @@
     {
       "id": "LAYOUT_PSFBADGUY1TOWER_2F",
       "name": "Psfbadguy1Tower_2F_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 19,
+      "height": 9,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Psfbadguy1Tower_2F/border.bin",
@@ -4594,8 +4594,8 @@
     {
       "id": "LAYOUT_PSFBADGUY1TOWER_5F",
       "name": "Psfbadguy1Tower_5F_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 19,
+      "height": 9,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Psfbadguy1Tower_5F/border.bin",
@@ -4604,8 +4604,8 @@
     {
       "id": "LAYOUT_PSFBADGUY1TOWER_11F",
       "name": "Psfbadguy1Tower_11F_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 19,
+      "height": 9,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Psfbadguy1Tower_11F/border.bin",

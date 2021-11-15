@@ -75,6 +75,8 @@ static EWRAM_DATA u8 sSlidingDoorFrame = 0;
 static EWRAM_DATA u8 sTutorMoveAndElevatorWindowId = 0;
 static EWRAM_DATA u16 sLilycoveDeptStore_NeverRead = 0;
 static EWRAM_DATA u16 sLilycoveDeptStore_DefaultFloorChoice = 0;
+static EWRAM_DATA u16 sPsfbadguy1Tower_NeverRead = 0;
+static EWRAM_DATA u16 sPsfbadguy1Tower_DefaultFloorChoice = 0;
 static EWRAM_DATA struct ListMenuItem *sScrollableMultichoice_ListMenuItem = NULL;
 static EWRAM_DATA u16 sScrollableMultichoice_ScrollOffset = 0;
 static EWRAM_DATA u16 sFrontierExchangeCorner_NeverRead = 0;
@@ -1792,128 +1794,69 @@ static const u16 sElevatorWindowTiles_Descending[][3] =
     },
 };
 
+//Start Psfbadguy1Tower Elevator Scripts
+
 void SetPsfbadguy1TowerFloor(void)
 {
     u8 Psfbadguy1TowerFloor; 
 
     switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
     {
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
-            deptStoreFloor = DEPT_STORE_FLOORNUM_1F;
+        case MAP_NUM(PSFBADGUY1TOWER_1F):
+            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_1F;
             break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
-            deptStoreFloor = DEPT_STORE_FLOORNUM_2F;
+        case MAP_NUM(PSFBADGUY1TOWER_2F):
+            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_2F;
             break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
-            deptStoreFloor = DEPT_STORE_FLOORNUM_3F;
+        case MAP_NUM(PSFBADGUY1TOWER_5F):
+            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_5F;
             break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
-            deptStoreFloor = DEPT_STORE_FLOORNUM_4F;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
-            deptStoreFloor = DEPT_STORE_FLOORNUM_5F;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP):
-            deptStoreFloor = DEPT_STORE_FLOORNUM_ROOFTOP;
+        case MAP_NUM(PSFBADGUY1TOWER_10F):
+            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_10F;
             break;
         default:
-            deptStoreFloor = DEPT_STORE_FLOORNUM_1F;
+            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_1F;
             break;
     }
-    VarSet(VAR_DEPT_STORE_FLOOR, deptStoreFloor);
+    VarSet(VAR_DEPT_STORE_FLOOR, Psfbadguy1TowerFloor); //TODO Change VAR_DEPT_STORE_FLOOR to one more suited to PSF
 }
 
-u16 GetDeptStoreDefaultFloorChoice(void)
+u16 GetTowerFloorDefaultFloorChoice(void)
 {
-    sLilycoveDeptStore_NeverRead = 0;
-    sLilycoveDeptStore_DefaultFloorChoice = 0;
+    sPsfbadguy1Tower_NeverRead = 0;
+    sPsfbadguy1Tower_DefaultFloorChoice = 0;
 
     if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(LILYCOVE_CITY_DEPARTMENT_STORE_1F))
     {
         switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
         {
             case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
-                sLilycoveDeptStore_NeverRead = 0;
-                sLilycoveDeptStore_DefaultFloorChoice = 0;
+                sPsfbadguy1Tower_NeverRead = 0;
+                sPsfbadguy1Tower_DefaultFloorChoice = 0;
                 break;
             case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
-                sLilycoveDeptStore_NeverRead = 0;
-                sLilycoveDeptStore_DefaultFloorChoice = 1;
+                sPsfbadguy1Tower_NeverRead = 0;
+                sPsfbadguy1Tower_DefaultFloorChoice = 1;
                 break;
             case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
-                sLilycoveDeptStore_NeverRead = 0;
-                sLilycoveDeptStore_DefaultFloorChoice = 2;
+                sPsfbadguy1Tower_NeverRead = 0;
+                sPsfbadguy1Tower_DefaultFloorChoice = 2;
                 break;
             case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
-                sLilycoveDeptStore_NeverRead = 0;
-                sLilycoveDeptStore_DefaultFloorChoice = 3;
+                sPsfbadguy1Tower_NeverRead = 0;
+                sPsfbadguy1Tower_DefaultFloorChoice = 3;
                 break;
             case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
-                sLilycoveDeptStore_NeverRead = 0;
-                sLilycoveDeptStore_DefaultFloorChoice = 4;
+                sPsfbadguy1Tower_NeverRead = 0;
+                sPsfbadguy1Tower_DefaultFloorChoice = 4;
                 break;
         }
     }
 
-    return sLilycoveDeptStore_DefaultFloorChoice;
+    return sPsfbadguy1Tower_DefaultFloorChoice;
 }
 
-void MoveElevator(void)
-{
-    static const u8 sElevatorTripLength[] = { 8, 16, 24, 32, 38, 46, 52, 56, 57 };
-
-    s16 *data = gTasks[CreateTask(Task_MoveElevator, 9)].data;
-    u16 floorDelta;
-
-    data[1] = 0;
-    data[2] = 0;
-    data[4] = 1;
-
-    // descending
-    if (gSpecialVar_0x8005 > gSpecialVar_0x8006)
-    {
-        floorDelta = gSpecialVar_0x8005 - gSpecialVar_0x8006;
-        data[6] = TRUE;
-    }
-    else
-    {
-        floorDelta = gSpecialVar_0x8006 - gSpecialVar_0x8005;
-        data[6] = FALSE;
-    }
-
-    if (floorDelta > 8)
-        floorDelta = 8;
-
-    data[5] = sElevatorTripLength[floorDelta];
-
-    SetCameraPanningCallback(NULL);
-    MoveElevatorWindowLights(floorDelta, data[6]);
-    PlaySE(SE_ELEVATOR);
-}
-
-static void Task_MoveElevator(u8 taskId)
-{
-    s16 *data = gTasks[taskId].data;
-    data[1]++;
-    if (data[1] % 3 == 0)
-    {
-        data[1] = 0;
-        data[2]++;
-        data[4] = -data[4];
-        SetCameraPanning(0, data[4]);
-
-        // arrived at floor
-        if (data[2] == data[5])
-        {
-            PlaySE(SE_DING_DONG);
-            DestroyTask(taskId);
-            EnableBothScriptContexts();
-            InstallCameraPanAheadCallback();
-        }
-    }
-}
-
-void ShowDeptStoreElevatorFloorSelect(void)
+void ShowPsfbadguy1TowerElevatorFloorSelect(void)
 {
     int xPos;
 
@@ -1929,6 +1872,7 @@ void ShowDeptStoreElevatorFloorSelect(void)
     PutWindowTilemap(sTutorMoveAndElevatorWindowId);
     CopyWindowToVram(sTutorMoveAndElevatorWindowId, 3);
 }
+//End Psfbadguy1Tower Elevator Scripts
 
 void SetDeptStoreFloor(void)
 {

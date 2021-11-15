@@ -538,3 +538,6 @@ gSpecials::
 	def_special SetTotemBoost
     def_special TeleportCamera
     def_special ReturnCameraToPlayer
+	def_special SetPsfbadguy1TowerFloor
+	def_special GetTowerFloorDefaultFloorChoice
+    def_special ShowPsfbadguy1TowerElevatorFloorSelect

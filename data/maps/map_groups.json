@@ -40,6 +40,13 @@
   ],
   "gMapGroup_TownsAndRoutes": [
     "Psfcity8",
+    "Psfroute17",
+    "Psfcityy16",
+    "Psfroute11",
+    "Psfroute21",
+    "Psfcity7",
+    "Psfroute22",
+    "Psfcity15",
     "PetalburgCity",
     "SlateportCity",
     "MauvilleCity",
@@ -96,14 +103,7 @@
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125",
-    "Psfroute17",
-    "Psfcityy16",
-    "Psfroute11",
-    "Psfroute21",
-    "Psfcity7",
-    "Psfroute22",
-    "Psfcity15"
+    "Underwater_Route125"
   ],
   "gMapGroup_IndoorPsfcity8": [
     "Psfcity8_Compound_1F",
@@ -342,8 +342,11 @@
   ],
   "gMapGroup_Dungeons": [
     "Psfbadguy1Tower_1F",
-    "Psfbadguy1Tower_10F",
+    "Psfbadguy1Tower_2F",
+    "Psfbadguy1Tower_5F",
     "Psfbadguy1Tower_7F",
+    "Psfbadguy1Tower_10F",
+    "Psfbadguy1Tower_11F",
     "Psfbadguy1Tower_Elevator",
     "MeteorFalls_1F_1R",
     "MeteorFalls_1F_2R",
@@ -452,10 +455,7 @@
     "TerraCave_Entrance",
     "TerraCave_End",
     "AlteringCave",
-    "MeteorFalls_StevensCave",
-    "Psfbadguy1Tower_2F",
-    "Psfbadguy1Tower_5F",
-    "Psfbadguy1Tower_11F"
+    "MeteorFalls_StevensCave"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

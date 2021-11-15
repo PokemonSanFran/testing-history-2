@@ -1,6 +1,7 @@
 * * * * * * * * * * * *
 NOV 12
-src/field_specials.c - working on the elevator script
+finish hooking up maps to warp elevator script
+figure out how to display the correct floor that we're on
 
 NOV 9
 need to support when you leave and come back. map scripts?
