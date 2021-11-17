@@ -858,6 +858,7 @@ const u8 gText_2F[] = _("2F");
 const u8 gText_3F[] = _("3F");
 const u8 gText_4F[] = _("4F");
 const u8 gText_5F[] = _("5F");
+const u8 gText_5PF[] = _("5F (Park)");
 const u8 gText_6F[] = _("6F");
 const u8 gText_7F[] = _("7F");
 const u8 gText_8F[] = _("8F");

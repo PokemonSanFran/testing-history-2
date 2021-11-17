@@ -665,6 +665,7 @@ extern const u8 gText_1F[];
 extern const u8 gText_2F[];
 extern const u8 gText_3F[];
 extern const u8 gText_4F[];
+extern const u8 gText_5PF[];
 extern const u8 gText_5F[];
 extern const u8 gText_6F[];
 extern const u8 gText_7F[];

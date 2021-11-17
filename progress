@@ -1,4 +1,7 @@
 * * * * * * * * * * * *
+NOV 16
+walking from floor 2 to 1 makes the elevator script display the 2nd floor. why?
+
 NOV 12
 finish hooking up maps to warp elevator script
 figure out how to display the correct floor that we're on

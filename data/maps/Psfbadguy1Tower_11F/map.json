@@ -10,14 +10,20 @@
   "allow_cycling": false,
   "allow_escaping": true,
   "allow_running": true,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
 
   ],
   "warp_events": [
-
+    {
+      "x": 8,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_PSFBADGUY1TOWER_ELEVATOR",
+      "dest_warp_id": 0
+    }
   ],
   "coord_events": [
 

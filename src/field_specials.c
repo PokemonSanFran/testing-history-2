@@ -1756,6 +1756,22 @@ const u8 *const gDeptStoreFloorNames[] =
     [DEPT_STORE_FLOORNUM_ROOFTOP] = gText_Rooftop
 };
 
+const u8 *const gPsfbadguy1TowerFloorNames[] =
+{
+    [DEPT_STORE_FLOORNUM_B4F] = gText_B4F,
+    [PSFBADGUY1TOWER_FLOORNUM_1F] = gText_1F,
+    [PSFBADGUY1TOWER_FLOORNUM_2F] = gText_2F,
+    [PSFBADGUY1TOWER_FLOORNUM_3F] = gText_3F,
+    [PSFBADGUY1TOWER_FLOORNUM_4F] = gText_4F,
+    [PSFBADGUY1TOWER_FLOORNUM_5F] = gText_5PF,
+    [PSFBADGUY1TOWER_FLOORNUM_6F] = gText_6F,
+    [PSFBADGUY1TOWER_FLOORNUM_7F] = gText_7F,
+    [PSFBADGUY1TOWER_FLOORNUM_8F] = gText_8F,
+    [PSFBADGUY1TOWER_FLOORNUM_9F] = gText_9F,
+    [PSFBADGUY1TOWER_FLOORNUM_10F] = gText_10F,
+    [PSFBADGUY1TOWER_FLOORNUM_11F] = gText_11F,
+};
+
 static const u16 sElevatorWindowTiles_Ascending[][3] =
 {
     {
@@ -1826,29 +1842,25 @@ u16 GetTowerFloorDefaultFloorChoice(void)
     sPsfbadguy1Tower_NeverRead = 0;
     sPsfbadguy1Tower_DefaultFloorChoice = 0;
 
-    if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(LILYCOVE_CITY_DEPARTMENT_STORE_1F))
+    if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(PSFBADGUY1TOWER_1F))
     {
         switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
         {
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
+            case MAP_NUM(PSFBADGUY1TOWER_10F):
                 sPsfbadguy1Tower_NeverRead = 0;
                 sPsfbadguy1Tower_DefaultFloorChoice = 0;
                 break;
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
+            case MAP_NUM(PSFBADGUY1TOWER_5F):
                 sPsfbadguy1Tower_NeverRead = 0;
                 sPsfbadguy1Tower_DefaultFloorChoice = 1;
                 break;
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
+            case MAP_NUM(PSFBADGUY1TOWER_2F):
                 sPsfbadguy1Tower_NeverRead = 0;
                 sPsfbadguy1Tower_DefaultFloorChoice = 2;
                 break;
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
+            case MAP_NUM(PSFBADGUY1TOWER_1F):
                 sPsfbadguy1Tower_NeverRead = 0;
                 sPsfbadguy1Tower_DefaultFloorChoice = 3;
-                break;
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
-                sPsfbadguy1Tower_NeverRead = 0;
-                sPsfbadguy1Tower_DefaultFloorChoice = 4;
                 break;
         }
     }
@@ -1866,8 +1878,8 @@ void ShowPsfbadguy1TowerElevatorFloorSelect(void)
     xPos = GetStringCenterAlignXOffset(1, gText_ElevatorNowOn, 64);
     AddTextPrinterParameterized(sTutorMoveAndElevatorWindowId, 1, gText_ElevatorNowOn, xPos, 1, TEXT_SPEED_FF, NULL);
 
-    xPos = GetStringCenterAlignXOffset(1, gDeptStoreFloorNames[gSpecialVar_0x8005], 64);
-    AddTextPrinterParameterized(sTutorMoveAndElevatorWindowId, 1, gDeptStoreFloorNames[gSpecialVar_0x8005], xPos, 17, TEXT_SPEED_FF, NULL);
+    xPos = GetStringCenterAlignXOffset(1, gPsfbadguy1TowerFloorNames[gSpecialVar_0x8005], 64);
+    AddTextPrinterParameterized(sTutorMoveAndElevatorWindowId, 1, gPsfbadguy1TowerFloorNames[gSpecialVar_0x8005], xPos, 17, TEXT_SPEED_FF, NULL);
 
     PutWindowTilemap(sTutorMoveAndElevatorWindowId);
     CopyWindowToVram(sTutorMoveAndElevatorWindowId, 3);
