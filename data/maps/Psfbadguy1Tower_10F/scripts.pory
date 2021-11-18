@@ -1,1 +1,151 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADADMIN1 = 4
+const PSFBADBOSS = 3
+
 mapscripts Psfbadguy1Tower_10F_MapScripts {}
+
+script TheGangsAllHere_ObjectSetup{
+    end
+}
+
+TheGangsAllHere_WhatBringsYou_Dialogue{
+	end
+}
+    TheGangsAllHere_Psfbadadmin1WalkToZoey_Movement
+	TheGangsAllHere_WhatBringsYou_Text1
+	TheGangsAllHere_WhatBringsYou_Text2
+	TheGangsAllHere_WhatBringsYou_Text3
+	TheGangsAllHere_WhatBringsYou_Text4
+	TheGangsAllHere_WhatBringsYou_Text5
+	TheGangsAllHere_WhatBringsYou_Text6
+TheGangsAllHere_OfficeIsntThatWay_Script{
+	end
+}
+	TheGangsAllHere_OfficeIsntThatWay_Movement
+	TheGangsAllHere_OfficeIsntThatWay_Dialogue{
+	end
+}
+TheGangsAllHere_ThisIsOffice_Script{
+	end
+}
+	TheGangsAllHere_ThisIsOffice_Dialogue{
+	end
+}
+	TheGangsAllHere_ThisIsOffice_Movement
+TheGangsAllHere_ComeOnIn_Dialogue{
+	end
+}
+	TheGangsAllHere_PsfbadbossWalkToDoor_Movement
+    TheGangsAllHere_ComeOnIn_Text1
+    TheGangsAllHere_ComeOnIn_Text2
+    TheGangsAllHere_ComeOnIn_Text3
+    TheGangsAllHere_ComeOnIn_Text4
+TheGangsAllHere_NotIntentionally_Dialogue{
+	end
+}
+    TheGangsAllHere_NotIntentionally_Text1
+    TheGangsAllHere_NotIntentionally_Text2
+    TheGangsAllHere_NotIntentionally_Text3
+    TheGangsAllHere_NotIntentionally_Text4
+TheGangsAllHere_GiveVSItemfinder_Script{
+	end
+}
+TheGangsAllHere_GiveVSItemfinder_Dialogue{
+	end
+}
+    TheGangsAllHere_GiveVSItemfinder_Text1
+    TheGangsAllHere_GiveVSItemfinder_Text2
+    TheGangsAllHere_GiveVSItemfinder_Text3
+    TheGangsAllHere_GiveVSItemfinder_Text4
+TheGangsAllHere_Psfcompany4Run_Dialogue{
+	end
+}
+    TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement
+    TheGangsAllHere_Psfcompany4Run_Text1
+    TheGangsAllHere_Psfcompany4Run_Text2
+    TheGangsAllHere_Psfcompany4Run_Text3
+    TheGangsAllHere_Psfbadguy1PeopleWalkOut_Movement
+
+movement TheGangsAllHere_Psfbadadmin1WalkToZoey_Movement{
+	step_end
+}
+movement TheGangsAllHere_OfficeIsntThatWay_Movement{
+	step_end
+}
+movement TheGangsAllHere_ThisIsOffice_Movement{
+	step_end
+}
+movement TheGangsAllHere_PsfbadbossWalkToDoor_Movement{
+	step_end
+}
+movement TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement{
+	step_end
+}
+movement TheGangsAllHere_Psfbadguy1PeopleWalkOut_Movement{
+	step_end
+}
+
+text TheGangsAllHere_WhatBringsYou_Text1{
+	format("")
+}
+text TheGangsAllHere_WhatBringsYou_Text2{
+	format("")
+}
+text TheGangsAllHere_WhatBringsYou_Text3{
+	format("")
+}
+text TheGangsAllHere_WhatBringsYou_Text4{
+	format("")
+}
+text TheGangsAllHere_WhatBringsYou_Text5{
+	format("")
+}
+text TheGangsAllHere_WhatBringsYou_Text6{
+	format("")
+}
+text TheGangsAllHere_ComeOnIn_Text1{
+	format("")
+}
+text TheGangsAllHere_ComeOnIn_Text2{
+	format("")
+}
+text TheGangsAllHere_ComeOnIn_Text3{
+	format("")
+}
+text TheGangsAllHere_ComeOnIn_Text4{
+	format("")
+}
+text TheGangsAllHere_NotIntentionally_Text1{
+	format("")
+}
+text TheGangsAllHere_NotIntentionally_Text2{
+	format("")
+}
+text TheGangsAllHere_NotIntentionally_Text3{
+	format("")
+}
+text TheGangsAllHere_NotIntentionally_Text4{
+	format("")
+}
+text TheGangsAllHere_GiveVSItemfinder_Text1{
+	format("")
+}
+text TheGangsAllHere_GiveVSItemfinder_Text2{
+	format("")
+}
+text TheGangsAllHere_GiveVSItemfinder_Text3{
+	format("")
+}
+text TheGangsAllHere_GiveVSItemfinder_Text4{
+	format("")
+}
+text TheGangsAllHere_Psfcompany4Run_Text1{
+	format("")
+}
+text TheGangsAllHere_Psfcompany4Run_Text2{
+	format("")
+}
+text TheGangsAllHere_Psfcompany4Run_Text3{
+	format("")
+}
+

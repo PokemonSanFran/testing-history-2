@@ -5,14 +5,14 @@ Psfbadguy1Tower_Elevator_MapScripts::
 Psfbadguy1Tower_ElevatorAttendant_Script::
 	lock
 	faceplayer
-	setvar VAR_0x8004, 1
+	setvar VAR_0x8004, 0
 	goto_if_set FLAG_TEMP_2, Psfbadguy1Tower_ElevatorAttendant_Script_2
 Psfbadguy1Tower_ElevatorAttendant_Script_1:
 	copyvar VAR_0x8005, VAR_DEPT_STORE_FLOOR
 	special ShowPsfbadguy1TowerElevatorFloorSelect
 	message gText_WhichFloorWouldYouLike
 	waitmessage
-	setvar VAR_0x8004, 1
+	setvar VAR_0x8004, 0
 	goto Psfbadguy1TowerElevator_EventScript_ChooseFromX
 	end
 
