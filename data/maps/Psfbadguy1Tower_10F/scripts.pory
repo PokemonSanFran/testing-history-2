@@ -14,8 +14,10 @@ script TheGangsAllHere_WhatBringsYou_Dialogue{
     playse(SE_PIN)
     playbgm(MUS_RG_FOLLOW_ME,TRUE)
     applymovement(PSFBADADMIN1,Common_Movement_ExclamationMark)
+    waitmovement(0)
     applymovement(PSFBADADMIN1,Common_Movement_FacePlayer)
-    applymovement(PLAYER, FaceLeft_Movement)
+    waitmovement(0)
+    applymovement(PLAYER, Common_Movement_FaceRight)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
@@ -42,9 +44,11 @@ script TheGangsAllHere_WhatBringsYou_Dialogue{
     callnative(ClearMugshot)
     closemessage
     givecustommon(SPECIES_XERNEAS,100,ITEM_POWER_HERB,ITEM_HEAVY_BALL,NATURE_MODEST,,,,168,252,88,,31,31,31,31,31,31,MOVE_GEOMANCY,MOVE_MOONBLAST,MOVE_THUNDERBOLT,MOVE_INGRAIN)
+    special(HealPlayerParty)
     applymovement(PSFBADADMIN1,FollowMe_Movement)
     waitmovement(0)
     setobjectxyperm(PSFBADADMIN1,6,25)
+    fadedefaultbgm
     //loadword(0,NewScript)
     //setfollower(PSFBADADMIN1,0x100) //TODO hook up FollowMe scripts
     //https://www.pokecommunity.com/showthread.php?t=432529
@@ -65,7 +69,7 @@ script TheGangsAllHere_OfficeIsntThatWay_Script{
 script TheGangsAllHere_ThisIsOffice_Script{
     applymovement(PSFBADADMIN1,FollowPlaceholder_Movement)
     waitmovement(0)
-    applymovement(PSFBADADMIN1, FaceRight_Movement)
+    applymovement(PSFBADADMIN1, Common_Movement_FaceRight)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ThisIsOffice_Text1,MSGBOX_NPC)
@@ -92,7 +96,7 @@ script TheGangsAllHere_ComeOnIn_Dialogue{
     closemessage
     callnative(ClearMugshot)
     applymovement(PSFBADADMIN1,TheGangsAllHere_Psfbadadmin1WalkToDesk_Movement)
-    applymovement(PSFBADBOSS,TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement)
+    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
@@ -115,19 +119,20 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally_Text1)
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN1,FaceLeft_Movement)
-    applymovement(PLAYER,FaceDown_Movement)
+    applymovement(PSFBADADMIN1,Common_Movement_FaceLeft)
+    applymovement(PLAYER,Common_Movement_FaceDown)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally_Text2)
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN1,FaceUp_Movement)
+    applymovement(PSFBADADMIN1,Common_Movement_FaceUp)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally_Text3)
     callnative(ClearMugshot)
-    applymovement(PSFBADBOSS,TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement)
+    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
+    applymovement(PSFBADADMIN1,TheGangsAllHere_GivePackageToPsfbadboss_Movement)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
@@ -139,7 +144,9 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
 }
 
 script TheGangsAllHere_GiveDowsingMachine_Script{
-    applymovement(PSFBADBOSS,FaceLeft_Movement)
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    applymovement(PSFBADBOSS,TheGangsAllHere_GivePackageToPsfchara1_Movement)
+    waitmovement(0)
     giveitem(ITEM_ITEMFINDER,1)
     goto(TheGangsAllHere_GiveDowsingMachine_Dialogue)
     end
@@ -150,7 +157,9 @@ script TheGangsAllHere_GiveDowsingMachine_Dialogue{
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_GiveDowsingMachine_Text1)
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN1,FaceLeft_Movement)
+    applymovement(PSFBADADMIN1,Common_Movement_FaceLeft)
+    waitmovement(0)
+    applymovement(PLAYER,Common_Movement_FaceDown)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_GiveDowsingMachine_Text2)
@@ -173,11 +182,12 @@ script TheGangsAllHere_Psfcompany4Run_Dialogue{
     msgbox(gText_TheGangsAllHere_Psfcompany4Run_Text1)
     callnative(ClearMugshot)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
-    applymovement(PSFBADADMIN1,FaceUp_Movement)
+    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
+    applymovement(PSFBADADMIN1,Common_Movement_FaceUp)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_Psfcompany4Run_Text2)
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN1,FaceLeft_Movement)
+    applymovement(PSFBADADMIN1,Common_Movement_FaceLeft)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_Psfcompany4Run_Text3)
@@ -188,7 +198,7 @@ script TheGangsAllHere_Psfcompany4Run_Dialogue{
     applymovement(PSFBADBOSS,TheGangsAllHere_PsfbadbossWalkOut_Movement)
     applymovement(PSFBADADMIN1,TheGangsAllHere_PsfbadadminWalkOut_Movement)
     waitmovement(0)
-    playbgm(MUS_RG_SILPH,TRUE)
+    fadedefaultbgm
     goto(TheGangsAllHere_ObjectCleanUp)
 }
 
@@ -200,35 +210,6 @@ script TheGangsAllHere_ObjectCleanUp{
     end
 }
 
-script FlagChecker {
-    if (flag(FLAG_HIDE_TOWERF10_PSFBADGUY)){
-        msgbox("Flag is set.")
-        }
-    else{
-        msgbox("Flag is not set.")
-    }        
-    closemessage
-}
-
-movement FaceUp_Movement{
-    face_up
-    step_end
-}
-
-movement FaceDown_Movement{
-    face_down
-    step_end
-}
-
-movement FaceLeft_Movement{
-    face_left
-    step_end
-}
-
-movement FaceRight_Movement{
-    face_right
-    step_end
-}
 movement TheGangsAllHere_Psfbadadmin1WalkToZoey_Movement{
     face_right
     step_end
@@ -257,13 +238,18 @@ movement TheGangsAllHere_Psfbadadmin1WalkToDesk_Movement{
     walk_right *2
     face_up
     delay_16 *2
-    walk_in_place_up 
 }
 
-movement TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement{
-    face_down
+movement TheGangsAllHere_GivePackageToPsfbadboss_Movement{
+    walk_in_place_up
     step_end
 }
+
+movement TheGangsAllHere_GivePackageToPsfchara1_Movement{
+    face_left
+    walk_in_place_left
+    step_end
+}    
 
 movement TheGangsAllHere_MoveOutOfWay_Movement{
     walk_up
@@ -288,6 +274,23 @@ movement FollowMe_Movement{
     walk_down * 20
     step_end
 }
+
+script Psfbadguy1Tower_10F_EventScript_Tom {
+	trainerbattle_double(TRAINER_GINA_AND_MIA_1, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons)
+	special (GetPlayerBigGuyGirlString)
+	msgbox (Route104_Text_GinaPostBattle, MSGBOX_DEFAULT)
+	release
+	end
+}
+
+script Psfbadguy1Tower_10F_EventScript_Ian {
+    trainerbattle_double (TRAINER_GINA_AND_MIA_1, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons)
+	special (GetPlayerBigGuyGirlString)
+	msgbox (Route104_Text_MiaPostBattle, MSGBOX_DEFAULT)
+	release
+	end
+}
+
 text gText_TheGangsAllHere_WhatBringsYou_Text1{
     format("{PLAYER}! What brings you to League HQ?")
 }

@@ -12,8 +12,10 @@ TheGangsAllHere_WhatBringsYou_Dialogue::
 	playse SE_PIN
 	playbgm MUS_RG_FOLLOW_ME, TRUE
 	applymovement 4, Common_Movement_ExclamationMark
+	waitmovement 0
 	applymovement 4, Common_Movement_FacePlayer
-	applymovement OBJ_EVENT_ID_PLAYER, FaceLeft_Movement
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -40,9 +42,11 @@ TheGangsAllHere_WhatBringsYou_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	givecustommon SPECIES_XERNEAS, 100, ITEM_POWER_HERB, ITEM_HEAVY_BALL, NATURE_MODEST, , , , 168, 252, 88, , 31, 31, 31, 31, 31, 31, MOVE_GEOMANCY, MOVE_MOONBLAST, MOVE_THUNDERBOLT, MOVE_INGRAIN
+	special HealPlayerParty
 	applymovement 4, FollowMe_Movement
 	waitmovement 0
 	setobjectxyperm 4, 6, 25
+	fadedefaultbgm
 	releaseall
 	end
 
@@ -61,7 +65,7 @@ TheGangsAllHere_OfficeIsntThatWay_Script::
 TheGangsAllHere_ThisIsOffice_Script::
 	applymovement 4, FollowPlaceholder_Movement
 	waitmovement 0
-	applymovement 4, FaceRight_Movement
+	applymovement 4, Common_Movement_FaceRight
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ThisIsOffice_Text1, MSGBOX_NPC
@@ -88,7 +92,7 @@ TheGangsAllHere_ComeOnIn_Dialogue::
 	closemessage
 	callnative ClearMugshot
 	applymovement 4, TheGangsAllHere_Psfbadadmin1WalkToDesk_Movement
-	applymovement 3, TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement
+	applymovement 3, Common_Movement_FaceDown
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -111,19 +115,20 @@ TheGangsAllHere_NotIntentionally_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_NotIntentionally_Text1
 	callnative ClearMugshot
-	applymovement 4, FaceLeft_Movement
-	applymovement OBJ_EVENT_ID_PLAYER, FaceDown_Movement
+	applymovement 4, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_NotIntentionally_Text2
 	callnative ClearMugshot
-	applymovement 4, FaceUp_Movement
+	applymovement 4, Common_Movement_FaceUp
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_NotIntentionally_Text3
 	callnative ClearMugshot
-	applymovement 3, TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement
+	applymovement 3, Common_Movement_FaceDown
+	applymovement 4, TheGangsAllHere_GivePackageToPsfbadboss_Movement
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
@@ -135,7 +140,9 @@ TheGangsAllHere_NotIntentionally_Dialogue::
 
 
 TheGangsAllHere_GiveDowsingMachine_Script::
-	applymovement 3, FaceLeft_Movement
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement 3, TheGangsAllHere_GivePackageToPsfchara1_Movement
+	waitmovement 0
 	giveitem ITEM_ITEMFINDER, 1
 	goto TheGangsAllHere_GiveDowsingMachine_Dialogue
 	end
@@ -146,7 +153,9 @@ TheGangsAllHere_GiveDowsingMachine_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_GiveDowsingMachine_Text1
 	callnative ClearMugshot
-	applymovement 4, FaceLeft_Movement
+	applymovement 4, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_GiveDowsingMachine_Text2
@@ -169,11 +178,12 @@ TheGangsAllHere_Psfcompany4Run_Dialogue::
 	msgbox gText_TheGangsAllHere_Psfcompany4Run_Text1
 	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_LANCE
-	applymovement 4, FaceUp_Movement
+	applymovement 3, Common_Movement_FaceDown
+	applymovement 4, Common_Movement_FaceUp
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_Psfcompany4Run_Text2
 	callnative ClearMugshot
-	applymovement 4, FaceLeft_Movement
+	applymovement 4, Common_Movement_FaceLeft
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_Psfcompany4Run_Text3
@@ -184,7 +194,7 @@ TheGangsAllHere_Psfcompany4Run_Dialogue::
 	applymovement 3, TheGangsAllHere_PsfbadbossWalkOut_Movement
 	applymovement 4, TheGangsAllHere_PsfbadadminWalkOut_Movement
 	waitmovement 0
-	playbgm MUS_RG_SILPH, TRUE
+	fadedefaultbgm
 	goto TheGangsAllHere_ObjectCleanUp
 	return
 
@@ -196,34 +206,6 @@ TheGangsAllHere_ObjectCleanUp::
 	releaseall
 	end
 
-
-FlagChecker::
-	goto_if_set FLAG_HIDE_TOWERF10_PSFBADGUY, FlagChecker_2
-	msgbox FlagChecker_Text_1
-FlagChecker_1:
-	closemessage
-	return
-
-FlagChecker_2:
-	msgbox FlagChecker_Text_0
-	goto FlagChecker_1
-
-
-FaceUp_Movement:
-	face_up
-	step_end
-
-FaceDown_Movement:
-	face_down
-	step_end
-
-FaceLeft_Movement:
-	face_left
-	step_end
-
-FaceRight_Movement:
-	face_right
-	step_end
 
 TheGangsAllHere_Psfbadadmin1WalkToZoey_Movement:
 	face_right
@@ -257,11 +239,15 @@ TheGangsAllHere_Psfbadadmin1WalkToDesk_Movement:
 	face_up
 	delay_16
 	delay_16
+	step_end
+
+TheGangsAllHere_GivePackageToPsfbadboss_Movement:
 	walk_in_place_up
 	step_end
 
-TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement:
-	face_down
+TheGangsAllHere_GivePackageToPsfchara1_Movement:
+	face_left
+	walk_in_place_left
 	step_end
 
 TheGangsAllHere_MoveOutOfWay_Movement:
@@ -322,11 +308,21 @@ FollowMe_Movement:
 	walk_down
 	step_end
 
-FlagChecker_Text_0:
-	.string "Flag is set.$"
+Psfbadguy1Tower_10F_EventScript_Tom::
+	trainerbattle_double TRAINER_GINA_AND_MIA_1, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons
+	special GetPlayerBigGuyGirlString
+	msgbox Route104_Text_GinaPostBattle, MSGBOX_DEFAULT
+	release
+	end
 
-FlagChecker_Text_1:
-	.string "Flag is not set.$"
+
+Psfbadguy1Tower_10F_EventScript_Ian::
+	trainerbattle_double TRAINER_GINA_AND_MIA_1, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons
+	special GetPlayerBigGuyGirlString
+	msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
 
 gText_TheGangsAllHere_WhatBringsYou_Text1::
 	.string "{PLAYER}! What brings you to League\n"

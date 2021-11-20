@@ -36,3 +36,4 @@ porymap.project.cfg
 tools/poryscript
 misc/log.txt
 *.swp
+*.gba

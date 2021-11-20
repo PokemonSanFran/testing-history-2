@@ -82,6 +82,7 @@ MuseumArrangement_Dialogue::
 	setvar VAR_GYM_3_STATE, 3
 	setvar VAR_0x8000, MUGSHOT_WHITNEY
 	callnative DrawMugshot
+	faceplayer
 	msgbox gText_MuseumArrangement_Text1
 	callnative ClearMugshot
 	applymovement 1, Psfleader3LookAround_Movement
