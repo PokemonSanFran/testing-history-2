@@ -11,13 +11,12 @@ script TheGangsAllHere_ObjectSetup{
 script TheGangsAllHere_WhatBringsYou_Dialogue{
     lock
     setvar(VAR_PSFCITY15_STATE,3)
+    playse(SE_PIN)
+    playbgm(MUS_RG_FOLLOW_ME,TRUE)
     applymovement(PSFBADADMIN1,Common_Movement_ExclamationMark)
-    waitmovement(0)
     applymovement(PSFBADADMIN1,Common_Movement_FacePlayer)
+    applymovement(PLAYER, FaceLeft_Movement)
     waitmovement(0)
-    turnobject(PLAYER, DIR_WEST)
-    waitmovement(0)
-    //applymovement(PSFBADADMIN1,TheGangsAllHere_Psfbadadmin1WalkToZoey_Movement)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_WhatBringsYou_Text1,MSGBOX_NPC)
@@ -66,7 +65,7 @@ script TheGangsAllHere_OfficeIsntThatWay_Script{
 script TheGangsAllHere_ThisIsOffice_Script{
     applymovement(PSFBADADMIN1,FollowPlaceholder_Movement)
     waitmovement(0)
-    turnobject(PSFBADADMIN1, DIR_EAST)
+    applymovement(PSFBADADMIN1, FaceRight_Movement)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ThisIsOffice_Text1,MSGBOX_NPC)
@@ -99,7 +98,6 @@ script TheGangsAllHere_ComeOnIn_Dialogue{
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ComeOnIn_Text2)
     callnative(ClearMugshot)
-    applymovement(PSFBADBOSS,TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ComeOnIn_Text3)
@@ -117,66 +115,69 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally_Text1)
     callnative(ClearMugshot)
-    turnobject(PSFBADADMIN1,DIR_WEST)
+    applymovement(PSFBADADMIN1,FaceLeft_Movement)
+    applymovement(PLAYER,FaceDown_Movement)
+    waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally_Text2)
     callnative(ClearMugshot)
-    turnobject(PSFBADADMIN1,DIR_NORTH)
+    applymovement(PSFBADADMIN1,FaceUp_Movement)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally_Text3)
     callnative(ClearMugshot)
+    applymovement(PSFBADBOSS,TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement)
+    waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally_Text4)
     closemessage
     callnative(ClearMugshot)
-    goto(TheGangsAllHere_GiveVSItemfinder_Script)
+    goto(TheGangsAllHere_GiveDowsingMachine_Script)
     end
 }
 
-script TheGangsAllHere_GiveVSItemfinder_Script{
-    turnobject(PSFBADBOSS,DIR_WEST)
+script TheGangsAllHere_GiveDowsingMachine_Script{
+    applymovement(PSFBADBOSS,FaceLeft_Movement)
     giveitem(ITEM_ITEMFINDER,1)
-    goto(TheGangsAllHere_GiveVSItemfinder_Dialogue)
+    goto(TheGangsAllHere_GiveDowsingMachine_Dialogue)
     end
 }
 
-script TheGangsAllHere_GiveVSItemfinder_Dialogue{
+script TheGangsAllHere_GiveDowsingMachine_Dialogue{
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
-    msgbox(gText_TheGangsAllHere_GiveVSItemfinder_Text1)
+    msgbox(gText_TheGangsAllHere_GiveDowsingMachine_Text1)
     callnative(ClearMugshot)
-    turnobject(PSFBADADMIN1,DIR_WEST)
+    applymovement(PSFBADADMIN1,FaceLeft_Movement)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
-    msgbox(gText_TheGangsAllHere_GiveVSItemfinder_Text2)
+    msgbox(gText_TheGangsAllHere_GiveDowsingMachine_Text2)
     callnative(ClearMugshot)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
-    msgbox(gText_TheGangsAllHere_GiveVSItemfinder_Text3)
+    msgbox(gText_TheGangsAllHere_GiveDowsingMachine_Text3)
     callnative(ClearMugshot)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
-    msgbox(gText_TheGangsAllHere_GiveVSItemfinder_Text4)
+    msgbox(gText_TheGangsAllHere_GiveDowsingMachine_Text4)
     closemessage
     callnative(ClearMugshot)
-    call(TheGangsAllHere_Psfcompany4Run_Dialogue)
+    goto(TheGangsAllHere_Psfcompany4Run_Dialogue)
     end
 }
 
 script TheGangsAllHere_Psfcompany4Run_Dialogue{
-    turnobject(PSFBADBOSS,DIR_SOUTH)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_Psfcompany4Run_Text1)
     callnative(ClearMugshot)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
-    turnobject(PSFBADADMIN1,DIR_NORTH)
+    applymovement(PSFBADADMIN1,FaceUp_Movement)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_Psfcompany4Run_Text2)
     callnative(ClearMugshot)
-    turnobject(PSFBADADMIN1,DIR_WEST)
+    applymovement(PSFBADADMIN1,FaceLeft_Movement)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_Psfcompany4Run_Text3)
@@ -188,15 +189,46 @@ script TheGangsAllHere_Psfcompany4Run_Dialogue{
     applymovement(PSFBADADMIN1,TheGangsAllHere_PsfbadadminWalkOut_Movement)
     waitmovement(0)
     playbgm(MUS_RG_SILPH,TRUE)
-    //hideobjectat(PSFBADBOSS,MAP_PSFBADGUY1TOWER_10F)
-    //hideobjectat(PSFBADADMIN1,MAP_PSFBADGUY1TOWER_10F)
+    goto(TheGangsAllHere_ObjectCleanUp)
+}
+
+script TheGangsAllHere_ObjectCleanUp{
     removeobject(PSFBADBOSS)
     removeobject(PSFBADADMIN1)
-    //setflag(FLAG_HIDE_TOWERF10_PSFBADGUY)
+    setflag(FLAG_HIDE_TOWERF10_PSFBADGUY)
     releaseall
     end
 }
 
+script FlagChecker {
+    if (flag(FLAG_HIDE_TOWERF10_PSFBADGUY)){
+        msgbox("Flag is set.")
+        }
+    else{
+        msgbox("Flag is not set.")
+    }        
+    closemessage
+}
+
+movement FaceUp_Movement{
+    face_up
+    step_end
+}
+
+movement FaceDown_Movement{
+    face_down
+    step_end
+}
+
+movement FaceLeft_Movement{
+    face_left
+    step_end
+}
+
+movement FaceRight_Movement{
+    face_right
+    step_end
+}
 movement TheGangsAllHere_Psfbadadmin1WalkToZoey_Movement{
     face_right
     step_end
@@ -307,16 +339,16 @@ text gText_TheGangsAllHere_NotIntentionally_Text3{
 text gText_TheGangsAllHere_NotIntentionally_Text4{
     format("I'm thrilled the timing worked out, because the package actually isn't for me!")
 }
-text gText_TheGangsAllHere_GiveVSItemfinder_Text1{
+text gText_TheGangsAllHere_GiveDowsingMachine_Text1{
     format("The VS Seeker will alert Trainers in the area that you want a rematch. It uses steps to charge, so I guess you'll burn some calories alongside your Pokémon. I'm excited to see how you use our tools!")
 } //TODO Change script to fit whatever item we end up giving out
-text gText_TheGangsAllHere_GiveVSItemfinder_Text2{
+text gText_TheGangsAllHere_GiveDowsingMachine_Text2{
     format("Not to place any undue pressure on you, but we personally reviewed all of the applicants to our little program. You were exceptionally popular among the team, so we're very excited to see you perform well!")
 }
-text gText_TheGangsAllHere_GiveVSItemfinder_Text3{
+text gText_TheGangsAllHere_GiveDowsingMachine_Text3{
     format("Oh. Wow! That means a lot. I'll absolutely put it to use!")
 }
-text gText_TheGangsAllHere_GiveVSItemfinder_Text4{
+text gText_TheGangsAllHere_GiveDowsingMachine_Text4{
     format("We know. But no pressure. Enjoy your journey!")
 }
 text gText_TheGangsAllHere_Psfcompany4Run_Text1{

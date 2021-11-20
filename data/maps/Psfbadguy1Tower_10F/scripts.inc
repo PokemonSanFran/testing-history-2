@@ -9,11 +9,11 @@ TheGangsAllHere_ObjectSetup::
 TheGangsAllHere_WhatBringsYou_Dialogue::
 	lock
 	setvar VAR_PSFCITY15_STATE, 3
+	playse SE_PIN
+	playbgm MUS_RG_FOLLOW_ME, TRUE
 	applymovement 4, Common_Movement_ExclamationMark
-	waitmovement 0
 	applymovement 4, Common_Movement_FacePlayer
-	waitmovement 0
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	applymovement OBJ_EVENT_ID_PLAYER, FaceLeft_Movement
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -61,7 +61,7 @@ TheGangsAllHere_OfficeIsntThatWay_Script::
 TheGangsAllHere_ThisIsOffice_Script::
 	applymovement 4, FollowPlaceholder_Movement
 	waitmovement 0
-	turnobject 4, DIR_EAST
+	applymovement 4, FaceRight_Movement
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ThisIsOffice_Text1, MSGBOX_NPC
@@ -94,7 +94,6 @@ TheGangsAllHere_ComeOnIn_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ComeOnIn_Text2
 	callnative ClearMugshot
-	applymovement 3, TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ComeOnIn_Text3
@@ -112,66 +111,69 @@ TheGangsAllHere_NotIntentionally_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_NotIntentionally_Text1
 	callnative ClearMugshot
-	turnobject 4, DIR_WEST
+	applymovement 4, FaceLeft_Movement
+	applymovement OBJ_EVENT_ID_PLAYER, FaceDown_Movement
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_NotIntentionally_Text2
 	callnative ClearMugshot
-	turnobject 4, DIR_NORTH
+	applymovement 4, FaceUp_Movement
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_NotIntentionally_Text3
 	callnative ClearMugshot
+	applymovement 3, TheGangsAllHere_PsfbadbossFacePsfbadadmin_Movement
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_NotIntentionally_Text4
 	closemessage
 	callnative ClearMugshot
-	goto TheGangsAllHere_GiveVSItemfinder_Script
+	goto TheGangsAllHere_GiveDowsingMachine_Script
 	end
 
 
-TheGangsAllHere_GiveVSItemfinder_Script::
-	turnobject 3, DIR_WEST
+TheGangsAllHere_GiveDowsingMachine_Script::
+	applymovement 3, FaceLeft_Movement
 	giveitem ITEM_ITEMFINDER, 1
-	goto TheGangsAllHere_GiveVSItemfinder_Dialogue
+	goto TheGangsAllHere_GiveDowsingMachine_Dialogue
 	end
 
 
-TheGangsAllHere_GiveVSItemfinder_Dialogue::
+TheGangsAllHere_GiveDowsingMachine_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_GiveVSItemfinder_Text1
+	msgbox gText_TheGangsAllHere_GiveDowsingMachine_Text1
 	callnative ClearMugshot
-	turnobject 4, DIR_WEST
+	applymovement 4, FaceLeft_Movement
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_GiveVSItemfinder_Text2
+	msgbox gText_TheGangsAllHere_GiveDowsingMachine_Text2
 	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_GiveVSItemfinder_Text3
+	msgbox gText_TheGangsAllHere_GiveDowsingMachine_Text3
 	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_GiveVSItemfinder_Text4
+	msgbox gText_TheGangsAllHere_GiveDowsingMachine_Text4
 	closemessage
 	callnative ClearMugshot
-	call TheGangsAllHere_Psfcompany4Run_Dialogue
+	goto TheGangsAllHere_Psfcompany4Run_Dialogue
 	end
 
 
 TheGangsAllHere_Psfcompany4Run_Dialogue::
-	turnobject 3, DIR_SOUTH
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_Psfcompany4Run_Text1
 	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_LANCE
-	turnobject 4, DIR_NORTH
+	applymovement 4, FaceUp_Movement
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_Psfcompany4Run_Text2
 	callnative ClearMugshot
-	turnobject 4, DIR_WEST
+	applymovement 4, FaceLeft_Movement
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_Psfcompany4Run_Text3
@@ -183,11 +185,45 @@ TheGangsAllHere_Psfcompany4Run_Dialogue::
 	applymovement 4, TheGangsAllHere_PsfbadadminWalkOut_Movement
 	waitmovement 0
 	playbgm MUS_RG_SILPH, TRUE
+	goto TheGangsAllHere_ObjectCleanUp
+	return
+
+
+TheGangsAllHere_ObjectCleanUp::
 	removeobject 3
 	removeobject 4
+	setflag FLAG_HIDE_TOWERF10_PSFBADGUY
 	releaseall
 	end
 
+
+FlagChecker::
+	goto_if_set FLAG_HIDE_TOWERF10_PSFBADGUY, FlagChecker_2
+	msgbox FlagChecker_Text_1
+FlagChecker_1:
+	closemessage
+	return
+
+FlagChecker_2:
+	msgbox FlagChecker_Text_0
+	goto FlagChecker_1
+
+
+FaceUp_Movement:
+	face_up
+	step_end
+
+FaceDown_Movement:
+	face_down
+	step_end
+
+FaceLeft_Movement:
+	face_left
+	step_end
+
+FaceRight_Movement:
+	face_right
+	step_end
 
 TheGangsAllHere_Psfbadadmin1WalkToZoey_Movement:
 	face_right
@@ -286,6 +322,12 @@ FollowMe_Movement:
 	walk_down
 	step_end
 
+FlagChecker_Text_0:
+	.string "Flag is set.$"
+
+FlagChecker_Text_1:
+	.string "Flag is not set.$"
+
 gText_TheGangsAllHere_WhatBringsYou_Text1::
 	.string "{PLAYER}! What brings you to League\n"
 	.string "HQ?$"
@@ -358,7 +400,7 @@ gText_TheGangsAllHere_NotIntentionally_Text4::
 	.string "because the package actually isn't for\l"
 	.string "me!$"
 
-gText_TheGangsAllHere_GiveVSItemfinder_Text1::
+gText_TheGangsAllHere_GiveDowsingMachine_Text1::
 	.string "The VS Seeker will alert Trainers in the\n"
 	.string "area that you want a rematch. It uses\l"
 	.string "steps to charge, so I guess you'll burn\l"
@@ -366,7 +408,7 @@ gText_TheGangsAllHere_GiveVSItemfinder_Text1::
 	.string "I'm excited to see how you use our\l"
 	.string "tools!$"
 
-gText_TheGangsAllHere_GiveVSItemfinder_Text2::
+gText_TheGangsAllHere_GiveDowsingMachine_Text2::
 	.string "Not to place any undue pressure on you,\n"
 	.string "but we personally reviewed all of the\l"
 	.string "applicants to our little program. You\l"
@@ -374,11 +416,11 @@ gText_TheGangsAllHere_GiveVSItemfinder_Text2::
 	.string "team, so we're very excited to see you\l"
 	.string "perform well!$"
 
-gText_TheGangsAllHere_GiveVSItemfinder_Text3::
+gText_TheGangsAllHere_GiveDowsingMachine_Text3::
 	.string "Oh. Wow! That means a lot. I'll\n"
 	.string "absolutely put it to use!$"
 
-gText_TheGangsAllHere_GiveVSItemfinder_Text4::
+gText_TheGangsAllHere_GiveDowsingMachine_Text4::
 	.string "We know. But no pressure. Enjoy your\n"
 	.string "journey!$"
 
