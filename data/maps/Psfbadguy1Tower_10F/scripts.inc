@@ -10,7 +10,7 @@ TheGangsAllHere_WhatBringsYou_Dialogue::
 	lock
 	setvar VAR_PSFCITY15_STATE, 3
 	playse SE_PIN
-	playbgm MUS_RG_FOLLOW_ME, TRUE
+	playbgm MUS_RG_FOLLOW_ME, FALSE
 	applymovement 4, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement 4, Common_Movement_FacePlayer
@@ -80,7 +80,7 @@ TheGangsAllHere_ThisIsOffice_Script::
 
 TheGangsAllHere_ComeOnIn_Dialogue::
 	setvar VAR_PSFCITY15_STATE, 4
-	playbgm MUS_RG_ENCOUNTER_DEOXYS, TRUE
+	playbgm MUS_RG_ENCOUNTER_DEOXYS, FALSE
 	playse SE_PIN
 	applymovement 3, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -309,7 +309,7 @@ FollowMe_Movement:
 	step_end
 
 Psfbadguy1Tower_10F_EventScript_Tom::
-	trainerbattle_double TRAINER_GINA_AND_MIA_1, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons
+	trainerbattle_double TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons
 	special GetPlayerBigGuyGirlString
 	msgbox Route104_Text_GinaPostBattle, MSGBOX_DEFAULT
 	release
@@ -317,7 +317,7 @@ Psfbadguy1Tower_10F_EventScript_Tom::
 
 
 Psfbadguy1Tower_10F_EventScript_Ian::
-	trainerbattle_double TRAINER_GINA_AND_MIA_1, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons
+	trainerbattle_double TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons
 	special GetPlayerBigGuyGirlString
 	msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
 	release
