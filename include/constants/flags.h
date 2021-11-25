@@ -661,7 +661,7 @@
 #define FLAG_SOLVED_GYM_3_PUZZLE  0x26C // Previously Unused Flag
 #define FLAG_HIDE_PSFCITY15_PSFBADBOSS 0x26D// Previously Unused Flag
 #define FLAG_HIDE_TOWERF10_PSFBADGUY 0x26E//Previously Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
+#define FLAG_MEET_PSFBADADMIN3  0x26F  //Previously Unused Flag
 #define FLAG_UNUSED_0x270  0x270 // Unused Flag
 #define FLAG_UNUSED_0x271  0x271 // Unused Flag
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag

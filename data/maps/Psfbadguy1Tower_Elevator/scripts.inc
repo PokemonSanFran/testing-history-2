@@ -103,7 +103,7 @@ Psfbadguy1TowerElevator_EventScript_1stFloor_2:
 
 Psfbadguy1TowerElevator_EventScript_2ndFloor::
 	setvar VAR_0x8006, PSFBADGUY1TOWER_FLOORNUM_2F
-	setdynamicwarp MAP_PSFBADGUY1TOWER_2F, 255, 8, 2
+	setdynamicwarp MAP_PSFBADGUY1TOWER_2F, 255, 9, 39
 	compare VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_2F
 	goto_if_eq Psfbadguy1TowerElevator_EventScript_2ndFloor_2
 Psfbadguy1TowerElevator_EventScript_2ndFloor_1:
