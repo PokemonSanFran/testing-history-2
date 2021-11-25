@@ -38,6 +38,7 @@ AlwaysWatchingWazowski_MovePlayerIntoPlace_Script_2:
 
 AlwaysWatchingWazowski_Intro_Dialogue::
 	setflag FLAG_MEET_PSFBADADMIN3
+	playbgm MUS_MT_PYRE, FALSE
 	setvar VAR_0x8000, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_Intro_Text2
@@ -147,6 +148,7 @@ AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_MyProductivityHasDropped_Text1
 	applymovement 2, Common_Movement_FaceUp
+	fadedefaultbgm
 	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
