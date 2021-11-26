@@ -103,7 +103,14 @@
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125"
+    "Underwater_Route125",
+    "Psfcity6",
+    "Psfroute9",
+    "Psfcity12",
+    "Psfroute38",
+    "Psfroute70",
+    "Psfroute19",
+    "Psfroute8"
   ],
   "gMapGroup_IndoorPsfcity8": [
     "Psfcity8_Compound_1F",

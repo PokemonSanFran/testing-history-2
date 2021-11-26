@@ -4610,6 +4610,76 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Psfbadguy1Tower_11F/border.bin",
       "blockdata_filepath": "data/layouts/Psfbadguy1Tower_11F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY6",
+      "name": "Psfcity6_Layout",
+      "width": 80,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfcity6/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity6/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE9",
+      "name": "Psfroute9_Layout",
+      "width": 5,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute9/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute9/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY12",
+      "name": "Psfcity12_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BattleFrontier",
+      "border_filepath": "data/layouts/Psfcity12/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity12/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE38",
+      "name": "Psfroute38_Layout",
+      "width": 20,
+      "height": 5,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute38/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute38/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE70",
+      "name": "Psfroute70_Layout",
+      "width": 5,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute70/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute70/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE19",
+      "name": "Psfroute19_Layout",
+      "width": 20,
+      "height": 5,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute19/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute19/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE8",
+      "name": "Psfroute8_Layout",
+      "width": 5,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute8/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute8/map.bin"
     }
   ]
 }
