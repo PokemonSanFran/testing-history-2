@@ -116,7 +116,8 @@
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125"
+    "Underwater_Route125",
+    "Psfplace13"
   ],
   "gMapGroup_IndoorPsfcity8": [
     "Psfcity8_Compound_1F",
@@ -124,7 +125,8 @@
     "Psfcity8_PokemonCenter_1F"
   ],
   "gMapGroup_IndoorPsfcity15": [
-    "Psfcity15_Gym"
+    "Psfcity15_Gym",
+    "Psfcity6_Gym"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

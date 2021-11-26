@@ -4724,10 +4724,10 @@
     {
       "id": "LAYOUT_PSFPLACE7",
       "name": "Psfplace7_Layout",
-      "width": 30,
-      "height": 30,
+      "width": 31,
+      "height": 31,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_NavelRock",
       "border_filepath": "data/layouts/Psfplace7/border.bin",
       "blockdata_filepath": "data/layouts/Psfplace7/map.bin"
     },
@@ -4740,6 +4740,26 @@
       "secondary_tileset": "gTileset_Pacifidlog",
       "border_filepath": "data/layouts/Psfplace11/border.bin",
       "blockdata_filepath": "data/layouts/Psfplace11/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE13",
+      "name": "Psfplace13_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Psfplace13/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace13/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY6_GYM",
+      "name": "Psfcity6_Gym_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGym",
+      "border_filepath": "data/layouts/Psfcity6_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity6_Gym/map.bin"
     }
   ]
 }
