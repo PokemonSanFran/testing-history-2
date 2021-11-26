@@ -4692,16 +4692,6 @@
       "blockdata_filepath": "data/layouts/Psfroute30/map.bin"
     },
     {
-      "id": "LAYOUT_NEW_MAP1",
-      "name": "NewMap1_Layout",
-      "width": 20,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/NewMap1/border.bin",
-      "blockdata_filepath": "data/layouts/NewMap1/map.bin"
-    },
-    {
       "id": "LAYOUT_PSFROUTE14",
       "name": "Psfroute14_Layout",
       "width": 20,
@@ -4730,26 +4720,6 @@
       "secondary_tileset": "gTileset_Lavaridge",
       "border_filepath": "data/layouts/Psfcity14/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity14/map.bin"
-    },
-    {
-      "id": "LAYOUT_NEW_MAP2",
-      "name": "NewMap2_Layout",
-      "width": 5,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/NewMap2/border.bin",
-      "blockdata_filepath": "data/layouts/NewMap2/map.bin"
-    },
-    {
-      "id": "LAYOUT_NEW_MAP3",
-      "name": "NewMap3_Layout",
-      "width": 5,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/NewMap3/border.bin",
-      "blockdata_filepath": "data/layouts/NewMap3/map.bin"
     },
     {
       "id": "LAYOUT_PSFPLACE7",
