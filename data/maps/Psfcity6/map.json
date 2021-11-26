@@ -15,7 +15,7 @@
   "connections": [
     {
       "direction": "down",
-      "offset": 36,
+      "offset": 8,
       "map": "MAP_PSFROUTE11"
     },
     {
@@ -25,8 +25,13 @@
     },
     {
       "direction": "up",
-      "offset": 14,
+      "offset": 7,
       "map": "MAP_PSFROUTE9"
+    },
+    {
+      "direction": "left",
+      "offset": 14,
+      "map": "MAP_PSFROUTE14"
     }
   ],
   "object_events": [

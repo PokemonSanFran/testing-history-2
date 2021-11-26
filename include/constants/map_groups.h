@@ -78,6 +78,15 @@
 #define MAP_PSFROUTE70          (69 | (0 << 8))
 #define MAP_PSFROUTE19          (70 | (0 << 8))
 #define MAP_PSFROUTE8           (71 | (0 << 8))
+#define MAP_PSFROUTE30          (72 | (0 << 8))
+#define MAP_NEW_MAP1            (73 | (0 << 8))
+#define MAP_PSFROUTE14          (74 | (0 << 8))
+#define MAP_PSFCITY13           (75 | (0 << 8))
+#define MAP_PSFCITY14           (76 | (0 << 8))
+#define MAP_NEW_MAP2            (77 | (0 << 8))
+#define MAP_NEW_MAP3            (78 | (0 << 8))
+#define MAP_PSFPLACE7           (79 | (0 << 8))
+#define MAP_PSFPLACE11          (80 | (0 << 8))
 
 // Map Group 1
 #define MAP_PSFCITY8_COMPOUND_1F       (0 | (1 << 8))

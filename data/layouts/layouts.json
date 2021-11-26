@@ -4494,7 +4494,7 @@
     {
       "id": "LAYOUT_PSFROUTE21",
       "name": "Psfroute21_Layout",
-      "width": 20,
+      "width": 80,
       "height": 9,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
@@ -4614,7 +4614,7 @@
     {
       "id": "LAYOUT_PSFCITY6",
       "name": "Psfcity6_Layout",
-      "width": 80,
+      "width": 20,
       "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mossdeep",
@@ -4664,7 +4664,7 @@
     {
       "id": "LAYOUT_PSFROUTE19",
       "name": "Psfroute19_Layout",
-      "width": 20,
+      "width": 50,
       "height": 5,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
@@ -4674,12 +4674,102 @@
     {
       "id": "LAYOUT_PSFROUTE8",
       "name": "Psfroute8_Layout",
-      "width": 5,
-      "height": 20,
+      "width": 15,
+      "height": 100,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Psfroute8/border.bin",
       "blockdata_filepath": "data/layouts/Psfroute8/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE30",
+      "name": "Psfroute30_Layout",
+      "width": 10,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Psfroute30/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute30/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAP1",
+      "name": "NewMap1_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/NewMap1/border.bin",
+      "blockdata_filepath": "data/layouts/NewMap1/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE14",
+      "name": "Psfroute14_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute14/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute14/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY13",
+      "name": "Psfcity13_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Psfcity13/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity13/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY14",
+      "name": "Psfcity14_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Psfcity14/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity14/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAP2",
+      "name": "NewMap2_Layout",
+      "width": 5,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/NewMap2/border.bin",
+      "blockdata_filepath": "data/layouts/NewMap2/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAP3",
+      "name": "NewMap3_Layout",
+      "width": 5,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/NewMap3/border.bin",
+      "blockdata_filepath": "data/layouts/NewMap3/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE7",
+      "name": "Psfplace7_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfplace7/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace7/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE11",
+      "name": "Psfplace11_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Psfplace11/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace11/map.bin"
     }
   ]
 }

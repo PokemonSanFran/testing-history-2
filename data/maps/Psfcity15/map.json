@@ -17,6 +17,11 @@
       "direction": "right",
       "offset": 30,
       "map": "MAP_PSFROUTE22"
+    },
+    {
+      "direction": "left",
+      "offset": -14,
+      "map": "MAP_PSFROUTE30"
     }
   ],
   "object_events": [
