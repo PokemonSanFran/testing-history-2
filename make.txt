@@ -1,0 +1,6 @@
+Failed to read "src/omni_text.c".
+Failed to read "src/omni_text.h".
+cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald.map -T ld_script.ld -o ../../pokeemerald.elf <objects> <lib>
+arm-none-eabi-ld: data/maps.o: in function `Psfcity6_Gym':
+(.rodata+0xabb60): undefined reference to `Psfcity6_Gym_MapScripts'
+make: *** [Makefile:428: pokeemerald.elf] Error 1

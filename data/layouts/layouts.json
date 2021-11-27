@@ -4754,10 +4754,10 @@
     {
       "id": "LAYOUT_PSFCITY6_GYM",
       "name": "Psfcity6_Gym_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 11,
+      "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_RustboroGym",
+      "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Psfcity6_Gym/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity6_Gym/map.bin"
     }

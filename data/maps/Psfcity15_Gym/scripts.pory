@@ -30,7 +30,7 @@ script Psfleader3StartBattle_ObjectSetup {
 }
 
 script AutomaticSolvePuzzle_Script {
-    setflag(FLAG_SOLVED_GYM_3_PUZZLE)
+    setflag(FLAG_SOLVED_GYM_3_PUZZLE) //automatic solve trainers disappear
     setvar(VAR_GYM_3_STATE,1)
     msgbox(format("Puzzle is solved. Leave and come back."),MSGBOX_NPC)
 }

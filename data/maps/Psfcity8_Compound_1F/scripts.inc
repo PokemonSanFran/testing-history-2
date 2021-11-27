@@ -28,7 +28,7 @@ Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
 	return
 
 Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_Psfchara4Intro_Dialogue
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, Swagbag_WelcomeToPsfregion1_Dialogue
 	.2byte 0
 
@@ -37,18 +37,18 @@ ImProbablyBetterThanYou_ObjectSetUp::
 	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1_2
 	setflag FLAG_HIDE_COMPOUND_POKEDEX_LEFT
 	setflag FLAG_HIDE_COMPOUND_POKEDEX_RIGHT
-	setflag FLAG_HIDE_COMPOUND_PSFCHARA4_2
+	setflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2
 	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
 	return
 
 
 Swagbag_ObjectSetUp::
-	clearflag FLAG_HIDE_COMPOUND_PSFCHARA4_2
+	clearflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2
 	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
 	turnobject 3, DIR_WEST
 	clearflag FLAG_HIDE_COMPOUND_POKEDEX_LEFT
 	clearflag FLAG_HIDE_COMPOUND_POKEDEX_RIGHT
-	setflag FLAG_HIDE_COMPOUND_PSFCHARA4
+	setflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL
 	return
 
 
@@ -64,7 +64,7 @@ TwoHoursAgo_ObjectSetUp::
 	return
 
 
-ImProbablyBetterThanYou_Psfchara4Intro_Dialogue::
+ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 2
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInside_Movement
@@ -74,89 +74,89 @@ ImProbablyBetterThanYou_Psfchara4Intro_Dialogue::
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement 1, Psfchara4Intro_Movement
+	applymovement 1, PsftransrivalIntro_Movement
 	waitmovement 0
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text1
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1
 	closemessage
 	goto ImProbablyBetterThanYou_KindaShabby_Dialogue
 	end
 
 
 ImProbablyBetterThanYou_KindaShabby_Dialogue::
-	applymovement 1, Psfchara4LookAround_Movement
+	applymovement 1, PsftransrivalLookAround_Movement
 	waitmovement 3
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text2
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text2
 	closemessage
 	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text3
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text3
 	callnative ClearMugshot
 	closemessage
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text4
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text4
 	callnative ClearMugshot
 	closemessage
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text5
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text5
 	goto ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue
 	end
 
 
 ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue::
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text6
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text7
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text6
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text7
 	closemessage
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text8
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text8
 	callnative ClearMugshot
 	closemessage
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text9
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text9
 	goto ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue
 	end
 
 
 ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue::
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text10
-	applymovement 1, Psfchara4GestureUpstairs_Movement
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text10
+	applymovement 1, PsftransrivalGestureUpstairs_Movement
 	waitmovement 0
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Intro_Text11
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text11
 	callnative ClearMugshot
 	closemessage
-	applymovement 1, Psfchara4BackToCouch_Movement
+	applymovement 1, PsftransrivalBackToCouch_Movement
 	waitmovement 0
 	playbgm MUS_BIRCH_LAB, TRUE
 	releaseall
 	end
 
 
-Psfchara4Annoyed_Dialogue::
+PsftransrivalAnnoyed_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	switch VAR_TEMP_0
-	case 1, Psfchara4Annoyed_Dialogue_3
-	case 2, Psfchara4Annoyed_Dialogue_4
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text1, MSGBOX_NPC
+	case 1, PsftransrivalAnnoyed_Dialogue_3
+	case 2, PsftransrivalAnnoyed_Dialogue_4
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text1, MSGBOX_NPC
 	setvar VAR_TEMP_0, 1
-Psfchara4Annoyed_Dialogue_1:
+PsftransrivalAnnoyed_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	return
 
-Psfchara4Annoyed_Dialogue_3:
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text2, MSGBOX_NPC
+PsftransrivalAnnoyed_Dialogue_3:
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text2, MSGBOX_NPC
 	setvar VAR_TEMP_0, 2
-	goto Psfchara4Annoyed_Dialogue_1
+	goto PsftransrivalAnnoyed_Dialogue_1
 
-Psfchara4Annoyed_Dialogue_4:
-	msgbox gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text3, MSGBOX_NPC
+PsftransrivalAnnoyed_Dialogue_4:
+	msgbox gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text3, MSGBOX_NPC
 	setvar VAR_TEMP_0, 2
-	goto Psfchara4Annoyed_Dialogue_1
+	goto PsftransrivalAnnoyed_Dialogue_1
 
 
 ImProbablyBetterThanYou_ShouldUnpack::
@@ -199,7 +199,7 @@ Swagbag_WelcomeToPsfregion1_Dialogue::
 	applymovement 3, Psfbadadmin1WalkToTable_Movement
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerFollowPsfbadadmin1ToTable_Movement
-	applymovement 2, Psfchara4FollowPsfbadadmin1ToTable_Movement
+	applymovement 2, PsftransrivalFollowPsfbadadmin1ToTable_Movement
 	waitmovement 0
 	goto Swagbag_LeagueStipend_Dialogue
 	end
@@ -276,11 +276,11 @@ Swagbag_WhenCanWeStart_Dialogue::
 	msgbox gText_Swagbag_WhenCanWeStart_Text4
 	callnative ClearMugshot
 	closemessage
-	applymovement 2, Psfchara4WalkOutside_Movement
+	applymovement 2, PsftransrivalWalkOutside_Movement
 	waitmovement 0
 	playse SE_EXIT
 	removeobject 2
-	setflag FLAG_HIDE_COMPOUND_PSFCHARA4_2
+	setflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2
 	delay 30
 	goto Swagbag_DontLeavePsfcity8
 	return
@@ -395,17 +395,17 @@ WalkInside_Movement:
 	walk_up
 	step_end
 
-Psfchara4Intro_Movement:
+PsftransrivalIntro_Movement:
 	walk_right
 	walk_down
 	step_end
 
-Psfchara4BackToCouch_Movement:
+PsftransrivalBackToCouch_Movement:
 	walk_up
 	walk_left
 	step_end
 
-Psfchara4LookAround_Movement:
+PsftransrivalLookAround_Movement:
 	face_left
 	delay_16
 	delay_16
@@ -417,7 +417,7 @@ Psfchara4LookAround_Movement:
 	delay_16
 	step_end
 
-Psfchara4GestureUpstairs_Movement:
+PsftransrivalGestureUpstairs_Movement:
 	face_up
 	delay_16
 	delay_16
@@ -439,7 +439,7 @@ Psfbadadmin1WalkToTable_Movement:
 	face_down
 	step_end
 
-Psfchara4FollowPsfbadadmin1ToTable_Movement:
+PsftransrivalFollowPsfbadadmin1ToTable_Movement:
 	walk_down
 	walk_down
 	walk_down
@@ -463,7 +463,7 @@ PlayerFollowPsfbadadmin1ToTable_Movement:
 	face_up
 	step_end
 
-Psfchara4WalkOutside_Movement:
+PsftransrivalWalkOutside_Movement:
 	walk_down
 	walk_left
 	walk_left
@@ -480,11 +480,11 @@ Psfbadadmin1WalkToLaptop_Movement:
 	face_right
 	step_end
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text1::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1::
 	.string "You must be {PLAYER}. Great to meet\n"
 	.string "you!$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text2::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text2::
 	.string "Kinda shabby, huh? I thought\n"
 	.string "Psfbadguy1 was pulling out all the\l"
 	.string "stops for us, but there's not a butler\l"
@@ -492,38 +492,38 @@ gText_ImProbablyBetterThanYou_Psfchara4Intro_Text2::
 	.string "Not that I ever play, but it's the\l"
 	.string "principle of the thing...$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text3::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text3::
 	.string "Oh yeah uh, it's too bad...$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text4::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text4::
 	.string "*internal* This house is friggin' huge!\n"
 	.string "Bigger than anywhere I've ever stayed,\l"
 	.string "that's for sure...$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text5::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text5::
 	.string "My flight was earlier today, so I've just\n"
 	.string "been waiting around.$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text6::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text6::
 	.string "I ordered some food too - Psfcompany1\n"
 	.string "is the same here as it is back in Unova,\l"
 	.string "and my Mom's card is still on the\l"
 	.string "account! I'm sure she gets... points or\l"
 	.string "something, right?$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text7::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text7::
 	.string "Where are you from?$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text8::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text8::
 	.string "Agate Village, Orre. You?$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text9::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text9::
 	.string "Undella Town, Unova. Agate, right? I\n"
 	.string "don't think I've heard of it... oh well.\l"
 	.string "Probably just as boring as Undella. SO\l"
 	.string "GLAD to be out of there!$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text10::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text10::
 	.string "I know our orientation is supposed to\n"
 	.string "start soon, or something like that. I\l"
 	.string "took the bedroom on the left, so the\l"
@@ -531,19 +531,19 @@ gText_ImProbablyBetterThanYou_Psfchara4Intro_Text10::
 	.string "take the good one because I got here\l"
 	.string "first...$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Intro_Text11::
+gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text11::
 	.string "but both rooms are exactly the same!\n"
 	.string "Let's chill after you unpack.$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text1::
+gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text1::
 	.string "Go check out your room!$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text2::
+gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text2::
 	.string "Oh man, are you trying to do some\n"
 	.string "bonding or something? Lemme finish\l"
 	.string "this truffle burger first...$"
 
-gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text3::
+gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text3::
 	.string "Nom nom nom...$"
 
 gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue::
@@ -661,7 +661,7 @@ gText_Swagbag_AnnoyPsfbadadmin1_Text1::
 	.string "getr answers to. Tutorial level shit.$"
 
 gText_TwoHoursAgo_TheyreEager_Text1::
-	.string "Looks like Psfchara4 woke up early and\n"
+	.string "Looks like Psftransrival woke up early and\n"
 	.string "already left! They're eager, I'll give\l"
 	.string "them that. I guess they didn't need the\l"
 	.string "explanation... or breakfast.$"
@@ -682,7 +682,7 @@ gText_TwoHoursAgo_ExplainLeague_Text2::
 
 gText_TwoHoursAgo_ExplainLeague_Text3::
 	.string "We expect the best from you and\n"
-	.string "Psfchara4! If you fail to qualify for\l"
+	.string "Psftransrival! If you fail to qualify for\l"
 	.string "the Championship, we'll be terminating\l"
 	.string "your contract, and you'll be on your\l"
 	.string "own... but we know that won't be the\l"
@@ -690,7 +690,7 @@ gText_TwoHoursAgo_ExplainLeague_Text3::
 
 gText_TwoHoursAgo_LeftoversPokeballs_Text1::
 	.string "Psfcompany2 is always so delicious! Too\n"
-	.string "bad Psfchara4 didn't eat with us. I\l"
+	.string "bad Psftransrival didn't eat with us. I\l"
 	.string "guess you can take their portion of\l"
 	.string "the food, and I bought you both\l"
 	.string "PokéBalls, but you can have theirs too!$"
@@ -699,4 +699,4 @@ gText_TwoHoursAgo_ExplainLeftovers_Text1::
 	.string "Your {STR_VAR_1} can hold those\n"
 	.string "Leftovers to restore HP during battle.\l"
 	.string "Now, you should get a move on! Don't let\l"
-	.string "Psfchara4 get too far ahead of you!$"
+	.string "Psftransrival get too far ahead of you!$"

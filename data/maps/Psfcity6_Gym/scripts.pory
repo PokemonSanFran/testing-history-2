@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-CONST PSFLEADER1 = 1
+const PSFLEADER1 = 1
 
 //VAR_GYM_1_STATE
 //1: Initial state
@@ -10,10 +10,9 @@ CONST PSFLEADER1 = 1
 
 mapscripts Psfcity6_Gym_Mapscripts {
     MAP_SCRIPT_ON_TRANSITION {
-        switch (var(VAR_GYM_3_STATE)) {
-            case 1: goto(ArrangementMuseum_ObjectSetUp)
-            case 2: goto(Psfleader3StartBattle_ObjectSetup)
-            case 3: goto(Psfleader3StartBattle_ObjectSetup) 
+        switch (var(VAR_GYM_1_STATE)) {
+            //case 2: goto(Psfleader3StartBattle_ObjectSetup)
+            //case 3: goto(Psfleader3StartBattle_ObjectSetup) 
         }
     }
 }

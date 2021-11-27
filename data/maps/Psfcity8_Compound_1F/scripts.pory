@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFCHARA4 = 1
-const PSFCHARA4_2 = 2
+const PSFTRANSRIVAL = 1
+const PSFTRANSRIVAL_2 = 2
 const PSFBADADMIN1 = 3
 const PSFBADADMIN1_2 = 6
 
@@ -8,7 +8,7 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
     
         switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
-            case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) //Started game, has not met Psfchara4
+            case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) //Started game, has not met Psftransrival
             case 3: goto(Swagbag_ObjectSetUp) //Has checked out bedroom
             case 4: goto(ExplorePsfcity8_ObjectSetUp) //Has met Psfbadadmin1 and recieved items
             case 5: goto(TwoHoursAgo_ObjectSetUp) //Has slept in bed after getting Pokedex
@@ -16,7 +16,7 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_Psfchara4Intro_Dialogue //Started game, has not met Psfchara4
+        VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue //Started game, has not met Psftransrival
         VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue //Has checked out room
     ]
 }
@@ -24,16 +24,16 @@ script ImProbablyBetterThanYou_ObjectSetUp {
     setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
     setflag(FLAG_HIDE_COMPOUND_POKEDEX_LEFT)
     setflag(FLAG_HIDE_COMPOUND_POKEDEX_RIGHT)
-    setflag(FLAG_HIDE_COMPOUND_PSFCHARA4_2)
+    setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2)
     setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
 }
 script Swagbag_ObjectSetUp {
-    clearflag(FLAG_HIDE_COMPOUND_PSFCHARA4_2)
+    clearflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2)
     clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
     turnobject(PSFBADADMIN1, DIR_WEST) 
     clearflag(FLAG_HIDE_COMPOUND_POKEDEX_LEFT)
     clearflag(FLAG_HIDE_COMPOUND_POKEDEX_RIGHT)
-    setflag(FLAG_HIDE_COMPOUND_PSFCHARA4)
+    setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
 }
 
 script ExplorePsfcity8_ObjectSetUp {
@@ -46,7 +46,7 @@ script TwoHoursAgo_ObjectSetUp {
     clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
 }
 
-script ImProbablyBetterThanYou_Psfchara4Intro_Dialogue {
+script ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue {
     setvar(VAR_LITTLEROOT_INTRO_STATE,2)
     lockall
     applymovement(PLAYER,WalkInside_Movement)
@@ -54,82 +54,82 @@ script ImProbablyBetterThanYou_Psfchara4Intro_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
     playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
     playse(SE_PIN)
-	applymovement(PSFCHARA4,Common_Movement_ExclamationMark)
+	applymovement(PSFTRANSRIVAL,Common_Movement_ExclamationMark)
     waitmovement(0)
-    applymovement(PSFCHARA4,Psfchara4Intro_Movement)
+    applymovement(PSFTRANSRIVAL,PsftransrivalIntro_Movement)
     waitmovement(0)
     callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text1)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1)
     closemessage
     goto (ImProbablyBetterThanYou_KindaShabby_Dialogue) 
     end
 }
 
 script ImProbablyBetterThanYou_KindaShabby_Dialogue {
-    applymovement(PSFCHARA4,Psfchara4LookAround_Movement)
+    applymovement(PSFTRANSRIVAL,PsftransrivalLookAround_Movement)
     waitmovement(3)
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text2)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text2)
     closemessage
     callnative(ClearMugshot)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text3)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text3)
     callnative(ClearMugshot)
     closemessage
     callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text4)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text4)
     callnative(ClearMugshot)
     closemessage
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
     callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text5)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text5)
     goto(ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue) 
     end
 }
 
 script ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue {
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text6)
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text7)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text6)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text7)
     closemessage
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text8)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text8)
     callnative(ClearMugshot)
     closemessage
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
     callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text9)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text9)
     goto (ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue)
     end
 }
 
 script ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue {
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text10)
-    applymovement(PSFCHARA4,Psfchara4GestureUpstairs_Movement)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text10)
+    applymovement(PSFTRANSRIVAL,PsftransrivalGestureUpstairs_Movement)
     waitmovement(0)
-    msgbox(gText_ImProbablyBetterThanYou_Psfchara4Intro_Text11)
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text11)
     callnative(ClearMugshot)
     closemessage
-    applymovement(PSFCHARA4,Psfchara4BackToCouch_Movement)
+    applymovement(PSFTRANSRIVAL,PsftransrivalBackToCouch_Movement)
     waitmovement(0)
     playbgm(MUS_BIRCH_LAB,TRUE)
     releaseall
     end
 }
 
-script Psfchara4Annoyed_Dialogue {
+script PsftransrivalAnnoyed_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
     callnative(DrawMugshot)
 
     switch(var(VAR_TEMP_0)) {
             case 1:
-                msgbox(gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text2,MSGBOX_NPC)
+                msgbox(gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text2,MSGBOX_NPC)
                 setvar(VAR_TEMP_0, 2)
             case 2:
-                msgbox(gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text3,MSGBOX_NPC)
+                msgbox(gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text3,MSGBOX_NPC)
                 setvar(VAR_TEMP_0, 2)
             default:
-                msgbox(gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text1,MSGBOX_NPC)
+                msgbox(gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text1,MSGBOX_NPC)
                 setvar(VAR_TEMP_0, 1)
     }
 
@@ -177,7 +177,7 @@ script Swagbag_WelcomeToPsfregion1_Dialogue {
     applymovement(PSFBADADMIN1,Psfbadadmin1WalkToTable_Movement)
     waitmovement(0)
     applymovement(PLAYER,PlayerFollowPsfbadadmin1ToTable_Movement)
-    applymovement(PSFCHARA4_2,Psfchara4FollowPsfbadadmin1ToTable_Movement)
+    applymovement(PSFTRANSRIVAL_2,PsftransrivalFollowPsfbadadmin1ToTable_Movement)
     waitmovement(0)
     goto(Swagbag_LeagueStipend_Dialogue)
     end
@@ -253,11 +253,11 @@ script Swagbag_WhenCanWeStart_Dialogue {
     msgbox(gText_Swagbag_WhenCanWeStart_Text4)
     callnative(ClearMugshot)
     closemessage
-    applymovement(PSFCHARA4_2,Psfchara4WalkOutside_Movement)
+    applymovement(PSFTRANSRIVAL_2,PsftransrivalWalkOutside_Movement)
     waitmovement(0)
     playse(SE_EXIT)
-    removeobject(PSFCHARA4_2)
-    setflag(FLAG_HIDE_COMPOUND_PSFCHARA4_2)
+    removeobject(PSFTRANSRIVAL_2)
+    setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2)
     delay(30)
     goto(Swagbag_DontLeavePsfcity8)
 }
@@ -368,19 +368,19 @@ movement WalkInside_Movement {
     step_end
 }
 
-movement Psfchara4Intro_Movement {
+movement PsftransrivalIntro_Movement {
     walk_right
     walk_down
     step_end
 }
 
-movement Psfchara4BackToCouch_Movement {
+movement PsftransrivalBackToCouch_Movement {
     walk_up
     walk_left
     step_end
 }
 
-movement Psfchara4LookAround_Movement {
+movement PsftransrivalLookAround_Movement {
     face_left
     delay_16
     delay_16
@@ -393,7 +393,7 @@ movement Psfchara4LookAround_Movement {
     step_end
 }
 
-movement Psfchara4GestureUpstairs_Movement {
+movement PsftransrivalGestureUpstairs_Movement {
     face_up
     delay_16
     delay_16
@@ -414,7 +414,7 @@ movement Psfbadadmin1WalkToTable_Movement{
     face_down
     step_end
 }
-movement Psfchara4FollowPsfbadadmin1ToTable_Movement{
+movement PsftransrivalFollowPsfbadadmin1ToTable_Movement{
     walk_down * 3
     walk_right * 5
     face_up
@@ -427,7 +427,7 @@ movement PlayerFollowPsfbadadmin1ToTable_Movement{
     step_end
 }
 
-movement Psfchara4WalkOutside_Movement {
+movement PsftransrivalWalkOutside_Movement {
     walk_down
     walk_left * 5
     walk_down
@@ -441,59 +441,59 @@ movement Psfbadadmin1WalkToLaptop_Movement {
     step_end
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text1 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1 {
     format("You must be {PLAYER}. Great to meet you!")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text2 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text2 {
     format("Kinda shabby, huh? I thought Psfbadguy1 was pulling out all the stops for us, but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text3 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text3 {
     format("Oh yeah uh, it's too bad...")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text4 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text4 {
     format("*internal* This house is friggin' huge! Bigger than anywhere I've ever stayed, that's for sure...")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text5 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text5 {
     format("My flight was earlier today, so I've just been waiting around.")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text6 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text6 {
     format("I ordered some food too - Psfcompany1 is the same here as it is back in Unova, and my Mom's card is still on the account! I'm sure she gets... points or something, right?")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text7 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text7 {
     format("Where are you from?")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text8 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text8 {
     format("Agate Village, Orre. You?")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text9 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text9 {
     format("Undella Town, Unova. Agate, right? I don't think I've heard of it... oh well. Probably just as boring as Undella. SO GLAD to be out of there!")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text10 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text10 {
     format("I know our orientation is supposed to start soon, or something like that. I took the bedroom on the left, so the one to the right is yours. I tried to take the good one because I got here first...")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Intro_Text11 {
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text11 {
     format("but both rooms are exactly the same! Let's chill after you unpack.")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text1 {
+text gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text1 {
     format("Go check out your room!")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text2 {
+text gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text2 {
     format("Oh man, are you trying to do some bonding or something? Lemme finish this truffle burger first...")
 }
 
-text gText_ImProbablyBetterThanYou_Psfchara4Annoy_Text3 {
+text gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text3 {
     format("Nom nom nom...")
 }
 
@@ -590,7 +590,7 @@ text gText_Swagbag_AnnoyPsfbadadmin1_Text1 {
 }
 
 text gText_TwoHoursAgo_TheyreEager_Text1 {
-    format("Looks like Psfchara4 woke up early and already left! They're eager, I'll give them that. I guess they didn't need the explanation... or breakfast.")
+    format("Looks like Psftransrival woke up early and already left! They're eager, I'll give them that. I guess they didn't need the explanation... or breakfast.")
 }
 
 text gText_TwoHoursAgo_ExplainLeague_Text1 {
@@ -602,12 +602,12 @@ text gText_TwoHoursAgo_ExplainLeague_Text2 {
 }
 
 text gText_TwoHoursAgo_ExplainLeague_Text3 {
-    format("We expect the best from you and Psfchara4! If you fail to qualify for the Championship, we'll be terminating your contract, and you'll be on your own... but we know that won't be the case! So don't worry.")
+    format("We expect the best from you and Psftransrival! If you fail to qualify for the Championship, we'll be terminating your contract, and you'll be on your own... but we know that won't be the case! So don't worry.")
 }
 text gText_TwoHoursAgo_LeftoversPokeballs_Text1 {
-    format("Psfcompany2 is always so delicious! Too bad Psfchara4 didn't eat with us. I guess you can take their portion of the food, and I bought you both PokéBalls, but you can have theirs too!")
+    format("Psfcompany2 is always so delicious! Too bad Psftransrival didn't eat with us. I guess you can take their portion of the food, and I bought you both PokéBalls, but you can have theirs too!")
 }
 
 text gText_TwoHoursAgo_ExplainLeftovers_Text1 {
-    format("Your {STR_VAR_1} can hold those Leftovers to restore HP during battle. Now, you should get a move on! Don't let Psfchara4 get too far ahead of you!")
+    format("Your {STR_VAR_1} can hold those Leftovers to restore HP during battle. Now, you should get a move on! Don't let Psftransrival get too far ahead of you!")
 }
