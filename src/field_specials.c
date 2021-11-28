@@ -249,20 +249,20 @@ void FinishCyclingRoadChallenge(void) {
 }
 
 static void RecordCyclingRoadResults(u32 numFrames, u8 numBikeCollisions) {
-    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
+    u16 low = VarGet(VAR_PSFROUTE9_STATE);
     u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
     u32 framesRecord = low + (high << 16);
 
     if (framesRecord > numFrames || framesRecord == 0)
     {
-        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_L, numFrames);
+        VarSet(VAR_PSFROUTE9_STATE, numFrames);
         VarSet(VAR_CYCLING_ROAD_RECORD_TIME_H, numFrames >> 16);
-        VarSet(VAR_CYCLING_ROAD_RECORD_COLLISIONS, numBikeCollisions);
+        VarSet(VAR_NATIVERIVALALPHA_STATE, numBikeCollisions);
     }
 }
 
 u16 GetRecordedCyclingRoadResults(void) {
-    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
+    u16 low = VarGet(VAR_PSFROUTE9_STATE);
     u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
     u32 framesRecord = low + (high << 16);
 
@@ -271,7 +271,7 @@ u16 GetRecordedCyclingRoadResults(void) {
         return FALSE;
     }
 
-    DetermineCyclingRoadResults(framesRecord, VarGet(VAR_CYCLING_ROAD_RECORD_COLLISIONS));
+    DetermineCyclingRoadResults(framesRecord, VarGet(VAR_NATIVERIVALALPHA_STATE));
     return TRUE;
 }
 
@@ -4481,4 +4481,17 @@ void SetPlayerGotFirstFans(void)
 u8 Script_TryGainNewFanFromCounter(void)
 {
     return TryGainNewFanFromCounter(gSpecialVar_0x8004);
+}
+
+u8 GetNumberOfBadges(void)
+{
+    u16 badgeFlag;
+    u8 count = 0;
+    
+    for (badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++){
+        if (FlagGet(badgeFlag))
+        count++;
+        }
+    VarSet(VAR_TEMP_0, count);
+    return count;
 }

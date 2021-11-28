@@ -661,10 +661,10 @@ gText_Swagbag_AnnoyPsfbadadmin1_Text1::
 	.string "getr answers to. Tutorial level shit.$"
 
 gText_TwoHoursAgo_TheyreEager_Text1::
-	.string "Looks like Psftransrival woke up early and\n"
-	.string "already left! They're eager, I'll give\l"
-	.string "them that. I guess they didn't need the\l"
-	.string "explanation... or breakfast.$"
+	.string "Looks like Psftransrival woke up early\n"
+	.string "and already left! They're eager, I'll\l"
+	.string "give them that. I guess they didn't\l"
+	.string "need the explanation... or breakfast.$"
 
 gText_TwoHoursAgo_ExplainLeague_Text1::
 	.string "You're in a race against hundreds of\n"
@@ -682,11 +682,11 @@ gText_TwoHoursAgo_ExplainLeague_Text2::
 
 gText_TwoHoursAgo_ExplainLeague_Text3::
 	.string "We expect the best from you and\n"
-	.string "Psftransrival! If you fail to qualify for\l"
-	.string "the Championship, we'll be terminating\l"
-	.string "your contract, and you'll be on your\l"
-	.string "own... but we know that won't be the\l"
-	.string "case! So don't worry.$"
+	.string "Psftransrival! If you fail to qualify\l"
+	.string "for the Championship, we'll be\l"
+	.string "terminating your contract, and you'll\l"
+	.string "be on your own... but we know that won't\l"
+	.string "be the case! So don't worry.$"
 
 gText_TwoHoursAgo_LeftoversPokeballs_Text1::
 	.string "Psfcompany2 is always so delicious! Too\n"
@@ -699,4 +699,5 @@ gText_TwoHoursAgo_ExplainLeftovers_Text1::
 	.string "Your {STR_VAR_1} can hold those\n"
 	.string "Leftovers to restore HP during battle.\l"
 	.string "Now, you should get a move on! Don't let\l"
-	.string "Psftransrival get too far ahead of you!$"
+	.string "Psftransrival get too far ahead of\l"
+	.string "you!$"

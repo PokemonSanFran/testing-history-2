@@ -1,19 +1,13 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER1 = 1
+const PSFLEADER3 = 1
 
-//VAR_GYM_1_STATE
-//1: Initial state
-//2: Psfleader1 is done cooking, ready to battle
+//VAR_GYM_3_STATE
+//1: Solved puzzles, ready to fight
+//2: Psfleader3 has walked to the battlefield
 //3: Saved in front of Psfleader3
 //4: Defeated Psfleader3
 //5: Hear explanation of badge and TM
 
-mapscripts Psfcity6_Gym_Mapscripts {
-    MAP_SCRIPT_ON_TRANSITION {
-        switch (var(VAR_GYM_1_STATE)) {
-            //case 2: goto(Psfleader3StartBattle_ObjectSetup)
-            //case 3: goto(Psfleader3StartBattle_ObjectSetup) 
-        }
-    }
+mapscripts Psfcity6_Gym_MapScripts {
 }
 

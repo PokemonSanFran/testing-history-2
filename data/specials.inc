@@ -541,3 +541,4 @@ gSpecials::
 	def_special SetPsfbadguy1TowerFloor
 	def_special GetTowerFloorDefaultFloorChoice
     def_special ShowPsfbadguy1TowerElevatorFloorSelect
+    def_special GetNumberOfBadges

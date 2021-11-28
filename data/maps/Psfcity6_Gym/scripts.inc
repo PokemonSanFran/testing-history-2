@@ -1,23 +1,3 @@
-Psfcity6_Gym_Mapscripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity6_Gym_Mapscripts_MAP_SCRIPT_ON_TRANSITION
+Psfcity6_Gym_MapScripts::
 	.byte 0
-
-Psfcity6_Gym_Mapscripts_MAP_SCRIPT_ON_TRANSITION:
-	switch VAR_GYM_3_STATE
-	case 1, Psfcity6_Gym_Mapscripts_MAP_SCRIPT_ON_TRANSITION_2
-	case 2, Psfcity6_Gym_Mapscripts_MAP_SCRIPT_ON_TRANSITION_3
-	case 3, Psfcity6_Gym_Mapscripts_MAP_SCRIPT_ON_TRANSITION_4
-	return
-
-Psfcity6_Gym_Mapscripts_MAP_SCRIPT_ON_TRANSITION_2:
-	goto ArrangementMuseum_ObjectSetUp
-	return
-
-Psfcity6_Gym_Mapscripts_MAP_SCRIPT_ON_TRANSITION_3:
-	goto Psfleader3StartBattle_ObjectSetup
-	return
-
-Psfcity6_Gym_Mapscripts_MAP_SCRIPT_ON_TRANSITION_4:
-	goto Psfleader3StartBattle_ObjectSetup
-	return
 

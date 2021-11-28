@@ -126,8 +126,8 @@ AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script::
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Text5
 	callnative ClearMugshot
-	checktrainerflag TRAINER_WALLY_MAUVILLE
-	goto_if 1, AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script_2
+	compare VAR_NATIVERIVALALPHA_STATE, 0
+	goto_if_gt AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script_2
 AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script_1:
 	closemessage
 	fadescreen FADE_FROM_BLACK

@@ -108,7 +108,7 @@ Psfleader3StartBattle_Script::
 	givecustommon SPECIES_ARCEUS, 100, ITEM_LIFE_ORB, ITEM_CHERISH_BALL, NATURE_JOLLY, , 4, 252, , 252, , , 31, 31, 31, 31, 31, 31, MOVE_SWORDS_DANCE, MOVE_EXTREME_SPEED, MOVE_SHADOW_CLAW, MOVE_EARTHQUAKE
 	setvar VAR_0x8000, MUGSHOT_WHITNEY
 	callnative DrawMugshot
-	trainerbattle_single TRAINER_WATTSON_1, gText_MuseumArrangement_Text5, gText_Psfleader3_1_HumanWin, Psfleader3Defeated_Script, NO_MUSIC
+	trainerbattle_single TRAINER_WATTSON_1, gText_MuseumArrangement_Text5, gText_Psfleader3Alpha_HumanWin, Psfleader3Defeated_Script, NO_MUSIC
 	return
 
 
@@ -206,10 +206,10 @@ gText_MuseumArrangement_Text5::
 	.string "Let's see how your socialization\n"
 	.string "impacted your battling ability!$"
 
-gText_Psfleader3_1_AIWin::
+gText_Psfleader3Alpha_AIWin::
 	.string "Time to pay your tribute.$"
 
-gText_Psfleader3_1_HumanWin::
+gText_Psfleader3Alpha_HumanWin::
 	.string "If this battle is any indication, your\n"
 	.string "assimilation is going perfectly!$"
 

@@ -3,15 +3,140 @@ const PSFNATIVERIVAL = 1
 
 mapscripts Psfroute9_MapScripts {}
 
-script NewAssholeAppears_YouLookFamiliar_Dialogue {
-        
+script NewAssholeAppears_PsfnativerivalWalkToPlayer {
+    lockall
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    applymovement(PSFNATIVERIVAL,Common_Movement_ExclamationMark)
+    playse(SE_PIN)
+    playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+    waitmovement(0)
+
+    switch(var(VAR_TEMP_0)){
+        case 0: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X0_WalkToPlayer_Movement)
+        case 1: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X1_WalkToPlayer_Movement)
+        case 2: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X2_WalkToPlayer_Movement)
+        case 3: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X3_WalkToPlayer_Movement)
+        case 4: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X4_WalkToPlayer_Movement)
+    }
+    waitmovement(0)
+    
+    switch(var(VAR_TEMP_1)){
+        case 2: applymovement(PSFNATIVERIVAL,NewAssholeAppears_Y2_WalkToPlayer_Movement)
+        case 6: applymovement(PSFNATIVERIVAL,NewAssholeAppears_Y6_WalkToPlayer_Movement)
+    }
+    waitmovement(0)
+    goto(PsfnativerivalAlpha_Event_Script)
+}
+
+script PsfnativerivalAlpha_Event_Script{
+    switch(var(VAR_NATIVERIVALALPHA_STATE)) {
+        case 0: goto(NewAssholeAppears_PsfnativerivalIntro_Dialogue)
+        case 1: goto(PsfnativerivalAlpha_StartBattle_Script)
+    }
+}
+
+script NewAssholeAppears_PsfnativerivalIntro_Dialogue {
+    setvar(VAR_NATIVERIVALALPHA_STATE,1)
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    msgbox(gText_NewAssholeAppears_YouLookFamiliar,MSGBOX_NPC)
+    closemessage
+    callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NewAssholeAppears_JustStarted,MSGBOX_NPC)
+    closemessage
+    callnative(ClearMugshot)
+    goto(NewAssholeAppears_PsfnativerivalBadgeJudge_Dialogue)
+}
+
+script NewAssholeAppears_PsfnativerivalBadgeJudge_Dialogue {
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    special(GetNumberOfBadges) 
+
+    switch (var(VAR_TEMP_0)){
+        case 0: msgbox(gText_NewAssholeAppears_NotDoingMuchGood,MSGBOX_NPC)
+        case 1: msgbox(gText_NewAssholeAppears_ThoughtIRecognized,MSGBOX_NPC)
+        default: msgbox(gText_NewAssholeAppears_ColonizersAreReallyGetting,MSGBOX_NPC)
+    }
+
+    closemessage
+    callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NewAssholeAppears_WhatIsYourProblem,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    lockall
+    call(Common_EventScript_SaveGame)
+    closemessage
+    goto(PsfnativerivalAlpha_StartBattle_Script)
+}
+
+script PsfnativerivalAlpha_StartBattle_Script{
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    trainerbattle_single(TRAINER_WALLY_MAUVILLE,gText_NewAssholeAppears_GoMindYourBusiness,gText_PsfnativerivalAlpha_HumanWin,PsfnativerivalAlphaDefeated_Dialogue, NO_MUSIC)
+    closemessage
+    callnative(ClearMugshot)
+}
+
+script PsfnativerivalAlphaDefeated_Dialogue {
+    lockall
+    setvar(VAR_PSFROUTE9_STATE,1)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NewAssholeAppears_Whateveryournameis,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    msgbox(gText_NewAssholeAppears_GentrificationOfMyHome,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NewAssholeAppears_YouSoundCrazyPerson,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    msgbox(gText_NewAssholeAppears_NotStupidJustIgnorant,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    msgbox(gText_NewAssholeAppears_SeeYouAround,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NewAssholeAppears_IHopeNot,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    closemessage
+    goto(NewAssholeAppears_PsfnativerivalExit_Script)
+}
+
+script NewAssholeAppears_PsfnativerivalExit_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    
+    switch(var(VAR_TEMP_1)){
+        case 2: applymovement(PSFNATIVERIVAL,NewAssholeAppears_PsfnativerivalWalkAwaySouth_Movement)
+        case 6: applymovement(PSFNATIVERIVAL,NewAssholeAppears_PsfnativerivalWalkAwayNorth_Movement)
+    }
+    waitmovement(0)
+    fadedefaultbgm
+    removeobject(PSFNATIVERIVAL)
+    releaseall
+    end
 }
 
 text gText_NewAssholeAppears_YouLookFamiliar {
-    format("You look familiar. You flew here to do the YC League Challenge, right?")
+    format("You look familiar. You flew here to do the Psfbadguy1 League Challenge, right?")
 }
 text gText_NewAssholeAppears_JustStarted {
 	format("Yeah! Just started not too long ago. Name's {PLAYER}.")
+}
+
+text gText_NewAssholeAppears_NotDoingMuchGood {
+    format("Judging from your Badge count, the program isn't doing you much good.")
 }
 
 text gText_NewAssholeAppears_ThoughtIRecognized {
@@ -28,6 +153,10 @@ text gText_NewAssholeAppears_WhatIsYourProblem {
 
 text gText_NewAssholeAppears_GoMindYourBusiness {
 	format("Go mind your business in your own region.")
+}
+
+text gText_PsfnativerivalAlpha_HumanWin {
+    format("...you're tough.")
 }
 
 text gText_NewAssholeAppears_Whateveryournameis {
@@ -52,4 +181,42 @@ text gText_NewAssholeAppears_SeeYouAround {
 
 text gText_NewAssholeAppears_IHopeNot {
 	format("I hope not.")
+}
+
+movement NewAssholeAppears_X0_WalkToPlayer_Movement {
+    walk_left * 4
+    step_end
+}
+movement NewAssholeAppears_X1_WalkToPlayer_Movement {
+    walk_left * 3
+    step_end
+}
+movement NewAssholeAppears_X2_WalkToPlayer_Movement {
+    walk_left * 2
+    step_end
+}
+movement NewAssholeAppears_X3_WalkToPlayer_Movement {
+    walk_left * 1
+    step_end
+}
+movement NewAssholeAppears_X4_WalkToPlayer_Movement {
+    step_end
+}
+movement NewAssholeAppears_Y2_WalkToPlayer_Movement {
+    walk_up
+    step_end
+}
+movement NewAssholeAppears_Y6_WalkToPlayer_Movement {
+    walk_down
+    step_end
+}
+
+movement NewAssholeAppears_PsfnativerivalWalkAwayNorth_Movement {
+    walk_up * 8
+    step_end
+}
+
+movement NewAssholeAppears_PsfnativerivalWalkAwaySouth_Movement {
+    walk_down * 8
+    step_end
 }
