@@ -4495,3 +4495,60 @@ u8 GetNumberOfBadges(void)
     VarSet(VAR_TEMP_0, count);
     return count;
 }
+
+static bool32 IsMegaPreEvolution(u16 species,u16 heldStone)
+{
+    u8 i;
+
+    for (i = 0, i < EVOS_PER_MON; i++)
+    {
+        if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE)
+        {
+            if (gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION && gEvolutionTable[species][i].param == heldStone)
+
+                return TRUE;
+
+            return IsMegaPreEvolution(gEvolutionTable[species][i].targetSpecies, heldStone);
+        }
+    }
+    return FALSE;
+}
+
+if (ItemId_GetHoldEffect(item) == HOLD_EFFECT_MEGA_STONE)
+{
+        for (i = 0; i < EVOS_PER_MON; i++)
+        {
+                if (gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION && item == gEvolutionTable[species][i].param)
+                        isNotValidMegaStone = FALSE;
+                else if (IsMegaPreEvolution(species, item) == TRUE)
+                    isNotValidMegaStone = FALSE;
+        }
+        return item;
+}
+
+
+u8 GetMegaEvolutionPartyMember(void)
+{
+    u16 i, count, x, species;
+
+
+    for (i = 0, count = 0; i < PARTY_SIZE; i++)
+    {
+        species = (GetMonData(&gPlayerParty[i],MON_DATA_SPECIES))
+
+        for (x = 0, x < EVOS_PER_MON; x++)
+        {
+            if (gEvolutionTable[species][x].method == EVO_MEGA_EVOLUTION && item == gEvolutionTable[species[i].param){
+               return 
+            }
+    
+                
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE
+            && !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+        {
+            count++;
+        }
+    }
+
+    return count;
+}

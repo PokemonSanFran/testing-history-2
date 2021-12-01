@@ -6875,7 +6875,8 @@ const struct Item gItems[] =
 
     [ITEM_MEGA_BRACELET] =
     {
-        .name = _("Mega Bracelet"),
+        //.name = _("Mega Bracelet"),
+        .name = _("Mega Watch"),
         .itemId = ITEM_MEGA_BRACELET,
         .price = 0,
         .importance = 1,

@@ -542,3 +542,4 @@ gSpecials::
 	def_special GetTowerFloorDefaultFloorChoice
     def_special ShowPsfbadguy1TowerElevatorFloorSelect
     def_special GetNumberOfBadges
+    def_special GetMegaEvolutionPartyMember

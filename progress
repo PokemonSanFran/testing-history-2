@@ -1,4 +1,9 @@
 * * * * * * * * * * * *
+NOV 30
+Working in src/field_specials.c to build the mega evo checker
+Need to figure out where "bufferpartymonnick" is located so I can figure out the correct way to buffer a pokémon nickname into a string
+...I think I can just find a StrCopy and use that implementation, since I'm sure GetMonData will give me a nickname
+
 NOV 16
 walking from floor 2 to 1 makes the elevator script display the 2nd floor. why?
 
