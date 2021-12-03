@@ -67,6 +67,8 @@
 #include "constants/metatile_labels.h"
 #include "palette.h"
 
+extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
+
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
 static EWRAM_DATA u32 sBikeCyclingTimer = 0;
@@ -4496,59 +4498,29 @@ u8 GetNumberOfBadges(void)
     return count;
 }
 
-static bool32 IsMegaPreEvolution(u16 species,u16 heldStone)
-{
-    u8 i;
 
-    for (i = 0, i < EVOS_PER_MON; i++)
+bool32 GetMegaEvolutionPartyMember(void)
+{
+    u32 species, stage1, stage2;
+    u8 i,x;
+    u8 slot = 6;
+
+
+    for (x = 0; x < PARTY_SIZE; x++)
     {
-        if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE)
-        {
-            if (gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION && gEvolutionTable[species][i].param == heldStone)
-
-                return TRUE;
-
-            return IsMegaPreEvolution(gEvolutionTable[species][i].targetSpecies, heldStone);
-        }
-    }
-    return FALSE;
-}
-
-if (ItemId_GetHoldEffect(item) == HOLD_EFFECT_MEGA_STONE)
-{
         for (i = 0; i < EVOS_PER_MON; i++)
         {
-                if (gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION && item == gEvolutionTable[species][i].param)
-                        isNotValidMegaStone = FALSE;
-                else if (IsMegaPreEvolution(species, item) == TRUE)
-                    isNotValidMegaStone = FALSE;
-        }
-        return item;
-}
+            species = GetMonData(&gPlayerParty[x], MON_DATA_SPECIES, NULL);
+            stage1 = gEvolutionTable[species][i].targetSpecies;
+            stage2 = gEvolutionTable[stage1][i].targetSpecies;
+            if (gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION || gEvolutionTable[stage1][i].method == EVO_MEGA_EVOLUTION || gEvolutionTable[stage2][i].method == EVO_MEGA_EVOLUTION)
+            {
+                FlagSet(FLAG_SYS_NATIONAL_DEX);
+                slot = x;
+            } 
+            VarSet(VAR_TEMP_0, slot);
+            return slot;
 
-
-u8 GetMegaEvolutionPartyMember(void)
-{
-    u16 i, count, x, species;
-
-
-    for (i = 0, count = 0; i < PARTY_SIZE; i++)
-    {
-        species = (GetMonData(&gPlayerParty[i],MON_DATA_SPECIES))
-
-        for (x = 0, x < EVOS_PER_MON; x++)
-        {
-            if (gEvolutionTable[species][x].method == EVO_MEGA_EVOLUTION && item == gEvolutionTable[species[i].param){
-               return 
-            }
-    
-                
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE
-            && !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
-        {
-            count++;
         }
     }
-
-    return count;
 }

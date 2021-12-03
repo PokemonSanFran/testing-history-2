@@ -1,4 +1,7 @@
 * * * * * * * * * * * *
+DEC 2
+keep playing with src/field_specials.c until script is perfect
+
 NOV 30
 Working in src/field_specials.c to build the mega evo checker
 Need to figure out where "bufferpartymonnick" is located so I can figure out the correct way to buffer a pokémon nickname into a string
