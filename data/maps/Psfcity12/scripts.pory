@@ -2,21 +2,24 @@ mapscripts Psfcity12_MapScripts {}
 //run bufferpartymonnick(5,VAR_RESULT) afterwards, use a switch to find the right party member
 
 script CheckMegaScript {
-        givecustommon(SPECIES_BLASTOISE,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
+    givecustommon(SPECIES_BLASTOISE,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
         givecustommon(SPECIES_LARVITAR,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
-    special(GetMegaEvolutionPartyMember)
-
+        givecustommon(SPECIES_CHARMELEON,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
+        special(GetMegaEvolutionPartyMember)
         switch(var(VAR_TEMP_0))
         {
-            case 0: bufferpartymonnick(0,VAR_RESULT)
-            case 1: bufferpartymonnick(1,VAR_RESULT)
-            default: bufferitemname(0,ITEM_POTION)
+            //case 0: bufferpartymonnick(0,VAR_RESULT)
+            case 0: msgbox("case is 0")
+            case 1: msgbox("case is 1")
+            case 2: msgbox("case is 2")
+            case 3: msgbox("case is 3")
+            case 4: msgbox("case is 4")
+            case 5: msgbox("case is 5")
+            case 6: msgbox("case is 6")
         }
 
     if(flag(FLAG_SYS_NATIONAL_DEX)) {
         msgbox(format("Your {STR_VAR_1} is capable of Mega Evolution, if memory serves me right."))
-    }else {
-        msgbox(format("flag false"))
     }
     closemessage
 }

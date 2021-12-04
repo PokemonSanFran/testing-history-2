@@ -4499,28 +4499,26 @@ u8 GetNumberOfBadges(void)
 }
 
 
-bool32 GetMegaEvolutionPartyMember(void)
+bool32 GetMegaEvolutionPartyMember(u16 species, bool32 found)
 {
-    u32 species, stage1, stage2;
     u8 i,x;
-    u8 slot = 6;
-
+    //u8 slot = 6;
 
     for (x = 0; x < PARTY_SIZE; x++)
+    species = GetMonData(&gPlayerParty[x], MON_DATA_SPECIES, NULL);
     {
         for (i = 0; i < EVOS_PER_MON; i++)
         {
-            species = GetMonData(&gPlayerParty[x], MON_DATA_SPECIES, NULL);
-            stage1 = gEvolutionTable[species][i].targetSpecies;
-            stage2 = gEvolutionTable[stage1][i].targetSpecies;
-            if (gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION || gEvolutionTable[stage1][i].method == EVO_MEGA_EVOLUTION || gEvolutionTable[stage2][i].method == EVO_MEGA_EVOLUTION)
-            {
-                FlagSet(FLAG_SYS_NATIONAL_DEX);
-                slot = x;
-            } 
-            VarSet(VAR_TEMP_0, slot);
-            return slot;
-
-        }
-    }
+            if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE && gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION)
+                {
+                    FlagSet(FLAG_SYS_NATIONAL_DEX);
+                    goto end;
+                   //found = TRUE;
+                }    
+                //found = GetMegaEvolutionPartyMember(gEvolutionTable[species][i].targetSpecies, found);
+            }
+    } 
+end:
+VarSet(VAR_TEMP_0,x);
+return x;
 }
