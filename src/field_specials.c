@@ -4505,8 +4505,8 @@ bool32 GetMegaEvolutionPartyMember(u16 species, bool32 found)
     //u8 slot = 6;
 
     for (x = 0; x < PARTY_SIZE; x++)
-    species = GetMonData(&gPlayerParty[x], MON_DATA_SPECIES, NULL);
     {
+    species = GetMonData(&gPlayerParty[x], MON_DATA_SPECIES, NULL);
         for (i = 0; i < EVOS_PER_MON; i++)
         {
             if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE && gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION)

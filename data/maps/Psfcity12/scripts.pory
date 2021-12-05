@@ -8,9 +8,8 @@ script CheckMegaScript {
         special(GetMegaEvolutionPartyMember)
         switch(var(VAR_TEMP_0))
         {
-            //case 0: bufferpartymonnick(0,VAR_RESULT)
+            case 1: bufferpartymonnick(1,VAR_RESULT)
             case 0: msgbox("case is 0")
-            case 1: msgbox("case is 1")
             case 2: msgbox("case is 2")
             case 3: msgbox("case is 3")
             case 4: msgbox("case is 4")

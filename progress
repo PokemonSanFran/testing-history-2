@@ -1,4 +1,8 @@
 * * * * * * * * * * * *
+DEC 4
+remove cave from Psfplace7
+figure out recursion in field_specials
+
 DEC 2
 keep playing with src/field_specials.c until script is perfect
 

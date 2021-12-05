@@ -255,6 +255,9 @@ static const u32 sMugshotImg_Volkner[] = INCBIN_U32("graphics/mugshots/volkner.4
 static const u16 sMugshotPal_Whitney[] = INCBIN_U16("graphics/mugshots/whitney.gbapal");
 static const u32 sMugshotImg_Whitney[] = INCBIN_U32("graphics/mugshots/whitney.4bpp.lz");
 
+
+//TODO Write a constant coordinates for mugshots for protag (left) and other people (right)
+
 static const struct Mugshot sMugshots[] = {
     [MUGSHOT_AARON] = {.x = 16, .y = 5, .width = 96, .height = 64, .image = sMugshotImg_Aaron, .palette = sMugshotPal_Aaron},
     [MUGSHOT_ARCHER] = {.x = 16, .y = 5, .width = 96, .height = 64, .image = sMugshotImg_Archer, .palette = sMugshotPal_Archer},
