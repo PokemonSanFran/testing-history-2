@@ -543,3 +543,4 @@ gSpecials::
     def_special ShowPsfbadguy1TowerElevatorFloorSelect
     def_special GetNumberOfBadges
     def_special GetMegaEvolutionPartyMember
+    def_special CheckMegaEvolutionPartyMember

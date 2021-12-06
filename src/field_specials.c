@@ -66,6 +66,8 @@
 #include "constants/weather.h"
 #include "constants/metatile_labels.h"
 #include "palette.h"
+#include "printf.h"
+#include "mgba.h"
 
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
 
@@ -4498,27 +4500,35 @@ u8 GetNumberOfBadges(void)
     return count;
 }
 
-
-bool32 GetMegaEvolutionPartyMember(u16 species, bool32 found)
+bool8 CheckMegaEvolutionPartyMember(void)
 {
-    u8 i,x;
-    //u8 slot = 6;
+    u16 species;
+    bool32 found = TRUE;
 
+    int x;
     for (x = 0; x < PARTY_SIZE; x++)
     {
-    species = GetMonData(&gPlayerParty[x], MON_DATA_SPECIES, NULL);
-        for (i = 0; i < EVOS_PER_MON; i++)
+        species = GetMonData(&gPlayerParty[x], MON_DATA_SPECIES, NULL);
+        GetMegaEvolutionPartyMember(species,found,x);
+    }
+}
+
+bool32 GetMegaEvolutionPartyMember(u16 species,bool32 found, int x)
+{
+    int i;
+    int slot = 7;
+
+    for (i = 0; i < EVOS_PER_MON; i++)
+    {
+    mgba_printf(MGBA_LOG_DEBUG, "%d", species);
+        if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE && gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION)
         {
-            if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE && gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION)
-                {
-                    FlagSet(FLAG_SYS_NATIONAL_DEX);
-                    goto end;
-                   //found = TRUE;
-                }    
-                //found = GetMegaEvolutionPartyMember(gEvolutionTable[species][i].targetSpecies, found);
-            }
-    } 
+            slot = x;
+            goto end;
+            //found = TRUE;
+        }    
+        //found = GetMegaEvolutionPartyMember(gEvolutionTable[species][i].targetSpecies, found);
+    }
 end:
-VarSet(VAR_TEMP_0,x);
-return x;
+    VarSet(VAR_TEMP_1,slot);
 }
