@@ -7,8 +7,8 @@ CheckMegaScript::
 	givecustommon SPECIES_LARVITAR, 100, ITEM_BLASTOISINITE, ITEM_QUICK_BALL, NATURE_TIMID, , , 4, , 252, , 252, 31, 31, 31, 31, 31, 31, MOVE_RAPID_SPIN, MOVE_DARK_PULSE, MOVE_AURA_SPHERE, MOVE_ICE_BEAM
 	givecustommon SPECIES_CHARMELEON, 100, ITEM_BLASTOISINITE, ITEM_QUICK_BALL, NATURE_TIMID, , , 4, , 252, , 252, 31, 31, 31, 31, 31, 31, MOVE_RAPID_SPIN, MOVE_DARK_PULSE, MOVE_AURA_SPHERE, MOVE_ICE_BEAM
 	special CheckMegaEvolutionPartyMember
-	compare VAR_TEMP_1, 7
-	goto_if_ne CheckMegaScript_2
+	compare VAR_TEMP_1, 6
+	goto_if_lt CheckMegaScript_2
 CheckMegaScript_1:
 	msgbox CheckMegaScript_Text_7
 	closemessage

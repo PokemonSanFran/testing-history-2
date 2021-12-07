@@ -4503,32 +4503,35 @@ u8 GetNumberOfBadges(void)
 bool8 CheckMegaEvolutionPartyMember(void)
 {
     u16 species;
-    bool32 found = TRUE;
+    int slot;
 
     int x;
-    for (x = 0; x < PARTY_SIZE; x++)
+    for (x = PARTY_SIZE; x > -1; x--)
     {
         species = GetMonData(&gPlayerParty[x], MON_DATA_SPECIES, NULL);
-        GetMegaEvolutionPartyMember(species,found,x);
+        mgba_printf(MGBA_LOG_DEBUG, "this is slot before passing %d", slot);
+        GetMegaEvolutionPartyMember(species,x,slot);
     }
 }
 
-bool32 GetMegaEvolutionPartyMember(u16 species,bool32 found, int x)
+bool32 GetMegaEvolutionPartyMember(u16 species,int x,int slot)
 {
     int i;
-    int slot = 7;
 
     for (i = 0; i < EVOS_PER_MON; i++)
     {
-    mgba_printf(MGBA_LOG_DEBUG, "%d", species);
-        if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE && gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION)
+        mgba_printf(MGBA_LOG_DEBUG, "%d", species);
+        if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE )
         {
-            slot = x;
-            goto end;
-            //found = TRUE;
-        }    
-        //found = GetMegaEvolutionPartyMember(gEvolutionTable[species][i].targetSpecies, found);
-    }
+            if (gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION)
+            {
+                slot = x;
+                VarSet(VAR_TEMP_1,x);
+                goto end;
+            }
+            GetMegaEvolutionPartyMember(gEvolutionTable[species][i].targetSpecies,x,slot);
+        }
+    }    
 end:
-    VarSet(VAR_TEMP_1,slot);
 }
+

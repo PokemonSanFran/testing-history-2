@@ -7,19 +7,15 @@ script CheckMegaScript {
 
         special(CheckMegaEvolutionPartyMember)
 
-        if (var(VAR_TEMP_1) != 7){
+        if (var(VAR_TEMP_1) < 6){
             switch(var(VAR_TEMP_1))
             {
                 case 0: msgbox("case is 0")
                 case 1: msgbox("case is 1")
-
-                case 2:msgbox("case is 2")
-
-                case 3:msgbox("case is 3")
-
-                case 4:msgbox("case is 4")
-
-                case 5:msgbox("case is 5")
+                case 2: msgbox("case is 2")
+                case 3: msgbox("case is 3")
+                case 4: msgbox("case is 4")
+                case 5: msgbox("case is 5")
                 default:msgbox("its working i swear")
 
             }
