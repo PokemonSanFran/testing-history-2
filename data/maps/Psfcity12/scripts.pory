@@ -1,29 +1,196 @@
 mapscripts Psfcity12_MapScripts {}
 
 script CheckMegaScript {
-    givecustommon(SPECIES_BLASTOISE,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
-        givecustommon(SPECIES_LARVITAR,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
-        givecustommon(SPECIES_CHARMELEON,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
 
-        special(CheckMegaEvolutionPartyMember)
+    //VAR_TEMP_1 will correspond to the party slot
+    //if VAR_TEMP_2 is 1, this pokemon will evantually be able to megaevolve
 
-        if (var(VAR_TEMP_1) < 6){
-            switch(var(VAR_TEMP_1))
+    //givecustommon(SPECIES_BLASTOISE,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
+    //givecustommon(SPECIES_LARVITAR,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
+    //givecustommon(SPECIES_CHARMELEON,100,ITEM_BLASTOISINITE,ITEM_QUICK_BALL,NATURE_TIMID,,,4,,252,,252,31,31,31,31,31,31,MOVE_RAPID_SPIN,MOVE_DARK_PULSE,MOVE_AURA_SPHERE,MOVE_ICE_BEAM)
+
+    script EnterPsfGoodadmin_Intro_Dialogue{
+        lockall
+            msgbox(gText_EnterPsfgoodadmin_WhoTheHell)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_NoSorry)
+            callnative(CloseMugshot)
+            msgbox(gText_EnterPsfgoodadmin_TryingToHelpEverybody)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_ImNotInLine)
+            callnative(CloseMugshot)
+            msgbox(gText_EnterPsfgoodadmin_SwearToGod)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_WaitListen)
+            callnative(CloseMugshot)
+            msgbox(gText_EnterPsfgoodadmin_NoPunk)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_HoldOn)
+            callnative(CloseMugshot)
+            applymovement(ARIANA,EnterPsfGoodadmin_PsfgoodadminWalkToPlayer_Movement)
+            waitmovement(0)
+            goto(EnterPsfGoodadmin_Explain_Dialogue)
+    }
+
+    script EnterPsfGoodadmin_Explain_Dialogue{
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_DidYouListen)
+            callnative(CloseMugshot)
+            msgbox(gText_EnterPsfgoodadmin_TryingToCut)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_WhatYouHeard)
+            callnative(CloseMugshot)
+            applymovement(ARIANA,CommonMovement_FaceDown)
+            waitmovement(0)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_WhatProblem)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_AsshatInterrupted)
+            callnative(CloseMugshot)
+            goto(EnterPsfGoodadmin_Apology_Dialogue)
+    }
+
+    script EnterPsfGoodadmin_Apology_Dialogue{
+        applymovement(ARIANA,CommonMovement_FaceLeft)
+            waitmovement(0)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_ShouldntTheCones)
+            callnative(CloseMugshot)
+            msgbox(gText_EnterPsfgoodadmin_IForgotToSet)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_BeratedSomebody)
+            callnative(CloseMugshot)
+            msgbox(gText_EnterPsfgoodadmin_Sorry)
+            applymovement(ARIANA,CommonMovement_FaceDown)
+            waitmovement(0)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_WhatsYourName)
+            callnative(CloseMugshot)
+            applymovement(ARIANA,CommonMovement_FaceLeft)
+            waitmovement(0)
+            msgbox(gText_EnterPsfgoodadmin_IGotHeated)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_DontRuin)
+            callnative(CloseMugshot)
+            msgbox(gText_EnterPsfgoodadmin_ShouldBeNear)
+            applymovement(ARIANA,EnterPsfgoodadmin_HopOverTable_Movement)
+            waitmovement(0)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_NeedToWalk)
+            callnative(CloseMugshot)
+            closemessage
+            applymovement(ARIANA,EnterPsfgoodadmin_WalkToLine_Movement)
+            applymovement(PLAYER,EnterPsfgoodadmin_PlayerWalkToLine_Movement)
+            //waitmovement(0)
+            goto(EnterPsfGoodadmin_ExplainHope_Dialogue)
+    }
+
+    script EnterPsfGoodadmin_ExplainHope_Dialogue{
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_WhatIsEverybody)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_Hope)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_ICanGet)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_ThatsAmazing)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_CityIsntSuperChill)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_ButYoureHelping)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_YoureNotFromHere)
+            callnative(CloseMugshot)
+            closemessage
+            applymovement(ARIANA,EnterPsfGoodadmin_PlaceCones_Movement)
+            goto(EnterPsfGoodadmin_GiveKeystone_Dialogue)
+    }
+
+    script EnterPsfGoodadmin_GiveKeystone_Dialogue{
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_BetweenTheCones)
+            callnative(CloseMugshot)
+            applymovement(PERSON1,EnterPsfGoodadmin_MoveLine1_Movement)
+            applymovement(PERSON2,EnterPsfGoodadmin_MoveLine2_Movement)
+            applymovement(PERSON3,EnterPsfGoodadmin_MoveLine3_Movement)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_ThereYouGo)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_AGym)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_WellGoodLuck)
+            callnative(CloseMugshot)
+            giveitem(ITEM_MEGA_BRACLET)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_IfYouHaveThat)
+            callnative(CloseMugshot)
+            special(CheckMegaEvolutionPartyMember)
+
+            if (var(VAR_TEMP_1) != 7)
             {
-                case 0: msgbox("case is 0")
-                case 1: msgbox("case is 1")
-                case 2: msgbox("case is 2")
-                case 3: msgbox("case is 3")
-                case 4: msgbox("case is 4")
-                case 5: msgbox("case is 5")
-                default:msgbox("its working i swear")
+                switch(var(VAR_TEMP_1))
+                {
+                    case 0: bufferpartymonnick(0,0)
+                    case 1: bufferpartymonnick(0,1)
+                    case 2: bufferpartymonnick(0,2)
+                    case 3: bufferpartymonnick(0,3)
+                    case 4: bufferpartymonnick(0,4)
+                    case 5: bufferpartymonnick(0,5)
+                }
 
+                msgbox(gTextEnterPsfgoodadmin_CanMegaEvolve)
             }
-            //msgbox(gTextCanMegaEvolve)
-        }
-    msgbox("enjoy the ring.")
-        closemessage
-}
-text gTextCanMegaEvolve {
-    format("Your {STR_VAR_1} is capable of Mega Evolution, if memory serves me right.")
-}
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_ThatsAmazing)
+            callnative(CloseMugshot)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_HopeThatMakes)
+            callnative(CloseMugshot)
+            applymovement(ARIANA,Psfgoodadmin_LookAround_Movement)
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_EnterPsfgoodadmin_IGottaGo)
+            callnative(CloseMugshot)
+            closemessage
+            releaseall
+            end
+    }
+    text gTextEnterPsfgoodadmin_CanMegaEvolve {
+        format("Your {STR_VAR_1} is capable of Mega Evolution, if memory serves me right.")
+    }
