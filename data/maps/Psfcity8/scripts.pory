@@ -26,8 +26,6 @@ script DontLeavePsfcity8_Script {
     closemessage
     applymovement(PLAYER,DontLeavePsfcity_Movement)
 }
-    
-
 
 script ImProbablyBetterThanYou_WalkInside_Movement {
     warpdoor(MAP_PSFCITY8_COMPOUND_1F,255,5,9)

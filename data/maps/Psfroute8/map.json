@@ -21,11 +21,6 @@
     {
       "direction": "left",
       "offset": 0,
-      "map": "MAP_PSFPLACE11"
-    },
-    {
-      "direction": "left",
-      "offset": 0,
       "map": "MAP_PSFPLACE13"
     }
   ],

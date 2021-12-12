@@ -254,20 +254,20 @@ void FinishCyclingRoadChallenge(void) {
 
 static void RecordCyclingRoadResults(u32 numFrames, u8 numBikeCollisions) {
     u16 low = VarGet(VAR_PSFROUTE9_STATE);
-    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
+    u16 high = VarGet(VAR_PSFPLACE13_STATE);
     u32 framesRecord = low + (high << 16);
 
     if (framesRecord > numFrames || framesRecord == 0)
     {
         VarSet(VAR_PSFROUTE9_STATE, numFrames);
-        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_H, numFrames >> 16);
+        VarSet(VAR_PSFPLACE13_STATE, numFrames >> 16);
         VarSet(VAR_NATIVERIVALALPHA_STATE, numBikeCollisions);
     }
 }
 
 u16 GetRecordedCyclingRoadResults(void) {
     u16 low = VarGet(VAR_PSFROUTE9_STATE);
-    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
+    u16 high = VarGet(VAR_PSFPLACE13_STATE);
     u32 framesRecord = low + (high << 16);
 
     if (framesRecord == 0)

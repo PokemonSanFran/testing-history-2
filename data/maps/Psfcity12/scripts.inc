@@ -20,19 +20,19 @@ EnterPsfgoodadmin_CleanUp::
 	return
 
 
-EnterPsfGoodadmin_Event_Script::
+EnterPsfgoodadmin_Event_Script::
 	checkitem ITEM_MEGA_BRACELET, 1
 	compare VAR_RESULT, 0
-	goto_if_ne EnterPsfGoodadmin_Event_Script_1
-	goto EnterPsfGoodadmin_Intro_Dialogue
+	goto_if_ne EnterPsfgoodadmin_Event_Script_1
+	goto EnterPsfgoodadmin_Intro_Dialogue
 	return
 
-EnterPsfGoodadmin_Event_Script_1:
-	goto EnterPsfGoodadmin_GruntApologize_Dialogue
+EnterPsfgoodadmin_Event_Script_1:
+	goto EnterPsfgoodadmin_GruntApologize_Dialogue
 	return
 
 
-EnterPsfGoodadmin_Intro_Dialogue::
+EnterPsfgoodadmin_Intro_Dialogue::
 	lockall
 	msgbox gText_EnterPsfgoodadmin_WhoTheHell
 	setvar VAR_0x8000, MUGSHOT_HILDA
@@ -57,15 +57,15 @@ EnterPsfGoodadmin_Intro_Dialogue::
 	msgbox gText_EnterPsfgoodadmin_HoldOn
 	callnative ClearMugshot
 	closemessage
-	applymovement 1, EnterPsfGoodadmin_PsfgoodadminWalkToPlayer_Movement
+	applymovement 1, EnterPsfgoodadmin_PsfgoodadminWalkToPlayer_Movement
 	waitmovement 0
 	applymovement 2, Common_Movement_FaceRight
 	waitmovement 0
-	goto EnterPsfGoodadmin_Explain_Dialogue
+	goto EnterPsfgoodadmin_Explain_Dialogue
 	return
 
 
-EnterPsfGoodadmin_Explain_Dialogue::
+EnterPsfgoodadmin_Explain_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterPsfgoodadmin_DidYouListen
@@ -92,11 +92,11 @@ EnterPsfGoodadmin_Explain_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_EnterPsfgoodadmin_AsshatInterrupted
 	callnative ClearMugshot
-	goto EnterPsfGoodadmin_Apology_Dialogue
+	goto EnterPsfgoodadmin_Apology_Dialogue
 	return
 
 
-EnterPsfGoodadmin_Apology_Dialogue::
+EnterPsfgoodadmin_Apology_Dialogue::
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_ARIANA
@@ -140,11 +140,11 @@ EnterPsfGoodadmin_Apology_Dialogue::
 	closemessage
 	applymovement 1, EnterPsfgoodadmin_WalkToLine_Movement
 	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfgoodadmin_PlayerWalkToLine_Movement
-	goto EnterPsfGoodadmin_ExplainHope_Dialogue
+	goto EnterPsfgoodadmin_ExplainHope_Dialogue
 	return
 
 
-EnterPsfGoodadmin_ExplainHope_Dialogue::
+EnterPsfgoodadmin_ExplainHope_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterPsfgoodadmin_WhatIsEverybody
@@ -178,8 +178,8 @@ EnterPsfGoodadmin_ExplainHope_Dialogue::
 	msgbox gText_EnterPsfgoodadmin_YoureNotFromHere
 	callnative ClearMugshot
 	closemessage
-	applymovement 1, EnterPsfGoodadmin_PlaceCones_Movement
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfGoodadmin_WatchPlaceCones_Movement
+	applymovement 1, EnterPsfgoodadmin_PlaceCones_Movement
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfgoodadmin_WatchPlaceCones_Movement
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
@@ -187,20 +187,20 @@ EnterPsfGoodadmin_ExplainHope_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	call LineMovementEvent_Script
-	goto EnterPsfGoodadmin_GiveKeystone_Dialogue
+	goto EnterPsfgoodadmin_GiveKeystone_Dialogue
 	return
 
 
 LineMovementEvent_Script::
 	playse SE_PIN
-	applymovement 6, EnterPsfGoodadmin_MoveLine1_Movement
-	applymovement 7, EnterPsfGoodadmin_MoveLine2_Movement
-	applymovement 10, EnterPsfGoodadmin_MoveLine3_Movement
+	applymovement 6, EnterPsfgoodadmin_MoveLine1_Movement
+	applymovement 7, EnterPsfgoodadmin_MoveLine2_Movement
+	applymovement 10, EnterPsfgoodadmin_MoveLine3_Movement
 	waitmovement 0
 	return
 
 
-EnterPsfGoodadmin_GiveKeystone_Dialogue::
+EnterPsfgoodadmin_GiveKeystone_Dialogue::
 	applymovement 1, Common_Movement_FacePlayer
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
@@ -223,8 +223,8 @@ EnterPsfGoodadmin_GiveKeystone_Dialogue::
 	callnative ClearMugshot
 	special CheckMegaEvolutionPartyMember
 	compare VAR_TEMP_1, 6
-	goto_if_lt EnterPsfGoodadmin_GiveKeystone_Dialogue_2
-EnterPsfGoodadmin_GiveKeystone_Dialogue_1:
+	goto_if_lt EnterPsfgoodadmin_GiveKeystone_Dialogue_2
+EnterPsfgoodadmin_GiveKeystone_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterPsfgoodadmin_ThankYouSo
@@ -245,64 +245,64 @@ EnterPsfGoodadmin_GiveKeystone_Dialogue_1:
 	releaseall
 	end
 
-EnterPsfGoodadmin_GiveKeystone_Dialogue_2:
+EnterPsfgoodadmin_GiveKeystone_Dialogue_2:
 	switch VAR_TEMP_1
-	case 0, EnterPsfGoodadmin_GiveKeystone_Dialogue_6
-	case 1, EnterPsfGoodadmin_GiveKeystone_Dialogue_7
-	case 2, EnterPsfGoodadmin_GiveKeystone_Dialogue_8
-	case 3, EnterPsfGoodadmin_GiveKeystone_Dialogue_9
-	case 4, EnterPsfGoodadmin_GiveKeystone_Dialogue_10
-	case 5, EnterPsfGoodadmin_GiveKeystone_Dialogue_11
-EnterPsfGoodadmin_GiveKeystone_Dialogue_4:
+	case 0, EnterPsfgoodadmin_GiveKeystone_Dialogue_6
+	case 1, EnterPsfgoodadmin_GiveKeystone_Dialogue_7
+	case 2, EnterPsfgoodadmin_GiveKeystone_Dialogue_8
+	case 3, EnterPsfgoodadmin_GiveKeystone_Dialogue_9
+	case 4, EnterPsfgoodadmin_GiveKeystone_Dialogue_10
+	case 5, EnterPsfgoodadmin_GiveKeystone_Dialogue_11
+EnterPsfgoodadmin_GiveKeystone_Dialogue_4:
 	compare VAR_TEMP_2, 1
-	goto_if_ne EnterPsfGoodadmin_GiveKeystone_Dialogue_12
+	goto_if_ne EnterPsfgoodadmin_GiveKeystone_Dialogue_12
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gTextEnterPsfgoodadmin_CanMegaEvolveSomeday
 	callnative ClearMugshot
-	goto EnterPsfGoodadmin_GiveKeystone_Dialogue_1
+	goto EnterPsfgoodadmin_GiveKeystone_Dialogue_1
 
-EnterPsfGoodadmin_GiveKeystone_Dialogue_6:
+EnterPsfgoodadmin_GiveKeystone_Dialogue_6:
 	bufferpartymonnick 0, 0
-	goto EnterPsfGoodadmin_GiveKeystone_Dialogue_4
+	goto EnterPsfgoodadmin_GiveKeystone_Dialogue_4
 
-EnterPsfGoodadmin_GiveKeystone_Dialogue_7:
+EnterPsfgoodadmin_GiveKeystone_Dialogue_7:
 	bufferpartymonnick 0, 1
-	goto EnterPsfGoodadmin_GiveKeystone_Dialogue_4
+	goto EnterPsfgoodadmin_GiveKeystone_Dialogue_4
 
-EnterPsfGoodadmin_GiveKeystone_Dialogue_8:
+EnterPsfgoodadmin_GiveKeystone_Dialogue_8:
 	bufferpartymonnick 0, 2
-	goto EnterPsfGoodadmin_GiveKeystone_Dialogue_4
+	goto EnterPsfgoodadmin_GiveKeystone_Dialogue_4
 
-EnterPsfGoodadmin_GiveKeystone_Dialogue_9:
+EnterPsfgoodadmin_GiveKeystone_Dialogue_9:
 	bufferpartymonnick 0, 3
-	goto EnterPsfGoodadmin_GiveKeystone_Dialogue_4
+	goto EnterPsfgoodadmin_GiveKeystone_Dialogue_4
 
-EnterPsfGoodadmin_GiveKeystone_Dialogue_10:
+EnterPsfgoodadmin_GiveKeystone_Dialogue_10:
 	bufferpartymonnick 0, 4
-	goto EnterPsfGoodadmin_GiveKeystone_Dialogue_4
+	goto EnterPsfgoodadmin_GiveKeystone_Dialogue_4
 
-EnterPsfGoodadmin_GiveKeystone_Dialogue_11:
+EnterPsfgoodadmin_GiveKeystone_Dialogue_11:
 	bufferpartymonnick 0, 5
-	goto EnterPsfGoodadmin_GiveKeystone_Dialogue_4
+	goto EnterPsfgoodadmin_GiveKeystone_Dialogue_4
 
-EnterPsfGoodadmin_GiveKeystone_Dialogue_12:
+EnterPsfgoodadmin_GiveKeystone_Dialogue_12:
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gTextEnterPsfgoodadmin_CanMegaEvolve
 	callnative ClearMugshot
-	goto EnterPsfGoodadmin_GiveKeystone_Dialogue_1
+	goto EnterPsfgoodadmin_GiveKeystone_Dialogue_1
 
 
-EnterPsfGoodadmin_GruntApologize_Dialogue::
+EnterPsfgoodadmin_GruntApologize_Dialogue::
 	lockall
-	msgbox gText_EnterPsfGoodadmin_SorryAgain
+	msgbox gText_EnterPsfgoodadmin_SorryAgain
 	closemessage
 	releaseall
 	end
 
 
-EnterPsfGoodadmin_PsfgoodadminWalkToPlayer_Movement:
+EnterPsfgoodadmin_PsfgoodadminWalkToPlayer_Movement:
 	walk_down
 	walk_down
 	walk_down
@@ -362,7 +362,7 @@ EnterPsfgoodadmin_PlayerWalkToLine_Movement:
 	face_up
 	step_end
 
-EnterPsfGoodadmin_WatchPlaceCones_Movement:
+EnterPsfgoodadmin_WatchPlaceCones_Movement:
 	delay_16
 	delay_16
 	delay_16
@@ -372,7 +372,7 @@ EnterPsfGoodadmin_WatchPlaceCones_Movement:
 	face_down
 	step_end
 
-EnterPsfGoodadmin_PlaceCones_Movement:
+EnterPsfgoodadmin_PlaceCones_Movement:
 	walk_in_place_left
 	walk_right
 	walk_down
@@ -383,7 +383,7 @@ EnterPsfGoodadmin_PlaceCones_Movement:
 	face_left
 	step_end
 
-EnterPsfGoodadmin_MoveLine1_Movement:
+EnterPsfgoodadmin_MoveLine1_Movement:
 	emote_exclamation_mark
 	walk_down
 	walk_down
@@ -391,7 +391,7 @@ EnterPsfGoodadmin_MoveLine1_Movement:
 	face_up
 	step_end
 
-EnterPsfGoodadmin_MoveLine2_Movement:
+EnterPsfgoodadmin_MoveLine2_Movement:
 	emote_exclamation_mark
 	delay_16
 	delay_16
@@ -405,7 +405,7 @@ EnterPsfGoodadmin_MoveLine2_Movement:
 	face_up
 	step_end
 
-EnterPsfGoodadmin_MoveLine3_Movement:
+EnterPsfgoodadmin_MoveLine3_Movement:
 	emote_exclamation_mark
 	delay_16
 	delay_16
@@ -608,5 +608,5 @@ gText_EnterPsfgoodadmin_IGottaGo::
 	.string "another innocent victim. Stay safe out\l"
 	.string "there.$"
 
-gText_EnterPsfGoodadmin_SorryAgain::
+gText_EnterPsfgoodadmin_SorryAgain::
 	.string "Sorry again about before.$"

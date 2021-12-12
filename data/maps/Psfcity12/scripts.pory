@@ -23,19 +23,19 @@ script EnterPsfgoodadmin_CleanUp {
     setobjectxyperm(PERSON3,2,42)
 }
 
-script EnterPsfGoodadmin_Event_Script {
+script EnterPsfgoodadmin_Event_Script {
 
     checkitem(ITEM_MEGA_BRACELET,1)
 
         if (var(VAR_RESULT)) {
-            goto(EnterPsfGoodadmin_GruntApologize_Dialogue)
+            goto(EnterPsfgoodadmin_GruntApologize_Dialogue)
         }
         else {
-            goto(EnterPsfGoodadmin_Intro_Dialogue)
+            goto(EnterPsfgoodadmin_Intro_Dialogue)
         }
 }
 
-script EnterPsfGoodadmin_Intro_Dialogue{
+script EnterPsfgoodadmin_Intro_Dialogue{
         lockall
         msgbox(gText_EnterPsfgoodadmin_WhoTheHell)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -60,14 +60,14 @@ script EnterPsfGoodadmin_Intro_Dialogue{
         msgbox(gText_EnterPsfgoodadmin_HoldOn)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFGOODADMIN,EnterPsfGoodadmin_PsfgoodadminWalkToPlayer_Movement)
+        applymovement(PSFGOODADMIN,EnterPsfgoodadmin_PsfgoodadminWalkToPlayer_Movement)
         waitmovement(0)
         applymovement(SIARL,Common_Movement_FaceRight)
         waitmovement(0)
-        goto(EnterPsfGoodadmin_Explain_Dialogue)
+        goto(EnterPsfgoodadmin_Explain_Dialogue)
 }
 
-script EnterPsfGoodadmin_Explain_Dialogue{
+script EnterPsfgoodadmin_Explain_Dialogue{
     setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfgoodadmin_DidYouListen)
@@ -94,10 +94,10 @@ script EnterPsfGoodadmin_Explain_Dialogue{
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfgoodadmin_AsshatInterrupted)
         callnative(ClearMugshot)
-        goto(EnterPsfGoodadmin_Apology_Dialogue)
+        goto(EnterPsfgoodadmin_Apology_Dialogue)
 }
 
-script EnterPsfGoodadmin_Apology_Dialogue{
+script EnterPsfgoodadmin_Apology_Dialogue{
     applymovement(PSFGOODADMIN,Common_Movement_FaceLeft)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -142,10 +142,10 @@ script EnterPsfGoodadmin_Apology_Dialogue{
         applymovement(PSFGOODADMIN,EnterPsfgoodadmin_WalkToLine_Movement)
         applymovement(PLAYER,EnterPsfgoodadmin_PlayerWalkToLine_Movement)
         //waitmovement(0)
-        goto(EnterPsfGoodadmin_ExplainHope_Dialogue)
+        goto(EnterPsfgoodadmin_ExplainHope_Dialogue)
 }
 
-script EnterPsfGoodadmin_ExplainHope_Dialogue{
+script EnterPsfgoodadmin_ExplainHope_Dialogue{
     setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfgoodadmin_WhatIsEverybody)
@@ -179,8 +179,8 @@ script EnterPsfGoodadmin_ExplainHope_Dialogue{
         msgbox(gText_EnterPsfgoodadmin_YoureNotFromHere)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFGOODADMIN,EnterPsfGoodadmin_PlaceCones_Movement)
-        applymovement(PLAYER,EnterPsfGoodadmin_WatchPlaceCones_Movement)
+        applymovement(PSFGOODADMIN,EnterPsfgoodadmin_PlaceCones_Movement)
+        applymovement(PLAYER,EnterPsfgoodadmin_WatchPlaceCones_Movement)
         waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -188,18 +188,18 @@ script EnterPsfGoodadmin_ExplainHope_Dialogue{
         callnative(ClearMugshot)
         closemessage
         call(LineMovementEvent_Script)
-        goto(EnterPsfGoodadmin_GiveKeystone_Dialogue)
+        goto(EnterPsfgoodadmin_GiveKeystone_Dialogue)
 }
 
 script LineMovementEvent_Script{
         playse(SE_PIN)
-        applymovement(PERSON1,EnterPsfGoodadmin_MoveLine1_Movement)
-        applymovement(PERSON2,EnterPsfGoodadmin_MoveLine2_Movement)
-        applymovement(PERSON3,EnterPsfGoodadmin_MoveLine3_Movement)
+        applymovement(PERSON1,EnterPsfgoodadmin_MoveLine1_Movement)
+        applymovement(PERSON2,EnterPsfgoodadmin_MoveLine2_Movement)
+        applymovement(PERSON3,EnterPsfgoodadmin_MoveLine3_Movement)
         waitmovement(0)
 }
 
-script EnterPsfGoodadmin_GiveKeystone_Dialogue{
+script EnterPsfgoodadmin_GiveKeystone_Dialogue{
         applymovement(PSFGOODADMIN,Common_Movement_FacePlayer)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -268,15 +268,15 @@ script EnterPsfGoodadmin_GiveKeystone_Dialogue{
         end
 }
 
-script EnterPsfGoodadmin_GruntApologize_Dialogue {
+script EnterPsfgoodadmin_GruntApologize_Dialogue {
     lockall
-        msgbox(gText_EnterPsfGoodadmin_SorryAgain)
+        msgbox(gText_EnterPsfgoodadmin_SorryAgain)
         closemessage
         releaseall
         end
 }
 
-movement EnterPsfGoodadmin_PsfgoodadminWalkToPlayer_Movement {
+movement EnterPsfgoodadmin_PsfgoodadminWalkToPlayer_Movement {
     walk_down * 3
     face_left
     step_end
@@ -300,7 +300,7 @@ movement EnterPsfgoodadmin_PlayerWalkToLine_Movement {
     face_up
     step_end
 }
-movement EnterPsfGoodadmin_WatchPlaceCones_Movement {
+movement EnterPsfgoodadmin_WatchPlaceCones_Movement {
     delay_16
     delay_16
     delay_16
@@ -311,7 +311,7 @@ movement EnterPsfGoodadmin_WatchPlaceCones_Movement {
     step_end
 }
 
-movement EnterPsfGoodadmin_PlaceCones_Movement {
+movement EnterPsfgoodadmin_PlaceCones_Movement {
     walk_in_place_left
     walk_right
     walk_down * 2
@@ -321,13 +321,13 @@ movement EnterPsfGoodadmin_PlaceCones_Movement {
     face_left
     step_end
 }
-movement EnterPsfGoodadmin_MoveLine1_Movement {
+movement EnterPsfgoodadmin_MoveLine1_Movement {
 	emote_exclamation_mark
     walk_down * 3
     face_up
     step_end
 }
-movement EnterPsfGoodadmin_MoveLine2_Movement {
+movement EnterPsfgoodadmin_MoveLine2_Movement {
 	emote_exclamation_mark
     delay_16
     delay_16
@@ -340,7 +340,7 @@ movement EnterPsfGoodadmin_MoveLine2_Movement {
     face_up
     step_end
 }
-movement EnterPsfGoodadmin_MoveLine3_Movement {
+movement EnterPsfgoodadmin_MoveLine3_Movement {
     emote_exclamation_mark
     delay_16
     delay_16
@@ -521,6 +521,6 @@ text gText_EnterPsfgoodadmin_IGottaGo {
     format("I gotta go back before Siarl cusses out another innocent victim. Stay safe out there.")
 }
 
-text gText_EnterPsfGoodadmin_SorryAgain {
+text gText_EnterPsfgoodadmin_SorryAgain {
     format("Sorry again about before.")
 }

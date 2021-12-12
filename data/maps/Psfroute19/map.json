@@ -20,11 +20,6 @@
     },
     {
       "direction": "right",
-      "offset": -10,
-      "map": "MAP_PSFPLACE11"
-    },
-    {
-      "direction": "right",
       "offset": -9,
       "map": "MAP_PSFPLACE13"
     }
