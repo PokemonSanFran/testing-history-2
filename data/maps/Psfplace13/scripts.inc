@@ -1,5 +1,47 @@
 Psfplace13_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace13_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfplace13_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	.2byte 0
+
+
+GroupOfAssholesAppears_CheckPartySize::
+	special HasEnoughMonsForDoubleBattle
+	compare VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS
+	goto_if_eq GroupOfAssholesAppears_CheckPartySize_1
+	goto GroupOfAssholesAppears_MovePlayerAway_Script
+	return
+
+GroupOfAssholesAppears_CheckPartySize_1:
+	goto GroupOfAssholesAppears_GroupAssault_Dialogue
+	return
+
+
+GroupOfAssholesAppears_MovePlayerAway_Script::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_GroupOfAssholesAppears_IThinkINeedMore
+	callnative ClearMugshot
+	closemessage
+	call GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script
+	releaseall
+	end
+
+
+GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script::
+	getplayerxy VAR_TEMP_1, VAR_TEMP_2
+	switch VAR_TEMP_1
+	case 36, GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script_3
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script_1:
+	waitmovement 0
+	return
+
+GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script_3:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
+	goto GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script_1
 
 
 GroupOfAssholesAppears_GroupAssault_Dialogue::
@@ -29,44 +71,6 @@ GroupOfAssholesAppears_GroupAssault_Dialogue::
 	call GroupOfAssholesAppears_PlayerToDavid_Script
 	goto GroupOfAssholesAppears_Psfchara1Intervene_Dialogue
 	return
-
-
-GroupOfAssholesAppears_CheckPartySize::
-	special HasEnoughMonsForDoubleBattle
-	compare VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS
-	goto_if_eq GroupOfAssholesAppears_CheckPartySize_1
-	goto GroupOfAssholesAppears_MovePlayerAway_Script
-	return
-
-GroupOfAssholesAppears_CheckPartySize_1:
-	goto GroupOfAssholesAppears_PlayerToDavid_Script
-	return
-
-
-GroupOfAssholesAppears_MovePlayerAway_Script::
-	lockall
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_DontLeavePsfcity8_Text1
-	callnative ClearMugshot
-	closemessage
-	call GroupOfAssholesAppears_DecidePlayerMovement_Script
-	releaseall
-	end
-
-
-GroupOfAssholesAppears_DecidePlayerMovement_Script::
-	getplayerxy VAR_TEMP_1, VAR_TEMP_2
-	switch VAR_TEMP_1
-	case 36, GroupOfAssholesAppears_DecidePlayerMovement_Script_3
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-GroupOfAssholesAppears_DecidePlayerMovement_Script_1:
-	waitmovement 0
-	return
-
-GroupOfAssholesAppears_DecidePlayerMovement_Script_3:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
-	goto GroupOfAssholesAppears_DecidePlayerMovement_Script_1
 
 
 GroupOfAssholesAppears_PlayerToDavid_Script::
@@ -111,21 +115,30 @@ GroupOfAssholesAppears_Psfchara1Intervene_Dialogue::
 	waitmovement 0
 	msgbox gText_GroupOfAssholesAppears_HeMightBeAsking
 	callnative ClearMugshot
-	msgbox gText_GroupOfAssholesAppears_WhoTheHellYouThink
-	givecustommon SPECIES_XERNEAS, 100, ITEM_POWER_HERB, ITEM_HEAVY_BALL, NATURE_MODEST, , , , 168, 252, 88, , 31, 31, 31, 31, 31, 31, MOVE_GEOMANCY, MOVE_MOONBLAST, MOVE_THUNDERBOLT, MOVE_INGRAIN
+	setvar VAR_PSFGOODTEAM_PSFPLACE13_STATE, 1
+	call Common_EventScript_SaveGame
+	closemessage
 	goto GroupOfAssholes_StartBattle_Script
 	return
 
 
 GroupOfAssholes_StartBattle_Script::
+	lockall
+	applymovement 7, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
 	trainerbattle_double TRAINER_IHSAN_AND_EMMITT, gText_GroupOfAssholesAppears_WhoTheHellYouThink, gText_GroupOfAssholesAppears_WoahWhoDidWePick, gText_GroupOfAssholesAppears_NotEnoughMons, GroupOfAssholesAppears_GroupLeaves_Dialogue, NO_MUSIC
 	closemessage
 	return
 
 
 GroupOfAssholesAppears_GroupLeaves_Dialogue::
+	lockall
+	setvar VAR_PSFPLACE13_STATE, 1
 	msgbox gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent
 	msgbox gText_GroupOfAssholesAppears_YouBothMakeMeSick
+	closemessage
 	applymovement 1, GroupOfAssholesAppears_LeavePsfplace13_Slot1_Movement
 	applymovement 2, GroupOfAssholesAppears_LeavePsfplace13_Slot2_Movement
 	applymovement 3, GroupOfAssholesAppears_LeavePsfplace13_Slot3_Movement
@@ -182,10 +195,17 @@ GroupOfAssholesAppears_GiveRewards_Dialogue::
 GroupOfAssholesAppears_LookForXanax_Dialogue::
 	lockall
 	applymovement 7, GroupOfAssholesAppears_LookAround_Movement
+	compare VAR_PSFGOODTEAM_PSFPLACE13_STATE, 1
+	goto_if_eq GroupOfAssholesAppears_LookForXanax_Dialogue_2
 	msgbox gText_GroupOfAssholesAppears_WhereDidIPut
+GroupOfAssholesAppears_LookForXanax_Dialogue_1:
 	closemessage
 	releaseall
 	end
+
+GroupOfAssholesAppears_LookForXanax_Dialogue_2:
+	msgbox gText_GroupOfAssholesAppears_Cries
+	goto GroupOfAssholesAppears_LookForXanax_Dialogue_1
 
 
 GroupOfAssholesAppears_LookAround_Movement:
@@ -308,7 +328,7 @@ GroupOfAssholesAppears_LeavePsfplace13_Slot6_Movement:
 	walk_left
 	step_end
 
-gText_IThinkINeedMore::
+gText_GroupOfAssholesAppears_IThinkINeedMore::
 	.string "I think I'm going to need at least two\n"
 	.string "healthy Pokémon for this.$"
 
@@ -368,6 +388,9 @@ gText_GroupOfAssholesAppears_WhoTheHellYouThink::
 	.string "are, but anybody defending this trash\l"
 	.string "clearly isn't going to be reasoned with.\l"
 	.string "We'll show you!$"
+
+gText_GroupOfAssholesAppears_Cries::
+	.string "*cries*$"
 
 gText_GroupOfAssholesAppears_ThatllShowYou::
 	.string "That'll show you. Stay out of our way!$"

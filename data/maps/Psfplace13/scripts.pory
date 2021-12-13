@@ -8,31 +8,34 @@ const GRUNT6 = 6
 const DAVID = 7
 
 mapscripts Psfplace13_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+    //    VAR_PSFGOODTEAM_PSFPLACE13_STATE, 0: GroupOfAssholesAppears_ResumeFromSave
+    ]
 }
 
 script GroupOfAssholesAppears_CheckPartySize {
     special(HasEnoughMonsForDoubleBattle)
 
         if (var(VAR_RESULT) == PLAYER_HAS_TWO_USABLE_MONS){
-            goto(GroupOfAssholesAppears_PlayerToDavid_Script)
+            goto(GroupOfAssholesAppears_GroupAssault_Dialogue)
         }else {
             goto(GroupOfAssholesAppears_MovePlayerAway_Script)
         }
 }
 
 script GroupOfAssholesAppears_MovePlayerAway_Script {
-    lockall
+        lockall
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_GroupOfAssholesAppears_IThinkINeedMore)
         callnative(ClearMugshot)
         closemessage
-        call(GroupOfAssholesAppears_DecidePlayerMovement_Script)
+        call(GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script)
         releaseall
         end
 }
 
-script GroupOfAssholesAppears_DecidePlayerMovement_Script {
+script GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script {
     getplayerxy(VAR_TEMP_1,VAR_TEMP_2)
         switch(var(VAR_TEMP_1)) {
             case 36: applymovement(PLAYER,Common_Movement_WalkRight)
@@ -106,19 +109,28 @@ script GroupOfAssholesAppears_Psfchara1Intervene_Dialogue {
         waitmovement(0)
         msgbox(gText_GroupOfAssholesAppears_HeMightBeAsking)
         callnative(ClearMugshot)
-        msgbox(gText_GroupOfAssholesAppears_WhoTheHellYouThink)
-        givecustommon(SPECIES_XERNEAS,100,ITEM_POWER_HERB,ITEM_HEAVY_BALL,NATURE_MODEST,,,,168,252,88,,31,31,31,31,31,31,MOVE_GEOMANCY,MOVE_MOONBLAST,MOVE_THUNDERBOLT,MOVE_INGRAIN)
+        setvar(VAR_PSFGOODTEAM_PSFPLACE13_STATE,1)
+        call(Common_EventScript_SaveGame)
+        closemessage
         goto(GroupOfAssholes_StartBattle_Script)
 }
 
 script GroupOfAssholes_StartBattle_Script {
-    trainerbattle_double(TRAINER_IHSAN_AND_EMMITT,gText_GroupOfAssholesAppears_WhoTheHellYouThink,gText_GroupOfAssholesAppears_WoahWhoDidWePick,gText_GroupOfAssholesAppears_NotEnoughMons,GroupOfAssholesAppears_GroupLeaves_Dialogue,NO_MUSIC)
+        lockall
+        applymovement(DAVID,Common_Movement_FaceDown)
+        waitmovement(0)
+        applymovement(PLAYER,Common_Movement_FaceRight) //TODO figure out why I can't control the direction the player faces here
+        waitmovement(0)
+        trainerbattle_double(TRAINER_IHSAN_AND_EMMITT,gText_GroupOfAssholesAppears_WhoTheHellYouThink,gText_GroupOfAssholesAppears_WoahWhoDidWePick,gText_GroupOfAssholesAppears_NotEnoughMons,GroupOfAssholesAppears_GroupLeaves_Dialogue,NO_MUSIC)
         closemessage
 }
 
 script GroupOfAssholesAppears_GroupLeaves_Dialogue {
-    msgbox(gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent)
+        lockall
+        setvar(VAR_PSFPLACE13_STATE,1)
+        msgbox(gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent)
         msgbox(gText_GroupOfAssholesAppears_YouBothMakeMeSick)
+        closemessage
         applymovement(GRUNT1,GroupOfAssholesAppears_LeavePsfplace13_Slot1_Movement)
         applymovement(GRUNT2,GroupOfAssholesAppears_LeavePsfplace13_Slot2_Movement)
         applymovement(GRUNT3,GroupOfAssholesAppears_LeavePsfplace13_Slot3_Movement)
@@ -132,7 +144,7 @@ script GroupOfAssholesAppears_GroupLeaves_Dialogue {
 }
 
 script GroupOfAssholesAppears_ExplainTeam_Dialogue {
-    applymovement(PLAYER,Common_Movement_FaceUp)
+        applymovement(PLAYER,Common_Movement_FaceUp)
         msgbox(gText_GroupOfAssholesAppears_Ohmigod)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -171,9 +183,14 @@ script GroupOfAssholesAppears_GiveRewards_Dialogue {
 }
 
 script GroupOfAssholesAppears_LookForXanax_Dialogue {
-    lockall
+        lockall
         applymovement(DAVID,GroupOfAssholesAppears_LookAround_Movement)
-        msgbox(gText_GroupOfAssholesAppears_WhereDidIPut)
+        
+        if (var(VAR_PSFGOODTEAM_PSFPLACE13_STATE) == 1)   {
+            msgbox(gText_GroupOfAssholesAppears_Cries)
+        }else{
+            msgbox(gText_GroupOfAssholesAppears_WhereDidIPut)
+        }
         closemessage
         releaseall
         end
@@ -302,6 +319,10 @@ text gText_GroupOfAssholesAppears_HeMightBeAsking {
 
 text gText_GroupOfAssholesAppears_WhoTheHellYouThink {
     format("I don't know who the hell you think you are, but anybody defending this trash clearly isn't going to be reasoned with. We'll show you!")
+}
+
+text gText_GroupOfAssholesAppears_Cries {
+    format("*cries*")
 }
 
 text gText_GroupOfAssholesAppears_ThatllShowYou {
