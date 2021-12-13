@@ -146,6 +146,12 @@ GroupOfAssholesAppears_GroupLeaves_Dialogue::
 	applymovement 5, GroupOfAssholesAppears_LeavePsfplace13_Slot5_Movement
 	applymovement 6, GroupOfAssholesAppears_LeavePsfplace13_Slot6_Movement
 	waitmovement 0
+	removeobject 1
+	removeobject 2
+	removeobject 3
+	removeobject 4
+	removeobject 5
+	removeobject 6
 	fadedefaultbgm
 	msgbox gText_GroupOfAssholesAppears_DontComeBackAssholes
 	goto GroupOfAssholesAppears_ExplainTeam_Dialogue

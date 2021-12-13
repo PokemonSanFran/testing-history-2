@@ -138,6 +138,12 @@ script GroupOfAssholesAppears_GroupLeaves_Dialogue {
         applymovement(GRUNT5,GroupOfAssholesAppears_LeavePsfplace13_Slot5_Movement)
         applymovement(GRUNT6,GroupOfAssholesAppears_LeavePsfplace13_Slot6_Movement)
         waitmovement(0)
+        removeobject(GRUNT1)
+        removeobject(GRUNT2)
+        removeobject(GRUNT3)
+        removeobject(GRUNT4)
+        removeobject(GRUNT5)
+        removeobject(GRUNT6)
         fadedefaultbgm
         msgbox(gText_GroupOfAssholesAppears_DontComeBackAssholes)
         goto(GroupOfAssholesAppears_ExplainTeam_Dialogue)
