@@ -4767,7 +4767,7 @@
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_NavelRock",
       "border_filepath": "data/layouts/Psfcity14_Gym/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity14_Gym/map.bin"
     }

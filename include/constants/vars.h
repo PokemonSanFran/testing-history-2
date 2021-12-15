@@ -268,7 +268,7 @@
 #define VAR_GYM_3_STATE                    0x40F8 // Previously Unused Var
 #define VAR_PSFCITY15_STATE                    0x40F9 // Previously Unused Var
 #define VAR_PSFBADGUY1TOWER_2F_STATE                    0x40FA // Previously Unused Var
-#define VAR_UNUSED_0x40FA                    0x40FA // Unused Var
+#define VAR_GYM_2_STATE                    0x40FA // Previously Unused Var
 #define VAR_UNUSED_0x40FB                    0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                    0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                    0x40FD // Unused Var
