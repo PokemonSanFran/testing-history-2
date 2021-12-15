@@ -4,6 +4,8 @@
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorPsfcity8",
     "gMapGroup_IndoorPsfcity15",
+    "gMapGroup_IndoorPsfcity6",
+    "gMapGroup_IndoorPsfcity14",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -125,8 +127,13 @@
     "Psfcity8_PokemonCenter_1F"
   ],
   "gMapGroup_IndoorPsfcity15": [
-    "Psfcity15_Gym",
+    "Psfcity15_Gym"
+  ],
+  "gMapGroup_IndoorPsfcity6": [
     "Psfcity6_Gym"
+  ],
+  "gMapGroup_IndoorPsfcity14": [
+    "Psfcity14_Gym"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
