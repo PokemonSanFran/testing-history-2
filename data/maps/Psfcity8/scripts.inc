@@ -3,8 +3,14 @@ Psfcity8_MapScripts::
 	.byte 0
 
 Psfcity8_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 0, ImProbablyBetterThanYou_Intro
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 0, NewGameSetUp
 	.2byte 0
+
+
+NewGameSetUp::
+	setflag FLAG_HIDE_PSFCITY7_PSFGOODADMIN
+	goto ImProbablyBetterThanYou_Intro
+	return
 
 
 ImProbablyBetterThanYou_Intro::

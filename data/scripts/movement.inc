@@ -109,6 +109,15 @@ Common_Movement_WalkRight:
 	walk_right
 	step_end
 
+Common_Movement_LookAround:
+    face_left
+    delay_16
+    delay_16
+    face_right
+    delay_16
+    delay_16
+    step_end
+
 @ Unused
 Common_Movement_WalkUp2::
 	walk_up

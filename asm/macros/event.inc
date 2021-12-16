@@ -1751,6 +1751,20 @@
     customgivemon \species, \level, 0, 0, NUM_NATURES, 0xFF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \move1, \move2, \move3, \move4, 0
     .endm
 
+    @ Ceases movement for the event obj. the Player is currently interacting with and that one alone.
+    .macro locktarget
+    .byte 0xe4
+    .endm
+
+    @ https://www.pokecommunity.com/showpost.php?p=10163613&postcount=81
+    @ Change Object Event Movement Type in Real Time
+
+ .macro setobjectnewmovementtype localId:req, movementType:req
+    setvar VAR_0x8005, \localId
+    setvar VAR_0x8006, \movementType
+    special SetObjectMovementType
+    .endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

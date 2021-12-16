@@ -544,3 +544,5 @@ gSpecials::
     def_special GetNumberOfBadges
     def_special GetMegaEvolutionPartyMember
     def_special CheckMegaEvolutionPartyMember
+    def_special SetObjectMovementType
+

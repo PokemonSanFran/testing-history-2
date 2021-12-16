@@ -48,8 +48,8 @@
 #define FLAG_SYS_NO_CATCHING        0x24 // Unused Flag //DEBUG
 #define FLAG_PSFNATIVERIVALALPHA    0x25 // Previously Unused Flag
 #define FLAG_SAVED_DAVID            0x26 // Previously Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
+#define FLAG_HIDE_PSFCITY7_PSFGOODADMIN 0x27 //Previously Unused Flag
+#define FLAG_HIDE_MADISON    0x28 // Previously Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
