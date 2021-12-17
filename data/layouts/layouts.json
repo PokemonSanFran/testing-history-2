@@ -4514,10 +4514,10 @@
     {
       "id": "LAYOUT_PSFROUTE22",
       "name": "Psfroute22_Layout",
-      "width": 15,
+      "width": 30,
       "height": 30,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/Psfroute22/border.bin",
       "blockdata_filepath": "data/layouts/Psfroute22/map.bin"
     },

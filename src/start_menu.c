@@ -1435,5 +1435,6 @@ static bool8 DebugMenuCallback(void)
     RemoveExtraStartMenuWindows();
     HideStartMenu();
     MySpecial();
+
     return TRUE;
 }
