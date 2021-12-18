@@ -4,33 +4,50 @@ Psfcity8_Compound_1F_MapScripts::
 	.byte 0
 
 Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	switch VAR_LITTLEROOT_INTRO_STATE
-	case 1, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
-	case 3, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
-	case 4, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
-	case 5, Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
-	return
-
-Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	goto ImProbablyBetterThanYou_ObjectSetUp
-	return
-
-Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
-	goto Swagbag_ObjectSetUp
-	return
-
-Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	goto ExplorePsfcity8_ObjectSetUp
-	return
-
-Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
-	goto TwoHoursAgo_ObjectSetUp
+	goto Psfcity8_Compound_1F_MapScripts_OnTransition
 	return
 
 Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, Swagbag_WelcomeToPsfregion1_Dialogue
 	.2byte 0
+
+
+Psfcity8_Compound_1F_MapScripts_OnTransition::
+	switch VAR_STORYLINE_STATE
+	case 9, Psfcity8_Compound_1F_MapScripts_OnTransition_3
+	case 10, Psfcity8_Compound_1F_MapScripts_OnTransition_4
+Psfcity8_Compound_1F_MapScripts_OnTransition_1:
+	switch VAR_LITTLEROOT_INTRO_STATE
+	case 1, Psfcity8_Compound_1F_MapScripts_OnTransition_6
+	case 3, Psfcity8_Compound_1F_MapScripts_OnTransition_7
+	case 4, Psfcity8_Compound_1F_MapScripts_OnTransition_8
+	case 5, Psfcity8_Compound_1F_MapScripts_OnTransition_9
+	return
+
+Psfcity8_Compound_1F_MapScripts_OnTransition_3:
+	goto Act1_1_ObjectCleanUp
+	goto Psfcity8_Compound_1F_MapScripts_OnTransition_1
+
+Psfcity8_Compound_1F_MapScripts_OnTransition_4:
+	goto Act1_2_ObjectSetUp
+	goto Psfcity8_Compound_1F_MapScripts_OnTransition_1
+
+Psfcity8_Compound_1F_MapScripts_OnTransition_6:
+	goto ImProbablyBetterThanYou_ObjectSetUp
+	return
+
+Psfcity8_Compound_1F_MapScripts_OnTransition_7:
+	goto Swagbag_ObjectSetUp
+	return
+
+Psfcity8_Compound_1F_MapScripts_OnTransition_8:
+	goto ExplorePsfcity8_ObjectSetUp
+	return
+
+Psfcity8_Compound_1F_MapScripts_OnTransition_9:
+	goto TwoHoursAgo_ObjectSetUp
+	return
 
 
 ImProbablyBetterThanYou_ObjectSetUp::
@@ -61,6 +78,28 @@ ExplorePsfcity8_ObjectSetUp::
 TwoHoursAgo_ObjectSetUp::
 	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
 	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN1_2
+	return
+
+
+Act1_1_ObjectCleanUp::
+	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1_2
+	clearflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL
+	return
+
+
+Act1_2_ObjectSetUp::
+	setflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL
+	return
+
+
+Psftransrival_Compound_Script::
+	compare VAR_STORYLINE_STATE, 9
+	goto_if_eq Psftransrival_Compound_Script_1
+	goto PsftransrivalAnnoyed_Dialogue
+	return
+
+Psftransrival_Compound_Script_1:
+	goto Act1_1_Complete_Psftransrival_Dialogue
 	return
 
 
@@ -384,6 +423,36 @@ TwoHoursAgo_ExplainLeftovers_Dialouge::
 	end
 
 
+Act1_1_Complete_Psftransrival_Dialogue::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_Act1_1_Complete_WhatsYourProgress, MSGBOX_NPC
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Act1_1_Complete_OnlyThree
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_Act1_1_Complete_YeahThatBusted
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Act1_1_Complete_INeedToFigure
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_Act1_1_Complete_HardToComeBy
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Act1_1_Complete_ImSureIllFigure
+	callnative ClearMugshot
+	closemessage
+	releaseall
+	end
+
+
 CameraToPlayer_Movement::
 	setvar VAR_0x8004, 1
 	setvar VAR_0x8005, 6
@@ -479,6 +548,33 @@ Psfbadadmin1WalkToLaptop_Movement:
 	walk_down
 	face_right
 	step_end
+
+gText_Act1_1_Complete_WhatsYourProgress::
+	.string "Damn I'm beat. Getting five badges in\n"
+	.string "one day was a hustle! What about you?$"
+
+gText_Act1_1_Complete_OnlyThree::
+	.string "Only three so far. I'm praying the ferry\n"
+	.string "is fixed tomorrow.$"
+
+gText_Act1_1_Complete_YeahThatBusted::
+	.string "Yeah, that busted ferry sucks. I'm\n"
+	.string "going to challenge the Psfcity5 and\l"
+	.string "Psfcity18 Gyms tomorrow, and the ferry\l"
+	.string "will definately be fixed after that, so\l"
+	.string "Psfcity11 Gym will be last.$"
+
+gText_Act1_1_Complete_INeedToFigure::
+	.string "I need to figure out how to get some\n"
+	.string "Go-Goggles too...$"
+
+gText_Act1_1_Complete_HardToComeBy::
+	.string "They're hard to come by right now. I\n"
+	.string "only got these because Daddys knows\l"
+	.string "the manufactuer over in Kanto.$"
+
+gText_Act1_1_Complete_ImSureIllFigure::
+	.string "I'm sure I'll figure something out.$"
 
 gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1::
 	.string "You must be {PLAYER}. Great to meet\n"

@@ -167,6 +167,8 @@ NewAssholeAppears_PsfnativerivalExit_Script_1:
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 1
+	addvar VAR_STORYLINE_STATE, 1
+	call Act1_1_Check_Script
 	releaseall
 	end
 

@@ -135,6 +135,7 @@ GroupOfAssholes_StartBattle_Script::
 
 GroupOfAssholesAppears_GroupLeaves_Dialogue::
 	lockall
+	setvar VAR_PSFGOODTEAM_PSFPLACE13_STATE, 2
 	setvar VAR_PSFPLACE13_STATE, 1
 	msgbox gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent
 	msgbox gText_GroupOfAssholesAppears_YouBothMakeMeSick
@@ -194,6 +195,8 @@ GroupOfAssholesAppears_GiveRewards_Dialogue::
 	giveitem ITEM_MACH_BIKE
 	msgbox gText_GroupOfAssholesAppears_IfYouPutThatOn
 	closemessage
+	addvar VAR_STORYLINE_STATE, 1
+	call Act1_1_Check_Script
 	releaseall
 	end
 

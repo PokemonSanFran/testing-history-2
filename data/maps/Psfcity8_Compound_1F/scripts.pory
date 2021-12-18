@@ -6,439 +6,523 @@ const PSFBADADMIN1_2 = 6
 
 mapscripts Psfcity8_Compound_1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-    
-        switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
-            case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) //Started game, has not met Psftransrival
-            case 3: goto(Swagbag_ObjectSetUp) //Has checked out bedroom
-            case 4: goto(ExplorePsfcity8_ObjectSetUp) //Has met Psfbadadmin1 and recieved items
-            case 5: goto(TwoHoursAgo_ObjectSetUp) //Has slept in bed after getting Pokedex
-        }
+        goto(Psfcity8_Compound_1F_MapScripts_OnTransition)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue //Started game, has not met Psftransrival
-        VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue //Has checked out room
+            VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue //Has checked out room
     ]
 }
+
+script Psfcity8_Compound_1F_MapScripts_OnTransition {
+    switch (var(VAR_STORYLINE_STATE)){
+        case 9: goto(Act1_1_ObjectCleanUp)
+        case 10: goto(Act1_2_ObjectSetUp)
+    }
+
+    switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
+        case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) //Started game, has not met Psftransrival
+        case 3: goto(Swagbag_ObjectSetUp) //Has checked out bedroom
+        case 4: goto(ExplorePsfcity8_ObjectSetUp) //Has met Psfbadadmin1 and recieved items
+        case 5: goto(TwoHoursAgo_ObjectSetUp) //Has slept in bed after getting Pokedex
+        //case 6: goto(Act1_1_ObjectCleanUp) //finished Act 1.1
+    }
+}
+
+
+
 script ImProbablyBetterThanYou_ObjectSetUp {
     setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
-    setflag(FLAG_HIDE_COMPOUND_POKEDEX_LEFT)
-    setflag(FLAG_HIDE_COMPOUND_POKEDEX_RIGHT)
-    setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2)
-    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
+        setflag(FLAG_HIDE_COMPOUND_POKEDEX_LEFT)
+        setflag(FLAG_HIDE_COMPOUND_POKEDEX_RIGHT)
+        setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2)
+        setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
 }
 script Swagbag_ObjectSetUp {
     clearflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2)
-    clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
-    turnobject(PSFBADADMIN1, DIR_WEST) 
-    clearflag(FLAG_HIDE_COMPOUND_POKEDEX_LEFT)
-    clearflag(FLAG_HIDE_COMPOUND_POKEDEX_RIGHT)
-    setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
+        clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
+        turnobject(PSFBADADMIN1, DIR_WEST) 
+        clearflag(FLAG_HIDE_COMPOUND_POKEDEX_LEFT)
+        clearflag(FLAG_HIDE_COMPOUND_POKEDEX_RIGHT)
+        setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
 }
 
 script ExplorePsfcity8_ObjectSetUp {
     setobjectmovementtype(PSFBADADMIN1, MOVEMENT_TYPE_FACE_RIGHT) 
-    setobjectxyperm(PSFBADADMIN1,8,6)
+        setobjectxyperm(PSFBADADMIN1,8,6)
 }
 
 script TwoHoursAgo_ObjectSetUp {
-    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
-    clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
+        setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
+        clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
+}
+
+script Act1_1_ObjectCleanUp{
+    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
+    clearflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
+}
+
+script Act1_2_ObjectSetUp{
+    setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
+}
+
+script Psftransrival_Compound_Script {
+    if (var(VAR_STORYLINE_STATE) == 9){
+        goto(Act1_1_Complete_Psftransrival_Dialogue)
+    }
+    else {
+        goto(PsftransrivalAnnoyed_Dialogue)
+    }
 }
 
 script ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue {
     setvar(VAR_LITTLEROOT_INTRO_STATE,2)
-    lockall
-    applymovement(PLAYER,WalkInside_Movement)
-    waitmovement(0)
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
-    playse(SE_PIN)
-	applymovement(PSFTRANSRIVAL,Common_Movement_ExclamationMark)
-    waitmovement(0)
-    applymovement(PSFTRANSRIVAL,PsftransrivalIntro_Movement)
-    waitmovement(0)
-    callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1)
-    closemessage
-    goto (ImProbablyBetterThanYou_KindaShabby_Dialogue) 
-    end
+        lockall
+        applymovement(PLAYER,WalkInside_Movement)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+        playse(SE_PIN)
+        applymovement(PSFTRANSRIVAL,Common_Movement_ExclamationMark)
+        waitmovement(0)
+        applymovement(PSFTRANSRIVAL,PsftransrivalIntro_Movement)
+        waitmovement(0)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1)
+        closemessage
+        goto (ImProbablyBetterThanYou_KindaShabby_Dialogue) 
+        end
 }
 
 script ImProbablyBetterThanYou_KindaShabby_Dialogue {
     applymovement(PSFTRANSRIVAL,PsftransrivalLookAround_Movement)
-    waitmovement(3)
-    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text2)
-    closemessage
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text3)
-    callnative(ClearMugshot)
-    closemessage
-    callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text4)
-    callnative(ClearMugshot)
-    closemessage
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text5)
-    goto(ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue) 
-    end
+        waitmovement(3)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text2)
+        closemessage
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text3)
+        callnative(ClearMugshot)
+        closemessage
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text4)
+        callnative(ClearMugshot)
+        closemessage
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text5)
+        goto(ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue) 
+        end
 }
 
 script ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue {
     msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text6)
-    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text7)
-    closemessage
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text8)
-    callnative(ClearMugshot)
-    closemessage
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text9)
-    goto (ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue)
-    end
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text7)
+        closemessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text8)
+        callnative(ClearMugshot)
+        closemessage
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text9)
+        goto (ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue)
+        end
 }
 
 script ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue {
     msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text10)
-    applymovement(PSFTRANSRIVAL,PsftransrivalGestureUpstairs_Movement)
-    waitmovement(0)
-    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text11)
-    callnative(ClearMugshot)
-    closemessage
-    applymovement(PSFTRANSRIVAL,PsftransrivalBackToCouch_Movement)
-    waitmovement(0)
-    playbgm(MUS_BIRCH_LAB,TRUE)
-    releaseall
-    end
+        applymovement(PSFTRANSRIVAL,PsftransrivalGestureUpstairs_Movement)
+        waitmovement(0)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text11)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFTRANSRIVAL,PsftransrivalBackToCouch_Movement)
+        waitmovement(0)
+        playbgm(MUS_BIRCH_LAB,TRUE)
+        releaseall
+        end
 }
 
 script PsftransrivalAnnoyed_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
+        callnative(DrawMugshot)
 
-    switch(var(VAR_TEMP_0)) {
+        switch(var(VAR_TEMP_0)) {
             case 1:
                 msgbox(gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text2,MSGBOX_NPC)
-                setvar(VAR_TEMP_0, 2)
+                    setvar(VAR_TEMP_0, 2)
             case 2:
-                msgbox(gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text3,MSGBOX_NPC)
-                setvar(VAR_TEMP_0, 2)
+                    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text3,MSGBOX_NPC)
+                        setvar(VAR_TEMP_0, 2)
             default:
-                msgbox(gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text1,MSGBOX_NPC)
-                setvar(VAR_TEMP_0, 1)
-    }
+                        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text1,MSGBOX_NPC)
+                            setvar(VAR_TEMP_0, 1)
+        }
 
     callnative(ClearMugshot)
-    closemessage
+        closemessage
 }
 
 script ImProbablyBetterThanYou_ShouldUnpack {
     lockall
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue)
-    callnative(ClearMugshot)
-    closemessage
-    applymovement(PLAYER,WalkInside_Movement)
-    waitmovement(0)
-    releaseall
-    end
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PLAYER,WalkInside_Movement)
+        waitmovement(0)
+        releaseall
+        end
 }
 
 script Swagbag_WelcomeToPsfregion1_Dialogue {
     setvar(VAR_LITTLEROOT_INTRO_STATE,5)
-	lockall
-    playse(SE_PIN)
-    playbgm(MUS_RG_FOLLOW_ME,TRUE)
-	applymovement(PSFBADADMIN1,Common_Movement_ExclamationMark)
-    waitmovement(0)
-    applymovement(PSFBADADMIN1,Psfbadadmin1GreetPlayer_Movement)
-    waitmovement(0)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_WelcomeToPsfregion1_Text1)
-    callnative(ClearMugshot)
-    closemessage
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_WelcomeToPsfregion1_Text2)
-    callnative(ClearMugshot)
-    closemessage
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_WelcomeToPsfregion1_Text3)
-    callnative(ClearMugshot)
-    closemessage
-    applymovement(PSFBADADMIN1,Psfbadadmin1WalkToTable_Movement)
-    waitmovement(0)
-    applymovement(PLAYER,PlayerFollowPsfbadadmin1ToTable_Movement)
-    applymovement(PSFTRANSRIVAL_2,PsftransrivalFollowPsfbadadmin1ToTable_Movement)
-    waitmovement(0)
-    goto(Swagbag_LeagueStipend_Dialogue)
-    end
+        lockall
+        playse(SE_PIN)
+        playbgm(MUS_RG_FOLLOW_ME,TRUE)
+        applymovement(PSFBADADMIN1,Common_Movement_ExclamationMark)
+        waitmovement(0)
+        applymovement(PSFBADADMIN1,Psfbadadmin1GreetPlayer_Movement)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_WelcomeToPsfregion1_Text1)
+        callnative(ClearMugshot)
+        closemessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_WelcomeToPsfregion1_Text2)
+        callnative(ClearMugshot)
+        closemessage
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_WelcomeToPsfregion1_Text3)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFBADADMIN1,Psfbadadmin1WalkToTable_Movement)
+        waitmovement(0)
+        applymovement(PLAYER,PlayerFollowPsfbadadmin1ToTable_Movement)
+        applymovement(PSFTRANSRIVAL_2,PsftransrivalFollowPsfbadadmin1ToTable_Movement)
+        waitmovement(0)
+        goto(Swagbag_LeagueStipend_Dialogue)
+        end
 }
 
 script Swagbag_LeagueStipend_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_LeagueStipend_Text1)
-    msgbox(gText_Swagbag_LeagueStipend_Text2)
-    closemessage
-    addmoney(50000,0)
-    goto(Swagbag_PokedexApps_Dialogue)
-    end
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_LeagueStipend_Text1)
+        msgbox(gText_Swagbag_LeagueStipend_Text2)
+        closemessage
+        addmoney(50000,0)
+        goto(Swagbag_PokedexApps_Dialogue)
+        end
 }
 
 script Swagbag_PokedexApps_Dialogue {
     msgbox(gText_Swagbag_PokedexApps_Text1)
-    msgbox(gText_Swagbag_PokedexApps_Text2)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_PokedexApps_Text3)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_PokedexApps_Text4)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_PokedexApps_Text5)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_PokedexApps_Text6)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_PokedexApps_Text7)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_PokedexApps_Text8)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_PokedexApps_Text9)
-    callnative(ClearMugshot)
-    removeobject(5)
-    removeobject(4)
-    playfanfare(MUS_OBTAIN_ITEM)  
-    msgbox(gText_Swagbag_PokedexApps_Text10)
-    waitmessage
-    waitfanfare
-    goto(Swagbag_WhenCanWeStart_Dialogue)
+        msgbox(gText_Swagbag_PokedexApps_Text2)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_PokedexApps_Text3)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_PokedexApps_Text4)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_PokedexApps_Text5)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_PokedexApps_Text6)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_PokedexApps_Text7)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_PokedexApps_Text8)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_PokedexApps_Text9)
+        callnative(ClearMugshot)
+        removeobject(5)
+        removeobject(4)
+        playfanfare(MUS_OBTAIN_ITEM)  
+        msgbox(gText_Swagbag_PokedexApps_Text10)
+        waitmessage
+        waitfanfare
+        goto(Swagbag_WhenCanWeStart_Dialogue)
 }
 
 script Swagbag_WhenCanWeStart_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_WhenCanWeStart_Text1)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_WhenCanWeStart_Text2)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_WhenCanWeStart_Text3)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_WhenCanWeStart_Text4)
-    callnative(ClearMugshot)
-    closemessage
-    applymovement(PSFTRANSRIVAL_2,PsftransrivalWalkOutside_Movement)
-    waitmovement(0)
-    playse(SE_EXIT)
-    removeobject(PSFTRANSRIVAL_2)
-    setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2)
-    delay(30)
-    goto(Swagbag_DontLeavePsfcity8)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_WhenCanWeStart_Text1)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_WhenCanWeStart_Text2)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_WhenCanWeStart_Text3)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_WhenCanWeStart_Text4)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFTRANSRIVAL_2,PsftransrivalWalkOutside_Movement)
+        waitmovement(0)
+        playse(SE_EXIT)
+        removeobject(PSFTRANSRIVAL_2)
+        setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2)
+        delay(30)
+        goto(Swagbag_DontLeavePsfcity8)
 }
 
 script Swagbag_DontLeavePsfcity8 {
     setvar(VAR_LITTLEROOT_INTRO_STATE,4)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_DontLeavePsfcity8_Text1)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_DontLeavePsfcity8_Text2)
-    closemessage
-    callnative(ClearMugshot)
-    applymovement(PSFBADADMIN1,Psfbadadmin1WalkToLaptop_Movement) 
-    waitmovement(0)
-    playbgm(MUS_BIRCH_LAB,TRUE)
-    releaseall
-    end
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_DontLeavePsfcity8_Text1)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_DontLeavePsfcity8_Text2)
+        closemessage
+        callnative(ClearMugshot)
+        applymovement(PSFBADADMIN1,Psfbadadmin1WalkToLaptop_Movement) 
+        waitmovement(0)
+        playbgm(MUS_BIRCH_LAB,TRUE)
+        releaseall
+        end
 }
 
 script Swagbag_AnnoyPsfbadadmin1_Script { //TODO Set up actual question a answer for Psfbadadmin1 here
     lockall
-    faceplayer
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_Swagbag_AnnoyPsfbadadmin1_Text1,MSGBOX_NPC)
-    callnative(ClearMugshot)
-    closemessage
-    turnobject(PSFBADADMIN1, DIR_EAST) 
-    releaseall
-    end
+        faceplayer
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_Swagbag_AnnoyPsfbadadmin1_Text1,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        closemessage
+        turnobject(PSFBADADMIN1, DIR_EAST) 
+        releaseall
+        end
 }
 
 script TwoHoursAgo_TheyreEager_Dialogue {
-    
+
     if(flag(FLAG_RECIEVED_LEFTOVERS_PSFBADADMIN1)){
         goto(TwoHoursAgo_ExplainLeftovers_Dialouge)
     }
 
     lockall
-    faceplayer
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_TwoHoursAgo_TheyreEager_Text1,MSGBOX_NPC)
-    callnative(ClearMugshot)
-    closemessage
-    goto(TwoHoursAgo_ExplainLeague_SetUp)
+        faceplayer
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_TwoHoursAgo_TheyreEager_Text1,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        closemessage
+        goto(TwoHoursAgo_ExplainLeague_SetUp)
 }
 
 script TwoHoursAgo_ExplainLeague_SetUp {
     lock
-    fadescreen(FADE_TO_BLACK)
-    setobjectxy(PSFBADADMIN1_2,4,6)
-    turnobject(PSFBADADMIN1_2,DIR_WEST)
-    setobjectmovementtype(PSFBADADMIN1_2,MOVEMENT_TYPE_FACE_LEFT)
-    setobjectxy(PLAYER,1,6)
-    turnobject(PLAYER, DIR_EAST)
-    call(CameraToPlayer_Movement)
-    goto(TwoHoursAgo_ExplainLeague_Script)
+        fadescreen(FADE_TO_BLACK)
+        setobjectxy(PSFBADADMIN1_2,4,6)
+        turnobject(PSFBADADMIN1_2,DIR_WEST)
+        setobjectmovementtype(PSFBADADMIN1_2,MOVEMENT_TYPE_FACE_LEFT)
+        setobjectxy(PLAYER,1,6)
+        turnobject(PLAYER, DIR_EAST)
+        call(CameraToPlayer_Movement)
+        goto(TwoHoursAgo_ExplainLeague_Script)
 }
 
 script TwoHoursAgo_ExplainLeague_Script {
     lockall
-    //TODO write special for league explain cutscene
-    msgbox(gText_TwoHoursAgo_ExplainLeague_Text1)
-    msgbox(gText_TwoHoursAgo_ExplainLeague_Text2)
-    msgbox(gText_TwoHoursAgo_ExplainLeague_Text3)
-    closemessage
-    fadescreen(FADE_FROM_BLACK)
-    goto(TwoHoursAgo_LeftoversPokeballs_Dialogue)
+        //TODO write special for league explain cutscene
+        msgbox(gText_TwoHoursAgo_ExplainLeague_Text1)
+        msgbox(gText_TwoHoursAgo_ExplainLeague_Text2)
+        msgbox(gText_TwoHoursAgo_ExplainLeague_Text3)
+        closemessage
+        fadescreen(FADE_FROM_BLACK)
+        goto(TwoHoursAgo_LeftoversPokeballs_Dialogue)
 }
 
 script TwoHoursAgo_LeftoversPokeballs_Dialogue {
     setflag(FLAG_RECIEVED_LEFTOVERS_PSFBADADMIN1)
-    callnative(DrawMugshot)
-    msgbox(gText_TwoHoursAgo_LeftoversPokeballs_Text1)
-    lockall
-    giveitem(ITEM_LEFTOVERS)
-    giveitem(ITEM_POKE_BALL,5)
-    callnative(ClearMugshot)
-    closemessage
-    releaseall
-    end
+        callnative(DrawMugshot)
+        msgbox(gText_TwoHoursAgo_LeftoversPokeballs_Text1)
+        lockall
+        giveitem(ITEM_LEFTOVERS)
+        giveitem(ITEM_POKE_BALL,5)
+        callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
 }
 
 script TwoHoursAgo_ExplainLeftovers_Dialouge {
     lockall
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    bufferleadmonspeciesname(0)
-    msgbox(gText_TwoHoursAgo_ExplainLeftovers_Text1,MSGBOX_NPC)
-    callnative(ClearMugshot)
-    closemessage
-    releaseall
-    end
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        bufferleadmonspeciesname(0)
+        msgbox(gText_TwoHoursAgo_ExplainLeftovers_Text1,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
+}
+
+script Act1_1_Complete_Psftransrival_Dialogue {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_Act1_1_Complete_WhatsYourProgress,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Act1_1_Complete_OnlyThree)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_Act1_1_Complete_YeahThatBusted)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Act1_1_Complete_INeedToFigure)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_Act1_1_Complete_HardToComeBy)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Act1_1_Complete_ImSureIllFigure)
+        callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
+}
+
+text gText_Act1_1_Complete_WhatsYourProgress {
+    format("Damn I'm beat. Getting five badges in one day was a hustle! What about you?")
+}
+
+text gText_Act1_1_Complete_OnlyThree {
+	format("Only three so far. I'm praying the ferry is fixed tomorrow.")
+}
+
+text gText_Act1_1_Complete_YeahThatBusted {
+	format("Yeah, that busted ferry sucks. I'm going to challenge the Psfcity5 and Psfcity18 Gyms tomorrow, and the ferry will definately be fixed after that, so Psfcity11 Gym will be last.")
+}
+
+text gText_Act1_1_Complete_INeedToFigure {
+	format("I need to figure out how to get some Go-Goggles too...")
+}
+
+text gText_Act1_1_Complete_HardToComeBy {
+	format("They're hard to come by right now. I only got these because Daddys knows the manufactuer over in Kanto.")
+}
+
+text gText_Act1_1_Complete_ImSureIllFigure {
+	format("I'm sure I'll figure something out.")
 }
 
 script CameraToPlayer_Movement {
     setvar(VAR_0x8004, 1)
-    setvar(VAR_0x8005, 6)
-    special(TeleportCamera)
+        setvar(VAR_0x8005, 6)
+        special(TeleportCamera)
 }
 
 movement WalkInside_Movement {
     walk_up    
-    step_end
+        step_end
 }
 
 movement PsftransrivalIntro_Movement {
     walk_right
-    walk_down
-    step_end
+        walk_down
+        step_end
 }
 
 movement PsftransrivalBackToCouch_Movement {
     walk_up
-    walk_left
-    step_end
+        walk_left
+        step_end
 }
 
 movement PsftransrivalLookAround_Movement {
     face_left
-    delay_16
-    delay_16
-    face_right
-    delay_16
-    delay_16
-    face_down
-    delay_16
-    delay_16
-    step_end
+        delay_16
+        delay_16
+        face_right
+        delay_16
+        delay_16
+        face_down
+        delay_16
+        delay_16
+        step_end
 }
 
 movement PsftransrivalGestureUpstairs_Movement {
     face_up
-    delay_16
-    delay_16
-    face_down
-    step_end
+        delay_16
+        delay_16
+        face_down
+        step_end
 }
 
 movement Psfbadadmin1GreetPlayer_Movement {
     face_up
-    walk_up
-    delay_16
-    step_end
+        walk_up
+        delay_16
+        step_end
 }
 
 movement Psfbadadmin1WalkToTable_Movement{
     walk_down * 2
-    walk_right * 3
-    face_down
-    step_end
+        walk_right * 3
+        face_down
+        step_end
 }
 movement PsftransrivalFollowPsfbadadmin1ToTable_Movement{
     walk_down * 3
-    walk_right * 5
-    face_up
-    step_end
+        walk_right * 5
+        face_up
+        step_end
 }
 movement PlayerFollowPsfbadadmin1ToTable_Movement{
     walk_down * 5
-    walk_right * 3
-    face_up
-    step_end
+        walk_right * 3
+        face_up
+        step_end
 }
 
 movement PsftransrivalWalkOutside_Movement {
     walk_down
-    walk_left * 5
-    walk_down
-    step_end
+        walk_left * 5
+        walk_down
+        step_end
 }
 
 movement Psfbadadmin1WalkToLaptop_Movement {
     walk_left * 2
-    walk_down * 1
-    face_right
-    step_end
+        walk_down * 1
+        face_right
+        step_end
 }
 
 text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1 {

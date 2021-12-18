@@ -264,6 +264,8 @@ script EnterPsfgoodadmin_GiveKeystone_Dialogue{
         waitmovement(0)
         fadedefaultbgm
         setobjectxy(PSFGOODADMIN,6,20)
+        addvar(VAR_STORYLINE_STATE,1)
+        call(Act1_1_Check_Script)
         releaseall
         end
 }

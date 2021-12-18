@@ -21,26 +21,38 @@ RestInBed_Script_1:
 	closemessage
 	call PlayersHouse_2F_EventScript_SetWallClock
 	call Common_EventScript_OutOfCenterPartyHeal
-	checkitem ITEM_FASHION_CASE, 1
-	compare VAR_RESULT, 0
-	goto_if_eq RestInBed_Script_6
-RestInBed_Script_4:
+	call RestInBed_Progression_Script
 	releaseall
 	end
 
 RestInBed_Script_2:
 	setvar VAR_LITTLEROOT_INTRO_STATE, 5
-	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
 	goto RestInBed_Script_1
 
-RestInBed_Script_5:
-	giveitem ITEM_FASHION_CASE
-	goto RestInBed_Script_4
 
-RestInBed_Script_6:
+RestInBed_Progression_Script::
+	checkitem ITEM_FASHION_CASE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq RestInBed_Progression_Script_3
+RestInBed_Progression_Script_1:
+	compare VAR_STORYLINE_STATE, 9
+	goto_if_eq RestInBed_Progression_Script_6
+	return
+
+RestInBed_Progression_Script_2:
+	giveitem ITEM_FASHION_CASE
+	goto RestInBed_Progression_Script_1
+
+RestInBed_Progression_Script_3:
 	compare VAR_LITTLEROOT_INTRO_STATE, 5
-	goto_if_eq RestInBed_Script_5
-	goto RestInBed_Script_4
+	goto_if_eq RestInBed_Progression_Script_2
+	goto RestInBed_Progression_Script_1
+
+RestInBed_Progression_Script_6:
+	pokenavcall gText_FerryRepaired
+	addvar VAR_STORYLINE_STATE, 1
+	waitmessage
+	return
 
 
 FashionCaseReminder_Script::
@@ -73,3 +85,9 @@ gText_FashionCaseReminder_Text2::
 	.string "You can change your outfit whenever\n"
 	.string "you like by using the Fashion Case,\l"
 	.string "found in your Bag's Key Items pocket.$"
+
+gText_FerryRepaired::
+	.string "The ferry between Psfcity9 and\n"
+	.string "Psfplace11 has resumed\l"
+	.string "operation. Thank you for your\l"
+	.string "patience.$"

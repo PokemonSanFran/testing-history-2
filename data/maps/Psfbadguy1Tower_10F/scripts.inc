@@ -41,7 +41,6 @@ TheGangsAllHere_WhatBringsYou_Dialogue::
 	msgbox gText_TheGangsAllHere_WhatBringsYou_Text6, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
-	givecustommon SPECIES_XERNEAS, 100, ITEM_POWER_HERB, ITEM_HEAVY_BALL, NATURE_MODEST, , , , 168, 252, 88, , 31, 31, 31, 31, 31, 31, MOVE_GEOMANCY, MOVE_MOONBLAST, MOVE_THUNDERBOLT, MOVE_INGRAIN
 	special HealPlayerParty
 	applymovement 4, FollowMe_Movement
 	waitmovement 0
@@ -195,6 +194,8 @@ TheGangsAllHere_Psfcompany4Run_Dialogue::
 	applymovement 4, TheGangsAllHere_PsfbadadminWalkOut_Movement
 	waitmovement 0
 	fadedefaultbgm
+	addvar VAR_STORYLINE_STATE, 1
+	call Act1_1_Check_Script
 	goto TheGangsAllHere_ObjectCleanUp
 	return
 

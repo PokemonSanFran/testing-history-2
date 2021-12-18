@@ -14,7 +14,6 @@ script RestInBed_Script {
 
     if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
         setvar(VAR_LITTLEROOT_INTRO_STATE,5)
-        setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
     }
 
     lockall
@@ -22,15 +21,23 @@ script RestInBed_Script {
     closemessage
     call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
     call(Common_EventScript_OutOfCenterPartyHeal)
+    call(RestInBed_Progression_Script)
+    releaseall
+    end
+}
+
+script RestInBed_Progression_Script {
     checkitem(ITEM_FASHION_CASE,1)
-    
     if (var(VAR_RESULT) == 0 && var(VAR_LITTLEROOT_INTRO_STATE) == 5) {
         giveitem(ITEM_FASHION_CASE)
     }
 
-    releaseall
-    end
-}
+    if (var(VAR_STORYLINE_STATE) == 9){
+        pokenavcall(gText_FerryRepaired)
+        addvar(VAR_STORYLINE_STATE,1)
+        waitmessage
+    }
+    }
 
 script FashionCaseReminder_Script {
 //TODO Add FLAG_USED_FASHION_CASE to the fashion case script when I write it... someday.
@@ -60,4 +67,7 @@ text gText_FashionCaseReminder_Text1 {
 }
 text gText_FashionCaseReminder_Text2 {
     format("You can change your outfit whenever you like by using the Fashion Case, found in your Bag's Key Items pocket.")
+}
+text gText_FerryRepaired {
+    format("The ferry between Psfcity9 and Psfplace11 has resumed operation. Thank you for your patience.","1_latin",175)
 }

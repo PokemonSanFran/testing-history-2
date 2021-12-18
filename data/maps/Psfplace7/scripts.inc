@@ -93,13 +93,14 @@ OldAssholeAppears_StartBattle_Script::
 	closemessage
 	callnative ClearMugshot
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	givecustommon SPECIES_BLASTOISE, 100, ITEM_BLASTOISINITE, ITEM_QUICK_BALL, NATURE_TIMID, , , 4, , 252, , 252, 31, 31, 31, 31, 31, 31, MOVE_RAPID_SPIN, MOVE_DARK_PULSE, MOVE_AURA_SPHERE, MOVE_ICE_BEAM
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_MUDKIP, gText_PsftransrivalAlpha_HumanWin
 	goto OldAssholeAppears_GiveCorviknightCard_Script
 	return
 
 
 OldAssholeAppears_GiveCorviknightCard_Script::
+	lockall
+	applymovement 1, Common_Movement_FacePlayer
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_TakingThisAllSeriously
@@ -143,6 +144,8 @@ OldAssholeAppears_PsftransrivalExit_Script::
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 1
+	addvar VAR_STORYLINE_STATE, 1
+	call Act1_1_Check_Script
 	releaseall
 	end
 

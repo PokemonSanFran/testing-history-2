@@ -616,5 +616,6 @@ extern const u8 EventScript_TerminateLink[];
 extern const u8 WarpToBlackMap[];
 extern const u8 Swagbag_WelcomeToPsfregion1_Dialogue[];
 extern const u8 Act1_1_Complete_Monologue[];
+extern const u8 DebugGiveMons[];
 
 #endif // GUARD_EVENT_SCRIPTS_H

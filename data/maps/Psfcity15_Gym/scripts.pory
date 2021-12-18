@@ -84,7 +84,6 @@ script MuseumArrangement_Dialogue {
 
 script Psfleader3StartBattle_Script {
 
-    givecustommon(SPECIES_ARCEUS,100,ITEM_LIFE_ORB,ITEM_CHERISH_BALL,NATURE_JOLLY,,4,252,,252,,,31,31,31,31,31,31,MOVE_SWORDS_DANCE,MOVE_EXTREME_SPEED,MOVE_SHADOW_CLAW,MOVE_EARTHQUAKE)
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     callnative(DrawMugshot)
     trainerbattle_single(TRAINER_WATTSON_1, gText_MuseumArrangement_Text5,gText_Psfleader3Alpha_HumanWin, Psfleader3Defeated_Script, NO_MUSIC)
@@ -104,6 +103,8 @@ script Psfleader3Defeated_Script {
     msgbox(gText_Psfleader3BadgeGet_Text1)
 	call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM34)
+    addvar(VAR_STORYLINE_STATE,1)
+    call(Act1_1_Check_Script)
     releaseall
     end
 }

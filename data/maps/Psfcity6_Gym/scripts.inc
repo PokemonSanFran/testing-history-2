@@ -121,6 +121,8 @@ EnterPsfleader1_Psfleader1Defeated_Script::
 	closemessage
 	call EnterPsfleader1_DetermineMovementBackToStove_Script
 	waitmovement 0
+	addvar VAR_STORYLINE_STATE, 1
+	call Act1_1_Check_Script
 	releaseall
 	end
 
@@ -138,22 +140,26 @@ EnterPsfleader1_DetermineMovementBackToStove_Script_1:
 
 
 EnterPsfleader1_PostDefeat1_Dialogue::
+	lockall
 	setvar VAR_GYM_1_STATE, 5
 	setvar VAR_0x8000, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader1_WithThatBadge
 	callnative ClearMugshot
 	closemessage
-	return
+	releaseall
+	end
 
 
 EnterPsfleader1_PostDefeat2_Dialogue::
+	lockall
 	setvar VAR_0x8000, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader1_LetsCookTogether
 	callnative ClearMugshot
 	closemessage
-	return
+	releaseall
+	end
 
 
 EnterPsfleader1_WalkSouthToBattlefield:

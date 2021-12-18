@@ -82,6 +82,8 @@ EnterPsfleader2_Psfleader2Defeated_Script::
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM02
 	closemessage
+	addvar VAR_STORYLINE_STATE, 1
+	call Act1_1_Check_Script
 	releaseall
 	end
 

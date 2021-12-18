@@ -124,6 +124,9 @@ script NewAssholeAppears_PsfnativerivalExit_Script{
     waitmovement(0)
     fadedefaultbgm
     removeobject(PSFNATIVERIVAL)
+    addvar(VAR_STORYLINE_STATE,1)
+    call(Act1_1_Check_Script)
+
     releaseall
     end
 }

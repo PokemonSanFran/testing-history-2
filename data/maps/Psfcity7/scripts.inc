@@ -98,6 +98,9 @@ HowDoWeGetHome_MadisonWalkAway_Dialogue::
 	waitmovement 0
 	special RemoveCameraObject
 	call HowDoWeGetHome_ObjectCleanUp_Script
+	releaseall
+	addvar VAR_STORYLINE_STATE, 1
+	call Act1_1_Check_Script
 	end
 
 
