@@ -24,20 +24,20 @@ Common_Movement_FaceOriginalDirection:
 	face_original_direction
 	step_end
 
-Common_Movement_WalkInPlaceFastestLeft:
-	walk_in_place_fastest_left
+Common_Movement_WalkInPlaceFasterLeft:
+	walk_in_place_faster_left
 	step_end
 
-Common_Movement_WalkInPlaceFastestUp:
-	walk_in_place_fastest_up
+Common_Movement_WalkInPlaceFasterUp:
+	walk_in_place_faster_up
 	step_end
 
-Common_Movement_WalkInPlaceFastestRight:
-	walk_in_place_fastest_right
+Common_Movement_WalkInPlaceFasterRight:
+	walk_in_place_faster_right
 	step_end
 
-Common_Movement_WalkInPlaceFastestDown:
-	walk_in_place_fastest_down
+Common_Movement_WalkInPlaceFasterDown:
+	walk_in_place_faster_down
 	step_end
 
 Common_Movement_FaceRight:
@@ -68,10 +68,6 @@ Common_Movement_WalkInPlaceRight:
 	walk_in_place_right
 	step_end
 
-Common_Movement_WalkInPlaceUp:
-	walk_in_place_up
-	step_end
-
 Common_Movement_WalkUp6:
 	walk_up
 	walk_up
@@ -96,27 +92,6 @@ Common_Movement_Delay32:
 Common_Movement_WalkUp:
 	walk_up
 	step_end
-    
-Common_Movement_WalkDown:
-	walk_down
-	step_end
-
-Common_Movement_WalkLeft:
-	walk_left
-	step_end
-
-Common_Movement_WalkRight:
-	walk_right
-	step_end
-
-Common_Movement_LookAround:
-    face_left
-    delay_16
-    delay_16
-    face_right
-    delay_16
-    delay_16
-    step_end
 
 @ Unused
 Common_Movement_WalkUp2::

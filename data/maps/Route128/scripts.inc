@@ -28,18 +28,18 @@ Route128_EventScript_KyogreAwakenedScene::
 	closemessage
 	applymovement LOCALID_MAXIE, Route128_Movement_MaxieApproachArchie
 	waitmovement 0
-	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFastestUp
+	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox Route128_Text_MaxieDoYouUnderstandNow, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_MAXIE, Route128_Movement_MaxieApproachPlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox Route128_Text_MaxieResposibilityFallsToArchieAndMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ARCHIE, Route128_Movement_ArchieRunLeft
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	applymovement LOCALID_MAXIE, Route128_Movement_MaxieWalkLeft
 	waitmovement 0
 	msgbox Route128_Text_MaxieThisDefiesBelief, MSGBOX_DEFAULT
@@ -57,19 +57,19 @@ Route128_EventScript_KyogreAwakenedScene::
 	addobject LOCALID_STEVEN
 	applymovement LOCALID_STEVEN, Route128_Movement_StevenApproachPlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox Route128_Text_StevenWhatIsHappening, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_STEVEN, Route128_Movement_StevenWalkUp
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox Route128_Text_StevenWholeWorldWillDrown, MSGBOX_DEFAULT
-	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFastestDown
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox Route128_Text_StevenImGoingToSootopolis, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFastestDown
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	delay 50
 	setfieldeffectargument 0, 1
@@ -111,12 +111,12 @@ Route128_Movement_StevenApproachPlayer:
 
 Route128_Movement_ArchieLookAround:
 	walk_fast_down
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	delay_16
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	delay_16
 	delay_16
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	step_end
 
 Route128_Movement_ArchieBackUp:
@@ -130,7 +130,7 @@ Route128_Movement_ArchieRunLeft:
 	walk_fast_left
 	walk_fast_left
 	walk_fast_left
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	step_end
 
 Route128_Movement_ArchieExit:
@@ -157,7 +157,7 @@ Route128_Movement_MaxieWalkLeft:
 
 Route128_Movement_MaxieApproachArchie:
 	walk_left
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	step_end
 
 Route128_Movement_MaxieExit:
@@ -175,14 +175,13 @@ Route128_Movement_MaxieExit:
 
 Route128_Movement_MaxieApproachPlayer:
 	walk_right
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	step_end
 
 Route128_EventScript_Isaiah::
 	trainerbattle_single TRAINER_ISAIAH_1, Route128_Text_IsaiahIntro, Route128_Text_IsaiahDefeat, Route128_EventScript_RegisterIsaiah
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route128_EventScript_RematchIsaiah
+	goto_if_eq VAR_RESULT, TRUE, Route128_EventScript_RematchIsaiah
 	msgbox Route128_Text_IsaiahPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -203,8 +202,7 @@ Route128_EventScript_RematchIsaiah::
 Route128_EventScript_Katelyn::
 	trainerbattle_single TRAINER_KATELYN_1, Route128_Text_KatelynIntro, Route128_Text_KatelynDefeat, Route128_EventScript_RegisterKatelyn
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route128_EventScript_RematchKatelyn
+	goto_if_eq VAR_RESULT, TRUE, Route128_EventScript_RematchKatelyn
 	msgbox Route128_Text_KatelynPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -247,8 +245,8 @@ Route128_EventScript_Carlee::
 	msgbox Route128_Text_CarleePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route128_Text_ArchieWhatHappened: 
-	.string "Archie: What happened…\n"
+Route128_Text_ArchieWhatHappened:
+	.string "ARCHIE: What happened…\n"
 	.string "What is this wretched scene…\p"
 	.string "Did I…make a horrible mistake?$"
 
@@ -256,53 +254,53 @@ Route128_Text_ArchieIOnlyWanted:
 	.string "I…\n"
 	.string "I only wanted…$"
 
-Route128_Text_MaxieDoYouUnderstandNow: 
-	.string "Maxie: Do you understand now,\n"
-	.string "Archie?\p"
+Route128_Text_MaxieDoYouUnderstandNow:
+	.string "MAXIE: Do you understand now,\n"
+	.string "ARCHIE?\p"
 	.string "Do you finally see how disastrous\n"
 	.string "your dream turned out to be?\p"
 	.string "We have to hurry! We have to do\n"
 	.string "something before the situation goes\l"
 	.string "completely out of control!$"
 
-Route128_Text_MaxieResposibilityFallsToArchieAndMe: 
-	.string "Maxie: {PLAYER}, don't say anything.\p"
+Route128_Text_MaxieResposibilityFallsToArchieAndMe:
+	.string "MAXIE: {PLAYER}, don't say anything.\p"
 	.string "I know that I have no right to be\n"
-	.string "critical of Archie…\p"
+	.string "critical of ARCHIE…\p"
 	.string "But the way things are now, I doubt\n"
 	.string "that we humans will be capable of\l"
 	.string "doing anything about it.\p"
 	.string "But neither can we stand by and\n"
 	.string "just watch helplessly.\p"
 	.string "The responsibility for putting an end\n"
-	.string "to this falls to Archie and me…$"
+	.string "to this falls to ARCHIE and me…$"
 
-Route128_Text_MaxieThisDefiesBelief: 
-	.string "Maxie: This defies belief…\p"
-	.string "Those super-ancient Pokémon…\p"
+Route128_Text_MaxieThisDefiesBelief:
+	.string "MAXIE: This defies belief…\p"
+	.string "Those super-ancient POKéMON…\p"
 	.string "Their power is unbelievable.\n"
 	.string "They've upset the balance of nature…$"
 
-Route128_Text_StevenWhatIsHappening: @ 81F70C9
-	.string "Steven: {PLAYER}{KUN}!\n"
+Route128_Text_StevenWhatIsHappening:
+	.string "STEVEN: {PLAYER}{KUN}!\n"
 	.string "What is happening?$"
 
 Route128_Text_StevenWholeWorldWillDrown:
 	.string "This is terrible…\p"
 	.string "After the scorching heat wave ended,\n"
 	.string "this deluge began.\p"
-	.string "If this doesn't stop, all of Hoenn…\n"
+	.string "If this doesn't stop, all of HOENN…\n"
 	.string "No, the whole world will drown.\p"
 	.string "This huge rain cloud is spreading\n"
-	.string "from above Sootopolis…\p"
+	.string "from above SOOTOPOLIS…\p"
 	.string "What in the world is taking place there?\p"
 	.string "There's no point arguing here…\n"
-	.string "Sootopolis might provide answers…$"
+	.string "SOOTOPOLIS might provide answers…$"
 
 Route128_Text_StevenImGoingToSootopolis:
 	.string "{PLAYER}{KUN}…\n"
 	.string "I don't know what you intend to do,\l"
 	.string "but don't do anything reckless.\p"
 	.string "Okay.\n"
-	.string "I'm going to Sootopolis.$"
+	.string "I'm going to SOOTOPOLIS.$"
 

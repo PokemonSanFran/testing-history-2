@@ -10,24 +10,21 @@ PacifidlogTown_House3_EventScript_Trader::
 	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
 	copyvar VAR_0x8009, VAR_RESULT
 	msgbox PacifidlogTown_House3_Text_WillingToTradeIt, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq PacifidlogTown_House3_EventScript_DeclineTrade
+	goto_if_eq VAR_RESULT, NO, PacifidlogTown_House3_EventScript_DeclineTrade
 	special ChoosePartyMon
 	waitstate
 	copyvar VAR_0x800A, VAR_0x8004
-	compare VAR_0x8004, 255
-	goto_if_eq PacifidlogTown_House3_EventScript_DeclineTrade
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, PacifidlogTown_House3_EventScript_DeclineTrade
 	copyvar VAR_0x8005, VAR_0x800A
 	specialvar VAR_RESULT, GetTradeSpecies
 	copyvar VAR_0x800B, VAR_RESULT
-	compare VAR_RESULT, VAR_0x8009
-	goto_if_ne PacifidlogTown_House3_EventScript_NotRequestedMon
+	goto_if_ne VAR_RESULT, VAR_0x8009, PacifidlogTown_House3_EventScript_NotRequestedMon
 	copyvar VAR_0x8004, VAR_0x8008
 	copyvar VAR_0x8005, VAR_0x800A
 	special CreateInGameTradePokemon
 	special DoInGameTradeScene
 	waitstate
-	bufferspeciesname 0, VAR_0x8009
+	bufferspeciesname STR_VAR_1, VAR_0x8009
 	msgbox PacifidlogTown_House3_Text_ItsSubtlyDifferentThankYou, MSGBOX_DEFAULT
 	setflag FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED
 	release
@@ -39,7 +36,7 @@ PacifidlogTown_House3_EventScript_DeclineTrade::
 	end
 
 PacifidlogTown_House3_EventScript_NotRequestedMon::
-	bufferspeciesname 0, VAR_0x8009
+	bufferspeciesname STR_VAR_1, VAR_0x8009
 	msgbox PacifidlogTown_House3_Text_WontAcceptAnyLessThanRealMon, MSGBOX_DEFAULT
 	release
 	end
@@ -81,12 +78,12 @@ PacifidlogTown_House3_Text_NotDesperateOrAnything:
 PacifidlogTown_House3_Text_ReallyWantedToGetBagon:
 	.string "I know I could go looking for one\n"
 	.string "on my own, but…\p"
-	.string "But I really wanted to get a Bagon\n"
-	.string "that another Trainer caught…$"
+	.string "But I really wanted to get a BAGON\n"
+	.string "that another TRAINER caught…$"
 
-PacifidlogTown_House3_Text_IsThatAPokedex: 
-	.string "Is that a Pokédex?\p"
+PacifidlogTown_House3_Text_IsThatAPokedex:
+	.string "Is that a POKéDEX?\p"
 	.string "Did you get to meet a lot of different\n"
-	.string "Pokémon?\p"
+	.string "POKéMON?\p"
 	.string "I wish I was like you.$"
 

@@ -12,12 +12,10 @@ Route123_EventScript_GigaDrainGirl::
 	goto_if_set FLAG_RECEIVED_TM19, Route123_EventScript_ReceivedGigaDrain
 	msgbox Route123_Text_LoveGrassMonsHaveAny, MSGBOX_DEFAULT
 	special IsGrassTypeInParty
-	compare VAR_RESULT, FALSE
-	goto_if_eq Route123_EventScript_NoGrassMons
+	goto_if_eq VAR_RESULT, FALSE, Route123_EventScript_NoGrassMons
 	msgbox Route123_Text_YouLikeGrassMonsTooHaveThis, MSGBOX_DEFAULT
 	giveitem ITEM_TM19
-	compare VAR_RESULT, FALSE
-	goto_if_eq Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM19
 	msgbox Route123_Text_CheckTreesWithMyGrassMon, MSGBOX_DEFAULT
 	release
@@ -62,8 +60,7 @@ Route123_EventScript_Violet::
 Route123_EventScript_Cameron::
 	trainerbattle_single TRAINER_CAMERON_1, Route123_Text_CameronIntro, Route123_Text_CameronDefeat, Route123_EventScript_RegisterCameron
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route123_EventScript_RematchCameron
+	goto_if_eq VAR_RESULT, TRUE, Route123_EventScript_RematchCameron
 	msgbox Route123_Text_CameronPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -84,8 +81,7 @@ Route123_EventScript_RematchCameron::
 Route123_EventScript_Jacki::
 	trainerbattle_single TRAINER_JACKI_1, Route123_Text_JackiIntro, Route123_Text_JackiDefeat, Route123_EventScript_RegisterJacki
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route123_EventScript_RematchJacki
+	goto_if_eq VAR_RESULT, TRUE, Route123_EventScript_RematchJacki
 	msgbox Route123_Text_JackiPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -156,8 +152,7 @@ Route123_EventScript_Davis::
 Route123_EventScript_Fernando::
 	trainerbattle_single TRAINER_FERNANDO_1, Route123_Text_FernandoIntro, Route123_Text_FernandoDefeat, Route123_EventScript_RegisterFernando
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route123_EventScript_RematchFernando
+	goto_if_eq VAR_RESULT, TRUE, Route123_EventScript_RematchFernando
 	msgbox Route123_Text_FernandoPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -175,29 +170,29 @@ Route123_EventScript_RematchFernando::
 	msgbox Route123_Text_FernandoPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-Route123_Text_LoveGrassMonsHaveAny: 
-	.string "I love Grass-type Pokémon!\p"
-	.string "Do you have any Grass-type Pokémon?$"
+Route123_Text_LoveGrassMonsHaveAny:
+	.string "I love GRASS-type POKéMON!\p"
+	.string "Do you have any GRASS-type POKéMON?$"
 
 Route123_Text_YouLikeGrassMonsTooHaveThis:
 	.string "Oh?\p"
-	.string "You like Grass-type Pokémon, too,\n"
+	.string "You like GRASS-type POKéMON, too,\n"
 	.string "don't you?\p"
 	.string "I'm so happy, you can have this!\n"
 	.string "It's a token of our friendship.$"
 
-Route123_Text_CheckTreesWithMyGrassMon: 
-	.string "I check trees with my Grass-type\n"
-	.string "Pokémon. I'm like a tree doctor.$"
+Route123_Text_CheckTreesWithMyGrassMon:
+	.string "I check trees with my GRASS-type\n"
+	.string "POKéMON. I'm like a tree doctor.$"
 
-Route123_Text_RouteSign: @ 81F6511
-	.string "{RIGHT_ARROW} Route 123\n"
-	.string "{LEFT_ARROW} Route 118$"
+Route123_Text_RouteSign:
+	.string "{RIGHT_ARROW} ROUTE 123\n"
+	.string "{LEFT_ARROW} ROUTE 118$"
 
-Route123_Text_RouteSignMtPyre: @ 81F6529
-	.string "{UP_ARROW} Mt. Pyre\n"
+Route123_Text_RouteSignMtPyre:
+	.string "{UP_ARROW} MT. PYRE\n"
 	.string "“Forbidden to the faint of heart.”$"
 
-Route123_Text_BerryMastersHouse: @ 81F6557
-	.string "Berry Master's House$"
+Route123_Text_BerryMastersHouse:
+	.string "BERRY MASTER'S HOUSE$"
 

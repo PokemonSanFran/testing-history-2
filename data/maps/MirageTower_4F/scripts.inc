@@ -8,8 +8,7 @@ MirageTower_4F_EventScript_RootFossil::
 	lock
 	faceplayer
 	msgbox MirageTower_4F_Text_TakeRootFossil, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq MirageTower_4F_EventScript_LeaveRootFossil
+	goto_if_eq VAR_RESULT, NO, MirageTower_4F_EventScript_LeaveRootFossil
 	giveitem ITEM_ROOT_FOSSIL
 	closemessage
 	setflag FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL
@@ -29,8 +28,7 @@ MirageTower_4F_EventScript_ClawFossil::
 	lock
 	faceplayer
 	msgbox MirageTower_4F_Text_TakeClawFossil, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq MirageTower_4F_EventScript_LeaveClawFossil
+	goto_if_eq VAR_RESULT, NO, MirageTower_4F_EventScript_LeaveClawFossil
 	giveitem ITEM_CLAW_FOSSIL
 	closemessage
 	setflag FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL
@@ -57,26 +55,26 @@ MirageTower_4F_EventScript_CollapseMirageTower::
 	waitstate
 	setvar VAR_MIRAGE_TOWER_STATE, 1
 	clearflag FLAG_LANDMARK_MIRAGE_TOWER
-	warp MAP_ROUTE111, 255, 19, 59
+	warp MAP_ROUTE111, 19, 59
 	waitstate
 	release
 	end
 
-MirageTower_4F_Text_TakeRootFossil: 
-	.string "You found the Root Fossil.\p"
-	.string "If this Fossil is taken, the ground\n"
+MirageTower_4F_Text_TakeRootFossil:
+	.string "You found the ROOT FOSSIL.\p"
+	.string "If this FOSSIL is taken, the ground\n"
 	.string "around it will likely crumble away…\p"
-	.string "Take the Root Fossil anyway?$"
+	.string "Take the ROOT FOSSIL anyway?$"
 
-MirageTower_4F_Text_LeftRootFossilAlone: 
-	.string "{PLAYER} left the Root Fossil alone.$"
+MirageTower_4F_Text_LeftRootFossilAlone:
+	.string "{PLAYER} left the ROOT FOSSIL alone.$"
 
-MirageTower_4F_Text_TakeClawFossil: @ 823AE98
-	.string "You found the Claw Fossil.\p"
-	.string "If this Fossil is taken, the ground\n"
+MirageTower_4F_Text_TakeClawFossil:
+	.string "You found the CLAW FOSSIL.\p"
+	.string "If this FOSSIL is taken, the ground\n"
 	.string "around it will likely crumble away…\p"
-	.string "Take the Claw Fossil anyway?$"
+	.string "Take the CLAW FOSSIL anyway?$"
 
-MirageTower_4F_Text_LeaveClawFossilAlone: 
-	.string "{PLAYER} left the Claw Fossil alone.$"
+MirageTower_4F_Text_LeaveClawFossilAlone:
+	.string "{PLAYER} left the CLAW FOSSIL alone.$"
 

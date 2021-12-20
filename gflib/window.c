@@ -4,20 +4,13 @@
 #include "bg.h"
 #include "blit.h"
 
-//https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
-#include "printf.h"
-#include "mgba.h"
-#include "../gflib/string_util.h" // for ConvertToAscii()
-
-u32 filler_03002F58;
-u32 filler_03002F5C;
 u32 gUnusedWindowVar1;
 u32 gUnusedWindowVar2;
 // This global is set to 0 and never changed.
 u8 gTransparentTileNumber;
 u32 gUnusedWindowVar3;
 void *gWindowBgTilemapBuffers[NUM_BACKGROUNDS];
-extern u32 gUnneededFireRedVariable;
+extern u32 gWindowTileAutoAllocEnabled;
 
 #define WINDOWS_MAX  32
 
@@ -62,9 +55,9 @@ bool16 InitWindows(const struct WindowTemplate *templates)
 
     for (i = 0, allocatedBaseBlock = 0, bgLayer = templates[i].bg; bgLayer != 0xFF && i < WINDOWS_MAX; ++i, bgLayer = templates[i].bg)
     {
-        if (gUnneededFireRedVariable == 1)
+        if (gWindowTileAutoAllocEnabled == TRUE)
         {
-            allocatedBaseBlock = DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, 0, templates[i].width * templates[i].height, 0);
+            allocatedBaseBlock = BgTileAllocOp(bgLayer, 0, templates[i].width * templates[i].height, 0);
             if (allocatedBaseBlock == -1)
                 return FALSE;
         }
@@ -107,10 +100,10 @@ bool16 InitWindows(const struct WindowTemplate *templates)
         gWindows[i].tileData = allocatedTilemapBuffer;
         gWindows[i].window = templates[i];
 
-        if (gUnneededFireRedVariable == 1)
+        if (gWindowTileAutoAllocEnabled == TRUE)
         {
             gWindows[i].window.baseBlock = allocatedBaseBlock;
-            DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, allocatedBaseBlock, templates[i].width * templates[i].height, 1);
+            BgTileAllocOp(bgLayer, allocatedBaseBlock, templates[i].width * templates[i].height, 1);
         }
     }
 
@@ -139,9 +132,9 @@ u16 AddWindow(const struct WindowTemplate *template)
     bgLayer = template->bg;
     allocatedBaseBlock = 0;
 
-    if (gUnneededFireRedVariable == 1)
+    if (gWindowTileAutoAllocEnabled == TRUE)
     {
-        allocatedBaseBlock = DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, 0, template->width * template->height, 0);
+        allocatedBaseBlock = BgTileAllocOp(bgLayer, 0, template->width * template->height, 0);
 
         if (allocatedBaseBlock == -1)
             return WINDOW_NONE;
@@ -181,10 +174,10 @@ u16 AddWindow(const struct WindowTemplate *template)
     gWindows[win].tileData = allocatedTilemapBuffer;
     gWindows[win].window = *template;
 
-    if (gUnneededFireRedVariable == 1)
+    if (gWindowTileAutoAllocEnabled == TRUE)
     {
         gWindows[win].window.baseBlock = allocatedBaseBlock;
-        DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, allocatedBaseBlock, gWindows[win].window.width * gWindows[win].window.height, 1);
+        BgTileAllocOp(bgLayer, allocatedBaseBlock, gWindows[win].window.width * gWindows[win].window.height, 1);
     }
 
     return win;
@@ -208,9 +201,9 @@ int AddWindowWithoutTileMap(const struct WindowTemplate *template)
     bgLayer = template->bg;
     allocatedBaseBlock = 0;
 
-    if (gUnneededFireRedVariable == 1)
+    if (gWindowTileAutoAllocEnabled == TRUE)
     {
-        allocatedBaseBlock = DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, 0, template->width * template->height, 0);
+        allocatedBaseBlock = BgTileAllocOp(bgLayer, 0, template->width * template->height, 0);
 
         if (allocatedBaseBlock == -1)
             return WINDOW_NONE;
@@ -218,10 +211,10 @@ int AddWindowWithoutTileMap(const struct WindowTemplate *template)
 
     gWindows[win].window = *template;
 
-    if (gUnneededFireRedVariable == 1)
+    if (gWindowTileAutoAllocEnabled == TRUE)
     {
         gWindows[win].window.baseBlock = allocatedBaseBlock;
-        DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, allocatedBaseBlock, gWindows[win].window.width * gWindows[win].window.height, 1);
+        BgTileAllocOp(bgLayer, allocatedBaseBlock, gWindows[win].window.width * gWindows[win].window.height, 1);
     }
 
     return win;
@@ -231,10 +224,8 @@ void RemoveWindow(u8 windowId)
 {
     u8 bgLayer = gWindows[windowId].window.bg;
 
-    if (gUnneededFireRedVariable == 1)
-    {
-        DummiedOutFireRedLeafGreenTileAllocFunc(bgLayer, gWindows[windowId].window.baseBlock, gWindows[windowId].window.width * gWindows[windowId].window.height, 2);
-    }
+    if (gWindowTileAutoAllocEnabled == TRUE)
+        BgTileAllocOp(bgLayer, gWindows[windowId].window.baseBlock, gWindows[windowId].window.width * gWindows[windowId].window.height, 2);
 
     gWindows[windowId].window = sDummyWindowTemplate;
 
@@ -284,13 +275,13 @@ void CopyWindowToVram(u8 windowId, u8 mode)
 
     switch (mode)
     {
-    case 1:
+    case COPYWIN_MAP:
         CopyBgTilemapBufferToVram(windowLocal.window.bg);
         break;
-    case 2:
+    case COPYWIN_GFX:
         LoadBgTiles(windowLocal.window.bg, windowLocal.tileData, windowSize, windowLocal.window.baseBlock);
         break;
-    case 3:
+    case COPYWIN_FULL:
         LoadBgTiles(windowLocal.window.bg, windowLocal.tileData, windowSize, windowLocal.window.baseBlock);
         CopyBgTilemapBufferToVram(windowLocal.window.bg);
         break;
@@ -316,13 +307,13 @@ void CopyWindowRectToVram(u32 windowId, u32 mode, u32 x, u32 y, u32 w, u32 h)
 
         switch (mode)
         {
-        case 1:
+        case COPYWIN_MAP:
             CopyBgTilemapBufferToVram(windowLocal.window.bg);
             break;
-        case 2:
+        case COPYWIN_GFX:
             LoadBgTiles(windowLocal.window.bg, windowLocal.tileData + (rectPos * 32), rectSize, windowLocal.window.baseBlock + rectPos);
             break;
-        case 3:
+        case COPYWIN_FULL:
             LoadBgTiles(windowLocal.window.bg, windowLocal.tileData + (rectPos * 32), rectSize, windowLocal.window.baseBlock + rectPos);
             CopyBgTilemapBufferToVram(windowLocal.window.bg);
             break;
@@ -702,13 +693,13 @@ void CopyWindowToVram8Bit(u8 windowId, u8 mode)
 
     switch (mode)
     {
-    case 1:
+    case COPYWIN_MAP:
         CopyBgTilemapBufferToVram(sWindowPtr->window.bg);
         break;
-    case 2:
+    case COPYWIN_GFX:
         LoadBgTiles(sWindowPtr->window.bg, sWindowPtr->tileData, sWindowSize, sWindowPtr->window.baseBlock);
         break;
-    case 3:
+    case COPYWIN_FULL:
         LoadBgTiles(sWindowPtr->window.bg, sWindowPtr->tileData, sWindowSize, sWindowPtr->window.baseBlock);
         CopyBgTilemapBufferToVram(sWindowPtr->window.bg);
         break;

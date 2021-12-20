@@ -5,10 +5,8 @@ SootopolisCity_House2_EventScript_ExpertF::
 	lock
 	faceplayer
 	msgbox SootopolisCity_House2_Text_DidYouKnowAboutMtPyreOrbs, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	call_if_eq SootopolisCity_House2_EventScript_KnowAboutOrbs
-	compare VAR_RESULT, NO
-	call_if_eq SootopolisCity_House2_EventScript_DontKnowAboutOrbs
+	call_if_eq VAR_RESULT, YES, SootopolisCity_House2_EventScript_KnowAboutOrbs
+	call_if_eq VAR_RESULT, NO, SootopolisCity_House2_EventScript_DontKnowAboutOrbs
 	release
 	end
 
@@ -20,8 +18,8 @@ SootopolisCity_House2_EventScript_DontKnowAboutOrbs::
 	msgbox SootopolisCity_House2_Text_OughtToVisitAndSee, MSGBOX_DEFAULT
 	return
 
-SootopolisCity_House2_Text_DidYouKnowAboutMtPyreOrbs: 
-	.string "Mt. Pyre…\p"
+SootopolisCity_House2_Text_DidYouKnowAboutMtPyreOrbs:
+	.string "MT. PYRE…\p"
 	.string "At its peak are two orbs placed side\n"
 	.string "by side. Did you know?$"
 

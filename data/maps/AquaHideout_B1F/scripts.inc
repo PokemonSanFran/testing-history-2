@@ -9,8 +9,7 @@ AquaHideout_B1F_OnResume:
 
 AquaHideout_B1F_EventScript_TryRemoveElectrode::
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_CAUGHT
-	goto_if_ne Common_EventScript_NopReturn
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
 	removeobject VAR_LAST_TALKED
 	return
 
@@ -32,19 +31,16 @@ AquaHideout_B1F_EventScript_Electrode1::
 	faceplayer
 	setwildbattle SPECIES_ELECTRODE, 30, ITEM_NONE
 	waitse
-	playmoncry SPECIES_ELECTRODE, 2
+	playmoncry SPECIES_ELECTRODE, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_WON
-	goto_if_eq AquaHideout_B1F_EventScript_DefeatedElectrode1
-	compare VAR_RESULT, B_OUTCOME_RAN
-	goto_if_eq AquaHideout_B1F_EventScript_DefeatedElectrode1
-	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
-	goto_if_eq AquaHideout_B1F_EventScript_DefeatedElectrode1
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, AquaHideout_B1F_EventScript_DefeatedElectrode1
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AquaHideout_B1F_EventScript_DefeatedElectrode1
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AquaHideout_B1F_EventScript_DefeatedElectrode1
 	setflag FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT
 	release
 	end
@@ -59,19 +55,16 @@ AquaHideout_B1F_EventScript_Electrode2::
 	faceplayer
 	setwildbattle SPECIES_ELECTRODE, 30, ITEM_NONE
 	waitse
-	playmoncry SPECIES_ELECTRODE, 2
+	playmoncry SPECIES_ELECTRODE, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_WON
-	goto_if_eq AquaHideout_B1F_EventScript_DefeatedElectrode2
-	compare VAR_RESULT, B_OUTCOME_RAN
-	goto_if_eq AquaHideout_B1F_EventScript_DefeatedElectrode2
-	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
-	goto_if_eq AquaHideout_B1F_EventScript_DefeatedElectrode2
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, AquaHideout_B1F_EventScript_DefeatedElectrode2
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, AquaHideout_B1F_EventScript_DefeatedElectrode2
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, AquaHideout_B1F_EventScript_DefeatedElectrode2
 	setflag FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT
 	release
 	end
@@ -115,21 +108,21 @@ AquaHideout_B1F_EventScript_Grunt7::
 
 AquaHideout_B1F_Text_Grunt2Intro:
 	.string "If you want to know the secret about\n"
-	.string "our Hideout, you have me to beat!$"
+	.string "our HIDEOUT, you have me to beat!$"
 
 AquaHideout_B1F_Text_Grunt2Defeat:
 	.string "I can't win at all…$"
 
-AquaHideout_B1F_Text_Grunt2PostBattle: 
-	.string "Our Hideout's secret?\p"
+AquaHideout_B1F_Text_Grunt2PostBattle:
+	.string "Our HIDEOUT's secret?\p"
 	.string "Well, let's just say…\n"
 	.string "There's a submarine at the far end!\p"
 	.string "But, by now…\n"
 	.string "Kekekeke…$"
 
-AquaHideout_B1F_Text_Grunt3Intro: 
-	.string "Fuel supply loaded A-Ok!\n"
-	.string "In-cruise snacks loaded A-Ok!\p"
+AquaHideout_B1F_Text_Grunt3Intro:
+	.string "Fuel supply loaded A-OK!\n"
+	.string "In-cruise snacks loaded A-OK!\p"
 	.string "Nothing left to do but KO a pesky\n"
 	.string "meddler!$"
 
@@ -143,21 +136,21 @@ AquaHideout_B1F_Text_Grunt3PostBattle:
 
 AquaHideout_B1F_Text_Grunt5Intro:
 	.string "Yawn… Keeping watch over the\n"
-	.string "Hideout bores me. I'll take you on.$"
+	.string "HIDEOUT bores me. I'll take you on.$"
 
 AquaHideout_B1F_Text_Grunt5Defeat:
 	.string "Yawn…\n"
 	.string "Oh, I lost…$"
 
 AquaHideout_B1F_Text_Grunt5PostBattle:
-	.string "If you scurry too much, other Team\n"
-	.string "Aqua members might get you.$"
+	.string "If you scurry too much, other TEAM\n"
+	.string "AQUA members might get you.$"
 
 AquaHideout_B1F_Text_Grunt7Intro:
 	.string "Hey!\n"
 	.string "You there!\p"
 	.string "Which do you think is cooler?\n"
-	.string "Team Aqua's uniform or Team Magma's?$"
+	.string "TEAM AQUA's uniform or TEAM MAGMA's?$"
 
 AquaHideout_B1F_Text_Grunt7Defeat:
 	.string "I lost in a cool way…$"

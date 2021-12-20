@@ -4,7 +4,7 @@ FallarborTown_MapScripts::
 
 FallarborTown_OnTransition:
 	setflag FLAG_VISITED_FALLARBOR_TOWN
-	setvar VAR_PSFGOODTEAM_PSFPLACE13_STATE, 0
+	setvar VAR_CONTEST_HALL_STATE, 0
 	clearflag FLAG_CONTEST_SKETCH_CREATED
 	end
 
@@ -33,7 +33,7 @@ FallarborTown_EventScript_Azurill::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_AZURILL, 0
+	playmoncry SPECIES_AZURILL, CRY_MODE_NORMAL
 	msgbox FallarborTown_Text_Azurill, MSGBOX_DEFAULT
 	waitmoncry
 	release
@@ -55,41 +55,41 @@ FallarborTown_Text_ShadyCharactersCozmosHome:
 	.string "Something's happening,\n"
 	.string "and I don't like it!\p"
 	.string "I've seen shady characters wandering\n"
-	.string "in and out of Prof. Cozmo's home…$"
+	.string "in and out of PROF. COZMO's home…$"
 
 FallarborTown_Text_RegionKnownForMeteors:
 	.string "This region's been known for meteors\n"
 	.string "since the olden days.\p"
-	.string "They say Meteor Falls was gouged out\n"
+	.string "They say METEOR FALLS was gouged out\n"
 	.string "by a falling meteorite long ago.$"
 
 FallarborTown_Text_MyPreciousAzurill:
 	.string "See! Take a look!\n"
-	.string "This is my precious Azurill!\p"
+	.string "This is my precious AZURILL!\p"
 	.string "It's slick and smooth and plushy, too!$"
 
-FallarborTown_Text_Azurill: 
-	.string "Azurill: Rooreelooo.$"
+FallarborTown_Text_Azurill:
+	.string "AZURILL: Rooreelooo.$"
 
-FallarborTown_Text_HaveYouChallengedFlannery: @ 81EB3CA
-	.string "Have you already challenged Flannery,\n"
-	.string "the Leader of Lavaridge Gym?\p"
+FallarborTown_Text_HaveYouChallengedFlannery:
+	.string "Have you already challenged FLANNERY,\n"
+	.string "the LEADER of LAVARIDGE GYM?\p"
 	.string "The girl's grandfather was famous.\n"
-	.string "He was one of the Elite Four in the\l"
-	.string "Pokémon League at one point.\p"
-	.string "It wouldn't surprise me to see Flannery\n"
-	.string "become a great Trainer in her own\l"
+	.string "He was one of the ELITE FOUR in the\l"
+	.string "POKéMON LEAGUE at one point.\p"
+	.string "It wouldn't surprise me to see FLANNERY\n"
+	.string "become a great TRAINER in her own\l"
 	.string "right.$"
 
-FallarborTown_Text_BattleTentSign: 
-	.string "Battle Tent Fallarbor Site\n"
+FallarborTown_Text_BattleTentSign:
+	.string "BATTLE TENT FALLARBOR SITE\n"
 	.string "“May the Greatest Teams Gather!”$"
 
-FallarborTown_Text_TownSign: @ 81EB4FE
-	.string "Fallarbor Town\n"
+FallarborTown_Text_TownSign:
+	.string "FALLARBOR TOWN\n"
 	.string "“A farm community with small gardens.”$"
 
-FallarborTown_Text_MoveTutorSign: @ 81EB534
-	.string "Move Tutor's House\n"
-	.string "“New moves taught to Pokémon.”$"
+FallarborTown_Text_MoveTutorSign:
+	.string "MOVE TUTOR'S HOUSE\n"
+	.string "“New moves taught to POKéMON.”$"
 

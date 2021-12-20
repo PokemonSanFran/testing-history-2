@@ -16,8 +16,7 @@ Route110_OnResume:
 Route110_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
-	compare VAR_CYCLING_CHALLENGE_STATE, 1
-	call_if_eq Route110_EventScript_SaveCyclingMusic
+	call_if_eq VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_SaveCyclingMusic
 	end
 
 Route110_EventScript_SaveCyclingMusic::
@@ -136,8 +135,7 @@ Route110_EventScript_TrickHouseSign::
 Route110_EventScript_CyclingRoadResultsSign::
 	lockall
 	specialvar VAR_RESULT, GetRecordedCyclingRoadResults
-	compare VAR_RESULT, FALSE
-	goto_if_eq Route110_EventScript_NoRecordSet
+	goto_if_eq VAR_RESULT, FALSE, Route110_EventScript_NoRecordSet
 	msgbox Route110_Text_BestRecord, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -151,10 +149,8 @@ Route110_EventScript_ChallengeGuy::
 	lock
 	faceplayer
 	specialvar VAR_RESULT, GetPlayerAvatarBike
-	compare VAR_RESULT, 1
-	goto_if_eq Route110_EventScript_PlayerRidingAcroBike
-	compare VAR_CYCLING_CHALLENGE_STATE, 0
-	goto_if_eq Route110_EventScript_PlayerNotRidingBike
+	goto_if_eq VAR_RESULT, 1, Route110_EventScript_PlayerRidingAcroBike
+	goto_if_eq VAR_CYCLING_CHALLENGE_STATE, 0, Route110_EventScript_PlayerNotRidingBike
 	msgbox Route110_Text_AlwaysAimHigher, MSGBOX_DEFAULT
 	release
 	end
@@ -182,8 +178,7 @@ Route110_EventScript_Jaclyn::
 Route110_EventScript_Edwin::
 	trainerbattle_single TRAINER_EDWIN_1, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated, Route110_EventScript_EdwinRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route110_EventScript_EdwinRematch
+	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_EdwinRematch
 	msgbox Route110_Text_EdwinPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -219,8 +214,7 @@ Route110_EventScript_Anthony::
 Route110_EventScript_Benjamin::
 	trainerbattle_single TRAINER_BENJAMIN_1, Route110_Text_BenjaminIntro, Route110_Text_BenjaminDefeated, Route110_EventScript_BenjaminRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route110_EventScript_BenjaminRematch
+	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_BenjaminRematch
 	msgbox Route110_Text_BenjaminPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -246,8 +240,7 @@ Route110_EventScript_Jasmine::
 Route110_EventScript_Abigail::
 	trainerbattle_single TRAINER_ABIGAIL_1, Route110_Text_AbigailIntro, Route110_Text_AbigailDefeated, Route110_EventScript_AbigailRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route110_EventScript_AbigailRematch
+	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_AbigailRematch
 	msgbox Route110_Text_AbigailPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -268,8 +261,7 @@ Route110_EventScript_AbigailRematch::
 Route110_EventScript_Isabel::
 	trainerbattle_single TRAINER_ISABEL_1, Route110_Text_IsabelIntro, Route110_Text_IsabelDefeated, Route110_EventScript_IsabelRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route110_EventScript_IsabelRematch
+	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_IsabelRematch
 	msgbox Route110_Text_IsabelPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -312,7 +304,7 @@ Route110_EventScript_Alyssa::
 
 Route110_EventScript_CyclingChallengeEnd::
 	lockall
-	applymovement LOCALID_CHALLENGE_BIKER, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_CHALLENGE_BIKER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	call Route110_EventScript_CyclingChallengeResults
 	releaseall
@@ -384,28 +376,21 @@ Route110_EventScript_RivalTrigger3::
 Route110_EventScript_RivalScene::
 	lockall
 	checkplayergender
-	compare VAR_RESULT, MALE
-	call_if_eq Route110_EventScript_PlayMayMusic
-	compare VAR_RESULT, FEMALE
-	call_if_eq Route110_EventScript_PlayBrendanMusic
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFastestDown
+	call_if_eq VAR_RESULT, MALE, Route110_EventScript_PlayMayMusic
+	call_if_eq VAR_RESULT, FEMALE, Route110_EventScript_PlayBrendanMusic
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	delay 30
-	compare VAR_0x8008, 1
-	call_if_eq Route110_EventScript_RivalApproachPlayer1
-	compare VAR_0x8008, 2
-	call_if_eq Route110_EventScript_RivalApproachPlayer2
-	compare VAR_0x8008, 3
-	call_if_eq Route110_EventScript_RivalApproachPlayer3
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalApproachPlayer1
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalApproachPlayer2
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalApproachPlayer3
 	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq Route110_EventScript_MayBattle
-	compare VAR_RESULT, FEMALE
-	goto_if_eq Route110_EventScript_BrendanBattle
+	goto_if_eq VAR_RESULT, MALE, Route110_EventScript_MayBattle
+	goto_if_eq VAR_RESULT, FEMALE, Route110_EventScript_BrendanBattle
 	releaseall
 	end
 
@@ -478,28 +463,22 @@ Route110_EventScript_BrendanDefeated::
 	end
 
 Route110_EventScript_GiveItemfinder::
-	giveitem ITEM_ITEMFINDER
+	giveitem ITEM_DOWSING_MACHINE
 	return
 
 Route110_EventScript_RivalExit::
 	closemessage
-	compare VAR_0x8008, 1
-	call_if_eq Route110_EventScript_MoveRival1
-	compare VAR_0x8008, 2
-	call_if_eq Route110_EventScript_MoveRival2
-	compare VAR_0x8008, 3
-	call_if_eq Route110_EventScript_MoveRival3
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_MoveRival1
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_MoveRival2
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_MoveRival3
 	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_RIGHT
 	setobjectmovementtype LOCALID_RIVAL_ON_BIKE, MOVEMENT_TYPE_FACE_RIGHT
 	removeobject LOCALID_RIVAL
 	addobject LOCALID_RIVAL_ON_BIKE
 	delay 45
-	compare VAR_0x8008, 1
-	call_if_eq Route110_EventScript_RivalExit1
-	compare VAR_0x8008, 2
-	call_if_eq Route110_EventScript_RivalExit2
-	compare VAR_0x8008, 3
-	call_if_eq Route110_EventScript_RivalExit3
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalExit1
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalExit2
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalExit3
 	removeobject LOCALID_RIVAL_ON_BIKE
 	setvar VAR_ROUTE110_STATE, 1
 	savebgm MUS_DUMMY
@@ -552,7 +531,7 @@ Route110_EventScript_MoveRival3::
 Route110_Movement_RivalApproachPlayer1:
 	walk_down
 	walk_left
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	step_end
 
 Route110_Movement_RivalApproachPlayer2:
@@ -562,7 +541,7 @@ Route110_Movement_RivalApproachPlayer2:
 Route110_Movement_RivalApproachPlayer3:
 	walk_down
 	walk_right
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	step_end
 
 Route110_Movement_RivalExit1:
@@ -625,24 +604,20 @@ Route110_EventScript_BirchScene::
 	waitmovement 0
 	applymovement LOCALID_BIRCH, Common_Movement_Delay48
 	waitmovement 0
-	compare VAR_0x8008, 1
-	call_if_eq Route110_EventScript_BirchApproachPlayer1
-	compare VAR_0x8008, 2
-	call_if_eq Route110_EventScript_BirchApproachPlayer2
-	compare VAR_0x8008, 3
-	call_if_eq Route110_EventScript_BirchApproachPlayer3
-	compare VAR_0x8008, 4
-	call_if_eq Route110_EventScript_BirchApproachPlayer4
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_BirchApproachPlayer1
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_BirchApproachPlayer2
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_BirchApproachPlayer3
+	call_if_eq VAR_0x8008, 4, Route110_EventScript_BirchApproachPlayer4
 	msgbox Route110_Text_ImagineSeeingYouHere, MSGBOX_DEFAULT
 	closemessage
 	delay 20
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestLeft
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	delay 10
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	delay 20
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFastestDown
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	delay 30
 	msgbox Route110_Text_HeardYouInstallMatchCall, MSGBOX_DEFAULT
@@ -656,14 +631,10 @@ Route110_EventScript_BirchScene::
 	setflag FLAG_ENABLE_PROF_BIRCH_MATCH_CALL
 	msgbox Route110_Text_KeepAnEyeOutForRival, MSGBOX_DEFAULT
 	closemessage
-	compare VAR_0x8008, 1
-	call_if_eq Route110_EventScript_BirchExit1
-	compare VAR_0x8008, 2
-	call_if_eq Route110_EventScript_BirchExit2
-	compare VAR_0x8008, 3
-	call_if_eq Route110_EventScript_BirchExit3
-	compare VAR_0x8008, 4
-	call_if_eq Route110_EventScript_BirchExit4
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_BirchExit1
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_BirchExit2
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_BirchExit3
+	call_if_eq VAR_0x8008, 4, Route110_EventScript_BirchExit4
 	removeobject LOCALID_BIRCH
 	setvar VAR_REGISTER_BIRCH_STATE, 2
 	releaseall
@@ -772,26 +743,26 @@ Route110_Movement_BirchExit4:
 	walk_up
 	step_end
 
-Route110_Text_WeCantTalkAboutAquaActivities: 
-	.string "Team Aqua's activities…\n"
+Route110_Text_WeCantTalkAboutAquaActivities:
+	.string "TEAM AQUA's activities…\n"
 	.string "We can't talk about them yet.$"
 
-Route110_Text_KickUpARuckus: @ 81EFB93
-	.string "I want to get going to Slateport and\n"
+Route110_Text_KickUpARuckus:
+	.string "I want to get going to SLATEPORT and\n"
 	.string "kick up a ruckus!$"
 
 Route110_Text_MyFirstJobInAqua:
 	.string "This is my first job after joining\n"
-	.string "Team Aqua. It's a little scary.$"
+	.string "TEAM AQUA. It's a little scary.$"
 
-Route110_Text_AquaActionsBringSmiles: 
-	.string "Team Aqua's actions should bring\n"
+Route110_Text_AquaActionsBringSmiles:
+	.string "TEAM AQUA's actions should bring\n"
 	.string "smiles to people's faces!$"
 
-Route110_Text_MayLetsBattle: @ 81EFC48
-	.string "May: Hi, {PLAYER}{KUN}, long time no see!\p"
+Route110_Text_MayLetsBattle:
+	.string "MAY: Hi, {PLAYER}{KUN}, long time no see!\p"
 	.string "While I was searching for other\n"
-	.string "Pokémon, my Pokémon grew stronger.\p"
+	.string "POKéMON, my POKéMON grew stronger.\p"
 	.string "So…\n"
 	.string "How about a little battle?$"
 
@@ -799,14 +770,14 @@ Route110_Text_MayDefeated:
 	.string "Yikes!\n"
 	.string "You're better than I expected!$"
 
-Route110_Text_MayTakeThis: 
-	.string "May: {PLAYER}{KUN}, you've been busy\n"
+Route110_Text_MayTakeThis:
+	.string "MAY: {PLAYER}{KUN}, you've been busy\n"
 	.string "training, too, haven't you?\p"
 	.string "I think you deserve a reward!\n"
 	.string "This is from me!$"
 
-Route110_Text_MayExplainItemfinder: 
-	.string "May: That's an ItemFinder.\p"
+Route110_Text_MayExplainItemfinder:
+	.string "MAY: That's an ITEMFINDER.\p"
 	.string "Try it out. If there is an item that's\n"
 	.string "not visible, it emits a sound.\p"
 	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
@@ -814,78 +785,78 @@ Route110_Text_MayExplainItemfinder:
 	.string "me, but I think you should train a lot\l"
 	.string "harder for the next time.$"
 
-Route110_Text_BrendanLetsBattle: 
-	.string "Brendan: Hey, {PLAYER}.\n"
+Route110_Text_BrendanLetsBattle:
+	.string "BRENDAN: Hey, {PLAYER}.\n"
 	.string "So this is where you were.\l"
 	.string "How's it going?\p"
-	.string "Have you been raising your Pokémon?\n"
+	.string "Have you been raising your POKéMON?\n"
 	.string "I'll check for you.$"
 
 Route110_Text_BrendanDefeated:
 	.string "Hmm…\n"
 	.string "You're pretty good.$"
 
-Route110_Text_BrendanTakeThis: 
-	.string "Brendan: {PLAYER}, you've trained\n"
+Route110_Text_BrendanTakeThis:
+	.string "BRENDAN: {PLAYER}, you've trained\n"
 	.string "without me noticing…\p"
 	.string "Good enough!\n"
 	.string "Here, take this.$"
 
-Route110_Text_BrendanExplainItemfinder: 
-	.string "Brendan: That's an ItemFinder.\p"
+Route110_Text_BrendanExplainItemfinder:
+	.string "BRENDAN: That's an ITEMFINDER.\p"
 	.string "Use it to root around for items that\n"
 	.string "aren't visible.\p"
 	.string "If it senses something, it emits\n"
 	.string "a sound.\p"
 	.string "Anyway, I'm off to look for new\n"
-	.string "Pokémon.$"
+	.string "POKéMON.$"
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wouldn't it be great to ride a BIKE\n"
-	.string "at full speed on Cycling Road?$"
+	.string "at full speed on CYCLING ROAD?$"
 
 Route110_Text_HairStreamsBehindMe:
 	.string "How do you like the way my raven-\n"
 	.string "colored hair streams behind me?\p"
 	.string "I grew my hair out just for that.$"
 
-Route110_Text_YouGotBikeFromRydel: 
-	.string "Oh, hey, you got that Bike from Rydel!\p"
+Route110_Text_YouGotBikeFromRydel:
+	.string "Oh, hey, you got that BIKE from RYDEL!\p"
 	.string "Oh, it's glaringly obvious.\n"
 	.string "It says right on your bike…\p"
-	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\n"
-	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\p"
-	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\n"
-	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\p"
-	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\n"
-	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\p"
-	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\n"
-	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\p"
-	.string "Rydel, Rydel, Rydel, Rydel, Rydel…\n"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL…\n"
 	.string "That name's everywhere.\p"
 	.string "You should ride it around all over\n"
 	.string "the place--it's good advertising!$"
 
 Route110_Text_TwoRoads:
 	.string "The two roads, one above, one below…\p"
-	.string "A road each for people and Pokémon.\n"
+	.string "A road each for people and POKéMON.\n"
 	.string "Perhaps that is right and fair.$"
 
-Route110_Text_WalkOnTheLowRoad: 
-	.string "I don't have a Bike, so I'll take\n"
+Route110_Text_WalkOnTheLowRoad:
+	.string "I don't have a BIKE, so I'll take\n"
 	.string "a leisurely walk on the low road.$"
 
-Route110_Text_BikeTechniques: @ 81F030E
-	.string "Learning techniques will make Bike\n"
+Route110_Text_BikeTechniques:
+	.string "Learning techniques will make BIKE\n"
 	.string "riding even more fun.\p"
 	.string "There are some places that you can\n"
-	.string "reach only by using a Bike technique.$"
+	.string "reach only by using a BIKE technique.$"
 
 Route110_Text_WhichShouldIChoose:
 	.string "Which should I choose?\p"
-	.string "Make a beeline for Mauville on\n"
-	.string "Cycling Road, or take the low road\l"
-	.string "and look for Pokémon?$"
+	.string "Make a beeline for MAUVILLE on\n"
+	.string "CYCLING ROAD, or take the low road\l"
+	.string "and look for POKéMON?$"
 
 Route110_Text_CyclingChallengeResultSummary:
 	.string "Number of collisions:\n"
@@ -921,12 +892,12 @@ Route110_Text_ChallengeReactionWorst:
 	.string "You're perhaps not cut out for this\n"
 	.string "unfortunate cycling business.\p"
 	.string "You ought to give serious thought to\n"
-	.string "returning that Bike to Rydel.$"
+	.string "returning that BIKE to RYDEL.$"
 
-Route110_Text_RatedForNumberOfCollisions: 
-	.string "This is Cycling Road.\p"
-	.string "If you were to ride from Mauville to\n"
-	.string "Slateport on a Mach Bike, you would\l"
+Route110_Text_RatedForNumberOfCollisions:
+	.string "This is CYCLING ROAD.\p"
+	.string "If you were to ride from MAUVILLE to\n"
+	.string "SLATEPORT on a MACH BIKE, you would\l"
 	.string "be rated for the number of collisions\l"
 	.string "and your total time.$"
 
@@ -935,66 +906,66 @@ Route110_Text_AlwaysAimHigher:
 	.string "seeing more challenges from you.\l"
 	.string "Always aim higher!$"
 
-Route110_Text_AcroBikesDoNotQualify: 
-	.string "On this Cycling Road, those riding\n"
-	.string "Mach Bikes are rated for their number\l"
+Route110_Text_AcroBikesDoNotQualify:
+	.string "On this CYCLING ROAD, those riding\n"
+	.string "MACH BIKES are rated for their number\l"
 	.string "of collisions and their total times.\p"
-	.string "Acro Bikes do not qualify for rating.\n"
+	.string "ACRO BIKES do not qualify for rating.\n"
 	.string "They are easy to turn, so it's not fair.$"
 
-Route110_Text_SlateportCitySign: 
-	.string "Route 110\n"
-	.string "{DOWN_ARROW} Slateport City$"
+Route110_Text_SlateportCitySign:
+	.string "ROUTE 110\n"
+	.string "{DOWN_ARROW} SLATEPORT CITY$"
 
-Route110_Text_CyclingRoadSign: @ 81F082D
-	.string "Seaside Cycling Road$"
+Route110_Text_CyclingRoadSign:
+	.string "SEASIDE CYCLING ROAD$"
 
-Route110_Text_AquaWasHere: @ 81F0842
-	.string "“Team Aqua was here!”\p"
+Route110_Text_AquaWasHere:
+	.string "“TEAM AQUA was here!”\p"
 	.string "Someone painted that onto this sign,\n"
 	.string "but then someone else painted over it.\p"
-	.string "“Team Magma rules!” is what it\n"
+	.string "“TEAM MAGMA rules!” is what it\n"
 	.string "says now.$"
 
-Route110_Text_Route103Sign: 
-	.string "Route 110\n"
-	.string "{LEFT_ARROW} Route 103$"
+Route110_Text_Route103Sign:
+	.string "ROUTE 110\n"
+	.string "{LEFT_ARROW} ROUTE 103$"
 
-Route110_Text_SeasideParkingSign: @ 81F08E3
-	.string "Seaside Parking$"
+Route110_Text_SeasideParkingSign:
+	.string "SEASIDE PARKING$"
 
-Route110_Text_MauvilleCitySign: @ 81F08F3
-	.string "Route 110\n"
-	.string "{UP_ARROW} Mauville City$"
+Route110_Text_MauvilleCitySign:
+	.string "ROUTE 110\n"
+	.string "{UP_ARROW} MAUVILLE CITY$"
 
-Route110_Text_TrainerTipsPrlzSleep: @ 81F090D
-	.string "Trainer Tips\p"
+Route110_Text_TrainerTipsPrlzSleep:
+	.string "TRAINER TIPS\p"
 	.string "The foe can be made helpless by\n"
 	.string "paralyzing it or causing it to sleep.\p"
 	.string "It is an important technique for\n"
-	.string "Pokémon battles.$"
+	.string "POKéMON battles.$"
 
-Route110_Text_TrainerTipsRegisterItems: 
-	.string "Trainer Tips\p"
-	.string "The items in the Bag can be reorganized\n"
-	.string "by pressing Select.$"
+Route110_Text_TrainerTipsRegisterItems:
+	.string "TRAINER TIPS\p"
+	.string "The items in the BAG can be reorganized\n"
+	.string "by pressing SELECT.$"
 
 Route110_Text_TrickHouseSign:
 	.string "“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
-	.string "to reach the wondrous Trick House.”$"
+	.string "to reach the wondrous TRICK HOUSE.”$"
 
-Route110_Text_BestRecord: 
-	.string "The Best Record To Date…\p"
+Route110_Text_BestRecord:
+	.string "THE BEST RECORD TO DATE…\p"
 	.string "No. of collisions: {STR_VAR_1}\p"
 	.string "Elapsed time: {STR_VAR_2}$"
 
-Route110_Text_ThereIsNoRecord: @ 81F0A5E
-	.string "The Best Record To Date…\p"
+Route110_Text_ThereIsNoRecord:
+	.string "THE BEST RECORD TO DATE…\p"
 	.string "No one seems to have taken the\n"
 	.string "challenge. There is no record…$"
 
-Route110_Text_ImagineSeeingYouHere: @ 81F0AB5
-	.string "Prof. Birch: Oh, {PLAYER}{KUN}!\n"
+Route110_Text_ImagineSeeingYouHere:
+	.string "PROF. BIRCH: Oh, {PLAYER}{KUN}!\n"
 	.string "Imagine seeing you here!\p"
 	.string "And where might my {RIVAL} be?$"
 
@@ -1002,20 +973,20 @@ Route110_Text_HeardYouInstallMatchCall:
 	.string "Oh, I see!\n"
 	.string "You two are running separately.\l"
 	.string "Well, that's fine.\p"
-	.string "Oh, yes, I heard that your Pokénav\n"
-	.string "had the Match Call system installed.\p"
+	.string "Oh, yes, I heard that your POKéNAV\n"
+	.string "had the MATCH CALL system installed.\p"
 	.string "Well, then, I should register you in\n"
-	.string "my Pokénav as well.\p"
+	.string "my POKéNAV as well.\p"
 	.string "That way, even when we're apart,\n"
-	.string "I can rate your Pokédex anytime.\p"
+	.string "I can rate your POKéDEX anytime.\p"
 	.string "… … … … … …$"
 
-Route110_Text_RegisteredBirchInPokenav: 
-	.string "Registered Prof. Birch\n"
-	.string "in the Pokénav.$"
+Route110_Text_RegisteredBirchInPokenav:
+	.string "Registered PROF. BIRCH\n"
+	.string "in the POKéNAV.$"
 
-Route110_Text_KeepAnEyeOutForRival: @ 81F0C33
-	.string "Prof. Birch: {PLAYER}{KUN}…\p"
+Route110_Text_KeepAnEyeOutForRival:
+	.string "PROF. BIRCH: {PLAYER}{KUN}…\p"
 	.string "Please keep an eye out for my {RIVAL}.\n"
 	.string "… … … … … …\p"
 	.string "Well, I had better get going.\n"

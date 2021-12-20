@@ -3,8 +3,7 @@ Route110_TrickHousePuzzle4_MapScripts::
 
 Route110_TrickHousePuzzle4_EventScript_Scroll::
 	lockall
-	compare VAR_TRICK_HOUSE_PUZZLE_4_STATE, 0
-	goto_if_eq Route110_TrickHousePuzzle4_EventScript_FoundScroll
+	goto_if_eq VAR_TRICK_HOUSE_PUZZLE_4_STATE, 0, Route110_TrickHousePuzzle4_EventScript_FoundScroll
 	goto Route110_TrickHousePuzzle_EventScript_ReadScrollAgain
 	end
 
@@ -31,7 +30,7 @@ Route110_TrickHousePuzzle4_EventScript_Paula::
 Route110_TrickHousePuzzle4_Text_WroteSecretCodeLockOpened:
 	.string "{PLAYER} wrote down the secret code\n"
 	.string "on the door.\p"
-	.string "“Trick Master is cool.”\n"
+	.string "“TRICK MASTER is cool.”\n"
 	.string "… … … … … … … …\p"
 	.string "The lock clicked open!$"
 
@@ -45,7 +44,7 @@ Route110_TrickHousePuzzle4_Text_CoraDefeat:
 
 Route110_TrickHousePuzzle4_Text_CoraPostBattle:
 	.string "Wouldn't you agree? You would go\n"
-	.string "anywhere if Trainers were there.$"
+	.string "anywhere if TRAINERS were there.$"
 
 Route110_TrickHousePuzzle4_Text_YujiIntro:
 	.string "Heh! Boulders like this, I can brush\n"
@@ -59,8 +58,8 @@ Route110_TrickHousePuzzle4_Text_YujiPostBattle:
 	.string "It's not good enough to be brawny…\n"
 	.string "You have to use your head. Be brainy!$"
 
-Route110_TrickHousePuzzle4_Text_PaulaIntro: 
-	.string "The Trick House is getting trickier,\n"
+Route110_TrickHousePuzzle4_Text_PaulaIntro:
+	.string "The TRICK HOUSE is getting trickier,\n"
 	.string "isn't it?$"
 
 Route110_TrickHousePuzzle4_Text_PaulaDefeat:

@@ -89,7 +89,7 @@ struct ContestPokemon
     u16 species;
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     u8 trainerName[PLAYER_NAME_LENGTH + 1];
-    u16 trainerGfxId;
+    u8 trainerGfxId;
     u32 aiFlags;
     u8 whichRank:2;
     u8 aiPool_Cool:1;
@@ -294,7 +294,7 @@ struct ContestResources
     u8 * contestBgTilemaps[CONTESTANT_COUNT];
     void * boxBlinkTiles1;
     void * boxBlinkTiles2;
-    void * field_3c;
+    void * animBgTileBuffer;
 };
 
 #define eContest (*gContestResources->contest)

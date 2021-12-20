@@ -20,8 +20,7 @@ FortreeCity_House2_EventScript_HiddenPowerGiver::
 	case 0, FortreeCity_House2_EventScript_WrongGuess
 	msgbox FortreeCity_House2_Text_YourHiddenPowerHasAwoken, MSGBOX_DEFAULT
 	giveitem ITEM_TM10
-	compare VAR_RESULT, 0
-	goto_if_eq Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM10
 	msgbox FortreeCity_House2_Text_ExplainHiddenPower, MSGBOX_DEFAULT
 	release
@@ -42,8 +41,8 @@ FortreeCity_House2_EventScript_WrongGuess::
 	release
 	end
 
-FortreeCity_House2_Text_HiddenPowersArousedByNature: 
-	.string "People… Pokémon…\p"
+FortreeCity_House2_Text_HiddenPowersArousedByNature:
+	.string "People… POKéMON…\p"
 	.string "Their hidden powers are aroused by\n"
 	.string "living in natural environments…$"
 
@@ -70,11 +69,11 @@ FortreeCity_House2_Text_YourHiddenPowerHasAwoken:
 	.string "Oh! Splendid!\n"
 	.string "Your hidden power has awoken!\p"
 	.string "Here, take this and awaken the hidden\n"
-	.string "power of your Pokémon.$"
+	.string "power of your POKéMON.$"
 
-FortreeCity_House2_Text_ExplainHiddenPower: 
-	.string "Hidden Power is a move that changes\n"
-	.string "with the Pokémon.$"
+FortreeCity_House2_Text_ExplainHiddenPower:
+	.string "HIDDEN POWER is a move that changes\n"
+	.string "with the POKéMON.$"
 
 FortreeCity_House2_Text_YouGuessedWrong:
 	.string "No, too bad.\n"

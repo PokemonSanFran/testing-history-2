@@ -7,7 +7,7 @@ const PERSON3 = 10
 
 mapscripts Psfcity12_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-    checkitem(ITEM_MEGA_BRACELET,1)
+    checkitem(ITEM_MEGA_RING,1)
 
         if (var(VAR_RESULT)) {
             call(EnterPsfgoodadmin_CleanUp)
@@ -25,7 +25,7 @@ script EnterPsfgoodadmin_CleanUp {
 
 script EnterPsfgoodadmin_Event_Script {
 
-    checkitem(ITEM_MEGA_BRACELET,1)
+    checkitem(ITEM_MEGA_RING,1)
 
         if (var(VAR_RESULT)) {
             goto(EnterPsfgoodadmin_GruntApologize_Dialogue)
@@ -215,7 +215,7 @@ script EnterPsfgoodadmin_GiveKeystone_Dialogue{
         callnative(ClearMugshot)
         applymovement(PSFGOODADMIN,Common_Movement_WalkInPlaceUp)
         waitmovement(0)
-        giveitem(ITEM_MEGA_BRACELET)
+        giveitem(ITEM_MEGA_RING)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfgoodadmin_IfYouHaveThat)

@@ -20,9 +20,8 @@ BattleFrontier_OutsideWest_EventScript_FerryAttendant::
 	lock
 	faceplayer
 	msgbox BattleFrontier_OutsideWest_Text_MayISeeYourTicket, MSGBOX_DEFAULT
-	checkitem ITEM_SS_TICKET, 1
-	compare VAR_RESULT, FALSE
-	goto_if_eq BattleFrontier_OutsideWest_EventScript_NoSSTicket
+	checkitem ITEM_SS_TICKET
+	goto_if_eq VAR_RESULT, FALSE, BattleFrontier_OutsideWest_EventScript_NoSSTicket
 	message BattleFrontier_OutsideWest_Text_WhereWouldYouLikeToGo
 	waitmessage
 	goto BattleFrontier_OutsideWest_EventScript_ChooseFerryDestination
@@ -44,22 +43,20 @@ BattleFrontier_OutsideWest_EventScript_NoSSTicket::
 
 BattleFrontier_OutsideWest_EventScript_FerryToSlateport::
 	msgbox BattleFrontier_OutsideWest_Text_SlateportItIs, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq BattleFrontier_OutsideWest_EventScript_ChooseNewFerryDestination
+	goto_if_eq VAR_RESULT, NO, BattleFrontier_OutsideWest_EventScript_ChooseNewFerryDestination
 	msgbox BattleFrontier_OutsideWest_Text_PleaseBoardFerry, MSGBOX_DEFAULT
 	call BattleFrontier_OutsideWest_EventScript_BoardFerry
-	warp MAP_SLATEPORT_CITY_HARBOR, 255, 8, 11
+	warp MAP_SLATEPORT_CITY_HARBOR, 8, 11
 	waitstate
 	release
 	end
 
 BattleFrontier_OutsideWest_EventScript_FerryToLilycove::
 	msgbox BattleFrontier_OutsideWest_Text_LilycoveItIs, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq BattleFrontier_OutsideWest_EventScript_ChooseNewFerryDestination
+	goto_if_eq VAR_RESULT, NO, BattleFrontier_OutsideWest_EventScript_ChooseNewFerryDestination
 	msgbox BattleFrontier_OutsideWest_Text_PleaseBoardFerry, MSGBOX_DEFAULT
 	call BattleFrontier_OutsideWest_EventScript_BoardFerry
-	warp MAP_LILYCOVE_CITY_HARBOR, 255, 8, 11
+	warp MAP_LILYCOVE_CITY_HARBOR, 8, 11
 	waitstate
 	release
 	end
@@ -72,7 +69,7 @@ BattleFrontier_OutsideWest_EventScript_ChooseNewFerryDestination::
 
 BattleFrontier_OutsideWest_EventScript_BoardFerry::
 	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFastestDown
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	delay 30
 	hideobjectat LOCALID_FERRY_ATTENDANT, MAP_BATTLE_FRONTIER_OUTSIDE_WEST
@@ -137,16 +134,16 @@ BattleFrontier_OutsideWest_EventScript_Maniac2::
 	end
 
 BattleFrontier_OutsideWest_EventScript_FactoryChallengersTalk::
-	applymovement LOCALID_MANIAC_1, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_MANIAC_1, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox BattleFrontier_OutsideWest_Text_SureWeCanChallengeWithNoMons, MSGBOX_DEFAULT
-	applymovement LOCALID_MANIAC_2, Common_Movement_WalkInPlaceFastestLeft
+	applymovement LOCALID_MANIAC_2, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox BattleFrontier_OutsideWest_Text_BigGuySaidIllLendYouMons, MSGBOX_DEFAULT
 	closemessage
 	delay 25
-	applymovement LOCALID_MANIAC_1, Common_Movement_WalkInPlaceFastestUp
-	applymovement LOCALID_MANIAC_2, Common_Movement_WalkInPlaceFastestUp
+	applymovement LOCALID_MANIAC_1, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_MANIAC_2, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	release
 	end
@@ -155,20 +152,16 @@ BattleFrontier_OutsideWest_EventScript_Camper::
 	lock
 	faceplayer
 	delay 20
-	compare VAR_FACING, DIR_NORTH
-	call_if_eq BattleFrontier_OutsideWest_EventScript_CamperFaceFactory
-	compare VAR_FACING, DIR_SOUTH
-	call_if_eq BattleFrontier_OutsideWest_EventScript_CamperAlreadyFacingFactory
-	compare VAR_FACING, DIR_WEST
-	call_if_eq BattleFrontier_OutsideWest_EventScript_CamperFaceFactory
-	compare VAR_FACING, DIR_EAST
-	call_if_eq BattleFrontier_OutsideWest_EventScript_CamperFaceFactory
+	call_if_eq VAR_FACING, DIR_NORTH, BattleFrontier_OutsideWest_EventScript_CamperFaceFactory
+	call_if_eq VAR_FACING, DIR_SOUTH, BattleFrontier_OutsideWest_EventScript_CamperAlreadyFacingFactory
+	call_if_eq VAR_FACING, DIR_WEST, BattleFrontier_OutsideWest_EventScript_CamperFaceFactory
+	call_if_eq VAR_FACING, DIR_EAST, BattleFrontier_OutsideWest_EventScript_CamperFaceFactory
 	msgbox BattleFrontier_OutsideWest_Text_WhosRaisingThoseRentalMons, MSGBOX_DEFAULT
 	release
 	end
 
 BattleFrontier_OutsideWest_EventScript_CamperFaceFactory::
-	applymovement LOCALID_CAMPER, Common_Movement_WalkInPlaceFastestUp
+	applymovement LOCALID_CAMPER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	return
 
@@ -180,14 +173,10 @@ BattleFrontier_OutsideWest_EventScript_Girl::
 	faceplayer
 	message BattleFrontier_OutsideWest_Text_ScaredOfPikeBecauseSeviper
 	waitmessage
-	compare VAR_FACING, DIR_NORTH
-	call_if_eq BattleFrontier_OutsideWest_EventScript_GirlShudderNorth
-	compare VAR_FACING, DIR_SOUTH
-	call_if_eq BattleFrontier_OutsideWest_EventScript_GirlShudderSouth
-	compare VAR_FACING, DIR_WEST
-	call_if_eq BattleFrontier_OutsideWest_EventScript_GirlShudderWest
-	compare VAR_FACING, DIR_EAST
-	call_if_eq BattleFrontier_OutsideWest_EventScript_GirlShudderEast
+	call_if_eq VAR_FACING, DIR_NORTH, BattleFrontier_OutsideWest_EventScript_GirlShudderNorth
+	call_if_eq VAR_FACING, DIR_SOUTH, BattleFrontier_OutsideWest_EventScript_GirlShudderSouth
+	call_if_eq VAR_FACING, DIR_WEST, BattleFrontier_OutsideWest_EventScript_GirlShudderWest
+	call_if_eq VAR_FACING, DIR_EAST, BattleFrontier_OutsideWest_EventScript_GirlShudderEast
 	waitbuttonpress
 	release
 	end
@@ -213,23 +202,23 @@ BattleFrontier_OutsideWest_EventScript_GirlShudderEast::
 	return
 
 BattleFrontier_OutsideWest_Movement_GirlShudderNorth:
-	walk_in_place_fastest_down
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
+	walk_in_place_faster_down
 	step_end
 
 BattleFrontier_OutsideWest_Movement_GirlShudderSouth:
-	walk_in_place_fastest_up
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
+	walk_in_place_faster_up
 	step_end
 
 BattleFrontier_OutsideWest_Movement_GirlShudderWest:
-	walk_in_place_fastest_right
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
+	walk_in_place_faster_right
 	step_end
 
 BattleFrontier_OutsideWest_Movement_GirlShudderEast:
-	walk_in_place_fastest_left
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
+	walk_in_place_faster_left
 	step_end
 
 BattleFrontier_OutsideWest_EventScript_Woman2::
@@ -237,8 +226,7 @@ BattleFrontier_OutsideWest_EventScript_Woman2::
 	faceplayer
 	msgbox BattleFrontier_OutsideWest_Text_LetsPlayRockPaperScissors, MSGBOX_DEFAULT
 	random 2
-	compare VAR_RESULT, 1
-	goto_if_eq BattleFrontier_OutsideWest_EventScript_WomanWonRockPaperScissors
+	goto_if_eq VAR_RESULT, 1, BattleFrontier_OutsideWest_EventScript_WomanWonRockPaperScissors
 	goto BattleFrontier_OutsideWest_EventScript_WomanLostRockPaperScissors
 	end
 
@@ -319,43 +307,43 @@ BattleFrontier_OutsideWest_EventScript_PokefanF::
 	msgbox BattleFrontier_OutsideWest_Text_MonWithLongTailInFrontier, MSGBOX_NPC
 	end
 
-BattleFrontier_OutsideWest_Text_BattleDomeSign: 
-	.string "This is the Battle Dome!\n"
+BattleFrontier_OutsideWest_Text_BattleDomeSign:
+	.string "This is the BATTLE DOME!\n"
 	.string "Your path to the invincible superstar!$"
 
-BattleFrontier_OutsideWest_Text_BattleFactorySign: @ 823D737
-	.string "This is the Battle Factory!\n"
-	.string "Seek out the toughest Pokémon!$"
+BattleFrontier_OutsideWest_Text_BattleFactorySign:
+	.string "This is the BATTLE FACTORY!\n"
+	.string "Seek out the toughest POKéMON!$"
 
-BattleFrontier_OutsideWest_Text_BattlePikeSign: @ 823D772
-	.string "This is the Battle Pike!\n"
+BattleFrontier_OutsideWest_Text_BattlePikeSign:
+	.string "This is the BATTLE PIKE!\n"
 	.string "Choose one of three paths!$"
 
-BattleFrontier_OutsideWest_Text_ThisIsBattleTower: @ 823D7A6
-	.string "This is the Battle Tower.\p"
-	.string "Trainers bring their best-raised\n"
-	.string "Pokémon for elimination-style matches.$"
+BattleFrontier_OutsideWest_Text_ThisIsBattleTower:
+	.string "This is the BATTLE TOWER.\p"
+	.string "TRAINERS bring their best-raised\n"
+	.string "POKéMON for elimination-style matches.$"
 
 BattleFrontier_OutsideWest_Text_MayISeeYourTicket:
 	.string "Hello, are you here for the ferry?\n"
-	.string "May I see your Ticket?$"
+	.string "May I see your TICKET?$"
 
-BattleFrontier_OutsideWest_Text_MustHaveTicketToBoard: 
-	.string "{PLAYER} doesn't have the Ticket…\p"
+BattleFrontier_OutsideWest_Text_MustHaveTicketToBoard:
+	.string "{PLAYER} doesn't have the TICKET…\p"
 	.string "I'm terribly sorry.\p"
-	.string "You must have a Ticket to board\n"
+	.string "You must have a TICKET to board\n"
 	.string "the ferry.$"
 
-BattleFrontier_OutsideWest_Text_WhereWouldYouLikeToGo: 
-	.string "{PLAYER} flashed the Ticket.\p"
+BattleFrontier_OutsideWest_Text_WhereWouldYouLikeToGo:
+	.string "{PLAYER} flashed the TICKET.\p"
 	.string "Perfect! That's all you need!\p"
 	.string "And where would you like to go?$"
 
-BattleFrontier_OutsideWest_Text_SlateportItIs: @ 823D8F2
-	.string "Slateport City it is, then!$"
+BattleFrontier_OutsideWest_Text_SlateportItIs:
+	.string "SLATEPORT CITY it is, then!$"
 
-BattleFrontier_OutsideWest_Text_LilycoveItIs: @ 823D90E
-	.string "Lilycove City it is, then!$"
+BattleFrontier_OutsideWest_Text_LilycoveItIs:
+	.string "LILYCOVE CITY it is, then!$"
 
 BattleFrontier_OutsideWest_Text_SailWithUsAnotherTime:
 	.string "Please sail with us another time!$"
@@ -372,10 +360,10 @@ BattleFrontier_OutsideWest_Text_BestOutOfAllMyFriends:
 	.string "But here…\l"
 	.string "I've been useless!$"
 
-BattleFrontier_OutsideWest_Text_CantFindBattleTower: 
-	.string "I want to go to the Battle Tower,\n"
+BattleFrontier_OutsideWest_Text_CantFindBattleTower:
+	.string "I want to go to the BATTLE TOWER,\n"
 	.string "but I can't find it even though I have\l"
-	.string "a map of the Battle Frontier.\p"
+	.string "a map of the BATTLE FRONTIER.\p"
 	.string "This place is just too big!$"
 
 BattleFrontier_OutsideWest_Text_GotSeasickOnWayHere:
@@ -387,32 +375,32 @@ BattleFrontier_OutsideWest_Text_GotSeasickOnWayHere:
 BattleFrontier_OutsideWest_Text_OnlyToughTrainersBroughtHere:
 	.string "It's not as if just anyone can come\n"
 	.string "here, you know?\p"
-	.string "Only those Trainers who've been\n"
+	.string "Only those TRAINERS who've been\n"
 	.string "recognized as tough are brought here.\p"
-	.string "That's why many Trainers don't even\n"
-	.string "know about the Battle Frontier.$"
+	.string "That's why many TRAINERS don't even\n"
+	.string "know about the BATTLE FRONTIER.$"
 
 BattleFrontier_OutsideWest_Text_SureWeCanChallengeWithNoMons:
 	.string "Hey, bro…\p"
 	.string "Are you sure we can make challenges\n"
-	.string "even if we don't have any Pokémon?$"
+	.string "even if we don't have any POKéMON?$"
 
 BattleFrontier_OutsideWest_Text_BigGuySaidIllLendYouMons:
 	.string "Uh…\n"
 	.string "I'm sure it'll be okay.\p"
 	.string "I think…\p"
 	.string "But remember that big scary guy?\n"
-	.string "He said, “I'll lend you Pokémon!”$"
+	.string "He said, “I'll lend you POKéMON!”$"
 
-BattleFrontier_OutsideWest_Text_WhosRaisingThoseRentalMons: 
-	.string "That's the Battle Factory.\n"
-	.string "You can rent strong Pokémon there.\p"
+BattleFrontier_OutsideWest_Text_WhosRaisingThoseRentalMons:
+	.string "That's the BATTLE FACTORY.\n"
+	.string "You can rent strong POKéMON there.\p"
 	.string "But it makes me wonder.\n"
-	.string "Who's raising those rental Pokémon?$"
+	.string "Who's raising those rental POKéMON?$"
 
-BattleFrontier_OutsideWest_Text_ScaredOfPikeBecauseSeviper: 
-	.string "I'm scared of going into the Battle\n"
-	.string "Pike because of Seviper…\p"
+BattleFrontier_OutsideWest_Text_ScaredOfPikeBecauseSeviper:
+	.string "I'm scared of going into the BATTLE\n"
+	.string "PIKE because of SEVIPER…\p"
 	.string "B-but I came all the way here, so I will\n"
 	.string "try to conquer everything!\l"
 	.string "…Shudder…$"
@@ -424,13 +412,13 @@ BattleFrontier_OutsideWest_Text_LetsPlayRockPaperScissors:
 
 BattleFrontier_OutsideWest_Text_WonIllTakePikeChallenge:
 	.string "Yay! I won!\n"
-	.string "I will take the Battle Pike challenge!$"
+	.string "I will take the BATTLE PIKE challenge!$"
 
 BattleFrontier_OutsideWest_Text_LostIllPutOffPikeChallenge:
 	.string "Oh, no…\n"
 	.string "I lost.\p"
 	.string "I guess I'm not very lucky today.\n"
-	.string "I'll put off my Battle Pike challenge\l"
+	.string "I'll put off my BATTLE PIKE challenge\l"
 	.string "until tomorrow.$"
 
 BattleFrontier_OutsideWest_Text_ChooseFishingOverBattling:
@@ -446,19 +434,19 @@ BattleFrontier_OutsideWest_Text_KeepBattlingUntilIGetSymbol:
 
 BattleFrontier_OutsideWest_Text_YoureOffToChallengeDome:
 	.string "Oh? You're off to challenge\n"
-	.string "the Battle Dome?\p"
+	.string "the BATTLE DOME?\p"
 	.string "I'll wish you the best of luck.\n"
 	.string "Let us both win our way up and meet\l"
 	.string "in challenges.$"
 
 BattleFrontier_OutsideWest_Text_DomeIsHereGrandpa:
 	.string "Grandpa, over here!\n"
-	.string "The Battle Dome is here!\l"
+	.string "The BATTLE DOME is here!\l"
 	.string "Go get 'em, Grandpa!$"
 
-BattleFrontier_OutsideWest_Text_WontLetGentlemenBeatMe: 
-	.string "Ah, so this here is the Battle Dome?\n"
-	.string "I won't let Gentlemen beat me!\p"
+BattleFrontier_OutsideWest_Text_WontLetGentlemenBeatMe:
+	.string "Ah, so this here is the BATTLE DOME?\n"
+	.string "I won't let GENTLEMEN beat me!\p"
 	.string "But where is the entrance?$"
 
 BattleFrontier_OutsideWest_Text_NothingHereNotLongAgo:
@@ -467,9 +455,9 @@ BattleFrontier_OutsideWest_Text_NothingHereNotLongAgo:
 	.string "But, now look at this place! Amazing!\n"
 	.string "I'll bring my mother out to see this.$"
 
-BattleFrontier_OutsideWest_Text_FinallyArrivedAtFrontier: 
-	.string "I've finally arrived at the Battle\n"
-	.string "Frontier!\p"
+BattleFrontier_OutsideWest_Text_FinallyArrivedAtFrontier:
+	.string "I've finally arrived at the BATTLE\n"
+	.string "FRONTIER!\p"
 	.string "I'm sure to grab attention with\n"
 	.string "my looks and ability!$"
 
@@ -482,7 +470,7 @@ BattleFrontier_OutsideWest_Text_SquareFilledWithToughPeople:
 BattleFrontier_OutsideWest_Text_MetOlderGirlAtPike:
 	.string "Crunch, munch…\p"
 	.string "A while back, I met this older girl\n"
-	.string "at the Battle Pike.\p"
+	.string "at the BATTLE PIKE.\p"
 	.string "She had these eyes that were scary\n"
 	.string "in a real ornery way.\p"
 	.string "Crunch, munch…\p"
@@ -503,35 +491,35 @@ BattleFrontier_OutsideWest_Text_DomeAceLookedBecauseOfMyCheering:
 	.string "Pfft!\p"
 	.string "That only happened because\n"
 	.string "I happened to be sitting next to you!\p"
-	.string "The Dome Ace only looked our way\n"
+	.string "The DOME ACE only looked our way\n"
 	.string "because my cheering was so loud!$"
 
 BattleFrontier_OutsideWest_Text_DomeAceIsMine:
 	.string "Oh, shush!\n"
 	.string "Keep that racket down!\p"
 	.string "You fair-weather fans should stick\n"
-	.string "to cheering for some Gym Leader!\p"
-	.string "The Dome Ace is mine!\n"
+	.string "to cheering for some GYM LEADER!\p"
+	.string "The DOME ACE is mine!\n"
 	.string "The only idol for me!$"
 
 BattleFrontier_OutsideWest_Text_FansOverThereUsedToBeTrainers:
 	.string "Those people squabbling over there…\p"
 	.string "It's hard to believe, but they once\n"
-	.string "were Trainers, and good ones, too.\p"
+	.string "were TRAINERS, and good ones, too.\p"
 	.string "They used to be incredibly tough,\n"
 	.string "and they were famous, too.\p"
 	.string "But they were obliterated by this\n"
-	.string "certain Trainer at a tournament.\p"
+	.string "certain TRAINER at a tournament.\p"
 	.string "They were so thoroughly whipped,\n"
-	.string "they became smitten by the Trainer.\p"
-	.string "Now they're just fans of the Trainer.\n"
+	.string "they became smitten by the TRAINER.\p"
+	.string "Now they're just fans of the TRAINER.\n"
 	.string "They go cheer for their idol at the\l"
-	.string "Battle Dome every day now.$"
+	.string "BATTLE DOME every day now.$"
 
 BattleFrontier_OutsideWest_Text_MonWithLongTailInFrontier:
 	.string "I heard a rumor that someone saw\n"
-	.string "a Pokémon with an unusually long tail\l"
-	.string "somewhere in the Battle Frontier.\p"
+	.string "a POKéMON with an unusually long tail\l"
+	.string "somewhere in the BATTLE FRONTIER.\p"
 	.string "It must be adorable. I'm sure of it…\p"
 	.string "Oh, challenges can wait. I feel driven\n"
 	.string "to find the delightful creature!$"

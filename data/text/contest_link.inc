@@ -26,8 +26,8 @@ gText_MoveUsedMostOften::
 	.string "The move used most often:\n"
 	.string "{STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
 
-gText_MostImpressiveMon:: 
-	.string "The most impressive Pokémon:\n"
+gText_MostImpressiveMon::
+	.string "The most impressive POKéMON:\n"
 	.string "{STR_VAR_1}'s {STR_VAR_2}{PAUSE_UNTIL_PRESS}$"
 
 gText_SetEventNumX2::
@@ -35,4 +35,4 @@ gText_SetEventNumX2::
 
 gText_LinkTVProgramWillNotBeMadeTrainerLost::
 	.string "A link TV program will not be made\n"
-	.string "because the Trainer lost.{PAUSE_UNTIL_PRESS}$"
+	.string "because the TRAINER lost.{PAUSE_UNTIL_PRESS}$"

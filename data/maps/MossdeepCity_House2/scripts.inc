@@ -15,16 +15,14 @@ MossdeepCity_House2_EventScript_Wingull::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_WINGULL, 0
+	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
 	msgbox MossdeepCity_House2_Text_Wingull, MSGBOX_DEFAULT
 	waitmoncry
 	closemessage
 	setflag FLAG_WINGULL_DELIVERED_MAIL
 	clearflag FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL
-	compare VAR_FACING, DIR_NORTH
-	call_if_eq MossdeepCity_House2_EventScript_WingullExitNorth
-	compare VAR_FACING, DIR_WEST
-	call_if_eq MossdeepCity_House2_EventScript_WingullExitWest
+	call_if_eq VAR_FACING, DIR_NORTH, MossdeepCity_House2_EventScript_WingullExitNorth
+	call_if_eq VAR_FACING, DIR_WEST, MossdeepCity_House2_EventScript_WingullExitWest
 	removeobject LOCALID_WINGULL
 	release
 	end
@@ -55,18 +53,18 @@ MossdeepCity_House2_Movement_WingullExitEast:
 	delay_8
 	step_end
 
-MossdeepCity_House2_Text_SisterMailsBoyfriendInFortree: 
-	.string "My little sister exchanges Mail with\n"
-	.string "her boyfriend in Fortree.\p"
+MossdeepCity_House2_Text_SisterMailsBoyfriendInFortree:
+	.string "My little sister exchanges MAIL with\n"
+	.string "her boyfriend in FORTREE.\p"
 	.string "I don't envy her one bit at all.$"
 
 MossdeepCity_House2_Text_PokemonCarriesMailBackAndForth:
 	.string "Even though I can't see my friend in\n"
-	.string "Fortree, my Pokémon carries Mail\l"
+	.string "FORTREE, my POKéMON carries MAIL\l"
 	.string "back and forth for us.\p"
 	.string "I'm not lonesome, even though we're\n"
 	.string "apart.$"
 
-MossdeepCity_House2_Text_Wingull: 
-	.string "Wingull: Pihyoh!$"
+MossdeepCity_House2_Text_Wingull:
+	.string "WINGULL: Pihyoh!$"
 
