@@ -21,7 +21,6 @@ NewGamePsfchara1Dialogue::
 	callnative DrawMugshot
 	msgbox gText_StarterSelectPsfchara1Text1
 	msgbox gText_StarterSelectPsfchara1Text2
-	msgbox gText_StarterSelectPsfchara1Text2
 	callnative ClearMugshot
 	goto NewGameNarratorDialogue
 	return

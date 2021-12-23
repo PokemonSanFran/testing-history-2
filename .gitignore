@@ -39,3 +39,4 @@ misc/log.txt
 *.swp
 *.diff
 *.sym
+*.js
