@@ -146,7 +146,7 @@ script TheGangsAllHere_GiveDowsingMachine_Script{
     applymovement(PLAYER,Common_Movement_FaceRight)
     applymovement(PSFBADBOSS,TheGangsAllHere_GivePackageToPsfchara1_Movement)
     waitmovement(0)
-    giveitem(ITEM_ITEMFINDER,1)
+    giveitem(ITEM_DOWSING_MACHINE,1)
     goto(TheGangsAllHere_GiveDowsingMachine_Dialogue)
     end
 }

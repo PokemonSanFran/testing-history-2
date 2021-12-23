@@ -1,26 +1,33 @@
-cp -rv ../pokemon_expansion/src/battle_anim_bug.c src/battle_anim_bug.c
-cp -rv ../pokemon_expansion/src/battle_anim_dark.c src/battle_anim_dark.c
-cp -rv ../pokemon_expansion/src/battle_anim_dragon.c src/battle_anim_dragon.c
-cp -rv ../pokemon_expansion/src/battle_anim_effects_1.c src/battle_anim_effects_1.c
-cp -rv ../pokemon_expansion/src/battle_anim_effects_2.c src/battle_anim_effects_2.c
-cp -rv ../pokemon_expansion/src/battle_anim_effects_3.c src/battle_anim_effects_3.c
-cp -rv ../pokemon_expansion/src/battle_anim_electric.c src/battle_anim_electric.c
-cp -rv ../pokemon_expansion/src/battle_anim_fight.c src/battle_anim_fight.c
-cp -rv ../pokemon_expansion/src/battle_anim_fire.c src/battle_anim_fire.c
-cp -rv ../pokemon_expansion/src/battle_anim_flying.c src/battle_anim_flying.c
-cp -rv ../pokemon_expansion/src/battle_anim_ghost.c src/battle_anim_ghost.c
-cp -rv ../pokemon_expansion/src/battle_anim_ground.c src/battle_anim_ground.c
-cp -rv ../pokemon_expansion/src/battle_anim_ice.c src/battle_anim_ice.c
-cp -rv ../pokemon_expansion/src/battle_anim_mon_movement.c src/battle_anim_mon_movement.c
-cp -rv ../pokemon_expansion/src/battle_anim_mons.c src/battle_anim_mons.c
-cp -rv ../pokemon_expansion/src/battle_anim_new.c src/battle_anim_new.c
-cp -rv ../pokemon_expansion/src/battle_anim_normal.c src/battle_anim_normal.c
-cp -rv ../pokemon_expansion/src/battle_anim_poison.c src/battle_anim_poison.c
-cp -rv ../pokemon_expansion/src/battle_anim_psychic.c src/battle_anim_psychic.c
-cp -rv ../pokemon_expansion/src/battle_anim_rock.c src/battle_anim_rock.c
-cp -rv ../pokemon_expansion/src/battle_anim_smokescreen.c src/battle_anim_smokescreen.c
-cp -rv ../pokemon_expansion/src/battle_anim_sound_tasks.c src/battle_anim_sound_tasks.c
-cp -rv ../pokemon_expansion/src/battle_anim_status_effects.c src/battle_anim_status_effects.c
-cp -rv ../pokemon_expansion/src/battle_anim_throw.c src/battle_anim_throw.c
-cp -rv ../pokemon_expansion/src/battle_anim_utility_funcs.c src/battle_anim_utility_funcs.c
-cp -rv ../pokemon_expansion/src/battle_anim_water.c src/battle_anim_water.c
+./tools/poryscript/poryscript -i data/text/StarterMenu.pory -o data/text/StarterMenu.inc
+./tools/poryscript/poryscript -i data/text/storyline_progression.pory -o data/text/storyline_progression.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity6/scripts.pory -o data/maps/Psfcity6/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity7/scripts.pory -o data/maps/Psfcity7/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfbadguy1Tower_10F/scripts.pory -o data/maps/Psfbadguy1Tower_10F/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfplace7/scripts.pory -o data/maps/Psfplace7/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfroute70/scripts.pory -o data/maps/Psfroute70/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfbadguy1Tower_7F/scripts.pory -o data/maps/Psfbadguy1Tower_7F/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity15_Gym/scripts.pory -o data/maps/Psfcity15_Gym/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity15/scripts.pory -o data/maps/Psfcity15/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity14_Gym/scripts.pory -o data/maps/Psfcity14_Gym/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfroute21/scripts.pory -o data/maps/Psfroute21/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcityy16/scripts.pory -o data/maps/Psfcityy16/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfplace13/scripts.pory -o data/maps/Psfplace13/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfroute17/scripts.pory -o data/maps/Psfroute17/scripts.inc
+./tools/poryscript/poryscript -i data/maps/BlackMap/scripts.pory -o data/maps/BlackMap/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfbadguy1Tower_5F/scripts.pory -o data/maps/Psfbadguy1Tower_5F/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity8_Compound_1F/scripts.pory -o data/maps/Psfcity8_Compound_1F/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfbadguy1Tower_2F/scripts.pory -o data/maps/Psfbadguy1Tower_2F/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity8_PokemonCenter_1F/scripts.pory -o data/maps/Psfcity8_PokemonCenter_1F/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity12/scripts.pory -o data/maps/Psfcity12/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfbadguy1Tower_11F/scripts.pory -o data/maps/Psfbadguy1Tower_11F/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfroute22/scripts.pory -o data/maps/Psfroute22/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity6_Gym/scripts.pory -o data/maps/Psfcity6_Gym/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfroute38/scripts.pory -o data/maps/Psfroute38/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfroute11/scripts.pory -o data/maps/Psfroute11/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfroute8/scripts.pory -o data/maps/Psfroute8/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfroute9/scripts.pory -o data/maps/Psfroute9/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity8/scripts.pory -o data/maps/Psfcity8/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfbadguy1Tower_1F/scripts.pory -o data/maps/Psfbadguy1Tower_1F/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfroute19/scripts.pory -o data/maps/Psfroute19/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfbadguy1Tower_Elevator/scripts.pory -o data/maps/Psfbadguy1Tower_Elevator/scripts.inc
+./tools/poryscript/poryscript -i data/maps/Psfcity8_Compound_2F/scripts.pory -o data/maps/Psfcity8_Compound_2F/scripts.inc

@@ -815,11 +815,11 @@ char *ConvertToAscii(const u8 *str)
         {
             modifiedCode = '.'; // period
         }
-        else if (*str == CHAR_DBL_QUOT_LEFT || *str == CHAR_DBL_QUOT_RIGHT)
+        else if (*str == CHAR_DBL_QUOTE_LEFT || *str == CHAR_DBL_QUOTE_RIGHT)
         {
             modifiedCode = '"'; // double quote
         }
-        else if (*str == CHAR_SGL_QUOT_LEFT || *str == CHAR_SGL_QUOT_RIGHT)
+        else if (*str == CHAR_SGL_QUOTE_LEFT || *str == CHAR_SGL_QUOTE_RIGHT)
         {
             modifiedCode = '"'; // single quote
         }

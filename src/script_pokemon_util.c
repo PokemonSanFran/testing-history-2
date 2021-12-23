@@ -14,6 +14,7 @@
 #include "overworld.h"
 #include "palette.h"
 #include "party_menu.h"
+#include "pokeball.h" //givecustommon
 #include "pokedex.h"
 #include "pokemon.h"
 #include "random.h"

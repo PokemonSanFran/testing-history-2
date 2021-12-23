@@ -119,14 +119,12 @@ static const struct GlyphWidthFunc sGlyphWidthFuncs[] =
     { FONT_SMALL_NARROW, GetGlyphWidth_SmallNarrow }
 };
 
-//begin FRLG import
 static const struct SpriteSheet sUnknown_81EA68C[] =
 {
     {sDoubleArrowTiles1, sizeof(sDoubleArrowTiles1), 0x8000},
     {sDoubleArrowTiles2, sizeof(sDoubleArrowTiles2), 0x8000},
     {NULL}
 };
-//end FRLG import
 
 struct
 {
@@ -1940,7 +1938,6 @@ static void DecompressGlyph_Bold(u16 glyphId)
     gCurGlyph.width = 8;
     gCurGlyph.height = 12;
 }
-
 //begin FRLG import
 void sub_80062B0(struct Sprite *sprite)
 {
@@ -1954,16 +1951,16 @@ void sub_80062B0(struct Sprite *sprite)
         switch(sprite->data[1])
         {
             case 0:
-                sprite->pos2.y = 0;
+                sprite->y = 0;
                 break;
             case 1:
-                sprite->pos2.y = 1;
+                sprite->y = 1;
                 break;
             case 2:
-                sprite->pos2.y = 2;
+                sprite->y = 2;
                 break;
             case 3:
-                sprite->pos2.y = 1;
+                sprite->y = 1;
                 sprite->data[1] = 0;
                 return;
         }
@@ -1989,4 +1986,4 @@ void DestroyTextCursorSprite(u8 spriteId)
     FreeSpriteTilesByTag(0x8000);
     FreeSpritePaletteByTag(0x8000);
 }
-//end FRLG import
+//end FRLG import 

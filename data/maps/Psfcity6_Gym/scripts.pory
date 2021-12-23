@@ -23,6 +23,7 @@ script EnterPsfleader1_StartGymBattle_ObjectSetup {
     end
 }
 
+
 script EnterPsfleader1_Event_Script {
     switch (var (VAR_GYM_1_STATE)) {
     case 3:

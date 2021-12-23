@@ -230,7 +230,7 @@ static bool8 (*const sArrowWarpMetatileBehaviorChecks[])(u8) =
     [DIR_EAST - 1]  = MetatileBehavior_IsEastArrowWarp,
 };
 
-static const u8 sRivalAvatarGfxIds[][2] =
+static const u16 sRivalAvatarGfxIds[][2] =
 {
     {OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL,     OBJ_EVENT_GFX_RIVAL_MAY_NORMAL},
     {OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE,  OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE},
@@ -253,7 +253,7 @@ static const u8 sRivalAvatarGfxIds[][2] =
     {OBJ_EVENT_GFX_HEX_MANIAC}
 };*/
 
-static const u8 sPlayerChoiceAvatarGfxIds[6] =
+static const u16 sPlayerChoiceAvatarGfxIds[6] =
 {
     OBJ_EVENT_GFX_BOY_3,
     OBJ_EVENT_GFX_GIRL_3,
@@ -275,11 +275,11 @@ static const u16 sPlayerAvatarGfxIds[][2] =
     {OBJ_EVENT_GFX_BRENDAN_WATERING,   OBJ_EVENT_GFX_MAY_WATERING},
 };
 
-static const u8 sFRLGAvatarGfxIds[] = {OBJ_EVENT_GFX_RED, OBJ_EVENT_GFX_LEAF};
+static const u16 sFRLGAvatarGfxIds[] = {OBJ_EVENT_GFX_RED, OBJ_EVENT_GFX_LEAF};
 
-static const u8 sRSAvatarGfxIds[] = {OBJ_EVENT_GFX_LINK_RS_BRENDAN, OBJ_EVENT_GFX_LINK_RS_MAY};
+static const u16 sRSAvatarGfxIds[] = {OBJ_EVENT_GFX_LINK_RS_BRENDAN, OBJ_EVENT_GFX_LINK_RS_MAY};
 
-static const u8 sPlayerAvatarGfxToStateFlag[2][5][2] =
+static const u16 sPlayerAvatarGfxToStateFlag[2][5][2] =
 {
     [MALE] =
     {
@@ -1241,7 +1241,7 @@ u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 }
 
 //custom function for PSF for grabbing PlayerChoiceAvatars
-u8 GetPlayerAvatarGraphicsByGender(u8 gender) 
+u16 GetPlayerAvatarGraphicsByGender(u8 gender) 
 {
     return sPlayerChoiceAvatarGfxIds[gender];
 }

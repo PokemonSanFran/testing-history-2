@@ -617,5 +617,6 @@ extern const u8 WarpToBlackMap[];
 extern const u8 Swagbag_WelcomeToPsfregion1_Dialogue[];
 extern const u8 Act1_1_Complete_Monologue[];
 extern const u8 DebugGiveMons[];
+extern const u8 FallarborTown_EventScript_Gentleman[];
 
 #endif // GUARD_EVENT_SCRIPTS_H

@@ -151,7 +151,7 @@
 #define VAR_UNUSED_0x4083                    0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                  0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman 
-#define VAR_PSFGOODTEAM_PSFPLACE13_STATE     0x4086 //Previously VAR_CONTEST_HALL_STATE 
+#define VAR_PSFGOODTEAM_PSFPLACE13_STATE     0x4086 //Previously VAR_PSFGOODTEAM_PSFPLACE13_STATE
 #define VAR_CABLE_CLUB_STATE                 0x4087
 #define VAR_CONTEST_TYPE                     0x4088
 #define VAR_SECRET_BASE_INITIALIZED          0x4089
