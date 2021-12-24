@@ -19,6 +19,7 @@ FlyingBlind_CheckFainted_Script_2:
 
 
 FlyingBlind_Dialogue::
+	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox gText_FlyingBlind_NotSoEasy
 	setvar VAR_0x8000, MUGSHOT_HILDA
@@ -65,6 +66,7 @@ FlyingBlind_CheckMoney_Script_2:
 
 
 FlyingBlind_AskDonation_Dialogue::
+	lockall
 	showmoneybox 0, 0
 	msgbox gText_FlyingBlind_SpareChangeOldMan, MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -73,6 +75,7 @@ FlyingBlind_AskDonation_Dialogue::
 FlyingBlind_AskDonation_Dialogue_1:
 	hidemoneybox
 	closemessage
+	releaseall
 	end
 
 FlyingBlind_AskDonation_Dialogue_2:
@@ -83,8 +86,10 @@ FlyingBlind_AskDonation_Dialogue_2:
 
 
 FlyingBlind_WishLuck_Dialogue::
-	msgbox gText_FlyingBlind_WishLuck_Dialogue
+	lockall
+	msgbox gText_FlyingBlind_WishLuck, MSGBOX_NPC
 	closemessage
+	releaseall
 	end
 
 
@@ -147,6 +152,6 @@ gText_FlyingBlind_WereAllHurtin::
 	.string "I know, we're all hurtin' out here. Have a\n"
 	.string "nice day, ya hear?$"
 
-gText_FlyingBlind_WishLuck_Dialogue::
+gText_FlyingBlind_WishLuck::
 	.string "This fog is rough. Be careful out there,\n"
 	.string "kid.$"

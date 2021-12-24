@@ -21,6 +21,7 @@
 #include "dma3.h"
 #include "event_data.h"
 #include "evolution_scene.h"
+#include "field_effect.h" //Used for PSF Flying Blind
 #include "graphics.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
@@ -115,6 +116,7 @@ static void WaitForEvoSceneToFinish(void);
 static void HandleEndTurn_ContinueBattle(void);
 static void HandleEndTurn_BattleWon(void);
 static void HandleEndTurn_BattleLost(void);
+static void CheckWhiteoutOnFogRoute(void);
 static void HandleEndTurn_RanFromBattle(void);
 static void HandleEndTurn_MonFled(void);
 static void HandleEndTurn_FinishBattle(void);
@@ -4941,11 +4943,6 @@ static void HandleEndTurn_BattleWon(void)
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
 
-u32 GetCurrentMap(void)
-{
-    return (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
-}
-
 static void HandleEndTurn_BattleLost(void)
 {
     gCurrentActionFuncId = 0;
@@ -4977,16 +4974,20 @@ static void HandleEndTurn_BattleLost(void)
     else
     {
         gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
+        CheckWhiteoutOnFogRoute();
 
+    }
+
+    gBattleMainFunc = HandleEndTurn_FinishBattle;
+}
+
+static void CheckWhiteoutOnFogRoute(void) { //Used for PSF Flying Blind 
         if (GetCurrentMap() == MAP_NUM(PSFROUTE1) || GetCurrentMap() == MAP_NUM(PSFROUTE14))
         {
             if (VarGet(VAR_FAINTED_FOG_STATE) < 1){
             VarSet(VAR_FAINTED_FOG_STATE,1);
             }
         }
-    }
-
-    gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
 
 static void HandleEndTurn_RanFromBattle(void)

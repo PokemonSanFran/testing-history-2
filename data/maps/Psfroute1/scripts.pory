@@ -13,6 +13,7 @@ script FlyingBlind_CheckFainted_Script {
 }
 
 script FlyingBlind_Dialogue {
+        lockall
         applymovement(PLAYER,Common_Movement_FaceUp)
         msgbox(gText_FlyingBlind_NotSoEasy)
             
@@ -64,6 +65,7 @@ script FlyingBlind_CheckMoney_Script {
 }
 
 script FlyingBlind_AskDonation_Dialogue {
+        lockall
         showmoneybox(0,0)
         msgbox(gText_FlyingBlind_SpareChangeOldMan,MSGBOX_YESNO)
         if (var(VAR_RESULT) == 1){
@@ -75,12 +77,15 @@ script FlyingBlind_AskDonation_Dialogue {
         }
         hidemoneybox
         closemessage
+        releaseall
         end
 }
 
 script FlyingBlind_WishLuck_Dialogue {
-    msgbox(gText_FlyingBlind_WishLuck_Dialogue)
+    lockall
+    msgbox(gText_FlyingBlind_WishLuck,MSGBOX_NPC)
     closemessage
+    releaseall
     end
 }
 
@@ -126,6 +131,6 @@ text gText_FlyingBlind_AppreciateIt {
 text gText_FlyingBlind_WereAllHurtin {
 	format("I know, we're all hurtin' out here. Have a nice day, ya hear?")
 }
-text gText_FlyingBlind_WishLuck_Dialogue {
+text gText_FlyingBlind_WishLuck{
     format("This fog is rough. Be careful out there, kid.")
 }
