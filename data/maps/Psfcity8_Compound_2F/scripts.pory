@@ -7,7 +7,7 @@ mapscripts Psfcity8_Compound_2F_MapScripts {
 }
 script Swagbag_IncrementIntroState_Script {
     setvar(VAR_LITTLEROOT_INTRO_STATE,3)
-    end
+        end
 }
 
 script RestInBed_Script {
@@ -17,42 +17,61 @@ script RestInBed_Script {
     }
 
     lockall
-    msgbox(gText_RestInBed_Text1)
-    closemessage
-    call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
-    call(Common_EventScript_OutOfCenterPartyHeal)
-    call(RestInBed_Progression_Script)
-    releaseall
-    end
+        msgbox(gText_RestInBed_Text1)
+        closemessage
+        call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
+        call(Common_EventScript_OutOfCenterPartyHeal)
+        call(RestInBed_Progression_Script)
+        closemessage
+        releaseall
+        end
 }
 
 script RestInBed_Progression_Script {
     checkitem(ITEM_FASHION_CASE,1)
-    if (var(VAR_RESULT) == 0 && var(VAR_LITTLEROOT_INTRO_STATE) == 5) {
-        giveitem(ITEM_FASHION_CASE)
-    }
+        if (var(VAR_RESULT) == 0 && var(VAR_LITTLEROOT_INTRO_STATE) == 5) {
+            giveitem(ITEM_FASHION_CASE)
+        }
 
     if (var(VAR_STORYLINE_STATE) == 9){
-        pokenavcall(gText_FerryRepaired)
         addvar(VAR_STORYLINE_STATE,1)
-        waitmessage
+            pokenavcall(blank)
+            waitmessage
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_ThatsDifferent)
+            callnative(ClearMugshot)
+            pokenavcall(gText_FerryRepaired)
+            waitmessage
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_TooBadTheresNoFerry)
+            callnative(ClearMugshot)
+
+            if (var(VAR_FAINTED_FOG_STATE) > 1)
+            {
+                setvar(VAR_0x8000, MUGSHOT_HILDA)
+                    callnative(DrawMugshot)
+                    msgbox(gText_FindAWayThrough)
+                    callnative(ClearMugshot)
+            }
     }
-    }
+}
 
 script FashionCaseReminder_Script {
-//TODO Add FLAG_USED_FASHION_CASE to the fashion case script when I write it... someday.
+    //TODO Add FLAG_USED_FASHION_CASE to the fashion case script when I write it... someday.
     if (!flag(FLAG_USED_FASHION_CASE)) {
         applymovement(PLAYER,Common_Movement_ExclamationMark)
-        waitmovement(0)
-        setflag(FLAG_USED_FASHION_CASE)
-        lockall
-        msgbox(gText_FashionCaseReminder_Text1)
-        special(OpenPokeblockCaseOnFeeder)
-        waitstate
-        msgbox(gText_FashionCaseReminder_Text2)
-        closemessage
-        release  
-        end
+            waitmovement(0)
+            setflag(FLAG_USED_FASHION_CASE)
+            lockall
+            msgbox(gText_FashionCaseReminder_Text1)
+            special(OpenPokeblockCaseOnFeeder)
+            waitstate
+            msgbox(gText_FashionCaseReminder_Text2)
+            closemessage
+            release  
+            end
     } else {
         release
     }
@@ -68,6 +87,27 @@ text gText_FashionCaseReminder_Text1 {
 text gText_FashionCaseReminder_Text2 {
     format("You can change your outfit whenever you like by using the Fashion Case, found in your Bag's Key Items pocket.")
 }
+text blank {
+    format("")
+}
 text gText_FerryRepaired {
-    format("The ferry between Psfcity9 and Psfplace11 has resumed operation. Thank you for your patience.","1_latin",175)
+    format("A message from the PSFSUBWAY System. 
+
+The following service routes are now operational:\p
+
+Psfplace11 to Psfcity17\p
+
+Psfcity17 to Psfcity9\p
+
+We appreciate your patience while the remaining routes are restored.
+","1_latin",175)
+}
+text gText_ThatsDifferent{
+	format("That's a different notification...")
+}
+text gText_TooBadTheresNoFerry{
+	format("Looks like east Psfregion1 is next! Too bad there's no ferry directly to the Gym in Psfcity11...")
+}
+text gText_FindAWayThrough{
+	format("Hopefully, I'll find a way through the fog after that...")
 }

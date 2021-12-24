@@ -22,6 +22,7 @@ RestInBed_Script_1:
 	call PlayersHouse_2F_EventScript_SetWallClock
 	call Common_EventScript_OutOfCenterPartyHeal
 	call RestInBed_Progression_Script
+	closemessage
 	releaseall
 	end
 
@@ -49,9 +50,28 @@ RestInBed_Progression_Script_3:
 	goto RestInBed_Progression_Script_1
 
 RestInBed_Progression_Script_6:
-	pokenavcall gText_FerryRepaired
 	addvar VAR_STORYLINE_STATE, 1
+	pokenavcall blank
 	waitmessage
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_ThatsDifferent
+	callnative ClearMugshot
+	pokenavcall gText_FerryRepaired
+	waitmessage
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_TooBadTheresNoFerry
+	callnative ClearMugshot
+	compare VAR_FAINTED_FOG_STATE, 1
+	goto_if_gt RestInBed_Progression_Script_8
+	return
+
+RestInBed_Progression_Script_8:
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_FindAWayThrough
+	callnative ClearMugshot
 	return
 
 
@@ -86,8 +106,27 @@ gText_FashionCaseReminder_Text2::
 	.string "you like by using the Fashion Case,\l"
 	.string "found in your Bag's Key Items pocket.$"
 
+blank::
+	.string "$"
+
 gText_FerryRepaired::
-	.string "The ferry between Psfcity9 and\n"
-	.string "Psfplace11 has resumed\l"
-	.string "operation. Thank you for your\l"
-	.string "patience.$"
+	.string "A message from the PSFSUBWAY\n"
+	.string "System. The following service\l"
+	.string "routes are now operational:\p"
+	.string "Psfplace11 to Psfcity17\p"
+	.string "Psfcity17 to Psfcity9\p"
+	.string "We appreciate your patience\n"
+	.string "while the remaining routes are\l"
+	.string "restored.$"
+
+gText_ThatsDifferent::
+	.string "That's a different notification...$"
+
+gText_TooBadTheresNoFerry::
+	.string "Looks like east Psfregion1 is next! Too\n"
+	.string "bad there's no ferry directly to the\l"
+	.string "Gym in Psfcity11...$"
+
+gText_FindAWayThrough::
+	.string "Hopefully, I'll find a way through the\n"
+	.string "fog after that...$"
