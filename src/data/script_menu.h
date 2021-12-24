@@ -920,6 +920,17 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_STARTER_SELECT]             = MULTICHOICE(MultichoiceList_StarterSelect), //Starter Select Menu
     [MULTI_STARTER_SUMMARY]             = MULTICHOICE(MultichoiceList_StarterSummarySelect), //Starter Choose / Summary / Cancel Menu
+    [PSFPLACE11_FERRY_DESTINATIONS_VER1] = MULTICHOICE(Psfplace11FerryDestinations_Ver1),
+[PSFPLACE11_FERRY_DESTINATIONS_VER2] = MULTICHOICE(Psfplace11FerryDestinations_Ver2),
+[PSFCITY17_FERRY_DESTINATIONS_VER1] = MULTICHOICE(Psfcity17FerryDestinations_Ver1),
+[PSFCITY17_FERRY_DESTINATIONS_VER2] = MULTICHOICE(Psfcity17FerryDestinations_Ver2),
+[PSFCITY17_FERRY_DESTINATIONS_VER3] = MULTICHOICE(Psfcity17FerryDestinations_Ver3),
+[PSFCITY9_FERRY_DESTINATIONS_VER1] = MULTICHOICE(Psfcity9FerryDestinations_Ver1),
+[PSFCAVE5_FERRY_DESTINATIONS_VER1] = MULTICHOICE(Psfcave5FerryDestinations_Ver1),
+[PSFCAVE5_FERRY_DESTINATIONS_VER2] = MULTICHOICE(Psfcave5FerryDestinations_Ver2),
+[PSFCITY11_FERRY_DESTINATIONS_VER1] = MULTICHOICE(Psfcity11FerryDestinations_Ver1),
+[PSFCITY10_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(Psfcity10FerryDestinations_Ver1),
+[PSFPLACE16_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(Psfplace16FerryDestinations_Ver1),
 };
 
 const u8 *const gStdStrings[] =
@@ -1025,4 +1036,71 @@ static const u8 *const sWirelessOptions_NoRecordMixBerryCrush[] =
     CableClub_Text_YouMayTradeHere,
     CableClub_Text_YouMayBattleHere,
     CableClub_Text_CancelSelectedItem,
+};
+static const struct MenuAction sPsfplace11FerryDestinations_Ver1[] =
+{
+	[FERRY_SELECTION_PSFCITY17] = gText_Psfcity17,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+static const struct MenuAction sPsfplace11FerryDestinations_Ver2[] =
+{
+	[FERRY_SELECTION_PSFCITY17] = gText_Psfcity17,
+	[FERRY_SELECTION_PSFCAVE5] = gText_Psfcave5,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+static const struct MenuAction sPsfcity17FerryDestinations_Ver1[] =
+{
+	[FERRY_SELECTION_PSFPLACE16] = gText_Psfplace16,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+static const struct MenuAction sPsfcity17FerryDestinations_Ver2[] =
+{
+	[FERRY_SELECTION_PSFPLACE16] = gText_Psfplace16,
+	[FERRY_SELECTION_PSFCAVE7] = gText_Psfcave7,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+
+static const struct MenuAction sPsfcity17FerryDestinations_Ver3[] =
+{
+	[FERRY_SELECTION_PSFPLACE16] = gText_Psfplace16,
+	[FERRY_SELECTION_PSFCAVE7] = gText_Psfcave7,
+	[FERRY_SELECTION_PSFPLACE11] = gText_Psfplace11,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+
+static const struct MenuAction sPsfcity9FerryDestinations_Ver1[] =
+{
+	[FERRY_SELECTION_PSFCAVE5] = gText_Psfcave5,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+
+static const struct MenuAction sPsfcave5FerryDestinations_Ver1[] =
+{
+	[FERRY_SELECTION_PSFPLACE11] = gText_Psfplace11,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+
+static const struct MenuAction sPsfcave5FerryDestinations_Ver2[] =
+{
+	[FERRY_SELECTION_PSFPLACE11] = gText_Psfplace11,
+	[FERRY_SELECTION_PSFCITY9] = gText_Psfcity9,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+
+static const struct MenuAction sPsfcity11FerryDestinations_Ver1[] =
+{
+	[FERRY_SELECTION_PSFCITY10] = gText_Psfcity10,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+
+static const struct MenuAction sPsfcity10FerryDestinations_Ver1[] =
+{
+	[FERRY_SELECTION_PSFCITY11] = gText_Psfcity11,
+	[FERRY_SELECTION_EXIT]      = gText_Exit,
+};
+
+static const struct MenuAction sPsfplace16FerryDestinations_Ver1[] =
+{
+	[FERRY_SELECTION_PSFCITY17] = gText_Psfcity17,
+	[FERRY_SELECTION_EXIT]= gText_Exit,
 };

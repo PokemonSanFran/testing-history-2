@@ -1,0 +1,14 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+mapscripts Psfplace11_MapScripts {
+}
+
+script Psfplace11_ChooseFerryDestination_Script {
+    multichoicedefault(18,8,MULTI_SSTIDAL_SLATEPORT_NO_BF,2,FALSE)
+
+    switch (var(VAR_RESULT)){
+        case 0: goto(SlateportCity_Harbor_EventScript_Lilycove)
+        case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+}
+}

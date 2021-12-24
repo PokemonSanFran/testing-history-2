@@ -1,3 +1,128 @@
 Failed to read "src/omni_text.c".
 Failed to read "src/omni_text.h".
-cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald.map -T ld_script.ld -o ../../pokeemerald.elf <objects> <lib>
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/link_rfu_3.o src/link_rfu_3.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/trainer_card.o src/trainer_card.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mystery_gift_menu.o src/mystery_gift_menu.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_ribbons_summary.o src/pokenav_ribbons_summary.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/fldeff_flash.o src/fldeff_flash.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/dodrio_berry_picking.o src/dodrio_berry_picking.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/link.o src/link.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokedex_cry_screen.o src/pokedex_cry_screen.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_menu_handler_gfx.o src/pokenav_menu_handler_gfx.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_conditions_search_results.o src/pokenav_conditions_search_results.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/minigame_countdown.o src/minigame_countdown.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_anim_throw.o src/battle_anim_throw.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_transition_frontier.o src/battle_transition_frontier.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/match_call.o src/match_call.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/trade.o src/trade.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/save_failed_screen.o src/save_failed_screen.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_main_menu.o src/pokenav_main_menu.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/wireless_communication_status_screen.o src/wireless_communication_status_screen.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_match_call_gfx.o src/pokenav_match_call_gfx.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokemon_jump.o src/pokemon_jump.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_ribbons_list.o src/pokenav_ribbons_list.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/frontier_pass.o src/frontier_pass.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokedex_area_region_map.o src/pokedex_area_region_map.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokemon_summary_screen.o src/pokemon_summary_screen.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_list.o src/pokenav_list.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_script_commands.o src/battle_script_commands.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/contest_painting.o src/contest_painting.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/evolution_graphics.o src/evolution_graphics.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/hall_of_fame.o src/hall_of_fame.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/berry_crush.o src/berry_crush.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mystery_gift_view.o src/mystery_gift_view.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/intro_credits_graphics.o src/intro_credits_graphics.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/intro.o src/intro.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/easy_chat.o src/easy_chat.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/main_menu.o src/main_menu.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mugshot.o src/mugshot.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/region_map.o src/region_map.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_region_map.o src/pokenav_region_map.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/script_menu.o src/script_menu.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/evolution_scene.o src/evolution_scene.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/union_room_chat.o src/union_room_chat.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/title_screen.o src/title_screen.c
+In file included from src/script_menu.c:21:
+src/data/script_menu.h:923: `PSFPLACE11_FERRY_DESTINATIONS_VER1' undeclared here (not in a function)
+src/data/script_menu.h:923: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:923: `Psfplace11FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:923: initializer element for `sMultichoiceLists[116].list' is not constant
+src/data/script_menu.h:923: `Psfplace11FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:923: `Psfplace11FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:924: `PSFPLACE11_FERRY_DESTINATIONS_VER2' undeclared here (not in a function)
+src/data/script_menu.h:924: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:924: `Psfplace11FerryDestinations_Ver2' undeclared here (not in a function)
+src/data/script_menu.h:924: initializer element for `sMultichoiceLists[117].list' is not constant
+src/data/script_menu.h:924: `Psfplace11FerryDestinations_Ver2' undeclared here (not in a function)
+src/data/script_menu.h:924: `Psfplace11FerryDestinations_Ver2' undeclared here (not in a function)
+src/data/script_menu.h:925: `PSFCITY17_FERRY_DESTINATIONS_VER1' undeclared here (not in a function)
+src/data/script_menu.h:925: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:925: `Psfcity17FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:925: initializer element for `sMultichoiceLists[118].list' is not constant
+src/data/script_menu.h:925: `Psfcity17FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:925: `Psfcity17FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:926: `PSFCITY17_FERRY_DESTINATIONS_VER2' undeclared here (not in a function)
+src/data/script_menu.h:926: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:926: `Psfcity17FerryDestinations_Ver2' undeclared here (not in a function)
+src/data/script_menu.h:926: initializer element for `sMultichoiceLists[119].list' is not constant
+src/data/script_menu.h:926: `Psfcity17FerryDestinations_Ver2' undeclared here (not in a function)
+src/data/script_menu.h:926: `Psfcity17FerryDestinations_Ver2' undeclared here (not in a function)
+src/data/script_menu.h:927: `PSFCITY17_FERRY_DESTINATIONS_VER3' undeclared here (not in a function)
+src/data/script_menu.h:927: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:927: `Psfcity17FerryDestinations_Ver3' undeclared here (not in a function)
+src/data/script_menu.h:927: initializer element for `sMultichoiceLists[120].list' is not constant
+src/data/script_menu.h:927: `Psfcity17FerryDestinations_Ver3' undeclared here (not in a function)
+src/data/script_menu.h:927: `Psfcity17FerryDestinations_Ver3' undeclared here (not in a function)
+src/data/script_menu.h:928: `PSFCITY9_FERRY_DESTINATIONS_VER1' undeclared here (not in a function)
+src/data/script_menu.h:928: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:928: `Psfcity9FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:928: initializer element for `sMultichoiceLists[121].list' is not constant
+src/data/script_menu.h:928: `Psfcity9FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:928: `Psfcity9FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:929: `PSFCAVE5_FERRY_DESTINATIONS_VER1' undeclared here (not in a function)
+src/data/script_menu.h:929: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:929: `Psfcave5FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:929: initializer element for `sMultichoiceLists[122].list' is not constant
+src/data/script_menu.h:929: `Psfcave5FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:929: `Psfcave5FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:930: `PSFCAVE5_FERRY_DESTINATIONS_VER2' undeclared here (not in a function)
+src/data/script_menu.h:930: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:930: `Psfcave5FerryDestinations_Ver2' undeclared here (not in a function)
+src/data/script_menu.h:930: initializer element for `sMultichoiceLists[123].list' is not constant
+src/data/script_menu.h:930: `Psfcave5FerryDestinations_Ver2' undeclared here (not in a function)
+src/data/script_menu.h:930: `Psfcave5FerryDestinations_Ver2' undeclared here (not in a function)
+src/data/script_menu.h:931: `PSFCITY11_FERRY_DESTINATIONS_VER1' undeclared here (not in a function)
+src/data/script_menu.h:931: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:931: `Psfcity11FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:931: initializer element for `sMultichoiceLists[124].list' is not constant
+src/data/script_menu.h:931: `Psfcity11FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:931: `Psfcity11FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:932: `PSFCITY10_FERRY_DESTINATIONS_VER1' undeclared here (not in a function)
+src/data/script_menu.h:932: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:932: `Psfcity10FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:932: initializer element for `sMultichoiceLists[125].list' is not constant
+src/data/script_menu.h:932: `Psfcity10FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:932: `Psfcity10FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:933: `PSFPLACE16_FERRY_DESTINATIONS_VER1' undeclared here (not in a function)
+src/data/script_menu.h:933: nonconstant array index in initializer for `sMultichoiceLists'
+src/data/script_menu.h:933: `Psfplace16FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:933: initializer element for `sMultichoiceLists[126].list' is not constant
+src/data/script_menu.h:933: `Psfplace16FerryDestinations_Ver1' undeclared here (not in a function)
+src/data/script_menu.h:933: `Psfplace16FerryDestinations_Ver1' undeclared here (not in a function)
+agbcc: warnings being treated as errors
+src/data/script_menu.h:1043: warning: tools/agbcc/bin/agbcc <flags> -o build/emerald/src/list_menu.o src/list_menu.c
+initialization from incompatible pointer type
+src/data/script_menu.h:1048: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1054: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1059: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1066: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1068: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1074: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1080: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1086: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1093: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1099: warning: initialization from incompatible pointer type
+src/data/script_menu.h:1105: warning: initialization from incompatible pointer type
+make: *** [Makefile:344: build/emerald/src/script_menu.o] Error 1
+make: *** Deleting file 'build/emerald/src/script_menu.o'
+make: *** Waiting for unfinished jobs....
