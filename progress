@@ -1,4 +1,8 @@
 * * * * * * * * * * * *
+DEC 23
+Need to move the function at the end of battle_main.c (4980) into its own file / function
+Need to do the same with GetCurrentMap (move into field_effect.c)
+
 DEC 16
 
 

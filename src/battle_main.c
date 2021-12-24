@@ -64,6 +64,10 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "cable_club.h"
+//https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
+#include "printf.h"
+#include "mgba.h"
+#include "../gflib/string_util.h" //for ConvertToAscii()
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -4937,6 +4941,11 @@ static void HandleEndTurn_BattleWon(void)
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
 
+u32 GetCurrentMap(void)
+{
+    return (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
+}
+
 static void HandleEndTurn_BattleLost(void)
 {
     gCurrentActionFuncId = 0;
@@ -4968,6 +4977,13 @@ static void HandleEndTurn_BattleLost(void)
     else
     {
         gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
+
+        if (GetCurrentMap() == MAP_NUM(PSFROUTE1) || GetCurrentMap() == MAP_NUM(PSFROUTE14))
+        {
+            if (VarGet(VAR_FAINTED_FOG_STATE) < 1){
+            VarSet(VAR_FAINTED_FOG_STATE,1);
+            }
+        }
     }
 
     gBattleMainFunc = HandleEndTurn_FinishBattle;
