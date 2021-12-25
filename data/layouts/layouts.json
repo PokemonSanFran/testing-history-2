@@ -4780,6 +4780,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Psfroute1/border.bin",
       "blockdata_filepath": "data/layouts/Psfroute1/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY17",
+      "name": "Psfcity17_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/Psfcity17/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity17/map.bin"
     }
   ]
 }

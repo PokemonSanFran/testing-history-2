@@ -1,14 +1,35 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 
+// VAR_FERRY_STATE is used to track what locations are available via ferry
+// 0: Default, Psfcity17 available
+// 1:
+// 2:
+// 3:
 mapscripts Psfplace11_MapScripts {
 }
 
 script Psfplace11_ChooseFerryDestination_Script {
-    multichoicedefault(18,8,MULTI_SSTIDAL_SLATEPORT_NO_BF,2,FALSE)
+    msgbox(gText_WhereWould,MSGBOX_NPC)
+    goto(Psfplace11_UnlockedDestinations_Script)
+}
 
+script Psfplace11_UnlockedDestinations_Script {
+    switch (var(VAR_FERRY_STATE)){
+        case 0: multichoicedefault(18,8,PSFPLACE11_FERRY_DESTINATIONS_VER1,2,FALSE)
+    }
+
+    goto(Psfplace11_SetDestination_Script)
+}
+
+script Psfplace11_SetDestination_Script {
+    call(SlateportCity_Harbor_EventScript_BoardFerry)
     switch (var(VAR_RESULT)){
-        case 0: goto(SlateportCity_Harbor_EventScript_Lilycove)
+        case 0: warp(MAP_PSFCITY17,3,16)
         case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
 }
+}
+
+text gText_WhereWould {
+    format("Where would you like to go?")
 }
