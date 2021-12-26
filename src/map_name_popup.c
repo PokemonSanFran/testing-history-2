@@ -68,7 +68,7 @@ static const u16 sMapPopUp_PaletteTable[][16] =
 
 static const u16 sMapPopUp_Palette_Underwater[16] = INCBIN_U16("graphics/interface/map_popup/underwater.gbapal");
 
-static const u8 gRegionMapSectionId_To_PopUpThemeIdMapping[] =
+static const u8 sRegionMapSectionId_To_PopUpThemeIdMapping[] =
 {
     [MAPSEC_LITTLEROOT_TOWN] = MAPPOPUP_THEME_WOOD,
     [MAPSEC_OLDALE_TOWN] = MAPPOPUP_THEME_WOOD,
@@ -176,14 +176,14 @@ static const u8 gRegionMapSectionId_To_PopUpThemeIdMapping[] =
     [MAPSEC_TRAINER_HILL - KANTO_MAPSEC_COUNT] = MAPPOPUP_THEME_MARBLE
 };
 
-static const u8 gText_PyramidFloor1[] = _("Pyramid Floor 1");
-static const u8 gText_PyramidFloor2[] = _("Pyramid Floor 2");
-static const u8 gText_PyramidFloor3[] = _("Pyramid Floor 3");
-static const u8 gText_PyramidFloor4[] = _("Pyramid Floor 4");
-static const u8 gText_PyramidFloor5[] = _("Pyramid Floor 5");
-static const u8 gText_PyramidFloor6[] = _("Pyramid Floor 6");
-static const u8 gText_PyramidFloor7[] = _("Pyramid Floor 7");
-static const u8 gText_Pyramid[] = _("Pyramid");
+static const u8 gText_PyramidFloor1[] = _("PYRAMID FLOOR 1");
+static const u8 gText_PyramidFloor2[] = _("PYRAMID FLOOR 2");
+static const u8 gText_PyramidFloor3[] = _("PYRAMID FLOOR 3");
+static const u8 gText_PyramidFloor4[] = _("PYRAMID FLOOR 4");
+static const u8 gText_PyramidFloor5[] = _("PYRAMID FLOOR 5");
+static const u8 gText_PyramidFloor6[] = _("PYRAMID FLOOR 6");
+static const u8 gText_PyramidFloor7[] = _("PYRAMID FLOOR 7");
+static const u8 gText_Pyramid[] = _("PYRAMID");
 
 static const u8 * const gBattlePyramid_MapHeaderStrings[] =
 {
@@ -325,12 +325,12 @@ static void ShowMapNamePopUpWindow(void)
     }
     AddMapNamePopUpWindow();
     LoadMapNamePopUpWindowBg();
-    x = GetStringCenterAlignXOffset(7, withoutPrefixPtr, 80);
+    x = GetStringCenterAlignXOffset(FONT_NARROW, withoutPrefixPtr, 80);
     mapDisplayHeader[0] = EXT_CTRL_CODE_BEGIN;
     mapDisplayHeader[1] = EXT_CTRL_CODE_HIGHLIGHT;
     mapDisplayHeader[2] = TEXT_COLOR_TRANSPARENT;
-    AddTextPrinterParameterized(GetMapNamePopUpWindowId(), 7, mapDisplayHeader, x, 3, 0xFF, NULL);
-    CopyWindowToVram(GetMapNamePopUpWindowId(), 3);
+    AddTextPrinterParameterized(GetMapNamePopUpWindowId(), FONT_NARROW, mapDisplayHeader, x, 3, TEXT_SKIP_DRAW, NULL);
+    CopyWindowToVram(GetMapNamePopUpWindowId(), COPYWIN_FULL);
 }
 
 #define TILE_TOP_EDGE_START 0x21D
@@ -378,7 +378,7 @@ static void LoadMapNamePopUpWindowBg(void)
         else
             regionMapSectionId = 0; // Discard kanto region sections;
     }
-    popUpThemeId = gRegionMapSectionId_To_PopUpThemeIdMapping[regionMapSectionId];
+    popUpThemeId = sRegionMapSectionId_To_PopUpThemeIdMapping[regionMapSectionId];
 
     LoadBgTiles(GetWindowAttribute(popupWindowId, WINDOW_BG), sMapPopUp_OutlineTable[popUpThemeId], 0x400, 0x21D);
     CallWindowFunction(popupWindowId, DrawMapNamePopUpFrame);

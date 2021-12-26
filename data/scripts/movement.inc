@@ -68,10 +68,6 @@ Common_Movement_WalkInPlaceRight:
 	walk_in_place_right
 	step_end
 
-Common_Movement_WalkInPlaceUp:
-    walk_in_place_up
-    step_end
-
 Common_Movement_WalkUp6:
 	walk_up
 	walk_up
@@ -98,6 +94,10 @@ Common_Movement_WalkUp:
 	step_end
 
 @Custom to PSF
+Common_Movement_WalkInPlaceUp:
+    walk_in_place_up
+    step_end
+
 Common_Movement_WalkDown:
 	walk_down
 	step_end

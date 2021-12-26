@@ -1,3 +1,52 @@
+mapjson.cpp: In function ‘std::string generate_map_constants_text(std::string, json11::Json)’:
+mapjson.cpp:396:1: error: version control conflict marker in file
+  396 | <<<<<<< HEAD
+      | ^~~~~~~
+mapjson.cpp:399:1: error: version control conflict marker in file
+  399 | =======
+      | ^~~~~~~
+mapjson.cpp:400:3: error: expected primary-expression before ‘>>’ token
+  400 | >>>>>>> bc43b5c6509965c680b5c3c825d56dbd25354014
+      |   ^~
+mapjson.cpp:400:5: error: expected primary-expression before ‘>>’ token
+  400 | >>>>>>> bc43b5c6509965c680b5c3c825d56dbd25354014
+      |     ^~
+mapjson.cpp:400:7: error: expected primary-expression before ‘>’ token
+  400 | >>>>>>> bc43b5c6509965c680b5c3c825d56dbd25354014
+      |       ^
+mapjson.cpp:400:9: error: ‘bc43b5c6509965c680b5c3c825d56dbd25354014’ was not declared in this scope
+  400 | >>>>>>> bc43b5c6509965c680b5c3c825d56dbd25354014
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mapjson.cpp:442:17: error: ‘map_count_vec’ was not declared in this scope
+  442 |         text << map_count_vec[i] << ", ";               //DEBUG
+      |                 ^~~~~~~~~~~~~
+mapjson.cpp:446:1: error: version control conflict marker in file
+  446 | =======
+      | ^~~~~~~
+mapjson.cpp:386:10: warning: unused variable ‘dir_separator’ [-Wunused-variable]
+  386 |     char dir_separator = file_dir.back();
+      |          ^~~~~~~~~~~~~
+mapjson.cpp:447:5: warning: no return statement in function returning non-void [-Wreturn-type]
+  447 |     }
+      |     ^
+mapjson.cpp: At global scope:
+mapjson.cpp:449:5: error: ‘text’ does not name a type; did you mean ‘atexit’?
+  449 |     text << "#define MAP_GROUPS_COUNT " << group_num << "\n\n";
+      |     ^~~~
+      |     atexit
+mapjson.cpp:450:1: error: version control conflict marker in file
+  450 | >>>>>>> bc43b5c6509965c680b5c3c825d56dbd25354014
+      | ^~~~~~~
+mapjson.cpp:453:5: error: expected unqualified-id before ‘return’
+  453 |     return text.str();
+      |     ^~~~~~
+mapjson.cpp:454:1: error: expected declaration before ‘}’ token
+  454 | }
+      | ^
+make[1]: *** [Makefile:21: mapjson] Error 1
+make: *** [make_tools.mk:11: tools/mapjson] Error 2
+g++ -Wall -std=c++11 -O2 json11.cpp mapjson.cpp -o mapjson 
 Failed to read "src/omni_text.c".
 Failed to read "src/omni_text.h".
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokemon.o src/pokemon.c
 cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald.map -T ld_script.ld -o ../../pokeemerald.elf <objects> <lib>
