@@ -90,7 +90,6 @@ SECTIONS {
         src/battle_controller_opponent.o(.text);
         src/battle_ai_switch_items.o(.text);
         src/battle_controller_link_opponent.o(.text);
-        src/battle_debug.o(.text);
         src/pokemon.o(.text);
         src/trig.o(.text);
         src/random.o(.text);
@@ -340,6 +339,7 @@ SECTIONS {
         src/accept_letter.o(.text);
         src/accept_letter_text.o(.text);
         src/mugshot.o(.text)
+        src/pokemon_debug.o(.text);
     } =0
 
     script_data :
@@ -486,7 +486,6 @@ SECTIONS {
         src/battle_controller_opponent.o(.rodata);
         src/battle_ai_switch_items.o(.rodata);
         src/battle_controller_link_opponent.o(.rodata);
-        src/battle_debug.o(.rodata);
         src/pokemon.o(.rodata);
         src/trig.o(.rodata);
         src/util.o(.rodata);
@@ -709,6 +708,7 @@ SECTIONS {
         src/accept_letter.o(.rodata);
         src/accept_letter_text.o(.rodata);
         src/mugshot.o(.rodata);
+        src/pokemon_debug.o(.rodata);
     } =0
 
     song_data :
