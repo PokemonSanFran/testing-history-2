@@ -62,8 +62,8 @@
 #define VAR_ENIGMA_BERRY_AVAILABLE           0x402D
 #define VAR_WONDER_NEWS_COUNTER              0x402E
 
-#define VAR_FRONTIER_MANIAC_FACILITY         0x402F
-#define VAR_FRONTIER_GAMBLER_CHALLENGE       0x4030
+#define VAR_FRONTIER_MANIAC_FACILITY         0x402F 
+#define VAR_FRONTIER_GAMBLER_CHALLENGE       0x4030 
 #define VAR_FRONTIER_GAMBLER_SET_CHALLENGE   0x4031
 #define VAR_FRONTIER_GAMBLER_AMOUNT_BET      0x4032
 #define VAR_FRONTIER_GAMBLER_STATE           0x4033
@@ -94,7 +94,7 @@
 #define VAR_POKELOT_RND1                     0x404B
 #define VAR_POKELOT_RND2                     0x404C
 #define VAR_POKELOT_PRIZE_PLACE              0x404D
-#define VAR_UNUSED_0x404E                    0x404E // Unused Var
+#define VAR_NATIVERIVALBETA_STATE            0x404E // Previously Unused Var
 #define VAR_LOTAD_SIZE_RECORD                0x404F
 #define VAR_LITTLEROOT_TOWN_STATE            0x4050
 #define VAR_OLDALE_TOWN_STATE                0x4051

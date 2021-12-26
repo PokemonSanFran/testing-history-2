@@ -1,0 +1,217 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFNATIVERIVAL = 1
+
+mapscripts Psfcity17_MapScripts {
+}
+
+script Psfcity17_ChooseFerryDestination_Script {
+    msgbox(gText_WhereWould,MSGBOX_NPC)
+        goto(Psfcity17_UnlockedDestinations_Script)
+}
+
+script Psfcity17_UnlockedDestinations_Script {
+    switch (var(VAR_FERRY_STATE)){
+        case 0: multichoicedefault(18,8,PSFCITY17_FERRY_DESTINATIONS_VER1,2,FALSE)
+    }
+
+    goto(Psfcity17_SetDestination_Script)
+}
+
+script Psfcity17_SetDestination_Script {
+    call(Common_EventScript_FerryDepartIsland)
+        switch (var(VAR_RESULT)){
+            case 0: warp(MAP_PSFPLACE11,8,11)
+            case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+            case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        }
+}
+
+script AssholesHome_PsfnativerivalWalkToPlayer {
+    lockall
+    goto(AssholesHome_PsfnativerivalBeta_Event_Script)
+}
+
+script AssholesHome_PsfnativerivalBeta_Event_Script {
+    switch(var(VAR_FRONTIER_MANIAC_FACILITY)) {
+        case 0: goto(AssholesHome_Psfnativerival_Dialogue)
+        case 1: goto(PsfnativerivalBeta_StartBattle_Script)
+    }
+}
+
+script AssholesHome_Psfnativerival_Dialogue {
+    setvar(VAR_FRONTIER_MANIAC_FACILITY,1)
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_JudgingFromSwarm)
+    applymovement(PLAYER,Common_Movement_ExclamationMark)
+    playse(SE_PIN)
+    playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+    applymovement(PSFNATIVERIVAL,AssholesHomes_WalkToPlayer_Movement)
+    waitmovement(0)
+
+Archer approaches from off-screen from the north, walking towards Zoey.
+
+Zoey's mugshot is annoyed.
+
+ZOEY
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_ReallyHopingLastTime)
+
+Archer's mugshot is neutral.
+
+ARCHER
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_JustCurious)
+
+ZOEY
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_IDoubtYoureGoing)
+
+The Player battles Archer. 
+
+After defeating Archer's first Pokémon:
+
+ARCHER
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_NotAgain)
+
+
+When Archer has one Pokémon left:
+
+ARCHER
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_GuessYouReally)
+
+
+If Archer wins:
+
+ARCHER
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_GuessICanJudge)
+
+
+If Archer loses:
+
+ARCHER
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_ThrowsTheirMoney)
+
+
+CUT TO:
+
+
+EXT. ALAMEDA NAVAL BASE, MIDPOINT
+
+Archer's mugshot is embarrassed.
+
+ARCHER
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_SoMuchForThe)
+
+Zoey's mugshot is surprised.
+
+ZOEY
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_NameInsteadOf)
+
+Archer faces away from the player.
+
+Archer's mugshot is neutral.
+
+ARCHER
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_ILikeBeingPushed)
+
+If the Player has met Sabrina:
+
+Zoey's mugshot is neutral.
+
+ZOEY
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_ISawThatYoure)
+
+Archer faces the player.
+
+Archer's mugshot is serious.
+
+ARCHER
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_YoureRightItsHypocritical)
+
+Archer walks away.
+
+Zoey's mugshot is confused.
+
+ZOEY 
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_AssholesHome_WhatAWeirdKid)
+callnative(ClearMugshot)
+
+text gText_AssholesHome_JudgingFromSwarm {
+	format("Judging from the swarm of transplants on the island this morning, I'm guessing the ferry is fixed.")
+}
+
+text gText_AssholesHome_ReallyHopingLastTime {
+	format("*sigh* I was really hoping last time was the last time. What do you want?")
+}
+
+text gText_AssholesHome_JustCurious {
+	format("Just curious if you're ready for Psfleader4.")
+}
+
+text gText_AssholesHome_IDoubtYoureGoing {
+	format("I doubt you're going to be able to accurately judge that.")
+}
+
+text gText_AssholesHome_NotAgain {
+	format("Not again!")
+}
+
+text gText_AssholesHome_GuessYouReally {
+	format("Guess you really worked for those Badges!")
+}
+
+text gText_AssholesHome_GuessICanJudge {
+	format("Guess I can judge. You're not ready for Psfleader4.")
+}
+
+text gText_AssholesHome_ThrowsTheirMoney {
+	format("Psfbadguy1 throws their money around, and the strong get stronger...")
+}
+
+text gText_AssholesHome_SoMuchForThe {
+	format("So much for the home-court advantage. gg... {PLAYER}, right?")
+}
+
+text gText_AssholesHome_NameInsteadOf {
+	format("Oh wow, a name instead of an insult.")
+}
+
+text gText_AssholesHome_ILikeBeingPushed {
+	format("I like being pushed to my limits like that. You're stronger than the rest of them, that's for sure. See you around.")
+}
+
+text gText_AssholesHome_ISawThatYoure {
+	format("Wait! I saw that you're participating in the League Challenge like the rest of us. After all the insults and endless complaints about it, what am I missing?")
+}
+
+text gText_AssholesHome_YoureRightItsHypocritical {
+	format("You're right, it's hypocritical. But I'm tired of fighting a system from the outside. I'm going to try and change it from the inside out. I'm excited to be able to beat you along the way.")
+}
+
+text gText_AssholesHome_WhatAWeirdKid {
+	format("What a weird kid...")
+}

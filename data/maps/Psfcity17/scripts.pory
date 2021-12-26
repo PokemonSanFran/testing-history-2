@@ -1,0 +1,172 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFNATIVERIVAL = 3
+
+mapscripts Psfcity17_MapScripts {
+}
+
+script Psfcity17_ChooseFerryDestination_Script {
+    msgbox(gText_WhereWould,MSGBOX_NPC)
+        goto(Psfcity17_UnlockedDestinations_Script)
+}
+
+script Psfcity17_UnlockedDestinations_Script {
+    switch (var(VAR_FERRY_STATE)){
+        case 0: multichoicedefault(18,8,PSFCITY17_FERRY_DESTINATIONS_VER1,2,FALSE)
+    }
+
+    goto(Psfcity17_SetDestination_Script)
+}
+
+script Psfcity17_SetDestination_Script {
+    call(Common_EventScript_FerryDepartIsland)
+        switch (var(VAR_RESULT)){
+            case 0: warp(MAP_PSFPLACE11,8,11)
+            case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+            case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        }
+}
+
+script AssholesHome_PsfnativerivalWalkToPlayer {
+        lockall
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        playse(SE_PIN)
+        playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+        waitmovement(0)
+        applymovement(PSFNATIVERIVAL,AssholesHomes_WalkToPlayer_Movement)
+        waitmovement(0)
+        goto(AssholesHome_PsfnativerivalBeta_Event_Script)
+}
+
+script AssholesHome_PsfnativerivalBeta_Event_Script {
+    switch(var(VAR_NATIVERIVALBETA_STATE)) {
+        case 0: goto(AssholesHome_Psfnativerival_Dialogue)
+        case 1: goto(PsfnativerivalBeta_StartBattle_Script)
+    }
+}
+
+script AssholesHome_Psfnativerival_Dialogue {
+    setvar(VAR_NATIVERIVALBETA_STATE,1)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_AssholesHome_JudgingFromSwarm)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AssholesHome_ReallyHopingLastTime)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_AssholesHome_JustCurious)
+        callnative(ClearMugshot)
+        call(Common_EventScript_SaveGame)
+        closemessage
+        goto(PsfnativerivalBeta_StartBattle_Script)
+}
+
+script PsfnativerivalBeta_StartBattle_Script{
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        trainerbattle_single(TRAINER_WALLY_VR_1,gText_AssholesHome_IDoubtYoureGoing,gText_AssholesHome_ThrowsTheirMoney,PsfnativerivalBetaDefeated_Dialogue, NO_MUSIC)
+        closemessage
+        callnative(ClearMugshot)
+}
+
+script PsfnativerivalBetaDefeated_Dialogue {
+    lockall
+        setvar(VAR_NATIVERIVALBETA_STATE,2)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_AssholesHome_SoMuchForThe)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AssholesHome_NameInsteadOf)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_AssholesHome_ILikeBeingPushed)
+
+        if (var(VAR_PSFBADGUY1TOWER_2F_STATE) == 2){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_AssholesHome_ISawThatYoure)
+            setvar(VAR_0x8000, MUGSHOT_HUGH)
+            callnative(DrawMugshot)
+            msgbox(gText_AssholesHome_YoureRightItsHypocritical)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_AssholesHome_WhatAWeirdKid)
+        }
+            callnative(ClearMugshot)
+            closemessage
+            applymovement(PSFNATIVERIVAL,AssholesHome_PsfnativerivalWalkAway_Movement)
+            waitmovement(0)
+            fadedefaultbgm
+            removeobject(PSFNATIVERIVAL)
+            addvar(VAR_STORYLINE_STATE,1)
+            releaseall
+            end
+}
+
+movement AssholesHomes_WalkToPlayer_Movement {
+    walk_up * 4
+    step_end
+}
+
+movement AssholesHome_PsfnativerivalWalkAway_Movement {
+    walk_down * 4
+    step_end
+}
+
+    text gText_AssholesHome_JudgingFromSwarm {
+        format("Judging from the swarm of transplants on the island this morning, I'm guessing the ferry is fixed.")
+    }
+
+    text gText_AssholesHome_ReallyHopingLastTime {
+        format("*sigh* I was really hoping last time was the last time. What do you want?")
+    }
+
+    text gText_AssholesHome_JustCurious {
+        format("Just curious if you're ready for Psfleader4.")
+    }
+
+    text gText_AssholesHome_IDoubtYoureGoing {
+        format("I doubt you're going to be able to accurately judge that.")
+    }
+
+    text gText_AssholesHome_NotAgain {
+        format("Not again!")
+    }
+
+    text gText_AssholesHome_GuessYouReally {
+        format("Guess you really worked for those Badges!")
+    }
+
+    text gText_AssholesHome_GuessICanJudge {
+        format("Guess I can judge. You're not ready for Psfleader4.")
+    }
+
+    text gText_AssholesHome_ThrowsTheirMoney {
+        format("Psfbadguy1 throws their money around, and the strong get stronger...")
+    }
+
+    text gText_AssholesHome_SoMuchForThe {
+        format("So much for the home-court advantage. gg... {PLAYER}, right?")
+    }
+
+    text gText_AssholesHome_NameInsteadOf {
+        format("Oh wow, a name instead of an insult.")
+    }
+
+    text gText_AssholesHome_ILikeBeingPushed {
+        format("I like being pushed to my limits like that. You're stronger than the rest of them, that's for sure. See you around.")
+    }
+
+    text gText_AssholesHome_ISawThatYoure {
+        format("Wait! I saw that you're participating in the League Challenge like the rest of us. After all the insults and endless complaints about it, what am I missing?")
+    }
+
+    text gText_AssholesHome_YoureRightItsHypocritical {
+        format("You're right, it's hypocritical. But I'm tired of fighting a system from the outside. I'm going to try and change it from the inside out. I'm excited to be able to beat you along the way.")
+    }
+
+    text gText_AssholesHome_WhatAWeirdKid {
+        format("(What a weird kid...)")
+    }

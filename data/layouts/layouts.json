@@ -4790,6 +4790,16 @@
       "secondary_tileset": "gTileset_Dewford",
       "border_filepath": "data/layouts/Psfcity17/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity17/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE16",
+      "name": "Psfplace16_Layout",
+      "width": 17,
+      "height": 13,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_IslandHarbor",
+      "border_filepath": "data/layouts/Psfplace16/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace16/map.bin"
     }
   ]
 }

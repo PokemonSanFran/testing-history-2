@@ -804,19 +804,19 @@ static const struct MenuAction sPsfplace11FerryDestinations_Ver2[] =
 };
 static const struct MenuAction sPsfcity17FerryDestinations_Ver1[] =
 {
-	{gText_Psfplace16},
+	{gText_Psfplace11},
 	{gText_Exit},
 };
 static const struct MenuAction sPsfcity17FerryDestinations_Ver2[] =
 {
-	{gText_Psfplace16},
+	{gText_Psfplace11},
 	{gText_Psfcave7},
 	{gText_Exit},
 };
 
 static const struct MenuAction sPsfcity17FerryDestinations_Ver3[] =
 {
-	{gText_Psfplace16},
+	{gText_Psfplace11},
 	{gText_Psfcave7},
 	{gText_Psfplace11},
 	{gText_Exit},
