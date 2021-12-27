@@ -141,7 +141,7 @@
   "warp_events": [
     {
       "x": 12,
-      "y": 15,
+      "y": 16,
       "elevation": 0,
       "dest_map": "MAP_LAVARIDGE_TOWN_HERB_SHOP",
       "dest_warp_id": 0

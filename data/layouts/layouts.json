@@ -4800,6 +4800,46 @@
       "secondary_tileset": "gTileset_IslandHarbor",
       "border_filepath": "data/layouts/Psfplace16/border.bin",
       "blockdata_filepath": "data/layouts/Psfplace16/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE72",
+      "name": "Psfroute72_Layout",
+      "width": 10,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/Psfroute72/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute72/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE12",
+      "name": "Psfroute12_Layout",
+      "width": 10,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_FortreeGym",
+      "border_filepath": "data/layouts/Psfroute12/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute12/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY9",
+      "name": "Psfcity9_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_FortreeGym",
+      "border_filepath": "data/layouts/Psfcity9/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity9/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE63",
+      "name": "Psfroute63_Layout",
+      "width": 10,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_FortreeGym",
+      "border_filepath": "data/layouts/Psfroute63/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute63/map.bin"
     }
   ]
 }

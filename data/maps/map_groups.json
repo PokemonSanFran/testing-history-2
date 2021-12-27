@@ -122,7 +122,11 @@
     "Psfplace13",
     "Psfroute1",
     "Psfcity17",
-    "Psfplace16"
+    "Psfplace16",
+    "Psfroute72",
+    "Psfroute12",
+    "Psfcity9",
+    "Psfroute63"
   ],
   "gMapGroup_IndoorPsfcity8": [
     "Psfcity8_Compound_1F",
