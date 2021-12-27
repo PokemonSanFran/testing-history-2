@@ -1,4 +1,7 @@
 * * * * * * * * * * * *
+DEC 26
+implement https://discordapp.com/channels/442462691542695948/442465020291317760/924891591691337728
+
 DEC 23
 Need to move the function at the end of battle_main.c (4980) into its own file / function
 Need to do the same with GetCurrentMap (move into field_effect.c)
