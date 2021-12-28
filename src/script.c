@@ -287,7 +287,7 @@ u8 *MapHeaderCheckScriptTable(u8 tag)
         u16 varIndex1;
         u16 varIndex2;
         bool8 isFlag; //https://github.com/pret/pokeemerald/wiki/Trigger-Map-Scripts-By-Flag
-        bool8 FlagSet; //https://github.com/pret/pokeemerald/wiki/Trigger-Map-Scripts-By-Flag
+        bool8 flagSet; //https://github.com/pret/pokeemerald/wiki/Trigger-Map-Scripts-By-Flag
 
         // Read first var (or .2byte terminal value)
         varIndex1 = T1_READ_16(ptr);

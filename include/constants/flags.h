@@ -51,8 +51,9 @@
 #define FLAG_HIDE_PSFCITY7_PSFGOODADMIN 0x27 //Previously Unused Flag
 #define FLAG_HIDE_MADISON    0x28 // Previously Unused Flag
 #define FLAG_HIDE_HOUSING_PROTEST_GRUNT 0x29 // Previously Unused Flag
-#define FLAG_HIDE_RABIA_PKMN 0x2A // Previously Unused Flag
+#define FLAG_HIDE_HOUSING_PROTEST_PKMN 0x2A // Previously Unused Flag
 #define FLAG_HIDE_HOUSING_PROTEST_KATELL 0x2B // Previously Unused Flag
+#define FLAG_HIDE_HOUSING_PROTEST_CROWD 0x2C // Previously Unused Flag
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag

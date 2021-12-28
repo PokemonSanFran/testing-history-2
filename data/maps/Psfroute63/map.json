@@ -21,7 +21,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
       "x": 5,
       "y": 15,
       "elevation": 3,
@@ -31,10 +31,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
       "x": 6,
       "y": 16,
       "elevation": 3,
@@ -44,10 +44,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
       "x": 7,
       "y": 17,
       "elevation": 3,
@@ -57,10 +57,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_CONTEST_JUDGE",
       "x": 8,
       "y": 16,
       "elevation": 3,
@@ -73,7 +73,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 9,
       "y": 15,
       "elevation": 3,
@@ -83,51 +83,51 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
+      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_UNION_ROOM_NURSE",
+      "x": 6,
+      "y": 20,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_DOWN_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
-      "x": 6,
+      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+      "x": 9,
       "y": 21,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_DOWN_LEFT",
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_DOWN_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
-      "x": 4,
-      "y": 21,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_DOWN_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
-      "x": 4,
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "x": 9,
       "y": 23,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_DOWN_LEFT",
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_DOWN_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_LINK_RECEPTIONIST",
       "x": 6,
-      "y": 23,
+      "y": 22,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_DOWN_LEFT",
       "movement_range_x": 0,
@@ -135,10 +135,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 1,
       "y": 24,
       "elevation": 3,
@@ -147,11 +147,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "HousingProtest_StartBattle_PostSave_Script",
       "flag": "FLAG_HIDE_HOUSING_PROTEST_GRUNT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
       "x": 2,
       "y": 24,
       "elevation": 3,
@@ -160,7 +160,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "HousingProtest_StartBattle_PostSave_Script",
       "flag": "FLAG_HIDE_HOUSING_PROTEST_GRUNT"
     },
     {
@@ -173,7 +173,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "HousingProtest_TalkToKatell",
       "flag": "FLAG_HIDE_HOUSING_PROTEST_KATELL"
     },
     {
@@ -186,8 +186,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_RABIA_PKMN"
+      "script": "HousingProtest_StartBattle_PostSave_Script",
+      "flag": "FLAG_HIDE_HOUSING_PROTEST_PKMN"
     }
   ],
   "warp_events": [
@@ -199,7 +199,7 @@
       "x": 5,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE101_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     },
@@ -208,7 +208,7 @@
       "x": 6,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE101_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     },
@@ -217,7 +217,7 @@
       "x": 7,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE101_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     },
@@ -226,7 +226,7 @@
       "x": 8,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE101_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     },
@@ -235,7 +235,7 @@
       "x": 9,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE101_STATE",
       "var_value": "0",
       "script": "HousingProtest_StartChanting_Dialogue"
     }

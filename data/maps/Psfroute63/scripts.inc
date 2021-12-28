@@ -1,16 +1,28 @@
 Psfroute63_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute63_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_RESUME, Psfroute63_MapScripts_MAP_SCRIPT_ON_RESUME
 	.byte 0
 
 Psfroute63_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	goto Psfroute63_MapScripts_OnTransition
 	return
 
+Psfroute63_MapScripts_MAP_SCRIPT_ON_RESUME:
+	checktrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_1
+	goto_if 1, Psfroute63_MapScripts_MAP_SCRIPT_ON_RESUME_1
+	return
+
+Psfroute63_MapScripts_MAP_SCRIPT_ON_RESUME_1:
+	goto HousingProtest_CleanUp
+	return
+
 
 Psfroute63_MapScripts_OnTransition::
 	switch VAR_ROUTE101_STATE
 	case 0, Psfroute63_MapScripts_OnTransition_2
-	case 2, Psfroute63_MapScripts_OnTransition_3
+	case 1, Psfroute63_MapScripts_OnTransition_3
+	case 2, Psfroute63_MapScripts_OnTransition_4
+	case 3, Psfroute63_MapScripts_OnTransition_5
 	return
 
 Psfroute63_MapScripts_OnTransition_2:
@@ -18,34 +30,59 @@ Psfroute63_MapScripts_OnTransition_2:
 	return
 
 Psfroute63_MapScripts_OnTransition_3:
-	goto HousingProtest_CleanUp
+	goto HousingProtest_PostSave_ObjectSetUp
+	return
+
+Psfroute63_MapScripts_OnTransition_4:
+	goto HousingProtest_CleanUpKatell
+	return
+
+Psfroute63_MapScripts_OnTransition_5:
+	goto HousingProtest_CleanUpKatell
 	return
 
 
 HousingProtest_ObjectSetUp::
 	setflag FLAG_HIDE_HOUSING_PROTEST_GRUNT
-	setflag FLAG_HIDE_RABIA_PKMN
+	setflag FLAG_HIDE_HOUSING_PROTEST_PKMN
 	setflag FLAG_HIDE_HOUSING_PROTEST_KATELL
 	return
 
 
+HousingProtest_PostSave_ObjectSetUp::
+	setobjectxyperm 12, 1, 18
+	setobjectxyperm 10, 1, 20
+	setobjectxyperm 11, 2, 20
+	return
+
+
 HousingProtest_CleanUp::
+	setobjectmovementtype 4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	setobjectmovementtype 6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	removeobject 1
 	removeobject 2
 	removeobject 3
-	removeobject 4
 	removeobject 5
-	removeobject 6
 	removeobject 7
 	removeobject 8
 	removeobject 9
 	return
 
 
+HousingProtest_CleanUpKatell::
+	setflag FLAG_HIDE_HOUSING_PROTEST_KATELL
+	setvar VAR_ROUTE101_STATE, 3
+	return
+
+
 HousingProtest_StartChanting_Dialogue::
 	locktarget
 	msgbox gText_HousingProtest_RichAndRude
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
 	msgbox gText_HousingProtest_YoureNoGood
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_EverybodySoAngry
@@ -54,19 +91,53 @@ HousingProtest_StartChanting_Dialogue::
 	msgbox gText_HousingProtest_CantKeepPushing
 	msgbox gText_HousingProtest_DeserveToLive
 	goto HousingProtest_KatellWalkOutside
-	end
+	return
+
+
+HousingProtest_MovePlayerIntoPosition::
+	locktarget
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	switch VAR_TEMP_0
+	case 6, HousingProtest_MovePlayerIntoPosition_3
+	case 7, HousingProtest_MovePlayerIntoPosition_4
+	case 8, HousingProtest_MovePlayerIntoPosition_5
+	case 9, HousingProtest_MovePlayerIntoPosition_6
+HousingProtest_MovePlayerIntoPosition_1:
+	waitmovement 0
+	return
+
+HousingProtest_MovePlayerIntoPosition_3:
+	applymovement OBJ_EVENT_ID_PLAYER, HousingProtest_WalkPlayer1Left
+	goto HousingProtest_MovePlayerIntoPosition_1
+
+HousingProtest_MovePlayerIntoPosition_4:
+	applymovement OBJ_EVENT_ID_PLAYER, HousingProtest_WalkPlayer2Left
+	goto HousingProtest_MovePlayerIntoPosition_1
+
+HousingProtest_MovePlayerIntoPosition_5:
+	applymovement OBJ_EVENT_ID_PLAYER, HousingProtest_WalkPlayer3Left
+	goto HousingProtest_MovePlayerIntoPosition_1
+
+HousingProtest_MovePlayerIntoPosition_6:
+	applymovement OBJ_EVENT_ID_PLAYER, HousingProtest_WalkPlayer4Left
+	goto HousingProtest_MovePlayerIntoPosition_1
 
 
 HousingProtest_KatellWalkOutside::
 	opendoor 2, 17
 	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	clearflag FLAG_HIDE_HOUSING_PROTEST_KATELL
 	addobject 12
 	applymovement 12, Common_Movement_WalkDown
+	waitmovement 0
 	applymovement 12, Common_Movement_WalkDown
 	waitmovement 0
 	closedoor 2, 17
 	waitdooranim
 	applymovement 12, Common_Movement_LookAround
+	waitmovement 0
 	applymovement 12, Common_Movement_FaceDown
 	waitmovement 0
 	goto HousingProtest_KatellTalkToCrowd_Dialogue
@@ -75,8 +146,9 @@ HousingProtest_KatellWalkOutside::
 
 HousingProtest_KatellTalkToCrowd_Dialogue::
 	msgbox gText_HousingProtest_WeCanComeTo
-	msgbox gText_HousingProtest_OnlyThingWereUnderstanding
 	closemessage
+	call HousingProtest_MovePlayerIntoPosition
+	clearflag FLAG_HIDE_HOUSING_PROTEST_GRUNT
 	addobject 10
 	addobject 11
 	applymovement 10, HousingProtest_ApproachKatell
@@ -84,7 +156,10 @@ HousingProtest_KatellTalkToCrowd_Dialogue::
 	waitmovement 0
 	applymovement 12, Common_Movement_ExclamationMark
 	playse SE_PIN
+	waitmovement 0
+	msgbox gText_HousingProtest_OnlyThingWereUnderstanding
 	applymovement 12, Common_Movement_WalkUp
+	waitmovement 0
 	applymovement 12, Common_Movement_FaceDown
 	waitmovement 0
 	msgbox gText_HousingProtest_AreYouTrying
@@ -95,28 +170,45 @@ HousingProtest_KatellTalkToCrowd_Dialogue::
 	applymovement 11, Common_Movement_FaceRight
 	msgbox gText_HousingProtest_PeopleCantStayHere
 	closemessage
+	applymovement 1, Common_Movement_FaceLeft
+	applymovement 2, Common_Movement_FaceLeft
+	applymovement 3, Common_Movement_FaceLeft
+	applymovement 4, Common_Movement_FaceLeft
+	applymovement 5, Common_Movement_FaceLeft
+	applymovement 6, Common_Movement_FaceLeft
+	applymovement 7, Common_Movement_FaceLeft
+	applymovement 8, Common_Movement_FaceLeft
+	applymovement 9, Common_Movement_FaceLeft
+	waitmovement 0
 	applymovement 6, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox gText_HousingProtest_Yeah
 	applymovement 3, Common_Movement_ExclamationMark
 	msgbox gText_HousingProtest_LetsDoThis
 	waitmovement 0
-	applymovement 8, Common_Movement_ExclamationMark
+	applymovement 2, Common_Movement_ExclamationMark
 	msgbox gText_HousingProtest_ScrewThese
 	waitmovement 0
 	closemessage
+	applymovement 10, Common_Movement_FaceUp
+	applymovement 11, Common_Movement_FaceUp
+	waitmovement 0
 	playse SE_BALL_OPEN
 	waitfanfare
+	clearflag FLAG_HIDE_HOUSING_PROTEST_PKMN
 	addobject 13
 	playmoncry SPECIES_TURTONATOR, CRY_MODE_ENCOUNTER
 	waitmoncry
-	addobject 13
 	msgbox gText_HousingProtest_ToTryReason
 	msgbox gText_HousingProtest_AintAThreat
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_CutItOut
 	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, HousingProtest_DefendKatell
+	applymovement 12, HousingProtest_StepAside
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_EveryTimeISee
@@ -129,6 +221,9 @@ HousingProtest_KatellTalkToCrowd_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	setvar VAR_ROUTE101_STATE, 1
+	copyobjectxytoperm 12
+	copyobjectxytoperm 10
+	copyobjectxytoperm 11
 	call Common_EventScript_SaveGame
 	closemessage
 	goto HousingProtest_StartBattle_Script
@@ -137,20 +232,83 @@ HousingProtest_KatellTalkToCrowd_Dialogue::
 
 HousingProtest_StartBattle_Script::
 	lockall
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_FineWithMe, gText_HousingProtest_ThisIsNotHowThis, HousingProtest_BattleWin_Dialogue, NO_MUSIC
+	msgbox gText_HousingProtest_FineWithMe
 	closemessage
+	trainerbattle_no_intro TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis
+	goto HousingProtest_BattleWin_Dialogue
+	return
+
+
+HousingProtest_StartBattle_PostSave_Script::
+	locktarget
+	setobjectnewmovementtype 4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	setobjectnewmovementtype 6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
+	msgbox gText_HousingProtest_FineWithMe, MSGBOX_NPC
+	closemessage
+	trainerbattle_no_intro TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis
+	goto HousingProtest_BattleWin_Dialogue
 	return
 
 
 HousingProtest_BattleWin_Dialogue::
+	lockall
+	setobjectnewmovementtype 4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	setobjectnewmovementtype 6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
+	playse SE_BALL_OPEN
+	waitfanfare
+	removeobject 13
 	setvar VAR_ROUTE101_STATE, 2
 	msgbox gText_HousingProtest_YouProudNow
 	msgbox gText_HousingProtest_KeepOnLicking
+	closemessage
+	call HousingProtest_GruntsWalkAwayScript
+	releaseall
+	end
+
+
+HousingProtest_GruntsWalkAwayScript::
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_1, 21
+	goto_if_eq HousingProtest_GruntsWalkAwayScript_2
+	call HousingProtest_MoveGruntsExit
+HousingProtest_GruntsWalkAwayScript_1:
+	waitmovement 0
+	removeobject 11
+	removeobject 10
+	return
+
+HousingProtest_GruntsWalkAwayScript_2:
+	call HousingProtest_MoveGruntsAroundPlayer_Script
+	goto HousingProtest_GruntsWalkAwayScript_1
+
+
+HousingProtest_MoveGruntsExit::
+	applymovement 11, HousingProtest_WalkSouthFromKatell
+	applymovement 10, HousingProtest_WalkSouthFromKatell
+	return
+
+
+HousingProtest_MoveGruntsAroundPlayer_Script::
+	applymovement 10, HousingProtest_WalkAroundPlayer
+	applymovement 11, HousingProtest_WalkAroundPlayer
 	return
 
 
 HousingProtest_TalkToKatell::
-	msgbox gText_HousingProtest_HasATendency
+	compare VAR_ROUTE101_STATE, 2
+	goto_if_eq HousingProtest_TalkToKatell_1
+	goto HousingProtest_TalkToKatellAgain
+	return
+
+HousingProtest_TalkToKatell_1:
+	goto HousingProtest_TalkToKatellFirst
+	return
+
+
+HousingProtest_TalkToKatellFirst::
+	setvar VAR_ROUTE101_STATE, 3
+	lockall
+	msgbox gText_HousingProtest_HasATendency, MSGBOX_NPC
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_WhyWereProtesting
@@ -167,19 +325,72 @@ HousingProtest_TalkToKatell::
 	msgbox gText_HousingProtest_WhatAboutThePolice
 	callnative ClearMugshot
 	msgbox gText_HousingProtest_MoreAndMoreCommon
-	return
+	releaseall
+	end
 
 
 HousingProtest_TalkToKatellAgain::
-	msgbox gText_HousingProtest_ShouldHireThatSecurity
-	return
+	lockall
+	msgbox gText_HousingProtest_ShouldHireThatSecurity, MSGBOX_NPC
+	releaseall
+	end
 
+
+HousingProtest_WalkPlayer1Left:
+	walk_left
+	step_end
+
+HousingProtest_WalkPlayer2Left:
+	walk_left
+	walk_left
+	step_end
+
+HousingProtest_WalkPlayer3Left:
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+HousingProtest_WalkPlayer4Left:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
 
 HousingProtest_ApproachKatell:
 	walk_up
 	walk_up
 	walk_up
 	walk_up
+	step_end
+
+HousingProtest_DefendKatell:
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+HousingProtest_StepAside:
+	walk_left
+	face_down
+	step_end
+
+HousingProtest_WalkSouthFromKatell:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+HousingProtest_WalkAroundPlayer:
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 gText_HousingProtest_RichAndRude::
