@@ -109,7 +109,8 @@
 #define MAP_PSFCITY14_GYM (0 | (4 << 8))
 
 // gMapGroup_IndoorPsfcity11
-#define MAP_PSFCITY11_GYM (0 | (5 << 8))
+#define MAP_PSFCITY11_GYM             (0 | (5 << 8))
+#define MAP_PSFCITY11_BREEDING_CENTER (1 | (5 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (6 << 8))

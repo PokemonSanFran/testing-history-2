@@ -4860,6 +4860,16 @@
       "secondary_tileset": "gTileset_PetalburgGym",
       "border_filepath": "data/layouts/Psfcity11_Gym/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity11_Gym/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY11_BREEDING_CENTER",
+      "name": "Psfcity11_BreedingCenter_Layout",
+      "width": 12,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonDayCare",
+      "border_filepath": "data/layouts/Psfcity11_BreedingCenter/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity11_BreedingCenter/map.bin"
     }
   ]
 }

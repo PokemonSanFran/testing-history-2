@@ -1,0 +1,13 @@
+const PLAYER =  OBJ_EVENT_ID_PLAYER
+const PSFBADADMIN1 = 1
+
+script swagbag2_Psfbadadmin1WalkOutGym {
+    opendoor(10, 8)
+    waitdooranim
+    clearflag(FLAG_HIDE_HOUSING_PROTEST_KATELL)
+    addobject(PSFBADADMIN1)
+    applymovement(PSFBADADMIN1, Common_Movement_WalkDown)
+    waitmovement(0)
+    closedoor(10, 8)
+    waitdooranim
+}
