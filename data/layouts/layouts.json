@@ -4840,6 +4840,26 @@
       "secondary_tileset": "gTileset_FortreeGym",
       "border_filepath": "data/layouts/Psfroute63/border.bin",
       "blockdata_filepath": "data/layouts/Psfroute63/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY11",
+      "name": "Psfcity11_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/Psfcity11/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity11/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY11_GYM",
+      "name": "Psfcity11_Gym_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_PetalburgGym",
+      "border_filepath": "data/layouts/Psfcity11_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity11_Gym/map.bin"
     }
   ]
 }

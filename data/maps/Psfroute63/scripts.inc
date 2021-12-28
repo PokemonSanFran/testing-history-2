@@ -23,6 +23,7 @@ Psfroute63_MapScripts_OnTransition::
 	case 1, Psfroute63_MapScripts_OnTransition_3
 	case 2, Psfroute63_MapScripts_OnTransition_4
 	case 3, Psfroute63_MapScripts_OnTransition_5
+	case 4, Psfroute63_MapScripts_OnTransition_6
 	return
 
 Psfroute63_MapScripts_OnTransition_2:
@@ -41,11 +42,16 @@ Psfroute63_MapScripts_OnTransition_5:
 	goto HousingProtest_CleanUpKatell
 	return
 
+Psfroute63_MapScripts_OnTransition_6:
+	goto SorryAboutMyFriends_CleanUp
+	return
+
 
 HousingProtest_ObjectSetUp::
 	setflag FLAG_HIDE_HOUSING_PROTEST_GRUNT
 	setflag FLAG_HIDE_HOUSING_PROTEST_PKMN
 	setflag FLAG_HIDE_HOUSING_PROTEST_KATELL
+	setflag FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN
 	return
 
 
@@ -71,7 +77,13 @@ HousingProtest_CleanUp::
 
 HousingProtest_CleanUpKatell::
 	setflag FLAG_HIDE_HOUSING_PROTEST_KATELL
+	clearflag FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN
 	setvar VAR_ROUTE101_STATE, 3
+	return
+
+
+SorryAboutMyFriends_CleanUp::
+	setflag FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN
 	return
 
 
@@ -104,6 +116,8 @@ HousingProtest_MovePlayerIntoPosition::
 	case 9, HousingProtest_MovePlayerIntoPosition_6
 HousingProtest_MovePlayerIntoPosition_1:
 	waitmovement 0
+	checktrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_1
+	goto_if 1, HousingProtest_MovePlayerIntoPosition_7
 	return
 
 HousingProtest_MovePlayerIntoPosition_3:
@@ -121,6 +135,11 @@ HousingProtest_MovePlayerIntoPosition_5:
 HousingProtest_MovePlayerIntoPosition_6:
 	applymovement OBJ_EVENT_ID_PLAYER, HousingProtest_WalkPlayer4Left
 	goto HousingProtest_MovePlayerIntoPosition_1
+
+HousingProtest_MovePlayerIntoPosition_7:
+	applymovement OBJ_EVENT_ID_PLAYER, HousingProtest_WalkSouthFromKatell
+	waitmovement 0
+	return
 
 
 HousingProtest_KatellWalkOutside::
@@ -149,6 +168,7 @@ HousingProtest_KatellTalkToCrowd_Dialogue::
 	closemessage
 	call HousingProtest_MovePlayerIntoPosition
 	clearflag FLAG_HIDE_HOUSING_PROTEST_GRUNT
+	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
 	addobject 10
 	addobject 11
 	applymovement 10, HousingProtest_ApproachKatell
@@ -252,6 +272,7 @@ HousingProtest_StartBattle_PostSave_Script::
 
 HousingProtest_BattleWin_Dialogue::
 	lockall
+	addvar VAR_STORYLINE_STATE, 1
 	setobjectnewmovementtype 4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectnewmovementtype 6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	playse SE_BALL_OPEN
@@ -275,6 +296,7 @@ HousingProtest_GruntsWalkAwayScript_1:
 	waitmovement 0
 	removeobject 11
 	removeobject 10
+	fadedefaultbgm
 	return
 
 HousingProtest_GruntsWalkAwayScript_2:
@@ -336,6 +358,141 @@ HousingProtest_TalkToKatellAgain::
 	end
 
 
+SorryAboutMyFriends_WalkToScene_Script::
+	lockall
+	call HousingProtest_MovePlayerIntoPosition
+	goto SorryAboutMyFriends_Intro_Dialogue
+	return
+
+
+SorryAboutMyFriends_Intro_Dialogue::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 14, Common_Movement_FaceRight
+	waitmovement 0
+	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_CongratsOnYourWin
+	goto SorryAboutMyFriends_Continue_Dialogue
+	return
+
+
+SorryAboutMyFriends_TalkToIntro_Dialogue::
+	lockall
+	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_CongratsOnYourWin, MSGBOX_NPC
+	goto SorryAboutMyFriends_Continue_Dialogue
+	return
+
+
+SorryAboutMyFriends_Continue_Dialogue::
+	lockall
+	callnative ClearMugshot
+	setvar VAR_ROUTE101_STATE, 4
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_ItWasWait
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_YourePartOf
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_DidINotMention
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_WaitThatWas
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_UnfortunateWorldview
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_AreYouGuysHelping
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_ThereWasAProtest
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_IWasTheOneWhoShut
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_WhenTheyMentionedPowerful
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_UhHuh
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace
+	msgbox gText_SorryAboutMyFriends_TrackDownTheMembers
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_GotPrettyFiredUp
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_WorldNeedsMoreCompassion
+	callnative ClearMugshot
+	giveitem ITEM_SS_TICKET, 1
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_IGiveYouALot
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_IAppreciateTheGesture
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_WantedYouToGoThere
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_ExcellentPlaceToTrain
+	callnative ClearMugshot
+	compare VAR_FAINTED_FOG_STATE, 0
+	goto_if_gt SorryAboutMyFriends_Continue_Dialogue_2
+SorryAboutMyFriends_Continue_Dialogue_1:
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_FollowSomeMoreLeads
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_AfterWeBattled
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_ThankYouEnjoy
+	callnative ClearMugshot
+	closemessage
+	applymovement 14, SorryAboutMyFriends_WalkSouth
+	waitmovement 0
+	removeobject 14
+	fadedefaultbgm
+	releaseall
+	end
+
+SorryAboutMyFriends_Continue_Dialogue_2:
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_WaitForTheFog
+	callnative ClearMugshot
+	goto SorryAboutMyFriends_Continue_Dialogue_1
+
+
 HousingProtest_WalkPlayer1Left:
 	walk_left
 	step_end
@@ -393,6 +550,15 @@ HousingProtest_WalkAroundPlayer:
 	walk_down
 	step_end
 
+SorryAboutMyFriends_WalkSouth:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
 gText_HousingProtest_RichAndRude::
 	.string "Hey you! Rich and rude! We don't like\n"
 	.string "your attitude!$"
@@ -435,8 +601,9 @@ gText_HousingProtest_AintGonnaBeNothing::
 	.string "we done...$"
 
 gText_HousingProtest_PeopleCantStayHere::
-	.string "If we, the people of Oakland can't stay\n"
-	.string "here, nobody can. Let's bring it down!$"
+	.string "If we, the people of Psfcity9 can't\n"
+	.string "stay here, nobody can. Let's bring it\l"
+	.string "down!$"
 
 gText_HousingProtest_Yeah::
 	.string "Yeah!$"
@@ -481,8 +648,8 @@ gText_HousingProtest_FineWithMe::
 	.string "Flamethrower!$"
 
 gText_HousingProtest_GoPoundSand::
-	.string "Go pound sand, and stay out of Team\n"
-	.string "Rocket's way.$"
+	.string "Go pound sand, and stay out of\n"
+	.string "Psfgoodteam's way.$"
 
 gText_HousingProtest_ThisIsNotHowThis::
 	.string "Shit... this is not how this was supposed\n"
@@ -496,15 +663,15 @@ gText_HousingProtest_KeepOnLicking::
 	.string "Dumbass...$"
 
 gText_HousingProtest_HasATendency::
-	.string "Thank you very much. You're right, Team\n"
-	.string "Rocket has a tendency to pick on the\l"
-	.string "defenseless like me.$"
+	.string "Thank you very much. You're right,\n"
+	.string "Psfgoodteam has a tendency to pick on\l"
+	.string "the defenseless like me.$"
 
 gText_HousingProtest_WhyWereProtesting::
 	.string "Why were people protesting?$"
 
 gText_HousingProtest_EntitledToLiveAnyWhere::
-	.string "Some of the citizens of Oakland feel\n"
+	.string "Some of the citizens of Psfcity9 feel\n"
 	.string "that they are... entitled to live\l"
 	.string "anywhere within their city limits.$"
 
@@ -532,3 +699,117 @@ gText_HousingProtest_MoreAndMoreCommon::
 gText_HousingProtest_ShouldHireThatSecurity::
 	.string "I suppose I should hire that security\n"
 	.string "guard sooner rather than later...$"
+
+gText_SorryAboutMyFriends_CongratsOnYourWin::
+	.string "{PLAYER}. Congrats on your win in\n"
+	.string "Psfcity11.$"
+
+gText_SorryAboutMyFriends_ItWasWait::
+	.string "Thanks! It was - wait.$"
+
+gText_SorryAboutMyFriends_YourePartOf::
+	.string "You're part of Psfgoodteam, right?$"
+
+gText_SorryAboutMyFriends_DidINotMention::
+	.string "*sigh* Yeah, did I not mention that when\n"
+	.string "we met in Psfcity12?$"
+
+gText_SorryAboutMyFriends_WaitThatWas::
+	.string "Wait, that was Psfgoodteam? Everytime\n"
+	.string "I run into them, they're attacking\l"
+	.string "innocent people!$"
+
+gText_SorryAboutMyFriends_UnfortunateWorldview::
+	.string "Actually, that... unfortunate worldview\n"
+	.string "is why I'm here.$"
+
+gText_SorryAboutMyFriends_AreYouGuysHelping::
+	.string "What do you mean? Are you guys helping\n"
+	.string "or hurting people? What's your deal?$"
+
+gText_SorryAboutMyFriends_ThereWasAProtest::
+	.string "There was a protest here earlier that\n"
+	.string "involved the Psfrocketacro, that\l"
+	.string "apparently began to get out of hand.\l"
+	.string "Two memb -$"
+
+gText_SorryAboutMyFriends_IWasTheOneWhoShut::
+	.string "I know. I was the one who shut your\n"
+	.string "goons down. They were trying to\l"
+	.string "destroy this building! Or take it back?\l"
+	.string "I'm not really sure, but it was messed\l"
+	.string "up.$"
+
+gText_SorryAboutMyFriends_WhenTheyMentionedPowerful::
+	.string "Well then, when they mentioned powerful\n"
+	.string "Trainer, I should have assumed. And I'm\l"
+	.string "very very sorry for their actions. We're\l"
+	.string "all about peace and non-violence.$"
+
+gText_SorryAboutMyFriends_UhHuh::
+	.string "Uh huh.$"
+
+gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace::
+	.string "I hope our Psfcity12 work shows that\n"
+	.string "our hearts are in the right place. I'm\l"
+	.string "actually here to fix this mess too.$"
+
+gText_SorryAboutMyFriends_TrackDownTheMembers::
+	.string "I've been trying to track down the\n"
+	.string "Psfgoodteam members that you battled,\l"
+	.string "but they're gone! Their names aren't\l"
+	.string "familiar, so they must be new... I've\l"
+	.string "already reprimanded our Recruitment\l"
+	.string "and Training team. We can't afford to\l"
+	.string "have idiots like that making us look\l"
+	.string "bad.$"
+
+gText_SorryAboutMyFriends_GotPrettyFiredUp::
+	.string "I got pretty fired up when I fought\n"
+	.string "them. I hate when people pick on the\l"
+	.string "defenseless, but I'm glad you're not\l"
+	.string "cool with it either.$"
+
+gText_SorryAboutMyFriends_WorldNeedsMoreCompassion::
+	.string "The world needs more compassion like\n"
+	.string "yours, {PLAYER}. If we could just\l"
+	.string "take the time to learn about each\l"
+	.string "other... actually, I have a good\l"
+	.string "learning opportunity for you. Here.$"
+
+gText_SorryAboutMyFriends_IGiveYouALot::
+	.string "I give you a lot of apology gifts. I hope\n"
+	.string "we stop screwing up and this is the\l"
+	.string "last one!$"
+
+gText_SorryAboutMyFriends_IAppreciateTheGesture::
+	.string "I appreciate the gesture, but doesn't\n"
+	.string "my pass from Psfbadguy1 get me to\l"
+	.string "Psfcave7?$"
+
+gText_SorryAboutMyFriends_WantedYouToGoThere::
+	.string "It could, if Psfbadguy1 wanted you to\n"
+	.string "go there. But now you can!$"
+
+gText_SorryAboutMyFriends_ExcellentPlaceToTrain::
+	.string "You'll learn a lot about Psfregion1 by\n"
+	.string "going, and it's an excellent place to\l"
+	.string "train for the Gym Challenge. With that,\l"
+	.string "you can go to Psfcave7 from the\l"
+	.string "Psfcity17 Ferry.$"
+
+gText_SorryAboutMyFriends_WaitForTheFog::
+	.string "(Guess I should go while I wait for the\n"
+	.string "fog to clear...)$"
+
+gText_SorryAboutMyFriends_FollowSomeMoreLeads::
+	.string "Do you know which way Rabia and Vitomar\n"
+	.string "went? I'm going to follow some more\l"
+	.string "leads.$"
+
+gText_SorryAboutMyFriends_AfterWeBattled::
+	.string "After we battled, they went towards\n"
+	.string "Psfcity17.$"
+
+gText_SorryAboutMyFriends_ThankYouEnjoy::
+	.string "Thank you {PLAYER}. Enjoy Psfcave7.$"

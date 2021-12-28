@@ -1,0 +1,176 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFLEADER2 = 1
+
+//VAR_GYM_4_STATE
+//1: Solved puzzles, ready to fight
+//2: Psfleader4 has walked to the battlefield
+//3: Saved in front of Psfleader4
+//4: Defeated Psfleader4
+//5: Hear explanation of badge and TM
+
+mapscripts Psfcity11_Gym_MapScripts {}
+
+script EnterPsfleader4_Event_Script {
+    switch (var (VAR_GYM_4_STATE)) {
+    case 3:
+        goto(EnterPsfleader4_StartGymBattle_Script)
+    case 4:
+        goto(EnterPsfleader4_PostDefeat1_Dialogue)
+    case 5:
+        goto(EnterPsfleader4_PostDefeat2_Dialogue)
+    default:
+        goto(EnterPsfleader4_Psfleader4Intro_Dialogue)
+    }
+}
+
+script EnterPsfleader4_Psfleader4Intro_Dialogue {
+    setvar(VAR_GYM_4_STATE, 3)
+        setvar(VAR_0x8000, MUGSHOT_MORTY)
+        callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_SuhDude,MSGBOX_NPC)
+		callnative(ClearMugshot)
+
+setvar(VAR_0x8000, MUGSHOT_MORTY)
+callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_EvenBeenBattleResort,MSGBOX_NPC)
+		callnative(ClearMugshot)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_No,MSGBOX_NPC)
+		callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_MORTY)
+        callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_BruhYouveGotta,MSGBOX_NPC)
+		callnative(ClearMugshot)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_OhUhSoundsCool,MSGBOX_NPC)
+		callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_MORTY)
+        callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_ForRealISwear,MSGBOX_NPC)
+		callnative(ClearMugshot)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_SoundsExciting,MSGBOX_NPC)
+		callnative(ClearMugshot)
+    call(Common_EventScript_SaveGame)
+    closemessage
+    goto(EnterPsfleader4_StartGymBattle_Script)
+}
+
+script EnterPsfleader4_StartGymBattle_Script {
+    setvar(VAR_0x8000, MUGSHOT_MORTY)
+    callnative(DrawMugshot)
+    trainerbattle_single(TRAINER_FLANNERY_1, gText_EnterPsfleader4_HaHaNoYeah, gText_EnterPsfleader4_ImNotTrippin, EnterPsfleader4_Psfleader4Defeated_Script, NO_MUSIC)
+}
+
+script EnterPsfleader4_Psfleader4Defeated_Script {
+    lockall
+    setflag(FLAG_BADGE04_GET)
+    setvar(VAR_GYM_4_STATE, 4)
+    setvar(VAR_0x8000, MUGSHOT_MORTY)
+        callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_ThatBattleWasHype,MSGBOX_NPC)
+		callnative(ClearMugshot)
+    msgbox(gText_EnterPsfleader4_BadgeGet)
+    call(Common_EventScript_PlayGymBadgeFanfare)
+    giveitem(ITEM_TM17)
+    closemessage
+    addvar(VAR_STORYLINE_STATE, 1)
+    releaseall
+    end
+}
+
+script EnterPsfleader4_PostDefeat1_Dialogue {
+    setvar(VAR_GYM_4_STATE, 5)
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_MORTY)
+        callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_KeepingTheBabiesSafe,MSGBOX_NPC)
+		callnative(ClearMugshot)
+    closemessage
+    releaseall
+    end
+}
+
+script EnterPsfleader4_PostDefeat2_Dialogue {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_MORTY)
+        callnative(DrawMugshot)
+msgbox(gText_EnterPsfleader4_HeadOutToHoenn,MSGBOX_NPC)
+		callnative(ClearMugshot)
+    closemessage
+    releaseall
+    end
+}
+
+text gText_EnterPsfleader4_SuhDude {
+        format("Suh dude. Name's Psfleader4. Sick job making it up here!")
+}
+
+text gText_EnterPsfleader4_EvenBeenBattleResort {
+        format("Ever been to the Battle Resort?")
+}
+
+text gText_EnterPsfleader4_No {
+        format("... no?")
+}
+
+text gText_EnterPsfleader4_BruhYouveGotta {
+        format("Bruh, you've gotta go some day. Sickest place to breed Pokémon in the WORLD. And I've been to them all. The breeze in your hair, the sand in your tires, the faint smell of ocean... man that shit just hits, you know? Gets me all fired up!")
+}
+
+text gText_EnterPsfleader4_OhUhSoundsCool {
+        format("Oh uh, sounds cool I guess...")
+}
+
+text gText_EnterPsfleader4_ForRealISwear {
+        format("For real, I swear, the Eggs like... prefer the quiet environment or something. Like yeah, these Psfcity11 perks is hella crisp, but there's something about being out there, riding back and forth, that really does it for me. It's like... meditation or some shit, fasho. I be straight GIGGIN'.")
+}
+
+text gText_EnterPsfleader4_SoundsExciting {
+        format("Sounds exciting. Or relaxing? I can't really tell.")
+}
+
+text gText_EnterPsfleader4_HaHaNoYeah {
+        format("Ha ha, no, yeah. All right, I know you didn't come here to talk about Eggs. You tryna scramble?")
+}
+
+text gText_EnterPsfleader4_DamnSonYouHit {
+        format("Damn son, you hit hard!")
+}
+
+text gText_EnterPsfleader4_AightTimeToRep {
+        format("Aight, time to rep Psfcity11 strong!")
+}
+
+text gText_EnterPsfleader4_YourSquadIsHella {
+        format("Your squad is hella over easy.")
+}
+
+text gText_EnterPsfleader4_ImNotTrippin {
+        format("I'm not trippin' - that was hella tight. Harder than a 15-minute egg.")
+}
+
+text gText_EnterPsfleader4_ThatBattleWasHype {
+        format("That battle was HYPE! I fuck with that skill, mad heavy. You earned this.")
+}
+
+text gText_EnterPsfleader4_KeepingTheBabiesSafe {
+        format("Protect is for keeping the babies safe, like an eggshell! Just don't use it over and over and over again, ‘cause it gets real janky, real quick, like an eggshell.")
+}
+
+text gText_EnterPsfleader4_HeadOutToHoenn {
+        format("I'm gonna head out to Hoenn and breed a whole new squad! I can't wait to fight you again, {PLAYER}
+        .")
+}
+
+text gText_EnterPsfleader4_BadgeGet{
+	format("You received the Psfbadge4 Badge!")
+}

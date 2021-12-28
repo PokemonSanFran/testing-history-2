@@ -1,0 +1,40 @@
+{
+  "id": "MAP_PSFCITY11",
+  "name": "Psfcity11",
+  "layout": "LAYOUT_PSFCITY11",
+  "music": "MUS_FALLARBOR",
+  "region_map_section": "MAPSEC_PSFCITY11",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_CITY",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "down",
+      "offset": 5,
+      "map": "MAP_PSFROUTE63"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 10,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_PSFCITY11_GYM",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

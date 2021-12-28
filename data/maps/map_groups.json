@@ -6,6 +6,7 @@
     "gMapGroup_IndoorPsfcity15",
     "gMapGroup_IndoorPsfcity6",
     "gMapGroup_IndoorPsfcity14",
+    "gMapGroup_IndoorPsfcity11",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -126,7 +127,8 @@
     "Psfroute72",
     "Psfroute12",
     "Psfcity9",
-    "Psfroute63"
+    "Psfroute63",
+    "Psfcity11"
   ],
   "gMapGroup_IndoorPsfcity8": [
     "Psfcity8_Compound_1F",
@@ -141,6 +143,9 @@
   ],
   "gMapGroup_IndoorPsfcity14": [
     "Psfcity14_Gym"
+  ],
+  "gMapGroup_IndoorPsfcity11": [
+    "Psfcity11_Gym"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

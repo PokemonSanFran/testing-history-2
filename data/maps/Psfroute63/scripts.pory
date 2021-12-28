@@ -3,6 +3,7 @@ const KATELL = 12
 const RABIA = 10
 const VITOMIR = 11
 const TURTONATOR = 13
+const ARIANA = 14
 
 mapscripts Psfroute63_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -18,239 +19,253 @@ mapscripts Psfroute63_MapScripts {
 
 script Psfroute63_MapScripts_OnTransition {
     switch (var (VAR_ROUTE101_STATE)) {
-    case 0:
-        goto(HousingProtest_ObjectSetUp)
-    case 1:
-        goto(HousingProtest_PostSave_ObjectSetUp)
-    case 2:
-        goto(HousingProtest_CleanUpKatell)
-    case 3:
-        goto(HousingProtest_CleanUpKatell)
+        case 0:
+            goto(HousingProtest_ObjectSetUp)
+        case 1:
+                goto(HousingProtest_PostSave_ObjectSetUp)
+        case 2:
+                    goto(HousingProtest_CleanUpKatell)
+        case 3:
+                        goto(HousingProtest_CleanUpKatell)
+        case 4:
+                            goto(SorryAboutMyFriends_CleanUp)
     }
 }
 
 script HousingProtest_ObjectSetUp {
     setflag(FLAG_HIDE_HOUSING_PROTEST_GRUNT)
-    setflag(FLAG_HIDE_HOUSING_PROTEST_PKMN)
-    setflag(FLAG_HIDE_HOUSING_PROTEST_KATELL)
+        setflag(FLAG_HIDE_HOUSING_PROTEST_PKMN)
+        setflag(FLAG_HIDE_HOUSING_PROTEST_KATELL)
+        setflag(FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN)
 }
 
 script HousingProtest_PostSave_ObjectSetUp {
     setobjectxyperm(KATELL, 1, 18)
-    setobjectxyperm(RABIA, 1, 20)
-    setobjectxyperm(VITOMIR, 2, 20)
+        setobjectxyperm(RABIA, 1, 20)
+        setobjectxyperm(VITOMIR, 2, 20)
 }
 
 script HousingProtest_CleanUp {
     setobjectmovementtype(4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
-    setobjectmovementtype(6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
-    removeobject(1)
-    removeobject(2)
-    removeobject(3)
-    removeobject(5)
-    removeobject(7)
-    removeobject(8)
-    removeobject(9)
+        setobjectmovementtype(6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+        removeobject(1)
+        removeobject(2)
+        removeobject(3)
+        removeobject(5)
+        removeobject(7)
+        removeobject(8)
+        removeobject(9)
 }
 
 script HousingProtest_CleanUpKatell {
     setflag(FLAG_HIDE_HOUSING_PROTEST_KATELL)
-    setvar(VAR_ROUTE101_STATE, 3)
+        clearflag(FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN)
+        setvar(VAR_ROUTE101_STATE, 3)
 }
 
+script SorryAboutMyFriends_CleanUp {
+    setflag(FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN)
+}
 
 script HousingProtest_StartChanting_Dialogue {
     locktarget
-    msgbox(gText_HousingProtest_RichAndRude)
-    applymovement(PLAYER,Common_Movement_FaceUp)
-    waitmovement(0)
-    msgbox(gText_HousingProtest_YoureNoGood)
-    applymovement(PLAYER,Common_Movement_FaceDown)
-    waitmovement(0)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_HousingProtest_EverybodySoAngry)
-    callnative(ClearMugshot)
-    msgbox(gText_HousingProtest_ArentGoingToStand)
-    msgbox(gText_HousingProtest_CantKeepPushing)
-    msgbox(gText_HousingProtest_DeserveToLive)
-    goto(HousingProtest_KatellWalkOutside)
+        msgbox(gText_HousingProtest_RichAndRude)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        waitmovement(0)
+        msgbox(gText_HousingProtest_YoureNoGood)
+        applymovement(PLAYER,Common_Movement_FaceDown)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_HousingProtest_EverybodySoAngry)
+        callnative(ClearMugshot)
+        msgbox(gText_HousingProtest_ArentGoingToStand)
+        msgbox(gText_HousingProtest_CantKeepPushing)
+        msgbox(gText_HousingProtest_DeserveToLive)
+        goto(HousingProtest_KatellWalkOutside)
 }
 
 script HousingProtest_MovePlayerIntoPosition {
-    locktarget
-    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-    switch(var(VAR_TEMP_0)){
-        case 6: applymovement(PLAYER,HousingProtest_WalkPlayer1Left)
-        case 7: applymovement(PLAYER,HousingProtest_WalkPlayer2Left)
-        case 8: applymovement(PLAYER,HousingProtest_WalkPlayer3Left)
-        case 9: applymovement(PLAYER,HousingProtest_WalkPlayer4Left)
-}
+        locktarget
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+        switch(var(VAR_TEMP_0)){
+            case 6: applymovement(PLAYER,HousingProtest_WalkPlayer1Left)
+            case 7: applymovement(PLAYER,HousingProtest_WalkPlayer2Left)
+            case 8: applymovement(PLAYER,HousingProtest_WalkPlayer3Left)
+            case 9: applymovement(PLAYER,HousingProtest_WalkPlayer4Left)
+        }
     waitmovement(0)
+
+        if (defeated(TRAINER_GRUNT_AQUA_HIDEOUT_1)) {
+            applymovement(PLAYER,HousingProtest_WalkSouthFromKatell)
+                waitmovement(0)
+        }
 }
 
 script HousingProtest_KatellWalkOutside {
     opendoor(2, 17)
-    waitdooranim
-    applymovement(PLAYER, Common_Movement_FaceLeft)
-    waitmovement(0)
-    clearflag(FLAG_HIDE_HOUSING_PROTEST_KATELL)
-    addobject(KATELL)
-    applymovement(KATELL, Common_Movement_WalkDown)
-    waitmovement(0)
-    applymovement(KATELL, Common_Movement_WalkDown)
-    waitmovement(0)
-    closedoor(2, 17)
-    waitdooranim
-    applymovement(KATELL, Common_Movement_LookAround)
-    waitmovement(0)
-    applymovement(KATELL, Common_Movement_FaceDown)
-    waitmovement(0)
-    goto(HousingProtest_KatellTalkToCrowd_Dialogue )
+        waitdooranim
+        applymovement(PLAYER, Common_Movement_FaceLeft)
+        waitmovement(0)
+        clearflag(FLAG_HIDE_HOUSING_PROTEST_KATELL)
+        addobject(KATELL)
+        applymovement(KATELL, Common_Movement_WalkDown)
+        waitmovement(0)
+        applymovement(KATELL, Common_Movement_WalkDown)
+        waitmovement(0)
+        closedoor(2, 17)
+        waitdooranim
+        applymovement(KATELL, Common_Movement_LookAround)
+        waitmovement(0)
+        applymovement(KATELL, Common_Movement_FaceDown)
+        waitmovement(0)
+        goto(HousingProtest_KatellTalkToCrowd_Dialogue )
 }
 
 script HousingProtest_KatellTalkToCrowd_Dialogue {
     msgbox(gText_HousingProtest_WeCanComeTo)
-    closemessage
-    call(HousingProtest_MovePlayerIntoPosition)
-    clearflag(FLAG_HIDE_HOUSING_PROTEST_GRUNT)
-    addobject(RABIA)
-    addobject(VITOMIR)
-    applymovement(RABIA, HousingProtest_ApproachKatell)
-    applymovement(VITOMIR, HousingProtest_ApproachKatell)
-    waitmovement(0)
-    applymovement(KATELL, Common_Movement_ExclamationMark)
-    playse(SE_PIN)
-    waitmovement(0)
-    msgbox(gText_HousingProtest_OnlyThingWereUnderstanding)
-    applymovement(KATELL, Common_Movement_WalkUp)
-    waitmovement(0)
-    applymovement(KATELL, Common_Movement_FaceDown)
-    waitmovement(0)
-    msgbox(gText_HousingProtest_AreYouTrying)
-    msgbox(gText_HousingProtest_TheyCantArrest)
-    msgbox(gText_HousingProtest_AintGonnaBeNothing)
-    closemessage
-    applymovement(RABIA, Common_Movement_FaceRight)
-    applymovement(VITOMIR, Common_Movement_FaceRight)
-    msgbox(gText_HousingProtest_PeopleCantStayHere)
-    closemessage
-    applymovement(1, Common_Movement_FaceLeft)
-    applymovement(2, Common_Movement_FaceLeft)
-    applymovement(3, Common_Movement_FaceLeft)
-    applymovement(4, Common_Movement_FaceLeft)
-    applymovement(5, Common_Movement_FaceLeft)
-    applymovement(6, Common_Movement_FaceLeft)
-    applymovement(7, Common_Movement_FaceLeft)
-    applymovement(8, Common_Movement_FaceLeft)
-    applymovement(9, Common_Movement_FaceLeft)
-    waitmovement(0)
-    applymovement(6, Common_Movement_ExclamationMark)
-    waitmovement(0)
-    msgbox(gText_HousingProtest_Yeah)
-    applymovement(3, Common_Movement_ExclamationMark)
-    msgbox(gText_HousingProtest_LetsDoThis)
-    waitmovement(0)
-    applymovement(2, Common_Movement_ExclamationMark)
-    msgbox(gText_HousingProtest_ScrewThese)
-    waitmovement(0)
-    closemessage
-    applymovement(RABIA, Common_Movement_FaceUp)
-    applymovement(VITOMIR, Common_Movement_FaceUp)
-    waitmovement(0)
-    playse(SE_BALL_OPEN)
-    waitfanfare
-    clearflag(FLAG_HIDE_HOUSING_PROTEST_PKMN)
-    addobject(TURTONATOR)
-    playmoncry(SPECIES_TURTONATOR, CRY_MODE_ENCOUNTER)
-    waitmoncry
-    msgbox(gText_HousingProtest_ToTryReason)
-    msgbox(gText_HousingProtest_AintAThreat)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_HousingProtest_CutItOut)
-    callnative(ClearMugshot)
-    closemessage
-    applymovement(PLAYER, HousingProtest_DefendKatell)
-    applymovement(KATELL, HousingProtest_StepAside)
-    waitmovement(0)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_HousingProtest_EveryTimeISee)
-    callnative(ClearMugshot)
-    msgbox(gText_HousingProtest_TheseClowns)
-    msgbox(gText_HousingProtest_ThisAintYourBusiness)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_HousingProtest_ICanTakeBoth)
-    callnative(ClearMugshot)
-    closemessage
-    setvar(VAR_ROUTE101_STATE, 1)
-    copyobjectxytoperm(KATELL)
-    copyobjectxytoperm(RABIA)
-    copyobjectxytoperm(VITOMIR)
-    call(Common_EventScript_SaveGame)
-    closemessage
-    goto(HousingProtest_StartBattle_Script)
+        closemessage
+        call(HousingProtest_MovePlayerIntoPosition)
+        clearflag(FLAG_HIDE_HOUSING_PROTEST_GRUNT)
+        playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
+        addobject(RABIA)
+        addobject(VITOMIR)
+        applymovement(RABIA, HousingProtest_ApproachKatell)
+        applymovement(VITOMIR, HousingProtest_ApproachKatell)
+        waitmovement(0)
+        applymovement(KATELL, Common_Movement_ExclamationMark)
+        playse(SE_PIN)
+        waitmovement(0)
+        msgbox(gText_HousingProtest_OnlyThingWereUnderstanding)
+        applymovement(KATELL, Common_Movement_WalkUp)
+        waitmovement(0)
+        applymovement(KATELL, Common_Movement_FaceDown)
+        waitmovement(0)
+        msgbox(gText_HousingProtest_AreYouTrying)
+        msgbox(gText_HousingProtest_TheyCantArrest)
+        msgbox(gText_HousingProtest_AintGonnaBeNothing)
+        closemessage
+        applymovement(RABIA, Common_Movement_FaceRight)
+        applymovement(VITOMIR, Common_Movement_FaceRight)
+        msgbox(gText_HousingProtest_PeopleCantStayHere)
+        closemessage
+        applymovement(1, Common_Movement_FaceLeft)
+        applymovement(2, Common_Movement_FaceLeft)
+        applymovement(3, Common_Movement_FaceLeft)
+        applymovement(4, Common_Movement_FaceLeft)
+        applymovement(5, Common_Movement_FaceLeft)
+        applymovement(6, Common_Movement_FaceLeft)
+        applymovement(7, Common_Movement_FaceLeft)
+        applymovement(8, Common_Movement_FaceLeft)
+        applymovement(9, Common_Movement_FaceLeft)
+        waitmovement(0)
+        applymovement(6, Common_Movement_ExclamationMark)
+        waitmovement(0)
+        msgbox(gText_HousingProtest_Yeah)
+        applymovement(3, Common_Movement_ExclamationMark)
+        msgbox(gText_HousingProtest_LetsDoThis)
+        waitmovement(0)
+        applymovement(2, Common_Movement_ExclamationMark)
+        msgbox(gText_HousingProtest_ScrewThese)
+        waitmovement(0)
+        closemessage
+        applymovement(RABIA, Common_Movement_FaceUp)
+        applymovement(VITOMIR, Common_Movement_FaceUp)
+        waitmovement(0)
+        playse(SE_BALL_OPEN)
+        waitfanfare
+        clearflag(FLAG_HIDE_HOUSING_PROTEST_PKMN)
+        addobject(TURTONATOR)
+        playmoncry(SPECIES_TURTONATOR, CRY_MODE_ENCOUNTER)
+        waitmoncry
+        msgbox(gText_HousingProtest_ToTryReason)
+        msgbox(gText_HousingProtest_AintAThreat)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_HousingProtest_CutItOut)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PLAYER, HousingProtest_DefendKatell)
+        applymovement(KATELL, HousingProtest_StepAside)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_HousingProtest_EveryTimeISee)
+        callnative(ClearMugshot)
+        msgbox(gText_HousingProtest_TheseClowns)
+        msgbox(gText_HousingProtest_ThisAintYourBusiness)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_HousingProtest_ICanTakeBoth)
+        callnative(ClearMugshot)
+        closemessage
+        setvar(VAR_ROUTE101_STATE, 1)
+        copyobjectxytoperm(KATELL)
+        copyobjectxytoperm(RABIA)
+        copyobjectxytoperm(VITOMIR)
+        call(Common_EventScript_SaveGame)
+        closemessage
+        goto(HousingProtest_StartBattle_Script)
 }
 
 script HousingProtest_StartBattle_Script {
     lockall
-    msgbox(gText_HousingProtest_FineWithMe)
-    closemessage
-    trainerbattle_no_intro(TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis)
-    goto(HousingProtest_BattleWin_Dialogue)
+        msgbox(gText_HousingProtest_FineWithMe)
+        closemessage
+        trainerbattle_no_intro(TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis)
+        goto(HousingProtest_BattleWin_Dialogue)
 }
 
 script HousingProtest_StartBattle_PostSave_Script {
     locktarget
-    setobjectnewmovementtype(4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
-    setobjectnewmovementtype(6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
-    msgbox(gText_HousingProtest_FineWithMe, MSGBOX_NPC)
-    closemessage
-    trainerbattle_no_intro(TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis)
-    goto(HousingProtest_BattleWin_Dialogue)
+        setobjectnewmovementtype(4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+        setobjectnewmovementtype(6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+        msgbox(gText_HousingProtest_FineWithMe, MSGBOX_NPC)
+        closemessage
+        trainerbattle_no_intro(TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis)
+        goto(HousingProtest_BattleWin_Dialogue)
 }
 
 script HousingProtest_BattleWin_Dialogue {
     lockall
-    setobjectnewmovementtype(4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
-    setobjectnewmovementtype(6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
-    playse(SE_BALL_OPEN)
-    waitfanfare
-    removeobject(TURTONATOR)
-    setvar(VAR_ROUTE101_STATE, 2)
-    msgbox(gText_HousingProtest_YouProudNow)
-    msgbox(gText_HousingProtest_KeepOnLicking)
-    closemessage
-    call(HousingProtest_GruntsWalkAwayScript)
-    releaseall
-    end
+        addvar(VAR_STORYLINE_STATE,1)
+        setobjectnewmovementtype(4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+        setobjectnewmovementtype(6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+        playse(SE_BALL_OPEN)
+        waitfanfare
+        removeobject(TURTONATOR)
+        setvar(VAR_ROUTE101_STATE, 2)
+        msgbox(gText_HousingProtest_YouProudNow)
+        msgbox(gText_HousingProtest_KeepOnLicking)
+        closemessage
+        call(HousingProtest_GruntsWalkAwayScript)
+        releaseall
+        end
 }
 
 script HousingProtest_GruntsWalkAwayScript {
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
-    if (var(VAR_TEMP_1) == 21){
-        call(HousingProtest_MoveGruntsAroundPlayer_Script)
-    } else {
-        call(HousingProtest_MoveGruntsExit)
-    }
+        if (var(VAR_TEMP_1) == 21){
+            call(HousingProtest_MoveGruntsAroundPlayer_Script)
+        } else {
+            call(HousingProtest_MoveGruntsExit)
+        }
     waitmovement(0)
-    removeobject(VITOMIR)
-    removeobject(RABIA)
+        removeobject(VITOMIR)
+        removeobject(RABIA)
+        fadedefaultbgm
 }
 
 script HousingProtest_MoveGruntsExit {
     applymovement(VITOMIR, HousingProtest_WalkSouthFromKatell)
-    applymovement(RABIA, HousingProtest_WalkSouthFromKatell)
+        applymovement(RABIA, HousingProtest_WalkSouthFromKatell)
 }
 
 script HousingProtest_MoveGruntsAroundPlayer_Script{
     applymovement(RABIA, HousingProtest_WalkAroundPlayer)
-    applymovement(VITOMIR, HousingProtest_WalkAroundPlayer)
+        applymovement(VITOMIR, HousingProtest_WalkAroundPlayer)
 }
-
 
 script HousingProtest_TalkToKatell {
     if (var(VAR_ROUTE101_STATE) == 2){
@@ -261,82 +276,238 @@ script HousingProtest_TalkToKatell {
 }
 
 script HousingProtest_TalkToKatellFirst {
-    setvar(VAR_ROUTE101_STATE, 3)
-    lockall
-    msgbox(gText_HousingProtest_HasATendency, MSGBOX_NPC)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_HousingProtest_WhyWereProtesting)
-    callnative(ClearMugshot)
-    msgbox(gText_HousingProtest_EntitledToLiveAnyWhere)
-    msgbox(gText_HousingProtest_SubjectToTheSameRent)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_HousingProtest_SoPeopleWereComing)
-    callnative(ClearMugshot)
-    msgbox(gText_HousingProtest_IGuessSo)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_HousingProtest_WhatAboutThePolice)
-    callnative(ClearMugshot)
-    msgbox(gText_HousingProtest_MoreAndMoreCommon)
-    releaseall
-    end
+        setvar(VAR_ROUTE101_STATE, 3)
+        lockall
+        msgbox(gText_HousingProtest_HasATendency, MSGBOX_NPC)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_HousingProtest_WhyWereProtesting)
+        callnative(ClearMugshot)
+        msgbox(gText_HousingProtest_EntitledToLiveAnyWhere)
+        msgbox(gText_HousingProtest_SubjectToTheSameRent)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_HousingProtest_SoPeopleWereComing)
+        callnative(ClearMugshot)
+        msgbox(gText_HousingProtest_IGuessSo)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_HousingProtest_WhatAboutThePolice)
+        callnative(ClearMugshot)
+        msgbox(gText_HousingProtest_MoreAndMoreCommon)
+        releaseall
+        end
 }
 
 script HousingProtest_TalkToKatellAgain {
-    lockall
-    msgbox(gText_HousingProtest_ShouldHireThatSecurity,MSGBOX_NPC)
-    releaseall
-    end
+        lockall
+        msgbox(gText_HousingProtest_ShouldHireThatSecurity,MSGBOX_NPC)
+        releaseall
+        end
+}
+
+script SorryAboutMyFriends_WalkToScene_Script{
+        lockall
+        call(HousingProtest_MovePlayerIntoPosition)
+        goto(SorryAboutMyFriends_Intro_Dialogue)
+}
+
+script SorryAboutMyFriends_Intro_Dialogue {
+        lockall
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        applymovement(ARIANA,Common_Movement_FaceRight)
+        waitmovement(0)
+        playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_CongratsOnYourWin)
+        goto(SorryAboutMyFriends_Continue_Dialogue)
+}
+
+script SorryAboutMyFriends_TalkToIntro_Dialogue {
+        lockall
+        playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_CongratsOnYourWin,MSGBOX_NPC)
+        goto(SorryAboutMyFriends_Continue_Dialogue)
+}
+
+script SorryAboutMyFriends_Continue_Dialogue {
+        lockall
+        callnative(ClearMugshot)
+        setvar(VAR_ROUTE101_STATE,4)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_ItWasWait)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_YourePartOf)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_DidINotMention)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_WaitThatWas)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_UnfortunateWorldview)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_AreYouGuysHelping)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_ThereWasAProtest)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_IWasTheOneWhoShut)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_WhenTheyMentionedPowerful)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_UhHuh)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace)
+        msgbox(gText_SorryAboutMyFriends_TrackDownTheMembers)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_GotPrettyFiredUp)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_WorldNeedsMoreCompassion)
+        callnative(ClearMugshot)
+
+        giveitem(ITEM_SS_TICKET,1)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_IGiveYouALot)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_IAppreciateTheGesture)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_WantedYouToGoThere)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_ExcellentPlaceToTrain)
+        callnative(ClearMugshot)
+
+        if (var(VAR_FAINTED_FOG_STATE) > 0){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_SorryAboutMyFriends_WaitForTheFog)
+                callnative(ClearMugshot)
+        }
+
+    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_FollowSomeMoreLeads)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_AfterWeBattled)
+        callnative(ClearMugshot)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_ThankYouEnjoy)
+        callnative(ClearMugshot)
+        closemessage
+
+
+        applymovement(ARIANA,SorryAboutMyFriends_WalkSouth)
+        waitmovement(0)
+        removeobject(ARIANA)
+        fadedefaultbgm
+        releaseall
+        end
 }
 
 movement HousingProtest_WalkPlayer1Left {
-	walk_left * 1
+    walk_left * 1
         step_end
 }
 
 movement HousingProtest_WalkPlayer2Left {
-	walk_left * 2
+    walk_left * 2
         step_end
 }
 
 movement HousingProtest_WalkPlayer3Left {
-	walk_left * 3
+    walk_left * 3
         step_end
 }
 
 movement HousingProtest_WalkPlayer4Left {
-	walk_left * 4
+    walk_left * 4
         step_end
 }
 
 movement HousingProtest_ApproachKatell {
     walk_up * 4
-    step_end
+        step_end
 }
 
 movement HousingProtest_DefendKatell {
     walk_left * 3
-    face_down
-    step_end
+        face_down
+        step_end
 }
 
 movement HousingProtest_StepAside {
     walk_left
-    face_down
-    step_end
+        face_down
+        step_end
 }
 
 movement HousingProtest_WalkSouthFromKatell {
     walk_down * 4
-    step_end
+        step_end
 }
 
 movement HousingProtest_WalkAroundPlayer {
     walk_right * 2
-    walk_down * 4
-    step_end
+        walk_down * 4
+        step_end
+}
+
+movement SorryAboutMyFriends_WalkSouth {
+    walk_down * 6
+        step_end
 }
 
 text gText_HousingProtest_RichAndRude {
@@ -384,7 +555,7 @@ text gText_HousingProtest_AintGonnaBeNothing {
 }
 
 text gText_HousingProtest_PeopleCantStayHere {
-    format("If we, the people of Oakland can't stay here, nobody can. Let's bring it down!")
+    format("If we, the people of Psfcity9 can't stay here, nobody can. Let's bring it down!")
 }
 
 text gText_HousingProtest_Yeah {
@@ -432,7 +603,7 @@ text gText_HousingProtest_FineWithMe {
 }
 
 text gText_HousingProtest_GoPoundSand {
-    format("Go pound sand, and stay out of Team Rocket's way.")
+    format("Go pound sand, and stay out of Psfgoodteam's way.")
 }
 
 text gText_HousingProtest_ThisIsNotHowThis {
@@ -448,7 +619,7 @@ text gText_HousingProtest_KeepOnLicking {
 }
 
 text gText_HousingProtest_HasATendency {
-    format("Thank you very much. You're right, Team Rocket has a tendency to pick on the defenseless like me.")
+    format("Thank you very much. You're right, Psfgoodteam has a tendency to pick on the defenseless like me.")
 }
 
 text gText_HousingProtest_WhyWereProtesting {
@@ -456,7 +627,7 @@ text gText_HousingProtest_WhyWereProtesting {
 }
 
 text gText_HousingProtest_EntitledToLiveAnyWhere {
-    format("Some of the citizens of Oakland feel that they are... entitled to live anywhere within their city limits.")
+    format("Some of the citizens of Psfcity9 feel that they are... entitled to live anywhere within their city limits.")
 }
 
 text gText_HousingProtest_SubjectToTheSameRent {
@@ -481,4 +652,96 @@ text gText_HousingProtest_MoreAndMoreCommon {
 
 text gText_HousingProtest_ShouldHireThatSecurity {
     format("I suppose I should hire that security guard sooner rather than later...")
+}
+
+text gText_SorryAboutMyFriends_CongratsOnYourWin {
+    format("{PLAYER}. Congrats on your win in Psfcity11.")
+}
+
+text gText_SorryAboutMyFriends_ItWasWait {
+    format("Thanks! It was - wait.")
+}
+
+text gText_SorryAboutMyFriends_YourePartOf {
+    format("You're part of Psfgoodteam, right?")
+}
+
+text gText_SorryAboutMyFriends_DidINotMention {
+    format("*sigh* Yeah, did I not mention that when we met in Psfcity12?")
+}
+
+text gText_SorryAboutMyFriends_WaitThatWas {
+    format("Wait, that was Psfgoodteam? Everytime I run into them, they're attacking innocent people! ")
+}
+
+text gText_SorryAboutMyFriends_UnfortunateWorldview {
+    format("Actually, that... unfortunate worldview is why I'm here. ")
+}
+
+text gText_SorryAboutMyFriends_AreYouGuysHelping {
+    format("What do you mean? Are you guys helping or hurting people? What's your deal?")
+}
+
+text gText_SorryAboutMyFriends_ThereWasAProtest {
+    format("There was a protest here earlier that involved the Psfrocketacro, that apparently began to get out of hand. Two memb -")
+}
+
+text gText_SorryAboutMyFriends_IWasTheOneWhoShut {
+    format("I know. I was the one who shut your goons down. They were trying to destroy this building! Or take it back? I'm not really sure, but it was messed up.")
+}
+
+text gText_SorryAboutMyFriends_WhenTheyMentionedPowerful {
+    format("Well then, when they mentioned powerful Trainer, I should have assumed. And I'm very very sorry for their actions. We're all about peace and non-violence.")
+}
+
+text gText_SorryAboutMyFriends_UhHuh {
+    format("Uh huh.")
+}
+
+text gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace {
+    format("I hope our Psfcity12 work shows that our hearts are in the right place. I'm actually here to fix this mess too.")
+}
+
+text gText_SorryAboutMyFriends_TrackDownTheMembers {
+    format("I've been trying to track down the Psfgoodteam members that you battled, but they're gone! Their names aren't familiar, so they must be new... I've already reprimanded our Recruitment and Training team. We can't afford to have idiots like that making us look bad.")
+}
+
+text gText_SorryAboutMyFriends_GotPrettyFiredUp {
+    format("I got pretty fired up when I fought them. I hate when people pick on the defenseless, but I'm glad you're not cool with it either.")
+}
+
+text gText_SorryAboutMyFriends_WorldNeedsMoreCompassion {
+    format("The world needs more compassion like yours, {PLAYER}. If we could just take the time to learn about each other... actually, I have a good learning opportunity for you. Here.")
+}
+
+text gText_SorryAboutMyFriends_IGiveYouALot {
+    format("I give you a lot of apology gifts. I hope we stop screwing up and this is the last one!")
+}
+
+text gText_SorryAboutMyFriends_IAppreciateTheGesture {
+    format("I appreciate the gesture, but doesn't my pass from Psfbadguy1 get me to Psfcave7?")
+}
+
+text gText_SorryAboutMyFriends_WantedYouToGoThere {
+    format("It could, if Psfbadguy1 wanted you to go there. But now you can!")
+}
+
+text gText_SorryAboutMyFriends_ExcellentPlaceToTrain {
+    format("You'll learn a lot about Psfregion1 by going, and it's an excellent place to train for the Gym Challenge. With that, you can go to Psfcave7 from the Psfcity17 Ferry.")
+}
+
+text gText_SorryAboutMyFriends_WaitForTheFog {
+    format("(Guess I should go while I wait for the fog to clear...)")
+}
+
+text gText_SorryAboutMyFriends_FollowSomeMoreLeads {
+    format("Do you know which way Rabia and Vitomar went? I'm going to follow some more leads.")
+}
+
+text gText_SorryAboutMyFriends_AfterWeBattled {
+    format("After we battled, they went towards Psfcity17.")
+}
+
+text gText_SorryAboutMyFriends_ThankYouEnjoy {
+    format("Thank you {PLAYER}. Enjoy Psfcave7.")
 }
