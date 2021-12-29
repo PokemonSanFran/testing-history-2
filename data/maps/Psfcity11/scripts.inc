@@ -118,6 +118,7 @@ swagbag2_Scene_End_Script::
 	applymovement 1, swagbag2_LeaveCity
 	waitmovement 0
 	removeobject 1
+	setvar VAR_PSFCITY11_STATE, 1
 	fadedefaultbgm
 	releaseall
 	end

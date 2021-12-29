@@ -11,20 +11,34 @@ script Psfcity17_ChooseFerryDestination_Script {
 
 script Psfcity17_UnlockedDestinations_Script {
     switch (var(VAR_FERRY_STATE)){
-        case 0: multichoicedefault(18,8,PSFCITY17_FERRY_DESTINATIONS_VER1,2,FALSE)
+        case 0: goto(Psfcity17_FerryState0_Script)
+        case 1: goto(Psfcity17_FerryState1_Script)
     }
-
-    goto(Psfcity17_SetDestination_Script)
 }
 
-script Psfcity17_SetDestination_Script {
-    call(Common_EventScript_FerryDepartIsland)
-        switch (var(VAR_RESULT)){
-            case 0: warp(MAP_PSFPLACE11,8,11)
-            case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
-            case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+script Psfcity17_FerryState0_Script {
+    multichoicedefault(18,8,PSFCITY17_FERRY_DESTINATIONS_VER1,2,FALSE)
+
+    switch (var(VAR_RESULT)){
+        case 0: warp(MAP_PSFPLACE11,8,11)
+        case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         }
+    call(Common_EventScript_FerryDepartIsland)
 }
+
+script Psfcity17_FerryState1_Script{
+    multichoicedefault(18,8,PSFCITY17_FERRY_DESTINATIONS_VER2,2,FALSE)
+
+    switch (var(VAR_RESULT)){
+        case 0: warp(MAP_PSFPLACE11,8,11)
+        case 1: warp(MAP_PSFCAVE7,15,22)
+        case 2: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        }
+    call(Common_EventScript_FerryDepartIsland)
+}
+
 
 script AssholesHome_PsfnativerivalWalkToPlayer {
         lockall
@@ -65,9 +79,11 @@ script PsfnativerivalBeta_StartBattle_Script{
     lockall
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-        trainerbattle_single(TRAINER_WALLY_VR_1,gText_AssholesHome_IDoubtYoureGoing,gText_AssholesHome_ThrowsTheirMoney,PsfnativerivalBetaDefeated_Dialogue, NO_MUSIC)
+        msgbox(gText_AssholesHome_IDoubtYoureGoing)
         closemessage
         callnative(ClearMugshot)
+        trainerbattle_no_intro(TRAINER_WALLY_VR_1,gText_AssholesHome_ThrowsTheirMoney)
+        goto(PsfnativerivalBetaDefeated_Dialogue)
 }
 
 script PsfnativerivalBetaDefeated_Dialogue {
@@ -106,12 +122,12 @@ script PsfnativerivalBetaDefeated_Dialogue {
 }
 
 movement AssholesHomes_WalkToPlayer_Movement {
-    walk_up * 4
+    walk_down * 4
     step_end
 }
 
 movement AssholesHome_PsfnativerivalWalkAway_Movement {
-    walk_down * 4
+    walk_up * 4
     step_end
 }
 

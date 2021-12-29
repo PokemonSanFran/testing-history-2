@@ -4870,6 +4870,16 @@
       "secondary_tileset": "gTileset_PokemonDayCare",
       "border_filepath": "data/layouts/Psfcity11_BreedingCenter/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity11_BreedingCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCAVE7",
+      "name": "Psfcave7_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/Psfcave7/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcave7/map.bin"
     }
   ]
 }

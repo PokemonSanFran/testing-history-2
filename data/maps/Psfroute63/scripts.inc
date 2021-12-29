@@ -482,6 +482,7 @@ SorryAboutMyFriends_GetBadgeFirst_Dialogue::
 SorryAboutMyFriends_GiveTicket_Script::
 	giveitem ITEM_SS_TICKET, 1
 	setvar VAR_ROUTE101_STATE, 5
+	addvar VAR_FERRY_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_IGiveYouALot

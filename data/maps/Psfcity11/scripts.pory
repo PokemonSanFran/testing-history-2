@@ -138,6 +138,7 @@ script swagbag2_Scene_End_Script{
     applymovement(PSFBADADMIN1,swagbag2_LeaveCity)
     waitmovement(0)
     removeobject(PSFBADADMIN1)
+    setvar(VAR_PSFCITY11_STATE,1)
     fadedefaultbgm
     releaseall
     end

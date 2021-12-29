@@ -15,14 +15,16 @@ script Psfplace11_ChooseFerryDestination_Script {
 
 script Psfplace11_UnlockedDestinations_Script {
     switch (var(VAR_FERRY_STATE)){
-        case 0: multichoicedefault(18,8,PSFPLACE11_FERRY_DESTINATIONS_VER1,2,FALSE)
+        case 0:goto(Psfplace11_FerryState0_Script)
+        case 1:goto(Psfplace11_FerryState0_Script)
+        case 9:goto(Psfplace11_FerryState1_Script)
     }
-
-    goto(Psfplace11_SetDestination_Script)
 }
 
-script Psfplace11_SetDestination_Script {
+script Psfplace11_FerryState0_Script {
+    multichoicedefault(18,8,PSFPLACE11_FERRY_DESTINATIONS_VER1,2,FALSE)
     call(SlateportCity_Harbor_EventScript_BoardFerry)
+
     switch (var(VAR_RESULT)){
         case 0: warp(MAP_PSFCITY17,3,16)
         case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
@@ -30,6 +32,17 @@ script Psfplace11_SetDestination_Script {
 }
 }
 
+script Psfplace11_FerryState1_Script {
+    multichoicedefault(18,8,PSFPLACE11_FERRY_DESTINATIONS_VER2,2,FALSE)
+    call(SlateportCity_Harbor_EventScript_BoardFerry)
+
+    switch (var(VAR_RESULT)){
+        case 0: warp(MAP_PSFCITY17,3,16)
+        case 1: warp(MAP_PSFCITY17,3,16)
+        case 2: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+}
+}
 text gText_WhereWould {
     format("Where would you like to go?")
 }

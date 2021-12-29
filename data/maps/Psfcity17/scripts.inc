@@ -10,35 +10,68 @@ Psfcity17_ChooseFerryDestination_Script::
 
 Psfcity17_UnlockedDestinations_Script::
 	switch VAR_FERRY_STATE
-	case 0, Psfcity17_UnlockedDestinations_Script_3
-Psfcity17_UnlockedDestinations_Script_1:
-	goto Psfcity17_SetDestination_Script
+	case 0, Psfcity17_UnlockedDestinations_Script_2
+	case 1, Psfcity17_UnlockedDestinations_Script_3
+	return
+
+Psfcity17_UnlockedDestinations_Script_2:
+	goto Psfcity17_FerryState0_Script
 	return
 
 Psfcity17_UnlockedDestinations_Script_3:
+	goto Psfcity17_FerryState1_Script
+	return
+
+
+Psfcity17_FerryState0_Script::
 	multichoicedefault 18, 8, PSFCITY17_FERRY_DESTINATIONS_VER1, 2, FALSE
-	goto Psfcity17_UnlockedDestinations_Script_1
-
-
-Psfcity17_SetDestination_Script::
-	call Common_EventScript_FerryDepartIsland
 	switch VAR_RESULT
-	case 0, Psfcity17_SetDestination_Script_2
-	case 1, Psfcity17_SetDestination_Script_3
-	case MULTI_B_PRESSED, Psfcity17_SetDestination_Script_4
+	case 0, Psfcity17_FerryState0_Script_3
+	case 1, Psfcity17_FerryState0_Script_4
+	case MULTI_B_PRESSED, Psfcity17_FerryState0_Script_5
+Psfcity17_FerryState0_Script_1:
+	call Common_EventScript_FerryDepartIsland
 	return
 
-Psfcity17_SetDestination_Script_2:
+Psfcity17_FerryState0_Script_3:
 	warp MAP_PSFPLACE11, 8, 11
+	goto Psfcity17_FerryState0_Script_1
+
+Psfcity17_FerryState0_Script_4:
+	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
+	goto Psfcity17_FerryState0_Script_1
+
+Psfcity17_FerryState0_Script_5:
+	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
+	goto Psfcity17_FerryState0_Script_1
+
+
+Psfcity17_FerryState1_Script::
+	multichoicedefault 18, 8, PSFCITY17_FERRY_DESTINATIONS_VER2, 2, FALSE
+	switch VAR_RESULT
+	case 0, Psfcity17_FerryState1_Script_3
+	case 1, Psfcity17_FerryState1_Script_4
+	case 2, Psfcity17_FerryState1_Script_5
+	case MULTI_B_PRESSED, Psfcity17_FerryState1_Script_6
+Psfcity17_FerryState1_Script_1:
+	call Common_EventScript_FerryDepartIsland
 	return
 
-Psfcity17_SetDestination_Script_3:
-	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
-	return
+Psfcity17_FerryState1_Script_3:
+	warp MAP_PSFPLACE11, 8, 11
+	goto Psfcity17_FerryState1_Script_1
 
-Psfcity17_SetDestination_Script_4:
+Psfcity17_FerryState1_Script_4:
+	warp MAP_PSFCAVE7, 15, 22
+	goto Psfcity17_FerryState1_Script_1
+
+Psfcity17_FerryState1_Script_5:
 	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
-	return
+	goto Psfcity17_FerryState1_Script_1
+
+Psfcity17_FerryState1_Script_6:
+	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
+	goto Psfcity17_FerryState1_Script_1
 
 
 AssholesHome_PsfnativerivalWalkToPlayer::
@@ -90,9 +123,11 @@ PsfnativerivalBeta_StartBattle_Script::
 	lockall
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	trainerbattle_single TRAINER_WALLY_VR_1, gText_AssholesHome_IDoubtYoureGoing, gText_AssholesHome_ThrowsTheirMoney, PsfnativerivalBetaDefeated_Dialogue, NO_MUSIC
+	msgbox gText_AssholesHome_IDoubtYoureGoing
 	closemessage
 	callnative ClearMugshot
+	trainerbattle_no_intro TRAINER_WALLY_VR_1, gText_AssholesHome_ThrowsTheirMoney
+	goto PsfnativerivalBetaDefeated_Dialogue
 	return
 
 
@@ -135,17 +170,17 @@ PsfnativerivalBetaDefeated_Dialogue_2:
 
 
 AssholesHomes_WalkToPlayer_Movement:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 AssholesHome_PsfnativerivalWalkAway_Movement:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 gText_AssholesHome_JudgingFromSwarm::
