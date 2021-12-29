@@ -27,7 +27,7 @@ script Psfroute63_MapScripts_OnTransition {
                     goto(HousingProtest_CleanUpKatell)
         case 3:
                         goto(HousingProtest_CleanUpKatell)
-        case 4:
+        case 5:
                             goto(SorryAboutMyFriends_CleanUp)
     }
 }
@@ -329,6 +329,12 @@ script SorryAboutMyFriends_TalkToIntro_Dialogue {
         playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
+        
+        if (var(VAR_ROUTE101_STATE) == 4){
+            msgbox(gText_SorryAboutMyFriends_WorldNeedsMoreCompassion,MSGBOX_NPC)
+            goto(SorryAboutMyFriends_CheckBadge_Script)
+        }
+
         msgbox(gText_SorryAboutMyFriends_CongratsOnYourWin,MSGBOX_NPC)
         goto(SorryAboutMyFriends_Continue_Dialogue)
 }
@@ -403,7 +409,33 @@ script SorryAboutMyFriends_Continue_Dialogue {
         msgbox(gText_SorryAboutMyFriends_WorldNeedsMoreCompassion)
         callnative(ClearMugshot)
 
+        goto(SorryAboutMyFriends_CheckBadge_Script)
+}
+
+script SorryAboutMyFriends_CheckBadge_Script {
+        lockall
+
+        if (flag(FLAG_BADGE04_GET)){
+            goto(SorryAboutMyFriends_GiveTicket_Script)
+        } else {
+            goto(SorryAboutMyFriends_GetBadgeFirst_Dialogue)
+        }
+}
+
+script SorryAboutMyFriends_GetBadgeFirst_Dialogue{
+        lockall
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_WaitHoldOn)
+        callnative(ClearMugshot)
+        fadedefaultbgm
+        releaseall
+        end
+}
+
+script SorryAboutMyFriends_GiveTicket_Script {
         giveitem(ITEM_SS_TICKET,1)
+        setvar(VAR_ROUTE101_STATE,5)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -447,7 +479,6 @@ script SorryAboutMyFriends_Continue_Dialogue {
         msgbox(gText_SorryAboutMyFriends_ThankYouEnjoy)
         callnative(ClearMugshot)
         closemessage
-
 
         applymovement(ARIANA,SorryAboutMyFriends_WalkSouth)
         waitmovement(0)
@@ -708,6 +739,10 @@ text gText_SorryAboutMyFriends_TrackDownTheMembers {
 
 text gText_SorryAboutMyFriends_GotPrettyFiredUp {
     format("I got pretty fired up when I fought them. I hate when people pick on the defenseless, but I'm glad you're not cool with it either.")
+}
+
+text gText_SorryAboutMyFriends_WaitHoldOn {
+    format("Actually, you should get the Psfbadge4 first. Let's talk when you do.")
 }
 
 text gText_SorryAboutMyFriends_WorldNeedsMoreCompassion {

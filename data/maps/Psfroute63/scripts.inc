@@ -23,7 +23,7 @@ Psfroute63_MapScripts_OnTransition::
 	case 1, Psfroute63_MapScripts_OnTransition_3
 	case 2, Psfroute63_MapScripts_OnTransition_4
 	case 3, Psfroute63_MapScripts_OnTransition_5
-	case 4, Psfroute63_MapScripts_OnTransition_6
+	case 5, Psfroute63_MapScripts_OnTransition_6
 	return
 
 Psfroute63_MapScripts_OnTransition_2:
@@ -383,9 +383,17 @@ SorryAboutMyFriends_TalkToIntro_Dialogue::
 	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
+	compare VAR_ROUTE101_STATE, 4
+	goto_if_eq SorryAboutMyFriends_TalkToIntro_Dialogue_2
+SorryAboutMyFriends_TalkToIntro_Dialogue_1:
 	msgbox gText_SorryAboutMyFriends_CongratsOnYourWin, MSGBOX_NPC
 	goto SorryAboutMyFriends_Continue_Dialogue
 	return
+
+SorryAboutMyFriends_TalkToIntro_Dialogue_2:
+	msgbox gText_SorryAboutMyFriends_WorldNeedsMoreCompassion, MSGBOX_NPC
+	goto SorryAboutMyFriends_CheckBadge_Script
+	goto SorryAboutMyFriends_TalkToIntro_Dialogue_1
 
 
 SorryAboutMyFriends_Continue_Dialogue::
@@ -445,7 +453,35 @@ SorryAboutMyFriends_Continue_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_WorldNeedsMoreCompassion
 	callnative ClearMugshot
+	goto SorryAboutMyFriends_CheckBadge_Script
+	return
+
+
+SorryAboutMyFriends_CheckBadge_Script::
+	lockall
+	goto_if_set FLAG_BADGE04_GET, SorryAboutMyFriends_CheckBadge_Script_1
+	goto SorryAboutMyFriends_GetBadgeFirst_Dialogue
+	return
+
+SorryAboutMyFriends_CheckBadge_Script_1:
+	goto SorryAboutMyFriends_GiveTicket_Script
+	return
+
+
+SorryAboutMyFriends_GetBadgeFirst_Dialogue::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_WaitHoldOn
+	callnative ClearMugshot
+	fadedefaultbgm
+	releaseall
+	end
+
+
+SorryAboutMyFriends_GiveTicket_Script::
 	giveitem ITEM_SS_TICKET, 1
+	setvar VAR_ROUTE101_STATE, 5
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_IGiveYouALot
@@ -463,8 +499,8 @@ SorryAboutMyFriends_Continue_Dialogue::
 	msgbox gText_SorryAboutMyFriends_ExcellentPlaceToTrain
 	callnative ClearMugshot
 	compare VAR_FAINTED_FOG_STATE, 0
-	goto_if_gt SorryAboutMyFriends_Continue_Dialogue_2
-SorryAboutMyFriends_Continue_Dialogue_1:
+	goto_if_gt SorryAboutMyFriends_GiveTicket_Script_2
+SorryAboutMyFriends_GiveTicket_Script_1:
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_FollowSomeMoreLeads
@@ -485,12 +521,12 @@ SorryAboutMyFriends_Continue_Dialogue_1:
 	releaseall
 	end
 
-SorryAboutMyFriends_Continue_Dialogue_2:
+SorryAboutMyFriends_GiveTicket_Script_2:
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_WaitForTheFog
 	callnative ClearMugshot
-	goto SorryAboutMyFriends_Continue_Dialogue_1
+	goto SorryAboutMyFriends_GiveTicket_Script_1
 
 
 HousingProtest_WalkPlayer1Left:
@@ -769,6 +805,10 @@ gText_SorryAboutMyFriends_GotPrettyFiredUp::
 	.string "them. I hate when people pick on the\l"
 	.string "defenseless, but I'm glad you're not\l"
 	.string "cool with it either.$"
+
+gText_SorryAboutMyFriends_WaitHoldOn::
+	.string "Actually, you should get the Psfbadge4\n"
+	.string "first. Let's talk when you do.$"
 
 gText_SorryAboutMyFriends_WorldNeedsMoreCompassion::
 	.string "The world needs more compassion like\n"

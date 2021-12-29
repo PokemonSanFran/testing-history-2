@@ -55,7 +55,7 @@
 #define FLAG_HIDE_HOUSING_PROTEST_KATELL 0x2B // Previously Unused Flag
 #define FLAG_HIDE_HOUSING_PROTEST_CROWD 0x2C // Previously Unused Flag
 #define FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN 0x2D // Previously Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
+#define FLAG_HIDE_SWAGBAG2_PSFBADADMIN1 0x2E// Previously Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
 #define FLAG_UNUSED_0x030    0x30 // Unused Flag
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag
