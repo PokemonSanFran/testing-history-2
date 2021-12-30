@@ -192,6 +192,7 @@ script YoungPadawan_Intro_Dialogue {
     lockall
         clearflag(FLAG_HIDE_STORYSOFAR_PSFELITE1)
         addobject(PSFELITE1)
+    playbgm(MUS_ENCOUNTER_ELITE_FOUR,TRUE)
     applymovement(PSFELITE1,YoungPadawan_GetOffBoat)
     waitmovement(0)
 
@@ -250,24 +251,24 @@ setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_YoungPadawan_MakesSenseYeah)
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_YoungPadawan_YouveGotAGoodSpirit)
-callnative(ClearMugshot)
-closemessage
 goto(YoungPadawan_StartBattle_Script)
 }
 
 script YoungPadawan_StartBattle_Script{
 
-trainerbattle_no_intro(TRAINER_SIDNEY,gText_YoungPadawan_ThisAintHowItWas)
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_YoungPadawan_YouveGotAGoodSpirit)
+callnative(ClearMugshot)
+closemessage
+trainerbattle_continue_after_lose(TRAINER_SIDNEY,gText_YoungPadawan_DontBeatYourselfUp)
 goto(YoungPadawan_PostBattle_Dialogue)
 }
 
 script YoungPadawan_PostBattle_Dialogue{
 lockall
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
+//setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+//callnative(DrawMugshot)
 
 if (defeated(TRAINER_SIDNEY)){
 msgbox(gText_YoungPadawan_DidYouHack)
@@ -289,6 +290,7 @@ giveitem(ITEM_POWER_LENS,1)
 giveitem(ITEM_POWER_WEIGHT,1)
 giveitem(ITEM_POWER_BELT,1)
 }else {
+    special(HealPlayerParty)
     msgbox(gText_YoungPadawan_KeepTraining)
 
 setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -302,6 +304,8 @@ msgbox(gText_YoungPadawan_YeahTotally)
 setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
 callnative(DrawMugshot)
 msgbox(gText_YoungPadawan_UntilThenHeres)
+closemessage
+callnative(ClearMugshot)
 }
 giveitem(ITEM_GO_GOGGLES,1)
 
@@ -312,6 +316,7 @@ callnative(ClearMugshot)
 closemessage
 
 applymovement(PSFELITE1,YoungPadawan_WalkUpStairs)
+fadedefaultbgm
 applymovement(PLAYER,YoungPadawan_GetOutOfWay)
 waitmovement(0)
 removeobject(PSFELITE1)
@@ -319,6 +324,29 @@ setvar(VAR_PSFCAVE7_STATE,2)
 setvar(VAR_PSFCAVE7_EXHIBIT_STATE,4)
 releaseall
 end
+}
+
+script Psfcave7_ChooseFerryDestination_Script {
+    msgbox(gText_WhereWould,MSGBOX_NPC)
+    goto(Psfcave7_UnlockedDestinations_Script)
+}
+
+script Psfcave7_UnlockedDestinations_Script {
+    switch (var(VAR_FERRY_STATE)){
+        default:goto(Psfcave7_FerryState0_Script)
+    }
+}
+
+script Psfcave7_FerryState0_Script {
+    multichoicedefault(18,8,PSFCAVE7_FERRY_DESTINATIONS_VER1,0,FALSE)
+    call(SlateportCity_Harbor_EventScript_BoardFerry)
+
+    switch (var(VAR_RESULT)){
+        case 0: warp(MAP_PSFPLACE13,5,6)
+        case 1: warp(MAP_PSFCITY17,3,16)
+        case 2: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+}
 }
 
 movement YoungPadawan_GetOffBoat {
@@ -341,16 +369,13 @@ movement YoungPadawan_WalkBackToPlayer {
 	step_end
 }
 movement YoungPadawan_WalkUpStairs {
-    walk_up * 6
+    walk_up * 7
 	step_end
 }
 movement YoungPadawan_GetOutOfWay {
     walk_left
     delay_16
     walk_right
-    face_up
-    delay_16
-    walk_down
     face_up
 	step_end
 }
@@ -432,7 +457,7 @@ format("Keep training! Once you learn a little bit more about the world, let's b
 }
 
 text gText_YoungPadawan_IveNeverBattled {
-format("To Self: I've never battled anybody so strong!")
+format("(I've never battled anybody so strong!)")
 }
 
 text gText_YoungPadawan_YeahTotally {

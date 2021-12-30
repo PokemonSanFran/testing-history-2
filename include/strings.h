@@ -3085,5 +3085,6 @@ extern const u8 gText_Psfplace11[];
 extern const u8 gText_Psfcity9[];
 extern const u8 gText_Psfcity10[];
 extern const u8 gText_Psfcity11[];
+extern const u8 gText_Psfplace13[];
 
 #endif // GUARD_STRINGS_H

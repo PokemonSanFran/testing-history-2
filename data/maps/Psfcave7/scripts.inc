@@ -262,6 +262,7 @@ YoungPadawan_Intro_Dialogue::
 	lockall
 	clearflag FLAG_HIDE_STORYSOFAR_PSFELITE1
 	addobject 9
+	playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
 	applymovement 9, YoungPadawan_GetOffBoat
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
@@ -306,27 +307,26 @@ YoungPadawan_Intro_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_MakesSenseYeah
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_YouveGotAGoodSpirit
-	callnative ClearMugshot
-	closemessage
 	goto YoungPadawan_StartBattle_Script
 	return
 
 
 YoungPadawan_StartBattle_Script::
-	trainerbattle_no_intro TRAINER_SIDNEY, gText_YoungPadawan_ThisAintHowItWas
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_YouveGotAGoodSpirit
+	callnative ClearMugshot
+	closemessage
+	trainerbattle_continue_after_lose TRAINER_SIDNEY, gText_YoungPadawan_DontBeatYourselfUp
 	goto YoungPadawan_PostBattle_Dialogue
 	return
 
 
 YoungPadawan_PostBattle_Dialogue::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
 	checktrainerflag TRAINER_SIDNEY
 	goto_if 1, YoungPadawan_PostBattle_Dialogue_2
+	special HealPlayerParty
 	msgbox gText_YoungPadawan_KeepTraining
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -337,6 +337,8 @@ YoungPadawan_PostBattle_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_UntilThenHeres
+	closemessage
+	callnative ClearMugshot
 YoungPadawan_PostBattle_Dialogue_1:
 	giveitem ITEM_GO_GOGGLES, 1
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
@@ -345,6 +347,7 @@ YoungPadawan_PostBattle_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	applymovement 9, YoungPadawan_WalkUpStairs
+	fadedefaultbgm
 	applymovement OBJ_EVENT_ID_PLAYER, YoungPadawan_GetOutOfWay
 	waitmovement 0
 	removeobject 9
@@ -370,6 +373,45 @@ YoungPadawan_PostBattle_Dialogue_2:
 	giveitem ITEM_POWER_WEIGHT, 1
 	giveitem ITEM_POWER_BELT, 1
 	goto YoungPadawan_PostBattle_Dialogue_1
+
+
+Psfcave7_ChooseFerryDestination_Script::
+	msgbox gText_WhereWould, MSGBOX_NPC
+	goto Psfcave7_UnlockedDestinations_Script
+	return
+
+
+Psfcave7_UnlockedDestinations_Script::
+	switch VAR_FERRY_STATE
+	goto Psfcave7_FerryState0_Script
+	return
+
+
+Psfcave7_FerryState0_Script::
+	multichoicedefault 18, 8, PSFCAVE7_FERRY_DESTINATIONS_VER1, 0, FALSE
+	call SlateportCity_Harbor_EventScript_BoardFerry
+	switch VAR_RESULT
+	case 0, Psfcave7_FerryState0_Script_2
+	case 1, Psfcave7_FerryState0_Script_3
+	case 2, Psfcave7_FerryState0_Script_4
+	case MULTI_B_PRESSED, Psfcave7_FerryState0_Script_5
+	return
+
+Psfcave7_FerryState0_Script_2:
+	warp MAP_PSFPLACE13, 5, 6
+	return
+
+Psfcave7_FerryState0_Script_3:
+	warp MAP_PSFCITY17, 3, 16
+	return
+
+Psfcave7_FerryState0_Script_4:
+	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
+	return
+
+Psfcave7_FerryState0_Script_5:
+	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
+	return
 
 
 YoungPadawan_GetOffBoat:
@@ -402,15 +444,13 @@ YoungPadawan_WalkUpStairs:
 	walk_up
 	walk_up
 	walk_up
+	walk_up
 	step_end
 
 YoungPadawan_GetOutOfWay:
 	walk_left
 	delay_16
 	walk_right
-	face_up
-	delay_16
-	walk_down
 	face_up
 	step_end
 
@@ -496,8 +536,7 @@ gText_YoungPadawan_KeepTraining::
 	.string "again.$"
 
 gText_YoungPadawan_IveNeverBattled::
-	.string "To Self: I've never battled anybody so\n"
-	.string "strong!$"
+	.string "(I've never battled anybody so strong!)$"
 
 gText_YoungPadawan_YeahTotally::
 	.string "Yeah, totally!$"

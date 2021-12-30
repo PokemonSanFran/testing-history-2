@@ -733,6 +733,8 @@
 	.elseif \type == TRAINER_BATTLE_HILL
 		.4byte \pointer1 @ text
 		.4byte \pointer2 @ text
+	.elseif \type == TRAINER_BATTLE_CONTINUE_AFTER_LOSE
+		.4byte \pointer1 @ text
 	.endif
 	.endm
 
@@ -749,6 +751,7 @@
 	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, \trainer, 0, \intro_text, \lose_text, \event_script
 	.endif
 	.endm
+
 
 	@ Starts a double trainer battle. Takes a trainer, intro text, loss text, text for when you have too few pokemon
 	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
@@ -777,6 +780,10 @@
 	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, \trainer, 0, \lose_text
 	.endm
 
+    @ Continue a script after losing. Skips intro text
+    .macro trainerbattle_continue_after_lose trainer:req, lose_text:req
+    trainerbattle TRAINER_BATTLE_CONTINUE_AFTER_LOSE, \trainer, 0, \lose_text
+    .endm
 
 	@ Starts a trainer battle using the battle information stored in RAM (usually by the scripts in trainer_battle.inc, which
 	@ are run by trainerbattle), and blocks script execution until the battle finishes.

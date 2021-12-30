@@ -64,7 +64,7 @@ Debug_Script_1::
 	end
 
 Debug_Script_2::
-    call TheStorySoFar_CheckNumberDefeated_Script
+    call YoungPadawan_StartBattle_Script
 	end
 
 Debug_Script_3::
