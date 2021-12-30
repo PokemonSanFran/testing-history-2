@@ -4884,8 +4884,8 @@
     {
       "id": "LAYOUT_PSFPLACE9",
       "name": "Psfplace9_Layout",
-      "width": 18,
-      "height": 8,
+      "width": 24,
+      "height": 19,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Pacifidlog",
       "border_filepath": "data/layouts/Psfplace9/border.bin",

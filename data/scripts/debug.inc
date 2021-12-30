@@ -72,6 +72,11 @@ Debug_Script_3::
 	end
 
 Debug_Script_4::
+    clearflag FLAG_BADGE01_GET
+    clearflag FLAG_BADGE02_GET
+    clearflag FLAG_BADGE03_GET
+    clearflag FLAG_BADGE04_GET
+    setflag FLAG_BADGE05_GET
 	end
 
 Debug_Script_5::

@@ -77,6 +77,7 @@ EnterPsfleader5_Psfleader5Defeated_Script::
 	giveitem ITEM_TM05
 	closemessage
 	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_PSFPLACE9_STATE, 1
 	releaseall
 	end
 

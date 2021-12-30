@@ -15,16 +15,28 @@
   "connections": [
     {
       "direction": "down",
-      "offset": 2,
+      "offset": 5,
       "map": "MAP_PSFROUTE1"
     }
   ],
   "object_events": [
-
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 6,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YouLookTired_InteractPsfbadadmin2_Script",
+      "flag": "FLAG_HIDE_YOULOOKTIRED_PSFBADADMIN2"
+    }
   ],
   "warp_events": [
     {
-      "x": 8,
+      "x": 10,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_PSFPLACE9_ROOF",
@@ -32,7 +44,42 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_PSFPLACE9_STATE",
+      "var_value": "1",
+      "script": "YouLookTired_Trigger_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_PSFPLACE9_STATE",
+      "var_value": "1",
+      "script": "YouLookTired_Trigger_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_PSFPLACE9_STATE",
+      "var_value": "1",
+      "script": "YouLookTired_Trigger_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_PSFPLACE9_STATE",
+      "var_value": "1",
+      "script": "YouLookTired_Trigger_Script"
+    }
   ],
   "bg_events": [
 

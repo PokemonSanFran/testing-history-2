@@ -57,7 +57,7 @@
 #define FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN 0x2D // Previously Unused Flag
 #define FLAG_HIDE_SWAGBAG2_PSFBADADMIN1 0x2E// Previously Unused Flag
 #define FLAG_HIDE_STORYSOFAR_PSFELITE1    0x2F // Previously Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
+#define FLAG_HIDE_YOULOOKTIRED_PSFBADADMIN2 0x30 // Previously Unused Flag
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
