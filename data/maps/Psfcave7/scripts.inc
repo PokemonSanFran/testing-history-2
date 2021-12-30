@@ -1,11 +1,59 @@
 Psfcave7_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcave7_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfcave7_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcave7_ExhibitCheck_Script
+	return
+
+
+Psfcave7_ExhibitCheck_Script::
+	compare VAR_PSFCAVE7_EXHIBIT_STATE, 2
+	goto_if_lt Psfcave7_ExhibitCheck_Script_1
+	return
+
+Psfcave7_ExhibitCheck_Script_1:
+	call ResetPsfcave7Exhibit_Script
+	removeobject 9
+	end
+
+
+TheStorySoFar_ExplainExhibit_Dialogue::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox gText_TheStorySoFar_WelcomeToExhibit
+	closemessage
+	setvar VAR_PSFCAVE7_EXHIBIT_STATE, 1
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
+	releaseall
+	end
+
+
+TheStorySoFar_InteractWithAttendant_Script::
+	lockall
+	applymovement 8, Common_Movement_FacePlayer
+	goto TheStorySoFar_Event_Script
+	return
+
+
+TheStorySoFar_EntranceTrigger_Script::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement 8, Common_Movement_FaceLeft
+	goto TheStorySoFar_Event_Script
+	return
 
 
 TheStorySoFar_Event_Script::
-	switch VAR_PSFCAVE7_STATE
+	waitmovement 0
+	switch VAR_PSFCAVE7_EXHIBIT_STATE
 	case 0, TheStorySoFar_Event_Script_2
 	case 1, TheStorySoFar_Event_Script_3
+	case 2, TheStorySoFar_Event_Script_4
+	case 3, TheStorySoFar_Event_Script_5
+	case 4, TheStorySoFar_Event_Script_6
 	return
 
 TheStorySoFar_Event_Script_2:
@@ -16,84 +64,132 @@ TheStorySoFar_Event_Script_3:
 	goto TheStorySoFar_CheckNumberDefeated_Script
 	return
 
+TheStorySoFar_Event_Script_4:
+	goto TheStorySoFar_AwardPlayer_Script
+	return
 
-TheStorySoFar_ExplainExhibit_Dialogue::
-	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
-	msgbox gText_TheStorySoFar_WelcomeToExhibit
-	setvar VAR_PSFCAVE7_STATE, 1
-	releaseall
-	end
+TheStorySoFar_Event_Script_5:
+	goto TheStorySoFar_Congratulate_Dialogue
+	return
 
-
-TheStorySoFar_InteractWithAttendant_Script::
-	lockall
-	msgbox gText_TheStorySoFar_YoureNotQuiteDone, MSGBOX_NPC
+TheStorySoFar_Event_Script_6:
+	goto Psfcave7Attendant_HealPlayer_Script
 	goto TheStorySoFar_CheckNumberDefeated_Script
 	return
 
 
 TheStorySoFar_CheckNumberDefeated_Script::
+	special CheckNumPsfcave7ExhibitDefeated
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
+	msgbox gText_TheStorySoFar_YoureNotQuiteDone
 	switch VAR_RESULT
-	case 0, TheStorySoFar_CheckNumberDefeated_Script_2
-	case 1, TheStorySoFar_CheckNumberDefeated_Script_3
-	case 2, TheStorySoFar_CheckNumberDefeated_Script_4
-	case 3, TheStorySoFar_CheckNumberDefeated_Script_5
-	case 4, TheStorySoFar_CheckNumberDefeated_Script_6
-	case 5, TheStorySoFar_CheckNumberDefeated_Script_7
-	return
-
-TheStorySoFar_CheckNumberDefeated_Script_2:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat6
-	return
+	case 0, TheStorySoFar_CheckNumberDefeated_Script_3
+	case 1, TheStorySoFar_CheckNumberDefeated_Script_4
+	case 2, TheStorySoFar_CheckNumberDefeated_Script_5
+	case 3, TheStorySoFar_CheckNumberDefeated_Script_6
+	case 4, TheStorySoFar_CheckNumberDefeated_Script_7
+	case 5, TheStorySoFar_CheckNumberDefeated_Script_8
+TheStorySoFar_CheckNumberDefeated_Script_1:
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_0, 15
+	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_11
+TheStorySoFar_CheckNumberDefeated_Script_9:
+	closemessage
+	releaseall
+	end
 
 TheStorySoFar_CheckNumberDefeated_Script_3:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat5
-	return
+	msgbox gText_TheStorySoFar_YouNeedToDefeat6
+	goto TheStorySoFar_CheckNumberDefeated_Script_1
 
 TheStorySoFar_CheckNumberDefeated_Script_4:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat4
-	return
+	msgbox gText_TheStorySoFar_YouNeedToDefeat5
+	goto TheStorySoFar_CheckNumberDefeated_Script_1
 
 TheStorySoFar_CheckNumberDefeated_Script_5:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat3
-	return
+	msgbox gText_TheStorySoFar_YouNeedToDefeat4
+	goto TheStorySoFar_CheckNumberDefeated_Script_1
 
 TheStorySoFar_CheckNumberDefeated_Script_6:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat2
-	return
+	msgbox gText_TheStorySoFar_YouNeedToDefeat3
+	goto TheStorySoFar_CheckNumberDefeated_Script_1
 
 TheStorySoFar_CheckNumberDefeated_Script_7:
+	msgbox gText_TheStorySoFar_YouNeedToDefeat2
+	goto TheStorySoFar_CheckNumberDefeated_Script_1
+
+TheStorySoFar_CheckNumberDefeated_Script_8:
 	msgbox gText_TheStorySoFar_YouNeedToDefeat1
+	goto TheStorySoFar_CheckNumberDefeated_Script_1
+
+TheStorySoFar_CheckNumberDefeated_Script_10:
+	msgbox gText_TheStorySoFar_AreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_15
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	call ResetPsfcave7Exhibit_Script
+TheStorySoFar_CheckNumberDefeated_Script_14:
+	waitmovement 0
+	goto TheStorySoFar_CheckNumberDefeated_Script_9
+
+TheStorySoFar_CheckNumberDefeated_Script_11:
+	compare VAR_TEMP_1, 16
+	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_10
+	goto TheStorySoFar_CheckNumberDefeated_Script_9
+
+TheStorySoFar_CheckNumberDefeated_Script_15:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	goto TheStorySoFar_CheckNumberDefeated_Script_14
+
+
+TheStorySoFar_AwardPlayer_Script::
+	lockall
+	setvar VAR_PSFCAVE7_EXHIBIT_STATE, 3
+	setvar VAR_PSFCAVE7_STATE, 1
+	msgbox gText_TheStorySoFar_ExcellentWork
+	giveitem ITEM_MACHO_BRACE, 1
+	closemessage
+	releaseall
+	end
+
+
+TheStorySoFar_Congratulate_Dialogue::
+	lockall
+	msgbox gText_TheStorySoFar_WeHopeYouReturn
+	closemessage
+	releaseall
+	end
+
+
+Psfcave7Attendant_HealPlayer_Script::
+	lockall
+	call Common_EventScript_OutOfCenterPartyHeal
+	msgbox gText_TheStorySoFar_IveHealedYourParty
+	call ResetPsfcave7Exhibit_Script
+	closemessage
+	releaseall
+	end
+
+
+ResetPsfcave7Exhibit_Script::
+	clearflag TRAINER_FLAGS_START + TRAINER_ALBERTO
+	clearflag TRAINER_FLAGS_START + TRAINER_ED
+	clearflag TRAINER_FLAGS_START + TRAINER_DECLAN
+	clearflag TRAINER_FLAGS_START + TRAINER_FREDRICK
+	clearflag TRAINER_FLAGS_START + TRAINER_ZANDER
+	clearflag TRAINER_FLAGS_START + TRAINER_LEAH
+	compare VAR_PSFCAVE7_STATE, 2
+	goto_if_lt ResetPsfcave7Exhibit_Script_1
+	return
+
+ResetPsfcave7Exhibit_Script_1:
+	setvar VAR_PSFCAVE7_EXHIBIT_STATE, 0
 	return
 
 
 TheStorySoFar_StartBattle1_Script::
-	lockall
-	checktrainerflag TRAINER_ALBERTO
-	goto_if 1, TheStorySoFar_StartBattle1_Script_2
-	trainerbattle_single TRAINER_ALBERTO, gText_TheStorySoFar_IHopeYouDont, gText_TheStorySoFar_SlowDown, TheStorySoFar_DefeatedTrainer1_Script, NO_MUSIC
-TheStorySoFar_StartBattle1_Script_1:
-	releaseall
-	end
-
-TheStorySoFar_StartBattle1_Script_2:
-	msgbox gText_TheStorySoFar_DontForgetToStop, MSGBOX_NPC
-	goto TheStorySoFar_StartBattle1_Script_1
-
-
-TheStorySoFar_DefeatedTrainer1_Script::
-	compare VAR_PSFCAVE7_STATE, 1
-	goto_if_eq TheStorySoFar_DefeatedTrainer1_Script_1
-	return
-
-TheStorySoFar_DefeatedTrainer1_Script_1:
-	applymovement 4, Common_Movement_WalkUp
-	waitmovement 0
+	trainerbattle_single TRAINER_ALBERTO, gText_TheStorySoFar_IHopeYouDont, gText_TheStorySoFar_SlowDown, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	msgbox gText_TheStorySoFar_DontForgetToStop, MSGBOX_AUTOCLOSE
 	return
 
 
@@ -103,26 +199,8 @@ TheStorySoFar_ReadSign1_Dialogue::
 
 
 TheStorySoFar_StartBattle2_Script::
-	lockall
-	checktrainerflag TRAINER_ED
-	goto_if 1, TheStorySoFar_StartBattle2_Script_1
-	trainerbattle_single TRAINER_ED, gText_TheStorySoFar_IThinkDefense, gText_TheStorySoFar_NotStrongEnough, TheStorySoFar_DefeatedTrainer2_Script, NO_MUSIC
-	releaseall
-	end
-
-TheStorySoFar_StartBattle2_Script_1:
-	msgbox gText_TheStorySoFar_TheBestOffense, MSGBOX_NPC
-	return
-
-
-TheStorySoFar_DefeatedTrainer2_Script::
-	compare VAR_PSFCAVE7_STATE, 1
-	goto_if_eq TheStorySoFar_DefeatedTrainer2_Script_1
-	return
-
-TheStorySoFar_DefeatedTrainer2_Script_1:
-	applymovement 7, Common_Movement_WalkUp
-	waitmovement 0
+	trainerbattle_single TRAINER_ED, gText_TheStorySoFar_IThinkDefense, gText_TheStorySoFar_NotStrongEnough, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	msgbox gText_TheStorySoFar_TheBestOffense, MSGBOX_AUTOCLOSE
 	return
 
 
@@ -130,6 +208,307 @@ TheStorySoFar_ReadSign2_Dialogue::
 	msgbox gText_TheStorySoFar_TheCriminalUnderbelly, MSGBOX_SIGN
 	return
 
+
+TheStorySoFar_StartBattle3_Script::
+	trainerbattle_single TRAINER_DECLAN, gText_TheStorySoFar_TheresSomethingSpecial, gText_TheStorySoFar_ImNotSpecial, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	msgbox gText_TheStorySoFar_ItsHardToDoAnything, MSGBOX_AUTOCLOSE
+	return
+
+
+TheStorySoFar_ReadSign3_Dialogue::
+	msgbox gText_TheStorySoFar_ThePrisonersBeganToTurn, MSGBOX_SIGN
+	return
+
+
+TheStorySoFar_StartBattle4_Script::
+	trainerbattle_single TRAINER_FREDRICK, gText_TheStorySoFar_PhysicallyDefensiveMasterpiece, gText_TheStorySoFar_ButLikeTheShip, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	msgbox gText_TheStorySoFar_HumansWillAlwaysFind, MSGBOX_AUTOCLOSE
+	return
+
+
+TheStorySoFar_ReadSign4_Dialogue::
+	msgbox gText_TheStorySoFar_AsTensionsBetweenThePrisoners, MSGBOX_SIGN
+	return
+
+
+TheStorySoFar_StartBattle5_Script::
+	trainerbattle_single TRAINER_ZANDER, gText_TheStorySoFar_BrokenBonesHealEasily, gText_TheStorySoFar_SomePeopleNeverRecover, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	msgbox gText_TheStorySoFar_MakingSureToTakeCare, MSGBOX_AUTOCLOSE
+	return
+
+
+TheStorySoFar_ReadSign5_Dialogue::
+	msgbox gText_TheStorySoFar_TheNaturalDisasterLeft, MSGBOX_SIGN
+	return
+
+
+TheStorySoFar_StartBattle6_Script::
+	trainerbattle_single TRAINER_LEAH, gText_TheStorySoFar_HowToughAreYou, gText_TheStorySoFar_TurnsOutPrettyTough, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	msgbox gText_TheStorySoFar_IHearVoicesStanding, MSGBOX_AUTOCLOSE
+	return
+
+
+TheStorySoFar_ReadSign6_Dialogue::
+	msgbox gText_TheStorySoFar_ParksAndRecreation, MSGBOX_SIGN
+	return
+
+
+TheStorySoFar_RunDefeatedCheck_Script::
+	special CheckNumPsfcave7ExhibitDefeated
+	end
+
+
+YoungPadawan_Intro_Dialogue::
+	lockall
+	clearflag FLAG_HIDE_STORYSOFAR_PSFELITE1
+	addobject 9
+	applymovement 9, YoungPadawan_GetOffBoat
+	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_WowYouLookTired
+	call Common_EventScript_OutOfCenterPartyHeal
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_DidTheChallenge
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_ThankYou
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_DontMentionIt
+	callnative ClearMugshot
+	closemessage
+	applymovement 9, YoungPadawan_LookAtOcean
+	applymovement OBJ_EVENT_ID_PLAYER, YoungPadawan_StepDownWalkBeside
+	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_LearnALot
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_TheStoryOfTheIsland
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_ThatQuakeWasOne
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_HistoryBooksAreCrazy
+	callnative ClearMugshot
+	closemessage
+	applymovement 9, YoungPadawan_WalkBackToPlayer
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_MakesYouWonder
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_MakesSenseYeah
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_YouveGotAGoodSpirit
+	callnative ClearMugshot
+	closemessage
+	goto YoungPadawan_StartBattle_Script
+	return
+
+
+YoungPadawan_StartBattle_Script::
+	trainerbattle_no_intro TRAINER_SIDNEY, gText_YoungPadawan_ThisAintHowItWas
+	goto YoungPadawan_PostBattle_Dialogue
+	return
+
+
+YoungPadawan_PostBattle_Dialogue::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	checktrainerflag TRAINER_SIDNEY
+	goto_if 1, YoungPadawan_PostBattle_Dialogue_2
+	msgbox gText_YoungPadawan_KeepTraining
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_IveNeverBattled
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_YeahTotally
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_UntilThenHeres
+YoungPadawan_PostBattle_Dialogue_1:
+	giveitem ITEM_GO_GOGGLES, 1
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_ThoseCanBeTough
+	callnative ClearMugshot
+	closemessage
+	applymovement 9, YoungPadawan_WalkUpStairs
+	applymovement OBJ_EVENT_ID_PLAYER, YoungPadawan_GetOutOfWay
+	waitmovement 0
+	removeobject 9
+	setvar VAR_PSFCAVE7_STATE, 2
+	setvar VAR_PSFCAVE7_EXHIBIT_STATE, 4
+	releaseall
+	end
+
+YoungPadawan_PostBattle_Dialogue_2:
+	msgbox gText_YoungPadawan_DidYouHack
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_GotItYouWon
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_KeepItSecretToo
+	callnative ClearMugshot
+	closemessage
+	giveitem ITEM_POWER_ANKLET, 1
+	giveitem ITEM_POWER_BAND, 1
+	giveitem ITEM_POWER_BRACER, 1
+	giveitem ITEM_POWER_LENS, 1
+	giveitem ITEM_POWER_WEIGHT, 1
+	giveitem ITEM_POWER_BELT, 1
+	goto YoungPadawan_PostBattle_Dialogue_1
+
+
+YoungPadawan_GetOffBoat:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+YoungPadawan_StepDownWalkBeside:
+	walk_down
+	face_left
+	step_end
+
+YoungPadawan_LookAtOcean:
+	walk_left
+	step_end
+
+YoungPadawan_WalkBackToPlayer:
+	walk_down
+	walk_right
+	face_up
+	step_end
+
+YoungPadawan_WalkUpStairs:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+YoungPadawan_GetOutOfWay:
+	walk_left
+	delay_16
+	walk_right
+	face_up
+	delay_16
+	walk_down
+	face_up
+	step_end
+
+gText_YoungPadawan_WowYouLookTired::
+	.string "Wow, you look tired! Let me help.$"
+
+gText_YoungPadawan_DidTheChallenge::
+	.string "Did the challenge kick your ass? Those\n"
+	.string "kids are tough.$"
+
+gText_YoungPadawan_ThankYou::
+	.string "Thank you!$"
+
+gText_YoungPadawan_DontMentionIt::
+	.string "Don't mention it.$"
+
+gText_YoungPadawan_LearnALot::
+	.string "Learn a lot up there?$"
+
+gText_YoungPadawan_TheStoryOfTheIsland::
+	.string "The story of the island is crazy. And I\n"
+	.string "didn't realize the earthquakes here\l"
+	.string "could be that vicious.$"
+
+gText_YoungPadawan_ThatQuakeWasOne::
+	.string "That quake was one for the history\n"
+	.string "books! Shook me to my core.$"
+
+gText_YoungPadawan_HistoryBooksAreCrazy::
+	.string "History books are crazy. Losers don't\n"
+	.string "get a pre-release copy to leave their\l"
+	.string "edits in the margins... the winners just\l"
+	.string "say whatever they want, and everybody\l"
+	.string "has to deal with it.$"
+
+gText_YoungPadawan_MakesYouWonder::
+	.string "Makes you wonder how committed to\n"
+	.string "accuracy the winners are. Old geezers\l"
+	.string "like me, who were around for the\l"
+	.string "history in the making, have a\l"
+	.string "responsibility to set the record\l"
+	.string "straight. Gotta make sure the truth\l"
+	.string "doesn't get lost, you know?$"
+
+gText_YoungPadawan_MakesSenseYeah::
+	.string "Makes sense, yeah. But the government\n"
+	.string "doesn't have any reason to lie, which is\l"
+	.string "a relief.$"
+
+gText_YoungPadawan_YouveGotAGoodSpirit::
+	.string "Hah! You got a good spirit. Let's see\n"
+	.string "how long you can hold up against your\l"
+	.string "elders!$"
+
+gText_YoungPadawan_DidIUnderestimate::
+	.string "Did I underestimate you?$"
+
+gText_YoungPadawan_KidYoureSomethingElse::
+	.string "Kid, you're something else! But it ends\n"
+	.string "here.$"
+
+gText_YoungPadawan_DontBeatYourselfUp::
+	.string "Heh, don't beat yourself up. I got at\n"
+	.string "least 50 years on ya.$"
+
+gText_YoungPadawan_ThisAintHowItWas::
+	.string "This ain't how it was supposed to go!$"
+
+gText_YoungPadawan_DidYouHack::
+	.string "Did you hack the Matrix? Maybe you got\n"
+	.string "REAL lucky on a randomizer run? ... We're\l"
+	.string "gonna pretend I won, okay?$"
+
+gText_YoungPadawan_GotItYouWon::
+	.string "Haha got it, you won.$"
+
+gText_YoungPadawan_KeepItSecretToo::
+	.string "Keep it secret too. Here, take these.$"
+
+gText_YoungPadawan_KeepTraining::
+	.string "Keep training! Once you learn a little\n"
+	.string "bit more about the world, let's battle\l"
+	.string "again.$"
+
+gText_YoungPadawan_IveNeverBattled::
+	.string "To Self: I've never battled anybody so\n"
+	.string "strong!$"
+
+gText_YoungPadawan_YeahTotally::
+	.string "Yeah, totally!$"
+
+gText_YoungPadawan_UntilThenHeres::
+	.string "Until then, here's a consolation prize.$"
+
+gText_YoungPadawan_ThoseCanBeTough::
+	.string "Those can be tough to get if you're not\n"
+	.string "from here. Good luck with the rest of\l"
+	.string "your challenge, {PLAYER}.$"
 
 gText_TheStorySoFar_WelcomeToExhibit::
 	.string "Welcome to the Psfcave7 Exhibit. To\n"
@@ -144,41 +523,38 @@ gText_TheStorySoFar_WelcomeToExhibit::
 gText_TheStorySoFar_YoureNotQuiteDone::
 	.string "You're not quite done.$"
 
+gText_TheStorySoFar_AreYouSure::
+	.string "Are you sure you want to leave?$"
+
 gText_TheStorySoFar_YouNeedToDefeat6::
 	.string "You need to defeat six more staff\n"
 	.string "members without leaving to complete\l"
-	.string "the challenge. Are you sure you want to\l"
-	.string "leave?$"
+	.string "the challenge.$"
 
 gText_TheStorySoFar_YouNeedToDefeat5::
 	.string "You need to defeat five more staff\n"
 	.string "members without leaving to complete\l"
-	.string "the challenge. Are you sure you want to\l"
-	.string "leave?$"
+	.string "the challenge.$"
 
 gText_TheStorySoFar_YouNeedToDefeat4::
 	.string "You need to defeat four more staff\n"
 	.string "members without leaving to complete\l"
-	.string "the challenge. Are you sure you want to\l"
-	.string "leave?$"
+	.string "the challenge.$"
 
 gText_TheStorySoFar_YouNeedToDefeat3::
 	.string "You need to defeat three more staff\n"
 	.string "members without leaving to complete\l"
-	.string "the challenge. Are you sure you want to\l"
-	.string "leave?$"
+	.string "the challenge.$"
 
 gText_TheStorySoFar_YouNeedToDefeat2::
 	.string "You need to defeat two more staff\n"
 	.string "members without leaving to complete\l"
-	.string "the challenge. Are you sure you want to\l"
-	.string "leave?$"
+	.string "the challenge.$"
 
 gText_TheStorySoFar_YouNeedToDefeat1::
 	.string "You need to defeat one more staff\n"
 	.string "member without leaving to complete the\l"
-	.string "challenge. Are you sure you want to\l"
-	.string "leave?$"
+	.string "challenge.$"
 
 gText_TheStorySoFar_IHopeYouDont::
 	.string "I hope you don't rush through the plaza\n"
@@ -236,9 +612,9 @@ gText_TheStorySoFar_ItsHardToDoAnything::
 gText_TheStorySoFar_ThePrisonersBeganToTurn::
 	.string "The prisoners began to turn to the\n"
 	.string "citizens of the region for support. One\l"
-	.string "of their most vocal allies was Drasna,\l"
-	.string "the strongest member of the\l"
-	.string "Psfregion1 Elite Four. Drasna\l"
+	.string "of their most vocal allies was\l"
+	.string "Psfelite2, the strongest member of the\l"
+	.string "Psfregion1 Elite Four. Psfelite2\l"
 	.string "organized public rallies and marches,\l"
 	.string "demanding for the release of the\l"
 	.string "prisoners into society, citing the need\l"

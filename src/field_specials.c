@@ -4531,3 +4531,41 @@ bool32 GetMegaEvolutionPartyMember(u16 species, int PartySlot, int IsEvolution)
         }
     }   
 }
+
+u8 CheckNumPsfcave7ExhibitDefeated(void)
+{
+    u16 trainerFlag;
+    u8 count = 0;
+    
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ALBERTO)){
+        count++;
+    }
+
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ED)){
+        count++;
+    }
+
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_DECLAN)){
+        count++;
+    }
+
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_FREDRICK)){
+        count++;
+    }
+
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_ZANDER)){
+        count++;
+    }
+
+    if (FlagGet(TRAINER_FLAGS_START + TRAINER_LEAH)){
+        count++;
+    }
+
+    if (count > 5){
+        VarSet(VAR_PSFCAVE7_EXHIBIT_STATE,2);
+    }
+
+    gSpecialVar_Result = count;
+    //VarSet(VAR_RESULT, count);
+    return count;
+}

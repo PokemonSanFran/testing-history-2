@@ -11,6 +11,6 @@
 
 bool8 MySpecial(void){
     //ScriptContext1_SetupScript(DebugGiveMons);
-    ScriptContext1_SetupScript(FallarborTown_EventScript_Gentleman);
+//    ScriptContext1_SetupScript(FallarborTown_EventScript_Gentleman);
     return TRUE;
 };

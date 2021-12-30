@@ -60,12 +60,15 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
+    warpsilent MAP_PSFCAVE7,15,6 
 	end
 
 Debug_Script_2::
+    call TheStorySoFar_CheckNumberDefeated_Script
 	end
 
 Debug_Script_3::
+    call ResetPsfcave7Exhibit_Script
 	end
 
 Debug_Script_4::

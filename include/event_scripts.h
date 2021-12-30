@@ -614,9 +614,5 @@ extern const u8 EventScript_TerminateLink[];
 
 //new scripts from PSF
 extern const u8 WarpToBlackMap[];
-extern const u8 Swagbag_WelcomeToPsfregion1_Dialogue[];
-extern const u8 Act1_1_Complete_Monologue[];
-extern const u8 DebugGiveMons[];
-extern const u8 FallarborTown_EventScript_Gentleman[];
-
+extern const u8 TheStorySoFar_CheckNumberDefeated_Script[];
 #endif // GUARD_EVENT_SCRIPTS_H
