@@ -94,6 +94,8 @@
 #define MAP_PSFROUTE63          (85 | (0 << 8))
 #define MAP_PSFCITY11           (86 | (0 << 8))
 #define MAP_PSFCAVE7            (87 | (0 << 8))
+#define MAP_PSFPLACE9           (88 | (0 << 8))
+#define MAP_PSFPLACE9_ROOF      (89 | (0 << 8))
 
 // gMapGroup_IndoorPsfcity8
 #define MAP_PSFCITY8_COMPOUND_1F       (0 | (1 << 8))
@@ -649,7 +651,5 @@
 #define MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE (0 | (38 << 8))
 
 #define MAP_GROUPS_COUNT 39
-
-// static const u8 MAP_GROUP_COUNT[] = {88, 3, 1, 1, 1, 2, 5, 5, 6, 7, 8, 9, 7, 7, 14, 8, 17, 10, 23, 13, 15, 15, 2, 2, 2, 3, 1, 1, 1, 115, 61, 90, 2, 1, 13, 1, 1, 3, 1, 0};
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

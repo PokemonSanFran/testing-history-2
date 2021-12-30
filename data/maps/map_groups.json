@@ -129,7 +129,9 @@
     "Psfcity9",
     "Psfroute63",
     "Psfcity11",
-    "Psfcave7"
+    "Psfcave7",
+    "Psfplace9",
+    "Psfplace9_Roof"
   ],
   "gMapGroup_IndoorPsfcity8": [
     "Psfcity8_Compound_1F",
