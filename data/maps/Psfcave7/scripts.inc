@@ -341,6 +341,7 @@ YoungPadawan_PostBattle_Dialogue::
 	callnative ClearMugshot
 YoungPadawan_PostBattle_Dialogue_1:
 	giveitem ITEM_GO_GOGGLES, 1
+	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_ThoseCanBeTough
