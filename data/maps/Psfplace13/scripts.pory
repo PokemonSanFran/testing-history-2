@@ -205,6 +205,28 @@ script GroupOfAssholesAppears_LookForXanax_Dialogue {
         end
 }
 
+script Psfplace13_ChooseFerryDestination_Script {
+    msgbox(gText_WhereWould,MSGBOX_NPC)
+    goto(Psfplace13_UnlockedDestinations_Script)
+}
+
+script Psfplace13_UnlockedDestinations_Script {
+    switch (var(VAR_FERRY_STATE)){
+        default:goto(Psfplace13_FerryState0_Script)
+    }
+}
+
+script Psfplace13_FerryState0_Script {
+    multichoicedefault(18,8,PSFPLACE13_FERRY_DESTINATIONS_VER1,0,FALSE)
+    call(SlateportCity_Harbor_EventScript_BoardFerry)
+
+    switch (var(VAR_RESULT)){
+        case 0: warp(MAP_PSFCAVE7,15,22)
+        case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+}
+}
+
 movement GroupOfAssholesAppears_LookAround_Movement {
     face_left
         delay_16

@@ -1123,6 +1123,9 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 
     switch (sTrainerBattleMode)
     {
+    case TRAINER_BATTLE_CONTINUE_AFTER_LOSE:
+        TrainerBattleLoadArgs(sOrdinaryNoIntroBattleParams, data);
+        return EventScript_DoNoIntroTrainerBattle;
     case TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT:
         TrainerBattleLoadArgs(sOrdinaryNoIntroBattleParams, data);
         return EventScript_DoNoIntroTrainerBattle;
@@ -1348,7 +1351,7 @@ static void CB2_EndTrainerBattle(void)
     }
     else if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
-        if (InBattlePyramid() || InTrainerHillChallenge())
+        if (InBattlePyramid() || InTrainerHillChallenge() || sTrainerBattleMode == TRAINER_BATTLE_CONTINUE_AFTER_LOSE)
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         else
             SetMainCallback2(CB2_WhiteOut);

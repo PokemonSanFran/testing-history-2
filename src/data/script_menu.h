@@ -860,6 +860,20 @@ static const struct MenuAction sPsfplace16FerryDestinations_Ver1[] =
 	{gText_Exit},
 };
 
+static const struct MenuAction sPsfcave7FerryDestinations_Ver1[] =
+{
+	{gText_Psfplace13},
+	{gText_Psfcity17},
+	{gText_Exit},
+};
+
+
+static const struct MenuAction sPsfplace13FerryDestinations_Ver1[] =
+{
+	{gText_Psfcave7},
+	{gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1000,6 +1014,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
 [PSFCITY11_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sPsfcity11FerryDestinations_Ver1),
 [PSFCITY10_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sPsfcity10FerryDestinations_Ver1),
 [PSFPLACE16_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sPsfplace16FerryDestinations_Ver1),
+[PSFCAVE7_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sPsfcave7FerryDestinations_Ver1),
+[PSFPLACE13_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sPsfplace13FerryDestinations_Ver1),
 };
 
 const u8 *const gStdStrings[] =

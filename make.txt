@@ -74,8 +74,8 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/src/apprentice.o src/apprentice.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/clear_save_data_screen.o src/clear_save_data_screen.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/field_region_map.o src/field_region_map.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mauville_old_man.o src/mauville_old_man.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_pike.o src/battle_pike.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_anim_mon_movement.o src/battle_anim_mon_movement.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_pike.o src/battle_pike.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_transition_frontier.o src/battle_transition_frontier.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/reset_rtc_screen.o src/reset_rtc_screen.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/AgbRfu_LinkManager.o src/AgbRfu_LinkManager.c
@@ -83,8 +83,8 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/src/secret_base.o src/secret_base
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_pyramid.o src/battle_pyramid.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_records.o src/battle_records.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/match_call.o src/match_call.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mirage_tower.o src/mirage_tower.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_anim_rock.o src/battle_anim_rock.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mirage_tower.o src/mirage_tower.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/trade.o src/trade.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/diploma.o src/diploma.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_anim_sound_tasks.o src/battle_anim_sound_tasks.c
@@ -199,9 +199,9 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_anim_electric.o src/ba
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_tv.o src/battle_tv.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/math_util.o src/math_util.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/heal_location.o src/heal_location.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/cable_club.o src/cable_club.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokedex_area_region_map.o src/pokedex_area_region_map.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/birch_pc.o src/birch_pc.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/cable_club.o src/cable_club.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/roamer.o src/roamer.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/coins.o src/coins.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_bg.o src/battle_bg.c
@@ -269,8 +269,8 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/src/item_menu_icons.o src/item_me
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_menu_handler.o src/pokenav_menu_handler.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/hof_pc.o src/hof_pc.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/field_poison.o src/field_poison.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_tent.o src/battle_tent.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/credits.o src/credits.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_tent.o src/battle_tent.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/wild_encounter.o src/wild_encounter.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_conditions_gfx.o src/pokenav_conditions_gfx.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/slot_machine.o src/slot_machine.c
