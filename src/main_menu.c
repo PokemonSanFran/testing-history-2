@@ -1714,8 +1714,7 @@ static void Task_NewGameWelcomeScreenTextInit(u8 taskId) //start the welcome scr
         data[15] = 16;
         q = 1;
         AddTextPrinterParameterized4(data[14], 2, 3, 5, 1, 0, sTextColor_OakSpeech, 0, sNewGameAdventureIntroTextPointers[0]);
-        //data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0); //original line, stopped working after pulling in battle_engine TODO: figure out why this broke on oct 7 2021
-        data[5] = CreateTextCursorSpriteForOakSpeech(0, 225, 0, 0, 0);
+        data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xe2, 0x91, 0, 0);
         gSprites[data[5]].oam.objMode = ST_OAM_OBJ_BLEND;
         gSprites[data[5]].oam.priority = 0;
         CreatePikaOrGrassPlatformSpriteAndLinkToCurrentTask(taskId, 0);

@@ -732,6 +732,15 @@ static const u8 sText_CantEscapeBecauseOfCurrentMove[] = _("{B_DEF_NAME_WITH_PRE
 static const u8 sText_NeutralizingGasEnters[] = _("Neutralizing Gas filled the area!");
 static const u8 sText_NeutralizingGasOver[] = _("The effects of Neutralizing\nGas wore off!");
 
+
+//Mid-Battle Trainer Messages
+
+//PSF TODO: Add these for all boss fights
+
+static const u8 sText_TRAINER_NORMAN_1_LastSwitchIn[] = _("Scramble the jets!");
+//static const u8 sText_TRAINER_NORMAN_1_LastLowHp[] = _("Scramble the jets!");
+static const u8 sText_TRAINER_NORMAN_1_FirstDown[] = _("We got a code Oscar Uniform Charlie \nHotel on our hands.\p");
+
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
     [STRINGID_NEUTRALIZINGGASOVER - 12] = sText_NeutralizingGasOver,
@@ -3874,6 +3883,7 @@ struct TrainerSlide
 static const struct TrainerSlide sTrainerSlides[] =
 {
     {0x291, sText_AarghAlmostHadIt, sText_BoxIsFull, sText_123Poof},
+    {TRAINER_NORMAN_1, sText_TRAINER_NORMAN_1_LastSwitchIn,NULL,sText_TRAINER_NORMAN_1_FirstDown},
 };
 
 static u32 GetEnemyMonCount(bool32 onlyAlive)

@@ -80,6 +80,7 @@ Debug_Script_4::
 	end
 
 Debug_Script_5::
+    clearflag (TRAINER_FLAGS_START + TRAINER_NORMAN_1)
 	end
 
 Debug_Script_6::
