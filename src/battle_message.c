@@ -3882,7 +3882,6 @@ struct TrainerSlide
 
 static const struct TrainerSlide sTrainerSlides[] =
 {
-    {0x291, sText_AarghAlmostHadIt, sText_BoxIsFull, sText_123Poof},
     {TRAINER_NORMAN_1, sText_TRAINER_NORMAN_1_LastSwitchIn,NULL,sText_TRAINER_NORMAN_1_FirstDown},
 };
 
