@@ -178,9 +178,8 @@ HousingProtest_KatellTalkToCrowd_Dialogue::
 	playse SE_PIN
 	waitmovement 0
 	msgbox gText_HousingProtest_OnlyThingWereUnderstanding
-	applymovement 12, Common_Movement_WalkUp
-	waitmovement 0
-	applymovement 12, Common_Movement_FaceDown
+	closemessage
+	applymovement 12, HousingProtest_BackUp
 	waitmovement 0
 	msgbox gText_HousingProtest_AreYouTrying
 	msgbox gText_HousingProtest_TheyCantArrest
@@ -557,6 +556,13 @@ HousingProtest_ApproachKatell:
 	walk_up
 	walk_up
 	walk_up
+	step_end
+
+HousingProtest_BackUp:
+	lock_facing_direction
+	walk_slow_up
+	delay_16
+	unlock_facing_direction
 	step_end
 
 HousingProtest_DefendKatell:
