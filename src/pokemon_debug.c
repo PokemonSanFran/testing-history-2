@@ -417,21 +417,21 @@ static void PrintInstructionsOnWindow(struct PokemonDebugMenu *data)
     FillWindowPixelBuffer(WIN_INSTRUCTIONS, 0x11);
     if (data->currentSubmenu == 0)
     {
-        if (SpeciesHasGenderDifference[species])
+        if (gBaseStats[species].flags & FLAG_GENDER_DIFFERENCE)
             AddTextPrinterParameterized(WIN_INSTRUCTIONS, fontId, textInstructionsGender, x, 0, 0, NULL);
         else
             AddTextPrinterParameterized(WIN_INSTRUCTIONS, fontId, textInstructions, x, 0, 0, NULL);
     }
     else if (data->currentSubmenu == 1)
     {
-        if (SpeciesHasGenderDifference[species])
+        if (gBaseStats[species].flags & FLAG_GENDER_DIFFERENCE)
             AddTextPrinterParameterized(WIN_INSTRUCTIONS, fontId, textInstructionsSubmenuOneGender, x, 0, 0, NULL);
         else
             AddTextPrinterParameterized(WIN_INSTRUCTIONS, fontId, textInstructionsSubmenuOne, x, 0, 0, NULL);
     }
     else if (data->currentSubmenu == 2)
     {
-        if (SpeciesHasGenderDifference[species])
+        if (gBaseStats[species].flags & FLAG_GENDER_DIFFERENCE)
             AddTextPrinterParameterized(WIN_INSTRUCTIONS, fontId, textInstructionsSubmenuTwoGender, x, 0, 0, NULL);
         else
             AddTextPrinterParameterized(WIN_INSTRUCTIONS, fontId, textInstructionsSubmenuTwo, x, 0, 0, NULL);
@@ -485,7 +485,7 @@ static void PrintDigitChars(struct PokemonDebugMenu *data)
     text[i++] = CHAR_SPACE;
     text[i++] = CHAR_HYPHEN;
 
-    if (SpeciesHasGenderDifference[species])
+    if (gBaseStats[species].flags & FLAG_GENDER_DIFFERENCE)
     {
         if (data->isFemale)
             text[i++] = CHAR_FEMALE;
@@ -688,14 +688,14 @@ static const struct CompressedSpritePalette *GetMonSpritePalStructCustom(u16 spe
 {
     if (isShiny)
     {
-        if (SpeciesHasGenderDifference[species] && isFemale)
+        if ((gBaseStats[species].flags & FLAG_GENDER_DIFFERENCE) && isFemale)
             return &gMonShinyPaletteTableFemale[species];
         else
             return &gMonShinyPaletteTable[species];
     }
     else
     {
-        if (SpeciesHasGenderDifference[species] && isFemale)
+        if ((gBaseStats[species].flags & FLAG_GENDER_DIFFERENCE) && isFemale)
             return &gMonPaletteTableFemale[species];
         else
             return &gMonPaletteTable[species];
@@ -714,14 +714,14 @@ static void BattleLoadOpponentMonSpriteGfxCustom(u16 species, bool8 isFemale, bo
 
     if (isShiny)
     {
-        if (SpeciesHasGenderDifference[species] && isFemale)
+        if ((gBaseStats[species].flags & FLAG_GENDER_DIFFERENCE) && isFemale)
             lzPaletteData = gMonShinyPaletteTableFemale[species].data;
         else
             lzPaletteData = gMonShinyPaletteTable[species].data;
     }
     else
     {
-        if (SpeciesHasGenderDifference[species] && isFemale)
+        if ((gBaseStats[species].flags & FLAG_GENDER_DIFFERENCE) && isFemale)
             lzPaletteData = gMonPaletteTableFemale[species].data;
         else
             lzPaletteData = gMonPaletteTable[species].data;
@@ -780,6 +780,13 @@ static void SetConstSpriteValues(struct PokemonDebugMenu *data)
     data->constSpriteValues.frontPicCoords = gMonFrontPicCoords[species].y_offset;
     data->constSpriteValues.frontElevation = GetElevationValue(species);
     data->constSpriteValues.backPicCoords = gMonBackPicCoords[species].y_offset;
+}
+
+static void ResetOffsetSpriteValues(struct PokemonDebugMenu *data)
+{
+    data->offsetsSpriteValues.offset_back_picCoords = 0;
+    data->offsetsSpriteValues.offset_front_picCoords = 0;
+    data->offsetsSpriteValues.offset_front_elevation = 0;
 }
 
 static u8 GetBattlerSpriteFinal_YCustom(u16 species, s8 offset_picCoords, s8 offset_elevation)
@@ -1281,6 +1288,17 @@ static void ResetBGs_Debug_Menu(u16 a)
     }
 }
 
+static void ApplyOffsetSpriteValues(struct PokemonDebugMenu *data)
+{
+    u16 species = data->currentmonId;
+    //Back
+    gSprites[data->backspriteId].y = DEBUG_MON_BACK_Y + gMonBackPicCoords[species].y_offset + data->offsetsSpriteValues.offset_back_picCoords;
+    //Front
+    gSprites[data->frontspriteId].y = GetBattlerSpriteFinal_YCustom(species, data->offsetsSpriteValues.offset_front_picCoords, data->offsetsSpriteValues.offset_front_elevation);
+    //Shadow if one was added
+    UpdateShadowSpriteInvisible(data);
+}
+
 static void UpdateSubmenuOneOptionValue(u8 taskId, bool8 increment)
 {
     struct PokemonDebugMenu *data = GetStructPtr(taskId);
@@ -1355,6 +1373,7 @@ static void UpdateSubmenuOneOptionValue(u8 taskId, bool8 increment)
             data->animIdBack = GetSpeciesBackAnimSet(modArrows->currValue) + 1;
             data->animIdFront = sMonFrontAnimIdsTable[modArrows->currValue - 1];
             UpdateMonAnimNames(taskId);
+            ResetOffsetSpriteValues(data);
                 
             UpdateBattlerValue(data);
             ReloadPokemonSprites(data);
@@ -1442,7 +1461,6 @@ static void UpdateSubmenuTwoOptionValue(u8 taskId, bool8 increment)
     UpdateYPosOffsetText(data);
 }
 
-
 static void Handle_Input_Debug_Pokemon(u8 taskId)
 {
     struct PokemonDebugMenu *data = GetStructPtr(taskId);
@@ -1454,7 +1472,6 @@ static void Handle_Input_Debug_Pokemon(u8 taskId)
         PlayCryInternal(data->currentmonId, 0, 120, 10, 0);
         LaunchAnimationTaskForBackSprite(Backsprite, data->animIdBack-1);
     }
-
     if (JOY_NEW(R_BUTTON) && (Frontsprite->callback == SpriteCallbackDummy))
     {
         PlayCryInternal(data->currentmonId, 0, 120, 10, 0);
@@ -1462,6 +1479,7 @@ static void Handle_Input_Debug_Pokemon(u8 taskId)
             StartSpriteAnim(Frontsprite, 1);
         LaunchAnimationTaskForFrontSprite(Frontsprite, data->animIdFront);
     }
+
     if (JOY_NEW(START_BUTTON))
     {
         data->isShiny = !data->isShiny;
@@ -1470,9 +1488,9 @@ static void Handle_Input_Debug_Pokemon(u8 taskId)
             PlaySE(SE_SHINY);
 
         ReloadPokemonSprites(data);
-
+        ApplyOffsetSpriteValues(data);
     }
-    if (JOY_NEW(SELECT_BUTTON) && SpeciesHasGenderDifference[data->currentmonId])
+    if (JOY_NEW(SELECT_BUTTON) && (gBaseStats[data->currentmonId].flags & FLAG_GENDER_DIFFERENCE))
     {
         data->isFemale = !data->isFemale;
         PrintDigitChars(data);
@@ -1488,7 +1506,6 @@ static void Handle_Input_Debug_Pokemon(u8 taskId)
         {
             data->currentSubmenu = 1;
             SetArrowInvisibility(data);
-            SetConstSpriteValues(data);
             PrintInstructionsOnWindow(data);
         }
         else if (JOY_NEW(B_BUTTON))
@@ -1508,9 +1525,7 @@ static void Handle_Input_Debug_Pokemon(u8 taskId)
                 data->animIdBack = GetSpeciesBackAnimSet(data->currentmonId) + 1;
                 data->animIdFront = sMonFrontAnimIdsTable[data->currentmonId - 1];
                 UpdateMonAnimNames(taskId);
-                data->offsetsSpriteValues.offset_back_picCoords = 0;
-                data->offsetsSpriteValues.offset_front_picCoords = 0;
-                data->offsetsSpriteValues.offset_front_elevation = 0;
+                ResetOffsetSpriteValues(data);
             }
             PlaySE(SE_DEX_SCROLL);
             while (!(gMain.intrCheck & INTR_FLAG_VBLANK));
@@ -1526,9 +1541,7 @@ static void Handle_Input_Debug_Pokemon(u8 taskId)
                 data->animIdBack = GetSpeciesBackAnimSet(data->currentmonId) + 1;
                 data->animIdFront = sMonFrontAnimIdsTable[data->currentmonId - 1];
                 UpdateMonAnimNames(taskId);
-                data->offsetsSpriteValues.offset_back_picCoords = 0;
-                data->offsetsSpriteValues.offset_front_picCoords = 0;
-                data->offsetsSpriteValues.offset_front_elevation = 0;
+                ResetOffsetSpriteValues(data);
             }
 
             PlaySE(SE_DEX_SCROLL);
@@ -1560,6 +1573,7 @@ static void Handle_Input_Debug_Pokemon(u8 taskId)
             data->currentSubmenu = 2;
             PrintInstructionsOnWindow(data);
             SetArrowInvisibility(data);
+            SetConstSpriteValues(data);
             UpdateYPosOffsetText(data);
         }
         else if (JOY_NEW(B_BUTTON))
