@@ -3713,8 +3713,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
     case EFFECT_ENDURE:
         if (CanTargetFaintAi(battlerDef, battlerAtk))
         {
-            if (gBattleMons[battlerAtk].hp > gBattleMons[battlerAtk].maxHP / 4 // Pinch berry couldn't have activated yet
-              && IsPinchBerryItemEffect(AI_DATA->atkHoldEffect))
+            if (gBattleMons[battlerAtk].hp > gBattleMons[battlerAtk].maxHP / 4) // Pinch berry couldn't have activated yet
             {
                 score += 3;
             }
