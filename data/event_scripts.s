@@ -1196,3 +1196,5 @@ Common_EventScript_LegendaryFlewAway::
 ##  .include "data/cutscenes/YouCantStopMe.inc"
 ##  .include "data/cutscenes/WeCanStopYouActually.inc"
 
+
+	.include "data/maps/Psfcity3/scripts.inc"

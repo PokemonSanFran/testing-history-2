@@ -1,6 +1,7 @@
 {
   "layouts_table_label": "gMapLayouts",
   "group_order": [
+    "gMapGroup_PsfTownsAndRoutes",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorPsfcity8",
     "gMapGroup_IndoorPsfcity15",
@@ -42,7 +43,7 @@
     "gMapGroup_IndoorRoute119",
     "gMapGroup_IndoorRoute124"
   ],
-  "gMapGroup_TownsAndRoutes": [
+  "gMapGroup_PsfTownsAndRoutes": [
     "Psfcity8",
     "Psfroute17",
     "Psfcityy16",
@@ -64,6 +65,20 @@
     "Psfcity14",
     "Psfplace7",
     "Psfplace11",
+    "Psfplace13",
+    "Psfroute1",
+    "Psfcity17",
+    "Psfplace16",
+    "Psfroute72",
+    "Psfroute12",
+    "Psfcity9",
+    "Psfroute63",
+    "Psfcity11",
+    "Psfcave7",
+    "Psfplace9",
+    "Psfcity3"
+  ],
+  "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
     "SlateportCity",
     "MauvilleCity",
@@ -120,18 +135,7 @@
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125",
-    "Psfplace13",
-    "Psfroute1",
-    "Psfcity17",
-    "Psfplace16",
-    "Psfroute72",
-    "Psfroute12",
-    "Psfcity9",
-    "Psfroute63",
-    "Psfcity11",
-    "Psfcave7",
-    "Psfplace9"
+    "Underwater_Route125"
   ],
   "gMapGroup_IndoorPsfcity8": [
     "Psfcity8_Compound_1F",
@@ -153,6 +157,8 @@
   ],
   "gMapGroup_IndoorPsfplace9": [
     "Psfplace9_Roof"
+  ],
+  "gMapGroup_IndoorPsfcity3": [
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

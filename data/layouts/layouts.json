@@ -4900,6 +4900,16 @@
       "secondary_tileset": "gTileset_Pacifidlog",
       "border_filepath": "data/layouts/Psfplace9_Roof/border.bin",
       "blockdata_filepath": "data/layouts/Psfplace9_Roof/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY3",
+      "name": "Psfcity3_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Psfcity3/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity3/map.bin"
     }
   ]
 }
