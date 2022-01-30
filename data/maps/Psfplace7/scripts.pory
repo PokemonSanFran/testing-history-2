@@ -1,7 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFTRANSRIVAL = 1
 
-mapscripts Psfplace7_MapScripts {}
+mapscripts Psfplace7_MapScripts {
+}
 
 script OldAssholeAppears_PsftransrivalWalkToPlayer {
     lockall

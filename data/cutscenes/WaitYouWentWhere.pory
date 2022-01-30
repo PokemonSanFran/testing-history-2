@@ -1,0 +1,179 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADADMIN = 1
+
+script WaitYouWentWhere_ObjectSetUp {
+    special(GetNumberOfBadges)
+        if (var(VAR_TEMP_0) < 7 && var(VAR_PSFCAVE7_STATE) == 2 && var(VAR_ROUTE104_STATE) < 1){
+            clearflag(FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN)
+        }
+        else {
+            setflag(FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN)
+        }
+    end
+}
+
+script WaitYouWentWhere_PlayerSetUp {
+    lockall
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+    if (var(VAR_TEMP_1) == 1){
+        applymovement(PLAYER, WaitYouWentWhere_PlayerFromSouth)
+    } elif (var(VAR_TEMP_0) == 40){
+        applymovement(PLAYER, WaitYouWentWhere_PlayerFromWest)
+    }
+}
+
+script WaitYouWentWhere_FirstInteract_Dialogue {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_WelcomeBackFrom,MSGBOX_NPC)
+        lock
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_YeahThanksFor)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_IHaveSomeBusiness)
+        closemessage
+        callnative(ClearMugshot)
+
+        call(WaitYouWentWhere_PlayerSetUp)
+        waitmovement(0)
+
+        applymovement(PLAYER,Player_WaitYouWentWhere_WalkWest)
+        applymovement(PSFBADADMIN,Psfbadadmin_WaitYouWentWhere_WalkWest)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_IActuallyJustGot)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_ThePassWeGave)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_GaveMeAPass)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_WhatAPainIn)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_YeahIveSeenThem)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_YesBeforeWeRevamped)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_OrreHasALot)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_NoOffense)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WaitYouWentWhere_GoingThisWay)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFBADADMIN,WaitYouWentWhere_WalkUpHill)
+        waitmovement(0)
+        removeobject(PSFBADADMIN)
+        releaseall
+        setvar(VAR_ROUTE104_STATE,1)
+        end
+}
+
+movement WaitYouWentWhere_PlayerFromSouth {
+    walk_right
+    walk_up
+    face_left
+    step_end
+}
+
+movement WaitYouWentWhere_PlayerFromWest {
+    walk_down
+    walk_right * 2
+    walk_up
+    face_left
+    step_end
+}
+
+movement Player_WaitYouWentWhere_WalkWest {
+    walk_left * 41
+        step_end
+}
+movement Psfbadadmin_WaitYouWentWhere_WalkWest {
+    walk_left * 41
+        face_right
+        step_end
+}
+
+movement WaitYouWentWhere_WalkUpHill {
+    walk_left * 5
+        walk_up
+        walk_left * 5
+        walk_up
+        walk_left * 6
+        step_end
+}
+movement WaitYouWentWhere_WalkSouth{
+    walk_down * 10
+        step_end
+}
+
+text gText_WaitYouWentWhere_WelcomeBackFrom {
+    format("Ah {PLAYER}, welcome back from Psfcity11! I hear you defeated Psfleader4, as expected from you.")
+}
+
+text gText_WaitYouWentWhere_YeahThanksFor {
+    format("Yeah, thanks for your help. Where are you going?")
+}
+
+text gText_WaitYouWentWhere_IHaveSomeBusiness {
+    format("I have some business to attend to in Psfcity12. I assume you're heading west, let's walk together. How has your training been?")
+}
+
+
+text gText_WaitYouWentWhere_IActuallyJustGot {
+    format("I actually just got back from Psfcave7, which was really interesting.")
+}
+
+text gText_WaitYouWentWhere_ThePassWeGave {
+    format("The pass we gave you doesn't let you go there…")
+}
+
+text gText_WaitYouWentWhere_GaveMeAPass {
+    format("Yeah, a Psfgoodteam member gave me a pass as an apology. It's complicated.")
+}
+
+text gText_WaitYouWentWhere_WhatAPainIn {
+    format("Uh, Psfgoodteam, what a pain in my ass. They're an organization created from the base of prisoner sympathizers, and they've branded themselves as total anti-establishment anarchists. They make a lot of noise for no real reason.")
+}
+
+text gText_WaitYouWentWhere_YeahIveSeenThem {
+    format("Yeah, I've seen them around. What's the deal with the Elite Four? Psfregion1 used to have one?")
+}
+
+text gText_WaitYouWentWhere_YesBeforeWeRevamped {
+    format("Yes, before we revamped their League structure. They used to be the strongest Trainers in Psfregion1, but we hope that trainers like you and Psftransrival will be able to outshine them soon. Ugh, and finally, we're done dealing with Double Battles… what a mess.")
+}
+
+text gText_WaitYouWentWhere_OrreHasALot {
+    format("Orre has a lot of double battles! They're not that bad.")
+}
+
+text gText_WaitYouWentWhere_NoOffense {
+    format("No offense - I'm sure they're fine, but certainly not fit for a world-class League!")
+}
+
+text gText_WaitYouWentWhere_GoingThisWay {
+    format("Well, time to hike this miserable hill. I'll save you the hassle.  Stay out of trouble, okay?")
+}

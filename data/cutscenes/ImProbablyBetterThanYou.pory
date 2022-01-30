@@ -1,0 +1,150 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 1
+const PSFTRANSRIVAL_2 = 2
+const PSFBADADMIN1 = 3
+const PSFBADADMIN1_2 = 6
+
+
+script ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue {
+    setvar(VAR_LITTLEROOT_INTRO_STATE,2)
+        lockall
+        applymovement(PLAYER,WalkInside_Movement)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+        playse(SE_PIN)
+        applymovement(PSFTRANSRIVAL,Common_Movement_ExclamationMark)
+        waitmovement(0)
+        applymovement(PSFTRANSRIVAL,PsftransrivalIntro_Movement)
+        waitmovement(0)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1)
+        closemessage
+        goto (ImProbablyBetterThanYou_KindaShabby_Dialogue) 
+        end
+}
+
+script ImProbablyBetterThanYou_KindaShabby_Dialogue {
+    applymovement(PSFTRANSRIVAL,PsftransrivalLookAround_Movement)
+        waitmovement(3)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text2)
+        closemessage
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text3)
+        callnative(ClearMugshot)
+        closemessage
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text4)
+        callnative(ClearMugshot)
+        closemessage
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text5)
+        goto(ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue) 
+        end
+}
+
+script ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue {
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text6)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text7)
+        closemessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text8)
+        callnative(ClearMugshot)
+        closemessage
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text9)
+        goto (ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue)
+        end
+}
+
+script ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue {
+    msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text10)
+        applymovement(PSFTRANSRIVAL,PsftransrivalGestureUpstairs_Movement)
+        waitmovement(0)
+        msgbox(gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text11)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFTRANSRIVAL,PsftransrivalBackToCouch_Movement)
+        waitmovement(0)
+        playbgm(MUS_BIRCH_LAB,TRUE)
+        releaseall
+        end
+}
+
+script ImProbablyBetterThanYou_ShouldUnpack {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PLAYER,WalkInside_Movement)
+        waitmovement(0)
+        releaseall
+        end
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text1 {
+    format("You must be {PLAYER}. Great to meet you!")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text2 {
+    format("Kinda shabby, huh? I thought Psfbadguy1 was pulling out all the stops for us, but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text3 {
+    format("Oh yeah uh, it's too bad...")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text4 {
+    format("*internal* This house is friggin' huge! Bigger than anywhere I've ever stayed, that's for sure...")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text5 {
+    format("My flight was earlier today, so I've just been waiting around.")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text6 {
+    format("I ordered some food too - Psfcompany1 is the same here as it is back in Unova, and my Mom's card is still on the account! I'm sure she gets... points or something, right?")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text7 {
+    format("Where are you from?")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text8 {
+    format("Agate Village, Orre. You?")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text9 {
+    format("Undella Town, Unova. Agate, right? I don't think I've heard of it... oh well. Probably just as boring as Undella. SO GLAD to be out of there!")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text10 {
+    format("I know our orientation is supposed to start soon, or something like that. I took the bedroom on the left, so the one to the right is yours. I tried to take the good one because I got here first...")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalIntro_Text11 {
+    format("but both rooms are exactly the same! Let's chill after you unpack.")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text1 {
+    format("Go check out your room!")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text2 {
+    format("Oh man, are you trying to do some bonding or something? Lemme finish this truffle burger first...")
+}
+
+text gText_ImProbablyBetterThanYou_PsftransrivalAnnoy_Text3 {
+    format("Nom nom nom...")
+}
+
+text gText_ImProbablyBetterThanYou_ShouldUnpack_Dialogue {
+    format("I should check out my room!")
+}
