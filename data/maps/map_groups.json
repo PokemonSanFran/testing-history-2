@@ -9,6 +9,7 @@
     "gMapGroup_IndoorPsfcity14",
     "gMapGroup_IndoorPsfcity11",
     "gMapGroup_IndoorPsfplace9",
+    "gMapGroup_IndoorPsfcity3",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -159,6 +160,7 @@
     "Psfplace9_Roof"
   ],
   "gMapGroup_IndoorPsfcity3": [
+    "Psfcity3_Mansion"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

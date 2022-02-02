@@ -1198,3 +1198,5 @@ Common_EventScript_LegendaryFlewAway::
 
 
 	.include "data/maps/Psfcity3/scripts.inc"
+
+	.include "data/maps/Psfcity3_Mansion/scripts.inc"
