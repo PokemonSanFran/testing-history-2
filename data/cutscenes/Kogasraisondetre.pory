@@ -1,0 +1,539 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const ALEKSANDER = 1
+const RAGHNALL = 2
+const PSFBADADMIN2 = 3
+const CAMERA = OBJ_EVENT_ID_CAMERA
+
+script KogaRaisonDetre_InteractGuard_Dialogue {
+    lockall
+        msgbox(gText_KogaRaisonDetre_HasBeenExpectingYou,MSGBOX_NPC)
+        releaseall
+        end
+}
+
+script KogaRaisonDetre_MoveIntoForyer_Script {
+    lockall
+        applymovement(ALEKSANDER,KogaRaisonDetre_ComeDownStairs1)
+        delay(48)
+        applymovement(RAGHNALL,KogaRaisonDetre_ComeDownStairs2)
+        waitmovement(0)
+        releaseall
+        goto(KogaRaisonDetre_KidsMeetPlayer_Dialogue)
+        end
+}
+
+script KogaRaisonDetre_KidsMeetPlayer_Dialogue {
+    //TODO: add hop for the younger kid
+    msgbox(gText_KogaRaisonDetre_YoureHereInTheFlesh)
+        msgbox(gText_KogaRaisonDetre_YoureAFreak)
+        closemessage
+        applymovement(ALEKSANDER,KogaRaisonDetre_RunAroundPlayer)
+        msgbox(gText_KogaRaisonDetre_MaybeTheyllSign)
+        msgbox(gText_KogaRaisonDetre_ShutUp)
+        msgbox(gText_KogaRaisonDetre_ShowUsHowYouTookDown)
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_AllRightAllRight)
+        applymovement(PSFBADADMIN2,KogaRaisonDetre_WalkIntoFoyer)
+        callnative(ClearMugshot)
+        lockall
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_YouDontWantToScare)
+        callnative(ClearMugshot)
+        msgbox(gText_KogaRaisonDetre_GonnaGoGet)
+
+        applymovement(ALEKSANDER,KogaRaisonDetre_RunUpstairs)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_SorryAboutThat)
+        callnative(ClearMugshot)
+        msgbox(gText_KogaRaisonDetre_OhMyGod)
+        closemessage
+        applymovement(RAGHNALL,KogaRaisonDetre_RunUpstairs)
+        waitmovement(0)
+        goto(KogaRaisonDetre_CityDiscussion_Dialogue)
+        end
+}
+
+script KogaRaisonDetre_CityDiscussion_Dialogue {
+    applymovement(PLAYER,KogaRaisonDetre_WalkFromEntrance)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_YourHouseIsBeautiful)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_ItWasImportantToMe)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_ButItsHardToJustify)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_IveBeenStruggling)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_ItsBeenSaidThat)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_ToughToBeAround)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_ICompletelyUnderstand)
+        closemessage
+
+        applymovement(PSFBADADMIN2,KogaRaisonDetre_WalkTowardsLiving)
+        waitmovement(0)
+
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_ItsMuchEasier)
+        closemessage
+        callnative(ClearMugshot)
+        applymovement(PSFBADADMIN2,KogaRaisonDetre_WalkToDining)
+        waitmovement(0)
+        setobjectxy(PSFBADADMIN2,3,4)
+        releaseall
+        end
+}
+
+script KogaRaisonDetre_ComeSit_Dialogue {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_ComeSit)
+        callnative(ClearMugshot)
+        setvar(VAR_ROUTE105_STATE,1)
+        closemessage
+        releaseall
+        end
+}
+
+script KogaRaisonDetre_InteractAtTable {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_IPickedOut)
+        closemessage
+        callnative(ClearMugshot)
+        releaseall
+        end
+}
+
+script KogaRaisonDetre_Wine_Dialogue {
+    setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_IJustRecentlyMet)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_ThatLastPartIsImportant)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_WhatDoYouMean)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_DoYouKnowHow)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_IsntItMostly)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_UsedToBe)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_WoahWaitBigger)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_PeopleLoveBattles)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_TheBroadcasts)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_MyKidsBeingObsessed)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_WereGoingToMake)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_IBroughtYouHere)
+        callnative(ClearMugshot)
+        closemessage
+        playse(SE_DING_DONG)
+        waitfanfare
+
+        msgbox(gText_KogaRaisonDetre_DinnerIsServed)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_AhExcellent)
+        applymovement(PSFBADADMIN2,WalkToDiningRoom)
+        waitmovement(0)
+        releaseall
+        setobjectxy(PSFBADADMIN2,37,5)
+        setvar(VAR_ROUTE105_STATE,2)
+        end
+}
+
+script KogaRaisonDetre_StartDinner_Script {
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        if (var(VAR_TEMP_0) == 36){
+            applymovement(PLAYER,WalkToTableFromLeft)
+        }
+        else {
+            applymovement(PLAYER,WalkToTableFromRight)
+        }
+    waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_WereHonoredToHaveYou)
+        callnative(ClearMugshot)
+        closemessage
+        fadescreen(FADE_TO_BLACK)
+        releaseall
+        goto(KogaRaisonDetre_DinnerConversation_Dialogue)
+        end
+}
+
+script KogaRaisonDetre_DinnerConversation_Dialogue {
+
+    special(SpawnCameraObject)
+        fadescreen(FADE_FROM_BLACK)
+        applymovement(CAMERA,KogaRaisonDetre_PanCamera)
+        msgbox(gText_KogaRaisonDetre_YourDadIsRed)
+        msgbox(gText_KogaRaisonDetre_HowManyBadges)
+        msgbox(gText_KogaRaisonDetre_DoIHaveToEat)
+        fadescreen(FADE_TO_BLACK)
+        playse(SE_POKENAV_CALL)
+        fadescreen(FADE_FROM_BLACK)
+        special(RemoveCameraObject)
+        goto(KogaRaisonDetre_RunToWork_Dialogue)
+        releaseall
+        end
+}
+
+script KogaRaisonDetre_RunToWork_Dialogue {
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_SorryThatsMyPhone)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFBADADMIN2,KogaRaisonDetre_StepAwayFromTable)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_ShitTheresAnUrgent)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFBADADMIN2,KogaRaisonDetre_KissKids)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_WaitIThoughtThat)
+        callnative(ClearMugshot)
+
+        msgbox(gText_KogaRaisonDetre_YeahItDoes)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_What)
+        callnative(ClearMugshot)
+
+        msgbox(gText_KogaRaisonDetre_TonOfMoneyInWarp)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_OhDamnYouWerent)
+        callnative(ClearMugshot)
+
+        msgbox(gText_KogaRaisonDetre_IDontKnowWhy)
+        closemessage
+        applymovement(RAGHNALL,KogaRaisonDetre_LeaveDiningRoom)
+        waitmovement(0)
+        fadescreen(FADE_TO_BLACK)
+        msgbox("The next morning…")
+        closemessage
+        goto(KogaRaisonDetre_NewsStory_Script)
+        end
+}
+
+script KogaRaisonDetre_NewsStory_Script {
+    fadescreen(FADE_FROM_BLACK)
+        special(TurnOnTVScreen)
+        delay(60)
+        msgbox(gText_KogaRaisonDetre_AndNowWeGoTo)
+        msgbox(gText_KogaRaisonDetre_ThanksKen)
+        msgbox(gText_KogaRaisonDetre_WereAlsoLearningThat)
+        closemessage
+        special(TurnOffTVScreen)
+        applymovement(PLAYER,WalkToThePlayer)
+        waitmovement(0)
+
+        msgbox(gText_KogaRaisonDetre_IsThereSobAnyhingElse)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_KogaRaisonDetre_AreYouOkay)
+        callnative(ClearMugshot)
+
+        msgbox(gText_KogaRaisonDetre_MySobSonIsInTheICU)
+        applymovement(4,KogaRaisonDetre_LeaveDiningRoom)
+        waitmovement(0)
+        releaseall
+        end
+}
+
+text gText_KogaRaisonDetre_HasBeenExpectingYou {
+    format("{PLAYER}, PSFBADADMIN2 has been expecting you.")
+}
+text gText_KogaRaisonDetre_YoureHereInTheFlesh {
+    format("Aaaahhhh! {PLAYER}! You're here! In the flesh!")
+}
+text gText_KogaRaisonDetre_YoureAFreak {
+    format("…Alek, you're a freak.")
+}
+text gText_KogaRaisonDetre_MaybeTheyllSign {
+    format("Aren't you excited Raghnall! Maybe they'll sign your {PLAYER} shirt! ")
+}
+text gText_KogaRaisonDetre_ShutUp {
+    format("…shut up!")
+}
+text gText_KogaRaisonDetre_ShowUsHowYouTookDown {
+    format("Oh oh oh, show us how you took down Psfleader1! Can we see some battle moves? Oh come on yes, let's battle, right now, yeah yeah yeah!")
+}
+text gText_KogaRaisonDetre_AllRightAllRight {
+    format("All right, all right, calm down. I told you you'd have to stifle your excitement, didn't I?")
+}
+text gText_KogaRaisonDetre_YouDontWantToScare {
+    format("You don't want to scare {PLAYER} away, do you?")
+}
+text gText_KogaRaisonDetre_GonnaGoGet {
+    format("No no no! Oh, I'm gonna go get all my League stuff, I'll be right back!")
+}
+text gText_KogaRaisonDetre_SorryAboutThat {
+    format("Sorry about that. They get… very excited. And don't let Raghnall's demeanor fool you. I think they've watched your battle against Psfleader3 at least 40 times.")
+}
+text gText_KogaRaisonDetre_OhMyGod {
+    format("Oh my god, Dad!")
+}
+text gText_KogaRaisonDetre_YourHouseIsBeautiful {
+    format("Your house is beautiful. Actually, the entire city is beautiful.")
+}
+text gText_KogaRaisonDetre_ItWasImportantToMe {
+    format("Thank you. It was important to me that I raised my family in Psfcity3. Most Psfbadguy1 employees want to be in the city - close to the office and the nightlife. ")
+}
+text gText_KogaRaisonDetre_ButItsHardToJustify {
+    format("But it's hard to justify raising a family there. It's expensive on this side, sure, but it's less dangerous… and the city is suffering.")
+}
+text gText_KogaRaisonDetre_IveBeenStruggling {
+    format("I've been struggling to find the right word for it, but suffering is good. Psfcity12, Psfcity9… so many of the places I've been to so far are hurting.")
+}
+text gText_KogaRaisonDetre_ItsBeenSaidThat {
+    format("It's been said that most skilled Trainers are unusually compassionate, and I guess that means you too!")
+}
+text gText_KogaRaisonDetre_ToughToBeAround{
+    format("It's tough to be around, especially as you guys are treating me so well, you know? Do I really deserve all of this just because I'm decent at battles?")
+}
+text gText_KogaRaisonDetre_ICompletelyUnderstand {
+    format("I completely understand, trust me.")
+}
+text gText_KogaRaisonDetre_ItsMuchEasier {
+    format("It's much easier to have these talks over wine.")
+}
+text gText_KogaRaisonDetre_ComeSit {
+    format("Come, sit.")
+}
+text gText_KogaRaisonDetre_IPickedOut {
+    format("I picked out an excellent Chardonnay for you. Come have a seat.")
+}
+text gText_KogaRaisonDetre_ {
+    format("How much do you know about Psfbadboss?")
+}
+text gText_KogaRaisonDetre_IJustRecentlyMet {
+    format("I just recently met them. They're the CEO, and the League Commissioner, and prefer working alongside people.")
+}
+text gText_KogaRaisonDetre_ThatLastPartIsImportant {
+    format("That last part is important - Psfbadboss grew up here. They take great pride in Psfregion1, and want all of their work at Psfbadguy1 to go towards making the entire region a better place to live. It's why we acquired the Pokémon League. Psfbadboss saw its potential and knew we could use its draw and our resources to make it even better, and bring in Trainers like you.")
+}
+text gText_KogaRaisonDetre_WhatDoYouMean {
+    format("What do you mean?")
+}
+text gText_KogaRaisonDetre_DoYouKnowHow {
+    format("Do you know how the Kanto region makes the majority of its revenue?")
+}
+text gText_KogaRaisonDetre_IsntItMostly {
+    format("Isn't it mostly manufacturing?")
+}
+text gText_KogaRaisonDetre_UsedToBe {
+    format("Used to be. But after Red took the League by storm back in '96, the League has been the primary economic driver. Estimates show that revenue from the Pokémon League is about to eclipse tourism in Alola too.")
+}
+text gText_KogaRaisonDetre_WoahWaitBigger {
+    format("Woah wait, bigger than Alolan tourism?")
+}
+text gText_KogaRaisonDetre_PeopleLoveBattles {
+    format("People love Pokémon battles. Psfbadboss knew if we used our resources to create a compelling product, we wouldn't need Dynamax or League HQs built into cathedrals. We've got what the people want to see.")
+}
+text gText_KogaRaisonDetre_TheBroadcasts {
+    format("The broadcasts?")
+}
+text gText_KogaRaisonDetre_MyKidsBeingObsessed {
+    format("Yes. My kids being obsessed with you isn't an accident. We're building rockstars.")
+}
+text gText_KogaRaisonDetre_WereGoingToMake {
+    format("We're going to make Psfregion1 the region where rock stars are born. Trainers are going to want to emulate you! The region will be richer for it. It can afford to uplift all of its citizens to something much much greater. You're an investment, {PLAYER}, but it's all part of a much bigger play.")
+}
+text gText_KogaRaisonDetre_IBroughtYouHere {
+    format("I brought you here to thank you {PLAYER}. You're part of the puzzle that is going to bring these people out of poverty. You're part of the solution.")
+}
+text gText_KogaRaisonDetre_DinnerIsServed {
+    format("Dinner is served!")
+}
+text gText_KogaRaisonDetre_AhExcellent {
+    format("Ah excellent, passion makes me hungry. ")
+}
+text gText_KogaRaisonDetre_WereHonoredToHaveYou {
+    format("{PLAYER}, we're honored to have you in our home. Enjoy dinner!")
+}
+text gText_KogaRaisonDetre_YourDadIsRed {
+    format("Is it true your dad is Red from Pallet Town?")
+}
+text gText_KogaRaisonDetre_HowManyBadges {
+    format("How many badges did you have in Orre?")
+}
+text gText_KogaRaisonDetre_DoIHaveToEat {
+    format("Dad, do I have to eat all my asparagus?")
+}
+text gText_KogaRaisonDetre_SorryThatsMyPhone {
+    format("Sorry, that's my phone and I need to take that.")
+}
+text gText_KogaRaisonDetre_ShitTheresAnUrgent {
+    format("Shit, there's an urgent matter at work. I'm so sorry kids, I'll try to hurry back. {PLAYER}, we've already set up one of the guest rooms for you, and hopefully I'll be able to join you for breakfast before you leave again. If I don't see you, have an excellent night.")
+}
+text gText_KogaRaisonDetre_WaitIThoughtThat {
+    format("Wait, I thought that hallway just goes upstairs?")
+}
+text gText_KogaRaisonDetre_YeahItDoes {
+    format("Yeah, it does. Daddy just teleports to work!")
+}
+text gText_KogaRaisonDetre_What {
+    format("…what?")
+}
+text gText_KogaRaisonDetre_TonOfMoneyInWarp {
+    format("Psfbadguy has a ton of money in warp tiles. All the executives have panels from their house to their office installed. He literally teleports to work, everyday.")
+}
+text gText_KogaRaisonDetre_OhDamnYouWerent {
+    format("Oh damn, you weren't kidding.")
+}
+text gText_KogaRaisonDetre_IDontKnowWhy {
+    format("I don't know why they bother. Our parents are never even home. They're trying so hard to save the world, they're totally ignoring the one right in front of them.")
+}
+text gText_KogaRaisonDetre_AndNowWeGoTo {
+    format("And now we go to Da Lin, for more details about last night's riots. ")
+}
+text gText_KogaRaisonDetre_ThanksKen {
+    format("Thanks Ken. We're gathering details on the ground here, but it sounds like this riot was instigated by members of Psfgoodteam, culminating in violent attacks on the Psfcity12 Police Force. Both sides sustained significant injury, and dozens of members of Psfgoodteam were taken into custody last night. Back to you, Ken.")
+}
+text gText_KogaRaisonDetre_WereAlsoLearningThat {
+    format("We're also learning that the Mayor's office released a press statement ten minutes ago, primarily addressing Psfgoodteam, asking for an end to the violence and begging them to “work with us, not against us”. We'll have more updates within the hour.")
+}
+text gText_KogaRaisonDetre_IsThereSobAnyhingElse {
+    format("Is there *sob* anything else I can get you *sob*, Lord {PLAYER}?")
+}
+text gText_KogaRaisonDetre_AreYouOkay {
+    format("Are you okay? What's wrong?")
+}
+text gText_KogaRaisonDetre_MySobSonIsInTheICU {
+    format("I'm sorry. My… *sob* son is in the ICU after the riots last night. Psfgoodteam keeps getting impressionable young folk involved in their nonsense… *sob* I hope the city can get rid of them!")
+}
+movement KogaRaisonDetre_ComeDownStairs1{
+    step_end
+}
+
+movement KogaRaisonDetre_ComeDownStairs2{
+    step_end
+}
+
+movement KogaRaisonDetre_RunAroundPlayer{
+    step_end
+}
+
+movement KogaRaisonDetre_WalkIntoFoyer{
+    step_end
+}
+
+movement KogaRaisonDetre_RunUpstairs{
+    step_end
+}
+
+movement KogaRaisonDetre_WalkFromEntrance{
+    step_end
+}
+
+movement KogaRaisonDetre_WalkTowardsLiving{
+    step_end
+}
+
+movement KogaRaisonDetre_WalkToDining{
+    step_end
+}
+
+movement WalkToDiningRoom{
+    step_end
+}
+
+movement WalkToTableFromLeft{
+    step_end
+}
+
+movement WalkToTableFromRight{
+    step_end
+}
+
+movement KogaRaisonDetre_PanCamera{
+    step_end
+}
+
+movement KogaRaisonDetre_StepAwayFromTable{
+    step_end
+}
+
+movement KogaRaisonDetre_KissKids{
+    step_end
+}
+
+movement KogaRaisonDetre_LeaveDiningRoom{
+    step_end
+}
+
+movement WalkToThePlayer{
+    step_end
+}

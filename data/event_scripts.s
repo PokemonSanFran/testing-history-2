@@ -1144,7 +1144,7 @@ Common_EventScript_LegendaryFlewAway::
     .include "data/cutscenes/WaitYouWentWhere.inc"
 ##  .include "data/cutscenes/EnterChuck.inc"
 ##  .include "data/cutscenes/YouLookTired.inc"
-##  .include "data/cutscenes/Kogasraisondetre.inc"
+    .include "data/cutscenes/Kogasraisondetre.inc"
 ##  .include "data/cutscenes/BeachBattle.inc"
 ##  .include "data/cutscenes/EnterJasmine.inc"
 ##  .include "data/cutscenes/AndWeMarchOn.inc"

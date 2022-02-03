@@ -1,4 +1,8 @@
 * * * * * * * * * * * *
+FEB 2
+add movement to data/cutscenes/Kogasraisondetre.pory
+look at Wally script to figure out how to handle cross map movement for WaitWhere
+
 JAN 16
 Use pokeemerald_egg/data/maps/Route128/scripts.inc to edit in the flying away for Trainers
 
