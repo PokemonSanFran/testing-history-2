@@ -1,3 +1,2 @@
 Failed to read "src/omni_text.c".
-Failed to read "src/omni_text.h".
 cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald.map -T ld_script.ld -o ../../pokeemerald.elf <objects> <lib>

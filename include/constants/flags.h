@@ -58,9 +58,9 @@
 #define FLAG_HIDE_SWAGBAG2_PSFBADADMIN1 0x2E// Previously Unused Flag
 #define FLAG_HIDE_STORYSOFAR_PSFELITE1    0x2F // Previously Unused Flag
 #define FLAG_HIDE_YOULOOKTIRED_PSFBADADMIN2 0x30 // Previously Unused Flag
-#define FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
+#define FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN    0x31 // Previously Unused Flag
+#define FLAG_HIDE_MANSION_KIDS 0x32 // Previously Unused Flag
+#define FLAG_HIDE_MANSION_MAID    0x33 // Previously Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag

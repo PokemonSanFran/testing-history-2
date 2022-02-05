@@ -5,11 +5,11 @@ KogaRaisonDetre_InteractGuard_Dialogue::
 	end
 
 
-KogaRaisonDetre_MoveIntoForyer_Script::
+KogaRaisonDetre_MoveIntoFoyer_Script::
 	lockall
-	applymovement 1, KogaRaisonDetre_ComeDownStairs1
+	applymovement 1, KogaRaisonDetre_ComeDownStairs
 	delay 48
-	applymovement 2, KogaRaisonDetre_ComeDownStairs2
+	applymovement 2, KogaRaisonDetre_ComeDownStairs
 	waitmovement 0
 	releaseall
 	goto KogaRaisonDetre_KidsMeetPlayer_Dialogue
@@ -29,22 +29,26 @@ KogaRaisonDetre_KidsMeetPlayer_Dialogue::
 	msgbox gText_KogaRaisonDetre_AllRightAllRight
 	applymovement 3, KogaRaisonDetre_WalkIntoFoyer
 	callnative ClearMugshot
-	lockall
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_YouDontWantToScare
 	callnative ClearMugshot
 	msgbox gText_KogaRaisonDetre_GonnaGoGet
+	closemessage
 	applymovement 1, KogaRaisonDetre_RunUpstairs
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_SorryAboutThat
 	callnative ClearMugshot
+	applymovement 2, Common_Movement_FaceLeft
+	waitmovement 0
 	msgbox gText_KogaRaisonDetre_OhMyGod
 	closemessage
 	applymovement 2, KogaRaisonDetre_RunUpstairs
 	waitmovement 0
+	removeobject 2
+	removeobject 1
 	goto KogaRaisonDetre_CityDiscussion_Dialogue
 	end
 
@@ -84,6 +88,8 @@ KogaRaisonDetre_CityDiscussion_Dialogue::
 	applymovement 3, KogaRaisonDetre_WalkToDining
 	waitmovement 0
 	setobjectxy 3, 3, 4
+	setobjectxyperm 3, 3, 4
+	turnobject 3, DIR_EAST
 	releaseall
 	end
 
@@ -92,9 +98,9 @@ KogaRaisonDetre_ComeSit_Dialogue::
 	lockall
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ComeSit
+	msgbox gText_KogaRaisonDetre_ComeSit, MSGBOX_NPC
 	callnative ClearMugshot
-	setvar VAR_ROUTE105_STATE, 1
+	setvar VAR_ROUTE105_STATE, 2
 	closemessage
 	releaseall
 	end
@@ -112,9 +118,11 @@ KogaRaisonDetre_InteractAtTable::
 
 
 KogaRaisonDetre_Wine_Dialogue::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_
+	msgbox gText_KogaRaisonDetre_HowMuch
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_IJustRecentlyMet
@@ -159,11 +167,14 @@ KogaRaisonDetre_Wine_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_AhExcellent
+	closemessage
+	callnative ClearMugshot
 	applymovement 3, WalkToDiningRoom
 	waitmovement 0
 	releaseall
 	setobjectxy 3, 37, 5
-	setvar VAR_ROUTE105_STATE, 2
+	setobjectxyperm 3, 37, 5
+	setvar VAR_ROUTE105_STATE, 3
 	end
 
 
@@ -180,7 +191,13 @@ KogaRaisonDetre_StartDinner_Script_1:
 	callnative ClearMugshot
 	closemessage
 	fadescreen FADE_TO_BLACK
-	releaseall
+	addobject 1
+	addobject 2
+	setobjectxy 2, 42, 7
+	setobjectxy 1, 40, 7
+	setobjectxy 3, 37, 5
+	turnobject 2, DIR_NORTH
+	turnobject 1, DIR_NORTH
 	goto KogaRaisonDetre_DinnerConversation_Dialogue
 	end
 
@@ -191,15 +208,24 @@ KogaRaisonDetre_StartDinner_Script_2:
 
 KogaRaisonDetre_DinnerConversation_Dialogue::
 	special SpawnCameraObject
+	setvar VAR_0x8004, 37
+	setvar VAR_0x8005, 5
+	special TeleportCamera
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_CAMERA, KogaRaisonDetre_PanCamera
 	msgbox gText_KogaRaisonDetre_YourDadIsRed
+	closemessage
 	msgbox gText_KogaRaisonDetre_HowManyBadges
+	closemessage
 	msgbox gText_KogaRaisonDetre_DoIHaveToEat
+	closemessage
 	fadescreen FADE_TO_BLACK
-	playse SE_POKENAV_CALL
-	fadescreen FADE_FROM_BLACK
+	special ReturnCameraToPlayer
 	special RemoveCameraObject
+	delay 60
+	playse SE_POKENAV_CALL
+	waitfanfare
+	fadescreen FADE_FROM_BLACK
 	goto KogaRaisonDetre_RunToWork_Dialogue
 	releaseall
 	end
@@ -212,6 +238,8 @@ KogaRaisonDetre_RunToWork_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, KogaRaisonDetre_StepAwayFromTable
+	waitmovement 0
+	applymovement 3, Common_Movement_FaceLeft
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
@@ -239,6 +267,8 @@ KogaRaisonDetre_RunToWork_Dialogue::
 	applymovement 2, KogaRaisonDetre_LeaveDiningRoom
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
+	removeobject 2
+	removeobject 1
 	msgbox KogaRaisonDetre_RunToWork_Dialogue_Text_0
 	closemessage
 	goto KogaRaisonDetre_NewsStory_Script
@@ -246,6 +276,9 @@ KogaRaisonDetre_RunToWork_Dialogue::
 
 
 KogaRaisonDetre_NewsStory_Script::
+	setobjectxy 4, 44, 4
+	turnobject 4, DIR_NORTH
+	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_UP
 	fadescreen FADE_FROM_BLACK
 	special TurnOnTVScreen
 	delay 60
@@ -254,70 +287,236 @@ KogaRaisonDetre_NewsStory_Script::
 	msgbox gText_KogaRaisonDetre_WereAlsoLearningThat
 	closemessage
 	special TurnOffTVScreen
-	applymovement OBJ_EVENT_ID_PLAYER, WalkToThePlayer
+	applymovement 4, WalkToThePlayer
 	waitmovement 0
 	msgbox gText_KogaRaisonDetre_IsThereSobAnyhingElse
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_AreYouOkay
 	callnative ClearMugshot
 	msgbox gText_KogaRaisonDetre_MySobSonIsInTheICU
-	applymovement 4, KogaRaisonDetre_LeaveDiningRoom
+	closemessage
+	applymovement 4, KogaRaisonDetre_LeaveDiningRoomCrying
+	waitmovement 0
+	removeobject 4
+	setvar VAR_ROUTE105_STATE, 4
+	setvar VAR_ROUTE106_STATE, 1
+	releaseall
+	end
+
+
+KogaRaisonDetre_PreventPlayerLeaving_Script::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_KogaRaisonDetre_HasBeenSoGenerous
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
 	releaseall
 	end
 
 
-KogaRaisonDetre_ComeDownStairs1:
-	step_end
-
-KogaRaisonDetre_ComeDownStairs2:
+KogaRaisonDetre_ComeDownStairs:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 KogaRaisonDetre_RunAroundPlayer:
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
+	walk_left
+	walk_right
 	step_end
 
 KogaRaisonDetre_WalkIntoFoyer:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 KogaRaisonDetre_RunUpstairs:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 KogaRaisonDetre_WalkFromEntrance:
+	walk_up
+	walk_left
+	walk_left
+	walk_up
 	step_end
 
 KogaRaisonDetre_WalkTowardsLiving:
+	walk_up
+	face_down
 	step_end
 
 KogaRaisonDetre_WalkToDining:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 WalkToDiningRoom:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 WalkToTableFromLeft:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_left
 	step_end
 
 WalkToTableFromRight:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_left
 	step_end
 
 KogaRaisonDetre_PanCamera:
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
 	step_end
 
 KogaRaisonDetre_StepAwayFromTable:
+	walk_left
 	step_end
 
 KogaRaisonDetre_KissKids:
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_in_place_slow_left
+	delay_16
+	walk_in_place_slow_right
+	delay_16
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 KogaRaisonDetre_LeaveDiningRoom:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 WalkToThePlayer:
+	walk_right
+	walk_right
+	walk_right
+	face_down
+	step_end
+
+KogaRaisonDetre_LeaveDiningRoomCrying:
+	walk_up
+	walk_up
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
 	step_end
 
 KogaRaisonDetre_RunToWork_Dialogue_Text_0:
 	.string "The next morning…$"
+
+gText_KogaRaisonDetre_HasBeenSoGenerous::
+	.string "Psfbadadmin2 has been so generous... I\n"
+	.string "should stay.$"
 
 gText_KogaRaisonDetre_HasBeenExpectingYou::
 	.string "{PLAYER}, PSFBADADMIN2 has been\n"
@@ -331,7 +530,7 @@ gText_KogaRaisonDetre_YoureAFreak::
 	.string "…Alek, you're a freak.$"
 
 gText_KogaRaisonDetre_MaybeTheyllSign::
-	.string "Aren't you excited Raghnall! Maybe\n"
+	.string "Aren't you excited Raghnall?! Maybe\n"
 	.string "they'll sign your {PLAYER} shirt!$"
 
 gText_KogaRaisonDetre_ShutUp::
@@ -414,7 +613,7 @@ gText_KogaRaisonDetre_IPickedOut::
 	.string "I picked out an excellent Chardonnay\n"
 	.string "for you. Come have a seat.$"
 
-gText_KogaRaisonDetre_::
+gText_KogaRaisonDetre_HowMuch::
 	.string "How much do you know about\n"
 	.string "Psfbadboss?$"
 

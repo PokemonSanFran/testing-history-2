@@ -1,2 +1,17 @@
 Psfcity3_Mansion_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity3_Mansion_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcity3_Mansion_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfcity3_Mansion_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcity3_Mansion_MapScripts_OnTransition
+	return
+
+Psfcity3_Mansion_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_ROUTE105_STATE, 0, KogaRaisonDetre_MoveIntoFoyer_Script
+	.2byte 0
+
+
+Psfcity3_Mansion_MapScripts_OnTransition::
+	return
+

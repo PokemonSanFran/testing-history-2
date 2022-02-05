@@ -60,27 +60,18 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    warpsilent MAP_PSFCAVE7,15,6 
 	end
 
 Debug_Script_2::
-    call YoungPadawan_StartBattle_Script
 	end
 
 Debug_Script_3::
-    call ResetPsfcave7Exhibit_Script
 	end
 
 Debug_Script_4::
-    clearflag FLAG_BADGE01_GET
-    clearflag FLAG_BADGE02_GET
-    clearflag FLAG_BADGE03_GET
-    clearflag FLAG_BADGE04_GET
-    setflag FLAG_BADGE05_GET
 	end
 
 Debug_Script_5::
-    clearflag (TRAINER_FLAGS_START + TRAINER_NORMAN_1)
 	end
 
 Debug_Script_6::

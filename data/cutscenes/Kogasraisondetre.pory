@@ -6,310 +6,364 @@ const CAMERA = OBJ_EVENT_ID_CAMERA
 
 script KogaRaisonDetre_InteractGuard_Dialogue {
     lockall
-        msgbox(gText_KogaRaisonDetre_HasBeenExpectingYou,MSGBOX_NPC)
-        releaseall
-        end
+    msgbox(gText_KogaRaisonDetre_HasBeenExpectingYou, MSGBOX_NPC)
+    releaseall
+    end
 }
 
-script KogaRaisonDetre_MoveIntoForyer_Script {
+script KogaRaisonDetre_MoveIntoFoyer_Script {
     lockall
-        applymovement(ALEKSANDER,KogaRaisonDetre_ComeDownStairs1)
-        delay(48)
-        applymovement(RAGHNALL,KogaRaisonDetre_ComeDownStairs2)
-        waitmovement(0)
-        releaseall
-        goto(KogaRaisonDetre_KidsMeetPlayer_Dialogue)
-        end
+    applymovement(ALEKSANDER, KogaRaisonDetre_ComeDownStairs)
+    delay(48)
+    applymovement(RAGHNALL, KogaRaisonDetre_ComeDownStairs)
+    waitmovement(0)
+    releaseall
+    goto(KogaRaisonDetre_KidsMeetPlayer_Dialogue)
+    end
 }
 
 script KogaRaisonDetre_KidsMeetPlayer_Dialogue {
     //TODO: add hop for the younger kid
     msgbox(gText_KogaRaisonDetre_YoureHereInTheFlesh)
-        msgbox(gText_KogaRaisonDetre_YoureAFreak)
-        closemessage
-        applymovement(ALEKSANDER,KogaRaisonDetre_RunAroundPlayer)
-        msgbox(gText_KogaRaisonDetre_MaybeTheyllSign)
-        msgbox(gText_KogaRaisonDetre_ShutUp)
-        msgbox(gText_KogaRaisonDetre_ShowUsHowYouTookDown)
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_AllRightAllRight)
-        applymovement(PSFBADADMIN2,KogaRaisonDetre_WalkIntoFoyer)
-        callnative(ClearMugshot)
-        lockall
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_YouDontWantToScare)
-        callnative(ClearMugshot)
-        msgbox(gText_KogaRaisonDetre_GonnaGoGet)
+    msgbox(gText_KogaRaisonDetre_YoureAFreak)
+    closemessage
 
-        applymovement(ALEKSANDER,KogaRaisonDetre_RunUpstairs)
-        waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_SorryAboutThat)
-        callnative(ClearMugshot)
-        msgbox(gText_KogaRaisonDetre_OhMyGod)
-        closemessage
-        applymovement(RAGHNALL,KogaRaisonDetre_RunUpstairs)
-        waitmovement(0)
-        goto(KogaRaisonDetre_CityDiscussion_Dialogue)
-        end
+    applymovement(ALEKSANDER, KogaRaisonDetre_RunAroundPlayer)
+
+    msgbox(gText_KogaRaisonDetre_MaybeTheyllSign)
+    msgbox(gText_KogaRaisonDetre_ShutUp)
+    msgbox(gText_KogaRaisonDetre_ShowUsHowYouTookDown)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_AllRightAllRight)
+    applymovement(PSFBADADMIN2, KogaRaisonDetre_WalkIntoFoyer)
+    callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_YouDontWantToScare)
+    callnative(ClearMugshot)
+    msgbox(gText_KogaRaisonDetre_GonnaGoGet)
+    closemessage
+    applymovement(ALEKSANDER, KogaRaisonDetre_RunUpstairs)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_SorryAboutThat)
+    callnative(ClearMugshot)
+    applymovement(RAGHNALL, Common_Movement_FaceLeft)
+    waitmovement(0)
+    msgbox(gText_KogaRaisonDetre_OhMyGod)
+    closemessage
+    applymovement(RAGHNALL, KogaRaisonDetre_RunUpstairs)
+    waitmovement(0)
+    removeobject(RAGHNALL)
+    removeobject(ALEKSANDER)
+    goto(KogaRaisonDetre_CityDiscussion_Dialogue)
+    end
 }
 
 script KogaRaisonDetre_CityDiscussion_Dialogue {
-    applymovement(PLAYER,KogaRaisonDetre_WalkFromEntrance)
-        waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_YourHouseIsBeautiful)
+    applymovement(PLAYER, KogaRaisonDetre_WalkFromEntrance)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_YourHouseIsBeautiful)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_ItWasImportantToMe)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_ItWasImportantToMe)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_ButItsHardToJustify)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_ButItsHardToJustify)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_IveBeenStruggling)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_IveBeenStruggling)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_ItsBeenSaidThat)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_ItsBeenSaidThat)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_ToughToBeAround)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_ToughToBeAround)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_ICompletelyUnderstand)
-        closemessage
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_ICompletelyUnderstand)
+    closemessage
 
-        applymovement(PSFBADADMIN2,KogaRaisonDetre_WalkTowardsLiving)
-        waitmovement(0)
+    applymovement(PSFBADADMIN2, KogaRaisonDetre_WalkTowardsLiving)
+    waitmovement(0)
 
-
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_ItsMuchEasier)
-        closemessage
-        callnative(ClearMugshot)
-        applymovement(PSFBADADMIN2,KogaRaisonDetre_WalkToDining)
-        waitmovement(0)
-        setobjectxy(PSFBADADMIN2,3,4)
-        releaseall
-        end
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_ItsMuchEasier)
+    closemessage
+    callnative(ClearMugshot)
+    applymovement(PSFBADADMIN2, KogaRaisonDetre_WalkToDining)
+    waitmovement(0)
+    setobjectxy(PSFBADADMIN2, 3, 4)
+    setobjectxyperm(PSFBADADMIN2, 3, 4)
+    turnobject(PSFBADADMIN2, DIR_EAST)
+    releaseall
+    end
 }
 
 script KogaRaisonDetre_ComeSit_Dialogue {
     lockall
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_ComeSit)
-        callnative(ClearMugshot)
-        setvar(VAR_ROUTE105_STATE,1)
-        closemessage
-        releaseall
-        end
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_ComeSit, MSGBOX_NPC)
+    callnative(ClearMugshot)
+    setvar(VAR_ROUTE105_STATE, 2)
+    closemessage
+    releaseall
+    end
 }
 
 script KogaRaisonDetre_InteractAtTable {
     lockall
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_IPickedOut)
-        closemessage
-        callnative(ClearMugshot)
-        releaseall
-        end
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_IPickedOut)
+    closemessage
+    callnative(ClearMugshot)
+    releaseall
+    end
 }
 
 script KogaRaisonDetre_Wine_Dialogue {
+    applymovement(PLAYER, Common_Movement_FaceLeft)
+    waitmovement(0)
+
     setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_HowMuch)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_IJustRecentlyMet)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_IJustRecentlyMet)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_ThatLastPartIsImportant)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_ThatLastPartIsImportant)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_WhatDoYouMean)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_WhatDoYouMean)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_DoYouKnowHow)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_DoYouKnowHow)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_IsntItMostly)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_IsntItMostly)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_UsedToBe)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_UsedToBe)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_WoahWaitBigger)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_WoahWaitBigger)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_PeopleLoveBattles)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_PeopleLoveBattles)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_TheBroadcasts)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_TheBroadcasts)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_MyKidsBeingObsessed)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_MyKidsBeingObsessed)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_WereGoingToMake)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_WereGoingToMake)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_IBroughtYouHere)
-        callnative(ClearMugshot)
-        closemessage
-        playse(SE_DING_DONG)
-        waitfanfare
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_IBroughtYouHere)
+    callnative(ClearMugshot)
+    closemessage
+    playse(SE_DING_DONG)
+    waitfanfare
 
-        msgbox(gText_KogaRaisonDetre_DinnerIsServed)
+    msgbox(gText_KogaRaisonDetre_DinnerIsServed)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_AhExcellent)
-        applymovement(PSFBADADMIN2,WalkToDiningRoom)
-        waitmovement(0)
-        releaseall
-        setobjectxy(PSFBADADMIN2,37,5)
-        setvar(VAR_ROUTE105_STATE,2)
-        end
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_AhExcellent)
+    closemessage
+    callnative(ClearMugshot)
+    applymovement(PSFBADADMIN2, WalkToDiningRoom)
+    waitmovement(0)
+    releaseall
+    setobjectxy(PSFBADADMIN2, 37, 5)
+    setobjectxyperm(PSFBADADMIN2, 37, 5)
+    setvar(VAR_ROUTE105_STATE, 3)
+    end
 }
 
 script KogaRaisonDetre_StartDinner_Script {
-    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 
-        if (var(VAR_TEMP_0) == 36){
-            applymovement(PLAYER,WalkToTableFromLeft)
-        }
-        else {
-            applymovement(PLAYER,WalkToTableFromRight)
-        }
+    if (var (VAR_TEMP_0) == 36) {
+        applymovement(PLAYER, WalkToTableFromLeft)
+    } else {
+        applymovement(PLAYER, WalkToTableFromRight)
+    }
     waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_WereHonoredToHaveYou)
-        callnative(ClearMugshot)
-        closemessage
-        fadescreen(FADE_TO_BLACK)
-        releaseall
-        goto(KogaRaisonDetre_DinnerConversation_Dialogue)
-        end
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_WereHonoredToHaveYou)
+    callnative(ClearMugshot)
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    addobject(ALEKSANDER)
+    addobject(RAGHNALL)
+    setobjectxy(RAGHNALL, 42, 7)
+    setobjectxy(ALEKSANDER, 40, 7)
+    setobjectxy(PSFBADADMIN2, 37, 5)
+    turnobject(RAGHNALL, DIR_NORTH)
+    turnobject(ALEKSANDER, DIR_NORTH)
+    goto(KogaRaisonDetre_DinnerConversation_Dialogue)
+    end
 }
 
 script KogaRaisonDetre_DinnerConversation_Dialogue {
-
     special(SpawnCameraObject)
-        fadescreen(FADE_FROM_BLACK)
-        applymovement(CAMERA,KogaRaisonDetre_PanCamera)
-        msgbox(gText_KogaRaisonDetre_YourDadIsRed)
-        msgbox(gText_KogaRaisonDetre_HowManyBadges)
-        msgbox(gText_KogaRaisonDetre_DoIHaveToEat)
-        fadescreen(FADE_TO_BLACK)
-        playse(SE_POKENAV_CALL)
-        fadescreen(FADE_FROM_BLACK)
-        special(RemoveCameraObject)
-        goto(KogaRaisonDetre_RunToWork_Dialogue)
-        releaseall
-        end
+    setvar(VAR_0x8004, 37)
+    setvar(VAR_0x8005, 5)
+    special(TeleportCamera)
+    fadescreen(FADE_FROM_BLACK)
+    applymovement(CAMERA, KogaRaisonDetre_PanCamera)
+    msgbox(gText_KogaRaisonDetre_YourDadIsRed)
+    closemessage
+    msgbox(gText_KogaRaisonDetre_HowManyBadges)
+    closemessage
+    msgbox(gText_KogaRaisonDetre_DoIHaveToEat)
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    special(ReturnCameraToPlayer)
+    special(RemoveCameraObject)
+    delay(60)
+    playse(SE_POKENAV_CALL)
+    waitfanfare
+    fadescreen(FADE_FROM_BLACK)
+    goto(KogaRaisonDetre_RunToWork_Dialogue)
+    releaseall
+    end
 }
 
 script KogaRaisonDetre_RunToWork_Dialogue {
 
     setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_SorryThatsMyPhone)
-        callnative(ClearMugshot)
-        closemessage
-        applymovement(PSFBADADMIN2,KogaRaisonDetre_StepAwayFromTable)
-        waitmovement(0)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_SorryThatsMyPhone)
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PSFBADADMIN2, KogaRaisonDetre_StepAwayFromTable)
+    waitmovement(0)
+    applymovement(PSFBADADMIN2, Common_Movement_FaceLeft)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_ShitTheresAnUrgent)
+    callnative(ClearMugshot)
+    closemessage
 
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_ShitTheresAnUrgent)
-        callnative(ClearMugshot)
-        closemessage
+    applymovement(PSFBADADMIN2, KogaRaisonDetre_KissKids)
+    waitmovement(0)
 
-        applymovement(PSFBADADMIN2,KogaRaisonDetre_KissKids)
-        waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_WaitIThoughtThat)
+    callnative(ClearMugshot)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_WaitIThoughtThat)
-        callnative(ClearMugshot)
+    msgbox(gText_KogaRaisonDetre_YeahItDoes)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_What)
+    callnative(ClearMugshot)
 
-        msgbox(gText_KogaRaisonDetre_YeahItDoes)
+    msgbox(gText_KogaRaisonDetre_TonOfMoneyInWarp)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_What)
-        callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_OhDamnYouWerent)
+    callnative(ClearMugshot)
 
-        msgbox(gText_KogaRaisonDetre_TonOfMoneyInWarp)
-
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_OhDamnYouWerent)
-        callnative(ClearMugshot)
-
-        msgbox(gText_KogaRaisonDetre_IDontKnowWhy)
-        closemessage
-        applymovement(RAGHNALL,KogaRaisonDetre_LeaveDiningRoom)
-        waitmovement(0)
-        fadescreen(FADE_TO_BLACK)
-        msgbox("The next morning…")
-        closemessage
-        goto(KogaRaisonDetre_NewsStory_Script)
-        end
+    msgbox(gText_KogaRaisonDetre_IDontKnowWhy)
+    closemessage
+    applymovement(RAGHNALL, KogaRaisonDetre_LeaveDiningRoom)
+    waitmovement(0)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(RAGHNALL)
+    removeobject(ALEKSANDER)
+    msgbox("The next morning…")
+    closemessage
+    goto(KogaRaisonDetre_NewsStory_Script)
+    end
 }
 
 script KogaRaisonDetre_NewsStory_Script {
+    setobjectxy(4, 44, 4)
+    turnobject(4, DIR_NORTH)
+    setobjectmovementtype(4, MOVEMENT_TYPE_FACE_UP)
     fadescreen(FADE_FROM_BLACK)
-        special(TurnOnTVScreen)
-        delay(60)
-        msgbox(gText_KogaRaisonDetre_AndNowWeGoTo)
-        msgbox(gText_KogaRaisonDetre_ThanksKen)
-        msgbox(gText_KogaRaisonDetre_WereAlsoLearningThat)
-        closemessage
-        special(TurnOffTVScreen)
-        applymovement(PLAYER,WalkToThePlayer)
-        waitmovement(0)
+    special(TurnOnTVScreen)
+    delay(60)
+    msgbox(gText_KogaRaisonDetre_AndNowWeGoTo)
+    msgbox(gText_KogaRaisonDetre_ThanksKen)
+    msgbox(gText_KogaRaisonDetre_WereAlsoLearningThat)
+    closemessage
+    special(TurnOffTVScreen)
+    applymovement(4, WalkToThePlayer)
+    waitmovement(0)
 
-        msgbox(gText_KogaRaisonDetre_IsThereSobAnyhingElse)
+    msgbox(gText_KogaRaisonDetre_IsThereSobAnyhingElse)
+    applymovement(PLAYER, Common_Movement_FaceUp)
+    waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_KogaRaisonDetre_AreYouOkay)
-        callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_AreYouOkay)
+    callnative(ClearMugshot)
 
-        msgbox(gText_KogaRaisonDetre_MySobSonIsInTheICU)
-        applymovement(4,KogaRaisonDetre_LeaveDiningRoom)
-        waitmovement(0)
-        releaseall
-        end
+    msgbox(gText_KogaRaisonDetre_MySobSonIsInTheICU)
+    closemessage
+    applymovement(4, KogaRaisonDetre_LeaveDiningRoomCrying)
+    waitmovement(0)
+    removeobject(4)
+    setvar(VAR_ROUTE105_STATE, 4)
+    setvar(VAR_ROUTE106_STATE, 1) //Psfcity3 city variable
+    //TODO: figure out how to get maid to stop walking
+    releaseall
+    end
+}
+
+script KogaRaisonDetre_PreventPlayerLeaving_Script {
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_HasBeenSoGenerous)
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PLAYER, Common_Movement_WalkUp)
+    waitmovement(0)
+    releaseall
+    end
+}
+
+text gText_KogaRaisonDetre_HasBeenSoGenerous {
+    format("Psfbadadmin2 has been so generous... I should stay.")
 }
 
 text gText_KogaRaisonDetre_HasBeenExpectingYou {
@@ -322,7 +376,7 @@ text gText_KogaRaisonDetre_YoureAFreak {
     format("…Alek, you're a freak.")
 }
 text gText_KogaRaisonDetre_MaybeTheyllSign {
-    format("Aren't you excited Raghnall! Maybe they'll sign your {PLAYER} shirt! ")
+    format("Aren't you excited Raghnall?! Maybe they'll sign your {PLAYER} shirt! ")
 }
 text gText_KogaRaisonDetre_ShutUp {
     format("…shut up!")
@@ -360,7 +414,7 @@ text gText_KogaRaisonDetre_IveBeenStruggling {
 text gText_KogaRaisonDetre_ItsBeenSaidThat {
     format("It's been said that most skilled Trainers are unusually compassionate, and I guess that means you too!")
 }
-text gText_KogaRaisonDetre_ToughToBeAround{
+text gText_KogaRaisonDetre_ToughToBeAround {
     format("It's tough to be around, especially as you guys are treating me so well, you know? Do I really deserve all of this just because I'm decent at battles?")
 }
 text gText_KogaRaisonDetre_ICompletelyUnderstand {
@@ -375,7 +429,7 @@ text gText_KogaRaisonDetre_ComeSit {
 text gText_KogaRaisonDetre_IPickedOut {
     format("I picked out an excellent Chardonnay for you. Come have a seat.")
 }
-text gText_KogaRaisonDetre_ {
+text gText_KogaRaisonDetre_HowMuch {
     format("How much do you know about Psfbadboss?")
 }
 text gText_KogaRaisonDetre_IJustRecentlyMet {
@@ -474,66 +528,130 @@ text gText_KogaRaisonDetre_AreYouOkay {
 text gText_KogaRaisonDetre_MySobSonIsInTheICU {
     format("I'm sorry. My… *sob* son is in the ICU after the riots last night. Psfgoodteam keeps getting impressionable young folk involved in their nonsense… *sob* I hope the city can get rid of them!")
 }
-movement KogaRaisonDetre_ComeDownStairs1{
+movement KogaRaisonDetre_ComeDownStairs {
+    walk_down * 4
     step_end
 }
 
-movement KogaRaisonDetre_ComeDownStairs2{
+movement KogaRaisonDetre_RunAroundPlayer {
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
+    walk_left
+    walk_right
     step_end
 }
 
-movement KogaRaisonDetre_RunAroundPlayer{
+movement KogaRaisonDetre_WalkIntoFoyer {
+    walk_down * 4
     step_end
 }
 
-movement KogaRaisonDetre_WalkIntoFoyer{
+movement KogaRaisonDetre_RunUpstairs {
+    walk_up * 7
     step_end
 }
 
-movement KogaRaisonDetre_RunUpstairs{
+movement KogaRaisonDetre_WalkFromEntrance {
+    walk_up
+    walk_left * 2
+    walk_up
     step_end
 }
 
-movement KogaRaisonDetre_WalkFromEntrance{
+movement KogaRaisonDetre_WalkTowardsLiving {
+    walk_up
+    face_down
     step_end
 }
 
-movement KogaRaisonDetre_WalkTowardsLiving{
+movement KogaRaisonDetre_WalkToDining {
+    walk_left * 8
     step_end
 }
 
-movement KogaRaisonDetre_WalkToDining{
+movement WalkToDiningRoom {
+    walk_down * 6
     step_end
 }
 
-movement WalkToDiningRoom{
+movement WalkToTableFromLeft {
+    walk_up
+    walk_right * 9
+    walk_up * 4
+    face_left
     step_end
 }
 
-movement WalkToTableFromLeft{
+movement WalkToTableFromRight {
+    walk_up
+    walk_right * 8
+    walk_up * 4
+    face_left
     step_end
 }
 
-movement WalkToTableFromRight{
+movement KogaRaisonDetre_PanCamera {
+    walk_slow_right * 8
     step_end
 }
 
-movement KogaRaisonDetre_PanCamera{
+movement KogaRaisonDetre_StepAwayFromTable {
+    walk_left
     step_end
 }
 
-movement KogaRaisonDetre_StepAwayFromTable{
+movement KogaRaisonDetre_KissKids {
+    walk_down * 3
+    walk_right * 5
+    walk_up
+    walk_in_place_slow_left
+    delay_16
+    walk_in_place_slow_right
+    delay_16
+    walk_down
+    walk_left * 6
     step_end
 }
 
-movement KogaRaisonDetre_KissKids{
+movement KogaRaisonDetre_LeaveDiningRoom {
+    walk_down
+    walk_left * 5
     step_end
 }
 
-movement KogaRaisonDetre_LeaveDiningRoom{
+movement WalkToThePlayer {
+    walk_right * 3
+    face_down
     step_end
 }
 
-movement WalkToThePlayer{
-    step_end
+movement KogaRaisonDetre_LeaveDiningRoomCrying {
+    walk_up * 2
+    walk_faster_left * 8
 }

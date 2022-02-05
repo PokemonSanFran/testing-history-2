@@ -56,7 +56,6 @@
 
 //debug file includes
 #include "omni.h"
-#include "omni_text.h"
 
 // Menu actions
 

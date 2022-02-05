@@ -4914,7 +4914,7 @@
     {
       "id": "LAYOUT_PSFCITY3_MANSION",
       "name": "Psfcity3_Mansion_Layout",
-      "width": 50,
+      "width": 46,
       "height": 18,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_LilycoveMuseum",
