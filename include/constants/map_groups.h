@@ -39,6 +39,8 @@
 #define MAP_PSFCAVE7   (30 | (0 << 8))
 #define MAP_PSFPLACE9  (31 | (0 << 8))
 #define MAP_PSFCITY3   (32 | (0 << 8))
+#define MAP_PSFROUTE49 (33 | (0 << 8))
+#define MAP_PSFCITY4   (34 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))
@@ -659,5 +661,7 @@
 #define MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE (0 | (41 << 8))
 
 #define MAP_GROUPS_COUNT 42
+
+// static const u8 MAP_GROUP_COUNT[] = {35, 57, 3, 1, 1, 1, 2, 1, 1, 5, 5, 6, 7, 8, 9, 7, 7, 14, 8, 17, 10, 23, 13, 15, 15, 2, 2, 2, 3, 1, 1, 1, 115, 61, 90, 2, 1, 13, 1, 1, 3, 1, 0};
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

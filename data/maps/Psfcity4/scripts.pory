@@ -1,0 +1,15 @@
+
+mapscripts Psfcity4_MapScripts {
+
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcity3_MapScripts_OnTransition)
+    }
+}
+
+script Psfcity3_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE107_STATE)){
+        case 0: call(BeachBattle_ObjectSetUp_Script)
+        case 1: call(BeachBattle_BattleSetUp_Script)
+    }
+}
+

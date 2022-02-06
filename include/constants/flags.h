@@ -61,7 +61,7 @@
 #define FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN    0x31 // Previously Unused Flag
 #define FLAG_HIDE_MANSION_KIDS 0x32 // Previously Unused Flag
 #define FLAG_HIDE_MANSION_MAID    0x33 // Previously Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
+#define FLAG_HIDE_BEACHBATTLE_PSFTRANSRIVAL 0x34 // Previously Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
