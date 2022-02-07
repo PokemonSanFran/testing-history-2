@@ -44,6 +44,7 @@
 #define MAP_PSFROUTE5  (35 | (0 << 8))
 #define MAP_PSFROUTE7  (36 | (0 << 8))
 #define MAP_PSFCITY2   (37 | (0 << 8))
+#define MAP_PSFCITY18  (38 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

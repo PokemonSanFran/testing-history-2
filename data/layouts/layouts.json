@@ -4990,6 +4990,16 @@
       "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
       "border_filepath": "data/layouts/Psfcity2_Gym/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity2_Gym/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY18",
+      "name": "Psfcity18_Layout",
+      "width": 40,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Psfcity18/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity18/map.bin"
     }
   ]
 }

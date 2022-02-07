@@ -1,0 +1,266 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PKMN1 = 1
+const PKMN2 = 2
+const PKMN3 = 3
+const PKMN4 = 4
+const PSFELITE1 = 5
+const RUPERT = 6
+
+
+
+
+EXT. PSFCITY18 STREETS
+
+The sidewalks of Psfcity18 are flooded with people, many of which are Psfgoodteam members. The roads are cleared except for a procession of people in a parade, a giant float at the tail end of the parade. The player is unable to reach the parade itself, as people on the street are blocking the way. Walking to either end of the street will trigger a cutscene showing the parade moving from the left side of the screen to the right.
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_WowPeopleHere)
+
+The primary float reaches the center of the street and stops. Psfelite1 is on top of the float which also doubles as a battlefield.
+
+msgbox(gText_AndWeMarchOn_AndNowSomeWords)
+
+Crowd erupts in applause. Psfelite1 walks to the center of the float.
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_Psfregion1)
+
+Fireworks go off as the crowd continues cheering.
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_ThankYouForSupporting)
+
+The crowd cheers yet again.
+
+
+The crowd cheers again as Psfelite1 walks back and forth in front of the stage.
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_WeHaveASpecialGuest)
+
+A child walks from the crowd onto the stage, next to Psfelite1.
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_RupertHereIsTheWinner)
+
+msgbox(gText_AndWeMarchOn_Boo)
+
+msgbox(gText_AndWeMarchOn_LetsGo)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_ButThatsNotGoing)
+
+msgbox(gText_AndWeMarchOn_YayRupert)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_RupertAreYouReady)
+
+msgbox(gText_AndWeMarchOn_Woo)
+
+msgbox(gText_AndWeMarchOn_Yeah)
+
+Psfelite1 walks on the opposite side of the stage while Rupert looks around.
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_LetsRock)
+
+msgbox(gText_AndWeMarchOn_AndOurBattle)
+
+POKEMON1 and POKEMON2 are released from their balls in front of Psfelite1 and POKEMON3 and POKEMON4 are released from their balls in front of Rupert.
+
+msgbox(gText_AndWeMarchOn_AttackPatternSigma)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_HelpingHand)
+
+1 and 2 move forward. Screen flashes as a sound effect plays. When the screen returns, 3 and 4 are behind Rupert, knocked out.
+
+msgbox(gText_AndWeMarchOn_AndWithASupercharged)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_DamnThatsHow)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_LetsGiveItUp)
+
+Crowd cheers again. Rupert walks off stage.
+
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_ItsBeenAWildYear)
+
+The crowd begins to boo. Psfelite1 walks to one side of the stage.
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_OhItsNotAllBad)
+
+Psfelite1 walks to the other side of the stage.
+
+msgbox(gText_AndWeMarchOn_Boo)
+
+msgbox(gText_AndWeMarchOn_FuckTheseGuys)
+
+msgbox(gText_AndWeMarchOn_GiveUsBackOur)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_ButHeyItsNot)
+
+msgbox(gText_AndWeMarchOn_Traitor)
+
+msgbox(gText_AndWeMarchOn_DownWith)
+Down with Psfleader7!
+
+msgbox(gText_AndWeMarchOn_WhatASlimeball)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_JustNotTheWay)
+
+Psfelite1 walks back to the center of the stage.
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_AndWeMarchOn_WeveGotAResponsibility)
+
+Crowd cheers again. Screen fades to black. As the screen fades back in the street has returned to normal, with the procession and floats gone. The path across the street is open again.
+
+
+text gText_AndWeMarchOn_WowPeopleHere {
+    format("Wow, people here really love their Double Battles… but then why is Singles the official League  format?")
+}
+
+text gText_AndWeMarchOn_AndNowSomeWords {
+    format("And now, some words from our Grand Marshall, Psfelite1!")
+}
+
+text gText_AndWeMarchOn_Psfregion1 {
+    format("Psfregion1!")
+}
+
+text gText_AndWeMarchOn_ThankYouForSupporting {
+    format("Thank you for supporting our annual Doubles Parade! This has been a fuckin' blast! Who's having a good time?!")
+}
+
+text gText_AndWeMarchOn_WeHaveASpecialGuest {
+    format("We have a special guest for you all today! Rupert, please come up to the stage!")
+}
+
+text gText_AndWeMarchOn_RupertHereIsTheWinner {
+    format("Rupert here is the winner of the Psfcity6 Preparatory School graduation tournament! NORMALLY, the winner normally gets a scholarship from the Psfregion1 League. But our new corporate overlords have decided that growing the in-region talent isn't a budget priority!")
+}
+
+text gText_AndWeMarchOn_Boo {
+    format("Boo!")
+}
+
+text gText_AndWeMarchOn_LetsGo {
+    format("Let's go Rupert!")
+}
+
+text gText_AndWeMarchOn_ButThatsNotGoing {
+    format("But that's not going to stop us from nurturing that talent ourselves!")
+}
+
+text gText_AndWeMarchOn_YayRupert {
+    format("Yaaaay Rupert!")
+}
+
+text gText_AndWeMarchOn_RupertAreYouReady {
+    format("Rupert, are you ready to bring an old master out of retirement?")
+}
+
+text gText_AndWeMarchOn_Woo {
+    format("Woooo!")
+}
+
+text gText_AndWeMarchOn_Yeah {
+    format("Yeah!")
+}
+
+text gText_AndWeMarchOn_LetsRock {
+    format("Let's rock!")
+}
+
+text gText_AndWeMarchOn_AndOurBattle {
+    format("And our battle is underway!")
+}
+
+text gText_AndWeMarchOn_AttackPatternSigma {
+    format("Attack pattern Sigma!")
+}
+
+text gText_AndWeMarchOn_HelpingHand {
+    format("Helping Hand! Breaking Swipe!")
+}
+
+text gText_AndWeMarchOn_AndWithASupercharged {
+    format("And with a supercharged Breaking Swipe, Psfelite1 ends the battle in one turn! The exhibition winner is the Elite Four's PSFELITE1!")
+}
+
+text gText_AndWeMarchOn_DamnThatsHow {
+    format("Damn, that's how she beat me too… wait, did they say Elite Four? Psfregion1 doesn't have those, does it?")
+}
+
+text gText_AndWeMarchOn_LetsGiveItUp {
+    format("Let's give it up for Rupert!")
+}
+
+text gText_AndWeMarchOn_ItsBeenAWildYear {
+    format("It's been a wild year, hasn't it? Who's loving our new Pokémon League? The League that's too good for the likes of young Rupert.")
+}
+
+text gText_AndWeMarchOn_OhItsNotAllBad {
+    format("Oh, it's not all bad, is it? Yeah, our beloved elected officials sold our League to the highest bidder. And yeah, they've bulldozed all of our traditions and replaced them with some soulless husk of a League. AND YEAH, they pushed our entire battling community out and replaced them with highly paid drones that couldn't battle their way out of a paper bag….")
+}
+
+text gText_AndWeMarchOn_Boo {
+    format("Boo!")
+}
+
+text gText_AndWeMarchOn_FuckTheseGuys {
+    format("Fuck these guys!")
+}
+
+text gText_AndWeMarchOn_GiveUsBackOur {
+    format("Give us back our League!")
+}
+
+text gText_AndWeMarchOn_ButHeyItsNot {
+    format("But hey! It's not all bad, right? Psfcity18 got to keep its Gym!")
+}
+
+text gText_AndWeMarchOn_Traitor {
+    format("Traitor!")
+}
+
+text gText_AndWeMarchOn_DownWith {
+    format("")
+}
+
+text gText_AndWeMarchOn_WhatASlimeball {
+    format("What a slimeball!")
+}
+
+text gText_AndWeMarchOn_JustNotTheWay {
+    format("…just not the way we would have hoped.")
+}
+
+text gText_AndWeMarchOn_WeveGotAResponsibility {
+    format("We've got a responsibility here. The profit motive can not… WILL NOT erase our history. It lives on in our hearts. In our stories Our legends. And no corporation, Psfbadguy or otherwise, can take that away from us!")
+}
+
+
