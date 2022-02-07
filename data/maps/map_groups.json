@@ -79,7 +79,10 @@
     "Psfplace9",
     "Psfcity3",
     "Psfroute49",
-    "Psfcity4"
+    "Psfcity4",
+    "Psfroute5",
+    "Psfroute7",
+    "Psfcity2"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -162,7 +165,8 @@
     "Psfplace9_Roof"
   ],
   "gMapGroup_IndoorPsfcity3": [
-    "Psfcity3_Mansion"
+    "Psfcity3_Mansion",
+    "Psfcity2_Gym"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -506,7 +510,8 @@
     "TerraCave_Entrance",
     "TerraCave_End",
     "AlteringCave",
-    "MeteorFalls_StevensCave"
+    "MeteorFalls_StevensCave",
+    "Psfcave9"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

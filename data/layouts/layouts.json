@@ -4940,6 +4940,56 @@
       "secondary_tileset": "gTileset_Dewford",
       "border_filepath": "data/layouts/Psfcity4/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity4/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE5",
+      "name": "Psfroute5_Layout",
+      "width": 5,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute5/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute5/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE7",
+      "name": "Psfroute7_Layout",
+      "width": 5,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute7/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute7/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCAVE9",
+      "name": "Psfcave9_Layout",
+      "width": 48,
+      "height": 44,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfcave9/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcave9/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY2",
+      "name": "Psfcity2_Layout",
+      "width": 30,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Psfcity2/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity2/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY2_GYM",
+      "name": "Psfcity2_Gym_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
+      "border_filepath": "data/layouts/Psfcity2_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity2_Gym/map.bin"
     }
   ]
 }
