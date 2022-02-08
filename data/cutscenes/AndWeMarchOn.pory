@@ -6,137 +6,265 @@ const PKMN4 = 4
 const PSFELITE1 = 5
 const RUPERT = 6
 
+script AndWeMarchOn_ObjectSetUp_Script {
+    setflag(FLAG_HIDE_ANDWEMARCHON_BATTLE1)
+        setflag(FLAG_HIDE_ANDWEMARCHON_BATTLE2)
+        end
+}
+
+script AndWeMarchOn_StartParadeMovement {
+
+    lockall
 
 
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_WowPeopleHere)
 
-EXT. PSFCITY18 STREETS
+        applymovement(10,AndWeMarchOn_ParadeProcession)
+        applymovement(9,AndWeMarchOn_ParadeProcession)
+        applymovement(8,AndWeMarchOn_ParadeProcession)
+        applymovement(7,AndWeMarchOn_ParadeProcession)
+        applymovement(PSFELITE1,AndWeMarchOn_ParadeProcession)
 
-The sidewalks of Psfcity18 are flooded with people, many of which are Psfgoodteam members. The roads are cleared except for a procession of people in a parade, a giant float at the tail end of the parade. The player is unable to reach the parade itself, as people on the street are blocking the way. Walking to either end of the street will trigger a cutscene showing the parade moving from the left side of the screen to the right.
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_WowPeopleHere)
-
-The primary float reaches the center of the street and stops. Psfelite1 is on top of the float which also doubles as a battlefield.
-
-msgbox(gText_AndWeMarchOn_AndNowSomeWords)
-
-Crowd erupts in applause. Psfelite1 walks to the center of the float.
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_Psfregion1)
-
-Fireworks go off as the crowd continues cheering.
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_ThankYouForSupporting)
-
-The crowd cheers yet again.
+        msgbox(gText_AndWeMarchOn_AndNowSomeWords)
+        closemessage
+        goto(AndWeMarchOn_Opening_Dialogue)
+}
 
 
-The crowd cheers again as Psfelite1 walks back and forth in front of the stage.
+script AndWeMarchOn_Opening_Dialogue {
+    applymovement(PSFELITE1,AndWeMarchOn_LookAroundCrowd)
+        waitmovement(0)
+        playse(SE_APPLAUSE)
+        applymovement(PSFELITE1,AndWeMarchOn_WalkToFloatCenter)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_WeHaveASpecialGuest)
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_Psfregion1)
+        callnative(ClearMugshot)
+        closemessage
 
-A child walks from the crowd onto the stage, next to Psfelite1.
+        //TODO implement fireworks on screen
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_RupertHereIsTheWinner)
+        playse(SE_BANG)
+        waitfanfare
+        playse(SE_BANG)
+        waitfanfare
 
-msgbox(gText_AndWeMarchOn_Boo)
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_ThankYouForSupporting)
+        callnative(ClearMugshot)
+        closemessage
 
-msgbox(gText_AndWeMarchOn_LetsGo)
+        playse(SE_APPLAUSE)
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_ButThatsNotGoing)
-
-msgbox(gText_AndWeMarchOn_YayRupert)
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_RupertAreYouReady)
-
-msgbox(gText_AndWeMarchOn_Woo)
-
-msgbox(gText_AndWeMarchOn_Yeah)
-
-Psfelite1 walks on the opposite side of the stage while Rupert looks around.
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_LetsRock)
-
-msgbox(gText_AndWeMarchOn_AndOurBattle)
-
-POKEMON1 and POKEMON2 are released from their balls in front of Psfelite1 and POKEMON3 and POKEMON4 are released from their balls in front of Rupert.
-
-msgbox(gText_AndWeMarchOn_AttackPatternSigma)
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_HelpingHand)
-
-1 and 2 move forward. Screen flashes as a sound effect plays. When the screen returns, 3 and 4 are behind Rupert, knocked out.
-
-msgbox(gText_AndWeMarchOn_AndWithASupercharged)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_DamnThatsHow)
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_LetsGiveItUp)
-
-Crowd cheers again. Rupert walks off stage.
+        applymovement(PSFELITE1,AndWeMarchOn_PaceBackForth)
+        waitmovement(0)
+        goto(AndWeMarchOn_InviteOntoStage_Dialogue)
+}
 
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_ItsBeenAWildYear)
+script AndWeMarchOn_InviteOntoStage_Dialogue {
 
-The crowd begins to boo. Psfelite1 walks to one side of the stage.
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_OhItsNotAllBad)
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_WeHaveASpecialGuest)
+        callnative(ClearMugshot)
+        closemessage
 
-Psfelite1 walks to the other side of the stage.
+        applymovement(RUPERT,AndWeMarchOn_WalkOntoStage)
+        waitmovement(0)
 
-msgbox(gText_AndWeMarchOn_Boo)
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_RupertHereIsTheWinner)
+        callnative(ClearMugshot)
+        closemessage
+        msgbox(gText_AndWeMarchOn_Boo)
 
-msgbox(gText_AndWeMarchOn_FuckTheseGuys)
+        msgbox(gText_AndWeMarchOn_LetsGo)
 
-msgbox(gText_AndWeMarchOn_GiveUsBackOur)
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_ButThatsNotGoing)
+        callnative(ClearMugshot)
+        closemessage
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_ButHeyItsNot)
 
-msgbox(gText_AndWeMarchOn_Traitor)
+        msgbox(gText_AndWeMarchOn_YayRupert)
+        goto(AndWeMarchOn_StartCutsceneBattle_Script)
+}
 
-msgbox(gText_AndWeMarchOn_DownWith)
-Down with Psfleader7!
+script AndWeMarchOn_StartCutsceneBattle_Script {
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_RupertAreYouReady)
+        callnative(ClearMugshot)
+        closemessage
+        msgbox(gText_AndWeMarchOn_Woo)
 
-msgbox(gText_AndWeMarchOn_WhatASlimeball)
+        msgbox(gText_AndWeMarchOn_Yeah)
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_JustNotTheWay)
+        applymovement(PSFELITE1,AndWeMarchOn_WalkToLeftSide)
+        applymovement(RUPERT,AndWeMarchOn_LookAroundCrowd)
+        waitmovement(0)
 
-Psfelite1 walks back to the center of the stage.
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_LetsRock)
+        callnative(ClearMugshot)
+        closemessage
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_AndWeMarchOn_WeveGotAResponsibility)
+        msgbox(gText_AndWeMarchOn_AndOurBattle)
+        closemessage
+        goto(AndWeMarchOn_CutsceneBattleScript)
 
-Crowd cheers again. Screen fades to black. As the screen fades back in the street has returned to normal, with the procession and floats gone. The path across the street is open again.
+}
+script AndWeMarchOn_CutsceneBattleScript {
+
+    playse(SE_BALL_OPEN)
+        playse(SE_BALL_OPEN)
+        waitfanfare
+        clearflag(FLAG_HIDE_ANDWEMARCHON_BATTLE1)
+        addobject(PKMN1)
+        addobject(PKMN2)
+        playmoncry(SPECIES_GROUDON, CRY_MODE_ENCOUNTER)
+        playmoncry(SPECIES_KYOGRE, CRY_MODE_ENCOUNTER)
+        waitmoncry
+
+        playse(SE_BALL_OPEN)
+        playse(SE_BALL_OPEN)
+        waitfanfare
+        clearflag(FLAG_HIDE_ANDWEMARCHON_BATTLE2)
+        addobject(PKMN3)
+        addobject(PKMN4)
+        playmoncry(SPECIES_AZUMARILL, CRY_MODE_ENCOUNTER)
+        playmoncry(SPECIES_KECLEON, CRY_MODE_ENCOUNTER)
+        waitmoncry
+
+        msgbox(gText_AndWeMarchOn_AttackPatternSigma)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_HelpingHand)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(PKMN1,AndWeMarchOn_Attack)
+        applymovement(PKMN2,AndWeMarchOn_Attack)
+        waitmovement(0)
+
+        //TODO figure out how to flash screen back    
+        fadescreen(FADE_TO_BLACK)
+        playse(SE_M_THUNDERBOLT)
+        waitfanfare
+        setobjectxy(PKMN3,25,9)
+        setobjectxy(PKMN4,25,10)
+        turnobject(PKMN3,DIR_EAST)
+        turnobject(PKMN4,DIR_EAST)
+        playse(SE_FAINT)
+        waitfanfare
+        fadescreen(FADE_FROM_BLACK)
+
+        msgbox(gText_AndWeMarchOn_AndWithASupercharged)
+        goto(AndWeMarchOn_PostBattle_Dialogue)
+}
+
+
+script AndWeMarchOn_PostBattle_Dialogue {
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_DamnThatsHow)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_LetsGiveItUp)
+        closemessage
+        callnative(ClearMugshot)
+
+        playse(SE_APPLAUSE)
+        waitfanfare
+        applymovement(RUPERT,AndWeMarchOn_WalkOffStage)
+        goto(AndWeMarchOn_PostBattleSpeech_Dialogue)
+}
+
+
+script AndWeMarchOn_PostBattleSpeech_Dialogue {
+
+
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_ItsBeenAWildYear)
+
+        playse(SE_BOO) //TODO: change to booing sound
+        waitfanfare
+
+        applymovement(PSFELITE1,AndWeMarchOn_WalkToSouthStage)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_OhItsNotAllBad)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFELITE1,AndWeMarchOn_WalkToNorthStage)
+        waitmovement(0)
+
+        msgbox(gText_AndWeMarchOn_Boo)
+
+        msgbox(gText_AndWeMarchOn_FuckTheseGuys)
+
+        msgbox(gText_AndWeMarchOn_GiveUsBackOur)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_ButHeyItsNot)
+        callnative(ClearMugshot)
+        closemessage
+
+        msgbox(gText_AndWeMarchOn_Traitor)
+
+        msgbox(gText_AndWeMarchOn_DownWith)
+
+        msgbox(gText_AndWeMarchOn_WhatASlimeball)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_JustNotTheWay)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFELITE1,AndWeMarchOn_GoBackToCenter)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_AndWeMarchOn_WeveGotAResponsibility)
+        callnative(ClearMugshot)
+        closemessage
+        goto(AndWeMarchOn_ParadeEnd_Script)
+
+}
+
+
+script AndWeMarchOn_ParadeEnd_Script {
+
+    playse(SE_APPLAUSE)
+        playse(SE_APPLAUSE)
+        waitfanfare
+        fadescreen(FADE_TO_BLACK)
+        setflag(FLAG_HIDE_ANDWEMARCHON_PARADE)
+        fadescreen(FADE_FROM_BLACK)
+        releaseall
+        end
+}
+
 
 
 text gText_AndWeMarchOn_WowPeopleHere {
@@ -227,10 +355,6 @@ text gText_AndWeMarchOn_OhItsNotAllBad {
     format("Oh, it's not all bad, is it? Yeah, our beloved elected officials sold our League to the highest bidder. And yeah, they've bulldozed all of our traditions and replaced them with some soulless husk of a League. AND YEAH, they pushed our entire battling community out and replaced them with highly paid drones that couldn't battle their way out of a paper bag….")
 }
 
-text gText_AndWeMarchOn_Boo {
-    format("Boo!")
-}
-
 text gText_AndWeMarchOn_FuckTheseGuys {
     format("Fuck these guys!")
 }
@@ -248,7 +372,7 @@ text gText_AndWeMarchOn_Traitor {
 }
 
 text gText_AndWeMarchOn_DownWith {
-    format("")
+    format("Down with Psfleader7!")
 }
 
 text gText_AndWeMarchOn_WhatASlimeball {
@@ -263,4 +387,47 @@ text gText_AndWeMarchOn_WeveGotAResponsibility {
     format("We've got a responsibility here. The profit motive can not… WILL NOT erase our history. It lives on in our hearts. In our stories Our legends. And no corporation, Psfbadguy or otherwise, can take that away from us!")
 }
 
-
+movement AndWeMarchOn_ParadeProcession
+{
+	step_end
+}
+movement AndWeMarchOn_LookAroundCrowd
+{
+	step_end
+}
+movement AndWeMarchOn_WalkToFloatCenter
+{
+	step_end
+}
+movement AndWeMarchOn_PaceBackForth
+{
+	step_end
+}
+movement AndWeMarchOn_WalkOntoStage
+{
+	step_end
+}
+movement AndWeMarchOn_WalkToLeftSide
+{
+	step_end
+}
+movement AndWeMarchOn_Attack
+{
+	step_end
+}
+movement AndWeMarchOn_WalkOffStage
+{
+	step_end
+}
+movement AndWeMarchOn_WalkToSouthStage
+{
+	step_end
+}
+movement AndWeMarchOn_WalkToNorthStage
+{
+	step_end
+}
+movement AndWeMarchOn_GoBackToCenter
+{
+	step_end
+}
