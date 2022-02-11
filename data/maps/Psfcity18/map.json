@@ -15,30 +15,17 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
-      "x": 22,
+      "graphics_id": "OBJ_EVENT_GFX_GROUDON_SIDE",
+      "x": 16,
       "y": 9,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE2"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
-      "x": 22,
-      "y": 10,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE2"
+      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KYOGRE_SIDE",
@@ -54,22 +41,35 @@
       "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE1"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GROUDON_SIDE",
-      "x": 16,
-      "y": 9,
+      "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
+      "x": 20,
+      "y": 11,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE1"
+      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE2"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
+      "x": 20,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SIDNEY",
-      "x": 3,
-      "y": 10,
+      "x": 2,
+      "y": 9,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -120,7 +120,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MR_BRINEYS_BOAT",
-      "x": 11,
+      "x": 24,
       "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -133,7 +133,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MR_BRINEYS_BOAT",
-      "x": 14,
+      "x": 27,
       "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -185,8 +185,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_2",
-      "x": 10,
-      "y": 26,
+      "x": 18,
+      "y": 22,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -264,7 +264,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_2",
       "x": 22,
-      "y": 2,
+      "y": 0,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -346,12 +346,12 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 18,
+      "x": 19,
       "y": 7,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "NULL"
+      "script": "AndWeMarchOn_StartParadeMovement"
     },
     {
       "type": "trigger",
@@ -360,7 +360,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "NULL"
+      "script": "AndWeMarchOn_StartParadeMovement"
     }
   ],
   "bg_events": [

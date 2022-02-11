@@ -5,267 +5,294 @@ const PKMN3 = 3
 const PKMN4 = 4
 const PSFELITE1 = 5
 const RUPERT = 6
+const CAMERA = OBJ_EVENT_ID_CAMERA
 
 script AndWeMarchOn_ObjectSetUp_Script {
     setflag(FLAG_HIDE_ANDWEMARCHON_BATTLE1)
-        setflag(FLAG_HIDE_ANDWEMARCHON_BATTLE2)
-        end
+    setflag(FLAG_HIDE_ANDWEMARCHON_BATTLE2)
+    end
 }
+
+script AndWeMarchOn_MoveCameraToParade {
+    setvar(VAR_0x8004, 2)
+    setvar(VAR_0x8005, 9)
+    special(TeleportCamera)
+    special(SpawnCameraObject)
+}
+
+//TODO: Figure out audience members (vobjects?)
 
 script AndWeMarchOn_StartParadeMovement {
-
     lockall
+    applymovement(PLAYER, AndWeMarchOn_WatchParade)
+    waitmovement(0)
+    fadescreen(FADE_TO_BLACK)
+    call(AndWeMarchOn_MoveCameraToParade)
+    setobjectxyperm(9, 26, 10)
+    setobjectxy(9, 26, 10)
+    setobjectxy(10, 30, 10)
+    fadescreen(FADE_FROM_BLACK)
 
+    applymovement(CAMERA, AndWeMarchOn_ParadeProcession)
+    applymovement(PSFELITE1, AndWeMarchOn_ParadeProcession)
+    applymovement(10, AndWeMarchOn_ParadeProcession)
+    applymovement(9, AndWeMarchOn_ParadeProcession)
+    applymovement(8, AndWeMarchOn_ParadeProcession)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_WowPeopleHere)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_WowPeopleHere)
+    callnative(ClearMugshot)
+    waitmovement(0) //don't move on until parade finishes walking
+    special(RemoveCameraObject)
 
-        applymovement(10,AndWeMarchOn_ParadeProcession)
-        applymovement(9,AndWeMarchOn_ParadeProcession)
-        applymovement(8,AndWeMarchOn_ParadeProcession)
-        applymovement(7,AndWeMarchOn_ParadeProcession)
-        applymovement(PSFELITE1,AndWeMarchOn_ParadeProcession)
-
-        msgbox(gText_AndWeMarchOn_AndNowSomeWords)
-        closemessage
-        goto(AndWeMarchOn_Opening_Dialogue)
+    msgbox(gText_AndWeMarchOn_AndNowSomeWords)
+    closemessage
+    goto(AndWeMarchOn_Opening_Dialogue)
 }
-
 
 script AndWeMarchOn_Opening_Dialogue {
-    applymovement(PSFELITE1,AndWeMarchOn_LookAroundCrowd)
-        waitmovement(0)
-        playse(SE_APPLAUSE)
-        applymovement(PSFELITE1,AndWeMarchOn_WalkToFloatCenter)
-        waitmovement(0)
-
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_Psfregion1)
-        callnative(ClearMugshot)
-        closemessage
-
-        //TODO implement fireworks on screen
-
-        playse(SE_BANG)
-        waitfanfare
-        playse(SE_BANG)
-        waitfanfare
-
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_ThankYouForSupporting)
-        callnative(ClearMugshot)
-        closemessage
-
-        playse(SE_APPLAUSE)
-
-        applymovement(PSFELITE1,AndWeMarchOn_PaceBackForth)
-        waitmovement(0)
-        goto(AndWeMarchOn_InviteOntoStage_Dialogue)
-}
-
-
-script AndWeMarchOn_InviteOntoStage_Dialogue {
-
+    applymovement(PSFELITE1, AndWeMarchOn_LookAroundCrowd)
+    waitmovement(0)
+    playse(SE_APPLAUSE)
+    applymovement(PSFELITE1, AndWeMarchOn_WalkToFloatCenter)
+    waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_WeHaveASpecialGuest)
-        callnative(ClearMugshot)
-        closemessage
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_Psfregion1)
+    callnative(ClearMugshot)
+    closemessage
 
-        applymovement(RUPERT,AndWeMarchOn_WalkOntoStage)
-        waitmovement(0)
+    //TODO implement fireworks on screen
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_RupertHereIsTheWinner)
-        callnative(ClearMugshot)
-        closemessage
-        msgbox(gText_AndWeMarchOn_Boo)
+    playse(SE_BANG)
+    waitse
+    playse(SE_BANG)
+    waitse
 
-        msgbox(gText_AndWeMarchOn_LetsGo)
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_ThankYouForSupporting)
+    callnative(ClearMugshot)
+    closemessage
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_ButThatsNotGoing)
-        callnative(ClearMugshot)
-        closemessage
+    playse(SE_APPLAUSE)
+    waitse
 
+    applymovement(PSFELITE1, AndWeMarchOn_PaceBackForth)
+    waitmovement(0)
+    goto(AndWeMarchOn_InviteOntoStage_Dialogue)
+}
 
-        msgbox(gText_AndWeMarchOn_YayRupert)
-        goto(AndWeMarchOn_StartCutsceneBattle_Script)
+script AndWeMarchOn_InviteOntoStage_Dialogue {
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_WeHaveASpecialGuest)
+    callnative(ClearMugshot)
+    closemessage
+
+    applymovement(RUPERT, AndWeMarchOn_WalkOntoStage)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_RupertHereIsTheWinner)
+    callnative(ClearMugshot)
+    closemessage
+
+    msgbox(gText_AndWeMarchOn_Boo)
+
+    msgbox(gText_AndWeMarchOn_LetsGo)
+
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_ButThatsNotGoing)
+    callnative(ClearMugshot)
+    closemessage
+
+    msgbox(gText_AndWeMarchOn_YayRupert)
+    goto(AndWeMarchOn_StartCutsceneBattle_Script)
 }
 
 script AndWeMarchOn_StartCutsceneBattle_Script {
     setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_RupertAreYouReady)
-        callnative(ClearMugshot)
-        closemessage
-        msgbox(gText_AndWeMarchOn_Woo)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_RupertAreYouReady)
+    callnative(ClearMugshot)
+    closemessage
+    msgbox(gText_AndWeMarchOn_Woo)
 
-        msgbox(gText_AndWeMarchOn_Yeah)
+    msgbox(gText_AndWeMarchOn_Yeah)
 
-        applymovement(PSFELITE1,AndWeMarchOn_WalkToLeftSide)
-        applymovement(RUPERT,AndWeMarchOn_LookAroundCrowd)
-        waitmovement(0)
+    applymovement(PSFELITE1, AndWeMarchOn_WalkToLeftSide)
+    applymovement(RUPERT, AndWeMarchOn_LookAroundCrowd)
+    waitmovement(0)
+    applymovement(RUPERT, Common_Movement_FaceLeft)
+    waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_LetsRock)
-        callnative(ClearMugshot)
-        closemessage
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_LetsRock)
+    callnative(ClearMugshot)
+    closemessage
 
-        msgbox(gText_AndWeMarchOn_AndOurBattle)
-        closemessage
-        goto(AndWeMarchOn_CutsceneBattleScript)
+    msgbox(gText_AndWeMarchOn_AndOurBattle)
+    closemessage
+    goto(AndWeMarchOn_CutsceneBattleScript)
 
 }
 script AndWeMarchOn_CutsceneBattleScript {
 
     playse(SE_BALL_OPEN)
-        playse(SE_BALL_OPEN)
-        waitfanfare
-        clearflag(FLAG_HIDE_ANDWEMARCHON_BATTLE1)
-        addobject(PKMN1)
-        addobject(PKMN2)
-        playmoncry(SPECIES_GROUDON, CRY_MODE_ENCOUNTER)
-        playmoncry(SPECIES_KYOGRE, CRY_MODE_ENCOUNTER)
-        waitmoncry
+    playse(SE_BALL_OPEN)
+    waitse
+    clearflag(FLAG_HIDE_ANDWEMARCHON_BATTLE1)
+    addobject(PKMN1)
+    addobject(PKMN2)
+    playmoncry(SPECIES_GROUDON, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    playmoncry(SPECIES_KYOGRE, CRY_MODE_ENCOUNTER)
+    waitmoncry
 
-        playse(SE_BALL_OPEN)
-        playse(SE_BALL_OPEN)
-        waitfanfare
-        clearflag(FLAG_HIDE_ANDWEMARCHON_BATTLE2)
-        addobject(PKMN3)
-        addobject(PKMN4)
-        playmoncry(SPECIES_AZUMARILL, CRY_MODE_ENCOUNTER)
-        playmoncry(SPECIES_KECLEON, CRY_MODE_ENCOUNTER)
-        waitmoncry
+    playse(SE_BALL_OPEN)
+    waitse
+    playse(SE_BALL_OPEN)
+    waitse
+    clearflag(FLAG_HIDE_ANDWEMARCHON_BATTLE2)
+    addobject(PKMN3)
+    addobject(PKMN4)
+    playmoncry(SPECIES_AZUMARILL, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    playmoncry(SPECIES_KECLEON, CRY_MODE_ENCOUNTER)
+    waitmoncry
 
-        msgbox(gText_AndWeMarchOn_AttackPatternSigma)
+    msgbox(gText_AndWeMarchOn_AttackPatternSigma)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_HelpingHand)
-        closemessage
-        callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_HelpingHand)
+    closemessage
+    callnative(ClearMugshot)
 
-        applymovement(PKMN1,AndWeMarchOn_Attack)
-        applymovement(PKMN2,AndWeMarchOn_Attack)
-        waitmovement(0)
+    applymovement(PKMN1, AndWeMarchOn_Attack)
+    applymovement(PKMN2, AndWeMarchOn_Attack)
+    waitmovement(0)
 
-        //TODO figure out how to flash screen back    
-        fadescreen(FADE_TO_BLACK)
-        playse(SE_M_THUNDERBOLT)
-        waitfanfare
-        setobjectxy(PKMN3,25,9)
-        setobjectxy(PKMN4,25,10)
-        turnobject(PKMN3,DIR_EAST)
-        turnobject(PKMN4,DIR_EAST)
-        playse(SE_FAINT)
-        waitfanfare
-        fadescreen(FADE_FROM_BLACK)
+    //TODO figure out how to flash screen back    
+    fadescreen(FADE_TO_BLACK)
+    playse(SE_M_THUNDERBOLT)
+    waitse
+    setobjectxy(PKMN3, 21, 9)
+    setobjectxy(PKMN4, 21, 11)
+    turnobject(PKMN3, DIR_EAST)
+    turnobject(PKMN4, DIR_EAST)
+    playse(SE_FAINT)
+    waitse
+    fadescreen(FADE_FROM_BLACK)
 
-        msgbox(gText_AndWeMarchOn_AndWithASupercharged)
-        goto(AndWeMarchOn_PostBattle_Dialogue)
+    msgbox(gText_AndWeMarchOn_AndWithASupercharged)
+    goto(AndWeMarchOn_PostBattle_Dialogue)
 }
-
 
 script AndWeMarchOn_PostBattle_Dialogue {
 
     setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_DamnThatsHow)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_DamnThatsHow)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_LetsGiveItUp)
-        closemessage
-        callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_LetsGiveItUp)
+    closemessage
+    callnative(ClearMugshot)
 
-        playse(SE_APPLAUSE)
-        waitfanfare
-        applymovement(RUPERT,AndWeMarchOn_WalkOffStage)
-        goto(AndWeMarchOn_PostBattleSpeech_Dialogue)
+    playse(SE_APPLAUSE)
+    waitse
+
+    playse(SE_BALL_OPEN)
+    waitse
+
+    removeobject(PKMN1)
+    removeobject(PKMN2)
+    removeobject(PKMN3)
+    removeobject(PKMN4)
+    applymovement(RUPERT, AndWeMarchOn_WalkOffStage)
+    waitmovement(0)
+    goto(AndWeMarchOn_PostBattleSpeech_Dialogue)
 }
-
 
 script AndWeMarchOn_PostBattleSpeech_Dialogue {
 
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_ItsBeenAWildYear)
+
+    playse(SE_BOO) //TODO: change to booing sound
+    waitse
+
+    applymovement(PSFELITE1, AndWeMarchOn_WalkToSouthStage)
+    waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_ItsBeenAWildYear)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_OhItsNotAllBad)
+    callnative(ClearMugshot)
+    closemessage
 
-        playse(SE_BOO) //TODO: change to booing sound
-        waitfanfare
+    applymovement(PSFELITE1, AndWeMarchOn_WalkToNorthStage)
+    waitmovement(0)
 
-        applymovement(PSFELITE1,AndWeMarchOn_WalkToSouthStage)
-        waitmovement(0)
+    msgbox(gText_AndWeMarchOn_Boo)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_OhItsNotAllBad)
-        callnative(ClearMugshot)
-        closemessage
+    msgbox(gText_AndWeMarchOn_FuckTheseGuys)
 
-        applymovement(PSFELITE1,AndWeMarchOn_WalkToNorthStage)
-        waitmovement(0)
+    msgbox(gText_AndWeMarchOn_GiveUsBackOur)
 
-        msgbox(gText_AndWeMarchOn_Boo)
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_ButHeyItsNot)
+    callnative(ClearMugshot)
+    closemessage
 
-        msgbox(gText_AndWeMarchOn_FuckTheseGuys)
+    msgbox(gText_AndWeMarchOn_Traitor)
 
-        msgbox(gText_AndWeMarchOn_GiveUsBackOur)
+    msgbox(gText_AndWeMarchOn_DownWith)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_ButHeyItsNot)
-        callnative(ClearMugshot)
-        closemessage
+    msgbox(gText_AndWeMarchOn_WhatASlimeball)
 
-        msgbox(gText_AndWeMarchOn_Traitor)
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_JustNotTheWay)
+    callnative(ClearMugshot)
+    closemessage
 
-        msgbox(gText_AndWeMarchOn_DownWith)
+    applymovement(PSFELITE1, AndWeMarchOn_GoBackToCenter)
+    waitmovement(0)
 
-        msgbox(gText_AndWeMarchOn_WhatASlimeball)
-
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_JustNotTheWay)
-        callnative(ClearMugshot)
-        closemessage
-
-        applymovement(PSFELITE1,AndWeMarchOn_GoBackToCenter)
-        waitmovement(0)
-
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_WeveGotAResponsibility)
-        callnative(ClearMugshot)
-        closemessage
-        goto(AndWeMarchOn_ParadeEnd_Script)
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    msgbox(gText_AndWeMarchOn_WeveGotAResponsibility)
+    callnative(ClearMugshot)
+    closemessage
+    goto(AndWeMarchOn_ParadeEnd_Script)
 
 }
-
 
 script AndWeMarchOn_ParadeEnd_Script {
 
     playse(SE_APPLAUSE)
-        playse(SE_APPLAUSE)
-        waitfanfare
-        fadescreen(FADE_TO_BLACK)
-        setflag(FLAG_HIDE_ANDWEMARCHON_PARADE)
-        fadescreen(FADE_FROM_BLACK)
-        releaseall
-        end
+    playse(SE_APPLAUSE)
+    waitse
+    fadescreen(FADE_TO_BLACK)
+    removeobject(PSFELITE1)
+    removeobject(8)
+    setflag(FLAG_HIDE_ANDWEMARCHON_PARADE)
+    special(ReturnCameraToPlayer)
+    fadescreen(FADE_FROM_BLACK)
+    releaseall
+    end
 }
-
-
 
 text gText_AndWeMarchOn_WowPeopleHere {
     format("Wow, people here really love their Double Battles… but then why is Singles the official League  format?")
@@ -387,47 +414,78 @@ text gText_AndWeMarchOn_WeveGotAResponsibility {
     format("We've got a responsibility here. The profit motive can not… WILL NOT erase our history. It lives on in our hearts. In our stories Our legends. And no corporation, Psfbadguy or otherwise, can take that away from us!")
 }
 
-movement AndWeMarchOn_ParadeProcession
-{
-	step_end
+movement AndWeMarchOn_WatchParade {
+    face_down
+    step_end
 }
-movement AndWeMarchOn_LookAroundCrowd
-{
-	step_end
+
+movement AndWeMarchOn_ParadeProcession {
+    walk_right * 14
+    step_end
 }
-movement AndWeMarchOn_WalkToFloatCenter
-{
-	step_end
+
+movement AndWeMarchOn_WalkToBattle {
+    walk_right * 4
+    step_end
 }
-movement AndWeMarchOn_PaceBackForth
-{
-	step_end
+
+movement AndWeMarchOn_LookAroundCrowd {
+    face_up
+    delay_16
+    face_down
+    delay_16
+    step_end
 }
-movement AndWeMarchOn_WalkOntoStage
-{
-	step_end
+movement AndWeMarchOn_WalkToFloatCenter {
+    walk_right
+    walk_right
+    walk_down
+    face_right
+    step_end
 }
-movement AndWeMarchOn_WalkToLeftSide
-{
-	step_end
+movement AndWeMarchOn_PaceBackForth {
+    walk_up * 2
+    delay_16
+    walk_down * 4
+    delay_16
+    walk_up * 2
+    step_end
 }
-movement AndWeMarchOn_Attack
-{
-	step_end
+movement AndWeMarchOn_WalkOntoStage {
+    walk_up * 3
+    face_left
+    step_end
 }
-movement AndWeMarchOn_WalkOffStage
-{
-	step_end
+movement AndWeMarchOn_WalkToLeftSide {
+    walk_left
+    face_right
+    step_end
 }
-movement AndWeMarchOn_WalkToSouthStage
-{
-	step_end
+movement AndWeMarchOn_Attack {
+    walk_fast_right
+    walk_fast_right
+    step_end
 }
-movement AndWeMarchOn_WalkToNorthStage
-{
-	step_end
+movement AndWeMarchOn_WalkOffStage {
+    walk_down * 3
+    face_up
+    step_end
 }
-movement AndWeMarchOn_GoBackToCenter
-{
-	step_end
+movement AndWeMarchOn_WalkToSouthStage {
+    walk_right * 3
+    step_end
+}
+movement AndWeMarchOn_WalkToNorthStage {
+    walk_left * 6
+    step_end
+}
+movement AndWeMarchOn_GoBackToCenter {
+    walk_right * 3
+    face_down
+    step_end
+}
+movement AndWeMarchOn_WalkCameraToParade {
+    walk_left * 16
+    walk_down * 2
+    step_end
 }

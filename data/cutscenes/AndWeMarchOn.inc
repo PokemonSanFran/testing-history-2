@@ -4,16 +4,35 @@ AndWeMarchOn_ObjectSetUp_Script::
 	end
 
 
+AndWeMarchOn_MoveCameraToParade::
+	setvar VAR_0x8004, 2
+	setvar VAR_0x8005, 9
+	special TeleportCamera
+	special SpawnCameraObject
+	return
+
+
 AndWeMarchOn_StartParadeMovement::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_WowPeopleHere
+	applymovement OBJ_EVENT_ID_PLAYER, AndWeMarchOn_WatchParade
+	waitmovement 0
+	fadescreen FADE_TO_BLACK
+	call AndWeMarchOn_MoveCameraToParade
+	setobjectxyperm 9, 26, 10
+	setobjectxy 9, 26, 10
+	setobjectxy 10, 30, 10
+	fadescreen FADE_FROM_BLACK
+	applymovement OBJ_EVENT_ID_CAMERA, AndWeMarchOn_ParadeProcession
+	applymovement 5, AndWeMarchOn_ParadeProcession
 	applymovement 10, AndWeMarchOn_ParadeProcession
 	applymovement 9, AndWeMarchOn_ParadeProcession
 	applymovement 8, AndWeMarchOn_ParadeProcession
-	applymovement 7, AndWeMarchOn_ParadeProcession
-	applymovement 5, AndWeMarchOn_ParadeProcession
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_AndWeMarchOn_WowPeopleHere
+	callnative ClearMugshot
+	waitmovement 0
+	special RemoveCameraObject
 	msgbox gText_AndWeMarchOn_AndNowSomeWords
 	closemessage
 	goto AndWeMarchOn_Opening_Dialogue
@@ -32,15 +51,16 @@ AndWeMarchOn_Opening_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	playse SE_BANG
-	waitfanfare
+	waitse
 	playse SE_BANG
-	waitfanfare
+	waitse
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_ThankYouForSupporting
 	callnative ClearMugshot
 	closemessage
 	playse SE_APPLAUSE
+	waitse
 	applymovement 5, AndWeMarchOn_PaceBackForth
 	waitmovement 0
 	goto AndWeMarchOn_InviteOntoStage_Dialogue
@@ -83,6 +103,8 @@ AndWeMarchOn_StartCutsceneBattle_Script::
 	applymovement 5, AndWeMarchOn_WalkToLeftSide
 	applymovement 6, AndWeMarchOn_LookAroundCrowd
 	waitmovement 0
+	applymovement 6, Common_Movement_FaceLeft
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_LetsRock
@@ -97,20 +119,23 @@ AndWeMarchOn_StartCutsceneBattle_Script::
 AndWeMarchOn_CutsceneBattleScript::
 	playse SE_BALL_OPEN
 	playse SE_BALL_OPEN
-	waitfanfare
+	waitse
 	clearflag FLAG_HIDE_ANDWEMARCHON_BATTLE1
 	addobject 1
 	addobject 2
 	playmoncry SPECIES_GROUDON, CRY_MODE_ENCOUNTER
+	waitmoncry
 	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
 	waitmoncry
 	playse SE_BALL_OPEN
+	waitse
 	playse SE_BALL_OPEN
-	waitfanfare
+	waitse
 	clearflag FLAG_HIDE_ANDWEMARCHON_BATTLE2
 	addobject 3
 	addobject 4
 	playmoncry SPECIES_AZUMARILL, CRY_MODE_ENCOUNTER
+	waitmoncry
 	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
 	waitmoncry
 	msgbox gText_AndWeMarchOn_AttackPatternSigma
@@ -124,13 +149,13 @@ AndWeMarchOn_CutsceneBattleScript::
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
 	playse SE_M_THUNDERBOLT
-	waitfanfare
-	setobjectxy 3, 25, 9
-	setobjectxy 4, 25, 10
+	waitse
+	setobjectxy 3, 21, 9
+	setobjectxy 4, 21, 11
 	turnobject 3, DIR_EAST
 	turnobject 4, DIR_EAST
 	playse SE_FAINT
-	waitfanfare
+	waitse
 	fadescreen FADE_FROM_BLACK
 	msgbox gText_AndWeMarchOn_AndWithASupercharged
 	goto AndWeMarchOn_PostBattle_Dialogue
@@ -147,8 +172,15 @@ AndWeMarchOn_PostBattle_Dialogue::
 	closemessage
 	callnative ClearMugshot
 	playse SE_APPLAUSE
-	waitfanfare
+	waitse
+	playse SE_BALL_OPEN
+	waitse
+	removeobject 1
+	removeobject 2
+	removeobject 3
+	removeobject 4
 	applymovement 6, AndWeMarchOn_WalkOffStage
+	waitmovement 0
 	goto AndWeMarchOn_PostBattleSpeech_Dialogue
 	return
 
@@ -158,7 +190,7 @@ AndWeMarchOn_PostBattleSpeech_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_ItsBeenAWildYear
 	playse SE_BOO
-	waitfanfare
+	waitse
 	applymovement 5, AndWeMarchOn_WalkToSouthStage
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
@@ -198,45 +230,137 @@ AndWeMarchOn_PostBattleSpeech_Dialogue::
 AndWeMarchOn_ParadeEnd_Script::
 	playse SE_APPLAUSE
 	playse SE_APPLAUSE
-	waitfanfare
+	waitse
 	fadescreen FADE_TO_BLACK
+	removeobject 5
+	removeobject 8
 	setflag FLAG_HIDE_ANDWEMARCHON_PARADE
+	special ReturnCameraToPlayer
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
 
 
+AndWeMarchOn_WatchParade:
+	face_down
+	step_end
+
 AndWeMarchOn_ParadeProcession:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+AndWeMarchOn_WalkToBattle:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 AndWeMarchOn_LookAroundCrowd:
+	face_up
+	delay_16
+	face_down
+	delay_16
 	step_end
 
 AndWeMarchOn_WalkToFloatCenter:
+	walk_right
+	walk_right
+	walk_down
+	face_right
 	step_end
 
 AndWeMarchOn_PaceBackForth:
+	walk_up
+	walk_up
+	delay_16
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	delay_16
+	walk_up
+	walk_up
 	step_end
 
 AndWeMarchOn_WalkOntoStage:
+	walk_up
+	walk_up
+	walk_up
+	face_left
 	step_end
 
 AndWeMarchOn_WalkToLeftSide:
+	walk_left
+	face_right
 	step_end
 
 AndWeMarchOn_Attack:
+	walk_fast_right
+	walk_fast_right
 	step_end
 
 AndWeMarchOn_WalkOffStage:
+	walk_down
+	walk_down
+	walk_down
+	face_up
 	step_end
 
 AndWeMarchOn_WalkToSouthStage:
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 AndWeMarchOn_WalkToNorthStage:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 AndWeMarchOn_GoBackToCenter:
+	walk_right
+	walk_right
+	walk_right
+	face_down
+	step_end
+
+AndWeMarchOn_WalkCameraToParade:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
 	step_end
 
 gText_AndWeMarchOn_WowPeopleHere::

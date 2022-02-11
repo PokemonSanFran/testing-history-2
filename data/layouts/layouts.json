@@ -4994,7 +4994,7 @@
     {
       "id": "LAYOUT_PSFCITY18",
       "name": "Psfcity18_Layout",
-      "width": 40,
+      "width": 39,
       "height": 30,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fallarbor",
