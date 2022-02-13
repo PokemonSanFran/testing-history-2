@@ -1,0 +1,8 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFNATIVERIVAL = 1
+
+mapscripts Psfplace3_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Battle8_SetUpObject_Script)
+    }
+}

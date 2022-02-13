@@ -10,6 +10,7 @@
     "gMapGroup_IndoorPsfcity11",
     "gMapGroup_IndoorPsfplace9",
     "gMapGroup_IndoorPsfcity3",
+    "gMapGroup_IndoorPsfcity18",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -84,7 +85,8 @@
     "Psfroute7",
     "Psfcity2",
     "Psfcity18",
-    "Psfcity18_Gym"
+    "Psfroute43",
+    "Psfplace3"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -169,6 +171,9 @@
   "gMapGroup_IndoorPsfcity3": [
     "Psfcity3_Mansion",
     "Psfcity2_Gym"
+  ],
+  "gMapGroup_IndoorPsfcity18": [
+    "Psfcity18_Gym"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

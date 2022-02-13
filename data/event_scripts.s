@@ -1149,7 +1149,7 @@ Common_EventScript_LegendaryFlewAway::
     .include "data/cutscenes/EnterJasmine.inc"
     .include "data/cutscenes/AndWeMarchOn.inc"
     .include "data/cutscenes/EnterPryce.inc"
-##  .include "data/cutscenes/Battle8.inc"
+    .include "data/cutscenes/Battle8.inc"
 ##  .include "data/cutscenes/ANewStrike.inc"
 ##  .include "data/cutscenes/EnterClair.inc"
 ##  .include "data/cutscenes/TheStrikeStrikesBack.inc"
@@ -1219,3 +1219,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Psfcity18/scripts.inc"
 
 	.include "data/maps/Psfcity18_Gym/scripts.inc"
+
+	.include "data/maps/Psfroute43/scripts.inc"
+
+	.include "data/maps/Psfplace3/scripts.inc"

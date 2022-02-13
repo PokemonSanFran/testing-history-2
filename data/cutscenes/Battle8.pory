@@ -1,0 +1,214 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFNATIVERIVAL = 1
+
+script Battle8_SetUpObject_Script {
+
+    switch (var(VAR_ROUTE109_STATE)){
+        case 0: setflag(FLAG_HIDE_BATTLE8)
+        case 1: call(Battle8_StartBattle_ObjectSetUp_Script)
+    }
+}
+
+script Battle8_StartBattle_ObjectSetUp_Script {
+    setobjectxyperm(PSFNATIVERIVAL,19,14)
+        setobjectxy(PSFNATIVERIVAL,19,14)
+        end
+}
+
+
+script Battle8_PsfnativerivalWalksOut_Script {
+    setvar(VAR_ROUTE109_STATE,1)
+        opendoor(19, 13)
+        waitdooranim
+        clearflag(FLAG_HIDE_BATTLE8)
+        addobject(PSFNATIVERIVAL)
+        playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+        applymovement(PSFNATIVERIVAL,Battle8_WalkOutOfHouse)
+
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+        if (var(VAR_TEMP_0) != 26){
+            applymovement(PLAYER,Battle8_GetOutOfWay)
+        }
+
+    waitmovement(0)
+        closedoor(19,13)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_HellYesSRank)
+        closemessage
+        callnative(ClearMugshot)
+
+        playse(SE_PIN)
+        applymovement(PSFNATIVERIVAL,Common_Movement_ExclamationMark)
+        waitmovement(0)
+        applymovement(PSFNATIVERIVAL,Common_Movement_FaceRight)
+        waitmovement(0)
+
+
+        goto(Battle8_ExplainAttraction_Dialogue)
+}
+
+script Battle8_ExplainAttraction_Dialogue {
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_YouKnowIWasInGoodMood)
+
+        if (var(VAR_TEMP_0) == 26){
+            closemessage
+                callnative(ClearMugshot)
+                applymovement(PSFNATIVERIVAL,Battle8_WalkToPlayer)
+                waitmovement(0)
+        }
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_GreatToSeeYouToo)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_PrimaryAttraction)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_SoWhatsTheChallenge)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_TheSistersAreExperts)
+        callnative(ClearMugshot)
+
+        call(Common_EventScript_SaveGame)
+        closemessage
+        goto(Battle8_StartBattle_Script)
+}
+
+script Battle8_StartBattle_Script {
+
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_YouTalkALot)
+        closemessage
+        callnative(ClearMugshot)
+
+        trainerbattle_no_intro(TRAINER_WALLY_VR_3,gText_Battle8_MaybeINeed)
+        goto(Battle8_PsfnativerivalDefeated_Dialogue)
+}
+
+script Battle8_InteractBattle_Script {
+
+        playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_YouTalkALot,MSGBOX_NPC)
+        closemessage
+        callnative(ClearMugshot)
+
+        trainerbattle_no_intro(TRAINER_WALLY_VR_3,gText_Battle8_MaybeINeed)
+        goto(Battle8_PsfnativerivalDefeated_Dialogue)
+}
+
+script Battle8_PsfnativerivalDefeated_Dialogue {
+
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_YouKnowItDoesnt)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_YeahThatsPart)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_WhatSituation)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Battle8_NotJustLikeMe)
+        closemessage
+        callnative(ClearMugshot)
+
+getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+if (var(VAR_TEMP_0) == 18){
+    applymovement(PLAYER,Common_Movement_WalkDown)
+    waitmovement(0)
+    applymovement(PLAYER,Common_Movement_FaceUp)
+}
+
+        applymovement(PSFNATIVERIVAL,Battle8_WalkToTheWest)
+        waitmovement(0)
+        removeobject(PSFNATIVERIVAL)
+        fadedefaultbgm
+        releaseall
+        end
+}
+
+text gText_Battle8_HellYesSRank {
+    format("Hell yes, S Rank, I nailed that!")
+}
+
+text gText_Battle8_YouKnowIWasInGoodMood {
+    format("You know, I was in a good mood, and now all of a sudden…")
+}
+
+text gText_Battle8_GreatToSeeYouToo {
+    format("Great to see you too. What rank thing were you talking about?")
+}
+
+text gText_Battle8_PrimaryAttraction {
+    format("Primary attraction of Psfplace13 - the Seven Sisters Challenge. It used to be a lot more popular when 1v1 battles were a novelty- before the corporations declared it as the official League format.")
+}
+
+text gText_Battle8_SoWhatsTheChallenge {
+    format("So, what's the challenge? And how do you get an S Rank?")
+}
+
+text gText_Battle8_TheSistersAreExperts {
+    format("The sisters are experts in 1v1, and you've got to beat all of them, in a row, in as few turns as possible. I've heard a rumor that Psfelite2 got an SS Rank once, but those guys are on a different level… but you're not even close to that.")
+}
+
+text gText_Battle8_YouTalkALot {
+    format("You talk a lot of shit for somebody that's never beaten me.")
+}
+
+text gText_Battle8_MaybeINeed {
+    format("Maybe I need to get an SS Rank to keep up with you…")
+}
+
+text gText_Battle8_YouKnowItDoesnt {
+    format("You know, it doesn't have to be like this. I'm not out to get you.")
+}
+
+text gText_Battle8_YeahThatsPart {
+    format("Yeah, that's part of the problem. Your ignorance of the situation and your skill almost makes it worse.")
+}
+
+text gText_Battle8_WhatSituation {
+    format("What situation? I'm just doing the Gym Challenge. Just like you.")
+}
+
+text gText_Battle8_NotJustLikeMe {
+    format("Not just like me. Nothing like me. I'm going to be better than you cheaters, no question.")
+}
+movement Battle8_WalkOutOfHouse {
+    walk_down
+        step_end
+}
+movement Battle8_GetOutOfWay {
+    walk_right
+        step_end
+}
+movement Battle8_WalkToPlayer {
+    walk_right * 6
+        step_end
+}
+movement Battle8_WalkToTheWest {
+    walk_left * 7
+        step_end
+}
+

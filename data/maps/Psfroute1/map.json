@@ -27,6 +27,11 @@
       "direction": "left",
       "offset": 0,
       "map": "MAP_PSFCITY3"
+    },
+    {
+      "direction": "down",
+      "offset": 16,
+      "map": "MAP_PSFPLACE3"
     }
   ],
   "object_events": [

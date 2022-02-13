@@ -65,7 +65,7 @@
 #define FLAG_HIDE_ANDWEMARCHON_BATTLE1  0x35 // Previously Unused Flag
 #define FLAG_HIDE_ANDWEMARCHON_BATTLE2  0x36 // Previously Unused Flag
 #define FLAG_HIDE_ANDWEMARCHON_PARADE 0x37 //Previously Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
+#define FLAG_HIDE_BATTLE8   0x38 // Previously Unused Flag
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag

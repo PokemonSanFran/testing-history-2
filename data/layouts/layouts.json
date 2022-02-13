@@ -5010,6 +5010,26 @@
       "secondary_tileset": "gTileset_BattleFactory",
       "border_filepath": "data/layouts/Psfcity18_Gym/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity18_Gym/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE43",
+      "name": "Psfroute43_Layout",
+      "width": 40,
+      "height": 5,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute43/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute43/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE3",
+      "name": "Psfplace3_Layout",
+      "width": 40,
+      "height": 22,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BattleFrontierOutsideWest",
+      "border_filepath": "data/layouts/Psfplace3/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace3/map.bin"
     }
   ]
 }
