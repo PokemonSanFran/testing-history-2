@@ -1,0 +1,13 @@
+Psfcity18_Gym_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity18_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Psfcity18_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	switch VAR_GYM_7_STATE
+	case 3, Psfcity18_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	return
+
+Psfcity18_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	goto EnterPsfleader7_StartGymBattle_ObjectSetup
+	return
+

@@ -1,0 +1,354 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFLEADER7 = 1
+
+//VAR_GYM_7_STATE
+//3: Saved in front of Psfleader7
+//4: Defeated Psfleader7
+//5: Hear explanation of badge and TM
+
+script EnterPsfleader7_StartGymBattle_ObjectSetup {
+    setobjectxyperm(PSFLEADER7, 11, 10)
+        setobjectmovementtype(PSFLEADER7, MOVEMENT_TYPE_FACE_LEFT)
+        end
+}
+
+script EnterPsfleader7_Event_Script {
+    switch (var(VAR_GYM_7_STATE)) {
+        case 3:
+            goto(EnterPsfleader7_FacePlayerBeforeBattle)
+            //goto(EnterPsfleader7_StartGymBattle_Script)
+
+        case 4:
+                goto(EnterPsfleader7_PostDefeat1_Dialogue)
+        case 5:
+                    goto(EnterPsfleader7_PostDefeat2_Dialogue)
+        default:
+                        goto(EnterPsfleader7_MumbleToSelf_Dialogue)
+    }
+}
+
+script EnterPsfleader7_MumbleToSelf_Dialogue {
+    setvar(VAR_GYM_7_STATE,3)
+        setvar(VAR_0x8000, MUGSHOT_PRYCE)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_StupidParade)
+        closemessage
+        callnative(ClearMugshot)
+        applymovement(PSFLEADER7,EnterPsfleader7_PaceLeftFrontOfDesk)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_PRYCE)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_TheyJustDontUnderstand)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(PSFLEADER7,EnterPsfleader7_PaceRightFrontOfDesk)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_PRYCE)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_LookIWasWilling)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_HeyYouSeemBusy)
+        closemessage
+        callnative(ClearMugshot)
+
+        playse(SE_PIN)
+        applymovement(PSFLEADER7,Common_Movement_ExclamationMark)
+        waitmovement(0)
+        applymovement(PSFLEADER7,Common_Movement_FaceDown)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_PRYCE)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_ShitShitShit,MSGBOX_NPC)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(PSFLEADER7,EnterPsfleader7_TakeDrugs)
+        waitmovement(0)
+        call(EnterPsfleader7_CalculateMovement_Script)
+        waitmovement(0)
+}
+
+script EnterPsfleader7_CalculateMovement_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    
+    switch (var(VAR_TEMP_0)) {
+        case 8: call(EnterPsfleader7_PlayerPosition8)
+        case 9: call(EnterPsfleader7_PlayerPosition9)
+        case 10: call(EnterPsfleader7_PlayerPosition10)
+        case 11: call(EnterPsfleader7_PlayerPosition11)
+        case 12: call(EnterPsfleader7_PlayerPosition12)
+        case 13: call(EnterPsfleader7_PlayerPosition13)
+        case 14: call(EnterPsfleader7_PlayerPosition14)
+        case 15: call(EnterPsfleader7_PlayerPosition15)
+        case 16: call(EnterPsfleader7_PlayerPosition16)
+    }
+
+    waitmovement(0)
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    waitmovement(0)
+    goto(EnterPsf7leader_ExplainLab_Dialogue)
+}
+
+script EnterPsfleader7_PlayerPosition8 {
+    applymovement(PSFLEADER7,EnterPsfleader7_Psfleader7_WalkToBattlefield)
+    applymovement(PLAYER,EnterPsfleader7_MovePlayerFrom8)
+}
+script EnterPsfleader7_PlayerPosition9 {
+    applymovement(PSFLEADER7,EnterPsfleader7_Psfleader7_WalkToBattlefield)
+    applymovement(PLAYER,EnterPsfleader7_MovePlayerFrom9)
+}
+script EnterPsfleader7_PlayerPosition10 {
+    applymovement(PSFLEADER7,EnterPsfleader7_Psfleader7_WalkToBattlefield)
+    applymovement(PLAYER,EnterPsfleader7_MovePlayerFrom10)
+}
+script EnterPsfleader7_PlayerPosition11 {
+    applymovement(PSFLEADER7,EnterPsfleader7_Psfleader7_WalkAroundToBattlefield)
+    applymovement(PLAYER,EnterPsfleader7_MovePlayerFrom11)
+}
+script EnterPsfleader7_PlayerPosition12 {
+    applymovement(PSFLEADER7,EnterPsfleader7_Psfleader7_WalkToBattlefield)
+    applymovement(PLAYER,EnterPsfleader7_MovePlayerFrom12)
+}
+script EnterPsfleader7_PlayerPosition13 {
+    applymovement(PSFLEADER7,EnterPsfleader7_Psfleader7_WalkToBattlefield)
+    applymovement(PLAYER,EnterPsfleader7_MovePlayerFrom13)
+}
+script EnterPsfleader7_PlayerPosition14 {
+    applymovement(PSFLEADER7,EnterPsfleader7_Psfleader7_WalkToBattlefield)
+    applymovement(PLAYER,EnterPsfleader7_MovePlayerFrom14)
+}
+script EnterPsfleader7_PlayerPosition15 {
+    applymovement(PSFLEADER7,EnterPsfleader7_Psfleader7_WalkToBattlefield)
+    applymovement(PLAYER,EnterPsfleader7_MovePlayerFrom15)
+}
+script EnterPsfleader7_PlayerPosition16 {
+    applymovement(PSFLEADER7,EnterPsfleader7_Psfleader7_WalkToBattlefield)
+    applymovement(PLAYER,EnterPsfleader7_MovePlayerFrom16)
+}
+
+script EnterPsf7leader_ExplainLab_Dialogue {
+
+    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+       callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_SoBackHere)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_WaitDoesTheLeague)
+        callnative(ClearMugshot)
+        call(Common_EventScript_SaveGame)
+        closemessage
+        goto(EnterPsfleader7_StartGymBattle_Script)
+}
+
+script EnterPsfleader7_FacePlayerBeforeBattle {
+    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_IDontKnow,MSGBOX_NPC)
+        closemessage
+        callnative(ClearMugshot)
+        trainerbattle_no_intro(TRAINER_TATE_AND_LIZA_1,gText_EnterPsfleader7_UghIThinkThisBatch)
+        goto(EnterPsfleader7_Psfleader7Defeated_Script)
+}
+
+script EnterPsfleader7_StartGymBattle_Script {
+    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_IDontKnow)
+        closemessage
+        callnative(ClearMugshot)
+        trainerbattle_no_intro(TRAINER_TATE_AND_LIZA_1,gText_EnterPsfleader7_UghIThinkThisBatch)
+        goto(EnterPsfleader7_Psfleader7Defeated_Script)
+}
+
+script EnterPsfleader7_Psfleader7Defeated_Script {
+    lockall
+    setflag(FLAG_BADGE07_GET)
+    setvar(VAR_GYM_7_STATE,4)
+    msgbox(gText_EnterPsfleader7_BadgeGet)
+    call(Common_EventScript_PlayGymBadgeFanfare)
+    giveitem(ITEM_TM07)
+    closemessage
+    call(EnterPsfleader7_MoveBacktoDesk_Script)
+    waitmovement(0)
+    releaseall
+    end
+}
+
+script EnterPsfleader7_MoveBacktoDesk_Script {
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+    if (var(VAR_TEMP_0) != 12) {
+        applymovement(PSFLEADER7,EnterPsfleader7_WalkBackToDesk)
+    }
+    else {
+        applymovement(PSFLEADER7,EnterPsfleader7_WalkAroundBackToDesk)
+    }
+}
+
+
+script EnterPsfleader7_PostDefeat1_Dialogue {
+    lockall
+    setvar(VAR_GYM_7_STATE,5)
+        setvar(VAR_0x8000, MUGSHOT_PRYCE)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_TMAreLikeDrugs)
+        closemessage
+        callnative(ClearMugshot)
+        releaseall
+        end
+}
+
+
+script EnterPsfleader7_PostDefeat2_Dialogue {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_PRYCE)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader7_LetsSee)
+        closemessage
+        callnative(ClearMugshot)
+        releaseall
+        end
+}
+
+text gText_EnterPsfleader7_StupidParade {
+    format("*grumble* stupid fucking parade…")
+}
+
+text gText_EnterPsfleader7_TheyJustDontUnderstand {
+    format("*mutter* They just don't understand… it was either their way or the highway… and I kept the Gym! And now I'm the traitor?")
+}
+
+text gText_EnterPsfleader7_LookIWasWilling {
+    format("*grumble* Look, I was willing to play ball, and I was rewarded. Haters gonna just hate…")
+}
+
+text gText_EnterPsfleader7_HeyYouSeemBusy {
+    format("Hey, you seem busy, but are you Psfleader7?")
+}
+
+text gText_EnterPsfleader7_ShitShitShit {
+    format("! Shit. Shit shit shit hi, are you a challenger? Hold on yeah, hold on. NOPE, not doing this sober, hold on… Lemme just…")
+}
+
+text gText_EnterPsfleader7_SoBackHere {
+    format("So back here, I experiment with new synthetic drugs. Always trying to get an edge, you know? Let's see if I can battle under the influence of MGB-07.")
+}
+
+text gText_EnterPsfleader7_WaitDoesTheLeague {
+    format("Wait, does the League let you battle under the influence like that?")
+}
+
+text gText_EnterPsfleader7_IDontKnow {
+    format("I don't know the rules… but I'm sure they won't stop me either way. It's good to have power!")
+}
+
+text gText_EnterPsfleader7_UghIThinkThisBatch {
+    format("Ugh, I think this batch makes me too nauseous…")
+}
+
+text gText_EnterPsfleader7_TMAreLikeDrugs {
+    format("TMs are like drugs, right? They alter your brain chemistry and let you see stuff you'd never see otherwise… that one will teach Psfgymattack7.")
+}
+
+text gText_EnterPsfleader7_LetsSee {
+    format("Let's see if I can bang out MGB-08 while I'm riding this high…")
+}
+
+text gText_EnterPsfleader7_BadgeGet {
+    format("You received the Psfbadge7 Badge!")
+}
+
+movement EnterPsfleader7_PaceLeftFrontOfDesk {
+    walk_left * 5
+    face_up
+    step_end
+}
+
+movement EnterPsfleader7_PaceRightFrontOfDesk {
+    walk_right * 5
+    face_up
+    step_end
+}
+
+movement EnterPsfleader7_TakeDrugs {
+    walk_left * 2
+    walk_in_place_slow_up
+    step_end
+}
+
+movement EnterPsfleader7_Psfleader7_WalkToBattlefield {
+    walk_left * 2
+    walk_down * 4
+    face_left
+    step_end
+}
+movement EnterPsfleader7_MovePlayerFrom8 {
+    walk_left * 1
+    walk_down * 4
+    step_end
+}
+movement EnterPsfleader7_MovePlayerFrom9 {
+    walk_left * 2
+    walk_down * 3
+    step_end
+}
+movement EnterPsfleader7_MovePlayerFrom10 {
+    walk_left * 3
+    walk_down * 3
+    step_end
+}
+movement EnterPsfleader7_MovePlayerFrom11 {
+    walk_left * 4
+    walk_down * 3
+    step_end
+}
+movement EnterPsfleader7_MovePlayerFrom12 {
+    walk_left * 5
+    walk_down * 3
+    step_end
+}
+movement EnterPsfleader7_MovePlayerFrom13 {
+    walk_left * 6
+    walk_down * 3
+    step_end
+}
+movement EnterPsfleader7_MovePlayerFrom14 {
+    walk_left * 7
+    walk_down * 3
+    step_end
+}
+movement EnterPsfleader7_MovePlayerFrom15 {
+    walk_left * 8
+    walk_down * 3
+    step_end
+}
+movement EnterPsfleader7_MovePlayerFrom16 {
+    walk_left * 9
+    walk_down * 3
+    step_end
+}
+movement EnterPsfleader7_Psfleader7_WalkAroundToBattlefield {
+    walk_left * 3
+    walk_down * 3
+    walk_left
+    step_end
+}
+movement EnterPsfleader7_WalkBackToDesk {
+    walk_right * 4
+    walk_up * 4
+    step_end
+}
+
+movement EnterPsfleader7_WalkAroundBackToDesk {
+    walk_up * 4
+    walk_right * 4
+    face_up
+    step_end
+}

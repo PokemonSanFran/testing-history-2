@@ -102,7 +102,7 @@ script GroupOfAssholesAppears_Psfchara1Intervene_Dialogue {
         callnative(ClearMugshot)
         applymovement(DAVID,Common_Movement_FaceDown)
         waitmovement(0)
-        msgbox(gText_GroupOfAssholesAppears_OhThankGod)
+        msgbox(gText_GroupOfAssholesAppears_OhThankArceus)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         applymovement(PLAYER,GroupOfAssholesAppears_LookAround_Movement)
@@ -152,7 +152,7 @@ script GroupOfAssholesAppears_GroupLeaves_Dialogue {
 
 script GroupOfAssholesAppears_ExplainTeam_Dialogue {
         applymovement(PLAYER,Common_Movement_FaceUp)
-        msgbox(gText_GroupOfAssholesAppears_Ohmigod)
+        msgbox(gText_GroupOfAssholesAppears_ThankYou)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_GroupOfAssholesAppears_AreYouGoing)
@@ -313,7 +313,7 @@ text gText_GroupOfAssholesAppears_GiveJelenaBack {
 }
 
 text gText_GroupOfAssholesAppears_IDontKnowWho {
-    format("Oh my god, I don't know who Jelena is or what you want, or what I did to any of you!")
+    format("Oh Arceus, I don't know who Jelena is or what you want, or what I did to any of you!")
 }
 
 text gText_GroupOfAssholesAppears_WeDontWantToHear {
@@ -340,8 +340,8 @@ text gText_GroupOfAssholesAppears_ThisIsntAProtest {
     format("This isn't a protest. This is straight-up intimidation. Leave him alone!")
 }
 
-text gText_GroupOfAssholesAppears_OhThankGod {
-    format("Oh thank God, I don't know what they were going to do or what I did to them... I don't have anything to give you yet! Please, just leave me alone!")
+text gText_GroupOfAssholesAppears_OhThankArceus {
+    format("Oh thank Arceus, I don't know what they were going to do or what I did to them... I don't have anything to give you yet! Please, just leave me alone!")
 }
 
 text gText_GroupOfAssholesAppears_HeMightBeAsking {
@@ -376,8 +376,8 @@ text gText_GroupOfAssholesAppears_DontComeBackAssholes {
     format("Yeah! And don't come back assholes!")
 }
 
-text gText_GroupOfAssholesAppears_Ohmigod {
-    format("Ohmigod thank you so much...")
+text gText_GroupOfAssholesAppears_ThankYou {
+    format("Thank you so much...")
 }
 
 text gText_GroupOfAssholesAppears_AreYouGoing {

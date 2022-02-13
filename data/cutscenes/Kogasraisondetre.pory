@@ -52,7 +52,7 @@ script KogaRaisonDetre_KidsMeetPlayer_Dialogue {
     callnative(ClearMugshot)
     applymovement(RAGHNALL, Common_Movement_FaceLeft)
     waitmovement(0)
-    msgbox(gText_KogaRaisonDetre_OhMyGod)
+    msgbox(gText_KogaRaisonDetre_OhArceus)
     closemessage
     applymovement(RAGHNALL, KogaRaisonDetre_RunUpstairs)
     waitmovement(0)
@@ -396,8 +396,8 @@ text gText_KogaRaisonDetre_GonnaGoGet {
 text gText_KogaRaisonDetre_SorryAboutThat {
     format("Sorry about that. They get… very excited. And don't let Raghnall's demeanor fool you. I think they've watched your battle against Psfleader3 at least 40 times.")
 }
-text gText_KogaRaisonDetre_OhMyGod {
-    format("Oh my god, Dad!")
+text gText_KogaRaisonDetre_OhArceus {
+    format("Oh Arceus, Dad!")
 }
 text gText_KogaRaisonDetre_YourHouseIsBeautiful {
     format("Your house is beautiful. Actually, the entire city is beautiful.")

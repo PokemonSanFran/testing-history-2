@@ -43,7 +43,7 @@ KogaRaisonDetre_KidsMeetPlayer_Dialogue::
 	callnative ClearMugshot
 	applymovement 2, Common_Movement_FaceLeft
 	waitmovement 0
-	msgbox gText_KogaRaisonDetre_OhMyGod
+	msgbox gText_KogaRaisonDetre_OhArceus
 	closemessage
 	applymovement 2, KogaRaisonDetre_RunUpstairs
 	waitmovement 0
@@ -562,8 +562,8 @@ gText_KogaRaisonDetre_SorryAboutThat::
 	.string "watched your battle against\l"
 	.string "Psfleader3 at least 40 times.$"
 
-gText_KogaRaisonDetre_OhMyGod::
-	.string "Oh my god, Dad!$"
+gText_KogaRaisonDetre_OhArceus::
+	.string "Oh Arceus, Dad!$"
 
 gText_KogaRaisonDetre_YourHouseIsBeautiful::
 	.string "Your house is beautiful. Actually, the\n"

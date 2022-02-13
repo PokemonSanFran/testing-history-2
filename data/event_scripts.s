@@ -1148,7 +1148,7 @@ Common_EventScript_LegendaryFlewAway::
     .include "data/cutscenes/BeachBattle.inc"
     .include "data/cutscenes/EnterJasmine.inc"
     .include "data/cutscenes/AndWeMarchOn.inc"
-##  .include "data/cutscenes/EnterPryce.inc"
+    .include "data/cutscenes/EnterPryce.inc"
 ##  .include "data/cutscenes/Battle8.inc"
 ##  .include "data/cutscenes/ANewStrike.inc"
 ##  .include "data/cutscenes/EnterClair.inc"
@@ -1183,6 +1183,7 @@ Common_EventScript_LegendaryFlewAway::
 ##  .include "data/cutscenes/MaybeIFuckedUp.inc"
 ##  .include "data/cutscenes/OkayLetsFixit.inc"
 ##  .include "data/cutscenes/LetsGettheBandBackTogether.inc"
+##  .include "data/cutscenes/LockedOut.inc"
 ##  .include "data/cutscenes/MaskOff.inc"
 ##  .include "data/cutscenes/LetsFixThis.inc"
 ##  .include "data/cutscenes/WarehouseRave.inc"
@@ -1216,3 +1217,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Psfcity2_Gym/scripts.inc"
 
 	.include "data/maps/Psfcity18/scripts.inc"
+
+	.include "data/maps/Psfcity18_Gym/scripts.inc"

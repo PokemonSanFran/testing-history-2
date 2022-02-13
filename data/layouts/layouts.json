@@ -5000,6 +5000,16 @@
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/Psfcity18/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity18/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY18_GYM",
+      "name": "Psfcity18_Gym_Layout",
+      "width": 17,
+      "height": 16,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleFactory",
+      "border_filepath": "data/layouts/Psfcity18_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity18_Gym/map.bin"
     }
   ]
 }

@@ -103,6 +103,7 @@ script EnterPsfleader1_Psfleader1Defeated_Script {
     msgbox(gText_EnterPsfleader1_ThatWasDelicious)
     callnative(ClearMugshot)
     msgbox(gText_EnterPsfleader1_BadgeGet)
+    //TODO Add social media element where the player tweets out a picture of the badge upon getting it. With each badge they get, the number of likes and retweets goes up. Show this on screen while the jingle is playing
     call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM01)
     setvar(VAR_0x8000, MUGSHOT_FALKNER)

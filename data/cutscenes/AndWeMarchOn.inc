@@ -12,6 +12,11 @@ AndWeMarchOn_MoveCameraToParade::
 	return
 
 
+AndWeMarchOn_CreateParadeAudience::
+	createvobject OBJ_EVENT_GFX_BEAUTY, 12, 13, 3, 3, DIR_NORTH
+	end
+
+
 AndWeMarchOn_StartParadeMovement::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, AndWeMarchOn_WatchParade
@@ -22,7 +27,7 @@ AndWeMarchOn_StartParadeMovement::
 	setobjectxy 9, 26, 10
 	setobjectxy 10, 30, 10
 	fadescreen FADE_FROM_BLACK
-	applymovement OBJ_EVENT_ID_CAMERA, AndWeMarchOn_ParadeProcession
+	applymovement OBJ_EVENT_ID_CAMERA, AndWeMarchOn_PanCameraParadeStop
 	applymovement 5, AndWeMarchOn_ParadeProcession
 	applymovement 10, AndWeMarchOn_ParadeProcession
 	applymovement 9, AndWeMarchOn_ParadeProcession
@@ -31,6 +36,7 @@ AndWeMarchOn_StartParadeMovement::
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_WowPeopleHere
 	callnative ClearMugshot
+	closemessage
 	waitmovement 0
 	special RemoveCameraObject
 	msgbox gText_AndWeMarchOn_AndNowSomeWords
@@ -40,6 +46,7 @@ AndWeMarchOn_StartParadeMovement::
 
 
 AndWeMarchOn_Opening_Dialogue::
+	playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
 	applymovement 5, AndWeMarchOn_LookAroundCrowd
 	waitmovement 0
 	playse SE_APPLAUSE
@@ -100,6 +107,7 @@ AndWeMarchOn_StartCutsceneBattle_Script::
 	closemessage
 	msgbox gText_AndWeMarchOn_Woo
 	msgbox gText_AndWeMarchOn_Yeah
+	closemessage
 	applymovement 5, AndWeMarchOn_WalkToLeftSide
 	applymovement 6, AndWeMarchOn_LookAroundCrowd
 	waitmovement 0
@@ -117,6 +125,7 @@ AndWeMarchOn_StartCutsceneBattle_Script::
 
 
 AndWeMarchOn_CutsceneBattleScript::
+	applymovement OBJ_EVENT_ID_CAMERA, AndWeMarchOn_CenterBattleFrame
 	playse SE_BALL_OPEN
 	playse SE_BALL_OPEN
 	waitse
@@ -128,7 +137,6 @@ AndWeMarchOn_CutsceneBattleScript::
 	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
 	waitmoncry
 	playse SE_BALL_OPEN
-	waitse
 	playse SE_BALL_OPEN
 	waitse
 	clearflag FLAG_HIDE_ANDWEMARCHON_BATTLE2
@@ -189,7 +197,7 @@ AndWeMarchOn_PostBattleSpeech_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_ItsBeenAWildYear
-	playse SE_BOO
+	playse SE_APPLAUSE
 	waitse
 	applymovement 5, AndWeMarchOn_WalkToSouthStage
 	waitmovement 0
@@ -235,7 +243,9 @@ AndWeMarchOn_ParadeEnd_Script::
 	removeobject 5
 	removeobject 8
 	setflag FLAG_HIDE_ANDWEMARCHON_PARADE
+	setvar VAR_ROUTE108_STATE, 1
 	special ReturnCameraToPlayer
+	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
@@ -245,9 +255,24 @@ AndWeMarchOn_WatchParade:
 	face_down
 	step_end
 
+AndWeMarchOn_PanCameraParadeStop:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
 AndWeMarchOn_ParadeProcession:
-	walk_right
-	walk_right
 	walk_right
 	walk_right
 	walk_right
@@ -360,6 +385,13 @@ AndWeMarchOn_WalkCameraToParade:
 	walk_left
 	walk_left
 	walk_down
+	walk_down
+	step_end
+
+AndWeMarchOn_CenterBattleFrame:
+	walk_right
+	walk_right
+	walk_right
 	walk_down
 	step_end
 

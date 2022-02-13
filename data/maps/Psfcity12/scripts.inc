@@ -44,7 +44,7 @@ EnterPsfgoodadmin_Intro_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_EnterPsfgoodadmin_ImNotInLine
 	callnative ClearMugshot
-	msgbox gText_EnterPsfgoodadmin_SwearToGod
+	msgbox gText_EnterPsfgoodadmin_SwearToArceus
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterPsfgoodadmin_WaitListen
@@ -453,9 +453,9 @@ gText_EnterPsfgoodadmin_TryingToHelpEverybody::
 gText_EnterPsfgoodadmin_ImNotInLine::
 	.string "I'm not in line, I'm trying to -$"
 
-gText_EnterPsfgoodadmin_SwearToGod::
+gText_EnterPsfgoodadmin_SwearToArceus::
 	.string "Trying to get in front! I know! I swear\n"
-	.string "to God, you follow the rules like\l"
+	.string "to Arceus, you follow the rules like\l"
 	.string "everybody else, or you get nothing.$"
 
 gText_EnterPsfgoodadmin_WaitListen::

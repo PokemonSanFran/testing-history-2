@@ -108,7 +108,7 @@ GroupOfAssholesAppears_Psfchara1Intervene_Dialogue::
 	callnative ClearMugshot
 	applymovement 7, Common_Movement_FaceDown
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_OhThankGod
+	msgbox gText_GroupOfAssholesAppears_OhThankArceus
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, GroupOfAssholesAppears_LookAround_Movement
@@ -161,7 +161,7 @@ GroupOfAssholesAppears_GroupLeaves_Dialogue::
 
 GroupOfAssholesAppears_ExplainTeam_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	msgbox gText_GroupOfAssholesAppears_Ohmigod
+	msgbox gText_GroupOfAssholesAppears_ThankYou
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupOfAssholesAppears_AreYouGoing
@@ -389,7 +389,7 @@ gText_GroupOfAssholesAppears_GiveJelenaBack::
 	.string "Give Jelena back her store!$"
 
 gText_GroupOfAssholesAppears_IDontKnowWho::
-	.string "Oh my god, I don't know who Jelena is or\n"
+	.string "Oh Arceus, I don't know who Jelena is or\n"
 	.string "what you want, or what I did to any of\l"
 	.string "you!$"
 
@@ -417,8 +417,8 @@ gText_GroupOfAssholesAppears_ThisIsntAProtest::
 	.string "straight-up intimidation. Leave him\l"
 	.string "alone!$"
 
-gText_GroupOfAssholesAppears_OhThankGod::
-	.string "Oh thank God, I don't know what they\n"
+gText_GroupOfAssholesAppears_OhThankArceus::
+	.string "Oh thank Arceus, I don't know what they\n"
 	.string "were going to do or what I did to them...\l"
 	.string "I don't have anything to give you yet!\l"
 	.string "Please, just leave me alone!$"
@@ -453,8 +453,8 @@ gText_GroupOfAssholesAppears_YouBothMakeMeSick::
 gText_GroupOfAssholesAppears_DontComeBackAssholes::
 	.string "Yeah! And don't come back assholes!$"
 
-gText_GroupOfAssholesAppears_Ohmigod::
-	.string "Ohmigod thank you so much...$"
+gText_GroupOfAssholesAppears_ThankYou::
+	.string "Thank you so much...$"
 
 gText_GroupOfAssholesAppears_AreYouGoing::
 	.string "Are you going to be okay?$"
