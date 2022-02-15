@@ -60,23 +60,22 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    call(AndWeMarchOn_CutsceneBattleScript)
+    setflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL
+    setflag FLAG_BADGE06_GET
+    giveitem ITEM_MAX_REPEL 2
+    closemessage
 	end
 
 Debug_Script_2::
-    call AndWeMarchOn_StartCutsceneBattle_Script
 	end
 
 Debug_Script_3::
-    call AndWeMarchOn_InviteOntoStage_Dialogue
 	end
 
 Debug_Script_4::
-    call AndWeMarchOn_Opening_Dialogue 
 	end
 
 Debug_Script_5::
-    call AndWeMarchOn_StartParadeMovement 
 	end
 
 Debug_Script_6::

@@ -1,0 +1,27 @@
+script ANewStrike_BreakingNews_Dialogue {
+    clearflag(FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL)
+    lockall
+    pokenavcall(gText_ANewStrike_ConstructionCrew)
+    waitmessage
+    closemessage
+    goto(ANewStrike_PlayerSelf_Dialogue)
+}
+
+script ANewStrike_PlayerSelf_Dialogue {
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ANewStrike_OhDamn)
+        closemessage
+        callnative(ClearMugshot)
+        releaseall
+        end
+}
+    
+text gText_ANewStrike_ConstructionCrew {
+    format("BREAKING NEWS: Psfplace14 construction crew has declared a strike.\p
+     Their demands at this time are unclear, but this puts the upcoming dates of the Psfbadguy League Championship in danger. Anonymous sources claim that Psfgoodteam is responsible for instigating this protest, but we'll have more information as the situation develops.","1_latin",175)
+}
+
+text gText_ANewStrike_OhDamn {
+    format("Oh damn. I wonder what they'll do if the Championship has to be delayed…")
+}

@@ -33,6 +33,7 @@ Battle8_PsfnativerivalWalksOut_Script::
 Battle8_PsfnativerivalWalksOut_Script_1:
 	waitmovement 0
 	closedoor 19, 13
+	waitdooranim
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH

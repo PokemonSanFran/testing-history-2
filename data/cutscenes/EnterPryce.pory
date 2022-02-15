@@ -16,7 +16,6 @@ script EnterPsfleader7_Event_Script {
     switch (var(VAR_GYM_7_STATE)) {
         case 3:
             goto(EnterPsfleader7_FacePlayerBeforeBattle)
-            //goto(EnterPsfleader7_StartGymBattle_Script)
 
         case 4:
                 goto(EnterPsfleader7_PostDefeat1_Dialogue)

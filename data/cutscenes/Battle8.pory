@@ -32,6 +32,7 @@ script Battle8_PsfnativerivalWalksOut_Script {
 
     waitmovement(0)
         closedoor(19,13)
+        waitdooranim
         applymovement(PLAYER,Common_Movement_FaceLeft)
         waitmovement(0)
 

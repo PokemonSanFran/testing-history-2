@@ -5030,6 +5030,36 @@
       "secondary_tileset": "gTileset_BattleFrontierOutsideWest",
       "border_filepath": "data/layouts/Psfplace3/border.bin",
       "blockdata_filepath": "data/layouts/Psfplace3/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE13",
+      "name": "Psfroute13_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute13/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute13/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY5",
+      "name": "Psfcity5_Layout",
+      "width": 20,
+      "height": 28,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Psfcity5/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity5/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY5_GYM",
+      "name": "Psfcity5_Gym_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Psfcity5_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity5_Gym/map.bin"
     }
   ]
 }
