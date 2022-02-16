@@ -1,1 +1,14 @@
-mapscripts Psfroute22_MapScripts {}
+mapscripts Psfroute22_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfroute22_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ROUTE110_STATE, 1: TheStrikeStrikesBack_Intro_Dialogue
+    ]
+}
+
+script Psfroute22_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE110_STATE)){
+        case 1: goto(TheStrikeStrikesBack_ObjectSetup_Script)
+    }
+}

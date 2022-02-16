@@ -1152,7 +1152,7 @@ Common_EventScript_LegendaryFlewAway::
     .include "data/cutscenes/Battle8.inc"
     .include "data/cutscenes/ANewStrike.inc"
     .include "data/cutscenes/EnterClair.inc"
-##  .include "data/cutscenes/TheStrikeStrikesBack.inc"
+    .include "data/cutscenes/TheStrikeStrikesBack.inc"
 ##  .include "data/cutscenes/VSGarbodor.inc"
 ##  .include "data/cutscenes/UnknownAlcatrazCutscene.inc"
 ##  .include "data/cutscenes/OffYouGo.inc"

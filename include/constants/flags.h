@@ -66,11 +66,11 @@
 #define FLAG_HIDE_ANDWEMARCHON_BATTLE2  0x36 // Previously Unused Flag
 #define FLAG_HIDE_ANDWEMARCHON_PARADE 0x37 //Previously Unused Flag
 #define FLAG_HIDE_BATTLE8   0x38 // Previously Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
+#define FLAG_SPAWN_INVISIBLE 0x39 // Previously Unused Flag
+#define FLAG_HIDE_THESTRIKESTRIKESBACK 0x3A // Previously Unused Flag
+#define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM 0x3B // Previously Unused Flag
+#define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN 0x3C // Previously Unused Flag
+#define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL 0x3D // Previously Unused Flag
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag
 #define FLAG_UNUSED_0x03F    0x3F // Unused Flag
 #define FLAG_UNUSED_0x040    0x40 // Unused Flag

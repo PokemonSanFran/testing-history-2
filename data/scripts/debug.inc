@@ -60,10 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    setflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL
-    setflag FLAG_BADGE06_GET
-    giveitem ITEM_MAX_REPEL 2
-    closemessage
+    call(TheStrikeStrikesBack_Congrats_Dialogue)
 	end
 
 Debug_Script_2::

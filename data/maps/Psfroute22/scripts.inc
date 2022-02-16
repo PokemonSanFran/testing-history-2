@@ -1,3 +1,23 @@
 Psfroute22_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfroute22_MapScripts_OnTransition
+	return
+
+Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_ROUTE110_STATE, 1, TheStrikeStrikesBack_Intro_Dialogue
+	.2byte 0
+
+
+Psfroute22_MapScripts_OnTransition::
+	switch VAR_ROUTE110_STATE
+	case 1, Psfroute22_MapScripts_OnTransition_2
+	return
+
+Psfroute22_MapScripts_OnTransition_2:
+	goto TheStrikeStrikesBack_ObjectSetup_Script
+	return
 

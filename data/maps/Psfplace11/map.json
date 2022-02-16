@@ -46,14 +46,14 @@
       "x": 11,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY7",
+      "dest_map": "MAP_PSFROUTE22",
       "dest_warp_id": 0
     },
     {
       "x": 12,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY7",
+      "dest_map": "MAP_PSFROUTE22",
       "dest_warp_id": 0
     }
   ],
