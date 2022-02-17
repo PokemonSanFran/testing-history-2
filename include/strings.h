@@ -3087,4 +3087,7 @@ extern const u8 gText_Psfcity10[];
 extern const u8 gText_Psfcity11[];
 extern const u8 gText_Psfplace13[];
 
+//VS Garbador Choose side
+extern const u8 gText_DontCare[];
+
 #endif // GUARD_STRINGS_H

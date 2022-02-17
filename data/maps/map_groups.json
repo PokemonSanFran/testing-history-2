@@ -521,7 +521,8 @@
     "TerraCave_End",
     "AlteringCave",
     "MeteorFalls_StevensCave",
-    "Psfcave9"
+    "Psfcave9",
+    "Psfplace14_Construction"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

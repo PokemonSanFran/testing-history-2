@@ -5060,6 +5060,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Psfcity5_Gym/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity5_Gym/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE14_CONSTRUCTION",
+      "name": "Psfplace14_Construction_Layout",
+      "width": 20,
+      "height": 25,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattlePalace",
+      "border_filepath": "data/layouts/Psfplace14_Construction/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace14_Construction/map.bin"
     }
   ]
 }
