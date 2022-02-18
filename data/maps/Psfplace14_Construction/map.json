@@ -24,11 +24,63 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "testy",
+      "script": "NULL",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 5,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "VSGarbodor_PsfgoodteamGrunt2_Battle_Script",
+      "flag": "FLAG_DEFEATED_RIVAL_ROUTE_104"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 2,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "VSGarbodor_PsfgoodteamGrunt1_Battle_Script",
+      "flag": "FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 19,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 3,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "VSGarbodor_PsfgoodteamGrunt4_Battle_Script",
+      "flag": "FLAG_DEFEATED_RIVAL_ROUTE_104"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 23,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 3,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "VSGarbodor_PsfgoodteamGrunt3_Battle_Script",
+      "flag": "FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SKITTY",
       "x": 4,
       "y": 5,
       "elevation": 3,
@@ -37,64 +89,12 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VSGarbodor_PsfgoodteamGrunt3",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 3,
-      "y": 12,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "VSGarbodor_PsfgoodteamGrunt1",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-      "x": 15,
-      "y": 5,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "VSGarbodor_PsfgoodteamGrunt4",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 17,
-      "y": 12,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "VSGarbodor_PsfgoodteamGrunt2",
-      "flag": "0"
+      "script": "VSGarbodor_WildEncounter2",
+      "flag": "FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SKITTY",
       "x": 3,
-      "y": 5,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_SKITTY",
-      "x": 4,
       "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -102,12 +102,12 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VSGarbodor_GarbodorEncounter1",
-      "flag": "0"
+      "script": "VSGarbodor_WildEncounter1",
+      "flag": "FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SKITTY",
-      "x": 16,
+      "x": 22,
       "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -115,12 +115,12 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "VSGarbodor_WildEncounter1",
+      "flag": "FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SKITTY",
-      "x": 16,
+      "x": 18,
       "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -128,8 +128,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "VSGarbodor_WildEncounter2",
+      "flag": "FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE"
     }
   ],
   "warp_events": [
@@ -147,198 +147,198 @@
       "x": 9,
       "y": 0,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 1,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 2,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 3,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 4,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 9,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 10,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 11,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 14,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 15,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 16,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 8,
       "y": 17,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 7,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 10,
       "y": 17,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 11,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",
       "x": 12,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE112_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     },
     {
       "type": "trigger",

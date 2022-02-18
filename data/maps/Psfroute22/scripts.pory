@@ -2,6 +2,9 @@ mapscripts Psfroute22_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Psfroute22_MapScripts_OnTransition)
     }
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_TEMP_1 , 0: VSGarbodor_Object_Setup_Script
+    ]
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ROUTE110_STATE, 1: TheStrikeStrikesBack_Intro_Dialogue
     ]

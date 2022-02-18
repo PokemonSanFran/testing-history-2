@@ -1,210 +1,266 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFTRANSRIVAL = 1
 
+script VSGarbodor_Object_Setup_Script {
+        createvobject(OBJ_EVENT_GFX_MAN_1,12,21,19,3,DIR_SOUTH)
+        turnobject(PLAYER,DIR_NORTH)
+}
+
 script VSGarbodor_RandomSide_Script {
     random(2)
-    goto(VSGarbodor_ChooseSide_Script)
+        goto(VSGarbodor_ChooseSide_Script)
 }
 
 script VSGarbodor_Scouting_Dialogue {
     lockall
-applymovement(PLAYER,Common_Movement_FaceRight)
-waitmovement(0)
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_IDidSomeScouting)
-multichoicedefault(18,6,MULTI_GARBADOR_CHOOSE,3,TRUE)
-goto(VSGarbodor_ChooseSide_Script)
+        applymovement(PLAYER,Common_Movement_FaceRight)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_IDidSomeScouting)
+        multichoicedefault(18,6,MULTI_GARBADOR_CHOOSE,3,TRUE)
+        goto(VSGarbodor_ChooseSide_Script)
 }
 
 script VSGarbodor_ChooseSide_Script {
-switch (var(VAR_RESULT)){
-    case 0: goto(VSGarbodor_ChooseLeft_Script)
-    case 1: goto(VSGarbodor_ChooseRight_Script)
-    case 2: goto(VSGarbodor_RandomSide_Script)
+    switch (var(VAR_RESULT)){
+        case 0: goto(VSGarbodor_ChooseLeft_Script)
+        case 1: goto(VSGarbodor_ChooseRight_Script)
+        case 2: goto(VSGarbodor_RandomSide_Script)
     }
 }
 
 script VSGarbodor_ChooseLeft_Script {
-setvar(VAR_ROUTE111_STATE,1)
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_ThenIllTakeTheRight)
-callnative(ClearMugshot)
-closemessage
+    setvar(VAR_ROUTE111_STATE,1)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_ThenIllTakeTheRight)
+        callnative(ClearMugshot)
+        closemessage
 
-applymovement(PLAYER,VSGarbodor_WalkTowardsLeftSide)
-applymovement(PSFTRANSRIVAL,VSGarbodor_WalkTowardsLeftSide)
-waitmovement(0)
-releaseall
-end
+        applymovement(PLAYER,VSGarbodor_WalkTowardsLeftSide)
+        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkTowardsLeftSide)
+        waitmovement(0)
+        releaseall
+        end
 }
 
 script VSGarbodor_ChooseRight_Script {
-setvar(VAR_ROUTE111_STATE,1)
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_CoolIWanted)
-callnative(ClearMugshot)
-closemessage
+    setvar(VAR_ROUTE111_STATE,2)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_CoolIWanted)
+        callnative(ClearMugshot)
+        closemessage
 
-applymovement(PLAYER,VSGarbodor_WalkTowardsRightSide)
-applymovement(PSFTRANSRIVAL,VSGarbodor_WalkTowardsRightSide)
-waitmovement(0)
-releaseall
-end
+        applymovement(PLAYER,VSGarbodor_WalkTowardsRightSide)
+        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkTowardsRightSide)
+        waitmovement(0)
+        releaseall
+        end
 }
 
-//After walking for a bit, the player runs into Trainer 1 / Trainer 3, guarding the first Garbordor.
-
-script VSGarbodor_PsfgoodteamGrunt1 {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_VSGarbodor_ScrewThisStadium,gText_VSGarbodor_DamnTheyWereRight)
+script VSGarbodor_PsfgoodteamGrunt1_Battle_Script {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_5, gText_VSGarbodor_ScrewThisStadium,gText_VSGarbodor_DamnTheyWereRight,VSGarbodor_PsfgoodteamGrunt1_Battle_Script)
         msgbox(gText_VSGarbodor_WelpIDidWhat,MSGBOX_AUTOCLOSE)
-        fadescreen(FADE_TO_BLACK)
-        removeobject(3)
-        fadescreen(FADE_FROM_BLACK)
+        setflag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY)
+        call(VSGarbordor_RemoveGrunt)
         end
 }
 
-script VSGarbodor_PsfgoodteamGrunt3 {
-        trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare)
+script VSGarbodor_PsfgoodteamGrunt3_Battle_Script {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare,VSGarbodor_PsfgoodteamGrunt3_Battle_Script)
         msgbox(gText_VSGarbodor_OhThankGiratina,MSGBOX_AUTOCLOSE)
-        fadescreen(FADE_TO_BLACK)
-        removeobject(5)
-        fadescreen(FADE_FROM_BLACK)
+        setflag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY)
+        call(VSGarbordor_RemoveGrunt)
         end
 }
 
-script VSGarbodor_PsfgoodteamGrunt2 {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_2,gText_VSGarbodor_RightOnCue,gText_VSGarbodor_HmmIGuess)
+script VSGarbodor_PsfgoodteamGrunt2_Battle_Script  {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_2,gText_VSGarbodor_RightOnCue,gText_VSGarbodor_HmmIGuess,VSGarbodor_PsfgoodteamGrunt2_Battle_Script)
         msgbox(gText_VSGarbodor_BeingBad,MSGBOX_AUTOCLOSE)
-        fadescreen(FADE_TO_BLACK)
-        removeobject(2)
-        fadescreen(FADE_FROM_BLACK)
+        setflag(FLAG_DEFEATED_RIVAL_ROUTE_104)
+        call(VSGarbordor_RemoveGrunt)
         end
 }
 
-script VSGarbodor_PsfgoodteamGrunt4 {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_4,gText_VSGarbodor_LookAtYou,gText_VSGarbodor_ThatsRight)
+script VSGarbodor_PsfgoodteamGrunt4_Battle_Script  {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_4,gText_VSGarbodor_LookAtYou,gText_VSGarbodor_ThatsRight,VSGarbodor_PsfgoodteamGrunt4_Battle_Script)
         msgbox(gText_VSGarbodor_HaveFunCleaning,MSGBOX_AUTOCLOSE)
-        fadescreen(FADE_TO_BLACK)
-        removeobject(4)
-        fadescreen(FADE_FROM_BLACK)
+        setflag(FLAG_DEFEATED_RIVAL_ROUTE_104)
+        call(VSGarbordor_RemoveGrunt)
         end
 }
 
-script VSGarbodor_GarbodorEncounter1 {
-    lock
-    faceplayer
-    setwildbattle(SPECIES_GARBODOR, 40, ITEM_NONE)
-    waitse
-    playmoncry(SPECIES_GARBODOR,CRY_MODE_ENCOUNTER)
-    delay(40)
-    waitmoncry
-    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
-    dowildbattle
-    clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
-    specialvar(VAR_RESULT,GetBattleOutcome)
+script VSGarbordor_RemoveGrunt {
+    fadescreen(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        fadescreen(FADE_FROM_BLACK)
+}
 
-    switch (var(VAR_RESULT)){
-        case B_OUTCOME_WON:
-        case B_OUTCOME_RAN:
-        case B_OUTCOME_PLAYER_TELEPORTED:
-    }
-    setflag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE)
+script VS_Garbodor_CoreEncounter_Script {
+        call(Common_EventScript_SaveGame)
+    faceplayer
+        setwildbattle(SPECIES_GARBODOR, 40, ITEM_NONE)
+        waitse
+        playmoncry(SPECIES_GARBODOR,CRY_MODE_ENCOUNTER)
+        msgbox(gText_VSGarbodor_Kuh)
+        delay(40)
+        waitmoncry
+        setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+        dowildbattle
+        clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+        specialvar(VAR_RESULT,GetBattleOutcome)
+}
+
+script VSGarbodor_WildEncounter1 {
+    lock
+        call(VS_Garbodor_CoreEncounter_Script)
+        switch (var(VAR_RESULT)){
+            case B_OUTCOME_WON: call(VSGarbodor_DefeatedGarbodor1_Script)
+        }
     release
-    end
+        end
+}
+
+script VSGarbodor_WildEncounter2 {
+    lock
+        call(VS_Garbodor_CoreEncounter_Script)
+        switch (var(VAR_RESULT)){
+            case B_OUTCOME_WON: call(VSGarbodor_DefeatedGarbodor2_Script)
+        }
+    release
+        end
+}
+
+script VSGarbodor_DefeatedGarbodor1_Script {
+    setflag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE)
+        goto(Common_EventScript_RemoveStaticPokemon)
+}
+
+script VSGarbodor_DefeatedGarbodor2_Script {
+    setflag(FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE)
+        goto(Common_EventScript_RemoveStaticPokemon)
+}
+
+script VSGarbodor_PreventCrossingSides_Script {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_FeelingLonely)
+        closemessage
+        callnative(ClearMugshot)
+
+    if (var(VAR_ROUTE111_STATE) == 2){
+        applymovement(PLAYER,Common_Movement_WalkRight)
+    } else {
+        applymovement(PLAYER,Common_Movement_WalkLeft)
+    }
+    waitmovement(0)
+        releaseall
+        end
 }
     
-script testy {
-//The screen fades to black and Trainer 1 / 3 disappears.
 
-//The player approaches the first Garbodor. The game prompts a save before interacting.
-
-//After the Garbodor is captured or defeated, their overworld sprite disappears.
-
-//The screen fades to black and Trainer 2 / 4 disappears.
-
-//The player approaches the second Garbodor. The game prompts a save before interacting.
-
-msgbox(gText_VSGarbodor_Kuh)
-
-//After the Garbodor is captured or defeated, their overworld sprite disappears.
-
-//Player tries to crossover to the opposite side:
-
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_FeelingLonely)
-
-//After defeating both Garbodor:
-
-//Psftransrival walks up to you.
-
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_GodYouWereTaking)
-
-//Psftransrival looks around.
-
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_WhateverMineWereEasy)
-
-//Screen fades to black.
-
-
-//EXT. PSFPLACE14
-
-//Screen fades from black. Psfbadadmin, Psfbadboss, Psftransrival and the player are standing in front of the construction site. Several police officers are walking behind Psfgoodteam members, as the group watches them walk by. The two trainers turn back to Psfbadboss.
-
-setvar(VAR_0x8000, MUGSHOT_GHETSIS)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_AsWeWereNegotiating)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_DoneLikeYouGuys)
-
-setvar(VAR_0x8000, MUGSHOT_GHETSIS)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_ThankYouBoth)
-
-//Psfbadboss and Psfbadadmin face each other. Psftransrival and the player face each other.
-
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_YeahImBeat)
-
-//The player may select Yes or No.
-
-//If the player selects No:
-
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_WeirdButOkay)
-
-//Psftransrival uses Fly and leaves.
-
-//If the player selects Yes:
-
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_LetsBounce)
-
-//Screen fades to black.
-
-
-//INT. PSFCITY8 COMPOUND
-
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_ImGonnaGet)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_VSGarbodor_HehWellSee)
+script VSGarbodor_CheckDefeated_Script {
+    if (flag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) && flag(FLAG_DEFEATED_RIVAL_ROUTE_104) && flag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE) && flag (FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE)) {
+        goto(VSGarbodor_DefeatedAll_Dialogue)
     }
+}
+
+script VSGarbodor_DefeatedAll_Dialogue {
+    setvar(VAR_ROUTE112_STATE,1)
+    
+    if (var(VAR_ROUTE111_STATE) == 2){
+        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkCenterToRight)
+    } else {
+        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkCenterToLeft)
+    }
+    waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_GodYouWereTaking)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(PSFTRANSRIVAL,VSGarbodor_LookAround)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_WhateverMineWereEasy)
+        closemessage
+        callnative(ClearMugshot)
+        goto(VSGarbodor_WarpAndArrest_Script)
+}
+
+script VSGarbodor_WarpAndArrest_Script {
+        fadescreen(FADE_TO_BLACK)
+        warpsilent(MAP_PSFROUTE22,255,21,21)
+        fadescreen(FADE_FROM_BLACK)
+        end
+}
+
+script try {
+
+        applymovement(4,VSGarbodor_GruntAArrested)
+        applymovement(5,VSGarbodor_GruntBArrested)
+
+
+
+
+        //Screen fades to black.
+
+
+        //EXT. PSFPLACE14
+
+        //Screen fades from black. Psfbadadmin, Psfbadboss, Psftransrival and the player are standing in front of the construction site. Several police officers are walking behind Psfgoodteam members, as the group watches them walk by. The two trainers turn back to Psfbadboss.
+
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_AsWeWereNegotiating)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_DoneLikeYouGuys)
+
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_ThankYouBoth)
+
+        //Psfbadboss and Psfbadadmin face each other. Psftransrival and the player face each other.
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_YeahImBeat)
+
+        //The player may select Yes or No.
+
+        //If the player selects No:
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_WeirdButOkay)
+
+        //Psftransrival uses Fly and leaves.
+
+        //If the player selects Yes:
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_LetsBounce)
+
+        //Screen fades to black.
+
+
+        //INT. PSFCITY8 COMPOUND
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_ImGonnaGet)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_HehWellSee)
+}
 //The player regains control.
 
 movement VSGarbodor_WalkTowardsLeftSide {
@@ -215,114 +271,134 @@ movement VSGarbodor_WalkTowardsRightSide {
     step_end
 }
 
+movement VSGarbodor_LookAround {
+    step_end
+}
+
+movement VSGarbodor_WalkCenterToRight {
+    step_end
+}
+
+movement VSGarbodor_WalkCenterToLeft {
+    step_end
+}
+
+movement VSGarbodor_GruntAArrested {
+    step_end
+}
+
+movement VSGarbodor_GruntBArrested {
+    step_end
+}
+
 
 text gText_VSGarbodor_IDidSomeScouting {
-    format("I did some scouting while waiting for you. Both sides have two Garbordor and two Trainers guarding ‘em. Do you care which side you take?")
-    }
+    format("I did some scouting while waiting for you. Both sides have two Garbodor and two Trainers guarding ‘em. Do you care which side you take?")
+}
 
 text gText_VSGarbodor_ThenIllTakeTheRight {
     format("Then I'll take the right side. See you on the other side. Don't take too long!")
-    }
+}
 
 text gText_VSGarbodor_CoolIWanted {
     format("Cool, I wanted the left side anyway.  See you on the other side. Don't take too long!")
-    }
+}
 
 text gText_VSGarbodor_ScrewThisStadium {
     format("Heh, we're Psfgoodteam! Screw this stadium and screw Psfbadguy!")
-    }
+}
 
 text gText_VSGarbodor_IsTheName {
     format("Psfgoodteam is the name, and shutting this shit down is our game!")
-    }
+}
 
 text gText_VSGarbodor_DamnTheyWereRight {
     format("Damn, they were right, you're strong…")
-    }
+}
 
 text gText_VSGarbodor_TheyDidntPrepare {
     format("They didn't prepare us for this!")
-    }
+}
 
 text gText_VSGarbodor_WelpIDidWhat {
     format("Welp, I did what I could! Good luck with that stinky shit.")
-    }
+}
 
 text gText_VSGarbodor_OhThankGiratina {
     format("Oh thank Giratina, I can go back to the office now…")
-    }
+}
 
 text gText_VSGarbodor_Kuh {
     format("Kuh!")
-    }
+}
 
 text gText_VSGarbodor_RightOnCue {
     format("Right on cue, here come the heroes…")
-    }
+}
 
 text gText_VSGarbodor_LookAtYou {
     format("Look at you, thinking you're making any difference!")
-    }
+}
 
 text gText_VSGarbodor_HmmIGuess {
     format("Hmm, I guess I get to be the bad guy today!")
-    }
+}
 
 text gText_VSGarbodor_ThatsRight {
     format("That's right, dance puppets!")
-    }
+}
 
 text gText_VSGarbodor_BeingBad {
     format("Being bad was fun for a day!")
-    }
+}
 
 text gText_VSGarbodor_HaveFunCleaning {
     format("Have fun cleaning up after us, kid.")
-    }
+}
 
 text gText_VSGarbodor_FeelingLonely {
     format("Feeling lonely over there? I got this side, you handle that side!")
-    }
+}
 
 text gText_VSGarbodor_GodYouWereTaking {
     format("God, you were taking forever. They don't teach efficiency in Orre, do they?")
-    }
+}
 
 text gText_VSGarbodor_WhateverMineWereEasy {
     format("Whatever. Mine were easy, they just both used Self-Destruct before I could really get a move in. I already texted Psfbadadmin, he said meet in front of the construction site.")
-    }
+}
 
 text gText_VSGarbodor_AsWeWereNegotiating {
     format("As we were negotiating, things started to get a little rowdy. The police aren't taking any chances this time, so they've halted escalation… for now. How's the Psfbadguy Task Force?")
-    }
+}
 
 text gText_VSGarbodor_DoneLikeYouGuys {
     format("Done. Like you guys said, Psfgoodteam up to their shit as usual.")
-    }
+}
 
 text gText_VSGarbodor_ThankYouBoth {
     format("Thank you both, and I'm sorry you had to get dragged into this. I'll work with our team to figure out what to do about the Championship. I think you two should head back to the Compound for now.")
-    }
+}
 
 text gText_VSGarbodor_YeahImBeat {
     format("Yeah, I'm beat. Do you want a ride back to the Compound?")
-    }
+}
 
 text gText_VSGarbodor_WeirdButOkay {
     format("Weird, but okay. I'll see you around.")
-    }
+}
 
 text gText_VSGarbodor_LetsBounce {
     format("Let's bounce.")
-    }
+}
 
 text gText_VSGarbodor_ImGonnaGet {
     format("I'm gonna get some sleep. Good shit on finishing your Badges. Can't wait to kick your ass at the Championship… whenever that is.")
-    }
+}
 
 text gText_VSGarbodor_HehWellSee {
     format("Heh, we'll see. Good night.")
-    }
+}
 
 
 

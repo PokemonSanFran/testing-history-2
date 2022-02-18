@@ -40,7 +40,7 @@ TheStrikeStrikesBack_FlyOutFrame::
 	waitfieldeffect FLDEFF_NPCFLY_OUT
 	setflag FLAG_SPAWN_INVISIBLE
 	warpsilent MAP_PSFROUTE22, 255, 21, 25
-	setflag 0x3D
+	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL
 	return
 
 
