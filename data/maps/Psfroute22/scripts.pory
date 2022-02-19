@@ -13,5 +13,6 @@ mapscripts Psfroute22_MapScripts {
 script Psfroute22_MapScripts_OnTransition {
     switch (var(VAR_ROUTE110_STATE)){
         case 1: goto(TheStrikeStrikesBack_ObjectSetup_Script)
+        case 2: goto(VSGarbodor_Arrest_ObjectSetup_Script)
     }
 }

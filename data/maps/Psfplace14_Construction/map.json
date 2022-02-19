@@ -89,7 +89,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VSGarbodor_WildEncounter2",
+      "script": "VS_Garbodor_CoreEncounter_Script",
       "flag": "FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE"
     },
     {
@@ -102,7 +102,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VSGarbodor_WildEncounter1",
+      "script": "VS_Garbodor_CoreEncounter_Script",
       "flag": "FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE"
     },
     {
@@ -115,7 +115,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VSGarbodor_WildEncounter1",
+      "script": "VS_Garbodor_CoreEncounter_Script",
       "flag": "FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE"
     },
     {
@@ -128,7 +128,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VSGarbodor_WildEncounter2",
+      "script": "VS_Garbodor_CoreEncounter_Script",
       "flag": "FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE"
     }
   ],
@@ -144,7 +144,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 0,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -153,7 +153,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 1,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -162,7 +162,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 2,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -171,7 +171,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 3,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -180,7 +180,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 4,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -189,7 +189,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 5,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -198,7 +198,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 6,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -207,7 +207,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 7,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -216,7 +216,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 8,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -225,7 +225,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 9,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -234,7 +234,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 10,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -243,7 +243,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 11,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -252,7 +252,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 12,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -261,7 +261,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 13,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -270,7 +270,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 14,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -279,7 +279,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 10,
       "y": 15,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -288,7 +288,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 11,
       "y": 16,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -315,7 +315,7 @@
     },
     {
       "type": "trigger",
-      "x": 10,
+      "x": 12,
       "y": 17,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -324,16 +324,7 @@
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 18,
-      "elevation": 0,
-      "var": "VAR_ROUTE112_STATE",
-      "var_value": "0",
-      "script": "VSGarbodor_PreventCrossingSides_Script"
-    },
-    {
-      "type": "trigger",
-      "x": 12,
+      "x": 13,
       "y": 18,
       "elevation": 0,
       "var": "VAR_ROUTE112_STATE",
@@ -348,6 +339,15 @@
       "var": "VAR_ROUTE111_STATE",
       "var_value": "0",
       "script": "VSGarbodor_Scouting_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_ROUTE112_STATE",
+      "var_value": "0",
+      "script": "VSGarbodor_PreventCrossingSides_Script"
     }
   ],
   "bg_events": [

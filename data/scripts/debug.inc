@@ -60,10 +60,6 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    setflag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY)
-    setflag(FLAG_DEFEATED_RIVAL_ROUTE_104)
-    setflag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE)
-    setflag(FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE)
     call VSGarbodor_CheckDefeated_Script 
 	end
 

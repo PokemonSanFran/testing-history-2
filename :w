@@ -9,7 +9,7 @@ const POLICEB = 13
 const PSFBADBOSS = 14
 
 script VSGarbodor_Object_Setup_Script {
-    createvobject(OBJ_EVENT_GFX_MAN_1,12,21,19,3,DIR_SOUTH)
+        createvobject(OBJ_EVENT_GFX_MAN_1,12,21,19,3,DIR_SOUTH)
         turnobject(PLAYER,DIR_NORTH)
 }
 
@@ -45,12 +45,9 @@ script VSGarbodor_ChooseLeft_Script {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkFurtherRight)
-        delay(60)
         applymovement(PLAYER,VSGarbodor_WalkTowardsLeftSide)
+        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkTowardsLeftSide)
         waitmovement(0)
-        setobjectxy(PSFTRANSRIVAL,23,3)
-        setobjectxyperm(PSFTRANSRIVAL,23,3)
         releaseall
         end
 }
@@ -63,12 +60,9 @@ script VSGarbodor_ChooseRight_Script {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkFurtherLeft)
-        delay(60)
         applymovement(PLAYER,VSGarbodor_WalkTowardsRightSide)
+        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkTowardsRightSide)
         waitmovement(0)
-        setobjectxy(PSFTRANSRIVAL,3,8)
-        setobjectxyperm(PSFTRANSRIVAL,3,8)
         releaseall
         end
 }
@@ -76,34 +70,44 @@ script VSGarbodor_ChooseRight_Script {
 script VSGarbodor_PsfgoodteamGrunt1_Battle_Script {
     trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_5, gText_VSGarbodor_ScrewThisStadium,gText_VSGarbodor_DamnTheyWereRight,VSGarbodor_PsfgoodteamGrunt1_Battle_Script)
         msgbox(gText_VSGarbodor_WelpIDidWhat,MSGBOX_AUTOCLOSE)
-        goto(VSGarbodor_RemoveGrunt)
+        setflag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY)
+        call(VSGarbordor_RemoveGrunt)
         end
 }
 
 script VSGarbodor_PsfgoodteamGrunt3_Battle_Script {
     trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare,VSGarbodor_PsfgoodteamGrunt3_Battle_Script)
         msgbox(gText_VSGarbodor_OhThankGiratina,MSGBOX_AUTOCLOSE)
-        goto(VSGarbodor_RemoveGrunt)
+        setflag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY)
+        call(VSGarbordor_RemoveGrunt)
         end
 }
 
 script VSGarbodor_PsfgoodteamGrunt2_Battle_Script  {
     trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_2,gText_VSGarbodor_RightOnCue,gText_VSGarbodor_HmmIGuess,VSGarbodor_PsfgoodteamGrunt2_Battle_Script)
         msgbox(gText_VSGarbodor_BeingBad,MSGBOX_AUTOCLOSE)
-        goto(VSGarbodor_RemoveGrunt)
+        setflag(FLAG_DEFEATED_RIVAL_ROUTE_104)
+        call(VSGarbordor_RemoveGrunt)
         end
 }
 
 script VSGarbodor_PsfgoodteamGrunt4_Battle_Script  {
     trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_4,gText_VSGarbodor_LookAtYou,gText_VSGarbodor_ThatsRight,VSGarbodor_PsfgoodteamGrunt4_Battle_Script)
         msgbox(gText_VSGarbodor_HaveFunCleaning,MSGBOX_AUTOCLOSE)
-        goto(VSGarbodor_RemoveGrunt)
+        setflag(FLAG_DEFEATED_RIVAL_ROUTE_104)
+        call(VSGarbordor_RemoveGrunt)
         end
 }
 
+script VSGarbordor_RemoveGrunt {
+    fadescreen(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        fadescreen(FADE_FROM_BLACK)
+}
+
 script VS_Garbodor_CoreEncounter_Script {
-    call(Common_EventScript_SaveGame)
-        faceplayer
+        call(Common_EventScript_SaveGame)
+    faceplayer
         setwildbattle(SPECIES_GARBODOR, 40, ITEM_NONE)
         waitse
         playmoncry(SPECIES_GARBODOR,CRY_MODE_ENCOUNTER)
@@ -114,29 +118,36 @@ script VS_Garbodor_CoreEncounter_Script {
         dowildbattle
         clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
         specialvar(VAR_RESULT,GetBattleOutcome)
+}
+
+script VSGarbodor_WildEncounter1 {
+    lock
+        call(VS_Garbodor_CoreEncounter_Script)
         switch (var(VAR_RESULT)){
-            case B_OUTCOME_WON: goto(VSGarbodor_RemoveGrunt)
+            case B_OUTCOME_WON: call(VSGarbodor_DefeatedGarbodor1_Script)
         }
     release
         end
 }
 
-script VSGarbodor_RemoveGrunt {
-    lockall
-        closemessage
-        fadescreenswapbuffers(FADE_TO_BLACK)
-        removeobject(VAR_LAST_TALKED)
-        fadescreenswapbuffers(FADE_FROM_BLACK)
-        call(VSGarbodor_CheckDefeated_Script)
-        releaseall
+script VSGarbodor_WildEncounter2 {
+    lock
+        call(VS_Garbodor_CoreEncounter_Script)
+        switch (var(VAR_RESULT)){
+            case B_OUTCOME_WON: call(VSGarbodor_DefeatedGarbodor2_Script)
+        }
+    release
         end
 }
 
-script VSGarbodor_CheckDefeated_Script {
-    if (flag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) && flag(FLAG_DEFEATED_RIVAL_ROUTE_104) && flag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE) && flag (FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE)) {
-        goto(VSGarbodor_DefeatedAll_Dialogue)
-    }
-    end
+script VSGarbodor_DefeatedGarbodor1_Script {
+    setflag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE)
+        goto(Common_EventScript_RemoveStaticPokemon)
+}
+
+script VSGarbodor_DefeatedGarbodor2_Script {
+    setflag(FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE)
+        goto(Common_EventScript_RemoveStaticPokemon)
 }
 
 script VSGarbodor_PreventCrossingSides_Script {
@@ -147,24 +158,31 @@ script VSGarbodor_PreventCrossingSides_Script {
         closemessage
         callnative(ClearMugshot)
 
-        if (var(VAR_ROUTE111_STATE) == 2){
-            applymovement(PLAYER,Common_Movement_WalkRight)
-        } else {
-            applymovement(PLAYER,Common_Movement_WalkLeft)
-        }
+    if (var(VAR_ROUTE111_STATE) == 2){
+        applymovement(PLAYER,Common_Movement_WalkRight)
+    } else {
+        applymovement(PLAYER,Common_Movement_WalkLeft)
+    }
     waitmovement(0)
         releaseall
         end
 }
+    
+
+script VSGarbodor_CheckDefeated_Script {
+    if (flag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) && flag(FLAG_DEFEATED_RIVAL_ROUTE_104) && flag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE) && flag (FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE)) {
+        goto(VSGarbodor_DefeatedAll_Dialogue)
+    }
+}
 
 script VSGarbodor_DefeatedAll_Dialogue {
     setvar(VAR_ROUTE112_STATE,1)
-
-        if (var(VAR_ROUTE111_STATE) == 2){
-            applymovement(PSFTRANSRIVAL,VSGarbodor_WalkCenterToRight)
-        } else {
-            applymovement(PSFTRANSRIVAL,VSGarbodor_WalkCenterToLeft)
-        }
+    
+    if (var(VAR_ROUTE111_STATE) == 2){
+        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkCenterToRight)
+    } else {
+        applymovement(PSFTRANSRIVAL,VSGarbodor_WalkCenterToLeft)
+    }
     waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -183,40 +201,40 @@ script VSGarbodor_DefeatedAll_Dialogue {
 
 script VSGarbodor_Arrest_ObjectSetup_Script {
     clearflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM)
-        clearflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN)
-        setobjectxy(GOODTEAMA,28,19)
-        setobjectxy(GOODTEAMB,28,20)
-        setobjectxy(PSFTRANSRIVAL,20,22)
-        setobjectxy(PSFBADADMIN,21,22)
-        setobjectxyperm(GOODTEAMA,28,19)
-        setobjectxyperm(GOODTEAMB,28,20)
-        setobjectxyperm(PSFTRANSRIVAL,20,22)
-        setobjectxyperm(PSFBADADMIN,21,22)
+    clearflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN)
+    setobjectxy(GOODTEAMA,28,19)
+    setobjectxy(GOODTEAMB,28,20)
+    setobjectxy(PSFTRANSRIVAL,20,22)
+    setobjectxy(PSFBADADMIN,21,22)
+    setobjectxyperm(GOODTEAMA,28,19)
+    setobjectxyperm(GOODTEAMB,28,20)
+    setobjectxyperm(PSFTRANSRIVAL,20,22)
+    setobjectxyperm(PSFBADADMIN,21,22)
 }
 
 script VSGarbodor_WarpAndArrest_Script {
     fadescreen(FADE_TO_BLACK)
-        warpsilent(MAP_PSFROUTE22,255,21,21)
-        fadescreen(FADE_FROM_BLACK)
-        applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
-        applymovement(PSFBADBOSS,Common_Movement_FaceUp)
-        applymovement(PSFBADADMIN,Common_Movement_FaceUp)
-        applymovement(PLAYER,Common_Movement_FaceUp)
-        waitmovement(0)
-        applymovement(GOODTEAMA,VSGarbodor_PerpWalk)
-        applymovement(GOODTEAMB,VSGarbodor_PerpWalk)
-        applymovement(POLICEA,VSGarbodor_PerpWalk)
-        applymovement(POLICEB,VSGarbodor_PerpWalk)
-        waitmovement(0)
-        setflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM)
-        applymovement(PSFBADBOSS,Common_Movement_FaceDown)
-        applymovement(PLAYER,Common_Movement_FaceDown)
-        waitmovement(0)
-        goto(VSGarbodor_Negotiating_Dialogue)
+    warpsilent(MAP_PSFROUTE22,255,21,21)
+    fadescreen(FADE_FROM_BLACK)
+    applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+    applymovement(PSFBADBOSS,Common_Movement_FaceUp)
+    applymovement(PSFBADADMIN,Common_Movement_FaceUp)
+    applymovement(PLAYER,Common_Movement_FaceUp)
+    waitmovement(0)
+    applymovement(GOODTEAMA,VSGarbodor_PerpWalk)
+    applymovement(GOODTEAMB,VSGarbodor_PerpWalk)
+    applymovement(POLICEA,VSGarbodor_PerpWalk)
+    applymovement(POLICEB,VSGarbodor_PerpWalk)
+    waitmovement(0)
+    setflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM)
+    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    waitmovement(0)
+    goto(VSGarbodor_Negotiating_Dialogue)
 }
 
 script VSGarbodor_Negotiating_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_AsWeWereNegotiating)
 
@@ -235,35 +253,34 @@ script VSGarbodor_Negotiating_Dialogue {
         msgbox(gText_VSGarbodor_YeahImBeat,MSGBOX_YESNO)
 
         if (var(VAR_RESULT) == NO){
-
-            setvar(VAR_0x8000, MUGSHOT_BIANCA)
-                callnative(DrawMugshot)
-                msgbox(gText_VSGarbodor_WeirdButOkay)
-                call(TheStrikeStrikesBack_FlyOutFrame)
-                releaseall
-                end
+        
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_WeirdButOkay)
+        call(TheStrikeStrikesBack_FlyOutFrame)
+        releaseall
+        end
         } else {
 
-            setvar(VAR_0x8000, MUGSHOT_BIANCA)
-                callnative(DrawMugshot)
-                msgbox(gText_VSGarbodor_LetsBounce)
-                callnative(ClearMugshot)
-                closemessage
-                call(VSGarbodor_ReturnToTheCompound_Script)
-                releaseall
-                end
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbodor_LetsBounce)
+        callantive(ClearMugshot)
+        closemessage
+        call(VSGarbodor_ReturnToTheCompound_Script)
+        releaseall
+        end
         }
-}
 
 script VSGarbodor_ReturnToTheCompound_Script {
     fadescreen(FADE_TO_BLACK)
-        warpsilent(MAP_PSFCITY8_COMPOUND_1F,8,8)
-        fadescreen(FADE_FROM_BLACK)
-        goto(VSGarbodor_ReturnToTheCompound_Dialogue)
+    warpsilent(MAP_PSFCITY8_COMPOUND_1F,8,8)
+    fadescreen(FADE_FROM_BLACK)
+    goto(VSGarbodor_ReturnToTheCompound_Dialogue)
 }
 
 script VSGarbodor_ReturnToTheCompound_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_ImGonnaGet)
 
@@ -283,27 +300,11 @@ script VSGarbodor_ReturnToTheCompound_Dialogue {
 }
 
 movement VSGarbodor_WalkTowardsLeftSide {
-    walk_up * 8
-        walk_left * 2
-        step_end
-}
-
-movement VSGarbodor_WalkFurtherLeft {
-    walk_up * 15
-        walk_left * 8
-        step_end
-}
-
-movement VSGarbodor_WalkFurtherRight {
-    walk_up * 8
-        walk_right * 8
-        step_end
+    step_end
 }
 
 movement VSGarbodor_WalkTowardsRightSide {
-    walk_up * 8
-        walk_right * 2
-        step_end
+    step_end
 }
 
 movement VSGarbodor_LookAround {

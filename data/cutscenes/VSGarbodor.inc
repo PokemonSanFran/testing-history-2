@@ -49,9 +49,12 @@ VSGarbodor_ChooseLeft_Script::
 	msgbox gText_VSGarbodor_ThenIllTakeTheRight
 	callnative ClearMugshot
 	closemessage
+	applymovement 1, VSGarbodor_WalkFurtherRight
+	delay 60
 	applymovement OBJ_EVENT_ID_PLAYER, VSGarbodor_WalkTowardsLeftSide
-	applymovement 1, VSGarbodor_WalkTowardsLeftSide
 	waitmovement 0
+	setobjectxy 1, 23, 3
+	setobjectxyperm 1, 23, 3
 	releaseall
 	end
 
@@ -63,9 +66,12 @@ VSGarbodor_ChooseRight_Script::
 	msgbox gText_VSGarbodor_CoolIWanted
 	callnative ClearMugshot
 	closemessage
+	applymovement 1, VSGarbodor_WalkFurtherLeft
+	delay 60
 	applymovement OBJ_EVENT_ID_PLAYER, VSGarbodor_WalkTowardsRightSide
-	applymovement 1, VSGarbodor_WalkTowardsRightSide
 	waitmovement 0
+	setobjectxy 1, 3, 8
+	setobjectxyperm 1, 3, 8
 	releaseall
 	end
 
@@ -73,40 +79,29 @@ VSGarbodor_ChooseRight_Script::
 VSGarbodor_PsfgoodteamGrunt1_Battle_Script::
 	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_5, gText_VSGarbodor_ScrewThisStadium, gText_VSGarbodor_DamnTheyWereRight, VSGarbodor_PsfgoodteamGrunt1_Battle_Script
 	msgbox gText_VSGarbodor_WelpIDidWhat, MSGBOX_AUTOCLOSE
-	setflag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY
-	call VSGarbordor_RemoveGrunt
+	goto VSGarbodor_RemoveGrunt
 	end
 
 
 VSGarbodor_PsfgoodteamGrunt3_Battle_Script::
 	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_PsfgoodteamGrunt3_Battle_Script
 	msgbox gText_VSGarbodor_OhThankGiratina, MSGBOX_AUTOCLOSE
-	setflag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY
-	call VSGarbordor_RemoveGrunt
+	goto VSGarbodor_RemoveGrunt
 	end
 
 
 VSGarbodor_PsfgoodteamGrunt2_Battle_Script::
 	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_2, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_PsfgoodteamGrunt2_Battle_Script
 	msgbox gText_VSGarbodor_BeingBad, MSGBOX_AUTOCLOSE
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	call VSGarbordor_RemoveGrunt
+	goto VSGarbodor_RemoveGrunt
 	end
 
 
 VSGarbodor_PsfgoodteamGrunt4_Battle_Script::
 	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_4, gText_VSGarbodor_LookAtYou, gText_VSGarbodor_ThatsRight, VSGarbodor_PsfgoodteamGrunt4_Battle_Script
 	msgbox gText_VSGarbodor_HaveFunCleaning, MSGBOX_AUTOCLOSE
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	call VSGarbordor_RemoveGrunt
+	goto VSGarbodor_RemoveGrunt
 	end
-
-
-VSGarbordor_RemoveGrunt::
-	fadescreen FADE_TO_BLACK
-	removeobject VAR_LAST_TALKED
-	fadescreen FADE_FROM_BLACK
-	return
 
 
 VS_Garbodor_CoreEncounter_Script::
@@ -122,47 +117,53 @@ VS_Garbodor_CoreEncounter_Script::
 	dowildbattle
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
-	return
-
-
-VSGarbodor_WildEncounter1::
-	lock
-	call VS_Garbodor_CoreEncounter_Script
 	switch VAR_RESULT
-	case B_OUTCOME_WON, VSGarbodor_WildEncounter1_3
-VSGarbodor_WildEncounter1_1:
+	case B_OUTCOME_WON, VS_Garbodor_CoreEncounter_Script_3
+VS_Garbodor_CoreEncounter_Script_1:
 	release
 	end
 
-VSGarbodor_WildEncounter1_3:
-	call VSGarbodor_DefeatedGarbodor1_Script
-	goto VSGarbodor_WildEncounter1_1
+VS_Garbodor_CoreEncounter_Script_3:
+	goto VSGarbodor_RemoveGrunt
+	goto VS_Garbodor_CoreEncounter_Script_1
 
 
-VSGarbodor_WildEncounter2::
-	lock
-	call VS_Garbodor_CoreEncounter_Script
-	switch VAR_RESULT
-	case B_OUTCOME_WON, VSGarbodor_WildEncounter2_3
-VSGarbodor_WildEncounter2_1:
-	release
+VSGarbodor_RemoveGrunt::
+	lockall
+	msgbox VSGarbodor_RemoveGrunt_Text_0, MSGBOX_AUTOCLOSE
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers FADE_FROM_BLACK
+	msgbox VSGarbodor_RemoveGrunt_Text_1, MSGBOX_AUTOCLOSE
+	call VSGarbodor_CheckDefeated_Script
+	releaseall
 	end
 
-VSGarbodor_WildEncounter2_3:
-	call VSGarbodor_DefeatedGarbodor2_Script
-	goto VSGarbodor_WildEncounter2_1
 
+VSGarbodor_CheckDefeated_Script::
+	msgbox VSGarbodor_CheckDefeated_Script_Text_0, MSGBOX_AUTOCLOSE
+	goto_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, VSGarbodor_CheckDefeated_Script_5
+VSGarbodor_CheckDefeated_Script_3:
+	msgbox VSGarbodor_CheckDefeated_Script_Text_1, MSGBOX_AUTOCLOSE
+VSGarbodor_CheckDefeated_Script_1:
+	end
 
-VSGarbodor_DefeatedGarbodor1_Script::
-	setflag FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE
-	goto Common_EventScript_RemoveStaticPokemon
-	return
+VSGarbodor_CheckDefeated_Script_2:
+	goto VSGarbodor_DefeatedAll_Dialogue
+	goto VSGarbodor_CheckDefeated_Script_1
 
+VSGarbodor_CheckDefeated_Script_4:
+	goto_if_set FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE, VSGarbodor_CheckDefeated_Script_8
+	goto VSGarbodor_CheckDefeated_Script_3
 
-VSGarbodor_DefeatedGarbodor2_Script::
-	setflag FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE
-	goto Common_EventScript_RemoveStaticPokemon
-	return
+VSGarbodor_CheckDefeated_Script_5:
+	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, VSGarbodor_CheckDefeated_Script_4
+	goto VSGarbodor_CheckDefeated_Script_3
+
+VSGarbodor_CheckDefeated_Script_8:
+	goto_if_set FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE, VSGarbodor_CheckDefeated_Script_2
+	goto VSGarbodor_CheckDefeated_Script_3
 
 
 VSGarbodor_PreventCrossingSides_Script::
@@ -183,27 +184,6 @@ VSGarbodor_PreventCrossingSides_Script_1:
 VSGarbodor_PreventCrossingSides_Script_2:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	goto VSGarbodor_PreventCrossingSides_Script_1
-
-
-VSGarbodor_CheckDefeated_Script::
-	goto_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, VSGarbodor_CheckDefeated_Script_3
-	return
-
-VSGarbodor_CheckDefeated_Script_1:
-	goto VSGarbodor_DefeatedAll_Dialogue
-	return
-
-VSGarbodor_CheckDefeated_Script_2:
-	goto_if_set FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE, VSGarbodor_CheckDefeated_Script_6
-	return
-
-VSGarbodor_CheckDefeated_Script_3:
-	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, VSGarbodor_CheckDefeated_Script_2
-	return
-
-VSGarbodor_CheckDefeated_Script_6:
-	goto_if_set FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE, VSGarbodor_CheckDefeated_Script_1
-	return
 
 
 VSGarbodor_DefeatedAll_Dialogue::
@@ -232,16 +212,43 @@ VSGarbodor_DefeatedAll_Dialogue_2:
 	goto VSGarbodor_DefeatedAll_Dialogue_1
 
 
+VSGarbodor_Arrest_ObjectSetup_Script::
+	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
+	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
+	setobjectxy 4, 28, 19
+	setobjectxy 5, 28, 20
+	setobjectxy 1, 20, 22
+	setobjectxy 2, 21, 22
+	setobjectxyperm 4, 28, 19
+	setobjectxyperm 5, 28, 20
+	setobjectxyperm 1, 20, 22
+	setobjectxyperm 2, 21, 22
+	return
+
+
 VSGarbodor_WarpAndArrest_Script::
 	fadescreen FADE_TO_BLACK
 	warpsilent MAP_PSFROUTE22, 255, 21, 21
 	fadescreen FADE_FROM_BLACK
-	end
+	applymovement 1, Common_Movement_FaceUp
+	applymovement 14, Common_Movement_FaceUp
+	applymovement 2, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement 4, VSGarbodor_PerpWalk
+	applymovement 5, VSGarbodor_PerpWalk
+	applymovement 12, VSGarbodor_PerpWalk
+	applymovement 13, VSGarbodor_PerpWalk
+	waitmovement 0
+	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
+	applymovement 14, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	goto VSGarbodor_Negotiating_Dialogue
+	return
 
 
-try::
-	applymovement 4, VSGarbodor_GruntAArrested
-	applymovement 5, VSGarbodor_GruntBArrested
+VSGarbodor_Negotiating_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_AsWeWereNegotiating
@@ -251,28 +258,125 @@ try::
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_ThankYouBoth
+	callnative ClearMugshot
+	closemessage
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_VSGarbodor_YeahImBeat
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_WeirdButOkay
+	msgbox gText_VSGarbodor_YeahImBeat, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq VSGarbodor_Negotiating_Dialogue_1
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_LetsBounce
+	callnative ClearMugshot
+	closemessage
+	call VSGarbodor_ReturnToTheCompound_Script
+	releaseall
+	end
+
+VSGarbodor_Negotiating_Dialogue_1:
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_VSGarbodor_WeirdButOkay
+	call TheStrikeStrikesBack_FlyOutFrame
+	releaseall
+	end
+
+
+VSGarbodor_ReturnToTheCompound_Script::
+	fadescreen FADE_TO_BLACK
+	warpsilent MAP_PSFCITY8_COMPOUND_1F, 8, 8
+	fadescreen FADE_FROM_BLACK
+	goto VSGarbodor_ReturnToTheCompound_Dialogue
+	return
+
+
+VSGarbodor_ReturnToTheCompound_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_ImGonnaGet
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_HehWellSee
-	return
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, VSGarbodor_WalkUpstairs
+	waitmovement 0
+	playse SE_EXIT
+	waitse
+	releaseall
+	end
 
 
 VSGarbodor_WalkTowardsLeftSide:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	step_end
+
+VSGarbodor_WalkFurtherLeft:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+VSGarbodor_WalkFurtherRight:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 VSGarbodor_WalkTowardsRightSide:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
 	step_end
 
 VSGarbodor_LookAround:
@@ -284,11 +388,23 @@ VSGarbodor_WalkCenterToRight:
 VSGarbodor_WalkCenterToLeft:
 	step_end
 
-VSGarbodor_GruntAArrested:
+VSGarbodor_PerpWalk:
 	step_end
 
-VSGarbodor_GruntBArrested:
+VSGarbodor_WalkUpstairs:
 	step_end
+
+VSGarbodor_RemoveGrunt_Text_0:
+	.string "removing$"
+
+VSGarbodor_RemoveGrunt_Text_1:
+	.string "checking$"
+
+VSGarbodor_CheckDefeated_Script_Text_0:
+	.string "i am checking defeats$"
+
+VSGarbodor_CheckDefeated_Script_Text_1:
+	.string "there are no defeats$"
 
 gText_VSGarbodor_IDidSomeScouting::
 	.string "I did some scouting while waiting for\n"

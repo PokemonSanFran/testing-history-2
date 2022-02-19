@@ -20,9 +20,14 @@ Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 Psfroute22_MapScripts_OnTransition::
 	switch VAR_ROUTE110_STATE
 	case 1, Psfroute22_MapScripts_OnTransition_2
+	case 2, Psfroute22_MapScripts_OnTransition_3
 	return
 
 Psfroute22_MapScripts_OnTransition_2:
 	goto TheStrikeStrikesBack_ObjectSetup_Script
+	return
+
+Psfroute22_MapScripts_OnTransition_3:
+	goto VSGarbodor_Arrest_ObjectSetup_Script
 	return
 
