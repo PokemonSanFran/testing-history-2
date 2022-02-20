@@ -12,6 +12,7 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue //Started game, has not met Psftransrival
             VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue //Has checked out room
+        VAR_STORYLINE_STATE, 20: VSGarbodor_ReturnToTheCompound_Dialogue 
     ]
 }
 
@@ -19,6 +20,7 @@ script Psfcity8_Compound_1F_MapScripts_OnTransition {
     switch (var(VAR_STORYLINE_STATE)){
         case 9: goto(Act1_1_ObjectCleanUp)
         case 10: goto(Act1_2_ObjectSetUp)
+        case 20: goto(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
     }
 
     switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
@@ -26,8 +28,9 @@ script Psfcity8_Compound_1F_MapScripts_OnTransition {
         case 3: goto(Swagbag_ObjectSetUp) //Has checked out bedroom
         case 4: goto(ExplorePsfcity8_ObjectSetUp) //Has met Psfbadadmin1 and recieved items
         case 5: goto(TwoHoursAgo_ObjectSetUp) //Has slept in bed after getting Pokedex
-        //case 6: goto(Act1_1_ObjectCleanUp) //finished Act 1.1
+        case 6: goto(WorkingFerry_SetUp_Script) //Has finished all events before 4th Gym
     }
+
 }
 script ImProbablyBetterThanYou_ObjectSetUp {
     setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
@@ -51,13 +54,20 @@ script ExplorePsfcity8_ObjectSetUp {
 }
 
 script TwoHoursAgo_ObjectSetUp {
-        setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
+    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
         clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
+
+        special(GetNumberOfBadges)
+        //If you've got four badges, Psfbadadmin no longer provides help and tutorials and isn't in the house
+        if (var(VAR_TEMP_0) > 4){
+            setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
+        }
 }
 
 script Act1_1_ObjectCleanUp{
     setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
     clearflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
+
 }
 
 script Act1_2_ObjectSetUp{

@@ -1,0 +1,11 @@
+const PSFTRANSRIVAL = 1
+
+mapscripts Psfcity5_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcity5_MapScripts_OnTransition)
+    }
+}
+
+script Psfcity5_MapScripts_OnTransition {
+    end
+}

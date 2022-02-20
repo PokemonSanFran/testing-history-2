@@ -1,12 +1,15 @@
-VSGarbodor_Object_Setup_Script::
-	createvobject OBJ_EVENT_GFX_MAN_1, 12, 21, 19, 3, DIR_SOUTH
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-	return
-
-
-VSGarbodor_RandomSide_Script::
-	random 2
-	goto VSGarbodor_ChooseSide_Script
+VSGarbodor_Arrest_ObjectSetup_Script::
+	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
+	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
+	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL
+	setobjectxy 4, 26, 19
+	setobjectxy 5, 26, 20
+	setobjectxy 1, 21, 21
+	setobjectxy 2, 21, 22
+	setobjectxyperm 4, 26, 19
+	setobjectxyperm 5, 26, 20
+	setobjectxyperm 1, 21, 21
+	setobjectxyperm 2, 21, 22
 	return
 
 
@@ -18,6 +21,12 @@ VSGarbodor_Scouting_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_IDidSomeScouting
 	multichoicedefault 18, 6, MULTI_GARBADOR_CHOOSE, 3, TRUE
+	goto VSGarbodor_ChooseSide_Script
+	return
+
+
+VSGarbodor_RandomSide_Script::
+	random 2
 	goto VSGarbodor_ChooseSide_Script
 	return
 
@@ -234,42 +243,46 @@ VSGarbodor_DefeatedAll_Dialogue::
 	msgbox gText_VSGarbodor_WhateverMineWereEasy
 	closemessage
 	callnative ClearMugshot
-	goto VSGarbodor_WarpAndArrest_Script
+	warpsilent MAP_PSFROUTE22, 255, 20, 22
+	delay 100
 	return
 
 
-VSGarbodor_Arrest_ObjectSetup_Script::
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
-	setobjectxy 4, 28, 19
-	setobjectxy 5, 28, 20
-	setobjectxy 1, 20, 22
-	setobjectxy 2, 21, 22
-	setobjectxyperm 4, 28, 19
-	setobjectxyperm 5, 28, 20
-	setobjectxyperm 1, 20, 22
-	setobjectxyperm 2, 21, 22
-	return
-
-
-VSGarbodor_WarpAndArrest_Script::
-	fadescreen FADE_TO_BLACK
-	warpsilent MAP_PSFROUTE22, 255, 21, 21
-	fadescreen FADE_FROM_BLACK
-	applymovement 1, Common_Movement_FaceUp
+VSGarbodor_Arrest_Script::
+	setvar VAR_STORYLINE_STATE, 20
+	setvar VAR_ROUTE112_STATE, 2
+	setvar VAR_ROUTE110_STATE, 3
 	applymovement 14, Common_Movement_FaceUp
+	applymovement 1, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement 4, VSGarbodor_PerpWalk
 	applymovement 5, VSGarbodor_PerpWalk
 	applymovement 12, VSGarbodor_PerpWalk
 	applymovement 13, VSGarbodor_PerpWalk
 	waitmovement 0
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
+	call VSGarbodor_CleanUpPerpWalk
 	applymovement 14, Common_Movement_FaceDown
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement 1, Common_Movement_FaceDown
 	waitmovement 0
 	goto VSGarbodor_Negotiating_Dialogue
+	return
+
+
+VSGarbodor_CleanUpPerpWalk::
+	removeobject 4
+	removeobject 5
+	removeobject 12
+	removeobject 13
+	removeobject 3
+	return
+
+
+VSGarbodor_Arrest_ObjectCleanup_Script::
+	removeobject 2
+	removeobject 14
+	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
 	return
 
 
@@ -295,7 +308,7 @@ VSGarbodor_Negotiating_Dialogue::
 	msgbox gText_VSGarbodor_LetsBounce
 	callnative ClearMugshot
 	closemessage
-	call VSGarbodor_ReturnToTheCompound_Script
+	warpsilent MAP_PSFCITY8_COMPOUND_1F, 7, 3
 	releaseall
 	end
 
@@ -303,20 +316,37 @@ VSGarbodor_Negotiating_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_WeirdButOkay
-	call TheStrikeStrikesBack_FlyOutFrame
+	callnative ClearMugshot
+	closemessage
+	call VSGarbodor_FlyWithoutPlayer_Script
 	releaseall
 	end
 
 
-VSGarbodor_ReturnToTheCompound_Script::
-	fadescreen FADE_TO_BLACK
-	warpsilent MAP_PSFCITY8_COMPOUND_1F, 8, 8
-	fadescreen FADE_FROM_BLACK
-	goto VSGarbodor_ReturnToTheCompound_Dialogue
+VSGarbodor_FlyWithoutPlayer_Script::
+	applymovement 1, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	delay 50
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject 1
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	return
+
+
+VSGarbodor_ReturnToTheCompound_ObjectSetUp::
+	clearflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL
+	addobject 1
+	setobjectxy 1, 7, 2
+	setobjectxyperm 1, 7, 2
+	setobjectmovementtype 1, MOVEMENT_ACTION_FACE_DOWN
 	return
 
 
 VSGarbodor_ReturnToTheCompound_Dialogue::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_ImGonnaGet
@@ -329,6 +359,8 @@ VSGarbodor_ReturnToTheCompound_Dialogue::
 	waitmovement 0
 	playse SE_EXIT
 	waitse
+	removeobject 1
+	setvar VAR_STORYLINE_STATE, 21
 	releaseall
 	end
 
@@ -451,9 +483,25 @@ PsftransrivalApproachNE:
 	step_end
 
 VSGarbodor_PerpWalk:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 VSGarbodor_WalkUpstairs:
+	walk_up
 	step_end
 
 gText_VSGarbodor_IDidSomeScouting::

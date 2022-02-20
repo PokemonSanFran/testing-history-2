@@ -10,6 +10,7 @@ Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, Swagbag_WelcomeToPsfregion1_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 20, VSGarbodor_ReturnToTheCompound_Dialogue
 	.2byte 0
 
 
@@ -17,12 +18,14 @@ Psfcity8_Compound_1F_MapScripts_OnTransition::
 	switch VAR_STORYLINE_STATE
 	case 9, Psfcity8_Compound_1F_MapScripts_OnTransition_3
 	case 10, Psfcity8_Compound_1F_MapScripts_OnTransition_4
+	case 20, Psfcity8_Compound_1F_MapScripts_OnTransition_5
 Psfcity8_Compound_1F_MapScripts_OnTransition_1:
 	switch VAR_LITTLEROOT_INTRO_STATE
-	case 1, Psfcity8_Compound_1F_MapScripts_OnTransition_6
-	case 3, Psfcity8_Compound_1F_MapScripts_OnTransition_7
-	case 4, Psfcity8_Compound_1F_MapScripts_OnTransition_8
-	case 5, Psfcity8_Compound_1F_MapScripts_OnTransition_9
+	case 1, Psfcity8_Compound_1F_MapScripts_OnTransition_7
+	case 3, Psfcity8_Compound_1F_MapScripts_OnTransition_8
+	case 4, Psfcity8_Compound_1F_MapScripts_OnTransition_9
+	case 5, Psfcity8_Compound_1F_MapScripts_OnTransition_10
+	case 6, Psfcity8_Compound_1F_MapScripts_OnTransition_11
 	return
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_3:
@@ -33,20 +36,28 @@ Psfcity8_Compound_1F_MapScripts_OnTransition_4:
 	goto Act1_2_ObjectSetUp
 	goto Psfcity8_Compound_1F_MapScripts_OnTransition_1
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_6:
+Psfcity8_Compound_1F_MapScripts_OnTransition_5:
+	goto VSGarbodor_ReturnToTheCompound_ObjectSetUp
+	goto Psfcity8_Compound_1F_MapScripts_OnTransition_1
+
+Psfcity8_Compound_1F_MapScripts_OnTransition_7:
 	goto ImProbablyBetterThanYou_ObjectSetUp
 	return
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_7:
+Psfcity8_Compound_1F_MapScripts_OnTransition_8:
 	goto Swagbag_ObjectSetUp
 	return
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_8:
+Psfcity8_Compound_1F_MapScripts_OnTransition_9:
 	goto ExplorePsfcity8_ObjectSetUp
 	return
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_9:
+Psfcity8_Compound_1F_MapScripts_OnTransition_10:
 	goto TwoHoursAgo_ObjectSetUp
+	return
+
+Psfcity8_Compound_1F_MapScripts_OnTransition_11:
+	goto WorkingFerry_SetUp_Script
 	return
 
 
@@ -78,6 +89,13 @@ ExplorePsfcity8_ObjectSetUp::
 TwoHoursAgo_ObjectSetUp::
 	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
 	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN1_2
+	special GetNumberOfBadges
+	compare VAR_TEMP_0, 4
+	goto_if_gt TwoHoursAgo_ObjectSetUp_1
+	return
+
+TwoHoursAgo_ObjectSetUp_1:
+	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1_2
 	return
 
 

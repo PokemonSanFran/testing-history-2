@@ -21,6 +21,7 @@ Act1_1_Complete_Monologue::
 
 
 Act1_1_Complete_WarpToCompound_Script::
+	setvar VAR_LITTLEROOT_INTRO_STATE, 6
 	msgbox gText_Act1_1_Complete_Question, MSGBOX_YESNO
 	closemessage
 	compare VAR_RESULT, 1
@@ -29,6 +30,11 @@ Act1_1_Complete_WarpToCompound_Script::
 
 Act1_1_Complete_WarpToCompound_Script_1:
 	warpsilent MAP_PSFCITY8, 255, 3, 10
+	return
+
+
+WorkingFerry_SetUp_Script::
+	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1_2
 	return
 
 

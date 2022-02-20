@@ -19,11 +19,16 @@ script Act1_1_Complete_Monologue {
 }
 
 script Act1_1_Complete_WarpToCompound_Script {
+    setvar(VAR_LITTLEROOT_INTRO_STATE,6) //Psfbadadmin will stop appearing in the compound to give advice to the player
     msgbox(gText_Act1_1_Complete_Question,MSGBOX_YESNO)
         closemessage
         if (var(VAR_RESULT) == 1){
             warpsilent(MAP_PSFCITY8,255,3,10)
         }
+}
+
+script WorkingFerry_SetUp_Script {
+    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
 }
 
 text gText_Act1_1_Complete_GotAllThree {

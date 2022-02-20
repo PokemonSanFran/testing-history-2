@@ -137,13 +137,19 @@ text gText_WaitYouWentWhere_YeahThanksFor {
     format("Yeah, thanks for your help. Where are you going?")
 }
 
-text gText_WaitYouWentWhere_IHaveSomeBusiness {
-    format("I have some business to attend to in Psfcity12. I assume you're heading west, let's walk together. How has your training been?")
+text gText_WaitYouWentWhere_GoodToSeeYou {
+    format("Ah {PLAYER}, wonderful to see you again. Truly, your efforts at the construction strike were nothing short of heroic.")
+
+text gText_WaitYouWentWhere_YeahNoProblem {
+    format("Haha, it's no problem, really.")
 }
 
+text gText_WaitYouWentWhere_IHaveSomeBusiness {
+    format("I have some business to attend to in Psfcity12. Let's walk together. What's interested you the most about Psfregion1?")
+}
 
 text gText_WaitYouWentWhere_IActuallyJustGot {
-    format("I actually just got back from Psfcave7, which was really interesting.")
+    format("Hmm... Actually, I thought Psfcave7 was really fascinating."
 }
 
 text gText_WaitYouWentWhere_ThePassWeGave {

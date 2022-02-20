@@ -4,13 +4,15 @@ const PSFBADADMIN = 2
 const PSFGOODBOSS = 3
 const GOODTEAMA = 4
 const GOODTEAMB = 5
+const PSFBADBOSS = 14
 
 //This cutscene will trigger once the player is outside and has 8 badges. The location can be any of one of the places. TODO
 
 script TheStrikeStrikesBack_ObjectSetup_Script {
-    clearflag(FLAG_HIDE_THESTRIKESTRIKESBACK)
+        clearflag(FLAG_HIDE_THESTRIKESTRIKESBACK)
         clearflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM)
         clearflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN)
+        hideobjectat(PSFBADBOSS,MAP_PSFROUTE22)
 }
 
 script TheStrikeStrikesBack_CrowdFacesNorth_Script {
@@ -35,7 +37,7 @@ script TheStrikeStrikesBack_FlyIntoFrame {
 }
 
 script TheStrikeStrikesBack_FlyOutFrame {
-    applymovement(PSFTRANSRIVAL, Common_Movement_WalkInPlaceFasterDown)
+        applymovement(PSFTRANSRIVAL, Common_Movement_WalkInPlaceFasterDown)
         waitmovement(0)
         delay(50)
         setfieldeffectargument(0,1)
