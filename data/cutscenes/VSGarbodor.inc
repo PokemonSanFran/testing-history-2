@@ -53,8 +53,7 @@ VSGarbodor_ChooseLeft_Script::
 	delay 60
 	applymovement OBJ_EVENT_ID_PLAYER, VSGarbodor_WalkTowardsLeftSide
 	waitmovement 0
-	setobjectxy 1, 23, 3
-	setobjectxyperm 1, 23, 3
+	removeobject 1
 	releaseall
 	end
 
@@ -70,8 +69,7 @@ VSGarbodor_ChooseRight_Script::
 	delay 60
 	applymovement OBJ_EVENT_ID_PLAYER, VSGarbodor_WalkTowardsRightSide
 	waitmovement 0
-	setobjectxy 1, 3, 8
-	setobjectxyperm 1, 3, 8
+	removeobject 1
 	releaseall
 	end
 
@@ -130,40 +128,35 @@ VS_Garbodor_CoreEncounter_Script_3:
 
 VSGarbodor_RemoveGrunt::
 	lockall
-	msgbox VSGarbodor_RemoveGrunt_Text_0, MSGBOX_AUTOCLOSE
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject VAR_LAST_TALKED
 	fadescreenswapbuffers FADE_FROM_BLACK
-	msgbox VSGarbodor_RemoveGrunt_Text_1, MSGBOX_AUTOCLOSE
 	call VSGarbodor_CheckDefeated_Script
 	releaseall
 	end
 
 
 VSGarbodor_CheckDefeated_Script::
-	msgbox VSGarbodor_CheckDefeated_Script_Text_0, MSGBOX_AUTOCLOSE
-	goto_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, VSGarbodor_CheckDefeated_Script_5
-VSGarbodor_CheckDefeated_Script_3:
-	msgbox VSGarbodor_CheckDefeated_Script_Text_1, MSGBOX_AUTOCLOSE
+	goto_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, VSGarbodor_CheckDefeated_Script_4
 VSGarbodor_CheckDefeated_Script_1:
 	end
 
 VSGarbodor_CheckDefeated_Script_2:
-	goto VSGarbodor_DefeatedAll_Dialogue
+	goto VSGarbodor_MovePsftransrival_Script
+	goto VSGarbodor_CheckDefeated_Script_1
+
+VSGarbodor_CheckDefeated_Script_3:
+	goto_if_set FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE, VSGarbodor_CheckDefeated_Script_7
 	goto VSGarbodor_CheckDefeated_Script_1
 
 VSGarbodor_CheckDefeated_Script_4:
-	goto_if_set FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE, VSGarbodor_CheckDefeated_Script_8
-	goto VSGarbodor_CheckDefeated_Script_3
+	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, VSGarbodor_CheckDefeated_Script_3
+	goto VSGarbodor_CheckDefeated_Script_1
 
-VSGarbodor_CheckDefeated_Script_5:
-	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, VSGarbodor_CheckDefeated_Script_4
-	goto VSGarbodor_CheckDefeated_Script_3
-
-VSGarbodor_CheckDefeated_Script_8:
+VSGarbodor_CheckDefeated_Script_7:
 	goto_if_set FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE, VSGarbodor_CheckDefeated_Script_2
-	goto VSGarbodor_CheckDefeated_Script_3
+	goto VSGarbodor_CheckDefeated_Script_1
 
 
 VSGarbodor_PreventCrossingSides_Script::
@@ -186,19 +179,56 @@ VSGarbodor_PreventCrossingSides_Script_2:
 	goto VSGarbodor_PreventCrossingSides_Script_1
 
 
-VSGarbodor_DefeatedAll_Dialogue::
+VSGarbodor_MovePsftransrival_Script::
 	setvar VAR_ROUTE112_STATE, 1
-	compare VAR_ROUTE111_STATE, 2
-	goto_if_eq VSGarbodor_DefeatedAll_Dialogue_2
-	applymovement 1, VSGarbodor_WalkCenterToLeft
-VSGarbodor_DefeatedAll_Dialogue_1:
+	lockall
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	clearflag FLAG_TEMP_1
+	addobject 1
+	compare VAR_TEMP_0, 10
+	goto_if_lt VSGarbodor_MovePsftransrival_Script_2
+	compare VAR_TEMP_1, 9
+	goto_if_gt VSGarbodor_MovePsftransrival_Script_8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	setobjectxy 1, 10, 6
+	copyobjectxytoperm 1
+	applymovement 1, PsftransrivalApproachNE
+VSGarbodor_MovePsftransrival_Script_1:
 	waitmovement 0
+	goto VSGarbodor_DefeatedAll_Dialogue
+	return
+
+VSGarbodor_MovePsftransrival_Script_2:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	compare VAR_TEMP_1, 9
+	goto_if_gt VSGarbodor_MovePsftransrival_Script_5
+	setobjectxy 1, 13, 6
+	copyobjectxytoperm 1
+	applymovement 1, PsftransrivalApproachNW
+	goto VSGarbodor_MovePsftransrival_Script_1
+
+VSGarbodor_MovePsftransrival_Script_5:
+	setobjectxy 1, 11, 12
+	copyobjectxytoperm 1
+	applymovement 1, PsftransrivalApproachSW
+	goto VSGarbodor_MovePsftransrival_Script_1
+
+VSGarbodor_MovePsftransrival_Script_8:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	setobjectxy 1, 22, 4
+	copyobjectxytoperm 1
+	applymovement 1, PsftransrivalApproachSE
+	goto VSGarbodor_MovePsftransrival_Script_1
+
+
+VSGarbodor_DefeatedAll_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_GodYouWereTaking
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, VSGarbodor_LookAround
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_WhateverMineWereEasy
@@ -206,10 +236,6 @@ VSGarbodor_DefeatedAll_Dialogue_1:
 	callnative ClearMugshot
 	goto VSGarbodor_WarpAndArrest_Script
 	return
-
-VSGarbodor_DefeatedAll_Dialogue_2:
-	applymovement 1, VSGarbodor_WalkCenterToRight
-	goto VSGarbodor_DefeatedAll_Dialogue_1
 
 
 VSGarbodor_Arrest_ObjectSetup_Script::
@@ -233,7 +259,6 @@ VSGarbodor_WarpAndArrest_Script::
 	applymovement 1, Common_Movement_FaceUp
 	applymovement 14, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceUp
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement 4, VSGarbodor_PerpWalk
 	applymovement 5, VSGarbodor_PerpWalk
@@ -380,12 +405,49 @@ VSGarbodor_WalkTowardsRightSide:
 	step_end
 
 VSGarbodor_LookAround:
+	face_up
+	delay_16
+	face_left
+	delay_16
+	face_right
+	delay_16
 	step_end
 
-VSGarbodor_WalkCenterToRight:
+PsftransrivalApproachSW:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
-VSGarbodor_WalkCenterToLeft:
+PsftransrivalApproachNW:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+PsftransrivalApproachSE:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+PsftransrivalApproachNE:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 VSGarbodor_PerpWalk:
@@ -393,18 +455,6 @@ VSGarbodor_PerpWalk:
 
 VSGarbodor_WalkUpstairs:
 	step_end
-
-VSGarbodor_RemoveGrunt_Text_0:
-	.string "removing$"
-
-VSGarbodor_RemoveGrunt_Text_1:
-	.string "checking$"
-
-VSGarbodor_CheckDefeated_Script_Text_0:
-	.string "i am checking defeats$"
-
-VSGarbodor_CheckDefeated_Script_Text_1:
-	.string "there are no defeats$"
 
 gText_VSGarbodor_IDidSomeScouting::
 	.string "I did some scouting while waiting for\n"

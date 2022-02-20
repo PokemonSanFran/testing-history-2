@@ -60,7 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    call VSGarbodor_CheckDefeated_Script 
+    call VSGarbodor_MovePsftransrival_Script 
 	end
 
 Debug_Script_2::

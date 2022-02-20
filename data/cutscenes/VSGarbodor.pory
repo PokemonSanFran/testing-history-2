@@ -49,8 +49,7 @@ script VSGarbodor_ChooseLeft_Script {
         delay(60)
         applymovement(PLAYER,VSGarbodor_WalkTowardsLeftSide)
         waitmovement(0)
-        setobjectxy(PSFTRANSRIVAL,23,3)
-        setobjectxyperm(PSFTRANSRIVAL,23,3)
+        removeobject(PSFTRANSRIVAL)
         releaseall
         end
 }
@@ -67,8 +66,7 @@ script VSGarbodor_ChooseRight_Script {
         delay(60)
         applymovement(PLAYER,VSGarbodor_WalkTowardsRightSide)
         waitmovement(0)
-        setobjectxy(PSFTRANSRIVAL,3,8)
-        setobjectxyperm(PSFTRANSRIVAL,3,8)
+        removeobject(PSFTRANSRIVAL)
         releaseall
         end
 }
@@ -134,7 +132,7 @@ script VSGarbodor_RemoveGrunt {
 
 script VSGarbodor_CheckDefeated_Script {
     if (flag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) && flag(FLAG_DEFEATED_RIVAL_ROUTE_104) && flag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE) && flag (FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE)) {
-        goto(VSGarbodor_DefeatedAll_Dialogue)
+        goto(VSGarbodor_MovePsftransrival_Script)
     }
     end
 }
@@ -157,22 +155,52 @@ script VSGarbodor_PreventCrossingSides_Script {
         end
 }
 
-script VSGarbodor_DefeatedAll_Dialogue {
+script VSGarbodor_MovePsftransrival_Script {
     setvar(VAR_ROUTE112_STATE,1)
+        lockall
 
-        if (var(VAR_ROUTE111_STATE) == 2){
-            applymovement(PSFTRANSRIVAL,VSGarbodor_WalkCenterToRight)
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+        clearflag(FLAG_TEMP_1)
+        addobject(PSFTRANSRIVAL)
+
+        if (var(VAR_TEMP_0) < 10){
+            applymovement(PLAYER,Common_Movement_FaceRight)
+                if (var(VAR_TEMP_1) > 9) {
+                    setobjectxy(PSFTRANSRIVAL,11,12)
+                        copyobjectxytoperm(PSFTRANSRIVAL)
+                        applymovement(PSFTRANSRIVAL,PsftransrivalApproachSW)
+                }else {
+                    setobjectxy(PSFTRANSRIVAL,13,6)
+                        copyobjectxytoperm(PSFTRANSRIVAL)
+                        applymovement(PSFTRANSRIVAL,PsftransrivalApproachNW)
+                }
         } else {
-            applymovement(PSFTRANSRIVAL,VSGarbodor_WalkCenterToLeft)
+            if (var(VAR_TEMP_1) > 9) {
+                applymovement(PLAYER,Common_Movement_FaceUp)
+                    setobjectxy(PSFTRANSRIVAL,22,4)
+                    copyobjectxytoperm(PSFTRANSRIVAL)
+                    applymovement(PSFTRANSRIVAL,PsftransrivalApproachSE)
+            }else {
+                applymovement(PLAYER,Common_Movement_FaceLeft)
+                    setobjectxy(PSFTRANSRIVAL,10,6)
+                    copyobjectxytoperm(PSFTRANSRIVAL)
+                    applymovement(PSFTRANSRIVAL,PsftransrivalApproachNE)
+            }
         }
     waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    goto(VSGarbodor_DefeatedAll_Dialogue)
+}
+
+script VSGarbodor_DefeatedAll_Dialogue {
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_GodYouWereTaking)
         closemessage
         callnative(ClearMugshot)
 
         applymovement(PSFTRANSRIVAL,VSGarbodor_LookAround)
+        waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_WhateverMineWereEasy)
@@ -201,7 +229,6 @@ script VSGarbodor_WarpAndArrest_Script {
         applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
         applymovement(PSFBADBOSS,Common_Movement_FaceUp)
         applymovement(PSFBADADMIN,Common_Movement_FaceUp)
-        applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(0)
         applymovement(GOODTEAMA,VSGarbodor_PerpWalk)
         applymovement(GOODTEAMB,VSGarbodor_PerpWalk)
@@ -307,15 +334,29 @@ movement VSGarbodor_WalkTowardsRightSide {
 }
 
 movement VSGarbodor_LookAround {
+    face_up
+    delay_16
+    face_left
+    delay_16
+    face_right
+    delay_16
     step_end
 }
-
-movement VSGarbodor_WalkCenterToRight {
-    step_end
+movement PsftransrivalApproachSW{
+    walk_left * 6
+        step_end
 }
-
-movement VSGarbodor_WalkCenterToLeft {
-    step_end
+movement PsftransrivalApproachNW{
+    walk_left * 6
+        step_end
+}
+movement PsftransrivalApproachSE{
+    walk_down * 6
+        step_end
+}
+movement PsftransrivalApproachNE{
+    walk_right * 7
+        step_end
 }
 
 movement VSGarbodor_PerpWalk {
