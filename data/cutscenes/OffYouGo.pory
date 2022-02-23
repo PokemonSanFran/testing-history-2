@@ -1,140 +1,185 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 1
+const PSFBADADMIN = 2
+
+script OffYouGo_Pre_ObjectSetup_Script {
+    setflag(FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL)
+    setflag(FLAG_HIDE_OFFYOUGO_PSFBADADMIN)
+}
+
+script OffYouGo_ObjectSetup_Script {
+    clearflag(FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL)
+    clearflag(FLAG_HIDE_OFFYOUGO_PSFBADADMIN)
+}
+
+script OffYouGo_ObjectCleanUp_Script {
+    setflag(FLAG_HIDE_OFFYOUGO_PSFBADADMIN)
+}
+
 script OffYouGo_WakeUp_Dialogue {
+    setvar(VAR_ROUTE113_STATE,1)
     lockall
         setvar(VAR_STORYLINE_STATE,22)
         playse(SE_POKENAV_CALL)
         waitse
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_HuhHello)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_HuhHello)
 
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_HeyWhereAreYou)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_HeyWhereAreYou)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_YeahImInBed)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_YeahImInBed)
 
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_ComeOnGetUp)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_ComeOnGetUp)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_VSGarbador_WaitingForMe)
-callnative(ClearMugshot)
-    closemessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_WaitingForMe)
+        callnative(ClearMugshot)
+        closemessage
 
-    //TODO PSF Mockup a SMS on the screen
-msgbox(gText_VSGarbador_PleaseMeetMeOn)
+        //TODO PSF Mockup a SMS on the screen
+        msgbox(gText_VSGarbador_PleaseMeetMeOn)
 
-msgbox(gText_VSGarbador_IllBeRightOver)
+        msgbox(gText_VSGarbador_IllBeRightOver)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_YeahIDidntSee)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_YeahIDidntSee)
 
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_UghFine)
-    callnative(ClearMugshot)
-    closemessage
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_UghFine)
+        callnative(ClearMugshot)
+        closemessage
 
-    playse(SE_POKENAV_HANG_UP)
-    waitse
+        playse(SE_POKENAV_HANG_UP)
+        waitse
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_VSGarbador_HowAreTheyAlways)
-callnative(ClearMugshot)
-    closemessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_HowAreTheyAlways)
+        callnative(ClearMugshot)
+        closemessage
 
-    fadescreen(FADE_FROM_BLACK)
+        fadescreen(FADE_FROM_BLACK)
         releaseall
         end
 }
-    //The player regains control. The cutscene resumes after crossing Psfplace17.
-
-    //EXT. PSFPLACE17 NORTH
 
 script OffYouGo_WelcomeParty_Dialogue {
 
+    setvar(VAR_ROUTE113_STATE,2)
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_WelcomeToTheParty)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_WelcomeToTheParty)
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_HonestlyItsFine)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_HonestlyItsFine)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_NeitherWasI)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_NeitherWasI)
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_WellYoureBothHere)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_WellYoureBothHere)
+        callnative(ClearMugshot)
+        closemessage
 
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_ThanksButWho)
+        applymovement(PSFTRANSRIVAL,Common_Movement_FaceRight)
+        waitmovement(0)
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_AsYesYoureNot)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_ThanksButWho)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFBADADMIN,Common_Movement_FaceLeft)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_AsYesYoureNot)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_SoWhereIs)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_AhYesWellTheyHave)
 
 
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_SoWhereIs)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_WeirdOkay)
+        callnative(ClearMugshot)
+        closemessage
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_AhYesWellTheyHave)
+        applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+        waitmovement(0)
+        applymovement(PSFBADADMIN, Common_Movement_FaceUp)
+        applymovement(PSFTRANSRIVAL,OffYouGo_WalkNorth)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(PSFTRANSRIVAL)
 
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_OhWait)
+        callnative(ClearMugshot)
+        closemessage
 
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_VSGarbador_WeirdOkay)
-callnative(ClearMugshot)
-    closemessage
+        applymovement(PSFBADADMIN,Common_Movement_FaceDown)
+        waitmovement(0)
 
-    //Psftransrival walks off screen. Psfbadadmin turns around.
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_IDoWishThey)
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_VSGarbador_OhWait)
-callnative(ClearMugshot)
-    closemessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_IllHurrySo)
 
-    //Psfbadadmin faces the player.
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_GoodLuck)
+        callnative(ClearMugshot)
+        closemessage
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_IDoWishThey)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_VSGarbador_IllHurrySo)
-
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_VSGarbador_GoodLuck)
-callnative(ClearMugshot)
-    closemessage
-
-    //The player regains control. If the player talks to Psfbadadmin again:
-
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_VSGarbador_ItMightBeAGood)
-callnative(ClearMugshot)
-    closemessage
+        releaseall
+        end
 }
 
-    text gText_VSGarbador_RingRing {
-        format("Ring ring…")
-    }
+script OffYouGo_InteractPsfbadadmin {
+        lockall
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_VSGarbador_ItMightBeAGood,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
+}
+
+movement OffYouGo_WalkNorth {
+    walk_up * 4
+    step_end
+}
+
+text gText_VSGarbador_RingRing {
+    format("Ring ring…")
+}
 text gText_VSGarbador_HuhHello {
     format("Huh? Hello?")
 }

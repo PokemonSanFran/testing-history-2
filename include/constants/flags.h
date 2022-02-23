@@ -71,8 +71,8 @@
 #define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM 0x3B // Previously Unused Flag
 #define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN 0x3C // Previously Unused Flag
 #define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL 0x3D // Previously Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
+#define FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL 0x3E // Previously Unused Flag
+#define FLAG_HIDE_OFFYOUGO_PSFBADADMIN 0x3F // Previously Unused Flag
 #define FLAG_UNUSED_0x040    0x40 // Unused Flag
 #define FLAG_UNUSED_0x041    0x41 // Unused Flag
 #define FLAG_UNUSED_0x042    0x42 // Unused Flag

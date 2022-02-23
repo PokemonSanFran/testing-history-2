@@ -1,4 +1,22 @@
+OffYouGo_Pre_ObjectSetup_Script::
+	setflag FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL
+	setflag FLAG_HIDE_OFFYOUGO_PSFBADADMIN
+	return
+
+
+OffYouGo_ObjectSetup_Script::
+	clearflag FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL
+	clearflag FLAG_HIDE_OFFYOUGO_PSFBADADMIN
+	return
+
+
+OffYouGo_ObjectCleanUp_Script::
+	setflag FLAG_HIDE_OFFYOUGO_PSFBADADMIN
+	return
+
+
 OffYouGo_WakeUp_Dialogue::
+	setvar VAR_ROUTE113_STATE, 1
 	lockall
 	setvar VAR_STORYLINE_STATE, 22
 	playse SE_POKENAV_CALL
@@ -43,6 +61,7 @@ OffYouGo_WakeUp_Dialogue::
 
 
 OffYouGo_WelcomeParty_Dialogue::
+	setvar VAR_ROUTE113_STATE, 2
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbador_WelcomeToTheParty
@@ -55,9 +74,17 @@ OffYouGo_WelcomeParty_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_VSGarbador_WellYoureBothHere
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, Common_Movement_FaceRight
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbador_ThanksButWho
+	callnative ClearMugshot
+	closemessage
+	applymovement 2, Common_Movement_FaceLeft
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_VSGarbador_AsYesYoureNot
@@ -72,11 +99,21 @@ OffYouGo_WelcomeParty_Dialogue::
 	msgbox gText_VSGarbador_WeirdOkay
 	callnative ClearMugshot
 	closemessage
+	applymovement 1, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement 2, Common_Movement_FaceUp
+	applymovement 1, OffYouGo_WalkNorth
+	waitmovement 0
+	playse SE_EXIT
+	waitse
+	removeobject 1
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_VSGarbador_OhWait
 	callnative ClearMugshot
 	closemessage
+	applymovement 2, Common_Movement_FaceDown
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_VSGarbador_IDoWishThey
@@ -88,13 +125,27 @@ OffYouGo_WelcomeParty_Dialogue::
 	msgbox gText_VSGarbador_GoodLuck
 	callnative ClearMugshot
 	closemessage
+	releaseall
+	end
+
+
+OffYouGo_InteractPsfbadadmin::
+	lockall
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	msgbox gText_VSGarbador_ItMightBeAGood
+	msgbox gText_VSGarbador_ItMightBeAGood, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
-	return
+	releaseall
+	end
 
+
+OffYouGo_WalkNorth:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 gText_VSGarbador_RingRing::
 	.string "Ring ring…$"
