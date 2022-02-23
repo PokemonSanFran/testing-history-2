@@ -20,7 +20,11 @@ script RestInBed_Script {
         msgbox(gText_RestInBed_Text1)
         closemessage
         call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
-        call(Common_EventScript_OutOfCenterPartyHeal)
+        //call(Common_EventScript_OutOfCenterPartyHeal)
+        fadescreen(FADE_TO_BLACK)
+        callnative(HealPlayerParty)
+        call(RestInBed_OffYouGoInit_Script)
+        fadescreen(FADE_FROM_BLACK)
         call(RestInBed_Progression_Script)
         closemessage
         releaseall
@@ -56,6 +60,14 @@ script RestInBed_Progression_Script {
                     callnative(ClearMugshot)
             }
     }
+}
+
+script RestInBed_OffYouGoInit_Script {
+
+    if (var(VAR_STORYLINE_STATE) == 21){
+        call(OffYouGo_WakeUp_Dialogue)
+        end
+}
 }
 
 script FashionCaseReminder_Script {

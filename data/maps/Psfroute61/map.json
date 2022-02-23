@@ -1,0 +1,47 @@
+{
+  "id": "MAP_PSFROUTE61",
+  "name": "Psfroute61",
+  "layout": "LAYOUT_PSFROUTE61",
+  "music": "MUS_ROUTE113",
+  "region_map_section": "MAPSEC_PSFROUTE61",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "right",
+      "offset": -8,
+      "map": "MAP_PSFCITY10"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_PSFCAVE2",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_PSFCAVE2",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

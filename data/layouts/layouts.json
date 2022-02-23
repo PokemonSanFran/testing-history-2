@@ -4904,7 +4904,7 @@
     {
       "id": "LAYOUT_PSFCITY3",
       "name": "Psfcity3_Layout",
-      "width": 20,
+      "width": 30,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mauville",
@@ -5070,6 +5070,76 @@
       "secondary_tileset": "gTileset_BattlePalace",
       "border_filepath": "data/layouts/Psfplace14_Construction/border.bin",
       "blockdata_filepath": "data/layouts/Psfplace14_Construction/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE17",
+      "name": "Psfplace17_Layout",
+      "width": 30,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BattleFrontierOutsideEast",
+      "border_filepath": "data/layouts/Psfplace17/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace17/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCAVE1",
+      "name": "Psfcave1_Layout",
+      "width": 36,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RusturfTunnel",
+      "border_filepath": "data/layouts/Psfcave1/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcave1/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY10",
+      "name": "Psfcity10_Layout",
+      "width": 20,
+      "height": 35,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfcity10/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity10/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE61",
+      "name": "Psfroute61_Layout",
+      "width": 40,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute61/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute61/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCAVE2",
+      "name": "Psfcave2_Layout",
+      "width": 50,
+      "height": 48,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfcave2/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcave2/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCAVE1_B1F",
+      "name": "Psfcave1_B1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Psfcave1_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcave1_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCAVE2_INNER",
+      "name": "Psfcave2_Inner_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfcave2_Inner/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcave2_Inner/map.bin"
     }
   ]
 }

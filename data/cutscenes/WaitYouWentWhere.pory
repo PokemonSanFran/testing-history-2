@@ -139,6 +139,7 @@ text gText_WaitYouWentWhere_YeahThanksFor {
 
 text gText_WaitYouWentWhere_GoodToSeeYou {
     format("Ah {PLAYER}, wonderful to see you again. Truly, your efforts at the construction strike were nothing short of heroic.")
+}
 
 text gText_WaitYouWentWhere_YeahNoProblem {
     format("Haha, it's no problem, really.")
@@ -149,7 +150,7 @@ text gText_WaitYouWentWhere_IHaveSomeBusiness {
 }
 
 text gText_WaitYouWentWhere_IActuallyJustGot {
-    format("Hmm... Actually, I thought Psfcave7 was really fascinating."
+    format("Hmm... Actually, I thought Psfcave7 was really fascinating.")
 }
 
 text gText_WaitYouWentWhere_ThePassWeGave {
