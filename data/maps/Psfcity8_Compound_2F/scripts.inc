@@ -20,7 +20,10 @@ RestInBed_Script_1:
 	msgbox gText_RestInBed_Text1
 	closemessage
 	call PlayersHouse_2F_EventScript_SetWallClock
-	call Common_EventScript_OutOfCenterPartyHeal
+	fadescreen FADE_TO_BLACK
+	callnative HealPlayerParty
+	call RestInBed_OffYouGoInit_Script
+	fadescreen FADE_FROM_BLACK
 	call RestInBed_Progression_Script
 	closemessage
 	releaseall
@@ -73,6 +76,16 @@ RestInBed_Progression_Script_8:
 	msgbox gText_FindAWayThrough
 	callnative ClearMugshot
 	return
+
+
+RestInBed_OffYouGoInit_Script::
+	compare VAR_STORYLINE_STATE, 21
+	goto_if_eq RestInBed_OffYouGoInit_Script_1
+	return
+
+RestInBed_OffYouGoInit_Script_1:
+	call OffYouGo_WakeUp_Dialogue
+	end
 
 
 FashionCaseReminder_Script::

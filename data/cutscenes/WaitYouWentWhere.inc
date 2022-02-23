@@ -241,15 +241,24 @@ gText_WaitYouWentWhere_YeahThanksFor::
 	.string "Yeah, thanks for your help. Where are\n"
 	.string "you going?$"
 
+gText_WaitYouWentWhere_GoodToSeeYou::
+	.string "Ah {PLAYER}, wonderful to see you\n"
+	.string "again. Truly, your efforts at the\l"
+	.string "construction strike were nothing\l"
+	.string "short of heroic.$"
+
+gText_WaitYouWentWhere_YeahNoProblem::
+	.string "Haha, it's no problem, really.$"
+
 gText_WaitYouWentWhere_IHaveSomeBusiness::
 	.string "I have some business to attend to in\n"
-	.string "Psfcity12. I assume you're heading\l"
-	.string "west, let's walk together. How has your\l"
-	.string "training been?$"
+	.string "Psfcity12. Let's walk together. What's\l"
+	.string "interested you the most about\l"
+	.string "Psfregion1?$"
 
 gText_WaitYouWentWhere_IActuallyJustGot::
-	.string "I actually just got back from Psfcave7,\n"
-	.string "which was really interesting.$"
+	.string "Hmm... Actually, I thought Psfcave7 was\n"
+	.string "really fascinating.$"
 
 gText_WaitYouWentWhere_ThePassWeGave::
 	.string "The pass we gave you doesn't let you go\n"

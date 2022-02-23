@@ -1155,7 +1155,7 @@ Common_EventScript_LegendaryFlewAway::
     .include "data/cutscenes/TheStrikeStrikesBack.inc"
   .include "data/cutscenes/VSGarbodor.inc"
 ##  .include "data/cutscenes/UnknownAlcatrazCutscene.inc"
-##  .include "data/cutscenes/OffYouGo.inc"
+    .include "data/cutscenes/OffYouGo.inc"
 ##  .include "data/cutscenes/IGuessWeShouldBeNiceNow.inc"
 ##  .include "data/cutscenes/EntertheMaster.inc"
 ##  .include "data/cutscenes/HaveYouSeenTheNews.inc"
@@ -1231,3 +1231,17 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Psfcity5_Gym/scripts.inc"
 
 	.include "data/maps/Psfplace14_Construction/scripts.inc"
+
+	.include "data/maps/Psfplace17/scripts.inc"
+
+	.include "data/maps/Psfcave1/scripts.inc"
+
+	.include "data/maps/Psfcity10/scripts.inc"
+
+	.include "data/maps/Psfroute61/scripts.inc"
+
+	.include "data/maps/Psfcave2/scripts.inc"
+
+	.include "data/maps/Psfcave1_B1F/scripts.inc"
+
+	.include "data/maps/Psfcave2_Inner/scripts.inc"

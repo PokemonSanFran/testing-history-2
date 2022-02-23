@@ -89,7 +89,14 @@
     "Psfplace3",
     "Psfroute13",
     "Psfcity5",
-    "Psfcity5_Gym"
+    "Psfcity5_Gym",
+    "Psfplace17",
+    "Psfcave1",
+    "Psfcity10",
+    "Psfroute61",
+    "Psfcave2",
+    "Psfcave1_B1F",
+    "Psfcave2_Inner"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

@@ -1,0 +1,14 @@
+mapscripts Psfplace17_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfplace17_MapScripts_OnTransition)
+    }
+}
+
+script Psfplace17_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE113_STATE)){
+        case 0: goto(OffYouGo_Pre_ObjectSetup_Script)
+        case 1: goto(OffYouGo_ObjectSetup_Script)
+        case 2: goto(OffYouGo_ObjectCleanUp_Script)
+    }
+}
+

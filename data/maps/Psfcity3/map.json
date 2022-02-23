@@ -22,13 +22,18 @@
       "direction": "down",
       "offset": -42,
       "map": "MAP_PSFROUTE49"
+    },
+    {
+      "direction": "up",
+      "offset": 0,
+      "map": "MAP_PSFPLACE17"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 8,
-      "y": 5,
+      "x": 13,
+      "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -40,8 +45,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 10,
-      "y": 5,
+      "x": 15,
+      "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -54,8 +59,8 @@
   ],
   "warp_events": [
     {
-      "x": 9,
-      "y": 4,
+      "x": 14,
+      "y": 10,
       "elevation": 0,
       "dest_map": "MAP_PSFCITY3_MANSION",
       "dest_warp_id": 1
