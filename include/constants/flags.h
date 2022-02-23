@@ -73,8 +73,8 @@
 #define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL 0x3D // Previously Unused Flag
 #define FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL 0x3E // Previously Unused Flag
 #define FLAG_HIDE_OFFYOUGO_PSFBADADMIN 0x3F // Previously Unused Flag
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
-#define FLAG_UNUSED_0x041    0x41 // Unused Flag
+#define FLAG_HIDE_BENICENOW_PSFTRANSRIVAL 0x40 // Previously Unused Flag
+#define FLAG_HIDE_BENICENOW_BOSSPKMN 0x41 // Previously Unused Flag
 #define FLAG_UNUSED_0x042    0x42 // Unused Flag
 #define FLAG_UNUSED_0x043    0x43 // Unused Flag
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag

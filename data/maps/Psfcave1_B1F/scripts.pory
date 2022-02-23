@@ -1,0 +1,16 @@
+mapscripts Psfcave1_B1F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcave1_B1F_MapScripts_OnTransition)
+    }
+
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ROUTE114_STATE, 1:
+}
+
+script Psfcave1_B1F_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE114_STATE)){
+        case 0: goto(IGuessWeShouldBeNiceNow_HideObject_Script)
+        case 1: goto(IGuessWeShouldBeNiceNow_ObjectSetup_Script)
+    }
+}
+

@@ -1,0 +1,412 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 1
+const BOSSPKMNA = 2
+const BOSSPKMNB = 3
+
+script IGuessWeShouldBeNiceNow_HideObject_Script {
+    setflag(FLAG_HIDE_BENICENOW_PSFTRANSRIVAL)
+        setflag(FLAG_HIDE_BENICENOW_BOSSPKMN)
+
+}
+
+script IGuessWeShouldBeNiceNow_ObjectSetup_Script {
+    clearflag(FLAG_HIDE_BENICENOW_PSFTRANSRIVAL)
+}
+
+//INT. PSFCAVE1
+
+//The player goes into the maze under Psfcave1. Upon going down one level, the camera pans up to reveal Psftransrival, who walks up to the player.
+
+    applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_WalkToPlayer)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_TookLongEnough)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_WeCantComplete)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_OhShitWellUh)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive)
+
+    applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_IAnalyzedTheRoom)
+
+    applymovement(PSFTRANSRIVAL,Common_Movement_FaceLeft)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_YouSolvePuzzleA)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_AndThenISolvePuzzle)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_Ready,MSGBOX_YESNO)
+
+    if (var(VAR_RESULT) == NO) {
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_WellGoGetReady)
+    callnative(ClearMugshot)
+    closemessage
+    } else {
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_WalkIntoMaze)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_IMemorizedThisWhile)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_OnIt)
+    callnative(ClearMugshot)
+    closemessage
+    }
+}
+
+script IGuessWeShouldBeNiceNow_SolvedPuzzleA {
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_OkayYourTurn)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_LetsSeeOhWow)
+    callnative(ClearMugshot)
+    closemessage
+}
+
+    //Player solves another puzzle, and then stands on another switch. The camera pans to a boulder up ahead, and a door opens inside of it. The camera goes back to the player, with Psftransrival standing next to them.
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_SomethingIsMissing)
+
+    //Psftransrival and the player walk inside the room. The book is sitting in the center of the room.
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_IfIWereACrustyOld)
+
+    //Psftransrival takes one step forward.
+
+msgbox(gText_IGuessWeShouldBeNiceNow_Roar)
+
+    //Pokémon 1 and 2 step out in front of the notebook.
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_BingoIllTake)
+
+    //Game prompts a save here.
+
+    ???
+    ROAR
+
+    //Pokémon 1 attacks. This Pokémon should be Psfelite3's ace, and will call in support, SOS style. None of these Pokémon cannot be caught.
+
+    //The player defeats Pokémon 1.
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_OkayImStarting)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_WhatAmIMissing)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_ThosePuzzlesWerent)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_YeahIHadToThink)
+
+
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_ExactlyYouHad)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_SoTheyreTraining)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast)
+
+    //Psftransrival steps forward and takes the notebook.
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_SaysOnTheBack)
+
+    //Psftransrival looks around, and then back at the player.
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting)
+
+    //Player is presented with a Yes/No box. If the player chooses Yes:
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_GreatSeeYou)
+
+
+    //If the player chooses No:
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_WellTheChallenges)
+
+    //Branch dialogue ends here.
+
+    //Psftransrival walks out of the room.
+
+    //This cutscene resumes after reaching Psfcity10.
+
+
+    //EXT. PSFCITY10
+
+    //The player walks into the city. Psftransrival is right behind them.
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_WhatTookYouSoLong)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_ISpottedAnInteresting)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_WaitWhat)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_AllOfMyPokemon)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_IDidntKnow)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_DaddyOwnsA)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_WaitWhatIThought)
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace)
+
+    Psftransrival faces east, and then the player again.
+
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_ImGonnaCrash)
+
+    //Psftransrival walks north.
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion)
+
+    text gText_IGuessWeShouldBeNiceNow_TookLongEnough {
+        format("Took long enough. I looked around and -")
+    }
+
+text gText_IGuessWeShouldBeNiceNow_WeCantComplete {
+    format("We can't complete the puzzles alone. Psfbadadmin told me after you took off.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_OhShitWellUh {
+    format("Oh shit. Well uh, what else did I miss?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow {
+    format("You already know. There's no service down here, and they said it was the same for Psfcave2. We're more or less on our own.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive {
+    format("That's fine. We'll live.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_IAnalyzedTheRoom {
+    format("I analyzed the room while I waited, and we need to alternate solving puzzles.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_YouSolvePuzzleA {
+    format("You solve puzzle A, and stand on a pressure switch. That opens door B, and then I solve puzzle B. I stand on another switch…")
+}
+
+text gText_IGuessWeShouldBeNiceNow_AndThenISolvePuzzle {
+    format("And then I solve puzzle C. Do you know how far it goes?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze {
+    format("Nope. I could only analyze one deep before I got stuck.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_Ready {
+    format("Ready?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_WellGoGetReady {
+    format("Well, go get ready and come back when you are. I'll be here.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_IMemorizedThisWhile {
+    format("I memorized this while I was waiting for you… okay! You should be clear to start on the other side!")
+}
+
+text gText_IGuessWeShouldBeNiceNow_OnIt {
+    format("On it!")
+}
+
+text gText_IGuessWeShouldBeNiceNow_OkayYourTurn {
+    format("Okay, your turn!")
+}
+
+text gText_IGuessWeShouldBeNiceNow_LetsSeeOhWow {
+    format("Let's see… oh wow, this one is even easier than the last! Okay…got it! I think this is the last one {PLAYER}!")
+}
+
+text gText_IGuessWeShouldBeNiceNow_SomethingIsMissing {
+    format("Something is missing…")
+}
+
+text gText_IGuessWeShouldBeNiceNow_IfIWereACrustyOld {
+    format("If I were a crusty old dude trying to grift Psfbadguy out of some cash, there would be something guarding this book, right?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_Roar {
+    format("ROAR")
+}
+
+text gText_IGuessWeShouldBeNiceNow_BingoIllTake {
+    format("Bingo. I'll take the one on the right. Ready, {PLAYER}?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_OkayImStarting {
+    format("Okay, *pant* I'm starting to understand the training now…A little.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_WhatAmIMissing {
+    format("*pant* What am I missing?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_ThosePuzzlesWerent {
+    format("Those puzzles weren't physically tough, but we had to think. And those battles… we couldn't brute force them, right?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_YeahIHadToThink {
+    format("Yeah, I had to think about a strategy.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_ExactlyYouHad {
+    format("Exactly. You had to think under pressure when you were already worn down.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_SoTheyreTraining {
+    format("So they're training our mental toughness…?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast {
+    format("Or, trying at least. I'll grab this…")
+}
+
+text gText_IGuessWeShouldBeNiceNow_SaysOnTheBack {
+    format("Says on the back cover, “Bring to the deepest part of Psfcave2.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting {
+    format("Whew, that was exhausting. How about we crash at my place nearby in Psfcity10 and then tackle Psfcave2 tomorrow?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_GreatSeeYou {
+    format("Great, see you in Psfcity10!")
+}
+
+text gText_IGuessWeShouldBeNiceNow_WellTheChallenges {
+    format("Well, the challenges need both of us… and I'm tired. So I'm going to crash - you're welcome to try Psfcave2 by yourself though.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming {
+    format("Cool, perfect timing.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_WhatTookYouSoLong {
+    format("What took you so long? You're usually in front.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_ISpottedAnInteresting {
+    format("I spotted an interesting Pokémon while we were working on the puzzles, so I went back and caught it! It was actually my first time catching something.")
+
+}
+text gText_IGuessWeShouldBeNiceNow_WaitWhat {
+    format("Wait, what?")
+}
+
+text gText_IGuessWeShouldBeNiceNow_AllOfMyPokemon {
+    format("All of my Pokémon are normally bred in Unova and sent to me. But I wanted to try raising one from scratch, just to see how it compares.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_IDidntKnow {
+    format("(I didn't know you could DO that.) Oh, well… congrats!")
+}
+
+text gText_IGuessWeShouldBeNiceNow_DaddyOwnsA {
+    format("Daddy owns a Psfcompany6 out here. I called him earlier and had him kick out the people that were staying there, so it should be good for us now.")
+
+}
+text gText_IGuessWeShouldBeNiceNow_WaitWhatIThought {
+    format("Wait what? I thought Psfbadguy -")
+}
+
+text gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace {
+    format("Yeah, Daddy's place is way nicer than some motel or whatever. It's on the eastern side of town.")
+}
+
+text gText_IGuessWeShouldBeNiceNow_ImGonnaCrash {
+    format("I'm gonna crash, but I'll leave the door open for you. Let's meet at the entrance of Psfcave2 tomorrow morning!")
+}
+
+text gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion {
+    format("I hope it's my version of morning, and not yours…")
+}
