@@ -57,6 +57,7 @@
 #define MAP_PSFCAVE2       (48 | (0 << 8))
 #define MAP_PSFCAVE1_B1F   (49 | (0 << 8))
 #define MAP_PSFCAVE2_INNER (50 | (0 << 8))
+#define MAP_PSFCAVE1_B2F   (51 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

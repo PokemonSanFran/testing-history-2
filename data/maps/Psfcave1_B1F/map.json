@@ -16,47 +16,47 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAY_NORMAL",
-      "x": 9,
-      "y": 17,
+      "x": 8,
+      "y": 22,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script",
       "flag": "FLAG_HIDE_BENICENOW_PSFTRANSRIVAL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BIG_REGIROCK_DOLL",
-      "x": 12,
-      "y": 1,
+      "x": 9,
+      "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "IGuessWeShouldBeNiceNow_CoreEncounter_Script",
       "flag": "FLAG_HIDE_BENICENOW_BOSSPKMN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL",
-      "x": 6,
-      "y": 1,
+      "x": 7,
+      "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "IGuessWeShouldBeNiceNow_CoreEncounter_Script",
       "flag": "FLAG_HIDE_BENICENOW_BOSSPKMN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 9,
-      "y": 1,
+      "x": 8,
+      "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -68,8 +68,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
-      "x": 9,
-      "y": 4,
+      "x": 8,
+      "y": 9,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -82,22 +82,32 @@
   ],
   "warp_events": [
     {
-      "x": 8,
-      "y": 18,
+      "x": 7,
+      "y": 23,
       "elevation": 0,
       "dest_map": "MAP_PSFCAVE1",
       "dest_warp_id": 2
-    },
-    {
-      "x": 10,
-      "y": 10,
-      "elevation": 0,
-      "dest_map": "MAP_PSFCAVE1_B1F",
-      "dest_warp_id": 0
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_ROUTE114_STATE",
+      "var_value": "3",
+      "script": "IGuessWeShouldBeNiceNow_SolvedPuzzleA"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_ROUTE114_STATE",
+      "var_value": "4",
+      "script": "IGuessWeShouldBeNiceNow_SolvedPuzzleB"
+    }
   ],
   "bg_events": [
 

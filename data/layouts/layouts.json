@@ -5124,8 +5124,8 @@
     {
       "id": "LAYOUT_PSFCAVE1_B1F",
       "name": "Psfcave1_B1F_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 18,
+      "height": 25,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Psfcave1_B1F/border.bin",
@@ -5140,6 +5140,16 @@
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Psfcave2_Inner/border.bin",
       "blockdata_filepath": "data/layouts/Psfcave2_Inner/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCAVE1_B2F",
+      "name": "Psfcave1_B2F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Psfcave1_B2F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcave1_B2F/map.bin"
     }
   ]
 }

@@ -1156,7 +1156,7 @@ Common_EventScript_LegendaryFlewAway::
   .include "data/cutscenes/VSGarbodor.inc"
 ##  .include "data/cutscenes/UnknownAlcatrazCutscene.inc"
     .include "data/cutscenes/OffYouGo.inc"
-##  .include "data/cutscenes/IGuessWeShouldBeNiceNow.inc"
+  .include "data/cutscenes/IGuessWeShouldBeNiceNow.inc"
 ##  .include "data/cutscenes/EntertheMaster.inc"
 ##  .include "data/cutscenes/HaveYouSeenTheNews.inc"
 ##  .include "data/cutscenes/WelcometotheWarRoom.inc"
@@ -1245,3 +1245,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Psfcave1_B1F/scripts.inc"
 
 	.include "data/maps/Psfcave2_Inner/scripts.inc"
+
+	.include "data/maps/Psfcave1_B2F/scripts.inc"
