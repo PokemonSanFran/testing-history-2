@@ -18,8 +18,8 @@ Psfcave1_B1F_MapScripts_OnTransition::
 	case 1, Psfcave1_B1F_MapScripts_OnTransition_3
 	case 2, Psfcave1_B1F_MapScripts_OnTransition_4
 	case 3, Psfcave1_B1F_MapScripts_OnTransition_5
-	case 4, Psfcave1_B1F_MapScripts_OnTransition_6
-	case 5, Psfcave1_B1F_MapScripts_OnTransition_7
+	case 5, Psfcave1_B1F_MapScripts_OnTransition_6
+	case 6, Psfcave1_B1F_MapScripts_OnTransition_7
 	return
 
 Psfcave1_B1F_MapScripts_OnTransition_2:
@@ -39,10 +39,10 @@ Psfcave1_B1F_MapScripts_OnTransition_5:
 	return
 
 Psfcave1_B1F_MapScripts_OnTransition_6:
-	goto IGuessWeShouldBeNiceNow_PuzzleASolvedObject_Script
+	goto IGuessWeShouldBeNiceNow_PuzzleBSolvedObject_Script
 	return
 
 Psfcave1_B1F_MapScripts_OnTransition_7:
-	goto IGuessWeShouldBeNiceNow_PuzzleBSolvedObject_Script
+	goto IGuessWeShouldBeNiceNow_PostCleanUp_Script
 	return
 

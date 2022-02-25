@@ -22,11 +22,18 @@ IGuessWeShouldBeNiceNow_PuzzleStartObject_Script::
 	return
 
 
-IGuessWeShouldBeNiceNow_PuzzleASolvedObject_Script::
+IGuessWeShouldBeNiceNow_PuzzleBSolvedObject_Script::
+	setobjectxy 1, 8, 6
+	setobjectxyperm 1, 8, 6
+	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_UP
+	setobjectxy 5, 7, 9
+	setobjectxyperm 5, 7, 9
 	return
 
 
-IGuessWeShouldBeNiceNow_PuzzleBSolvedObject_Script::
+IGuessWeShouldBeNiceNow_PostCleanUp_Script::
+	setobjectxy 5, 7, 9
+	setobjectxyperm 5, 7, 9
 	return
 
 
@@ -35,10 +42,15 @@ IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script::
 	faceplayer
 	switch VAR_ROUTE114_STATE
 	case 2, IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_2
+	case 5, IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_3
 	return
 
 IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_2:
 	goto IGuessWeShouldBeNiceNow_AskPlayer_Script
+	return
+
+IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_3:
+	goto IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue
 	return
 
 
@@ -154,13 +166,14 @@ IGuessWeShouldBeNiceNow_SolvedPuzzleB::
 	fadescreen FADE_FROM_BLACK
 	applymovement 5, Common_Movement_WalkLeft
 	waitmovement 0
-	msgbox IGuessWeShouldBeNiceNow_SolvedPuzzleB_Text_0
-	applymovement OBJ_EVENT_ID_PLAYER, IGuessWeShouldBeNiceNow_WalkRight
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	fadescreen FADE_TO_BLACK
+	turnobject 1, DIR_NORTH
 	setobjectxy 1, 9, 12
 	setobjectxyperm 1, 9, 12
-	turnobject 1, DIR_NORTH
+	fadescreen FADE_FROM_BLACK
 	special ReturnCameraToPlayer
+	applymovement OBJ_EVENT_ID_PLAYER, IGuessWeShouldBeNiceNow_WalkRight
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_SomethingIsMissing
@@ -191,13 +204,15 @@ IGuessWeShouldBeNiceNow_BossProtectBook_Script::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_BingoIllTake
+	callnative ClearMugshot
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
+	call Common_EventScript_SaveGame
 	goto IGuessWeShouldBeNiceNow_CoreEncounter_Script
 	return
 
 
 IGuessWeShouldBeNiceNow_CoreEncounter_Script::
-	call Common_EventScript_SaveGame
-	faceplayer
 	setwildbattle SPECIES_GENGAR, 60, ITEM_LIFE_ORB, SPECIES_GASTLY, 70, ITEM_ORAN_BERRY
 	playmoncry SPECIES_GENGAR, CRY_MODE_ENCOUNTER
 	msgbox gText_IGuessWeShouldBeNiceNow_Roar
@@ -218,17 +233,33 @@ IGuessWeShouldBeNiceNow_CoreEncounter_Script_3:
 	goto IGuessWeShouldBeNiceNow_CoreEncounter_Script_1
 
 
+IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_Ready, MSGBOX_NPC
+	callnative ClearMugshot
+	applymovement 1, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	releaseall
+	end
+
+
 IGuessWeShouldBeNiceNow_ClearBossPokemon_Script::
 	lockall
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject VAR_LAST_TALKED
+	removeobject 2
+	removeobject 3
+	removeobject 6
 	fadescreenswapbuffers FADE_FROM_BLACK
 	goto IGuessWeShouldBeNiceNow_PostBoss_Dialogue
 	return
 
 
 IGuessWeShouldBeNiceNow_PostBoss_Dialogue::
+	applymovement 1, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_OkayImStarting
@@ -250,18 +281,36 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, IGuessWeShouldBeNiceNow_GetBook
+	waitmovement 0
+	removeobject 4
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_SaysOnTheBack
+	applymovement 1, IGuessWeShouldBeNiceNow_LookAround
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_GreatSeeYou
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq IGuessWeShouldBeNiceNow_PostBoss_Dialogue_2
 	msgbox gText_IGuessWeShouldBeNiceNow_WellTheChallenges
+IGuessWeShouldBeNiceNow_PostBoss_Dialogue_1:
+	closemessage
+	callnative ClearMugshot
+	applymovement 1, IGuessWeShouldBeNiceNow_LeaveCave
+	waitmovement 0
+	removeobject 1
+	releaseall
+	end
+
+IGuessWeShouldBeNiceNow_PostBoss_Dialogue_2:
+	msgbox gText_IGuessWeShouldBeNiceNow_GreatSeeYou
+	goto IGuessWeShouldBeNiceNow_PostBoss_Dialogue_1
+
+
+IGuessWeShouldBeNiceNow_EnterPsfcity10::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming
@@ -346,8 +395,33 @@ IGuessWeShouldBeNiceNow_WalkRight:
 	walk_right
 	step_end
 
-IGuessWeShouldBeNiceNow_SolvedPuzzleB_Text_0:
-	.string "pause$"
+IGuessWeShouldBeNiceNow_GetBook:
+	walk_up
+	walk_up
+	walk_in_place_faster_up
+	step_end
+
+IGuessWeShouldBeNiceNow_LookAround:
+	face_left
+	delay_16
+	delay_16
+	delay_16
+	face_right
+	delay_16
+	delay_16
+	delay_16
+	face_down
+	step_end
+
+IGuessWeShouldBeNiceNow_LeaveCave:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
 
 gText_IGuessWeShouldBeNiceNow_TookLongEnough::
 	.string "Took long enough. I looked around and -$"
