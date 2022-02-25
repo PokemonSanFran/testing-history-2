@@ -246,6 +246,7 @@ IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue::
 
 
 IGuessWeShouldBeNiceNow_ClearBossPokemon_Script::
+	setvar VAR_ROUTE114_STATE, 6
 	lockall
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
@@ -293,6 +294,7 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting, MSGBOX_YESNO
+	setvar VAR_ROUTE115_STATE, 1
 	compare VAR_RESULT, YES
 	goto_if_eq IGuessWeShouldBeNiceNow_PostBoss_Dialogue_2
 	msgbox gText_IGuessWeShouldBeNiceNow_WellTheChallenges
@@ -308,6 +310,21 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue_1:
 IGuessWeShouldBeNiceNow_PostBoss_Dialogue_2:
 	msgbox gText_IGuessWeShouldBeNiceNow_GreatSeeYou
 	goto IGuessWeShouldBeNiceNow_PostBoss_Dialogue_1
+
+
+IGuessWeShouldBeNiceNow_ExitCave_Script::
+	setvar VAR_ROUTE115_STATE, 2
+	lockall
+	delay 32
+	playse SE_EXIT
+	waitse
+	clearflag FLAG_HIDE_PSFCITY10_PSFTRANSRIVAL
+	addobject 1
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
+	applymovement 1, IGuessWeShouldBeNiceNow_WalkOutCave
+	waitmovement 0
+	goto IGuessWeShouldBeNiceNow_EnterPsfcity10
+	return
 
 
 IGuessWeShouldBeNiceNow_EnterPsfcity10::
@@ -338,13 +355,25 @@ IGuessWeShouldBeNiceNow_EnterPsfcity10::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, IGuessWeShouldBeNiceNow_GestureHouse
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_ImGonnaCrash
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, IGuessWeShouldBeNiceNow_WalkTowardsHouse
+	waitmovement 0
+	removeobject 1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion
-	return
+	callnative ClearMugshot
+	closemessage
+	releaseall
+	end
 
 
 IGuessWeShouldBeNiceNow_WalkToPlayer:
@@ -421,6 +450,34 @@ IGuessWeShouldBeNiceNow_LeaveCave:
 	walk_down
 	walk_down
 	walk_down
+	step_end
+
+IGuessWeShouldBeNiceNow_WalkOutCave:
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_up
+	face_left
+	step_end
+
+IGuessWeShouldBeNiceNow_GestureHouse:
+	face_right
+	delay_16
+	delay_16
+	face_left
+	step_end
+
+IGuessWeShouldBeNiceNow_WalkTowardsHouse:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 gText_IGuessWeShouldBeNiceNow_TookLongEnough::

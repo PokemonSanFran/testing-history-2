@@ -252,6 +252,7 @@ script IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue {
 }
 
 script IGuessWeShouldBeNiceNow_ClearBossPokemon_Script {
+    setvar(VAR_ROUTE114_STATE,6) 
     lockall
         closemessage
         fadescreenswapbuffers(FADE_TO_BLACK)
@@ -310,6 +311,7 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting,MSGBOX_YESNO)
+        setvar(VAR_ROUTE115_STATE,1)
 
         if (var(VAR_RESULT) == YES) {
             msgbox(gText_IGuessWeShouldBeNiceNow_GreatSeeYou)
@@ -326,8 +328,21 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
         end
 }
 
-script IGuessWeShouldBeNiceNow_EnterPsfcity10 {
+script IGuessWeShouldBeNiceNow_ExitCave_Script {
+    setvar(VAR_ROUTE115_STATE,2)
+    lockall
+    delay(32)
+    playse(SE_EXIT)
+    waitse
+    clearflag(FLAG_HIDE_PSFCITY10_PSFTRANSRIVAL)
+    addobject(PSFTRANSRIVAL)
+    applymovement(PLAYER,Common_Movement_WalkRight)
+    applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_WalkOutCave)
+    waitmovement(0)
+    goto(IGuessWeShouldBeNiceNow_EnterPsfcity10)
+}
 
+script IGuessWeShouldBeNiceNow_EnterPsfcity10 {
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming)
@@ -363,18 +378,30 @@ script IGuessWeShouldBeNiceNow_EnterPsfcity10 {
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace)
+        callnative(ClearMugshot)
+        closemessage
 
-        //Psftransrival faces east, and then the player again.
+        applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_GestureHouse)
+        waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_IGuessWeShouldBeNiceNow_ImGonnaCrash)
+        callnative(ClearMugshot)
+        closemessage
 
-        //Psftransrival walks north.
+
+        applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_WalkTowardsHouse)
+        waitmovement(0)
+        removeobject(PSFTRANSRIVAL)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion)
+        callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
 }
 
 movement IGuessWeShouldBeNiceNow_WalkToPlayer {
@@ -427,6 +454,28 @@ movement IGuessWeShouldBeNiceNow_LookAround {
 movement IGuessWeShouldBeNiceNow_LeaveCave {
     walk_down * 7
 	step_end
+}
+
+movement IGuessWeShouldBeNiceNow_WalkOutCave {
+    walk_down * 2
+    walk_right * 2
+    walk_up
+    face_left
+    step_end
+}
+
+movement IGuessWeShouldBeNiceNow_GestureHouse {
+    face_right
+    delay_16
+    delay_16
+    face_left
+    step_end
+}
+
+movement IGuessWeShouldBeNiceNow_WalkTowardsHouse {
+    walk_right * 3
+    walk_up * 6
+    step_end
 }
 
 text gText_IGuessWeShouldBeNiceNow_TookLongEnough {
