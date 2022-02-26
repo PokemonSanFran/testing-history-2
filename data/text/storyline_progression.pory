@@ -31,6 +31,12 @@ script WorkingFerry_SetUp_Script {
     setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
 }
 
+script TheStrikeStrikesBack_Check_Script {
+    if (var(VAR_STORYLINE_STATE) == 17){
+        goto(TheStrikeStrikesBack_PhoneCall_Dialogue)
+    }
+}
+
 text gText_Act1_1_Complete_GotAllThree {
     format("I've got all three Badges from this side of the mainland. The ferry to Psfcity9 looks like it's going to be broken utnil at least tomorrow, and I can't head west without Go-Goggles. It's been a long day... I think I should head back to Psfcity8 and call it a night.")
 }

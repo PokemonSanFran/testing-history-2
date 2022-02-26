@@ -62,6 +62,7 @@ OffYouGo_WakeUp_Dialogue::
 
 OffYouGo_WelcomeParty_Dialogue::
 	setvar VAR_ROUTE113_STATE, 2
+	setvar VAR_ROUTE114_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbador_WelcomeToTheParty

@@ -5,4 +5,8 @@ mapscripts Psfplace3_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Battle8_SetUpObject_Script)
     }
+
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE, 17: TheStrikeStrikesBack_Check_Script
+    ]
 }

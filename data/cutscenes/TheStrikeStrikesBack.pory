@@ -6,7 +6,9 @@ const GOODTEAMA = 4
 const GOODTEAMB = 5
 const PSFBADBOSS = 14
 
-//This cutscene will trigger once the player is outside and has 8 badges. The location can be any of one of the places. TODO
+script TheStrikeStrikesBack_HideObject_Script {
+    setflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS)
+}
 
 script TheStrikeStrikesBack_ObjectSetup_Script {
         clearflag(FLAG_HIDE_THESTRIKESTRIKESBACK)
@@ -63,12 +65,16 @@ script TheStrikeStrikesBack_PhoneCall_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
     msgbox(gText_TheStrikeStrikesBack_OhHi)
+
+    special(GetCurrentMap)
+
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
-    msgbox(gText_TheStrikeStrikesBack_IKnowImLate)
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
-        callnative(DrawMugshot)
-    msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat)
+    if (var(VAR_TEMP_0) == 31 || var(VAR_TEMP_0) == 37 || var(VAR_TEMP_0) == 38 || var(VAR_TEMP_0) == 42){
+        msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat)
+    }else {
+        msgbox(gText_TheStrikeStrikesBack_IKnowImLate)
+    }
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
     msgbox(gText_TheStrikeStrikesBack_ThankYou)
@@ -93,8 +99,20 @@ script TheStrikeStrikesBack_PhoneCall_Dialogue {
             closemessage
         warpsilent(MAP_PSFROUTE22,255,21,25)
         }
+        releaseall
+        end
 }
 
+script TheStrikeStrikesBack_SetUpPostWarp_Script {
+    lockall
+    setvar(VAR_ROUTE110_STATE,2)
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    if (var(VAR_TEMP_0) != 21){
+        warpsilent(MAP_PSFROUTE22,255,21,25)
+        waitstate
+    }
+    end
+}
 
 script TheStrikeStrikesBack_Congrats_Dialogue {
     lockall
@@ -123,11 +141,7 @@ script TheStrikeStrikesBack_Congrats_Dialogue {
 }
 
 script TheStrikeStrikesBack_Intro_Dialogue {
-    setvar(VAR_ROUTE110_STATE,2)
-        call(TheStrikeStrikesBack_FlyIntoFrame)
-        clearflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL)
-        applymovement(PLAYER,TurnVisible)
-        waitmovement(0)
+        setvar(VAR_ROUTE110_STATE,3)
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_AndCongratulations)
@@ -280,7 +294,7 @@ text gText_TheStrikeStrikesBack_AskedMeToPick {
 }
 
 text gText_TheStrikeStrikesBack_AndCongratulations {
-    format("Thanks, Psftransrival! And congratulations to you, {PLAYER}. You're caught up on the strikes, right?")
+    format("Congratulations to you, {PLAYER}! You're caught up on the strikes, right?")
 }
 
 text gText_TheStrikeStrikesBack_ISawThemOn {

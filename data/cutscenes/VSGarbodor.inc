@@ -2,6 +2,7 @@ VSGarbodor_Arrest_ObjectSetup_Script::
 	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
 	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
 	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL
+	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS
 	setobjectxy 4, 26, 19
 	setobjectxy 5, 26, 20
 	setobjectxy 1, 21, 21
@@ -251,7 +252,7 @@ VSGarbodor_DefeatedAll_Dialogue::
 VSGarbodor_Arrest_Script::
 	setvar VAR_STORYLINE_STATE, 20
 	setvar VAR_ROUTE112_STATE, 2
-	setvar VAR_ROUTE110_STATE, 3
+	setvar VAR_ROUTE110_STATE, 4
 	applymovement 14, Common_Movement_FaceUp
 	applymovement 1, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceUp

@@ -546,4 +546,5 @@ gSpecials::
     def_special CheckMegaEvolutionPartyMember
     def_special SetObjectMovementType
     def_special CheckNumPsfcave7ExhibitDefeated
+    def_special GetCurrentMap
 

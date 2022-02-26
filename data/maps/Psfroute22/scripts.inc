@@ -8,27 +8,38 @@ Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE110_STATE, 1, TheStrikeStrikesBack_Intro_Dialogue
+	map_script_2 VAR_ROUTE110_STATE, 1, TheStrikeStrikesBack_SetUpPostWarp_Script
+	map_script_2 VAR_ROUTE110_STATE, 2, TheStrikeStrikesBack_Intro_Dialogue
 	map_script_2 VAR_ROUTE112_STATE, 1, VSGarbodor_Arrest_Script
 	.2byte 0
 
 
 Psfroute22_MapScripts_OnTransition::
 	switch VAR_ROUTE110_STATE
-	case 1, Psfroute22_MapScripts_OnTransition_2
-	case 2, Psfroute22_MapScripts_OnTransition_3
-	case 3, Psfroute22_MapScripts_OnTransition_4
+	case 0, Psfroute22_MapScripts_OnTransition_2
+	case 1, Psfroute22_MapScripts_OnTransition_3
+	case 2, Psfroute22_MapScripts_OnTransition_4
+	case 3, Psfroute22_MapScripts_OnTransition_5
+	case 4, Psfroute22_MapScripts_OnTransition_6
 	return
 
 Psfroute22_MapScripts_OnTransition_2:
-	goto TheStrikeStrikesBack_ObjectSetup_Script
+	goto TheStrikeStrikesBack_HideObject_Script
 	return
 
 Psfroute22_MapScripts_OnTransition_3:
-	goto VSGarbodor_Arrest_ObjectSetup_Script
+	goto TheStrikeStrikesBack_HideObject_Script
 	return
 
 Psfroute22_MapScripts_OnTransition_4:
+	goto TheStrikeStrikesBack_ObjectSetup_Script
+	return
+
+Psfroute22_MapScripts_OnTransition_5:
+	goto VSGarbodor_Arrest_ObjectSetup_Script
+	return
+
+Psfroute22_MapScripts_OnTransition_6:
 	goto VSGarbodor_Arrest_ObjectCleanup_Script
 	return
 

@@ -77,7 +77,7 @@
 #define FLAG_HIDE_BENICENOW_BOSSPKMN 0x41 // Previously Unused Flag
 #define FLAG_HIDE_BENICENOW_BOOK 0x42 // Previously Unused Flag
 #define FLAG_HIDE_PSFCITY10_PSFTRANSRIVAL 0x43 //Previously Unused Flag
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
+#define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS 0x44 //Previously Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
 #define FLAG_UNUSED_0x047    0x47 // Unused Flag

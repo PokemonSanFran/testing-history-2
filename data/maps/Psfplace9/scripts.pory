@@ -1,7 +1,12 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFBADADMIN2 = 1
 
-mapscripts Psfplace9_MapScripts {}
+mapscripts Psfplace9_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE, 17: TheStrikeStrikesBack_PhoneCall_Dialogue
+    ]
+}
+
 
 script YouLookTired_InteractPsfbadadmin2_Script {
     lock

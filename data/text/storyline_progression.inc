@@ -38,6 +38,16 @@ WorkingFerry_SetUp_Script::
 	return
 
 
+TheStrikeStrikesBack_Check_Script::
+	compare VAR_STORYLINE_STATE, 17
+	goto_if_eq TheStrikeStrikesBack_Check_Script_1
+	return
+
+TheStrikeStrikesBack_Check_Script_1:
+	goto TheStrikeStrikesBack_PhoneCall_Dialogue
+	return
+
+
 gText_Act1_1_Complete_GotAllThree::
 	.string "I've got all three Badges from this side\n"
 	.string "of the mainland. The ferry to Psfcity9\l"

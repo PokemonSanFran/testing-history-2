@@ -1,12 +1,11 @@
-
 mapscripts Psfcity4_MapScripts {
 
-    MAP_SCRIPT_ON_TRANSITION {
-        goto(Psfcity3_MapScripts_OnTransition)
-    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE, 17: TheStrikeStrikesBack_Check_Script
+    ]
 }
 
-script Psfcity3_MapScripts_OnTransition {
+script Psfcity4_MapScripts_OnTransition {
     switch (var(VAR_ROUTE107_STATE)){
         case 0: call(BeachBattle_ObjectSetUp_Script)
         case 1: call(BeachBattle_BattleSetUp_Script)

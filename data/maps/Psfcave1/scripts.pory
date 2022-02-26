@@ -1,0 +1,9 @@
+mapscripts Psfcave1_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcave1_MapScripts_OnTransition)
+    }
+}
+
+script Psfcave1_MapScripts_OnTransition {
+}
+

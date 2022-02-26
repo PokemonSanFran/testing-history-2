@@ -60,10 +60,11 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    call TheStrikeStrikesBack_PhoneCall_Dialogue 
+    setvar VAR_STORYLINE_STATE 17
 	end
 
 Debug_Script_2::
+    call TheStrikeStrikesBack_PhoneCall_Dialogue 
 	end
 
 Debug_Script_3::

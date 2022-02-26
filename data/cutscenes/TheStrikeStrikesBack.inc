@@ -1,3 +1,8 @@
+TheStrikeStrikesBack_HideObject_Script::
+	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS
+	return
+
+
 TheStrikeStrikesBack_ObjectSetup_Script::
 	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK
 	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
@@ -57,12 +62,19 @@ TheStrikeStrikesBack_PhoneCall_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_OhHi
+	special GetCurrentMap
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
+	compare VAR_TEMP_0, 31
+	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
+	compare VAR_TEMP_0, 37
+	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
+	compare VAR_TEMP_0, 38
+	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
+	compare VAR_TEMP_0, 42
+	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
 	msgbox gText_TheStrikeStrikesBack_IKnowImLate
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_CongratsOnYourFeat
+TheStrikeStrikesBack_PhoneCall_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_ThankYou
@@ -81,14 +93,35 @@ TheStrikeStrikesBack_PhoneCall_Dialogue::
 	waitse
 	msgbox gText_TheStrikeStrikesBack_DoYouWant, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_1
+	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_12
 	closemessage
 	warpsilent MAP_PSFROUTE22, 255, 21, 25
-	return
+TheStrikeStrikesBack_PhoneCall_Dialogue_11:
+	releaseall
+	end
 
-TheStrikeStrikesBack_PhoneCall_Dialogue_1:
+TheStrikeStrikesBack_PhoneCall_Dialogue_2:
+	msgbox gText_TheStrikeStrikesBack_CongratsOnYourFeat
+	goto TheStrikeStrikesBack_PhoneCall_Dialogue_1
+
+TheStrikeStrikesBack_PhoneCall_Dialogue_12:
 	closemessage
-	return
+	goto TheStrikeStrikesBack_PhoneCall_Dialogue_11
+
+
+TheStrikeStrikesBack_SetUpPostWarp_Script::
+	lockall
+	setvar VAR_ROUTE110_STATE, 2
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_0, 21
+	goto_if_ne TheStrikeStrikesBack_SetUpPostWarp_Script_2
+TheStrikeStrikesBack_SetUpPostWarp_Script_1:
+	end
+
+TheStrikeStrikesBack_SetUpPostWarp_Script_2:
+	warpsilent MAP_PSFROUTE22, 255, 21, 25
+	waitstate
+	goto TheStrikeStrikesBack_SetUpPostWarp_Script_1
 
 
 TheStrikeStrikesBack_Congrats_Dialogue::
@@ -116,11 +149,7 @@ TheStrikeStrikesBack_Congrats_Dialogue::
 
 
 TheStrikeStrikesBack_Intro_Dialogue::
-	setvar VAR_ROUTE110_STATE, 2
-	call TheStrikeStrikesBack_FlyIntoFrame
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL
-	applymovement OBJ_EVENT_ID_PLAYER, TurnVisible
-	waitmovement 0
+	setvar VAR_ROUTE110_STATE, 3
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AndCongratulations
@@ -275,8 +304,7 @@ gText_TheStrikeStrikesBack_AskedMeToPick::
 	.string "go.$"
 
 gText_TheStrikeStrikesBack_AndCongratulations::
-	.string "Thanks, Psftransrival! And\n"
-	.string "congratulations to you, {PLAYER}.\l"
+	.string "Congratulations to you, {PLAYER}!\n"
 	.string "You're caught up on the strikes, right?$"
 
 gText_TheStrikeStrikesBack_ISawThemOn::
