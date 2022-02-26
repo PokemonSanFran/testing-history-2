@@ -215,6 +215,7 @@ EnterPsfleader7_StartGymBattle_Script::
 EnterPsfleader7_Psfleader7Defeated_Script::
 	lockall
 	setflag FLAG_BADGE07_GET
+	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_GYM_7_STATE, 4
 	msgbox gText_EnterPsfleader7_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare

@@ -56,6 +56,8 @@ TheStrikeStrikesBack_PhoneCall_Dialogue::
 	addvar VAR_STORYLINE_STATE, 1
 	playse SE_POKENAV_CALL
 	waitse
+	playse SE_POKENAV_CALL
+	waitse
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_HelloPlayer

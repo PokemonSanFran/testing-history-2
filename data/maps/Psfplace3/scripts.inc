@@ -1,8 +1,13 @@
 Psfplace3_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfplace3_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace3_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Psfplace3_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	goto Battle8_SetUpObject_Script
 	return
+
+Psfplace3_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 17, TheStrikeStrikesBack_PhoneCall_Dialogue
+	.2byte 0
 

@@ -144,6 +144,7 @@ BeachBattle_StartBattle_Script::
 
 BeachBattle_PostBattle_Dialogue::
 	lockall
+	addvar VAR_STORYLINE_STATE, 1
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	setvar VAR_ROUTE107_STATE, 2
 	setvar VAR_0x8000, MUGSHOT_HILDA

@@ -1,10 +1,15 @@
 Psfcity5_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity5_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcity5_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Psfcity5_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	goto Psfcity5_MapScripts_OnTransition
 	return
+
+Psfcity5_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 17, TheStrikeStrikesBack_PhoneCall_Dialogue
+	.2byte 0
 
 
 Psfcity5_MapScripts_OnTransition::

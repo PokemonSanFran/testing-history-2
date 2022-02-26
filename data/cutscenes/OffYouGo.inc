@@ -21,6 +21,8 @@ OffYouGo_WakeUp_Dialogue::
 	setvar VAR_STORYLINE_STATE, 22
 	playse SE_POKENAV_CALL
 	waitse
+	playse SE_POKENAV_CALL
+	waitse
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_VSGarbador_HuhHello

@@ -301,6 +301,7 @@ KogaRaisonDetre_NewsStory_Script::
 	applymovement 4, KogaRaisonDetre_LeaveDiningRoomCrying
 	waitmovement 0
 	removeobject 4
+	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_ROUTE105_STATE, 4
 	setvar VAR_ROUTE106_STATE, 1
 	releaseall

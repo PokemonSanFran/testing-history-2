@@ -71,6 +71,7 @@ EnterPsfleader8_StartGymBattle_Script::
 EnterPsfleader8_Psfleader8Deafeated_Script::
 	lockall
 	setflag FLAG_BADGE08_GET
+	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_GYM_8_STATE, 4
 	msgbox gText_EnterPsfleader8_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare

@@ -1,8 +1,13 @@
 Psfcity18_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity18_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcity18_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Psfcity18_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call AndWeMarchOn_ObjectSetUp_Script
 	return
+
+Psfcity18_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 17, TheStrikeStrikesBack_PhoneCall_Dialogue
+	.2byte 0
 

@@ -114,6 +114,7 @@ Battle8_InteractBattle_Script::
 
 Battle8_PsfnativerivalDefeated_Dialogue::
 	lockall
+	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Battle8_YouKnowItDoesnt
