@@ -60,7 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    call VSGarbodor_MovePsftransrival_Script 
+    call TheStrikeStrikesBack_PhoneCall_Dialogue 
 	end
 
 Debug_Script_2::

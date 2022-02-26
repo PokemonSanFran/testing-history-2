@@ -37,7 +37,7 @@ script TheStrikeStrikesBack_FlyIntoFrame {
 }
 
 script TheStrikeStrikesBack_FlyOutFrame {
-        applymovement(PSFTRANSRIVAL, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(PSFTRANSRIVAL, Common_Movement_WalkInPlaceFasterDown)
         waitmovement(0)
         delay(50)
         setfieldeffectargument(0,1)
@@ -50,6 +50,51 @@ script TheStrikeStrikesBack_FlyOutFrame {
         warpsilent(MAP_PSFROUTE22,255,21,25)
         setflag(FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL)
 }
+
+script TheStrikeStrikesBack_PhoneCall_Dialogue {
+    lockall
+    setvar(VAR_ROUTE110_STATE,1)
+    addvar(VAR_STORYLINE_STATE,1)
+    playse(SE_POKENAV_CALL)
+    waitse
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+    msgbox(gText_TheStrikeStrikesBack_HelloPlayer)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+    msgbox(gText_TheStrikeStrikesBack_OhHi)
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+    msgbox(gText_TheStrikeStrikesBack_IKnowImLate)
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+    msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+    msgbox(gText_TheStrikeStrikesBack_ThankYou)
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+    msgbox(gText_TheStrikeStrikesBack_CutToTheChase)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+    msgbox(gText_TheStrikeStrikesBack_SureRightNow)
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+    msgbox(gText_TheStrikeStrikesBack_AsSoonAsYouCan)
+        callnative(ClearMugshot)
+        closemessage
+        playse(SE_POKENAV_HANG_UP)
+        waitse
+        msgbox(gText_TheStrikeStrikesBack_DoYouWant,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == NO ) {
+            closemessage
+        } else {
+            closemessage
+        warpsilent(MAP_PSFROUTE22,255,21,25)
+        }
+}
+
 
 script TheStrikeStrikesBack_Congrats_Dialogue {
     lockall
@@ -293,4 +338,30 @@ text gText_TheStrikeStrikesBack_AgitatedWildGarbodor {
 text gText_TheStrikeStrikesBack_IllBeInThere {
     format("{PLAYER}, I'll be in there when you're ready.")
 }
-
+text gText_TheStrikeStrikesBack_HelloPlayer {
+    format("Hello {PLAYER}!")
+}
+text gText_TheStrikeStrikesBack_OhHi {
+    format("Psfbadboss! Aren't you busy...?")
+}
+text gText_TheStrikeStrikesBack_IKnowImLate {
+    format("So busy in fact, that I'm late in congratulating you. I hear you've got all eight badges!")
+}
+text gText_TheStrikeStrikesBack_CongratsOnYourFeat {
+    format("Nonsense, I'm never too busy to congratulate you on all eight badges!")
+}
+text gText_TheStrikeStrikesBack_ThankYou {
+    format("Heh, thanks! Means a lot.")
+}
+text gText_TheStrikeStrikesBack_CutToTheChase {
+    format("You're right though, we're both about to be very busy. I'll cut to the chase. Could you head down to Psfroute22? Psfbadadmin will meet you there and explain everything.")
+}
+text gText_TheStrikeStrikesBack_SureRightNow {
+    format("Sure. Right now?")
+}
+text gText_TheStrikeStrikesBack_AsSoonAsYouCan {
+    format("As soon as you can.")
+}
+text gText_TheStrikeStrikesBack_DoYouWant {
+    format("Do you want to go to Psfroute22?")
+}

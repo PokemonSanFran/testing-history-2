@@ -45,6 +45,52 @@ TheStrikeStrikesBack_FlyOutFrame::
 	return
 
 
+TheStrikeStrikesBack_PhoneCall_Dialogue::
+	lockall
+	setvar VAR_ROUTE110_STATE, 1
+	addvar VAR_STORYLINE_STATE, 1
+	playse SE_POKENAV_CALL
+	waitse
+	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	callnative DrawMugshot
+	msgbox gText_TheStrikeStrikesBack_HelloPlayer
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_TheStrikeStrikesBack_OhHi
+	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	callnative DrawMugshot
+	msgbox gText_TheStrikeStrikesBack_IKnowImLate
+	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	callnative DrawMugshot
+	msgbox gText_TheStrikeStrikesBack_CongratsOnYourFeat
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_TheStrikeStrikesBack_ThankYou
+	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	callnative DrawMugshot
+	msgbox gText_TheStrikeStrikesBack_CutToTheChase
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_TheStrikeStrikesBack_SureRightNow
+	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	callnative DrawMugshot
+	msgbox gText_TheStrikeStrikesBack_AsSoonAsYouCan
+	callnative ClearMugshot
+	closemessage
+	playse SE_POKENAV_HANG_UP
+	waitse
+	msgbox gText_TheStrikeStrikesBack_DoYouWant, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_1
+	closemessage
+	warpsilent MAP_PSFROUTE22, 255, 21, 25
+	return
+
+TheStrikeStrikesBack_PhoneCall_Dialogue_1:
+	closemessage
+	return
+
+
 TheStrikeStrikesBack_Congrats_Dialogue::
 	lockall
 	setvar VAR_ROUTE110_STATE, 1
@@ -300,3 +346,37 @@ gText_TheStrikeStrikesBack_AgitatedWildGarbodor::
 gText_TheStrikeStrikesBack_IllBeInThere::
 	.string "{PLAYER}, I'll be in there when you're\n"
 	.string "ready.$"
+
+gText_TheStrikeStrikesBack_HelloPlayer::
+	.string "Hello {PLAYER}!$"
+
+gText_TheStrikeStrikesBack_OhHi::
+	.string "Psfbadboss! Aren't you busy...?$"
+
+gText_TheStrikeStrikesBack_IKnowImLate::
+	.string "So busy in fact, that I'm late in\n"
+	.string "congratulating you. I hear you've got\l"
+	.string "all eight badges!$"
+
+gText_TheStrikeStrikesBack_CongratsOnYourFeat::
+	.string "Nonsense, I'm never too busy to\n"
+	.string "congratulate you on all eight badges!$"
+
+gText_TheStrikeStrikesBack_ThankYou::
+	.string "Heh, thanks! Means a lot.$"
+
+gText_TheStrikeStrikesBack_CutToTheChase::
+	.string "You're right though, we're both about to\n"
+	.string "be very busy. I'll cut to the chase.\l"
+	.string "Could you head down to Psfroute22?\l"
+	.string "Psfbadadmin will meet you there and\l"
+	.string "explain everything.$"
+
+gText_TheStrikeStrikesBack_SureRightNow::
+	.string "Sure. Right now?$"
+
+gText_TheStrikeStrikesBack_AsSoonAsYouCan::
+	.string "As soon as you can.$"
+
+gText_TheStrikeStrikesBack_DoYouWant::
+	.string "Do you want to go to Psfroute22?$"
