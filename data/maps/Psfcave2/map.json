@@ -21,8 +21,8 @@
       "x": 48,
       "y": 31,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE2_INNER",
-      "dest_warp_id": 1
+      "dest_map": "MAP_PSFROUTE61",
+      "dest_warp_id": 0
     },
     {
       "x": 49,

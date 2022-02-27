@@ -1,5 +1,30 @@
-//Psftransrival is standing at the entrance of Psfcave2. This cutscene plays if the player interacts with them or tries to walk inside.
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 1
 
+script EnterTheMaster_HideObject_Script {
+    setflag(FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL)
+}
+
+script EnterTheMaster_Object_SetUp_Script {
+    clearflag(FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL)
+}
+
+script EnterTheMaster_Interact_Script {
+    lockall
+    faceplayer
+    goto(EnterTheMaster_ReadyDialogue)
+}
+
+script EnterTheMaster_WalkingTrigger_Script {
+    lockall
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    waitmovement(0)
+    goto(EnterTheMaster_ReadyDialogue)
+}
+
+script EnterTheMaster_ReadyDialogue {
+
+setvar(VAR_ROUTE116_STATE,1)
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_MorningReady)
@@ -15,10 +40,24 @@ msgbox(gText_EnterTheMaster_DaddySentAnother)
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_ThanksDad)
+callnative(ClearMugshot)
+closemessage
+
+applymovement(PSFTRANSRIVAL,EnterTheMaster_WalkIntoWoods)
+waitmovement(0)
+playse(SE_EXIT)
+waitse
+removeobject(PSFTRANSRIVAL)
+releaseall
+end
+
+//PSF TODO implement follow me nonsense
+}
 
 //Both trainers walk into Psfcave2. While inside, Psftransrival will follow the player around and battle alongside them.
 
 //If the player interacts with Psftransrival, they will randomly say one of the following:
+script EnterTheMaster_InteractFollower_Script {
 
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
@@ -85,7 +124,7 @@ msgbox(gText_EnterTheMaster_IsThatWhatYoure)
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_EveryClientAlways)
-Psfelite begins to pace around the clearing.
+//Psfelite begins to pace around the clearing.
 
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
@@ -134,17 +173,23 @@ msgbox(gText_EnterTheMaster_SoWhatsNext)
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_WellUntilNSFigures)
+}
+
+movement EnterTheMaster_WalkIntoWoods {
+    walk_up
+    step_end
+}
 
 text gText_EnterTheMaster_MorningReady{
 	format("Morning. Ready to find this old dude?")
 	}
 
 text gText_EnterTheMaster_AsReadyAs{
-	format("As ready as I’m going to be!")
+	format("As ready as I'm going to be!")
 	}
 
 text gText_EnterTheMaster_DaddySentAnother{
-	format("Daddy sent another care package, so if we stick together, I’ll keep you healed up.")
+	format("Daddy sent another care package, so if we stick together, I'll keep you healed up.")
 	}
 
 text gText_EnterTheMaster_ThanksDad{
@@ -152,35 +197,35 @@ text gText_EnterTheMaster_ThanksDad{
 	}
 
 text gText_EnterTheMaster_HowDoYouThink{
-	format("How do you think my new Pokémon is faring? I’m curious to see how it integrates with the rest of my team.")
+	format("How do you think my new Pokémon is faring? I'm curious to see how it integrates with the rest of my team.")
 	}
 
 text gText_EnterTheMaster_YouKnow{
-	format("You know, I’m really sick of Psfgoodteam’s shit. Its their fault we’re stuck in this stupid forest.")
+	format("You know, I'm really sick of Psfgoodteam's shit. Its their fault we're stuck in this stupid forest.")
 	}
 
 text gText_EnterTheMaster_IThoughtGymLeaders{
-	format("I thought Psfregion1’s Gym Leaders would be tougher. I wonder how their old Elite Four stacks up to Unova’s?")
+	format("I thought Psfregion1's Gym Leaders would be tougher. I wonder how their old Elite Four stacks up to Unova's?")
 	}
 
 text gText_EnterTheMaster_DoYouThinkTheyre{
-	format("Do you think they’re going to be worth all this hassle?")
+	format("Do you think they're going to be worth all this hassle?")
 	}
 
 text gText_EnterTheMaster_TiredAlready{
-	format("Tired already? I’ll be waiting here.")
+	format("Tired already? I'll be waiting here.")
 	}
 
 text gText_EnterTheMaster_IDontThinkTheres{
-	format("I don’t think there’s anywhere else for them to be… they’ve gotta be in here.")
+	format("I don't think there's anywhere else for them to be… they've gotta be in here.")
 	}
 
 text gText_EnterTheMaster_YouThinkTheyve{
-	format("You think they’ve just been alone in here, waiting for us for Dialga knows how long?")
+	format("You think they've just been alone in here, waiting for us for Dialga knows how long?")
 	}
 
 text gText_EnterTheMaster_TheyreGettingPaid{
-	format("They’re getting paid. ")
+	format("They're getting paid. ")
 	}
 
 text gText_EnterTheMaster_WelcomeTo{
@@ -188,7 +233,7 @@ text gText_EnterTheMaster_WelcomeTo{
 	}
 
 text gText_EnterTheMaster_ThanksYoure{
-	format("Thanks. You’re Psfelite?")
+	format("Thanks. You're Psfelite?")
 	}
 
 text gText_EnterTheMaster_AndMyNotebook{
@@ -199,23 +244,23 @@ text gText_EnterTheMaster_YouGaveNotebook{
 	format("You gave Psfelite3 the notebook.")
 }
 text gText_EnterTheMaster_GettingThemToBattle{
-	format("I hope Pokémon 1 and Pokémon 2 in Psfcave1 weren’t too much trouble. Getting them to battle without my direct commands was certainly a challenge.")
+	format("I hope Pokémon 1 and Pokémon 2 in Psfcave1 weren't too much trouble. Getting them to battle without my direct commands was certainly a challenge.")
 	}
 
 text gText_EnterTheMaster_IsThatWhatYoure{
-	format("Is that what you’re teaching us? Battling with our eyes closed? Sounds useful.")
+	format("Is that what you're teaching us? Battling with our eyes closed? Sounds useful.")
 	}
 
 text gText_EnterTheMaster_EveryClientAlways{
-	format("Every client always sends me a smartass… Let’s get started.")
+	format("Every client always sends me a smartass… Let's get started.")
 	}
 
 text gText_EnterTheMaster_AreEitherOfYou{
-	format("Are either of you familiar with the Scott’s Trainer Theory?")
+	format("Are either of you familiar with the Scott's Trainer Theory?")
 	}
 
 text gText_EnterTheMaster_YeahThatsTheBattleFrontier{
-	format("Yeah, that’s the Battle Frontier guy, right?")
+	format("Yeah, that's the Battle Frontier guy, right?")
 	}
 
 text gText_EnterTheMaster_HmmTheSmartass{
@@ -227,7 +272,7 @@ text gText_EnterTheMaster_OhDoesEachPart{
 	}
 
 text gText_EnterTheMaster_SorryDidntGoTo{
-	format("Sorry, didn’t go to Battle prep school. Who is Scott and what are these principles?")
+	format("Sorry, didn't go to Battle prep school. Who is Scott and what are these principles?")
 	}
 
 text gText_EnterTheMaster_ScottIsTheFounder{
@@ -238,11 +283,11 @@ text gText_EnterTheMaster_OneEternity{
 	format("One eternity later…")
 }
 text gText_EnterTheMaster_AndSoConcludes{
-	format("…and so concludes my theory on how your silly little tests correspond with each of Scott’s 7 principles.")
+	format("…and so concludes my theory on how your silly little tests correspond with each of Scott's 7 principles.")
 	}
 
 text gText_EnterTheMaster_SortaKindaNotReally{
-	format("…sorta, kinda, not really. If you think life is going to map one to one like that for you, you’ve got a rude awakening ahead.")
+	format("…sorta, kinda, not really. If you think life is going to map one to one like that for you, you've got a rude awakening ahead.")
 	}
 
 text gText_EnterTheMaster_Oh{
@@ -250,7 +295,7 @@ text gText_EnterTheMaster_Oh{
 	}
 
 text gText_EnterTheMaster_SoWhatsNext{
-	format("So what’s next?")
+	format("So what's next?")
 	}
 
 text gText_EnterTheMaster_WellUntilNSFigures{

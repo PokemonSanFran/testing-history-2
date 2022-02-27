@@ -3,7 +3,6 @@ mapscripts Psfroute22_MapScripts {
         goto(Psfroute22_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ROUTE110_STATE, 1: TheStrikeStrikesBack_SetUpPostWarp_Script 
         VAR_ROUTE110_STATE, 2: TheStrikeStrikesBack_Intro_Dialogue
         VAR_ROUTE112_STATE, 1: VSGarbodor_Arrest_Script
     ]

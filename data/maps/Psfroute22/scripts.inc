@@ -8,7 +8,6 @@ Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE110_STATE, 1, TheStrikeStrikesBack_SetUpPostWarp_Script
 	map_script_2 VAR_ROUTE110_STATE, 2, TheStrikeStrikesBack_Intro_Dialogue
 	map_script_2 VAR_ROUTE112_STATE, 1, VSGarbodor_Arrest_Script
 	.2byte 0

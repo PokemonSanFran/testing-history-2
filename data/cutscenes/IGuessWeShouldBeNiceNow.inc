@@ -328,6 +328,7 @@ IGuessWeShouldBeNiceNow_ExitCave_Script::
 
 
 IGuessWeShouldBeNiceNow_EnterPsfcity10::
+	setvar VAR_ROUTE116_STATE, 2
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming
