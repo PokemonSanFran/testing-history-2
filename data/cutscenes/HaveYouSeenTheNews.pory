@@ -13,6 +13,7 @@ script HaveYouSeenTheNews_Object_CleanUp_Script {
 
 script HaveYouSeenTheNews_AskHelp_Dialogue {
     setvar(VAR_ROUTE116_STATE,8)
+    setvar(VAR_PSFBADGUY1TOWER_2F_STATE,3)
     lockall
 
 playse(SE_PIN)
@@ -64,7 +65,7 @@ msgbox(gText_HaveYouSeenTheNews_CoolTheCar)
 callnative(ClearMugshot)
 closemessage
 releaseall
-warpsilent(MAP_PSFROUTE22,255,1,1)
+warpsilent(MAP_PSFBADGUY1TOWER_2F,255,7,14)
 end
 }
 }

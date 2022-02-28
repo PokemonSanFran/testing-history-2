@@ -9,3 +9,11 @@
 6: ???
 7: Finished puzzles, toggles "Have You Seen The News"
 8: removes everybody from the clearing
+
+#VAR_PSFBADGUY1TOWER_2F_STATE
+**RELEVANCE**: Tracking state of the 2nd floor of Salesforce Tower
+
+1: Has stepped onto the floor and has been spotted by Sabrina
+2: Has been formerly introduced to Sabrina
+3: Set up for Welcome to the War Room, start script when player gets on the floor
+4: Welcome the War Room has played out
