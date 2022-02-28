@@ -1,10 +1,20 @@
 EnterTheMaster_HideObject_Script::
 	setflag FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL
+	setflag FLAG_HIDE_PSFCAVE2_PSFELITE3
+	setflag FLAG_HIDE_PSFCAVE2_PSFBADADMIN
 	return
 
 
 EnterTheMaster_Object_SetUp_Script::
 	clearflag FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL
+	setflag FLAG_HIDE_PSFCAVE2_PSFBADADMIN
+	return
+
+
+EnterTheMaster_Clearing_Object_SetUp_Script::
+	clearflag FLAG_HIDE_PSFCAVE2_PSFELITE3
+	clearflag FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL
+	setflag FLAG_HIDE_PSFCAVE2_PSFBADADMIN
 	return
 
 
@@ -24,7 +34,7 @@ EnterTheMaster_WalkingTrigger_Script::
 
 
 EnterTheMaster_ReadyDialogue::
-	setvar VAR_ROUTE116_STATE, 1
+	setvar VAR_ROUTE116_STATE, 2
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_MorningReady
@@ -49,21 +59,55 @@ EnterTheMaster_ReadyDialogue::
 
 
 EnterTheMaster_InteractFollower_Script::
+	lockall
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_HowDoYouThink
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_YouKnow
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_IThoughtGymLeaders
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_DoYouThinkTheyre
+	random 4
+	switch VAR_RESULT
+	case 0, EnterTheMaster_InteractFollower_Script_3
+	case 1, EnterTheMaster_InteractFollower_Script_4
+	case 2, EnterTheMaster_InteractFollower_Script_5
+	case 3, EnterTheMaster_InteractFollower_Script_6
+EnterTheMaster_InteractFollower_Script_1:
+	closemessage
+	callnative ClearMugshot
+	releaseall
+	end
+
+EnterTheMaster_InteractFollower_Script_3:
+	msgbox gText_EnterTheMaster_HowDoYouThink, MSGBOX_NPC
+	goto EnterTheMaster_InteractFollower_Script_1
+
+EnterTheMaster_InteractFollower_Script_4:
+	msgbox gText_EnterTheMaster_YouKnow, MSGBOX_NPC
+	goto EnterTheMaster_InteractFollower_Script_1
+
+EnterTheMaster_InteractFollower_Script_5:
+	msgbox gText_EnterTheMaster_IThoughtGymLeaders, MSGBOX_NPC
+	goto EnterTheMaster_InteractFollower_Script_1
+
+EnterTheMaster_InteractFollower_Script_6:
+	msgbox gText_EnterTheMaster_DoYouThinkTheyre, MSGBOX_NPC
+	goto EnterTheMaster_InteractFollower_Script_1
+
+
+EnterTheMaster_LeaveWoods_Script::
+	lockall
+	faceplayer
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_TiredAlready
+	closemessage
+	callnative ClearMugshot
+	return
+
+
+EnterTheMaster_CompleteMaze_Dialogue::
+	setvar VAR_ROUTE116_STATE, 3
+	lockall
+	setobjectxy 1, 24, 22
+	setobjectxyperm 1, 24, 22
+	faceplayer
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_IDontThinkTheres
@@ -73,6 +117,21 @@ EnterTheMaster_InteractFollower_Script::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_TheyreGettingPaid
+	closemessage
+	callnative ClearMugshot
+	applymovement 1, EnterTheMaster_WalkIntoWoods
+	waitmovement 0
+	playse SE_EXIT
+	waitse
+	removeobject 1
+	releaseall
+	end
+
+
+EnterTheMaster_ClearingIntro_Dialogue::
+	setvar VAR_ROUTE116_STATE, 4
+	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachPsfelite3
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_WelcomeTo
@@ -82,7 +141,11 @@ EnterTheMaster_InteractFollower_Script::
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_AndMyNotebook
-	msgbox gText_EnterTheMaster_YouGaveNotebook
+	callnative ClearMugshot
+	closemessage
+	applymovement 2, Common_Movement_FaceLeft
+	applymovement 1, EnterTheMaster_GiveNotebook
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_GettingThemToBattle
@@ -92,6 +155,12 @@ EnterTheMaster_InteractFollower_Script::
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_EveryClientAlways
+	closemessage
+	callnative ClearMugshot
+	applymovement 1, EnterTheMaster_StandNextToPlayer
+	waitmovement 0
+	applymovement 2, EnterTheMaster_Pace
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_AreEitherOfYou
@@ -107,10 +176,18 @@ EnterTheMaster_InteractFollower_Script::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_SorryDidntGoTo
+	applymovement 1, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_ScottIsTheFounder
+	fadescreen FADE_TO_BLACK
 	msgbox gText_EnterTheMaster_OneEternity
+	applymovement 1, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_AndSoConcludes
@@ -126,10 +203,40 @@ EnterTheMaster_InteractFollower_Script::
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_WellUntilNSFigures
-	return
+	callnative ClearMugshot
+	closemessage
+	end
 
 
 EnterTheMaster_WalkIntoWoods:
+	walk_up
+	step_end
+
+EnterTheMaster_GiveNotebook:
+	walk_up
+	face_right
+	delay_16
+	walk_in_place_slow_right
+	step_end
+
+EnterTheMaster_StandNextToPlayer:
+	walk_down
+	face_up
+	step_end
+
+EnterTheMaster_Pace:
+	walk_left
+	walk_left
+	walk_right
+	walk_right
+	walk_left
+	walk_left
+	walk_right
+	walk_right
+	face_down
+	step_end
+
+EnterTheMaster_ApproachPsfelite3:
 	walk_up
 	step_end
 
@@ -186,13 +293,10 @@ gText_EnterTheMaster_WelcomeTo::
 	.string "Psfcave2. Excellent work so far!$"
 
 gText_EnterTheMaster_ThanksYoure::
-	.string "Thanks. You're Psfelite?$"
+	.string "Thanks. You're Psfelite3?$"
 
 gText_EnterTheMaster_AndMyNotebook::
 	.string "Yeah! And my notebook?$"
-
-gText_EnterTheMaster_YouGaveNotebook::
-	.string "You gave Psfelite3 the notebook.$"
 
 gText_EnterTheMaster_GettingThemToBattle::
 	.string "I hope Pokémon 1 and Pokémon 2 in\n"

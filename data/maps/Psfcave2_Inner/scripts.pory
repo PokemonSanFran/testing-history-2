@@ -1,0 +1,28 @@
+mapscripts Psfcave2_Inner_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcave2_Inner_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ROUTE116_STATE, 3: EnterTheMaster_ClearingIntro_Dialogue
+        VAR_ROUTE116_STATE, 7: HaveYouSeenTheNews_AskHelp_Dialogue
+    ]
+}
+
+script Psfcave2_Inner_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE116_STATE)) {
+        case 0: goto(EnterTheMaster_HideObject_Script)
+        case 3: goto(EnterTheMaster_Clearing_Object_SetUp_Script)
+        case 7: goto(HaveYouSeenTheNews_Object_SetUp_Script)
+        case 8: goto(HaveYouSeenTheNews_Object_CleanUp_Script)
+    }
+}
+
+script HaveYouSeenTheNews_SolvePuzzles {
+    setvar(VAR_ROUTE116_STATE,7)
+    msgbox("you've solved Psfelite3's tests. go back now.")
+    closemessage
+}
+
+
+
+

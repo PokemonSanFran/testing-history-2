@@ -1,12 +1,22 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFTRANSRIVAL = 1
+const PSFELITE3 = 2
 
 script EnterTheMaster_HideObject_Script {
     setflag(FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL)
+    setflag(FLAG_HIDE_PSFCAVE2_PSFELITE3)
+    setflag(FLAG_HIDE_PSFCAVE2_PSFBADADMIN)
 }
 
 script EnterTheMaster_Object_SetUp_Script {
     clearflag(FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL)
+    setflag(FLAG_HIDE_PSFCAVE2_PSFBADADMIN)
+}
+
+script EnterTheMaster_Clearing_Object_SetUp_Script {
+    clearflag(FLAG_HIDE_PSFCAVE2_PSFELITE3)
+    clearflag(FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL)
+    setflag(FLAG_HIDE_PSFCAVE2_PSFBADADMIN)
 }
 
 script EnterTheMaster_Interact_Script {
@@ -24,7 +34,7 @@ script EnterTheMaster_WalkingTrigger_Script {
 
 script EnterTheMaster_ReadyDialogue {
 
-setvar(VAR_ROUTE116_STATE,1)
+setvar(VAR_ROUTE116_STATE,2)
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_MorningReady)
@@ -54,35 +64,45 @@ end
 //PSF TODO implement follow me nonsense
 }
 
-//Both trainers walk into Psfcave2. While inside, Psftransrival will follow the player around and battle alongside them.
-
-//If the player interacts with Psftransrival, they will randomly say one of the following:
 script EnterTheMaster_InteractFollower_Script {
 
+lockall
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_HowDoYouThink)
+random(4)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_YouKnow)
+switch(var(VAR_RESULT)){
+    case 0: msgbox(gText_EnterTheMaster_HowDoYouThink,MSGBOX_NPC)
+    case 1: msgbox(gText_EnterTheMaster_YouKnow,MSGBOX_NPC)
+    case 2: msgbox(gText_EnterTheMaster_IThoughtGymLeaders,MSGBOX_NPC)
+    case 3: msgbox(gText_EnterTheMaster_DoYouThinkTheyre,MSGBOX_NPC)
+}
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_IThoughtGymLeaders)
+closemessage
+callnative(ClearMugshot)
+releaseall
+end
+}
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_DoYouThinkTheyre)
-
-//If the player attempts to leave Psfcave2:
-
+script EnterTheMaster_LeaveWoods_Script {
+    lockall
+    faceplayer
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_TiredAlready)
+closemessage
+callnative(ClearMugshot)
+}
 
-//When the player reaches the deepest part of the forest.
+script EnterTheMaster_CompleteMaze_Dialogue {
 
+setvar(VAR_ROUTE116_STATE,3)
+lockall
+    setobjectxy(PSFTRANSRIVAL,24,22) //PSF TODO Remove when followers are implemented
+    setobjectxyperm(PSFTRANSRIVAL,24,22)
+    //copyobjectxytoperm(PSFTRANSRIVAL)
+
+    faceplayer
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_IDontThinkTheres)
@@ -94,14 +114,28 @@ msgbox(gText_EnterTheMaster_YouThinkTheyve)
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_TheyreGettingPaid)
+closemessage
+callnative(ClearMugshot)
 
-//Psftransrival walks into the next section.
+applymovement(PSFTRANSRIVAL,EnterTheMaster_WalkIntoWoods)
+waitmovement(0)
+playse(SE_EXIT)
+waitse
+removeobject(PSFTRANSRIVAL)
+releaseall
+end
+}
 
-//The player walks into the next section.
+script EnterTheMaster_ClearingIntro_Dialogue {
+    setvar(VAR_ROUTE116_STATE,4)
+
+applymovement(PLAYER,EnterTheMaster_ApproachPsfelite3)
+waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_WelcomeTo)
+
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_ThanksYoure)
@@ -109,10 +143,12 @@ msgbox(gText_EnterTheMaster_ThanksYoure)
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_AndMyNotebook)
-//The player walks towards Psfelite3.
+callnative(ClearMugshot)
+closemessage
 
-msgbox(gText_EnterTheMaster_YouGaveNotebook)
-
+applymovement(PSFELITE3,Common_Movement_FaceLeft)
+applymovement(PSFTRANSRIVAL,EnterTheMaster_GiveNotebook)
+waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
@@ -124,11 +160,19 @@ msgbox(gText_EnterTheMaster_IsThatWhatYoure)
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_EveryClientAlways)
-//Psfelite begins to pace around the clearing.
+closemessage
+callnative(ClearMugshot)
+
+applymovement(PSFTRANSRIVAL,EnterTheMaster_StandNextToPlayer)
+waitmovement(0)
+
+applymovement(PSFELITE3,EnterTheMaster_Pace)
+waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_AreEitherOfYou)
+
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_YeahThatsTheBattleFrontier)
@@ -141,19 +185,24 @@ setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_OhDoesEachPart)
 
-
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_SorryDidntGoTo)
 
-//Psftransrival faces the player.
+applymovement(PSFTRANSRIVAL,Common_Movement_FaceRight)
+applymovement(PLAYER,Common_Movement_FaceLeft)
+waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_ScottIsTheFounder)
 
-//Cut to:
+fadescreen(FADE_TO_BLACK)
 msgbox(gText_EnterTheMaster_OneEternity)
+applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+applymovement(PLAYER,Common_Movement_FaceUp)
+waitmovement(0)
+fadescreen(FADE_FROM_BLACK)
 
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
@@ -173,6 +222,9 @@ msgbox(gText_EnterTheMaster_SoWhatsNext)
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_WellUntilNSFigures)
+callnative(ClearMugshot)
+closemessage
+end
 }
 
 movement EnterTheMaster_WalkIntoWoods {
@@ -233,16 +285,13 @@ text gText_EnterTheMaster_WelcomeTo{
 	}
 
 text gText_EnterTheMaster_ThanksYoure{
-	format("Thanks. You're Psfelite?")
+	format("Thanks. You're Psfelite3?")
 	}
 
 text gText_EnterTheMaster_AndMyNotebook{
 	format("Yeah! And my notebook?")
 	}
 
-text gText_EnterTheMaster_YouGaveNotebook{
-	format("You gave Psfelite3 the notebook.")
-}
 text gText_EnterTheMaster_GettingThemToBattle{
 	format("I hope Pokémon 1 and Pokémon 2 in Psfcave1 weren't too much trouble. Getting them to battle without my direct commands was certainly a challenge.")
 	}
@@ -302,3 +351,30 @@ text gText_EnterTheMaster_WellUntilNSFigures{
 	format("Well, until NS figures out what these quests are, just leave and come back.")
 	}
 
+movement EnterTheMaster_GiveNotebook {
+    walk_up
+    face_right
+    delay_16
+    walk_in_place_slow_right
+    step_end
+}
+
+movement EnterTheMaster_StandNextToPlayer {
+    walk_down
+    face_up
+    step_end
+}
+
+movement EnterTheMaster_Pace {
+    walk_left * 2
+    walk_right *2
+    walk_left * 2
+    walk_right *2
+    face_down
+    step_end
+}
+
+movement EnterTheMaster_ApproachPsfelite3 {
+    walk_up * 1
+    step_end
+}

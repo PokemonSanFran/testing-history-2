@@ -1,0 +1,118 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 1
+const PSFELITE3 = 2
+const PSFBADADMIN = 3
+
+script HaveYouSeenTheNews_Object_SetUp_Script {
+    clearflag(FLAG_HIDE_PSFCAVE2_PSFBADADMIN)
+}
+
+script HaveYouSeenTheNews_Object_CleanUp_Script {
+    setflag(FLAG_HIDE_PSFCAVE2_PSFELITE3)
+}
+
+script HaveYouSeenTheNews_AskHelp_Dialogue {
+    setvar(VAR_ROUTE116_STATE,8)
+    lockall
+
+playse(SE_PIN)
+applymovement(PLAYER,Common_Movement_ExclamationMark)
+waitmovement(0)
+
+applymovement(PLAYER,EnterTheMaster_ApproachPsfelite3)
+waitmovement(0)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_HaveYouSeenTheNews_WedLikeYourHelp)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_HaveYouSeenTheNews_ShitWhatDid)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_HaveYouSeenTheNews_YoureStartingToSound)
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_HaveYouSeenTheNews_HowAreWeGoing)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_HaveYouSeenTheNews_NoTimeToExplain,MSGBOX_YESNO)
+
+if (var(VAR_RESULT) == NO){
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_HaveYouSeenTheNews_FineButDontDawdle)
+callnative(ClearMugshot)
+closemessage
+
+applymovement(PSFBADADMIN,HaveYouSeenTheNews_LeaveClearingA)
+applymovement(PSFTRANSRIVAL,HaveYouSeenTheNews_LeaveClearingB)
+waitmovement(0)
+playse(SE_EXIT)
+waitse
+removeobject(PSFTRANSRIVAL)
+removeobject(PSFBADADMIN)
+} else {
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_HaveYouSeenTheNews_CoolTheCar)
+callnative(ClearMugshot)
+closemessage
+releaseall
+warpsilent(MAP_PSFROUTE22,255,1,1)
+end
+}
+}
+
+script HaveYouSeenTheNews_Interact_Script {
+    lockall
+setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+callnative(DrawMugshot)
+msgbox(gText_HaveYouSeenTheNews_SoundsLikeYouve)
+callnative(ClearMugshot)
+closemessage
+releaseall
+end
+}
+
+
+
+
+text gText_HaveYouSeenTheNews_WedLikeYourHelp{
+	format("We'd like your help again.")
+	}
+text gText_HaveYouSeenTheNews_ShitWhatDid{
+	format("Shit, what did Psfgoodteam do now?")
+	}
+text gText_HaveYouSeenTheNews_YoureStartingToSound{
+	format("You're starting to sound like a native… they've completely infiltrated our social media platforms. The mayor was impressed with your work at Psfplace14, and thinks you two might be able to help.")
+	}
+text gText_HaveYouSeenTheNews_HowAreWeGoing{
+	format("How are we going to help? Sounds a little above us.")
+	}
+text gText_HaveYouSeenTheNews_NoTimeToExplain{
+	format("No time to explain! We're heading to Psfbadguy1tower right now. Do you want to ride in our Psfcompany5, {PLAYER}?")
+	}
+text gText_HaveYouSeenTheNews_FineButDontDawdle{
+	format("Fine, but don't dawdle. Come to the second floor.")
+	}
+text gText_HaveYouSeenTheNews_SoundsLikeYouve{
+	format("Sounds like you've been deputized, kid. Just make sure you don't end up a pawn, yeah? You've got real potential.")
+	}
+text gText_HaveYouSeenTheNews_CoolTheCar{
+	format("Cool, the car is waiting in Psfcity10.")
+	}
+
+movement HaveYouSeenTheNews_LeaveClearingA {
+    walk_down * 3
+    step_end
+}
+movement HaveYouSeenTheNews_LeaveClearingB {
+    walk_down * 2
+    step_end
+}

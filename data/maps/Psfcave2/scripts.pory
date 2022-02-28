@@ -1,0 +1,17 @@
+mapscripts Psfcave2_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcave2_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+
+    ]
+}
+
+script Psfcave2_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE116_STATE)) {
+        case 2: goto(EnterTheMaster_Object_SetUp_Script)
+        case 3: goto(EnterTheMaster_HideObject_Script)
+}
+}
+
+
