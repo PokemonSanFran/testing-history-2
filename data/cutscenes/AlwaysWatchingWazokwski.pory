@@ -127,7 +127,7 @@ script AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue{
 }
 script AlwaysWatchingWazowski_IgnoringPsfchara1_Dialogue{
     lockall    
-        msgbox(gText_AlwaysWatchingWazowski__IgnoringPsfchara1_Text1)
+        msgbox(gText_AlwaysWatchingWazowski__IgnorePlayer)
         closemessage
         releaseall
         end

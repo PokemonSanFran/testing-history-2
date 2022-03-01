@@ -18,6 +18,7 @@ Psfcave2_Inner_MapScripts_OnTransition::
 	case 0, Psfcave2_Inner_MapScripts_OnTransition_2
 	case 3, Psfcave2_Inner_MapScripts_OnTransition_3
 	case 7, Psfcave2_Inner_MapScripts_OnTransition_4
+	case 8, Psfcave2_Inner_MapScripts_OnTransition_5
 	return
 
 Psfcave2_Inner_MapScripts_OnTransition_2:
@@ -30,6 +31,10 @@ Psfcave2_Inner_MapScripts_OnTransition_3:
 
 Psfcave2_Inner_MapScripts_OnTransition_4:
 	goto HaveYouSeenTheNews_Object_SetUp_Script
+	return
+
+Psfcave2_Inner_MapScripts_OnTransition_5:
+	goto HaveYouSeenTheNews_Object_CleanUp_Script
 	return
 
 

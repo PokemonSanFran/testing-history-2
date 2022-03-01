@@ -3,8 +3,14 @@ HaveYouSeenTheNews_Object_SetUp_Script::
 	return
 
 
+HaveYouSeenTheNews_Object_CleanUp_Script::
+	setflag FLAG_HIDE_PSFCAVE2_PSFELITE3
+	return
+
+
 HaveYouSeenTheNews_AskHelp_Dialogue::
 	setvar VAR_ROUTE116_STATE, 8
+	setvar VAR_PSFBADGUY1TOWER_2F_STATE, 3
 	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -34,7 +40,7 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	releaseall
-	warpsilent MAP_PSFROUTE22, 255, 1, 1
+	warpsilent MAP_PSFBADGUY1TOWER_2F, 255, 7, 14
 	end
 
 HaveYouSeenTheNews_AskHelp_Dialogue_1:
