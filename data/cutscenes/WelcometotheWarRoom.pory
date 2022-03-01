@@ -120,6 +120,7 @@ script WelcomeToTheWarRoom_MovePlayerIntoPosition {
 
 script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
     setvar(VAR_PSFBADGUY1TOWER_2F_STATE,4)
+    setvar(VAR_ROUTE117_STATE,1)
     call(WelcomeToTheWarRoom_FaceSpeakerPsfbadboss)
         applymovement(PSFBADBOSS,WelcomeToTheWarRoom_Pace)
         waitmovement(0)
@@ -236,7 +237,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         } else {
             closemessage
             callnative(ClearMugshot)
-            warpsilent(MAP_PSFCITY17,255,20,19)
+            warpsilent(MAP_PSFROUTE22,255,16,5)
         }
 }
 
@@ -257,7 +258,7 @@ text gText_WelcomeToTheWarRoom_WeveLongTheorized {
 }
 
 text gText_WelcomeToTheWarRoom_ThatsWhereYouKids {
-    format("That's where you kids come in! Ya really impressed me back at Psfplace2, and we'd like you to assist us in the raid. You'll work under Chief Bill, and help us shut down those clowns once and for all.")
+    format("That's where you kids come in! Ya really impressed me back at Psfplace14, and we'd like you to assist us in the raid. You'll work under Chief Bill, and help us shut down those clowns once and for all.")
 }
 
 text gText_WelcomeToTheWarRoom_HellYeahWedLoveTo {
@@ -301,7 +302,7 @@ text gText_WelcomeToTheWarRoom_ThatsAgainYouTwo {
 }
 
 text gText_WelcomeToTheWarRoom_ImGoingToHeadOver {
-    format("I'm going to head over to Psfplace2. Want to come with?")
+    format("I'm going to head over to Psfplace11. Want to come with?")
 }
 
 text gText_WelcomeToTheWarRoom_OkayIllMeetYou {

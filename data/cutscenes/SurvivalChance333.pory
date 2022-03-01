@@ -1,0 +1,231 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 4
+const CHIEF = 3
+
+script SurvivalChance333_HideObject_Script {
+    setflag(FLAG_HIDE_SURVIVAL_CHANCE)
+}
+
+script SurvivalChance333_ObjectSetUp_Script {
+    clearflag(FLAG_HIDE_SURVIVAL_CHANCE)
+}
+
+script SurvivalChance333_MovePlayerIntoPosition {
+    lockall
+            setvar(VAR_ROUTE117_STATE,2)
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        if (var(VAR_TEMP_0) != 12){
+            warpsilent(MAP_PSFPLACE11,255,12,12)
+        }
+}
+
+script SurvivalChance333_ExplainPlan {
+    lockall
+    setvar(VAR_ROUTE117_STATE,2)
+
+applymovement(PLAYER,Common_Movement_FaceUp)
+    waitmovement(0)
+
+    delay(25)
+msgbox(gText_SurvivalChance333_HeresThe)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_IsSomethingWrong)
+callnative(ClearMugshot)
+
+msgbox(gText_SurvivalChance333_ISpent15Years)
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_WoahWerePlentyTough)
+callnative(ClearMugshot)
+
+msgbox(gText_SurvivalChance333_RightKidsWithZero)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_HeyWeDidntAsk)
+callnative(ClearMugshot)
+
+msgbox(gText_SurvivalChance333_AndIDidntAsk)
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_IllProveIt)
+callnative(ClearMugshot)
+call(Common_EventScript_SaveGame)
+goto(SurvivalChance333_Battle_Script)
+}
+
+script SurvivalChance333_Battle_Script {
+msgbox(gText_SurvivalChance333_WontEvenBeAFair)
+closemessage
+multi_fixed_2_vs_1(TRAINER_TIFFANY,gText_SurvivalChance333_Hmph,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
+goto(SurvivalChance333_PostBattle_Script)
+}
+
+script SurvivalChance333_PostBattle_Script {
+
+setvar(VAR_ROUTE117_STATE,3)
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_DoYouGetItNow)
+callnative(ClearMugshot)
+
+msgbox(gText_SurvivalChance333_YoureAPairOfKids)
+closemessage
+}
+
+
+script testy {
+
+// EXT. PSFCITY17
+
+// Screen fades from black, and the camera pans up to Chief Bill standing in front of a group of cops, as well as Psftransrival and the player.
+
+msgbox(gText_SurvivalChance333_SoThatsThePlan)
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_OneProblemForUs)
+
+msgbox(gText_SurvivalChance333_HereWeGo)
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_IKnowWereSupposed)
+
+msgbox(gText_SurvivalChance333_OhHellThatsRight)
+
+// The police officers next to the player and Psftransrival turn to them and give them the Technical Machine.
+
+msgbox(gText_SurvivalChance333_IAlwaysForget)
+
+msgbox(gText_SurvivalChance333_NoSir)
+
+msgbox(gText_SurvivalChance333_LetsGetThisParty)
+
+// Screen fades to black. Screen fades back in to several cops standing around the ocean with Water-type Pokemon. The ocean begins to quickly freeze over.
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_ThoseRoutesFrozen)
+
+// Screen fades to black. Screen fades back into several cops around the perimeter of the base, with a ring of magma around the exterior.
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_MeltingTheBedrock)
+
+// Screen fades to black. Screen fades back in to the player and Psftransrival against the side of a building, next to some cops.
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_TheyllBlowTheWall)
+
+// The screen shakes and several explosions occur, with cops running into the different buildings in the base.
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_SurvivalChance333_Showtime)
+
+// Psftransrival and the player run into the hole in the side of the building.
+}
+
+text gText_SurvivalChance333_HeresThe {
+	format("*sigh* Here's the fuckin' plan. We're gonna -")
+}
+
+text gText_SurvivalChance333_IsSomethingWrong {
+	format("Is something wrong Chief?")
+}
+
+text gText_SurvivalChance333_ISpent15Years {
+	format("I spent 15 years in the military, dedicated my life to tactical warfare and I've never run a failed operation… and now somehow I'm doing the dirty work for some tech bros. And while I'm Psfbadguy's bitch, I have to babysit two hotshots from nowhere as I try to infiltrate a terrorist organization.")
+
+}
+text gText_SurvivalChance333_WoahWerePlentyTough {
+	format("Woah, we're plenty tough! You don't need to babysit us!")
+}
+
+text gText_SurvivalChance333_RightKidsWithZero {
+	format("Right, kids with zero operations experience who battled some foot soldiers and Garbador are supposedly tactical masterminds?")
+}
+
+text gText_SurvivalChance333_HeyWeDidntAsk {
+	format("Hey, we didn't ask to be here! ")
+}
+
+text gText_SurvivalChance333_AndIDidntAsk {
+	format("And I didn't ask for you. But here we are.")
+}
+
+text gText_SurvivalChance333_IllProveIt {
+	format("I'll prove it then. Battle me.")
+}
+
+text gText_SurvivalChance333_WontEvenBeAFair {
+	format("Won't even be a fair fight. I could take both of you at the same time, with my eyes closed.")
+}
+
+text gText_SurvivalChance333_Hmph {
+	format("Hmph!")
+}
+
+text gText_SurvivalChance333_DoYouGetItNow {
+	format("Do you get it now? We're the real deal.")
+}
+
+text gText_SurvivalChance333_YoureAPairOfKids {
+	format("…look. You're a pair of kids that are in way over your heads, with absolutely no place in a police raid. But I'm stuck with you, and you're both obviously tough as all hell. Let's make the most of it.")
+
+}
+text gText_SurvivalChance333_SoThatsThePlan {
+	format("So that's the plan. Any questions?")
+}
+
+text gText_SurvivalChance333_OneProblemForUs {
+	format("One problem for us.")
+}
+
+text gText_SurvivalChance333_HereWeGo {
+	format("Here we go… what?")
+}
+
+text gText_SurvivalChance333_IKnowWereSupposed {
+	format("I know we're supposed to blast the walls to drive out the Psfgoodteam members, but {PLAYER} and I don't have the Self-Destruct TM.")
+}
+
+text gText_SurvivalChance333_OhHellThatsRight {
+	format("Oh hell, that's right. Not your fault. Marcus, Phillip, give ‘em yours.")
+}
+
+text gText_SurvivalChance333_IAlwaysForget {
+	format("I always forget - we took those out of circulation in Psfregion1 a few years ago. Criminals were using them for too many smash and grabs, so now they're for police use only. Any other questions?")
+
+}
+text gText_SurvivalChance333_NoSir {
+	format("NO sir.")
+}
+
+text gText_SurvivalChance333_LetsGetThisParty {
+	format("Let's get this party started.")
+}
+
+text gText_SurvivalChance333_ThoseRoutesFrozen {
+	format("Those routes frozen over seals off a water escape…")
+}
+
+text gText_SurvivalChance333_MeltingTheBedrock {
+	format("Melting the bedrock prevents an underground escape…")
+}
+
+text gText_SurvivalChance333_TheyllBlowTheWall {
+	format("They'll blow the wall, and we'll dive in!")
+}
+
+text gText_SurvivalChance333_Showtime {
+	format("Showtime!")
+}

@@ -17,3 +17,14 @@
 2: Has been formerly introduced to Sabrina
 3: Set up for Welcome to the War Room, start script when player gets on the floor
 4: Welcome the War Room has played out
+
+#VAR_FERRY_STATE
+**RELEVANCE**: used to track what locations are available via ferry
+
+1: Default, Psfcity17 available
+
+#VAR_ROUTE117_STATE
+**RELEVANCE**: Track the state of the Ferry Building
+1: Show Bianca and Chief Bill for Survival Chance
+2: Right before battle with Chief
+3: Defeated Chief

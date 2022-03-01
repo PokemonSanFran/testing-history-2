@@ -132,6 +132,7 @@ WelcomeToTheWarRoom_MovePlayerIntoPosition_2:
 
 WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	setvar VAR_PSFBADGUY1TOWER_2F_STATE, 4
+	setvar VAR_ROUTE117_STATE, 1
 	call WelcomeToTheWarRoom_FaceSpeakerPsfbadboss
 	applymovement 11, WelcomeToTheWarRoom_Pace
 	waitmovement 0
@@ -216,7 +217,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	goto_if_eq WelcomeToTheWarRoom_ExplainSitaution_Dialogue_1
 	closemessage
 	callnative ClearMugshot
-	warpsilent MAP_PSFCITY17, 255, 20, 19
+	warpsilent MAP_PSFROUTE22, 255, 16, 5
 	return
 
 WelcomeToTheWarRoom_ExplainSitaution_Dialogue_1:
@@ -320,8 +321,6 @@ WelcomeToTheWarRoom_PsftransrivalLeaveRoom:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
-	walk_down
 	walk_right
 	walk_right
 	walk_right
@@ -362,7 +361,7 @@ gText_WelcomeToTheWarRoom_WeveLongTheorized::
 
 gText_WelcomeToTheWarRoom_ThatsWhereYouKids::
 	.string "That's where you kids come in! Ya really\n"
-	.string "impressed me back at Psfplace2, and\l"
+	.string "impressed me back at Psfplace14, and\l"
 	.string "we'd like you to assist us in the raid.\l"
 	.string "You'll work under Chief Bill, and help us\l"
 	.string "shut down those clowns once and for\l"
@@ -410,7 +409,7 @@ gText_WelcomeToTheWarRoom_ThatsAgainYouTwo::
 	.string "there!$"
 
 gText_WelcomeToTheWarRoom_ImGoingToHeadOver::
-	.string "I'm going to head over to Psfplace2.\n"
+	.string "I'm going to head over to Psfplace11.\n"
 	.string "Want to come with?$"
 
 gText_WelcomeToTheWarRoom_OkayIllMeetYou::
