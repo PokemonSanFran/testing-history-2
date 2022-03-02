@@ -60,11 +60,10 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    setvar VAR_STORYLINE_STATE 17
+    call(SurvivalChance333_ExplainOperation)
 	end
 
 Debug_Script_2::
-    call TheStrikeStrikesBack_PhoneCall_Dialogue 
 	end
 
 Debug_Script_3::

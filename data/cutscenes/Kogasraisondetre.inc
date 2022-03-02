@@ -211,6 +211,7 @@ KogaRaisonDetre_DinnerConversation_Dialogue::
 	setvar VAR_0x8004, 37
 	setvar VAR_0x8005, 5
 	special TeleportCamera
+	special DrawWholeMapView
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_CAMERA, KogaRaisonDetre_PanCamera
 	msgbox gText_KogaRaisonDetre_YourDadIsRed

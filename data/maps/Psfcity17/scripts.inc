@@ -1,5 +1,24 @@
 Psfcity17_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity17_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcity17_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfcity17_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcity17_MapScripts_OnTransition
+	return
+
+Psfcity17_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	.2byte 0
+
+
+Psfcity17_MapScripts_OnTransition::
+	switch VAR_NATIVERIVALBETA_STATE
+	case 0, Psfcity17_MapScripts_OnTransition_2
+	return
+
+Psfcity17_MapScripts_OnTransition_2:
+	goto SurvivalChance333_HideObject_Psfcity17_Script
+	return
 
 
 Psfcity17_ChooseFerryDestination_Script::

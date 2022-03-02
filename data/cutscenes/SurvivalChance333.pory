@@ -3,11 +3,19 @@ const PSFTRANSRIVAL = 4
 const CHIEF = 3
 
 script SurvivalChance333_HideObject_Script {
-    setflag(FLAG_HIDE_SURVIVAL_CHANCE)
+    setflag(FLAG_HIDE_SURVIVAL_CHANCE_FERRY)
 }
 
 script SurvivalChance333_ObjectSetUp_Script {
-    clearflag(FLAG_HIDE_SURVIVAL_CHANCE)
+    clearflag(FLAG_HIDE_SURVIVAL_CHANCE_FERRY)
+}
+
+script SurvivalChance333_HideObject_Psfcity17_Script {
+    setflag(FLAG_HIDE_SURVIVAL_CHANCE_RAID)
+}
+
+script SurvivalChance333_ObjectSetUp_Psfcity17_Script {
+    clearflag(FLAG_HIDE_SURVIVAL_CHANCE_RAID)
 }
 
 script SurvivalChance333_MovePlayerIntoPosition {
@@ -55,11 +63,13 @@ setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_IllProveIt)
 callnative(ClearMugshot)
+setvar(VAR_ROUTE117_STATE,3)
 call(Common_EventScript_SaveGame)
 goto(SurvivalChance333_Battle_Script)
 }
 
 script SurvivalChance333_Battle_Script {
+setvar(VAR_ROUTE117_STATE,4)
 msgbox(gText_SurvivalChance333_WontEvenBeAFair)
 closemessage
 multi_fixed_2_vs_1(TRAINER_TIFFANY,gText_SurvivalChance333_Hmph,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
@@ -67,8 +77,7 @@ goto(SurvivalChance333_PostBattle_Script)
 }
 
 script SurvivalChance333_PostBattle_Script {
-
-setvar(VAR_ROUTE117_STATE,3)
+setvar(VAR_ROUTE117_STATE,5)
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_DoYouGetItNow)
@@ -76,50 +85,133 @@ callnative(ClearMugshot)
 
 msgbox(gText_SurvivalChance333_YoureAPairOfKids)
 closemessage
+setflag(FLAG_HIDE_SURVIVAL_CHANCE_FERRY)
+setvar(VAR_NATIVERIVALBETA_STATE,3)
+warpsilent(MAP_PSFCITY17,255,21,24)
 }
 
+script SurvivalChance333_FreezeIce {
+    fadescreen(FADE_TO_BLACK)
+    setvar(VAR_0x8004, 38)
+    setvar(VAR_0x8005, 11)
+    special(TeleportCamera)
+    delay(16)
+    addobject(10)
+    addobject(9)
+    fadescreen(FADE_FROM_BLACK)
+    setmetatile(39,12,0x0C5,TRUE)
+    setmetatile(39,11,0x0C5,TRUE)
+    special(DrawWholeMapView)
+    delay(16)
+    setmetatile(38,10,0x0C5,TRUE)
+    setmetatile(39,10,0x0C5,TRUE)
+    setmetatile(38,9,0x0C5,TRUE)
+    special(DrawWholeMapView)
+    delay(16)
+    setmetatile(39,9,0x0C5,TRUE)
+    setmetatile(37,8,0x0C5,TRUE)
+    setmetatile(38,8,0x0C5,TRUE)
+    setmetatile(39,8,0x0C5,TRUE)
+    special(DrawWholeMapView)
+    delay(16)
+    setmetatile(37,7,0x0C5,TRUE)
+    setmetatile(38,7,0x0C5,TRUE)
+    setmetatile(39,7,0x0C5,TRUE)
+    special(DrawWholeMapView)
+}
 
-script testy {
+script SurvivalChance333_SetLava {
+    fadescreen(FADE_TO_BLACK)
+    special(ReturnCameraToPlayer)
+    setvar(VAR_0x8004, 12)
+    setvar(VAR_0x8005, 8)
+    special(TeleportCamera)
+    delay(16)
+    addobject(12)
+    addobject(11)
+    fadescreen(FADE_FROM_BLACK)
+    setmetatile(11,9,0x0E0,TRUE)
+    special(DrawWholeMapView)
+    delay(16)
+    setmetatile(11,8,0x0E0,TRUE)
+    setmetatile(11,10,0x0E0,TRUE)
+    special(DrawWholeMapView)
+    delay(16)
+    setmetatile(11,7,0x0E0,TRUE)
+    setmetatile(11,11,0x0E0,TRUE)
+    setmetatile(11,6,0x0E0,TRUE)
+    setmetatile(11,12,0x0E0,TRUE)
+    special(DrawWholeMapView)
+    delay(16)
+    setmetatile(11,5,0x0E0,TRUE)
+    setmetatile(11,13,0x0E0,TRUE)
+    special(DrawWholeMapView)
+}
 
-// EXT. PSFCITY17
-
-// Screen fades from black, and the camera pans up to Chief Bill standing in front of a group of cops, as well as Psftransrival and the player.
+script SurvivalChance333_ExplainOperation {
+    lockall
+setvar(VAR_NATIVERIVALBETA_STATE,4)
+applymovement(PLAYER,Common_Movement_FaceUp)
+waitmovement(0)
 
 msgbox(gText_SurvivalChance333_SoThatsThePlan)
 
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_OneProblemForUs)
+callnative(ClearMugshot)
 
 msgbox(gText_SurvivalChance333_HereWeGo)
 
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_IKnowWereSupposed)
+callnative(ClearMugshot)
 
 msgbox(gText_SurvivalChance333_OhHellThatsRight)
+closemessage
 
-// The police officers next to the player and Psftransrival turn to them and give them the Technical Machine.
+applymovement(7,SurvivalChance333_GiveTM)
+applymovement(8,SurvivalChance333_GiveTM)
+waitmovement(0)
+giveitem(ITEM_TM40)
+closemessage
+
+applymovement(7,SurvivalChance333_BackToPosition)
+applymovement(8,SurvivalChance333_BackToPosition)
+waitmovement(0)
 
 msgbox(gText_SurvivalChance333_IAlwaysForget)
 
 msgbox(gText_SurvivalChance333_NoSir)
 
 msgbox(gText_SurvivalChance333_LetsGetThisParty)
+closemessage
+goto(SurvivalChance333_TacticalPlan_Cutscene_Script)
+}
 
-// Screen fades to black. Screen fades back in to several cops standing around the ocean with Water-type Pokemon. The ocean begins to quickly freeze over.
-
+script SurvivalChance333_TacticalPlan_Cutscene_Script {
+    lockall
+call(SurvivalChance333_FreezeIce)
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_ThoseRoutesFrozen)
+callnative(ClearMugshot)
+closemessage
 
 // Screen fades to black. Screen fades back into several cops around the perimeter of the base, with a ring of magma around the exterior.
 
+call(SurvivalChance333_SetLava)
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_MeltingTheBedrock)
+callnative(ClearMugshot)
+closemessage
 
 // Screen fades to black. Screen fades back in to the player and Psftransrival against the side of a building, next to some cops.
+fadescreen(FADE_TO_BLACK)
+special(ReturnCameraToPlayer)
+fadescreen(FADE_FROM_BLACK)
 
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
@@ -228,4 +320,16 @@ text gText_SurvivalChance333_TheyllBlowTheWall {
 
 text gText_SurvivalChance333_Showtime {
 	format("Showtime!")
+}
+
+movement SurvivalChance333_GiveTM{
+    walk_down * 2
+    face_left
+    walk_in_place_slow_left
+    step_end
+}
+
+movement SurvivalChance333_BackToPosition {
+    walk_up *2
+    step_end
 }

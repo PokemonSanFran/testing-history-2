@@ -1,10 +1,20 @@
 SurvivalChance333_HideObject_Script::
-	setflag FLAG_HIDE_SURVIVAL_CHANCE
+	setflag FLAG_HIDE_SURVIVAL_CHANCE_FERRY
 	return
 
 
 SurvivalChance333_ObjectSetUp_Script::
-	clearflag FLAG_HIDE_SURVIVAL_CHANCE
+	clearflag FLAG_HIDE_SURVIVAL_CHANCE_FERRY
+	return
+
+
+SurvivalChance333_HideObject_Psfcity17_Script::
+	setflag FLAG_HIDE_SURVIVAL_CHANCE_RAID
+	return
+
+
+SurvivalChance333_ObjectSetUp_Psfcity17_Script::
+	clearflag FLAG_HIDE_SURVIVAL_CHANCE_RAID
 	return
 
 
@@ -47,12 +57,14 @@ SurvivalChance333_ExplainPlan::
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_IllProveIt
 	callnative ClearMugshot
+	setvar VAR_ROUTE117_STATE, 3
 	call Common_EventScript_SaveGame
 	goto SurvivalChance333_Battle_Script
 	return
 
 
 SurvivalChance333_Battle_Script::
+	setvar VAR_ROUTE117_STATE, 4
 	msgbox gText_SurvivalChance333_WontEvenBeAFair
 	closemessage
 	multi_fixed_2_vs_1 TRAINER_TIFFANY, gText_SurvivalChance333_Hmph, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
@@ -61,35 +73,129 @@ SurvivalChance333_Battle_Script::
 
 
 SurvivalChance333_PostBattle_Script::
-	setvar VAR_ROUTE117_STATE, 3
+	setvar VAR_ROUTE117_STATE, 5
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_DoYouGetItNow
 	callnative ClearMugshot
 	msgbox gText_SurvivalChance333_YoureAPairOfKids
 	closemessage
+	setflag FLAG_HIDE_SURVIVAL_CHANCE_FERRY
+	setvar VAR_NATIVERIVALBETA_STATE, 3
+	warpsilent MAP_PSFCITY17, 255, 21, 24
 	return
 
 
-testy::
+SurvivalChance333_FreezeIce::
+	fadescreen FADE_TO_BLACK
+	setvar VAR_0x8004, 38
+	setvar VAR_0x8005, 11
+	special TeleportCamera
+	delay 16
+	addobject 10
+	addobject 9
+	fadescreen FADE_FROM_BLACK
+	setmetatile 39, 12, 0x0C5, TRUE
+	setmetatile 39, 11, 0x0C5, TRUE
+	special DrawWholeMapView
+	delay 16
+	setmetatile 38, 10, 0x0C5, TRUE
+	setmetatile 39, 10, 0x0C5, TRUE
+	setmetatile 38, 9, 0x0C5, TRUE
+	special DrawWholeMapView
+	delay 16
+	setmetatile 39, 9, 0x0C5, TRUE
+	setmetatile 37, 8, 0x0C5, TRUE
+	setmetatile 38, 8, 0x0C5, TRUE
+	setmetatile 39, 8, 0x0C5, TRUE
+	special DrawWholeMapView
+	delay 16
+	setmetatile 37, 7, 0x0C5, TRUE
+	setmetatile 38, 7, 0x0C5, TRUE
+	setmetatile 39, 7, 0x0C5, TRUE
+	special DrawWholeMapView
+	return
+
+
+SurvivalChance333_SetLava::
+	fadescreen FADE_TO_BLACK
+	special ReturnCameraToPlayer
+	setvar VAR_0x8004, 12
+	setvar VAR_0x8005, 8
+	special TeleportCamera
+	delay 16
+	addobject 12
+	addobject 11
+	fadescreen FADE_FROM_BLACK
+	setmetatile 11, 9, 0x0E0, TRUE
+	special DrawWholeMapView
+	delay 16
+	setmetatile 11, 8, 0x0E0, TRUE
+	setmetatile 11, 10, 0x0E0, TRUE
+	special DrawWholeMapView
+	delay 16
+	setmetatile 11, 7, 0x0E0, TRUE
+	setmetatile 11, 11, 0x0E0, TRUE
+	setmetatile 11, 6, 0x0E0, TRUE
+	setmetatile 11, 12, 0x0E0, TRUE
+	special DrawWholeMapView
+	delay 16
+	setmetatile 11, 5, 0x0E0, TRUE
+	setmetatile 11, 13, 0x0E0, TRUE
+	special DrawWholeMapView
+	return
+
+
+SurvivalChance333_ExplainOperation::
+	lockall
+	setvar VAR_NATIVERIVALBETA_STATE, 4
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
 	msgbox gText_SurvivalChance333_SoThatsThePlan
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_OneProblemForUs
+	callnative ClearMugshot
 	msgbox gText_SurvivalChance333_HereWeGo
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_IKnowWereSupposed
+	callnative ClearMugshot
 	msgbox gText_SurvivalChance333_OhHellThatsRight
+	closemessage
+	applymovement 7, SurvivalChance333_GiveTM
+	applymovement 8, SurvivalChance333_GiveTM
+	waitmovement 0
+	giveitem ITEM_TM40
+	closemessage
+	applymovement 7, SurvivalChance333_BackToPosition
+	applymovement 8, SurvivalChance333_BackToPosition
+	waitmovement 0
 	msgbox gText_SurvivalChance333_IAlwaysForget
 	msgbox gText_SurvivalChance333_NoSir
 	msgbox gText_SurvivalChance333_LetsGetThisParty
+	closemessage
+	goto SurvivalChance333_TacticalPlan_Cutscene_Script
+	return
+
+
+SurvivalChance333_TacticalPlan_Cutscene_Script::
+	lockall
+	call SurvivalChance333_FreezeIce
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_ThoseRoutesFrozen
+	callnative ClearMugshot
+	closemessage
+	call SurvivalChance333_SetLava
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_MeltingTheBedrock
+	callnative ClearMugshot
+	closemessage
+	fadescreen FADE_TO_BLACK
+	special ReturnCameraToPlayer
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_TheyllBlowTheWall
@@ -98,6 +204,18 @@ testy::
 	msgbox gText_SurvivalChance333_Showtime
 	return
 
+
+SurvivalChance333_GiveTM:
+	walk_down
+	walk_down
+	face_left
+	walk_in_place_slow_left
+	step_end
+
+SurvivalChance333_BackToPosition:
+	walk_up
+	walk_up
+	step_end
 
 gText_SurvivalChance333_HeresThe::
 	.string "*sigh* Here's the fuckin' plan. We're gonna\n"

@@ -26,5 +26,13 @@
 #VAR_ROUTE117_STATE
 **RELEVANCE**: Track the state of the Ferry Building
 1: Show Bianca and Chief Bill for Survival Chance
-2: Right before battle with Chief
-3: Defeated Chief
+2: Player is in correct position for Survival Chance
+3: Saved before fighting chief
+4: Defeated Chief
+
+#VAR_NATIVERIVALBETA_STATE
+**RELEVANCE**: Track the state of Alameda
+1: Met / saved before Archer
+2: Defeated Archer
+3: Start explain raid cutscene
+4: played explain raid cutscene, raid has begun
