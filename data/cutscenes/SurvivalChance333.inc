@@ -31,6 +31,30 @@ SurvivalChance333_MovePlayerIntoPosition_1:
 	return
 
 
+SurvivalChance333_SetUpRaidObject_Script::
+	setobjectxyperm 4, 18, 12
+	setobjectxyperm 5, 21, 12
+	setobjectxyperm 6, 22, 12
+	setobjectxyperm 7, 23, 12
+	setobjectxyperm 8, 19, 12
+	setobjectxy 4, 18, 12
+	setobjectxy 5, 21, 12
+	setobjectxy 6, 22, 12
+	setobjectxy 7, 23, 12
+	setobjectxy 8, 19, 12
+	setobjectxy OBJ_EVENT_ID_PLAYER, 24, 11
+	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_UP
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	return
+
+
+SurvivalChance333_BlowOpenDoors::
+	setmetatile 22, 11, 0x0A7, FALSE
+	setmetatile 18, 11, 0x0A7, FALSE
+	special DrawWholeMapView
+	return
+
+
 SurvivalChance333_ExplainPlan::
 	lockall
 	setvar VAR_ROUTE117_STATE, 2
@@ -86,7 +110,7 @@ SurvivalChance333_PostBattle_Script::
 	return
 
 
-SurvivalChance333_FreezeIce::
+SurvivalChance333_MoveCameraFreeze_Script::
 	fadescreen FADE_TO_BLACK
 	setvar VAR_0x8004, 38
 	setvar VAR_0x8005, 11
@@ -95,6 +119,11 @@ SurvivalChance333_FreezeIce::
 	addobject 10
 	addobject 9
 	fadescreen FADE_FROM_BLACK
+	goto SurvivalChance333_FreezeIce
+	return
+
+
+SurvivalChance333_FreezeIce::
 	setmetatile 39, 12, 0x0C5, TRUE
 	setmetatile 39, 11, 0x0C5, TRUE
 	special DrawWholeMapView
@@ -117,7 +146,7 @@ SurvivalChance333_FreezeIce::
 	return
 
 
-SurvivalChance333_SetLava::
+SurvivalChance333_MoveCameraLava_Script::
 	fadescreen FADE_TO_BLACK
 	special ReturnCameraToPlayer
 	setvar VAR_0x8004, 12
@@ -127,6 +156,11 @@ SurvivalChance333_SetLava::
 	addobject 12
 	addobject 11
 	fadescreen FADE_FROM_BLACK
+	goto SurvivalChance333_SetLava
+	return
+
+
+SurvivalChance333_SetLava::
 	setmetatile 11, 9, 0x0E0, TRUE
 	special DrawWholeMapView
 	delay 16
@@ -140,8 +174,23 @@ SurvivalChance333_SetLava::
 	setmetatile 11, 12, 0x0E0, TRUE
 	special DrawWholeMapView
 	delay 16
+	setmetatile 11, 3, 0x0E0, TRUE
+	setmetatile 11, 4, 0x0E0, TRUE
 	setmetatile 11, 5, 0x0E0, TRUE
 	setmetatile 11, 13, 0x0E0, TRUE
+	setmetatile 30, 4, 0x0E0, TRUE
+	setmetatile 30, 5, 0x0E0, TRUE
+	setmetatile 30, 6, 0x0E0, TRUE
+	setmetatile 30, 7, 0x0E0, TRUE
+	setmetatile 30, 8, 0x0E0, TRUE
+	setmetatile 30, 9, 0x0E0, TRUE
+	setmetatile 30, 10, 0x0E0, TRUE
+	setmetatile 30, 11, 0x0E0, TRUE
+	setmetatile 30, 12, 0x0E0, TRUE
+	setmetatile 30, 13, 0x0E0, TRUE
+	setmetatile 30, 14, 0x0E0, TRUE
+	setmetatile 30, 15, 0x0E0, TRUE
+	setmetatile 30, 16, 0x0E0, TRUE
 	special DrawWholeMapView
 	return
 
@@ -181,28 +230,59 @@ SurvivalChance333_ExplainOperation::
 
 SurvivalChance333_TacticalPlan_Cutscene_Script::
 	lockall
-	call SurvivalChance333_FreezeIce
+	call SurvivalChance333_MoveCameraFreeze_Script
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_ThoseRoutesFrozen
 	callnative ClearMugshot
 	closemessage
-	call SurvivalChance333_SetLava
+	call SurvivalChance333_MoveCameraLava_Script
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_MeltingTheBedrock
 	callnative ClearMugshot
 	closemessage
 	fadescreen FADE_TO_BLACK
-	special ReturnCameraToPlayer
+	call SurvivalChance333_SetUpRaidObject_Script
+	TeleportCamera 24, 11
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_TheyllBlowTheWall
+	callnative ClearMugshot
+	closemessage
+	playse SE_M_EXPLOSION
+	waitse
+	setvar VAR_0x8004, 1
+	setvar VAR_0x8005, 2
+	setvar VAR_0x8006, 8
+	setvar VAR_0x8007, 5
+	special ShakeCamera
+	waitstate
+	call SurvivalChance333_BlowOpenDoors
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_Showtime
-	return
+	callnative ClearMugshot
+	closemessage
+	applymovement 4, SurvivalChance333_RunInsideA
+	applymovement 5, SurvivalChance333_RunInsideB
+	applymovement 6, SurvivalChance333_RunInsideA
+	applymovement 7, SurvivalChance333_RunInsideC
+	applymovement 8, SurvivalChance333_RunInsideC
+	playse SE_EXIT
+	playse SE_EXIT
+	playse SE_EXIT
+	playse SE_EXIT
+	playse SE_EXIT
+	waitse
+	removeobject 4
+	removeobject 5
+	removeobject 6
+	removeobject 7
+	removeobject 8
+	releaseall
+	end
 
 
 SurvivalChance333_GiveTM:
@@ -214,6 +294,20 @@ SurvivalChance333_GiveTM:
 
 SurvivalChance333_BackToPosition:
 	walk_up
+	walk_up
+	step_end
+
+SurvivalChance333_RunInsideA:
+	walk_up
+	step_end
+
+SurvivalChance333_RunInsideB:
+	walk_right
+	walk_up
+	step_end
+
+SurvivalChance333_RunInsideC:
+	walk_left
 	walk_up
 	step_end
 

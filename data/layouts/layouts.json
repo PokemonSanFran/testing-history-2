@@ -5150,6 +5150,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Psfcave1_B2F/border.bin",
       "blockdata_filepath": "data/layouts/Psfcave1_B2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE2",
+      "name": "Psfplace2_Layout",
+      "width": 25,
+      "height": 27,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfplace2/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace2/map.bin"
     }
   ]
 }

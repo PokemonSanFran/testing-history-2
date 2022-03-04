@@ -60,10 +60,11 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    call(SurvivalChance333_ExplainOperation)
+    call(SurvivalChance333_TacticalPlan_Cutscene_Script )
 	end
 
 Debug_Script_2::
+    call(SurvivalChance333_PostBattle_Script)
 	end
 
 Debug_Script_3::

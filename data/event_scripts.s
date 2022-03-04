@@ -1247,3 +1247,5 @@ end
 .include "data/maps/Psfcave2_Inner/scripts.inc"
 
 .include "data/maps/Psfcave1_B2F/scripts.inc"
+
+	.include "data/maps/Psfplace2/scripts.inc"

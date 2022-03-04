@@ -5,8 +5,13 @@ mapscripts Psfcity17_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Psfcity17_MapScripts_OnTransition)
     }
+    MAP_SCRIPT_ON_LOAD {
+    if (var(VAR_NATIVERIVALBETA_STATE) > 3){
+        call(Psfplace2_PostRaidTiles_Script)
+    }
+    }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        //VAR_NATIVERIVALBETA_STATE, 3:SurvivalChance333_ExplainOperation 
+        VAR_NATIVERIVALBETA_STATE, 3:SurvivalChance333_ExplainOperation 
     ]
 }
 
@@ -14,6 +19,12 @@ script Psfcity17_MapScripts_OnTransition {
     switch (var(VAR_NATIVERIVALBETA_STATE)){
         case 0: goto(SurvivalChance333_HideObject_Psfcity17_Script)
     }
+}
+
+script Psfplace2_PostRaidTiles_Script {
+    call(SurvivalChance333_FreezeIce)
+    call(SurvivalChance333_SetLava)
+    call(SurvivalChance333_BlowOpenDoors)
 }
 
 script Psfcity17_ChooseFerryDestination_Script {

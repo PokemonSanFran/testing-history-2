@@ -1,5 +1,6 @@
 Psfcity17_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity17_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Psfcity17_MapScripts_MAP_SCRIPT_ON_LOAD
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcity17_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
@@ -7,7 +8,17 @@ Psfcity17_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	goto Psfcity17_MapScripts_OnTransition
 	return
 
+Psfcity17_MapScripts_MAP_SCRIPT_ON_LOAD:
+	compare VAR_NATIVERIVALBETA_STATE, 3
+	goto_if_gt Psfcity17_MapScripts_MAP_SCRIPT_ON_LOAD_1
+	return
+
+Psfcity17_MapScripts_MAP_SCRIPT_ON_LOAD_1:
+	call Psfplace2_PostRaidTiles_Script
+	return
+
 Psfcity17_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_NATIVERIVALBETA_STATE, 3, SurvivalChance333_ExplainOperation
 	.2byte 0
 
 
@@ -18,6 +29,13 @@ Psfcity17_MapScripts_OnTransition::
 
 Psfcity17_MapScripts_OnTransition_2:
 	goto SurvivalChance333_HideObject_Psfcity17_Script
+	return
+
+
+Psfplace2_PostRaidTiles_Script::
+	call SurvivalChance333_FreezeIce
+	call SurvivalChance333_SetLava
+	call SurvivalChance333_BlowOpenDoors
 	return
 
 

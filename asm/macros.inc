@@ -143,3 +143,9 @@
 	.4byte \tile_addr
 	.4byte \palette_addr
 	.endm
+
+    .macro teleportcamera x:req, y:req
+    setvar 0x8004, \x
+    setvar 0x8005, \y
+    special TeleportCamera
+    .endm
