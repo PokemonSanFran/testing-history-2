@@ -668,10 +668,10 @@
 #define FLAG_HIDE_TOWER2_MAYOR 0x272 // Previously Unused Flag
 #define FLAG_HIDE_TOWER2_PSFBADBOSS 0x273 // Previously Unused Flag
 #define FLAG_HIDE_SURVIVAL_CHANCE_FERRY 0x274 // Previously Unused Flag
-#define FLAG_HIDE_SURVIVAL_CHANCE_RAID 0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
-#define FLAG_UNUSED_0x278  0x278 // Unused Flag
+#define FLAG_HIDE_SURVIVAL_CHANCE_RAID 0x275 // Previously Unused Flag
+#define FLAG_HIDE_WHYAREYOU_POLICE 0x276 // Previously Unused Flag
+#define FLAG_HIDE_WHYAREYOU_NATIVERIVAL 0x277 // Previously Unused Flag
+#define FLAG_HIDE_WHYAREYOU_PKMN 0x278 // Unused Flag
 #define FLAG_UNUSED_0x279  0x279 // Unused Flag
 #define FLAG_UNUSED_0x27A  0x27A // Unused Flag
 #define FLAG_UNUSED_0x27B  0x27B // Unused Flag

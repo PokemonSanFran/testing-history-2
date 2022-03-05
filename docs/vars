@@ -36,3 +36,9 @@
 2: Defeated Archer
 3: Start explain raid cutscene
 4: played explain raid cutscene, raid has begun
+
+#VAR_ROUTE118_STATE
+**RELEVANCE**: Track the state of the Naval Base
+1: Raid has started, police and Bianca are inside
+2: Bianca told you to run ahead and catch Giovanni
+3: Save before Giovanni

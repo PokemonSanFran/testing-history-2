@@ -324,6 +324,8 @@ YoungPadawan_StartBattle_Script::
 
 YoungPadawan_PostBattle_Dialogue::
 	lockall
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
 	checktrainerflag TRAINER_SIDNEY
 	goto_if 1, YoungPadawan_PostBattle_Dialogue_2
 	special HealPlayerParty

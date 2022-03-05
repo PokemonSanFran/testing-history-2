@@ -1161,7 +1161,7 @@ end
   .include "data/cutscenes/HaveYouSeenTheNews.inc"
   .include "data/cutscenes/WelcometotheWarRoom.inc"
   .include "data/cutscenes/SurvivalChance333.inc"
-##  .include "data/cutscenes/WhyAreYouHelpingThem.inc"
+  .include "data/cutscenes/WhyAreYouHelpingThem.inc"
 ##  .include "data/cutscenes/HeresHowThisIsGoingToGo.inc"
 ##  .include "data/cutscenes/WhyDidntYouRatMeOut.inc"
 ##  .include "data/cutscenes/WaitHeDIdWhat.inc"

@@ -60,11 +60,11 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    call(SurvivalChance333_TacticalPlan_Cutscene_Script )
+    call(WhyAreYouHelpingThem_StartRaid)
 	end
 
 Debug_Script_2::
-    call(SurvivalChance333_PostBattle_Script)
+    call(EventScript_PCMainMenu)
 	end
 
 Debug_Script_3::
