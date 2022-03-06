@@ -10,6 +10,7 @@ Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, Swagbag_WelcomeToPsfregion1_Dialogue
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 7, WhyAreYouHelpingThem_BackAtCompound_Dialogue
 	map_script_2 VAR_STORYLINE_STATE, 20, VSGarbodor_ReturnToTheCompound_Dialogue
 	.2byte 0
 
@@ -26,6 +27,7 @@ Psfcity8_Compound_1F_MapScripts_OnTransition_1:
 	case 4, Psfcity8_Compound_1F_MapScripts_OnTransition_9
 	case 5, Psfcity8_Compound_1F_MapScripts_OnTransition_10
 	case 6, Psfcity8_Compound_1F_MapScripts_OnTransition_11
+	case 7, Psfcity8_Compound_1F_MapScripts_OnTransition_12
 	return
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_3:
@@ -58,6 +60,10 @@ Psfcity8_Compound_1F_MapScripts_OnTransition_10:
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_11:
 	goto WorkingFerry_SetUp_Script
+	return
+
+Psfcity8_Compound_1F_MapScripts_OnTransition_12:
+	goto WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script
 	return
 
 

@@ -22,9 +22,9 @@ RestInBed_Script_1:
 	call PlayersHouse_2F_EventScript_SetWallClock
 	fadescreen FADE_TO_BLACK
 	callnative HealPlayerParty
-	call RestInBed_OffYouGoInit_Script
-	fadescreen FADE_FROM_BLACK
+	call RestInBed_StillBlack_Script
 	call RestInBed_Progression_Script
+	fadescreen FADE_FROM_BLACK
 	closemessage
 	releaseall
 	end
@@ -35,13 +35,16 @@ RestInBed_Script_2:
 
 
 RestInBed_Progression_Script::
+	fadescreen FADE_FROM_BLACK
 	checkitem ITEM_FASHION_CASE, 1
 	compare VAR_RESULT, 0
 	goto_if_eq RestInBed_Progression_Script_3
 RestInBed_Progression_Script_1:
-	compare VAR_STORYLINE_STATE, 9
-	goto_if_eq RestInBed_Progression_Script_6
-	return
+	switch VAR_STORYLINE_STATE
+	case 9, RestInBed_Progression_Script_8
+RestInBed_Progression_Script_6:
+	releaseall
+	end
 
 RestInBed_Progression_Script_2:
 	giveitem ITEM_FASHION_CASE
@@ -52,7 +55,12 @@ RestInBed_Progression_Script_3:
 	goto_if_eq RestInBed_Progression_Script_2
 	goto RestInBed_Progression_Script_1
 
-RestInBed_Progression_Script_6:
+RestInBed_Progression_Script_8:
+	call RestInBed_FerryRepaired_Dialogue
+	goto RestInBed_Progression_Script_6
+
+
+RestInBed_FerryRepaired_Dialogue::
 	addvar VAR_STORYLINE_STATE, 1
 	pokenavcall blank
 	waitmessage
@@ -67,10 +75,10 @@ RestInBed_Progression_Script_6:
 	msgbox gText_TooBadTheresNoFerry
 	callnative ClearMugshot
 	compare VAR_FAINTED_FOG_STATE, 1
-	goto_if_gt RestInBed_Progression_Script_8
+	goto_if_gt RestInBed_FerryRepaired_Dialogue_1
 	return
 
-RestInBed_Progression_Script_8:
+RestInBed_FerryRepaired_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_FindAWayThrough
@@ -78,13 +86,33 @@ RestInBed_Progression_Script_8:
 	return
 
 
-RestInBed_OffYouGoInit_Script::
-	compare VAR_STORYLINE_STATE, 21
-	goto_if_eq RestInBed_OffYouGoInit_Script_1
+RestInBed_StillBlack_Script::
+	switch VAR_STORYLINE_STATE
+	case 21, RestInBed_StillBlack_Script_2
+	case 23, RestInBed_StillBlack_Script_3
 	return
 
-RestInBed_OffYouGoInit_Script_1:
+RestInBed_StillBlack_Script_2:
 	call OffYouGo_WakeUp_Dialogue
+	return
+
+RestInBed_StillBlack_Script_3:
+	call WhyAreYouHelpingThem_StartChampionship_Dialogue
+	return
+
+
+WhyAreYouHelpingThem_StartChampionship_Dialogue::
+	msgbox gText_WhyAreYouHelpingThem_AreYouReadyToBegin, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq WhyAreYouHelpingThem_StartChampionship_Dialogue_1
+	addvar VAR_STORYLINE_STATE, 1
+	warpsilent MAP_EVER_GRANDE_CITY, 255, 20, 20
+	return
+
+WhyAreYouHelpingThem_StartChampionship_Dialogue_1:
+	closemessage
+	fadescreen FADE_FROM_BLACK
+	releaseall
 	end
 
 

@@ -11,6 +11,9 @@ mapscripts Psfplace2_MapScripts {
         goto(Psfplace2_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_LOAD {
+        if (var(VAR_ROUTE118_STATE) > 2){
+            call(WhyAreYouHelpingThem_BlowHoleWall)
+        }
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ROUTE118_STATE, 0: WhyAreYouHelpingThem_StartRaid
@@ -22,6 +25,6 @@ script Psfplace2_MapScripts_OnTransition {
         case 0: goto(WhyAreYouHelpingThem_HideObject_Script)
         case 1: goto(WhyAreYouHelpingThem_MoveObject_Script)
         case 2: goto(WhyAreYouHelpingThem_MoveObjectBoss_Script)
-        case 4: goto(WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script)
+        case 3: goto(WhyAreYouHelpingThem_ObjectSetUpPostSave_Script)
     }
 }

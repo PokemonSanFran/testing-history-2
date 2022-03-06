@@ -9,6 +9,12 @@ Psfplace2_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfplace2_MapScripts_MAP_SCRIPT_ON_LOAD:
+	compare VAR_ROUTE118_STATE, 2
+	goto_if_gt Psfplace2_MapScripts_MAP_SCRIPT_ON_LOAD_1
+	return
+
+Psfplace2_MapScripts_MAP_SCRIPT_ON_LOAD_1:
+	call WhyAreYouHelpingThem_BlowHoleWall
 	return
 
 Psfplace2_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -21,7 +27,7 @@ Psfplace2_MapScripts_OnTransition::
 	case 0, Psfplace2_MapScripts_OnTransition_2
 	case 1, Psfplace2_MapScripts_OnTransition_3
 	case 2, Psfplace2_MapScripts_OnTransition_4
-	case 4, Psfplace2_MapScripts_OnTransition_5
+	case 3, Psfplace2_MapScripts_OnTransition_5
 	return
 
 Psfplace2_MapScripts_OnTransition_2:
@@ -37,6 +43,6 @@ Psfplace2_MapScripts_OnTransition_4:
 	return
 
 Psfplace2_MapScripts_OnTransition_5:
-	goto WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script
+	goto WhyAreYouHelpingThem_ObjectSetUpPostSave_Script
 	return
 

@@ -19,14 +19,53 @@ WhyAreYouHelpingThem_MoveObjectBoss_Script::
 
 WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script::
 	setflag FLAG_HIDE_WHYAREYOU_PKMN
-	setobjectxy 2, 1, 10
-	setobjectxyperm 2, 1, 10
+	setobjectxy 2, 1, 5
+	setobjectxyperm 2, 1, 5
+	setobjectxy 1, 2, 16
+	setobjectxyperm 1, 2, 16
+	turnobject 2, DIR_NORTH
 	return
 
 
 WhyAreYouHelpingThem_BlowHoleWall::
-	setmetatile 13, 1, 0x3C8, FALSE
+	setmetatile 12, 1, 0x3C8, FALSE
 	special DrawWholeMapView
+	return
+
+
+WhyAreYouHelpingThem_ObjectSetUpPostSave_Script::
+	setobjectxy 4, 6, 3
+	setobjectxyperm 4, 6, 3
+	turnobject 4, DIR_WEST
+	setobjectxy 1, 2, 16
+	setobjectxyperm 1, 2, 16
+	return
+
+
+WhyAreYouHelpingThem_ObjectDebriefSetUp_Script::
+	clearflag FLAG_HIDE_SURVIVAL_CHANCE_RAID
+	addobject 4
+	addobject 1
+	addobject 6
+	addobject 7
+	addobject 8
+	setobjectxyperm 4, 26, 4
+	setobjectxyperm 5, 25, 6
+	setobjectxyperm 6, 27, 6
+	setobjectxyperm 7, 25, 7
+	setobjectxyperm 8, 27, 7
+	return
+
+
+WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script::
+	clearflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL
+	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
+	addobject 1
+	addobject 3
+	setobjectxyperm 1, 6, 6
+	setobjectxyperm 3, 6, 5
+	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_UP
 	return
 
 
@@ -87,7 +126,6 @@ WhyAreYouHelpingThem_WitnessBattle::
 
 
 WhyAreYouHelpingThem_PreBattleBoss_Script::
-	setvar VAR_ROUTE118_STATE, 3
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_ApproachPsfgoodboss
 	applymovement 3, Common_Movement_FaceLeft
@@ -110,7 +148,9 @@ WhyAreYouHelpingThem_PreBattleBoss_Script::
 
 
 WhyAreYouHelpingThem_PostBattleBoss_Dialogue::
-	setvar VAR_ROUTE118_STATE, 4
+	setvar VAR_ROUTE118_STATE, 3
+	addobject 2
+	call WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script
 	checktrainerflag TRAINER_ARCHIE
 	goto_if 1, WhyAreYouHelpingThem_PostBattleBoss_Dialogue_2
 	setvar VAR_0x8000, MUGSHOT_HILDA
@@ -122,12 +162,10 @@ WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1:
 	msgbox gText_WhyAreYouHelpingThem_ImSorryYouHad
 	callnative ClearMugshot
 	closemessage
-	applymovement 3, Common_Movement_WalkInPlaceLeft
-	waitmovement 0
-	callnative HealPlayerParty
-	call WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script
 	applymovement 2, WhyAreYouHelpingThem_WalkPastPlayer
+	applymovement 3, WhyAreYouHelpingThem_HealAndFaceAdmin
 	waitmovement 0
+	call Common_EventScript_OutOfCenterPartyHeal
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_IHandledTheBrat
@@ -146,6 +184,8 @@ WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WeveGotToHelp
+	callnative ClearMugshot
+	closemessage
 	applymovement 3, WhyAreYouHelpingThem_BeginEscape
 	applymovement 2, WhyAreYouHelpingThem_BeginEscape
 	waitmovement 0
@@ -182,6 +222,8 @@ WhyAreYouHelpingThem_ExplodeWall_Script::
 	waitse
 	addobject 4
 	applymovement 4, WhyAreYouHelpingThem_WalkOutOfHole
+	setobjectxy 4, 7, 3
+	setobjectxyperm 4, 7, 3
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
@@ -200,26 +242,44 @@ WhyAreYouHelpingThem_ExplodeWall_Script::
 	msgbox gText_WhyAreYouHelpingThem_Sigh
 	callnative ClearMugshot
 	closemessage
-	applymovement 3, WhyAreYouHelpingThem_WalkOutOfHoleA
-	applymovement 2, WhyAreYouHelpingThem_WalkOutOfHoleB
+	applymovement 3, WhyAreYouHelpingThem_WalkIntoHoleA
+	applymovement 2, WhyAreYouHelpingThem_WalkIntoHoleB
 	waitmovement 0
 	playse SE_EXIT
 	waitse
 	removeobject 2
 	removeobject 3
-	return
-
-
-leftover::
+	applymovement 4, WhyAreYouHelpingThem_ApproachPlayer
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_YoureWorkingWith
+	callnative ClearMugshot
+	call Common_EventScript_SaveGame
+	goto WhyAreYouHelpingThem_StartBattle_Script
+	return
+
+
+WhyAreYouHelpingThem_InteractBattle_Script::
+	lockall
+	faceplayer
+	goto WhyAreYouHelpingThem_StartBattle_Script
+	return
+
+
+WhyAreYouHelpingThem_StartBattle_Script::
+	lockall
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_AlwaysHaveBeen
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_AnotherVictory
+	trainerbattle_no_intro TRAINER_WALLY_VR_2, gText_WhyAreYouHelpingThem_AnotherVictory
+	closemessage
+	callnative ClearMugshot
+	goto WhyAreYouHelpingThem_PostBattle_Dialogue
+	return
+
+
+WhyAreYouHelpingThem_PostBattle_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_TellsMeYoureAll
@@ -229,16 +289,60 @@ leftover::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_Player
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 4, WhyAreYouHelpingThem_WalkIntoHoleC
+	waitmovement 0
+	playse SE_EXIT
+	waitse
+	removeobject 4
+	setobjectxyperm 1, 1, 8
+	addobject 1
+	applymovement 1, WhyAreYouHelpingThem_RunToPlayer
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_IGotKnockedOut
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_NoILostToo
+	callnative ClearMugshot
+	closemessage
+	setvar VAR_NATIVERIVALBETA_STATE, 5
+	fadescreen FADE_TO_BLACK
+	warpsilent MAP_PSFCITY17, 255, 26, 6
+	return
+
+
+WhyAreYouHelpingThem_MissionDebrief_Dialogue::
+	setvar VAR_NATIVERIVALBETA_STATE, 6
+	setvar VAR_LITTLEROOT_INTRO_STATE, 7
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox gText_WhyAreYouHelpingThem_GreatWorkInThere
+	closemessage
+	applymovement 6, Common_Movement_WalkUp
+	waitmovement 0
 	msgbox gText_WhyAreYouHelpingThem_WeSpottedAndTheir
+	closemessage
+	applymovement 6, WhyAreYouHelpingThem_BackInFormation
+	waitmovement 0
 	msgbox gText_WhyAreYouHelpingThem_AShameStillWeveShutDown
+	closemessage
+	applymovement 4, Common_Movement_WalkDown
+	waitmovement 0
 	msgbox gText_WhyAreYouHelpingThem_NotBadInThere
+	closemessage
+	releaseall
+	end
+
+
+WhyAreYouHelpingThem_BackAtCompound_Dialogue::
+	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_LITTLEROOT_INTRO_STATE, 1
+	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_WalkIntoHome
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WhatADay
@@ -257,11 +361,25 @@ leftover::
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_NowIveGotALot
+	callnative ClearMugshot
+	closemessage
+	applymovement 3, WhyAreYouHelpingThem_LeaveCompoundA
+	waitmovement 0
+	playse SE_EXIT
+	waitse
+	removeobject 3
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WeveAllGot
-	msgbox gText_WhyAreYouHelpingThem_AreYouReadyToBegin
-	return
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, WhyAreYouHelpingThem_LeaveCompoundB
+	waitmovement 0
+	playse SE_EXIT
+	waitse
+	removeobject 1
+	releaseall
+	end
 
 
 WhyAreYouHelpingThem_PoliceRunIn:
@@ -289,6 +407,133 @@ WhyAreYouHelpingThem_ApproachPsfgoodboss:
 	walk_right
 	walk_right
 	walk_right
+	step_end
+
+WhyAreYouHelpingThem_WalkPastPlayer:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+WhyAreYouHelpingThem_BeginEscape:
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+WhyAreYouHelpingThem_ExclaimAndFacePlayer:
+	emote_exclamation_mark
+	face_left
+	step_end
+
+WhyAreYouHelpingThem_WalkOutOfHole:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+WhyAreYouHelpingThem_WalkIntoHoleA:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
+WhyAreYouHelpingThem_WalkIntoHoleB:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+WhyAreYouHelpingThem_WalkIntoHoleC:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
+WhyAreYouHelpingThem_ApproachBossAndPlayer:
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+WhyAreYouHelpingThem_HealAndFaceAdmin:
+	walk_in_place_slow_left
+	delay_16
+	delay_16
+	face_down
+	step_end
+
+WhyAreYouHelpingThem_ApproachPlayer:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+WhyAreYouHelpingThem_RunToPlayer:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+WhyAreYouHelpingThem_BackInFormation:
+	lock_facing_direction
+	walk_down
+	unlock_facing_direction
+	step_end
+
+WhyAreYouHelpingThem_WalkToPlayerFormation:
+	walk_right
+	walk_down
+	step_end
+
+WhyAreYouHelpingThem_WalkIntoHome:
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+WhyAreYouHelpingThem_LeaveCompoundA:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_in_place_down
+	face_down
+	step_end
+
+WhyAreYouHelpingThem_LeaveCompoundB:
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 gText_WhyAreYouHelpingThem_StructuralBreach::

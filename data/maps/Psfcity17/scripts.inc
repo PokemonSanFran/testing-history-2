@@ -19,16 +19,22 @@ Psfcity17_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 
 Psfcity17_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_NATIVERIVALBETA_STATE, 3, SurvivalChance333_ExplainOperation
+	map_script_2 VAR_NATIVERIVALBETA_STATE, 5, WhyAreYouHelpingThem_MissionDebrief_Dialogue
 	.2byte 0
 
 
 Psfcity17_MapScripts_OnTransition::
 	switch VAR_NATIVERIVALBETA_STATE
 	case 0, Psfcity17_MapScripts_OnTransition_2
+	case 5, Psfcity17_MapScripts_OnTransition_3
 	return
 
 Psfcity17_MapScripts_OnTransition_2:
 	goto SurvivalChance333_HideObject_Psfcity17_Script
+	return
+
+Psfcity17_MapScripts_OnTransition_3:
+	goto WhyAreYouHelpingThem_ObjectDebriefSetUp_Script
 	return
 
 

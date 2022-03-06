@@ -36,9 +36,25 @@
 2: Defeated Archer
 3: Start explain raid cutscene
 4: played explain raid cutscene, raid has begun
+5: raid finished
 
 #VAR_ROUTE118_STATE
 **RELEVANCE**: Track the state of the Naval Base
 1: Raid has started, police and Bianca are inside
 2: Bianca told you to run ahead and catch Giovanni
-3: Save before Giovanni
+3: Right before Archer
+
+#VAR_LITTLEROOT_INTRO_STATE
+**RELEVANCE**: Used to track the state of the Players' Home / Compound
+1: Started the game but has not met Bianca
+2:
+3: Has already looked at their room
+4: Has met Oak and got Pokedex
+5: Has slept in bed after getting Pokedex
+6: Finished all events before 4th Gym
+7: Completed raid on naval base
+8: Oak has told player that championship will start soon
+
+#VAR_STORYLINE_STATE
+23: Sleep to progress to Championship
+24: Starting the Championship

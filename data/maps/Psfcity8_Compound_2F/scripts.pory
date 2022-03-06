@@ -20,54 +20,72 @@ script RestInBed_Script {
         msgbox(gText_RestInBed_Text1)
         closemessage
         call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
-        //call(Common_EventScript_OutOfCenterPartyHeal)
         fadescreen(FADE_TO_BLACK)
         callnative(HealPlayerParty)
-        call(RestInBed_OffYouGoInit_Script)
-        fadescreen(FADE_FROM_BLACK)
+        call(RestInBed_StillBlack_Script)
         call(RestInBed_Progression_Script)
+        fadescreen(FADE_FROM_BLACK)
         closemessage
         releaseall
         end
 }
 
 script RestInBed_Progression_Script {
+    fadescreen(FADE_FROM_BLACK)
     checkitem(ITEM_FASHION_CASE,1)
         if (var(VAR_RESULT) == 0 && var(VAR_LITTLEROOT_INTRO_STATE) == 5) {
             giveitem(ITEM_FASHION_CASE)
         }
 
-    if (var(VAR_STORYLINE_STATE) == 9){
-        addvar(VAR_STORYLINE_STATE,1)
-            pokenavcall(blank)
-            waitmessage
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
-            callnative(DrawMugshot)
-            msgbox(gText_ThatsDifferent)
-            callnative(ClearMugshot)
-            pokenavcall(gText_FerryRepaired)
-            waitmessage
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
-            callnative(DrawMugshot)
-            msgbox(gText_TooBadTheresNoFerry)
-            callnative(ClearMugshot)
+    switch(var(VAR_STORYLINE_STATE)){
+        case 9: call(RestInBed_FerryRepaired_Dialogue)
+    }
+    releaseall
+    end
+}
+script RestInBed_FerryRepaired_Dialogue {
+    addvar(VAR_STORYLINE_STATE,1)
+        pokenavcall(blank)
+        waitmessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThatsDifferent)
+        callnative(ClearMugshot)
+        pokenavcall(gText_FerryRepaired)
+        waitmessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_TooBadTheresNoFerry)
+        callnative(ClearMugshot)
 
-            if (var(VAR_FAINTED_FOG_STATE) > 1)
-            {
-                setvar(VAR_0x8000, MUGSHOT_HILDA)
-                    callnative(DrawMugshot)
-                    msgbox(gText_FindAWayThrough)
-                    callnative(ClearMugshot)
-            }
+        if (var(VAR_FAINTED_FOG_STATE) > 1)
+        {
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_FindAWayThrough)
+                callnative(ClearMugshot)
+        }
+}
+script RestInBed_StillBlack_Script {
+
+    switch(var(VAR_STORYLINE_STATE)){
+        case 21: call(OffYouGo_WakeUp_Dialogue)
+        case 23: call(WhyAreYouHelpingThem_StartChampionship_Dialogue)
     }
 }
 
-script RestInBed_OffYouGoInit_Script {
-
-    if (var(VAR_STORYLINE_STATE) == 21){
-        call(OffYouGo_WakeUp_Dialogue)
+script WhyAreYouHelpingThem_StartChampionship_Dialogue {
+    msgbox(gText_WhyAreYouHelpingThem_AreYouReadyToBegin,MSGBOX_YESNO)
+    
+    if (var(VAR_RESULT) == NO){
+        closemessage
+        fadescreen(FADE_FROM_BLACK)
+        releaseall
         end
-}
+    } else {
+        addvar(VAR_STORYLINE_STATE,1)
+        warpsilent(MAP_EVER_GRANDE_CITY,255,20,20)
+    }
 }
 
 script FashionCaseReminder_Script {
@@ -105,21 +123,21 @@ text blank {
 text gText_FerryRepaired {
     format("A message from the PSFSUBWAY System. 
 
-The following service routes are now operational:\p
+            The following service routes are now operational:\p
 
-Psfplace11 to Psfcity17\p
+            Psfplace11 to Psfcity17\p
 
-Psfcity17 to Psfcity9\p
+            Psfcity17 to Psfcity9\p
 
-We appreciate your patience while the remaining routes are restored.
-","1_latin",175)
+            We appreciate your patience while the remaining routes are restored.
+            ","1_latin",175)
 }
 text gText_ThatsDifferent{
-	format("That's a different notification...")
+    format("That's a different notification...")
 }
 text gText_TooBadTheresNoFerry{
-	format("Looks like east Psfregion1 is next! Too bad there's no ferry directly to the Gym in Psfcity11...")
+    format("Looks like east Psfregion1 is next! Too bad there's no ferry directly to the Gym in Psfcity11...")
 }
 text gText_FindAWayThrough{
-	format("Hopefully, I'll find a way through the fog after that...")
+    format("Hopefully, I'll find a way through the fog after that...")
 }

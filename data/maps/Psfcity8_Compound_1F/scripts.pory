@@ -10,9 +10,10 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue //Started game, has not met Psftransrival
-            VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue //Has checked out room
-        VAR_STORYLINE_STATE, 20: VSGarbodor_ReturnToTheCompound_Dialogue 
+        VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue 
+            VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue 
+            VAR_LITTLEROOT_INTRO_STATE, 7:WhyAreYouHelpingThem_BackAtCompound_Dialogue
+            VAR_STORYLINE_STATE, 20: VSGarbodor_ReturnToTheCompound_Dialogue 
     ]
 }
 
@@ -24,11 +25,12 @@ script Psfcity8_Compound_1F_MapScripts_OnTransition {
     }
 
     switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
-        case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) //Started game, has not met Psftransrival
-        case 3: goto(Swagbag_ObjectSetUp) //Has checked out bedroom
-        case 4: goto(ExplorePsfcity8_ObjectSetUp) //Has met Psfbadadmin1 and recieved items
-        case 5: goto(TwoHoursAgo_ObjectSetUp) //Has slept in bed after getting Pokedex
-        case 6: goto(WorkingFerry_SetUp_Script) //Has finished all events before 4th Gym
+        case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) 
+        case 3: goto(Swagbag_ObjectSetUp) 
+        case 4: goto(ExplorePsfcity8_ObjectSetUp) 
+        case 5: goto(TwoHoursAgo_ObjectSetUp) 
+        case 6: goto(WorkingFerry_SetUp_Script) 
+        case 7: goto(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
     }
 
 }
@@ -66,7 +68,7 @@ script TwoHoursAgo_ObjectSetUp {
 
 script Act1_1_ObjectCleanUp{
     setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
-    clearflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
+        clearflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
 
 }
 
@@ -345,23 +347,23 @@ text gText_Act1_1_Complete_WhatsYourProgress {
 }
 
 text gText_Act1_1_Complete_OnlyThree {
-	format("Only three so far. I'm praying the ferry is fixed tomorrow.")
+    format("Only three so far. I'm praying the ferry is fixed tomorrow.")
 }
 
 text gText_Act1_1_Complete_YeahThatBusted {
-	format("Yeah, that busted ferry sucks. I'm going to challenge the Psfcity5 and Psfcity18 Gyms tomorrow, and the ferry will definately be fixed after that, so Psfcity11 Gym will be last.")
+    format("Yeah, that busted ferry sucks. I'm going to challenge the Psfcity5 and Psfcity18 Gyms tomorrow, and the ferry will definately be fixed after that, so Psfcity11 Gym will be last.")
 }
 
 text gText_Act1_1_Complete_INeedToFigure {
-	format("I need to figure out how to get some Go-Goggles too...")
+    format("I need to figure out how to get some Go-Goggles too...")
 }
 
 text gText_Act1_1_Complete_HardToComeBy {
-	format("They're hard to come by right now. I only got these because Daddys knows the manufactuer over in Kanto.")
+    format("They're hard to come by right now. I only got these because Daddys knows the manufactuer over in Kanto.")
 }
 
 text gText_Act1_1_Complete_ImSureIllFigure {
-	format("I'm sure I'll figure something out.")
+    format("I'm sure I'll figure something out.")
 }
 
 script CameraToPlayer_Movement {

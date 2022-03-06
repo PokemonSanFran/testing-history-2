@@ -24,13 +24,53 @@ script WhyAreYouHelpingThem_MoveObjectBoss_Script {
 
 script WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script {
     setflag(FLAG_HIDE_WHYAREYOU_PKMN)
-    setobjectxy(PSFGOODADMIN,1,10)
-    setobjectxyperm(PSFGOODADMIN,1,10)
+    setobjectxy(PSFGOODADMIN,1,5)
+    setobjectxyperm(PSFGOODADMIN,1,5)
+    setobjectxy(PSFTRANSRIVAL,2,16)
+    setobjectxyperm(PSFTRANSRIVAL,2,16)
+    turnobject(PSFGOODADMIN,DIR_NORTH)
 }
 
 script WhyAreYouHelpingThem_BlowHoleWall {
-    setmetatile(13,1,0x3C8,FALSE)
+    setmetatile(12,1,0x3C8,FALSE)
     special(DrawWholeMapView)
+}
+
+script WhyAreYouHelpingThem_ObjectSetUpPostSave_Script {
+    setobjectxy(PSFNATIVERIVAL,6,3)
+    setobjectxyperm(PSFNATIVERIVAL,6,3)
+    turnobject(PSFNATIVERIVAL,DIR_WEST)
+    setobjectxy(PSFTRANSRIVAL,2,16)
+    setobjectxyperm(PSFTRANSRIVAL,2,16)
+}
+
+script WhyAreYouHelpingThem_ObjectDebriefSetUp_Script {
+    clearflag(FLAG_HIDE_SURVIVAL_CHANCE_RAID)
+
+    addobject(4)
+    addobject(PSFTRANSRIVAL)
+    addobject(6)
+    addobject(7)
+    addobject(8)
+
+    setobjectxyperm(4,26,4)
+    setobjectxyperm(5,25,6)
+    setobjectxyperm(6,27,6)
+    setobjectxyperm(7,25,7)
+    setobjectxyperm(8,27,7)
+}
+
+script WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script {
+    clearflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
+    clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1)
+    addobject(1)
+    addobject(3)
+
+    setobjectxyperm(1,6,6)
+    setobjectxyperm(3,6,5)
+
+    setobjectmovementtype(3,MOVEMENT_TYPE_FACE_DOWN)
+    setobjectmovementtype(1,MOVEMENT_TYPE_FACE_UP)
 }
 
 script WhyAreYouHelpingThem_StartRaid {
@@ -100,7 +140,6 @@ end
 
 
 script WhyAreYouHelpingThem_PreBattleBoss_Script {
-    setvar(VAR_ROUTE118_STATE,3)
     lockall
 applymovement(PLAYER,WhyAreYouHelpingThem_ApproachPsfgoodboss)
 applymovement(PSFGOODBOSS,Common_Movement_FaceLeft)
@@ -125,7 +164,9 @@ goto(WhyAreYouHelpingThem_PostBattleBoss_Dialogue)
 }
 
 script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
-    setvar(VAR_ROUTE118_STATE,4)
+    setvar(VAR_ROUTE118_STATE,3)
+    addobject(PSFGOODADMIN)
+    call(WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script)
 
 if (defeated(TRAINER_ARCHIE)){
 
@@ -154,12 +195,10 @@ msgbox(gText_WhyAreYouHelpingThem_ImSorryYouHad)
 callnative(ClearMugshot)
 closemessage
 
-applymovement(PSFGOODBOSS,Common_Movement_WalkInPlaceLeft)
-waitmovement(0)
-callnative(HealPlayerParty)
-call(WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script)
 applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_WalkPastPlayer)
+applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_HealAndFaceAdmin)
 waitmovement(0)
+call(Common_EventScript_OutOfCenterPartyHeal)
 
 setvar(VAR_0x8000, MUGSHOT_ARIANA)
 callnative(DrawMugshot)
@@ -183,6 +222,8 @@ msgbox(gText_WhyAreYouHelpingThem_WhatWasAllThatShit)
 setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
 callnative(DrawMugshot)
 msgbox(gText_WhyAreYouHelpingThem_WeveGotToHelp)
+callnative(ClearMugshot)
+closemessage
 
 applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_BeginEscape)
 applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_BeginEscape)
@@ -206,6 +247,8 @@ playse(SE_EXIT)
 waitse
 addobject(PSFNATIVERIVAL)
 applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_WalkOutOfHole)
+setobjectxy(PSFNATIVERIVAL,7,3)
+setobjectxyperm(PSFNATIVERIVAL,7,3)
 waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -229,35 +272,42 @@ callnative(DrawMugshot)
 msgbox(gText_WhyAreYouHelpingThem_Sigh)
 callnative(ClearMugshot)
 closemessage
-applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_WalkOutOfHoleA)
-applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_WalkOutOfHoleB)
+applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_WalkIntoHoleA)
+applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_WalkIntoHoleB)
 waitmovement(0)
 playse(SE_EXIT)
 waitse
 removeobject(PSFGOODADMIN)
 removeobject(PSFGOODBOSS)
-    }
-script leftover {
+applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_ApproachPlayer)
+waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_WhyAreYouHelpingThem_YoureWorkingWith)
+callnative(ClearMugshot)
+call(Common_EventScript_SaveGame)
+goto(WhyAreYouHelpingThem_StartBattle_Script)
+    }
 
-//Game prompts a save.
+script WhyAreYouHelpingThem_InteractBattle_Script {
+    lockall
+    faceplayer
+    goto(WhyAreYouHelpingThem_StartBattle_Script)
+}
 
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_AlwaysHaveBeen)
+script WhyAreYouHelpingThem_StartBattle_Script{
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    msgbox(gText_WhyAreYouHelpingThem_AlwaysHaveBeen)
+    trainerbattle_no_intro(TRAINER_WALLY_VR_2,gText_WhyAreYouHelpingThem_AnotherVictory)
+    closemessage
+    callnative(ClearMugshot)
+    goto(WhyAreYouHelpingThem_PostBattle_Dialogue)
+}
 
-//The player battles Psfnativerival.
-
-//If the player wins:
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_AnotherVictory)
-
-//Cut back to the overworld.
+script WhyAreYouHelpingThem_PostBattle_Dialogue {
 
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
@@ -270,8 +320,19 @@ msgbox(gText_WhyAreYouHelpingThem_WhyWouldIt)
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_WhyAreYouHelpingThem_Player)
+callnative(ClearMugshot)
+closemessage
 
-//The player turns around as Psftransrival runs up behind them.
+applymovement(PLAYER,Common_Movement_FaceLeft)
+applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_WalkIntoHoleC)
+waitmovement(0)
+playse(SE_EXIT)
+waitse
+removeobject(PSFNATIVERIVAL)
+setobjectxyperm(PSFTRANSRIVAL,1,8)
+addobject(PSFTRANSRIVAL)
+applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_RunToPlayer)
+waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
@@ -280,31 +341,50 @@ msgbox(gText_WhyAreYouHelpingThem_IGotKnockedOut)
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_WhyAreYouHelpingThem_NoILostToo)
+callnative(ClearMugshot)
+closemessage
+setvar(VAR_NATIVERIVALBETA_STATE,5)
+fadescreen(FADE_TO_BLACK)
+warpsilent(MAP_PSFCITY17,255,26,6)
+}
 
-//The player turns around, and the camera pans up. Psftransrival is gone. The screen fades to black. The screen fades back in, to Chief Bill standing before the police squad, Psftransrival, and the player.
+
+script WhyAreYouHelpingThem_MissionDebrief_Dialogue {
+    setvar(VAR_NATIVERIVALBETA_STATE,6)
+    setvar(VAR_LITTLEROOT_INTRO_STATE,7)
+    lockall
+    applymovement(PLAYER,Common_Movement_FaceUp)
 
 msgbox(gText_WhyAreYouHelpingThem_GreatWorkInThere)
+closemessage
 
-//One officer steps forward.
+applymovement(6,Common_Movement_WalkUp)
+waitmovement(0)
 
 msgbox(gText_WhyAreYouHelpingThem_WeSpottedAndTheir)
+closemessage
 
-//The officer steps backward.
+applymovement(6,WhyAreYouHelpingThem_BackInFormation)
+waitmovement(0)
 
 msgbox(gText_WhyAreYouHelpingThem_AShameStillWeveShutDown)
+closemessage
 
-//Chief Bill walks over to the player.
+applymovement(4,Common_Movement_WalkDown)
+waitmovement(0)
 
 msgbox(gText_WhyAreYouHelpingThem_NotBadInThere)
+closemessage
+releaseall
+end
+}
 
-//Player regains control.
-
-//Cutscene continues when the player enters the compound. Screen fades to black.
-
-//INT. PSFCITY8 COMPOUND
-
-//Psfbadadmin is standing in front of Psftransrival and the player.
-
+script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
+    addvar(VAR_STORYLINE_STATE,1)
+    addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+    applymovement(PLAYER,WhyAreYouHelpingThem_WalkIntoHome)
+    waitmovement(0)
+    
 setvar(VAR_0x8000, MUGSHOT_LANCE)
 callnative(DrawMugshot)
 msgbox(gText_WhyAreYouHelpingThem_WhatADay)
@@ -328,24 +408,29 @@ msgbox(gText_WhyAreYouHelpingThem_DontWorryAboutIt)
 setvar(VAR_0x8000, MUGSHOT_LANCE)
 callnative(DrawMugshot)
 msgbox(gText_WhyAreYouHelpingThem_NowIveGotALot)
+callnative(ClearMugshot)
+closemessage
 
-//Psfbadadmin walks out of the compound.
+applymovement(3,WhyAreYouHelpingThem_LeaveCompoundA)
+waitmovement(0)
+playse(SE_EXIT)
+waitse
+removeobject(3)
 
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_WhyAreYouHelpingThem_WeveAllGot)
+callnative(ClearMugshot)
+closemessage
 
-//Psftransrival walks out of the compound.
 
-//Cutscene ends.
-
-//If the player goes to sleep at this point:
-
-msgbox(gText_WhyAreYouHelpingThem_AreYouReadyToBegin)
-
-//If the player chooses Yes, they are warped to the Stadium and the next cutscene.
-
-//If the player chooses No, a normal sleep cycle occurs.
+applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_LeaveCompoundB)
+waitmovement(0)
+playse(SE_EXIT)
+waitse
+removeobject(1)
+releaseall
+end
 }
 
 text gText_WhyAreYouHelpingThem_StructuralBreach {
@@ -533,4 +618,105 @@ movement WhyAreYouHelpingThem_FleeTheBattle {
 movement WhyAreYouHelpingThem_ApproachPsfgoodboss {
     walk_up * 2
     walk_right * 4
+    step_end
+}
+
+movement WhyAreYouHelpingThem_WalkPastPlayer {
+    walk_right * 5
+    walk_up
+    step_end
+}
+
+movement WhyAreYouHelpingThem_BeginEscape {
+    walk_right * 3
+    step_end
+}
+
+movement WhyAreYouHelpingThem_ExclaimAndFacePlayer {
+    emote_exclamation_mark
+    face_left
+    step_end
+}
+
+movement WhyAreYouHelpingThem_WalkOutOfHole {
+    walk_down 
+    walk_left * 3
+    face_down
+    step_end
+}
+
+movement WhyAreYouHelpingThem_WalkIntoHoleA {
+    walk_right * 3
+    walk_up * 2
+    step_end
+}
+
+movement WhyAreYouHelpingThem_WalkIntoHoleB {
+    walk_right * 3
+    walk_up * 3
+    step_end
+}
+
+movement WhyAreYouHelpingThem_WalkIntoHoleC {
+    walk_right * 6
+    walk_up * 2
+    step_end
+}
+
+movement WhyAreYouHelpingThem_ApproachBossAndPlayer {
+    walk_left
+    walk_up * 8
+    step_end
+}
+
+movement WhyAreYouHelpingThem_HealAndFaceAdmin {
+    walk_in_place_slow_left
+    delay_16
+    delay_16
+    face_down
+    step_end
+}
+
+movement WhyAreYouHelpingThem_ApproachPlayer {
+    walk_down
+    walk_left * 3
+    step_end
+}
+
+movement WhyAreYouHelpingThem_RunToPlayer {
+    walk_up * 5
+    walk_right * 3
+    step_end
+}
+
+movement WhyAreYouHelpingThem_BackInFormation {
+    lock_facing_direction
+    walk_down
+    unlock_facing_direction
+    step_end
+}
+
+movement WhyAreYouHelpingThem_WalkToPlayerFormation {
+    walk_right
+    walk_down
+    step_end
+}
+
+movement WhyAreYouHelpingThem_WalkIntoHome {
+    walk_up * 3
+    step_end
+}
+
+movement WhyAreYouHelpingThem_LeaveCompoundA {
+    walk_right
+    walk_down * 4
+    walk_left
+    walk_in_place_down
+    face_down
+    step_end
+}
+
+movement WhyAreYouHelpingThem_LeaveCompoundB {
+    walk_down * 3
+    step_end
 }

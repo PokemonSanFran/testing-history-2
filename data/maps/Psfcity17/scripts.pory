@@ -11,13 +11,15 @@ mapscripts Psfcity17_MapScripts {
     }
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_NATIVERIVALBETA_STATE, 3:SurvivalChance333_ExplainOperation 
+        VAR_NATIVERIVALBETA_STATE, 3: SurvivalChance333_ExplainOperation 
+        VAR_NATIVERIVALBETA_STATE, 5: WhyAreYouHelpingThem_MissionDebrief_Dialogue
     ]
 }
 
 script Psfcity17_MapScripts_OnTransition {
     switch (var(VAR_NATIVERIVALBETA_STATE)){
         case 0: goto(SurvivalChance333_HideObject_Psfcity17_Script)
+        case 5: goto(WhyAreYouHelpingThem_ObjectDebriefSetUp_Script)
     }
 }
 

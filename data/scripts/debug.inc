@@ -68,6 +68,7 @@ Debug_Script_2::
 	end
 
 Debug_Script_3::
+    call(WhyAreYouHelpingThem_ExplodeWall_Script)
 	end
 
 Debug_Script_4::
