@@ -1162,7 +1162,7 @@ end
   .include "data/cutscenes/WelcometotheWarRoom.inc"
   .include "data/cutscenes/SurvivalChance333.inc"
   .include "data/cutscenes/WhyAreYouHelpingThem.inc"
-##  .include "data/cutscenes/HeresHowThisIsGoingToGo.inc"
+  .include "data/cutscenes/HeresHowThisIsGoingToGo.inc"
 ##  .include "data/cutscenes/WhyDidntYouRatMeOut.inc"
 ##  .include "data/cutscenes/WaitHeDIdWhat.inc"
 ##  .include "data/cutscenes/WelcometotheHallofFame.inc"
@@ -1249,3 +1249,13 @@ end
 .include "data/maps/Psfcave1_B2F/scripts.inc"
 
 	.include "data/maps/Psfplace2/scripts.inc"
+
+	.include "data/maps/Psfplace14_Entrance/scripts.inc"
+
+	.include "data/maps/Psfplace14_Lockers/scripts.inc"
+
+	.include "data/maps/Psfplace14_Skybox/scripts.inc"
+
+	.include "data/maps/Psfplace14_Arena/scripts.inc"
+
+	.include "data/maps/Psfplace14_Stands/scripts.inc"

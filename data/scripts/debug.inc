@@ -60,7 +60,6 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    call(WhyAreYouHelpingThem_StartRaid)
 	end
 
 Debug_Script_2::
@@ -68,7 +67,6 @@ Debug_Script_2::
 	end
 
 Debug_Script_3::
-    call(WhyAreYouHelpingThem_ExplodeWall_Script)
 	end
 
 Debug_Script_4::

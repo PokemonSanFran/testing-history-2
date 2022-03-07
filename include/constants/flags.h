@@ -671,9 +671,9 @@
 #define FLAG_HIDE_SURVIVAL_CHANCE_RAID 0x275 // Previously Unused Flag
 #define FLAG_HIDE_WHYAREYOU_POLICE 0x276 // Previously Unused Flag
 #define FLAG_HIDE_WHYAREYOU_NATIVERIVAL 0x277 // Previously Unused Flag
-#define FLAG_HIDE_WHYAREYOU_PKMN 0x278 // Unused Flag
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
-#define FLAG_UNUSED_0x27A  0x27A // Unused Flag
+#define FLAG_HIDE_WHYAREYOU_PKMN 0x278 // Previously Unused Flag
+#define FLAG_HIDE_HERESHOWTHIS_PSFBADGUY 0x279 // Previously Unused Flag
+#define FLAG_HIDE_HERESHOWTHIS_PSFNATIVERIVAL 0x27A // Previously Unused Flag
 #define FLAG_UNUSED_0x27B  0x27B // Unused Flag
 #define FLAG_UNUSED_0x27C  0x27C // Unused Flag
 #define FLAG_UNUSED_0x27D  0x27D // Unused Flag

@@ -1,0 +1,21 @@
+Psfplace14_Lockers_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfplace14_Lockers_MapScripts_OnTransition
+	return
+
+Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD:
+	return
+
+Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 24, HeresHowThisIsGoingToGo_ExplainLeagueDialogue
+	.2byte 0
+
+
+Psfplace14_Lockers_MapScripts_OnTransition::
+	return
+

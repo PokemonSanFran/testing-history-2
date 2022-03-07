@@ -2,6 +2,11 @@ mapscripts Psfroute22_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Psfroute22_MapScripts_OnTransition)
     }
+    MAP_SCRIPT_ON_LOAD {
+        if (var(VAR_STORYLINE_STATE) > 23){
+            call(HeresHowThisIsGoingToGo_ConstructionCompleted_Script)
+        }
+    }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ROUTE110_STATE, 2: TheStrikeStrikesBack_Intro_Dialogue
         VAR_ROUTE112_STATE, 1: VSGarbodor_Arrest_Script

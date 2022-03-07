@@ -1,10 +1,20 @@
 Psfroute22_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	goto Psfroute22_MapScripts_OnTransition
+	return
+
+Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD:
+	compare VAR_STORYLINE_STATE, 23
+	goto_if_gt Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD_1
+	return
+
+Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD_1:
+	call HeresHowThisIsGoingToGo_ConstructionCompleted_Script
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

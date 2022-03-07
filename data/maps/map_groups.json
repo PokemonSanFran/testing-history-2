@@ -98,7 +98,12 @@
     "Psfcave1_B1F",
     "Psfcave2_Inner",
     "Psfcave1_B2F",
-    "Psfplace2"
+    "Psfplace2",
+    "Psfplace14_Entrance",
+    "Psfplace14_Lockers",
+    "Psfplace14_Skybox",
+    "Psfplace14_Arena",
+    "Psfplace14_Stands"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

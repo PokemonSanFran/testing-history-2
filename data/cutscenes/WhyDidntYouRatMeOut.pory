@@ -1,0 +1,11 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADBOSS = 1
+const PSFTRANSRIVAL = 2
+const PSFNATIVERIVAL = 3
+const PSFBADADMIN = 4
+
+script WhyDidntYouRatMeOut_StopPlayerLeaving {
+    applymovement(PSFNATIVERIVAL,Common_Movement_FaceDown)
+        waitmovement(0)
+
+

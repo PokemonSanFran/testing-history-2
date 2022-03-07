@@ -5160,6 +5160,56 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Psfplace2/border.bin",
       "blockdata_filepath": "data/layouts/Psfplace2/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE14_ENTRANCE",
+      "name": "Psfplace14_Entrance_Layout",
+      "width": 23,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/Psfplace14_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace14_Entrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE14_LOCKERS",
+      "name": "Psfplace14_Lockers_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/Psfplace14_Lockers/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace14_Lockers/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE14_SKYBOX",
+      "name": "Psfplace14_Skybox_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/Psfplace14_Skybox/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace14_Skybox/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE14_ARENA",
+      "name": "Psfplace14_Arena_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/Psfplace14_Arena/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace14_Arena/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE14_STANDS",
+      "name": "Psfplace14_Stands_Layout",
+      "width": 10,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/Psfplace14_Stands/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace14_Stands/map.bin"
     }
   ]
 }

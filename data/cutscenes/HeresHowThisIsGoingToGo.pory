@@ -1,0 +1,196 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADBOSS = 1
+const PSFTRANSRIVAL = 2
+const PSFNATIVERIVAL = 3
+const PSFBADADMIN = 4
+
+script HeresHowThisIsGoingToGo_ConstructionCompleted_Script {
+        setmetatile(19,13,0x371,TRUE)
+        setmetatile(19,14,0x379,TRUE)
+        setmetatile(19,15,0x381,TRUE)
+        setmetatile(19,16,0x389,TRUE)
+        setmetatile(19,17,0x391,TRUE)
+        setmetatile(20,13,0x372,TRUE)
+        setmetatile(20,14,0x37A,TRUE)
+        setmetatile(20,15,0x382,TRUE)
+        setmetatile(20,16,0x38A,TRUE)
+        setmetatile(20,17,0x392,TRUE)
+        setmetatile(21,13,0x373,TRUE)
+        setmetatile(21,14,0x37B,TRUE)
+        setmetatile(21,15,0x383,FALSE)
+        setmetatile(21,16,0x38B,TRUE)
+        setmetatile(21,17,0x393,TRUE)
+        setmetatile(22,17,0x394,TRUE)
+        setmetatile(22,14,0x37C,TRUE)
+        setmetatile(22,13,0x374,TRUE)
+        setmetatile(22,16,0x38C,TRUE)
+        setmetatile(22,15,0x384,TRUE)
+        setmetatile(23,15,0x385,TRUE)
+        setmetatile(23,14,0x37D,TRUE)
+        setmetatile(23,13,0x375,TRUE)
+        setmetatile(23,16,0x38D,TRUE)
+        setmetatile(23,17,0x395,TRUE)
+        setmetatile(21,18,0x211,FALSE)
+        special(DrawWholeMapView)
+}
+
+script HeresHowThisIsGoingToGo_ObjectSetUp_Script {
+    turnobject(PLAYER,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_LITTLE_BOY,3,6,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_BOY_2,3,8,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_MAN_2,3,9,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F,3,10,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_OLD_WOMAN,3,11,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_HEX_MANIAC,3,12,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_LITTLE_BOY_3,3,13,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_BOY_1,4,6,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_LITTLE_GIRL,4,7,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_MAN_1,4,8,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M,3,10,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_WOMAN_4,3,12,3,DIR_NORTH)
+createvobject(OBJ_EVENT_GFX_MYSTERY_GIFT_MAN,3,13,3,DIR_NORTH)
+}
+
+script HeresHowThisIsGoingToGo_ExplainLeagueDialogue {
+    lockall
+    addvar(VAR_STORYLINE_STATE,1)
+    applymovement(PLAYER,Common_Movement_FaceUp)
+    applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+    applymovement(PSFNATIVERIVAL,Common_Movement_FaceUp)
+    waitmovement(0)
+
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_HeresHowThisIsGoingToGo_CongratulationsOnAll)
+callnative(ClearMugshot)
+
+msgbox(gText_HeresHowThisIsGoingToGo_WooYay)
+
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_HeresHowThisIsGoingToGo_ImSureNone)
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_HeresHowThisIsGoingToGo_WaitIDid)
+callnative(ClearMugshot)
+
+msgbox(gText_HeresHowThisIsGoingToGo_DotDotDot)
+
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_HeresHowThisIsGoingToGo_SoIllGoOver)
+closemessage
+callnative(ClearMugshot)
+
+fadescreen(FADE_TO_BLACK)
+// PSF TODO The screen shows images of the League breakdown as Psfbadboss explains the structure.
+
+msgbox(gText_HeresHowThisIsGoingToGo_ForTheGroupStage)
+
+msgbox(gText_HeresHowThisIsGoingToGo_TheTrainerWith)
+
+msgbox(gText_HeresHowThisIsGoingToGo_InTheFinalStage)
+closemessage
+
+fadescreen(FADE_FROM_BLACK)
+
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_HeresHowThisIsGoingToGo_AnyQuestions)
+callnative(ClearMugshot)
+
+msgbox(gText_HeresHowThisIsGoingToGo_WhatsTheTiebreaker)
+
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_HeresHowThisIsGoingToGo_ItsInTheInformation)
+
+applymovement(PSFBADBOSS,Common_Movement_FaceLeft)
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_HeresHowThisIsGoingToGo_YourGroupsAnd)
+callnative(ClearMugshot)
+closemessage
+
+applymovement(PSFBADBOSS,HeresHowThisIsGoingToGo_LeaveLockersA)
+applymovement(PSFBADADMIN,HeresHowThisIsGoingToGo_LeaveLockersB)
+waitmovement(0)
+playse(SE_EXIT)
+waitse
+removeobject(PSFBADBOSS)
+removeobject(PSFBADADMIN)
+applymovement(PSFNATIVERIVAL,HeresHowThisIsGoingToGo_GoToBracket)
+waitmovement(0)
+releaseall
+end
+}
+
+text gText_HeresHowThisIsGoingToGo_CongratulationsOnAll {
+	format("Congratulations on all of your hard work! Welcome to the first stage of the Psfregion1 League Championship!")
+}
+
+text gText_HeresHowThisIsGoingToGo_WooYay {
+	format("Woo! Yay!")
+}
+
+text gText_HeresHowThisIsGoingToGo_ImSureNone {
+	format("I'm sure none of you read the information email -")
+}
+
+text gText_HeresHowThisIsGoingToGo_WaitIDid {
+	format("Wait, I did! Did nobody else?")
+	}
+text gText_HeresHowThisIsGoingToGo_DotDotDot {
+	format("…")
+}
+
+text gText_HeresHowThisIsGoingToGo_SoIllGoOver {
+	format("So I'll go over how the Championship works. ")
+}
+
+text gText_HeresHowThisIsGoingToGo_ForTheGroupStage {
+	format("For the Group Stage, you'll be randomly split into four groups of four trainers. You'll battle all of the other Trainers in your group, and each match will be on a different terrain battlefield. You will bring six Pokémon with you, and choose three before the start of each match in the Group Stage. You will be healed after every match, but you may not use items from your bag during battle. ")
+	}
+text gText_HeresHowThisIsGoingToGo_TheTrainerWith {
+	format("The Trainer with the best record in a group will proceed to the Semi-Finals. In the event of a tie, we will go to a tiebreaker.")
+	}
+text gText_HeresHowThisIsGoingToGo_InTheFinalStage {
+	format("In the Final Stage, you will be paired against another winning Trainer from a different Group. You will battle on a neutral battlefield, with a full party of six. The Semi-Final winners will then face off for the Championship! Trainers can change their six Pokémon between matches, but are still not permitted to use items during battle.")
+	}
+text gText_HeresHowThisIsGoingToGo_AnyQuestions {
+	format("Any questions?")
+}
+
+text gText_HeresHowThisIsGoingToGo_WhatsTheTiebreaker {
+	format("What's the tiebreaker?")
+}
+
+text gText_HeresHowThisIsGoingToGo_ItsInTheInformation {
+	format("It's in the information packet. But also, don't lose. Anything else? No? Great. Let's assign matches.")
+}
+
+text gText_HeresHowThisIsGoingToGo_YourGroupsAnd {
+	format("Your groups, and the eventual final bracket, can be seen here. We'll be starting with Group A in two hours. Good luck.")
+}
+
+movement HeresHowThisIsGoingToGo_LeaveLockersA {
+    walk_right * 5
+    walk_down * 3
+    walk_left * 5
+    walk_down * 2
+    step_end
+}
+movement HeresHowThisIsGoingToGo_LeaveLockersB {
+    walk_right * 6
+    walk_down * 4
+    walk_left * 5
+    walk_down * 2
+    step_end
+}
+movement HeresHowThisIsGoingToGo_GoToBracket {
+    walk_down
+    walk_left * 7
+    walk_up * 2
+    step_end
+}
