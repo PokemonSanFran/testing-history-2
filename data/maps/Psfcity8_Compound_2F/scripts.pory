@@ -84,7 +84,7 @@ script WhyAreYouHelpingThem_StartChampionship_Dialogue {
         end
     } else {
         addvar(VAR_STORYLINE_STATE,1)
-        warpsilent(MAP_PSFPLACE14_LOCKERS,9,4)
+        warpsilent(MAP_PSFPLACE14_LOCKERS,9,6)
     }
 }
 

@@ -106,7 +106,7 @@ WhyAreYouHelpingThem_StartChampionship_Dialogue::
 	compare VAR_RESULT, NO
 	goto_if_eq WhyAreYouHelpingThem_StartChampionship_Dialogue_1
 	addvar VAR_STORYLINE_STATE, 1
-	warpsilent MAP_PSFPLACE14_LOCKERS, 9, 4
+	warpsilent MAP_PSFPLACE14_LOCKERS, 9, 6
 	return
 
 WhyAreYouHelpingThem_StartChampionship_Dialogue_1:

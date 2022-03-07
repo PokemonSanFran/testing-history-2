@@ -17,5 +17,6 @@ Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfplace14_Lockers_MapScripts_OnTransition::
+	call HeresHowThisIsGoingToGo_ObjectSetUp_Script
 	return
 

@@ -60,6 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
+    warpsilent MAP_PSFPLACE14_LOCKERS,9,6
 	end
 
 Debug_Script_2::
