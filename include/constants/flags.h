@@ -674,7 +674,7 @@
 #define FLAG_HIDE_WHYAREYOU_PKMN 0x278 // Previously Unused Flag
 #define FLAG_HIDE_HERESHOWTHIS_PSFBADGUY 0x279 // Previously Unused Flag
 #define FLAG_HIDE_HERESHOWTHIS_PSFNATIVERIVAL 0x27A // Previously Unused Flag
-#define FLAG_UNUSED_0x27B  0x27B // Unused Flag
+#define FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL 0x27B // Previously Unused Flag
 #define FLAG_UNUSED_0x27C  0x27C // Unused Flag
 #define FLAG_UNUSED_0x27D  0x27D // Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag

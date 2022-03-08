@@ -1163,7 +1163,7 @@ end
   .include "data/cutscenes/SurvivalChance333.inc"
   .include "data/cutscenes/WhyAreYouHelpingThem.inc"
   .include "data/cutscenes/HeresHowThisIsGoingToGo.inc"
-##  .include "data/cutscenes/WhyDidntYouRatMeOut.inc"
+  .include "data/cutscenes/WhyDidntYouRatMeOut.inc"
 ##  .include "data/cutscenes/WaitHeDIdWhat.inc"
 ##  .include "data/cutscenes/WelcometotheHallofFame.inc"
 ##  .include "data/cutscenes/BeingChampionisHard.inc"

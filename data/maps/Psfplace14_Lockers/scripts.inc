@@ -1,15 +1,20 @@
 Psfplace14_Lockers_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Psfplace14_Lockers_MapScripts_OnTransition
 	return
 
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
+
+Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 24, HeresHowThisIsGoingToGo_ObjectSetUp_Script
+	map_script_2 VAR_STORYLINE_STATE, 25, HeresHowThisIsGoingToGo_CleanUpVObjects_Script
+	.2byte 0
 
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 24, HeresHowThisIsGoingToGo_ExplainLeagueDialogue
@@ -17,6 +22,5 @@ Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfplace14_Lockers_MapScripts_OnTransition::
-	call HeresHowThisIsGoingToGo_ObjectSetUp_Script
 	return
 

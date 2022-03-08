@@ -26,6 +26,7 @@ script AndWeMarchOn_CreateParadeAudience {
 }
 
 //TODO: Figure out audience members (vobjects?)
+//Look at "HeresHowThisIsGoingToGo", they can only be called on warp or on frame
 
 script AndWeMarchOn_StartParadeMovement {
     lockall

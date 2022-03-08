@@ -1,2 +1,20 @@
 Psfplace14_Stands_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfplace14_Stands_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace14_Stands_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfplace14_Stands_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfplace14_Stands_MapScripts_OnTransition
+	return
+
+Psfplace14_Stands_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 24, HeresHowThisIsGoingToGo_ExplainLeagueDialogue
+	map_script_2 VAR_ROUTE119_STATE, 1, WhyDidntYouRatMeOut_ConversationInStands
+	.2byte 0
+
+
+Psfplace14_Stands_MapScripts_OnTransition::
+	switch VAR_ROUTE119_STATE
+	setflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL
+	return
+

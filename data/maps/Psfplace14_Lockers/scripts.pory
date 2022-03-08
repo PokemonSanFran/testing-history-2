@@ -1,15 +1,19 @@
 mapscripts Psfplace14_Lockers_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Psfplace14_Lockers_MapScripts_OnTransition)
+       //goto(Psfplace14_Lockers_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_LOAD {
+        //goto(Psfplace14_Lockers_MapScripts_OnTransition)
     }
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_STORYLINE_STATE, 24: HeresHowThisIsGoingToGo_ObjectSetUp_Script 
+        VAR_STORYLINE_STATE, 25: HeresHowThisIsGoingToGo_CleanUpVObjects_Script
+    ]
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 24: HeresHowThisIsGoingToGo_ExplainLeagueDialogue
     ]
 }
 
 script Psfplace14_Lockers_MapScripts_OnTransition {
-    call(HeresHowThisIsGoingToGo_ObjectSetUp_Script)
 }
 

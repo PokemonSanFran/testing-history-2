@@ -93,39 +93,21 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 8,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
       "x": 9,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE119_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "WhyDidntYouRatMeOut_StopPlayerLeaving"
     },
     {
       "type": "trigger",
       "x": 10,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE119_STATE",
       "var_value": "0",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 11,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "script": "WhyDidntYouRatMeOut_StopPlayerLeaving"
     }
   ],
   "bg_events": [

@@ -30,25 +30,42 @@ HeresHowThisIsGoingToGo_ConstructionCompleted_Script::
 
 
 HeresHowThisIsGoingToGo_ObjectSetUp_Script::
-	createvobject OBJ_EVENT_GFX_LITTLE_BOY, 5, 6, 5, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_BOY_2, 6, 8, 5, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_MAN_2, 7, 9, 5, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F, 8, 10, 5, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_OLD_WOMAN, 9, 11, 5, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_HEX_MANIAC, 10, 12, 5, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_LITTLE_BOY_3, 11, 13, 5, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_BOY_1, 12, 6, 6, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_LITTLE_GIRL, 13, 7, 6, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_MAN_1, 14, 8, 6, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M, 15, 10, 6, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_WOMAN_4, 16, 12, 6, DIR_NORTH
-	createvobject OBJ_EVENT_GFX_MYSTERY_GIFT_MAN, 17, 13, 6, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_LITTLE_BOY, 5, 6, 5, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_BOY_2, 6, 8, 5, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_MAN_2, 7, 9, 5, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F, 8, 10, 5, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_OLD_WOMAN, 9, 11, 5, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_HEX_MANIAC, 10, 12, 5, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_LITTLE_BOY_3, 11, 13, 5, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_BOY_1, 12, 6, 6, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_LITTLE_GIRL, 13, 7, 6, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_MAN_1, 14, 8, 6, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M, 15, 10, 6, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_WOMAN_4, 16, 12, 6, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_MYSTERY_GIFT_MAN, 17, 13, 6, 3, DIR_NORTH
+	return
+
+
+HeresHowThisIsGoingToGo_CleanUpVObjects_Script::
+	removeobject 5
+	removeobject 6
+	removeobject 7
+	removeobject 8
+	removeobject 9
+	removeobject 10
+	removeobject 11
+	removeobject 12
+	removeobject 13
+	removeobject 14
+	removeobject 15
+	removeobject 16
+	removeobject 17
+	callnative DestroyVirtualObjects
 	return
 
 
 HeresHowThisIsGoingToGo_ExplainLeagueDialogue::
 	lockall
-	addvar VAR_STORYLINE_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceUp
 	applymovement 3, Common_Movement_FaceUp
@@ -91,13 +108,14 @@ HeresHowThisIsGoingToGo_ExplainLeagueDialogue::
 	msgbox gText_HeresHowThisIsGoingToGo_YourGroupsAnd
 	callnative ClearMugshot
 	closemessage
-	applymovement 1, HeresHowThisIsGoingToGo_LeaveLockersA
-	applymovement 4, HeresHowThisIsGoingToGo_LeaveLockersB
-	waitmovement 0
+	fadescreen FADE_TO_BLACK
+	addvar VAR_STORYLINE_STATE, 1
 	playse SE_EXIT
 	waitse
 	removeobject 1
 	removeobject 4
+	call HeresHowThisIsGoingToGo_CleanUpVObjects_Script
+	fadescreen FADE_FROM_BLACK
 	applymovement 3, HeresHowThisIsGoingToGo_GoToBracket
 	waitmovement 0
 	releaseall

@@ -8560,7 +8560,7 @@ static void SpriteCB_VirtualObject(struct Sprite *sprite)
 }
 
 // Unused
-static void DestroyVirtualObjects(void)
+void DestroyVirtualObjects(void) //made nonstatic for PSF
 {
     int i;
 
