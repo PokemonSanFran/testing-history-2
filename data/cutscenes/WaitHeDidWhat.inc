@@ -10,11 +10,17 @@ WaitHeDidWhat_ShowObject_Script::
 
 
 WaitHeDidWhat_MeltdownSetUp_Script::
-	setweather WEATHER_VOLCANIC_ASH
-	doweather
-	addobject 2
+	setflag FLAG_HIDE_HERESHOWTHIS_PSFNATIVERIVAL
 	setobjectxy 2, 2, 7
 	setobjectxyperm 2, 2, 7
+	setobjectmovementtype 2, MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP
+	return
+
+
+WaitHeDidWhat_MovePlayerPostSave_Script::
+	setobjectxy OBJ_EVENT_ID_PLAYER, 4, 6
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	TeleportCamera 4, 6
 	return
 
 
@@ -107,19 +113,35 @@ WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_6:
 	goto WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_1
 
 
-yep::
+WaitHeDidWhat_WalkIntoChampionshipPosition::
+	setvar VAR_STORYLINE_STATE, 29
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, WaitHeDidWhat_WalkToBattlefieldPosition
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_IDontThinkYouCan
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_ImReallyHappy
+	callnative ClearMugshot
+	call Common_EventScript_SaveGame
+	goto WaitHeDidWhat_StartBattle_Script
+	return
+
+
+WaitHeDidWhat_StartBattle_Script::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
+	applymovement 1, Common_Movement_WalkLeft
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_ForPsfregion
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WaitHeDidWhat_SoClose
+	trainerbattle_no_intro TRAINER_STEVEN, gText_WaitHeDidWhat_SoClose
+	closemessage
+	callnative ClearMugshot
+	goto WelcomeToTheHallOfFame_PostBattle_Dialogue
 	return
 
 
@@ -138,6 +160,30 @@ WaitHeDidWhat_EncouragePlayer:
 	walk_right
 	walk_right
 	step_end
+
+WaitHeDidWhat_WalkToBattlefieldPosition:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	step_end
+
+gText_WaitHeDidWhat_AreYouReady::
+	.string "Are you ready to battle for the\n"
+	.string "Championship?$"
 
 gText_WaitHeDidWhat_GoodShitDownThere::
 	.string "Good shit down there! Time to crush\n"

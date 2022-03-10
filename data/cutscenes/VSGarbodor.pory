@@ -322,7 +322,6 @@ script VSGarbodor_ReturnToTheCompound_ObjectSetUp {
     setobjectxy(PSFTRANSRIVAL,7,2)
     setobjectxyperm(PSFTRANSRIVAL,7,2)
     setobjectmovementtype(PSFTRANSRIVAL,MOVEMENT_ACTION_FACE_DOWN)
-
 }
 
 script VSGarbodor_ReturnToTheCompound_Dialogue {

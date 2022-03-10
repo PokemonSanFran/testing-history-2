@@ -60,7 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    warpsilent MAP_PSFPLACE14_LOCKERS,9,6
+    givemon SPECIES_KYOGRE, 100, ITEM_BLUE_ORB
 	end
 
 Debug_Script_2::

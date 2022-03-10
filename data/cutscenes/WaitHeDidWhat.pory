@@ -10,19 +10,24 @@ script WaitHeDidWhat_ShowObject_Script {
 }
 
 script WaitHeDidWhat_MeltdownSetUp_Script {
-    setweather(WEATHER_VOLCANIC_ASH)
-    doweather
-    addobject(2)
+    setflag(FLAG_HIDE_HERESHOWTHIS_PSFNATIVERIVAL)
     setobjectxy(2,2,7)
     setobjectxyperm(2,2,7)
-    //setobjectmovementtype(2,MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP)
+    setobjectmovementtype(2,MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP)
+}
+
+script WaitHeDidWhat_MovePlayerPostSave_Script {
+    setobjectxy(PLAYER,4,6)
+    turnobject(PLAYER,DIR_EAST)
+    TeleportCamera(4,6)
+
 }
 
 script WaitHeDidWhat_WatchOtherSemifinal {
     addvar(VAR_ROUTE119_STATE,1)
     addvar(VAR_STORYLINE_STATE,1)
 
-    lockall//This cutscene plays after the player enters the Skybox after defeating all the Trainers in their group, and their Semi-Finals opponent.
+    lockall
 
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
@@ -88,7 +93,6 @@ end
 
 script WaitHeDidWhat_PsftransrivalMeltdown_Dialogue {
     random(4)
-        
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 
@@ -105,7 +109,11 @@ callnative(DrawMugshot)
     
 //The cutscene resumes after re-entering the battlefield. The player walks into their spot on the far left side of the battlefield. Psfnativerival is standing on the opposite side of the battlefield.
 
-script yep {
+script WaitHeDidWhat_WalkIntoChampionshipPosition {
+    setvar(VAR_STORYLINE_STATE,29)
+    lockall
+    applymovement(PLAYER,WaitHeDidWhat_WalkToBattlefieldPosition)
+    waitmovement(0)
 setvar(VAR_0x8000, MUGSHOT_HUGH)
 callnative(DrawMugshot)
 msgbox(gText_WaitHeDidWhat_IDontThinkYouCan)
@@ -114,27 +122,29 @@ msgbox(gText_WaitHeDidWhat_IDontThinkYouCan)
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_WaitHeDidWhat_ImReallyHappy)
-    
+callnative(ClearMugshot)
 
-//The game prompts a save.
+call(Common_EventScript_SaveGame)
+goto(WaitHeDidWhat_StartBattle_Script)
+}
 
-
+script WaitHeDidWhat_StartBattle_Script{
+    lockall
+applymovement(PLAYER,Common_Movement_WalkRight)
+applymovement(1,Common_Movement_WalkLeft)
+waitmovement(0)
 setvar(VAR_0x8000, MUGSHOT_HUGH)
 callnative(DrawMugshot)
 msgbox(gText_WaitHeDidWhat_ForPsfregion)
-    
-
-//The player battles Psfnativerival.
-
-//If the player wins: 
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_WaitHeDidWhat_SoClose)
-    
-
-//Cut back to the overworld.
+trainerbattle_no_intro(TRAINER_STEVEN,gText_WaitHeDidWhat_SoClose)
+closemessage
+callnative(ClearMugshot)
+goto(WelcomeToTheHallOfFame_PostBattle_Dialogue)
 }
+
+text gText_WaitHeDidWhat_AreYouReady {
+   format("Are you ready to battle for the Championship?")
+} 
 
 text gText_WaitHeDidWhat_GoodShitDownThere {
     format("Good shit down there! Time to crush this Psfnativerival kid. See you in the Finals!")
@@ -206,5 +216,12 @@ movement WaitHeDidWhat_WalkToElevator {
 movement WaitHeDidWhat_EncouragePlayer {
     walk_down
     walk_right * 2
+    step_end
+}
+
+movement WaitHeDidWhat_WalkToBattlefieldPosition {
+    walk_left * 13
+    walk_up * 3
+    walk_right
     step_end
 }

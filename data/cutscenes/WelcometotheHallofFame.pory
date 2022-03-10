@@ -1,0 +1,25 @@
+script WelcomeToTheHallOfFame_PostBattle_Dialogue {
+    msgbox(gText_WelcomeToTheHallOfFame_){
+    format("Psfregion1! Your Champion! {PLAYER}!")
+}
+
+//The crowd goes wild. Psfbadboss walks in from the locker room and walks next to the player.
+
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_WelcomeToTheHallOfFame_){
+    format("To the hundreds of you, here, in the stands. To the millions of you, watching from all over the world.  To all the fans. We say “Thank you, from the bottom of our hearts”. This first season was absolutely a success, and we can’t wait to do it again. ")
+}
+
+//Crowd goes wild again. Screen fades to black. Screen fades back into the player and both rivals on an olympic style podium.
+
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_WelcomeToTheHallOfFame_){
+    format("And now, let’s create history together. I am proud to present the first inductee to the Psfbadguy Hall of Fame. Psfregion’s Champion: {PLAYER}.")
+}
+
+//Screen fades to black. Hall of Fame cutscene plays.
+
+//Game prompts a save. Player is warped to their compound bedroom.
+}

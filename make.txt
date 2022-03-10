@@ -2,8 +2,8 @@ make[1]: *** tools/poryscript.zip: Not a directory.  Stop.
 make: *** [make_tools.mk:11: tools/poryscript.zip] Error 2
 Failed to read "src/omni_text.c".
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/money.o src/money.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_anim_effects_2.o src/battle_anim_effects_2.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/bard_music.o src/bard_music.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_anim_effects_2.o src/battle_anim_effects_2.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/field_effect.o src/field_effect.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/palette_util.o src/palette_util.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/librfu_stwi.o src/librfu_stwi.c
@@ -106,8 +106,8 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/src/trainer_pokemon_sprites.o src
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/dewford_trend.o src/dewford_trend.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/librfu_rfu.o src/librfu_rfu.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/fldeff_sweetscent.o src/fldeff_sweetscent.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_controller_safari.o src/battle_controller_safari.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_dome.o src/battle_dome.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_controller_safari.o src/battle_controller_safari.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_anim_ground.o src/battle_anim_ground.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/item_icon.o src/item_icon.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/safari_zone.o src/safari_zone.c
@@ -158,9 +158,9 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mail.o src/mail.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/naming_screen.o src/naming_screen.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/contest_painting.o src/contest_painting.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/scanline_effect.o src/scanline_effect.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/decompress.o src/decompress.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/debug.o src/debug.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/use_pokeblock.o src/use_pokeblock.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/decompress.o src/decompress.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/evolution_graphics.o src/evolution_graphics.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/option_menu.o src/option_menu.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/clock.o src/clock.c
@@ -174,10 +174,10 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_anim_normal.o src/batt
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/hall_of_fame.o src/hall_of_fame.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/berry_crush.o src/berry_crush.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mystery_gift_view.o src/mystery_gift_view.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/rtc.o src/rtc.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/fldeff_softboiled.o src/fldeff_softboiled.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/time_events.o src/time_events.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/rtc.o src/rtc.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/dynamic_placeholder_text_util.o src/dynamic_placeholder_text_util.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/time_events.o src/time_events.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/intro_credits_graphics.o src/intro_credits_graphics.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mystery_event_msg.o src/mystery_event_msg.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/intro.o src/intro.c
@@ -187,8 +187,8 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/src/easy_chat.o src/easy_chat.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/main_menu.o src/main_menu.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokemon_icon.o src/pokemon_icon.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/field_specials.o src/field_specials.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/starter_choose.o src/starter_choose.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/mugshot.o src/mugshot.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/starter_choose.o src/starter_choose.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/player_pc.o src/player_pc.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/contest_link_util.o src/contest_link_util.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/field_effect_helpers.o src/field_effect_helpers.c
@@ -269,8 +269,8 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/src/faraway_island.o src/faraway_
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/item_menu_icons.o src/item_menu_icons.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_menu_handler.o src/pokenav_menu_handler.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/hof_pc.o src/hof_pc.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_tent.o src/battle_tent.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/field_poison.o src/field_poison.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_tent.o src/battle_tent.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/credits.o src/credits.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/wild_encounter.o src/wild_encounter.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokenav_conditions_gfx.o src/pokenav_conditions_gfx.c
@@ -300,10 +300,10 @@ tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/blit.o gflib/blit.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/dma3_manager.o gflib/dma3_manager.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/bg.o gflib/bg.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/window.o gflib/window.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/gpu_regs.o gflib/gpu_regs.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/malloc.o gflib/malloc.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/sprite.o gflib/sprite.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/io_reg.o gflib/io_reg.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/gpu_regs.o gflib/gpu_regs.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/text.o gflib/text.c
 tools/agbcc/bin/agbcc <flags> -o build/emerald/gflib/string_util.o gflib/string_util.c
 cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald.map -T ld_script.ld -o ../../pokeemerald.elf <objects> <lib>

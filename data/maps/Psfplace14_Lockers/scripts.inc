@@ -6,6 +6,7 @@ Psfplace14_Lockers_MapScripts::
 	.byte 0
 
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfplace14_Lockers_MapScripts_OnTransition
 	return
 
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -14,7 +15,6 @@ Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD:
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 24, HeresHowThisIsGoingToGo_ObjectSetUp_Script
 	map_script_2 VAR_STORYLINE_STATE, 25, HeresHowThisIsGoingToGo_CleanUpVObjects_Script
-	map_script_2 VAR_STORYLINE_STATE, 28, WaitHeDidWhat_MeltdownSetUp_Script
 	.2byte 0
 
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -23,6 +23,12 @@ Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfplace14_Lockers_MapScripts_OnTransition::
+	switch VAR_STORYLINE_STATE
+	case 28, Psfplace14_Lockers_MapScripts_OnTransition_2
+	return
+
+Psfplace14_Lockers_MapScripts_OnTransition_2:
+	goto WaitHeDidWhat_MeltdownSetUp_Script
 	return
 
 
