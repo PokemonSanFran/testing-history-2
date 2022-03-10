@@ -1,2 +1,29 @@
 Psfplace14_Skybox_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfplace14_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace14_Skybox_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfplace14_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfplace14_Skybox_MapScripts_OnTransition
+	return
+
+Psfplace14_Skybox_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_ROUTE119_STATE, 2, WhyDidntYouRatMeOut_WatchPsftransrivalMatches
+	map_script_2 VAR_ROUTE119_STATE, 4, WaitHeDidWhat_WatchOtherSemifinal
+	.2byte 0
+
+
+Psfplace14_Skybox_MapScripts_OnTransition::
+	switch VAR_ROUTE119_STATE
+	case 2, Psfplace14_Skybox_MapScripts_OnTransition_2
+	case 3, Psfplace14_Skybox_MapScripts_OnTransition_3
+	return
+
+Psfplace14_Skybox_MapScripts_OnTransition_2:
+	goto WaitHeDidWhat_HideObject_Script
+	return
+
+Psfplace14_Skybox_MapScripts_OnTransition_3:
+	goto WaitHeDidWhat_ShowObject_Script
+	return
+

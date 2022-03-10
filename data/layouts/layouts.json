@@ -5185,7 +5185,7 @@
       "id": "LAYOUT_PSFPLACE14_SKYBOX",
       "name": "Psfplace14_Skybox_Layout",
       "width": 20,
-      "height": 10,
+      "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattleDome",
       "border_filepath": "data/layouts/Psfplace14_Skybox/border.bin",

@@ -1164,7 +1164,7 @@ end
   .include "data/cutscenes/WhyAreYouHelpingThem.inc"
   .include "data/cutscenes/HeresHowThisIsGoingToGo.inc"
   .include "data/cutscenes/WhyDidntYouRatMeOut.inc"
-##  .include "data/cutscenes/WaitHeDIdWhat.inc"
+  .include "data/cutscenes/WaitHeDidWhat.inc"
 ##  .include "data/cutscenes/WelcometotheHallofFame.inc"
 ##  .include "data/cutscenes/BeingChampionisHard.inc"
 ##  .include "data/cutscenes/LetsGrabLunch.inc"

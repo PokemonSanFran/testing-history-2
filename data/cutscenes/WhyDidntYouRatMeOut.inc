@@ -1,11 +1,19 @@
 WhyDidntYouRatMeOut_HideObject_Script::
 	setflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL
+	setflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN
+	return
+
+
+WhyDidntYouRatMeOut_ShowObject_Script::
+	clearflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL
+	addobject 1
 	return
 
 
 WhyDidntYouRatMeOut_StopPlayerLeaving::
-	lockall
-	clearflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL
+	lock
+	setflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL
+	setflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN
 	addvar VAR_ROUTE119_STATE, 1
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 0
@@ -27,9 +35,7 @@ WhyDidntYouRatMeOut_StopPlayerLeaving_1:
 	msgbox gText_WhyDidntYouRatMeOut_CanWeTalk
 	callnative ClearMugshot
 	closemessage
-	fadescreen FADE_TO_BLACK
 	playse SE_EXIT
-	waitse
 	warpsilent MAP_PSFPLACE14_STANDS, 4, 6
 	return
 
@@ -60,8 +66,6 @@ WhyDidntYouRatMeOut_ConversationInStands::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyDidntYouRatMeOut_WhenYouWalkedIn
-	callnative ClearMugshot
-	closemessage
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
@@ -72,9 +76,17 @@ WhyDidntYouRatMeOut_ConversationInStands::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyDidntYouRatMeOut_WaitShit
+	closemessage
+	callnative ClearMugshot
+	applymovement 1, WhyDidntYouRatMeOut_WalkBackward
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyDidntYouRatMeOut_NoCalmDown
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, Common_Movement_WalkLeft
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyDidntYouRatMeOut_LookPlayer
@@ -102,9 +114,21 @@ WhyDidntYouRatMeOut_ConversationInStands::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyDidntYouRatMeOut_YeahTheyreIn
+	callnative ClearMugshot
+	closemessage
+	playse SE_POKENAV_CALL
+	waitse
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyDidntYouRatMeOut_MyGroupIsStarting
+	callnative ClearMugshot
+	closemessage
+	clearflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN
+	addobject 2
+	applymovement 1, WhyDidntYouRatMeOut_LeaveStands
+	applymovement 2, WhyDidntYouRatMeOut_EnterStands
+	waitmovement 0
+	removeobject 1
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WhyDidntYouRatMeOut_OhDoYouKnowThat
@@ -114,11 +138,58 @@ WhyDidntYouRatMeOut_ConversationInStands::
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WhyDidntYouRatMeOut_IMeantToTell
+	callnative ClearMugshot
+	closemessage
+	playse SE_EXIT
+	warpsilent MAP_PSFPLACE14_SKYBOX, 10, 3
+	return
+
+
+WhyDidntYouRatMeOut_LookAround::
+	turnobject 2, DIR_EAST
+	turnobject 4, DIR_EAST
+	turnobject 6, DIR_EAST
+	turnobject 8, DIR_EAST
+	delay 20
+	turnobject 2, DIR_SOUTH
+	turnobject 4, DIR_SOUTH
+	turnobject 6, DIR_SOUTH
+	turnobject 8, DIR_SOUTH
+	delay 20
+	turnobject 1, DIR_EAST
+	turnobject 3, DIR_EAST
+	turnobject 5, DIR_EAST
+	turnobject 7, DIR_EAST
+	delay 20
+	turnobject 1, DIR_SOUTH
+	turnobject 3, DIR_SOUTH
+	turnobject 5, DIR_SOUTH
+	turnobject 7, DIR_SOUTH
+	delay 20
+	return
+
+
+WhyDidntYouRatMeOut_WatchPsftransrivalMatches::
+	lockall
 	msgbox gText_WhyDidntYouRatMeOut_WinsTheirGroup
+	closemessage
+	call WhyDidntYouRatMeOut_LookAround
+	applymovement 7, WhyDidntYouRatMeOut_WalkUpToPlayer
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WhyDidntYouRatMeOut_YourGroupIsNext
-	return
+	closemessage
+	callnative ClearMugshot
+	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_ROUTE119_STATE, 1
+	addvar VAR_ROUTE119_STATE, 1
+	warpsilent MAP_PSFPLACE14_ENTRANCE, 11, 5
+	releaseall
+	end
 
 
 WhyDidntYouRatMeOut_WalkToPlayerLeft:
@@ -160,6 +231,39 @@ WhyDidntYouRatMeOut_WalkSlowlyUpStairsLeft:
 	walk_slow_up
 	walk_slow_up
 	face_right
+	step_end
+
+WhyDidntYouRatMeOut_WalkBackward:
+	lock_facing_direction
+	walk_right
+	unlock_facing_direction
+	step_end
+
+WhyDidntYouRatMeOut_LeaveStands:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+WhyDidntYouRatMeOut_EnterStands:
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	face_left
+	step_end
+
+WhyDidntYouRatMeOut_WalkUpToPlayer:
+	walk_up
+	walk_up
+	walk_up
+	face_left
 	step_end
 
 gText_WhyDidntYouRatMeOut_HeyWait::
@@ -279,7 +383,8 @@ gText_WhyDidntYouRatMeOut_WinsTheirGroup::
 	.string "this Unovan superstar!$"
 
 gText_WhyDidntYouRatMeOut_YourGroupIsNext::
-	.string "Your group is up next! When you're\n"
-	.string "ready, just walk down the stairs and\l"
-	.string "talk to the security guard in front of\l"
-	.string "the Stadium doors. Good luck!$"
+	.string "Your group is up next! Head through the\n"
+	.string "locker room and you'll reach the arena.\l"
+	.string "Good luck! Or that's what I'll say in the\l"
+	.string "final game. For now, just leave this\l"
+	.string "room and come back for the next scene.$"

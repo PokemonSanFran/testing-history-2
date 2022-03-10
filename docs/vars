@@ -59,6 +59,14 @@
 23: Sleep to progress to Championship
 24: Starting the Championship
 25: Oak explained Championship
-26: Archer has apologized
+26: About to start Group Stage
+27: Finished Group Stage
+28: Finished Semi Finals stage
+29: About to start Finals
 
-#VAR_ROUTE118_STATE
+#VAR_ROUTE119_STATE
+1: Archer is about to apologize
+2: Archer has apologized
+3: Bianca has won their group
+4: Bianca is about to go fight Archer
+5: Bianca has beaten Archer

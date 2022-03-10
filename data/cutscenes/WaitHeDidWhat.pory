@@ -1,0 +1,210 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+script WaitHeDidWhat_HideObject_Script {
+    setflag(FLAG_TEMP_1)
+}
+
+script WaitHeDidWhat_ShowObject_Script {
+    clearflag(FLAG_TEMP_1)
+    addobject(8)
+}
+
+script WaitHeDidWhat_MeltdownSetUp_Script {
+    setweather(WEATHER_VOLCANIC_ASH)
+    doweather
+    addobject(2)
+    setobjectxy(2,2,7)
+    setobjectxyperm(2,2,7)
+    //setobjectmovementtype(2,MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP)
+}
+
+script WaitHeDidWhat_WatchOtherSemifinal {
+    addvar(VAR_ROUTE119_STATE,1)
+    addvar(VAR_STORYLINE_STATE,1)
+
+    lockall//This cutscene plays after the player enters the Skybox after defeating all the Trainers in their group, and their Semi-Finals opponent.
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_WaitHeDidWhat_GoodShitDownThere)
+callnative(ClearMugshot)
+closemessage
+
+applymovement(PLAYER,WaitHeDidWhat_GetOutOfWay)
+opendoor(9,1)
+waitdooranim
+applymovement(8,WaitHeDidWhat_WalkToElevator)
+waitmovement(0)
+playse(SE_EXIT)
+removeobject(8)
+closedoor(9,1)
+waitdooranim
+fadescreen(FADE_TO_BLACK)
+setobjectxy(PLAYER,9,6)
+turnobject(PLAYER,DIR_SOUTH)
+TeleportCamera(9,6)
+fadescreen(FADE_FROM_BLACK)
+
+msgbox(gText_WaitHeDidWhat_InAStunningUpset)
+closemessage
+
+playse(SE_PIN)
+applymovement(5,Common_Movement_ExclamationMark)
+applymovement(1,Common_Movement_ExclamationMark)
+applymovement(7,Common_Movement_ExclamationMark)
+applymovement(PLAYER,Common_Movement_ExclamationMark)
+waitmovement(0)
+    
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_WaitHeDidWhat_HolyShit)
+callnative(ClearMugshot)
+    
+msgbox(gText_WaitHeDidWhat_WellTakeAQuick)
+closemessage
+    
+applymovement(5, WaitHeDidWhat_EncouragePlayer)
+applymovement(7, Common_Movement_WalkLeft)
+waitmovement(0)
+
+applymovement(PLAYER, Common_Movement_FaceLeft)
+waitmovement(0)
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_WaitHeDidWhat_MakeSureYouGive)
+closemessage
+callnative(ClearMugshot)
+    
+applymovement(PLAYER, Common_Movement_FaceRight)
+waitmovement(0)
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_WaitHeDidWhat_GoodLuck)
+callnative(ClearMugshot)
+closemessage
+releaseall
+end
+}
+
+script WaitHeDidWhat_PsftransrivalMeltdown_Dialogue {
+    random(4)
+        
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+
+    switch (var(VAR_RESULT)) {
+        case 0: msgbox(gText_WaitHeDidWhat_ILostToThat)
+        case 1:msgbox(gText_WaitHeDidWhat_GetTheFuck)
+        case 2:msgbox(gText_WaitHeDidWhat_HowCouldThisHappen)
+        case 3:msgbox(gText_WaitHeDidWhat_AbsoluteBullshit)
+    }
+
+    callnative(ClearMugshot)
+        closemessage
+}
+    
+//The cutscene resumes after re-entering the battlefield. The player walks into their spot on the far left side of the battlefield. Psfnativerival is standing on the opposite side of the battlefield.
+
+script yep {
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_WaitHeDidWhat_IDontThinkYouCan)
+    
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_WaitHeDidWhat_ImReallyHappy)
+    
+
+//The game prompts a save.
+
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_WaitHeDidWhat_ForPsfregion)
+    
+
+//The player battles Psfnativerival.
+
+//If the player wins: 
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_WaitHeDidWhat_SoClose)
+    
+
+//Cut back to the overworld.
+}
+
+text gText_WaitHeDidWhat_GoodShitDownThere {
+    format("Good shit down there! Time to crush this Psfnativerival kid. See you in the Finals!")
+}
+
+text gText_WaitHeDidWhat_InAStunningUpset {
+    format("In a stunning upset, the hometown hero, Psfnativerival defeats Psftransrival and moves onto the Finals! What a wild match!")
+}
+
+text gText_WaitHeDidWhat_HolyShit {
+    format("(...holy shit!)")
+    }
+
+text gText_WaitHeDidWhat_WellTakeAQuick {
+    format("We'll take a quick break, and when we come back... your Championship match! Psfnativerival VS {PLAYER}, for all the marbles!")
+}
+
+text gText_WaitHeDidWhat_MakeSureYouGive {
+    format("Make sure you give us a good show down there!")
+}
+
+text gText_WaitHeDidWhat_GoodLuck {
+    format("Good luck, {PLAYER}.")
+}
+
+text gText_WaitHeDidWhat_ILostToThat {
+    format("I lost to that absolute garbage Trainer? What happened?")
+}
+
+text gText_WaitHeDidWhat_GetTheFuck {
+    format("Get the fuck away from me!")
+}
+
+text gText_WaitHeDidWhat_HowCouldThisHappen {
+    format("How could this happen? Now I have to win another match just to get THIRD?!?")
+}
+
+text gText_WaitHeDidWhat_AbsoluteBullshit {
+    format("Absolute bullshit. Argh I cannot believe this shit…")
+}
+
+text gText_WaitHeDidWhat_IDontThinkYouCan {
+    format("{PLAYER}, I don't think you can beat me when I have home court advantage! I already beat one cheater, and I'm gonna take you down too!")
+    }
+
+text gText_WaitHeDidWhat_ImReallyHappy {
+    format("I'm really happy for you! But I'm keeping my undefeated streak against you, Psfnativerival.")
+    }
+
+text gText_WaitHeDidWhat_ForPsfregion {
+    format("For Psfregion!")
+    }
+
+text gText_WaitHeDidWhat_SoClose {
+    format("…so close.")
+    }
+
+movement WaitHeDidWhat_GetOutOfWay {
+    walk_left
+    face_right
+    step_end
+}
+
+movement WaitHeDidWhat_WalkToElevator {
+    walk_up * 2
+    step_end
+}
+
+movement WaitHeDidWhat_EncouragePlayer {
+    walk_down
+    walk_right * 2
+    step_end
+}

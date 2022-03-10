@@ -6,11 +6,18 @@ const PSFBADADMIN = 4
 
 script WhyDidntYouRatMeOut_HideObject_Script {
     setflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL)
+    setflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN)
+}
+
+script WhyDidntYouRatMeOut_ShowObject_Script {
+    clearflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL)
+    addobject(1)
 }
 
 script WhyDidntYouRatMeOut_StopPlayerLeaving {
-    lockall
-        clearflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL)
+        lock
+    setflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL)
+    setflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN)
         addvar(VAR_ROUTE119_STATE,1)
         applymovement(PSFNATIVERIVAL,Common_Movement_FaceDown)
         waitmovement(0)
@@ -39,144 +46,188 @@ script WhyDidntYouRatMeOut_StopPlayerLeaving {
         closemessage
 
         playse(SE_EXIT)
-        waitse
         warpsilent(MAP_PSFPLACE14_STANDS,4,6)
 }
 
 script WhyDidntYouRatMeOut_ConversationInStands {
+        addvar(VAR_ROUTE119_STATE,1)
+
+        applymovement(PLAYER,WhyDidntYouRatMeOut_WalkSlowlyUpStairsLeft)
+        applymovement(1,WhyDidntYouRatMeOut_WalkSlowlyUpStairsRight)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_WhatDoYouWant)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_IDidntThinkWed)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_IsSomethingWrongWith)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_ThatsNotWhatI)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_UhHuh)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_WhenYouWalkedIn)
+
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_WhyDidntYou)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_IStillHaventDecided)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_WaitShit)
+        closemessage
+        callnative(ClearMugshot)
+        applymovement(1,WhyDidntYouRatMeOut_WalkBackward)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_NoCalmDown)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(1,Common_Movement_WalkLeft)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_LookPlayer)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_NoYouLook)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_WasNiceToMe4)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_ThankYouAndImSorry)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_UhHuhLetsSeeHow)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_NoSeriouslyItMeans)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_LikeEveryOtherTime)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_YouKnowThem)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_YeahTheyreIn)
+        callnative(ClearMugshot)
+        closemessage
+
+        playse(SE_POKENAV_CALL)
+        waitse
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_MyGroupIsStarting)
+        callnative(ClearMugshot)
+        closemessage
+
+        clearflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN)
+        addobject(2)
+        applymovement(1,WhyDidntYouRatMeOut_LeaveStands)
+        applymovement(2,WhyDidntYouRatMeOut_EnterStands)
+        waitmovement(0)
+        removeobject(1)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_OhDoYouKnowThat)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_UhYeahWeMet)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_IMeantToTell)
+        callnative(ClearMugshot)
+        closemessage
+
+        playse(SE_EXIT)
+        warpsilent(MAP_PSFPLACE14_SKYBOX,10,3)
+}
+
+script WhyDidntYouRatMeOut_LookAround {
+    turnobject(2, DIR_EAST)
+    turnobject(4, DIR_EAST)
+    turnobject(6, DIR_EAST)
+    turnobject(8, DIR_EAST)
+    delay(20)
+    turnobject(2, DIR_SOUTH)
+    turnobject(4, DIR_SOUTH)
+    turnobject(6, DIR_SOUTH)
+    turnobject(8, DIR_SOUTH)
+    delay(20)
+    turnobject(1, DIR_EAST)
+    turnobject(3, DIR_EAST)
+    turnobject(5, DIR_EAST)
+    turnobject(7, DIR_EAST)
+    delay(20)
+    turnobject(1, DIR_SOUTH)
+    turnobject(3, DIR_SOUTH)
+    turnobject(5, DIR_SOUTH)
+    turnobject(7, DIR_SOUTH)
+    delay(20)
+    return
+}
+
+script WhyDidntYouRatMeOut_WatchPsftransrivalMatches {
+    lockall
+    msgbox(gText_WhyDidntYouRatMeOut_WinsTheirGroup)
+    closemessage
+
+    call(WhyDidntYouRatMeOut_LookAround)
+
+    applymovement(7,WhyDidntYouRatMeOut_WalkUpToPlayer)
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_WhyDidntYouRatMeOut_YourGroupIsNext)
+    closemessage
+    callnative(ClearMugshot)
+
+    addvar(VAR_STORYLINE_STATE,1)
+    addvar(VAR_STORYLINE_STATE,1)
+    addvar(VAR_STORYLINE_STATE,1)
     addvar(VAR_ROUTE119_STATE,1)
-
-    applymovement(PLAYER,WhyDidntYouRatMeOut_WalkSlowlyUpStairsLeft)
-    applymovement(1,WhyDidntYouRatMeOut_WalkSlowlyUpStairsRight)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_WhatDoYouWant)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_IDidntThinkWed)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_IsSomethingWrongWith)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_ThatsNotWhatI)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_UhHuh)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_WhenYouWalkedIn)
-callnative(ClearMugshot)
-closemessage
-
-waitmovement(0)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_WhyDidntYou)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_IStillHaventDecided)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_WaitShit)
-closemessage
-callnative(ClearMugshot)
-applymovement(1,WhyDidntYouRatMeOut_WalkBackward)
-waitmovement(0)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_NoCalmDown)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_LookPlayer)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_NoYouLook)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_WasNiceToMe4)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_ThankYouAndImSorry)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_UhHuhLetsSeeHow)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_NoSeriouslyItMeans)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_LikeEveryOtherTime)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_YouKnowThem)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_YeahTheyreIn)
-    callnative(ClearMugshot)
-    closemssage
-
-    playse(SE_POKENAV)
-    waitse
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_MyGroupIsStarting)
-    callnative(ClearMugshot)
-    closemssage
-
-    //    Psfnativerival walks off screen. Psfbadadmin walks onto screen.
-
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_OhDoYouKnowThat)
-
-
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_UhYeahWeMet)
-
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_IMeantToTell)
-
-    //Screen fades to black.
-
-    //INT. SKYBOX
-
-    //Screen fades in. All of the Psfbadguy leadership, a few nameless people, and the player are all in the Skybox, watching Psftransrival battle below.
-
-msgbox(gText_WhyDidntYouRatMeOut_WinsTheirGroup)
-
-    //The people in the skybox all look at each other. Psfbadadmin walks over to the Player.
-
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-msgbox(gText_WhyDidntYouRatMeOut_YourGroupIsNext)
-
-    //The player regains control.
-    }
-
+    addvar(VAR_ROUTE119_STATE,1)
+    warpsilent(MAP_PSFPLACE14_ENTRANCE,11,5)//PSF TODO remove this once battles are implemented
+    releaseall
+    end
+}
 
 text gText_WhyDidntYouRatMeOut_HeyWait {
     format("Hey, {PLAYER}, wait.")
@@ -283,7 +334,7 @@ text gText_WhyDidntYouRatMeOut_WinsTheirGroup {
 }
 
 text gText_WhyDidntYouRatMeOut_YourGroupIsNext {
-    format("Your group is up next! When you're ready, just walk down the stairs and talk to the security guard in front of the Stadium doors. Good luck!")
+    format("Your group is up next! Head through the locker room and you'll reach the arena.  Good luck! Or that's what I'll say in the final game. For now, just leave this room and come back for the next scene.")
 }
 
 movement WhyDidntYouRatMeOut_WalkToPlayerLeft {
@@ -301,12 +352,37 @@ movement WhyDidntYouRatMeOut_WalkToPlayerRight {
 }
 
 movement WhyDidntYouRatMeOut_WalkSlowlyUpStairsRight {
-        walk_slow_up * 6
+    walk_slow_up * 6
         face_left
         step_end
 }
 movement WhyDidntYouRatMeOut_WalkSlowlyUpStairsLeft {
-        walk_slow_up * 6
+    walk_slow_up * 6
         face_right
         step_end
+}
+
+movement WhyDidntYouRatMeOut_WalkBackward {
+    lock_facing_direction
+        walk_right
+        unlock_facing_direction
+        step_end
+}
+
+movement WhyDidntYouRatMeOut_LeaveStands {
+    walk_down * 6
+        step_end
+}
+movement WhyDidntYouRatMeOut_EnterStands {
+    walk_up * 3
+        walk_right
+        walk_up * 3
+        face_left
+        step_end
+}
+
+movement WhyDidntYouRatMeOut_WalkUpToPlayer {
+    walk_up * 3
+    face_left
+    step_end
 }

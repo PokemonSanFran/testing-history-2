@@ -1,0 +1,17 @@
+mapscripts Psfplace14_Skybox_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfplace14_Skybox_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ROUTE119_STATE, 2: WhyDidntYouRatMeOut_WatchPsftransrivalMatches
+        VAR_ROUTE119_STATE, 4: WaitHeDidWhat_WatchOtherSemifinal 
+    ]
+}
+
+script Psfplace14_Skybox_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE119_STATE)){
+        case 2: goto(WaitHeDidWhat_HideObject_Script)
+        case 3: goto(WaitHeDidWhat_ShowObject_Script)
+
+    }
+}

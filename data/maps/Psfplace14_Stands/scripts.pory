@@ -1,16 +1,18 @@
 mapscripts Psfplace14_Stands_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-       goto(Psfplace14_Stands_MapScripts_OnTransition)
+        goto(Psfplace14_Stands_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 24: HeresHowThisIsGoingToGo_ExplainLeagueDialogue
         VAR_ROUTE119_STATE, 1: WhyDidntYouRatMeOut_ConversationInStands
     ]
 }
 
 script Psfplace14_Stands_MapScripts_OnTransition {
     switch (var(VAR_ROUTE119_STATE)){
-        default: setflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL)
+        case 0: goto(WhyDidntYouRatMeOut_HideObject_Script)
+        case 1: goto(WhyDidntYouRatMeOut_ShowObject_Script)
+        case 2: goto(WhyDidntYouRatMeOut_HideObject_Script)
+
     }
 }
 
