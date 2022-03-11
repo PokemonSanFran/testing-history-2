@@ -1,3 +1,4 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
 script WelcomeToTheHallOfFame_PostBattle_Dialogue {
 msgbox(gText_WelcomeToTheHallOfFame_YourChampion)
 closemessage
@@ -6,19 +7,44 @@ playse(SE_M_ENCORE2)
 call(BattleFrontier_BattleDomeBattleRoom_EventScript_AudienceLookAround)
 delay(60)
 
-//The crowd goes wild. Psfbadboss walks in from the locker room and walks next to the player.
+clearflag(FLAG_TEMP_1)
+addobject(2)
+applymovement(2,WelcomeToTheHallOfFame_MovePsfbadbossToPodium)
+applymovement(1,WelcomeToTheHallOfFame_WalkOutOfWay)
+waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_GHETSIS)
 callnative(DrawMugshot)
 msgbox(gText_WelcomeToTheHallOfFame_ToTheHundreds)
+callnative(ClearMugshot)
+closemessage
 
 //Crowd goes wild again. Screen fades to black. Screen fades back into the player and both rivals on an olympic style podium.
+playse(SE_M_ENCORE2)
+call(BattleFrontier_BattleDomeBattleRoom_EventScript_AudienceLookAround)
+fadescreen(FADE_TO_BLACK)
+setobjectxy(PLAYER,9,6)
+setobjectxy(1,8,7)
+setobjectxy(2,7,7)
+turnobject(1,DIR_SOUTH)
+turnobject(2,DIR_SOUTH)
+turnobject(PLAYER,DIR_SOUTH)
+TeleportCamera(9,6)
+fadescreen(FADE_FROM_BLACK)
 
 setvar(VAR_0x8000, MUGSHOT_GHETSIS)
 callnative(DrawMugshot)
 msgbox(gText_WelcomeToTheHallOfFame_AndNowLetsCreate)
+callnative(ClearMugshot)
+closemessage
 
-//Screen fades to black. Hall of Fame cutscene plays.
+//setrespawn(HEAL_LOCATION_PSFCITY3)
+fadescreenspeed(FADE_TO_BLACK,24)
+special(GameClear)
+waitstate
+releaseall
+end
+
 
 //Game prompts a save. Player is warped to their compound bedroom.
 }
@@ -31,4 +57,18 @@ text gText_WelcomeToTheHallOfFame_ToTheHundreds {
 }
 text gText_WelcomeToTheHallOfFame_AndNowLetsCreate {
     format("And now, let's create history together. I am proud to present the first inductee to the Psfbadguy Hall of Fame. Psfregion's Champion: {PLAYER}.")
+}
+
+movement WelcomeToTheHallOfFame_MovePsfbadbossToPodium {
+    walk_left * 4
+    walk_up * 3
+    walk_left * 6
+    step_end
+}
+
+movement WelcomeToTheHallOfFame_WalkOutOfWay {
+    walk_right
+    walk_up
+    face_down
+    step_end
 }

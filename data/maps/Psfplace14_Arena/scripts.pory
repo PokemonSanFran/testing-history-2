@@ -4,8 +4,13 @@ mapscripts Psfplace14_Arena_MapScripts {
     MAP_SCRIPT_ON_LOAD {
        goto(Psfplace14_Arena_MapScripts_OnTransition)
     }
+    MAP_SCRIPT_ON_RESUME {
+        goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience)
+    }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-        VAR_TEMP_0: BattleFrontier_BattleDomeBattleRoom_EventScript_AddAudience
+        VAR_STORYLINE_STATE, 28: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+        VAR_STORYLINE_STATE, 29: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+        VAR_STORYLINE_STATE, 30: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 28: WaitHeDidWhat_WalkIntoChampionshipPosition
@@ -13,6 +18,7 @@ mapscripts Psfplace14_Arena_MapScripts {
 }
 
 script Psfplace14_Arena_MapScripts_OnTransition {
+    setflag(FLAG_TEMP_1)
     switch (var(VAR_STORYLINE_STATE)){
         case 29: goto(WaitHeDidWhat_MovePlayerPostSave_Script)
     }

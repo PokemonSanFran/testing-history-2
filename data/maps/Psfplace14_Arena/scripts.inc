@@ -1,7 +1,9 @@
 Psfplace14_Arena_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_RESUME, Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_RESUME
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_TRANSITION:
@@ -11,12 +13,23 @@ Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_LOAD:
 	goto Psfplace14_Arena_MapScripts_OnTransition
 	return
 
+Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_RESUME:
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	return
+
 Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
-	map_script_2 VAR_TEMP_0 : BattleFrontier_BattleDomeBattleRoom_EventScript_AddAudience ] MAP_SCRIPT_ON_FRAME_TABLE [ VAR_STORYLINE_STATE, 28, WaitHeDidWhat_WalkIntoChampionshipPosition
+	map_script_2 VAR_STORYLINE_STATE, 28, BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	map_script_2 VAR_STORYLINE_STATE, 29, BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	map_script_2 VAR_STORYLINE_STATE, 30, BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	.2byte 0
+
+Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 28, WaitHeDidWhat_WalkIntoChampionshipPosition
 	.2byte 0
 
 
 Psfplace14_Arena_MapScripts_OnTransition::
+	setflag FLAG_TEMP_1
 	switch VAR_STORYLINE_STATE
 	case 29, Psfplace14_Arena_MapScripts_OnTransition_2
 	return

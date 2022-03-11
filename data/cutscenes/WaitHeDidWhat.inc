@@ -138,7 +138,6 @@ WaitHeDidWhat_StartBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_ForPsfregion
-	trainerbattle_no_intro TRAINER_STEVEN, gText_WaitHeDidWhat_SoClose
 	closemessage
 	callnative ClearMugshot
 	goto WelcomeToTheHallOfFame_PostBattle_Dialogue
