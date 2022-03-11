@@ -107,8 +107,6 @@ callnative(DrawMugshot)
         closemessage
 }
     
-//The cutscene resumes after re-entering the battlefield. The player walks into their spot on the far left side of the battlefield. Psfnativerival is standing on the opposite side of the battlefield.
-
 script WaitHeDidWhat_WalkIntoChampionshipPosition {
     setvar(VAR_STORYLINE_STATE,29)
     lockall

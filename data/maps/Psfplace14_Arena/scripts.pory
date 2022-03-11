@@ -1,11 +1,11 @@
 mapscripts Psfplace14_Arena_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-       //goto(Psfplace14_Arena_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_LOAD {
        goto(Psfplace14_Arena_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_TEMP_0: BattleFrontier_BattleDomeBattleRoom_EventScript_AddAudience
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 28: WaitHeDidWhat_WalkIntoChampionshipPosition
