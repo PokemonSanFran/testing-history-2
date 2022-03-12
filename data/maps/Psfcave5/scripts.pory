@@ -1,0 +1,36 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+mapscripts Psfcave5_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcave5_MapScripts_OnTransition)
+    }
+
+    MAP_SCRIPT_ON_FRAME_TABLE [
+    ]
+}
+
+script Psfcave5_MapScripts_OnTransition {
+}
+
+script Psfcave5_ChooseFerryDestination_Script {
+    msgbox(gText_WhereWould,MSGBOX_NPC)
+    goto(Psfcave5_UnlockedDestinations_Script)
+}
+
+script Psfcave5_UnlockedDestinations_Script {
+    switch (var(VAR_FERRY_STATE)){
+        case 2:goto(Psfcave5_FerryState0_Script)
+    }
+}
+
+script Psfcave5_FerryState0_Script {
+    multichoicedefault(18,8,PSFCAVE5_FERRY_DESTINATIONS_VER1,2,FALSE)
+    call(SlateportCity_Harbor_EventScript_BoardFerry)
+
+    switch (var(VAR_RESULT)){
+        case 0: warp(MAP_PSFPLACE11,8,11)
+        case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+}
+}
+

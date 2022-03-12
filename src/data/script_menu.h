@@ -881,6 +881,29 @@ static const struct MenuAction sVSGarbador_ChooseSide[] =
     {gText_DontCare},
 };
 
+static const struct MenuAction sLetsGrabLunch_Warp[] =
+{
+    {gText_Psfcity13},
+    {gText_Psfcity10},
+    {gText_Psfcave5},
+    {gText_Psfcity18},
+};
+
+static const struct MenuAction sGarbodor_Properties[] =
+{
+    {gText_Moves},
+    {gText_Ability},
+    {gText_Nickname},
+    {gText_Shininess},
+};
+
+static const struct MenuAction sGarbodor_Moves[] =
+{
+    {gText_Haze},
+    {gText_SludgeBomb},
+    {gText_StmpngTantrm},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1027,6 +1050,14 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
 
 //VS Garbador Choose side
     [MULTI_GARBADOR_CHOOSE] = MULTICHOICE(sVSGarbador_ChooseSide),
+
+//LetsGrabLunch ExplainAndWarp
+    [MULTI_LUNCH_WARP] = MULTICHOICE(sLetsGrabLunch_Warp),
+
+//YouRealizeTheyreEvil Garbodor
+    [MULTI_GARBADOR_PROPERTIES] = MULTICHOICE(sGarbodor_Properties),
+    [MULTI_GARBADOR_MOVES] = MULTICHOICE(sGarbodor_Moves),
+
 };
 
 

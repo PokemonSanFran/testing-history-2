@@ -10,7 +10,6 @@ Psfcity8_MapScripts_MAP_SCRIPT_ON_LOAD:
 
 Psfcity8_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 	setmetatile 3, 8, 0x239, TRUE
-	setmetatile 3, 9, 0x241, TRUE
 	return
 
 Psfcity8_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

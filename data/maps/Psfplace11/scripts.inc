@@ -38,7 +38,7 @@ Psfplace11_UnlockedDestinations_Script::
 	switch VAR_FERRY_STATE
 	case 0, Psfplace11_UnlockedDestinations_Script_2
 	case 1, Psfplace11_UnlockedDestinations_Script_3
-	case 9, Psfplace11_UnlockedDestinations_Script_4
+	case 2, Psfplace11_UnlockedDestinations_Script_4
 	return
 
 Psfplace11_UnlockedDestinations_Script_2:
@@ -91,7 +91,7 @@ Psfplace11_FerryState1_Script_2:
 	return
 
 Psfplace11_FerryState1_Script_3:
-	warp MAP_PSFCITY17, 3, 16
+	warp MAP_PSFCAVE5, 15, 36
 	return
 
 Psfplace11_FerryState1_Script_4:

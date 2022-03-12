@@ -1,73 +1,102 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADADMIN = 1
+
+script BeingChampionIsHard_ObjectCleanUp_Script {
+    setflag(FLAG_TEMP_1)
+}
+
+script BeingChampionIsHard_TimeSkip {
+    fadescreen(FADE_TO_BLACK)
+        msgbox(gText_BeingChampionIsHard_OneMonthLater)
+        closemessage
+        goto(BeingChampionIsHard_PostTimeSkip)
+}
 
 script BeingChampionIsHard_PostTimeSkip {
-msgbox(gText_BeingChampionIsHard_OneMonthLater)
+    playse(SE_EXIT)
+        waitse
+        fadescreen(FADE_FROM_BLACK)
 
-//The player walks down the stairs of the house. Psfbadadmin is downstairs.
+        applymovement(PLAYER,BeingChampionIsHard_WalkToPsfbadadmin)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_SighGoodMorning)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_SighGoodMorning)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_GoodMorningChampion)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_GoodMorningChampion)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_ItsAlmostBeenAMonth)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_ItsAlmostBeenAMonth)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_OfCourseNot)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_OfCourseNot)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_PleaseArceusLetItBe)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_PleaseArceusLetItBe)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_YouveActuallyGotNothing)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_YouveActuallyGotNothing)
+        closemessage
+        callnative(ClearMugshot)
 
-//PLAYER !
+        playse(SE_PIN)
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_YouWereStarting)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_YouCouldTell)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_YouWereStarting)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_ThisIsOurFirst)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_YouCouldTell)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_WoWWhatToDo)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_ThisIsOurFirst)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_YouShouldGoTo)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_WoWWhatToDo)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_ThatsWhereTheyFilm)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_YouShouldGoTo)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_ThereAlsoUsed)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_ThatsWhereTheyFilm)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_SoundsLikeItll)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_ThereAlsoUsed)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_BeingChampionIsHard_ThePleasureIsAllOurs)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_SoundsLikeItll)
 
-//Psfbadadmin walks out of the house.
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_BeingChampionIsHard_ThePleasureIsAllOurs)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(PSFBADADMIN,Common_Movement_WalkInPlaceDown)
+        waitmovement(0)
+        playse(SE_EXIT)
+        removeobject(PSFBADADMIN)
+        addvar(VAR_STORYLINE_STATE,1)
+        addvar(VAR_FERRY_STATE,1)
+        releaseall
+        end
 
 }
 
@@ -87,7 +116,7 @@ text gText_BeingChampionIsHard_OfCourseNot {
     format("Of course not. You've earned it! Now on the docket for today…")
 }
 text gText_BeingChampionIsHard_PleaseArceusLetItBe {
-    format("Please Arceus, let it be an easy day. I swear it's been six interviews a day, an exhibition on every news network… being officially sponsored is great, but shit, I need a day off!)")
+    format("(Please Arceus, let it be an easy day. I swear it's been six interviews a day, an exhibition on every news network… being officially sponsored is great, but shit, I need a day off!)")
 }
 text gText_BeingChampionIsHard_YouveActuallyGotNothing {
     format("You've actually got nothing.")
@@ -120,3 +149,9 @@ text gText_BeingChampionIsHard_ThePleasureIsAllOurs {
     format("The pleasure is all ours, {PLAYER}. I'll be checking in, but don't hesitate to reach out.")
 }
 
+movement BeingChampionIsHard_WalkToPsfbadadmin {
+    walk_down * 5
+        walk_left * 4
+        face_down
+        step_end
+}

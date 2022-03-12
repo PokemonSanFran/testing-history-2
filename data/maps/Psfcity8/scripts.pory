@@ -7,7 +7,7 @@ mapscripts Psfcity8_MapScripts {
     MAP_SCRIPT_ON_LOAD {
         if (var(FLAG_SYS_GAME_CLEAR)){
             setmetatile(3,8,0x239,TRUE)
-            setmetatile(3,9,0x241,TRUE)
+            //setmetatile(3,9,0x241,TRUE)
         }
     }
 }

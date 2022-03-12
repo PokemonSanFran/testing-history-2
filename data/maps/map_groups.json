@@ -104,7 +104,11 @@
     "Psfplace14_Skybox",
     "Psfplace14_Arena",
     "Psfplace14_Stands",
-    "Psfcity3_Compound_1F"
+    "Psfcity3_Compound_1F",
+    "Psfcave5",
+    "Psfcave5_Restaurant",
+    "Psfcave7_B1F",
+    "Psfcave7_B2F"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

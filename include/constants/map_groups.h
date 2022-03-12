@@ -65,6 +65,10 @@
 #define MAP_PSFPLACE14_ARENA     (56 | (0 << 8))
 #define MAP_PSFPLACE14_STANDS    (57 | (0 << 8))
 #define MAP_PSFCITY3_COMPOUND_1F (58 | (0 << 8))
+#define MAP_PSFCAVE5             (59 | (0 << 8))
+#define MAP_PSFCAVE5_RESTAURANT  (60 | (0 << 8))
+#define MAP_PSFCAVE7_B1F         (61 | (0 << 8))
+#define MAP_PSFCAVE7_B2F         (62 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

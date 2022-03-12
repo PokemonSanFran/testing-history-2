@@ -27,7 +27,7 @@ script Psfplace11_UnlockedDestinations_Script {
     switch (var(VAR_FERRY_STATE)){
         case 0:goto(Psfplace11_FerryState0_Script)
         case 1:goto(Psfplace11_FerryState0_Script)
-        case 9:goto(Psfplace11_FerryState1_Script)
+        case 2:goto(Psfplace11_FerryState1_Script)
     }
 }
 
@@ -48,7 +48,7 @@ script Psfplace11_FerryState1_Script {
 
     switch (var(VAR_RESULT)){
         case 0: warp(MAP_PSFCITY17,3,16)
-        case 1: warp(MAP_PSFCITY17,3,16)
+        case 1: warp(MAP_PSFCAVE5,15,36)
         case 2: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
 }

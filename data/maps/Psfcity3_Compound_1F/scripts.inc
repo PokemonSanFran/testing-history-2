@@ -1,2 +1,27 @@
 Psfcity3_Compound_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_RESUME
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_RESUME:
+	return
+
+Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcity3_MapScripts_OnTransition
+	return
+
+Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 29, BeingChampionIsHard_TimeSkip
+	.2byte 0
+
+
+Psfcity3_MapScripts_OnTransition::
+	compare VAR_STORYLINE_STATE, 29
+	goto_if_gt Psfcity3_MapScripts_OnTransition_1
+	return
+
+Psfcity3_MapScripts_OnTransition_1:
+	goto BeingChampionIsHard_ObjectCleanUp_Script
+	return
+

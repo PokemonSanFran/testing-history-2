@@ -1261,3 +1261,11 @@ end
 	.include "data/maps/Psfplace14_Stands/scripts.inc"
 
 	.include "data/maps/Psfcity3_Compound_1F/scripts.inc"
+
+	.include "data/maps/Psfcave5/scripts.inc"
+
+	.include "data/maps/Psfcave5_Restaurant/scripts.inc"
+
+	.include "data/maps/Psfcave7_B1F/scripts.inc"
+
+	.include "data/maps/Psfcave7_B2F/scripts.inc"

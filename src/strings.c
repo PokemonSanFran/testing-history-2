@@ -394,7 +394,7 @@ const u8 gText_Shift[] = _("SHIFT");
 const u8 gText_SendOut[] = _("SEND OUT");
 const u8 gText_Switch2[] = _("SWITCH");
 const u8 gText_Summary5[] = _("SUMMARY");
-const u8 gText_Moves[] = _("MOVES"); // Unused
+const u8 gText_Moves[] = _("Moves"); // Previously Unused
 const u8 gText_Enter[] = _("ENTER");
 const u8 gText_NoEntry[] = _("NO ENTRY");
 const u8 gText_Take2[] = _("TAKE");
@@ -1876,7 +1876,19 @@ const u8 gText_Psfcity9[] = _("Psfcity9");
 const u8 gText_Psfcity10[] = _("Psfcity10");
 const u8 gText_Psfcity11[] = _("Psfcity11");
 const u8 gText_Psfplace13[] = _("Psfplace13");
+const u8 gText_Psfcity13[] = _("Psfcity13");
+const u8 gText_Psfcity18[] = _("Psfcity18)");
 
 
 //VS Garbador Choose side
 const u8 gText_DontCare[] = _("Either one.");
+
+//LetsGrabLunch ExplainAndWarp
+const u8 gText_Ability[] = _("Ability");
+const u8 gText_Nickname[] = _("Nickname");
+const u8 gText_Shininess[] = _("Shininess");
+
+//YouRealizeTheyreEvil Garbodor
+const u8 gText_Haze[] = _("Haze");
+const u8 gText_SludgeBomb[] = _("Sludge Bomb");
+const u8 gText_StmpngTantrm[] = _("StmpngTantrm");

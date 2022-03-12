@@ -2,8 +2,17 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 
 mapscripts Psfcity3_Compound_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
-
+        VAR_STORYLINE_STATE, 29: BeingChampionIsHard_TimeSkip //PSF TODO figure out how to go directly to black
     ]
-    MAP_SCRIPT_ON_LOAD {
+    MAP_SCRIPT_ON_RESUME {
+    }
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcity3_MapScripts_OnTransition)
+    }
+}
+
+script Psfcity3_MapScripts_OnTransition {
+    if (var(VAR_STORYLINE_STATE) > 29){
+        goto(BeingChampionIsHard_ObjectCleanUp_Script)
     }
 }

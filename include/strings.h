@@ -2187,6 +2187,7 @@ extern const u8 gText_Store[];
 extern const u8 gText_Register[];
 extern const u8 gText_Trade4[];
 extern const u8 gText_Summary5[];
+extern const u8 gText_Moves[];
 extern const u8 gText_Switch2[];
 extern const u8 gText_Item[];
 extern const u8 gText_NotPkmnOtherTrainerWants[];
@@ -3086,8 +3087,20 @@ extern const u8 gText_Psfcity9[];
 extern const u8 gText_Psfcity10[];
 extern const u8 gText_Psfcity11[];
 extern const u8 gText_Psfplace13[];
+extern const u8 gText_Psfcity13[];
+extern const u8 gText_Psfcity18[];
 
 //VS Garbador Choose side
 extern const u8 gText_DontCare[];
+
+//LetsGrabLunch ExplainAndWarp
+
+//YouRealizeTheyreEvil Garbodor
+extern const u8 gText_Ability[];
+extern const u8 gText_Nickname[];
+extern const u8 gText_Shininess[];
+extern const u8 gText_Haze[];
+extern const u8 gText_SludgeBomb[];
+extern const u8 gText_StmpngTantrm[];
 
 #endif // GUARD_STRINGS_H
