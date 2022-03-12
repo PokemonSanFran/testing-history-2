@@ -5210,6 +5210,16 @@
       "secondary_tileset": "gTileset_BattleDome",
       "border_filepath": "data/layouts/Psfplace14_Stands/border.bin",
       "blockdata_filepath": "data/layouts/Psfplace14_Stands/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY3_COMPOUND_1F",
+      "name": "Psfcity3_Compound_1F_Layout",
+      "width": 14,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonFanClub",
+      "border_filepath": "data/layouts/Psfcity3_Compound_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity3_Compound_1F/map.bin"
     }
   ]
 }

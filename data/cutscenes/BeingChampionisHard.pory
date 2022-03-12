@@ -1,0 +1,122 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+script BeingChampionIsHard_PostTimeSkip {
+msgbox(gText_BeingChampionIsHard_OneMonthLater)
+
+//The player walks down the stairs of the house. Psfbadadmin is downstairs.
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_SighGoodMorning)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_GoodMorningChampion)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_ItsAlmostBeenAMonth)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_OfCourseNot)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_PleaseArceusLetItBe)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_YouveActuallyGotNothing)
+
+//PLAYER !
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_YouWereStarting)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_YouCouldTell)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_ThisIsOurFirst)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_WoWWhatToDo)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_YouShouldGoTo)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_ThatsWhereTheyFilm)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_ThereAlsoUsed)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_SoundsLikeItll)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_BeingChampionIsHard_ThePleasureIsAllOurs)
+
+//Psfbadadmin walks out of the house.
+
+}
+
+text gText_BeingChampionIsHard_OneMonthLater {
+    format("One month later…")
+}
+text gText_BeingChampionIsHard_SighGoodMorning {
+    format("sigh* Good morning Psfbadadmin.")
+}
+text gText_BeingChampionIsHard_GoodMorningChampion {
+    format("Good morning Champion {PLAYER}.")
+}
+text gText_BeingChampionIsHard_ItsAlmostBeenAMonth {
+    format("It's almost been a month… doesn't saying that get old?")
+}
+text gText_BeingChampionIsHard_OfCourseNot {
+    format("Of course not. You've earned it! Now on the docket for today…")
+}
+text gText_BeingChampionIsHard_PleaseArceusLetItBe {
+    format("Please Arceus, let it be an easy day. I swear it's been six interviews a day, an exhibition on every news network… being officially sponsored is great, but shit, I need a day off!)")
+}
+text gText_BeingChampionIsHard_YouveActuallyGotNothing {
+    format("You've actually got nothing.")
+}
+text gText_BeingChampionIsHard_YouWereStarting {
+    format("You were starting to look a little ragged, and a few sponsors complained. So we're giving you a few days off.")
+}
+text gText_BeingChampionIsHard_YouCouldTell {
+    format("eh heh, you could tell?")
+}
+text gText_BeingChampionIsHard_ThisIsOurFirst {
+    format("It's fine. This is our first time doing it, so perhaps we haven't really figured out striking a balance yet. ")
+}
+text gText_BeingChampionIsHard_WoWWhatToDo {
+    format("Wow, what to do with my days off…")
+}
+text gText_BeingChampionIsHard_YouShouldGoTo {
+    format("You should go to Psfcave5! I don't think I ever got the chance to tell you, but after you became Champion, we upgraded your Ferry Pass so you can travel there from Psfplace11.")
+}
+text gText_BeingChampionIsHard_ThatsWhereTheyFilm {
+    format("That's where they film movies, right?")
+}
+text gText_BeingChampionIsHard_ThereAlsoUsed {
+    format("Correct. There also used to be a Gym there, but it's been decommissioned.")
+}
+text gText_BeingChampionIsHard_SoundsLikeItll {
+    format("Sounds like it'll be cool. Thanks!")
+}
+text gText_BeingChampionIsHard_ThePleasureIsAllOurs {
+    format("The pleasure is all ours, {PLAYER}. I'll be checking in, but don't hesitate to reach out.")
+}
+

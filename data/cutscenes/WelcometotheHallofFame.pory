@@ -19,7 +19,6 @@ msgbox(gText_WelcomeToTheHallOfFame_ToTheHundreds)
 callnative(ClearMugshot)
 closemessage
 
-//Crowd goes wild again. Screen fades to black. Screen fades back into the player and both rivals on an olympic style podium.
 playse(SE_M_ENCORE2)
 call(BattleFrontier_BattleDomeBattleRoom_EventScript_AudienceLookAround)
 fadescreen(FADE_TO_BLACK)
@@ -38,15 +37,13 @@ msgbox(gText_WelcomeToTheHallOfFame_AndNowLetsCreate)
 callnative(ClearMugshot)
 closemessage
 
-//setrespawn(HEAL_LOCATION_PSFCITY3)
+setrespawn(HEAL_LOCATION_PSFCITY8_COMPOUND_2F)
 fadescreenspeed(FADE_TO_BLACK,24)
 special(GameClear)
 waitstate
 releaseall
 end
 
-
-//Game prompts a save. Player is warped to their compound bedroom.
 }
 
 text gText_WelcomeToTheHallOfFame_YourChampion {

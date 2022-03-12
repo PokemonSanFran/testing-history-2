@@ -60,7 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    givemon SPECIES_KYOGRE, 100, ITEM_BLUE_ORB
+    warpsilent MAP_PSFCITY8_COMPOUND_2F,10,10
 	end
 
 Debug_Script_2::

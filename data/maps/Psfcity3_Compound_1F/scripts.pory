@@ -1,0 +1,9 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+mapscripts Psfcity3_Compound_1F_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+
+    ]
+    MAP_SCRIPT_ON_LOAD {
+    }
+}

@@ -516,8 +516,6 @@ static void Task_Hof_InitTeamSaveData(u8 taskId)
     AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SavingDontTurnOffPower, 0, NULL, 2, 1, 3);
     CopyWindowToVram(0, COPYWIN_FULL);
     gTasks[taskId].func = Task_Hof_TrySaveData; //PSF TODO change to asking if player wants to save
-        gTasks[taskId].func = Task_Hof_WaitToDisplayMon;
-        gTasks[taskId].tFrameCount = 32;
 }
 
 static void Task_Hof_TrySaveData(u8 taskId)

@@ -31,6 +31,7 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	msgbox gText_WelcomeToTheHallOfFame_AndNowLetsCreate
 	callnative ClearMugshot
 	closemessage
+	setrespawn HEAL_LOCATION_PSFCITY8_COMPOUND_2F
 	fadescreenspeed FADE_TO_BLACK, 24
 	special GameClear
 	waitstate

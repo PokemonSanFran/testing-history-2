@@ -1166,7 +1166,7 @@ end
   .include "data/cutscenes/WhyDidntYouRatMeOut.inc"
   .include "data/cutscenes/WaitHeDidWhat.inc"
   .include "data/cutscenes/WelcometotheHallofFame.inc"
-##  .include "data/cutscenes/BeingChampionisHard.inc"
+  .include "data/cutscenes/BeingChampionisHard.inc"
 ##  .include "data/cutscenes/LetsGrabLunch.inc"
 ##  .include "data/cutscenes/RestoreChinatown.inc"
 ##  .include "data/cutscenes/RestoreTreasureIsland.inc"
@@ -1259,3 +1259,5 @@ end
 	.include "data/maps/Psfplace14_Arena/scripts.inc"
 
 	.include "data/maps/Psfplace14_Stands/scripts.inc"
+
+	.include "data/maps/Psfcity3_Compound_1F/scripts.inc"

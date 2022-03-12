@@ -1,4 +1,4 @@
-make: *** tools/poryscript.zip: Not a directory.  Stop.
-make: *** [tools/poryscript.zip] Error 2
+make[1]: *** tools/poryscript.zip: Not a directory.  Stop.
+make: *** [make_tools.mk:11: tools/poryscript.zip] Error 2
 Failed to read "src/omni_text.c".
 cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald.map -T ld_script.ld -o ../../pokeemerald.elf <objects> <lib>
