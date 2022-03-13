@@ -9,6 +9,7 @@ Psfbadguy1Tower_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfbadguy1Tower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 3, WelcomeToTheWarRoom_MovePlayerIntoPosition
+	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 5, WelcomeToTheWarRoom_MovePlayerIntoPosition
 	.2byte 0
 
 
@@ -16,6 +17,9 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition::
 	switch VAR_PSFBADGUY1TOWER_2F_STATE
 	case 0, Psfbadguy1Tower_2F_MapScripts_OnTransition_2
 	case 3, Psfbadguy1Tower_2F_MapScripts_OnTransition_3
+	case 4, Psfbadguy1Tower_2F_MapScripts_OnTransition_4
+	case 5, Psfbadguy1Tower_2F_MapScripts_OnTransition_5
+	case 6, Psfbadguy1Tower_2F_MapScripts_OnTransition_6
 	return
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_2:
@@ -24,5 +28,17 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition_2:
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_3:
 	goto WelcomeToTheWarRoom_Object_Setup_Script
+	return
+
+Psfbadguy1Tower_2F_MapScripts_OnTransition_4:
+	goto WelcomeToTheWarRoom_Object_Clean_Script
+	return
+
+Psfbadguy1Tower_2F_MapScripts_OnTransition_5:
+	goto YouRealizeWereEvilRight_Object_Setup_Script
+	return
+
+Psfbadguy1Tower_2F_MapScripts_OnTransition_6:
+	goto YouRealizeWereEvilRight_Object_Cleanup_Script
 	return
 

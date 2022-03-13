@@ -17,6 +17,7 @@
 2: Has been formerly introduced to Sabrina
 3: Set up for Welcome to the War Room, start script when player gets on the floor
 4: Welcome the War Room has played out
+5: You Realize We're Evil Object Setup
 
 #VAR_FERRY_STATE
 **RELEVANCE**: used to track what locations are available via ferry

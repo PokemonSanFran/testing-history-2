@@ -1172,7 +1172,7 @@ end
 ##  .include "data/cutscenes/RestoreTreasureIsland.inc"
 ##  .include "data/cutscenes/RestoreMain.inc"
 ##  .include "data/cutscenes/RestoreHaightAshbury.inc"
-##  .include "data/cutscenes/YouRealizeWereEvilRight.inc"
+  .include "data/cutscenes/YouRealizeWereEvilRight.inc"
 ##  .include "data/cutscenes/YouRealizeTheyreEvilRight.inc"
 ##  .include "data/cutscenes/CongratsYoureanAsshole.inc"
 ##  .include "data/cutscenes/YouHaveYourOrders.inc"

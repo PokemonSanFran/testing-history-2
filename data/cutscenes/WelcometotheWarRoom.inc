@@ -1,6 +1,7 @@
 WelcomeToTheWarRoom_Object_Hide_Script::
 	setflag FLAG_HIDE_TOWER2_PSFTRANSRIVAL
 	setflag FLAG_HIDE_TOWER2_PSFBADADMIN
+	setflag FLAG_HIDE_TOWER2_PSFBADADMIN2
 	setflag FLAG_HIDE_TOWER2_POLICE
 	setflag FLAG_HIDE_TOWER2_MAYOR
 	setflag FLAG_HIDE_TOWER2_PSFBADBOSS
@@ -9,6 +10,7 @@ WelcomeToTheWarRoom_Object_Hide_Script::
 
 WelcomeToTheWarRoom_Object_Setup_Script::
 	clearflag FLAG_HIDE_TOWER2_PSFTRANSRIVAL
+	setflag FLAG_HIDE_TOWER2_PSFBADADMIN2
 	clearflag FLAG_HIDE_TOWER2_PSFBADADMIN
 	clearflag FLAG_HIDE_TOWER2_POLICE
 	clearflag FLAG_HIDE_TOWER2_MAYOR
@@ -17,6 +19,12 @@ WelcomeToTheWarRoom_Object_Setup_Script::
 	setobjectxy 4, 10, 11
 	setobjectxyperm 3, 10, 9
 	setobjectxyperm 4, 10, 11
+	return
+
+
+WelcomeToTheWarRoom_Object_Clean_Script::
+	setflag FLAG_HIDE_TOWER2_PSFTRANSRIVAL
+	removeobject 10
 	return
 
 
@@ -122,12 +130,25 @@ WelcomeToTheWarRoom_MovePlayerIntoPosition::
 	compare VAR_TEMP_0, 7
 	goto_if_ne WelcomeToTheWarRoom_MovePlayerIntoPosition_2
 WelcomeToTheWarRoom_MovePlayerIntoPosition_1:
-	goto WelcomeToTheWarRoom_ExplainSitaution_Dialogue
+	switch VAR_PSFBADGUY1TOWER_2F_STATE
+	case 3, WelcomeToTheWarRoom_MovePlayerIntoPosition_5
+	case 5, WelcomeToTheWarRoom_MovePlayerIntoPosition_6
 	return
 
 WelcomeToTheWarRoom_MovePlayerIntoPosition_2:
-	warpsilent MAP_PSFBADGUY1TOWER_2F, 255, 7, 14
+	fadescreen FADE_TO_BLACK
+	setobjectxy OBJ_EVENT_ID_PLAYER, 7, 14
+	TeleportCamera 7, 14
+	fadescreen FADE_FROM_BLACK
 	goto WelcomeToTheWarRoom_MovePlayerIntoPosition_1
+
+WelcomeToTheWarRoom_MovePlayerIntoPosition_5:
+	goto WelcomeToTheWarRoom_ExplainSitaution_Dialogue
+	return
+
+WelcomeToTheWarRoom_MovePlayerIntoPosition_6:
+	goto YouRealizeWereEvilRight_Open_Dialogue
+	return
 
 
 WelcomeToTheWarRoom_ExplainSitaution_Dialogue::

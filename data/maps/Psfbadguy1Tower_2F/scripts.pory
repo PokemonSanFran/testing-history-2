@@ -5,12 +5,17 @@ mapscripts Psfbadguy1Tower_2F_MapScripts {
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_PSFBADGUY1TOWER_2F_STATE, 3: WelcomeToTheWarRoom_MovePlayerIntoPosition
+        VAR_PSFBADGUY1TOWER_2F_STATE, 5: WelcomeToTheWarRoom_MovePlayerIntoPosition
     ]
 }
 
 script Psfbadguy1Tower_2F_MapScripts_OnTransition {
+    
     switch (var(VAR_PSFBADGUY1TOWER_2F_STATE)){
         case 0: goto(WelcomeToTheWarRoom_Object_Hide_Script)
         case 3: goto(WelcomeToTheWarRoom_Object_Setup_Script)
+        case 4: goto(WelcomeToTheWarRoom_Object_Clean_Script)
+        case 5: goto(YouRealizeWereEvilRight_Object_Setup_Script)
+        case 6: goto(YouRealizeWereEvilRight_Object_Cleanup_Script)
     }
 }

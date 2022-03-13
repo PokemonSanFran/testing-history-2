@@ -9,6 +9,7 @@ Psfcity10_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfcity10_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_ROUTE115_STATE, 1, IGuessWeShouldBeNiceNow_ExitCave_Script
+	map_script_2 VAR_STORYLINE_STATE, 34, YouRealizeWereEvilRight_PhoneCall_Dialogue
 	.2byte 0
 
 
