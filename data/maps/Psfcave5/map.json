@@ -50,8 +50,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "LetsGrabLunch_InteractBattle_Script",
+      "flag": "FLAG_TEMP_1"
     }
   ],
   "warp_events": [
@@ -71,9 +71,24 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_STORYLINE_STATE",
+      "var_value": "30",
+      "script": "LetsGrabLunch_StartConversation_Dialogue"
+    }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LetsGrabLunch_FastForwardFirstRestoration_Quest"
+    }
   ]
 }

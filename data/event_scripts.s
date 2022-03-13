@@ -1167,7 +1167,7 @@ end
   .include "data/cutscenes/WaitHeDidWhat.inc"
   .include "data/cutscenes/WelcometotheHallofFame.inc"
   .include "data/cutscenes/BeingChampionisHard.inc"
-##  .include "data/cutscenes/LetsGrabLunch.inc"
+  .include "data/cutscenes/LetsGrabLunch.inc"
 ##  .include "data/cutscenes/RestoreChinatown.inc"
 ##  .include "data/cutscenes/RestoreTreasureIsland.inc"
 ##  .include "data/cutscenes/RestoreMain.inc"

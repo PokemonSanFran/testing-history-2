@@ -1877,7 +1877,7 @@ const u8 gText_Psfcity10[] = _("Psfcity10");
 const u8 gText_Psfcity11[] = _("Psfcity11");
 const u8 gText_Psfplace13[] = _("Psfplace13");
 const u8 gText_Psfcity13[] = _("Psfcity13");
-const u8 gText_Psfcity18[] = _("Psfcity18)");
+const u8 gText_Psfcity18[] = _("Psfcity18");
 
 
 //VS Garbador Choose side

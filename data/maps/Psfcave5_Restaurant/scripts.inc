@@ -1,2 +1,19 @@
 Psfcave5_Restaurant_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcave5_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcave5_Restaurant_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfcave5_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcave5_Restaurant_MapScripts_OnTransition
+	return
+
+Psfcave5_Restaurant_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 32, LetsGrabLunch_DinerBooth_Dialogue
+	.2byte 0
+
+
+Psfcave5_Restaurant_MapScripts_OnTransition::
+	call LetsGrabLunch_HideObject_SetUp
+	call LetsGrabLunch_ShowObject_SetUp
+	return
+

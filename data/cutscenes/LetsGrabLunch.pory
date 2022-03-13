@@ -1,0 +1,455 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFNATIVERIVAL = 3
+
+script LetsGrabLunch_HideObject_SetUp {
+    if (var(VAR_STORYLINE_STATE) != 31){
+        setflag(FLAG_TEMP_1)
+    }
+    if (var(VAR_STORYLINE_STATE) != 32 || var(VAR_STORYLINE_STATE) != 33){
+        setflag(FLAG_TEMP_2)
+    }
+}
+
+script LetsGrabLunch_ShowObject_SetUp {
+    if (var(VAR_STORYLINE_STATE) == 31){
+        setobjectxy(PSFNATIVERIVAL,14,8)
+            setobjectxyperm(PSFNATIVERIVAL,14,8)
+    }
+    if (var(VAR_STORYLINE_STATE) == 32 || var(VAR_STORYLINE_STATE) == 33){
+        clearflag(FLAG_TEMP_2)
+            addobject(1)
+    }
+}
+
+script LetsGrabLunch_StartConversation_Dialogue {
+    lockall
+        addvar(VAR_STORYLINE_STATE,1)
+        clearflag(FLAG_TEMP_1)
+        addobject(PSFNATIVERIVAL)
+        playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+        applymovement(PLAYER,Common_Movement_FaceRight)
+        applymovement(PSFNATIVERIVAL,LetsGrabLunch_WalkUpToPlayer)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_HuhWhatAreYouDoing)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_TakingABreak)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_YeahBeingOfficial)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_ThisAgain)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_HeyYouBeatMe)
+        callnative(ClearMugshot)
+        call(Common_EventScript_SaveGame)
+        closemessage
+        goto(LetsGrabLunch_StartBattle_Script)
+}
+
+script LetsGrabLunch_InteractBattle_Script {
+    lockall
+        faceplayer
+        goto(LetsGrabLunch_StartBattle_Script)
+}
+
+script LetsGrabLunch_StartBattle_Script {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_ButLetsSee)
+        closemessage
+        callnative(ClearMugshot)
+
+        //trainerbattle_no_intro(TRAINER_WALLY_VR_4,gText_LetsGrabLunch_NahNotRobbed)
+        goto(LetsGrabLunch_PostBattle_Dialogue)
+}
+
+script LetsGrabLunch_PostBattle_Dialogue {
+    addvar(VAR_STORYLINE_STATE,1)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_GoodGame)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_ImGoingToBe)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_HaventYouHad)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_NahThisIsCool)
+        callnative(ClearMugshot)
+        closemessage
+        fadedefaultbgm
+        warpsilent(MAP_PSFCAVE5_RESTAURANT,14,9)
+        releaseall
+        end
+}
+
+script LetsGrabLunch_DinerBooth_Dialogue {
+    lockall
+        addvar(VAR_STORYLINE_STATE,1)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_OkayLetsHear)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_IWantToCreate)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_HuhThatsActually)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_YeahITried)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_Who)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_OhTheOldLeaders)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_YouKnowTheyre)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_IKnowItsHard)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_HmmNeverThought)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_YeahThisSounds)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_ItWouldBeSuch)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_HahaHowCanIHelp)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_CanYouTryTalking)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_WhatAreYouGoing)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_ImGoingToBring)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_Yeah)
+        callnative(ClearMugshot)
+        closemessage
+        end
+}
+
+script LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue {
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_ImJustPlanning)
+
+        multichoicedefault(18,6,MULTI_LUNCH_WARP,1,TRUE)
+
+        switch (var(VAR_RESULT)){
+            case 0: goto(LetsGrabLunch_Psfcity13)   
+            case 1: goto(LetsGrabLunch_Psfcity10)   
+            case 2: goto(LetsGrabLunch_Psfcave5)   
+            case 3: goto(LetsGrabLunch_Psfcity18)
+            default: goto(LetsGrabLunch_CloseMenu)
+        }
+}
+
+script LetsGrabLunch_CloseMenu{
+    callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
+}
+
+script LetsGrabLunch_Psfcity13 {
+    msgbox(gText_LetsGrabLunch_TheLeaderOfThat)
+
+        msgbox(gText_LetsGrabLunch_DoYouWantPsfcity13,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == NO){
+            callnative(ClearMugshot)
+                closemessage
+                releaseall
+                end
+        }else {
+            warpsilent(MAP_PSFCITY13,9,10)
+        }
+}
+script LetsGrabLunch_Psfcity10 {
+    msgbox(gText_LetsGrabLunch_WasALittle)
+
+        msgbox(gText_LetsGrabLunch_DoYouWantPsfcity10,MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            callnative(ClearMugshot)
+                closemessage
+                releaseall
+                end
+        }else {
+            warpsilent(MAP_PSFCITY13,5,15)
+        }
+}
+script LetsGrabLunch_Psfcave5 {
+    msgbox(gText_LetsGrabLunch_AlmostWalkedOut)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_VeryRealistic)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsGrabLunch_TheyreIntense)
+
+        msgbox(gText_LetsGrabLunch_DoYouWantPsfcave5,MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            callnative(ClearMugshot)
+                closemessage
+                releaseall
+                end
+        }else {
+            warpsilent(MAP_PSFCAVE5,17,15)
+        }
+}
+script LetsGrabLunch_Psfcity18 {
+    //PSF TODO Replace this with an if statement if the ousting Pryce quest is done
+
+    random(2)
+
+        if (var(VAR_RESULT) == 1){
+            setvar(VAR_0x8000, MUGSHOT_HUGH)
+                callnative(DrawMugshot)
+                msgbox(gText_LetsGrabLunch_RightHandMan)}
+        else {
+            setvar(VAR_0x8000, MUGSHOT_HUGH)
+                callnative(DrawMugshot)
+                msgbox(gText_LetsGrabLunch_IsTheOnlyPlace)
+        }
+
+    msgbox(gText_LetsGrabLunch_DoYouWantPsfcity18,MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO){
+            callnative(ClearMugshot)
+                closemessage
+                releaseall
+                end
+        }else {
+            warpsilent(MAP_PSFCITY18,9,27)
+        }
+}
+
+script LetsGrabLunch_FastForwardFirstRestoration_Quest {
+    lock
+        if (var(VAR_STORYLINE_STATE) == 33){
+            addvar(VAR_STORYLINE_STATE,1)
+                bufferpartymonnick(0,1)
+                msgbox(gText_LetsGrabLunch_FastForwardAdvance)
+        } 
+        else {
+            msgbox(gText_LetsGrabLunch_FastForwardBlock)
+        }
+    closemessage
+        releaseall
+        end
+}
+text gText_LetsGrabLunch_HuhWhatAreYouDoing {
+    format("Huh. What are you doing here? Shouldn't you be busy?")
+}
+
+text gText_LetsGrabLunch_TakingABreak {
+    format("Taking a break. I haven't had a chance to relax since I last saw you.")
+}
+
+text gText_LetsGrabLunch_YeahBeingOfficial {
+    format("Yeah, being Psfbadguy's official lapdog must be exhausting! Bummer.")
+}
+
+text gText_LetsGrabLunch_ThisAgain {
+    format("This again? And besides, I know you've been busy too. Psfregion loves their “hometown hero robbed of championship” narrative.")
+}
+
+text gText_LetsGrabLunch_HeyYouBeatMe {
+    format("Hey, you beat me fair and square… but the extra popularity can't hurt.")
+}
+
+text gText_LetsGrabLunch_ButLetsSee {
+    format("But let's see how robbed I really was!")
+}
+
+text gText_LetsGrabLunch_NahNotRobbed {
+    format("Nah, not robbed at all. You're legit as fuck.")
+}
+
+text gText_LetsGrabLunch_GoodGame {
+    format("Good game, but…I thought Psfregion1 natives weren't cool with Mega Evolution?")
+}
+
+text gText_LetsGrabLunch_ImGoingToBe {
+    format("I'm going to be the best and change the world, I can't be hung up on what's “pure” and “right”. My team and I are going to use whatever tools we can to take down your bosses. As a matter of fact… I'm working on a project.")
+}
+
+text gText_LetsGrabLunch_HaventYouHad {
+    format("Haven't you had enough run-ins with the police already?")
+}
+
+text gText_LetsGrabLunch_NahThisIsCool {
+    format("Nah, this is cool, I swear. Actually, you said you're on break? Cool, we're grabbing lunch. My treat.")
+}
+
+text gText_LetsGrabLunch_OkayLetsHear {
+    format("Okay, let's hear about your pyramid scheme.")
+}
+
+text gText_LetsGrabLunch_IWantToCreate {
+    format("I want to create training centers all over Psfregion1, to help more Trainers get a real start, kind of like what Psfbadguy gave you. I wanna use the decommissioned Gyms, like the one you saw earlier today, as those hubs.")
+}
+
+text gText_LetsGrabLunch_HuhThatsActually {
+    format("Huh. That's actually a pretty cool idea.")
+}
+
+text gText_LetsGrabLunch_YeahITried {
+    format("Yeah! I tried to talk to Psfleader9 and Psfleader10, but they didn't take it nearly as well as you did.")
+}
+
+text gText_LetsGrabLunch_Who {
+    format("Who…?")
+}
+
+text gText_LetsGrabLunch_OhTheOldLeaders {
+    format("Oh, the old Leaders of the Psfcave5 and Psfcity10 Gyms. If we can revive those Gyms and strengthen our Trainers, then Trainers from other regions will want to come here, battle us, and help stimulate the region… without any interference from Psfbadguy.")
+}
+
+text gText_LetsGrabLunch_YouKnowTheyre {
+    format("You know, they're not as bad as you think. I still don't understand your problem with them.")
+}
+
+text gText_LetsGrabLunch_IKnowItsHard {
+    format("I know. It's hard to sit down and explain… but maybe it doesn't matter. Is that what Psfgoodteam got wrong? Rather than try to defeat a negative force, maybe we need to focus on being a stronger positive force.")
+}
+
+text gText_LetsGrabLunch_HmmNeverThought {
+    format("(Hmm. Never thought about it like that.)")
+}
+
+text gText_LetsGrabLunch_YeahThisSounds {
+    format("Yeah, this sounds really cool! Way better than I expected.")
+}
+
+text gText_LetsGrabLunch_ItWouldBeSuch {
+    format("It would be such a boon if the Champion was helping too…")
+}
+
+text gText_LetsGrabLunch_HahaHowCanIHelp {
+    format("Haha, how can I help?")
+}
+
+text gText_LetsGrabLunch_CanYouTryTalking {
+    format("Hmm. Can you try talking to Psfleader9 or Psfleader10? Or maybe visit Psfcity13's Gym and see what we can do? Maybe there's even hope for Psfcity18's Gym… yeah, any of those are good starts.")
+}
+
+text gText_LetsGrabLunch_WhatAreYouGoing {
+    format("What are you going to do?")
+}
+
+text gText_LetsGrabLunch_ImGoingToBring {
+    format("I'm going to bring the idea to Psfgoodteam too. I think it's something everybody can rally behind, right?")
+}
+
+text gText_LetsGrabLunch_Yeah {
+    format("Yeah!")
+}
+
+text gText_LetsGrabLunch_ImJustPlanning {
+    format("I'm just planning out my pitch to Psfgoodteam. What are you up to? Have you decided which place you'll hit up first?")
+}
+
+text gText_LetsGrabLunch_TheLeaderOfThat {
+    format("The Leader of that Gym more or less disappeared after Psfbadguy shut it down. I know some of his Gym Trainers are still around… but I'm not sure where. ")
+}
+
+text gText_LetsGrabLunch_DoYouWantPsfcity13 {
+    format("Do you want to go to Psfcity13?")
+}
+
+text gText_LetsGrabLunch_WasALittle {
+    format("Psfleader9 was a little receptive to my idea. They said it was a “good first step”, but wouldn't sign on unless I had a plan for dismantling the entire Psfbadfguy League, which in their eyes, is a “total failure for our Trainers”.")
+}
+
+text gText_LetsGrabLunch_DoYouWantPsfcity10 {
+    format("Do you want to go to Psfcity10?")
+}
+
+text gText_LetsGrabLunch_AlmostWalkedOut {
+    format("Psfleader10 almost walked out when I first proposed the idea. I think their exact quote was “I'd rather be dead than a “training stop” for more transplants”. They want Psfgoodteam to totally dismantle the new League, and restore their Gym to its former glory.")
+}
+
+text gText_LetsGrabLunch_VeryRealistic {
+    format("Very realistic, I see.")
+}
+
+text gText_LetsGrabLunch_TheyreIntense {
+    format("They're… intense.")
+}
+
+text gText_LetsGrabLunch_DoYouWantPsfcave5 {
+    format("Do you want to go to Psfcave5?")
+}
+
+text gText_LetsGrabLunch_RightHandMan {
+    format("Alan was Psfleader7's right hand man. I wonder if he has any plans now that Psfleader7 is gone…?")
+}
+
+text gText_LetsGrabLunch_IsTheOnlyPlace {
+    format("You know, Psfcity18 is the only place that got to keep its Gym, but only because Psfleader7 is a friggin' snake. Man, what I'd give to see him get what he deserves…")
+}
+
+text gText_LetsGrabLunch_DoYouWantPsfcity18 {
+    format("Do you want to go to Psfcity18?")
+}
+
+text gText_LetsGrabLunch_FastForwardAdvance {
+    format("You have restored the {STR_VAR_1} Gym. Good job kid. In the main game, that nickname will be replaced with the name of wherever you are.") //PSF TODO
+} 
+
+text gText_LetsGrabLunch_FastForwardBlock {
+    format("Come back when its time to do the restoration quests. Or if you already did them, go away!")
+}
+
+
+movement LetsGrabLunch_WalkUpToPlayer {
+    walk_left * 7
+        step_end
+}

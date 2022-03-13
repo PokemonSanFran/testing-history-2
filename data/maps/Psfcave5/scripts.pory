@@ -10,6 +10,8 @@ mapscripts Psfcave5_MapScripts {
 }
 
 script Psfcave5_MapScripts_OnTransition {
+    call(LetsGrabLunch_HideObject_SetUp)
+    call(LetsGrabLunch_ShowObject_SetUp)
 }
 
 script Psfcave5_ChooseFerryDestination_Script {
@@ -24,7 +26,7 @@ script Psfcave5_UnlockedDestinations_Script {
 }
 
 script Psfcave5_FerryState0_Script {
-    multichoicedefault(18,8,PSFCAVE5_FERRY_DESTINATIONS_VER1,2,FALSE)
+    multichoicedefault(18,8,PSFCAVE5_FERRY_DESTINATIONS_VER1,2,TRUE)
     call(SlateportCity_Harbor_EventScript_BoardFerry)
 
     switch (var(VAR_RESULT)){

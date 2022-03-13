@@ -12,6 +12,8 @@ Psfcave5_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfcave5_MapScripts_OnTransition::
+	call LetsGrabLunch_HideObject_SetUp
+	call LetsGrabLunch_ShowObject_SetUp
 	return
 
 
@@ -32,7 +34,7 @@ Psfcave5_UnlockedDestinations_Script_2:
 
 
 Psfcave5_FerryState0_Script::
-	multichoicedefault 18, 8, PSFCAVE5_FERRY_DESTINATIONS_VER1, 2, FALSE
+	multichoicedefault 18, 8, PSFCAVE5_FERRY_DESTINATIONS_VER1, 2, TRUE
 	call SlateportCity_Harbor_EventScript_BoardFerry
 	switch VAR_RESULT
 	case 0, Psfcave5_FerryState0_Script_2

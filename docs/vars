@@ -22,6 +22,7 @@
 **RELEVANCE**: used to track what locations are available via ferry
 
 1: Default, Psfcity17 available
+2: Post league, Psfcave5 available
 
 #VAR_ROUTE117_STATE
 **RELEVANCE**: Track the state of the Ferry Building
@@ -64,7 +65,10 @@
 28: Finished Semi Finals stage
 29: Archer has begun speech before final battle
 30: Oak has given Zoey the day off
-
+31: Right before Zoey battles Archer on Treasure Island
+32: After Archer and Zoey battle on Treasure Island
+33: Archer has talked to Zoey about restoration plans
+34: Finished one Restoration Quest
 
 #VAR_ROUTE119_STATE
 1: Archer is about to apologize
@@ -72,3 +76,8 @@
 3: Bianca has won their group
 4: Bianca is about to go fight Archer
 5: Bianca has beaten Archer
+
+#VAR_ROUTE120_STATE
+X: Act 4:Used to find the location of the last completed restoration quest, number should correspond to a map
+Y: Used to find the target of the last completed takedown quest, number should correspond to a company
+
