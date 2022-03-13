@@ -620,7 +620,8 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
         }
         if (ShouldDoScottFortreeCall() == TRUE)
         {
-            ScriptContext1_SetupScript(Route119_EventScript_ScottWonAtFortreeGymCall);
+            //ScriptContext1_SetupScript(Route119_EventScript_ScottWonAtFortreeGymCall);
+            ScriptContext1_SetupScript(YouRealizeTheyreEvilRight_CallPlayer_Dialogue);
             return TRUE;
         }
         if (ShouldDoScottBattleFrontierCall() == TRUE)

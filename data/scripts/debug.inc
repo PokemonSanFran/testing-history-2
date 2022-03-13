@@ -60,7 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    warpsilent MAP_PSFCITY3_COMPOUND_1F,11,3
+    giveitem(ITEM_HM03)
 	end
 
 Debug_Script_2::

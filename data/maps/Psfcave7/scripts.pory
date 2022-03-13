@@ -3,8 +3,17 @@ const PSFELITE1 = 9
 
 mapscripts Psfcave7_MapScripts {
    MAP_SCRIPT_ON_TRANSITION {
-    goto(Psfcave7_ExhibitCheck_Script)
+        call(Psfcave7_ExhibitCheck_Script)
+        call(Psfcave7_MapScripts_OnTransition)
    }
+
+    MAP_SCRIPT_ON_FRAME_TABLE [ 
+    ]
+}
+
+script Psfcave7_MapScripts_OnTransition {
+    call(YouRealizeTheyreEvilRight_HideObject_Script)
+    call(YouRealizeTheyreEvilRight_ShowObject_Script)
 }
 
 script Psfcave7_ExhibitCheck_Script {

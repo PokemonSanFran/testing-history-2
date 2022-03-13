@@ -27,6 +27,7 @@ YouRealizeWereEvilRight_Object_Cleanup_Script::
 
 YouRealizeWereEvilRight_PhoneCall_Dialogue::
 	lockall
+	setflag FLAG_SCOTT_CALL_FORTREE_GYM
 	addvar VAR_STORYLINE_STATE, 1
 	playse SE_POKENAV_CALL
 	waitse

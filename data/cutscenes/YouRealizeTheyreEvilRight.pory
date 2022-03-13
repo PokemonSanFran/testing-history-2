@@ -1,0 +1,551 @@
+script YouRealizeTheyreEvilRight_HideObject_Script {
+    if (var(VAR_STORYLINE_STATE) < 35){
+    setflag(FLAG_TEMP_1)
+    }
+}
+
+script YouRealizeTheyreEvilRight_ShowObject_Script {
+    if (var(VAR_STORYLINE_STATE) == 35){
+        addobject(11)
+    }
+}
+
+script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
+    lockall
+    clearflag(FLAG_SCOTT_CALL_FORTREE_GYM)
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_HolyShit)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_AwesomeJobIn)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_TheyDontLove)
+
+//Screen fades to black.
+
+//Screen fades back in.
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_YouSeemSurprised)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_YoureNot)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_IveBeenTrying)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_WhatDoYouMean)
+
+
+//If the player has the ability to Surf:
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_IWannaShowYou)
+
+//If the player cannot Surf:
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_YoullNeedToCross)
+
+//Branch dialogue ends here.
+
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf)
+
+//Player regains control. 
+
+
+//EXT. PSFCAVE7
+
+//The cutscene resumes when the player lands on the island.
+
+//Phone ring
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ImHereWhere)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_SwimAroundThe)
+
+//The player regains control. Psfnativerival is standing in front of a hole in the island. Cutscene resumes when they interact with Psftransrival.
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_WelcomeToTheReal)
+
+//Psftransrival heads inside. The player regains control and can go inside.
+
+
+//INT. PSFCAVE7
+
+//The first basement level is clearly an abandoned prison, shown in total disarray due to the riots and earthquakes. The earthquake has collapsed several walls and pillars, making the floors into a giant maze as opposed to a straightforward prison layout. There are trainers wandering around through the maze.
+
+//Each Trainer will only say “...” when interacted with, and for their after battle text. When returning to the overworld, each Trainer will each give a piece of the island's history. After giving that history, the trainer will disappear.
+
+msgbox(gText_YouRealizeTheyreEvilRight_WhileAlcatraz)
+
+msgbox(gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation)
+
+msgbox(gText_YouRealizeTheyreEvilRight_TheInmateWasAlso)
+
+msgbox(gText_YouRealizeTheyreEvilRight_TheProtests)
+
+//The player can go down to the next floor. On the second basement floor, Psfelite1, Psfnativerival, and Psfelite2 are standing together. As the player approaches them, the cutscene continues.
+
+setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_TheChampionHasArrived)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_NiceToMeetYou)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_HasBeenUsing)
+
+//ELITE1 ELITE2 !!!
+
+setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_WowSuperResourceful)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_WhyAreWeHere)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ICanFinallyProve)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_DidYouDragMe)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_YesWaitNo)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ICanProve)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_How)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_Look)
+
+//Psfnativerival steps backwards and lets out a Garbodor from a PokéBall.
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ThisIsOne)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_IHadToGo)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ThisOneIsLevel)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_SoUsedATM)
+
+//The screen fades to black. As it fades back in, it plays the memory of the police chief explaining that Self-Destruct TMs were taken out of circulation. The screen fades back in.
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred)
+
+setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_TakeACloserLook)
+
+//Game opens the summary screen for the Garbador. After the player closes it:
+
+setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_DoYouSeeNow)
+
+//The player is presented with a Yes / No box. If the player chooses Yes:
+
+setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_AhVeryAstute)
+
+//The player is presented with a multichoice box.
+
+//Moveset
+
+//Ability
+
+//Nickname
+
+//Shininess
+
+//If the player chooses Moveset:
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_WaitWhichMove)
+
+//The player is presented with a multichoice box.
+
+//Haze
+
+//Sludge Bomb
+
+//Stomping Tantrum
+
+//If the player selects Haze:
+
+setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_VeryClever)
+
+//If the player chooses Ability, Nickname, Sludge Bomb, Stomping Tantrum, or says No to the original question or chooses a non-Haze move:
+
+setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_TheTipOff)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_So)
+
+setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_HazeCanOnly)
+
+//Branch dialogue ends here.
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_IDontGetIt)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_HasBeenFramingYou)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_YouAlsoMetUp)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ButPsfgoodadminSaid)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_YeahNobodyKnows)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_WhyWhyDoAll)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_CantArgueWithThat)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_IJoinedThe)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_AndThatsWhyWere)
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally)
+
+setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour)
+
+setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow)
+
+//Psfnativerival turns to the Player.
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_LookIKnowThis)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_YeahOkay)
+
+//The player regains control. 
+
+//If the player answered correctly during Garbador quiz:
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ThisGarbodor)
+
+//The player is presented with a Yes / No box. If the player chooses Yes, they receive the Pokémon. 
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_TakeGoodCare)
+
+//If the player chooses No:
+
+setvar(VAR_0x8000, MUGSHOT_HUGH)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_ThatsFineIll)
+
+//The player regains control.
+
+
+//When the player goes to sleep, this cutscene resumes.
+
+//If the player has not gone to Psfcave7:
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_IsStillWaiting)
+
+msgbox(gText_YouRealizeTheyreEvilRight_DoYouWantToGo)
+
+//If the player has gone to Psfcave7:
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat)
+
+}
+text gText_YouRealizeTheyreEvilRight_HolyShit {
+    format("Holy shit. That was intense. Guess I need to think all this over, but something isn't adding up.")
+}
+text gText_YouRealizeTheyreEvilRight_AwesomeJobIn {
+    format("Awesome job in PsfcityX. I heard all about it, and I'm so happy things are getting off the ground. I heard you got a phone call and disappeared. Everything okay?")
+}
+text gText_YouRealizeTheyreEvilRight_TheyDontLove {
+    format("Psfbadguy called me. They don't love our project.")
+}
+text gText_YouRealizeTheyreEvilRight_YouSeemSurprised {
+    format("You seem surprised.")
+}
+text gText_YouRealizeTheyreEvilRight_YoureNot {
+    format("You're not?")
+}
+text gText_YouRealizeTheyreEvilRight_IveBeenTrying {
+    format("I've been trying to tell you the whole time, these guys are ruthless. Cruel, even. Good timing though, I think I can finally explain everything to you.")
+}
+text gText_YouRealizeTheyreEvilRight_WhatDoYouMean {
+    format("What do you mean?")
+}
+text gText_YouRealizeTheyreEvilRight_IWannaShowYou {
+    format("I wanna show you instead. Come to Psfcave7.")
+}
+text gText_YouRealizeTheyreEvilRight_YoullNeedToCross {
+    format("I wanna show you but you'll need to cross some water to get here. You know how to Surf, right? No? Go learn from the Surfers in Psfcity4, and then meet me on Psfcave7.")
+}
+text gText_YouRealizeTheyreEvilRight_IDontKnowIf {
+    format("(I don't know if I can afford to get pulled any deeper into this…)")
+}
+text gText_YouRealizeTheyreEvilRight_ImHereWhere {
+    format("I'm here! Where are you?")
+}
+text gText_YouRealizeTheyreEvilRight_SwimAroundThe {
+    format("Come swim around the southwest side of the island! You'll see me.")
+}
+text gText_YouRealizeTheyreEvilRight_WelcomeToTheReal {
+    format("Welcome to the real Psfcave7. I'm going down to the second level, but you should explore here first before coming straight down.")
+}
+text gText_YouRealizeTheyreEvilRight_WhileAlcatraz {
+    format("While Alcatraz was a prison, it was absolutely not a state of the art facility - rather, criminals deemed “dangerous” were thrown into Alcatraz with little regard for health, rehabilitation, or even due process of law, with a preponderance of marginalized communities being locked away. ")
+}
+text gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation {
+    format("As the prison population grew, pressure mounted both internally and externally in order to demand a better quality of life for the prisoners.  The prison riot that started the occupation of the island came from an out of control guard killing an inmate for a minor violation. ")
+}
+text gText_YouRealizeTheyreEvilRight_TheInmateWasAlso {
+    format("The inmate was also a member of SanFran's indingeous population, killed on the land that was stolen from their ancestors. The occupation called for the dissolution of the prison, transfer of prisoners to locations with humane conditions, and the return of the land back to its original owners.")
+}
+text gText_YouRealizeTheyreEvilRight_TheProtests {
+    format("The protests gained national attention and seemed to be gathering interest, particularly with the help of Drasna's support, and pressure mounted on the government to comply. At the height of tension, an earthquake broke out, destroying a large portion of the prison and killing inmates and guards and effectively ending the occupation. ")
+}
+text gText_YouRealizeTheyreEvilRight_TheChampionHasArrived {
+    format("The Champion has arrived! Great to meet you, I'm Psfelite2, and I'm the leader of the Psfregion1 Elite Four. Or, I was. Now I'm not really sure what I do.")
+}
+text gText_YouRealizeTheyreEvilRight_NiceToMeetYou {
+    format("Nice to meet you! …Psfnativerival, where are we?")
+}
+text gText_YouRealizeTheyreEvilRight_HasBeenUsing {
+    format("Psfgoodteam has been using Psfcave's abandoned prison as a training ground.")
+}
+text gText_YouRealizeTheyreEvilRight_WowSuperResourceful {
+    format("Wow! Super resourceful. Genius, even.")
+}
+text gText_YouRealizeTheyreEvilRight_WhyAreWeHere {
+    format("Why are we here?")
+}
+text gText_YouRealizeTheyreEvilRight_ICanFinallyProve {
+    format("I can finally prove that Psfbadguy is worse than we originally thought. Once I do that, I want all of us to find a way to work together to protect Psfregion1 from their bullshit.")
+}
+text gText_YouRealizeTheyreEvilRight_DidYouDragMe {
+    format("Did you drag me out here to join a terrorist organiziation? Did you hear ANYTHING I said on the phone?")
+}
+text gText_YouRealizeTheyreEvilRight_YesWaitNo {
+    format("Yes! Wait, no… No, Yes!")
+}
+text gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis {
+    format("Psfgoodteam doesn't do anything for this region. You're attacking innocent people, trying to destroy buildings - fuck, I absolutely should have turned you in!")
+}
+text gText_YouRealizeTheyreEvilRight_ICanProve {
+    format("{PLAYER}, listen! I can prove that none of that is true.")
+}
+text gText_YouRealizeTheyreEvilRight_How {
+    format("How?!?")
+}
+text gText_YouRealizeTheyreEvilRight_Look {
+    format("Look.")
+}
+text gText_YouRealizeTheyreEvilRight_ThisIsOne {
+    format("This is one of the Garbador from the Psfplace14 strike. {PLAYER}, you were told that Psfgoodteam planted these to blow up the construction site, right?")
+}
+text gText_YouRealizeTheyreEvilRight_IHadToGo {
+    format("Yeah. Psftransrival and I had to go down there and defeat them and your goons.")
+}
+text gText_YouRealizeTheyreEvilRight_ThisOneIsLevel {
+    format("This one is Level 40. Garbador learns Explosion at Level 53.")
+}
+text gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan {
+    format("But they definitely can explode… so they're using Self-Destruct instead, right?")
+}
+text gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally {
+    format("Right. But Garbador doesn't learn that naturally. It can only be inherited from its parents, or taught via a Technical Machine.")
+}
+text gText_YouRealizeTheyreEvilRight_SoUsedATM {
+    format("Okay, so Psfgoodteam used a TM… wait.")
+}
+text gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred {
+    format("No, it must have been bred then.")
+}
+text gText_YouRealizeTheyreEvilRight_TakeACloserLook {
+    format("Take a closer look.")
+}
+text gText_YouRealizeTheyreEvilRight_DoYouSeeNow {
+    format("Do you see now?")
+}
+text gText_YouRealizeTheyreEvilRight_AhVeryAstute {
+    format("Ah, very astute. What seemed off to you?")
+}
+text gText_YouRealizeTheyreEvilRight_WaitWhichMove {
+    format("Wait, which move tipped you off?")
+}
+text gText_YouRealizeTheyreEvilRight_VeryClever {
+    format("Very clever, {PLAYER}! You realized that Haze can only be passed down from the Yamask family, and Yamask can't learn Self-Destruct. This Garbrador had to learn the move via TM.")
+}
+text gText_YouRealizeTheyreEvilRight_TheTipOff {
+    format("The tip-off is that this Garbador knows Haze.")
+}
+text gText_YouRealizeTheyreEvilRight_So {
+    format("…so?")
+}
+text gText_YouRealizeTheyreEvilRight_HazeCanOnly {
+    format("Haze can only be passed down from the Yamask family, and Yamask can't learn Self-Destruct. This Garbrador had to learn the move via TM.")
+}
+text gText_YouRealizeTheyreEvilRight_IDontGetIt {
+    format("I don't get it then. So this Garbador was taught Self-Destruct. What does that mean?")
+}
+text gText_YouRealizeTheyreEvilRight_HasBeenFramingYou {
+    format("Psfnativerival… Psfbadguy has been framing you? ")
+}
+text gText_YouRealizeTheyreEvilRight_YouAlsoMetUp {
+    format("{PLAYER}, you also met up with Psfgoodteam in Psfcity9 too, right?")
+}
+text gText_YouRealizeTheyreEvilRight_ButPsfgoodadminSaid {
+    format("…yeah. But Psfgoodadmin said that situation was super weird and was trying to track them down.")
+}
+text gText_YouRealizeTheyreEvilRight_YeahNobodyKnows {
+    format("Yeah, nobody knows who they are or where they came from. I'm pretty sure Psfbadguy has been sending in agents to make us look shitty. Between that and whatever else Psfbadguy is feeding you, I'm not surprised you feel the way you do.")
+}
+text gText_YouRealizeTheyreEvilRight_WhyWhyDoAll {
+    format("Why? Why do all this to just to screw with you guys?")
+}
+text gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney {
+    format("Psfbadguy exists to make money. They don't care about you. Or us. Or the region. You weren't here when they first bought the League. They were ruthless. Fired thousands of people, dismantled and reshaped communities - all for their agenda.")
+}
+text gText_YouRealizeTheyreEvilRight_CantArgueWithThat {
+    format("Can't argue with that.")
+}
+text gText_YouRealizeTheyreEvilRight_IJoinedThe {
+    format("I joined the League Challenge to try to change things from the inside. But now I'm certain that we need external pressure in order to improve things for all of us.")
+}
+text gText_YouRealizeTheyreEvilRight_AndThatsWhyWere {
+    format("And that's why we're all here?")
+}
+text gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally {
+    format("Yep. I think it's finally time we all come together to expose Psfbadguy for the assholes that they are, and start to take power back for the people.")
+}
+text gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour {
+    format("Kid, if the Elite Four couldn't stop them in their prime, I don't know what you think Psfgoodteam will be able to do. Matter of fact, going solo might actually be better! Hell, I was able to start the Psfcave7 campaigns without any help.")
+}
+text gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow {
+    format("Look Psfelite2… things are different now. We've been fighting the good fight without any help so far… and look where that's gotten us. Perhaps they're onto something, and it's time for some real collective action.")
+}
+text gText_YouRealizeTheyreEvilRight_LookIKnowThis {
+    format("Look, I know this is a lot of information to take in. I know you're going to make the right decision. Go home. Get some sleep. Come back here when you're ready to work with us, okay?")
+}
+text gText_YouRealizeTheyreEvilRight_YeahOkay {
+    format("Yeah… okay.")
+}
+text gText_YouRealizeTheyreEvilRight_ThisGarbodor {
+    format("Hey, this Garbador seems to have taken a liking to you, and you seem to understand it pretty well. Do you want it?")
+}
+text gText_YouRealizeTheyreEvilRight_TakeGoodCare {
+    format("Take good care of it.")
+}
+text gText_YouRealizeTheyreEvilRight_ThatsFineIll {
+    format("That's fine, I'll find a good home for it.")
+}
+text gText_YouRealizeTheyreEvilRight_IsStillWaiting {
+    format("Psfnativerival is still waiting for me at Psfcave7…")
+}
+text gText_YouRealizeTheyreEvilRight_DoYouWantToGo {
+    format("Do you want to go to bed?")
+}
+text gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat {
+    format("…I have no idea what I'm going to do. Do I help Psfbadguy and the police end Psfgoodteam permanently? Or do I help Psfgoodteam clear their name and help the people of Psfregion1?")
+}
+

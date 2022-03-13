@@ -1,9 +1,20 @@
 Psfcave7_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfcave7_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcave7_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Psfcave7_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Psfcave7_ExhibitCheck_Script
+	call Psfcave7_ExhibitCheck_Script
+	call Psfcave7_MapScripts_OnTransition
+	return
+
+Psfcave7_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	.2byte 0
+
+
+Psfcave7_MapScripts_OnTransition::
+	call YouRealizeTheyreEvilRight_HideObject_Script
+	call YouRealizeTheyreEvilRight_ShowObject_Script
 	return
 
 
