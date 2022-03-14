@@ -899,9 +899,9 @@ static const struct MenuAction sGarbodor_Properties[] =
 
 static const struct MenuAction sGarbodor_Moves[] =
 {
-    {gText_Haze},
     {gText_SludgeBomb},
     {gText_StmpngTantrm},
+    {gText_Haze},
 };
 
 static const struct MenuAction MultichoiceList_Exit[] =

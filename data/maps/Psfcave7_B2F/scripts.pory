@@ -1,0 +1,12 @@
+mapscripts Psfcave7_B2F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcave7_B2F_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_PSFCAVE7_STATE,4: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 
+    ]
+}
+
+script Psfcave7_B2F_MapScripts_OnTransition {
+    setflag(FLAG_TEMP_1)
+}

@@ -9,6 +9,7 @@ Psfcity8_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Psfcity8_MapScripts_MAP_SCRIPT_ON_LOAD_1:
+	setmetatile 3, 9, 0x239, TRUE
 	setmetatile 3, 8, 0x239, TRUE
 	return
 
@@ -18,6 +19,11 @@ Psfcity8_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Champion_TurnPlayerAwayHome::
+	compare FLAG_SYS_GAME_CLEAR, 0
+	goto_if_ne Champion_TurnPlayerAwayHome_1
+	return
+
+Champion_TurnPlayerAwayHome_1:
 	lockall
 	msgbox Champion_TurnPlayerAwayHome_Text_0
 	closemessage

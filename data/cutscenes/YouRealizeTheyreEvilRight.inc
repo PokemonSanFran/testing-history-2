@@ -1,6 +1,6 @@
 YouRealizeTheyreEvilRight_HideObject_Script::
-	compare VAR_STORYLINE_STATE, 35
-	goto_if_lt YouRealizeTheyreEvilRight_HideObject_Script_1
+	compare VAR_PSFCAVE7_STATE, 3
+	goto_if_ne YouRealizeTheyreEvilRight_HideObject_Script_1
 	return
 
 YouRealizeTheyreEvilRight_HideObject_Script_1:
@@ -9,7 +9,7 @@ YouRealizeTheyreEvilRight_HideObject_Script_1:
 
 
 YouRealizeTheyreEvilRight_ShowObject_Script::
-	compare VAR_STORYLINE_STATE, 35
+	compare VAR_PSFCAVE7_STATE, 3
 	goto_if_eq YouRealizeTheyreEvilRight_ShowObject_Script_1
 	return
 
@@ -20,16 +20,27 @@ YouRealizeTheyreEvilRight_ShowObject_Script_1:
 
 YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	lockall
+	addvar VAR_PSFCAVE7_STATE, 1
 	clearflag FLAG_SCOTT_CALL_FORTREE_GYM
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_HolyShit
+	playse SE_POKENAV_CALL
+	waitse
+	playse SE_POKENAV_CALL
+	waitse
+	bufferpartymonnick 0, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_AwesomeJobIn
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_TheyDontLove
+	callnative ClearMugshot
+	closemessage
+	fadescreen FADE_TO_BLACK
+	delay 30
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YouSeemSurprised
@@ -42,28 +53,123 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WhatDoYouMean
+	checkitem ITEM_HM03
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
-	msgbox gText_YouRealizeTheyreEvilRight_IWannaShowYou
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
+	compare VAR_RESULT, 0
+	goto_if_ne YouRealizeTheyreEvilRight_CallPlayer_Dialogue_2
 	msgbox gText_YouRealizeTheyreEvilRight_YoullNeedToCross
+YouRealizeTheyreEvilRight_CallPlayer_Dialogue_1:
+	playse SE_POKENAV_HANG_UP
+	waitse
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IDontKnowIf
+	callnative ClearMugshot
+	closemessage
+	releaseall
+	end
+
+YouRealizeTheyreEvilRight_CallPlayer_Dialogue_2:
+	msgbox gText_YouRealizeTheyreEvilRight_IWannaShowYou
+	goto YouRealizeTheyreEvilRight_CallPlayer_Dialogue_1
+
+
+YouRealizeTheyreEvilRight_PlayerLandedDialogue::
+	lock
+	givecustommon SPECIES_KYOGRE, 100, ITEM_BLUE_ORB, ITEM_LURE_BALL, NATURE_MODEST, 0, 0, 0, 4, 252, 0, 252, 31, 31, 31, 31, 31, 31, MOVE_SURF, MOVE_CALM_MIND, MOVE_ORIGIN_PULSE, MOVE_ICE_BEAM
+	addvar VAR_PSFCAVE7_STATE, 1
+	playse SE_POKENAV_CALL
+	waitse
+	playse SE_POKENAV_CALL
+	waitse
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ImHereWhere
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_SwimAroundThe
+	callnative ClearMugshot
+	closemessage
+	playse SE_POKENAV_HANG_UP
+	waitse
+	releaseall
+	end
+
+
+YouRealizeTheyreEvilRight_InteractPsfnativerival::
+	lock
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
-	msgbox gText_YouRealizeTheyreEvilRight_WelcomeToTheReal
-	msgbox gText_YouRealizeTheyreEvilRight_WhileAlcatraz
-	msgbox gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation
-	msgbox gText_YouRealizeTheyreEvilRight_TheInmateWasAlso
-	msgbox gText_YouRealizeTheyreEvilRight_TheProtests
+	msgbox gText_YouRealizeTheyreEvilRight_WelcomeToTheReal, MSGBOX_NPC
+	callnative ClearMugshot
+	closemessage
+	applymovement 11, Common_Movement_WalkUp
+	waitmovement 0
+	playse SE_EXIT
+	waitse
+	setflag FLAG_TEMP_1
+	removeobject 11
+	releaseall
+	end
+
+
+YouRealizeTheyreEvil_Ghost1_Battle_Script::
+	trainerbattle_single TRAINER_VALERIE_1, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost1_Battle_Script
+	msgbox gText_YouRealizeTheyreEvilRight_WhileAlcatraz, MSGBOX_AUTOCLOSE
+	goto YouRealizeTheyreEvilRight_RemoveGhost
+	end
+
+
+YouRealizeTheyreEvil_Ghost2_Battle_Script::
+	trainerbattle_single TRAINER_ATSUSHI, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost2_Battle_Script
+	msgbox gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation, MSGBOX_AUTOCLOSE
+	goto YouRealizeTheyreEvilRight_RemoveGhost
+	end
+
+
+YouRealizeTheyreEvil_Ghost3_Battle_Script::
+	trainerbattle_single TRAINER_TASHA, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost3_Battle_Script
+	msgbox gText_YouRealizeTheyreEvilRight_TheInmateWasAlso, MSGBOX_AUTOCLOSE
+	goto YouRealizeTheyreEvilRight_RemoveGhost
+	end
+
+
+YouRealizeTheyreEvil_Ghost4_Battle_Script::
+	trainerbattle_single TRAINER_CEDRIC, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost4_Battle_Script
+	msgbox gText_YouRealizeTheyreEvilRight_TheProtests, MSGBOX_AUTOCLOSE
+	goto YouRealizeTheyreEvilRight_RemoveGhost
+	end
+
+
+YouRealizeTheyreEvilRight_RemoveGhost::
+	lockall
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers FADE_FROM_BLACK
+	releaseall
+	end
+
+
+YouRealizeTheyreEvil_ReleaseGarbodor_Script::
+	applymovement 1, YouRealizeTheyreEvilRight_StepBackward
+	waitmovement 0
+	playse SE_BALL_OPEN
+	waitse
+	clearflag FLAG_TEMP_1
+	addobject 4
+	playmoncry SPECIES_GARBODOR, CRY_MODE_ENCOUNTER
+	waitmoncry
+	playse SE_SHINY
+	waitse
+	return
+
+
+YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, YouRealizeTheyreEvilRight_WalkToGroup
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_TheChampionHasArrived
@@ -73,6 +179,11 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_HasBeenUsing
+	callnative ClearMugshot
+	closemessage
+	playse SE_PIN
+	applymovement 3, Common_Movement_ExclamationMark
+	applymovement 2, Common_Movement_ExclamationMark
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WowSuperResourceful
@@ -100,6 +211,11 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_Look
+	callnative ClearMugshot
+	closemessage
+	call YouRealizeTheyreEvil_ReleaseGarbodor_Script
+	applymovement 2, Common_Movement_FaceLeft
+	applymovement 3, Common_Movement_FaceUp
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ThisIsOne
@@ -118,24 +234,73 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_SoUsedATM
+	fadescreen FADE_TO_BLACK
+	msgbox YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue_Text_0
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_TakeACloserLook
+	goto YouRealizeTheyreEvilRight_StartQuestions_Script
+	return
+
+
+YouRealizeTheyreEvilRight_StartQuestions_Script::
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
-	msgbox gText_YouRealizeTheyreEvilRight_DoYouSeeNow
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
+	msgbox gText_YouRealizeTheyreEvilRight_DoYouSeeNow, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq YouRealizeTheyreEvilRight_StartQuestions_Script_2
+	call YouRealizeTheyreEvilRight_EndQuestions_Script
+YouRealizeTheyreEvilRight_StartQuestions_Script_1:
+	goto YouRealizeTheyreEvilRight_Framing_Dialogue
+	return
+
+YouRealizeTheyreEvilRight_StartQuestions_Script_2:
+	call YouRealizeTheyreEvilRight_AskProperties_Script
+	goto YouRealizeTheyreEvilRight_StartQuestions_Script_1
+
+
+YouRealizeTheyreEvilRight_AskProperties_Script::
 	msgbox gText_YouRealizeTheyreEvilRight_AhVeryAstute
+	multichoicedefault 18, 6, MULTI_GARBADOR_PROPERTIES, 1, FALSE
+	switch VAR_RESULT
+	case 0, YouRealizeTheyreEvilRight_AskProperties_Script_2
+	goto YouRealizeTheyreEvilRight_EndQuestions_Script
+	return
+
+YouRealizeTheyreEvilRight_AskProperties_Script_2:
+	goto YouRealizeTheyreEvilRight_AskMoves_Script
+	return
+
+
+YouRealizeTheyreEvilRight_AskMoves_Script::
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WaitWhichMove
+	multichoicedefault 18, 6, MULTI_GARBADOR_MOVES, 0, TRUE
+	switch VAR_RESULT
+	case 2, YouRealizeTheyreEvilRight_AskMoves_Script_2
+	goto YouRealizeTheyreEvilRight_EndQuestions_Script
+	return
+
+YouRealizeTheyreEvilRight_AskMoves_Script_2:
+	goto YouRealizeTheyreEvilRight_CorrectAnswer_Script
+	return
+
+
+YouRealizeTheyreEvilRight_CorrectAnswer_Script::
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_VeryClever
+	setvar VAR_TEMP_0, 99
+	goto YouRealizeTheyreEvilRight_Framing_Dialogue
+	return
+
+
+YouRealizeTheyreEvilRight_EndQuestions_Script::
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_TheTipOff
@@ -145,6 +310,10 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_HazeCanOnly
+	return
+
+
+YouRealizeTheyreEvilRight_Framing_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IDontGetIt
@@ -184,30 +353,167 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, YouRealizeTheyreEvilRight_WalkAroundToPlayer
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_LookIKnowThis
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YeahOkay
+	addvar VAR_PSFCAVE7_STATE, 1
+	compare VAR_TEMP_0, 99
+	goto_if_eq YouRealizeTheyreEvilRight_Framing_Dialogue_2
+YouRealizeTheyreEvilRight_Framing_Dialogue_1:
+	callnative ClearMugshot
+	closemessage
+	end
+
+YouRealizeTheyreEvilRight_Framing_Dialogue_2:
+	call YouRealizeTheyreEvilRight_AskPlayerGift_Script
+	goto YouRealizeTheyreEvilRight_Framing_Dialogue_1
+
+
+YouRealizeTheyreEvilRight_AskPlayerGift_Script::
+	playse SE_CONTEST_HEART
+	applymovement 4, YouRealizeTheyreEvilRight_ShowAffection
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
-	msgbox gText_YouRealizeTheyreEvilRight_ThisGarbodor
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_YouRealizeTheyreEvilRight_TakeGoodCare
+	msgbox gText_YouRealizeTheyreEvilRight_ThisGarbodor, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq YouRealizeTheyreEvilRight_AskPlayerGift_Script_2
+	call YouRealizeTheyreEvilRight_GiveGift_Script
+YouRealizeTheyreEvilRight_AskPlayerGift_Script_1:
+	callnative ClearMugshot
+	closemessage
+	releaseall
+	end
+
+YouRealizeTheyreEvilRight_AskPlayerGift_Script_2:
+	call YouRealizeTheyreEvilRight_LeaveGift_Script
+	goto YouRealizeTheyreEvilRight_AskPlayerGift_Script_1
+
+
+YouRealizeTheyreEvilRight_LeaveGift_Script::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ThatsFineIll
+	return
+
+
+YouRealizeTheyreEvilRight_GiveGift_Script::
+	givecustommon SPECIES_GARBODOR, 40, ITEM_BLACK_SLUDGE, ITEM_CHERISH_BALL, NATURE_JOLLY, 2, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_HAZE, MOVE_SELF_DESTRUCT, MOVE_STOMPING_TANTRUM, MOVE_SLUDGE_BOMB, TRUE
+	compare VAR_RESULT, 0
+	goto_if_eq YouRealizeTheyreEvilRight_GiveGift_Script_2
+	call YouRealizeTheyreEvilRight_SendGiftToPC_Script
+YouRealizeTheyreEvilRight_GiveGift_Script_1:
+	setvar VAR_0x8000, MUGSHOT_HUGH
+	callnative DrawMugshot
+	msgbox gText_YouRealizeTheyreEvilRight_TakeGoodCare
+	return
+
+YouRealizeTheyreEvilRight_GiveGift_Script_2:
+	call YouRealizeTheyreEvilRight_SendGiftToParty_Script
+	goto YouRealizeTheyreEvilRight_GiveGift_Script_1
+
+
+YouRealizeTheyreEvilRight_SendGiftToParty_Script::
+	call YouRealizeTheyreEvilRight_RecievedGiftFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq YouRealizeTheyreEvilRight_SendGiftToParty_Script_1
+	return
+
+YouRealizeTheyreEvilRight_SendGiftToParty_Script_1:
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	return
+
+
+YouRealizeTheyreEvilRight_SendGiftToPC_Script::
+	call YouRealizeTheyreEvilRight_RecievedGiftFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq YouRealizeTheyreEvilRight_SendGiftToPC_Script_2
+YouRealizeTheyreEvilRight_SendGiftToPC_Script_1:
+	call Common_EventScript_TransferredToPC
+	return
+
+YouRealizeTheyreEvilRight_SendGiftToPC_Script_2:
+	call Common_EventScript_NameReceivedBoxMon
+	goto YouRealizeTheyreEvilRight_SendGiftToPC_Script_1
+
+
+YouRealizeTheyreEvilRight_RecievedGiftFanfare::
+	bufferspeciesname STR_VAR_2, SPECIES_GARBODOR
+	removeobject 4
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox gText_YouRealizeTheyreEvilRight_ObtainedGift
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_GARBODOR
+	return
+
+
+YouRealizeTheyreEvilRight_CantSleep_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IsStillWaiting
-	msgbox gText_YouRealizeTheyreEvilRight_DoYouWantToGo
+	callnative ClearMugshot
+	closemessage
+	return
+
+
+YouRealizeTheyreEvilRight_NoIdea_Dialogue::
+	compare VAR_PSFCAVE7_STATE, 5
+	goto_if_eq YouRealizeTheyreEvilRight_NoIdea_Dialogue_1
+	return
+
+YouRealizeTheyreEvilRight_NoIdea_Dialogue_1:
+	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat
+	callnative ClearMugshot
+	closemessage
 	return
 
+
+YouRealizeTheyreEvilRight_StepBackward:
+	lock_facing_direction
+	walk_up
+	walk_in_place_down
+	unlock_facing_direction
+	step_end
+
+YouRealizeTheyreEvilRight_WalkToGroup:
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+YouRealizeTheyreEvilRight_WalkAroundToPlayer:
+	walk_left
+	walk_down
+	walk_down
+	face_right
+	step_end
+
+YouRealizeTheyreEvilRight_ShowAffection:
+	emote_heart
+	jump_in_place_down
+	jump_in_place_down
+	step_end
+
+YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue_Text_0:
+	.string "This will show a flashback to the police\n"
+	.string "chief explaining that TMs were taken\l"
+	.string "out of circulation$"
 
 gText_YouRealizeTheyreEvilRight_HolyShit::
 	.string "Holy shit. That was intense. Guess I\n"
@@ -215,9 +521,9 @@ gText_YouRealizeTheyreEvilRight_HolyShit::
 	.string "something isn't adding up.$"
 
 gText_YouRealizeTheyreEvilRight_AwesomeJobIn::
-	.string "Awesome job in PsfcityX. I heard all\n"
-	.string "about it, and I'm so happy things are\l"
-	.string "getting off the ground. I heard you\l"
+	.string "Awesome job in {STR_VAR_1}. I heard\n"
+	.string "all about it, and I'm so happy things\l"
+	.string "are getting off the ground. I heard you\l"
 	.string "got a phone call and disappeared.\l"
 	.string "Everything okay?$"
 
@@ -268,6 +574,9 @@ gText_YouRealizeTheyreEvilRight_WelcomeToTheReal::
 	.string "should explore here first before\l"
 	.string "coming straight down.$"
 
+gText_YouRealizeTheyreEvilRight_DotDotDot::
+	.string "…$"
+
 gText_YouRealizeTheyreEvilRight_WhileAlcatraz::
 	.string "While Alcatraz was a prison, it was\n"
 	.string "absolutely not a state of the art\l"
@@ -302,13 +611,14 @@ gText_YouRealizeTheyreEvilRight_TheInmateWasAlso::
 gText_YouRealizeTheyreEvilRight_TheProtests::
 	.string "The protests gained national attention\n"
 	.string "and seemed to be gathering interest,\l"
-	.string "particularly with the help of Drasna's\l"
-	.string "support, and pressure mounted on the\l"
-	.string "government to comply. At the height of\l"
-	.string "tension, an earthquake broke out,\l"
-	.string "destroying a large portion of the\l"
-	.string "prison and killing inmates and guards\l"
-	.string "and effectively ending the occupation.$"
+	.string "particularly with the help of\l"
+	.string "Psfelite2's support, and pressure\l"
+	.string "mounted on the government to comply.\l"
+	.string "At the height of tension, an\l"
+	.string "earthquake broke out, destroying a\l"
+	.string "large portion of the prison and killing\l"
+	.string "inmates and guards and effectively\l"
+	.string "ending the occupation.$"
 
 gText_YouRealizeTheyreEvilRight_TheChampionHasArrived::
 	.string "The Champion has arrived! Great to meet\n"
@@ -363,7 +673,7 @@ gText_YouRealizeTheyreEvilRight_Look::
 	.string "Look.$"
 
 gText_YouRealizeTheyreEvilRight_ThisIsOne::
-	.string "This is one of the Garbador from the\n"
+	.string "This is one of the Garbodor from the\n"
 	.string "Psfplace14 strike. {PLAYER}, you\l"
 	.string "were told that Psfgoodteam planted\l"
 	.string "these to blow up the construction\l"
@@ -375,7 +685,7 @@ gText_YouRealizeTheyreEvilRight_IHadToGo::
 	.string "goons.$"
 
 gText_YouRealizeTheyreEvilRight_ThisOneIsLevel::
-	.string "This one is Level 40. Garbador learns\n"
+	.string "This one is Level 40. Garbodor learns\n"
 	.string "Explosion at Level 53.$"
 
 gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan::
@@ -384,7 +694,7 @@ gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan::
 	.string "right?$"
 
 gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally::
-	.string "Right. But Garbador doesn't learn that\n"
+	.string "Right. But Garbodor doesn't learn that\n"
 	.string "naturally. It can only be inherited\l"
 	.string "from its parents, or taught via a\l"
 	.string "Technical Machine.$"
@@ -416,7 +726,7 @@ gText_YouRealizeTheyreEvilRight_VeryClever::
 	.string "had to learn the move via TM.$"
 
 gText_YouRealizeTheyreEvilRight_TheTipOff::
-	.string "The tip-off is that this Garbador knows\n"
+	.string "The tip-off is that this Garbodor knows\n"
 	.string "Haze.$"
 
 gText_YouRealizeTheyreEvilRight_So::
@@ -429,7 +739,7 @@ gText_YouRealizeTheyreEvilRight_HazeCanOnly::
 	.string "learn the move via TM.$"
 
 gText_YouRealizeTheyreEvilRight_IDontGetIt::
-	.string "I don't get it then. So this Garbador\n"
+	.string "I don't get it then. So this Garbodor\n"
 	.string "was taught Self-Destruct. What does\l"
 	.string "that mean?$"
 
@@ -515,7 +825,7 @@ gText_YouRealizeTheyreEvilRight_YeahOkay::
 	.string "Yeah… okay.$"
 
 gText_YouRealizeTheyreEvilRight_ThisGarbodor::
-	.string "Hey, this Garbador seems to have taken\n"
+	.string "Hey, this Garbodor seems to have taken\n"
 	.string "a liking to you, and you seem to\l"
 	.string "understand it pretty well. Do you want\l"
 	.string "it?$"
@@ -539,3 +849,7 @@ gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat::
 	.string "Psfgoodteam permanently? Or do I help\l"
 	.string "Psfgoodteam clear their name and help\l"
 	.string "the people of Psfregion1?$"
+
+gText_YouRealizeTheyreEvilRight_ObtainedGift::
+	.string "{PLAYER} was given the\n"
+	.string "{STR_VAR_2}.$"

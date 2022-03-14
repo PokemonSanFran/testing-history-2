@@ -6,19 +6,22 @@ mapscripts Psfcity8_MapScripts {
     ]
     MAP_SCRIPT_ON_LOAD {
         if (var(FLAG_SYS_GAME_CLEAR)){
+            setmetatile(3,9,0x239,TRUE)
             setmetatile(3,8,0x239,TRUE)
         }
     }
 }
 
 script Champion_TurnPlayerAwayHome {
-    lockall
+        if (var(FLAG_SYS_GAME_CLEAR)){
+        lockall
         msgbox("You don't live here anymore!")
         closemessage
         applymovement(PLAYER,Common_Movement_WalkDown)
         waitmovement(0)
         releaseall
         end
+        }
 }
 
 script NewGameSetUp {

@@ -9,6 +9,7 @@ Psfcave7_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfcave7_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_PSFCAVE7_STATE, 3, YouRealizeTheyreEvilRight_PlayerLandedDialogue
 	.2byte 0
 
 

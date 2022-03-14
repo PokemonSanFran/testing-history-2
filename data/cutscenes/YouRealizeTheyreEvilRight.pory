@@ -1,363 +1,528 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFNATIVERIVAL = 1
+const PSFELITE2 = 2
+const PSFELITE1 = 3
+const GARBODOR = 4
+
 script YouRealizeTheyreEvilRight_HideObject_Script {
-    if (var(VAR_STORYLINE_STATE) < 35){
-    setflag(FLAG_TEMP_1)
+    if (var(VAR_PSFCAVE7_STATE) != 3){
+        setflag(FLAG_TEMP_1)
     }
 }
 
 script YouRealizeTheyreEvilRight_ShowObject_Script {
-    if (var(VAR_STORYLINE_STATE) == 35){
+    if (var(VAR_PSFCAVE7_STATE) == 3){
         addobject(11)
     }
 }
 
 script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
     lockall
-    clearflag(FLAG_SCOTT_CALL_FORTREE_GYM)
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_HolyShit)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_AwesomeJobIn)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_TheyDontLove)
-
-//Screen fades to black.
-
-//Screen fades back in.
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_YouSeemSurprised)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_YoureNot)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_IveBeenTrying)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_WhatDoYouMean)
-
-
-//If the player has the ability to Surf:
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_IWannaShowYou)
-
-//If the player cannot Surf:
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_YoullNeedToCross)
-
-//Branch dialogue ends here.
-
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf)
-
-//Player regains control. 
-
-
-//EXT. PSFCAVE7
-
-//The cutscene resumes when the player lands on the island.
-
-//Phone ring
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ImHereWhere)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_SwimAroundThe)
-
-//The player regains control. Psfnativerival is standing in front of a hole in the island. Cutscene resumes when they interact with Psftransrival.
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_WelcomeToTheReal)
-
-//Psftransrival heads inside. The player regains control and can go inside.
-
-
-//INT. PSFCAVE7
-
-//The first basement level is clearly an abandoned prison, shown in total disarray due to the riots and earthquakes. The earthquake has collapsed several walls and pillars, making the floors into a giant maze as opposed to a straightforward prison layout. There are trainers wandering around through the maze.
-
-//Each Trainer will only say “...” when interacted with, and for their after battle text. When returning to the overworld, each Trainer will each give a piece of the island's history. After giving that history, the trainer will disappear.
-
-msgbox(gText_YouRealizeTheyreEvilRight_WhileAlcatraz)
-
-msgbox(gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation)
-
-msgbox(gText_YouRealizeTheyreEvilRight_TheInmateWasAlso)
-
-msgbox(gText_YouRealizeTheyreEvilRight_TheProtests)
-
-//The player can go down to the next floor. On the second basement floor, Psfelite1, Psfnativerival, and Psfelite2 are standing together. As the player approaches them, the cutscene continues.
-
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_TheChampionHasArrived)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_NiceToMeetYou)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_HasBeenUsing)
-
-//ELITE1 ELITE2 !!!
-
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_WowSuperResourceful)
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_WhyAreWeHere)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ICanFinallyProve)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_DidYouDragMe)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_YesWaitNo)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ICanProve)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_How)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_Look)
-
-//Psfnativerival steps backwards and lets out a Garbodor from a PokéBall.
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ThisIsOne)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_IHadToGo)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ThisOneIsLevel)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_SoUsedATM)
-
-//The screen fades to black. As it fades back in, it plays the memory of the police chief explaining that Self-Destruct TMs were taken out of circulation. The screen fades back in.
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred)
-
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_TakeACloserLook)
-
-//Game opens the summary screen for the Garbador. After the player closes it:
-
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_DoYouSeeNow)
-
-//The player is presented with a Yes / No box. If the player chooses Yes:
-
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_AhVeryAstute)
-
-//The player is presented with a multichoice box.
-
-//Moveset
-
-//Ability
-
-//Nickname
-
-//Shininess
-
-//If the player chooses Moveset:
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_WaitWhichMove)
-
-//The player is presented with a multichoice box.
-
-//Haze
-
-//Sludge Bomb
-
-//Stomping Tantrum
-
-//If the player selects Haze:
-
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_VeryClever)
-
-//If the player chooses Ability, Nickname, Sludge Bomb, Stomping Tantrum, or says No to the original question or chooses a non-Haze move:
-
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_TheTipOff)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_So)
-
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_HazeCanOnly)
-
-//Branch dialogue ends here.
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_IDontGetIt)
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_HasBeenFramingYou)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_YouAlsoMetUp)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ButPsfgoodadminSaid)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_YeahNobodyKnows)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_WhyWhyDoAll)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney)
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_CantArgueWithThat)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_IJoinedThe)
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_AndThatsWhyWere)
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally)
-
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour)
-
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow)
-
-//Psfnativerival turns to the Player.
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_LookIKnowThis)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_YeahOkay)
-
-//The player regains control. 
-
-//If the player answered correctly during Garbador quiz:
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ThisGarbodor)
-
-//The player is presented with a Yes / No box. If the player chooses Yes, they receive the Pokémon. 
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_TakeGoodCare)
-
-//If the player chooses No:
-
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_ThatsFineIll)
-
-//The player regains control.
-
-
-//When the player goes to sleep, this cutscene resumes.
-
-//If the player has not gone to Psfcave7:
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_IsStillWaiting)
-
-msgbox(gText_YouRealizeTheyreEvilRight_DoYouWantToGo)
-
-//If the player has gone to Psfcave7:
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat)
+        addvar(VAR_PSFCAVE7_STATE,1)
+        clearflag(FLAG_SCOTT_CALL_FORTREE_GYM)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_HolyShit)
+
+        playse(SE_POKENAV_CALL)
+        waitse
+        playse(SE_POKENAV_CALL)
+        waitse
+
+        bufferpartymonnick(0,1)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_AwesomeJobIn)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_TheyDontLove)
+        callnative(ClearMugshot)
+        closemessage
+
+        fadescreen(FADE_TO_BLACK)
+        delay(30)
+        fadescreen(FADE_FROM_BLACK)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_YouSeemSurprised)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_YoureNot)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_IveBeenTrying)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_WhatDoYouMean)
+
+        checkitem(ITEM_HM03)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+
+        if (var(VAR_RESULT)){
+            msgbox(gText_YouRealizeTheyreEvilRight_IWannaShowYou)
+        } else {
+            msgbox(gText_YouRealizeTheyreEvilRight_YoullNeedToCross)
+        }
+    playse(SE_POKENAV_HANG_UP)
+        waitse
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf)
+        callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
+}
+
+script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
+    lock
+        givecustommon(SPECIES_KYOGRE,100,ITEM_BLUE_ORB,ITEM_LURE_BALL,NATURE_MODEST,0,0,0,4,252,0,252,31,31,31,31,31,31,MOVE_SURF,MOVE_CALM_MIND,MOVE_ORIGIN_PULSE,MOVE_ICE_BEAM)
+        addvar(VAR_PSFCAVE7_STATE,1)
+        playse(SE_POKENAV_CALL)
+        waitse
+        playse(SE_POKENAV_CALL)
+        waitse
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ImHereWhere)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_SwimAroundThe)
+        callnative(ClearMugshot)
+        closemessage
+
+        playse(SE_POKENAV_HANG_UP)
+        waitse
+        releaseall
+        end
+}
+
+script YouRealizeTheyreEvilRight_InteractPsfnativerival {
+    lock
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_WelcomeToTheReal,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(11,Common_Movement_WalkUp)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        setflag(FLAG_TEMP_1)
+        removeobject(11)
+        releaseall
+        end
+}
+
+script YouRealizeTheyreEvil_Ghost1_Battle_Script{
+    trainerbattle_single(TRAINER_VALERIE_1, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost1_Battle_Script)
+        msgbox(gText_YouRealizeTheyreEvilRight_WhileAlcatraz,MSGBOX_AUTOCLOSE)
+        goto(YouRealizeTheyreEvilRight_RemoveGhost)
+        end
+}
+
+script YouRealizeTheyreEvil_Ghost2_Battle_Script{
+    trainerbattle_single(TRAINER_ATSUSHI, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost2_Battle_Script)
+        msgbox(gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation,MSGBOX_AUTOCLOSE)
+        goto(YouRealizeTheyreEvilRight_RemoveGhost)
+        end
+}
+
+script YouRealizeTheyreEvil_Ghost3_Battle_Script{
+    trainerbattle_single(TRAINER_TASHA, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost3_Battle_Script)
+        msgbox(gText_YouRealizeTheyreEvilRight_TheInmateWasAlso,MSGBOX_AUTOCLOSE)
+        goto(YouRealizeTheyreEvilRight_RemoveGhost)
+        end
+}
+
+script YouRealizeTheyreEvil_Ghost4_Battle_Script{
+    trainerbattle_single(TRAINER_CEDRIC, gText_YouRealizeTheyreEvilRight_DotDotDot, gText_YouRealizeTheyreEvilRight_DotDotDot, YouRealizeTheyreEvil_Ghost4_Battle_Script)
+        msgbox(gText_YouRealizeTheyreEvilRight_TheProtests,MSGBOX_AUTOCLOSE)
+        goto(YouRealizeTheyreEvilRight_RemoveGhost)
+        end
+}
+
+script YouRealizeTheyreEvilRight_RemoveGhost {
+    lockall
+        closemessage
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+        releaseall
+        end
+}
+
+script YouRealizeTheyreEvil_ReleaseGarbodor_Script {
+    applymovement(PSFNATIVERIVAL,YouRealizeTheyreEvilRight_StepBackward)
+        waitmovement(0)
+
+        playse(SE_BALL_OPEN)
+        waitse
+        clearflag(FLAG_TEMP_1)
+        addobject(GARBODOR)
+        playmoncry(SPECIES_GARBODOR, CRY_MODE_ENCOUNTER)
+        waitmoncry
+        playse(SE_SHINY)
+        waitse
+}
+
+script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
+    lock
+        applymovement(PLAYER,YouRealizeTheyreEvilRight_WalkToGroup)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_TheChampionHasArrived)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_NiceToMeetYou)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_HasBeenUsing)
+        callnative(ClearMugshot)
+        closemessage
+
+        playse(SE_PIN)
+        applymovement(PSFELITE1,Common_Movement_ExclamationMark)
+        applymovement(PSFELITE2,Common_Movement_ExclamationMark)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_WowSuperResourceful)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_WhyAreWeHere)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ICanFinallyProve)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_DidYouDragMe)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_YesWaitNo)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ICanProve)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_How)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_Look)
+        callnative(ClearMugshot)
+        closemessage
+
+        call(YouRealizeTheyreEvil_ReleaseGarbodor_Script)
+        applymovement(PSFELITE2,Common_Movement_FaceLeft)
+        applymovement(PSFELITE1,Common_Movement_FaceUp)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ThisIsOne)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_IHadToGo)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ThisOneIsLevel)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_SoUsedATM)
+
+        fadescreen(FADE_TO_BLACK)
+
+        //The screen fades to black. As it fades back in, it plays the memory of the police chief explaining that Self-Destruct TMs were taken out of circulation. The screen fades back in. //PSF TODO
+        msgbox(format("This will show a flashback to the police chief explaining that TMs were taken out of circulation"))
+
+        fadescreen(FADE_FROM_BLACK)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_TakeACloserLook)
+
+        //PSF TODO Use CallBattleFactoryFunction to generate a Garbodor. Call the Summary screen from factory_rentmons directly to view said Garbodor.
+        goto(YouRealizeTheyreEvilRight_StartQuestions_Script)
+}
+
+script YouRealizeTheyreEvilRight_StartQuestions_Script {
+    setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_DoYouSeeNow,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == YES){
+            call(YouRealizeTheyreEvilRight_AskProperties_Script)
+        }else {
+            call(YouRealizeTheyreEvilRight_EndQuestions_Script)
+        }
+    goto(YouRealizeTheyreEvilRight_Framing_Dialogue)
+}
+
+script YouRealizeTheyreEvilRight_AskProperties_Script {
+    msgbox(gText_YouRealizeTheyreEvilRight_AhVeryAstute)
+        multichoicedefault(18,6,MULTI_GARBADOR_PROPERTIES,1,FALSE)
+
+        switch(var(VAR_RESULT)){
+            case 0: goto(YouRealizeTheyreEvilRight_AskMoves_Script)
+            default: goto(YouRealizeTheyreEvilRight_EndQuestions_Script)
+        }
+}
+
+script YouRealizeTheyreEvilRight_AskMoves_Script {
+
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_WaitWhichMove)
+
+        multichoicedefault(18,6,MULTI_GARBADOR_MOVES,0,TRUE)
+
+        switch (var(VAR_RESULT)){
+            case 2: goto(YouRealizeTheyreEvilRight_CorrectAnswer_Script)
+            default: goto(YouRealizeTheyreEvilRight_EndQuestions_Script)
+        }
+}
+
+script YouRealizeTheyreEvilRight_CorrectAnswer_Script {
+
+    setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_VeryClever)
+        setvar(VAR_TEMP_0,99)
+        goto(YouRealizeTheyreEvilRight_Framing_Dialogue)
+}
+
+script YouRealizeTheyreEvilRight_EndQuestions_Script {
+
+    setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_TheTipOff)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_So)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_HazeCanOnly)
+}
+
+script YouRealizeTheyreEvilRight_Framing_Dialogue {
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_IDontGetIt)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_HasBeenFramingYou)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_YouAlsoMetUp)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ButPsfgoodadminSaid)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_YeahNobodyKnows)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_WhyWhyDoAll)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_CantArgueWithThat)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_IJoinedThe)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_AndThatsWhyWere)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFNATIVERIVAL,YouRealizeTheyreEvilRight_WalkAroundToPlayer)
+        waitmovement(0)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_LookIKnowThis)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_YeahOkay)
+
+        addvar(VAR_PSFCAVE7_STATE,1)
+
+        if (var(VAR_TEMP_0) == 99){
+            call(YouRealizeTheyreEvilRight_AskPlayerGift_Script)
+        }
+
+    callnative(ClearMugshot)
+        closemessage
+        end
+}
+
+script YouRealizeTheyreEvilRight_AskPlayerGift_Script {
+
+    playse(SE_CONTEST_HEART)
+    applymovement(GARBODOR,YouRealizeTheyreEvilRight_ShowAffection)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ThisGarbodor,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == NO){
+            call(YouRealizeTheyreEvilRight_LeaveGift_Script)
+        }else {
+            call(YouRealizeTheyreEvilRight_GiveGift_Script)
+        }
+    callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
+}
+
+script YouRealizeTheyreEvilRight_LeaveGift_Script {
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_ThatsFineIll)
+}
+
+script YouRealizeTheyreEvilRight_GiveGift_Script {
+
+    givecustommon(SPECIES_GARBODOR,40,ITEM_BLACK_SLUDGE,ITEM_CHERISH_BALL,NATURE_JOLLY,2,0,0,0,0,0,0,31,31,31,31,31,31,MOVE_HAZE,MOVE_SELF_DESTRUCT,MOVE_STOMPING_TANTRUM,MOVE_SLUDGE_BOMB,TRUE) //PSF TODO give a custom ball that only YC use
+
+        if (var(VAR_RESULT) == 0){
+            call(YouRealizeTheyreEvilRight_SendGiftToParty_Script)
+        } else {
+            call(YouRealizeTheyreEvilRight_SendGiftToPC_Script)
+        }
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_TakeGoodCare)
 
 }
+script YouRealizeTheyreEvilRight_SendGiftToParty_Script {
+    call(YouRealizeTheyreEvilRight_RecievedGiftFanfare)
+        msgbox(gText_NicknameThisPokemon,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == YES){
+            call(Common_EventScript_GetGiftMonPartySlot)
+                call(Common_EventScript_NameReceivedPartyMon)
+        }
+}
+
+script YouRealizeTheyreEvilRight_SendGiftToPC_Script {
+    call(YouRealizeTheyreEvilRight_RecievedGiftFanfare)
+        msgbox(gText_NicknameThisPokemon,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == YES){
+            call(Common_EventScript_NameReceivedBoxMon)
+        }
+    call(Common_EventScript_TransferredToPC) //PSF TODO why does STR_VAR_2 store the wrong pokemon name
+}
+
+script YouRealizeTheyreEvilRight_RecievedGiftFanfare {
+    bufferspeciesname(STR_VAR_2,SPECIES_GARBODOR)
+        removeobject(GARBODOR)
+        playfanfare(MUS_OBTAIN_ITEM)
+        msgbox(gText_YouRealizeTheyreEvilRight_ObtainedGift)
+        waitmessage
+        waitfanfare
+        bufferspeciesname(STR_VAR_1, SPECIES_GARBODOR)
+}
+
+script YouRealizeTheyreEvilRight_CantSleep_Dialogue {
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_IsStillWaiting)
+        callnative(ClearMugshot)
+        closemessage
+}
+
+script YouRealizeTheyreEvilRight_NoIdea_Dialogue {
+
+    if (var(VAR_PSFCAVE7_STATE) == 5){
+        addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat)
+        callnative(ClearMugshot)
+        closemessage
+    }
+}
+
 text gText_YouRealizeTheyreEvilRight_HolyShit {
     format("Holy shit. That was intense. Guess I need to think all this over, but something isn't adding up.")
 }
 text gText_YouRealizeTheyreEvilRight_AwesomeJobIn {
-    format("Awesome job in PsfcityX. I heard all about it, and I'm so happy things are getting off the ground. I heard you got a phone call and disappeared. Everything okay?")
+    format("Awesome job in {STR_VAR_1}. I heard all about it, and I'm so happy things are getting off the ground. I heard you got a phone call and disappeared. Everything okay?") //PSF TODO Buffer in the name of the last resotration quest city that was completed
 }
 text gText_YouRealizeTheyreEvilRight_TheyDontLove {
     format("Psfbadguy called me. They don't love our project.")
@@ -392,6 +557,9 @@ text gText_YouRealizeTheyreEvilRight_SwimAroundThe {
 text gText_YouRealizeTheyreEvilRight_WelcomeToTheReal {
     format("Welcome to the real Psfcave7. I'm going down to the second level, but you should explore here first before coming straight down.")
 }
+text gText_YouRealizeTheyreEvilRight_DotDotDot {
+    format("…")
+}
 text gText_YouRealizeTheyreEvilRight_WhileAlcatraz {
     format("While Alcatraz was a prison, it was absolutely not a state of the art facility - rather, criminals deemed “dangerous” were thrown into Alcatraz with little regard for health, rehabilitation, or even due process of law, with a preponderance of marginalized communities being locked away. ")
 }
@@ -402,7 +570,7 @@ text gText_YouRealizeTheyreEvilRight_TheInmateWasAlso {
     format("The inmate was also a member of SanFran's indingeous population, killed on the land that was stolen from their ancestors. The occupation called for the dissolution of the prison, transfer of prisoners to locations with humane conditions, and the return of the land back to its original owners.")
 }
 text gText_YouRealizeTheyreEvilRight_TheProtests {
-    format("The protests gained national attention and seemed to be gathering interest, particularly with the help of Drasna's support, and pressure mounted on the government to comply. At the height of tension, an earthquake broke out, destroying a large portion of the prison and killing inmates and guards and effectively ending the occupation. ")
+    format("The protests gained national attention and seemed to be gathering interest, particularly with the help of Psfelite2's support, and pressure mounted on the government to comply. At the height of tension, an earthquake broke out, destroying a large portion of the prison and killing inmates and guards and effectively ending the occupation. ")
 }
 text gText_YouRealizeTheyreEvilRight_TheChampionHasArrived {
     format("The Champion has arrived! Great to meet you, I'm Psfelite2, and I'm the leader of the Psfregion1 Elite Four. Or, I was. Now I'm not really sure what I do.")
@@ -441,19 +609,19 @@ text gText_YouRealizeTheyreEvilRight_Look {
     format("Look.")
 }
 text gText_YouRealizeTheyreEvilRight_ThisIsOne {
-    format("This is one of the Garbador from the Psfplace14 strike. {PLAYER}, you were told that Psfgoodteam planted these to blow up the construction site, right?")
+    format("This is one of the Garbodor from the Psfplace14 strike. {PLAYER}, you were told that Psfgoodteam planted these to blow up the construction site, right?")
 }
 text gText_YouRealizeTheyreEvilRight_IHadToGo {
     format("Yeah. Psftransrival and I had to go down there and defeat them and your goons.")
 }
 text gText_YouRealizeTheyreEvilRight_ThisOneIsLevel {
-    format("This one is Level 40. Garbador learns Explosion at Level 53.")
+    format("This one is Level 40. Garbodor learns Explosion at Level 53.")
 }
 text gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan {
     format("But they definitely can explode… so they're using Self-Destruct instead, right?")
 }
 text gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally {
-    format("Right. But Garbador doesn't learn that naturally. It can only be inherited from its parents, or taught via a Technical Machine.")
+    format("Right. But Garbodor doesn't learn that naturally. It can only be inherited from its parents, or taught via a Technical Machine.")
 }
 text gText_YouRealizeTheyreEvilRight_SoUsedATM {
     format("Okay, so Psfgoodteam used a TM… wait.")
@@ -477,7 +645,7 @@ text gText_YouRealizeTheyreEvilRight_VeryClever {
     format("Very clever, {PLAYER}! You realized that Haze can only be passed down from the Yamask family, and Yamask can't learn Self-Destruct. This Garbrador had to learn the move via TM.")
 }
 text gText_YouRealizeTheyreEvilRight_TheTipOff {
-    format("The tip-off is that this Garbador knows Haze.")
+    format("The tip-off is that this Garbodor knows Haze.")
 }
 text gText_YouRealizeTheyreEvilRight_So {
     format("…so?")
@@ -486,7 +654,7 @@ text gText_YouRealizeTheyreEvilRight_HazeCanOnly {
     format("Haze can only be passed down from the Yamask family, and Yamask can't learn Self-Destruct. This Garbrador had to learn the move via TM.")
 }
 text gText_YouRealizeTheyreEvilRight_IDontGetIt {
-    format("I don't get it then. So this Garbador was taught Self-Destruct. What does that mean?")
+    format("I don't get it then. So this Garbodor was taught Self-Destruct. What does that mean?")
 }
 text gText_YouRealizeTheyreEvilRight_HasBeenFramingYou {
     format("Psfnativerival… Psfbadguy has been framing you? ")
@@ -531,7 +699,7 @@ text gText_YouRealizeTheyreEvilRight_YeahOkay {
     format("Yeah… okay.")
 }
 text gText_YouRealizeTheyreEvilRight_ThisGarbodor {
-    format("Hey, this Garbador seems to have taken a liking to you, and you seem to understand it pretty well. Do you want it?")
+    format("Hey, this Garbodor seems to have taken a liking to you, and you seem to understand it pretty well. Do you want it?")
 }
 text gText_YouRealizeTheyreEvilRight_TakeGoodCare {
     format("Take good care of it.")
@@ -548,4 +716,34 @@ text gText_YouRealizeTheyreEvilRight_DoYouWantToGo {
 text gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat {
     format("…I have no idea what I'm going to do. Do I help Psfbadguy and the police end Psfgoodteam permanently? Or do I help Psfgoodteam clear their name and help the people of Psfregion1?")
 }
+text gText_YouRealizeTheyreEvilRight_ObtainedGift {
+    format("{PLAYER} was given the {STR_VAR_2}.")
+}
 
+movement YouRealizeTheyreEvilRight_StepBackward {
+    lock_facing_direction
+        walk_up
+        walk_in_place_down
+        unlock_facing_direction
+        step_end
+}
+
+movement YouRealizeTheyreEvilRight_WalkToGroup {
+    walk_right * 2
+        walk_up
+        step_end
+}
+
+movement YouRealizeTheyreEvilRight_WalkAroundToPlayer {
+    walk_left
+        walk_down * 2
+        face_right
+        step_end
+}
+
+movement YouRealizeTheyreEvilRight_ShowAffection {
+    emote_heart
+    jump_in_place_down
+    jump_in_place_down
+    step_end
+}

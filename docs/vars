@@ -1,3 +1,8 @@
+# VAR_PSFCAVE7_STATE
+3: Archer has asked to come to see real Alcatraz
+4: Player has arrived on island after seeing real Alcatraz
+5: Archer has explained they're being framed
+
 # VAR_ROUTE116_STATE
 **RELEVANCE**: Tracking state of Muir Woods
 
@@ -71,6 +76,8 @@
 33: Archer has talked to Zoey about restoration plans
 34: Finished one Restoration Quest
 35: Told by YC to stop helping TR
+36: Slept after being Told by TR to stop helping YC
+
 
 #VAR_ROUTE119_STATE
 1: Archer is about to apologize

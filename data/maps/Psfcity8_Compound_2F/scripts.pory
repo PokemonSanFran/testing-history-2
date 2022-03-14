@@ -11,13 +11,18 @@ script Swagbag_IncrementIntroState_Script {
 }
 
 script RestInBed_Script {
+    lockall
 
-    if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
-        setvar(VAR_LITTLEROOT_INTRO_STATE,5)
+        if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
+            setvar(VAR_LITTLEROOT_INTRO_STATE,5)
+        }
+
+    if (var(VAR_PSFCAVE7_STATE) == 3){
+        call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
     }
 
-    lockall
-        msgbox(gText_RestInBed_Text1)
+
+    msgbox(gText_RestInBed_Text1)
         closemessage
         call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
         fadescreen(FADE_TO_BLACK)
@@ -32,16 +37,17 @@ script RestInBed_Script {
 
 script RestInBed_Progression_Script {
     fadescreen(FADE_FROM_BLACK)
-    checkitem(ITEM_FASHION_CASE,1)
+        checkitem(ITEM_FASHION_CASE,1)
         if (var(VAR_RESULT) == 0 && var(VAR_LITTLEROOT_INTRO_STATE) == 5) {
             giveitem(ITEM_FASHION_CASE)
         }
 
     switch(var(VAR_STORYLINE_STATE)){
         case 9: call(RestInBed_FerryRepaired_Dialogue)
+        case 35: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
     }
     releaseall
-    end
+        end
 }
 script RestInBed_FerryRepaired_Dialogue {
     addvar(VAR_STORYLINE_STATE,1)
@@ -76,16 +82,16 @@ script RestInBed_StillBlack_Script {
 
 script WhyAreYouHelpingThem_StartChampionship_Dialogue {
     msgbox(gText_WhyAreYouHelpingThem_AreYouReadyToBegin,MSGBOX_YESNO)
-    
-    if (var(VAR_RESULT) == NO){
-        closemessage
-        fadescreen(FADE_FROM_BLACK)
-        releaseall
-        end
-    } else {
-        addvar(VAR_STORYLINE_STATE,1)
-        warpsilent(MAP_PSFPLACE14_LOCKERS,9,6)
-    }
+
+        if (var(VAR_RESULT) == NO){
+            closemessage
+                fadescreen(FADE_FROM_BLACK)
+                releaseall
+                end
+        } else {
+            addvar(VAR_STORYLINE_STATE,1)
+                warpsilent(MAP_PSFPLACE14_LOCKERS,9,6)
+        }
 }
 
 script FashionCaseReminder_Script {

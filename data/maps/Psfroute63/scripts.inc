@@ -213,7 +213,7 @@ HousingProtest_KatellTalkToCrowd_Dialogue::
 	applymovement 11, Common_Movement_FaceUp
 	waitmovement 0
 	playse SE_BALL_OPEN
-	waitfanfare
+	waitse
 	clearflag FLAG_HIDE_HOUSING_PROTEST_PKMN
 	addobject 13
 	playmoncry SPECIES_TURTONATOR, CRY_MODE_ENCOUNTER

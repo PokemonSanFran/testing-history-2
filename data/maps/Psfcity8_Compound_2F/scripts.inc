@@ -13,10 +13,13 @@ Swagbag_IncrementIntroState_Script::
 
 
 RestInBed_Script::
+	lockall
 	compare VAR_LITTLEROOT_INTRO_STATE, 4
 	goto_if_eq RestInBed_Script_2
 RestInBed_Script_1:
-	lockall
+	compare VAR_PSFCAVE7_STATE, 3
+	goto_if_eq RestInBed_Script_5
+RestInBed_Script_4:
 	msgbox gText_RestInBed_Text1
 	closemessage
 	call PlayersHouse_2F_EventScript_SetWallClock
@@ -33,6 +36,10 @@ RestInBed_Script_2:
 	setvar VAR_LITTLEROOT_INTRO_STATE, 5
 	goto RestInBed_Script_1
 
+RestInBed_Script_5:
+	call YouRealizeTheyreEvilRight_CantSleep_Dialogue
+	goto RestInBed_Script_4
+
 
 RestInBed_Progression_Script::
 	fadescreen FADE_FROM_BLACK
@@ -42,6 +49,7 @@ RestInBed_Progression_Script::
 RestInBed_Progression_Script_1:
 	switch VAR_STORYLINE_STATE
 	case 9, RestInBed_Progression_Script_8
+	case 35, RestInBed_Progression_Script_9
 RestInBed_Progression_Script_6:
 	releaseall
 	end
@@ -57,6 +65,10 @@ RestInBed_Progression_Script_3:
 
 RestInBed_Progression_Script_8:
 	call RestInBed_FerryRepaired_Dialogue
+	goto RestInBed_Progression_Script_6
+
+RestInBed_Progression_Script_9:
+	call YouRealizeTheyreEvilRight_NoIdea_Dialogue
 	goto RestInBed_Progression_Script_6
 
 
