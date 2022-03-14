@@ -1591,7 +1591,7 @@ static const u16 sSpeciesToNationalPokedexNum[NUM_SPECIES - 1] =
 };
 
 // Assigns all Hoenn Dex Indexes to a National Dex Index
-static const u16 sHoennToNationalOrder[NUM_SPECIES - 1] =
+static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
 {
     HOENN_TO_NATIONAL(TREECKO),
     HOENN_TO_NATIONAL(GROVYLE),
@@ -6635,17 +6635,6 @@ u16 HoennToNationalOrder(u16 hoennNum)
         return 0;
 
     return sHoennToNationalOrder[hoennNum - 1];
-}
-
-u16 SpeciesToCryId(u16 species)
-{
-    if (species <= SPECIES_CELEBI - 1)
-        return species;
-
-    if (species < SPECIES_TREECKO - 1)
-        return SPECIES_UNOWN - 1;
-
-    return gSpeciesIdToCryId[species - (SPECIES_TREECKO - 1)];
 }
 
 // Spots can be drawn on Spinda's color indexes 1, 2, or 3
