@@ -74,64 +74,34 @@ static u16 GetBattlerPokeballItemId(u8 battlerId);
 
 const struct CompressedSpriteSheet gBallSpriteSheets[POKEBALL_COUNT] =
 {
-    [BALL_POKE]    = {gInterfaceGfx_PokeBall,    384, GFX_TAG_POKEBALL},
-    [BALL_GREAT]   = {gInterfaceGfx_GreatBall,   384, GFX_TAG_GREATBALL},
-    [BALL_ULTRA]   = {gInterfaceGfx_UltraBall,   384, GFX_TAG_ULTRABALL},
-    [BALL_MASTER]  = {gInterfaceGfx_MasterBall,  384, GFX_TAG_MASTERBALL},
-    [BALL_PREMIER] = {gInterfaceGfx_PremierBall, 384, GFX_TAG_PREMIERBALL},
-    [BALL_HEAL]    = {gInterfaceGfx_HealBall,    384, GFX_TAG_HEALBALL},
-    [BALL_NET]     = {gInterfaceGfx_NetBall,     384, GFX_TAG_NETBALL},
-    [BALL_NEST]    = {gInterfaceGfx_NestBall,    384, GFX_TAG_NESTBALL},
-    [BALL_DIVE]    = {gInterfaceGfx_DiveBall,    384, GFX_TAG_DIVEBALL},
-    [BALL_DUSK]    = {gInterfaceGfx_DuskBall,    384, GFX_TAG_DUSKBALL},
-    [BALL_TIMER]   = {gInterfaceGfx_TimerBall,   384, GFX_TAG_TIMERBALL},
-    [BALL_QUICK]   = {gInterfaceGfx_QuickBall,   384, GFX_TAG_QUICKBALL},
-    [BALL_REPEAT]  = {gInterfaceGfx_RepeatBall,  384, GFX_TAG_REPEATBALL},
-    [BALL_LUXURY]  = {gInterfaceGfx_LuxuryBall,  384, GFX_TAG_LUXURYBALL},
-    [BALL_LEVEL]   = {gInterfaceGfx_LevelBall,   384, GFX_TAG_LEVELBALL},
-    [BALL_LURE]    = {gInterfaceGfx_LureBall,    384, GFX_TAG_LUREBALL},
-    [BALL_MOON]    = {gInterfaceGfx_MoonBall,    384, GFX_TAG_MOONBALL},
-    [BALL_FRIEND]  = {gInterfaceGfx_FriendBall,  384, GFX_TAG_FRIENDBALL},
-    [BALL_LOVE]    = {gInterfaceGfx_LoveBall,    384, GFX_TAG_LOVEBALL},
-    [BALL_FAST]    = {gInterfaceGfx_FastBall,    384, GFX_TAG_FASTBALL},
-    [BALL_HEAVY]   = {gInterfaceGfx_HeavyBall,   384, GFX_TAG_HEAVYBALL},
-    [BALL_DREAM]   = {gInterfaceGfx_DreamBall,   384, GFX_TAG_DREAMBALL},
-    [BALL_SAFARI]  = {gInterfaceGfx_SafariBall,  384, GFX_TAG_SAFARIBALL},
-    [BALL_SPORT]   = {gInterfaceGfx_SportBall,   384, GFX_TAG_SPORTBALL},
-    [BALL_PARK]    = {gInterfaceGfx_ParkBall,    384, GFX_TAG_PARKBALL},
-    [BALL_BEAST]   = {gInterfaceGfx_BeastBall,   384, GFX_TAG_BEASTBALL},
-    [BALL_CHERISH] = {gInterfaceGfx_CherishBall, 384, GFX_TAG_CHERISHBALL},
+    [BALL_POKE]    = {gBallGfx_Poke,    384, GFX_TAG_POKEBALL},
+    [BALL_GREAT]   = {gBallGfx_Great,   384, GFX_TAG_GREATBALL},
+    [BALL_SAFARI]  = {gBallGfx_Safari,  384, GFX_TAG_SAFARIBALL},
+    [BALL_ULTRA]   = {gBallGfx_Ultra,   384, GFX_TAG_ULTRABALL},
+    [BALL_MASTER]  = {gBallGfx_Master,  384, GFX_TAG_MASTERBALL},
+    [BALL_NET]     = {gBallGfx_Net,     384, GFX_TAG_NETBALL},
+    [BALL_DIVE]    = {gBallGfx_Dive,    384, GFX_TAG_DIVEBALL},
+    [BALL_NEST]    = {gBallGfx_Nest,    384, GFX_TAG_NESTBALL},
+    [BALL_REPEAT]  = {gBallGfx_Repeat,  384, GFX_TAG_REPEATBALL},
+    [BALL_TIMER]   = {gBallGfx_Timer,   384, GFX_TAG_TIMERBALL},
+    [BALL_LUXURY]  = {gBallGfx_Luxury,  384, GFX_TAG_LUXURYBALL},
+    [BALL_PREMIER] = {gBallGfx_Premier, 384, GFX_TAG_PREMIERBALL},
 };
 
 const struct CompressedSpritePalette gBallSpritePalettes[POKEBALL_COUNT] =
 {
-    [BALL_POKE]    = {gInterfacePal_PokeBall,    GFX_TAG_POKEBALL},
-    [BALL_GREAT]   = {gInterfacePal_GreatBall,   GFX_TAG_GREATBALL},
-    [BALL_ULTRA]   = {gInterfacePal_UltraBall,   GFX_TAG_ULTRABALL},
-    [BALL_MASTER]  = {gInterfacePal_MasterBall,  GFX_TAG_MASTERBALL},
-    [BALL_PREMIER] = {gInterfacePal_PremierBall, GFX_TAG_PREMIERBALL},
-    [BALL_HEAL]    = {gInterfacePal_HealBall,    GFX_TAG_HEALBALL},
-    [BALL_NET]     = {gInterfacePal_NetBall,     GFX_TAG_NETBALL},
-    [BALL_NEST]    = {gInterfacePal_NestBall,    GFX_TAG_NESTBALL},
-    [BALL_DIVE]    = {gInterfacePal_DiveBall,    GFX_TAG_DIVEBALL},
-    [BALL_DUSK]    = {gInterfacePal_DuskBall,    GFX_TAG_DUSKBALL},
-    [BALL_TIMER]   = {gInterfacePal_TimerBall,   GFX_TAG_TIMERBALL},
-    [BALL_QUICK]   = {gInterfacePal_QuickBall,   GFX_TAG_QUICKBALL},
-    [BALL_REPEAT]  = {gInterfacePal_RepeatBall,  GFX_TAG_REPEATBALL},
-    [BALL_LUXURY]  = {gInterfacePal_LuxuryBall,  GFX_TAG_LUXURYBALL},
-    [BALL_LEVEL]   = {gInterfacePal_LevelBall,   GFX_TAG_LEVELBALL},
-    [BALL_LURE]    = {gInterfacePal_LureBall,    GFX_TAG_LUREBALL},
-    [BALL_MOON]    = {gInterfacePal_MoonBall,    GFX_TAG_MOONBALL},
-    [BALL_FRIEND]  = {gInterfacePal_FriendBall,  GFX_TAG_FRIENDBALL},
-    [BALL_LOVE]    = {gInterfacePal_LoveBall,    GFX_TAG_LOVEBALL},
-    [BALL_FAST]    = {gInterfacePal_FastBall,    GFX_TAG_FASTBALL},
-    [BALL_HEAVY]   = {gInterfacePal_HeavyBall,   GFX_TAG_HEAVYBALL},
-    [BALL_DREAM]   = {gInterfacePal_DreamBall,   GFX_TAG_DREAMBALL},
-    [BALL_SAFARI]  = {gInterfacePal_SafariBall,  GFX_TAG_SAFARIBALL},
-    [BALL_SPORT]   = {gInterfacePal_SportBall,   GFX_TAG_SPORTBALL},
-    [BALL_PARK]    = {gInterfacePal_ParkBall,    GFX_TAG_PARKBALL},
-    [BALL_BEAST]   = {gInterfacePal_BeastBall,   GFX_TAG_BEASTBALL},
-    [BALL_CHERISH] = {gInterfacePal_CherishBall, GFX_TAG_CHERISHBALL},
+    [BALL_POKE]    = {gBallPal_Poke,    GFX_TAG_POKEBALL},
+    [BALL_GREAT]   = {gBallPal_Great,   GFX_TAG_GREATBALL},
+    [BALL_SAFARI]  = {gBallPal_Safari,  GFX_TAG_SAFARIBALL},
+    [BALL_ULTRA]   = {gBallPal_Ultra,   GFX_TAG_ULTRABALL},
+    [BALL_MASTER]  = {gBallPal_Master,  GFX_TAG_MASTERBALL},
+    [BALL_NET]     = {gBallPal_Net,     GFX_TAG_NETBALL},
+    [BALL_DIVE]    = {gBallPal_Dive,    GFX_TAG_DIVEBALL},
+    [BALL_NEST]    = {gBallPal_Nest,    GFX_TAG_NESTBALL},
+    [BALL_REPEAT]  = {gBallPal_Repeat,  GFX_TAG_REPEATBALL},
+    [BALL_TIMER]   = {gBallPal_Timer,   GFX_TAG_TIMERBALL},
+    [BALL_LUXURY]  = {gBallPal_Luxury,  GFX_TAG_LUXURYBALL},
+    [BALL_PREMIER] = {gBallPal_Premier, GFX_TAG_PREMIERBALL},
 };
 
 static const struct OamData sBallOamData =
@@ -249,6 +219,7 @@ static const union AffineAnimCmd *const sAffineAnim_BallRotate[] =
 
 const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
 {
+    [BALL_POKE] =
     {
         .tileTag = GFX_TAG_POKEBALL,
         .paletteTag = GFX_TAG_POKEBALL,
@@ -258,6 +229,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_GREAT] =
     {
         .tileTag = GFX_TAG_GREATBALL,
         .paletteTag = GFX_TAG_GREATBALL,
@@ -267,6 +239,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_SAFARI] =
     {
         .tileTag = GFX_TAG_ULTRABALL,
         .paletteTag = GFX_TAG_ULTRABALL,
@@ -276,6 +249,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_ULTRA] =
     {
         .tileTag = GFX_TAG_MASTERBALL,
         .paletteTag = GFX_TAG_MASTERBALL,
@@ -285,6 +259,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_MASTER] =
     {
         .tileTag = GFX_TAG_PREMIERBALL,
         .paletteTag = GFX_TAG_PREMIERBALL,
@@ -294,6 +269,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_NET] =
     {
         .tileTag = GFX_TAG_HEALBALL,
         .paletteTag = GFX_TAG_HEALBALL,
@@ -303,6 +279,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_DIVE] =
     {
         .tileTag = GFX_TAG_NETBALL,
         .paletteTag = GFX_TAG_NETBALL,
@@ -312,6 +289,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_NEST] =
     {
         .tileTag = GFX_TAG_NESTBALL,
         .paletteTag = GFX_TAG_NESTBALL,
@@ -321,6 +299,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_REPEAT] =
     {
         .tileTag = GFX_TAG_DIVEBALL,
         .paletteTag = GFX_TAG_DIVEBALL,
@@ -339,6 +318,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_TIMER] =
     {
         .tileTag = GFX_TAG_TIMERBALL,
         .paletteTag = GFX_TAG_TIMERBALL,
@@ -348,6 +328,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_LUXURY] =
     {
         .tileTag = GFX_TAG_QUICKBALL,
         .paletteTag = GFX_TAG_QUICKBALL,
@@ -375,6 +356,7 @@ const struct SpriteTemplate gBallSpriteTemplates[POKEBALL_COUNT] =
         .affineAnims = sAffineAnim_BallRotate,
         .callback = SpriteCB_BallThrow,
     },
+    [BALL_PREMIER] =
     {
         .tileTag = GFX_TAG_LEVELBALL,
         .paletteTag = GFX_TAG_LEVELBALL,

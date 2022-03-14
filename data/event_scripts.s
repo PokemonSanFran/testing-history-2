@@ -61,8 +61,7 @@
 
 .section script_data, "aw", %progbits
 
-@ 81DB67C
-.include "data/script_cmd_table.inc"
+	.include "data/script_cmd_table.inc"
 
 gSpecialVars::
 .4byte gSpecialVar_0x8000

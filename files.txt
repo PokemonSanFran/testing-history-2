@@ -1,514 +1,478 @@
-Makefile
-asm/macros/battle_ai_script.inc
-asm/macros/battle_anim_script.inc
-asm/macros/battle_script.inc
-asm/macros/battle_tent.inc
-asm/macros/event.inc
-asm/macros/map.inc
-asm/macros/movement.inc
-asm/macros/music_voice.inc
-asm/rom_header.inc
-charmap.txt
-common_syms/bg.txt
-common_syms/ereader_screen.txt
-common_syms/link_rfu_2.txt
-common_syms/save.txt
-data/battle_anim_scripts.s
-data/battle_scripts_1.s
-data/battle_scripts_2.s
-data/contest_ai_scripts.s
-data/event_scripts.s
-data/field_effect_scripts.s
-data/layouts/layouts.json
-data/script_cmd_table.inc
-data/specials.inc
-data/text/apprentice.inc
-data/text/battle_dome.inc
-data/text/battle_tent.inc
-data/text/birch_speech.inc
-data/text/blend_master.inc
-data/text/braille.inc
-data/text/cable_club.inc
-data/text/check_furniture.inc
-data/text/contest_link.inc
-data/text/contest_painting.inc
-data/text/contest_strings.inc
-data/text/event_ticket_1.inc
-data/text/event_ticket_2.inc
-data/text/frontier_brain.inc
-data/text/lottery_corner.inc
-data/text/match_call.inc
-data/text/mauville_man.inc
-data/text/move_tutors.inc
-data/text/obtain_item.inc
-data/text/pc.inc
-data/text/pc_transfer.inc
-data/text/pkmn_center_nurse.inc
-data/text/pokedex_rating.inc
-data/text/pokemon_news.inc
-data/text/record_mix.inc
-data/text/save.inc
-data/text/shoal_cave.inc
-data/text/surf.inc
-data/text/trainers.inc
-data/text/trick_house_mechadolls.inc
-gflib/bg.c
-gflib/bg.h
-gflib/io_reg.c
-gflib/malloc.c
-gflib/sprite.c
-gflib/sprite.h
-gflib/string_util.c
-gflib/string_util.h
-gflib/text.c
-gflib/text.h
-gflib/window.c
-gflib/window.h
-include/AgbRfu_LinkManager.h
-include/battle.h
-include/battle_ai_util.h
-include/battle_anim.h
-include/battle_arena.h
-include/battle_controllers.h
-include/battle_gfx_sfx_util.h
-include/battle_interface.h
-include/battle_main.h
-include/battle_message.h
-include/battle_pyramid_bag.h
-include/battle_script_commands.h
-include/battle_scripts.h
-include/battle_transition.h
-include/battle_transition_frontier.h
-include/battle_util.h
-include/battle_util2.h
-include/bike.h
-include/constants/battle.h
-include/constants/battle_anim.h
-include/constants/battle_config.h
-include/constants/battle_dome.h
-include/constants/battle_frontier.h
-include/constants/battle_frontier_trainers.h
-include/constants/battle_move_effects.h
-include/constants/battle_pyramid.h
-include/constants/battle_script_commands.h
-include/constants/battle_string_ids.h
-include/constants/contest.h
-include/constants/event_object_movement.h
-include/constants/event_objects.h
-include/constants/field_effects.h
-include/constants/field_specials.h
-include/constants/flags.h
-include/constants/global.h
-include/constants/heal_locations.h
-include/constants/hold_effects.h
-include/constants/item_config.h
-include/constants/item_effects.h
-include/constants/items.h
-include/constants/layouts.h
-include/constants/lilycove_lady.h
-include/constants/map_groups.h
-include/constants/map_scripts.h
-include/constants/maps.h
-include/constants/metatile_behaviors.h
-include/constants/metatile_labels.h
-include/constants/opponents.h
-include/constants/party_menu.h
-include/constants/pokemon.h
-include/constants/pokemon_config.h
-include/constants/region_map_sections.h
-include/constants/script_menu.h
-include/constants/slot_machine.h
-include/constants/songs.h
-include/constants/trainers.h
-include/constants/tv.h
-include/constants/union_room.h
-include/constants/vars.h
-include/constants/weather.h
-include/contest.h
-include/crt0.h
-include/data.h
-include/daycare.h
-include/ereader_helpers.h
-include/ereader_screen.h
-include/event_data.h
-include/event_object_lock.h
-include/event_object_movement.h
-include/event_scripts.h
-include/field_camera.h
-include/field_control_avatar.h
-include/field_player_avatar.h
-include/field_screen_effect.h
-include/field_special_scene.h
-include/field_specials.h
-include/field_weather.h
-include/fieldmap.h
-include/fldeff.h
-include/gba/defines.h
-include/gba/io_reg.h
-include/gba/m4a_internal.h
-include/gba/types.h
-include/global.fieldmap.h
-include/global.h
-include/global.tv.h
-include/graphics.h
-include/gym_leader_rematch.h
-include/international_string_util.h
-include/item.h
-include/librfu.h
-include/link.h
-include/link_rfu.h
-include/load_save.h
-include/mail.h
-include/main.h
-include/main_menu.h
-include/mauville_old_man.h
-include/menu.h
-include/menu_helpers.h
-include/menu_specialized.h
-include/metatile_behavior.h
-include/mystery_event_msg.h
-include/mystery_event_script.h
-include/mystery_gift.h
-include/overworld.h
-include/palette.h
-include/palette_util.h
-include/pokeball.h
-include/pokedex_area_region_map.h
-include/pokemon.h
-include/pokemon_icon.h
-include/pokemon_storage_system.h
-include/pokenav.h
-include/record_mixing.h
-include/recorded_battle.h
-include/save.h
-include/script_menu.h
-include/script_pokemon_util.h
-include/sound.h
-include/strings.h
-include/text_window.h
-include/trade.h
-include/trainer_card.h
-include/trainer_hill.h
-include/trainer_pokemon_sprites.h
-include/tv.h
-include/union_room.h
-include/union_room_player_avatar.h
-include/walda_phrase.h
-include/wild_encounter.h
-ld_script.txt
-ld_script_modern.txt
-src/apprentice.c
-src/battle_ai_main.c
-src/battle_ai_switch_items.c
-src/battle_ai_util.c
-src/battle_anim.c
-src/battle_anim_bug.c
-src/battle_anim_dark.c
-src/battle_anim_dragon.c
-src/battle_anim_effects_1.c
-src/battle_anim_effects_2.c
-src/battle_anim_effects_3.c
-src/battle_anim_electric.c
-src/battle_anim_fight.c
-src/battle_anim_fire.c
-src/battle_anim_flying.c
-src/battle_anim_ghost.c
-src/battle_anim_ground.c
-src/battle_anim_ice.c
-src/battle_anim_mon_movement.c
-src/battle_anim_mons.c
-src/battle_anim_new.c
-src/battle_anim_normal.c
-src/battle_anim_poison.c
-src/battle_anim_psychic.c
-src/battle_anim_rock.c
-src/battle_anim_smokescreen.c
-src/battle_anim_sound_tasks.c
-src/battle_anim_status_effects.c
-src/battle_anim_throw.c
-src/battle_anim_utility_funcs.c
-src/battle_anim_water.c
-src/battle_arena.c
-src/battle_bg.c
-src/battle_controller_link_opponent.c
-src/battle_controller_link_partner.c
-src/battle_controller_opponent.c
-src/battle_controller_player.c
-src/battle_controller_player_partner.c
-src/battle_controller_recorded_opponent.c
-src/battle_controller_recorded_player.c
-src/battle_controller_safari.c
-src/battle_controller_wally.c
-src/battle_controllers.c
-src/battle_debug.c
-src/battle_dome.c
-src/battle_factory.c
-src/battle_factory_screen.c
-src/battle_gfx_sfx_util.c
-src/battle_interface.c
-src/battle_intro.c
-src/battle_main.c
-src/battle_message.c
-src/battle_palace.c
-src/battle_pyramid.c
-src/battle_pyramid_bag.c
-src/battle_records.c
-src/battle_script_commands.c
-src/battle_setup.c
-src/battle_tent.c
-src/battle_tower.c
-src/battle_transition.c
-src/battle_transition_frontier.c
-src/battle_tv.c
-src/battle_util.c
-src/battle_util2.c
-src/berry.c
-src/berry_blender.c
-src/berry_crush.c
-src/berry_fix_program.c
-src/berry_powder.c
-src/berry_tag_screen.c
-src/bike.c
-src/braille_puzzles.c
-src/cable_car.c
-src/cable_club.c
-src/clear_save_data_screen.c
-src/coins.c
-src/confetti_util.c
-src/contest.c
-src/contest_ai.c
-src/contest_link.c
-src/contest_link_util.c
-src/contest_painting.c
-src/contest_util.c
-src/credits.c
-src/crt0.s
-src/data/battle_frontier/apprentice.h
-src/data/battle_frontier/battle_frontier_exchange_corner.h
-src/data/battle_frontier/battle_frontier_mons.h
-src/data/battle_frontier/battle_frontier_trainer_mons.h
-src/data/battle_frontier/battle_frontier_trainers.h
-src/data/battle_frontier/battle_tent.h
-src/data/battle_frontier/trainer_hill.h
-src/data/battle_moves.h
-src/data/contest_moves.h
-src/data/contest_opponents.h
-src/data/contest_text_tables.h
-src/data/credits.h
-src/data/decoration/description.h
-src/data/decoration/header.h
-src/data/decoration/icon.h
-src/data/easy_chat/easy_chat_group_actions.h
-src/data/easy_chat/easy_chat_group_adjectives.h
-src/data/easy_chat/easy_chat_group_battle.h
-src/data/easy_chat/easy_chat_group_conditions.h
-src/data/easy_chat/easy_chat_group_endings.h
-src/data/easy_chat/easy_chat_group_events.h
-src/data/easy_chat/easy_chat_group_feelings.h
-src/data/easy_chat/easy_chat_group_greetings.h
-src/data/easy_chat/easy_chat_group_hobbies.h
-src/data/easy_chat/easy_chat_group_lifestyle.h
-src/data/easy_chat/easy_chat_group_misc.h
-src/data/easy_chat/easy_chat_group_people.h
-src/data/easy_chat/easy_chat_group_speech.h
-src/data/easy_chat/easy_chat_group_status.h
-src/data/easy_chat/easy_chat_group_time.h
-src/data/easy_chat/easy_chat_group_trainer.h
-src/data/easy_chat/easy_chat_group_trendy_saying.h
-src/data/easy_chat/easy_chat_group_voices.h
-src/data/field_effects/field_effect_objects.h
-src/data/graphics/berries.h
-src/data/graphics/interface_pokeballs.h
-src/data/graphics/items.h
-src/data/graphics/pokemon.h
-src/data/graphics/rayquaza_scene.h
-src/data/heal_locations.h
-src/data/item_icon_table.h
-src/data/items.h
-src/data/lilycove_lady.h
-src/data/object_events/berry_tree_graphics_tables.h
-src/data/object_events/movement_action_func_tables.h
-src/data/object_events/movement_type_func_tables.h
-src/data/object_events/object_event_anims.h
-src/data/object_events/object_event_graphics.h
-src/data/object_events/object_event_graphics_info.h
-src/data/object_events/object_event_graphics_info_pointers.h
-src/data/object_events/object_event_pic_tables.h
-src/data/object_events/object_event_subsprites.h
-src/data/party_menu.h
-src/data/pokemon/base_stats.h
-src/data/pokemon/egg_moves.h
-src/data/pokemon/evolution.h
-src/data/pokemon/form_change_tables.h
-src/data/pokemon/item_effects.h
-src/data/pokemon/tmhm_learnsets.h
-src/data/pokemon/trainer_class_lookups.h
-src/data/pokemon_graphics/back_pic_coordinates.h
-src/data/pokemon_graphics/front_pic_coordinates.h
-src/data/region_map/city_map_entries.h
-src/data/region_map/region_map_entries.h
-src/data/script_menu.h
-src/data/text/gift_ribbon_descriptions.h
-src/data/text/item_descriptions.h
-src/data/text/match_call_messages.h
-src/data/text/move_descriptions.h
-src/data/text/nature_names.h
-src/data/text/ribbon_descriptions.h
-src/data/text/trainer_class_names.h
-src/data/trade.h
-src/data/trainer_parties.h
-src/data/trainers.h
-src/data/union_room.h
-src/data/wild_encounters.json
-src/daycare.c
-src/decompress.c
-src/decoration.c
-src/dewford_trend.c
-src/diploma.c
-src/dodrio_berry_picking.c
-src/easy_chat.c
-src/egg_hatch.c
-src/ereader_helpers.c
-src/ereader_screen.c
-src/event_data.c
-src/event_object_lock.c
-src/event_object_movement.c
-src/evolution_scene.c
-src/faraway_island.c
-src/field_camera.c
-src/field_control_avatar.c
-src/field_door.c
-src/field_effect.c
-src/field_effect_helpers.c
-src/field_message_box.c
-src/field_player_avatar.c
-src/field_poison.c
-src/field_region_map.c
-src/field_screen_effect.c
-src/field_special_scene.c
-src/field_specials.c
-src/field_tasks.c
-src/field_weather.c
-src/field_weather_effect.c
-src/fieldmap.c
-src/fldeff_cut.c
-src/fldeff_escalator.c
-src/fldeff_misc.c
-src/fldeff_rocksmash.c
-src/frontier_pass.c
-src/frontier_util.c
-src/graphics.c
-src/hall_of_fame.c
-src/heal_location.c
-src/image_processing_effects.c
-src/international_string_util.c
-src/intro.c
-src/intro_credits_graphics.c
-src/item.c
-src/item_menu.c
-src/item_menu_icons.c
-src/item_use.c
-src/landmark.c
-src/libgcnmultiboot.s
-src/libisagbprn.c
-src/librfu_intr.c
-src/librfu_rfu.c
-src/librfu_stwi.c
-src/lilycove_lady.c
-src/link.c
-src/link_rfu_2.c
-src/link_rfu_3.c
-src/list_menu.c
-src/load_save.c
-src/lottery_corner.c
-src/m4a_1.s
-src/mail.c
-src/mail_data.c
-src/main.c
-src/main_menu.c
-src/map_name_popup.c
-src/match_call.c
-src/mauville_old_man.c
-src/menu.c
-src/menu_helpers.c
-src/menu_specialized.c
-src/metatile_behavior.c
-src/minigame_countdown.c
-src/mirage_tower.c
-src/money.c
-src/move_relearner.c
-src/multiboot.c
-src/mystery_event_menu.c
-src/mystery_event_msg.c
-src/mystery_event_script.c
-src/mystery_gift.c
-src/naming_screen.c
-src/new_game.c
-src/option_menu.c
-src/overworld.c
-src/palette.c
-src/palette_util.c
-src/party_menu.c
-src/player_pc.c
-src/pokeball.c
-src/pokeblock.c
-src/pokeblock_feed.c
-src/pokedex.c
-src/pokedex_area_region_map.c
-src/pokedex_area_screen.c
-src/pokedex_cry_screen.c
-src/pokemon.c
-src/pokemon_animation.c
-src/pokemon_icon.c
-src/pokemon_jump.c
-src/pokemon_storage_system.c
-src/pokemon_summary_screen.c
-src/pokenav.c
-src/pokenav_main_menu.c
-src/pokenav_match_call_data.c
-src/pokenav_region_map.c
-src/post_battle_event_funcs.c
-src/rayquaza_scene.c
-src/record_mixing.c
-src/recorded_battle.c
-src/region_map.c
-src/reset_rtc_screen.c
-src/reshow_battle_screen.c
-src/roamer.c
-src/rotating_gate.c
-src/rotating_tile_puzzle.c
-src/roulette.c
-src/save.c
-src/save_failed_screen.c
-src/save_location.c
-src/scrcmd.c
-src/script.c
-src/script_menu.c
-src/script_movement.c
-src/script_pokemon_util.c
-src/secret_base.c
-src/shop.c
-src/slot_machine.c
-src/sound.c
-src/start_menu.c
-src/starter_choose.c
-src/strings.c
-src/text_window.c
-src/tileset_anims.c
-src/title_screen.c
-src/trade.c
-src/trader.c
-src/trainer_card.c
-src/trainer_hill.c
-src/trainer_pokemon_sprites.c
-src/trainer_see.c
-src/tv.c
-src/union_room.c
-src/union_room_battle.c
-src/union_room_chat.c
-src/union_room_player_avatar.c
-src/use_pokeblock.c
-src/walda_phrase.c
-src/wallclock.c
-src/wild_encounter.c
-src/wireless_communication_status_screen.c
+On branch default
+Your branch is ahead of 'origin/default' by 3 commits.
+  (use "git push" to publish your local commits)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+	modified:   .gitignore
+	modified:   INSTALL.md
+	modified:   asm/macros/asm.inc
+	modified:   asm/macros/event.inc
+	modified:   asm/macros/field_effect_script.inc
+	modified:   asm/macros/function.inc
+	modified:   asm/macros/m4a.inc
+	deleted:    asm/macros/pokemon_data.inc
+	deleted:    asm/macros/window.inc
+	modified:   charmap.txt
+	modified:   common_syms/overworld.txt
+	modified:   data/battle_anim_scripts.s
+	deleted:    data/ereader_link_data.s
+	modified:   data/map_events.s
+	modified:   data/maps.s
+	modified:   data/maps/AncientTomb/scripts.inc
+	modified:   data/maps/AquaHideout_B1F/scripts.inc
+	modified:   data/maps/BattleFrontier_BattlePikeLobby/scripts.inc
+	modified:   data/maps/BattleFrontier_BattlePikeRoomNormal/scripts.inc
+	modified:   data/maps/BattleFrontier_OutsideEast/scripts.inc
+	modified:   data/maps/BirthIsland_Exterior/scripts.inc
+	modified:   data/maps/DesertRuins/scripts.inc
+	modified:   data/maps/FarawayIsland_Interior/scripts.inc
+	modified:   data/maps/IslandCave/scripts.inc
+	modified:   data/maps/LavaridgeTown_Gym_1F/scripts.inc
+	modified:   data/maps/LittlerootTown_BrendansHouse_2F/scripts.inc
+	modified:   data/maps/LittlerootTown_MaysHouse_2F/scripts.inc
+	modified:   data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc
+	modified:   data/maps/MarineCave_End/scripts.inc
+	modified:   data/maps/MossdeepCity_StevensHouse/scripts.inc
+	modified:   data/maps/MtPyre_3F/scripts.inc
+	modified:   data/maps/NavelRock_Bottom/scripts.inc
+	modified:   data/maps/NavelRock_Top/scripts.inc
+	modified:   data/maps/NewMauville_Inside/scripts.inc
+	modified:   data/maps/Route119_WeatherInstitute_2F/scripts.inc
+	modified:   data/maps/Route120/scripts.inc
+	modified:   data/maps/RustboroCity_DevonCorp_2F/scripts.inc
+	modified:   data/maps/SecretBase_BlueCave1/map.json
+	modified:   data/maps/SecretBase_BlueCave2/map.json
+	modified:   data/maps/SecretBase_BlueCave3/map.json
+	modified:   data/maps/SecretBase_BlueCave4/map.json
+	modified:   data/maps/SecretBase_BrownCave1/map.json
+	modified:   data/maps/SecretBase_BrownCave2/map.json
+	modified:   data/maps/SecretBase_BrownCave3/map.json
+	modified:   data/maps/SecretBase_BrownCave4/map.json
+	modified:   data/maps/SecretBase_RedCave1/map.json
+	modified:   data/maps/SecretBase_RedCave2/map.json
+	modified:   data/maps/SecretBase_RedCave3/map.json
+	modified:   data/maps/SecretBase_RedCave4/map.json
+	modified:   data/maps/SecretBase_Shrub1/map.json
+	modified:   data/maps/SecretBase_Shrub2/map.json
+	modified:   data/maps/SecretBase_Shrub3/map.json
+	modified:   data/maps/SecretBase_Shrub4/map.json
+	modified:   data/maps/SecretBase_Tree1/map.json
+	modified:   data/maps/SecretBase_Tree2/map.json
+	modified:   data/maps/SecretBase_Tree3/map.json
+	modified:   data/maps/SecretBase_Tree4/map.json
+	modified:   data/maps/SecretBase_YellowCave1/map.json
+	modified:   data/maps/SecretBase_YellowCave2/map.json
+	modified:   data/maps/SecretBase_YellowCave3/map.json
+	modified:   data/maps/SecretBase_YellowCave4/map.json
+	modified:   data/maps/SkyPillar_Top/scripts.inc
+	modified:   data/maps/SouthernIsland_Interior/scripts.inc
+	modified:   data/maps/TerraCave_End/scripts.inc
+	new file:   data/mb_berry_fix.gba
+	renamed:    data/pokemon_colosseum.mb -> data/mb_colosseum.gba
+	renamed:    data/ereader_link_data.bin -> data/mb_ereader.gba
+	new file:   data/multiboot_ereader.s
+	modified:   data/multiboot_pokemon_colosseum.s
+	modified:   data/mystery_gift.s
+	modified:   data/script_cmd_table.inc
+	modified:   data/scripts/gift_altering_cave.inc
+	modified:   data/scripts/kecleon.inc
+	modified:   data/scripts/pc.inc
+	modified:   data/scripts/secret_base.inc
+	modified:   data/tilesets/secondary/battle_frontier_outside_east/anim/flag/0.png
+	modified:   data/tilesets/secondary/battle_frontier_outside_east/anim/flag/1.png
+	modified:   data/tilesets/secondary/battle_frontier_outside_east/anim/flag/2.png
+	modified:   data/tilesets/secondary/battle_frontier_outside_east/anim/flag/3.png
+	modified:   data/tilesets/secondary/battle_frontier_outside_west/anim/flag/0.png
+	modified:   data/tilesets/secondary/battle_frontier_outside_west/anim/flag/1.png
+	modified:   data/tilesets/secondary/battle_frontier_outside_west/anim/flag/2.png
+	modified:   data/tilesets/secondary/battle_frontier_outside_west/anim/flag/3.png
+	modified:   data/tilesets/secondary/ever_grande/anim/flowers/0.png
+	modified:   data/tilesets/secondary/ever_grande/anim/flowers/1.png
+	modified:   data/tilesets/secondary/ever_grande/anim/flowers/2.png
+	modified:   data/tilesets/secondary/ever_grande/anim/flowers/3.png
+	modified:   data/tilesets/secondary/ever_grande/anim/flowers/4.png
+	modified:   data/tilesets/secondary/ever_grande/anim/flowers/5.png
+	modified:   data/tilesets/secondary/ever_grande/anim/flowers/6.png
+	modified:   data/tilesets/secondary/ever_grande/anim/flowers/7.png
+	modified:   gflib/bg.c
+	modified:   gflib/bg.h
+	renamed:    graphics/misc/bag.pal -> graphics/bag/bag.pal
+	renamed:    graphics/misc/bag_female.png -> graphics/bag/bag_female.png
+	renamed:    graphics/misc/bag_male.png -> graphics/bag/bag_male.png
+	renamed:    graphics/interface/bag_pyramid.pal -> graphics/bag/bag_pyramid.pal
+	renamed:    graphics/interface/bag_pyramid.png -> graphics/bag/bag_pyramid.png
+	renamed:    graphics/interface/berry_tag.bin -> graphics/bag/berry_tag.bin
+	renamed:    graphics/interface/berry_tag_screen.pal -> graphics/bag/berry_tag_screen.pal
+	renamed:    graphics/interface/berry_tag_title.bin -> graphics/bag/berry_tag_title.bin
+	renamed:    graphics/interface/check_berry.pal -> graphics/bag/check_berry.pal
+	renamed:    graphics/interface/check_berry.png -> graphics/bag/check_berry.png
+	renamed:    graphics/interface/check_berry_circle.png -> graphics/bag/check_berry_circle.png
+	renamed:    graphics/interface/hm.png -> graphics/bag/hm.png
+	renamed:    graphics/interface/bag_screen_tilemap.bin -> graphics/bag/menu.bin
+	renamed:    graphics/interface/bag_screen.png -> graphics/bag/menu.png
+	renamed:    graphics/interface/bag_screen_female.pal -> graphics/bag/menu_female.pal
+	renamed:    graphics/interface/bag_screen_male.pal -> graphics/bag/menu_male.pal
+	renamed:    graphics/interface/bag_pyramid_tilemap.bin -> graphics/bag/menu_pyramid.bin
+	renamed:    graphics/interface/bag_pyramid_interface.pal -> graphics/bag/menu_pyramid.pal
+	renamed:    graphics/interface/bag_spinner.png -> graphics/bag/rotating_ball.png
+	renamed:    graphics/interface/select_button.png -> graphics/bag/select_button.png
+	renamed:    graphics/interface/ball/dive.png -> graphics/balls/dive.png
+	renamed:    graphics/interface/ball/great.png -> graphics/balls/great.png
+	renamed:    graphics/interface/ball/luxury.png -> graphics/balls/luxury.png
+	renamed:    graphics/interface/ball/master.png -> graphics/balls/master.png
+	renamed:    graphics/interface/ball/nest.png -> graphics/balls/nest.png
+	renamed:    graphics/interface/ball/net.png -> graphics/balls/net.png
+	renamed:    graphics/interface/ball_open.png -> graphics/balls/open.png
+	renamed:    graphics/interface/ball/poke.png -> graphics/balls/poke.png
+	renamed:    graphics/interface/ball/premier.png -> graphics/balls/premier.png
+	renamed:    graphics/interface/ball/repeat.png -> graphics/balls/repeat.png
+	renamed:    graphics/interface/ball/safari.png -> graphics/balls/safari.png
+	renamed:    graphics/interface/ball/timer.png -> graphics/balls/timer.png
+	renamed:    graphics/interface/ball/ultra.png -> graphics/balls/ultra.png
+	renamed:    graphics/battle_frontier/tourney_line_mask_map.bin -> graphics/battle_frontier/tourney_tree.bin
+	renamed:    graphics/battle_frontier/tourney_bg.png -> graphics/battle_frontier/tourney_tree.png
+	renamed:    graphics/interface/hpbar_anim.png -> graphics/battle_interface/hpbar_anim_unused.png
+	renamed:    graphics/interface/party_menu_hpbar.png -> graphics/battle_interface/hpbar_unused.png
+	renamed:    graphics/interface/numbers1.png -> graphics/battle_interface/numbers1.png
+	renamed:    graphics/interface/numbers2.png -> graphics/battle_interface/numbers2.png
+	renamed:    graphics/battle_frontier/text_pp.pal -> graphics/battle_interface/text_pp.pal
+	renamed:    graphics/berry_crush/crusher.bin -> graphics/berry_crush/text_windows.bin
+	renamed:    graphics/unused/intro_birch_beauty.png -> graphics/birch_speech/unused_beauty.png
+	renamed:    graphics/misc/cave_transition_black.pal -> graphics/cave_transition/black.pal
+	renamed:    graphics/misc/cave_transition_enter.pal -> graphics/cave_transition/enter.pal
+	renamed:    graphics/misc/cave_transition_exit.pal -> graphics/cave_transition/exit.pal
+	renamed:    graphics/misc/cave_transition_map.bin -> graphics/cave_transition/tilemap.bin
+	renamed:    graphics/misc/cave_transition.png -> graphics/cave_transition/tiles.png
+	renamed:    graphics/misc/cave_transition_white.pal -> graphics/cave_transition/white.pal
+	renamed:    graphics/contest/unused_tilemap_2.bin -> graphics/contest/japanese/audience.bin
+	renamed:    graphics/contest/japanese/tilemap_1.bin -> graphics/contest/japanese/bg.bin
+	renamed:    graphics/contest/unused_tilemap_1.bin -> graphics/contest/japanese/interface.bin
+	renamed:    graphics/contest/japanese/tilemap_2.bin -> graphics/contest/japanese/windows.bin
+	renamed:    graphics/misc/decoration_putting_away_cursor.png -> graphics/decorations/put_away_cursor.png
+	renamed:    graphics/misc/diploma_hoenn.pal -> graphics/diploma/hoenn.pal
+	renamed:    graphics/misc/diploma_national.pal -> graphics/diploma/national.pal
+	renamed:    graphics/misc/diploma_map.bin -> graphics/diploma/tilemap.bin
+	renamed:    graphics/misc/diploma.png -> graphics/diploma/tiles.png
+	renamed:    graphics/misc/deoxys1.pal -> graphics/field_effects/palettes/deoxys_rock_1.pal
+	renamed:    graphics/misc/deoxys10.pal -> graphics/field_effects/palettes/deoxys_rock_10.pal
+	renamed:    graphics/misc/deoxys11.pal -> graphics/field_effects/palettes/deoxys_rock_11.pal
+	renamed:    graphics/misc/deoxys2.pal -> graphics/field_effects/palettes/deoxys_rock_2.pal
+	renamed:    graphics/misc/deoxys3.pal -> graphics/field_effects/palettes/deoxys_rock_3.pal
+	renamed:    graphics/misc/deoxys4.pal -> graphics/field_effects/palettes/deoxys_rock_4.pal
+	renamed:    graphics/misc/deoxys5.pal -> graphics/field_effects/palettes/deoxys_rock_5.pal
+	renamed:    graphics/misc/deoxys6.pal -> graphics/field_effects/palettes/deoxys_rock_6.pal
+	renamed:    graphics/misc/deoxys7.pal -> graphics/field_effects/palettes/deoxys_rock_7.pal
+	renamed:    graphics/misc/deoxys8.pal -> graphics/field_effects/palettes/deoxys_rock_8.pal
+	renamed:    graphics/misc/deoxys9.pal -> graphics/field_effects/palettes/deoxys_rock_9.pal
+	new file:   graphics/field_effects/pics/deoxys_rock_fragment_bottom_left.png
+	new file:   graphics/field_effects/pics/deoxys_rock_fragment_bottom_right.png
+	new file:   graphics/field_effects/pics/deoxys_rock_fragment_top_left.png
+	new file:   graphics/field_effects/pics/deoxys_rock_fragment_top_right.png
+	new file:   graphics/field_effects/pics/emotion_exclamation.png
+	new file:   graphics/field_effects/pics/emotion_heart.png
+	new file:   graphics/field_effects/pics/emotion_question.png
+	renamed:    graphics/misc/field_move_streaks_map.bin -> graphics/field_effects/pics/field_move_streaks.bin
+	renamed:    graphics/misc/field_move_streaks.png -> graphics/field_effects/pics/field_move_streaks.png
+	renamed:    graphics/misc/darkness_field_move_streaks_map.bin -> graphics/field_effects/pics/field_move_streaks_indoors.bin
+	renamed:    graphics/misc/darkness_field_move_streaks.png -> graphics/field_effects/pics/field_move_streaks_indoors.png
+	new file:   graphics/field_effects/pics/hof_monitor_big.png
+	new file:   graphics/field_effects/pics/hof_monitor_small.png
+	new file:   graphics/field_effects/pics/pokeball_glow.png
+	renamed:    graphics/misc/pokecenter_monitor/0.png -> graphics/field_effects/pics/pokecenter_monitor/0.png
+	renamed:    graphics/misc/pokecenter_monitor/1.png -> graphics/field_effects/pics/pokecenter_monitor/1.png
+	renamed:    graphics/misc/spotlight.png -> graphics/field_effects/pics/spotlight.png
+	renamed:    graphics/frontier_pass/unused.bin -> graphics/frontier_pass/card_ball_filled.bin
+	deleted:    graphics/interface/ball/beast.png
+	deleted:    graphics/interface/ball/cherish.png
+	deleted:    graphics/interface/ball/dream.png
+	deleted:    graphics/interface/ball/dusk.png
+	deleted:    graphics/interface/ball/fast.png
+	deleted:    graphics/interface/ball/friend.png
+	deleted:    graphics/interface/ball/heal.png
+	deleted:    graphics/interface/ball/heavy.png
+	deleted:    graphics/interface/ball/level.png
+	deleted:    graphics/interface/ball/love.png
+	deleted:    graphics/interface/ball/lure.png
+	deleted:    graphics/interface/ball/moon.png
+	deleted:    graphics/interface/ball/park.png
+	deleted:    graphics/interface/ball/particles2.png
+	deleted:    graphics/interface/ball/quick.png
+	deleted:    graphics/interface/ball/sport.png
+	renamed:    graphics/misc/main_menu_bg.pal -> graphics/interface/main_menu_bg.pal
+	renamed:    graphics/misc/main_menu_text.pal -> graphics/interface/main_menu_text.pal
+	renamed:    graphics/misc/mon_markings.png -> graphics/interface/mon_markings.png
+	renamed:    graphics/misc/mon_markings_menu.png -> graphics/interface/mon_markings_menu.png
+	renamed:    graphics/misc/option_menu_equals_sign.png -> graphics/interface/option_menu_equals_sign.png
+	renamed:    graphics/misc/option_menu_text.pal -> graphics/interface/option_menu_text.pal
+	renamed:    graphics/interface/bag_swap.png -> graphics/interface/swap_line.png
+	renamed:    graphics/minigame_countdown/321start.png -> graphics/link/321start.png
+	renamed:    graphics/minigame_countdown/321start_static.png -> graphics/link/321start_static.png
+	renamed:    graphics/interface/comm_error_bg.png -> graphics/link/comm_error_bg.png
+	renamed:    graphics/interface/link_test_digits.png -> graphics/link/test_digits.png
+	renamed:    graphics/interface/wireless_link_display.bin -> graphics/link/wireless_display.bin
+	renamed:    graphics/interface/wireless_link_display.png -> graphics/link/wireless_display.png
+	renamed:    graphics/interface/wireless_link_icon.png -> graphics/link/wireless_icon.png
+	renamed:    graphics/interface/wireless_info_screen.bin -> graphics/link/wireless_info_screen.bin
+	renamed:    graphics/interface/wireless_info_screen.pal -> graphics/link/wireless_info_screen.pal
+	renamed:    graphics/interface/wireless_info_screen.png -> graphics/link/wireless_info_screen.png
+	renamed:    graphics/interface/map_popup/brick.png -> graphics/map_popup/brick.png
+	renamed:    graphics/interface/map_popup/brick_outline.png -> graphics/map_popup/brick_outline.png
+	renamed:    graphics/interface/map_popup/marble.png -> graphics/map_popup/marble.png
+	renamed:    graphics/interface/map_popup/marble_outline.png -> graphics/map_popup/marble_outline.png
+	renamed:    graphics/interface/map_popup/stone.png -> graphics/map_popup/stone.png
+	renamed:    graphics/interface/map_popup/stone2.png -> graphics/map_popup/stone2.png
+	renamed:    graphics/interface/map_popup/stone2_outline.png -> graphics/map_popup/stone2_outline.png
+	renamed:    graphics/interface/map_popup/stone_outline.png -> graphics/map_popup/stone_outline.png
+	renamed:    graphics/interface/map_popup/underwater.pal -> graphics/map_popup/underwater.pal
+	renamed:    graphics/interface/map_popup/underwater.png -> graphics/map_popup/underwater.png
+	renamed:    graphics/interface/map_popup/underwater_outline.png -> graphics/map_popup/underwater_outline.png
+	renamed:    graphics/interface/map_popup/wood.png -> graphics/map_popup/wood.png
+	renamed:    graphics/interface/map_popup/wood_outline.png -> graphics/map_popup/wood_outline.png
+	deleted:    graphics/misc/deoxys_rock_fragment_bottom_left.png
+	deleted:    graphics/misc/deoxys_rock_fragment_bottom_right.png
+	deleted:    graphics/misc/deoxys_rock_fragment_top_left.png
+	deleted:    graphics/misc/deoxys_rock_fragment_top_right.png
+	deleted:    graphics/misc/emotion_exclamation.png
+	deleted:    graphics/misc/emotion_heart.png
+	deleted:    graphics/misc/emotion_question.png
+	deleted:    graphics/misc/hof_monitor_big.png
+	deleted:    graphics/misc/hof_monitor_small.png
+	deleted:    graphics/misc/pokeball_glow.png
+	renamed:    graphics/interface/party_menu_bg.bin -> graphics/party_menu/bg.bin
+	renamed:    graphics/interface/party_menu_bg.pal -> graphics/party_menu/bg.pal
+	renamed:    graphics/interface/party_menu_bg.png -> graphics/party_menu/bg.png
+	renamed:    graphics/interface/party_menu_cancel_button.bin -> graphics/party_menu/cancel_button.bin
+	renamed:    graphics/interface/party_menu_confirm_button.bin -> graphics/party_menu/confirm_button.bin
+	renamed:    graphics/interface/hold_icons.png -> graphics/party_menu/hold_icons.png
+	renamed:    graphics/interface/party_menu_pokeball.png -> graphics/party_menu/pokeball.png
+	renamed:    graphics/interface/party_menu_pokeball_small.png -> graphics/party_menu/pokeball_small.png
+	new file:   graphics/party_menu/slot_main.bin
+	new file:   graphics/party_menu/slot_main_no_hp.bin
+	new file:   graphics/party_menu/slot_wide.bin
+	new file:   graphics/party_menu/slot_wide_empty.bin
+	new file:   graphics/party_menu/slot_wide_no_hp.bin
+	renamed:    graphics/interface/pokeblock_device.png -> graphics/pokeblock/device.png
+	renamed:    graphics/interface/pokeblock_feeding_bg_map.bin -> graphics/pokeblock/feeding_bg.bin
+	renamed:    graphics/interface/pokeblock.bin -> graphics/pokeblock/menu.bin
+	renamed:    graphics/interface/pokeblock_case_frame.pal -> graphics/pokeblock/menu.pal
+	renamed:    graphics/interface/pokeblock_case_frame.png -> graphics/pokeblock/menu.png
+	renamed:    graphics/interface/region_map.bin -> graphics/pokedex/region_map.bin
+	renamed:    graphics/interface/region_map.pal -> graphics/pokedex/region_map.pal
+	renamed:    graphics/interface/region_map.png -> graphics/pokedex/region_map.png
+	renamed:    graphics/interface/region_map_affine.bin -> graphics/pokedex/region_map_affine.bin
+	renamed:    graphics/interface/region_map_affine.png -> graphics/pokedex/region_map_affine.png
+	new file:   graphics/pokemon_storage/close_box_button.bin
+	new file:   graphics/pokemon_storage/party_slot_empty.bin
+	new file:   graphics/pokemon_storage/party_slot_filled.bin
+	new file:   graphics/pokemon_storage/pkmn_data.bin
+	renamed:    graphics/pokemon_storage/unknown.pal -> graphics/pokemon_storage/text_windows.pal
+	renamed:    graphics/misc/rotating_gate_1.png -> graphics/rotating_gates/l1.png
+	renamed:    graphics/misc/rotating_gate_2.png -> graphics/rotating_gates/l2.png
+	renamed:    graphics/misc/rotating_gate_3.png -> graphics/rotating_gates/l3.png
+	renamed:    graphics/misc/rotating_gate_4.png -> graphics/rotating_gates/l4.png
+	renamed:    graphics/misc/rotating_gate_5.png -> graphics/rotating_gates/t1.png
+	renamed:    graphics/misc/rotating_gate_6.png -> graphics/rotating_gates/t2.png
+	renamed:    graphics/misc/rotating_gate_7.png -> graphics/rotating_gates/t3.png
+	renamed:    graphics/misc/rotating_gate_8.png -> graphics/rotating_gates/t4.png
+	renamed:    graphics/interface/mart_frame.bin -> graphics/shop/menu.bin
+	renamed:    graphics/interface/mart_frame.png -> graphics/shop/menu.png
+	renamed:    graphics/interface/money.png -> graphics/shop/money.png
+	deleted:    graphics/slot_machine/85A8524.bin
+	renamed:    graphics/misc/birch_bag_map.bin -> graphics/starter_choose/birch_bag.bin
+	renamed:    graphics/misc/birch_bag.png -> graphics/starter_choose/birch_bag.png
+	renamed:    graphics/misc/birch_grass_map.bin -> graphics/starter_choose/birch_grass.bin
+	renamed:    graphics/misc/birch_grass.png -> graphics/starter_choose/birch_grass.png
+	renamed:    graphics/misc/pokeball_selection.png -> graphics/starter_choose/pokeball_selection.png
+	renamed:    graphics/misc/starter_circle.png -> graphics/starter_choose/starter_circle.png
+	renamed:    graphics/interface/summary_a_button.png -> graphics/summary_screen/a_button.png
+	renamed:    graphics/interface/summary_b_button.png -> graphics/summary_screen/b_button.png
+	renamed:    graphics/interface/powacc_tilemap.bin -> graphics/summary_screen/effect_battle.bin
+	renamed:    graphics/interface/summary.bin -> graphics/summary_screen/effect_cancel.bin
+	renamed:    graphics/interface/appealjam_tilemap.bin -> graphics/summary_screen/effect_contest.bin
+	renamed:    graphics/interface/summary_markings.pal -> graphics/summary_screen/markings.pal
+	renamed:    graphics/interface/summary_frames.png -> graphics/summary_screen/move_select.png
+	renamed:    graphics/interface/summary_page_battle_moves.bin -> graphics/summary_screen/page_battle_moves.bin
+	renamed:    graphics/interface/summary_page_contest_moves.bin -> graphics/summary_screen/page_contest_moves.bin
+	renamed:    graphics/interface/summary_page_info.bin -> graphics/summary_screen/page_info.bin
+	renamed:    graphics/interface/summary_page_info_copy.bin -> graphics/summary_screen/page_info_egg.bin
+	renamed:    graphics/interface/summary_page_skills.bin -> graphics/summary_screen/page_skills.bin
+	renamed:    graphics/interface/status_tilemap.bin -> graphics/summary_screen/status_tilemap.bin
+	renamed:    graphics/interface/summary_screen.pal -> graphics/summary_screen/tiles.pal
+	renamed:    graphics/interface/summary_screen.png -> graphics/summary_screen/tiles.png
+	renamed:    graphics/title_screen/title_screen1.bin -> graphics/title_screen/clouds.bin
+	renamed:    graphics/title_screen/title_screen2.bin -> graphics/title_screen/pokemon_logo.bin
+	renamed:    graphics/title_screen/unk_853EF78.pal -> graphics/title_screen/unused.pal
+	renamed:    graphics/link/gba.png -> graphics/trade/gba.png
+	renamed:    graphics/link/gba_pal2.pal -> graphics/trade/gba_pal2.pal
+	renamed:    graphics/misc/trainer_hill_ereader.pal -> graphics/trainer_hill/ereader.pal
+	modified:   graphics_file_rules.mk
+	modified:   include/battle.h
+	modified:   include/battle_pyramid.h
+	modified:   include/battle_script_commands.h
+	modified:   include/bike.h
+	modified:   include/constants/flags.h
+	modified:   include/constants/global.h
+	modified:   include/constants/maps.h
+	modified:   include/constants/metatile_behaviors.h
+	new file:   include/constants/pokedex.h
+	modified:   include/constants/pokemon.h
+	new file:   include/constants/wild_encounter.h
+	modified:   include/easy_chat.h
+	modified:   include/field_player_avatar.h
+	modified:   include/fieldmap.h
+	modified:   include/gba/m4a_internal.h
+	modified:   include/global.fieldmap.h
+	modified:   include/item.h
+	modified:   include/menu.h
+	modified:   include/metatile_behavior.h
+	modified:   include/overworld.h
+	modified:   include/pokeblock.h
+	modified:   include/pokemon.h
+	modified:   include/save.h
+	modified:   include/wild_encounter.h
+	modified:   ld_script_modern.txt
+	modified:   sound/MPlayDef.s
+	modified:   sound/music_player_table.inc
+	modified:   src/apprentice.c
+	modified:   src/bard_music.c
+	modified:   src/battle_anim_smokescreen.c
+	modified:   src/battle_dome.c
+	modified:   src/battle_factory_screen.c
+	modified:   src/battle_pike.c
+	modified:   src/battle_pyramid.c
+	modified:   src/battle_script_commands.c
+	modified:   src/battle_tower.c
+	modified:   src/battle_util.c
+	modified:   src/berry_crush.c
+	modified:   src/berry_tag_screen.c
+	modified:   src/bike.c
+	modified:   src/braille_puzzles.c
+	modified:   src/crt0.s
+	modified:   src/data/easy_chat/easy_chat_words_by_letter.h
+	modified:   src/data/graphics/berries.h
+	new file:   src/data/graphics/pokeballs.h
+	modified:   src/data/lilycove_lady.h
+	modified:   src/data/party_menu.h
+	new file:   src/data/pokedex_area_glow.h
+	modified:   src/data/text/move_descriptions.h
+	modified:   src/decoration.c
+	modified:   src/decoration_inventory.c
+	modified:   src/dewford_trend.c
+	modified:   src/diploma.c
+	modified:   src/easy_chat.c
+	modified:   src/ereader_helpers.c
+	modified:   src/ereader_screen.c
+	modified:   src/evolution_graphics.c
+	modified:   src/field_camera.c
+	modified:   src/field_control_avatar.c
+	modified:   src/field_effect.c
+	modified:   src/field_effect_helpers.c
+	modified:   src/field_tasks.c
+	modified:   src/fieldmap.c
+	modified:   src/fldeff_cut.c
+	modified:   src/fldeff_escalator.c
+	modified:   src/fldeff_flash.c
+	modified:   src/fldeff_misc.c
+	modified:   src/frontier_pass.c
+	modified:   src/graphics.c
+	modified:   src/item.c
+	modified:   src/item_menu.c
+	modified:   src/item_menu_icons.c
+	modified:   src/item_use.c
+	modified:   src/libgcnmultiboot.s
+	modified:   src/link.c
+	modified:   src/link_rfu_3.c
+	modified:   src/m4a.c
+	modified:   src/m4a_1.s
+	modified:   src/mail_data.c
+	modified:   src/map_name_popup.c
+	modified:   src/mauville_old_man.c
+	modified:   src/menu.c
+	modified:   src/menu_helpers.c
+	modified:   src/metatile_behavior.c
+	modified:   src/minigame_countdown.c
+	modified:   src/mon_markings.c
+	modified:   src/money.c
+	modified:   src/option_menu.c
+	modified:   src/overworld.c
+	modified:   src/party_menu.c
+	modified:   src/player_pc.c
+	modified:   src/pokedex.c
+	modified:   src/pokedex_area_region_map.c
+	modified:   src/pokedex_area_screen.c
+	modified:   src/pokemon_summary_screen.c
+	modified:   src/region_map.c
+	modified:   src/roamer.c
+	modified:   src/rom_header.s
+	modified:   src/rotating_gate.c
+	modified:   src/save.c
+	modified:   src/scrcmd.c
+	modified:   src/secret_base.c
+	modified:   src/shop.c
+	modified:   src/slot_machine.c
+	modified:   src/starter_choose.c
+	modified:   src/tileset_anims.c
+	modified:   src/title_screen.c
+	modified:   src/trade.c
+	modified:   src/trader.c
+	modified:   src/trainer_hill.c
+	modified:   src/trainer_see.c
+	modified:   src/tv.c
+	modified:   src/union_room_chat.c
+	modified:   src/wallclock.c
+	modified:   src/wild_encounter.c
+	modified:   src/wireless_communication_status_screen.c
+	modified:   sym_bss.txt
+	modified:   tools/aif2pcm/main.c
+	modified:   tools/mapjson/mapjson.cpp
+
+Unmerged paths:
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+	both modified:   Makefile
+	both modified:   asm/macros.inc
+	both modified:   asm/macros/map.inc
+	both modified:   data/event_scripts.s
+	deleted by us:   data/multiboot_berry_glitch_fix.s
+	added by us:     graphics/balls/beast.png
+	added by us:     graphics/balls/cherish.png
+	added by us:     graphics/balls/dream.png
+	added by us:     graphics/balls/dusk.png
+	added by us:     graphics/balls/fast.png
+	added by us:     graphics/balls/friend.png
+	added by us:     graphics/balls/heal.png
+	added by us:     graphics/balls/heavy.png
+	added by us:     graphics/balls/level.png
+	added by us:     graphics/balls/love.png
+	added by us:     graphics/balls/lure.png
+	added by us:     graphics/balls/moon.png
+	added by us:     graphics/balls/park.png
+	added by us:     graphics/balls/particles2.png
+	added by us:     graphics/balls/quick.png
+	added by us:     graphics/balls/sport.png
+	both modified:   include/constants/species.h
+	both modified:   include/event_object_movement.h
+	both modified:   include/global.h
+	both modified:   include/graphics.h
+	both modified:   ld_script.txt
+	deleted by them: src/data/graphics/interface_pokeballs.h
+	both modified:   src/data/items.h
+	both modified:   src/event_object_movement.c
+	both modified:   src/field_player_avatar.c
+	both modified:   src/field_specials.c
+	both modified:   src/fldeff_rocksmash.c
+	both modified:   src/main_menu.c
+	both modified:   src/naming_screen.c
+	both modified:   src/pokeball.c
+	both modified:   src/pokemon.c
+	both modified:   src/pokemon_storage_system.c
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    data/cutscenes/.YouRealizeTheyreEvilRight.pory.swo
+	modified:   files.txt
+
