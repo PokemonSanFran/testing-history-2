@@ -9,7 +9,6 @@ const DAVID = 7
 
 mapscripts Psfplace13_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
-    //    VAR_PSFGOODTEAM_PSFPLACE13_STATE, 0: GroupOfAssholesAppears_ResumeFromSave
     ]
 }
 
