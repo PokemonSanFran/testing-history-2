@@ -57,6 +57,9 @@ jobs:
           path: |
             pokeemerald.gba
 
+      - name: check location
+        run: ls /home/runner/work/development_v3/development_v3
+
       - name: upload to google drive
         uses: mkrakowitzer/actions-googledrive@master
         with:
