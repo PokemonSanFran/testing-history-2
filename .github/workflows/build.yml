@@ -1,35 +1,35 @@
 name: CI
 
 on:
-  push:
-    branches: [ default ]
-  pull_request:
+    push:
+        branches: [ default ]
+pull_request:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    jobs:
+        build:
+            runs-on: ubuntu-latest
     env:
-      GAME_VERSION: EMERALD
-      GAME_REVISION: 0
-      GAME_LANGUAGE: ENGLISH
-      MODERN: 0
-      COMPARE: 1
+        GAME_VERSION: EMERALD
+    GAME_REVISION: 0
+    GAME_LANGUAGE: ENGLISH
+    MODERN: 0
+    COMPARE: 1
     steps:
-      - name: Checkout
-        uses: actions/checkout@default
+        - name: Checkout
+          uses: actions/checkout@default
 
       - name: Checkout syms
         if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@default
         with:
-          path: symbols
-          ref: symbols
+            path: symbols
+        ref: symbols
 
       - name: Checkout agbcc
         uses: actions/checkout@default
         with:
-          path: agbcc
-          repository: pret/agbcc
+            path: agbcc
+        repository: pret/agbcc
 
       - name: Install binutils
         run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi
@@ -39,8 +39,8 @@ jobs:
 
       - name: Install agbcc
         run: |
-          ./build.sh
-          ./install.sh ../
+            ./build.sh
+            ./install.sh ../
         working-directory: agbcc
 
       - name: Compare
@@ -48,31 +48,31 @@ jobs:
 
       - name: Modern
         env:
-          MODERN: 1
-          COMPARE: 0
+            MODERN: 1
+        COMPARE: 0
         run: make -j${nproc} all
 
       - name: Move symfiles
         if: ${{ github.event_name == 'push' }}
         run: |
-          cp -v *.sym symbols/
-          echo "SYMBOLS_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
+            cp -v *.sym symbols/
+            echo "SYMBOLS_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
 
       - name: Update symfiles
         if: ${{ github.event_name == 'push' }}
         uses: EndBug/add-and-commit@v7
         with:
-          branch: symbols
-          cwd: "./symbols"
-          add: "*.sym"
-          message: ${{ env.SYMBOLS_COMMIT_MSG }}
+            branch: symbols
+        cwd: "./symbols"
+        add: "*.sym"
+        message: ${{ env.SYMBOLS_COMMIT_MSG }}
 
       - name: compile
         run: make -j${nproc}
-          
-    - name: Send latest build to builds channel
-      uses: sinshutu/upload-to-discord@master
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.https://discordapp.com/api/webhooks/953109259434995812/SLM8jt4vKTASeBEE_xvXnMm87GbzBW4T1UAfKRTax6nd3ziRxOxPH7U29reffa9lSC2z }}
-      with:
-        args: pokeemerald.gba
+
+      - name: Send latest build to builds channel
+        uses: sinshutu/upload-to-discord@master
+        env:
+            DISCORD_WEBHOOK: ${{ secrets.https://discordapp.com/api/webhooks/953109259434995812/SLM8jt4vKTASeBEE_xvXnMm87GbzBW4T1UAfKRTax6nd3ziRxOxPH7U29reffa9lSC2z }}
+        with:
+            args: pokeemerald.gba
