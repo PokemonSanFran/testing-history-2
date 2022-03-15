@@ -73,6 +73,6 @@ jobs:
       - name: Send latest build to builds channel
         uses: sinshutu/upload-to-discord@master
         env:
-          DISCORD_WEBHOOK: ${{ secrets.953109259434995812/SLM8jt4vKTASeBEE_xvXnMm87GbzBW4T1UAfKRTax6nd3ziRxOxPH7U29reffa9lSC2z }}
+          DISCORD_WEBHOOK: ${{ 953109259434995812/SLM8jt4vKTASeBEE_xvXnMm87GbzBW4T1UAfKRTax6nd3ziRxOxPH7U29reffa9lSC2z }}
         with:
           args: pokeemerald.gba
