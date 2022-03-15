@@ -60,7 +60,7 @@ jobs:
       - name: upload to google drive
         uses: mkrakowitzer/actions-googledrive@master
         with:
-          upload-from: ./tmp
+          upload-from:
           upload-to: /
           skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
           google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
