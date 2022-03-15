@@ -49,3 +49,10 @@ jobs:
         
       - name: build
         run: make -j${nproc}
+
+      - name: upload 
+        uses: sinshutu/upload-to-discord@master
+        env:
+            DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
+        with:
+            args: pokeemerald.gba
