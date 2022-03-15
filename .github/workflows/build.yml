@@ -50,14 +50,23 @@ jobs:
       - name: build
         run: make -j${nproc}
             
-      - name: Archive production artifacts
+      - name: upload built artifact
         uses: actions/upload-artifact@v3
         with:
           name: game build
           path: |
             pokeemerald.gba
 
-      - name: upload 
+      - name: upload to google drive
+        uses: mkrakowitzer/actions-googledrive@master
+        with:
+          upload-from: ./tmp
+          upload-to: /
+          skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
+          google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
+          google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+
+      - name: upload to discord
         uses: sinshutu/upload-to-discord@master
         env:
             DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
