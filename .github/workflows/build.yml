@@ -66,9 +66,11 @@ jobs:
           google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
           google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
 
-      - name: upload to discord
-        uses: sinshutu/upload-to-discord@master
+      - name: discord notifcation with commit messages 
         env:
             DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
+            DISCORD_AVATAR: https://archives.bulbagarden.net/media/upload/c/ca/BT294.png
+            DISCORD_USERNAME: Loudred
+        uses: Ilshidur/action-discord@master
         with:
-            args: pokeemerald.gba
+            args: This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message }}
