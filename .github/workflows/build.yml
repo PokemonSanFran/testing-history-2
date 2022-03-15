@@ -55,4 +55,5 @@ jobs:
         env:
             DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
         with:
-            args: pokeemerald.gba
+            #args: pokeemerald.gba
+            args: Makefile
