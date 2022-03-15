@@ -49,11 +49,17 @@ jobs:
         
       - name: build
         run: make -j${nproc}
+            
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: game build
+          path: |
+            pokeemerald.gba
 
       - name: upload 
         uses: sinshutu/upload-to-discord@master
         env:
             DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
         with:
-            #args: pokeemerald.gba
-            args: Makefile
+            args: pokeemerald.gba
