@@ -18,12 +18,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-        #- name: Checkout syms
-        #if: ${{ github.event_name == 'push' }}
-        #uses: actions/checkout@master
-        #with:
-        #  path: symbols
-        #  ref: symbols
+      - name: Checkout syms
+        if: ${{ github.event_name == 'push' }}
+        uses: actions/checkout@master
+        with:
+          path: symbols
+          ref: symbols
 
       - name: Checkout agbcc
         uses: actions/checkout@master
@@ -43,10 +43,10 @@ jobs:
           ./install.sh ../
         working-directory: agbcc
 
-      - name: Compare
-        run: make -j${nproc} all syms
-
-      - name: Build
+        #- name: Compare
+        #run: make -j${nproc} all syms
+        
+      - name: build
         run: make -j${nproc}
 
       - name: Modern
