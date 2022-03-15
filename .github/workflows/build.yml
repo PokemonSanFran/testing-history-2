@@ -68,9 +68,9 @@ jobs:
 
       - name: discord notifcation with commit messages 
         env:
-            DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
-            DISCORD_AVATAR: https://archives.bulbagarden.net/media/upload/c/ca/BT294.png
-            DISCORD_USERNAME: Loudred
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
+          DISCORD_AVATAR: https://archives.bulbagarden.net/media/upload/c/ca/BT294.png
+          DISCORD_USERNAME: Loudred
         uses: Ilshidur/action-discord@master
         with:
-            args: This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message }}
+          args: This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message }}
