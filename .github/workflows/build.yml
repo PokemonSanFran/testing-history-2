@@ -70,11 +70,6 @@ jobs:
       - name: compile
         run: make -j${nproc}
           
-          - name: Upload to Discord
-  # You may pin to the exact commit or the version.
-  # uses: sinshutu/upload-to-discord@b96d2d1a622c77379e8c06df508fb7eae56ae631
-  uses: sinshutu/upload-to-discord@v2.0.0
-
     - name: Send latest build to builds channel
       uses: sinshutu/upload-to-discord@master
       env:
