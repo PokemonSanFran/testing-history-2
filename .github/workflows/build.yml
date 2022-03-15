@@ -57,14 +57,11 @@ jobs:
           path: |
             pokeemerald.gba
 
-      - name: check location
-        run: ls /home/runner/work/development_v3/development_v3
-
       - name: upload to google drive
         uses: mkrakowitzer/actions-googledrive@master
         with:
           upload-from: /home/runner/work/development_v3/development_v3/pokeemerald.gba
-          upload-to: /
+          upload-to: Pokémon\ SF/Builds/
           skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
           google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
           google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
