@@ -16,6 +16,23 @@ script YouRealizeTheyreEvilRight_ShowObject_Script {
     }
 }
 
+script YouRealizeTheyreEvilRight_ShowBasement_Script {
+    clearflag(FLAG_HIDE_YOUREALIZE_B2F_GROUP)
+    setflag(FLAG_TEMP_1)
+}
+
+script YouRealizeTheyreEvilRight_HideBasement_Script {
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_HIDE_YOUREALIZE_B2F_GROUP)
+    addobject(PSFNATIVERIVAL)
+    addobject(PSFELITE2)
+    addobject(PSFELITE1)
+}
+
+script YouRealizeTheyreEvilRight_HideGarbodor_Script {
+    setflag(FLAG_TEMP_1)
+}
+
 script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
     lockall
         addvar(VAR_PSFCAVE7_STATE,1)

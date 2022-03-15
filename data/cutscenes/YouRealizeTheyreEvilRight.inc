@@ -18,6 +18,26 @@ YouRealizeTheyreEvilRight_ShowObject_Script_1:
 	return
 
 
+YouRealizeTheyreEvilRight_ShowBasement_Script::
+	clearflag FLAG_HIDE_YOUREALIZE_B2F_GROUP
+	setflag FLAG_TEMP_1
+	return
+
+
+YouRealizeTheyreEvilRight_HideBasement_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_HIDE_YOUREALIZE_B2F_GROUP
+	addobject 1
+	addobject 2
+	addobject 3
+	return
+
+
+YouRealizeTheyreEvilRight_HideGarbodor_Script::
+	setflag FLAG_TEMP_1
+	return
+
+
 YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	lockall
 	addvar VAR_PSFCAVE7_STATE, 1

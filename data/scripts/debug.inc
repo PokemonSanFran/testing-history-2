@@ -60,10 +60,6 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-	givemon SPECIES_BELDUM, 5, ITEM_NONE
-	givemon SPECIES_BELDUM, 5, ITEM_NONE
-	givemon SPECIES_BELDUM, 5, ITEM_NONE
-    goto(YouRealizeTheyreEvilRight_AskPlayerGift_Script)
 	end
 
 Debug_Script_2::

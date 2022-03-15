@@ -676,7 +676,7 @@
 #define FLAG_HIDE_HERESHOWTHIS_PSFNATIVERIVAL 0x27A // Previously Unused Flag
 #define FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL 0x27B // Previously Unused Flag
 #define FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN 0x27C // Previously Unused Flag
-#define FLAG_UNUSED_0x27D  0x27D // Unused Flag
+#define FLAG_HIDE_YOUREALIZE_B2F_GROUP 0x27D // Previously Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag
 #define FLAG_UNUSED_0x27F  0x27F // Unused Flag
 #define FLAG_UNUSED_0x280  0x280 // Unused Flag

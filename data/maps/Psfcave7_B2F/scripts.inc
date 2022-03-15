@@ -13,6 +13,32 @@ Psfcave7_B2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfcave7_B2F_MapScripts_OnTransition::
-	setflag FLAG_TEMP_1
+	call YouRealizeTheyreEvilRight_HideGarbodor_Script
+	switch VAR_PSFCAVE7_STATE
+	case 0, Psfcave7_B2F_MapScripts_OnTransition_2
+	case 1, Psfcave7_B2F_MapScripts_OnTransition_3
+	case 2, Psfcave7_B2F_MapScripts_OnTransition_4
+	case 3, Psfcave7_B2F_MapScripts_OnTransition_5
+	case 4, Psfcave7_B2F_MapScripts_OnTransition_6
+	return
+
+Psfcave7_B2F_MapScripts_OnTransition_2:
+	call YouRealizeTheyreEvilRight_HideBasement_Script
+	return
+
+Psfcave7_B2F_MapScripts_OnTransition_3:
+	call YouRealizeTheyreEvilRight_HideBasement_Script
+	return
+
+Psfcave7_B2F_MapScripts_OnTransition_4:
+	call YouRealizeTheyreEvilRight_HideBasement_Script
+	return
+
+Psfcave7_B2F_MapScripts_OnTransition_5:
+	call YouRealizeTheyreEvilRight_HideBasement_Script
+	return
+
+Psfcave7_B2F_MapScripts_OnTransition_6:
+	call YouRealizeTheyreEvilRight_ShowBasement_Script
 	return
 
