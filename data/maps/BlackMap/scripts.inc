@@ -3,6 +3,6 @@ BlackMap_MapScripts::
 	.byte 0
 
 BlackMap_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_TEMP_0, 0, ShinyResetSupport
+	map_script_2 VAR_TEMP_0, 0, ThereCanOnlyBeOne_LoadFromSave_Script
 	.2byte 0
 

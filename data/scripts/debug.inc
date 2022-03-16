@@ -60,10 +60,8 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-	setwildbattle SPECIES_MEWTWO, 30
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-	dowildbattle
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+    //SetWarpDestination(MAP_GROUP(BLACK_MAP), MAP_NUM(BLACK_MAP), -1, -1, -1);
+    warpsilent MAP_BLACK_MAP,1,1
 	end
 
 Debug_Script_2::

@@ -1059,7 +1059,6 @@ end
 .include "data/text/save.inc"
 .include "data/text/birch_speech.inc"
 
-.include "data/text/StarterMenu.inc"
 .include "data/maps/BlackMap/scripts.inc"
 .include "data/maps/Psfcity8/scripts.inc"
 .include "data/maps/Psfcity8_Compound_1F/scripts.inc"
@@ -1116,7 +1115,7 @@ end
 ##  .include "data/cutscenes/WelcometotheWorldofPokemon.inc"
 ##  .include "data/cutscenes/YoureaTechBroNow.inc"
 ##  .include "data/cutscenes/WhoAreYou.inc"
-##  .include "data/cutscenes/ThereCanOnlyBeOne.inc"
+    .include "data/cutscenes/ThereCanOnlyBeOne.inc"
 .include "data/cutscenes/ImProbablyBetterThanYou.inc"
 ##  .include "data/cutscenes/swagbag.inc"
 ##  .include "data/cutscenes/ReadySetIStarted2HoursAgo.inc"

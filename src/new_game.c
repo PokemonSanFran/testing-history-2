@@ -126,7 +126,8 @@ static void ClearFrontierRecord(void)
 
 static void WarpToTruck(void)
 {
-    //SetWarpDestination(MAP_GROUP(INSIDE_OF_TRUCK), MAP_NUM(INSIDE_OF_TRUCK), -1, -1, -1);
+    //SetWarpDestination(MAP_GROUP(INSIDE_OF_TRUCK), MAP_NUM(INSIDE_OF_TRUCK), -1, -1, -1); //original code from Emerald
+    FlagSet(FLAG_SPAWN_INVISIBLE); //Make player invisible for PSF Intro
     SetWarpDestination(MAP_GROUP(BLACK_MAP), MAP_NUM(BLACK_MAP), -1, -1, -1);
     WarpIntoMap();
 }
