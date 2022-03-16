@@ -507,24 +507,26 @@ static void CB2_InitBattleInternal(void)
     else
     {
         gBattle_WIN0V = WIN_RANGE(DISPLAY_HEIGHT / 2, DISPLAY_HEIGHT / 2 + 1);
-        ScanlineEffect_Clear();
-
-        i = 0;
-        while (i < 80)
-        {
-            gScanlineEffectRegBuffers[0][i] = 0xF0;
-            gScanlineEffectRegBuffers[1][i] = 0xF0;
-            i++;
-        }
-
-        while (i < 160)
-        {
-            gScanlineEffectRegBuffers[0][i] = 0xFF10;
-            gScanlineEffectRegBuffers[1][i] = 0xFF10;
-            i++;
-        }
-
-        ScanlineEffect_SetParams(sIntroScanlineParams16Bit);
+        // commented out for "[battle] minimalistic, fast intro"
+        //https://github.com/SBird1337/pokeemerald/commit/8e1643ed5cb7dd610b356f0ba83b95b626462dca
+//        ScanlineEffect_Clear();
+//
+//        i = 0;
+//        while (i < 80)
+//        {
+//            gScanlineEffectRegBuffers[0][i] = 0xF0;
+//            gScanlineEffectRegBuffers[1][i] = 0xF0;
+//            i++;
+//        }
+//
+//        while (i < 160)
+//        {
+//            gScanlineEffectRegBuffers[0][i] = 0xFF10;
+//            gScanlineEffectRegBuffers[1][i] = 0xFF10;
+//            i++;
+//        }
+//
+//        ScanlineEffect_SetParams(sIntroScanlineParams16Bit);
     }
 
     ResetPaletteFade();
@@ -545,7 +547,7 @@ static void CB2_InitBattleInternal(void)
     LoadBattleTextboxAndBackground();
     ResetSpriteData();
     ResetTasks();
-    DrawBattleEntryBackground();
+    //DrawBattleEntryBackground(); //commented out for "[battle] minimalistic, fast intro"
     FreeAllSpritePalettes();
     gReservedSpritePaletteCount = 4;
     SetVBlankCallback(VBlankCB_Battle);
@@ -2095,6 +2097,8 @@ void CB2_InitEndLinkBattle(void)
         LoadBattleMenuWindowGfx();
         ResetSpriteData();
         ResetTasks();
+        // commented out for "[battle] minimalistic, fast intro"
+        //https://github.com/SBird1337/pokeemerald/commit/8e1643ed5cb7dd610b356f0ba83b95b626462dca
         DrawBattleEntryBackground();
         SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0 | WINOUT_WIN01_BG1 | WINOUT_WIN01_BG2 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR);
         FreeAllSpritePalettes();
@@ -2530,21 +2534,25 @@ void SpriteCb_WildMon(struct Sprite *sprite)
 {
     sprite->callback = SpriteCb_MoveWildMonToRight;
     StartSpriteAnimIfDifferent(sprite, 0);
-    if (WILD_DOUBLE_BATTLE)
-        BeginNormalPaletteFade((0x10000 << sprite->sBattler) | (0x10000 << BATTLE_PARTNER(sprite->sBattler)), 0, 10, 10, RGB(8, 8, 8));
-    else
-        BeginNormalPaletteFade((0x10000 << sprite->sBattler), 0, 10, 10, RGB(8, 8, 8));
+        // commented out for "[battle] minimalistic, fast intro"
+//https://github.com/SBird1337/pokeemerald/commit/8e1643ed5cb7dd610b356f0ba83b95b626462dca
+    //if (WILD_DOUBLE_BATTLE)
+        //BeginNormalPaletteFade((0x10000 << sprite->sBattler) | (0x10000 << BATTLE_PARTNER(sprite->sBattler)), 0, 10, 10, RGB(8, 8, 8));
+    //else
+        //BeginNormalPaletteFade((0x10000 << sprite->sBattler), 0, 10, 10, RGB(8, 8, 8));
 }
 
 static void SpriteCb_MoveWildMonToRight(struct Sprite *sprite)
 {
     if ((gIntroSlideFlags & 1) == 0)
     {
-        sprite->x2 += 2;
-        if (sprite->x2 == 0)
-        {
+//        sprite->x2 += 2;
+//        if (sprite->x2 == 0)
+//        {
+//            sprite->callback = SpriteCb_WildMonShowHealthbox;
+//        }
+            sprite->x2 = 0;
             sprite->callback = SpriteCb_WildMonShowHealthbox;
-        }
     }
 }
 
@@ -2556,10 +2564,12 @@ static void SpriteCb_WildMonShowHealthbox(struct Sprite *sprite)
         SetHealthboxSpriteVisible(gHealthboxSpriteIds[sprite->sBattler]);
         sprite->callback = SpriteCb_WildMonAnimate;
         StartSpriteAnimIfDifferent(sprite, 0);
-        if (WILD_DOUBLE_BATTLE)
-            BeginNormalPaletteFade((0x10000 << sprite->sBattler) | (0x10000 << BATTLE_PARTNER(sprite->sBattler)), 0, 10, 0, RGB(8, 8, 8));
-        else
-            BeginNormalPaletteFade((0x10000 << sprite->sBattler), 0, 10, 0, RGB(8, 8, 8));
+        // commented out for "[battle] minimalistic, fast intro"
+//https://github.com/SBird1337/pokeemerald/commit/8e1643ed5cb7dd610b356f0ba83b95b626462dca
+//        if (WILD_DOUBLE_BATTLE)
+//            BeginNormalPaletteFade((0x10000 << sprite->sBattler) | (0x10000 << BATTLE_PARTNER(sprite->sBattler)), 0, 10, 0, RGB(8, 8, 8));
+//        else
+//            BeginNormalPaletteFade((0x10000 << sprite->sBattler), 0, 10, 0, RGB(8, 8, 8));
     }
 }
 

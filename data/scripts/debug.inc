@@ -60,6 +60,10 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
+	setwildbattle SPECIES_MEWTWO, 30
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	end
 
 Debug_Script_2::

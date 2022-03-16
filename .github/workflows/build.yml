@@ -50,13 +50,6 @@ jobs:
       - name: build
         run: make -j${nproc}
             
-      - name: upload built artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: game build
-          path: |
-            pokeemerald.gba
-
       - name: upload to google drive
         uses: mkrakowitzer/actions-googledrive@master
         with:
@@ -73,4 +66,4 @@ jobs:
           DISCORD_USERNAME: Loudred
         uses: Ilshidur/action-discord@master
         with:
-          args: 'This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message }}'
+            args: 'This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message }} \n\n Folder Link: https://drive.google.com/drive/folders/1E4meFn1GkW-F5Ykco-2qUz6M54fiwsN5'
