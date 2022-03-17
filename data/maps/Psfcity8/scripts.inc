@@ -4,8 +4,7 @@ Psfcity8_MapScripts::
 	.byte 0
 
 Psfcity8_MapScripts_MAP_SCRIPT_ON_LOAD:
-	compare FLAG_SYS_GAME_CLEAR, 0
-	goto_if_ne Psfcity8_MapScripts_MAP_SCRIPT_ON_LOAD_1
+	goto_if_set FLAG_SYS_GAME_CLEAR, Psfcity8_MapScripts_MAP_SCRIPT_ON_LOAD_1
 	return
 
 Psfcity8_MapScripts_MAP_SCRIPT_ON_LOAD_1:
@@ -35,19 +34,7 @@ Champion_TurnPlayerAwayHome_1:
 
 NewGameSetUp::
 	setflag FLAG_HIDE_PSFCITY7_PSFGOODADMIN
-	goto ImProbablyBetterThanYou_Intro
-	return
-
-
-ImProbablyBetterThanYou_Intro::
-	lockall
-	setvar VAR_LITTLEROOT_INTRO_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_Psfchara1Text1
-	callnative ClearMugshot
-	closemessage
-	goto ImProbablyBetterThanYou_WalkInside_Movement
+	goto ImProbablyBetterThanYou_StandingOutside_Dialogue
 	return
 
 
@@ -62,12 +49,6 @@ DontLeavePsfcity8_Script::
 	return
 
 
-ImProbablyBetterThanYou_WalkInside_Movement::
-	warpdoor MAP_PSFCITY8_COMPOUND_1F, 255, 5, 9
-	waitstate
-	end
-
-
 DontLeavePsfcity_Movement:
 	walk_down
 	step_end
@@ -75,7 +56,7 @@ DontLeavePsfcity_Movement:
 Champion_TurnPlayerAwayHome_Text_0:
 	.string "You don't live here anymore!$"
 
-gText_ImProbablyBetterThanYou_Psfchara1Text1::
+gText_ImProbablyBetterThanYou_DeepBreath::
 	.string "{COLOR 09}<deep breath>\n"
 	.string "{COLOR DARK_GRAY}Let's do this.$"
 

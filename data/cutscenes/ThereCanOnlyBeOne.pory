@@ -29,6 +29,7 @@ script ThereCanOnlyBeOne_Narrator_Dialogue {
 }
 
 //PSF TODO hook up a fake summary screen to this. I think the correct implemention would be to use givecustommon to generate all nine starters, then fire up the summary screen to look at the first pokemon in the box. when the user makes a decision, delete the other pokemon in the box, and generate that SAME pokemon and put it in the first slot of the party.
+//Also could look at how the Battle Factory generates mons, since I'll need to reuse this for Gabodor
 //need to figure out how to store the personality ID of the generated mon(seems totally doable ngl)
 
 script ThereCanOnlyBeOne_StarterSelectMenu_Script {

@@ -34,7 +34,7 @@ Act1_1_Complete_WarpToCompound_Script_1:
 
 
 WorkingFerry_SetUp_Script::
-	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN1_2
+	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN
 	return
 
 

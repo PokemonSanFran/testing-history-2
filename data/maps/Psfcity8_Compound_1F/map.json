@@ -28,19 +28,6 @@
       "flag": "FLAG_HIDE_COMPOUND_PSFTRANSRIVAL"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
-      "x": 6,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_COMPOUND_PSFTRANSRIVAL_2"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
       "x": 7,
       "y": 4,
@@ -50,8 +37,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Swagbag_AnnoyPsfbadadmin1_Script",
-      "flag": "FLAG_HIDE_COMPOUND_PSFBADADMIN1"
+      "script": "Psfbadadmin_Compound_Script",
+      "flag": "FLAG_HIDE_COMPOUND_PSFBADADMIN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEDEX",
@@ -64,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_COMPOUND_POKEDEX_RIGHT"
+      "flag": "FLAG_HIDE_COMPOUND_POKEDEX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEDEX",
@@ -77,20 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_COMPOUND_POKEDEX_LEFT"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
-      "x": 6,
-      "y": 5,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "TwoHoursAgo_TheyreEager_Dialogue",
-      "flag": "FLAG_HIDE_COMPOUND_PSFBADADMIN1_2"
+      "flag": "FLAG_HIDE_COMPOUND_POKEDEX"
     }
   ],
   "warp_events": [
@@ -124,7 +98,7 @@
       "elevation": 0,
       "var": "VAR_LITTLEROOT_INTRO_STATE",
       "var_value": "2",
-      "script": "ImProbablyBetterThanYou_ShouldUnpack"
+      "script": "ImProbablyBetterThanYou_PreventPlayerLeaving_Script"
     },
     {
       "type": "trigger",
@@ -133,7 +107,7 @@
       "elevation": 0,
       "var": "VAR_LITTLEROOT_INTRO_STATE",
       "var_value": "2",
-      "script": "ImProbablyBetterThanYou_ShouldUnpack"
+      "script": "ImProbablyBetterThanYou_PreventPlayerLeaving_Script"
     }
   ],
   "bg_events": [

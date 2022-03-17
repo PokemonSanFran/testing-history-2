@@ -59,7 +59,7 @@ WhyAreYouHelpingThem_ObjectDebriefSetUp_Script::
 
 WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script::
 	clearflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL
-	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN1
+	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN
 	addobject 1
 	addobject 3
 	setobjectxyperm 1, 6, 6

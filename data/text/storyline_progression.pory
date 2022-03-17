@@ -28,7 +28,7 @@ script Act1_1_Complete_WarpToCompound_Script {
 }
 
 script WorkingFerry_SetUp_Script {
-    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN1_2)
+    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN)
 }
 
 script TheStrikeStrikesBack_Check_Script {
