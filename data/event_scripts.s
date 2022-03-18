@@ -1118,7 +1118,7 @@ end
     .include "data/cutscenes/ThereCanOnlyBeOne.inc"
 .include "data/cutscenes/ImProbablyBetterThanYou.inc"
   .include "data/cutscenes/swagbag.inc"
-##  .include "data/cutscenes/ReadySetIStarted2HoursAgo.inc"
+  .include "data/cutscenes/ReadySetIStarted2HoursAgo.inc"
 ##  .include "data/cutscenes/EnterFalkner.inc"
 ##  .include "data/cutscenes/EnterBugsy.inc"
 ##  .include "data/cutscenes/EnterWhitney.inc"

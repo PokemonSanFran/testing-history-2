@@ -33,7 +33,7 @@
       "elevation": 0,
       "var": "VAR_LITTLEROOT_INTRO_STATE",
       "var_value": "5",
-      "script": "FashionCaseReminder_Script"
+      "script": "TwoHoursAgo_FashionCaseReminder_Script"
     }
   ],
   "bg_events": [

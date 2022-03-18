@@ -1,8 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFTRANSRIVAL_2 = 2
-const PSFBADADMIN1 = 3
-const PSFBADADMIN1_2 = 6
+const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
+const PSFBADADMIN = 2 //FLAG_TEMP_2
 
 mapscripts Psfcity8_Compound_1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -36,29 +34,23 @@ script Psfcity8_Compound_1F_MapScripts_OnTransition {
 }
 
 script ExplorePsfcity8_ObjectSetUp {
-    setobjectmovementtype(PSFBADADMIN1, MOVEMENT_TYPE_FACE_RIGHT) 
-        setobjectxyperm(PSFBADADMIN1,8,6)
-}
-
-script TwoHoursAgo_ObjectSetUp {
-
-        special(GetNumberOfBadges) //If you've got four badges, Psfbadadmin no longer provides help and tutorials and isn't in the house
-        if (var(VAR_TEMP_0) > 4){
-            setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN)
-        }
+    setobjectmovementtype(PSFBADADMIN, MOVEMENT_TYPE_FACE_RIGHT) 
+    setobjectxyperm(PSFBADADMIN,8,6)
 }
 
 script Act1_1_ObjectCleanUp{
-    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN)
-        clearflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
-
+    setflag(FLAG_TEMP_2)
+    setflag(FLAG_TEMP_3)
 }
 
 script Act1_2_ObjectSetUp{
-    setflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_2)
+    setflag(FLAG_TEMP_3)
 }
 
 script Psftransrival_Compound_Script {
+
     if (var(VAR_STORYLINE_STATE) == 9){
         goto(Act1_1_Complete_Psftransrival_Dialogue)
     }
@@ -68,70 +60,19 @@ script Psftransrival_Compound_Script {
 }
 
 script Psfbadadmin_Compound_Script {
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+
+    if (flag(FLAG_TEMP_1F)) {
+        call(TwoHoursAgo_ExplainLeftovers_Dialouge)
+      }
+
     if (var(VAR_LITTLEROOT_INTRO_STATE) == 5){
-        goto(swagbag_HelpPlayer_Script)
-    }
-}
-
-script TwoHoursAgo_TheyreEager_Dialogue {
-
-    if(flag(FLAG_RECIEVED_LEFTOVERS_PSFBADADMIN1)){
-        goto(TwoHoursAgo_ExplainLeftovers_Dialouge)
+        call(swagbag_HelpPlayer_Script)
     }
 
-    lockall
-        faceplayer
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_TwoHoursAgo_TheyreEager_Text1,MSGBOX_NPC)
-        callnative(ClearMugshot)
-        closemessage
-        goto(TwoHoursAgo_ExplainLeague_SetUp)
-}
-
-script TwoHoursAgo_ExplainLeague_SetUp {
-    lock
-        fadescreen(FADE_TO_BLACK)
-        setobjectxy(PSFBADADMIN1_2,4,6)
-        turnobject(PSFBADADMIN1_2,DIR_WEST)
-        setobjectmovementtype(PSFBADADMIN1_2,MOVEMENT_TYPE_FACE_LEFT)
-        setobjectxy(PLAYER,1,6)
-        turnobject(PLAYER, DIR_EAST)
-        call(CameraToPlayer_Movement)
-        goto(TwoHoursAgo_ExplainLeague_Script)
-}
-
-script TwoHoursAgo_ExplainLeague_Script {
-    lockall
-        //TODO write special for league explain cutscene
-        msgbox(gText_TwoHoursAgo_ExplainLeague_Text1)
-        msgbox(gText_TwoHoursAgo_ExplainLeague_Text2)
-        msgbox(gText_TwoHoursAgo_ExplainLeague_Text3)
-        closemessage
-        fadescreen(FADE_FROM_BLACK)
-        goto(TwoHoursAgo_LeftoversPokeballs_Dialogue)
-}
-
-script TwoHoursAgo_LeftoversPokeballs_Dialogue {
-    setflag(FLAG_RECIEVED_LEFTOVERS_PSFBADADMIN1)
-        callnative(DrawMugshot)
-        msgbox(gText_TwoHoursAgo_LeftoversPokeballs_Text1)
-        lockall
-        giveitem(ITEM_LEFTOVERS)
-        giveitem(ITEM_POKE_BALL,5)
-        callnative(ClearMugshot)
-        closemessage
-        releaseall
-        end
-}
-
-script TwoHoursAgo_ExplainLeftovers_Dialouge {
-    lockall
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        bufferleadmonspeciesname(0)
-        msgbox(gText_TwoHoursAgo_ExplainLeftovers_Text1,MSGBOX_NPC)
-        callnative(ClearMugshot)
+    call(TwoHoursAgo_TheyreEager_Dialogue)
         closemessage
         releaseall
         end
@@ -205,25 +146,3 @@ script Psfcity8_Compound_1F_InteractPsfbadadmin {
     }
 }
         
-text gText_TwoHoursAgo_TheyreEager_Text1 {
-    format("Looks like Psftransrival woke up early and already left! They're eager, I'll give them that. I guess they didn't need the explanation... or breakfast.")
-}
-
-text gText_TwoHoursAgo_ExplainLeague_Text1 {
-    format("You're in a race against hundreds of other Pokémon Trainers, to see who can beat our 8 Gym Leaders first. The first 16 Trainers to do so, will qualify for the Championship Tournament, held in a few weeks.")
-}
-
-text gText_TwoHoursAgo_ExplainLeague_Text2 {
-    format("The tournament will test all of your skills as a Trainer, but the win will become a Psfbadguy1 sponsored career Pokémon Trainer.")
-}
-
-text gText_TwoHoursAgo_ExplainLeague_Text3 {
-    format("We expect the best from you and Psftransrival! If you fail to qualify for the Championship, we'll be terminating your contract, and you'll be on your own... but we know that won't be the case! So don't worry.")
-}
-text gText_TwoHoursAgo_LeftoversPokeballs_Text1 {
-    format("Psfcompany2 is always so delicious! Too bad Psftransrival didn't eat with us. I guess you can take their portion of the food, and I bought you both PokéBalls, but you can have theirs too!")
-}
-
-text gText_TwoHoursAgo_ExplainLeftovers_Text1 {
-    format("Your {STR_VAR_1} can hold those Leftovers to restore HP during battle. Now, you should get a move on! Don't let Psftransrival get too far ahead of you!")
-}

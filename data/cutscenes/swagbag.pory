@@ -1,13 +1,16 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFBADADMIN = 2
+const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
+const PSFBADADMIN = 2 //FLAG_TEMP_2
 
 script Swagbag_ObjectSetUp {
-    clearflag(FLAG_HIDE_COMPOUND_PSFBADADMIN)
-    clearflag(FLAG_HIDE_COMPOUND_POKEDEX)
     turnobject(PSFBADADMIN, DIR_WEST) 
     setobjectmovementtype(PSFTRANSRIVAL,MOVEMENT_TYPE_FACE_RIGHT)
     setobjectxy(PSFTRANSRIVAL,6,4)
+}
+
+script Swagbag_IncrementIntroState_Script {
+    addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+        end
 }
 
 script Swagbag_WelcomeToPsfregion1_Dialogue {
@@ -122,15 +125,9 @@ script Swagbag_DontLeavePsfcity8_Dialogue {
 }
 
 script swagbag_HelpPlayer_Script {//TODO Set up actual question a answer for Psfbadadmin1 here
-    lockall
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
         msgbox(gText_Swagbag_InTheActualGame,MSGBOX_NPC)
         callnative(ClearMugshot)
-        closemessage
         applymovement(PSFBADADMIN,Common_Movement_FaceRight)
-        releaseall
-        end
 }
 
 text gText_Swagbag_WelcomeToRegion {

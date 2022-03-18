@@ -1,10 +1,10 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFBADADMIN = 2
+const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
+const PSFBADADMIN = 2 //FLAG_TEMP_2
 
 script ImProbablyBetterThanYou_ObjectSetUp {
-    setflag(FLAG_HIDE_COMPOUND_POKEDEX)
-    setflag(FLAG_HIDE_COMPOUND_PSFBADADMIN)
+    setflag(FLAG_TEMP_3)
+    setflag(FLAG_TEMP_2)
 }
 
 script ImProbablyBetterThanYou_MovePlayerInside_Script {

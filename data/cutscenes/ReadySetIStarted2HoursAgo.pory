@@ -1,0 +1,107 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
+const PSFBADADMIN = 2 //FLAG_TEMP_2
+
+script TwoHoursAgo_ObjectSetUp {
+  if (var (VAR_LITTLEROOT_INTRO_STATE) > 5) { //If you've got four badges, Psfbadadmin no longer provides help and tutorials and isn't in the house
+    setflag(FLAG_TEMP_3)
+    setflag(FLAG_TEMP_2)
+  }
+}
+script TwoHoursAgo_FashionCaseReminder_Script {
+  //TODO Add FLAG_USED_FASHION_CASE to the fashion case script when I write it... someday.
+  if (!flag(FLAG_USED_FASHION_CASE)) {
+    setflag(FLAG_USED_FASHION_CASE)
+    applymovement(PLAYER, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    lockall
+    msgbox(gText_WhatOutfitDoYou)
+    special(OpenPokeblockCaseOnFeeder)
+    waitstate
+    msgbox(gText_YouCanChangeYourOutfit)
+    closemessage
+    release
+    end
+  } else {
+    release
+  }
+}
+
+script TwoHoursAgo_TheyreEager_Dialogue {
+  msgbox(gText_TwoHoursAgo_TheyreEager_Text1, MSGBOX_NPC)
+  callnative(ClearMugshot)
+  goto(TwoHoursAgo_ExplainLeague_ObjectSetUp_Script)
+}
+
+script TwoHoursAgo_ExplainLeague_ObjectSetUp_Script {
+  lock
+  fadescreen(FADE_TO_BLACK)
+  setobjectxy(PSFBADADMIN1_2, 4, 6)
+  turnobject(PSFBADADMIN1_2, DIR_WEST)
+  setobjectmovementtype(PSFBADADMIN1_2, MOVEMENT_TYPE_FACE_LEFT)
+  setobjectxy(PLAYER, 1, 6)
+  turnobject(PLAYER, DIR_EAST)
+  call(CameraToPlayer_Movement)
+  goto(TwoHoursAgo_ExplainLeague_Script)
+}
+
+script TwoHoursAgo_ExplainLeague_Script {
+  lockall
+  //TODO write special for league explain cutscene
+  msgbox(gText_TwoHoursAgo_YoureInARace)
+  msgbox(gText_TwoHoursAgo_TheTouranemtnWillTest)
+  msgbox(gText_TwoHoursAgo_WeExpectTheBest)
+  closemessage
+  fadescreen(FADE_FROM_BLACK)
+  goto(TwoHoursAgo_LeftoversPokeballs_Dialogue)
+}
+
+script TwoHoursAgo_LeftoversPokeballs_Dialogue {
+    setflag(FLAG_TEMP_1F)
+  callnative(DrawMugshot)
+  msgbox(gText_TwoHoursAgo_CafeIsAlwaysSoDelicious)
+  callnative(ClearMugshot)
+  lockall
+  giveitem(ITEM_LEFTOVERS)
+  giveitem(ITEM_POKE_BALL, 5)
+  closemessage
+  releaseall
+  end
+}
+
+script TwoHoursAgo_ExplainLeftovers_Dialouge {
+  bufferleadmonspeciesname(0)
+  msgbox(gText_TwoHoursAgo_CanHoldThose, MSGBOX_NPC)
+  callnative(ClearMugshot)
+}
+
+
+text gText_WhatOutfitDoYou {
+  format("What outfit do you want to wear today?")
+}
+text gText_YouCanChangeYourOutfit {
+  format("You can change your outfit whenever you like by using the Fashion Case, found in your Bag's Key Items pocket.")
+}
+
+text gText_TwoHoursAgo_LooksLikeWokeUp {
+  format("Looks like Psftransrival woke up early and already left! They're eager, I'll give them that. I guess they didn't need the explanation... or breakfast.")
+}
+
+text gText_TwoHoursAgo_YoureInARace {
+  format("You're in a race against hundreds of other Pokémon Trainers, to see who can beat our 8 Gym Leaders first. The first 16 Trainers to do so, will qualify for the Championship Tournament, held in a few weeks.")
+}
+
+text gText_TwoHoursAgo_TheTouranemtnWillTest {
+  format("The tournament will test all of your skills as a Trainer, but the win will become a Psfbadguy1 sponsored career Pokémon Trainer.")
+}
+
+text gText_TwoHoursAgo_WeExpectTheBest {
+  format("We expect the best from you and Psftransrival! If you fail to qualify for the Championship, we'll be terminating your contract, and you'll be on your own... but we know that won't be the case! So don't worry.")
+}
+text gText_TwoHoursAgo_CafeIsAlwaysSoDelicious {
+  format("Psfcompany2 is always so delicious! Too bad Psftransrival didn't eat with us. I guess you can take their portion of the food, and I bought you both PokéBalls, but you can have theirs too!")
+}
+
+text gText_TwoHoursAgo_CanHoldThose {
+  format("Your {STR_VAR_1} can hold those Leftovers to restore HP during battle. Now, you should get a move on! Don't let Psftransrival get too far ahead of you!")
+}

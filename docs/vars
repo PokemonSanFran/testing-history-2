@@ -61,7 +61,7 @@
 #VAR_LITTLEROOT_INTRO_STATE
 **RELEVANCE**: Used to track the state of the Players' Home / Compound
 1: Started the game but has not met Bianca
-2:
+2: Needs to go upstairs to check out their room
 3: Has already looked at their room
 4: Has met Oak and got Pokedex
 5: Has slept in bed after getting Pokedex

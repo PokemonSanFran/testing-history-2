@@ -5,10 +5,6 @@ mapscripts Psfcity8_Compound_2F_MapScripts {
         VAR_LITTLEROOT_INTRO_STATE, 2: Swagbag_IncrementIntroState_Script 
     ]
 }
-script Swagbag_IncrementIntroState_Script {
-    setvar(VAR_LITTLEROOT_INTRO_STATE,3)
-        end
-}
 
 script RestInBed_Script {
     lockall
@@ -94,35 +90,10 @@ script WhyAreYouHelpingThem_StartChampionship_Dialogue {
         }
 }
 
-script FashionCaseReminder_Script {
-    //TODO Add FLAG_USED_FASHION_CASE to the fashion case script when I write it... someday.
-    if (!flag(FLAG_USED_FASHION_CASE)) {
-        applymovement(PLAYER,Common_Movement_ExclamationMark)
-            waitmovement(0)
-            setflag(FLAG_USED_FASHION_CASE)
-            lockall
-            msgbox(gText_FashionCaseReminder_Text1)
-            special(OpenPokeblockCaseOnFeeder)
-            waitstate
-            msgbox(gText_FashionCaseReminder_Text2)
-            closemessage
-            release  
-            end
-    } else {
-        release
-    }
-}
-
 text gText_RestInBed_Text1 {
     format("Let's get some rest...when should we wake up?")
 }
 
-text gText_FashionCaseReminder_Text1 {
-    format("What outfit do you want to wear today?")
-}
-text gText_FashionCaseReminder_Text2 {
-    format("You can change your outfit whenever you like by using the Fashion Case, found in your Bag's Key Items pocket.")
-}
 text blank {
     format("")
 }
