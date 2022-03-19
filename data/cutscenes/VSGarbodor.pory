@@ -317,8 +317,7 @@ script VSGarbodor_FlyWithoutPlayer_Script {
 }
 
 script VSGarbodor_ReturnToTheCompound_ObjectSetUp {
-    clearflag(FLAG_HIDE_COMPOUND_PSFTRANSRIVAL)
-    addobject(PSFTRANSRIVAL)
+    setflag(FLAG_TEMP_3)
     setobjectxy(PSFTRANSRIVAL,7,2)
     setobjectxyperm(PSFTRANSRIVAL,7,2)
     setobjectmovementtype(PSFTRANSRIVAL,MOVEMENT_ACTION_FACE_DOWN)

@@ -651,13 +651,13 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_UNUSED_0x264               0x264 //Unused Flag
+#define FLAG_RECIEVED_LEFTOVERS         0x264 //Previously Unused Flag
 #define FLAG_UNUSED_0x265               0x265 //Unused Flag
 #define FLAG_UNUSED_0x266               0x266 //Unused Flag
 #define FLAG_UNSUED_0x267               0x267//Unused Flag
 #define FLAG_UNSUED_0x268               0x268//Unused Flag
 #define FLAG_UNUSED_0x269               0x269//Unused Flag
-#define FLAG_USED_FASHION_CASE  0x26A//Previously Unused Flag
+#define FLAG_UNSUED_0x26A               0x26A//Unused Flag
 #define FLAG_UNUSED_0x26B 0x26B //Unused Flag
 #define FLAG_SOLVED_GYM_3_PUZZLE  0x26C // Previously Unused Flag
 #define FLAG_HIDE_PSFCITY15_PSFBADBOSS 0x26D// Previously Unused Flag

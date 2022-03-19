@@ -62,12 +62,13 @@
 **RELEVANCE**: Used to track the state of the Players' Home / Compound
 1: Started the game but has not met Bianca
 2: Needs to go upstairs to check out their room
-3: Has already looked at their room
-4: Has met Oak and got Pokedex
+3: Has already looked at their room, swagbag will now start
+4: Has met Oak and got Pokedex, can explore the town
 5: Has slept in bed after getting Pokedex
-6: Finished all events before 4th Gym
-7: Completed raid on naval base
-8: Oak has told player that championship will start soon
+6: Has opened the Fashion Case
+7: Finished all events before 4th Gym
+8: Completed raid on naval base
+9: Oak has told player that championship will start soon
 
 #VAR_STORYLINE_STATE
 23: Sleep to progress to Championship

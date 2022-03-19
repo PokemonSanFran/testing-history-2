@@ -337,8 +337,7 @@ VSGarbodor_FlyWithoutPlayer_Script::
 
 
 VSGarbodor_ReturnToTheCompound_ObjectSetUp::
-	clearflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL
-	addobject 1
+	setflag FLAG_TEMP_3
 	setobjectxy 1, 7, 2
 	setobjectxyperm 1, 7, 2
 	setobjectmovementtype 1, MOVEMENT_ACTION_FACE_DOWN

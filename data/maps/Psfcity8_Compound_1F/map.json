@@ -24,8 +24,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Psftransrival_Compound_Script",
-      "flag": "FLAG_HIDE_COMPOUND_PSFTRANSRIVAL"
+      "script": "Psftransrival_Psfcity8_Compound_1F_InteractScript",
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
@@ -37,8 +37,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Psfbadadmin_Compound_Script",
-      "flag": "FLAG_HIDE_COMPOUND_PSFBADADMIN"
+      "script": "Psfbadadmin_Psfcity8_Compound_1F_InteractScript",
+      "flag": "FLAG_TEMP_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEDEX",
@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_COMPOUND_POKEDEX"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEDEX",
@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_COMPOUND_POKEDEX"
+      "flag": "FLAG_TEMP_3"
     }
   ],
   "warp_events": [

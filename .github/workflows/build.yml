@@ -2,8 +2,7 @@ name: CI
 
 on:
   push:
-      #branches: [ default ]
-      branches: [ RefactorAct1 ]
+    branches: [ default ]
   pull_request:
 
 jobs:
@@ -18,14 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-
-        # I have no idea what this does
-        #- name: Checkout syms
-        #if: ${{ github.event_name == 'push' }}
-        #uses: actions/checkout@master
-        #with:
-        #  path: symbols
-        #  ref: symbols
 
       - name: Checkout agbcc
         uses: actions/checkout@master
@@ -45,9 +36,6 @@ jobs:
           ./install.sh ../
         working-directory: agbcc
 
-        #- name: Compare
-        #run: make -j${nproc} all syms
-        
       - name: build
         run: make -j${nproc}
             
@@ -62,12 +50,11 @@ jobs:
 
       - name: discord notifcation with commit messages 
         env:
-          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK_TEST }}
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
           DISCORD_AVATAR: https://archives.bulbagarden.net/media/upload/c/ca/BT294.png
           DISCORD_USERNAME: Loudred
-          # DISCORD_EMBED: {"content":"**DOWNLOAD** ➡ https://bit.ly/3IgDnk9 ⬅\n\n**Build Changelog:**","embeds":[{"title":"{{ commit.title }}","description":"{{ commit.description }}","url":"https://discordapp.com","color":11676446,"timestamp":"2022-03-19T00:26:22.015Z","author":{"name":"{{ commit.author.name }}","url":"https://discordapp.com","icon_url":"https://avatars.io/gravatar/{{ commit.author.email }}"},"fields":[]}]}
         uses: Ilshidur/action-discord@master
         with:
-        args: 'This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message } 
-        
-        Folder Link: https://bit.ly/3IgDnk9'
+            args: |
+                'This build has these improvements: {{ EVENT_PAYLOAD.commit.title } 
+                *DOWNLOAD** ➡ https://bit.ly/3IgDnk9 ⬅'

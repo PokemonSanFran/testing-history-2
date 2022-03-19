@@ -6,11 +6,21 @@ script Swagbag_ObjectSetUp {
     turnobject(PSFBADADMIN, DIR_WEST) 
     setobjectmovementtype(PSFTRANSRIVAL,MOVEMENT_TYPE_FACE_RIGHT)
     setobjectxy(PSFTRANSRIVAL,6,4)
+    setobjectxyperm(PSFTRANSRIVAL,6,4)
 }
 
 script Swagbag_IncrementIntroState_Script {
     addvar(VAR_LITTLEROOT_INTRO_STATE,1)
         end
+}
+
+script swagbag_ObjectHide_Script {
+    setobjectmovementtype(PSFBADADMIN, MOVEMENT_TYPE_FACE_RIGHT)
+    turnobject(PSFBADADMIN,DIR_EAST)
+    setobjectxy(PSFBADADMIN,8,6)
+    setobjectxyperm(PSFBADADMIN,8,6)
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_3)
 }
 
 script Swagbag_WelcomeToPsfregion1_Dialogue {
@@ -78,7 +88,7 @@ script Swagbag_PokedexApps_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_Swagbag_HmmThoseAllSound)
         callnative(ClearMugshot)
-        removeobject(5)
+        removeobject(3)
         removeobject(4)
         playfanfare(MUS_OBTAIN_ITEM)  
         msgbox(gText_Swagbag_PlayerRecivedMoney)
@@ -101,6 +111,7 @@ script Swagbag_WhenCanWeStart_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_Swagbag_FineIllExploreTheCity)
         closemessage
+        callnative(ClearMugshot)
         applymovement(PSFTRANSRIVAL,swagbag_LeaveCompound)
         waitmovement(0)
         playse(SE_EXIT)
@@ -109,7 +120,6 @@ script Swagbag_WhenCanWeStart_Dialogue {
 }
 
 script Swagbag_DontLeavePsfcity8_Dialogue {
-    addvar(VAR_LITTLEROOT_INTRO_STATE,1)
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_Swagbag_IllBeWorkingOnMyLaptop)
@@ -117,6 +127,7 @@ script Swagbag_DontLeavePsfcity8_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_Swagbag_GotItThanks)
         closemessage
+        callnative(ClearMugshot)
         applymovement(PSFBADADMIN,swagbag_WalkToLaptop) 
         waitmovement(0)
         fadedefaultbgm
@@ -128,6 +139,21 @@ script swagbag_HelpPlayer_Script {//TODO Set up actual question a answer for Psf
         msgbox(gText_Swagbag_InTheActualGame,MSGBOX_NPC)
         callnative(ClearMugshot)
         applymovement(PSFBADADMIN,Common_Movement_FaceRight)
+        waitmovement(0)
+        return
+}
+
+script swagbag_PreventPlayerLeavingPsfcity8_Event_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_DontLeavePsfcity8_Text1) 
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PLAYER,swagbag_WalkBackwards)
+    waitmovement(0)
+    releaseall
+    end
 }
 
 text gText_Swagbag_WelcomeToRegion {
@@ -218,6 +244,10 @@ text gText_Swagbag_InTheActualGame {
     format("In the actual game, this will be a list of questions that the player can ask and getr answers to. Tutorial level shit.")
 }
 
+text gText_DontLeavePsfcity8_Text1 {
+    format("I don't think I should leave Psfcity8 yet...")
+}
+
 movement swagbag_GreetPlayer {
     face_up
         walk_up
@@ -256,4 +286,12 @@ movement swagbag_WalkToLaptop {
         walk_down * 1
         face_right
         step_end
+}
+
+
+movement swagbag_WalkBackwards {
+    lock_facing_direction
+    walk_down
+    unlock_facing_direction
+    step_end
 }

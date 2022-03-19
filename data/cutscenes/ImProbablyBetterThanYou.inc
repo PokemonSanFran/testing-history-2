@@ -1,6 +1,6 @@
 ImProbablyBetterThanYou_ObjectSetUp::
-	setflag FLAG_HIDE_COMPOUND_POKEDEX
-	setflag FLAG_HIDE_COMPOUND_PSFBADADMIN
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_2
 	return
 
 
@@ -104,21 +104,22 @@ ImProbablyBetterThanYou_Annoyed_Dialogue::
 	switch VAR_TEMP_0
 	case 1, ImProbablyBetterThanYou_Annoyed_Dialogue_3
 	case 2, ImProbablyBetterThanYou_Annoyed_Dialogue_4
-	msgbox gText_ImProbablyBetterThanYou_NomNomNom
+	msgbox gText_ImProbablyBetterThanYou_GoCheckOutYourRoom, MSGBOX_NPC
 	setvar VAR_TEMP_0, 1
 ImProbablyBetterThanYou_Annoyed_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
+	applymovement 1, ImProbablyBetterThanYou_GoBackToFood
+	waitmovement 0
 	return
 
 ImProbablyBetterThanYou_Annoyed_Dialogue_3:
-	msgbox gText_ImProbablyBetterThanYou_GoCheckOutYourRoom
-	setvar VAR_TEMP_0, 2
+	msgbox gText_ImProbablyBetterThanYou_OhManAreYouTrying, MSGBOX_NPC
+	addvar VAR_TEMP_0, 1
 	goto ImProbablyBetterThanYou_Annoyed_Dialogue_1
 
 ImProbablyBetterThanYou_Annoyed_Dialogue_4:
-	msgbox gText_ImProbablyBetterThanYou_OhManAreYouTrying
-	setvar VAR_TEMP_0, 2
+	msgbox gText_ImProbablyBetterThanYou_NomNomNom
 	goto ImProbablyBetterThanYou_Annoyed_Dialogue_1
 
 
@@ -150,6 +151,14 @@ ImProbablyBetterThanYou_GestureUpstairs:
 	delay_16
 	face_down
 	step_end
+
+ImProbablyBetterThanYou_GoBackToFood:
+	face_original_direction
+	step_end
+
+gText_ImProbablyBetterThanYou_DeepBreath::
+	.string "{COLOR 09}<deep breath>\n"
+	.string "{COLOR DARK_GRAY}Let's do this.$"
 
 gText_ImProbablyBetterThanYou_GreatToMeet::
 	.string "You must be {PLAYER}. Great to meet\n"

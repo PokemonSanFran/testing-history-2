@@ -58,10 +58,7 @@ WhyAreYouHelpingThem_ObjectDebriefSetUp_Script::
 
 
 WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script::
-	clearflag FLAG_HIDE_COMPOUND_PSFTRANSRIVAL
-	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN
-	addobject 1
-	addobject 3
+	setflag FLAG_TEMP_3
 	setobjectxyperm 1, 6, 6
 	setobjectxyperm 3, 6, 5
 	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_DOWN

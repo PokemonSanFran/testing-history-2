@@ -2,6 +2,7 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
 const PSFBADADMIN = 2 //FLAG_TEMP_2
 
+
 script ImProbablyBetterThanYou_ObjectSetUp {
     setflag(FLAG_TEMP_3)
     setflag(FLAG_TEMP_2)
@@ -106,17 +107,22 @@ script ImProbablyBetterThanYou_Annoyed_Dialogue {
 
     switch (var(VAR_TEMP_0)) {
         case 1: 
-            msgbox(gText_ImProbablyBetterThanYou_GoCheckOutYourRoom)
-            setvar(VAR_TEMP_0,2)
+            msgbox(gText_ImProbablyBetterThanYou_OhManAreYouTrying,MSGBOX_NPC)
+            addvar(VAR_TEMP_0,1)
         case 2:
-            msgbox(gText_ImProbablyBetterThanYou_OhManAreYouTrying)
-            setvar(VAR_TEMP_0,2)
-        default:
             msgbox(gText_ImProbablyBetterThanYou_NomNomNom)
+        default:
+            msgbox(gText_ImProbablyBetterThanYou_GoCheckOutYourRoom,MSGBOX_NPC)
             setvar(VAR_TEMP_0,1)
     }
     callnative(ClearMugshot)
     closemessage
+        applymovement(PSFTRANSRIVAL,ImProbablyBetterThanYou_GoBackToFood)
+            waitmovement(0)
+}
+
+text gText_ImProbablyBetterThanYou_DeepBreath {
+    format("{COLOR 09}<deep breath>\n{COLOR DARK_GRAY}Let's do this.") //PSF TODO add asterisk to font, look at SKiLpVg.png and find best treatment for actions (color? bracket?)
 }
 
 text gText_ImProbablyBetterThanYou_GreatToMeet {
@@ -210,4 +216,9 @@ movement ImProbablyBetterThanYou_GestureUpstairs {
         delay_16
         face_down
         step_end
+}
+
+movement ImProbablyBetterThanYou_GoBackToFood {
+    face_original_direction
+    step_end
 }

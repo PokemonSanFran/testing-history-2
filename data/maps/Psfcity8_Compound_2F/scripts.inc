@@ -7,11 +7,6 @@ Psfcity8_Compound_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-Swagbag_IncrementIntroState_Script::
-	setvar VAR_LITTLEROOT_INTRO_STATE, 3
-	end
-
-
 RestInBed_Script::
 	lockall
 	compare VAR_LITTLEROOT_INTRO_STATE, 4
@@ -128,36 +123,9 @@ WhyAreYouHelpingThem_StartChampionship_Dialogue_1:
 	end
 
 
-FashionCaseReminder_Script::
-	goto_if_unset FLAG_USED_FASHION_CASE, FashionCaseReminder_Script_1
-	release
-	return
-
-FashionCaseReminder_Script_1:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement 0
-	setflag FLAG_USED_FASHION_CASE
-	lockall
-	msgbox gText_FashionCaseReminder_Text1
-	special OpenPokeblockCaseOnFeeder
-	waitstate
-	msgbox gText_FashionCaseReminder_Text2
-	closemessage
-	release
-	end
-
-
 gText_RestInBed_Text1::
 	.string "Let's get some rest...when should we\n"
 	.string "wake up?$"
-
-gText_FashionCaseReminder_Text1::
-	.string "What outfit do you want to wear today?$"
-
-gText_FashionCaseReminder_Text2::
-	.string "You can change your outfit whenever\n"
-	.string "you like by using the Fashion Case,\l"
-	.string "found in your Bag's Key Items pocket.$"
 
 blank::
 	.string "$"

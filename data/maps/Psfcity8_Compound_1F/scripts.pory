@@ -9,9 +9,9 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue 
-        VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue 
-        VAR_LITTLEROOT_INTRO_STATE, 7:WhyAreYouHelpingThem_BackAtCompound_Dialogue
-        VAR_STORYLINE_STATE, 20: VSGarbodor_ReturnToTheCompound_Dialogue 
+            VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue 
+            VAR_LITTLEROOT_INTRO_STATE, 8:WhyAreYouHelpingThem_BackAtCompound_Dialogue
+            VAR_STORYLINE_STATE, 20: VSGarbodor_ReturnToTheCompound_Dialogue 
     ]
 }
 
@@ -25,55 +25,63 @@ script Psfcity8_Compound_1F_MapScripts_OnTransition {
     switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
         case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) 
         case 3: goto(Swagbag_ObjectSetUp) 
-        case 4: goto(ExplorePsfcity8_ObjectSetUp) 
-        case 5: goto(TwoHoursAgo_ObjectSetUp) 
-        case 6: goto(WorkingFerry_SetUp_Script) 
-        case 7: goto(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
+        case 4: goto(swagbag_ObjectHide_Script) 
+                //5 isn't needed because it is set in the bedroom
+        case 6: goto(TwoHoursAgo_ObjectSetUp) 
+        case 7: goto(WorkingFerry_SetUp_Script) 
+        case 8: goto(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
     }
-
-}
-
-script ExplorePsfcity8_ObjectSetUp {
-    setobjectmovementtype(PSFBADADMIN, MOVEMENT_TYPE_FACE_RIGHT) 
-    setobjectxyperm(PSFBADADMIN,8,6)
 }
 
 script Act1_1_ObjectCleanUp{
     setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_3)
+        setflag(FLAG_TEMP_3)
 }
 
 script Act1_2_ObjectSetUp{
     setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_3)
+        setflag(FLAG_TEMP_2)
+        setflag(FLAG_TEMP_3)
 }
 
-script Psftransrival_Compound_Script {
+script Psftransrival_Psfcity8_Compound_1F_InteractScript {
+    lock
 
-    if (var(VAR_STORYLINE_STATE) == 9){
-        goto(Act1_1_Complete_Psftransrival_Dialogue)
-    }
-    else {
-        goto(ImProbablyBetterThanYou_Annoyed_Dialogue)
-    }
+        if (var(VAR_STORYLINE_STATE) == 9){
+            goto(Act1_1_Complete_Psftransrival_Dialogue)
+        }
+        else {
+            call(ImProbablyBetterThanYou_Annoyed_Dialogue)
+        }
+
+    release
+        end
 }
 
-script Psfbadadmin_Compound_Script {
+script Psfbadadmin_Psfcity8_Compound_1F_InteractScript {
     lockall
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
 
-    if (flag(FLAG_TEMP_1F)) {
-        call(TwoHoursAgo_ExplainLeftovers_Dialouge)
-      }
+        //var is 6, has leftovers, and temp1f is set: explain lefties
+        //var is 6, has leftovers, temmp1f is not set: help menu
+        //var is 6, does not have leftovers, explain league
+        //var is not 6, help menu
 
-    if (var(VAR_LITTLEROOT_INTRO_STATE) == 5){
-        call(swagbag_HelpPlayer_Script)
-    }
-
-    call(TwoHoursAgo_TheyreEager_Dialogue)
-        closemessage
+        if (var(VAR_LITTLEROOT_INTRO_STATE) == 6){
+            if (flag(FLAG_RECIEVED_LEFTOVERS)){
+                if(flag(FLAG_TEMP_1F)){
+                    call(TwoHoursAgo_ExplainLeftovers_Dialouge)
+                }else {
+                    call(swagbag_HelpPlayer_Script)
+                }
+            }else {
+                call(TwoHoursAgo_TheyreEager_Dialogue)
+            }
+        }else {
+            call(swagbag_HelpPlayer_Script)
+        }
+    closemessage
         releaseall
         end
 }
@@ -132,17 +140,3 @@ text gText_Act1_1_Complete_ImSureIllFigure {
     format("I'm sure I'll figure something out.")
 }
 
-script CameraToPlayer_Movement {
-    setvar(VAR_0x8004, 1)
-        setvar(VAR_0x8005, 6)
-        special(TeleportCamera)
-}
-
-
-script Psfcity8_Compound_1F_InteractPsfbadadmin {
-    lockall
-    if (var(VAR_LITTLEROOT_INTRO_STATE) == 5){
-        goto(swagbag_HelpPlayer_Script)
-    }
-}
-        

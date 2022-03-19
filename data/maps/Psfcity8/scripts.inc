@@ -13,53 +13,23 @@ Psfcity8_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 	return
 
 Psfcity8_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 0, NewGameSetUp
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 0, ImProbablyBetterThanYou_StandingOutside_Dialogue
 	.2byte 0
 
 
-Champion_TurnPlayerAwayHome::
-	compare FLAG_SYS_GAME_CLEAR, 0
-	goto_if_ne Champion_TurnPlayerAwayHome_1
+Champion_TurnPlayerAwayHome_Script::
+	goto_if_set FLAG_SYS_GAME_CLEAR, Champion_TurnPlayerAwayHome_Script_1
 	return
 
-Champion_TurnPlayerAwayHome_1:
+Champion_TurnPlayerAwayHome_Script_1:
 	lockall
-	msgbox Champion_TurnPlayerAwayHome_Text_0
+	msgbox gText_RemindPlayerNewHome
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_PLAYER, swagbag_WalkBackwards
 	waitmovement 0
 	releaseall
 	end
 
 
-NewGameSetUp::
-	setflag FLAG_HIDE_PSFCITY7_PSFGOODADMIN
-	goto ImProbablyBetterThanYou_StandingOutside_Dialogue
-	return
-
-
-DontLeavePsfcity8_Script::
-	lockall
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_DontLeavePsfcity8_Text1
-	callnative ClearMugshot
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, DontLeavePsfcity_Movement
-	return
-
-
-DontLeavePsfcity_Movement:
-	walk_down
-	step_end
-
-Champion_TurnPlayerAwayHome_Text_0:
+gText_RemindPlayerNewHome::
 	.string "You don't live here anymore!$"
-
-gText_ImProbablyBetterThanYou_DeepBreath::
-	.string "{COLOR 09}<deep breath>\n"
-	.string "{COLOR DARK_GRAY}Let's do this.$"
-
-gText_DontLeavePsfcity8_Text1::
-	.string "I don't think I should leave Psfcity8\n"
-	.string "yet...$"

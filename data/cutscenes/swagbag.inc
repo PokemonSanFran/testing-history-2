@@ -1,9 +1,23 @@
 Swagbag_ObjectSetUp::
-	clearflag FLAG_HIDE_COMPOUND_PSFBADADMIN
-	clearflag FLAG_HIDE_COMPOUND_POKEDEX
 	turnobject 2, DIR_WEST
 	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_RIGHT
 	setobjectxy 1, 6, 4
+	setobjectxyperm 1, 6, 4
+	return
+
+
+Swagbag_IncrementIntroState_Script::
+	addvar VAR_LITTLEROOT_INTRO_STATE, 1
+	end
+
+
+swagbag_ObjectHide_Script::
+	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_RIGHT
+	turnobject 2, DIR_EAST
+	setobjectxy 2, 8, 6
+	setobjectxyperm 2, 8, 6
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
 	return
 
 
@@ -72,7 +86,7 @@ Swagbag_PokedexApps_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_Swagbag_HmmThoseAllSound
 	callnative ClearMugshot
-	removeobject 5
+	removeobject 3
 	removeobject 4
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox gText_Swagbag_PlayerRecivedMoney
@@ -96,6 +110,7 @@ Swagbag_WhenCanWeStart_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_Swagbag_FineIllExploreTheCity
 	closemessage
+	callnative ClearMugshot
 	applymovement 1, swagbag_LeaveCompound
 	waitmovement 0
 	playse SE_EXIT
@@ -105,7 +120,6 @@ Swagbag_WhenCanWeStart_Dialogue::
 
 
 Swagbag_DontLeavePsfcity8_Dialogue::
-	addvar VAR_LITTLEROOT_INTRO_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_IllBeWorkingOnMyLaptop
@@ -113,6 +127,7 @@ Swagbag_DontLeavePsfcity8_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_Swagbag_GotItThanks
 	closemessage
+	callnative ClearMugshot
 	applymovement 2, swagbag_WalkToLaptop
 	waitmovement 0
 	fadedefaultbgm
@@ -121,13 +136,22 @@ Swagbag_DontLeavePsfcity8_Dialogue::
 
 
 swagbag_HelpPlayer_Script::
-	lockall
-	setvar VAR_0x8000, MUGSHOT_LANCE
-	callnative DrawMugshot
 	msgbox gText_Swagbag_InTheActualGame, MSGBOX_NPC
 	callnative ClearMugshot
-	closemessage
 	applymovement 2, Common_Movement_FaceRight
+	waitmovement 0
+	return
+
+
+swagbag_PreventPlayerLeavingPsfcity8_Event_Script::
+	lock
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_DontLeavePsfcity8_Text1
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, swagbag_WalkBackwards
+	waitmovement 0
 	releaseall
 	end
 
@@ -186,6 +210,12 @@ swagbag_WalkToLaptop:
 	walk_left
 	walk_down
 	face_right
+	step_end
+
+swagbag_WalkBackwards:
+	lock_facing_direction
+	walk_down
+	unlock_facing_direction
 	step_end
 
 gText_Swagbag_WelcomeToRegion::
@@ -298,3 +328,7 @@ gText_Swagbag_InTheActualGame::
 	.string "In the actual game, this will be a list of\n"
 	.string "questions that the player can ask and\l"
 	.string "getr answers to. Tutorial level shit.$"
+
+gText_DontLeavePsfcity8_Text1::
+	.string "I don't think I should leave Psfcity8\n"
+	.string "yet...$"
