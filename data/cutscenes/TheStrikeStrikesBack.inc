@@ -26,27 +26,13 @@ TheStrikeStrikesBack_CrowdFacesNorth_Script::
 	return
 
 
-TheStrikeStrikesBack_FlyIntoFrame::
-	setfieldeffectargument 0, 1
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	addobject 1
+TheStrikeStrikesBack_Check_Script::
+	compare VAR_STORYLINE_STATE, 17
+	goto_if_eq TheStrikeStrikesBack_Check_Script_1
 	return
 
-
-TheStrikeStrikesBack_FlyOutFrame::
-	applymovement 1, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	delay 50
-	setfieldeffectargument 0, 1
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	delay 15
-	removeobject 1
-	applymovement OBJ_EVENT_ID_PLAYER, TurnInivisible
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	setflag FLAG_SPAWN_INVISIBLE
-	warpsilent MAP_PSFROUTE22, 255, 21, 25
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL
+TheStrikeStrikesBack_Check_Script_1:
+	goto TheStrikeStrikesBack_PhoneCall_Dialogue
 	return
 
 
@@ -124,30 +110,6 @@ TheStrikeStrikesBack_SetUpPostWarp_Script_2:
 	warpsilent MAP_PSFROUTE22, 255, 21, 25
 	waitstate
 	goto TheStrikeStrikesBack_SetUpPostWarp_Script_1
-
-
-TheStrikeStrikesBack_Congrats_Dialogue::
-	lockall
-	setvar VAR_ROUTE110_STATE, 1
-	clearflag FLAG_HIDE_ROUTE_128_STEVEN
-	call TheStrikeStrikesBack_FlyIntoFrame
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_CongratsOnAll
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_DidYouFlyAll
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_AskedMeToPick
-	closemessage
-	callnative ClearMugshot
-	call TheStrikeStrikesBack_FlyOutFrame
-	delay 100
-	goto TheStrikeStrikesBack_Intro_Dialogue
-	return
 
 
 TheStrikeStrikesBack_Intro_Dialogue::

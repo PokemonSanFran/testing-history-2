@@ -28,7 +28,7 @@ script Psfcity8_Compound_1F_MapScripts_OnTransition {
         case 4: goto(swagbag_ObjectHide_Script) 
                 //5 isn't needed because it is set in the bedroom
         case 6: goto(TwoHoursAgo_ObjectSetUp) 
-        case 7: goto(WorkingFerry_SetUp_Script) 
+        case 7: goto(AandWereBack_ObjectSetUp_Script)
         case 8: goto(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
     }
 }

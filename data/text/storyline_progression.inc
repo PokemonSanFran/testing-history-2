@@ -21,31 +21,15 @@ Act1_1_Complete_Monologue::
 
 
 Act1_1_Complete_WarpToCompound_Script::
-	setvar VAR_LITTLEROOT_INTRO_STATE, 6
+	addvar VAR_LITTLEROOT_INTRO_STATE, 1
 	msgbox gText_Act1_1_Complete_Question, MSGBOX_YESNO
 	closemessage
-	compare VAR_RESULT, 1
+	compare VAR_RESULT, YES
 	goto_if_eq Act1_1_Complete_WarpToCompound_Script_1
 	return
 
 Act1_1_Complete_WarpToCompound_Script_1:
 	warpsilent MAP_PSFCITY8, 255, 3, 10
-	return
-
-
-WorkingFerry_SetUp_Script::
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_2
-	return
-
-
-TheStrikeStrikesBack_Check_Script::
-	compare VAR_STORYLINE_STATE, 17
-	goto_if_eq TheStrikeStrikesBack_Check_Script_1
-	return
-
-TheStrikeStrikesBack_Check_Script_1:
-	goto TheStrikeStrikesBack_PhoneCall_Dialogue
 	return
 
 
@@ -59,5 +43,4 @@ gText_Act1_1_Complete_GotAllThree::
 	.string "to Psfcity8 and call it a night.$"
 
 gText_Act1_1_Complete_Question::
-	.string "Do you want to automatically go back to\n"
-	.string "Psfcity8?$"
+	.string "Do you want to go back to Psfcity8?$"

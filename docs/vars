@@ -5,6 +5,29 @@
 4: Checked out bedroom, going to meet Oak now
 5: Has recieved Pokedex
 
+# VAR_GYM_1_STATE / 
+1: Solved puzzles, ready to fight
+2: Psfleader1 has walked to the battlefield
+3: Saved in front of Psfleader1
+4: Defeated Psfleader1
+5: Hear explanation of badge and TM
+
+#VAR_GYM_2_STATE
+1: Solved puzzles, ready to fight
+3: Saved in front of Psfleader2
+4: Defeated Psfleader2
+5: Hear explanation of badge and TM
+
+#VAR_GYM_3_STATE
+1: Solved puzzles, ready to fight
+2: Psfleader3 has walked to the battlefield
+3: Saved in front of Psfleader3
+4: Defeated Psfleader3
+5: Hear explanation of badge and TM
+
+#VAR_PSFCITY15_STATE
+1: Defeated Psfleader3
+
 # VAR_PSFCAVE7_STATE
 3: Archer has asked to come to see real Alcatraz
 4: Player has arrived on island after seeing real Alcatraz
@@ -66,11 +89,12 @@
 4: Has met Oak and got Pokedex, can explore the town
 5: Has slept in bed after getting Pokedex
 6: Has opened the Fashion Case
-7: Finished all events before 4th Gym
+7: Finished all cutscenes in 1.1
 8: Completed raid on naval base
 9: Oak has told player that championship will start soon
 
 #VAR_STORYLINE_STATE
+1 - 9: Complete any cutscene from 1.1
 23: Sleep to progress to Championship
 24: Starting the Championship
 25: Oak explained Championship

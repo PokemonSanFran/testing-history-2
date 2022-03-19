@@ -1,186 +1,34 @@
-const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER3 = 1
-
-//VAR_GYM_3_STATE
-//1: Solved puzzles, ready to fight
-//2: Psfleader3 has walked to the battlefield
-//3: Saved in front of Psfleader3
-//4: Defeated Psfleader3
-//5: Hear explanation of badge and TM
-
 mapscripts Psfcity15_Gym_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        switch (var(VAR_GYM_3_STATE)) {
-            case 1: goto(ArrangementMuseum_ObjectSetUp)
-            case 2: goto(Psfleader3StartBattle_ObjectSetup)
-            case 3: goto(Psfleader3StartBattle_ObjectSetup) 
-        }
+        goto(Psfcity15_Gym_MapScripts_OnTransition)
     }
+    MAP_SCRIPT_ON_FRAME_TABLE[
+        VAR_GYM_3_STATE, 1: EnterPsfleader3_WalkToBattlefield_Script
+    ]
 }
 
-script ArrangementMuseum_ObjectSetUp {
-    setobjectmovementtype(PSFLEADER3, MOVEMENT_TYPE_FACE_LEFT)
-    end
-}
-
-script Psfleader3StartBattle_ObjectSetup {
-    setobjectxyperm(PSFLEADER3,10,6)
-    setobjectmovementtype(PSFLEADER3, MOVEMENT_TYPE_FACE_LEFT)
-    end
-}
-
-script AutomaticSolvePuzzle_Script {
-    setflag(FLAG_SOLVED_GYM_3_PUZZLE) //automatic solve trainers disappear
-    setvar(VAR_GYM_3_STATE,1)
-    msgbox(format("Puzzle is solved. Leave and come back."),MSGBOX_NPC)
-}
-
-script Psfleader3WalkToBattlefield_Script{
-    setvar(VAR_GYM_3_STATE,2)
-    lockall
-    playse(SE_PIN)
-    applymovement(PSFLEADER3,Common_Movement_ExclamationMark)
-    waitmovement(0)
-    applymovement(PSFLEADER3,Psfleader3WalkToBattlefield_Movement)  
-    waitmovement(0)
-    releaseall
-    end
+script Psfcity15_Gym_MapScripts_OnTransition {
+    call(EnterPsfleader3_HidePuzzle_Script)
+        switch (var (VAR_GYM_3_STATE)) {
+        case 1:
+            goto(EnterPsfleader3_ObjectSetUp_Script)
+        case 3:
+            goto(EnterPsfleader3_StartBattle_ObjectSetup_Script)
+        }
 }
 
 script Psfleader3_Event_Script {
-    switch(var(VAR_GYM_3_STATE)) {
-        case 2: goto(MuseumArrangement_Dialogue)
-        case 3: goto(Psfleader3StartBattle_Script)
-        case 4: goto(Psfleader3PostBattle_Dialogue)  
-        case 5: goto(Psfleader3PostBattle_Dialogue2)  
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
+    callnative(DrawMugshot)
+    switch (var (VAR_GYM_3_STATE)) {
+    case 2:
+        goto(EnterPsfleader3_MuseumArrangement_Dialogue)
+    case 3:
+        goto(EnterPsfleader3_StartBattle_Script)
+    case 4:
+        goto(EnterPsfleader3_PostBattle_Dialogue)
+    case 5:
+        goto(EnterPsfleader3_PostBattle_Dialogue2)
     }
-}
-
-script MuseumArrangement_Dialogue {
-    lockall
-    setvar(VAR_GYM_3_STATE,3)
-    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    callnative(DrawMugshot)
-    faceplayer
-    msgbox(gText_MuseumArrangement_Text1)
-    callnative(ClearMugshot)
-    applymovement(PSFLEADER3,Psfleader3LookAround_Movement) 
-    waitmovement(0)
-    callnative(DrawMugshot)
-    msgbox(gText_MuseumArrangement_Text2)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_MuseumArrangement_Text3)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    callnative(DrawMugshot)
-    msgbox(gText_MuseumArrangement_Text4)
-    callnative(ClearMugshot)
-    call(Common_EventScript_SaveGame)
-    closemessage
-    goto (Psfleader3StartBattle_Script)
-}
-
-script Psfleader3StartBattle_Script {
-
-    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    callnative(DrawMugshot)
-    trainerbattle_single(TRAINER_WATTSON_1, gText_MuseumArrangement_Text5,gText_Psfleader3Alpha_HumanWin, Psfleader3Defeated_Script, NO_MUSIC)
-}
-
-script Psfleader3Defeated_Script {
-    lockall
-    setflag(FLAG_BADGE03_GET)
-    clearflag(FLAG_HIDE_PSFCITY15_PSFBADBOSS)
-    setvar(VAR_PSFCITY15_STATE,1)
-    setvar(VAR_GYM_3_STATE,4)
-    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    callnative(DrawMugshot)
-    msgbox(gText_Psfleader3PostBattle_Text1)
-    closemessage
-    callnative(ClearMugshot)
-    msgbox(gText_Psfleader3BadgeGet_Text1)
-	call(Common_EventScript_PlayGymBadgeFanfare)
-    giveitem(ITEM_TM34)
-    addvar(VAR_STORYLINE_STATE,1)
-    call(Act1_1_Check_Script)
-    releaseall
-    end
-}
-
-script Psfleader3PostBattle_Dialogue{
-    lockall
-    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    callnative(DrawMugshot)
-    msgbox(gText_Psfleader3PostBattle_Text2,MSGBOX_NPC)
-    callnative(ClearMugshot)
-    closemessage
-    releaseall
-    setvar(VAR_GYM_3_STATE,5)
-    end
-}
-script Psfleader3PostBattle_Dialogue2{
-    lockall
-    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    callnative(DrawMugshot)
-    msgbox(gText_Psfleader3PostBattle_Text3,MSGBOX_NPC)
-    callnative(ClearMugshot)
-    closemessage
-    releaseall
-    end
-}
-
-movement Psfleader3WalkToBattlefield_Movement {
-    walk_right * 9
-    walk_down
-    face_left
-    step_end
-}
-
-movement Psfleader3LookAround_Movement {
-    face_up
-    delay_16
-    face_down
-    delay_16
-    face_right
-    delay_16
-    face_left
-    step_end
-}
-
-text gText_MuseumArrangement_Text1 {
-    format("I was thinking about the arrangement of the museum. Museums tend to organize through etic categories, but I always wonder... how far off are we from their emic counterparts...? Sorry, I'm Psfleader3, Chief of the Psfcity15 Gym!")
-}
-text gText_MuseumArrangement_Text2 {
-    format("Has your visit been a positive time investment? There was a ton of qualitative research into curating the best possible experience for both patrons and challengers.")
-}
-text gText_MuseumArrangement_Text3 {
-    format("Uh... yup. Yeah. It's cool.")
-}
-text gText_MuseumArrangement_Text4 {
-    format("I can hear the Orre in you. Enchanting.")
-}
-text gText_MuseumArrangement_Text5 {
-    format("Let's see how your socialization impacted your battling ability!")
-}
-text gText_Psfleader3Alpha_AIWin {
-   format("Time to pay your tribute.") 
-}
-text gText_Psfleader3Alpha_HumanWin {
-   format("If this battle is any indication, your assimilation is going perfectly!") 
-}
-text gText_Psfleader3BadgeGet_Text1 {
-    format("You recieved the Psfbadge3 Badge!")
-}
-
-text gText_Psfleader3PostBattle_Text1 {
-    format("Wow, I'll really need to re-think my tactical core values. Awesome battle, {PLAYER}!")
-}
-
-text gText_Psfleader3PostBattle_Text2 {
-    format("That positive sanction means that traded Pokémon up to Level Psflevel3 will obey you. Psfgymattacknum3 is like a shaman in your pocket and will teach Psfgymattacknum1, allowing your clan to Psfgymattackdesc3.")
-}
-text gText_Psfleader3PostBattle_Text3 {
-    format("We'll need to battle again in the future. I want to increase our data set - a sample size of one isn't enough for any conclusions about our relative skill levels!")
 }

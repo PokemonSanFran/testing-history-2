@@ -59,7 +59,7 @@ Psfcity8_Compound_1F_MapScripts_OnTransition_10:
 	return
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_11:
-	goto WorkingFerry_SetUp_Script
+	goto AandWereBack_ObjectSetUp_Script
 	return
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_12:

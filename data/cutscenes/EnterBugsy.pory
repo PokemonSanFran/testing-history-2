@@ -1,0 +1,153 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFLEADER2 = 1
+
+script EnterPsfleader2_Psfleader2Intro_Dialogue {
+        addvar(VAR_GYM_2_STATE,1)
+        addvar(VAR_GYM_2_STATE,1)
+        addvar(VAR_GYM_2_STATE,1)
+        setvar(VAR_0x8000, MUGSHOT_BUGSY)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_ReachingTheSummit,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BUGSY)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_TotallyWornOut)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_YeahFromOrre)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BUGSY)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_ManyMountainsLikeSinnoh)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BUGSY)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_EverythingIsSoFlat)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_HikedUpAMountain)
+        callnative(ClearMugshot)
+        applymovement(PSFLEADER2,Common_Movement_FaceAwayPlayer)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_BUGSY)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_ThisCheapImitation)
+        callnative(ClearMugshot)
+        applymovement(PSFLEADER2,Common_Movement_FacePlayer)
+        waitmovement(0)
+        call(Common_EventScript_SaveGame)
+        closemessage
+        goto(EnterPsfleader2_StartGymBattle_Script)
+}
+
+script EnterPsfleader2_StartGymBattle_Script {
+        setvar(VAR_0x8000, MUGSHOT_BUGSY)
+        callnative(DrawMugshot)
+        trainerbattle_single(TRAINER_BRAWLY_1, gText_EnterPsfleader2_EnGarde, gText_EnterPsfleader2_ItsAnHonorToLose, EnterPsfleader2_Psfleader2Defeated_Script, NO_MUSIC)
+}
+
+script EnterPsfleader2_Psfleader2Defeated_Script {
+        lockall
+        setflag(FLAG_BADGE02_GET)
+        addvar(VAR_GYM_2_STATE,1)
+        setvar(VAR_0x8000, MUGSHOT_BUGSY)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_ExploitedMyMistakes)
+        callnative(ClearMugshot)
+        msgbox(gText_EnterPsfleader2_BadgeGet)
+        call(Common_EventScript_PlayGymBadgeFanfare)
+        giveitem(ITEM_TM02)
+        closemessage
+    addvar(VAR_STORYLINE_STATE,1)
+    call(Act1_1_Check_Script)
+        releaseall
+        end
+}
+
+script EnterPsfleader2_PostDefeat1_Dialogue {
+        addvar(VAR_GYM_2_STATE,1)
+        lockall
+        setvar(VAR_0x8000, MUGSHOT_BUGSY)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_TradedPokemonUpTo,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
+}
+
+script EnterPsfleader2_PostDefeat2_Dialogue {
+        lockall
+        setvar(VAR_0x8000, MUGSHOT_BUGSY)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfleader2_NextTimeWeBattle,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        closemessage
+        releaseall
+        end
+}
+
+text gText_EnterPsfleader2_ReachingTheSummit {
+	format("Congratulations on reaching the summit, {PLAYER}! I'm Psfleader2.")
+}
+
+text gText_EnterPsfleader2_TotallyWornOut {
+	format("Most Trainers are totally worn out when they reach me. Are you a foreigner?")
+}
+
+text gText_EnterPsfleader2_YeahFromOrre {
+	format("Yeah, from Orre.")
+}
+
+text gText_EnterPsfleader2_ManyMountainsLikeSinnoh {
+	format("Ah yes. Many mountains, like Sinnoh. Sinnoh is a physically demanding region. The slopes, mountains, and marshes... Trainers have to train their bodies and minds alongside their Pokémon! ")
+}
+
+text gText_EnterPsfleader2_EverythingIsSoFlat {
+	format("But in Psfregion1, everything is so flat and stale and uninspired... and pudgy. ")
+}
+
+text gText_EnterPsfleader2_HikedUpAMountain {
+	format("(Flat? I hiked up a mountain just to get here!)")
+}
+
+text gText_EnterPsfleader2_ThisCheapImitation {
+	format("And Psfcity14... this cheap imitation. These people have no idea what Sinnoh is! They've bastardized our traditions and cultures. I'll show you how a true trainer from Sinnoh battles!")
+}
+
+text gText_EnterPsfleader2_EnGarde {
+	format("En garde!")
+}
+
+text gText_EnterPsfleader2_MyHeartIsRacing {
+	format("My heart is racing!")
+}
+
+text gText_EnterPsfleader2_ImNotFinishedYet {
+	format("I'm not finished yet. I've got this!")
+}
+
+text gText_EnterPsfleader2_Sinnoh1Orre0 {
+	format("Sinnoh 1, Orre 0!")
+}
+
+text gText_EnterPsfleader2_ItsAnHonorToLose {
+	format("It's an honor to lose to you.")
+}
+
+text gText_EnterPsfleader2_ExploitedMyMistakes {
+	format("Thank you, {PLAYER}. You exploited my mistakes amazingly. I hope you're proud!")
+}
+
+text gText_EnterPsfleader2_BadgeGet{
+	format("You received the Psfbadge2 Badge!")
+}
+text gText_EnterPsfleader2_TradedPokemonUpTo {
+	format("Traded Pokémon up to Level Psfgymlevel2 will recognize your Psfbadge2 Badge and the skill it represents. That TM teaches Psfgymattacknum2, which does exactly what it sounds like!")
+}
+
+text gText_EnterPsfleader2_NextTimeWeBattle {
+	format("Next time we battle, I'll be better. I won't let you, or the Sinnoh people, down!")
+}

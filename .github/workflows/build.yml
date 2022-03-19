@@ -56,5 +56,7 @@ jobs:
         uses: Ilshidur/action-discord@master
         with:
             args: |
-                'This build has these improvements: {{ EVENT_PAYLOAD.commit.title } 
-                *DOWNLOAD** ➡ https://bit.ly/3IgDnk9 ⬅'
+                "This build has these improvements: {{ EVENT_PAYLOAD.head_commit.comment } 
+                *DOWNLOAD** ➡ https://bit.ly/3IgDnk9 ⬅
+
+                <@&953393961148493834>"
