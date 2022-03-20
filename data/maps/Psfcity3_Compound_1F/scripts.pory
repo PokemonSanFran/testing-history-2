@@ -7,12 +7,12 @@ mapscripts Psfcity3_Compound_1F_MapScripts {
     MAP_SCRIPT_ON_RESUME {
     }
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Psfcity3_MapScripts_OnTransition)
+        goto(Psfcity3_Compound_1F_MapScripts_OnTransition)
     }
 }
 
-script Psfcity3_MapScripts_OnTransition {
-    if (var(VAR_STORYLINE_STATE) > 29){
+script Psfcity3_Compound_1F_MapScripts_OnTransition {
+    if (var(VAR_STORYLINE_STATE) != 29){
         goto(BeingChampionIsHard_ObjectCleanUp_Script)
     }
 }

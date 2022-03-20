@@ -1,0 +1,9 @@
+script YouLookTired_BlockMansionAccess_Script {
+    if (var(VAR_PSFPLACE9_STATE) < 2){
+    setobjectxy(2,14,11)
+    setobjectxyperm(2,14,11)
+}
+}
+
+
+

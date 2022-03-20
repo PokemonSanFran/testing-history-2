@@ -8,7 +8,7 @@ Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_RESUME:
 	return
 
 Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Psfcity3_MapScripts_OnTransition
+	goto Psfcity3_Compound_1F_MapScripts_OnTransition
 	return
 
 Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -16,12 +16,12 @@ Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-Psfcity3_MapScripts_OnTransition::
+Psfcity3_Compound_1F_MapScripts_OnTransition::
 	compare VAR_STORYLINE_STATE, 29
-	goto_if_gt Psfcity3_MapScripts_OnTransition_1
+	goto_if_ne Psfcity3_Compound_1F_MapScripts_OnTransition_1
 	return
 
-Psfcity3_MapScripts_OnTransition_1:
+Psfcity3_Compound_1F_MapScripts_OnTransition_1:
 	goto BeingChampionIsHard_ObjectCleanUp_Script
 	return
 

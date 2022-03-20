@@ -1141,7 +1141,7 @@ end
 ##  .include "data/cutscenes/YoungPadawan.inc"
 .include "data/cutscenes/WaitYouWentWhere.inc"
 ##  .include "data/cutscenes/EnterChuck.inc"
-##  .include "data/cutscenes/YouLookTired.inc"
+  .include "data/cutscenes/YouLookTired.inc"
 .include "data/cutscenes/Kogasraisondetre.inc"
 .include "data/cutscenes/BeachBattle.inc"
 .include "data/cutscenes/EnterJasmine.inc"

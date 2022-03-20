@@ -4,15 +4,9 @@ const RAGHNALL = 2
 const PSFBADADMIN2 = 3
 const CAMERA = OBJ_EVENT_ID_CAMERA
 
-script KogaRaisonDetre_InteractGuard_Dialogue {
-    lockall
-    msgbox(gText_KogaRaisonDetre_HasBeenExpectingYou, MSGBOX_NPC)
-    releaseall
-    end
-}
-
 script KogaRaisonDetre_MoveIntoFoyer_Script {
     lockall
+    addvar(VAR_ROUTE105_STATE,1)
     applymovement(ALEKSANDER, KogaRaisonDetre_ComeDownStairs)
     delay(48)
     applymovement(RAGHNALL, KogaRaisonDetre_ComeDownStairs)
@@ -23,7 +17,7 @@ script KogaRaisonDetre_MoveIntoFoyer_Script {
 }
 
 script KogaRaisonDetre_KidsMeetPlayer_Dialogue {
-    //TODO: add hop for the younger kid
+    //PSF TODO: add hop for the younger kid
     msgbox(gText_KogaRaisonDetre_YoureHereInTheFlesh)
     msgbox(gText_KogaRaisonDetre_YoureAFreak)
     closemessage

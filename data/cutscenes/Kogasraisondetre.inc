@@ -1,12 +1,6 @@
-KogaRaisonDetre_InteractGuard_Dialogue::
-	lockall
-	msgbox gText_KogaRaisonDetre_HasBeenExpectingYou, MSGBOX_NPC
-	releaseall
-	end
-
-
 KogaRaisonDetre_MoveIntoFoyer_Script::
 	lockall
+	addvar VAR_ROUTE105_STATE, 1
 	applymovement 1, KogaRaisonDetre_ComeDownStairs
 	delay 48
 	applymovement 2, KogaRaisonDetre_ComeDownStairs
