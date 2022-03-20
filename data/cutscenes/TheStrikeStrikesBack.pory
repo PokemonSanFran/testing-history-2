@@ -52,8 +52,8 @@ script TheStrikeStrikesBack_Check_Script {
 
 script TheStrikeStrikesBack_PhoneCall_Dialogue {
     lockall
-    setvar(VAR_ROUTE110_STATE,1)
     addvar(VAR_STORYLINE_STATE,1)
+    addvar(VAR_ROUTE110_STATE,1)
     playse(SE_POKENAV_CALL)
     waitse
     playse(SE_POKENAV_CALL)
@@ -102,19 +102,15 @@ script TheStrikeStrikesBack_PhoneCall_Dialogue {
         end
 }
 
-script TheStrikeStrikesBack_SetUpPostWarp_Script {
+script TheStrikeStrikesBack_Intro_Dialogue {
     lockall
-    setvar(VAR_ROUTE110_STATE,2)
+
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
     if (var(VAR_TEMP_0) != 21){
         warpsilent(MAP_PSFROUTE22,255,21,25)
         waitstate
-    }
-    end
-}
-
-script TheStrikeStrikesBack_Intro_Dialogue {
-        setvar(VAR_ROUTE110_STATE,3)
+    }else{
+        addvar(VAR_ROUTE110_STATE,1)
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_AndCongratulations)
@@ -212,6 +208,7 @@ script TheStrikeStrikesBack_Intro_Dialogue {
         call(TheStrikeStrikesBack_ObjectCleanup_Script)
         releaseall
         end
+}
 }
 
 script TheStrikeStrikesBack_ObjectCleanup_Script {

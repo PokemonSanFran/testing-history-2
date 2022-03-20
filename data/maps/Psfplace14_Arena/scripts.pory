@@ -2,7 +2,7 @@ mapscripts Psfplace14_Arena_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
     }
     MAP_SCRIPT_ON_LOAD {
-       goto(Psfplace14_Arena_MapScripts_OnTransition)
+       goto(Psfplace14_Arena_MapScripts_OnLoad)
     }
     MAP_SCRIPT_ON_RESUME {
         goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience)
@@ -17,7 +17,7 @@ mapscripts Psfplace14_Arena_MapScripts {
     ]
 }
 
-script Psfplace14_Arena_MapScripts_OnTransition {
+script Psfplace14_Arena_MapScripts_OnLoad {
     setflag(FLAG_TEMP_1)
     switch (var(VAR_STORYLINE_STATE)){
         case 29: goto(WaitHeDidWhat_MovePlayerPostSave_Script)

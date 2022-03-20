@@ -1,0 +1,2 @@
+../pokeemerald_egg/data/maps/Psfcave7/scripts.pory:320:giveitem(ITEM_GO_GOGGLES,1)
+grep: input file ‘../pokeemerald_egg/1.txt’ is also the output

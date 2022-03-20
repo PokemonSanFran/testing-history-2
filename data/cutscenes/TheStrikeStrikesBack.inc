@@ -52,8 +52,8 @@ TheStrikeStrikesBack_Check_Script_1:
 
 TheStrikeStrikesBack_PhoneCall_Dialogue::
 	lockall
-	setvar VAR_ROUTE110_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_ROUTE110_STATE, 1
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
@@ -111,23 +111,12 @@ TheStrikeStrikesBack_PhoneCall_Dialogue_12:
 	goto TheStrikeStrikesBack_PhoneCall_Dialogue_11
 
 
-TheStrikeStrikesBack_SetUpPostWarp_Script::
+TheStrikeStrikesBack_Intro_Dialogue::
 	lockall
-	setvar VAR_ROUTE110_STATE, 2
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 21
-	goto_if_ne TheStrikeStrikesBack_SetUpPostWarp_Script_2
-TheStrikeStrikesBack_SetUpPostWarp_Script_1:
-	end
-
-TheStrikeStrikesBack_SetUpPostWarp_Script_2:
-	warpsilent MAP_PSFROUTE22, 255, 21, 25
-	waitstate
-	goto TheStrikeStrikesBack_SetUpPostWarp_Script_1
-
-
-TheStrikeStrikesBack_Intro_Dialogue::
-	setvar VAR_ROUTE110_STATE, 3
+	goto_if_ne TheStrikeStrikesBack_Intro_Dialogue_1
+	addvar VAR_ROUTE110_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AndCongratulations
@@ -185,8 +174,8 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AgreedAndThats
 	compare VAR_ROUTE105_STATE, 0
-	goto_if_gt TheStrikeStrikesBack_Intro_Dialogue_2
-TheStrikeStrikesBack_Intro_Dialogue_1:
+	goto_if_gt TheStrikeStrikesBack_Intro_Dialogue_5
+TheStrikeStrikesBack_Intro_Dialogue_4:
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AgitatedWildGarbodor
@@ -207,9 +196,14 @@ TheStrikeStrikesBack_Intro_Dialogue_1:
 	releaseall
 	end
 
-TheStrikeStrikesBack_Intro_Dialogue_2:
+TheStrikeStrikesBack_Intro_Dialogue_1:
+	warpsilent MAP_PSFROUTE22, 255, 21, 25
+	waitstate
+	return
+
+TheStrikeStrikesBack_Intro_Dialogue_5:
 	msgbox gText_TheStrikeStrikesBack_ThePoliceAreWorking
-	goto TheStrikeStrikesBack_Intro_Dialogue_1
+	goto TheStrikeStrikesBack_Intro_Dialogue_4
 
 
 TheStrikeStrikesBack_ObjectCleanup_Script::

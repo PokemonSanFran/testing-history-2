@@ -12,6 +12,19 @@ mapscripts Psfplace13_MapScripts {
     ]
 }
 
+script Psfplace13_InteractFerryAttendant_Script {
+    lock
+    checkitem(ITEM_MYSTIC_TICKET,1)
+
+    if (!var(VAR_RESULT)){
+        msgbox(gText_PreventPlayerFerry_ImSorryYou,MSGBOX_NPC)
+        release
+        end
+    }else{
+        goto(Psfplace13_ChooseFerryDestination_Script)
+    }
+}
+
 script GroupOfAssholesAppears_CheckPartySize {
     special(HasEnoughMonsForDoubleBattle)
 
@@ -425,4 +438,8 @@ text gText_GroupOfAssholesAppears_IfYouPutThatOn {
 
 text gText_GroupOfAssholesAppears_WhereDidIPut {
     format("Now, where did I put those pills...?")
+}
+
+text gText_PreventPlayerFerry_ImSorryYou {
+    format("I'm sorry, you don't appear to have the correct ticket to board the Ferry to Psfcave7.")
 }

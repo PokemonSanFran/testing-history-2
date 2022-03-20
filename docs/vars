@@ -93,6 +93,7 @@
 
 #VAR_STORYLINE_STATE
 1 - 9: Complete any cutscene from 1.1
+10: Slept in bed after completing 1.1
 23: Sleep to progress to Championship
 24: Starting the Championship
 25: Oak explained Championship
@@ -107,6 +108,10 @@
 34: Finished one Restoration Quest
 35: Told by YC to stop helping TR
 36: Slept after being Told by TR to stop helping YC
+
+#VAR_ROUTE110_STATE
+1: Strike has started
+2: Have been told to kill Garbodor
 
 
 #VAR_ROUTE119_STATE

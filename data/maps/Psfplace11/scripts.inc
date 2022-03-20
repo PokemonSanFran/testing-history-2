@@ -28,6 +28,19 @@ Psfplace11_MapScripts_OnTransition_3:
 	return
 
 
+Psfplace11_InteractFerryAttendant_Script::
+	lock
+	compare VAR_STORYLINE_STATE, 10
+	goto_if_lt Psfplace11_InteractFerryAttendant_Script_1
+	goto Psfplace11_ChooseFerryDestination_Script
+	return
+
+Psfplace11_InteractFerryAttendant_Script_1:
+	msgbox gText_Psfplace11_OutOfOrder, MSGBOX_NPC
+	release
+	end
+
+
 Psfplace11_ChooseFerryDestination_Script::
 	msgbox gText_WhereWould, MSGBOX_NPC
 	goto Psfplace11_UnlockedDestinations_Script
@@ -105,3 +118,7 @@ Psfplace11_FerryState1_Script_5:
 
 gText_WhereWould::
 	.string "Where would you like to go?$"
+
+gText_Psfplace11_OutOfOrder::
+	.string "Unfortunately, the ferry is currently\n"
+	.string "out of order. Please come back later.$"

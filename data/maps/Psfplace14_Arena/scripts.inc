@@ -10,7 +10,7 @@ Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_LOAD:
-	goto Psfplace14_Arena_MapScripts_OnTransition
+	goto Psfplace14_Arena_MapScripts_OnLoad
 	return
 
 Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_RESUME:
@@ -28,13 +28,13 @@ Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-Psfplace14_Arena_MapScripts_OnTransition::
+Psfplace14_Arena_MapScripts_OnLoad::
 	setflag FLAG_TEMP_1
 	switch VAR_STORYLINE_STATE
-	case 29, Psfplace14_Arena_MapScripts_OnTransition_2
+	case 29, Psfplace14_Arena_MapScripts_OnLoad_2
 	return
 
-Psfplace14_Arena_MapScripts_OnTransition_2:
+Psfplace14_Arena_MapScripts_OnLoad_2:
 	goto WaitHeDidWhat_MovePlayerPostSave_Script
 	return
 

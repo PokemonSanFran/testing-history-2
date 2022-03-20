@@ -20,7 +20,6 @@ script WaitHeDidWhat_MovePlayerPostSave_Script {
     setobjectxy(PLAYER,4,6)
     turnobject(PLAYER,DIR_EAST)
     TeleportCamera(4,6)
-
 }
 
 script WaitHeDidWhat_WatchOtherSemifinal {
