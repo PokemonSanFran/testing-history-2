@@ -3,9 +3,7 @@ mapscripts Psfroute22_MapScripts {
         goto(Psfroute22_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_LOAD {
-        if (var(VAR_STORYLINE_STATE) > 23){
-            call(HeresHowThisIsGoingToGo_ConstructionCompleted_Script)
-        }
+        goto(Psfroute22_MapScripts_OnLoad)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ROUTE110_STATE, 2: TheStrikeStrikesBack_Intro_Dialogue
@@ -21,4 +19,14 @@ script Psfroute22_MapScripts_OnTransition {
         case 3: goto(VSGarbodor_Arrest_ObjectSetup_Script)
         case 4: goto(VSGarbodor_Arrest_ObjectCleanup_Script)
     }
+}
+
+script Psfroute22_MapScripts_OnLoad {
+        if (var(VAR_STORYLINE_STATE) > 23){
+            call(HeresHowThisIsGoingToGo_ConstructionCompleted_Script)
+        }
+
+        if (var(VAR_ROUTE110_STATE) > 1) {
+            call(TheStrikeStrikesBack_UnblockConstruction_Script)
+        }
 }

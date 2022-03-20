@@ -9,12 +9,7 @@ Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD:
-	compare VAR_STORYLINE_STATE, 23
-	goto_if_gt Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD_1
-	return
-
-Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD_1:
-	call HeresHowThisIsGoingToGo_ConstructionCompleted_Script
+	goto Psfroute22_MapScripts_OnLoad
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -50,5 +45,22 @@ Psfroute22_MapScripts_OnTransition_5:
 
 Psfroute22_MapScripts_OnTransition_6:
 	goto VSGarbodor_Arrest_ObjectCleanup_Script
+	return
+
+
+Psfroute22_MapScripts_OnLoad::
+	compare VAR_STORYLINE_STATE, 23
+	goto_if_gt Psfroute22_MapScripts_OnLoad_2
+Psfroute22_MapScripts_OnLoad_1:
+	compare VAR_ROUTE110_STATE, 1
+	goto_if_gt Psfroute22_MapScripts_OnLoad_4
+	return
+
+Psfroute22_MapScripts_OnLoad_2:
+	call HeresHowThisIsGoingToGo_ConstructionCompleted_Script
+	goto Psfroute22_MapScripts_OnLoad_1
+
+Psfroute22_MapScripts_OnLoad_4:
+	call TheStrikeStrikesBack_UnblockConstruction_Script
 	return
 

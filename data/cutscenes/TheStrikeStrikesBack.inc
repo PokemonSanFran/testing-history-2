@@ -1,5 +1,19 @@
 TheStrikeStrikesBack_HideObject_Script::
 	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS
+	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
+	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
+	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL
+	return
+
+
+TheStrikeStrikesBack_HidePsfbadboss_Object_Script::
+	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS
+	return
+
+
+TheStrikeStrikesBack_UnblockConstruction_Script::
+	setmetatile 21, 19, 0x211, FALSE
+	special DrawWholeMapView
 	return
 
 
