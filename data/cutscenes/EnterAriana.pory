@@ -1,0 +1,545 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFGOODADMIN = 1
+const SIARL = 2
+const PERSON1 = 6
+const PERSON2 = 7
+const PERSON3 = 10
+
+
+script EnterPsfgoodadmin_ObjectCleanUp_Script {
+    setobjectxyperm(PERSON1,2,40)
+    setobjectxyperm(PERSON2,2,41)
+    setobjectxyperm(PERSON3,2,42)
+}
+
+script EnterPsfgoodadmin_SetConeTiles_Script {
+    setmetatile(3,37,0x2E9,TRUE)
+    setmetatile(3,39,0x2E9,TRUE)
+    special(DrawWholeMapView)
+}
+
+
+script EnterPsfgoodadmin_InteractSiarl_Script {
+    checkitem(ITEM_MEGA_RING,1)
+        if (var(VAR_RESULT)) {
+            goto(EnterPsfgoodadmin_GruntApologize_Dialogue)
+        }
+        else {
+            goto(EnterPsfgoodadmin_Intro_Dialogue)
+        }
+}
+
+script EnterPsfgoodadmin_Intro_Dialogue{
+        lockall
+        msgbox(gText_EnterPsfgoodadmin_WhoTheHell)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_NoSorry)
+        callnative(ClearMugshot)
+        msgbox(gText_EnterPsfgoodadmin_TryingToHelpEverybody)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_ImNotInLine)
+        callnative(ClearMugshot)
+        msgbox(gText_EnterPsfgoodadmin_SwearToArceus)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_WaitListen)
+        callnative(ClearMugshot)
+        msgbox(gText_EnterPsfgoodadmin_NoPunk)
+        applymovement(PSFGOODADMIN,Common_Movement_FaceDown)
+        playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_HoldOn)
+        closemessage
+        callnative(ClearMugshot)
+        applymovement(PSFGOODADMIN,EnterPsfgoodadmin_PsfgoodadminWalkToPlayer_Movement)
+        waitmovement(0)
+        applymovement(SIARL,Common_Movement_FaceRight)
+        waitmovement(0)
+        goto(EnterPsfgoodadmin_Explain_Dialogue)
+}
+
+script EnterPsfgoodadmin_Explain_Dialogue{
+    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_DidYouListen)
+        closemessage
+        callnative(ClearMugshot)
+        applymovement(SIARL,Common_Movement_FaceDown)
+        waitmovement(0)
+        applymovement(SIARL,Common_Movement_Delay48)
+        waitmovement(0)
+        applymovement(SIARL,Common_Movement_FaceRight)
+        waitmovement(0)
+        msgbox(gText_EnterPsfgoodadmin_TryingToCut)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_WhatYouHeard)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFGOODADMIN,Common_Movement_FaceDown)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_WhatProblem)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_AsshatInterrupted)
+        callnative(ClearMugshot)
+        closemessage
+        goto(EnterPsfgoodadmin_Apology_Dialogue)
+}
+
+script EnterPsfgoodadmin_Apology_Dialogue{
+    applymovement(PSFGOODADMIN,Common_Movement_FaceLeft)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_ShouldntTheCones)
+        callnative(ClearMugshot)
+        msgbox(gText_EnterPsfgoodadmin_IForgotToSet)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_BeratedSomebody)
+        callnative(ClearMugshot)
+        msgbox(gText_EnterPsfgoodadmin_Sorry)
+        closemessage
+        applymovement(PSFGOODADMIN,Common_Movement_FaceDown)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_WhatsYourName)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFGOODADMIN,Common_Movement_FaceLeft)
+        waitmovement(0)
+        applymovement(SIARL,Common_Movement_FaceDown)
+        waitmovement(0)
+        msgbox(gText_EnterPsfgoodadmin_IGotHeated)
+        callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_DontRuin)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(SIARL,Common_Movement_FaceRight)
+        msgbox(gText_EnterPsfgoodadmin_ShouldBeNear)
+        closemessage
+        applymovement(PSFGOODADMIN,EnterPsfgoodadmin_HopOverTable_Movement)
+        waitmovement(0)
+        applymovement(PLAYER,Common_Movement_FaceRight)
+        waitmovement(0)
+        applymovement(SIARL,Common_Movement_FaceDown)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_NeedToWalk)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFGOODADMIN,EnterPsfgoodadmin_WalkToLine_Movement)
+        applymovement(PLAYER,EnterPsfgoodadmin_PlayerWalkToLine_Movement)
+        goto(EnterPsfgoodadmin_ExplainHope_Dialogue)
+}
+
+script EnterPsfgoodadmin_ExplainHope_Dialogue{
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_WhatIsEverybody)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_Hope)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_WaitHope)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_ICanGet)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_ThatsAmazing)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_CityIsntSuperChill)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_ButYoureHelping)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_YoureNotFromHere)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFGOODADMIN,EnterPsfgoodadmin_PlaceConesA_Movement)
+        waitmovement(0)
+    setmetatile(3,37,0x2E9,TRUE)
+    special(DrawWholeMapView)
+        applymovement(PLAYER,EnterPsfgoodadmin_WatchPlaceCones_Movement)
+        applymovement(PSFGOODADMIN,EnterPsfgoodadmin_PlaceConesB_Movement)
+        waitmovement(0)
+    setmetatile(3,39,0x2E9,TRUE)
+    special(DrawWholeMapView)
+        //applymovement(PLAYER,EnterPsfgoodadmin_WatchPlaceConesB_Movement)
+        applymovement(PSFGOODADMIN,EnterPsfgoodadmin_PlaceConesC_Movement)
+        //applymovement(PLAYER,EnterPsfgoodadmin_WatchPlaceConesC_Movement)
+        waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_BetweenTheCones)
+        callnative(ClearMugshot)
+        closemessage
+        call(LineMovementEvent_Script)
+        goto(EnterPsfgoodadmin_GiveKeystone_Dialogue)
+}
+
+script LineMovementEvent_Script{
+        playse(SE_PIN)
+        applymovement(PERSON1,EnterPsfgoodadmin_MoveLine1_Movement)
+        applymovement(PERSON2,EnterPsfgoodadmin_MoveLine2_Movement)
+        applymovement(PERSON3,EnterPsfgoodadmin_MoveLine3_Movement)
+        waitmovement(0)
+        setobjectxy(PERSON1,2,40)
+        setobjectxy(PERSON2,2,41)
+        setobjectxy(PERSON3,2,42)
+        setobjectxyperm(PERSON1,2,40)
+        setobjectxyperm(PERSON2,2,41)
+        setobjectxyperm(PERSON3,2,42)
+}
+
+script EnterPsfgoodadmin_GiveKeystone_Dialogue{
+        applymovement(PSFGOODADMIN,Common_Movement_WalkLeft)
+        applymovement(PSFGOODADMIN,Common_Movement_FacePlayer)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_ThereYouGo)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_AGym)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_WellGoodLuck)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFGOODADMIN,Common_Movement_WalkInPlaceUp)
+        waitmovement(0)
+        giveitem(ITEM_MEGA_RING)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_IfYouHaveThat)
+
+        special(CheckMegaEvolutionPartyMember)
+
+        //VAR_TEMP_1 will correspond to the party slot
+        //if VAR_TEMP_2 is 1, this pokemon will evantually be able to megaevolve
+
+        if (var(VAR_TEMP_1) < 6)
+        {
+            switch(var(VAR_TEMP_1))
+            {
+                case 0: bufferpartymonnick(0,0)
+                case 1: bufferpartymonnick(0,1)
+                case 2: bufferpartymonnick(0,2)
+                case 3: bufferpartymonnick(0,3)
+                case 4: bufferpartymonnick(0,4)
+                case 5: bufferpartymonnick(0,5)
+            }
+
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+
+            if (var(VAR_TEMP_2) != 1){
+                    msgbox(gTextEnterPsfgoodadmin_CanMegaEvolve)
+            }
+            else{
+                    msgbox(gTextEnterPsfgoodadmin_CanMegaEvolveSomeday)
+            }
+        }
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_ThankYouSo)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_HopeThatMakes)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterPsfgoodadmin_IGottaGo)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFGOODADMIN,Psfgoodadmin_WalkAway)
+        closemessage
+        waitmovement(0)
+        fadedefaultbgm
+        setobjectxy(PSFGOODADMIN,6,20)
+        addvar(VAR_STORYLINE_STATE,1)
+        call(Act1_1_Check_Script)
+        releaseall
+        end
+}
+
+script EnterPsfgoodadmin_GruntApologize_Dialogue {
+    lockall
+        msgbox(gText_EnterPsfgoodadmin_SorryAgain)
+        closemessage
+        releaseall
+        end
+}
+
+movement EnterPsfgoodadmin_PsfgoodadminWalkToPlayer_Movement {
+    walk_down * 3
+    face_left
+    step_end
+}
+movement EnterPsfgoodadmin_HopOverTable_Movement {
+    walk_up * 4
+    delay_16
+    walk_down * 4
+    jump_2_down
+    face_left
+    step_end
+}
+movement EnterPsfgoodadmin_WalkToLine_Movement {
+    walk_down * 12
+    walk_left * 3
+    face_player
+    step_end
+}
+movement EnterPsfgoodadmin_PlayerWalkToLine_Movement {
+    walk_down * 13
+    walk_left * 2
+    face_up
+    step_end
+}
+movement EnterPsfgoodadmin_WatchPlaceCones_Movement {
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    face_right
+    delay_16
+    walk_right
+    face_down
+    step_end
+}
+
+movement EnterPsfgoodadmin_PlaceConesA_Movement {
+    walk_right
+    face_left
+    walk_in_place_left
+    step_end
+}
+movement EnterPsfgoodadmin_PlaceConesB_Movement {
+    walk_right
+    walk_down * 2
+    walk_left
+    walk_in_place_left
+    step_end
+}
+movement EnterPsfgoodadmin_PlaceConesC_Movement {
+    walk_right
+    face_left
+    step_end
+}
+movement EnterPsfgoodadmin_MoveLine1_Movement {
+    emote_exclamation_mark
+    walk_down * 3
+    face_up
+    step_end
+}
+movement EnterPsfgoodadmin_MoveLine2_Movement {
+    emote_exclamation_mark
+    delay_16
+    delay_16
+    delay_16
+    walk_right 
+    walk_down
+    walk_right
+    walk_down * 2
+    walk_left
+    face_up
+    step_end
+}
+movement EnterPsfgoodadmin_MoveLine3_Movement {
+    emote_exclamation_mark
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    walk_right * 3
+    walk_down * 3
+    walk_left
+    face_up
+    step_end
+}
+movement Psfgoodadmin_LookAround_Movement {
+    step_end
+}
+movement Psfgoodadmin_WalkAway {
+    walk_right
+    walk_up * 7
+    step_end
+}
+
+text gText_EnterPsfgoodadmin_WhoTheHell {
+    format("Woah, who the hell do you think you are?")
+}
+
+text gText_EnterPsfgoodadmin_NoSorry {
+    format("No sorry, I'm just trying to get through, are you able to -")
+}
+
+text gText_EnterPsfgoodadmin_TryingToHelpEverybody {
+    format("Look, we're trying to help everybody here, and we're doing the best we can. You gotta get in line like everybody else.")
+}
+
+text gText_EnterPsfgoodadmin_ImNotInLine {
+    format("I'm not in line, I'm trying to -")
+}
+
+text gText_EnterPsfgoodadmin_SwearToArceus {
+    format("Trying to get in front! I know! I swear to Arceus, you follow the rules like everybody else, or you get nothing.")
+}
+
+text gText_EnterPsfgoodadmin_WaitListen {
+    format("Wait, listen to me -")
+}
+
+text gText_EnterPsfgoodadmin_NoPunk {
+    format("NO punk, YOU listen to ME. What the hell makes you think -")
+}
+
+text gText_EnterPsfgoodadmin_HoldOn {
+    format("Siarl, hold on.")
+}
+
+text gText_EnterPsfgoodadmin_DidYouListen {
+    format("Siarl, did you listen to them?")
+}
+
+text gText_EnterPsfgoodadmin_TryingToCut {
+    format("Yeah, they're trying to cut the line!")
+}
+
+text gText_EnterPsfgoodadmin_WhatYouHeard {
+    format("Siarl, that's what you heard... but not what they said.")
+}
+
+text gText_EnterPsfgoodadmin_WhatProblem {
+    format("Sorry. What seems to be the problem?")
+}
+
+text gText_EnterPsfgoodadmin_AsshatInterrupted {
+    format("Thanks. Before this asshat interrupted me, I was trying to explain that your line is blocking the road. Nobody can get through. Could you do something about that?")
+}
+
+text gText_EnterPsfgoodadmin_ShouldntTheCones {
+    format("Damn. Siarl, shouldn't the cones prevent that from happening?")
+}
+
+text gText_EnterPsfgoodadmin_IForgotToSet {
+    format("...I forgot to set up the cones.")
+}
+
+text gText_EnterPsfgoodadmin_BeratedSomebody {
+    format("Oh? So, you screwed up, then berated somebody when they tried to ask you to fix it. Asshat sounds about right.")
+}
+
+text gText_EnterPsfgoodadmin_Sorry {
+    format("...Sorry Psfgoodadmin.")
+}
+
+text gText_EnterPsfgoodadmin_WhatsYourName {
+    format("What's your name? ...{PLAYER}.")
+}
+
+text gText_EnterPsfgoodadmin_IGotHeated {
+    format("Sorry I got so heated {PLAYER}. It's been rough -")
+}
+
+text gText_EnterPsfgoodadmin_DontRuin {
+    format("Siarl, don't ruin a perfectly good apology with an excuse. Where are the cones?")
+}
+
+text gText_EnterPsfgoodadmin_ShouldBeNear {
+    format("...they should be near the backstock pallet.")
+}
+
+text gText_EnterPsfgoodadmin_NeedToWalk {
+    format("I need to walk for a second. Let's walk, {PLAYER}.")
+}
+
+text gText_EnterPsfgoodadmin_WhatIsEverybody {
+    format("What is everybody lining up for?")
+}
+
+text gText_EnterPsfgoodadmin_Hope {
+    format("Hope.")
+}
+
+text gText_EnterPsfgoodadmin_WaitHope {
+    format("Wait, hope?")
+}
+
+text gText_EnterPsfgoodadmin_ICanGet {
+    format("Sorry, I can get whimsical sometimes! One of the biggest challenges of being unhoused is access to food and sanitary supplies. My colleagues and I, the Psfrocketacro, set up around the city and hand out kits.")
+}
+
+text gText_EnterPsfgoodadmin_ThatsAmazing {
+    format("Oh wow, that's amazing! But why are you in an alleyway?")
+}
+
+text gText_EnterPsfgoodadmin_CityIsntSuperChill {
+    format("The city isn't super chill with us, for complicated reasons. We move around a lot and choose unconventional locations in order to avoid the cops. It sucks, but it works.")
+}
+
+text gText_EnterPsfgoodadmin_ButYoureHelping {
+    format("Wait, but you're helping people! Why isn't the city supporting you?")
+}
+
+text gText_EnterPsfgoodadmin_YoureNotFromHere {
+    format("Clearly, you're not from here, are you? I can't remember a point in my lifetime where the city helped people, {PLAYER}.")
+}
+
+text gText_EnterPsfgoodadmin_BetweenTheCones {
+    format("Yo, if you're between the cones, move behind the second one. Wanna make sure there's a path for people to get through.")
+}
+
+text gText_EnterPsfgoodadmin_ThereYouGo {
+    format("There you go. Sorry about all of that. What's in Psfcity14?")
+}
+
+text gText_EnterPsfgoodadmin_AGym {
+    format("A Gym! I'm taking part in the League Challenge.")
+}
+
+text gText_EnterPsfgoodadmin_WellGoodLuck {
+    format("Ah, well good luck. Actually... a League Challenger that isn't from here... take this.")
+}
+
+text gText_EnterPsfgoodadmin_IfYouHaveThat {
+    format("If you have that and your Pokémon is holding the appropriate Mega Stone, you'll be able to Mega Evolve that Pokémon. Most natives aren't chill with Mega Evolution, but you can make your own decisions.")
+}
+
+text gTextEnterPsfgoodadmin_CanMegaEvolve {
+    format("Your {STR_VAR_1} is capable of Mega Evolution, if memory serves me right.")
+}
+
+text gTextEnterPsfgoodadmin_CanMegaEvolveSomeday {
+    format("I'm pretty sure {STR_VAR_1} can do it once its fully-evolved!")
+}
+
+text gText_EnterPsfgoodadmin_ThankYouSo {
+    format("That's amazing, thank you so much!")
+}
+
+text gText_EnterPsfgoodadmin_HopeThatMakes {
+    format("Hope that makes up for the hassle. I found it earlier, but you can totally have it. Some tech bro was probably being careless.")
+}
+
+text gText_EnterPsfgoodadmin_IGottaGo {
+    format("I gotta go back before Siarl cusses out another innocent victim. Stay safe out there.")
+}
+
+text gText_EnterPsfgoodadmin_SorryAgain {
+    format("Sorry again about before.")
+}
