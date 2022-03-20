@@ -1,10 +1,25 @@
 Psfplace9_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfplace9_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace9_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfplace9_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfplace9_MapScript_OnTransition
+	return
 
 Psfplace9_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 17, TheStrikeStrikesBack_PhoneCall_Dialogue
 	.2byte 0
+
+
+Psfplace9_MapScript_OnTransition::
+	switch VAR_PSFPLACE9_STATE
+	case 1, Psfplace9_MapScript_OnTransition_2
+	goto YouLookTired_HideObjects_Script
+	return
+
+Psfplace9_MapScript_OnTransition_2:
+	return
 
 
 YouLookTired_InteractPsfbadadmin2_Script::

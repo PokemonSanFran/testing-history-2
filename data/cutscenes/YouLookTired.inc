@@ -8,3 +8,8 @@ YouLookTired_BlockMansionAccess_Script_1:
 	setobjectxyperm 2, 14, 11
 	return
 
+
+YouLookTired_HideObjects_Script::
+	setflag FLAG_TEMP_1
+	return
+

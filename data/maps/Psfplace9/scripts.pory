@@ -5,31 +5,40 @@ mapscripts Psfplace9_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 17: TheStrikeStrikesBack_PhoneCall_Dialogue
     ]
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfplace9_MapScript_OnTransition)
+    }
 }
 
+script Psfplace9_MapScript_OnTransition {
+    switch (var(VAR_PSFPLACE9_STATE)){
+        case 1: return
+        default: goto(YouLookTired_HideObjects_Script)
+    }
+}
 
 script YouLookTired_InteractPsfbadadmin2_Script {
     lock
-    applymovement(PSFBADADMIN2,Common_Movement_FacePlayer)
-    goto(YouLookTired_Intro_Dialogue)
+        applymovement(PSFBADADMIN2,Common_Movement_FacePlayer)
+        goto(YouLookTired_Intro_Dialogue)
 }
 
 script YouLookTired_Trigger_Script {
     lock
-    call(YouLookTired_WalkToPsfbadadmin2_Script)
-    applymovement(PSFBADADMIN2,Common_Movement_FacePlayer)
-    goto(YouLookTired_Intro_Dialogue)
+        call(YouLookTired_WalkToPsfbadadmin2_Script)
+        applymovement(PSFBADADMIN2,Common_Movement_FacePlayer)
+        goto(YouLookTired_Intro_Dialogue)
 }
 
 script YouLookTired_WalkToPsfbadadmin2_Script {
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
-    switch(var(VAR_TEMP_0)){
-        case 7: applymovement(PLAYER,YouLookTired_WalkFrom7)
-        case 8: applymovement(PLAYER,YouLookTired_WalkFrom8)
-        case 9: applymovement(PLAYER,YouLookTired_WalkFrom9)
-        case 10: applymovement(PLAYER,YouLookTired_WalkFrom10)
-    }
+        switch(var(VAR_TEMP_0)){
+            case 7: applymovement(PLAYER,YouLookTired_WalkFrom7)
+            case 8: applymovement(PLAYER,YouLookTired_WalkFrom8)
+            case 9: applymovement(PLAYER,YouLookTired_WalkFrom9)
+            case 10: applymovement(PLAYER,YouLookTired_WalkFrom10)
+        }
     waitmovement(0)
 }
 
@@ -183,46 +192,46 @@ script YouLookTired_DataCollection_Dialogue {
 script YouLookTired_WalkAway_Script {
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
-    if (var(VAR_TEMP_0) == 6){
-        applymovement(PSFBADADMIN2,YouLookTired_WalkAwayFrom6)
-    } else {
-        applymovement(PSFBADADMIN2,YouLookTired_WalkAwayFrom7)
-    }
+        if (var(VAR_TEMP_0) == 6){
+            applymovement(PSFBADADMIN2,YouLookTired_WalkAwayFrom6)
+        } else {
+            applymovement(PSFBADADMIN2,YouLookTired_WalkAwayFrom7)
+        }
 }
 
 movement YouLookTired_WalkFrom7 {
     walk_up
-    face_left
-    step_end
+        face_left
+        step_end
 }
 
 movement YouLookTired_WalkFrom8 {
     walk_up * 2
-    walk_left
-    step_end
+        walk_left
+        step_end
 }
 
 movement YouLookTired_WalkFrom9 {
     walk_up * 3
-    walk_left * 2
-    step_end
+        walk_left * 2
+        step_end
 }
 
 movement YouLookTired_WalkFrom10 {
     walk_up * 4
-    walk_left * 3
-    step_end
+        walk_left * 3
+        step_end
 }
 
 movement YouLookTired_WalkAwayFrom6 {
     walk_right
-    walk_down * 6
-    step_end
+        walk_down * 6
+        step_end
 }
 
 movement YouLookTired_WalkAwayFrom7 {
     walk_down * 6
-    step_end
+        step_end
 }
 
 text gText_YouLookTired_SorryToInterrupt {
