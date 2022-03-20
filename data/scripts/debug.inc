@@ -60,8 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    //SetWarpDestination(MAP_GROUP(BLACK_MAP), MAP_NUM(BLACK_MAP), -1, -1, -1);
-    warpsilent MAP_BLACK_MAP,1,1
+    call NoGoggles_PreventProgress
 	end
 
 Debug_Script_2::

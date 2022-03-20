@@ -1125,7 +1125,7 @@ end
   .include "data/cutscenes/NewAssholeAppears.inc"
 ##  .include "data/cutscenes/OldAssholeAppears.inc"
 ##  .include "data/cutscenes/GroupofAssholesAppears.inc"
-##  .include "data/cutscenes/FlyingBlind.inc"
+  .include "data/cutscenes/FlyingBlind.inc"
 ##  .include "data/cutscenes/WowYoureStrong.inc"
 ##  .include "data/cutscenes/TheGangsAllHere.inc"
 .include "data/cutscenes/AlwaysWatchingWazokwski.inc"

@@ -1,0 +1,20 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+script NoGoggles_PreventProgress {
+    lock
+    if (var(VAR_FAINTED_FOG_STATE) == 0){
+        setvar(VAR_FAINTED_FOG_STATE,1)
+
+    }
+        checkitem(ITEM_GO_GOGGLES,1)
+        if (!var(VAR_RESULT)) {
+            msgbox(format("A wild Mewtwo jumped out of the bushes and kicked your ass."),MSGBOX_DEFAULT)
+                closemessage
+                applymovement(PLAYER,Common_Movement_WalkRight)
+                waitmovement(0)
+                applymovement(PLAYER,Common_Movement_WalkRight)
+                waitmovement(0)
+                release
+                end
+        } 
+}
