@@ -18,3 +18,90 @@ script NoGoggles_PreventProgress {
                 end
         } 
 }
+
+script FlyingBlind_CheckFainted_Script {
+    checkitem(ITEM_GO_GOGGLES,1)
+
+        if (!var(VAR_RESULT) && var(VAR_FAINTED_FOG_STATE) == 1) {
+            goto(FlyingBlind_Dialogue)
+        }
+}
+
+script FlyingBlind_Dialogue {
+        lockall
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        msgbox(gText_FlyingBlind_NotSoEasy)
+            
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_FlyingBlind_GuessingYouSaw)
+        callnative(ClearMugshot)
+
+        msgbox(gText_FlyingBlind_NotJustYou)
+        
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_FlyingBlind_Karl)
+        callnative(ClearMugshot)
+
+        msgbox(gText_FlyingBlind_YouReallyBrandNew)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_FlyingBlind_WaitTheFogHas)
+        callnative(ClearMugshot)
+
+        msgbox(gText_FlyingBlind_NotVeryWell)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_FlyingBlind_NoResponse)
+        callnative(ClearMugshot)
+
+        msgbox(gText_FlyingBlind_EverSinceYouPeople)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_FlyingBlind_GottaFindSomebody)
+        msgbox(gText_FlyingBlind_ThankYouSoMuch)
+        callnative(ClearMugshot)
+        setvar(VAR_FAINTED_FOG_STATE,2)
+        call(Homeless_CheckMoney_Script)
+        closemessage
+        release
+        end
+}
+
+text gText_FlyingBlind_NotSoEasy {
+	format("Heh, not so easy out there, is it?")
+}
+text gText_FlyingBlind_GuessingYouSaw {
+	format("I'm guessing you saw earlier?")
+}
+text gText_FlyingBlind_NotJustYou {
+	format("It's not just you kid. Unless you've been here for a while, you've got no chance seeing through that thick ass fog. Karl don't take no prisoners.")
+}
+text gText_FlyingBlind_Karl {
+	format("Karl?")
+}
+text gText_FlyingBlind_YouReallyBrandNew {
+	format("Damn, you really brand new here, huh? The fog's name is Karl.")
+}
+text gText_FlyingBlind_WaitTheFogHas {
+	format("Wait, the fog has - okay so how do transplants normally handle the fog?")
+}
+text gText_FlyingBlind_NotVeryWell {
+	format("Not very well, I reckon, hehehe.")
+}
+text gText_FlyingBlind_NoResponse {
+	format("...")
+}
+text gText_FlyingBlind_EverSinceYouPeople {
+	format("Ever since you people showed up, Go-Goggles are always out of stock. They let you see through all this nonsense. You could getcha a Pokémon that knows Defog but uh, most of ‘em live on the other side of Karl! Karl don't come through every day though, so you could try to wait it out.")
+}
+text gText_FlyingBlind_GottaFindSomebody {
+	format(" (I've gotta find somebody that has Go-Goggles, then. I don't have time to wait!)")
+}
+text gText_FlyingBlind_ThankYouSoMuch {
+	format("Thank you so much for your help.")
+}

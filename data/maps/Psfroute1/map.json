@@ -45,7 +45,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FlyingBlind_WishLuck_Dialogue",
+      "script": "Psfroute1_InteractHomeless_Script",
       "flag": "0"
     }
   ],
