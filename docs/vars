@@ -91,6 +91,10 @@
 8: Completed raid on naval base
 9: Oak has told player that championship will start soon
 
+#VAR_PSFGOODTEAM_PSFPLACE13_STATE
+1: Team Rocket is attacking the shopkeeper
+2: Player has defeated Team Rocket, shopkeeper is happy
+
 #VAR_STORYLINE_STATE
 1 - 9: Complete any cutscene from 1.1
 10: Slept in bed after completing 1.1
