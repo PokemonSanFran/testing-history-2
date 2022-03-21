@@ -1,30 +1,22 @@
 EnterPsfleader3_ObjectSetUp_Script::
 	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_LEFT
-	end
+	return
 
 
 EnterPsfleader3_StartBattle_ObjectSetup_Script::
+	setflag FLAG_TEMP_1
 	setobjectxy 1, 10, 6
 	setobjectxyperm 1, 10, 6
-	end
-
-
-EnterPsfleader3_HidePuzzle_Script::
-	compare VAR_GYM_3_STATE, 0
-	goto_if_gt EnterPsfleader3_HidePuzzle_Script_1
-	return
-
-EnterPsfleader3_HidePuzzle_Script_1:
-	setflag FLAG_TEMP_1
+	setobjectmovementtype 1, MOVEMENT_TYPE_LOOK_AROUND
 	return
 
 
 AutomaticSolvePuzzle_Script::
 	lockall
+	addvar VAR_GYM_3_STATE, 1
 	msgbox AutomaticSolvePuzzle_Script_Text_0, MSGBOX_NPC
 	closemessage
 	release
-	addvar VAR_GYM_3_STATE, 1
 	end
 
 
@@ -42,6 +34,7 @@ EnterPsfleader3_WalkToBattlefield_Script::
 
 EnterPsfleader3_MuseumArrangement_Dialogue::
 	addvar VAR_GYM_3_STATE, 1
+	setvar VAR_0x8000, MUGSHOT_WHITNEY
 	msgbox gText_EnterPsfleader3_IWasThinking, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
@@ -75,6 +68,7 @@ EnterPsfleader3_Defeated_Script::
 	addvar VAR_PSFCITY15_STATE, 1
 	addvar VAR_GYM_3_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_0x8000, MUGSHOT_WHITNEY
 	msgbox gText_EnterPsfleader3_WowIllReallyNeed
 	closemessage
 	callnative ClearMugshot
@@ -88,6 +82,7 @@ EnterPsfleader3_Defeated_Script::
 
 EnterPsfleader3_PostBattle_Dialogue::
 	addvar VAR_GYM_3_STATE, 1
+	setvar VAR_0x8000, MUGSHOT_WHITNEY
 	msgbox gText_EnterPsfleader3_ThatPositiveSanction, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
@@ -96,6 +91,7 @@ EnterPsfleader3_PostBattle_Dialogue::
 
 
 EnterPsfleader3_PostBattle_Dialogue2::
+	setvar VAR_0x8000, MUGSHOT_WHITNEY
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader3_WellNeedToBattle, MSGBOX_NPC
 	callnative ClearMugshot
@@ -129,7 +125,7 @@ Psfleader3LookAround_Movement:
 	step_end
 
 AutomaticSolvePuzzle_Script_Text_0:
-	.string "Puzzle is solved.$"
+	.string "Puzzle is solved. Leave and come back.$"
 
 gText_EnterPsfleader3_IWasThinking::
 	.string "I was thinking about the arrangement\n"

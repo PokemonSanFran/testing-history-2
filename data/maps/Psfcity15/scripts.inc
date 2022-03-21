@@ -4,14 +4,21 @@ Psfcity15_MapScripts::
 	.byte 0
 
 Psfcity15_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto_if_unset FLAG_BADGE03_GET, Psfcity15_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
-	return
-
-Psfcity15_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	setflag FLAG_HIDE_PSFCITY15_PSFBADBOSS
+	goto Psfcity15_MapScripts_OnTransition
 	return
 
 Psfcity15_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_PSFCITY15_STATE, 1, PsfbadbossWalkToPsfchara1_Script
+	map_script_2 VAR_PSFCITY15_STATE, 1, WowYoureStrong_WalkToPlayer_Script
 	.2byte 0
+
+
+Psfcity15_MapScripts_OnTransition::
+	goto_if_unset FLAG_BADGE03_GET, Psfcity15_MapScripts_OnTransition_1
+	compare VAR_PSFCITY15_STATE, 1
+	goto_if_gt Psfcity15_MapScripts_OnTransition_1
+	return
+
+Psfcity15_MapScripts_OnTransition_1:
+	setflag FLAG_TEMP_1
+	return
 

@@ -3,27 +3,21 @@ const PSFLEADER3 = 1
 
 script EnterPsfleader3_ObjectSetUp_Script {
     setobjectmovementtype(PSFLEADER3, MOVEMENT_TYPE_FACE_LEFT)
-    end
 }
 
 script EnterPsfleader3_StartBattle_ObjectSetup_Script {
+    setflag(FLAG_TEMP_1)
     setobjectxy(PSFLEADER3, 10, 6)
     setobjectxyperm(PSFLEADER3, 10, 6)
-    end
-}
-
-script EnterPsfleader3_HidePuzzle_Script {
-    if (var(VAR_GYM_3_STATE) > 0){
-    setflag(FLAG_TEMP_1)
-    }
+    setobjectmovementtype(PSFLEADER3, MOVEMENT_TYPE_LOOK_AROUND)
 }
 
 script AutomaticSolvePuzzle_Script {
     lockall
-    msgbox(format("Puzzle is solved."), MSGBOX_NPC)
+    addvar(VAR_GYM_3_STATE, 1)
+    msgbox(format("Puzzle is solved. Leave and come back."), MSGBOX_NPC)
     closemessage
     release
-    addvar(VAR_GYM_3_STATE, 1)
     end
 }
 
@@ -41,6 +35,7 @@ script EnterPsfleader3_WalkToBattlefield_Script {
 
 script EnterPsfleader3_MuseumArrangement_Dialogue {
     addvar(VAR_GYM_3_STATE, 1)
+    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     msgbox(gText_EnterPsfleader3_IWasThinking, MSGBOX_NPC)
     callnative(ClearMugshot)
     closemessage
@@ -72,6 +67,7 @@ script EnterPsfleader3_Defeated_Script {
     addvar(VAR_PSFCITY15_STATE, 1)
     addvar(VAR_GYM_3_STATE, 1)
     addvar(VAR_STORYLINE_STATE, 1)
+    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     msgbox(gText_EnterPsfleader3_WowIllReallyNeed)
     closemessage
     callnative(ClearMugshot)
@@ -85,6 +81,7 @@ script EnterPsfleader3_Defeated_Script {
 
 script EnterPsfleader3_PostBattle_Dialogue {
     addvar(VAR_GYM_3_STATE, 1)
+    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     msgbox(gText_EnterPsfleader3_ThatPositiveSanction, MSGBOX_NPC)
     callnative(ClearMugshot)
     closemessage
@@ -92,6 +89,7 @@ script EnterPsfleader3_PostBattle_Dialogue {
     end
 }
 script EnterPsfleader3_PostBattle_Dialogue2 {
+    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     callnative(DrawMugshot)
     msgbox(gText_EnterPsfleader3_WellNeedToBattle, MSGBOX_NPC)
     callnative(ClearMugshot)

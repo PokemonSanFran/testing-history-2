@@ -13,10 +13,9 @@ Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfcity15_Gym_MapScripts_OnTransition::
-	call EnterPsfleader3_HidePuzzle_Script
 	switch VAR_GYM_3_STATE
 	case 1, Psfcity15_Gym_MapScripts_OnTransition_2
-	case 3, Psfcity15_Gym_MapScripts_OnTransition_3
+	case 2, Psfcity15_Gym_MapScripts_OnTransition_3
 	return
 
 Psfcity15_Gym_MapScripts_OnTransition_2:
