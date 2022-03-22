@@ -18,6 +18,7 @@ AlwaysWatchingWazowski_MovePlayerIntoPlace_Script::
 	goto_if_eq AlwaysWatchingWazowski_MovePlayerIntoPlace_Script_2
 	applymovement OBJ_EVENT_ID_PLAYER, Psfchara1DeskWalkFromRight_Movement
 AlwaysWatchingWazowski_MovePlayerIntoPlace_Script_1:
+	waitmovement 0
 	applymovement 2, Common_Movement_FacePlayer
 	waitmovement 0
 	goto AlwaysWatchingWazowski_Intro_Dialogue
@@ -33,29 +34,26 @@ AlwaysWatchingWazowski_Intro_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_IImagineAllTheScreens
-	goto AlwaysWatchingWazowski_WishYouHadVisited_Dialogue
-	return
-
-
-AlwaysWatchingWazowski_WishYouHadVisited_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	compare VAR_PSFCITY15_STATE, 4
-	goto_if_eq AlwaysWatchingWazowski_WishYouHadVisited_Dialogue_2
+	compare VAR_PSFCITY15_STATE, 3
+	goto_if_gt AlwaysWatchingWazowski_Intro_Dialogue_2
 	msgbox gText_AlwaysWatchingWazowski_IWishYouHadVisited
-AlwaysWatchingWazowski_WishYouHadVisited_Dialogue_1:
+AlwaysWatchingWazowski_Intro_Dialogue_1:
 	goto AlwaysWatchingWazowski_HowDidYouKnow_Dialogue
 	return
 
-AlwaysWatchingWazowski_WishYouHadVisited_Dialogue_2:
+AlwaysWatchingWazowski_Intro_Dialogue_2:
 	msgbox gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime
-	goto AlwaysWatchingWazowski_WishYouHadVisited_Dialogue_1
+	goto AlwaysWatchingWazowski_Intro_Dialogue_1
 
 
 AlwaysWatchingWazowski_HowDidYouKnow_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_WaitHowDidYouKnow
+	closemessage
+	callnative ClearMugshot
+	applymovement 2, Common_Movement_FaceDown
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_LookAroundDoYouThink
@@ -82,11 +80,11 @@ AlwaysWatchingWazowski_MarketingandProduction_Dialogue::
 	msgbox gText_AlwaysWatchingWazowski_YouCanSeeForYourself
 	callnative ClearMugshot
 	closemessage
-	goto AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script
+	goto AlwaysWatchingWazowski_ProgramCutscene_Script
 	return
 
 
-AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script::
+AlwaysWatchingWazowski_ProgramCutscene_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
@@ -105,20 +103,20 @@ AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script::
 	setvar VAR_0x8000, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_HistoricallyOurInRegion
-	compare VAR_NATIVERIVALALPHA_STATE, 0
-	goto_if_gt AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script_2
-AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script_1:
+	compare VAR_PSFROUTE9_STATE, 0
+	goto_if_gt AlwaysWatchingWazowski_ProgramCutscene_Script_2
+AlwaysWatchingWazowski_ProgramCutscene_Script_1:
 	closemessage
 	fadescreen FADE_FROM_BLACK
 	goto AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue
 	return
 
-AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script_2:
+AlwaysWatchingWazowski_ProgramCutscene_Script_2:
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_WaitHesDoingTheLeagueChallenge
 	callnative ClearMugshot
-	goto AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script_1
+	goto AlwaysWatchingWazowski_ProgramCutscene_Script_1
 
 
 AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue::
@@ -128,17 +126,18 @@ AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_IImagineThisHasBeenVery
 	applymovement 2, Common_Movement_FaceUp
+	waitmovement 0
 	fadedefaultbgm
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_SorryToBugYou
-	waitmovement 0
+	callnative ClearMugshot
 	closemessage
 	releaseall
 	end
 
 
-AlwaysWatchingWazowski_IgnoringPsfchara1_Dialogue::
+AlwaysWatchingWazowski_IgnoringPlayer_Dialogue::
 	lockall
 	msgbox gText_AlwaysWatchingWazowski__IgnorePlayer
 	closemessage
@@ -235,8 +234,8 @@ gText_AlwaysWatchingWazowski_TensOfThousandsOfKids::
 	.string "they love watching their favorites\l"
 	.string "progress. Our inbound sponsorship\l"
 	.string "requests have skyrocketed 44.15%\l"
-	.string "percent, and the challenge only\l"
-	.string "started this morning.$"
+	.string "percent, and the challenge just\l"
+	.string "started.$"
 
 gText_AlwaysWatchingWazowski_ToPutItSimply::
 	.string "To put it simply, you're all going to be\n"

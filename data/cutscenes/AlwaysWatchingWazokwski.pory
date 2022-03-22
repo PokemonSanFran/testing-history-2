@@ -23,6 +23,7 @@ script AlwaysWatchingWazowski_MovePlayerIntoPlace_Script{
         }   else {
             applymovement(PLAYER,Psfchara1DeskWalkFromRight_Movement)
         }
+        waitmovement(0)
 
     applymovement(PSFBADADMIN3,Common_Movement_FacePlayer)
         waitmovement(0)
@@ -34,13 +35,8 @@ script AlwaysWatchingWazowski_Intro_Dialogue{
         setvar(VAR_0x8000, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_IImagineAllTheScreens)
-        goto(AlwaysWatchingWazowski_WishYouHadVisited_Dialogue)
-}
-script AlwaysWatchingWazowski_WishYouHadVisited_Dialogue{
-    setvar(VAR_0x8000, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
 
-        if(var(VAR_PSFCITY15_STATE) == 4){
+        if(var(VAR_PSFCITY15_STATE) > 3){
             msgbox(gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime)
         }   else {
             msgbox(gText_AlwaysWatchingWazowski_IWishYouHadVisited)
@@ -52,6 +48,10 @@ script AlwaysWatchingWazowski_HowDidYouKnow_Dialogue{
     setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_WaitHowDidYouKnow)
+        closemessage
+        callnative(ClearMugshot)
+        applymovement(PSFBADADMIN3,Common_Movement_FaceDown)
+        waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_LookAroundDoYouThink)
@@ -76,9 +76,9 @@ script AlwaysWatchingWazowski_MarketingandProduction_Dialogue{
         msgbox(gText_AlwaysWatchingWazowski_YouCanSeeForYourself)
         callnative(ClearMugshot)
         closemessage
-        goto(AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script)
+        goto(AlwaysWatchingWazowski_ProgramCutscene_Script)
 }
-script AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script{
+script AlwaysWatchingWazowski_ProgramCutscene_Script{
     applymovement(PLAYER,Common_Movement_FaceLeft)
         waitmovement(0)
         fadescreen(FADE_TO_BLACK)
@@ -98,7 +98,7 @@ script AlwaysWatchingWazowski_Psfchara2ProgramCutscene_Script{
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_HistoricallyOurInRegion)
 
-        if (var(VAR_NATIVERIVALALPHA_STATE) > 0){
+        if (var(VAR_PSFROUTE9_STATE) > 0){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_AlwaysWatchingWazowski_WaitHesDoingTheLeagueChallenge)
@@ -116,16 +116,17 @@ script AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue{
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_IImagineThisHasBeenVery)
         applymovement(PSFBADADMIN3,Common_Movement_FaceUp)
+        waitmovement(0)
         fadedefaultbgm
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_SorryToBugYou)
-        waitmovement(0)
+        callnative(ClearMugshot)
         closemessage    
         releaseall
         end
 }
-script AlwaysWatchingWazowski_IgnoringPsfchara1_Dialogue{
+script AlwaysWatchingWazowski_IgnoringPlayer_Dialogue{
     lockall    
         msgbox(gText_AlwaysWatchingWazowski__IgnorePlayer)
         closemessage
@@ -186,7 +187,7 @@ text gText_AlwaysWatchingWazowski_WhatDoYouMean{
 }
 
 text gText_AlwaysWatchingWazowski_TensOfThousandsOfKids{
-    format("Tens of thousands of kids at home watching you all right now. Everybody loves competition, and even more so, they love watching their favorites progress. Our inbound sponsorship requests have skyrocketed 44.15% percent, and the challenge only started this morning.")
+    format("Tens of thousands of kids at home watching you all right now. Everybody loves competition, and even more so, they love watching their favorites progress. Our inbound sponsorship requests have skyrocketed 44.15% percent, and the challenge just started.")
 }
 
 text gText_AlwaysWatchingWazowski_ToPutItSimply{

@@ -13,9 +13,12 @@ script Psfbadguy1Tower_2F_MapScripts_OnTransition {
     
     switch (var(VAR_PSFBADGUY1TOWER_2F_STATE)){
         case 0: goto(WelcomeToTheWarRoom_Object_Hide_Script)
+        case 1: goto(WelcomeToTheWarRoom_Object_Hide_Script)
+        case 2: goto(WelcomeToTheWarRoom_Object_Hide_Script)
         case 3: goto(WelcomeToTheWarRoom_Object_Setup_Script)
         case 4: goto(WelcomeToTheWarRoom_Object_Clean_Script)
         case 5: goto(YouRealizeWereEvilRight_Object_Setup_Script)
         case 6: goto(YouRealizeWereEvilRight_Object_Cleanup_Script)
+        default: goto(WelcomeToTheWarRoom_Object_Hide_Script)
     }
 }
