@@ -661,7 +661,7 @@
 #define FLAG_UNUSED_0x26B 0x26B //Unused Flag
 #define FLAG_UNUSED_0x26C 0x26C // Unused Flag
 #define FLAG_HIDE_PSFCITY15_PSFBADBOSS 0x26D// Previously Unused Flag
-#define FLAG_HIDE_TOWERF10_PSFBADGUY 0x26E//Previously Unused Flag
+#define FLAG_UNUSED_0x26E 0x26E //Unused Flag
 #define FLAG_HIDE_TOWER2_PSFTRANSRIVAL 0x26F // Previously Unused Flag
 #define FLAG_HIDE_TOWER2_PSFBADADMIN 0x270 // Previously Unused Flag
 #define FLAG_HIDE_TOWER2_POLICE 0x271 // Previously Unused Flag

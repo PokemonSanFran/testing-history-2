@@ -1,0 +1,356 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADBOSS = 3
+const PSFBADADMIN = 4
+
+script TheGangsAllHere_ObjectCleanUp_Script {
+    setflag(FLAG_TEMP_2)
+}
+
+script TheGangsAllHere_WhatBringsYou_Dialogue{
+    lock
+    addvar(VAR_PSFCITY15_STATE,1)
+    playse(SE_PIN)
+    playbgm(MUS_RG_FOLLOW_ME,FALSE)
+    applymovement(PSFBADADMIN,Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(PSFBADADMIN,Common_Movement_FacePlayer)
+    waitmovement(0)
+    applymovement(PLAYER, Common_Movement_FaceLeft)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_WhatBringsYou)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_ToldMeToVisit)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_IsThisWhereYouWork)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_TheTowerYes)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_IHaventBeen)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_OfCourseNot)
+    callnative(ClearMugshot)
+    closemessage
+    special(HealPlayerParty)
+    applymovement(PSFBADADMIN,FollowMe_Movement)
+    waitmovement(0)
+    setobjectxyperm(PSFBADADMIN,6,25)
+    fadedefaultbgm
+    //loadword(0,NewScript)
+    //setfollower(PSFBADADMIN,0x100) //TODO hook up FollowMe scripts
+    //https://www.pokecommunity.com/showthread.php?t=432529
+    releaseall
+    end
+}
+
+script TheGangsAllHere_OfficeIsntThatWay_Script{
+    lockall
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_OfficeIsntThatWay)
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PLAYER,TheGangsAllHere_OfficeIsntThatWay_Movement)
+}
+
+script TheGangsAllHere_ThisIsOffice_Script{
+    applymovement(PSFBADADMIN,FollowPlaceholder_Movement)
+    waitmovement(0)
+    applymovement(PSFBADADMIN, Common_Movement_FaceRight)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_ThisIsOffice)
+    closemessage
+    callnative(ClearMugshot)
+    applymovement(PLAYER,TheGangsAllHere_ThisIsOffice_Movement)
+    applymovement(PSFBADADMIN,TheGangsAllHere_ThisIsOffice_Movement)
+    waitmovement(0)
+    goto(TheGangsAllHere_ComeOnIn_Dialogue)
+    end
+}
+
+script TheGangsAllHere_ComeOnIn_Dialogue{
+    addvar(VAR_PSFCITY15_STATE,1)
+    playbgm(MUS_RG_ENCOUNTER_DEOXYS,FALSE)
+    playse(SE_PIN)
+    applymovement(PSFBADBOSS,Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(PSFBADBOSS,TheGangsAllHere_PsfbadbossWalkToDoor_Movement)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_ComeOnIn)
+    closemessage
+    callnative(ClearMugshot)
+    applymovement(PSFBADADMIN,TheGangsAllHere_PsfbadadminWalkToDesk_Movement)
+    waitmovement(0)
+    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_AsYouAsked)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_IThoughtYouSaid)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_IDidIsee)
+    callnative(ClearMugshot)
+    goto(TheGangsAllHere_NotIntentionally_Dialogue)
+    end
+}
+
+script TheGangsAllHere_NotIntentionally_Dialogue{
+    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_NotIntentionally)
+    callnative(ClearMugshot)
+    applymovement(PSFBADADMIN,Common_Movement_FaceLeft)
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_LikeISaidWe)
+    callnative(ClearMugshot)
+    applymovement(PSFBADADMIN,Common_Movement_FaceUp)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_IHeardWonderfulThings)
+    callnative(ClearMugshot)
+    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
+    applymovement(PSFBADADMIN,TheGangsAllHere_GivePackageToPsfbadboss_Movement)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_ImThrilledTheTiming)
+    closemessage
+    callnative(ClearMugshot)
+    goto(TheGangsAllHere_GiveDowsingMachine_Script)
+    end
+}
+
+script TheGangsAllHere_GiveDowsingMachine_Script{
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    applymovement(PSFBADBOSS,TheGangsAllHere_GivePackageToPsfchara1_Movement)
+    waitmovement(0)
+    giveitem(ITEM_DOWSING_MACHINE,1)
+    goto(TheGangsAllHere_GiveDowsingMachine_Dialogue)
+    end
+}
+
+script TheGangsAllHere_GiveDowsingMachine_Dialogue{
+    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_TheVSSeekerWillAlert)
+    callnative(ClearMugshot)
+    applymovement(PSFBADADMIN,Common_Movement_FaceLeft)
+    waitmovement(0)
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_NotToPlaceAnyUndue)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_OhWowThatMeans)
+    closemessage
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_WeKnowButNoPressure)
+    closemessage
+    callnative(ClearMugshot)
+    goto(TheGangsAllHere_EndScene_Dialogue)
+    end
+}
+
+script TheGangsAllHere_EndScene_Dialogue{
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_TimeForNumber7)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
+    applymovement(PSFBADADMIN,Common_Movement_FaceUp)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_WeShall)
+    callnative(ClearMugshot)
+    applymovement(PSFBADADMIN,Common_Movement_FaceLeft)
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    callnative(DrawMugshot)
+    msgbox(gText_TheGangsAllHere_FeelFreeToContinue)
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PLAYER,TheGangsAllHere_MoveOutOfWay_Movement)
+    waitmovement(0)
+    applymovement(PSFBADBOSS,TheGangsAllHere_PsfbadbossWalkOut_Movement)
+    applymovement(PSFBADADMIN,TheGangsAllHere_PsfbadadminWalkOut_Movement)
+    waitmovement(0)
+    fadedefaultbgm
+    removeobject(PSFBADBOSS)
+    removeobject(PSFBADADMIN)
+    addvar(VAR_STORYLINE_STATE,1)
+    call(Act1_1_Check_Script)
+    release
+    end
+}
+
+
+
+script Psfbadguy1Tower_10F_EventScript_Tom {
+    trainerbattle_double(TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons)
+    special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
+    msgbox (Route104_Text_GinaPostBattle, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+script Psfbadguy1Tower_10F_EventScript_Ian {
+    trainerbattle_double (TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons)
+    special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
+    msgbox (Route104_Text_MiaPostBattle, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+text gText_TheGangsAllHere_WhatBringsYou{
+    format("{PLAYER}! What brings you to League HQ?")
+}
+text gText_TheGangsAllHere_ToldMeToVisit{
+    format("Commissioner Psfbadboss told me to visit after I beat Psfleader3!")
+}
+text gText_TheGangsAllHere_IsThisWhereYouWork{
+    format("Is this where you work?")
+}
+text gText_TheGangsAllHere_TheTowerYes{
+    format("The Psfcompany3 Tower? Yes! League Ops? ...sort of. We wear a lot of hats!")
+}
+text gText_TheGangsAllHere_IHaventBeen{
+    format("I haven't been up here in a while though. I've an important delivery for the C.E.O., but the workers here in League Ops can be a little... rowdy. Do you mind if I tag along on your tour? I'll keep you in tip-top shape!")
+}
+text gText_TheGangsAllHere_OfCourseNot{
+    format("Of course not!")
+}
+
+text gText_TheGangsAllHere_OfficeIsntThatWay{
+    format("Hey {PLAYER}, the office isn't that way!")
+}
+
+text gText_TheGangsAllHere_ThisIsOffice{
+    format("This is Psfbadboss's office. After you.")
+}
+
+text gText_TheGangsAllHere_ComeOnIn{
+    format("{PLAYER}! Psfbadadmin! Come on in, I just finished an email! Glad you're both here, and excellent timing that you ran into each other.")
+}
+text gText_TheGangsAllHere_AsYouAsked{
+    format("As you asked, although I must say, it was not quite where you specified...")
+}
+text gText_TheGangsAllHere_IThoughtYouSaid{
+    format("I thought you said you had a delivery for the C.E.O.?")
+}
+text gText_TheGangsAllHere_IDidIsee{
+    format("I did. I see Psfbadboss neglected to reveal his full title...?")
+}
+text gText_TheGangsAllHere_NotIntentionally{
+    format("Not intentionally! I was just so swept up in your battle! Psfbadadmin, please tell me you'll go back and watch Psfbadadmin3's highlight reel later, it was fantastic.")
+}
+text gText_TheGangsAllHere_LikeISaidWe{
+    format("Like I said, we wear a lot of hats.")
+}
+text gText_TheGangsAllHere_IHeardWonderfulThings{
+    format("I heard wonderful things on the way over here, but I'll be certain to observe later. In any case, your package, Psfbadboss.")
+}
+text gText_TheGangsAllHere_ImThrilledTheTiming{
+    format("I'm thrilled the timing worked out, because the package actually isn't for me!")
+}
+text gText_TheGangsAllHere_TheVSSeekerWillAlert{
+    format("The VS Seeker will alert Trainers in the area that you want a rematch. It uses steps to charge, so I guess you'll burn some calories alongside your Pokémon. I'm excited to see how you use our tools!")
+} //TODO Change script to fit whatever item we end up giving out
+
+text gText_TheGangsAllHere_NotToPlaceAnyUndue{
+    format("Not to place any undue pressure on you, but we personally reviewed all of the applicants to our little program. You were exceptionally popular among the team, so we're very excited to see you perform well!")
+}
+text gText_TheGangsAllHere_OhWowThatMeans{
+    format("Oh. Wow! That means a lot. I'll absolutely put it to use!")
+}
+text gText_TheGangsAllHere_WeKnowButNoPressure{
+    format("We know. But no pressure. Enjoy your journey!")
+}
+text gText_TheGangsAllHere_TimeForNumber7{
+    format("Time for Psfcompany4 number 7. Shall we, Psfbadadmin?")
+}
+text gText_TheGangsAllHere_WeShall{
+    format("We shall.")
+}
+text gText_TheGangsAllHere_FeelFreeToContinue{
+    format("Feel free to continue your tour without us, Zoey. Greatly appreciate your help in the battles. Hopefully supporting me wasn't too exhausting! Ah, and if you haven't already visited Psfbadadmin3, go do so. They're on Marketing, the second floor.")
+}
+movement TheGangsAllHere_PsfbadadminWalkToZoey_Movement{
+    face_right
+    step_end
+}
+movement TheGangsAllHere_OfficeIsntThatWay_Movement{
+    walk_down
+    step_end
+}
+movement TheGangsAllHere_ThisIsOffice_Movement{
+    walk_right * 3
+    step_end
+}
+
+movement FollowPlaceholder_Movement{
+    walk_down
+    step_end
+}
+movement TheGangsAllHere_PsfbadbossWalkToDoor_Movement{
+    walk_down
+    walk_left * 3
+    step_end
+}
+
+movement TheGangsAllHere_PsfbadadminWalkToDesk_Movement{
+    walk_down
+    walk_right *2
+    face_up
+    delay_16 *2
+}
+
+movement TheGangsAllHere_GivePackageToPsfbadboss_Movement{
+    walk_in_place_up
+    step_end
+}
+
+movement TheGangsAllHere_GivePackageToPsfchara1_Movement{
+    face_left
+    walk_in_place_left
+    step_end
+}    
+
+movement TheGangsAllHere_MoveOutOfWay_Movement{
+    walk_up
+    face_down
+    step_end
+}
+
+movement TheGangsAllHere_PsfbadbossWalkOut_Movement{
+    walk_left * 5
+    walk_up * 6
+    step_end
+}
+
+movement TheGangsAllHere_PsfbadadminWalkOut_Movement{
+    walk_up
+    walk_left * 5
+    walk_up * 6
+    step_end
+}
+movement FollowMe_Movement{
+    walk_left
+    walk_down * 20
+    step_end
+}

@@ -1,5 +1,43 @@
-mapscripts Psfbadguy1Tower_Elevator_MapScripts {}
+const PLAYER = OBJ_EVENT_ID_PLAYER
 
+mapscripts Psfbadguy1Tower_Elevator_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfbadguy1Tower_Elevator_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0: Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue 
+    ]
+}
+
+script Psfbadguy1Tower_Elevator_MapScripts_OnTransition {
+    if (!flag(FLAG_BADGE03_GET)){ //PSF TODO come back and replace with the storyline variable for the raid
+        goto(Psfbadguy1Tower_Elevator_HideAttendant_Script)
+    }
+}
+
+script Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue {
+        setvar(VAR_TEMP_0,1)
+    if (!flag(FLAG_BADGE03_GET)){ 
+    lock
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Psfbadguy1Tower_Elevator_TheAttendantIsGone)
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
+    } else {
+        release
+        end
+    }
+}
+
+script Psfbadguy1Tower_Elevator_HideAttendant_Script {
+    setflag(FLAG_TEMP_1)
+}
+        
 script Psfbadguy1Tower_ElevatorAttendant_Script {
     lock
     faceplayer
@@ -108,5 +146,9 @@ script Psfbadguy1TowerElevator_EventScript_MoveElevator{
 script Psfbadguy1TowerElevator_EventScript_SetFloor{
     special(SetPsfbadguy1TowerFloor)
     return
+}
+
+text gText_Psfbadguy1Tower_Elevator_TheAttendantIsGone {
+    format("The attendant is gone...but I don't think the elevator works without their keycard. Guess I have to take the stairs.")
 }
 

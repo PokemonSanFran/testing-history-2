@@ -1,5 +1,48 @@
 Psfbadguy1Tower_Elevator_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfbadguy1Tower_Elevator_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfbadguy1Tower_Elevator_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfbadguy1Tower_Elevator_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfbadguy1Tower_Elevator_MapScripts_OnTransition
+	return
+
+Psfbadguy1Tower_Elevator_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TEMP_0, 0, Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue
+	.2byte 0
+
+
+Psfbadguy1Tower_Elevator_MapScripts_OnTransition::
+	goto_if_unset FLAG_BADGE03_GET, Psfbadguy1Tower_Elevator_MapScripts_OnTransition_1
+	return
+
+Psfbadguy1Tower_Elevator_MapScripts_OnTransition_1:
+	goto Psfbadguy1Tower_Elevator_HideAttendant_Script
+	return
+
+
+Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue::
+	setvar VAR_TEMP_0, 1
+	goto_if_unset FLAG_BADGE03_GET, Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue_1
+	release
+	end
+
+Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue_1:
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Psfbadguy1Tower_Elevator_TheAttendantIsGone
+	closemessage
+	callnative ClearMugshot
+	release
+	end
+
+
+Psfbadguy1Tower_Elevator_HideAttendant_Script::
+	setflag FLAG_TEMP_1
+	return
 
 
 Psfbadguy1Tower_ElevatorAttendant_Script::
@@ -171,3 +214,9 @@ Psfbadguy1TowerElevator_EventScript_SetFloor::
 	special SetPsfbadguy1TowerFloor
 	return
 
+
+gText_Psfbadguy1Tower_Elevator_TheAttendantIsGone::
+	.string "The attendant is gone...but I don't\n"
+	.string "think the elevator works without their\l"
+	.string "keycard. Guess I have to take the\l"
+	.string "stairs.$"
