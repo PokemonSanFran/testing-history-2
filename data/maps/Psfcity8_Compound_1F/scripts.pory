@@ -1,7 +1,3 @@
-const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
-const PSFBADADMIN = 2 //FLAG_TEMP_2
-
 mapscripts Psfcity8_Compound_1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Psfcity8_Compound_1F_MapScripts_OnTransition)
@@ -17,8 +13,8 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
 
 script Psfcity8_Compound_1F_MapScripts_OnTransition {
     switch (var(VAR_STORYLINE_STATE)){
-        case 9: goto(Act1_1_ObjectCleanUp)
-        case 10: goto(Act1_2_ObjectSetUp)
+        case 9: goto(AaandWereBack_ObjectSetUp_Script)
+        case 10: goto(AaandWereBack_ObjectHide_Script)
         case 20: goto(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
     }
 
@@ -28,32 +24,19 @@ script Psfcity8_Compound_1F_MapScripts_OnTransition {
         case 4: goto(swagbag_ObjectHide_Script) 
                 //5 isn't needed because it is set in the bedroom
         case 6: goto(TwoHoursAgo_ObjectSetUp) 
-        case 7: goto(AandWereBack_ObjectSetUp_Script)
+        case 7: goto(AaandWereBack_ObjectSetUp_Script)
         case 8: goto(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
     }
-}
-
-script Act1_1_ObjectCleanUp{
-    setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_3)
-}
-
-script Act1_2_ObjectSetUp{
-    setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_3)
 }
 
 script Psftransrival_Psfcity8_Compound_1F_InteractScript {
     lock
 
         if (var(VAR_STORYLINE_STATE) == 9){
-            goto(Act1_1_Complete_Psftransrival_Dialogue)
-        }
-        else {
+            call(AaandWereBack_Psftransrival_Dialogue)
+        }else {
             call(ImProbablyBetterThanYou_Annoyed_Dialogue)
         }
-
     release
         end
 }
@@ -85,58 +68,3 @@ script Psfbadadmin_Psfcity8_Compound_1F_InteractScript {
         releaseall
         end
 }
-
-script Act1_1_Complete_Psftransrival_Dialogue {
-    lockall
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Act1_1_Complete_WhatsYourProgress,MSGBOX_NPC)
-        callnative(ClearMugshot)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Act1_1_Complete_OnlyThree)
-        callnative(ClearMugshot)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Act1_1_Complete_YeahThatBusted)
-        callnative(ClearMugshot)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Act1_1_Complete_INeedToFigure)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Act1_1_Complete_HardToComeBy)
-        callnative(ClearMugshot)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Act1_1_Complete_ImSureIllFigure)
-        callnative(ClearMugshot)
-        closemessage
-        releaseall
-        end
-}
-
-text gText_Act1_1_Complete_WhatsYourProgress {
-    format("Damn I'm beat. Getting five badges in one day was a hustle! What about you?")
-}
-
-text gText_Act1_1_Complete_OnlyThree {
-    format("Only three so far. I'm praying the ferry is fixed tomorrow.")
-}
-
-text gText_Act1_1_Complete_YeahThatBusted {
-    format("Yeah, that busted ferry sucks. I'm going to challenge the Psfcity5 and Psfcity18 Gyms tomorrow, and the ferry will definately be fixed after that, so Psfcity11 Gym will be last.")
-}
-
-text gText_Act1_1_Complete_INeedToFigure {
-    format("I need to figure out how to get some Go-Goggles too...")
-}
-
-text gText_Act1_1_Complete_HardToComeBy {
-    format("They're hard to come by right now. I only got these because Daddys knows the manufactuer over in Kanto.")
-}
-
-text gText_Act1_1_Complete_ImSureIllFigure {
-    format("I'm sure I'll figure something out.")
-}
-

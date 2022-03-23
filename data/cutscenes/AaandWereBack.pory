@@ -1,4 +1,145 @@
-script AandWereBack_ObjectSetUp_Script {
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
+const PSFBADADMIN = 2 //FLAG_TEMP_2
+
+script AaandWereBack_ObjectSetUp_Script {
     setflag(FLAG_TEMP_3)
-    setflag(FLAG_TEMP_2)
+        setflag(FLAG_TEMP_2)
+}
+
+script AaandWereBack_ObjectHide_Script {
+    setflag(FLAG_TEMP_1)
+        setflag(FLAG_TEMP_2)
+        setflag(FLAG_TEMP_3)
+}
+
+script Act1_1_Check_Script {
+    if (var(VAR_STORYLINE_STATE) == 9){
+        call(AaandWereBack_Monologue)
+    }
+}
+
+script AaandWereBack_Monologue {
+    lock
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AaandWereBack_GotAllThree)
+        callnative(ClearMugshot)
+        closemessage
+        call(AaandWereBack_WarpToCompound_Script)
+        release
+        end
+}
+
+script AaandWereBack_WarpToCompound_Script {
+    addvar(VAR_LITTLEROOT_INTRO_STATE,1) 
+        msgbox(gText_AaandWereBack_Question,MSGBOX_YESNO)
+        closemessage
+        if (var(VAR_RESULT) == YES){
+            warpsilent(MAP_PSFCITY8,255,3,10)
+        }
+}
+
+script AaandWereBack_Psftransrival_Dialogue {
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_AaandWereBack_WhatsYourProgress,MSGBOX_NPC)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AaandWereBack_OnlyThree)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_AaandWereBack_YeahThatBusted)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AaandWereBack_INeedToFigure)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_AaandWereBack_HardToComeBy)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AaandWereBack_ImSureIllFigure)
+        callnative(ClearMugshot)
+        closemessage
+}
+
+script AaandWereBack_FerryRepaired_Dialogue {
+        addvar(VAR_STORYLINE_STATE,1)
+        pokenavcall(blank)
+        waitmessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AaandWereBack_ThatsDifferent)
+        callnative(ClearMugshot)
+        pokenavcall(gText_AaandWereBack_FerryMessage)
+        waitmessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_AaandWereBack_TooBadTheresNoFerry)
+        callnative(ClearMugshot)
+
+        if (var(VAR_FAINTED_FOG_STATE) > 1)
+        {
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_AaandWereBack_FindAWayThrough)
+                callnative(ClearMugshot)
+        }
+}
+
+text gText_AaandWereBack_GotAllThree {
+    format("I've got all three Badges from this side of the mainland. The ferry to Psfcity9 looks like it's going to be broken utnil at least tomorrow, and I can't head west without Go-Goggles. It's been a long day... I think I should head back to Psfcity8 and call it a night.")
+}
+
+text gText_AaandWereBack_Question {
+    format("Do you want to go back to Psfcity8?")
+}
+
+text gText_AaandWereBack_WhatsYourProgress {
+    format("Damn I'm beat. Getting five badges in one day was a hustle! What about you?")
+}
+
+text gText_AaandWereBack_OnlyThree {
+    format("Only three so far. I'm praying the ferry is fixed tomorrow.")
+}
+
+text gText_AaandWereBack_YeahThatBusted {
+    format("Yeah, that busted ferry sucks. I'm going to challenge the Psfcity5 and Psfcity18 Gyms tomorrow, and the ferry will definately be fixed after that, so Psfcity11 Gym will be last.")
+}
+
+text gText_AaandWereBack_INeedToFigure {
+    format("I need to figure out how to get some Go-Goggles too...")
+}
+
+text gText_AaandWereBack_HardToComeBy {
+    format("They're hard to come by right now. I only got these because Daddys knows the manufactuer over in Kanto.")
+}
+
+text gText_AaandWereBack_ImSureIllFigure {
+    format("I'm sure I'll figure something out.")
+}
+
+text blank {
+    format("")
+}
+text gText_AaandWereBack_FerryMessage {
+    format("A message from the PSFSUBWAY System. 
+
+            The following service routes are now operational:\p
+
+            Psfplace11 to Psfcity17\p
+
+            Psfcity17 to Psfcity9\p
+
+            We appreciate your patience while the remaining routes are restored.
+            ","1_latin",175)
+}
+text gText_AaandWereBack_ThatsDifferent{
+    format("That's a different notification...")
+}
+text gText_AaandWereBack_TooBadTheresNoFerry{
+    format("Looks like east Psfregion1 is next! Too bad there's no ferry directly to the Gym in Psfcity11...")
+}
+text gText_AaandWereBack_FindAWayThrough{
+    format("Hopefully, I'll find a way through the fog after that...")
 }

@@ -7,16 +7,15 @@ mapscripts Psfcity8_Compound_2F_MapScripts {
 }
 
 script RestInBed_Script {
-    lockall
+    lock
 
         if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
-            setvar(VAR_LITTLEROOT_INTRO_STATE,5)
+            addvar(VAR_LITTLEROOT_INTRO_STATE,1)
         }
 
     if (var(VAR_PSFCAVE7_STATE) == 3){
         call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
     }
-
 
     msgbox(gText_RestInBed_Text1)
         closemessage
@@ -39,34 +38,11 @@ script RestInBed_Progression_Script {
         }
 
     switch(var(VAR_STORYLINE_STATE)){
-        case 9: call(RestInBed_FerryRepaired_Dialogue)
+        case 9: call(AaandWereBack_FerryRepaired_Dialogue)
         case 35: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
     }
     releaseall
         end
-}
-script RestInBed_FerryRepaired_Dialogue {
-    addvar(VAR_STORYLINE_STATE,1)
-        pokenavcall(blank)
-        waitmessage
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ThatsDifferent)
-        callnative(ClearMugshot)
-        pokenavcall(gText_FerryRepaired)
-        waitmessage
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_TooBadTheresNoFerry)
-        callnative(ClearMugshot)
-
-        if (var(VAR_FAINTED_FOG_STATE) > 1)
-        {
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
-                callnative(DrawMugshot)
-                msgbox(gText_FindAWayThrough)
-                callnative(ClearMugshot)
-        }
 }
 script RestInBed_StillBlack_Script {
 
@@ -92,29 +68,4 @@ script WhyAreYouHelpingThem_StartChampionship_Dialogue {
 
 text gText_RestInBed_Text1 {
     format("Let's get some rest...when should we wake up?")
-}
-
-text blank {
-    format("")
-}
-text gText_FerryRepaired {
-    format("A message from the PSFSUBWAY System. 
-
-            The following service routes are now operational:\p
-
-            Psfplace11 to Psfcity17\p
-
-            Psfcity17 to Psfcity9\p
-
-            We appreciate your patience while the remaining routes are restored.
-            ","1_latin",175)
-}
-text gText_ThatsDifferent{
-    format("That's a different notification...")
-}
-text gText_TooBadTheresNoFerry{
-    format("Looks like east Psfregion1 is next! Too bad there's no ferry directly to the Gym in Psfcity11...")
-}
-text gText_FindAWayThrough{
-    format("Hopefully, I'll find a way through the fog after that...")
 }

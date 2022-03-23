@@ -4,6 +4,7 @@
 3: ???
 4: Checked out bedroom, going to meet Oak now
 5: Has recieved Pokedex
+6: Has completed Act 1.1
 
 # VAR_GYM_1_STATE / VAR_GYM_3_STATE
 1: Solved puzzles, ready to fight
@@ -32,6 +33,9 @@
 #VAR_PSFBADGUY1TOWER_2F_STATE
 1: Stepped onto floor, greeted by Sabrina
 2: Has talked to Sabrina
+
+#VAR_PSFCITY7_STATE
+1: Has watched the fight that Ariana broke up
 
 # VAR_PSFCAVE7_STATE
 3: Archer has asked to come to see real Alcatraz
@@ -104,7 +108,7 @@
 
 #VAR_STORYLINE_STATE
 1 - 9: Complete any cutscene from 1.1
-10: Slept in bed after completing 1.1
+10: Slept in bed after completing 1.1, ferry is fixed
 23: Sleep to progress to Championship
 24: Starting the Championship
 25: Oak explained Championship
@@ -123,7 +127,6 @@
 #VAR_ROUTE110_STATE
 1: Strike has started
 2: Have been told to kill Garbodor
-
 
 #VAR_ROUTE119_STATE
 1: Archer is about to apologize

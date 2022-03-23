@@ -31,11 +31,11 @@ Psfcity8_Compound_1F_MapScripts_OnTransition_1:
 	return
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_3:
-	goto Act1_1_ObjectCleanUp
+	goto AaandWereBack_ObjectSetUp_Script
 	goto Psfcity8_Compound_1F_MapScripts_OnTransition_1
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_4:
-	goto Act1_2_ObjectSetUp
+	goto AaandWereBack_ObjectHide_Script
 	goto Psfcity8_Compound_1F_MapScripts_OnTransition_1
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_5:
@@ -59,24 +59,11 @@ Psfcity8_Compound_1F_MapScripts_OnTransition_10:
 	return
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_11:
-	goto AandWereBack_ObjectSetUp_Script
+	goto AaandWereBack_ObjectSetUp_Script
 	return
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_12:
 	goto WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script
-	return
-
-
-Act1_1_ObjectCleanUp::
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
-	return
-
-
-Act1_2_ObjectSetUp::
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
 	return
 
 
@@ -90,7 +77,7 @@ Psftransrival_Psfcity8_Compound_1F_InteractScript_1:
 	end
 
 Psftransrival_Psfcity8_Compound_1F_InteractScript_2:
-	goto Act1_1_Complete_Psftransrival_Dialogue
+	call AaandWereBack_Psftransrival_Dialogue
 	goto Psftransrival_Psfcity8_Compound_1F_InteractScript_1
 
 
@@ -120,60 +107,3 @@ Psfbadadmin_Psfcity8_Compound_1F_InteractScript_8:
 	call TwoHoursAgo_ExplainLeftovers_Dialouge
 	goto Psfbadadmin_Psfcity8_Compound_1F_InteractScript_1
 
-
-Act1_1_Complete_Psftransrival_Dialogue::
-	lockall
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_Act1_1_Complete_WhatsYourProgress, MSGBOX_NPC
-	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Act1_1_Complete_OnlyThree
-	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_Act1_1_Complete_YeahThatBusted
-	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Act1_1_Complete_INeedToFigure
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_Act1_1_Complete_HardToComeBy
-	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Act1_1_Complete_ImSureIllFigure
-	callnative ClearMugshot
-	closemessage
-	releaseall
-	end
-
-
-gText_Act1_1_Complete_WhatsYourProgress::
-	.string "Damn I'm beat. Getting five badges in\n"
-	.string "one day was a hustle! What about you?$"
-
-gText_Act1_1_Complete_OnlyThree::
-	.string "Only three so far. I'm praying the ferry\n"
-	.string "is fixed tomorrow.$"
-
-gText_Act1_1_Complete_YeahThatBusted::
-	.string "Yeah, that busted ferry sucks. I'm\n"
-	.string "going to challenge the Psfcity5 and\l"
-	.string "Psfcity18 Gyms tomorrow, and the ferry\l"
-	.string "will definately be fixed after that, so\l"
-	.string "Psfcity11 Gym will be last.$"
-
-gText_Act1_1_Complete_INeedToFigure::
-	.string "I need to figure out how to get some\n"
-	.string "Go-Goggles too...$"
-
-gText_Act1_1_Complete_HardToComeBy::
-	.string "They're hard to come by right now. I\n"
-	.string "only got these because Daddys knows\l"
-	.string "the manufactuer over in Kanto.$"
-
-gText_Act1_1_Complete_ImSureIllFigure::
-	.string "I'm sure I'll figure something out.$"
