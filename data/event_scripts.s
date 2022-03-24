@@ -1131,7 +1131,7 @@ end
 .include "data/cutscenes/EnterAriana.inc"
 .include "data/cutscenes/HowDoWeGetHome.inc"
 .include "data/cutscenes/AaandWereBack.inc"
-##  .include "data/cutscenes/AssholesHome.inc"
+.include "data/cutscenes/AssholesHome.inc"
 ##  .include "data/cutscenes/HousingProtest.inc"
 ##  .include "data/cutscenes/swagbag2.inc"
 ##  .include "data/cutscenes/EnterMorty.inc"

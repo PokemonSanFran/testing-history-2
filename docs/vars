@@ -103,12 +103,15 @@
 9: Oak has told player that championship will start soon
 
 #VAR_PSFGOODTEAM_PSFPLACE13_STATE
+**RELEVANCE**: Track Fisherman's Wharf
 1: Team Rocket is attacking the shopkeeper
 2: Player has defeated Team Rocket, shopkeeper is happy
 
 #VAR_STORYLINE_STATE
 1 - 9: Complete any cutscene from 1.1
 10: Slept in bed after completing 1.1, ferry is fixed
+11 - 14: Completed any cutscene from 1.3 except "The Story So Far" and "Sorry About my Friends"
+15: Completed "Sorry About My Friends"
 23: Sleep to progress to Championship
 24: Starting the Championship
 25: Oak explained Championship

@@ -56,8 +56,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "AssholesHome_PsfnativerivalBeta_Event_Script",
-      "flag": "FLAG_DEFEATED_WALLY_VICTORY_ROAD"
+      "script": "AssholesHome_BattleEvent_Script",
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
@@ -201,7 +201,7 @@
       "elevation": 0,
       "var": "VAR_NATIVERIVALBETA_STATE",
       "var_value": "0",
-      "script": "AssholesHome_PsfnativerivalWalkToPlayer"
+      "script": "AssholesHome_WalkToPlayer_Script"
     }
   ],
   "bg_events": [
