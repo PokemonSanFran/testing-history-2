@@ -521,6 +521,8 @@ script YouRealizeTheyreEvilRight_CantSleep_Dialogue {
         msgbox(gText_YouRealizeTheyreEvilRight_IsStillWaiting)
         callnative(ClearMugshot)
         closemessage
+        release
+        end
 }
 
 script YouRealizeTheyreEvilRight_NoIdea_Dialogue {

@@ -1,0 +1,71 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+mapscripts Psfcity8_Compound_2F_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_LITTLEROOT_INTRO_STATE, 2: Swagbag_IncrementIntroState_Script 
+    ]
+}
+
+script RestInBed_Script {
+    lock
+
+        if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
+            addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+        }
+
+    if (var(VAR_PSFCAVE7_STATE) == 3){
+        call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
+    }
+
+    msgbox(gText_RestInBed_Text1)
+        closemessage
+        call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
+        fadescreen(FADE_TO_BLACK)
+        callnative(HealPlayerParty)
+        call(RestInBed_StillBlack_Script)
+        call(RestInBed_Progression_Script)
+        fadescreen(FADE_FROM_BLACK)
+        closemessage
+        releaseall
+        end
+}
+
+script RestInBed_Progression_Script {
+    fadescreen(FADE_FROM_BLACK)
+        checkitem(ITEM_FASHION_CASE,1)
+        if (var(VAR_RESULT) == 0 && var(VAR_LITTLEROOT_INTRO_STATE) == 5) {
+            giveitem(ITEM_FASHION_CASE)
+        }
+
+    switch(var(VAR_STORYLINE_STATE)){
+        case 9: call(AaandWereBack_FerryRepaired_Dialogue)
+        case 35: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
+    }
+    releaseall
+        end
+}
+script RestInBed_StillBlack_Script {
+
+    switch(var(VAR_STORYLINE_STATE)){
+        case 21: call(OffYouGo_WakeUp_Dialogue)
+        case 23: call(WhyAreYouHelpingThem_StartChampionship_Dialogue)
+    }
+}
+
+script WhyAreYouHelpingThem_StartChampionship_Dialogue {
+    msgbox(gText_WhyAreYouHelpingThem_AreYouReadyToBegin,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == NO){
+            closemessage
+                fadescreen(FADE_FROM_BLACK)
+                releaseall
+                end
+        } else {
+            addvar(VAR_STORYLINE_STATE,1)
+                warpsilent(MAP_PSFPLACE14_LOCKERS,9,6)
+        }
+}
+
+text gText_RestInBed_Text1 {
+    format("Let's get some rest...when should we wake up?")
+}

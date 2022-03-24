@@ -430,6 +430,18 @@ releaseall
 end
 }
 
+script WhyAreYouHelpingThem_StartChampionship_Dialogue {
+    msgbox(gText_WhyAreYouHelpingThem_AreYouReadyToBegin,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == NO){
+            closemessage
+            return
+        } else {
+            addvar(VAR_STORYLINE_STATE,1)
+                warpsilent(MAP_PSFPLACE14_LOCKERS,9,6)
+        }
+}
+
 text gText_WhyAreYouHelpingThem_StructuralBreach {
 format("STRUCTURAL BREACH DETECTED. BASE IS NOW SHIFTING TO DEFENSE MODE. EVACUATE IMMEDIATELY.")
 }

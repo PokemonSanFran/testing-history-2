@@ -85,6 +85,7 @@ script AaandWereBack_FerryRepaired_Dialogue {
                 msgbox(gText_AaandWereBack_FindAWayThrough)
                 callnative(ClearMugshot)
         }
+        closemessage
 }
 
 text gText_AaandWereBack_GotAllThree {

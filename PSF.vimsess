@@ -53,7 +53,7 @@ $argadd data/maps/Psfbadguy1Tower_2F/scripts.pory
 set stal=2
 tabnew
 tabrewind
-edit data/cutscenes/HowDoWeGetHome.pory
+edit data/cutscenes/AaandWereBack.pory
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -71,9 +71,9 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 85 + 94) / 188)
-exe '2resize ' . ((&lines * 40 + 30) / 61)
+exe '2resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 102 + 94) / 188)
-exe '3resize ' . ((&lines * 17 + 30) / 61)
+exe '3resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 102 + 94) / 188)
 argglobal
 terminal ++curwin ++cols=85 ++rows=58 
@@ -330,15 +330,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 20) / 40)
+let s:l = 67 - ((8 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+67
+normal! 015|
 wincmd w
 argglobal
-if bufexists("data/maps/Psfcity7/scripts.pory") | buffer data/maps/Psfcity7/scripts.pory | else | edit data/maps/Psfcity7/scripts.pory | endif
+if bufexists("data/maps/Psfcity8_Compound_2F/scripts.pory") | buffer data/maps/Psfcity8_Compound_2F/scripts.pory | else | edit data/maps/Psfcity8_Compound_2F/scripts.pory | endif
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -462,18 +462,18 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 37 - ((5 * winheight(0) + 8) / 17)
+let s:l = 47 - ((22 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-37
-normal! 0
+47
+normal! 036|
 wincmd w
-2wincmd w
+3wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 94) / 188)
-exe '2resize ' . ((&lines * 40 + 30) / 61)
+exe '2resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 102 + 94) / 188)
-exe '3resize ' . ((&lines * 17 + 30) / 61)
+exe '3resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 102 + 94) / 188)
 tabnext
 edit include/constants/vars.h
@@ -493,12 +493,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 5 + 30) / 61)
-exe 'vert 1resize ' . ((&columns * 149 + 94) / 188)
-exe '2resize ' . ((&lines * 7 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 149 + 94) / 188)
-exe '3resize ' . ((&lines * 13 + 30) / 61)
-exe 'vert 3resize ' . ((&columns * 38 + 94) / 188)
+exe '1resize ' . ((&lines * 56 + 30) / 61)
+exe 'vert 1resize ' . ((&columns * 100 + 94) / 188)
+exe '2resize ' . ((&lines * 1 + 30) / 61)
+exe 'vert 2resize ' . ((&columns * 100 + 94) / 188)
+exe 'vert 3resize ' . ((&columns * 87 + 94) / 188)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -623,11 +622,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 273 - ((1 * winheight(0) + 2) / 5)
+let s:l = 268 - ((27 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-273
+268
 normal! 044|
 wincmd w
 argglobal
@@ -755,7 +754,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 664 - ((3 * winheight(0) + 3) / 7)
+let s:l = 664 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -887,36 +886,44 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 25 - ((5 * winheight(0) + 6) / 13)
+let s:l = 118 - ((37 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-25
+118
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 5 + 30) / 61)
-exe 'vert 1resize ' . ((&columns * 149 + 94) / 188)
-exe '2resize ' . ((&lines * 7 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 149 + 94) / 188)
-exe '3resize ' . ((&lines * 13 + 30) / 61)
-exe 'vert 3resize ' . ((&columns * 38 + 94) / 188)
+exe '1resize ' . ((&lines * 56 + 30) / 61)
+exe 'vert 1resize ' . ((&columns * 100 + 94) / 188)
+exe '2resize ' . ((&lines * 1 + 30) / 61)
+exe 'vert 2resize ' . ((&columns * 100 + 94) / 188)
+exe 'vert 3resize ' . ((&columns * 87 + 94) / 188)
 tabnext 1
 set stal=1
-badd +1 data/cutscenes/HowDoWeGetHome.pory
+badd +34 data/cutscenes/HowDoWeGetHome.pory
 badd +16 data/maps/Psfbadguy1Tower_2F/scripts.pory
 badd +1 include/constants/vars.h
-badd +0 data/maps/Psfcity7/scripts.pory
+badd +8 data/maps/Psfcity7/scripts.pory
 badd +1 include/constants/flags.h
 badd +1 docs/vars
 badd +8 data/cutscenes/AlwaysWatchingWazokwski.pory
 badd +45 .gitignore
 badd +11 data/maps/Psfbadguy1Tower_10F/scripts.pory
-badd +1133 data/event_scripts.s
+badd +1134 data/event_scripts.s
 badd +15 data/cutscenes/TheGangsAllHere.pory
 badd +28 data/maps/Psfbadguy1Tower_Elevator/scripts.pory
 badd +1 data/maps/Psfroute22/scripts.pory
 badd +81 data/cutscenes/WelcometotheWarRoom.pory
 badd +11 data/cutscenes/YouRealizeWereEvilRight.pory
+badd +254 data/cutscenes/SurvivalChance333.pory
+badd +21 data/map_events.s
+badd +1 data/maps/events.inc
+badd +1 data/maps/Psfcity7/events.inc
+badd +357 data/maps/Psfcity7/map.json
+badd +61 data/cutscenes/AaandWereBack.pory
+badd +17 data/maps/Psfcity8_Compound_1F/scripts.pory
+badd +1 data/text/storyline_progression.pory
+badd +0 data/maps/Psfcity8_Compound_2F/scripts.pory
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif

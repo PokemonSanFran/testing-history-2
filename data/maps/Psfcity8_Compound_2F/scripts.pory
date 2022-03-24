@@ -6,66 +6,51 @@ mapscripts Psfcity8_Compound_2F_MapScripts {
     ]
 }
 
-script RestInBed_Script {
+script Psfcity8_Compound_2F_Bed_Script {
     lock
 
-        if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
-            addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+        //If has not visited Alcatraz after being called there by Archer, prevent player from sleeping
+        if (var(VAR_PSFCAVE7_STATE) == 3){
+            call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
         }
 
-    if (var(VAR_PSFCAVE7_STATE) == 3){
-        call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
-    }
+    //Heal Player
+    callnative(HealPlayerParty)
 
-    msgbox(gText_RestInBed_Text1)
+        //Ask the player when they should go to bed
+        msgbox(gText_BedScript_WhenShouldWake)
         closemessage
+
+        //Set the clock
         call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
+
+        //Player closes their eyes
         fadescreen(FADE_TO_BLACK)
-        callnative(HealPlayerParty)
-        call(RestInBed_StillBlack_Script)
-        call(RestInBed_Progression_Script)
-        fadescreen(FADE_FROM_BLACK)
-        closemessage
-        releaseall
-        end
-}
 
-script RestInBed_Progression_Script {
+        //Play script based on storyline state
+        switch(var(VAR_STORYLINE_STATE)){
+            case 21: call(OffYouGo_WakeUp_Dialogue)
+            case 23: call(WhyAreYouHelpingThem_StartChampionship_Dialogue)
+        }
+
+    //Player opens their eyes
     fadescreen(FADE_FROM_BLACK)
-        checkitem(ITEM_FASHION_CASE,1)
-        if (var(VAR_RESULT) == 0 && var(VAR_LITTLEROOT_INTRO_STATE) == 5) {
-            giveitem(ITEM_FASHION_CASE)
+
+        //Play script based on storyline state
+        switch(var(VAR_STORYLINE_STATE)){
+            case 9: call(AaandWereBack_FerryRepaired_Dialogue)
+            case 35: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
         }
 
-    switch(var(VAR_STORYLINE_STATE)){
-        case 9: call(AaandWereBack_FerryRepaired_Dialogue)
-        case 35: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
+    //If the day before League Challenge starts, advance forward by one day and give Fashion Case
+    if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
+        addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+        giveitem(ITEM_FASHION_CASE)
     }
-    releaseall
+    release
         end
 }
-script RestInBed_StillBlack_Script {
 
-    switch(var(VAR_STORYLINE_STATE)){
-        case 21: call(OffYouGo_WakeUp_Dialogue)
-        case 23: call(WhyAreYouHelpingThem_StartChampionship_Dialogue)
-    }
-}
-
-script WhyAreYouHelpingThem_StartChampionship_Dialogue {
-    msgbox(gText_WhyAreYouHelpingThem_AreYouReadyToBegin,MSGBOX_YESNO)
-
-        if (var(VAR_RESULT) == NO){
-            closemessage
-                fadescreen(FADE_FROM_BLACK)
-                releaseall
-                end
-        } else {
-            addvar(VAR_STORYLINE_STATE,1)
-                warpsilent(MAP_PSFPLACE14_LOCKERS,9,6)
-        }
-}
-
-text gText_RestInBed_Text1 {
+text gText_BedScript_WhenShouldWake {
     format("Let's get some rest...when should we wake up?")
 }
