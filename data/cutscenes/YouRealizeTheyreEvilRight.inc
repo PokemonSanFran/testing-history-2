@@ -486,10 +486,12 @@ YouRealizeTheyreEvilRight_CantSleep_Dialogue::
 	msgbox gText_YouRealizeTheyreEvilRight_IsStillWaiting
 	callnative ClearMugshot
 	closemessage
-	return
+	release
+	end
 
 
 YouRealizeTheyreEvilRight_NoIdea_Dialogue::
+	fadescreen FADE_FROM_BLACK
 	compare VAR_PSFCAVE7_STATE, 5
 	goto_if_eq YouRealizeTheyreEvilRight_NoIdea_Dialogue_1
 	return

@@ -379,6 +379,19 @@ WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 	end
 
 
+WhyAreYouHelpingThem_StartChampionship_Dialogue::
+	msgbox gText_WhyAreYouHelpingThem_AreYouReadyToBegin, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq WhyAreYouHelpingThem_StartChampionship_Dialogue_1
+	addvar VAR_STORYLINE_STATE, 1
+	warpsilent MAP_PSFPLACE14_LOCKERS, 9, 6
+	return
+
+WhyAreYouHelpingThem_StartChampionship_Dialogue_1:
+	closemessage
+	return
+
+
 WhyAreYouHelpingThem_PoliceRunIn:
 	walk_left
 	walk_left

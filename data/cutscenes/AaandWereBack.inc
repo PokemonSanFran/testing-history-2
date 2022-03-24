@@ -70,6 +70,35 @@ AaandWereBack_Psftransrival_Dialogue::
 	return
 
 
+AaandWereBack_FerryRepaired_Dialogue::
+	fadescreen FADE_FROM_BLACK
+	addvar VAR_STORYLINE_STATE, 1
+	msgbox gText_AaandWereBack_OpeningMessage, MSGBOX_POKENAV
+	waitmessage
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_AaandWereBack_ThatsDifferent
+	callnative ClearMugshot
+	pokenavcall gText_AaandWereBack_FerryMessage
+	waitmessage
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_AaandWereBack_TooBadTheresNoFerry
+	callnative ClearMugshot
+	compare VAR_FAINTED_FOG_STATE, 1
+	goto_if_gt AaandWereBack_FerryRepaired_Dialogue_2
+AaandWereBack_FerryRepaired_Dialogue_1:
+	closemessage
+	return
+
+AaandWereBack_FerryRepaired_Dialogue_2:
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_AaandWereBack_FindAWayThrough
+	callnative ClearMugshot
+	goto AaandWereBack_FerryRepaired_Dialogue_1
+
+
 gText_AaandWereBack_GotAllThree::
 	.string "I've got all three Badges from this side\n"
 	.string "of the mainland. The ferry to Psfcity9\l"
@@ -108,3 +137,29 @@ gText_AaandWereBack_HardToComeBy::
 
 gText_AaandWereBack_ImSureIllFigure::
 	.string "I'm sure I'll figure something out.$"
+
+gText_AaandWereBack_OpeningMessage::
+	.string "You have recieved a message from\n"
+	.string "PSFSUBWAY.$"
+
+gText_AaandWereBack_FerryMessage::
+	.string "A message from the PSFSUBWAY\n"
+	.string "System. The following service\l"
+	.string "routes are now operational:\p"
+	.string "Psfplace11 to Psfcity17\p"
+	.string "Psfcity17 to Psfcity9\p"
+	.string "We appreciate your patience\n"
+	.string "while the remaining routes are\l"
+	.string "restored.$"
+
+gText_AaandWereBack_ThatsDifferent::
+	.string "That's a different notification...$"
+
+gText_AaandWereBack_TooBadTheresNoFerry::
+	.string "Looks like east Psfregion1 is next! Too\n"
+	.string "bad there's no ferry directly to the\l"
+	.string "Gym in Psfcity11...$"
+
+gText_AaandWereBack_FindAWayThrough::
+	.string "Hopefully, I'll find a way through the\n"
+	.string "fog after that...$"

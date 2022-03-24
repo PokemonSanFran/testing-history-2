@@ -14,8 +14,12 @@ script Psfcity8_Compound_2F_Bed_Script {
             call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
         }
 
-    //Heal Player
-    callnative(HealPlayerParty)
+        //Heal Player
+        callnative(HealPlayerParty)
+
+        //Player closes their eyes
+        fadescreen(FADE_TO_BLACK)
+        delay(16)
 
         //Ask the player when they should go to bed
         msgbox(gText_BedScript_WhenShouldWake)
@@ -24,28 +28,19 @@ script Psfcity8_Compound_2F_Bed_Script {
         //Set the clock
         call(PlayersHouse_2F_EventScript_SetWallClock) //TODO replace with clock menu
 
-        //Player closes their eyes
-        fadescreen(FADE_TO_BLACK)
-
-        //Play script based on storyline state
-        switch(var(VAR_STORYLINE_STATE)){
-            case 21: call(OffYouGo_WakeUp_Dialogue)
-            case 23: call(WhyAreYouHelpingThem_StartChampionship_Dialogue)
-        }
-
-    //Player opens their eyes
-    fadescreen(FADE_FROM_BLACK)
-
         //Play script based on storyline state
         switch(var(VAR_STORYLINE_STATE)){
             case 9: call(AaandWereBack_FerryRepaired_Dialogue)
+            case 21: call(OffYouGo_WakeUp_Dialogue)
+            case 23: call(WhyAreYouHelpingThem_StartChampionship_Dialogue)
             case 35: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
+            default: fadescreen(FADE_FROM_BLACK) //Player opens their eyes
         }
 
     //If the day before League Challenge starts, advance forward by one day and give Fashion Case
     if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
         addvar(VAR_LITTLEROOT_INTRO_STATE,1)
-        giveitem(ITEM_FASHION_CASE)
+            giveitem(ITEM_FASHION_CASE)
     }
     release
         end

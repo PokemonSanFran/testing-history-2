@@ -65,7 +65,7 @@ script AaandWereBack_Psftransrival_Dialogue {
 
 script AaandWereBack_FerryRepaired_Dialogue {
         addvar(VAR_STORYLINE_STATE,1)
-        pokenavcall(blank)
+        msgbox(gText_AaandWereBack_OpeningMessage,MSGBOX_POKENAV)
         waitmessage
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -120,9 +120,10 @@ text gText_AaandWereBack_ImSureIllFigure {
     format("I'm sure I'll figure something out.")
 }
 
-text blank {
-    format("")
+text gText_AaandWereBack_OpeningMessage {
+    format("You have recieved a message from PSFSUBWAY.")
 }
+
 text gText_AaandWereBack_FerryMessage {
     format("A message from the PSFSUBWAY System. 
 

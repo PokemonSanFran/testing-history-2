@@ -526,6 +526,7 @@ script YouRealizeTheyreEvilRight_CantSleep_Dialogue {
 }
 
 script YouRealizeTheyreEvilRight_NoIdea_Dialogue {
+        fadescreen(FADE_FROM_BLACK)
 
     if (var(VAR_PSFCAVE7_STATE) == 5){
         addvar(VAR_STORYLINE_STATE,1)
