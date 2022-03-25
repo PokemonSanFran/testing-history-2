@@ -60,7 +60,9 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    call NoGoggles_PreventProgress
+    setflag FLAG_BADGE05_GET
+    setflag FLAG_BADGE06_GET
+    setflag FLAG_BADGE07_GET
 	end
 
 Debug_Script_2::

@@ -36,7 +36,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "WaitYouWentWhere_FirstInteract_Dialogue",
-      "flag": "FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN"
+      "flag": "FLAG_TEMP_1"
     }
   ],
   "warp_events": [

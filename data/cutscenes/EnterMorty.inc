@@ -57,7 +57,6 @@ EnterPsfleader4_StartGymBattle_Script::
 
 EnterPsfleader4_Psfleader4Defeated_Script::
 	lock
-	setflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL
 	setflag FLAG_BADGE04_GET
 	addvar VAR_GYM_4_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_MORTY

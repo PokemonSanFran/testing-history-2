@@ -3,6 +3,15 @@ const PSFBADADMIN = 1
 
 mapscripts Psfroute19_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        call(WaitYouWentWhere_ObjectSetUp)
+        call(Psfroute19_MapScripts_OnTransition)
+    }
+}
+
+script Psfroute19_MapScripts_OnTransition {
+    call(WaitYouWentWhere_ObjectSetUp_Script)
+
+    switch (var(VAR_ROUTE104_STATE)){
+        case 0: goto(WaitYouWentWhere_ObjectSetUp_Script)
+        case 1: goto(WaitYouWentWhere_ObjectCleanUp_Script)
     }
 }

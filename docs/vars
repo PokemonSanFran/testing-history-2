@@ -6,7 +6,7 @@
 5: Has recieved Pokedex
 6: Has completed Act 1.1
 
-# VAR_GYM_1_STATE / VAR_GYM_3_STATE / VAR_GYM_4_STATE
+# VAR_GYM_1_STATE / VAR_GYM_3_STATE / VAR_GYM_4_STATE / VAR_GYM_5_STATE
 1: Solved puzzles, ready to fight
 2: Psfleader1 has walked to the battlefield
 3: Saved in front of Psfleader1
@@ -132,6 +132,7 @@
 12: Completed "Housing Protest"
 13: Defeated Morty
 14: Completed Alcatraz challenge
+15: Defeats Chuck 
 
 23: Sleep to progress to Championship
 24: Starting the Championship

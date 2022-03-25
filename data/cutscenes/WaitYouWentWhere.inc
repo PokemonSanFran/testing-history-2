@@ -1,47 +1,41 @@
-WaitYouWentWhere_ObjectSetUp::
+WaitYouWentWhere_ObjectSetUp_Script::
 	special GetNumberOfBadges
 	compare VAR_TEMP_0, 7
-	goto_if_lt WaitYouWentWhere_ObjectSetUp_5
-WaitYouWentWhere_ObjectSetUp_3:
-	setflag FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN
-WaitYouWentWhere_ObjectSetUp_1:
-	end
-
-WaitYouWentWhere_ObjectSetUp_2:
-	clearflag FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN
-	goto WaitYouWentWhere_ObjectSetUp_1
-
-WaitYouWentWhere_ObjectSetUp_4:
-	compare VAR_ROUTE104_STATE, 1
-	goto_if_lt WaitYouWentWhere_ObjectSetUp_2
-	goto WaitYouWentWhere_ObjectSetUp_3
-
-WaitYouWentWhere_ObjectSetUp_5:
+	goto_if_ge WaitYouWentWhere_ObjectSetUp_Script_1
 	compare VAR_PSFCAVE7_STATE, 2
-	goto_if_eq WaitYouWentWhere_ObjectSetUp_4
-	goto WaitYouWentWhere_ObjectSetUp_3
-
-
-WaitYouWentWhere_PlayerSetUp::
-	lockall
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	compare VAR_TEMP_1, 1
-	goto_if_eq WaitYouWentWhere_PlayerSetUp_1
-	compare VAR_TEMP_0, 40
-	goto_if_eq WaitYouWentWhere_PlayerSetUp_2
+	goto_if_ne WaitYouWentWhere_ObjectSetUp_Script_1
 	return
 
-WaitYouWentWhere_PlayerSetUp_1:
+WaitYouWentWhere_ObjectSetUp_Script_1:
+	setflag FLAG_TEMP_1
+	return
+
+
+WaitYouWentWhere_ObjectCleanUp_Script::
+	setflag FLAG_TEMP_1
+	return
+
+
+WaitYouWentWhere_PlayerSetUp_Script::
+	lock
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_1, 1
+	goto_if_eq WaitYouWentWhere_PlayerSetUp_Script_1
+	compare VAR_TEMP_0, 40
+	goto_if_eq WaitYouWentWhere_PlayerSetUp_Script_2
+	return
+
+WaitYouWentWhere_PlayerSetUp_Script_1:
 	applymovement OBJ_EVENT_ID_PLAYER, WaitYouWentWhere_PlayerFromSouth
 	return
 
-WaitYouWentWhere_PlayerSetUp_2:
+WaitYouWentWhere_PlayerSetUp_Script_2:
 	applymovement OBJ_EVENT_ID_PLAYER, WaitYouWentWhere_PlayerFromWest
 	return
 
 
 WaitYouWentWhere_FirstInteract_Dialogue::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_WelcomeBackFrom, MSGBOX_NPC
@@ -54,7 +48,7 @@ WaitYouWentWhere_FirstInteract_Dialogue::
 	msgbox gText_WaitYouWentWhere_IHaveSomeBusiness
 	closemessage
 	callnative ClearMugshot
-	call WaitYouWentWhere_PlayerSetUp
+	call WaitYouWentWhere_PlayerSetUp_Script
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Player_WaitYouWentWhere_WalkWest
 	applymovement 1, Psfbadadmin_WaitYouWentWhere_WalkWest
@@ -90,8 +84,8 @@ WaitYouWentWhere_FirstInteract_Dialogue::
 	applymovement 1, WaitYouWentWhere_WalkUpHill
 	waitmovement 0
 	removeobject 1
-	releaseall
-	setvar VAR_ROUTE104_STATE, 1
+	release
+	addvar VAR_ROUTE104_STATE, 1
 	end
 
 

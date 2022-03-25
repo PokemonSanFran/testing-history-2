@@ -3,6 +3,22 @@ Psfroute19_MapScripts::
 	.byte 0
 
 Psfroute19_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call WaitYouWentWhere_ObjectSetUp
+	call Psfroute19_MapScripts_OnTransition
+	return
+
+
+Psfroute19_MapScripts_OnTransition::
+	call WaitYouWentWhere_ObjectSetUp_Script
+	switch VAR_ROUTE104_STATE
+	case 0, Psfroute19_MapScripts_OnTransition_2
+	case 1, Psfroute19_MapScripts_OnTransition_3
+	return
+
+Psfroute19_MapScripts_OnTransition_2:
+	goto WaitYouWentWhere_ObjectSetUp_Script
+	return
+
+Psfroute19_MapScripts_OnTransition_3:
+	goto WaitYouWentWhere_ObjectCleanUp_Script
 	return
 

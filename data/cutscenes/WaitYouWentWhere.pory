@@ -1,34 +1,37 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFBADADMIN = 1
 
-script WaitYouWentWhere_ObjectSetUp {
+script WaitYouWentWhere_ObjectSetUp_Script {
     special(GetNumberOfBadges)
-        if (var(VAR_TEMP_0) < 7 && var(VAR_PSFCAVE7_STATE) == 2 && var(VAR_ROUTE104_STATE) < 1){
-            clearflag(FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN)
+        //if player has less than 7 badges AND 
+        //if (var(VAR_TEMP_0) < 7 && var(VAR_PSFCAVE7_STATE) == 2){
+        if (var(VAR_TEMP_0) >= 7 || var(VAR_PSFCAVE7_STATE) != 2){
+            setflag(FLAG_TEMP_1)
         }
-        else {
-            setflag(FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN)
-        }
-    end
 }
 
-script WaitYouWentWhere_PlayerSetUp {
-    lockall
-    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+script WaitYouWentWhere_ObjectCleanUp_Script {
+    setflag(FLAG_TEMP_1)
+}
 
-    if (var(VAR_TEMP_1) == 1){
-        applymovement(PLAYER, WaitYouWentWhere_PlayerFromSouth)
-    } elif (var(VAR_TEMP_0) == 40){
-        applymovement(PLAYER, WaitYouWentWhere_PlayerFromWest)
-    }
+script WaitYouWentWhere_PlayerSetUp_Script {
+    lock
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        //If player is not standing on the right side, move player there
+        if (var(VAR_TEMP_1) == 1){
+            applymovement(PLAYER, WaitYouWentWhere_PlayerFromSouth)
+        } elif (var(VAR_TEMP_0) == 40){
+            applymovement(PLAYER, WaitYouWentWhere_PlayerFromWest)
+        }
 }
 
 script WaitYouWentWhere_FirstInteract_Dialogue {
-    lockall
+    lock
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_WaitYouWentWhere_WelcomeBackFrom,MSGBOX_NPC)
-        lock
+        lock //MSGBOX_NPC turns off the earlier lock
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WaitYouWentWhere_YeahThanksFor)
@@ -39,7 +42,7 @@ script WaitYouWentWhere_FirstInteract_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        call(WaitYouWentWhere_PlayerSetUp)
+        call(WaitYouWentWhere_PlayerSetUp_Script)
         waitmovement(0)
 
         applymovement(PLAYER,Player_WaitYouWentWhere_WalkWest)
@@ -86,48 +89,11 @@ script WaitYouWentWhere_FirstInteract_Dialogue {
         applymovement(PSFBADADMIN,WaitYouWentWhere_WalkUpHill)
         waitmovement(0)
         removeobject(PSFBADADMIN)
-        releaseall
-        setvar(VAR_ROUTE104_STATE,1)
+        release
+        addvar(VAR_ROUTE104_STATE,1)
         end
 }
 
-movement WaitYouWentWhere_PlayerFromSouth {
-    walk_right
-    walk_up
-    face_left
-    step_end
-}
-
-movement WaitYouWentWhere_PlayerFromWest {
-    walk_down
-    walk_right * 2
-    walk_up
-    face_left
-    step_end
-}
-
-movement Player_WaitYouWentWhere_WalkWest {
-    walk_left * 41
-        step_end
-}
-movement Psfbadadmin_WaitYouWentWhere_WalkWest {
-    walk_left * 41
-        face_right
-        step_end
-}
-
-movement WaitYouWentWhere_WalkUpHill {
-    walk_left * 5
-        walk_up
-        walk_left * 5
-        walk_up
-        walk_left * 6
-        step_end
-}
-movement WaitYouWentWhere_WalkSouth{
-    walk_down * 10
-        step_end
-}
 
 text gText_WaitYouWentWhere_WelcomeBackFrom {
     format("Ah {PLAYER}, welcome back from Psfcity11! I hear you defeated Psfleader4, as expected from you.")
@@ -183,4 +149,42 @@ text gText_WaitYouWentWhere_NoOffense {
 
 text gText_WaitYouWentWhere_GoingThisWay {
     format("Well, time to hike this miserable hill. I'll save you the hassle.  Stay out of trouble, okay?")
+}
+
+movement WaitYouWentWhere_PlayerFromSouth {
+    walk_right
+        walk_up
+        face_left
+        step_end
+}
+
+movement WaitYouWentWhere_PlayerFromWest {
+    walk_down
+        walk_right * 2
+        walk_up
+        face_left
+        step_end
+}
+
+movement Player_WaitYouWentWhere_WalkWest {
+    walk_left * 41
+        step_end
+}
+movement Psfbadadmin_WaitYouWentWhere_WalkWest {
+    walk_left * 41
+        face_right
+        step_end
+}
+
+movement WaitYouWentWhere_WalkUpHill {
+    walk_left * 5
+        walk_up
+        walk_left * 5
+        walk_up
+        walk_left * 6
+        step_end
+}
+movement WaitYouWentWhere_WalkSouth{
+    walk_down * 10
+        step_end
 }

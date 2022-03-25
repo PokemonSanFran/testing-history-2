@@ -64,7 +64,6 @@ script EnterPsfleader4_StartGymBattle_Script {
 
 script EnterPsfleader4_Psfleader4Defeated_Script {
     lock
-    setflag(FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL) //set up for A New Strike
     setflag(FLAG_BADGE04_GET)
     addvar(VAR_GYM_4_STATE, 1)
 

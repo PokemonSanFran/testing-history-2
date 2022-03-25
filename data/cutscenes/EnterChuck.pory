@@ -1,0 +1,171 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFLEADER5 = 1
+
+script EnterPsfleader5_Event_Script {
+    switch (var (VAR_GYM_5_STATE)) {
+    case 3:
+        goto(EnterPsfleader5_StartBattle_Script)
+    case 4:
+        goto(EnterPsfleader5_PostDefeat1_Dialogue)
+    case 5:
+        goto(EnterPsfleader5_PostDefeat2_Dialogue)
+    default:
+        goto(EnterPsfleader5_Intro_Dialogue)
+    }
+}
+
+script EnterPsfleader5_Intro_Dialogue {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_AintItBeautiful, MSGBOX_NPC)
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_DoYouKnow)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_NoWh)
+
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_IllTellYouWhy)
+
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_YaKnowWhat)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_WeWould)
+
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_WeWouldBlowThem)
+
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_ThatRawPower)
+    callnative(ClearMugshot)
+    setvar(VAR_GYM_5_STATE, 3)
+    call(Common_EventScript_SaveGame)
+    closemessage
+    goto(EnterPsfleader5_StartBattle_Script)
+}
+
+script EnterPsfleader5_StartBattle_Script {
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    trainerbattle_single(TRAINER_NORMAN_1, gText_EnterPsfleader5_NowImGonnaShow, gText_EnterPsfleader5_ManDown, EnterPsfleader5_Psfleader5Defeated_Script, NO_MUSIC)
+}
+
+script EnterPsfleader5_Psfleader5Defeated_Script {
+    lock
+    setflag(FLAG_BADGE05_GET)
+    setflag(FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL) //set up for A New Strike
+    addvar(VAR_GYM_5_STATE, 1)
+
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_YoureNoJoke)
+    callnative(ClearMugshot)
+    msgbox(gText_EnterPsfleader5_BadgeGet)
+    call(Common_EventScript_PlayGymBadgeFanfare)
+    giveitem(ITEM_TM05)
+    closemessage
+    addvar(VAR_STORYLINE_STATE, 1)
+    setvar(VAR_PSFPLACE9_STATE, 1)
+    release
+    end
+}
+
+script EnterPsfleader5_PostDefeat1_Dialogue {
+    setvar(VAR_GYM_5_STATE, 5)
+    lock
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_MaybeMyDefense, MSGBOX_NPC)
+    callnative(ClearMugshot)
+    closemessage
+    release
+    end
+}
+
+script EnterPsfleader5_PostDefeat2_Dialogue {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_CHUCK)
+    callnative(DrawMugshot)
+    msgbox(gText_EnterPsfleader5_ManTheCompetition, MSGBOX_NPC)
+    callnative(ClearMugshot)
+    closemessage
+    release
+    end
+}
+
+text gText_EnterPsfleader5_AintItBeautiful {
+    format("Ain't it beautiful? All of it! The bridge, the ocean, this base. ")
+}
+
+text gText_EnterPsfleader5_DoYouKnow {
+    format("Do you know why I built the Gym into the base, {PLAYER}?")
+}
+
+text gText_EnterPsfleader5_NoWh {
+    format("No, wh -")
+}
+
+text gText_EnterPsfleader5_IllTellYouWhy {
+    format("I'll tell you why! Because this base represents the crown jewel of this here nation: our military defense. We're so strong, people don't even DREAM of attacking us!")
+}
+
+text gText_EnterPsfleader5_YaKnowWhat {
+    format("Ya know what happens if they did attack?")
+}
+
+text gText_EnterPsfleader5_WeWould {
+    format("We would -")
+}
+
+text gText_EnterPsfleader5_WeWouldBlowThem {
+    format("WE WOULD BLOW THEM TO SMITHEEREENS! Oh baby, just gets me excited thinking about how we can blow those idiots right back to the Stone Age.")
+}
+
+text gText_EnterPsfleader5_ThatRawPower {
+    format("That raw power is so inspiring, once I got the chance, I knew I wanted my career to have the energy of that legacy. That's why we're up here.")
+}
+
+text gText_EnterPsfleader5_NowImGonnaShow {
+    format("Now, I'm gonna show you that same raw defensive power! Buckle up, solider!")
+}
+
+text gText_EnterPsfleader5_WeGotACode {
+    format("We got a code Oscar Uniform Charlie Hotel on our hands.")
+}
+
+text gText_EnterPsfleader5_ScrambleTheJets {
+    format("Scramble the jets!")
+}
+
+text gText_EnterPsfleader5_ThreatNeutralized {
+    format("Threat neutralized.")
+}
+
+text gText_EnterPsfleader5_ManDown {
+    format("Man down, man down!")
+}
+
+text gText_EnterPsfleader5_YoureNoJoke {
+    format("You're no joke! My strategy is usually to wear the opponent out, but I ran out of gas quick against you!")
+}
+
+text gText_EnterPsfleader5_BadgeGet {
+    format("You received the Psfbadge5 Badge!")
+}
+
+text gText_EnterPsfleader5_MaybeMyDefense {
+    format("Maybe my defense wasn't strong enough? Should I start using Sandstorm? Maybe Toxic...")
+}
+
+text gText_EnterPsfleader5_ManTheCompetition {
+    format("Man, the competition at the League Finals is gonna a hell of a show. All you kids coming through here are gonna rise real quick through the ranks!")
+}
