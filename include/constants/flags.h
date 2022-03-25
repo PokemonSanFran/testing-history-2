@@ -50,13 +50,13 @@
 #define FLAG_SAVED_DAVID            0x26 // Previously Unused Flag
 #define FLAG_HIDE_PSFCITY7_PSFGOODADMIN 0x27 //Previously Unused Flag
 #define FLAG_HIDE_MADISON    0x28 // Previously Unused Flag
-#define FLAG_HIDE_HOUSING_PROTEST_GRUNT 0x29 // Previously Unused Flag
-#define FLAG_HIDE_HOUSING_PROTEST_PKMN 0x2A // Previously Unused Flag
-#define FLAG_HIDE_HOUSING_PROTEST_KATELL 0x2B // Previously Unused Flag
-#define FLAG_HIDE_HOUSING_PROTEST_CROWD 0x2C // Previously Unused Flag
-#define FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN 0x2D // Previously Unused Flag
-#define FLAG_HIDE_SWAGBAG2_PSFBADADMIN1 0x2E// Previously Unused Flag
-#define FLAG_HIDE_STORYSOFAR_PSFELITE1    0x2F // Previously Unused Flag
+#define FLAG_UNUSED_0x29 0x29 // Unused Flag
+#define FLAG_UNSUED_0x2A 0x2A // Unused Flag
+#define FLAG_UNUSED_0x2B 0x2B // Unused Flag
+#define FLAG_UNUSED_0x2C 0x2C // Unused Flag
+#define FLAG_UNUSED_0x2D 0x2D // Unused Flag
+#define FLAG_UNUSED_0x2E 0x2E// Unused Flag
+#define FLAG_UNUSED_0x2F 0x2F   // Unused Flag
 #define FLAG_HIDE_0x30 0x30 // Unused Flag
 #define FLAG_HIDE_WAITYOUWENTWHERE_PSFBADADMIN    0x31 // Previously Unused Flag
 #define FLAG_HIDE_MANSION_KIDS 0x32 // Previously Unused Flag

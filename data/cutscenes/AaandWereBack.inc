@@ -71,7 +71,6 @@ AaandWereBack_Psftransrival_Dialogue::
 
 
 AaandWereBack_FerryRepaired_Dialogue::
-	fadescreen FADE_FROM_BLACK
 	addvar VAR_STORYLINE_STATE, 1
 	msgbox gText_AaandWereBack_OpeningMessage, MSGBOX_POKENAV
 	waitmessage

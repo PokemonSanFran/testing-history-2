@@ -1,0 +1,287 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFELITE1 = 9
+
+script TheStorySoFar_ExplainExhibit_Dialogue {
+    lock
+        applymovement(PLAYER,Common_Movement_FaceRight)
+        waitmovement(0)
+        msgbox(gText_TheStorySoFar_WelcomeToExhibit)
+        closemessage
+        applymovement(PLAYER,Common_Movement_WalkUp)
+        setvar(VAR_PSFCAVE7_EXHIBIT_STATE,1)
+        waitmovement(0)
+        release
+        end
+}
+
+script Psfcave7_InteractWithAttendant_Script {
+    lock
+       applymovement(8,Common_Movement_FacePlayer)
+        goto(TheStorySoFar_Event_Script)
+}
+
+script TheStorySoFar_EntranceTrigger_Script {
+    lock
+        applymovement(PLAYER,Common_Movement_FaceRight)
+        applymovement(8,Common_Movement_FaceLeft)
+        goto(TheStorySoFar_Event_Script)
+}
+
+script TheStorySoFar_Event_Script {
+    waitmovement(0)
+        switch(var(VAR_PSFCAVE7_EXHIBIT_STATE)){
+            case 0: goto(TheStorySoFar_ExplainExhibit_Dialogue)
+            case 1: goto(TheStorySoFar_CheckNumberDefeated_Script)
+            case 2: goto(TheStorySoFar_AwardPlayer_Script) 
+            case 3: goto(TheStorySoFar_Congratulate_Dialogue)
+            case 4: goto(Psfcave7Attendant_HealPlayer_Script)
+        }
+}
+
+script TheStorySoFar_CheckNumberDefeated_Script {
+    special(CheckNumPsfcave7ExhibitDefeated)
+        msgbox(gText_TheStorySoFar_YoureNotQuiteDone)
+
+        switch (var(VAR_RESULT)) {
+            case 0: msgbox(gText_TheStorySoFar_YouNeedToDefeat6)
+            case 1: msgbox(gText_TheStorySoFar_YouNeedToDefeat5)
+            case 2: msgbox(gText_TheStorySoFar_YouNeedToDefeat4)
+            case 3: msgbox(gText_TheStorySoFar_YouNeedToDefeat3)
+            case 4: msgbox(gText_TheStorySoFar_YouNeedToDefeat2)
+            case 5: msgbox(gText_TheStorySoFar_YouNeedToDefeat1)
+        }
+
+    //If player is standing to leave, and not talking to the attendant
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+        if (var(VAR_TEMP_0) == 15 && var(VAR_TEMP_1) == 16){
+            msgbox(gText_TheStorySoFar_AreYouSure,MSGBOX_YESNO)
+                if (var(VAR_RESULT) == NO) {
+                    applymovement(PLAYER,Common_Movement_WalkUp)
+                } else {
+                    applymovement(PLAYER,Common_Movement_WalkDown)
+                        call(ResetPsfcave7Exhibit_Script)
+                }
+            waitmovement(0)
+        }
+    closemessage
+        release
+        end
+}
+
+script TheStorySoFar_AwardPlayer_Script {
+        addvar(VAR_PSFCAVE7_EXHIBIT_STATE,1)
+        setvar(VAR_PSFCAVE7_STATE,1)
+        msgbox(gText_TheStorySoFar_ExcellentWork)
+        giveitem(ITEM_MACHO_BRACE,1)
+        closemessage
+        release
+        end
+}
+
+script TheStorySoFar_Congratulate_Dialogue {
+    lock
+        msgbox(gText_TheStorySoFar_WeHopeYouReturn)
+        closemessage
+        release
+        end
+}
+
+script TheStorySoFar_StartBattle1_Script {
+    trainerbattle_single(TRAINER_ALBERTO,gText_TheStorySoFar_IHopeYouDont,gText_TheStorySoFar_SlowDown, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC)
+        msgbox(gText_TheStorySoFar_DontForgetToStop,MSGBOX_AUTOCLOSE)
+}
+
+script TheStorySoFar_ReadSign1_Dialogue {
+    msgbox(gText_TheStorySoFar_OriginallyBuiltAsAPrison,MSGBOX_SIGN)
+}
+
+
+script TheStorySoFar_StartBattle2_Script {
+    trainerbattle_single(TRAINER_ED,gText_TheStorySoFar_IThinkDefense,gText_TheStorySoFar_NotStrongEnough,TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC)
+        msgbox(gText_TheStorySoFar_TheBestOffense,MSGBOX_AUTOCLOSE)
+}
+
+script TheStorySoFar_ReadSign2_Dialogue {
+    msgbox(gText_TheStorySoFar_TheCriminalUnderbelly,MSGBOX_SIGN)
+}
+
+script TheStorySoFar_StartBattle3_Script {
+    trainerbattle_single(TRAINER_DECLAN,gText_TheStorySoFar_TheresSomethingSpecial,gText_TheStorySoFar_ImNotSpecial,TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC)
+        msgbox(gText_TheStorySoFar_ItsHardToDoAnything,MSGBOX_AUTOCLOSE)
+}
+
+script TheStorySoFar_ReadSign3_Dialogue {
+    msgbox(gText_TheStorySoFar_ThePrisonersBeganToTurn,MSGBOX_SIGN)
+}
+
+script TheStorySoFar_StartBattle4_Script {
+    trainerbattle_single(TRAINER_FREDRICK,gText_TheStorySoFar_PhysicallyDefensiveMasterpiece,gText_TheStorySoFar_ButLikeTheShip,TheStorySoFar_RunDefeatedCheck_Script,NO_MUSIC)
+        msgbox(gText_TheStorySoFar_HumansWillAlwaysFind,MSGBOX_AUTOCLOSE)
+}
+
+script TheStorySoFar_ReadSign4_Dialogue {
+    msgbox(gText_TheStorySoFar_AsTensionsBetweenThePrisoners,MSGBOX_SIGN)
+}
+
+script TheStorySoFar_StartBattle5_Script {
+    trainerbattle_single(TRAINER_ZANDER,gText_TheStorySoFar_BrokenBonesHealEasily,gText_TheStorySoFar_SomePeopleNeverRecover,TheStorySoFar_RunDefeatedCheck_Script,NO_MUSIC)
+        msgbox(gText_TheStorySoFar_MakingSureToTakeCare,MSGBOX_AUTOCLOSE)
+}
+
+script TheStorySoFar_ReadSign5_Dialogue {
+    msgbox(gText_TheStorySoFar_TheNaturalDisasterLeft,MSGBOX_SIGN)
+}
+
+script TheStorySoFar_StartBattle6_Script {
+    trainerbattle_single(TRAINER_LEAH,gText_TheStorySoFar_HowToughAreYou,gText_TheStorySoFar_TurnsOutPrettyTough,TheStorySoFar_RunDefeatedCheck_Script,NO_MUSIC)
+        msgbox(gText_TheStorySoFar_IHearVoicesStanding,MSGBOX_AUTOCLOSE)
+}
+
+script TheStorySoFar_ReadSign6_Dialogue {
+    msgbox(gText_TheStorySoFar_ParksAndRecreation,MSGBOX_SIGN)
+}
+
+script TheStorySoFar_RunDefeatedCheck_Script {
+    special(CheckNumPsfcave7ExhibitDefeated)
+    end
+}
+
+text gText_TheStorySoFar_WelcomeToExhibit {
+    format("Welcome to the Psfcave7 Exhibit. To learn about the island, you'll need to battle our staff. Trainers who can defeat all six without leaving the park or being defeated will complete the challenge and win a prize! If you leave, you'll need to start the challenge over again.")
+}
+
+text gText_TheStorySoFar_YoureNotQuiteDone {
+    format("You're not quite done.")
+}
+
+text gText_TheStorySoFar_AreYouSure {
+    format("Are you sure you want to leave?")
+}
+
+text gText_TheStorySoFar_YouNeedToDefeat6 {
+    format("You need to defeat six more staff members without leaving to complete the challenge.")
+}
+
+text gText_TheStorySoFar_YouNeedToDefeat5 {
+    format("You need to defeat five more staff members without leaving to complete the challenge.")
+}
+
+text gText_TheStorySoFar_YouNeedToDefeat4 {
+    format("You need to defeat four more staff members without leaving to complete the challenge.")
+}
+
+text gText_TheStorySoFar_YouNeedToDefeat3 {
+    format("You need to defeat three more staff members without leaving to complete the challenge.")
+}
+
+text gText_TheStorySoFar_YouNeedToDefeat2 {
+    format("You need to defeat two more staff members without leaving to complete the challenge.")
+}
+
+text gText_TheStorySoFar_YouNeedToDefeat1 {
+    format("You need to defeat one more staff member without leaving to complete the challenge.")
+}
+
+text gText_TheStorySoFar_IHopeYouDont {
+    format("I hope you don't rush through the plaza here!")
+}
+
+text gText_TheStorySoFar_SlowDown {
+    format("Slow down!")
+}
+
+text gText_TheStorySoFar_DontForgetToStop {
+    format("Don't forget to stop and smell the roses.")
+}
+
+text gText_TheStorySoFar_OriginallyBuiltAsAPrison {
+    format("Psfcave7 was originally built as a prison for Psfregion1's most dangerous criminals. Psfcave7 Prison was nationally praised for its state of the art facilities, forward thinking approach to rehabilitation, and no escape attempts.")
+}
+
+text gText_TheStorySoFar_IThinkDefense {
+    format("I think the best defense is an overwhelming offense.")
+}
+
+text gText_TheStorySoFar_NotStrongEnough {
+    format("Not strong enough!")
+}
+
+text gText_TheStorySoFar_TheBestOffense {
+    format("The best offense is the kind that gets stronger with time.")
+}
+
+text gText_TheStorySoFar_TheCriminalUnderbelly {
+    format("The Psfregion1 criminal underbelly, using agents within the prison, staged a prison riot. The agents took guards hostage, and demanded that the government turn the island over to the prisoners. This occupation lasted for years, and the demands of the prisoners grew more unreasonable as time went on.")
+}
+
+text gText_TheStorySoFar_TheresSomethingSpecial {
+    format("There's something special about power in large groups...")
+}
+
+text gText_TheStorySoFar_ImNotSpecial {
+    format("I'm not special on my own.")
+}
+
+text gText_TheStorySoFar_ItsHardToDoAnything {
+    format("It's hard to do anything meaningful on your own. We're made to work together!")
+}
+
+text gText_TheStorySoFar_ThePrisonersBeganToTurn {
+    format("The prisoners began to turn to the citizens of the region for support. One of their most vocal allies was Psfelite2, the strongest member of the Psfregion1 Elite Four. Psfelite2 organized public rallies and marches, demanding for the release of the prisoners into society, citing the need for a different rehabilitation approach.")
+}
+
+text gText_TheStorySoFar_PhysicallyDefensiveMasterpiece {
+    format("Psfcave7 is a physically defensive masterpiece, isn't it?")
+}
+
+text gText_TheStorySoFar_ButLikeTheShip {
+    format("But like the ship that couldn't sink...")
+}
+
+text gText_TheStorySoFar_HumansWillAlwaysFind {
+    format("Humans will always find a way to ruin perfection.")
+}
+
+text gText_TheStorySoFar_AsTensionsBetweenThePrisoners {
+    format("As tensions between the prisoners, their sympathizers, and the government reached a fever pitch, disaster suddenly struck. An unprecedented earthquake ripped through the eastern seaboard of the region, destroying the structure of the prison. Hundreds were injured, and many were killed.")
+}
+
+text gText_TheStorySoFar_BrokenBonesHealEasily {
+    format("Broken bones heal easily, but the spirit is a whole other matter.")
+}
+
+text gText_TheStorySoFar_SomePeopleNeverRecover {
+    format("Some people never recover!")
+}
+
+text gText_TheStorySoFar_MakingSureToTakeCare {
+    format("Making sure to take care of your soul is important!")
+}
+
+text gText_TheStorySoFar_TheNaturalDisasterLeft {
+    format("The natural disaster left the prisoners broken and defeated, and they quickly surrendered. The prisoners were charged with conspiracy and instigation, seperated, and sent to different prisons around the nation. Psfcave7 was shut down.")
+}
+
+text gText_TheStorySoFar_HowToughAreYou {
+    format("How tough are you?")
+}
+
+text gText_TheStorySoFar_TurnsOutPrettyTough {
+    format("Turns out, pretty tough!")
+}
+
+text gText_TheStorySoFar_IHearVoicesStanding {
+    format("Sometimes, I hear voices standing here all day.")
+}
+
+text gText_TheStorySoFar_ParksAndRecreation {
+    format("The Psfregion1 Parks and Recreation has dedicated this plaza to the guards who lost their lives in the disaster and the struggle that divided the region for so long. Late at night, some say you can hear their spirits, still fighting to this day to keep our region safe from criminals.")
+}
+
+text gText_TheStorySoFar_ExcellentWork {
+    format("Excellent work! For completing the challenge, here is your prize!")
+}
+
+text gText_TheStorySoFar_WeHopeYouReturn {
+    format("Congratulations! We hope you return for more training!")
+}

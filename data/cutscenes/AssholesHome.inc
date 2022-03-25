@@ -40,9 +40,6 @@ AssholesHome_Psfnativerival_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_ReallyHopingLastTime
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_JustCurious
 	callnative ClearMugshot
 	call Common_EventScript_SaveGame
 	closemessage
@@ -52,6 +49,9 @@ AssholesHome_Psfnativerival_Dialogue::
 
 AssholesHome_StartBattle_Script::
 	lockall
+	setvar VAR_0x8000, MUGSHOT_HUGH
+	callnative DrawMugshot
+	msgbox gText_AssholesHome_JustCurious
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_IDoubtYoureGoing

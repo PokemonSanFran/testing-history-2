@@ -6,7 +6,7 @@
 5: Has recieved Pokedex
 6: Has completed Act 1.1
 
-# VAR_GYM_1_STATE / VAR_GYM_3_STATE
+# VAR_GYM_1_STATE / VAR_GYM_3_STATE / VAR_GYM_4_STATE
 1: Solved puzzles, ready to fight
 2: Psfleader1 has walked to the battlefield
 3: Saved in front of Psfleader1
@@ -38,6 +38,8 @@
 1: Has watched the fight that Ariana broke up
 
 # VAR_PSFCAVE7_STATE
+1: First arrived
+2: Has battled Malva
 3: Archer has asked to come to see real Alcatraz
 4: Player has arrived on island after seeing real Alcatraz
 5: Archer has explained they're being framed
@@ -65,9 +67,15 @@
 
 #VAR_FERRY_STATE
 **RELEVANCE**: used to track what locations are available via ferry
-
 1: Default, Psfcity17 available
-2: Post league, Psfcave5 available
+2: After "Sorry About My Friends", Alcatraz available from Alameda and Fisherman's Wharf
+3: Post league, Psfcave5 available
+
+#VAR_PSFCAVE7_EXHIBIT_STATE
+1: started the exhibit challenge
+2: has finished challenge, has not gotten prize
+3: has finished challenge, has gotten prize
+4: challenge is complete, now in freeplay mode, battled Malva
 
 #VAR_ROUTE117_STATE
 **RELEVANCE**: Track the state of the Ferry Building
@@ -107,11 +115,24 @@
 1: Team Rocket is attacking the shopkeeper
 2: Player has defeated Team Rocket, shopkeeper is happy
 
+#VAR_ROUTE101_STATE
+**RELEVANCE**: Track Telegraph
+1: Ask confronted the grunts
+2: Defeated the grunts
+3: Talked to Ariana
+4: Got ticket from Ariana
+
+#VAR_PSFCITY11_STATE
+1: "swagbag2" has played out
+
 #VAR_STORYLINE_STATE
 1 - 9: Complete any cutscene from 1.1
 10: Slept in bed after completing 1.1, ferry is fixed
-11 - 14: Completed any cutscene from 1.3 except "The Story So Far" and "Sorry About my Friends"
-15: Completed "Sorry About My Friends"
+11: Completed "Asshole's Home"
+12: Completed "Housing Protest"
+13: Defeated Morty
+14: Completed Alcatraz challenge
+
 23: Sleep to progress to Championship
 24: Starting the Championship
 25: Oak explained Championship

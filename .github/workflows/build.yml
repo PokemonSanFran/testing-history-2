@@ -57,6 +57,5 @@ jobs:
         with:
             args: |
                 "This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message}}
-                **DOWNLOAD** ➡ https://bit.ly/3IgDnk9 ⬅
-
-                <@&953393961148493834>"
+                📁🔗 ➡ https://bit.ly/3IgDnk9 ⬅ 📂🔗
+                "

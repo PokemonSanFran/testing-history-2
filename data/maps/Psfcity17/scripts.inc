@@ -37,7 +37,8 @@ Psfcity17_MapScripts_OnTransition_3:
 	return
 
 Psfcity17_MapScripts_OnTransition_4:
-	goto AssholesHome_HideObject_Script
+	call AssholesHome_HideObject_Script
+	call SurvivalChance333_HideObject_Psfcity17_Script
 	return
 
 Psfcity17_MapScripts_OnTransition_5:

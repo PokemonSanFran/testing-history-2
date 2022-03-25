@@ -36,7 +36,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
@@ -49,7 +49,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
@@ -62,7 +62,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CONTEST_JUDGE",
@@ -88,7 +88,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNION_ROOM_NURSE",
@@ -114,7 +114,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
@@ -127,7 +127,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LINK_RECEPTIONIST",
@@ -140,7 +140,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_CROWD"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
@@ -153,7 +153,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "HousingProtest_StartBattle_PostSave_Script",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_GRUNT"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
@@ -166,7 +166,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "HousingProtest_StartBattle_PostSave_Script",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_GRUNT"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
@@ -178,8 +178,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "HousingProtest_TalkToKatell",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_KATELL"
+      "script": "HousingProtest_InteractLandlord_Script",
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_DUSCLOPS",
@@ -192,7 +192,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "HousingProtest_StartBattle_PostSave_Script",
-      "flag": "FLAG_HIDE_HOUSING_PROTEST_PKMN"
+      "flag": "FLAG_TEMP_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
@@ -205,7 +205,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SorryAboutMyFriends_TalkToIntro_Dialogue",
-      "flag": "FLAG_HIDE_SORRYFRIENDS_PSFGOODADMIN"
+      "flag": "FLAG_TEMP_4"
     }
   ],
   "warp_events": [
@@ -263,7 +263,7 @@
       "y": 15,
       "elevation": 0,
       "var": "VAR_ROUTE101_STATE",
-      "var_value": "3",
+      "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     },
     {
@@ -272,7 +272,7 @@
       "y": 15,
       "elevation": 0,
       "var": "VAR_ROUTE101_STATE",
-      "var_value": "3",
+      "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     },
     {
@@ -281,7 +281,7 @@
       "y": 15,
       "elevation": 0,
       "var": "VAR_ROUTE101_STATE",
-      "var_value": "3",
+      "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     },
     {
@@ -290,7 +290,7 @@
       "y": 15,
       "elevation": 0,
       "var": "VAR_ROUTE101_STATE",
-      "var_value": "3",
+      "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     },
     {
@@ -299,7 +299,7 @@
       "y": 15,
       "elevation": 0,
       "var": "VAR_ROUTE101_STATE",
-      "var_value": "3",
+      "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     }
   ],

@@ -1,0 +1,281 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const LANDLORD = 12 //FLAG_TEMP_3
+const RABIA = 10 //FLAG_TEMP_1
+const VITOMIR = 11 //FLAG_TEMP_1
+const TURTONATOR = 13 //FLAG_TEMP_2
+const ARIANA = 14 //FLAG_TEMP_4
+
+script SorryAboutMyFriends_ObjectCleanUp_Script {
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_2)
+    setflag(FLAG_TEMP_3)
+    setflag(FLAG_TEMP_4)
+    setflag(FLAG_TEMP_5)
+}
+
+script SorryAboutMyFriends_WalkToScene_Script{
+    
+    if (flag(FLAG_TEMP_4)){
+        release
+            end
+    }
+
+        lock
+        call(HousingProtest_MovePlayerIntoPosition)
+        goto(SorryAboutMyFriends_Intro_Dialogue)
+}
+
+script SorryAboutMyFriends_Intro_Dialogue {
+        lock
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        applymovement(ARIANA,Common_Movement_FaceRight)
+        waitmovement(0)
+        playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_CongratsOnYourWin)
+        goto(SorryAboutMyFriends_Continue_Dialogue)
+}
+
+script SorryAboutMyFriends_TalkToIntro_Dialogue {
+        lock
+        playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        
+        if (var(VAR_ROUTE101_STATE) == 3){
+            msgbox(gText_SorryAboutMyFriends_WorldNeedsMoreCompassion,MSGBOX_NPC)
+            goto(SorryAboutMyFriends_CheckBadge_Script)
+        }
+
+        msgbox(gText_SorryAboutMyFriends_CongratsOnYourWin,MSGBOX_NPC)
+        goto(SorryAboutMyFriends_Continue_Dialogue)
+}
+
+script SorryAboutMyFriends_Continue_Dialogue {
+        lock
+        addvar(VAR_ROUTE101_STATE,1)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_ItWasWait)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_YourePartOf)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_DidINotMention)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_WaitThatWas)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_UnfortunateWorldview)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_AreYouGuysHelping)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_ThereWasAProtest)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_IWasTheOneWhoShut)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_WhenTheyMentionedPowerful)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_UhHuh)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace)
+        msgbox(gText_SorryAboutMyFriends_TrackDownTheMembers)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_GotPrettyFiredUp)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_WorldNeedsMoreCompassion)
+
+        goto(SorryAboutMyFriends_CheckBadge_Script)
+}
+
+script SorryAboutMyFriends_CheckBadge_Script {
+        lock
+
+        if (flag(FLAG_BADGE04_GET)){
+            goto(SorryAboutMyFriends_GiveTicket_Script)
+        } else {
+            goto(SorryAboutMyFriends_GetBadgeFirst_Dialogue)
+        }
+}
+
+script SorryAboutMyFriends_GetBadgeFirst_Dialogue{
+        msgbox(gText_SorryAboutMyFriends_WaitHoldOn)
+        callnative(ClearMugshot)
+        fadedefaultbgm
+        release
+        end
+}
+
+script SorryAboutMyFriends_GiveTicket_Script {
+        callnative(ClearMugshot)
+        giveitem(ITEM_MYSTIC_TICKET,1)
+        addvar(VAR_ROUTE101_STATE,1)
+        addvar(VAR_FERRY_STATE,1)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_IGiveYouALot)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_IAppreciateTheGesture)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_WantedYouToGoThere)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_ExcellentPlaceToTrain)
+
+        if (var(VAR_FAINTED_FOG_STATE) > 0){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_SorryAboutMyFriends_WaitForTheFog)
+        }
+
+    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_FollowSomeMoreLeads)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_AfterWeBattled)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SorryAboutMyFriends_ThankYouEnjoy)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(ARIANA,SorryAboutMyFriends_WalkSouth)
+        waitmovement(0)
+        removeobject(ARIANA)
+        fadedefaultbgm
+        release
+        end
+}
+
+text gText_SorryAboutMyFriends_CongratsOnYourWin {
+    format("{PLAYER}. Congrats on your win in Psfcity11.")
+}
+
+text gText_SorryAboutMyFriends_ItWasWait {
+    format("Thanks! It was - wait.")
+}
+
+text gText_SorryAboutMyFriends_YourePartOf {
+    format("You're part of Psfgoodteam, right?")
+}
+
+text gText_SorryAboutMyFriends_DidINotMention {
+    format("*sigh* Yeah, did I not mention that when we met in Psfcity12?")
+}
+
+text gText_SorryAboutMyFriends_WaitThatWas {
+    format("Wait, that was Psfgoodteam? Everytime I run into them, they're attacking innocent people! ")
+}
+
+text gText_SorryAboutMyFriends_UnfortunateWorldview {
+    format("Actually, that... unfortunate worldview is why I'm here. ")
+}
+
+text gText_SorryAboutMyFriends_AreYouGuysHelping {
+    format("What do you mean? Are you guys helping or hurting people? What's your deal?")
+}
+
+text gText_SorryAboutMyFriends_ThereWasAProtest {
+    format("There was a protest here earlier that involved the Psfrocketacro, that apparently began to get out of hand. Two memb -")
+}
+
+text gText_SorryAboutMyFriends_IWasTheOneWhoShut {
+    format("I know. I was the one who shut your goons down. They were trying to destroy this building! Or take it back? I'm not really sure, but it was messed up.")
+}
+
+text gText_SorryAboutMyFriends_WhenTheyMentionedPowerful {
+    format("Well then, when they mentioned powerful Trainer, I should have assumed. And I'm very very sorry for their actions. We're all about peace and non-violence.")
+}
+
+text gText_SorryAboutMyFriends_UhHuh {
+    format("Uh huh.")
+}
+
+text gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace {
+    format("I hope our Psfcity12 work shows that our hearts are in the right place. I'm actually here to fix this mess too.")
+}
+
+text gText_SorryAboutMyFriends_TrackDownTheMembers {
+    format("I've been trying to track down the Psfgoodteam members that you battled, but they're gone! Their names aren't familiar, so they must be new... I've already reprimanded our Recruitment and Training team. We can't afford to have idiots like that making us look bad.")
+}
+
+text gText_SorryAboutMyFriends_GotPrettyFiredUp {
+    format("I got pretty fired up when I fought them. I hate when people pick on the defenseless, but I'm glad you're not cool with it either.")
+}
+
+text gText_SorryAboutMyFriends_WaitHoldOn {
+    format("Actually, you should get the Psfbadge4 first. Let's talk when you do.")
+}
+
+text gText_SorryAboutMyFriends_WorldNeedsMoreCompassion {
+    format("The world needs more compassion like yours, {PLAYER}. If we could just take the time to learn about each other... actually, I have a good learning opportunity for you. Here.")
+}
+
+text gText_SorryAboutMyFriends_IGiveYouALot {
+    format("I give you a lot of apology gifts. I hope we stop screwing up and this is the last one!")
+}
+
+text gText_SorryAboutMyFriends_IAppreciateTheGesture {
+    format("I appreciate the gesture, but doesn't my pass from Psfbadguy1 get me to Psfcave7?")
+}
+
+text gText_SorryAboutMyFriends_WantedYouToGoThere {
+    format("It could, if Psfbadguy1 wanted you to go there. But now you can!")
+}
+
+text gText_SorryAboutMyFriends_ExcellentPlaceToTrain {
+    format("You'll learn a lot about Psfregion1 by going, and it's an excellent place to train for the Gym Challenge. With that, you can go to Psfcave7 from the Psfcity17 Ferry.")
+}
+
+text gText_SorryAboutMyFriends_WaitForTheFog {
+    format("(Guess I should go while I wait for the fog to clear...)")
+}
+
+text gText_SorryAboutMyFriends_FollowSomeMoreLeads {
+    format("Do you know which way Rabia and Vitomar went? I'm going to follow some more leads.")
+}
+
+text gText_SorryAboutMyFriends_AfterWeBattled {
+    format("After we battled, they went towards Psfcity17.")
+}
+
+text gText_SorryAboutMyFriends_ThankYouEnjoy {
+    format("Thank you {PLAYER}. Enjoy Psfcave7.")
+}
+
+movement SorryAboutMyFriends_WalkSouth {
+    walk_down * 6
+        step_end
+}

@@ -15,7 +15,9 @@ script Psfcity17_MapScripts_OnTransition {
     switch (var(VAR_NATIVERIVALBETA_STATE)){
         case 0: goto(SurvivalChance333_HideObject_Psfcity17_Script)
         case 1: goto(SurvivalChance333_HideObject_Psfcity17_Script)
-        case 2: goto(AssholesHome_HideObject_Script)
+        case 2: 
+                call(AssholesHome_HideObject_Script)
+                call(SurvivalChance333_HideObject_Psfcity17_Script)
         case 3: goto(SurvivalChance333_HideObject_Psfcity17_Script)
         case 4: goto(SurvivalChance333_HideObject_Psfcity17_Script)
         case 5: goto(WhyAreYouHelpingThem_ObjectDebriefSetUp_Script)
