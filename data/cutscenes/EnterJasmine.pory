@@ -1,28 +1,21 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFLEADER6 = 1
 
-//VAR_GYM_6_STATE
-//1: Solved puzzles, ready to fight
-//2: Psfleader6 has walked to the battlefield
-//3: Saved in front of Psfleader6
-//4: Defeated Psfleader6
-//5: Hear explanation of badge and TM
-
 script EnterPsfleader6_Event_Script {
     switch (var (VAR_GYM_6_STATE)) {
         case 3:
             goto(EnterPsfleader6_StartGymBattle_Script)
         case 4:
-                goto(EnterPsfleader6_PostDefeat1_Dialogue)
+                goto(EnterPsfleader6_PostGymBattle1_Dialogue)
         case 5:
-                    goto(EnterPsfleader6_PostDefeat2_Dialogue)
+                    goto(EnterPsfleader6_PostGymBattle2_Dialogue)
         default:
-                        goto(EnterPsfleader6_Psfleader6Intro_Dialogue)
+                        goto(EnterPsfleader6_Intro_Dialogue)
     }
 }
 
-script EnterPsfleader6_Psfleader6Intro_Dialogue {
-    lockall
+script EnterPsfleader6_Intro_Dialogue {
+    lock
         setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfleader6_WatchYourStep,MSGBOX_NPC)
@@ -44,47 +37,46 @@ script EnterPsfleader6_Psfleader6Intro_Dialogue {
 
 script EnterPsfleader6_StartGymBattle_Script {
 
-    setvar(VAR_0x8000, MUGSHOT_JASMINE)
+        setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
-        trainerbattle_single(TRAINER_WINONA_1,gText_EnterPsfleader6_LetsSeeHowCareful,gText_EnterPsfleader6_WrongSoil,EnterPsfleader6_Psfleader6Defeated_Script, NO_MUSIC)
+        trainerbattle_single(TRAINER_WINONA_1,gText_EnterPsfleader6_LetsSeeHowCareful,gText_EnterPsfleader6_WrongSoil,EnterPsfleader6_PostGymBattle_Script, NO_MUSIC)
 }
 
-script EnterPsfleader6_Psfleader6Defeated_Script {
-    lockall
+script EnterPsfleader6_PostGymBattle_Script {
+    lock
         setflag(FLAG_BADGE06_GET)
         addvar(VAR_STORYLINE_STATE,1)
-        setvar(VAR_GYM_6_STATE,4)
+        addvar(VAR_GYM_6_STATE,1)
         msgbox(gText_EnterPsfleader6_BadgeGet)
         call(Common_EventScript_PlayGymBadgeFanfare)
         giveitem(ITEM_TM06)
         closemessage
-        releaseall
+        release
         end
 }
 
-script EnterPsfleader6_PostDefeat1_Dialogue {
-    setvar(VAR_GYM_6_STATE,5)
-        lockall
+script EnterPsfleader6_PostGymBattle1_Dialogue {
+        addvar(VAR_GYM_6_STATE,1)
+        lock
         setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfleader6_ThatTechnicalMachineWill,MSGBOX_NPC)
         callnative(ClearMugshot)
         closemessage
-        releaseall
+        release
         end
 }
 
-script EnterPsfleader6_PostDefeat2_Dialogue {
-    lockall
+script EnterPsfleader6_PostGymBattle2_Dialogue {
+    lock
         setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfleader6_AfterAGoodHaircut,MSGBOX_NPC)
         callnative(ClearMugshot)
         closemessage
-        releaseall
+        release
         end
 }
-
 
 text gText_EnterPsfleader6_WatchYourStep{
     format("Watch your step, there are thousands of different seeds under your feet. It was an incredible amount of work to get all these micro-climates in perfect working order…")

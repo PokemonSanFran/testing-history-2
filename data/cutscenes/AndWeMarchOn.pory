@@ -8,36 +8,35 @@ const RUPERT = 6
 const CAMERA = OBJ_EVENT_ID_CAMERA
 
 script AndWeMarchOn_ObjectSetUp_Script {
-    setflag(FLAG_HIDE_ANDWEMARCHON_BATTLE1)
-        setflag(FLAG_HIDE_ANDWEMARCHON_BATTLE2)
-        end
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_2)
 }
 
-script AndWeMarchOn_MoveCameraToParade {
-    setvar(VAR_0x8004, 2)
+script AndWeMarchOn_ObjectCleanUp_Script {
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_2)
+    setflag(FLAG_TEMP_3)
+}
+
+script AndWeMarchOn_MoveCameraToParade_Script {
+        setvar(VAR_0x8004, 2)
         setvar(VAR_0x8005, 9)
         special(TeleportCamera)
         special(SpawnCameraObject)
 }
 
-script AndWeMarchOn_CreateParadeAudience {
-    createvobject(OBJ_EVENT_GFX_BEAUTY,12,13,3,3,DIR_NORTH)
-    end
-}
-
 //TODO: Figure out audience members (vobjects?)
 //Look at "HeresHowThisIsGoingToGo", they can only be called on warp or on frame
 
-script AndWeMarchOn_StartParadeMovement {
-    lockall
+script AndWeMarchOn_StartParadeMovement_Script {
+    lock
         applymovement(PLAYER, AndWeMarchOn_WatchParade)
         waitmovement(0)
         fadescreen(FADE_TO_BLACK)
-        call(AndWeMarchOn_MoveCameraToParade)
+        call(AndWeMarchOn_MoveCameraToParade_Script)
         setobjectxyperm(9, 26, 10)
         setobjectxy(9, 26, 10)
         setobjectxy(10, 30, 10)
-        //call(AndWeMarchOn_CreateParadeAudience)
         fadescreen(FADE_FROM_BLACK)
 
         applymovement(CAMERA, AndWeMarchOn_PanCameraParadeStop)
@@ -111,7 +110,6 @@ script AndWeMarchOn_InviteOntoStage_Dialogue {
         closemessage
 
         msgbox(gText_AndWeMarchOn_Boo)
-
         msgbox(gText_AndWeMarchOn_LetsGo)
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
@@ -129,9 +127,7 @@ script AndWeMarchOn_StartCutsceneBattle_Script {
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_RupertAreYouReady)
         callnative(ClearMugshot)
-        closemessage
         msgbox(gText_AndWeMarchOn_Woo)
-
         msgbox(gText_AndWeMarchOn_Yeah)
         closemessage
 
@@ -155,10 +151,10 @@ script AndWeMarchOn_StartCutsceneBattle_Script {
 script AndWeMarchOn_CutsceneBattleScript {
 
         applymovement(CAMERA,AndWeMarchOn_CenterBattleFrame)
-    playse(SE_BALL_OPEN)
-    playse(SE_BALL_OPEN)
+        playse(SE_BALL_OPEN)
+        playse(SE_BALL_OPEN)
         waitse
-        clearflag(FLAG_HIDE_ANDWEMARCHON_BATTLE1)
+        clearflag(FLAG_TEMP_1)
         addobject(PKMN1)
         addobject(PKMN2)
         playmoncry(SPECIES_GROUDON, CRY_MODE_ENCOUNTER)
@@ -167,9 +163,9 @@ script AndWeMarchOn_CutsceneBattleScript {
         waitmoncry
 
         playse(SE_BALL_OPEN)
-    playse(SE_BALL_OPEN)
+        playse(SE_BALL_OPEN)
         waitse
-        clearflag(FLAG_HIDE_ANDWEMARCHON_BATTLE2)
+        clearflag(FLAG_TEMP_2)
         addobject(PKMN3)
         addobject(PKMN4)
         playmoncry(SPECIES_AZUMARILL, CRY_MODE_ENCOUNTER)
@@ -189,7 +185,7 @@ script AndWeMarchOn_CutsceneBattleScript {
         applymovement(PKMN2, AndWeMarchOn_Attack)
         waitmovement(0)
 
-        //TODO figure out how to flash screen back    
+        //PSF TODO figure out how to flash screen back    
         fadescreen(FADE_TO_BLACK)
         playse(SE_M_THUNDERBOLT)
         waitse
@@ -238,7 +234,7 @@ script AndWeMarchOn_PostBattleSpeech_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_ItsBeenAWildYear)
 
-        playse(SE_APPLAUSE) //TODO: change to booing sound
+        playse(SE_APPLAUSE) //PSF TODO: change to booing sound
         waitse
 
         applymovement(PSFELITE1, AndWeMarchOn_WalkToSouthStage)
@@ -291,18 +287,18 @@ script AndWeMarchOn_PostBattleSpeech_Dialogue {
 
 script AndWeMarchOn_ParadeEnd_Script {
 
-    playse(SE_APPLAUSE)
+        playse(SE_APPLAUSE)
         playse(SE_APPLAUSE)
         waitse
         fadescreen(FADE_TO_BLACK)
         removeobject(PSFELITE1)
         removeobject(8)
-        setflag(FLAG_HIDE_ANDWEMARCHON_PARADE)
-        setvar(VAR_ROUTE108_STATE,1)
+        setflag(FLAG_TEMP_3)
+        addvar(VAR_ROUTE108_STATE,1)
         special(ReturnCameraToPlayer)
         fadedefaultbgm
         fadescreen(FADE_FROM_BLACK)
-        releaseall
+        release
         end
 }
 

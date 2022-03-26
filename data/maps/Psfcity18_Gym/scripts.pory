@@ -1,8 +1,11 @@
 mapscripts Psfcity18_Gym_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        switch (var (VAR_GYM_7_STATE)) {
-            case 3:
-                goto(EnterPsfleader7_StartGymBattle_ObjectSetup)
-        }
+        goto(Psfcity18_Gym_MapScripts_OnTransition)
+    }
+}
+
+script Psfcity18_Gym_MapScripts_OnTransition {
+    switch (var (VAR_GYM_7_STATE)) {
+        case 3: goto(EnterPsfleader7_StartBattle_ObjectSetup_Script)
     }
 }

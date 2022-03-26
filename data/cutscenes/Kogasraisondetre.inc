@@ -1,11 +1,27 @@
+KogaRaisonDetre_HideObjectKids_Script::
+	setflag FLAG_TEMP_1
+	return
+
+
+KogaRaisonDetre_HideObjectMaid_Script::
+	setflag FLAG_TEMP_2
+	return
+
+
+KogaRaisonDetre_ObjectCleanUp_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	return
+
+
 KogaRaisonDetre_MoveIntoFoyer_Script::
-	lockall
+	lock
 	addvar VAR_ROUTE105_STATE, 1
 	applymovement 1, KogaRaisonDetre_ComeDownStairs
 	delay 48
 	applymovement 2, KogaRaisonDetre_ComeDownStairs
 	waitmovement 0
-	releaseall
+	release
 	goto KogaRaisonDetre_KidsMeetPlayer_Dialogue
 	end
 
@@ -84,30 +100,30 @@ KogaRaisonDetre_CityDiscussion_Dialogue::
 	setobjectxy 3, 3, 4
 	setobjectxyperm 3, 3, 4
 	turnobject 3, DIR_EAST
-	releaseall
+	release
 	end
 
 
 KogaRaisonDetre_ComeSit_Dialogue::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ComeSit, MSGBOX_NPC
 	callnative ClearMugshot
-	setvar VAR_ROUTE105_STATE, 2
+	addvar VAR_ROUTE105_STATE, 1
 	closemessage
-	releaseall
+	release
 	end
 
 
-KogaRaisonDetre_InteractAtTable::
-	lockall
+KogaRaisonDetre_InteractAtTable_Script::
+	lock
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_IPickedOut
 	closemessage
 	callnative ClearMugshot
-	releaseall
+	release
 	end
 
 
@@ -165,10 +181,10 @@ KogaRaisonDetre_Wine_Dialogue::
 	callnative ClearMugshot
 	applymovement 3, WalkToDiningRoom
 	waitmovement 0
-	releaseall
+	release
 	setobjectxy 3, 37, 5
 	setobjectxyperm 3, 37, 5
-	setvar VAR_ROUTE105_STATE, 3
+	addvar VAR_ROUTE105_STATE, 1
 	end
 
 
@@ -215,14 +231,14 @@ KogaRaisonDetre_DinnerConversation_Dialogue::
 	msgbox gText_KogaRaisonDetre_DoIHaveToEat
 	closemessage
 	fadescreen FADE_TO_BLACK
-	special ReturnCameraToPlayer
+	TeleportCamera 43, 5
 	special RemoveCameraObject
 	delay 60
 	playse SE_POKENAV_CALL
-	waitfanfare
+	waitse
 	fadescreen FADE_FROM_BLACK
 	goto KogaRaisonDetre_RunToWork_Dialogue
-	releaseall
+	release
 	end
 
 
@@ -273,7 +289,10 @@ KogaRaisonDetre_RunToWork_Dialogue::
 KogaRaisonDetre_NewsStory_Script::
 	setobjectxy 4, 44, 4
 	turnobject 4, DIR_NORTH
-	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_UP
+	turnobject 5, DIR_NORTH
+	setobjectnewmovementtype 4, MOVEMENT_TYPE_FACE_UP
+	setobjectnewmovementtype 5, MOVEMENT_TYPE_FACE_UP
+	lockall
 	fadescreen FADE_FROM_BLACK
 	special TurnOnTVScreen
 	delay 60
@@ -296,15 +315,16 @@ KogaRaisonDetre_NewsStory_Script::
 	applymovement 4, KogaRaisonDetre_LeaveDiningRoomCrying
 	waitmovement 0
 	removeobject 4
+	removeobject 3
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_ROUTE105_STATE, 4
-	setvar VAR_ROUTE106_STATE, 1
-	releaseall
+	addvar VAR_ROUTE105_STATE, 1
+	addvar VAR_ROUTE106_STATE, 1
+	release
 	end
 
 
 KogaRaisonDetre_PreventPlayerLeaving_Script::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_HasBeenSoGenerous
@@ -312,7 +332,7 @@ KogaRaisonDetre_PreventPlayerLeaving_Script::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
-	releaseall
+	release
 	end
 
 
@@ -324,36 +344,21 @@ KogaRaisonDetre_ComeDownStairs:
 	step_end
 
 KogaRaisonDetre_RunAroundPlayer:
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
-	walk_left
-	walk_right
+	jump_2_left
+	jump_2_right
+	jump_2_left
+	jump_2_right
+	jump_2_left
+	jump_2_right
+	jump_2_left
+	jump_2_right
+	jump_2_left
+	jump_2_right
+	jump_2_left
+	jump_2_right
+	jump_2_left
+	jump_2_right
+	face_left
 	step_end
 
 KogaRaisonDetre_WalkIntoFoyer:
@@ -447,8 +452,6 @@ KogaRaisonDetre_PanCamera:
 	walk_slow_right
 	walk_slow_right
 	walk_slow_right
-	walk_slow_right
-	walk_slow_right
 	step_end
 
 KogaRaisonDetre_StepAwayFromTable:
@@ -488,8 +491,6 @@ KogaRaisonDetre_LeaveDiningRoom:
 	step_end
 
 WalkToThePlayer:
-	walk_right
-	walk_right
 	walk_right
 	face_down
 	step_end

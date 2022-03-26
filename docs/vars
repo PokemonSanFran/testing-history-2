@@ -6,11 +6,16 @@
 5: Has recieved Pokedex
 6: Has completed Act 1.1
 
-# VAR_GYM_1_STATE / VAR_GYM_3_STATE / VAR_GYM_4_STATE / VAR_GYM_5_STATE
+# VAR_GYM_1_STATE / VAR_GYM_3_STATE / VAR_GYM_4_STATE / VAR_GYM_5_STATE / VAR_GYM_6_STATE
 1: Solved puzzles, ready to fight
 2: Psfleader1 has walked to the battlefield
 3: Saved in front of Psfleader1
 4: Defeated Psfleader1
+5: Hear explanation of badge and TM
+
+#VAR_GYM_7_STATE
+3: Saved in front of Psfleader7
+4: Defeated Psfleader7
 5: Hear explanation of badge and TM
 
 #VAR_GYM_2_STATE
@@ -132,8 +137,8 @@
 12: Completed "Housing Protest"
 13: Defeated Morty
 14: Completed Alcatraz challenge
-15: Defeats Chuck 
-
+15 - 21: Has defeated Bianca (Beach), Archer (Painted), Jasmine, Chuck, Clair, Pryce, had dinner with Koga
+22: Got a call from Rose to go to construction site
 23: Sleep to progress to Championship
 24: Starting the Championship
 25: Oak explained Championship
@@ -148,6 +153,28 @@
 34: Finished one Restoration Quest
 35: Told by YC to stop helping TR
 36: Slept after being Told by TR to stop helping YC
+
+#VAR_ROUTE104_STATE
+1: Has defeated Chuck
+2: Been invited to Koga's home
+
+#VAR_ROUTE108_STATE
+1: Parade in Haight Ashbury has started
+
+#VAR_ROUTE107_STATE
+1: Has run into Bianca in Beach Battle
+2: Has defeated Bianca in Beach Battle
+
+#VAR_ROUTE105_STATE
+0: Has not entered Koga's house yet
+1: Has entered the foyer, met the kids
+2: Has sat with Koga over wine
+3: Finished Koga wine chat, walking to living room
+4: Talked to the maid the next morning
+
+
+#VAR_ROUTE106_STATE
+1: Finished Koga's house script
 
 #VAR_ROUTE110_STATE
 1: Strike has started

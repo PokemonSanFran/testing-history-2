@@ -1,10 +1,17 @@
 AndWeMarchOn_ObjectSetUp_Script::
-	setflag FLAG_HIDE_ANDWEMARCHON_BATTLE1
-	setflag FLAG_HIDE_ANDWEMARCHON_BATTLE2
-	end
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	return
 
 
-AndWeMarchOn_MoveCameraToParade::
+AndWeMarchOn_ObjectCleanUp_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
+	return
+
+
+AndWeMarchOn_MoveCameraToParade_Script::
 	setvar VAR_0x8004, 2
 	setvar VAR_0x8005, 9
 	special TeleportCamera
@@ -12,17 +19,12 @@ AndWeMarchOn_MoveCameraToParade::
 	return
 
 
-AndWeMarchOn_CreateParadeAudience::
-	createvobject OBJ_EVENT_GFX_BEAUTY, 12, 13, 3, 3, DIR_NORTH
-	end
-
-
-AndWeMarchOn_StartParadeMovement::
-	lockall
+AndWeMarchOn_StartParadeMovement_Script::
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, AndWeMarchOn_WatchParade
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
-	call AndWeMarchOn_MoveCameraToParade
+	call AndWeMarchOn_MoveCameraToParade_Script
 	setobjectxyperm 9, 26, 10
 	setobjectxy 9, 26, 10
 	setobjectxy 10, 30, 10
@@ -104,7 +106,6 @@ AndWeMarchOn_StartCutsceneBattle_Script::
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_RupertAreYouReady
 	callnative ClearMugshot
-	closemessage
 	msgbox gText_AndWeMarchOn_Woo
 	msgbox gText_AndWeMarchOn_Yeah
 	closemessage
@@ -129,7 +130,7 @@ AndWeMarchOn_CutsceneBattleScript::
 	playse SE_BALL_OPEN
 	playse SE_BALL_OPEN
 	waitse
-	clearflag FLAG_HIDE_ANDWEMARCHON_BATTLE1
+	clearflag FLAG_TEMP_1
 	addobject 1
 	addobject 2
 	playmoncry SPECIES_GROUDON, CRY_MODE_ENCOUNTER
@@ -139,7 +140,7 @@ AndWeMarchOn_CutsceneBattleScript::
 	playse SE_BALL_OPEN
 	playse SE_BALL_OPEN
 	waitse
-	clearflag FLAG_HIDE_ANDWEMARCHON_BATTLE2
+	clearflag FLAG_TEMP_2
 	addobject 3
 	addobject 4
 	playmoncry SPECIES_AZUMARILL, CRY_MODE_ENCOUNTER
@@ -242,12 +243,12 @@ AndWeMarchOn_ParadeEnd_Script::
 	fadescreen FADE_TO_BLACK
 	removeobject 5
 	removeobject 8
-	setflag FLAG_HIDE_ANDWEMARCHON_PARADE
-	setvar VAR_ROUTE108_STATE, 1
+	setflag FLAG_TEMP_3
+	addvar VAR_ROUTE108_STATE, 1
 	special ReturnCameraToPlayer
 	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
-	releaseall
+	release
 	end
 
 

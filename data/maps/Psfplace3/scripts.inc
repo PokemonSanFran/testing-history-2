@@ -8,6 +8,6 @@ Psfplace3_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfplace3_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 17, TheStrikeStrikesBack_PhoneCall_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 21, TheStrikeStrikesBack_PhoneCall_Dialogue
 	.2byte 0
 

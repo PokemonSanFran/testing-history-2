@@ -48,7 +48,7 @@
 #define FLAG_SYS_NO_CATCHING        0x24 // Unused Flag //DEBUG
 #define FLAG_UNUSED_0x25 0x25 // Unused Flag
 #define FLAG_SAVED_DAVID            0x26 // Previously Unused Flag
-#define FLAG_HIDE_PSFCITY7_PSFGOODADMIN 0x27 //Previously Unused Flag
+#define FLAG_UNUSED_0x27 0x27 //Previously Unused Flag
 #define FLAG_HIDE_MADISON    0x28 // Previously Unused Flag
 #define FLAG_UNUSED_0x29 0x29 // Unused Flag
 #define FLAG_UNSUED_0x2A 0x2A // Unused Flag
@@ -58,13 +58,13 @@
 #define FLAG_UNUSED_0x2E 0x2E// Unused Flag
 #define FLAG_UNUSED_0x2F 0x2F   // Unused Flag
 #define FLAG_UNUSED_0x30 0x30 // Unused Flag
-#define FLAG_UNUSED_0x31 0x31 // Previously Unused Flag
+#define FLAG_UNUSED_0x31 0x31 // Unused Flag
 #define FLAG_HIDE_MANSION_KIDS 0x32 // Previously Unused Flag
 #define FLAG_HIDE_MANSION_MAID    0x33 // Previously Unused Flag
-#define FLAG_HIDE_BEACHBATTLE_PSFTRANSRIVAL 0x34 // Previously Unused Flag
-#define FLAG_HIDE_ANDWEMARCHON_BATTLE1  0x35 // Previously Unused Flag
-#define FLAG_HIDE_ANDWEMARCHON_BATTLE2  0x36 // Previously Unused Flag
-#define FLAG_HIDE_ANDWEMARCHON_PARADE 0x37 //Previously Unused Flag
+#define FLAG_UNUSED_0x34 0x34 // Unused Flag
+#define FLAG_UNSUED_0x35 0x35 // Unused Flag
+#define FLAG_UNUSED_0x36 0x36 // Unused Flag
+#define FLAG_UNSUED_0x37 0x37 //Unused Flag
 #define FLAG_HIDE_BATTLE8   0x38 // Previously Unused Flag
 #define FLAG_SPAWN_INVISIBLE 0x39 // Previously Unused Flag
 #define FLAG_HIDE_THESTRIKESTRIKESBACK 0x3A // Previously Unused Flag

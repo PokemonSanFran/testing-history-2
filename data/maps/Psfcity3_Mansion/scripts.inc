@@ -13,5 +13,26 @@ Psfcity3_Mansion_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfcity3_Mansion_MapScripts_OnTransition::
+	switch VAR_ROUTE105_STATE
+	case 1, Psfcity3_Mansion_MapScripts_OnTransition_2
+	case 2, Psfcity3_Mansion_MapScripts_OnTransition_3
+	case 3, Psfcity3_Mansion_MapScripts_OnTransition_4
+	case 4, Psfcity3_Mansion_MapScripts_OnTransition_5
+	return
+
+Psfcity3_Mansion_MapScripts_OnTransition_2:
+	call KogaRaisonDetre_HideObjectKids_Script
+	return
+
+Psfcity3_Mansion_MapScripts_OnTransition_3:
+	call KogaRaisonDetre_HideObjectKids_Script
+	return
+
+Psfcity3_Mansion_MapScripts_OnTransition_4:
+	call KogaRaisonDetre_HideObjectKids_Script
+	return
+
+Psfcity3_Mansion_MapScripts_OnTransition_5:
+	call KogaRaisonDetre_ObjectCleanUp_Script
 	return
 

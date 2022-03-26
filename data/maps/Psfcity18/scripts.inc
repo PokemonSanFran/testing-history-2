@@ -4,11 +4,26 @@ Psfcity18_MapScripts::
 	.byte 0
 
 Psfcity18_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call AndWeMarchOn_ObjectSetUp_Script
+	goto Psfcity18_MapScripts_OnTransition
 	return
 
 Psfcity18_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 17, TheStrikeStrikesBack_PhoneCall_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 21, TheStrikeStrikesBack_PhoneCall_Dialogue
 	map_script_2 VAR_STORYLINE_STATE, 34, YouRealizeWereEvilRight_PhoneCall_Dialogue
 	.2byte 0
+
+
+Psfcity18_MapScripts_OnTransition::
+	switch VAR_ROUTE108_STATE
+	case 0, Psfcity18_MapScripts_OnTransition_2
+	case 1, Psfcity18_MapScripts_OnTransition_3
+	return
+
+Psfcity18_MapScripts_OnTransition_2:
+	call AndWeMarchOn_ObjectSetUp_Script
+	return
+
+Psfcity18_MapScripts_OnTransition_3:
+	call AndWeMarchOn_ObjectCleanUp_Script
+	return
 

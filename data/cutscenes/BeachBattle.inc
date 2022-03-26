@@ -1,6 +1,6 @@
 BeachBattle_ObjectSetUp_Script::
-	setflag FLAG_HIDE_BEACHBATTLE_PSFTRANSRIVAL
-	end
+	setflag FLAG_TEMP_1
+	return
 
 
 BeachBattle_BattleSetUp_Script::
@@ -9,14 +9,14 @@ BeachBattle_BattleSetUp_Script::
 
 
 BeachBattle_PsftransrivalWalkToPlayer::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_HeyPlayer
 	closemessage
 	callnative ClearMugshot
 	playse SE_PIN
-	clearflag FLAG_HIDE_BEACHBATTLE_PSFTRANSRIVAL
+	clearflag FLAG_TEMP_1
 	addobject 1
 	applymovement OBJ_EVENT_ID_PLAYER, BeachBattle_ExclaimAndTurn
 	waitmovement 0
@@ -28,6 +28,7 @@ BeachBattle_PsftransrivalWalkToPlayer::
 
 
 BeachBattle_Interact_Script::
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	faceplayer
 	goto BeachBattle_Psfnativerival_Event_Script
 	return
@@ -56,38 +57,34 @@ BeachBattle_Approach_Dialogue::
 	msgbox gText_BeachBattle_ImHeadingNorth
 	special GetNumberOfBadges
 	switch VAR_TEMP_0
-	case 8, BeachBattle_Approach_Dialogue_2
-	case 7, BeachBattle_Approach_Dialogue_3
-	case 6, BeachBattle_Approach_Dialogue_4
-	case 5, BeachBattle_Approach_Dialogue_5
-	case 4, BeachBattle_Approach_Dialogue_6
-	return
-
-BeachBattle_Approach_Dialogue_2:
-	goto BeachBattle_EightBadges_Dialogue
+	case 8, BeachBattle_Approach_Dialogue_3
+	case 7, BeachBattle_Approach_Dialogue_4
+	case 6, BeachBattle_Approach_Dialogue_5
+	case 5, BeachBattle_Approach_Dialogue_6
+	case 4, BeachBattle_Approach_Dialogue_7
+BeachBattle_Approach_Dialogue_1:
+	goto BeachBattle_SaveProgress
 	return
 
 BeachBattle_Approach_Dialogue_3:
-	goto BeachBattle_SevenBadges_Dialogue
-	return
+	msgbox gText_BeachBattle_OhShit
+	goto BeachBattle_Approach_Dialogue_1
 
 BeachBattle_Approach_Dialogue_4:
-	goto BeachBattle_SixBadges_Dialogue
-	return
+	goto BeachBattle_SevenBadges_Dialogue
+	goto BeachBattle_Approach_Dialogue_1
 
 BeachBattle_Approach_Dialogue_5:
-	goto BeachBattle_FiveBadges_Dialogue
-	return
+	msgbox gText_BeachBattle_TwoLeft
+	goto BeachBattle_Approach_Dialogue_1
 
 BeachBattle_Approach_Dialogue_6:
+	msgbox gText_BeachBattle_HmmOnlyFive
+	goto BeachBattle_Approach_Dialogue_1
+
+BeachBattle_Approach_Dialogue_7:
 	goto BeachBattle_FourBadges_Dialogue
-	return
-
-
-BeachBattle_EightBadges_Dialogue::
-	msgbox gText_BeachBattle_OhShit
-	goto BeachBattle_SaveProgress
-	return
+	goto BeachBattle_Approach_Dialogue_1
 
 
 BeachBattle_SevenBadges_Dialogue::
@@ -99,21 +96,7 @@ BeachBattle_SevenBadges_Dialogue::
 	return
 
 
-BeachBattle_SixBadges_Dialogue::
-	msgbox gText_BeachBattle_TwoLeft
-	goto BeachBattle_SaveProgress
-	return
-
-
-BeachBattle_FiveBadges_Dialogue::
-	msgbox gText_BeachBattle_HmmOnlyFive
-	goto BeachBattle_SaveProgress
-	return
-
-
 BeachBattle_FourBadges_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
 	msgbox gText_BeachBattle_ImNotSureThatSlow
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -131,7 +114,7 @@ BeachBattle_SaveProgress::
 
 
 BeachBattle_StartBattle_Script::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_MyBrainIsScrambled
@@ -143,10 +126,10 @@ BeachBattle_StartBattle_Script::
 
 
 BeachBattle_PostBattle_Dialogue::
-	lockall
+	lock
 	addvar VAR_STORYLINE_STATE, 1
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	setvar VAR_ROUTE107_STATE, 2
+	addvar VAR_ROUTE107_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_WellImNotSurprised
@@ -162,7 +145,7 @@ BeachBattle_PostBattle_Dialogue_1:
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 1
-	releaseall
+	release
 	end
 
 BeachBattle_PostBattle_Dialogue_2:

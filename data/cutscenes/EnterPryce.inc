@@ -1,7 +1,7 @@
-EnterPsfleader7_StartGymBattle_ObjectSetup::
+EnterPsfleader7_StartBattle_ObjectSetup_Script::
 	setobjectxyperm 1, 11, 10
 	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_LEFT
-	end
+	return
 
 
 EnterPsfleader7_Event_Script::
@@ -13,7 +13,7 @@ EnterPsfleader7_Event_Script::
 	return
 
 EnterPsfleader7_Event_Script_2:
-	goto EnterPsfleader7_FacePlayerBeforeBattle
+	goto EnterPsfleader7_FacePlayerBeforeBattle_Script
 	return
 
 EnterPsfleader7_Event_Script_3:
@@ -61,8 +61,7 @@ EnterPsfleader7_MumbleToSelf_Dialogue::
 	callnative ClearMugshot
 	applymovement 1, EnterPsfleader7_TakeDrugs
 	waitmovement 0
-	call EnterPsfleader7_CalculateMovement_Script
-	waitmovement 0
+	goto EnterPsfleader7_CalculateMovement_Script
 	return
 
 
@@ -186,44 +185,44 @@ EnterPsf7leader_ExplainLab_Dialogue::
 	callnative ClearMugshot
 	call Common_EventScript_SaveGame
 	closemessage
-	goto EnterPsfleader7_StartGymBattle_Script
+	goto EnterPsfleader7_StartBattle_Script
 	return
 
 
-EnterPsfleader7_FacePlayerBeforeBattle::
+EnterPsfleader7_FacePlayerBeforeBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader7_IDontKnow, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_TATE_AND_LIZA_1, gText_EnterPsfleader7_UghIThinkThisBatch
-	goto EnterPsfleader7_Psfleader7Defeated_Script
+	goto EnterPsfleader7_PostBattle_Script
 	return
 
 
-EnterPsfleader7_StartGymBattle_Script::
+EnterPsfleader7_StartBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader7_IDontKnow
 	closemessage
 	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_TATE_AND_LIZA_1, gText_EnterPsfleader7_UghIThinkThisBatch
-	goto EnterPsfleader7_Psfleader7Defeated_Script
+	goto EnterPsfleader7_PostBattle_Script
 	return
 
 
-EnterPsfleader7_Psfleader7Defeated_Script::
-	lockall
+EnterPsfleader7_PostBattle_Script::
+	lock
 	setflag FLAG_BADGE07_GET
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_GYM_7_STATE, 4
+	addvar VAR_GYM_7_STATE, 1
 	msgbox gText_EnterPsfleader7_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM07
 	closemessage
 	call EnterPsfleader7_MoveBacktoDesk_Script
 	waitmovement 0
-	releaseall
+	release
 	end
 
 
@@ -240,25 +239,27 @@ EnterPsfleader7_MoveBacktoDesk_Script_1:
 
 
 EnterPsfleader7_PostDefeat1_Dialogue::
-	lockall
-	setvar VAR_GYM_7_STATE, 5
+	lock
+	addvar VAR_GYM_7_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_TMAreLikeDrugs
+	msgbox gText_EnterPsfleader7_TMAreLikeDrugs, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
-	releaseall
+	applymovement 1, Common_Movement_FaceUp
+	waitmovement 0
+	release
 	end
 
 
 EnterPsfleader7_PostDefeat2_Dialogue::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader7_LetsSee
 	closemessage
 	callnative ClearMugshot
-	releaseall
+	release
 	end
 
 

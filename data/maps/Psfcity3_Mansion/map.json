@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_MANSION_KIDS"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_MANSION_KIDS"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
@@ -50,8 +50,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "KogaRaisonDetre_InteractAtTable",
-      "flag": "FLAG_HIDE_MANSION_MAID"
+      "script": "KogaRaisonDetre_InteractAtTable_Script",
+      "flag": "FLAG_TEMP_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NURSE",
@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_MANSION_MAID"
+      "flag": "FLAG_TEMP_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNION_ROOM_NURSE",

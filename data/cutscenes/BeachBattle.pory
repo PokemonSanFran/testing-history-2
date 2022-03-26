@@ -2,34 +2,35 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFTRANSRIVAL = 1
 
 script BeachBattle_ObjectSetUp_Script {
-    setflag(FLAG_HIDE_BEACHBATTLE_PSFTRANSRIVAL)
-    end
+    setflag(FLAG_TEMP_1)
 }
+
 script BeachBattle_BattleSetUp_Script {
-   setobjectxyperm(PSFTRANSRIVAL,10,24) 
+    setobjectxyperm(PSFTRANSRIVAL,10,24) 
 }
 
 script BeachBattle_PsftransrivalWalkToPlayer {
-    lockall
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_BeachBattle_HeyPlayer)
-closemessage
-callnative(ClearMugshot)
-    playse(SE_PIN)
-    clearflag(FLAG_HIDE_BEACHBATTLE_PSFTRANSRIVAL)
-    addobject(PSFTRANSRIVAL)
-    applymovement(PLAYER,BeachBattle_ExclaimAndTurn)
-    waitmovement(0)
-    playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
-    applymovement(PSFTRANSRIVAL,BeachBattle_ApproachFromSouth)
-    waitmovement(0)
-    goto(BeachBattle_Psfnativerival_Event_Script)
+    lock
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeachBattle_HeyPlayer)
+        closemessage
+        callnative(ClearMugshot)
+        playse(SE_PIN)
+        clearflag(FLAG_TEMP_1)
+        addobject(PSFTRANSRIVAL)
+        applymovement(PLAYER,BeachBattle_ExclaimAndTurn)
+        waitmovement(0)
+        playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+        applymovement(PSFTRANSRIVAL,BeachBattle_ApproachFromSouth)
+        waitmovement(0)
+        goto(BeachBattle_Psfnativerival_Event_Script)
 }
 
 script BeachBattle_Interact_Script {
+        playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
     faceplayer
-    goto(BeachBattle_Psfnativerival_Event_Script)
+        goto(BeachBattle_Psfnativerival_Event_Script)
 }
 
 script BeachBattle_Psfnativerival_Event_Script {
@@ -40,58 +41,41 @@ script BeachBattle_Psfnativerival_Event_Script {
 }
 
 script BeachBattle_Approach_Dialogue {
-    setvar(VAR_ROUTE107_STATE,1)
-   setobjectxyperm(PSFTRANSRIVAL,10,24) 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_BeachBattle_ImHeadingNorth)
+        setvar(VAR_ROUTE107_STATE,1)
+        setobjectxyperm(PSFTRANSRIVAL,10,24) 
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeachBattle_ImHeadingNorth)
 
-special(GetNumberOfBadges)
+        special(GetNumberOfBadges)
 
-switch (var(VAR_TEMP_0)) {
-    case 8: goto(BeachBattle_EightBadges_Dialogue)
-    case 7: goto(BeachBattle_SevenBadges_Dialogue)
-    case 6: goto(BeachBattle_SixBadges_Dialogue)
-    case 5: goto(BeachBattle_FiveBadges_Dialogue)
-    case 4: goto(BeachBattle_FourBadges_Dialogue)
+        switch (var(VAR_TEMP_0)) {
+            case 8: msgbox(gText_BeachBattle_OhShit)
+            case 7: goto(BeachBattle_SevenBadges_Dialogue)
+            case 6: msgbox(gText_BeachBattle_TwoLeft) 
+            case 5: msgbox(gText_BeachBattle_HmmOnlyFive)
+            case 4: goto(BeachBattle_FourBadges_Dialogue)
+        }
+        goto(BeachBattle_SaveProgress)
 }
-}
 
-
-script BeachBattle_EightBadges_Dialogue {
-    msgbox(gText_BeachBattle_OhShit)
-    goto(BeachBattle_SaveProgress)
-}
 
 script BeachBattle_SevenBadges_Dialogue {
     msgbox(gText_BeachBattle_OhNiceLastOne)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeachBattle_JustTheOneIn)
-    goto(BeachBattle_SaveProgress)
-}
-
-script BeachBattle_SixBadges_Dialogue {
-msgbox(gText_BeachBattle_TwoLeft)
-    goto(BeachBattle_SaveProgress)
-}
-
-script BeachBattle_FiveBadges_Dialogue {
-    msgbox(gText_BeachBattle_HmmOnlyFive)
-    goto(BeachBattle_SaveProgress)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeachBattle_JustTheOneIn)
+        goto(BeachBattle_SaveProgress)
 }
 
 script BeachBattle_FourBadges_Dialogue {
-    
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_BeachBattle_ImNotSureThatSlow)
+        msgbox(gText_BeachBattle_ImNotSureThatSlow)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeachBattle_IveBeenALittleDistracted)
-    goto(BeachBattle_SaveProgress)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeachBattle_IveBeenALittleDistracted)
+        goto(BeachBattle_SaveProgress)
 }
 
 script BeachBattle_SaveProgress {
@@ -102,47 +86,45 @@ script BeachBattle_SaveProgress {
 }
 
 script BeachBattle_StartBattle_Script {
-    lockall
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_BeachBattle_MyBrainIsScrambled)
-    trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_MUDKIP,gText_BeachBattle_ImLegitShook)
-    closemessage
-    callnative(ClearMugshot)
-    goto(BeachBattle_PostBattle_Dialogue)
+    lock
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeachBattle_MyBrainIsScrambled)
+        trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_MUDKIP,gText_BeachBattle_ImLegitShook)
+        closemessage
+        callnative(ClearMugshot)
+        goto(BeachBattle_PostBattle_Dialogue)
 }
 
 script BeachBattle_PostBattle_Dialogue {
-    lockall
-    addvar(VAR_STORYLINE_STATE,1)
-    playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
-    setvar(VAR_ROUTE107_STATE,2)
+    lock
+        addvar(VAR_STORYLINE_STATE,1)
+        playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+        addvar(VAR_ROUTE107_STATE,1)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_BeachBattle_WellImNotSurprised)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeachBattle_WellImNotSurprised)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_BeachBattle_UghIShouldBe)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_BeachBattle_UghIShouldBe)
 
-if (flag(FLAG_BADGE05_GET)){
-msgbox(gText_BeachBattle_IfItTakesATeam)
+        if (flag(FLAG_BADGE05_GET)){
+            msgbox(gText_BeachBattle_IfItTakesATeam)
+        }
+
+    msgbox(gText_BeachBattle_NextTimeIllHave)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFTRANSRIVAL,BeachBattle_WalkAway)
+        waitmovement(0)
+        fadedefaultbgm
+        removeobject(PSFTRANSRIVAL)
+        release
+        end
 }
-
-msgbox(gText_BeachBattle_NextTimeIllHave)
-callnative(ClearMugshot)
-closemessage
-
-applymovement(PSFTRANSRIVAL,BeachBattle_WalkAway)
-waitmovement(0)
-    fadedefaultbgm
-    removeobject(PSFTRANSRIVAL)
-
-
-    releaseall
-    end
-    }
 
 text gText_BeachBattle_HeyPlayer {
     format("Hey, {PLAYER}!!")
@@ -205,16 +187,16 @@ text gText_BeachBattle_NextTimeIllHave {
 }
 
 movement BeachBattle_ExclaimAndTurn {
-	emote_exclamation_mark
-    face_down
-    step_end
+    emote_exclamation_mark
+        face_down
+        step_end
 }
 movement BeachBattle_ApproachFromSouth {
     walk_right * 6
-    walk_up * 4
-    step_end
+        walk_up * 4
+        step_end
 }
 movement BeachBattle_WalkAway {
     walk_down * 7
-    step_end
+        step_end
 }

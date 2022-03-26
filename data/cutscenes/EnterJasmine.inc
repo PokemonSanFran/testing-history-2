@@ -3,7 +3,7 @@ EnterPsfleader6_Event_Script::
 	case 3, EnterPsfleader6_Event_Script_2
 	case 4, EnterPsfleader6_Event_Script_3
 	case 5, EnterPsfleader6_Event_Script_4
-	goto EnterPsfleader6_Psfleader6Intro_Dialogue
+	goto EnterPsfleader6_Intro_Dialogue
 	return
 
 EnterPsfleader6_Event_Script_2:
@@ -11,16 +11,16 @@ EnterPsfleader6_Event_Script_2:
 	return
 
 EnterPsfleader6_Event_Script_3:
-	goto EnterPsfleader6_PostDefeat1_Dialogue
+	goto EnterPsfleader6_PostGymBattle1_Dialogue
 	return
 
 EnterPsfleader6_Event_Script_4:
-	goto EnterPsfleader6_PostDefeat2_Dialogue
+	goto EnterPsfleader6_PostGymBattle2_Dialogue
 	return
 
 
-EnterPsfleader6_Psfleader6Intro_Dialogue::
-	lockall
+EnterPsfleader6_Intro_Dialogue::
+	lock
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader6_WatchYourStep, MSGBOX_NPC
@@ -41,43 +41,43 @@ EnterPsfleader6_Psfleader6Intro_Dialogue::
 EnterPsfleader6_StartGymBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
-	trainerbattle_single TRAINER_WINONA_1, gText_EnterPsfleader6_LetsSeeHowCareful, gText_EnterPsfleader6_WrongSoil, EnterPsfleader6_Psfleader6Defeated_Script, NO_MUSIC
+	trainerbattle_single TRAINER_WINONA_1, gText_EnterPsfleader6_LetsSeeHowCareful, gText_EnterPsfleader6_WrongSoil, EnterPsfleader6_PostGymBattle_Script, NO_MUSIC
 	return
 
 
-EnterPsfleader6_Psfleader6Defeated_Script::
-	lockall
+EnterPsfleader6_PostGymBattle_Script::
+	lock
 	setflag FLAG_BADGE06_GET
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_GYM_6_STATE, 4
+	addvar VAR_GYM_6_STATE, 1
 	msgbox gText_EnterPsfleader6_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM06
 	closemessage
-	releaseall
+	release
 	end
 
 
-EnterPsfleader6_PostDefeat1_Dialogue::
-	setvar VAR_GYM_6_STATE, 5
-	lockall
+EnterPsfleader6_PostGymBattle1_Dialogue::
+	addvar VAR_GYM_6_STATE, 1
+	lock
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader6_ThatTechnicalMachineWill, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
-	releaseall
+	release
 	end
 
 
-EnterPsfleader6_PostDefeat2_Dialogue::
-	lockall
+EnterPsfleader6_PostGymBattle2_Dialogue::
+	lock
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader6_AfterAGoodHaircut, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
-	releaseall
+	release
 	end
 
 

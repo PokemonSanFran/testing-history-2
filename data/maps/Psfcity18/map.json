@@ -31,7 +31,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE1"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KYOGRE_SIDE",
@@ -44,7 +44,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE1"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
@@ -57,7 +57,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE2"
+      "flag": "FLAG_TEMP_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
@@ -70,7 +70,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_BATTLE2"
+      "flag": "FLAG_TEMP_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SIDNEY",
@@ -83,7 +83,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY_3",
@@ -96,7 +96,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_3",
@@ -109,7 +109,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MR_BRINEYS_BOAT",
@@ -122,7 +122,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MR_BRINEYS_BOAT",
@@ -135,7 +135,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MR_BRINEYS_BOAT",
@@ -148,7 +148,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SAILOR",
@@ -161,7 +161,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PIKACHU",
@@ -174,7 +174,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
@@ -187,7 +187,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_2",
@@ -200,7 +200,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_3",
@@ -213,7 +213,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F",
@@ -226,7 +226,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M",
@@ -239,7 +239,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -252,7 +252,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M",
@@ -265,7 +265,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ANDWEMARCHON_PARADE"
+      "flag": "FLAG_TEMP_3"
     }
   ],
   "warp_events": [
@@ -292,7 +292,7 @@
       "elevation": 0,
       "var": "VAR_ROUTE108_STATE",
       "var_value": "0",
-      "script": "AndWeMarchOn_StartParadeMovement"
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
     {
       "type": "trigger",
@@ -301,7 +301,7 @@
       "elevation": 0,
       "var": "VAR_ROUTE108_STATE",
       "var_value": "0",
-      "script": "AndWeMarchOn_StartParadeMovement"
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
     {
       "type": "trigger",
@@ -310,7 +310,7 @@
       "elevation": 0,
       "var": "VAR_ROUTE108_STATE",
       "var_value": "0",
-      "script": "AndWeMarchOn_StartParadeMovement"
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
     {
       "type": "trigger",
@@ -319,7 +319,7 @@
       "elevation": 0,
       "var": "VAR_ROUTE108_STATE",
       "var_value": "0",
-      "script": "AndWeMarchOn_StartParadeMovement"
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
     },
     {
       "type": "trigger",
@@ -328,7 +328,79 @@
       "elevation": 0,
       "var": "VAR_ROUTE108_STATE",
       "var_value": "0",
-      "script": "AndWeMarchOn_StartParadeMovement"
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_ROUTE108_STATE",
+      "var_value": "0",
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_ROUTE108_STATE",
+      "var_value": "0",
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_ROUTE108_STATE",
+      "var_value": "0",
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_ROUTE108_STATE",
+      "var_value": "0",
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_ROUTE108_STATE",
+      "var_value": "0",
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ROUTE108_STATE",
+      "var_value": "0",
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_ROUTE108_STATE",
+      "var_value": "0",
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_ROUTE108_STATE",
+      "var_value": "0",
+      "script": "AndWeMarchOn_StartParadeMovement_Script"
     }
   ],
   "bg_events": [

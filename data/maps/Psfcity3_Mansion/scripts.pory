@@ -9,4 +9,10 @@ mapscripts Psfcity3_Mansion_MapScripts {
 }
 
 script Psfcity3_Mansion_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE105_STATE)){
+        case 1: call(KogaRaisonDetre_HideObjectKids_Script)
+        case 2: call(KogaRaisonDetre_HideObjectKids_Script)
+        case 3: call(KogaRaisonDetre_HideObjectKids_Script)
+        case 4: call(KogaRaisonDetre_ObjectCleanUp_Script)
+    }
 }
