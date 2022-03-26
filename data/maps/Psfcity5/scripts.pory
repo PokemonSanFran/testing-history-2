@@ -6,7 +6,7 @@ mapscripts Psfcity5_MapScripts {
     }
     
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 17: TheStrikeStrikesBack_PhoneCall_Dialogue
+        VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
     ]
 }
 

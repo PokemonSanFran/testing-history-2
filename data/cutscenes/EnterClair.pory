@@ -1,20 +1,15 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFLEADER8 = 1
 
-//VAR_GYM_8_STATE
-//3: Saved in front of Psfleader8
-//4: Defeated Psfleader8
-//5: Hear explanation of badge and TM
-
 script EnterPsfleader8_Event_Script {
     switch (var(VAR_GYM_8_STATE)) {
         case 3:
-            goto(EnterPsfleader8_FacePlayerBeforeBattle)
+            goto(EnterPsfleader8_FacePlayerBeforeBattle_Script)
 
         case 4:
-                goto(EnterPsfleader8_PostDefeat1_Dialogue)
+                goto(EnterPsfleader8_PostGymBattle1_Dialogue)
         case 5:
-                    goto(EnterPsfleader8_PostDefeat2_Dialogue)
+                    goto(EnterPsfleader8_PostGymBattle2_Dialogue)
         default:
                     goto(EnterPsfleader8_AskAboutGym_Dialogue)
     }
@@ -52,7 +47,7 @@ script EnterPsfleader8_AskAboutGym_Dialogue {
         goto(EnterPsfleader8_StartGymBattle_Script)
 }
 
-script EnterPsfleader8_FacePlayerBeforeBattle {
+script EnterPsfleader8_FacePlayerBeforeBattle_Script {
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfleader8_ButTheyNeverWill,MSGBOX_NPC)
@@ -73,38 +68,38 @@ script EnterPsfleader8_StartGymBattle_Script {
 }
 
 script EnterPsfleader8_Psfleader8Deafeated_Script {
-    lockall
+    lock
     setflag(FLAG_BADGE08_GET)
     addvar(VAR_STORYLINE_STATE,1)
-    setvar(VAR_GYM_8_STATE,4)
+    addvar(VAR_GYM_8_STATE,1)
     msgbox(gText_EnterPsfleader8_BadgeGet)
     call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM08)
     closemessage
-    releaseall
+    release
     end
 }
     
 
-script EnterPsfleader8_PostDefeat1_Dialogue {
-    lockall
+script EnterPsfleader8_PostGymBattle1_Dialogue {
+    lock
         setvar(VAR_GYM_8_STATE,5)
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfleader8_ThatTMwill,MSGBOX_NPC)
         closemessage
         callnative(ClearMugshot)
-        releaseall
+        release
         end
 }
-script EnterPsfleader8_PostDefeat2_Dialogue {
-    lockall
+script EnterPsfleader8_PostGymBattle2_Dialogue {
+    lock
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterPsfleader8_IGetSoEmotional,MSGBOX_NPC)
         closemessage
         callnative(ClearMugshot)
-        releaseall
+        release
         end
 }
 

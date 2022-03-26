@@ -7,15 +7,15 @@ EnterPsfleader8_Event_Script::
 	return
 
 EnterPsfleader8_Event_Script_2:
-	goto EnterPsfleader8_FacePlayerBeforeBattle
+	goto EnterPsfleader8_FacePlayerBeforeBattle_Script
 	return
 
 EnterPsfleader8_Event_Script_3:
-	goto EnterPsfleader8_PostDefeat1_Dialogue
+	goto EnterPsfleader8_PostGymBattle1_Dialogue
 	return
 
 EnterPsfleader8_Event_Script_4:
-	goto EnterPsfleader8_PostDefeat2_Dialogue
+	goto EnterPsfleader8_PostGymBattle2_Dialogue
 	return
 
 
@@ -46,7 +46,7 @@ EnterPsfleader8_AskAboutGym_Dialogue::
 	return
 
 
-EnterPsfleader8_FacePlayerBeforeBattle::
+EnterPsfleader8_FacePlayerBeforeBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader8_ButTheyNeverWill, MSGBOX_NPC
@@ -69,38 +69,38 @@ EnterPsfleader8_StartGymBattle_Script::
 
 
 EnterPsfleader8_Psfleader8Deafeated_Script::
-	lockall
+	lock
 	setflag FLAG_BADGE08_GET
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_GYM_8_STATE, 4
+	addvar VAR_GYM_8_STATE, 1
 	msgbox gText_EnterPsfleader8_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM08
 	closemessage
-	releaseall
+	release
 	end
 
 
-EnterPsfleader8_PostDefeat1_Dialogue::
-	lockall
+EnterPsfleader8_PostGymBattle1_Dialogue::
+	lock
 	setvar VAR_GYM_8_STATE, 5
 	setvar VAR_0x8000, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader8_ThatTMwill, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
-	releaseall
+	release
 	end
 
 
-EnterPsfleader8_PostDefeat2_Dialogue::
-	lockall
+EnterPsfleader8_PostGymBattle2_Dialogue::
+	lock
 	setvar VAR_0x8000, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterPsfleader8_IGetSoEmotional, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
-	releaseall
+	release
 	end
 
 

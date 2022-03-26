@@ -13,7 +13,7 @@
 4: Defeated Psfleader1
 5: Hear explanation of badge and TM
 
-#VAR_GYM_7_STATE
+#VAR_GYM_7_STATE / VAR_GYM_8_STATE
 3: Saved in front of Psfleader7
 4: Defeated Psfleader7
 5: Hear explanation of badge and TM
@@ -41,6 +41,11 @@
 
 #VAR_PSFCITY7_STATE
 1: Has watched the fight that Ariana broke up
+
+#VAR_ROUTE109_STATE
+0: Has not seen Archer come out of Painted Ladies yet
+1: Has talked to Archer, battle has not started
+2: Has defeated Archer
 
 # VAR_PSFCAVE7_STATE
 1: First arrived

@@ -252,6 +252,9 @@ KogaRaisonDetre_RunToWork_Dialogue::
 	waitmovement 0
 	applymovement 3, Common_Movement_FaceLeft
 	waitmovement 0
+	delay 32
+	applymovement 3, Common_Movement_FaceRight
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ShitTheresAnUrgent

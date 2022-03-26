@@ -2,25 +2,20 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFNATIVERIVAL = 1
 
 script Battle8_SetUpObject_Script {
-
-    switch (var(VAR_ROUTE109_STATE)){
-        case 0: setflag(FLAG_HIDE_BATTLE8)
-        case 1: call(Battle8_StartBattle_ObjectSetUp_Script)
-    }
+    setflag(FLAG_TEMP_1)
 }
 
 script Battle8_StartBattle_ObjectSetUp_Script {
-    setobjectxyperm(PSFNATIVERIVAL,19,14)
-        setobjectxy(PSFNATIVERIVAL,19,14)
-        end
+    setobjectxyperm(PSFNATIVERIVAL,19,16)
+        setobjectxy(PSFNATIVERIVAL,19,16)
 }
 
 
 script Battle8_PsfnativerivalWalksOut_Script {
-    setvar(VAR_ROUTE109_STATE,1)
+    addvar(VAR_ROUTE109_STATE,1)
         opendoor(19, 13)
         waitdooranim
-        clearflag(FLAG_HIDE_BATTLE8)
+        clearflag(FLAG_TEMP_1)
         addobject(PSFNATIVERIVAL)
         playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
         applymovement(PSFNATIVERIVAL,Battle8_WalkOutOfHouse)
@@ -88,7 +83,7 @@ script Battle8_ExplainAttraction_Dialogue {
 
 script Battle8_StartBattle_Script {
 
-    lockall
+    lock
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_YouTalkALot)
@@ -101,8 +96,8 @@ script Battle8_StartBattle_Script {
 
 script Battle8_InteractBattle_Script {
 
-        playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
-    lockall
+    playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+        lock
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_YouTalkALot,MSGBOX_NPC)
@@ -115,8 +110,9 @@ script Battle8_InteractBattle_Script {
 
 script Battle8_PsfnativerivalDefeated_Dialogue {
 
-    lockall
-    addvar(VAR_STORYLINE_STATE,1)
+    lock
+        addvar(VAR_ROUTE109_STATE,1)
+        addvar(VAR_STORYLINE_STATE,1)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_YouKnowItDoesnt)
@@ -135,18 +131,18 @@ script Battle8_PsfnativerivalDefeated_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-if (var(VAR_TEMP_0) == 18){
-    applymovement(PLAYER,Common_Movement_WalkDown)
-    waitmovement(0)
-    applymovement(PLAYER,Common_Movement_FaceUp)
-}
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+        if (var(VAR_TEMP_0) == 18){
+            applymovement(PLAYER,Common_Movement_WalkDown)
+                waitmovement(0)
+                applymovement(PLAYER,Common_Movement_FaceUp)
+        }
 
-        applymovement(PSFNATIVERIVAL,Battle8_WalkToTheWest)
+    applymovement(PSFNATIVERIVAL,Battle8_WalkToTheWest)
         waitmovement(0)
         removeobject(PSFNATIVERIVAL)
         fadedefaultbgm
-        releaseall
+        release
         end
 }
 

@@ -14,7 +14,7 @@ mapscripts Psfroute22_MapScripts {
 script Psfroute22_MapScripts_OnTransition {
     switch (var(VAR_ROUTE110_STATE)){
         case 0: goto(TheStrikeStrikesBack_HideObject_Script)
-        case 1: goto(TheStrikeStrikesBack_HideObject_Script)
+        case 1: goto(TheStrikeStrikesBack_ObjectSetup_Script)
         case 2: goto(TheStrikeStrikesBack_ObjectSetup_Script)
         case 3: goto(VSGarbodor_Arrest_ObjectSetup_Script)
         case 4: goto(VSGarbodor_Arrest_ObjectCleanup_Script)
@@ -26,7 +26,7 @@ script Psfroute22_MapScripts_OnLoad {
             call(HeresHowThisIsGoingToGo_ConstructionCompleted_Script)
         }
 
-        if (var(VAR_ROUTE110_STATE) > 1) {
+        if (var(VAR_ROUTE110_STATE)) {
             call(TheStrikeStrikesBack_UnblockConstruction_Script)
         }
 }

@@ -1,26 +1,26 @@
 TheStrikeStrikesBack_HideObject_Script::
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
 	return
 
 
 TheStrikeStrikesBack_HidePsfbadboss_Object_Script::
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS
+	setflag FLAG_TEMP_1
 	return
 
 
 TheStrikeStrikesBack_UnblockConstruction_Script::
 	setmetatile 21, 19, 0x211, FALSE
 	special DrawWholeMapView
-	return
+	end
 
 
 TheStrikeStrikesBack_ObjectSetup_Script::
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
+	clearflag FLAG_TEMP_4
+	clearflag FLAG_TEMP_2
+	clearflag FLAG_TEMP_3
 	hideobjectat 14, MAP_PSFROUTE22
 	return
 
@@ -58,6 +58,8 @@ TheStrikeStrikesBack_PhoneCall_Dialogue::
 	waitse
 	playse SE_POKENAV_CALL
 	waitse
+	pokenavcall TheStrikeStrikesBack_PhoneCall_Dialogue_Text_0
+	waitmessage
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_HelloPlayer
@@ -207,9 +209,9 @@ TheStrikeStrikesBack_Intro_Dialogue_5:
 
 
 TheStrikeStrikesBack_ObjectCleanup_Script::
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_3
 	removeobject 2
 	removeobject 1
 	removeobject 3
@@ -261,6 +263,9 @@ TheStrikeStrikesBack_GoToPlayer:
 	walk_left
 	face_up
 	step_end
+
+TheStrikeStrikesBack_PhoneCall_Dialogue_Text_0:
+	.string "This phone is ringing.$"
 
 gText_TheStrikeStrikesBack_CongratsOnAll::
 	.string "Hey {PLAYER}. Congrats on all eight\n"

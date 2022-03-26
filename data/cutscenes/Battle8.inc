@@ -1,29 +1,19 @@
 Battle8_SetUpObject_Script::
-	switch VAR_ROUTE109_STATE
-	case 0, Battle8_SetUpObject_Script_2
-	case 1, Battle8_SetUpObject_Script_3
-	return
-
-Battle8_SetUpObject_Script_2:
-	setflag FLAG_HIDE_BATTLE8
-	return
-
-Battle8_SetUpObject_Script_3:
-	call Battle8_StartBattle_ObjectSetUp_Script
+	setflag FLAG_TEMP_1
 	return
 
 
 Battle8_StartBattle_ObjectSetUp_Script::
-	setobjectxyperm 1, 19, 14
-	setobjectxy 1, 19, 14
-	end
+	setobjectxyperm 1, 19, 16
+	setobjectxy 1, 19, 16
+	return
 
 
 Battle8_PsfnativerivalWalksOut_Script::
-	setvar VAR_ROUTE109_STATE, 1
+	addvar VAR_ROUTE109_STATE, 1
 	opendoor 19, 13
 	waitdooranim
-	clearflag FLAG_HIDE_BATTLE8
+	clearflag FLAG_TEMP_1
 	addobject 1
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
 	applymovement 1, Battle8_WalkOutOfHouse
@@ -88,7 +78,7 @@ Battle8_ExplainAttraction_Dialogue_2:
 
 
 Battle8_StartBattle_Script::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Battle8_YouTalkALot
@@ -101,7 +91,7 @@ Battle8_StartBattle_Script::
 
 Battle8_InteractBattle_Script::
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Battle8_YouTalkALot, MSGBOX_NPC
@@ -113,7 +103,8 @@ Battle8_InteractBattle_Script::
 
 
 Battle8_PsfnativerivalDefeated_Dialogue::
-	lockall
+	lock
+	addvar VAR_ROUTE109_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -137,7 +128,7 @@ Battle8_PsfnativerivalDefeated_Dialogue_1:
 	waitmovement 0
 	removeobject 1
 	fadedefaultbgm
-	releaseall
+	release
 	end
 
 Battle8_PsfnativerivalDefeated_Dialogue_2:

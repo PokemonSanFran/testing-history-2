@@ -3,10 +3,18 @@ const PSFNATIVERIVAL = 1
 
 mapscripts Psfplace3_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Battle8_SetUpObject_Script)
+        goto(Psfplace3_MapScripts_OnTransition)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
     ]
+}
+
+script Psfplace3_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE109_STATE)){
+        case 0: call(Battle8_SetUpObject_Script)
+        case 1: call(Battle8_StartBattle_ObjectSetUp_Script)
+        case 2: call(Battle8_SetUpObject_Script)
+    }
 }

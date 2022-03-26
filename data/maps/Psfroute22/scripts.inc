@@ -32,7 +32,7 @@ Psfroute22_MapScripts_OnTransition_2:
 	return
 
 Psfroute22_MapScripts_OnTransition_3:
-	goto TheStrikeStrikesBack_HideObject_Script
+	goto TheStrikeStrikesBack_ObjectSetup_Script
 	return
 
 Psfroute22_MapScripts_OnTransition_4:
@@ -52,8 +52,8 @@ Psfroute22_MapScripts_OnLoad::
 	compare VAR_STORYLINE_STATE, 23
 	goto_if_gt Psfroute22_MapScripts_OnLoad_2
 Psfroute22_MapScripts_OnLoad_1:
-	compare VAR_ROUTE110_STATE, 1
-	goto_if_gt Psfroute22_MapScripts_OnLoad_4
+	compare VAR_ROUTE110_STATE, 0
+	goto_if_ne Psfroute22_MapScripts_OnLoad_4
 	return
 
 Psfroute22_MapScripts_OnLoad_2:
