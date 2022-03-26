@@ -13,8 +13,8 @@ Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE110_STATE, 2, TheStrikeStrikesBack_Intro_Dialogue
-	map_script_2 VAR_ROUTE112_STATE, 1, VSGarbodor_Arrest_Script
+	map_script_2 VAR_ROUTE110_STATE, 1, TheStrikeStrikesBack_Intro_Dialogue
+	map_script_2 VAR_ROUTE110_STATE, 3, VSGarbodor_Arrest_Script
 	.2byte 0
 
 
@@ -36,7 +36,7 @@ Psfroute22_MapScripts_OnTransition_3:
 	return
 
 Psfroute22_MapScripts_OnTransition_4:
-	goto TheStrikeStrikesBack_ObjectSetup_Script
+	goto TheStrikeStrikesBack_HideObject_Script
 	return
 
 Psfroute22_MapScripts_OnTransition_5:
@@ -44,7 +44,7 @@ Psfroute22_MapScripts_OnTransition_5:
 	return
 
 Psfroute22_MapScripts_OnTransition_6:
-	goto VSGarbodor_Arrest_ObjectCleanup_Script
+	goto TheStrikeStrikesBack_HideObject_Script
 	return
 
 

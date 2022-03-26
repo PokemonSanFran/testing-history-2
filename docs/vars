@@ -144,6 +144,8 @@
 14: Completed Alcatraz challenge
 15 - 21: Has defeated Bianca (Beach), Archer (Painted), Jasmine, Chuck, Clair, Pryce, had dinner with Koga
 22: Got a call from Rose to go to construction site
+23: Defeated Garbodor
+24:
 23: Sleep to progress to Championship
 24: Starting the Championship
 25: Oak explained Championship
@@ -177,13 +179,19 @@
 3: Finished Koga wine chat, walking to living room
 4: Talked to the maid the next morning
 
-
 #VAR_ROUTE106_STATE
 1: Finished Koga's house script
 
 #VAR_ROUTE110_STATE
 1: Strike has started
 2: Have been told to kill Garbodor
+3: Garbodor are defeated
+4: Team Rocket is arrested, you gotta go back to the Compound
+
+#VAR_ROUTE111_STATE
+1: Has chosen left side of the room
+2: Has chosen right side of the room
+
 
 #VAR_ROUTE119_STATE
 1: Archer is about to apologize

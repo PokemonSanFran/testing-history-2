@@ -6,8 +6,8 @@ mapscripts Psfroute22_MapScripts {
         goto(Psfroute22_MapScripts_OnLoad)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ROUTE110_STATE, 2: TheStrikeStrikesBack_Intro_Dialogue
-        VAR_ROUTE112_STATE, 1: VSGarbodor_Arrest_Script
+        VAR_ROUTE110_STATE, 1: TheStrikeStrikesBack_Intro_Dialogue
+        VAR_ROUTE110_STATE, 3: VSGarbodor_Arrest_Script
     ]
 }
 
@@ -15,9 +15,9 @@ script Psfroute22_MapScripts_OnTransition {
     switch (var(VAR_ROUTE110_STATE)){
         case 0: goto(TheStrikeStrikesBack_HideObject_Script)
         case 1: goto(TheStrikeStrikesBack_ObjectSetup_Script)
-        case 2: goto(TheStrikeStrikesBack_ObjectSetup_Script)
+        case 2: goto(TheStrikeStrikesBack_HideObject_Script)
         case 3: goto(VSGarbodor_Arrest_ObjectSetup_Script)
-        case 4: goto(VSGarbodor_Arrest_ObjectCleanup_Script)
+        case 4: goto(TheStrikeStrikesBack_HideObject_Script)
     }
 }
 

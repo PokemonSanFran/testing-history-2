@@ -1,8 +1,4 @@
 VSGarbodor_Arrest_ObjectSetup_Script::
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL
-	clearflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS
 	setobjectxy 4, 26, 19
 	setobjectxy 5, 26, 20
 	setobjectxy 1, 21, 21
@@ -14,8 +10,13 @@ VSGarbodor_Arrest_ObjectSetup_Script::
 	return
 
 
+VSGarbodor_ObjectCleanUp_Script::
+	setflag FLAG_TEMP_1
+	return
+
+
 VSGarbodor_Scouting_Dialogue::
-	lockall
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
@@ -64,7 +65,7 @@ VSGarbodor_ChooseLeft_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, VSGarbodor_WalkTowardsLeftSide
 	waitmovement 0
 	removeobject 1
-	releaseall
+	release
 	end
 
 
@@ -80,7 +81,7 @@ VSGarbodor_ChooseRight_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, VSGarbodor_WalkTowardsRightSide
 	waitmovement 0
 	removeobject 1
-	releaseall
+	release
 	end
 
 
@@ -116,7 +117,6 @@ VS_Garbodor_CoreEncounter_Script::
 	call Common_EventScript_SaveGame
 	faceplayer
 	setwildbattle SPECIES_GARBODOR, 40, ITEM_NONE
-	waitse
 	playmoncry SPECIES_GARBODOR, CRY_MODE_ENCOUNTER
 	msgbox gText_VSGarbodor_Kuh
 	delay 40
@@ -137,13 +137,13 @@ VS_Garbodor_CoreEncounter_Script_3:
 
 
 VSGarbodor_RemoveGrunt::
-	lockall
+	lock
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject VAR_LAST_TALKED
 	fadescreenswapbuffers FADE_FROM_BLACK
 	call VSGarbodor_CheckDefeated_Script
-	releaseall
+	release
 	end
 
 
@@ -170,7 +170,7 @@ VSGarbodor_CheckDefeated_Script_7:
 
 
 VSGarbodor_PreventCrossingSides_Script::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_FeelingLonely
@@ -181,7 +181,7 @@ VSGarbodor_PreventCrossingSides_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 VSGarbodor_PreventCrossingSides_Script_1:
 	waitmovement 0
-	releaseall
+	release
 	end
 
 VSGarbodor_PreventCrossingSides_Script_2:
@@ -190,8 +190,7 @@ VSGarbodor_PreventCrossingSides_Script_2:
 
 
 VSGarbodor_MovePsftransrival_Script::
-	setvar VAR_ROUTE112_STATE, 1
-	lockall
+	lock
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	clearflag FLAG_TEMP_1
 	addobject 1
@@ -244,15 +243,15 @@ VSGarbodor_DefeatedAll_Dialogue::
 	msgbox gText_VSGarbodor_WhateverMineWereEasy
 	closemessage
 	callnative ClearMugshot
+	addvar VAR_ROUTE110_STATE, 1
 	warpsilent MAP_PSFROUTE22, 255, 20, 22
 	delay 100
 	return
 
 
 VSGarbodor_Arrest_Script::
-	setvar VAR_STORYLINE_STATE, 20
-	setvar VAR_ROUTE112_STATE, 2
-	setvar VAR_ROUTE110_STATE, 4
+	addvar VAR_ROUTE110_STATE, 1
+	addvar VAR_STORYLINE_STATE, 1
 	applymovement 14, Common_Movement_FaceUp
 	applymovement 1, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceUp
@@ -280,13 +279,6 @@ VSGarbodor_CleanUpPerpWalk::
 	return
 
 
-VSGarbodor_Arrest_ObjectCleanup_Script::
-	removeobject 2
-	removeobject 14
-	setflag FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN
-	return
-
-
 VSGarbodor_Negotiating_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
@@ -310,7 +302,7 @@ VSGarbodor_Negotiating_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	warpsilent MAP_PSFCITY8_COMPOUND_1F, 7, 3
-	releaseall
+	release
 	end
 
 VSGarbodor_Negotiating_Dialogue_1:
@@ -320,7 +312,7 @@ VSGarbodor_Negotiating_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	call VSGarbodor_FlyWithoutPlayer_Script
-	releaseall
+	release
 	end
 
 
@@ -361,7 +353,7 @@ VSGarbodor_ReturnToTheCompound_Dialogue::
 	waitse
 	removeobject 1
 	setvar VAR_STORYLINE_STATE, 21
-	releaseall
+	release
 	end
 
 

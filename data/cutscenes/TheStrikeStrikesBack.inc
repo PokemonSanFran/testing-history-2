@@ -6,22 +6,32 @@ TheStrikeStrikesBack_HideObject_Script::
 	return
 
 
-TheStrikeStrikesBack_HidePsfbadboss_Object_Script::
-	setflag FLAG_TEMP_1
-	return
-
-
 TheStrikeStrikesBack_UnblockConstruction_Script::
 	setmetatile 21, 19, 0x211, FALSE
 	special DrawWholeMapView
-	end
+	return
 
 
 TheStrikeStrikesBack_ObjectSetup_Script::
 	clearflag FLAG_TEMP_4
 	clearflag FLAG_TEMP_2
 	clearflag FLAG_TEMP_3
-	hideobjectat 14, MAP_PSFROUTE22
+	setflag FLAG_TEMP_1
+	removeobject 14
+	removeobject 12
+	removeobject 13
+	return
+
+
+TheStrikeStrikesBack_ObjectCleanup_Script::
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_3
+	removeobject 2
+	removeobject 1
+	removeobject 3
+	removeobject 4
+	removeobject 5
 	return
 
 
@@ -40,18 +50,8 @@ TheStrikeStrikesBack_CrowdFacesNorth_Script::
 	return
 
 
-TheStrikeStrikesBack_Check_Script::
-	compare VAR_STORYLINE_STATE, 17
-	goto_if_eq TheStrikeStrikesBack_Check_Script_1
-	return
-
-TheStrikeStrikesBack_Check_Script_1:
-	goto TheStrikeStrikesBack_PhoneCall_Dialogue
-	return
-
-
 TheStrikeStrikesBack_PhoneCall_Dialogue::
-	lockall
+	lock
 	addvar VAR_STORYLINE_STATE, 1
 	addvar VAR_ROUTE110_STATE, 1
 	playse SE_POKENAV_CALL
@@ -101,7 +101,7 @@ TheStrikeStrikesBack_PhoneCall_Dialogue_1:
 	closemessage
 	warpsilent MAP_PSFROUTE22, 255, 21, 25
 TheStrikeStrikesBack_PhoneCall_Dialogue_11:
-	releaseall
+	release
 	end
 
 TheStrikeStrikesBack_PhoneCall_Dialogue_2:
@@ -114,7 +114,7 @@ TheStrikeStrikesBack_PhoneCall_Dialogue_12:
 
 
 TheStrikeStrikesBack_Intro_Dialogue::
-	lockall
+	lock
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 21
 	goto_if_ne TheStrikeStrikesBack_Intro_Dialogue_1
@@ -175,9 +175,7 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AgreedAndThats
-	compare VAR_ROUTE105_STATE, 0
-	goto_if_gt TheStrikeStrikesBack_Intro_Dialogue_5
-TheStrikeStrikesBack_Intro_Dialogue_4:
+	msgbox gText_TheStrikeStrikesBack_ThePoliceAreWorking
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AgitatedWildGarbodor
@@ -195,28 +193,12 @@ TheStrikeStrikesBack_Intro_Dialogue_4:
 	applymovement 1, TheStrikeStrikesBack_WalkOutFrame
 	waitmovement 0
 	call TheStrikeStrikesBack_ObjectCleanup_Script
-	releaseall
+	release
 	end
 
 TheStrikeStrikesBack_Intro_Dialogue_1:
 	warpsilent MAP_PSFROUTE22, 255, 21, 25
 	waitstate
-	return
-
-TheStrikeStrikesBack_Intro_Dialogue_5:
-	msgbox gText_TheStrikeStrikesBack_ThePoliceAreWorking
-	goto TheStrikeStrikesBack_Intro_Dialogue_4
-
-
-TheStrikeStrikesBack_ObjectCleanup_Script::
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_4
-	setflag FLAG_TEMP_3
-	removeobject 2
-	removeobject 1
-	removeobject 3
-	removeobject 4
-	removeobject 5
 	return
 
 

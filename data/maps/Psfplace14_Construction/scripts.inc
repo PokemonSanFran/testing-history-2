@@ -1,2 +1,26 @@
 Psfplace14_Construction_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfplace14_Construction_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Psfplace14_Construction_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace14_Construction_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfplace14_Construction_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfplace14_Construction_MapScripts_OnTransition
+	return
+
+Psfplace14_Construction_MapScripts_MAP_SCRIPT_ON_LOAD:
+	return
+
+Psfplace14_Construction_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	.2byte 0
+
+
+Psfplace14_Construction_MapScripts_OnTransition::
+	compare VAR_ROUTE110_STATE, 0
+	goto_if_ne Psfplace14_Construction_MapScripts_OnTransition_1
+	return
+
+Psfplace14_Construction_MapScripts_OnTransition_1:
+	call VSGarbodor_ObjectCleanUp_Script
+	return
+

@@ -8,27 +8,35 @@ const PSFBADBOSS = 14
 
 script TheStrikeStrikesBack_HideObject_Script {
     setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_3)
-    setflag(FLAG_TEMP_4)
-}
-
-script TheStrikeStrikesBack_HidePsfbadboss_Object_Script {
-    setflag(FLAG_TEMP_1)
+        setflag(FLAG_TEMP_2)
+        setflag(FLAG_TEMP_3)
+        setflag(FLAG_TEMP_4)
 }
 
 script TheStrikeStrikesBack_UnblockConstruction_Script {
     setmetatile(21,19,0x211,FALSE)
     special(DrawWholeMapView)
-    end
 }
-    
 
 script TheStrikeStrikesBack_ObjectSetup_Script {
-        clearflag(FLAG_TEMP_4)
+    clearflag(FLAG_TEMP_4)
         clearflag(FLAG_TEMP_2)
         clearflag(FLAG_TEMP_3)
-        hideobjectat(PSFBADBOSS,MAP_PSFROUTE22)
+        setflag(FLAG_TEMP_1)
+        removeobject(PSFBADBOSS)
+        removeobject(12)
+        removeobject(13)
+}
+
+script TheStrikeStrikesBack_ObjectCleanup_Script {
+    setflag(FLAG_TEMP_2)
+        setflag(FLAG_TEMP_4)
+        setflag(FLAG_TEMP_3)
+        removeobject(PSFBADADMIN)
+        removeobject(PSFTRANSRIVAL)
+        removeobject(PSFGOODBOSS)
+        removeobject(GOODTEAMA)
+        removeobject(GOODTEAMB)
 }
 
 script TheStrikeStrikesBack_CrowdFacesNorth_Script {
@@ -45,50 +53,44 @@ script TheStrikeStrikesBack_CrowdFacesNorth_Script {
         waitmovement(0)
 }
 
-script TheStrikeStrikesBack_Check_Script {
-    if (var(VAR_STORYLINE_STATE) == 17){
-        goto(TheStrikeStrikesBack_PhoneCall_Dialogue)
-    }
-}
-
 script TheStrikeStrikesBack_PhoneCall_Dialogue {
-    lockall
-    addvar(VAR_STORYLINE_STATE,1)
-    addvar(VAR_ROUTE110_STATE,1)
-    playse(SE_POKENAV_CALL)
-    waitse
-    playse(SE_POKENAV_CALL)
-    waitse
-    pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
-    waitmessage
+    lock
+        addvar(VAR_STORYLINE_STATE,1)
+        addvar(VAR_ROUTE110_STATE,1)
+        playse(SE_POKENAV_CALL)
+        waitse
+        playse(SE_POKENAV_CALL)
+        waitse
+        pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
+        waitmessage
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
-    msgbox(gText_TheStrikeStrikesBack_HelloPlayer)
+        msgbox(gText_TheStrikeStrikesBack_HelloPlayer)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-    msgbox(gText_TheStrikeStrikesBack_OhHi)
+        msgbox(gText_TheStrikeStrikesBack_OhHi)
 
-    special(GetCurrentMap)
+        special(GetCurrentMap)
 
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
-    if (var(VAR_TEMP_0) == 31 || var(VAR_TEMP_0) == 37 || var(VAR_TEMP_0) == 38 || var(VAR_TEMP_0) == 42){
-        msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat)
-    }else {
-        msgbox(gText_TheStrikeStrikesBack_IKnowImLate)
-    }
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        if (var(VAR_TEMP_0) == 31 || var(VAR_TEMP_0) == 37 || var(VAR_TEMP_0) == 38 || var(VAR_TEMP_0) == 42){
+            msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat)
+        }else {
+            msgbox(gText_TheStrikeStrikesBack_IKnowImLate)
+        }
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-    msgbox(gText_TheStrikeStrikesBack_ThankYou)
+        msgbox(gText_TheStrikeStrikesBack_ThankYou)
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
-    msgbox(gText_TheStrikeStrikesBack_CutToTheChase)
+        msgbox(gText_TheStrikeStrikesBack_CutToTheChase)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-    msgbox(gText_TheStrikeStrikesBack_SureRightNow)
+        msgbox(gText_TheStrikeStrikesBack_SureRightNow)
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
-    msgbox(gText_TheStrikeStrikesBack_AsSoonAsYouCan)
+        msgbox(gText_TheStrikeStrikesBack_AsSoonAsYouCan)
         callnative(ClearMugshot)
         closemessage
         playse(SE_POKENAV_HANG_UP)
@@ -99,131 +101,119 @@ script TheStrikeStrikesBack_PhoneCall_Dialogue {
             closemessage
         } else {
             closemessage
-        warpsilent(MAP_PSFROUTE22,255,21,25)
+                warpsilent(MAP_PSFROUTE22,255,21,25)
         }
-        releaseall
+    release
         end
 }
 
 script TheStrikeStrikesBack_Intro_Dialogue {
-    lockall
+    lock
 
-    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-    if (var(VAR_TEMP_0) != 21){
-        warpsilent(MAP_PSFROUTE22,255,21,25)
-        waitstate
-    }else{
-        addvar(VAR_ROUTE110_STATE,1)
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_AndCongratulations)
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+        if (var(VAR_TEMP_0) != 21){
+            warpsilent(MAP_PSFROUTE22,255,21,25)
+                waitstate
+        }else{
+            addvar(VAR_ROUTE110_STATE,1)
+                setvar(VAR_0x8000, MUGSHOT_LANCE)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_AndCongratulations)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_ISawThemOn)
+                setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_ISawThemOn)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_WellHeresTheProblem)
-        callnative(ClearMugshot)
-        closemessage
+                setvar(VAR_0x8000, MUGSHOT_LANCE)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_WellHeresTheProblem)
+                callnative(ClearMugshot)
+                closemessage
 
-        applymovement(PSFGOODBOSS,TheStrikeStrikesBack_WalkIntoFrame)
-        applymovement(GOODTEAMA,TheStrikeStrikesBack_WalkIntoFrame)
-        applymovement(GOODTEAMB,TheStrikeStrikesBack_WalkIntoFrame)
-        waitmovement(0)
+                applymovement(PSFGOODBOSS,TheStrikeStrikesBack_WalkIntoFrame)
+                applymovement(GOODTEAMA,TheStrikeStrikesBack_WalkIntoFrame)
+                applymovement(GOODTEAMB,TheStrikeStrikesBack_WalkIntoFrame)
+                waitmovement(0)
 
-        call(TheStrikeStrikesBack_CrowdFacesNorth_Script)
+                call(TheStrikeStrikesBack_CrowdFacesNorth_Script)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_MyNameIs)
-        callnative(ClearMugshot)
-        closemessage
+                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_MyNameIs)
+                callnative(ClearMugshot)
+                closemessage
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_WeAreFighting)
+                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_WeAreFighting)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_TheCityDoubles)
+                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_TheCityDoubles)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_ManagementTriples)
+                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_ManagementTriples)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_TheCityQuadruples)
+                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_TheCityQuadruples)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_TheseDemandsAreMore)
-        callnative(ClearMugshot)
-        closemessage
+                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_TheseDemandsAreMore)
+                callnative(ClearMugshot)
+                closemessage
 
-        applymovement(PSFGOODBOSS,TheStrikeStrikesBack_WalkOutFrame)
-        applymovement(GOODTEAMA,TheStrikeStrikesBack_WalkOutFrame)
-        applymovement(GOODTEAMB,TheStrikeStrikesBack_WalkOutFrame)
-        applymovement(PSFTRANSRIVAL,Common_Movement_FaceLeft)
-        applymovement(PLAYER,Common_Movement_FaceDown)
-        applymovement(9,Common_Movement_FaceDown)
-        applymovement(7,Common_Movement_FaceLeft)
-        applymovement(6,Common_Movement_FaceRight)
+                applymovement(PSFGOODBOSS,TheStrikeStrikesBack_WalkOutFrame)
+                applymovement(GOODTEAMA,TheStrikeStrikesBack_WalkOutFrame)
+                applymovement(GOODTEAMB,TheStrikeStrikesBack_WalkOutFrame)
+                applymovement(PSFTRANSRIVAL,Common_Movement_FaceLeft)
+                applymovement(PLAYER,Common_Movement_FaceDown)
+                applymovement(9,Common_Movement_FaceDown)
+                applymovement(7,Common_Movement_FaceLeft)
+                applymovement(6,Common_Movement_FaceRight)
 
-        waitmovement(0)
+                waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_SighOfCourse)
+                setvar(VAR_0x8000, MUGSHOT_LANCE)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_SighOfCourse)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_WaitWhatThatsInsane)
+                setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_WaitWhatThatsInsane)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_AgreedAndThats)
+                setvar(VAR_0x8000, MUGSHOT_LANCE)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_AgreedAndThats)
 
-        if (var(VAR_ROUTE105_STATE) > 0){
-            msgbox(gText_TheStrikeStrikesBack_ThePoliceAreWorking)
+                msgbox(gText_TheStrikeStrikesBack_ThePoliceAreWorking)
+
+            setvar(VAR_0x8000, MUGSHOT_LANCE)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_AgitatedWildGarbodor)
+                callnative(ClearMugshot)
+                closemessage
+
+                applymovement(PSFBADADMIN,TheStrikeStrikesBack_WalkOutFrame)
+                waitmovement(0)
+                applymovement(PSFTRANSRIVAL,TheStrikeStrikesBack_GoToPlayer)
+                waitmovement(0)
+
+                setvar(VAR_0x8000, MUGSHOT_BIANCA)
+                callnative(DrawMugshot)
+                msgbox(gText_TheStrikeStrikesBack_IllBeInThere)
+                callnative(ClearMugshot)
+                closemessage
+                applymovement(PSFTRANSRIVAL,TheStrikeStrikesBack_WalkOutFrame)
+                waitmovement(0)
+                call(TheStrikeStrikesBack_ObjectCleanup_Script)
+                release
+                end
         }
-
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_AgitatedWildGarbodor)
-        callnative(ClearMugshot)
-        closemessage
-
-        applymovement(PSFBADADMIN,TheStrikeStrikesBack_WalkOutFrame)
-        waitmovement(0)
-        applymovement(PSFTRANSRIVAL,TheStrikeStrikesBack_GoToPlayer)
-        waitmovement(0)
-
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_IllBeInThere)
-        callnative(ClearMugshot)
-        closemessage
-        applymovement(PSFTRANSRIVAL,TheStrikeStrikesBack_WalkOutFrame)
-        waitmovement(0)
-        call(TheStrikeStrikesBack_ObjectCleanup_Script)
-        releaseall
-        end
-}
 }
 
-script TheStrikeStrikesBack_ObjectCleanup_Script {
-    setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_4)
-        setflag(FLAG_TEMP_3)
-        removeobject(PSFBADADMIN)
-        removeobject(PSFTRANSRIVAL)
-        removeobject(PSFGOODBOSS)
-        removeobject(GOODTEAMA)
-        removeobject(GOODTEAMB)
-}
 
 movement TheStrikeStrikesBack_FaceNorth {
     emote_exclamation_mark
