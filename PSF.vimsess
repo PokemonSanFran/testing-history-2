@@ -1070,7 +1070,7 @@ badd +21 data/map_events.s
 badd +1 data/maps/events.inc
 badd +1 data/maps/Psfcity7/events.inc
 badd +357 data/maps/Psfcity7/map.json
-badd +40 data/maps/Psfcity8_Compound_1F/scripts.pory
+badd +30 data/maps/Psfcity8_Compound_1F/scripts.pory
 badd +1 data/text/storyline_progression.pory
 badd +1 data/cutscenes/WhyAreYouHelpingThem.pory
 badd +245 data/cutscenes/OffYouGo.pory
@@ -1107,6 +1107,8 @@ badd +9 data/maps/Psfplace17/scripts.pory
 badd +46 data/maps/Psfplace17/map.json
 badd +0 data/cutscenes/IGuessWeShouldBeNiceNow.pory
 badd +0 data/maps/Psfcave1_B1F/scripts.pory
+badd +6 data/cutscenes/ImProbablyBetterThanYou.pory
+badd +26 data/cutscenes/swagbag.pory
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif

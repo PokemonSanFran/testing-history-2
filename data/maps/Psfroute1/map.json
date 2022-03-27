@@ -106,6 +106,15 @@
       "var": "VAR_TEMP_1",
       "var_value": "0",
       "script": "NoGoggles_PreventProgress"
+    },
+    {
+      "type": "trigger",
+      "x": 78,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "NoGoggles_PreventProgress"
     }
   ],
   "bg_events": [
