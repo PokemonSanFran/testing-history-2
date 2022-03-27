@@ -1,27 +1,17 @@
-OffYouGo_Pre_ObjectSetup_Script::
-	setflag FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL
-	setflag FLAG_HIDE_OFFYOUGO_PSFBADADMIN
-	return
-
-
-OffYouGo_ObjectSetup_Script::
-	clearflag FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL
-	clearflag FLAG_HIDE_OFFYOUGO_PSFBADADMIN
-	return
-
-
 OffYouGo_ObjectCleanUp_Script::
-	setflag FLAG_HIDE_OFFYOUGO_PSFBADADMIN
+	setflag FLAG_TEMP_1
 	return
 
 
 OffYouGo_WakeUp_Dialogue::
 	setvar VAR_ROUTE113_STATE, 1
-	setvar VAR_STORYLINE_STATE, 22
+	addvar VAR_STORYLINE_STATE, 1
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
 	waitse
+	pokenavcall OffYouGo_WakeUp_Dialogue_Text_0
+	waitmessage
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_HuhHello
@@ -60,8 +50,8 @@ OffYouGo_WakeUp_Dialogue::
 
 
 OffYouGo_WelcomeParty_Dialogue::
-	setvar VAR_ROUTE113_STATE, 2
-	setvar VAR_ROUTE114_STATE, 1
+	addvar VAR_ROUTE113_STATE, 1
+	addvar VAR_ROUTE114_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_WelcomeToTheParty
@@ -129,7 +119,7 @@ OffYouGo_WelcomeParty_Dialogue::
 	end
 
 
-OffYouGo_InteractPsfbadadmin::
+OffYouGo_InteractPsfbadadmin_Event_Script::
 	lockall
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -146,6 +136,9 @@ OffYouGo_WalkNorth:
 	walk_up
 	walk_up
 	step_end
+
+OffYouGo_WakeUp_Dialogue_Text_0:
+	.string "This phone is ringing.$"
 
 gText_OffYouGo_RingRing::
 	.string "Ring ring…$"

@@ -59,25 +59,25 @@
 #define FLAG_UNUSED_0x2F 0x2F   // Unused Flag
 #define FLAG_UNUSED_0x30 0x30 // Unused Flag
 #define FLAG_UNUSED_0x31 0x31 // Unused Flag
-#define FLAG_HIDE_MANSION_KIDS 0x32 // Previously Unused Flag
-#define FLAG_HIDE_MANSION_MAID    0x33 // Previously Unused Flag
+#define FLAG_UNUSED_0x32 0x32 // Unused Flag
+#define FLAG_UNUSED_0x33 0x33 // Unused Flag
 #define FLAG_UNUSED_0x34 0x34 // Unused Flag
 #define FLAG_UNSUED_0x35 0x35 // Unused Flag
 #define FLAG_UNUSED_0x36 0x36 // Unused Flag
 #define FLAG_UNSUED_0x37 0x37 //Unused Flag
 #define FLAG_UNUSED_0x38 0x38 // Unused Flag
 #define FLAG_SPAWN_INVISIBLE 0x39 // Previously Unused Flag
-#define FLAG_HIDE_THESTRIKESTRIKESBACK 0x3A // Previously Unused Flag
-#define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFGOODTEAM 0x3B // Previously Unused Flag
-#define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADADMIN 0x3C // Previously Unused Flag
-#define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFTRANSRIVAL 0x3D // Previously Unused Flag
+#define FLAG_UNUSED_0x3A 0x3A // Unused Flag
+#define FLAG_UNSUED_0x3B 0x3B // Unused Flag
+#define FLAG_UNUSED_0x3C 0x3C // Unused Flag
+#define FLAG_UNUSED_0x3D 0x3D // Unused Flag
 #define FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL 0x3E // Previously Unused Flag
 #define FLAG_HIDE_OFFYOUGO_PSFBADADMIN 0x3F // Previously Unused Flag
 #define FLAG_HIDE_BENICENOW_PSFTRANSRIVAL 0x40 // Previously Unused Flag
 #define FLAG_HIDE_BENICENOW_BOSSPKMN 0x41 // Previously Unused Flag
 #define FLAG_HIDE_BENICENOW_BOOK 0x42 // Previously Unused Flag
 #define FLAG_HIDE_PSFCITY10_PSFTRANSRIVAL 0x43 //Previously Unused Flag
-#define FLAG_HIDE_THESTRIKESTRIKESBACK_PSFBADBOSS 0x44 //Previously Unused Flag
+#define FLAG_UNUSED_0x44 0x44 //Unused Flag
 #define FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL 0x45 // Previously Unused Flag
 #define FLAG_HIDE_PSFCAVE2_PSFTRANSRIVAL    0x46 // Previously Unused Flag
 #define FLAG_HIDE_PSFCAVE2_PSFELITE3 0x47 //Previously Unused Flag

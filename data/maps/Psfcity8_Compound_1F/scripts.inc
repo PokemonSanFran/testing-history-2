@@ -11,7 +11,7 @@ Psfcity8_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, Swagbag_WelcomeToPsfregion1_Dialogue
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 8, WhyAreYouHelpingThem_BackAtCompound_Dialogue
-	map_script_2 VAR_STORYLINE_STATE, 20, VSGarbodor_ReturnToTheCompound_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 23, VSGarbodor_ReturnToTheCompound_Dialogue
 	.2byte 0
 
 
@@ -19,15 +19,16 @@ Psfcity8_Compound_1F_MapScripts_OnTransition::
 	switch VAR_STORYLINE_STATE
 	case 9, Psfcity8_Compound_1F_MapScripts_OnTransition_3
 	case 10, Psfcity8_Compound_1F_MapScripts_OnTransition_4
-	case 20, Psfcity8_Compound_1F_MapScripts_OnTransition_5
+	case 23, Psfcity8_Compound_1F_MapScripts_OnTransition_5
+	goto VSGarbodor_ObjectCleanUp_Script
 Psfcity8_Compound_1F_MapScripts_OnTransition_1:
 	switch VAR_LITTLEROOT_INTRO_STATE
-	case 1, Psfcity8_Compound_1F_MapScripts_OnTransition_7
-	case 3, Psfcity8_Compound_1F_MapScripts_OnTransition_8
-	case 4, Psfcity8_Compound_1F_MapScripts_OnTransition_9
-	case 6, Psfcity8_Compound_1F_MapScripts_OnTransition_10
-	case 7, Psfcity8_Compound_1F_MapScripts_OnTransition_11
-	case 8, Psfcity8_Compound_1F_MapScripts_OnTransition_12
+	case 1, Psfcity8_Compound_1F_MapScripts_OnTransition_8
+	case 3, Psfcity8_Compound_1F_MapScripts_OnTransition_9
+	case 4, Psfcity8_Compound_1F_MapScripts_OnTransition_10
+	case 6, Psfcity8_Compound_1F_MapScripts_OnTransition_11
+	case 7, Psfcity8_Compound_1F_MapScripts_OnTransition_12
+	case 8, Psfcity8_Compound_1F_MapScripts_OnTransition_13
 	return
 
 Psfcity8_Compound_1F_MapScripts_OnTransition_3:
@@ -42,27 +43,27 @@ Psfcity8_Compound_1F_MapScripts_OnTransition_5:
 	goto VSGarbodor_ReturnToTheCompound_ObjectSetUp
 	goto Psfcity8_Compound_1F_MapScripts_OnTransition_1
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_7:
+Psfcity8_Compound_1F_MapScripts_OnTransition_8:
 	goto ImProbablyBetterThanYou_ObjectSetUp
 	return
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_8:
+Psfcity8_Compound_1F_MapScripts_OnTransition_9:
 	goto Swagbag_ObjectSetUp
 	return
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_9:
+Psfcity8_Compound_1F_MapScripts_OnTransition_10:
 	goto swagbag_ObjectHide_Script
 	return
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_10:
+Psfcity8_Compound_1F_MapScripts_OnTransition_11:
 	goto TwoHoursAgo_ObjectSetUp
 	return
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_11:
+Psfcity8_Compound_1F_MapScripts_OnTransition_12:
 	goto AaandWereBack_ObjectSetUp_Script
 	return
 
-Psfcity8_Compound_1F_MapScripts_OnTransition_12:
+Psfcity8_Compound_1F_MapScripts_OnTransition_13:
 	goto WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script
 	return
 

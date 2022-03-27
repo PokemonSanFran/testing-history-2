@@ -8,7 +8,6 @@ mapscripts Psfcity8_Compound_2F_MapScripts {
 
 script Psfcity8_Compound_2F_Bed_Script {
     lock
-
         //If has not visited Alcatraz after being called there by Archer, prevent player from sleeping
         if (var(VAR_PSFCAVE7_STATE) == 3){
             call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
@@ -31,7 +30,7 @@ script Psfcity8_Compound_2F_Bed_Script {
         //Play script based on storyline state
         switch(var(VAR_STORYLINE_STATE)){
             case 9: call(AaandWereBack_FerryRepaired_Dialogue)
-            case 21: call(OffYouGo_WakeUp_Dialogue)
+            case 24: call(OffYouGo_WakeUp_Dialogue)
             case 23: call(WhyAreYouHelpingThem_StartChampionship_Dialogue)
             case 35: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
             default: fadescreen(FADE_FROM_BLACK) //Player opens their eyes

@@ -20,7 +20,7 @@ Psfcity8_Compound_2F_Bed_Script_1:
 	call PlayersHouse_2F_EventScript_SetWallClock
 	switch VAR_STORYLINE_STATE
 	case 9, Psfcity8_Compound_2F_Bed_Script_6
-	case 21, Psfcity8_Compound_2F_Bed_Script_7
+	case 24, Psfcity8_Compound_2F_Bed_Script_7
 	case 23, Psfcity8_Compound_2F_Bed_Script_8
 	case 35, Psfcity8_Compound_2F_Bed_Script_9
 	fadescreen FADE_FROM_BLACK

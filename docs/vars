@@ -145,8 +145,9 @@
 15 - 21: Has defeated Bianca (Beach), Archer (Painted), Jasmine, Chuck, Clair, Pryce, had dinner with Koga
 22: Got a call from Rose to go to construction site
 23: Defeated Garbodor
-24:
-23: Sleep to progress to Championship
+24: Need to sleep to progress to Championship
+
+
 24: Starting the Championship
 25: Oak explained Championship
 26: About to start Group Stage
@@ -192,6 +193,15 @@
 1: Has chosen left side of the room
 2: Has chosen right side of the room
 
+#VAR_ROUTE113_STATE
+# **RELEVANCE**: Golden Gate Bridge
+1: Has been called to come to the bridge by Bianca and Oak
+2: Has arrived and was given assignment
+
+#VAR_ROUTE114_STATE
+#**RELEVANCE** Robin Williams Tunnel
+1: Got assignment from Oak and Siebold, Bianca is inside
+
 
 #VAR_ROUTE119_STATE
 1: Archer is about to apologize
@@ -203,4 +213,3 @@
 #VAR_ROUTE120_STATE
 X: Act 4:Used to find the location of the last completed restoration quest, number should correspond to a map
 Y: Used to find the target of the last completed takedown quest, number should correspond to a company
-

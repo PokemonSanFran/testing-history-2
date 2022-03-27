@@ -5,9 +5,9 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue 
-            VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue 
-            VAR_LITTLEROOT_INTRO_STATE, 8:WhyAreYouHelpingThem_BackAtCompound_Dialogue
-            VAR_STORYLINE_STATE, 20: VSGarbodor_ReturnToTheCompound_Dialogue 
+        VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToPsfregion1_Dialogue 
+        VAR_LITTLEROOT_INTRO_STATE, 8:WhyAreYouHelpingThem_BackAtCompound_Dialogue
+        VAR_STORYLINE_STATE, 23: VSGarbodor_ReturnToTheCompound_Dialogue 
     ]
 }
 
@@ -15,7 +15,8 @@ script Psfcity8_Compound_1F_MapScripts_OnTransition {
     switch (var(VAR_STORYLINE_STATE)){
         case 9: goto(AaandWereBack_ObjectSetUp_Script)
         case 10: goto(AaandWereBack_ObjectHide_Script)
-        case 20: goto(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
+        case 23: goto(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
+        default: goto(VSGarbodor_ObjectCleanUp_Script)
     }
 
     switch (var(VAR_LITTLEROOT_INTRO_STATE)) {

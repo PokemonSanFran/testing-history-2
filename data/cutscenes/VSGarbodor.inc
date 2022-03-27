@@ -12,6 +12,8 @@ VSGarbodor_Arrest_ObjectSetup_Script::
 
 VSGarbodor_ObjectCleanUp_Script::
 	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
 	return
 
 
@@ -329,6 +331,7 @@ VSGarbodor_FlyWithoutPlayer_Script::
 
 
 VSGarbodor_ReturnToTheCompound_ObjectSetUp::
+	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_3
 	setobjectxy 1, 7, 2
 	setobjectxyperm 1, 7, 2
@@ -337,6 +340,9 @@ VSGarbodor_ReturnToTheCompound_ObjectSetUp::
 
 
 VSGarbodor_ReturnToTheCompound_Dialogue::
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_0, 7
+	goto_if_ne VSGarbodor_ReturnToTheCompound_Dialogue_1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
@@ -352,9 +358,14 @@ VSGarbodor_ReturnToTheCompound_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	setvar VAR_STORYLINE_STATE, 21
+	addvar VAR_STORYLINE_STATE, 1
 	release
 	end
+
+VSGarbodor_ReturnToTheCompound_Dialogue_1:
+	warpsilent MAP_PSFCITY8_COMPOUND_1F, 7, 3
+	waitstate
+	return
 
 
 VSGarbodor_WalkTowardsLeftSide:
