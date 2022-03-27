@@ -11,7 +11,6 @@ script Swagbag_ObjectSetUp {
 
 script Swagbag_IncrementIntroState_Script {
     addvar(VAR_LITTLEROOT_INTRO_STATE,1)
-        end
 }
 
 script swagbag_ObjectHide_Script {
@@ -24,7 +23,7 @@ script swagbag_ObjectHide_Script {
 }
 
 script Swagbag_WelcomeToPsfregion1_Dialogue {
-    addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+        addvar(VAR_LITTLEROOT_INTRO_STATE,1)
         lockall
         playse(SE_PIN)
         playbgm(MUS_RG_FOLLOW_ME,TRUE)

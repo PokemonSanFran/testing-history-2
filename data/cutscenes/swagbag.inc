@@ -8,7 +8,7 @@ Swagbag_ObjectSetUp::
 
 Swagbag_IncrementIntroState_Script::
 	addvar VAR_LITTLEROOT_INTRO_STATE, 1
-	end
+	return
 
 
 swagbag_ObjectHide_Script::
