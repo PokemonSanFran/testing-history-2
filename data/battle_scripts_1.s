@@ -307,8 +307,8 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectGrowth                  @ EFFECT_GROWTH
 	.4byte BattleScript_EffectCloseCombat             @ EFFECT_CLOSE_COMBAT
 	.4byte BattleScript_EffectLastResort              @ EFFECT_LAST_RESORT
-	.4byte BattleScript_EffectRecoil33WithStatus      @ EFFECT_RECOIL_33_STATUS
-	.4byte BattleScript_EffectFlinchWithStatus        @ EFFECT_FLINCH_STATUS
+	.4byte BattleScript_EffectRecoil33Status          @ EFFECT_RECOIL_33_STATUS
+	.4byte BattleScript_EffectFlinchStatus            @ EFFECT_FLINCH_STATUS
 	.4byte BattleScript_EffectRecoil50                @ EFFECT_RECOIL_50
 	.4byte BattleScript_EffectShellSmash              @ EFFECT_SHELL_SMASH
 	.4byte BattleScript_EffectShiftGear               @ EFFECT_SHIFT_GEAR
@@ -3301,7 +3301,7 @@ BattleScript_EffectFlinchHit::
 	setmoveeffect MOVE_EFFECT_FLINCH
 	goto BattleScript_EffectHit
 
-BattleScript_EffectFlinchWithStatus:
+BattleScript_EffectFlinchStatus:
 	setmoveeffect MOVE_EFFECT_FLINCH
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
@@ -5579,7 +5579,7 @@ BattleScript_EffectRecoil33::
 	setmoveeffect MOVE_EFFECT_RECOIL_33 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	goto BattleScript_EffectHit
 
-BattleScript_EffectRecoil33WithStatus:
+BattleScript_EffectRecoil33Status:
 	setmoveeffect MOVE_EFFECT_RECOIL_33_STATUS | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	goto BattleScript_EffectHit
 
