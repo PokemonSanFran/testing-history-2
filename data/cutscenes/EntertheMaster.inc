@@ -1,40 +1,37 @@
 EnterTheMaster_HideObject_Script::
-	setflag FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL
-	setflag FLAG_HIDE_PSFCAVE2_PSFELITE3
-	setflag FLAG_HIDE_PSFCAVE2_PSFBADADMIN
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
 	return
 
 
 EnterTheMaster_Object_SetUp_Script::
-	clearflag FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL
-	setflag FLAG_HIDE_PSFCAVE2_PSFBADADMIN
+	setflag FLAG_TEMP_3
 	return
 
 
 EnterTheMaster_Clearing_Object_SetUp_Script::
-	clearflag FLAG_HIDE_PSFCAVE2_PSFELITE3
-	clearflag FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL
-	setflag FLAG_HIDE_PSFCAVE2_PSFBADADMIN
+	setflag FLAG_TEMP_3
 	return
 
 
 EnterTheMaster_Interact_Script::
-	lockall
+	lock
 	faceplayer
-	goto EnterTheMaster_ReadyDialogue
+	goto EnterTheMaster_Ready_Dialogue
 	return
 
 
 EnterTheMaster_WalkingTrigger_Script::
-	lockall
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
-	goto EnterTheMaster_ReadyDialogue
+	goto EnterTheMaster_Ready_Dialogue
 	return
 
 
-EnterTheMaster_ReadyDialogue::
-	setvar VAR_ROUTE116_STATE, 2
+EnterTheMaster_Ready_Dialogue::
+	addvar VAR_ROUTE116_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_MorningReady
@@ -54,12 +51,12 @@ EnterTheMaster_ReadyDialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	releaseall
+	release
 	end
 
 
 EnterTheMaster_InteractFollower_Script::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	random 4
@@ -71,7 +68,7 @@ EnterTheMaster_InteractFollower_Script::
 EnterTheMaster_InteractFollower_Script_1:
 	closemessage
 	callnative ClearMugshot
-	releaseall
+	release
 	end
 
 EnterTheMaster_InteractFollower_Script_3:
@@ -92,7 +89,7 @@ EnterTheMaster_InteractFollower_Script_6:
 
 
 EnterTheMaster_LeaveWoods_Script::
-	lockall
+	lock
 	faceplayer
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
@@ -103,8 +100,9 @@ EnterTheMaster_LeaveWoods_Script::
 
 
 EnterTheMaster_CompleteMaze_Dialogue::
-	setvar VAR_ROUTE116_STATE, 3
-	lockall
+	addvar VAR_ROUTE116_STATE, 1
+	lock
+	addobject 1
 	setobjectxy 1, 24, 22
 	setobjectxyperm 1, 24, 22
 	faceplayer
@@ -124,12 +122,12 @@ EnterTheMaster_CompleteMaze_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	releaseall
+	release
 	end
 
 
 EnterTheMaster_ClearingIntro_Dialogue::
-	setvar VAR_ROUTE116_STATE, 4
+	addvar VAR_ROUTE116_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachPsfelite3
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_MARSHAL

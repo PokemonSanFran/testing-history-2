@@ -1,6 +1,6 @@
 YouRealizeWereEvilRight_Object_Setup_Script::
-	clearflag FLAG_HIDE_TOWER2_PSFBADADMIN
-	clearflag FLAG_HIDE_TOWER2_PSFBADADMIN2
+	clearflag FLAG_TEMP_3
+	clearflag FLAG_TEMP_4
 	setobjectxy 9, 10, 13
 	setobjectxyperm 9, 10, 13
 	setobjectxy 14, 9, 20

@@ -8,8 +8,7 @@ Psfbadguy1Tower_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfbadguy1Tower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 3, WelcomeToTheWarRoom_MovePlayerIntoPosition
-	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 5, WelcomeToTheWarRoom_MovePlayerIntoPosition
+	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 3, Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script
 	.2byte 0
 
 
@@ -42,7 +41,7 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition_5:
 	return
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_6:
-	goto WelcomeToTheWarRoom_Object_Clean_Script
+	goto WelcomeToTheWarRoom_Object_Hide_Script
 	return
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_7:
@@ -51,5 +50,32 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition_7:
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_8:
 	goto YouRealizeWereEvilRight_Object_Cleanup_Script
+	return
+
+
+Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script::
+	lock
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_0, 7
+	goto_if_ne Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_2
+Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_1:
+	switch VAR_PSFBADGUY1TOWER_2F_STATE
+	case 3, Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_5
+	case 5, Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_6
+	return
+
+Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_2:
+	fadescreen FADE_TO_BLACK
+	setobjectxy OBJ_EVENT_ID_PLAYER, 7, 14
+	TeleportCamera 7, 14
+	fadescreen FADE_FROM_BLACK
+	goto Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_1
+
+Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_5:
+	goto WelcomeToTheWarRoom_ExplainSitaution_Dialogue
+	return
+
+Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_6:
+	goto YouRealizeWereEvilRight_Open_Dialogue
 	return
 

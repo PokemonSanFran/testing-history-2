@@ -71,12 +71,12 @@
 #define FLAG_UNSUED_0x3B 0x3B // Unused Flag
 #define FLAG_UNUSED_0x3C 0x3C // Unused Flag
 #define FLAG_UNUSED_0x3D 0x3D // Unused Flag
-#define FLAG_HIDE_OFFYOUGO_PSFTRANSRIVAL 0x3E // Previously Unused Flag
-#define FLAG_HIDE_OFFYOUGO_PSFBADADMIN 0x3F // Previously Unused Flag
-#define FLAG_HIDE_BENICENOW_PSFTRANSRIVAL 0x40 // Previously Unused Flag
-#define FLAG_HIDE_BENICENOW_BOSSPKMN 0x41 // Previously Unused Flag
-#define FLAG_HIDE_BENICENOW_BOOK 0x42 // Previously Unused Flag
-#define FLAG_HIDE_PSFCITY10_PSFTRANSRIVAL 0x43 //Previously Unused Flag
+#define FLAG_UNUSED_0x3E 0x3E //Unused Flag
+#define FLAG_UNUSED_0x3F 0x3F //Unused Flag
+#define FLAG_UNUSED_0x40 0x40 //Unused Flag
+#define FLAG_UNUSED_0x41 0x41 //Unused Flag
+#define FLAG_UNUSED_0x42 0x42 //Unused Flag
+#define FLAG_UNUSED_0x43 0x43 //Unused Flag
 #define FLAG_UNUSED_0x44 0x44 //Unused Flag
 #define FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL 0x45 // Previously Unused Flag
 #define FLAG_HIDE_PSFCAVE2_PSFTRANSRIVAL    0x46 // Previously Unused Flag

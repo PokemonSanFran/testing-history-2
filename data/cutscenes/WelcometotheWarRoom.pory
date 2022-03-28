@@ -8,30 +8,20 @@ const MAYOR = 12
 const CHIEF = 13
 
 script WelcomeToTheWarRoom_Object_Hide_Script {
-    setflag(FLAG_HIDE_TOWER2_PSFTRANSRIVAL)
-        setflag(FLAG_HIDE_TOWER2_PSFBADADMIN)
-        setflag(FLAG_HIDE_TOWER2_PSFBADADMIN2)
-        setflag(FLAG_HIDE_TOWER2_POLICE)
-        setflag(FLAG_HIDE_TOWER2_MAYOR)
-        setflag(FLAG_HIDE_TOWER2_PSFBADBOSS)
+        setflag(FLAG_TEMP_8)
+        setflag(FLAG_TEMP_3)
+        setflag(FLAG_TEMP_4)
+        setflag(FLAG_TEMP_7)
+        setflag(FLAG_TEMP_6)
+        setflag(FLAG_TEMP_5)
 }
 
 script WelcomeToTheWarRoom_Object_Setup_Script {
-    clearflag(FLAG_HIDE_TOWER2_PSFTRANSRIVAL)
-        setflag(FLAG_HIDE_TOWER2_PSFBADADMIN2)
-        clearflag(FLAG_HIDE_TOWER2_PSFBADADMIN)
-        clearflag(FLAG_HIDE_TOWER2_POLICE)
-        clearflag(FLAG_HIDE_TOWER2_MAYOR)
-        clearflag(FLAG_HIDE_TOWER2_PSFBADBOSS)
+        setflag(FLAG_TEMP_4)
         setobjectxy(ARNAV,10,9)
         setobjectxy(OLIVER,10,11)
         setobjectxyperm(ARNAV,10,9)
         setobjectxyperm(OLIVER,10,11)
-}
-
-script WelcomeToTheWarRoom_Object_Clean_Script {
-    setflag(FLAG_HIDE_TOWER2_PSFTRANSRIVAL)
-    removeobject(10)
 }
 
 script WelcomeToTheWarRoom_FaceSpeakerPsfbadboss {
@@ -115,25 +105,10 @@ script WelcomeToTheWarRoom_FaceSpeakerPsfbadadmin {
     applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(0)
 }
-script WelcomeToTheWarRoom_MovePlayerIntoPosition {
-    lockall
-    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-
-        if (var(VAR_TEMP_0) != 7){
-            fadescreen(FADE_TO_BLACK)
-            setobjectxy(PLAYER,7,14)
-            TeleportCamera(7,14)
-            fadescreen(FADE_FROM_BLACK)
-        }
-
-    switch (var(VAR_PSFBADGUY1TOWER_2F_STATE)){
-        case 3: goto(WelcomeToTheWarRoom_ExplainSitaution_Dialogue)
-        case 5: goto(YouRealizeWereEvilRight_Open_Dialogue)
-    }
-}
 
 script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
-    setvar(VAR_PSFBADGUY1TOWER_2F_STATE,4)
+    lock
+    addvar(VAR_PSFBADGUY1TOWER_2F_STATE,1)
     setvar(VAR_ROUTE117_STATE,1)
     call(WelcomeToTheWarRoom_FaceSpeakerPsfbadboss)
         applymovement(PSFBADBOSS,WelcomeToTheWarRoom_Pace)

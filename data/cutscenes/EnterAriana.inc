@@ -2,6 +2,7 @@ EnterPsfgoodadmin_ObjectCleanUp_Script::
 	setobjectxyperm 6, 2, 40
 	setobjectxyperm 7, 2, 41
 	setobjectxyperm 10, 2, 42
+	setflag FLAG_TEMP_2
 	return
 
 
@@ -240,10 +241,9 @@ EnterPsfgoodadmin_GiveKeystone_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Psfgoodadmin_WalkAway
-	closemessage
 	waitmovement 0
+	removeobject 1
 	fadedefaultbgm
-	setobjectxy 1, 6, 20
 	addvar VAR_STORYLINE_STATE, 1
 	call Act1_1_Check_Script
 	releaseall

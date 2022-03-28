@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script",
-      "flag": "FLAG_HIDE_BENICENOW_PSFTRANSRIVAL"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BIG_REGIROCK_DOLL",
@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "IGuessWeShouldBeNiceNow_CoreEncounter_Script",
-      "flag": "FLAG_HIDE_BENICENOW_BOSSPKMN"
+      "flag": "FLAG_TEMP_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL",
@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "IGuessWeShouldBeNiceNow_CoreEncounter_Script",
-      "flag": "FLAG_HIDE_BENICENOW_BOSSPKMN"
+      "flag": "FLAG_TEMP_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_BENICENOW_BOOK"
+      "flag": "FLAG_TEMP_4"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "IGuessWeShouldBeNiceNow_CoreEncounter_Script",
-      "flag": "FLAG_HIDE_BENICENOW_BOSSPKMN"
+      "flag": "FLAG_TEMP_2"
     }
   ],
   "warp_events": [

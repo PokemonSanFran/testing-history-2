@@ -1,24 +1,25 @@
 IGuessWeShouldBeNiceNow_HideObject_Script::
-	setflag FLAG_HIDE_BENICENOW_PSFTRANSRIVAL
-	setflag FLAG_HIDE_BENICENOW_BOSSPKMN
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
 	return
 
 
 IGuessWeShouldBeNiceNow_ObjectSetup_Script::
-	clearflag FLAG_HIDE_BENICENOW_PSFTRANSRIVAL
-	setflag FLAG_HIDE_BENICENOW_BOSSPKMN
+	setflag FLAG_TEMP_2
 	return
 
 
 IGuessWeShouldBeNiceNow_PuzzlePrepareObject_Script::
-	setobjectxy 1, 7, 23
-	setobjectxyperm 1, 7, 23
+	setobjectxy 1, 8, 23
+	setobjectxyperm 1, 8, 23
+	setflag FLAG_TEMP_2
 	return
 
 
 IGuessWeShouldBeNiceNow_PuzzleStartObject_Script::
 	setobjectxy 1, 15, 19
 	setobjectxyperm 1, 15, 19
+	setflag FLAG_TEMP_2
 	return
 
 
@@ -32,13 +33,16 @@ IGuessWeShouldBeNiceNow_PuzzleBSolvedObject_Script::
 
 
 IGuessWeShouldBeNiceNow_PostCleanUp_Script::
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_1
 	setobjectxy 5, 7, 9
 	setobjectxyperm 5, 7, 9
 	return
 
 
 IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script::
-	lockall
+	lock
 	faceplayer
 	switch VAR_ROUTE114_STATE
 	case 2, IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_2
@@ -55,6 +59,7 @@ IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_3:
 
 
 IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue::
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 1, IGuessWeShouldBeNiceNow_WalkToPlayer
 	waitmovement 0
@@ -90,13 +95,13 @@ IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue::
 	msgbox gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze
 	callnative ClearMugshot
 	closemessage
+	addvar VAR_ROUTE114_STATE, 1
 	goto IGuessWeShouldBeNiceNow_AskPlayer_Script
 	return
 
 
 IGuessWeShouldBeNiceNow_AskPlayer_Script::
-	setvar VAR_ROUTE114_STATE, 2
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_Ready, MSGBOX_YESNO
@@ -120,8 +125,8 @@ IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue::
 
 
 IGuessWeShouldBeNiceNow_StartPuzzle_Script::
-	setvar VAR_ROUTE114_STATE, 3
-	lockall
+	addvar VAR_ROUTE114_STATE, 1
+	lock
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, IGuessWeShouldBeNiceNow_WalkIntoMaze
@@ -136,12 +141,12 @@ IGuessWeShouldBeNiceNow_StartPuzzle_Script::
 	msgbox gText_IGuessWeShouldBeNiceNow_OnIt
 	callnative ClearMugshot
 	closemessage
-	releaseall
+	release
 	end
 
 
 IGuessWeShouldBeNiceNow_SolvedPuzzleA::
-	setvar VAR_ROUTE114_STATE, 4
+	addvar VAR_ROUTE114_STATE, 1
 	playse SE_SWITCH
 	waitse
 	setvar VAR_0x8000, MUGSHOT_HILDA
@@ -156,7 +161,7 @@ IGuessWeShouldBeNiceNow_SolvedPuzzleA::
 
 
 IGuessWeShouldBeNiceNow_SolvedPuzzleB::
-	setvar VAR_ROUTE114_STATE, 5
+	addvar VAR_ROUTE114_STATE, 1
 	playse SE_SWITCH
 	waitse
 	fadescreen FADE_TO_BLACK
@@ -170,8 +175,8 @@ IGuessWeShouldBeNiceNow_SolvedPuzzleB::
 	turnobject 1, DIR_NORTH
 	setobjectxy 1, 9, 12
 	setobjectxyperm 1, 9, 12
-	fadescreen FADE_FROM_BLACK
 	special ReturnCameraToPlayer
+	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER, IGuessWeShouldBeNiceNow_WalkRight
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
@@ -198,12 +203,14 @@ IGuessWeShouldBeNiceNow_BossProtectBook_Script::
 	playmoncry SPECIES_CHANDELURE, CRY_MODE_ENCOUNTER
 	waitse
 	msgbox gText_IGuessWeShouldBeNiceNow_Roar, MSGBOX_AUTOCLOSE
-	clearflag FLAG_HIDE_BENICENOW_BOSSPKMN
+	clearflag FLAG_TEMP_2
 	addobject 2
 	addobject 3
+	addobject 6
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_BingoIllTake
+	closemessage
 	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
@@ -234,20 +241,20 @@ IGuessWeShouldBeNiceNow_CoreEncounter_Script_3:
 
 
 IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_Ready, MSGBOX_NPC
 	callnative ClearMugshot
-	applymovement 1, Common_Movement_FaceOriginalDirection
+	applymovement 1, Common_Movement_FaceUp
 	waitmovement 0
-	releaseall
+	release
 	end
 
 
 IGuessWeShouldBeNiceNow_ClearBossPokemon_Script::
-	setvar VAR_ROUTE114_STATE, 6
-	lockall
+	addvar VAR_ROUTE114_STATE, 1
+	lock
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject 2
@@ -286,11 +293,14 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue::
 	closemessage
 	applymovement 1, IGuessWeShouldBeNiceNow_GetBook
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
 	removeobject 4
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_SaysOnTheBack
 	applymovement 1, IGuessWeShouldBeNiceNow_LookAround
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting, MSGBOX_YESNO
@@ -304,7 +314,7 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue_1:
 	applymovement 1, IGuessWeShouldBeNiceNow_LeaveCave
 	waitmovement 0
 	removeobject 1
-	releaseall
+	release
 	end
 
 IGuessWeShouldBeNiceNow_PostBoss_Dialogue_2:
@@ -313,22 +323,22 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue_2:
 
 
 IGuessWeShouldBeNiceNow_ExitCave_Script::
-	setvar VAR_ROUTE115_STATE, 2
-	lockall
+	addvar VAR_ROUTE115_STATE, 1
+	lock
 	delay 32
 	playse SE_EXIT
 	waitse
-	clearflag FLAG_HIDE_PSFCITY10_PSFTRANSRIVAL
+	clearflag FLAG_TEMP_3
 	addobject 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, IGuessWeShouldBeNiceNow_WalkOutCave
 	waitmovement 0
-	goto IGuessWeShouldBeNiceNow_EnterPsfcity10
+	goto IGuessWeShouldBeNiceNow_End_Dialogue
 	return
 
 
-IGuessWeShouldBeNiceNow_EnterPsfcity10::
-	setvar VAR_ROUTE116_STATE, 2
+IGuessWeShouldBeNiceNow_End_Dialogue::
+	addvar VAR_ROUTE116_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming
@@ -373,7 +383,7 @@ IGuessWeShouldBeNiceNow_EnterPsfcity10::
 	msgbox gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion
 	callnative ClearMugshot
 	closemessage
-	releaseall
+	release
 	end
 
 
@@ -649,7 +659,8 @@ gText_IGuessWeShouldBeNiceNow_ImGonnaCrash::
 	.string "I'm gonna crash, but I'll leave the door\n"
 	.string "open for you. Let's meet at the\l"
 	.string "entrance of Psfcave2 tomorrow\l"
-	.string "morning!$"
+	.string "morning! DIRECTOR'S NOTE: Just go\l"
+	.string "there now.$"
 
 gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion::
 	.string "I hope it's my version of morning, and\n"

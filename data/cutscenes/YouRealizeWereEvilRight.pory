@@ -5,30 +5,30 @@ const PSFTRANSRIVAL = 10
 const PSFBADADMIN2 = 14
 
 script YouRealizeWereEvilRight_Object_Setup_Script {
-    clearflag(FLAG_HIDE_TOWER2_PSFBADADMIN)
-    clearflag(FLAG_HIDE_TOWER2_PSFBADADMIN2)
-    setobjectxy(PSFBADADMIN,10,13)
-    setobjectxyperm(PSFBADADMIN,10,13)
-    setobjectxy(PSFBADADMIN2,9,20)
-    setobjectxyperm(PSFBADADMIN2,9,20)
-    setobjectxy(PSFBADADMIN3,7,12)
-    setobjectxyperm(PSFBADADMIN3,7,12)
-    setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_DOWN)
-    setobjectmovementtype(PSFBADADMIN,MOVEMENT_TYPE_FACE_LEFT)
+    clearflag(FLAG_TEMP_3)
+        clearflag(FLAG_TEMP_4)
+        setobjectxy(PSFBADADMIN,10,13)
+        setobjectxyperm(PSFBADADMIN,10,13)
+        setobjectxy(PSFBADADMIN2,9,20)
+        setobjectxyperm(PSFBADADMIN2,9,20)
+        setobjectxy(PSFBADADMIN3,7,12)
+        setobjectxyperm(PSFBADADMIN3,7,12)
+        setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_DOWN)
+        setobjectmovementtype(PSFBADADMIN,MOVEMENT_TYPE_FACE_LEFT)
 }
 
 script YouRealizeWereEvilRight_Object_Cleanup_Script {
     setobjectxy(PSFBADADMIN2,10,15)
-    setobjectxyperm(PSFBADADMIN2,10,15)
-    setobjectxy(PSFBADADMIN,10,13)
-    setobjectxyperm(PSFBADADMIN,10,13)
-    setobjectxy(PSFBADADMIN3,7,12)
-    setobjectxyperm(PSFBADADMIN3,7,12)
-    setobjectmovementtype(PSFBADADMIN2,MOVEMENT_TYPE_FACE_LEFT)
-    setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_RIGHT)
-    setobjectmovementtype(PSFBADADMIN,MOVEMENT_TYPE_FACE_LEFT)
+        setobjectxyperm(PSFBADADMIN2,10,15)
+        setobjectxy(PSFBADADMIN,10,13)
+        setobjectxyperm(PSFBADADMIN,10,13)
+        setobjectxy(PSFBADADMIN3,7,12)
+        setobjectxyperm(PSFBADADMIN3,7,12)
+        setobjectmovementtype(PSFBADADMIN2,MOVEMENT_TYPE_FACE_LEFT)
+        setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_RIGHT)
+        setobjectmovementtype(PSFBADADMIN,MOVEMENT_TYPE_FACE_LEFT)
 }
-    
+
 
 script YouRealizeWereEvilRight_PhoneCall_Dialogue {
     lockall
@@ -98,7 +98,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_WereNotHere)
-        
+
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -211,15 +211,15 @@ text gText_YouRealizeWereEvilRight_IKnowThis {
 
 movement YouRealizeWereEvilRight_WalkToTable {
     walk_up * 3
-    walk_right
-    walk_up * 2
-    face_left
+        walk_right
+        walk_up * 2
+        face_left
 }
 
 movement YouRealizeWereEvilRight_MoveAwayFromTable {
     walk_right
-    walk_up
-    walk_down * 2
-    walk_up
-    face_left
+        walk_up
+        walk_down * 2
+        walk_up
+        face_left
 }

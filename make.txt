@@ -1,4 +1,2 @@
 Failed to read "src/omni_text.c".
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_util.o src/battle_util.c
-tools/agbcc/bin/agbcc <flags> -o build/emerald/src/battle_ai_util.o src/battle_ai_util.c
 cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald.map -T ld_script.ld -o ../../pokeemerald.elf <objects> <lib>

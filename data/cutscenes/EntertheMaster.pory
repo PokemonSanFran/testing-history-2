@@ -3,38 +3,35 @@ const PSFTRANSRIVAL = 1
 const PSFELITE3 = 2
 
 script EnterTheMaster_HideObject_Script {
-    setflag(FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL)
-    setflag(FLAG_HIDE_PSFCAVE2_PSFELITE3)
-    setflag(FLAG_HIDE_PSFCAVE2_PSFBADADMIN)
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_2)
+    setflag(FLAG_TEMP_3)
 }
 
 script EnterTheMaster_Object_SetUp_Script {
-    clearflag(FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL)
-    setflag(FLAG_HIDE_PSFCAVE2_PSFBADADMIN)
+    setflag(FLAG_TEMP_3)
 }
 
 script EnterTheMaster_Clearing_Object_SetUp_Script {
-    clearflag(FLAG_HIDE_PSFCAVE2_PSFELITE3)
-    clearflag(FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL)
-    setflag(FLAG_HIDE_PSFCAVE2_PSFBADADMIN)
+    setflag(FLAG_TEMP_3)
 }
 
 script EnterTheMaster_Interact_Script {
-    lockall
+    lock
     faceplayer
-    goto(EnterTheMaster_ReadyDialogue)
+    goto(EnterTheMaster_Ready_Dialogue)
 }
 
 script EnterTheMaster_WalkingTrigger_Script {
-    lockall
+    lock
     applymovement(PLAYER,Common_Movement_FaceLeft)
     waitmovement(0)
-    goto(EnterTheMaster_ReadyDialogue)
+    goto(EnterTheMaster_Ready_Dialogue)
 }
 
-script EnterTheMaster_ReadyDialogue {
+script EnterTheMaster_Ready_Dialogue {
 
-setvar(VAR_ROUTE116_STATE,2)
+addvar(VAR_ROUTE116_STATE,1)
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_MorningReady)
@@ -58,7 +55,7 @@ waitmovement(0)
 playse(SE_EXIT)
 waitse
 removeobject(PSFTRANSRIVAL)
-releaseall
+release
 end
 
 //PSF TODO implement follow me nonsense
@@ -66,7 +63,7 @@ end
 
 script EnterTheMaster_InteractFollower_Script {
 
-lockall
+lock
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 random(4)
@@ -80,12 +77,12 @@ switch(var(VAR_RESULT)){
 
 closemessage
 callnative(ClearMugshot)
-releaseall
+release
 end
 }
 
 script EnterTheMaster_LeaveWoods_Script {
-    lockall
+    lock
     faceplayer
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
@@ -96,11 +93,11 @@ callnative(ClearMugshot)
 
 script EnterTheMaster_CompleteMaze_Dialogue {
 
-setvar(VAR_ROUTE116_STATE,3)
-lockall
+addvar(VAR_ROUTE116_STATE,1)
+lock
+    addobject(PSFTRANSRIVAL)
     setobjectxy(PSFTRANSRIVAL,24,22) //PSF TODO Remove when followers are implemented
     setobjectxyperm(PSFTRANSRIVAL,24,22)
-    //copyobjectxytoperm(PSFTRANSRIVAL)
 
     faceplayer
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -122,12 +119,12 @@ waitmovement(0)
 playse(SE_EXIT)
 waitse
 removeobject(PSFTRANSRIVAL)
-releaseall
+release
 end
 }
 
 script EnterTheMaster_ClearingIntro_Dialogue {
-    setvar(VAR_ROUTE116_STATE,4)
+    addvar(VAR_ROUTE116_STATE,1)
 
 applymovement(PLAYER,EnterTheMaster_ApproachPsfelite3)
 waitmovement(0)
@@ -153,6 +150,7 @@ waitmovement(0)
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_GettingThemToBattle)
+
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_IsThatWhatYoure)

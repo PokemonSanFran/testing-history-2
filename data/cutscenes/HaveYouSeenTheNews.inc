@@ -1,15 +1,5 @@
-HaveYouSeenTheNews_Object_SetUp_Script::
-	clearflag FLAG_HIDE_PSFCAVE2_PSFBADADMIN
-	return
-
-
-HaveYouSeenTheNews_Object_CleanUp_Script::
-	setflag FLAG_HIDE_PSFCAVE2_PSFELITE3
-	return
-
-
 HaveYouSeenTheNews_AskHelp_Dialogue::
-	setvar VAR_ROUTE116_STATE, 8
+	addvar VAR_ROUTE116_STATE, 1
 	setvar VAR_PSFBADGUY1TOWER_2F_STATE, 3
 	lockall
 	playse SE_PIN
@@ -57,17 +47,6 @@ HaveYouSeenTheNews_AskHelp_Dialogue_1:
 	removeobject 1
 	removeobject 3
 	return
-
-
-HaveYouSeenTheNews_Interact_Script::
-	lockall
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_HaveYouSeenTheNews_SoundsLikeYouve
-	callnative ClearMugshot
-	closemessage
-	releaseall
-	end
 
 
 HaveYouSeenTheNews_LeaveClearingA:

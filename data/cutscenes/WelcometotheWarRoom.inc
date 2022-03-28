@@ -1,30 +1,19 @@
 WelcomeToTheWarRoom_Object_Hide_Script::
-	setflag FLAG_HIDE_TOWER2_PSFTRANSRIVAL
-	setflag FLAG_HIDE_TOWER2_PSFBADADMIN
-	setflag FLAG_HIDE_TOWER2_PSFBADADMIN2
-	setflag FLAG_HIDE_TOWER2_POLICE
-	setflag FLAG_HIDE_TOWER2_MAYOR
-	setflag FLAG_HIDE_TOWER2_PSFBADBOSS
+	setflag FLAG_TEMP_8
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_7
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_5
 	return
 
 
 WelcomeToTheWarRoom_Object_Setup_Script::
-	clearflag FLAG_HIDE_TOWER2_PSFTRANSRIVAL
-	setflag FLAG_HIDE_TOWER2_PSFBADADMIN2
-	clearflag FLAG_HIDE_TOWER2_PSFBADADMIN
-	clearflag FLAG_HIDE_TOWER2_POLICE
-	clearflag FLAG_HIDE_TOWER2_MAYOR
-	clearflag FLAG_HIDE_TOWER2_PSFBADBOSS
+	setflag FLAG_TEMP_4
 	setobjectxy 3, 10, 9
 	setobjectxy 4, 10, 11
 	setobjectxyperm 3, 10, 9
 	setobjectxyperm 4, 10, 11
-	return
-
-
-WelcomeToTheWarRoom_Object_Clean_Script::
-	setflag FLAG_HIDE_TOWER2_PSFTRANSRIVAL
-	removeobject 10
 	return
 
 
@@ -124,35 +113,9 @@ WelcomeToTheWarRoom_FaceSpeakerPsfbadadmin::
 	return
 
 
-WelcomeToTheWarRoom_MovePlayerIntoPosition::
-	lockall
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	compare VAR_TEMP_0, 7
-	goto_if_ne WelcomeToTheWarRoom_MovePlayerIntoPosition_2
-WelcomeToTheWarRoom_MovePlayerIntoPosition_1:
-	switch VAR_PSFBADGUY1TOWER_2F_STATE
-	case 3, WelcomeToTheWarRoom_MovePlayerIntoPosition_5
-	case 5, WelcomeToTheWarRoom_MovePlayerIntoPosition_6
-	return
-
-WelcomeToTheWarRoom_MovePlayerIntoPosition_2:
-	fadescreen FADE_TO_BLACK
-	setobjectxy OBJ_EVENT_ID_PLAYER, 7, 14
-	TeleportCamera 7, 14
-	fadescreen FADE_FROM_BLACK
-	goto WelcomeToTheWarRoom_MovePlayerIntoPosition_1
-
-WelcomeToTheWarRoom_MovePlayerIntoPosition_5:
-	goto WelcomeToTheWarRoom_ExplainSitaution_Dialogue
-	return
-
-WelcomeToTheWarRoom_MovePlayerIntoPosition_6:
-	goto YouRealizeWereEvilRight_Open_Dialogue
-	return
-
-
 WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
-	setvar VAR_PSFBADGUY1TOWER_2F_STATE, 4
+	lock
+	addvar VAR_PSFBADGUY1TOWER_2F_STATE, 1
 	setvar VAR_ROUTE117_STATE, 1
 	call WelcomeToTheWarRoom_FaceSpeakerPsfbadboss
 	applymovement 11, WelcomeToTheWarRoom_Pace

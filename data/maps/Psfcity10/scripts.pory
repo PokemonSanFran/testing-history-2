@@ -13,12 +13,12 @@ mapscripts Psfcity10_MapScripts {
 
 script Psfcity10_MapScripts_OnTransition {
     switch (var(VAR_ROUTE115_STATE)){
-        case 0: goto(Psfcity10_HidePsftransrival_Script)
+        default: goto(Psfcity10_HidePsftransrival_Script)
     }
 }
 
 script Psfcity10_HidePsftransrival_Script {
-    setflag(FLAG_HIDE_PSFCITY10_PSFTRANSRIVAL)
+    setflag(FLAG_TEMP_3)
     removeobject(PSFTRANSRIVAL)
 }
 

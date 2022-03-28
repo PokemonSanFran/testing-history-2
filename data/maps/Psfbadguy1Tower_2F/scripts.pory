@@ -1,11 +1,13 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
 mapscripts Psfbadguy1Tower_2F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Psfbadguy1Tower_2F_MapScripts_OnTransition)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_PSFBADGUY1TOWER_2F_STATE, 3: WelcomeToTheWarRoom_MovePlayerIntoPosition
-        VAR_PSFBADGUY1TOWER_2F_STATE, 5: WelcomeToTheWarRoom_MovePlayerIntoPosition
+        VAR_PSFBADGUY1TOWER_2F_STATE, 3: Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script
+        //VAR_PSFBADGUY1TOWER_2F_STATE, 5: WelcomeToTheWarRoom_MovePlayerIntoPosition
     ]
 }
 
@@ -16,9 +18,26 @@ script Psfbadguy1Tower_2F_MapScripts_OnTransition {
         case 1: goto(WelcomeToTheWarRoom_Object_Hide_Script)
         case 2: goto(WelcomeToTheWarRoom_Object_Hide_Script)
         case 3: goto(WelcomeToTheWarRoom_Object_Setup_Script)
-        case 4: goto(WelcomeToTheWarRoom_Object_Clean_Script)
+        case 4: goto(WelcomeToTheWarRoom_Object_Hide_Script)
         case 5: goto(YouRealizeWereEvilRight_Object_Setup_Script)
         case 6: goto(YouRealizeWereEvilRight_Object_Cleanup_Script)
         default: goto(WelcomeToTheWarRoom_Object_Hide_Script)
+    }
+}
+
+script Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script {
+    lock
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        if (var(VAR_TEMP_0) != 7){
+            fadescreen(FADE_TO_BLACK)
+            setobjectxy(PLAYER,7,14)
+            TeleportCamera(7,14)
+            fadescreen(FADE_FROM_BLACK)
+        }
+
+    switch (var(VAR_PSFBADGUY1TOWER_2F_STATE)){
+        case 3: goto(WelcomeToTheWarRoom_ExplainSitaution_Dialogue)
+        case 5: goto(YouRealizeWereEvilRight_Open_Dialogue)
     }
 }
