@@ -22,7 +22,7 @@ script Psfroute22_MapScripts_OnTransition {
 }
 
 script Psfroute22_MapScripts_OnLoad {
-        if (var(VAR_STORYLINE_STATE) > 23){
+        if (var(VAR_STORYLINE_STATE) > 23){ //PSF TODO what is this variable supposed to be
             call(HeresHowThisIsGoingToGo_ConstructionCompleted_Script)
         }
 

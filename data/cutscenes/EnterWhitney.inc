@@ -12,7 +12,7 @@ EnterPsfleader3_StartBattle_ObjectSetup_Script::
 
 
 AutomaticSolvePuzzle_Script::
-	lockall
+	lock
 	addvar VAR_GYM_3_STATE, 1
 	msgbox AutomaticSolvePuzzle_Script_Text_0, MSGBOX_NPC
 	closemessage

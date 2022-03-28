@@ -9,22 +9,17 @@ Psfplace11_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfplace11_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_ROUTE117_STATE, 1, SurvivalChance333_MovePlayerIntoPosition
-	map_script_2 VAR_ROUTE117_STATE, 2, SurvivalChance333_ExplainPlan
+	map_script_2 VAR_ROUTE117_STATE, 2, SurvivalChance333_ExplainPlan_Dialogue
 	.2byte 0
 
 
 Psfplace11_MapScripts_OnTransition::
 	switch VAR_ROUTE117_STATE
-	case 0, Psfplace11_MapScripts_OnTransition_2
-	case 1, Psfplace11_MapScripts_OnTransition_3
-	return
-
-Psfplace11_MapScripts_OnTransition_2:
+	case 1, Psfplace11_MapScripts_OnTransition_2
 	goto SurvivalChance333_HideObject_Script
 	return
 
-Psfplace11_MapScripts_OnTransition_3:
-	goto SurvivalChance333_ObjectSetUp_Script
+Psfplace11_MapScripts_OnTransition_2:
 	return
 
 

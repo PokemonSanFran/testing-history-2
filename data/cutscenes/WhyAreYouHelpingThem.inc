@@ -1,5 +1,12 @@
 WhyAreYouHelpingThem_HideObject_Script::
-	setflag FLAG_HIDE_WHYAREYOU_NATIVERIVAL
+	setflag FLAG_TEMP_3
+	return
+
+
+WhyAreYouHelpingThem_ObjectCleanUp_Script::
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_1
 	return
 
 
@@ -18,9 +25,9 @@ WhyAreYouHelpingThem_MoveObjectBoss_Script::
 
 
 WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script::
-	setflag FLAG_HIDE_WHYAREYOU_PKMN
-	setobjectxy 2, 1, 5
-	setobjectxyperm 2, 1, 5
+	setflag FLAG_TEMP_2
+	setobjectxy 2, 1, 9
+	setobjectxyperm 2, 1, 9
 	setobjectxy 1, 2, 16
 	setobjectxyperm 1, 2, 16
 	turnobject 2, DIR_NORTH
@@ -43,12 +50,7 @@ WhyAreYouHelpingThem_ObjectSetUpPostSave_Script::
 
 
 WhyAreYouHelpingThem_ObjectDebriefSetUp_Script::
-	clearflag FLAG_HIDE_SURVIVAL_CHANCE_RAID
-	addobject 4
-	addobject 1
-	addobject 6
-	addobject 7
-	addobject 8
+	setflag FLAG_TEMP_1
 	setobjectxyperm 4, 26, 4
 	setobjectxyperm 5, 25, 6
 	setobjectxyperm 6, 27, 6
@@ -67,7 +69,7 @@ WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script::
 
 
 WhyAreYouHelpingThem_StartRaid::
-	lockall
+	lock
 	setvar VAR_ROUTE118_STATE, 1
 	playse SE_FAILURE
 	playse SE_FAILURE
@@ -103,13 +105,13 @@ WhyAreYouHelpingThem_StartRaid::
 	removeobject 8
 	removeobject 9
 	call WhyAreYouHelpingThem_MoveObject_Script
-	releaseall
+	release
 	end
 
 
 WhyAreYouHelpingThem_WitnessBattle::
 	setvar VAR_ROUTE118_STATE, 2
-	lockall
+	lock
 	applymovement 3, WhyAreYouHelpingThem_FleeTheBattle
 	waitmovement 0
 	call WhyAreYouHelpingThem_MoveObjectBoss_Script
@@ -118,14 +120,14 @@ WhyAreYouHelpingThem_WitnessBattle::
 	msgbox gText_WhyAreYouHelpingThem_GoAfterIllHold
 	callnative ClearMugshot
 	closemessage
-	releaseall
+	release
 	end
 
 
 WhyAreYouHelpingThem_PreBattleBoss_Script::
-	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_ApproachPsfgoodboss
+	lock
 	applymovement 3, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_ApproachPsfgoodboss
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
@@ -214,7 +216,7 @@ WhyAreYouHelpingThem_ExplodeWall_Script::
 	special ShakeCamera
 	waitstate
 	call WhyAreYouHelpingThem_BlowHoleWall
-	clearflag FLAG_HIDE_WHYAREYOU_NATIVERIVAL
+	clearflag FLAG_TEMP_3
 	playse SE_EXIT
 	waitse
 	addobject 4
@@ -258,14 +260,14 @@ WhyAreYouHelpingThem_ExplodeWall_Script::
 
 
 WhyAreYouHelpingThem_InteractBattle_Script::
-	lockall
+	lock
 	faceplayer
 	goto WhyAreYouHelpingThem_StartBattle_Script
 	return
 
 
 WhyAreYouHelpingThem_StartBattle_Script::
-	lockall
+	lock
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_AlwaysHaveBeen
@@ -315,7 +317,7 @@ WhyAreYouHelpingThem_PostBattle_Dialogue::
 WhyAreYouHelpingThem_MissionDebrief_Dialogue::
 	setvar VAR_NATIVERIVALBETA_STATE, 6
 	setvar VAR_LITTLEROOT_INTRO_STATE, 7
-	lockall
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox gText_WhyAreYouHelpingThem_GreatWorkInThere
 	closemessage
@@ -331,7 +333,7 @@ WhyAreYouHelpingThem_MissionDebrief_Dialogue::
 	waitmovement 0
 	msgbox gText_WhyAreYouHelpingThem_NotBadInThere
 	closemessage
-	releaseall
+	release
 	end
 
 
@@ -375,7 +377,7 @@ WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	releaseall
+	release
 	end
 
 
@@ -420,6 +422,10 @@ WhyAreYouHelpingThem_ApproachPsfgoodboss:
 	step_end
 
 WhyAreYouHelpingThem_WalkPastPlayer:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	walk_right
 	walk_right
 	walk_right

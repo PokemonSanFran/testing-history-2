@@ -7,427 +7,426 @@ const PKMNA = 5
 const PKMNB = 6
 
 script WhyAreYouHelpingThem_HideObject_Script {
-    setflag(FLAG_HIDE_WHYAREYOU_NATIVERIVAL)
+    setflag(FLAG_TEMP_3)
+}
+
+script WhyAreYouHelpingThem_ObjectCleanUp_Script {
+    setflag(FLAG_TEMP_3)
+        setflag(FLAG_TEMP_2)
+        setflag(FLAG_TEMP_1)
 }
 
 script WhyAreYouHelpingThem_MoveObject_Script {
     setobjectxy(PSFTRANSRIVAL,2,16)
-    setobjectxyperm(PSFTRANSRIVAL,2,16)
+        setobjectxyperm(PSFTRANSRIVAL,2,16)
 }
 
 script WhyAreYouHelpingThem_MoveObjectBoss_Script {
     setobjectxy(PSFTRANSRIVAL,2,16)
-    setobjectxyperm(PSFTRANSRIVAL,2,16)
-    setobjectxy(PSFGOODBOSS,7,3)
-    setobjectxyperm(PSFGOODBOSS,7,3)
+        setobjectxyperm(PSFTRANSRIVAL,2,16)
+        setobjectxy(PSFGOODBOSS,7,3)
+        setobjectxyperm(PSFGOODBOSS,7,3)
 }
 
 script WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script {
-    setflag(FLAG_HIDE_WHYAREYOU_PKMN)
-    setobjectxy(PSFGOODADMIN,1,5)
-    setobjectxyperm(PSFGOODADMIN,1,5)
-    setobjectxy(PSFTRANSRIVAL,2,16)
-    setobjectxyperm(PSFTRANSRIVAL,2,16)
-    turnobject(PSFGOODADMIN,DIR_NORTH)
+    setflag(FLAG_TEMP_2)
+        setobjectxy(PSFGOODADMIN,1,9)
+        setobjectxyperm(PSFGOODADMIN,1,9)
+        setobjectxy(PSFTRANSRIVAL,2,16)
+        setobjectxyperm(PSFTRANSRIVAL,2,16)
+        turnobject(PSFGOODADMIN,DIR_NORTH)
 }
 
 script WhyAreYouHelpingThem_BlowHoleWall {
     setmetatile(12,1,0x3C8,FALSE)
-    special(DrawWholeMapView)
+        special(DrawWholeMapView)
 }
 
 script WhyAreYouHelpingThem_ObjectSetUpPostSave_Script {
     setobjectxy(PSFNATIVERIVAL,6,3)
-    setobjectxyperm(PSFNATIVERIVAL,6,3)
-    turnobject(PSFNATIVERIVAL,DIR_WEST)
-    setobjectxy(PSFTRANSRIVAL,2,16)
-    setobjectxyperm(PSFTRANSRIVAL,2,16)
+        setobjectxyperm(PSFNATIVERIVAL,6,3)
+        turnobject(PSFNATIVERIVAL,DIR_WEST)
+        setobjectxy(PSFTRANSRIVAL,2,16)
+        setobjectxyperm(PSFTRANSRIVAL,2,16)
 }
 
 script WhyAreYouHelpingThem_ObjectDebriefSetUp_Script {
-    clearflag(FLAG_HIDE_SURVIVAL_CHANCE_RAID)
-
-    addobject(4)
-    addobject(PSFTRANSRIVAL)
-    addobject(6)
-    addobject(7)
-    addobject(8)
-
-    setobjectxyperm(4,26,4)
-    setobjectxyperm(5,25,6)
-    setobjectxyperm(6,27,6)
-    setobjectxyperm(7,25,7)
-    setobjectxyperm(8,27,7)
+        setflag(FLAG_TEMP_1)
+        setobjectxyperm(4,26,4)
+        setobjectxyperm(5,25,6)
+        setobjectxyperm(6,27,6)
+        setobjectxyperm(7,25,7)
+        setobjectxyperm(8,27,7)
 }
 
 script WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script {
     setflag(FLAG_TEMP_3)
 
-    setobjectxyperm(1,6,6)
-    setobjectxyperm(3,6,5)
+        setobjectxyperm(1,6,6)
+        setobjectxyperm(3,6,5)
 
-    setobjectmovementtype(3,MOVEMENT_TYPE_FACE_DOWN)
-    setobjectmovementtype(1,MOVEMENT_TYPE_FACE_UP)
+        setobjectmovementtype(3,MOVEMENT_TYPE_FACE_DOWN)
+        setobjectmovementtype(1,MOVEMENT_TYPE_FACE_UP)
 }
 
 script WhyAreYouHelpingThem_StartRaid {
 
-    lockall
+    lock
         setvar(VAR_ROUTE118_STATE,1)
 
-playse(SE_FAILURE)
-playse(SE_FAILURE)
-playse(SE_FAILURE)
-playse(SE_FAILURE)
-applymovement(PSFTRANSRIVAL,Common_Movement_FaceDown)
-applymovement(7,WhyAreYouHelpingThem_PoliceRunIn)
-applymovement(8,WhyAreYouHelpingThem_PoliceRunIn)
-applymovement(9,WhyAreYouHelpingThem_PoliceRunIn)
-waitmovement(0)
-msgbox(gText_WhyAreYouHelpingThem_StructuralBreach,MSGBOX_AUTOCLOSE)
-waitmovement(0)
+        playse(SE_FAILURE)
+        playse(SE_FAILURE)
+        playse(SE_FAILURE)
+        playse(SE_FAILURE)
+        applymovement(PSFTRANSRIVAL,Common_Movement_FaceDown)
+        applymovement(7,WhyAreYouHelpingThem_PoliceRunIn)
+        applymovement(8,WhyAreYouHelpingThem_PoliceRunIn)
+        applymovement(9,WhyAreYouHelpingThem_PoliceRunIn)
+        waitmovement(0)
+        msgbox(gText_WhyAreYouHelpingThem_StructuralBreach,MSGBOX_AUTOCLOSE)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_DefenseMode)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_DefenseMode)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_WeShouldRedefine)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_WeShouldRedefine)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_LetsSplitUp)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_LetsSplitUp)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_WhaFineIllTry)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_WhaFineIllTry)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_SeeYa)
-callnative(ClearMugshot)
-closemessage
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_SeeYa)
+        callnative(ClearMugshot)
+        closemessage
 
-applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_PoliceRunIn)
-waitmovement(0)
-removeobject(7)
-removeobject(8)
-removeobject(9)
-call(WhyAreYouHelpingThem_MoveObject_Script)
-releaseall
-end
+        applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_PoliceRunIn)
+        waitmovement(0)
+        removeobject(7)
+        removeobject(8)
+        removeobject(9)
+        call(WhyAreYouHelpingThem_MoveObject_Script)
+        release
+        end
 }
 
 script WhyAreYouHelpingThem_WitnessBattle {
-setvar(VAR_ROUTE118_STATE,2)
-lockall
-applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_FleeTheBattle)
-waitmovement(0)
-call(WhyAreYouHelpingThem_MoveObjectBoss_Script)
+    setvar(VAR_ROUTE118_STATE,2)
+        lock
+        applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_FleeTheBattle)
+        waitmovement(0)
+        call(WhyAreYouHelpingThem_MoveObjectBoss_Script)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_GoAfterIllHold)
-callnative(ClearMugshot)
-closemessage
-releaseall
-end
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_GoAfterIllHold)
+        callnative(ClearMugshot)
+        closemessage
+        release
+        end
 }
 
 
 script WhyAreYouHelpingThem_PreBattleBoss_Script {
-    lockall
-applymovement(PLAYER,WhyAreYouHelpingThem_ApproachPsfgoodboss)
-applymovement(PSFGOODBOSS,Common_Movement_FaceLeft)
-waitmovement(0)
-setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_ItsAShameThatThe)
-callnative(ClearMugshot)
-closemessage
+    lock
+        applymovement(PSFGOODBOSS,Common_Movement_FaceLeft)
+        applymovement(PLAYER,WhyAreYouHelpingThem_ApproachPsfgoodboss)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_ItsAShameThatThe)
+        callnative(ClearMugshot)
+        closemessage
 
-applymovement(PSFGOODBOSS,Common_Movement_WalkLeft)
-waitmovement(0)
+        applymovement(PSFGOODBOSS,Common_Movement_WalkLeft)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_ButBeatingYou)
-callnative(ClearMugshot)
-closemessage
+        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_ButBeatingYou)
+        callnative(ClearMugshot)
+        closemessage
 
-trainerbattle_continue_after_lose(TRAINER_ARCHIE,gText_WhyAreYouHelpingThem_WaitAMinute)
-goto(WhyAreYouHelpingThem_PostBattleBoss_Dialogue)
+        trainerbattle_continue_after_lose(TRAINER_ARCHIE,gText_WhyAreYouHelpingThem_WaitAMinute)
+        goto(WhyAreYouHelpingThem_PostBattleBoss_Dialogue)
 }
 
 script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
     setvar(VAR_ROUTE118_STATE,3)
-    addobject(PSFGOODADMIN)
-    call(WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script)
+        addobject(PSFGOODADMIN)
+        call(WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script)
 
-if (defeated(TRAINER_ARCHIE)){
+        if (defeated(TRAINER_ARCHIE)){
 
-setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_YoureIncredible)
-closemessage
-callnative(ClearMugshot)
-applymovement(PSFGOODBOSS,Common_Movement_WalkInPlaceLeft)
-waitmovement(0)
-giveitem(ITEM_MASTER_BALL,1)
+            setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                callnative(DrawMugshot)
+                msgbox(gText_WhyAreYouHelpingThem_YoureIncredible)
+                closemessage
+                callnative(ClearMugshot)
+                applymovement(PSFGOODBOSS,Common_Movement_WalkInPlaceLeft)
+                waitmovement(0)
+                giveitem(ITEM_MASTER_BALL,1)
 
-setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_AndNowWeHave)
-}else {
+                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                callnative(DrawMugshot)
+                msgbox(gText_WhyAreYouHelpingThem_AndNowWeHave)
+        }else {
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_IDidntEvenTouch)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_WhyAreYouHelpingThem_IDidntEvenTouch)
+        }
+
+    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_ImSorryYouHad)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_WalkPastPlayer)
+        applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_HealAndFaceAdmin)
+        waitmovement(0)
+        call(Common_EventScript_OutOfCenterPartyHeal)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_IHandledTheBrat)
+        callnative(ClearMugshot)
+        closemessage
+
+        playse(SE_PIN)
+        waitse
+        applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_ExclaimAndFacePlayer)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_DamnYouToo)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_WhatWasAllThatShit)
+
+        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_WeveGotToHelp)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_BeginEscape)
+        applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_BeginEscape)
+        waitmovement(0)
+        goto(WhyAreYouHelpingThem_ExplodeWall_Script)
 }
-
-setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_ImSorryYouHad)
-callnative(ClearMugshot)
-closemessage
-
-applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_WalkPastPlayer)
-applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_HealAndFaceAdmin)
-waitmovement(0)
-call(Common_EventScript_OutOfCenterPartyHeal)
-
-setvar(VAR_0x8000, MUGSHOT_ARIANA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_IHandledTheBrat)
-callnative(ClearMugshot)
-closemessage
-
-playse(SE_PIN)
-waitse
-applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_ExclaimAndFacePlayer)
-waitmovement(0)
-
-setvar(VAR_0x8000, MUGSHOT_ARIANA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_DamnYouToo)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_WhatWasAllThatShit)
-
-setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_WeveGotToHelp)
-callnative(ClearMugshot)
-closemessage
-
-applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_BeginEscape)
-applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_BeginEscape)
-waitmovement(0)
-goto(WhyAreYouHelpingThem_ExplodeWall_Script)
-    }
 
 script WhyAreYouHelpingThem_ExplodeWall_Script {
 
-playse(SE_M_EXPLOSION)
-waitse
-setvar(VAR_0x8004,1)
-setvar(VAR_0x8005,2)
-setvar(VAR_0x8006,8)
-setvar(VAR_0x8007,5)
-special(ShakeCamera)
-waitstate
-call(WhyAreYouHelpingThem_BlowHoleWall)
-clearflag(FLAG_HIDE_WHYAREYOU_NATIVERIVAL)
-playse(SE_EXIT)
-waitse
-addobject(PSFNATIVERIVAL)
-applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_WalkOutOfHole)
-setobjectxy(PSFNATIVERIVAL,7,3)
-setobjectxyperm(PSFNATIVERIVAL,7,3)
-waitmovement(0)
+    playse(SE_M_EXPLOSION)
+        waitse
+        setvar(VAR_0x8004,1)
+        setvar(VAR_0x8005,2)
+        setvar(VAR_0x8006,8)
+        setvar(VAR_0x8007,5)
+        special(ShakeCamera)
+        waitstate
+        call(WhyAreYouHelpingThem_BlowHoleWall)
+        clearflag(FLAG_TEMP_3)
+        playse(SE_EXIT)
+        waitse
+        addobject(PSFNATIVERIVAL)
+        applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_WalkOutOfHole)
+        setobjectxy(PSFNATIVERIVAL,7,3)
+        setobjectxyperm(PSFNATIVERIVAL,7,3)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_ThisPlaceIs)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_ThisPlaceIs)
 
-setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_WeCantLeavePeople)
+        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_WeCantLeavePeople)
 
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_WeDontHaveTime)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_WeDontHaveTime)
 
-setvar(VAR_0x8000, MUGSHOT_ARIANA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_IThinkTheyreRight)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_IThinkTheyreRight)
 
-setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_Sigh)
-callnative(ClearMugshot)
-closemessage
-applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_WalkIntoHoleA)
-applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_WalkIntoHoleB)
-waitmovement(0)
-playse(SE_EXIT)
-waitse
-removeobject(PSFGOODADMIN)
-removeobject(PSFGOODBOSS)
-applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_ApproachPlayer)
-waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_Sigh)
+        callnative(ClearMugshot)
+        closemessage
+        applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_WalkIntoHoleA)
+        applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_WalkIntoHoleB)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(PSFGOODADMIN)
+        removeobject(PSFGOODBOSS)
+        applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_ApproachPlayer)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_YoureWorkingWith)
-callnative(ClearMugshot)
-call(Common_EventScript_SaveGame)
-goto(WhyAreYouHelpingThem_StartBattle_Script)
-    }
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_YoureWorkingWith)
+        callnative(ClearMugshot)
+        call(Common_EventScript_SaveGame)
+        goto(WhyAreYouHelpingThem_StartBattle_Script)
+}
 
 script WhyAreYouHelpingThem_InteractBattle_Script {
-    lockall
-    faceplayer
-    goto(WhyAreYouHelpingThem_StartBattle_Script)
+    lock
+        faceplayer
+        goto(WhyAreYouHelpingThem_StartBattle_Script)
 }
 
 script WhyAreYouHelpingThem_StartBattle_Script{
-    lockall
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-    msgbox(gText_WhyAreYouHelpingThem_AlwaysHaveBeen)
-    trainerbattle_no_intro(TRAINER_WALLY_VR_2,gText_WhyAreYouHelpingThem_AnotherVictory)
-    closemessage
-    callnative(ClearMugshot)
-    goto(WhyAreYouHelpingThem_PostBattle_Dialogue)
+    lock
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_AlwaysHaveBeen)
+        trainerbattle_no_intro(TRAINER_WALLY_VR_2,gText_WhyAreYouHelpingThem_AnotherVictory)
+        closemessage
+        callnative(ClearMugshot)
+        goto(WhyAreYouHelpingThem_PostBattle_Dialogue)
 }
 
 script WhyAreYouHelpingThem_PostBattle_Dialogue {
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_TellsMeYoureAll)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_TellsMeYoureAll)
 
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_WhyWouldIt)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_WhyWouldIt)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_Player)
-callnative(ClearMugshot)
-closemessage
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_Player)
+        callnative(ClearMugshot)
+        closemessage
 
-applymovement(PLAYER,Common_Movement_FaceLeft)
-applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_WalkIntoHoleC)
-waitmovement(0)
-playse(SE_EXIT)
-waitse
-removeobject(PSFNATIVERIVAL)
-setobjectxyperm(PSFTRANSRIVAL,1,8)
-addobject(PSFTRANSRIVAL)
-applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_RunToPlayer)
-waitmovement(0)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_WalkIntoHoleC)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(PSFNATIVERIVAL)
+        setobjectxyperm(PSFTRANSRIVAL,1,8)
+        addobject(PSFTRANSRIVAL)
+        applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_RunToPlayer)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_IGotKnockedOut)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_IGotKnockedOut)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_NoILostToo)
-callnative(ClearMugshot)
-closemessage
-setvar(VAR_NATIVERIVALBETA_STATE,5)
-fadescreen(FADE_TO_BLACK)
-warpsilent(MAP_PSFCITY17,255,26,6)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_NoILostToo)
+        callnative(ClearMugshot)
+        closemessage
+        setvar(VAR_NATIVERIVALBETA_STATE,5)
+        fadescreen(FADE_TO_BLACK)
+        warpsilent(MAP_PSFCITY17,255,26,6)
 }
 
 
 script WhyAreYouHelpingThem_MissionDebrief_Dialogue {
     setvar(VAR_NATIVERIVALBETA_STATE,6)
-    setvar(VAR_LITTLEROOT_INTRO_STATE,7)
-    lockall
-    applymovement(PLAYER,Common_Movement_FaceUp)
+        setvar(VAR_LITTLEROOT_INTRO_STATE,7)
+        lock
+        applymovement(PLAYER,Common_Movement_FaceUp)
 
-msgbox(gText_WhyAreYouHelpingThem_GreatWorkInThere)
-closemessage
+        msgbox(gText_WhyAreYouHelpingThem_GreatWorkInThere)
+        closemessage
 
-applymovement(6,Common_Movement_WalkUp)
-waitmovement(0)
+        applymovement(6,Common_Movement_WalkUp)
+        waitmovement(0)
 
-msgbox(gText_WhyAreYouHelpingThem_WeSpottedAndTheir)
-closemessage
+        msgbox(gText_WhyAreYouHelpingThem_WeSpottedAndTheir)
+        closemessage
 
-applymovement(6,WhyAreYouHelpingThem_BackInFormation)
-waitmovement(0)
+        applymovement(6,WhyAreYouHelpingThem_BackInFormation)
+        waitmovement(0)
 
-msgbox(gText_WhyAreYouHelpingThem_AShameStillWeveShutDown)
-closemessage
+        msgbox(gText_WhyAreYouHelpingThem_AShameStillWeveShutDown)
+        closemessage
 
-applymovement(4,Common_Movement_WalkDown)
-waitmovement(0)
+        applymovement(4,Common_Movement_WalkDown)
+        waitmovement(0)
 
-msgbox(gText_WhyAreYouHelpingThem_NotBadInThere)
-closemessage
-releaseall
-end
+        msgbox(gText_WhyAreYouHelpingThem_NotBadInThere)
+        closemessage
+        release
+        end
 }
 
 script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
     addvar(VAR_STORYLINE_STATE,1)
-    addvar(VAR_LITTLEROOT_INTRO_STATE,1)
-    applymovement(PLAYER,WhyAreYouHelpingThem_WalkIntoHome)
-    waitmovement(0)
-    
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_WhatADay)
+        addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+        applymovement(PLAYER,WhyAreYouHelpingThem_WalkIntoHome)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_ItWasADay)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_WhatADay)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_ItWasADay)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_OhThatWasFast)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_DontWorryAboutIt)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_OhThatWasFast)
 
-setvar(VAR_0x8000, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_NowIveGotALot)
-callnative(ClearMugshot)
-closemessage
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_DontWorryAboutIt)
 
-applymovement(3,WhyAreYouHelpingThem_LeaveCompoundA)
-waitmovement(0)
-playse(SE_EXIT)
-waitse
-removeobject(3)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_NowIveGotALot)
+        callnative(ClearMugshot)
+        closemessage
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_WhyAreYouHelpingThem_WeveAllGot)
-callnative(ClearMugshot)
-closemessage
+        applymovement(3,WhyAreYouHelpingThem_LeaveCompoundA)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(3)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhyAreYouHelpingThem_WeveAllGot)
+        callnative(ClearMugshot)
+        closemessage
 
 
-applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_LeaveCompoundB)
-waitmovement(0)
-playse(SE_EXIT)
-waitse
-removeobject(1)
-releaseall
-end
+        applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_LeaveCompoundB)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(1)
+        release
+        end
 }
 
 script WhyAreYouHelpingThem_StartChampionship_Dialogue {
@@ -435,7 +434,7 @@ script WhyAreYouHelpingThem_StartChampionship_Dialogue {
 
         if (var(VAR_RESULT) == NO){
             closemessage
-            return
+                return
         } else {
             addvar(VAR_STORYLINE_STATE,1)
                 warpsilent(MAP_PSFPLACE14_LOCKERS,9,6)
@@ -443,180 +442,180 @@ script WhyAreYouHelpingThem_StartChampionship_Dialogue {
 }
 
 text gText_WhyAreYouHelpingThem_StructuralBreach {
-format("STRUCTURAL BREACH DETECTED. BASE IS NOW SHIFTING TO DEFENSE MODE. EVACUATE IMMEDIATELY.")
+    format("STRUCTURAL BREACH DETECTED. BASE IS NOW SHIFTING TO DEFENSE MODE. EVACUATE IMMEDIATELY.")
 }
 
 text gText_WhyAreYouHelpingThem_DefenseMode {
-format("“Defense mode” is pretty advanced for some abandoned buildings.")
+    format("“Defense mode” is pretty advanced for some abandoned buildings.")
 }
 
 text gText_WhyAreYouHelpingThem_WeShouldRedefine {
-format("We should redefine abandoned…")
+    format("We should redefine abandoned…")
 }
 
 text gText_WhyAreYouHelpingThem_LetsSplitUp {
-format("Let's split up. I'm faster than you and can cut off the leaders before they escape.")
+    format("Let's split up. I'm faster than you and can cut off the leaders before they escape.")
 }
 
 text gText_WhyAreYouHelpingThem_WhaFineIllTry {
-format("wha - fine, I'll try to find the source of the hack and shut it down.")
+    format("wha - fine, I'll try to find the source of the hack and shut it down.")
 }
 
 text gText_WhyAreYouHelpingThem_SeeYa {
-format("See ya.")
+    format("See ya.")
 }
 
 text gText_WhyAreYouHelpingThem_GoAfterIllHold {
-format("Go after Psfgoodboss! I'll hold this one off.")
+    format("Go after Psfgoodboss! I'll hold this one off.")
 }
 
 text gText_WhyAreYouHelpingThem_ItsAShameThatThe {
-format("It's a shame that the cops have totally infiltrated our youth. ")
+    format("It's a shame that the cops have totally infiltrated our youth. ")
 }
 
 text gText_WhyAreYouHelpingThem_ButBeatingYou {
-format("But beating you is going to be the best route out of here.")
+    format("But beating you is going to be the best route out of here.")
 }
 
 text gText_WhyAreYouHelpingThem_WaitAMinute {
-format("Wait a minute…")
+    format("Wait a minute…")
 }
 
 text gText_WhyAreYouHelpingThem_YoureIncredible {
-format("You're incredible. Or a cheater. Can't quite tell. Either way, you can have this.")
+    format("You're incredible. Or a cheater. Can't quite tell. Either way, you can have this.")
 }
 
 text gText_WhyAreYouHelpingThem_AndNowWeHave {
-format("And now we have to act like I won.")
+    format("And now we have to act like I won.")
 }
 
 text gText_WhyAreYouHelpingThem_IDidntEvenTouch {
-format("…I didn't even touch him…")
+    format("…I didn't even touch him…")
 }
 
 text gText_WhyAreYouHelpingThem_ImSorryYouHad {
-format("I'm sorry you had to experience that. I hope you eventually understand what's at stake here, {PLAYER}. Let me help you.")
+    format("I'm sorry you had to experience that. I hope you eventually understand what's at stake here, {PLAYER}. Let me help you.")
 }
 
 text gText_WhyAreYouHelpingThem_IHandledTheBrat {
-format("I handled the brat. I'm guessing you beat -")
+    format("I handled the brat. I'm guessing you beat -")
 }
 
 text gText_WhyAreYouHelpingThem_DamnYouToo {
-format("Damn, you too, {PLAYER}?")
+    format("Damn, you too, {PLAYER}?")
 }
 
 text gText_WhyAreYouHelpingThem_WhatWasAllThatShit {
-format("What was all that shit you tried to tell me before?! What the hell is Psfgoodteam doing?")
+    format("What was all that shit you tried to tell me before?! What the hell is Psfgoodteam doing?")
 }
 
 text gText_WhyAreYouHelpingThem_WeveGotToHelp {
-format("We've got to help more comrades escape. Another time.")
+    format("We've got to help more comrades escape. Another time.")
 }
 
 text gText_WhyAreYouHelpingThem_ThisPlaceIs {
-format("This place is swarming with cops. You two need to get the hell out, right now. This goes straight out.")
+    format("This place is swarming with cops. You two need to get the hell out, right now. This goes straight out.")
 }
 
 text gText_WhyAreYouHelpingThem_WeCantLeavePeople {
-format("We can't leave people behind. ")
+    format("We can't leave people behind. ")
 }
 
 text gText_WhyAreYouHelpingThem_WeDontHaveTime {
-format("We don't have time for this! If you get arrested, this all falls apart! You. Need. To. Go.")
+    format("We don't have time for this! If you get arrested, this all falls apart! You. Need. To. Go.")
 }
 
 text gText_WhyAreYouHelpingThem_IThinkTheyreRight {
-format("I think they're right.")
+    format("I think they're right.")
 }
 
 text gText_WhyAreYouHelpingThem_Sigh {
-format("…*sigh*")
+    format("…*sigh*")
 }
 
 text gText_WhyAreYouHelpingThem_YoureWorkingWith {
-format("You're working with Psfgoodteam too?!?")
+    format("You're working with Psfgoodteam too?!?")
 }
 
 text gText_WhyAreYouHelpingThem_AlwaysHaveBeen {
-format("Always have been.")
+    format("Always have been.")
 }
 
 text gText_WhyAreYouHelpingThem_AnotherVictory {
-format("*sigh* Another victory for the establishment.")
+    format("*sigh* Another victory for the establishment.")
 }
 
 text gText_WhyAreYouHelpingThem_TellsMeYoureAll {
-format("Psfgoodadmin tells me you're all good guys… now all this shit? And you? None of this makes any sense!")
+    format("Psfgoodadmin tells me you're all good guys… now all this shit? And you? None of this makes any sense!")
 }
 
 text gText_WhyAreYouHelpingThem_WhyWouldIt {
-format("Why would it? You don't see what your bosses are doing to Psfregion1. You don't see what you're doing to Psfregion1.")
+    format("Why would it? You don't see what your bosses are doing to Psfregion1. You don't see what you're doing to Psfregion1.")
 }
 
 text gText_WhyAreYouHelpingThem_Player {
-format("{PLAYER}!")
+    format("{PLAYER}!")
 }
 
 text gText_WhyAreYouHelpingThem_IGotKnockedOut {
-format("I got knocked out. Did you stop Psfgoodboss?")
+    format("I got knocked out. Did you stop Psfgoodboss?")
 }
 
 text gText_WhyAreYouHelpingThem_NoILostToo {
-format("No, I lost too.")
+    format("No, I lost too.")
 }
 
 text gText_WhyAreYouHelpingThem_GreatWorkInThere {
-format("Great work in there, team. Andre, what's the sitrep regarding Psfgoodteam leadership?")
+    format("Great work in there, team. Andre, what's the sitrep regarding Psfgoodteam leadership?")
 }
 
 text gText_WhyAreYouHelpingThem_WeSpottedAndTheir {
-format("We spotted Psfgoodboss and their lieutenant escaping on Pokemon by using the move Fly. We were unable to track them given our resources.")
+    format("We spotted Psfgoodboss and their lieutenant escaping on Pokemon by using the move Fly. We were unable to track them given our resources.")
 }
 
 text gText_WhyAreYouHelpingThem_AShameStillWeveShutDown {
-format("A shame. Still, we've shut down their primary base of operations, and we arrested a bunch of these shitheads. This was an absolute win!")
+    format("A shame. Still, we've shut down their primary base of operations, and we arrested a bunch of these shitheads. This was an absolute win!")
 }
 
 text gText_WhyAreYouHelpingThem_NotBadInThere {
-format("Not bad in there. Psfbadadmin wants you kids back at Psfcity8 Compound.")
+    format("Not bad in there. Psfbadadmin wants you kids back at Psfcity8 Compound.")
 }
 
 text gText_WhyAreYouHelpingThem_WhatADay {
-format("What… a day. I know that was a lot of pressure, but from what I hear, you were both fantastic. Thank you.")
+    format("What… a day. I know that was a lot of pressure, but from what I hear, you were both fantastic. Thank you.")
 }
 
 text gText_WhyAreYouHelpingThem_ItWasADay {
-format("…it was a day.")
+    format("…it was a day.")
 }
 
 text gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere {
-format("Good news - while you were training in Psfcave2, construction on Psfplace14 finished up. The Group Stage will start in 3 days. Hopefully, that's enough time to rest up and get ready.")
+    format("Good news - while you were training in Psfcave2, construction on Psfplace14 finished up. The Group Stage will start in 3 days. Hopefully, that's enough time to rest up and get ready.")
 }
 
 text gText_WhyAreYouHelpingThem_OhThatWasFast {
-format("Oh, that was fast. How did you…")
+    format("Oh, that was fast. How did you…")
 }
 
 text gText_WhyAreYouHelpingThem_DontWorryAboutIt {
-format("Don't worry about it! You two just focus on winning! ")
+    format("Don't worry about it! You two just focus on winning! ")
 }
 
 text gText_WhyAreYouHelpingThem_NowIveGotALot {
-format("Now, I've got a lot of work to do between now and then. I'll see you both in a few days!")
+    format("Now, I've got a lot of work to do between now and then. I'll see you both in a few days!")
 }
 
 text gText_WhyAreYouHelpingThem_WeveAllGot {
-format("We've all got some work to do! I'll see you around, {PLAYER}.")
+    format("We've all got some work to do! I'll see you around, {PLAYER}.")
 }
 
 text gText_WhyAreYouHelpingThem_AreYouReadyToBegin {
-format("Are you ready to begin the Championship?")
+    format("Are you ready to begin the Championship?")
 }
 
 movement WhyAreYouHelpingThem_PoliceRunIn {
     walk_left * 8
-    step_end
+        step_end
 }
 
 movement WhyAreYouHelpingThem_FleeTheBattle {
@@ -626,106 +625,107 @@ movement WhyAreYouHelpingThem_FleeTheBattle {
 
 movement WhyAreYouHelpingThem_ApproachPsfgoodboss {
     walk_up * 2
-    walk_right * 4
-    step_end
+        walk_right * 4
+        step_end
 }
 
 movement WhyAreYouHelpingThem_WalkPastPlayer {
+        walk_up * 4
     walk_right * 5
-    walk_up
-    step_end
+        walk_up
+        step_end
 }
 
 movement WhyAreYouHelpingThem_BeginEscape {
     walk_right * 3
-    step_end
+        step_end
 }
 
 movement WhyAreYouHelpingThem_ExclaimAndFacePlayer {
     emote_exclamation_mark
-    face_left
-    step_end
+        face_left
+        step_end
 }
 
 movement WhyAreYouHelpingThem_WalkOutOfHole {
     walk_down 
-    walk_left * 3
-    face_down
-    step_end
+        walk_left * 3
+        face_down
+        step_end
 }
 
 movement WhyAreYouHelpingThem_WalkIntoHoleA {
     walk_right * 3
-    walk_up * 2
-    step_end
+        walk_up * 2
+        step_end
 }
 
 movement WhyAreYouHelpingThem_WalkIntoHoleB {
     walk_right * 3
-    walk_up * 3
-    step_end
+        walk_up * 3
+        step_end
 }
 
 movement WhyAreYouHelpingThem_WalkIntoHoleC {
     walk_right * 6
-    walk_up * 2
-    step_end
+        walk_up * 2
+        step_end
 }
 
 movement WhyAreYouHelpingThem_ApproachBossAndPlayer {
     walk_left
-    walk_up * 8
-    step_end
+        walk_up * 8
+        step_end
 }
 
 movement WhyAreYouHelpingThem_HealAndFaceAdmin {
     walk_in_place_slow_left
-    delay_16
-    delay_16
-    face_down
-    step_end
+        delay_16
+        delay_16
+        face_down
+        step_end
 }
 
 movement WhyAreYouHelpingThem_ApproachPlayer {
     walk_down
-    walk_left * 3
-    step_end
+        walk_left * 3
+        step_end
 }
 
 movement WhyAreYouHelpingThem_RunToPlayer {
     walk_up * 5
-    walk_right * 3
-    step_end
+        walk_right * 3
+        step_end
 }
 
 movement WhyAreYouHelpingThem_BackInFormation {
     lock_facing_direction
-    walk_down
-    unlock_facing_direction
-    step_end
+        walk_down
+        unlock_facing_direction
+        step_end
 }
 
 movement WhyAreYouHelpingThem_WalkToPlayerFormation {
     walk_right
-    walk_down
-    step_end
+        walk_down
+        step_end
 }
 
 movement WhyAreYouHelpingThem_WalkIntoHome {
     walk_up * 3
-    step_end
+        step_end
 }
 
 movement WhyAreYouHelpingThem_LeaveCompoundA {
     walk_right
-    walk_down * 4
-    walk_left
-    walk_in_place_down
-    face_down
-    step_end
+        walk_down * 4
+        walk_left
+        walk_in_place_down
+        face_down
+        step_end
 }
 
 movement WhyAreYouHelpingThem_LeaveCompoundB {
     walk_down * 3
-    step_end
+        step_end
 }

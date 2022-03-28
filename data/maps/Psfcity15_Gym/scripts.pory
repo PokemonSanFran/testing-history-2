@@ -3,14 +3,15 @@ mapscripts Psfcity15_Gym_MapScripts {
         goto(Psfcity15_Gym_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_FRAME_TABLE[
-        VAR_GYM_3_STATE, 1: EnterPsfleader3_WalkToBattlefield_Script
     ]
 }
 
 script Psfcity15_Gym_MapScripts_OnTransition {
-        switch (var (VAR_GYM_3_STATE)) {
-        case 1: goto(EnterPsfleader3_ObjectSetUp_Script)
-        case 2: goto(EnterPsfleader3_StartBattle_ObjectSetup_Script)
+        switch (var (VAR_GYM_3_STATE)) { 
+            case 0: return
+            case 1: setflag(FLAG_TEMP_1)
+            default: goto(EnterPsfleader3_StartBattle_ObjectSetup_Script)
+
         }
 }
 

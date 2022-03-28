@@ -7,14 +7,14 @@ mapscripts Psfplace11_MapScripts {
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ROUTE117_STATE, 1: SurvivalChance333_MovePlayerIntoPosition
-        VAR_ROUTE117_STATE, 2: SurvivalChance333_ExplainPlan
+        VAR_ROUTE117_STATE, 2: SurvivalChance333_ExplainPlan_Dialogue
     ]
 }
 
 script Psfplace11_MapScripts_OnTransition {
     switch (var(VAR_ROUTE117_STATE)){
-        case 0: goto(SurvivalChance333_HideObject_Script)
-        case 1: goto(SurvivalChance333_ObjectSetUp_Script)
+        case 1: return
+        default: goto(SurvivalChance333_HideObject_Script)
 }
 }
 

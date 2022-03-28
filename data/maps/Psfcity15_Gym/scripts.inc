@@ -8,22 +8,21 @@ Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfcity15_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_GYM_3_STATE, 1, EnterPsfleader3_WalkToBattlefield_Script
 	.2byte 0
 
 
 Psfcity15_Gym_MapScripts_OnTransition::
 	switch VAR_GYM_3_STATE
-	case 1, Psfcity15_Gym_MapScripts_OnTransition_2
-	case 2, Psfcity15_Gym_MapScripts_OnTransition_3
+	case 0, Psfcity15_Gym_MapScripts_OnTransition_2
+	case 1, Psfcity15_Gym_MapScripts_OnTransition_3
+	goto EnterPsfleader3_StartBattle_ObjectSetup_Script
 	return
 
 Psfcity15_Gym_MapScripts_OnTransition_2:
-	goto EnterPsfleader3_ObjectSetUp_Script
 	return
 
 Psfcity15_Gym_MapScripts_OnTransition_3:
-	goto EnterPsfleader3_StartBattle_ObjectSetup_Script
+	setflag FLAG_TEMP_1
 	return
 
 

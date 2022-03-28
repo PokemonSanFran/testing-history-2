@@ -77,7 +77,24 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_GYM_3_STATE",
+      "var_value": "1",
+      "script": "EnterPsfleader3_WalkToBattlefield_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_GYM_3_STATE",
+      "var_value": "1",
+      "script": "EnterPsfleader3_WalkToBattlefield_Script"
+    }
   ],
   "bg_events": [
 

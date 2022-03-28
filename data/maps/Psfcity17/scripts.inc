@@ -22,10 +22,10 @@ Psfcity17_MapScripts_OnTransition::
 	switch VAR_NATIVERIVALBETA_STATE
 	case 0, Psfcity17_MapScripts_OnTransition_2
 	case 1, Psfcity17_MapScripts_OnTransition_3
-	case 2, Psfcity17_MapScripts_OnTransition_4
-	case 3, Psfcity17_MapScripts_OnTransition_5
-	case 4, Psfcity17_MapScripts_OnTransition_6
-	case 5, Psfcity17_MapScripts_OnTransition_7
+	case 3, Psfcity17_MapScripts_OnTransition_4
+	case 5, Psfcity17_MapScripts_OnTransition_5
+	call AssholesHome_HideObject_Script
+	call SurvivalChance333_HideObject_Psfcity17_Script
 	return
 
 Psfcity17_MapScripts_OnTransition_2:
@@ -38,18 +38,9 @@ Psfcity17_MapScripts_OnTransition_3:
 
 Psfcity17_MapScripts_OnTransition_4:
 	call AssholesHome_HideObject_Script
-	call SurvivalChance333_HideObject_Psfcity17_Script
 	return
 
 Psfcity17_MapScripts_OnTransition_5:
-	goto SurvivalChance333_HideObject_Psfcity17_Script
-	return
-
-Psfcity17_MapScripts_OnTransition_6:
-	goto SurvivalChance333_HideObject_Psfcity17_Script
-	return
-
-Psfcity17_MapScripts_OnTransition_7:
 	goto WhyAreYouHelpingThem_ObjectDebriefSetUp_Script
 	return
 

@@ -1,33 +1,24 @@
 SurvivalChance333_HideObject_Script::
-	setflag FLAG_HIDE_SURVIVAL_CHANCE_FERRY
-	return
-
-
-SurvivalChance333_ObjectSetUp_Script::
-	clearflag FLAG_HIDE_SURVIVAL_CHANCE_FERRY
+	setflag FLAG_TEMP_1
 	return
 
 
 SurvivalChance333_HideObject_Psfcity17_Script::
-	setflag FLAG_HIDE_SURVIVAL_CHANCE_RAID
-	return
-
-
-SurvivalChance333_ObjectSetUp_Psfcity17_Script::
-	clearflag FLAG_HIDE_SURVIVAL_CHANCE_RAID
+	setflag FLAG_TEMP_2
 	return
 
 
 SurvivalChance333_MovePlayerIntoPosition::
-	lockall
-	setvar VAR_ROUTE117_STATE, 2
+	lock
+	addvar VAR_ROUTE117_STATE, 1
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 12
 	goto_if_ne SurvivalChance333_MovePlayerIntoPosition_1
 	return
 
 SurvivalChance333_MovePlayerIntoPosition_1:
-	warpsilent MAP_PSFPLACE11, 255, 12, 12
+	applymovement OBJ_EVENT_ID_PLAYER, SurvivalChance333_WalkToChief
+	waitmovement 0
 	return
 
 
@@ -55,9 +46,9 @@ SurvivalChance333_BlowOpenDoors::
 	return
 
 
-SurvivalChance333_ExplainPlan::
-	lockall
-	setvar VAR_ROUTE117_STATE, 2
+SurvivalChance333_ExplainPlan_Dialogue::
+	lock
+	addvar VAR_ROUTE117_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	delay 25
@@ -81,14 +72,13 @@ SurvivalChance333_ExplainPlan::
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_IllProveIt
 	callnative ClearMugshot
-	setvar VAR_ROUTE117_STATE, 3
+	addvar VAR_ROUTE117_STATE, 1
 	call Common_EventScript_SaveGame
 	goto SurvivalChance333_Battle_Script
 	return
 
 
 SurvivalChance333_Battle_Script::
-	setvar VAR_ROUTE117_STATE, 4
 	msgbox gText_SurvivalChance333_WontEvenBeAFair
 	closemessage
 	multi_fixed_2_vs_1 TRAINER_TIFFANY, gText_SurvivalChance333_Hmph, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
@@ -97,15 +87,14 @@ SurvivalChance333_Battle_Script::
 
 
 SurvivalChance333_PostBattle_Script::
-	setvar VAR_ROUTE117_STATE, 5
+	addvar VAR_ROUTE117_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_DoYouGetItNow
 	callnative ClearMugshot
 	msgbox gText_SurvivalChance333_YoureAPairOfKids
 	closemessage
-	setflag FLAG_HIDE_SURVIVAL_CHANCE_FERRY
-	setvar VAR_NATIVERIVALBETA_STATE, 3
+	addvar VAR_NATIVERIVALBETA_STATE, 1
 	warpsilent MAP_PSFCITY17, 255, 21, 24
 	return
 
@@ -196,7 +185,7 @@ SurvivalChance333_SetLava::
 
 
 SurvivalChance333_ExplainOperation::
-	lockall
+	lock
 	setvar VAR_NATIVERIVALBETA_STATE, 4
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
@@ -229,7 +218,7 @@ SurvivalChance333_ExplainOperation::
 
 
 SurvivalChance333_TacticalPlan_Cutscene_Script::
-	lockall
+	lock
 	call SurvivalChance333_MoveCameraFreeze_Script
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
@@ -281,9 +270,15 @@ SurvivalChance333_TacticalPlan_Cutscene_Script::
 	removeobject 6
 	removeobject 7
 	removeobject 8
-	releaseall
+	release
 	end
 
+
+SurvivalChance333_WalkToChief:
+	walk_right
+	walk_up
+	walk_up
+	step_end
 
 SurvivalChance333_GiveTM:
 	walk_down
