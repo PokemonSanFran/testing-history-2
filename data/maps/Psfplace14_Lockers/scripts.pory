@@ -5,22 +5,29 @@ mapscripts Psfplace14_Lockers_MapScripts {
     MAP_SCRIPT_ON_LOAD {
     }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-        VAR_STORYLINE_STATE, 24: HeresHowThisIsGoingToGo_ObjectSetUp_Script 
-        VAR_STORYLINE_STATE, 25: HeresHowThisIsGoingToGo_CleanUpVObjects_Script
+        VAR_STORYLINE_STATE, 27: HeresHowThisIsGoingToGo_ObjectSetUp_Script 
+        VAR_STORYLINE_STATE, 28: HeresHowThisIsGoingToGo_CleanUpVObjects_Script
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 24: HeresHowThisIsGoingToGo_ExplainLeagueDialogue
+        VAR_STORYLINE_STATE, 27: HeresHowThisIsGoingToGo_ExplainLeagueDialogue
     ]
 }
 
 script Psfplace14_Lockers_MapScripts_OnTransition {
     switch (var(VAR_STORYLINE_STATE)){
-        case 28: goto(WaitHeDidWhat_MeltdownSetUp_Script)
+        case 28: goto(HeresHowThisIsGoingToGo_ObjectCleanUp_Script)
+        case 29: goto(HeresHowThisIsGoingToGo_ObjectCleanUp_Script)
+        case 30: goto(HeresHowThisIsGoingToGo_ObjectCleanUp_Script)
+        case 31: goto(WaitHeDidWhat_MeltdownSetUp_Script)
+    }
+
+    switch (var(VAR_ROUTE119_STATE)){
+        default: call(WhyDidntYouRatMeOut_HideObject_Lockers_Script)
     }
 }
 
 script Psfplace14_Lockers_Psftransrival_Event_Script {
     switch (var(VAR_STORYLINE_STATE)){
-        case 28: goto(WaitHeDidWhat_PsftransrivalMeltdown_Dialogue)
+        case 31: goto(WaitHeDidWhat_PsftransrivalMeltdown_Dialogue)
     }
 }

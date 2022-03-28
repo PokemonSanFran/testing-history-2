@@ -1,19 +1,24 @@
 WhyDidntYouRatMeOut_HideObject_Script::
-	setflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL
-	setflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
 	return
 
 
 WhyDidntYouRatMeOut_ShowObject_Script::
-	clearflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL
-	addobject 1
+	setflag FLAG_TEMP_2
+	return
+
+
+WhyDidntYouRatMeOut_HideObject_Lockers_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_4
 	return
 
 
 WhyDidntYouRatMeOut_StopPlayerLeaving::
 	lock
-	setflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL
-	setflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
 	addvar VAR_ROUTE119_STATE, 1
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 0
@@ -123,7 +128,7 @@ WhyDidntYouRatMeOut_ConversationInStands::
 	msgbox gText_WhyDidntYouRatMeOut_MyGroupIsStarting
 	callnative ClearMugshot
 	closemessage
-	clearflag FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN
+	clearflag FLAG_TEMP_2
 	addobject 2
 	applymovement 1, WhyDidntYouRatMeOut_LeaveStands
 	applymovement 2, WhyDidntYouRatMeOut_EnterStands
@@ -141,6 +146,7 @@ WhyDidntYouRatMeOut_ConversationInStands::
 	callnative ClearMugshot
 	closemessage
 	playse SE_EXIT
+	addvar VAR_STORYLINE_STATE, 2
 	warpsilent MAP_PSFPLACE14_SKYBOX, 10, 3
 	return
 
@@ -182,12 +188,8 @@ WhyDidntYouRatMeOut_WatchPsftransrivalMatches::
 	msgbox gText_WhyDidntYouRatMeOut_YourGroupIsNext
 	closemessage
 	callnative ClearMugshot
-	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_STORYLINE_STATE, 3
 	addvar VAR_ROUTE119_STATE, 1
-	addvar VAR_ROUTE119_STATE, 1
-	warpsilent MAP_PSFPLACE14_ENTRANCE, 11, 5
 	releaseall
 	end
 

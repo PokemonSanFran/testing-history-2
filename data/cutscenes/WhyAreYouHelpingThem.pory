@@ -11,6 +11,7 @@ script WhyAreYouHelpingThem_HideObject_Script {
 }
 
 script WhyAreYouHelpingThem_ObjectCleanUp_Script {
+        setflag(FLAG_TEMP_4)
     setflag(FLAG_TEMP_3)
         setflag(FLAG_TEMP_2)
         setflag(FLAG_TEMP_1)
@@ -38,12 +39,14 @@ script WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script {
 }
 
 script WhyAreYouHelpingThem_BlowHoleWall {
-    setmetatile(12,1,0x3C8,FALSE)
+    setmetatile(12,1,0x3F2,FALSE)
         special(DrawWholeMapView)
 }
 
 script WhyAreYouHelpingThem_ObjectSetUpPostSave_Script {
-    setobjectxy(PSFNATIVERIVAL,6,3)
+        setflag(FLAG_TEMP_1)
+        setflag(FLAG_TEMP_2)
+        setobjectxy(PSFNATIVERIVAL,6,3)
         setobjectxyperm(PSFNATIVERIVAL,6,3)
         turnobject(PSFNATIVERIVAL,DIR_WEST)
         setobjectxy(PSFTRANSRIVAL,2,16)
@@ -60,19 +63,22 @@ script WhyAreYouHelpingThem_ObjectDebriefSetUp_Script {
 }
 
 script WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script {
-    setflag(FLAG_TEMP_3)
+        setflag(FLAG_TEMP_3)
 
+        setobjectxy(1,6,6)
+        setobjectxy(2,6,5)
         setobjectxyperm(1,6,6)
-        setobjectxyperm(3,6,5)
+        setobjectxyperm(2,6,5)
+        turnobject(2,DIR_SOUTH)
 
-        setobjectmovementtype(3,MOVEMENT_TYPE_FACE_DOWN)
+        setobjectmovementtype(2,MOVEMENT_TYPE_FACE_DOWN)
         setobjectmovementtype(1,MOVEMENT_TYPE_FACE_UP)
 }
 
 script WhyAreYouHelpingThem_StartRaid {
 
     lock
-        setvar(VAR_ROUTE118_STATE,1)
+        addvar(VAR_ROUTE118_STATE,1)
 
         playse(SE_FAILURE)
         playse(SE_FAILURE)
@@ -119,7 +125,7 @@ script WhyAreYouHelpingThem_StartRaid {
 }
 
 script WhyAreYouHelpingThem_WitnessBattle {
-    setvar(VAR_ROUTE118_STATE,2)
+    addvar(VAR_ROUTE118_STATE,1)
         lock
         applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_FleeTheBattle)
         waitmovement(0)
@@ -160,7 +166,7 @@ script WhyAreYouHelpingThem_PreBattleBoss_Script {
 }
 
 script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
-    setvar(VAR_ROUTE118_STATE,3)
+        addvar(VAR_ROUTE118_STATE,1)
         addobject(PSFGOODADMIN)
         call(WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script)
 
@@ -243,8 +249,6 @@ script WhyAreYouHelpingThem_ExplodeWall_Script {
         waitse
         addobject(PSFNATIVERIVAL)
         applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_WalkOutOfHole)
-        setobjectxy(PSFNATIVERIVAL,7,3)
-        setobjectxyperm(PSFNATIVERIVAL,7,3)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -305,6 +309,7 @@ script WhyAreYouHelpingThem_StartBattle_Script{
 
 script WhyAreYouHelpingThem_PostBattle_Dialogue {
 
+        addvar(VAR_ROUTE118_STATE,1)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_TellsMeYoureAll)
@@ -339,15 +344,15 @@ script WhyAreYouHelpingThem_PostBattle_Dialogue {
         msgbox(gText_WhyAreYouHelpingThem_NoILostToo)
         callnative(ClearMugshot)
         closemessage
-        setvar(VAR_NATIVERIVALBETA_STATE,5)
+        addvar(VAR_NATIVERIVALBETA_STATE,1)
         fadescreen(FADE_TO_BLACK)
         warpsilent(MAP_PSFCITY17,255,26,6)
 }
 
 
 script WhyAreYouHelpingThem_MissionDebrief_Dialogue {
-    setvar(VAR_NATIVERIVALBETA_STATE,6)
-        setvar(VAR_LITTLEROOT_INTRO_STATE,7)
+        addvar(VAR_NATIVERIVALBETA_STATE,1)
+        addvar(VAR_LITTLEROOT_INTRO_STATE,1)
         lock
         applymovement(PLAYER,Common_Movement_FaceUp)
 
@@ -376,7 +381,7 @@ script WhyAreYouHelpingThem_MissionDebrief_Dialogue {
 }
 
 script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
-    addvar(VAR_STORYLINE_STATE,1)
+        addvar(VAR_STORYLINE_STATE,1)
         addvar(VAR_LITTLEROOT_INTRO_STATE,1)
         applymovement(PLAYER,WhyAreYouHelpingThem_WalkIntoHome)
         waitmovement(0)
@@ -407,11 +412,11 @@ script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(3,WhyAreYouHelpingThem_LeaveCompoundA)
+        applymovement(2,WhyAreYouHelpingThem_LeaveCompoundA)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(3)
+        removeobject(2)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)

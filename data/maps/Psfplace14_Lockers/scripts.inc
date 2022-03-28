@@ -13,28 +13,46 @@ Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 24, HeresHowThisIsGoingToGo_ObjectSetUp_Script
-	map_script_2 VAR_STORYLINE_STATE, 25, HeresHowThisIsGoingToGo_CleanUpVObjects_Script
+	map_script_2 VAR_STORYLINE_STATE, 27, HeresHowThisIsGoingToGo_ObjectSetUp_Script
+	map_script_2 VAR_STORYLINE_STATE, 28, HeresHowThisIsGoingToGo_CleanUpVObjects_Script
 	.2byte 0
 
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 24, HeresHowThisIsGoingToGo_ExplainLeagueDialogue
+	map_script_2 VAR_STORYLINE_STATE, 27, HeresHowThisIsGoingToGo_ExplainLeagueDialogue
 	.2byte 0
 
 
 Psfplace14_Lockers_MapScripts_OnTransition::
 	switch VAR_STORYLINE_STATE
-	case 28, Psfplace14_Lockers_MapScripts_OnTransition_2
+	case 28, Psfplace14_Lockers_MapScripts_OnTransition_3
+	case 29, Psfplace14_Lockers_MapScripts_OnTransition_4
+	case 30, Psfplace14_Lockers_MapScripts_OnTransition_5
+	case 31, Psfplace14_Lockers_MapScripts_OnTransition_6
+Psfplace14_Lockers_MapScripts_OnTransition_1:
+	switch VAR_ROUTE119_STATE
+	call WhyDidntYouRatMeOut_HideObject_Lockers_Script
 	return
 
-Psfplace14_Lockers_MapScripts_OnTransition_2:
+Psfplace14_Lockers_MapScripts_OnTransition_3:
+	goto HeresHowThisIsGoingToGo_ObjectCleanUp_Script
+	goto Psfplace14_Lockers_MapScripts_OnTransition_1
+
+Psfplace14_Lockers_MapScripts_OnTransition_4:
+	goto HeresHowThisIsGoingToGo_ObjectCleanUp_Script
+	goto Psfplace14_Lockers_MapScripts_OnTransition_1
+
+Psfplace14_Lockers_MapScripts_OnTransition_5:
+	goto HeresHowThisIsGoingToGo_ObjectCleanUp_Script
+	goto Psfplace14_Lockers_MapScripts_OnTransition_1
+
+Psfplace14_Lockers_MapScripts_OnTransition_6:
 	goto WaitHeDidWhat_MeltdownSetUp_Script
-	return
+	goto Psfplace14_Lockers_MapScripts_OnTransition_1
 
 
 Psfplace14_Lockers_Psftransrival_Event_Script::
 	switch VAR_STORYLINE_STATE
-	case 28, Psfplace14_Lockers_Psftransrival_Event_Script_2
+	case 31, Psfplace14_Lockers_Psftransrival_Event_Script_2
 	return
 
 Psfplace14_Lockers_Psftransrival_Event_Script_2:

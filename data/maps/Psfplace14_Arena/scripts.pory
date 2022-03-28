@@ -1,5 +1,6 @@
 mapscripts Psfplace14_Arena_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfplace14_Arena_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_LOAD {
        goto(Psfplace14_Arena_MapScripts_OnLoad)
@@ -8,19 +9,21 @@ mapscripts Psfplace14_Arena_MapScripts {
         goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience)
     }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-        VAR_STORYLINE_STATE, 28: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
-        VAR_STORYLINE_STATE, 29: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
-        VAR_STORYLINE_STATE, 30: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+        VAR_STORYLINE_STATE, 32: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+        VAR_STORYLINE_STATE, 33: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+        VAR_STORYLINE_STATE, 34: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 28: WaitHeDidWhat_WalkIntoChampionshipPosition
+        VAR_STORYLINE_STATE, 32: WaitHeDidWhat_WalkIntoChampionshipPosition
     ]
 }
 
 script Psfplace14_Arena_MapScripts_OnLoad {
-    setflag(FLAG_TEMP_1)
     switch (var(VAR_STORYLINE_STATE)){
-        case 29: goto(WaitHeDidWhat_MovePlayerPostSave_Script)
+        case 33: goto(WaitHeDidWhat_MovePlayerPostSave_Script)
     }
 }
 
+script Psfplace14_Arena_MapScripts_OnTransition {
+    setflag(FLAG_TEMP_1)
+}

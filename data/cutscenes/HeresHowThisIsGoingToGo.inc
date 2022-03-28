@@ -1,3 +1,9 @@
+HeresHowThisIsGoingToGo_ObjectCleanUp_Script::
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
+	return
+
+
 HeresHowThisIsGoingToGo_ConstructionCompleted_Script::
 	setmetatile 19, 13, 0x371, TRUE
 	setmetatile 19, 14, 0x379, TRUE
@@ -30,7 +36,6 @@ HeresHowThisIsGoingToGo_ConstructionCompleted_Script::
 
 
 HeresHowThisIsGoingToGo_ObjectSetUp_Script::
-	createvobject OBJ_EVENT_GFX_LITTLE_BOY, 5, 6, 5, 3, DIR_NORTH
 	createvobject OBJ_EVENT_GFX_BOY_2, 6, 8, 5, 3, DIR_NORTH
 	createvobject OBJ_EVENT_GFX_MAN_2, 7, 9, 5, 3, DIR_NORTH
 	createvobject OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F, 8, 10, 5, 3, DIR_NORTH
@@ -43,11 +48,11 @@ HeresHowThisIsGoingToGo_ObjectSetUp_Script::
 	createvobject OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M, 15, 10, 6, 3, DIR_NORTH
 	createvobject OBJ_EVENT_GFX_WOMAN_4, 16, 12, 6, 3, DIR_NORTH
 	createvobject OBJ_EVENT_GFX_MYSTERY_GIFT_MAN, 17, 13, 6, 3, DIR_NORTH
+	createvobject OBJ_EVENT_GFX_LITTLE_BOY, 18, 6, 5, 3, DIR_NORTH
 	return
 
 
 HeresHowThisIsGoingToGo_CleanUpVObjects_Script::
-	removeobject 5
 	removeobject 6
 	removeobject 7
 	removeobject 8

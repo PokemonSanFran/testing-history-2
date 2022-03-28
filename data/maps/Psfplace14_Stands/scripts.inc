@@ -14,20 +14,11 @@ Psfplace14_Stands_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 Psfplace14_Stands_MapScripts_OnTransition::
 	switch VAR_ROUTE119_STATE
-	case 0, Psfplace14_Stands_MapScripts_OnTransition_2
-	case 1, Psfplace14_Stands_MapScripts_OnTransition_3
-	case 2, Psfplace14_Stands_MapScripts_OnTransition_4
+	case 1, Psfplace14_Stands_MapScripts_OnTransition_2
+	goto WhyDidntYouRatMeOut_HideObject_Script
 	return
 
 Psfplace14_Stands_MapScripts_OnTransition_2:
-	goto WhyDidntYouRatMeOut_HideObject_Script
-	return
-
-Psfplace14_Stands_MapScripts_OnTransition_3:
 	goto WhyDidntYouRatMeOut_ShowObject_Script
-	return
-
-Psfplace14_Stands_MapScripts_OnTransition_4:
-	goto WhyDidntYouRatMeOut_HideObject_Script
 	return
 

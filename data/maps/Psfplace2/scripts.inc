@@ -28,6 +28,7 @@ Psfplace2_MapScripts_OnTransition::
 	case 1, Psfplace2_MapScripts_OnTransition_3
 	case 2, Psfplace2_MapScripts_OnTransition_4
 	case 3, Psfplace2_MapScripts_OnTransition_5
+	goto WhyAreYouHelpingThem_ObjectCleanUp_Script
 	return
 
 Psfplace2_MapScripts_OnTransition_2:

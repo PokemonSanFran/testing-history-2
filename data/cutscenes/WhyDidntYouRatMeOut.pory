@@ -5,19 +5,23 @@ const PSFNATIVERIVAL = 3
 const PSFBADADMIN = 4
 
 script WhyDidntYouRatMeOut_HideObject_Script {
-    setflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL)
-    setflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN)
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_2)
 }
 
 script WhyDidntYouRatMeOut_ShowObject_Script {
-    clearflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL)
-    addobject(1)
+    setflag(FLAG_TEMP_2)
+}
+
+script WhyDidntYouRatMeOut_HideObject_Lockers_Script {
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_4)
 }
 
 script WhyDidntYouRatMeOut_StopPlayerLeaving {
         lock
-    setflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL)
-    setflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN)
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_2)
         addvar(VAR_ROUTE119_STATE,1)
         applymovement(PSFNATIVERIVAL,Common_Movement_FaceDown)
         waitmovement(0)
@@ -153,7 +157,7 @@ script WhyDidntYouRatMeOut_ConversationInStands {
         callnative(ClearMugshot)
         closemessage
 
-        clearflag(FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN)
+        clearflag(FLAG_TEMP_2)
         addobject(2)
         applymovement(1,WhyDidntYouRatMeOut_LeaveStands)
         applymovement(2,WhyDidntYouRatMeOut_EnterStands)
@@ -175,6 +179,7 @@ script WhyDidntYouRatMeOut_ConversationInStands {
         closemessage
 
         playse(SE_EXIT)
+        addvar(VAR_STORYLINE_STATE,2)
         warpsilent(MAP_PSFPLACE14_SKYBOX,10,3)
 }
 
@@ -219,12 +224,8 @@ script WhyDidntYouRatMeOut_WatchPsftransrivalMatches {
     closemessage
     callnative(ClearMugshot)
 
-    addvar(VAR_STORYLINE_STATE,1)
-    addvar(VAR_STORYLINE_STATE,1)
-    addvar(VAR_STORYLINE_STATE,1)
+    addvar(VAR_STORYLINE_STATE,3) //one for each battle won
     addvar(VAR_ROUTE119_STATE,1)
-    addvar(VAR_ROUTE119_STATE,1)
-    warpsilent(MAP_PSFPLACE14_ENTRANCE,11,5)//PSF TODO remove this once battles are implemented
     releaseall
     end
 }

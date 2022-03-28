@@ -26,5 +26,6 @@ script Psfplace2_MapScripts_OnTransition {
         case 1: goto(WhyAreYouHelpingThem_MoveObject_Script)
         case 2: goto(WhyAreYouHelpingThem_MoveObjectBoss_Script)
         case 3: goto(WhyAreYouHelpingThem_ObjectSetUpPostSave_Script)
+        default: goto(WhyAreYouHelpingThem_ObjectCleanUp_Script)
     }
 }
