@@ -46,7 +46,7 @@
 #define FLAG_SYS_NO_TRAINER_SEE     0x22 // Unused Flag //DEBUG
 #define FLAG_SYS_NO_BAG_USE         0x23 // Unused Flag //DEBUG
 #define FLAG_SYS_NO_CATCHING        0x24 // Unused Flag //DEBUG
-#define FLAG_UNUSED_0x25 0x25 // Unused Flag
+#define FLAG_PSFPLACE14_TOURNAMENT_HAPPENING 0x25 // Previously Unused Flag
 #define FLAG_SAVED_DAVID            0x26 // Previously Unused Flag
 #define FLAG_UNUSED_0x27 0x27 //Previously Unused Flag
 #define FLAG_HIDE_MADISON    0x28 // Previously Unused Flag

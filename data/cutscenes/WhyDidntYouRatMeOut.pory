@@ -1,28 +1,22 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADBOSS = 1
-const PSFTRANSRIVAL = 2
-const PSFNATIVERIVAL = 3
-const PSFBADADMIN = 4
+const PSFBADBOSS = 1 //FLAG_TEMP_1
+const PSFTRANSRIVAL = 2 //FLAG_TEMP_2
+const PSFNATIVERIVAL = 3 //FLAG_TEMP_3
+const PSFBADADMIN = 4 //FLAG_TEMP_4
 
 script WhyDidntYouRatMeOut_HideObject_Script {
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-}
-
-script WhyDidntYouRatMeOut_ShowObject_Script {
-    setflag(FLAG_TEMP_2)
-}
-
-script WhyDidntYouRatMeOut_HideObject_Lockers_Script {
-    setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_4)
+}
+
+script WhyDidntYouRatMeOut_CleanUpObject_Script {
+    setflag(FLAG_TEMP_4)
+    setflag(FLAG_TEMP_3)
 }
 
 script WhyDidntYouRatMeOut_StopPlayerLeaving {
         lock
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-        addvar(VAR_ROUTE119_STATE,1)
+        setflag(FLAG_TEMP_1)
+        setflag(FLAG_TEMP_2)
         applymovement(PSFNATIVERIVAL,Common_Movement_FaceDown)
         waitmovement(0)
 
@@ -54,8 +48,6 @@ script WhyDidntYouRatMeOut_StopPlayerLeaving {
 }
 
 script WhyDidntYouRatMeOut_ConversationInStands {
-        addvar(VAR_ROUTE119_STATE,1)
-
         applymovement(PLAYER,WhyDidntYouRatMeOut_WalkSlowlyUpStairsLeft)
         applymovement(1,WhyDidntYouRatMeOut_WalkSlowlyUpStairsRight)
 
@@ -179,7 +171,6 @@ script WhyDidntYouRatMeOut_ConversationInStands {
         closemessage
 
         playse(SE_EXIT)
-        addvar(VAR_STORYLINE_STATE,2)
         warpsilent(MAP_PSFPLACE14_SKYBOX,10,3)
 }
 
@@ -223,9 +214,8 @@ script WhyDidntYouRatMeOut_WatchPsftransrivalMatches {
     msgbox(gText_WhyDidntYouRatMeOut_YourGroupIsNext)
     closemessage
     callnative(ClearMugshot)
+    addvar(VAR_STORYLINE_STATE,1)
 
-    addvar(VAR_STORYLINE_STATE,3) //one for each battle won
-    addvar(VAR_ROUTE119_STATE,1)
     releaseall
     end
 }
@@ -327,7 +317,7 @@ text gText_WhyDidntYouRatMeOut_UhYeahWeMet {
 }
 
 text gText_WhyDidntYouRatMeOut_IMeantToTell {
-    format("I meant to tell you earlier - the Psfbadguy executives have a fully catered skybox to watch the Championship. We're about to watch Psfnativerival's group!")
+    format("I meant to tell you earlier - the Psfbadguy executives have a fully catered skybox to watch the Championship. We're about to watch Psftransrival's group!")
 }
 
 text gText_WhyDidntYouRatMeOut_WinsTheirGroup {
@@ -335,7 +325,7 @@ text gText_WhyDidntYouRatMeOut_WinsTheirGroup {
 }
 
 text gText_WhyDidntYouRatMeOut_YourGroupIsNext {
-    format("Your group is up next! Head through the locker room and you'll reach the arena.  Good luck! Or that's what I'll say in the final game. For now, just leave this room and come back for the next scene.")
+    format("Your group is up next! Head through the locker room and you'll reach the arena.  Good luck!")
 }
 
 movement WhyDidntYouRatMeOut_WalkToPlayerLeft {

@@ -38,7 +38,6 @@ set termguicolors
 set ttimeout
 set ttimeoutlen=100
 set wildmenu
-set window=60
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -54,7 +53,7 @@ $argadd data/maps/Psfbadguy1Tower_2F/scripts.pory
 set stal=2
 tabnew
 tabrewind
-edit data/maps/Psfcave1_B1F/scripts.pory
+edit data/cutscenes/WhyDidntYouRatMeOut.pory
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -72,9 +71,9 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 85 + 94) / 188)
-exe '2resize ' . ((&lines * 29 + 30) / 61)
+exe '2resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 102 + 94) / 188)
-exe '3resize ' . ((&lines * 28 + 30) / 61)
+exe '3resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 102 + 94) / 188)
 argglobal
 terminal ++curwin ++cols=85 ++rows=58 
@@ -331,15 +330,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 14) / 29)
+let s:l = 19 - ((18 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+19
 normal! 0
 wincmd w
 argglobal
-if bufexists("data/cutscenes/IGuessWeShouldBeNiceNow.pory") | buffer data/cutscenes/IGuessWeShouldBeNiceNow.pory | else | edit data/cutscenes/IGuessWeShouldBeNiceNow.pory | endif
+if bufexists("data/maps/Psfplace14_Lockers/scripts.pory") | buffer data/maps/Psfplace14_Lockers/scripts.pory | else | edit data/maps/Psfplace14_Lockers/scripts.pory | endif
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -463,18 +462,18 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 14) / 28)
+let s:l = 26 - ((23 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+26
+normal! 05|
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 94) / 188)
-exe '2resize ' . ((&lines * 29 + 30) / 61)
+exe '2resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 102 + 94) / 188)
-exe '3resize ' . ((&lines * 28 + 30) / 61)
+exe '3resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 102 + 94) / 188)
 tabnext
 edit docs/vars
@@ -630,12 +629,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 203 - ((23 * winheight(0) + 14) / 29)
+let s:l = 231 - ((17 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-203
-normal! 056|
+231
+normal! 011|
 wincmd w
 argglobal
 if bufexists("docs/flags") | buffer docs/flags | else | edit docs/flags | endif
@@ -762,11 +761,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 14) / 28)
+let s:l = 2 - ((1 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+2
 normal! 038|
 wincmd w
 argglobal
@@ -894,11 +893,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 272 - ((13 * winheight(0) + 14) / 29)
+let s:l = 163 - ((18 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-272
+163
 normal! 013|
 wincmd w
 argglobal
@@ -1026,12 +1025,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 77 - ((5 * winheight(0) + 14) / 28)
+let s:l = 1641 - ((13 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-77
-normal! 031|
+1641
+normal! 09|
 wincmd w
 exe '1resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 1resize ' . ((&columns * 94 + 94) / 188)
@@ -1043,15 +1042,17 @@ exe '4resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 93 + 94) / 188)
 tabnext 1
 set stal=1
-badd +1 data/cutscenes/WaitYouWentWhere.pory
-badd +16 data/maps/Psfbadguy1Tower_2F/scripts.pory
-badd +1 include/constants/vars.h
-badd +1 data/maps/Psfroute19/scripts.pory
-badd +1 include/constants/flags.h
-badd +2 docs/flags
+badd +1 data/maps/Psfcave1_B1F/scripts.pory
+badd +22 data/maps/Psfbadguy1Tower_2F/scripts.pory
 badd +78 docs/vars
+badd +1 data/cutscenes/IGuessWeShouldBeNiceNow.pory
+badd +2 docs/flags
+badd +1 include/constants/vars.h
+badd +1 include/constants/flags.h
+badd +1 data/cutscenes/WaitYouWentWhere.pory
+badd +1 data/maps/Psfroute19/scripts.pory
 badd +86 data/cutscenes/AssholesHome.pory
-badd +1 data/maps/Psfcity17/scripts.pory
+badd +18 data/maps/Psfcity17/scripts.pory
 badd +73 data/cutscenes/AaandWereBack.pory
 badd +34 data/maps/Psfcity8_Compound_2F/scripts.pory
 badd +1 data/cutscenes/HowDoWeGetHome.pory
@@ -1062,18 +1063,18 @@ badd +11 data/maps/Psfbadguy1Tower_10F/scripts.pory
 badd +1141 data/event_scripts.s
 badd +15 data/cutscenes/TheGangsAllHere.pory
 badd +1 data/maps/Psfbadguy1Tower_Elevator/scripts.pory
-badd +29 data/maps/Psfroute22/scripts.pory
-badd +81 data/cutscenes/WelcometotheWarRoom.pory
-badd +11 data/cutscenes/YouRealizeWereEvilRight.pory
-badd +254 data/cutscenes/SurvivalChance333.pory
+badd +25 data/maps/Psfroute22/scripts.pory
+badd +27 data/cutscenes/WelcometotheWarRoom.pory
+badd +1 data/cutscenes/YouRealizeWereEvilRight.pory
+badd +288 data/cutscenes/SurvivalChance333.pory
 badd +21 data/map_events.s
 badd +1 data/maps/events.inc
 badd +1 data/maps/Psfcity7/events.inc
 badd +357 data/maps/Psfcity7/map.json
-badd +30 data/maps/Psfcity8_Compound_1F/scripts.pory
+badd +41 data/maps/Psfcity8_Compound_1F/scripts.pory
 badd +1 data/text/storyline_progression.pory
-badd +1 data/cutscenes/WhyAreYouHelpingThem.pory
-badd +245 data/cutscenes/OffYouGo.pory
+badd +437 data/cutscenes/WhyAreYouHelpingThem.pory
+badd +1 data/cutscenes/OffYouGo.pory
 badd +1 data/cutscenes/YouRealizeTheyreEvilRight.pory
 badd +23 data/maps/Psfroute63/scripts.pory
 badd +208 data/cutscenes/HousingProtest.pory
@@ -1092,23 +1093,47 @@ badd +63 include/constants/battle_ai.h
 badd +9329 src/battle_util.c
 badd +20 data/cutscenes/TheStorySoFar.pory
 badd +76 data/cutscenes/Battle8.pory
-badd +6 data/maps/Psfplace3/scripts.pory
+badd +1 data/maps/Psfplace3/scripts.pory
 badd +285 data/cutscenes/Kogasraisondetre.pory
 badd +13 data/cutscenes/EnterClair.pory
 badd +1 data/maps/Psfcity5_Gym/scripts.pory
 badd +8 data/maps/Psfcity18/scripts.pory
-badd +9 data/maps/Psfcity5/scripts.pory
-badd +2 data/cutscenes/ANewStrike.pory
-badd +70 data/cutscenes/TheStrikeStrikesBack.pory
+badd +1 data/maps/Psfcity5/scripts.pory
+badd +1 data/cutscenes/ANewStrike.pory
+badd +1 data/cutscenes/TheStrikeStrikesBack.pory
 badd +174 data/maps/Psfroute22/map.json
 badd +452 data/maps/MauvilleCity/scripts.inc
-badd +26 data/cutscenes/VSGarbodor.pory
-badd +9 data/maps/Psfplace17/scripts.pory
-badd +46 data/maps/Psfplace17/map.json
-badd +0 data/cutscenes/IGuessWeShouldBeNiceNow.pory
-badd +0 data/maps/Psfcave1_B1F/scripts.pory
+badd +1 data/cutscenes/VSGarbodor.pory
+badd +1 data/maps/Psfplace17/scripts.pory
+badd +1 data/maps/Psfplace17/map.json
 badd +6 data/cutscenes/ImProbablyBetterThanYou.pory
 badd +26 data/cutscenes/swagbag.pory
+badd +61 .github/workflows/build.yml
+badd +95 data/maps/Psfcave1_B1F/map.json
+badd +34 data/maps/Psfcity10/map.json
+badd +16 data/maps/Psfcity10/scripts.pory
+badd +6 data/maps/Psfcave2/scripts.pory
+badd +34 data/cutscenes/EntertheMaster.pory
+badd +0 data/maps/Psfcave2/map.json
+badd +13 data/maps/Psfroute61/scripts.pory
+badd +8 data/cutscenes/HaveYouSeenTheNews.pory
+badd +14 data/maps/Psfcave2_Inner/scripts.pory
+badd +13 data/maps/Psfcity12/scripts.pory
+badd +13 data/cutscenes/EnterAriana.pory
+badd +145 data/maps/Psfbadguy1Tower_2F/map.json
+badd +10 data/maps/Psfplace11/scripts.pory
+badd +178 data/maps/Psfcity17/map.json
+badd +29 data/maps/Psfplace2/scripts.pory
+badd +67 data/maps/Psfplace2/map.json
+badd +12 data/maps/Psfcity15_Gym/scripts.pory
+badd +26 data/cutscenes/EnterWhitney.pory
+badd +0 data/cutscenes/ReadySetIStarted2HoursAgo.pory
+badd +1 data/maps/Psfplace14_Lockers/scripts.pory
+badd +136 data/cutscenes/HeresHowThisIsGoingToGo.pory
+badd +29 data/maps/Psfplace14_Arena/scripts.pory
+badd +13 data/maps/Psfplace14_Stands/scripts.pory
+badd +0 data/cutscenes/WhyDidntYouRatMeOut.pory
+badd +7 data/maps/Psfplace14_Skybox/scripts.pory
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif

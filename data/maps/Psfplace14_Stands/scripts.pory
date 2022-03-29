@@ -3,14 +3,14 @@ mapscripts Psfplace14_Stands_MapScripts {
         goto(Psfplace14_Stands_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ROUTE119_STATE, 1: WhyDidntYouRatMeOut_ConversationInStands
+        VAR_STORYLINE_STATE, 28: WhyDidntYouRatMeOut_ConversationInStands
     ]
 }
 
 script Psfplace14_Stands_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE119_STATE)){
-        case 1: goto(WhyDidntYouRatMeOut_ShowObject_Script)
-        default: goto(WhyDidntYouRatMeOut_HideObject_Script)
+    switch (var(VAR_STORYLINE_STATE)){
+        case 28: call(WhyDidntYouRatMeOut_HideObject_Script)
+        default: call(WhyDidntYouRatMeOut_CleanUpObject_Script)
 
     }
 }

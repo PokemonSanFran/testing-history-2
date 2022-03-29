@@ -1,11 +1,11 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADBOSS = 1
-const PSFTRANSRIVAL = 2
-const PSFNATIVERIVAL = 3
-const PSFBADADMIN = 4
+const PSFBADBOSS = 1 //FLAG_TEMP_1
+const PSFTRANSRIVAL = 2 //FLAG_TEMP_2
+const PSFNATIVERIVAL = 3 //FLAG_TEMP_3
+const PSFBADADMIN = 4 //FLAG_TEMP_4
 
-script HeresHowThisIsGoingToGo_ObjectCleanUp_Script {
-    setflag(FLAG_TEMP_3)
+script HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script {
+    setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_4)
 }
 

@@ -1,17 +1,11 @@
 WhyDidntYouRatMeOut_HideObject_Script::
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
-	return
-
-
-WhyDidntYouRatMeOut_ShowObject_Script::
-	setflag FLAG_TEMP_2
-	return
-
-
-WhyDidntYouRatMeOut_HideObject_Lockers_Script::
-	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_4
+	return
+
+
+WhyDidntYouRatMeOut_CleanUpObject_Script::
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_3
 	return
 
 
@@ -19,7 +13,6 @@ WhyDidntYouRatMeOut_StopPlayerLeaving::
 	lock
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
-	addvar VAR_ROUTE119_STATE, 1
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
@@ -50,7 +43,6 @@ WhyDidntYouRatMeOut_StopPlayerLeaving_2:
 
 
 WhyDidntYouRatMeOut_ConversationInStands::
-	addvar VAR_ROUTE119_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, WhyDidntYouRatMeOut_WalkSlowlyUpStairsLeft
 	applymovement 1, WhyDidntYouRatMeOut_WalkSlowlyUpStairsRight
 	setvar VAR_0x8000, MUGSHOT_HILDA
@@ -146,7 +138,6 @@ WhyDidntYouRatMeOut_ConversationInStands::
 	callnative ClearMugshot
 	closemessage
 	playse SE_EXIT
-	addvar VAR_STORYLINE_STATE, 2
 	warpsilent MAP_PSFPLACE14_SKYBOX, 10, 3
 	return
 
@@ -188,8 +179,7 @@ WhyDidntYouRatMeOut_WatchPsftransrivalMatches::
 	msgbox gText_WhyDidntYouRatMeOut_YourGroupIsNext
 	closemessage
 	callnative ClearMugshot
-	addvar VAR_STORYLINE_STATE, 3
-	addvar VAR_ROUTE119_STATE, 1
+	addvar VAR_STORYLINE_STATE, 1
 	releaseall
 	end
 
@@ -376,7 +366,7 @@ gText_WhyDidntYouRatMeOut_IMeantToTell::
 	.string "Psfbadguy executives have a fully\l"
 	.string "catered skybox to watch the\l"
 	.string "Championship. We're about to watch\l"
-	.string "Psfnativerival's group!$"
+	.string "Psftransrival's group!$"
 
 gText_WhyDidntYouRatMeOut_WinsTheirGroup::
 	.string "And Psftransrival wins their group,\n"
@@ -387,6 +377,4 @@ gText_WhyDidntYouRatMeOut_WinsTheirGroup::
 gText_WhyDidntYouRatMeOut_YourGroupIsNext::
 	.string "Your group is up next! Head through the\n"
 	.string "locker room and you'll reach the arena.\l"
-	.string "Good luck! Or that's what I'll say in the\l"
-	.string "final game. For now, just leave this\l"
-	.string "room and come back for the next scene.$"
+	.string "Good luck!$"

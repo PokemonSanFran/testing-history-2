@@ -152,6 +152,9 @@
 26: Finished Raid on the Naval Base
 27: Slept the night after the naval base, starting the championship
 28: Has not talked to Archer yet, but has heard the explanation
+29: Right before player starts their group stage
+
+##WORKING ON
 29: Has talked to Archer and watched Bianca win their group
 30: About to start Group Stage
 31: Won 1st battle
@@ -227,13 +230,10 @@
 5: solved the puzzles, oak waiting inside
 6: oak has asked player to meet them on the 2nd floor 
 
-
 #VAR_ROUTE119_STATE
-1: Archer is about to apologize
-2: Archer has apologized
-3: Bianca has won their group
-4: Bianca is about to go fight Archer
-5: Bianca has beaten Archer
+#**RELEVANCE**: Chase Center lock state
+0: no championship currently happening
+1: player should be locked in
 
 #VAR_ROUTE120_STATE
 X: Act 4:Used to find the location of the last completed restoration quest, number should correspond to a map

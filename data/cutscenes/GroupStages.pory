@@ -1,0 +1,10 @@
+script no {
+}
+
+text gText_GroupStages_PlayerReturnToArena {
+    format("Paging competitor {PLAYER}. {PLAYER}. Please return to the arena for your scheduled match.")
+}
+
+text gText_GroupStages_OhRight {
+    format("Oh right, I should head back.")
+}

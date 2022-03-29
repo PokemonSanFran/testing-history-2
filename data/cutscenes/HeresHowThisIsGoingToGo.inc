@@ -1,5 +1,5 @@
-HeresHowThisIsGoingToGo_ObjectCleanUp_Script::
-	setflag FLAG_TEMP_3
+HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script::
+	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_4
 	return
 

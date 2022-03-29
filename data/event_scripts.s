@@ -1161,6 +1161,8 @@ end
 .include "data/cutscenes/WhyAreYouHelpingThem.inc"
 .include "data/cutscenes/HeresHowThisIsGoingToGo.inc"
 .include "data/cutscenes/WhyDidntYouRatMeOut.inc"
+.include "data/cutscenes/GroupStages.inc"
+.include "data/cutscenes/Finals.inc"
 .include "data/cutscenes/WaitHeDidWhat.inc"
 .include "data/cutscenes/WelcometotheHallofFame.inc"
 .include "data/cutscenes/BeingChampionisHard.inc"

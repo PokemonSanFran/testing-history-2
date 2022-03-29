@@ -4,13 +4,7 @@ script WaitHeDidWhat_HideObject_Script {
     setflag(FLAG_TEMP_1)
 }
 
-script WaitHeDidWhat_ShowObject_Script {
-    clearflag(FLAG_TEMP_1)
-    addobject(8)
-}
-
 script WaitHeDidWhat_MeltdownSetUp_Script {
-    setflag(FLAG_HIDE_HERESHOWTHIS_PSFNATIVERIVAL)
     setobjectxy(2,2,7)
     setobjectxyperm(2,2,7)
     setobjectmovementtype(2,MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP)
@@ -22,7 +16,7 @@ script WaitHeDidWhat_MovePlayerPostSave_Script {
     TeleportCamera(4,6)
 }
 
-script WaitHeDidWhat_WatchOtherSemifinal {
+script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
     addvar(VAR_ROUTE119_STATE,1)
     addvar(VAR_STORYLINE_STATE,1)
 

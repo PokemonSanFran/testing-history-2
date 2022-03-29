@@ -23,31 +23,23 @@ Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfplace14_Lockers_MapScripts_OnTransition::
-	switch VAR_STORYLINE_STATE
-	case 28, Psfplace14_Lockers_MapScripts_OnTransition_3
-	case 29, Psfplace14_Lockers_MapScripts_OnTransition_4
-	case 30, Psfplace14_Lockers_MapScripts_OnTransition_5
-	case 31, Psfplace14_Lockers_MapScripts_OnTransition_6
-Psfplace14_Lockers_MapScripts_OnTransition_1:
 	switch VAR_ROUTE119_STATE
-	call WhyDidntYouRatMeOut_HideObject_Lockers_Script
+	case 1, Psfplace14_Lockers_MapScripts_OnTransition_2
+	case 3, Psfplace14_Lockers_MapScripts_OnTransition_3
+	case 5, Psfplace14_Lockers_MapScripts_OnTransition_4
+	return
+
+Psfplace14_Lockers_MapScripts_OnTransition_2:
+	call HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script
 	return
 
 Psfplace14_Lockers_MapScripts_OnTransition_3:
-	goto HeresHowThisIsGoingToGo_ObjectCleanUp_Script
-	goto Psfplace14_Lockers_MapScripts_OnTransition_1
+	call HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script
+	return
 
 Psfplace14_Lockers_MapScripts_OnTransition_4:
-	goto HeresHowThisIsGoingToGo_ObjectCleanUp_Script
-	goto Psfplace14_Lockers_MapScripts_OnTransition_1
-
-Psfplace14_Lockers_MapScripts_OnTransition_5:
-	goto HeresHowThisIsGoingToGo_ObjectCleanUp_Script
-	goto Psfplace14_Lockers_MapScripts_OnTransition_1
-
-Psfplace14_Lockers_MapScripts_OnTransition_6:
 	goto WaitHeDidWhat_MeltdownSetUp_Script
-	goto Psfplace14_Lockers_MapScripts_OnTransition_1
+	return
 
 
 Psfplace14_Lockers_Psftransrival_Event_Script::

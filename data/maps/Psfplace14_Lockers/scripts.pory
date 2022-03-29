@@ -14,15 +14,11 @@ mapscripts Psfplace14_Lockers_MapScripts {
 }
 
 script Psfplace14_Lockers_MapScripts_OnTransition {
-    switch (var(VAR_STORYLINE_STATE)){
-        case 28: goto(HeresHowThisIsGoingToGo_ObjectCleanUp_Script)
-        case 29: goto(HeresHowThisIsGoingToGo_ObjectCleanUp_Script)
-        case 30: goto(HeresHowThisIsGoingToGo_ObjectCleanUp_Script)
-        case 31: goto(WaitHeDidWhat_MeltdownSetUp_Script)
-    }
-
     switch (var(VAR_ROUTE119_STATE)){
-        default: call(WhyDidntYouRatMeOut_HideObject_Lockers_Script)
+        case 1: call(HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script)
+        case 3: call(HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script)
+        case 5: goto(WaitHeDidWhat_MeltdownSetUp_Script)
+
     }
 }
 

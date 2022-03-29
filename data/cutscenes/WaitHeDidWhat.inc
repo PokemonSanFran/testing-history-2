@@ -3,14 +3,7 @@ WaitHeDidWhat_HideObject_Script::
 	return
 
 
-WaitHeDidWhat_ShowObject_Script::
-	clearflag FLAG_TEMP_1
-	addobject 8
-	return
-
-
 WaitHeDidWhat_MeltdownSetUp_Script::
-	setflag FLAG_HIDE_HERESHOWTHIS_PSFNATIVERIVAL
 	setobjectxy 2, 2, 7
 	setobjectxyperm 2, 2, 7
 	setobjectmovementtype 2, MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP
@@ -24,7 +17,7 @@ WaitHeDidWhat_MovePlayerPostSave_Script::
 	return
 
 
-WaitHeDidWhat_WatchOtherSemifinal::
+WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 	addvar VAR_ROUTE119_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
 	lockall

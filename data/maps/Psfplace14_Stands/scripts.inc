@@ -8,17 +8,17 @@ Psfplace14_Stands_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfplace14_Stands_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE119_STATE, 1, WhyDidntYouRatMeOut_ConversationInStands
+	map_script_2 VAR_STORYLINE_STATE, 28, WhyDidntYouRatMeOut_ConversationInStands
 	.2byte 0
 
 
 Psfplace14_Stands_MapScripts_OnTransition::
-	switch VAR_ROUTE119_STATE
-	case 1, Psfplace14_Stands_MapScripts_OnTransition_2
-	goto WhyDidntYouRatMeOut_HideObject_Script
+	switch VAR_STORYLINE_STATE
+	case 28, Psfplace14_Stands_MapScripts_OnTransition_2
+	call WhyDidntYouRatMeOut_CleanUpObject_Script
 	return
 
 Psfplace14_Stands_MapScripts_OnTransition_2:
-	goto WhyDidntYouRatMeOut_ShowObject_Script
+	call WhyDidntYouRatMeOut_HideObject_Script
 	return
 
