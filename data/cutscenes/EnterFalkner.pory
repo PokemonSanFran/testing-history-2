@@ -61,7 +61,6 @@ script EnterPsfleader1_Intro_Dialogue {
 
 script EnterPsfleader1_StartGymBattle_Script {
   lock
-  givecustommon(SPECIES_GRENINJA, 100, ITEM_ROCKY_HELMET, ITEM_ULTRA_BALL, NATURE_ADAMANT, 2, 0, 252, 0, 252, 6, 0, 31, 31, 31, 31, 31, 31, MOVE_WATER_SHURIKEN, MOVE_FEINT, MOVE_EARTHQUAKE, MOVE_PROTECT)
   setvar(VAR_0x8000, MUGSHOT_HILDA)
   callnative(DrawMugshot)
   trainerbattle_single(TRAINER_ROXANNE_1, gText_EnterPsfleader1_IThinkYouTalk, gText_EnterPsfleader1_WoahSuperSour, EnterPsfleader1_Psfleader1Defeated_Script, NO_MUSIC)
