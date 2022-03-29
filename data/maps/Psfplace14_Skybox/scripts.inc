@@ -16,6 +16,7 @@ Psfplace14_Skybox_MapScripts_OnTransition::
 	switch VAR_STORYLINE_STATE
 	case 28, Psfplace14_Skybox_MapScripts_OnTransition_2
 	case 29, Psfplace14_Skybox_MapScripts_OnTransition_3
+	case 30, Psfplace14_Skybox_MapScripts_OnTransition_4
 	return
 
 Psfplace14_Skybox_MapScripts_OnTransition_2:
@@ -24,5 +25,9 @@ Psfplace14_Skybox_MapScripts_OnTransition_2:
 
 Psfplace14_Skybox_MapScripts_OnTransition_3:
 	call WaitHeDidWhat_HideObject_Script
+	return
+
+Psfplace14_Skybox_MapScripts_OnTransition_4:
+	call GroupStages_Skybox_ObjectSetup_Script
 	return
 

@@ -10,15 +10,14 @@ mapscripts Psfplace14_Lockers_MapScripts {
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 27: HeresHowThisIsGoingToGo_ExplainLeagueDialogue
+        VAR_STORYLINE_STATE, 29:GroupStages_GreetBeforeStart_Dialogue 
     ]
 }
 
 script Psfplace14_Lockers_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE119_STATE)){
-        case 1: call(HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script)
-        case 3: call(HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script)
-        case 5: goto(WaitHeDidWhat_MeltdownSetUp_Script)
-
+    switch (var(VAR_STORYLINE_STATE)){
+        case 29: call(GroupStages_Lockers_ObjectSetUp_Script)
+        case 30: call(GroupStages_Lockers_ObjectCleanUp_Script)
     }
 }
 

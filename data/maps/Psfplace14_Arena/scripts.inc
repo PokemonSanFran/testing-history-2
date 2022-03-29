@@ -15,18 +15,51 @@ Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_RESUME:
-	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	call Psfplace14_Arena_Populate_Stands
 	return
 
 Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 32, BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
-	map_script_2 VAR_STORYLINE_STATE, 33, BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
-	map_script_2 VAR_STORYLINE_STATE, 34, BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	map_script_2 VAR_ROUTE119_STATE, 1, BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound1Audience
+	map_script_2 VAR_ROUTE119_STATE, 2, BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound2Audience
+	map_script_2 VAR_ROUTE119_STATE, 3, BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience
+	map_script_2 VAR_ROUTE119_STATE, 4, BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	map_script_2 VAR_ROUTE119_STATE, 5, BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
 	.2byte 0
 
 Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_ROUTE119_STATE, 1, GroupStages_RoundRobinMatch1_Script
 	map_script_2 VAR_STORYLINE_STATE, 32, WaitHeDidWhat_WalkIntoChampionshipPosition
 	.2byte 0
+
+
+Psfplace14_Arena_Populate_Stands::
+	switch VAR_ROUTE119_STATE
+	case 1, Psfplace14_Arena_Populate_Stands_2
+	case 2, Psfplace14_Arena_Populate_Stands_3
+	case 3, Psfplace14_Arena_Populate_Stands_4
+	case 4, Psfplace14_Arena_Populate_Stands_5
+	case 5, Psfplace14_Arena_Populate_Stands_6
+	return
+
+Psfplace14_Arena_Populate_Stands_2:
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound1Audience
+	return
+
+Psfplace14_Arena_Populate_Stands_3:
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound2Audience
+	return
+
+Psfplace14_Arena_Populate_Stands_4:
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience
+	return
+
+Psfplace14_Arena_Populate_Stands_5:
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	return
+
+Psfplace14_Arena_Populate_Stands_6:
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	return
 
 
 Psfplace14_Arena_MapScripts_OnLoad::
@@ -40,6 +73,28 @@ Psfplace14_Arena_MapScripts_OnLoad_2:
 
 
 Psfplace14_Arena_MapScripts_OnTransition::
+	switch VAR_ROUTE119_STATE
+	case 1, Psfplace14_Arena_MapScripts_OnTransition_3
+	case 2, Psfplace14_Arena_MapScripts_OnTransition_4
+	case 3, Psfplace14_Arena_MapScripts_OnTransition_5
+	case 4, Psfplace14_Arena_MapScripts_OnTransition_6
+Psfplace14_Arena_MapScripts_OnTransition_1:
 	setflag FLAG_TEMP_1
 	return
+
+Psfplace14_Arena_MapScripts_OnTransition_3:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_BLACK_BELT
+	goto Psfplace14_Arena_MapScripts_OnTransition_1
+
+Psfplace14_Arena_MapScripts_OnTransition_4:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN
+	goto Psfplace14_Arena_MapScripts_OnTransition_1
+
+Psfplace14_Arena_MapScripts_OnTransition_5:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_CAMPER
+	goto Psfplace14_Arena_MapScripts_OnTransition_1
+
+Psfplace14_Arena_MapScripts_OnTransition_6:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MOM
+	goto Psfplace14_Arena_MapScripts_OnTransition_1
 

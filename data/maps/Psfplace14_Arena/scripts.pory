@@ -6,16 +6,29 @@ mapscripts Psfplace14_Arena_MapScripts {
        goto(Psfplace14_Arena_MapScripts_OnLoad)
     }
     MAP_SCRIPT_ON_RESUME {
-        goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience)
+        call(Psfplace14_Arena_Populate_Stands)
     }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-        VAR_STORYLINE_STATE, 32: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
-        VAR_STORYLINE_STATE, 33: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
-        VAR_STORYLINE_STATE, 34: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+        VAR_ROUTE119_STATE, 1: BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound1Audience
+        VAR_ROUTE119_STATE, 2: BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound2Audience
+        VAR_ROUTE119_STATE, 3: BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience
+        VAR_ROUTE119_STATE, 4: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+        VAR_ROUTE119_STATE, 5: BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ROUTE119_STATE, 1: GroupStages_RoundRobinMatch1_Script
         VAR_STORYLINE_STATE, 32: WaitHeDidWhat_WalkIntoChampionshipPosition
     ]
+}
+
+script Psfplace14_Arena_Populate_Stands {
+    switch (var(VAR_ROUTE119_STATE)){
+        case 1: goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound1Audience)
+        case 2: goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddRound2Audience)
+        case 3: goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience)
+        case 4: goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience)
+        case 5: goto(BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience)
+    }
 }
 
 script Psfplace14_Arena_MapScripts_OnLoad {
@@ -25,5 +38,11 @@ script Psfplace14_Arena_MapScripts_OnLoad {
 }
 
 script Psfplace14_Arena_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE119_STATE)){
+        case 1: setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_BLACK_BELT)
+        case 2: setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN)
+        case 3: setvar(VAR_OBJ_GFX_ID_0,OBJ_EVENT_GFX_CAMPER)
+        case 4: setvar(VAR_OBJ_GFX_ID_0,OBJ_EVENT_GFX_MOM)
+    }
     setflag(FLAG_TEMP_1)
 }

@@ -332,7 +332,6 @@ SECTIONS {
         src/international_string_util.o(.text);
         src/mgba.o(.text);
         src/printf.o(.text);
-        src/omni.o(.text);
         src/accept_letter.o(.text);
         src/accept_letter_text.o(.text);
         src/mugshot.o(.text)
@@ -698,7 +697,6 @@ SECTIONS {
         src/m4a_tables.o(.rodata);
         data/sound_data.o(.rodata);
         src/printf.o(.rodata);
-        src/omni.o(.rodata);
         src/accept_letter.o(.rodata);
         src/accept_letter_text.o(.rodata);
         src/mugshot.o(.rodata);

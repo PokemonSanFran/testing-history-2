@@ -1,4 +1,173 @@
-script no {
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADBOSS = 1 //FLAG_TEMP_1
+const PSFTRANSRIVAL = 2 //FLAG_TEMP_2
+const PSFNATIVERIVAL = 3 //FLAG_TEMP_3
+const PSFBADADMIN = 4 //FLAG_TEMP_4
+
+script GroupStages_Lockers_ObjectSetUp_Script {
+    setobjectxyperm(PSFTRANSRIVAL,10,3)
+    setflag(FLAG_TEMP_4)
+    setflag(FLAG_TEMP_1)
+}
+
+script GroupStages_Lockers_ObjectCleanUp_Script {
+    setflag(FLAG_TEMP_2)
+    setflag(FLAG_TEMP_4)
+    setflag(FLAG_TEMP_1)
+}
+
+script GroupStages_Skybox_ObjectSetup_Script {
+    setobjectxyperm(8,16,6)
+    setobjectmovementtype(8,MOVEMENT_TYPE_FACE_DOWN)
+}
+    
+
+script GroupStages_GreetBeforeStart_Dialogue {
+    lock
+    applymovement(PSFTRANSRIVAL,GroupStages_WalkToPlayer)
+    waitmovement(0)
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    waitmovement(0)
+    playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    callnative(DrawMugshot)
+    msgbox(gText_GroupStages_Blank)
+    closemessage
+    callnative(ClearMugshot)
+    applymovement(PSFTRANSRIVAL,GroupStages_LeaveLockers)
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+    removeobject(PSFTRANSRIVAL)
+    fadedefaultbgm
+    addvar(VAR_STORYLINE_STATE,1)
+    release
+    end
+}
+
+script GroupStages_PreparePlayer_Script {
+    lock
+    faceplayer
+    msgbox(gText_GroupStages_OnceYouStart,MSGBOX_YESNO)
+    closemessage
+
+    if (var(VAR_RESULT) == YES){
+        applymovement(5,Common_Movement_WalkInPlaceUp)
+        opendoor(10,1)
+        waitdooranim
+        applymovement(5,Common_Movement_WalkUp)
+        playse(SE_EXIT)
+        waitse
+        removeobject(5)
+        
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        switch(var(VAR_TEMP_0)){
+            case 9:applymovement(PLAYER,GroupStages_PlayerLeaveLockers_Left)
+            case 10: applymovement(PLAYER,GroupStages_PlayerLeaveLockers)
+            case 11:applymovement(PLAYER,GroupStages_PlayerLeaveLockers_Right)
+        }
+
+        waitmovement(0)
+        playse(SE_EXIT)
+        setflag(FLAG_PSFPLACE14_TOURNAMENT_HAPPENING)
+        givecustommon(SPECIES_PELIPPER,100,ITEM_CHOICE_SPECS,ITEM_DIVE_BALL,NATURE_MODEST,1,0,0,252,0,180,0,31,0,31,31,31,31,MOVE_SURF,MOVE_HURRICANE,MOVE_ROOST,MOVE_U_TURN)
+        givecustommon(SPECIES_BARRASKEWDA,100,ITEM_CHOICE_BAND,ITEM_ULTRA_BALL,NATURE_ADAMANT,1,0,252,0,0,4,252,31,31,31,31,31,31,MOVE_LIQUIDATION,MOVE_FLIP_TURN,MOVE_PSYCHIC_FANGS,MOVE_CLOSE_COMBAT)
+        call(GroupStages_ChooseParty_Script)
+
+        if (var(VAR_ROUTE119_STATE) != 4){
+            setvar(VAR_ROUTE119_STATE,1)
+        }
+
+        warpsilent(MAP_PSFPLACE14_ARENA,255,5,6)
+    }
+        release
+        end
+}
+
+script GroupStages_ChooseParty_Script {
+        special(SavePlayerParty)
+        frontier_set(FRONTIER_DATA_LVL_MODE,2)
+        setvar(VAR_0x8005, 3)
+        special(ChoosePartyForBattleFrontier)
+        waitstate
+        dome_reduceparty
+}
+
+script GroupStages_RoundRobinMatch1_Script {
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    waitmovement(0)
+    msgbox(gText_GroupStages_Blank)
+    closemessage
+    applymovement(PLAYER,Common_Movement_WalkRight)
+    applymovement(1,Common_Movement_WalkLeft)
+    trainerbattle_no_intro(TRAINER_QUINCY,gText_GroupStages_Blank)
+    goto(GroupStages_PostRoundRobinMatch_Script)
+}
+
+script GroupStages_RoundRobinMatch2_Script {
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    waitmovement(0)
+    msgbox(gText_GroupStages_Blank)
+    closemessage
+    applymovement(PLAYER,Common_Movement_WalkRight)
+    applymovement(1,Common_Movement_WalkLeft)
+    trainerbattle_no_intro(TRAINER_KATELYNN,gText_GroupStages_Blank)
+    addvar(VAR_ROUTE119_STATE,1)
+    goto(GroupStages_PostRoundRobinMatch_Script)
+}
+
+script GroupStages_RoundRobinMatch3_Script {
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    waitmovement(0)
+    msgbox(gText_GroupStages_Blank)
+    closemessage
+    applymovement(PLAYER,Common_Movement_WalkRight)
+    applymovement(1,Common_Movement_WalkLeft)
+    trainerbattle_no_intro(TRAINER_EDGAR,gText_GroupStages_Blank)
+    goto(GroupStages_PostRoundRobinMatch_Script)
+}
+
+script GroupStages_PostRoundRobinMatch_Script {
+    lock
+    addvar(VAR_ROUTE119_STATE,1)
+    special(LoadPlayerParty)
+    call(Common_EventScript_OutOfCenterPartyHeal)
+    applymovement(1,GroupStages_WalkOffStage)
+    waitmovement(0)
+
+    if (var(VAR_ROUTE119_STATE) == 4){
+        goto(GroupStages_RoundRobinGroupComplete_Script)
+    }
+
+    applymovement(PLAYER,GroupStages_GetPlayerIntoPosition)
+    applymovement(1,GroupStages_WalkOnStage)
+
+    call(GroupStages_ChooseParty_Script)
+    switch (var(VAR_ROUTE119_STATE)){
+        case 2: goto(GroupStages_RoundRobinMatch2_Script)
+        case 3: goto(GroupStages_RoundRobinMatch3_Script)
+    }
+}
+
+script GroupStages_RoundRobinGroupComplete_Script {
+    addvar(VAR_STORYLINE_STATE,1)
+    applymovement(PLAYER,GroupStages_WalkToCenterStage)
+    waitmovement(0)
+    msgbox(gText_GroupStages_Blank)
+    special(DoDomeConfetti)
+    playse(SE_APPLAUSE)
+    waitse
+    warpsilent(MAP_PSFPLACE14_LOCKERS,255,10,3)
+}
+
+
+text gText_GroupStages_Blank {
+    format("...")
+}
+
+text gText_GroupStages_OnceYouStart {
+    format("Once you start the Group Stage, there's no turning back. You must complete the group stage before you can leave again, and you must complete the tournament before you can leave Psfplace14. Are you ready to continue?")
 }
 
 text gText_GroupStages_PlayerReturnToArena {
@@ -7,4 +176,53 @@ text gText_GroupStages_PlayerReturnToArena {
 
 text gText_GroupStages_OhRight {
     format("Oh right, I should head back.")
+}
+
+movement GroupStages_WalkToPlayer {
+    walk_down * 6
+    face_left
+    step_end
+}
+
+movement GroupStages_LeaveLockers {
+    walk_in_place_down
+    step_end
+}
+
+movement GroupStages_PlayerLeaveLockers {
+    walk_up * 2
+    step_end
+}
+
+movement GroupStages_PlayerLeaveLockers_Left {
+    walk_right
+    walk_up
+    step_end
+}
+
+movement GroupStages_PlayerLeaveLockers_Right {
+    walk_left
+    walk_up
+    step_end
+}
+
+movement GroupStages_WalkOffStage {
+    walk_right * 2
+    step_end
+}
+
+movement GroupStages_WalkOnStage {
+    walk_left
+    step_end
+}
+
+movement GroupStages_GetPlayerIntoPosition {
+    walk_left
+    face_right
+    step_end
+}
+
+movement GroupStages_WalkToCenterStage {
+    walk_right * 3
+    face_down
 }

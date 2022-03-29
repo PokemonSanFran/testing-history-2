@@ -11,5 +11,6 @@ script Psfplace14_Skybox_MapScripts_OnTransition {
     switch (var(VAR_STORYLINE_STATE)){
         case 28: call(WaitHeDidWhat_HideObject_Script)
         case 29: call(WaitHeDidWhat_HideObject_Script)
+        case 30: call(GroupStages_Skybox_ObjectSetup_Script)
     }
 }

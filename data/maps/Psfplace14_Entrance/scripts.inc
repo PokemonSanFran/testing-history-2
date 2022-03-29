@@ -1,2 +1,22 @@
 Psfplace14_Entrance_MapScripts::
 	.byte 0
+
+
+Psfplace14_Entrance_KeepPlayerInside_Script::
+	lock
+	goto_if_set FLAG_PSFPLACE14_TOURNAMENT_HAPPENING, Psfplace14_Entrance_KeepPlayerInside_Script_2
+Psfplace14_Entrance_KeepPlayerInside_Script_1:
+	release
+	end
+
+Psfplace14_Entrance_KeepPlayerInside_Script_2:
+	msgbox gText_GroupStages_PlayerReturnToArena
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_GroupStages_OhRight
+	closemessage
+	callnative ClearMugshot
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
+	goto Psfplace14_Entrance_KeepPlayerInside_Script_1
+

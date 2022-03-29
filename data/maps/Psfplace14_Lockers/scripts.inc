@@ -19,26 +19,22 @@ Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
 
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 27, HeresHowThisIsGoingToGo_ExplainLeagueDialogue
+	map_script_2 VAR_STORYLINE_STATE, 29, GroupStages_GreetBeforeStart_Dialogue
 	.2byte 0
 
 
 Psfplace14_Lockers_MapScripts_OnTransition::
-	switch VAR_ROUTE119_STATE
-	case 1, Psfplace14_Lockers_MapScripts_OnTransition_2
-	case 3, Psfplace14_Lockers_MapScripts_OnTransition_3
-	case 5, Psfplace14_Lockers_MapScripts_OnTransition_4
+	switch VAR_STORYLINE_STATE
+	case 29, Psfplace14_Lockers_MapScripts_OnTransition_2
+	case 30, Psfplace14_Lockers_MapScripts_OnTransition_3
 	return
 
 Psfplace14_Lockers_MapScripts_OnTransition_2:
-	call HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script
+	call GroupStages_Lockers_ObjectSetUp_Script
 	return
 
 Psfplace14_Lockers_MapScripts_OnTransition_3:
-	call HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script
-	return
-
-Psfplace14_Lockers_MapScripts_OnTransition_4:
-	goto WaitHeDidWhat_MeltdownSetUp_Script
+	call GroupStages_Lockers_ObjectCleanUp_Script
 	return
 
 

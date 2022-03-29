@@ -60,6 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
+    setflag FLAG_PSFPLACE14_TOURNAMENT_HAPPENING
 	end
 
 Debug_Script_2::
