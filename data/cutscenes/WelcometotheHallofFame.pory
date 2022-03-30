@@ -1,48 +1,53 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
+
 script WelcomeToTheHallOfFame_PostBattle_Dialogue {
-msgbox(gText_WelcomeToTheHallOfFame_YourChampion)
-closemessage
-special(DoDomeConfetti)
-playse(SE_M_ENCORE2)
-call(BattleFrontier_BattleDomeBattleRoom_EventScript_AudienceLookAround)
-delay(60)
+    msgbox(gText_WelcomeToTheHallOfFame_YourChampion)
+        closemessage
+        special(DoDomeConfetti)
+        playse(SE_M_ENCORE2)
+        call(BattleFrontier_BattleDomeBattleRoom_EventScript_AudienceLookAround)
+        delay(60)
 
-clearflag(FLAG_TEMP_1)
-addobject(2)
-applymovement(2,WelcomeToTheHallOfFame_MovePsfbadbossToPodium)
-applymovement(1,WelcomeToTheHallOfFame_WalkOutOfWay)
-waitmovement(0)
+        clearflag(FLAG_TEMP_1)
+        addobject(2)
+        applymovement(2,WelcomeToTheHallOfFame_MovePsfbadbossToPodium)
+        applymovement(1,WelcomeToTheHallOfFame_WalkOutOfWay)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_GHETSIS)
-callnative(DrawMugshot)
-msgbox(gText_WelcomeToTheHallOfFame_ToTheHundreds)
-callnative(ClearMugshot)
-closemessage
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+        msgbox(gText_WelcomeToTheHallOfFame_ToTheHundreds)
+        callnative(ClearMugshot)
+        closemessage
 
-playse(SE_M_ENCORE2)
-call(BattleFrontier_BattleDomeBattleRoom_EventScript_AudienceLookAround)
-fadescreen(FADE_TO_BLACK)
-setobjectxy(PLAYER,9,6)
-setobjectxy(1,8,7)
-setobjectxy(2,7,7)
-turnobject(1,DIR_SOUTH)
-turnobject(2,DIR_SOUTH)
-turnobject(PLAYER,DIR_SOUTH)
-TeleportCamera(9,6)
-fadescreen(FADE_FROM_BLACK)
+        playse(SE_M_ENCORE2)
+        call(BattleFrontier_BattleDomeBattleRoom_EventScript_AudienceLookAround)
+        fadescreen(FADE_TO_BLACK)
+        setobjectxy(PLAYER,9,6)
+        setobjectxy(1,8,7)
+        setobjectxy(2,7,7)
+        turnobject(1,DIR_SOUTH)
+        turnobject(2,DIR_SOUTH)
+        turnobject(PLAYER,DIR_SOUTH)
+        TeleportCamera(9,6)
+        fadescreen(FADE_FROM_BLACK)
 
-setvar(VAR_0x8000, MUGSHOT_GHETSIS)
-callnative(DrawMugshot)
-msgbox(gText_WelcomeToTheHallOfFame_AndNowLetsCreate)
-callnative(ClearMugshot)
-closemessage
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+        msgbox(gText_WelcomeToTheHallOfFame_AndNowLetsCreate)
+        callnative(ClearMugshot)
+        closemessage
 
-setrespawn(HEAL_LOCATION_PSFCITY8_COMPOUND_2F)
-fadescreenspeed(FADE_TO_BLACK,24)
-special(GameClear)
-waitstate
-releaseall
-end
+        setvar(VAR_ROUTE119_STATE,0)
+        clearflag(FLAG_PSFPLACE14_TOURNAMENT_HAPPENING)
+        addvar(VAR_STORYLINE_STATE,1)
+        fadescreenspeed(FADE_TO_BLACK,24)
+
+        special(HealPlayerParty)
+        special(GameClear)
+        waitstate
+        releaseall
+        end
 
 }
 
@@ -58,14 +63,14 @@ text gText_WelcomeToTheHallOfFame_AndNowLetsCreate {
 
 movement WelcomeToTheHallOfFame_MovePsfbadbossToPodium {
     walk_left * 4
-    walk_up * 3
-    walk_left * 6
-    step_end
+        walk_up * 3
+        walk_left * 6
+        step_end
 }
 
 movement WelcomeToTheHallOfFame_WalkOutOfWay {
     walk_right
-    walk_up
-    face_down
-    step_end
+        walk_up
+        face_down
+        step_end
 }

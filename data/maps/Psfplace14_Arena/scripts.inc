@@ -27,8 +27,9 @@ Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
 	.2byte 0
 
 Psfplace14_Arena_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE119_STATE, 1, GroupStages_RoundRobinMatch1_Script
-	map_script_2 VAR_STORYLINE_STATE, 32, WaitHeDidWhat_WalkIntoChampionshipPosition
+	map_script_2 VAR_ROUTE119_STATE, 1, GroupStages_RoundRobinMatch_Script
+	map_script_2 VAR_ROUTE119_STATE, 4, Finals_StartSemifinals_Script
+	map_script_2 VAR_STORYLINE_STATE, 34, WaitHeDidWhat_WalkIntoChampionshipPosition
 	.2byte 0
 
 
@@ -54,17 +55,17 @@ Psfplace14_Arena_Populate_Stands_4:
 	return
 
 Psfplace14_Arena_Populate_Stands_5:
-	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience
 	return
 
 Psfplace14_Arena_Populate_Stands_6:
-	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddFinalAudience
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_AddSemifinalAudience
 	return
 
 
 Psfplace14_Arena_MapScripts_OnLoad::
 	switch VAR_STORYLINE_STATE
-	case 33, Psfplace14_Arena_MapScripts_OnLoad_2
+	case 35, Psfplace14_Arena_MapScripts_OnLoad_2
 	return
 
 Psfplace14_Arena_MapScripts_OnLoad_2:
@@ -73,28 +74,32 @@ Psfplace14_Arena_MapScripts_OnLoad_2:
 
 
 Psfplace14_Arena_MapScripts_OnTransition::
-	switch VAR_ROUTE119_STATE
-	case 1, Psfplace14_Arena_MapScripts_OnTransition_3
-	case 2, Psfplace14_Arena_MapScripts_OnTransition_4
-	case 3, Psfplace14_Arena_MapScripts_OnTransition_5
-	case 4, Psfplace14_Arena_MapScripts_OnTransition_6
-Psfplace14_Arena_MapScripts_OnTransition_1:
 	setflag FLAG_TEMP_1
+	switch VAR_ROUTE119_STATE
+	case 1, Psfplace14_Arena_MapScripts_OnTransition_2
+	case 2, Psfplace14_Arena_MapScripts_OnTransition_3
+	case 3, Psfplace14_Arena_MapScripts_OnTransition_4
+	case 4, Psfplace14_Arena_MapScripts_OnTransition_5
+	case 5, Psfplace14_Arena_MapScripts_OnTransition_6
+	return
+
+Psfplace14_Arena_MapScripts_OnTransition_2:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_BEAUTY
 	return
 
 Psfplace14_Arena_MapScripts_OnTransition_3:
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_BLACK_BELT
-	goto Psfplace14_Arena_MapScripts_OnTransition_1
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN
+	return
 
 Psfplace14_Arena_MapScripts_OnTransition_4:
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN
-	goto Psfplace14_Arena_MapScripts_OnTransition_1
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_CAMPER
+	return
 
 Psfplace14_Arena_MapScripts_OnTransition_5:
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_CAMPER
-	goto Psfplace14_Arena_MapScripts_OnTransition_1
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_GAMEBOY_KID
+	return
 
 Psfplace14_Arena_MapScripts_OnTransition_6:
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MOM
-	goto Psfplace14_Arena_MapScripts_OnTransition_1
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_WALLY
+	return
 

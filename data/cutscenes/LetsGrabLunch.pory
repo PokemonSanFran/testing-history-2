@@ -1,24 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFNATIVERIVAL = 3
 
-script LetsGrabLunch_HideObject_SetUp {
-    if (var(VAR_STORYLINE_STATE) != 31){
-        setflag(FLAG_TEMP_1)
-    }
-    if (var(VAR_STORYLINE_STATE) != 32 || var(VAR_STORYLINE_STATE) != 33){
-        setflag(FLAG_TEMP_2)
-    }
-}
-
-script LetsGrabLunch_ShowObject_SetUp {
-    if (var(VAR_STORYLINE_STATE) == 31){
-        setobjectxy(PSFNATIVERIVAL,14,8)
-            setobjectxyperm(PSFNATIVERIVAL,14,8)
-    }
-    if (var(VAR_STORYLINE_STATE) == 32 || var(VAR_STORYLINE_STATE) == 33){
-        clearflag(FLAG_TEMP_2)
-            addobject(1)
-    }
+script LetsGrabLunch_HideObject_Script {
+    setflag(FLAG_TEMP_2)
 }
 
 script LetsGrabLunch_StartConversation_Dialogue {
@@ -70,7 +54,7 @@ script LetsGrabLunch_StartBattle_Script {
         closemessage
         callnative(ClearMugshot)
 
-        //trainerbattle_no_intro(TRAINER_WALLY_VR_4,gText_LetsGrabLunch_NahNotRobbed)
+        trainerbattle_no_intro(TRAINER_WALLY_VR_4,gText_LetsGrabLunch_NahNotRobbed)
         goto(LetsGrabLunch_PostBattle_Dialogue)
 }
 
@@ -272,8 +256,8 @@ script LetsGrabLunch_Psfcity18 {
 
 script LetsGrabLunch_FastForwardFirstRestoration_Quest {
     lock
-        if (var(VAR_STORYLINE_STATE) == 33){
-            addvar(VAR_STORYLINE_STATE,1)
+        if (var(VAR_STORYLINE_STATE) == 40){
+                addvar(VAR_STORYLINE_STATE,1)
                 bufferpartymonnick(0,1)
                 msgbox(gText_LetsGrabLunch_FastForwardAdvance)
         } 

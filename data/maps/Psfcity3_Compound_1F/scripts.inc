@@ -12,12 +12,12 @@ Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfcity3_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 29, BeingChampionIsHard_TimeSkip
+	map_script_2 VAR_STORYLINE_STATE, 36, BeingChampionIsHard_TimeSkip
 	.2byte 0
 
 
 Psfcity3_Compound_1F_MapScripts_OnTransition::
-	compare VAR_STORYLINE_STATE, 29
+	compare VAR_STORYLINE_STATE, 36
 	goto_if_ne Psfcity3_Compound_1F_MapScripts_OnTransition_1
 	return
 

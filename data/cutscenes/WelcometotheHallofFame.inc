@@ -31,8 +31,11 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	msgbox gText_WelcomeToTheHallOfFame_AndNowLetsCreate
 	callnative ClearMugshot
 	closemessage
-	setrespawn HEAL_LOCATION_PSFCITY8_COMPOUND_2F
+	setvar VAR_ROUTE119_STATE, 0
+	clearflag FLAG_PSFPLACE14_TOURNAMENT_HAPPENING
+	addvar VAR_STORYLINE_STATE, 1
 	fadescreenspeed FADE_TO_BLACK, 24
+	special HealPlayerParty
 	special GameClear
 	waitstate
 	releaseall

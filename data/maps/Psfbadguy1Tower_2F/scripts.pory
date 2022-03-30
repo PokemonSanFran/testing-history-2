@@ -7,7 +7,7 @@ mapscripts Psfbadguy1Tower_2F_MapScripts {
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_PSFBADGUY1TOWER_2F_STATE, 3: Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script
-        //VAR_PSFBADGUY1TOWER_2F_STATE, 5: WelcomeToTheWarRoom_MovePlayerIntoPosition
+        VAR_PSFBADGUY1TOWER_2F_STATE, 5: Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script
     ]
 }
 

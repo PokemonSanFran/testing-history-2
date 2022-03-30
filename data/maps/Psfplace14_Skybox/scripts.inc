@@ -9,7 +9,14 @@ Psfplace14_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfplace14_Skybox_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 28, WhyDidntYouRatMeOut_WatchPsftransrivalMatches
+	map_script_2 VAR_STORYLINE_STATE, 33, WaitHeDidWhat_WatchOtherSemifinal_Dialogue
 	.2byte 0
+
+
+Psfplace14_Skybox_EmptySkybox_Script::
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_1
+	return
 
 
 Psfplace14_Skybox_MapScripts_OnTransition::
@@ -17,6 +24,10 @@ Psfplace14_Skybox_MapScripts_OnTransition::
 	case 28, Psfplace14_Skybox_MapScripts_OnTransition_2
 	case 29, Psfplace14_Skybox_MapScripts_OnTransition_3
 	case 30, Psfplace14_Skybox_MapScripts_OnTransition_4
+	case 33, Psfplace14_Skybox_MapScripts_OnTransition_5
+	case 34, Psfplace14_Skybox_MapScripts_OnTransition_6
+	case 35, Psfplace14_Skybox_MapScripts_OnTransition_7
+	call Psfplace14_Skybox_EmptySkybox_Script
 	return
 
 Psfplace14_Skybox_MapScripts_OnTransition_2:
@@ -29,5 +40,16 @@ Psfplace14_Skybox_MapScripts_OnTransition_3:
 
 Psfplace14_Skybox_MapScripts_OnTransition_4:
 	call GroupStages_Skybox_ObjectSetup_Script
+	return
+
+Psfplace14_Skybox_MapScripts_OnTransition_5:
+	return
+
+Psfplace14_Skybox_MapScripts_OnTransition_6:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+Psfplace14_Skybox_MapScripts_OnTransition_7:
+	call WaitHeDidWhat_HideObject_Script
 	return
 

@@ -1,6 +1,8 @@
 YouRealizeWereEvilRight_Object_Setup_Script::
-	clearflag FLAG_TEMP_3
-	clearflag FLAG_TEMP_4
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_7
+	setflag FLAG_TEMP_8
 	setobjectxy 9, 10, 13
 	setobjectxyperm 9, 10, 13
 	setobjectxy 14, 9, 20
@@ -13,6 +15,10 @@ YouRealizeWereEvilRight_Object_Setup_Script::
 
 
 YouRealizeWereEvilRight_Object_Cleanup_Script::
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_7
+	setflag FLAG_TEMP_8
 	setobjectxy 14, 10, 15
 	setobjectxyperm 14, 10, 15
 	setobjectxy 9, 10, 13
@@ -33,6 +39,8 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue::
 	waitse
 	playse SE_POKENAV_CALL
 	waitse
+	pokenavcall YouRealizeWereEvilRight_PhoneCall_Dialogue_Text_0
+	waitmessage
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_SorryToBotherYou
@@ -88,6 +96,9 @@ YouRealizeWereEvilRight_Open_Dialogue::
 	closemessage
 	applymovement 14, YouRealizeWereEvilRight_WalkToTable
 	waitmovement 0
+	setobjectxy 14, 10, 15
+	setobjectxyperm 14, 10, 15
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_ExcellentTiming
@@ -139,6 +150,9 @@ YouRealizeWereEvilRight_MoveAwayFromTable:
 	walk_up
 	face_left
 	step_end
+
+YouRealizeWereEvilRight_PhoneCall_Dialogue_Text_0:
+	.string "This phone is ringing.$"
 
 gText_YouRealizeWereEvilRight_SorryToBotherYou::
 	.string "Hello {PLAYER}! Sorry to bother you,\n"

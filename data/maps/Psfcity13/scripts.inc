@@ -8,7 +8,7 @@ Psfcity13_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfcity13_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 34, YouRealizeWereEvilRight_PhoneCall_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 41, YouRealizeWereEvilRight_PhoneCall_Dialogue
 	.2byte 0
 
 

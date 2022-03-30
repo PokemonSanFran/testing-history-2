@@ -10,7 +10,6 @@ Psfplace14_Entrance_KeepPlayerInside_Script_1:
 	end
 
 Psfplace14_Entrance_KeepPlayerInside_Script_2:
-	msgbox gText_GroupStages_PlayerReturnToArena
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupStages_OhRight

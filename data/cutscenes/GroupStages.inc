@@ -37,6 +37,7 @@ GroupStages_GreetBeforeStart_Dialogue::
 	removeobject 2
 	fadedefaultbgm
 	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_ROUTE119_STATE, 1
 	release
 	end
 
@@ -53,6 +54,21 @@ GroupStages_PreparePlayer_Script_1:
 	end
 
 GroupStages_PreparePlayer_Script_2:
+	call GroupStages_ChooseParty_Script
+	setflag FLAG_PSFPLACE14_TOURNAMENT_HAPPENING
+	call GroupStages_MoveObjects_Script
+	compare VAR_ROUTE119_STATE, 4
+	goto_if_ne GroupStages_PreparePlayer_Script_5
+GroupStages_PreparePlayer_Script_4:
+	warpsilent MAP_PSFPLACE14_ARENA, 255, 5, 6
+	goto GroupStages_PreparePlayer_Script_1
+
+GroupStages_PreparePlayer_Script_5:
+	setvar VAR_ROUTE119_STATE, 1
+	goto GroupStages_PreparePlayer_Script_4
+
+
+GroupStages_MoveObjects_Script::
 	applymovement 5, Common_Movement_WalkInPlaceUp
 	opendoor 10, 1
 	waitdooranim
@@ -62,37 +78,25 @@ GroupStages_PreparePlayer_Script_2:
 	removeobject 5
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	switch VAR_TEMP_0
-	case 9, GroupStages_PreparePlayer_Script_6
-	case 10, GroupStages_PreparePlayer_Script_7
-	case 11, GroupStages_PreparePlayer_Script_8
-GroupStages_PreparePlayer_Script_4:
+	case 9, GroupStages_MoveObjects_Script_3
+	case 10, GroupStages_MoveObjects_Script_4
+	case 11, GroupStages_MoveObjects_Script_5
+GroupStages_MoveObjects_Script_1:
 	waitmovement 0
 	playse SE_EXIT
-	setflag FLAG_PSFPLACE14_TOURNAMENT_HAPPENING
-	givecustommon SPECIES_PELIPPER, 100, ITEM_CHOICE_SPECS, ITEM_DIVE_BALL, NATURE_MODEST, 1, 0, 0, 252, 0, 180, 0, 31, 0, 31, 31, 31, 31, MOVE_SURF, MOVE_HURRICANE, MOVE_ROOST, MOVE_U_TURN
-	givecustommon SPECIES_BARRASKEWDA, 100, ITEM_CHOICE_BAND, ITEM_ULTRA_BALL, NATURE_ADAMANT, 1, 0, 252, 0, 0, 4, 252, 31, 31, 31, 31, 31, 31, MOVE_LIQUIDATION, MOVE_FLIP_TURN, MOVE_PSYCHIC_FANGS, MOVE_CLOSE_COMBAT
-	call GroupStages_ChooseParty_Script
-	compare VAR_ROUTE119_STATE, 4
-	goto_if_ne GroupStages_PreparePlayer_Script_10
-GroupStages_PreparePlayer_Script_9:
-	warpsilent MAP_PSFPLACE14_ARENA, 255, 5, 6
-	goto GroupStages_PreparePlayer_Script_1
+	return
 
-GroupStages_PreparePlayer_Script_6:
+GroupStages_MoveObjects_Script_3:
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_PlayerLeaveLockers_Left
-	goto GroupStages_PreparePlayer_Script_4
+	goto GroupStages_MoveObjects_Script_1
 
-GroupStages_PreparePlayer_Script_7:
+GroupStages_MoveObjects_Script_4:
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_PlayerLeaveLockers
-	goto GroupStages_PreparePlayer_Script_4
+	goto GroupStages_MoveObjects_Script_1
 
-GroupStages_PreparePlayer_Script_8:
+GroupStages_MoveObjects_Script_5:
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_PlayerLeaveLockers_Right
-	goto GroupStages_PreparePlayer_Script_4
-
-GroupStages_PreparePlayer_Script_10:
-	setvar VAR_ROUTE119_STATE, 1
-	goto GroupStages_PreparePlayer_Script_9
+	goto GroupStages_MoveObjects_Script_1
 
 
 GroupStages_ChooseParty_Script::
@@ -105,72 +109,61 @@ GroupStages_ChooseParty_Script::
 	return
 
 
-GroupStages_RoundRobinMatch1_Script::
+GroupStages_RoundRobinMatch_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	msgbox gText_GroupStages_Blank
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
+	waitmovement 0
+	msgbox gText_GroupStages_Blank
+	closemessage
+	switch VAR_ROUTE119_STATE
+	case 1, GroupStages_RoundRobinMatch_Script_3
+	case 2, GroupStages_RoundRobinMatch_Script_4
+	case 3, GroupStages_RoundRobinMatch_Script_5
+GroupStages_RoundRobinMatch_Script_1:
+	goto GroupStages_PostRoundRobinMatch_Script
+	return
+
+GroupStages_RoundRobinMatch_Script_3:
 	trainerbattle_no_intro TRAINER_QUINCY, gText_GroupStages_Blank
-	goto GroupStages_PostRoundRobinMatch_Script
-	return
+	goto GroupStages_RoundRobinMatch_Script_1
 
-
-GroupStages_RoundRobinMatch2_Script::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
-	msgbox gText_GroupStages_Blank
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
-	applymovement 1, Common_Movement_WalkLeft
+GroupStages_RoundRobinMatch_Script_4:
 	trainerbattle_no_intro TRAINER_KATELYNN, gText_GroupStages_Blank
-	addvar VAR_ROUTE119_STATE, 1
-	goto GroupStages_PostRoundRobinMatch_Script
-	return
+	goto GroupStages_RoundRobinMatch_Script_1
 
-
-GroupStages_RoundRobinMatch3_Script::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
-	msgbox gText_GroupStages_Blank
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
-	applymovement 1, Common_Movement_WalkLeft
+GroupStages_RoundRobinMatch_Script_5:
 	trainerbattle_no_intro TRAINER_EDGAR, gText_GroupStages_Blank
-	goto GroupStages_PostRoundRobinMatch_Script
-	return
+	goto GroupStages_RoundRobinMatch_Script_1
 
 
 GroupStages_PostRoundRobinMatch_Script::
 	lock
 	addvar VAR_ROUTE119_STATE, 1
 	special LoadPlayerParty
-	call Common_EventScript_OutOfCenterPartyHeal
-	applymovement 1, GroupStages_WalkOffStage
-	waitmovement 0
+	special HealPlayerParty
 	compare VAR_ROUTE119_STATE, 4
 	goto_if_eq GroupStages_PostRoundRobinMatch_Script_2
 GroupStages_PostRoundRobinMatch_Script_1:
+	msgbox gText_GroupStages_Blank
+	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_GetPlayerIntoPosition
-	applymovement 1, GroupStages_WalkOnStage
+	applymovement 1, GroupStages_WalkOffStage
+	waitmovement 0
+	msgbox gText_GroupStages_Blank
 	call GroupStages_ChooseParty_Script
-	switch VAR_ROUTE119_STATE
-	case 2, GroupStages_PostRoundRobinMatch_Script_5
-	case 3, GroupStages_PostRoundRobinMatch_Script_6
+	removeobject 1
+	call Psfplace14_Arena_MapScripts_OnTransition
+	addobject 1
+	goto GroupStages_RoundRobinMatch_Script
 	return
 
 GroupStages_PostRoundRobinMatch_Script_2:
 	goto GroupStages_RoundRobinGroupComplete_Script
 	goto GroupStages_PostRoundRobinMatch_Script_1
-
-GroupStages_PostRoundRobinMatch_Script_5:
-	goto GroupStages_RoundRobinMatch2_Script
-	return
-
-GroupStages_PostRoundRobinMatch_Script_6:
-	goto GroupStages_RoundRobinMatch3_Script
-	return
 
 
 GroupStages_RoundRobinGroupComplete_Script::
@@ -219,10 +212,6 @@ GroupStages_WalkOffStage:
 	walk_right
 	step_end
 
-GroupStages_WalkOnStage:
-	walk_left
-	step_end
-
 GroupStages_GetPlayerIntoPosition:
 	walk_left
 	face_right
@@ -252,4 +241,5 @@ gText_GroupStages_PlayerReturnToArena::
 	.string "for your scheduled match.$"
 
 gText_GroupStages_OhRight::
-	.string "Oh right, I should head back.$"
+	.string "Oh right, I can't leave once the\n"
+	.string "tournament has started...$"

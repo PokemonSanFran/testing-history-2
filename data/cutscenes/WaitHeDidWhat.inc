@@ -3,7 +3,35 @@ WaitHeDidWhat_HideObject_Script::
 	return
 
 
+WaitHeDidWhat_ObjectSetUp_Script::
+	call Finals_HideObject_Script
+	setflag FLAG_TEMP_2
+	setobjectxy 3, 10, 5
+	setobjectxyperm 3, 10, 5
+	return
+
+
+WaitHeDidWhat_ObjectMidSetUp_Script::
+	call Finals_HideObject_Script
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
+	return
+
+
 WaitHeDidWhat_MeltdownSetUp_Script::
+	call Finals_HideObject_Script
+	setflag FLAG_TEMP_3
+	setobjectxy 2, 2, 7
+	setobjectxyperm 2, 2, 7
+	setobjectmovementtype 2, MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP
+	return
+
+
+WaitHeDidWhat_MeltdownPostSaveSetUp_Script::
+	setobjectxyperm 5, 11, 2
+	setobjectxy 5, 11, 2
+	call Finals_HideObject_Script
+	setflag FLAG_TEMP_3
 	setobjectxy 2, 2, 7
 	setobjectxyperm 2, 2, 7
 	setobjectmovementtype 2, MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP
@@ -17,10 +45,43 @@ WaitHeDidWhat_MovePlayerPostSave_Script::
 	return
 
 
-WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
-	addvar VAR_ROUTE119_STATE, 1
+WaitHeDidWhat_RivalsGoToMatch_Script::
+	lock
+	applymovement 5, WaitHeDidWhat_StepAside
+	applymovement OBJ_EVENT_ID_PLAYER, WaitHeDidWhat_GetOutOfWay
+	applymovement 3, WaitHeDidWhat_WalkToArena
+	opendoor 10, 1
+	waitdooranim
+	waitmovement 0
+	playse SE_EXIT
+	removeobject 3
+	closedoor 10, 1
+	waitdooranim
+	goto WaitHeDidWhat_CalledToSkybox_Script
+	return
+
+
+WaitHeDidWhat_CalledToSkybox_Script::
 	addvar VAR_STORYLINE_STATE, 1
-	lockall
+	playse SE_POKENAV_CALL
+	waitse
+	playse SE_POKENAV_CALL
+	waitse
+	pokenavcall WaitHeDidWhat_CalledToSkybox_Script_Text_0
+	waitmessage
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	msgbox gText_WaitHeDidWhat_CongratsComeOnUp
+	callnative ClearMugshot
+	playse SE_POKENAV_HANG_UP
+	waitse
+	release
+	end
+
+
+WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
+	addvar VAR_STORYLINE_STATE, 1
+	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_GoodShitDownThere
@@ -71,7 +132,7 @@ WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 	msgbox gText_WaitHeDidWhat_GoodLuck
 	callnative ClearMugshot
 	closemessage
-	releaseall
+	release
 	end
 
 
@@ -106,9 +167,25 @@ WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_6:
 	goto WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_1
 
 
+WaitHeDidWhat_PreparePlayer_Script::
+	lock
+	faceplayer
+	msgbox gText_WaitHeDidWhat_AreYouReady, MSGBOX_YESNO
+	closemessage
+	compare VAR_RESULT, YES
+	goto_if_eq WaitHeDidWhat_PreparePlayer_Script_2
+WaitHeDidWhat_PreparePlayer_Script_1:
+	release
+	end
+
+WaitHeDidWhat_PreparePlayer_Script_2:
+	call GroupStages_MoveObjects_Script
+	warpsilent MAP_PSFPLACE14_ARENA, 0
+	goto WaitHeDidWhat_PreparePlayer_Script_1
+
+
 WaitHeDidWhat_WalkIntoChampionshipPosition::
-	setvar VAR_STORYLINE_STATE, 29
-	lockall
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, WaitHeDidWhat_WalkToBattlefieldPosition
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
@@ -118,13 +195,14 @@ WaitHeDidWhat_WalkIntoChampionshipPosition::
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_ImReallyHappy
 	callnative ClearMugshot
+	addvar VAR_STORYLINE_STATE, 1
 	call Common_EventScript_SaveGame
 	goto WaitHeDidWhat_StartBattle_Script
 	return
 
 
 WaitHeDidWhat_StartBattle_Script::
-	lockall
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
 	waitmovement 0
@@ -174,9 +252,36 @@ WaitHeDidWhat_WalkToBattlefieldPosition:
 	walk_right
 	step_end
 
+WaitHeDidWhat_StepAside:
+	lock_facing_direction
+	walk_right
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_left
+	step_end
+
+WaitHeDidWhat_WalkToArena:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	delay_16
+	step_end
+
+WaitHeDidWhat_CalledToSkybox_Script_Text_0:
+	.string "This phone is ringing.$"
+
 gText_WaitHeDidWhat_AreYouReady::
 	.string "Are you ready to battle for the\n"
 	.string "Championship?$"
+
+gText_WaitHeDidWhat_CongratsComeOnUp::
+	.string "Congrats on making it to the Finals!\n"
+	.string "Come to the Skybox to watch\l"
+	.string "Psftransrival's battle!$"
 
 gText_WaitHeDidWhat_GoodShitDownThere::
 	.string "Good shit down there! Time to crush\n"

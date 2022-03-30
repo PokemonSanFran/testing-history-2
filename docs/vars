@@ -40,6 +40,7 @@
 2: Has talked to Sabrina
 3: War room is created, cutscene is about to play
 4: Everybody has their war room assignments,need to head to ferry building to start raid
+5: YC has told you to stop helping Team Rocket
 
 #VAR_PSFCITY7_STATE
 1: Has watched the fight that Ariana broke up
@@ -155,17 +156,12 @@
 29: Watched Bianca win their group
 30: Bianca wished you good luck
 31: Finished group stage
-
-##WORKING ON
-29: Has talked to Archer and watched Bianca win their group
-30: About to start Group Stage
-31: Won 1st battle
-32: Won 2nd battle
-33: Won 3rd battle
-34: Finished Group Stage
-35: Finished Semi Finals stage
-36: Archer has begun speech before final battle
-37: Oak has given Zoey the day off
+32: Finished semi-final match
+33: Archer has gone into the arena, Oak has called you upstairs
+34: Archer has beaten Bianca
+35: Saved before battling
+36: Became Champion
+37: Given the day off by Oak, told to explore Treasure Island
 38: Right before Zoey battles Archer on Treasure Island
 39: After Archer and Zoey battle on Treasure Island
 40: Archer has talked to Zoey about restoration plans

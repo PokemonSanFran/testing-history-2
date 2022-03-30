@@ -34,7 +34,7 @@ script YouRealizeTheyreEvilRight_HideGarbodor_Script {
 }
 
 script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
-    lockall
+    lock
         addvar(VAR_PSFCAVE7_STATE,1)
         giveitem(ITEM_HM03) //PSF TODO remove once actual surfing quest is in
         givecustommon(SPECIES_SLOWKING_GALARIAN, 100, ITEM_ASSAULT_VEST, ITEM_BEAST_BALL, NATURE_CALM, 2, 252,0,12,124,120,0,31,0,31,31,31,31,MOVE_SURF,MOVE_PSYCHIC,MOVE_FLAMETHROWER,MOVE_SLUDGE_BOMB) 
@@ -42,11 +42,14 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_HolyShit)
+        callnative(ClearMugshot)
 
         playse(SE_POKENAV_CALL)
         waitse
         playse(SE_POKENAV_CALL)
         waitse
+        pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
+        waitmessage
 
         bufferpartymonnick(0,1)
 
@@ -97,7 +100,7 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
         msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf)
         callnative(ClearMugshot)
         closemessage
-        releaseall
+        release
         end
 }
 
@@ -122,7 +125,7 @@ script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
 
         playse(SE_POKENAV_HANG_UP)
         waitse
-        releaseall
+        release
         end
 }
 
@@ -140,7 +143,7 @@ script YouRealizeTheyreEvilRight_InteractPsfnativerival {
         waitse
         setflag(FLAG_TEMP_1)
         removeobject(11)
-        releaseall
+        release
         end
 }
 
@@ -173,12 +176,12 @@ script YouRealizeTheyreEvil_Ghost4_Battle_Script{
 }
 
 script YouRealizeTheyreEvilRight_RemoveGhost {
-    lockall
+    lock
         closemessage
         fadescreenswapbuffers(FADE_TO_BLACK)
         removeobject(VAR_LAST_TALKED)
         fadescreenswapbuffers(FADE_FROM_BLACK)
-        releaseall
+        release
         end
 }
 
@@ -461,7 +464,7 @@ script YouRealizeTheyreEvilRight_AskPlayerGift_Script {
         }
     callnative(ClearMugshot)
         closemessage
-        releaseall
+        release
         end
 }
 
@@ -507,7 +510,7 @@ script YouRealizeTheyreEvilRight_SendGiftToPC_Script {
 }
 
 script YouRealizeTheyreEvilRight_RecievedGiftFanfare {
-    bufferspeciesname(STR_VAR_2,SPECIES_GARBODOR)
+        bufferspeciesname(STR_VAR_2,SPECIES_GARBODOR)
         removeobject(GARBODOR)
         playfanfare(MUS_OBTAIN_ITEM)
         msgbox(gText_YouRealizeTheyreEvilRight_ObtainedGift)
@@ -517,7 +520,6 @@ script YouRealizeTheyreEvilRight_RecievedGiftFanfare {
 }
 
 script YouRealizeTheyreEvilRight_CantSleep_Dialogue {
-
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_IsStillWaiting)

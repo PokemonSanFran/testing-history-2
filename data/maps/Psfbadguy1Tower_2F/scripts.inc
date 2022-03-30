@@ -9,6 +9,7 @@ Psfbadguy1Tower_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfbadguy1Tower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 3, Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script
+	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 5, Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script
 	.2byte 0
 
 

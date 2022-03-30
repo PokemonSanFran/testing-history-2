@@ -7,12 +7,16 @@ mapscripts Psfcave5_Restaurant_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 32: LetsGrabLunch_DinerBooth_Dialogue
+        VAR_STORYLINE_STATE, 39: LetsGrabLunch_DinerBooth_Dialogue
     ]
 }
 
 script Psfcave5_Restaurant_MapScripts_OnTransition {
-    call(LetsGrabLunch_HideObject_SetUp)
-    call(LetsGrabLunch_ShowObject_SetUp)
+
+    switch (var(VAR_STORYLINE_STATE)){
+        default: goto(LetsGrabLunch_HideObject_Script)
+        case 39: return 
+        case 40: return 
+    }
 }
 

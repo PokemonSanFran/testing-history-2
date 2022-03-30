@@ -6,7 +6,7 @@ mapscripts Psfcity13_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 34: YouRealizeWereEvilRight_PhoneCall_Dialogue
+        VAR_STORYLINE_STATE, 41: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
 }
 

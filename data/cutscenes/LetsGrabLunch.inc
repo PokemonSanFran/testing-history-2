@@ -1,40 +1,5 @@
-LetsGrabLunch_HideObject_SetUp::
-	compare VAR_STORYLINE_STATE, 31
-	goto_if_ne LetsGrabLunch_HideObject_SetUp_2
-LetsGrabLunch_HideObject_SetUp_1:
-	compare VAR_STORYLINE_STATE, 32
-	goto_if_ne LetsGrabLunch_HideObject_SetUp_4
-	compare VAR_STORYLINE_STATE, 33
-	goto_if_ne LetsGrabLunch_HideObject_SetUp_4
-	return
-
-LetsGrabLunch_HideObject_SetUp_2:
-	setflag FLAG_TEMP_1
-	goto LetsGrabLunch_HideObject_SetUp_1
-
-LetsGrabLunch_HideObject_SetUp_4:
+LetsGrabLunch_HideObject_Script::
 	setflag FLAG_TEMP_2
-	return
-
-
-LetsGrabLunch_ShowObject_SetUp::
-	compare VAR_STORYLINE_STATE, 31
-	goto_if_eq LetsGrabLunch_ShowObject_SetUp_2
-LetsGrabLunch_ShowObject_SetUp_1:
-	compare VAR_STORYLINE_STATE, 32
-	goto_if_eq LetsGrabLunch_ShowObject_SetUp_4
-	compare VAR_STORYLINE_STATE, 33
-	goto_if_eq LetsGrabLunch_ShowObject_SetUp_4
-	return
-
-LetsGrabLunch_ShowObject_SetUp_2:
-	setobjectxy 3, 14, 8
-	setobjectxyperm 3, 14, 8
-	goto LetsGrabLunch_ShowObject_SetUp_1
-
-LetsGrabLunch_ShowObject_SetUp_4:
-	clearflag FLAG_TEMP_2
-	addobject 1
 	return
 
 
@@ -83,6 +48,7 @@ LetsGrabLunch_StartBattle_Script::
 	msgbox gText_LetsGrabLunch_ButLetsSee
 	closemessage
 	callnative ClearMugshot
+	trainerbattle_no_intro TRAINER_WALLY_VR_4, gText_LetsGrabLunch_NahNotRobbed
 	goto LetsGrabLunch_PostBattle_Dialogue
 	return
 
@@ -283,7 +249,7 @@ LetsGrabLunch_Psfcity18_5:
 
 LetsGrabLunch_FastForwardFirstRestoration_Quest::
 	lock
-	compare VAR_STORYLINE_STATE, 33
+	compare VAR_STORYLINE_STATE, 40
 	goto_if_eq LetsGrabLunch_FastForwardFirstRestoration_Quest_2
 	msgbox gText_LetsGrabLunch_FastForwardBlock
 LetsGrabLunch_FastForwardFirstRestoration_Quest_1:

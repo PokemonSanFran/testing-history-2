@@ -39,7 +39,7 @@ YouRealizeTheyreEvilRight_HideGarbodor_Script::
 
 
 YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
-	lockall
+	lock
 	addvar VAR_PSFCAVE7_STATE, 1
 	giveitem ITEM_HM03
 	givecustommon SPECIES_SLOWKING_GALARIAN, 100, ITEM_ASSAULT_VEST, ITEM_BEAST_BALL, NATURE_CALM, 2, 252, 0, 12, 124, 120, 0, 31, 0, 31, 31, 31, 31, MOVE_SURF, MOVE_PSYCHIC, MOVE_FLAMETHROWER, MOVE_SLUDGE_BOMB
@@ -47,10 +47,13 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_HolyShit
+	callnative ClearMugshot
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
 	waitse
+	pokenavcall YouRealizeTheyreEvilRight_CallPlayer_Dialogue_Text_0
+	waitmessage
 	bufferpartymonnick 0, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
@@ -89,7 +92,7 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue_1:
 	msgbox gText_YouRealizeTheyreEvilRight_IDontKnowIf
 	callnative ClearMugshot
 	closemessage
-	releaseall
+	release
 	end
 
 YouRealizeTheyreEvilRight_CallPlayer_Dialogue_2:
@@ -115,7 +118,7 @@ YouRealizeTheyreEvilRight_PlayerLandedDialogue::
 	closemessage
 	playse SE_POKENAV_HANG_UP
 	waitse
-	releaseall
+	release
 	end
 
 
@@ -132,7 +135,7 @@ YouRealizeTheyreEvilRight_InteractPsfnativerival::
 	waitse
 	setflag FLAG_TEMP_1
 	removeobject 11
-	releaseall
+	release
 	end
 
 
@@ -165,12 +168,12 @@ YouRealizeTheyreEvil_Ghost4_Battle_Script::
 
 
 YouRealizeTheyreEvilRight_RemoveGhost::
-	lockall
+	lock
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject VAR_LAST_TALKED
 	fadescreenswapbuffers FADE_FROM_BLACK
-	releaseall
+	release
 	end
 
 
@@ -413,7 +416,7 @@ YouRealizeTheyreEvilRight_AskPlayerGift_Script::
 YouRealizeTheyreEvilRight_AskPlayerGift_Script_1:
 	callnative ClearMugshot
 	closemessage
-	releaseall
+	release
 	end
 
 YouRealizeTheyreEvilRight_AskPlayerGift_Script_2:
@@ -463,6 +466,7 @@ YouRealizeTheyreEvilRight_SendGiftToPC_Script::
 	compare VAR_RESULT, YES
 	goto_if_eq YouRealizeTheyreEvilRight_SendGiftToPC_Script_2
 YouRealizeTheyreEvilRight_SendGiftToPC_Script_1:
+	bufferspeciesname STR_VAR_2, SPECIES_GARBODOR
 	call Common_EventScript_TransferredToPC
 	return
 
@@ -533,6 +537,9 @@ YouRealizeTheyreEvilRight_ShowAffection:
 	jump_in_place_down
 	jump_in_place_down
 	step_end
+
+YouRealizeTheyreEvilRight_CallPlayer_Dialogue_Text_0:
+	.string "This phone is ringing.$"
 
 YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue_Text_0:
 	.string "This will show a flashback to the police\n"

@@ -20,6 +20,7 @@ Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
 Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 27, HeresHowThisIsGoingToGo_ExplainLeagueDialogue
 	map_script_2 VAR_STORYLINE_STATE, 29, GroupStages_GreetBeforeStart_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 32, WaitHeDidWhat_RivalsGoToMatch_Script
 	.2byte 0
 
 
@@ -27,6 +28,12 @@ Psfplace14_Lockers_MapScripts_OnTransition::
 	switch VAR_STORYLINE_STATE
 	case 29, Psfplace14_Lockers_MapScripts_OnTransition_2
 	case 30, Psfplace14_Lockers_MapScripts_OnTransition_3
+	case 31, Psfplace14_Lockers_MapScripts_OnTransition_4
+	case 32, Psfplace14_Lockers_MapScripts_OnTransition_5
+	case 33, Psfplace14_Lockers_MapScripts_OnTransition_6
+	case 34, Psfplace14_Lockers_MapScripts_OnTransition_7
+	case 35, Psfplace14_Lockers_MapScripts_OnTransition_8
+	call WaitHeDidWhat_ObjectMidSetUp_Script
 	return
 
 Psfplace14_Lockers_MapScripts_OnTransition_2:
@@ -37,13 +44,55 @@ Psfplace14_Lockers_MapScripts_OnTransition_3:
 	call GroupStages_Lockers_ObjectCleanUp_Script
 	return
 
+Psfplace14_Lockers_MapScripts_OnTransition_4:
+	call Finals_HideObject_Script
+	return
+
+Psfplace14_Lockers_MapScripts_OnTransition_5:
+	call WaitHeDidWhat_ObjectSetUp_Script
+	return
+
+Psfplace14_Lockers_MapScripts_OnTransition_6:
+	call WaitHeDidWhat_ObjectMidSetUp_Script
+	return
+
+Psfplace14_Lockers_MapScripts_OnTransition_7:
+	call WaitHeDidWhat_MeltdownSetUp_Script
+	return
+
+Psfplace14_Lockers_MapScripts_OnTransition_8:
+	call WaitHeDidWhat_MeltdownPostSaveSetUp_Script
+	return
+
 
 Psfplace14_Lockers_Psftransrival_Event_Script::
 	switch VAR_STORYLINE_STATE
-	case 31, Psfplace14_Lockers_Psftransrival_Event_Script_2
+	case 34, Psfplace14_Lockers_Psftransrival_Event_Script_2
 	return
 
 Psfplace14_Lockers_Psftransrival_Event_Script_2:
 	goto WaitHeDidWhat_PsftransrivalMeltdown_Dialogue
+	return
+
+
+Psfplace14_Lockers_InteractArenaGuard_Script::
+	lock
+	faceplayer
+	switch VAR_ROUTE119_STATE
+	case 1, Psfplace14_Lockers_InteractArenaGuard_Script_2
+	case 5, Psfplace14_Lockers_InteractArenaGuard_Script_3
+	case 4, Psfplace14_Lockers_InteractArenaGuard_Script_4
+	return
+
+Psfplace14_Lockers_InteractArenaGuard_Script_2:
+	goto GroupStages_PreparePlayer_Script
+	return
+
+Psfplace14_Lockers_InteractArenaGuard_Script_3:
+	goto WaitHeDidWhat_PreparePlayer_Script
+	return
+
+Psfplace14_Lockers_InteractArenaGuard_Script_4:
+	goto Finals_PreparePlayer_Script
 	return
 
