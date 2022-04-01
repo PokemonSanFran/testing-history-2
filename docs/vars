@@ -40,7 +40,9 @@
 2: Has talked to Sabrina
 3: War room is created, cutscene is about to play
 4: Everybody has their war room assignments,need to head to ferry building to start raid
-5: YC has told you to stop helping Team Rocket
+5: YC has called you to the meeting room
+6: YC has told you to stop helping Team Rocket
+7: YC waiting for you to tell them you'll work with them
 
 #VAR_PSFCITY7_STATE
 1: Has watched the fight that Ariana broke up
@@ -168,6 +170,7 @@
 41: Finished one Restoration Quest
 42: Told by YC to stop helping TR
 43: Slept after being Told by TR to stop 
+44: Has told YC they'd side with them, flipped to dark side
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck

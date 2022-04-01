@@ -466,7 +466,6 @@ YouRealizeTheyreEvilRight_SendGiftToPC_Script::
 	compare VAR_RESULT, YES
 	goto_if_eq YouRealizeTheyreEvilRight_SendGiftToPC_Script_2
 YouRealizeTheyreEvilRight_SendGiftToPC_Script_1:
-	bufferspeciesname STR_VAR_2, SPECIES_GARBODOR
 	call Common_EventScript_TransferredToPC
 	return
 
@@ -498,11 +497,6 @@ YouRealizeTheyreEvilRight_CantSleep_Dialogue::
 
 YouRealizeTheyreEvilRight_NoIdea_Dialogue::
 	fadescreen FADE_FROM_BLACK
-	compare VAR_PSFCAVE7_STATE, 5
-	goto_if_eq YouRealizeTheyreEvilRight_NoIdea_Dialogue_1
-	return
-
-YouRealizeTheyreEvilRight_NoIdea_Dialogue_1:
 	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot

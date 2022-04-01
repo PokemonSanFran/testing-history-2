@@ -60,7 +60,6 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    special GameClear
 	end
 
 Debug_Script_2::

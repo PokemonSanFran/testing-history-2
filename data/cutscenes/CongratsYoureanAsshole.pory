@@ -1,0 +1,209 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADADMIN = 9 //FLAG_TEMP_3
+const PSFTRANSRIVAL = 10 //FLAG_TEMP_8
+const PSFBADBOSS = 11 // FLAG_TEMP_5
+const PSFBADADMIN2 = 14 // FLAG_TEMP_4
+const PSFBADADMIN3 = 2 // FLAG_TEMP_1
+
+script CongratsYoureanAsshole_ObjectSetUp_Script {
+    addobject(PSFTRANSRIVAL)
+    setobjectxy(PSFTRANSRIVAL,9,20)
+    setobjectxyperm(PSFTRANSRIVAL,9,20)
+    addobject(PSFBADBOSS)
+    setobjectxy(PSFBADBOSS,9,21)
+    setobjectxyperm(PSFBADBOSS,9,21)
+}
+
+script CongratsYoureanAsshole_ObjectMid_Script {
+    setobjectxy(PSFTRANSRIVAL,8,16)
+    setobjectxyperm(PSFTRANSRIVAL,8,16)
+    addobject(PSFBADBOSS)
+    setobjectxy(PSFBADBOSS,9,16)
+    setobjectxyperm(PSFBADBOSS,9,16)
+}
+
+
+script CongratsYourAssAsshole_Intro_Dialogue {
+
+if (var(VAR_PSFBADGUY1TOWER_2F_STATE) == 7){
+    goto(CongratsYoureanAsshole_FalseTimelineSplit_Script)
+}
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_WelcomeBack,MSGBOX_NPC)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_YeahIWantToWork)
+callnative(ClearMugshot)
+closemessage
+
+call(CongratsYoureanAsshole_ObjectSetUp_Script)
+applymovement(PSFTRANSRIVAL,CongratsYoureanAsshole_WalkTowardsPlayer)
+waitmovement(0)
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_HellYeahThatsAwesome)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_WhyAreYouHere)
+
+applymovement(PSFBADBOSS,CongratsYoureanAsshole_WalkTowardsPlayerB)
+waitmovement(0)
+
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_IHiredThem)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_OhWoWYouGuys)
+
+setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_ExcellentWeKnew)
+
+setvar(VAR_0x8000, MUGSHOT_LANCE)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_WevePreparedAStatement)
+
+setvar(VAR_0x8000, MUGSHOT_N)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal)
+
+setvar(VAR_0x8000, MUGSHOT_BIANCA)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_The50000Followers)
+
+applymovement(PSFBADADMIN2,Common_Movement_WalkInPlaceLeft)
+waitmovement(0)
+
+addvar(VAR_PSFBADGUY1TOWER_2F_STATE,1)
+setvar(VAR_0x8000, MUGSHOT_N)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_TheresNoTurningBack)
+callnative(ClearMugshot)
+closemessage
+}
+
+script CongratsYoureanAsshole_FalseTimelineSplit_Script {
+faceplayer
+setvar(VAR_0x8000, MUGSHOT_N)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_WereGoingToSend,MSGBOX_YESNO)
+
+if (var(VAR_RESULT) == NO){
+setvar(VAR_0x8000, MUGSHOT_N)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_OfCouseIfTheres)
+callnative(ClearMugshot)
+closemessage
+release
+end
+} else {
+
+//If the player selects Yes, the screen fades to black, cuts to tweet UI with the player signal boosting / upvoting / whatever the YC tweet. This should have significantly less engagement than your previous Badge tweets. //PSF TODO
+
+fadescreen(FADE_TO_BLACK)
+msgbox(gText_CongratsYoureanAsshole_PresenceIn)
+fadescreen(FADE_FROM_BLACK)
+
+setvar(VAR_0x8000, MUGSHOT_SABRINA)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_ThankYouForThat)
+
+setvar(VAR_0x8000, MUGSHOT_N)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_ThingsWillTake)
+
+setvar(VAR_0x8000, MUGSHOT_N)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_ThatsTheSpirit)
+callnative(ClearMugshot)
+closemessage
+setflag(FLAG_TIMELINE_FALSE)
+addvar(VAR_STORYLINE_STATE)
+}
+}
+
+text gText_CongratsYoureanAsshole_WelcomeBack {
+	format("Welcome back, {PLAYER}! A good night’s sleep, I hope? Thought things over?")
+}
+
+text gText_CongratsYoureanAsshole_YeahIWantToWork {
+	format("Yeah. I want to work with you guys and make sure the League’s next season is as successful as possible.")
+}
+
+text gText_CongratsYoureanAsshole_HellYeahThatsAwesome {
+	format("Hell yeah, that’s awesome. Welcome to the squad.")
+}
+
+text gText_CongratsYoureanAsshole_WhyAreYouHere {
+	format("Why are you here?")
+}
+
+text gText_CongratsYoureanAsshole_IHiredThem {
+	format("I hired them. Their help was invaluable in the past, and when I presented the offer, they didn’t hesitate.")
+}
+
+text gText_CongratsYoureanAsshole_OhWoWYouGuys {
+	format("Oh wow, you guys aren’t messing around. If you guys can keep providing opportunities to other Trainers, then the least I can do is help protect that.")
+}
+
+text gText_CongratsYoureanAsshole_ExcellentWeKnew {
+	format("Excellent! We knew you’d make the right choice.")
+}
+
+text gText_CongratsYoureanAsshole_WevePreparedAStatement {
+	format("We’ve prepared a statement reinforcing our commitment to ending Psfgoodteam’s operations. We want them to know we’re officially working with the police and that their days are numbered.")
+}
+
+text gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal {
+	format("We’d like you two to signal boost that statement online as soon as it’s posted. A public condemnation from the two most powerful Trainers will send a strong message.")
+	}
+text gText_CongratsYoureanAsshole_The50000Followers {
+	format("The 50,000 followers Daddy bought me are gonna love this!")
+}
+
+text gText_CongratsYoureanAsshole_TheresNoTurningBack {
+	format("There’s no turning back from this- once the statement is out the region natives aren’t going to be so friendly to you. If there’s anything you need to do before sending the message, handle it now. Come back and talk to me when you’re ready.")
+}
+
+text gText_CongratsYoureanAsshole_WereGoingToSend {
+	format("We’re going to send this message out now. Ready?")
+}
+
+text gText_CongratsYoureanAsshole_OfCouseIfTheres {
+	format("Of course. If there’s anything you need to do before then, handle it now. Come back and talk to me when you’re ready.")
+}
+
+text gText_CongratsYoureanAsshole_PresenceIn {
+	format("Psfgoodteam’s presence in Psfregion1 makes for a worse region for all. Starting today, we’ll be working with the police dept and the champion to put an end to their terrorist activities.")
+}
+
+text gText_CongratsYoureanAsshole_ThankYouForThat {
+	format("Thank you for that… worldwide, our message is getting positive reception, but within the region, there is still some negativity.")
+}
+
+text gText_CongratsYoureanAsshole_ThingsWillTake {
+	format("Things will take time.")
+}
+
+text gText_CongratsYoureanAsshole_ThatsTheSpirit {
+	format("That’s the spirit! I already have your first mission. Come talk to me when you’re ready for it.")
+}
+
+movement CongratsYoureanAsshole_WalkTowardsPlayer {
+    walk_up * 4
+    walk_left
+    face_up
+    step_end
+}
+
+movement CongratsYoureanAsshole_WalkTowardsPlayerB {
+    walk_up * 5
+    step_end
+}

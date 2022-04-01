@@ -22,6 +22,7 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition::
 	case 4, Psfbadguy1Tower_2F_MapScripts_OnTransition_6
 	case 5, Psfbadguy1Tower_2F_MapScripts_OnTransition_7
 	case 6, Psfbadguy1Tower_2F_MapScripts_OnTransition_8
+	case 7, Psfbadguy1Tower_2F_MapScripts_OnTransition_9
 	goto WelcomeToTheWarRoom_Object_Hide_Script
 	return
 
@@ -53,6 +54,11 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition_8:
 	goto YouRealizeWereEvilRight_Object_Cleanup_Script
 	return
 
+Psfbadguy1Tower_2F_MapScripts_OnTransition_9:
+	call YouRealizeWereEvilRight_Object_Cleanup_Script
+	call CongratsYoureanAsshole_ObjectMid_Script
+	return
+
 
 Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script::
 	lock
@@ -79,4 +85,17 @@ Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_5:
 Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script_6:
 	goto YouRealizeWereEvilRight_Open_Dialogue
 	return
+
+
+Psfbadguy1Tower_2F_Psfbadadmin_Event_Script::
+	lock
+	switch VAR_STORYLINE_STATE
+	case 43, Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_3
+Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_1:
+	release
+	end
+
+Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_3:
+	call CongratsYourAssAsshole_Intro_Dialogue
+	goto Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_1
 
