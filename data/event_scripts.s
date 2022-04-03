@@ -1174,10 +1174,10 @@ end
 .include "data/cutscenes/YouRealizeWereEvilRight.inc"
 .include "data/cutscenes/YouRealizeTheyreEvilRight.inc"
 .include "data/cutscenes/CongratsYoureanAsshole.inc"
-##  .include "data/cutscenes/YouHaveYourOrders.inc"
-##  .include "data/cutscenes/HowDisappointing.inc"
-##  .include "data/cutscenes/LetsBurnThisMotherDown.inc"
-##  .include "data/cutscenes/Manhunt.inc"
+.include "data/cutscenes/YouHaveYourOrders.inc"
+.include "data/cutscenes/HowDisappointing.inc"
+.include "data/cutscenes/LetsBurnThisMotherDown.inc"
+.include "data/cutscenes/Manhunt.inc"
 ##  .include "data/cutscenes/ExhibitionBattle.inc"
 ##  .include "data/cutscenes/MaybeIFuckedUp.inc"
 ##  .include "data/cutscenes/OkayLetsFixit.inc"
@@ -1268,3 +1268,17 @@ end
 .include "data/maps/Psfcave7_B1F/scripts.inc"
 
 .include "data/maps/Psfcave7_B2F/scripts.inc"
+
+	.include "data/maps/Psfcity15_Newspaper/scripts.inc"
+
+	.include "data/maps/Psfcity6_Consulting/scripts.inc"
+
+	.include "data/maps/Psfcity5_BallShop/scripts.inc"
+
+	.include "data/maps/Psfroute62/scripts.inc"
+
+	.include "data/maps/Psfcave3/scripts.inc"
+
+	.include "data/maps/Psfroute18/scripts.inc"
+
+	.include "data/maps/Psfplace1/scripts.inc"

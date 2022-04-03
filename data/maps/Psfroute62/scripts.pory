@@ -1,0 +1,13 @@
+mapscripts Psfroute62_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfroute62_MapScripts_OnTransition)
+    }
+}
+
+script Psfroute62_MapScripts_OnTransition {
+    if (var(VAR_RUSTURF_TUNNEL_STATE) != 4){
+        call(Manhunt_HideObject_Script)
+    }
+}
+
+

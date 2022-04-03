@@ -1,0 +1,14 @@
+mapscripts Psfcity15_Newspaper_MapScripts{
+}
+
+script Psfcity15_Newspaper_InteractCherie_Event_Script {
+    lock
+    if (var(VAR_RUSTURF_TUNNEL_STATE) != 1){
+       call(Manhunt_Cherie_Battle_Script)
+    }else {
+        msgbox("...")
+        closemessage
+    }
+    release
+    end
+}

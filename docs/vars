@@ -43,6 +43,7 @@
 5: YC has called you to the meeting room
 6: YC has told you to stop helping Team Rocket
 7: YC waiting for you to tell them you'll work with them
+8:
 
 #VAR_PSFCITY7_STATE
 1: Has watched the fight that Ariana broke up
@@ -171,6 +172,7 @@
 42: Told by YC to stop helping TR
 43: Slept after being Told by TR to stop 
 44: Has told YC they'd side with them, flipped to dark side
+45,46,47: Finished one of the TR takedown quests
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck
@@ -242,3 +244,28 @@
 #VAR_ROUTE120_STATE
 X: Act 4:Used to find the location of the last completed restoration quest, number should correspond to a map
 Y: Used to find the target of the last completed takedown quest, number should correspond to a company
+
+
+#VAR_PETALBURG_WOODS_STATE
+#**RELEVANCE**: "You Have Your Orders" quest tracker
+0: Has not been assigned "take down Chinatown" quest yet
+1: Has been assigned by Koga
+2: raid has begun, TR is in the city
+3: Confronted Ariana
+4: Defeated Ariana
+5: Debrief with Koga 
+
+#VAR_RUSTURF_TUNNEL_STATE
+#**RELEVANCE**: "Manhunt" quest tracker
+0: Has not been assigned "Find Giovanni"
+1: has been assigned
+2,3,4,5: got a clue to Giovanni's location
+
+
+#VAR_LILYCOVE_CONTEST_LOBBY_STATE
+#RELEVANCE**: "Let's Burn This Mother Down" quest tracker
+0: Has not been assigned "Take down TR Base"
+1: Has been assigned by Oak
+2: Confronted by Archer in Alcatraz
+3: Has defeated Archer
+4: Debriefed with Oak and Rose

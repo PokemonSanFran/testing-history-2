@@ -10,6 +10,7 @@ Battle8_StartBattle_ObjectSetUp_Script::
 
 
 Battle8_PsfnativerivalWalksOut_Script::
+	lock
 	addvar VAR_ROUTE109_STATE, 1
 	opendoor 19, 13
 	waitdooranim

@@ -1,5 +1,3 @@
-const PLAYER = OBJ_EVENT_ID_PLAYER
-
 mapscripts Psfcity13_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Psfcity13_MapScripts_OnTransition)
@@ -11,4 +9,10 @@ mapscripts Psfcity13_MapScripts {
 }
 
 script Psfcity13_MapScripts_OnTransition {
+    switch (var(VAR_PETALBURG_WOODS_STATE)){
+        case 1: call(HowDisappointing_HidePsfgoodteam_Script) 
+        case 2: call(HowDisappointing_HidePolice_Script)
+        case 3: call(HowDisappointing_HidePolice_Script)
+        default: call(HowDisappointing_HideObject_Script)
+    }
 }

@@ -1,19 +1,24 @@
 CongratsYoureanAsshole_ObjectSetUp_Script::
-	addobject 10
-	setobjectxy 10, 9, 20
-	setobjectxyperm 10, 9, 20
 	addobject 11
 	setobjectxy 11, 9, 21
 	setobjectxyperm 11, 9, 21
 	return
 
 
-CongratsYoureanAsshole_ObjectMid_Script::
-	setobjectxy 10, 8, 16
-	setobjectxyperm 10, 8, 16
-	addobject 11
-	setobjectxy 11, 9, 16
-	setobjectxyperm 11, 9, 16
+CongratsYoureanAsshole_ObjectCleanUp_Script::
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_7
+	setflag FLAG_TEMP_8
+	setobjectxy 14, 10, 15
+	setobjectxyperm 14, 10, 15
+	setobjectxy 9, 10, 13
+	setobjectxyperm 9, 10, 13
+	setobjectxy 2, 7, 12
+	setobjectxyperm 2, 7, 12
+	setobjectmovementtype 14, MOVEMENT_TYPE_FACE_LEFT
+	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_LEFT
 	return
 
 
@@ -30,34 +35,15 @@ CongratsYourAssAsshole_Intro_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	call CongratsYoureanAsshole_ObjectSetUp_Script
-	applymovement 10, CongratsYoureanAsshole_WalkTowardsPlayer
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_HellYeahThatsAwesome
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_WhyAreYouHere
-	applymovement 11, CongratsYoureanAsshole_WalkTowardsPlayerB
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_IHiredThem
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_OhWoWYouGuys
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_ExcellentWeKnew
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_WevePreparedAStatement
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_The50000Followers
 	applymovement 14, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	addvar VAR_PSFBADGUY1TOWER_2F_STATE, 1
@@ -94,6 +80,8 @@ CongratsYoureanAsshole_FalseTimelineSplit_Script::
 	msgbox gText_CongratsYoureanAsshole_ThatsTheSpirit
 	callnative ClearMugshot
 	closemessage
+	setflag FLAG_TIMELINE_FALSE
+	addvar VAR_STORYLINE_STATE, 1
 	return
 
 CongratsYoureanAsshole_FalseTimelineSplit_Script_1:
@@ -107,6 +95,7 @@ CongratsYoureanAsshole_FalseTimelineSplit_Script_1:
 
 
 CongratsYoureanAsshole_WalkTowardsPlayer:
+	walk_up
 	walk_up
 	walk_up
 	walk_up
@@ -142,13 +131,6 @@ gText_CongratsYoureanAsshole_IHiredThem::
 	.string "I hired them. Their help was invaluable\n"
 	.string "in the past, and when I presented the\l"
 	.string "offer, they didn’t hesitate.$"
-
-gText_CongratsYoureanAsshole_OhWoWYouGuys::
-	.string "Oh wow, you guys aren’t messing around.\n"
-	.string "If you guys can keep providing\l"
-	.string "opportunities to other Trainers, then\l"
-	.string "the least I can do is help protect\l"
-	.string "that.$"
 
 gText_CongratsYoureanAsshole_ExcellentWeKnew::
 	.string "Excellent! We knew you’d make the right\n"
@@ -208,6 +190,7 @@ gText_CongratsYoureanAsshole_ThingsWillTake::
 	.string "Things will take time.$"
 
 gText_CongratsYoureanAsshole_ThatsTheSpirit::
-	.string "That’s the spirit! I already have your\n"
-	.string "first mission. Come talk to me when\l"
-	.string "you’re ready for it.$"
+	.string "That’s the spirit! Psfbadadmin,\n"
+	.string "Psfbadadmin3, and I all have different\l"
+	.string "missions for you. Come talk to us when\l"
+	.string "you're ready.$"

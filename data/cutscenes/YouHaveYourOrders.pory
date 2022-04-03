@@ -1,0 +1,312 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADADMIN = 9 //FLAG_TEMP_3
+const PSFTRANSRIVAL = 10 //FLAG_TEMP_8
+const PSFBADBOSS = 11 // FLAG_TEMP_5
+const PSFBADADMIN2 = 14 // FLAG_TEMP_4
+const PSFBADADMIN3 = 2 // FLAG_TEMP_1
+
+script YouHaveYourOrders_ObjectSetUp_Script {
+    setobjectxy(PSFBADADMIN2,16,28)
+    setobjectxyperm(PSFBADADMIN2,16,28)
+    setobjectmovementtype(PSFBADADMIN2,MOVEMENT_TYPE_FACE_UP)
+}
+
+script YouHaveYourOrders_Assignment_Dialogue {
+    if (var(VAR_PETALBURG_WOODS_STATE)){
+        msgbox("...")
+        closemessage
+        end
+    }
+    addvar(VAR_PETALBURG_WOODS_STATE,1)
+    
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_AreYouSure,MSGBOX_NPC)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_ItCantBeTougher)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_HmmGoodPoint)
+    callnative(ClearMugshot)
+    closemessage
+
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+    applymovement(PSFBADADMIN2,YouHaveYourOrders_WalkToOfficeA)
+
+    if (var(VAR_TEMP_0) != 10){
+    applymovement(PLAYER,YouHaveYourOrders_WalkToOfficeB_FromRight)
+    } elif (var(VAR_TEMP_1) == 14){ 
+    applymovement(PLAYER,YouHaveYourOrders_WalkToOfficeB_FromUp)
+    } else {
+    applymovement(PLAYER,YouHaveYourOrders_WalkToOfficeB_FromDown)
+    }
+
+    applymovement(PSFBADADMIN2,YouHaveYourOrders_PaceInOffice)
+    waitmovement(0)
+    
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_LawEnforcementHasConfirmed)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_WhyAllAtOnce)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_ThatWouldCompletelyCut)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_CongratsYoureanAsshole_OhWoWYouGuys)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_CorrectEachOfUs)
+
+if (var(VAR_STORYLINE_STATE) == 44){
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_TheyInvolved)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_WeHiredThem)
+}
+
+    //If the player has converted the Psfcity18 Gym: PSF TODO
+
+    if (!var(VAR_TEMP_0)){
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_WhatAbout)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_OurIntelligenceTells)
+    }
+
+    applymovement(PSFBADADMIN2,YouHaveYourOrders_LookOutWindow)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_ThankYouAsUsual)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_IStillFeelLike)
+    callnative(ClearMugshot)
+    closemessage
+
+    applymovement(PSFBADADMIN2,Common_Movement_FaceUp)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_InCaseYouHavent)
+    callnative(ClearMugshot)
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(PLAYER,Common_Movement_ExclamationMark)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_YouWereAGym)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_ItWasOneOfMyGreatest)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_WasThatHard)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_AtTheTimeNo)
+
+    applymovement(PSFBADADMIN2,YouHaveYourOrders_LookOutWindow)
+    waitmovement(0)
+
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
+msgbox(gText_YouHaveYourOrders_ICouldGoShut)
+    callnative(ClearMugshot)
+
+msgbox(gText_YouHaveYourOrders_DoYouWantTo,MSGBOX_YESNO)
+if (var(VAR_RESULT)){
+    warpsilent(MAP_PSFCITY13,255,5,12)
+}
+
+closemessage
+end
+}
+    text gText_YouHaveYourOrders_AreYouSure {
+        format("{PLAYER}, are you sure you're ready for this mission?")
+    }
+
+text gText_YouHaveYourOrders_ItCantBeTougher {
+    format("It can't be tougher than any of the other ones, right?")
+}
+
+text gText_YouHaveYourOrders_HmmGoodPoint {
+    format("Hmm. Good point. Let's go to my office.")
+}
+
+text gText_YouHaveYourOrders_OohSomeAction {
+    format("Ooh, some action? Hell yeah.")
+}
+
+text gText_YouHaveYourOrders_LawEnforcementHasConfirmed {
+    format("Law enforcement has confirmed the old Gyms have been repurposed as Psfgoodteam recruitment and training centers.The city has loaned us enough officers to perform three simultaneous raids. ")
+}
+
+text gText_YouHaveYourOrders_WhyAllAtOnce {
+    format("Why all at once?")
+}
+
+text gText_YouHaveYourOrders_ThatWouldCompletelyCut {
+    format("That would completely cut off their ability to escape or continue to grow.")
+}
+
+text gText_CongratsYoureanAsshole_OhWoWYouGuys {
+	format("Oh wow, you guys aren’t messing around.")
+}
+
+text gText_YouHaveYourOrders_CorrectEachOfUs {
+    format("Each of us will be leading a different raid. Psftransrival will go to Psfcave5, and I'll deal with Psfcity10. {PLAYER}, you'll take on Psfcity13.")
+}
+
+text gText_YouHaveYourOrders_TheyInvolved {
+    format("Psftransrival? How did they get invovled?")
+}
+
+text gText_YouHaveYourOrders_WeHiredThem {
+	format("We hired them. Their help was invaluable in the past, and when we presented the offer, they didn’t hesitate.")
+}
+
+text gText_YouHaveYourOrders_WhatAbout {
+    format("What about Psfcity18?")
+}
+
+text gText_YouHaveYourOrders_OurIntelligenceTells {
+    format("Our intelligence tells us that we'll be able to take that one with a smaller team.")
+}
+
+text gText_YouHaveYourOrders_AlrightShowingWeaklings {
+    format("Alright! Showing weaklings who's boss! I'm gonna go get ready and meet up with the force.")
+}
+
+text gText_YouHaveYourOrders_ThankYouAsUsual {
+    format("*sigh* Thank you, as usual. I sometimes wonder who is actually benefiting from this relationship.")
+}
+
+text gText_YouHaveYourOrders_IStillFeelLike {
+    format("I still feel like it's me! I'll do anything to help protect what we've built.")
+}
+
+text gText_YouHaveYourOrders_InCaseYouHavent {
+    format("In case you haven't already heard, I used to be the leader of the Psfcity13 Gym.")
+}
+
+text gText_YouHaveYourOrders_YouWereAGym {
+    format("You were a Gym Leader?")
+}
+
+text gText_YouHaveYourOrders_ItWasOneOfMyGreatest {
+    format("It was one of my greatest accomplishments. But when Psfbadguy came along and I saw them beginning to usher in a new age for the region, I knew I wanted to help them. I made sure I was absolutely invaluable to them, and that's how I ended up in this spot now.")
+}
+
+text gText_YouHaveYourOrders_WasThatHard {
+    format("Was that hard?")
+}
+
+text gText_YouHaveYourOrders_AtTheTimeNo {
+    format("At the time? No. I believed - I believe I did the right thing. But it is a piece of my past that I miss. I left it behind to pursue something bigger, and there's a little bit of guilt there, you know?")
+}
+
+text gText_YouHaveYourOrders_ICouldGoShut {
+    format("I could go shut down that Gym, but I'm a coward. I don't have the Nuggets to go and destroy what I helped create.")
+}
+
+text gText_YouHaveYourOrders_DoYouWantTo {
+    format("Do you want to go to Psfcity13?")
+}
+
+movement YouHaveYourOrders_WalkToOfficeA {
+    walk_right
+    walk_down * 2
+    walk_right * 6
+    walk_down * 8
+    walk_right
+    walk_down * 3
+    walk_left * 2
+    face_up
+    step_end
+}
+
+movement YouHaveYourOrders_WalkToOfficeB_FromUp {
+    delay_16
+    walk_down * 3
+    walk_right * 6
+    walk_down * 9
+    step_end
+}
+
+movement YouHaveYourOrders_WalkToOfficeB_FromRight {
+    delay_16
+    delay_16
+    delay_16
+    walk_down * 2
+    walk_right * 5
+    walk_down * 9
+    step_end
+}
+
+movement YouHaveYourOrders_WalkToOfficeB_FromDown {
+    delay_16
+    delay_16
+    delay_16
+    walk_down
+    walk_right * 6
+    walk_down * 9
+    step_end
+}
+
+movement YouHaveYourOrders_WalkToOfficeC {
+    walk_down
+    walk_right * 8
+    walk_down * 9
+    walk_left
+    face_down
+    step_end
+}
+
+movement YouHaveYourOrders_PaceInOffice {
+    walk_left * 2
+    walk_right * 2
+    walk_left * 2
+    walk_right * 2
+    face_up
+    step_end
+}
+
+movement YouHaveYourOrders_LeaveOffice {
+    walk_up * 3
+    walk_right
+    walk_up * 3
+    step_end
+}
+
+movement YouHaveYourOrders_LookOutWindow {
+    face_down
+    step_end
+}

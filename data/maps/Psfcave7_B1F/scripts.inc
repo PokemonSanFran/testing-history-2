@@ -1,2 +1,30 @@
 Psfcave7_B1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcave7_B1F_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfcave7_B1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcave7_B1F_MapScripts_OnTransition
+	return
+
+
+Psfcave7_B1F_MapScripts_OnTransition::
+	switch VAR_LILYCOVE_CONTEST_LOBBY_STATE
+	case 2, Psfcave7_B1F_MapScripts_OnTransition_2
+	call LetsBurnThisMotherDown_ObjectHide_Script
+	return
+
+Psfcave7_B1F_MapScripts_OnTransition_2:
+	call LetsBurnThisMotherDown_ObjectShow_Script
+	return
+
+
+Psfcave7_B1F_Psftransrival_Event_Script::
+	lock
+	switch VAR_STORYLINE_STATE
+	case 44, Psfcave7_B1F_Psftransrival_Event_Script_2
+	return
+
+Psfcave7_B1F_Psftransrival_Event_Script_2:
+	goto LetsBurnThisMotherDown_StartBattle_Script
+	return
+

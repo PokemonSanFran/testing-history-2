@@ -48,10 +48,10 @@
       "dest_warp_id": 0
     },
     {
-      "x": 2,
-      "y": 4,
+      "x": 4,
+      "y": 57,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_1F",
+      "dest_map": "MAP_PSFCITY15_NEWSPAPER",
       "dest_warp_id": 0
     }
   ],

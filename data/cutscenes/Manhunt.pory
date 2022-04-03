@@ -1,0 +1,32 @@
+const PSFBADADMIN3 = 2
+
+script Manhunt_TowerObjectSetUp_Script {
+    setobjectxy(PSFBADADMIN3,8,6)
+    setobjectxyperm(PSFBADADMIN3,8,6)
+    setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_UP)
+}
+
+script Manhunt_HideObject_Script {
+    setflag(FLAG_TEMP_1)
+}
+
+script Manhunt_Assignment_Dialogue {
+    addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+}
+
+script Manhunt_Cherie_Battle_Script {
+}
+
+script Manhunt_Teodoro_Battle_Script {
+}
+
+script Manhunt_Dudley_Battle_Script {
+}
+
+script Manhunt_Encounter_Psfgoodboss_Dialogue {
+}
+
+//Route102_EventScript_Rick::
+	//trainerbattle_single TRAINER_RICK, Route102_Text_RickIntro, Route102_Text_RickDefeated
+	//msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
+	//end

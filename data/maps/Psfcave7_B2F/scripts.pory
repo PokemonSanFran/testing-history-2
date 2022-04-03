@@ -8,16 +8,14 @@ mapscripts Psfcave7_B2F_MapScripts {
 }
 
 script Psfcave7_B2F_MapScripts_OnTransition {
-    
+
     call(YouRealizeTheyreEvilRight_HideGarbodor_Script)
 
-    switch(var(VAR_PSFCAVE7_STATE)){
-        case 0: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-        case 1: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-        case 2: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-        case 3: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-        case 4: call(YouRealizeTheyreEvilRight_ShowBasement_Script)
-    }
-
-
+        switch(var(VAR_PSFCAVE7_STATE)){
+            case 0: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 1: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 2: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 3: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 4: call(YouRealizeTheyreEvilRight_ShowBasement_Script)
+        }
 }

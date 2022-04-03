@@ -1,0 +1,384 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADADMIN = 9 //FLAG_TEMP_3
+const PSFTRANSRIVAL = 10 //FLAG_TEMP_8
+const PSFBADBOSS = 11 // FLAG_TEMP_5
+const PSFBADADMIN2 = 14 // FLAG_TEMP_4
+const PSFBADADMIN3 = 2 // FLAG_TEMP_1
+
+script LetsBurnThisMotherDown_ObjectSetUp_Script {
+    setobjectxy(PSFBADADMIN3,8,6)
+        setobjectxyperm(PSFBADADMIN3,8,6)
+        setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_UP)
+}
+
+script LetsBurnThisMotherDown_ObjectMove_Script {
+    clearflag(FLAG_TEMP_5)
+    addobject(PSFBADBOSS)
+    setobjectxyperm(PSFBADBOSS,11,12)
+    setobjectmovementtype(PSFBADBOSS,MOVEMENT_TYPE_FACE_LEFT)
+}
+
+script LetsBurnThisMotherDown_ObjectShow_Script {
+    clearflag(FLAG_TEMP_5)
+    setflag(FLAG_TEMP_6)
+    setflag(FLAG_TEMP_7)
+    addobject(5)
+    setobjectxy(5,1,8)
+    setobjectxyperm(5,1,8)
+}
+    
+
+script LetsBurnThisMotherDown_ObjectHide_Script {
+    setflag(FLAG_TEMP_5)
+    setflag(FLAG_TEMP_6)
+    setflag(FLAG_TEMP_7)
+}
+
+script LetsBurnThisMotherDown_Assignment_Dialogue {
+
+    if (var(VAR_LILYCOVE_CONTEST_LOBBY_STATE)){
+        msgbox("...")
+        closemessage
+        end
+    }
+    addvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,1)
+
+    setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_WeStillNeedToFind,MSGBOX_NPC)
+
+        msgbox(gText_LetsBurnThisMotherDown_YoureCloserToThe)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_INeedToTalk)
+        callnative(ClearMugshot)
+        closemessage
+        release
+        end
+}
+
+script LetsBurnThisMotherDown_ConfrontPlayer {
+        lock
+        addvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,1)
+
+        clearflag(FLAG_TEMP_5)
+        addobject(5)
+        playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
+
+        applymovement(PLAYER,Common_Movement_WalkUp)
+        applymovement(5,LetsBurnThisMotherDown_WalkTowardsPlayer)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_YouChoseTheWrong)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_IKnowYouWant)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_YouDontThinkWeve)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(5,Common_Movement_WalkDown)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_TheyIgnoreUs)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_DotDotDot)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_IAlwaysHeld)
+
+        call(Common_EventScript_SaveGame)
+        closemessage
+        goto(LetsBurnThisMotherDown_StartBattle_Script)
+}
+
+script LetsBurnThisMotherDown_StartBattle_Script {
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+    if (var(VAR_TEMP_0) != 1){
+    applymovement(PLAYER,LetsBurnThisMotherDown_WalkFromRight)
+    } elif (var(VAR_TEMP_1) == 9){ 
+        return
+    } else {
+    applymovement(PLAYER,LetsBurnThisMotherDown_WalkFromUp)
+    }
+    waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_ImGoingForRevolution)
+        closemessage
+        callnative(ClearMugshot)
+        trainerbattle_no_intro(TRAINER_WALLY_VR_5,gText_LetsBurnThisMotherDown_DamnIt)
+        goto(LetsBurnThisMotherDown_PostBattle_Dialogue)
+}
+
+script LetsBurnThisMotherDown_PostBattle_Dialogue {
+        addvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,1)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_ItDoesntMatter)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(5,LetsBurnThisMotherDown_WalkBackwards)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_ItsNotFair)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_HyperBeam)
+        callnative(ClearMugshot)
+        closemessage
+
+        playse(SE_M_HYPER_BEAM) //PSF TODO figure out what hyper beam looks like
+        waitse
+        fadescreen(FADE_TO_WHITE)
+        applymovement(5,LetsBurnThisMotherDown_HitByHyperBeam)
+        waitmovement(0)
+        fadescreen(FADE_FROM_WHITE)
+
+        clearflag(FLAG_TEMP_6)
+        addobject(6)
+        playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
+        applymovement(6,LetsBurnThisMotherDown_Attack)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_WhatTheHell)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_IFollowedYou)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_NoITheyreNot)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_YeahNoShit)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_IKnow)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_TheCopsShould)
+        callnative(ClearMugshot)
+        closemessage
+
+        clearflag(FLAG_TEMP_7)
+        addobject(7)
+        addobject(8)
+        applymovement(7,LetsBurnThisMotherDown_ArrestA)
+        applymovement(8,LetsBurnThisMotherDown_ArrestB)
+        waitmovement(0)
+        
+        fadescreen(FADE_TO_BLACK)
+        fadedefaultbgm
+        warpsilent(MAP_PSFBADGUY1TOWER_2F,255,10,12)
+        release
+        end
+}
+
+script LetsBurnThisMotherDown_MissionComplete_Dialogue {
+        lock
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_ImSorryIReally)
+
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_YoureYoung)
+
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_ImStillShocked)
+
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsBurnThisMotherDown_ThePoliceTold)
+        closemessage
+        callnative(ClearMugshot)
+        addvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,1)
+        addvar(VAR_STORYLINE_STATE,1)
+        applymovement(PSFBADBOSS,LetsBurnThisMotherDown_LeaveRoom)
+        waitmovement(0)
+        removeobject(PSFBADBOSS)
+        release
+        end
+}
+
+text gText_LetsBurnThisMotherDown_WeStillNeedToFind {
+    format("We still need to find their new base of operations and their leader, Psfgoodboss. Ever since we shut down Psfplace2, we haven't been able to make any progress on either of these fronts.")
+}
+
+text gText_LetsBurnThisMotherDown_YoureCloserToThe {
+    format("{PLAYER}, you're closer to the community. Perhaps there's something you've learned or could poke around to see if you can find traces of their new hideout.")
+}
+
+text gText_LetsBurnThisMotherDown_INeedToTalk {
+    format("(I need to talk to Psfnativerival… I think I can still save him. I need to get to Psfcave1.)")
+}
+
+text gText_LetsBurnThisMotherDown_YouChoseTheWrong {
+    format("You chose the wrong side!")
+}
+
+text gText_LetsBurnThisMotherDown_IKnowYouWant {
+    format("Psfnativerival, I know you want to do good. But this isn't the way! If you want real meaningful change, let's work with them. They're good people. We all want the same thing!")
+}
+
+text gText_LetsBurnThisMotherDown_YouDontThinkWeve {
+    format("You don't think we've tried that? You just got here, {PLAYER}
+            . People here in Psfcave1, died trying to do things the right way. They don't care.")
+}
+
+text gText_LetsBurnThisMotherDown_TheyIgnoreUs {
+    format("They ignore us, and when we get fed up and take matters into our own hands, they label us terrorists. They frame us. They try to turn our region against us. For what? Feeding the homeless? Asking workers to be treated fairly? {PLAYER}
+            , these people are monsters.")
+}
+
+text gText_LetsBurnThisMotherDown_DotDotDot {
+    format("…")
+}
+
+text gText_LetsBurnThisMotherDown_IAlwaysHeld {
+    format("I always held back before. I didn't think it was fair to you, you didn't know the whole situation. But you know enough now, and still chose wrong.")
+}
+
+text gText_LetsBurnThisMotherDown_ImGoingForRevolution {
+    format("I'm going for revolution. With or without you.")
+}
+
+text gText_LetsBurnThisMotherDown_DamnIt {
+    format("Damn it! I can't keep up!")
+}
+
+text gText_LetsBurnThisMotherDown_ItDoesntMatter {
+    format("It doesn't matter if you were holding back. I'm better than you. ")
+}
+
+text gText_LetsBurnThisMotherDown_ItsNotFair {
+    format("It's not fair…")
+}
+
+text gText_LetsBurnThisMotherDown_HyperBeam {
+    format("Hyper Beam!")
+}
+
+text gText_LetsBurnThisMotherDown_WhatTheHell {
+    format("What the hell are you doing here?")
+}
+
+text gText_LetsBurnThisMotherDown_IFollowedYou {
+    format("I followed you. You two were always weirdly close. I was starting to think you double-crossed us, so I followed you.")
+}
+
+text gText_LetsBurnThisMotherDown_NoITheyreNot {
+    format("No, I… they're not like the rest of Psfgoodteam. I thought we could work with them. I was wrong.")
+}
+
+text gText_LetsBurnThisMotherDown_YeahNoShit {
+    format("Yeah, no shit! None of these people can be trusted. Ugh, {PLAYER}
+            , you could have gotten seriously hurt.")
+}
+
+text gText_LetsBurnThisMotherDown_IKnow {
+    format("I know, I know. I'm sorry.")
+}
+
+text gText_LetsBurnThisMotherDown_TheCopsShould {
+    format("The cops should be right behind me. You can't be fucking up like this.")
+}
+
+text gText_LetsBurnThisMotherDown_ImSorryIReally {
+    format("I'm sorry. I really thought I could change their mind.")
+}
+
+text gText_LetsBurnThisMotherDown_YoureYoung {
+    format("You're young, and it ended well. Shutting down their new base before it even gets off the ground is a major win!")
+}
+
+text gText_LetsBurnThisMotherDown_ImStillShocked {
+    format("I'm still shocked they were using the inside of Psfcave1. Absolutely insane.")
+}
+
+text gText_LetsBurnThisMotherDown_ThePoliceTold {
+    format("The police told me they're going to treat the entire island as a crime scene and see if they can find anything else regarding Psfgoodteam.")
+}
+
+movement LetsBurnThisMotherDown_WalkTowardsPlayer {
+    walk_down * 3
+    step_end
+}
+
+movement LetsBurnThisMotherDown_WalkBackwards {
+    lock_facing_direction
+    walk_up
+    unlock_facing_direction
+    step_end
+}
+
+movement LetsBurnThisMotherDown_HitByHyperBeam {
+    walk_up
+    walk_right
+    step_end
+}
+
+movement LetsBurnThisMotherDown_Attack {
+    walk_down * 4
+    step_end
+}
+
+movement LetsBurnThisMotherDown_ArrestA {
+    walk_down
+    step_end
+}
+
+movement LetsBurnThisMotherDown_ArrestB {
+    walk_down
+    walk_left
+    walk_down
+    face_right
+    step_end
+}
+
+movement LetsBurnThisMotherDown_WalkFromRight {
+    walk_down
+    walk_left
+    face_up
+    step_end
+}
+
+movement LetsBurnThisMotherDown_WalkFromUp {
+    walk_right
+    walk_down * 2
+    walk_left
+    face_up
+    step_end
+}
+
+movement LetsBurnThisMotherDown_LeaveRoom {
+    walk_down * 6
+        step_end
+}

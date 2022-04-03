@@ -1,0 +1,20 @@
+mapscripts Psfcave7_B1F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcave7_B1F_MapScripts_OnTransition)
+    }
+}
+
+script Psfcave7_B1F_MapScripts_OnTransition {
+
+    switch (var(VAR_LILYCOVE_CONTEST_LOBBY_STATE)){
+        case 2: call(LetsBurnThisMotherDown_ObjectShow_Script)
+        default: call(LetsBurnThisMotherDown_ObjectHide_Script)
+    }
+}
+
+script Psfcave7_B1F_Psftransrival_Event_Script {
+    lock
+    switch(var(VAR_STORYLINE_STATE)){
+        case 44: goto(LetsBurnThisMotherDown_StartBattle_Script)
+    }
+}

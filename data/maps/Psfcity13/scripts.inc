@@ -13,5 +13,22 @@ Psfcity13_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfcity13_MapScripts_OnTransition::
+	switch VAR_PETALBURG_WOODS_STATE
+	case 1, Psfcity13_MapScripts_OnTransition_2
+	case 2, Psfcity13_MapScripts_OnTransition_3
+	case 3, Psfcity13_MapScripts_OnTransition_4
+	call HowDisappointing_HideObject_Script
+	return
+
+Psfcity13_MapScripts_OnTransition_2:
+	call HowDisappointing_HidePsfgoodteam_Script
+	return
+
+Psfcity13_MapScripts_OnTransition_3:
+	call HowDisappointing_HidePolice_Script
+	return
+
+Psfcity13_MapScripts_OnTransition_4:
+	call HowDisappointing_HidePolice_Script
 	return
 

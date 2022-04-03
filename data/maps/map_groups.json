@@ -108,7 +108,12 @@
     "Psfcave5",
     "Psfcave5_Restaurant",
     "Psfcave7_B1F",
-    "Psfcave7_B2F"
+    "Psfcave7_B2F",
+    "Psfcity5_BallShop",
+    "Psfroute62",
+    "Psfcave3",
+    "Psfroute18",
+    "Psfplace1"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -175,10 +180,12 @@
     "Psfcity8_PokemonCenter_1F"
   ],
   "gMapGroup_IndoorPsfcity15": [
-    "Psfcity15_Gym"
+    "Psfcity15_Gym",
+    "Psfcity15_Newspaper"
   ],
   "gMapGroup_IndoorPsfcity6": [
-    "Psfcity6_Gym"
+    "Psfcity6_Gym",
+    "Psfcity6_Consulting"
   ],
   "gMapGroup_IndoorPsfcity14": [
     "Psfcity14_Gym"

@@ -5260,6 +5260,76 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Psfcave7_B2F/border.bin",
       "blockdata_filepath": "data/layouts/Psfcave7_B2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY15_NEWSPAPER",
+      "name": "Psfcity15_Newspaper_Layout",
+      "width": 16,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfcity15_Newspaper/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity15_Newspaper/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY6_CONSULTING",
+      "name": "Psfcity6_Consulting_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Psfcity6_Consulting/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity6_Consulting/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY5_BALL_SHOP",
+      "name": "Psfcity5_BallShop_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Psfcity5_BallShop/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity5_BallShop/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE62",
+      "name": "Psfroute62_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute62/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute62/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCAVE3",
+      "name": "Psfcave3_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfcave3/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcave3/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE18",
+      "name": "Psfroute18_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute18/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute18/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFPLACE1",
+      "name": "Psfplace1_Layout",
+      "width": 40,
+      "height": 57,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Psfplace1/border.bin",
+      "blockdata_filepath": "data/layouts/Psfplace1/map.bin"
     }
   ]
 }

@@ -1,0 +1,14 @@
+mapscripts Psfcity5_BallShop_MapScripts {
+}
+
+script Psfcity5_Consulting_InteractDudley_Event_Script {
+    lock
+    if (var(VAR_RUSTURF_TUNNEL_STATE) != 3){
+       call(Manhunt_Dudley_Battle_Script)
+    }else {
+        msgbox("...")
+        closemessage
+    }
+    release
+    end
+}

@@ -1,0 +1,13 @@
+mapscripts Psfcity6_Consulting_MapScripts {
+}
+script Psfcity6_Consulting_InteractTeodoro_Event_Script {
+    lock
+    if (var(VAR_RUSTURF_TUNNEL_STATE) != 2){
+       call(Manhunt_Teodoro_Battle_Script)
+    }else {
+        msgbox("...")
+        closemessage
+    }
+    release
+    end
+}

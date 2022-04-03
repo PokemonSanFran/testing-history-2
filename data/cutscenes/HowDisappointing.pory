@@ -1,0 +1,359 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const POLICEA = 1 //FLAG_TEMP_1
+const POLICEB = 2 //FLAG_TEMP_1
+const POLICEC = 3 //FLAG_TEMP_1
+const CHIEF = 4 //FLAG_TEMP_4
+const PSFGOODADMIN = 5 //FLAG_TEMP_5
+const GRUNTA = 6//FLAG_TEMP_5
+const GRUNTB = 7//FLAG_TEMP_5
+
+script HowDisappointing_HideObject_Script {
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_4)
+    setflag(FLAG_TEMP_5)
+}
+
+script HowDisappointing_HidePsfgoodteam_Script {
+    setflag(FLAG_TEMP_5)
+}
+
+script HowDisappointing_HidePolice_Script {
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_4)
+    setobjectxy(PSFGOODADMIN,17,2)
+    setobjectxyperm(PSFGOODADMIN,17,2)
+}
+
+script HowDisappointing_StartRaid_Dialogue {
+    lock
+    applymovement(PLAYER,Common_Movement_WalkUp)
+    waitmovement(0)
+goto(HowDisappointing_RaidMovement_Script)
+
+msgbox(gText_HowDisappointing_ThanksForJoining)
+closemessage
+
+applymovement(CHIEF,HowDisappointing_WalkToPlayer)
+waitmovement(CHIEF)
+
+msgbox(gText_HowDisappointing_OnceTheyTry)
+closemessage
+
+applymovement(POLICEA,Common_Movement_WalkInPlaceUp)
+applymovement(POLICEB,Common_Movement_WalkInPlaceUp)
+applymovement(POLICEC,Common_Movement_WalkInPlaceUp)
+msgbox(gText_HowDisappointing_YesSir)
+
+msgbox(gText_HowDisappointing_OhAndChampion)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_HowDisappointing_YeahQuestion)
+    callnative(ClearMugshot)
+
+msgbox(gText_HowDisappointing_TryToNotLet)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_HowDisappointing_Yeah)
+    callnative(ClearMugshot)
+
+msgbox(gText_HowDisappointing_Hehehehee)
+closemessage
+goto(HowDisappointing_RaidMovement_Script)
+}
+
+script HowDisappointing_RaidMovement_Script {
+
+fadescreen(FADE_TO_BLACK)
+delay(16)
+fadescreen(FADE_FROM_BLACK)
+
+addvar(VAR_PETALBURG_WOODS_STATE,1)
+opendoor(5,8)
+waitdooranim
+
+applymovement(CHIEF,HowDisappointing_RunIntoGymD)
+waitmovement(CHIEF)
+playse(SE_EXIT)
+removeobject(CHIEF)
+
+applymovement(POLICEC,HowDisappointing_RunIntoGymC)
+applymovement(POLICEA,HowDisappointing_RunIntoGymA)
+applymovement(POLICEB,HowDisappointing_RunIntoGymB)
+waitmovement(POLICEB)
+playse(SE_EXIT)
+playse(SE_EXIT)
+playse(SE_EXIT)
+waitse
+waitse
+waitse
+removeobject(POLICEA)
+removeobject(POLICEB)
+removeobject(POLICEC)
+closedoor(5,8)
+waitdooranim
+
+playse(SE_M_EXPLOSION)
+waitse
+playse(SE_M_EXPLOSION)
+waitse
+
+clearflag(FLAG_TEMP_5)
+playse(SE_EXIT)
+addobject(GRUNTA)
+applymovement(GRUNTA,HowDisappointing_EscapeA)
+waitmovement(GRUNTA)
+
+playse(SE_EXIT)
+waitse
+addobject(GRUNTB)
+applymovement(GRUNTB,HowDisappointing_EscapeB)
+waitmovement(GRUNTB)
+
+playse(SE_EXIT)
+waitse
+addobject(PSFGOODADMIN)
+applymovement(PSFGOODADMIN,HowDisappointing_Escape)
+waitmovement(0)
+
+playse(SE_PIN)
+applymovement(PLAYER,Common_Movement_ExclamationMark)
+waitmovement(0)
+setobjectxy(PSFGOODADMIN,17,2)
+setobjectxyperm(PSFGOODADMIN,17,2)
+release
+end
+}
+
+script HowDisappointing_Interfact_Psfgoodadmin_Script {
+    lock
+
+    if (var(VAR_PETALBURG_WOODS_STATE) == 3){
+        goto(HowDisappointing_StartBattle_Script)
+    }
+
+    addvar(VAR_PETALBURG_WOODS_STATE,1)
+    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+    callnative(DrawMugshot)
+msgbox(gText_HowDisappointing_HowDisappointing,MSGBOX_NPC)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_HowDisappointing_ImTiredOfYou)
+
+    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+    callnative(DrawMugshot)
+msgbox(gText_HowDisappointing_IveNeverLied)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_HowDisappointing_ThenWhyAreYou)
+
+    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+    callnative(DrawMugshot)
+msgbox(gText_HowDisappointing_TheseCompanies)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_HowDisappointing_AllISeeIs)
+    callnative(ClearMugshot)
+    call(Common_EventScript_SaveGame)
+
+    goto(HowDisappointing_StartBattle_Script)
+}
+
+script HowDisappointing_StartBattle_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+    callnative(DrawMugshot)
+msgbox(gText_HowDisappointing_SighHowDisappointing,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    trainerbattle_no_intro(TRAINER_SHELLY_WEATHER_INSTITUTE,gText_HowDisappointing_YouAllDidYour)
+    goto(HowDisappointing_ArrestScene_Dialogue)
+}
+
+script HowDisappointing_ArrestScene_Dialogue {
+    lock
+    clearflag(FLAG_TEMP_1)
+    addobject(POLICEA)
+    setobjectxyperm(POLICEA,17,8)
+    setobjectxy(POLICEA,17,8)
+    applymovement(POLICEA,HowDisappointing_WalkToArrest)
+    waitmovement(0)
+    msgbox(gText_HowDisappointing_YoureUnderArrest)
+addvar(VAR_PETALBURG_WOODS_STATE,1)
+    warpsilent(MAP_PSFBADGUY1TOWER_2F,255,16,26)
+}
+
+const PSFBADADMIN = 9 //FLAG_TEMP_3
+const PSFTRANSRIVAL = 10 //FLAG_TEMP_8
+const PSFBADBOSS = 11 // FLAG_TEMP_5
+const PSFBADADMIN2 = 14 // FLAG_TEMP_4
+const PSFBADADMIN3 = 2 // FLAG_TEMP_1
+const CHIEF2 = 13 //FLAG_TEMP_7
+
+script HowDisappointing_PostMissionObjectSetUp_Script {
+    call(YouHaveYourOrders_ObjectSetUp_Script)
+    clearflag(FLAG_TEMP_8)
+    clearflag(FLAG_TEMP_7)
+    clearflag(FLAG_TEMP_5)
+    addobject(PSFTRANSRIVAL)
+    addobject(CHIEF2)
+    addobject(PSFBADBOSS)
+    setobjectxyperm(PSFTRANSRIVAL,15,26)
+    setobjectxyperm(CHIEF2,17,26)
+    setobjectxyperm(PSFBADBOSS,16,25)
+    setobjectmovementtype(CHIEF2,MOVEMENT_TYPE_FACE_UP)
+    setobjectmovementtype(PSFTRANSRIVAL,MOVEMENT_TYPE_FACE_UP)
+    setobjectmovementtype(PSFBADBOSS,MOVEMENT_TYPE_FACE_DOWN)
+}
+
+script HowDisappointing_MissionComplete_Dialogue {
+    lock
+    applymovement(PLAYER,Common_Movement_FaceUp)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    callnative(DrawMugshot)
+    msgbox(gText_HowDisappointing_ExcellentWorkEverybody)
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PSFTRANSRIVAL,HowDisappointing_LeaveRoomA)
+    applymovement(CHIEF2,HowDisappointing_LeaveRoomB)
+    applymovement(PSFBADBOSS,HowDisappointing_LeaveRoomB)
+    waitmovement(0)
+    removeobject(PSFTRANSRIVAL)
+    removeobject(CHIEF2)
+    removeobject(PSFBADBOSS)
+    addvar(VAR_STORYLINE_STATE,1)
+    addvar(VAR_PETALBURG_WOODS_STATE,1)
+    release
+    end
+}
+    text gText_HowDisappointing_ThanksForJoining{
+        format("Thanks for joining us {PLAYER}. Now, this operation is going to be pretty straightforward. We’re walking in, warrant in hand, and arresting terrorists on sight. We suspect there’s a hidden room or something, and they’ll start running out of there as soon as we show up. That’s where our Champion comes into play.")
+    }
+
+text gText_HowDisappointing_OnceTheyTry{
+    format("Once they try to give us the slip, you’ll be in charge of hunting down the escaped members. We suspect they’ll flee into the city, but we’ll try to get you a readout of how many of ‘em we lose. You don’t have to perform any arrests, just subdue them long enough for an officer to grab ‘em. Make sense, ya’ll?")
+}
+
+text gText_HowDisappointing_YesSir{
+    format("Yes sir!")
+}
+
+text gText_HowDisappointing_OhAndChampion{
+    format("Oh, and Champion?")
+}
+
+text gText_HowDisappointing_YeahQuestion{
+    format("Yeah?")
+}
+text gText_HowDisappointing_TryToNotLet{
+    format("Try to not let the leaders go this time, okay?")
+}
+
+text gText_HowDisappointing_Yeah{
+    format("…yeah.")
+}
+text gText_HowDisappointing_Hehehehee{
+    format("Hehehehehe.")
+}
+
+text gText_HowDisappointing_HowDisappointing{
+    format("How disappointing to see you like this. Not here for a friendly chat?")
+}
+
+text gText_HowDisappointing_ImTiredOfYou{
+    format("I’m tired of you feeding lies to me every time we talk. Come on, it’s over.")
+}
+text gText_HowDisappointing_IveNeverLied{
+    format("I’ve never lied to you, {PLAYER}. I can see how deeply you care about protecting people.")
+}
+
+text gText_HowDisappointing_ThenWhyAreYou{
+    format("Then why are you so intent on destroying it all?")
+}
+text gText_HowDisappointing_TheseCompanies{
+    format("These companies… they don’t care about you! Or us! Why is this that so hard to see?")
+}
+
+text gText_HowDisappointing_AllISeeIs{
+    format("All I see is you trying to lie again. We’re done talking. You can come quietly, or I can make you.")
+}
+text gText_HowDisappointing_SighHowDisappointing{
+    format("*sigh* How disappointing.")
+}
+
+text gText_HowDisappointing_YouAllDidYour{
+    format("You all did your best…")
+}
+
+text gText_HowDisappointing_YoureUnderArrest{
+    format("Psfgoodteam, you’re under arrest!")
+}
+
+text gText_HowDisappointing_ExcellentWorkEverybody{
+    format("Excellent work everybody! Psfleader9, Psfleader10, and Psfgoodadmin have all been arrested, and all of the Gyms were successfully shut down. The region will see how quickly we’re responding to these threats, and hopefully, this will slow their efforts.")
+}
+
+movement HowDisappointing_WalkToPlayer {
+    walk_right
+    face_down
+    step_end
+}
+movement HowDisappointing_RunIntoGymA {
+    walk_up
+    walk_right * 2
+    walk_up
+    step_end
+}
+movement HowDisappointing_RunIntoGymB {
+    walk_up
+    walk_right
+    walk_up
+    step_end
+}
+movement HowDisappointing_RunIntoGymC {
+    walk_up
+    walk_left
+    walk_up
+    step_end
+}
+movement HowDisappointing_RunIntoGymD {
+    walk_up 
+    step_end
+}
+movement HowDisappointing_Escape {
+    jump_2_right
+    walk_faster_right * 5
+    step_end
+}
+
+movement HowDisappointing_EscapeA {
+    walk_down
+    jump_2_right
+    walk_faster_up * 5
+    step_end
+}
+movement HowDisappointing_EscapeB {
+    jump_2_right
+    walk_faster_down * 10
+    step_end
+}
+movement HowDisappointing_WalkToArrest {
+    walk_up * 5
+    step_end
+}
+
+movement HowDisappointing_LeaveRoomA {
+    walk_up
+    walk_right
+    walk_up * 5
+    step_end 
+}
+
+movement HowDisappointing_LeaveRoomB {
+    walk_up * 6
+    step_end 
+}

@@ -69,6 +69,11 @@
 #define MAP_PSFCAVE5_RESTAURANT  (60 | (0 << 8))
 #define MAP_PSFCAVE7_B1F         (61 | (0 << 8))
 #define MAP_PSFCAVE7_B2F         (62 | (0 << 8))
+#define MAP_PSFCITY5_BALL_SHOP   (63 | (0 << 8))
+#define MAP_PSFROUTE62           (64 | (0 << 8))
+#define MAP_PSFCAVE3             (65 | (0 << 8))
+#define MAP_PSFROUTE18           (66 | (0 << 8))
+#define MAP_PSFPLACE1            (67 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))
@@ -135,10 +140,12 @@
 #define MAP_PSFCITY8_POKEMON_CENTER_1F (2 | (2 << 8))
 
 // gMapGroup_IndoorPsfcity15
-#define MAP_PSFCITY15_GYM (0 | (3 << 8))
+#define MAP_PSFCITY15_GYM       (0 | (3 << 8))
+#define MAP_PSFCITY15_NEWSPAPER (1 | (3 << 8))
 
 // gMapGroup_IndoorPsfcity6
-#define MAP_PSFCITY6_GYM (0 | (4 << 8))
+#define MAP_PSFCITY6_GYM        (0 | (4 << 8))
+#define MAP_PSFCITY6_CONSULTING (1 | (4 << 8))
 
 // gMapGroup_IndoorPsfcity14
 #define MAP_PSFCITY14_GYM (0 | (5 << 8))
