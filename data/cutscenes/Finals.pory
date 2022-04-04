@@ -7,6 +7,7 @@ const PSFBADADMIN = 4 //FLAG_TEMP_4
 script Finals_HideObject_Script {
     setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_4)
+    setflag(FLAG_TEMP_6)
 }
 
 script Finals_PreparePlayer_Script {

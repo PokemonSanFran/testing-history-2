@@ -12,6 +12,7 @@ mapscripts Psfplace14_Lockers_MapScripts {
         VAR_STORYLINE_STATE, 27: HeresHowThisIsGoingToGo_ExplainLeagueDialogue
         VAR_STORYLINE_STATE, 29: GroupStages_GreetBeforeStart_Dialogue 
         VAR_STORYLINE_STATE, 32: WaitHeDidWhat_RivalsGoToMatch_Script 
+        VAR_STORYLINE_STATE, 50: ExhibitionBattle_PostBattle_Dialogue
     ]
 }
 
@@ -24,6 +25,7 @@ script Psfplace14_Lockers_MapScripts_OnTransition {
         case 33: call(WaitHeDidWhat_ObjectMidSetUp_Script)
         case 34: call(WaitHeDidWhat_MeltdownSetUp_Script)
         case 35: call(WaitHeDidWhat_MeltdownPostSaveSetUp_Script)
+        case 50: 
         default: call(WaitHeDidWhat_ObjectMidSetUp_Script)
     }
 }
@@ -31,6 +33,7 @@ script Psfplace14_Lockers_MapScripts_OnTransition {
 script Psfplace14_Lockers_Psftransrival_Event_Script {
     switch (var(VAR_STORYLINE_STATE)){
         case 34: goto(WaitHeDidWhat_PsftransrivalMeltdown_Dialogue)
+        case 50: goto(ExhibitionBattle_Psftransrival_Dialogue)
     }
 }
 
@@ -42,5 +45,9 @@ script Psfplace14_Lockers_InteractArenaGuard_Script {
             case 1: goto(GroupStages_PreparePlayer_Script)
             case 5: goto(WaitHeDidWhat_PreparePlayer_Script)
             case 4: goto(Finals_PreparePlayer_Script)
+        }
+
+        switch (var(VAR_STORYLINE_STATE)){
+            case 49: goto(ExhibitionBattle_MoveFromDoor_Script)
         }
 }

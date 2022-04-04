@@ -1,13 +1,18 @@
 mapscripts Psfcity6_Consulting_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcity6_Consulting_MapScripts_OnTransition)
+    }
 }
 script Psfcity6_Consulting_InteractTeodoro_Event_Script {
     lock
-    if (var(VAR_RUSTURF_TUNNEL_STATE) != 2){
-       call(Manhunt_Teodoro_Battle_Script)
-    }else {
-        msgbox("...")
-        closemessage
-    }
+        switch(var(VAR_RUSTURF_TUNNEL_STATE)){
+            case 2: call(Manhunt_Teodoro_Battle_Script)
+            default: msgbox("...",MSGBOX_AUTOCLOSE)
+        }
     release
     end
+}
+
+script Psfcity6_Consulting_MapScripts_OnTransition {
+    setflag(FLAG_TEMP_2) //Hide Psftransrival
 }

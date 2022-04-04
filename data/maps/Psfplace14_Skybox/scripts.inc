@@ -10,6 +10,7 @@ Psfplace14_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Psfplace14_Skybox_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 28, WhyDidntYouRatMeOut_WatchPsftransrivalMatches
 	map_script_2 VAR_STORYLINE_STATE, 33, WaitHeDidWhat_WatchOtherSemifinal_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 48, ExhibitionBattle_PrepPlayer_Script
 	.2byte 0
 
 
@@ -27,6 +28,8 @@ Psfplace14_Skybox_MapScripts_OnTransition::
 	case 33, Psfplace14_Skybox_MapScripts_OnTransition_5
 	case 34, Psfplace14_Skybox_MapScripts_OnTransition_6
 	case 35, Psfplace14_Skybox_MapScripts_OnTransition_7
+	case 48, Psfplace14_Skybox_MapScripts_OnTransition_8
+	case 49, Psfplace14_Skybox_MapScripts_OnTransition_9
 	call Psfplace14_Skybox_EmptySkybox_Script
 	return
 
@@ -50,6 +53,14 @@ Psfplace14_Skybox_MapScripts_OnTransition_6:
 	return
 
 Psfplace14_Skybox_MapScripts_OnTransition_7:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+Psfplace14_Skybox_MapScripts_OnTransition_8:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+Psfplace14_Skybox_MapScripts_OnTransition_9:
 	call WaitHeDidWhat_HideObject_Script
 	return
 

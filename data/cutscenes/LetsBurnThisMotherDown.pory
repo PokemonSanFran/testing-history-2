@@ -110,7 +110,6 @@ script LetsBurnThisMotherDown_StartBattle_Script {
     if (var(VAR_TEMP_0) != 1){
     applymovement(PLAYER,LetsBurnThisMotherDown_WalkFromRight)
     } elif (var(VAR_TEMP_1) == 9){ 
-        return
     } else {
     applymovement(PLAYER,LetsBurnThisMotherDown_WalkFromUp)
     }
@@ -225,6 +224,7 @@ script LetsBurnThisMotherDown_MissionComplete_Dialogue {
         waitmovement(0)
         removeobject(PSFBADBOSS)
         release
+        call(ExhibitionBattle_TimeSkip_Script)
         end
 }
 

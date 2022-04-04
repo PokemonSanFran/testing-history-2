@@ -12,6 +12,7 @@ Psfbadguy1Tower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 5, Psfbadguy1Tower_2F_MovePlayerIntoPosition_Script
 	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3, LetsBurnThisMotherDown_MissionComplete_Dialogue
 	map_script_2 VAR_PETALBURG_WOODS_STATE, 4, HowDisappointing_MissionComplete_Dialogue
+	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 6, Manhunt_MissionComplete_Dialogue
 	.2byte 0
 
 
@@ -27,14 +28,14 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition::
 	case 7, Psfbadguy1Tower_2F_MapScripts_OnTransition_10
 	call WelcomeToTheWarRoom_Object_Hide_Script
 Psfbadguy1Tower_2F_MapScripts_OnTransition_1:
-	switch VAR_PETALBURG_WOODS_STATE
-	case 0, Psfbadguy1Tower_2F_MapScripts_OnTransition_14
-	case 4, Psfbadguy1Tower_2F_MapScripts_OnTransition_15
-	call YouHaveYourOrders_ObjectSetUp_Script
-Psfbadguy1Tower_2F_MapScripts_OnTransition_12:
 	switch VAR_RUSTURF_TUNNEL_STATE
-	case 0, Psfbadguy1Tower_2F_MapScripts_OnTransition_19
+	case 0, Psfbadguy1Tower_2F_MapScripts_OnTransition_14
 	call Manhunt_TowerObjectSetUp_Script
+	switch VAR_PETALBURG_WOODS_STATE
+	case 0, Psfbadguy1Tower_2F_MapScripts_OnTransition_18
+	case 4, Psfbadguy1Tower_2F_MapScripts_OnTransition_19
+	call YouHaveYourOrders_ObjectSetUp_Script
+Psfbadguy1Tower_2F_MapScripts_OnTransition_16:
 	compare VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3
 	goto_if_eq Psfbadguy1Tower_2F_MapScripts_OnTransition_21
 	return
@@ -74,12 +75,12 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition_10:
 Psfbadguy1Tower_2F_MapScripts_OnTransition_14:
 	return
 
-Psfbadguy1Tower_2F_MapScripts_OnTransition_15:
-	call HowDisappointing_PostMissionObjectSetUp_Script
-	goto Psfbadguy1Tower_2F_MapScripts_OnTransition_12
+Psfbadguy1Tower_2F_MapScripts_OnTransition_18:
+	return
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_19:
-	return
+	call HowDisappointing_PostMissionObjectSetUp_Script
+	goto Psfbadguy1Tower_2F_MapScripts_OnTransition_16
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_21:
 	call LetsBurnThisMotherDown_ObjectMove_Script
@@ -118,6 +119,8 @@ Psfbadguy1Tower_2F_Psfbadadmin_Event_Script::
 	switch VAR_STORYLINE_STATE
 	case 43, Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_3
 	case 44, Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_4
+	case 45, Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_5
+	case 46, Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_6
 Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_1:
 	release
 	end
@@ -130,11 +133,21 @@ Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_4:
 	call LetsBurnThisMotherDown_Assignment_Dialogue
 	goto Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_1
 
+Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_5:
+	call LetsBurnThisMotherDown_Assignment_Dialogue
+	goto Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_1
+
+Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_6:
+	call LetsBurnThisMotherDown_Assignment_Dialogue
+	goto Psfbadguy1Tower_2F_Psfbadadmin_Event_Script_1
+
 
 Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script::
 	lock
 	switch VAR_STORYLINE_STATE
 	case 44, Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_3
+	case 45, Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_4
+	case 46, Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_5
 Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_1:
 	release
 	end
@@ -143,17 +156,35 @@ Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_3:
 	call YouHaveYourOrders_Assignment_Dialogue
 	goto Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_1
 
+Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_4:
+	call YouHaveYourOrders_Assignment_Dialogue
+	goto Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_1
+
+Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_5:
+	call YouHaveYourOrders_Assignment_Dialogue
+	goto Psfbadguy1Tower_2F_Psfbadadmin2_Event_Script_1
+
 
 Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script::
 	lock
 	switch VAR_STORYLINE_STATE
 	case 44, Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_3
+	case 45, Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_4
+	case 46, Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_5
 	call AlwaysWatchingWazowski_IgnoringPlayer_Dialogue
 Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_1:
 	release
 	end
 
 Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_3:
+	call Manhunt_Assignment_Dialogue
+	goto Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_1
+
+Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_4:
+	call Manhunt_Assignment_Dialogue
+	goto Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_1
+
+Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_5:
 	call Manhunt_Assignment_Dialogue
 	goto Psfbadguy1Tower_2F_Psfbadadmin3_Event_Script_1
 

@@ -163,7 +163,9 @@ HowDisappointing_ArrestScene_Dialogue::
 
 
 HowDisappointing_PostMissionObjectSetUp_Script::
-	call YouHaveYourOrders_ObjectSetUp_Script
+	setobjectxy 14, 16, 28
+	setobjectxyperm 14, 16, 28
+	setobjectmovementtype 14, MOVEMENT_TYPE_FACE_UP
 	clearflag FLAG_TEMP_8
 	clearflag FLAG_TEMP_7
 	clearflag FLAG_TEMP_5
@@ -198,6 +200,7 @@ HowDisappointing_MissionComplete_Dialogue::
 	addvar VAR_STORYLINE_STATE, 1
 	addvar VAR_PETALBURG_WOODS_STATE, 1
 	release
+	call ExhibitionBattle_TimeSkip_Script
 	end
 
 

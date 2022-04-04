@@ -2,11 +2,13 @@ GroupStages_Lockers_ObjectSetUp_Script::
 	setobjectxyperm 2, 10, 3
 	setflag FLAG_TEMP_4
 	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_6
 	return
 
 
 GroupStages_Lockers_ObjectCleanUp_Script::
 	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_4
 	setflag FLAG_TEMP_1
 	return

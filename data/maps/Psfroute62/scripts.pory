@@ -5,9 +5,8 @@ mapscripts Psfroute62_MapScripts {
 }
 
 script Psfroute62_MapScripts_OnTransition {
+    setflag(FLAG_TEMP_2) //Hide Psftransrival 
     if (var(VAR_RUSTURF_TUNNEL_STATE) != 4){
         call(Manhunt_HideObject_Script)
     }
 }
-
-

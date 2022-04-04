@@ -194,7 +194,9 @@ const PSFBADADMIN3 = 2 // FLAG_TEMP_1
 const CHIEF2 = 13 //FLAG_TEMP_7
 
 script HowDisappointing_PostMissionObjectSetUp_Script {
-    call(YouHaveYourOrders_ObjectSetUp_Script)
+    setobjectxy(PSFBADADMIN2,16,28)
+    setobjectxyperm(PSFBADADMIN2,16,28)
+    setobjectmovementtype(PSFBADADMIN2,MOVEMENT_TYPE_FACE_UP)
     clearflag(FLAG_TEMP_8)
     clearflag(FLAG_TEMP_7)
     clearflag(FLAG_TEMP_5)
@@ -228,6 +230,7 @@ script HowDisappointing_MissionComplete_Dialogue {
     addvar(VAR_STORYLINE_STATE,1)
     addvar(VAR_PETALBURG_WOODS_STATE,1)
     release
+        call(ExhibitionBattle_TimeSkip_Script)
     end
 }
     text gText_HowDisappointing_ThanksForJoining{

@@ -1178,7 +1178,7 @@ end
 .include "data/cutscenes/HowDisappointing.inc"
 .include "data/cutscenes/LetsBurnThisMotherDown.inc"
 .include "data/cutscenes/Manhunt.inc"
-##  .include "data/cutscenes/ExhibitionBattle.inc"
+.include "data/cutscenes/ExhibitionBattle.inc"
 ##  .include "data/cutscenes/MaybeIFuckedUp.inc"
 ##  .include "data/cutscenes/OkayLetsFixit.inc"
 ##  .include "data/cutscenes/LetsGettheBandBackTogether.inc"

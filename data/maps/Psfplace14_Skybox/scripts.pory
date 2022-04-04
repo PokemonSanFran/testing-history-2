@@ -5,6 +5,7 @@ mapscripts Psfplace14_Skybox_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 28: WhyDidntYouRatMeOut_WatchPsftransrivalMatches
         VAR_STORYLINE_STATE, 33: WaitHeDidWhat_WatchOtherSemifinal_Dialogue 
+        VAR_STORYLINE_STATE, 48: ExhibitionBattle_PrepPlayer_Script
     ]
 }
 
@@ -21,6 +22,8 @@ script Psfplace14_Skybox_MapScripts_OnTransition {
         case 33: return
         case 34: call(WaitHeDidWhat_HideObject_Script)
         case 35: call(WaitHeDidWhat_HideObject_Script)
+        case 48: call(WaitHeDidWhat_HideObject_Script)
+        case 49: call(WaitHeDidWhat_HideObject_Script)
         default: call(Psfplace14_Skybox_EmptySkybox_Script)
     }
 }

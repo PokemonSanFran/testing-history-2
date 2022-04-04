@@ -5,7 +5,6 @@ mapscripts Psfcave3_MapScripts {
 }
 
 script Psfcave3_MapScripts_OnTransition {
-    
     if (var(VAR_STORYLINE_STATE) > 26){
         if (var(VAR_RUSTURF_TUNNEL_STATE) != 5 || !flag(FLAG_TIMELINE_FALSE)){
             call(Manhunt_HideObject_Script)
@@ -16,11 +15,9 @@ script Psfcave3_MapScripts_OnTransition {
 
 script Psfcave3_InteractPsfelite4_Event_Script {
     lock
-        if (var(VAR_RUSTURF_TUNNEL_STATE) != 4){
-            call(Manhunt_Encounter_Psfgoodboss_Dialogue)
-        }else {
-            msgbox("...")
-                closemessage
+        switch(var(VAR_RUSTURF_TUNNEL_STATE)){
+            case 5: call(Manhunt_Encounter_Psfgoodboss_Dialogue)
+            default: msgbox("...",MSGBOX_AUTOCLOSE)
         }
     release
         end

@@ -1,20 +1,29 @@
 Psfcity6_Consulting_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity6_Consulting_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfcity6_Consulting_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcity6_Consulting_MapScripts_OnTransition
+	return
 
 
 Psfcity6_Consulting_InteractTeodoro_Event_Script::
 	lock
-	compare VAR_RUSTURF_TUNNEL_STATE, 2
-	goto_if_ne Psfcity6_Consulting_InteractTeodoro_Event_Script_2
-	msgbox Psfcity6_Consulting_InteractTeodoro_Event_Script_Text_0
-	closemessage
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 2, Psfcity6_Consulting_InteractTeodoro_Event_Script_3
+	msgbox Psfcity6_Consulting_InteractTeodoro_Event_Script_Text_0, MSGBOX_AUTOCLOSE
 Psfcity6_Consulting_InteractTeodoro_Event_Script_1:
 	release
 	end
 
-Psfcity6_Consulting_InteractTeodoro_Event_Script_2:
+Psfcity6_Consulting_InteractTeodoro_Event_Script_3:
 	call Manhunt_Teodoro_Battle_Script
 	goto Psfcity6_Consulting_InteractTeodoro_Event_Script_1
+
+
+Psfcity6_Consulting_MapScripts_OnTransition::
+	setflag FLAG_TEMP_2
+	return
 
 
 Psfcity6_Consulting_InteractTeodoro_Event_Script_Text_0:

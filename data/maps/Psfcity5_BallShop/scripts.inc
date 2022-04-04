@@ -1,21 +1,30 @@
 Psfcity5_BallShop_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity5_BallShop_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
 
+Psfcity5_BallShop_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcity5_BallShop_MapScripts_OnTransition
+	return
 
-Psfcity5_Consulting_InteractDudley_Event_Script::
+
+Psfcity5_BallShop_InteractDudley_Event_Script::
 	lock
-	compare VAR_RUSTURF_TUNNEL_STATE, 3
-	goto_if_ne Psfcity5_Consulting_InteractDudley_Event_Script_2
-	msgbox Psfcity5_Consulting_InteractDudley_Event_Script_Text_0
-	closemessage
-Psfcity5_Consulting_InteractDudley_Event_Script_1:
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 3, Psfcity5_BallShop_InteractDudley_Event_Script_3
+	msgbox Psfcity5_BallShop_InteractDudley_Event_Script_Text_0, MSGBOX_AUTOCLOSE
+Psfcity5_BallShop_InteractDudley_Event_Script_1:
 	release
 	end
 
-Psfcity5_Consulting_InteractDudley_Event_Script_2:
+Psfcity5_BallShop_InteractDudley_Event_Script_3:
 	call Manhunt_Dudley_Battle_Script
-	goto Psfcity5_Consulting_InteractDudley_Event_Script_1
+	goto Psfcity5_BallShop_InteractDudley_Event_Script_1
 
 
-Psfcity5_Consulting_InteractDudley_Event_Script_Text_0:
+Psfcity5_BallShop_MapScripts_OnTransition::
+	setflag FLAG_TEMP_2
+	return
+
+
+Psfcity5_BallShop_InteractDudley_Event_Script_Text_0:
 	.string "...$"

@@ -20,11 +20,6 @@ Psfcave7_B1F_MapScripts_OnTransition_2:
 
 Psfcave7_B1F_Psftransrival_Event_Script::
 	lock
-	switch VAR_STORYLINE_STATE
-	case 44, Psfcave7_B1F_Psftransrival_Event_Script_2
-	return
-
-Psfcave7_B1F_Psftransrival_Event_Script_2:
 	goto LetsBurnThisMotherDown_StartBattle_Script
 	return
 

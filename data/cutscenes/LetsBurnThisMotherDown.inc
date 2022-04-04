@@ -112,7 +112,7 @@ LetsBurnThisMotherDown_StartBattle_Script_2:
 	goto LetsBurnThisMotherDown_StartBattle_Script_1
 
 LetsBurnThisMotherDown_StartBattle_Script_3:
-	return
+	goto LetsBurnThisMotherDown_StartBattle_Script_1
 
 
 LetsBurnThisMotherDown_PostBattle_Dialogue::
@@ -198,6 +198,7 @@ LetsBurnThisMotherDown_MissionComplete_Dialogue::
 	waitmovement 0
 	removeobject 11
 	release
+	call ExhibitionBattle_TimeSkip_Script
 	end
 
 

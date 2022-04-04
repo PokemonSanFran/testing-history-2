@@ -173,6 +173,9 @@
 43: Slept after being Told by TR to stop 
 44: Has told YC they'd side with them, flipped to dark side
 45,46,47: Finished one of the TR takedown quests
+48: Finished all takedown quests
+49: About to take on Diantha
+50: Post Diantha battle
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck
@@ -260,6 +263,7 @@ Y: Used to find the target of the last completed takedown quest, number should c
 0: Has not been assigned "Find Giovanni"
 1: has been assigned
 2,3,4,5: got a clue to Giovanni's location
+6: Has defeated Giovanni
 
 
 #VAR_LILYCOVE_CONTEST_LOBBY_STATE

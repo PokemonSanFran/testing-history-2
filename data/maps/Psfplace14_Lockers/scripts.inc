@@ -21,6 +21,7 @@ Psfplace14_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 27, HeresHowThisIsGoingToGo_ExplainLeagueDialogue
 	map_script_2 VAR_STORYLINE_STATE, 29, GroupStages_GreetBeforeStart_Dialogue
 	map_script_2 VAR_STORYLINE_STATE, 32, WaitHeDidWhat_RivalsGoToMatch_Script
+	map_script_2 VAR_STORYLINE_STATE, 50, ExhibitionBattle_PostBattle_Dialogue
 	.2byte 0
 
 
@@ -68,10 +69,15 @@ Psfplace14_Lockers_MapScripts_OnTransition_8:
 Psfplace14_Lockers_Psftransrival_Event_Script::
 	switch VAR_STORYLINE_STATE
 	case 34, Psfplace14_Lockers_Psftransrival_Event_Script_2
+	case 50, Psfplace14_Lockers_Psftransrival_Event_Script_3
 	return
 
 Psfplace14_Lockers_Psftransrival_Event_Script_2:
 	goto WaitHeDidWhat_PsftransrivalMeltdown_Dialogue
+	return
+
+Psfplace14_Lockers_Psftransrival_Event_Script_3:
+	goto ExhibitionBattle_Psftransrival_Dialogue
 	return
 
 
@@ -79,20 +85,27 @@ Psfplace14_Lockers_InteractArenaGuard_Script::
 	lock
 	faceplayer
 	switch VAR_ROUTE119_STATE
-	case 1, Psfplace14_Lockers_InteractArenaGuard_Script_2
-	case 5, Psfplace14_Lockers_InteractArenaGuard_Script_3
-	case 4, Psfplace14_Lockers_InteractArenaGuard_Script_4
-	return
-
-Psfplace14_Lockers_InteractArenaGuard_Script_2:
-	goto GroupStages_PreparePlayer_Script
+	case 1, Psfplace14_Lockers_InteractArenaGuard_Script_3
+	case 5, Psfplace14_Lockers_InteractArenaGuard_Script_4
+	case 4, Psfplace14_Lockers_InteractArenaGuard_Script_5
+Psfplace14_Lockers_InteractArenaGuard_Script_1:
+	switch VAR_STORYLINE_STATE
+	case 49, Psfplace14_Lockers_InteractArenaGuard_Script_7
 	return
 
 Psfplace14_Lockers_InteractArenaGuard_Script_3:
-	goto WaitHeDidWhat_PreparePlayer_Script
-	return
+	goto GroupStages_PreparePlayer_Script
+	goto Psfplace14_Lockers_InteractArenaGuard_Script_1
 
 Psfplace14_Lockers_InteractArenaGuard_Script_4:
+	goto WaitHeDidWhat_PreparePlayer_Script
+	goto Psfplace14_Lockers_InteractArenaGuard_Script_1
+
+Psfplace14_Lockers_InteractArenaGuard_Script_5:
 	goto Finals_PreparePlayer_Script
+	goto Psfplace14_Lockers_InteractArenaGuard_Script_1
+
+Psfplace14_Lockers_InteractArenaGuard_Script_7:
+	goto ExhibitionBattle_MoveFromDoor_Script
 	return
 

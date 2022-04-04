@@ -8,6 +8,7 @@ Psfroute62_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Psfroute62_MapScripts_OnTransition::
+	setflag FLAG_TEMP_2
 	compare VAR_RUSTURF_TUNNEL_STATE, 4
 	goto_if_ne Psfroute62_MapScripts_OnTransition_1
 	return

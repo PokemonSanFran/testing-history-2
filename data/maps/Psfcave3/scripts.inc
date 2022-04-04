@@ -25,15 +25,14 @@ Psfcave3_MapScripts_OnTransition_3:
 
 Psfcave3_InteractPsfelite4_Event_Script::
 	lock
-	compare VAR_RUSTURF_TUNNEL_STATE, 4
-	goto_if_ne Psfcave3_InteractPsfelite4_Event_Script_2
-	msgbox Psfcave3_InteractPsfelite4_Event_Script_Text_0
-	closemessage
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 5, Psfcave3_InteractPsfelite4_Event_Script_3
+	msgbox Psfcave3_InteractPsfelite4_Event_Script_Text_0, MSGBOX_AUTOCLOSE
 Psfcave3_InteractPsfelite4_Event_Script_1:
 	release
 	end
 
-Psfcave3_InteractPsfelite4_Event_Script_2:
+Psfcave3_InteractPsfelite4_Event_Script_3:
 	call Manhunt_Encounter_Psfgoodboss_Dialogue
 	goto Psfcave3_InteractPsfelite4_Event_Script_1
 

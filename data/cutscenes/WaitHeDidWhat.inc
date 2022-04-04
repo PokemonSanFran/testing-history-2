@@ -6,6 +6,7 @@ WaitHeDidWhat_HideObject_Script::
 WaitHeDidWhat_ObjectSetUp_Script::
 	call Finals_HideObject_Script
 	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_6
 	setobjectxy 3, 10, 5
 	setobjectxyperm 3, 10, 5
 	return
@@ -13,13 +14,16 @@ WaitHeDidWhat_ObjectSetUp_Script::
 
 WaitHeDidWhat_ObjectMidSetUp_Script::
 	call Finals_HideObject_Script
+	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_6
 	return
 
 
 WaitHeDidWhat_MeltdownSetUp_Script::
 	call Finals_HideObject_Script
+	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_3
 	setobjectxy 2, 2, 7
 	setobjectxyperm 2, 2, 7
@@ -35,6 +39,7 @@ WaitHeDidWhat_MeltdownPostSaveSetUp_Script::
 	setobjectxy 2, 2, 7
 	setobjectxyperm 2, 2, 7
 	setobjectmovementtype 2, MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP
+	setflag FLAG_TEMP_6
 	return
 
 

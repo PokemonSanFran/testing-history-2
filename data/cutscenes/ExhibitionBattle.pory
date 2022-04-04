@@ -1,0 +1,292 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+script ExhibitionBattle_TimeSkip_Script {
+    if (var(VAR_STORYLINE_STATE) == 48){
+        special(HealPlayerParty)
+            fadescreen(FADE_TO_BLACK)
+            msgbox(gText_ExhibitionBattle_TimeSkip,MSGBOX_AUTOCLOSE)
+            warpsilent(MAP_PSFPLACE14_SKYBOX,10,3)
+    }
+}
+
+script ExhibitionBattle_PrepPlayer_Script {
+    lock
+        addvar(VAR_STORYLINE_STATE,1)
+        applymovement(5, WaitHeDidWhat_EncouragePlayer)
+        waitmovement(0)
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_OkayTime,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == NO){
+            msgbox(gText_ExhibitionBattle_NervousStill,MSGBOX_AUTOCLOSE)
+                callnative(ClearMugshot)
+                end
+        }
+
+    callnative(ClearMugshot)
+        fadescreen(FADE_TO_BLACK)
+        msgbox(gText_ExhibitionBattle_AndNow,MSGBOX_AUTOCLOSE)
+        warpsilent(MAP_PSFPLACE14_ARENA,1)
+}
+
+script ExhibitionBattle_MoveFromDoor_Script {
+    lock
+        faceplayer
+        msgbox(gText_ExhibitionBattle_ForYourExhibition,MSGBOX_YESNO)
+        closemessage
+        if (var(VAR_RESULT) == YES){
+            call(GroupStages_MoveObjects_Script)
+                warpsilent(MAP_PSFPLACE14_ARENA,1)
+        }
+    release
+        end
+}
+
+script ExhibitionBattle_SetChampionName_Script {
+        random(2)
+        if (var(VAR_RESULT) == 1){
+            //bufferstring(STR_VAR_3,gText_ExhibitionBattle_Serena)
+            bufferstring(STR_VAR_3,"Serena")
+        }else {
+            //bufferstring(STR_VAR_3,gText_ExhibitionBattle_Calem)
+            bufferstring(STR_VAR_3,"Calem")
+        }
+}
+
+script ExhibitionBattle_BattleDiantha_Script {
+    lock
+        applymovement(PLAYER,WaitHeDidWhat_WalkToBattlefieldPosition)
+        waitmovement(0)
+
+        msgbox(gText_ExhibitionBattle_CanTheGrand,MSGBOX_AUTOCLOSE)
+
+        applymovement(1,Common_Movement_WalkLeft)
+        waitmovement(0)
+
+        call(ExhibitionBattle_SetChampionName_Script)
+        trainerbattle_continue_after_lose(TRAINER_WALLACE,gText_ExhibitionBattle_Incredible)
+        special(HealPlayerParty)
+        msgbox(gText_ExhibitionBattle_WhatAnAmazing,MSGBOX_AUTOCLOSE)
+        addvar(VAR_STORYLINE_STATE,1)
+        warpsilent(MAP_PSFPLACE14_LOCKERS,255,9,5)
+
+        //PSF TODO Add crowd booing
+        //The crowd goes wild with booes and jeering. The screen cuts to black the player is warped back to the locker room. Psfbadboss, Psfbadadmin2, and Psftransrival are in the locker room. Psfbadboss approaches the player as they walk in.
+}
+
+script ExhibitionBattle_PostBattle_Dialogue {
+        lock
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_ThatWasPositively)
+
+        if(!defeated(TRAINER_WALLACE)){
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_IveNeverSeen)
+        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        callnative(DrawMugshot)
+        }
+
+        msgbox(gText_ExhibitionBattle_ImConvinced)
+        release
+        end
+}
+
+script ExhibitionBattle_Psftransrival_Dialogue {
+            setvar(VAR_0x8000, MUGSHOT_BIANCA)
+            callnative(DrawMugshot)
+
+        if (var(VAR_TEMP_F) > 0){
+            msgbox(gText_ExhibitionBattle_IWonderIfThat,MSGBOX_NPC)
+            callnative(ClearMugshot)
+            release
+            end
+        }
+
+        setvar(VAR_TEMP_F,1)
+        msgbox(gText_ExhibitionBattle_SickBattleOut)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_YeahIHeardALittle,MSGBOX_NPC)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_ImHeadingUpTheir)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_IsntThat)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_IveBeenWorkignWith)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_IThinkYoureGonna)
+}
+
+script ExhibitionBattle_Psfbadadmin3_Dialogue {
+        lock
+        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_IDidntSeeYour,MSGBOX_NPC)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_UhhThanks)
+
+        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_YourWorkDismantling)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_ImHappy)
+
+        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_WithTheirEntireLeadership)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_WaitTheEliteFour)
+
+        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_NotReallyItsASlight)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_NowUhYoureWelcome)
+        callnative(ClearMugshot)
+        closemessage
+        release
+        end
+}
+
+script ExhibitionBattle_FalseCredits_Script {
+    lock
+    fadescreen(FADE_TO_BLACK)
+    call(Common_EventScript_SaveGame)
+    msgbox("The....End?",MSGBOX_AUTOCLOSE)
+    release
+    closemessage
+    warpsilent(MAP_PSFROUTE22,2)
+}
+
+text gText_ExhibitionBattle_TimeSkip {
+    format("A few weeks later...")
+}
+
+text gText_ExhibitionBattle_OkayTime {
+    format("Okay, time for your exhibition battle. Winning or losing doesn't matter… just give us a good show! Are you ready?")
+}
+
+text gText_ExhibitionBattle_NervousStill {
+    format("Nervous still? No worries. Just head into the stadium when you're ready.")
+}
+
+text gText_ExhibitionBattle_AndNow {
+    format("And now, the Psfregion1 Champion…. {PLAYER}!!!")
+}
+
+text gText_ExhibitionBattle_CanTheGrand {
+    format("Can the Grand Duchess hold a candle to our superstar? Let's get the exhibition underway!")
+}
+
+text gText_ExhibitionBattle_Incredible {
+    format("Incredible! You remind me of {STR_VAR_3}… So fierce.")
+}
+
+text gText_ExhibitionBattle_Serena {
+    format("Serena")
+}
+
+text gText_ExhibitionBattle_Calem {
+    format("Calem")
+}
+
+text gText_ExhibitionBattle_WhatAnAmazing {
+    format("What an amazing show of skill from these elite Trainers! I'm so fired up for this League season, are you all ready?")
+}
+
+text gText_ExhibitionBattle_ThatWasPositively {
+    format("That was positively electric! Your best battle yet! Incredible! I couldn't have asked for a better kickoff.")
+}
+
+text gText_ExhibitionBattle_IveNeverSeen {
+    format("(I've never seen anybody so excited to see me lose!)")
+}
+
+text gText_ExhibitionBattle_ImConvinced {
+    format("I'm convinced. This is going to be the best League season ever. The sponsors are excited, we've got a villain as the reigning Champion, viewership is at an all-time high, and we're going to make it big! *sniff* I'm getting emotional. You've done excellently, {PLAYER}.")
+}
+
+text gText_ExhibitionBattle_SickBattleOut {
+    format("Sick battle out there. I'm hoping my facilities are as hype as that.")
+}
+
+text gText_ExhibitionBattle_YeahIHeardALittle {
+    format("Yeah, I heard a little bit of that; what are you working on now?")
+}
+
+text gText_ExhibitionBattle_ImHeadingUpTheir {
+    format("I'm heading up their community outreach program. We're going to set up a bunch of Battle Facilities all around the region.")
+}
+text gText_ExhibitionBattle_IsntThat {
+    format("(Isn't that…)")
+}
+
+text gText_ExhibitionBattle_IveBeenWorkignWith {
+    format("I've been working with a developer who thinks we can convert some of the low-income housing into those facilities, meaning they'll be accessible all over the region! I can't wait to build more opportunities for Trainers. Being the Champion would have been cool, but this gig is amazing too.")
+}
+text gText_ExhibitionBattle_IThinkYoureGonna {
+    format("I think you're gonna do great.")
+}
+
+text gText_ExhibitionBattle_IWonderIfThat {
+    format("I wonder if that development in Psfcity7 has been committed yet…")
+}
+text gText_ExhibitionBattle_IDidntSeeYour {
+    format("I didn't see your match, but the dashboards show me that people were very excited.")
+}
+
+text gText_ExhibitionBattle_UhhThanks {
+    format("…uhh, thanks?")
+}
+
+text gText_ExhibitionBattle_YourWorkDismantling {
+    format("Your work dismantling Psfgoodteam was excellent, by the way.")
+}
+
+text gText_ExhibitionBattle_ImHappy {
+    format("I'm happy I was able to help!")
+}
+
+text gText_ExhibitionBattle_WithTheirEntireLeadership {
+    format("With their entire leadership core in custody, we now basically control the narrative around them. We're planning a campaign to show the people of the region the true dangers of collective organizations like Psfgoodteam and the Elite Four.")
+}
+
+text gText_ExhibitionBattle_WaitTheEliteFour {
+    format("Wait, the Elite Four has a whole organization?")
+}
+
+text gText_ExhibitionBattle_NotReallyItsASlight {
+    format("Not really. It's a slight reinterpretation of reality, but the message is for the greater good! We're going to make a huge difference in shutting down copycat groups, and it's all thanks to your work.")
+}
+
+text gText_ExhibitionBattle_NowUhYoureWelcome {
+    format("Wow uh, you're welcome.")
+}
+
+text gText_ExhibitionBattle_ForYourExhibition {
+    format("Are you ready for your exhibition?")
+}

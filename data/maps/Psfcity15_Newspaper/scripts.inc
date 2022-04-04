@@ -1,20 +1,29 @@
 Psfcity15_Newspaper_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity15_Newspaper_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfcity15_Newspaper_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcity15_Newspaper_MapScripts_OnTransition
+	return
 
 
 Psfcity15_Newspaper_InteractCherie_Event_Script::
 	lock
-	compare VAR_RUSTURF_TUNNEL_STATE, 1
-	goto_if_ne Psfcity15_Newspaper_InteractCherie_Event_Script_2
-	msgbox Psfcity15_Newspaper_InteractCherie_Event_Script_Text_0
-	closemessage
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 1, Psfcity15_Newspaper_InteractCherie_Event_Script_3
+	msgbox Psfcity15_Newspaper_InteractCherie_Event_Script_Text_0, MSGBOX_AUTOCLOSE
 Psfcity15_Newspaper_InteractCherie_Event_Script_1:
 	release
 	end
 
-Psfcity15_Newspaper_InteractCherie_Event_Script_2:
+Psfcity15_Newspaper_InteractCherie_Event_Script_3:
 	call Manhunt_Cherie_Battle_Script
 	goto Psfcity15_Newspaper_InteractCherie_Event_Script_1
+
+
+Psfcity15_Newspaper_MapScripts_OnTransition::
+	setflag FLAG_TEMP_2
+	return
 
 
 Psfcity15_Newspaper_InteractCherie_Event_Script_Text_0:
