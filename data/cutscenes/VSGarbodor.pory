@@ -9,6 +9,7 @@ const POLICEB = 13
 const PSFBADBOSS = 14
 
 script VSGarbodor_Arrest_ObjectSetup_Script {
+        setflag(FLAG_TEMP_6)
     setobjectxy(GOODTEAMA, 26, 19)
         setobjectxy(GOODTEAMB, 26, 20)
         setobjectxy(PSFTRANSRIVAL, 21, 21)

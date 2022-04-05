@@ -175,7 +175,9 @@
 45,46,47: Finished one of the TR takedown quests
 48: Finished all takedown quests
 49: About to take on Diantha
-50: Post Diantha battle
+50: Defeated Diantha
+51: Congratulated by Rose
+52: Recived Bamboo Star 
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck

@@ -1,2 +1,25 @@
 Psfplace1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfplace1_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Psfplace1_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfplace1_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Psfplace1_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfplace1_MapScripts_OnTransition
+	return
+
+Psfplace1_MapScripts_MAP_SCRIPT_ON_LOAD:
+	goto Psfplace1_MapScripts_OnLoad
+	return
+
+Psfplace1_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	.2byte 0
+
+
+Psfplace1_MapScripts_OnTransition::
+	return
+
+
+Psfplace1_MapScripts_OnLoad::
+	return
+

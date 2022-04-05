@@ -11,6 +11,7 @@ script TheStrikeStrikesBack_HideObject_Script {
         setflag(FLAG_TEMP_2)
         setflag(FLAG_TEMP_3)
         setflag(FLAG_TEMP_4)
+        setflag(FLAG_TEMP_6)
 }
 
 script TheStrikeStrikesBack_UnblockConstruction_Script {
@@ -19,6 +20,7 @@ script TheStrikeStrikesBack_UnblockConstruction_Script {
 }
 
 script TheStrikeStrikesBack_ObjectSetup_Script {
+        setflag(FLAG_TEMP_6)
     clearflag(FLAG_TEMP_4)
         clearflag(FLAG_TEMP_2)
         clearflag(FLAG_TEMP_3)

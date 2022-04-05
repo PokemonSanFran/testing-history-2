@@ -25,16 +25,23 @@ script Psfplace14_Lockers_MapScripts_OnTransition {
         case 33: call(WaitHeDidWhat_ObjectMidSetUp_Script)
         case 34: call(WaitHeDidWhat_MeltdownSetUp_Script)
         case 35: call(WaitHeDidWhat_MeltdownPostSaveSetUp_Script)
-        case 50: 
+        case 50: call(ExhibitionBattle_HideObject_Script)
+        case 51: call(ExhibitionBattle_HideObject_Script)
         default: call(WaitHeDidWhat_ObjectMidSetUp_Script)
     }
 }
 
 script Psfplace14_Lockers_Psftransrival_Event_Script {
+    lock
+    faceplayer
     switch (var(VAR_STORYLINE_STATE)){
-        case 34: goto(WaitHeDidWhat_PsftransrivalMeltdown_Dialogue)
-        case 50: goto(ExhibitionBattle_Psftransrival_Dialogue)
+        case 34: call(WaitHeDidWhat_PsftransrivalMeltdown_Dialogue)
+        case 51: call(ExhibitionBattle_Psftransrival_Dialogue)
     }
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
 }
 
 script Psfplace14_Lockers_InteractArenaGuard_Script {

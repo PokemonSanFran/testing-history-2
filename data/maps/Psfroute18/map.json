@@ -17,6 +17,11 @@
       "direction": "down",
       "offset": -12,
       "map": "MAP_PSFPLACE1"
+    },
+    {
+      "direction": "up",
+      "offset": 33,
+      "map": "MAP_PSFCITY5"
     }
   ],
   "object_events": [

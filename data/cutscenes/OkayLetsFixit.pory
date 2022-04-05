@@ -1,0 +1,2 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const HIME = 2

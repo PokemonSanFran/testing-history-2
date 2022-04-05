@@ -1,5 +1,9 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 
+script ExhibitionBattle_HideObject_Script {
+    setflag(FLAG_TEMP_3)
+}
+
 script ExhibitionBattle_TimeSkip_Script {
     if (var(VAR_STORYLINE_STATE) == 48){
         special(HealPlayerParty)
@@ -79,6 +83,7 @@ script ExhibitionBattle_PostBattle_Dialogue {
         lock
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(0)
+        addvar(VAR_STORYLINE_STATE,1)
 
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
@@ -94,6 +99,8 @@ script ExhibitionBattle_PostBattle_Dialogue {
         }
 
         msgbox(gText_ExhibitionBattle_ImConvinced)
+        callnative(ClearMugshot)
+        closemessage
         release
         end
 }
@@ -103,10 +110,8 @@ script ExhibitionBattle_Psftransrival_Dialogue {
             callnative(DrawMugshot)
 
         if (var(VAR_TEMP_F) > 0){
-            msgbox(gText_ExhibitionBattle_IWonderIfThat,MSGBOX_NPC)
-            callnative(ClearMugshot)
-            release
-            end
+            msgbox(gText_ExhibitionBattle_IWonderIfThat)
+            return
         }
 
         setvar(VAR_TEMP_F,1)
@@ -114,7 +119,7 @@ script ExhibitionBattle_Psftransrival_Dialogue {
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_YeahIHeardALittle,MSGBOX_NPC)
+        msgbox(gText_ExhibitionBattle_YeahIHeardALittle)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -176,7 +181,7 @@ script ExhibitionBattle_FalseCredits_Script {
     lock
     fadescreen(FADE_TO_BLACK)
     call(Common_EventScript_SaveGame)
-    msgbox("The....End?",MSGBOX_AUTOCLOSE)
+    msgbox("False credits roll. The....End?",MSGBOX_AUTOCLOSE)
     release
     closemessage
     warpsilent(MAP_PSFROUTE22,2)

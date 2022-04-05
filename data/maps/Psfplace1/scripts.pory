@@ -1,0 +1,16 @@
+mapscripts Psfplace1_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfplace1_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_LOAD {
+        goto(Psfplace1_MapScripts_OnLoad)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+    ]
+}
+
+script Psfplace1_MapScripts_OnTransition {
+}
+
+script Psfplace1_MapScripts_OnLoad {
+}

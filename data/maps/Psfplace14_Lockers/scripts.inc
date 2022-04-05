@@ -34,6 +34,8 @@ Psfplace14_Lockers_MapScripts_OnTransition::
 	case 33, Psfplace14_Lockers_MapScripts_OnTransition_6
 	case 34, Psfplace14_Lockers_MapScripts_OnTransition_7
 	case 35, Psfplace14_Lockers_MapScripts_OnTransition_8
+	case 50, Psfplace14_Lockers_MapScripts_OnTransition_9
+	case 51, Psfplace14_Lockers_MapScripts_OnTransition_10
 	call WaitHeDidWhat_ObjectMidSetUp_Script
 	return
 
@@ -65,20 +67,34 @@ Psfplace14_Lockers_MapScripts_OnTransition_8:
 	call WaitHeDidWhat_MeltdownPostSaveSetUp_Script
 	return
 
+Psfplace14_Lockers_MapScripts_OnTransition_9:
+	call ExhibitionBattle_HideObject_Script
+	return
+
+Psfplace14_Lockers_MapScripts_OnTransition_10:
+	call ExhibitionBattle_HideObject_Script
+	return
+
 
 Psfplace14_Lockers_Psftransrival_Event_Script::
+	lock
+	faceplayer
 	switch VAR_STORYLINE_STATE
-	case 34, Psfplace14_Lockers_Psftransrival_Event_Script_2
-	case 50, Psfplace14_Lockers_Psftransrival_Event_Script_3
-	return
-
-Psfplace14_Lockers_Psftransrival_Event_Script_2:
-	goto WaitHeDidWhat_PsftransrivalMeltdown_Dialogue
-	return
+	case 34, Psfplace14_Lockers_Psftransrival_Event_Script_3
+	case 51, Psfplace14_Lockers_Psftransrival_Event_Script_4
+Psfplace14_Lockers_Psftransrival_Event_Script_1:
+	closemessage
+	callnative ClearMugshot
+	release
+	end
 
 Psfplace14_Lockers_Psftransrival_Event_Script_3:
-	goto ExhibitionBattle_Psftransrival_Dialogue
-	return
+	call WaitHeDidWhat_PsftransrivalMeltdown_Dialogue
+	goto Psfplace14_Lockers_Psftransrival_Event_Script_1
+
+Psfplace14_Lockers_Psftransrival_Event_Script_4:
+	call ExhibitionBattle_Psftransrival_Dialogue
+	goto Psfplace14_Lockers_Psftransrival_Event_Script_1
 
 
 Psfplace14_Lockers_InteractArenaGuard_Script::

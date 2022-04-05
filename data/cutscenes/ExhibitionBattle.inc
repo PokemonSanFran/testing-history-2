@@ -1,3 +1,8 @@
+ExhibitionBattle_HideObject_Script::
+	setflag FLAG_TEMP_3
+	return
+
+
 ExhibitionBattle_TimeSkip_Script::
 	compare VAR_STORYLINE_STATE, 48
 	goto_if_eq ExhibitionBattle_TimeSkip_Script_1
@@ -82,6 +87,7 @@ ExhibitionBattle_PostBattle_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
+	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_ThatWasPositively
@@ -89,6 +95,8 @@ ExhibitionBattle_PostBattle_Dialogue::
 	goto_if 0, ExhibitionBattle_PostBattle_Dialogue_2
 ExhibitionBattle_PostBattle_Dialogue_1:
 	msgbox gText_ExhibitionBattle_ImConvinced
+	callnative ClearMugshot
+	closemessage
 	release
 	end
 
@@ -110,7 +118,7 @@ ExhibitionBattle_Psftransrival_Dialogue::
 	msgbox gText_ExhibitionBattle_SickBattleOut
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_YeahIHeardALittle, MSGBOX_NPC
+	msgbox gText_ExhibitionBattle_YeahIHeardALittle
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_ImHeadingUpTheir
@@ -126,10 +134,8 @@ ExhibitionBattle_Psftransrival_Dialogue::
 	return
 
 ExhibitionBattle_Psftransrival_Dialogue_2:
-	msgbox gText_ExhibitionBattle_IWonderIfThat, MSGBOX_NPC
-	callnative ClearMugshot
-	release
-	end
+	msgbox gText_ExhibitionBattle_IWonderIfThat
+	return
 
 
 ExhibitionBattle_Psfbadadmin3_Dialogue::
@@ -182,7 +188,7 @@ ExhibitionBattle_SetChampionName_Script_Text_1:
 	.string "Calem$"
 
 ExhibitionBattle_FalseCredits_Script_Text_0:
-	.string "The....End?$"
+	.string "False credits roll. The....End?$"
 
 gText_ExhibitionBattle_TimeSkip::
 	.string "A few weeks later...$"

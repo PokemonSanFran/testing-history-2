@@ -3,6 +3,7 @@ TheStrikeStrikesBack_HideObject_Script::
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_6
 	return
 
 
@@ -13,6 +14,7 @@ TheStrikeStrikesBack_UnblockConstruction_Script::
 
 
 TheStrikeStrikesBack_ObjectSetup_Script::
+	setflag FLAG_TEMP_6
 	clearflag FLAG_TEMP_4
 	clearflag FLAG_TEMP_2
 	clearflag FLAG_TEMP_3

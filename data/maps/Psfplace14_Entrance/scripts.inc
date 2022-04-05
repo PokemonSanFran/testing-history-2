@@ -4,12 +4,19 @@ Psfplace14_Entrance_MapScripts::
 
 Psfplace14_Entrance_KeepPlayerInside_Script::
 	lock
-	goto_if_set FLAG_PSFPLACE14_TOURNAMENT_HAPPENING, Psfplace14_Entrance_KeepPlayerInside_Script_2
+	compare VAR_STORYLINE_STATE, 51
+	goto_if_eq Psfplace14_Entrance_KeepPlayerInside_Script_2
 Psfplace14_Entrance_KeepPlayerInside_Script_1:
+	goto_if_set FLAG_PSFPLACE14_TOURNAMENT_HAPPENING, Psfplace14_Entrance_KeepPlayerInside_Script_5
+Psfplace14_Entrance_KeepPlayerInside_Script_4:
 	release
 	end
 
 Psfplace14_Entrance_KeepPlayerInside_Script_2:
+	goto ExhibitionBattle_FalseCredits_Script
+	goto Psfplace14_Entrance_KeepPlayerInside_Script_1
+
+Psfplace14_Entrance_KeepPlayerInside_Script_5:
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupStages_OhRight
@@ -17,5 +24,5 @@ Psfplace14_Entrance_KeepPlayerInside_Script_2:
 	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
-	goto Psfplace14_Entrance_KeepPlayerInside_Script_1
+	goto Psfplace14_Entrance_KeepPlayerInside_Script_4
 

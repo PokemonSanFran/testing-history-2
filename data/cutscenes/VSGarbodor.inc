@@ -1,4 +1,5 @@
 VSGarbodor_Arrest_ObjectSetup_Script::
+	setflag FLAG_TEMP_6
 	setobjectxy 4, 26, 19
 	setobjectxy 5, 26, 20
 	setobjectxy 1, 21, 21

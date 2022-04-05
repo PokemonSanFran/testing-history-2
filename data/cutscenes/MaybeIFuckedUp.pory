@@ -1,0 +1,112 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const ORI = 15 //FLAG_TEMP_6
+
+script MaybeIFuckedUp_Dialogue {
+    lock
+    addvar(VAR_STORYLINE_STATE,1)
+
+applymovement(ORI,MaybeIFuckedUp_WalkToPlayer)
+    waitmovement(0)
+msgbox(gText_MaybeIFuckedUp_ExcuseMeLad)
+closemessage
+applymovement(ORI,Common_Movement_WalkUp)
+waitmovement(0)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_MaybeIFuckedUp_OhHi)
+callnative(ClearMugshot)
+
+msgbox(gText_MaybeIFuckedUp_ItsGoodToMeetYou)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_MaybeIFuckedUp_ItHasBeenACrazy)
+callnative(ClearMugshot)
+
+msgbox(gText_MaybeIFuckedUp_YourDecisions)
+giveitem(ITEM_METEORITE,1)
+
+msgbox(gText_MaybeIFuckedUp_AskYourself)
+
+msgbox(gText_MaybeIFuckedUp_IfYouFindYourself)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_MaybeIFuckedUp_UhOkay)
+callnative(ClearMugshot)
+
+msgbox(gText_MaybeIFuckedUp_OfCourse)
+closemessage
+
+applymovement(PLAYER,MaybeIFuckedUp_WatchOriWalk)
+applymovement(ORI,MaybeIFuckedUp_WalkOffScreen)
+waitmovement(0)
+removeobject(ORI)
+
+setvar(VAR_0x8000, MUGSHOT_HILDA)
+callnative(DrawMugshot)
+msgbox(gText_MaybeIFuckedUp_WhatTheHellWasThat)
+callnative(ClearMugshot)
+release
+end
+}
+
+text gText_MaybeIFuckedUp_ExcuseMeLad{
+	format("Excuse me, lad.")
+}
+
+text gText_MaybeIFuckedUp_OhHi{
+	format("Oh hi!")
+}
+
+text gText_MaybeIFuckedUp_ItsGoodToMeetYou{
+	format("It’s good to meet you, Champion {PLAYER}. You’ve had quite an impact since you arrived here, don’t you think?")
+}
+
+text gText_MaybeIFuckedUp_ItHasBeenACrazy{
+	format("It has been a crazy ride…")
+}
+
+text gText_MaybeIFuckedUp_YourDecisions{
+	format("Your decisions have had a great impact… but not everything is always permanent. Take this.")
+}
+
+text gText_MaybeIFuckedUp_AskYourself{
+	format("Ask yourself - ")
+}
+
+text gText_MaybeIFuckedUp_IfYouFindYourself{
+	format("If you find yourself having regrets about the path you’ve chosen, bring that to the highest point in the region. I have a friend who can help you.")
+}
+text gText_MaybeIFuckedUp_UhOkay{
+	format("Uh… okay? Thanks, I guess.")
+}
+
+text gText_MaybeIFuckedUp_OfCourse{
+	format("Of course, my child.")
+}
+
+text gText_MaybeIFuckedUp_WhatTheHellWasThat{
+	format("(...what the hell was that? And where’s the tallest point?)")
+}
+
+movement MaybeIFuckedUp_WalkToPlayer {
+    walk_down * 3
+    walk_right * 3
+    face_up
+    step_end
+}
+
+movement MaybeIFuckedUp_WalkOffScreen {
+    walk_right * 8
+    step_end
+}
+
+movement MaybeIFuckedUp_WatchOriWalk {
+    delay_16
+    delay_16
+    delay_16
+    face_right
+    step_end
+}

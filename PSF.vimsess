@@ -38,6 +38,7 @@ set termguicolors
 set ttimeout
 set ttimeoutlen=100
 set wildmenu
+set window=61
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -53,11 +54,15 @@ $argadd data/maps/Psfbadguy1Tower_2F/scripts.pory
 set stal=2
 tabnew
 tabrewind
-edit data/scripts/pc_transfer.inc
+edit data/maps/Psfplace1/scripts.pory
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
 wincmd w
 set nosplitbelow
 set nosplitright
@@ -67,9 +72,12 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 85 + 94) / 188)
+exe '2resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 2resize ' . ((&columns * 102 + 94) / 188)
+exe '3resize ' . ((&lines * 29 + 31) / 62)
+exe 'vert 3resize ' . ((&columns * 102 + 94) / 188)
 argglobal
-terminal ++curwin ++cols=85 ++rows=58 
+terminal ++curwin ++cols=85 ++rows=59 
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -192,11 +200,11 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 7215 - ((5 * winheight(0) + 29) / 58)
+let s:l = 1 - ((0 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-7215
+1
 normal! 0
 wincmd w
 argglobal
@@ -211,12 +219,12 @@ setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
-setlocal nocindent
+setlocal cindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
@@ -235,8 +243,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'pov'
-setlocal filetype=pov
+if &filetype != 'c'
+setlocal filetype=c
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -250,7 +258,7 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcq
+setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
 setlocal grepprg=
@@ -258,8 +266,8 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetPoVRayIndent()
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e,=else,=end,0]
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
@@ -276,7 +284,7 @@ setlocal nrformats=bin,hex
 set number
 setlocal number
 setlocal numberwidth=4
-setlocal omnifunc=
+setlocal omnifunc=ccomplete#Complete
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
@@ -301,8 +309,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'pov'
-setlocal syntax=pov
+if &syntax != 'c'
+setlocal syntax=c
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -323,16 +331,151 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 18 - ((17 * winheight(0) + 29) / 58)
+let s:l = 16 - ((15 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-18
+16
 normal! 0
+wincmd w
+argglobal
+if bufexists("data/cutscenes/OkayLetsFixit.pory") | buffer data/cutscenes/OkayLetsFixit.pory | else | edit data/cutscenes/OkayLetsFixit.pory | endif
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'c'
+setlocal filetype=c
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=ccomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'c'
+setlocal syntax=c
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 2 - ((1 * winheight(0) + 14) / 29)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+2
+normal! 014|
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 94) / 188)
+exe '2resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 2resize ' . ((&columns * 102 + 94) / 188)
+exe '3resize ' . ((&lines * 29 + 31) / 62)
+exe 'vert 3resize ' . ((&columns * 102 + 94) / 188)
 tabnext
 edit docs/vars
 set splitbelow splitright
@@ -355,13 +498,13 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 29 + 30) / 61)
+exe '1resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 1resize ' . ((&columns * 94 + 94) / 188)
-exe '2resize ' . ((&lines * 28 + 30) / 61)
+exe '2resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 2resize ' . ((&columns * 94 + 94) / 188)
-exe '3resize ' . ((&lines * 29 + 30) / 61)
+exe '3resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 3resize ' . ((&columns * 93 + 94) / 188)
-exe '4resize ' . ((&lines * 28 + 30) / 61)
+exe '4resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 4resize ' . ((&columns * 93 + 94) / 188)
 argglobal
 setlocal keymap=
@@ -487,12 +630,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 170 - ((15 * winheight(0) + 14) / 29)
+let s:l = 180 - ((23 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-170
-normal! 0
+180
+normal! 023|
 wincmd w
 argglobal
 if bufexists("docs/flags") | buffer docs/flags | else | edit docs/flags | endif
@@ -619,7 +762,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 14) / 28)
+let s:l = 2 - ((1 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -883,30 +1026,31 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1641 - ((13 * winheight(0) + 14) / 28)
+let s:l = 1641 - ((0 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1641
 normal! 09|
 wincmd w
-exe '1resize ' . ((&lines * 29 + 30) / 61)
+exe '1resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 1resize ' . ((&columns * 94 + 94) / 188)
-exe '2resize ' . ((&lines * 28 + 30) / 61)
+exe '2resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 2resize ' . ((&columns * 94 + 94) / 188)
-exe '3resize ' . ((&lines * 29 + 30) / 61)
+exe '3resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 3resize ' . ((&columns * 93 + 94) / 188)
-exe '4resize ' . ((&lines * 28 + 30) / 61)
+exe '4resize ' . ((&lines * 29 + 31) / 62)
 exe 'vert 4resize ' . ((&columns * 93 + 94) / 188)
 tabnext 1
 set stal=1
-badd +15 data/cutscenes/WhyDidntYouRatMeOut.pory
+badd +18 data/scripts/pc_transfer.inc
 badd +11 data/maps/Psfbadguy1Tower_2F/scripts.pory
 badd +78 docs/vars
-badd +22 data/maps/Psfplace14_Lockers/scripts.pory
 badd +2 docs/flags
 badd +1 include/constants/vars.h
 badd +1 include/constants/flags.h
+badd +15 data/cutscenes/WhyDidntYouRatMeOut.pory
+badd +36 data/maps/Psfplace14_Lockers/scripts.pory
 badd +1 data/maps/Psfcave1_B1F/scripts.pory
 badd +1 data/cutscenes/IGuessWeShouldBeNiceNow.pory
 badd +1 data/cutscenes/WaitYouWentWhere.pory
@@ -920,10 +1064,10 @@ badd +1 data/maps/Psfcity7/scripts.pory
 badd +1 data/cutscenes/AlwaysWatchingWazokwski.pory
 badd +45 .gitignore
 badd +11 data/maps/Psfbadguy1Tower_10F/scripts.pory
-badd +1141 data/event_scripts.s
+badd +1183 data/event_scripts.s
 badd +15 data/cutscenes/TheGangsAllHere.pory
 badd +1 data/maps/Psfbadguy1Tower_Elevator/scripts.pory
-badd +25 data/maps/Psfroute22/scripts.pory
+badd +28 data/maps/Psfroute22/scripts.pory
 badd +27 data/cutscenes/WelcometotheWarRoom.pory
 badd +40 data/cutscenes/YouRealizeWereEvilRight.pory
 badd +288 data/cutscenes/SurvivalChance333.pory
@@ -960,10 +1104,10 @@ badd +1 data/maps/Psfcity5_Gym/scripts.pory
 badd +8 data/maps/Psfcity18/scripts.pory
 badd +1 data/maps/Psfcity5/scripts.pory
 badd +1 data/cutscenes/ANewStrike.pory
-badd +76 data/cutscenes/TheStrikeStrikesBack.pory
-badd +174 data/maps/Psfroute22/map.json
+badd +16 data/cutscenes/TheStrikeStrikesBack.pory
+badd +226 data/maps/Psfroute22/map.json
 badd +452 data/maps/MauvilleCity/scripts.inc
-badd +1 data/cutscenes/VSGarbodor.pory
+badd +12 data/cutscenes/VSGarbodor.pory
 badd +1 data/maps/Psfplace17/scripts.pory
 badd +1 data/maps/Psfplace17/map.json
 badd +6 data/cutscenes/ImProbablyBetterThanYou.pory
@@ -996,8 +1140,8 @@ badd +55 data/cutscenes/GroupStages.pory
 badd +133 data/maps/BattleFrontier_BattleArenaBattleRoom/scripts.inc
 badd +18 data/cutscenes/Finals.pory
 badd +79 data/maps/Psfplace14_Lockers/map.json
-badd +1 data/maps/Psfplace14_Entrance/scripts.pory
-badd +69 data/cutscenes/WaitHeDidWhat.pory
+badd +9 data/maps/Psfplace14_Entrance/scripts.pory
+badd +166 data/cutscenes/WaitHeDidWhat.pory
 badd +540 data/maps/BattleFrontier_BattleDomeBattleRoom/scripts.inc
 badd +47 data/cutscenes/WelcometotheHallofFame.pory
 badd +119 data/maps/Psfplace14_Skybox/map.json
@@ -1014,7 +1158,12 @@ badd +9 data/maps/Psfcave5/scripts.pory
 badd +9 data/maps/Psfcity13/scripts.pory
 badd +621 src/field_control_avatar.c
 badd +383 src/field_specials.c
-badd +0 data/scripts/pc_transfer.inc
+badd +271 data/cutscenes/ExhibitionBattle.pory
+badd +44 data/cutscenes/MaybeIFuckedUp.pory
+badd +1 data/cutscenes/OkayLetsFixit.pory
+badd +1 data/maps/BlackMap/scripts.pory
+badd +0 data/maps/BlackMap/scripts.inc
+badd +0 data/maps/Psfplace1/scripts.pory
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
