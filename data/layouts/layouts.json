@@ -5330,6 +5330,16 @@
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/Psfplace1/border.bin",
       "blockdata_filepath": "data/layouts/Psfplace1/map.bin"
+    },
+    {
+      "id": "LAYOUT_OKAY_LETS_FIXIT_FLASHBACK",
+      "name": "OkayLetsFixit_Flashback_Layout",
+      "width": 13,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonFanClub",
+      "border_filepath": "data/layouts/OkayLetsFixit_Flashback/border.bin",
+      "blockdata_filepath": "data/layouts/OkayLetsFixit_Flashback/map.bin"
     }
   ]
 }

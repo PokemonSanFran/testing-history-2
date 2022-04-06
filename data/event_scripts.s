@@ -1282,3 +1282,5 @@ end
 	.include "data/maps/Psfroute18/scripts.inc"
 
 	.include "data/maps/Psfplace1/scripts.inc"
+
+	.include "data/maps/OkayLetsFixit_Flashback/scripts.inc"

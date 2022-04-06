@@ -60,6 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
+    goto OkayLetsFixit_StartFlashback_Script
 	end
 
 Debug_Script_2::

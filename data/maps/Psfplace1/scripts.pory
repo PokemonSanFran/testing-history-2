@@ -6,11 +6,18 @@ mapscripts Psfplace1_MapScripts {
         goto(Psfplace1_MapScripts_OnLoad)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE,53: OkayLetsFixit_ReturnToPeak_Script
     ]
 }
 
 script Psfplace1_MapScripts_OnTransition {
+
+    switch (var(VAR_STORYLINE_STATE)){
+        case 53: call(OkayLetsFixIt_ShowObject_Script)
+        default: call(OkayLetsFixit_HideObject_Script)
+}
 }
 
 script Psfplace1_MapScripts_OnLoad {
+    return
 }

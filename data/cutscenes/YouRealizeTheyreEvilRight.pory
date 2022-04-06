@@ -18,15 +18,15 @@ script YouRealizeTheyreEvilRight_ShowObject_Script {
 
 script YouRealizeTheyreEvilRight_ShowBasement_Script {
     clearflag(FLAG_HIDE_YOUREALIZE_B2F_GROUP)
-    setflag(FLAG_TEMP_1)
+        setflag(FLAG_TEMP_1)
 }
 
 script YouRealizeTheyreEvilRight_HideBasement_Script {
     setflag(FLAG_TEMP_1)
-    setflag(FLAG_HIDE_YOUREALIZE_B2F_GROUP)
-    addobject(PSFNATIVERIVAL)
-    addobject(PSFELITE2)
-    addobject(PSFELITE1)
+        setflag(FLAG_HIDE_YOUREALIZE_B2F_GROUP)
+        addobject(PSFNATIVERIVAL)
+        addobject(PSFELITE2)
+        addobject(PSFELITE1)
 }
 
 script YouRealizeTheyreEvilRight_HideGarbodor_Script {
@@ -450,10 +450,10 @@ script YouRealizeTheyreEvilRight_Framing_Dialogue {
 script YouRealizeTheyreEvilRight_AskPlayerGift_Script {
 
     playse(SE_CONTEST_HEART)
-    applymovement(GARBODOR,YouRealizeTheyreEvilRight_ShowAffection)
-    waitmovement(0)
+        applymovement(GARBODOR,YouRealizeTheyreEvilRight_ShowAffection)
+        waitmovement(0)
 
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ThisGarbodor,MSGBOX_YESNO)
 
@@ -510,7 +510,7 @@ script YouRealizeTheyreEvilRight_SendGiftToPC_Script {
 }
 
 script YouRealizeTheyreEvilRight_RecievedGiftFanfare {
-        bufferspeciesname(STR_VAR_2,SPECIES_GARBODOR)
+    bufferspeciesname(STR_VAR_2,SPECIES_GARBODOR)
         removeobject(GARBODOR)
         playfanfare(MUS_OBTAIN_ITEM)
         msgbox(gText_YouRealizeTheyreEvilRight_ObtainedGift)
@@ -520,7 +520,7 @@ script YouRealizeTheyreEvilRight_RecievedGiftFanfare {
 }
 
 script YouRealizeTheyreEvilRight_CantSleep_Dialogue {
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_IsStillWaiting)
         callnative(ClearMugshot)
@@ -530,24 +530,35 @@ script YouRealizeTheyreEvilRight_CantSleep_Dialogue {
 }
 
 script YouRealizeTheyreEvilRight_NoIdea_Dialogue {
-        fadescreen(FADE_FROM_BLACK)
+    fadescreen(FADE_FROM_BLACK)
         addvar(VAR_STORYLINE_STATE,1)
+
+
+        if (flag(FLAG_TIMELINE_TIMETRAVEL)){
+                lock
+                applymovement(PLAYER,OkayLetsFixIt_PaceNightmare)
+                waitmovement(0)
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+                msgbox(gText_OkayLetsFixIt_WhatTheHell)
+                }
+
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-        msgbox(gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat)
-        callnative(ClearMugshot)
-        closemessage
-}
+                msgbox(gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat)
+                callnative(ClearMugshot)
+                closemessage
+                }
 
-text gText_YouRealizeTheyreEvilRight_HolyShit {
-    format("Holy shit. That was intense. Guess I need to think all this over, but something isn't adding up.")
-}
-text gText_YouRealizeTheyreEvilRight_AwesomeJobIn {
-    format("Awesome job in {STR_VAR_1}. I heard all about it, and I'm so happy things are getting off the ground. I heard you got a phone call and disappeared. Everything okay?") //PSF TODO Buffer in the name of the last resotration quest city that was completed
-}
-text gText_YouRealizeTheyreEvilRight_TheyDontLove {
-    format("Psfbadguy called me. They don't love our project.")
-}
+                text gText_YouRealizeTheyreEvilRight_HolyShit {
+                format("Holy shit. That was intense. Guess I need to think all this over, but something isn't adding up.")
+                }
+                text gText_YouRealizeTheyreEvilRight_AwesomeJobIn {
+                format("Awesome job in {STR_VAR_1}. I heard all about it, and I'm so happy things are getting off the ground. I heard you got a phone call and disappeared. Everything okay?") //PSF TODO Buffer in the name of the last resotration quest city that was completed
+                }
+                text gText_YouRealizeTheyreEvilRight_TheyDontLove {
+                format("Psfbadguy called me. They don't love our project.")
+                }
 text gText_YouRealizeTheyreEvilRight_YouSeemSurprised {
     format("You seem surprised.")
 }
@@ -764,7 +775,7 @@ movement YouRealizeTheyreEvilRight_WalkAroundToPlayer {
 
 movement YouRealizeTheyreEvilRight_ShowAffection {
     emote_heart
-    jump_in_place_down
-    jump_in_place_down
-    step_end
+        jump_in_place_down
+        jump_in_place_down
+        step_end
 }

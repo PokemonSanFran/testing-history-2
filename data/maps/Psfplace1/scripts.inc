@@ -13,10 +13,18 @@ Psfplace1_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Psfplace1_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 53, OkayLetsFixit_ReturnToPeak_Script
 	.2byte 0
 
 
 Psfplace1_MapScripts_OnTransition::
+	switch VAR_STORYLINE_STATE
+	case 53, Psfplace1_MapScripts_OnTransition_2
+	call OkayLetsFixit_HideObject_Script
+	return
+
+Psfplace1_MapScripts_OnTransition_2:
+	call OkayLetsFixIt_ShowObject_Script
 	return
 
 

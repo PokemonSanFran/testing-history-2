@@ -1,0 +1,5 @@
+mapscripts OkayLetsFixit_Flashback_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE,52: OkayLetsFixit_StartFlashback_Script
+    ]
+}

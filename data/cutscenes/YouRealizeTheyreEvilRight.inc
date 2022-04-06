@@ -498,12 +498,23 @@ YouRealizeTheyreEvilRight_CantSleep_Dialogue::
 YouRealizeTheyreEvilRight_NoIdea_Dialogue::
 	fadescreen FADE_FROM_BLACK
 	addvar VAR_STORYLINE_STATE, 1
+	goto_if_set FLAG_TIMELINE_TIMETRAVEL, YouRealizeTheyreEvilRight_NoIdea_Dialogue_2
+YouRealizeTheyreEvilRight_NoIdea_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat
 	callnative ClearMugshot
 	closemessage
 	return
+
+YouRealizeTheyreEvilRight_NoIdea_Dialogue_2:
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, OkayLetsFixIt_PaceNightmare
+	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_OkayLetsFixIt_WhatTheHell
+	goto YouRealizeTheyreEvilRight_NoIdea_Dialogue_1
 
 
 YouRealizeTheyreEvilRight_StepBackward:
