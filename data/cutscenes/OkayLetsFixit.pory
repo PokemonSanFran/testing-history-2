@@ -1,6 +1,7 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const HIKO = 1
 const JIRACHI = 2
+const CAMERA = OBJ_EVENT_ID_CAMERA
 
 script OkayLetsFixit_HideObject_Script {
     setflag(FLAG_TEMP_1)
@@ -57,7 +58,6 @@ script OkayLetsFixit_ReachTop_Script {
     closemessage
 
     warpsilent(MAP_OKAY_LETS_FIXIT_FLASHBACK, 255, 9, 4)
-    call(Script_SetGrayscaleTint)
     end
 }
 
@@ -95,7 +95,6 @@ script OkayLetsFixit_StartFlashback_Script {
 }
 
 script OkayLetsFixit_ReturnToPeak_Script {
-    call(Script_RemoveTint)
     lock
     clearflag(FLAG_TEMP_1)
     addobject(HIKO)
@@ -107,7 +106,11 @@ script OkayLetsFixit_ReturnToPeak_Script {
 
     applymovement(PLAYER, OkayLetsFixit_WatchCliffWalk)
     applymovement(HIKO, OkayLetsFixit_WalkOffCliff)
-    waitmovement(0)
+    special(SpawnCameraObject)
+    applymovement(CAMERA, OkayLetsFixit_PanCamera)
+    waitmovement(CAMERA)
+    waitmovement(HIKO)
+    waitmovement(PLAYER)
 
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
@@ -124,6 +127,8 @@ script OkayLetsFixit_ReturnToPeak_Script {
     addobject(JIRACHI)
     fadescreen(FADE_FROM_WHITE)
 
+    playmoncry(SPECIES_JIRACHI, CRY_MODE_ENCOUNTER)
+    waitmoncry
     playmoncry(SPECIES_JIRACHI, CRY_MODE_ENCOUNTER)
     waitmoncry
 
@@ -216,7 +221,8 @@ movement OkayLetsFixit_WalkOffCliff {
 }
 
 movement OkayLetsFixit_PanCamera {
-    walk_left
+    walk_right
+    walk_up * 6
     step_end
 }
 

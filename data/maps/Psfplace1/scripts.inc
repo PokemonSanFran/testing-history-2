@@ -29,5 +29,6 @@ Psfplace1_MapScripts_OnTransition_2:
 
 
 Psfplace1_MapScripts_OnLoad::
+	call Script_RemoveTint
 	return
 

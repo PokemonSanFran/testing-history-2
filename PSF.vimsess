@@ -52,7 +52,7 @@ argglobal
 set stal=2
 tabnew
 tabrewind
-edit data/cutscenes/OkayLetsFixit.pory
+edit data/cutscenes/LetsGettheBandBackTogether.pory
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -329,15 +329,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 60 - ((12 * winheight(0) + 14) / 28)
+let s:l = 1 - ((0 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-60
-normal! 05|
+1
+normal! 053|
 wincmd w
 argglobal
-if bufexists("data/maps/Psfplace1/scripts.pory") | buffer data/maps/Psfplace1/scripts.pory | else | edit data/maps/Psfplace1/scripts.pory | endif
+if bufexists("data/maps/Psfcave7_B2F/scripts.pory") | buffer data/maps/Psfcave7_B2F/scripts.pory | else | edit data/maps/Psfcave7_B2F/scripts.pory | endif
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -461,14 +461,14 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 19 - ((18 * winheight(0) + 14) / 29)
+let s:l = 21 - ((20 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-19
+21
 normal! 0
 wincmd w
-3wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 93 + 94) / 188)
 exe '2resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 94 + 94) / 188)
@@ -628,11 +628,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1641 - ((14 * winheight(0) + 14) / 29)
+let s:l = 1640 - ((13 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1641
+1640
 normal! 09|
 wincmd w
 argglobal
@@ -892,11 +892,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 55 - ((14 * winheight(0) + 14) / 29)
+let s:l = 58 - ((17 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-55
+58
 normal! 025|
 wincmd w
 argglobal
@@ -1024,12 +1024,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 181 - ((18 * winheight(0) + 14) / 28)
+let s:l = 183 - ((20 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-181
-normal! 035|
+183
+normal! 042|
 wincmd w
 exe '1resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 1resize ' . ((&columns * 94 + 94) / 188)
@@ -1042,8 +1042,8 @@ exe 'vert 4resize ' . ((&columns * 93 + 94) / 188)
 tabnext 1
 set stal=1
 badd +3 data/maps/OkayLetsFixit_Flashback/scripts.pory
-badd +0 data/cutscenes/OkayLetsFixit.pory
-badd +0 data/maps/Psfplace1/scripts.pory
+badd +131 data/cutscenes/OkayLetsFixit.pory
+badd +19 data/maps/Psfplace1/scripts.pory
 badd +538 data/cutscenes/YouRealizeTheyreEvilRight.pory
 badd +0 docs/vars
 badd +6 data/maps/Psfcity3_Compound_1F/scripts.pory
@@ -1053,11 +1053,14 @@ badd +3 data/maps/MossdeepCity_GameCorner_1F/scripts.inc
 badd +22 data/maps/Psfplace14_Lockers/scripts.pory
 badd +3383 src/field_specials.c
 badd +72 include/overworld.h
-badd +1018 data/event_scripts.s
+badd +1200 data/event_scripts.s
 badd +119 asm/macros/event.inc
 badd +0 docs/flags
 badd +0 include/constants/flags.h
 badd +0 include/constants/vars.h
+badd +973 src/item.c
+badd +0 data/cutscenes/LetsGettheBandBackTogether.pory
+badd +0 data/maps/Psfcave7_B2F/scripts.pory
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif

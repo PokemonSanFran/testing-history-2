@@ -1197,7 +1197,7 @@ Script_RemoveTint::
 .include "data/cutscenes/ExhibitionBattle.inc"
 .include "data/cutscenes/MaybeIFuckedUp.inc"
 .include "data/cutscenes/OkayLetsFixit.inc"
-##  .include "data/cutscenes/LetsGettheBandBackTogether.inc"
+.include "data/cutscenes/LetsGettheBandBackTogether.inc"
 ##  .include "data/cutscenes/LockedOut.inc"
 ##  .include "data/cutscenes/MaskOff.inc"
 ##  .include "data/cutscenes/LetsFixThis.inc"

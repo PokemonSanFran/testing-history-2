@@ -43,7 +43,6 @@ OkayLetsFixit_ReachTop_Script::
 	msgbox gText_OkayLetsFixIt_LetsLookBack
 	closemessage
 	warpsilent MAP_OKAY_LETS_FIXIT_FLASHBACK, 255, 9, 4
-	call Script_SetGrayscaleTint
 	end
 
 OkayLetsFixit_ReachTop_Script_2:
@@ -79,7 +78,6 @@ OkayLetsFixit_StartFlashback_Script::
 
 
 OkayLetsFixit_ReturnToPeak_Script::
-	call Script_RemoveTint
 	lock
 	clearflag FLAG_TEMP_1
 	addobject 1
@@ -89,7 +87,11 @@ OkayLetsFixit_ReturnToPeak_Script::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, OkayLetsFixit_WatchCliffWalk
 	applymovement 1, OkayLetsFixit_WalkOffCliff
-	waitmovement 0
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, OkayLetsFixit_PanCamera
+	waitmovement OBJ_EVENT_ID_CAMERA
+	waitmovement 1
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_WaitWhatWhoAreYou
@@ -149,7 +151,13 @@ OkayLetsFixit_WalkOffCliff:
 	step_end
 
 OkayLetsFixit_PanCamera:
-	walk_left
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 OkayLetsFixit_WatchCliffWalk:
