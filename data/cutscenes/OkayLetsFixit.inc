@@ -42,8 +42,8 @@ OkayLetsFixit_ReachTop_Script::
 	callnative ClearMugshot
 	msgbox gText_OkayLetsFixIt_LetsLookBack
 	closemessage
-	setflag FLAG_DONT_TRANSITION_MUSIC
 	warpsilent MAP_OKAY_LETS_FIXIT_FLASHBACK, 255, 9, 4
+	call Script_SetGrayscaleTint
 	end
 
 OkayLetsFixit_ReachTop_Script_2:
@@ -79,6 +79,7 @@ OkayLetsFixit_StartFlashback_Script::
 
 
 OkayLetsFixit_ReturnToPeak_Script::
+	call Script_RemoveTint
 	lock
 	clearflag FLAG_TEMP_1
 	addobject 1
