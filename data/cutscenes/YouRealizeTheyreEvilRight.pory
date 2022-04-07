@@ -12,32 +12,28 @@ script YouRealizeTheyreEvilRight_HideObject_Script {
 
 script YouRealizeTheyreEvilRight_ShowObject_Script {
     if (var(VAR_PSFCAVE7_STATE) == 3){
-        addobject(11)
+        addobject(11) //Show Psfnativerival at entrance
     }
 }
 
 script YouRealizeTheyreEvilRight_ShowBasement_Script {
-    clearflag(FLAG_HIDE_YOUREALIZE_B2F_GROUP)
+        clearflag(FLAG_HIDE_YOUREALIZE_B2F_GROUP)
         setflag(FLAG_TEMP_1)
+}
+
+script YouRealizeTheyreEvilRight_HideGarbodor_Script {
+    setflag(FLAG_TEMP_4)
 }
 
 script YouRealizeTheyreEvilRight_HideBasement_Script {
     setflag(FLAG_TEMP_1)
-        setflag(FLAG_HIDE_YOUREALIZE_B2F_GROUP)
-        addobject(PSFNATIVERIVAL)
-        addobject(PSFELITE2)
-        addobject(PSFELITE1)
-}
-
-script YouRealizeTheyreEvilRight_HideGarbodor_Script {
-    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_2)
 }
 
 script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
     lock
         addvar(VAR_PSFCAVE7_STATE,1)
         giveitem(ITEM_HM03) //PSF TODO remove once actual surfing quest is in
-        givecustommon(SPECIES_SLOWKING_GALARIAN, 100, ITEM_ASSAULT_VEST, ITEM_BEAST_BALL, NATURE_CALM, 2, 252,0,12,124,120,0,31,0,31,31,31,31,MOVE_SURF,MOVE_PSYCHIC,MOVE_FLAMETHROWER,MOVE_SLUDGE_BOMB) 
         clearflag(FLAG_SCOTT_CALL_FORTREE_GYM)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -191,7 +187,7 @@ script YouRealizeTheyreEvil_ReleaseGarbodor_Script {
 
         playse(SE_BALL_OPEN)
         waitse
-        clearflag(FLAG_TEMP_1)
+        clearflag(FLAG_TEMP_4)
         addobject(GARBODOR)
         playmoncry(SPECIES_GARBODOR, CRY_MODE_ENCOUNTER)
         waitmoncry
@@ -477,6 +473,7 @@ script YouRealizeTheyreEvilRight_LeaveGift_Script {
 script YouRealizeTheyreEvilRight_GiveGift_Script {
 
     givecustommon(SPECIES_GARBODOR,40,ITEM_BLACK_SLUDGE,ITEM_CHERISH_BALL,NATURE_JOLLY,2,0,0,0,0,0,0,31,31,31,31,31,31,MOVE_HAZE,MOVE_SELF_DESTRUCT,MOVE_STOMPING_TANTRUM,MOVE_SLUDGE_BOMB,TRUE) //PSF TODO give a custom ball that only YC use
+        //PSF TODO use PutZigzagoonInPlayerParty to show the player the garb
 
         if (var(VAR_RESULT) == 0){
             call(YouRealizeTheyreEvilRight_SendGiftToParty_Script)

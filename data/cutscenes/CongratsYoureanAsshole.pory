@@ -29,7 +29,7 @@ script CongratsYoureanAsshole_ObjectCleanUp_Script {
 
 script CongratsYourAssAsshole_Intro_Dialogue {
 
-if (var(VAR_PSFBADGUY1TOWER_2F_STATE) == 7){
+if (var(VAR_PSFBADGUY1TOWER_2F_STATE) == 6){
     goto(CongratsYoureanAsshole_FalseTimelineSplit_Script)
 }
 

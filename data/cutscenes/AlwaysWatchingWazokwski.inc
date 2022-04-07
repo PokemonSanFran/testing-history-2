@@ -1,6 +1,6 @@
 AlwaysWatchingWazowski_FloorWelcome_Script::
 	lockall
-	setvar VAR_PSFBADGUY1TOWER_2F_STATE, 1
+	addvar VAR_PSFBADGUY1TOWER_2F_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_AlwaysWatchingWazowski_WelcomePlayer
@@ -12,7 +12,7 @@ AlwaysWatchingWazowski_FloorWelcome_Script::
 
 AlwaysWatchingWazowski_MovePlayerIntoPlace_Script::
 	lockall
-	setvar VAR_PSFBADGUY1TOWER_2F_STATE, 2
+	addvar VAR_PSFBADGUY1TOWER_2F_STATE, 1
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 7
 	goto_if_eq AlwaysWatchingWazowski_MovePlayerIntoPlace_Script_2

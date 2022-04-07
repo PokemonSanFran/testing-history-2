@@ -59,6 +59,7 @@
 3: Archer has asked to come to see real Alcatraz
 4: Player has arrived on island after seeing real Alcatraz
 5: Archer has explained they're being framed
+6: Talked to Archer once right at timeline split, has not confirmed yet
 
 # VAR_ROUTE116_STATE
 **RELEVANCE**: Tracking state of Muir Woods
@@ -80,6 +81,8 @@
 3: Set up for Welcome to the War Room, start script when player gets on the floor
 4: Welcome the War Room has played out
 5: You Realize We're Evil Object Setup
+6: Have been told to stahp
+7: PLayer has chosen to work with YC
 
 #VAR_FERRY_STATE
 **RELEVANCE**: used to track what locations are available via ferry
@@ -170,8 +173,8 @@
 40: Archer has talked to Zoey about restoration plans
 41: Finished one Restoration Quest
 42: Told by YC to stop helping TR
-43: Slept after being Told by TR to stop 
-44: Has told YC they'd side with them, flipped to dark side
+43: Slept after being Told by TR to stop / After time travel w/ Jirachi
+44: Has told YC that they'll side with them
 45,46,47: Finished one of the TR takedown quests
 48: Finished all takedown quests
 49: About to take on Diantha
@@ -180,8 +183,7 @@
 52: Recived Bamboo Star 
 53: Starting "Lets Fix It" cutscene
 
-99: Right after flashback to player in bed
-100: Right after time travel with Jirachi
+100: Has told TR that they'll side with them
 
 
 #VAR_ROUTE104_STATE
@@ -254,7 +256,6 @@
 #VAR_ROUTE120_STATE
 X: Act 4:Used to find the location of the last completed restoration quest, number should correspond to a map
 Y: Used to find the target of the last completed takedown quest, number should correspond to a company
-
 
 #VAR_PETALBURG_WOODS_STATE
 #**RELEVANCE**: "You Have Your Orders" quest tracker

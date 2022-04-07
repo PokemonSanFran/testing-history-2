@@ -23,7 +23,7 @@ CongratsYoureanAsshole_ObjectCleanUp_Script::
 
 
 CongratsYourAssAsshole_Intro_Dialogue::
-	compare VAR_PSFBADGUY1TOWER_2F_STATE, 7
+	compare VAR_PSFBADGUY1TOWER_2F_STATE, 6
 	goto_if_eq CongratsYourAssAsshole_Intro_Dialogue_2
 CongratsYourAssAsshole_Intro_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_LANCE

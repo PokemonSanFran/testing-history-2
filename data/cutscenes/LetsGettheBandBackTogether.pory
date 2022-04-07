@@ -1,4 +1,213 @@
-//need to add guards against repeating False timelin
-script test {
-    return
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 1
+
+script LetsGettheBandBackTogether_HideObject_Script {
+    if (var(VAR_STORYLINE_STATE) == 43){ //If player has slept after being pitched by Archer, Alcatraz should be empty except for Archer
+        setflag(FLAG_TEMP_2)
+}
+}
+
+script LetsGettheBandBackTogether_PreventPlayerEnterTower_Script {
+
+    if (flag(FLAG_TIMELINE_TIMETRAVEL)) {
+        lock
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_LetsGetTheBandBackTogether_IDontThinkIShould)
+            callnative(ClearMugshot)
+            closemessage
+            applymovement(PLAYER,Common_Movement_WalkDown)
+            waitmovement(0)
+    }
+    release
+        end
+}
+
+//This cutscene plays after the player has decided to side with Psfgoodteam.
+script LetsGettheBandBackTogether_MeetInBasement_Script {
+
+    if (var(VAR_PSFCAVE7_STATE) == 6){
+        goto(LetsGettheBandBackTogether_TrueTimelineSplit_Script)
+    }
+
+    lock
+    applymovement(PSFTRANSRIVAL,Common_Movement_ExclamationMark)
+    waitmovement(0)
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_IDidntThinkYouWere,MSGBOX_NPC)
+
+    if (flag(FLAG_TIMELINE_TIMETRAVEL)){
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_IHadAnInsane)
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    }
+
+msgbox(gText_LetsGetTheBandBackTogether_IReallyThinkWith)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_WaitTheEliteFour)
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_OkayKindaThatsActually)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_WhatAmIMissing)
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver)
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_LetsSplitUp)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_HowDoIGetInContact)
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_HeLivesInPsfcity10)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_OhYeahOfCourse)
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_IllWriteUpAPost)
+    addvar(VAR_PSFCAVE7_STATE,1)
+    callnative(ClearMugshot)
+    closemessage
+    release
+    end
+}
+
+script LetsGettheBandBackTogether_TrueTimelineSplit_Script {
+    lock
+        faceplayer
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_ReadyToGoLive,MSGBOX_YESNO)
+
+    if (var(VAR_RESULT) == NO){
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    msgbox(gText_LetsGetTheBandBackTogether_YeahIGetIt)
+    callnative(ClearMugshot)
+    closemessage
+    release
+    end
+    }
+
+    addvar(VAR_PSFCAVE7_STATE,1)
+    setvar(VAR_STORYLINE_STATE,100)
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_Yes)
+    callnative(ClearMugshot)
+    closemessage
+
+    fadescreen(FADE_TO_BLACK)
+msgbox(gText_LetsGetTheBandBackTogether_WereSickOf)
+closemessage
+    fadescreen(FADE_FROM_BLACK)
+
+    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+msgbox(gText_LetsGetTheBandBackTogether_OkayGetGoing)
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(PSFTRANSRIVAL,LetsGettheBandBackTogether_WalkOffScreen)
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+    removeobject(PSFTRANSRIVAL)
+    release
+    end
+
+}
+    text gText_LetsGetTheBandBackTogether_IDidntThinkYouWere {
+        format("I didn’t think you were coming back. I can’t believe it worked!")
+    }
+
+text gText_LetsGetTheBandBackTogether_IHadAnInsane {
+    format("I had an insane dream last night, which really helped.")
+}
+
+text gText_LetsGetTheBandBackTogether_IReallyThinkWith {
+    format("I really think with you and the Elite Four here, we’ve got a fighting chance.")
+}
+
+text gText_LetsGetTheBandBackTogether_WaitTheEliteFour {
+    format("Wait, the Elite Four too?")
+}
+
+text gText_LetsGetTheBandBackTogether_OkayKindaThatsActually {
+    format("Okay, kinda. That’s actually the next step. Psfelite1 and Psfelite2 convinced Psfelite3 to work with us too, but we’ve gotta find Psfelite4 if we really want to present a united front.")
+}
+
+text gText_LetsGetTheBandBackTogether_WhatAmIMissing {
+    format("What am I missing? Can’t we just call them or something?")
+}
+
+text gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver {
+    format("Psfelite4 hasn’t been heard from ever since Psfbadguy took over. Just up and disappeared. I thought the other members would have heard from him, but Psfelite2 said he’s been totally gone. They’re not even sure if they’re in the region anymore.")
+}
+
+text gText_LetsGetTheBandBackTogether_LetsSplitUp {
+    format("Let’s split up. I’m going to talk to Psfgoodadmin and try to convince them of the plan going forward. Psfelite2 mentioned that Psfelite3 was closest to Psfelite4. Can you see if you can get a lead on where Psfelite4 might be?")
+}
+
+text gText_LetsGetTheBandBackTogether_HowDoIGetInContact {
+    format("How do I get in contact with Psfelite3? Last time I saw him was in Psfcave2.")
+}
+
+text gText_LetsGetTheBandBackTogether_HeLivesInPsfcity10 {
+    format("He lives in Psfcity10! Before we head out we should start rallying the people behind our cause. You’re the champ, after all, let’s put that clout to work.")
+}
+
+text gText_LetsGetTheBandBackTogether_OhYeahOfCourse {
+    format("Oh, yeah, of course. What were you thinking?")
+}
+
+text gText_LetsGetTheBandBackTogether_IllWriteUpAPost {
+    format("I’ll write up a post and you can share it. Once you do, though, Psfbadteam is probably gonna cut you off, so if there are any perks you wanna use before you lose access you should do it now. Let me know when you’re good to go.")
+}
+
+text gText_LetsGetTheBandBackTogether_ReadyToGoLive {
+    format("Ready to go live?")
+}
+
+text gText_LetsGetTheBandBackTogether_YeahIGetIt {
+    format("Yeah, I get it. Nervous?")
+}
+
+text gText_LetsGetTheBandBackTogether_Yes {
+    format("Yes!")
+}
+
+text gText_LetsGetTheBandBackTogether_WereSickOf {
+    format("We’re sick of Psfbadguy’s shit. We’re tired of the lies, the attacks, and the greed. Let’s take back our region, together.")
+}
+
+text gText_LetsGetTheBandBackTogether_OkayGetGoing {
+    format("Okay, get going to Psfcity10! I’m gonna make some moves too.")
+}
+
+text gText_LetsGetTheBandBackTogether_IDontThinkIShould {
+    format("…I don’t think I should go in there. I know how this ends.")
+}
+
+movement LetsGettheBandBackTogether_WalkOffScreen {
+    walk_left * 2
+    walk_down * 2
+    step_end
 }

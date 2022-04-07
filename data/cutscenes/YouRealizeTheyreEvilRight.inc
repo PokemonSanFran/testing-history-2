@@ -24,17 +24,14 @@ YouRealizeTheyreEvilRight_ShowBasement_Script::
 	return
 
 
-YouRealizeTheyreEvilRight_HideBasement_Script::
-	setflag FLAG_TEMP_1
-	setflag FLAG_HIDE_YOUREALIZE_B2F_GROUP
-	addobject 1
-	addobject 2
-	addobject 3
+YouRealizeTheyreEvilRight_HideGarbodor_Script::
+	setflag FLAG_TEMP_4
 	return
 
 
-YouRealizeTheyreEvilRight_HideGarbodor_Script::
+YouRealizeTheyreEvilRight_HideBasement_Script::
 	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
 	return
 
 
@@ -42,7 +39,6 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	lock
 	addvar VAR_PSFCAVE7_STATE, 1
 	giveitem ITEM_HM03
-	givecustommon SPECIES_SLOWKING_GALARIAN, 100, ITEM_ASSAULT_VEST, ITEM_BEAST_BALL, NATURE_CALM, 2, 252, 0, 12, 124, 120, 0, 31, 0, 31, 31, 31, 31, MOVE_SURF, MOVE_PSYCHIC, MOVE_FLAMETHROWER, MOVE_SLUDGE_BOMB
 	clearflag FLAG_SCOTT_CALL_FORTREE_GYM
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -182,7 +178,7 @@ YouRealizeTheyreEvil_ReleaseGarbodor_Script::
 	waitmovement 0
 	playse SE_BALL_OPEN
 	waitse
-	clearflag FLAG_TEMP_1
+	clearflag FLAG_TEMP_4
 	addobject 4
 	playmoncry SPECIES_GARBODOR, CRY_MODE_ENCOUNTER
 	waitmoncry

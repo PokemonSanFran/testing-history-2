@@ -99,8 +99,7 @@ script OkayLetsFixit_ReturnToPeak_Script {
     clearflag(FLAG_TEMP_1)
     addobject(HIKO)
 
-    setflag(FLAG_TIMELINE_TIMETRAVEL)
-    setvar(VAR_STORYLINE_STATE, 99)
+    call(OkayLetsFixit_TimelineReset_Script)
     applymovement(PLAYER, Common_Movement_FaceLeft)
     waitmovement(0)
 
@@ -133,6 +132,15 @@ script OkayLetsFixit_ReturnToPeak_Script {
     waitmoncry
 
     warpsilent(MAP_PSFCITY3_COMPOUND_1F, 255, 9, 7)
+}
+
+script OkayLetsFixit_TimelineReset_Script {
+    setflag(FLAG_TIMELINE_TIMETRAVEL)
+    clearflag(FLAG_TIMELINE_FALSE)
+    setvar(VAR_STORYLINE_STATE, 42)
+    setvar(VAR_RUSTURF_TUNNEL_STATE,0)
+    setvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,0)
+    setvar(VAR_PETALBURG_WOODS_STATE,0)
 }
 
 text gText_OkayLetsFixIt_TheBambooStar {

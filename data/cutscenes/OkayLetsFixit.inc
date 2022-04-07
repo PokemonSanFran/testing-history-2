@@ -81,8 +81,7 @@ OkayLetsFixit_ReturnToPeak_Script::
 	lock
 	clearflag FLAG_TEMP_1
 	addobject 1
-	setflag FLAG_TIMELINE_TIMETRAVEL
-	setvar VAR_STORYLINE_STATE, 99
+	call OkayLetsFixit_TimelineReset_Script
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, OkayLetsFixit_WatchCliffWalk
@@ -107,7 +106,19 @@ OkayLetsFixit_ReturnToPeak_Script::
 	fadescreen FADE_FROM_WHITE
 	playmoncry SPECIES_JIRACHI, CRY_MODE_ENCOUNTER
 	waitmoncry
+	playmoncry SPECIES_JIRACHI, CRY_MODE_ENCOUNTER
+	waitmoncry
 	warpsilent MAP_PSFCITY3_COMPOUND_1F, 255, 9, 7
+	return
+
+
+OkayLetsFixit_TimelineReset_Script::
+	setflag FLAG_TIMELINE_TIMETRAVEL
+	clearflag FLAG_TIMELINE_FALSE
+	setvar VAR_STORYLINE_STATE, 42
+	setvar VAR_RUSTURF_TUNNEL_STATE, 0
+	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
+	setvar VAR_PETALBURG_WOODS_STATE, 0
 	return
 
 

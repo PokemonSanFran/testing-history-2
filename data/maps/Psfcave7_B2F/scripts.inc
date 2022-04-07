@@ -19,7 +19,8 @@ Psfcave7_B2F_MapScripts_OnTransition::
 	case 1, Psfcave7_B2F_MapScripts_OnTransition_3
 	case 2, Psfcave7_B2F_MapScripts_OnTransition_4
 	case 3, Psfcave7_B2F_MapScripts_OnTransition_5
-	case 4, Psfcave7_B2F_MapScripts_OnTransition_6
+	case 5, Psfcave7_B2F_MapScripts_OnTransition_6
+	case 6, Psfcave7_B2F_MapScripts_OnTransition_7
 	return
 
 Psfcave7_B2F_MapScripts_OnTransition_2:
@@ -39,6 +40,23 @@ Psfcave7_B2F_MapScripts_OnTransition_5:
 	return
 
 Psfcave7_B2F_MapScripts_OnTransition_6:
-	call YouRealizeTheyreEvilRight_ShowBasement_Script
+	call LetsGettheBandBackTogether_HideObject_Script
 	return
+
+Psfcave7_B2F_MapScripts_OnTransition_7:
+	call LetsGettheBandBackTogether_HideObject_Script
+	return
+
+
+Psfcave7_B2F_Psfnativerival_Event_Script::
+	lock
+	switch VAR_STORYLINE_STATE
+	case 43, Psfcave7_B2F_Psfnativerival_Event_Script_3
+Psfcave7_B2F_Psfnativerival_Event_Script_1:
+	release
+	end
+
+Psfcave7_B2F_Psfnativerival_Event_Script_3:
+	call LetsGettheBandBackTogether_MeetInBasement_Script
+	goto Psfcave7_B2F_Psfnativerival_Event_Script_1
 
