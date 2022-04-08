@@ -31,6 +31,8 @@ LetsGettheBandBackTogether_MeetInBasement_Script::
 	goto_if_eq LetsGettheBandBackTogether_MeetInBasement_Script_2
 LetsGettheBandBackTogether_MeetInBasement_Script_1:
 	lock
+	playse SE_PIN
+	waitse
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
@@ -54,12 +56,7 @@ LetsGettheBandBackTogether_MeetInBasement_Script_4:
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_LetsSplitUp
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_HowDoIGetInContact
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_HeLivesInPsfcity10
+	msgbox gText_LetsGetTheBandBackTogether_BeforeWeStart
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_OhYeahOfCourse
@@ -87,12 +84,15 @@ LetsGettheBandBackTogether_MeetInBasement_Script_5:
 
 LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	lock
+	faceplayer
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_ReadyToGoLive, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGettheBandBackTogether_TrueTimelineSplit_Script_2
 	addvar VAR_PSFCAVE7_STATE, 1
+	setvar VAR_STORYLINE_STATE, 100
+	addvar VAR_RUSTURF_TUNNEL_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_Yes
@@ -102,6 +102,12 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	msgbox gText_LetsGetTheBandBackTogether_WereSickOf
 	closemessage
 	fadescreen FADE_FROM_BLACK
+	setvar VAR_0x8000, MUGSHOT_HUGH
+	callnative DrawMugshot
+	msgbox gText_LetsGetTheBandBackTogether_LetsSplitUp
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_LetsGetTheBandBackTogether_AnyLeads
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_OkayGetGoing
@@ -133,7 +139,7 @@ LetsGettheBandBackTogether_WalkOffScreen:
 	step_end
 
 gText_LetsGetTheBandBackTogether_IDidntThinkYouWere::
-	.string "! I didn’t think you were coming back. I\n"
+	.string "I didn’t think you were coming back. I\n"
 	.string "can’t believe it worked!$"
 
 gText_LetsGetTheBandBackTogether_IHadAnInsane::
@@ -168,23 +174,11 @@ gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver::
 	.string "They’re not even sure if they’re in the\l"
 	.string "region anymore.$"
 
-gText_LetsGetTheBandBackTogether_LetsSplitUp::
-	.string "Let’s split up. I’m going to talk to\n"
-	.string "Psfgoodadmin and try to convince them\l"
-	.string "of the plan going forward. Psfelite2\l"
-	.string "mentioned that Psfelite3 was closest\l"
-	.string "to Psfelite4. Can you see if you can\l"
-	.string "get a lead on where Psfelite4 might be?$"
-
-gText_LetsGetTheBandBackTogether_HowDoIGetInContact::
-	.string "How do I get in contact with Psfelite3?\n"
-	.string "Last time I saw him was in Psfcave2.$"
-
-gText_LetsGetTheBandBackTogether_HeLivesInPsfcity10::
-	.string "He lives in Psfcity10! Before we head\n"
-	.string "out we should start rallying the people\l"
-	.string "behind our cause. You’re the champ,\l"
-	.string "after all, let’s put that clout to work.$"
+gText_LetsGetTheBandBackTogether_BeforeWeStart::
+	.string "Before we start, we should start\n"
+	.string "rallying the people behind our cause.\l"
+	.string "You’re the champ, after all, let’s put\l"
+	.string "that clout to work.$"
 
 gText_LetsGetTheBandBackTogether_OhYeahOfCourse::
 	.string "Oh, yeah, of course. What were you\n"
@@ -213,9 +207,21 @@ gText_LetsGetTheBandBackTogether_WereSickOf::
 	.string "greed. Let’s take back our region,\l"
 	.string "together.$"
 
+gText_LetsGetTheBandBackTogether_LetsSplitUp::
+	.string "Let’s split up. I’m going to talk to\n"
+	.string "Psfgoodadmin and try to convince them\l"
+	.string "of the plan going forward. Can you see\l"
+	.string "if you can get an idea where Psfelite4\l"
+	.string "might be?$"
+
+gText_LetsGetTheBandBackTogether_AnyLeads::
+	.string "Where do I even start?$"
+
 gText_LetsGetTheBandBackTogether_OkayGetGoing::
-	.string "Okay, get going to Psfcity10! I’m gonna\n"
-	.string "make some moves too.$"
+	.string "Try the newspaper in Psfcity15, they\n"
+	.string "did an interview with Psfelite4 right\l"
+	.string "before he disappeared. I’m gonna make\l"
+	.string "some moves too.$"
 
 gText_LetsGetTheBandBackTogether_IDontThinkIShould::
 	.string "…I don’t think I should go in there. I\n"

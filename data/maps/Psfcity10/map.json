@@ -41,6 +41,13 @@
       "elevation": 0,
       "dest_map": "MAP_PSFCAVE1",
       "dest_warp_id": 1
+    },
+    {
+      "x": 17,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_PSFCITY10_ELITE_HOME",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

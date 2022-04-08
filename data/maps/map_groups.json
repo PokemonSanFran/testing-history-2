@@ -114,7 +114,11 @@
     "Psfcave3",
     "Psfroute18",
     "Psfplace1",
-    "OkayLetsFixit_Flashback"
+    "OkayLetsFixit_Flashback",
+    "Psfcity1",
+    "Psfcity1_Apartment",
+    "Psfcity12_Library",
+    "Psfcity10_EliteHome"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -189,7 +193,8 @@
     "Psfcity6_Consulting"
   ],
   "gMapGroup_IndoorPsfcity14": [
-    "Psfcity14_Gym"
+    "Psfcity14_Gym",
+    "Psfcity14_Ramen"
   ],
   "gMapGroup_IndoorPsfcity11": [
     "Psfcity11_Gym",

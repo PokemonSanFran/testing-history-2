@@ -21,6 +21,7 @@ Psfcave7_B2F_MapScripts_OnTransition::
 	case 3, Psfcave7_B2F_MapScripts_OnTransition_5
 	case 5, Psfcave7_B2F_MapScripts_OnTransition_6
 	case 6, Psfcave7_B2F_MapScripts_OnTransition_7
+	case 7, Psfcave7_B2F_MapScripts_OnTransition_8
 	return
 
 Psfcave7_B2F_MapScripts_OnTransition_2:
@@ -45,6 +46,10 @@ Psfcave7_B2F_MapScripts_OnTransition_6:
 
 Psfcave7_B2F_MapScripts_OnTransition_7:
 	call LetsGettheBandBackTogether_HideObject_Script
+	return
+
+Psfcave7_B2F_MapScripts_OnTransition_8:
+	call YouRealizeTheyreEvilRight_HideBasement_Script
 	return
 
 

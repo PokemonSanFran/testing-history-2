@@ -1,0 +1,11 @@
+mapscripts Psfcity10_EliteHome_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcity10_EliteHome_OnTransition)
+    }
+}
+
+script Psfcity10_EliteHome_OnTransition {
+    if (var(VAR_STORYLINE_STATE) < 100){//If player is not in the true timeline, Psfelite3 is not in their home
+        call(MaskOff_HideObject_Script) 
+    }
+}

@@ -1,0 +1,15 @@
+mapscripts Psfcity14_Ramen_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+    }
+}
+script Psfcity14_Ramen_InteractFanny_Event_Script {
+    lock
+        switch(var(VAR_RUSTURF_TUNNEL_STATE)){
+            case 1: return
+            case 2: return
+            case 8: return
+            default: call(MaskOff_QuestI_Dialogue)
+        }
+    release
+        end
+}

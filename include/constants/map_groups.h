@@ -75,6 +75,10 @@
 #define MAP_PSFROUTE18                (66 | (0 << 8))
 #define MAP_PSFPLACE1                 (67 | (0 << 8))
 #define MAP_OKAY_LETS_FIXIT_FLASHBACK (68 | (0 << 8))
+#define MAP_PSFCITY1                  (69 | (0 << 8))
+#define MAP_PSFCITY1_APARTMENT        (70 | (0 << 8))
+#define MAP_PSFCITY12_LIBRARY         (71 | (0 << 8))
+#define MAP_PSFCITY10_ELITE_HOME      (72 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))
@@ -149,7 +153,8 @@
 #define MAP_PSFCITY6_CONSULTING (1 | (4 << 8))
 
 // gMapGroup_IndoorPsfcity14
-#define MAP_PSFCITY14_GYM (0 | (5 << 8))
+#define MAP_PSFCITY14_GYM   (0 | (5 << 8))
+#define MAP_PSFCITY14_RAMEN (1 | (5 << 8))
 
 // gMapGroup_IndoorPsfcity11
 #define MAP_PSFCITY11_GYM             (0 | (6 << 8))

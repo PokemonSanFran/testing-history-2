@@ -60,6 +60,7 @@
 4: Player has arrived on island after seeing real Alcatraz
 5: Archer has explained they're being framed
 6: Talked to Archer once right at timeline split, has not confirmed yet
+7; Has confirmed wih Archer, told to go find Siebold in Marin
 
 # VAR_ROUTE116_STATE
 **RELEVANCE**: Tracking state of Muir Woods
@@ -183,7 +184,9 @@
 52: Recived Bamboo Star 
 53: Starting "Lets Fix It" cutscene
 
+#FALSE TIMELINE
 100: Has told TR that they'll side with them
+101: Defeated Giovanni
 
 
 #VAR_ROUTE104_STATE
@@ -267,12 +270,22 @@ Y: Used to find the target of the last completed takedown quest, number should c
 5: Debrief with Koga 
 
 #VAR_RUSTURF_TUNNEL_STATE
-#**RELEVANCE**: "Manhunt" quest tracker
+#**RELEVANCE**: "Manhunt" quest tracker in FALSE
 0: Has not been assigned "Find Giovanni"
 1: has been assigned
 2,3,4,5: got a clue to Giovanni's location
 6: Has defeated Giovanni
 
+#**RELEVANCE**: "Mask Off" quest tracker in TRUE
+0: Has not been assigned
+1: has been assigned
+2: Has spoken to H
+3: Has spoken to F
+4: Has spoken to I or D
+5: Has spoken to K G A
+6: Has spokent to E J
+7: Saved before Giovanni at Lake Merrit
+8: Defeated Giovanni
 
 #VAR_LILYCOVE_CONTEST_LOBBY_STATE
 #RELEVANCE**: "Let's Burn This Mother Down" quest tracker

@@ -1,0 +1,230 @@
+script MaskOff_HideObject_Script {
+    setflag(FLAG_TEMP_1) //Hide Psfelite3 in their home
+}
+
+script MaskOff_QuestH_Dialogue {
+    faceplayer
+        if (var(VAR_RUSTURF_TUNNEL_STATE) == 1){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_MaskOff_WhatCanYou)
+                callnative(ClearMugshot)
+                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        }
+    msgbox(gText_MaskOff_IRememberMeeting)
+msgbox(gText_MaskOff_HeSaidEvenThen)
+msgbox(gText_MaskOff_IThinkThatAccident)
+        closemessage
+}
+script MaskOff_QuestF_Dialogue {
+    faceplayer
+        if (var(VAR_RUSTURF_TUNNEL_STATE) == 2){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_MaskOff_WhatCanYou)
+                callnative(ClearMugshot)
+                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        }
+    msgbox(gText_MaskOff_IMissWorking)
+msgbox(gText_MaskOff_HeWouldLeaveRight)
+        closemessage
+}
+script MaskOff_QuestI_Dialogue {
+    faceplayer
+        if (var(VAR_RUSTURF_TUNNEL_STATE) == 3){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_MaskOff_WhatCanYou)
+                callnative(ClearMugshot)
+                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        }
+    msgbox(gText_MaskOff_UsedToCome)
+msgbox(gText_MaskOff_TheyWouldJust)
+msgbox(gText_MaskOff_IThinkSoHe)
+        closemessage
+}
+script MaskOff_QuestD_Dialogue {
+    faceplayer
+        if (var(VAR_RUSTURF_TUNNEL_STATE) == 3){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_MaskOff_WhatCanYou)
+                callnative(ClearMugshot)
+                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        }
+    msgbox(gText_MaskOff_UsedToBeHere)
+msgbox(gText_MaskOff_BookwormsTendToBe)
+        closemessage
+}
+script MaskOff_QuestK_Dialogue {
+    msgbox(gText_MaskOff_ADigitalPhoto)
+    closemessage
+}
+script MaskOff_QuestG_Dialogue {
+    faceplayer
+        if (var(VAR_RUSTURF_TUNNEL_STATE) == 4){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_MaskOff_WhatCanYou)
+                callnative(ClearMugshot)
+                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        }
+    msgbox(gText_MaskOff_GaveATalkHereOnce)
+msgbox(gText_MaskOff_WhateverHeDidWorked)
+msgbox(gText_MaskOff_WhenverHeLeft)
+        closemessage
+}
+script MaskOff_QuestA_Dialogue {
+    faceplayer
+        if (var(VAR_RUSTURF_TUNNEL_STATE) == 4){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_MaskOff_WhatCanYou)
+                callnative(ClearMugshot)
+                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        }
+    msgbox(gText_MaskOff_IUsedToSee)
+msgbox(gText_MaskOff_HeWorkedInThe)
+msgbox(gText_MaskOff_WatchingHimBattle)
+        closemessage
+}
+script MaskOff_QuestE_Dialogue {
+    faceplayer
+        if (var(VAR_RUSTURF_TUNNEL_STATE) == 5){
+            setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_MaskOff_WhatCanYou)
+                callnative(ClearMugshot)
+                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        }
+    msgbox(gText_MaskOff_WasBornAndRaised)
+msgbox(gText_MaskOff_IKnowHeUsedToLive)
+msgbox(gText_MaskOff_ItUsedToBeSuper)
+        closemessage
+}
+
+script MaskOff_Encounter_Psfgoodboss_Dialogue {
+    lock
+        addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        call(Common_EventScript_SaveGame)
+        
+        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_MaskOff_FancyABattle,MSGBOX_NPC)
+        callnative(ClearMugshot)
+        lock
+
+        trainerbattle_no_intro(TRAINER_SHELLY_SEAFLOOR_CAVERN,gText_GroupStages_Blank)
+        
+        addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        addvar(VAR_STORYLINE_STATE,1)
+
+        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+
+        callnative(ClearMugshot)
+
+}
+
+text gText_MaskOff_WhatCanYou {
+    format("Hi there. What can you tell me about Psfelite4?")
+}
+//SECTION A
+
+text gText_MaskOff_IUsedToSee {
+    format("I used to see Psfelite4 all the time, but I'm pretty sure he moved away. He used to come back super late at night, so he must have been pulling really long hours.")
+}
+
+text gText_MaskOff_HeWorkedInThe {
+    format("He worked in the Psfcity6 as a business consultant for the little guy. It was awesome to see a member of the community become an Elite Four member!")
+}
+
+text gText_MaskOff_WatchingHimBattle {
+    format("Watching him battle was so awesome! I loved watching use Ditto to confuse 'em before knocking them on their ass with super powerful moves... he would end matches so fast.")
+}
+
+//SECTION D
+
+text gText_MaskOff_UsedToBeHere {
+    format("Psfelite4 used to be here all the time, but I only ever saw him by himself. He was kind of a loner.")
+}
+
+text gText_MaskOff_BookwormsTendToBe {
+    format("Bookworms tend to be like that though. Once he did an interview and all he talked about was non-fiction that he was into...")
+}
+
+//SECTION E
+
+text gText_MaskOff_WasBornAndRaised {
+    format("The Elite Four's Psfelite4 was born and raised here in Psfregion1.")
+}
+
+text gText_MaskOff_IKnowHeUsedToLive {
+    format("I know he used to live in the Psfcity1, but ever since he disappeared, people haven't seen him.")
+}
+
+text gText_MaskOff_ItUsedToBeSuper {
+    format("It used to be super common to see him zipping around in the skies. Psfelite4 is one of the few trainers that flies on his Pokémon to travel around!")
+}
+
+//SECTION F
+
+text gText_MaskOff_IMissWorking {
+    format("I miss working with Psfelite4. Whenever he made great progress, he would treat the entire team to ramen in Psfcity14!")
+}
+
+text gText_MaskOff_HeWouldLeaveRight {
+    format("He would leave right after, even when it was late. He liked using Dusk Balls to do his captures, so after dinner was the best time.")
+}
+
+//SECTION G
+
+text gText_MaskOff_GaveATalkHereOnce {
+    format("Psfelite4 gave a talk here once, where he talked about the importance of training your Pokémon in their natural habitat. He says the connection to their home was where they grew the best. Never seen a book to back that up though...")
+}
+
+text gText_MaskOff_WhateverHeDidWorked {
+    format("Whatever he did worked though! His entire battle style revolved around tricking people and then overwhelming them with crazy power... it was awesome to watch, especially when he used his ace, Ditto.")
+}
+
+text gText_MaskOff_WhenverHeLeft {
+    format("Whenever he left here, I never saw him taking the bus - he would just Fly away from the front steps!        ")
+}
+
+//SECTION H
+
+text gText_MaskOff_IRememberMeeting {
+    format("I remember meeting Psfelite4 when he was 20. I interviewed him after his parents were killed by loan sharks. Tough break, but a tough kid too.")
+}
+
+text gText_MaskOff_HeSaidEvenThen {
+    format("He said even then that he didn't want anybody else to end up like his parents, so he worked for a long time to help small businesses grow and be sustainable. He did good work in the Psfcity6.")
+}
+
+text gText_MaskOff_IThinkThatAccident {
+    format("I think that accident changed him though... never really saw him with a ton of friends, or out and about... like he hated the limelight.")
+}
+
+//SECTION I
+
+text gText_MaskOff_UsedToCome {
+    format("Psfelite3 and Psfelite4 used to come in together a lot.")
+}
+
+text gText_MaskOff_TheyWouldJust {
+    format("They would just talk about books the whole time.. I think Psfelite4 really loved history.")
+}
+
+text gText_MaskOff_IThinkSoHe {
+    format("Psfelite4 lived close by... in Psfcity1, I think, so he was here, with or without Psfelite3.")
+}
+
+//SECTION K
+
+text gText_MaskOff_ADigitalPhoto {
+    format("A digital photo frame. The picture being displayed shows Psfelite4 and Psfelite3 together at a ramen restaurant.")
+}
+
+text gText_MaskOff_FancyABattle {
+    format("A surprise, seeing you here, {PLAYER}. I hear you've turned over a new leaf. Let's see if your new found convinction gives you power!")
+}

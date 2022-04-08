@@ -1199,7 +1199,7 @@ Script_RemoveTint::
 .include "data/cutscenes/OkayLetsFixit.inc"
 .include "data/cutscenes/LetsGettheBandBackTogether.inc"
 ##  .include "data/cutscenes/LockedOut.inc"
-##  .include "data/cutscenes/MaskOff.inc"
+.include "data/cutscenes/MaskOff.inc"
 ##  .include "data/cutscenes/LetsFixThis.inc"
 ##  .include "data/cutscenes/WarehouseRave.inc"
 ##  .include "data/cutscenes/SpeechSpeechSpeech.inc"
@@ -1300,3 +1300,13 @@ Script_RemoveTint::
 	.include "data/maps/Psfplace1/scripts.inc"
 
 	.include "data/maps/OkayLetsFixit_Flashback/scripts.inc"
+
+	.include "data/maps/Psfcity1/scripts.inc"
+
+	.include "data/maps/Psfcity1_Apartment/scripts.inc"
+
+	.include "data/maps/Psfcity12_Library/scripts.inc"
+
+	.include "data/maps/Psfcity14_Ramen/scripts.inc"
+
+	.include "data/maps/Psfcity10_EliteHome/scripts.inc"

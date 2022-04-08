@@ -1,0 +1,18 @@
+Psfcity10_EliteHome_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity10_EliteHome_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Psfcity10_EliteHome_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfcity10_EliteHome_OnTransition
+	return
+
+
+Psfcity10_EliteHome_OnTransition::
+	compare VAR_STORYLINE_STATE, 100
+	goto_if_lt Psfcity10_EliteHome_OnTransition_1
+	return
+
+Psfcity10_EliteHome_OnTransition_1:
+	call MaskOff_HideObject_Script
+	return
+
