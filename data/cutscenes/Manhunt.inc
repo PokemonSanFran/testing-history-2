@@ -185,7 +185,6 @@ Manhunt_TransformTreestoTallGrass::
 
 
 Manhunt_Matthew_Battle_Script::
-	lock
 	clearflag FLAG_TEMP_2
 	addobject 2
 	call Manhunt_TransformTreestoTallGrass

@@ -54,7 +54,7 @@
       "y": 6,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "Psfcity10_EliteHome_PictureFrame_Dialogue"
     },
     {
       "type": "sign",
@@ -62,7 +62,7 @@
       "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "Psfcity10_EliteHome_PictureFrame_Dialogue"
     }
   ]
 }

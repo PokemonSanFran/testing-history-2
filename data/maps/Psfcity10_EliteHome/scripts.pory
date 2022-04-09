@@ -9,3 +9,28 @@ script Psfcity10_EliteHome_OnTransition {
         call(MaskOff_HideObject_Script) 
     }
 }
+
+script Psfcity10_EliteHome_PictureFrame_Dialogue {
+    lock
+
+        if (var(VAR_RUSTURF_TUNNEL_STATE)> 2){
+            call(MaskOff_QuestK_Dialogue)
+        } elif (var(VAR_ROUTE116_STATE) > 4){
+            msgbox(gText_Psfcity10_EliteHome_ADigitalPhoto,MSGBOX_AUTOCLOSE)
+        } else {
+            msgbox(gText_Psfcity10_EliteHome_ADigitalPhoto_Unknown,MSGBOX_AUTOCLOSE)
+        }
+
+    release
+        end
+}
+
+text gText_Psfcity10_EliteHome_ADigitalPhoto_Unknown {
+    format("A digital photo frame. The picture being displayed shows two people together at a ramen restaurant.")
+}
+
+text gText_Psfcity10_EliteHome_ADigitalPhoto {
+    format("A digital photo frame. The picture being displayed shows Psfelite3 with somebody at a ramen restaurant.")
+}
+
+

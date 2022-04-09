@@ -57,7 +57,7 @@ msgbox(gText_MaskOff_BookwormsTendToBe)
         closemessage
 }
 script MaskOff_QuestK_Dialogue {
-    msgbox(gText_MaskOff_ADigitalPhoto)
+    msgbox(gText_MaskOff_ADigitalPhoto,MSGBOX_AUTOCLOSE)
     closemessage
 }
 script MaskOff_QuestG_Dialogue {
@@ -222,7 +222,7 @@ text gText_MaskOff_IThinkSoHe {
 //SECTION K
 
 text gText_MaskOff_ADigitalPhoto {
-    format("A digital photo frame. The picture being displayed shows Psfelite4 and Psfelite3 together at a ramen restaurant.")
+    format("A digital photo frame. The picture being displayed shows Psfelite4 and Psfelite3 together at the ramen restaurantin Psfcity14.")
 }
 
 text gText_MaskOff_FancyABattle {

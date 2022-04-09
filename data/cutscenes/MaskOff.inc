@@ -82,7 +82,7 @@ MaskOff_QuestD_Dialogue_2:
 
 
 MaskOff_QuestK_Dialogue::
-	msgbox gText_MaskOff_ADigitalPhoto
+	msgbox gText_MaskOff_ADigitalPhoto, MSGBOX_AUTOCLOSE
 	closemessage
 	return
 
@@ -285,8 +285,8 @@ gText_MaskOff_IThinkSoHe::
 gText_MaskOff_ADigitalPhoto::
 	.string "A digital photo frame. The picture being\n"
 	.string "displayed shows Psfelite4 and\l"
-	.string "Psfelite3 together at a ramen\l"
-	.string "restaurant.$"
+	.string "Psfelite3 together at the ramen\l"
+	.string "restaurantin Psfcity14.$"
 
 gText_MaskOff_FancyABattle::
 	.string "A surprise, seeing you here, {PLAYER}.\n"

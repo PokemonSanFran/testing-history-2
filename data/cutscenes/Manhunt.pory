@@ -229,7 +229,6 @@ script Manhunt_TransformTreestoTallGrass {
 }
 //Psfroute62
 script Manhunt_Matthew_Battle_Script {
-    lock
         clearflag(FLAG_TEMP_2)
         addobject(PSFTRANSRIVAL)
         call(Manhunt_TransformTreestoTallGrass)

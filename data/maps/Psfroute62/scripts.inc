@@ -9,11 +9,44 @@ Psfroute62_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfroute62_MapScripts_OnTransition::
 	setflag FLAG_TEMP_2
-	compare VAR_RUSTURF_TUNNEL_STATE, 4
-	goto_if_ne Psfroute62_MapScripts_OnTransition_1
 	return
 
-Psfroute62_MapScripts_OnTransition_1:
-	call Manhunt_HideObject_Script
+
+Psfroute62_InteractMatthew_Event_Script::
+	lock
+	goto_if_set FLAG_TIMELINE_FALSE, Psfroute62_InteractMatthew_Event_Script_2
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 1, Psfroute62_InteractMatthew_Event_Script_9
+	case 2, Psfroute62_InteractMatthew_Event_Script_10
+	case 3, Psfroute62_InteractMatthew_Event_Script_11
+	case 4, Psfroute62_InteractMatthew_Event_Script_12
+	call MaskOff_QuestF_Dialogue
+Psfroute62_InteractMatthew_Event_Script_1:
+	release
+	end
+
+Psfroute62_InteractMatthew_Event_Script_2:
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 5, Psfroute62_InteractMatthew_Event_Script_6
+	msgbox Psfroute62_InteractMatthew_Event_Script_Text_0, MSGBOX_AUTOCLOSE
+	goto Psfroute62_InteractMatthew_Event_Script_1
+
+Psfroute62_InteractMatthew_Event_Script_6:
+	call Manhunt_Matthew_Battle_Script
+	goto Psfroute62_InteractMatthew_Event_Script_1
+
+Psfroute62_InteractMatthew_Event_Script_9:
 	return
 
+Psfroute62_InteractMatthew_Event_Script_10:
+	return
+
+Psfroute62_InteractMatthew_Event_Script_11:
+	return
+
+Psfroute62_InteractMatthew_Event_Script_12:
+	return
+
+
+Psfroute62_InteractMatthew_Event_Script_Text_0:
+	.string "...$"

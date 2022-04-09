@@ -9,16 +9,30 @@ Psfcity5_BallShop_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfcity5_BallShop_InteractDudley_Event_Script::
 	lock
+	goto_if_set FLAG_TIMELINE_FALSE, Psfcity5_BallShop_InteractDudley_Event_Script_2
 	switch VAR_RUSTURF_TUNNEL_STATE
-	case 3, Psfcity5_BallShop_InteractDudley_Event_Script_3
-	msgbox Psfcity5_BallShop_InteractDudley_Event_Script_Text_0, MSGBOX_AUTOCLOSE
+	case 1, Psfcity5_BallShop_InteractDudley_Event_Script_9
+	case 8, Psfcity5_BallShop_InteractDudley_Event_Script_10
+	call MaskOff_QuestF_Dialogue
 Psfcity5_BallShop_InteractDudley_Event_Script_1:
 	release
 	end
 
-Psfcity5_BallShop_InteractDudley_Event_Script_3:
+Psfcity5_BallShop_InteractDudley_Event_Script_2:
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 3, Psfcity5_BallShop_InteractDudley_Event_Script_6
+	msgbox Psfcity5_BallShop_InteractDudley_Event_Script_Text_0, MSGBOX_AUTOCLOSE
+	goto Psfcity5_BallShop_InteractDudley_Event_Script_1
+
+Psfcity5_BallShop_InteractDudley_Event_Script_6:
 	call Manhunt_Dudley_Battle_Script
 	goto Psfcity5_BallShop_InteractDudley_Event_Script_1
+
+Psfcity5_BallShop_InteractDudley_Event_Script_9:
+	return
+
+Psfcity5_BallShop_InteractDudley_Event_Script_10:
+	return
 
 
 Psfcity5_BallShop_MapScripts_OnTransition::
