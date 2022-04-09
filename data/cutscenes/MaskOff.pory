@@ -95,7 +95,6 @@ script MaskOff_QuestE_Dialogue {
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         }
     msgbox(gText_MaskOff_WasBornAndRaised)
 msgbox(gText_MaskOff_IKnowHeUsedToLive)

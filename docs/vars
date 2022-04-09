@@ -261,7 +261,7 @@ X: Act 4:Used to find the location of the last completed restoration quest, numb
 Y: Used to find the target of the last completed takedown quest, number should correspond to a company
 
 #VAR_PETALBURG_WOODS_STATE
-#**RELEVANCE**: "You Have Your Orders" quest tracker
+#**RELEVANCE**: "You Have Your Orders" quest tracker in FALSE
 0: Has not been assigned "take down Chinatown" quest yet
 1: Has been assigned by Koga
 2: raid has begun, TR is in the city
