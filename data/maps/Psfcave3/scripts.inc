@@ -8,34 +8,78 @@ Psfcave3_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Psfcave3_MapScripts_OnTransition::
-	compare VAR_STORYLINE_STATE, 26
-	goto_if_gt Psfcave3_MapScripts_OnTransition_1
+	setflag FLAG_TEMP_2
+	goto_if_unset FLAG_DEFEATED_PSFGOODBOSS, Psfcave3_MapScripts_OnTransition_1
+	goto_if_set FLAG_TIMELINE_TRUE, Psfcave3_MapScripts_OnTransition_10
+Psfcave3_MapScripts_OnTransition_8:
+	goto_if_set FLAG_TIMELINE_FALSE, Psfcave3_MapScripts_OnTransition_7
+Psfcave3_MapScripts_OnTransition_6:
+	compare VAR_STORYLINE_STATE, 25
+	goto_if_lt Psfcave3_MapScripts_OnTransition_4
+	call Manhunt_HideObject_Script
 	return
 
 Psfcave3_MapScripts_OnTransition_1:
-	compare VAR_RUSTURF_TUNNEL_STATE, 5
-	goto_if_ne Psfcave3_MapScripts_OnTransition_3
-	goto_if_unset FLAG_TIMELINE_FALSE, Psfcave3_MapScripts_OnTransition_3
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
+	return
+
+Psfcave3_MapScripts_OnTransition_2:
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
 	return
 
 Psfcave3_MapScripts_OnTransition_3:
-	call Manhunt_HideObject_Script
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
 	return
+
+Psfcave3_MapScripts_OnTransition_4:
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
+	return
+
+Psfcave3_MapScripts_OnTransition_7:
+	compare VAR_RUSTURF_TUNNEL_STATE, 4
+	goto_if_gt Psfcave3_MapScripts_OnTransition_3
+	goto Psfcave3_MapScripts_OnTransition_6
+
+Psfcave3_MapScripts_OnTransition_10:
+	compare VAR_RUSTURF_TUNNEL_STATE, 3
+	goto_if_gt Psfcave3_MapScripts_OnTransition_2
+	goto Psfcave3_MapScripts_OnTransition_8
 
 
 Psfcave3_InteractPsfelite4_Event_Script::
 	lock
-	switch VAR_RUSTURF_TUNNEL_STATE
-	case 5, Psfcave3_InteractPsfelite4_Event_Script_3
-	msgbox Psfcave3_InteractPsfelite4_Event_Script_Text_0, MSGBOX_AUTOCLOSE
+	goto_if_set FLAG_TIMELINE_TRUE, Psfcave3_InteractPsfelite4_Event_Script_9
+Psfcave3_InteractPsfelite4_Event_Script_7:
+	goto_if_set FLAG_TIMELINE_FALSE, Psfcave3_InteractPsfelite4_Event_Script_6
+Psfcave3_InteractPsfelite4_Event_Script_5:
+	compare VAR_STORYLINE_STATE, 25
+	goto_if_lt Psfcave3_InteractPsfelite4_Event_Script_4
 Psfcave3_InteractPsfelite4_Event_Script_1:
 	release
 	end
+
+Psfcave3_InteractPsfelite4_Event_Script_2:
+	call MaskOff_Encounter_Psfgoodboss_Dialogue
+	goto Psfcave3_InteractPsfelite4_Event_Script_1
 
 Psfcave3_InteractPsfelite4_Event_Script_3:
 	call Manhunt_Encounter_Psfgoodboss_Dialogue
 	goto Psfcave3_InteractPsfelite4_Event_Script_1
 
+Psfcave3_InteractPsfelite4_Event_Script_4:
+	msgbox Psfcave3_InteractPsfelite4_Event_Script_Text_0, MSGBOX_AUTOCLOSE
+	goto Psfcave3_InteractPsfelite4_Event_Script_1
+
+Psfcave3_InteractPsfelite4_Event_Script_6:
+	compare VAR_RUSTURF_TUNNEL_STATE, 4
+	goto_if_gt Psfcave3_InteractPsfelite4_Event_Script_3
+	goto Psfcave3_InteractPsfelite4_Event_Script_5
+
+Psfcave3_InteractPsfelite4_Event_Script_9:
+	compare VAR_RUSTURF_TUNNEL_STATE, 3
+	goto_if_gt Psfcave3_InteractPsfelite4_Event_Script_2
+	goto Psfcave3_InteractPsfelite4_Event_Script_7
+
 
 Psfcave3_InteractPsfelite4_Event_Script_Text_0:
-	.string "...$"
+	.string "random flavor text about training here$"

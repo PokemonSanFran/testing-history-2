@@ -3,6 +3,13 @@ MaskOff_HideObject_Script::
 	return
 
 
+MaskOff_TransformObject_Script::
+	removeobject 1
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_DRAKE
+	addobject 1
+	return
+
+
 MaskOff_QuestH_Dialogue::
 	faceplayer
 	compare VAR_RUSTURF_TUNNEL_STATE, 1
@@ -143,7 +150,6 @@ MaskOff_QuestE_Dialogue_2:
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
 	goto MaskOff_QuestE_Dialogue_1
 
 
@@ -159,11 +165,162 @@ MaskOff_Encounter_Psfgoodboss_Dialogue::
 	trainerbattle_no_intro TRAINER_SHELLY_SEAFLOOR_CAVERN, gText_GroupStages_Blank
 	addvar VAR_RUSTURF_TUNNEL_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	callnative ClearMugshot
+	goto MaskOff_PostBattle_Dialogue
 	return
 
+
+MaskOff_PostBattle_Dialogue::
+	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	callnative DrawMugshot
+	msgbox gText_MaskOff_YouveMadeIncredible
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_MaskOff_ItsNiceToNotGet
+	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	callnative DrawMugshot
+	msgbox gText_MaskOff_YouWontNeedTo
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_MaskOff_WhatDoYouMean
+	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	callnative DrawMugshot
+	msgbox gText_MaskOff_AllowMeTo
+	callnative ClearMugshot
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	fadescreen FADE_TO_BLACK
+	call MaskOff_TransformObject_Script
+	lock
+	fadescreen FADE_FROM_BLACK
+	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	callnative DrawMugshot
+	msgbox gText_MaskOff_TheOneAndOnly, MSGBOX_NPC
+	lock
+	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	callnative DrawMugshot
+	msgbox gText_MaskOff_IFormedPsfgoodteam
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_MaskOff_ButWhyGo
+	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	callnative DrawMugshot
+	msgbox gText_MaskOff_IHidMyIdentity
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_MaskOff_ThingsAre
+	callnative ClearMugshot
+	closemessage
+	fadescreen FADE_TO_BLACK
+	delay 32
+	fadescreen FADE_FROM_BLACK
+	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	callnative DrawMugshot
+	msgbox gText_MaskOff_ISee
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_MaskOff_WaitWhatDO
+	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	callnative DrawMugshot
+	msgbox gText_MaskOff_IHaventExplicitly
+	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	callnative DrawMugshot
+	msgbox gText_MaskOff_IShouldApologize
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, MaskOff_WalkOffScreen
+	waitmovement 0
+	removeobject 1
+	setflag FLAG_DEFEATED_PSFGOODBOSS
+	release
+	end
+
+
+MaskOff_WalkOffScreen:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+gText_MaskOff_YouveMadeIncredible::
+	.string "You’ve made incredible progress since we\n"
+	.string "last battled. But of course, you’re the\l"
+	.string "Champion, {PLAYER}. Psfgoodteam is\l"
+	.string "lucky to have another powerful ally$"
+
+gText_MaskOff_ItsNiceToNotGet::
+	.string "Thank you! It’s nice to not get crushed\n"
+	.string "as easily anymore… wait! I was\l"
+	.string "following a lead looking for Psfelite4.\l"
+	.string "I think they train around here, and I\l"
+	.string "want to try to convince them to work\l"
+	.string "with us.$"
+
+gText_MaskOff_YouWontNeedTo::
+	.string "You won’t need to do much convincing,\n"
+	.string "actually.$"
+
+gText_MaskOff_WhatDoYouMean::
+	.string "What do you mean?$"
+
+gText_MaskOff_AllowMeTo::
+	.string "Allow me to re-introduce myself. I am\n"
+	.string "the leader of Psfgoodteam, member of\l"
+	.string "the Elite Four,$"
+
+gText_MaskOff_TheOneAndOnly::
+	.string "the one and only… Psfelite4.$"
+
+gText_MaskOff_IFormedPsfgoodteam::
+	.string "I formed Psfgoodteam as a response to\n"
+	.string "Psfbadguy’s growing influence over the\l"
+	.string "region a few years ago.$"
+
+gText_MaskOff_ButWhyGo::
+	.string "But why go into hiding as Psfelite4?$"
+
+gText_MaskOff_IHidMyIdentity::
+	.string "I hid my identity because I was worried\n"
+	.string "about my influence diluting the\l"
+	.string "message. If people could unite under a\l"
+	.string "symbol like Psfgoodboss, then in\l"
+	.string "theory, anybody could lead\l"
+	.string "Psfgoodteam if something happened to\l"
+	.string "me. And if the Elite Four wasn’t directly\l"
+	.string "connected to Psfgoodteam, then they\l"
+	.string "couldn’t retaliate against the others.$"
+
+gText_MaskOff_ThingsAre::
+	.string "Things are… a little different now. I\n"
+	.string "met with Psfnativerival…$"
+
+gText_MaskOff_ISee::
+	.string "I see. If the Elite Four is going to\n"
+	.string "present as a united front, I’ll need to\l"
+	.string "give up leadership to Psfgoodadmin.\l"
+	.string "You know, I think they’ve purposely\l"
+	.string "kept me in the dark about this.$"
+
+gText_MaskOff_WaitWhatDO::
+	.string "Wait, what do you mean?$"
+
+gText_MaskOff_IHaventExplicitly::
+	.string "I haven’t explicitly told them, but I’ve\n"
+	.string "long suspected they know my secret.\l"
+	.string "They have some reservations about\l"
+	.string "taking a leadership role… but I know\l"
+	.string "they can handle it.$"
+
+gText_MaskOff_IShouldApologize::
+	.string "I should apologize to Psfelite3 for\n"
+	.string "disappearing. But you should get some\l"
+	.string "rest. Our war begins first thing in the\l"
+	.string "morning.$"
 
 gText_MaskOff_WhatCanYou::
 	.string "Hi there. What can you tell me about\n"

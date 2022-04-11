@@ -119,6 +119,7 @@ OkayLetsFixit_TimelineReset_Script::
 	setvar VAR_RUSTURF_TUNNEL_STATE, 0
 	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
 	setvar VAR_PETALBURG_WOODS_STATE, 0
+	clearflag FLAG_DEFEATED_PSFGOODBOSS
 	return
 
 

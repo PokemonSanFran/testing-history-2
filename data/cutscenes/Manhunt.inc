@@ -221,6 +221,7 @@ Manhunt_Encounter_Psfgoodboss_Dialogue::
 	multi_fixed_2_vs_1 TRAINER_MATT, gText_Manhunt_IfIDontHave, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
 	addvar VAR_RUSTURF_TUNNEL_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
+	setflag FLAG_DEFEATED_PSFGOODBOSS
 	setvar VAR_0x8000, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_Manhunt_IWontFightYouAnyFurther

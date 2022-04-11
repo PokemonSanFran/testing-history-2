@@ -1,5 +1,14 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFGOODBOSS = 1
+
 script MaskOff_HideObject_Script {
     setflag(FLAG_TEMP_1) //Hide Psfelite3 in their home
+}
+
+script MaskOff_TransformObject_Script {
+    removeobject(1)
+    setvar(VAR_OBJ_GFX_ID_1,OBJ_EVENT_GFX_DRAKE)
+    addobject(1)
 }
 
 script MaskOff_QuestH_Dialogue {
@@ -12,8 +21,8 @@ script MaskOff_QuestH_Dialogue {
                 addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         }
     msgbox(gText_MaskOff_IRememberMeeting)
-msgbox(gText_MaskOff_HeSaidEvenThen)
-msgbox(gText_MaskOff_IThinkThatAccident)
+        msgbox(gText_MaskOff_HeSaidEvenThen)
+        msgbox(gText_MaskOff_IThinkThatAccident)
         closemessage
 }
 script MaskOff_QuestF_Dialogue {
@@ -26,7 +35,7 @@ script MaskOff_QuestF_Dialogue {
                 addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         }
     msgbox(gText_MaskOff_IMissWorking)
-msgbox(gText_MaskOff_HeWouldLeaveRight)
+        msgbox(gText_MaskOff_HeWouldLeaveRight)
         closemessage
 }
 script MaskOff_QuestI_Dialogue {
@@ -39,8 +48,8 @@ script MaskOff_QuestI_Dialogue {
                 addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         }
     msgbox(gText_MaskOff_UsedToCome)
-msgbox(gText_MaskOff_TheyWouldJust)
-msgbox(gText_MaskOff_IThinkSoHe)
+        msgbox(gText_MaskOff_TheyWouldJust)
+        msgbox(gText_MaskOff_IThinkSoHe)
         closemessage
 }
 script MaskOff_QuestD_Dialogue {
@@ -53,12 +62,12 @@ script MaskOff_QuestD_Dialogue {
                 addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         }
     msgbox(gText_MaskOff_UsedToBeHere)
-msgbox(gText_MaskOff_BookwormsTendToBe)
+        msgbox(gText_MaskOff_BookwormsTendToBe)
         closemessage
 }
 script MaskOff_QuestK_Dialogue {
     msgbox(gText_MaskOff_ADigitalPhoto,MSGBOX_AUTOCLOSE)
-    closemessage
+        closemessage
 }
 script MaskOff_QuestG_Dialogue {
     faceplayer
@@ -70,8 +79,8 @@ script MaskOff_QuestG_Dialogue {
                 addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         }
     msgbox(gText_MaskOff_GaveATalkHereOnce)
-msgbox(gText_MaskOff_WhateverHeDidWorked)
-msgbox(gText_MaskOff_WhenverHeLeft)
+        msgbox(gText_MaskOff_WhateverHeDidWorked)
+        msgbox(gText_MaskOff_WhenverHeLeft)
         closemessage
 }
 script MaskOff_QuestA_Dialogue {
@@ -84,8 +93,8 @@ script MaskOff_QuestA_Dialogue {
                 addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         }
     msgbox(gText_MaskOff_IUsedToSee)
-msgbox(gText_MaskOff_HeWorkedInThe)
-msgbox(gText_MaskOff_WatchingHimBattle)
+        msgbox(gText_MaskOff_HeWorkedInThe)
+        msgbox(gText_MaskOff_WatchingHimBattle)
         closemessage
 }
 script MaskOff_QuestE_Dialogue {
@@ -97,8 +106,8 @@ script MaskOff_QuestE_Dialogue {
                 callnative(ClearMugshot)
         }
     msgbox(gText_MaskOff_WasBornAndRaised)
-msgbox(gText_MaskOff_IKnowHeUsedToLive)
-msgbox(gText_MaskOff_ItUsedToBeSuper)
+        msgbox(gText_MaskOff_IKnowHeUsedToLive)
+        msgbox(gText_MaskOff_ItUsedToBeSuper)
         closemessage
 }
 
@@ -106,7 +115,7 @@ script MaskOff_Encounter_Psfgoodboss_Dialogue {
     lock
         addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         call(Common_EventScript_SaveGame)
-        
+
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_MaskOff_FancyABattle,MSGBOX_NPC)
@@ -114,15 +123,140 @@ script MaskOff_Encounter_Psfgoodboss_Dialogue {
         lock
 
         trainerbattle_no_intro(TRAINER_SHELLY_SEAFLOOR_CAVERN,gText_GroupStages_Blank)
-        
+
         addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         addvar(VAR_STORYLINE_STATE,1)
+        goto(MaskOff_PostBattle_Dialogue)
+}
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
+script MaskOff_PostBattle_Dialogue {
 
-        callnative(ClearMugshot)
+    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_YouveMadeIncredible)
 
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_ItsNiceToNotGet)
+
+    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_YouWontNeedTo)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_WhatDoYouMean)
+
+    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_AllowMeTo)
+    callnative(ClearMugshot)
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(PLAYER,Common_Movement_ExclamationMark)
+    waitmovement(0)
+
+    fadescreen(FADE_TO_BLACK)
+    call(MaskOff_TransformObject_Script)
+    lock
+    fadescreen(FADE_FROM_BLACK)
+
+    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_TheOneAndOnly,MSGBOX_NPC)
+    lock
+
+    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_IFormedPsfgoodteam)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_ButWhyGo)
+
+    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_IHidMyIdentity)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_ThingsAre)
+    callnative(ClearMugshot)
+    closemessage
+
+    fadescreen(FADE_TO_BLACK)
+    delay(32)
+    fadescreen(FADE_FROM_BLACK)
+
+    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_ISee)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_WaitWhatDO)
+
+    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_IHaventExplicitly)
+
+    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    callnative(DrawMugshot)
+msgbox(gText_MaskOff_IShouldApologize)
+    callnative(ClearMugshot)
+    closemessage
+
+    applymovement(PSFGOODBOSS,MaskOff_WalkOffScreen)
+    waitmovement(0)
+    removeobject(PSFGOODBOSS)
+
+    setflag(FLAG_DEFEATED_PSFGOODBOSS)
+    release
+    end
+}
+
+    text gText_MaskOff_YouveMadeIncredible {
+        format("You’ve made incredible progress since we last battled. But of course, you’re the Champion, {PLAYER}. Psfgoodteam is lucky to have another powerful ally")
+    }
+text gText_MaskOff_ItsNiceToNotGet {
+    format("Thank you! It’s nice to not get crushed as easily anymore… wait! I was following a lead looking for Psfelite4. I think they train around here, and I want to try to convince them to work with us.")
+}
+text gText_MaskOff_YouWontNeedTo {
+    format("You won’t need to do much convincing, actually.")
+}
+text gText_MaskOff_WhatDoYouMean {
+    format("What do you mean?")
+}
+text gText_MaskOff_AllowMeTo {
+    format("Allow me to re-introduce myself. I am the leader of Psfgoodteam, member of the Elite Four,")
+}
+text gText_MaskOff_TheOneAndOnly {
+    format("the one and only… Psfelite4.")
+}
+text gText_MaskOff_IFormedPsfgoodteam {
+    format("I formed Psfgoodteam as a response to Psfbadguy’s growing influence over the region a few years ago. ")
+}
+text gText_MaskOff_ButWhyGo {
+    format("But why go into hiding as Psfelite4?")
+}
+text gText_MaskOff_IHidMyIdentity {
+    format("I hid my identity because I was worried about my influence diluting the message. If people could unite under a symbol like Psfgoodboss, then in theory, anybody could lead Psfgoodteam if something happened to me. And if the Elite Four wasn’t directly connected to Psfgoodteam, then they couldn’t retaliate against the others.")
+}
+text gText_MaskOff_ThingsAre {
+    format("Things are… a little different now. I met with Psfnativerival…")
+}
+text gText_MaskOff_ISee {
+    format("I see. If the Elite Four is going to present as a united front, I’ll need to give up leadership to Psfgoodadmin. You know, I think they’ve purposely kept me in the dark about this.")
+}
+text gText_MaskOff_WaitWhatDO {
+    format("Wait, what do you mean?")
+}
+text gText_MaskOff_IHaventExplicitly {
+    format("I haven’t explicitly told them, but I’ve long suspected they know my secret. They have some reservations about taking a leadership role… but I know they can handle it.")
+}
+text gText_MaskOff_IShouldApologize {
+    format("I should apologize to Psfelite3 for disappearing. But you should get some rest. Our war begins first thing in the morning.")
 }
 
 text gText_MaskOff_WhatCanYou {
@@ -226,4 +360,9 @@ text gText_MaskOff_ADigitalPhoto {
 
 text gText_MaskOff_FancyABattle {
     format("A surprise, seeing you here, {PLAYER}. I hear you've turned over a new leaf. Let's see if your new found convinction gives you power!")
+}
+
+movement MaskOff_WalkOffScreen {
+    walk_up * 7
+    step_end
 }
