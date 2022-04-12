@@ -1,4 +1,7 @@
 script LetsFixThis_HideObjectHouse_Script {
         setflag(FLAG_TEMP_1)
     }
+
+script LetsFixThis_EliteVideo_Dialogue {
+    return
 }

@@ -1,2 +1,17 @@
 Psfcity17_Psfnativerival_House_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcity17_Psfnativerival_House_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfcity17_Psfnativerival_House_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Psfcity17_Psfnativerival_House_OnTransition
+	return
+
+
+Psfcity17_Psfnativerival_House_OnTransition::
+	goto_if_unset FLAG_LOCKEDOUT_PLAYED, Psfcity17_Psfnativerival_House_OnTransition_1
+	return
+
+Psfcity17_Psfnativerival_House_OnTransition_1:
+	call LetsFixThis_HideObjectHouse_Script
+	return
+

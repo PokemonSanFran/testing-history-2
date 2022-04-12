@@ -26,11 +26,12 @@ Psfcity8_Compound_2F_Bed_Script_1:
 	case 26, Psfcity8_Compound_2F_Bed_Script_10
 	case 42, Psfcity8_Compound_2F_Bed_Script_11
 	case 99, Psfcity8_Compound_2F_Bed_Script_12
+	case 101, Psfcity8_Compound_2F_Bed_Script_13
 	fadescreen FADE_FROM_BLACK
 Psfcity8_Compound_2F_Bed_Script_6:
 	compare VAR_LITTLEROOT_INTRO_STATE, 4
-	goto_if_eq Psfcity8_Compound_2F_Bed_Script_15
-Psfcity8_Compound_2F_Bed_Script_14:
+	goto_if_eq Psfcity8_Compound_2F_Bed_Script_16
+Psfcity8_Compound_2F_Bed_Script_15:
 	release
 	end
 
@@ -58,10 +59,14 @@ Psfcity8_Compound_2F_Bed_Script_12:
 	call YouRealizeTheyreEvilRight_NoIdea_Dialogue
 	goto Psfcity8_Compound_2F_Bed_Script_6
 
-Psfcity8_Compound_2F_Bed_Script_15:
+Psfcity8_Compound_2F_Bed_Script_13:
+	call LetsFixThis_EliteVideo_Dialogue
+	goto Psfcity8_Compound_2F_Bed_Script_6
+
+Psfcity8_Compound_2F_Bed_Script_16:
 	addvar VAR_LITTLEROOT_INTRO_STATE, 1
 	giveitem ITEM_FASHION_CASE
-	goto Psfcity8_Compound_2F_Bed_Script_14
+	goto Psfcity8_Compound_2F_Bed_Script_15
 
 
 gText_BedScript_WhenShouldWake::

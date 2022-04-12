@@ -7,7 +7,7 @@ LockedOut_PreventPlayer_Script::
 	waitse
 	msgbox gText_LockedOut_AccessDenied
 	closemessage
-	goto_if_set FLAG_LOCKEDOUT_PLAYED, LockedOut_PreventPlayer_Script_5
+	goto_if_unset FLAG_LOCKEDOUT_PLAYED, LockedOut_PreventPlayer_Script_5
 	call LockedOut_WarpPlayer_Script
 LockedOut_PreventPlayer_Script_4:
 	closemessage
