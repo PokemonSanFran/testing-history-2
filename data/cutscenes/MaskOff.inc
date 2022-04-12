@@ -155,7 +155,7 @@ MaskOff_QuestE_Dialogue_2:
 
 MaskOff_Encounter_Psfgoodboss_Dialogue::
 	lock
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	setvar VAR_RUSTURF_TUNNEL_STATE, 7
 	call Common_EventScript_SaveGame
 	setvar VAR_0x8000, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
@@ -187,9 +187,6 @@ MaskOff_PostBattle_Dialogue::
 	msgbox gText_MaskOff_AllowMeTo
 	callnative ClearMugshot
 	closemessage
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement 0
 	fadescreen FADE_TO_BLACK
 	call MaskOff_TransformObject_Script
 	lock
@@ -198,6 +195,9 @@ MaskOff_PostBattle_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_MaskOff_TheOneAndOnly, MSGBOX_NPC
 	lock
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_MaskOff_IFormedPsfgoodteam
@@ -229,10 +229,14 @@ MaskOff_PostBattle_Dialogue::
 	msgbox gText_MaskOff_IShouldApologize
 	callnative ClearMugshot
 	closemessage
+	goto MaskOff_End_Dialogue
+	return
+
+
+MaskOff_End_Dialogue::
 	applymovement 1, MaskOff_WalkOffScreen
 	waitmovement 0
 	removeobject 1
-	setflag FLAG_DEFEATED_PSFGOODBOSS
 	release
 	end
 

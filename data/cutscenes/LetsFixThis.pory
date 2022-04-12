@@ -1,0 +1,4 @@
+script LetsFixThis_HideObjectHouse_Script {
+        setflag(FLAG_TEMP_1)
+    }
+}

@@ -9,13 +9,12 @@ Psfcave3_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfcave3_MapScripts_OnTransition::
 	setflag FLAG_TEMP_2
-	goto_if_unset FLAG_DEFEATED_PSFGOODBOSS, Psfcave3_MapScripts_OnTransition_1
-	goto_if_set FLAG_TIMELINE_TRUE, Psfcave3_MapScripts_OnTransition_10
-Psfcave3_MapScripts_OnTransition_8:
-	goto_if_set FLAG_TIMELINE_FALSE, Psfcave3_MapScripts_OnTransition_7
-Psfcave3_MapScripts_OnTransition_6:
+	goto_if_set FLAG_TIMELINE_TRUE, Psfcave3_MapScripts_OnTransition_9
+Psfcave3_MapScripts_OnTransition_7:
+	goto_if_set FLAG_TIMELINE_FALSE, Psfcave3_MapScripts_OnTransition_6
+Psfcave3_MapScripts_OnTransition_5:
 	compare VAR_STORYLINE_STATE, 25
-	goto_if_lt Psfcave3_MapScripts_OnTransition_4
+	goto_if_lt Psfcave3_MapScripts_OnTransition_3
 	call Manhunt_HideObject_Script
 	return
 
@@ -31,19 +30,15 @@ Psfcave3_MapScripts_OnTransition_3:
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
 	return
 
-Psfcave3_MapScripts_OnTransition_4:
-	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
-	return
+Psfcave3_MapScripts_OnTransition_6:
+	compare VAR_RUSTURF_TUNNEL_STATE, 6
+	goto_if_lt Psfcave3_MapScripts_OnTransition_2
+	goto Psfcave3_MapScripts_OnTransition_5
 
-Psfcave3_MapScripts_OnTransition_7:
-	compare VAR_RUSTURF_TUNNEL_STATE, 4
-	goto_if_gt Psfcave3_MapScripts_OnTransition_3
-	goto Psfcave3_MapScripts_OnTransition_6
-
-Psfcave3_MapScripts_OnTransition_10:
-	compare VAR_RUSTURF_TUNNEL_STATE, 3
-	goto_if_gt Psfcave3_MapScripts_OnTransition_2
-	goto Psfcave3_MapScripts_OnTransition_8
+Psfcave3_MapScripts_OnTransition_9:
+	compare VAR_RUSTURF_TUNNEL_STATE, 8
+	goto_if_lt Psfcave3_MapScripts_OnTransition_1
+	goto Psfcave3_MapScripts_OnTransition_7
 
 
 Psfcave3_InteractPsfelite4_Event_Script::

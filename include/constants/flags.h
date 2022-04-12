@@ -48,7 +48,7 @@
 #define FLAG_SYS_NO_CATCHING        0x24 // Unused Flag //DEBUG
 #define FLAG_PSFPLACE14_TOURNAMENT_HAPPENING 0x25 // Previously Unused Flag
 #define FLAG_SAVED_DAVID            0x26 // Previously Unused Flag
-#define FLAG_DEFEATED_PSFGOODBOSS 0x27 //Previously Unused Flag
+#define FLAG_LOCKEDOUT_PLAYED 0x27 //Previously Unused Flag
 #define FLAG_HIDE_MADISON    0x28 // Previously Unused Flag
 #define FLAG_UNUSED_0x29 0x29 // Unused Flag
 #define FLAG_UNSUED_0x2A 0x2A // Unused Flag

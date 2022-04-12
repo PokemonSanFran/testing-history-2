@@ -5390,6 +5390,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Psfcity10_EliteHome/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity10_EliteHome/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY17_PSFNATIVERIVAL_HOUSE",
+      "name": "Psfcity17_Psfnativerival_House_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/Psfcity17_Psfnativerival_House/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity17_Psfnativerival_House/map.bin"
     }
   ]
 }

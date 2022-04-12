@@ -74,7 +74,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "LockedOut_PreventPlayer_Script"
+    }
   ],
   "bg_events": [
 
