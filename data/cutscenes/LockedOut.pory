@@ -44,7 +44,7 @@ script LockedOut_PhoneCall_Dialogue {
         waitse
         playse(SE_POKENAV_CALL)
         waitse
-        pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
+        pokenavcall("This phone is ringing.") 
         waitmessage
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)

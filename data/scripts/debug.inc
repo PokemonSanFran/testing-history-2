@@ -60,37 +60,29 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    setflag FLAG_TIMELINE_TRUE
-    warpsilent MAP_PSFCITY15_NEWSPAPER,0
+    clearflag(FLAG_LOCKEDOUT_PLAYED)
 	end
 
 Debug_Script_2::
 //    callEventScript_PCMainMenu
-    warpsilent MAP_PSFCITY6_CONSULTING,0
 	end
 
 Debug_Script_3::
-    warpsilent MAP_PSFCITY14_RAMEN,0
 	end
 
 Debug_Script_4::
-    warpsilent MAP_PSFCITY5_BALL_SHOP,0
 	end
 
 Debug_Script_5::
-    warpsilent MAP_PSFCITY10_ELITE_HOME,0
 	end
 
 Debug_Script_6::
-    warpsilent MAP_PSFCITY12_LIBRARY,0
 	end
 
 Debug_Script_7::
-    warpsilent MAP_PSFCITY1_APARTMENT,0
 	end
 
 Debug_Script_8::
-    warpsilent MAP_PSFROUTE62,255,24,22
 
 //Debug_Script_8::
 //givecustommon SPECIES_PRIMARINA,100,ITEM_LEFTOVERS,ITEM_ULTRA_BALL,NATURE_CALM,0,248,0,0,36,44,180,31,0,31,31,31,31,MOVE_SUBSTITUTE,MOVE_CALM_MIND,MOVE_SCALD,MOVE_MOONBLAST,TRUE

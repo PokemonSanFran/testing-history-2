@@ -1,109 +1,134 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFNATIVERIVAL = 1
+
 script LetsFixThis_HideObjectHouse_Script {
-        setflag(FLAG_TEMP_1)
-    }
+    setflag(FLAG_TEMP_1)
+}
 
 script LetsFixThis_EliteVideo_Dialogue {
-    return
+    lock
+        fadescreen(FADE_TO_BLACK)
+        clearflag(FLAG_TEMP_1)
+        addobject(PSFNATIVERIVAL)
 
-//This cutscene plays after when the player sleeps after defeating Giovanni.
+        //PSF TODO show video
 
-//The Elite Four appears on the screen.
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_PeopleOf)
 
-setvar(VAR_0x8000, MUGSHOT_MARSHAL)
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_PeopleOf)
+        setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_WeWillBeGiving)
 
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_WePrayTheGovernment)
 
-setvar(VAR_0x8000, MUGSHOT_CAITLIN)
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_WeWillBeGiving)
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_ButWeWillNot)
+        callnative(ClearMugshot)
+        closemessage
 
+        goto(LetsFixThis_GetMessage_Dialogue)
+}
 
-setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_WePrayTheGovernment)
+script LetsFixThis_GetMessage_Dialogue {
+    applymovement(PSFNATIVERIVAL,Common_Movement_FaceLeft)
+        fadescreen(FADE_FROM_BLACK)
+        applymovement(PLAYER,Common_Movement_WalkRight)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_ButWeWillNot)
-
-
-//Screen fades to black. Cut to the overworld.
-
-//INT. PSFNATIVERIVAL’S HOME PSFCITY17
-
- playse(SE_POKENAV_CALL)
- waitse
-         pokenavcall("You have a new text.")
+        playse(SE_POKENAV_CALL)
+        waitse
+        pokenavcall("You have a new text.")
         waitmessage
 
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_OhLooksLike)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_OhLooksLike)
 
-setvar(VAR_0x8000, MUGSHOT_HUGH)
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_ComeCelebrate)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_ComeCelebrate)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_SoundsLikeIt)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_SoundsLikeIt)
 
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_IMightGoALittle)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_IMightGoALittle)
 
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_WhatreThey)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_WhatreThey)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_TheyWantAllHands)
 
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_TheyWantAllHands)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_GuessIShould)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_GuessIShould)
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_LetsFixThis_ActuallyGivenHowMuch)
+        callnative(ClearMugshot)
+        closemessage
 
-callnative(DrawMugshot)
-msgbox(gText_LetsFixThis_ActuallyGivenHowMuch)
-
-
-//Psfnativerival walks off screen. The player regains control.
+        addvar(VAR_STORYLINE_STATE,1)
+        setflag(FLAG_LOCKEDOUT_PLAYED)
+        applymovement(PSFNATIVERIVAL,LetFixThis_WalkOutHouse)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(PSFNATIVERIVAL)
+        release
+        end
 }
 
 text gText_LetsFixThis_PeopleOf {
-	format("People of Psfregion1, your Elite Four has returned! We could not continue to stand by and watch these corporations destroy our home for profits.")
+    format("People of Psfregion1, your Elite Four has returned! We could not continue to stand by and watch these corporations destroy our home for profits.")
 }
 text gText_LetsFixThis_WeWillBeGiving {
-	format("We will be giving our full support and efforts to assisting Psfgoodteam in their mission to help the people of this region, alongside Champion {PLAYER} and our hometown hero, Psfnativerival.")
+    format("We will be giving our full support and efforts to assisting Psfgoodteam in their mission to help the people of this region, alongside Champion {PLAYER} and our hometown hero, Psfnativerival.")
 }
 text gText_LetsFixThis_WePrayTheGovernment {
-	format("We pray the government of Psfregion1 will open their eyes to the damage these companies have done… ")
+    format("We pray the government of Psfregion1 will open their eyes to the damage these companies have done… ")
 }
 text gText_LetsFixThis_ButWeWillNot {
-	format("…but we will not sit quietly and wait for salvation to come to us! We must join together to save ourselves and fight to restore the glory of Psfregion1!")
+    format("…but we will not sit quietly and wait for salvation to come to us! We must join together to save ourselves and fight to restore the glory of Psfregion1!")
 }
 text gText_LetsFixThis_OhLooksLike {
-	format("Oh, looks like we all got the same message… It's from the Psfgoodteam Event Bot.")
+    format("Oh, looks like we all got the same message… It's from the Psfgoodteam Event Bot.")
 }
 text gText_LetsFixThis_ComeCelebrate {
-	format("“Come celebrate the return of the Elite Four! Tonight, in the Psfcity9 Packing District. Follow the music to the center warehouse!”")
+    format("“Come celebrate the return of the Elite Four! Tonight, in the Psfcity9 Packing District. Follow the music to the center warehouse!”")
 }
 text gText_LetsFixThis_SoundsLikeIt {
-	format("Sounds like it could be fun. You going to go?")
+    format("Sounds like it could be fun. You going to go?")
 }
 text gText_LetsFixThis_IMightGoALittle {
-	format("I might go a little later. I don’t love warehouse raves, but this is a special occasion, you know? The other reason I’m here is actually to tell you Psfgoodadmin new initiatives.")
+    format("I might go a little later. I don’t love warehouse raves, but this is a special occasion, you know? The other reason I’m here is actually to tell you Psfgoodadmin new initiatives.")
 }
 text gText_LetsFixThis_WhatreThey {
-	format("What’re they up to?")
+    format("What’re they up to?")
 }
 text gText_LetsFixThis_TheyWantAllHands {
-	format("They want all hands on deck at Psfcave7. We’re converting it into a new base, and there’s gonna be a big meeting to talk about next steps.")
+    format("They want all hands on deck at Psfcave7. We’re converting it into a new base, and there’s gonna be a big meeting to talk about next steps.")
 }
 text gText_LetsFixThis_GuessIShould {
-	format("Guess I should go to that, right?")
+    format("Guess I should go to that, right?")
 }
 text gText_LetsFixThis_ActuallyGivenHowMuch {
-	format("Actually, given how much work there is to get done, I don’t think it matters what you do first. I already said I’d head to Psfcave7. Either way, I’ll see you later?")
+    format("Actually, given how much work there is to get done, I don’t think it matters what you do first. I already said I’d head to Psfcave7. Either way, I’ll see you later?")
+}
+
+movement LetFixThis_WalkOutHouse {
+    walk_right
+        walk_up * 3
+        step_end
 }

@@ -8,10 +8,7 @@ Psfcity17_Psfnativerival_House_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Psfcity17_Psfnativerival_House_OnTransition::
-	goto_if_unset FLAG_LOCKEDOUT_PLAYED, Psfcity17_Psfnativerival_House_OnTransition_1
-	return
-
-Psfcity17_Psfnativerival_House_OnTransition_1:
+	switch VAR_STORYLINE_STATE
 	call LetsFixThis_HideObjectHouse_Script
 	return
 
