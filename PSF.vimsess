@@ -38,7 +38,6 @@ set termguicolors
 set ttimeout
 set ttimeoutlen=100
 set wildmenu
-set window=61
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -74,14 +73,14 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 78 + 94) / 188)
-exe '2resize ' . ((&lines * 19 + 31) / 62)
+exe '2resize ' . ((&lines * 19 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 109 + 94) / 188)
-exe '3resize ' . ((&lines * 19 + 31) / 62)
+exe '3resize ' . ((&lines * 19 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 109 + 94) / 188)
-exe '4resize ' . ((&lines * 19 + 31) / 62)
+exe '4resize ' . ((&lines * 18 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 109 + 94) / 188)
 argglobal
-terminal ++curwin ++cols=78 ++rows=59 
+terminal ++curwin ++cols=78 ++rows=58 
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -204,11 +203,11 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 29) / 59)
+let s:l = 8999 - ((32 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+8999
 normal! 0
 wincmd w
 argglobal
@@ -343,138 +342,6 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-if bufexists("data/maps/Psfcity17_Psfnativerival_House/scripts.pory") | buffer data/maps/Psfcity17_Psfnativerival_House/scripts.pory | else | edit data/maps/Psfcity17_Psfnativerival_House/scripts.pory | endif
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal cindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'c'
-setlocal filetype=c
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal nomodeline
-setlocal modifiable
-setlocal nrformats=bin,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=ccomplete#Complete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'c'
-setlocal syntax=c
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 9) / 19)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
-wincmd w
-argglobal
 if bufexists("data/cutscenes/WarehouseRave.pory") | buffer data/cutscenes/WarehouseRave.pory | else | edit data/cutscenes/WarehouseRave.pory | endif
 setlocal keymap=
 setlocal noarabic
@@ -599,20 +466,152 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 9) / 19)
+let s:l = 43 - ((9 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+43
+normal! 030|
 wincmd w
-4wincmd w
+argglobal
+if bufexists("data/maps/Psfcity9_Warehouse/scripts.pory") | buffer data/maps/Psfcity9_Warehouse/scripts.pory | else | edit data/maps/Psfcity9_Warehouse/scripts.pory | endif
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'c'
+setlocal filetype=c
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=ccomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'c'
+setlocal syntax=c
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 5 - ((4 * winheight(0) + 9) / 18)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+5
+normal! 022|
+wincmd w
+3wincmd w
 exe 'vert 1resize ' . ((&columns * 78 + 94) / 188)
-exe '2resize ' . ((&lines * 19 + 31) / 62)
+exe '2resize ' . ((&lines * 19 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 109 + 94) / 188)
-exe '3resize ' . ((&lines * 19 + 31) / 62)
+exe '3resize ' . ((&lines * 19 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 109 + 94) / 188)
-exe '4resize ' . ((&lines * 19 + 31) / 62)
+exe '4resize ' . ((&lines * 18 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 109 + 94) / 188)
 tabnext
 edit include/constants/flags.h
@@ -636,13 +635,13 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 29 + 31) / 62)
+exe '1resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 1resize ' . ((&columns * 62 + 94) / 188)
-exe '2resize ' . ((&lines * 28 + 31) / 62)
+exe '2resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 62 + 94) / 188)
-exe '3resize ' . ((&lines * 29 + 31) / 62)
+exe '3resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 125 + 94) / 188)
-exe '4resize ' . ((&lines * 28 + 31) / 62)
+exe '4resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 125 + 94) / 188)
 argglobal
 setlocal keymap=
@@ -1032,12 +1031,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 174 - ((14 * winheight(0) + 14) / 29)
+let s:l = 172 - ((22 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-174
-normal! 013|
+172
+normal! 09|
 wincmd w
 argglobal
 if bufexists("docs/vars") | buffer docs/vars | else | edit docs/vars | endif
@@ -1164,31 +1163,33 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 190 - ((14 * winheight(0) + 14) / 28)
+let s:l = 275 - ((21 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-190
-normal! 040|
+275
+normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 29 + 31) / 62)
+exe '1resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 1resize ' . ((&columns * 62 + 94) / 188)
-exe '2resize ' . ((&lines * 28 + 31) / 62)
+exe '2resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 62 + 94) / 188)
-exe '3resize ' . ((&lines * 29 + 31) / 62)
+exe '3resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 125 + 94) / 188)
-exe '4resize ' . ((&lines * 28 + 31) / 62)
+exe '4resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 125 + 94) / 188)
 tabnext 1
 set stal=1
-badd +62 data/cutscenes/LockedOut.pory
+badd +1 data/maps/Psfcity9/scripts.pory
 badd +1 include/constants/flags.h
-badd +20 data/maps/Psfcity8_Compound_2F/scripts.pory
 badd +1 data/maps/Psfcity17_Psfnativerival_House/scripts.pory
-badd +1 data/cutscenes/LetsFixThis.pory
+badd +121 data/cutscenes/WarehouseRave.pory
 badd +1 docs/flags
 badd +1 include/constants/vars.h
 badd +1 docs/vars
+badd +62 data/cutscenes/LockedOut.pory
+badd +20 data/maps/Psfcity8_Compound_2F/scripts.pory
+badd +87 data/cutscenes/LetsFixThis.pory
 badd +16 data/maps/Psfcity3_Compound_1F/scripts.pory
 badd +218 data/cutscenes/MaskOff.pory
 badd +24 data/maps/Psfcity6_Consulting/scripts.pory
@@ -1199,7 +1200,7 @@ badd +3 data/maps/OkayLetsFixit_Flashback/scripts.pory
 badd +144 data/cutscenes/OkayLetsFixit.pory
 badd +19 data/maps/Psfplace1/scripts.pory
 badd +92 data/cutscenes/YouRealizeTheyreEvilRight.pory
-badd +63 data/scripts/debug.inc
+badd +64 data/scripts/debug.inc
 badd +3 data/maps/MossdeepCity_GameCorner_1F/scripts.inc
 badd +22 data/maps/Psfplace14_Lockers/scripts.pory
 badd +3383 src/field_specials.c
@@ -1217,8 +1218,15 @@ badd +56 data/cutscenes/Finals.pory
 badd +11 data/maps/Psfcave3/scripts.pory
 badd +6 include/constants/weather.h
 badd +15 data/maps/Psfcity3/scripts.pory
-badd +0 data/maps/Psfcity9/scripts.pory
-badd +0 data/cutscenes/WarehouseRave.pory
+badd +6 data/maps/Psfplace14_Arena/scripts.pory
+badd +0 data/maps/Psfcity9_Warehouse/scripts.pory
+badd +24 include/constants/songs.h
+badd +93 data/cutscenes/BeachBattle.pory
+badd +0 data/maps/Psfroute22/scripts.pory
+badd +35 data/scripts/movement.inc
+badd +61 asm/macros/movement.inc
+badd +22 asm/macros/map.inc
+badd +13 include/constants/map_scripts.h
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif

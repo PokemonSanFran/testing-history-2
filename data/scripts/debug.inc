@@ -60,7 +60,8 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    clearflag(FLAG_LOCKEDOUT_PLAYED)
+    setmetatile 9,7,0x210,FALSE
+    special DrawWholeMapView
 	end
 
 Debug_Script_2::

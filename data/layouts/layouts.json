@@ -5400,6 +5400,16 @@
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/Psfcity17_Psfnativerival_House/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity17_Psfnativerival_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY9_WAREHOUSE",
+      "name": "Psfcity9_Warehouse_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideOfTruck",
+      "border_filepath": "data/layouts/Psfcity9_Warehouse/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity9_Warehouse/map.bin"
     }
   ]
 }

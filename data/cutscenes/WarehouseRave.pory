@@ -1,0 +1,345 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFBADADMIN2 = 1
+const PSFTRANSRIVAL = 2
+
+script WarehouseRave_SetUpRave_Script {
+    setweather(WEATHER_FOG_DIAGONAL)
+        doweather
+        playbgm(MUS_RG_GAME_CORNER,TRUE)
+}
+
+script WarehouseRave_HideObject_Script {
+    if (var(VAR_PETALBURG_WOODS_STATE) != 2){
+        setflag(FLAG_TEMP_1) //always hide Psfbadadmin2 unless coming back from Save
+    }
+}
+
+script WarehouseRave_MoveObject_Script {
+    setobjectxy(PSFBADADMIN2,5,5)
+        setobjectxyperm(PSFBADADMIN2,5,5)
+}
+
+script WarehouseRave_ControlExits_Script {
+    switch (var(VAR_PETALBURG_WOODS_STATE)){
+        case 2: call(WarehouseRave_PostSaveUnlock)
+        case 3: call(WarehouseRave_MakeExplosionHole_Script)
+        case 4: call(WarehouseRave_MakeExplosionHole_Script)
+    }
+}
+
+script WarehouseRave_PostSaveUnlock {
+    setmetatile(9,6,0x208,FALSE)
+        setmetatile(9,7,0x210,FALSE)
+        setmetatile(9,8,0x218,FALSE)
+        special(DrawWholeMapView)
+
+        if(defeated(TRAINER_TABITHA_MT_CHIMNEY)){
+            call(WarehouseRave_MakeExplosionHole_Script)
+        }
+}
+
+script WarehouseRave_MakeExplosionHole_Script {
+        setmetatile(9,1,0x09F,FALSE)
+        setmetatile(9,2,0x0A7,FALSE)
+        special(DrawWholeMapView)
+}
+
+
+script WarehouseRave_LockDoors_Script {
+    setmetatile(9,6,0x214,FALSE)
+        setmetatile(9,7,0x214,FALSE)
+        setmetatile(9,8,0x214,FALSE)
+        special(DrawWholeMapView)
+        playse(SE_SLIDING_DOOR)
+        waitse
+}
+
+
+script WarehouseRave_Intro_Dialogue {
+    lock
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_IsThisPlace)
+        closemessage
+        callnative(ClearMugshot)
+
+        call(WarehouseRave_LockDoors_Script)
+        playse(SE_PIN)
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_WhatTheHell)
+        closemessage
+        callnative(ClearMugshot)
+
+        clearflag(FLAG_TEMP_1)
+        addobject(PSFBADADMIN2)
+        applymovement(PSFBADADMIN2,WarehouseRave_WalkOutShadows)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_ImSorryWeHad)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_WhyAmITrapped)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_HasBeenPredicting)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_SoIDecideTo)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_HasInstructed)
+        callnative(ClearMugshot)
+        closemessage
+
+        addvar(VAR_PETALBURG_WOODS_STATE,1)
+        applymovement(PLAYER,WarehouseRave_WalkToBattle)
+        waitmovement(0)
+        call(Common_EventScript_SaveGame)
+        goto(WarehouseRave_Battle_Script)
+}
+
+script Warehourse_Interact_Script {
+    faceplayer
+        call(WarehouseRave_LockDoors_Script)
+        goto(WarehouseRave_Battle_Script)
+}
+
+script WarehouseRave_Battle_Script {
+    lock
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_PrepareToFight)
+        trainerbattle_no_intro(TRAINER_TABITHA_MT_CHIMNEY,gText_WarehouseRave_YesTheyllBelieve)
+        closemessage
+        callnative(ClearMugshot)
+        goto(WarehouseRave_PostBattle_Script)
+}
+
+script WarehouseRave_PostBattle_Script {
+    lock
+        addvar(VAR_PETALBURG_WOODS_STATE,1)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_IFailedToKill)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_JustLike)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_YouNeedToGet)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_WaitWhyAreYou)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_Now)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PLAYER,WarehouseRave_RunOutTheWarehouse)
+        waitmovement(0)
+        warpsilent(MAP_PSFCITY9,1)
+
+        // The player runs into the new hole in the wall, and runs outside. Psfnativerival is outside the hole.
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_WhenIGotHere)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_ItWasATrap)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_HolyShitThatWas)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_TheBattleFelt)
+
+        // The player looks back inside.
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_AndThenHeToldMe)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_ThatDoesntMake)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_WhatDoYouMean)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_CameToTown)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_MaybeItIsGuilt)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_WhateverImGlad)
+
+        //If the player has already attended Psfgoodadmin’s commencement:
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_ImHeadingIntoTheCity)
+
+        // If the player has not already attended Psfgoodadmin’s commencement: 
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_GladYouDidnt)
+
+        // Branch dialogue ends here.
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_WarehouseRave_IllSeeYou)
+}
+
+// Psfnativerival walks off screen. The player regains control.
+text gText_WarehouseRave_IsThisPlace {
+    format("…is this place empty?")
+}
+
+text gText_WarehouseRave_WhatTheHell {
+    format("What the hell is going on?! ")
+}
+
+text gText_WarehouseRave_ImSorryWeHad {
+    format("I'm sorry we had to trick you, {PLAYER}.")
+}
+
+text gText_WarehouseRave_WhyAmITrapped {
+    format("Why am I trapped here?!")
+}
+
+text gText_WarehouseRave_HasBeenPredicting {
+    format("Psfbadguy has been predicting this for a while now, unfortunately. We've always had a few plans in case your empathy became unmanageable.")
+}
+
+text gText_WarehouseRave_SoIDecideTo {
+    format("So I decide to help people and you trap me in a warehouse?")
+}
+
+text gText_WarehouseRave_HasInstructed {
+    format("Psfbadguy has instructed me to neutralize this new threat.")
+}
+
+text gText_WarehouseRave_PrepareToFight {
+    format("Prepare to fight for your life!")
+}
+
+text gText_WarehouseRave_YesTheyllBelieve {
+    format("Yes… they'll believe I was overpowered by the Champion…")
+}
+
+text gText_WarehouseRave_IFailedToKill {
+    format("I failed to kill you, but you're about to become internal enemy number one. If I were you, I wouldn't go back to the Psfcity3 Compound.")
+}
+
+text gText_WarehouseRave_JustLike {
+    format("(Just like Psfnativerival said.)")
+}
+
+text gText_WarehouseRave_YouNeedToGet {
+    format("You need to get out of here before I report the results.")
+}
+
+text gText_WarehouseRave_WaitWhyAreYou {
+    format("Wait, why are you helping me?")
+}
+
+text gText_WarehouseRave_Now {
+    format("Now!")
+}
+
+text gText_WarehouseRave_WhenIGotHere {
+    format("! When I got here the front door was locked, and then the side blew open! What the hell happened?")
+}
+
+text gText_WarehouseRave_ItWasATrap {
+    format("It was a trap. Psfbadadmin2 tried to kill me! But… ")
+}
+
+text gText_WarehouseRave_HolyShitThatWas {
+    format("Holy shit that was fast! An attempt on your LIFE? Psfbadguy is out of control.")
+}
+
+text gText_WarehouseRave_TheBattleFelt {
+    format("The battle felt like they were trying to lose.")
+}
+
+text gText_WarehouseRave_AndThenHeToldMe {
+    format("And then he told me to get out of here. He didn't call for backup or anything.")
+}
+
+text gText_WarehouseRave_ThatDoesntMake {
+    format("That doesn't make any sense. You think that creep regrets selling us out?")
+}
+
+text gText_WarehouseRave_WhatDoYouMean {
+    format("What do you mean?")
+}
+
+text gText_WarehouseRave_CameToTown {
+    format("He's like Psfleader7 - once Psfbadguy came to town, he jumped ship. He was playing both sides for a while, both working on Psfbadguy's board and running the Gym in Psfcity13.")
+}
+
+text gText_WarehouseRave_MaybeItIsGuilt {
+    format("Maybe it is guilt. So weird.")
+}
+
+text gText_WarehouseRave_WhateverImGlad {
+    format("Whatever. I'm glad you're okay, even if the reasoning is weird.")
+}
+
+text gText_WarehouseRave_ImHeadingIntoTheCity {
+    format("I'm heading into the city to start to get to work on our assignments. I'm so psyched about finally starting to chip away at these assholes, you know?")
+}
+
+text gText_WarehouseRave_GladYouDidnt {
+    format("Glad you didn't need me though! Damn, fighting the top brass now, you're still getting stronger. I'll see you at Psfcave7.")
+}
+
+text gText_WarehouseRave_IllSeeYou {
+    format("I'll see you around.")
+}
+
+movement WarehouseRave_WalkOutShadows {
+    walk_right * 4
+        step_end
+}
+
+movement WarehouseRave_WalkToBattle {
+    walk_up * 2
+        walk_left * 2
+        step_end
+}
+
+movement WarehouseRave_RunOutTheWarehouse {
+    player_run_right * 3
+        player_run_up * 3
+        step_end
+}

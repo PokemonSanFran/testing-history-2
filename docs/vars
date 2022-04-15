@@ -189,7 +189,6 @@
 101: Defeated Giovanni
 102: Recieved invite from Koga via email
 
-
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck
 2: Been invited to Koga's home
@@ -269,6 +268,11 @@ Y: Used to find the target of the last completed takedown quest, number should c
 3: Confronted Ariana
 4: Defeated Ariana
 5: Debrief with Koga 
+
+#**RELEVANCE**: "Warehouse Rave tracker in TRUE
+1: Got email, has not gone inside
+2: Saved before fighting Koga
+3: Deafeated Koga
 
 #VAR_RUSTURF_TUNNEL_STATE
 #**RELEVANCE**: "Manhunt" quest tracker in FALSE

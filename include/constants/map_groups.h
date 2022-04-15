@@ -80,6 +80,7 @@
 #define MAP_PSFCITY12_LIBRARY              (71 | (0 << 8))
 #define MAP_PSFCITY10_ELITE_HOME           (72 | (0 << 8))
 #define MAP_PSFCITY17_PSFNATIVERIVAL_HOUSE (73 | (0 << 8))
+#define MAP_PSFCITY9_WAREHOUSE             (74 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

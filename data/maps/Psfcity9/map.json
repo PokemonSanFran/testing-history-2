@@ -33,7 +33,20 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 3,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_PSFCITY9_WAREHOUSE",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 4,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_PSFCITY9_WAREHOUSE",
+      "dest_warp_id": 1
+    }
   ],
   "coord_events": [
 

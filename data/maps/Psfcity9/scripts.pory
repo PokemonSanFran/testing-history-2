@@ -1,4 +1,2 @@
-const PLAYER = OBJ_EVENT_ID_PLAYER
-
-
-
+mapscripts Psfcity9_MapScripts {
+}

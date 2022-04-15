@@ -1312,3 +1312,5 @@ Script_RemoveTint::
 	.include "data/maps/Psfcity10_EliteHome/scripts.inc"
 
 	.include "data/maps/Psfcity17_Psfnativerival_House/scripts.inc"
+
+	.include "data/maps/Psfcity9_Warehouse/scripts.inc"
