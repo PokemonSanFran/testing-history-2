@@ -188,6 +188,7 @@
 100: Has told TR that they'll side with them
 101: Defeated Giovanni
 102: Recieved invite from Koga via email
+103 - 104: After defeating Koga in Warehouse AND getting commencement speech
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck

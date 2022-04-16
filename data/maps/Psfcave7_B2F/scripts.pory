@@ -9,7 +9,7 @@ mapscripts Psfcave7_B2F_MapScripts {
 
 script Psfcave7_B2F_MapScripts_OnTransition {
 
-        call(YouRealizeTheyreEvilRight_HideGarbodor_Script)
+    call(YouRealizeTheyreEvilRight_HideGarbodor_Script)
 
         switch(var(VAR_PSFCAVE7_STATE)){
             case 0: call(YouRealizeTheyreEvilRight_HideBasement_Script)
@@ -28,5 +28,5 @@ script Psfcave7_B2F_Psfnativerival_Event_Script {
             case 43: call(LetsGettheBandBackTogether_MeetInBasement_Script)
         }
     release
-    end
+        end
 }

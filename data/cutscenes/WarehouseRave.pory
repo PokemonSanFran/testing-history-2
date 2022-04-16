@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFBADADMIN2 = 1
-const PSFTRANSRIVAL = 2
+const PSFTRANSRIVAL = 1
 
 script WarehouseRave_SetUpRave_Script {
     setweather(WEATHER_FOG_DIAGONAL)
@@ -9,9 +9,7 @@ script WarehouseRave_SetUpRave_Script {
 }
 
 script WarehouseRave_HideObject_Script {
-    if (var(VAR_PETALBURG_WOODS_STATE) != 2){
-        setflag(FLAG_TEMP_1) //always hide Psfbadadmin2 unless coming back from Save
-    }
+    setflag(FLAG_TEMP_1) //always hide Psfbadadmin2 unless coming back from Save
 }
 
 script WarehouseRave_MoveObject_Script {
@@ -43,7 +41,6 @@ script WarehouseRave_MakeExplosionHole_Script {
         setmetatile(9,2,0x0A7,FALSE)
         special(DrawWholeMapView)
 }
-
 
 script WarehouseRave_LockDoors_Script {
     setmetatile(9,6,0x214,FALSE)
@@ -154,8 +151,18 @@ script WarehouseRave_PostBattle_Script {
         applymovement(PLAYER,WarehouseRave_RunOutTheWarehouse)
         waitmovement(0)
         warpsilent(MAP_PSFCITY9,1)
+}
 
-        // The player runs into the new hole in the wall, and runs outside. Psfnativerival is outside the hole.
+script WarehouseRave_OutsideWarehouse_Dialogue {
+        lock
+        applymovement(PLAYER,WarehouseRave_ExitWarehouse)
+        waitmovement(0)
+        playse(SE_PIN)
+        waitse
+        applymovement(PSFTRANSRIVAL,Common_Movement_ExclamationMark)
+        waitmovement(0)
+        applymovement(PSFTRANSRIVAL,WarehouseRave_RunToPlayer)
+        waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -172,8 +179,11 @@ script WarehouseRave_PostBattle_Script {
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_TheBattleFelt)
+        callnative(ClearMugshot)
+        closemessage
 
-        // The player looks back inside.
+        applymovement(PLAYER,Common_Movement_FaceDown)
+        waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -182,6 +192,11 @@ script WarehouseRave_PostBattle_Script {
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_ThatDoesntMake)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PLAYER,Common_Movement_FaceRight)
+        waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -199,23 +214,23 @@ script WarehouseRave_PostBattle_Script {
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_WhateverImGlad)
 
-        //If the player has already attended Psfgoodadmin’s commencement:
+        if (var(VAR_STORYLINE_STATE) != 102){
+            msgbox(gText_WarehouseRave_ImHeadingIntoTheCity)
+            msgbox(gText_WarehouseRave_IllSeeYou)
+        } else { 
+            msgbox(gText_WarehouseRave_GladYouDidnt)
+        }
+        closemessage
+        callnative(ClearMugshot)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WarehouseRave_ImHeadingIntoTheCity)
+        applymovement(PSFTRANSRIVAL,WarehouseRave_LeaveCity)
+        waitmovement(0)
+        removeobject(PSFTRANSRIVAL)
 
-        // If the player has not already attended Psfgoodadmin’s commencement: 
+        addvar(VAR_STORYLINE_STATE,1)
+        addvar(VAR_PETALBURG_WOODS_STATE,1)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WarehouseRave_GladYouDidnt)
-
-        // Branch dialogue ends here.
-
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WarehouseRave_IllSeeYou)
+        end
 }
 
 // Psfnativerival walks off screen. The player regains control.
@@ -276,7 +291,7 @@ text gText_WarehouseRave_Now {
 }
 
 text gText_WarehouseRave_WhenIGotHere {
-    format("! When I got here the front door was locked, and then the side blew open! What the hell happened?")
+    format("When I got here the front door was locked, and then the side blew open! What the hell happened?")
 }
 
 text gText_WarehouseRave_ItWasATrap {
@@ -342,4 +357,21 @@ movement WarehouseRave_RunOutTheWarehouse {
     player_run_right * 3
         player_run_up * 3
         step_end
+}
+
+movement WarehouseRave_ExitWarehouse {
+    player_run_up
+    face_right
+    step_end
+}
+
+movement WarehouseRave_RunToPlayer {
+    player_run_up * 6
+    walk_left
+    step_end
+}
+
+movement WarehouseRave_LeaveCity {
+    walk_up * 6
+    step_end
 }

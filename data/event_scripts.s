@@ -1202,7 +1202,7 @@ Script_RemoveTint::
 .include "data/cutscenes/MaskOff.inc"
 .include "data/cutscenes/LetsFixThis.inc"
 .include "data/cutscenes/WarehouseRave.inc"
-##  .include "data/cutscenes/SpeechSpeechSpeech.inc"
+.include "data/cutscenes/SpeechSpeechSpeech.inc"
 ##  .include "data/cutscenes/OneDown.inc"
 ##  .include "data/cutscenes/Earthquake.inc"
 ##  .include "data/cutscenes/ThisIsntRandom.inc"

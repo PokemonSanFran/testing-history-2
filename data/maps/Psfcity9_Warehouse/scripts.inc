@@ -18,21 +18,18 @@ Psfcity9_Warehouse_MapScripts_MAP_SCRIPT_ON_LOAD:
 
 
 Psfcity9_Warehouse_MapScripts_OnTransition::
-	call WarehouseRave_HideObject_Script
 	switch VAR_PETALBURG_WOODS_STATE
-	case 0, Psfcity9_Warehouse_MapScripts_OnTransition_2
-	case 1, Psfcity9_Warehouse_MapScripts_OnTransition_3
-	case 2, Psfcity9_Warehouse_MapScripts_OnTransition_4
+	case 1, Psfcity9_Warehouse_MapScripts_OnTransition_2
+	case 2, Psfcity9_Warehouse_MapScripts_OnTransition_3
+	call WarehouseRave_HideObject_Script
 	return
 
 Psfcity9_Warehouse_MapScripts_OnTransition_2:
+	call WarehouseRave_SetUpRave_Script
+	call WarehouseRave_HideObject_Script
 	return
 
 Psfcity9_Warehouse_MapScripts_OnTransition_3:
-	call WarehouseRave_SetUpRave_Script
-	return
-
-Psfcity9_Warehouse_MapScripts_OnTransition_4:
 	call WarehouseRave_MoveObject_Script
 	call WarehouseRave_SetUpRave_Script
 	return

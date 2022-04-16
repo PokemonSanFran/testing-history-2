@@ -6,11 +6,6 @@ WarehouseRave_SetUpRave_Script::
 
 
 WarehouseRave_HideObject_Script::
-	compare VAR_PETALBURG_WOODS_STATE, 2
-	goto_if_ne WarehouseRave_HideObject_Script_1
-	return
-
-WarehouseRave_HideObject_Script_1:
 	setflag FLAG_TEMP_1
 	return
 
@@ -159,6 +154,19 @@ WarehouseRave_PostBattle_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, WarehouseRave_RunOutTheWarehouse
 	waitmovement 0
 	warpsilent MAP_PSFCITY9, 1
+	return
+
+
+WarehouseRave_OutsideWarehouse_Dialogue::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, WarehouseRave_ExitWarehouse
+	waitmovement 0
+	playse SE_PIN
+	waitse
+	applymovement 1, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement 1, WarehouseRave_RunToPlayer
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhenIGotHere
@@ -171,12 +179,20 @@ WarehouseRave_PostBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_TheBattleFelt
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_AndThenHeToldMe
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_ThatDoesntMake
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhatDoYouMean
@@ -189,16 +205,23 @@ WarehouseRave_PostBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhateverImGlad
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_ImHeadingIntoTheCity
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
+	compare VAR_STORYLINE_STATE, 102
+	goto_if_ne WarehouseRave_OutsideWarehouse_Dialogue_2
 	msgbox gText_WarehouseRave_GladYouDidnt
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
+WarehouseRave_OutsideWarehouse_Dialogue_1:
+	closemessage
+	callnative ClearMugshot
+	applymovement 1, WarehouseRave_LeaveCity
+	waitmovement 0
+	removeobject 1
+	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_PETALBURG_WOODS_STATE, 1
+	end
+
+WarehouseRave_OutsideWarehouse_Dialogue_2:
+	msgbox gText_WarehouseRave_ImHeadingIntoTheCity
 	msgbox gText_WarehouseRave_IllSeeYou
-	return
+	goto WarehouseRave_OutsideWarehouse_Dialogue_1
 
 
 WarehouseRave_WalkOutShadows:
@@ -222,6 +245,30 @@ WarehouseRave_RunOutTheWarehouse:
 	player_run_up
 	player_run_up
 	player_run_up
+	step_end
+
+WarehouseRave_ExitWarehouse:
+	player_run_up
+	face_right
+	step_end
+
+WarehouseRave_RunToPlayer:
+	player_run_up
+	player_run_up
+	player_run_up
+	player_run_up
+	player_run_up
+	player_run_up
+	walk_left
+	step_end
+
+WarehouseRave_LeaveCity:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 gText_WarehouseRave_IsThisPlace::
@@ -278,7 +325,7 @@ gText_WarehouseRave_Now::
 	.string "Now!$"
 
 gText_WarehouseRave_WhenIGotHere::
-	.string "! When I got here the front door was\n"
+	.string "When I got here the front door was\n"
 	.string "locked, and then the side blew open!\l"
 	.string "What the hell happened?$"
 

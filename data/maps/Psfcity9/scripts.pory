@@ -1,2 +1,15 @@
 mapscripts Psfcity9_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_PETALBURG_WOODS_STATE, 3: WarehouseRave_OutsideWarehouse_Dialogue
+    ]
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcity9_MapScripts_OnTransition)
+    }
+}
+
+script Psfcity9_MapScripts_OnTransition {
+    switch (var(VAR_PETALBURG_WOODS_STATE)){
+        case 3: return
+        default: call(WarehouseRave_HideObject_Script)
+    }
 }

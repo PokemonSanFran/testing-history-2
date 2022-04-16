@@ -11,13 +11,13 @@ mapscripts Psfcity9_Warehouse_MapScripts {
 }
 
 script Psfcity9_Warehouse_MapScripts_OnTransition {
-    call(WarehouseRave_HideObject_Script)
-
     switch (var(VAR_PETALBURG_WOODS_STATE)){
-    case 0: return
-    case 1: call(WarehouseRave_SetUpRave_Script)
-    case 2: 
-            call(WarehouseRave_MoveObject_Script)
+        case 1: 
             call(WarehouseRave_SetUpRave_Script)
+                call(WarehouseRave_HideObject_Script)
+        case 2: 
+                call(WarehouseRave_MoveObject_Script)
+                call(WarehouseRave_SetUpRave_Script)
+        default: call(WarehouseRave_HideObject_Script)
     }
 }
