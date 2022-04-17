@@ -5,6 +5,9 @@ script LetsGettheBandBackTogether_HideObject_Script {
     if (var(VAR_STORYLINE_STATE) == 43){ //If player has slept after being pitched by Archer, Alcatraz should be empty except for Archer
         setflag(FLAG_TEMP_2)
     }
+    setflag(FLAG_TEMP_5)
+    setflag(FLAG_TEMP_6)
+    setflag(FLAG_TEMP_7)
 }
 
 script LetsGettheBandBackTogether_PreventPlayerEnterTower_Script {

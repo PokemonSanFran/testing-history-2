@@ -60,8 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    setmetatile 9,7,0x210,FALSE
-    special DrawWholeMapView
+    addvar VAR_PSFCAVE7_STATE,1
 	end
 
 Debug_Script_2::

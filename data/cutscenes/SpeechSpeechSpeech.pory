@@ -1,0 +1,242 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CAMERA = OBJ_EVENT_ID_CAMERA
+const PSFNATIVERIVAL = 1
+const PSFELITE1 = 3
+const PSFELITE2 = 2
+const PSFELITE3 = 6
+const PSFELITE4 = 5
+const PSFGOODBOSS = 7
+const PSFGOODADMIN = 8
+const GRUNTA = 9
+const GRUNTB = 10
+const GRUNTC = 11
+const GRUNTD = 12
+
+script SpeechSpeechSpeech_MoveObject_Script {
+    setflag(FLAG_TEMP_4)
+
+        setobjectxy(PSFNATIVERIVAL,11,8)
+        setobjectxyperm(PSFNATIVERIVAL,11,8)
+        setobjectmovementtype(PSFNATIVERIVAL,MOVEMENT_TYPE_FACE_UP)
+
+        setobjectxy(PSFELITE1,8,3)
+        setobjectxyperm(PSFELITE1,8,3)
+
+        setobjectxy(PSFELITE2,11,3)
+        setobjectxyperm(PSFELITE2,11,3)
+}
+
+script SpeechSpeechSpeech_Intro_Dialogue {
+
+    //Cutscene begins when the player walks into the last floor of Psfcave7. There is a large group of Psfgoodteam members inside. Psfgoodboss and Psfgoodadmin stand in front of the group.
+
+    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_ThankYouAll)
+
+        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_FirstOfAll)
+
+        //All of the Psfgoodteam members look around to each other before looking forward again.
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_ForAllYouve)
+
+        //All of the Psfgoodteam members look around to each other again.
+
+        msgbox(gText_SpeechSpeechSpeech_WaitWhat)
+
+        msgbox(gText_SpeechSpeechSpeech_AreTheyEven)
+
+
+        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_HasMyFullConfidence)
+
+        //Psfgoodboss walks back stage, where the rest of the Elite Four is standing. Psfgoodboss spins around, changes his costume, and the four of them walk to the front.
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_Us)
+
+        msgbox(gText_SpeechSpeechSpeech_HolyShit)
+
+        //The screen begins the shake, as an earthquake begins.
+
+        //GRUNTS !
+
+        //The earthquake continues, and then stops.
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_IsAnybodyHurt)
+
+        msgbox(gText_SpeechSpeechSpeech_Yeah)
+
+        msgbox(gText_SpeechSpeechSpeech_HellYes)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_YouAllKnowHowCompanies)
+
+        msgbox(gText_SpeechSpeechSpeech_WereFinally)
+
+        msgbox(gText_SpeechSpeechSpeech_ThisIsInsane)
+
+        //Psfelite2 steps forward. Psfgoodadmin steps aside.
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_WeWantToBegin)
+
+        //Psfelite4 steps forward.
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_4LeadCharge)
+
+        //Psfelite4 steps back. Psfelite3 steps forward.
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_3LeadCharge)
+
+        //Psfelite4 steps back. Psfelite1 steps forward.
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_1LeadCharge)
+
+        //Psfelite1 steps back.
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_IllBeHandling)
+
+        //Screen fades to black. Screen fades back in. Elite Four members are spaced around the room, surrounded by groups of Psfgoodteam members. Psfnativerival walks up to the player.
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_DamnThisShit)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_ItFeelsReally)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_Yeah)
+
+        //If the player hasn't done Warehouse Rave yet
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_YeahAlsoAre)
+
+        //If the player has done Warehouse Rave,
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_ByTheWay)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_Peace)
+
+        //Psfnativerival walks off screen. The player regains control.
+}
+text gText_SpeechSpeechSpeech_ThankYouAll {
+    format("Thank you all for coming. For all your hard work. All your support. I have a few announcements for you all.")
+}
+
+text gText_SpeechSpeechSpeech_FirstOfAll {
+    format("First of all, I will be taking a leave of absence. Effectively immediately, Psfgoodadmin will be leading Psfgoodteam. She has my full trust and support.")
+}
+
+text gText_SpeechSpeechSpeech_ForAllYouve {
+    format("Thank you for all you’ve done for us, Psfgoodboss, I hope to live up to your example.")
+}
+
+text gText_SpeechSpeechSpeech_WaitWhat {
+    format("Wait what?")
+}
+
+text gText_SpeechSpeechSpeech_AreTheyEven {
+    format("Are they even qualified?")
+}
+
+text gText_SpeechSpeechSpeech_HasMyFullConfidence {
+    format("Yes, Psfgoodadmin has my full confidence, as well as the backing of…")
+}
+
+text gText_SpeechSpeechSpeech_Us {
+    format("… US! The Elite Four of Psfregion1!")
+}
+text gText_SpeechSpeechSpeech_HolyShit {
+    format("Holy shit ok, good enough for me!")
+}
+
+text gText_SpeechSpeechSpeech_IsAnybodyHurt {
+    format("Is anybody hurt? …no? Wonderful. Let’s continue. Psfnatrival’s restoration project has been going excellently, and we’re going to use that momentum for our next stage. It’s time to take the fight to Psfbadguy!")
+}
+
+text gText_SpeechSpeechSpeech_Yeah {
+    format("Yeah!")
+}
+
+text gText_SpeechSpeechSpeech_HellYes {
+    format("Hell yes! Woo! Wait, where did Psfgoodboss go?")
+}
+
+text gText_SpeechSpeechSpeech_YouAllKnowHowCompanies {
+    format("You all know how companies like Psfcompany8 and Psfcompany7 have ruined our lives and families. But with the combined popularity of the Champion, Elite Four and our manpower, I think we can hurt these people where it counts: their wallets. We can’t drive these parasitic companies out of the region… but all that money has to go somewhere. Let’s use that money to strengthen the region and create a brighter future for us all.")
+}
+
+text gText_SpeechSpeechSpeech_WereFinally {
+    format("We’re finally doing it…")
+}
+
+text gText_SpeechSpeechSpeech_ThisIsInsane {
+    format("This is insane yo. But seriously, did they just disappear?")
+}
+
+text gText_SpeechSpeechSpeech_WeWantToBegin {
+    format("We want to begin by attacking the biggest players in Psfregion1. Each of us will handle a different offensive plan.")
+}
+
+text gText_SpeechSpeechSpeech_4LeadCharge {
+    format("Psfelite4 will lead the charge against Psfcompany8.")
+}
+
+text gText_SpeechSpeechSpeech_3LeadCharge {
+    format("Psfelite3 will lead the charge against Psfcompany5.")
+}
+
+text gText_SpeechSpeechSpeech_1LeadCharge {
+    format("Psfelite1 will lead the charge against Psfcompany7.")
+}
+
+text gText_SpeechSpeechSpeech_IllBeHandling {
+    format("And I’ll be handling negotiations with the government, and operations here. Psfgoodadmin will be giving each of you assignments under one of the Elite Four members, so listen up. ")
+}
+text gText_SpeechSpeechSpeech_DamnThisShit {
+    format("Damn, this shit is so crazy! The air is electric!")
+}
+
+text gText_SpeechSpeechSpeech_ItFeelsReally {
+    format("It feels really awesome to start making a difference around here.")
+}
+
+text gText_SpeechSpeechSpeech_YeahAlsoAre {
+    format("Also, are you heading to that party in Psfcity9 now? I'll catch up with you in a second, I just gotta talk to Psfgoodadmin first.")
+}
+
+text gText_SpeechSpeechSpeech_ByTheWay {
+    format("By the way, you and I are free to work with whoever we want. Just talk to the Elite Four member you want to team up with. I gotta go, I told Psfgoodadmin I’d help them with some planning. Peace!")
+}
+
+text gText_SpeechSpeechSpeech_Peace {
+    format("Peace!")
+}

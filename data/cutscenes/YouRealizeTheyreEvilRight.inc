@@ -32,6 +32,9 @@ YouRealizeTheyreEvilRight_HideGarbodor_Script::
 YouRealizeTheyreEvilRight_HideBasement_Script::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_7
 	return
 
 

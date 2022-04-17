@@ -19,6 +19,7 @@ script Psfcave7_B2F_MapScripts_OnTransition {
             case 5: call(LetsGettheBandBackTogether_HideObject_Script)
             case 6: call(LetsGettheBandBackTogether_HideObject_Script)
             case 7: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 8: call(SpeechSpeechSpeech_MoveObject_Script)
         }
 }
 

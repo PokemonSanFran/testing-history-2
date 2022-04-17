@@ -22,6 +22,7 @@ Psfcave7_B2F_MapScripts_OnTransition::
 	case 5, Psfcave7_B2F_MapScripts_OnTransition_6
 	case 6, Psfcave7_B2F_MapScripts_OnTransition_7
 	case 7, Psfcave7_B2F_MapScripts_OnTransition_8
+	case 8, Psfcave7_B2F_MapScripts_OnTransition_9
 	return
 
 Psfcave7_B2F_MapScripts_OnTransition_2:
@@ -50,6 +51,10 @@ Psfcave7_B2F_MapScripts_OnTransition_7:
 
 Psfcave7_B2F_MapScripts_OnTransition_8:
 	call YouRealizeTheyreEvilRight_HideBasement_Script
+	return
+
+Psfcave7_B2F_MapScripts_OnTransition_9:
+	call SpeechSpeechSpeech_MoveObject_Script
 	return
 
 

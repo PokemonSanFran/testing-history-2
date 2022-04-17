@@ -1,11 +1,15 @@
 LetsGettheBandBackTogether_HideObject_Script::
 	compare VAR_STORYLINE_STATE, 43
-	goto_if_eq LetsGettheBandBackTogether_HideObject_Script_1
+	goto_if_eq LetsGettheBandBackTogether_HideObject_Script_2
+LetsGettheBandBackTogether_HideObject_Script_1:
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_7
 	return
 
-LetsGettheBandBackTogether_HideObject_Script_1:
+LetsGettheBandBackTogether_HideObject_Script_2:
 	setflag FLAG_TEMP_2
-	return
+	goto LetsGettheBandBackTogether_HideObject_Script_1
 
 
 LetsGettheBandBackTogether_PreventPlayerEnterTower_Script::
