@@ -60,7 +60,6 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    addvar VAR_PSFCAVE7_STATE,1
 	end
 
 Debug_Script_2::

@@ -13,15 +13,15 @@ const GRUNTC = 11
 const GRUNTD = 12
 
 script SpeechSpeechSpeech_MoveObject_Script {
-    setflag(FLAG_TEMP_4)
-        setflag(FLAG_TEMP_5)
+        setflag(FLAG_TEMP_4)
+        setflag(FLAG_TEMP_8)
 
         setobjectxy(PSFNATIVERIVAL,10,8)
         setobjectxyperm(PSFNATIVERIVAL,10,8)
         setobjectmovementtype(PSFNATIVERIVAL,MOVEMENT_TYPE_FACE_UP)
 
-        setobjectxy(PSFELITE1,8,3)
-        setobjectxyperm(PSFELITE1,8,3)
+        setobjectxy(PSFELITE1,7,3)
+        setobjectxyperm(PSFELITE1,7,3)
 
         setobjectxy(PSFELITE2,8,3)
         setobjectxyperm(PSFELITE2,8,3)
@@ -43,21 +43,19 @@ script SpeechSpeechSpeech_MovePlayer_Script {
         call(SpeechSpeechSpeech_ResetFacing_Script)
 }
 
-script SpeechSpeechSpeech_LookAround_Script {
-    turnvobject(13,DIR_EAST)
-        turnvobject(15,DIR_WEST)
+script SpeechSpeechSpeech_CrowdLookAround_Script {
+        turnvobject(13,DIR_WEST)
         delay(16)
-        turnvobject(16,DIR_SOUTH)
+        turnvobject(15,DIR_EAST)
+        delay(16)
+        turnvobject(16,DIR_EAST)
+        delay(16)
         turnvobject(18,DIR_EAST)
-
-        turnvobject(13,DIR_NORTH)
-        turnvobject(15,DIR_NORTH)
-        turnvobject(16,DIR_NORTH)
-        turnvobject(18,DIR_NORTH)
+        delay(16)
 }
 
 script SpeechSpeechSpeech_ResetFacing_Script {
-    turnvobject(13,DIR_NORTH)
+        turnvobject(13,DIR_NORTH)
         turnvobject(14,DIR_NORTH)
         turnvobject(15,DIR_NORTH)
         turnvobject(16,DIR_NORTH)
@@ -65,16 +63,12 @@ script SpeechSpeechSpeech_ResetFacing_Script {
         turnvobject(18,DIR_NORTH)
 }
 
-script SpeechSpeechSpeech_CleanUpObjects_Script {
-        removeobject(13)
-        removeobject(14)
-        removeobject(15)
-        removeobject(16)
-        removeobject(17)
-        removeobject(18)
-}
-
 script SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script {
+
+    setflag(FLAG_TEMP_4)
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_6)
+
     setobjectxy(PSFELITE1,11,17)
     setobjectxyperm(PSFELITE1,11,17)
     setobjectmovementtype(PSFELITE1,MOVEMENT_TYPE_FACE_DOWN)
@@ -90,10 +84,30 @@ script SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script {
     setobjectxy(PSFELITE4,4,6)
     setobjectxyperm(PSFELITE4,4,6)
     setobjectmovementtype(PSFELITE4,MOVEMENT_TYPE_FACE_DOWN)
+
+    setobjectmovementtype(GRUNTA,MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectnewmovementtype(GRUNTA,MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectxy(GRUNTA,11,18)
+    setobjectxyperm(GRUNTA,11,18)
+
+    setobjectmovementtype(GRUNTB,MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectnewmovementtype(GRUNTB,MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectxy(GRUNTB,17,16)
+    setobjectxyperm(GRUNTB,17,16)
+
+    setobjectmovementtype(GRUNTC,MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectnewmovementtype(GRUNTC,MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectxy(GRUNTC,19,7)
+    setobjectxyperm(GRUNTC,19,7)
+
+    setobjectmovementtype(GRUNTD,MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectnewmovementtype(GRUNTD,MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectxy(GRUNTD,4,7)
+    setobjectxyperm(GRUNTD,4,7)
 }
 
-script SpeechSpeechSpeech_Intro_Dialogue {
-    lock
+script SpeechSpeechSpeech_PositionPlayer_Script {
+        lock
 
         applymovement(PLAYER,Common_Movement_WalkRight)
         applymovement(PLAYER,Common_Movement_WalkRight)
@@ -102,6 +116,11 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         call(SpeechSpeechSpeech_MovePlayer_Script)
         fadescreen(FADE_FROM_BLACK)
 
+        goto(SpeechSpeechSpeech_Intro_Dialogue)
+}
+
+script SpeechSpeechSpeech_Intro_Dialogue {
+
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_ThankYouAll)
@@ -109,7 +128,7 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        call(SpeechSpeechSpeech_LookAround_Script)
+        call(SpeechSpeechSpeech_CrowdLookAround_Script)
         call(SpeechSpeechSpeech_ResetFacing_Script)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -118,10 +137,14 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        call(SpeechSpeechSpeech_LookAround_Script)
-
+        turnvobject(13,DIR_WEST)
+        delay(16)
+        turnvobject(15,DIR_EAST)
         msgbox(gText_SpeechSpeechSpeech_WaitWhat)
-
+        
+        turnvobject(16,DIR_EAST)
+        delay(16)
+        turnvobject(18,DIR_EAST)
         msgbox(gText_SpeechSpeechSpeech_AreTheyEven)
         closemessage
 
@@ -132,27 +155,39 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         msgbox(gText_SpeechSpeechSpeech_HasMyFullConfidence)
         callnative(ClearMugshot)
         closemessage
+        goto(SpeechSpeechSpeech_StartTransformation_Script)
+}
 
+script SpeechSpeechSpeech_StartTransformation_Script {
+
+        clearflag(FLAG_TEMP_5)
         special(SpawnCameraObject)
         applymovement(CAMERA,SpeechSpeechSpeech_PanCameraUp)
         applymovement(PSFGOODBOSS,SpeechSpeechSpeech_WalkBackstage)
         waitmovement(CAMERA)
+        delay(32)
+        applymovement(PSFGOODBOSS,SpeechSpeechSpeech_StartSpin)
         waitmovement(PSFGOODBOSS)
-        clearflag(FLAG_TEMP_5)
+        applymovement(PSFELITE4,SpeechSpeechSpeech_FinishSpin)
+        waitmovement(PSFGOODBOSS)
         removeobject(PSFGOODBOSS)
+        clearflag(FLAG_TEMP_8)
         addobject(PSFELITE4)
+        delay(32)
 
         applymovement(PSFELITE1,SpeechSpeechSpeech_WalkOutElite)
         applymovement(PSFELITE2,SpeechSpeechSpeech_WalkOutElite)
         applymovement(PSFELITE3,SpeechSpeechSpeech_WalkOutElite)
         applymovement(PSFELITE4,SpeechSpeechSpeech_WalkOutElite)
         applymovement(PSFGOODADMIN,SpeechSpeechSpeech_StepAside)
-        applymovement(CAMERA,SpeechSpeechSpeech_WalkOutElite)
+        applymovement(CAMERA,SpeechSpeechSpeech_PanCameraDown)
         waitmovement(CAMERA)
 
         special(RemoveCameraObject)
+        goto(SpeechSpeechSpeech_EliteReveal_Dialogue)
+}
 
-        //Psfgoodboss walks back stage, where the rest of the Elite Four is standing. Psfgoodboss spins around, changes his costume, and the four of them walk to the front.
+script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
@@ -164,31 +199,35 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         closemessage
 
         playse(SE_M_EARTHQUAKE)
-        waitse
 
         setvar(VAR_0x8004,2) //vertical pan
         setvar(VAR_0x8005,2) //horizontal pan
-        setvar(VAR_0x8006,16) //number of shakes
-        setvar(VAR_0x8007,5) //shake delay
+        setvar(VAR_0x8006,25) //number of shakes
+        setvar(VAR_0x8007,10) //shake delay
         special(ShakeCamera)
 
         playse(SE_PIN)
-        waitse
-
         applymovement(GRUNTA,Common_Movement_ExclamationMark)
         applymovement(GRUNTB,Common_Movement_ExclamationMark)
         applymovement(GRUNTC,Common_Movement_ExclamationMark)
         applymovement(GRUNTD,Common_Movement_ExclamationMark)
         waitmovement(0)
+
+        delay(100) //wait until after earthquake
         waitstate
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_IsAnybodyHurt)
+        callnative(ClearMugshot)
+        closemessage
 
         msgbox(gText_SpeechSpeechSpeech_Yeah)
 
         msgbox(gText_SpeechSpeechSpeech_HellYes)
+        closemessage
+        applymovement(GRUNTD,SpeechSpeechSpeech_LookAround)
+        waitmovement(GRUNTD)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -197,9 +236,12 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         closemessage
 
         msgbox(gText_SpeechSpeechSpeech_WereFinally)
+        closemessage
 
+        applymovement(GRUNTD,SpeechSpeechSpeech_LookAround)
         msgbox(gText_SpeechSpeechSpeech_ThisIsInsane)
         closemessage
+        waitmovement(GRUNTD)
 
         applymovement(PSFELITE2,Common_Movement_WalkDown)
         waitmovement(0)
@@ -211,7 +253,6 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE2,SpeechSpeechSpeech_WalkBackwards)
         applymovement(PSFELITE4,Common_Movement_WalkDown)
         waitmovement(0)
         //Psfelite4 steps forward.
@@ -255,10 +296,12 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        addvar(VAR_STORYLINE_STATE,1)
         fadescreen(FADE_TO_BLACK)
+        addvar(VAR_STORYLINE_STATE,1)
+        addvar(VAR_PSFCAVE7_STATE,1)
 
-        call(SpeechSpeechSpeech_CleanUpObjects_Script)
+        TeleportCamera(9,9)
+        callnative(DestroyVirtualObjects)
         call(SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script)
 
         applymovement(PSFNATIVERIVAL,SpeechSpeechSpeech_WalkToPlayer)
@@ -295,6 +338,11 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         end
 
 }
+
+text gText_SpeechSpeechSpeech_GoWarehouseRave {
+    format("Are you going to the Warehouse Rave? Sounds fun! Wish I had time to go.")
+}
+
 text gText_SpeechSpeechSpeech_ThankYouAll {
     format("Thank you all for coming. For all your hard work. All your support. I have a few announcements for you all.")
 }
@@ -382,7 +430,7 @@ text gText_SpeechSpeechSpeech_YeahAlsoAre {
 }
 
 text gText_SpeechSpeechSpeech_ByTheWay {
-    format("By the way, you and I are free to work with whoever we want. Just talk to the Elite Four member you want to team up with. I gotta go, I told Psfgoodadmin I’d help them with some planning. Peace!")
+    format("By the way, you and I are free to work with whoever we want. Just talk to the Elite Four member you want to team up with. I gotta go, I told Psfgoodadmin I’d help them set up something. Peace!")
 }
 
 text gText_SpeechSpeechSpeech_Peace {
@@ -395,13 +443,18 @@ movement SpeechSpeechSpeech_PanCameraUp {
 }
 
 movement SpeechSpeechSpeech_WalkBackstage{
-    walk_up * 2
+    walk_up * 3
 	step_end
 }
 
 movement SpeechSpeechSpeech_WalkOutElite{
     walk_down * 2
 	step_end
+}
+
+movement SpeechSpeechSpeech_PanCameraDown {
+    walk_down * 3
+    step_end
 }
 
 movement SpeechSpeechSpeech_StepAside{
@@ -425,6 +478,35 @@ movement SpeechSpeechSpeech_WalkToPlayer{
 }
 
 movement SpeechSpeechSpeech_LeaveScreen{
-    walk_left * 6
+    walk_left * 7
 	step_end
+}
+
+movement SpeechSpeechSpeech_StartSpin {
+    face_left
+    face_down
+    face_right
+    face_up
+    face_left
+    face_down
+    face_right
+    face_up
+    step_end
+}
+
+movement SpeechSpeechSpeech_FinishSpin {
+    face_left
+    face_down
+    face_right
+    face_up
+    step_end
+}
+    
+movement SpeechSpeechSpeech_LookAround {
+    face_left
+    delay_16
+    face_right
+    delay_16
+    face_up
+    step_end
 }

@@ -4,7 +4,7 @@ mapscripts Psfcave7_B2F_MapScripts {
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_PSFCAVE7_STATE,4: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 
-        VAR_PSFCAVE7_STATE,8: SpeechSpeechSpeech_Intro_Dialogue
+        VAR_PSFCAVE7_STATE,8: SpeechSpeechSpeech_PositionPlayer_Script 
     ]
 }
 
@@ -21,6 +21,7 @@ script Psfcave7_B2F_MapScripts_OnTransition {
             case 6: call(LetsGettheBandBackTogether_HideObject_Script)
             case 7: call(YouRealizeTheyreEvilRight_HideBasement_Script)
             case 8: call(SpeechSpeechSpeech_MoveObject_Script)
+            case 9: call(SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script)
         }
 }
 
@@ -31,4 +32,66 @@ script Psfcave7_B2F_Psfnativerival_Event_Script {
         }
     release
         end
+}
+
+script Psfcave7_B2F_Psfelite1_Event_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    
+    switch (var(VAR_STORYLINE_STATE)){
+        case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+    }
+
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
+}
+
+
+script Psfcave7_B2F_Psfelite2_Event_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+    callnative(DrawMugshot)
+    
+    switch (var(VAR_STORYLINE_STATE)){
+        case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+    }
+
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
+}
+
+
+script Psfcave7_B2F_Psfelite3_Event_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+    callnative(DrawMugshot)
+    
+    switch (var(VAR_STORYLINE_STATE)){
+        case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+    }
+
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
+}
+
+script Psfcave7_B2F_Psfelite4_Event_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    callnative(DrawMugshot)
+    
+    switch (var(VAR_STORYLINE_STATE)){
+        case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+    }
+
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
 }

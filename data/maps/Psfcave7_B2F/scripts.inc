@@ -9,7 +9,7 @@ Psfcave7_B2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfcave7_B2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_PSFCAVE7_STATE, 4, YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue
-	map_script_2 VAR_PSFCAVE7_STATE, 8, SpeechSpeechSpeech_Intro_Dialogue
+	map_script_2 VAR_PSFCAVE7_STATE, 8, SpeechSpeechSpeech_PositionPlayer_Script
 	.2byte 0
 
 
@@ -24,6 +24,7 @@ Psfcave7_B2F_MapScripts_OnTransition::
 	case 6, Psfcave7_B2F_MapScripts_OnTransition_7
 	case 7, Psfcave7_B2F_MapScripts_OnTransition_8
 	case 8, Psfcave7_B2F_MapScripts_OnTransition_9
+	case 9, Psfcave7_B2F_MapScripts_OnTransition_10
 	return
 
 Psfcave7_B2F_MapScripts_OnTransition_2:
@@ -58,6 +59,10 @@ Psfcave7_B2F_MapScripts_OnTransition_9:
 	call SpeechSpeechSpeech_MoveObject_Script
 	return
 
+Psfcave7_B2F_MapScripts_OnTransition_10:
+	call SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script
+	return
+
 
 Psfcave7_B2F_Psfnativerival_Event_Script::
 	lock
@@ -70,4 +75,72 @@ Psfcave7_B2F_Psfnativerival_Event_Script_1:
 Psfcave7_B2F_Psfnativerival_Event_Script_3:
 	call LetsGettheBandBackTogether_MeetInBasement_Script
 	goto Psfcave7_B2F_Psfnativerival_Event_Script_1
+
+
+Psfcave7_B2F_Psfelite1_Event_Script::
+	lock
+	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	switch VAR_STORYLINE_STATE
+	case 103, Psfcave7_B2F_Psfelite1_Event_Script_3
+Psfcave7_B2F_Psfelite1_Event_Script_1:
+	closemessage
+	callnative ClearMugshot
+	release
+	end
+
+Psfcave7_B2F_Psfelite1_Event_Script_3:
+	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
+	goto Psfcave7_B2F_Psfelite1_Event_Script_1
+
+
+Psfcave7_B2F_Psfelite2_Event_Script::
+	lock
+	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	callnative DrawMugshot
+	switch VAR_STORYLINE_STATE
+	case 103, Psfcave7_B2F_Psfelite2_Event_Script_3
+Psfcave7_B2F_Psfelite2_Event_Script_1:
+	closemessage
+	callnative ClearMugshot
+	release
+	end
+
+Psfcave7_B2F_Psfelite2_Event_Script_3:
+	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
+	goto Psfcave7_B2F_Psfelite2_Event_Script_1
+
+
+Psfcave7_B2F_Psfelite3_Event_Script::
+	lock
+	setvar VAR_0x8000, MUGSHOT_MARSHAL
+	callnative DrawMugshot
+	switch VAR_STORYLINE_STATE
+	case 103, Psfcave7_B2F_Psfelite3_Event_Script_3
+Psfcave7_B2F_Psfelite3_Event_Script_1:
+	closemessage
+	callnative ClearMugshot
+	release
+	end
+
+Psfcave7_B2F_Psfelite3_Event_Script_3:
+	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
+	goto Psfcave7_B2F_Psfelite3_Event_Script_1
+
+
+Psfcave7_B2F_Psfelite4_Event_Script::
+	lock
+	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	callnative DrawMugshot
+	switch VAR_STORYLINE_STATE
+	case 103, Psfcave7_B2F_Psfelite4_Event_Script_3
+Psfcave7_B2F_Psfelite4_Event_Script_1:
+	closemessage
+	callnative ClearMugshot
+	release
+	end
+
+Psfcave7_B2F_Psfelite4_Event_Script_3:
+	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
+	goto Psfcave7_B2F_Psfelite4_Event_Script_1
 

@@ -5,6 +5,8 @@ LetsGettheBandBackTogether_HideObject_Script_1:
 	setflag FLAG_TEMP_5
 	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_7
+	setflag FLAG_TEMP_8
+	setflag FLAG_TEMP_9
 	return
 
 LetsGettheBandBackTogether_HideObject_Script_2:
