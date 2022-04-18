@@ -42,4 +42,3 @@ misc/log.txt
 *.diff
 *.sym
 *.js
-*.vimsess

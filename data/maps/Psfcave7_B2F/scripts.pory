@@ -4,6 +4,7 @@ mapscripts Psfcave7_B2F_MapScripts {
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_PSFCAVE7_STATE,4: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 
+        VAR_PSFCAVE7_STATE,8: SpeechSpeechSpeech_Intro_Dialogue
     ]
 }
 

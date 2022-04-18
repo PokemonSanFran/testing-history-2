@@ -14,60 +14,173 @@ const GRUNTD = 12
 
 script SpeechSpeechSpeech_MoveObject_Script {
     setflag(FLAG_TEMP_4)
+        setflag(FLAG_TEMP_5)
 
-        setobjectxy(PSFNATIVERIVAL,11,8)
-        setobjectxyperm(PSFNATIVERIVAL,11,8)
+        setobjectxy(PSFNATIVERIVAL,10,8)
+        setobjectxyperm(PSFNATIVERIVAL,10,8)
         setobjectmovementtype(PSFNATIVERIVAL,MOVEMENT_TYPE_FACE_UP)
 
         setobjectxy(PSFELITE1,8,3)
         setobjectxyperm(PSFELITE1,8,3)
 
-        setobjectxy(PSFELITE2,11,3)
-        setobjectxyperm(PSFELITE2,11,3)
+        setobjectxy(PSFELITE2,8,3)
+        setobjectxyperm(PSFELITE2,8,3)
+}
+
+script SpeechSpeechSpeech_MovePlayer_Script {
+    setobjectxy(PLAYER,9,9)
+        TeleportCamera(9,9)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        waitmovement(0)
+
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,13,8,8)
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,14,11,8)
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,15,7,9)
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,16,9,10)
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,17,10,9)
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,18,7,10)
+
+        call(SpeechSpeechSpeech_ResetFacing_Script)
+}
+
+script SpeechSpeechSpeech_LookAround_Script {
+    turnvobject(13,DIR_EAST)
+        turnvobject(15,DIR_WEST)
+        delay(16)
+        turnvobject(16,DIR_SOUTH)
+        turnvobject(18,DIR_EAST)
+
+        turnvobject(13,DIR_NORTH)
+        turnvobject(15,DIR_NORTH)
+        turnvobject(16,DIR_NORTH)
+        turnvobject(18,DIR_NORTH)
+}
+
+script SpeechSpeechSpeech_ResetFacing_Script {
+    turnvobject(13,DIR_NORTH)
+        turnvobject(14,DIR_NORTH)
+        turnvobject(15,DIR_NORTH)
+        turnvobject(16,DIR_NORTH)
+        turnvobject(17,DIR_NORTH)
+        turnvobject(18,DIR_NORTH)
+}
+
+script SpeechSpeechSpeech_CleanUpObjects_Script {
+        removeobject(13)
+        removeobject(14)
+        removeobject(15)
+        removeobject(16)
+        removeobject(17)
+        removeobject(18)
+}
+
+script SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script {
+    setobjectxy(PSFELITE1,11,17)
+    setobjectxyperm(PSFELITE1,11,17)
+    setobjectmovementtype(PSFELITE1,MOVEMENT_TYPE_FACE_DOWN)
+    
+    setobjectxy(PSFELITE2,17,15)
+    setobjectxyperm(PSFELITE2,17,15)
+    setobjectmovementtype(PSFELITE2,MOVEMENT_TYPE_FACE_DOWN)
+    
+    setobjectxy(PSFELITE3,19,6)
+    setobjectxyperm(PSFELITE3,19,6)
+    setobjectmovementtype(PSFELITE3,MOVEMENT_TYPE_FACE_DOWN)
+    
+    setobjectxy(PSFELITE4,4,6)
+    setobjectxyperm(PSFELITE4,4,6)
+    setobjectmovementtype(PSFELITE4,MOVEMENT_TYPE_FACE_DOWN)
 }
 
 script SpeechSpeechSpeech_Intro_Dialogue {
+    lock
 
-    //Cutscene begins when the player walks into the last floor of Psfcave7. There is a large group of Psfgoodteam members inside. Psfgoodboss and Psfgoodadmin stand in front of the group.
+        applymovement(PLAYER,Common_Movement_WalkRight)
+        applymovement(PLAYER,Common_Movement_WalkRight)
+        fadescreen(FADE_TO_BLACK)
 
-    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
-        msgbox(gText_SpeechSpeechSpeech_ThankYouAll)
+        call(SpeechSpeechSpeech_MovePlayer_Script)
+        fadescreen(FADE_FROM_BLACK)
 
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
+        msgbox(gText_SpeechSpeechSpeech_ThankYouAll)
         msgbox(gText_SpeechSpeechSpeech_FirstOfAll)
+        callnative(ClearMugshot)
+        closemessage
 
-        //All of the Psfgoodteam members look around to each other before looking forward again.
+        call(SpeechSpeechSpeech_LookAround_Script)
+        call(SpeechSpeechSpeech_ResetFacing_Script)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_ForAllYouve)
+        callnative(ClearMugshot)
+        closemessage
 
-        //All of the Psfgoodteam members look around to each other again.
+        call(SpeechSpeechSpeech_LookAround_Script)
 
         msgbox(gText_SpeechSpeechSpeech_WaitWhat)
 
         msgbox(gText_SpeechSpeechSpeech_AreTheyEven)
+        closemessage
 
+        call(SpeechSpeechSpeech_ResetFacing_Script)
 
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_HasMyFullConfidence)
+        callnative(ClearMugshot)
+        closemessage
+
+        special(SpawnCameraObject)
+        applymovement(CAMERA,SpeechSpeechSpeech_PanCameraUp)
+        applymovement(PSFGOODBOSS,SpeechSpeechSpeech_WalkBackstage)
+        waitmovement(CAMERA)
+        waitmovement(PSFGOODBOSS)
+        clearflag(FLAG_TEMP_5)
+        removeobject(PSFGOODBOSS)
+        addobject(PSFELITE4)
+
+        applymovement(PSFELITE1,SpeechSpeechSpeech_WalkOutElite)
+        applymovement(PSFELITE2,SpeechSpeechSpeech_WalkOutElite)
+        applymovement(PSFELITE3,SpeechSpeechSpeech_WalkOutElite)
+        applymovement(PSFELITE4,SpeechSpeechSpeech_WalkOutElite)
+        applymovement(PSFGOODADMIN,SpeechSpeechSpeech_StepAside)
+        applymovement(CAMERA,SpeechSpeechSpeech_WalkOutElite)
+        waitmovement(CAMERA)
+
+        special(RemoveCameraObject)
 
         //Psfgoodboss walks back stage, where the rest of the Elite Four is standing. Psfgoodboss spins around, changes his costume, and the four of them walk to the front.
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_Us)
+        callnative(ClearMugshot)
+        closemessage
 
         msgbox(gText_SpeechSpeechSpeech_HolyShit)
+        closemessage
 
-        //The screen begins the shake, as an earthquake begins.
+        playse(SE_M_EARTHQUAKE)
+        waitse
 
-        //GRUNTS !
+        setvar(VAR_0x8004,2) //vertical pan
+        setvar(VAR_0x8005,2) //horizontal pan
+        setvar(VAR_0x8006,16) //number of shakes
+        setvar(VAR_0x8007,5) //shake delay
+        special(ShakeCamera)
 
-        //The earthquake continues, and then stops.
+        playse(SE_PIN)
+        waitse
+
+        applymovement(GRUNTA,Common_Movement_ExclamationMark)
+        applymovement(GRUNTB,Common_Movement_ExclamationMark)
+        applymovement(GRUNTC,Common_Movement_ExclamationMark)
+        applymovement(GRUNTD,Common_Movement_ExclamationMark)
+        waitmovement(0)
+        waitstate
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -80,43 +193,79 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_YouAllKnowHowCompanies)
+        callnative(ClearMugshot)
+        closemessage
 
         msgbox(gText_SpeechSpeechSpeech_WereFinally)
 
         msgbox(gText_SpeechSpeechSpeech_ThisIsInsane)
+        closemessage
 
+        applymovement(PSFELITE2,Common_Movement_WalkDown)
+        waitmovement(0)
         //Psfelite2 steps forward. Psfgoodadmin steps aside.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_WeWantToBegin)
+        callnative(ClearMugshot)
+        closemessage
 
+        applymovement(PSFELITE2,SpeechSpeechSpeech_WalkBackwards)
+        applymovement(PSFELITE4,Common_Movement_WalkDown)
+        waitmovement(0)
         //Psfelite4 steps forward.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_4LeadCharge)
+        callnative(ClearMugshot)
+        closemessage
 
+        applymovement(PSFELITE4,SpeechSpeechSpeech_WalkBackwards)
+        applymovement(PSFELITE3,Common_Movement_WalkDown)
+        waitmovement(0)
         //Psfelite4 steps back. Psfelite3 steps forward.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_3LeadCharge)
+        callnative(ClearMugshot)
+        closemessage
 
+        applymovement(PSFELITE3,SpeechSpeechSpeech_WalkBackwards)
+        applymovement(PSFELITE1,Common_Movement_WalkDown)
+        waitmovement(0)
         //Psfelite4 steps back. Psfelite1 steps forward.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_1LeadCharge)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFELITE1,SpeechSpeechSpeech_WalkBackwards)
+        waitmovement(0)
 
         //Psfelite1 steps back.
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_IllBeHandling)
+        callnative(ClearMugshot)
+        closemessage
+
+        addvar(VAR_STORYLINE_STATE,1)
+        fadescreen(FADE_TO_BLACK)
+
+        call(SpeechSpeechSpeech_CleanUpObjects_Script)
+        call(SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script)
+
+        applymovement(PSFNATIVERIVAL,SpeechSpeechSpeech_WalkToPlayer)
+        fadescreen(FADE_FROM_BLACK)
+        waitmovement(PSFNATIVERIVAL)
 
         //Screen fades to black. Screen fades back in. Elite Four members are spaced around the room, surrounded by groups of Psfgoodteam members. Psfnativerival walks up to the player.
-
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_DamnThisShit)
@@ -129,23 +278,22 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_Yeah)
 
-        //If the player hasn't done Warehouse Rave yet
+        if (var(VAR_STORYLINE_STATE) != 104){
+            msgbox(gText_SpeechSpeechSpeech_YeahAlsoAre)
+        }else {
+            msgbox(gText_SpeechSpeechSpeech_ByTheWay)
+        }
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_SpeechSpeechSpeech_YeahAlsoAre)
-
-        //If the player has done Warehouse Rave,
-
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_SpeechSpeechSpeech_ByTheWay)
-
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_Peace)
+        callnative(ClearMugshot)
+        closemessage
 
-        //Psfnativerival walks off screen. The player regains control.
+        applymovement(PSFNATIVERIVAL,SpeechSpeechSpeech_LeaveScreen)
+        waitmovement(0)
+        removeobject(PSFNATIVERIVAL)
+        release
+        end
+
 }
 text gText_SpeechSpeechSpeech_ThankYouAll {
     format("Thank you all for coming. For all your hard work. All your support. I have a few announcements for you all.")
@@ -239,4 +387,44 @@ text gText_SpeechSpeechSpeech_ByTheWay {
 
 text gText_SpeechSpeechSpeech_Peace {
     format("Peace!")
+}
+
+movement SpeechSpeechSpeech_PanCameraUp {
+    walk_up * 4
+    step_end
+}
+
+movement SpeechSpeechSpeech_WalkBackstage{
+    walk_up * 2
+	step_end
+}
+
+movement SpeechSpeechSpeech_WalkOutElite{
+    walk_down * 2
+	step_end
+}
+
+movement SpeechSpeechSpeech_StepAside{
+    lock_facing_direction
+    walk_right * 2
+    unlock_facing_direction
+	step_end
+}
+
+movement SpeechSpeechSpeech_WalkBackwards{
+    lock_facing_direction
+    walk_up
+    unlock_facing_direction
+	step_end
+}
+
+movement SpeechSpeechSpeech_WalkToPlayer{
+    walk_left
+    face_down
+	step_end
+}
+
+movement SpeechSpeechSpeech_LeaveScreen{
+    walk_left * 6
+	step_end
 }

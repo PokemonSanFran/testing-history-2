@@ -9,6 +9,7 @@ Psfcave7_B2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfcave7_B2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_PSFCAVE7_STATE, 4, YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue
+	map_script_2 VAR_PSFCAVE7_STATE, 8, SpeechSpeechSpeech_Intro_Dialogue
 	.2byte 0
 
 

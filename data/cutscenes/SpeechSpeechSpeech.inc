@@ -1,34 +1,148 @@
 SpeechSpeechSpeech_MoveObject_Script::
 	setflag FLAG_TEMP_4
-	setobjectxy 1, 11, 8
-	setobjectxyperm 1, 11, 8
+	setflag FLAG_TEMP_5
+	setobjectxy 1, 10, 8
+	setobjectxyperm 1, 10, 8
 	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_UP
 	setobjectxy 3, 8, 3
 	setobjectxyperm 3, 8, 3
-	setobjectxy 2, 8, 6
-	setobjectxyperm 2, 8, 6
+	setobjectxy 2, 8, 3
+	setobjectxyperm 2, 8, 3
+	return
+
+
+SpeechSpeechSpeech_MovePlayer_Script::
+	setobjectxy OBJ_EVENT_ID_PLAYER, 9, 9
+	TeleportCamera 9, 9
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 13, 8, 8
+	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 14, 11, 8
+	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 15, 7, 9
+	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 16, 9, 10
+	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 17, 10, 9
+	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 18, 7, 10
+	call SpeechSpeechSpeech_ResetFacing_Script
+	return
+
+
+SpeechSpeechSpeech_LookAround_Script::
+	turnvobject 13, DIR_EAST
+	turnvobject 15, DIR_WEST
+	delay 16
+	turnvobject 16, DIR_SOUTH
+	turnvobject 18, DIR_EAST
+	turnvobject 13, DIR_NORTH
+	turnvobject 15, DIR_NORTH
+	turnvobject 16, DIR_NORTH
+	turnvobject 18, DIR_NORTH
+	return
+
+
+SpeechSpeechSpeech_ResetFacing_Script::
+	turnvobject 13, DIR_NORTH
+	turnvobject 14, DIR_NORTH
+	turnvobject 15, DIR_NORTH
+	turnvobject 16, DIR_NORTH
+	turnvobject 17, DIR_NORTH
+	turnvobject 18, DIR_NORTH
+	return
+
+
+SpeechSpeechSpeech_CleanUpObjects_Script::
+	removeobject 13
+	removeobject 14
+	removeobject 15
+	removeobject 16
+	removeobject 17
+	removeobject 18
+	return
+
+
+SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script::
+	setobjectxy 3, 11, 17
+	setobjectxyperm 3, 11, 17
+	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxy 2, 17, 15
+	setobjectxyperm 2, 17, 15
+	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxy 6, 19, 6
+	setobjectxyperm 6, 19, 6
+	setobjectmovementtype 6, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxy 5, 4, 6
+	setobjectxyperm 5, 4, 6
+	setobjectmovementtype 5, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 
 SpeechSpeechSpeech_Intro_Dialogue::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
+	fadescreen FADE_TO_BLACK
+	call SpeechSpeechSpeech_MovePlayer_Script
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_0x8000, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_ThankYouAll
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_FirstOfAll
+	callnative ClearMugshot
+	closemessage
+	call SpeechSpeechSpeech_LookAround_Script
+	call SpeechSpeechSpeech_ResetFacing_Script
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_ForAllYouve
+	callnative ClearMugshot
+	closemessage
+	call SpeechSpeechSpeech_LookAround_Script
 	msgbox gText_SpeechSpeechSpeech_WaitWhat
 	msgbox gText_SpeechSpeechSpeech_AreTheyEven
+	closemessage
+	call SpeechSpeechSpeech_ResetFacing_Script
 	setvar VAR_0x8000, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_HasMyFullConfidence
+	callnative ClearMugshot
+	closemessage
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SpeechSpeechSpeech_PanCameraUp
+	applymovement 7, SpeechSpeechSpeech_WalkBackstage
+	waitmovement OBJ_EVENT_ID_CAMERA
+	waitmovement 7
+	clearflag FLAG_TEMP_5
+	removeobject 7
+	addobject 5
+	applymovement 3, SpeechSpeechSpeech_WalkOutElite
+	applymovement 2, SpeechSpeechSpeech_WalkOutElite
+	applymovement 6, SpeechSpeechSpeech_WalkOutElite
+	applymovement 5, SpeechSpeechSpeech_WalkOutElite
+	applymovement 8, SpeechSpeechSpeech_StepAside
+	applymovement OBJ_EVENT_ID_CAMERA, SpeechSpeechSpeech_WalkOutElite
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_Us
+	callnative ClearMugshot
+	closemessage
 	msgbox gText_SpeechSpeechSpeech_HolyShit
+	closemessage
+	playse SE_M_EARTHQUAKE
+	waitse
+	setvar VAR_0x8004, 2
+	setvar VAR_0x8005, 2
+	setvar VAR_0x8006, 16
+	setvar VAR_0x8007, 5
+	special ShakeCamera
+	playse SE_PIN
+	waitse
+	applymovement 9, Common_Movement_ExclamationMark
+	applymovement 10, Common_Movement_ExclamationMark
+	applymovement 11, Common_Movement_ExclamationMark
+	applymovement 12, Common_Movement_ExclamationMark
+	waitmovement 0
+	waitstate
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_IsAnybodyHurt
@@ -37,23 +151,56 @@ SpeechSpeechSpeech_Intro_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_YouAllKnowHowCompanies
+	callnative ClearMugshot
+	closemessage
 	msgbox gText_SpeechSpeechSpeech_WereFinally
 	msgbox gText_SpeechSpeechSpeech_ThisIsInsane
+	closemessage
+	applymovement 2, Common_Movement_WalkDown
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_WeWantToBegin
+	callnative ClearMugshot
+	closemessage
+	applymovement 2, SpeechSpeechSpeech_WalkBackwards
+	applymovement 5, Common_Movement_WalkDown
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_4LeadCharge
+	callnative ClearMugshot
+	closemessage
+	applymovement 5, SpeechSpeechSpeech_WalkBackwards
+	applymovement 6, Common_Movement_WalkDown
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_3LeadCharge
+	callnative ClearMugshot
+	closemessage
+	applymovement 6, SpeechSpeechSpeech_WalkBackwards
+	applymovement 3, Common_Movement_WalkDown
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_1LeadCharge
+	callnative ClearMugshot
+	closemessage
+	applymovement 3, SpeechSpeechSpeech_WalkBackwards
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_IllBeHandling
+	callnative ClearMugshot
+	closemessage
+	addvar VAR_STORYLINE_STATE, 1
+	fadescreen FADE_TO_BLACK
+	call SpeechSpeechSpeech_CleanUpObjects_Script
+	call SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script
+	applymovement 1, SpeechSpeechSpeech_WalkToPlayer
+	fadescreen FADE_FROM_BLACK
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_DamnThisShit
@@ -63,17 +210,67 @@ SpeechSpeechSpeech_Intro_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_Yeah
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_YeahAlsoAre
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
+	compare VAR_STORYLINE_STATE, 104
+	goto_if_ne SpeechSpeechSpeech_Intro_Dialogue_2
 	msgbox gText_SpeechSpeechSpeech_ByTheWay
-	setvar VAR_0x8000, MUGSHOT_HUGH
-	callnative DrawMugshot
+SpeechSpeechSpeech_Intro_Dialogue_1:
 	msgbox gText_SpeechSpeechSpeech_Peace
-	return
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, SpeechSpeechSpeech_LeaveScreen
+	waitmovement 0
+	removeobject 1
+	release
+	end
 
+SpeechSpeechSpeech_Intro_Dialogue_2:
+	msgbox gText_SpeechSpeechSpeech_YeahAlsoAre
+	goto SpeechSpeechSpeech_Intro_Dialogue_1
+
+
+SpeechSpeechSpeech_PanCameraUp:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+SpeechSpeechSpeech_WalkBackstage:
+	walk_up
+	walk_up
+	step_end
+
+SpeechSpeechSpeech_WalkOutElite:
+	walk_down
+	walk_down
+	step_end
+
+SpeechSpeechSpeech_StepAside:
+	lock_facing_direction
+	walk_right
+	walk_right
+	unlock_facing_direction
+	step_end
+
+SpeechSpeechSpeech_WalkBackwards:
+	lock_facing_direction
+	walk_up
+	unlock_facing_direction
+	step_end
+
+SpeechSpeechSpeech_WalkToPlayer:
+	walk_left
+	face_down
+	step_end
+
+SpeechSpeechSpeech_LeaveScreen:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
 
 gText_SpeechSpeechSpeech_ThankYouAll::
 	.string "Thank you all for coming. For all your\n"
