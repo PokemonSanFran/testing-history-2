@@ -35,6 +35,7 @@ script Psfcity8_Compound_2F_Bed_Script {
             case 42: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
             case 99: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
             case 101: call(LetsFixThis_EliteVideo_Dialogue)
+            case 106: call(Earthquake_ThatNight_Dialogue)
             default: fadescreen(FADE_FROM_BLACK) //Player opens their eyes
         }
 

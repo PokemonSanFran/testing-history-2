@@ -7,7 +7,6 @@ mapscripts Psfcity17_Psfnativerival_House_MapScripts {
 }
 
 script Psfcity17_Psfnativerival_House_OnTransition {
-    //if (!flag(FLAG_LOCKEDOUT_PLAYED)){ //Psftransrival is gone until you're locked out
     switch (var(VAR_STORYLINE_STATE))
     {
         default: call(LetsFixThis_HideObjectHouse_Script)
