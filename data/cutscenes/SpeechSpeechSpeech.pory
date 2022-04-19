@@ -1,16 +1,16 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
-const PSFNATIVERIVAL = 1
-const PSFELITE1 = 3
-const PSFELITE2 = 2
-const PSFELITE3 = 6
-const PSFELITE4 = 5
-const PSFGOODBOSS = 7
-const PSFGOODADMIN = 8
-const GRUNTA = 9
-const GRUNTB = 10
-const GRUNTC = 11
-const GRUNTD = 12
+const PSFNATIVERIVAL = 1 //FLAG_TEMP_1
+const PSFELITE1 = 3 //FLAG_TEMP_2
+const PSFELITE2 = 2 //FLAG_TEMP_2
+const PSFELITE3 = 6 //FLAG_TEMP_5
+const PSFELITE4 = 5 //FLAG_TEMP_8
+const PSFGOODBOSS = 7 //FLAG_TEMP_6
+const PSFGOODADMIN = 8 //FLAG_TEMP_9
+const GRUNTA = 9 //FLAG_TEMP_7
+const GRUNTB = 10//FLAG_TEMP_7
+const GRUNTC = 11//FLAG_TEMP_7
+const GRUNTD = 12//FLAG_TEMP_7
 
 script SpeechSpeechSpeech_MoveObject_Script {
         setflag(FLAG_TEMP_4)
@@ -75,7 +75,11 @@ script SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script {
     
     setobjectxy(PSFELITE2,17,15)
     setobjectxyperm(PSFELITE2,17,15)
-    setobjectmovementtype(PSFELITE2,MOVEMENT_TYPE_FACE_DOWN)
+    setobjectmovementtype(PSFELITE2,MOVEMENT_TYPE_FACE_LEFT)
+
+    setobjectxy(PSFGOODADMIN,16,15)
+    setobjectxyperm(PSFGOODADMIN,16,15)
+    setobjectmovementtype(PSFGOODADMIN,MOVEMENT_TYPE_FACE_RIGHT)
     
     setobjectxy(PSFELITE3,19,6)
     setobjectxyperm(PSFELITE3,19,6)
@@ -104,6 +108,8 @@ script SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script {
     setobjectnewmovementtype(GRUNTD,MOVEMENT_TYPE_LOOK_AROUND)
     setobjectxy(GRUNTD,4,7)
     setobjectxyperm(GRUNTD,4,7)
+
+
 }
 
 script SpeechSpeechSpeech_PositionPlayer_Script {

@@ -387,6 +387,7 @@ WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 
 
 WhyAreYouHelpingThem_StartChampionship_Dialogue::
+	addvar VAR_NATIVERIVALBETA_STATE, 1
 	msgbox gText_WhyAreYouHelpingThem_AreYouReadyToBegin, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq WhyAreYouHelpingThem_StartChampionship_Dialogue_1

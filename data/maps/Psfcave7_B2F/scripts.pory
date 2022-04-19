@@ -5,6 +5,7 @@ mapscripts Psfcave7_B2F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_PSFCAVE7_STATE,4: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 
         VAR_PSFCAVE7_STATE,8: SpeechSpeechSpeech_PositionPlayer_Script 
+        VAR_STORYLINE_STATE, 105: OneDown_SetUpObject_Script
     ]
 }
 
@@ -41,8 +42,9 @@ script Psfcave7_B2F_Psfelite1_Event_Script {
     
     switch (var(VAR_STORYLINE_STATE)){
         case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case 104: msgbox(format("you've started and finished a takedown quest."),MSGBOX_NPC)
+                  addvar(VAR_STORYLINE_STATE,1)
     }
-
     closemessage
     callnative(ClearMugshot)
     release
@@ -57,6 +59,7 @@ script Psfcave7_B2F_Psfelite2_Event_Script {
     
     switch (var(VAR_STORYLINE_STATE)){
         case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case 104: msgbox("I don't have a takedown quest for you.",MSGBOX_NPC)
     }
 
     closemessage
@@ -73,6 +76,8 @@ script Psfcave7_B2F_Psfelite3_Event_Script {
     
     switch (var(VAR_STORYLINE_STATE)){
         case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case 104: msgbox("you've started and finished a takedown quest.",MSGBOX_NPC)
+                  addvar(VAR_STORYLINE_STATE,1)
     }
 
     closemessage
@@ -88,6 +93,8 @@ script Psfcave7_B2F_Psfelite4_Event_Script {
     
     switch (var(VAR_STORYLINE_STATE)){
         case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case 104: msgbox("you've started and finished a takedown quest.",MSGBOX_NPC)
+                  addvar(VAR_STORYLINE_STATE,1)
     }
 
     closemessage

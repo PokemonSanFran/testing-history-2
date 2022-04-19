@@ -819,7 +819,7 @@ static const struct MenuAction sPsfcity17FerryDestinations_Ver3[] =
 {
 	{gText_Psfplace11},
 	{gText_Psfcave7},
-	{gText_Psfplace11},
+	{gText_Psfcave5},
 	{gText_Exit},
 };
 

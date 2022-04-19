@@ -57,7 +57,10 @@ SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script::
 	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_DOWN
 	setobjectxy 2, 17, 15
 	setobjectxyperm 2, 17, 15
-	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxy 8, 16, 15
+	setobjectxyperm 8, 16, 15
+	setobjectmovementtype 8, MOVEMENT_TYPE_FACE_RIGHT
 	setobjectxy 6, 19, 6
 	setobjectxyperm 6, 19, 6
 	setobjectmovementtype 6, MOVEMENT_TYPE_FACE_DOWN
@@ -90,7 +93,7 @@ SpeechSpeechSpeech_PositionPlayer_Script::
 	fadescreen FADE_TO_BLACK
 	call SpeechSpeechSpeech_MovePlayer_Script
 	fadescreen FADE_FROM_BLACK
-	goto SpeechSpeechSpeech_StartTransformation_Script
+	goto SpeechSpeechSpeech_Intro_Dialogue
 	return
 
 

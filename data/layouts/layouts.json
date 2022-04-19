@@ -4787,7 +4787,7 @@
       "width": 40,
       "height": 40,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Dewford",
+      "secondary_tileset": "gTileset_Lavaridge",
       "border_filepath": "data/layouts/Psfcity17/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity17/map.bin"
     },

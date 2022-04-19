@@ -62,6 +62,7 @@
 6: Talked to Archer once right at timeline split, has not confirmed yet
 7: Has confirmed wih Archer, told to go find Siebold in Marin
 8: Right before SpeechSpeech, has slept once at Archer's` 
+9: After SpeechSpeech, leaders giving out assignements
 
 # VAR_ROUTE116_STATE
 **RELEVANCE**: Tracking state of Muir Woods
@@ -112,6 +113,7 @@
 3: Start explain raid cutscene
 4: played explain raid cutscene, raid has begun
 5: raid finished
+6: day after the raid
 
 #VAR_ROUTE118_STATE
 **RELEVANCE**: Track the state of the Naval Base
@@ -191,6 +193,8 @@
 102: Recieved invite from Koga via email
 103: Defeated WarehouseRave or finished "SpeechSpeechSpeech"
 104: Finished WarehouseRave AND "SpeechSpeechSpeech"
+105: Completed one take down quest
+106: Told to get some rest after first take down quest
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck

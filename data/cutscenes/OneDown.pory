@@ -1,0 +1,177 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CAMERA = OBJ_EVENT_ID_CAMERA
+const PSFNATIVERIVAL = 1 //FLAG_TEMP_1
+const PSFELITE1 = 3 //FLAG_TEMP_2
+const PSFELITE2 = 2 //FLAG_TEMP_2
+const PSFELITE3 = 6 //FLAG_TEMP_5
+const PSFELITE4 = 5 //FLAG_TEMP_8
+const PSFGOODBOSS = 7 //FLAG_TEMP_6
+const PSFGOODADMIN = 8 //FLAG_TEMP_9
+const GRUNTA = 9 //FLAG_TEMP_7
+const GRUNTB = 10//FLAG_TEMP_7
+const GRUNTC = 11//FLAG_TEMP_7
+const GRUNTD = 12//FLAG_TEMP_7
+
+script OneDown_SetUpObject_Script {
+        fadescreen(FADE_TO_BLACK)
+
+        setobjectxy(PLAYER,16,14) 
+        TeleportCamera(16,14)
+        applymovement(PLAYER,Common_Movement_FaceDown)
+        applymovement(PSFGOODADMIN,Common_Movement_FaceUp)
+        applymovement(PSFELITE2,Common_Movement_FaceUp)
+        waitmovement(0)
+
+        fadescreen(FADE_FROM_BLACK)
+        lock
+        goto(OneDown_StartCutscene_Script)
+}
+
+script OneDown_StartCutscene_Script {
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_IJustGotFilled)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_ThanksAndYouve)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_IDidntThinkIHad)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFGOODADMIN,Common_Movement_FaceRight)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_SoundsLikeWereBoth)
+        callnative(ClearMugshot)
+        closemessage
+        goto(OneDown_StartEarthquake_Script)
+}
+
+script OneDown_StartEarthquake_Script{
+
+        playse(SE_M_EARTHQUAKE)
+        setvar(VAR_0x8004,4) //vertical pan
+        setvar(VAR_0x8005,4) //horizontal pan
+        setvar(VAR_0x8006,25) //number of shakes
+        setvar(VAR_0x8007,10) //shake delay
+        special(ShakeCamera)
+
+        playse(SE_PIN)
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        applymovement(PSFELITE2,Common_Movement_ExclamationMark)
+        applymovement(PSFGOODADMIN,Common_Movement_ExclamationMark)
+        waitmovement(0)
+
+        waitstate
+        playse(SE_M_EARTHQUAKE)
+        special(ShakeCamera)
+
+        delay(100) //wait until after earthquake
+        waitstate
+        goto(OneDown_Finish_Dialogue)
+}
+
+script OneDown_Finish_Dialogue {
+
+        applymovement(PSFELITE2,Common_Movement_FaceLeft)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_MyOldBones)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_WhatDoYouMean)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_YoureGonnaCall)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_WeGetQuakes)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_GuessYoureRight)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFGOODADMIN, Common_Movement_FaceUp)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_OneDown_GetSomeRest)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFGOODADMIN,Common_Movement_FaceRight)
+        applymovement(PSFELITE2,Common_Movement_FaceLeft)
+        waitmovement(0)
+
+        addvar(VAR_STORYLINE_STATE,1)
+        release
+        end
+}
+
+text gText_OneDown_IJustGotFilled {
+    format("I just got filled in… that was absolutely incredible!")
+}
+
+text gText_OneDown_ThanksAndYouve {
+    format("Thanks. And you've been an awesome leader too. These people love you.")
+}
+
+text gText_OneDown_IDidntThinkIHad {
+    format("I didn't think I had it in me, to be honest. Psfgood- Psfelite4 knew better, I guess.")
+}
+
+text gText_OneDown_SoundsLikeWereBoth {
+    format("Sounds like we're both having excellent days! My talks with the region's council have been much more productive than I expected. I think we're actually making some damn progress! If we keep this up -")
+}
+
+text gText_OneDown_MyOldBones {
+    format("My old bones can't handle those quakes like I used to! My mind is starting to slip too, I tell ya.")
+}
+
+text gText_OneDown_WhatDoYouMean {
+    format("What do you mean?")
+}
+
+text gText_OneDown_YoureGonnaCall {
+    format("You're gonna call me a crazy ol' coot. But I swear, these quakes feel familiar. And different. Like I recognize ‘em. Crazy right?")
+}
+
+text gText_OneDown_WeGetQuakes {
+    format("We get quakes all the time. The Psffaultline will do that, you know? I'm sure they all start to feel the same.")
+}
+
+text gText_OneDown_GuessYoureRight {
+    format("Guess you're right, kid.")
+}
+
+text gText_OneDown_GetSomeRest {
+    format("I know its been a long day, {PLAYER}, you should get some rest. You're still staying at Psfnativerival's place in Psfcity17, right?")
+}
+
+movement OneDown_WalkToPlayer {
+    walk_up * 7
+        walk_right
+        step_end
+}
+
+movement OneDown_WalkOffScreen {
+    walk_down * 7
+        step_end
+}
+
+movement OneDown_PsfgoodadminWalkAway {
+    walk_left
+        walk_down * 7
+        step_end
+}

@@ -435,6 +435,7 @@ script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
 }
 
 script WhyAreYouHelpingThem_StartChampionship_Dialogue {
+        addvar(VAR_NATIVERIVALBETA_STATE,1) //advance Psfcity17 forward to clean up raid damage
     msgbox(gText_WhyAreYouHelpingThem_AreYouReadyToBegin,MSGBOX_YESNO)
 
         if (var(VAR_RESULT) == NO){

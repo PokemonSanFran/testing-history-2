@@ -72,6 +72,7 @@ Psfcity17_UnlockedDestinations_Script::
 	switch VAR_FERRY_STATE
 	case 0, Psfcity17_UnlockedDestinations_Script_2
 	case 1, Psfcity17_UnlockedDestinations_Script_3
+	case 2, Psfcity17_UnlockedDestinations_Script_4
 	return
 
 Psfcity17_UnlockedDestinations_Script_2:
@@ -80,6 +81,10 @@ Psfcity17_UnlockedDestinations_Script_2:
 
 Psfcity17_UnlockedDestinations_Script_3:
 	goto Psfcity17_FerryState1_Script
+	return
+
+Psfcity17_UnlockedDestinations_Script_4:
+	goto Psfcity17_FerryState2_Script
 	return
 
 
@@ -132,4 +137,37 @@ Psfcity17_FerryState1_Script_5:
 Psfcity17_FerryState1_Script_6:
 	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
 	goto Psfcity17_FerryState1_Script_1
+
+
+Psfcity17_FerryState2_Script::
+	multichoicedefault 18, 8, PSFCITY17_FERRY_DESTINATIONS_VER3, 2, FALSE
+	switch VAR_RESULT
+	case 0, Psfcity17_FerryState2_Script_3
+	case 1, Psfcity17_FerryState2_Script_4
+	case 2, Psfcity17_FerryState2_Script_5
+	case 3, Psfcity17_FerryState2_Script_6
+	case MULTI_B_PRESSED, Psfcity17_FerryState2_Script_7
+Psfcity17_FerryState2_Script_1:
+	call Common_EventScript_FerryDepartIsland
+	return
+
+Psfcity17_FerryState2_Script_3:
+	warp MAP_PSFPLACE11, 8, 11
+	goto Psfcity17_FerryState2_Script_1
+
+Psfcity17_FerryState2_Script_4:
+	warp MAP_PSFCAVE7, 15, 22
+	goto Psfcity17_FerryState2_Script_1
+
+Psfcity17_FerryState2_Script_5:
+	warp MAP_PSFCAVE5, 15, 36
+	goto Psfcity17_FerryState2_Script_1
+
+Psfcity17_FerryState2_Script_6:
+	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
+	goto Psfcity17_FerryState2_Script_1
+
+Psfcity17_FerryState2_Script_7:
+	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
+	goto Psfcity17_FerryState2_Script_1
 

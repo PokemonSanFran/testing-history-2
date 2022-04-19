@@ -10,6 +10,7 @@ Psfcave7_B2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Psfcave7_B2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_PSFCAVE7_STATE, 4, YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue
 	map_script_2 VAR_PSFCAVE7_STATE, 8, SpeechSpeechSpeech_PositionPlayer_Script
+	map_script_2 VAR_STORYLINE_STATE, 105, OneDown_SetUpObject_Script
 	.2byte 0
 
 
@@ -83,6 +84,7 @@ Psfcave7_B2F_Psfelite1_Event_Script::
 	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
 	case 103, Psfcave7_B2F_Psfelite1_Event_Script_3
+	case 104, Psfcave7_B2F_Psfelite1_Event_Script_4
 Psfcave7_B2F_Psfelite1_Event_Script_1:
 	closemessage
 	callnative ClearMugshot
@@ -93,6 +95,11 @@ Psfcave7_B2F_Psfelite1_Event_Script_3:
 	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
 	goto Psfcave7_B2F_Psfelite1_Event_Script_1
 
+Psfcave7_B2F_Psfelite1_Event_Script_4:
+	msgbox Psfcave7_B2F_Psfelite1_Event_Script_Text_0, MSGBOX_NPC
+	addvar VAR_STORYLINE_STATE, 1
+	goto Psfcave7_B2F_Psfelite1_Event_Script_1
+
 
 Psfcave7_B2F_Psfelite2_Event_Script::
 	lock
@@ -100,6 +107,7 @@ Psfcave7_B2F_Psfelite2_Event_Script::
 	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
 	case 103, Psfcave7_B2F_Psfelite2_Event_Script_3
+	case 104, Psfcave7_B2F_Psfelite2_Event_Script_4
 Psfcave7_B2F_Psfelite2_Event_Script_1:
 	closemessage
 	callnative ClearMugshot
@@ -110,6 +118,10 @@ Psfcave7_B2F_Psfelite2_Event_Script_3:
 	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
 	goto Psfcave7_B2F_Psfelite2_Event_Script_1
 
+Psfcave7_B2F_Psfelite2_Event_Script_4:
+	msgbox Psfcave7_B2F_Psfelite2_Event_Script_Text_0, MSGBOX_NPC
+	goto Psfcave7_B2F_Psfelite2_Event_Script_1
+
 
 Psfcave7_B2F_Psfelite3_Event_Script::
 	lock
@@ -117,6 +129,7 @@ Psfcave7_B2F_Psfelite3_Event_Script::
 	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
 	case 103, Psfcave7_B2F_Psfelite3_Event_Script_3
+	case 104, Psfcave7_B2F_Psfelite3_Event_Script_4
 Psfcave7_B2F_Psfelite3_Event_Script_1:
 	closemessage
 	callnative ClearMugshot
@@ -127,6 +140,11 @@ Psfcave7_B2F_Psfelite3_Event_Script_3:
 	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
 	goto Psfcave7_B2F_Psfelite3_Event_Script_1
 
+Psfcave7_B2F_Psfelite3_Event_Script_4:
+	msgbox Psfcave7_B2F_Psfelite3_Event_Script_Text_0, MSGBOX_NPC
+	addvar VAR_STORYLINE_STATE, 1
+	goto Psfcave7_B2F_Psfelite3_Event_Script_1
+
 
 Psfcave7_B2F_Psfelite4_Event_Script::
 	lock
@@ -134,6 +152,7 @@ Psfcave7_B2F_Psfelite4_Event_Script::
 	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
 	case 103, Psfcave7_B2F_Psfelite4_Event_Script_3
+	case 104, Psfcave7_B2F_Psfelite4_Event_Script_4
 Psfcave7_B2F_Psfelite4_Event_Script_1:
 	closemessage
 	callnative ClearMugshot
@@ -144,3 +163,18 @@ Psfcave7_B2F_Psfelite4_Event_Script_3:
 	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
 	goto Psfcave7_B2F_Psfelite4_Event_Script_1
 
+Psfcave7_B2F_Psfelite4_Event_Script_4:
+	msgbox Psfcave7_B2F_Psfelite3_Event_Script_Text_0, MSGBOX_NPC
+	addvar VAR_STORYLINE_STATE, 1
+	goto Psfcave7_B2F_Psfelite4_Event_Script_1
+
+
+Psfcave7_B2F_Psfelite1_Event_Script_Text_0:
+	.string "you've started and finished a takedown\n"
+	.string "quest.$"
+
+Psfcave7_B2F_Psfelite2_Event_Script_Text_0:
+	.string "I don't have a takedown quest for you.$"
+
+Psfcave7_B2F_Psfelite3_Event_Script_Text_0:
+	.string "you've started and finished a takedown quest.$"
