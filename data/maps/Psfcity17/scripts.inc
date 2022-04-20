@@ -19,6 +19,7 @@ Psfcity17_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfcity17_MapScripts_OnTransition::
+	call Psfcity17_LayoutSwap_Script
 	switch VAR_NATIVERIVALBETA_STATE
 	case 0, Psfcity17_MapScripts_OnTransition_2
 	case 1, Psfcity17_MapScripts_OnTransition_3
@@ -45,13 +46,28 @@ Psfcity17_MapScripts_OnTransition_5:
 	return
 
 
+Psfcity17_LayoutSwap_Script::
+	compare VAR_STORYLINE_STATE, 106
+	goto_if_gt Psfcity17_LayoutSwap_Script_1
+	return
+
+Psfcity17_LayoutSwap_Script_1:
+	setmaplayoutindex LAYOUT_PSFCITY17_POST_EARTHQUAKE
+	return
+
+
 Psfcity17_MapScripts_OnLoad::
 	compare VAR_NATIVERIVALBETA_STATE, 3
-	goto_if_gt Psfcity17_MapScripts_OnLoad_1
+	goto_if_gt Psfcity17_MapScripts_OnLoad_2
 	return
 
 Psfcity17_MapScripts_OnLoad_1:
 	call Psfplace2_PostRaidTiles_Script
+	return
+
+Psfcity17_MapScripts_OnLoad_2:
+	compare VAR_NATIVERIVALBETA_STATE, 7
+	goto_if_lt Psfcity17_MapScripts_OnLoad_1
 	return
 
 

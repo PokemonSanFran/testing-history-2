@@ -60,6 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
+    addvar VAR_NATIVERIVALBETA_STATE,1
 	end
 
 Debug_Script_2::

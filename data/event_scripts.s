@@ -1314,3 +1314,7 @@ Script_RemoveTint::
 	.include "data/maps/Psfcity17_Psfnativerival_House/scripts.inc"
 
 	.include "data/maps/Psfcity9_Warehouse/scripts.inc"
+
+	.include "data/maps/LayoutTester/scripts.inc"
+
+	.include "data/maps/Psfcity17_PostEarthquake/scripts.inc"

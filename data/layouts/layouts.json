@@ -5410,6 +5410,26 @@
       "secondary_tileset": "gTileset_InsideOfTruck",
       "border_filepath": "data/layouts/Psfcity9_Warehouse/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity9_Warehouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAYOUT_TESTER",
+      "name": "LayoutTester_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/LayoutTester/border.bin",
+      "blockdata_filepath": "data/layouts/LayoutTester/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY17_POST_EARTHQUAKE",
+      "name": "Psfcity17_PostEarthquake_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Psfcity17_PostEarthquake/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity17_PostEarthquake/map.bin"
     }
   ]
 }

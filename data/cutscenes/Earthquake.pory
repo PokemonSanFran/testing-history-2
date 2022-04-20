@@ -2,15 +2,18 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
 const PSFNATIVERIVAL = 1
 
+script Earthquake_HideObject_Script {
+}
+
 // EXT. PSFCITY17 PSFNATIVERIVAL HOME
 script Earthquake_ThatNight_Dialogue {
     fadescreen(FADE_TO_BLACK)
-    clearflag(FLAG_TEMP_1)
-    addobject(PSFNATIVERIVAL)
+        clearflag(FLAG_TEMP_1)
+        addobject(PSFNATIVERIVAL)
 
-    msgbox(gText_Earthquake_ThatNight)
-    closemessage
-    fadescreen(FADE_FROM_BLACK)
+        msgbox(gText_Earthquake_ThatNight)
+        closemessage
+        fadescreen(FADE_FROM_BLACK)
 
         playse(SE_M_EARTHQUAKE)
         setvar(VAR_0x8004,8) //vertical pan
@@ -30,182 +33,211 @@ script Earthquake_ThatNight_Dialogue {
         delay(100) //wait until after earthquake
         waitstate
 
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_AreYouOkay)
-    callnative(ClearMugshot)
-    closemessage
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_AreYouOkay)
+        callnative(ClearMugshot)
+        closemessage
 
-msgbox(gText_Earthquake_OhArceus)
+        msgbox(gText_Earthquake_OhArceus)
+        closemessage
 
-applymovement(PLAYER,Earthquake_WalkOutOfBed)
+        applymovement(PLAYER,Earthquake_WalkOutOfBed)
 
-msgbox(gText_Earthquake_HelpMe)
+        msgbox(gText_Earthquake_HelpMe)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_ImFine)
-    callnative(ClearMugshot)
-    closemessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_ImFine)
+        callnative(ClearMugshot)
+        closemessage
 
-applymovement(PSFNATIVERIVAL,Earthquake_WalkToWall)
-waitmovement(PSFNATIVERIVAL)
+        applymovement(PSFNATIVERIVAL,Earthquake_WalkToWall)
+        waitmovement(PSFNATIVERIVAL)
 
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_ThePowersDead)
-    callnative(ClearMugshot)
-    closemessage
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_ThePowersDead)
+        callnative(ClearMugshot)
+        closemessage
 
-    applymovement(PSFNATIVERIVAL,Earthquake_RunOutside)
-    waitmovement(PSFNATIVERIVAL)
-    playse(SE_EXIT)
-    waitse
-    removeobject(PSFTRANSRIVAL)
+        applymovement(PSFNATIVERIVAL,Earthquake_RunOutside)
+        waitmovement(PSFNATIVERIVAL)
+        playse(SE_EXIT)
+        waitse
+        removeobject(PSFNATIVERIVAL)
 
-    applymovement(PLAYER,Earthquake_RunFromBedOutside)
+        applymovement(PLAYER,Earthquake_RunFromBedOutside)
+        waitmovement(0)
 
-    // PSFNATIVERIVAL runs outside, and the player follows.
+        addvar(VAR_STORYLINE_STATE,1)
 
-    // EXT. PSFCITY17
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_HolyShit)
-
-    // Camera pans around the island, showing that shit is fucked right now. Camera pans back to the player. Psfgoodadmin walks up to the pair.
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_OhYoureOkay)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_YeahWhyDidnt)
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_CellTowersWere)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_SoundsLikeWere)
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_ImGoingToMakeAnother)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_OfCourse)
-
-    // PSFNATIVERIVAL and Psfgoodadmin walk away. The player regains control.
-
-    // Cutscene begins again after completing the quest.
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_OkayThingsSeemToBe)
-
-    // Screen fades to black. Screen fades back in. Psfgoodadmin is standing in front of a group of Psfgoodteam members, as well as Psfnativerival and the player.
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_WeveManagedToReestablish)
-
-    // Psfgoodadmin paces back and forth.
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_IReally)
-
-    //PHONE BEEP BEEP
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_AMessageFromThe)
-
-    //PLAYER !
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_ThatsATrap)
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_WhatDoYouMean)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_ShitWeNever)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_IGotAMessage)
-
-    // Psfgoodadmin steps forward.
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_WaitWhat)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_ItGetsCrazier)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_WeBattledBut)
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_ThatDoesntMake)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_ItsJustABunch)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_IDontThinkSo)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_HowCanYouTrust)
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_TheSecondHalf)
-
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_SoSomebodyWantsUs)
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_IThinkItsOn)
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_FineTheThreeOfUs)
-
-    // Psfnativerival turns the player.
-
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_ImGonnaHead)
-
-    // The player is presented with a Yes/No box. If the player chooses Yes, they are warped to Psfplace11. If the player chooses No:
-
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
-    callnative(DrawMugshot)
-msgbox(gText_Earthquake_OkayWeve)
-
-    // Everybody walks off screen. The player resumes control.
+        warp(MAP_PSFCITY17,2)
 }
-    text gText_Earthquake_ThatNight {
-        format("That night…")
-    }
+
+script Earthquake_ShowDestroyedCity_Script {
+
+        lock
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_HolyShit)
+        closemssage
+        callnative(ClearMugshot)
+
+        fadescreen(FADE_TO_BLACK)
+        special(SpawnCameraObject)
+        TeleportCamera(11,7)
+        fadescreen(FADE_FROM_BLACK)
+
+        applymovement(CAMERA,Earthquake_PanCameraDown)
+        waitmovement(0)
+
+        fadescreen(FADE_TO_BLACK)
+        special(SpawnCameraObject)
+        TeleportCamera(33,26)
+        fadescreen(FADE_FROM_BLACK)
+
+        applymovement(CAMERA,Earthquake_PanCameraUp)
+        waitmovement(0)
+
+
+        
+        
+
+        // Camera pans around the island, showing that shit is fucked right now. Camera pans back to the player. Psfgoodadmin walks up to the pair.
+
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_OhYoureOkay)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_YeahWhyDidnt)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_CellTowersWere)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_SoundsLikeWere)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_ImGoingToMakeAnother)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_OfCourse)
+
+        // PSFNATIVERIVAL and Psfgoodadmin walk away. The player regains control.
+
+        // Cutscene begins again after completing the quest.
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_OkayThingsSeemToBe)
+
+        // Screen fades to black. Screen fades back in. Psfgoodadmin is standing in front of a group of Psfgoodteam members, as well as Psfnativerival and the player.
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_WeveManagedToReestablish)
+
+        // Psfgoodadmin paces back and forth.
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_IReally)
+
+        //PHONE BEEP BEEP
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_AMessageFromThe)
+
+        //PLAYER !
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_ThatsATrap)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_WhatDoYouMean)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_ShitWeNever)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_IGotAMessage)
+
+        // Psfgoodadmin steps forward.
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_WaitWhat)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_ItGetsCrazier)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_WeBattledBut)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_ThatDoesntMake)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_ItsJustABunch)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_IDontThinkSo)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_HowCanYouTrust)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_TheSecondHalf)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_SoSomebodyWantsUs)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_IThinkItsOn)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_FineTheThreeOfUs)
+
+        // Psfnativerival turns the player.
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_ImGonnaHead)
+
+        // The player is presented with a Yes/No box. If the player chooses Yes, they are warped to Psfplace11. If the player chooses No:
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_Earthquake_OkayWeve)
+
+        // Everybody walks off screen. The player resumes control.
+}
+text gText_Earthquake_ThatNight {
+    format("That night…")
+}
 
 text gText_Earthquake_AreYouOkay {
     format("{PLAYER}, are you okay?")
@@ -264,77 +296,99 @@ text gText_Earthquake_WeveManagedToReestablish {
 }
 
 text gText_Earthquake_IReally {
-            format("I really don't know how Psfgoodteam is going to hold up under this stress.")
-        }
+    format("I really don't know how Psfgoodteam is going to hold up under this stress.")
+}
 
-    text gText_Earthquake_AMessageFromThe {
-        format("A message from the Events account? Now?")
-    }
+text gText_Earthquake_AMessageFromThe {
+    format("A message from the Events account? Now?")
+}
 
-    text gText_Earthquake_ThatsATrap {
-        format("That's a trap.")
-    }
+text gText_Earthquake_ThatsATrap {
+    format("That's a trap.")
+}
 
-    text gText_Earthquake_WhatDoYouMean {
-        format("What do you mean? That doesn't make any sense.")
-    }
+text gText_Earthquake_WhatDoYouMean {
+    format("What do you mean? That doesn't make any sense.")
+}
 
-    text gText_Earthquake_ShitWeNever {
-        format("Shit, we never got a chance to tell you.")
-    }
+text gText_Earthquake_ShitWeNever {
+    format("Shit, we never got a chance to tell you.")
+}
 
-    text gText_Earthquake_IGotAMessage {
-        format("Psfnativerival and I got a message from that account a few days ago. I went to a warehouse in Psfcity9, and Psfbadadmin2 trapped me there and attacked me.")
-    }
+text gText_Earthquake_IGotAMessage {
+    format("Psfnativerival and I got a message from that account a few days ago. I went to a warehouse in Psfcity9, and Psfbadadmin2 trapped me there and attacked me.")
+}
 
-    text gText_Earthquake_WaitWhat {
-        format("Wait what?")
-    }
+text gText_Earthquake_WaitWhat {
+    format("Wait what?")
+}
 
-    text gText_Earthquake_ItGetsCrazier {
-        format("It gets crazier.")
-    }
+text gText_Earthquake_ItGetsCrazier {
+    format("It gets crazier.")
+}
 
-    text gText_Earthquake_WeBattledBut {
-        format("We battled but… he threw the battle. And then told me to run. It was like he wasn't even trying.")
-    }
+text gText_Earthquake_WeBattledBut {
+    format("We battled but… he threw the battle. And then told me to run. It was like he wasn't even trying.")
+}
 
-    text gText_Earthquake_ThatDoesntMake {
-        format("That doesn't make any sense. Okay, what's this message trying to do…")
-    }
+text gText_Earthquake_ThatDoesntMake {
+    format("That doesn't make any sense. Okay, what's this message trying to do…")
+}
 
-    text gText_Earthquake_ItsJustABunch {
-        format("“TM15@18030122@37.75030467013338, -122.3798002138461” It's just a bunch of nonsense. Maybe a glitch?")
-    }
+text gText_Earthquake_ItsJustABunch {
+    format("“TM15@18030122@37.75030467013338, -122.3798002138461” It's just a bunch of nonsense. Maybe a glitch?")
+}
 
-    text gText_Earthquake_IDontThinkSo {
-        format("…I don't think so. Psfbadadmin2 was really trying to help me. Even when I had dinner with him, their energy was different from everybody else in Psfbadguy.")
-    }
+text gText_Earthquake_IDontThinkSo {
+    format("…I don't think so. Psfbadadmin2 was really trying to help me. Even when I had dinner with him, their energy was different from everybody else in Psfbadguy.")
+}
 
-    text gText_Earthquake_HowCanYouTrust {
-        format("How can you trust them after ALL of this?")
-    }
+text gText_Earthquake_HowCanYouTrust {
+    format("How can you trust them after ALL of this?")
+}
 
-    text gText_Earthquake_TheSecondHalf {
-        format("The second half of that message are GPS coordinates, if that counts for anything.")
-    }
+text gText_Earthquake_TheSecondHalf {
+    format("The second half of that message are GPS coordinates, if that counts for anything.")
+}
 
-    text gText_Earthquake_SoSomebodyWantsUs {
-        format("So somebody wants us to go somewhere. Where is that?")
-    }
+text gText_Earthquake_SoSomebodyWantsUs {
+    format("So somebody wants us to go somewhere. Where is that?")
+}
 
-    text gText_Earthquake_IThinkItsOn {
-        format("I think it's on the mainland, by Psfplace11. Let's take a small team to go investigate.")
-    }
+text gText_Earthquake_IThinkItsOn {
+    format("I think it's on the mainland, by Psfroute8. Let's take a small team to go investigate.")
+}
 
-    text gText_Earthquake_FineTheThreeOfUs {
-        format("Fine. The three of us and maybe a few more… nobody can take all of us at once.")
-    }
+text gText_Earthquake_FineTheThreeOfUs {
+    format("Fine. The three of us and maybe a few more… nobody can take all of us at once.")
+}
 
-    text gText_Earthquake_ImGonnaHead {
-        format("I'm gonna head over to Psfplace11 right now. Want to come with me?")
-    }
+text gText_Earthquake_ImGonnaHead {
+    format("I'm gonna head over to Psfroute8 right now. Want to come with me?")
+}
 
-    text gText_Earthquake_OkayWeve {
-        format("Okay, we've all got our orders. Let's stay in touch.")
-    }
+text gText_Earthquake_OkayWeve {
+    format("Okay, we've all got our orders. Let's stay in touch.")
+}
+
+movement Earthquake_WalkToWall {
+    walk_up * 2
+        step_end
+}
+
+movement Earthquake_RunOutside {
+    player_run_right
+        player_run_up
+        step_end
+}
+
+movement Earthquake_RunFromBedOutside {
+    player_run_right * 5
+        player_run_up * 3
+        step_end
+}
+
+movement Earthquake_WalkOutOfBed {
+    walk_right
+        step_end
+}

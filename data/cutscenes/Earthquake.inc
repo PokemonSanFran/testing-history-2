@@ -25,15 +25,35 @@ Earthquake_ThatNight_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	msgbox gText_Earthquake_OhArceus
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Earthquake_WalkOutOfBed
 	msgbox gText_Earthquake_HelpMe
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ImFine
 	callnative ClearMugshot
 	closemessage
+	applymovement 1, Earthquake_WalkToWall
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ThePowersDead
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, Earthquake_RunOutside
+	waitmovement 1
+	playse SE_EXIT
+	waitse
+	removeobject 1
+	applymovement OBJ_EVENT_ID_PLAYER, Earthquake_RunFromBedOutside
+	waitmovement 0
+	addvar VAR_STORYLINE_STATE, 1
+	warp MAP_PSFCITY17, 2
+	return
+
+
+Earthquake_HelpCitizens::
+	lock
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_HolyShit
@@ -120,6 +140,31 @@ Earthquake_ThatNight_Dialogue::
 	msgbox gText_Earthquake_OkayWeve
 	return
 
+
+Earthquake_WalkToWall:
+	walk_up
+	walk_up
+	step_end
+
+Earthquake_RunOutside:
+	player_run_right
+	player_run_up
+	step_end
+
+Earthquake_RunFromBedOutside:
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_up
+	player_run_up
+	player_run_up
+	step_end
+
+Earthquake_WalkOutOfBed:
+	walk_right
+	step_end
 
 gText_Earthquake_ThatNight::
 	.string "That night…$"
@@ -248,7 +293,7 @@ gText_Earthquake_SoSomebodyWantsUs::
 
 gText_Earthquake_IThinkItsOn::
 	.string "I think it's on the mainland, by\n"
-	.string "Psfplace11. Let's take a small team to\l"
+	.string "Psfroute8. Let's take a small team to\l"
 	.string "go investigate.$"
 
 gText_Earthquake_FineTheThreeOfUs::
@@ -257,7 +302,7 @@ gText_Earthquake_FineTheThreeOfUs::
 	.string "once.$"
 
 gText_Earthquake_ImGonnaHead::
-	.string "I'm gonna head over to Psfplace11 right\n"
+	.string "I'm gonna head over to Psfroute8 right\n"
 	.string "now. Want to come with me?$"
 
 gText_Earthquake_OkayWeve::

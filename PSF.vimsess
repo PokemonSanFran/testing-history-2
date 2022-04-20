@@ -4,10 +4,10 @@ let s:cpo_save=&cpo
 set cpo&vim
 inoremap <C-U> u
 map! <D-v> *
-vmap <D-x> "*d
-vmap <D-c> "*y
-vmap <D-v> "-d"*P
 nmap <D-v> "*P
+vmap <D-v> "-d"*P
+vmap <D-c> "*y
+vmap <D-x> "*d
 map Q gq
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
@@ -52,6 +52,7 @@ set termguicolors
 set ttimeout
 set ttimeoutlen=100
 set wildmenu
+set window=48
 set winminheight=0
 set winminwidth=0
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
@@ -85,7 +86,7 @@ badd +3 data/maps/OkayLetsFixit_Flashback/scripts.pory
 badd +108 data/cutscenes/OkayLetsFixit.pory
 badd +19 data/maps/Psfplace1/scripts.pory
 badd +35 data/cutscenes/YouRealizeTheyreEvilRight.pory
-badd +63 data/scripts/debug.inc
+badd +67 data/scripts/debug.inc
 badd +3 data/maps/MossdeepCity_GameCorner_1F/scripts.inc
 badd +22 data/maps/Psfplace14_Lockers/scripts.pory
 badd +3383 src/field_specials.c
@@ -98,7 +99,7 @@ badd +11 data/maps/Psfcity10_EliteHome/scripts.pory
 badd +18 data/maps/Psfcity15_Newspaper/scripts.pory
 badd +34 data/cutscenes/LetsGettheBandBackTogether.inc
 badd +277 data/cutscenes/Manhunt.pory
-badd +165 data/cutscenes/WhyAreYouHelpingThem.pory
+badd +438 data/cutscenes/WhyAreYouHelpingThem.pory
 badd +56 data/cutscenes/Finals.pory
 badd +11 data/maps/Psfcave3/scripts.pory
 badd +6 include/constants/weather.h
@@ -114,10 +115,10 @@ badd +13 include/constants/map_scripts.h
 badd +44 .gitignore
 badd +9 data/maps/Psfbadguy1Tower_2F/scripts.pory
 badd +62 data/cutscenes/HowDisappointing.pory
-badd +258 data/cutscenes/SurvivalChance333.pory
+badd +180 data/cutscenes/SurvivalChance333.pory
 badd +223 data/maps/SootopolisCity/scripts.inc
 badd +1 data/cutscenes/OneDown.pory
-badd +33 data/maps/Psfcity17/scripts.pory
+badd +30 data/maps/Psfcity17/scripts.pory
 badd +1 data/cutscenes/Earthquake.pory
 argglobal
 %argdel
@@ -146,12 +147,12 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 82 + 89) / 178)
-exe '2resize ' . ((&lines * 24 + 26) / 52)
+exe '2resize ' . ((&lines * 23 + 24) / 49)
 exe 'vert 2resize ' . ((&columns * 95 + 89) / 178)
-exe '3resize ' . ((&lines * 24 + 26) / 52)
+exe '3resize ' . ((&lines * 22 + 24) / 49)
 exe 'vert 3resize ' . ((&columns * 95 + 89) / 178)
 argglobal
-terminal ++curwin ++cols=82 ++rows=49 
+terminal ++curwin ++cols=82 ++rows=46 
 let s:term_buf_59 = bufnr()
 balt data/maps/Psfcave7_B2F/scripts.pory
 setlocal keymap=
@@ -282,15 +283,15 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 24) / 49)
+let s:l = 24 - ((11 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 24
+normal! 069|
 wincmd w
 argglobal
-balt data/maps/Psfcity8_Compound_2F/scripts.pory
+balt data/cutscenes/WhyAreYouHelpingThem.pory
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -421,12 +422,12 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 52 - ((14 * winheight(0) + 12) / 24)
+let s:l = 38 - ((15 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 52
-normal! 045|
+keepjumps 38
+normal! 018|
 wincmd w
 argglobal
 if bufexists(fnamemodify("data/cutscenes/Earthquake.pory", ":p")) | buffer data/cutscenes/Earthquake.pory | else | edit data/cutscenes/Earthquake.pory | endif
@@ -561,18 +562,18 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 63 - ((10 * winheight(0) + 12) / 24)
+let s:l = 6 - ((5 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 63
-normal! 010|
+keepjumps 6
+normal! 0
 wincmd w
-2wincmd w
+3wincmd w
 exe 'vert 1resize ' . ((&columns * 82 + 89) / 178)
-exe '2resize ' . ((&lines * 24 + 26) / 52)
+exe '2resize ' . ((&lines * 23 + 24) / 49)
 exe 'vert 2resize ' . ((&columns * 95 + 89) / 178)
-exe '3resize ' . ((&lines * 24 + 26) / 52)
+exe '3resize ' . ((&lines * 22 + 24) / 49)
 exe 'vert 3resize ' . ((&columns * 95 + 89) / 178)
 tabnext
 edit include/constants/flags.h
@@ -600,14 +601,14 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 25 + 26) / 52)
-exe 'vert 1resize ' . ((&columns * 88 + 89) / 178)
-exe '2resize ' . ((&lines * 23 + 26) / 52)
-exe 'vert 2resize ' . ((&columns * 88 + 89) / 178)
-exe '3resize ' . ((&lines * 23 + 26) / 52)
-exe 'vert 3resize ' . ((&columns * 89 + 89) / 178)
-exe '4resize ' . ((&lines * 25 + 26) / 52)
-exe 'vert 4resize ' . ((&columns * 89 + 89) / 178)
+exe '1resize ' . ((&lines * 20 + 24) / 49)
+exe 'vert 1resize ' . ((&columns * 89 + 89) / 178)
+exe '2resize ' . ((&lines * 25 + 24) / 49)
+exe 'vert 2resize ' . ((&columns * 89 + 89) / 178)
+exe '3resize ' . ((&lines * 15 + 24) / 49)
+exe 'vert 3resize ' . ((&columns * 88 + 89) / 178)
+exe '4resize ' . ((&lines * 30 + 24) / 49)
+exe 'vert 4resize ' . ((&columns * 88 + 89) / 178)
 argglobal
 balt docs/flags
 setlocal keymap=
@@ -740,7 +741,7 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 51 - ((11 * winheight(0) + 12) / 25)
+let s:l = 51 - ((9 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -880,12 +881,12 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 2 - ((0 * winheight(0) + 11) / 23)
+let s:l = 7 - ((6 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
-normal! 038|
+keepjumps 7
+normal! 0
 wincmd w
 argglobal
 if bufexists(fnamemodify("include/constants/vars.h", ":p")) | buffer include/constants/vars.h | else | edit include/constants/vars.h | endif
@@ -1020,12 +1021,12 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 172 - ((5 * winheight(0) + 11) / 23)
+let s:l = 100 - ((8 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 172
-normal! 0
+keepjumps 100
+normal! 013|
 wincmd w
 argglobal
 if bufexists(fnamemodify("docs/vars", ":p")) | buffer docs/vars | else | edit docs/vars | endif
@@ -1160,21 +1161,21 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 197 - ((9 * winheight(0) + 12) / 25)
+let s:l = 199 - ((14 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 197
+keepjumps 199
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 25 + 26) / 52)
-exe 'vert 1resize ' . ((&columns * 88 + 89) / 178)
-exe '2resize ' . ((&lines * 23 + 26) / 52)
-exe 'vert 2resize ' . ((&columns * 88 + 89) / 178)
-exe '3resize ' . ((&lines * 23 + 26) / 52)
-exe 'vert 3resize ' . ((&columns * 89 + 89) / 178)
-exe '4resize ' . ((&lines * 25 + 26) / 52)
-exe 'vert 4resize ' . ((&columns * 89 + 89) / 178)
+exe '1resize ' . ((&lines * 20 + 24) / 49)
+exe 'vert 1resize ' . ((&columns * 89 + 89) / 178)
+exe '2resize ' . ((&lines * 25 + 24) / 49)
+exe 'vert 2resize ' . ((&columns * 89 + 89) / 178)
+exe '3resize ' . ((&lines * 15 + 24) / 49)
+exe 'vert 3resize ' . ((&columns * 88 + 89) / 178)
+exe '4resize ' . ((&lines * 30 + 24) / 49)
+exe 'vert 4resize ' . ((&columns * 88 + 89) / 178)
 tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0

@@ -114,6 +114,7 @@
 4: played explain raid cutscene, raid has begun
 5: raid finished
 6: day after the raid
+7: League starts, raid damage cleaned up
 
 #VAR_ROUTE118_STATE
 **RELEVANCE**: Track the state of the Naval Base
@@ -195,6 +196,7 @@
 104: Finished WarehouseRave AND "SpeechSpeechSpeech"
 105: Completed one take down quest
 106: Told to get some rest after first take down quest
+107: Earthquake has happened, need to help people
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck
