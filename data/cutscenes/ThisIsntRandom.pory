@@ -1,0 +1,6 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFTRANSRIVAL = 1
+
+script ThisIs {
+    return
+}

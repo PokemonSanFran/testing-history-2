@@ -3,7 +3,8 @@ mapscripts Psfroute8_MapScripts {
         goto(Psfroute8_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 107: ThisIsntRandom_MeetUp_Dialogue
+        //VAR_STORYLINE_STATE, 107: ThisIsntRandom_MeetUp_Dialogue
+        FLAG_SYS_BRAILLE_DIG, TRUE: Debug_Script_2
     ]
 }
 

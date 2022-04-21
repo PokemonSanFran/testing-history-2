@@ -1,7 +1,7 @@
-#ifndef GUARD_BRAILLE_PUZZLES_H
-#define GUARD_BRAILLE_PUZZLES_H
+#ifndef GUARD_FIELD_PUZZLES_H
+#define GUARD_FIELD_PUZZLES_H
 
 bool8 ShouldDoSecretLabDigEffect(void);
 void DoSecretLabDigEffect(void);
 
-#endif // GUARD_BRAILLE_PUZZLES_H
+#endif // GUARD_FIELD_PUZZLES_H

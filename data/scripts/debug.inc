@@ -60,11 +60,11 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    addvar VAR_NATIVERIVALBETA_STATE,1
+    givecustommon SPECIES_DIGLETT,100,ITEM_CHOICE_SCARF,ITEM_ULTRA_BALL,NATURE_JOLLY,0,0,252,0,0,4,252,31,31,31,31,31,31,MOVE_DIG,MOVE_U_TURN,MOVE_TRICK,MOVE_HEALING_WISH
 	end
 
 Debug_Script_2::
-//    callEventScript_PCMainMenu
+    call EventScript_PCMainMenu
 	end
 
 Debug_Script_3::

@@ -9,6 +9,8 @@
 #include "sprite.h"
 #include "constants/field_effects.h"
 
+#include "field_puzzles.h"
+
 // static functions
 static void FieldCallback_Dig(void);
 static void StartDigFieldEffect(void);
@@ -41,7 +43,8 @@ bool8 FldEff_UseDig(void)
 
     gTasks[taskId].data[8] = (u32)StartDigFieldEffect >> 16;
     gTasks[taskId].data[9] = (u32)StartDigFieldEffect;
-    if (!ShouldDoBrailleDigEffect())
+    //if (!ShouldDoBrailleDigEffect())
+    if (!ShouldDoSecretLabDigEffect())
         SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT);
     return FALSE;
 }
@@ -51,9 +54,11 @@ static void StartDigFieldEffect(void)
     u8 taskId;
 
     FieldEffectActiveListRemove(FLDEFF_USE_DIG);
-    if (ShouldDoBrailleDigEffect())
+    //if (ShouldDoBrailleDigEffect()) //removed for PSF
+    if (ShouldDoSecretLabDigEffect())
     {
-        DoBrailleDigEffect();
+        //DoBrailleDigEffect(); //removed for PSF
+        DoSecretLabDigEffect();
     }
     else
     {
