@@ -8,7 +8,8 @@ mapscripts Psfcity17_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_NATIVERIVALBETA_STATE, 3: SurvivalChance333_ExplainOperation 
         VAR_NATIVERIVALBETA_STATE, 5: WhyAreYouHelpingThem_MissionDebrief_Dialogue
-        //VAR_STORYLINE_STATE, 107:
+        VAR_NATIVERIVALBETA_STATE, 8: Earthquake_ShowDestroyedCity_Script
+        VAR_NATIVERIVALBETA_STATE, 11: Earthquake_PostRescue_Dialogue
     ]
 }
 
@@ -20,6 +21,8 @@ script Psfcity17_MapScripts_OnTransition {
         case 1: goto(SurvivalChance333_HideObject_Psfcity17_Script)
         case 3: call(AssholesHome_HideObject_Script)
         case 5: goto(WhyAreYouHelpingThem_ObjectDebriefSetUp_Script)
+        case 8: call(Earthquake_HideObject_Script)
+        case 9: call(Earthquake_HideObject_Script)
         default:
             call(AssholesHome_HideObject_Script)
             call(SurvivalChance333_HideObject_Psfcity17_Script)
@@ -28,7 +31,7 @@ script Psfcity17_MapScripts_OnTransition {
 }
 
 script Psfcity17_LayoutSwap_Script {
-    if (var(VAR_STORYLINE_STATE) > 106){
+    if (var(VAR_NATIVERIVALBETA_STATE) > 7){
         setmaplayoutindex(LAYOUT_PSFCITY17_POST_EARTHQUAKE)
     }
 }
@@ -92,4 +95,12 @@ script Psfcity17_FerryState2_Script{
             case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         }
     call(Common_EventScript_FerryDepartIsland)
+}
+
+script Psfcity17_Person1_Fisherman {
+    if (var(VAR_NATIVERIVALBETA_STATE) == 9){
+        msgbox(format("thanks for saving me!"),MSGBOX_NPC)
+        addvar(VAR_NATIVERIVALBETA_STATE,2)
+    }
+    end
 }

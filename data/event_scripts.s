@@ -1205,7 +1205,7 @@ Script_RemoveTint::
 .include "data/cutscenes/SpeechSpeechSpeech.inc"
 .include "data/cutscenes/OneDown.inc"
 .include "data/cutscenes/Earthquake.inc"
-##  .include "data/cutscenes/ThisIsntRandom.inc"
+.include "data/cutscenes/ThisIsntRandom.inc"
 ##  .include "data/cutscenes/WaitEvenThen.inc"
 ##  .include "data/cutscenes/LetsFinishThis.inc"
 ##  .include "data/cutscenes/ImIn.inc"

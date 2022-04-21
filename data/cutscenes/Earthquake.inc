@@ -1,7 +1,37 @@
+Earthquake_HideObject_Script::
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_2
+	setobjectxyperm 3, 28, 33
+	turnobject 3, DIR_NORTH
+	return
+
+
+Earthquake_PostRescue_Objects_Script::
+	clearflag FLAG_TEMP_1
+	clearflag FLAG_TEMP_3
+	clearflag FLAG_TEMP_4
+	addobject 3
+	addobject 13
+	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 15, 32, 10
+	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 16, 31, 12
+	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 17, 31, 11
+	turnvobject 16, DIR_EAST
+	turnvobject 17, DIR_EAST
+	setobjectxy OBJ_EVENT_ID_PLAYER, 32, 13
+	setobjectxy 3, 33, 12
+	setobjectxy 13, 33, 11
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	applymovement 13, Common_Movement_FaceLeft
+	turnobject 3, DIR_WEST
+	TeleportCamera 32, 13
+	return
+
+
 Earthquake_ThatNight_Dialogue::
 	fadescreen FADE_TO_BLACK
 	clearflag FLAG_TEMP_1
 	addobject 1
+	applymovement 1, Common_Movement_FaceDown
 	msgbox gText_Earthquake_ThatNight
 	closemessage
 	fadescreen FADE_FROM_BLACK
@@ -47,16 +77,42 @@ Earthquake_ThatNight_Dialogue::
 	removeobject 1
 	applymovement OBJ_EVENT_ID_PLAYER, Earthquake_RunFromBedOutside
 	waitmovement 0
-	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_NATIVERIVALBETA_STATE, 1
 	warp MAP_PSFCITY17, 2
 	return
 
 
-Earthquake_HelpCitizens::
+Earthquake_ShowDestroyedCity_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_HolyShit
+	closemessage
+	callnative ClearMugshot
+	fadescreen FADE_TO_BLACK
+	TeleportCamera 11, 7
+	special SpawnCameraObject
+	fadescreen FADE_FROM_BLACK
+	applymovement OBJ_EVENT_ID_CAMERA, Earthquake_PanCameraDown
+	waitmovement 0
+	fadescreen FADE_TO_BLACK
+	TeleportCamera 33, 26
+	special SpawnCameraObject
+	fadescreen FADE_FROM_BLACK
+	applymovement OBJ_EVENT_ID_CAMERA, Earthquake_PanCameraUp
+	waitmovement 0
+	fadescreen FADE_TO_BLACK
+	TeleportCamera 29, 33
+	fadescreen FADE_FROM_BLACK
+	goto Earthquake_StartRescue_Dialogue
+	return
+
+
+Earthquake_StartRescue_Dialogue::
+	special RemoveCameraObject
+	addobject 13
+	applymovement 13, Earthquake_WalkToPair
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_OhYoureOkay
@@ -75,18 +131,50 @@ Earthquake_HelpCitizens::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_OfCourse
+	closemessage
+	callnative ClearMugshot
+	applymovement 3, Earthquake_WalkAwayA
+	applymovement 13, Earthquake_WalkAwayB
+	waitmovement 3
+	waitmovement 13
+	removeobject 3
+	removeobject 13
+	addvar VAR_NATIVERIVALBETA_STATE, 1
+	release
+	end
+
+
+Earthquake_PostRescue_Dialogue::
+	lock
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_OkayThingsSeemToBe
+	callnative ClearMugshot
+	closemessage
+	fadescreen FADE_TO_BLACK
+	call Earthquake_PostRescue_Objects_Script
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_WeveManagedToReestablish
+	callnative ClearMugshot
+	closemessage
+	applymovement 13, Earthquake_Pace
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IReally
+	playse SE_POKENAV_CALL
+	waitse
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_AMessageFromThe
+	callnative ClearMugshot
+	closemessage
+	playse SE_PIN
+	waitse
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ThatsATrap
@@ -96,9 +184,15 @@ Earthquake_HelpCitizens::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ShitWeNever
+	callnative ClearMugshot
+	closemessage
+	applymovement 3, Common_Movement_FaceUp
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IGotAMessage
+	applymovement 13, Earthquake_TurnToPlayer
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_WaitWhat
@@ -117,6 +211,10 @@ Earthquake_HelpCitizens::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IDontThinkSo
+	callnative ClearMugshot
+	closemessage
+	applymovement 3, Common_Movement_FaceDown
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_HowCanYouTrust
@@ -129,16 +227,49 @@ Earthquake_HelpCitizens::
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IThinkItsOn
+	callnative ClearMugshot
+	closemessage
+	applymovement 3, Common_Movement_FaceUp
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_FineTheThreeOfUs
+	callnative ClearMugshot
+	closemessage
+	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_NATIVERIVALBETA_STATE, 1
+	goto Earthquake_AskPlayerWarp_Script
+	return
+
+
+Earthquake_AskPlayerWarp_Script::
+	applymovement 3, Earthquake_TurnToPlayer
+	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
-	msgbox gText_Earthquake_ImGonnaHead
+	msgbox gText_Earthquake_ImGonnaHead, MSGBOX_YESNO
+	closemessage
+	callnative ClearMugshot
+	compare VAR_RESULT, YES
+	goto_if_eq Earthquake_AskPlayerWarp_Script_2
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_OkayWeve
-	return
+	closemessage
+	callnative ClearMugshot
+	fadescreen FADE_TO_BLACK
+	removeobject 15
+	removeobject 16
+	removeobject 17
+	removeobject 3
+	removeobject 13
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+Earthquake_AskPlayerWarp_Script_2:
+	warpsilent MAP_PSFROUTE8, 255, 10, 24
+	end
 
 
 Earthquake_WalkToWall:
@@ -164,6 +295,98 @@ Earthquake_RunFromBedOutside:
 
 Earthquake_WalkOutOfBed:
 	walk_right
+	step_end
+
+Earthquake_PanCameraDown:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Earthquake_PanCameraUp:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Earthquake_PanCameraLeft:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+Earthquake_WalkToPair:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+Earthquake_WalkAwayA:
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Earthquake_WalkAwayB:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Earthquake_Pace:
+	walk_right
+	walk_up
+	walk_up
+	walk_down
+	walk_down
+	walk_up
+	walk_up
+	walk_down
+	walk_down
+	step_end
+
+Earthquake_TurnToPlayer:
+	walk_left
+	face_down
 	step_end
 
 gText_Earthquake_ThatNight::
@@ -231,8 +454,8 @@ gText_Earthquake_IReally::
 	.string "going to hold up under this stress.$"
 
 gText_Earthquake_AMessageFromThe::
-	.string "A message from the Events account?\n"
-	.string "Now?$"
+	.string "My phone got a message from the Events\n"
+	.string "account? Now?$"
 
 gText_Earthquake_ThatsATrap::
 	.string "That's a trap.$"

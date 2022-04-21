@@ -54,6 +54,7 @@ WhyAreYouHelpingThem_ObjectSetUpPostSave_Script::
 
 WhyAreYouHelpingThem_ObjectDebriefSetUp_Script::
 	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
 	setobjectxyperm 4, 26, 4
 	setobjectxyperm 5, 25, 6
 	setobjectxyperm 6, 27, 6

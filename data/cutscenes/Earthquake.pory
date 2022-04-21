@@ -1,15 +1,49 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
-const PSFNATIVERIVAL = 1
+const PSFNATIVERIVAL = 3 //outside house
+const PSFGOODADMIN = 13
+const GRUNTA = 15
+const GRUNTB = 16
+const GRUNTC = 17
 
 script Earthquake_HideObject_Script {
+    setflag(FLAG_TEMP_4)
+        setflag(FLAG_TEMP_2)
+        setobjectxyperm(PSFNATIVERIVAL,28,33)
+        turnobject(PSFNATIVERIVAL,DIR_NORTH)
 }
 
-// EXT. PSFCITY17 PSFNATIVERIVAL HOME
+script Earthquake_PostRescue_Objects_Script {
+        clearflag(FLAG_TEMP_1)
+        clearflag(FLAG_TEMP_3)
+        clearflag(FLAG_TEMP_4)
+
+        addobject(PSFNATIVERIVAL)
+        addobject(PSFGOODADMIN)
+        
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,15,32,10)
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,16,31,12)
+        createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,17,31,11)
+
+        turnvobject(16,DIR_EAST)
+        turnvobject(17,DIR_EAST)
+
+        setobjectxy(PLAYER,32,13)
+        setobjectxy(PSFNATIVERIVAL,33,12)
+        setobjectxy(PSFGOODADMIN,33,11)
+        turnobject(PLAYER,DIR_NORTH)
+        
+        applymovement(PSFGOODADMIN,Common_Movement_FaceLeft)
+        turnobject(PSFNATIVERIVAL,DIR_WEST)
+
+        TeleportCamera(32,13)
+}
+
 script Earthquake_ThatNight_Dialogue {
     fadescreen(FADE_TO_BLACK)
         clearflag(FLAG_TEMP_1)
-        addobject(PSFNATIVERIVAL)
+        addobject(1)
+        applymovement(1,Common_Movement_FaceDown)
 
         msgbox(gText_Earthquake_ThatNight)
         closemessage
@@ -24,7 +58,7 @@ script Earthquake_ThatNight_Dialogue {
 
         playse(SE_PIN)
         applymovement(PLAYER,Common_Movement_ExclamationMark)
-        applymovement(PSFNATIVERIVAL,Common_Movement_ExclamationMark)
+        applymovement(1,Common_Movement_ExclamationMark)
 
         waitstate
         playse(SE_M_EARTHQUAKE)
@@ -52,8 +86,8 @@ script Earthquake_ThatNight_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFNATIVERIVAL,Earthquake_WalkToWall)
-        waitmovement(PSFNATIVERIVAL)
+        applymovement(1,Earthquake_WalkToWall)
+        waitmovement(1)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -61,51 +95,59 @@ script Earthquake_ThatNight_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFNATIVERIVAL,Earthquake_RunOutside)
-        waitmovement(PSFNATIVERIVAL)
+        applymovement(1,Earthquake_RunOutside)
+        waitmovement(1)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFNATIVERIVAL)
+        removeobject(1)
 
         applymovement(PLAYER,Earthquake_RunFromBedOutside)
         waitmovement(0)
 
-        addvar(VAR_STORYLINE_STATE,1)
-
+        addvar(VAR_NATIVERIVALBETA_STATE,1)
         warp(MAP_PSFCITY17,2)
 }
 
 script Earthquake_ShowDestroyedCity_Script {
-
-        lock
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+    lock
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_HolyShit)
-        closemssage
+        closemessage
         callnative(ClearMugshot)
 
         fadescreen(FADE_TO_BLACK)
-        special(SpawnCameraObject)
         TeleportCamera(11,7)
+        special(SpawnCameraObject)
         fadescreen(FADE_FROM_BLACK)
 
         applymovement(CAMERA,Earthquake_PanCameraDown)
         waitmovement(0)
 
         fadescreen(FADE_TO_BLACK)
-        special(SpawnCameraObject)
         TeleportCamera(33,26)
+        special(SpawnCameraObject)
         fadescreen(FADE_FROM_BLACK)
 
         applymovement(CAMERA,Earthquake_PanCameraUp)
         waitmovement(0)
 
+        fadescreen(FADE_TO_BLACK)
+        TeleportCamera(29,33)
 
-        
-        
+        fadescreen(FADE_FROM_BLACK)
+        goto(Earthquake_StartRescue_Dialogue)
+}
 
-        // Camera pans around the island, showing that shit is fucked right now. Camera pans back to the player. Psfgoodadmin walks up to the pair.
+script Earthquake_StartRescue_Dialogue {
+    //PSF TODO Prevent player leaving the city during this mission
 
+    special(RemoveCameraObject)
+
+        addobject(PSFGOODADMIN)
+
+        applymovement(PSFGOODADMIN,Earthquake_WalkToPair)
+        waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -130,34 +172,61 @@ script Earthquake_ShowDestroyedCity_Script {
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_OfCourse)
+        closemessage
+        callnative(ClearMugshot)
 
-        // PSFNATIVERIVAL and Psfgoodadmin walk away. The player regains control.
+        applymovement(PSFNATIVERIVAL,Earthquake_WalkAwayA)
+        applymovement(PSFGOODADMIN,Earthquake_WalkAwayB)
+        waitmovement(PSFNATIVERIVAL)
+        waitmovement(PSFGOODADMIN)
+        removeobject(PSFNATIVERIVAL)
+        removeobject(PSFGOODADMIN)
 
-        // Cutscene begins again after completing the quest.
+        addvar(VAR_NATIVERIVALBETA_STATE,1)
+        release
+        end
+}
+
+
+script Earthquake_PostRescue_Dialogue {
+    lock
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_OkayThingsSeemToBe)
+        callnative(ClearMugshot)
+        closemessage
 
-        // Screen fades to black. Screen fades back in. Psfgoodadmin is standing in front of a group of Psfgoodteam members, as well as Psfnativerival and the player.
+        fadescreen(FADE_TO_BLACK)
+        call(Earthquake_PostRescue_Objects_Script)
+        fadescreen(FADE_FROM_BLACK)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_WeveManagedToReestablish)
+        callnative(ClearMugshot)
+        closemessage
 
-        // Psfgoodadmin paces back and forth.
+        applymovement(PSFGOODADMIN,Earthquake_Pace)
+        waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_IReally)
 
-        //PHONE BEEP BEEP
+        playse(SE_POKENAV_CALL)
+        waitse
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_AMessageFromThe)
+        callnative(ClearMugshot)
+        closemessage
 
-        //PLAYER !
+        playse(SE_PIN)
+        waitse
+        applymovement(PLAYER,Common_Movement_ExclamationMark)
+        waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -170,12 +239,18 @@ script Earthquake_ShowDestroyedCity_Script {
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_ShitWeNever)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFNATIVERIVAL,Common_Movement_FaceUp)
+        waitmovement(PSFNATIVERIVAL)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_IGotAMessage)
 
-        // Psfgoodadmin steps forward.
+        applymovement(PSFGOODADMIN,Earthquake_TurnToPlayer)
+        waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -200,6 +275,11 @@ script Earthquake_ShowDestroyedCity_Script {
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_IDontThinkSo)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFNATIVERIVAL,Common_Movement_FaceDown)
+        waitmovement(PSFNATIVERIVAL)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -216,25 +296,55 @@ script Earthquake_ShowDestroyedCity_Script {
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_IThinkItsOn)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFNATIVERIVAL,Common_Movement_FaceUp)
+        waitmovement(PSFNATIVERIVAL)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_FineTheThreeOfUs)
+        callnative(ClearMugshot)
+        closemessage
+        addvar(VAR_STORYLINE_STATE,1)
+        addvar(VAR_NATIVERIVALBETA_STATE,1)
+        goto(Earthquake_AskPlayerWarp_Script)
+}
 
-        // Psfnativerival turns the player.
+script Earthquake_AskPlayerWarp_Script {
+        applymovement(PSFNATIVERIVAL,Earthquake_TurnToPlayer)
+        waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ImGonnaHead)
+        msgbox(gText_Earthquake_ImGonnaHead,MSGBOX_YESNO)
+        closemessage
+        callnative(ClearMugshot)
 
-        // The player is presented with a Yes/No box. If the player chooses Yes, they are warped to Psfplace11. If the player chooses No:
+        if (var(VAR_RESULT) == YES){
+            warpsilent(MAP_PSFROUTE8,255,10,24)
+            end
+        }else {
+            setvar(VAR_0x8000, MUGSHOT_ARIANA)
+            callnative(DrawMugshot)
+            msgbox(gText_Earthquake_OkayWeve)
+            closemessage
+            callnative(ClearMugshot)
+        }
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_OkayWeve)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(GRUNTA)
+        removeobject(GRUNTB)
+        removeobject(GRUNTC)
+        removeobject(PSFNATIVERIVAL)
+        removeobject(PSFGOODADMIN)
+        fadescreen(FADE_FROM_BLACK)
 
-        // Everybody walks off screen. The player resumes control.
+        release
+        end
 }
+
 text gText_Earthquake_ThatNight {
     format("That night…")
 }
@@ -300,7 +410,7 @@ text gText_Earthquake_IReally {
 }
 
 text gText_Earthquake_AMessageFromThe {
-    format("A message from the Events account? Now?")
+    format("My phone got a message from the Events account? Now?")
 }
 
 text gText_Earthquake_ThatsATrap {
@@ -391,4 +501,54 @@ movement Earthquake_RunFromBedOutside {
 movement Earthquake_WalkOutOfBed {
     walk_right
         step_end
+}
+
+movement Earthquake_PanCameraDown {
+    walk_down * 10
+        step_end
+}
+
+movement Earthquake_PanCameraUp {
+    walk_up * 10
+        step_end
+}
+
+movement Earthquake_PanCameraLeft {
+    walk_left * 10
+        step_end
+}
+
+movement Earthquake_WalkToPair {
+    walk_right * 5
+        walk_down * 2
+        walk_right * 3
+        face_up
+        step_end
+}
+
+movement Earthquake_WalkAwayA {
+    walk_left
+        walk_up * 6
+        step_end
+}
+
+movement Earthquake_WalkAwayB {
+    walk_left * 2
+        walk_up * 7
+        step_end
+}
+
+movement Earthquake_Pace {
+    walk_right
+        walk_up * 2
+        walk_down * 2
+        walk_up * 2
+        walk_down * 2
+        step_end
+}
+
+movement Earthquake_TurnToPlayer {
+    walk_left
+    face_down
+    step_end
 }

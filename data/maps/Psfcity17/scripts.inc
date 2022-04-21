@@ -15,6 +15,8 @@ Psfcity17_MapScripts_MAP_SCRIPT_ON_LOAD:
 Psfcity17_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_NATIVERIVALBETA_STATE, 3, SurvivalChance333_ExplainOperation
 	map_script_2 VAR_NATIVERIVALBETA_STATE, 5, WhyAreYouHelpingThem_MissionDebrief_Dialogue
+	map_script_2 VAR_NATIVERIVALBETA_STATE, 8, Earthquake_ShowDestroyedCity_Script
+	map_script_2 VAR_NATIVERIVALBETA_STATE, 11, Earthquake_PostRescue_Dialogue
 	.2byte 0
 
 
@@ -25,6 +27,8 @@ Psfcity17_MapScripts_OnTransition::
 	case 1, Psfcity17_MapScripts_OnTransition_3
 	case 3, Psfcity17_MapScripts_OnTransition_4
 	case 5, Psfcity17_MapScripts_OnTransition_5
+	case 8, Psfcity17_MapScripts_OnTransition_6
+	case 9, Psfcity17_MapScripts_OnTransition_7
 	call AssholesHome_HideObject_Script
 	call SurvivalChance333_HideObject_Psfcity17_Script
 	return
@@ -45,9 +49,17 @@ Psfcity17_MapScripts_OnTransition_5:
 	goto WhyAreYouHelpingThem_ObjectDebriefSetUp_Script
 	return
 
+Psfcity17_MapScripts_OnTransition_6:
+	call Earthquake_HideObject_Script
+	return
+
+Psfcity17_MapScripts_OnTransition_7:
+	call Earthquake_HideObject_Script
+	return
+
 
 Psfcity17_LayoutSwap_Script::
-	compare VAR_STORYLINE_STATE, 106
+	compare VAR_NATIVERIVALBETA_STATE, 7
 	goto_if_gt Psfcity17_LayoutSwap_Script_1
 	return
 
@@ -187,3 +199,18 @@ Psfcity17_FerryState2_Script_7:
 	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
 	goto Psfcity17_FerryState2_Script_1
 
+
+Psfcity17_Person1_Fisherman::
+	compare VAR_NATIVERIVALBETA_STATE, 9
+	goto_if_eq Psfcity17_Person1_Fisherman_2
+Psfcity17_Person1_Fisherman_1:
+	end
+
+Psfcity17_Person1_Fisherman_2:
+	msgbox Psfcity17_Person1_Fisherman_Text_0, MSGBOX_NPC
+	addvar VAR_NATIVERIVALBETA_STATE, 2
+	goto Psfcity17_Person1_Fisherman_1
+
+
+Psfcity17_Person1_Fisherman_Text_0:
+	.string "thanks for saving me!$"

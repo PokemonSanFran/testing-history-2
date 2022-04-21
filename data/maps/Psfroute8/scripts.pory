@@ -1,1 +1,11 @@
-mapscripts Psfroute8_MapScripts {}
+mapscripts Psfroute8_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfroute8_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE, 107: ThisIsntRandom_MeetUp_Dialogue
+    ]
+}
+
+script Psfroute8_MapScripts_OnTransition {
+}
