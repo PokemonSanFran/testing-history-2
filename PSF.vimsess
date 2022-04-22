@@ -52,7 +52,7 @@ set termguicolors
 set ttimeout
 set ttimeoutlen=100
 set wildmenu
-set window=48
+set window=47
 set winminheight=0
 set winminwidth=0
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
@@ -86,7 +86,7 @@ badd +3 data/maps/OkayLetsFixit_Flashback/scripts.pory
 badd +108 data/cutscenes/OkayLetsFixit.pory
 badd +19 data/maps/Psfplace1/scripts.pory
 badd +35 data/cutscenes/YouRealizeTheyreEvilRight.pory
-badd +67 data/scripts/debug.inc
+badd +71 data/scripts/debug.inc
 badd +3 data/maps/MossdeepCity_GameCorner_1F/scripts.inc
 badd +22 data/maps/Psfplace14_Lockers/scripts.pory
 badd +3383 src/field_specials.c
@@ -122,16 +122,24 @@ badd +30 data/maps/Psfcity17/scripts.pory
 badd +1 data/cutscenes/Earthquake.pory
 badd +6 data/cutscenes/AssholesHome.pory
 badd +5 data/maps/OldaleTown_House1/scripts.inc
-badd +0 data/maps/Psfroute8/scripts.pory
+badd +7 data/maps/Psfroute8/scripts.pory
 badd +5 data/cutscenes/ThisIsntRandom.pory
 badd +41 data/maps/AncientTomb/scripts.inc
-badd +282 src/braille_puzzles.c
+badd +2 src/braille_puzzles.c
 badd +13 src/field_puzzles.c
 badd +1 include/braille_puzzles.h
 badd +7 include/field_puzzles.h
 badd +153 sym_ewram.txt
 badd +705 ld_script.txt
-badd +22 src/fldeff_dig.c
+badd +35 src/fldeff_dig.c
+badd +3688 src/party_menu.c
+badd +1897 src/strings.c
+badd +3101 include/strings.h
+badd +80 src/fldeff_flash.c
+badd +49 src/field_poison.c
+badd +1186 src/debug.c
+badd +287 src/fldeff_cut.c
+badd +618 include/event_scripts.h
 argglobal
 %argdel
 set stal=2
@@ -159,12 +167,12 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 82 + 89) / 178)
-exe '2resize ' . ((&lines * 22 + 24) / 49)
+exe '2resize ' . ((&lines * 22 + 24) / 48)
 exe 'vert 2resize ' . ((&columns * 95 + 89) / 178)
-exe '3resize ' . ((&lines * 23 + 24) / 49)
+exe '3resize ' . ((&lines * 22 + 24) / 48)
 exe 'vert 3resize ' . ((&columns * 95 + 89) / 178)
 argglobal
-terminal ++curwin ++cols=82 ++rows=46 
+terminal ++curwin ++cols=82 ++rows=45 
 let s:term_buf_59 = bufnr()
 balt data/maps/Psfcave7_B2F/scripts.pory
 setlocal keymap=
@@ -295,155 +303,15 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 22 - ((9 * winheight(0) + 23) / 46)
+let s:l = 9001 - ((25 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 22
-normal! 04|
-wincmd w
-argglobal
-balt data/maps/Psfcity17/scripts.pory
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal cindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinscopedecls=public,protected,private
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal cursorlineopt=both
-setlocal define=^\\s*#\\s*define
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'c'
-setlocal filetype=c
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=^\\s*#\\s*include
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal nomodeline
-setlocal modifiable
-setlocal nrformats=bin,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=ccomplete#Complete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'c'
-setlocal syntax=c
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 6 - ((5 * winheight(0) + 11) / 22)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 6
+keepjumps 9001
 normal! 010|
 wincmd w
 argglobal
-if bufexists(fnamemodify("src/field_puzzles.c", ":p")) | buffer src/field_puzzles.c | else | edit src/field_puzzles.c | endif
-balt include/field_puzzles.h
+balt src/fldeff_dig.c
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -574,18 +442,158 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 17 - ((11 * winheight(0) + 11) / 23)
+let s:l = 12 - ((9 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 17
-normal! 0
+keepjumps 12
+normal! 083|
+wincmd w
+argglobal
+if bufexists(fnamemodify("src/field_puzzles.c", ":p")) | buffer src/field_puzzles.c | else | edit src/field_puzzles.c | endif
+balt src/fldeff_cut.c
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal cursorlineopt=both
+setlocal define=^\\s*#\\s*define
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'c'
+setlocal filetype=c
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=^\\s*#\\s*include
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=ccomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'c'
+setlocal syntax=c
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 15 - ((9 * winheight(0) + 11) / 22)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 15
+normal! 082|
 wincmd w
 3wincmd w
 exe 'vert 1resize ' . ((&columns * 82 + 89) / 178)
-exe '2resize ' . ((&lines * 22 + 24) / 49)
+exe '2resize ' . ((&lines * 22 + 24) / 48)
 exe 'vert 2resize ' . ((&columns * 95 + 89) / 178)
-exe '3resize ' . ((&lines * 23 + 24) / 49)
+exe '3resize ' . ((&lines * 22 + 24) / 48)
 exe 'vert 3resize ' . ((&columns * 95 + 89) / 178)
 tabnext
 edit include/constants/flags.h
@@ -613,13 +621,13 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 20 + 24) / 49)
+exe '1resize ' . ((&lines * 20 + 24) / 48)
 exe 'vert 1resize ' . ((&columns * 89 + 89) / 178)
-exe '2resize ' . ((&lines * 25 + 24) / 49)
+exe '2resize ' . ((&lines * 25 + 24) / 48)
 exe 'vert 2resize ' . ((&columns * 89 + 89) / 178)
-exe '3resize ' . ((&lines * 15 + 24) / 49)
+exe '3resize ' . ((&lines * 15 + 24) / 48)
 exe 'vert 3resize ' . ((&columns * 88 + 89) / 178)
-exe '4resize ' . ((&lines * 30 + 24) / 49)
+exe '4resize ' . ((&lines * 30 + 24) / 48)
 exe 'vert 4resize ' . ((&columns * 88 + 89) / 178)
 argglobal
 balt docs/flags
@@ -893,12 +901,12 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 7 - ((6 * winheight(0) + 12) / 25)
+let s:l = 16 - ((15 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
-normal! 0
+keepjumps 16
+normal! 037|
 wincmd w
 argglobal
 if bufexists(fnamemodify("include/constants/vars.h", ":p")) | buffer include/constants/vars.h | else | edit include/constants/vars.h | endif
@@ -1180,13 +1188,13 @@ normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 20 + 24) / 49)
+exe '1resize ' . ((&lines * 20 + 24) / 48)
 exe 'vert 1resize ' . ((&columns * 89 + 89) / 178)
-exe '2resize ' . ((&lines * 25 + 24) / 49)
+exe '2resize ' . ((&lines * 25 + 24) / 48)
 exe 'vert 2resize ' . ((&columns * 89 + 89) / 178)
-exe '3resize ' . ((&lines * 15 + 24) / 49)
+exe '3resize ' . ((&lines * 15 + 24) / 48)
 exe 'vert 3resize ' . ((&columns * 88 + 89) / 178)
-exe '4resize ' . ((&lines * 30 + 24) / 49)
+exe '4resize ' . ((&lines * 30 + 24) / 48)
 exe 'vert 4resize ' . ((&columns * 88 + 89) / 178)
 tabnext 1
 set stal=1

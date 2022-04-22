@@ -12,15 +12,15 @@
 #include "party_menu.h"
 #include "fldeff.h"
 
+#include "event_scripts.h" //PSF allows for calling of mapscript to set secret lab
+
 bool8 ShouldDoSecretLabDigEffect(void)
 {
     if (!FlagGet(FLAG_SYS_BRAILLE_DIG)
      && (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE8)
      && gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE8)))
     {
-        //if (gSaveBlock1Ptr->pos.x == 10 && gSaveBlock1Ptr->pos.y == 3)
-         //   return TRUE;
-         if ((gSaveBlock1Ptr->pos.x > 9 || gSaveBlock1Ptr->pos.x < 13) && (gSaveBlock1Ptr->pos.x > 15 || gSaveBlock1Ptr->pos.x < 19))
+         if ((gSaveBlock1Ptr->pos.x > 9 && gSaveBlock1Ptr->pos.x < 13) && (gSaveBlock1Ptr->pos.y > 15 && gSaveBlock1Ptr->pos.y < 19))
              return TRUE;
     }
 
@@ -29,13 +29,9 @@ bool8 ShouldDoSecretLabDigEffect(void)
 
 void DoSecretLabDigEffect(void)
 {
-    //MapGridSetMetatileIdAt( 9 + MAP_OFFSET, 1 + MAP_OFFSET, METATILE_Cave_SealedChamberEntrance_TopLeft);
-    //MapGridSetMetatileIdAt(10 + MAP_OFFSET, 1 + MAP_OFFSET, METATILE_Cave_SealedChamberEntrance_TopMid);
-    //MapGridSetMetatileIdAt(11 + MAP_OFFSET, 1 + MAP_OFFSET, METATILE_Cave_SealedChamberEntrance_TopRight);
-    //MapGridSetMetatileIdAt( 9 + MAP_OFFSET, 2 + MAP_OFFSET, METATILE_Cave_SealedChamberEntrance_BottomLeft | MAPGRID_COLLISION_MASK);
-    //MapGridSetMetatileIdAt(10 + MAP_OFFSET, 2 + MAP_OFFSET, METATILE_Cave_SealedChamberEntrance_BottomMid);
-    //MapGridSetMetatileIdAt(11 + MAP_OFFSET, 2 + MAP_OFFSET, METATILE_Cave_SealedChamberEntrance_BottomRight | MAPGRID_COLLISION_MASK);
+    MapGridSetMetatileIdAt(11 + MAP_OFFSET, 17 + MAP_OFFSET, METATILE_General_CaveEntrance_Bottom);
     DrawWholeMapView();
+    ScriptContext1_SetupScript(Psfroute8_UncoverSecretLab_Script);
     PlaySE(SE_BANG);
     FlagSet(FLAG_SYS_BRAILLE_DIG);
     ScriptContext2_Disable();

@@ -4,9 +4,26 @@ mapscripts Psfroute8_MapScripts {
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         //VAR_STORYLINE_STATE, 107: ThisIsntRandom_MeetUp_Dialogue
-        FLAG_SYS_BRAILLE_DIG, TRUE: Debug_Script_2
+        //FLAG_SYS_BRAILLE_DIG, TRUE: Debug_Script_2
     ]
 }
 
+script Psfroute8_UncoverSecretLab_Script {
+    //PSF TODO Add better transition effect here, maybe the cutting grass animation
+    setmetatile(10,16,0x055,FALSE)
+    setmetatile(11,16,0x056,FALSE)
+    setmetatile(12,16,0x057,FALSE)
+    setmetatile(10,17,0x05D,FALSE)
+    setmetatile(11,17,METATILE_General_CaveEntrance_Bottom,FALSE)
+    setmetatile(12,17,0x05F,FALSE)
+    setmetatile(10,18,0x065,FALSE)
+    setmetatile(11,18,0x066,FALSE)
+    setmetatile(12,18,0x067,FALSE)
+    special(DrawWholeMapView)
+}
+
 script Psfroute8_MapScripts_OnTransition {
+    if (flag(FLAG_SYS_BRAILLE_DIG)){
+        call(Psfroute8_UncoverSecretLab_Script)
+    }
 }

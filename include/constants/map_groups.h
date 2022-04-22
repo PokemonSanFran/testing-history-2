@@ -83,6 +83,7 @@
 #define MAP_PSFCITY9_WAREHOUSE             (74 | (0 << 8))
 #define MAP_LAYOUT_TESTER                  (75 | (0 << 8))
 #define MAP_PSFCITY17_POST_EARTHQUAKE      (76 | (0 << 8))
+#define MAP_PSFROUTE25                     (77 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

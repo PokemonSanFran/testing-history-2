@@ -1892,3 +1892,6 @@ const u8 gText_Shininess[] = _("Shininess");
 const u8 gText_Haze[] = _("Haze");
 const u8 gText_SludgeBomb[] = _("Sludge Bomb");
 const u8 gText_StmpngTantrm[] = _("StmpngTantrm");
+
+//Secret Lab Discovery
+const u8 gText_WantToUseDig[] = _("Do you want to use Dig here?");

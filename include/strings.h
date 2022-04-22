@@ -3103,4 +3103,7 @@ extern const u8 gText_Haze[];
 extern const u8 gText_SludgeBomb[];
 extern const u8 gText_StmpngTantrm[];
 
+//Secret Lab Discovery
+extern const u8 gText_WantToUseDig[];
+
 #endif // GUARD_STRINGS_H

@@ -617,4 +617,5 @@ extern const u8 EventScript_TerminateLink[];
 //new scripts from PSF
 extern const u8 WarpToBlackMap[];
 extern const u8 TheStorySoFar_CheckNumberDefeated_Script[];
+extern const u8 Psfroute8_UncoverSecretLab_Script[];
 #endif // GUARD_EVENT_SCRIPTS_H

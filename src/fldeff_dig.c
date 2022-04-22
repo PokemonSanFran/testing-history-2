@@ -18,7 +18,14 @@ static void StartDigFieldEffect(void);
 // text
 bool8 SetUpFieldMove_Dig(void)
 {
-    if (CanUseDigOrEscapeRopeOnCurMap() == TRUE)
+    //If on Psfroute8, allow player to dig AND hasn't already uncovered the lab
+    if (ShouldDoSecretLabDigEffect())
+    {
+        gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
+        gPostMenuFieldCallback = FieldCallback_Dig;
+        return TRUE;
+    }
+    else if (CanUseDigOrEscapeRopeOnCurMap() == TRUE)
     {
         gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
         gPostMenuFieldCallback = FieldCallback_Dig;

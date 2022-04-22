@@ -3668,9 +3668,19 @@ static void CursorCb_FieldMove(u8 taskId)
                 sPartyMenuInternal->data[0] = fieldMove;
                 break;
             case FIELD_MOVE_DIG:
+                //If the user is on Psfroute8, they will be able to dig in the right spot to uncover the Lab
+                if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE8)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE8))
+                {
+                    StringExpandPlaceholders(gStringVar4, gText_WantToUseDig);
+                    //PSF TODO Figure out how to load the pokemon's name here
+                } 
+                else {
                 mapHeader = Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->escapeWarp.mapGroup, gSaveBlock1Ptr->escapeWarp.mapNum);
                 GetMapNameGeneric(gStringVar1, mapHeader->regionMapSectionId);
+
                 StringExpandPlaceholders(gStringVar4, gText_EscapeFromHere);
+                }
                 DisplayFieldMoveExitAreaMessage(taskId);
                 sPartyMenuInternal->data[0] = fieldMove;
                 break;
