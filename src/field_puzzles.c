@@ -31,8 +31,8 @@ void DoSecretLabDigEffect(void)
 {
     MapGridSetMetatileIdAt(11 + MAP_OFFSET, 17 + MAP_OFFSET, METATILE_General_CaveEntrance_Bottom);
     DrawWholeMapView();
+    FlagSet(FLAG_SYS_BRAILLE_DIG);
     ScriptContext1_SetupScript(Psfroute8_UncoverSecretLab_Script);
     PlaySE(SE_BANG);
-    FlagSet(FLAG_SYS_BRAILLE_DIG);
     ScriptContext2_Disable();
 }

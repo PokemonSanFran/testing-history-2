@@ -2,9 +2,11 @@ mapscripts Psfroute8_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Psfroute8_MapScripts_OnTransition)
     }
+    MAP_SCRIPT_ON_LOAD {
+        call(Psfroute8_MapScripts_OnLoad)
+    }
     MAP_SCRIPT_ON_FRAME_TABLE [
         //VAR_STORYLINE_STATE, 107: ThisIsntRandom_MeetUp_Dialogue
-        //FLAG_SYS_BRAILLE_DIG, TRUE: Debug_Script_2
     ]
 }
 
@@ -23,6 +25,9 @@ script Psfroute8_UncoverSecretLab_Script {
 }
 
 script Psfroute8_MapScripts_OnTransition {
+}
+
+script Psfroute8_MapScripts_OnLoad {
     if (flag(FLAG_SYS_BRAILLE_DIG)){
         call(Psfroute8_UncoverSecretLab_Script)
     }
