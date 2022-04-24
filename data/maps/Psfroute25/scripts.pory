@@ -1,0 +1,22 @@
+mapscripts Psfroute25_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfroute25_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEWFORD_TOWN_STATE, 2:ThisIsntRandom_UndergroundDoor_Dialogue 
+    ]
+}
+
+script Psfroute25_MapScripts_OnTransition {
+    
+    if (var(VAR_DEWFORD_TOWN_STATE) != 2){
+        setflag(FLAG_TEMP_1)
+        return
+    }
+
+    if (var(VAR_DEWFORD_TOWN_STATE) > 2){
+        call(ThisIsntRandom_UnlockElectronicDoor_Script)
+        special(DrawWholeMapView)
+    }
+
+}

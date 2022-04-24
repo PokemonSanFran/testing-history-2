@@ -14,13 +14,13 @@ script Earthquake_HideObject_Script {
 }
 
 script Earthquake_PostRescue_Objects_Script {
-        clearflag(FLAG_TEMP_1)
-        clearflag(FLAG_TEMP_3)
-        clearflag(FLAG_TEMP_4)
+    clearflag(FLAG_TEMP_1)
+    clearflag(FLAG_TEMP_3)
+    clearflag(FLAG_TEMP_4)
 
         addobject(PSFNATIVERIVAL)
         addobject(PSFGOODADMIN)
-        
+
         createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,15,32,10)
         createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,16,31,12)
         createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,17,31,11)
@@ -32,7 +32,7 @@ script Earthquake_PostRescue_Objects_Script {
         setobjectxy(PSFNATIVERIVAL,33,12)
         setobjectxy(PSFGOODADMIN,33,11)
         turnobject(PLAYER,DIR_NORTH)
-        
+
         applymovement(PSFGOODADMIN,Common_Movement_FaceLeft)
         turnobject(PSFNATIVERIVAL,DIR_WEST)
 
@@ -313,7 +313,7 @@ script Earthquake_PostRescue_Dialogue {
 }
 
 script Earthquake_AskPlayerWarp_Script {
-        applymovement(PSFNATIVERIVAL,Earthquake_TurnToPlayer)
+    applymovement(PSFNATIVERIVAL,Earthquake_TurnToPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -324,16 +324,16 @@ script Earthquake_AskPlayerWarp_Script {
 
         if (var(VAR_RESULT) == YES){
             warpsilent(MAP_PSFROUTE8,255,10,24)
-            end
+                end
         }else {
             setvar(VAR_0x8000, MUGSHOT_ARIANA)
-            callnative(DrawMugshot)
-            msgbox(gText_Earthquake_OkayWeve)
-            closemessage
-            callnative(ClearMugshot)
+                callnative(DrawMugshot)
+                msgbox(gText_Earthquake_OkayWeve)
+                closemessage
+                callnative(ClearMugshot)
         }
 
-        fadescreen(FADE_TO_BLACK)
+    fadescreen(FADE_TO_BLACK)
         removeobject(GRUNTA)
         removeobject(GRUNTB)
         removeobject(GRUNTC)
@@ -549,6 +549,6 @@ movement Earthquake_Pace {
 
 movement Earthquake_TurnToPlayer {
     walk_left
-    face_down
-    step_end
+        face_down
+        step_end
 }

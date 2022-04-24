@@ -107,7 +107,7 @@ badd +15 data/maps/Psfcity3/scripts.pory
 badd +18 data/maps/Psfplace14_Arena/scripts.pory
 badd +24 include/constants/songs.h
 badd +93 data/cutscenes/BeachBattle.pory
-badd +1 data/maps/Psfroute22/scripts.pory
+badd +9 data/maps/Psfroute22/scripts.pory
 badd +35 data/scripts/movement.inc
 badd +61 asm/macros/movement.inc
 badd +22 asm/macros/map.inc
@@ -126,7 +126,7 @@ badd +7 data/maps/Psfroute8/scripts.pory
 badd +5 data/cutscenes/ThisIsntRandom.pory
 badd +41 data/maps/AncientTomb/scripts.inc
 badd +2 src/braille_puzzles.c
-badd +13 src/field_puzzles.c
+badd +38 src/field_puzzles.c
 badd +1 include/braille_puzzles.h
 badd +7 include/field_puzzles.h
 badd +153 sym_ewram.txt
@@ -311,7 +311,7 @@ keepjumps 9001
 normal! 010|
 wincmd w
 argglobal
-balt src/fldeff_dig.c
+balt data/maps/Psfroute22/scripts.pory
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -442,16 +442,16 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 12 - ((9 * winheight(0) + 11) / 22)
+let s:l = 12 - ((11 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 12
-normal! 083|
+normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("src/field_puzzles.c", ":p")) | buffer src/field_puzzles.c | else | edit src/field_puzzles.c | endif
-balt src/fldeff_cut.c
+if bufexists(fnamemodify("data/cutscenes/ThisIsntRandom.pory", ":p")) | buffer data/cutscenes/ThisIsntRandom.pory | else | edit data/cutscenes/ThisIsntRandom.pory | endif
+balt data/event_scripts.s
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -582,14 +582,14 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 15 - ((9 * winheight(0) + 11) / 22)
+let s:l = 5 - ((4 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 15
-normal! 082|
+keepjumps 5
+normal! 010|
 wincmd w
-3wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 82 + 89) / 178)
 exe '2resize ' . ((&lines * 22 + 24) / 48)
 exe 'vert 2resize ' . ((&columns * 95 + 89) / 178)

@@ -1,6 +1,478 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
+const PSFNATIVERIVAL = 1
+const PSFGOODADMIN = 2
+const PSFELITE2 = 3
 
-script ThisIs {
-    return
+script ThisIsntRandom_CheckDoor_Script {
+    if (var(VAR_STORYLINE_STATE) == 107){ 
+        call(ThisIsntRandom_UnlockDoor_Dialogue)
+    }
+}
+
+script ThisIsntRandom_HideObject_AboveGround_Script {
+    setflag(FLAG_TEMP_1)
+}
+
+script ThisIsntRandom_ObjectSetUp_Script {
+    fadescreen(FADE_TO_BLACK)
+
+        setobjectxy(PLAYER,11,18)
+        TeleportCamera(11,18)
+
+        clearflag(FLAG_TEMP_1)
+
+        addobject(PSFNATIVERIVAL)
+        setobjectxy(PSFNATIVERIVAL,10,19)
+        applymovement(PSFNATIVERIVAL,Common_Movement_FaceUp)
+
+        addobject(PSFGOODADMIN)
+        setobjectxy(PSFGOODADMIN,11,19)
+        applymovement(PSFGOODADMIN,Common_Movement_FaceUp)
+
+        addobject(PSFELITE2)
+        setobjectxy(PSFELITE2,12,19)
+        applymovement(PSFELITE2,Common_Movement_FaceUp)
+
+        fadescreen(FADE_FROM_BLACK)
+}
+
+script ThisIsntRandom_UnlockDoor_Dialogue {
+    lock
+        call(ThisIsntRandom_ObjectSetUp_Script)
+        addvar(VAR_DEWFORD_TOWN_STATE,1)
+
+        playse(SE_PIN)
+        waitse
+        applymovement(PSFNATIVERIVAL,Common_Movement_ExclamationMark)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_OhIsLiterally)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFNATIVERIVAL,ThisIsRandom_WalkDownStairsA)
+        playse(SE_EXIT)
+        waitse
+
+        applymovement(PSFELITE2,ThisIsRandom_WalkDownStairsC)
+        playse(SE_EXIT)
+        waitse
+        applymovement(PSFGOODADMIN,ThisIsRandom_WalkDownStairsB)
+        playse(SE_EXIT)
+        waitse
+        waitmovement(PSFGOODADMIN)
+
+        removeobject(PSFGOODADMIN)
+        removeobject(PSFNATIVERIVAL)
+        removeobject(PSFELITE2)
+
+        applymovement(PLAYER,Common_Movement_WalkUp)
+        playse(SE_EXIT)
+        warp(MAP_PSFROUTE25,0)
+        end
+}
+
+script ThisIsntRandom_UnlockElectronicDoor_Script {
+    setmetatile(7,0,0x269,TRUE)
+        setmetatile(7,1,0x271,TRUE)
+        setmetatile(7,2,0x22F,FALSE)
+        setmetatile(7,3,0x242,FALSE)
+}
+
+script ThisIsntRandom_UndergroundDoor_Dialogue {
+    lock
+        addvar(VAR_DEWFORD_TOWN_STATE,1)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_AndNowMyTurn)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFELITE2,ThisIsntRandom_WalkToKeypad)
+        waitmovement(0)
+
+        playse(SE_DING_DONG)
+        waitse
+        playse(SE_BANG)
+        waitse
+
+        call(ThisIsntRandom_UnlockElectronicDoor_Script)
+        special(DrawWholeMapView)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_HowDidYou)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFELITE2,Common_Movement_FaceLeft)
+        waitmovement(0)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_TheSecondSet)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PLAYER,Common_Movement_FaceRight)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_SoIsActuallyTrying)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_AboutToFindOut)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_IfWereAllGoing)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFELITE2,ThisIsntRandom_WalkDownHallwayA)
+        applymovement(PSFGOODADMIN,ThisIsntRandom_WalkDownHallwayB)
+        applymovement(PSFNATIVERIVAL,ThisIsntRandom_WalkDownHallwayC)
+        waitmovement(PSFNATIVERIVAL)
+
+        setflag(FLAG_TEMP_1)
+        removeobject(PSFELITE2)
+        removeobject(PSFGOODADMIN)
+        removeobject(PSFNATIVERIVAL)
+
+        release
+        end
+}
+
+script ThisIsntRandom_WalkDownHallWay_Dialogue {
+    lock
+    addvar(VAR_DEWFORD_TOWN_STATE,1)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_LooksOldAsHell)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_TakeThese)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_WalkieTalkies)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_ToStayInTOuch)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_Yup)
+
+        //Psfgoodadmin and Psfelite2 walk to the right, and PSFNATIVERIVAL walks to the left. The player regains control.
+
+        //After battling the first chained up Pokémon:
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_AreYouGuysSeeing)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_YeahIWasAbleTo)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_IGotAttackedButYeah)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_BothHugeProblems)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_RightLooksLikeTheyWanted)
+
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_ButAllOfTheseMachines)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_ImJustTellingYouWhat)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_LetsKeepLooking)
+
+        //After battling the second trapped Pokémon:
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_IFoundSomeAccessLogs)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_CanYouGetMeTheExact)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_IThinkSoHoldOn)
+
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_ThoseMonsters)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_AreThoseDatesSpecial)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_TheSecondDateIsOne)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_SilicobraGravelerLarvitar)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_NumelPiloswineNidoking)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_TheyreAllGround)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_SoWhat)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_TheDocumentationCalledOut)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_AndGroundTypesTo)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_OhNoIDidnt)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_AndTheyAttackedUs)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ThisIsntRandom_LetsKeepGoing)
+
+        //The player regains control.
+}
+
+text gText_ThisIsntRandom_OhIsLiterally {
+    format("Oh,  “TM15” is literally the 15th Technical Machine! I feel pretty dumb, but damn good work.")
+}
+
+text gText_ThisIsntRandom_AndNowMyTurn {
+    format("And now my turn…")
+}
+
+text gText_ThisIsntRandom_HowDidYou {
+    format("How did you…?")
+}
+
+text gText_ThisIsntRandom_TheSecondSet {
+    format("The second set of numbers was the door code.")
+}
+
+text gText_ThisIsntRandom_SoIsActuallyTrying {
+    format("So… is Psfbadadmin2 actually trying to help us?")
+}
+
+text gText_ThisIsntRandom_AboutToFindOut {
+    format("About to find out. Let’s rage!")
+}
+
+text gText_ThisIsntRandom_IfWereAllGoing {
+    format("Hmm. If we’re all going, we should be okay. Let’s see.")
+}
+
+text gText_ThisIsntRandom_DidYouKnowThereWas {
+    format("Psfgoodadmin, did you know there was a secret tunnel underneath Psfplace11?")
+}
+
+text gText_ThisIsntRandom_IfPeopleKnew {
+    format("If people knew about it it wouldn’t be a secret…")
+}
+
+text gText_ThisIsntRandom_DidYouKnowAbout {
+    format("Hey PSFNATIVERIVAL, did you know about the secret laboratory under the ocean?")
+}
+
+text gText_ThisIsntRandom_DotDotDot {
+    format("…")
+}
+
+text gText_ThisIsntRandom_LooksOldAsHell {
+    format("Looks old as hell. And empty. Let’s split up and see what we turn up.")
+}
+
+text gText_ThisIsntRandom_TakeThese {
+    format("Take these.")
+}
+
+text gText_ThisIsntRandom_WalkieTalkies {
+    format("Walkie talkies?")
+}
+
+text gText_ThisIsntRandom_ToStayInTOuch {
+    format("To stay in touch in case we find anything. ")
+}
+
+text gText_ThisIsntRandom_Yup {
+    format("Yup!")
+}
+
+text gText_ThisIsntRandom_AreYouGuysSeeing {
+    format("Are you guys seeing Pokémon strapped to machines?")
+}
+
+text gText_ThisIsntRandom_YeahIWasAbleTo {
+    format("Yeah, I was able to set the poor thing free though.")
+}
+
+text gText_ThisIsntRandom_IGotAttackedButYeah {
+    format("I got attacked, but yeah, I dealt with it. I found some documentation too - this place is called the Infinity Energy Amplification Center. The goal was to use Water and Electric-type Pokémon to help combat fires and power outages.")
+}
+
+text gText_ThisIsntRandom_BothHugeProblems {
+    format("Both huge problems in our area…")
+}
+
+text gText_ThisIsntRandom_RightLooksLikeTheyWanted {
+    format("Right! Looks like they wanted to extract the energy from Pokémon, beef it up, and direct it to locations all over the region. Testing went well, but the extraction was painful and traumatic for the Pokémon, so they shut it down… 53 years ago.")
+}
+
+text gText_ThisIsntRandom_ButAllOfTheseMachines {
+    format("But all of these machines are on! These Pokémon are suffering now!")
+}
+
+text gText_ThisIsntRandom_ImJustTellingYouWhat {
+    format("I’m just telling you what I’m reading!")
+}
+
+text gText_ThisIsntRandom_LetsKeepLooking {
+    format("Let’s keep looking, and freeing more Pokémon then.")
+}
+
+text gText_ThisIsntRandom_IFoundSomeAccessLogs {
+    format("I found some access logs! A bunch of dates of 1968, two in 1971, and then three… in the last week. ")
+}
+
+text gText_ThisIsntRandom_CanYouGetMeTheExact {
+    format("Psfgoodadmin… can you get me the exact dates of the ones in 1971?")
+}
+
+text gText_ThisIsntRandom_IThinkSoHoldOn {
+    format("I think so, hold on… yeah! Oh, when I get into this screen, I can see all the data for each specific test. 1971… April 22nd, and June 4th.")
+}
+
+text gText_ThisIsntRandom_ThoseMonsters {
+    format("*gasp* Those monsters. *sobs* They were trying to kill us!")
+}
+
+text gText_ThisIsntRandom_AreThoseDatesSpecial {
+    format("What? Are those dates special?")
+}
+
+text gText_ThisIsntRandom_TheSecondDateIsOne {
+    format("The second date is the end of the Psfcave1 riots. What types of Pokémon did you guys fight down here?")
+}
+
+text gText_ThisIsntRandom_SilicobraGravelerLarvitar {
+    format("Silicobra, Graveler, Larvitar…")
+}
+
+text gText_ThisIsntRandom_NumelPiloswineNidoking {
+    format("Numel, Piloswine, Nidoking…")
+}
+
+text gText_ThisIsntRandom_TheyreAllGround {
+    format("They’re all Ground types.")
+}
+
+text gText_ThisIsntRandom_SoWhat {
+    format("So what?")
+}
+
+text gText_ThisIsntRandom_TheDocumentationCalledOut {
+    format("The documentation called out specific types of Pokémon. Use Water-types to fight fires, -")
+}
+
+text gText_ThisIsntRandom_AndGroundTypesTo {
+    format("*sigh* And ground types to trigger Earthquakes. Those bastards used this system to attack Psfcave1.")
+}
+
+text gText_ThisIsntRandom_OhNoIDidnt {
+    format("Oh no. I didn’t recognize the earlier names, but the activities in the last few days… their access signature is Psfbadboss.")
+}
+
+text gText_ThisIsntRandom_AndTheyAttackedUs {
+    format("And they attacked us too. Wait? Why attack innocent people?")
+}
+
+text gText_ThisIsntRandom_LetsKeepGoing {
+    format("…Let’s keep going.")
+}    
+
+movement ThisIsRandom_WalkDownStairsA {
+    walk_up * 2
+        walk_right
+        step_end
+}
+movement ThisIsRandom_WalkDownStairsB {
+    walk_right
+        walk_up * 2
+        walk_left
+        step_end
+}
+movement ThisIsRandom_WalkDownStairsC {
+    walk_up * 2
+        walk_left
+        step_end
+}
+
+movement ThisIsntRandom_WalkToKeypad {
+    walk_right * 4
+        walk_up
+        step_end
+}
+
+movement ThisIsntRandom_WalkDownHallwayA {
+    walk_right * 15
+        step_end 
+}
+movement ThisIsntRandom_WalkDownHallwayB {
+    walk_right * 20
+        step_end 
+}
+movement ThisIsntRandom_WalkDownHallwayC {
+        walk_down
+        walk_right * 18 
+        step_end 
+}
+
+movement ThisIsntRandom_WalkDownHallwayD {
+    step_end
+}
+movement ThisIsntRandom_WalkDownHallwayE {
+    step_end
+}
+movement ThisIsntRandom_WalkDownHallwayF {
+    step_end
 }
