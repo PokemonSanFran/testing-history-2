@@ -68,12 +68,12 @@ ThisIsntRandom_UnlockElectronicDoor_Script::
 	setmetatile 7, 1, 0x271, TRUE
 	setmetatile 7, 2, 0x22F, FALSE
 	setmetatile 7, 3, 0x242, FALSE
+	special DrawWholeMapView
 	return
 
 
 ThisIsntRandom_UndergroundDoor_Dialogue::
 	lock
-	addvar VAR_DEWFORD_TOWN_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AndNowMyTurn
@@ -86,7 +86,6 @@ ThisIsntRandom_UndergroundDoor_Dialogue::
 	playse SE_BANG
 	waitse
 	call ThisIsntRandom_UnlockElectronicDoor_Script
-	special DrawWholeMapView
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_HowDidYou
@@ -119,11 +118,12 @@ ThisIsntRandom_UndergroundDoor_Dialogue::
 	removeobject 3
 	removeobject 2
 	removeobject 1
+	addvar VAR_DEWFORD_TOWN_STATE, 1
 	release
 	end
 
 
-ThisIsntRandom_WalkDownHallWay_Dialogue::
+ThisIsntRandom_WalkIntoLab_Dialogue::
 	lock
 	addvar VAR_DEWFORD_TOWN_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
@@ -132,6 +132,9 @@ ThisIsntRandom_WalkDownHallWay_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_TakeThese
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_WalkieTalkies
@@ -141,6 +144,64 @@ ThisIsntRandom_WalkDownHallWay_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_Yup
+	callnative ClearMugshot
+	closemessage
+	applymovement 1, ThisIsntRandom_WalkIntoLabA
+	applymovement 3, ThisIsntRandom_WalkIntoLabB
+	applymovement 2, ThisIsntRandom_WalkIntoLabC
+	waitmovement 2
+	removeobject 2
+	removeobject 1
+	removeobject 3
+	release
+	end
+
+
+ThisIsntRandom_CheckProgressA_Script::
+	goto_if_unset FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE, ThisIsntRandom_CheckProgressA_Script_1
+	return
+
+ThisIsntRandom_CheckProgressA_Script_1:
+	goto ThisIsntRandom_StopProgress_Script
+	return
+
+
+ThisIsntRandom_CheckProgressB_Script::
+	goto_if_unset FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT, ThisIsntRandom_CheckProgressB_Script_1
+	return
+
+ThisIsntRandom_CheckProgressB_Script_1:
+	goto ThisIsntRandom_StopProgress_Script
+	return
+
+
+ThisIsntRandom_StopProgress_Script::
+	lock
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	random 2
+	switch VAR_RESULT
+	case 0, ThisIsntRandom_StopProgress_Script_3
+	case 1, ThisIsntRandom_StopProgress_Script_4
+ThisIsntRandom_StopProgress_Script_1:
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+
+ThisIsntRandom_StopProgress_Script_3:
+	msgbox gText_ThisIsntRandom_ItsInPain
+	goto ThisIsntRandom_StopProgress_Script_1
+
+ThisIsntRandom_StopProgress_Script_4:
+	msgbox gText_ThisIsntRandom_IWonderIfICan
+	goto ThisIsntRandom_StopProgress_Script_1
+
+
+ThisIsntRandom_DefeatedFirst::
+	lock
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AreYouGuysSeeing
@@ -303,13 +364,45 @@ ThisIsntRandom_WalkDownHallwayC:
 	walk_right
 	step_end
 
-ThisIsntRandom_WalkDownHallwayD:
+ThisIsntRandom_WalkIntoLabA:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
-ThisIsntRandom_WalkDownHallwayE:
+ThisIsntRandom_WalkIntoLabB:
+	delay_16
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	delay_16
+	delay_16
 	step_end
 
-ThisIsntRandom_WalkDownHallwayF:
+ThisIsntRandom_WalkIntoLabC:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	delay_16
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 gText_ThisIsntRandom_OhIsLiterally::
@@ -472,3 +565,9 @@ gText_ThisIsntRandom_AndTheyAttackedUs::
 
 gText_ThisIsntRandom_LetsKeepGoing::
 	.string "…Let’s keep going.$"
+
+gText_ThisIsntRandom_ItsInPain::
+	.string "That Pokemon looks likes its in pain...$"
+
+gText_ThisIsntRandom_IWonderIfICan::
+	.string "I wonder if I can help that Pokemon...$"

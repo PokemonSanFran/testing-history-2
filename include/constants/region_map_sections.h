@@ -289,6 +289,7 @@
 #define MAPSEC_NAVEL_ROCK                   0xD3
 #define MAPSEC_TRAINER_HILL                 0xD4
 #define MAPSEC_ORRE                         0xD5
+#define MAPSEC_PSFCAVE10                    0xD6
 
 #define MAPSEC_NONE                         0xFC
 

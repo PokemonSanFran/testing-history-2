@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFROUTE25",
-  "name": "Psfroute25",
-  "layout": "LAYOUT_PSFROUTE25",
+  "id": "MAP_PSFCAVE10",
+  "name": "Psfcave10",
+  "layout": "LAYOUT_PSFCAVE10",
   "music": "MUS_RG_POKE_MANSION",
-  "region_map_section": "MAPSEC_PSFROUTE25",
+  "region_map_section": "MAPSEC_PSFCAVE10",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -16,10 +16,10 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_WALLY",
-      "x": 2,
-      "y": 2,
+      "x": 32,
+      "y": 35,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -29,8 +29,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-      "x": 1,
-      "y": 3,
+      "x": 31,
+      "y": 34,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -42,8 +42,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PHOEBE",
-      "x": 2,
-      "y": 3,
+      "x": 33,
+      "y": 35,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -56,22 +56,32 @@
   ],
   "warp_events": [
     {
-      "x": 0,
-      "y": 1,
+      "x": 32,
+      "y": 33,
       "elevation": 0,
-      "dest_map": "MAP_PSFROUTE8",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 39,
-      "y": 1,
-      "elevation": 0,
-      "dest_map": "MAP_PSFCAVE10",
-      "dest_warp_id": 0
+      "dest_map": "MAP_PSFROUTE25",
+      "dest_warp_id": 1
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_STORYLINE_STATE",
+      "var_value": "107",
+      "script": "ThisIsntRandom_CheckProgressA_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_STORYLINE_STATE",
+      "var_value": "107",
+      "script": "ThisIsntRandom_CheckProgressB_Script"
+    }
   ],
   "bg_events": [
 

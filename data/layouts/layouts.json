@@ -5440,6 +5440,16 @@
       "secondary_tileset": "gTileset_BikeShop",
       "border_filepath": "data/layouts/Psfroute25/border.bin",
       "blockdata_filepath": "data/layouts/Psfroute25/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCAVE10",
+      "name": "Psfcave10_Layout",
+      "width": 41,
+      "height": 41,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BikeShop",
+      "border_filepath": "data/layouts/Psfcave10/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcave10/map.bin"
     }
   ]
 }

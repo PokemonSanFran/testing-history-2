@@ -60,7 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    addvar VAR_DEWFORD_TOWN_STATE,-1
+    setvar VAR_DEWFORD_TOWN_STATE,0
 	end
 
 Debug_Script_2::

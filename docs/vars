@@ -317,5 +317,6 @@ Y: Used to find the target of the last completed takedown quest, number should c
 #**RELEVANCE**: Tracking the state of the Underground lab
 0: Has not been dug up yet
 1: Player has used Dig on Route 8
-2: Psfelite2 has unlocked the door
-3: Has walked down the hallway
+2: Team Rocket has seen unlocked door
+3: Psfelite2 has unlocked the door
+4: Team has split up in the Lab

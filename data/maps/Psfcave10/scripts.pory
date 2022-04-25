@@ -1,0 +1,17 @@
+mapscripts Psfcave10_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Psfcave10_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEWFORD_TOWN_STATE, 3: ThisIsntRandom_WalkIntoLab_Dialogue 
+    ]
+}
+
+script Psfcave10_MapScripts_OnTransition {
+
+    switch (var(VAR_DEWFORD_TOWN_STATE)){
+        case 3: return
+        default: call(ThisIsntRandom_HideObject_AboveGround_Script)
+    }
+
+}

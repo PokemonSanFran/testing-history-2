@@ -262,6 +262,7 @@ static const u8 sMapName_Psfroute72[] = _("Psfroute72");
 static const u8 sMapName_Psfroute76[] = _("Psfroute76");
 static const u8 sMapName_Psfcave9[] = _("Psfcave9");
 static const u8 sMapName_Psfbadguy1Tower[] =_("Psfbadguy Tower");
+static const u8 sMapName_Psfcave10[] = _("Psfcave10");
 static const u8 sMapName_SpecialArea[] = _("Special Area");
 static const u8 sMapName_AquaHideout[] = _("Aqua Hideout");
 static const u8 sMapName_MagmaHideout[] = _("Magma Hideout");
@@ -563,6 +564,7 @@ const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_NAVEL_ROCK]                 = { 0,  0, 1, 1, sMapName_NavelRock},
     [MAPSEC_TRAINER_HILL]               = { 8,  4, 1, 1, sMapName_TrainerHill},
     [MAPSEC_ORRE]                       = { 0,  0, 1, 1, sMapName_Orre},
+    [MAPSEC_PSFCAVE10]                       = { 0,  0, 1, 1, sMapName_Psfcave10},
 };
 
 #endif //GUARD_DATA_REGION_MAP_REGION_MAP_ENTRIES_H

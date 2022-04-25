@@ -79,11 +79,11 @@ script ThisIsntRandom_UnlockElectronicDoor_Script {
         setmetatile(7,1,0x271,TRUE)
         setmetatile(7,2,0x22F,FALSE)
         setmetatile(7,3,0x242,FALSE)
+        special(DrawWholeMapView)
 }
 
 script ThisIsntRandom_UndergroundDoor_Dialogue {
     lock
-        addvar(VAR_DEWFORD_TOWN_STATE,1)
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
@@ -100,7 +100,6 @@ script ThisIsntRandom_UndergroundDoor_Dialogue {
         waitse
 
         call(ThisIsntRandom_UnlockElectronicDoor_Script)
-        special(DrawWholeMapView)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -143,13 +142,15 @@ script ThisIsntRandom_UndergroundDoor_Dialogue {
         removeobject(PSFGOODADMIN)
         removeobject(PSFNATIVERIVAL)
 
+        addvar(VAR_DEWFORD_TOWN_STATE,1)
+
         release
         end
 }
 
-script ThisIsntRandom_WalkDownHallWay_Dialogue {
-    lock
-    addvar(VAR_DEWFORD_TOWN_STATE,1)
+script ThisIsntRandom_WalkIntoLab_Dialogue {
+        lock
+        addvar(VAR_DEWFORD_TOWN_STATE,1)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -158,6 +159,10 @@ script ThisIsntRandom_WalkDownHallWay_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_TakeThese)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PLAYER,Common_Movement_FaceLeft)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -170,8 +175,60 @@ script ThisIsntRandom_WalkDownHallWay_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_Yup)
+        callnative(ClearMugshot)
+        closemessage
 
-        //Psfgoodadmin and Psfelite2 walk to the right, and PSFNATIVERIVAL walks to the left. The player regains control.
+        applymovement(PSFNATIVERIVAL,ThisIsntRandom_WalkIntoLabA)
+        applymovement(PSFELITE2,ThisIsntRandom_WalkIntoLabB)
+        applymovement(PSFGOODADMIN,ThisIsntRandom_WalkIntoLabC)
+
+        waitmovement(PSFGOODADMIN)
+
+        removeobject(PSFGOODADMIN)
+        removeobject(PSFNATIVERIVAL)
+        removeobject(PSFELITE2)
+
+        release
+        end
+}
+
+script ThisIsntRandom_CheckProgressA_Script {
+    if (!flag(FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE)){
+        goto(ThisIsntRandom_StopProgress_Script)
+    }
+}
+
+script ThisIsntRandom_CheckProgressB_Script {
+    if (!flag(FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT)){
+        goto(ThisIsntRandom_StopProgress_Script)
+    }
+}
+
+
+script ThisIsntRandom_StopProgress_Script {
+        lock
+            
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+
+        random(2)
+
+        switch (var(VAR_RESULT)){
+            case 0: msgbox(gText_ThisIsntRandom_ItsInPain)
+            case 1: msgbox(gText_ThisIsntRandom_IWonderIfICan)
+        }
+
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PLAYER,Common_Movement_WalkDown)
+        waitmovement(PLAYER)
+        release
+        end
+}
+
+script ThisIsntRandom_DefeatedFirst {
+    lock
 
         //After battling the first chained up Pokémon:
 
@@ -430,6 +487,14 @@ text gText_ThisIsntRandom_LetsKeepGoing {
     format("…Let’s keep going.")
 }    
 
+text gText_ThisIsntRandom_ItsInPain {
+    format("That Pokemon looks likes its in pain...")
+}
+
+text gText_ThisIsntRandom_IWonderIfICan {
+    format("I wonder if I can help that Pokemon...")
+}
+
 movement ThisIsRandom_WalkDownStairsA {
     walk_up * 2
         walk_right
@@ -462,17 +527,32 @@ movement ThisIsntRandom_WalkDownHallwayB {
         step_end 
 }
 movement ThisIsntRandom_WalkDownHallwayC {
-        walk_down
+    walk_down
         walk_right * 18 
         step_end 
 }
 
-movement ThisIsntRandom_WalkDownHallwayD {
+movement ThisIsntRandom_WalkIntoLabA {
+    walk_down
+    walk_left * 5
+    walk_left * 4
     step_end
 }
-movement ThisIsntRandom_WalkDownHallwayE {
+
+movement ThisIsntRandom_WalkIntoLabB {
+    delay_16
+    walk_right * 7
+    delay_16
+    delay_16
     step_end
 }
-movement ThisIsntRandom_WalkDownHallwayF {
+
+movement ThisIsntRandom_WalkIntoLabC {
+    walk_down
+    walk_left * 4
+    face_down
+    delay_16
+    walk_down
+    walk_left * 4
     step_end
 }

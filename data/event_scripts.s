@@ -1320,3 +1320,5 @@ Script_RemoveTint::
 	.include "data/maps/Psfcity17_PostEarthquake/scripts.inc"
 
 	.include "data/maps/Psfroute25/scripts.inc"
+
+	.include "data/maps/Psfcave10/scripts.inc"

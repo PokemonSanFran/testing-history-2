@@ -1,0 +1,23 @@
+Psfcave10_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfcave10_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfcave10_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Psfcave10_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Psfcave10_MapScripts_OnTransition
+	return
+
+Psfcave10_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_DEWFORD_TOWN_STATE, 3, ThisIsntRandom_WalkIntoLab_Dialogue
+	.2byte 0
+
+
+Psfcave10_MapScripts_OnTransition::
+	switch VAR_DEWFORD_TOWN_STATE
+	case 3, Psfcave10_MapScripts_OnTransition_2
+	call ThisIsntRandom_HideObject_AboveGround_Script
+	return
+
+Psfcave10_MapScripts_OnTransition_2:
+	return
+
