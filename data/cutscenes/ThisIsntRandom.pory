@@ -149,7 +149,7 @@ script ThisIsntRandom_UndergroundDoor_Dialogue {
 }
 
 script ThisIsntRandom_WalkIntoLab_Dialogue {
-        lock
+    lock
         addvar(VAR_DEWFORD_TOWN_STATE,1)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -195,19 +195,22 @@ script ThisIsntRandom_WalkIntoLab_Dialogue {
 script ThisIsntRandom_CheckProgressA_Script {
     if (!flag(FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE)){
         goto(ThisIsntRandom_StopProgress_Script)
+    }else {
+        call(ThisIsntRandom_DefeatedFirst_Script)
     }
 }
 
 script ThisIsntRandom_CheckProgressB_Script {
     if (!flag(FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT)){
         goto(ThisIsntRandom_StopProgress_Script)
+    }else {
+        call(ThisIsntRandom_DefeatedSecond_Script)
     }
 }
 
-
 script ThisIsntRandom_StopProgress_Script {
-        lock
-            
+    lock
+
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
 
@@ -218,7 +221,7 @@ script ThisIsntRandom_StopProgress_Script {
             case 1: msgbox(gText_ThisIsntRandom_IWonderIfICan)
         }
 
-        callnative(ClearMugshot)
+    callnative(ClearMugshot)
         closemessage
 
         applymovement(PLAYER,Common_Movement_WalkDown)
@@ -227,11 +230,46 @@ script ThisIsntRandom_StopProgress_Script {
         end
 }
 
-script ThisIsntRandom_DefeatedFirst {
+script ThisIsntRandom_CoreEncounter_Script {
+    call(Common_EventScript_SaveGame)
+        faceplayer
+
+        if (!flag(FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE)){
+            setwildbattle(SPECIES_DONPHAN, 60, ITEM_NONE)
+                playmoncry(SPECIES_DONPHAN, CRY_MODE_ENCOUNTER)
+        } elif (!flag(FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT)){
+            setwildbattle(SPECIES_GOLURK, 60, ITEM_NONE)
+                playmoncry(SPECIES_GOLURK, CRY_MODE_ENCOUNTER)
+        }
+
+    msgbox(gText_VSGarbodor_Kuh)
+        delay(40)
+        waitmoncry
+        setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+        dowildbattle
+        clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+        specialvar(VAR_RESULT, GetBattleOutcome)
+        switch (var (VAR_RESULT)) {
+            case B_OUTCOME_WON:
+                goto(ThisIsntRandom_RemoveMon_Script)
+        }
+    release
+        end
+}
+
+script ThisIsntRandom_RemoveMon_Script {
     lock
+        closemessage
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+        release
+        end
+}
 
-        //After battling the first chained up Pokémon:
-
+script ThisIsntRandom_DefeatedFirst_Script {
+    lock
+        addvar(VAR_DEWFORD_TOWN_STATE,1)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_AreYouGuysSeeing)
@@ -252,7 +290,6 @@ script ThisIsntRandom_DefeatedFirst {
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_RightLooksLikeTheyWanted)
 
-
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_ButAllOfTheseMachines)
@@ -264,9 +301,16 @@ script ThisIsntRandom_DefeatedFirst {
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_LetsKeepLooking)
+        callnative(ClearMugshot)
+        closemessage
 
-        //After battling the second trapped Pokémon:
+        release
+        end
+}
 
+script ThisIsntRandom_DefeatedSecond_Script {
+    lock
+        addvar(VAR_DEWFORD_TOWN_STATE,1)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_IFoundSomeAccessLogs)
@@ -278,7 +322,6 @@ script ThisIsntRandom_DefeatedFirst {
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_IThinkSoHoldOn)
-
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
@@ -327,8 +370,11 @@ script ThisIsntRandom_DefeatedFirst {
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_LetsKeepGoing)
+        callnative(ClearMugshot)
+        closemessage
 
-        //The player regains control.
+        release
+        end
 }
 
 text gText_ThisIsntRandom_OhIsLiterally {
@@ -534,25 +580,25 @@ movement ThisIsntRandom_WalkDownHallwayC {
 
 movement ThisIsntRandom_WalkIntoLabA {
     walk_down
-    walk_left * 5
-    walk_left * 4
-    step_end
+        walk_left * 5
+        walk_left * 4
+        step_end
 }
 
 movement ThisIsntRandom_WalkIntoLabB {
     delay_16
-    walk_right * 7
-    delay_16
-    delay_16
-    step_end
+        walk_right * 7
+        delay_16
+        delay_16
+        step_end
 }
 
 movement ThisIsntRandom_WalkIntoLabC {
     walk_down
-    walk_left * 4
-    face_down
-    delay_16
-    walk_down
-    walk_left * 4
-    step_end
+        walk_left * 4
+        face_down
+        delay_16
+        walk_down
+        walk_left * 4
+        step_end
 }

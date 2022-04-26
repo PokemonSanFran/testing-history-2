@@ -52,6 +52,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_TEMP_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DUSCLOPS",
+      "x": 4,
+      "y": 26,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ThisIsntRandom_CoreEncounter_Script",
+      "flag": "FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DUSCLOPS",
+      "x": 4,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ThisIsntRandom_CoreEncounter_Script",
+      "flag": "FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GROUDON_FRONT",
+      "x": 33,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "WaitEvenThen_BossEncounter_Script",
+      "flag": "FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT"
     }
   ],
   "warp_events": [
@@ -69,8 +108,8 @@
       "x": 15,
       "y": 25,
       "elevation": 0,
-      "var": "VAR_STORYLINE_STATE",
-      "var_value": "107",
+      "var": "VAR_DEWFORD_TOWN_STATE",
+      "var_value": "4",
       "script": "ThisIsntRandom_CheckProgressA_Script"
     },
     {
@@ -78,9 +117,27 @@
       "x": 4,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_STORYLINE_STATE",
-      "var_value": "107",
+      "var": "VAR_DEWFORD_TOWN_STATE",
+      "var_value": "5",
       "script": "ThisIsntRandom_CheckProgressB_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_DEWFORD_TOWN_STATE",
+      "var_value": "6",
+      "script": "WaitEvenThen_PrepareBossEncounter_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_DEWFORD_TOWN_STATE",
+      "var_value": "6",
+      "script": "WaitEvenThen_PrepareBossEncounter_Dialogue"
     }
   ],
   "bg_events": [

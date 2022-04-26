@@ -159,6 +159,7 @@ ThisIsntRandom_WalkIntoLab_Dialogue::
 
 ThisIsntRandom_CheckProgressA_Script::
 	goto_if_unset FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE, ThisIsntRandom_CheckProgressA_Script_1
+	call ThisIsntRandom_DefeatedFirst_Script
 	return
 
 ThisIsntRandom_CheckProgressA_Script_1:
@@ -168,6 +169,7 @@ ThisIsntRandom_CheckProgressA_Script_1:
 
 ThisIsntRandom_CheckProgressB_Script::
 	goto_if_unset FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT, ThisIsntRandom_CheckProgressB_Script_1
+	call ThisIsntRandom_DefeatedSecond_Script
 	return
 
 ThisIsntRandom_CheckProgressB_Script_1:
@@ -200,8 +202,53 @@ ThisIsntRandom_StopProgress_Script_4:
 	goto ThisIsntRandom_StopProgress_Script_1
 
 
-ThisIsntRandom_DefeatedFirst::
+ThisIsntRandom_CoreEncounter_Script::
+	call Common_EventScript_SaveGame
+	faceplayer
+	goto_if_unset FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE, ThisIsntRandom_CoreEncounter_Script_2
+	goto_if_unset FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT, ThisIsntRandom_CoreEncounter_Script_3
+ThisIsntRandom_CoreEncounter_Script_1:
+	msgbox gText_VSGarbodor_Kuh
+	delay 40
+	waitmoncry
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	switch VAR_RESULT
+	case B_OUTCOME_WON, ThisIsntRandom_CoreEncounter_Script_8
+ThisIsntRandom_CoreEncounter_Script_6:
+	release
+	end
+
+ThisIsntRandom_CoreEncounter_Script_2:
+	setwildbattle SPECIES_DONPHAN, 60, ITEM_NONE
+	playmoncry SPECIES_DONPHAN, CRY_MODE_ENCOUNTER
+	goto ThisIsntRandom_CoreEncounter_Script_1
+
+ThisIsntRandom_CoreEncounter_Script_3:
+	setwildbattle SPECIES_GOLURK, 60, ITEM_NONE
+	playmoncry SPECIES_GOLURK, CRY_MODE_ENCOUNTER
+	goto ThisIsntRandom_CoreEncounter_Script_1
+
+ThisIsntRandom_CoreEncounter_Script_8:
+	goto ThisIsntRandom_RemoveMon_Script
+	goto ThisIsntRandom_CoreEncounter_Script_6
+
+
+ThisIsntRandom_RemoveMon_Script::
 	lock
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers FADE_FROM_BLACK
+	release
+	end
+
+
+ThisIsntRandom_DefeatedFirst_Script::
+	lock
+	addvar VAR_DEWFORD_TOWN_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AreYouGuysSeeing
@@ -226,6 +273,15 @@ ThisIsntRandom_DefeatedFirst::
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_LetsKeepLooking
+	callnative ClearMugshot
+	closemessage
+	release
+	end
+
+
+ThisIsntRandom_DefeatedSecond_Script::
+	lock
+	addvar VAR_DEWFORD_TOWN_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_IFoundSomeAccessLogs
@@ -271,7 +327,10 @@ ThisIsntRandom_DefeatedFirst::
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_LetsKeepGoing
-	return
+	callnative ClearMugshot
+	closemessage
+	release
+	end
 
 
 ThisIsRandom_WalkDownStairsA:
