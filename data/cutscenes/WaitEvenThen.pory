@@ -19,24 +19,24 @@ script WaitEvenThen_TurnOnMachine_Script {
 script WaitEvenThen_BossSetUp_Script {
     clearflag(FLAG_TEMP_1)
 
-    addobject(PSFGOODADMIN)
-    addobject(PSFELITE2)
-    addobject(PSFNATIVERIVAL)
+        addobject(PSFGOODADMIN)
+        addobject(PSFELITE2)
+        addobject(PSFNATIVERIVAL)
 
-    setobjectmovementtype(PSFELITE2,MOVEMENT_TYPE_FACE_UP)
-    setobjectxyperm(PSFELITE2,39,4)
-    setobjectxy(PSFELITE2,39,4)
+        setobjectmovementtype(PSFELITE2,MOVEMENT_TYPE_FACE_UP)
+        setobjectxyperm(PSFELITE2,39,4)
+        setobjectxy(PSFELITE2,39,4)
 
-    setobjectmovementtype(PSFNATIVERIVAL,MOVEMENT_TYPE_FACE_UP)
-    setobjectxy(PSFNATIVERIVAL,34,6)
-    setobjectxyperm(PSFNATIVERIVAL,34,6)
+        setobjectmovementtype(PSFNATIVERIVAL,MOVEMENT_TYPE_FACE_UP)
+        setobjectxy(PSFNATIVERIVAL,34,6)
+        setobjectxyperm(PSFNATIVERIVAL,34,6)
 
-    setobjectmovementtype(PSFGOODADMIN,MOVEMENT_TYPE_FACE_UP)
-    setobjectxy(PSFGOODADMIN,33,7)
-    setobjectxyperm(PSFGOODADMIN,33,7)
+        setobjectmovementtype(PSFGOODADMIN,MOVEMENT_TYPE_FACE_UP)
+        setobjectxy(PSFGOODADMIN,33,7)
+        setobjectxyperm(PSFGOODADMIN,33,7)
 
-    setobjectxy(PKMNC,33,5)
-    setobjectxyperm(PKMNC,33,5)
+        setobjectxy(PKMNC,33,5)
+        setobjectxyperm(PKMNC,33,5)
 }
 
 script WaitEvenThen_ObjectSetUp_Script {
@@ -51,20 +51,14 @@ script WaitEvenThen_ObjectSetUp_Script {
         addobject(PSFNATIVERIVAL)
         setobjectxy(PSFNATIVERIVAL,25,5)
         applymovement(PSFNATIVERIVAL,Common_Movement_FaceRight)
-        setobjectxy(PSFNATIVERIVAL,34,6)
-        setobjectxyperm(PSFNATIVERIVAL,34,6)
 
         addobject(PSFGOODADMIN)
         setobjectxy(PSFGOODADMIN,24,4)
         applymovement(PSFGOODADMIN,Common_Movement_FaceRight)
-        setobjectxy(PSFGOODADMIN,33,7)
-        setobjectxyperm(PSFGOODADMIN,33,7)
 
         addobject(PSFELITE2)
         setobjectxy(PSFELITE2,24,5)
         applymovement(PSFELITE2,Common_Movement_FaceRight)
-        setobjectxyperm(PSFELITE2,39,4)
-        setobjectxy(PSFELITE2,39,4)
 
         fadescreen(FADE_FROM_BLACK)
 }
@@ -72,7 +66,6 @@ script WaitEvenThen_ObjectSetUp_Script {
 script WaitEvenThen_PrepareBossEncounter_Dialogue {
     lock
         call(WaitEvenThen_ObjectSetUp_Script)
-        addvar(VAR_DEWFORD_TOWN_STATE,1)
 
         applymovement(PLAYER,WaitEvenThen_WalkToSleepingA)
         applymovement(PSFNATIVERIVAL,WaitEvenThen_WalkToSleepingB)
@@ -104,14 +97,37 @@ script WaitEvenThen_PrepareBossEncounter_Dialogue {
 
         playmoncry(SPECIES_EXCADRILL,CRY_MODE_ENCOUNTER)
         waitmoncry
+        addvar(VAR_DEWFORD_TOWN_STATE,1)
 
         msgbox(gText_IGuessWeShouldBeNiceNow_Roar,MSGBOX_AUTOCLOSE)
+
+        setobjectxy(PSFNATIVERIVAL,34,6)
+        setobjectxyperm(PSFNATIVERIVAL,34,6)
+        setobjectxy(PSFGOODADMIN,33,7)
+        setobjectxyperm(PSFGOODADMIN,33,7)
+        setobjectxyperm(PSFELITE2,39,4)
+        setobjectxy(PSFELITE2,39,4)
+        setobjectnewmovementtype(PSFELITE2,MOVEMENT_TYPE_FACE_UP)
         call(Common_EventScript_SaveGame)
         goto(WaitEvenThen_BossEncounter_Script)
 }
+
+script WaitEvenThen_MovePlayerToBoss {
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+    if (var(VAR_TEMP_0) != 33 || (var(VAR_TEMP_1) != 6)){
+        fadescreen(FADE_TO_BLACK)
+        setobjectxy(PLAYER,33,6)
+        TeleportCamera(33,6)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        fadescreen(FADE_FROM_BLACK)
+    }
+        call(WaitEvenThen_BossEncounter_Script)
+}
+        
 script WaitEvenThen_BossEncounter_Script {
     //PSF TODO Rewrite to have two pokemon OR make it a 1v1 battle instead
-        setwildbattle(SPECIES_EXCADRILL,70,ITEM_MUSCLE_BAND,SPECIES_NONE)
+    setwildbattle(SPECIES_EXCADRILL,70,ITEM_MUSCLE_BAND,SPECIES_NONE)
         playmoncry(SPECIES_EXCADRILL,CRY_MODE_ENCOUNTER)
         msgbox(gText_IGuessWeShouldBeNiceNow_Roar,MSGBOX_AUTOCLOSE)
         delay(40)

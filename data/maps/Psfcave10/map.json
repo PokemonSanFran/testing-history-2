@@ -89,7 +89,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "WaitEvenThen_BossEncounter_Script",
+      "script": "WaitEvenThen_MovePlayerToBoss",
       "flag": "FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT"
     }
   ],

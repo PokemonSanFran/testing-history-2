@@ -39,18 +39,12 @@ WaitEvenThen_ObjectSetUp_Script::
 	addobject 1
 	setobjectxy 1, 25, 5
 	applymovement 1, Common_Movement_FaceRight
-	setobjectxy 1, 34, 6
-	setobjectxyperm 1, 34, 6
 	addobject 2
 	setobjectxy 2, 24, 4
 	applymovement 2, Common_Movement_FaceRight
-	setobjectxy 2, 33, 7
-	setobjectxyperm 2, 33, 7
 	addobject 3
 	setobjectxy 3, 24, 5
 	applymovement 3, Common_Movement_FaceRight
-	setobjectxyperm 3, 39, 4
-	setobjectxy 3, 39, 4
 	fadescreen FADE_FROM_BLACK
 	return
 
@@ -58,7 +52,6 @@ WaitEvenThen_ObjectSetUp_Script::
 WaitEvenThen_PrepareBossEncounter_Dialogue::
 	lock
 	call WaitEvenThen_ObjectSetUp_Script
-	addvar VAR_DEWFORD_TOWN_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, WaitEvenThen_WalkToSleepingA
 	applymovement 1, WaitEvenThen_WalkToSleepingB
 	applymovement 2, WaitEvenThen_WalkToSleepingC
@@ -83,10 +76,37 @@ WaitEvenThen_PrepareBossEncounter_Dialogue::
 	applymovement 6, Common_Movement_WalkDown
 	playmoncry SPECIES_EXCADRILL, CRY_MODE_ENCOUNTER
 	waitmoncry
+	addvar VAR_DEWFORD_TOWN_STATE, 1
 	msgbox gText_IGuessWeShouldBeNiceNow_Roar, MSGBOX_AUTOCLOSE
+	setobjectxy 1, 34, 6
+	setobjectxyperm 1, 34, 6
+	setobjectxy 2, 33, 7
+	setobjectxyperm 2, 33, 7
+	setobjectxyperm 3, 39, 4
+	setobjectxy 3, 39, 4
+	setobjectnewmovementtype 3, MOVEMENT_TYPE_FACE_UP
 	call Common_EventScript_SaveGame
 	goto WaitEvenThen_BossEncounter_Script
 	return
+
+
+WaitEvenThen_MovePlayerToBoss::
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_0, 33
+	goto_if_ne WaitEvenThen_MovePlayerToBoss_2
+	compare VAR_TEMP_1, 6
+	goto_if_ne WaitEvenThen_MovePlayerToBoss_2
+WaitEvenThen_MovePlayerToBoss_1:
+	call WaitEvenThen_BossEncounter_Script
+	return
+
+WaitEvenThen_MovePlayerToBoss_2:
+	fadescreen FADE_TO_BLACK
+	setobjectxy OBJ_EVENT_ID_PLAYER, 33, 6
+	TeleportCamera 33, 6
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	fadescreen FADE_FROM_BLACK
+	goto WaitEvenThen_MovePlayerToBoss_1
 
 
 WaitEvenThen_BossEncounter_Script::

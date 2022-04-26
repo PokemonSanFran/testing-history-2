@@ -60,7 +60,8 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    setvar VAR_DEWFORD_TOWN_STATE,0
+    setvar VAR_DEWFORD_TOWN_STATE, 6
+    call WaitEvenThen_ObjectSetUp_Script
 	end
 
 Debug_Script_2::
