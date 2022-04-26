@@ -97,7 +97,7 @@ WaitEvenThen_MovePlayerToBoss::
 	compare VAR_TEMP_1, 6
 	goto_if_ne WaitEvenThen_MovePlayerToBoss_2
 WaitEvenThen_MovePlayerToBoss_1:
-	call WaitEvenThen_BossEncounter_Script
+	goto WaitEvenThen_BossEncounter_Script
 	return
 
 WaitEvenThen_MovePlayerToBoss_2:
@@ -143,6 +143,8 @@ WaitEvenThen_ClearBossPokemon_Script::
 
 WaitEvenThen_PostBossDialogue::
 	lock
+	addvar VAR_STORYLINE_STATE, 1
+	addvar VAR_NATIVERIVALBETA_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 1, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceDown
@@ -183,7 +185,7 @@ WaitEvenThen_PostBossDialogue::
 	end
 
 WaitEvenThen_PostBossDialogue_2:
-	warp MAP_PSFCITY17, 255, 32, 13
+	warp MAP_PSFCITY17, 255, 34, 13
 	end
 
 

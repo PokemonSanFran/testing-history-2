@@ -10,6 +10,7 @@ mapscripts Psfcity17_MapScripts {
         VAR_NATIVERIVALBETA_STATE, 5: WhyAreYouHelpingThem_MissionDebrief_Dialogue
         VAR_NATIVERIVALBETA_STATE, 8: Earthquake_ShowDestroyedCity_Script
         VAR_NATIVERIVALBETA_STATE, 11: Earthquake_PostRescue_Dialogue
+        VAR_STORYLINE_STATE, 108: LetsFinishThis_MovePlayer_Script
     ]
 }
 
@@ -23,6 +24,7 @@ script Psfcity17_MapScripts_OnTransition {
         case 5: goto(WhyAreYouHelpingThem_ObjectDebriefSetUp_Script)
         case 8: call(Earthquake_HideObject_Script)
         case 9: call(Earthquake_HideObject_Script)
+        case 13: call(LetsFinishThis_ObjectSetUp_Script)
         default:
             call(AssholesHome_HideObject_Script)
             call(SurvivalChance333_HideObject_Psfcity17_Script)

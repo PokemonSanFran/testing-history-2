@@ -119,6 +119,7 @@
 9: Need to go rescue people
 11: Rescued two people, getting text from Koga
 12: Told to meet on Route 8
+13: Meeting in town to discuss raid on Salesforce
 
 #VAR_ROUTE118_STATE
 **RELEVANCE**: Track the state of the Naval Base
@@ -201,6 +202,8 @@
 105: Completed one take down quest
 106: Told to get some rest after first take down quest
 107: Earthquake has happened, group is getting near Psfroute8
+108: Defeated Dynamax boss
+109: Plan is set to raid Salesforce
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck

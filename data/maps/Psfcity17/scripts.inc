@@ -17,6 +17,7 @@ Psfcity17_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_NATIVERIVALBETA_STATE, 5, WhyAreYouHelpingThem_MissionDebrief_Dialogue
 	map_script_2 VAR_NATIVERIVALBETA_STATE, 8, Earthquake_ShowDestroyedCity_Script
 	map_script_2 VAR_NATIVERIVALBETA_STATE, 11, Earthquake_PostRescue_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 108, LetsFinishThis_MovePlayer_Script
 	.2byte 0
 
 
@@ -29,6 +30,7 @@ Psfcity17_MapScripts_OnTransition::
 	case 5, Psfcity17_MapScripts_OnTransition_5
 	case 8, Psfcity17_MapScripts_OnTransition_6
 	case 9, Psfcity17_MapScripts_OnTransition_7
+	case 13, Psfcity17_MapScripts_OnTransition_8
 	call AssholesHome_HideObject_Script
 	call SurvivalChance333_HideObject_Psfcity17_Script
 	return
@@ -55,6 +57,10 @@ Psfcity17_MapScripts_OnTransition_6:
 
 Psfcity17_MapScripts_OnTransition_7:
 	call Earthquake_HideObject_Script
+	return
+
+Psfcity17_MapScripts_OnTransition_8:
+	call LetsFinishThis_ObjectSetUp_Script
 	return
 
 

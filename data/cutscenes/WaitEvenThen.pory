@@ -122,7 +122,7 @@ script WaitEvenThen_MovePlayerToBoss {
         applymovement(PLAYER,Common_Movement_FaceUp)
         fadescreen(FADE_FROM_BLACK)
     }
-        call(WaitEvenThen_BossEncounter_Script)
+        goto(WaitEvenThen_BossEncounter_Script)
 }
         
 script WaitEvenThen_BossEncounter_Script {
@@ -158,6 +158,9 @@ script WaitEvenThen_ClearBossPokemon_Script {
 script WaitEvenThen_PostBossDialogue {
     lock
 
+        addvar(VAR_STORYLINE_STATE,1)
+        addvar(VAR_NATIVERIVALBETA_STATE,1)
+
         applymovement(PLAYER,Common_Movement_FaceDown)
         applymovement(PSFNATIVERIVAL,Common_Movement_FaceDown)
         applymovement(PSFELITE2,Common_Movement_FaceDown)
@@ -190,7 +193,7 @@ script WaitEvenThen_PostBossDialogue {
         closemessage
 
         if (var(VAR_RESULT) == YES){
-            warp(MAP_PSFCITY17,255,32,13)
+            warp(MAP_PSFCITY17,255,34,13)
                 end
         }else {
             setvar(VAR_0x8000, MUGSHOT_HUGH)

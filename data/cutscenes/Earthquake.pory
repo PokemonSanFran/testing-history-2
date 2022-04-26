@@ -7,7 +7,7 @@ const GRUNTB = 16
 const GRUNTC = 17
 
 script Earthquake_HideObject_Script {
-    setflag(FLAG_TEMP_4)
+        setflag(FLAG_TEMP_4)
         setflag(FLAG_TEMP_2)
         setobjectxyperm(PSFNATIVERIVAL,28,33)
         turnobject(PSFNATIVERIVAL,DIR_NORTH)

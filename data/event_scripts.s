@@ -1207,7 +1207,7 @@ Script_RemoveTint::
 .include "data/cutscenes/Earthquake.inc"
 .include "data/cutscenes/ThisIsntRandom.inc"
 .include "data/cutscenes/WaitEvenThen.inc"
-##  .include "data/cutscenes/LetsFinishThis.inc"
+.include "data/cutscenes/LetsFinishThis.inc"
 ##  .include "data/cutscenes/ImIn.inc"
 ##  .include "data/cutscenes/YouCantStopMe.inc"
 ##  .include "data/cutscenes/WeCanStopYouActually.inc"
