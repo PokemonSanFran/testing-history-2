@@ -6,6 +6,7 @@ SurvivalChance333_HideObject_Script::
 SurvivalChance333_HideObject_Psfcity17_Script::
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
 	return
 
 

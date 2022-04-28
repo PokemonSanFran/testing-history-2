@@ -13,6 +13,7 @@ Psfbadguy1Tower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3, LetsBurnThisMotherDown_MissionComplete_Dialogue
 	map_script_2 VAR_PETALBURG_WOODS_STATE, 4, HowDisappointing_MissionComplete_Dialogue
 	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 6, Manhunt_MissionComplete_Dialogue
+	map_script_2 VAR_MAUVILLE_CITY_STATE, 4, ImIn_PostWarpSplit_Dialogue
 	.2byte 0
 
 
@@ -28,16 +29,9 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition::
 	case 7, Psfbadguy1Tower_2F_MapScripts_OnTransition_10
 	call WelcomeToTheWarRoom_Object_Hide_Script
 Psfbadguy1Tower_2F_MapScripts_OnTransition_1:
-	switch VAR_RUSTURF_TUNNEL_STATE
-	case 0, Psfbadguy1Tower_2F_MapScripts_OnTransition_14
-	call Manhunt_TowerObjectSetUp_Script
-	switch VAR_PETALBURG_WOODS_STATE
-	case 0, Psfbadguy1Tower_2F_MapScripts_OnTransition_18
-	case 4, Psfbadguy1Tower_2F_MapScripts_OnTransition_19
-	call YouHaveYourOrders_ObjectSetUp_Script
-Psfbadguy1Tower_2F_MapScripts_OnTransition_16:
-	compare VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3
-	goto_if_eq Psfbadguy1Tower_2F_MapScripts_OnTransition_21
+	goto_if_set FLAG_TIMELINE_TRUE, Psfbadguy1Tower_2F_MapScripts_OnTransition_13
+Psfbadguy1Tower_2F_MapScripts_OnTransition_12:
+	goto_if_set FLAG_TIMELINE_FALSE, Psfbadguy1Tower_2F_MapScripts_OnTransition_15
 	return
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_3:
@@ -72,17 +66,39 @@ Psfbadguy1Tower_2F_MapScripts_OnTransition_10:
 	call CongratsYoureanAsshole_ObjectCleanUp_Script
 	goto Psfbadguy1Tower_2F_MapScripts_OnTransition_1
 
-Psfbadguy1Tower_2F_MapScripts_OnTransition_14:
+Psfbadguy1Tower_2F_MapScripts_OnTransition_13:
+	switch VAR_STORYLINE_STATE
+	case 110, Psfbadguy1Tower_2F_MapScripts_OnTransition_18
+	goto Psfbadguy1Tower_2F_MapScripts_OnTransition_12
+
+Psfbadguy1Tower_2F_MapScripts_OnTransition_15:
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 0, Psfbadguy1Tower_2F_MapScripts_OnTransition_21
+	call Manhunt_TowerObjectSetUp_Script
+	switch VAR_PETALBURG_WOODS_STATE
+	case 0, Psfbadguy1Tower_2F_MapScripts_OnTransition_25
+	case 4, Psfbadguy1Tower_2F_MapScripts_OnTransition_26
+	call YouHaveYourOrders_ObjectSetUp_Script
+Psfbadguy1Tower_2F_MapScripts_OnTransition_23:
+	compare VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3
+	goto_if_eq Psfbadguy1Tower_2F_MapScripts_OnTransition_28
 	return
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_18:
-	return
-
-Psfbadguy1Tower_2F_MapScripts_OnTransition_19:
-	call HowDisappointing_PostMissionObjectSetUp_Script
-	goto Psfbadguy1Tower_2F_MapScripts_OnTransition_16
+	call ImIn_ObjectSetUp_PostWarp_Script
+	goto Psfbadguy1Tower_2F_MapScripts_OnTransition_12
 
 Psfbadguy1Tower_2F_MapScripts_OnTransition_21:
+	return
+
+Psfbadguy1Tower_2F_MapScripts_OnTransition_25:
+	return
+
+Psfbadguy1Tower_2F_MapScripts_OnTransition_26:
+	call HowDisappointing_PostMissionObjectSetUp_Script
+	goto Psfbadguy1Tower_2F_MapScripts_OnTransition_23
+
+Psfbadguy1Tower_2F_MapScripts_OnTransition_28:
 	call LetsBurnThisMotherDown_ObjectMove_Script
 	return
 

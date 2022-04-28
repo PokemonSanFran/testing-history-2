@@ -1,0 +1,630 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFELITE1 = 1
+const PSFELITE2 = 2
+const PSFELITE3 = 3
+const PSFELITE4 = 4
+const PSFNATIVERIVAL = 5
+const PKMNA = 6
+
+script ImIn_HideObject_OutsideHouse_Script {
+    setflag(FLAG_TEMP_1)
+        setflag(FLAG_TEMP_2)
+}
+
+script ImIn_DestroyWall_Script {
+    setmetatile(15,13,0x0A7,FALSE)
+        special(DrawWholeMapView)
+}
+
+script ImIn_CutsceneSetup_OutsideHouse_Script {
+    clearflag(FLAG_TEMP_1)
+
+        addobject(PSFELITE1)
+        addobject(PSFELITE2)
+        addobject(PSFELITE3)
+        addobject(PSFELITE4)
+        addobject(PSFNATIVERIVAL)
+}
+
+script ImIn_ReleaseFromBall_Script {
+    playse(SE_BALL_OPEN)
+        waitse
+        clearflag(FLAG_TEMP_2)
+        addobject(PKMNA)
+        playmoncry(SPECIES_MACHAMP, CRY_MODE_ENCOUNTER)
+        waitmoncry
+}
+
+script ImIn_ObjectSetUp_InsideHouse_Script {
+    setobjectxyperm(PSFELITE1,15,4)
+        setobjectxyperm(PSFELITE2,16,3)
+        setobjectxyperm(PSFELITE3,17,4)
+        setobjectxyperm(PSFELITE4,18,5)
+        setobjectxyperm(PSFNATIVERIVAL,19,3)
+}
+
+script ImIn_MoveObject_BeforeWarp_Script {
+        addobject(PSFELITE1)
+        addobject(PSFELITE2)
+        addobject(PSFELITE3)
+        addobject(PSFELITE4)
+        addobject(PSFNATIVERIVAL)
+
+        setobjectxy(PSFELITE1,10,3)
+        setobjectxy(PSFELITE3,10,4)
+        setobjectxy(PSFELITE4,12,3)
+        setobjectxy(PSFNATIVERIVAL,12,4)
+        setobjectxy(PSFELITE2,11,2)
+
+        setobjectxy(PLAYER,11,4)
+        TeleportCamera(11,4)
+
+        applymovement(PSFELITE1,Common_Movement_FaceRight)
+        applymovement(PSFELITE3,Common_Movement_FaceRight)
+        applymovement(PSFELITE4,Common_Movement_FaceLeft)
+        applymovement(PSFELITE2,Common_Movement_FaceDown)
+        applymovement(PSFNATIVERIVAL,Common_Movement_FaceLeft)
+        waitmovement(PSFELITE2)
+}
+
+script ImIn_ObjectSetUp_PostWarp_Script {
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_2)
+    setflag(FLAG_TEMP_3)
+    setflag(FLAG_TEMP_4)
+    setflag(FLAG_TEMP_5)
+    setflag(FLAG_TEMP_6)
+    setflag(FLAG_TEMP_7)
+    setflag(FLAG_TEMP_8)
+}
+
+script ImIn_StartHouseBreak_Script {
+    lock
+        addvar(VAR_MAUVILLE_CITY_STATE,1)
+
+        fadescreen(FADE_TO_BLACK)
+        call(ImIn_CutsceneSetup_OutsideHouse_Script)
+        fadescreen(FADE_FROM_BLACK)
+
+        applymovement(PLAYER,ImIn_ApproachHouse)
+        waitmovement(PLAYER)
+
+        applymovement(PSFELITE3,Common_Movement_FaceDown)
+
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_WereCertainNobody)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_HasntLeftWorkEarly)
+
+        //PSF TODO Figure out how to show that they're talking via walkie
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_WereInPosition)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(PSFNATIVERIVAL,ImIn_WalkAroundHouse)
+        waitmovement(PSFNATIVERIVAL)
+
+        applymovement(PSFELITE1,Common_Movement_FaceRight)
+        applymovement(PSFELITE2,Common_Movement_FaceRight)
+        applymovement(PSFELITE3,Common_Movement_FaceRight)
+        applymovement(PSFELITE4,Common_Movement_FaceRight)
+        applymovement(PLAYER,Common_Movement_FaceRight)
+        waitmovement(PLAYER)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_TheSideDoorWill)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_LetsMoveThen)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(PSFNATIVERIVAL,ImIn_WalkToSideDoor)
+        waitmovement(PSFNATIVERIVAL)
+
+        call(ImIn_ReleaseFromBall_Script)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_BrickBreakSureComes)
+        callnative(ClearMugshot)
+        closemessage
+
+        playse(SE_M_BRICK_BREAK)
+        applymovement(PKMNA,ImIn_AttackHouse)
+        waitse
+        waitmovement(PKMNA)
+        call(ImIn_DestroyWall_Script)
+
+        applymovement(PKMNA,ImIn_WalkIntoHouseA)
+        applymovement(PSFELITE1,ImIn_WalkIntoHouseB)
+        applymovement(PSFELITE2,ImIn_WalkIntoHouseC)
+        applymovement(PSFELITE3,ImIn_WalkIntoHouseD)
+        applymovement(PSFELITE4,ImIn_WalkIntoHouseE)
+        applymovement(PSFNATIVERIVAL,ImIn_WalkIntoHouseF)
+
+        playse(SE_EXIT)
+        playse(SE_EXIT)
+        playse(SE_EXIT)
+        playse(SE_EXIT)
+        playse(SE_EXIT)
+        playse(SE_EXIT)
+        waitse
+        waitmovement(PSFELITE1)
+
+        removeobject(PKMNA)
+        removeobject(PSFELITE1)
+        removeobject(PSFELITE2)
+        removeobject(PSFELITE3)
+        removeobject(PSFELITE4)
+        removeobject(PSFNATIVERIVAL)
+
+        release
+        end
+}
+
+script ImIn_UnlockDoor_Script {
+    setmetatile(11,6,0x228,FALSE)
+        special(DrawWholeMapView)
+}
+
+script Imin_BeginHouseSearch_Script {
+    lock
+        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_OkaySpreadOut)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(PSFELITE1,ImIn_SpreadOutHouse)
+        applymovement(PSFELITE2,ImIn_SpreadOutHouse)
+        applymovement(PSFELITE3,ImIn_SpreadOutHouse)
+        applymovement(PSFELITE4,ImIn_SpreadOutHouse)
+        applymovement(PSFNATIVERIVAL,ImIn_SpreadOutHouse)
+        waitmovement(PSFNATIVERIVAL)
+
+        setobjectxy(PSFELITE1,2,7)
+        setobjectxy(PSFELITE2,18,9)
+        setobjectxy(PSFELITE3,10,11)
+        setobjectxy(PSFELITE4,15,17)
+        setobjectxy(PSFNATIVERIVAL,3,13)
+
+        setobjectxyperm(PSFELITE1,2,7)
+        setobjectxyperm(PSFELITE2,18,9)
+        setobjectxyperm(PSFELITE3,10,11)
+        setobjectxyperm(PSFELITE4,15,17)
+        setobjectxyperm(PSFNATIVERIVAL,3,13)
+
+        release
+        end
+}
+
+script ImIn_FindLockedDoor_Script {
+    lock
+
+        addvar(VAR_MAUVILLE_CITY_STATE,1)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_IFoundADoor)
+
+        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_GuessWereAllLooking)
+        callnative(ClearMugshot)
+        closemessage
+
+        release
+        end
+}
+
+script ImIn_InteractDoor_Script {
+    checkitem(ITEM_MAGMA_EMBLEM) 
+
+        if (var(VAR_RESULT)){
+            goto(ImIn_EnterCorrectCode_Script)
+        }
+
+    msgbox(format("Find the thing to unlock this door!"),MSGBOX_AUTOCLOSE)
+}
+
+script ImIn_EnterCorrectCode_Script {
+    lock
+        addvar(VAR_MAUVILLE_CITY_STATE,1)
+
+        playse(SE_DING_DONG)
+        waitse
+        playse(SE_SLIDING_DOOR)
+        call(ImIn_UnlockDoor_Script)
+        delay(16)
+
+        fadescreen(FADE_TO_BLACK)
+        call(ImIn_MoveObject_BeforeWarp_Script)
+        fadescreen(FADE_FROM_BLACK)
+
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_WereIn)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_OnceYoureAllThrough)
+
+        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_ImTooOldFor)
+
+        setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_ThesePeopleAreFighting)
+        callnative(ClearMugshot)
+        closemessage
+
+        applymovement(PSFELITE1,Common_Movement_WalkRight)
+        waitmovement(PSFELITE1)
+        removeobject(PSFELITE1)
+        playse(SE_WARP_OUT)
+        applymovement(PSFELITE3,ImIn_WalkToWarpFromLeft)
+        waitmovement(PSFELITE3)
+        removeobject(PSFELITE3)
+        playse(SE_WARP_OUT)
+        applymovement(PSFELITE4,Common_Movement_WalkLeft)
+        waitmovement(PSFELITE4)
+        removeobject(PSFELITE4)
+        playse(SE_WARP_OUT)
+        applymovement(PSFELITE2,Common_Movement_WalkDown)
+        waitmovement(PSFELITE2)
+        removeobject(PSFELITE2)
+        playse(SE_WARP_OUT)
+        applymovement(PSFNATIVERIVAL,ImIn_WalkToWarpFromRight)
+        waitmovement(PSFNATIVERIVAL)
+        removeobject(PSFNATIVERIVAL)
+        playse(SE_WARP_OUT)
+
+        addvar(VAR_STORYLINE_STATE,1)
+
+        release
+        end
+}
+
+script ImIn_PostWarpSplit_Dialogue {
+    lock
+
+    addvar(VAR_MAUVILLE_CITY_STATE,1)
+
+    setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_WereAllIn)
+
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_LetTheMarch)
+
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_LetsGoSecure)
+
+        //Psfelite3 and Psfelite2 walk off screen.
+
+        setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_ThisPlaceIsProbably)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_HasAnOfficeOn)
+
+        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_FloorThenLets)
+
+        //Everybody walks off screen. Player regains control.
+
+        //If player tries to ascend to the 11th floor without checking Psfbadboss' office on the 10th floor:
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_OfficeIsOn)
+
+        //The player steps backward and regains control.
+
+        //When the player walks into Psfbadboss's office, Psftransrival is sitting at the desk.
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_DoYouLikeMy)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_WhatAreYouDoing)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_IDidntChooseToAlign)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_WaitTrash)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_WasDestryogingThisRegion)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_SoYouJustDontCare)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_LookAllThisHelping)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_DaddyWontBeAble)
+
+        //The game prompts a save.
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_AreDeadDoYou)
+
+        //The player battles Psftransrival.
+
+        //After the player wins:
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_HowDoesThisKeep)
+
+        //Cut back to the overworld.
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_Wheres)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_WhatsTheSecret)
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_EverythingAboutIsBullshit)
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_Floor)
+
+        //If the player talks to Psftransrival again:
+
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_ImIn_AllThatTraining)
+
+}
+text gText_ImIn_WereCertainNobody {
+    format("We're certain nobody is home?")
+}
+
+text gText_ImIn_HasntLeftWorkEarly {
+    format("Psfbadadmin3 hasn't left work early a day in their life. Psfbadguy is led by monsters, but at least they're hard-working monsters.")
+}
+
+text gText_ImIn_WereInPosition {
+    format("We're in position at Psfcity12. Ready to mobilize this diversion when you are.")
+}
+
+text gText_ImIn_TheSideDoorWill {
+    format("The side door will definitely work, didn't see an alarm either.")
+}
+
+text gText_ImIn_LetsMoveThen {
+    format("Let's move then!")
+}
+
+text gText_ImIn_BrickBreakSureComes {
+    format("Brick Break sure comes in handy when most houses are made of the stuff.")
+}
+
+text gText_ImIn_OkaySpreadOut {
+    format("Okay, spread out. We're looking for the warp panel. Use the walkies if you see anything.")
+}
+
+text gText_ImIn_IFoundADoor {
+    format("I found a door with an electronic lock! It takes six digits.")
+}
+
+text gText_ImIn_GuessWereAllLooking {
+    format("Guess we're all looking for any numbers that seem important. No way it's just their birthday, right?")
+}
+
+text gText_ImIn_WereIn {
+    format("Psfgoodadmin, we're in. Everybody remember the plan?")
+}
+
+text gText_ImIn_OnceYoureAllThrough {
+    format("Once you're all through the panel, I'll lead the diversion protest at the front doors of the tower. Security will be focused on us, letting you to the executive levels and hopefully find Psfbadboss.")
+}
+
+text gText_ImIn_ImTooOldFor {
+    format("I'm too old for scaling mountains. Psfelite3 and I can get into the production studio and get ready to broadcast that confession.")
+}
+
+text gText_ImIn_ThesePeopleAreFighting {
+    format("These people are fighting to kill. Stay safe.")
+}
+
+text gText_ImIn_WereAllIn {
+    format("We're all in.")
+}
+
+text gText_ImIn_LetTheMarch {
+    format("Let the march begin… good luck!")
+}
+
+text gText_ImIn_LetsGoSecure {
+    format("Psfelite2, let's go secure the studio.")
+}
+
+text gText_ImIn_ThisPlaceIsProbably {
+    format("This place is probably crawling with Trainers. Let's spread out.")
+}
+
+text gText_ImIn_HasAnOfficeOn {
+    format("Psfbadboss has an office on the 10th floor, I've been there myself.")
+}
+
+text gText_ImIn_FloorThenLets {
+    format("10th floor then, let's move!")
+}
+
+text gText_ImIn_OfficeIsOn {
+    format("Psfbadboss's office is on Floor 10.")
+}
+
+text gText_ImIn_DoYouLikeMy {
+    format("Do you like my new office?")
+}
+
+text gText_ImIn_WhatAreYouDoing {
+    format("Psftransrival, what are you doing here?")
+}
+
+text gText_ImIn_IDidntChooseToAlign {
+    format("I didn't choose to align myself with the ghetto trash. Turns out, if you stick with the good guys, you get a sick job and a corner office.")
+}
+
+text gText_ImIn_WaitTrash {
+    format("Wait, trash? Did you hear what these people did to Psfcity17?")
+}
+
+text gText_ImIn_WasDestryogingThisRegion {
+    format("Psfgoodteam was destroying this region with their idiocy. We wiped ‘em out. And you decided to help them? After everything Psfbadguy did for you?")
+}
+
+text gText_ImIn_SoYouJustDontCare {
+    format("So you just don't care that you work for murderers?")
+}
+
+text gText_ImIn_LookAllThisHelping {
+    format("Look, all this helping people shit is cool, but I came here to be the best. I'm done losing to scrubs and I'm done pretending to care.")
+}
+
+text gText_ImIn_DaddyWontBeAble {
+    format("Daddy won't be able to buy your way out of this one.")
+}
+
+text gText_ImIn_AreDeadDoYou {
+    format("If you and Psfnativerival are dead, do you think I get to be Champion instead?")
+}
+
+text gText_ImIn_HowDoesThisKeep {
+    format("How does this keep happening?!?!?")
+}
+
+text gText_ImIn_Wheres {
+    format("Where's Psfbadboss?!")
+}
+
+text gText_ImIn_WhatsTheSecret {
+    format("What's the secret? What am I missing? Why do I keep LOSING?")
+}
+
+text gText_ImIn_EverythingAboutIsBullshit {
+    format("Everything about Psfbadguy is bullshit. You're not any stronger. The region isn't any better. But as long as they have stans like you, they're going to continue to get richer and more toxic. Tell me where Psfbadboss is.")
+}
+
+text gText_ImIn_Floor {
+    format("Floor 11.")
+}
+
+text gText_ImIn_AllThatTraining {
+    format("…all that training…")
+}
+
+movement ImIn_ApproachHouse {
+    walk_up
+        step_end
+}
+
+movement ImIn_WalkAroundHouse {
+    walk_right
+        walk_down * 5
+        step_end
+}
+
+movement ImIn_WalkToSideDoor {
+    walk_up * 4
+        face_down
+        step_end
+}
+
+movement ImIn_AttackHouse {
+    lock_facing_direction
+        walk_left
+        walk_right
+        step_end
+}
+
+movement ImIn_WalkIntoHouseA {
+    walk_left
+        step_end
+}
+
+movement ImIn_WalkIntoHouseB {
+    walk_right * 5
+        walk_up * 4
+        walk_left
+        step_end
+}
+
+movement ImIn_WalkIntoHouseC {
+    walk_right
+        walk_up * 4
+        walk_left
+        step_end
+}
+
+movement ImIn_WalkIntoHouseD {
+    walk_right * 4
+        walk_up * 3
+        walk_left
+        step_end
+}
+
+movement ImIn_WalkIntoHouseE {
+    walk_up * 4
+        walk_left
+        step_end
+}
+
+movement ImIn_WalkIntoHouseF {
+    walk_down
+        walk_left
+        step_end
+}
+
+movement ImIn_SpreadOutHouse {
+    walk_down * 6
+        step_end
+}
+
+movement ImIn_WalkToWarpFromLeft {
+    walk_up
+    walk_right
+    step_end
+}
+
+movement ImIn_WalkToWarpFromRight {
+    walk_up
+    walk_left
+    step_end
+}

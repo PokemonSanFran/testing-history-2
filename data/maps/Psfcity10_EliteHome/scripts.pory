@@ -13,7 +13,7 @@ script Psfcity10_EliteHome_OnTransition {
 script Psfcity10_EliteHome_PictureFrame_Dialogue {
     lock
 
-        if (var(VAR_RUSTURF_TUNNEL_STATE)> 2){
+        if (var(VAR_LILYCOVE_CITY_STATE)> 2){
             call(MaskOff_QuestK_Dialogue)
         } elif (var(VAR_ROUTE116_STATE) > 4){
             msgbox(gText_Psfcity10_EliteHome_ADigitalPhoto,MSGBOX_AUTOCLOSE)

@@ -3,6 +3,7 @@ YouRealizeWereEvilRight_Object_Setup_Script::
 	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_7
 	setflag FLAG_TEMP_8
+	setflag FLAG_TEMP_9
 	setobjectxy 9, 10, 13
 	setobjectxyperm 9, 10, 13
 	setobjectxy 14, 9, 20

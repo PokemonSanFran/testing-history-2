@@ -8,7 +8,7 @@ Psfcity12_Library_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Psfcity12_Library_InteractCraig_Event_Script::
 	lock
-	switch VAR_RUSTURF_TUNNEL_STATE
+	switch VAR_LILYCOVE_CITY_STATE
 	case 1, Psfcity12_Library_InteractCraig_Event_Script_3
 	case 2, Psfcity12_Library_InteractCraig_Event_Script_4
 	case 3, Psfcity12_Library_InteractCraig_Event_Script_5

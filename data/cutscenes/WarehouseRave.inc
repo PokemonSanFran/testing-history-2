@@ -17,7 +17,7 @@ WarehouseRave_MoveObject_Script::
 
 
 WarehouseRave_ControlExits_Script::
-	switch VAR_PETALBURG_WOODS_STATE
+	switch VAR_FORTREE_CITY_STATE
 	case 2, WarehouseRave_ControlExits_Script_2
 	case 3, WarehouseRave_ControlExits_Script_3
 	case 4, WarehouseRave_ControlExits_Script_4
@@ -104,7 +104,7 @@ WarehouseRave_Intro_Dialogue::
 	msgbox gText_WarehouseRave_HasInstructed
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_PETALBURG_WOODS_STATE, 1
+	addvar VAR_FORTREE_CITY_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, WarehouseRave_WalkToBattle
 	waitmovement 0
 	call Common_EventScript_SaveGame
@@ -133,7 +133,7 @@ WarehouseRave_Battle_Script::
 
 WarehouseRave_PostBattle_Script::
 	lock
-	addvar VAR_PETALBURG_WOODS_STATE, 1
+	addvar VAR_FORTREE_CITY_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_IFailedToKill
@@ -215,7 +215,7 @@ WarehouseRave_OutsideWarehouse_Dialogue_1:
 	waitmovement 0
 	removeobject 1
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_PETALBURG_WOODS_STATE, 1
+	addvar VAR_FORTREE_CITY_STATE, 1
 	end
 
 WarehouseRave_OutsideWarehouse_Dialogue_2:

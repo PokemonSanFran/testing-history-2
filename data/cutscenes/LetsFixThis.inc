@@ -63,7 +63,7 @@ LetsFixThis_GetMessage_Dialogue::
 	closemessage
 	addvar VAR_PSFCAVE7_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_PETALBURG_WOODS_STATE, 1
+	addvar VAR_FORTREE_CITY_STATE, 1
 	setflag FLAG_LOCKEDOUT_PLAYED
 	applymovement 1, LetFixThis_WalkOutHouse
 	waitmovement 0

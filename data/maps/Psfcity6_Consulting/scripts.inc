@@ -10,7 +10,7 @@ Psfcity6_Consulting_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Psfcity6_Consulting_InteractTeodoro_Event_Script::
 	lock
 	goto_if_set FLAG_TIMELINE_FALSE, Psfcity6_Consulting_InteractTeodoro_Event_Script_2
-	switch VAR_RUSTURF_TUNNEL_STATE
+	switch VAR_LILYCOVE_CITY_STATE
 	case 1, Psfcity6_Consulting_InteractTeodoro_Event_Script_9
 	case 8, Psfcity6_Consulting_InteractTeodoro_Event_Script_10
 	call MaskOff_QuestF_Dialogue

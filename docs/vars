@@ -43,7 +43,6 @@
 5: YC has called you to the meeting room
 6: YC has told you to stop helping Team Rocket
 7: YC waiting for you to tell them you'll work with them
-8:
 
 #VAR_PSFCITY7_STATE
 1: Has watched the fight that Ariana broke up
@@ -204,6 +203,7 @@
 107: Earthquake has happened, group is getting near Psfroute8
 108: Defeated Dynamax boss
 109: Plan is set to raid Salesforce
+110: Has unlocked door to Sabrina warp tile
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck
@@ -285,6 +285,7 @@ Y: Used to find the target of the last completed takedown quest, number should c
 4: Defeated Ariana
 5: Debrief with Koga 
 
+#VAR_FORTREE_CITY_STATE
 #**RELEVANCE**: "Warehouse Rave tracker in TRUE
 1: Got email, has not gone inside
 2: Saved before fighting Koga
@@ -297,6 +298,7 @@ Y: Used to find the target of the last completed takedown quest, number should c
 2,3,4,5: got a clue to Giovanni's location
 6: Has defeated Giovanni
 
+#VAR_LILYCOVE_CITY_STATE
 #**RELEVANCE**: "Mask Off" quest tracker in TRUE
 0: Has not been assigned
 1: has been assigned
@@ -327,3 +329,11 @@ Y: Used to find the target of the last completed takedown quest, number should c
 6: Defeated 2nd Pokemon
 7: Has woken up the sleeping Dynamax, has saved
 8: Has defeated slepeing Dynamax
+
+#VAR_MAUVILLE_CITY_STATE
+#**RELEVANCE**: Sabrina's house
+1: Has broken into Sabrina's house
+2: Has spread out inside house
+3: Has looked at locked door and realize we need a code
+4: Door unlocked
+5: Went into the tower

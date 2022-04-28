@@ -13,12 +13,12 @@ script MaskOff_TransformObject_Script {
 
 script MaskOff_QuestH_Dialogue {
     faceplayer
-        if (var(VAR_RUSTURF_TUNNEL_STATE) == 1){
+        if (var(VAR_LILYCOVE_CITY_STATE) == 1){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+                addvar(VAR_LILYCOVE_CITY_STATE,1)
         }
     msgbox(gText_MaskOff_IRememberMeeting)
         msgbox(gText_MaskOff_HeSaidEvenThen)
@@ -27,12 +27,12 @@ script MaskOff_QuestH_Dialogue {
 }
 script MaskOff_QuestF_Dialogue {
     faceplayer
-        if (var(VAR_RUSTURF_TUNNEL_STATE) == 2){
+        if (var(VAR_LILYCOVE_CITY_STATE) == 2){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+                addvar(VAR_LILYCOVE_CITY_STATE,1)
         }
     msgbox(gText_MaskOff_IMissWorking)
         msgbox(gText_MaskOff_HeWouldLeaveRight)
@@ -40,12 +40,12 @@ script MaskOff_QuestF_Dialogue {
 }
 script MaskOff_QuestI_Dialogue {
     faceplayer
-        if (var(VAR_RUSTURF_TUNNEL_STATE) == 3){
+        if (var(VAR_LILYCOVE_CITY_STATE) == 3){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+                addvar(VAR_LILYCOVE_CITY_STATE,1)
         }
     msgbox(gText_MaskOff_UsedToCome)
         msgbox(gText_MaskOff_TheyWouldJust)
@@ -54,12 +54,12 @@ script MaskOff_QuestI_Dialogue {
 }
 script MaskOff_QuestD_Dialogue {
     faceplayer
-        if (var(VAR_RUSTURF_TUNNEL_STATE) == 3){
+        if (var(VAR_LILYCOVE_CITY_STATE) == 3){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+                addvar(VAR_LILYCOVE_CITY_STATE,1)
         }
     msgbox(gText_MaskOff_UsedToBeHere)
         msgbox(gText_MaskOff_BookwormsTendToBe)
@@ -71,12 +71,12 @@ script MaskOff_QuestK_Dialogue {
 }
 script MaskOff_QuestG_Dialogue {
     faceplayer
-        if (var(VAR_RUSTURF_TUNNEL_STATE) == 4){
+        if (var(VAR_LILYCOVE_CITY_STATE) == 4){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+                addvar(VAR_LILYCOVE_CITY_STATE,1)
         }
     msgbox(gText_MaskOff_GaveATalkHereOnce)
         msgbox(gText_MaskOff_WhateverHeDidWorked)
@@ -85,12 +85,12 @@ script MaskOff_QuestG_Dialogue {
 }
 script MaskOff_QuestA_Dialogue {
     faceplayer
-        if (var(VAR_RUSTURF_TUNNEL_STATE) == 4){
+        if (var(VAR_LILYCOVE_CITY_STATE) == 4){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+                addvar(VAR_LILYCOVE_CITY_STATE,1)
         }
     msgbox(gText_MaskOff_IUsedToSee)
         msgbox(gText_MaskOff_HeWorkedInThe)
@@ -99,7 +99,7 @@ script MaskOff_QuestA_Dialogue {
 }
 script MaskOff_QuestE_Dialogue {
     faceplayer
-        if (var(VAR_RUSTURF_TUNNEL_STATE) == 5){
+        if (var(VAR_LILYCOVE_CITY_STATE) == 5){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
@@ -113,7 +113,7 @@ script MaskOff_QuestE_Dialogue {
 
 script MaskOff_Encounter_Psfgoodboss_Dialogue {
     lock
-        setvar(VAR_RUSTURF_TUNNEL_STATE,7)
+        setvar(VAR_LILYCOVE_CITY_STATE,7)
         call(Common_EventScript_SaveGame)
 
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
@@ -124,7 +124,7 @@ script MaskOff_Encounter_Psfgoodboss_Dialogue {
 
         trainerbattle_no_intro(TRAINER_SHELLY_SEAFLOOR_CAVERN,gText_GroupStages_Blank)
 
-        addvar(VAR_RUSTURF_TUNNEL_STATE,1)
+        addvar(VAR_LILYCOVE_CITY_STATE,1)
         addvar(VAR_STORYLINE_STATE,1)
         goto(MaskOff_PostBattle_Dialogue)
 }

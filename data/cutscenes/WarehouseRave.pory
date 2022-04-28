@@ -18,7 +18,7 @@ script WarehouseRave_MoveObject_Script {
 }
 
 script WarehouseRave_ControlExits_Script {
-    switch (var(VAR_PETALBURG_WOODS_STATE)){
+    switch (var(VAR_FORTREE_CITY_STATE)){
         case 2: call(WarehouseRave_PostSaveUnlock)
         case 3: call(WarehouseRave_MakeExplosionHole_Script)
         case 4: call(WarehouseRave_MakeExplosionHole_Script)
@@ -98,7 +98,7 @@ script WarehouseRave_Intro_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        addvar(VAR_PETALBURG_WOODS_STATE,1)
+        addvar(VAR_FORTREE_CITY_STATE,1)
         applymovement(PLAYER,WarehouseRave_WalkToBattle)
         waitmovement(0)
         call(Common_EventScript_SaveGame)
@@ -124,7 +124,7 @@ script WarehouseRave_Battle_Script {
 
 script WarehouseRave_PostBattle_Script {
     lock
-        addvar(VAR_PETALBURG_WOODS_STATE,1)
+        addvar(VAR_FORTREE_CITY_STATE,1)
 
         setvar(VAR_0x8000, MUGSHOT_N)
         callnative(DrawMugshot)
@@ -228,7 +228,7 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         removeobject(PSFTRANSRIVAL)
 
         addvar(VAR_STORYLINE_STATE,1)
-        addvar(VAR_PETALBURG_WOODS_STATE,1)
+        addvar(VAR_FORTREE_CITY_STATE,1)
 
         end
 }

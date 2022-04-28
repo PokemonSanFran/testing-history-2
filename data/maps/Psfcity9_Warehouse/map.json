@@ -64,7 +64,7 @@
       "x": 9,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_PETALBURG_WOODS_STATE",
+      "var": "VAR_FORTREE_CITY_STATE",
       "var_value": "1",
       "script": "WarehouseRave_Intro_Dialogue"
     },
@@ -73,7 +73,7 @@
       "x": 8,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_PETALBURG_WOODS_STATE",
+      "var": "VAR_FORTREE_CITY_STATE",
       "var_value": "1",
       "script": "WarehouseRave_Intro_Dialogue"
     },
@@ -82,7 +82,7 @@
       "x": 8,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_PETALBURG_WOODS_STATE",
+      "var": "VAR_FORTREE_CITY_STATE",
       "var_value": "1",
       "script": "WarehouseRave_Intro_Dialogue"
     },
@@ -91,7 +91,7 @@
       "x": 8,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_PETALBURG_WOODS_STATE",
+      "var": "VAR_FORTREE_CITY_STATE",
       "var_value": "1",
       "script": "WarehouseRave_Intro_Dialogue"
     }

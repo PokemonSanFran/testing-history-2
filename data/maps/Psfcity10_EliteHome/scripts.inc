@@ -19,7 +19,7 @@ Psfcity10_EliteHome_OnTransition_1:
 
 Psfcity10_EliteHome_PictureFrame_Dialogue::
 	lock
-	compare VAR_RUSTURF_TUNNEL_STATE, 2
+	compare VAR_LILYCOVE_CITY_STATE, 2
 	goto_if_gt Psfcity10_EliteHome_PictureFrame_Dialogue_2
 	compare VAR_ROUTE116_STATE, 4
 	goto_if_gt Psfcity10_EliteHome_PictureFrame_Dialogue_3

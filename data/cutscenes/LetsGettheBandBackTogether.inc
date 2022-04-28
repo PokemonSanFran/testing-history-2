@@ -98,7 +98,7 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	goto_if_eq LetsGettheBandBackTogether_TrueTimelineSplit_Script_2
 	addvar VAR_PSFCAVE7_STATE, 1
 	setvar VAR_STORYLINE_STATE, 100
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_LILYCOVE_CITY_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_Yes

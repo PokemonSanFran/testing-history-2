@@ -1208,7 +1208,7 @@ Script_RemoveTint::
 .include "data/cutscenes/ThisIsntRandom.inc"
 .include "data/cutscenes/WaitEvenThen.inc"
 .include "data/cutscenes/LetsFinishThis.inc"
-##  .include "data/cutscenes/ImIn.inc"
+.include "data/cutscenes/ImIn.inc"
 ##  .include "data/cutscenes/YouCantStopMe.inc"
 ##  .include "data/cutscenes/WeCanStopYouActually.inc"
 
@@ -1322,3 +1322,5 @@ Script_RemoveTint::
 	.include "data/maps/Psfroute25/scripts.inc"
 
 	.include "data/maps/Psfcave10/scripts.inc"
+
+	.include "data/maps/Psfcity1_Psfbadadmin3_House/scripts.inc"

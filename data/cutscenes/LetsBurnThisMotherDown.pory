@@ -200,7 +200,7 @@ script LetsBurnThisMotherDown_PostBattle_Dialogue {
 }
 
 script LetsBurnThisMotherDown_MissionComplete_Dialogue {
-        lock
+    lock
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_ImSorryIReally)

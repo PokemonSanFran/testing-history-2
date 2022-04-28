@@ -5,6 +5,7 @@ WelcomeToTheWarRoom_Object_Hide_Script::
 	setflag FLAG_TEMP_7
 	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_9
 	return
 
 

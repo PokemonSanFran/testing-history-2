@@ -1,0 +1,28 @@
+mapscripts Psfcity1_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Psfcity1_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_LOAD {
+        goto(Psfcity1_MapScripts_OnLoad)
+    }
+}
+
+script Psfcity1_MapScripts_OnTransition {
+    call(ImIn_HideObject_OutsideHouse_Script)
+}
+
+
+script Psfcity1_MapScripts_OnLoad {
+    if (var(VAR_MAUVILLE_CITY_STATE)){
+        call(ImIn_DestroyWall_Script)
+    }
+}
+
+script Psfbadadmin3_House_LockedDoor_Script {
+    msgbox(gText_Psfcity1_LockedDoor,MSGBOX_SIGN)
+    end
+}
+
+text gText_Psfcity1_LockedDoor {
+    format("The front door is locked.")
+}

@@ -18,7 +18,7 @@ Psfcity9_Warehouse_MapScripts_MAP_SCRIPT_ON_LOAD:
 
 
 Psfcity9_Warehouse_MapScripts_OnTransition::
-	switch VAR_PETALBURG_WOODS_STATE
+	switch VAR_FORTREE_CITY_STATE
 	case 1, Psfcity9_Warehouse_MapScripts_OnTransition_2
 	case 2, Psfcity9_Warehouse_MapScripts_OnTransition_3
 	call WarehouseRave_HideObject_Script

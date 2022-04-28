@@ -36,7 +36,7 @@ Psfcave3_MapScripts_OnTransition_6:
 	goto Psfcave3_MapScripts_OnTransition_5
 
 Psfcave3_MapScripts_OnTransition_9:
-	compare VAR_RUSTURF_TUNNEL_STATE, 8
+	compare VAR_LILYCOVE_CITY_STATE, 8
 	goto_if_lt Psfcave3_MapScripts_OnTransition_1
 	goto Psfcave3_MapScripts_OnTransition_7
 
@@ -71,7 +71,7 @@ Psfcave3_InteractPsfelite4_Event_Script_6:
 	goto Psfcave3_InteractPsfelite4_Event_Script_5
 
 Psfcave3_InteractPsfelite4_Event_Script_9:
-	compare VAR_RUSTURF_TUNNEL_STATE, 3
+	compare VAR_LILYCOVE_CITY_STATE, 3
 	goto_if_gt Psfcave3_InteractPsfelite4_Event_Script_2
 	goto Psfcave3_InteractPsfelite4_Event_Script_7
 

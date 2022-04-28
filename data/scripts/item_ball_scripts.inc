@@ -657,3 +657,7 @@ MagmaHideout_4F_EventScript_ItemMaxRevive::
 MagmaHideout_3F_3R_EventScript_ItemEscapeRope::
 	finditem ITEM_ESCAPE_ROPE
 	end
+
+Psfcity1_Psfbadadmin3_House_EventScript_ItemMagmaEmblem::
+	finditem ITEM_MAGMA_EMBLEM 
+	end

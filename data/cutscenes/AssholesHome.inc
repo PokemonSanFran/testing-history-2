@@ -1,6 +1,7 @@
 AssholesHome_HideObject_Script::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
 	return
 
 

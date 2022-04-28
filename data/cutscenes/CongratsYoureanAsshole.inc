@@ -10,6 +10,7 @@ CongratsYoureanAsshole_ObjectCleanUp_Script::
 	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_7
 	setflag FLAG_TEMP_8
+	setflag FLAG_TEMP_9
 	setobjectxy 14, 10, 15
 	setobjectxyperm 14, 10, 15
 	setobjectxy 9, 10, 13

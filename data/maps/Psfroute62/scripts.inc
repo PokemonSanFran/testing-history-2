@@ -15,7 +15,7 @@ Psfroute62_MapScripts_OnTransition::
 Psfroute62_InteractMatthew_Event_Script::
 	lock
 	goto_if_set FLAG_TIMELINE_FALSE, Psfroute62_InteractMatthew_Event_Script_2
-	switch VAR_RUSTURF_TUNNEL_STATE
+	switch VAR_LILYCOVE_CITY_STATE
 	case 1, Psfroute62_InteractMatthew_Event_Script_9
 	case 2, Psfroute62_InteractMatthew_Event_Script_10
 	case 3, Psfroute62_InteractMatthew_Event_Script_11

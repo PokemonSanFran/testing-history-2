@@ -5450,6 +5450,16 @@
       "secondary_tileset": "gTileset_BikeShop",
       "border_filepath": "data/layouts/Psfcave10/border.bin",
       "blockdata_filepath": "data/layouts/Psfcave10/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFCITY1_PSFBADADMIN3_HOUSE",
+      "name": "Psfcity1_Psfbadadmin3_House_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfcity1_Psfbadadmin3_House/border.bin",
+      "blockdata_filepath": "data/layouts/Psfcity1_Psfbadadmin3_House/map.bin"
     }
   ]
 }

@@ -12,7 +12,7 @@ MaskOff_TransformObject_Script::
 
 MaskOff_QuestH_Dialogue::
 	faceplayer
-	compare VAR_RUSTURF_TUNNEL_STATE, 1
+	compare VAR_LILYCOVE_CITY_STATE, 1
 	goto_if_eq MaskOff_QuestH_Dialogue_2
 MaskOff_QuestH_Dialogue_1:
 	msgbox gText_MaskOff_IRememberMeeting
@@ -26,13 +26,13 @@ MaskOff_QuestH_Dialogue_2:
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_LILYCOVE_CITY_STATE, 1
 	goto MaskOff_QuestH_Dialogue_1
 
 
 MaskOff_QuestF_Dialogue::
 	faceplayer
-	compare VAR_RUSTURF_TUNNEL_STATE, 2
+	compare VAR_LILYCOVE_CITY_STATE, 2
 	goto_if_eq MaskOff_QuestF_Dialogue_2
 MaskOff_QuestF_Dialogue_1:
 	msgbox gText_MaskOff_IMissWorking
@@ -45,13 +45,13 @@ MaskOff_QuestF_Dialogue_2:
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_LILYCOVE_CITY_STATE, 1
 	goto MaskOff_QuestF_Dialogue_1
 
 
 MaskOff_QuestI_Dialogue::
 	faceplayer
-	compare VAR_RUSTURF_TUNNEL_STATE, 3
+	compare VAR_LILYCOVE_CITY_STATE, 3
 	goto_if_eq MaskOff_QuestI_Dialogue_2
 MaskOff_QuestI_Dialogue_1:
 	msgbox gText_MaskOff_UsedToCome
@@ -65,13 +65,13 @@ MaskOff_QuestI_Dialogue_2:
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_LILYCOVE_CITY_STATE, 1
 	goto MaskOff_QuestI_Dialogue_1
 
 
 MaskOff_QuestD_Dialogue::
 	faceplayer
-	compare VAR_RUSTURF_TUNNEL_STATE, 3
+	compare VAR_LILYCOVE_CITY_STATE, 3
 	goto_if_eq MaskOff_QuestD_Dialogue_2
 MaskOff_QuestD_Dialogue_1:
 	msgbox gText_MaskOff_UsedToBeHere
@@ -84,7 +84,7 @@ MaskOff_QuestD_Dialogue_2:
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_LILYCOVE_CITY_STATE, 1
 	goto MaskOff_QuestD_Dialogue_1
 
 
@@ -96,7 +96,7 @@ MaskOff_QuestK_Dialogue::
 
 MaskOff_QuestG_Dialogue::
 	faceplayer
-	compare VAR_RUSTURF_TUNNEL_STATE, 4
+	compare VAR_LILYCOVE_CITY_STATE, 4
 	goto_if_eq MaskOff_QuestG_Dialogue_2
 MaskOff_QuestG_Dialogue_1:
 	msgbox gText_MaskOff_GaveATalkHereOnce
@@ -110,13 +110,13 @@ MaskOff_QuestG_Dialogue_2:
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_LILYCOVE_CITY_STATE, 1
 	goto MaskOff_QuestG_Dialogue_1
 
 
 MaskOff_QuestA_Dialogue::
 	faceplayer
-	compare VAR_RUSTURF_TUNNEL_STATE, 4
+	compare VAR_LILYCOVE_CITY_STATE, 4
 	goto_if_eq MaskOff_QuestA_Dialogue_2
 MaskOff_QuestA_Dialogue_1:
 	msgbox gText_MaskOff_IUsedToSee
@@ -130,13 +130,13 @@ MaskOff_QuestA_Dialogue_2:
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_LILYCOVE_CITY_STATE, 1
 	goto MaskOff_QuestA_Dialogue_1
 
 
 MaskOff_QuestE_Dialogue::
 	faceplayer
-	compare VAR_RUSTURF_TUNNEL_STATE, 5
+	compare VAR_LILYCOVE_CITY_STATE, 5
 	goto_if_eq MaskOff_QuestE_Dialogue_2
 MaskOff_QuestE_Dialogue_1:
 	msgbox gText_MaskOff_WasBornAndRaised
@@ -155,7 +155,7 @@ MaskOff_QuestE_Dialogue_2:
 
 MaskOff_Encounter_Psfgoodboss_Dialogue::
 	lock
-	setvar VAR_RUSTURF_TUNNEL_STATE, 7
+	setvar VAR_LILYCOVE_CITY_STATE, 7
 	call Common_EventScript_SaveGame
 	setvar VAR_0x8000, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
@@ -163,7 +163,7 @@ MaskOff_Encounter_Psfgoodboss_Dialogue::
 	callnative ClearMugshot
 	lock
 	trainerbattle_no_intro TRAINER_SHELLY_SEAFLOOR_CAVERN, gText_GroupStages_Blank
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_LILYCOVE_CITY_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
 	goto MaskOff_PostBattle_Dialogue
 	return

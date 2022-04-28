@@ -4,7 +4,7 @@ mapscripts Psfcity14_Ramen_MapScripts {
 }
 script Psfcity14_Ramen_InteractFanny_Event_Script {
     lock
-        switch(var(VAR_RUSTURF_TUNNEL_STATE)){
+        switch(var(VAR_LILYCOVE_CITY_STATE)){
             case 1: return
             case 2: return
             case 8: return
