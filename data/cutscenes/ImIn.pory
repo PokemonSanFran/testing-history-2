@@ -7,8 +7,28 @@ const PSFNATIVERIVAL = 5
 const PKMNA = 6
 
 script ImIn_HideObject_OutsideHouse_Script {
-    setflag(FLAG_TEMP_1)
+        setflag(FLAG_TEMP_1)
         setflag(FLAG_TEMP_2)
+}
+
+script ImIn_HideStairsGuard_Script {
+    setflag(FLAG_TEMP_1F)
+}
+
+script ImIn_ShowPsftransrival_Script {
+    setflag(FLAG_TEMP_1F)
+    clearflag(FLAG_TEMP_4)
+    addobject(9) //Make Psftransrival visible
+}
+
+script ImIn_ResumeSave_Script {
+    call(ImIn_ShowPsftransrival_Script)
+    call(ImIn_MovePsftransrival_Script)
+}
+
+script ImIn_MovePsftransrival_Script {
+    setobjectxy(9,12,26)
+    setobjectxyperm(9,12,26)
 }
 
 script ImIn_DestroyWall_Script {
@@ -44,7 +64,7 @@ script ImIn_ObjectSetUp_InsideHouse_Script {
 }
 
 script ImIn_MoveObject_BeforeWarp_Script {
-        addobject(PSFELITE1)
+    addobject(PSFELITE1)
         addobject(PSFELITE2)
         addobject(PSFELITE3)
         addobject(PSFELITE4)
@@ -67,15 +87,23 @@ script ImIn_MoveObject_BeforeWarp_Script {
         waitmovement(PSFELITE2)
 }
 
+const PSFELITE1_B = 15
+const PSFELITE2_B = 16
+const PSFELITE3_B = 17
+const PSFELITE4_B = 18
+const PSFNATIVERIVAL_B = 19
+
 script ImIn_ObjectSetUp_PostWarp_Script {
     setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_3)
-    setflag(FLAG_TEMP_4)
-    setflag(FLAG_TEMP_5)
-    setflag(FLAG_TEMP_6)
-    setflag(FLAG_TEMP_7)
-    setflag(FLAG_TEMP_8)
+        setflag(FLAG_TEMP_2)
+        setflag(FLAG_TEMP_3)
+        setflag(FLAG_TEMP_4)
+        setflag(FLAG_TEMP_5)
+        setflag(FLAG_TEMP_6)
+        setflag(FLAG_TEMP_7)
+        setflag(FLAG_TEMP_8)
+        clearflag(FLAG_TEMP_9)
+        call(ImIn_HideStairsGuard_Script)
 }
 
 script ImIn_StartHouseBreak_Script {
@@ -299,9 +327,9 @@ script ImIn_EnterCorrectCode_Script {
 script ImIn_PostWarpSplit_Dialogue {
     lock
 
-    addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_MAUVILLE_CITY_STATE,1)
 
-    setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_WereAllIn)
 
@@ -312,8 +340,12 @@ script ImIn_PostWarpSplit_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_LetsGoSecure)
+        closemessage
+        callnative(ClearMugshot)
 
-        //Psfelite3 and Psfelite2 walk off screen.
+        applymovement(PSFELITE3_B,ImIn_WalkAwayFromWarpB)
+        applymovement(PSFELITE2_B,ImIn_WalkAwayFromWarpA)
+        waitmovement(PSFELITE2_B)
 
         setvar(VAR_0x8000, MUGSHOT_CAITLIN)
         callnative(DrawMugshot)
@@ -326,22 +358,60 @@ script ImIn_PostWarpSplit_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_FloorThenLets)
+        closemessage
+        callnative(ClearMugshot)
 
-        //Everybody walks off screen. Player regains control.
+        applymovement(PSFELITE1_B,ImIn_WalkAwayFromWarpC)
+        applymovement(PSFELITE4_B,ImIn_WalkAwayFromWarpD)
+        applymovement(PSFNATIVERIVAL_B,ImIn_WalkAwayFromWarpE)
 
-        //If player tries to ascend to the 11th floor without checking Psfbadboss' office on the 10th floor:
+        waitmovement(PSFELITE4_B)
+
+        removeobject(PSFELITE1_B)
+        removeobject(PSFELITE2_B)
+        removeobject(PSFELITE3_B)
+        removeobject(PSFELITE4_B)
+        removeobject(PSFNATIVERIVAL_B)
+
+        release
+        end
+}
+
+script ImIn_PreventPlayerProgress_Script {
+        if (var(VAR_MAUVILLE_CITY_STATE) > 6){
+            release
+            end
+        }
+        lock
+
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        waitmovement(PLAYER)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_OfficeIsOn)
+        callnative(ClearMugshot)
+        closemessage
 
-        //The player steps backward and regains control.
+        applymovement(PLAYER,ImIn_WalkAwayStairs)
+        waitmovement(PLAYER)
+        release
+        end
+}
 
-        //When the player walks into Psfbadboss's office, Psftransrival is sitting at the desk.
+script ImIn_OfficeReveal_Dialogue {
+    lock
+        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        playbgm(MUS_ENCOUNTER_MAY,TRUE)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_DoYouLikeMy)
+        closemessage
+        callnative(ClearMugshot)
+
+        applymovement(PLAYER,ImIn_ApproachDesk)
+        waitmovement(PLAYER)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -370,22 +440,46 @@ script ImIn_PostWarpSplit_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_DaddyWontBeAble)
+        closemessage
+        callnative(ClearMugshot)
 
-        //The game prompts a save.
+        applymovement(9,ImIn_WalkFromDesk)
+        waitmovement(9)
 
+        call(Common_EventScript_SaveGame)
+        closemessage
+        goto(ImIn_StartPsftransrivalBattle_Script)
+}
+
+script ImIn_StartPsftransrivalBattle_Script {
+
+        lock
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_AreDeadDoYou)
+        closemessage
+        callnative(ClearMugshot)
 
-        //The player battles Psftransrival.
+        trainerbattle_no_intro(TRAINER_MAY_LILYCOVE_MUDKIP,gText_ImIn_HowDoesThisKeep)
+        goto(ImIn_PsftransrivalDefeated_Dialogue)
+}
 
-        //After the player wins:
-
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+script ImIn_InteractPsftransrivalBattle_Script {
+    playbgm(MUS_ENCOUNTER_MAY,TRUE)
+        lock
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-        msgbox(gText_ImIn_HowDoesThisKeep)
+        msgbox(gText_ImIn_DaddyWontBeAble,MSGBOX_NPC)
+        closemessage
+        callnative(ClearMugshot)
+        trainerbattle_no_intro(TRAINER_MAY_LILYCOVE_MUDKIP,gText_ImIn_HowDoesThisKeep)
+        goto(ImIn_PsftransrivalDefeated_Dialogue)
+}
 
-        //Cut back to the overworld.
+script ImIn_PsftransrivalDefeated_Dialogue {
+    lock
+        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        call(ImIn_MovePsftransrival_Script)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -402,14 +496,33 @@ script ImIn_PostWarpSplit_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_Floor)
+        callnative(ClearMugshot)
+        closemessage
 
-        //If the player talks to Psftransrival again:
+        release
+        end
+}
 
+script ImIn_PostPsftransrivalBattle_Interact_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
-        msgbox(gText_ImIn_AllThatTraining)
-
+        msgbox(gText_ImIn_AllThatTraining,MSGBOX_NPC)
+        callnative(ClearMugshot)
 }
+
+script ImIn_InteractPsftransrival_Event_Script {
+    lock
+
+    switch(var(VAR_MAUVILLE_CITY_STATE)){
+        case 6: call(ImIn_InteractPsftransrivalBattle_Script)
+        default: call(ImIn_PostPsftransrivalBattle_Interact_Dialogue)
+}
+
+    closemessage
+    release
+    end
+    }
+
 text gText_ImIn_WereCertainNobody {
     format("We're certain nobody is home?")
 }
@@ -619,12 +732,62 @@ movement ImIn_SpreadOutHouse {
 
 movement ImIn_WalkToWarpFromLeft {
     walk_up
-    walk_right
-    step_end
+        walk_right
+        step_end
 }
 
 movement ImIn_WalkToWarpFromRight {
     walk_up
+        walk_left
+        step_end
+}
+
+movement ImIn_WalkAwayFromWarpA {
+    walk_right * 2
+        walk_down * 3
+        walk_left * 4
+        walk_down * 4
+        step_end
+}
+
+movement ImIn_WalkAwayFromWarpB {
+    walk_down * 4
+        step_end
+}
+
+movement ImIn_WalkAwayFromWarpC {
     walk_left
+        walk_down * 4
+        step_end
+}
+
+movement ImIn_WalkAwayFromWarpD {
+    walk_down * 3
+        walk_left * 3
+        walk_down * 3
+        step_end
+}
+
+movement ImIn_WalkAwayFromWarpE {
+    walk_left * 2
+        walk_down * 4
+        step_end
+}
+
+movement ImIn_WalkAwayStairs {
+    lock_facing_direction
+    walk_down
+    unlock_facing_direction
+    step_end
+}
+
+movement ImIn_ApproachDesk {
+    walk_right * 3
+    step_end
+}
+
+movement ImIn_WalkFromDesk {
+    walk_down
+    walk_left * 2
     step_end
 }

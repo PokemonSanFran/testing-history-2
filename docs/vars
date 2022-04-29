@@ -331,9 +331,11 @@ Y: Used to find the target of the last completed takedown quest, number should c
 8: Has defeated slepeing Dynamax
 
 #VAR_MAUVILLE_CITY_STATE
-#**RELEVANCE**: Sabrina's house
+#**RELEVANCE**: Sabrina's house / Raid progress
 1: Has broken into Sabrina's house
 2: Has spread out inside house
 3: Has looked at locked door and realize we need a code
 4: Door unlocked
 5: Went into the tower
+6: Encountered Bianca on floor 10
+7: Defeated Bianca on floor 10

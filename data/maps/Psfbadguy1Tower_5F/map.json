@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Psfbadguy1Tower_BlockedStairs_Dialogue",
-      "flag": "0"
+      "flag": "FLAG_TEMP_1F"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Psfbadguy1Tower_BlockedStairs_Dialogue",
-      "flag": "0"
+      "flag": "FLAG_TEMP_1F"
     }
   ],
   "warp_events": [
@@ -47,6 +47,20 @@
       "y": 28,
       "elevation": 0,
       "dest_map": "MAP_PSFBADGUY1TOWER_ELEVATOR",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 6,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_PSFBADGUY1TOWER_4F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 23,
+      "y": 29,
+      "elevation": 0,
+      "dest_map": "MAP_PSFBADGUY1TOWER_6F",
       "dest_warp_id": 0
     }
   ],

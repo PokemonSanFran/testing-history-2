@@ -13,7 +13,8 @@ Psfbadguy1Tower_Elevator_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Psfbadguy1Tower_Elevator_MapScripts_OnTransition::
-	goto_if_unset FLAG_BADGE03_GET, Psfbadguy1Tower_Elevator_MapScripts_OnTransition_1
+	compare VAR_MAUVILLE_CITY_STATE, 4
+	goto_if_gt Psfbadguy1Tower_Elevator_MapScripts_OnTransition_1
 	return
 
 Psfbadguy1Tower_Elevator_MapScripts_OnTransition_1:
@@ -23,7 +24,8 @@ Psfbadguy1Tower_Elevator_MapScripts_OnTransition_1:
 
 Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue::
 	setvar VAR_TEMP_0, 1
-	goto_if_unset FLAG_BADGE03_GET, Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue_1
+	compare VAR_MAUVILLE_CITY_STATE, 4
+	goto_if_gt Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue_1
 	release
 	end
 

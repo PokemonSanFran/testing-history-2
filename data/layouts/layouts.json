@@ -5460,6 +5460,56 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Psfcity1_Psfbadadmin3_House/border.bin",
       "blockdata_filepath": "data/layouts/Psfcity1_Psfbadadmin3_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFBADGUY1TOWER_3F",
+      "name": "Psfbadguy1Tower_3F_Layout",
+      "width": 19,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfbadguy1Tower_3F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFBADGUY1TOWER_4F",
+      "name": "Psfbadguy1Tower_4F_Layout",
+      "width": 19,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfbadguy1Tower_4F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFBADGUY1TOWER_6F",
+      "name": "Psfbadguy1Tower_6F_Layout",
+      "width": 19,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfbadguy1Tower_6F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_6F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFBADGUY1TOWER_8F",
+      "name": "Psfbadguy1Tower_8F_Layout",
+      "width": 19,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfbadguy1Tower_8F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_8F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFBADGUY1TOWER_9F",
+      "name": "Psfbadguy1Tower_9F_Layout",
+      "width": 19,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Psfbadguy1Tower_9F/border.bin",
+      "blockdata_filepath": "data/layouts/Psfbadguy1Tower_9F/map.bin"
     }
   ]
 }

@@ -1,3 +1,18 @@
 Psfbadguy1Tower_5F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfbadguy1Tower_5F_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfbadguy1Tower_5F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Psfbadguy1Tower_5F_MapScripts_OnTransition
+	return
+
+
+Psfbadguy1Tower_5F_MapScripts_OnTransition::
+	compare VAR_MAUVILLE_CITY_STATE, 4
+	goto_if_gt Psfbadguy1Tower_5F_MapScripts_OnTransition_1
+	return
+
+Psfbadguy1Tower_5F_MapScripts_OnTransition_1:
+	call ImIn_HideStairsGuard_Script
+	return
 

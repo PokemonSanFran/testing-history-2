@@ -4,6 +4,7 @@ const PSFBADADMIN = 4
 
 script TheGangsAllHere_ObjectCleanUp_Script {
     setflag(FLAG_TEMP_2)
+    setflag(FLAG_TEMP_4)
 }
 
 script TheGangsAllHere_WhatBringsYou_Dialogue{
@@ -202,17 +203,17 @@ script TheGangsAllHere_EndScene_Dialogue{
 
 
 script Psfbadguy1Tower_10F_EventScript_Tom {
-    trainerbattle_double(TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons)
+    trainerbattle_single(TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat)
     special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
-    msgbox (Route104_Text_GinaPostBattle, MSGBOX_DEFAULT)
+    msgbox (Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE)
     release
     end
 }
 
 script Psfbadguy1Tower_10F_EventScript_Ian {
-    trainerbattle_double (TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons)
+    trainerbattle_single (TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat)
     special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
-    msgbox (Route104_Text_MiaPostBattle, MSGBOX_DEFAULT)
+    msgbox (Route104_Text_MiaPostBattle, MSGBOX_AUTOCLOSE)
     release
     end
 }

@@ -1324,3 +1324,13 @@ Script_RemoveTint::
 	.include "data/maps/Psfcave10/scripts.inc"
 
 	.include "data/maps/Psfcity1_Psfbadadmin3_House/scripts.inc"
+
+	.include "data/maps/Psfbadguy1Tower_3F/scripts.inc"
+
+	.include "data/maps/Psfbadguy1Tower_4F/scripts.inc"
+
+	.include "data/maps/Psfbadguy1Tower_6F/scripts.inc"
+
+	.include "data/maps/Psfbadguy1Tower_8F/scripts.inc"
+
+	.include "data/maps/Psfbadguy1Tower_9F/scripts.inc"

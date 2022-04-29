@@ -4,6 +4,30 @@ ImIn_HideObject_OutsideHouse_Script::
 	return
 
 
+ImIn_HideStairsGuard_Script::
+	setflag FLAG_TEMP_1F
+	return
+
+
+ImIn_ShowPsftransrival_Script::
+	setflag FLAG_TEMP_1F
+	clearflag FLAG_TEMP_4
+	addobject 9
+	return
+
+
+ImIn_ResumeSave_Script::
+	call ImIn_ShowPsftransrival_Script
+	call ImIn_MovePsftransrival_Script
+	return
+
+
+ImIn_MovePsftransrival_Script::
+	setobjectxy 9, 12, 26
+	setobjectxyperm 9, 12, 26
+	return
+
+
 ImIn_DestroyWall_Script::
 	setmetatile 15, 13, 0x0A7, FALSE
 	special DrawWholeMapView
@@ -70,6 +94,8 @@ ImIn_ObjectSetUp_PostWarp_Script::
 	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_7
 	setflag FLAG_TEMP_8
+	clearflag FLAG_TEMP_9
+	call ImIn_HideStairsGuard_Script
 	return
 
 
@@ -270,6 +296,11 @@ ImIn_PostWarpSplit_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_LetsGoSecure
+	closemessage
+	callnative ClearMugshot
+	applymovement 17, ImIn_WalkAwayFromWarpB
+	applymovement 16, ImIn_WalkAwayFromWarpA
+	waitmovement 16
 	setvar VAR_0x8000, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_ImIn_ThisPlaceIsProbably
@@ -279,12 +310,53 @@ ImIn_PostWarpSplit_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_FloorThenLets
+	closemessage
+	callnative ClearMugshot
+	applymovement 15, ImIn_WalkAwayFromWarpC
+	applymovement 18, ImIn_WalkAwayFromWarpD
+	applymovement 19, ImIn_WalkAwayFromWarpE
+	waitmovement 18
+	removeobject 15
+	removeobject 16
+	removeobject 17
+	removeobject 18
+	removeobject 19
+	release
+	end
+
+
+ImIn_PreventPlayerProgress_Script::
+	compare VAR_MAUVILLE_CITY_STATE, 6
+	goto_if_gt ImIn_PreventPlayerProgress_Script_2
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_OfficeIsOn
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, ImIn_WalkAwayStairs
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+
+ImIn_PreventPlayerProgress_Script_2:
+	release
+	end
+
+
+ImIn_OfficeReveal_Dialogue::
+	lock
+	addvar VAR_MAUVILLE_CITY_STATE, 1
+	playbgm MUS_ENCOUNTER_MAY, TRUE
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_DoYouLikeMy
+	closemessage
+	callnative ClearMugshot
+	applymovement OBJ_EVENT_ID_PLAYER, ImIn_ApproachDesk
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_WhatAreYouDoing
@@ -306,12 +378,45 @@ ImIn_PostWarpSplit_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_DaddyWontBeAble
+	closemessage
+	callnative ClearMugshot
+	applymovement 9, ImIn_WalkFromDesk
+	waitmovement 9
+	call Common_EventScript_SaveGame
+	closemessage
+	goto ImIn_StartPsftransrivalBattle_Script
+	return
+
+
+ImIn_StartPsftransrivalBattle_Script::
+	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_AreDeadDoYou
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	closemessage
+	callnative ClearMugshot
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, gText_ImIn_HowDoesThisKeep
+	goto ImIn_PsftransrivalDefeated_Dialogue
+	return
+
+
+ImIn_InteractPsftransrivalBattle_Script::
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	lock
+	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_ImIn_HowDoesThisKeep
+	msgbox gText_ImIn_DaddyWontBeAble, MSGBOX_NPC
+	closemessage
+	callnative ClearMugshot
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, gText_ImIn_HowDoesThisKeep
+	goto ImIn_PsftransrivalDefeated_Dialogue
+	return
+
+
+ImIn_PsftransrivalDefeated_Dialogue::
+	lock
+	addvar VAR_MAUVILLE_CITY_STATE, 1
+	call ImIn_MovePsftransrival_Script
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_Wheres
@@ -324,10 +429,33 @@ ImIn_PostWarpSplit_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_Floor
+	callnative ClearMugshot
+	closemessage
+	release
+	end
+
+
+ImIn_PostPsftransrivalBattle_Interact_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_ImIn_AllThatTraining
+	msgbox gText_ImIn_AllThatTraining, MSGBOX_NPC
+	callnative ClearMugshot
 	return
+
+
+ImIn_InteractPsftransrival_Event_Script::
+	lock
+	switch VAR_MAUVILLE_CITY_STATE
+	case 6, ImIn_InteractPsftransrival_Event_Script_3
+	call ImIn_PostPsftransrivalBattle_Interact_Dialogue
+ImIn_InteractPsftransrival_Event_Script_1:
+	closemessage
+	release
+	end
+
+ImIn_InteractPsftransrival_Event_Script_3:
+	call ImIn_InteractPsftransrivalBattle_Script
+	goto ImIn_InteractPsftransrival_Event_Script_1
 
 
 ImIn_ApproachHouse:
@@ -423,6 +551,76 @@ ImIn_WalkToWarpFromLeft:
 
 ImIn_WalkToWarpFromRight:
 	walk_up
+	walk_left
+	step_end
+
+ImIn_WalkAwayFromWarpA:
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+ImIn_WalkAwayFromWarpB:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+ImIn_WalkAwayFromWarpC:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+ImIn_WalkAwayFromWarpD:
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+ImIn_WalkAwayFromWarpE:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+ImIn_WalkAwayStairs:
+	lock_facing_direction
+	walk_down
+	unlock_facing_direction
+	step_end
+
+ImIn_ApproachDesk:
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+ImIn_WalkFromDesk:
+	walk_down
+	walk_left
 	walk_left
 	step_end
 

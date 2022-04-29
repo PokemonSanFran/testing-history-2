@@ -13,10 +13,39 @@ Psfbadguy1Tower_10F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 Psfbadguy1Tower_10F_MapScripts_OnTransition::
 	switch VAR_PSFCITY15_STATE
-	case 4, Psfbadguy1Tower_10F_MapScripts_OnTransition_2
+	case 4, Psfbadguy1Tower_10F_MapScripts_OnTransition_3
+Psfbadguy1Tower_10F_MapScripts_OnTransition_1:
+	switch VAR_MAUVILLE_CITY_STATE
+	case 0, Psfbadguy1Tower_10F_MapScripts_OnTransition_5
+	case 1, Psfbadguy1Tower_10F_MapScripts_OnTransition_6
+	case 2, Psfbadguy1Tower_10F_MapScripts_OnTransition_7
+	case 3, Psfbadguy1Tower_10F_MapScripts_OnTransition_8
+	case 4, Psfbadguy1Tower_10F_MapScripts_OnTransition_9
+	case 5, Psfbadguy1Tower_10F_MapScripts_OnTransition_10
+	call ImIn_ResumeSave_Script
 	return
 
-Psfbadguy1Tower_10F_MapScripts_OnTransition_2:
-	goto TheGangsAllHere_ObjectCleanUp_Script
+Psfbadguy1Tower_10F_MapScripts_OnTransition_3:
+	call TheGangsAllHere_ObjectCleanUp_Script
+	goto Psfbadguy1Tower_10F_MapScripts_OnTransition_1
+
+Psfbadguy1Tower_10F_MapScripts_OnTransition_5:
+	return
+
+Psfbadguy1Tower_10F_MapScripts_OnTransition_6:
+	return
+
+Psfbadguy1Tower_10F_MapScripts_OnTransition_7:
+	return
+
+Psfbadguy1Tower_10F_MapScripts_OnTransition_8:
+	return
+
+Psfbadguy1Tower_10F_MapScripts_OnTransition_9:
+	return
+
+Psfbadguy1Tower_10F_MapScripts_OnTransition_10:
+	call ImIn_HideStairsGuard_Script
+	call ImIn_ShowPsftransrival_Script
 	return
 

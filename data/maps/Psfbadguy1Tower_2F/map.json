@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Psfbadguy1Tower_BlockedStairs_Dialogue",
-      "flag": "0"
+      "flag": "FLAG_TEMP_1F"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
@@ -258,8 +258,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FLAG_TEMP_9",
-      "flag": "0"
+      "script": "NULL",
+      "flag": "FLAG_TEMP_9"
     }
   ],
   "warp_events": [
@@ -290,6 +290,13 @@
       "elevation": 0,
       "dest_map": "MAP_PSFCITY1_PSFBADADMIN3_HOUSE",
       "dest_warp_id": 1
+    },
+    {
+      "x": 12,
+      "y": 36,
+      "elevation": 0,
+      "dest_map": "MAP_PSFBADGUY1TOWER_3F",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

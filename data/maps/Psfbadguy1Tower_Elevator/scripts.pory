@@ -10,62 +10,62 @@ mapscripts Psfbadguy1Tower_Elevator_MapScripts {
 }
 
 script Psfbadguy1Tower_Elevator_MapScripts_OnTransition {
-    if (!flag(FLAG_BADGE03_GET)){ //PSF TODO come back and replace with the storyline variable for the raid
+    if (var(VAR_MAUVILLE_CITY_STATE) > 4){
         goto(Psfbadguy1Tower_Elevator_HideAttendant_Script)
-    }
+}
 }
 
 script Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue {
-        setvar(VAR_TEMP_0,1)
-    if (!flag(FLAG_BADGE03_GET)){ 
-    lock
-    applymovement(PLAYER,Common_Movement_FaceLeft)
-    waitmovement(0)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Psfbadguy1Tower_Elevator_TheAttendantIsGone)
-    closemessage
-    callnative(ClearMugshot)
+    setvar(VAR_TEMP_0,1)
+        if (var(VAR_MAUVILLE_CITY_STATE) > 4){
+            lock
+                applymovement(PLAYER,Common_Movement_FaceLeft)
+                waitmovement(0)
+                setvar(VAR_0x8000, MUGSHOT_HILDA)
+                callnative(DrawMugshot)
+                msgbox(gText_Psfbadguy1Tower_Elevator_TheAttendantIsGone)
+                closemessage
+                callnative(ClearMugshot)
+                release
+                end
+} else {
     release
-    end
-    } else {
-        release
         end
-    }
+}
 }
 
 script Psfbadguy1Tower_Elevator_HideAttendant_Script {
     setflag(FLAG_TEMP_1)
 }
-        
+
 script Psfbadguy1Tower_ElevatorAttendant_Script {
     lock
-    faceplayer
-    setvar(VAR_0x8004,0) //don't know what purpose this serves
-    if (flag(FLAG_TEMP_2)){
-        call(Psfbadguy1TowerElevator_EventScript_SetFloor)
-    }
+        faceplayer
+        setvar(VAR_0x8004,0) //don't know what purpose this serves
+        if (flag(FLAG_TEMP_2)){
+            call(Psfbadguy1TowerElevator_EventScript_SetFloor)
+        }
     copyvar(VAR_0x8005,VAR_DEPT_STORE_FLOOR)
 
-    special(ShowPsfbadguy1TowerElevatorFloorSelect) // TODO Figure out why the floor does not display correctly when you walk from 2F to 1F and then use the elevator
-    message(gText_WhichFloorWouldYouLike)
-    waitmessage
-    setvar(VAR_0x8004,0) //don't know what purpose this serves
-    goto(Psfbadguy1TowerElevator_EventScript_ChooseFromX)
-    end
+        special(ShowPsfbadguy1TowerElevatorFloorSelect) // TODO Figure out why the floor does not display correctly when you walk from 2F to 1F and then use the elevator
+        message(gText_WhichFloorWouldYouLike)
+        waitmessage
+        setvar(VAR_0x8004,0) //don't know what purpose this serves
+        goto(Psfbadguy1TowerElevator_EventScript_ChooseFromX)
+        end
 }
 
 script Psfbadguy1TowerElevator_EventScript_ChooseFromX  {
     specialvar(VAR_RESULT,GetTowerFloorDefaultFloorChoice)
-    switch(var(VAR_RESULT))
-{
-        case 0: multichoicedefault(0,0,MULTI_FLOORS,0,FALSE)
-        case 1: multichoicedefault(0,0,MULTI_FLOORS,1,FALSE)
-        case 2: multichoicedefault(0,0,MULTI_FLOORS,2,FALSE)
-        case 3: multichoicedefault(0,0,MULTI_FLOORS,3,FALSE)
+        switch(var(VAR_RESULT))
+        {
+            case 0: multichoicedefault(0,0,MULTI_FLOORS,0,FALSE)
+            case 1: multichoicedefault(0,0,MULTI_FLOORS,1,FALSE)
+            case 2: multichoicedefault(0,0,MULTI_FLOORS,2,FALSE)
+            case 3: multichoicedefault(0,0,MULTI_FLOORS,3,FALSE)
         }
     goto(Psfbadguy1TowerElevator_EventScript_ChooseFloor)
-    end
+        end
 }
 
 script Psfbadguy1TowerElevator_EventScript_ChooseFloor{
@@ -77,75 +77,75 @@ script Psfbadguy1TowerElevator_EventScript_ChooseFloor{
         case 4: goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
         case(MULTI_B_PRESSED): goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
     }
-        end
+    end
 }
 
 script Psfbadguy1TowerElevator_EventScript_1stFloor{
     setvar(VAR_0x8006,PSFBADGUY1TOWER_FLOORNUM_1F)
-    setdynamicwarp(MAP_PSFBADGUY1TOWER_1F,255,8,2)
-    if (var(VAR_DEPT_STORE_FLOOR) == PSFBADGUY1TOWER_FLOORNUM_1F)    {
-        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    }
+        setdynamicwarp(MAP_PSFBADGUY1TOWER_1F,255,8,2)
+        if (var(VAR_DEPT_STORE_FLOOR) == PSFBADGUY1TOWER_FLOORNUM_1F)    {
+            goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+        }
     call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
-	setvar(VAR_DEPT_STORE_FLOOR,PSFBADGUY1TOWER_FLOORNUM_1F)
-	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    end
+        setvar(VAR_DEPT_STORE_FLOOR,PSFBADGUY1TOWER_FLOORNUM_1F)
+        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+        end
 }
 script Psfbadguy1TowerElevator_EventScript_2ndFloor{
     setvar(VAR_0x8006,PSFBADGUY1TOWER_FLOORNUM_2F)
-    setdynamicwarp(MAP_PSFBADGUY1TOWER_2F,255,9,39)
-    if (var(VAR_DEPT_STORE_FLOOR) == PSFBADGUY1TOWER_FLOORNUM_2F)    {
-        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    }
+        setdynamicwarp(MAP_PSFBADGUY1TOWER_2F,255,9,39)
+        if (var(VAR_DEPT_STORE_FLOOR) == PSFBADGUY1TOWER_FLOORNUM_2F)    {
+            goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+        }
     call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
-	setvar(VAR_DEPT_STORE_FLOOR,PSFBADGUY1TOWER_FLOORNUM_2F)
-	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    end
+        setvar(VAR_DEPT_STORE_FLOOR,PSFBADGUY1TOWER_FLOORNUM_2F)
+        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+        end
 }
 script Psfbadguy1TowerElevator_EventScript_5thFloor{
     setvar(VAR_0x8006,PSFBADGUY1TOWER_FLOORNUM_5F)
-    setdynamicwarp(MAP_PSFBADGUY1TOWER_5F,255,16,28)
-    if (var(VAR_DEPT_STORE_FLOOR) == PSFBADGUY1TOWER_FLOORNUM_5F)    {
-        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    }
+        setdynamicwarp(MAP_PSFBADGUY1TOWER_5F,255,16,28)
+        if (var(VAR_DEPT_STORE_FLOOR) == PSFBADGUY1TOWER_FLOORNUM_5F)    {
+            goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+        }
     call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
-	setvar(VAR_DEPT_STORE_FLOOR,PSFBADGUY1TOWER_FLOORNUM_5F)
-	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    end
+        setvar(VAR_DEPT_STORE_FLOOR,PSFBADGUY1TOWER_FLOORNUM_5F)
+        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+        end
 }
 script Psfbadguy1TowerElevator_EventScript_10thFloor{
     setvar(VAR_0x8006,PSFBADGUY1TOWER_FLOORNUM_10F)
-    setdynamicwarp(MAP_PSFBADGUY1TOWER_10F,255,8,2)
-    if (var(VAR_DEPT_STORE_FLOOR) == PSFBADGUY1TOWER_FLOORNUM_10F)   {
-        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    }
+        setdynamicwarp(MAP_PSFBADGUY1TOWER_10F,255,8,2)
+        if (var(VAR_DEPT_STORE_FLOOR) == PSFBADGUY1TOWER_FLOORNUM_10F)   {
+            goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+        }
     call(Psfbadguy1TowerElevator_EventScript_MoveElevator)
-	setvar(VAR_DEPT_STORE_FLOOR,PSFBADGUY1TOWER_FLOORNUM_10F)
-	goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
-    end
+        setvar(VAR_DEPT_STORE_FLOOR,PSFBADGUY1TOWER_FLOORNUM_10F)
+        goto(Psfbadguy1TowerElevator_EventScript_ExitFloorSelect)
+        end
 }
 
 script Psfbadguy1TowerElevator_EventScript_ExitFloorSelect{
     special(CloseDeptStoreElevatorWindow)
-    release
-    end
+        release
+        end
 }
 
 script Psfbadguy1TowerElevator_EventScript_MoveElevator{
     special(CloseDeptStoreElevatorWindow)
-    closemessage
-    applymovement(VAR_LAST_TALKED,Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(0)
-    waitse
-    special(MoveElevator)
-    waitstate
-    setflag(FLAG_TEMP_2)
-    return
+        closemessage
+        applymovement(VAR_LAST_TALKED,Common_Movement_WalkInPlaceFasterDown)
+        waitmovement(0)
+        waitse
+        special(MoveElevator)
+        waitstate
+        setflag(FLAG_TEMP_2)
+        return
 }
 
 script Psfbadguy1TowerElevator_EventScript_SetFloor{
     special(SetPsfbadguy1TowerFloor)
-    return
+        return
 }
 
 text gText_Psfbadguy1Tower_Elevator_TheAttendantIsGone {

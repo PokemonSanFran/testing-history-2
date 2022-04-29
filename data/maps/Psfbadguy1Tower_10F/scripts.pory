@@ -8,7 +8,17 @@ mapscripts Psfbadguy1Tower_10F_MapScripts {
 
 script Psfbadguy1Tower_10F_MapScripts_OnTransition {
     switch (var(VAR_PSFCITY15_STATE)){
-        case 4: goto(TheGangsAllHere_ObjectCleanUp_Script)
+        case 4: call(TheGangsAllHere_ObjectCleanUp_Script)
+    }
+
+    switch (var(VAR_MAUVILLE_CITY_STATE)){
+        case 0: return
+        case 1: return
+        case 2: return
+        case 3: return
+        case 4: return
+        case 5: call(ImIn_HideStairsGuard_Script)
+                call(ImIn_ShowPsftransrival_Script)
+        default: call(ImIn_ResumeSave_Script)
     }
 }
-

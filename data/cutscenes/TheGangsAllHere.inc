@@ -1,5 +1,6 @@
 TheGangsAllHere_ObjectCleanUp_Script::
 	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_4
 	return
 
 
@@ -195,17 +196,17 @@ TheGangsAllHere_EndScene_Dialogue::
 
 
 Psfbadguy1Tower_10F_EventScript_Tom::
-	trainerbattle_double TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons
+	trainerbattle_single TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat
 	special GetPlayerBigGuyGirlString
-	msgbox Route104_Text_GinaPostBattle, MSGBOX_DEFAULT
+	msgbox Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE
 	release
 	end
 
 
 Psfbadguy1Tower_10F_EventScript_Ian::
-	trainerbattle_double TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons
+	trainerbattle_single TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat
 	special GetPlayerBigGuyGirlString
-	msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
+	msgbox Route104_Text_MiaPostBattle, MSGBOX_AUTOCLOSE
 	release
 	end
 
