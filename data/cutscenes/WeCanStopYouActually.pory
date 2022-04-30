@@ -116,7 +116,7 @@ msgbox(gText_WeCanStopYouActually_AndIllFrigginKill)
 callnative(ClearMugshot)
 closemessage
 
-        //trainerbattle_no_intro(TRAINER_STEVEN,gText_WeCanStopYouActually_Nonono)
+        trainerbattle_no_intro(TRAINER_STEVEN,gText_WeCanStopYouActually_Nonono)
         goto(WeCanStopYouActually_Arrest_Dialogue)
 }
 
@@ -148,16 +148,68 @@ script WeCanStopYouActually_Arrest_Dialogue {
     end
 }
 
+const GRUNTA = 1
+const GRUNTB = 2
+const GRUNTC = 3
+const POLICEC = 4
+const PSFBADADMIN = 5
+const PSFBADBOSS_B = 6
+const PSFTRANSRIVAL = 7
+const PSFBADADMIN3 = 8
+const POLICED = 9
+const PSFELITE4 = 10
+const PSFELITE1 = 11
+const PSFELITE2 = 12
+const PSFELITE3 = 13
+const PSFGOODADMIN = 14
+
 script WeCanStopYouActaully_ArrestCutscene {
-    lock
-    fadescreen(FADE_TO_BLACK)
-    msgbox(gText_WeCanStopYouActually_AndTomorrowStarts)
+    addvar(VAR_STORYLINE_STATE,1)
+    lockall
+
+    applymovement(GRUNTA,WeCanStopYouActually_MarchLeft)
+    applymovement(GRUNTB,WeCanStopYouActually_MarchRight)
+    applymovement(GRUNTC,WeCanStopYouActually_MarchLeft)
+    applymovement(PSFGOODADMIN,WeCanStopYouActually_MarchRight)
+    waitmovement(PSFGOODADMIN)
+    applymovement(PLAYER,WeCanStopYouActually_StepAside)
+    waitmovement(PLAYER)
+        delay(16)
+
+    addobject(POLICEC)
+        applymovement(POLICEC,WeCanStopYouActually_WalkOutOfBuilding)
+        delay(16)
+
+addobject(PSFBADADMIN)
+applymovement(PSFBADADMIN,WeCanStopYouActually_WalkOutOfBuilding)
+        delay(16)
+
+addobject(PSFBADBOSS_B)
+applymovement(PSFBADBOSS_B,WeCanStopYouActually_WalkOutOfBuilding)
+        delay(16)
+
+addobject(PSFTRANSRIVAL)
+applymovement(PSFTRANSRIVAL,WeCanStopYouActually_WalkOutOfBuilding)
+        delay(16)
+
+addobject(PSFBADADMIN3)
+applymovement(PSFBADADMIN3,WeCanStopYouActually_WalkOutOfBuilding)
+        delay(16)
+
+addobject(POLICED)
+applymovement(POLICED,WeCanStopYouActually_WalkOutOfBuilding)
+        delay(16)
+
+        removeobject(POLICEC)
+        removeobject(PSFBADADMIN)
+        removeobject(PSFBADBOSS_B)
+        removeobject(PSFTRANSRIVAL)
+        removeobject(PSFBADADMIN3)
+        removeobject(POLICED)
+
+    //msgbox(gText_WeCanStopYouActually_AndTomorrowStarts)
 }
-//The screen cuts to black. The screen fades outside of the tower.
 
-
-//EXT. PSFROUTE30
-//
 //Psfgoodadmin and the protesting Psfgoodteam members clear a path, allowing the police to escort Psfbadboss, Psftransrival, and Psfbadadmin3, away from the building. The Elite Four all walk out of the building, turn to the player, and then walk off screen. Screen fades to black.
 
 //Game prompts a save.
@@ -276,6 +328,32 @@ movement WeCanStopYouActually_ArrestWalkInB {
 
 movement WeCanStopYouActually_ArrestWalkInC {
     walk_right * 2
+    face_left
+    step_end
+}
+
+movement WeCanStopYouActually_MarchLeft {
+    walk_left * 4
+    walk_right * 7
+    delay_8
+    face_up
+    step_end
+}
+movement WeCanStopYouActually_MarchRight {
+    walk_right * 4
+    walk_left * 7
+    delay_8
+    face_up
+    step_end
+}
+
+movement WeCanStopYouActually_WalkOutOfBuilding {
+    walk_down * 7
+    step_end
+}
+
+movement WeCanStopYouActually_StepAside {
+    walk_right
     face_left
     step_end
 }

@@ -178,6 +178,7 @@ YouCantStopMe_StartBossBattle_Script::
 	msgbox gText_YouCantStopMe_YouWere, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
+	trainerbattle_no_intro TRAINER_MAXIE_MAGMA_HIDEOUT, gText_YouCantStopMe_WowGuessWeShould
 	goto WeCanStopYouActually_PostBattle_Dialogue
 	return
 

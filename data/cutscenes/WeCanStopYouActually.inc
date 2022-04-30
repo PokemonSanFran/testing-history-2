@@ -94,6 +94,7 @@ WeCanStopYouActually_StartBossBattle_Script::
 	msgbox gText_WeCanStopYouActually_AndIllFrigginKill
 	callnative ClearMugshot
 	closemessage
+	trainerbattle_no_intro TRAINER_STEVEN, gText_WeCanStopYouActually_Nonono
 	goto WeCanStopYouActually_Arrest_Dialogue
 	return
 
@@ -121,9 +122,40 @@ WeCanStopYouActually_Arrest_Dialogue::
 
 
 WeCanStopYouActaully_ArrestCutscene::
-	lock
-	fadescreen FADE_TO_BLACK
-	msgbox gText_WeCanStopYouActually_AndTomorrowStarts
+	addvar VAR_STORYLINE_STATE, 1
+	lockall
+	applymovement 1, WeCanStopYouActually_MarchLeft
+	applymovement 2, WeCanStopYouActually_MarchRight
+	applymovement 3, WeCanStopYouActually_MarchLeft
+	applymovement 14, WeCanStopYouActually_MarchRight
+	waitmovement 14
+	applymovement OBJ_EVENT_ID_PLAYER, WeCanStopYouActually_StepAside
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 16
+	addobject 4
+	applymovement 4, WeCanStopYouActually_WalkOutOfBuilding
+	delay 16
+	addobject 5
+	applymovement 5, WeCanStopYouActually_WalkOutOfBuilding
+	delay 16
+	addobject 6
+	applymovement 6, WeCanStopYouActually_WalkOutOfBuilding
+	delay 16
+	addobject 7
+	applymovement 7, WeCanStopYouActually_WalkOutOfBuilding
+	delay 16
+	addobject 8
+	applymovement 8, WeCanStopYouActually_WalkOutOfBuilding
+	delay 16
+	addobject 9
+	applymovement 9, WeCanStopYouActually_WalkOutOfBuilding
+	delay 16
+	removeobject 4
+	removeobject 5
+	removeobject 6
+	removeobject 7
+	removeobject 8
+	removeobject 9
 	return
 
 
@@ -176,6 +208,53 @@ WeCanStopYouActually_ArrestWalkInB:
 
 WeCanStopYouActually_ArrestWalkInC:
 	walk_right
+	walk_right
+	face_left
+	step_end
+
+WeCanStopYouActually_MarchLeft:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	delay_8
+	face_up
+	step_end
+
+WeCanStopYouActually_MarchRight:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	delay_8
+	face_up
+	step_end
+
+WeCanStopYouActually_WalkOutOfBuilding:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+WeCanStopYouActually_StepAside:
 	walk_right
 	face_left
 	step_end

@@ -190,7 +190,7 @@ script YouCantStopMe_StartBossBattle_Script {
         closemessage
         callnative(ClearMugshot)
 
-        //trainerbattle_no_intro(TRAINER_MAXIE_MAGMA_HIDEOUT,gText_YouCantStopMe_WowGuessWeShould)
+        trainerbattle_no_intro(TRAINER_MAXIE_MAGMA_HIDEOUT,gText_YouCantStopMe_WowGuessWeShould)
         goto(WeCanStopYouActually_PostBattle_Dialogue)
 }
 

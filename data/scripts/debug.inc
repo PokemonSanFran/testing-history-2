@@ -60,6 +60,9 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
+    addvar VAR_MAUVILLE_CITY_STATE,1
+    addvar VAR_STORYLINE_STATE,1
+    warpsilent MAP_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE,255,4,4
 	end
 
 Debug_Script_2::

@@ -2,4 +2,11 @@ mapscripts WeCanStopYouActually_Cutscene_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 111: WeCanStopYouActaully_ArrestCutscene
     ]
+    MAP_SCRIPT_ON_TRANSITION {
+        call(WeCanStopYouActually_Cutscene_MapScripts_OnTransition)
+    }
+}
+
+script WeCanStopYouActually_Cutscene_MapScripts_OnTransition {
+    setflag(FLAG_TEMP_1)
 }
