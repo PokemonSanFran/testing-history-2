@@ -204,6 +204,7 @@
 108: Defeated Dynamax boss
 109: Plan is set to raid Salesforce
 110: Has unlocked door to Sabrina warp tile
+111: Defeated Rose twice
 
 #VAR_ROUTE104_STATE
 1: Has defeated Chuck
@@ -339,3 +340,6 @@ Y: Used to find the target of the last completed takedown quest, number should c
 5: Went into the tower
 6: Encountered Bianca on floor 10
 7: Defeated Bianca on floor 10
+8: Encountered Oak on floor 11
+9: Encountered Rose on floor 12
+10: Defeated Rose twice

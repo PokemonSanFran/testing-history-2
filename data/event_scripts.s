@@ -1209,8 +1209,8 @@ Script_RemoveTint::
 .include "data/cutscenes/WaitEvenThen.inc"
 .include "data/cutscenes/LetsFinishThis.inc"
 .include "data/cutscenes/ImIn.inc"
-##  .include "data/cutscenes/YouCantStopMe.inc"
-##  .include "data/cutscenes/WeCanStopYouActually.inc"
+.include "data/cutscenes/YouCantStopMe.inc"
+.include "data/cutscenes/WeCanStopYouActually.inc"
 
 
 .include "data/maps/Psfcity3/scripts.inc"
@@ -1334,3 +1334,5 @@ Script_RemoveTint::
 	.include "data/maps/Psfbadguy1Tower_8F/scripts.inc"
 
 	.include "data/maps/Psfbadguy1Tower_9F/scripts.inc"
+
+	.include "data/maps/WeCanStopYouActually_Cutscene/scripts.inc"

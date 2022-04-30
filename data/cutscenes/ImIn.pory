@@ -7,7 +7,7 @@ const PSFNATIVERIVAL = 5
 const PKMNA = 6
 
 script ImIn_HideObject_OutsideHouse_Script {
-        setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_1)
         setflag(FLAG_TEMP_2)
 }
 
@@ -17,18 +17,18 @@ script ImIn_HideStairsGuard_Script {
 
 script ImIn_ShowPsftransrival_Script {
     setflag(FLAG_TEMP_1F)
-    clearflag(FLAG_TEMP_4)
-    addobject(9) //Make Psftransrival visible
+        clearflag(FLAG_TEMP_4)
+        addobject(9) //Make Psftransrival visible
 }
 
 script ImIn_ResumeSave_Script {
     call(ImIn_ShowPsftransrival_Script)
-    call(ImIn_MovePsftransrival_Script)
+        call(ImIn_MovePsftransrival_Script)
 }
 
 script ImIn_MovePsftransrival_Script {
     setobjectxy(9,12,26)
-    setobjectxyperm(9,12,26)
+        setobjectxyperm(9,12,26)
 }
 
 script ImIn_DestroyWall_Script {
@@ -94,7 +94,7 @@ const PSFELITE4_B = 18
 const PSFNATIVERIVAL_B = 19
 
 script ImIn_ObjectSetUp_PostWarp_Script {
-    setflag(FLAG_TEMP_1)
+        setflag(FLAG_TEMP_1)
         setflag(FLAG_TEMP_2)
         setflag(FLAG_TEMP_3)
         setflag(FLAG_TEMP_4)
@@ -378,11 +378,11 @@ script ImIn_PostWarpSplit_Dialogue {
 }
 
 script ImIn_PreventPlayerProgress_Script {
-        if (var(VAR_MAUVILLE_CITY_STATE) > 6){
-            release
+    if (var(VAR_MAUVILLE_CITY_STATE) > 6){
+        release
             end
-        }
-        lock
+    }
+    lock
 
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(PLAYER)
@@ -453,7 +453,7 @@ script ImIn_OfficeReveal_Dialogue {
 
 script ImIn_StartPsftransrivalBattle_Script {
 
-        lock
+    lock
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_AreDeadDoYou)
@@ -504,7 +504,7 @@ script ImIn_PsftransrivalDefeated_Dialogue {
 }
 
 script ImIn_PostPsftransrivalBattle_Interact_Dialogue {
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_AllThatTraining,MSGBOX_NPC)
         callnative(ClearMugshot)
@@ -513,15 +513,15 @@ script ImIn_PostPsftransrivalBattle_Interact_Dialogue {
 script ImIn_InteractPsftransrival_Event_Script {
     lock
 
-    switch(var(VAR_MAUVILLE_CITY_STATE)){
-        case 6: call(ImIn_InteractPsftransrivalBattle_Script)
-        default: call(ImIn_PostPsftransrivalBattle_Interact_Dialogue)
-}
+        switch(var(VAR_MAUVILLE_CITY_STATE)){
+            case 6: call(ImIn_InteractPsftransrivalBattle_Script)
+            default: call(ImIn_PostPsftransrivalBattle_Interact_Dialogue)
+        }
 
     closemessage
-    release
-    end
-    }
+        release
+        end
+}
 
 text gText_ImIn_WereCertainNobody {
     format("We're certain nobody is home?")
@@ -776,18 +776,18 @@ movement ImIn_WalkAwayFromWarpE {
 
 movement ImIn_WalkAwayStairs {
     lock_facing_direction
-    walk_down
-    unlock_facing_direction
-    step_end
+        walk_down
+        unlock_facing_direction
+        step_end
 }
 
 movement ImIn_ApproachDesk {
     walk_right * 3
-    step_end
+        step_end
 }
 
 movement ImIn_WalkFromDesk {
     walk_down
-    walk_left * 2
-    step_end
+        walk_left * 2
+        step_end
 }

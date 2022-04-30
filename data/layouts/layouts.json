@@ -5510,6 +5510,16 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Psfbadguy1Tower_9F/border.bin",
       "blockdata_filepath": "data/layouts/Psfbadguy1Tower_9F/map.bin"
+    },
+    {
+      "id": "LAYOUT_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE",
+      "name": "WeCanStopYouActually_Cutscene_Layout",
+      "width": 10,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/WeCanStopYouActually_Cutscene/border.bin",
+      "blockdata_filepath": "data/layouts/WeCanStopYouActually_Cutscene/map.bin"
     }
   ]
 }
