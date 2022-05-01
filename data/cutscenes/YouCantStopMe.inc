@@ -109,7 +109,7 @@ YouCantStopMe_LastChance_Dialogue::
 	end
 
 
-testy::
+YouCantStopMe_Confront_Dialogue::
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, TRUE
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
@@ -135,10 +135,6 @@ testy::
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_NopeIDoWish
-	return
-
-
-YouCantStopMe_Confront_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_JustAGlorified

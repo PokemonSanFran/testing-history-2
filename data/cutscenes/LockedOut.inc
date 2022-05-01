@@ -69,7 +69,7 @@ LockedOut_WarpPlayer_Script::
 	return
 
 LockedOut_WarpPlayer_Script_1:
-	warpsilent MAP_PSFCITY17, 1
+	warpsilent MAP_PSFCITY17, 26, 33
 	return
 
 

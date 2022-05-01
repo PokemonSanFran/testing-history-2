@@ -3,10 +3,10 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 inoremap <C-U> u
-vmap <D-x> "*d
-vmap <D-c> "*y
-vmap <D-v> "-d"*P
 nmap <D-v> "*P
+vmap <D-v> "-d"*P
+vmap <D-c> "*y
+vmap <D-x> "*d
 map Q gq
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
@@ -62,7 +62,7 @@ argglobal
 set stal=2
 tabnew
 tabrewind
-edit data/maps/Psfbadguy1Tower_11F/scripts.pory
+edit data/maps/WeCanStopYouActually_Cutscene/scripts.pory
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -74,10 +74,7 @@ wincmd _ | wincmd |
 split
 wincmd _ | wincmd |
 split
-wincmd _ | wincmd |
-split
-3wincmd k
-wincmd w
+2wincmd k
 wincmd w
 wincmd w
 let &splitbelow = s:save_splitbelow
@@ -90,14 +87,12 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 90 + 94) / 188)
-exe '2resize ' . ((&lines * 14 + 30) / 61)
+exe '2resize ' . ((&lines * 19 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 97 + 94) / 188)
-exe '3resize ' . ((&lines * 14 + 30) / 61)
+exe '3resize ' . ((&lines * 18 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 97 + 94) / 188)
-exe '4resize ' . ((&lines * 14 + 30) / 61)
+exe '4resize ' . ((&lines * 19 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 97 + 94) / 188)
-exe '5resize ' . ((&lines * 13 + 30) / 61)
-exe 'vert 5resize ' . ((&columns * 97 + 94) / 188)
 argglobal
 terminal ++curwin ++cols=90 ++rows=58 
 let s:term_buf_3 = bufnr()
@@ -228,15 +223,15 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 3964 - ((22 * winheight(0) + 29) / 58)
+let s:l = 43 - ((30 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3964
-normal! 0
+keepjumps 43
+normal! 077|
 wincmd w
 argglobal
-balt data/maps/Psfbadguy1Tower_2F/scripts.pory
+balt include/constants/heal_locations.h
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -365,7 +360,7 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 7) / 14)
+let s:l = 1 - ((0 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -374,7 +369,7 @@ normal! 0
 wincmd w
 argglobal
 if bufexists("data/cutscenes/YouCantStopMe.pory") | buffer data/cutscenes/YouCantStopMe.pory | else | edit data/cutscenes/YouCantStopMe.pory | endif
-balt data/cutscenes/WelcometotheHallofFame.pory
+balt data/cutscenes/WeCanStopYouActually.pory
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -503,154 +498,16 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 193 - ((6 * winheight(0) + 7) / 14)
+let s:l = 12 - ((10 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 193
-normal! 010|
-wincmd w
-argglobal
-if bufexists("data/maps/WeCanStopYouActually_Cutscene/scripts.pory") | buffer data/maps/WeCanStopYouActually_Cutscene/scripts.pory | else | edit data/maps/WeCanStopYouActually_Cutscene/scripts.pory | endif
-balt data/cutscenes/Finals.pory
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal cindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal cursorlineopt=both
-setlocal define=^\\s*#\\s*define
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'c'
-setlocal filetype=c
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=^\\s*#\\s*include
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal nomodeline
-setlocal modifiable
-setlocal nrformats=bin,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=ccomplete#Complete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'c'
-setlocal syntax=c
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 5 - ((4 * winheight(0) + 7) / 14)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 5
-normal! 0
+keepjumps 12
+normal! 07|
 wincmd w
 argglobal
 if bufexists("data/cutscenes/WeCanStopYouActually.pory") | buffer data/cutscenes/WeCanStopYouActually.pory | else | edit data/cutscenes/WeCanStopYouActually.pory | endif
-balt data/scripts/movement.inc
+balt include/constants/songs.h
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -779,23 +636,21 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 153 - ((7 * winheight(0) + 6) / 13)
+let s:l = 43 - ((10 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 153
-normal! 05|
+keepjumps 43
+normal! 027|
 wincmd w
-5wincmd w
+4wincmd w
 exe 'vert 1resize ' . ((&columns * 90 + 94) / 188)
-exe '2resize ' . ((&lines * 14 + 30) / 61)
+exe '2resize ' . ((&lines * 19 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 97 + 94) / 188)
-exe '3resize ' . ((&lines * 14 + 30) / 61)
+exe '3resize ' . ((&lines * 18 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 97 + 94) / 188)
-exe '4resize ' . ((&lines * 14 + 30) / 61)
+exe '4resize ' . ((&lines * 19 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 97 + 94) / 188)
-exe '5resize ' . ((&lines * 13 + 30) / 61)
-exe 'vert 5resize ' . ((&columns * 97 + 94) / 188)
 tabnext
 edit include/constants/flags.h
 let s:save_splitbelow = &splitbelow
@@ -1374,12 +1229,12 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 207 - ((19 * winheight(0) + 18) / 37)
+let s:l = 345 - ((36 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 207
-normal! 024|
+keepjumps 345
+normal! 0
 wincmd w
 exe '1resize ' . ((&lines * 26 + 30) / 61)
 exe 'vert 1resize ' . ((&columns * 94 + 94) / 188)
@@ -1391,15 +1246,21 @@ exe '4resize ' . ((&lines * 37 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 93 + 94) / 188)
 tabnext 1
 set stal=1
-badd +14 data/maps/Psfbadguy1Tower_2F/scripts.pory
+badd +1 data/maps/Psfbadguy1Tower_11F/scripts.pory
 badd +1 include/constants/flags.h
 badd +38 data/maps/Psfcave7_B2F/scripts.pory
-badd +17 data/maps/Psfcave10/scripts.pory
-badd +293 data/cutscenes/ImIn.pory
-badd +0 data/cutscenes/WaitEvenThen.pory
+badd +0 data/maps/Psfbadguy1Tower_2F/scripts.pory
+badd +64 data/scripts/debug.inc
+badd +0 data/cutscenes/YouCantStopMe.pory
+badd +1 data/maps/WeCanStopYouActually_Cutscene/scripts.pory
+badd +37 data/cutscenes/Finals.pory
+badd +0 data/cutscenes/WeCanStopYouActually.pory
 badd +1 docs/flags
 badd +1 include/constants/vars.h
 badd +1 docs/vars
+badd +17 data/maps/Psfcave10/scripts.pory
+badd +293 data/cutscenes/ImIn.pory
+badd +1 data/cutscenes/WaitEvenThen.pory
 badd +162 asm/macros/battle_frontier/battle_tower.inc
 badd +19 data/cutscenes/ThisIsntRandom.pory
 badd +118 data/cutscenes/SpeechSpeechSpeech.pory
@@ -1419,7 +1280,6 @@ badd +12 data/maps/OkayLetsFixit_Flashback/scripts.pory
 badd +60 data/cutscenes/OkayLetsFixit.pory
 badd +19 data/maps/Psfplace1/scripts.pory
 badd +35 data/cutscenes/YouRealizeTheyreEvilRight.pory
-badd +63 data/scripts/debug.inc
 badd +3 data/maps/MossdeepCity_GameCorner_1F/scripts.inc
 badd +22 data/maps/Psfplace14_Lockers/scripts.pory
 badd +3383 src/field_specials.c
@@ -1433,12 +1293,11 @@ badd +18 data/maps/Psfcity15_Newspaper/scripts.pory
 badd +34 data/cutscenes/LetsGettheBandBackTogether.inc
 badd +277 data/cutscenes/Manhunt.pory
 badd +1 data/cutscenes/WhyAreYouHelpingThem.pory
-badd +37 data/cutscenes/Finals.pory
 badd +11 data/maps/Psfcave3/scripts.pory
 badd +6 include/constants/weather.h
 badd +15 data/maps/Psfcity3/scripts.pory
 badd +18 data/maps/Psfplace14_Arena/scripts.pory
-badd +491 include/constants/songs.h
+badd +8 include/constants/songs.h
 badd +93 data/cutscenes/BeachBattle.pory
 badd +9 data/maps/Psfroute22/scripts.pory
 badd +1 data/scripts/movement.inc
@@ -1481,16 +1340,15 @@ badd +567 src/data/region_map/region_map_entries.h
 badd +1 ../emerald/src/region_map.c
 badd +139 data/cutscenes/VSGarbodor.pory
 badd +270 data/cutscenes/IGuessWeShouldBeNiceNow.pory
-badd +0 data/maps/Psfbadguy1Tower_11F/scripts.pory
-badd +54 data/cutscenes/YouCantStopMe.pory
-badd +0 data/cutscenes/WeCanStopYouActually.pory
 badd +58 data/maps/LittlerootTown_BrendansHouse_1F/scripts.inc
 badd +461 data/scripts/players_house.inc
 badd +18 data/maps.s
 badd +85 data/maps/headers.inc
 badd +129 data/maps/map_groups.json
-badd +0 data/maps/WeCanStopYouActually_Cutscene/scripts.pory
-badd +29 data/cutscenes/WelcometotheHallofFame.pory
+badd +43 data/cutscenes/WelcometotheHallofFame.pory
+badd +43 src/post_battle_event_funcs.c
+badd +74 include/constants/heal_locations.h
+badd +71 src/data/heal_locations.h
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif

@@ -35,6 +35,7 @@ WeCanStopYouActually_PostBattle_Dialogue::
 	closemessage
 	applymovement 2, WeCanStopYouActually_RunToDesk
 	waitmovement 2
+	playse SE_PC_LOGIN
 	special TurnOnTVScreen
 	delay 16
 	fadescreen FADE_TO_BLACK
@@ -47,6 +48,9 @@ WeCanStopYouActually_PostBattle_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_WaitTheHell
+	callnative ClearMugshot
+	playse SE_POKENAV_CALL
+	waitse
 	msgbox gText_WeCanStopYouActually_Ring
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
@@ -131,7 +135,7 @@ WeCanStopYouActaully_ArrestCutscene::
 	waitmovement 14
 	applymovement OBJ_EVENT_ID_PLAYER, WeCanStopYouActually_StepAside
 	waitmovement OBJ_EVENT_ID_PLAYER
-	delay 16
+	delay 8
 	addobject 4
 	applymovement 4, WeCanStopYouActually_WalkOutOfBuilding
 	delay 16
@@ -150,13 +154,76 @@ WeCanStopYouActaully_ArrestCutscene::
 	addobject 9
 	applymovement 9, WeCanStopYouActually_WalkOutOfBuilding
 	delay 16
+	waitmovement 9
 	removeobject 4
 	removeobject 5
 	removeobject 6
 	removeobject 7
 	removeobject 8
 	removeobject 9
-	return
+	addobject 10
+	random 4
+	compare VAR_RESULT, 1
+	goto_if_eq WeCanStopYouActaully_ArrestCutscene_2
+	applymovement 10, WeCanStopYouActually_SalutePlayer
+WeCanStopYouActaully_ArrestCutscene_1:
+	delay 32
+	waitmovement 10
+	addobject 11
+	random 4
+	compare VAR_RESULT, 1
+	goto_if_eq WeCanStopYouActaully_ArrestCutscene_6
+	applymovement 11, WeCanStopYouActually_SalutePlayer
+WeCanStopYouActaully_ArrestCutscene_5:
+	delay 32
+	waitmovement 11
+	addobject 12
+	random 4
+	compare VAR_RESULT, 1
+	goto_if_eq WeCanStopYouActaully_ArrestCutscene_10
+	applymovement 12, WeCanStopYouActually_SalutePlayer
+WeCanStopYouActaully_ArrestCutscene_9:
+	delay 32
+	waitmovement 12
+	addobject 13
+	random 4
+	compare VAR_RESULT, 1
+	goto_if_eq WeCanStopYouActaully_ArrestCutscene_14
+	applymovement 13, WeCanStopYouActually_SalutePlayer
+WeCanStopYouActaully_ArrestCutscene_13:
+	delay 32
+	waitmovement 13
+	removeobject 11
+	removeobject 12
+	removeobject 13
+	removeobject 10
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	fadescreenspeed FADE_TO_BLACK, 24
+	special HealPlayerParty
+	msgbox gText_WeCanStopYouActually_TheNextDay, MSGBOX_AUTOCLOSE
+	msgbox gText_WeCanStopYouActually_AndTomorrowStarts
+	closemessage
+	special GameClear
+	waitstate
+	releaseall
+	end
+
+WeCanStopYouActaully_ArrestCutscene_2:
+	applymovement 10, WeCanStopYouActually_SalutePlayerHeart
+	goto WeCanStopYouActaully_ArrestCutscene_1
+
+WeCanStopYouActaully_ArrestCutscene_6:
+	applymovement 11, WeCanStopYouActually_SalutePlayerHeart
+	goto WeCanStopYouActaully_ArrestCutscene_5
+
+WeCanStopYouActaully_ArrestCutscene_10:
+	applymovement 12, WeCanStopYouActually_SalutePlayerHeart
+	goto WeCanStopYouActaully_ArrestCutscene_9
+
+WeCanStopYouActaully_ArrestCutscene_14:
+	applymovement 13, WeCanStopYouActually_SalutePlayerHeart
+	goto WeCanStopYouActaully_ArrestCutscene_13
 
 
 WeCanStopYouActually_RunToDesk:
@@ -259,6 +326,33 @@ WeCanStopYouActually_StepAside:
 	face_left
 	step_end
 
+WeCanStopYouActually_SalutePlayerHeart:
+	walk_down
+	face_right
+	emote_heart
+	delay_16
+	delay_16
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+WeCanStopYouActually_SalutePlayer:
+	walk_down
+	face_right
+	delay_16
+	delay_16
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
 gText_WeCanStopYouActually_SoWhatsYourPlan::
 	.string "So, what’s your plan, beat me up and try\n"
 	.string "to expose me? Nobody is going to\l"
@@ -333,6 +427,9 @@ gText_WeCanStopYouActually_ForWhat::
 	.string "For what? Using the tools YOUR BOSSES\n"
 	.string "gave me? We’re all going down together!\l"
 	.string "You’re all toast!$"
+
+gText_WeCanStopYouActually_TheNextDay::
+	.string "A few months later...$"
 
 gText_WeCanStopYouActually_AndTomorrowStarts::
 	.string "And tomorrow starts the beginning of\n"

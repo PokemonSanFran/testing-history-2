@@ -114,8 +114,7 @@ script YouCantStopMe_LastChance_Dialogue {
         end
 }
 
-//script YouCantStopMe_Confront_Dialogue {
-script testy {
+script YouCantStopMe_Confront_Dialogue {
     playbgm(MUS_RG_ENCOUNTER_DEOXYS,TRUE)
 
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
@@ -149,10 +148,8 @@ script testy {
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_YouCantStopMe_NopeIDoWish)
-}
 
-script YouCantStopMe_Confront_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouCantStopMe_JustAGlorified)
         callnative(ClearMugshot)

@@ -38,6 +38,11 @@ int GameClear(void)
     if (gSaveBlock2Ptr->playerGender == MALE)
         //SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F); //vanilla game original line
         SetContinueGameWarpToHealLocation(HEAL_LOCATION_PSFCITY3_COMPOUND_1F); 
+
+    if (FlagGet(FLAG_TIMELINE_TRUE)){
+        SetContinueGameWarpToHealLocation(HEAL_LOCATION_PSFCITY17_PSFNATIVERIVAL_HOUSE); 
+    }
+
     else
         SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F);
 

@@ -75,7 +75,7 @@ script LockedOut_WarpPlayer_Script {
     msgbox(gText_LockedOut_DoYouWant,MSGBOX_YESNO)
 
         if (var(VAR_RESULT) == YES){
-            warpsilent(MAP_PSFCITY17,1)
+            warpsilent(MAP_PSFCITY17,26,33)
         }
 }
 
