@@ -35,8 +35,6 @@ porymap.project.cfg
 *.a
 .fuse_hidden*
 *.sna
-tools/poryscript
-tools/poryscript/poryscript
 misc/log.txt
 *.swp
 *.diff
