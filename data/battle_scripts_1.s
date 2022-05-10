@@ -426,6 +426,7 @@ BattleScript_CorrosiveGasLoop:
 	waitanimation
 	jumpifbyteequal gBattlerAttacker, gBattlerTarget, BattleScript_CorrosiveGasLoopIncrement
 	jumpifability BS_TARGET, ABILITY_STICKY_HOLD, BattleScript_CorrosiveGasStickyHoldPrevents
+	jumpifpranksterblocked BS_TARGET, BattleScript_CorrosiveGasNotAffected
 	jumpifsubstituteblocks BattleScript_CorrosiveGasLoopIncrement
 	jumpifhasnohp BS_TARGET, BattleScript_CorrosiveGasLoopIncrement
 	trycorrodeitem BS_TARGET, BattleScript_CorrosiveGasLoopIncrement
@@ -438,10 +439,15 @@ BattleScript_CorrosiveGasLoopIncrement::
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_CorrosiveGasLoop
 	end
 
-BattleScript_CorrosiveGasStickyHoldPrevents::
+BattleScript_CorrosiveGasStickyHoldPrevents:
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNSXMADEYINEFFECTIVE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_CorrosiveGasDoMoveEndIncrement
+
+BattleScript_CorrosiveGasNotAffected:
+	printstring STRINGID_ITDOESNTAFFECT
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_CorrosiveGasDoMoveEndIncrement
 

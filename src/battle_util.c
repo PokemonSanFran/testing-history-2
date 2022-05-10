@@ -7680,8 +7680,6 @@ u32 GetBattlerHoldEffect(u8 battlerId, bool32 checkNegating)
             return HOLD_EFFECT_NONE;
         if (GetBattlerAbility(battlerId) == ABILITY_KLUTZ)
             return HOLD_EFFECT_NONE;
-        if (gWishFutureKnock.corrodedItems[GetBattlerSide(battlerId)] & gBitTable[gBattlerPartyIndexes[battlerId]])
-            return HOLD_EFFECT_NONE;
     }
 
     gPotentialItemEffectBattler = battlerId;

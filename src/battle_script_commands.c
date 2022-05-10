@@ -8819,7 +8819,8 @@ static void Cmd_various(void)
         if (gBattleMons[gBattlerAttacker].item == ITEM_NONE
             || gBattleMons[gBattlerTarget].item != ITEM_NONE
             || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerAttacker].item)
-            || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item))
+            || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item)
+            || gWishFutureKnock.knockedOffMons[GetBattlerSide(gBattlerTarget)] & gBitTable[gBattlerPartyIndexes[gBattlerTarget]])
         {
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
         }
@@ -9585,7 +9586,7 @@ static void Cmd_various(void)
         u8 side = GetBattlerSide(gActiveBattler);
         u8 partyIndex = gBattlerPartyIndexes[gActiveBattler];
 
-        if (gWishFutureKnock.corrodedItems[side] & gBitTable[partyIndex]
+        if (gWishFutureKnock.knockedOffMons[side] & gBitTable[partyIndex]
             || !CanBattlerGetOrLoseItem(gActiveBattler, gBattleMons[gActiveBattler].item)
             || gBattleMons[gActiveBattler].item == ITEM_NONE)
         { 
@@ -9593,7 +9594,7 @@ static void Cmd_various(void)
         }
         else
         {
-            gWishFutureKnock.corrodedItems[side] |= gBitTable[partyIndex];
+            gWishFutureKnock.knockedOffMons[side] |= gBitTable[partyIndex];
             gLastUsedItem = gBattleMons[gActiveBattler].item;
             gBattlescriptCurrInstr += 7;
         }
@@ -9605,17 +9606,24 @@ static void Cmd_various(void)
             u8 side = GetBattlerSide(gBattlerTarget);
             u8 partyIndex = gBattlerPartyIndexes[gBattlerTarget];
 
-            if (!(gWishFutureKnock.corrodedItems[side] & gBitTable[partyIndex])
+            if (!(gWishFutureKnock.knockedOffMons[side] & gBitTable[partyIndex])
                 && CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
                 && gBattleMons[gBattlerTarget].item != ITEM_NONE
-                && gBattlerTarget != gActiveBattler
+                && gBattlerTarget != gBattlerAttacker
                 && !(gBattleMons[gBattlerTarget].status2 & STATUS2_SUBSTITUTE)
                 && !IsBattlerProtected(gBattlerTarget, MOVE_CORROSIVE_GAS))
             { 
                 gBattlescriptCurrInstr += 7;
                 return;
             }
+            else if (GetBattlerAbility(gBattlerTarget) == ABILITY_STICKY_HOLD)
+            {
+                gLastUsedAbility = gBattleMons[gBattlerTarget].ability;
+                gBattlescriptCurrInstr = BattleScript_StickyHoldActivates;
+                return;
+            }
         }
+
         gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
         return;
     } // End of switch (gBattlescriptCurrInstr[2])
