@@ -415,20 +415,20 @@ gBattleScriptsForMoveEffects::
 
 BattleScript_EffectCorrosiveGas::
 	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, NO_ACC_CALC_CHECK_LOCK_ON
 	attackstring
 	ppreduce
 	jumpifcantusecorrosivegas BattleScript_ButItFailed
 	setbyte gBattlerTarget, 0
 BattleScript_CorrosiveGasLoop:
-	movevaluescleanup 
+	movevaluescleanup
+	attackanimation
+	waitanimation
 	jumpifbyteequal gBattlerAttacker, gBattlerTarget, BattleScript_CorrosiveGasLoopIncrement
 	jumpifability BS_TARGET, ABILITY_STICKY_HOLD, BattleScript_CorrosiveGasStickyHoldPrevents
 	jumpifsubstituteblocks BattleScript_CorrosiveGasLoopIncrement
 	jumpifhasnohp BS_TARGET, BattleScript_CorrosiveGasLoopIncrement
-	accuracycheck BattleScript_PrintMoveMissed, NO_ACC_CALC_CHECK_LOCK_ON
 	trycorrodeitem BS_TARGET, BattleScript_CorrosiveGasLoopIncrement
-	attackanimation
-	waitanimation
 	printstring STRINGID_PKMNITEMMELTED
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_CorrosiveGasDoMoveEndIncrement::
