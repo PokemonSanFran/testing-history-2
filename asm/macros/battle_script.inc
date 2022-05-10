@@ -2128,3 +2128,14 @@
 	.macro skydropyawn
 	various 0, VARIOUS_SKY_DROP_YAWN
 	.endm
+
+	@ Renders item of Corrosive Gas target ineffective if possible.
+	.macro trycorrodeitem battler:req, ptr:req
+	various \battler, VARIOUS_TRY_CORRODE_ITEM
+	.4byte \ptr
+	.endm
+
+	.macro jumpifcantusecorrosivegas ptr:req
+	various 0, VARIOUS_JUMP_IF_CANT_USE_CORROSIVE_GAS
+	.4byte \ptr
+	.endm

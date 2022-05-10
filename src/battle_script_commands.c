@@ -9580,6 +9580,44 @@ static void Cmd_various(void)
     case VARIOUS_SWAP_SIDE_STATUSES:
         CourtChangeSwapSideStatuses();
         break;
+    case VARIOUS_TRY_CORRODE_ITEM:
+    {
+        u8 side = GetBattlerSide(gActiveBattler);
+        u8 partyIndex = gBattlerPartyIndexes[gActiveBattler];
+
+        if (gWishFutureKnock.corrodedItems[side] & gBitTable[partyIndex]
+            || !CanBattlerGetOrLoseItem(gActiveBattler, gBattleMons[gActiveBattler].item)
+            || gBattleMons[gActiveBattler].item == ITEM_NONE)
+        { 
+            gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
+        }
+        else
+        {
+            gWishFutureKnock.corrodedItems[side] |= gBitTable[partyIndex];
+            gLastUsedItem = gBattleMons[gActiveBattler].item;
+            gBattlescriptCurrInstr += 7;
+        }
+        return;
+    }
+    case VARIOUS_JUMP_IF_CANT_USE_CORROSIVE_GAS:
+        for (gBattlerTarget = 0; gBattlerTarget < gBattlersCount; gBattlerTarget++)
+        {
+            u8 side = GetBattlerSide(gBattlerTarget);
+            u8 partyIndex = gBattlerPartyIndexes[gBattlerTarget];
+
+            if (!(gWishFutureKnock.corrodedItems[side] & gBitTable[partyIndex])
+                && CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
+                && gBattleMons[gBattlerTarget].item != ITEM_NONE
+                && gBattlerTarget != gActiveBattler
+                && !(gBattleMons[gBattlerTarget].status2 & STATUS2_SUBSTITUTE)
+                && !IsBattlerProtected(gBattlerTarget, MOVE_CORROSIVE_GAS))
+            { 
+                gBattlescriptCurrInstr += 7;
+                return;
+            }
+        }
+        gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
+        return;
     } // End of switch (gBattlescriptCurrInstr[2])
 
     gBattlescriptCurrInstr += 3;

@@ -411,6 +411,39 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHit                     @ EFFECT_BEAK_BLAST
 	.4byte BattleScript_EffectCourtChange             @ EFFECT_COURT_CHANGE
 	.4byte BattleScript_EffectSteelBeam               @ EFFECT_STEEL_BEAM
+	.4byte BattleScript_EffectCorrosiveGas			  @ EFFECT_CORROSIVE_GAS
+
+BattleScript_EffectCorrosiveGas::
+	attackcanceler
+	attackstring
+	ppreduce
+	jumpifcantusecorrosivegas BattleScript_ButItFailed
+	setbyte gBattlerTarget, 0
+BattleScript_CorrosiveGasLoop:
+	movevaluescleanup 
+	jumpifbyteequal gBattlerAttacker, gBattlerTarget, BattleScript_CorrosiveGasLoopIncrement
+	jumpifability BS_TARGET, ABILITY_STICKY_HOLD, BattleScript_CorrosiveGasStickyHoldPrevents
+	jumpifsubstituteblocks BattleScript_CorrosiveGasLoopIncrement
+	jumpifhasnohp BS_TARGET, BattleScript_CorrosiveGasLoopIncrement
+	accuracycheck BattleScript_PrintMoveMissed, NO_ACC_CALC_CHECK_LOCK_ON
+	trycorrodeitem BS_TARGET, BattleScript_CorrosiveGasLoopIncrement
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNITEMMELTED
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_CorrosiveGasDoMoveEndIncrement::
+	moveendto MOVEEND_NEXT_TARGET
+BattleScript_CorrosiveGasLoopIncrement::
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_CorrosiveGasLoop
+	end
+
+BattleScript_CorrosiveGasStickyHoldPrevents::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXMADEYINEFFECTIVE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_CorrosiveGasDoMoveEndIncrement
 
 BattleScript_EffectSteelBeam::
 	attackcanceler
