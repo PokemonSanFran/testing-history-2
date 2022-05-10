@@ -9586,16 +9586,21 @@ static void Cmd_various(void)
         u8 side = GetBattlerSide(gActiveBattler);
         u8 partyIndex = gBattlerPartyIndexes[gActiveBattler];
 
-        if (gWishFutureKnock.knockedOffMons[side] & gBitTable[partyIndex]
-            || !CanBattlerGetOrLoseItem(gActiveBattler, gBattleMons[gActiveBattler].item)
+        if (!CanBattlerGetOrLoseItem(gActiveBattler, gBattleMons[gActiveBattler].item)
+            || (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) && side == B_SIDE_PLAYER)
             || gBattleMons[gActiveBattler].item == ITEM_NONE)
         { 
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
         }
         else
         {
-            gWishFutureKnock.knockedOffMons[side] |= gBitTable[partyIndex];
             gLastUsedItem = gBattleMons[gActiveBattler].item;
+            gLastUsedItem = gBattleMons[gActiveBattler].item;
+            gBattleMons[gActiveBattler].item = 0;
+            gBattleStruct->choicedMove[gActiveBattler] = 0;
+            CheckSetUnburden(gActiveBattler);
+            BtlController_EmitSetMonData(BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gActiveBattler].item), &gBattleMons[gActiveBattler].item);
+            MarkBattlerForControllerExec(gActiveBattler);
             gBattlescriptCurrInstr += 7;
         }
         return;
@@ -9606,8 +9611,7 @@ static void Cmd_various(void)
             u8 side = GetBattlerSide(gBattlerTarget);
             u8 partyIndex = gBattlerPartyIndexes[gBattlerTarget];
 
-            if (!(gWishFutureKnock.knockedOffMons[side] & gBitTable[partyIndex])
-                && CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
+            if (CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
                 && gBattleMons[gBattlerTarget].item != ITEM_NONE
                 && gBattlerTarget != gBattlerAttacker
                 && !(gBattleMons[gBattlerTarget].status2 & STATUS2_SUBSTITUTE)
