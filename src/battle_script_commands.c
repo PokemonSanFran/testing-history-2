@@ -9595,10 +9595,10 @@ static void Cmd_various(void)
         else
         {
             gLastUsedItem = gBattleMons[gActiveBattler].item;
-            gLastUsedItem = gBattleMons[gActiveBattler].item;
             gBattleMons[gActiveBattler].item = 0;
             gBattleStruct->choicedMove[gActiveBattler] = 0;
             CheckSetUnburden(gActiveBattler);
+            gBattleStruct->itemStolen[gBattlerPartyIndexes[gActiveBattler]].stolen = TRUE;
             BtlController_EmitSetMonData(BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gActiveBattler].item), &gBattleMons[gActiveBattler].item);
             MarkBattlerForControllerExec(gActiveBattler);
             gBattlescriptCurrInstr += 7;
