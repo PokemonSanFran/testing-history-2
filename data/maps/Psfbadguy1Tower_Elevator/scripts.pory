@@ -10,14 +10,14 @@ mapscripts Psfbadguy1Tower_Elevator_MapScripts {
 }
 
 script Psfbadguy1Tower_Elevator_MapScripts_OnTransition {
-    if (var(VAR_MAUVILLE_CITY_STATE) > 4){
+    if (var(VAR_MAUVILLE_CITY_STATE) > 4 || !flag(FLAG_BADGE03_GET)){
         goto(Psfbadguy1Tower_Elevator_HideAttendant_Script)
 }
 }
 
 script Psfbadguy1Tower_Elevator_AttendantMissing_Dialogue {
     setvar(VAR_TEMP_0,1)
-        if (var(VAR_MAUVILLE_CITY_STATE) > 4){
+    if (var(VAR_MAUVILLE_CITY_STATE) > 4 || !flag(FLAG_BADGE03_GET)){
             lock
                 applymovement(PLAYER,Common_Movement_FaceLeft)
                 waitmovement(0)

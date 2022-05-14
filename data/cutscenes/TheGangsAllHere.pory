@@ -289,9 +289,9 @@ text gText_TheGangsAllHere_WeShall{
     format("We shall.")
 }
 text gText_TheGangsAllHere_FeelFreeToContinue{
-    format("Feel free to continue your tour without us, Zoey. Greatly appreciate your help in the battles. Hopefully supporting me wasn't too exhausting! Ah, and if you haven't already visited Psfbadadmin3, go do so. They're on Marketing, the second floor.")
+    format("Feel free to continue your tour without us, {PLAYER}. Greatly appreciate your help in the battles. Hopefully supporting me wasn't too exhausting! Ah, and if you haven't already visited Psfbadadmin3, go do so. They're on Marketing, the second floor.")
 }
-movement TheGangsAllHere_PsfbadadminWalkToZoey_Movement{
+movement TheGangsAllHere_PsfbadadminWalkToPlayer_Movement{
     face_right
     step_end
 }

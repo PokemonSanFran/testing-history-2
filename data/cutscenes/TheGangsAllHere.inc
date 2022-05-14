@@ -211,7 +211,7 @@ Psfbadguy1Tower_10F_EventScript_Ian::
 	end
 
 
-TheGangsAllHere_PsfbadadminWalkToZoey_Movement:
+TheGangsAllHere_PsfbadadminWalkToPlayer_Movement:
 	face_right
 	step_end
 
@@ -417,9 +417,9 @@ gText_TheGangsAllHere_WeShall::
 
 gText_TheGangsAllHere_FeelFreeToContinue::
 	.string "Feel free to continue your tour without\n"
-	.string "us, Zoey. Greatly appreciate your help\l"
-	.string "in the battles. Hopefully supporting me\l"
-	.string "wasn't too exhausting! Ah, and if you\l"
-	.string "haven't already visited Psfbadadmin3,\l"
-	.string "go do so. They're on Marketing, the\l"
-	.string "second floor.$"
+	.string "us, {PLAYER}. Greatly appreciate your\l"
+	.string "help in the battles. Hopefully\l"
+	.string "supporting me wasn't too exhausting!\l"
+	.string "Ah, and if you haven't already visited\l"
+	.string "Psfbadadmin3, go do so. They're on\l"
+	.string "Marketing, the second floor.$"

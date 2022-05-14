@@ -14,20 +14,20 @@ mapscripts Psfcity8_Compound_1F_MapScripts {
 script Psfcity8_Compound_1F_MapScripts_OnTransition {
 
     switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
-        case 1: goto(ImProbablyBetterThanYou_ObjectSetUp) 
-        case 3: goto(Swagbag_ObjectSetUp) 
-        case 4: goto(swagbag_ObjectHide_Script) 
+        case 1: call(ImProbablyBetterThanYou_ObjectSetUp) 
+        case 3: call(Swagbag_ObjectSetUp) 
+        case 4: call(swagbag_ObjectHide_Script) 
                 //5 isn't needed because it is set in the bedroom
-        case 6: goto(TwoHoursAgo_ObjectSetUp) 
-        case 7: goto(AaandWereBack_ObjectSetUp_Script)
-        case 8: goto(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
+        case 6: call(TwoHoursAgo_ObjectSetUp) 
+        case 7: call(AaandWereBack_ObjectSetUp_Script)
+        case 8: call(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
     }
 
     switch (var(VAR_STORYLINE_STATE)){
-        case 9: goto(AaandWereBack_ObjectSetUp_Script)
-        case 10: goto(AaandWereBack_ObjectHide_Script)
-        case 23: goto(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
-        default: goto(VSGarbodor_ObjectCleanUp_Script)
+        case 9: call(AaandWereBack_ObjectSetUp_Script)
+        case 10: call(AaandWereBack_ObjectHide_Script)
+        case 23: call(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
+        default: call(VSGarbodor_ObjectCleanUp_Script)
     }
 }
 

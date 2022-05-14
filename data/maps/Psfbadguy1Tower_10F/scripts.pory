@@ -12,11 +12,11 @@ script Psfbadguy1Tower_10F_MapScripts_OnTransition {
     }
 
     switch (var(VAR_MAUVILLE_CITY_STATE)){
-        case 0: return
-        case 1: return
-        case 2: return
-        case 3: return
-        case 4: return
+        case 0: call(ImIn_HidePsftransrival_Script)
+        case 1: call(ImIn_HidePsftransrival_Script)
+        case 2: call(ImIn_HidePsftransrival_Script)
+        case 3: call(ImIn_HidePsftransrival_Script)
+        case 4: call(ImIn_HidePsftransrival_Script)
         case 5: call(ImIn_HideStairsGuard_Script)
                 call(ImIn_ShowPsftransrival_Script)
         default: call(ImIn_ResumeSave_Script)

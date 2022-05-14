@@ -30,18 +30,23 @@ Psfbadguy1Tower_10F_MapScripts_OnTransition_3:
 	goto Psfbadguy1Tower_10F_MapScripts_OnTransition_1
 
 Psfbadguy1Tower_10F_MapScripts_OnTransition_5:
+	call ImIn_HidePsftransrival_Script
 	return
 
 Psfbadguy1Tower_10F_MapScripts_OnTransition_6:
+	call ImIn_HidePsftransrival_Script
 	return
 
 Psfbadguy1Tower_10F_MapScripts_OnTransition_7:
+	call ImIn_HidePsftransrival_Script
 	return
 
 Psfbadguy1Tower_10F_MapScripts_OnTransition_8:
+	call ImIn_HidePsftransrival_Script
 	return
 
 Psfbadguy1Tower_10F_MapScripts_OnTransition_9:
+	call ImIn_HidePsftransrival_Script
 	return
 
 Psfbadguy1Tower_10F_MapScripts_OnTransition_10:

@@ -21,6 +21,10 @@ script ImIn_ShowPsftransrival_Script {
         addobject(9) //Make Psftransrival visible
 }
 
+script ImIn_HidePsftransrival_Script {
+    setflag(FLAG_TEMP_4)
+}
+
 script ImIn_ResumeSave_Script {
     call(ImIn_ShowPsftransrival_Script)
         call(ImIn_MovePsftransrival_Script)
@@ -106,8 +110,18 @@ script ImIn_ObjectSetUp_PostWarp_Script {
         call(ImIn_HideStairsGuard_Script)
 }
 
-script ImIn_StartHouseBreak_Script {
+script ImIn_CheckPlayer_Script {
     lock
+      
+    //If Elite Four has specifically told you to go to the house to break in, nothing happens here.
+    if (var(VAR_STORYLINE_STATE < 109)){
+        release
+            end
+    }
+    goto(ImIn_StartHouseBreak_Script)
+}
+
+script ImIn_StartHouseBreak_Script {
         addvar(VAR_MAUVILLE_CITY_STATE,1)
 
         fadescreen(FADE_TO_BLACK)

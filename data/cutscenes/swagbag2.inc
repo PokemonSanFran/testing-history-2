@@ -184,9 +184,9 @@ gText_swagbag2_ItsALot::
 	.string "here than back on the mainland.$"
 
 gText_swagbag2_SoundsLikeYouveRun::
-	.string "Ah, sounds like you've run into Team\n"
-	.string "Rocket a few times. Don't mind them,\l"
-	.string "they don't represent all of us, I\l"
+	.string "Ah, sounds like you've run into\n"
+	.string "Psfgoodteam a few times. Don't mind\l"
+	.string "them, they don't represent all of us, I\l"
 	.string "promise.$"
 
 gText_swagbag2_IAssumeYouveAlready::

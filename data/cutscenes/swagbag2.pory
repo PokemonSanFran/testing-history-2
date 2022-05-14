@@ -145,7 +145,7 @@ text gText_swagbag2_ItsALot {
 }
 
 text gText_swagbag2_SoundsLikeYouveRun {
-    format("Ah, sounds like you've run into Team Rocket a few times. Don't mind them, they don't represent all of us, I promise.")
+    format("Ah, sounds like you've run into Psfgoodteam a few times. Don't mind them, they don't represent all of us, I promise.")
 }
 
 text gText_swagbag2_IAssumeYouveAlready {

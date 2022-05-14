@@ -16,6 +16,11 @@ ImIn_ShowPsftransrival_Script::
 	return
 
 
+ImIn_HidePsftransrival_Script::
+	setflag FLAG_TEMP_4
+	return
+
+
 ImIn_ResumeSave_Script::
 	call ImIn_ShowPsftransrival_Script
 	call ImIn_MovePsftransrival_Script
@@ -99,8 +104,19 @@ ImIn_ObjectSetUp_PostWarp_Script::
 	return
 
 
-ImIn_StartHouseBreak_Script::
+ImIn_CheckPlayer_Script::
 	lock
+	compare VAR_STORYLINE_STATE < 109, 0
+	goto_if_ne ImIn_CheckPlayer_Script_2
+	goto ImIn_StartHouseBreak_Script
+	return
+
+ImIn_CheckPlayer_Script_2:
+	release
+	end
+
+
+ImIn_StartHouseBreak_Script::
 	addvar VAR_MAUVILLE_CITY_STATE, 1
 	fadescreen FADE_TO_BLACK
 	call ImIn_CutsceneSetup_OutsideHouse_Script
