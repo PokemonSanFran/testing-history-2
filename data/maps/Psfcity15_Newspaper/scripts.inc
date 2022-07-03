@@ -11,7 +11,8 @@ Psfcity15_Newspaper_InteractCherie_Event_Script::
 	lock
 	goto_if_set FLAG_TIMELINE_FALSE, Psfcity15_Newspaper_InteractCherie_Event_Script_2
 	switch VAR_LILYCOVE_CITY_STATE
-	case 8, Psfcity15_Newspaper_InteractCherie_Event_Script_9
+	case 0, Psfcity15_Newspaper_InteractCherie_Event_Script_10
+	case 8, Psfcity15_Newspaper_InteractCherie_Event_Script_11
 	call MaskOff_QuestH_Dialogue
 Psfcity15_Newspaper_InteractCherie_Event_Script_1:
 	release
@@ -19,15 +20,22 @@ Psfcity15_Newspaper_InteractCherie_Event_Script_1:
 
 Psfcity15_Newspaper_InteractCherie_Event_Script_2:
 	switch VAR_RUSTURF_TUNNEL_STATE
-	case 1, Psfcity15_Newspaper_InteractCherie_Event_Script_6
+	case 0, Psfcity15_Newspaper_InteractCherie_Event_Script_6
+	case 1, Psfcity15_Newspaper_InteractCherie_Event_Script_7
 	msgbox Psfcity15_Newspaper_InteractCherie_Event_Script_Text_0, MSGBOX_AUTOCLOSE
 	goto Psfcity15_Newspaper_InteractCherie_Event_Script_1
 
 Psfcity15_Newspaper_InteractCherie_Event_Script_6:
+	return
+
+Psfcity15_Newspaper_InteractCherie_Event_Script_7:
 	call Manhunt_Cherie_Battle_Script
 	goto Psfcity15_Newspaper_InteractCherie_Event_Script_1
 
-Psfcity15_Newspaper_InteractCherie_Event_Script_9:
+Psfcity15_Newspaper_InteractCherie_Event_Script_10:
+	return
+
+Psfcity15_Newspaper_InteractCherie_Event_Script_11:
 	return
 
 

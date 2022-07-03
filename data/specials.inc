@@ -547,4 +547,4 @@ gSpecials::
     def_special SetObjectMovementType
     def_special CheckNumPsfcave7ExhibitDefeated
     def_special GetCurrentMap
-
+	def_special TrySpecialOverworldEvo

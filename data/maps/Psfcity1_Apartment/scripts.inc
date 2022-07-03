@@ -9,10 +9,11 @@ Psfcity1_Apartment_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Psfcity1_Apartment_InteractAntone_Event_Script::
 	lock
 	switch VAR_LILYCOVE_CITY_STATE
-	case 1, Psfcity1_Apartment_InteractAntone_Event_Script_3
-	case 2, Psfcity1_Apartment_InteractAntone_Event_Script_4
-	case 3, Psfcity1_Apartment_InteractAntone_Event_Script_5
-	case 8, Psfcity1_Apartment_InteractAntone_Event_Script_6
+	case 0, Psfcity1_Apartment_InteractAntone_Event_Script_3
+	case 1, Psfcity1_Apartment_InteractAntone_Event_Script_4
+	case 2, Psfcity1_Apartment_InteractAntone_Event_Script_5
+	case 3, Psfcity1_Apartment_InteractAntone_Event_Script_6
+	case 8, Psfcity1_Apartment_InteractAntone_Event_Script_7
 	call MaskOff_QuestA_Dialogue
 	release
 	end
@@ -27,5 +28,8 @@ Psfcity1_Apartment_InteractAntone_Event_Script_5:
 	return
 
 Psfcity1_Apartment_InteractAntone_Event_Script_6:
+	return
+
+Psfcity1_Apartment_InteractAntone_Event_Script_7:
 	return
 

@@ -11,8 +11,9 @@ Psfcity6_Consulting_InteractTeodoro_Event_Script::
 	lock
 	goto_if_set FLAG_TIMELINE_FALSE, Psfcity6_Consulting_InteractTeodoro_Event_Script_2
 	switch VAR_LILYCOVE_CITY_STATE
-	case 1, Psfcity6_Consulting_InteractTeodoro_Event_Script_9
-	case 8, Psfcity6_Consulting_InteractTeodoro_Event_Script_10
+	case 0, Psfcity6_Consulting_InteractTeodoro_Event_Script_10
+	case 1, Psfcity6_Consulting_InteractTeodoro_Event_Script_11
+	case 8, Psfcity6_Consulting_InteractTeodoro_Event_Script_12
 	call MaskOff_QuestF_Dialogue
 Psfcity6_Consulting_InteractTeodoro_Event_Script_1:
 	release
@@ -20,18 +21,25 @@ Psfcity6_Consulting_InteractTeodoro_Event_Script_1:
 
 Psfcity6_Consulting_InteractTeodoro_Event_Script_2:
 	switch VAR_RUSTURF_TUNNEL_STATE
-	case 2, Psfcity6_Consulting_InteractTeodoro_Event_Script_6
+	case 0, Psfcity6_Consulting_InteractTeodoro_Event_Script_6
+	case 2, Psfcity6_Consulting_InteractTeodoro_Event_Script_7
 	msgbox Psfcity6_Consulting_InteractTeodoro_Event_Script_Text_0, MSGBOX_AUTOCLOSE
 	goto Psfcity6_Consulting_InteractTeodoro_Event_Script_1
 
 Psfcity6_Consulting_InteractTeodoro_Event_Script_6:
+	return
+
+Psfcity6_Consulting_InteractTeodoro_Event_Script_7:
 	call Manhunt_Teodoro_Battle_Script
 	goto Psfcity6_Consulting_InteractTeodoro_Event_Script_1
 
-Psfcity6_Consulting_InteractTeodoro_Event_Script_9:
+Psfcity6_Consulting_InteractTeodoro_Event_Script_10:
 	return
 
-Psfcity6_Consulting_InteractTeodoro_Event_Script_10:
+Psfcity6_Consulting_InteractTeodoro_Event_Script_11:
+	return
+
+Psfcity6_Consulting_InteractTeodoro_Event_Script_12:
 	return
 
 
