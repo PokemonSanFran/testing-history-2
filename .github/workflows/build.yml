@@ -37,7 +37,9 @@ jobs:
         working-directory: agbcc
 
       - name: build
-        run: make -j${nproc}
+        run: |
+          make tools
+          make -j${nproc}
             
       - name: upload to google drive
         uses: mkrakowitzer/actions-googledrive@master
