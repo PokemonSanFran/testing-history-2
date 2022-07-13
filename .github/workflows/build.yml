@@ -34,7 +34,6 @@ jobs:
         run: |
           ./build.sh
           ./install.sh ../
-          ./build_tools.sh
         working-directory: agbcc
 
       - name: build
