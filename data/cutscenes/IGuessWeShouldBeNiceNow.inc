@@ -41,19 +41,19 @@ IGuessWeShouldBeNiceNow_PostCleanUp_Script::
 	return
 
 
-IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script::
+IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script::
 	lock
 	faceplayer
 	switch VAR_ROUTE114_STATE
-	case 2, IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_2
-	case 5, IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_3
+	case 2, IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script_2
+	case 5, IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script_3
 	return
 
-IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_2:
+IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script_2:
 	goto IGuessWeShouldBeNiceNow_AskPlayer_Script
 	return
 
-IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script_3:
+IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script_3:
 	goto IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue
 	return
 
@@ -505,7 +505,7 @@ gText_IGuessWeShouldBeNiceNow_OhShitWellUh::
 gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow::
 	.string "You already know. There's no service\n"
 	.string "down here, and they said it was the\l"
-	.string "same for Psfcave2. We're more or less\l"
+	.string "same for MuirWoods. We're more or less\l"
 	.string "on our own.$"
 
 gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive::
@@ -598,20 +598,20 @@ gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast::
 
 gText_IGuessWeShouldBeNiceNow_SaysOnTheBack::
 	.string "Says on the back cover, “Bring to the\n"
-	.string "deepest part of Psfcave2.$"
+	.string "deepest part of MuirWoods.$"
 
 gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting::
 	.string "Whew, that was exhausting. How about we\n"
-	.string "crash at my place nearby in Psfcity10\l"
-	.string "and then tackle Psfcave2 tomorrow?$"
+	.string "crash at my place nearby in Marin\l"
+	.string "and then tackle MuirWoods tomorrow?$"
 
 gText_IGuessWeShouldBeNiceNow_GreatSeeYou::
-	.string "Great, see you in Psfcity10!$"
+	.string "Great, see you in Marin!$"
 
 gText_IGuessWeShouldBeNiceNow_WellTheChallenges::
 	.string "Well, the challenges need both of us…\n"
 	.string "and I'm tired. So I'm going to crash -\l"
-	.string "you're welcome to try Psfcave2 by\l"
+	.string "you're welcome to try MuirWoods by\l"
 	.string "yourself though.$"
 
 gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming::
@@ -642,7 +642,7 @@ gText_IGuessWeShouldBeNiceNow_IDidntKnow::
 	.string "well… congrats!$"
 
 gText_IGuessWeShouldBeNiceNow_DaddyOwnsA::
-	.string "Daddy owns a Psfcompany6 out here. I\n"
+	.string "Daddy owns a Airbnb out here. I\n"
 	.string "called him earlier and had him kick out\l"
 	.string "the people that were staying there, so\l"
 	.string "it should be good for us now.$"
@@ -658,7 +658,7 @@ gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace::
 gText_IGuessWeShouldBeNiceNow_ImGonnaCrash::
 	.string "I'm gonna crash, but I'll leave the door\n"
 	.string "open for you. Let's meet at the\l"
-	.string "entrance of Psfcave2 tomorrow\l"
+	.string "entrance of MuirWoods tomorrow\l"
 	.string "morning! DIRECTOR'S NOTE: Just go\l"
 	.string "there now.$"
 

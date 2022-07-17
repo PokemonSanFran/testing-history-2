@@ -373,12 +373,12 @@ gText_WeCanStopYouActually_OhNo::
 	.string "…oh no.$"
 
 gText_WeCanStopYouActually_IAmChiefOperatingOfficer::
-	.string "I am Psfbadadmin2, the Psfbadguy Chief\n"
+	.string "I am Koga, the Psfbadguy Chief\n"
 	.string "Operating Officer. This is my\l"
 	.string "confession. Two days ago, Psfbadguy\l"
 	.string "triggered a machine that is\l"
 	.string "responsible for the devastating\l"
-	.string "earthquake on Psfcity17. We did it to\l"
+	.string "earthquake on Alameda. We did it to\l"
 	.string "flush out and destroy …$"
 
 gText_WeCanStopYouActually_WaitTheHell::
@@ -421,7 +421,7 @@ gText_WeCanStopYouActually_Nonono::
 	.string "Nonononononono….$"
 
 gText_WeCanStopYouActually_YoureUnderArrest::
-	.string "Psfbadboss, you’re under arrest!$"
+	.string "Rose, you’re under arrest!$"
 
 gText_WeCanStopYouActually_ForWhat::
 	.string "For what? Using the tools YOUR BOSSES\n"
@@ -435,9 +435,9 @@ gText_WeCanStopYouActually_AndTomorrowStarts::
 	.string "And tomorrow starts the beginning of\n"
 	.string "the second season of Psfbadguy’s\l"
 	.string "Championship League! Trainers from all\l"
-	.string "over Psfregion1 will be battling all\l"
+	.string "over SanFran will be battling all\l"
 	.string "over to find out who will be this\l"
-	.string "season’s Champ. Psfbadboss2, the new\l"
+	.string "season’s Champ. Rose2, the new\l"
 	.string "Psfbadguy CEO released a statement\l"
 	.string "yesterday, showing their excitement\l"
 	.string "for this new chapter in Psfbadguy\l"

@@ -68,7 +68,7 @@ script AndWeMarchOn_Opening_Dialogue {
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
-        msgbox(gText_AndWeMarchOn_Psfregion1)
+        msgbox(gText_AndWeMarchOn_SanFran)
         callnative(ClearMugshot)
         closemessage
 
@@ -307,11 +307,11 @@ text gText_AndWeMarchOn_WowPeopleHere {
 }
 
 text gText_AndWeMarchOn_AndNowSomeWords {
-    format("And now, some words from our Grand Marshall, Psfelite1!")
+    format("And now, some words from our Grand Marshall, Malva!")
 }
 
-text gText_AndWeMarchOn_Psfregion1 {
-    format("Psfregion1!")
+text gText_AndWeMarchOn_SanFran {
+    format("SanFran!")
 }
 
 text gText_AndWeMarchOn_ThankYouForSupporting {
@@ -323,7 +323,7 @@ text gText_AndWeMarchOn_WeHaveASpecialGuest {
 }
 
 text gText_AndWeMarchOn_RupertHereIsTheWinner {
-    format("Rupert here is the winner of the Psfcity6 Preparatory School graduation tournament! NORMALLY, the winner normally gets a scholarship from the Psfregion1 League. But our new corporate overlords have decided that growing the in-region talent isn't a budget priority!")
+    format("Rupert here is the winner of the Mission Preparatory School graduation tournament! NORMALLY, the winner normally gets a scholarship from the SanFran League. But our new corporate overlords have decided that growing the in-region talent isn't a budget priority!")
 }
 
 text gText_AndWeMarchOn_Boo {
@@ -371,11 +371,11 @@ text gText_AndWeMarchOn_HelpingHand {
 }
 
 text gText_AndWeMarchOn_AndWithASupercharged {
-    format("And with a supercharged Breaking Swipe, Psfelite1 ends the battle in one turn! The exhibition winner is the Elite Four's PSFELITE1!")
+    format("And with a supercharged Breaking Swipe, Malva ends the battle in one turn! The exhibition winner is the Elite Four's PSFELITE1!")
 }
 
 text gText_AndWeMarchOn_DamnThatsHow {
-    format("Damn, that's how she beat me too… wait, did they say Elite Four? Psfregion1 doesn't have those, does it?")
+    format("Damn, that's how she beat me too… wait, did they say Elite Four? SanFran doesn't have those, does it?")
 }
 
 text gText_AndWeMarchOn_LetsGiveItUp {
@@ -399,7 +399,7 @@ text gText_AndWeMarchOn_GiveUsBackOur {
 }
 
 text gText_AndWeMarchOn_ButHeyItsNot {
-    format("But hey! It's not all bad, right? Psfcity18 got to keep its Gym!")
+    format("But hey! It's not all bad, right? HaightAshbury got to keep its Gym!")
 }
 
 text gText_AndWeMarchOn_Traitor {
@@ -407,7 +407,7 @@ text gText_AndWeMarchOn_Traitor {
 }
 
 text gText_AndWeMarchOn_DownWith {
-    format("Down with Psfleader7!")
+    format("Down with Pryce!")
 }
 
 text gText_AndWeMarchOn_WhatASlimeball {

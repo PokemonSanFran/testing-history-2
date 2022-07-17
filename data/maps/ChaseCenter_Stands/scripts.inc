@@ -1,0 +1,24 @@
+ChaseCenter_Stands_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, ChaseCenter_Stands_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, ChaseCenter_Stands_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+ChaseCenter_Stands_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto ChaseCenter_Stands_MapScripts_OnTransition
+	return
+
+ChaseCenter_Stands_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 28, WhyDidntYouRatMeOut_ConversationInStands
+	.2byte 0
+
+
+ChaseCenter_Stands_MapScripts_OnTransition::
+	switch VAR_STORYLINE_STATE
+	case 28, ChaseCenter_Stands_MapScripts_OnTransition_2
+	call WhyDidntYouRatMeOut_CleanUpObject_Script
+	return
+
+ChaseCenter_Stands_MapScripts_OnTransition_2:
+	call WhyDidntYouRatMeOut_HideObject_Script
+	return
+

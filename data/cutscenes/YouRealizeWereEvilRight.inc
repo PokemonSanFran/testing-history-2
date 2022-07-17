@@ -158,7 +158,7 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue_Text_0:
 gText_YouRealizeWereEvilRight_SorryToBotherYou::
 	.string "Hello {PLAYER}! Sorry to bother you,\n"
 	.string "but there is a slight situation here at\l"
-	.string "Psfbadguy1tower. It's rather urgent.\l"
+	.string "YCombinatortower. It's rather urgent.\l"
 	.string "Please come to the second floor as\l"
 	.string "soon as you can.$"
 
@@ -167,7 +167,7 @@ gText_YouRealizeWereEvilRight_YeahImOnMyWay::
 
 gText_YouRealizeWereEvilRight_WouldYouLikeToGo::
 	.string "Would you like to go to\n"
-	.string "Psfbadguy1tower?$"
+	.string "YCombinatortower?$"
 
 gText_YouRealizeWereEvilRight_ThisWay::
 	.string "This way.$"
@@ -196,7 +196,7 @@ gText_YouRealizeWereEvilRight_ItWouldBeBetter::
 	.string "extracurricular activities instead. A\l"
 	.string "popular way to give back is\l"
 	.string "volunteering at a shelter, or perhaps\l"
-	.string "helping the researchers in Psfcity11\l"
+	.string "helping the researchers in Berkeley\l"
 	.string "complete the Pokédex.$"
 
 gText_YouRealizeWereEvilRight_AreYouSayingIHave::
@@ -229,40 +229,40 @@ gText_YouRealizeWereEvilRight_IThinkYourKindness::
 	.string "you're turning into “community\l"
 	.string "centers” are actually being used as\l"
 	.string "recruitment and training hubs for\l"
-	.string "Psfgoodteam.$"
+	.string "TeamRocket.$"
 
 gText_YouRealizeWereEvilRight_ShitUsedToBe::
-	.string "(Shit, Psfnativerival did mention he\n"
+	.string "(Shit, Archer did mention he\n"
 	.string "wanted their help. Was that all a ploy?)$"
 
 gText_YouRealizeWereEvilRight_UsedToBeASmall::
-	.string "Psfgoodteam used to be a small problem,\n"
+	.string "TeamRocket used to be a small problem,\n"
 	.string "but they're growing increasingly\l"
 	.string "violent and dangerous. For the good of\l"
 	.string "the region, and our plans, we need to\l"
 	.string "shut them down for good.$"
 
 gText_YouRealizeWereEvilRight_HidingBehindTheirMask::
-	.string "Psfgoodboss is a coward. Hiding behind\n"
+	.string "Giovanni is a coward. Hiding behind\n"
 	.string "their mask because they know their\l"
 	.string "entire operation is completely illegal…$"
 
 gText_YouRealizeWereEvilRight_WasActingInGoodFaith::
-	.string "Precisely. If Psfgoodteam was acting in\n"
+	.string "Precisely. If TeamRocket was acting in\n"
 	.string "good faith, they'd work with us, no\l"
 	.string "masks, no subterfuge.$"
 
 gText_YouRealizeWereEvilRight_TheLocalPolice::
 	.string "The local police have agreed to\n"
 	.string "continue to work with us to eliminate\l"
-	.string "Psfgoodteam. {PLAYER}, as you have\l"
-	.string "before, we'd like you and Psftransrival\l"
+	.string "TeamRocket. {PLAYER}, as you have\l"
+	.string "before, we'd like you and Bianca\l"
 	.string "to work alongside us to finish them.$"
 
 gText_YouRealizeWereEvilRight_IKnowThis::
 	.string "I know this is a lot to take in at once,\n"
 	.string "{PLAYER}. I think you should go back\l"
-	.string "to the Compound in Psfcity3, take a\l"
+	.string "to the Compound in Presidio, take a\l"
 	.string "day, and think about this. You don't\l"
 	.string "want to make any career ruining\l"
 	.string "decisions in haste. When you're ready\l"

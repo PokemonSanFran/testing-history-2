@@ -46,7 +46,7 @@ AaandWereBack_WarpToCompound_Script_1:
 	return
 
 
-AaandWereBack_Psftransrival_Dialogue::
+AaandWereBack_Bianca_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_WhatsYourProgress, MSGBOX_NPC
@@ -100,15 +100,15 @@ AaandWereBack_FerryRepaired_Dialogue_2:
 
 gText_AaandWereBack_GotAllThree::
 	.string "I've got all three Badges from this side\n"
-	.string "of the mainland. The ferry to Psfcity9\l"
+	.string "of the mainland. The ferry to Oakland\l"
 	.string "looks like it's going to be broken utnil\l"
 	.string "at least tomorrow, and I can't head\l"
 	.string "west without Go-Goggles. It's been a\l"
 	.string "long day... I think I should head back\l"
-	.string "to Psfcity8 and call it a night.$"
+	.string "to SouthBay and call it a night.$"
 
 gText_AaandWereBack_Question::
-	.string "Do you want to go back to Psfcity8?$"
+	.string "Do you want to go back to SouthBay?$"
 
 gText_AaandWereBack_WhatsYourProgress::
 	.string "Damn I'm beat. Getting five badges in\n"
@@ -120,10 +120,10 @@ gText_AaandWereBack_OnlyThree::
 
 gText_AaandWereBack_YeahThatBusted::
 	.string "Yeah, that busted ferry sucks. I'm\n"
-	.string "going to challenge the Psfcity5 and\l"
-	.string "Psfcity18 Gyms tomorrow, and the ferry\l"
+	.string "going to challenge the Castro and\l"
+	.string "HaightAshbury Gyms tomorrow, and the ferry\l"
 	.string "will definately be fixed after that, so\l"
-	.string "Psfcity11 Gym will be last.$"
+	.string "Berkeley Gym will be last.$"
 
 gText_AaandWereBack_INeedToFigure::
 	.string "I need to figure out how to get some\n"
@@ -145,8 +145,8 @@ gText_AaandWereBack_FerryMessage::
 	.string "A message from the PSFSUBWAY\n"
 	.string "System. The following service\l"
 	.string "routes are now operational:\p"
-	.string "Psfplace11 to Psfcity17\p"
-	.string "Psfcity17 to Psfcity9\p"
+	.string "FerryBuilding to Alameda\p"
+	.string "Alameda to Oakland\p"
 	.string "We appreciate your patience\n"
 	.string "while the remaining routes are\l"
 	.string "restored.$"
@@ -155,9 +155,9 @@ gText_AaandWereBack_ThatsDifferent::
 	.string "That's a different notification...$"
 
 gText_AaandWereBack_TooBadTheresNoFerry::
-	.string "Looks like east Psfregion1 is next! Too\n"
+	.string "Looks like east SanFran is next! Too\n"
 	.string "bad there's no ferry directly to the\l"
-	.string "Gym in Psfcity11...$"
+	.string "Gym in Berkeley...$"
 
 gText_AaandWereBack_FindAWayThrough::
 	.string "Hopefully, I'll find a way through the\n"

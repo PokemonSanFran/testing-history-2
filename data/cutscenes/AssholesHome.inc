@@ -13,7 +13,7 @@ AssholesHome_WalkToPlayer_Script::
 	waitmovement 0
 	applymovement 3, AssholesHomes_WalkToPlayer_Movement
 	waitmovement 0
-	goto AssholesHome_Psfnativerival_Dialogue
+	goto AssholesHome_Archer_Dialogue
 	return
 
 
@@ -26,7 +26,7 @@ AssholesHome_BattleEvent_Script::
 	return
 
 AssholesHome_BattleEvent_Script_2:
-	goto AssholesHome_Psfnativerival_Dialogue
+	goto AssholesHome_Archer_Dialogue
 	return
 
 AssholesHome_BattleEvent_Script_3:
@@ -34,7 +34,7 @@ AssholesHome_BattleEvent_Script_3:
 	return
 
 
-AssholesHome_Psfnativerival_Dialogue::
+AssholesHome_Archer_Dialogue::
 	addvar VAR_NATIVERIVALBETA_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
@@ -127,7 +127,7 @@ gText_AssholesHome_ReallyHopingLastTime::
 
 gText_AssholesHome_JustCurious::
 	.string "Just curious if you're ready for\n"
-	.string "Psfleader4.$"
+	.string "Morty.$"
 
 gText_AssholesHome_IDoubtYoureGoing::
 	.string "I doubt you're going to be able to\n"
@@ -142,10 +142,10 @@ gText_AssholesHome_GuessYouReally::
 
 gText_AssholesHome_GuessICanJudge::
 	.string "Guess I can judge. You're not ready for\n"
-	.string "Psfleader4.$"
+	.string "Morty.$"
 
 gText_AssholesHome_ThrowsTheirMoney::
-	.string "Psfbadguy1 throws their money around,\n"
+	.string "YCombinator throws their money around,\n"
 	.string "and the strong get stronger...$"
 
 gText_AssholesHome_SoMuchForThe::

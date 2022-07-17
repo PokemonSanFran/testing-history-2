@@ -538,13 +538,13 @@ gSpecials::
 	def_special SetTotemBoost
     def_special TeleportCamera
     def_special ReturnCameraToPlayer
-	def_special SetPsfbadguy1TowerFloor
+	def_special SetYCombinatorTowerFloor
 	def_special GetTowerFloorDefaultFloorChoice
-    def_special ShowPsfbadguy1TowerElevatorFloorSelect
+    def_special ShowYCombinatorTowerElevatorFloorSelect
     def_special GetNumberOfBadges
     def_special GetMegaEvolutionPartyMember
     def_special CheckMegaEvolutionPartyMember
     def_special SetObjectMovementType
-    def_special CheckNumPsfcave7ExhibitDefeated
+    def_special CheckNumAlcatrazExhibitDefeated
     def_special GetCurrentMap
 	def_special TrySpecialOverworldEvo

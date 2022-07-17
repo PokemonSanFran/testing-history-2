@@ -109,13 +109,11 @@ gText_LockedOut_ThatsActuallyWhy::
 	.string "right: Psfbadguy is straight up going\l"
 	.string "to disown you. If you need someplace\l"
 	.string "to go, you can absolutely crash with me\l"
-	.string "in Psfcity17.$"
+	.string "in Alameda.$"
 
 gText_LockedOut_IActuallyHadnt::
 	.string "I actually hadn’t thought that far\n"
-	.string "ahead… but thank you, a lot,\l"
-	.string "Psfnativerival.$"
+	.string "ahead… but thank you, a lot, Archer.$"
 
 gText_LockedOut_DoYouWant::
-	.string "Do you want to go to Psfnativerival’s\n"
-	.string "home?$"
+	.string "Do you want to go to Archer’s home?$"

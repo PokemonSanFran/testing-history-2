@@ -309,10 +309,10 @@ gText_WarehouseRave_IFailedToKill::
 	.string "I failed to kill you, but you're about to\n"
 	.string "become internal enemy number one. If I\l"
 	.string "were you, I wouldn't go back to the\l"
-	.string "Psfcity3 Compound.$"
+	.string "Presidio Compound.$"
 
 gText_WarehouseRave_JustLike::
-	.string "(Just like Psfnativerival said.)$"
+	.string "(Just like Archer said.)$"
 
 gText_WarehouseRave_YouNeedToGet::
 	.string "You need to get out of here before I\n"
@@ -330,8 +330,8 @@ gText_WarehouseRave_WhenIGotHere::
 	.string "What the hell happened?$"
 
 gText_WarehouseRave_ItWasATrap::
-	.string "It was a trap. Psfbadadmin2 tried to\n"
-	.string "kill me! But…$"
+	.string "It was a trap. Koga tried to kill me!\n"
+	.string "But…$"
 
 gText_WarehouseRave_HolyShitThatWas::
 	.string "Holy shit that was fast! An attempt on\n"
@@ -354,11 +354,11 @@ gText_WarehouseRave_WhatDoYouMean::
 	.string "What do you mean?$"
 
 gText_WarehouseRave_CameToTown::
-	.string "He's like Psfleader7 - once Psfbadguy\n"
-	.string "came to town, he jumped ship. He was\l"
-	.string "playing both sides for a while, both\l"
-	.string "working on Psfbadguy's board and\l"
-	.string "running the Gym in Psfcity13.$"
+	.string "He's like Pryce - once Psfbadguy came\n"
+	.string "to town, he jumped ship. He was playing\l"
+	.string "both sides for a while, both working on\l"
+	.string "Psfbadguy's board and running the Gym\l"
+	.string "in Chinatown.$"
 
 gText_WarehouseRave_MaybeItIsGuilt::
 	.string "Maybe it is guilt. So weird.$"
@@ -377,7 +377,7 @@ gText_WarehouseRave_GladYouDidnt::
 	.string "Glad you didn't need me though! Damn,\n"
 	.string "fighting the top brass now, you're still\l"
 	.string "getting stronger. I'll see you at\l"
-	.string "Psfcave7.$"
+	.string "Alcatraz.$"
 
 gText_WarehouseRave_IllSeeYou::
 	.string "I'll see you around.$"

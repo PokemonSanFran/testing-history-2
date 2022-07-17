@@ -123,7 +123,7 @@ YouRealizeTheyreEvilRight_PlayerLandedDialogue::
 	end
 
 
-YouRealizeTheyreEvilRight_InteractPsfnativerival::
+YouRealizeTheyreEvilRight_InteractArcher::
 	lock
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
@@ -351,7 +351,7 @@ YouRealizeTheyreEvilRight_Framing_Dialogue::
 	msgbox gText_YouRealizeTheyreEvilRight_YouAlsoMetUp
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_YouRealizeTheyreEvilRight_ButPsfgoodadminSaid
+	msgbox gText_YouRealizeTheyreEvilRight_ButArianaSaid
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YeahNobodyKnows
@@ -585,14 +585,14 @@ gText_YouRealizeTheyreEvilRight_WhatDoYouMean::
 
 gText_YouRealizeTheyreEvilRight_IWannaShowYou::
 	.string "I wanna show you instead. Come to\n"
-	.string "Psfcave7.$"
+	.string "Alcatraz.$"
 
 gText_YouRealizeTheyreEvilRight_YoullNeedToCross::
 	.string "I wanna show you but you'll need to\n"
 	.string "cross some water to get here. You know\l"
 	.string "how to Surf, right? No? Go learn from\l"
-	.string "the Surfers in Psfcity4, and then meet\l"
-	.string "me on Psfcave7.$"
+	.string "the Surfers in Pacifica, and then meet\l"
+	.string "me on Alcatraz.$"
 
 gText_YouRealizeTheyreEvilRight_IDontKnowIf::
 	.string "(I don't know if I can afford to get\n"
@@ -606,7 +606,7 @@ gText_YouRealizeTheyreEvilRight_SwimAroundThe::
 	.string "the island! You'll see me.$"
 
 gText_YouRealizeTheyreEvilRight_WelcomeToTheReal::
-	.string "Welcome to the real Psfcave7. I'm going\n"
+	.string "Welcome to the real Alcatraz. I'm going\n"
 	.string "down to the second level, but you\l"
 	.string "should explore here first before\l"
 	.string "coming straight down.$"
@@ -649,7 +649,7 @@ gText_YouRealizeTheyreEvilRight_TheProtests::
 	.string "The protests gained national attention\n"
 	.string "and seemed to be gathering interest,\l"
 	.string "particularly with the help of\l"
-	.string "Psfelite2's support, and pressure\l"
+	.string "Drasna's support, and pressure\l"
 	.string "mounted on the government to comply.\l"
 	.string "At the height of tension, an\l"
 	.string "earthquake broke out, destroying a\l"
@@ -659,16 +659,16 @@ gText_YouRealizeTheyreEvilRight_TheProtests::
 
 gText_YouRealizeTheyreEvilRight_TheChampionHasArrived::
 	.string "The Champion has arrived! Great to meet\n"
-	.string "you, I'm Psfelite2, and I'm the leader\l"
-	.string "of the Psfregion1 Elite Four. Or, I was.\l"
+	.string "you, I'm Drasna, and I'm the leader\l"
+	.string "of the SanFran Elite Four. Or, I was.\l"
 	.string "Now I'm not really sure what I do.$"
 
 gText_YouRealizeTheyreEvilRight_NiceToMeetYou::
-	.string "Nice to meet you! …Psfnativerival,\n"
+	.string "Nice to meet you! …Archer,\n"
 	.string "where are we?$"
 
 gText_YouRealizeTheyreEvilRight_HasBeenUsing::
-	.string "Psfgoodteam has been using Psfcave's\n"
+	.string "TeamRocket has been using Psfcave's\n"
 	.string "abandoned prison as a training ground.$"
 
 gText_YouRealizeTheyreEvilRight_WowSuperResourceful::
@@ -682,7 +682,7 @@ gText_YouRealizeTheyreEvilRight_ICanFinallyProve::
 	.string "worse than we originally thought. Once\l"
 	.string "I do that, I want all of us to find a way\l"
 	.string "to work together to protect\l"
-	.string "Psfregion1 from their bullshit.$"
+	.string "SanFran from their bullshit.$"
 
 gText_YouRealizeTheyreEvilRight_DidYouDragMe::
 	.string "Did you drag me out here to join a\n"
@@ -693,7 +693,7 @@ gText_YouRealizeTheyreEvilRight_YesWaitNo::
 	.string "Yes! Wait, no… No, Yes!$"
 
 gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis::
-	.string "Psfgoodteam doesn't do anything for\n"
+	.string "TeamRocket doesn't do anything for\n"
 	.string "this region. You're attacking innocent\l"
 	.string "people, trying to destroy buildings -\l"
 	.string "fuck, I absolutely should have turned\l"
@@ -711,13 +711,13 @@ gText_YouRealizeTheyreEvilRight_Look::
 
 gText_YouRealizeTheyreEvilRight_ThisIsOne::
 	.string "This is one of the Garbodor from the\n"
-	.string "Psfplace14 strike. {PLAYER}, you\l"
-	.string "were told that Psfgoodteam planted\l"
+	.string "ChaseCenter strike. {PLAYER}, you\l"
+	.string "were told that TeamRocket planted\l"
 	.string "these to blow up the construction\l"
 	.string "site, right?$"
 
 gText_YouRealizeTheyreEvilRight_IHadToGo::
-	.string "Yeah. Psftransrival and I had to go\n"
+	.string "Yeah. Bianca and I had to go\n"
 	.string "down there and defeat them and your\l"
 	.string "goons.$"
 
@@ -737,7 +737,7 @@ gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally::
 	.string "Technical Machine.$"
 
 gText_YouRealizeTheyreEvilRight_SoUsedATM::
-	.string "Okay, so Psfgoodteam used a TM… wait.$"
+	.string "Okay, so TeamRocket used a TM… wait.$"
 
 gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred::
 	.string "No, it must have been bred then.$"
@@ -781,15 +781,15 @@ gText_YouRealizeTheyreEvilRight_IDontGetIt::
 	.string "that mean?$"
 
 gText_YouRealizeTheyreEvilRight_HasBeenFramingYou::
-	.string "Psfnativerival… Psfbadguy has been\n"
+	.string "Archer… Psfbadguy has been\n"
 	.string "framing you?$"
 
 gText_YouRealizeTheyreEvilRight_YouAlsoMetUp::
 	.string "{PLAYER}, you also met up with\n"
-	.string "Psfgoodteam in Psfcity9 too, right?$"
+	.string "TeamRocket in Oakland too, right?$"
 
-gText_YouRealizeTheyreEvilRight_ButPsfgoodadminSaid::
-	.string "…yeah. But Psfgoodadmin said that\n"
+gText_YouRealizeTheyreEvilRight_ButArianaSaid::
+	.string "…yeah. But Ariana said that\n"
 	.string "situation was super weird and was\l"
 	.string "trying to track them down.$"
 
@@ -837,14 +837,14 @@ gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally::
 gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour::
 	.string "Kid, if the Elite Four couldn't stop them\n"
 	.string "in their prime, I don't know what you\l"
-	.string "think Psfgoodteam will be able to do.\l"
+	.string "think TeamRocket will be able to do.\l"
 	.string "Matter of fact, going solo might\l"
 	.string "actually be better! Hell, I was able to\l"
-	.string "start the Psfcave7 campaigns without\l"
+	.string "start the Alcatraz campaigns without\l"
 	.string "any help.$"
 
 gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow::
-	.string "Look Psfelite2… things are different\n"
+	.string "Look Drasna… things are different\n"
 	.string "now. We've been fighting the good fight\l"
 	.string "without any help so far… and look where\l"
 	.string "that's gotten us. Perhaps they're onto\l"
@@ -874,8 +874,8 @@ gText_YouRealizeTheyreEvilRight_ThatsFineIll::
 	.string "That's fine, I'll find a good home for it.$"
 
 gText_YouRealizeTheyreEvilRight_IsStillWaiting::
-	.string "Psfnativerival is still waiting for me at\n"
-	.string "Psfcave7…$"
+	.string "Archer is still waiting for me at\n"
+	.string "Alcatraz…$"
 
 gText_YouRealizeTheyreEvilRight_DoYouWantToGo::
 	.string "Do you want to go to bed?$"
@@ -883,9 +883,9 @@ gText_YouRealizeTheyreEvilRight_DoYouWantToGo::
 gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat::
 	.string "…I have no idea what I'm going to do. Do\n"
 	.string "I help Psfbadguy and the police end\l"
-	.string "Psfgoodteam permanently? Or do I help\l"
-	.string "Psfgoodteam clear their name and help\l"
-	.string "the people of Psfregion1?$"
+	.string "TeamRocket permanently? Or do I help\l"
+	.string "TeamRocket clear their name and help\l"
+	.string "the people of SanFran?$"
 
 gText_YouRealizeTheyreEvilRight_ObtainedGift::
 	.string "{PLAYER} was given the\n"

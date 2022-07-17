@@ -1,0 +1,28 @@
+Presidio_Compound_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, Presidio_Compound_1F_MapScripts_MAP_SCRIPT_ON_RESUME
+	map_script MAP_SCRIPT_ON_TRANSITION, Presidio_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Presidio_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Presidio_Compound_1F_MapScripts_MAP_SCRIPT_ON_RESUME:
+	return
+
+Presidio_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Presidio_Compound_1F_MapScripts_OnTransition
+	return
+
+Presidio_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 36, BeingChampionIsHard_TimeSkip
+	map_script_2 VAR_STORYLINE_STATE, 99, SouthBay_Compound_2F_Bed_Script
+	.2byte 0
+
+
+Presidio_Compound_1F_MapScripts_OnTransition::
+	compare VAR_STORYLINE_STATE, 36
+	goto_if_ne Presidio_Compound_1F_MapScripts_OnTransition_1
+	return
+
+Presidio_Compound_1F_MapScripts_OnTransition_1:
+	goto BeingChampionIsHard_ObjectCleanUp_Script
+	return
+

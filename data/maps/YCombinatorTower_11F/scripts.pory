@@ -1,0 +1,26 @@
+mapscripts YCombinatorTower_11F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(YCombinatorTower_11F_MapScripts_OnTransition)
+}
+}
+
+script YCombinatorTower_11F_MapScripts_OnTransition {
+
+     switch (var(VAR_MAUVILLE_CITY_STATE)){
+         case 7: call(YouCantStopMe_HideObject_Script)
+         case 8: call(YouCantStopMe_HideObject_Script)
+         case 9: call(YouCantStopMe_MoveObject_Script)
+        default: call(YouCantStopMe_ObjectCleanUp_Script)
+    }
+}
+
+script YCombinatorTower_11F_Rose_Event_Script {
+    lock
+
+    switch (var(VAR_MAUVILLE_CITY_STATE)){
+        case 8: goto(YouCantStopMe_Confront_Dialogue)
+        case 9: goto(YouCantStopMe_StartBossBattle_Script)
+    }
+}
+
+

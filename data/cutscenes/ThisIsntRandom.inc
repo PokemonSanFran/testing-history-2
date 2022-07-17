@@ -480,7 +480,7 @@ gText_ThisIsntRandom_TheSecondSet::
 	.string "code.$"
 
 gText_ThisIsntRandom_SoIsActuallyTrying::
-	.string "So… is Psfbadadmin2 actually trying to\n"
+	.string "So… is Koga actually trying to\n"
 	.string "help us?$"
 
 gText_ThisIsntRandom_AboutToFindOut::
@@ -491,8 +491,8 @@ gText_ThisIsntRandom_IfWereAllGoing::
 	.string "okay. Let’s see.$"
 
 gText_ThisIsntRandom_DidYouKnowThereWas::
-	.string "Psfgoodadmin, did you know there was a\n"
-	.string "secret tunnel underneath Psfplace11?$"
+	.string "Ariana, did you know there was a\n"
+	.string "secret tunnel underneath FerryBuilding?$"
 
 gText_ThisIsntRandom_IfPeopleKnew::
 	.string "If people knew about it it wouldn’t be a\n"
@@ -569,7 +569,7 @@ gText_ThisIsntRandom_IFoundSomeAccessLogs::
 	.string "three… in the last week.$"
 
 gText_ThisIsntRandom_CanYouGetMeTheExact::
-	.string "Psfgoodadmin… can you get me the exact\n"
+	.string "Ariana… can you get me the exact\n"
 	.string "dates of the ones in 1971?$"
 
 gText_ThisIsntRandom_IThinkSoHoldOn::
@@ -587,7 +587,7 @@ gText_ThisIsntRandom_AreThoseDatesSpecial::
 
 gText_ThisIsntRandom_TheSecondDateIsOne::
 	.string "The second date is the end of the\n"
-	.string "Psfcave1 riots. What types of Pokémon\l"
+	.string "RobinWillTunnel riots. What types of Pokémon\l"
 	.string "did you guys fight down here?$"
 
 gText_ThisIsntRandom_SilicobraGravelerLarvitar::
@@ -610,13 +610,13 @@ gText_ThisIsntRandom_TheDocumentationCalledOut::
 gText_ThisIsntRandom_AndGroundTypesTo::
 	.string "*sigh* And ground types to trigger\n"
 	.string "Earthquakes. Those bastards used this\l"
-	.string "system to attack Psfcave1.$"
+	.string "system to attack RobinWillTunnel.$"
 
 gText_ThisIsntRandom_OhNoIDidnt::
 	.string "Oh no. I didn’t recognize the earlier\n"
 	.string "names, but the activities in the last\l"
 	.string "few days… their access signature is\l"
-	.string "Psfbadboss.$"
+	.string "Rose.$"
 
 gText_ThisIsntRandom_AndTheyAttackedUs::
 	.string "And they attacked us too. Wait? Why\n"

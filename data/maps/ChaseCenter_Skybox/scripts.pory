@@ -1,0 +1,29 @@
+mapscripts ChaseCenter_Skybox_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(ChaseCenter_Skybox_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE, 28: WhyDidntYouRatMeOut_WatchBiancaMatches
+        VAR_STORYLINE_STATE, 33: WaitHeDidWhat_WatchOtherSemifinal_Dialogue 
+        VAR_STORYLINE_STATE, 48: ExhibitionBattle_PrepPlayer_Script
+    ]
+}
+
+script ChaseCenter_Skybox_EmptySkybox_Script {
+    setflag(FLAG_TEMP_2)
+    setflag(FLAG_TEMP_1)
+}
+
+script ChaseCenter_Skybox_MapScripts_OnTransition {
+    switch (var(VAR_STORYLINE_STATE)){
+        case 28: call(WaitHeDidWhat_HideObject_Script)
+        case 29: call(WaitHeDidWhat_HideObject_Script)
+        case 30: call(GroupStages_Skybox_ObjectSetup_Script)
+        case 33: return
+        case 34: call(WaitHeDidWhat_HideObject_Script)
+        case 35: call(WaitHeDidWhat_HideObject_Script)
+        case 48: call(WaitHeDidWhat_HideObject_Script)
+        case 49: call(WaitHeDidWhat_HideObject_Script)
+        default: call(ChaseCenter_Skybox_EmptySkybox_Script)
+    }
+}

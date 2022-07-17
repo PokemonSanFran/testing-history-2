@@ -88,12 +88,12 @@ gText_WowYoureStrong_WhatAShow::
 
 gText_WowYoureStrong_OhUhThanksALot::
 	.string "Oh uh, thanks a lot, that's very nice. I'm\n"
-	.string "guessing you work at Psfbadguy1…?$"
+	.string "guessing you work at YCombinator…?$"
 
 gText_WowYoureStrong_WhereMyManners::
 	.string "Hah! Oh my, I'm sorry. Where are my\n"
-	.string "manners? My name is Psfbadboss, and\l"
-	.string "I'm the Psfbadguy1 League\l"
+	.string "manners? My name is Rose, and\l"
+	.string "I'm the YCombinator League\l"
 	.string "Commissioner.$"
 
 gText_WowYoureStrong_ShouldHaveKnown::
@@ -105,8 +105,8 @@ gText_WowYoureStrong_ShouldHaveKnown::
 gText_WowYoureStrong_DreamBig::
 	.string "Dream big {PLAYER}! That's the\n"
 	.string "attitude we wanna see. We're big\l"
-	.string "dreamers over at Psfbadguy1 too.\l"
-	.string "That's why we built the Psfcompany3\l"
+	.string "dreamers over at YCombinator too.\l"
+	.string "That's why we built the Salesforce\l"
 	.string "Tower!$"
 
 gText_WowYoureStrong_YouShouldComeBy::
@@ -117,5 +117,5 @@ gText_WowYoureStrong_YouShouldComeBy::
 gText_WowYoureStrong_MeetingWithMayor::
 	.string "I have to run to a meeting with the\n"
 	.string "Mayor. Again, excellent job against\l"
-	.string "Psfleader3. I hope to see what else you\l"
+	.string "Whitney. I hope to see what else you\l"
 	.string "can do!$"

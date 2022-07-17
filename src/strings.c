@@ -1867,17 +1867,17 @@ const u8 gText_StarterSummary1[] = _("Choose");
 const u8 gText_StarterSummary2[] = _("Cancel");
 
 //PSF Locations
-const u8 gText_Psfcity17[] = _("Psfcity17");
-const u8 gText_Psfcave5[] = _("Psfcave5");
-const u8 gText_Psfplace16[] = _("Psfplace16");
-const u8 gText_Psfcave7[] = _("Psfcave7");
-const u8 gText_Psfplace11[] = _("Psfplace11");
-const u8 gText_Psfcity9[] = _("Psfcity9");
-const u8 gText_Psfcity10[] = _("Psfcity10");
-const u8 gText_Psfcity11[] = _("Psfcity11");
-const u8 gText_Psfplace13[] = _("Psfplace13");
-const u8 gText_Psfcity13[] = _("Psfcity13");
-const u8 gText_Psfcity18[] = _("Psfcity18");
+const u8 gText_Alameda[] = _("Alameda");
+const u8 gText_TreasureIsland[] = _("TreasureIsland");
+const u8 gText_OaklandFerry[] = _("OaklandFerry");
+const u8 gText_Alcatraz[] = _("Alcatraz");
+const u8 gText_FerryBuilding[] = _("FerryBuilding");
+const u8 gText_Oakland[] = _("Oakland");
+const u8 gText_Marin[] = _("Marin");
+const u8 gText_Berkeley[] = _("Berkeley");
+const u8 gText_FishermansWharf[] = _("FishermansWharf");
+const u8 gText_Chinatown[] = _("Chinatown");
+const u8 gText_HaightAshbury[] = _("HaightAshbury");
 
 
 //VS Garbador Choose side

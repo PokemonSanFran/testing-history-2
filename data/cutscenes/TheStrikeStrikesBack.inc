@@ -276,8 +276,8 @@ gText_TheStrikeStrikesBack_WellHeresTheProblem::
 	.string "Well, here's the problem. We - ! oh Lord.$"
 
 gText_TheStrikeStrikesBack_MyNameIs::
-	.string "My name is Psfgoodboss, and I am the\n"
-	.string "leader of Psfgoodteam.$"
+	.string "My name is Giovanni, and I am the\n"
+	.string "leader of TeamRocket.$"
 
 gText_TheStrikeStrikesBack_WeAreFighting::
 	.string "We are fighting alongside the\n"
@@ -307,7 +307,7 @@ gText_TheStrikeStrikesBack_TheseDemandsAreMore::
 gText_TheStrikeStrikesBack_SighOfCourse::
 	.string "Sigh, of course. Well, they're the reason\n"
 	.string "we brought you here. We've received\l"
-	.string "intel that Psfgoodteam is planning on\l"
+	.string "intel that TeamRocket is planning on\l"
 	.string "using exploding Pokemon to bring down\l"
 	.string "the construction site. The strike is\l"
 	.string "just a distraction.$"
@@ -317,19 +317,19 @@ gText_TheStrikeStrikesBack_WaitWhatThatsInsane::
 
 gText_TheStrikeStrikesBack_AgreedAndThats::
 	.string "Agreed, and that's why we need you two\n"
-	.string "while Psfbadboss and I work on a\l"
+	.string "while Rose and I work on a\l"
 	.string "peaceful solution.$"
 
 gText_TheStrikeStrikesBack_ThePoliceAreWorking::
 	.string "The police are working to make sure the\n"
 	.string "protests remain civil but we don't want\l"
-	.string "a repeat of the riots in Psfcity12.$"
+	.string "a repeat of the riots in Tenderloin.$"
 
 gText_TheStrikeStrikesBack_AgitatedWildGarbodor::
-	.string "We think Psfgoodteam agitated wild\n"
+	.string "We think TeamRocket agitated wild\n"
 	.string "Garbodor, and we need you to capture\l"
-	.string "or knock them out while Psfbadboss and\l"
-	.string "I negotiate with Psfgoodboss. Time is\l"
+	.string "or knock them out while Rose and\l"
+	.string "I negotiate with Giovanni. Time is\l"
 	.string "of the essence!$"
 
 gText_TheStrikeStrikesBack_IllBeInThere::
@@ -340,7 +340,7 @@ gText_TheStrikeStrikesBack_HelloPlayer::
 	.string "Hello {PLAYER}!$"
 
 gText_TheStrikeStrikesBack_OhHi::
-	.string "Psfbadboss! Aren't you busy...?$"
+	.string "Rose! Aren't you busy...?$"
 
 gText_TheStrikeStrikesBack_IKnowImLate::
 	.string "So busy in fact, that I'm late in\n"

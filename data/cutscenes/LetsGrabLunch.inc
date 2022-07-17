@@ -132,33 +132,33 @@ LetsGrabLunch_DinerBooth_Dialogue::
 	end
 
 
-LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue::
+LetsGrabLunch_InteractArcherDiner_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_ImJustPlanning
 	multichoicedefault 18, 6, MULTI_LUNCH_WARP, 1, TRUE
 	switch VAR_RESULT
-	case 0, LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue_2
-	case 1, LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue_3
-	case 2, LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue_4
-	case 3, LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue_5
+	case 0, LetsGrabLunch_InteractArcherDiner_Dialogue_2
+	case 1, LetsGrabLunch_InteractArcherDiner_Dialogue_3
+	case 2, LetsGrabLunch_InteractArcherDiner_Dialogue_4
+	case 3, LetsGrabLunch_InteractArcherDiner_Dialogue_5
 	goto LetsGrabLunch_CloseMenu
 	return
 
-LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue_2:
-	goto LetsGrabLunch_Psfcity13
+LetsGrabLunch_InteractArcherDiner_Dialogue_2:
+	goto LetsGrabLunch_Chinatown
 	return
 
-LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue_3:
-	goto LetsGrabLunch_Psfcity10
+LetsGrabLunch_InteractArcherDiner_Dialogue_3:
+	goto LetsGrabLunch_Marin
 	return
 
-LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue_4:
-	goto LetsGrabLunch_Psfcave5
+LetsGrabLunch_InteractArcherDiner_Dialogue_4:
+	goto LetsGrabLunch_TreasureIsland
 	return
 
-LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue_5:
-	goto LetsGrabLunch_Psfcity18
+LetsGrabLunch_InteractArcherDiner_Dialogue_5:
+	goto LetsGrabLunch_HaightAshbury
 	return
 
 
@@ -169,37 +169,37 @@ LetsGrabLunch_CloseMenu::
 	end
 
 
-LetsGrabLunch_Psfcity13::
+LetsGrabLunch_Chinatown::
 	msgbox gText_LetsGrabLunch_TheLeaderOfThat
-	msgbox gText_LetsGrabLunch_DoYouWantPsfcity13, MSGBOX_YESNO
+	msgbox gText_LetsGrabLunch_DoYouWantChinatown, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq LetsGrabLunch_Psfcity13_1
+	goto_if_eq LetsGrabLunch_Chinatown_1
 	warpsilent MAP_PSFCITY13, 9, 10
 	return
 
-LetsGrabLunch_Psfcity13_1:
+LetsGrabLunch_Chinatown_1:
 	callnative ClearMugshot
 	closemessage
 	releaseall
 	end
 
 
-LetsGrabLunch_Psfcity10::
+LetsGrabLunch_Marin::
 	msgbox gText_LetsGrabLunch_WasALittle
-	msgbox gText_LetsGrabLunch_DoYouWantPsfcity10, MSGBOX_YESNO
+	msgbox gText_LetsGrabLunch_DoYouWantMarin, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq LetsGrabLunch_Psfcity10_1
+	goto_if_eq LetsGrabLunch_Marin_1
 	warpsilent MAP_PSFCITY13, 5, 15
 	return
 
-LetsGrabLunch_Psfcity10_1:
+LetsGrabLunch_Marin_1:
 	callnative ClearMugshot
 	closemessage
 	releaseall
 	end
 
 
-LetsGrabLunch_Psfcave5::
+LetsGrabLunch_TreasureIsland::
 	msgbox gText_LetsGrabLunch_AlmostWalkedOut
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -207,40 +207,40 @@ LetsGrabLunch_Psfcave5::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_TheyreIntense
-	msgbox gText_LetsGrabLunch_DoYouWantPsfcave5, MSGBOX_YESNO
+	msgbox gText_LetsGrabLunch_DoYouWantTreasureIsland, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq LetsGrabLunch_Psfcave5_1
+	goto_if_eq LetsGrabLunch_TreasureIsland_1
 	warpsilent MAP_PSFCAVE5, 17, 15
 	return
 
-LetsGrabLunch_Psfcave5_1:
+LetsGrabLunch_TreasureIsland_1:
 	callnative ClearMugshot
 	closemessage
 	releaseall
 	end
 
 
-LetsGrabLunch_Psfcity18::
+LetsGrabLunch_HaightAshbury::
 	random 2
 	compare VAR_RESULT, 1
-	goto_if_eq LetsGrabLunch_Psfcity18_2
+	goto_if_eq LetsGrabLunch_HaightAshbury_2
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_IsTheOnlyPlace
-LetsGrabLunch_Psfcity18_1:
-	msgbox gText_LetsGrabLunch_DoYouWantPsfcity18, MSGBOX_YESNO
+LetsGrabLunch_HaightAshbury_1:
+	msgbox gText_LetsGrabLunch_DoYouWantHaightAshbury, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq LetsGrabLunch_Psfcity18_5
+	goto_if_eq LetsGrabLunch_HaightAshbury_5
 	warpsilent MAP_PSFCITY18, 9, 27
 	return
 
-LetsGrabLunch_Psfcity18_2:
+LetsGrabLunch_HaightAshbury_2:
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_RightHandMan
-	goto LetsGrabLunch_Psfcity18_1
+	goto LetsGrabLunch_HaightAshbury_1
 
-LetsGrabLunch_Psfcity18_5:
+LetsGrabLunch_HaightAshbury_5:
 	callnative ClearMugshot
 	closemessage
 	releaseall
@@ -304,7 +304,7 @@ gText_LetsGrabLunch_NahNotRobbed::
 	.string "fuck.$"
 
 gText_LetsGrabLunch_GoodGame::
-	.string "Good game, but…I thought Psfregion1\n"
+	.string "Good game, but…I thought SanFran\n"
 	.string "natives weren't cool with Mega\l"
 	.string "Evolution?$"
 
@@ -331,7 +331,7 @@ gText_LetsGrabLunch_OkayLetsHear::
 
 gText_LetsGrabLunch_IWantToCreate::
 	.string "I want to create training centers all\n"
-	.string "over Psfregion1, to help more Trainers\l"
+	.string "over SanFran, to help more Trainers\l"
 	.string "get a real start, kind of like what\l"
 	.string "Psfbadguy gave you. I wanna use the\l"
 	.string "decommissioned Gyms, like the one you\l"
@@ -341,16 +341,16 @@ gText_LetsGrabLunch_HuhThatsActually::
 	.string "Huh. That's actually a pretty cool idea.$"
 
 gText_LetsGrabLunch_YeahITried::
-	.string "Yeah! I tried to talk to Psfleader9 and\n"
-	.string "Psfleader10, but they didn't take it\l"
+	.string "Yeah! I tried to talk to Lenora and\n"
+	.string "Cilan, but they didn't take it\l"
 	.string "nearly as well as you did.$"
 
 gText_LetsGrabLunch_Who::
 	.string "Who…?$"
 
 gText_LetsGrabLunch_OhTheOldLeaders::
-	.string "Oh, the old Leaders of the Psfcave5 and\n"
-	.string "Psfcity10 Gyms. If we can revive those\l"
+	.string "Oh, the old Leaders of the TreasureIsland and\n"
+	.string "Marin Gyms. If we can revive those\l"
 	.string "Gyms and strengthen our Trainers, then\l"
 	.string "Trainers from other regions will want\l"
 	.string "to come here, battle us, and help\l"
@@ -365,7 +365,7 @@ gText_LetsGrabLunch_YouKnowTheyre::
 gText_LetsGrabLunch_IKnowItsHard::
 	.string "I know. It's hard to sit down and\n"
 	.string "explain… but maybe it doesn't matter.\l"
-	.string "Is that what Psfgoodteam got wrong?\l"
+	.string "Is that what TeamRocket got wrong?\l"
 	.string "Rather than try to defeat a negative\l"
 	.string "force, maybe we need to focus on being\l"
 	.string "a stronger positive force.$"
@@ -385,11 +385,11 @@ gText_LetsGrabLunch_HahaHowCanIHelp::
 	.string "Haha, how can I help?$"
 
 gText_LetsGrabLunch_CanYouTryTalking::
-	.string "Hmm. Can you try talking to Psfleader9\n"
-	.string "or Psfleader10? Or maybe visit\l"
-	.string "Psfcity13's Gym and see what we can\l"
+	.string "Hmm. Can you try talking to Lenora\n"
+	.string "or Cilan? Or maybe visit\l"
+	.string "Chinatown's Gym and see what we can\l"
 	.string "do? Maybe there's even hope for\l"
-	.string "Psfcity18's Gym… yeah, any of those\l"
+	.string "HaightAshbury's Gym… yeah, any of those\l"
 	.string "are good starts.$"
 
 gText_LetsGrabLunch_WhatAreYouGoing::
@@ -397,7 +397,7 @@ gText_LetsGrabLunch_WhatAreYouGoing::
 
 gText_LetsGrabLunch_ImGoingToBring::
 	.string "I'm going to bring the idea to\n"
-	.string "Psfgoodteam too. I think it's\l"
+	.string "TeamRocket too. I think it's\l"
 	.string "something everybody can rally behind,\l"
 	.string "right?$"
 
@@ -406,7 +406,7 @@ gText_LetsGrabLunch_Yeah::
 
 gText_LetsGrabLunch_ImJustPlanning::
 	.string "I'm just planning out my pitch to\n"
-	.string "Psfgoodteam. What are you up to? Have\l"
+	.string "TeamRocket. What are you up to? Have\l"
 	.string "you decided which place you'll hit up\l"
 	.string "first?$"
 
@@ -417,11 +417,11 @@ gText_LetsGrabLunch_TheLeaderOfThat::
 	.string "are still around… but I'm not sure\l"
 	.string "where.$"
 
-gText_LetsGrabLunch_DoYouWantPsfcity13::
-	.string "Do you want to go to Psfcity13?$"
+gText_LetsGrabLunch_DoYouWantChinatown::
+	.string "Do you want to go to Chinatown?$"
 
 gText_LetsGrabLunch_WasALittle::
-	.string "Psfleader9 was a little receptive to my\n"
+	.string "Lenora was a little receptive to my\n"
 	.string "idea. They said it was a “good first\l"
 	.string "step”, but wouldn't sign on unless I\l"
 	.string "had a plan for dismantling the entire\l"
@@ -429,15 +429,15 @@ gText_LetsGrabLunch_WasALittle::
 	.string "eyes, is a “total failure for our\l"
 	.string "Trainers”.$"
 
-gText_LetsGrabLunch_DoYouWantPsfcity10::
-	.string "Do you want to go to Psfcity10?$"
+gText_LetsGrabLunch_DoYouWantMarin::
+	.string "Do you want to go to Marin?$"
 
 gText_LetsGrabLunch_AlmostWalkedOut::
-	.string "Psfleader10 almost walked out when I\n"
+	.string "Cilan almost walked out when I\n"
 	.string "first proposed the idea. I think their\l"
 	.string "exact quote was “I'd rather be dead\l"
 	.string "than a “training stop” for more\l"
-	.string "transplants”. They want Psfgoodteam\l"
+	.string "transplants”. They want TeamRocket\l"
 	.string "to totally dismantle the new League,\l"
 	.string "and restore their Gym to its former\l"
 	.string "glory.$"
@@ -448,23 +448,23 @@ gText_LetsGrabLunch_VeryRealistic::
 gText_LetsGrabLunch_TheyreIntense::
 	.string "They're… intense.$"
 
-gText_LetsGrabLunch_DoYouWantPsfcave5::
-	.string "Do you want to go to Psfcave5?$"
+gText_LetsGrabLunch_DoYouWantTreasureIsland::
+	.string "Do you want to go to TreasureIsland?$"
 
 gText_LetsGrabLunch_RightHandMan::
-	.string "Alan was Psfleader7's right hand man. I\n"
+	.string "Alan was Pryce's right hand man. I\n"
 	.string "wonder if he has any plans now that\l"
-	.string "Psfleader7 is gone…?$"
+	.string "Pryce is gone…?$"
 
 gText_LetsGrabLunch_IsTheOnlyPlace::
-	.string "You know, Psfcity18 is the only place\n"
+	.string "You know, HaightAshbury is the only place\n"
 	.string "that got to keep its Gym, but only\l"
-	.string "because Psfleader7 is a friggin' snake.\l"
+	.string "because Pryce is a friggin' snake.\l"
 	.string "Man, what I'd give to see him get what\l"
 	.string "he deserves…$"
 
-gText_LetsGrabLunch_DoYouWantPsfcity18::
-	.string "Do you want to go to Psfcity18?$"
+gText_LetsGrabLunch_DoYouWantHaightAshbury::
+	.string "Do you want to go to HaightAshbury?$"
 
 gText_LetsGrabLunch_FastForwardAdvance::
 	.string "You have restored the {STR_VAR_1}\n"

@@ -156,7 +156,7 @@ script LetsGrabLunch_DinerBooth_Dialogue {
         end
 }
 
-script LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue {
+script LetsGrabLunch_InteractArcherDiner_Dialogue {
 
     setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -165,10 +165,10 @@ script LetsGrabLunch_InteractPsfnativerivalDiner_Dialogue {
         multichoicedefault(18,6,MULTI_LUNCH_WARP,1,TRUE)
 
         switch (var(VAR_RESULT)){
-            case 0: goto(LetsGrabLunch_Psfcity13)   
-            case 1: goto(LetsGrabLunch_Psfcity10)   
-            case 2: goto(LetsGrabLunch_Psfcave5)   
-            case 3: goto(LetsGrabLunch_Psfcity18)
+            case 0: goto(LetsGrabLunch_Chinatown)   
+            case 1: goto(LetsGrabLunch_Marin)   
+            case 2: goto(LetsGrabLunch_TreasureIsland)   
+            case 3: goto(LetsGrabLunch_HaightAshbury)
             default: goto(LetsGrabLunch_CloseMenu)
         }
 }
@@ -180,10 +180,10 @@ script LetsGrabLunch_CloseMenu{
         end
 }
 
-script LetsGrabLunch_Psfcity13 {
+script LetsGrabLunch_Chinatown {
     msgbox(gText_LetsGrabLunch_TheLeaderOfThat)
 
-        msgbox(gText_LetsGrabLunch_DoYouWantPsfcity13,MSGBOX_YESNO)
+        msgbox(gText_LetsGrabLunch_DoYouWantChinatown,MSGBOX_YESNO)
 
         if (var(VAR_RESULT) == NO){
             callnative(ClearMugshot)
@@ -194,10 +194,10 @@ script LetsGrabLunch_Psfcity13 {
             warpsilent(MAP_PSFCITY13,9,10)
         }
 }
-script LetsGrabLunch_Psfcity10 {
+script LetsGrabLunch_Marin {
     msgbox(gText_LetsGrabLunch_WasALittle)
 
-        msgbox(gText_LetsGrabLunch_DoYouWantPsfcity10,MSGBOX_YESNO)
+        msgbox(gText_LetsGrabLunch_DoYouWantMarin,MSGBOX_YESNO)
         if (var(VAR_RESULT) == NO){
             callnative(ClearMugshot)
                 closemessage
@@ -207,7 +207,7 @@ script LetsGrabLunch_Psfcity10 {
             warpsilent(MAP_PSFCITY13,5,15)
         }
 }
-script LetsGrabLunch_Psfcave5 {
+script LetsGrabLunch_TreasureIsland {
     msgbox(gText_LetsGrabLunch_AlmostWalkedOut)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -218,7 +218,7 @@ script LetsGrabLunch_Psfcave5 {
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_TheyreIntense)
 
-        msgbox(gText_LetsGrabLunch_DoYouWantPsfcave5,MSGBOX_YESNO)
+        msgbox(gText_LetsGrabLunch_DoYouWantTreasureIsland,MSGBOX_YESNO)
         if (var(VAR_RESULT) == NO){
             callnative(ClearMugshot)
                 closemessage
@@ -228,7 +228,7 @@ script LetsGrabLunch_Psfcave5 {
             warpsilent(MAP_PSFCAVE5,17,15)
         }
 }
-script LetsGrabLunch_Psfcity18 {
+script LetsGrabLunch_HaightAshbury {
     //PSF TODO Replace this with an if statement if the ousting Pryce quest is done
 
     random(2)
@@ -243,7 +243,7 @@ script LetsGrabLunch_Psfcity18 {
                 msgbox(gText_LetsGrabLunch_IsTheOnlyPlace)
         }
 
-    msgbox(gText_LetsGrabLunch_DoYouWantPsfcity18,MSGBOX_YESNO)
+    msgbox(gText_LetsGrabLunch_DoYouWantHaightAshbury,MSGBOX_YESNO)
         if (var(VAR_RESULT) == NO){
             callnative(ClearMugshot)
                 closemessage
@@ -297,7 +297,7 @@ text gText_LetsGrabLunch_NahNotRobbed {
 }
 
 text gText_LetsGrabLunch_GoodGame {
-    format("Good game, but…I thought Psfregion1 natives weren't cool with Mega Evolution?")
+    format("Good game, but…I thought SanFran natives weren't cool with Mega Evolution?")
 }
 
 text gText_LetsGrabLunch_ImGoingToBe {
@@ -317,7 +317,7 @@ text gText_LetsGrabLunch_OkayLetsHear {
 }
 
 text gText_LetsGrabLunch_IWantToCreate {
-    format("I want to create training centers all over Psfregion1, to help more Trainers get a real start, kind of like what Psfbadguy gave you. I wanna use the decommissioned Gyms, like the one you saw earlier today, as those hubs.")
+    format("I want to create training centers all over SanFran, to help more Trainers get a real start, kind of like what Psfbadguy gave you. I wanna use the decommissioned Gyms, like the one you saw earlier today, as those hubs.")
 }
 
 text gText_LetsGrabLunch_HuhThatsActually {
@@ -325,7 +325,7 @@ text gText_LetsGrabLunch_HuhThatsActually {
 }
 
 text gText_LetsGrabLunch_YeahITried {
-    format("Yeah! I tried to talk to Psfleader9 and Psfleader10, but they didn't take it nearly as well as you did.")
+    format("Yeah! I tried to talk to Lenora and Cilan, but they didn't take it nearly as well as you did.")
 }
 
 text gText_LetsGrabLunch_Who {
@@ -333,7 +333,7 @@ text gText_LetsGrabLunch_Who {
 }
 
 text gText_LetsGrabLunch_OhTheOldLeaders {
-    format("Oh, the old Leaders of the Psfcave5 and Psfcity10 Gyms. If we can revive those Gyms and strengthen our Trainers, then Trainers from other regions will want to come here, battle us, and help stimulate the region… without any interference from Psfbadguy.")
+    format("Oh, the old Leaders of the TreasureIsland and Marin Gyms. If we can revive those Gyms and strengthen our Trainers, then Trainers from other regions will want to come here, battle us, and help stimulate the region… without any interference from Psfbadguy.")
 }
 
 text gText_LetsGrabLunch_YouKnowTheyre {
@@ -341,7 +341,7 @@ text gText_LetsGrabLunch_YouKnowTheyre {
 }
 
 text gText_LetsGrabLunch_IKnowItsHard {
-    format("I know. It's hard to sit down and explain… but maybe it doesn't matter. Is that what Psfgoodteam got wrong? Rather than try to defeat a negative force, maybe we need to focus on being a stronger positive force.")
+    format("I know. It's hard to sit down and explain… but maybe it doesn't matter. Is that what TeamRocket got wrong? Rather than try to defeat a negative force, maybe we need to focus on being a stronger positive force.")
 }
 
 text gText_LetsGrabLunch_HmmNeverThought {
@@ -361,7 +361,7 @@ text gText_LetsGrabLunch_HahaHowCanIHelp {
 }
 
 text gText_LetsGrabLunch_CanYouTryTalking {
-    format("Hmm. Can you try talking to Psfleader9 or Psfleader10? Or maybe visit Psfcity13's Gym and see what we can do? Maybe there's even hope for Psfcity18's Gym… yeah, any of those are good starts.")
+    format("Hmm. Can you try talking to Lenora or Cilan? Or maybe visit Chinatown's Gym and see what we can do? Maybe there's even hope for HaightAshbury's Gym… yeah, any of those are good starts.")
 }
 
 text gText_LetsGrabLunch_WhatAreYouGoing {
@@ -369,7 +369,7 @@ text gText_LetsGrabLunch_WhatAreYouGoing {
 }
 
 text gText_LetsGrabLunch_ImGoingToBring {
-    format("I'm going to bring the idea to Psfgoodteam too. I think it's something everybody can rally behind, right?")
+    format("I'm going to bring the idea to TeamRocket too. I think it's something everybody can rally behind, right?")
 }
 
 text gText_LetsGrabLunch_Yeah {
@@ -377,27 +377,27 @@ text gText_LetsGrabLunch_Yeah {
 }
 
 text gText_LetsGrabLunch_ImJustPlanning {
-    format("I'm just planning out my pitch to Psfgoodteam. What are you up to? Have you decided which place you'll hit up first?")
+    format("I'm just planning out my pitch to TeamRocket. What are you up to? Have you decided which place you'll hit up first?")
 }
 
 text gText_LetsGrabLunch_TheLeaderOfThat {
     format("The Leader of that Gym more or less disappeared after Psfbadguy shut it down. I know some of his Gym Trainers are still around… but I'm not sure where. ")
 }
 
-text gText_LetsGrabLunch_DoYouWantPsfcity13 {
-    format("Do you want to go to Psfcity13?")
+text gText_LetsGrabLunch_DoYouWantChinatown {
+    format("Do you want to go to Chinatown?")
 }
 
 text gText_LetsGrabLunch_WasALittle {
-    format("Psfleader9 was a little receptive to my idea. They said it was a “good first step”, but wouldn't sign on unless I had a plan for dismantling the entire Psfbadfguy League, which in their eyes, is a “total failure for our Trainers”.")
+    format("Lenora was a little receptive to my idea. They said it was a “good first step”, but wouldn't sign on unless I had a plan for dismantling the entire Psfbadfguy League, which in their eyes, is a “total failure for our Trainers”.")
 }
 
-text gText_LetsGrabLunch_DoYouWantPsfcity10 {
-    format("Do you want to go to Psfcity10?")
+text gText_LetsGrabLunch_DoYouWantMarin {
+    format("Do you want to go to Marin?")
 }
 
 text gText_LetsGrabLunch_AlmostWalkedOut {
-    format("Psfleader10 almost walked out when I first proposed the idea. I think their exact quote was “I'd rather be dead than a “training stop” for more transplants”. They want Psfgoodteam to totally dismantle the new League, and restore their Gym to its former glory.")
+    format("Cilan almost walked out when I first proposed the idea. I think their exact quote was “I'd rather be dead than a “training stop” for more transplants”. They want TeamRocket to totally dismantle the new League, and restore their Gym to its former glory.")
 }
 
 text gText_LetsGrabLunch_VeryRealistic {
@@ -408,20 +408,20 @@ text gText_LetsGrabLunch_TheyreIntense {
     format("They're… intense.")
 }
 
-text gText_LetsGrabLunch_DoYouWantPsfcave5 {
-    format("Do you want to go to Psfcave5?")
+text gText_LetsGrabLunch_DoYouWantTreasureIsland {
+    format("Do you want to go to TreasureIsland?")
 }
 
 text gText_LetsGrabLunch_RightHandMan {
-    format("Alan was Psfleader7's right hand man. I wonder if he has any plans now that Psfleader7 is gone…?")
+    format("Alan was Pryce's right hand man. I wonder if he has any plans now that Pryce is gone…?")
 }
 
 text gText_LetsGrabLunch_IsTheOnlyPlace {
-    format("You know, Psfcity18 is the only place that got to keep its Gym, but only because Psfleader7 is a friggin' snake. Man, what I'd give to see him get what he deserves…")
+    format("You know, HaightAshbury is the only place that got to keep its Gym, but only because Pryce is a friggin' snake. Man, what I'd give to see him get what he deserves…")
 }
 
-text gText_LetsGrabLunch_DoYouWantPsfcity18 {
-    format("Do you want to go to Psfcity18?")
+text gText_LetsGrabLunch_DoYouWantHaightAshbury {
+    format("Do you want to go to HaightAshbury?")
 }
 
 text gText_LetsGrabLunch_FastForwardAdvance {

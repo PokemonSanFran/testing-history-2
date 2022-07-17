@@ -103,7 +103,7 @@ closemessage
 callnative(ClearMugshot)
 
 fadescreen(FADE_TO_BLACK)
-// PSF TODO The screen shows images of the League breakdown as Psfbadboss explains the structure.
+// PSF TODO The screen shows images of the League breakdown as Rose explains the structure.
 
 msgbox(gText_HeresHowThisIsGoingToGo_ForTheGroupStage)
 
@@ -147,7 +147,7 @@ end
 }
 
 text gText_HeresHowThisIsGoingToGo_CongratulationsOnAll {
-	format("Congratulations on all of your hard work! Welcome to the first stage of the Psfregion1 League Championship!")
+	format("Congratulations on all of your hard work! Welcome to the first stage of the SanFran League Championship!")
 }
 
 text gText_HeresHowThisIsGoingToGo_WooYay {

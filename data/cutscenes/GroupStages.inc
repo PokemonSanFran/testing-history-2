@@ -158,7 +158,7 @@ GroupStages_PostRoundRobinMatch_Script_1:
 	msgbox gText_GroupStages_Blank
 	call GroupStages_ChooseParty_Script
 	removeobject 1
-	call Psfplace14_Arena_MapScripts_OnTransition
+	call ChaseCenter_Arena_MapScripts_OnTransition
 	addobject 1
 	goto GroupStages_RoundRobinMatch_Script
 	return
@@ -235,7 +235,8 @@ gText_GroupStages_OnceYouStart::
 	.string "group stage before you can leave\l"
 	.string "again, and you must complete the\l"
 	.string "tournament before you can leave\l"
-	.string "Psfplace14. Are you ready to continue?$"
+	.string "ChaseCenter. Are you ready to\l"
+	.string "continue?$"
 
 gText_GroupStages_PlayerReturnToArena::
 	.string "Paging competitor {PLAYER}.\n"

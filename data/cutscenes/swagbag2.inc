@@ -3,7 +3,7 @@ swagbag2_SetUp_Object_Script::
 	return
 
 
-swagbag2_Psfbadadmin1WalkOutGym_Script::
+swagbag2_OakWalkOutGym_Script::
 	opendoor 10, 8
 	waitdooranim
 	clearflag FLAG_TEMP_1
@@ -105,7 +105,7 @@ swagbag2_BringToCenter_Dialogue::
 
 swagbag2_Scene_End_Script::
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, swagbag2_LetPsfbadadmin1Leave
+	applymovement OBJ_EVENT_ID_PLAYER, swagbag2_LetOakLeave
 	applymovement 1, swagbag2_LeaveCity
 	waitmovement 0
 	removeobject 1
@@ -167,7 +167,7 @@ swagbag2_PlayerWalkToCenter:
 	face_up
 	step_end
 
-swagbag2_LetPsfbadadmin1Leave:
+swagbag2_LetOakLeave:
 	walk_right
 	walk_up
 	walk_left
@@ -177,7 +177,7 @@ swagbag2_LetPsfbadadmin1Leave:
 gText_swagbag2_ItWasAPleasure::
 	.string "Hello {PLAYER}! It was a pleasure\n"
 	.string "seeing you at the Tower yesterday. How\l"
-	.string "are you liking east Psfregion1?$"
+	.string "are you liking east SanFran?$"
 
 gText_swagbag2_ItsALot::
 	.string "...It's a lot. People are much less happy\n"
@@ -185,7 +185,7 @@ gText_swagbag2_ItsALot::
 
 gText_swagbag2_SoundsLikeYouveRun::
 	.string "Ah, sounds like you've run into\n"
-	.string "Psfgoodteam a few times. Don't mind\l"
+	.string "TeamRocket a few times. Don't mind\l"
 	.string "them, they don't represent all of us, I\l"
 	.string "promise.$"
 
@@ -226,7 +226,7 @@ gText_swagbag2_HopefullyTheyllHaveIt::
 	.string "Now, I've gotta run. Good luck in there!$"
 
 gText_swagbag2_HaveYouSeenThe::
-	.string "Have you seen the Psfcity11 Breeding\n"
+	.string "Have you seen the Berkeley Breeding\n"
 	.string "Center? Truly state of the art.$"
 
 gText_swagbag2_NoShouldI::

@@ -1,0 +1,36 @@
+Oakland_Warehouse_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Oakland_Warehouse_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_RESUME, Oakland_Warehouse_MapScripts_MAP_SCRIPT_ON_RESUME
+	map_script MAP_SCRIPT_ON_LOAD, Oakland_Warehouse_MapScripts_MAP_SCRIPT_ON_LOAD
+	.byte 0
+
+Oakland_Warehouse_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Oakland_Warehouse_MapScripts_OnTransition
+	return
+
+Oakland_Warehouse_MapScripts_MAP_SCRIPT_ON_RESUME:
+	call WarehouseRave_ControlExits_Script
+	return
+
+Oakland_Warehouse_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call WarehouseRave_ControlExits_Script
+	return
+
+
+Oakland_Warehouse_MapScripts_OnTransition::
+	switch VAR_FORTREE_CITY_STATE
+	case 1, Oakland_Warehouse_MapScripts_OnTransition_2
+	case 2, Oakland_Warehouse_MapScripts_OnTransition_3
+	call WarehouseRave_HideObject_Script
+	return
+
+Oakland_Warehouse_MapScripts_OnTransition_2:
+	call WarehouseRave_SetUpRave_Script
+	call WarehouseRave_HideObject_Script
+	return
+
+Oakland_Warehouse_MapScripts_OnTransition_3:
+	call WarehouseRave_MoveObject_Script
+	call WarehouseRave_SetUpRave_Script
+	return
+

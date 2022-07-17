@@ -8,7 +8,7 @@ BeachBattle_BattleSetUp_Script::
 	return
 
 
-BeachBattle_PsftransrivalWalkToPlayer::
+BeachBattle_BiancaWalkToPlayer::
 	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
@@ -23,28 +23,28 @@ BeachBattle_PsftransrivalWalkToPlayer::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	applymovement 1, BeachBattle_ApproachFromSouth
 	waitmovement 0
-	goto BeachBattle_Psfnativerival_Event_Script
+	goto BeachBattle_Archer_Event_Script
 	return
 
 
 BeachBattle_Interact_Script::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	faceplayer
-	goto BeachBattle_Psfnativerival_Event_Script
+	goto BeachBattle_Archer_Event_Script
 	return
 
 
-BeachBattle_Psfnativerival_Event_Script::
+BeachBattle_Archer_Event_Script::
 	switch VAR_ROUTE107_STATE
-	case 0, BeachBattle_Psfnativerival_Event_Script_2
-	case 1, BeachBattle_Psfnativerival_Event_Script_3
+	case 0, BeachBattle_Archer_Event_Script_2
+	case 1, BeachBattle_Archer_Event_Script_3
 	return
 
-BeachBattle_Psfnativerival_Event_Script_2:
+BeachBattle_Archer_Event_Script_2:
 	goto BeachBattle_Approach_Dialogue
 	return
 
-BeachBattle_Psfnativerival_Event_Script_3:
+BeachBattle_Archer_Event_Script_3:
 	goto BeachBattle_StartBattle_Script
 	return
 
@@ -233,7 +233,7 @@ gText_BeachBattle_UghIShouldBe::
 
 gText_BeachBattle_IfItTakesATeam::
 	.string "If it takes a team as good as yours to\n"
-	.string "beat Psfleader5, then I might need to\l"
+	.string "beat Chuck, then I might need to\l"
 	.string "rethink things…$"
 
 gText_BeachBattle_NextTimeIllHave::

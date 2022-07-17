@@ -1,0 +1,25 @@
+Alcatraz_B1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Alcatraz_B1F_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Alcatraz_B1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Alcatraz_B1F_MapScripts_OnTransition
+	return
+
+
+Alcatraz_B1F_MapScripts_OnTransition::
+	switch VAR_LILYCOVE_CONTEST_LOBBY_STATE
+	case 2, Alcatraz_B1F_MapScripts_OnTransition_2
+	call LetsBurnThisMotherDown_ObjectHide_Script
+	return
+
+Alcatraz_B1F_MapScripts_OnTransition_2:
+	call LetsBurnThisMotherDown_ObjectShow_Script
+	return
+
+
+Alcatraz_B1F_Bianca_Event_Script::
+	lock
+	goto LetsBurnThisMotherDown_StartBattle_Script
+	return
+

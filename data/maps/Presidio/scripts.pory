@@ -1,0 +1,23 @@
+mapscripts Presidio_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
+    ]
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Presidio_MapScripts_OnTransition)
+    }
+}
+
+script Presidio_MapScripts_OnTransition {
+    call(YouLookTired_BlockMansionAccess_Script)
+}
+
+script Presidio_MansionGuard_InteractScript {
+    lock
+    if (var(VAR_PSFPLACE9_STATE) < 2){
+        msgbox("...")
+    } else {
+        msgbox(gText_KogaRaisonDetre_HasBeenExpectingYou, MSGBOX_NPC)
+    }
+    releaseall
+    end
+}

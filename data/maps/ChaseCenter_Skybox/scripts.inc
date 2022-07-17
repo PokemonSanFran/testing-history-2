@@ -1,0 +1,66 @@
+ChaseCenter_Skybox_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, ChaseCenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, ChaseCenter_Skybox_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+ChaseCenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto ChaseCenter_Skybox_MapScripts_OnTransition
+	return
+
+ChaseCenter_Skybox_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 28, WhyDidntYouRatMeOut_WatchBiancaMatches
+	map_script_2 VAR_STORYLINE_STATE, 33, WaitHeDidWhat_WatchOtherSemifinal_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 48, ExhibitionBattle_PrepPlayer_Script
+	.2byte 0
+
+
+ChaseCenter_Skybox_EmptySkybox_Script::
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_1
+	return
+
+
+ChaseCenter_Skybox_MapScripts_OnTransition::
+	switch VAR_STORYLINE_STATE
+	case 28, ChaseCenter_Skybox_MapScripts_OnTransition_2
+	case 29, ChaseCenter_Skybox_MapScripts_OnTransition_3
+	case 30, ChaseCenter_Skybox_MapScripts_OnTransition_4
+	case 33, ChaseCenter_Skybox_MapScripts_OnTransition_5
+	case 34, ChaseCenter_Skybox_MapScripts_OnTransition_6
+	case 35, ChaseCenter_Skybox_MapScripts_OnTransition_7
+	case 48, ChaseCenter_Skybox_MapScripts_OnTransition_8
+	case 49, ChaseCenter_Skybox_MapScripts_OnTransition_9
+	call ChaseCenter_Skybox_EmptySkybox_Script
+	return
+
+ChaseCenter_Skybox_MapScripts_OnTransition_2:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+ChaseCenter_Skybox_MapScripts_OnTransition_3:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+ChaseCenter_Skybox_MapScripts_OnTransition_4:
+	call GroupStages_Skybox_ObjectSetup_Script
+	return
+
+ChaseCenter_Skybox_MapScripts_OnTransition_5:
+	return
+
+ChaseCenter_Skybox_MapScripts_OnTransition_6:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+ChaseCenter_Skybox_MapScripts_OnTransition_7:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+ChaseCenter_Skybox_MapScripts_OnTransition_8:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+ChaseCenter_Skybox_MapScripts_OnTransition_9:
+	call WaitHeDidWhat_HideObject_Script
+	return
+

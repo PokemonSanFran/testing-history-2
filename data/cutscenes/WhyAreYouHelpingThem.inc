@@ -25,7 +25,7 @@ WhyAreYouHelpingThem_MoveObjectBoss_Script::
 	return
 
 
-WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script::
+WhyAreYouHelpingThem_MoveObjectAriana_Script::
 	setflag FLAG_TEMP_2
 	setobjectxy 2, 1, 9
 	setobjectxyperm 2, 1, 9
@@ -135,7 +135,7 @@ WhyAreYouHelpingThem_WitnessBattle::
 WhyAreYouHelpingThem_PreBattleBoss_Script::
 	lock
 	applymovement 3, Common_Movement_FaceLeft
-	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_ApproachPsfgoodboss
+	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_ApproachGiovanni
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
@@ -157,7 +157,7 @@ WhyAreYouHelpingThem_PreBattleBoss_Script::
 WhyAreYouHelpingThem_PostBattleBoss_Dialogue::
 	addvar VAR_ROUTE118_STATE, 1
 	addobject 2
-	call WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script
+	call WhyAreYouHelpingThem_MoveObjectAriana_Script
 	checktrainerflag TRAINER_ARCHIE
 	goto_if 1, WhyAreYouHelpingThem_PostBattleBoss_Dialogue_2
 	setvar VAR_0x8000, MUGSHOT_HILDA
@@ -420,7 +420,7 @@ WhyAreYouHelpingThem_FleeTheBattle:
 	walk_up
 	step_end
 
-WhyAreYouHelpingThem_ApproachPsfgoodboss:
+WhyAreYouHelpingThem_ApproachGiovanni:
 	walk_up
 	walk_up
 	walk_right
@@ -585,7 +585,7 @@ gText_WhyAreYouHelpingThem_SeeYa::
 	.string "See ya.$"
 
 gText_WhyAreYouHelpingThem_GoAfterIllHold::
-	.string "Go after Psfgoodboss! I'll hold this one\n"
+	.string "Go after Giovanni! I'll hold this one\n"
 	.string "off.$"
 
 gText_WhyAreYouHelpingThem_ItsAShameThatThe::
@@ -626,7 +626,7 @@ gText_WhyAreYouHelpingThem_DamnYouToo::
 gText_WhyAreYouHelpingThem_WhatWasAllThatShit::
 	.string "What was all that shit you tried to tell\n"
 	.string "me before?! What the hell is\l"
-	.string "Psfgoodteam doing?$"
+	.string "TeamRocket doing?$"
 
 gText_WhyAreYouHelpingThem_WeveGotToHelp::
 	.string "We've got to help more comrades escape.\n"
@@ -652,7 +652,7 @@ gText_WhyAreYouHelpingThem_Sigh::
 	.string "…*sigh*$"
 
 gText_WhyAreYouHelpingThem_YoureWorkingWith::
-	.string "You're working with Psfgoodteam too?!?$"
+	.string "You're working with TeamRocket too?!?$"
 
 gText_WhyAreYouHelpingThem_AlwaysHaveBeen::
 	.string "Always have been.$"
@@ -662,33 +662,33 @@ gText_WhyAreYouHelpingThem_AnotherVictory::
 	.string "establishment.$"
 
 gText_WhyAreYouHelpingThem_TellsMeYoureAll::
-	.string "Psfgoodadmin tells me you're all good\n"
+	.string "Ariana tells me you're all good\n"
 	.string "guys… now all this shit? And you? None\l"
 	.string "of this makes any sense!$"
 
 gText_WhyAreYouHelpingThem_WhyWouldIt::
 	.string "Why would it? You don't see what your\n"
-	.string "bosses are doing to Psfregion1. You\l"
+	.string "bosses are doing to SanFran. You\l"
 	.string "don't see what you're doing to\l"
-	.string "Psfregion1.$"
+	.string "SanFran.$"
 
 gText_WhyAreYouHelpingThem_Player::
 	.string "{PLAYER}!$"
 
 gText_WhyAreYouHelpingThem_IGotKnockedOut::
 	.string "I got knocked out. Did you stop\n"
-	.string "Psfgoodboss?$"
+	.string "Giovanni?$"
 
 gText_WhyAreYouHelpingThem_NoILostToo::
 	.string "No, I lost too.$"
 
 gText_WhyAreYouHelpingThem_GreatWorkInThere::
 	.string "Great work in there, team. Andre, what's\n"
-	.string "the sitrep regarding Psfgoodteam\l"
+	.string "the sitrep regarding TeamRocket\l"
 	.string "leadership?$"
 
 gText_WhyAreYouHelpingThem_WeSpottedAndTheir::
-	.string "We spotted Psfgoodboss and their\n"
+	.string "We spotted Giovanni and their\n"
 	.string "lieutenant escaping on Pokemon by\l"
 	.string "using the move Fly. We were unable to\l"
 	.string "track them given our resources.$"
@@ -701,7 +701,7 @@ gText_WhyAreYouHelpingThem_AShameStillWeveShutDown::
 
 gText_WhyAreYouHelpingThem_NotBadInThere::
 	.string "Not bad in there. Psfbadadmin wants you\n"
-	.string "kids back at Psfcity8 Compound.$"
+	.string "kids back at SouthBay Compound.$"
 
 gText_WhyAreYouHelpingThem_WhatADay::
 	.string "What… a day. I know that was a lot of\n"
@@ -713,7 +713,7 @@ gText_WhyAreYouHelpingThem_ItWasADay::
 
 gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere::
 	.string "Good news - while you were training in\n"
-	.string "Psfcave2, construction on Psfplace14\l"
+	.string "MuirWoods, construction on ChaseCenter\l"
 	.string "finished up. The Group Stage will start\l"
 	.string "in 3 days. Hopefully, that's enough time\l"
 	.string "to rest up and get ready.$"

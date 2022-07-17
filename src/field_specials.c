@@ -78,8 +78,8 @@ static EWRAM_DATA u8 sSlidingDoorFrame = 0;
 static EWRAM_DATA u8 sTutorMoveAndElevatorWindowId = 0;
 static EWRAM_DATA u16 sLilycoveDeptStore_NeverRead = 0;
 static EWRAM_DATA u16 sLilycoveDeptStore_DefaultFloorChoice = 0;
-static EWRAM_DATA u16 sPsfbadguy1Tower_NeverRead = 0;
-static EWRAM_DATA u16 sPsfbadguy1Tower_DefaultFloorChoice = 0;
+static EWRAM_DATA u16 sYCombinatorTower_NeverRead = 0;
+static EWRAM_DATA u16 sYCombinatorTower_DefaultFloorChoice = 0;
 static EWRAM_DATA struct ListMenuItem *sScrollableMultichoice_ListMenuItem = NULL;
 static EWRAM_DATA u16 sScrollableMultichoice_ScrollOffset = 0;
 static EWRAM_DATA u16 sFrontierExchangeCorner_NeverRead = 0;
@@ -1683,7 +1683,7 @@ const u8 *const gDeptStoreFloorNames[] =
     [DEPT_STORE_FLOORNUM_ROOFTOP] = gText_Rooftop
 };
 
-const u8 *const gPsfbadguy1TowerFloorNames[] =
+const u8 *const gYCombinatorTowerFloorNames[] =
 {
     [DEPT_STORE_FLOORNUM_B4F] = gText_B4F,
     [PSFBADGUY1TOWER_FLOORNUM_1F] = gText_1F,
@@ -1737,65 +1737,65 @@ static const u16 sElevatorWindowTiles_Descending[][3] =
     },
 };
 
-//Start Psfbadguy1Tower Elevator Scripts
+//Start YCombinatorTower Elevator Scripts
 
-void SetPsfbadguy1TowerFloor(void)
+void SetYCombinatorTowerFloor(void)
 {
-    u8 Psfbadguy1TowerFloor; 
+    u8 YCombinatorTowerFloor; 
 
     switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
     {
         case MAP_NUM(PSFBADGUY1TOWER_1F):
-            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_1F;
+            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_1F;
             break;
         case MAP_NUM(PSFBADGUY1TOWER_2F):
-            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_2F;
+            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_2F;
             break;
         case MAP_NUM(PSFBADGUY1TOWER_5F):
-            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_5F;
+            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_5F;
             break;
         case MAP_NUM(PSFBADGUY1TOWER_10F):
-            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_10F;
+            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_10F;
             break;
         default:
-            Psfbadguy1TowerFloor = PSFBADGUY1TOWER_FLOORNUM_1F;
+            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_1F;
             break;
     }
-    VarSet(VAR_DEPT_STORE_FLOOR, Psfbadguy1TowerFloor); //TODO Change VAR_DEPT_STORE_FLOOR to one more suited to PSF
+    VarSet(VAR_DEPT_STORE_FLOOR, YCombinatorTowerFloor); //TODO Change VAR_DEPT_STORE_FLOOR to one more suited to PSF
 }
 
 u16 GetTowerFloorDefaultFloorChoice(void)
 {
-    sPsfbadguy1Tower_NeverRead = 0;
-    sPsfbadguy1Tower_DefaultFloorChoice = 0;
+    sYCombinatorTower_NeverRead = 0;
+    sYCombinatorTower_DefaultFloorChoice = 0;
 
     if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(PSFBADGUY1TOWER_1F))
     {
         switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
         {
             case MAP_NUM(PSFBADGUY1TOWER_10F):
-                sPsfbadguy1Tower_NeverRead = 0;
-                sPsfbadguy1Tower_DefaultFloorChoice = 0;
+                sYCombinatorTower_NeverRead = 0;
+                sYCombinatorTower_DefaultFloorChoice = 0;
                 break;
             case MAP_NUM(PSFBADGUY1TOWER_5F):
-                sPsfbadguy1Tower_NeverRead = 0;
-                sPsfbadguy1Tower_DefaultFloorChoice = 1;
+                sYCombinatorTower_NeverRead = 0;
+                sYCombinatorTower_DefaultFloorChoice = 1;
                 break;
             case MAP_NUM(PSFBADGUY1TOWER_2F):
-                sPsfbadguy1Tower_NeverRead = 0;
-                sPsfbadguy1Tower_DefaultFloorChoice = 2;
+                sYCombinatorTower_NeverRead = 0;
+                sYCombinatorTower_DefaultFloorChoice = 2;
                 break;
             case MAP_NUM(PSFBADGUY1TOWER_1F):
-                sPsfbadguy1Tower_NeverRead = 0;
-                sPsfbadguy1Tower_DefaultFloorChoice = 3;
+                sYCombinatorTower_NeverRead = 0;
+                sYCombinatorTower_DefaultFloorChoice = 3;
                 break;
         }
     }
 
-    return sPsfbadguy1Tower_DefaultFloorChoice;
+    return sYCombinatorTower_DefaultFloorChoice;
 }
 
-void ShowPsfbadguy1TowerElevatorFloorSelect(void)
+void ShowYCombinatorTowerElevatorFloorSelect(void)
 {
     int xPos;
 
@@ -1805,13 +1805,13 @@ void ShowPsfbadguy1TowerElevatorFloorSelect(void)
     xPos = GetStringCenterAlignXOffset(1, gText_ElevatorNowOn, 64);
     AddTextPrinterParameterized(sTutorMoveAndElevatorWindowId, 1, gText_ElevatorNowOn, xPos, 1, TEXT_SKIP_DRAW, NULL);
 
-    xPos = GetStringCenterAlignXOffset(1, gPsfbadguy1TowerFloorNames[gSpecialVar_0x8005], 64);
-    AddTextPrinterParameterized(sTutorMoveAndElevatorWindowId, 1, gPsfbadguy1TowerFloorNames[gSpecialVar_0x8005], xPos, 17, TEXT_SKIP_DRAW, NULL);
+    xPos = GetStringCenterAlignXOffset(1, gYCombinatorTowerFloorNames[gSpecialVar_0x8005], 64);
+    AddTextPrinterParameterized(sTutorMoveAndElevatorWindowId, 1, gYCombinatorTowerFloorNames[gSpecialVar_0x8005], xPos, 17, TEXT_SKIP_DRAW, NULL);
 
     PutWindowTilemap(sTutorMoveAndElevatorWindowId);
     CopyWindowToVram(sTutorMoveAndElevatorWindowId, 3);
 }
-//End Psfbadguy1Tower Elevator Scripts
+//End YCombinatorTower Elevator Scripts
 
 void SetDeptStoreFloor(void)
 {
@@ -4357,7 +4357,7 @@ bool32 GetMegaEvolutionPartyMember(u16 species, int PartySlot, int IsEvolution)
     }   
 }
 
-u8 CheckNumPsfcave7ExhibitDefeated(void)
+u8 CheckNumAlcatrazExhibitDefeated(void)
 {
     u16 trainerFlag;
     u8 count = 0;

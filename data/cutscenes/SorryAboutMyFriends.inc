@@ -172,21 +172,21 @@ SorryAboutMyFriends_WalkSouth:
 
 gText_SorryAboutMyFriends_CongratsOnYourWin::
 	.string "{PLAYER}. Congrats on your win in\n"
-	.string "Psfcity11.$"
+	.string "Berkeley.$"
 
 gText_SorryAboutMyFriends_ItWasWait::
 	.string "Thanks! It was - wait.$"
 
 gText_SorryAboutMyFriends_YourePartOf::
-	.string "You're part of Psfgoodteam, right?$"
+	.string "You're part of TeamRocket, right?$"
 
 gText_SorryAboutMyFriends_DidINotMention::
 	.string "*sigh* Yeah, did I not mention that when\n"
-	.string "we met in Psfcity12?$"
+	.string "we met in Tenderloin?$"
 
 gText_SorryAboutMyFriends_WaitThatWas::
-	.string "Wait, that was Psfgoodteam? Everytime\n"
-	.string "I run into them, they're attacking\l"
+	.string "Wait, that was TeamRocket? Everytime I\n"
+	.string "run into them, they're attacking\l"
 	.string "innocent people!$"
 
 gText_SorryAboutMyFriends_UnfortunateWorldview::
@@ -199,7 +199,7 @@ gText_SorryAboutMyFriends_AreYouGuysHelping::
 
 gText_SorryAboutMyFriends_ThereWasAProtest::
 	.string "There was a protest here earlier that\n"
-	.string "involved the Psfrocketacro, that\l"
+	.string "involved the RocketAcronym, that\l"
 	.string "apparently began to get out of hand.\l"
 	.string "Two memb -$"
 
@@ -220,13 +220,13 @@ gText_SorryAboutMyFriends_UhHuh::
 	.string "Uh huh.$"
 
 gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace::
-	.string "I hope our Psfcity12 work shows that\n"
+	.string "I hope our Tenderloin work shows that\n"
 	.string "our hearts are in the right place. I'm\l"
 	.string "actually here to fix this mess too.$"
 
 gText_SorryAboutMyFriends_TrackDownTheMembers::
 	.string "I've been trying to track down the\n"
-	.string "Psfgoodteam members that you battled,\l"
+	.string "TeamRocket members that you battled,\l"
 	.string "but they're gone! Their names aren't\l"
 	.string "familiar, so they must be new... I've\l"
 	.string "already reprimanded our Recruitment\l"
@@ -241,8 +241,9 @@ gText_SorryAboutMyFriends_GotPrettyFiredUp::
 	.string "cool with it either.$"
 
 gText_SorryAboutMyFriends_WaitHoldOn::
-	.string "Actually, you should get the Psfbadge4\n"
-	.string "first. Let's talk when you do.$"
+	.string "Actually, you should get the\n"
+	.string "MortyBadge first. Let's talk when you\l"
+	.string "do.$"
 
 gText_SorryAboutMyFriends_WorldNeedsMoreCompassion::
 	.string "The world needs more compassion like\n"
@@ -258,19 +259,19 @@ gText_SorryAboutMyFriends_IGiveYouALot::
 
 gText_SorryAboutMyFriends_IAppreciateTheGesture::
 	.string "I appreciate the gesture, but doesn't\n"
-	.string "my pass from Psfbadguy1 get me to\l"
-	.string "Psfcave7?$"
+	.string "my pass from YCombinator get me to\l"
+	.string "Alcatraz?$"
 
 gText_SorryAboutMyFriends_WantedYouToGoThere::
-	.string "It could, if Psfbadguy1 wanted you to\n"
+	.string "It could, if YCombinator wanted you to\n"
 	.string "go there. But now you can!$"
 
 gText_SorryAboutMyFriends_ExcellentPlaceToTrain::
-	.string "You'll learn a lot about Psfregion1 by\n"
+	.string "You'll learn a lot about SanFran by\n"
 	.string "going, and it's an excellent place to\l"
 	.string "train for the Gym Challenge. With that,\l"
-	.string "you can go to Psfcave7 from the\l"
-	.string "Psfcity17 Ferry.$"
+	.string "you can go to Alcatraz from the\l"
+	.string "Alameda Ferry.$"
 
 gText_SorryAboutMyFriends_WaitForTheFog::
 	.string "(Guess I should go while I wait for the\n"
@@ -283,7 +284,7 @@ gText_SorryAboutMyFriends_FollowSomeMoreLeads::
 
 gText_SorryAboutMyFriends_AfterWeBattled::
 	.string "After we battled, they went towards\n"
-	.string "Psfcity17.$"
+	.string "Alameda.$"
 
 gText_SorryAboutMyFriends_ThankYouEnjoy::
-	.string "Thank you {PLAYER}. Enjoy Psfcave7.$"
+	.string "Thank you {PLAYER}. Enjoy Alcatraz.$"

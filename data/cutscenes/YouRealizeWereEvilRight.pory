@@ -75,7 +75,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         addvar(VAR_PSFBADGUY1TOWER_2F_STATE,1)
         applymovement(PLAYER,Common_Movement_FaceRight)
 
-        //Psfbadadmin and the player walk to the conference table. Psfbadadmin3 is already at the table. The screens behind Psfbadadmin3 light up as they all sit, showing Psfnativerival, the player, and the “Leader” of whatever Gym was restored first. PSF TODO
+        //Psfbadadmin and the player walk to the conference table. Sabrina is already at the table. The screens behind Sabrina light up as they all sit, showing Archer, the player, and the “Leader” of whatever Gym was restored first. PSF TODO
 
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
@@ -126,7 +126,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_ExcellentTiming)
 
-        //One of the monitors changes to show Psfgoodteam members marching. PSF TODO
+        //One of the monitors changes to show TeamRocket members marching. PSF TODO
 
         setvar(VAR_0x8000, MUGSHOT_N)
         callnative(DrawMugshot)
@@ -164,13 +164,13 @@ script YouRealizeWereEvilRight_Open_Dialogue {
 }
 
 text gText_YouRealizeWereEvilRight_SorryToBotherYou {
-    format("Hello {PLAYER}! Sorry to bother you, but there is a slight situation here at Psfbadguy1tower. It's rather urgent. Please come to the second floor as soon as you can.")
+    format("Hello {PLAYER}! Sorry to bother you, but there is a slight situation here at YCombinatortower. It's rather urgent. Please come to the second floor as soon as you can.")
 }
 text gText_YouRealizeWereEvilRight_YeahImOnMyWay {
     format("Yeah, I'm on my way over!")
 }
 text gText_YouRealizeWereEvilRight_WouldYouLikeToGo {
-    format("Would you like to go to Psfbadguy1tower?")
+    format("Would you like to go to YCombinatortower?")
 }
 text gText_YouRealizeWereEvilRight_ThisWay {
     format("This way.")
@@ -185,7 +185,7 @@ text gText_YouRealizeWereEvilRight_HoweverTheNext {
     format("However, the next season of the Challenge is coming up, and we're slightly concerned with your activities and the perception that a Psfbadguy sponsored Trainer is so intimately involved with the same structure that we sunset when we took over.")
 }
 text gText_YouRealizeWereEvilRight_ItWouldBeBetter {
-    format("It would be better if you found other extracurricular activities instead. A popular way to give back is volunteering at a shelter, or perhaps helping the researchers in Psfcity11 complete the Pokédex.")
+    format("It would be better if you found other extracurricular activities instead. A popular way to give back is volunteering at a shelter, or perhaps helping the researchers in Berkeley complete the Pokédex.")
 }
 text gText_YouRealizeWereEvilRight_AreYouSayingIHave {
     format("Are you saying I have to stop with the project?")
@@ -200,26 +200,26 @@ text gText_YouRealizeWereEvilRight_ExcellentTiming {
     format("Excellent timing.")
 }
 text gText_YouRealizeWereEvilRight_IThinkYourKindness {
-    format("I think your kindness is being manipulated, {PLAYER}. Our data suggests that the very Gyms that you're turning into “community centers” are actually being used as recruitment and training hubs for Psfgoodteam.")
+    format("I think your kindness is being manipulated, {PLAYER}. Our data suggests that the very Gyms that you're turning into “community centers” are actually being used as recruitment and training hubs for TeamRocket.")
 }
 text gText_YouRealizeWereEvilRight_ShitUsedToBe {
-    format("(Shit, Psfnativerival did mention he wanted their help. Was that all a ploy?)")
+    format("(Shit, Archer did mention he wanted their help. Was that all a ploy?)")
 }
 text gText_YouRealizeWereEvilRight_UsedToBeASmall {
-    format("Psfgoodteam used to be a small problem, but they're growing increasingly violent and dangerous. For the good of the region, and our plans, we need to shut them down for good. ")
+    format("TeamRocket used to be a small problem, but they're growing increasingly violent and dangerous. For the good of the region, and our plans, we need to shut them down for good. ")
 }
 text gText_YouRealizeWereEvilRight_HidingBehindTheirMask {
-    format("Psfgoodboss is a coward. Hiding behind their mask because they know their entire operation is completely illegal…")
+    format("Giovanni is a coward. Hiding behind their mask because they know their entire operation is completely illegal…")
 }
 text gText_YouRealizeWereEvilRight_WasActingInGoodFaith {
-    format("Precisely. If Psfgoodteam was acting in good faith, they'd work with us, no masks, no subterfuge.")
+    format("Precisely. If TeamRocket was acting in good faith, they'd work with us, no masks, no subterfuge.")
 }
 text gText_YouRealizeWereEvilRight_TheLocalPolice {
-    format("The local police have agreed to continue to work with us to eliminate Psfgoodteam. {PLAYER}, as you have before, we'd like you and Psftransrival to work alongside us to finish them.")
+    format("The local police have agreed to continue to work with us to eliminate TeamRocket. {PLAYER}, as you have before, we'd like you and Bianca to work alongside us to finish them.")
 }
 
 text gText_YouRealizeWereEvilRight_IKnowThis {
-    format("I know this is a lot to take in at once, {PLAYER}. I think you should go back to the Compound in Psfcity3, take a day, and think about this. You don't want to make any career ruining decisions in haste. When you're ready to help, just come back here tomorrow.")
+    format("I know this is a lot to take in at once, {PLAYER}. I think you should go back to the Compound in Presidio, take a day, and think about this. You don't want to make any career ruining decisions in haste. When you're ready to help, just come back here tomorrow.")
 }
 
 movement YouRealizeWereEvilRight_WalkToTable {

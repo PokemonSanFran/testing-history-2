@@ -9,25 +9,25 @@ ImIn_HideStairsGuard_Script::
 	return
 
 
-ImIn_ShowPsftransrival_Script::
+ImIn_ShowBianca_Script::
 	setflag FLAG_TEMP_1F
 	clearflag FLAG_TEMP_4
 	addobject 9
 	return
 
 
-ImIn_HidePsftransrival_Script::
+ImIn_HideBianca_Script::
 	setflag FLAG_TEMP_4
 	return
 
 
 ImIn_ResumeSave_Script::
-	call ImIn_ShowPsftransrival_Script
-	call ImIn_MovePsftransrival_Script
+	call ImIn_ShowBianca_Script
+	call ImIn_MoveBianca_Script
 	return
 
 
-ImIn_MovePsftransrival_Script::
+ImIn_MoveBianca_Script::
 	setobjectxy 9, 12, 26
 	setobjectxyperm 9, 12, 26
 	return
@@ -400,11 +400,11 @@ ImIn_OfficeReveal_Dialogue::
 	waitmovement 9
 	call Common_EventScript_SaveGame
 	closemessage
-	goto ImIn_StartPsftransrivalBattle_Script
+	goto ImIn_StartBiancaBattle_Script
 	return
 
 
-ImIn_StartPsftransrivalBattle_Script::
+ImIn_StartBiancaBattle_Script::
 	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
@@ -412,11 +412,11 @@ ImIn_StartPsftransrivalBattle_Script::
 	closemessage
 	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, gText_ImIn_HowDoesThisKeep
-	goto ImIn_PsftransrivalDefeated_Dialogue
+	goto ImIn_BiancaDefeated_Dialogue
 	return
 
 
-ImIn_InteractPsftransrivalBattle_Script::
+ImIn_InteractBiancaBattle_Script::
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	lock
 	setvar VAR_0x8000, MUGSHOT_HILDA
@@ -425,14 +425,14 @@ ImIn_InteractPsftransrivalBattle_Script::
 	closemessage
 	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, gText_ImIn_HowDoesThisKeep
-	goto ImIn_PsftransrivalDefeated_Dialogue
+	goto ImIn_BiancaDefeated_Dialogue
 	return
 
 
-ImIn_PsftransrivalDefeated_Dialogue::
+ImIn_BiancaDefeated_Dialogue::
 	lock
 	addvar VAR_MAUVILLE_CITY_STATE, 1
-	call ImIn_MovePsftransrival_Script
+	call ImIn_MoveBianca_Script
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_Wheres
@@ -451,7 +451,7 @@ ImIn_PsftransrivalDefeated_Dialogue::
 	end
 
 
-ImIn_PostPsftransrivalBattle_Interact_Dialogue::
+ImIn_PostBiancaBattle_Interact_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_AllThatTraining, MSGBOX_NPC
@@ -459,19 +459,19 @@ ImIn_PostPsftransrivalBattle_Interact_Dialogue::
 	return
 
 
-ImIn_InteractPsftransrival_Event_Script::
+ImIn_InteractBianca_Event_Script::
 	lock
 	switch VAR_MAUVILLE_CITY_STATE
-	case 6, ImIn_InteractPsftransrival_Event_Script_3
-	call ImIn_PostPsftransrivalBattle_Interact_Dialogue
-ImIn_InteractPsftransrival_Event_Script_1:
+	case 6, ImIn_InteractBianca_Event_Script_3
+	call ImIn_PostBiancaBattle_Interact_Dialogue
+ImIn_InteractBianca_Event_Script_1:
 	closemessage
 	release
 	end
 
-ImIn_InteractPsftransrival_Event_Script_3:
-	call ImIn_InteractPsftransrivalBattle_Script
-	goto ImIn_InteractPsftransrival_Event_Script_1
+ImIn_InteractBianca_Event_Script_3:
+	call ImIn_InteractBiancaBattle_Script
+	goto ImIn_InteractBianca_Event_Script_1
 
 
 ImIn_ApproachHouse:
@@ -647,13 +647,13 @@ gText_ImIn_WereCertainNobody::
 	.string "We're certain nobody is home?$"
 
 gText_ImIn_HasntLeftWorkEarly::
-	.string "Psfbadadmin3 hasn't left work early a\n"
+	.string "Sabrina hasn't left work early a\n"
 	.string "day in their life. Psfbadguy is led by\l"
 	.string "monsters, but at least they're\l"
 	.string "hard-working monsters.$"
 
 gText_ImIn_WereInPosition::
-	.string "We're in position at Psfcity12. Ready to\n"
+	.string "We're in position at Tenderloin. Ready to\n"
 	.string "mobilize this diversion when you are.$"
 
 gText_ImIn_TheSideDoorWill::
@@ -682,7 +682,7 @@ gText_ImIn_GuessWereAllLooking::
 	.string "their birthday, right?$"
 
 gText_ImIn_WereIn::
-	.string "Psfgoodadmin, we're in. Everybody\n"
+	.string "Ariana, we're in. Everybody\n"
 	.string "remember the plan?$"
 
 gText_ImIn_OnceYoureAllThrough::
@@ -691,11 +691,11 @@ gText_ImIn_OnceYoureAllThrough::
 	.string "front doors of the tower. Security will\l"
 	.string "be focused on us, letting you to the\l"
 	.string "executive levels and hopefully find\l"
-	.string "Psfbadboss.$"
+	.string "Rose.$"
 
 gText_ImIn_ImTooOldFor::
 	.string "I'm too old for scaling mountains.\n"
-	.string "Psfelite3 and I can get into the\l"
+	.string "Siebold and I can get into the\l"
 	.string "production studio and get ready to\l"
 	.string "broadcast that confession.$"
 
@@ -710,27 +710,27 @@ gText_ImIn_LetTheMarch::
 	.string "Let the march begin… good luck!$"
 
 gText_ImIn_LetsGoSecure::
-	.string "Psfelite2, let's go secure the studio.$"
+	.string "Drasna, let's go secure the studio.$"
 
 gText_ImIn_ThisPlaceIsProbably::
 	.string "This place is probably crawling with\n"
 	.string "Trainers. Let's spread out.$"
 
 gText_ImIn_HasAnOfficeOn::
-	.string "Psfbadboss has an office on the 10th\n"
+	.string "Rose has an office on the 10th\n"
 	.string "floor, I've been there myself.$"
 
 gText_ImIn_FloorThenLets::
 	.string "10th floor then, let's move!$"
 
 gText_ImIn_OfficeIsOn::
-	.string "Psfbadboss's office is on Floor 10.$"
+	.string "Rose's office is on Floor 10.$"
 
 gText_ImIn_DoYouLikeMy::
 	.string "Do you like my new office?$"
 
 gText_ImIn_WhatAreYouDoing::
-	.string "Psftransrival, what are you doing here?$"
+	.string "Bianca, what are you doing here?$"
 
 gText_ImIn_IDidntChooseToAlign::
 	.string "I didn't choose to align myself with the\n"
@@ -740,10 +740,10 @@ gText_ImIn_IDidntChooseToAlign::
 
 gText_ImIn_WaitTrash::
 	.string "Wait, trash? Did you hear what these\n"
-	.string "people did to Psfcity17?$"
+	.string "people did to Alameda?$"
 
 gText_ImIn_WasDestryogingThisRegion::
-	.string "Psfgoodteam was destroying this region\n"
+	.string "TeamRocket was destroying this region\n"
 	.string "with their idiocy. We wiped ‘em out. And\l"
 	.string "you decided to help them? After\l"
 	.string "everything Psfbadguy did for you?$"
@@ -763,7 +763,7 @@ gText_ImIn_DaddyWontBeAble::
 	.string "of this one.$"
 
 gText_ImIn_AreDeadDoYou::
-	.string "If you and Psfnativerival are dead, do\n"
+	.string "If you and Archer are dead, do\n"
 	.string "you think I get to be Champion\l"
 	.string "instead?$"
 
@@ -771,7 +771,7 @@ gText_ImIn_HowDoesThisKeep::
 	.string "How does this keep happening?!?!?$"
 
 gText_ImIn_Wheres::
-	.string "Where's Psfbadboss?!$"
+	.string "Where's Rose?!$"
 
 gText_ImIn_WhatsTheSecret::
 	.string "What's the secret? What am I missing?\n"
@@ -783,7 +783,7 @@ gText_ImIn_EverythingAboutIsBullshit::
 	.string "isn't any better. But as long as they\l"
 	.string "have stans like you, they're going to\l"
 	.string "continue to get richer and more toxic.\l"
-	.string "Tell me where Psfbadboss is.$"
+	.string "Tell me where Rose is.$"
 
 gText_ImIn_Floor::
 	.string "Floor 11.$"

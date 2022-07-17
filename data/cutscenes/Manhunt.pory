@@ -30,7 +30,7 @@ script Manhunt_Assignment_Dialogue {
 }
 
 const PSFTRANSRIVAL = 2
-//Psfcity15
+//SOMA
 script Manhunt_Cherie_Battle_Script {
     lock
         playse(SE_EXIT)
@@ -97,7 +97,7 @@ script Manhunt_Cherie_Battle_Script {
         end
 }
 
-//Psfcity6
+//Mission
 script Manhunt_Teodoro_Battle_Script {
     lock
         playse(SE_EXIT)
@@ -139,7 +139,7 @@ script Manhunt_Teodoro_Battle_Script {
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
-        msgbox(gText_Manhunt_ThatsInPsfcity3)
+        msgbox(gText_Manhunt_ThatsInPresidio)
         callnative(ClearMugshot)
 
         msgbox(gText_Manhunt_GodForbidSomeGoodPeople,MSGBOX_AUTOCLOSE)
@@ -153,7 +153,7 @@ script Manhunt_Teodoro_Battle_Script {
 
 }
 
-//Psfcity5_BallShop
+//Castro_BallShop
 script Manhunt_Dudley_Battle_Script {
     lock
 
@@ -254,8 +254,8 @@ script Manhunt_Matthew_Battle_Script {
         end
 }
 
-//Psfcave3
-script Manhunt_Encounter_Psfgoodboss_Dialogue {
+//LakeMerritt
+script Manhunt_Encounter_Giovanni_Dialogue {
     lock
         call(Common_EventScript_SaveGame)
         
@@ -318,19 +318,19 @@ script Manhunt_MissionComplete_Dialogue {
 }
 
 text gText_Manhunt_GoFind {
-    format("Go find Psfgoodboss. Psftransrival will help. The newspaper in Psfcity15 is a good place to start, they ran a story on Psfgoodteam last year.")
+    format("Go find Giovanni. Bianca will help. The newspaper in SOMA is a good place to start, they ran a story on TeamRocket last year.")
 }
 
 text gText_Manhunt_HeyWereTrying {
-    format("Hey, we're trying to find Psfgoodboss, and we were told you might have a connection.")
+    format("Hey, we're trying to find Giovanni, and we were told you might have a connection.")
 }
 
 text gText_Manhunt_YeahIWrote {
-    format("Yeah, I wrote the Psfgoodteam leadership piece a few months back. It was more than time to see such a great group of youngsters really start to get the recognition they deserve. And getting to really sit down with Psfgoodboss... I feel blessed to have been able to do it! ")
+    format("Yeah, I wrote the TeamRocket leadership piece a few months back. It was more than time to see such a great group of youngsters really start to get the recognition they deserve. And getting to really sit down with Giovanni... I feel blessed to have been able to do it! ")
 }
 
 text gText_Manhunt_Blessed {
-    format("Blessed? Psfgoodteam? Ugh, they've infected you too.")
+    format("Blessed? TeamRocket? Ugh, they've infected you too.")
 }
 
 text gText_Manhunt_WaitYoureThatKid {
@@ -358,11 +358,11 @@ text gText_Manhunt_PleaseDontHurtUs {
 }
 
 text gText_Manhunt_StartTalking {
-    format("Start talking. Who's Psfgoodboss behind the mask?")
+    format("Start talking. Who's Giovanni behind the mask?")
 }
 
 text gText_Manhunt_ISwearIDontKnow {
-    format("Psfgoodboss? I swear, I don't know who he is. Nobody does. I'm a reporter.... I wouldn't keep that a secret.")
+    format("Giovanni? I swear, I don't know who he is. Nobody does. I'm a reporter.... I wouldn't keep that a secret.")
 }
 
 text gText_Manhunt_IKnowYouKnow {
@@ -370,7 +370,7 @@ text gText_Manhunt_IKnowYouKnow {
 }
 
 text gText_Manhunt_TheOnlyLeadIHave {
-    format("The only lead I have is a consulting firm in Psfcity6... there's money flowing between there and Psfgoodteam, or, at least there was. I never figured out what was going on though.")
+    format("The only lead I have is a consulting firm in Mission... there's money flowing between there and TeamRocket, or, at least there was. I never figured out what was going on though.")
 }
 
 text gText_Manhunt_ThatsAStart {
@@ -386,15 +386,15 @@ text gText_Manhunt_WhatAreSomeKids {
 }
 
 text gText_Manhunt_YouGonnaMakeThisEasy {
-    format("You gonna make this easy? Or are you gonna keep protecting Psfgoodteam?")
+    format("You gonna make this easy? Or are you gonna keep protecting TeamRocket?")
 }
 
 text gText_Manhunt_WhatTheHellAreYou {
-    format("Psfgoodteam? What the hell are you talking about? ")
+    format("TeamRocket? What the hell are you talking about? ")
 }
 
 text gText_Manhunt_WeKnowYoureWorkingWith {
-    format("We know you're working with Psfgoodteam, and we need to find their leader.")
+    format("We know you're working with TeamRocket, and we need to find their leader.")
 }
 
 text gText_Manhunt_YeahIDidSomeWork {
@@ -406,11 +406,11 @@ text gText_Manhunt_DamnPunks {
 }
 
 text gText_Manhunt_WhatDoYouKnow {
-    format("What do you know about Psfgoodteam?")
+    format("What do you know about TeamRocket?")
 }
 
 text gText_Manhunt_LookIDontKnowWhat {
-    format("Look, I don't know what you're digging for. Psfgoodteam is all above ground, nothing to hide, just trying to do some damn good in the world.")
+    format("Look, I don't know what you're digging for. TeamRocket is all above ground, nothing to hide, just trying to do some damn good in the world.")
 }
 
 text gText_Manhunt_GoodInTheWorld {
@@ -421,8 +421,8 @@ text gText_Manhunt_TheOnlyWeirdThing {
     format("The only weird thing about them was buying Balls in bulk from that Speciality Ball Shop... but seriously, there's nothing interesting there.")
 }
 
-text gText_Manhunt_ThatsInPsfcity3 {
-    format("That's in Psfcity3. Let's move.")
+text gText_Manhunt_ThatsInPresidio {
+    format("That's in Presidio. Let's move.")
 }
 
 text gText_Manhunt_GodForbidSomeGoodPeople {
@@ -442,7 +442,7 @@ text gText_Manhunt_WoahTheChampion {
 }
 
 text gText_Manhunt_YeahTheyreOneOf {
-    format("Psfgoodteam? Yeah, they're one of our customers, why?")
+    format("TeamRocket? Yeah, they're one of our customers, why?")
 }
 
 text gText_Manhunt_BecauseWereBusting {
@@ -494,11 +494,11 @@ text gText_Manhunt_WhosHe {
 }
 
 text gText_Manhunt_YeahToldMeYoud {
-    format("Yeah, Psfgoodboss told me you'd be coming. But I wonder how tough you actually are!")
+    format("Yeah, Giovanni told me you'd be coming. But I wonder how tough you actually are!")
 }
 
 text gText_Manhunt_IFeelBadForAll {
-    format("I feel bad for all the innocent people you've been harassing... you're no joke. Psfgoodboss wants you to meet him at the Lake, after sunset. Just the two of you - no police or Psfbadguy cronies, or the trail goes cold again. Up to you.")
+    format("I feel bad for all the innocent people you've been harassing... you're no joke. Giovanni wants you to meet him at the Lake, after sunset. Just the two of you - no police or Psfbadguy cronies, or the trail goes cold again. Up to you.")
 }
 
 text gText_Manhunt_StopHurtingPeople {
@@ -506,7 +506,7 @@ text gText_Manhunt_StopHurtingPeople {
 }
 
 text gText_Manhunt_IfIDontHave {
-    format("If I don't have the strength to beat you, perhaps I don't have the strength to save Psfregion1 after all.")
+    format("If I don't have the strength to beat you, perhaps I don't have the strength to save SanFran after all.")
 }
 
 text gText_Manhunt_IWontFightYouAnyFurther {
@@ -514,11 +514,11 @@ text gText_Manhunt_IWontFightYouAnyFurther {
 }
 
 text gText_Manhunt_TheRegionIsYours {
-    format("Psfgoodteam is finished. The region is yours now.")
+    format("TeamRocket is finished. The region is yours now.")
 }
 
 text gText_Manhunt_IllBeAtTheEntrance {
-    format("Psfbadadmin, I've defeated Psfgoodboss. I'll be at the entrance to Psfcave3.")
+    format("Psfbadadmin, I've defeated Giovanni. I'll be at the entrance to LakeMerritt.")
 }
 
 text gText_Manhunt_WhatWaitUhOkay {

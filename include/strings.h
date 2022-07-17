@@ -3078,17 +3078,17 @@ extern const u8 gText_StarterSummary1[];
 extern const u8 gText_StarterSummary2[];
 
 //PSF Locations
-extern const u8 gText_Psfcity17[];
-extern const u8 gText_Psfcave5[];
-extern const u8 gText_Psfplace16[];
-extern const u8 gText_Psfcave7[];
-extern const u8 gText_Psfplace11[];
-extern const u8 gText_Psfcity9[];
-extern const u8 gText_Psfcity10[];
-extern const u8 gText_Psfcity11[];
-extern const u8 gText_Psfplace13[];
-extern const u8 gText_Psfcity13[];
-extern const u8 gText_Psfcity18[];
+extern const u8 gText_Alameda[];
+extern const u8 gText_TreasureIsland[];
+extern const u8 gText_OaklandFerry[];
+extern const u8 gText_Alcatraz[];
+extern const u8 gText_FerryBuilding[];
+extern const u8 gText_Oakland[];
+extern const u8 gText_Marin[];
+extern const u8 gText_Berkeley[];
+extern const u8 gText_FishermansWharf[];
+extern const u8 gText_Chinatown[];
+extern const u8 gText_HaightAshbury[];
 
 //VS Garbador Choose side
 extern const u8 gText_DontCare[];

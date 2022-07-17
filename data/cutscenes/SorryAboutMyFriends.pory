@@ -180,7 +180,7 @@ script SorryAboutMyFriends_GiveTicket_Script {
 }
 
 text gText_SorryAboutMyFriends_CongratsOnYourWin {
-    format("{PLAYER}. Congrats on your win in Psfcity11.")
+    format("{PLAYER}. Congrats on your win in Berkeley.")
 }
 
 text gText_SorryAboutMyFriends_ItWasWait {
@@ -188,15 +188,15 @@ text gText_SorryAboutMyFriends_ItWasWait {
 }
 
 text gText_SorryAboutMyFriends_YourePartOf {
-    format("You're part of Psfgoodteam, right?")
+    format("You're part of TeamRocket, right?")
 }
 
 text gText_SorryAboutMyFriends_DidINotMention {
-    format("*sigh* Yeah, did I not mention that when we met in Psfcity12?")
+    format("*sigh* Yeah, did I not mention that when we met in Tenderloin?")
 }
 
 text gText_SorryAboutMyFriends_WaitThatWas {
-    format("Wait, that was Psfgoodteam? Everytime I run into them, they're attacking innocent people! ")
+    format("Wait, that was TeamRocket? Everytime I run into them, they're attacking innocent people! ")
 }
 
 text gText_SorryAboutMyFriends_UnfortunateWorldview {
@@ -208,7 +208,7 @@ text gText_SorryAboutMyFriends_AreYouGuysHelping {
 }
 
 text gText_SorryAboutMyFriends_ThereWasAProtest {
-    format("There was a protest here earlier that involved the Psfrocketacro, that apparently began to get out of hand. Two memb -")
+    format("There was a protest here earlier that involved the RocketAcronym, that apparently began to get out of hand. Two memb -")
 }
 
 text gText_SorryAboutMyFriends_IWasTheOneWhoShut {
@@ -224,11 +224,11 @@ text gText_SorryAboutMyFriends_UhHuh {
 }
 
 text gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace {
-    format("I hope our Psfcity12 work shows that our hearts are in the right place. I'm actually here to fix this mess too.")
+    format("I hope our Tenderloin work shows that our hearts are in the right place. I'm actually here to fix this mess too.")
 }
 
 text gText_SorryAboutMyFriends_TrackDownTheMembers {
-    format("I've been trying to track down the Psfgoodteam members that you battled, but they're gone! Their names aren't familiar, so they must be new... I've already reprimanded our Recruitment and Training team. We can't afford to have idiots like that making us look bad.")
+    format("I've been trying to track down the TeamRocket members that you battled, but they're gone! Their names aren't familiar, so they must be new... I've already reprimanded our Recruitment and Training team. We can't afford to have idiots like that making us look bad.")
 }
 
 text gText_SorryAboutMyFriends_GotPrettyFiredUp {
@@ -236,7 +236,7 @@ text gText_SorryAboutMyFriends_GotPrettyFiredUp {
 }
 
 text gText_SorryAboutMyFriends_WaitHoldOn {
-    format("Actually, you should get the Psfbadge4 first. Let's talk when you do.")
+    format("Actually, you should get the MortyBadge first. Let's talk when you do.")
 }
 
 text gText_SorryAboutMyFriends_WorldNeedsMoreCompassion {
@@ -248,15 +248,15 @@ text gText_SorryAboutMyFriends_IGiveYouALot {
 }
 
 text gText_SorryAboutMyFriends_IAppreciateTheGesture {
-    format("I appreciate the gesture, but doesn't my pass from Psfbadguy1 get me to Psfcave7?")
+    format("I appreciate the gesture, but doesn't my pass from YCombinator get me to Alcatraz?")
 }
 
 text gText_SorryAboutMyFriends_WantedYouToGoThere {
-    format("It could, if Psfbadguy1 wanted you to go there. But now you can!")
+    format("It could, if YCombinator wanted you to go there. But now you can!")
 }
 
 text gText_SorryAboutMyFriends_ExcellentPlaceToTrain {
-    format("You'll learn a lot about Psfregion1 by going, and it's an excellent place to train for the Gym Challenge. With that, you can go to Psfcave7 from the Psfcity17 Ferry.")
+    format("You'll learn a lot about SanFran by going, and it's an excellent place to train for the Gym Challenge. With that, you can go to Alcatraz from the Alameda Ferry.")
 }
 
 text gText_SorryAboutMyFriends_WaitForTheFog {
@@ -268,11 +268,11 @@ text gText_SorryAboutMyFriends_FollowSomeMoreLeads {
 }
 
 text gText_SorryAboutMyFriends_AfterWeBattled {
-    format("After we battled, they went towards Psfcity17.")
+    format("After we battled, they went towards Alameda.")
 }
 
 text gText_SorryAboutMyFriends_ThankYouEnjoy {
-    format("Thank you {PLAYER}. Enjoy Psfcave7.")
+    format("Thank you {PLAYER}. Enjoy Alcatraz.")
 }
 
 movement SorryAboutMyFriends_WalkSouth {

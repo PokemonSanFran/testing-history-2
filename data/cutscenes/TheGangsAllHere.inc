@@ -77,7 +77,7 @@ TheGangsAllHere_ComeOnIn_Dialogue::
 	playse SE_PIN
 	applymovement 3, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement 3, TheGangsAllHere_PsfbadbossWalkToDoor_Movement
+	applymovement 3, TheGangsAllHere_RoseWalkToDoor_Movement
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
@@ -120,7 +120,7 @@ TheGangsAllHere_NotIntentionally_Dialogue::
 	msgbox gText_TheGangsAllHere_IHeardWonderfulThings
 	callnative ClearMugshot
 	applymovement 3, Common_Movement_FaceDown
-	applymovement 4, TheGangsAllHere_GivePackageToPsfbadboss_Movement
+	applymovement 4, TheGangsAllHere_GivePackageToRose_Movement
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
@@ -133,7 +133,7 @@ TheGangsAllHere_NotIntentionally_Dialogue::
 
 TheGangsAllHere_GiveDowsingMachine_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	applymovement 3, TheGangsAllHere_GivePackageToPsfchara1_Movement
+	applymovement 3, TheGangsAllHere_GivePackageToPlayerChar_Movement
 	waitmovement 0
 	giveitem ITEM_DOWSING_MACHINE, 1
 	goto TheGangsAllHere_GiveDowsingMachine_Dialogue
@@ -183,7 +183,7 @@ TheGangsAllHere_EndScene_Dialogue::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_MoveOutOfWay_Movement
 	waitmovement 0
-	applymovement 3, TheGangsAllHere_PsfbadbossWalkOut_Movement
+	applymovement 3, TheGangsAllHere_RoseWalkOut_Movement
 	applymovement 4, TheGangsAllHere_PsfbadadminWalkOut_Movement
 	waitmovement 0
 	fadedefaultbgm
@@ -195,7 +195,7 @@ TheGangsAllHere_EndScene_Dialogue::
 	end
 
 
-Psfbadguy1Tower_10F_EventScript_Tom::
+YCombinatorTower_10F_EventScript_Tom::
 	trainerbattle_single TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat
 	special GetPlayerBigGuyGirlString
 	msgbox Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE
@@ -203,7 +203,7 @@ Psfbadguy1Tower_10F_EventScript_Tom::
 	end
 
 
-Psfbadguy1Tower_10F_EventScript_Ian::
+YCombinatorTower_10F_EventScript_Ian::
 	trainerbattle_single TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat
 	special GetPlayerBigGuyGirlString
 	msgbox Route104_Text_MiaPostBattle, MSGBOX_AUTOCLOSE
@@ -229,7 +229,7 @@ FollowPlaceholder_Movement:
 	walk_down
 	step_end
 
-TheGangsAllHere_PsfbadbossWalkToDoor_Movement:
+TheGangsAllHere_RoseWalkToDoor_Movement:
 	walk_down
 	walk_left
 	walk_left
@@ -245,11 +245,11 @@ TheGangsAllHere_PsfbadadminWalkToDesk_Movement:
 	delay_16
 	step_end
 
-TheGangsAllHere_GivePackageToPsfbadboss_Movement:
+TheGangsAllHere_GivePackageToRose_Movement:
 	walk_in_place_up
 	step_end
 
-TheGangsAllHere_GivePackageToPsfchara1_Movement:
+TheGangsAllHere_GivePackageToPlayerChar_Movement:
 	face_left
 	walk_in_place_left
 	step_end
@@ -259,7 +259,7 @@ TheGangsAllHere_MoveOutOfWay_Movement:
 	face_down
 	step_end
 
-TheGangsAllHere_PsfbadbossWalkOut_Movement:
+TheGangsAllHere_RoseWalkOut_Movement:
 	walk_left
 	walk_left
 	walk_left
@@ -317,14 +317,14 @@ gText_TheGangsAllHere_WhatBringsYou::
 	.string "HQ?$"
 
 gText_TheGangsAllHere_ToldMeToVisit::
-	.string "Commissioner Psfbadboss told me to\n"
-	.string "visit after I beat Psfleader3!$"
+	.string "Commissioner Rose told me to\n"
+	.string "visit after I beat Whitney!$"
 
 gText_TheGangsAllHere_IsThisWhereYouWork::
 	.string "Is this where you work?$"
 
 gText_TheGangsAllHere_TheTowerYes::
-	.string "The Psfcompany3 Tower? Yes! League\n"
+	.string "The Salesforce Tower? Yes! League\n"
 	.string "Ops? ...sort of. We wear a lot of hats!$"
 
 gText_TheGangsAllHere_IHaventBeen::
@@ -343,7 +343,7 @@ gText_TheGangsAllHere_OfficeIsntThatWay::
 	.string "way!$"
 
 gText_TheGangsAllHere_ThisIsOffice::
-	.string "This is Psfbadboss's office. After you.$"
+	.string "This is Rose's office. After you.$"
 
 gText_TheGangsAllHere_ComeOnIn::
 	.string "{PLAYER}! Psfbadadmin! Come on in, I\n"
@@ -360,14 +360,14 @@ gText_TheGangsAllHere_IThoughtYouSaid::
 	.string "for the C.E.O.?$"
 
 gText_TheGangsAllHere_IDidIsee::
-	.string "I did. I see Psfbadboss neglected to\n"
+	.string "I did. I see Rose neglected to\n"
 	.string "reveal his full title...?$"
 
 gText_TheGangsAllHere_NotIntentionally::
 	.string "Not intentionally! I was just so swept\n"
 	.string "up in your battle! Psfbadadmin, please\l"
 	.string "tell me you'll go back and watch\l"
-	.string "Psfbadadmin3's highlight reel later, it\l"
+	.string "Sabrina's highlight reel later, it\l"
 	.string "was fantastic.$"
 
 gText_TheGangsAllHere_LikeISaidWe::
@@ -377,7 +377,7 @@ gText_TheGangsAllHere_IHeardWonderfulThings::
 	.string "I heard wonderful things on the way\n"
 	.string "over here, but I'll be certain to\l"
 	.string "observe later. In any case, your\l"
-	.string "package, Psfbadboss.$"
+	.string "package, Rose.$"
 
 gText_TheGangsAllHere_ImThrilledTheTiming::
 	.string "I'm thrilled the timing worked out,\n"
@@ -409,7 +409,7 @@ gText_TheGangsAllHere_WeKnowButNoPressure::
 	.string "journey!$"
 
 gText_TheGangsAllHere_TimeForNumber7::
-	.string "Time for Psfcompany4 number 7. Shall we,\n"
+	.string "Time for Starbucks number 7. Shall we,\n"
 	.string "Psfbadadmin?$"
 
 gText_TheGangsAllHere_WeShall::
@@ -421,5 +421,5 @@ gText_TheGangsAllHere_FeelFreeToContinue::
 	.string "help in the battles. Hopefully\l"
 	.string "supporting me wasn't too exhausting!\l"
 	.string "Ah, and if you haven't already visited\l"
-	.string "Psfbadadmin3, go do so. They're on\l"
+	.string "Sabrina, go do so. They're on\l"
 	.string "Marketing, the second floor.$"

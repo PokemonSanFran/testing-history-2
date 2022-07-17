@@ -19,7 +19,7 @@ ANewStrike_PlayerSelf_Dialogue::
 
 
 gText_ANewStrike_ConstructionCrew::
-	.string "BREAKING NEWS: Psfplace14\n"
+	.string "BREAKING NEWS: ChaseCenter\n"
 	.string "construction crew has declared\l"
 	.string "a strike.\p"
 	.string "Their demands at this time are\n"
@@ -27,7 +27,7 @@ gText_ANewStrike_ConstructionCrew::
 	.string "upcoming dates of the Psfbadguy\l"
 	.string "League Championship in danger.\l"
 	.string "Anonymous sources claim that\l"
-	.string "Psfgoodteam is responsible for\l"
+	.string "TeamRocket is responsible for\l"
 	.string "instigating this protest, but\l"
 	.string "we'll have more information as\l"
 	.string "the situation develops.$"

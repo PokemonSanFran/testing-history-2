@@ -79,7 +79,7 @@ msgbox(gText_YouHaveYourOrders_TheyInvolved)
 msgbox(gText_YouHaveYourOrders_WeHiredThem)
 }
 
-    //If the player has converted the Psfcity18 Gym: PSF TODO
+    //If the player has converted the HaightAshbury Gym: PSF TODO
 
     if (!var(VAR_TEMP_0)){
 
@@ -167,7 +167,7 @@ text gText_YouHaveYourOrders_OohSomeAction {
 }
 
 text gText_YouHaveYourOrders_LawEnforcementHasConfirmed {
-    format("Law enforcement has confirmed the old Gyms have been repurposed as Psfgoodteam recruitment and training centers.The city has loaned us enough officers to perform three simultaneous raids. ")
+    format("Law enforcement has confirmed the old Gyms have been repurposed as TeamRocket recruitment and training centers.The city has loaned us enough officers to perform three simultaneous raids. ")
 }
 
 text gText_YouHaveYourOrders_WhyAllAtOnce {
@@ -183,11 +183,11 @@ text gText_CongratsYoureanAsshole_OhWoWYouGuys {
 }
 
 text gText_YouHaveYourOrders_CorrectEachOfUs {
-    format("Each of us will be leading a different raid. Psftransrival will go to Psfcave5, and I'll deal with Psfcity10. {PLAYER}, you'll take on Psfcity13.")
+    format("Each of us will be leading a different raid. Bianca will go to TreasureIsland, and I'll deal with Marin. {PLAYER}, you'll take on Chinatown.")
 }
 
 text gText_YouHaveYourOrders_TheyInvolved {
-    format("Psftransrival? How did they get invovled?")
+    format("Bianca? How did they get invovled?")
 }
 
 text gText_YouHaveYourOrders_WeHiredThem {
@@ -195,7 +195,7 @@ text gText_YouHaveYourOrders_WeHiredThem {
 }
 
 text gText_YouHaveYourOrders_WhatAbout {
-    format("What about Psfcity18?")
+    format("What about HaightAshbury?")
 }
 
 text gText_YouHaveYourOrders_OurIntelligenceTells {
@@ -215,7 +215,7 @@ text gText_YouHaveYourOrders_IStillFeelLike {
 }
 
 text gText_YouHaveYourOrders_InCaseYouHavent {
-    format("In case you haven't already heard, I used to be the leader of the Psfcity13 Gym.")
+    format("In case you haven't already heard, I used to be the leader of the Chinatown Gym.")
 }
 
 text gText_YouHaveYourOrders_YouWereAGym {
@@ -239,7 +239,7 @@ text gText_YouHaveYourOrders_ICouldGoShut {
 }
 
 text gText_YouHaveYourOrders_DoYouWantTo {
-    format("Do you want to go to Psfcity13?")
+    format("Do you want to go to Chinatown?")
 }
 
 movement YouHaveYourOrders_WalkToOfficeA {

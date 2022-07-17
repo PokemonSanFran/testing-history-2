@@ -2,7 +2,7 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFGOODBOSS = 1
 
 script MaskOff_HideObject_Script {
-    setflag(FLAG_TEMP_1) //Hide Psfelite3 in their home
+    setflag(FLAG_TEMP_1) //Hide Siebold in their home
 }
 
 script MaskOff_TransformObject_Script {
@@ -111,7 +111,7 @@ script MaskOff_QuestE_Dialogue {
         closemessage
 }
 
-script MaskOff_Encounter_Psfgoodboss_Dialogue {
+script MaskOff_Encounter_Giovanni_Dialogue {
     lock
         setvar(VAR_LILYCOVE_CITY_STATE,7)
         call(Common_EventScript_SaveGame)
@@ -170,7 +170,7 @@ msgbox(gText_MaskOff_TheOneAndOnly,MSGBOX_NPC)
 
     setvar(VAR_0x8000, MUGSHOT_CAITLIN)
     callnative(DrawMugshot)
-msgbox(gText_MaskOff_IFormedPsfgoodteam)
+msgbox(gText_MaskOff_IFormedTeamRocket)
 
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
@@ -221,10 +221,10 @@ script MaskOff_End_Dialogue {
 }
 
     text gText_MaskOff_YouveMadeIncredible {
-        format("You’ve made incredible progress since we last battled. But of course, you’re the Champion, {PLAYER}. Psfgoodteam is lucky to have another powerful ally")
+        format("You’ve made incredible progress since we last battled. But of course, you’re the Champion, {PLAYER}. TeamRocket is lucky to have another powerful ally")
     }
 text gText_MaskOff_ItsNiceToNotGet {
-    format("Thank you! It’s nice to not get crushed as easily anymore… wait! I was following a lead looking for Psfelite4. I think they train around here, and I want to try to convince them to work with us.")
+    format("Thank you! It’s nice to not get crushed as easily anymore… wait! I was following a lead looking for Wikstrom. I think they train around here, and I want to try to convince them to work with us.")
 }
 text gText_MaskOff_YouWontNeedTo {
     format("You won’t need to do much convincing, actually.")
@@ -233,25 +233,25 @@ text gText_MaskOff_WhatDoYouMean {
     format("What do you mean?")
 }
 text gText_MaskOff_AllowMeTo {
-    format("Allow me to re-introduce myself. I am the leader of Psfgoodteam, member of the Elite Four,")
+    format("Allow me to re-introduce myself. I am the leader of TeamRocket, member of the Elite Four,")
 }
 text gText_MaskOff_TheOneAndOnly {
-    format("the one and only… Psfelite4.")
+    format("the one and only… Wikstrom.")
 }
-text gText_MaskOff_IFormedPsfgoodteam {
-    format("I formed Psfgoodteam as a response to Psfbadguy’s growing influence over the region a few years ago. ")
+text gText_MaskOff_IFormedTeamRocket {
+    format("I formed TeamRocket as a response to Psfbadguy’s growing influence over the region a few years ago. ")
 }
 text gText_MaskOff_ButWhyGo {
-    format("But why go into hiding as Psfelite4?")
+    format("But why go into hiding as Wikstrom?")
 }
 text gText_MaskOff_IHidMyIdentity {
-    format("I hid my identity because I was worried about my influence diluting the message. If people could unite under a symbol like Psfgoodboss, then in theory, anybody could lead Psfgoodteam if something happened to me. And if the Elite Four wasn’t directly connected to Psfgoodteam, then they couldn’t retaliate against the others.")
+    format("I hid my identity because I was worried about my influence diluting the message. If people could unite under a symbol like Giovanni, then in theory, anybody could lead TeamRocket if something happened to me. And if the Elite Four wasn’t directly connected to TeamRocket, then they couldn’t retaliate against the others.")
 }
 text gText_MaskOff_ThingsAre {
-    format("Things are… a little different now. I met with Psfnativerival…")
+    format("Things are… a little different now. I met with Archer…")
 }
 text gText_MaskOff_ISee {
-    format("I see. If the Elite Four is going to present as a united front, I’ll need to give up leadership to Psfgoodadmin. You know, I think they’ve purposely kept me in the dark about this.")
+    format("I see. If the Elite Four is going to present as a united front, I’ll need to give up leadership to Ariana. You know, I think they’ve purposely kept me in the dark about this.")
 }
 text gText_MaskOff_WaitWhatDO {
     format("Wait, what do you mean?")
@@ -260,20 +260,20 @@ text gText_MaskOff_IHaventExplicitly {
     format("I haven’t explicitly told them, but I’ve long suspected they know my secret. They have some reservations about taking a leadership role… but I know they can handle it.")
 }
 text gText_MaskOff_IShouldApologize {
-    format("I should apologize to Psfelite3 for disappearing. But you should get some rest. Our war begins first thing in the morning.")
+    format("I should apologize to Siebold for disappearing. But you should get some rest. Our war begins first thing in the morning.")
 }
 
 text gText_MaskOff_WhatCanYou {
-    format("Hi there. What can you tell me about Psfelite4?")
+    format("Hi there. What can you tell me about Wikstrom?")
 }
 //SECTION A
 
 text gText_MaskOff_IUsedToSee {
-    format("I used to see Psfelite4 all the time, but I'm pretty sure he moved away. He used to come back super late at night, so he must have been pulling really long hours.")
+    format("I used to see Wikstrom all the time, but I'm pretty sure he moved away. He used to come back super late at night, so he must have been pulling really long hours.")
 }
 
 text gText_MaskOff_HeWorkedInThe {
-    format("He worked in the Psfcity6 as a business consultant for the little guy. It was awesome to see a member of the community become an Elite Four member!")
+    format("He worked in the Mission as a business consultant for the little guy. It was awesome to see a member of the community become an Elite Four member!")
 }
 
 text gText_MaskOff_WatchingHimBattle {
@@ -283,7 +283,7 @@ text gText_MaskOff_WatchingHimBattle {
 //SECTION D
 
 text gText_MaskOff_UsedToBeHere {
-    format("Psfelite4 used to be here all the time, but I only ever saw him by himself. He was kind of a loner.")
+    format("Wikstrom used to be here all the time, but I only ever saw him by himself. He was kind of a loner.")
 }
 
 text gText_MaskOff_BookwormsTendToBe {
@@ -293,21 +293,21 @@ text gText_MaskOff_BookwormsTendToBe {
 //SECTION E
 
 text gText_MaskOff_WasBornAndRaised {
-    format("The Elite Four's Psfelite4 was born and raised here in Psfregion1.")
+    format("The Elite Four's Wikstrom was born and raised here in SanFran.")
 }
 
 text gText_MaskOff_IKnowHeUsedToLive {
-    format("I know he used to live in the Psfcity1, but ever since he disappeared, people haven't seen him.")
+    format("I know he used to live in the Sunset, but ever since he disappeared, people haven't seen him.")
 }
 
 text gText_MaskOff_ItUsedToBeSuper {
-    format("It used to be super common to see him zipping around in the skies. Psfelite4 is one of the few trainers that flies on his Pokémon to travel around!")
+    format("It used to be super common to see him zipping around in the skies. Wikstrom is one of the few trainers that flies on his Pokémon to travel around!")
 }
 
 //SECTION F
 
 text gText_MaskOff_IMissWorking {
-    format("I miss working with Psfelite4. Whenever he made great progress, he would treat the entire team to ramen in Psfcity14!")
+    format("I miss working with Wikstrom. Whenever he made great progress, he would treat the entire team to ramen in Japantown!")
 }
 
 text gText_MaskOff_HeWouldLeaveRight {
@@ -317,7 +317,7 @@ text gText_MaskOff_HeWouldLeaveRight {
 //SECTION G
 
 text gText_MaskOff_GaveATalkHereOnce {
-    format("Psfelite4 gave a talk here once, where he talked about the importance of training your Pokémon in their natural habitat. He says the connection to their home was where they grew the best. Never seen a book to back that up though...")
+    format("Wikstrom gave a talk here once, where he talked about the importance of training your Pokémon in their natural habitat. He says the connection to their home was where they grew the best. Never seen a book to back that up though...")
 }
 
 text gText_MaskOff_WhateverHeDidWorked {
@@ -331,11 +331,11 @@ text gText_MaskOff_WhenverHeLeft {
 //SECTION H
 
 text gText_MaskOff_IRememberMeeting {
-    format("I remember meeting Psfelite4 when he was 20. I interviewed him after his parents were killed by loan sharks. Tough break, but a tough kid too.")
+    format("I remember meeting Wikstrom when he was 20. I interviewed him after his parents were killed by loan sharks. Tough break, but a tough kid too.")
 }
 
 text gText_MaskOff_HeSaidEvenThen {
-    format("He said even then that he didn't want anybody else to end up like his parents, so he worked for a long time to help small businesses grow and be sustainable. He did good work in the Psfcity6.")
+    format("He said even then that he didn't want anybody else to end up like his parents, so he worked for a long time to help small businesses grow and be sustainable. He did good work in the Mission.")
 }
 
 text gText_MaskOff_IThinkThatAccident {
@@ -345,21 +345,21 @@ text gText_MaskOff_IThinkThatAccident {
 //SECTION I
 
 text gText_MaskOff_UsedToCome {
-    format("Psfelite3 and Psfelite4 used to come in together a lot.")
+    format("Siebold and Wikstrom used to come in together a lot.")
 }
 
 text gText_MaskOff_TheyWouldJust {
-    format("They would just talk about books the whole time.. I think Psfelite4 really loved history.")
+    format("They would just talk about books the whole time.. I think Wikstrom really loved history.")
 }
 
 text gText_MaskOff_IThinkSoHe {
-    format("Psfelite4 lived close by... in Psfcity1, I think, so he was here, with or without Psfelite3.")
+    format("Wikstrom lived close by... in Sunset, I think, so he was here, with or without Siebold.")
 }
 
 //SECTION K
 
 text gText_MaskOff_ADigitalPhoto {
-    format("A digital photo frame. The picture being displayed shows Psfelite4 and Psfelite3 together at the ramen restaurantin Psfcity14.")
+    format("A digital photo frame. The picture being displayed shows Wikstrom and Siebold together at the ramen restaurantin Japantown.")
 }
 
 text gText_MaskOff_FancyABattle {

@@ -426,9 +426,9 @@ gText_Earthquake_SoundsLikeWere::
 
 gText_Earthquake_ImGoingToMakeAnother::
 	.string "*sigh* I'm going to make another lap\n"
-	.string "around Psfcity17 and see who else I\l"
+	.string "around Alameda and see who else I\l"
 	.string "can help, and I've asked other\l"
-	.string "Psfgoodteam members to do the same.\l"
+	.string "TeamRocket members to do the same.\l"
 	.string "Could you two -$"
 
 gText_Earthquake_OfCourse::
@@ -437,7 +437,7 @@ gText_Earthquake_OfCourse::
 
 gText_Earthquake_OkayThingsSeemToBe::
 	.string "Okay… things seem to be stabilizing. I\n"
-	.string "should go meet Psfgoodadmin in the\l"
+	.string "should go meet Ariana in the\l"
 	.string "center of town.$"
 
 gText_Earthquake_WeveManagedToReestablish::
@@ -450,7 +450,7 @@ gText_Earthquake_WeveManagedToReestablish::
 	.string "supply caches were also hit hard.$"
 
 gText_Earthquake_IReally::
-	.string "I really don't know how Psfgoodteam is\n"
+	.string "I really don't know how TeamRocket is\n"
 	.string "going to hold up under this stress.$"
 
 gText_Earthquake_AMessageFromThe::
@@ -468,10 +468,10 @@ gText_Earthquake_ShitWeNever::
 	.string "Shit, we never got a chance to tell you.$"
 
 gText_Earthquake_IGotAMessage::
-	.string "Psfnativerival and I got a message from\n"
+	.string "Archer and I got a message from\n"
 	.string "that account a few days ago. I went to\l"
-	.string "a warehouse in Psfcity9, and\l"
-	.string "Psfbadadmin2 trapped me there and\l"
+	.string "a warehouse in Oakland, and\l"
+	.string "Koga trapped me there and\l"
 	.string "attacked me.$"
 
 gText_Earthquake_WaitWhat::
@@ -495,7 +495,7 @@ gText_Earthquake_ItsJustABunch::
 	.string "of nonsense. Maybe a glitch?$"
 
 gText_Earthquake_IDontThinkSo::
-	.string "…I don't think so. Psfbadadmin2 was\n"
+	.string "…I don't think so. Koga was\n"
 	.string "really trying to help me. Even when I\l"
 	.string "had dinner with him, their energy was\l"
 	.string "different from everybody else in\l"

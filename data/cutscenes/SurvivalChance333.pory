@@ -6,7 +6,7 @@ script SurvivalChance333_HideObject_Script {
     setflag(FLAG_TEMP_1)
 }
 
-script SurvivalChance333_HideObject_Psfcity17_Script {
+script SurvivalChance333_HideObject_Alameda_Script {
     setflag(FLAG_TEMP_2)
     setflag(FLAG_TEMP_3)
     setflag(FLAG_TEMP_4)
@@ -352,7 +352,7 @@ text gText_SurvivalChance333_HereWeGo {
 }
 
 text gText_SurvivalChance333_IKnowWereSupposed {
-	format("I know we're supposed to blast the walls to drive out the Psfgoodteam members, but {PLAYER} and I don't have the Self-Destruct TM.")
+	format("I know we're supposed to blast the walls to drive out the TeamRocket members, but {PLAYER} and I don't have the Self-Destruct TM.")
 }
 
 text gText_SurvivalChance333_OhHellThatsRight {
@@ -360,7 +360,7 @@ text gText_SurvivalChance333_OhHellThatsRight {
 }
 
 text gText_SurvivalChance333_IAlwaysForget {
-	format("I always forget - we took those out of circulation in Psfregion1 a few years ago. Criminals were using them for too many smash and grabs, so now they're for police use only. Any other questions?")
+	format("I always forget - we took those out of circulation in SanFran a few years ago. Criminals were using them for too many smash and grabs, so now they're for police use only. Any other questions?")
 
 }
 text gText_SurvivalChance333_NoSir {

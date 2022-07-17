@@ -163,11 +163,11 @@ text gText_LetsFinishThis_ThatPartDoesnt {
 }
 
 text gText_LetsFinishThis_ButInnocentPeople {
-    format("But innocent people? Attacking an entire island just to wipe out Psfgoodteam? This is insane!")
+    format("But innocent people? Attacking an entire island just to wipe out TeamRocket? This is insane!")
 }        
 
 text gText_LetsFinishThis_PerfevtlySane {
-    format("Perfectly sane. It worked on Psfcave1 didn’t it? There’s no peaceful path forward. Do you all get it now? They’re poised to kill!")
+    format("Perfectly sane. It worked on RobinWillTunnel didn’t it? There’s no peaceful path forward. Do you all get it now? They’re poised to kill!")
 }        
 
 text gText_LetsFinishThis_ButTheyWerentAlways {
@@ -206,7 +206,7 @@ text gText_LetsFinishThis_TheyCameForTheKings {
 }
 
 text gText_LetsFinishThis_SoBreakInto {
-    format("So, break into Psfbadguy1tower, force a confession from Psfbadboss, broadcast it using their equipment and public sentiment will come crashing down. Right?")
+    format("So, break into YCombinatortower, force a confession from Rose, broadcast it using their equipment and public sentiment will come crashing down. Right?")
 }
 
 text gText_LetsFinishThis_APublicConfession {
@@ -218,7 +218,7 @@ text gText_LetsFinishThis_IWasBeingSarcastic {
 }
 
 text gText_LetsFinishThis_TheHardestPartOfThatPlan {
-    format("The hardest part of that plan is actually just getting to Psfbadboss. The rest of that is fairly plausible, given we survive.")
+    format("The hardest part of that plan is actually just getting to Rose. The rest of that is fairly plausible, given we survive.")
 }        
 
 text gText_LetsFinishThis_TwoOldCoots {
@@ -230,15 +230,15 @@ text gText_LetsFinishThis_TheWarpPanels {
 }          
 
 text gText_LetsFinishThis_NobodyHasSeen {
-    format("Nobody has seen Psfbadadmin2 since their stunt in the warehouse. Cops have been crawling all over that neighborhood and house looking for him.")
+    format("Nobody has seen Koga since their stunt in the warehouse. Cops have been crawling all over that neighborhood and house looking for him.")
 }
 
 text gText_LetsFinishThis_WhatAbout {
-    format("What about Psfbadadmin3? That workaholic absolutely has a panel in their place too. And no police looking for them.")
+    format("What about Sabrina? That workaholic absolutely has a panel in their place too. And no police looking for them.")
 }
 
 text gText_LetsFinishThis_WereOntoSomething {
-    format("We’re onto something. You should go prepare! Once we start, I don’t think there’s any turning back. Meet us outside Psfbadadmin2’s house in Psfcity1.")
+    format("We’re onto something. You should go prepare! Once we start, I don’t think there’s any turning back. Meet us outside Koga’s house in Sunset.")
 }        
 
 movement LetsFinishThis_WalkToPlayer {

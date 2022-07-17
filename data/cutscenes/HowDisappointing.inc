@@ -5,7 +5,7 @@ HowDisappointing_HideObject_Script::
 	return
 
 
-HowDisappointing_HidePsfgoodteam_Script::
+HowDisappointing_HideTeamRocket_Script::
 	setflag FLAG_TEMP_5
 	return
 
@@ -103,11 +103,11 @@ HowDisappointing_RaidMovement_Script::
 	end
 
 
-HowDisappointing_Interfact_Psfgoodadmin_Script::
+HowDisappointing_Interfact_Ariana_Script::
 	lock
 	compare VAR_PETALBURG_WOODS_STATE, 3
-	goto_if_eq HowDisappointing_Interfact_Psfgoodadmin_Script_2
-HowDisappointing_Interfact_Psfgoodadmin_Script_1:
+	goto_if_eq HowDisappointing_Interfact_Ariana_Script_2
+HowDisappointing_Interfact_Ariana_Script_1:
 	addvar VAR_PETALBURG_WOODS_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
@@ -132,9 +132,9 @@ HowDisappointing_Interfact_Psfgoodadmin_Script_1:
 	goto HowDisappointing_StartBattle_Script
 	return
 
-HowDisappointing_Interfact_Psfgoodadmin_Script_2:
+HowDisappointing_Interfact_Ariana_Script_2:
 	goto HowDisappointing_StartBattle_Script
-	goto HowDisappointing_Interfact_Psfgoodadmin_Script_1
+	goto HowDisappointing_Interfact_Ariana_Script_1
 
 
 HowDisappointing_StartBattle_Script::
@@ -367,12 +367,12 @@ gText_HowDisappointing_YouAllDidYour::
 	.string "You all did your best…$"
 
 gText_HowDisappointing_YoureUnderArrest::
-	.string "Psfgoodteam, you’re under arrest!$"
+	.string "TeamRocket, you’re under arrest!$"
 
 gText_HowDisappointing_ExcellentWorkEverybody::
-	.string "Excellent work everybody! Psfleader9,\n"
-	.string "Psfleader10, and Psfgoodadmin have all\l"
-	.string "been arrested, and all of the Gyms were\l"
+	.string "Excellent work everybody! Lenora,\n"
+	.string "Cilan, and Ariana have all been\l"
+	.string "arrested, and all of the Gyms were\l"
 	.string "successfully shut down. The region will\l"
 	.string "see how quickly we’re responding to\l"
 	.string "these threats, and hopefully, this will\l"

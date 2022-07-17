@@ -57,11 +57,11 @@ HowDoWeGetHome_StartFight_Dialogue::
 	msgbox gText_HowDoWeGetHome_OrJustLeave
 	msgbox gText_HowDoWeGetHome_LosersYouWannaSay
 	msgbox gText_HowDoWeGetHome_YouThinkYouScareMe
-	goto HowDoWeGetHome_PsfgoodadminGetsInvolved_Dialogue
+	goto HowDoWeGetHome_ArianaGetsInvolved_Dialogue
 	return
 
 
-HowDoWeGetHome_PsfgoodadminGetsInvolved_Dialogue::
+HowDoWeGetHome_ArianaGetsInvolved_Dialogue::
 	clearflag FLAG_TEMP_1
 	addobject 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
@@ -69,7 +69,7 @@ HowDoWeGetHome_PsfgoodadminGetsInvolved_Dialogue::
 	msgbox gText_HowDoWeGetHome_YoChillOut
 	callnative ClearMugshot
 	closemessage
-	call HowDoWeGetHome_PsfgoodadminEntrance
+	call HowDoWeGetHome_ArianaEntrance
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDoWeGetHome_WereDoneWithThisBeef
@@ -79,11 +79,11 @@ HowDoWeGetHome_PsfgoodadminGetsInvolved_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_HowDoWeGetHome_TheWayYouThinkItIs
 	callnative ClearMugshot
-	goto HowDoWeGetHome_CrowdRecgonizesPsfgoodadmin_Dialogue
+	goto HowDoWeGetHome_CrowdRecgonizesAriana_Dialogue
 	return
 
 
-HowDoWeGetHome_CrowdRecgonizesPsfgoodadmin_Dialogue::
+HowDoWeGetHome_CrowdRecgonizesAriana_Dialogue::
 	applymovement 14, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceUp
 	applymovement 11, Common_Movement_FaceLeft
@@ -129,7 +129,7 @@ HowDoWeGetHome_MadisonHowDoWeGetHome_Dialogue::
 	end
 
 
-HowDoWeGetHome_PsfgoodadminEntrance::
+HowDoWeGetHome_ArianaEntrance::
 	lock
 	playse SE_PIN
 	applymovement 14, HowDoWeGetHome_ExclaimRight
@@ -232,7 +232,7 @@ gText_HowDoWeGetHome_LookWeDontWant::
 
 gText_HowDoWeGetHome_OrJustLeave::
 	.string "Or, just leave! You shouldn't be here. Go\n"
-	.string "to the Psfcity12, where you losers\l"
+	.string "to the Tenderloin, where you losers\l"
 	.string "belong.$"
 
 gText_HowDoWeGetHome_LosersYouWannaSay::
@@ -263,8 +263,8 @@ gText_HowDoWeGetHome_TheWayYouThinkItIs::
 	.string "think it is.$"
 
 gText_HowDoWeGetHome_IThinkThats::
-	.string "I think that's Psfgoodadmin, right? The\n"
-	.string "Psfgoodteam Admin?$"
+	.string "I think that's Ariana, right? The\n"
+	.string "TeamRocket Admin?$"
 
 gText_HowDoWeGetHome_BetterBackDown::
 	.string "Yeah, Madison better back down.$"

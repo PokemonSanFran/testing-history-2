@@ -5,7 +5,7 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachPsfelite3
+	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachSiebold
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -64,14 +64,14 @@ gText_HaveYouSeenTheNews_WedLikeYourHelp::
 	.string "We'd like your help again.$"
 
 gText_HaveYouSeenTheNews_ShitWhatDid::
-	.string "Shit, what did Psfgoodteam do now?$"
+	.string "Shit, what did TeamRocket do now?$"
 
 gText_HaveYouSeenTheNews_YoureStartingToSound::
 	.string "You're starting to sound like a native…\n"
 	.string "they've completely infiltrated our\l"
 	.string "social media platforms. The mayor was\l"
 	.string "impressed with your work at\l"
-	.string "Psfplace14, and thinks you two might\l"
+	.string "ChaseCenter, and thinks you two might\l"
 	.string "be able to help.$"
 
 gText_HaveYouSeenTheNews_HowAreWeGoing::
@@ -80,8 +80,8 @@ gText_HaveYouSeenTheNews_HowAreWeGoing::
 
 gText_HaveYouSeenTheNews_NoTimeToExplain::
 	.string "No time to explain! We're heading to\n"
-	.string "Psfbadguy1tower right now. Do you\l"
-	.string "want to ride in our Psfcompany5,\l"
+	.string "YCombinatortower right now. Do you\l"
+	.string "want to ride in our Uber,\l"
 	.string "{PLAYER}?$"
 
 gText_HaveYouSeenTheNews_FineButDontDawdle::
@@ -94,4 +94,4 @@ gText_HaveYouSeenTheNews_SoundsLikeYouve::
 	.string "yeah? You've got real potential.$"
 
 gText_HaveYouSeenTheNews_CoolTheCar::
-	.string "Cool, the car is waiting in Psfcity10.$"
+	.string "Cool, the car is waiting in Marin.$"

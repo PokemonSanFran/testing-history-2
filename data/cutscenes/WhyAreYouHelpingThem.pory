@@ -29,7 +29,7 @@ script WhyAreYouHelpingThem_MoveObjectBoss_Script {
         setobjectxyperm(PSFGOODBOSS,7,3)
 }
 
-script WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script {
+script WhyAreYouHelpingThem_MoveObjectAriana_Script {
     setflag(FLAG_TEMP_2)
         setobjectxy(PSFGOODADMIN,1,9)
         setobjectxyperm(PSFGOODADMIN,1,9)
@@ -146,7 +146,7 @@ script WhyAreYouHelpingThem_WitnessBattle {
 script WhyAreYouHelpingThem_PreBattleBoss_Script {
     lock
         applymovement(PSFGOODBOSS,Common_Movement_FaceLeft)
-        applymovement(PLAYER,WhyAreYouHelpingThem_ApproachPsfgoodboss)
+        applymovement(PLAYER,WhyAreYouHelpingThem_ApproachGiovanni)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
@@ -170,7 +170,7 @@ script WhyAreYouHelpingThem_PreBattleBoss_Script {
 script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         addvar(VAR_ROUTE118_STATE,1)
         addobject(PSFGOODADMIN)
-        call(WhyAreYouHelpingThem_MoveObjectPsfgoodadmin_Script)
+        call(WhyAreYouHelpingThem_MoveObjectAriana_Script)
 
         if (defeated(TRAINER_ARCHIE)){
 
@@ -437,7 +437,7 @@ script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
 }
 
 script WhyAreYouHelpingThem_StartChampionship_Dialogue {
-        addvar(VAR_NATIVERIVALBETA_STATE,1) //advance Psfcity17 forward to clean up raid damage
+        addvar(VAR_NATIVERIVALBETA_STATE,1) //advance Alameda forward to clean up raid damage
     msgbox(gText_WhyAreYouHelpingThem_AreYouReadyToBegin,MSGBOX_YESNO)
 
         if (var(VAR_RESULT) == NO){
@@ -474,7 +474,7 @@ text gText_WhyAreYouHelpingThem_SeeYa {
 }
 
 text gText_WhyAreYouHelpingThem_GoAfterIllHold {
-    format("Go after Psfgoodboss! I'll hold this one off.")
+    format("Go after Giovanni! I'll hold this one off.")
 }
 
 text gText_WhyAreYouHelpingThem_ItsAShameThatThe {
@@ -514,7 +514,7 @@ text gText_WhyAreYouHelpingThem_DamnYouToo {
 }
 
 text gText_WhyAreYouHelpingThem_WhatWasAllThatShit {
-    format("What was all that shit you tried to tell me before?! What the hell is Psfgoodteam doing?")
+    format("What was all that shit you tried to tell me before?! What the hell is TeamRocket doing?")
 }
 
 text gText_WhyAreYouHelpingThem_WeveGotToHelp {
@@ -542,7 +542,7 @@ text gText_WhyAreYouHelpingThem_Sigh {
 }
 
 text gText_WhyAreYouHelpingThem_YoureWorkingWith {
-    format("You're working with Psfgoodteam too?!?")
+    format("You're working with TeamRocket too?!?")
 }
 
 text gText_WhyAreYouHelpingThem_AlwaysHaveBeen {
@@ -554,11 +554,11 @@ text gText_WhyAreYouHelpingThem_AnotherVictory {
 }
 
 text gText_WhyAreYouHelpingThem_TellsMeYoureAll {
-    format("Psfgoodadmin tells me you're all good guys… now all this shit? And you? None of this makes any sense!")
+    format("Ariana tells me you're all good guys… now all this shit? And you? None of this makes any sense!")
 }
 
 text gText_WhyAreYouHelpingThem_WhyWouldIt {
-    format("Why would it? You don't see what your bosses are doing to Psfregion1. You don't see what you're doing to Psfregion1.")
+    format("Why would it? You don't see what your bosses are doing to SanFran. You don't see what you're doing to SanFran.")
 }
 
 text gText_WhyAreYouHelpingThem_Player {
@@ -566,7 +566,7 @@ text gText_WhyAreYouHelpingThem_Player {
 }
 
 text gText_WhyAreYouHelpingThem_IGotKnockedOut {
-    format("I got knocked out. Did you stop Psfgoodboss?")
+    format("I got knocked out. Did you stop Giovanni?")
 }
 
 text gText_WhyAreYouHelpingThem_NoILostToo {
@@ -574,11 +574,11 @@ text gText_WhyAreYouHelpingThem_NoILostToo {
 }
 
 text gText_WhyAreYouHelpingThem_GreatWorkInThere {
-    format("Great work in there, team. Andre, what's the sitrep regarding Psfgoodteam leadership?")
+    format("Great work in there, team. Andre, what's the sitrep regarding TeamRocket leadership?")
 }
 
 text gText_WhyAreYouHelpingThem_WeSpottedAndTheir {
-    format("We spotted Psfgoodboss and their lieutenant escaping on Pokemon by using the move Fly. We were unable to track them given our resources.")
+    format("We spotted Giovanni and their lieutenant escaping on Pokemon by using the move Fly. We were unable to track them given our resources.")
 }
 
 text gText_WhyAreYouHelpingThem_AShameStillWeveShutDown {
@@ -586,7 +586,7 @@ text gText_WhyAreYouHelpingThem_AShameStillWeveShutDown {
 }
 
 text gText_WhyAreYouHelpingThem_NotBadInThere {
-    format("Not bad in there. Psfbadadmin wants you kids back at Psfcity8 Compound.")
+    format("Not bad in there. Psfbadadmin wants you kids back at SouthBay Compound.")
 }
 
 text gText_WhyAreYouHelpingThem_WhatADay {
@@ -598,7 +598,7 @@ text gText_WhyAreYouHelpingThem_ItWasADay {
 }
 
 text gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere {
-    format("Good news - while you were training in Psfcave2, construction on Psfplace14 finished up. The Group Stage will start in 3 days. Hopefully, that's enough time to rest up and get ready.")
+    format("Good news - while you were training in MuirWoods, construction on ChaseCenter finished up. The Group Stage will start in 3 days. Hopefully, that's enough time to rest up and get ready.")
 }
 
 text gText_WhyAreYouHelpingThem_OhThatWasFast {
@@ -631,7 +631,7 @@ movement WhyAreYouHelpingThem_FleeTheBattle {
         step_end
 }
 
-movement WhyAreYouHelpingThem_ApproachPsfgoodboss {
+movement WhyAreYouHelpingThem_ApproachGiovanni {
     walk_up * 2
         walk_right * 4
         step_end

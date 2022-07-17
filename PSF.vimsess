@@ -96,7 +96,7 @@ exe 'vert 4resize ' . ((&columns * 97 + 94) / 188)
 argglobal
 terminal ++curwin ++cols=90 ++rows=58 
 let s:term_buf_3 = bufnr()
-balt data/maps/Psfcave7_B2F/scripts.pory
+balt data/maps/Alcatraz_B2F/scripts.pory
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -1246,10 +1246,10 @@ exe '4resize ' . ((&lines * 37 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 93 + 94) / 188)
 tabnext 1
 set stal=1
-badd +1 data/maps/Psfbadguy1Tower_11F/scripts.pory
+badd +1 data/maps/YCombinatorTower_11F/scripts.pory
 badd +1 include/constants/flags.h
-badd +38 data/maps/Psfcave7_B2F/scripts.pory
-badd +0 data/maps/Psfbadguy1Tower_2F/scripts.pory
+badd +38 data/maps/Alcatraz_B2F/scripts.pory
+badd +0 data/maps/YCombinatorTower_2F/scripts.pory
 badd +64 data/scripts/debug.inc
 badd +0 data/cutscenes/YouCantStopMe.pory
 badd +1 data/maps/WeCanStopYouActually_Cutscene/scripts.pory
@@ -1258,45 +1258,45 @@ badd +0 data/cutscenes/WeCanStopYouActually.pory
 badd +1 docs/flags
 badd +1 include/constants/vars.h
 badd +1 docs/vars
-badd +17 data/maps/Psfcave10/scripts.pory
+badd +17 data/maps/UndergroundLab/scripts.pory
 badd +293 data/cutscenes/ImIn.pory
 badd +1 data/cutscenes/WaitEvenThen.pory
 badd +162 asm/macros/battle_frontier/battle_tower.inc
 badd +19 data/cutscenes/ThisIsntRandom.pory
 badd +118 data/cutscenes/SpeechSpeechSpeech.pory
-badd +7 data/maps/Psfcity9/scripts.pory
+badd +7 data/maps/Oakland/scripts.pory
 badd +368 data/cutscenes/WarehouseRave.pory
-badd +15 data/maps/Psfcity9_Warehouse/scripts.pory
-badd +12 data/maps/Psfcity17_Psfnativerival_House/scripts.pory
+badd +15 data/maps/Oakland_Warehouse/scripts.pory
+badd +12 data/maps/Alameda_Archer_House/scripts.pory
 badd +62 data/cutscenes/LockedOut.pory
-badd +43 data/maps/Psfcity8_Compound_2F/scripts.pory
+badd +43 data/maps/SouthBay_Compound_2F/scripts.pory
 badd +44 data/cutscenes/LetsFixThis.pory
-badd +16 data/maps/Psfcity3_Compound_1F/scripts.pory
+badd +16 data/maps/Presidio_Compound_1F/scripts.pory
 badd +218 data/cutscenes/MaskOff.pory
-badd +24 data/maps/Psfcity6_Consulting/scripts.pory
-badd +3 data/maps/Psfcity14_Ramen/scripts.pory
+badd +24 data/maps/Mission_Consulting/scripts.pory
+badd +3 data/maps/Japantown_Ramen/scripts.pory
 badd +12 data/cutscenes/LetsGettheBandBackTogether.pory
 badd +12 data/maps/OkayLetsFixit_Flashback/scripts.pory
 badd +60 data/cutscenes/OkayLetsFixit.pory
-badd +19 data/maps/Psfplace1/scripts.pory
+badd +19 data/maps/TwinPeaks/scripts.pory
 badd +35 data/cutscenes/YouRealizeTheyreEvilRight.pory
 badd +3 data/maps/MossdeepCity_GameCorner_1F/scripts.inc
-badd +22 data/maps/Psfplace14_Lockers/scripts.pory
+badd +22 data/maps/ChaseCenter_Lockers/scripts.pory
 badd +3383 src/field_specials.c
 badd +72 include/overworld.h
 badd +1213 data/event_scripts.s
 badd +1 asm/macros/event.inc
 badd +973 src/item.c
 badd +111 ~/.zshrc
-badd +11 data/maps/Psfcity10_EliteHome/scripts.pory
-badd +18 data/maps/Psfcity15_Newspaper/scripts.pory
+badd +11 data/maps/Marin_EliteHome/scripts.pory
+badd +18 data/maps/SOMA_Newspaper/scripts.pory
 badd +34 data/cutscenes/LetsGettheBandBackTogether.inc
 badd +277 data/cutscenes/Manhunt.pory
 badd +1 data/cutscenes/WhyAreYouHelpingThem.pory
-badd +11 data/maps/Psfcave3/scripts.pory
+badd +11 data/maps/LakeMerritt/scripts.pory
 badd +6 include/constants/weather.h
-badd +15 data/maps/Psfcity3/scripts.pory
-badd +18 data/maps/Psfplace14_Arena/scripts.pory
+badd +15 data/maps/Presidio/scripts.pory
+badd +18 data/maps/ChaseCenter_Arena/scripts.pory
 badd +8 include/constants/songs.h
 badd +93 data/cutscenes/BeachBattle.pory
 badd +9 data/maps/Psfroute22/scripts.pory
@@ -1309,7 +1309,7 @@ badd +62 data/cutscenes/HowDisappointing.pory
 badd +121 data/cutscenes/SurvivalChance333.pory
 badd +223 data/maps/SootopolisCity/scripts.inc
 badd +1 data/cutscenes/OneDown.pory
-badd +46 data/maps/Psfcity17/scripts.pory
+badd +46 data/maps/Alameda/scripts.pory
 badd +346 data/cutscenes/Earthquake.pory
 badd +6 data/cutscenes/AssholesHome.pory
 badd +5 data/maps/OldaleTown_House1/scripts.inc

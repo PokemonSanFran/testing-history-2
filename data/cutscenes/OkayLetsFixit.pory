@@ -200,7 +200,7 @@ text gText_OkayLetsFixIt_WhatTheHell {
 }
 
 text gText_OkayLetsFixIt_IHaveNoIdea {
-    format("…I have no idea what I'm going to do. Do I help Psfbadguy and the police end Psfgoodteam permanently? Or do I help Psfgoodteam clear their name and help the people of Psfregion1?")
+    format("…I have no idea what I'm going to do. Do I help Psfbadguy and the police end TeamRocket permanently? Or do I help TeamRocket clear their name and help the people of SanFran?")
 }
 
 movement OkayLetsFixit_WalkToPeak {

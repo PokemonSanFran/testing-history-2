@@ -1,0 +1,31 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+// VAR_FERRY_STATE is used to track what locations are available via ferry
+// 0: Default, Alameda available
+// 1:
+// 2:
+// 3:
+mapscripts OaklandFerry_MapScripts {
+}
+
+script OaklandFerry_ChooseFerryDestination_Script {
+    msgbox(gText_WhereWould,MSGBOX_NPC)
+        goto(OaklandFerry_UnlockedDestinations_Script)
+}
+
+script OaklandFerry_UnlockedDestinations_Script {
+    switch (var(VAR_FERRY_STATE)){
+        case 0: multichoicedefault(18,8,PSFCITY17_FERRY_DESTINATIONS_VER1,2,FALSE)
+    }
+
+    goto(OaklandFerry_SetDestination_Script)
+}
+
+script OaklandFerry_SetDestination_Script {
+    call(Common_EventScript_FerryDepartIsland)
+        switch (var(VAR_RESULT)){
+            case 0: warp(MAP_PSFPLACE11,8,11)
+            case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+            case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        }
+}

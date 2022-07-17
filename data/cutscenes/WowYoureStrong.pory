@@ -72,11 +72,11 @@ text gText_WowYoureStrong_WhatAShow {
 }
 
 text gText_WowYoureStrong_OhUhThanksALot {
-    format("Oh uh, thanks a lot, that's very nice. I'm guessing you work at Psfbadguy1…?")
+    format("Oh uh, thanks a lot, that's very nice. I'm guessing you work at YCombinator…?")
 }
 
 text gText_WowYoureStrong_WhereMyManners {
-    format("Hah! Oh my, I'm sorry. Where are my manners? My name is Psfbadboss, and I'm the Psfbadguy1 League Commissioner.")
+    format("Hah! Oh my, I'm sorry. Where are my manners? My name is Rose, and I'm the YCombinator League Commissioner.")
 }
 
 text gText_WowYoureStrong_ShouldHaveKnown {
@@ -84,7 +84,7 @@ text gText_WowYoureStrong_ShouldHaveKnown {
 }
 
 text gText_WowYoureStrong_DreamBig {
-    format("Dream big {PLAYER}! That's the attitude we wanna see. We're big dreamers over at Psfbadguy1 too. That's why we built the Psfcompany3 Tower!")
+    format("Dream big {PLAYER}! That's the attitude we wanna see. We're big dreamers over at YCombinator too. That's why we built the Salesforce Tower!")
 }
 
 text gText_WowYoureStrong_YouShouldComeBy {
@@ -92,5 +92,5 @@ text gText_WowYoureStrong_YouShouldComeBy {
 }
 
 text gText_WowYoureStrong_MeetingWithMayor {
-    format("I have to run to a meeting with the Mayor. Again, excellent job against Psfleader3. I hope to see what else you can do!")
+    format("I have to run to a meeting with the Mayor. Again, excellent job against Whitney. I hope to see what else you can do!")
 }

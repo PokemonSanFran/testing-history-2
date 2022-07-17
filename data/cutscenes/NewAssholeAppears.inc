@@ -18,7 +18,7 @@ NewAssholeAppears_WalkToPlayer_Script_1:
 	case 6, NewAssholeAppears_WalkToPlayer_Script_11
 NewAssholeAppears_WalkToPlayer_Script_8:
 	waitmovement 0
-	goto PsfnativerivalAlpha_Event_Script
+	goto ArcherAlpha_Event_Script
 	return
 
 NewAssholeAppears_WalkToPlayer_Script_3:
@@ -50,17 +50,17 @@ NewAssholeAppears_WalkToPlayer_Script_11:
 	goto NewAssholeAppears_WalkToPlayer_Script_8
 
 
-PsfnativerivalAlpha_Event_Script::
+ArcherAlpha_Event_Script::
 	switch VAR_PSFROUTE9_STATE
-	case 0, PsfnativerivalAlpha_Event_Script_2
-	case 1, PsfnativerivalAlpha_Event_Script_3
+	case 0, ArcherAlpha_Event_Script_2
+	case 1, ArcherAlpha_Event_Script_3
 	return
 
-PsfnativerivalAlpha_Event_Script_2:
+ArcherAlpha_Event_Script_2:
 	goto NewAssholeAppears_Intro_Dialogue
 	return
 
-PsfnativerivalAlpha_Event_Script_3:
+ArcherAlpha_Event_Script_3:
 	goto NewAssholeAppears_StartBattle_Script
 	return
 
@@ -138,16 +138,16 @@ NewAssholeAppears_PostBattle_Script::
 	msgbox gText_NewAssholeAppears_IHopeNot, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
-	goto NewAssholeAppears_PsfnativerivalExit_Script
+	goto NewAssholeAppears_ArcherExit_Script
 	return
 
 
-NewAssholeAppears_PsfnativerivalExit_Script::
+NewAssholeAppears_ArcherExit_Script::
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	switch VAR_TEMP_1
-	case 2, NewAssholeAppears_PsfnativerivalExit_Script_3
-	case 6, NewAssholeAppears_PsfnativerivalExit_Script_4
-NewAssholeAppears_PsfnativerivalExit_Script_1:
+	case 2, NewAssholeAppears_ArcherExit_Script_3
+	case 6, NewAssholeAppears_ArcherExit_Script_4
+NewAssholeAppears_ArcherExit_Script_1:
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 1
@@ -156,13 +156,13 @@ NewAssholeAppears_PsfnativerivalExit_Script_1:
 	releaseall
 	end
 
-NewAssholeAppears_PsfnativerivalExit_Script_3:
-	applymovement 1, NewAssholeAppears_PsfnativerivalWalkAwaySouth_Movement
-	goto NewAssholeAppears_PsfnativerivalExit_Script_1
+NewAssholeAppears_ArcherExit_Script_3:
+	applymovement 1, NewAssholeAppears_ArcherWalkAwaySouth_Movement
+	goto NewAssholeAppears_ArcherExit_Script_1
 
-NewAssholeAppears_PsfnativerivalExit_Script_4:
-	applymovement 1, NewAssholeAppears_PsfnativerivalWalkAwayNorth_Movement
-	goto NewAssholeAppears_PsfnativerivalExit_Script_1
+NewAssholeAppears_ArcherExit_Script_4:
+	applymovement 1, NewAssholeAppears_ArcherWalkAwayNorth_Movement
+	goto NewAssholeAppears_ArcherExit_Script_1
 
 
 NewAssholeAppears_X0_WalkToPlayer_Movement:
@@ -198,7 +198,7 @@ NewAssholeAppears_Y6_WalkToPlayer_Movement:
 	walk_down
 	step_end
 
-NewAssholeAppears_PsfnativerivalWalkAwayNorth_Movement:
+NewAssholeAppears_ArcherWalkAwayNorth_Movement:
 	walk_up
 	walk_up
 	walk_up
@@ -209,7 +209,7 @@ NewAssholeAppears_PsfnativerivalWalkAwayNorth_Movement:
 	walk_up
 	step_end
 
-NewAssholeAppears_PsfnativerivalWalkAwaySouth_Movement:
+NewAssholeAppears_ArcherWalkAwaySouth_Movement:
 	walk_down
 	walk_down
 	walk_down
@@ -222,7 +222,7 @@ NewAssholeAppears_PsfnativerivalWalkAwaySouth_Movement:
 
 gText_NewAssholeAppears_YouLookFamiliar::
 	.string "You look familiar. You flew here to do\n"
-	.string "the Psfbadguy1 League Challenge,\l"
+	.string "the YCombinator League Challenge,\l"
 	.string "right?$"
 
 gText_NewAssholeAppears_JustStarted::
@@ -258,7 +258,7 @@ gText_NewAssholeAppears_Whateveryournameis::
 	.string "whateveryournameis?$"
 
 gText_NewAssholeAppears_GentrificationOfMyHome::
-	.string "Psfnativerival, and only if you're done\n"
+	.string "Archer, and only if you're done\n"
 	.string "contributing to the gentrification of\l"
 	.string "my home... but I doubt it. You're stupid,\l"
 	.string "just like the rest of them.$"

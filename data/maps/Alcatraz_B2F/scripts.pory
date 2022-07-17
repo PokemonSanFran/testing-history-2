@@ -1,0 +1,104 @@
+mapscripts Alcatraz_B2F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Alcatraz_B2F_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_PSFCAVE7_STATE,4: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 
+        VAR_PSFCAVE7_STATE,8: SpeechSpeechSpeech_PositionPlayer_Script 
+        VAR_STORYLINE_STATE, 105: OneDown_SetUpObject_Script
+    ]
+}
+
+script Alcatraz_B2F_MapScripts_OnTransition {
+
+    call(YouRealizeTheyreEvilRight_HideGarbodor_Script)
+
+        switch(var(VAR_PSFCAVE7_STATE)){
+            case 0: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 1: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 2: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 3: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 5: call(LetsGettheBandBackTogether_HideObject_Script)
+            case 6: call(LetsGettheBandBackTogether_HideObject_Script)
+            case 7: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case 8: call(SpeechSpeechSpeech_MoveObject_Script)
+            case 9: call(SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script)
+        }
+}
+
+script Alcatraz_B2F_Archer_Event_Script {
+    lock
+        switch (var(VAR_STORYLINE_STATE)){
+            case 43: call(LetsGettheBandBackTogether_MeetInBasement_Script)
+        }
+    release
+        end
+}
+
+script Alcatraz_B2F_Malva_Event_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    callnative(DrawMugshot)
+    
+    switch (var(VAR_STORYLINE_STATE)){
+        case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case 104: msgbox(format("you've started and finished a takedown quest."),MSGBOX_NPC)
+                  addvar(VAR_STORYLINE_STATE,1)
+    }
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
+}
+
+
+script Alcatraz_B2F_Drasna_Event_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+    callnative(DrawMugshot)
+    
+    switch (var(VAR_STORYLINE_STATE)){
+        case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case 104: msgbox("I don't have a takedown quest for you.",MSGBOX_NPC)
+    }
+
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
+}
+
+
+script Alcatraz_B2F_Siebold_Event_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+    callnative(DrawMugshot)
+    
+    switch (var(VAR_STORYLINE_STATE)){
+        case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case 104: msgbox("you've started and finished a takedown quest.",MSGBOX_NPC)
+                  addvar(VAR_STORYLINE_STATE,1)
+    }
+
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
+}
+
+script Alcatraz_B2F_Wikstrom_Event_Script {
+    lock
+    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    callnative(DrawMugshot)
+    
+    switch (var(VAR_STORYLINE_STATE)){
+        case 103: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case 104: msgbox("you've started and finished a takedown quest.",MSGBOX_NPC)
+                  addvar(VAR_STORYLINE_STATE,1)
+    }
+
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
+}

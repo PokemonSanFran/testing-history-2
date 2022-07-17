@@ -9,7 +9,7 @@ script WarehouseRave_SetUpRave_Script {
 }
 
 script WarehouseRave_HideObject_Script {
-    setflag(FLAG_TEMP_1) //always hide Psfbadadmin2 unless coming back from Save
+    setflag(FLAG_TEMP_1) //always hide Koga unless coming back from Save
 }
 
 script WarehouseRave_MoveObject_Script {
@@ -233,7 +233,7 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         end
 }
 
-// Psfnativerival walks off screen. The player regains control.
+// Archer walks off screen. The player regains control.
 text gText_WarehouseRave_IsThisPlace {
     format("…is this place empty?")
 }
@@ -271,11 +271,11 @@ text gText_WarehouseRave_YesTheyllBelieve {
 }
 
 text gText_WarehouseRave_IFailedToKill {
-    format("I failed to kill you, but you're about to become internal enemy number one. If I were you, I wouldn't go back to the Psfcity3 Compound.")
+    format("I failed to kill you, but you're about to become internal enemy number one. If I were you, I wouldn't go back to the Presidio Compound.")
 }
 
 text gText_WarehouseRave_JustLike {
-    format("(Just like Psfnativerival said.)")
+    format("(Just like Archer said.)")
 }
 
 text gText_WarehouseRave_YouNeedToGet {
@@ -295,7 +295,7 @@ text gText_WarehouseRave_WhenIGotHere {
 }
 
 text gText_WarehouseRave_ItWasATrap {
-    format("It was a trap. Psfbadadmin2 tried to kill me! But… ")
+    format("It was a trap. Koga tried to kill me! But… ")
 }
 
 text gText_WarehouseRave_HolyShitThatWas {
@@ -319,7 +319,7 @@ text gText_WarehouseRave_WhatDoYouMean {
 }
 
 text gText_WarehouseRave_CameToTown {
-    format("He's like Psfleader7 - once Psfbadguy came to town, he jumped ship. He was playing both sides for a while, both working on Psfbadguy's board and running the Gym in Psfcity13.")
+    format("He's like Pryce - once Psfbadguy came to town, he jumped ship. He was playing both sides for a while, both working on Psfbadguy's board and running the Gym in Chinatown.")
 }
 
 text gText_WarehouseRave_MaybeItIsGuilt {
@@ -335,7 +335,7 @@ text gText_WarehouseRave_ImHeadingIntoTheCity {
 }
 
 text gText_WarehouseRave_GladYouDidnt {
-    format("Glad you didn't need me though! Damn, fighting the top brass now, you're still getting stronger. I'll see you at Psfcave7.")
+    format("Glad you didn't need me though! Damn, fighting the top brass now, you're still getting stronger. I'll see you at Alcatraz.")
 }
 
 text gText_WarehouseRave_IllSeeYou {

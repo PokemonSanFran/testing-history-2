@@ -161,9 +161,9 @@ gText_LetsGetTheBandBackTogether_WaitTheEliteFour::
 
 gText_LetsGetTheBandBackTogether_OkayKindaThatsActually::
 	.string "Okay, kinda. That’s actually the next\n"
-	.string "step. Psfelite1 and Psfelite2\l"
-	.string "convinced Psfelite3 to work with us\l"
-	.string "too, but we’ve gotta find Psfelite4 if\l"
+	.string "step. Malva and Drasna\l"
+	.string "convinced Siebold to work with us\l"
+	.string "too, but we’ve gotta find Wikstrom if\l"
 	.string "we really want to present a united\l"
 	.string "front.$"
 
@@ -172,11 +172,11 @@ gText_LetsGetTheBandBackTogether_WhatAmIMissing::
 	.string "them or something?$"
 
 gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver::
-	.string "Psfelite4 hasn’t been heard from ever\n"
+	.string "Wikstrom hasn’t been heard from ever\n"
 	.string "since Psfbadguy took over. Just up and\l"
 	.string "disappeared. I thought the other\l"
 	.string "members would have heard from him, but\l"
-	.string "Psfelite2 said he’s been totally gone.\l"
+	.string "Drasna said he’s been totally gone.\l"
 	.string "They’re not even sure if they’re in the\l"
 	.string "region anymore.$"
 
@@ -215,17 +215,17 @@ gText_LetsGetTheBandBackTogether_WereSickOf::
 
 gText_LetsGetTheBandBackTogether_LetsSplitUp::
 	.string "Let’s split up. I’m going to talk to\n"
-	.string "Psfgoodadmin and try to convince them\l"
+	.string "Ariana and try to convince them\l"
 	.string "of the plan going forward. Can you see\l"
-	.string "if you can get an idea where Psfelite4\l"
+	.string "if you can get an idea where Wikstrom\l"
 	.string "might be?$"
 
 gText_LetsGetTheBandBackTogether_AnyLeads::
 	.string "Where do I even start?$"
 
 gText_LetsGetTheBandBackTogether_OkayGetGoing::
-	.string "Try the newspaper in Psfcity15, they\n"
-	.string "did an interview with Psfelite4 right\l"
+	.string "Try the newspaper in SOMA, they\n"
+	.string "did an interview with Wikstrom right\l"
 	.string "before he disappeared. I’m gonna make\l"
 	.string "some moves too.$"
 

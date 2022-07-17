@@ -1,0 +1,19 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFLEADER2 = 1
+
+mapscripts Japantown_Gym_MapScripts {
+}
+
+script EnterBugsy_Event_Script {
+    switch (var (VAR_GYM_2_STATE)) {
+        case 3:
+            goto(EnterBugsy_StartGymBattle_Script)
+        case 4:
+                goto(EnterBugsy_PostDefeat1_Dialogue)
+        case 5:
+                    goto(EnterBugsy_PostDefeat2_Dialogue)
+        default:
+                        goto(EnterBugsy_BugsyIntro_Dialogue)
+    }
+}
+

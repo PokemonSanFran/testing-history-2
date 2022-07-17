@@ -1,0 +1,28 @@
+mapscripts Sunset_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Sunset_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_LOAD {
+        goto(Sunset_MapScripts_OnLoad)
+    }
+}
+
+script Sunset_MapScripts_OnTransition {
+    call(ImIn_HideObject_OutsideHouse_Script)
+}
+
+
+script Sunset_MapScripts_OnLoad {
+    if (var(VAR_MAUVILLE_CITY_STATE)){
+        call(ImIn_DestroyWall_Script)
+    }
+}
+
+script Sabrina_House_LockedDoor_Script {
+    msgbox(gText_Sunset_LockedDoor,MSGBOX_SIGN)
+    end
+}
+
+text gText_Sunset_LockedDoor {
+    format("The front door is locked.")
+}

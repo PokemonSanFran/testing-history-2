@@ -11,7 +11,7 @@ script Battle8_StartBattle_ObjectSetUp_Script {
 }
 
 
-script Battle8_PsfnativerivalWalksOut_Script {
+script Battle8_ArcherWalksOut_Script {
     lock
     addvar(VAR_ROUTE109_STATE,1)
         opendoor(19, 13)
@@ -92,7 +92,7 @@ script Battle8_StartBattle_Script {
         callnative(ClearMugshot)
 
         trainerbattle_no_intro(TRAINER_WALLY_VR_3,gText_Battle8_MaybeINeed)
-        goto(Battle8_PsfnativerivalDefeated_Dialogue)
+        goto(Battle8_ArcherDefeated_Dialogue)
 }
 
 script Battle8_InteractBattle_Script {
@@ -106,10 +106,10 @@ script Battle8_InteractBattle_Script {
         callnative(ClearMugshot)
 
         trainerbattle_no_intro(TRAINER_WALLY_VR_3,gText_Battle8_MaybeINeed)
-        goto(Battle8_PsfnativerivalDefeated_Dialogue)
+        goto(Battle8_ArcherDefeated_Dialogue)
 }
 
-script Battle8_PsfnativerivalDefeated_Dialogue {
+script Battle8_ArcherDefeated_Dialogue {
 
     lock
         addvar(VAR_ROUTE109_STATE,1)
@@ -160,7 +160,7 @@ text gText_Battle8_GreatToSeeYouToo {
 }
 
 text gText_Battle8_PrimaryAttraction {
-    format("Primary attraction of Psfplace13 - the Seven Sisters Challenge. It used to be a lot more popular when 1v1 battles were a novelty- before the corporations declared it as the official League format.")
+    format("Primary attraction of FishermansWharf - the Seven Sisters Challenge. It used to be a lot more popular when 1v1 battles were a novelty- before the corporations declared it as the official League format.")
 }
 
 text gText_Battle8_SoWhatsTheChallenge {
@@ -168,7 +168,7 @@ text gText_Battle8_SoWhatsTheChallenge {
 }
 
 text gText_Battle8_TheSistersAreExperts {
-    format("The sisters are experts in 1v1, and you've got to beat all of them, in a row, in as few turns as possible. I've heard a rumor that Psfelite2 got an SS Rank once, but those guys are on a different level… but you're not even close to that.")
+    format("The sisters are experts in 1v1, and you've got to beat all of them, in a row, in as few turns as possible. I've heard a rumor that Drasna got an SS Rank once, but those guys are on a different level… but you're not even close to that.")
 }
 
 text gText_Battle8_YouTalkALot {

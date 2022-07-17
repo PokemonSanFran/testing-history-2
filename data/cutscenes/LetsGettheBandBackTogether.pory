@@ -28,7 +28,7 @@ script LetsGettheBandBackTogether_PreventPlayerEnterTower_Script {
         end
 }
 
-//This cutscene plays after the player has decided to side with Psfgoodteam.
+//This cutscene plays after the player has decided to side with TeamRocket.
 script LetsGettheBandBackTogether_MeetInBasement_Script {
 
     if (var(VAR_PSFCAVE7_STATE) == 6){
@@ -162,7 +162,7 @@ text gText_LetsGetTheBandBackTogether_WaitTheEliteFour {
 }
 
 text gText_LetsGetTheBandBackTogether_OkayKindaThatsActually {
-    format("Okay, kinda. That’s actually the next step. Psfelite1 and Psfelite2 convinced Psfelite3 to work with us too, but we’ve gotta find Psfelite4 if we really want to present a united front.")
+    format("Okay, kinda. That’s actually the next step. Malva and Drasna convinced Siebold to work with us too, but we’ve gotta find Wikstrom if we really want to present a united front.")
 }
 
 text gText_LetsGetTheBandBackTogether_WhatAmIMissing {
@@ -170,7 +170,7 @@ text gText_LetsGetTheBandBackTogether_WhatAmIMissing {
 }
 
 text gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver {
-    format("Psfelite4 hasn’t been heard from ever since Psfbadguy took over. Just up and disappeared. I thought the other members would have heard from him, but Psfelite2 said he’s been totally gone. They’re not even sure if they’re in the region anymore.")
+    format("Wikstrom hasn’t been heard from ever since Psfbadguy took over. Just up and disappeared. I thought the other members would have heard from him, but Drasna said he’s been totally gone. They’re not even sure if they’re in the region anymore.")
 }
 
 
@@ -203,7 +203,7 @@ text gText_LetsGetTheBandBackTogether_WereSickOf {
 }
 
 text gText_LetsGetTheBandBackTogether_LetsSplitUp {
-    format("Let’s split up. I’m going to talk to Psfgoodadmin and try to convince them of the plan going forward. Can you see if you can get an idea where Psfelite4 might be?")
+    format("Let’s split up. I’m going to talk to Ariana and try to convince them of the plan going forward. Can you see if you can get an idea where Wikstrom might be?")
 }
 
 text gText_LetsGetTheBandBackTogether_AnyLeads {
@@ -211,7 +211,7 @@ text gText_LetsGetTheBandBackTogether_AnyLeads {
 }
 
 text gText_LetsGetTheBandBackTogether_OkayGetGoing {
-    format("Try the newspaper in Psfcity15, they did an interview with Psfelite4 right before he disappeared.  I’m gonna make some moves too.")
+    format("Try the newspaper in SOMA, they did an interview with Wikstrom right before he disappeared.  I’m gonna make some moves too.")
 }
 
 text gText_LetsGetTheBandBackTogether_IDontThinkIShould {

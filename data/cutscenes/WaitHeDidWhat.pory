@@ -149,7 +149,7 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
         end
 }
 
-script WaitHeDidWhat_PsftransrivalMeltdown_Dialogue {
+script WaitHeDidWhat_BiancaMeltdown_Dialogue {
     random(4)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -216,15 +216,15 @@ text gText_WaitHeDidWhat_AreYouReady {
 } 
 
 text gText_WaitHeDidWhat_CongratsComeOnUp {
-    format("Congrats on making it to the Finals! Come to the Skybox to watch Psftransrival's battle!")
+    format("Congrats on making it to the Finals! Come to the Skybox to watch Bianca's battle!")
 }
 
 text gText_WaitHeDidWhat_GoodShitDownThere {
-    format("Good shit down there! Time to crush this Psfnativerival kid. See you in the Finals!")
+    format("Good shit down there! Time to crush this Archer kid. See you in the Finals!")
 }
 
 text gText_WaitHeDidWhat_InAStunningUpset {
-    format("In a stunning upset, the hometown hero, Psfnativerival defeats Psftransrival and moves onto the Finals! What a wild match!")
+    format("In a stunning upset, the hometown hero, Archer defeats Bianca and moves onto the Finals! What a wild match!")
 }
 
 text gText_WaitHeDidWhat_HolyShit {
@@ -232,7 +232,7 @@ text gText_WaitHeDidWhat_HolyShit {
 }
 
 text gText_WaitHeDidWhat_WellTakeAQuick {
-    format("We'll take a quick break, and when we come back... your Championship match! Psfnativerival VS {PLAYER}, for all the marbles!")
+    format("We'll take a quick break, and when we come back... your Championship match! Archer VS {PLAYER}, for all the marbles!")
 }
 
 text gText_WaitHeDidWhat_MakeSureYouGive {
@@ -264,7 +264,7 @@ text gText_WaitHeDidWhat_IDontThinkYouCan {
 }
 
 text gText_WaitHeDidWhat_ImReallyHappy {
-    format("I'm really happy for you! But I'm keeping my undefeated streak against you, Psfnativerival.")
+    format("I'm really happy for you! But I'm keeping my undefeated streak against you, Archer.")
 }
 
 text gText_WaitHeDidWhat_ForPsfregion {

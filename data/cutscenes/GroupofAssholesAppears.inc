@@ -152,12 +152,12 @@ GroupOfAssholesAppears_GroupLeaves_Dialogue::
 	msgbox gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent
 	msgbox gText_GroupOfAssholesAppears_YouBothMakeMeSick
 	closemessage
-	applymovement 1, GroupOfAssholesAppears_LeavePsfplace13_Slot1_Movement
-	applymovement 2, GroupOfAssholesAppears_LeavePsfplace13_Slot2_Movement
-	applymovement 3, GroupOfAssholesAppears_LeavePsfplace13_Slot3_Movement
-	applymovement 4, GroupOfAssholesAppears_LeavePsfplace13_Slot4_Movement
-	applymovement 5, GroupOfAssholesAppears_LeavePsfplace13_Slot5_Movement
-	applymovement 6, GroupOfAssholesAppears_LeavePsfplace13_Slot6_Movement
+	applymovement 1, GroupOfAssholesAppears_LeaveFishermansWharf_Slot1_Movement
+	applymovement 2, GroupOfAssholesAppears_LeaveFishermansWharf_Slot2_Movement
+	applymovement 3, GroupOfAssholesAppears_LeaveFishermansWharf_Slot3_Movement
+	applymovement 4, GroupOfAssholesAppears_LeaveFishermansWharf_Slot4_Movement
+	applymovement 5, GroupOfAssholesAppears_LeaveFishermansWharf_Slot5_Movement
+	applymovement 6, GroupOfAssholesAppears_LeaveFishermansWharf_Slot6_Movement
 	waitmovement 0
 	removeobject 1
 	removeobject 2
@@ -257,7 +257,7 @@ GroupOfAssholesAppears_WalkFromWest_Movement:
 	walk_up
 	step_end
 
-GroupOfAssholesAppears_LeavePsfplace13_Slot1_Movement:
+GroupOfAssholesAppears_LeaveFishermansWharf_Slot1_Movement:
 	walk_down
 	walk_down
 	walk_left
@@ -271,7 +271,7 @@ GroupOfAssholesAppears_LeavePsfplace13_Slot1_Movement:
 	walk_left
 	step_end
 
-GroupOfAssholesAppears_LeavePsfplace13_Slot2_Movement:
+GroupOfAssholesAppears_LeaveFishermansWharf_Slot2_Movement:
 	walk_down
 	walk_left
 	walk_left
@@ -284,7 +284,7 @@ GroupOfAssholesAppears_LeavePsfplace13_Slot2_Movement:
 	walk_left
 	step_end
 
-GroupOfAssholesAppears_LeavePsfplace13_Slot3_Movement:
+GroupOfAssholesAppears_LeaveFishermansWharf_Slot3_Movement:
 	walk_down
 	walk_left
 	walk_left
@@ -298,25 +298,8 @@ GroupOfAssholesAppears_LeavePsfplace13_Slot3_Movement:
 	walk_left
 	step_end
 
-GroupOfAssholesAppears_LeavePsfplace13_Slot4_Movement:
+GroupOfAssholesAppears_LeaveFishermansWharf_Slot4_Movement:
 	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-GroupOfAssholesAppears_LeavePsfplace13_Slot5_Movement:
-	walk_down
-	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -331,7 +314,24 @@ GroupOfAssholesAppears_LeavePsfplace13_Slot5_Movement:
 	walk_left
 	step_end
 
-GroupOfAssholesAppears_LeavePsfplace13_Slot6_Movement:
+GroupOfAssholesAppears_LeaveFishermansWharf_Slot5_Movement:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+GroupOfAssholesAppears_LeaveFishermansWharf_Slot6_Movement:
 	walk_down
 	walk_down
 	walk_left
@@ -447,13 +447,13 @@ gText_GroupOfAssholesAppears_WhyWereTheyBullying::
 	.string "they?$"
 
 gText_GroupOfAssholesAppears_SomethingStupidLikeThat::
-	.string "Uhh... I think Psfrocketaltacro or\n"
-	.string "something stupid like that. I don't\l"
-	.string "know what they want from me, they're\l"
-	.string "like this band of idiots that just roll\l"
-	.string "around everywhere, getting high and\l"
-	.string "telling people they can't do things.\l"
-	.string "Guess it was my turn.$"
+	.string "Uhh... I think RockerGang or something\n"
+	.string "stupid like that. I don't know what\l"
+	.string "they want from me, they're like this\l"
+	.string "band of idiots that just roll around\l"
+	.string "everywhere, getting high and telling\l"
+	.string "people they can't do things. Guess it\l"
+	.string "was my turn.$"
 
 gText_GroupOfAssholesAppears_ThatDoesntMakeAny::
 	.string "That doesn't make any sense! You're\n"
@@ -470,7 +470,7 @@ gText_GroupOfAssholesAppears_WhenIPitchedIt::
 	.string "a little more...upscale than some tacky\l"
 	.string "place to buy snow globes and magnets.\l"
 	.string "We're talking handcrafted items from\l"
-	.string "the people of Psfregion1!$"
+	.string "the people of SanFran!$"
 
 gText_GroupOfAssholesAppears_ThatMakesSense::
 	.string "Oh, yeah... that makes sense.$"

@@ -240,8 +240,8 @@ gText_YouCantStopMe_PleaseItIsntToo::
 	.string "Please! It isn’t too late to fix things.$"
 
 gText_YouCantStopMe_PeopleOnDied::
-	.string "People on Psfcity17 died, Psfbadadmin!\n"
-	.string "We can’t fix that.$"
+	.string "People on Alameda died, Psfbadadmin! We\n"
+	.string "can’t fix that.$"
 
 gText_YouCantStopMe_YesItsUnforuntate::
 	.string "*sigh* Yes, it's unfortunate that there\n"
@@ -273,19 +273,18 @@ gText_YouCantStopMe_WeveWorkedVeryHard::
 gText_YouCantStopMe_EverybodyDeservesAGoodLife::
 	.string "Everybody deserves a good life. But\n"
 	.string "since you weren’t aware - the people\l"
-	.string "I’ve met in Psfregion1 are\l"
-	.string "hard-working. And suffering. Because\l"
-	.string "of things you did. You’re all hurting\l"
-	.string "people! All to pump some stats and make\l"
-	.string "more money that you don’t even need!\l"
-	.string "What makes you more deserving than\l"
-	.string "them?$"
+	.string "I’ve met in SanFran are hard-working.\l"
+	.string "And suffering. Because of things you\l"
+	.string "did. You’re all hurting people! All to\l"
+	.string "pump some stats and make more money\l"
+	.string "that you don’t even need! What makes\l"
+	.string "you more deserving than them?$"
 
 gText_YouCantStopMe_TheyreNotMurderers::
 	.string "They’re not murderers. You are. I just\n"
 	.string "beat everybody on the way up here,\l"
-	.string "including Psftransrival. I don’t want to\l"
-	.string "hurt you too.$"
+	.string "including Bianca. I don’t want to hurt\l"
+	.string "you too.$"
 
 gText_YouCantStopMe_DotDotDot::
 	.string "…$"
@@ -323,10 +322,10 @@ gText_YouCantStopMe_YouReallyDontGive::
 
 gText_YouCantStopMe_NopeIDoWish::
 	.string "Nope! I do wish you had just played your\n"
-	.string "role though. Psftransrival isn’t as…\l"
-	.string "charming as you, so we’ve gotta keep\l"
-	.string "them behind the scenes, you know?\l"
-	.string "Gotta find a new kid, I guess.$"
+	.string "role though. Bianca isn’t as… charming\l"
+	.string "as you, so we’ve gotta keep them behind\l"
+	.string "the scenes, you know? Gotta find a new\l"
+	.string "kid, I guess.$"
 
 gText_YouCantStopMe_JustAGlorified::
 	.string "I was just a glorified PR puppet for\n"

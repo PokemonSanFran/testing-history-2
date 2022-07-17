@@ -266,8 +266,8 @@ LetsBurnThisMotherDown_Assignment_Dialogue_Text_0:
 gText_LetsBurnThisMotherDown_WeStillNeedToFind::
 	.string "We still need to find their new base of\n"
 	.string "operations and their leader,\l"
-	.string "Psfgoodboss. Ever since we shut down\l"
-	.string "Psfplace2, we haven't been able to\l"
+	.string "Giovanni. Ever since we shut down\l"
+	.string "NavalBase, we haven't been able to\l"
 	.string "make any progress on either of these\l"
 	.string "fronts.$"
 
@@ -279,15 +279,15 @@ gText_LetsBurnThisMotherDown_YoureCloserToThe::
 	.string "hideout.$"
 
 gText_LetsBurnThisMotherDown_INeedToTalk::
-	.string "(I need to talk to Psfnativerival… I\n"
+	.string "(I need to talk to Archer… I\n"
 	.string "think I can still save him. I need to\l"
-	.string "get to Psfcave1.)$"
+	.string "get to RobinWillTunnel.)$"
 
 gText_LetsBurnThisMotherDown_YouChoseTheWrong::
 	.string "You chose the wrong side!$"
 
 gText_LetsBurnThisMotherDown_IKnowYouWant::
-	.string "Psfnativerival, I know you want to do\n"
+	.string "Archer, I know you want to do\n"
 	.string "good. But this isn't the way! If you\l"
 	.string "want real meaningful change, let's work\l"
 	.string "with them. They're good people. We all\l"
@@ -296,7 +296,7 @@ gText_LetsBurnThisMotherDown_IKnowYouWant::
 gText_LetsBurnThisMotherDown_YouDontThinkWeve::
 	.string "You don't think we've tried that? You\n"
 	.string "just got here, {PLAYER} . People here\l"
-	.string "in Psfcave1, died trying to do things\l"
+	.string "in RobinWillTunnel, died trying to do things\l"
 	.string "the right way. They don't care.$"
 
 gText_LetsBurnThisMotherDown_TheyIgnoreUs::
@@ -345,7 +345,7 @@ gText_LetsBurnThisMotherDown_IFollowedYou::
 
 gText_LetsBurnThisMotherDown_NoITheyreNot::
 	.string "No, I… they're not like the rest of\n"
-	.string "Psfgoodteam. I thought we could work\l"
+	.string "TeamRocket. I thought we could work\l"
 	.string "with them. I was wrong.$"
 
 gText_LetsBurnThisMotherDown_YeahNoShit::
@@ -372,10 +372,10 @@ gText_LetsBurnThisMotherDown_YoureYoung::
 
 gText_LetsBurnThisMotherDown_ImStillShocked::
 	.string "I'm still shocked they were using the\n"
-	.string "inside of Psfcave1. Absolutely insane.$"
+	.string "inside of RobinWillTunnel. Absolutely insane.$"
 
 gText_LetsBurnThisMotherDown_ThePoliceTold::
 	.string "The police told me they're going to\n"
 	.string "treat the entire island as a crime\l"
 	.string "scene and see if they can find\l"
-	.string "anything else regarding Psfgoodteam.$"
+	.string "anything else regarding TeamRocket.$"

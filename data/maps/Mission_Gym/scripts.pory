@@ -1,0 +1,23 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const PSFLEADER1 = 1
+
+mapscripts Mission_Gym_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        switch (var (VAR_GYM_1_STATE)) {
+            case 3: goto(EnterFalkner_StartGymBattle_ObjectSetup_Script)
+        }
+    }
+}
+
+script EnterFalkner_Event_Script {
+  switch (var (VAR_GYM_1_STATE)) {
+  case 3:
+    goto(EnterFalkner_StartGymBattle_Script)
+  case 4:
+    goto(EnterFalkner_PostDefeat1_Dialogue)
+  case 5:
+    goto(EnterFalkner_PostDefeat2_Dialogue)
+  default:
+    goto(EnterFalkner_PutMeatInOven_Dialogue)
+  }
+}

@@ -1,0 +1,226 @@
+YCombinatorTower_Elevator_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, YCombinatorTower_Elevator_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, YCombinatorTower_Elevator_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+YCombinatorTower_Elevator_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto YCombinatorTower_Elevator_MapScripts_OnTransition
+	return
+
+YCombinatorTower_Elevator_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TEMP_0, 0, YCombinatorTower_Elevator_AttendantMissing_Dialogue
+	.2byte 0
+
+
+YCombinatorTower_Elevator_MapScripts_OnTransition::
+	compare VAR_MAUVILLE_CITY_STATE, 4
+	goto_if_gt YCombinatorTower_Elevator_MapScripts_OnTransition_1
+	goto_if_unset FLAG_BADGE03_GET, YCombinatorTower_Elevator_MapScripts_OnTransition_1
+	return
+
+YCombinatorTower_Elevator_MapScripts_OnTransition_1:
+	goto YCombinatorTower_Elevator_HideAttendant_Script
+	return
+
+
+YCombinatorTower_Elevator_AttendantMissing_Dialogue::
+	setvar VAR_TEMP_0, 1
+	compare VAR_MAUVILLE_CITY_STATE, 4
+	goto_if_gt YCombinatorTower_Elevator_AttendantMissing_Dialogue_1
+	goto_if_unset FLAG_BADGE03_GET, YCombinatorTower_Elevator_AttendantMissing_Dialogue_1
+	release
+	end
+
+YCombinatorTower_Elevator_AttendantMissing_Dialogue_1:
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_YCombinatorTower_Elevator_TheAttendantIsGone
+	closemessage
+	callnative ClearMugshot
+	release
+	end
+
+
+YCombinatorTower_Elevator_HideAttendant_Script::
+	setflag FLAG_TEMP_1
+	return
+
+
+YCombinatorTower_ElevatorAttendant_Script::
+	lock
+	faceplayer
+	setvar VAR_0x8004, 0
+	goto_if_set FLAG_TEMP_2, YCombinatorTower_ElevatorAttendant_Script_2
+YCombinatorTower_ElevatorAttendant_Script_1:
+	copyvar VAR_0x8005, VAR_DEPT_STORE_FLOOR
+	special ShowYCombinatorTowerElevatorFloorSelect
+	message gText_WhichFloorWouldYouLike
+	waitmessage
+	setvar VAR_0x8004, 0
+	goto YCombinatorTowerElevator_EventScript_ChooseFromX
+	end
+
+YCombinatorTower_ElevatorAttendant_Script_2:
+	call YCombinatorTowerElevator_EventScript_SetFloor
+	goto YCombinatorTower_ElevatorAttendant_Script_1
+
+
+YCombinatorTowerElevator_EventScript_ChooseFromX::
+	specialvar VAR_RESULT, GetTowerFloorDefaultFloorChoice
+	switch VAR_RESULT
+	case 0, YCombinatorTowerElevator_EventScript_ChooseFromX_3
+	case 1, YCombinatorTowerElevator_EventScript_ChooseFromX_4
+	case 2, YCombinatorTowerElevator_EventScript_ChooseFromX_5
+	case 3, YCombinatorTowerElevator_EventScript_ChooseFromX_6
+YCombinatorTowerElevator_EventScript_ChooseFromX_1:
+	goto YCombinatorTowerElevator_EventScript_ChooseFloor
+	end
+
+YCombinatorTowerElevator_EventScript_ChooseFromX_3:
+	multichoicedefault 0, 0, MULTI_FLOORS, 0, FALSE
+	goto YCombinatorTowerElevator_EventScript_ChooseFromX_1
+
+YCombinatorTowerElevator_EventScript_ChooseFromX_4:
+	multichoicedefault 0, 0, MULTI_FLOORS, 1, FALSE
+	goto YCombinatorTowerElevator_EventScript_ChooseFromX_1
+
+YCombinatorTowerElevator_EventScript_ChooseFromX_5:
+	multichoicedefault 0, 0, MULTI_FLOORS, 2, FALSE
+	goto YCombinatorTowerElevator_EventScript_ChooseFromX_1
+
+YCombinatorTowerElevator_EventScript_ChooseFromX_6:
+	multichoicedefault 0, 0, MULTI_FLOORS, 3, FALSE
+	goto YCombinatorTowerElevator_EventScript_ChooseFromX_1
+
+
+YCombinatorTowerElevator_EventScript_ChooseFloor::
+	switch VAR_RESULT
+	case 0, YCombinatorTowerElevator_EventScript_ChooseFloor_3
+	case 1, YCombinatorTowerElevator_EventScript_ChooseFloor_4
+	case 2, YCombinatorTowerElevator_EventScript_ChooseFloor_5
+	case 3, YCombinatorTowerElevator_EventScript_ChooseFloor_6
+	case 4, YCombinatorTowerElevator_EventScript_ChooseFloor_7
+	case ( MULTI_B_PRESSED ), YCombinatorTowerElevator_EventScript_ChooseFloor_8
+YCombinatorTowerElevator_EventScript_ChooseFloor_1:
+	end
+
+YCombinatorTowerElevator_EventScript_ChooseFloor_3:
+	goto YCombinatorTowerElevator_EventScript_10thFloor
+	goto YCombinatorTowerElevator_EventScript_ChooseFloor_1
+
+YCombinatorTowerElevator_EventScript_ChooseFloor_4:
+	goto YCombinatorTowerElevator_EventScript_5thFloor
+	goto YCombinatorTowerElevator_EventScript_ChooseFloor_1
+
+YCombinatorTowerElevator_EventScript_ChooseFloor_5:
+	goto YCombinatorTowerElevator_EventScript_2ndFloor
+	goto YCombinatorTowerElevator_EventScript_ChooseFloor_1
+
+YCombinatorTowerElevator_EventScript_ChooseFloor_6:
+	goto YCombinatorTowerElevator_EventScript_1stFloor
+	goto YCombinatorTowerElevator_EventScript_ChooseFloor_1
+
+YCombinatorTowerElevator_EventScript_ChooseFloor_7:
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	goto YCombinatorTowerElevator_EventScript_ChooseFloor_1
+
+YCombinatorTowerElevator_EventScript_ChooseFloor_8:
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	goto YCombinatorTowerElevator_EventScript_ChooseFloor_1
+
+
+YCombinatorTowerElevator_EventScript_1stFloor::
+	setvar VAR_0x8006, PSFBADGUY1TOWER_FLOORNUM_1F
+	setdynamicwarp MAP_PSFBADGUY1TOWER_1F, 255, 8, 2
+	compare VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_1F
+	goto_if_eq YCombinatorTowerElevator_EventScript_1stFloor_2
+YCombinatorTowerElevator_EventScript_1stFloor_1:
+	call YCombinatorTowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_1F
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	end
+
+YCombinatorTowerElevator_EventScript_1stFloor_2:
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	goto YCombinatorTowerElevator_EventScript_1stFloor_1
+
+
+YCombinatorTowerElevator_EventScript_2ndFloor::
+	setvar VAR_0x8006, PSFBADGUY1TOWER_FLOORNUM_2F
+	setdynamicwarp MAP_PSFBADGUY1TOWER_2F, 255, 9, 39
+	compare VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_2F
+	goto_if_eq YCombinatorTowerElevator_EventScript_2ndFloor_2
+YCombinatorTowerElevator_EventScript_2ndFloor_1:
+	call YCombinatorTowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_2F
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	end
+
+YCombinatorTowerElevator_EventScript_2ndFloor_2:
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	goto YCombinatorTowerElevator_EventScript_2ndFloor_1
+
+
+YCombinatorTowerElevator_EventScript_5thFloor::
+	setvar VAR_0x8006, PSFBADGUY1TOWER_FLOORNUM_5F
+	setdynamicwarp MAP_PSFBADGUY1TOWER_5F, 255, 16, 28
+	compare VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_5F
+	goto_if_eq YCombinatorTowerElevator_EventScript_5thFloor_2
+YCombinatorTowerElevator_EventScript_5thFloor_1:
+	call YCombinatorTowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_5F
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	end
+
+YCombinatorTowerElevator_EventScript_5thFloor_2:
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	goto YCombinatorTowerElevator_EventScript_5thFloor_1
+
+
+YCombinatorTowerElevator_EventScript_10thFloor::
+	setvar VAR_0x8006, PSFBADGUY1TOWER_FLOORNUM_10F
+	setdynamicwarp MAP_PSFBADGUY1TOWER_10F, 255, 8, 2
+	compare VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_10F
+	goto_if_eq YCombinatorTowerElevator_EventScript_10thFloor_2
+YCombinatorTowerElevator_EventScript_10thFloor_1:
+	call YCombinatorTowerElevator_EventScript_MoveElevator
+	setvar VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_10F
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	end
+
+YCombinatorTowerElevator_EventScript_10thFloor_2:
+	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
+	goto YCombinatorTowerElevator_EventScript_10thFloor_1
+
+
+YCombinatorTowerElevator_EventScript_ExitFloorSelect::
+	special CloseDeptStoreElevatorWindow
+	release
+	end
+
+
+YCombinatorTowerElevator_EventScript_MoveElevator::
+	special CloseDeptStoreElevatorWindow
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	waitse
+	special MoveElevator
+	waitstate
+	setflag FLAG_TEMP_2
+	return
+
+
+YCombinatorTowerElevator_EventScript_SetFloor::
+	special SetYCombinatorTowerFloor
+	return
+
+
+gText_YCombinatorTower_Elevator_TheAttendantIsGone::
+	.string "The attendant is gone...but I don't\n"
+	.string "think the elevator works without their\l"
+	.string "keycard. Guess I have to take the\l"
+	.string "stairs.$"

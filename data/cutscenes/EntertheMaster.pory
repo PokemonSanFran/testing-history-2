@@ -126,7 +126,7 @@ end
 script EnterTheMaster_ClearingIntro_Dialogue {
     addvar(VAR_ROUTE116_STATE,1)
 
-applymovement(PLAYER,EnterTheMaster_ApproachPsfelite3)
+applymovement(PLAYER,EnterTheMaster_ApproachSiebold)
 waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
@@ -251,11 +251,11 @@ text gText_EnterTheMaster_HowDoYouThink{
 	}
 
 text gText_EnterTheMaster_YouKnow{
-	format("You know, I'm really sick of Psfgoodteam's shit. Its their fault we're stuck in this stupid forest.")
+	format("You know, I'm really sick of TeamRocket's shit. Its their fault we're stuck in this stupid forest.")
 	}
 
 text gText_EnterTheMaster_IThoughtGymLeaders{
-	format("I thought Psfregion1's Gym Leaders would be tougher. I wonder how their old Elite Four stacks up to Unova's?")
+	format("I thought SanFran's Gym Leaders would be tougher. I wonder how their old Elite Four stacks up to Unova's?")
 	}
 
 text gText_EnterTheMaster_DoYouThinkTheyre{
@@ -279,11 +279,11 @@ text gText_EnterTheMaster_TheyreGettingPaid{
 	}
 
 text gText_EnterTheMaster_WelcomeTo{
-	format("Psftransrival! {PLAYER}! Welcome to Psfcave2. Excellent work so far!")
+	format("Bianca! {PLAYER}! Welcome to MuirWoods. Excellent work so far!")
 	}
 
 text gText_EnterTheMaster_ThanksYoure{
-	format("Thanks. You're Psfelite3?")
+	format("Thanks. You're Siebold?")
 	}
 
 text gText_EnterTheMaster_AndMyNotebook{
@@ -291,7 +291,7 @@ text gText_EnterTheMaster_AndMyNotebook{
 	}
 
 text gText_EnterTheMaster_GettingThemToBattle{
-	format("I hope Pokémon 1 and Pokémon 2 in Psfcave1 weren't too much trouble. Getting them to battle without my direct commands was certainly a challenge.")
+	format("I hope Pokémon 1 and Pokémon 2 in RobinWillTunnel weren't too much trouble. Getting them to battle without my direct commands was certainly a challenge.")
 	}
 
 text gText_EnterTheMaster_IsThatWhatYoure{
@@ -372,7 +372,7 @@ movement EnterTheMaster_Pace {
     step_end
 }
 
-movement EnterTheMaster_ApproachPsfelite3 {
+movement EnterTheMaster_ApproachSiebold {
     walk_up * 1
     step_end
 }

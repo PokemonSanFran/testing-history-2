@@ -1,0 +1,14 @@
+mapscripts Dogpatch_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Dogpatch_MapScripts_OnTransition)
+}
+}
+
+script Dogpatch_MapScripts_OnTransition {
+    switch (var(VAR_PSFCITY7_STATE)){
+        case 0: call(HowDoWeGetHome_HideObject_Script)
+        case 1:
+            call(HowDoWeGetHome_ObjectCleanUp_Script)
+            call(HowDoWeGetHome_ChangeCrowdMovementType_Script)
+    }
+}

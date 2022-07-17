@@ -153,7 +153,7 @@ MaskOff_QuestE_Dialogue_2:
 	goto MaskOff_QuestE_Dialogue_1
 
 
-MaskOff_Encounter_Psfgoodboss_Dialogue::
+MaskOff_Encounter_Giovanni_Dialogue::
 	lock
 	setvar VAR_LILYCOVE_CITY_STATE, 7
 	call Common_EventScript_SaveGame
@@ -200,7 +200,7 @@ MaskOff_PostBattle_Dialogue::
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_CAITLIN
 	callnative DrawMugshot
-	msgbox gText_MaskOff_IFormedPsfgoodteam
+	msgbox gText_MaskOff_IFormedTeamRocket
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_ButWhyGo
@@ -254,13 +254,13 @@ MaskOff_WalkOffScreen:
 gText_MaskOff_YouveMadeIncredible::
 	.string "You’ve made incredible progress since we\n"
 	.string "last battled. But of course, you’re the\l"
-	.string "Champion, {PLAYER}. Psfgoodteam is\l"
+	.string "Champion, {PLAYER}. TeamRocket is\l"
 	.string "lucky to have another powerful ally$"
 
 gText_MaskOff_ItsNiceToNotGet::
 	.string "Thank you! It’s nice to not get crushed\n"
 	.string "as easily anymore… wait! I was\l"
-	.string "following a lead looking for Psfelite4.\l"
+	.string "following a lead looking for Wikstrom.\l"
 	.string "I think they train around here, and I\l"
 	.string "want to try to convince them to work\l"
 	.string "with us.$"
@@ -274,39 +274,39 @@ gText_MaskOff_WhatDoYouMean::
 
 gText_MaskOff_AllowMeTo::
 	.string "Allow me to re-introduce myself. I am\n"
-	.string "the leader of Psfgoodteam, member of\l"
+	.string "the leader of TeamRocket, member of\l"
 	.string "the Elite Four,$"
 
 gText_MaskOff_TheOneAndOnly::
-	.string "the one and only… Psfelite4.$"
+	.string "the one and only… Wikstrom.$"
 
-gText_MaskOff_IFormedPsfgoodteam::
-	.string "I formed Psfgoodteam as a response to\n"
+gText_MaskOff_IFormedTeamRocket::
+	.string "I formed TeamRocket as a response to\n"
 	.string "Psfbadguy’s growing influence over the\l"
 	.string "region a few years ago.$"
 
 gText_MaskOff_ButWhyGo::
-	.string "But why go into hiding as Psfelite4?$"
+	.string "But why go into hiding as Wikstrom?$"
 
 gText_MaskOff_IHidMyIdentity::
 	.string "I hid my identity because I was worried\n"
 	.string "about my influence diluting the\l"
 	.string "message. If people could unite under a\l"
-	.string "symbol like Psfgoodboss, then in\l"
+	.string "symbol like Giovanni, then in\l"
 	.string "theory, anybody could lead\l"
-	.string "Psfgoodteam if something happened to\l"
+	.string "TeamRocket if something happened to\l"
 	.string "me. And if the Elite Four wasn’t directly\l"
-	.string "connected to Psfgoodteam, then they\l"
+	.string "connected to TeamRocket, then they\l"
 	.string "couldn’t retaliate against the others.$"
 
 gText_MaskOff_ThingsAre::
 	.string "Things are… a little different now. I\n"
-	.string "met with Psfnativerival…$"
+	.string "met with Archer…$"
 
 gText_MaskOff_ISee::
 	.string "I see. If the Elite Four is going to\n"
 	.string "present as a united front, I’ll need to\l"
-	.string "give up leadership to Psfgoodadmin.\l"
+	.string "give up leadership to Ariana.\l"
 	.string "You know, I think they’ve purposely\l"
 	.string "kept me in the dark about this.$"
 
@@ -321,24 +321,24 @@ gText_MaskOff_IHaventExplicitly::
 	.string "they can handle it.$"
 
 gText_MaskOff_IShouldApologize::
-	.string "I should apologize to Psfelite3 for\n"
+	.string "I should apologize to Siebold for\n"
 	.string "disappearing. But you should get some\l"
 	.string "rest. Our war begins first thing in the\l"
 	.string "morning.$"
 
 gText_MaskOff_WhatCanYou::
 	.string "Hi there. What can you tell me about\n"
-	.string "Psfelite4?$"
+	.string "Wikstrom?$"
 
 gText_MaskOff_IUsedToSee::
-	.string "I used to see Psfelite4 all the time,\n"
+	.string "I used to see Wikstrom all the time,\n"
 	.string "but I'm pretty sure he moved away. He\l"
 	.string "used to come back super late at night,\l"
 	.string "so he must have been pulling really\l"
 	.string "long hours.$"
 
 gText_MaskOff_HeWorkedInThe::
-	.string "He worked in the Psfcity6 as a business\n"
+	.string "He worked in the Mission as a business\n"
 	.string "consultant for the little guy. It was\l"
 	.string "awesome to see a member of the\l"
 	.string "community become an Elite Four member!$"
@@ -351,7 +351,7 @@ gText_MaskOff_WatchingHimBattle::
 	.string "end matches so fast.$"
 
 gText_MaskOff_UsedToBeHere::
-	.string "Psfelite4 used to be here all the time,\n"
+	.string "Wikstrom used to be here all the time,\n"
 	.string "but I only ever saw him by himself. He\l"
 	.string "was kind of a loner.$"
 
@@ -362,24 +362,24 @@ gText_MaskOff_BookwormsTendToBe::
 	.string "was into...$"
 
 gText_MaskOff_WasBornAndRaised::
-	.string "The Elite Four's Psfelite4 was born and\n"
-	.string "raised here in Psfregion1.$"
+	.string "The Elite Four's Wikstrom was born and\n"
+	.string "raised here in SanFran.$"
 
 gText_MaskOff_IKnowHeUsedToLive::
-	.string "I know he used to live in the Psfcity1,\n"
+	.string "I know he used to live in the Sunset,\n"
 	.string "but ever since he disappeared, people\l"
 	.string "haven't seen him.$"
 
 gText_MaskOff_ItUsedToBeSuper::
 	.string "It used to be super common to see him\n"
-	.string "zipping around in the skies. Psfelite4\l"
+	.string "zipping around in the skies. Wikstrom\l"
 	.string "is one of the few trainers that flies\l"
 	.string "on his Pokémon to travel around!$"
 
 gText_MaskOff_IMissWorking::
-	.string "I miss working with Psfelite4. Whenever\n"
+	.string "I miss working with Wikstrom. Whenever\n"
 	.string "he made great progress, he would treat\l"
-	.string "the entire team to ramen in Psfcity14!$"
+	.string "the entire team to ramen in Japantown!$"
 
 gText_MaskOff_HeWouldLeaveRight::
 	.string "He would leave right after, even when it\n"
@@ -388,7 +388,7 @@ gText_MaskOff_HeWouldLeaveRight::
 	.string "the best time.$"
 
 gText_MaskOff_GaveATalkHereOnce::
-	.string "Psfelite4 gave a talk here once, where\n"
+	.string "Wikstrom gave a talk here once, where\n"
 	.string "he talked about the importance of\l"
 	.string "training your Pokémon in their natural\l"
 	.string "habitat. He says the connection to\l"
@@ -410,7 +410,7 @@ gText_MaskOff_WhenverHeLeft::
 	.string "from the front steps!$"
 
 gText_MaskOff_IRememberMeeting::
-	.string "I remember meeting Psfelite4 when he\n"
+	.string "I remember meeting Wikstrom when he\n"
 	.string "was 20. I interviewed him after his\l"
 	.string "parents were killed by loan sharks.\l"
 	.string "Tough break, but a tough kid too.$"
@@ -421,7 +421,7 @@ gText_MaskOff_HeSaidEvenThen::
 	.string "parents, so he worked for a long time\l"
 	.string "to help small businesses grow and be\l"
 	.string "sustainable. He did good work in the\l"
-	.string "Psfcity6.$"
+	.string "Mission.$"
 
 gText_MaskOff_IThinkThatAccident::
 	.string "I think that accident changed him\n"
@@ -430,24 +430,24 @@ gText_MaskOff_IThinkThatAccident::
 	.string "he hated the limelight.$"
 
 gText_MaskOff_UsedToCome::
-	.string "Psfelite3 and Psfelite4 used to come in\n"
+	.string "Siebold and Wikstrom used to come in\n"
 	.string "together a lot.$"
 
 gText_MaskOff_TheyWouldJust::
 	.string "They would just talk about books the\n"
-	.string "whole time.. I think Psfelite4 really\l"
+	.string "whole time.. I think Wikstrom really\l"
 	.string "loved history.$"
 
 gText_MaskOff_IThinkSoHe::
-	.string "Psfelite4 lived close by... in Psfcity1, I\n"
+	.string "Wikstrom lived close by... in Sunset, I\n"
 	.string "think, so he was here, with or without\l"
-	.string "Psfelite3.$"
+	.string "Siebold.$"
 
 gText_MaskOff_ADigitalPhoto::
 	.string "A digital photo frame. The picture being\n"
-	.string "displayed shows Psfelite4 and\l"
-	.string "Psfelite3 together at the ramen\l"
-	.string "restaurantin Psfcity14.$"
+	.string "displayed shows Wikstrom and\l"
+	.string "Siebold together at the ramen\l"
+	.string "restaurantin Japantown.$"
 
 gText_MaskOff_FancyABattle::
 	.string "A surprise, seeing you here, {PLAYER}.\n"

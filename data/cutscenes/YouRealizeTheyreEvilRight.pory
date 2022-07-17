@@ -12,7 +12,7 @@ script YouRealizeTheyreEvilRight_HideObject_Script {
 
 script YouRealizeTheyreEvilRight_ShowObject_Script {
     if (var(VAR_PSFCAVE7_STATE) == 3){
-        addobject(11) //Show Psfnativerival at entrance
+        addobject(11) //Show Archer at entrance
     }
 }
 
@@ -130,7 +130,7 @@ script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
         end
 }
 
-script YouRealizeTheyreEvilRight_InteractPsfnativerival {
+script YouRealizeTheyreEvilRight_InteractArcher {
     lock
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -384,7 +384,7 @@ script YouRealizeTheyreEvilRight_Framing_Dialogue {
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-        msgbox(gText_YouRealizeTheyreEvilRight_ButPsfgoodadminSaid)
+        msgbox(gText_YouRealizeTheyreEvilRight_ButArianaSaid)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -574,10 +574,10 @@ text gText_YouRealizeTheyreEvilRight_WhatDoYouMean {
     format("What do you mean?")
 }
 text gText_YouRealizeTheyreEvilRight_IWannaShowYou {
-    format("I wanna show you instead. Come to Psfcave7.")
+    format("I wanna show you instead. Come to Alcatraz.")
 }
 text gText_YouRealizeTheyreEvilRight_YoullNeedToCross {
-    format("I wanna show you but you'll need to cross some water to get here. You know how to Surf, right? No? Go learn from the Surfers in Psfcity4, and then meet me on Psfcave7.")
+    format("I wanna show you but you'll need to cross some water to get here. You know how to Surf, right? No? Go learn from the Surfers in Pacifica, and then meet me on Alcatraz.")
 }
 text gText_YouRealizeTheyreEvilRight_IDontKnowIf {
     format("(I don't know if I can afford to get pulled any deeper into this…)")
@@ -589,7 +589,7 @@ text gText_YouRealizeTheyreEvilRight_SwimAroundThe {
     format("Come swim around the southwest side of the island! You'll see me.")
 }
 text gText_YouRealizeTheyreEvilRight_WelcomeToTheReal {
-    format("Welcome to the real Psfcave7. I'm going down to the second level, but you should explore here first before coming straight down.")
+    format("Welcome to the real Alcatraz. I'm going down to the second level, but you should explore here first before coming straight down.")
 }
 text gText_YouRealizeTheyreEvilRight_DotDotDot {
     format("…")
@@ -604,16 +604,16 @@ text gText_YouRealizeTheyreEvilRight_TheInmateWasAlso {
     format("The inmate was also a member of SanFran's indingeous population, killed on the land that was stolen from their ancestors. The occupation called for the dissolution of the prison, transfer of prisoners to locations with humane conditions, and the return of the land back to its original owners.")
 }
 text gText_YouRealizeTheyreEvilRight_TheProtests {
-    format("The protests gained national attention and seemed to be gathering interest, particularly with the help of Psfelite2's support, and pressure mounted on the government to comply. At the height of tension, an earthquake broke out, destroying a large portion of the prison and killing inmates and guards and effectively ending the occupation. ")
+    format("The protests gained national attention and seemed to be gathering interest, particularly with the help of Drasna's support, and pressure mounted on the government to comply. At the height of tension, an earthquake broke out, destroying a large portion of the prison and killing inmates and guards and effectively ending the occupation. ")
 }
 text gText_YouRealizeTheyreEvilRight_TheChampionHasArrived {
-    format("The Champion has arrived! Great to meet you, I'm Psfelite2, and I'm the leader of the Psfregion1 Elite Four. Or, I was. Now I'm not really sure what I do.")
+    format("The Champion has arrived! Great to meet you, I'm Drasna, and I'm the leader of the SanFran Elite Four. Or, I was. Now I'm not really sure what I do.")
 }
 text gText_YouRealizeTheyreEvilRight_NiceToMeetYou {
-    format("Nice to meet you! …Psfnativerival, where are we?")
+    format("Nice to meet you! …Archer, where are we?")
 }
 text gText_YouRealizeTheyreEvilRight_HasBeenUsing {
-    format("Psfgoodteam has been using Psfcave's abandoned prison as a training ground.")
+    format("TeamRocket has been using Psfcave's abandoned prison as a training ground.")
 }
 text gText_YouRealizeTheyreEvilRight_WowSuperResourceful {
     format("Wow! Super resourceful. Genius, even.")
@@ -622,7 +622,7 @@ text gText_YouRealizeTheyreEvilRight_WhyAreWeHere {
     format("Why are we here?")
 }
 text gText_YouRealizeTheyreEvilRight_ICanFinallyProve {
-    format("I can finally prove that Psfbadguy is worse than we originally thought. Once I do that, I want all of us to find a way to work together to protect Psfregion1 from their bullshit.")
+    format("I can finally prove that Psfbadguy is worse than we originally thought. Once I do that, I want all of us to find a way to work together to protect SanFran from their bullshit.")
 }
 text gText_YouRealizeTheyreEvilRight_DidYouDragMe {
     format("Did you drag me out here to join a terrorist organiziation? Did you hear ANYTHING I said on the phone?")
@@ -631,7 +631,7 @@ text gText_YouRealizeTheyreEvilRight_YesWaitNo {
     format("Yes! Wait, no… No, Yes!")
 }
 text gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis {
-    format("Psfgoodteam doesn't do anything for this region. You're attacking innocent people, trying to destroy buildings - fuck, I absolutely should have turned you in!")
+    format("TeamRocket doesn't do anything for this region. You're attacking innocent people, trying to destroy buildings - fuck, I absolutely should have turned you in!")
 }
 text gText_YouRealizeTheyreEvilRight_ICanProve {
     format("{PLAYER}, listen! I can prove that none of that is true.")
@@ -643,10 +643,10 @@ text gText_YouRealizeTheyreEvilRight_Look {
     format("Look.")
 }
 text gText_YouRealizeTheyreEvilRight_ThisIsOne {
-    format("This is one of the Garbodor from the Psfplace14 strike. {PLAYER}, you were told that Psfgoodteam planted these to blow up the construction site, right?")
+    format("This is one of the Garbodor from the ChaseCenter strike. {PLAYER}, you were told that TeamRocket planted these to blow up the construction site, right?")
 }
 text gText_YouRealizeTheyreEvilRight_IHadToGo {
-    format("Yeah. Psftransrival and I had to go down there and defeat them and your goons.")
+    format("Yeah. Bianca and I had to go down there and defeat them and your goons.")
 }
 text gText_YouRealizeTheyreEvilRight_ThisOneIsLevel {
     format("This one is Level 40. Garbodor learns Explosion at Level 53.")
@@ -658,7 +658,7 @@ text gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally {
     format("Right. But Garbodor doesn't learn that naturally. It can only be inherited from its parents, or taught via a Technical Machine.")
 }
 text gText_YouRealizeTheyreEvilRight_SoUsedATM {
-    format("Okay, so Psfgoodteam used a TM… wait.")
+    format("Okay, so TeamRocket used a TM… wait.")
 }
 text gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred {
     format("No, it must have been bred then.")
@@ -691,13 +691,13 @@ text gText_YouRealizeTheyreEvilRight_IDontGetIt {
     format("I don't get it then. So this Garbodor was taught Self-Destruct. What does that mean?")
 }
 text gText_YouRealizeTheyreEvilRight_HasBeenFramingYou {
-    format("Psfnativerival… Psfbadguy has been framing you? ")
+    format("Archer… Psfbadguy has been framing you? ")
 }
 text gText_YouRealizeTheyreEvilRight_YouAlsoMetUp {
-    format("{PLAYER}, you also met up with Psfgoodteam in Psfcity9 too, right?")
+    format("{PLAYER}, you also met up with TeamRocket in Oakland too, right?")
 }
-text gText_YouRealizeTheyreEvilRight_ButPsfgoodadminSaid {
-    format("…yeah. But Psfgoodadmin said that situation was super weird and was trying to track them down.")
+text gText_YouRealizeTheyreEvilRight_ButArianaSaid {
+    format("…yeah. But Ariana said that situation was super weird and was trying to track them down.")
 }
 text gText_YouRealizeTheyreEvilRight_YeahNobodyKnows {
     format("Yeah, nobody knows who they are or where they came from. I'm pretty sure Psfbadguy has been sending in agents to make us look shitty. Between that and whatever else Psfbadguy is feeding you, I'm not surprised you feel the way you do.")
@@ -721,10 +721,10 @@ text gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally {
     format("Yep. I think it's finally time we all come together to expose Psfbadguy for the assholes that they are, and start to take power back for the people.")
 }
 text gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour {
-    format("Kid, if the Elite Four couldn't stop them in their prime, I don't know what you think Psfgoodteam will be able to do. Matter of fact, going solo might actually be better! Hell, I was able to start the Psfcave7 campaigns without any help.")
+    format("Kid, if the Elite Four couldn't stop them in their prime, I don't know what you think TeamRocket will be able to do. Matter of fact, going solo might actually be better! Hell, I was able to start the Alcatraz campaigns without any help.")
 }
 text gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow {
-    format("Look Psfelite2… things are different now. We've been fighting the good fight without any help so far… and look where that's gotten us. Perhaps they're onto something, and it's time for some real collective action.")
+    format("Look Drasna… things are different now. We've been fighting the good fight without any help so far… and look where that's gotten us. Perhaps they're onto something, and it's time for some real collective action.")
 }
 text gText_YouRealizeTheyreEvilRight_LookIKnowThis {
     format("Look, I know this is a lot of information to take in. I know you're going to make the right decision. Go home. Get some sleep. Come back here when you're ready to work with us, okay?")
@@ -742,13 +742,13 @@ text gText_YouRealizeTheyreEvilRight_ThatsFineIll {
     format("That's fine, I'll find a good home for it.")
 }
 text gText_YouRealizeTheyreEvilRight_IsStillWaiting {
-    format("Psfnativerival is still waiting for me at Psfcave7…")
+    format("Archer is still waiting for me at Alcatraz…")
 }
 text gText_YouRealizeTheyreEvilRight_DoYouWantToGo {
     format("Do you want to go to bed?")
 }
 text gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat {
-    format("…I have no idea what I'm going to do. Do I help Psfbadguy and the police end Psfgoodteam permanently? Or do I help Psfgoodteam clear their name and help the people of Psfregion1?")
+    format("…I have no idea what I'm going to do. Do I help Psfbadguy and the police end TeamRocket permanently? Or do I help TeamRocket clear their name and help the people of SanFran?")
 }
 text gText_YouRealizeTheyreEvilRight_ObtainedGift {
     format("{PLAYER} was given the {STR_VAR_2}.")

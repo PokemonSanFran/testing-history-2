@@ -56,7 +56,7 @@ AndWeMarchOn_Opening_Dialogue::
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_Psfregion1
+	msgbox gText_AndWeMarchOn_SanFran
 	callnative ClearMugshot
 	closemessage
 	playse SE_BANG
@@ -403,10 +403,10 @@ gText_AndWeMarchOn_WowPeopleHere::
 
 gText_AndWeMarchOn_AndNowSomeWords::
 	.string "And now, some words from our Grand\n"
-	.string "Marshall, Psfelite1!$"
+	.string "Marshall, Malva!$"
 
-gText_AndWeMarchOn_Psfregion1::
-	.string "Psfregion1!$"
+gText_AndWeMarchOn_SanFran::
+	.string "SanFran!$"
 
 gText_AndWeMarchOn_ThankYouForSupporting::
 	.string "Thank you for supporting our annual\n"
@@ -419,14 +419,14 @@ gText_AndWeMarchOn_WeHaveASpecialGuest::
 	.string "stage!$"
 
 gText_AndWeMarchOn_RupertHereIsTheWinner::
-	.string "Rupert here is the winner of the\n"
-	.string "Psfcity6 Preparatory School\l"
-	.string "graduation tournament! NORMALLY, the\l"
-	.string "winner normally gets a scholarship from\l"
-	.string "the Psfregion1 League. But our new\l"
-	.string "corporate overlords have decided that\l"
-	.string "growing the in-region talent isn't a\l"
-	.string "budget priority!$"
+	.string "Rupert here is the winner of the Mission\n"
+	.string "Preparatory School graduation\l"
+	.string "tournament! NORMALLY, the winner\l"
+	.string "normally gets a scholarship from the\l"
+	.string "SanFran League. But our new corporate\l"
+	.string "overlords have decided that growing\l"
+	.string "the in-region talent isn't a budget\l"
+	.string "priority!$"
 
 gText_AndWeMarchOn_Boo::
 	.string "Boo!$"
@@ -465,13 +465,13 @@ gText_AndWeMarchOn_HelpingHand::
 
 gText_AndWeMarchOn_AndWithASupercharged::
 	.string "And with a supercharged Breaking Swipe,\n"
-	.string "Psfelite1 ends the battle in one turn!\l"
-	.string "The exhibition winner is the Elite\l"
-	.string "Four's PSFELITE1!$"
+	.string "Malva ends the battle in one turn! The\l"
+	.string "exhibition winner is the Elite Four's\l"
+	.string "PSFELITE1!$"
 
 gText_AndWeMarchOn_DamnThatsHow::
 	.string "Damn, that's how she beat me too… wait,\n"
-	.string "did they say Elite Four? Psfregion1\l"
+	.string "did they say Elite Four? SanFran\l"
 	.string "doesn't have those, does it?$"
 
 gText_AndWeMarchOn_LetsGiveItUp::
@@ -503,13 +503,13 @@ gText_AndWeMarchOn_GiveUsBackOur::
 
 gText_AndWeMarchOn_ButHeyItsNot::
 	.string "But hey! It's not all bad, right?\n"
-	.string "Psfcity18 got to keep its Gym!$"
+	.string "HaightAshbury got to keep its Gym!$"
 
 gText_AndWeMarchOn_Traitor::
 	.string "Traitor!$"
 
 gText_AndWeMarchOn_DownWith::
-	.string "Down with Psfleader7!$"
+	.string "Down with Pryce!$"
 
 gText_AndWeMarchOn_WhatASlimeball::
 	.string "What a slimeball!$"

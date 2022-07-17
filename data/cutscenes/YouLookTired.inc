@@ -14,7 +14,7 @@ YouLookTired_HideObjects_Script::
 	return
 
 
-YouLookTired_InteractPsfbadadmin2_Script::
+YouLookTired_InteractKoga_Script::
 	lock
 	applymovement 1, Common_Movement_FacePlayer
 	goto YouLookTired_Intro_Dialogue
@@ -23,38 +23,38 @@ YouLookTired_InteractPsfbadadmin2_Script::
 
 YouLookTired_Trigger_Script::
 	lock
-	call YouLookTired_WalkToPsfbadadmin2_Script
+	call YouLookTired_WalkToKoga_Script
 	applymovement 1, Common_Movement_FacePlayer
 	goto YouLookTired_Intro_Dialogue
 	return
 
 
-YouLookTired_WalkToPsfbadadmin2_Script::
+YouLookTired_WalkToKoga_Script::
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	switch VAR_TEMP_0
-	case 7, YouLookTired_WalkToPsfbadadmin2_Script_3
-	case 8, YouLookTired_WalkToPsfbadadmin2_Script_4
-	case 9, YouLookTired_WalkToPsfbadadmin2_Script_5
-	case 10, YouLookTired_WalkToPsfbadadmin2_Script_6
-YouLookTired_WalkToPsfbadadmin2_Script_1:
+	case 7, YouLookTired_WalkToKoga_Script_3
+	case 8, YouLookTired_WalkToKoga_Script_4
+	case 9, YouLookTired_WalkToKoga_Script_5
+	case 10, YouLookTired_WalkToKoga_Script_6
+YouLookTired_WalkToKoga_Script_1:
 	waitmovement 0
 	return
 
-YouLookTired_WalkToPsfbadadmin2_Script_3:
+YouLookTired_WalkToKoga_Script_3:
 	applymovement OBJ_EVENT_ID_PLAYER, YouLookTired_WalkFrom7
-	goto YouLookTired_WalkToPsfbadadmin2_Script_1
+	goto YouLookTired_WalkToKoga_Script_1
 
-YouLookTired_WalkToPsfbadadmin2_Script_4:
+YouLookTired_WalkToKoga_Script_4:
 	applymovement OBJ_EVENT_ID_PLAYER, YouLookTired_WalkFrom8
-	goto YouLookTired_WalkToPsfbadadmin2_Script_1
+	goto YouLookTired_WalkToKoga_Script_1
 
-YouLookTired_WalkToPsfbadadmin2_Script_5:
+YouLookTired_WalkToKoga_Script_5:
 	applymovement OBJ_EVENT_ID_PLAYER, YouLookTired_WalkFrom9
-	goto YouLookTired_WalkToPsfbadadmin2_Script_1
+	goto YouLookTired_WalkToKoga_Script_1
 
-YouLookTired_WalkToPsfbadadmin2_Script_6:
+YouLookTired_WalkToKoga_Script_6:
 	applymovement OBJ_EVENT_ID_PLAYER, YouLookTired_WalkFrom10
-	goto YouLookTired_WalkToPsfbadadmin2_Script_1
+	goto YouLookTired_WalkToKoga_Script_1
 
 
 YouLookTired_Intro_Dialogue::
@@ -96,7 +96,7 @@ YouLookTired_BadgeJudge_Script_1:
 
 
 YouLookTired_AllBadges_Dialogue::
-	msgbox gText_YouLookTired_FormallPsfbadguy1ongratulate
+	msgbox gText_YouLookTired_FormallYCombinatorongratulate
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_ItsBeenAnInterestingRide
@@ -242,17 +242,17 @@ gText_YouLookTired_YeahWhatsUp::
 	.string "Yeah, what's up?$"
 
 gText_YouLookTired_GladIWasAbleToRun::
-	.string "Ah, Psfbadadmin3 was right, glad I was\n"
-	.string "able to run into you. I'm Psfbadadmin2.$"
+	.string "Ah, Sabrina was right, glad I was\n"
+	.string "able to run into you. I'm Koga.$"
 
 gText_YouLookTired_IGuessYouDoToo::
-	.string "Psfbadadmin3... they work for\n"
-	.string "Psfbadguy1, right? So I guess you do\l"
+	.string "Sabrina... they work for\n"
+	.string "YCombinator, right? So I guess you do\l"
 	.string "too?$"
 
 gText_YouLookTired_ChiefOperatingOfficer::
-	.string "Yes sorry, I'm the Psfbadguy1 Chief\n"
-	.string "Operating Officer, and Psfbadboss's\l"
+	.string "Yes sorry, I'm the YCombinator Chief\n"
+	.string "Operating Officer, and Rose's\l"
 	.string "right hand. It's a pleasure to meet you,\l"
 	.string "we're all very impressed with you.$"
 
@@ -277,7 +277,7 @@ gText_YouLookTired_IKnowYoureRacing::
 gText_YouLookTired_CanBeAHandful::
 	.string "So far, you're certainly living up to\n"
 	.string "your title! Congratulations on\l"
-	.string "defeating Psfleader5, I know they can\l"
+	.string "defeating Chuck, I know they can\l"
 	.string "be... a handful.$"
 
 gText_YouLookTired_ItsBeenAnInterestingRide::
@@ -291,7 +291,7 @@ gText_YouLookTired_IImagineYoureProbably::
 	.string "home-cooked meal in a while, what do\l"
 	.string "you say?$"
 
-gText_YouLookTired_FormallPsfbadguy1ongratulate::
+gText_YouLookTired_FormallYCombinatorongratulate::
 	.string "Well, you're certainly living up to your\n"
 	.string "legend. Let me be the first to formally\l"
 	.string "congratulate you on your qualification\l"
@@ -308,7 +308,7 @@ gText_YouLookTired_WontBeAnIssue::
 	.string "we're investing in.$"
 
 gText_YouLookTired_WestOfHere::
-	.string "I live in Psfcity3, west of here.$"
+	.string "I live in Presidio, west of here.$"
 
 gText_YouLookTired_MyHouseHas::
 	.string "My house has the teal shutters, it'll be\n"
@@ -321,7 +321,7 @@ gText_YouLookTired_ImNotReally::
 
 gText_YouLookTired_Nonsense::
 	.string "Nonsense. I'll pull some data from\n"
-	.string "Psfcompany1 and find something to\l"
+	.string "DoorDash and find something to\l"
 	.string "suite your tastes!$"
 
 gText_YouLookTired_YouCanDoThat::
@@ -329,7 +329,7 @@ gText_YouLookTired_YouCanDoThat::
 
 gText_YouLookTired_DataIsTheMost::
 	.string "Of course! Data is the most powerful\n"
-	.string "resource in the world - Psfbadguy1 has\l"
+	.string "resource in the world - YCombinator has\l"
 	.string "quite the vast library available to us.$"
 
 gText_YouLookTired_IllSeeYouForDinner::

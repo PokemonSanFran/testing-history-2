@@ -8,20 +8,20 @@
 
 # VAR_GYM_1_STATE / VAR_GYM_3_STATE / VAR_GYM_4_STATE / VAR_GYM_5_STATE / VAR_GYM_6_STATE
 1: Solved puzzles, ready to fight
-2: Psfleader1 has walked to the battlefield
-3: Saved in front of Psfleader1
-4: Defeated Psfleader1
+2: Falkner has walked to the battlefield
+3: Saved in front of Falkner
+4: Defeated Falkner
 5: Hear explanation of badge and TM
 
 #VAR_GYM_7_STATE / VAR_GYM_8_STATE
-3: Saved in front of Psfleader7
-4: Defeated Psfleader7
+3: Saved in front of Pryce
+4: Defeated Pryce
 5: Hear explanation of badge and TM
 
 #VAR_GYM_2_STATE
 1: Solved puzzles, ready to fight
-3: Saved in front of Psfleader2
-4: Defeated Psfleader2
+3: Saved in front of Bugsy
+4: Defeated Bugsy
 5: Hear explanation of badge and TM
 
 #VAR_PSFROUTE9_STATE
@@ -30,7 +30,7 @@
 2: Has defeated Archer
 
 #VAR_PSFCITY15_STATE
-1: Defeated Psfleader3
+1: Defeated Whitney
 2: Invited to Tower by Rose
 3: Talked to Oak on 3rd floor
 4: Got to Rose's office
@@ -88,9 +88,9 @@
 
 #VAR_FERRY_STATE
 **RELEVANCE**: used to track what locations are available via ferry
-1: Default, Psfcity17 available
+1: Default, Alameda available
 2: After "Sorry About My Friends", Alcatraz available from Alameda and Fisherman's Wharf
-3: Post league, Psfcave5 available
+3: Post league, TreasureIsland available
 
 #VAR_PSFCAVE7_EXHIBIT_STATE
 1: started the exhibit challenge
@@ -324,7 +324,7 @@ Y: Used to find the target of the last completed takedown quest, number should c
 0: Has not been dug up yet
 1: Player has used Dig on Route 8
 2: Team Rocket has seen unlocked door
-3: Psfelite2 has unlocked the door
+3: Drasna has unlocked the door
 4: Team has split up in the Lab
 5: Defeated first Pokemon
 6: Defeated 2nd Pokemon

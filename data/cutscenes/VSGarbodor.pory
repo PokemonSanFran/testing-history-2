@@ -88,29 +88,29 @@ script VSGarbodor_ChooseRight_Script {
         end
 }
 
-script VSGarbodor_PsfgoodteamGrunt1_Battle_Script {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_5, gText_VSGarbodor_ScrewThisStadium, gText_VSGarbodor_DamnTheyWereRight, VSGarbodor_PsfgoodteamGrunt1_Battle_Script)
+script VSGarbodor_TeamRocketGrunt1_Battle_Script {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_5, gText_VSGarbodor_ScrewThisStadium, gText_VSGarbodor_DamnTheyWereRight, VSGarbodor_TeamRocketGrunt1_Battle_Script)
         msgbox(gText_VSGarbodor_WelpIDidWhat, MSGBOX_AUTOCLOSE)
         goto(VSGarbodor_RemoveGrunt)
         end
 }
 
-script VSGarbodor_PsfgoodteamGrunt3_Battle_Script {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_PsfgoodteamGrunt3_Battle_Script)
+script VSGarbodor_TeamRocketGrunt3_Battle_Script {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_TeamRocketGrunt3_Battle_Script)
         msgbox(gText_VSGarbodor_OhThankGiratina, MSGBOX_AUTOCLOSE)
         goto(VSGarbodor_RemoveGrunt)
         end
 }
 
-script VSGarbodor_PsfgoodteamGrunt2_Battle_Script {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_2, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_PsfgoodteamGrunt2_Battle_Script)
+script VSGarbodor_TeamRocketGrunt2_Battle_Script {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_2, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_TeamRocketGrunt2_Battle_Script)
         msgbox(gText_VSGarbodor_BeingBad, MSGBOX_AUTOCLOSE)
         goto(VSGarbodor_RemoveGrunt)
         end
 }
 
-script VSGarbodor_PsfgoodteamGrunt4_Battle_Script {
-    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_4, gText_VSGarbodor_LookAtYou, gText_VSGarbodor_ThatsRight, VSGarbodor_PsfgoodteamGrunt4_Battle_Script)
+script VSGarbodor_TeamRocketGrunt4_Battle_Script {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_4, gText_VSGarbodor_LookAtYou, gText_VSGarbodor_ThatsRight, VSGarbodor_TeamRocketGrunt4_Battle_Script)
         msgbox(gText_VSGarbodor_HaveFunCleaning, MSGBOX_AUTOCLOSE)
         goto(VSGarbodor_RemoveGrunt)
         end
@@ -149,7 +149,7 @@ script VSGarbodor_RemoveGrunt {
 
 script VSGarbodor_CheckDefeated_Script {
     if (flag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) && flag(FLAG_DEFEATED_RIVAL_ROUTE_104) && flag(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE) && flag(FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE)) {
-        goto(VSGarbodor_MovePsftransrival_Script)
+        goto(VSGarbodor_MoveBianca_Script)
     }
     end
 }
@@ -172,7 +172,7 @@ script VSGarbodor_PreventCrossingSides_Script {
         end
 }
 
-script VSGarbodor_MovePsftransrival_Script {
+script VSGarbodor_MoveBianca_Script {
     lock
 
         getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
@@ -184,23 +184,23 @@ script VSGarbodor_MovePsftransrival_Script {
                 if (var (VAR_TEMP_1) > 9) {
                     setobjectxy(PSFTRANSRIVAL, 11, 12)
                         copyobjectxytoperm(PSFTRANSRIVAL)
-                        applymovement(PSFTRANSRIVAL, PsftransrivalApproachSW)
+                        applymovement(PSFTRANSRIVAL, BiancaApproachSW)
                 } else {
                     setobjectxy(PSFTRANSRIVAL, 13, 6)
                         copyobjectxytoperm(PSFTRANSRIVAL)
-                        applymovement(PSFTRANSRIVAL, PsftransrivalApproachNW)
+                        applymovement(PSFTRANSRIVAL, BiancaApproachNW)
                 }
         } else {
             if (var (VAR_TEMP_1) > 9) {
                 applymovement(PLAYER, Common_Movement_FaceUp)
                     setobjectxy(PSFTRANSRIVAL, 22, 4)
                     copyobjectxytoperm(PSFTRANSRIVAL)
-                    applymovement(PSFTRANSRIVAL, PsftransrivalApproachSE)
+                    applymovement(PSFTRANSRIVAL, BiancaApproachSE)
             } else {
                 applymovement(PLAYER, Common_Movement_FaceLeft)
                     setobjectxy(PSFTRANSRIVAL, 10, 6)
                     copyobjectxytoperm(PSFTRANSRIVAL)
-                    applymovement(PSFTRANSRIVAL, PsftransrivalApproachNE)
+                    applymovement(PSFTRANSRIVAL, BiancaApproachNE)
             }
         }
     waitmovement(0)
@@ -381,19 +381,19 @@ movement VSGarbodor_LookAround {
         delay_16
         step_end
 }
-movement PsftransrivalApproachSW {
+movement BiancaApproachSW {
     walk_left * 6
         step_end
 }
-movement PsftransrivalApproachNW {
+movement BiancaApproachNW {
     walk_left * 6
         step_end
 }
-movement PsftransrivalApproachSE {
+movement BiancaApproachSE {
     walk_down * 6
         step_end
 }
-movement PsftransrivalApproachNE {
+movement BiancaApproachNE {
     walk_right * 7
         step_end
 }
@@ -421,11 +421,11 @@ text gText_VSGarbodor_CoolIWanted {
 }
 
 text gText_VSGarbodor_ScrewThisStadium {
-    format("Heh, we're Psfgoodteam! Screw this stadium and screw Psfbadguy!")
+    format("Heh, we're TeamRocket! Screw this stadium and screw Psfbadguy!")
 }
 
 text gText_VSGarbodor_IsTheName {
-    format("Psfgoodteam is the name, and shutting this shit down is our game!")
+    format("TeamRocket is the name, and shutting this shit down is our game!")
 }
 
 text gText_VSGarbodor_DamnTheyWereRight {
@@ -489,7 +489,7 @@ text gText_VSGarbodor_AsWeWereNegotiating {
 }
 
 text gText_VSGarbodor_DoneLikeYouGuys {
-    format("Done. Like you guys said, Psfgoodteam up to their shit as usual.")
+    format("Done. Like you guys said, TeamRocket up to their shit as usual.")
 }
 
 text gText_VSGarbodor_ThankYouBoth {

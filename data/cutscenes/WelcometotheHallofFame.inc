@@ -7,7 +7,7 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	delay 60
 	clearflag FLAG_TEMP_1
 	addobject 2
-	applymovement 2, WelcomeToTheHallOfFame_MovePsfbadbossToPodium
+	applymovement 2, WelcomeToTheHallOfFame_MoveRoseToPodium
 	applymovement 1, WelcomeToTheHallOfFame_WalkOutOfWay
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
@@ -42,7 +42,7 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	end
 
 
-WelcomeToTheHallOfFame_MovePsfbadbossToPodium:
+WelcomeToTheHallOfFame_MoveRoseToPodium:
 	walk_left
 	walk_left
 	walk_left
@@ -65,7 +65,7 @@ WelcomeToTheHallOfFame_WalkOutOfWay:
 	step_end
 
 gText_WelcomeToTheHallOfFame_YourChampion::
-	.string "Psfregion1! Your Champion! {PLAYER}!$"
+	.string "SanFran! Your Champion! {PLAYER}!$"
 
 gText_WelcomeToTheHallOfFame_ToTheHundreds::
 	.string "To the hundreds of you, here, in the\n"

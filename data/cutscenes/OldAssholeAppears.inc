@@ -1,17 +1,17 @@
-OldAssholeAppears_WalktoPsftransrival_Script::
+OldAssholeAppears_WalktoBianca_Script::
 	lockall
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 12
-	goto_if_eq OldAssholeAppears_WalktoPsftransrival_Script_2
-	applymovement OBJ_EVENT_ID_PLAYER, OldAssholeAppears_WalkWesttoPsftransrival_Movement
-OldAssholeAppears_WalktoPsftransrival_Script_1:
+	goto_if_eq OldAssholeAppears_WalktoBianca_Script_2
+	applymovement OBJ_EVENT_ID_PLAYER, OldAssholeAppears_WalkWesttoBianca_Movement
+OldAssholeAppears_WalktoBianca_Script_1:
 	waitmovement 0
 	goto OldAssholeAppears_Intro_Dialogue
 	return
 
-OldAssholeAppears_WalktoPsftransrival_Script_2:
-	applymovement OBJ_EVENT_ID_PLAYER, OldAssholeAppears_WalkNorthtoPsftransrival_Movement
-	goto OldAssholeAppears_WalktoPsftransrival_Script_1
+OldAssholeAppears_WalktoBianca_Script_2:
+	applymovement OBJ_EVENT_ID_PLAYER, OldAssholeAppears_WalkNorthtoBianca_Movement
+	goto OldAssholeAppears_WalktoBianca_Script_1
 
 
 OldAssholeAppears_Intro_Dialogue::
@@ -101,7 +101,7 @@ OldAssholeAppears_GiveCorviknightCard_Script_1:
 	msgbox gText_OldAssholeAppears_NowWereEven
 	callnative ClearMugshot
 	closemessage
-	goto OldAssholeAppears_PsftransrivalExit_Script
+	goto OldAssholeAppears_BiancaExit_Script
 	return
 
 OldAssholeAppears_GiveCorviknightCard_Script_2:
@@ -109,9 +109,9 @@ OldAssholeAppears_GiveCorviknightCard_Script_2:
 	goto OldAssholeAppears_GiveCorviknightCard_Script_1
 
 
-OldAssholeAppears_PsftransrivalExit_Script::
+OldAssholeAppears_BiancaExit_Script::
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	applymovement 1, OldAssholeAppears_PsftransrivalExit_Movement
+	applymovement 1, OldAssholeAppears_BiancaExit_Movement
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 1
@@ -121,7 +121,7 @@ OldAssholeAppears_PsftransrivalExit_Script::
 	end
 
 
-OldAssholeAppears_WalkNorthtoPsftransrival_Movement:
+OldAssholeAppears_WalkNorthtoBianca_Movement:
 	walk_right
 	walk_right
 	walk_right
@@ -131,7 +131,7 @@ OldAssholeAppears_WalkNorthtoPsftransrival_Movement:
 	face_up
 	step_end
 
-OldAssholeAppears_WalkWesttoPsftransrival_Movement:
+OldAssholeAppears_WalkWesttoBianca_Movement:
 	walk_left
 	walk_left
 	walk_left
@@ -141,7 +141,7 @@ OldAssholeAppears_WalkWesttoPsftransrival_Movement:
 	face_up
 	step_end
 
-OldAssholeAppears_PsftransrivalExit_Movement:
+OldAssholeAppears_BiancaExit_Movement:
 	walk_left
 	walk_left
 	walk_left
@@ -201,24 +201,24 @@ gText_OldAssholeAppears_TakingThisAllSeriously::
 	.string "to my word...$"
 
 gText_OldAssholeAppears_FamiliarWith::
-	.string "Are you familiar with Psfcompany5?$"
+	.string "Are you familiar with Uber?$"
 
 gText_OldAssholeAppears_ThoughtSo::
 	.string "Thought so. They're everywhere, right?$"
 
 gText_OldAssholeAppears_LetsYouCallARide::
-	.string "Don't have it in Orre? Psfcompany5 lets\n"
+	.string "Don't have it in Orre? Uber lets\n"
 	.string "you call a ride from anywhere to\l"
 	.string "anywhere else that you've been.$"
 
 gText_OldAssholeAppears_LetsYouUse::
-	.string "That card lets you use Psfcompany5 for\n"
-	.string "free! I went to the Psfbadguy1tower,\l"
+	.string "That card lets you use Uber for\n"
+	.string "free! I went to the YCombinatortower,\l"
 	.string "and the League Commissioner gave me\l"
 	.string "these for being the first Challenger to\l"
 	.string "visit! It also lets you use the Subway\l"
 	.string "System for free, but I think I'll stick\l"
-	.string "to Psfcompany5. Less homeless people\l"
+	.string "to Uber. Less homeless people\l"
 	.string "to deal with, you know?$"
 
 gText_OldAssholeAppears_YouveBeenSuperNice::
@@ -227,5 +227,5 @@ gText_OldAssholeAppears_YouveBeenSuperNice::
 gText_OldAssholeAppears_NowWereEven::
 	.string "Now we're even after I ditched\n"
 	.string "breakfast. All right, time to go\l"
-	.string "challenge the Psfplace9 Gym. So glad\l"
+	.string "challenge the FortPoint Gym. So glad\l"
 	.string "Daddy sent me these Go-Goggles!$"

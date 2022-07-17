@@ -1,78 +1,78 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFLEADER8 = 1
 
-script EnterPsfleader8_Event_Script {
+script EnterClair_Event_Script {
     switch (var(VAR_GYM_8_STATE)) {
         case 3:
-            goto(EnterPsfleader8_FacePlayerBeforeBattle_Script)
+            goto(EnterClair_FacePlayerBeforeBattle_Script)
 
         case 4:
-                goto(EnterPsfleader8_PostGymBattle1_Dialogue)
+                goto(EnterClair_PostGymBattle1_Dialogue)
         case 5:
-                    goto(EnterPsfleader8_PostGymBattle2_Dialogue)
+                    goto(EnterClair_PostGymBattle2_Dialogue)
         default:
-                    goto(EnterPsfleader8_AskAboutGym_Dialogue)
+                    goto(EnterClair_AskAboutGym_Dialogue)
     }
 }
 
-script EnterPsfleader8_AskAboutGym_Dialogue {
+script EnterClair_AskAboutGym_Dialogue {
 
         setvar(VAR_GYM_8_STATE,3)
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_SkatingAround,MSGBOX_NPC)
+        msgbox(gText_EnterClair_SkatingAround,MSGBOX_NPC)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_ItsInteresting)
+        msgbox(gText_EnterClair_ItsInteresting)
 
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_OhComeOn)
+        msgbox(gText_EnterClair_OhComeOn)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_WeirdItsWeird)
+        msgbox(gText_EnterClair_WeirdItsWeird)
 
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_IveAlwaysSaid)
+        msgbox(gText_EnterClair_IveAlwaysSaid)
 
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_WhenIWasAwarded)
+        msgbox(gText_EnterClair_WhenIWasAwarded)
         callnative(ClearMugshot)
         call(Common_EventScript_SaveGame)
         closemessage
-        goto(EnterPsfleader8_StartGymBattle_Script)
+        goto(EnterClair_StartGymBattle_Script)
 }
 
-script EnterPsfleader8_FacePlayerBeforeBattle_Script {
+script EnterClair_FacePlayerBeforeBattle_Script {
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_ButTheyNeverWill,MSGBOX_NPC)
+        msgbox(gText_EnterClair_ButTheyNeverWill,MSGBOX_NPC)
         closemessage
         callnative(ClearMugshot)
-        trainerbattle_no_intro(TRAINER_JUAN_1,gText_EnterPsfleader8_AhIGotTooGreedy)
-        goto(EnterPsfleader8_Psfleader8Deafeated_Script)
+        trainerbattle_no_intro(TRAINER_JUAN_1,gText_EnterClair_AhIGotTooGreedy)
+        goto(EnterClair_ClairDeafeated_Script)
 }
 
-script EnterPsfleader8_StartGymBattle_Script {
+script EnterClair_StartGymBattle_Script {
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_ButTheyNeverWill)
+        msgbox(gText_EnterClair_ButTheyNeverWill)
         closemessage
         callnative(ClearMugshot)
-        trainerbattle_no_intro(TRAINER_JUAN_1,gText_EnterPsfleader8_AhIGotTooGreedy)
-        goto(EnterPsfleader8_Psfleader8Deafeated_Script)
+        trainerbattle_no_intro(TRAINER_JUAN_1,gText_EnterClair_AhIGotTooGreedy)
+        goto(EnterClair_ClairDeafeated_Script)
 }
 
-script EnterPsfleader8_Psfleader8Deafeated_Script {
+script EnterClair_ClairDeafeated_Script {
     lock
     setflag(FLAG_BADGE08_GET)
     addvar(VAR_STORYLINE_STATE,1)
     addvar(VAR_GYM_8_STATE,1)
-    msgbox(gText_EnterPsfleader8_BadgeGet)
+    msgbox(gText_EnterClair_BadgeGet)
     call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM08)
     closemessage
@@ -81,67 +81,67 @@ script EnterPsfleader8_Psfleader8Deafeated_Script {
 }
     
 
-script EnterPsfleader8_PostGymBattle1_Dialogue {
+script EnterClair_PostGymBattle1_Dialogue {
     lock
         setvar(VAR_GYM_8_STATE,5)
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_ThatTMwill,MSGBOX_NPC)
+        msgbox(gText_EnterClair_ThatTMwill,MSGBOX_NPC)
         closemessage
         callnative(ClearMugshot)
         release
         end
 }
-script EnterPsfleader8_PostGymBattle2_Dialogue {
+script EnterClair_PostGymBattle2_Dialogue {
     lock
         setvar(VAR_0x8000, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader8_IGetSoEmotional,MSGBOX_NPC)
+        msgbox(gText_EnterClair_IGetSoEmotional,MSGBOX_NPC)
         closemessage
         callnative(ClearMugshot)
         release
         end
 }
 
-text gText_EnterPsfleader8_SkatingAround {
+text gText_EnterClair_SkatingAround {
             format("Skating around the rink down there, you put on quite the show, {PLAYER}! What do you think of the place?")
         }
 
-text gText_EnterPsfleader8_ItsInteresting {
+text gText_EnterClair_ItsInteresting {
             format("It's… interesting?")
         }
 
-text gText_EnterPsfleader8_OhComeOn {
+text gText_EnterClair_OhComeOn {
             format("Oh come on, you won't hurt my feelings.")
         }
 
-text gText_EnterPsfleader8_WeirdItsWeird {
+text gText_EnterClair_WeirdItsWeird {
             format("Weird. It's weird.")
         }
 
-text gText_EnterPsfleader8_IveAlwaysSaid {
+text gText_EnterClair_IveAlwaysSaid {
             format("Excellent! I've always said, “Be the strange you want to see in the world!” And I've busted my ass to make this place stranger than fiction… and better than art.")
         }
 
-text gText_EnterPsfleader8_WhenIWasAwarded {
+text gText_EnterClair_WhenIWasAwarded {
             format("When I was awarded this Gym, I knew I had to keep pushing the boundaries. It's important to me to keep bending the rules, keep everybody guessing, thinking, racking their brains to figure me out…")
         }
 
-text gText_EnterPsfleader8_ButTheyNeverWill {
+text gText_EnterClair_ButTheyNeverWill {
             format("But they never will. Now let's see if you can handle the magic!")
         }
 
-text gText_EnterPsfleader8_AhIGotTooGreedy {
+text gText_EnterClair_AhIGotTooGreedy {
             format("Ah, I got too greedy and tried to have it all!")
         }
 
-text gText_EnterPsfleader8_ThatTMwill {
+text gText_EnterClair_ThatTMwill {
             format("That TM will teach your Pokémon Psfgymattack8. I hope it's as useful for you as it has been for me!")
         }
 
-text gText_EnterPsfleader8_IGetSoEmotional {
+text gText_EnterClair_IGetSoEmotional {
             format("I get so emotional every time I think of trainers walking out with my badge. Not because I'm upset… but I'm proud. Now go you magical bitch, conquer the world!")
         }
-text gText_EnterPsfleader8_BadgeGet {
-    format("You received the Psfbadge8 Badge!")
+text gText_EnterClair_BadgeGet {
+    format("You received the ClairBadge Badge!")
 }

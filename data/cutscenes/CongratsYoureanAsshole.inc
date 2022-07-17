@@ -139,7 +139,7 @@ gText_CongratsYoureanAsshole_ExcellentWeKnew::
 
 gText_CongratsYoureanAsshole_WevePreparedAStatement::
 	.string "We’ve prepared a statement reinforcing\n"
-	.string "our commitment to ending Psfgoodteam’s\l"
+	.string "our commitment to ending TeamRocket’s\l"
 	.string "operations. We want them to know we’re\l"
 	.string "officially working with the police and\l"
 	.string "that their days are numbered.$"
@@ -174,12 +174,11 @@ gText_CongratsYoureanAsshole_OfCouseIfTheres::
 	.string "back and talk to me when you’re ready.$"
 
 gText_CongratsYoureanAsshole_PresenceIn::
-	.string "Psfgoodteam’s presence in Psfregion1\n"
-	.string "makes for a worse region for all.\l"
-	.string "Starting today, we’ll be working with\l"
-	.string "the police dept and the champion to\l"
-	.string "put an end to their terrorist\l"
-	.string "activities.$"
+	.string "TeamRocket’s presence in SanFran makes\n"
+	.string "for a worse region for all. Starting\l"
+	.string "today, we’ll be working with the police\l"
+	.string "dept and the champion to put an end to\l"
+	.string "their terrorist activities.$"
 
 gText_CongratsYoureanAsshole_ThankYouForThat::
 	.string "Thank you for that… worldwide, our\n"
@@ -191,7 +190,6 @@ gText_CongratsYoureanAsshole_ThingsWillTake::
 	.string "Things will take time.$"
 
 gText_CongratsYoureanAsshole_ThatsTheSpirit::
-	.string "That’s the spirit! Psfbadadmin,\n"
-	.string "Psfbadadmin3, and I all have different\l"
-	.string "missions for you. Come talk to us when\l"
-	.string "you're ready.$"
+	.string "That’s the spirit! Psfbadadmin, Sabrina,\n"
+	.string "and I all have different missions for\l"
+	.string "you. Come talk to us when you're ready.$"

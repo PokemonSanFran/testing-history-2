@@ -82,7 +82,7 @@ script TheGangsAllHere_ComeOnIn_Dialogue{
     playse(SE_PIN)
     applymovement(PSFBADBOSS,Common_Movement_ExclamationMark)
     waitmovement(0)
-    applymovement(PSFBADBOSS,TheGangsAllHere_PsfbadbossWalkToDoor_Movement)
+    applymovement(PSFBADBOSS,TheGangsAllHere_RoseWalkToDoor_Movement)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
@@ -125,7 +125,7 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
     msgbox(gText_TheGangsAllHere_IHeardWonderfulThings)
     callnative(ClearMugshot)
     applymovement(PSFBADBOSS,Common_Movement_FaceDown)
-    applymovement(PSFBADADMIN,TheGangsAllHere_GivePackageToPsfbadboss_Movement)
+    applymovement(PSFBADADMIN,TheGangsAllHere_GivePackageToRose_Movement)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
@@ -138,7 +138,7 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
 
 script TheGangsAllHere_GiveDowsingMachine_Script{
     applymovement(PLAYER,Common_Movement_FaceRight)
-    applymovement(PSFBADBOSS,TheGangsAllHere_GivePackageToPsfchara1_Movement)
+    applymovement(PSFBADBOSS,TheGangsAllHere_GivePackageToPlayerChar_Movement)
     waitmovement(0)
     giveitem(ITEM_DOWSING_MACHINE,1)
     goto(TheGangsAllHere_GiveDowsingMachine_Dialogue)
@@ -188,7 +188,7 @@ script TheGangsAllHere_EndScene_Dialogue{
     closemessage
     applymovement(PLAYER,TheGangsAllHere_MoveOutOfWay_Movement)
     waitmovement(0)
-    applymovement(PSFBADBOSS,TheGangsAllHere_PsfbadbossWalkOut_Movement)
+    applymovement(PSFBADBOSS,TheGangsAllHere_RoseWalkOut_Movement)
     applymovement(PSFBADADMIN,TheGangsAllHere_PsfbadadminWalkOut_Movement)
     waitmovement(0)
     fadedefaultbgm
@@ -202,7 +202,7 @@ script TheGangsAllHere_EndScene_Dialogue{
 
 
 
-script Psfbadguy1Tower_10F_EventScript_Tom {
+script YCombinatorTower_10F_EventScript_Tom {
     trainerbattle_single(TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat)
     special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
     msgbox (Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE)
@@ -210,7 +210,7 @@ script Psfbadguy1Tower_10F_EventScript_Tom {
     end
 }
 
-script Psfbadguy1Tower_10F_EventScript_Ian {
+script YCombinatorTower_10F_EventScript_Ian {
     trainerbattle_single (TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat)
     special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
     msgbox (Route104_Text_MiaPostBattle, MSGBOX_AUTOCLOSE)
@@ -222,13 +222,13 @@ text gText_TheGangsAllHere_WhatBringsYou{
     format("{PLAYER}! What brings you to League HQ?")
 }
 text gText_TheGangsAllHere_ToldMeToVisit{
-    format("Commissioner Psfbadboss told me to visit after I beat Psfleader3!")
+    format("Commissioner Rose told me to visit after I beat Whitney!")
 }
 text gText_TheGangsAllHere_IsThisWhereYouWork{
     format("Is this where you work?")
 }
 text gText_TheGangsAllHere_TheTowerYes{
-    format("The Psfcompany3 Tower? Yes! League Ops? ...sort of. We wear a lot of hats!")
+    format("The Salesforce Tower? Yes! League Ops? ...sort of. We wear a lot of hats!")
 }
 text gText_TheGangsAllHere_IHaventBeen{
     format("I haven't been up here in a while though. I've an important delivery for the C.E.O., but the workers here in League Ops can be a little... rowdy. Do you mind if I tag along on your tour? I'll keep you in tip-top shape!")
@@ -242,7 +242,7 @@ text gText_TheGangsAllHere_OfficeIsntThatWay{
 }
 
 text gText_TheGangsAllHere_ThisIsOffice{
-    format("This is Psfbadboss's office. After you.")
+    format("This is Rose's office. After you.")
 }
 
 text gText_TheGangsAllHere_ComeOnIn{
@@ -255,16 +255,16 @@ text gText_TheGangsAllHere_IThoughtYouSaid{
     format("I thought you said you had a delivery for the C.E.O.?")
 }
 text gText_TheGangsAllHere_IDidIsee{
-    format("I did. I see Psfbadboss neglected to reveal his full title...?")
+    format("I did. I see Rose neglected to reveal his full title...?")
 }
 text gText_TheGangsAllHere_NotIntentionally{
-    format("Not intentionally! I was just so swept up in your battle! Psfbadadmin, please tell me you'll go back and watch Psfbadadmin3's highlight reel later, it was fantastic.")
+    format("Not intentionally! I was just so swept up in your battle! Psfbadadmin, please tell me you'll go back and watch Sabrina's highlight reel later, it was fantastic.")
 }
 text gText_TheGangsAllHere_LikeISaidWe{
     format("Like I said, we wear a lot of hats.")
 }
 text gText_TheGangsAllHere_IHeardWonderfulThings{
-    format("I heard wonderful things on the way over here, but I'll be certain to observe later. In any case, your package, Psfbadboss.")
+    format("I heard wonderful things on the way over here, but I'll be certain to observe later. In any case, your package, Rose.")
 }
 text gText_TheGangsAllHere_ImThrilledTheTiming{
     format("I'm thrilled the timing worked out, because the package actually isn't for me!")
@@ -283,13 +283,13 @@ text gText_TheGangsAllHere_WeKnowButNoPressure{
     format("We know. But no pressure. Enjoy your journey!")
 }
 text gText_TheGangsAllHere_TimeForNumber7{
-    format("Time for Psfcompany4 number 7. Shall we, Psfbadadmin?")
+    format("Time for Starbucks number 7. Shall we, Psfbadadmin?")
 }
 text gText_TheGangsAllHere_WeShall{
     format("We shall.")
 }
 text gText_TheGangsAllHere_FeelFreeToContinue{
-    format("Feel free to continue your tour without us, {PLAYER}. Greatly appreciate your help in the battles. Hopefully supporting me wasn't too exhausting! Ah, and if you haven't already visited Psfbadadmin3, go do so. They're on Marketing, the second floor.")
+    format("Feel free to continue your tour without us, {PLAYER}. Greatly appreciate your help in the battles. Hopefully supporting me wasn't too exhausting! Ah, and if you haven't already visited Sabrina, go do so. They're on Marketing, the second floor.")
 }
 movement TheGangsAllHere_PsfbadadminWalkToPlayer_Movement{
     face_right
@@ -308,7 +308,7 @@ movement FollowPlaceholder_Movement{
     walk_down
     step_end
 }
-movement TheGangsAllHere_PsfbadbossWalkToDoor_Movement{
+movement TheGangsAllHere_RoseWalkToDoor_Movement{
     walk_down
     walk_left * 3
     step_end
@@ -321,12 +321,12 @@ movement TheGangsAllHere_PsfbadadminWalkToDesk_Movement{
     delay_16 *2
 }
 
-movement TheGangsAllHere_GivePackageToPsfbadboss_Movement{
+movement TheGangsAllHere_GivePackageToRose_Movement{
     walk_in_place_up
     step_end
 }
 
-movement TheGangsAllHere_GivePackageToPsfchara1_Movement{
+movement TheGangsAllHere_GivePackageToPlayerChar_Movement{
     face_left
     walk_in_place_left
     step_end
@@ -338,7 +338,7 @@ movement TheGangsAllHere_MoveOutOfWay_Movement{
     step_end
 }
 
-movement TheGangsAllHere_PsfbadbossWalkOut_Movement{
+movement TheGangsAllHere_RoseWalkOut_Movement{
     walk_left * 5
     walk_up * 6
     step_end

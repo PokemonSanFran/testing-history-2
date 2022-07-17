@@ -1076,54 +1076,54 @@ Script_RemoveTint::
 .include "data/text/birch_speech.inc"
 
 .include "data/maps/BlackMap/scripts.inc"
-.include "data/maps/Psfcity8/scripts.inc"
-.include "data/maps/Psfcity8_Compound_1F/scripts.inc"
-.include "data/maps/Psfcity8_Compound_2F/scripts.inc"
-.include "data/maps/Psfcity8_PokemonCenter_1F/scripts.inc"
+.include "data/maps/SouthBay/scripts.inc"
+.include "data/maps/SouthBay_Compound_1F/scripts.inc"
+.include "data/maps/SouthBay_Compound_2F/scripts.inc"
+.include "data/maps/SouthBay_PokemonCenter_1F/scripts.inc"
 .include "data/maps/Psfroute17/scripts.inc"
-.include "data/maps/Psfcityy16/scripts.inc"
+.include "data/maps/BernalHeights/scripts.inc"
 .include "data/maps/Psfroute11/scripts.inc"
 .include "data/maps/Psfroute21/scripts.inc"
-.include "data/maps/Psfcity7/scripts.inc"
+.include "data/maps/Dogpatch/scripts.inc"
 .include "data/maps/Psfroute22/scripts.inc"
-.include "data/maps/Psfcity15/scripts.inc"
-.include "data/maps/Psfcity15_Gym/scripts.inc"
-.include "data/maps/Psfbadguy1Tower_1F/scripts.inc"
-.include "data/maps/Psfbadguy1Tower_10F/scripts.inc"
-.include "data/maps/Psfbadguy1Tower_7F/scripts.inc"
-.include "data/maps/Psfbadguy1Tower_Elevator/scripts.inc"
-.include "data/maps/Psfbadguy1Tower_2F/scripts.inc"
-.include "data/maps/Psfbadguy1Tower_5F/scripts.inc"
-.include "data/maps/Psfbadguy1Tower_11F/scripts.inc"
-.include "data/maps/Psfcity6/scripts.inc"
+.include "data/maps/SOMA/scripts.inc"
+.include "data/maps/SOMA_Gym/scripts.inc"
+.include "data/maps/YCombinatorTower_1F/scripts.inc"
+.include "data/maps/YCombinatorTower_10F/scripts.inc"
+.include "data/maps/YCombinatorTower_7F/scripts.inc"
+.include "data/maps/YCombinatorTower_Elevator/scripts.inc"
+.include "data/maps/YCombinatorTower_2F/scripts.inc"
+.include "data/maps/YCombinatorTower_5F/scripts.inc"
+.include "data/maps/YCombinatorTower_11F/scripts.inc"
+.include "data/maps/Mission/scripts.inc"
 .include "data/maps/Psfroute9/scripts.inc"
-.include "data/maps/Psfcity12/scripts.inc"
+.include "data/maps/Tenderloin/scripts.inc"
 .include "data/maps/Psfroute38/scripts.inc"
 .include "data/maps/Psfroute70/scripts.inc"
 .include "data/maps/Psfroute19/scripts.inc"
 .include "data/maps/Psfroute8/scripts.inc"
 .include "data/maps/Psfroute30/scripts.inc"
 .include "data/maps/Psfroute14/scripts.inc"
-.include "data/maps/Psfcity13/scripts.inc"
-.include "data/maps/Psfcity14/scripts.inc"
-.include "data/maps/Psfplace7/scripts.inc"
-.include "data/maps/Psfplace11/scripts.inc"
-.include "data/maps/Psfplace13/scripts.inc"
-.include "data/maps/Psfcity6_Gym/scripts.inc"
-.include "data/maps/Psfcity14_Gym/scripts.inc"
+.include "data/maps/Chinatown/scripts.inc"
+.include "data/maps/Japantown/scripts.inc"
+.include "data/maps/LombardStreet/scripts.inc"
+.include "data/maps/FerryBuilding/scripts.inc"
+.include "data/maps/FishermansWharf/scripts.inc"
+.include "data/maps/Mission_Gym/scripts.inc"
+.include "data/maps/Japantown_Gym/scripts.inc"
 .include "data/maps/Psfroute1/scripts.inc"
-.include "data/maps/Psfcity17/scripts.inc"
-.include "data/maps/Psfplace16/scripts.inc"
+.include "data/maps/Alameda/scripts.inc"
+.include "data/maps/OaklandFerry/scripts.inc"
 .include "data/maps/Psfroute72/scripts.inc"
 .include "data/maps/Psfroute12/scripts.inc"
-.include "data/maps/Psfcity9/scripts.inc"
+.include "data/maps/Oakland/scripts.inc"
 .include "data/maps/Psfroute63/scripts.inc"
-.include "data/maps/Psfcity11/scripts.inc"
-.include "data/maps/Psfcity11_Gym/scripts.inc"
-.include "data/maps/Psfcity11_BreedingCenter/scripts.inc"
-.include "data/maps/Psfcave7/scripts.inc"
-.include "data/maps/Psfplace9/scripts.inc"
-.include "data/maps/Psfplace9_Roof/scripts.inc"
+.include "data/maps/Berkeley/scripts.inc"
+.include "data/maps/Berkeley_Gym/scripts.inc"
+.include "data/maps/Berkeley_BreedingCenter/scripts.inc"
+.include "data/maps/Alcatraz/scripts.inc"
+.include "data/maps/FortPoint/scripts.inc"
+.include "data/maps/FortPoint_Roof/scripts.inc"
 
 ##CUTSCENES
 ##  .include "data/cutscenes/WiiWouldLikeToPlay.inc"
@@ -1213,126 +1213,126 @@ Script_RemoveTint::
 .include "data/cutscenes/WeCanStopYouActually.inc"
 
 
-.include "data/maps/Psfcity3/scripts.inc"
+.include "data/maps/Presidio/scripts.inc"
 
-.include "data/maps/Psfcity3_Mansion/scripts.inc"
+.include "data/maps/Presidio_Mansion/scripts.inc"
 
 .include "data/maps/Psfroute49/scripts.inc"
 
-.include "data/maps/Psfcity4/scripts.inc"
+.include "data/maps/Pacifica/scripts.inc"
 
 .include "data/maps/Psfroute5/scripts.inc"
 
 .include "data/maps/Psfroute7/scripts.inc"
 
-.include "data/maps/Psfcave9/scripts.inc"
+.include "data/maps/GldnGteWilds/scripts.inc"
 
-.include "data/maps/Psfcity2/scripts.inc"
+.include "data/maps/GldnGtePark/scripts.inc"
 
-.include "data/maps/Psfcity2_Gym/scripts.inc"
+.include "data/maps/GldnGtePark_Gym/scripts.inc"
 
-.include "data/maps/Psfcity18/scripts.inc"
+.include "data/maps/HaightAshbury/scripts.inc"
 
-.include "data/maps/Psfcity18_Gym/scripts.inc"
+.include "data/maps/HaightAshbury_Gym/scripts.inc"
 
 .include "data/maps/Psfroute43/scripts.inc"
 
-.include "data/maps/Psfplace3/scripts.inc"
+.include "data/maps/PaintedLadies/scripts.inc"
 
 .include "data/maps/Psfroute13/scripts.inc"
 
-.include "data/maps/Psfcity5/scripts.inc"
+.include "data/maps/Castro/scripts.inc"
 
-.include "data/maps/Psfcity5_Gym/scripts.inc"
+.include "data/maps/Castro_Gym/scripts.inc"
 
-.include "data/maps/Psfplace14_Construction/scripts.inc"
+.include "data/maps/ChaseCenter_Construction/scripts.inc"
 
-.include "data/maps/Psfplace17/scripts.inc"
+.include "data/maps/GldnGteBridge/scripts.inc"
 
-.include "data/maps/Psfcave1/scripts.inc"
+.include "data/maps/RobinWillTunnel/scripts.inc"
 
-.include "data/maps/Psfcity10/scripts.inc"
+.include "data/maps/Marin/scripts.inc"
 
 .include "data/maps/Psfroute61/scripts.inc"
 
-.include "data/maps/Psfcave2/scripts.inc"
+.include "data/maps/MuirWoods/scripts.inc"
 
-.include "data/maps/Psfcave1_B1F/scripts.inc"
+.include "data/maps/RobinWillTunnel_B1F/scripts.inc"
 
-.include "data/maps/Psfcave2_Inner/scripts.inc"
+.include "data/maps/MuirWoods_Inner/scripts.inc"
 
-.include "data/maps/Psfcave1_B2F/scripts.inc"
+.include "data/maps/RobinWillTunnel_B2F/scripts.inc"
 
-.include "data/maps/Psfplace2/scripts.inc"
+.include "data/maps/NavalBase/scripts.inc"
 
-.include "data/maps/Psfplace14_Entrance/scripts.inc"
+.include "data/maps/ChaseCenter_Entrance/scripts.inc"
 
-.include "data/maps/Psfplace14_Lockers/scripts.inc"
+.include "data/maps/ChaseCenter_Lockers/scripts.inc"
 
-.include "data/maps/Psfplace14_Skybox/scripts.inc"
+.include "data/maps/ChaseCenter_Skybox/scripts.inc"
 
-.include "data/maps/Psfplace14_Arena/scripts.inc"
+.include "data/maps/ChaseCenter_Arena/scripts.inc"
 
-.include "data/maps/Psfplace14_Stands/scripts.inc"
+.include "data/maps/ChaseCenter_Stands/scripts.inc"
 
-.include "data/maps/Psfcity3_Compound_1F/scripts.inc"
+.include "data/maps/Presidio_Compound_1F/scripts.inc"
 
-.include "data/maps/Psfcave5/scripts.inc"
+.include "data/maps/TreasureIsland/scripts.inc"
 
-.include "data/maps/Psfcave5_Restaurant/scripts.inc"
+.include "data/maps/TreasureIsland_Restaurant/scripts.inc"
 
-.include "data/maps/Psfcave7_B1F/scripts.inc"
+.include "data/maps/Alcatraz_B1F/scripts.inc"
 
-.include "data/maps/Psfcave7_B2F/scripts.inc"
+.include "data/maps/Alcatraz_B2F/scripts.inc"
 
-	.include "data/maps/Psfcity15_Newspaper/scripts.inc"
+	.include "data/maps/SOMA_Newspaper/scripts.inc"
 
-	.include "data/maps/Psfcity6_Consulting/scripts.inc"
+	.include "data/maps/Mission_Consulting/scripts.inc"
 
-	.include "data/maps/Psfcity5_BallShop/scripts.inc"
+	.include "data/maps/Castro_BallShop/scripts.inc"
 
 	.include "data/maps/Psfroute62/scripts.inc"
 
-	.include "data/maps/Psfcave3/scripts.inc"
+	.include "data/maps/LakeMerritt/scripts.inc"
 
 	.include "data/maps/Psfroute18/scripts.inc"
 
-	.include "data/maps/Psfplace1/scripts.inc"
+	.include "data/maps/TwinPeaks/scripts.inc"
 
 	.include "data/maps/OkayLetsFixit_Flashback/scripts.inc"
 
-	.include "data/maps/Psfcity1/scripts.inc"
+	.include "data/maps/Sunset/scripts.inc"
 
-	.include "data/maps/Psfcity1_Apartment/scripts.inc"
+	.include "data/maps/Sunset_Apartment/scripts.inc"
 
-	.include "data/maps/Psfcity12_Library/scripts.inc"
+	.include "data/maps/Tenderloin_Library/scripts.inc"
 
-	.include "data/maps/Psfcity14_Ramen/scripts.inc"
+	.include "data/maps/Japantown_Ramen/scripts.inc"
 
-	.include "data/maps/Psfcity10_EliteHome/scripts.inc"
+	.include "data/maps/Marin_EliteHome/scripts.inc"
 
-	.include "data/maps/Psfcity17_Psfnativerival_House/scripts.inc"
+	.include "data/maps/Alameda_Archer_House/scripts.inc"
 
-	.include "data/maps/Psfcity9_Warehouse/scripts.inc"
+	.include "data/maps/Oakland_Warehouse/scripts.inc"
 
 	.include "data/maps/LayoutTester/scripts.inc"
 
-	.include "data/maps/Psfcity17_PostEarthquake/scripts.inc"
+	.include "data/maps/Alameda_PostEarthquake/scripts.inc"
 
 	.include "data/maps/Psfroute25/scripts.inc"
 
-	.include "data/maps/Psfcave10/scripts.inc"
+	.include "data/maps/UndergroundLab/scripts.inc"
 
-	.include "data/maps/Psfcity1_Psfbadadmin3_House/scripts.inc"
+	.include "data/maps/Sunset_Sabrina_House/scripts.inc"
 
-	.include "data/maps/Psfbadguy1Tower_3F/scripts.inc"
+	.include "data/maps/YCombinatorTower_3F/scripts.inc"
 
-	.include "data/maps/Psfbadguy1Tower_4F/scripts.inc"
+	.include "data/maps/YCombinatorTower_4F/scripts.inc"
 
-	.include "data/maps/Psfbadguy1Tower_6F/scripts.inc"
+	.include "data/maps/YCombinatorTower_6F/scripts.inc"
 
-	.include "data/maps/Psfbadguy1Tower_8F/scripts.inc"
+	.include "data/maps/YCombinatorTower_8F/scripts.inc"
 
-	.include "data/maps/Psfbadguy1Tower_9F/scripts.inc"
+	.include "data/maps/YCombinatorTower_9F/scripts.inc"
 
 	.include "data/maps/WeCanStopYouActually_Cutscene/scripts.inc"

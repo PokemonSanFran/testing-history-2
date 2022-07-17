@@ -62,7 +62,7 @@
 #define DEPT_STORE_FLOORNUM_11F      14
 #define DEPT_STORE_FLOORNUM_ROOFTOP  15
 
-// Psfbadguy1Tower Floor Numbers
+// YCombinatorTower Floor Numbers
 #define PSFBADGUY1TOWER_FLOORNUM_1F        1
 #define PSFBADGUY1TOWER_FLOORNUM_2F        2
 #define PSFBADGUY1TOWER_FLOORNUM_3F        3

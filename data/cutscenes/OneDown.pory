@@ -128,7 +128,7 @@ text gText_OneDown_ThanksAndYouve {
 }
 
 text gText_OneDown_IDidntThinkIHad {
-    format("I didn't think I had it in me, to be honest. Psfgood- Psfelite4 knew better, I guess.")
+    format("I didn't think I had it in me, to be honest. Psfgood- Wikstrom knew better, I guess.")
 }
 
 text gText_OneDown_SoundsLikeWereBoth {
@@ -148,7 +148,7 @@ text gText_OneDown_YoureGonnaCall {
 }
 
 text gText_OneDown_WeGetQuakes {
-    format("We get quakes all the time. The Psffaultline will do that, you know? I'm sure they all start to feel the same.")
+    format("We get quakes all the time. The SanAndreasFault will do that, you know? I'm sure they all start to feel the same.")
 }
 
 text gText_OneDown_GuessYoureRight {
@@ -156,7 +156,7 @@ text gText_OneDown_GuessYoureRight {
 }
 
 text gText_OneDown_GetSomeRest {
-    format("I know its been a long day, {PLAYER}, you should get some rest. You're still staying at Psfnativerival's place in Psfcity17, right?")
+    format("I know its been a long day, {PLAYER}, you should get some rest. You're still staying at Archer's place in Alameda, right?")
 }
 
 movement OneDown_WalkToPlayer {
@@ -170,7 +170,7 @@ movement OneDown_WalkOffScreen {
         step_end
 }
 
-movement OneDown_PsfgoodadminWalkAway {
+movement OneDown_ArianaWalkAway {
     walk_left
         walk_down * 7
         step_end

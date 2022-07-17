@@ -414,7 +414,7 @@ gText_HousingProtest_AintGonnaBeNothing::
 	.string "we done...$"
 
 gText_HousingProtest_PeopleCantStayHere::
-	.string "If we, the people of Psfcity9 can't\n"
+	.string "If we, the people of Oakland can't\n"
 	.string "stay here, nobody can. Let's bring it\l"
 	.string "down!$"
 
@@ -465,7 +465,7 @@ gText_HousingProtest_FineWithMe::
 
 gText_HousingProtest_GoPoundSand::
 	.string "Go pound sand, and stay out of\n"
-	.string "Psfgoodteam's way.$"
+	.string "TeamRocket's way.$"
 
 gText_HousingProtest_ThisIsNotHowThis::
 	.string "Shit... this is not how this was supposed\n"
@@ -480,14 +480,14 @@ gText_HousingProtest_KeepOnLicking::
 
 gText_HousingProtest_HasATendency::
 	.string "Thank you very much. You're right,\n"
-	.string "Psfgoodteam has a tendency to pick on\l"
+	.string "TeamRocket has a tendency to pick on\l"
 	.string "the defenseless like me.$"
 
 gText_HousingProtest_WhyWereProtesting::
 	.string "Why were people protesting?$"
 
 gText_HousingProtest_EntitledToLiveAnyWhere::
-	.string "Some of the citizens of Psfcity9 feel\n"
+	.string "Some of the citizens of Oakland feel\n"
 	.string "that they are... entitled to live\l"
 	.string "anywhere within their city limits.$"
 

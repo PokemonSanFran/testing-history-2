@@ -128,7 +128,7 @@ EnterTheMaster_CompleteMaze_Dialogue::
 
 EnterTheMaster_ClearingIntro_Dialogue::
 	addvar VAR_ROUTE116_STATE, 1
-	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachPsfelite3
+	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachSiebold
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
@@ -234,7 +234,7 @@ EnterTheMaster_Pace:
 	face_down
 	step_end
 
-EnterTheMaster_ApproachPsfelite3:
+EnterTheMaster_ApproachSiebold:
 	walk_up
 	step_end
 
@@ -259,11 +259,11 @@ gText_EnterTheMaster_HowDoYouThink::
 
 gText_EnterTheMaster_YouKnow::
 	.string "You know, I'm really sick of\n"
-	.string "Psfgoodteam's shit. Its their fault\l"
+	.string "TeamRocket's shit. Its their fault\l"
 	.string "we're stuck in this stupid forest.$"
 
 gText_EnterTheMaster_IThoughtGymLeaders::
-	.string "I thought Psfregion1's Gym Leaders\n"
+	.string "I thought SanFran's Gym Leaders\n"
 	.string "would be tougher. I wonder how their\l"
 	.string "old Elite Four stacks up to Unova's?$"
 
@@ -287,18 +287,18 @@ gText_EnterTheMaster_TheyreGettingPaid::
 	.string "They're getting paid.$"
 
 gText_EnterTheMaster_WelcomeTo::
-	.string "Psftransrival! {PLAYER}! Welcome to\n"
-	.string "Psfcave2. Excellent work so far!$"
+	.string "Bianca! {PLAYER}! Welcome to\n"
+	.string "MuirWoods. Excellent work so far!$"
 
 gText_EnterTheMaster_ThanksYoure::
-	.string "Thanks. You're Psfelite3?$"
+	.string "Thanks. You're Siebold?$"
 
 gText_EnterTheMaster_AndMyNotebook::
 	.string "Yeah! And my notebook?$"
 
 gText_EnterTheMaster_GettingThemToBattle::
 	.string "I hope Pokémon 1 and Pokémon 2 in\n"
-	.string "Psfcave1 weren't too much trouble.\l"
+	.string "RobinWillTunnel weren't too much trouble.\l"
 	.string "Getting them to battle without my\l"
 	.string "direct commands was certainly a\l"
 	.string "challenge.$"

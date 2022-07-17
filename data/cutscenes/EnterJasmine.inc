@@ -1,56 +1,56 @@
-EnterPsfleader6_Event_Script::
+EnterJasmine_Event_Script::
 	switch VAR_GYM_6_STATE
-	case 3, EnterPsfleader6_Event_Script_2
-	case 4, EnterPsfleader6_Event_Script_3
-	case 5, EnterPsfleader6_Event_Script_4
-	goto EnterPsfleader6_Intro_Dialogue
+	case 3, EnterJasmine_Event_Script_2
+	case 4, EnterJasmine_Event_Script_3
+	case 5, EnterJasmine_Event_Script_4
+	goto EnterJasmine_Intro_Dialogue
 	return
 
-EnterPsfleader6_Event_Script_2:
-	goto EnterPsfleader6_StartGymBattle_Script
+EnterJasmine_Event_Script_2:
+	goto EnterJasmine_StartGymBattle_Script
 	return
 
-EnterPsfleader6_Event_Script_3:
-	goto EnterPsfleader6_PostGymBattle1_Dialogue
+EnterJasmine_Event_Script_3:
+	goto EnterJasmine_PostGymBattle1_Dialogue
 	return
 
-EnterPsfleader6_Event_Script_4:
-	goto EnterPsfleader6_PostGymBattle2_Dialogue
+EnterJasmine_Event_Script_4:
+	goto EnterJasmine_PostGymBattle2_Dialogue
 	return
 
 
-EnterPsfleader6_Intro_Dialogue::
+EnterJasmine_Intro_Dialogue::
 	lock
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader6_WatchYourStep, MSGBOX_NPC
+	msgbox gText_EnterJasmine_WatchYourStep, MSGBOX_NPC
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader6_GrowingAGarden
+	msgbox gText_EnterJasmine_GrowingAGarden
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader6_ItsEasyToDestroy
+	msgbox gText_EnterJasmine_ItsEasyToDestroy
 	callnative ClearMugshot
 	setvar VAR_GYM_6_STATE, 3
 	call Common_EventScript_SaveGame
 	closemessage
-	goto EnterPsfleader6_StartGymBattle_Script
+	goto EnterJasmine_StartGymBattle_Script
 	return
 
 
-EnterPsfleader6_StartGymBattle_Script::
+EnterJasmine_StartGymBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
-	trainerbattle_single TRAINER_WINONA_1, gText_EnterPsfleader6_LetsSeeHowCareful, gText_EnterPsfleader6_WrongSoil, EnterPsfleader6_PostGymBattle_Script, NO_MUSIC
+	trainerbattle_single TRAINER_WINONA_1, gText_EnterJasmine_LetsSeeHowCareful, gText_EnterJasmine_WrongSoil, EnterJasmine_PostGymBattle_Script, NO_MUSIC
 	return
 
 
-EnterPsfleader6_PostGymBattle_Script::
+EnterJasmine_PostGymBattle_Script::
 	lock
 	setflag FLAG_BADGE06_GET
 	addvar VAR_STORYLINE_STATE, 1
 	addvar VAR_GYM_6_STATE, 1
-	msgbox gText_EnterPsfleader6_BadgeGet
+	msgbox gText_EnterJasmine_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM06
 	closemessage
@@ -58,65 +58,65 @@ EnterPsfleader6_PostGymBattle_Script::
 	end
 
 
-EnterPsfleader6_PostGymBattle1_Dialogue::
+EnterJasmine_PostGymBattle1_Dialogue::
 	addvar VAR_GYM_6_STATE, 1
 	lock
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader6_ThatTechnicalMachineWill, MSGBOX_NPC
+	msgbox gText_EnterJasmine_ThatTechnicalMachineWill, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
 	release
 	end
 
 
-EnterPsfleader6_PostGymBattle2_Dialogue::
+EnterJasmine_PostGymBattle2_Dialogue::
 	lock
 	setvar VAR_0x8000, MUGSHOT_JASMINE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader6_AfterAGoodHaircut, MSGBOX_NPC
+	msgbox gText_EnterJasmine_AfterAGoodHaircut, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
 	release
 	end
 
 
-gText_EnterPsfleader6_WatchYourStep::
+gText_EnterJasmine_WatchYourStep::
 	.string "Watch your step, there are thousands\n"
 	.string "of different seeds under your feet. It\l"
 	.string "was an incredible amount of work to get\l"
 	.string "all these micro-climates in perfect\l"
 	.string "working order…$"
 
-gText_EnterPsfleader6_GrowingAGarden::
+gText_EnterJasmine_GrowingAGarden::
 	.string "Growing a garden is much like raising a\n"
 	.string "team of Pokémon - they require\l"
 	.string "constant care and attention, and even\l"
 	.string "the slightest miscalculation can ruin\l"
 	.string "the entire crop.$"
 
-gText_EnterPsfleader6_ItsEasyToDestroy::
+gText_EnterJasmine_ItsEasyToDestroy::
 	.string "It's easy to destroy a flower bed with\n"
 	.string "poor planning, but luckily, Pokémon are\l"
 	.string "more resilient.$"
 
-gText_EnterPsfleader6_LetsSeeHowCareful::
+gText_EnterJasmine_LetsSeeHowCareful::
 	.string "Let's see how careful and diligent\n"
 	.string "you've been in your cultivation.$"
 
-gText_EnterPsfleader6_WrongSoil::
+gText_EnterJasmine_WrongSoil::
 	.string "Wrong soil? Should I try partial shade?$"
 
-gText_EnterPsfleader6_ThatTechnicalMachineWill::
+gText_EnterJasmine_ThatTechnicalMachineWill::
 	.string "That Technical Machine will plant a seed\n"
 	.string "in your Pokémon's mind, allowing them to\l"
 	.string "use the move Psfgymattack6.$"
 
-gText_EnterPsfleader6_AfterAGoodHaircut::
+gText_EnterJasmine_AfterAGoodHaircut::
 	.string "After a good haircut and when I'm done\n"
 	.string "repotting everybody, I'll have to get\l"
 	.string "them some battle exposure against\l"
 	.string "you!$"
 
-gText_EnterPsfleader6_BadgeGet::
-	.string "You received the Psfbadge6 Badge!$"
+gText_EnterJasmine_BadgeGet::
+	.string "You received the JasmineBadge Badge!$"

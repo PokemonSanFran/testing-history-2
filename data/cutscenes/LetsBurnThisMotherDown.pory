@@ -229,7 +229,7 @@ script LetsBurnThisMotherDown_MissionComplete_Dialogue {
 }
 
 text gText_LetsBurnThisMotherDown_WeStillNeedToFind {
-    format("We still need to find their new base of operations and their leader, Psfgoodboss. Ever since we shut down Psfplace2, we haven't been able to make any progress on either of these fronts.")
+    format("We still need to find their new base of operations and their leader, Giovanni. Ever since we shut down NavalBase, we haven't been able to make any progress on either of these fronts.")
 }
 
 text gText_LetsBurnThisMotherDown_YoureCloserToThe {
@@ -237,7 +237,7 @@ text gText_LetsBurnThisMotherDown_YoureCloserToThe {
 }
 
 text gText_LetsBurnThisMotherDown_INeedToTalk {
-    format("(I need to talk to Psfnativerival… I think I can still save him. I need to get to Psfcave1.)")
+    format("(I need to talk to Archer… I think I can still save him. I need to get to RobinWillTunnel.)")
 }
 
 text gText_LetsBurnThisMotherDown_YouChoseTheWrong {
@@ -245,12 +245,12 @@ text gText_LetsBurnThisMotherDown_YouChoseTheWrong {
 }
 
 text gText_LetsBurnThisMotherDown_IKnowYouWant {
-    format("Psfnativerival, I know you want to do good. But this isn't the way! If you want real meaningful change, let's work with them. They're good people. We all want the same thing!")
+    format("Archer, I know you want to do good. But this isn't the way! If you want real meaningful change, let's work with them. They're good people. We all want the same thing!")
 }
 
 text gText_LetsBurnThisMotherDown_YouDontThinkWeve {
     format("You don't think we've tried that? You just got here, {PLAYER}
-            . People here in Psfcave1, died trying to do things the right way. They don't care.")
+            . People here in RobinWillTunnel, died trying to do things the right way. They don't care.")
 }
 
 text gText_LetsBurnThisMotherDown_TheyIgnoreUs {
@@ -295,7 +295,7 @@ text gText_LetsBurnThisMotherDown_IFollowedYou {
 }
 
 text gText_LetsBurnThisMotherDown_NoITheyreNot {
-    format("No, I… they're not like the rest of Psfgoodteam. I thought we could work with them. I was wrong.")
+    format("No, I… they're not like the rest of TeamRocket. I thought we could work with them. I was wrong.")
 }
 
 text gText_LetsBurnThisMotherDown_YeahNoShit {
@@ -320,11 +320,11 @@ text gText_LetsBurnThisMotherDown_YoureYoung {
 }
 
 text gText_LetsBurnThisMotherDown_ImStillShocked {
-    format("I'm still shocked they were using the inside of Psfcave1. Absolutely insane.")
+    format("I'm still shocked they were using the inside of RobinWillTunnel. Absolutely insane.")
 }
 
 text gText_LetsBurnThisMotherDown_ThePoliceTold {
-    format("The police told me they're going to treat the entire island as a crime scene and see if they can find anything else regarding Psfgoodteam.")
+    format("The police told me they're going to treat the entire island as a crime scene and see if they can find anything else regarding TeamRocket.")
 }
 
 movement LetsBurnThisMotherDown_WalkTowardsPlayer {

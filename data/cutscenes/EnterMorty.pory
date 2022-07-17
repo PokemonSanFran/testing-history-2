@@ -3,74 +3,74 @@ const PSFLEADER2 = 1
 
 //VAR_GYM_4_STATE
 //1: Solved puzzles, ready to fight
-//2: Psfleader4 has walked to the battlefield
-//3: Saved in front of Psfleader4
-//4: Defeated Psfleader4
+//2: Morty has walked to the battlefield
+//3: Saved in front of Morty
+//4: Defeated Morty
 //5: Hear explanation of badge and TM
 
-script EnterPsfleader4_Event_Script {
+script EnterMorty_Event_Script {
     switch (var (VAR_GYM_4_STATE)) {
     case 3:
-        goto(EnterPsfleader4_StartGymBattle_Script)
+        goto(EnterMorty_StartGymBattle_Script)
     case 4:
-        goto(EnterPsfleader4_PostDefeat1_Dialogue)
+        goto(EnterMorty_PostDefeat1_Dialogue)
     case 5:
-        goto(EnterPsfleader4_PostDefeat2_Dialogue)
+        goto(EnterMorty_PostDefeat2_Dialogue)
     default:
-        goto(EnterPsfleader4_Psfleader4Intro_Dialogue)
+        goto(EnterMorty_MortyIntro_Dialogue)
     }
 }
 
-script EnterPsfleader4_Psfleader4Intro_Dialogue {
+script EnterMorty_MortyIntro_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_MORTY)
         callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_SuhDude,MSGBOX_NPC)
+msgbox(gText_EnterMorty_SuhDude,MSGBOX_NPC)
 
 setvar(VAR_0x8000, MUGSHOT_MORTY)
 callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_EvenBeenBattleResort,MSGBOX_NPC)
+msgbox(gText_EnterMorty_EvenBeenBattleResort,MSGBOX_NPC)
 
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_No,MSGBOX_NPC)
+msgbox(gText_EnterMorty_No,MSGBOX_NPC)
 
         setvar(VAR_0x8000, MUGSHOT_MORTY)
         callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_BruhYouveGotta,MSGBOX_NPC)
+msgbox(gText_EnterMorty_BruhYouveGotta,MSGBOX_NPC)
 
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_OhUhSoundsCool,MSGBOX_NPC)
+msgbox(gText_EnterMorty_OhUhSoundsCool,MSGBOX_NPC)
 
         setvar(VAR_0x8000, MUGSHOT_MORTY)
         callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_ForRealISwear,MSGBOX_NPC)
+msgbox(gText_EnterMorty_ForRealISwear,MSGBOX_NPC)
 
 setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_SoundsExciting,MSGBOX_NPC)
+msgbox(gText_EnterMorty_SoundsExciting,MSGBOX_NPC)
 
     setvar(VAR_GYM_4_STATE, 3)
     call(Common_EventScript_SaveGame)
     closemessage
-    goto(EnterPsfleader4_StartGymBattle_Script)
+    goto(EnterMorty_StartGymBattle_Script)
 }
 
-script EnterPsfleader4_StartGymBattle_Script {
+script EnterMorty_StartGymBattle_Script {
     setvar(VAR_0x8000, MUGSHOT_MORTY)
     callnative(DrawMugshot)
-    trainerbattle_single(TRAINER_FLANNERY_1, gText_EnterPsfleader4_HaHaNoYeah, gText_EnterPsfleader4_ImNotTrippin, EnterPsfleader4_Psfleader4Defeated_Script, NO_MUSIC)
+    trainerbattle_single(TRAINER_FLANNERY_1, gText_EnterMorty_HaHaNoYeah, gText_EnterMorty_ImNotTrippin, EnterMorty_MortyDefeated_Script, NO_MUSIC)
 }
 
-script EnterPsfleader4_Psfleader4Defeated_Script {
+script EnterMorty_MortyDefeated_Script {
     lock
     setflag(FLAG_BADGE04_GET)
     addvar(VAR_GYM_4_STATE, 1)
 
     setvar(VAR_0x8000, MUGSHOT_MORTY)
         callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_ThatBattleWasHype,MSGBOX_NPC)
-    msgbox(gText_EnterPsfleader4_BadgeGet)
+msgbox(gText_EnterMorty_ThatBattleWasHype,MSGBOX_NPC)
+    msgbox(gText_EnterMorty_BadgeGet)
     call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM17)
     closemessage
@@ -80,11 +80,11 @@ msgbox(gText_EnterPsfleader4_ThatBattleWasHype,MSGBOX_NPC)
     end
 }
 
-script EnterPsfleader4_PostDefeat1_Dialogue {
+script EnterMorty_PostDefeat1_Dialogue {
     lock
     setvar(VAR_0x8000, MUGSHOT_MORTY)
     callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_KeepingTheBabiesSafe,MSGBOX_NPC)
+msgbox(gText_EnterMorty_KeepingTheBabiesSafe,MSGBOX_NPC)
     callnative(ClearMugshot)
     addvar(VAR_GYM_4_STATE, 1)
     closemessage
@@ -92,78 +92,78 @@ msgbox(gText_EnterPsfleader4_KeepingTheBabiesSafe,MSGBOX_NPC)
     end
 }
 
-script EnterPsfleader4_PostDefeat2_Dialogue {
+script EnterMorty_PostDefeat2_Dialogue {
     lock
         setvar(VAR_0x8000, MUGSHOT_MORTY)
         callnative(DrawMugshot)
-msgbox(gText_EnterPsfleader4_HeadOutToHoenn,MSGBOX_NPC)
+msgbox(gText_EnterMorty_HeadOutToHoenn,MSGBOX_NPC)
 		callnative(ClearMugshot)
     closemessage
     release
     end
 }
 
-text gText_EnterPsfleader4_SuhDude {
-        format("Suh dude. Name's Psfleader4. Sick job making it up here!")
+text gText_EnterMorty_SuhDude {
+        format("Suh dude. Name's Morty. Sick job making it up here!")
 }
 
-text gText_EnterPsfleader4_EvenBeenBattleResort {
+text gText_EnterMorty_EvenBeenBattleResort {
         format("Ever been to the Battle Resort?")
 }
 
-text gText_EnterPsfleader4_No {
+text gText_EnterMorty_No {
         format("... no?")
 }
 
-text gText_EnterPsfleader4_BruhYouveGotta {
+text gText_EnterMorty_BruhYouveGotta {
         format("Bruh, you've gotta go some day. Sickest place to breed Pokémon in the WORLD. And I've been to them all. The breeze in your hair, the sand in your tires, the faint smell of ocean... man that shit just hits, you know? Gets me all fired up!")
 }
 
-text gText_EnterPsfleader4_OhUhSoundsCool {
+text gText_EnterMorty_OhUhSoundsCool {
         format("Oh uh, sounds cool I guess...")
 }
 
-text gText_EnterPsfleader4_ForRealISwear {
-        format("For real, I swear, the Eggs like... prefer the quiet environment or something. Like yeah, these Psfcity11 perks is hella crisp, but there's something about being out there, riding back and forth, that really does it for me. It's like... meditation or some shit, fasho. I be straight GIGGIN'.")
+text gText_EnterMorty_ForRealISwear {
+        format("For real, I swear, the Eggs like... prefer the quiet environment or something. Like yeah, these Berkeley perks is hella crisp, but there's something about being out there, riding back and forth, that really does it for me. It's like... meditation or some shit, fasho. I be straight GIGGIN'.")
 }
 
-text gText_EnterPsfleader4_SoundsExciting {
+text gText_EnterMorty_SoundsExciting {
         format("Sounds exciting. Or relaxing? I can't really tell.")
 }
 
-text gText_EnterPsfleader4_HaHaNoYeah {
+text gText_EnterMorty_HaHaNoYeah {
         format("Ha ha, no, yeah. All right, I know you didn't come here to talk about Eggs. You tryna scramble?")
 }
 
-text gText_EnterPsfleader4_DamnSonYouHit {
+text gText_EnterMorty_DamnSonYouHit {
         format("Damn son, you hit hard!")
 }
 
-text gText_EnterPsfleader4_AightTimeToRep {
-        format("Aight, time to rep Psfcity11 strong!")
+text gText_EnterMorty_AightTimeToRep {
+        format("Aight, time to rep Berkeley strong!")
 }
 
-text gText_EnterPsfleader4_YourSquadIsHella {
+text gText_EnterMorty_YourSquadIsHella {
         format("Your squad is hella over easy.")
 }
 
-text gText_EnterPsfleader4_ImNotTrippin {
+text gText_EnterMorty_ImNotTrippin {
         format("I'm not trippin' - that was hella tight. Harder than a 15-minute egg.")
 }
 
-text gText_EnterPsfleader4_ThatBattleWasHype {
+text gText_EnterMorty_ThatBattleWasHype {
         format("That battle was HYPE! I fuck with that skill, mad heavy. You earned this.")
 }
 
-text gText_EnterPsfleader4_KeepingTheBabiesSafe {
+text gText_EnterMorty_KeepingTheBabiesSafe {
         format("Protect is for keeping the babies safe, like an eggshell! Just don't use it over and over and over again, ‘cause it gets real janky, real quick, like an eggshell.")
 }
 
-text gText_EnterPsfleader4_HeadOutToHoenn {
+text gText_EnterMorty_HeadOutToHoenn {
         format("I'm gonna head out to Hoenn and breed a whole new squad! I can't wait to fight you again, {PLAYER}
         .")
 }
 
-text gText_EnterPsfleader4_BadgeGet{
-	format("You received the Psfbadge4 Badge!")
+text gText_EnterMorty_BadgeGet{
+	format("You received the MortyBadge Badge!")
 }

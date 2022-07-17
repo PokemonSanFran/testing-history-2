@@ -19,9 +19,9 @@ script AlwaysWatchingWazowski_MovePlayerIntoPlace_Script{
         getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
         if(var(VAR_TEMP_0) == 7){
-            applymovement(PLAYER,Psfchara1DeskWalkFromLeft_Movement)
+            applymovement(PLAYER,PlayerCharDeskWalkFromLeft_Movement)
         }   else {
-            applymovement(PLAYER,Psfchara1DeskWalkFromRight_Movement)
+            applymovement(PLAYER,PlayerCharDeskWalkFromRight_Movement)
         }
         waitmovement(0)
 
@@ -143,11 +143,11 @@ text gText_AlwaysWatchingWazowski_IImagineAllTheScreens{
 }
 
 text gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime{
-    format("I wish Psfbadadmin1 had picked a different time to tell you to come visit. I have at least 493 more minutes of work, and don't have the 12 minutes required to appropriately entertain you...")
+    format("I wish Oak had picked a different time to tell you to come visit. I have at least 493 more minutes of work, and don't have the 12 minutes required to appropriately entertain you...")
 }
 
 text gText_AlwaysWatchingWazowski_IWishYouHadVisited{
-    format("I wish you had visited Psfbadboss first. I have at least 493 more minutes of work and don't have the 12 minutes required to appropriately entertain you...")
+    format("I wish you had visited Rose first. I have at least 493 more minutes of work and don't have the 12 minutes required to appropriately entertain you...")
 }
 
 text gText_AlwaysWatchingWazowski_WaitHowDidYouKnow{
@@ -159,7 +159,7 @@ text gText_AlwaysWatchingWazowski_LookAroundDoYouThink{
 }
 
 text gText_AlwaysWatchingWazowski_SecurityUsedToAlsoPerform{
-    format("Psfbadguy1 security used to also perform surveillance, but my team was more than efficient enough to perform that on top of their existing duties.")
+    format("YCombinator security used to also perform surveillance, but my team was more than efficient enough to perform that on top of their existing duties.")
 }
 
 text gText_AlwaysWatchingWazowski_OhOkayYeah{
@@ -214,13 +214,13 @@ text gText_AlwaysWatchingWazowski__IgnorePlayer{
     format("...")
 }
 
-movement Psfchara1DeskWalkFromLeft_Movement{
+movement PlayerCharDeskWalkFromLeft_Movement{
     walk_right
         face_up
         step_end
 }
 
-movement Psfchara1DeskWalkFromRight_Movement{
+movement PlayerCharDeskWalkFromRight_Movement{
     walk_left *2
         face_up
         step_end

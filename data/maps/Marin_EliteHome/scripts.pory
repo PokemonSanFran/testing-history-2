@@ -1,0 +1,36 @@
+mapscripts Marin_EliteHome_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Marin_EliteHome_OnTransition)
+    }
+}
+
+script Marin_EliteHome_OnTransition {
+    if (var(VAR_STORYLINE_STATE) < 100){//If player is not in the true timeline, Siebold is not in their home
+        call(MaskOff_HideObject_Script) 
+    }
+}
+
+script Marin_EliteHome_PictureFrame_Dialogue {
+    lock
+
+        if (var(VAR_LILYCOVE_CITY_STATE)> 2){
+            call(MaskOff_QuestK_Dialogue)
+        } elif (var(VAR_ROUTE116_STATE) > 4){
+            msgbox(gText_Marin_EliteHome_ADigitalPhoto,MSGBOX_AUTOCLOSE)
+        } else {
+            msgbox(gText_Marin_EliteHome_ADigitalPhoto_Unknown,MSGBOX_AUTOCLOSE)
+        }
+
+    release
+        end
+}
+
+text gText_Marin_EliteHome_ADigitalPhoto_Unknown {
+    format("A digital photo frame. The picture being displayed shows two people together at a ramen restaurant.")
+}
+
+text gText_Marin_EliteHome_ADigitalPhoto {
+    format("A digital photo frame. The picture being displayed shows Siebold with somebody at a ramen restaurant.")
+}
+
+

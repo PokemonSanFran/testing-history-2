@@ -33,6 +33,6 @@ bool8 ShouldShowBoxWasFullMessage(void);
 void SetPCBoxToSendMon(u8 boxId);
 u8 GetNumberOfBadges(void);
 bool32 GetMegaEvolutionPartyMember(u16 species, int x, int IsEvolution);
-u8 CheckNumPsfcave7ExhibitDefeated(void);
+u8 CheckNumAlcatrazExhibitDefeated(void);
 
 #endif // GUARD_FIELD_SPECIALS_H

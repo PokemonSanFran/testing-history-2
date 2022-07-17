@@ -40,7 +40,7 @@ script AaandWereBack_WarpToCompound_Script {
         }
 }
 
-script AaandWereBack_Psftransrival_Dialogue {
+script AaandWereBack_Bianca_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_AaandWereBack_WhatsYourProgress,MSGBOX_NPC)
@@ -89,11 +89,11 @@ script AaandWereBack_FerryRepaired_Dialogue {
 }
 
 text gText_AaandWereBack_GotAllThree {
-    format("I've got all three Badges from this side of the mainland. The ferry to Psfcity9 looks like it's going to be broken utnil at least tomorrow, and I can't head west without Go-Goggles. It's been a long day... I think I should head back to Psfcity8 and call it a night.")
+    format("I've got all three Badges from this side of the mainland. The ferry to Oakland looks like it's going to be broken utnil at least tomorrow, and I can't head west without Go-Goggles. It's been a long day... I think I should head back to SouthBay and call it a night.")
 }
 
 text gText_AaandWereBack_Question {
-    format("Do you want to go back to Psfcity8?")
+    format("Do you want to go back to SouthBay?")
 }
 
 text gText_AaandWereBack_WhatsYourProgress {
@@ -105,7 +105,7 @@ text gText_AaandWereBack_OnlyThree {
 }
 
 text gText_AaandWereBack_YeahThatBusted {
-    format("Yeah, that busted ferry sucks. I'm going to challenge the Psfcity5 and Psfcity18 Gyms tomorrow, and the ferry will definately be fixed after that, so Psfcity11 Gym will be last.")
+    format("Yeah, that busted ferry sucks. I'm going to challenge the Castro and HaightAshbury Gyms tomorrow, and the ferry will definately be fixed after that, so Berkeley Gym will be last.")
 }
 
 text gText_AaandWereBack_INeedToFigure {
@@ -129,9 +129,9 @@ text gText_AaandWereBack_FerryMessage {
 
             The following service routes are now operational:\p
 
-            Psfplace11 to Psfcity17\p
+            FerryBuilding to Alameda\p
 
-            Psfcity17 to Psfcity9\p
+            Alameda to Oakland\p
 
             We appreciate your patience while the remaining routes are restored.
             ","1_latin",175)
@@ -140,7 +140,7 @@ text gText_AaandWereBack_ThatsDifferent{
     format("That's a different notification...")
 }
 text gText_AaandWereBack_TooBadTheresNoFerry{
-    format("Looks like east Psfregion1 is next! Too bad there's no ferry directly to the Gym in Psfcity11...")
+    format("Looks like east SanFran is next! Too bad there's no ferry directly to the Gym in Berkeley...")
 }
 text gText_AaandWereBack_FindAWayThrough{
     format("Hopefully, I'll find a way through the fog after that...")

@@ -390,7 +390,7 @@ text gText_Earthquake_SoundsLikeWere {
 }
 
 text gText_Earthquake_ImGoingToMakeAnother {
-    format("*sigh* I'm going to make another lap around Psfcity17 and see who else I can help, and I've asked other Psfgoodteam members to do the same. Could you two -")
+    format("*sigh* I'm going to make another lap around Alameda and see who else I can help, and I've asked other TeamRocket members to do the same. Could you two -")
 }
 
 text gText_Earthquake_OfCourse {
@@ -398,7 +398,7 @@ text gText_Earthquake_OfCourse {
 }
 
 text gText_Earthquake_OkayThingsSeemToBe {
-    format("Okay… things seem to be stabilizing. I should go meet Psfgoodadmin in the center of town.")
+    format("Okay… things seem to be stabilizing. I should go meet Ariana in the center of town.")
 }
 
 text gText_Earthquake_WeveManagedToReestablish {
@@ -406,7 +406,7 @@ text gText_Earthquake_WeveManagedToReestablish {
 }
 
 text gText_Earthquake_IReally {
-    format("I really don't know how Psfgoodteam is going to hold up under this stress.")
+    format("I really don't know how TeamRocket is going to hold up under this stress.")
 }
 
 text gText_Earthquake_AMessageFromThe {
@@ -426,7 +426,7 @@ text gText_Earthquake_ShitWeNever {
 }
 
 text gText_Earthquake_IGotAMessage {
-    format("Psfnativerival and I got a message from that account a few days ago. I went to a warehouse in Psfcity9, and Psfbadadmin2 trapped me there and attacked me.")
+    format("Archer and I got a message from that account a few days ago. I went to a warehouse in Oakland, and Koga trapped me there and attacked me.")
 }
 
 text gText_Earthquake_WaitWhat {
@@ -450,7 +450,7 @@ text gText_Earthquake_ItsJustABunch {
 }
 
 text gText_Earthquake_IDontThinkSo {
-    format("…I don't think so. Psfbadadmin2 was really trying to help me. Even when I had dinner with him, their energy was different from everybody else in Psfbadguy.")
+    format("…I don't think so. Koga was really trying to help me. Even when I had dinner with him, their energy was different from everybody else in Psfbadguy.")
 }
 
 text gText_Earthquake_HowCanYouTrust {

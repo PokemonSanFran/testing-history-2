@@ -1,11 +1,11 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFLEADER3 = 1
 
-script EnterPsfleader3_ObjectSetUp_Script {
+script EnterWhitney_ObjectSetUp_Script {
     setobjectmovementtype(PSFLEADER3, MOVEMENT_TYPE_FACE_LEFT)
 }
 
-script EnterPsfleader3_StartBattle_ObjectSetup_Script {
+script EnterWhitney_StartBattle_ObjectSetup_Script {
     setflag(FLAG_TEMP_1)
     setobjectxy(PSFLEADER3, 10, 6)
     setobjectxyperm(PSFLEADER3, 10, 6)
@@ -21,57 +21,57 @@ script AutomaticSolvePuzzle_Script {
     end
 }
 
-script EnterPsfleader3_WalkToBattlefield_Script {
+script EnterWhitney_WalkToBattlefield_Script {
     addvar(VAR_GYM_3_STATE, 1)
     lock
     playse(SE_PIN)
     applymovement(PSFLEADER3, Common_Movement_ExclamationMark)
     waitmovement(0)
-    applymovement(PSFLEADER3, EnterPsfleader3_WalkToBattlefield_Movement)
+    applymovement(PSFLEADER3, EnterWhitney_WalkToBattlefield_Movement)
     waitmovement(0)
     releaseall
     end
 }
 
-script EnterPsfleader3_MuseumArrangement_Dialogue {
+script EnterWhitney_MuseumArrangement_Dialogue {
     addvar(VAR_GYM_3_STATE, 1)
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    msgbox(gText_EnterPsfleader3_IWasThinking, MSGBOX_NPC)
+    msgbox(gText_EnterWhitney_IWasThinking, MSGBOX_NPC)
     callnative(ClearMugshot)
     closemessage
-    applymovement(PSFLEADER3, Psfleader3LookAround_Movement)
+    applymovement(PSFLEADER3, WhitneyLookAround_Movement)
     waitmovement(0)
     callnative(DrawMugshot)
-    msgbox(gText_EnterPsfleader3_HasYourVisit)
+    msgbox(gText_EnterWhitney_HasYourVisit)
     callnative(ClearMugshot)
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
-    msgbox(gText_EnterPsfleader3_UhYup)
+    msgbox(gText_EnterWhitney_UhYup)
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     callnative(DrawMugshot)
-    msgbox(gText_EnterPsfleader3_ICanHearTheOrre)
+    msgbox(gText_EnterWhitney_ICanHearTheOrre)
     callnative(ClearMugshot)
     call(Common_EventScript_SaveGame)
     closemessage
-    goto(EnterPsfleader3_StartBattle_Script)
+    goto(EnterWhitney_StartBattle_Script)
 }
 
-script EnterPsfleader3_StartBattle_Script {
+script EnterWhitney_StartBattle_Script {
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     callnative(DrawMugshot)
-    trainerbattle_single(TRAINER_WATTSON_1, gText_EnterPsfleader3_LetsSeeHow, gText_EnterPsfleader3_IfThisBattle, EnterPsfleader3_Defeated_Script, NO_MUSIC)
+    trainerbattle_single(TRAINER_WATTSON_1, gText_EnterWhitney_LetsSeeHow, gText_EnterWhitney_IfThisBattle, EnterWhitney_Defeated_Script, NO_MUSIC)
 }
 
-script EnterPsfleader3_Defeated_Script {
+script EnterWhitney_Defeated_Script {
     setflag(FLAG_BADGE03_GET)
     addvar(VAR_PSFCITY15_STATE, 1)
     addvar(VAR_GYM_3_STATE, 1)
     addvar(VAR_STORYLINE_STATE, 1)
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    msgbox(gText_EnterPsfleader3_WowIllReallyNeed)
+    msgbox(gText_EnterWhitney_WowIllReallyNeed)
     closemessage
     callnative(ClearMugshot)
-    msgbox(gText_EnterPsfleader3_YouRecieved)
+    msgbox(gText_EnterWhitney_YouRecieved)
     call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM34)
     call(Act1_1_Check_Script)
@@ -79,33 +79,33 @@ script EnterPsfleader3_Defeated_Script {
     end
 }
 
-script EnterPsfleader3_PostBattle_Dialogue {
+script EnterWhitney_PostBattle_Dialogue {
     addvar(VAR_GYM_3_STATE, 1)
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    msgbox(gText_EnterPsfleader3_ThatPositiveSanction, MSGBOX_NPC)
+    msgbox(gText_EnterWhitney_ThatPositiveSanction, MSGBOX_NPC)
     callnative(ClearMugshot)
     closemessage
     releaseall
     end
 }
-script EnterPsfleader3_PostBattle_Dialogue2 {
+script EnterWhitney_PostBattle_Dialogue2 {
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)
     callnative(DrawMugshot)
-    msgbox(gText_EnterPsfleader3_WellNeedToBattle, MSGBOX_NPC)
+    msgbox(gText_EnterWhitney_WellNeedToBattle, MSGBOX_NPC)
     callnative(ClearMugshot)
     closemessage
     releaseall
     end
 }
 
-movement EnterPsfleader3_WalkToBattlefield_Movement {
+movement EnterWhitney_WalkToBattlefield_Movement {
     walk_right * 9
     walk_down
     face_left
     step_end
 }
 
-movement Psfleader3LookAround_Movement {
+movement WhitneyLookAround_Movement {
     face_up
     delay_16
     face_down
@@ -116,38 +116,38 @@ movement Psfleader3LookAround_Movement {
     step_end
 }
 
-text gText_EnterPsfleader3_IWasThinking {
-    format("I was thinking about the arrangement of the museum. Museums tend to organize through etic categories, but I always wonder... how far off are we from their emic counterparts...? Sorry, I'm Psfleader3, Chief of the Psfcity15 Gym!")
+text gText_EnterWhitney_IWasThinking {
+    format("I was thinking about the arrangement of the museum. Museums tend to organize through etic categories, but I always wonder... how far off are we from their emic counterparts...? Sorry, I'm Whitney, Chief of the SOMA Gym!")
 }
-text gText_EnterPsfleader3_HasYourVisit {
+text gText_EnterWhitney_HasYourVisit {
     format("Has your visit been a positive time investment? There was a ton of qualitative research into curating the best possible experience for both patrons and challengers.")
 }
-text gText_EnterPsfleader3_UhYup {
+text gText_EnterWhitney_UhYup {
     format("Uh... yup. Yeah. It's cool.")
 }
-text gText_EnterPsfleader3_ICanHearTheOrre {
+text gText_EnterWhitney_ICanHearTheOrre {
     format("I can hear the Orre in you. Enchanting.")
 }
-text gText_EnterPsfleader3_LetsSeeHow {
+text gText_EnterWhitney_LetsSeeHow {
     format("Let's see how your socialization impacted your battling ability!")
 }
-text gText_EnterPsfleader3_TimeToPay {
+text gText_EnterWhitney_TimeToPay {
     format("Time to pay your tribute.")
 }
-text gText_EnterPsfleader3_IfThisBattle {
+text gText_EnterWhitney_IfThisBattle {
     format("If this battle is any indication, your assimilation is going perfectly!")
 }
-text gText_EnterPsfleader3_YouRecieved {
-    format("You recieved the Psfbadge3 Badge!")
+text gText_EnterWhitney_YouRecieved {
+    format("You recieved the WhitneyBadge Badge!")
 }
 
-text gText_EnterPsfleader3_WowIllReallyNeed {
+text gText_EnterWhitney_WowIllReallyNeed {
     format("Wow, I'll really need to re-think my tactical core values. Awesome battle, {PLAYER}!")
 }
 
-text gText_EnterPsfleader3_ThatPositiveSanction {
+text gText_EnterWhitney_ThatPositiveSanction {
     format("That positive sanction means that traded Pokémon up to Level Psflevel3 will obey you. Psfgymattacknum3 is like a shaman in your pocket and will teach Psfgymattacknum1, allowing your clan to Psfgymattackdesc3.")
 }
-text gText_EnterPsfleader3_WellNeedToBattle {
+text gText_EnterWhitney_WellNeedToBattle {
     format("We'll need to battle again in the future. I want to increase our data set - a sample size of one isn't enough for any conclusions about our relative skill levels!")
 }

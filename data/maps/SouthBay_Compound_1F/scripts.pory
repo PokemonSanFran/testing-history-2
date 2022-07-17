@@ -1,0 +1,72 @@
+mapscripts SouthBay_Compound_1F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(SouthBay_Compound_1F_MapScripts_OnTransition)
+    }
+
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_BiancaIntro_Dialogue 
+        VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToSanFran_Dialogue 
+        VAR_LITTLEROOT_INTRO_STATE, 8:WhyAreYouHelpingThem_BackAtCompound_Dialogue
+        VAR_STORYLINE_STATE, 23: VSGarbodor_ReturnToTheCompound_Dialogue 
+    ]
+}
+
+script SouthBay_Compound_1F_MapScripts_OnTransition {
+
+    switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
+        case 1: call(ImProbablyBetterThanYou_ObjectSetUp) 
+        case 3: call(Swagbag_ObjectSetUp) 
+        case 4: call(swagbag_ObjectHide_Script) 
+                //5 isn't needed because it is set in the bedroom
+        case 6: call(TwoHoursAgo_ObjectSetUp) 
+        case 7: call(AaandWereBack_ObjectSetUp_Script)
+        case 8: call(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
+    }
+
+    switch (var(VAR_STORYLINE_STATE)){
+        case 9: call(AaandWereBack_ObjectSetUp_Script)
+        case 10: call(AaandWereBack_ObjectHide_Script)
+        case 23: call(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
+        default: call(VSGarbodor_ObjectCleanUp_Script)
+    }
+}
+
+script Bianca_SouthBay_Compound_1F_InteractScript {
+    lock
+
+        if (var(VAR_STORYLINE_STATE) == 9){
+            call(AaandWereBack_Bianca_Dialogue)
+        }else {
+            call(ImProbablyBetterThanYou_Annoyed_Dialogue)
+        }
+    release
+        end
+}
+
+script Psfbadadmin_SouthBay_Compound_1F_InteractScript {
+    lockall
+        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        callnative(DrawMugshot)
+
+        //var is 6, has leftovers, and temp1f is set: explain lefties
+        //var is 6, has leftovers, temmp1f is not set: help menu
+        //var is 6, does not have leftovers, explain league
+        //var is not 6, help menu
+
+        if (var(VAR_LITTLEROOT_INTRO_STATE) == 6){
+            if (flag(FLAG_RECIEVED_LEFTOVERS)){
+                if(flag(FLAG_TEMP_1F)){
+                    call(TwoHoursAgo_ExplainLeftovers_Dialouge)
+                }else {
+                    call(swagbag_HelpPlayer_Script)
+                }
+            }else {
+                call(TwoHoursAgo_TheyreEager_Dialogue)
+            }
+        }else {
+            call(swagbag_HelpPlayer_Script)
+        }
+    closemessage
+        releaseall
+        end
+}

@@ -228,8 +228,8 @@ WaitYouWentWhere_WalkSouth:
 
 gText_WaitYouWentWhere_WelcomeBackFrom::
 	.string "Ah {PLAYER}, welcome back from\n"
-	.string "Psfcity11! I hear you defeated\l"
-	.string "Psfleader4, as expected from you.$"
+	.string "Berkeley! I hear you defeated Morty,\l"
+	.string "as expected from you.$"
 
 gText_WaitYouWentWhere_YeahThanksFor::
 	.string "Yeah, thanks for your help. Where are\n"
@@ -246,12 +246,12 @@ gText_WaitYouWentWhere_YeahNoProblem::
 
 gText_WaitYouWentWhere_IHaveSomeBusiness::
 	.string "I have some business to attend to in\n"
-	.string "Psfcity12. Let's walk together. What's\l"
+	.string "Tenderloin. Let's walk together. What's\l"
 	.string "interested you the most about\l"
-	.string "Psfregion1?$"
+	.string "SanFran?$"
 
 gText_WaitYouWentWhere_IActuallyJustGot::
-	.string "Hmm... Actually, I thought Psfcave7 was\n"
+	.string "Hmm... Actually, I thought Alcatraz was\n"
 	.string "really fascinating.$"
 
 gText_WaitYouWentWhere_ThePassWeGave::
@@ -259,11 +259,11 @@ gText_WaitYouWentWhere_ThePassWeGave::
 	.string "there…$"
 
 gText_WaitYouWentWhere_GaveMeAPass::
-	.string "Yeah, a Psfgoodteam member gave me a\n"
+	.string "Yeah, a TeamRocket member gave me a\n"
 	.string "pass as an apology. It's complicated.$"
 
 gText_WaitYouWentWhere_WhatAPainIn::
-	.string "Uh, Psfgoodteam, what a pain in my ass.\n"
+	.string "Uh, TeamRocket, what a pain in my ass.\n"
 	.string "They're an organization created from\l"
 	.string "the base of prisoner sympathizers, and\l"
 	.string "they've branded themselves as total\l"
@@ -272,18 +272,17 @@ gText_WaitYouWentWhere_WhatAPainIn::
 
 gText_WaitYouWentWhere_YeahIveSeenThem::
 	.string "Yeah, I've seen them around. What's the\n"
-	.string "deal with the Elite Four? Psfregion1\l"
-	.string "used to have one?$"
+	.string "deal with the Elite Four? SanFran used\l"
+	.string "to have one?$"
 
 gText_WaitYouWentWhere_YesBeforeWeRevamped::
 	.string "Yes, before we revamped their League\n"
 	.string "structure. They used to be the\l"
-	.string "strongest Trainers in Psfregion1, but\l"
-	.string "we hope that trainers like you and\l"
-	.string "Psftransrival will be able to outshine\l"
-	.string "them soon. Ugh, and finally, we're done\l"
-	.string "dealing with Double Battles… what a\l"
-	.string "mess.$"
+	.string "strongest Trainers in SanFran, but we\l"
+	.string "hope that trainers like you and Bianca\l"
+	.string "will be able to outshine them soon. Ugh,\l"
+	.string "and finally, we're done dealing with\l"
+	.string "Double Battles… what a mess.$"
 
 gText_WaitYouWentWhere_OrreHasALot::
 	.string "Orre has a lot of double battles!\n"

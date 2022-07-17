@@ -22,7 +22,7 @@ script swagbag_ObjectHide_Script {
     setflag(FLAG_TEMP_3)
 }
 
-script Swagbag_WelcomeToPsfregion1_Dialogue {
+script Swagbag_WelcomeToSanFran_Dialogue {
         addvar(VAR_LITTLEROOT_INTRO_STATE,1)
         lockall
         playse(SE_PIN)
@@ -45,7 +45,7 @@ script Swagbag_WelcomeToPsfregion1_Dialogue {
         applymovement(PSFBADADMIN,swagbag_WalkToTable)
         waitmovement(0)
         applymovement(PLAYER,swagbag_PlayerToTable)
-        applymovement(PSFTRANSRIVAL,swagbag_PsftransrivalToTable)
+        applymovement(PSFTRANSRIVAL,swagbag_BiancaToTable)
         waitmovement(0)
         goto(Swagbag_LeagueStipend_Dialogue)
         end
@@ -118,10 +118,10 @@ script Swagbag_WhenCanWeStart_Dialogue {
         waitmovement(0)
         playse(SE_EXIT)
         removeobject(PSFTRANSRIVAL)
-        goto(Swagbag_DontLeavePsfcity8_Dialogue)
+        goto(Swagbag_DontLeaveSouthBay_Dialogue)
 }
 
-script Swagbag_DontLeavePsfcity8_Dialogue {
+script Swagbag_DontLeaveSouthBay_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_Swagbag_IllBeWorkingOnMyLaptop)
@@ -137,7 +137,7 @@ script Swagbag_DontLeavePsfcity8_Dialogue {
         end
 }
 
-script swagbag_HelpPlayer_Script {//TODO Set up actual question a answer for Psfbadadmin1 here
+script swagbag_HelpPlayer_Script {//TODO Set up actual question a answer for Oak here
         msgbox(gText_Swagbag_InTheActualGame,MSGBOX_NPC)
         callnative(ClearMugshot)
         applymovement(PSFBADADMIN,Common_Movement_FaceRight)
@@ -145,11 +145,11 @@ script swagbag_HelpPlayer_Script {//TODO Set up actual question a answer for Psf
         return
 }
 
-script swagbag_PreventPlayerLeavingPsfcity8_Event_Script {
+script swagbag_PreventPlayerLeavingSouthBay_Event_Script {
     lock
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
-    msgbox(gText_DontLeavePsfcity8_Text1) 
+    msgbox(gText_DontLeaveSouthBay_Text1) 
     callnative(ClearMugshot)
     closemessage
     applymovement(PLAYER,swagbag_WalkBackwards)
@@ -159,7 +159,7 @@ script swagbag_PreventPlayerLeavingPsfcity8_Event_Script {
 }
 
 text gText_Swagbag_WelcomeToRegion {
-    format("{PLAYER}! Welcome to Psfregion1! How was your flight?")
+    format("{PLAYER}! Welcome to SanFran! How was your flight?")
 }
 
 text gText_Swagbag_GreatThePrivateCar {
@@ -179,7 +179,7 @@ text gText_Swagbag_BecauseTheBoard {
 }
 
 text gText_Swagbag_NextANewlyUpgraded {
-    format("Next, a newly upgraded PokéDex. It tracks all of the Pokémon you'll see and capture. There's some more habitat functionality, but it wasn't quite ready for primetime yet. By the time you visit the Research Institute in Psfcity11, it might be ready.")
+    format("Next, a newly upgraded PokéDex. It tracks all of the Pokémon you'll see and capture. There's some more habitat functionality, but it wasn't quite ready for primetime yet. By the time you visit the Research Institute in Berkeley, it might be ready.")
 }
 
 text gText_Swagbag_AlsoWeveGoneAhead {
@@ -215,7 +215,7 @@ text gText_Swagbag_HmmThoseAllSound {
 }
 
 text gText_Swagbag_PlayerRecivedMoney {
-    format("{PLAYER} received ¥50000, a PokéDex, and new phone applications from Psfbadadmin1.")
+    format("{PLAYER} received ¥50000, a PokéDex, and new phone applications from Oak.")
 }
 
 text gText_Swagbag_IBelieveThatsEverything {
@@ -239,15 +239,15 @@ text gText_Swagbag_IllBeWorkingOnMyLaptop {
 }
 
 text gText_Swagbag_GotItThanks {
-    format("Got it. Thanks for all the help, Psfbadadmin1! I'm still so stoked for the opportunity and the Challenge!")
+    format("Got it. Thanks for all the help, Oak! I'm still so stoked for the opportunity and the Challenge!")
 }
 
 text gText_Swagbag_InTheActualGame {
     format("In the actual game, this will be a list of questions that the player can ask and getr answers to. Tutorial level shit.")
 }
 
-text gText_DontLeavePsfcity8_Text1 {
-    format("I don't think I should leave Psfcity8 yet...")
+text gText_DontLeaveSouthBay_Text1 {
+    format("I don't think I should leave SouthBay yet...")
 }
 
 movement swagbag_GreetPlayer {
@@ -263,7 +263,7 @@ movement swagbag_WalkToTable {
         face_down
         step_end
 }
-movement swagbag_PsftransrivalToTable {
+movement swagbag_BiancaToTable {
     walk_down * 3
         walk_right * 5
         face_up

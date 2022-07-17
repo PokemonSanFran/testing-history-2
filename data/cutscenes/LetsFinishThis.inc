@@ -153,13 +153,13 @@ gText_LetsFinishThis_ThatPartDoesnt::
 gText_LetsFinishThis_ButInnocentPeople::
 	.string "But innocent people? Attacking an\n"
 	.string "entire island just to wipe out\l"
-	.string "Psfgoodteam? This is insane!$"
+	.string "TeamRocket? This is insane!$"
 
 gText_LetsFinishThis_PerfevtlySane::
-	.string "Perfectly sane. It worked on Psfcave1\n"
-	.string "didn’t it? There’s no peaceful path\l"
-	.string "forward. Do you all get it now? They’re\l"
-	.string "poised to kill!$"
+	.string "Perfectly sane. It worked on\n"
+	.string "RobinWillTunnel didn’t it? There’s no\l"
+	.string "peaceful path forward. Do you all get\l"
+	.string "it now? They’re poised to kill!$"
 
 gText_LetsFinishThis_ButTheyWerentAlways::
 	.string "But they weren’t always, were they?$"
@@ -203,11 +203,11 @@ gText_LetsFinishThis_TheyCameForTheKings::
 	.string "back.$"
 
 gText_LetsFinishThis_SoBreakInto::
-	.string "So, break into Psfbadguy1tower, force a\n"
-	.string "confession from Psfbadboss,\l"
-	.string "broadcast it using their equipment and\l"
-	.string "public sentiment will come crashing\l"
-	.string "down. Right?$"
+	.string "So, break into YCombinatortower, force\n"
+	.string "a confession from Rose, broadcast it\l"
+	.string "using their equipment and public\l"
+	.string "sentiment will come crashing down.\l"
+	.string "Right?$"
 
 gText_LetsFinishThis_APublicConfession::
 	.string "A public confession would force the\n"
@@ -218,9 +218,9 @@ gText_LetsFinishThis_IWasBeingSarcastic::
 
 gText_LetsFinishThis_TheHardestPartOfThatPlan::
 	.string "The hardest part of that plan is\n"
-	.string "actually just getting to Psfbadboss.\l"
-	.string "The rest of that is fairly plausible,\l"
-	.string "given we survive.$"
+	.string "actually just getting to Rose. The rest\l"
+	.string "of that is fairly plausible, given we\l"
+	.string "survive.$"
 
 gText_LetsFinishThis_TwoOldCoots::
 	.string "Two old coots, some has-beens, and a\n"
@@ -231,21 +231,18 @@ gText_LetsFinishThis_TheWarpPanels::
 	.string "The warp panels!$"
 
 gText_LetsFinishThis_NobodyHasSeen::
-	.string "Nobody has seen Psfbadadmin2 since\n"
-	.string "their stunt in the warehouse. Cops\l"
-	.string "have been crawling all over that\l"
-	.string "neighborhood and house looking for\l"
-	.string "him.$"
+	.string "Nobody has seen Koga since their stunt\n"
+	.string "in the warehouse. Cops have been\l"
+	.string "crawling all over that neighborhood\l"
+	.string "and house looking for him.$"
 
 gText_LetsFinishThis_WhatAbout::
-	.string "What about Psfbadadmin3? That\n"
-	.string "workaholic absolutely has a panel in\l"
-	.string "their place too. And no police looking\l"
-	.string "for them.$"
+	.string "What about Sabrina? That workaholic\n"
+	.string "absolutely has a panel in their place\l"
+	.string "too. And no police looking for them.$"
 
 gText_LetsFinishThis_WereOntoSomething::
 	.string "We’re onto something. You should go\n"
 	.string "prepare! Once we start, I don’t think\l"
 	.string "there’s any turning back. Meet us\l"
-	.string "outside Psfbadadmin2’s house in\l"
-	.string "Psfcity1.$"
+	.string "outside Koga’s house in Sunset.$"

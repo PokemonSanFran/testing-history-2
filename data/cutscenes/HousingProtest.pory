@@ -327,7 +327,7 @@ text gText_HousingProtest_AintGonnaBeNothing {
 }
 
 text gText_HousingProtest_PeopleCantStayHere {
-    format("If we, the people of Psfcity9 can't stay here, nobody can. Let's bring it down!")
+    format("If we, the people of Oakland can't stay here, nobody can. Let's bring it down!")
 }
 
 text gText_HousingProtest_Yeah {
@@ -379,7 +379,7 @@ text gText_HousingProtest_FineWithMe {
 }
 
 text gText_HousingProtest_GoPoundSand {
-    format("Go pound sand, and stay out of Psfgoodteam's way.")
+    format("Go pound sand, and stay out of TeamRocket's way.")
 }
 
 text gText_HousingProtest_ThisIsNotHowThis {
@@ -395,7 +395,7 @@ text gText_HousingProtest_KeepOnLicking {
 }
 
 text gText_HousingProtest_HasATendency {
-    format("Thank you very much. You're right, Psfgoodteam has a tendency to pick on the defenseless like me.")
+    format("Thank you very much. You're right, TeamRocket has a tendency to pick on the defenseless like me.")
 }
 
 text gText_HousingProtest_WhyWereProtesting {
@@ -403,7 +403,7 @@ text gText_HousingProtest_WhyWereProtesting {
 }
 
 text gText_HousingProtest_EntitledToLiveAnyWhere {
-    format("Some of the citizens of Psfcity9 feel that they are... entitled to live anywhere within their city limits.")
+    format("Some of the citizens of Oakland feel that they are... entitled to live anywhere within their city limits.")
 }
 
 text gText_HousingProtest_SubjectToTheSameRent {

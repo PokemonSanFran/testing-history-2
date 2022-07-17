@@ -166,7 +166,7 @@ WhyDidntYouRatMeOut_LookAround::
 	return
 
 
-WhyDidntYouRatMeOut_WatchPsftransrivalMatches::
+WhyDidntYouRatMeOut_WatchBiancaMatches::
 	lockall
 	msgbox gText_WhyDidntYouRatMeOut_WinsTheirGroup
 	closemessage
@@ -303,9 +303,9 @@ gText_WhyDidntYouRatMeOut_NoCalmDown::
 	.string "No, calm down. It's just... this is your\n"
 	.string "home. And you obviously care about it.\l"
 	.string "And I think that's what gives me pause\l"
-	.string "with Psfgoodteam. I see people trying\l"
+	.string "with TeamRocket. I see people trying\l"
 	.string "to do good things, and trying to help\l"
-	.string "people... and then I see Psfgoodteam\l"
+	.string "people... and then I see TeamRocket\l"
 	.string "with all their bullshit, and it makes me\l"
 	.string "wonder “How can they possibly support\l"
 	.string "that?”$"
@@ -320,8 +320,8 @@ gText_WhyDidntYouRatMeOut_NoYouLook::
 	.string "take that from you. Not like that.$"
 
 gText_WhyDidntYouRatMeOut_WasNiceToMe4::
-	.string "(Psfgoodadmin and Psfnativerival...\n"
-	.string "even Psfgoodboss was nice to me. What\l"
+	.string "(Ariana and Archer...\n"
+	.string "even Giovanni was nice to me. What\l"
 	.string "am I missing?)$"
 
 gText_WhyDidntYouRatMeOut_ThankYouAndImSorry::
@@ -340,7 +340,7 @@ gText_WhyDidntYouRatMeOut_LikeEveryOtherTime::
 	.string "Like every other time you've beaten me,\n"
 	.string "right. Besides, we're not going to meet\l"
 	.string "until the Finals. You're not even going\l"
-	.string "to make it through Psftransrival!$"
+	.string "to make it through Bianca!$"
 
 gText_WhyDidntYouRatMeOut_YouKnowThem::
 	.string "You know them?$"
@@ -366,10 +366,10 @@ gText_WhyDidntYouRatMeOut_IMeantToTell::
 	.string "Psfbadguy executives have a fully\l"
 	.string "catered skybox to watch the\l"
 	.string "Championship. We're about to watch\l"
-	.string "Psftransrival's group!$"
+	.string "Bianca's group!$"
 
 gText_WhyDidntYouRatMeOut_WinsTheirGroup::
-	.string "And Psftransrival wins their group,\n"
+	.string "And Bianca wins their group,\n"
 	.string "without losing a single Pokémon! What\l"
 	.string "an incredible display of force from\l"
 	.string "this Unovan superstar!$"

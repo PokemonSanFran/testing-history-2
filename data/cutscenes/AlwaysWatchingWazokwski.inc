@@ -16,7 +16,7 @@ AlwaysWatchingWazowski_MovePlayerIntoPlace_Script::
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 7
 	goto_if_eq AlwaysWatchingWazowski_MovePlayerIntoPlace_Script_2
-	applymovement OBJ_EVENT_ID_PLAYER, Psfchara1DeskWalkFromRight_Movement
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerCharDeskWalkFromRight_Movement
 AlwaysWatchingWazowski_MovePlayerIntoPlace_Script_1:
 	waitmovement 0
 	applymovement 2, Common_Movement_FacePlayer
@@ -25,7 +25,7 @@ AlwaysWatchingWazowski_MovePlayerIntoPlace_Script_1:
 	return
 
 AlwaysWatchingWazowski_MovePlayerIntoPlace_Script_2:
-	applymovement OBJ_EVENT_ID_PLAYER, Psfchara1DeskWalkFromLeft_Movement
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerCharDeskWalkFromLeft_Movement
 	goto AlwaysWatchingWazowski_MovePlayerIntoPlace_Script_1
 
 
@@ -145,12 +145,12 @@ AlwaysWatchingWazowski_IgnoringPlayer_Dialogue::
 	end
 
 
-Psfchara1DeskWalkFromLeft_Movement:
+PlayerCharDeskWalkFromLeft_Movement:
 	walk_right
 	face_up
 	step_end
 
-Psfchara1DeskWalkFromRight_Movement:
+PlayerCharDeskWalkFromRight_Movement:
 	walk_left
 	walk_left
 	face_up
@@ -166,7 +166,7 @@ gText_AlwaysWatchingWazowski_IImagineAllTheScreens::
 	.string "new comes to visit.$"
 
 gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime::
-	.string "I wish Psfbadadmin1 had picked a\n"
+	.string "I wish Oak had picked a\n"
 	.string "different time to tell you to come\l"
 	.string "visit. I have at least 493 more minutes\l"
 	.string "of work, and don't have the 12 minutes\l"
@@ -174,7 +174,7 @@ gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime::
 	.string "you...$"
 
 gText_AlwaysWatchingWazowski_IWishYouHadVisited::
-	.string "I wish you had visited Psfbadboss\n"
+	.string "I wish you had visited Rose\n"
 	.string "first. I have at least 493 more minutes\l"
 	.string "of work and don't have the 12 minutes\l"
 	.string "required to appropriately entertain\l"
@@ -189,7 +189,7 @@ gText_AlwaysWatchingWazowski_LookAroundDoYouThink::
 	.string "see?$"
 
 gText_AlwaysWatchingWazowski_SecurityUsedToAlsoPerform::
-	.string "Psfbadguy1 security used to also\n"
+	.string "YCombinator security used to also\n"
 	.string "perform surveillance, but my team was\l"
 	.string "more than efficient enough to perform\l"
 	.string "that on top of their existing duties.$"

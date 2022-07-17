@@ -25,7 +25,7 @@ script WelcomeToTheWarRoom_Object_Setup_Script {
         setobjectxyperm(OLIVER,10,11)
 }
 
-script WelcomeToTheWarRoom_FaceSpeakerPsfbadboss {
+script WelcomeToTheWarRoom_FaceSpeakerRose {
     applymovement(OLIVER,Common_Movement_FaceDown)
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_FaceDown)
@@ -76,7 +76,7 @@ script WelcomeToTheWarRoom_FaceSpeakerMayor {
     applymovement(PLAYER,Common_Movement_FaceRight)
     waitmovement(0)
 }
-script WelcomeToTheWarRoom_FaceSpeakerPsftransrival {
+script WelcomeToTheWarRoom_FaceSpeakerBianca {
     applymovement(OLIVER,Common_Movement_FaceDown)
     applymovement(ARNAV,Common_Movement_FaceLeft)
     applymovement(CHIEF,Common_Movement_FaceLeft)
@@ -111,7 +111,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
     lock
     addvar(VAR_PSFBADGUY1TOWER_2F_STATE,1)
     setvar(VAR_ROUTE117_STATE,1)
-    call(WelcomeToTheWarRoom_FaceSpeakerPsfbadboss)
+    call(WelcomeToTheWarRoom_FaceSpeakerRose)
         applymovement(PSFBADBOSS,WelcomeToTheWarRoom_Pace)
         waitmovement(0)
 
@@ -134,7 +134,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         call(WelcomeToTheWarRoom_FaceSpeakerMayor)
         msgbox(gText_WelcomeToTheWarRoom_ThatsWhereYouKids)
 
-        call(WelcomeToTheWarRoom_FaceSpeakerPsftransrival)
+        call(WelcomeToTheWarRoom_FaceSpeakerBianca)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_HellYeahWedLoveTo)
@@ -144,7 +144,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_ImHappyToHelp)
 
-        call(WelcomeToTheWarRoom_FaceSpeakerPsfbadboss)
+        call(WelcomeToTheWarRoom_FaceSpeakerRose)
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_EverybodyUnderstand)
@@ -154,7 +154,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         call(WelcomeToTheWarRoom_FaceSpeakerChief)
         msgbox(gText_WelcomeToTheWarRoom_WeveAlreadyOutlined)
 
-        call(WelcomeToTheWarRoom_FaceSpeakerPsftransrival)
+        call(WelcomeToTheWarRoom_FaceSpeakerBianca)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_WhyCantWeJust)
@@ -165,7 +165,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         msgbox(gText_WelcomeToTheWarRoom_GladToHear)
 
 
-        call(WelcomeToTheWarRoom_FaceSpeakerPsftransrival)
+        call(WelcomeToTheWarRoom_FaceSpeakerBianca)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_GotItChief)
@@ -187,7 +187,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         applymovement(ARNAV,WelcomeToTheWarRoom_ReturnToDeskA)
         applymovement(OLIVER,WelcomeToTheWarRoom_ReturnToDeskB)
         applymovement(MAYOR,WelcomeToTheWarRoom_MayorLeaveRoom)
-        applymovement(PSFBADBOSS,WelcomeToTheWarRoom_PsfbadbossLeaveRoom)
+        applymovement(PSFBADBOSS,WelcomeToTheWarRoom_RoseLeaveRoom)
         waitmovement(0)
         removeobject(MAYOR)
         removeobject(PSFBADBOSS)
@@ -219,7 +219,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
             msgbox(gText_WelcomeToTheWarRoom_OkayIllMeetYou)
             closemessage
             callnative(ClearMugshot)
-            applymovement(PSFTRANSRIVAL,WelcomeToTheWarRoom_PsftransrivalLeaveRoom)
+            applymovement(PSFTRANSRIVAL,WelcomeToTheWarRoom_BiancaLeaveRoom)
             waitmovement(0)
             removeobject(PSFTRANSRIVAL)
             releaseall
@@ -240,15 +240,15 @@ text gText_WelcomeToTheWarRoom_AllMajorSocialMedia {
 }
 
 text gText_WelcomeToTheWarRoom_TheNewOwnersOfOUrAccounts {
-    format("The new owners of our accounts have been pushing a narrative about Psfbadguy's “crimes against the region”. They're calling for everybody to boycott the League and the upcoming Championship. We've found evidence that the perpetrators are at Psfplace2. ")
+    format("The new owners of our accounts have been pushing a narrative about Psfbadguy's “crimes against the region”. They're calling for everybody to boycott the League and the upcoming Championship. We've found evidence that the perpetrators are at NavalBase. ")
 }
 
 text gText_WelcomeToTheWarRoom_WeveLongTheorized {
-    format("We've long theorized that Psfplace2 is Psfgoodteam's primary base of operations so we've got reason to believe that they're the ones behind this cyber-attack. We have authorization to raid their headquarters and are looking -")
+    format("We've long theorized that NavalBase is TeamRocket's primary base of operations so we've got reason to believe that they're the ones behind this cyber-attack. We have authorization to raid their headquarters and are looking -")
 }
 
 text gText_WelcomeToTheWarRoom_ThatsWhereYouKids {
-    format("That's where you kids come in! Ya really impressed me back at Psfplace14, and we'd like you to assist us in the raid. You'll work under Chief Bill, and help us shut down those clowns once and for all.")
+    format("That's where you kids come in! Ya really impressed me back at ChaseCenter, and we'd like you to assist us in the raid. You'll work under Chief Bill, and help us shut down those clowns once and for all.")
 }
 
 text gText_WelcomeToTheWarRoom_HellYeahWedLoveTo {
@@ -280,7 +280,7 @@ text gText_WelcomeToTheWarRoom_GotItChief {
 }
 
 text gText_WelcomeToTheWarRoom_GreatWellStartTheOperation {
-    format("Great. We'll start the operation as soon as you're ready. Meet me outside Psfplace2.")
+    format("Great. We'll start the operation as soon as you're ready. Meet me outside NavalBase.")
 }
 
 text gText_WelcomeToTheWarRoom_DontPayHimNoMind {
@@ -292,7 +292,7 @@ text gText_WelcomeToTheWarRoom_ThatsAgainYouTwo {
 }
 
 text gText_WelcomeToTheWarRoom_ImGoingToHeadOver {
-    format("I'm going to head over to Psfplace11. Want to come with?")
+    format("I'm going to head over to FerryBuilding. Want to come with?")
 }
 
 text gText_WelcomeToTheWarRoom_OkayIllMeetYou {
@@ -332,7 +332,7 @@ movement WelcomeToTheWarRoom_MayorLeaveRoom {
     walk_down * 3
     step_end
 }
-movement WelcomeToTheWarRoom_PsfbadbossLeaveRoom {
+movement WelcomeToTheWarRoom_RoseLeaveRoom {
     walk_right
     walk_down * 3
     step_end
@@ -349,7 +349,7 @@ movement WelcomeToTheWarRoom_PsfbadadminLeaveRoom {
     walk_down * 3
     step_end
 }
-movement WelcomeToTheWarRoom_PsftransrivalLeaveRoom {
+movement WelcomeToTheWarRoom_BiancaLeaveRoom {
     walk_left
     walk_down * 3
     walk_right * 3

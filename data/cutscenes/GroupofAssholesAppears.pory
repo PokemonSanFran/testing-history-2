@@ -146,12 +146,12 @@ script GroupOfAssholesAppears_GroupLeaves_Dialogue {
         msgbox(gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent)
         msgbox(gText_GroupOfAssholesAppears_YouBothMakeMeSick)
         closemessage
-        applymovement(GRUNT1,GroupOfAssholesAppears_LeavePsfplace13_Slot1_Movement)
-        applymovement(GRUNT2,GroupOfAssholesAppears_LeavePsfplace13_Slot2_Movement)
-        applymovement(GRUNT3,GroupOfAssholesAppears_LeavePsfplace13_Slot3_Movement)
-        applymovement(GRUNT4,GroupOfAssholesAppears_LeavePsfplace13_Slot4_Movement)
-        applymovement(GRUNT5,GroupOfAssholesAppears_LeavePsfplace13_Slot5_Movement)
-        applymovement(GRUNT6,GroupOfAssholesAppears_LeavePsfplace13_Slot6_Movement)
+        applymovement(GRUNT1,GroupOfAssholesAppears_LeaveFishermansWharf_Slot1_Movement)
+        applymovement(GRUNT2,GroupOfAssholesAppears_LeaveFishermansWharf_Slot2_Movement)
+        applymovement(GRUNT3,GroupOfAssholesAppears_LeaveFishermansWharf_Slot3_Movement)
+        applymovement(GRUNT4,GroupOfAssholesAppears_LeaveFishermansWharf_Slot4_Movement)
+        applymovement(GRUNT5,GroupOfAssholesAppears_LeaveFishermansWharf_Slot5_Movement)
+        applymovement(GRUNT6,GroupOfAssholesAppears_LeaveFishermansWharf_Slot6_Movement)
         waitmovement(0)
         removeobject(GRUNT1)
         removeobject(GRUNT2)
@@ -242,42 +242,42 @@ movement GroupOfAssholesAppears_WalkFromWest_Movement {
         step_end
 }
 
-movement GroupOfAssholesAppears_LeavePsfplace13_Slot1_Movement {
+movement GroupOfAssholesAppears_LeaveFishermansWharf_Slot1_Movement {
     walk_down * 2
         walk_left * 3
         walk_down * 3
         walk_left * 3
         step_end
 }
-movement GroupOfAssholesAppears_LeavePsfplace13_Slot2_Movement {
+movement GroupOfAssholesAppears_LeaveFishermansWharf_Slot2_Movement {
     walk_down
         walk_left * 3
         walk_down * 3
         walk_left * 3
         step_end
 }
-movement GroupOfAssholesAppears_LeavePsfplace13_Slot3_Movement {
+movement GroupOfAssholesAppears_LeaveFishermansWharf_Slot3_Movement {
     walk_down
         walk_left * 4
         walk_down * 3
         walk_left * 3
         step_end
 }
-movement GroupOfAssholesAppears_LeavePsfplace13_Slot4_Movement {
+movement GroupOfAssholesAppears_LeaveFishermansWharf_Slot4_Movement {
     walk_down
         walk_left * 6
         walk_down * 3
         walk_left * 3
         step_end
 }
-movement GroupOfAssholesAppears_LeavePsfplace13_Slot5_Movement {
+movement GroupOfAssholesAppears_LeaveFishermansWharf_Slot5_Movement {
     walk_down
         walk_left * 7
         walk_down * 3
         walk_left * 3
         step_end
 }
-movement GroupOfAssholesAppears_LeavePsfplace13_Slot6_Movement {
+movement GroupOfAssholesAppears_LeaveFishermansWharf_Slot6_Movement {
     walk_down * 2
         walk_left * 7
         walk_down * 3
@@ -385,7 +385,7 @@ text gText_GroupOfAssholesAppears_WhyWereTheyBullying {
 }
 
 text gText_GroupOfAssholesAppears_SomethingStupidLikeThat {
-    format("Uhh... I think Psfrocketaltacro or something stupid like that. I don't know what they want from me, they're like this band of idiots that just roll around everywhere, getting high and telling people they can't do things. Guess it was my turn.")
+    format("Uhh... I think RockerGang or something stupid like that. I don't know what they want from me, they're like this band of idiots that just roll around everywhere, getting high and telling people they can't do things. Guess it was my turn.")
 }
 
 text gText_GroupOfAssholesAppears_ThatDoesntMakeAny {
@@ -401,7 +401,7 @@ text gText_GroupOfAssholesAppears_ASouvenirShop {
 }
 
 text gText_GroupOfAssholesAppears_WhenIPitchedIt {
-    format("When I pitched it to the League, it was a little more...upscale than some tacky place to buy snow globes and magnets. We're talking handcrafted items from the people of Psfregion1! ")
+    format("When I pitched it to the League, it was a little more...upscale than some tacky place to buy snow globes and magnets. We're talking handcrafted items from the people of SanFran! ")
 }
 
 text gText_GroupOfAssholesAppears_ThatMakesSense {

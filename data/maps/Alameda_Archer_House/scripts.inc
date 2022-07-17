@@ -1,0 +1,14 @@
+Alameda_Archer_House_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Alameda_Archer_House_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Alameda_Archer_House_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Alameda_Archer_House_OnTransition
+	return
+
+
+Alameda_Archer_House_OnTransition::
+	switch VAR_STORYLINE_STATE
+	call LetsFixThis_HideObjectHouse_Script
+	return
+

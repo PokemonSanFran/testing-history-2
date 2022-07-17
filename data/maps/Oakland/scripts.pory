@@ -1,0 +1,15 @@
+mapscripts Oakland_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_FORTREE_CITY_STATE, 3: WarehouseRave_OutsideWarehouse_Dialogue
+    ]
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Oakland_MapScripts_OnTransition)
+    }
+}
+
+script Oakland_MapScripts_OnTransition {
+    switch (var(VAR_FORTREE_CITY_STATE)){
+        case 3: return
+        default: call(WarehouseRave_HideObject_Script)
+    }
+}

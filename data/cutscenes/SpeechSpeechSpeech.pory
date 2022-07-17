@@ -251,7 +251,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
         applymovement(PSFELITE2,Common_Movement_WalkDown)
         waitmovement(0)
-        //Psfelite2 steps forward. Psfgoodadmin steps aside.
+        //Drasna steps forward. Ariana steps aside.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
@@ -261,7 +261,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
         applymovement(PSFELITE4,Common_Movement_WalkDown)
         waitmovement(0)
-        //Psfelite4 steps forward.
+        //Wikstrom steps forward.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
@@ -272,7 +272,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         applymovement(PSFELITE4,SpeechSpeechSpeech_WalkBackwards)
         applymovement(PSFELITE3,Common_Movement_WalkDown)
         waitmovement(0)
-        //Psfelite4 steps back. Psfelite3 steps forward.
+        //Wikstrom steps back. Siebold steps forward.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
@@ -283,7 +283,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         applymovement(PSFELITE3,SpeechSpeechSpeech_WalkBackwards)
         applymovement(PSFELITE1,Common_Movement_WalkDown)
         waitmovement(0)
-        //Psfelite4 steps back. Psfelite1 steps forward.
+        //Wikstrom steps back. Malva steps forward.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
@@ -294,7 +294,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         applymovement(PSFELITE1,SpeechSpeechSpeech_WalkBackwards)
         waitmovement(0)
 
-        //Psfelite1 steps back.
+        //Malva steps back.
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
@@ -314,7 +314,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         fadescreen(FADE_FROM_BLACK)
         waitmovement(PSFNATIVERIVAL)
 
-        //Screen fades to black. Screen fades back in. Elite Four members are spaced around the room, surrounded by groups of Psfgoodteam members. Psfnativerival walks up to the player.
+        //Screen fades to black. Screen fades back in. Elite Four members are spaced around the room, surrounded by groups of TeamRocket members. Archer walks up to the player.
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_DamnThisShit)
@@ -354,11 +354,11 @@ text gText_SpeechSpeechSpeech_ThankYouAll {
 }
 
 text gText_SpeechSpeechSpeech_FirstOfAll {
-    format("First of all, I will be taking a leave of absence. Effectively immediately, Psfgoodadmin will be leading Psfgoodteam. She has my full trust and support.")
+    format("First of all, I will be taking a leave of absence. Effectively immediately, Ariana will be leading TeamRocket. She has my full trust and support.")
 }
 
 text gText_SpeechSpeechSpeech_ForAllYouve {
-    format("Thank you for all you’ve done for us, Psfgoodboss, I hope to live up to your example.")
+    format("Thank you for all you’ve done for us, Giovanni, I hope to live up to your example.")
 }
 
 text gText_SpeechSpeechSpeech_WaitWhat {
@@ -370,11 +370,11 @@ text gText_SpeechSpeechSpeech_AreTheyEven {
 }
 
 text gText_SpeechSpeechSpeech_HasMyFullConfidence {
-    format("Yes, Psfgoodadmin has my full confidence, as well as the backing of…")
+    format("Yes, Ariana has my full confidence, as well as the backing of…")
 }
 
 text gText_SpeechSpeechSpeech_Us {
-    format("… US! The Elite Four of Psfregion1!")
+    format("… US! The Elite Four of SanFran!")
 }
 text gText_SpeechSpeechSpeech_HolyShit {
     format("Holy shit ok, good enough for me!")
@@ -389,11 +389,11 @@ text gText_SpeechSpeechSpeech_Yeah {
 }
 
 text gText_SpeechSpeechSpeech_HellYes {
-    format("Hell yes! Woo! Wait, where did Psfgoodboss go?")
+    format("Hell yes! Woo! Wait, where did Giovanni go?")
 }
 
 text gText_SpeechSpeechSpeech_YouAllKnowHowCompanies {
-    format("You all know how companies like Psfcompany8 and Psfcompany7 have ruined our lives and families. But with the combined popularity of the Champion, Elite Four and our manpower, I think we can hurt these people where it counts: their wallets. We can’t drive these parasitic companies out of the region… but all that money has to go somewhere. Let’s use that money to strengthen the region and create a brighter future for us all.")
+    format("You all know how companies like Amazon and Facebook have ruined our lives and families. But with the combined popularity of the Champion, Elite Four and our manpower, I think we can hurt these people where it counts: their wallets. We can’t drive these parasitic companies out of the region… but all that money has to go somewhere. Let’s use that money to strengthen the region and create a brighter future for us all.")
 }
 
 text gText_SpeechSpeechSpeech_WereFinally {
@@ -405,23 +405,23 @@ text gText_SpeechSpeechSpeech_ThisIsInsane {
 }
 
 text gText_SpeechSpeechSpeech_WeWantToBegin {
-    format("We want to begin by attacking the biggest players in Psfregion1. Each of us will handle a different offensive plan.")
+    format("We want to begin by attacking the biggest players in SanFran. Each of us will handle a different offensive plan.")
 }
 
 text gText_SpeechSpeechSpeech_4LeadCharge {
-    format("Psfelite4 will lead the charge against Psfcompany8.")
+    format("Wikstrom will lead the charge against Amazon.")
 }
 
 text gText_SpeechSpeechSpeech_3LeadCharge {
-    format("Psfelite3 will lead the charge against Psfcompany5.")
+    format("Siebold will lead the charge against Uber.")
 }
 
 text gText_SpeechSpeechSpeech_1LeadCharge {
-    format("Psfelite1 will lead the charge against Psfcompany7.")
+    format("Malva will lead the charge against Facebook.")
 }
 
 text gText_SpeechSpeechSpeech_IllBeHandling {
-    format("And I’ll be handling negotiations with the government, and operations here. Psfgoodadmin will be giving each of you assignments under one of the Elite Four members, so listen up. ")
+    format("And I’ll be handling negotiations with the government, and operations here. Ariana will be giving each of you assignments under one of the Elite Four members, so listen up. ")
 }
 text gText_SpeechSpeechSpeech_DamnThisShit {
     format("Damn, this shit is so crazy! The air is electric!")
@@ -432,11 +432,11 @@ text gText_SpeechSpeechSpeech_ItFeelsReally {
 }
 
 text gText_SpeechSpeechSpeech_YeahAlsoAre {
-    format("Also, are you heading to that party in Psfcity9 now? I'll catch up with you in a second, I just gotta talk to Psfgoodadmin first.")
+    format("Also, are you heading to that party in Oakland now? I'll catch up with you in a second, I just gotta talk to Ariana first.")
 }
 
 text gText_SpeechSpeechSpeech_ByTheWay {
-    format("By the way, you and I are free to work with whoever we want. Just talk to the Elite Four member you want to team up with. I gotta go, I told Psfgoodadmin I’d help them set up something. Peace!")
+    format("By the way, you and I are free to work with whoever we want. Just talk to the Elite Four member you want to team up with. I gotta go, I told Ariana I’d help them set up something. Peace!")
 }
 
 text gText_SpeechSpeechSpeech_Peace {

@@ -1,75 +1,75 @@
-EnterPsfleader5_Event_Script::
+EnterChuck_Event_Script::
 	switch VAR_GYM_5_STATE
-	case 3, EnterPsfleader5_Event_Script_2
-	case 4, EnterPsfleader5_Event_Script_3
-	case 5, EnterPsfleader5_Event_Script_4
-	goto EnterPsfleader5_Intro_Dialogue
+	case 3, EnterChuck_Event_Script_2
+	case 4, EnterChuck_Event_Script_3
+	case 5, EnterChuck_Event_Script_4
+	goto EnterChuck_Intro_Dialogue
 	return
 
-EnterPsfleader5_Event_Script_2:
-	goto EnterPsfleader5_StartBattle_Script
+EnterChuck_Event_Script_2:
+	goto EnterChuck_StartBattle_Script
 	return
 
-EnterPsfleader5_Event_Script_3:
-	goto EnterPsfleader5_PostDefeat1_Dialogue
+EnterChuck_Event_Script_3:
+	goto EnterChuck_PostDefeat1_Dialogue
 	return
 
-EnterPsfleader5_Event_Script_4:
-	goto EnterPsfleader5_PostDefeat2_Dialogue
+EnterChuck_Event_Script_4:
+	goto EnterChuck_PostDefeat2_Dialogue
 	return
 
 
-EnterPsfleader5_Intro_Dialogue::
+EnterChuck_Intro_Dialogue::
 	lock
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_AintItBeautiful, MSGBOX_NPC
+	msgbox gText_EnterChuck_AintItBeautiful, MSGBOX_NPC
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_DoYouKnow
+	msgbox gText_EnterChuck_DoYouKnow
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_NoWh
+	msgbox gText_EnterChuck_NoWh
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_IllTellYouWhy
+	msgbox gText_EnterChuck_IllTellYouWhy
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_YaKnowWhat
+	msgbox gText_EnterChuck_YaKnowWhat
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_WeWould
+	msgbox gText_EnterChuck_WeWould
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_WeWouldBlowThem
+	msgbox gText_EnterChuck_WeWouldBlowThem
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_ThatRawPower
+	msgbox gText_EnterChuck_ThatRawPower
 	callnative ClearMugshot
 	setvar VAR_GYM_5_STATE, 3
 	call Common_EventScript_SaveGame
 	closemessage
-	goto EnterPsfleader5_StartBattle_Script
+	goto EnterChuck_StartBattle_Script
 	return
 
 
-EnterPsfleader5_StartBattle_Script::
+EnterChuck_StartBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	trainerbattle_single TRAINER_NORMAN_1, gText_EnterPsfleader5_NowImGonnaShow, gText_EnterPsfleader5_ManDown, EnterPsfleader5_Psfleader5Defeated_Script, NO_MUSIC
+	trainerbattle_single TRAINER_NORMAN_1, gText_EnterChuck_NowImGonnaShow, gText_EnterChuck_ManDown, EnterChuck_ChuckDefeated_Script, NO_MUSIC
 	return
 
 
-EnterPsfleader5_Psfleader5Defeated_Script::
+EnterChuck_ChuckDefeated_Script::
 	lock
 	setflag FLAG_BADGE05_GET
 	setflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL
 	addvar VAR_GYM_5_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_YoureNoJoke
+	msgbox gText_EnterChuck_YoureNoJoke
 	callnative ClearMugshot
-	msgbox gText_EnterPsfleader5_BadgeGet
+	msgbox gText_EnterChuck_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM05
 	closemessage
@@ -79,97 +79,97 @@ EnterPsfleader5_Psfleader5Defeated_Script::
 	end
 
 
-EnterPsfleader5_PostDefeat1_Dialogue::
+EnterChuck_PostDefeat1_Dialogue::
 	setvar VAR_GYM_5_STATE, 5
 	lock
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_MaybeMyDefense, MSGBOX_NPC
+	msgbox gText_EnterChuck_MaybeMyDefense, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
 	release
 	end
 
 
-EnterPsfleader5_PostDefeat2_Dialogue::
+EnterChuck_PostDefeat2_Dialogue::
 	lock
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader5_ManTheCompetition, MSGBOX_NPC
+	msgbox gText_EnterChuck_ManTheCompetition, MSGBOX_NPC
 	callnative ClearMugshot
 	closemessage
 	release
 	end
 
 
-gText_EnterPsfleader5_AintItBeautiful::
+gText_EnterChuck_AintItBeautiful::
 	.string "Ain't it beautiful? All of it! The bridge,\n"
 	.string "the ocean, this base.$"
 
-gText_EnterPsfleader5_DoYouKnow::
+gText_EnterChuck_DoYouKnow::
 	.string "Do you know why I built the Gym into the\n"
 	.string "base, {PLAYER}?$"
 
-gText_EnterPsfleader5_NoWh::
+gText_EnterChuck_NoWh::
 	.string "No, wh -$"
 
-gText_EnterPsfleader5_IllTellYouWhy::
+gText_EnterChuck_IllTellYouWhy::
 	.string "I'll tell you why! Because this base\n"
 	.string "represents the crown jewel of this\l"
 	.string "here nation: our military defense.\l"
 	.string "We're so strong, people don't even\l"
 	.string "DREAM of attacking us!$"
 
-gText_EnterPsfleader5_YaKnowWhat::
+gText_EnterChuck_YaKnowWhat::
 	.string "Ya know what happens if they did\n"
 	.string "attack?$"
 
-gText_EnterPsfleader5_WeWould::
+gText_EnterChuck_WeWould::
 	.string "We would -$"
 
-gText_EnterPsfleader5_WeWouldBlowThem::
+gText_EnterChuck_WeWouldBlowThem::
 	.string "WE WOULD BLOW THEM TO SMITHEEREENS! Oh\n"
 	.string "baby, just gets me excited thinking\l"
 	.string "about how we can blow those idiots\l"
 	.string "right back to the Stone Age.$"
 
-gText_EnterPsfleader5_ThatRawPower::
+gText_EnterChuck_ThatRawPower::
 	.string "That raw power is so inspiring, once I\n"
 	.string "got the chance, I knew I wanted my\l"
 	.string "career to have the energy of that\l"
 	.string "legacy. That's why we're up here.$"
 
-gText_EnterPsfleader5_NowImGonnaShow::
+gText_EnterChuck_NowImGonnaShow::
 	.string "Now, I'm gonna show you that same raw\n"
 	.string "defensive power! Buckle up, solider!$"
 
-gText_EnterPsfleader5_WeGotACode::
+gText_EnterChuck_WeGotACode::
 	.string "We got a code Oscar Uniform Charlie\n"
 	.string "Hotel on our hands.$"
 
-gText_EnterPsfleader5_ScrambleTheJets::
+gText_EnterChuck_ScrambleTheJets::
 	.string "Scramble the jets!$"
 
-gText_EnterPsfleader5_ThreatNeutralized::
+gText_EnterChuck_ThreatNeutralized::
 	.string "Threat neutralized.$"
 
-gText_EnterPsfleader5_ManDown::
+gText_EnterChuck_ManDown::
 	.string "Man down, man down!$"
 
-gText_EnterPsfleader5_YoureNoJoke::
+gText_EnterChuck_YoureNoJoke::
 	.string "You're no joke! My strategy is usually\n"
 	.string "to wear the opponent out, but I ran out\l"
 	.string "of gas quick against you!$"
 
-gText_EnterPsfleader5_BadgeGet::
-	.string "You received the Psfbadge5 Badge!$"
+gText_EnterChuck_BadgeGet::
+	.string "You received the ChuckBadge Badge!$"
 
-gText_EnterPsfleader5_MaybeMyDefense::
+gText_EnterChuck_MaybeMyDefense::
 	.string "Maybe my defense wasn't strong\n"
 	.string "enough? Should I start using\l"
 	.string "Sandstorm? Maybe Toxic...$"
 
-gText_EnterPsfleader5_ManTheCompetition::
+gText_EnterChuck_ManTheCompetition::
 	.string "Man, the competition at the League\n"
 	.string "Finals is gonna a hell of a show. All you\l"
 	.string "kids coming through here are gonna\l"

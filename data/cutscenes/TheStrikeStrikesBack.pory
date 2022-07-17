@@ -271,7 +271,7 @@ text gText_TheStrikeStrikesBack_WellHeresTheProblem {
 }
 
 text gText_TheStrikeStrikesBack_MyNameIs {
-    format("My name is Psfgoodboss, and I am the leader of Psfgoodteam. ")
+    format("My name is Giovanni, and I am the leader of TeamRocket. ")
 }
 
 text gText_TheStrikeStrikesBack_WeAreFighting {
@@ -295,7 +295,7 @@ text gText_TheStrikeStrikesBack_TheseDemandsAreMore {
 }
 
 text gText_TheStrikeStrikesBack_SighOfCourse {
-    format("Sigh, of course. Well, they're the reason we brought you here. We've received intel that Psfgoodteam is planning on using exploding Pokemon to bring down the construction site. The strike is just a distraction. ")
+    format("Sigh, of course. Well, they're the reason we brought you here. We've received intel that TeamRocket is planning on using exploding Pokemon to bring down the construction site. The strike is just a distraction. ")
 }
 
 text gText_TheStrikeStrikesBack_WaitWhatThatsInsane {
@@ -303,15 +303,15 @@ text gText_TheStrikeStrikesBack_WaitWhatThatsInsane {
 }
 
 text gText_TheStrikeStrikesBack_AgreedAndThats {
-    format("Agreed, and that's why we need you two while Psfbadboss and I work on a peaceful solution.")
+    format("Agreed, and that's why we need you two while Rose and I work on a peaceful solution.")
 }
 
 text gText_TheStrikeStrikesBack_ThePoliceAreWorking {
-    format("The police are working to make sure the protests remain civil but we don't want a repeat of the riots in Psfcity12.")
+    format("The police are working to make sure the protests remain civil but we don't want a repeat of the riots in Tenderloin.")
 }
 
 text gText_TheStrikeStrikesBack_AgitatedWildGarbodor {
-    format("We think Psfgoodteam agitated wild Garbodor, and we need you to capture or knock them out while Psfbadboss and I negotiate with Psfgoodboss. Time is of the essence!")
+    format("We think TeamRocket agitated wild Garbodor, and we need you to capture or knock them out while Rose and I negotiate with Giovanni. Time is of the essence!")
 }
 
 text gText_TheStrikeStrikesBack_IllBeInThere {
@@ -321,7 +321,7 @@ text gText_TheStrikeStrikesBack_HelloPlayer {
     format("Hello {PLAYER}!")
 }
 text gText_TheStrikeStrikesBack_OhHi {
-    format("Psfbadboss! Aren't you busy...?")
+    format("Rose! Aren't you busy...?")
 }
 text gText_TheStrikeStrikesBack_IKnowImLate {
     format("So busy in fact, that I'm late in congratulating you. I hear you've got all eight badges!")

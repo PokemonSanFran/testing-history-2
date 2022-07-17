@@ -247,6 +247,6 @@ gText_OkayLetsFixIt_WhatTheHell::
 gText_OkayLetsFixIt_IHaveNoIdea::
 	.string "…I have no idea what I'm going to do. Do\n"
 	.string "I help Psfbadguy and the police end\l"
-	.string "Psfgoodteam permanently? Or do I help\l"
-	.string "Psfgoodteam clear their name and help\l"
-	.string "the people of Psfregion1?$"
+	.string "TeamRocket permanently? Or do I help\l"
+	.string "TeamRocket clear their name and help\l"
+	.string "the people of SanFran?$"

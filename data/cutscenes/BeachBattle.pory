@@ -9,7 +9,7 @@ script BeachBattle_BattleSetUp_Script {
     setobjectxyperm(PSFTRANSRIVAL,10,24) 
 }
 
-script BeachBattle_PsftransrivalWalkToPlayer {
+script BeachBattle_BiancaWalkToPlayer {
     lock
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -24,16 +24,16 @@ script BeachBattle_PsftransrivalWalkToPlayer {
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
         applymovement(PSFTRANSRIVAL,BeachBattle_ApproachFromSouth)
         waitmovement(0)
-        goto(BeachBattle_Psfnativerival_Event_Script)
+        goto(BeachBattle_Archer_Event_Script)
 }
 
 script BeachBattle_Interact_Script {
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
     faceplayer
-        goto(BeachBattle_Psfnativerival_Event_Script)
+        goto(BeachBattle_Archer_Event_Script)
 }
 
-script BeachBattle_Psfnativerival_Event_Script {
+script BeachBattle_Archer_Event_Script {
     switch (var(VAR_ROUTE107_STATE)) {
         case 0: goto(BeachBattle_Approach_Dialogue)
         case 1: goto(BeachBattle_StartBattle_Script)
@@ -179,7 +179,7 @@ text gText_BeachBattle_UghIShouldBe {
 }
 
 text gText_BeachBattle_IfItTakesATeam {
-    format("If it takes a team as good as yours to beat Psfleader5, then I might need to rethink things…")
+    format("If it takes a team as good as yours to beat Chuck, then I might need to rethink things…")
 }
 
 text gText_BeachBattle_NextTimeIllHave {

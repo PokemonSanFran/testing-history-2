@@ -1,14 +1,14 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFTRANSRIVAL = 1
 
-script OldAssholeAppears_WalktoPsftransrival_Script {
+script OldAssholeAppears_WalktoBianca_Script {
     lockall
     getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 
     if (var (VAR_TEMP_0) == 12) {
-        applymovement(PLAYER, OldAssholeAppears_WalkNorthtoPsftransrival_Movement)
+        applymovement(PLAYER, OldAssholeAppears_WalkNorthtoBianca_Movement)
     } else {
-        applymovement(PLAYER, OldAssholeAppears_WalkWesttoPsftransrival_Movement)
+        applymovement(PLAYER, OldAssholeAppears_WalkWesttoBianca_Movement)
     }
     waitmovement(0)
     goto(OldAssholeAppears_Intro_Dialogue)
@@ -102,12 +102,12 @@ script OldAssholeAppears_GiveCorviknightCard_Script {
     msgbox(gText_OldAssholeAppears_NowWereEven)
     callnative(ClearMugshot)
     closemessage
-    goto(OldAssholeAppears_PsftransrivalExit_Script)
+    goto(OldAssholeAppears_BiancaExit_Script)
 }
 
-script OldAssholeAppears_PsftransrivalExit_Script {
+script OldAssholeAppears_BiancaExit_Script {
     getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
-    applymovement(PSFTRANSRIVAL, OldAssholeAppears_PsftransrivalExit_Movement)
+    applymovement(PSFTRANSRIVAL, OldAssholeAppears_BiancaExit_Movement)
     waitmovement(0)
     fadedefaultbgm
     removeobject(PSFTRANSRIVAL)
@@ -158,7 +158,7 @@ text gText_OldAssholeAppears_TakingThisAllSeriously {
 }
 
 text gText_OldAssholeAppears_FamiliarWith {
-    format("Are you familiar with Psfcompany5?")
+    format("Are you familiar with Uber?")
 }
 
 text gText_OldAssholeAppears_ThoughtSo {
@@ -166,11 +166,11 @@ text gText_OldAssholeAppears_ThoughtSo {
 }
 
 text gText_OldAssholeAppears_LetsYouCallARide {
-    format("Don't have it in Orre? Psfcompany5 lets you call a ride from anywhere to anywhere else that you've been.")
+    format("Don't have it in Orre? Uber lets you call a ride from anywhere to anywhere else that you've been.")
 }
 
 text gText_OldAssholeAppears_LetsYouUse {
-    format("That card lets you use Psfcompany5 for free! I went to the Psfbadguy1tower, and the League Commissioner gave me these for being the first Challenger to visit! It also lets you use the Subway System for free, but I think I'll stick to Psfcompany5. Less homeless people to deal with, you know?")
+    format("That card lets you use Uber for free! I went to the YCombinatortower, and the League Commissioner gave me these for being the first Challenger to visit! It also lets you use the Subway System for free, but I think I'll stick to Uber. Less homeless people to deal with, you know?")
 }
 
 text gText_OldAssholeAppears_YouveBeenSuperNice {
@@ -178,23 +178,23 @@ text gText_OldAssholeAppears_YouveBeenSuperNice {
 }
 
 text gText_OldAssholeAppears_NowWereEven {
-    format("Now we're even after I ditched breakfast. All right, time to go challenge the Psfplace9 Gym. So glad Daddy sent me these Go-Goggles!")
+    format("Now we're even after I ditched breakfast. All right, time to go challenge the FortPoint Gym. So glad Daddy sent me these Go-Goggles!")
 }
 
-movement OldAssholeAppears_WalkNorthtoPsftransrival_Movement {
+movement OldAssholeAppears_WalkNorthtoBianca_Movement {
     walk_right * 3
     walk_up * 3
     face_up
     step_end
 }
 
-movement OldAssholeAppears_WalkWesttoPsftransrival_Movement {
+movement OldAssholeAppears_WalkWesttoBianca_Movement {
     walk_left * 6
     face_up
     step_end
 }
 
-movement OldAssholeAppears_PsftransrivalExit_Movement {
+movement OldAssholeAppears_BiancaExit_Movement {
     walk_left * 6
     walk_down * 2
     walk_left * 3

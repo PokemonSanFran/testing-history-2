@@ -187,10 +187,10 @@ text gText_OffYouGo_WaitingForMe {
     format("Waiting for me…? Hold on, let me read…")
 }
 text gText_OffYouGo_PleaseMeetMeOn {
-    format("Psfbadadmin: {PLAYER} and Psftransrival, please meet me on the northern side of Psfplace17. (32 mins ago)")
+    format("Psfbadadmin: {PLAYER} and Bianca, please meet me on the northern side of GldnGteBridge. (32 mins ago)")
 }
 text gText_OffYouGo_IllBeRightOver {
-    format("Psftransrival: I'll be right over! (31 mins ago)")
+    format("Bianca: I'll be right over! (31 mins ago)")
 }
 text gText_OffYouGo_YeahIDidntSee {
     format("Yeah, I didn't see that. I guess I'm on my way.")
@@ -205,25 +205,25 @@ text gText_OffYouGo_WelcomeToTheParty {
     format("Welcome to the party, sleepyhead.")
 }
 text gText_OffYouGo_HonestlyItsFine {
-    format("Honestly {PLAYER}, it's fine. I wasn't expecting Psftransrival to be awake so early!")
+    format("Honestly {PLAYER}, it's fine. I wasn't expecting Bianca to be awake so early!")
 }
 text gText_OffYouGo_NeitherWasI {
     format("…neither was I.")
 }
 text gText_OffYouGo_WellYoureBothHere {
-    format("Well, you're both here now. As you may have guessed, the construction delays are going to delay the Championship by a few weeks. Rather than kill your momentum now, Psfelite3 has agreed to train you both, and Psfbadguy will be footing the bill.")
+    format("Well, you're both here now. As you may have guessed, the construction delays are going to delay the Championship by a few weeks. Rather than kill your momentum now, Siebold has agreed to train you both, and Psfbadguy will be footing the bill.")
 }
 text gText_OffYouGo_ThanksButWho {
     format("Thanks but - who the hell is that?")
 }
 text gText_OffYouGo_AsYesYoureNot {
-    format("Ah yes, you're not from here. Psfelite3 is one of the members of the disbanded Psfregion1 Elite Four. A powerful trainer indeed, and we think this is an excellent opportunity for you both.")
+    format("Ah yes, you're not from here. Siebold is one of the members of the disbanded SanFran Elite Four. A powerful trainer indeed, and we think this is an excellent opportunity for you both.")
 }
 text gText_OffYouGo_SoWhereIs {
     format("So, where is this dude?")
 }
 text gText_OffYouGo_AhYesWellTheyHave {
-    format("Ah yes, well, they have… unconventional training methods. In the middle of Psfcave1, you'll find a pathway leading underground where Psfelite3 has hidden their notebook. Once you get it, you'll get your next instructions.")
+    format("Ah yes, well, they have… unconventional training methods. In the middle of RobinWillTunnel, you'll find a pathway leading underground where Siebold has hidden their notebook. Once you get it, you'll get your next instructions.")
 }
 text gText_OffYouGo_WeirdOkay {
     format("Weird. Okay. Sounds easy enough, though. Let's make a race of it!")
@@ -232,7 +232,7 @@ text gText_OffYouGo_OhWait {
     format("Oh wait!")
 }
 text gText_OffYouGo_IDoWishThey {
-    format("I do wish they'd slow down just a little… two more things, {PLAYER}. First, the training requires teamwork. Psftransrival is going to get stuck without you pretty quickly. Second, there's very little cell service in Psfcave1 and Psfcave2. And now that they're already inside, I can't message them. So can you fill them in?")
+    format("I do wish they'd slow down just a little… two more things, {PLAYER}. First, the training requires teamwork. Bianca is going to get stuck without you pretty quickly. Second, there's very little cell service in RobinWillTunnel and MuirWoods. And now that they're already inside, I can't message them. So can you fill them in?")
 }
 text gText_OffYouGo_IllHurrySo {
     format("Haha, yeah. I'll hurry so they're not waiting too long!")
@@ -241,5 +241,5 @@ text gText_OffYouGo_GoodLuck {
     format("Good luck!")
 }
 text gText_OffYouGo_ItMightBeAGood {
-    format("It might be a good idea to stock up before you go in. I know the training is extensive, but there is a town, Psfcity10, after Psfcave1. ")
+    format("It might be a good idea to stock up before you go in. I know the training is extensive, but there is a town, Marin, after RobinWillTunnel. ")
 }

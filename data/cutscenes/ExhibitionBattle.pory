@@ -76,7 +76,7 @@ script ExhibitionBattle_BattleDiantha_Script {
         warpsilent(MAP_PSFPLACE14_LOCKERS,255,9,5)
 
         //PSF TODO Add crowd booing
-        //The crowd goes wild with booes and jeering. The screen cuts to black the player is warped back to the locker room. Psfbadboss, Psfbadadmin2, and Psftransrival are in the locker room. Psfbadboss approaches the player as they walk in.
+        //The crowd goes wild with booes and jeering. The screen cuts to black the player is warped back to the locker room. Rose, Koga, and Bianca are in the locker room. Rose approaches the player as they walk in.
 }
 
 script ExhibitionBattle_PostBattle_Dialogue {
@@ -105,7 +105,7 @@ script ExhibitionBattle_PostBattle_Dialogue {
         end
 }
 
-script ExhibitionBattle_Psftransrival_Dialogue {
+script ExhibitionBattle_Bianca_Dialogue {
             setvar(VAR_0x8000, MUGSHOT_BIANCA)
             callnative(DrawMugshot)
 
@@ -138,7 +138,7 @@ script ExhibitionBattle_Psftransrival_Dialogue {
         msgbox(gText_ExhibitionBattle_IThinkYoureGonna)
 }
 
-script ExhibitionBattle_Psfbadadmin3_Dialogue {
+script ExhibitionBattle_Sabrina_Dialogue {
         lock
         setvar(VAR_0x8000, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
@@ -200,7 +200,7 @@ text gText_ExhibitionBattle_NervousStill {
 }
 
 text gText_ExhibitionBattle_AndNow {
-    format("And now, the Psfregion1 Champion…. {PLAYER}!!!")
+    format("And now, the SanFran Champion…. {PLAYER}!!!")
 }
 
 text gText_ExhibitionBattle_CanTheGrand {
@@ -258,7 +258,7 @@ text gText_ExhibitionBattle_IThinkYoureGonna {
 }
 
 text gText_ExhibitionBattle_IWonderIfThat {
-    format("I wonder if that development in Psfcity7 has been committed yet…")
+    format("I wonder if that development in Dogpatch has been committed yet…")
 }
 text gText_ExhibitionBattle_IDidntSeeYour {
     format("I didn't see your match, but the dashboards show me that people were very excited.")
@@ -269,7 +269,7 @@ text gText_ExhibitionBattle_UhhThanks {
 }
 
 text gText_ExhibitionBattle_YourWorkDismantling {
-    format("Your work dismantling Psfgoodteam was excellent, by the way.")
+    format("Your work dismantling TeamRocket was excellent, by the way.")
 }
 
 text gText_ExhibitionBattle_ImHappy {
@@ -277,7 +277,7 @@ text gText_ExhibitionBattle_ImHappy {
 }
 
 text gText_ExhibitionBattle_WithTheirEntireLeadership {
-    format("With their entire leadership core in custody, we now basically control the narrative around them. We're planning a campaign to show the people of the region the true dangers of collective organizations like Psfgoodteam and the Elite Four.")
+    format("With their entire leadership core in custody, we now basically control the narrative around them. We're planning a campaign to show the people of the region the true dangers of collective organizations like TeamRocket and the Elite Four.")
 }
 
 text gText_ExhibitionBattle_WaitTheEliteFour {

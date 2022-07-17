@@ -109,7 +109,7 @@ OneDown_WalkOffScreen:
 	walk_down
 	step_end
 
-OneDown_PsfgoodadminWalkAway:
+OneDown_ArianaWalkAway:
 	walk_left
 	walk_down
 	walk_down
@@ -130,7 +130,7 @@ gText_OneDown_ThanksAndYouve::
 
 gText_OneDown_IDidntThinkIHad::
 	.string "I didn't think I had it in me, to be\n"
-	.string "honest. Psfgood- Psfelite4 knew\l"
+	.string "honest. Psfgood- Wikstrom knew\l"
 	.string "better, I guess.$"
 
 gText_OneDown_SoundsLikeWereBoth::
@@ -157,7 +157,7 @@ gText_OneDown_YoureGonnaCall::
 
 gText_OneDown_WeGetQuakes::
 	.string "We get quakes all the time. The\n"
-	.string "Psffaultline will do that, you know? I'm\l"
+	.string "SanAndreasFault will do that, you know? I'm\l"
 	.string "sure they all start to feel the same.$"
 
 gText_OneDown_GuessYoureRight::
@@ -166,5 +166,5 @@ gText_OneDown_GuessYoureRight::
 gText_OneDown_GetSomeRest::
 	.string "I know its been a long day, {PLAYER},\n"
 	.string "you should get some rest. You're still\l"
-	.string "staying at Psfnativerival's place in\l"
-	.string "Psfcity17, right?$"
+	.string "staying at Archer's place in\l"
+	.string "Alameda, right?$"

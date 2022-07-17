@@ -12,7 +12,7 @@ script YouLookTired_HideObjects_Script {
     setflag(FLAG_TEMP_1)
 }
 
-script YouLookTired_InteractPsfbadadmin2_Script {
+script YouLookTired_InteractKoga_Script {
     lock
         applymovement(PSFBADADMIN2,Common_Movement_FacePlayer)
         goto(YouLookTired_Intro_Dialogue)
@@ -20,12 +20,12 @@ script YouLookTired_InteractPsfbadadmin2_Script {
 
 script YouLookTired_Trigger_Script {
     lock
-        call(YouLookTired_WalkToPsfbadadmin2_Script)
+        call(YouLookTired_WalkToKoga_Script)
         applymovement(PSFBADADMIN2,Common_Movement_FacePlayer)
         goto(YouLookTired_Intro_Dialogue)
 }
 
-script YouLookTired_WalkToPsfbadadmin2_Script {
+script YouLookTired_WalkToKoga_Script {
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
         switch(var(VAR_TEMP_0)){
@@ -80,7 +80,7 @@ script YouLookTired_BadgeJudge_Script {
 
 
 script YouLookTired_AllBadges_Dialogue {
-    msgbox(gText_YouLookTired_FormallPsfbadguy1ongratulate)
+    msgbox(gText_YouLookTired_FormallYCombinatorongratulate)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -191,15 +191,15 @@ text gText_YouLookTired_YeahWhatsUp {
 }
 
 text gText_YouLookTired_GladIWasAbleToRun {
-    format("Ah, Psfbadadmin3 was right, glad I was able to run into you. I'm Psfbadadmin2.")
+    format("Ah, Sabrina was right, glad I was able to run into you. I'm Koga.")
 }
 
 text gText_YouLookTired_IGuessYouDoToo {
-    format("Psfbadadmin3... they work for Psfbadguy1, right? So I guess you do too?")
+    format("Sabrina... they work for YCombinator, right? So I guess you do too?")
 }
 
 text gText_YouLookTired_ChiefOperatingOfficer {
-    format("Yes sorry, I'm the Psfbadguy1 Chief Operating Officer, and Psfbadboss's right hand. It's a pleasure to meet you, we're all very impressed with you.")
+    format("Yes sorry, I'm the YCombinator Chief Operating Officer, and Rose's right hand. It's a pleasure to meet you, we're all very impressed with you.")
 }
 
 text gText_YouLookTired_IKeepHearingThat {
@@ -215,7 +215,7 @@ text gText_YouLookTired_IKnowYoureRacing {
 }
 
 text gText_YouLookTired_CanBeAHandful {
-    format("So far, you're certainly living up to your title! Congratulations on defeating Psfleader5, I know they can be... a handful.")
+    format("So far, you're certainly living up to your title! Congratulations on defeating Chuck, I know they can be... a handful.")
 }
 
 text gText_YouLookTired_ItsBeenAnInterestingRide {
@@ -226,7 +226,7 @@ text gText_YouLookTired_IImagineYoureProbably {
     format("I imagine you're probably exhausted. Why don't you come over to my place for dinner? I bet you haven't had a home-cooked meal in a while, what do you say?")
 }
 
-text gText_YouLookTired_FormallPsfbadguy1ongratulate {
+text gText_YouLookTired_FormallYCombinatorongratulate {
     format("Well, you're certainly living up to your legend. Let me be the first to formally congratulate you on your qualification in the Championship!")
 }
 
@@ -239,7 +239,7 @@ text gText_YouLookTired_WontBeAnIssue {
 }
 
 text gText_YouLookTired_WestOfHere {
-    format("I live in Psfcity3, west of here. ")
+    format("I live in Presidio, west of here. ")
 }
 
 text gText_YouLookTired_MyHouseHas {
@@ -251,7 +251,7 @@ text gText_YouLookTired_ImNotReally {
 }
 
 text gText_YouLookTired_Nonsense {
-    format("Nonsense. I'll pull some data from Psfcompany1 and find something to suite your tastes!")
+    format("Nonsense. I'll pull some data from DoorDash and find something to suite your tastes!")
 }
 
 text gText_YouLookTired_YouCanDoThat {
@@ -259,7 +259,7 @@ text gText_YouLookTired_YouCanDoThat {
 }
 
 text gText_YouLookTired_DataIsTheMost {
-    format("Of course! Data is the most powerful resource in the world - Psfbadguy1 has quite the vast library available to us.")
+    format("Of course! Data is the most powerful resource in the world - YCombinator has quite the vast library available to us.")
 }
 
 text gText_YouLookTired_IllSeeYouForDinner {

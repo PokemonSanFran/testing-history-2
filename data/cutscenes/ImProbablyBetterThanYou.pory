@@ -27,7 +27,7 @@ script ImProbablyBetterThanYou_StandingOutside_Dialogue {
         waitmovement(0)
 }
 
-script ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue {
+script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
     addvar(VAR_LITTLEROOT_INTRO_STATE,1)
         lockall
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
@@ -130,7 +130,7 @@ text gText_ImProbablyBetterThanYou_GreatToMeet {
 }
 
 text gText_ImProbablyBetterThanYou_KindaShabbyHuh {
-    format("Kinda shabby, huh? I thought Psfbadguy1 was pulling out all the stops for us, but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
+    format("Kinda shabby, huh? I thought YCombinator was pulling out all the stops for us, but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
 }
 
 text gText_ImProbablyBetterThanYou_OhYeahUh {
@@ -146,7 +146,7 @@ text gText_ImProbablyBetterThanYou_MyFlightWasEarlierToday {
 }
 
 text gText_ImProbablyBetterThanYou_IOrderedSomeFoodToo {
-    format("I ordered some food too - Psfcompany1 is the same here as it is back in Unova, and my Mom's card is still on the account! I'm sure she gets... points or something, right?")
+    format("I ordered some food too - DoorDash is the same here as it is back in Unova, and my Mom's card is still on the account! I'm sure she gets... points or something, right?")
 }
 
 text gText_ImProbablyBetterThanYou_WhereAreYouFrom {

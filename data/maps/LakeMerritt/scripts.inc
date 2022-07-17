@@ -1,0 +1,80 @@
+LakeMerritt_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LakeMerritt_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+LakeMerritt_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto LakeMerritt_MapScripts_OnTransition
+	return
+
+
+LakeMerritt_MapScripts_OnTransition::
+	setflag FLAG_TEMP_2
+	goto_if_set FLAG_TIMELINE_TRUE, LakeMerritt_MapScripts_OnTransition_9
+LakeMerritt_MapScripts_OnTransition_7:
+	goto_if_set FLAG_TIMELINE_FALSE, LakeMerritt_MapScripts_OnTransition_6
+LakeMerritt_MapScripts_OnTransition_5:
+	compare VAR_STORYLINE_STATE, 25
+	goto_if_lt LakeMerritt_MapScripts_OnTransition_3
+	call Manhunt_HideObject_Script
+	return
+
+LakeMerritt_MapScripts_OnTransition_1:
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
+	return
+
+LakeMerritt_MapScripts_OnTransition_2:
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
+	return
+
+LakeMerritt_MapScripts_OnTransition_3:
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
+	return
+
+LakeMerritt_MapScripts_OnTransition_6:
+	compare VAR_RUSTURF_TUNNEL_STATE, 6
+	goto_if_lt LakeMerritt_MapScripts_OnTransition_2
+	goto LakeMerritt_MapScripts_OnTransition_5
+
+LakeMerritt_MapScripts_OnTransition_9:
+	compare VAR_LILYCOVE_CITY_STATE, 8
+	goto_if_lt LakeMerritt_MapScripts_OnTransition_1
+	goto LakeMerritt_MapScripts_OnTransition_7
+
+
+LakeMerritt_InteractWikstrom_Event_Script::
+	lock
+	goto_if_set FLAG_TIMELINE_TRUE, LakeMerritt_InteractWikstrom_Event_Script_9
+LakeMerritt_InteractWikstrom_Event_Script_7:
+	goto_if_set FLAG_TIMELINE_FALSE, LakeMerritt_InteractWikstrom_Event_Script_6
+LakeMerritt_InteractWikstrom_Event_Script_5:
+	compare VAR_STORYLINE_STATE, 25
+	goto_if_lt LakeMerritt_InteractWikstrom_Event_Script_4
+LakeMerritt_InteractWikstrom_Event_Script_1:
+	release
+	end
+
+LakeMerritt_InteractWikstrom_Event_Script_2:
+	call MaskOff_Encounter_Giovanni_Dialogue
+	goto LakeMerritt_InteractWikstrom_Event_Script_1
+
+LakeMerritt_InteractWikstrom_Event_Script_3:
+	call Manhunt_Encounter_Giovanni_Dialogue
+	goto LakeMerritt_InteractWikstrom_Event_Script_1
+
+LakeMerritt_InteractWikstrom_Event_Script_4:
+	msgbox LakeMerritt_InteractWikstrom_Event_Script_Text_0, MSGBOX_AUTOCLOSE
+	goto LakeMerritt_InteractWikstrom_Event_Script_1
+
+LakeMerritt_InteractWikstrom_Event_Script_6:
+	compare VAR_RUSTURF_TUNNEL_STATE, 4
+	goto_if_gt LakeMerritt_InteractWikstrom_Event_Script_3
+	goto LakeMerritt_InteractWikstrom_Event_Script_5
+
+LakeMerritt_InteractWikstrom_Event_Script_9:
+	compare VAR_LILYCOVE_CITY_STATE, 3
+	goto_if_gt LakeMerritt_InteractWikstrom_Event_Script_2
+	goto LakeMerritt_InteractWikstrom_Event_Script_7
+
+
+LakeMerritt_InteractWikstrom_Event_Script_Text_0:
+	.string "random flavor text about training here$"

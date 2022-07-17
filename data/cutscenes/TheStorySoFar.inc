@@ -11,7 +11,7 @@ TheStorySoFar_ExplainExhibit_Dialogue::
 	end
 
 
-Psfcave7_InteractWithAttendant_Script::
+Alcatraz_InteractWithAttendant_Script::
 	lock
 	applymovement 8, Common_Movement_FacePlayer
 	goto TheStorySoFar_Event_Script
@@ -53,12 +53,12 @@ TheStorySoFar_Event_Script_5:
 	return
 
 TheStorySoFar_Event_Script_6:
-	goto Psfcave7Attendant_HealPlayer_Script
+	goto AlcatrazAttendant_HealPlayer_Script
 	return
 
 
 TheStorySoFar_CheckNumberDefeated_Script::
-	special CheckNumPsfcave7ExhibitDefeated
+	special CheckNumAlcatrazExhibitDefeated
 	msgbox gText_TheStorySoFar_YoureNotQuiteDone
 	switch VAR_RESULT
 	case 0, TheStorySoFar_CheckNumberDefeated_Script_3
@@ -105,7 +105,7 @@ TheStorySoFar_CheckNumberDefeated_Script_10:
 	compare VAR_RESULT, NO
 	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_15
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-	call ResetPsfcave7Exhibit_Script
+	call ResetAlcatrazExhibit_Script
 TheStorySoFar_CheckNumberDefeated_Script_14:
 	waitmovement 0
 	goto TheStorySoFar_CheckNumberDefeated_Script_9
@@ -205,12 +205,12 @@ TheStorySoFar_ReadSign6_Dialogue::
 
 
 TheStorySoFar_RunDefeatedCheck_Script::
-	special CheckNumPsfcave7ExhibitDefeated
+	special CheckNumAlcatrazExhibitDefeated
 	end
 
 
 gText_TheStorySoFar_WelcomeToExhibit::
-	.string "Welcome to the Psfcave7 Exhibit. To\n"
+	.string "Welcome to the Alcatraz Exhibit. To\n"
 	.string "learn about the island, you'll need to\l"
 	.string "battle our staff. Trainers who can\l"
 	.string "defeat all six without leaving the park\l"
@@ -267,9 +267,9 @@ gText_TheStorySoFar_DontForgetToStop::
 	.string "roses.$"
 
 gText_TheStorySoFar_OriginallyBuiltAsAPrison::
-	.string "Psfcave7 was originally built as a\n"
-	.string "prison for Psfregion1's most dangerous\l"
-	.string "criminals. Psfcave7 Prison was\l"
+	.string "Alcatraz was originally built as a\n"
+	.string "prison for SanFran's most dangerous\l"
+	.string "criminals. Alcatraz Prison was\l"
 	.string "nationally praised for its state of the\l"
 	.string "art facilities, forward thinking\l"
 	.string "approach to rehabilitation, and no\l"
@@ -287,7 +287,7 @@ gText_TheStorySoFar_TheBestOffense::
 	.string "stronger with time.$"
 
 gText_TheStorySoFar_TheCriminalUnderbelly::
-	.string "The Psfregion1 criminal underbelly,\n"
+	.string "The SanFran criminal underbelly,\n"
 	.string "using agents within the prison, staged\l"
 	.string "a prison riot. The agents took guards\l"
 	.string "hostage, and demanded that the\l"
@@ -312,8 +312,8 @@ gText_TheStorySoFar_ThePrisonersBeganToTurn::
 	.string "The prisoners began to turn to the\n"
 	.string "citizens of the region for support. One\l"
 	.string "of their most vocal allies was\l"
-	.string "Psfelite2, the strongest member of the\l"
-	.string "Psfregion1 Elite Four. Psfelite2\l"
+	.string "Drasna, the strongest member of the\l"
+	.string "SanFran Elite Four. Drasna\l"
 	.string "organized public rallies and marches,\l"
 	.string "demanding for the release of the\l"
 	.string "prisoners into society, citing the need\l"
@@ -321,7 +321,7 @@ gText_TheStorySoFar_ThePrisonersBeganToTurn::
 	.string "approach.$"
 
 gText_TheStorySoFar_PhysicallyDefensiveMasterpiece::
-	.string "Psfcave7 is a physically defensive\n"
+	.string "Alcatraz is a physically defensive\n"
 	.string "masterpiece, isn't it?$"
 
 gText_TheStorySoFar_ButLikeTheShip::
@@ -360,7 +360,7 @@ gText_TheStorySoFar_TheNaturalDisasterLeft::
 	.string "charged with conspiracy and\l"
 	.string "instigation, seperated, and sent to\l"
 	.string "different prisons around the nation.\l"
-	.string "Psfcave7 was shut down.$"
+	.string "Alcatraz was shut down.$"
 
 gText_TheStorySoFar_HowToughAreYou::
 	.string "How tough are you?$"
@@ -373,7 +373,7 @@ gText_TheStorySoFar_IHearVoicesStanding::
 	.string "all day.$"
 
 gText_TheStorySoFar_ParksAndRecreation::
-	.string "The Psfregion1 Parks and Recreation\n"
+	.string "The SanFran Parks and Recreation\n"
 	.string "has dedicated this plaza to the guards\l"
 	.string "who lost their lives in the disaster and\l"
 	.string "the struggle that divided the region\l"

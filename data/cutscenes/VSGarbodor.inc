@@ -88,29 +88,29 @@ VSGarbodor_ChooseRight_Script::
 	end
 
 
-VSGarbodor_PsfgoodteamGrunt1_Battle_Script::
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_5, gText_VSGarbodor_ScrewThisStadium, gText_VSGarbodor_DamnTheyWereRight, VSGarbodor_PsfgoodteamGrunt1_Battle_Script
+VSGarbodor_TeamRocketGrunt1_Battle_Script::
+	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_5, gText_VSGarbodor_ScrewThisStadium, gText_VSGarbodor_DamnTheyWereRight, VSGarbodor_TeamRocketGrunt1_Battle_Script
 	msgbox gText_VSGarbodor_WelpIDidWhat, MSGBOX_AUTOCLOSE
 	goto VSGarbodor_RemoveGrunt
 	end
 
 
-VSGarbodor_PsfgoodteamGrunt3_Battle_Script::
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_PsfgoodteamGrunt3_Battle_Script
+VSGarbodor_TeamRocketGrunt3_Battle_Script::
+	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_TeamRocketGrunt3_Battle_Script
 	msgbox gText_VSGarbodor_OhThankGiratina, MSGBOX_AUTOCLOSE
 	goto VSGarbodor_RemoveGrunt
 	end
 
 
-VSGarbodor_PsfgoodteamGrunt2_Battle_Script::
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_2, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_PsfgoodteamGrunt2_Battle_Script
+VSGarbodor_TeamRocketGrunt2_Battle_Script::
+	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_2, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_TeamRocketGrunt2_Battle_Script
 	msgbox gText_VSGarbodor_BeingBad, MSGBOX_AUTOCLOSE
 	goto VSGarbodor_RemoveGrunt
 	end
 
 
-VSGarbodor_PsfgoodteamGrunt4_Battle_Script::
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_4, gText_VSGarbodor_LookAtYou, gText_VSGarbodor_ThatsRight, VSGarbodor_PsfgoodteamGrunt4_Battle_Script
+VSGarbodor_TeamRocketGrunt4_Battle_Script::
+	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_4, gText_VSGarbodor_LookAtYou, gText_VSGarbodor_ThatsRight, VSGarbodor_TeamRocketGrunt4_Battle_Script
 	msgbox gText_VSGarbodor_HaveFunCleaning, MSGBOX_AUTOCLOSE
 	goto VSGarbodor_RemoveGrunt
 	end
@@ -156,7 +156,7 @@ VSGarbodor_CheckDefeated_Script_1:
 	end
 
 VSGarbodor_CheckDefeated_Script_2:
-	goto VSGarbodor_MovePsftransrival_Script
+	goto VSGarbodor_MoveBianca_Script
 	goto VSGarbodor_CheckDefeated_Script_1
 
 VSGarbodor_CheckDefeated_Script_3:
@@ -192,45 +192,45 @@ VSGarbodor_PreventCrossingSides_Script_2:
 	goto VSGarbodor_PreventCrossingSides_Script_1
 
 
-VSGarbodor_MovePsftransrival_Script::
+VSGarbodor_MoveBianca_Script::
 	lock
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	clearflag FLAG_TEMP_1
 	addobject 1
 	compare VAR_TEMP_0, 10
-	goto_if_lt VSGarbodor_MovePsftransrival_Script_2
+	goto_if_lt VSGarbodor_MoveBianca_Script_2
 	compare VAR_TEMP_1, 9
-	goto_if_gt VSGarbodor_MovePsftransrival_Script_8
+	goto_if_gt VSGarbodor_MoveBianca_Script_8
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	setobjectxy 1, 10, 6
 	copyobjectxytoperm 1
-	applymovement 1, PsftransrivalApproachNE
-VSGarbodor_MovePsftransrival_Script_1:
+	applymovement 1, BiancaApproachNE
+VSGarbodor_MoveBianca_Script_1:
 	waitmovement 0
 	goto VSGarbodor_DefeatedAll_Dialogue
 	return
 
-VSGarbodor_MovePsftransrival_Script_2:
+VSGarbodor_MoveBianca_Script_2:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	compare VAR_TEMP_1, 9
-	goto_if_gt VSGarbodor_MovePsftransrival_Script_5
+	goto_if_gt VSGarbodor_MoveBianca_Script_5
 	setobjectxy 1, 13, 6
 	copyobjectxytoperm 1
-	applymovement 1, PsftransrivalApproachNW
-	goto VSGarbodor_MovePsftransrival_Script_1
+	applymovement 1, BiancaApproachNW
+	goto VSGarbodor_MoveBianca_Script_1
 
-VSGarbodor_MovePsftransrival_Script_5:
+VSGarbodor_MoveBianca_Script_5:
 	setobjectxy 1, 11, 12
 	copyobjectxytoperm 1
-	applymovement 1, PsftransrivalApproachSW
-	goto VSGarbodor_MovePsftransrival_Script_1
+	applymovement 1, BiancaApproachSW
+	goto VSGarbodor_MoveBianca_Script_1
 
-VSGarbodor_MovePsftransrival_Script_8:
+VSGarbodor_MoveBianca_Script_8:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	setobjectxy 1, 22, 4
 	copyobjectxytoperm 1
-	applymovement 1, PsftransrivalApproachSE
-	goto VSGarbodor_MovePsftransrival_Script_1
+	applymovement 1, BiancaApproachSE
+	goto VSGarbodor_MoveBianca_Script_1
 
 
 VSGarbodor_DefeatedAll_Dialogue::
@@ -449,7 +449,7 @@ VSGarbodor_LookAround:
 	delay_16
 	step_end
 
-PsftransrivalApproachSW:
+BiancaApproachSW:
 	walk_left
 	walk_left
 	walk_left
@@ -458,7 +458,7 @@ PsftransrivalApproachSW:
 	walk_left
 	step_end
 
-PsftransrivalApproachNW:
+BiancaApproachNW:
 	walk_left
 	walk_left
 	walk_left
@@ -467,7 +467,7 @@ PsftransrivalApproachNW:
 	walk_left
 	step_end
 
-PsftransrivalApproachSE:
+BiancaApproachSE:
 	walk_down
 	walk_down
 	walk_down
@@ -476,7 +476,7 @@ PsftransrivalApproachSE:
 	walk_down
 	step_end
 
-PsftransrivalApproachNE:
+BiancaApproachNE:
 	walk_right
 	walk_right
 	walk_right
@@ -524,11 +524,11 @@ gText_VSGarbodor_CoolIWanted::
 	.string "long!$"
 
 gText_VSGarbodor_ScrewThisStadium::
-	.string "Heh, we're Psfgoodteam! Screw this\n"
+	.string "Heh, we're TeamRocket! Screw this\n"
 	.string "stadium and screw Psfbadguy!$"
 
 gText_VSGarbodor_IsTheName::
-	.string "Psfgoodteam is the name, and shutting\n"
+	.string "TeamRocket is the name, and shutting\n"
 	.string "this shit down is our game!$"
 
 gText_VSGarbodor_DamnTheyWereRight::
@@ -591,7 +591,7 @@ gText_VSGarbodor_AsWeWereNegotiating::
 	.string "How's the Psfbadguy Task Force?$"
 
 gText_VSGarbodor_DoneLikeYouGuys::
-	.string "Done. Like you guys said, Psfgoodteam\n"
+	.string "Done. Like you guys said, TeamRocket\n"
 	.string "up to their shit as usual.$"
 
 gText_VSGarbodor_ThankYouBoth::

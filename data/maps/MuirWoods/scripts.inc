@@ -1,0 +1,24 @@
+MuirWoods_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MuirWoods_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MuirWoods_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+MuirWoods_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto MuirWoods_MapScripts_OnTransition
+	return
+
+MuirWoods_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_ROUTE116_STATE, 4, HaveYouSeenTheNews_SolvePuzzles_Script
+	.2byte 0
+
+
+MuirWoods_MapScripts_OnTransition::
+	switch VAR_ROUTE116_STATE
+	case 2, MuirWoods_MapScripts_OnTransition_2
+	goto EnterTheMaster_HideObject_Script
+	return
+
+MuirWoods_MapScripts_OnTransition_2:
+	goto EnterTheMaster_Object_SetUp_Script
+	return
+

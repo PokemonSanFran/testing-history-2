@@ -141,35 +141,35 @@ WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 	end
 
 
-WaitHeDidWhat_PsftransrivalMeltdown_Dialogue::
+WaitHeDidWhat_BiancaMeltdown_Dialogue::
 	random 4
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	switch VAR_RESULT
-	case 0, WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_3
-	case 1, WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_4
-	case 2, WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_5
-	case 3, WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_6
-WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_1:
+	case 0, WaitHeDidWhat_BiancaMeltdown_Dialogue_3
+	case 1, WaitHeDidWhat_BiancaMeltdown_Dialogue_4
+	case 2, WaitHeDidWhat_BiancaMeltdown_Dialogue_5
+	case 3, WaitHeDidWhat_BiancaMeltdown_Dialogue_6
+WaitHeDidWhat_BiancaMeltdown_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	return
 
-WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_3:
+WaitHeDidWhat_BiancaMeltdown_Dialogue_3:
 	msgbox gText_WaitHeDidWhat_ILostToThat
-	goto WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_1
+	goto WaitHeDidWhat_BiancaMeltdown_Dialogue_1
 
-WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_4:
+WaitHeDidWhat_BiancaMeltdown_Dialogue_4:
 	msgbox gText_WaitHeDidWhat_GetTheFuck
-	goto WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_1
+	goto WaitHeDidWhat_BiancaMeltdown_Dialogue_1
 
-WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_5:
+WaitHeDidWhat_BiancaMeltdown_Dialogue_5:
 	msgbox gText_WaitHeDidWhat_HowCouldThisHappen
-	goto WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_1
+	goto WaitHeDidWhat_BiancaMeltdown_Dialogue_1
 
-WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_6:
+WaitHeDidWhat_BiancaMeltdown_Dialogue_6:
 	msgbox gText_WaitHeDidWhat_AbsoluteBullshit
-	goto WaitHeDidWhat_PsftransrivalMeltdown_Dialogue_1
+	goto WaitHeDidWhat_BiancaMeltdown_Dialogue_1
 
 
 WaitHeDidWhat_PreparePlayer_Script::
@@ -286,16 +286,16 @@ gText_WaitHeDidWhat_AreYouReady::
 gText_WaitHeDidWhat_CongratsComeOnUp::
 	.string "Congrats on making it to the Finals!\n"
 	.string "Come to the Skybox to watch\l"
-	.string "Psftransrival's battle!$"
+	.string "Bianca's battle!$"
 
 gText_WaitHeDidWhat_GoodShitDownThere::
 	.string "Good shit down there! Time to crush\n"
-	.string "this Psfnativerival kid. See you in the\l"
+	.string "this Archer kid. See you in the\l"
 	.string "Finals!$"
 
 gText_WaitHeDidWhat_InAStunningUpset::
 	.string "In a stunning upset, the hometown hero,\n"
-	.string "Psfnativerival defeats Psftransrival\l"
+	.string "Archer defeats Bianca\l"
 	.string "and moves onto the Finals! What a wild\l"
 	.string "match!$"
 
@@ -305,7 +305,7 @@ gText_WaitHeDidWhat_HolyShit::
 gText_WaitHeDidWhat_WellTakeAQuick::
 	.string "We'll take a quick break, and when we\n"
 	.string "come back... your Championship match!\l"
-	.string "Psfnativerival VS {PLAYER}, for all\l"
+	.string "Archer VS {PLAYER}, for all\l"
 	.string "the marbles!$"
 
 gText_WaitHeDidWhat_MakeSureYouGive::
@@ -339,7 +339,7 @@ gText_WaitHeDidWhat_IDontThinkYouCan::
 gText_WaitHeDidWhat_ImReallyHappy::
 	.string "I'm really happy for you! But I'm\n"
 	.string "keeping my undefeated streak against\l"
-	.string "you, Psfnativerival.$"
+	.string "you, Archer.$"
 
 gText_WaitHeDidWhat_ForPsfregion::
 	.string "For Psfregion!$"

@@ -18,7 +18,7 @@ WelcomeToTheWarRoom_Object_Setup_Script::
 	return
 
 
-WelcomeToTheWarRoom_FaceSpeakerPsfbadboss::
+WelcomeToTheWarRoom_FaceSpeakerRose::
 	applymovement 4, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceDown
 	applymovement 13, Common_Movement_FaceDown
@@ -78,7 +78,7 @@ WelcomeToTheWarRoom_FaceSpeakerMayor::
 	return
 
 
-WelcomeToTheWarRoom_FaceSpeakerPsftransrival::
+WelcomeToTheWarRoom_FaceSpeakerBianca::
 	applymovement 4, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceLeft
 	applymovement 13, Common_Movement_FaceLeft
@@ -118,7 +118,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	lock
 	addvar VAR_PSFBADGUY1TOWER_2F_STATE, 1
 	setvar VAR_ROUTE117_STATE, 1
-	call WelcomeToTheWarRoom_FaceSpeakerPsfbadboss
+	call WelcomeToTheWarRoom_FaceSpeakerRose
 	applymovement 11, WelcomeToTheWarRoom_Pace
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
@@ -134,7 +134,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	msgbox gText_WelcomeToTheWarRoom_WeveLongTheorized
 	call WelcomeToTheWarRoom_FaceSpeakerMayor
 	msgbox gText_WelcomeToTheWarRoom_ThatsWhereYouKids
-	call WelcomeToTheWarRoom_FaceSpeakerPsftransrival
+	call WelcomeToTheWarRoom_FaceSpeakerBianca
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_HellYeahWedLoveTo
@@ -142,7 +142,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_ImHappyToHelp
-	call WelcomeToTheWarRoom_FaceSpeakerPsfbadboss
+	call WelcomeToTheWarRoom_FaceSpeakerRose
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_EverybodyUnderstand
@@ -150,7 +150,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	callnative ClearMugshot
 	call WelcomeToTheWarRoom_FaceSpeakerChief
 	msgbox gText_WelcomeToTheWarRoom_WeveAlreadyOutlined
-	call WelcomeToTheWarRoom_FaceSpeakerPsftransrival
+	call WelcomeToTheWarRoom_FaceSpeakerBianca
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_WhyCantWeJust
@@ -158,7 +158,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	callnative ClearMugshot
 	call WelcomeToTheWarRoom_FaceSpeakerChief
 	msgbox gText_WelcomeToTheWarRoom_GladToHear
-	call WelcomeToTheWarRoom_FaceSpeakerPsftransrival
+	call WelcomeToTheWarRoom_FaceSpeakerBianca
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_GotItChief
@@ -176,7 +176,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	applymovement 3, WelcomeToTheWarRoom_ReturnToDeskA
 	applymovement 4, WelcomeToTheWarRoom_ReturnToDeskB
 	applymovement 12, WelcomeToTheWarRoom_MayorLeaveRoom
-	applymovement 11, WelcomeToTheWarRoom_PsfbadbossLeaveRoom
+	applymovement 11, WelcomeToTheWarRoom_RoseLeaveRoom
 	waitmovement 0
 	removeobject 12
 	removeobject 11
@@ -209,7 +209,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue_1:
 	msgbox gText_WelcomeToTheWarRoom_OkayIllMeetYou
 	closemessage
 	callnative ClearMugshot
-	applymovement 10, WelcomeToTheWarRoom_PsftransrivalLeaveRoom
+	applymovement 10, WelcomeToTheWarRoom_BiancaLeaveRoom
 	waitmovement 0
 	removeobject 10
 	releaseall
@@ -273,7 +273,7 @@ WelcomeToTheWarRoom_MayorLeaveRoom:
 	walk_down
 	step_end
 
-WelcomeToTheWarRoom_PsfbadbossLeaveRoom:
+WelcomeToTheWarRoom_RoseLeaveRoom:
 	walk_right
 	walk_down
 	walk_down
@@ -301,7 +301,7 @@ WelcomeToTheWarRoom_PsfbadadminLeaveRoom:
 	walk_down
 	step_end
 
-WelcomeToTheWarRoom_PsftransrivalLeaveRoom:
+WelcomeToTheWarRoom_BiancaLeaveRoom:
 	walk_left
 	walk_down
 	walk_down
@@ -333,11 +333,11 @@ gText_WelcomeToTheWarRoom_TheNewOwnersOfOUrAccounts::
 	.string "to boycott the League and the\l"
 	.string "upcoming Championship. We've found\l"
 	.string "evidence that the perpetrators are at\l"
-	.string "Psfplace2.$"
+	.string "NavalBase.$"
 
 gText_WelcomeToTheWarRoom_WeveLongTheorized::
-	.string "We've long theorized that Psfplace2 is\n"
-	.string "Psfgoodteam's primary base of\l"
+	.string "We've long theorized that NavalBase is\n"
+	.string "TeamRocket's primary base of\l"
 	.string "operations so we've got reason to\l"
 	.string "believe that they're the ones behind\l"
 	.string "this cyber-attack. We have\l"
@@ -346,7 +346,7 @@ gText_WelcomeToTheWarRoom_WeveLongTheorized::
 
 gText_WelcomeToTheWarRoom_ThatsWhereYouKids::
 	.string "That's where you kids come in! Ya really\n"
-	.string "impressed me back at Psfplace14, and\l"
+	.string "impressed me back at ChaseCenter, and\l"
 	.string "we'd like you to assist us in the raid.\l"
 	.string "You'll work under Chief Bill, and help us\l"
 	.string "shut down those clowns once and for\l"
@@ -382,7 +382,7 @@ gText_WelcomeToTheWarRoom_GotItChief::
 gText_WelcomeToTheWarRoom_GreatWellStartTheOperation::
 	.string "Great. We'll start the operation as soon\n"
 	.string "as you're ready. Meet me outside\l"
-	.string "Psfplace2.$"
+	.string "NavalBase.$"
 
 gText_WelcomeToTheWarRoom_DontPayHimNoMind::
 	.string "Don't pay him no mind, he's just a little\n"
@@ -394,7 +394,7 @@ gText_WelcomeToTheWarRoom_ThatsAgainYouTwo::
 	.string "there!$"
 
 gText_WelcomeToTheWarRoom_ImGoingToHeadOver::
-	.string "I'm going to head over to Psfplace11.\n"
+	.string "I'm going to head over to FerryBuilding.\n"
 	.string "Want to come with?$"
 
 gText_WelcomeToTheWarRoom_OkayIllMeetYou::

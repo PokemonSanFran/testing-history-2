@@ -1,0 +1,16 @@
+mapscripts Japantown_Ramen_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+    }
+}
+script Japantown_Ramen_InteractFanny_Event_Script {
+    lock
+        switch(var(VAR_LILYCOVE_CITY_STATE)){
+                case 0: return
+            case 1: return
+            case 2: return
+            case 8: return
+            default: call(MaskOff_QuestI_Dialogue)
+        }
+    release
+        end
+}

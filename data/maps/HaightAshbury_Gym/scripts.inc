@@ -1,0 +1,18 @@
+HaightAshbury_Gym_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, HaightAshbury_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+HaightAshbury_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto HaightAshbury_Gym_MapScripts_OnTransition
+	return
+
+
+HaightAshbury_Gym_MapScripts_OnTransition::
+	switch VAR_GYM_7_STATE
+	case 3, HaightAshbury_Gym_MapScripts_OnTransition_2
+	return
+
+HaightAshbury_Gym_MapScripts_OnTransition_2:
+	goto EnterPryce_StartBattle_ObjectSetup_Script
+	return
+

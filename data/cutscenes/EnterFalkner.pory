@@ -1,19 +1,19 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFLEADER1 = 1
 
-script EnterPsfleader1_StartGymBattle_ObjectSetup_Script {
+script EnterFalkner_StartGymBattle_ObjectSetup_Script {
   setobjectxyperm(PSFLEADER1, 6, 5)
   setobjectmovementtype(PSFLEADER1, MOVEMENT_TYPE_FACE_LEFT)
 }
 
-script EnterPsfleader1_PutMeatInOven_Dialogue {
+script EnterFalkner_PutMeatInOven_Dialogue {
   lockall
   addvar(VAR_GYM_1_STATE,1)
   addvar(VAR_GYM_1_STATE,1)
   addvar(VAR_GYM_1_STATE,1)
   setvar(VAR_0x8000, MUGSHOT_FALKNER)
   callnative(DrawMugshot)
-  msgbox(gText_EnterPsfleader1_OneMoreLadle)
+  msgbox(gText_EnterFalkner_OneMoreLadle)
   callnative(ClearMugshot)
   closemessage
   applymovement(PSFLEADER1, Common_Movement_Delay48)
@@ -23,68 +23,68 @@ script EnterPsfleader1_PutMeatInOven_Dialogue {
   closemessage
   setvar(VAR_0x8000, MUGSHOT_FALKNER)
   callnative(DrawMugshot)
-  msgbox(gText_EnterPsfleader1_MeatsInOven, MSGBOX_NPC)
+  msgbox(gText_EnterFalkner_MeatsInOven, MSGBOX_NPC)
   callnative(ClearMugshot)
   closemessage
-  call(EnterPsfleader1_DetermineMovementToBattlefield_Script)
-  goto(EnterPsfleader1_Intro_Dialogue)
+  call(EnterFalkner_DetermineMovementToBattlefield_Script)
+  goto(EnterFalkner_Intro_Dialogue)
 }
 
-script EnterPsfleader1_DetermineMovementToBattlefield_Script {
+script EnterFalkner_DetermineMovementToBattlefield_Script {
   getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
   if (var (VAR_TEMP_1) == 2) {
-    applymovement(PSFLEADER1, EnterPsfleader1_WalkSouthToBattlefield)
+    applymovement(PSFLEADER1, EnterFalkner_WalkSouthToBattlefield)
 
     if (var (VAR_TEMP_0) == 7) {
-      applymovement(PLAYER, EnterPsfleader1_PlayerWalkToBattlefieldFromLeft)
+      applymovement(PLAYER, EnterFalkner_PlayerWalkToBattlefieldFromLeft)
     } else {
-      applymovement(PLAYER, EnterPsfleader1_PlayerWalkToBattlefieldFromRight)
+      applymovement(PLAYER, EnterFalkner_PlayerWalkToBattlefieldFromRight)
     }
   } else {
-    applymovement(PSFLEADER1, EnterPsfleader1_WalkWestToBattlefield)
-    applymovement(PLAYER, EnterPsfleader1_PlayerWalkToBattlefieldFromDown)
+    applymovement(PSFLEADER1, EnterFalkner_WalkWestToBattlefield)
+    applymovement(PLAYER, EnterFalkner_PlayerWalkToBattlefieldFromDown)
   }
   waitmovement(0)
 }
 
-script EnterPsfleader1_Intro_Dialogue {
+script EnterFalkner_Intro_Dialogue {
   lock
   setvar(VAR_0x8000, MUGSHOT_FALKNER)
   callnative(DrawMugshot)
-  msgbox(gText_EnterPsfleader1_MyLatestCreation)
-  msgbox(gText_EnterPsfleader1_YourSenseOfTaste)
+  msgbox(gText_EnterFalkner_MyLatestCreation)
+  msgbox(gText_EnterFalkner_YourSenseOfTaste)
   callnative(ClearMugshot)
   call(Common_EventScript_SaveGame)
   closemessage
-  goto(EnterPsfleader1_StartGymBattle_Script)
+  goto(EnterFalkner_StartGymBattle_Script)
 }
 
-script EnterPsfleader1_StartGymBattle_Script {
+script EnterFalkner_StartGymBattle_Script {
   lock
   setvar(VAR_0x8000, MUGSHOT_HILDA)
   callnative(DrawMugshot)
-  trainerbattle_single(TRAINER_ROXANNE_1, gText_EnterPsfleader1_IThinkYouTalk, gText_EnterPsfleader1_WoahSuperSour, EnterPsfleader1_Psfleader1Defeated_Script, NO_MUSIC)
+  trainerbattle_single(TRAINER_ROXANNE_1, gText_EnterFalkner_IThinkYouTalk, gText_EnterFalkner_WoahSuperSour, EnterFalkner_FalknerDefeated_Script, NO_MUSIC)
 }
 
-script EnterPsfleader1_Psfleader1Defeated_Script {
+script EnterFalkner_FalknerDefeated_Script {
   lockall
   setflag(FLAG_BADGE01_GET)
   addvar(VAR_GYM_1_STATE,1)
   setvar(VAR_0x8000, MUGSHOT_FALKNER)
   callnative(DrawMugshot)
-  msgbox(gText_EnterPsfleader1_ThatWasDelicious)
+  msgbox(gText_EnterFalkner_ThatWasDelicious)
   callnative(ClearMugshot)
-  msgbox(gText_EnterPsfleader1_BadgeGet)
+  msgbox(gText_EnterFalkner_BadgeGet)
   //PSF TODO Add social media element where the player tweets out a picture of the badge upon getting it. With each badge they get, the number of likes and retweets goes up. Show this on screen while the jingle is playing
   call(Common_EventScript_PlayGymBadgeFanfare)
 
   giveitem(ITEM_TM01)
   setvar(VAR_0x8000, MUGSHOT_FALKNER)
   callnative(DrawMugshot)
-  msgbox(gText_EnterPsfleader1_OhTheMeat)
+  msgbox(gText_EnterFalkner_OhTheMeat)
   callnative(ClearMugshot)
   closemessage
-  call(EnterPsfleader1_DetermineMovementBackToStove_Script)
+  call(EnterFalkner_DetermineMovementBackToStove_Script)
   waitmovement(0)
   addvar(VAR_STORYLINE_STATE, 1)
   call(Act1_1_Check_Script)
@@ -92,22 +92,22 @@ script EnterPsfleader1_Psfleader1Defeated_Script {
   end
 }
 
-script EnterPsfleader1_DetermineMovementBackToStove_Script {
+script EnterFalkner_DetermineMovementBackToStove_Script {
   getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 
   if (var (VAR_TEMP_0) == 7) {
-    applymovement(PSFLEADER1, EnterPsfleader1_WalkNorthBackToStove)
+    applymovement(PSFLEADER1, EnterFalkner_WalkNorthBackToStove)
   } else {
-    applymovement(PSFLEADER1, EnterPsfleader1_WalkEastBackToStove)
+    applymovement(PSFLEADER1, EnterFalkner_WalkEastBackToStove)
   }
 }
 
-script EnterPsfleader1_PostDefeat1_Dialogue {
+script EnterFalkner_PostDefeat1_Dialogue {
   lockall
   addvar(VAR_GYM_1_STATE,1)
   setvar(VAR_0x8000, MUGSHOT_FALKNER)
   callnative(DrawMugshot)
-  msgbox(gText_EnterPsfleader1_WithThatBadge,MSGBOX_NPC)
+  msgbox(gText_EnterFalkner_WithThatBadge,MSGBOX_NPC)
   callnative(ClearMugshot)
     applymovement(PSFLEADER1,Common_Movement_FaceUp)
     waitmovement(0)
@@ -116,31 +116,31 @@ script EnterPsfleader1_PostDefeat1_Dialogue {
   end
 }
 
-script EnterPsfleader1_PostDefeat2_Dialogue {
+script EnterFalkner_PostDefeat2_Dialogue {
   lockall
   setvar(VAR_0x8000, MUGSHOT_FALKNER)
   callnative(DrawMugshot)
-  msgbox(gText_EnterPsfleader1_LetsCookTogether)
+  msgbox(gText_EnterFalkner_LetsCookTogether)
   callnative(ClearMugshot)
   closemessage
   releaseall
   end
 }
 
-movement EnterPsfleader1_WalkSouthToBattlefield {
+movement EnterFalkner_WalkSouthToBattlefield {
   walk_down * 3
   walk_left * 2
   face_left
   step_end
 }
 
-movement EnterPsfleader1_WalkWestToBattlefield {
+movement EnterFalkner_WalkWestToBattlefield {
   walk_left * 2
   walk_down * 3
   face_left
   step_end
 }
-movement EnterPsfleader1_PlayerWalkToBattlefieldFromLeft {
+movement EnterFalkner_PlayerWalkToBattlefieldFromLeft {
   delay_16
   delay_16
   delay_16
@@ -150,7 +150,7 @@ movement EnterPsfleader1_PlayerWalkToBattlefieldFromLeft {
   step_end
 }
 
-movement EnterPsfleader1_PlayerWalkToBattlefieldFromDown {
+movement EnterFalkner_PlayerWalkToBattlefieldFromDown {
   delay_16
   delay_16
   delay_16
@@ -160,7 +160,7 @@ movement EnterPsfleader1_PlayerWalkToBattlefieldFromDown {
   step_end
 }
 
-movement EnterPsfleader1_PlayerWalkToBattlefieldFromRight {
+movement EnterFalkner_PlayerWalkToBattlefieldFromRight {
   delay_16
   delay_16
   delay_16
@@ -170,7 +170,7 @@ movement EnterPsfleader1_PlayerWalkToBattlefieldFromRight {
   step_end
 }
 
-movement EnterPsfleader1_WalkEastBackToStove {
+movement EnterFalkner_WalkEastBackToStove {
   emote_exclamation_mark
   walk_right * 3
   walk_up * 3
@@ -181,7 +181,7 @@ movement EnterPsfleader1_WalkEastBackToStove {
   step_end
 }
 
-movement EnterPsfleader1_WalkNorthBackToStove {
+movement EnterFalkner_WalkNorthBackToStove {
   emote_exclamation_mark
   walk_up * 3
   walk_right * 3
@@ -192,58 +192,58 @@ movement EnterPsfleader1_WalkNorthBackToStove {
   step_end
 }
 
-text gText_EnterPsfleader1_OneMoreLadle {
+text gText_EnterFalkner_OneMoreLadle {
   format("Hold on! I've got one more ladle of Pinap braising liquid, and then into the oven...")
 }
 
-text gText_EnterPsfleader1_MeatsInOven {
+text gText_EnterFalkner_MeatsInOven {
   format("Cool, meat's in the oven. ")
 }
 
-text gText_EnterPsfleader1_MyLatestCreation {
-  format("Ticket said you're {PLAYER}, right? I'm Psfleader1, head chef of Poc-Chuc and the Gym Leader here. After you lose, I'll treat you to my latest creation: Galifeu au Vin Burrito with a Pinap glaze. It's my first time making it, but from that amazing smell, it's gonna be great.")
+text gText_EnterFalkner_MyLatestCreation {
+  format("Ticket said you're {PLAYER}, right? I'm Falkner, head chef of Poc-Chuc and the Gym Leader here. After you lose, I'll treat you to my latest creation: Galifeu au Vin Burrito with a Pinap glaze. It's my first time making it, but from that amazing smell, it's gonna be great.")
 }
 
-text gText_EnterPsfleader1_YourSenseOfTaste {
+text gText_EnterFalkner_YourSenseOfTaste {
   format("Did you know that a lot of your sense of taste actually is because of your sense of smell? All of your senses work together to create your culinary experiences. I'll show how I do that in battle too! Let's see if I can overwhelm your palette before my meat burns!")
 }
 
-text gText_EnterPsfleader1_IThinkYouTalk {
+text gText_EnterFalkner_IThinkYouTalk {
   format("I think you talk more about food than you do battling...")
 }
 
-text gText_EnterPsfleader1_FirstHitOfSpice {
+text gText_EnterFalkner_FirstHitOfSpice {
   format("Whoa, that felt just like the first hit of spice on the tip of my tongue! ")
 }
 
-text gText_EnterPsfleader1_SimmerWasntEnough {
+text gText_EnterFalkner_SimmerWasntEnough {
   format("Guess a simmer wasn't enough - I've gotta crank it up to a rolling boil!")
 }
 
-text gText_EnterPsfleader1_WhatABitterDefeat {
+text gText_EnterFalkner_WhatABitterDefeat {
   format("Ouch, what a bitter defeat. Try adding Sitrus Berries?")
 }
 
-text gText_EnterPsfleader1_WoahSuperSour {
+text gText_EnterFalkner_WoahSuperSour {
   format("Woah, super sour! I'll add some Micle Berry.")
 }
 
-text gText_EnterPsfleader1_ThatWasDelicious {
-  format("That was delicious! I'm absolutely satiated. Here's the Psfbadge1, and my favorite Technical Machine.")
+text gText_EnterFalkner_ThatWasDelicious {
+  format("That was delicious! I'm absolutely satiated. Here's the FalknerBadge, and my favorite Technical Machine.")
 }
 
-text gText_EnterPsfleader1_OhTheMeat {
+text gText_EnterFalkner_OhTheMeat {
   format("Oh, the meat!")
 }
 
-text gText_EnterPsfleader1_BadgeGet {
-  format("You recieved the Psfbadge1 Badge!")
+text gText_EnterFalkner_BadgeGet {
+  format("You recieved the FalknerBadge Badge!")
 }
 
-text gText_EnterPsfleader1_WithThatBadge {
+text gText_EnterFalkner_WithThatBadge {
   format("With that Badge, traded Pokémon up to Level Psflevel1 will now obey you. And Psfgymattacknum1 is one of my most delicious moves, it allows your Pokémon to Psfgymattackdesc1.")
 }
 
-text gText_EnterPsfleader1_LetsCookTogether {
+text gText_EnterFalkner_LetsCookTogether {
   format("Let's cook together again soon! Now if you'll excuse me...")
 }

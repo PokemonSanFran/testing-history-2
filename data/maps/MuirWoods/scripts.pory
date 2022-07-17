@@ -1,0 +1,18 @@
+mapscripts MuirWoods_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(MuirWoods_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ROUTE116_STATE, 4: HaveYouSeenTheNews_SolvePuzzles_Script
+
+    ]
+}
+
+script MuirWoods_MapScripts_OnTransition {
+    switch (var(VAR_ROUTE116_STATE)) {
+        case 2: goto(EnterTheMaster_Object_SetUp_Script)
+        default: goto(EnterTheMaster_HideObject_Script)
+}
+}
+
+

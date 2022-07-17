@@ -1,0 +1,15 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+mapscripts Alameda_Archer_House_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Alameda_Archer_House_OnTransition)
+    }
+}
+
+script Alameda_Archer_House_OnTransition {
+    switch (var(VAR_STORYLINE_STATE))
+    {
+        default: call(LetsFixThis_HideObjectHouse_Script)
+    }
+}
+

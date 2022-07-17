@@ -96,7 +96,7 @@ script WaitYouWentWhere_FirstInteract_Dialogue {
 
 
 text gText_WaitYouWentWhere_WelcomeBackFrom {
-    format("Ah {PLAYER}, welcome back from Psfcity11! I hear you defeated Psfleader4, as expected from you.")
+    format("Ah {PLAYER}, welcome back from Berkeley! I hear you defeated Morty, as expected from you.")
 }
 
 text gText_WaitYouWentWhere_YeahThanksFor {
@@ -112,11 +112,11 @@ text gText_WaitYouWentWhere_YeahNoProblem {
 }
 
 text gText_WaitYouWentWhere_IHaveSomeBusiness {
-    format("I have some business to attend to in Psfcity12. Let's walk together. What's interested you the most about Psfregion1?")
+    format("I have some business to attend to in Tenderloin. Let's walk together. What's interested you the most about SanFran?")
 }
 
 text gText_WaitYouWentWhere_IActuallyJustGot {
-    format("Hmm... Actually, I thought Psfcave7 was really fascinating.")
+    format("Hmm... Actually, I thought Alcatraz was really fascinating.")
 }
 
 text gText_WaitYouWentWhere_ThePassWeGave {
@@ -124,19 +124,19 @@ text gText_WaitYouWentWhere_ThePassWeGave {
 }
 
 text gText_WaitYouWentWhere_GaveMeAPass {
-    format("Yeah, a Psfgoodteam member gave me a pass as an apology. It's complicated.")
+    format("Yeah, a TeamRocket member gave me a pass as an apology. It's complicated.")
 }
 
 text gText_WaitYouWentWhere_WhatAPainIn {
-    format("Uh, Psfgoodteam, what a pain in my ass. They're an organization created from the base of prisoner sympathizers, and they've branded themselves as total anti-establishment anarchists. They make a lot of noise for no real reason.")
+    format("Uh, TeamRocket, what a pain in my ass. They're an organization created from the base of prisoner sympathizers, and they've branded themselves as total anti-establishment anarchists. They make a lot of noise for no real reason.")
 }
 
 text gText_WaitYouWentWhere_YeahIveSeenThem {
-    format("Yeah, I've seen them around. What's the deal with the Elite Four? Psfregion1 used to have one?")
+    format("Yeah, I've seen them around. What's the deal with the Elite Four? SanFran used to have one?")
 }
 
 text gText_WaitYouWentWhere_YesBeforeWeRevamped {
-    format("Yes, before we revamped their League structure. They used to be the strongest Trainers in Psfregion1, but we hope that trainers like you and Psftransrival will be able to outshine them soon. Ugh, and finally, we're done dealing with Double Battles… what a mess.")
+    format("Yes, before we revamped their League structure. They used to be the strongest Trainers in SanFran, but we hope that trainers like you and Bianca will be able to outshine them soon. Ugh, and finally, we're done dealing with Double Battles… what a mess.")
 }
 
 text gText_WaitYouWentWhere_OrreHasALot {

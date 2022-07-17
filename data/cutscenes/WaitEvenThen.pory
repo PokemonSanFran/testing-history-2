@@ -233,7 +233,7 @@ text gText_WaitEvenThen_AndTheGovernment {
 }
 
 text gText_WaitEvenThen_IllHaveSomeOther {
-    format("I’ll have some other Psfgoodteam members clear out the rest of the trapped Pokémon… Let’s go back to Psfcity17.")
+    format("I’ll have some other TeamRocket members clear out the rest of the trapped Pokémon… Let’s go back to Alameda.")
 }
 
 text gText_WaitEvenThen_ComingWithMe {

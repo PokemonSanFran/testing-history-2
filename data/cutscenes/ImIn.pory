@@ -15,22 +15,22 @@ script ImIn_HideStairsGuard_Script {
     setflag(FLAG_TEMP_1F)
 }
 
-script ImIn_ShowPsftransrival_Script {
+script ImIn_ShowBianca_Script {
     setflag(FLAG_TEMP_1F)
         clearflag(FLAG_TEMP_4)
-        addobject(9) //Make Psftransrival visible
+        addobject(9) //Make Bianca visible
 }
 
-script ImIn_HidePsftransrival_Script {
+script ImIn_HideBianca_Script {
     setflag(FLAG_TEMP_4)
 }
 
 script ImIn_ResumeSave_Script {
-    call(ImIn_ShowPsftransrival_Script)
-        call(ImIn_MovePsftransrival_Script)
+    call(ImIn_ShowBianca_Script)
+        call(ImIn_MoveBianca_Script)
 }
 
-script ImIn_MovePsftransrival_Script {
+script ImIn_MoveBianca_Script {
     setobjectxy(9,12,26)
         setobjectxyperm(9,12,26)
 }
@@ -462,10 +462,10 @@ script ImIn_OfficeReveal_Dialogue {
 
         call(Common_EventScript_SaveGame)
         closemessage
-        goto(ImIn_StartPsftransrivalBattle_Script)
+        goto(ImIn_StartBiancaBattle_Script)
 }
 
-script ImIn_StartPsftransrivalBattle_Script {
+script ImIn_StartBiancaBattle_Script {
 
     lock
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -475,10 +475,10 @@ script ImIn_StartPsftransrivalBattle_Script {
         callnative(ClearMugshot)
 
         trainerbattle_no_intro(TRAINER_MAY_LILYCOVE_MUDKIP,gText_ImIn_HowDoesThisKeep)
-        goto(ImIn_PsftransrivalDefeated_Dialogue)
+        goto(ImIn_BiancaDefeated_Dialogue)
 }
 
-script ImIn_InteractPsftransrivalBattle_Script {
+script ImIn_InteractBiancaBattle_Script {
     playbgm(MUS_ENCOUNTER_MAY,TRUE)
         lock
         setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -487,13 +487,13 @@ script ImIn_InteractPsftransrivalBattle_Script {
         closemessage
         callnative(ClearMugshot)
         trainerbattle_no_intro(TRAINER_MAY_LILYCOVE_MUDKIP,gText_ImIn_HowDoesThisKeep)
-        goto(ImIn_PsftransrivalDefeated_Dialogue)
+        goto(ImIn_BiancaDefeated_Dialogue)
 }
 
-script ImIn_PsftransrivalDefeated_Dialogue {
+script ImIn_BiancaDefeated_Dialogue {
     lock
         addvar(VAR_MAUVILLE_CITY_STATE,1)
-        call(ImIn_MovePsftransrival_Script)
+        call(ImIn_MoveBianca_Script)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -517,19 +517,19 @@ script ImIn_PsftransrivalDefeated_Dialogue {
         end
 }
 
-script ImIn_PostPsftransrivalBattle_Interact_Dialogue {
+script ImIn_PostBiancaBattle_Interact_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_AllThatTraining,MSGBOX_NPC)
         callnative(ClearMugshot)
 }
 
-script ImIn_InteractPsftransrival_Event_Script {
+script ImIn_InteractBianca_Event_Script {
     lock
 
         switch(var(VAR_MAUVILLE_CITY_STATE)){
-            case 6: call(ImIn_InteractPsftransrivalBattle_Script)
-            default: call(ImIn_PostPsftransrivalBattle_Interact_Dialogue)
+            case 6: call(ImIn_InteractBiancaBattle_Script)
+            default: call(ImIn_PostBiancaBattle_Interact_Dialogue)
         }
 
     closemessage
@@ -542,11 +542,11 @@ text gText_ImIn_WereCertainNobody {
 }
 
 text gText_ImIn_HasntLeftWorkEarly {
-    format("Psfbadadmin3 hasn't left work early a day in their life. Psfbadguy is led by monsters, but at least they're hard-working monsters.")
+    format("Sabrina hasn't left work early a day in their life. Psfbadguy is led by monsters, but at least they're hard-working monsters.")
 }
 
 text gText_ImIn_WereInPosition {
-    format("We're in position at Psfcity12. Ready to mobilize this diversion when you are.")
+    format("We're in position at Tenderloin. Ready to mobilize this diversion when you are.")
 }
 
 text gText_ImIn_TheSideDoorWill {
@@ -574,15 +574,15 @@ text gText_ImIn_GuessWereAllLooking {
 }
 
 text gText_ImIn_WereIn {
-    format("Psfgoodadmin, we're in. Everybody remember the plan?")
+    format("Ariana, we're in. Everybody remember the plan?")
 }
 
 text gText_ImIn_OnceYoureAllThrough {
-    format("Once you're all through the panel, I'll lead the diversion protest at the front doors of the tower. Security will be focused on us, letting you to the executive levels and hopefully find Psfbadboss.")
+    format("Once you're all through the panel, I'll lead the diversion protest at the front doors of the tower. Security will be focused on us, letting you to the executive levels and hopefully find Rose.")
 }
 
 text gText_ImIn_ImTooOldFor {
-    format("I'm too old for scaling mountains. Psfelite3 and I can get into the production studio and get ready to broadcast that confession.")
+    format("I'm too old for scaling mountains. Siebold and I can get into the production studio and get ready to broadcast that confession.")
 }
 
 text gText_ImIn_ThesePeopleAreFighting {
@@ -598,7 +598,7 @@ text gText_ImIn_LetTheMarch {
 }
 
 text gText_ImIn_LetsGoSecure {
-    format("Psfelite2, let's go secure the studio.")
+    format("Drasna, let's go secure the studio.")
 }
 
 text gText_ImIn_ThisPlaceIsProbably {
@@ -606,7 +606,7 @@ text gText_ImIn_ThisPlaceIsProbably {
 }
 
 text gText_ImIn_HasAnOfficeOn {
-    format("Psfbadboss has an office on the 10th floor, I've been there myself.")
+    format("Rose has an office on the 10th floor, I've been there myself.")
 }
 
 text gText_ImIn_FloorThenLets {
@@ -614,7 +614,7 @@ text gText_ImIn_FloorThenLets {
 }
 
 text gText_ImIn_OfficeIsOn {
-    format("Psfbadboss's office is on Floor 10.")
+    format("Rose's office is on Floor 10.")
 }
 
 text gText_ImIn_DoYouLikeMy {
@@ -622,7 +622,7 @@ text gText_ImIn_DoYouLikeMy {
 }
 
 text gText_ImIn_WhatAreYouDoing {
-    format("Psftransrival, what are you doing here?")
+    format("Bianca, what are you doing here?")
 }
 
 text gText_ImIn_IDidntChooseToAlign {
@@ -630,11 +630,11 @@ text gText_ImIn_IDidntChooseToAlign {
 }
 
 text gText_ImIn_WaitTrash {
-    format("Wait, trash? Did you hear what these people did to Psfcity17?")
+    format("Wait, trash? Did you hear what these people did to Alameda?")
 }
 
 text gText_ImIn_WasDestryogingThisRegion {
-    format("Psfgoodteam was destroying this region with their idiocy. We wiped ‘em out. And you decided to help them? After everything Psfbadguy did for you?")
+    format("TeamRocket was destroying this region with their idiocy. We wiped ‘em out. And you decided to help them? After everything Psfbadguy did for you?")
 }
 
 text gText_ImIn_SoYouJustDontCare {
@@ -650,7 +650,7 @@ text gText_ImIn_DaddyWontBeAble {
 }
 
 text gText_ImIn_AreDeadDoYou {
-    format("If you and Psfnativerival are dead, do you think I get to be Champion instead?")
+    format("If you and Archer are dead, do you think I get to be Champion instead?")
 }
 
 text gText_ImIn_HowDoesThisKeep {
@@ -658,7 +658,7 @@ text gText_ImIn_HowDoesThisKeep {
 }
 
 text gText_ImIn_Wheres {
-    format("Where's Psfbadboss?!")
+    format("Where's Rose?!")
 }
 
 text gText_ImIn_WhatsTheSecret {
@@ -666,7 +666,7 @@ text gText_ImIn_WhatsTheSecret {
 }
 
 text gText_ImIn_EverythingAboutIsBullshit {
-    format("Everything about Psfbadguy is bullshit. You're not any stronger. The region isn't any better. But as long as they have stans like you, they're going to continue to get richer and more toxic. Tell me where Psfbadboss is.")
+    format("Everything about Psfbadguy is bullshit. You're not any stronger. The region isn't any better. But as long as they have stans like you, they're going to continue to get richer and more toxic. Tell me where Rose is.")
 }
 
 text gText_ImIn_Floor {

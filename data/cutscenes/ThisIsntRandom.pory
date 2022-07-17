@@ -394,7 +394,7 @@ text gText_ThisIsntRandom_TheSecondSet {
 }
 
 text gText_ThisIsntRandom_SoIsActuallyTrying {
-    format("So… is Psfbadadmin2 actually trying to help us?")
+    format("So… is Koga actually trying to help us?")
 }
 
 text gText_ThisIsntRandom_AboutToFindOut {
@@ -406,7 +406,7 @@ text gText_ThisIsntRandom_IfWereAllGoing {
 }
 
 text gText_ThisIsntRandom_DidYouKnowThereWas {
-    format("Psfgoodadmin, did you know there was a secret tunnel underneath Psfplace11?")
+    format("Ariana, did you know there was a secret tunnel underneath FerryBuilding?")
 }
 
 text gText_ThisIsntRandom_IfPeopleKnew {
@@ -478,7 +478,7 @@ text gText_ThisIsntRandom_IFoundSomeAccessLogs {
 }
 
 text gText_ThisIsntRandom_CanYouGetMeTheExact {
-    format("Psfgoodadmin… can you get me the exact dates of the ones in 1971?")
+    format("Ariana… can you get me the exact dates of the ones in 1971?")
 }
 
 text gText_ThisIsntRandom_IThinkSoHoldOn {
@@ -494,7 +494,7 @@ text gText_ThisIsntRandom_AreThoseDatesSpecial {
 }
 
 text gText_ThisIsntRandom_TheSecondDateIsOne {
-    format("The second date is the end of the Psfcave1 riots. What types of Pokémon did you guys fight down here?")
+    format("The second date is the end of the RobinWillTunnel riots. What types of Pokémon did you guys fight down here?")
 }
 
 text gText_ThisIsntRandom_SilicobraGravelerLarvitar {
@@ -518,11 +518,11 @@ text gText_ThisIsntRandom_TheDocumentationCalledOut {
 }
 
 text gText_ThisIsntRandom_AndGroundTypesTo {
-    format("*sigh* And ground types to trigger Earthquakes. Those bastards used this system to attack Psfcave1.")
+    format("*sigh* And ground types to trigger Earthquakes. Those bastards used this system to attack RobinWillTunnel.")
 }
 
 text gText_ThisIsntRandom_OhNoIDidnt {
-    format("Oh no. I didn’t recognize the earlier names, but the activities in the last few days… their access signature is Psfbadboss.")
+    format("Oh no. I didn’t recognize the earlier names, but the activities in the last few days… their access signature is Rose.")
 }
 
 text gText_ThisIsntRandom_AndTheyAttackedUs {

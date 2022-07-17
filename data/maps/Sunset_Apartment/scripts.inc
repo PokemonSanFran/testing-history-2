@@ -1,0 +1,35 @@
+Sunset_Apartment_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Sunset_Apartment_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Sunset_Apartment_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	return
+
+
+Sunset_Apartment_InteractAntone_Event_Script::
+	lock
+	switch VAR_LILYCOVE_CITY_STATE
+	case 0, Sunset_Apartment_InteractAntone_Event_Script_3
+	case 1, Sunset_Apartment_InteractAntone_Event_Script_4
+	case 2, Sunset_Apartment_InteractAntone_Event_Script_5
+	case 3, Sunset_Apartment_InteractAntone_Event_Script_6
+	case 8, Sunset_Apartment_InteractAntone_Event_Script_7
+	call MaskOff_QuestA_Dialogue
+	release
+	end
+
+Sunset_Apartment_InteractAntone_Event_Script_3:
+	return
+
+Sunset_Apartment_InteractAntone_Event_Script_4:
+	return
+
+Sunset_Apartment_InteractAntone_Event_Script_5:
+	return
+
+Sunset_Apartment_InteractAntone_Event_Script_6:
+	return
+
+Sunset_Apartment_InteractAntone_Event_Script_7:
+	return
+

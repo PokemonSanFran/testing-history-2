@@ -1,0 +1,49 @@
+NavalBase_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, NavalBase_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, NavalBase_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, NavalBase_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+NavalBase_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto NavalBase_MapScripts_OnTransition
+	return
+
+NavalBase_MapScripts_MAP_SCRIPT_ON_LOAD:
+	compare VAR_ROUTE118_STATE, 2
+	goto_if_gt NavalBase_MapScripts_MAP_SCRIPT_ON_LOAD_1
+	return
+
+NavalBase_MapScripts_MAP_SCRIPT_ON_LOAD_1:
+	call WhyAreYouHelpingThem_BlowHoleWall
+	return
+
+NavalBase_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_ROUTE118_STATE, 0, WhyAreYouHelpingThem_StartRaid
+	.2byte 0
+
+
+NavalBase_MapScripts_OnTransition::
+	switch VAR_ROUTE118_STATE
+	case 0, NavalBase_MapScripts_OnTransition_2
+	case 1, NavalBase_MapScripts_OnTransition_3
+	case 2, NavalBase_MapScripts_OnTransition_4
+	case 3, NavalBase_MapScripts_OnTransition_5
+	goto WhyAreYouHelpingThem_ObjectCleanUp_Script
+	return
+
+NavalBase_MapScripts_OnTransition_2:
+	goto WhyAreYouHelpingThem_HideObject_Script
+	return
+
+NavalBase_MapScripts_OnTransition_3:
+	goto WhyAreYouHelpingThem_MoveObject_Script
+	return
+
+NavalBase_MapScripts_OnTransition_4:
+	goto WhyAreYouHelpingThem_MoveObjectBoss_Script
+	return
+
+NavalBase_MapScripts_OnTransition_5:
+	goto WhyAreYouHelpingThem_ObjectSetUpPostSave_Script
+	return
+

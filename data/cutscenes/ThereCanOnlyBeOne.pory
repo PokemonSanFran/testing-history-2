@@ -162,7 +162,7 @@ text gText_ThereCanOnlyBe_DueToTheDelicateEcosystem {
 }
 
 text gText_ThereCanOnlyBe_PleaseChooseAPokemon {
-  format("Please choose a Pokémon to bring with you to Psfregion1.")
+  format("Please choose a Pokémon to bring with you to SanFran.")
 }
 
 text gText_ThereCanOnlyBe_YouHaveSelected {
@@ -215,5 +215,5 @@ text gText_ThereCanOnlyBe_StarterSelectAronDesc {
       }
 
       text gText_ThereCanOnlyBe_YouChoseToBring {
-        format("You chose to bring {STR_VAR_1} to Psfregion1.")
+        format("You chose to bring {STR_VAR_1} to SanFran.")
       }

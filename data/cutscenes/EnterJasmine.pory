@@ -1,53 +1,53 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const PSFLEADER6 = 1
 
-script EnterPsfleader6_Event_Script {
+script EnterJasmine_Event_Script {
     switch (var (VAR_GYM_6_STATE)) {
         case 3:
-            goto(EnterPsfleader6_StartGymBattle_Script)
+            goto(EnterJasmine_StartGymBattle_Script)
         case 4:
-                goto(EnterPsfleader6_PostGymBattle1_Dialogue)
+                goto(EnterJasmine_PostGymBattle1_Dialogue)
         case 5:
-                    goto(EnterPsfleader6_PostGymBattle2_Dialogue)
+                    goto(EnterJasmine_PostGymBattle2_Dialogue)
         default:
-                        goto(EnterPsfleader6_Intro_Dialogue)
+                        goto(EnterJasmine_Intro_Dialogue)
     }
 }
 
-script EnterPsfleader6_Intro_Dialogue {
+script EnterJasmine_Intro_Dialogue {
     lock
         setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader6_WatchYourStep,MSGBOX_NPC)
+        msgbox(gText_EnterJasmine_WatchYourStep,MSGBOX_NPC)
 
         setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader6_GrowingAGarden)
+        msgbox(gText_EnterJasmine_GrowingAGarden)
 
         setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader6_ItsEasyToDestroy)
+        msgbox(gText_EnterJasmine_ItsEasyToDestroy)
         callnative(ClearMugshot)
 
         setvar(VAR_GYM_6_STATE,3)
         call(Common_EventScript_SaveGame)
         closemessage
-        goto(EnterPsfleader6_StartGymBattle_Script)
+        goto(EnterJasmine_StartGymBattle_Script)
 }
 
-script EnterPsfleader6_StartGymBattle_Script {
+script EnterJasmine_StartGymBattle_Script {
 
         setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
-        trainerbattle_single(TRAINER_WINONA_1,gText_EnterPsfleader6_LetsSeeHowCareful,gText_EnterPsfleader6_WrongSoil,EnterPsfleader6_PostGymBattle_Script, NO_MUSIC)
+        trainerbattle_single(TRAINER_WINONA_1,gText_EnterJasmine_LetsSeeHowCareful,gText_EnterJasmine_WrongSoil,EnterJasmine_PostGymBattle_Script, NO_MUSIC)
 }
 
-script EnterPsfleader6_PostGymBattle_Script {
+script EnterJasmine_PostGymBattle_Script {
     lock
         setflag(FLAG_BADGE06_GET)
         addvar(VAR_STORYLINE_STATE,1)
         addvar(VAR_GYM_6_STATE,1)
-        msgbox(gText_EnterPsfleader6_BadgeGet)
+        msgbox(gText_EnterJasmine_BadgeGet)
         call(Common_EventScript_PlayGymBadgeFanfare)
         giveitem(ITEM_TM06)
         closemessage
@@ -55,57 +55,57 @@ script EnterPsfleader6_PostGymBattle_Script {
         end
 }
 
-script EnterPsfleader6_PostGymBattle1_Dialogue {
+script EnterJasmine_PostGymBattle1_Dialogue {
         addvar(VAR_GYM_6_STATE,1)
         lock
         setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader6_ThatTechnicalMachineWill,MSGBOX_NPC)
+        msgbox(gText_EnterJasmine_ThatTechnicalMachineWill,MSGBOX_NPC)
         callnative(ClearMugshot)
         closemessage
         release
         end
 }
 
-script EnterPsfleader6_PostGymBattle2_Dialogue {
+script EnterJasmine_PostGymBattle2_Dialogue {
     lock
         setvar(VAR_0x8000, MUGSHOT_JASMINE)
         callnative(DrawMugshot)
-        msgbox(gText_EnterPsfleader6_AfterAGoodHaircut,MSGBOX_NPC)
+        msgbox(gText_EnterJasmine_AfterAGoodHaircut,MSGBOX_NPC)
         callnative(ClearMugshot)
         closemessage
         release
         end
 }
 
-text gText_EnterPsfleader6_WatchYourStep{
+text gText_EnterJasmine_WatchYourStep{
     format("Watch your step, there are thousands of different seeds under your feet. It was an incredible amount of work to get all these micro-climates in perfect working order…")
 }
 
-text gText_EnterPsfleader6_GrowingAGarden{
+text gText_EnterJasmine_GrowingAGarden{
     format("Growing a garden is much like raising a team of Pokémon - they require constant care and attention, and even the slightest miscalculation can ruin the entire crop.")
 }
 
-text gText_EnterPsfleader6_ItsEasyToDestroy{
+text gText_EnterJasmine_ItsEasyToDestroy{
     format("It's easy to destroy a flower bed with poor planning, but luckily, Pokémon are more resilient. ")
 }
 
-text gText_EnterPsfleader6_LetsSeeHowCareful{
+text gText_EnterJasmine_LetsSeeHowCareful{
     format("Let's see how careful and diligent you've been in your cultivation.")
 }
 
-text gText_EnterPsfleader6_WrongSoil{
+text gText_EnterJasmine_WrongSoil{
     format("Wrong soil? Should I try partial shade?")
 }
 
-text gText_EnterPsfleader6_ThatTechnicalMachineWill{
+text gText_EnterJasmine_ThatTechnicalMachineWill{
     format("That Technical Machine will plant a seed in your Pokémon's mind, allowing them to use the move Psfgymattack6.")
 }
 
-text gText_EnterPsfleader6_AfterAGoodHaircut{
+text gText_EnterJasmine_AfterAGoodHaircut{
     format("After a good haircut and when I'm done repotting everybody, I'll have to get them some battle exposure against you!")
 }
 
-text gText_EnterPsfleader6_BadgeGet {
-    format("You received the Psfbadge6 Badge!")
+text gText_EnterJasmine_BadgeGet {
+    format("You received the JasmineBadge Badge!")
 }

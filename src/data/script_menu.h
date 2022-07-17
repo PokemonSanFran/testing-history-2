@@ -792,85 +792,85 @@ static const struct MenuAction MultichoiceList_StarterSummarySelect[] =
     {gText_StarterSummary2},
 };
 
-static const struct MenuAction sPsfplace11FerryDestinations_Ver1[] =
+static const struct MenuAction sFerryBuildingFerryDestinations_Ver1[] =
 {
-    {gText_Psfcity17},
+    {gText_Alameda},
     {gText_Exit},
 };
-static const struct MenuAction sPsfplace11FerryDestinations_Ver2[] =
+static const struct MenuAction sFerryBuildingFerryDestinations_Ver2[] =
 {
-	{gText_Psfcity17},
-	{gText_Psfcave5},
+	{gText_Alameda},
+	{gText_TreasureIsland},
 	{gText_Exit},
 };
-static const struct MenuAction sPsfcity17FerryDestinations_Ver1[] =
+static const struct MenuAction sAlamedaFerryDestinations_Ver1[] =
 {
-	{gText_Psfplace11},
+	{gText_FerryBuilding},
 	{gText_Exit},
 };
-static const struct MenuAction sPsfcity17FerryDestinations_Ver2[] =
+static const struct MenuAction sAlamedaFerryDestinations_Ver2[] =
 {
-	{gText_Psfplace11},
-	{gText_Psfcave7},
-	{gText_Exit},
-};
-
-static const struct MenuAction sPsfcity17FerryDestinations_Ver3[] =
-{
-	{gText_Psfplace11},
-	{gText_Psfcave7},
-	{gText_Psfcave5},
+	{gText_FerryBuilding},
+	{gText_Alcatraz},
 	{gText_Exit},
 };
 
-static const struct MenuAction sPsfcity9FerryDestinations_Ver1[] =
+static const struct MenuAction sAlamedaFerryDestinations_Ver3[] =
 {
-	{gText_Psfcave5},
+	{gText_FerryBuilding},
+	{gText_Alcatraz},
+	{gText_TreasureIsland},
 	{gText_Exit},
 };
 
-static const struct MenuAction sPsfcave5FerryDestinations_Ver1[] =
+static const struct MenuAction sOaklandFerryDestinations_Ver1[] =
 {
-	{gText_Psfplace11},
+	{gText_TreasureIsland},
 	{gText_Exit},
 };
 
-static const struct MenuAction sPsfcave5FerryDestinations_Ver2[] =
+static const struct MenuAction sTreasureIslandFerryDestinations_Ver1[] =
 {
-	{gText_Psfplace11},
-	{gText_Psfcity9},
+	{gText_FerryBuilding},
 	{gText_Exit},
 };
 
-static const struct MenuAction sPsfcity11FerryDestinations_Ver1[] =
+static const struct MenuAction sTreasureIslandFerryDestinations_Ver2[] =
 {
-	{gText_Psfcity10},
+	{gText_FerryBuilding},
+	{gText_Oakland},
 	{gText_Exit},
 };
 
-static const struct MenuAction sPsfcity10FerryDestinations_Ver1[] =
+static const struct MenuAction sBerkeleyFerryDestinations_Ver1[] =
 {
-	{gText_Psfcity11},
+	{gText_Marin},
 	{gText_Exit},
 };
 
-static const struct MenuAction sPsfplace16FerryDestinations_Ver1[] =
+static const struct MenuAction sMarinFerryDestinations_Ver1[] =
 {
-	{gText_Psfcity17},
+	{gText_Berkeley},
 	{gText_Exit},
 };
 
-static const struct MenuAction sPsfcave7FerryDestinations_Ver1[] =
+static const struct MenuAction sOaklandFerryFerryDestinations_Ver1[] =
 {
-	{gText_Psfplace13},
-	{gText_Psfcity17},
+	{gText_Alameda},
+	{gText_Exit},
+};
+
+static const struct MenuAction sAlcatrazFerryDestinations_Ver1[] =
+{
+	{gText_FishermansWharf},
+	{gText_Alameda},
 	{gText_Exit},
 };
 
 
-static const struct MenuAction sPsfplace13FerryDestinations_Ver1[] =
+static const struct MenuAction sFishermansWharfFerryDestinations_Ver1[] =
 {
-	{gText_Psfcave7},
+	{gText_Alcatraz},
 	{gText_Exit},
 };
 
@@ -883,10 +883,10 @@ static const struct MenuAction sVSGarbador_ChooseSide[] =
 
 static const struct MenuAction sLetsGrabLunch_Warp[] =
 {
-    {gText_Psfcity13},
-    {gText_Psfcity10},
-    {gText_Psfcave5},
-    {gText_Psfcity18},
+    {gText_Chinatown},
+    {gText_Marin},
+    {gText_TreasureIsland},
+    {gText_HaightAshbury},
 };
 
 static const struct MenuAction sGarbodor_Properties[] =
@@ -1034,19 +1034,19 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_STARTER_SELECT]             = MULTICHOICE(MultichoiceList_StarterSelect), //Starter Select Menu
     [MULTI_STARTER_SUMMARY]             = MULTICHOICE(MultichoiceList_StarterSummarySelect), //Starter Choose / Summary / Cancel Menu
-    [PSFPLACE11_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sPsfplace11FerryDestinations_Ver1),
-[PSFPLACE11_FERRY_DESTINATIONS_VER2] = MULTICHOICE(sPsfplace11FerryDestinations_Ver2),
-[PSFCITY17_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sPsfcity17FerryDestinations_Ver1),
-[PSFCITY17_FERRY_DESTINATIONS_VER2] = MULTICHOICE(sPsfcity17FerryDestinations_Ver2),
-[PSFCITY17_FERRY_DESTINATIONS_VER3] = MULTICHOICE(sPsfcity17FerryDestinations_Ver3),
-[PSFCITY9_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sPsfcity9FerryDestinations_Ver1),
-[PSFCAVE5_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sPsfcave5FerryDestinations_Ver1),
-[PSFCAVE5_FERRY_DESTINATIONS_VER2] = MULTICHOICE(sPsfcave5FerryDestinations_Ver2),
-[PSFCITY11_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sPsfcity11FerryDestinations_Ver1),
-[PSFCITY10_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sPsfcity10FerryDestinations_Ver1),
-[PSFPLACE16_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sPsfplace16FerryDestinations_Ver1),
-[PSFCAVE7_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sPsfcave7FerryDestinations_Ver1),
-[PSFPLACE13_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sPsfplace13FerryDestinations_Ver1),
+    [PSFPLACE11_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sFerryBuildingFerryDestinations_Ver1),
+[PSFPLACE11_FERRY_DESTINATIONS_VER2] = MULTICHOICE(sFerryBuildingFerryDestinations_Ver2),
+[PSFCITY17_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sAlamedaFerryDestinations_Ver1),
+[PSFCITY17_FERRY_DESTINATIONS_VER2] = MULTICHOICE(sAlamedaFerryDestinations_Ver2),
+[PSFCITY17_FERRY_DESTINATIONS_VER3] = MULTICHOICE(sAlamedaFerryDestinations_Ver3),
+[PSFCITY9_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sOaklandFerryDestinations_Ver1),
+[PSFCAVE5_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sTreasureIslandFerryDestinations_Ver1),
+[PSFCAVE5_FERRY_DESTINATIONS_VER2] = MULTICHOICE(sTreasureIslandFerryDestinations_Ver2),
+[PSFCITY11_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sBerkeleyFerryDestinations_Ver1),
+[PSFCITY10_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sMarinFerryDestinations_Ver1),
+[PSFPLACE16_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sOaklandFerryFerryDestinations_Ver1),
+[PSFCAVE7_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sAlcatrazFerryDestinations_Ver1),
+[PSFPLACE13_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sFishermansWharfFerryDestinations_Ver1),
 
 //VS Garbador Choose side
     [MULTI_GARBADOR_CHOOSE] = MULTICHOICE(sVSGarbador_ChooseSide),

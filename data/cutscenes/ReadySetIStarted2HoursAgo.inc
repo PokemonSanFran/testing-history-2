@@ -94,7 +94,7 @@ gText_YouCanChangeYourOutfit::
 	.string "found in your Bag's Key Items pocket.$"
 
 gText_TwoHoursAgo_LooksLikeWokeUp::
-	.string "Looks like Psftransrival woke up early\n"
+	.string "Looks like Bianca woke up early\n"
 	.string "and already left! They're eager, I'll\l"
 	.string "give them that. I guess they didn't\l"
 	.string "need the explanation... or breakfast.$"
@@ -110,20 +110,20 @@ gText_TwoHoursAgo_YoureInARace::
 gText_TwoHoursAgo_TheTouranemtnWillTest::
 	.string "The tournament will test all of your\n"
 	.string "skills as a Trainer, but the win will\l"
-	.string "become a Psfbadguy1 sponsored career\l"
+	.string "become a YCombinator sponsored career\l"
 	.string "Pokémon Trainer.$"
 
 gText_TwoHoursAgo_WeExpectTheBest::
 	.string "We expect the best from you and\n"
-	.string "Psftransrival! If you fail to qualify\l"
+	.string "Bianca! If you fail to qualify\l"
 	.string "for the Championship, we'll be\l"
 	.string "terminating your contract, and you'll\l"
 	.string "be on your own... but we know that won't\l"
 	.string "be the case! So don't worry.$"
 
 gText_TwoHoursAgo_CafeIsAlwaysSoDelicious::
-	.string "Psfcompany2 is always so delicious! Too\n"
-	.string "bad Psftransrival didn't eat with us. I\l"
+	.string "CafeVenetia is always so delicious! Too\n"
+	.string "bad Bianca didn't eat with us. I\l"
 	.string "guess you can take their portion of\l"
 	.string "the food, and I bought you both\l"
 	.string "PokéBalls, but you can have theirs too!$"
@@ -132,5 +132,5 @@ gText_TwoHoursAgo_CanHoldThose::
 	.string "Your {STR_VAR_1} can hold those\n"
 	.string "Leftovers to restore HP during battle.\l"
 	.string "Now, you should get a move on! Don't let\l"
-	.string "Psftransrival get too far ahead of\l"
+	.string "Bianca get too far ahead of\l"
 	.string "you!$"

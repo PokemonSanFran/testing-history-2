@@ -1,52 +1,52 @@
-EnterPsfleader7_StartBattle_ObjectSetup_Script::
+EnterPryce_StartBattle_ObjectSetup_Script::
 	setobjectxyperm 1, 11, 10
 	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_LEFT
 	return
 
 
-EnterPsfleader7_Event_Script::
+EnterPryce_Event_Script::
 	switch VAR_GYM_7_STATE
-	case 3, EnterPsfleader7_Event_Script_2
-	case 4, EnterPsfleader7_Event_Script_3
-	case 5, EnterPsfleader7_Event_Script_4
-	goto EnterPsfleader7_MumbleToSelf_Dialogue
+	case 3, EnterPryce_Event_Script_2
+	case 4, EnterPryce_Event_Script_3
+	case 5, EnterPryce_Event_Script_4
+	goto EnterPryce_MumbleToSelf_Dialogue
 	return
 
-EnterPsfleader7_Event_Script_2:
-	goto EnterPsfleader7_FacePlayerBeforeBattle_Script
+EnterPryce_Event_Script_2:
+	goto EnterPryce_FacePlayerBeforeBattle_Script
 	return
 
-EnterPsfleader7_Event_Script_3:
-	goto EnterPsfleader7_PostDefeat1_Dialogue
+EnterPryce_Event_Script_3:
+	goto EnterPryce_PostDefeat1_Dialogue
 	return
 
-EnterPsfleader7_Event_Script_4:
-	goto EnterPsfleader7_PostDefeat2_Dialogue
+EnterPryce_Event_Script_4:
+	goto EnterPryce_PostDefeat2_Dialogue
 	return
 
 
-EnterPsfleader7_MumbleToSelf_Dialogue::
+EnterPryce_MumbleToSelf_Dialogue::
 	setvar VAR_GYM_7_STATE, 3
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_StupidParade
+	msgbox gText_EnterPryce_StupidParade
 	closemessage
 	callnative ClearMugshot
-	applymovement 1, EnterPsfleader7_PaceLeftFrontOfDesk
+	applymovement 1, EnterPryce_PaceLeftFrontOfDesk
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_TheyJustDontUnderstand
+	msgbox gText_EnterPryce_TheyJustDontUnderstand
 	closemessage
 	callnative ClearMugshot
-	applymovement 1, EnterPsfleader7_PaceRightFrontOfDesk
+	applymovement 1, EnterPryce_PaceRightFrontOfDesk
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_LookIWasWilling
+	msgbox gText_EnterPryce_LookIWasWilling
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_HeyYouSeemBusy
+	msgbox gText_EnterPryce_HeyYouSeemBusy
 	closemessage
 	callnative ClearMugshot
 	playse SE_PIN
@@ -56,194 +56,194 @@ EnterPsfleader7_MumbleToSelf_Dialogue::
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_ShitShitShit, MSGBOX_NPC
+	msgbox gText_EnterPryce_ShitShitShit, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
-	applymovement 1, EnterPsfleader7_TakeDrugs
+	applymovement 1, EnterPryce_TakeDrugs
 	waitmovement 0
-	goto EnterPsfleader7_CalculateMovement_Script
+	goto EnterPryce_CalculateMovement_Script
 	return
 
 
-EnterPsfleader7_CalculateMovement_Script::
+EnterPryce_CalculateMovement_Script::
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	switch VAR_TEMP_0
-	case 8, EnterPsfleader7_CalculateMovement_Script_3
-	case 9, EnterPsfleader7_CalculateMovement_Script_4
-	case 10, EnterPsfleader7_CalculateMovement_Script_5
-	case 11, EnterPsfleader7_CalculateMovement_Script_6
-	case 12, EnterPsfleader7_CalculateMovement_Script_7
-	case 13, EnterPsfleader7_CalculateMovement_Script_8
-	case 14, EnterPsfleader7_CalculateMovement_Script_9
-	case 15, EnterPsfleader7_CalculateMovement_Script_10
-	case 16, EnterPsfleader7_CalculateMovement_Script_11
-EnterPsfleader7_CalculateMovement_Script_1:
+	case 8, EnterPryce_CalculateMovement_Script_3
+	case 9, EnterPryce_CalculateMovement_Script_4
+	case 10, EnterPryce_CalculateMovement_Script_5
+	case 11, EnterPryce_CalculateMovement_Script_6
+	case 12, EnterPryce_CalculateMovement_Script_7
+	case 13, EnterPryce_CalculateMovement_Script_8
+	case 14, EnterPryce_CalculateMovement_Script_9
+	case 15, EnterPryce_CalculateMovement_Script_10
+	case 16, EnterPryce_CalculateMovement_Script_11
+EnterPryce_CalculateMovement_Script_1:
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	goto EnterPsf7leader_ExplainLab_Dialogue
 	return
 
-EnterPsfleader7_CalculateMovement_Script_3:
-	call EnterPsfleader7_PlayerPosition8
-	goto EnterPsfleader7_CalculateMovement_Script_1
+EnterPryce_CalculateMovement_Script_3:
+	call EnterPryce_PlayerPosition8
+	goto EnterPryce_CalculateMovement_Script_1
 
-EnterPsfleader7_CalculateMovement_Script_4:
-	call EnterPsfleader7_PlayerPosition9
-	goto EnterPsfleader7_CalculateMovement_Script_1
+EnterPryce_CalculateMovement_Script_4:
+	call EnterPryce_PlayerPosition9
+	goto EnterPryce_CalculateMovement_Script_1
 
-EnterPsfleader7_CalculateMovement_Script_5:
-	call EnterPsfleader7_PlayerPosition10
-	goto EnterPsfleader7_CalculateMovement_Script_1
+EnterPryce_CalculateMovement_Script_5:
+	call EnterPryce_PlayerPosition10
+	goto EnterPryce_CalculateMovement_Script_1
 
-EnterPsfleader7_CalculateMovement_Script_6:
-	call EnterPsfleader7_PlayerPosition11
-	goto EnterPsfleader7_CalculateMovement_Script_1
+EnterPryce_CalculateMovement_Script_6:
+	call EnterPryce_PlayerPosition11
+	goto EnterPryce_CalculateMovement_Script_1
 
-EnterPsfleader7_CalculateMovement_Script_7:
-	call EnterPsfleader7_PlayerPosition12
-	goto EnterPsfleader7_CalculateMovement_Script_1
+EnterPryce_CalculateMovement_Script_7:
+	call EnterPryce_PlayerPosition12
+	goto EnterPryce_CalculateMovement_Script_1
 
-EnterPsfleader7_CalculateMovement_Script_8:
-	call EnterPsfleader7_PlayerPosition13
-	goto EnterPsfleader7_CalculateMovement_Script_1
+EnterPryce_CalculateMovement_Script_8:
+	call EnterPryce_PlayerPosition13
+	goto EnterPryce_CalculateMovement_Script_1
 
-EnterPsfleader7_CalculateMovement_Script_9:
-	call EnterPsfleader7_PlayerPosition14
-	goto EnterPsfleader7_CalculateMovement_Script_1
+EnterPryce_CalculateMovement_Script_9:
+	call EnterPryce_PlayerPosition14
+	goto EnterPryce_CalculateMovement_Script_1
 
-EnterPsfleader7_CalculateMovement_Script_10:
-	call EnterPsfleader7_PlayerPosition15
-	goto EnterPsfleader7_CalculateMovement_Script_1
+EnterPryce_CalculateMovement_Script_10:
+	call EnterPryce_PlayerPosition15
+	goto EnterPryce_CalculateMovement_Script_1
 
-EnterPsfleader7_CalculateMovement_Script_11:
-	call EnterPsfleader7_PlayerPosition16
-	goto EnterPsfleader7_CalculateMovement_Script_1
+EnterPryce_CalculateMovement_Script_11:
+	call EnterPryce_PlayerPosition16
+	goto EnterPryce_CalculateMovement_Script_1
 
 
-EnterPsfleader7_PlayerPosition8::
-	applymovement 1, EnterPsfleader7_Psfleader7_WalkToBattlefield
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfleader7_MovePlayerFrom8
+EnterPryce_PlayerPosition8::
+	applymovement 1, EnterPryce_Pryce_WalkToBattlefield
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPryce_MovePlayerFrom8
 	return
 
 
-EnterPsfleader7_PlayerPosition9::
-	applymovement 1, EnterPsfleader7_Psfleader7_WalkToBattlefield
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfleader7_MovePlayerFrom9
+EnterPryce_PlayerPosition9::
+	applymovement 1, EnterPryce_Pryce_WalkToBattlefield
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPryce_MovePlayerFrom9
 	return
 
 
-EnterPsfleader7_PlayerPosition10::
-	applymovement 1, EnterPsfleader7_Psfleader7_WalkToBattlefield
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfleader7_MovePlayerFrom10
+EnterPryce_PlayerPosition10::
+	applymovement 1, EnterPryce_Pryce_WalkToBattlefield
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPryce_MovePlayerFrom10
 	return
 
 
-EnterPsfleader7_PlayerPosition11::
-	applymovement 1, EnterPsfleader7_Psfleader7_WalkAroundToBattlefield
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfleader7_MovePlayerFrom11
+EnterPryce_PlayerPosition11::
+	applymovement 1, EnterPryce_Pryce_WalkAroundToBattlefield
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPryce_MovePlayerFrom11
 	return
 
 
-EnterPsfleader7_PlayerPosition12::
-	applymovement 1, EnterPsfleader7_Psfleader7_WalkToBattlefield
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfleader7_MovePlayerFrom12
+EnterPryce_PlayerPosition12::
+	applymovement 1, EnterPryce_Pryce_WalkToBattlefield
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPryce_MovePlayerFrom12
 	return
 
 
-EnterPsfleader7_PlayerPosition13::
-	applymovement 1, EnterPsfleader7_Psfleader7_WalkToBattlefield
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfleader7_MovePlayerFrom13
+EnterPryce_PlayerPosition13::
+	applymovement 1, EnterPryce_Pryce_WalkToBattlefield
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPryce_MovePlayerFrom13
 	return
 
 
-EnterPsfleader7_PlayerPosition14::
-	applymovement 1, EnterPsfleader7_Psfleader7_WalkToBattlefield
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfleader7_MovePlayerFrom14
+EnterPryce_PlayerPosition14::
+	applymovement 1, EnterPryce_Pryce_WalkToBattlefield
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPryce_MovePlayerFrom14
 	return
 
 
-EnterPsfleader7_PlayerPosition15::
-	applymovement 1, EnterPsfleader7_Psfleader7_WalkToBattlefield
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfleader7_MovePlayerFrom15
+EnterPryce_PlayerPosition15::
+	applymovement 1, EnterPryce_Pryce_WalkToBattlefield
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPryce_MovePlayerFrom15
 	return
 
 
-EnterPsfleader7_PlayerPosition16::
-	applymovement 1, EnterPsfleader7_Psfleader7_WalkToBattlefield
-	applymovement OBJ_EVENT_ID_PLAYER, EnterPsfleader7_MovePlayerFrom16
+EnterPryce_PlayerPosition16::
+	applymovement 1, EnterPryce_Pryce_WalkToBattlefield
+	applymovement OBJ_EVENT_ID_PLAYER, EnterPryce_MovePlayerFrom16
 	return
 
 
 EnterPsf7leader_ExplainLab_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_SoBackHere
+	msgbox gText_EnterPryce_SoBackHere
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_WaitDoesTheLeague
+	msgbox gText_EnterPryce_WaitDoesTheLeague
 	callnative ClearMugshot
 	call Common_EventScript_SaveGame
 	closemessage
-	goto EnterPsfleader7_StartBattle_Script
+	goto EnterPryce_StartBattle_Script
 	return
 
 
-EnterPsfleader7_FacePlayerBeforeBattle_Script::
+EnterPryce_FacePlayerBeforeBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_IDontKnow, MSGBOX_NPC
+	msgbox gText_EnterPryce_IDontKnow, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
-	trainerbattle_no_intro TRAINER_TATE_AND_LIZA_1, gText_EnterPsfleader7_UghIThinkThisBatch
-	goto EnterPsfleader7_PostBattle_Script
+	trainerbattle_no_intro TRAINER_TATE_AND_LIZA_1, gText_EnterPryce_UghIThinkThisBatch
+	goto EnterPryce_PostBattle_Script
 	return
 
 
-EnterPsfleader7_StartBattle_Script::
+EnterPryce_StartBattle_Script::
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_IDontKnow
+	msgbox gText_EnterPryce_IDontKnow
 	closemessage
 	callnative ClearMugshot
-	trainerbattle_no_intro TRAINER_TATE_AND_LIZA_1, gText_EnterPsfleader7_UghIThinkThisBatch
-	goto EnterPsfleader7_PostBattle_Script
+	trainerbattle_no_intro TRAINER_TATE_AND_LIZA_1, gText_EnterPryce_UghIThinkThisBatch
+	goto EnterPryce_PostBattle_Script
 	return
 
 
-EnterPsfleader7_PostBattle_Script::
+EnterPryce_PostBattle_Script::
 	lock
 	setflag FLAG_BADGE07_GET
 	addvar VAR_STORYLINE_STATE, 1
 	addvar VAR_GYM_7_STATE, 1
-	msgbox gText_EnterPsfleader7_BadgeGet
+	msgbox gText_EnterPryce_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM07
 	closemessage
-	call EnterPsfleader7_MoveBacktoDesk_Script
+	call EnterPryce_MoveBacktoDesk_Script
 	waitmovement 0
 	release
 	end
 
 
-EnterPsfleader7_MoveBacktoDesk_Script::
+EnterPryce_MoveBacktoDesk_Script::
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 12
-	goto_if_ne EnterPsfleader7_MoveBacktoDesk_Script_1
-	applymovement 1, EnterPsfleader7_WalkAroundBackToDesk
+	goto_if_ne EnterPryce_MoveBacktoDesk_Script_1
+	applymovement 1, EnterPryce_WalkAroundBackToDesk
 	return
 
-EnterPsfleader7_MoveBacktoDesk_Script_1:
-	applymovement 1, EnterPsfleader7_WalkBackToDesk
+EnterPryce_MoveBacktoDesk_Script_1:
+	applymovement 1, EnterPryce_WalkBackToDesk
 	return
 
 
-EnterPsfleader7_PostDefeat1_Dialogue::
+EnterPryce_PostDefeat1_Dialogue::
 	lock
 	addvar VAR_GYM_7_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_TMAreLikeDrugs, MSGBOX_NPC
+	msgbox gText_EnterPryce_TMAreLikeDrugs, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, Common_Movement_FaceUp
@@ -252,18 +252,18 @@ EnterPsfleader7_PostDefeat1_Dialogue::
 	end
 
 
-EnterPsfleader7_PostDefeat2_Dialogue::
+EnterPryce_PostDefeat2_Dialogue::
 	lock
 	setvar VAR_0x8000, MUGSHOT_PRYCE
 	callnative DrawMugshot
-	msgbox gText_EnterPsfleader7_LetsSee
+	msgbox gText_EnterPryce_LetsSee
 	closemessage
 	callnative ClearMugshot
 	release
 	end
 
 
-EnterPsfleader7_PaceLeftFrontOfDesk:
+EnterPryce_PaceLeftFrontOfDesk:
 	walk_left
 	walk_left
 	walk_left
@@ -272,7 +272,7 @@ EnterPsfleader7_PaceLeftFrontOfDesk:
 	face_up
 	step_end
 
-EnterPsfleader7_PaceRightFrontOfDesk:
+EnterPryce_PaceRightFrontOfDesk:
 	walk_right
 	walk_right
 	walk_right
@@ -281,13 +281,13 @@ EnterPsfleader7_PaceRightFrontOfDesk:
 	face_up
 	step_end
 
-EnterPsfleader7_TakeDrugs:
+EnterPryce_TakeDrugs:
 	walk_left
 	walk_left
 	walk_in_place_slow_up
 	step_end
 
-EnterPsfleader7_Psfleader7_WalkToBattlefield:
+EnterPryce_Pryce_WalkToBattlefield:
 	walk_left
 	walk_left
 	walk_down
@@ -297,7 +297,7 @@ EnterPsfleader7_Psfleader7_WalkToBattlefield:
 	face_left
 	step_end
 
-EnterPsfleader7_MovePlayerFrom8:
+EnterPryce_MovePlayerFrom8:
 	walk_left
 	walk_down
 	walk_down
@@ -305,7 +305,7 @@ EnterPsfleader7_MovePlayerFrom8:
 	walk_down
 	step_end
 
-EnterPsfleader7_MovePlayerFrom9:
+EnterPryce_MovePlayerFrom9:
 	walk_left
 	walk_left
 	walk_down
@@ -313,17 +313,7 @@ EnterPsfleader7_MovePlayerFrom9:
 	walk_down
 	step_end
 
-EnterPsfleader7_MovePlayerFrom10:
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-EnterPsfleader7_MovePlayerFrom11:
-	walk_left
+EnterPryce_MovePlayerFrom10:
 	walk_left
 	walk_left
 	walk_left
@@ -332,8 +322,7 @@ EnterPsfleader7_MovePlayerFrom11:
 	walk_down
 	step_end
 
-EnterPsfleader7_MovePlayerFrom12:
-	walk_left
+EnterPryce_MovePlayerFrom11:
 	walk_left
 	walk_left
 	walk_left
@@ -343,8 +332,7 @@ EnterPsfleader7_MovePlayerFrom12:
 	walk_down
 	step_end
 
-EnterPsfleader7_MovePlayerFrom13:
-	walk_left
+EnterPryce_MovePlayerFrom12:
 	walk_left
 	walk_left
 	walk_left
@@ -355,8 +343,7 @@ EnterPsfleader7_MovePlayerFrom13:
 	walk_down
 	step_end
 
-EnterPsfleader7_MovePlayerFrom14:
-	walk_left
+EnterPryce_MovePlayerFrom13:
 	walk_left
 	walk_left
 	walk_left
@@ -368,8 +355,7 @@ EnterPsfleader7_MovePlayerFrom14:
 	walk_down
 	step_end
 
-EnterPsfleader7_MovePlayerFrom15:
-	walk_left
+EnterPryce_MovePlayerFrom14:
 	walk_left
 	walk_left
 	walk_left
@@ -382,8 +368,7 @@ EnterPsfleader7_MovePlayerFrom15:
 	walk_down
 	step_end
 
-EnterPsfleader7_MovePlayerFrom16:
-	walk_left
+EnterPryce_MovePlayerFrom15:
 	walk_left
 	walk_left
 	walk_left
@@ -397,7 +382,22 @@ EnterPsfleader7_MovePlayerFrom16:
 	walk_down
 	step_end
 
-EnterPsfleader7_Psfleader7_WalkAroundToBattlefield:
+EnterPryce_MovePlayerFrom16:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+EnterPryce_Pryce_WalkAroundToBattlefield:
 	walk_left
 	walk_left
 	walk_left
@@ -407,7 +407,7 @@ EnterPsfleader7_Psfleader7_WalkAroundToBattlefield:
 	walk_left
 	step_end
 
-EnterPsfleader7_WalkBackToDesk:
+EnterPryce_WalkBackToDesk:
 	walk_right
 	walk_right
 	walk_right
@@ -418,7 +418,7 @@ EnterPsfleader7_WalkBackToDesk:
 	walk_up
 	step_end
 
-EnterPsfleader7_WalkAroundBackToDesk:
+EnterPryce_WalkAroundBackToDesk:
 	walk_up
 	walk_up
 	walk_up
@@ -430,58 +430,57 @@ EnterPsfleader7_WalkAroundBackToDesk:
 	face_up
 	step_end
 
-gText_EnterPsfleader7_StupidParade::
+gText_EnterPryce_StupidParade::
 	.string "*grumble* stupid fucking parade…$"
 
-gText_EnterPsfleader7_TheyJustDontUnderstand::
+gText_EnterPryce_TheyJustDontUnderstand::
 	.string "*mutter* They just don't understand… it\n"
 	.string "was either their way or the highway…\l"
 	.string "and I kept the Gym! And now I'm the\l"
 	.string "traitor?$"
 
-gText_EnterPsfleader7_LookIWasWilling::
+gText_EnterPryce_LookIWasWilling::
 	.string "*grumble* Look, I was willing to play ball,\n"
 	.string "and I was rewarded. Haters gonna just\l"
 	.string "hate…$"
 
-gText_EnterPsfleader7_HeyYouSeemBusy::
-	.string "Hey, you seem busy, but are you\n"
-	.string "Psfleader7?$"
+gText_EnterPryce_HeyYouSeemBusy::
+	.string "Hey, you seem busy, but are you Pryce?$"
 
-gText_EnterPsfleader7_ShitShitShit::
+gText_EnterPryce_ShitShitShit::
 	.string "! Shit. Shit shit shit hi, are you a\n"
 	.string "challenger? Hold on yeah, hold on. NOPE,\l"
 	.string "not doing this sober, hold on… Lemme\l"
 	.string "just…$"
 
-gText_EnterPsfleader7_SoBackHere::
+gText_EnterPryce_SoBackHere::
 	.string "So back here, I experiment with new\n"
 	.string "synthetic drugs. Always trying to get\l"
 	.string "an edge, you know? Let's see if I can\l"
 	.string "battle under the influence of MGB-07.$"
 
-gText_EnterPsfleader7_WaitDoesTheLeague::
+gText_EnterPryce_WaitDoesTheLeague::
 	.string "Wait, does the League let you battle\n"
 	.string "under the influence like that?$"
 
-gText_EnterPsfleader7_IDontKnow::
+gText_EnterPryce_IDontKnow::
 	.string "I don't know the rules… but I'm sure\n"
 	.string "they won't stop me either way. It's\l"
 	.string "good to have power!$"
 
-gText_EnterPsfleader7_UghIThinkThisBatch::
+gText_EnterPryce_UghIThinkThisBatch::
 	.string "Ugh, I think this batch makes me too\n"
 	.string "nauseous…$"
 
-gText_EnterPsfleader7_TMAreLikeDrugs::
+gText_EnterPryce_TMAreLikeDrugs::
 	.string "TMs are like drugs, right? They alter\n"
 	.string "your brain chemistry and let you see\l"
 	.string "stuff you'd never see otherwise… that\l"
 	.string "one will teach Psfgymattack7.$"
 
-gText_EnterPsfleader7_LetsSee::
+gText_EnterPryce_LetsSee::
 	.string "Let's see if I can bang out MGB-08 while\n"
 	.string "I'm riding this high…$"
 
-gText_EnterPsfleader7_BadgeGet::
-	.string "You received the Psfbadge7 Badge!$"
+gText_EnterPryce_BadgeGet::
+	.string "You received the PryceBadge Badge!$"

@@ -198,7 +198,7 @@ script WhyDidntYouRatMeOut_LookAround {
     return
 }
 
-script WhyDidntYouRatMeOut_WatchPsftransrivalMatches {
+script WhyDidntYouRatMeOut_WatchBiancaMatches {
     lockall
     msgbox(gText_WhyDidntYouRatMeOut_WinsTheirGroup)
     closemessage
@@ -265,7 +265,7 @@ text gText_WhyDidntYouRatMeOut_WaitShit {
 }
 
 text gText_WhyDidntYouRatMeOut_NoCalmDown {
-    format("No, calm down. It's just... this is your home. And you obviously care about it. And I think that's what gives me pause with Psfgoodteam. I see people trying to do good things, and trying to help people... and then I see Psfgoodteam with all their bullshit, and it makes me wonder “How can they possibly support that?”")
+    format("No, calm down. It's just... this is your home. And you obviously care about it. And I think that's what gives me pause with TeamRocket. I see people trying to do good things, and trying to help people... and then I see TeamRocket with all their bullshit, and it makes me wonder “How can they possibly support that?”")
 }
 
 text gText_WhyDidntYouRatMeOut_LookPlayer {
@@ -277,7 +277,7 @@ text gText_WhyDidntYouRatMeOut_NoYouLook {
 }
 
 text gText_WhyDidntYouRatMeOut_WasNiceToMe4 {
-    format("(Psfgoodadmin and Psfnativerival... even Psfgoodboss was nice to me. What am I missing?)")
+    format("(Ariana and Archer... even Giovanni was nice to me. What am I missing?)")
 }
 
 text gText_WhyDidntYouRatMeOut_ThankYouAndImSorry {
@@ -293,7 +293,7 @@ text gText_WhyDidntYouRatMeOut_NoSeriouslyItMeans {
 }
 
 text gText_WhyDidntYouRatMeOut_LikeEveryOtherTime {
-    format("Like every other time you've beaten me, right. Besides, we're not going to meet until the Finals. You're not even going to make it through Psftransrival!")
+    format("Like every other time you've beaten me, right. Besides, we're not going to meet until the Finals. You're not even going to make it through Bianca!")
 }
 
 text gText_WhyDidntYouRatMeOut_YouKnowThem {
@@ -317,11 +317,11 @@ text gText_WhyDidntYouRatMeOut_UhYeahWeMet {
 }
 
 text gText_WhyDidntYouRatMeOut_IMeantToTell {
-    format("I meant to tell you earlier - the Psfbadguy executives have a fully catered skybox to watch the Championship. We're about to watch Psftransrival's group!")
+    format("I meant to tell you earlier - the Psfbadguy executives have a fully catered skybox to watch the Championship. We're about to watch Bianca's group!")
 }
 
 text gText_WhyDidntYouRatMeOut_WinsTheirGroup {
-    format("And Psftransrival wins their group, without losing a single Pokémon! What an incredible display of force from this Unovan superstar!")
+    format("And Bianca wins their group, without losing a single Pokémon! What an incredible display of force from this Unovan superstar!")
 }
 
 text gText_WhyDidntYouRatMeOut_YourGroupIsNext {

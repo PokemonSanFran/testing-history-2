@@ -379,7 +379,7 @@ script KogaRaisonDetre_PreventPlayerLeaving_Script {
 }
 
 text gText_KogaRaisonDetre_HasBeenSoGenerous {
-    format("Psfbadadmin2 has been so generous... I should stay.")
+    format("Koga has been so generous... I should stay.")
 }
 
 text gText_KogaRaisonDetre_HasBeenExpectingYou {
@@ -398,7 +398,7 @@ text gText_KogaRaisonDetre_ShutUp {
     format("…shut up!")
 }
 text gText_KogaRaisonDetre_ShowUsHowYouTookDown {
-    format("Oh oh oh, show us how you took down Psfleader1! Can we see some battle moves? Oh come on yes, let's battle, right now, yeah yeah yeah!")
+    format("Oh oh oh, show us how you took down Falkner! Can we see some battle moves? Oh come on yes, let's battle, right now, yeah yeah yeah!")
 }
 text gText_KogaRaisonDetre_AllRightAllRight {
     format("All right, all right, calm down. I told you you'd have to stifle your excitement, didn't I?")
@@ -410,7 +410,7 @@ text gText_KogaRaisonDetre_GonnaGoGet {
     format("No no no! Oh, I'm gonna go get all my League stuff, I'll be right back!")
 }
 text gText_KogaRaisonDetre_SorryAboutThat {
-    format("Sorry about that. They get… very excited. And don't let Raghnall's demeanor fool you. I think they've watched your battle against Psfleader3 at least 40 times.")
+    format("Sorry about that. They get… very excited. And don't let Raghnall's demeanor fool you. I think they've watched your battle against Whitney at least 40 times.")
 }
 text gText_KogaRaisonDetre_OhArceus {
     format("Oh Arceus, Dad!")
@@ -419,13 +419,13 @@ text gText_KogaRaisonDetre_YourHouseIsBeautiful {
     format("Your house is beautiful. Actually, the entire city is beautiful.")
 }
 text gText_KogaRaisonDetre_ItWasImportantToMe {
-    format("Thank you. It was important to me that I raised my family in Psfcity3. Most Psfbadguy1 employees want to be in the city - close to the office and the nightlife. ")
+    format("Thank you. It was important to me that I raised my family in Presidio. Most YCombinator employees want to be in the city - close to the office and the nightlife. ")
 }
 text gText_KogaRaisonDetre_ButItsHardToJustify {
     format("But it's hard to justify raising a family there. It's expensive on this side, sure, but it's less dangerous… and the city is suffering.")
 }
 text gText_KogaRaisonDetre_IveBeenStruggling {
-    format("I've been struggling to find the right word for it, but suffering is good. Psfcity12, Psfcity9… so many of the places I've been to so far are hurting.")
+    format("I've been struggling to find the right word for it, but suffering is good. Tenderloin, Oakland… so many of the places I've been to so far are hurting.")
 }
 text gText_KogaRaisonDetre_ItsBeenSaidThat {
     format("It's been said that most skilled Trainers are unusually compassionate, and I guess that means you too!")
@@ -446,13 +446,13 @@ text gText_KogaRaisonDetre_IPickedOut {
     format("I picked out an excellent Chardonnay for you. Come have a seat.")
 }
 text gText_KogaRaisonDetre_HowMuch {
-    format("How much do you know about Psfbadboss?")
+    format("How much do you know about Rose?")
 }
 text gText_KogaRaisonDetre_IJustRecentlyMet {
     format("I just recently met them. They're the CEO, and the League Commissioner, and prefer working alongside people.")
 }
 text gText_KogaRaisonDetre_ThatLastPartIsImportant {
-    format("That last part is important - Psfbadboss grew up here. They take great pride in Psfregion1, and want all of their work at Psfbadguy1 to go towards making the entire region a better place to live. It's why we acquired the Pokémon League. Psfbadboss saw its potential and knew we could use its draw and our resources to make it even better, and bring in Trainers like you.")
+    format("That last part is important - Rose grew up here. They take great pride in SanFran, and want all of their work at YCombinator to go towards making the entire region a better place to live. It's why we acquired the Pokémon League. Rose saw its potential and knew we could use its draw and our resources to make it even better, and bring in Trainers like you.")
 }
 text gText_KogaRaisonDetre_WhatDoYouMean {
     format("What do you mean?")
@@ -470,7 +470,7 @@ text gText_KogaRaisonDetre_WoahWaitBigger {
     format("Woah wait, bigger than Alolan tourism?")
 }
 text gText_KogaRaisonDetre_PeopleLoveBattles {
-    format("People love Pokémon battles. Psfbadboss knew if we used our resources to create a compelling product, we wouldn't need Dynamax or League HQs built into cathedrals. We've got what the people want to see.")
+    format("People love Pokémon battles. Rose knew if we used our resources to create a compelling product, we wouldn't need Dynamax or League HQs built into cathedrals. We've got what the people want to see.")
 }
 text gText_KogaRaisonDetre_TheBroadcasts {
     format("The broadcasts?")
@@ -479,7 +479,7 @@ text gText_KogaRaisonDetre_MyKidsBeingObsessed {
     format("Yes. My kids being obsessed with you isn't an accident. We're building rockstars.")
 }
 text gText_KogaRaisonDetre_WereGoingToMake {
-    format("We're going to make Psfregion1 the region where rock stars are born. Trainers are going to want to emulate you! The region will be richer for it. It can afford to uplift all of its citizens to something much much greater. You're an investment, {PLAYER}, but it's all part of a much bigger play.")
+    format("We're going to make SanFran the region where rock stars are born. Trainers are going to want to emulate you! The region will be richer for it. It can afford to uplift all of its citizens to something much much greater. You're an investment, {PLAYER}, but it's all part of a much bigger play.")
 }
 text gText_KogaRaisonDetre_IBroughtYouHere {
     format("I brought you here to thank you {PLAYER}. You're part of the puzzle that is going to bring these people out of poverty. You're part of the solution.")
@@ -530,10 +530,10 @@ text gText_KogaRaisonDetre_AndNowWeGoTo {
     format("And now we go to Da Lin, for more details about last night's riots. ")
 }
 text gText_KogaRaisonDetre_ThanksKen {
-    format("Thanks Ken. We're gathering details on the ground here, but it sounds like this riot was instigated by members of Psfgoodteam, culminating in violent attacks on the Psfcity12 Police Force. Both sides sustained significant injury, and dozens of members of Psfgoodteam were taken into custody last night. Back to you, Ken.")
+    format("Thanks Ken. We're gathering details on the ground here, but it sounds like this riot was instigated by members of TeamRocket, culminating in violent attacks on the Tenderloin Police Force. Both sides sustained significant injury, and dozens of members of TeamRocket were taken into custody last night. Back to you, Ken.")
 }
 text gText_KogaRaisonDetre_WereAlsoLearningThat {
-    format("We're also learning that the Mayor's office released a press statement ten minutes ago, primarily addressing Psfgoodteam, asking for an end to the violence and begging them to “work with us, not against us”. We'll have more updates within the hour.")
+    format("We're also learning that the Mayor's office released a press statement ten minutes ago, primarily addressing TeamRocket, asking for an end to the violence and begging them to “work with us, not against us”. We'll have more updates within the hour.")
 }
 text gText_KogaRaisonDetre_IsThereSobAnyhingElse {
     format("Is there *sob* anything else I can get you *sob*, Lord {PLAYER}?")
@@ -542,7 +542,7 @@ text gText_KogaRaisonDetre_AreYouOkay {
     format("Are you okay? What's wrong?")
 }
 text gText_KogaRaisonDetre_MySobSonIsInTheICU {
-    format("I'm sorry. My… *sob* son is in the ICU after the riots last night. Psfgoodteam keeps getting impressionable young folk involved in their nonsense… *sob* I hope the city can get rid of them!")
+    format("I'm sorry. My… *sob* son is in the ICU after the riots last night. TeamRocket keeps getting impressionable young folk involved in their nonsense… *sob* I hope the city can get rid of them!")
 }
 movement KogaRaisonDetre_ComeDownStairs {
     walk_down * 4

@@ -162,14 +162,12 @@ gText_OffYouGo_WaitingForMe::
 	.string "Waiting for me…? Hold on, let me read…$"
 
 gText_OffYouGo_PleaseMeetMeOn::
-	.string "Psfbadadmin: {PLAYER} and\n"
-	.string "Psftransrival, please meet me on the\l"
-	.string "northern side of Psfplace17. (32 mins\l"
-	.string "ago)$"
+	.string "Psfbadadmin: {PLAYER} and Bianca,\n"
+	.string "please meet me on the northern side of\l"
+	.string "GldnGteBridge. (32 mins ago)$"
 
 gText_OffYouGo_IllBeRightOver::
-	.string "Psftransrival: I'll be right over! (31\n"
-	.string "mins ago)$"
+	.string "Bianca: I'll be right over! (31 mins ago)$"
 
 gText_OffYouGo_YeahIDidntSee::
 	.string "Yeah, I didn't see that. I guess I'm on\n"
@@ -186,8 +184,7 @@ gText_OffYouGo_WelcomeToTheParty::
 
 gText_OffYouGo_HonestlyItsFine::
 	.string "Honestly {PLAYER}, it's fine. I wasn't\n"
-	.string "expecting Psftransrival to be awake so\l"
-	.string "early!$"
+	.string "expecting Bianca to be awake so early!$"
 
 gText_OffYouGo_NeitherWasI::
 	.string "…neither was I.$"
@@ -197,7 +194,7 @@ gText_OffYouGo_WellYoureBothHere::
 	.string "have guessed, the construction delays\l"
 	.string "are going to delay the Championship by\l"
 	.string "a few weeks. Rather than kill your\l"
-	.string "momentum now, Psfelite3 has agreed to\l"
+	.string "momentum now, Siebold has agreed to\l"
 	.string "train you both, and Psfbadguy will be\l"
 	.string "footing the bill.$"
 
@@ -205,10 +202,10 @@ gText_OffYouGo_ThanksButWho::
 	.string "Thanks but - who the hell is that?$"
 
 gText_OffYouGo_AsYesYoureNot::
-	.string "Ah yes, you're not from here. Psfelite3\n"
-	.string "is one of the members of the disbanded\l"
-	.string "Psfregion1 Elite Four. A powerful\l"
-	.string "trainer indeed, and we think this is an\l"
+	.string "Ah yes, you're not from here. Siebold is\n"
+	.string "one of the members of the disbanded\l"
+	.string "SanFran Elite Four. A powerful trainer\l"
+	.string "indeed, and we think this is an\l"
 	.string "excellent opportunity for you both.$"
 
 gText_OffYouGo_SoWhereIs::
@@ -217,8 +214,8 @@ gText_OffYouGo_SoWhereIs::
 gText_OffYouGo_AhYesWellTheyHave::
 	.string "Ah yes, well, they have… unconventional\n"
 	.string "training methods. In the middle of\l"
-	.string "Psfcave1, you'll find a pathway leading\l"
-	.string "underground where Psfelite3 has\l"
+	.string "RobinWillTunnel, you'll find a pathway\l"
+	.string "leading underground where Siebold has\l"
 	.string "hidden their notebook. Once you get it,\l"
 	.string "you'll get your next instructions.$"
 
@@ -232,13 +229,13 @@ gText_OffYouGo_OhWait::
 gText_OffYouGo_IDoWishThey::
 	.string "I do wish they'd slow down just a little…\n"
 	.string "two more things, {PLAYER}. First, the\l"
-	.string "training requires teamwork.\l"
-	.string "Psftransrival is going to get stuck\l"
-	.string "without you pretty quickly. Second,\l"
-	.string "there's very little cell service in\l"
-	.string "Psfcave1 and Psfcave2. And now that\l"
-	.string "they're already inside, I can't message\l"
-	.string "them. So can you fill them in?$"
+	.string "training requires teamwork. Bianca is\l"
+	.string "going to get stuck without you pretty\l"
+	.string "quickly. Second, there's very little\l"
+	.string "cell service in RobinWillTunnel and\l"
+	.string "MuirWoods. And now that they're\l"
+	.string "already inside, I can't message them.\l"
+	.string "So can you fill them in?$"
 
 gText_OffYouGo_IllHurrySo::
 	.string "Haha, yeah. I'll hurry so they're not\n"
@@ -250,5 +247,5 @@ gText_OffYouGo_GoodLuck::
 gText_OffYouGo_ItMightBeAGood::
 	.string "It might be a good idea to stock up\n"
 	.string "before you go in. I know the training is\l"
-	.string "extensive, but there is a town,\l"
-	.string "Psfcity10, after Psfcave1.$"
+	.string "extensive, but there is a town, Marin,\l"
+	.string "after RobinWillTunnel.$"

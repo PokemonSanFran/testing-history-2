@@ -1,0 +1,19 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+mapscripts Presidio_Compound_1F_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE, 36: BeingChampionIsHard_TimeSkip //PSF TODO figure out how to go directly to black
+        VAR_STORYLINE_STATE, 99: SouthBay_Compound_2F_Bed_Script
+    ]
+    MAP_SCRIPT_ON_RESUME {
+    }
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Presidio_Compound_1F_MapScripts_OnTransition)
+    }
+}
+
+script Presidio_Compound_1F_MapScripts_OnTransition {
+    if (var(VAR_STORYLINE_STATE) != 36){
+        goto(BeingChampionIsHard_ObjectCleanUp_Script)
+    }
+}

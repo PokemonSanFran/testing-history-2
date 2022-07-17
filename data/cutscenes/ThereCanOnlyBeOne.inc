@@ -239,7 +239,7 @@ gText_ThereCanOnlyBe_DueToTheDelicateEcosystem::
 
 gText_ThereCanOnlyBe_PleaseChooseAPokemon::
 	.string "Please choose a Pokémon to bring with\n"
-	.string "you to Psfregion1.$"
+	.string "you to SanFran.$"
 
 gText_ThereCanOnlyBe_YouHaveSelected::
 	.string "You have selected {STR_VAR_1}.$"
@@ -293,4 +293,4 @@ gText_ThereCanOnlyBe_StarterAreYouSure::
 
 gText_ThereCanOnlyBe_YouChoseToBring::
 	.string "You chose to bring {STR_VAR_1} to\n"
-	.string "Psfregion1.$"
+	.string "SanFran.$"

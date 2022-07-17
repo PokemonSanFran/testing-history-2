@@ -23,10 +23,10 @@ script NewAssholeAppears_WalkToPlayer_Script {
         case 6: applymovement(PSFNATIVERIVAL,NewAssholeAppears_Y6_WalkToPlayer_Movement)
     }
     waitmovement(0)
-    goto(PsfnativerivalAlpha_Event_Script)
+    goto(ArcherAlpha_Event_Script)
 }
 
-script PsfnativerivalAlpha_Event_Script{
+script ArcherAlpha_Event_Script{
     switch(var(VAR_PSFROUTE9_STATE)) {
         case 0: goto(NewAssholeAppears_Intro_Dialogue)
         case 1: goto(NewAssholeAppears_StartBattle_Script)
@@ -98,15 +98,15 @@ script NewAssholeAppears_PostBattle_Script {
     msgbox(gText_NewAssholeAppears_IHopeNot,MSGBOX_NPC)
     callnative(ClearMugshot)
     closemessage
-    goto(NewAssholeAppears_PsfnativerivalExit_Script)
+    goto(NewAssholeAppears_ArcherExit_Script)
 }
 
-script NewAssholeAppears_PsfnativerivalExit_Script{
+script NewAssholeAppears_ArcherExit_Script{
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
     
     switch(var(VAR_TEMP_1)){
-        case 2: applymovement(PSFNATIVERIVAL,NewAssholeAppears_PsfnativerivalWalkAwaySouth_Movement)
-        case 6: applymovement(PSFNATIVERIVAL,NewAssholeAppears_PsfnativerivalWalkAwayNorth_Movement)
+        case 2: applymovement(PSFNATIVERIVAL,NewAssholeAppears_ArcherWalkAwaySouth_Movement)
+        case 6: applymovement(PSFNATIVERIVAL,NewAssholeAppears_ArcherWalkAwayNorth_Movement)
     }
     waitmovement(0)
     fadedefaultbgm
@@ -119,7 +119,7 @@ script NewAssholeAppears_PsfnativerivalExit_Script{
 }
 
 text gText_NewAssholeAppears_YouLookFamiliar {
-    format("You look familiar. You flew here to do the Psfbadguy1 League Challenge, right?")
+    format("You look familiar. You flew here to do the YCombinator League Challenge, right?")
 }
 text gText_NewAssholeAppears_JustStarted {
     format("Yeah! Just started not too long ago. Name's {PLAYER}.")
@@ -154,7 +154,7 @@ text gText_NewAssholeAppears_Whateveryournameis {
 }
 
 text gText_NewAssholeAppears_GentrificationOfMyHome {
-    format("Psfnativerival, and only if you're done contributing to the gentrification of my home... but I doubt it. You're stupid, just like the rest of them.")
+    format("Archer, and only if you're done contributing to the gentrification of my home... but I doubt it. You're stupid, just like the rest of them.")
 }
 
 text gText_NewAssholeAppears_YouSoundCrazyPerson {
@@ -201,12 +201,12 @@ movement NewAssholeAppears_Y6_WalkToPlayer_Movement {
     step_end
 }
 
-movement NewAssholeAppears_PsfnativerivalWalkAwayNorth_Movement {
+movement NewAssholeAppears_ArcherWalkAwayNorth_Movement {
     walk_up * 8
     step_end
 }
 
-movement NewAssholeAppears_PsfnativerivalWalkAwaySouth_Movement {
+movement NewAssholeAppears_ArcherWalkAwaySouth_Movement {
     walk_down * 8
     step_end
 }

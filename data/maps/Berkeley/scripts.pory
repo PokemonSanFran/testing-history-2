@@ -1,0 +1,10 @@
+mapscripts Berkeley_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Berkeley_MapScripts_OnTransition)
+    }    
+}
+
+script Berkeley_MapScripts_OnTransition {
+    goto(swagbag2_SetUp_Object_Script)
+}
+

@@ -147,35 +147,35 @@
 #define MAP_UNDERWATER_ROUTE105 (55 | (1 << 8))
 #define MAP_UNDERWATER_ROUTE125 (56 | (1 << 8))
 
-// gMapGroup_IndoorPsfcity8
+// gMapGroup_IndoorSouthBay
 #define MAP_PSFCITY8_COMPOUND_1F       (0 | (2 << 8))
 #define MAP_PSFCITY8_COMPOUND_2F       (1 | (2 << 8))
 #define MAP_PSFCITY8_POKEMON_CENTER_1F (2 | (2 << 8))
 
-// gMapGroup_IndoorPsfcity15
+// gMapGroup_IndoorSOMA
 #define MAP_PSFCITY15_GYM       (0 | (3 << 8))
 #define MAP_PSFCITY15_NEWSPAPER (1 | (3 << 8))
 
-// gMapGroup_IndoorPsfcity6
+// gMapGroup_IndoorMission
 #define MAP_PSFCITY6_GYM        (0 | (4 << 8))
 #define MAP_PSFCITY6_CONSULTING (1 | (4 << 8))
 
-// gMapGroup_IndoorPsfcity14
+// gMapGroup_IndoorJapantown
 #define MAP_PSFCITY14_GYM   (0 | (5 << 8))
 #define MAP_PSFCITY14_RAMEN (1 | (5 << 8))
 
-// gMapGroup_IndoorPsfcity11
+// gMapGroup_IndoorBerkeley
 #define MAP_PSFCITY11_GYM             (0 | (6 << 8))
 #define MAP_PSFCITY11_BREEDING_CENTER (1 | (6 << 8))
 
-// gMapGroup_IndoorPsfplace9
+// gMapGroup_IndoorFortPoint
 #define MAP_PSFPLACE9_ROOF (0 | (7 << 8))
 
-// gMapGroup_IndoorPsfcity3
+// gMapGroup_IndoorPresidio
 #define MAP_PSFCITY3_MANSION (0 | (8 << 8))
 #define MAP_PSFCITY2_GYM     (1 | (8 << 8))
 
-// gMapGroup_IndoorPsfcity18
+// gMapGroup_IndoorHaightAshbury
 #define MAP_PSFCITY18_GYM (0 | (9 << 8))
 
 // gMapGroup_IndoorLittleroot

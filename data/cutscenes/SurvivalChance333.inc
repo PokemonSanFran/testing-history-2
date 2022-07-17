@@ -3,7 +3,7 @@ SurvivalChance333_HideObject_Script::
 	return
 
 
-SurvivalChance333_HideObject_Psfcity17_Script::
+SurvivalChance333_HideObject_Alameda_Script::
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_4
@@ -375,7 +375,7 @@ gText_SurvivalChance333_HereWeGo::
 
 gText_SurvivalChance333_IKnowWereSupposed::
 	.string "I know we're supposed to blast the\n"
-	.string "walls to drive out the Psfgoodteam\l"
+	.string "walls to drive out the TeamRocket\l"
 	.string "members, but {PLAYER} and I don't\l"
 	.string "have the Self-Destruct TM.$"
 
@@ -385,7 +385,7 @@ gText_SurvivalChance333_OhHellThatsRight::
 
 gText_SurvivalChance333_IAlwaysForget::
 	.string "I always forget - we took those out of\n"
-	.string "circulation in Psfregion1 a few years\l"
+	.string "circulation in SanFran a few years\l"
 	.string "ago. Criminals were using them for too\l"
 	.string "many smash and grabs, so now they're\l"
 	.string "for police use only. Any other\l"

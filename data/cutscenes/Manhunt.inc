@@ -112,7 +112,7 @@ Manhunt_Teodoro_Battle_Script::
 	msgbox gText_Manhunt_TheOnlyWeirdThing
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_Manhunt_ThatsInPsfcity3
+	msgbox gText_Manhunt_ThatsInPresidio
 	callnative ClearMugshot
 	msgbox gText_Manhunt_GodForbidSomeGoodPeople, MSGBOX_AUTOCLOSE
 	applymovement 2, Manhunt_LeaveConsulting
@@ -206,7 +206,7 @@ Manhunt_Matthew_Battle_Script::
 	end
 
 
-Manhunt_Encounter_Psfgoodboss_Dialogue::
+Manhunt_Encounter_Giovanni_Dialogue::
 	lock
 	call Common_EventScript_SaveGame
 	clearflag FLAG_TEMP_2
@@ -225,10 +225,10 @@ Manhunt_Encounter_Psfgoodboss_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_Manhunt_IWontFightYouAnyFurther
 	compare VAR_STORYLINE_STATE, 47
-	goto_if_eq Manhunt_Encounter_Psfgoodboss_Dialogue_2
-Manhunt_Encounter_Psfgoodboss_Dialogue_1:
+	goto_if_eq Manhunt_Encounter_Giovanni_Dialogue_2
+Manhunt_Encounter_Giovanni_Dialogue_1:
 	callnative ClearMugshot
-	pokenavcall Manhunt_Encounter_Psfgoodboss_Dialogue_Text_0
+	pokenavcall Manhunt_Encounter_Giovanni_Dialogue_Text_0
 	waitmessage
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -240,9 +240,9 @@ Manhunt_Encounter_Psfgoodboss_Dialogue_1:
 	warpsilent MAP_PSFBADGUY1TOWER_2F, 255, 8, 7
 	return
 
-Manhunt_Encounter_Psfgoodboss_Dialogue_2:
+Manhunt_Encounter_Giovanni_Dialogue_2:
 	msgbox gText_Manhunt_TheRegionIsYours
-	goto Manhunt_Encounter_Psfgoodboss_Dialogue_1
+	goto Manhunt_Encounter_Giovanni_Dialogue_1
 
 
 Manhunt_MissionComplete_Dialogue::
@@ -357,32 +357,32 @@ Manhunt_ApproachAtLake:
 	walk_up
 	step_end
 
-Manhunt_Encounter_Psfgoodboss_Dialogue_Text_0:
+Manhunt_Encounter_Giovanni_Dialogue_Text_0:
 	.string "This phone is ringing.$"
 
 gText_Manhunt_GoFind::
-	.string "Go find Psfgoodboss. Psftransrival will\n"
-	.string "help. The newspaper in Psfcity15 is a\l"
+	.string "Go find Giovanni. Bianca will\n"
+	.string "help. The newspaper in SOMA is a\l"
 	.string "good place to start, they ran a story\l"
-	.string "on Psfgoodteam last year.$"
+	.string "on TeamRocket last year.$"
 
 gText_Manhunt_HeyWereTrying::
-	.string "Hey, we're trying to find Psfgoodboss,\n"
+	.string "Hey, we're trying to find Giovanni,\n"
 	.string "and we were told you might have a\l"
 	.string "connection.$"
 
 gText_Manhunt_YeahIWrote::
-	.string "Yeah, I wrote the Psfgoodteam\n"
+	.string "Yeah, I wrote the TeamRocket\n"
 	.string "leadership piece a few months back. It\l"
 	.string "was more than time to see such a great\l"
 	.string "group of youngsters really start to\l"
 	.string "get the recognition they deserve. And\l"
 	.string "getting to really sit down with\l"
-	.string "Psfgoodboss... I feel blessed to have\l"
+	.string "Giovanni... I feel blessed to have\l"
 	.string "been able to do it!$"
 
 gText_Manhunt_Blessed::
-	.string "Blessed? Psfgoodteam? Ugh, they've\n"
+	.string "Blessed? TeamRocket? Ugh, they've\n"
 	.string "infected you too.$"
 
 gText_Manhunt_WaitYoureThatKid::
@@ -413,11 +413,11 @@ gText_Manhunt_PleaseDontHurtUs::
 	.string "do you want?$"
 
 gText_Manhunt_StartTalking::
-	.string "Start talking. Who's Psfgoodboss\n"
+	.string "Start talking. Who's Giovanni\n"
 	.string "behind the mask?$"
 
 gText_Manhunt_ISwearIDontKnow::
-	.string "Psfgoodboss? I swear, I don't know who\n"
+	.string "Giovanni? I swear, I don't know who\n"
 	.string "he is. Nobody does. I'm a reporter.... I\l"
 	.string "wouldn't keep that a secret.$"
 
@@ -426,9 +426,9 @@ gText_Manhunt_IKnowYouKnow::
 
 gText_Manhunt_TheOnlyLeadIHave::
 	.string "The only lead I have is a consulting\n"
-	.string "firm in Psfcity6... there's money\l"
+	.string "firm in Mission... there's money\l"
 	.string "flowing between there and\l"
-	.string "Psfgoodteam, or, at least there was. I\l"
+	.string "TeamRocket, or, at least there was. I\l"
 	.string "never figured out what was going on\l"
 	.string "though.$"
 
@@ -443,15 +443,15 @@ gText_Manhunt_WhatAreSomeKids::
 
 gText_Manhunt_YouGonnaMakeThisEasy::
 	.string "You gonna make this easy? Or are you\n"
-	.string "gonna keep protecting Psfgoodteam?$"
+	.string "gonna keep protecting TeamRocket?$"
 
 gText_Manhunt_WhatTheHellAreYou::
-	.string "Psfgoodteam? What the hell are you\n"
+	.string "TeamRocket? What the hell are you\n"
 	.string "talking about?$"
 
 gText_Manhunt_WeKnowYoureWorkingWith::
 	.string "We know you're working with\n"
-	.string "Psfgoodteam, and we need to find their\l"
+	.string "TeamRocket, and we need to find their\l"
 	.string "leader.$"
 
 gText_Manhunt_YeahIDidSomeWork::
@@ -463,11 +463,11 @@ gText_Manhunt_DamnPunks::
 	.string "Damn punks.$"
 
 gText_Manhunt_WhatDoYouKnow::
-	.string "What do you know about Psfgoodteam?$"
+	.string "What do you know about TeamRocket?$"
 
 gText_Manhunt_LookIDontKnowWhat::
 	.string "Look, I don't know what you're digging\n"
-	.string "for. Psfgoodteam is all above ground,\l"
+	.string "for. TeamRocket is all above ground,\l"
 	.string "nothing to hide, just trying to do some\l"
 	.string "damn good in the world.$"
 
@@ -482,8 +482,8 @@ gText_Manhunt_TheOnlyWeirdThing::
 	.string "Speciality Ball Shop... but seriously,\l"
 	.string "there's nothing interesting there.$"
 
-gText_Manhunt_ThatsInPsfcity3::
-	.string "That's in Psfcity3. Let's move.$"
+gText_Manhunt_ThatsInPresidio::
+	.string "That's in Presidio. Let's move.$"
 
 gText_Manhunt_GodForbidSomeGoodPeople::
 	.string "God forbid some good people try to make\n"
@@ -501,7 +501,7 @@ gText_Manhunt_WoahTheChampion::
 	.string "change -$"
 
 gText_Manhunt_YeahTheyreOneOf::
-	.string "Psfgoodteam? Yeah, they're one of our\n"
+	.string "TeamRocket? Yeah, they're one of our\n"
 	.string "customers, why?$"
 
 gText_Manhunt_BecauseWereBusting::
@@ -551,14 +551,14 @@ gText_Manhunt_WhosHe::
 	.string "Who's he?$"
 
 gText_Manhunt_YeahToldMeYoud::
-	.string "Yeah, Psfgoodboss told me you'd be\n"
+	.string "Yeah, Giovanni told me you'd be\n"
 	.string "coming. But I wonder how tough you\l"
 	.string "actually are!$"
 
 gText_Manhunt_IFeelBadForAll::
 	.string "I feel bad for all the innocent people\n"
 	.string "you've been harassing... you're no joke.\l"
-	.string "Psfgoodboss wants you to meet him at\l"
+	.string "Giovanni wants you to meet him at\l"
 	.string "the Lake, after sunset. Just the two\l"
 	.string "of you - no police or Psfbadguy\l"
 	.string "cronies, or the trail goes cold again.\l"
@@ -570,20 +570,20 @@ gText_Manhunt_StopHurtingPeople::
 gText_Manhunt_IfIDontHave::
 	.string "If I don't have the strength to beat\n"
 	.string "you, perhaps I don't have the strength\l"
-	.string "to save Psfregion1 after all.$"
+	.string "to save SanFran after all.$"
 
 gText_Manhunt_IWontFightYouAnyFurther::
 	.string "*sniff* I won't fight you any further.\n"
 	.string "Call your backup.$"
 
 gText_Manhunt_TheRegionIsYours::
-	.string "Psfgoodteam is finished. The region is\n"
+	.string "TeamRocket is finished. The region is\n"
 	.string "yours now.$"
 
 gText_Manhunt_IllBeAtTheEntrance::
 	.string "Psfbadadmin, I've defeated\n"
-	.string "Psfgoodboss. I'll be at the entrance to\l"
-	.string "Psfcave3.$"
+	.string "Giovanni. I'll be at the entrance to\l"
+	.string "LakeMerritt.$"
 
 gText_Manhunt_WhatWaitUhOkay::
 	.string "What!? Wait uh - okay um, excellent\n"

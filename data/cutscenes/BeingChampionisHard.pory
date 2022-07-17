@@ -134,7 +134,7 @@ text gText_BeingChampionIsHard_WoWWhatToDo {
     format("Wow, what to do with my days off…")
 }
 text gText_BeingChampionIsHard_YouShouldGoTo {
-    format("You should go to Psfcave5! I don't think I ever got the chance to tell you, but after you became Champion, we upgraded your Ferry Pass so you can travel there from Psfplace11.")
+    format("You should go to TreasureIsland! I don't think I ever got the chance to tell you, but after you became Champion, we upgraded your Ferry Pass so you can travel there from FerryBuilding.")
 }
 text gText_BeingChampionIsHard_ThatsWhereTheyFilm {
     format("That's where they film movies, right?")

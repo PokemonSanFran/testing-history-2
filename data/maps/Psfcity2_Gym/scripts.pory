@@ -1,8 +1,0 @@
-mapscripts Psfcity2_Gym_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
-        goto(Psfcity2_Gym_MapScripts_OnTransition)
-    }
-}
-
-script Psfcity2_Gym_MapScripts_OnTransition {
-}

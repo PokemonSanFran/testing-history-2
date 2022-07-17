@@ -15,19 +15,19 @@ script AssholesHome_WalkToPlayer_Script {
         waitmovement(0)
         applymovement(PSFNATIVERIVAL,AssholesHomes_WalkToPlayer_Movement)
         waitmovement(0)
-        goto(AssholesHome_Psfnativerival_Dialogue)
+        goto(AssholesHome_Archer_Dialogue)
 }
 
 script AssholesHome_BattleEvent_Script {
         lock
         faceplayer
     switch(var(VAR_NATIVERIVALBETA_STATE)) {
-        case 0: goto(AssholesHome_Psfnativerival_Dialogue)
+        case 0: goto(AssholesHome_Archer_Dialogue)
         case 1: goto(AssholesHome_StartBattle_Script)
     }
 }
 
-script AssholesHome_Psfnativerival_Dialogue {
+script AssholesHome_Archer_Dialogue {
     addvar(VAR_NATIVERIVALBETA_STATE,1)
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -109,7 +109,7 @@ text gText_AssholesHome_ReallyHopingLastTime {
 }
 
 text gText_AssholesHome_JustCurious {
-    format("Just curious if you're ready for Psfleader4.")
+    format("Just curious if you're ready for Morty.")
 }
 
 text gText_AssholesHome_IDoubtYoureGoing {
@@ -125,11 +125,11 @@ text gText_AssholesHome_GuessYouReally {
 }
 
 text gText_AssholesHome_GuessICanJudge {
-    format("Guess I can judge. You're not ready for Psfleader4.")
+    format("Guess I can judge. You're not ready for Morty.")
 }
 
 text gText_AssholesHome_ThrowsTheirMoney {
-    format("Psfbadguy1 throws their money around, and the strong get stronger...")
+    format("YCombinator throws their money around, and the strong get stronger...")
 }
 
 text gText_AssholesHome_SoMuchForThe {

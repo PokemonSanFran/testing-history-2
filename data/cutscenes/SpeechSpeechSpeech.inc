@@ -363,13 +363,12 @@ gText_SpeechSpeechSpeech_ThankYouAll::
 gText_SpeechSpeechSpeech_FirstOfAll::
 	.string "First of all, I will be taking a leave of\n"
 	.string "absence. Effectively immediately,\l"
-	.string "Psfgoodadmin will be leading\l"
-	.string "Psfgoodteam. She has my full trust and\l"
-	.string "support.$"
+	.string "Ariana will be leading TeamRocket. She\l"
+	.string "has my full trust and support.$"
 
 gText_SpeechSpeechSpeech_ForAllYouve::
 	.string "Thank you for all you’ve done for us,\n"
-	.string "Psfgoodboss, I hope to live up to your\l"
+	.string "Giovanni, I hope to live up to your\l"
 	.string "example.$"
 
 gText_SpeechSpeechSpeech_WaitWhat::
@@ -379,11 +378,11 @@ gText_SpeechSpeechSpeech_AreTheyEven::
 	.string "Are they even qualified?$"
 
 gText_SpeechSpeechSpeech_HasMyFullConfidence::
-	.string "Yes, Psfgoodadmin has my full\n"
-	.string "confidence, as well as the backing of…$"
+	.string "Yes, Ariana has my full confidence, as\n"
+	.string "well as the backing of…$"
 
 gText_SpeechSpeechSpeech_Us::
-	.string "… US! The Elite Four of Psfregion1!$"
+	.string "… US! The Elite Four of SanFran!$"
 
 gText_SpeechSpeechSpeech_HolyShit::
 	.string "Holy shit ok, good enough for me!$"
@@ -400,22 +399,22 @@ gText_SpeechSpeechSpeech_Yeah::
 	.string "Yeah!$"
 
 gText_SpeechSpeechSpeech_HellYes::
-	.string "Hell yes! Woo! Wait, where did\n"
-	.string "Psfgoodboss go?$"
+	.string "Hell yes! Woo! Wait, where did Giovanni\n"
+	.string "go?$"
 
 gText_SpeechSpeechSpeech_YouAllKnowHowCompanies::
-	.string "You all know how companies like\n"
-	.string "Psfcompany8 and Psfcompany7 have\l"
-	.string "ruined our lives and families. But with\l"
-	.string "the combined popularity of the\l"
-	.string "Champion, Elite Four and our manpower,\l"
-	.string "I think we can hurt these people where\l"
-	.string "it counts: their wallets. We can’t drive\l"
-	.string "these parasitic companies out of the\l"
-	.string "region… but all that money has to go\l"
-	.string "somewhere. Let’s use that money to\l"
-	.string "strengthen the region and create a\l"
-	.string "brighter future for us all.$"
+	.string "You all know how companies like Amazon\n"
+	.string "and Facebook have ruined our lives and\l"
+	.string "families. But with the combined\l"
+	.string "popularity of the Champion, Elite Four\l"
+	.string "and our manpower, I think we can hurt\l"
+	.string "these people where it counts: their\l"
+	.string "wallets. We can’t drive these parasitic\l"
+	.string "companies out of the region… but all\l"
+	.string "that money has to go somewhere. Let’s\l"
+	.string "use that money to strengthen the\l"
+	.string "region and create a brighter future\l"
+	.string "for us all.$"
 
 gText_SpeechSpeechSpeech_WereFinally::
 	.string "We’re finally doing it…$"
@@ -426,26 +425,25 @@ gText_SpeechSpeechSpeech_ThisIsInsane::
 
 gText_SpeechSpeechSpeech_WeWantToBegin::
 	.string "We want to begin by attacking the\n"
-	.string "biggest players in Psfregion1. Each of\l"
-	.string "us will handle a different offensive\l"
-	.string "plan.$"
+	.string "biggest players in SanFran. Each of us\l"
+	.string "will handle a different offensive plan.$"
 
 gText_SpeechSpeechSpeech_4LeadCharge::
-	.string "Psfelite4 will lead the charge against\n"
-	.string "Psfcompany8.$"
+	.string "Wikstrom will lead the charge against\n"
+	.string "Amazon.$"
 
 gText_SpeechSpeechSpeech_3LeadCharge::
-	.string "Psfelite3 will lead the charge against\n"
-	.string "Psfcompany5.$"
+	.string "Siebold will lead the charge against\n"
+	.string "Uber.$"
 
 gText_SpeechSpeechSpeech_1LeadCharge::
-	.string "Psfelite1 will lead the charge against\n"
-	.string "Psfcompany7.$"
+	.string "Malva will lead the charge against\n"
+	.string "Facebook.$"
 
 gText_SpeechSpeechSpeech_IllBeHandling::
 	.string "And I’ll be handling negotiations with\n"
 	.string "the government, and operations here.\l"
-	.string "Psfgoodadmin will be giving each of you\l"
+	.string "Ariana will be giving each of you\l"
 	.string "assignments under one of the Elite\l"
 	.string "Four members, so listen up.$"
 
@@ -459,16 +457,16 @@ gText_SpeechSpeechSpeech_ItFeelsReally::
 
 gText_SpeechSpeechSpeech_YeahAlsoAre::
 	.string "Also, are you heading to that party in\n"
-	.string "Psfcity9 now? I'll catch up with you in\l"
-	.string "a second, I just gotta talk to\l"
-	.string "Psfgoodadmin first.$"
+	.string "Oakland now? I'll catch up with you in a\l"
+	.string "second, I just gotta talk to Ariana\l"
+	.string "first.$"
 
 gText_SpeechSpeechSpeech_ByTheWay::
 	.string "By the way, you and I are free to work\n"
 	.string "with whoever we want. Just talk to the\l"
 	.string "Elite Four member you want to team up\l"
-	.string "with. I gotta go, I told Psfgoodadmin\l"
-	.string "I’d help them set up something. Peace!$"
+	.string "with. I gotta go, I told Ariana I’d help\l"
+	.string "them set up something. Peace!$"
 
 gText_SpeechSpeechSpeech_Peace::
 	.string "Peace!$"

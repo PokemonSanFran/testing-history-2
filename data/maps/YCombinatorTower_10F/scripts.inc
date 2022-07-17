@@ -1,0 +1,56 @@
+YCombinatorTower_10F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, YCombinatorTower_10F_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, YCombinatorTower_10F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+YCombinatorTower_10F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto YCombinatorTower_10F_MapScripts_OnTransition
+	return
+
+YCombinatorTower_10F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	.2byte 0
+
+
+YCombinatorTower_10F_MapScripts_OnTransition::
+	switch VAR_PSFCITY15_STATE
+	case 4, YCombinatorTower_10F_MapScripts_OnTransition_3
+YCombinatorTower_10F_MapScripts_OnTransition_1:
+	switch VAR_MAUVILLE_CITY_STATE
+	case 0, YCombinatorTower_10F_MapScripts_OnTransition_5
+	case 1, YCombinatorTower_10F_MapScripts_OnTransition_6
+	case 2, YCombinatorTower_10F_MapScripts_OnTransition_7
+	case 3, YCombinatorTower_10F_MapScripts_OnTransition_8
+	case 4, YCombinatorTower_10F_MapScripts_OnTransition_9
+	case 5, YCombinatorTower_10F_MapScripts_OnTransition_10
+	call ImIn_ResumeSave_Script
+	return
+
+YCombinatorTower_10F_MapScripts_OnTransition_3:
+	call TheGangsAllHere_ObjectCleanUp_Script
+	goto YCombinatorTower_10F_MapScripts_OnTransition_1
+
+YCombinatorTower_10F_MapScripts_OnTransition_5:
+	call ImIn_HideBianca_Script
+	return
+
+YCombinatorTower_10F_MapScripts_OnTransition_6:
+	call ImIn_HideBianca_Script
+	return
+
+YCombinatorTower_10F_MapScripts_OnTransition_7:
+	call ImIn_HideBianca_Script
+	return
+
+YCombinatorTower_10F_MapScripts_OnTransition_8:
+	call ImIn_HideBianca_Script
+	return
+
+YCombinatorTower_10F_MapScripts_OnTransition_9:
+	call ImIn_HideBianca_Script
+	return
+
+YCombinatorTower_10F_MapScripts_OnTransition_10:
+	call ImIn_HideStairsGuard_Script
+	call ImIn_ShowBianca_Script
+	return
+

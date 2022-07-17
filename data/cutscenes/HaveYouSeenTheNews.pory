@@ -12,7 +12,7 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
     applymovement(PLAYER, Common_Movement_ExclamationMark)
     waitmovement(0)
 
-    applymovement(PLAYER, EnterTheMaster_ApproachPsfelite3)
+    applymovement(PLAYER, EnterTheMaster_ApproachSiebold)
     waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_LANCE)
@@ -65,16 +65,16 @@ text gText_HaveYouSeenTheNews_WedLikeYourHelp {
     format("We'd like your help again.")
 }
 text gText_HaveYouSeenTheNews_ShitWhatDid {
-    format("Shit, what did Psfgoodteam do now?")
+    format("Shit, what did TeamRocket do now?")
 }
 text gText_HaveYouSeenTheNews_YoureStartingToSound {
-    format("You're starting to sound like a native… they've completely infiltrated our social media platforms. The mayor was impressed with your work at Psfplace14, and thinks you two might be able to help.")
+    format("You're starting to sound like a native… they've completely infiltrated our social media platforms. The mayor was impressed with your work at ChaseCenter, and thinks you two might be able to help.")
 }
 text gText_HaveYouSeenTheNews_HowAreWeGoing {
     format("How are we going to help? Sounds a little above us.")
 }
 text gText_HaveYouSeenTheNews_NoTimeToExplain {
-    format("No time to explain! We're heading to Psfbadguy1tower right now. Do you want to ride in our Psfcompany5, {PLAYER}?")
+    format("No time to explain! We're heading to YCombinatortower right now. Do you want to ride in our Uber, {PLAYER}?")
 }
 text gText_HaveYouSeenTheNews_FineButDontDawdle {
     format("Fine, but don't dawdle. Come to the second floor.")
@@ -83,7 +83,7 @@ text gText_HaveYouSeenTheNews_SoundsLikeYouve {
     format("Sounds like you've been deputized, kid. Just make sure you don't end up a pawn, yeah? You've got real potential.")
 }
 text gText_HaveYouSeenTheNews_CoolTheCar {
-    format("Cool, the car is waiting in Psfcity10.")
+    format("Cool, the car is waiting in Marin.")
 }
 
 movement HaveYouSeenTheNews_LeaveClearingA {

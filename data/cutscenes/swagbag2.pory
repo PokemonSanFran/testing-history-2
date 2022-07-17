@@ -5,7 +5,7 @@ script swagbag2_SetUp_Object_Script {
     setflag(FLAG_TEMP_1)
 }
 
-script swagbag2_Psfbadadmin1WalkOutGym_Script {
+script swagbag2_OakWalkOutGym_Script {
     opendoor(10, 8)
     waitdooranim
     clearflag(FLAG_TEMP_1)
@@ -126,7 +126,7 @@ script swagbag2_BringToCenter_Dialogue {
 script swagbag2_Scene_End_Script {
 
     closemessage
-    applymovement(PLAYER, swagbag2_LetPsfbadadmin1Leave)
+    applymovement(PLAYER, swagbag2_LetOakLeave)
     applymovement(PSFBADADMIN, swagbag2_LeaveCity)
     waitmovement(0)
     removeobject(PSFBADADMIN)
@@ -137,7 +137,7 @@ script swagbag2_Scene_End_Script {
 }
 
 text gText_swagbag2_ItWasAPleasure {
-    format("Hello {PLAYER}! It was a pleasure seeing you at the Tower yesterday. How are you liking east Psfregion1?")
+    format("Hello {PLAYER}! It was a pleasure seeing you at the Tower yesterday. How are you liking east SanFran?")
 }
 
 text gText_swagbag2_ItsALot {
@@ -145,7 +145,7 @@ text gText_swagbag2_ItsALot {
 }
 
 text gText_swagbag2_SoundsLikeYouveRun {
-    format("Ah, sounds like you've run into Psfgoodteam a few times. Don't mind them, they don't represent all of us, I promise.")
+    format("Ah, sounds like you've run into TeamRocket a few times. Don't mind them, they don't represent all of us, I promise.")
 }
 
 text gText_swagbag2_IAssumeYouveAlready {
@@ -173,7 +173,7 @@ text gText_swagbag2_HopefullyTheyllHaveIt {
 }
 
 text gText_swagbag2_HaveYouSeenThe {
-    format("Have you seen the Psfcity11 Breeding Center? Truly state of the art.")
+    format("Have you seen the Berkeley Breeding Center? Truly state of the art.")
 }
 
 text gText_swagbag2_NoShouldI {
@@ -243,7 +243,7 @@ movement swagbag2_PlayerWalkToCenter {
     step_end
 }
 
-movement swagbag2_LetPsfbadadmin1Leave {
+movement swagbag2_LetOakLeave {
     walk_right
     walk_up
     walk_left

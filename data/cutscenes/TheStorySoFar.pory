@@ -14,7 +14,7 @@ script TheStorySoFar_ExplainExhibit_Dialogue {
         end
 }
 
-script Psfcave7_InteractWithAttendant_Script {
+script Alcatraz_InteractWithAttendant_Script {
     lock
        applymovement(8,Common_Movement_FacePlayer)
         goto(TheStorySoFar_Event_Script)
@@ -34,12 +34,12 @@ script TheStorySoFar_Event_Script {
             case 1: goto(TheStorySoFar_CheckNumberDefeated_Script)
             case 2: goto(TheStorySoFar_AwardPlayer_Script) 
             case 3: goto(TheStorySoFar_Congratulate_Dialogue)
-            case 4: goto(Psfcave7Attendant_HealPlayer_Script)
+            case 4: goto(AlcatrazAttendant_HealPlayer_Script)
         }
 }
 
 script TheStorySoFar_CheckNumberDefeated_Script {
-    special(CheckNumPsfcave7ExhibitDefeated)
+    special(CheckNumAlcatrazExhibitDefeated)
         msgbox(gText_TheStorySoFar_YoureNotQuiteDone)
 
         switch (var(VAR_RESULT)) {
@@ -59,7 +59,7 @@ script TheStorySoFar_CheckNumberDefeated_Script {
                     applymovement(PLAYER,Common_Movement_WalkUp)
                 } else {
                     applymovement(PLAYER,Common_Movement_WalkDown)
-                        call(ResetPsfcave7Exhibit_Script)
+                        call(ResetAlcatrazExhibit_Script)
                 }
             waitmovement(0)
         }
@@ -142,12 +142,12 @@ script TheStorySoFar_ReadSign6_Dialogue {
 }
 
 script TheStorySoFar_RunDefeatedCheck_Script {
-    special(CheckNumPsfcave7ExhibitDefeated)
+    special(CheckNumAlcatrazExhibitDefeated)
     end
 }
 
 text gText_TheStorySoFar_WelcomeToExhibit {
-    format("Welcome to the Psfcave7 Exhibit. To learn about the island, you'll need to battle our staff. Trainers who can defeat all six without leaving the park or being defeated will complete the challenge and win a prize! If you leave, you'll need to start the challenge over again.")
+    format("Welcome to the Alcatraz Exhibit. To learn about the island, you'll need to battle our staff. Trainers who can defeat all six without leaving the park or being defeated will complete the challenge and win a prize! If you leave, you'll need to start the challenge over again.")
 }
 
 text gText_TheStorySoFar_YoureNotQuiteDone {
@@ -195,7 +195,7 @@ text gText_TheStorySoFar_DontForgetToStop {
 }
 
 text gText_TheStorySoFar_OriginallyBuiltAsAPrison {
-    format("Psfcave7 was originally built as a prison for Psfregion1's most dangerous criminals. Psfcave7 Prison was nationally praised for its state of the art facilities, forward thinking approach to rehabilitation, and no escape attempts.")
+    format("Alcatraz was originally built as a prison for SanFran's most dangerous criminals. Alcatraz Prison was nationally praised for its state of the art facilities, forward thinking approach to rehabilitation, and no escape attempts.")
 }
 
 text gText_TheStorySoFar_IThinkDefense {
@@ -211,7 +211,7 @@ text gText_TheStorySoFar_TheBestOffense {
 }
 
 text gText_TheStorySoFar_TheCriminalUnderbelly {
-    format("The Psfregion1 criminal underbelly, using agents within the prison, staged a prison riot. The agents took guards hostage, and demanded that the government turn the island over to the prisoners. This occupation lasted for years, and the demands of the prisoners grew more unreasonable as time went on.")
+    format("The SanFran criminal underbelly, using agents within the prison, staged a prison riot. The agents took guards hostage, and demanded that the government turn the island over to the prisoners. This occupation lasted for years, and the demands of the prisoners grew more unreasonable as time went on.")
 }
 
 text gText_TheStorySoFar_TheresSomethingSpecial {
@@ -227,11 +227,11 @@ text gText_TheStorySoFar_ItsHardToDoAnything {
 }
 
 text gText_TheStorySoFar_ThePrisonersBeganToTurn {
-    format("The prisoners began to turn to the citizens of the region for support. One of their most vocal allies was Psfelite2, the strongest member of the Psfregion1 Elite Four. Psfelite2 organized public rallies and marches, demanding for the release of the prisoners into society, citing the need for a different rehabilitation approach.")
+    format("The prisoners began to turn to the citizens of the region for support. One of their most vocal allies was Drasna, the strongest member of the SanFran Elite Four. Drasna organized public rallies and marches, demanding for the release of the prisoners into society, citing the need for a different rehabilitation approach.")
 }
 
 text gText_TheStorySoFar_PhysicallyDefensiveMasterpiece {
-    format("Psfcave7 is a physically defensive masterpiece, isn't it?")
+    format("Alcatraz is a physically defensive masterpiece, isn't it?")
 }
 
 text gText_TheStorySoFar_ButLikeTheShip {
@@ -259,7 +259,7 @@ text gText_TheStorySoFar_MakingSureToTakeCare {
 }
 
 text gText_TheStorySoFar_TheNaturalDisasterLeft {
-    format("The natural disaster left the prisoners broken and defeated, and they quickly surrendered. The prisoners were charged with conspiracy and instigation, seperated, and sent to different prisons around the nation. Psfcave7 was shut down.")
+    format("The natural disaster left the prisoners broken and defeated, and they quickly surrendered. The prisoners were charged with conspiracy and instigation, seperated, and sent to different prisons around the nation. Alcatraz was shut down.")
 }
 
 text gText_TheStorySoFar_HowToughAreYou {
@@ -275,7 +275,7 @@ text gText_TheStorySoFar_IHearVoicesStanding {
 }
 
 text gText_TheStorySoFar_ParksAndRecreation {
-    format("The Psfregion1 Parks and Recreation has dedicated this plaza to the guards who lost their lives in the disaster and the struggle that divided the region for so long. Late at night, some say you can hear their spirits, still fighting to this day to keep our region safe from criminals.")
+    format("The SanFran Parks and Recreation has dedicated this plaza to the guards who lost their lives in the disaster and the struggle that divided the region for so long. Late at night, some say you can hear their spirits, still fighting to this day to keep our region safe from criminals.")
 }
 
 text gText_TheStorySoFar_ExcellentWork {

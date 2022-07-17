@@ -136,7 +136,7 @@ text gText_CongratsYoureanAsshole_ExcellentWeKnew {
 }
 
 text gText_CongratsYoureanAsshole_WevePreparedAStatement {
-	format("We’ve prepared a statement reinforcing our commitment to ending Psfgoodteam’s operations. We want them to know we’re officially working with the police and that their days are numbered.")
+	format("We’ve prepared a statement reinforcing our commitment to ending TeamRocket’s operations. We want them to know we’re officially working with the police and that their days are numbered.")
 }
 
 text gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal {
@@ -159,7 +159,7 @@ text gText_CongratsYoureanAsshole_OfCouseIfTheres {
 }
 
 text gText_CongratsYoureanAsshole_PresenceIn {
-	format("Psfgoodteam’s presence in Psfregion1 makes for a worse region for all. Starting today, we’ll be working with the police dept and the champion to put an end to their terrorist activities.")
+	format("TeamRocket’s presence in SanFran makes for a worse region for all. Starting today, we’ll be working with the police dept and the champion to put an end to their terrorist activities.")
 }
 
 text gText_CongratsYoureanAsshole_ThankYouForThat {
@@ -171,7 +171,7 @@ text gText_CongratsYoureanAsshole_ThingsWillTake {
 }
 
 text gText_CongratsYoureanAsshole_ThatsTheSpirit {
-	format("That’s the spirit! Psfbadadmin, Psfbadadmin3, and I all have different missions for you. Come talk to us when you're ready.")
+	format("That’s the spirit! Psfbadadmin, Sabrina, and I all have different missions for you. Come talk to us when you're ready.")
 }
 
 movement CongratsYoureanAsshole_WalkTowardsPlayer {

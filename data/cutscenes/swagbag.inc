@@ -21,7 +21,7 @@ swagbag_ObjectHide_Script::
 	return
 
 
-Swagbag_WelcomeToPsfregion1_Dialogue::
+Swagbag_WelcomeToSanFran_Dialogue::
 	addvar VAR_LITTLEROOT_INTRO_STATE, 1
 	lockall
 	playse SE_PIN
@@ -44,7 +44,7 @@ Swagbag_WelcomeToPsfregion1_Dialogue::
 	applymovement 2, swagbag_WalkToTable
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, swagbag_PlayerToTable
-	applymovement 1, swagbag_PsftransrivalToTable
+	applymovement 1, swagbag_BiancaToTable
 	waitmovement 0
 	goto Swagbag_LeagueStipend_Dialogue
 	end
@@ -116,11 +116,11 @@ Swagbag_WhenCanWeStart_Dialogue::
 	waitmovement 0
 	playse SE_EXIT
 	removeobject 1
-	goto Swagbag_DontLeavePsfcity8_Dialogue
+	goto Swagbag_DontLeaveSouthBay_Dialogue
 	return
 
 
-Swagbag_DontLeavePsfcity8_Dialogue::
+Swagbag_DontLeaveSouthBay_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_IllBeWorkingOnMyLaptop
@@ -144,11 +144,11 @@ swagbag_HelpPlayer_Script::
 	return
 
 
-swagbag_PreventPlayerLeavingPsfcity8_Event_Script::
+swagbag_PreventPlayerLeavingSouthBay_Event_Script::
 	lock
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_DontLeavePsfcity8_Text1
+	msgbox gText_DontLeaveSouthBay_Text1
 	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, swagbag_WalkBackwards
@@ -172,7 +172,7 @@ swagbag_WalkToTable:
 	face_down
 	step_end
 
-swagbag_PsftransrivalToTable:
+swagbag_BiancaToTable:
 	walk_down
 	walk_down
 	walk_down
@@ -220,7 +220,7 @@ swagbag_WalkBackwards:
 	step_end
 
 gText_Swagbag_WelcomeToRegion::
-	.string "{PLAYER}! Welcome to Psfregion1! How\n"
+	.string "{PLAYER}! Welcome to SanFran! How\n"
 	.string "was your flight?$"
 
 gText_Swagbag_GreatThePrivateCar::
@@ -252,7 +252,7 @@ gText_Swagbag_NextANewlyUpgraded::
 	.string "functionality, but it wasn't quite\l"
 	.string "ready for primetime yet. By the time\l"
 	.string "you visit the Research Institute in\l"
-	.string "Psfcity11, it might be ready.$"
+	.string "Berkeley, it might be ready.$"
 
 gText_Swagbag_AlsoWeveGoneAhead::
 	.string "Also, we've gone ahead and pre-loaded\n"
@@ -294,7 +294,7 @@ gText_Swagbag_HmmThoseAllSound::
 gText_Swagbag_PlayerRecivedMoney::
 	.string "{PLAYER} received ¥50000, a PokéDex,\n"
 	.string "and new phone applications from\l"
-	.string "Psfbadadmin1.$"
+	.string "Oak.$"
 
 gText_Swagbag_IBelieveThatsEverything::
 	.string "I believe that's everything. Questions?$"
@@ -322,7 +322,7 @@ gText_Swagbag_IllBeWorkingOnMyLaptop::
 
 gText_Swagbag_GotItThanks::
 	.string "Got it. Thanks for all the help,\n"
-	.string "Psfbadadmin1! I'm still so stoked for\l"
+	.string "Oak! I'm still so stoked for\l"
 	.string "the opportunity and the Challenge!$"
 
 gText_Swagbag_InTheActualGame::
@@ -330,6 +330,6 @@ gText_Swagbag_InTheActualGame::
 	.string "questions that the player can ask and\l"
 	.string "getr answers to. Tutorial level shit.$"
 
-gText_DontLeavePsfcity8_Text1::
-	.string "I don't think I should leave Psfcity8\n"
+gText_DontLeaveSouthBay_Text1::
+	.string "I don't think I should leave SouthBay\n"
 	.string "yet...$"

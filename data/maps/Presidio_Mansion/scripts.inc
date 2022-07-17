@@ -1,0 +1,38 @@
+Presidio_Mansion_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Presidio_Mansion_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Presidio_Mansion_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Presidio_Mansion_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Presidio_Mansion_MapScripts_OnTransition
+	return
+
+Presidio_Mansion_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_ROUTE105_STATE, 0, KogaRaisonDetre_MoveIntoFoyer_Script
+	.2byte 0
+
+
+Presidio_Mansion_MapScripts_OnTransition::
+	switch VAR_ROUTE105_STATE
+	case 1, Presidio_Mansion_MapScripts_OnTransition_2
+	case 2, Presidio_Mansion_MapScripts_OnTransition_3
+	case 3, Presidio_Mansion_MapScripts_OnTransition_4
+	case 4, Presidio_Mansion_MapScripts_OnTransition_5
+	return
+
+Presidio_Mansion_MapScripts_OnTransition_2:
+	call KogaRaisonDetre_HideObjectKids_Script
+	return
+
+Presidio_Mansion_MapScripts_OnTransition_3:
+	call KogaRaisonDetre_HideObjectKids_Script
+	return
+
+Presidio_Mansion_MapScripts_OnTransition_4:
+	call KogaRaisonDetre_HideObjectKids_Script
+	return
+
+Presidio_Mansion_MapScripts_OnTransition_5:
+	call KogaRaisonDetre_ObjectCleanUp_Script
+	return
+

@@ -181,7 +181,7 @@ HeresHowThisIsGoingToGo_GoToBracket:
 gText_HeresHowThisIsGoingToGo_CongratulationsOnAll::
 	.string "Congratulations on all of your hard\n"
 	.string "work! Welcome to the first stage of the\l"
-	.string "Psfregion1 League Championship!$"
+	.string "SanFran League Championship!$"
 
 gText_HeresHowThisIsGoingToGo_WooYay::
 	.string "Woo! Yay!$"

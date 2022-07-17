@@ -294,7 +294,7 @@ gText_YouHaveYourOrders_OohSomeAction::
 gText_YouHaveYourOrders_LawEnforcementHasConfirmed::
 	.string "Law enforcement has confirmed the old\n"
 	.string "Gyms have been repurposed as\l"
-	.string "Psfgoodteam recruitment and training\l"
+	.string "TeamRocket recruitment and training\l"
 	.string "centers.The city has loaned us enough\l"
 	.string "officers to perform three\l"
 	.string "simultaneous raids.$"
@@ -311,13 +311,12 @@ gText_CongratsYoureanAsshole_OhWoWYouGuys::
 
 gText_YouHaveYourOrders_CorrectEachOfUs::
 	.string "Each of us will be leading a different\n"
-	.string "raid. Psftransrival will go to Psfcave5,\l"
-	.string "and I'll deal with Psfcity10.\l"
-	.string "{PLAYER}, you'll take on Psfcity13.$"
+	.string "raid. Bianca will go to TreasureIsland,\l"
+	.string "and I'll deal with Marin. {PLAYER},\l"
+	.string "you'll take on Chinatown.$"
 
 gText_YouHaveYourOrders_TheyInvolved::
-	.string "Psftransrival? How did they get\n"
-	.string "invovled?$"
+	.string "Bianca? How did they get invovled?$"
 
 gText_YouHaveYourOrders_WeHiredThem::
 	.string "We hired them. Their help was invaluable\n"
@@ -325,7 +324,7 @@ gText_YouHaveYourOrders_WeHiredThem::
 	.string "offer, they didn’t hesitate.$"
 
 gText_YouHaveYourOrders_WhatAbout::
-	.string "What about Psfcity18?$"
+	.string "What about HaightAshbury?$"
 
 gText_YouHaveYourOrders_OurIntelligenceTells::
 	.string "Our intelligence tells us that we'll be\n"
@@ -348,7 +347,7 @@ gText_YouHaveYourOrders_IStillFeelLike::
 
 gText_YouHaveYourOrders_InCaseYouHavent::
 	.string "In case you haven't already heard, I\n"
-	.string "used to be the leader of the Psfcity13\l"
+	.string "used to be the leader of the Chinatown\l"
 	.string "Gym.$"
 
 gText_YouHaveYourOrders_YouWereAGym::
@@ -380,4 +379,4 @@ gText_YouHaveYourOrders_ICouldGoShut::
 	.string "and destroy what I helped create.$"
 
 gText_YouHaveYourOrders_DoYouWantTo::
-	.string "Do you want to go to Psfcity13?$"
+	.string "Do you want to go to Chinatown?$"

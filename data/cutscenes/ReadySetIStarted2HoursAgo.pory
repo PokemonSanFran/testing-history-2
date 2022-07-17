@@ -92,7 +92,7 @@ text gText_YouCanChangeYourOutfit {
 }
 
 text gText_TwoHoursAgo_LooksLikeWokeUp {
-    format("Looks like Psftransrival woke up early and already left! They're eager, I'll give them that. I guess they didn't need the explanation... or breakfast.")
+    format("Looks like Bianca woke up early and already left! They're eager, I'll give them that. I guess they didn't need the explanation... or breakfast.")
 }
 
 text gText_TwoHoursAgo_YoureInARace {
@@ -100,16 +100,16 @@ text gText_TwoHoursAgo_YoureInARace {
 }
 
 text gText_TwoHoursAgo_TheTouranemtnWillTest {
-    format("The tournament will test all of your skills as a Trainer, but the win will become a Psfbadguy1 sponsored career Pokémon Trainer.")
+    format("The tournament will test all of your skills as a Trainer, but the win will become a YCombinator sponsored career Pokémon Trainer.")
 }
 
 text gText_TwoHoursAgo_WeExpectTheBest {
-    format("We expect the best from you and Psftransrival! If you fail to qualify for the Championship, we'll be terminating your contract, and you'll be on your own... but we know that won't be the case! So don't worry.")
+    format("We expect the best from you and Bianca! If you fail to qualify for the Championship, we'll be terminating your contract, and you'll be on your own... but we know that won't be the case! So don't worry.")
 }
 text gText_TwoHoursAgo_CafeIsAlwaysSoDelicious {
-    format("Psfcompany2 is always so delicious! Too bad Psftransrival didn't eat with us. I guess you can take their portion of the food, and I bought you both PokéBalls, but you can have theirs too!")
+    format("CafeVenetia is always so delicious! Too bad Bianca didn't eat with us. I guess you can take their portion of the food, and I bought you both PokéBalls, but you can have theirs too!")
 }
 
 text gText_TwoHoursAgo_CanHoldThose {
-    format("Your {STR_VAR_1} can hold those Leftovers to restore HP during battle. Now, you should get a move on! Don't let Psftransrival get too far ahead of you!")
+    format("Your {STR_VAR_1} can hold those Leftovers to restore HP during battle. Now, you should get a move on! Don't let Bianca get too far ahead of you!")
 }

@@ -1,0 +1,52 @@
+Mission_Consulting_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Mission_Consulting_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Mission_Consulting_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Mission_Consulting_MapScripts_OnTransition
+	return
+
+
+Mission_Consulting_InteractTeodoro_Event_Script::
+	lock
+	goto_if_set FLAG_TIMELINE_FALSE, Mission_Consulting_InteractTeodoro_Event_Script_2
+	switch VAR_LILYCOVE_CITY_STATE
+	case 0, Mission_Consulting_InteractTeodoro_Event_Script_10
+	case 1, Mission_Consulting_InteractTeodoro_Event_Script_11
+	case 8, Mission_Consulting_InteractTeodoro_Event_Script_12
+	call MaskOff_QuestF_Dialogue
+Mission_Consulting_InteractTeodoro_Event_Script_1:
+	release
+	end
+
+Mission_Consulting_InteractTeodoro_Event_Script_2:
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 0, Mission_Consulting_InteractTeodoro_Event_Script_6
+	case 2, Mission_Consulting_InteractTeodoro_Event_Script_7
+	msgbox Mission_Consulting_InteractTeodoro_Event_Script_Text_0, MSGBOX_AUTOCLOSE
+	goto Mission_Consulting_InteractTeodoro_Event_Script_1
+
+Mission_Consulting_InteractTeodoro_Event_Script_6:
+	return
+
+Mission_Consulting_InteractTeodoro_Event_Script_7:
+	call Manhunt_Teodoro_Battle_Script
+	goto Mission_Consulting_InteractTeodoro_Event_Script_1
+
+Mission_Consulting_InteractTeodoro_Event_Script_10:
+	return
+
+Mission_Consulting_InteractTeodoro_Event_Script_11:
+	return
+
+Mission_Consulting_InteractTeodoro_Event_Script_12:
+	return
+
+
+Mission_Consulting_MapScripts_OnTransition::
+	setflag FLAG_TEMP_2
+	return
+
+
+Mission_Consulting_InteractTeodoro_Event_Script_Text_0:
+	.string "...$"

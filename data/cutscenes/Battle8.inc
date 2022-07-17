@@ -9,7 +9,7 @@ Battle8_StartBattle_ObjectSetUp_Script::
 	return
 
 
-Battle8_PsfnativerivalWalksOut_Script::
+Battle8_ArcherWalksOut_Script::
 	lock
 	addvar VAR_ROUTE109_STATE, 1
 	opendoor 19, 13
@@ -20,8 +20,8 @@ Battle8_PsfnativerivalWalksOut_Script::
 	applymovement 1, Battle8_WalkOutOfHouse
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 26
-	goto_if_ne Battle8_PsfnativerivalWalksOut_Script_2
-Battle8_PsfnativerivalWalksOut_Script_1:
+	goto_if_ne Battle8_ArcherWalksOut_Script_2
+Battle8_ArcherWalksOut_Script_1:
 	waitmovement 0
 	closedoor 19, 13
 	waitdooranim
@@ -40,9 +40,9 @@ Battle8_PsfnativerivalWalksOut_Script_1:
 	goto Battle8_ExplainAttraction_Dialogue
 	return
 
-Battle8_PsfnativerivalWalksOut_Script_2:
+Battle8_ArcherWalksOut_Script_2:
 	applymovement OBJ_EVENT_ID_PLAYER, Battle8_GetOutOfWay
-	goto Battle8_PsfnativerivalWalksOut_Script_1
+	goto Battle8_ArcherWalksOut_Script_1
 
 
 Battle8_ExplainAttraction_Dialogue::
@@ -86,7 +86,7 @@ Battle8_StartBattle_Script::
 	closemessage
 	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_WALLY_VR_3, gText_Battle8_MaybeINeed
-	goto Battle8_PsfnativerivalDefeated_Dialogue
+	goto Battle8_ArcherDefeated_Dialogue
 	return
 
 
@@ -99,11 +99,11 @@ Battle8_InteractBattle_Script::
 	closemessage
 	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_WALLY_VR_3, gText_Battle8_MaybeINeed
-	goto Battle8_PsfnativerivalDefeated_Dialogue
+	goto Battle8_ArcherDefeated_Dialogue
 	return
 
 
-Battle8_PsfnativerivalDefeated_Dialogue::
+Battle8_ArcherDefeated_Dialogue::
 	lock
 	addvar VAR_ROUTE109_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
@@ -123,8 +123,8 @@ Battle8_PsfnativerivalDefeated_Dialogue::
 	callnative ClearMugshot
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 18
-	goto_if_eq Battle8_PsfnativerivalDefeated_Dialogue_2
-Battle8_PsfnativerivalDefeated_Dialogue_1:
+	goto_if_eq Battle8_ArcherDefeated_Dialogue_2
+Battle8_ArcherDefeated_Dialogue_1:
 	applymovement 1, Battle8_WalkToTheWest
 	waitmovement 0
 	removeobject 1
@@ -132,11 +132,11 @@ Battle8_PsfnativerivalDefeated_Dialogue_1:
 	release
 	end
 
-Battle8_PsfnativerivalDefeated_Dialogue_2:
+Battle8_ArcherDefeated_Dialogue_2:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	goto Battle8_PsfnativerivalDefeated_Dialogue_1
+	goto Battle8_ArcherDefeated_Dialogue_1
 
 
 Battle8_WalkOutOfHouse:
@@ -178,10 +178,10 @@ gText_Battle8_GreatToSeeYouToo::
 	.string "were you talking about?$"
 
 gText_Battle8_PrimaryAttraction::
-	.string "Primary attraction of Psfplace13 - the\n"
-	.string "Seven Sisters Challenge. It used to be\l"
-	.string "a lot more popular when 1v1 battles\l"
-	.string "were a novelty- before the\l"
+	.string "Primary attraction of FishermansWharf\n"
+	.string "- the Seven Sisters Challenge. It used\l"
+	.string "to be a lot more popular when 1v1\l"
+	.string "battles were a novelty- before the\l"
 	.string "corporations declared it as the\l"
 	.string "official League format.$"
 
@@ -193,7 +193,7 @@ gText_Battle8_TheSistersAreExperts::
 	.string "The sisters are experts in 1v1, and\n"
 	.string "you've got to beat all of them, in a row,\l"
 	.string "in as few turns as possible. I've heard\l"
-	.string "a rumor that Psfelite2 got an SS Rank\l"
+	.string "a rumor that Drasna got an SS Rank\l"
 	.string "once, but those guys are on a\l"
 	.string "different level… but you're not even\l"
 	.string "close to that.$"

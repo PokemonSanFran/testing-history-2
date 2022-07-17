@@ -1,0 +1,23 @@
+FortPoint_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, FortPoint_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, FortPoint_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+FortPoint_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto FortPoint_MapScript_OnTransition
+	return
+
+FortPoint_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 21, TheStrikeStrikesBack_PhoneCall_Dialogue
+	.2byte 0
+
+
+FortPoint_MapScript_OnTransition::
+	switch VAR_PSFPLACE9_STATE
+	case 1, FortPoint_MapScript_OnTransition_2
+	goto YouLookTired_HideObjects_Script
+	return
+
+FortPoint_MapScript_OnTransition_2:
+	return
+

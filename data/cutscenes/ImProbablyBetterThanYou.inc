@@ -24,7 +24,7 @@ ImProbablyBetterThanYou_StandingOutside_Dialogue::
 	return
 
 
-ImProbablyBetterThanYou_PsftransrivalIntro_Dialogue::
+ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	addvar VAR_LITTLEROOT_INTRO_STATE, 1
 	lockall
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
@@ -166,7 +166,7 @@ gText_ImProbablyBetterThanYou_GreatToMeet::
 
 gText_ImProbablyBetterThanYou_KindaShabbyHuh::
 	.string "Kinda shabby, huh? I thought\n"
-	.string "Psfbadguy1 was pulling out all the\l"
+	.string "YCombinator was pulling out all the\l"
 	.string "stops for us, but there's not a butler\l"
 	.string "in sight! And no private tennis courts!\l"
 	.string "Not that I ever play, but it's the\l"
@@ -185,7 +185,7 @@ gText_ImProbablyBetterThanYou_MyFlightWasEarlierToday::
 	.string "been waiting around.$"
 
 gText_ImProbablyBetterThanYou_IOrderedSomeFoodToo::
-	.string "I ordered some food too - Psfcompany1\n"
+	.string "I ordered some food too - DoorDash\n"
 	.string "is the same here as it is back in Unova,\l"
 	.string "and my Mom's card is still on the\l"
 	.string "account! I'm sure she gets... points or\l"

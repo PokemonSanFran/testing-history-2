@@ -515,7 +515,7 @@ KogaRaisonDetre_RunToWork_Dialogue_Text_0:
 	.string "The next morning…$"
 
 gText_KogaRaisonDetre_HasBeenSoGenerous::
-	.string "Psfbadadmin2 has been so generous... I\n"
+	.string "Koga has been so generous... I\n"
 	.string "should stay.$"
 
 gText_KogaRaisonDetre_HasBeenExpectingYou::
@@ -538,7 +538,7 @@ gText_KogaRaisonDetre_ShutUp::
 
 gText_KogaRaisonDetre_ShowUsHowYouTookDown::
 	.string "Oh oh oh, show us how you took down\n"
-	.string "Psfleader1! Can we see some battle\l"
+	.string "Falkner! Can we see some battle\l"
 	.string "moves? Oh come on yes, let's battle,\l"
 	.string "right now, yeah yeah yeah!$"
 
@@ -560,7 +560,7 @@ gText_KogaRaisonDetre_SorryAboutThat::
 	.string "excited. And don't let Raghnall's\l"
 	.string "demeanor fool you. I think they've\l"
 	.string "watched your battle against\l"
-	.string "Psfleader3 at least 40 times.$"
+	.string "Whitney at least 40 times.$"
 
 gText_KogaRaisonDetre_OhArceus::
 	.string "Oh Arceus, Dad!$"
@@ -571,8 +571,8 @@ gText_KogaRaisonDetre_YourHouseIsBeautiful::
 
 gText_KogaRaisonDetre_ItWasImportantToMe::
 	.string "Thank you. It was important to me that\n"
-	.string "I raised my family in Psfcity3. Most\l"
-	.string "Psfbadguy1 employees want to be in\l"
+	.string "I raised my family in Presidio. Most\l"
+	.string "YCombinator employees want to be in\l"
 	.string "the city - close to the office and the\l"
 	.string "nightlife.$"
 
@@ -585,7 +585,7 @@ gText_KogaRaisonDetre_ButItsHardToJustify::
 gText_KogaRaisonDetre_IveBeenStruggling::
 	.string "I've been struggling to find the right\n"
 	.string "word for it, but suffering is good.\l"
-	.string "Psfcity12, Psfcity9… so many of the\l"
+	.string "Tenderloin, Oakland… so many of the\l"
 	.string "places I've been to so far are hurting.$"
 
 gText_KogaRaisonDetre_ItsBeenSaidThat::
@@ -615,7 +615,7 @@ gText_KogaRaisonDetre_IPickedOut::
 
 gText_KogaRaisonDetre_HowMuch::
 	.string "How much do you know about\n"
-	.string "Psfbadboss?$"
+	.string "Rose?$"
 
 gText_KogaRaisonDetre_IJustRecentlyMet::
 	.string "I just recently met them. They're the\n"
@@ -624,13 +624,13 @@ gText_KogaRaisonDetre_IJustRecentlyMet::
 
 gText_KogaRaisonDetre_ThatLastPartIsImportant::
 	.string "That last part is important -\n"
-	.string "Psfbadboss grew up here. They take\l"
-	.string "great pride in Psfregion1, and want all\l"
-	.string "of their work at Psfbadguy1 to go\l"
+	.string "Rose grew up here. They take\l"
+	.string "great pride in SanFran, and want all\l"
+	.string "of their work at YCombinator to go\l"
 	.string "towards making the entire region a\l"
 	.string "better place to live. It's why we\l"
 	.string "acquired the Pokémon League.\l"
-	.string "Psfbadboss saw its potential and knew\l"
+	.string "Rose saw its potential and knew\l"
 	.string "we could use its draw and our resources\l"
 	.string "to make it even better, and bring in\l"
 	.string "Trainers like you.$"
@@ -658,7 +658,7 @@ gText_KogaRaisonDetre_WoahWaitBigger::
 
 gText_KogaRaisonDetre_PeopleLoveBattles::
 	.string "People love Pokémon battles.\n"
-	.string "Psfbadboss knew if we used our\l"
+	.string "Rose knew if we used our\l"
 	.string "resources to create a compelling\l"
 	.string "product, we wouldn't need Dynamax or\l"
 	.string "League HQs built into cathedrals. We've\l"
@@ -673,7 +673,7 @@ gText_KogaRaisonDetre_MyKidsBeingObsessed::
 	.string "rockstars.$"
 
 gText_KogaRaisonDetre_WereGoingToMake::
-	.string "We're going to make Psfregion1 the\n"
+	.string "We're going to make SanFran the\n"
 	.string "region where rock stars are born.\l"
 	.string "Trainers are going to want to emulate\l"
 	.string "you! The region will be richer for it. It\l"
@@ -758,18 +758,18 @@ gText_KogaRaisonDetre_ThanksKen::
 	.string "Thanks Ken. We're gathering details on\n"
 	.string "the ground here, but it sounds like\l"
 	.string "this riot was instigated by members of\l"
-	.string "Psfgoodteam, culminating in violent\l"
-	.string "attacks on the Psfcity12 Police Force.\l"
+	.string "TeamRocket, culminating in violent\l"
+	.string "attacks on the Tenderloin Police Force.\l"
 	.string "Both sides sustained significant\l"
 	.string "injury, and dozens of members of\l"
-	.string "Psfgoodteam were taken into custody\l"
+	.string "TeamRocket were taken into custody\l"
 	.string "last night. Back to you, Ken.$"
 
 gText_KogaRaisonDetre_WereAlsoLearningThat::
 	.string "We're also learning that the Mayor's\n"
 	.string "office released a press statement ten\l"
 	.string "minutes ago, primarily addressing\l"
-	.string "Psfgoodteam, asking for an end to the\l"
+	.string "TeamRocket, asking for an end to the\l"
 	.string "violence and begging them to “work\l"
 	.string "with us, not against us”. We'll have\l"
 	.string "more updates within the hour.$"
@@ -784,7 +784,7 @@ gText_KogaRaisonDetre_AreYouOkay::
 gText_KogaRaisonDetre_MySobSonIsInTheICU::
 	.string "I'm sorry. My… *sob* son is in the ICU\n"
 	.string "after the riots last night.\l"
-	.string "Psfgoodteam keeps getting\l"
+	.string "TeamRocket keeps getting\l"
 	.string "impressionable young folk involved in\l"
 	.string "their nonsense… *sob* I hope the city\l"
 	.string "can get rid of them!$"

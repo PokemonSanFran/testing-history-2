@@ -109,11 +109,11 @@ ExhibitionBattle_PostBattle_Dialogue_2:
 	goto ExhibitionBattle_PostBattle_Dialogue_1
 
 
-ExhibitionBattle_Psftransrival_Dialogue::
+ExhibitionBattle_Bianca_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	compare VAR_TEMP_F, 0
-	goto_if_gt ExhibitionBattle_Psftransrival_Dialogue_2
+	goto_if_gt ExhibitionBattle_Bianca_Dialogue_2
 	setvar VAR_TEMP_F, 1
 	msgbox gText_ExhibitionBattle_SickBattleOut
 	setvar VAR_0x8000, MUGSHOT_HILDA
@@ -133,12 +133,12 @@ ExhibitionBattle_Psftransrival_Dialogue::
 	msgbox gText_ExhibitionBattle_IThinkYoureGonna
 	return
 
-ExhibitionBattle_Psftransrival_Dialogue_2:
+ExhibitionBattle_Bianca_Dialogue_2:
 	msgbox gText_ExhibitionBattle_IWonderIfThat
 	return
 
 
-ExhibitionBattle_Psfbadadmin3_Dialogue::
+ExhibitionBattle_Sabrina_Dialogue::
 	lock
 	setvar VAR_0x8000, MUGSHOT_SABRINA
 	callnative DrawMugshot
@@ -203,7 +203,7 @@ gText_ExhibitionBattle_NervousStill::
 	.string "into the stadium when you're ready.$"
 
 gText_ExhibitionBattle_AndNow::
-	.string "And now, the Psfregion1 Champion….\n"
+	.string "And now, the SanFran Champion….\n"
 	.string "{PLAYER}!!!$"
 
 gText_ExhibitionBattle_CanTheGrand::
@@ -278,7 +278,7 @@ gText_ExhibitionBattle_IThinkYoureGonna::
 
 gText_ExhibitionBattle_IWonderIfThat::
 	.string "I wonder if that development in\n"
-	.string "Psfcity7 has been committed yet…$"
+	.string "Dogpatch has been committed yet…$"
 
 gText_ExhibitionBattle_IDidntSeeYour::
 	.string "I didn't see your match, but the\n"
@@ -289,7 +289,7 @@ gText_ExhibitionBattle_UhhThanks::
 	.string "…uhh, thanks?$"
 
 gText_ExhibitionBattle_YourWorkDismantling::
-	.string "Your work dismantling Psfgoodteam was\n"
+	.string "Your work dismantling TeamRocket was\n"
 	.string "excellent, by the way.$"
 
 gText_ExhibitionBattle_ImHappy::
@@ -301,7 +301,7 @@ gText_ExhibitionBattle_WithTheirEntireLeadership::
 	.string "narrative around them. We're planning a\l"
 	.string "campaign to show the people of the\l"
 	.string "region the true dangers of collective\l"
-	.string "organizations like Psfgoodteam and\l"
+	.string "organizations like TeamRocket and\l"
 	.string "the Elite Four.$"
 
 gText_ExhibitionBattle_WaitTheEliteFour::

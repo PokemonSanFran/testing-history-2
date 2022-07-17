@@ -1,0 +1,76 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+mapscripts Alcatraz_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Alcatraz_MapScripts_OnTransition)
+    }
+
+    MAP_SCRIPT_ON_FRAME_TABLE [ 
+        VAR_PSFCAVE7_STATE, 3: YouRealizeTheyreEvilRight_PlayerLandedDialogue
+    ]
+}
+
+script Alcatraz_MapScripts_OnTransition {
+    call(Alcatraz_ExhibitCheck_Script)
+
+        call(YouRealizeTheyreEvilRight_HideObject_Script)
+        call(YouRealizeTheyreEvilRight_ShowObject_Script) //PSF TODO clean these up
+}
+
+script Alcatraz_ExhibitCheck_Script {
+    call(ResetAlcatrazExhibit_Script)
+        if (var(VAR_PSFCAVE7_EXHIBIT_STATE) < 2){
+            setflag(FLAG_TEMP_2)
+        }
+}
+
+script AlcatrazAttendant_HealPlayer_Script {
+        lock
+        call(Common_EventScript_OutOfCenterPartyHeal)
+        msgbox(gText_Alcatraz_IveHealedYourParty)
+        call(ResetAlcatrazExhibit_Script)
+        closemessage
+        release
+        end
+}
+
+script ResetAlcatrazExhibit_Script {
+        clearflag(TRAINER_FLAGS_START + TRAINER_ALBERTO)
+        clearflag(TRAINER_FLAGS_START + TRAINER_ED)
+        clearflag(TRAINER_FLAGS_START + TRAINER_DECLAN)
+        clearflag(TRAINER_FLAGS_START + TRAINER_FREDRICK)
+        clearflag(TRAINER_FLAGS_START + TRAINER_ZANDER)
+        clearflag(TRAINER_FLAGS_START + TRAINER_LEAH)
+
+        if (var(VAR_PSFCAVE7_STATE) < 2){
+            setvar(VAR_PSFCAVE7_EXHIBIT_STATE,0)
+        }
+}
+
+
+script Alcatraz_ChooseFerryDestination_Script {
+    msgbox(gText_WhereWould,MSGBOX_NPC)
+        goto(Alcatraz_UnlockedDestinations_Script)
+}
+
+script Alcatraz_UnlockedDestinations_Script {
+    switch (var(VAR_FERRY_STATE)){
+        default:goto(Alcatraz_FerryState0_Script)
+    }
+}
+
+script Alcatraz_FerryState0_Script {
+    multichoicedefault(18,8,PSFCAVE7_FERRY_DESTINATIONS_VER1,0,FALSE)
+        call(SlateportCity_Harbor_EventScript_BoardFerry)
+
+        switch (var(VAR_RESULT)){
+            case 0: warp(MAP_PSFPLACE13,5,6)
+            case 1: warp(MAP_PSFCITY17,3,16)
+            case 2: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+            case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
+        }
+}
+
+text gText_Alcatraz_IveHealedYourParty {
+    format("I've healed your party! You can battle these Trainers as often as you like.")
+}

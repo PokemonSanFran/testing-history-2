@@ -5,7 +5,7 @@ mapscripts Psfroute62_MapScripts {
 }
 
 script Psfroute62_MapScripts_OnTransition {
-    setflag(FLAG_TEMP_2) //Hide Psftransrival 
+    setflag(FLAG_TEMP_2) //Hide Bianca 
 }
 
 script Psfroute62_InteractMatthew_Event_Script {

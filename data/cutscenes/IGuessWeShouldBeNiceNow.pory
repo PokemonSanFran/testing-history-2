@@ -37,7 +37,7 @@ script IGuessWeShouldBeNiceNow_ObjectSetup_Script {
             setobjectxyperm(5,7,9)
         }
 
-script IGuessWeShouldBeNiceNow_PsftransrivalInteract_Event_Script {
+script IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script {
     lock
     faceplayer
     switch (var(VAR_ROUTE114_STATE)){
@@ -427,7 +427,7 @@ text gText_IGuessWeShouldBeNiceNow_OhShitWellUh {
 }
 
 text gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow {
-    format("You already know. There's no service down here, and they said it was the same for Psfcave2. We're more or less on our own.")
+    format("You already know. There's no service down here, and they said it was the same for MuirWoods. We're more or less on our own.")
 }
 
 text gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive {
@@ -519,19 +519,19 @@ text gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast {
 }
 
 text gText_IGuessWeShouldBeNiceNow_SaysOnTheBack {
-    format("Says on the back cover, “Bring to the deepest part of Psfcave2.")
+    format("Says on the back cover, “Bring to the deepest part of MuirWoods.")
 }
 
 text gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting {
-    format("Whew, that was exhausting. How about we crash at my place nearby in Psfcity10 and then tackle Psfcave2 tomorrow?")
+    format("Whew, that was exhausting. How about we crash at my place nearby in Marin and then tackle MuirWoods tomorrow?")
 }
 
 text gText_IGuessWeShouldBeNiceNow_GreatSeeYou {
-    format("Great, see you in Psfcity10!")
+    format("Great, see you in Marin!")
 }
 
 text gText_IGuessWeShouldBeNiceNow_WellTheChallenges {
-    format("Well, the challenges need both of us… and I'm tired. So I'm going to crash - you're welcome to try Psfcave2 by yourself though.")
+    format("Well, the challenges need both of us… and I'm tired. So I'm going to crash - you're welcome to try MuirWoods by yourself though.")
 }
 
 text gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming {
@@ -559,7 +559,7 @@ text gText_IGuessWeShouldBeNiceNow_IDidntKnow {
 }
 
 text gText_IGuessWeShouldBeNiceNow_DaddyOwnsA {
-    format("Daddy owns a Psfcompany6 out here. I called him earlier and had him kick out the people that were staying there, so it should be good for us now.")
+    format("Daddy owns a Airbnb out here. I called him earlier and had him kick out the people that were staying there, so it should be good for us now.")
 
 }
 text gText_IGuessWeShouldBeNiceNow_WaitWhatIThought {
@@ -571,7 +571,7 @@ text gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace {
 }
 
 text gText_IGuessWeShouldBeNiceNow_ImGonnaCrash {
-    format("I'm gonna crash, but I'll leave the door open for you. Let's meet at the entrance of Psfcave2 tomorrow morning! DIRECTOR'S NOTE: Just go there now.") //PSF TODO fix this line
+    format("I'm gonna crash, but I'll leave the door open for you. Let's meet at the entrance of MuirWoods tomorrow morning! DIRECTOR'S NOTE: Just go there now.") //PSF TODO fix this line
 }
 
 text gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion {

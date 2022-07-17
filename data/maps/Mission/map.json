@@ -1,0 +1,62 @@
+{
+  "id": "MAP_PSFCITY6",
+  "name": "Mission",
+  "layout": "LAYOUT_PSFCITY6",
+  "music": "MUS_RG_SEVII_67",
+  "region_map_section": "MAPSEC_PSFCITY6",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_CITY",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "down",
+      "offset": 8,
+      "map": "MAP_PSFROUTE11"
+    },
+    {
+      "direction": "emerge",
+      "offset": 0,
+      "map": "MAP_PSFROUTE9"
+    },
+    {
+      "direction": "up",
+      "offset": 7,
+      "map": "MAP_PSFROUTE9"
+    },
+    {
+      "direction": "left",
+      "offset": 14,
+      "map": "MAP_PSFROUTE14"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 15,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_PSFCITY6_GYM",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 3,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_PSFCITY6_CONSULTING",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}
