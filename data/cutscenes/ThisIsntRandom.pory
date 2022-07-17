@@ -1,7 +1,7 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFNATIVERIVAL = 1
-const PSFGOODADMIN = 2
-const PSFELITE2 = 3
+const ARCHER = 1
+const ARIANA = 2
+const DRASNA = 3
 
 script ThisIsntRandom_CheckDoor_Script {
     if (var(VAR_STORYLINE_STATE) == 107){ 
@@ -21,17 +21,17 @@ script ThisIsntRandom_ObjectSetUp_Script {
 
         clearflag(FLAG_TEMP_1)
 
-        addobject(PSFNATIVERIVAL)
-        setobjectxy(PSFNATIVERIVAL,10,19)
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceUp)
+        addobject(ARCHER)
+        setobjectxy(ARCHER,10,19)
+        applymovement(ARCHER,Common_Movement_FaceUp)
 
-        addobject(PSFGOODADMIN)
-        setobjectxy(PSFGOODADMIN,11,19)
-        applymovement(PSFGOODADMIN,Common_Movement_FaceUp)
+        addobject(ARIANA)
+        setobjectxy(ARIANA,11,19)
+        applymovement(ARIANA,Common_Movement_FaceUp)
 
-        addobject(PSFELITE2)
-        setobjectxy(PSFELITE2,12,19)
-        applymovement(PSFELITE2,Common_Movement_FaceUp)
+        addobject(DRASNA)
+        setobjectxy(DRASNA,12,19)
+        applymovement(DRASNA,Common_Movement_FaceUp)
 
         fadescreen(FADE_FROM_BLACK)
 }
@@ -43,7 +43,7 @@ script ThisIsntRandom_UnlockDoor_Dialogue {
 
         playse(SE_PIN)
         waitse
-        applymovement(PSFNATIVERIVAL,Common_Movement_ExclamationMark)
+        applymovement(ARCHER,Common_Movement_ExclamationMark)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -52,21 +52,21 @@ script ThisIsntRandom_UnlockDoor_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFNATIVERIVAL,ThisIsRandom_WalkDownStairsA)
+        applymovement(ARCHER,ThisIsRandom_WalkDownStairsA)
         playse(SE_EXIT)
         waitse
 
-        applymovement(PSFELITE2,ThisIsRandom_WalkDownStairsC)
+        applymovement(DRASNA,ThisIsRandom_WalkDownStairsC)
         playse(SE_EXIT)
         waitse
-        applymovement(PSFGOODADMIN,ThisIsRandom_WalkDownStairsB)
+        applymovement(ARIANA,ThisIsRandom_WalkDownStairsB)
         playse(SE_EXIT)
         waitse
-        waitmovement(PSFGOODADMIN)
+        waitmovement(ARIANA)
 
-        removeobject(PSFGOODADMIN)
-        removeobject(PSFNATIVERIVAL)
-        removeobject(PSFELITE2)
+        removeobject(ARIANA)
+        removeobject(ARCHER)
+        removeobject(DRASNA)
 
         applymovement(PLAYER,Common_Movement_WalkUp)
         playse(SE_EXIT)
@@ -91,7 +91,7 @@ script ThisIsntRandom_UndergroundDoor_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE2,ThisIsntRandom_WalkToKeypad)
+        applymovement(DRASNA,ThisIsntRandom_WalkToKeypad)
         waitmovement(0)
 
         playse(SE_DING_DONG)
@@ -107,7 +107,7 @@ script ThisIsntRandom_UndergroundDoor_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE2,Common_Movement_FaceLeft)
+        applymovement(DRASNA,Common_Movement_FaceLeft)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
@@ -132,15 +132,15 @@ script ThisIsntRandom_UndergroundDoor_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE2,ThisIsntRandom_WalkDownHallwayA)
-        applymovement(PSFGOODADMIN,ThisIsntRandom_WalkDownHallwayB)
-        applymovement(PSFNATIVERIVAL,ThisIsntRandom_WalkDownHallwayC)
-        waitmovement(PSFNATIVERIVAL)
+        applymovement(DRASNA,ThisIsntRandom_WalkDownHallwayA)
+        applymovement(ARIANA,ThisIsntRandom_WalkDownHallwayB)
+        applymovement(ARCHER,ThisIsntRandom_WalkDownHallwayC)
+        waitmovement(ARCHER)
 
         setflag(FLAG_TEMP_1)
-        removeobject(PSFELITE2)
-        removeobject(PSFGOODADMIN)
-        removeobject(PSFNATIVERIVAL)
+        removeobject(DRASNA)
+        removeobject(ARIANA)
+        removeobject(ARCHER)
 
         addvar(VAR_DEWFORD_TOWN_STATE,1)
 
@@ -178,15 +178,15 @@ script ThisIsntRandom_WalkIntoLab_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFNATIVERIVAL,ThisIsntRandom_WalkIntoLabA)
-        applymovement(PSFELITE2,ThisIsntRandom_WalkIntoLabB)
-        applymovement(PSFGOODADMIN,ThisIsntRandom_WalkIntoLabC)
+        applymovement(ARCHER,ThisIsntRandom_WalkIntoLabA)
+        applymovement(DRASNA,ThisIsntRandom_WalkIntoLabB)
+        applymovement(ARIANA,ThisIsntRandom_WalkIntoLabC)
 
-        waitmovement(PSFGOODADMIN)
+        waitmovement(ARIANA)
 
-        removeobject(PSFGOODADMIN)
-        removeobject(PSFNATIVERIVAL)
-        removeobject(PSFELITE2)
+        removeobject(ARIANA)
+        removeobject(ARCHER)
+        removeobject(DRASNA)
 
         release
         end
@@ -414,7 +414,7 @@ text gText_ThisIsntRandom_IfPeopleKnew {
 }
 
 text gText_ThisIsntRandom_DidYouKnowAbout {
-    format("Hey PSFNATIVERIVAL, did you know about the secret laboratory under the ocean?")
+    format("Hey ARCHER, did you know about the secret laboratory under the ocean?")
 }
 
 text gText_ThisIsntRandom_DotDotDot {

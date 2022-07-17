@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE9",
+  "id": "MAP_FORTPOINT",
   "name": "FortPoint",
-  "layout": "LAYOUT_PSFPLACE9",
+  "layout": "LAYOUT_FORTPOINT",
   "music": "MUS_AQUA_MAGMA_HIDEOUT",
-  "region_map_section": "MAPSEC_PSFPLACE9",
+  "region_map_section": "MAPSEC_FORTPOINT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
@@ -39,7 +39,7 @@
       "x": 10,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE9_ROOF",
+      "dest_map": "MAP_FORTPOINT_ROOF",
       "dest_warp_id": 0
     }
   ],
@@ -49,7 +49,7 @@
       "x": 7,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_PSFPLACE9_STATE",
+      "var": "VAR_FORTPOINT_STATE",
       "var_value": "1",
       "script": "YouLookTired_Trigger_Script"
     },
@@ -58,7 +58,7 @@
       "x": 8,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_PSFPLACE9_STATE",
+      "var": "VAR_FORTPOINT_STATE",
       "var_value": "1",
       "script": "YouLookTired_Trigger_Script"
     },
@@ -67,7 +67,7 @@
       "x": 9,
       "y": 9,
       "elevation": 0,
-      "var": "VAR_PSFPLACE9_STATE",
+      "var": "VAR_FORTPOINT_STATE",
       "var_value": "1",
       "script": "YouLookTired_Trigger_Script"
     },
@@ -76,7 +76,7 @@
       "x": 10,
       "y": 10,
       "elevation": 0,
-      "var": "VAR_PSFPLACE9_STATE",
+      "var": "VAR_FORTPOINT_STATE",
       "var_value": "1",
       "script": "YouLookTired_Trigger_Script"
     }

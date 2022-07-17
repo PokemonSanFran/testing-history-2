@@ -119,7 +119,7 @@ OffYouGo_WelcomeParty_Dialogue::
 	end
 
 
-OffYouGo_InteractPsfbadadmin_Event_Script::
+OffYouGo_InteractOak_Event_Script::
 	lockall
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -162,7 +162,7 @@ gText_OffYouGo_WaitingForMe::
 	.string "Waiting for me…? Hold on, let me read…$"
 
 gText_OffYouGo_PleaseMeetMeOn::
-	.string "Psfbadadmin: {PLAYER} and Bianca,\n"
+	.string "Oak: {PLAYER} and Bianca,\n"
 	.string "please meet me on the northern side of\l"
 	.string "GldnGteBridge. (32 mins ago)$"
 

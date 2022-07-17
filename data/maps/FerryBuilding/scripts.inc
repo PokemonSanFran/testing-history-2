@@ -63,7 +63,7 @@ FerryBuilding_UnlockedDestinations_Script_4:
 
 
 FerryBuilding_FerryState0_Script::
-	multichoicedefault 18, 8, PSFPLACE11_FERRY_DESTINATIONS_VER1, 2, FALSE
+	multichoicedefault 18, 8, FERRYBUILDING_FERRY_DESTINATIONS_VER1, 2, FALSE
 	call SlateportCity_Harbor_EventScript_BoardFerry
 	switch VAR_RESULT
 	case 0, FerryBuilding_FerryState0_Script_2
@@ -72,7 +72,7 @@ FerryBuilding_FerryState0_Script::
 	return
 
 FerryBuilding_FerryState0_Script_2:
-	warp MAP_PSFCITY17, 3, 16
+	warp MAP_ALAMEDA, 3, 16
 	return
 
 FerryBuilding_FerryState0_Script_3:
@@ -85,7 +85,7 @@ FerryBuilding_FerryState0_Script_4:
 
 
 FerryBuilding_FerryState1_Script::
-	multichoicedefault 18, 8, PSFPLACE11_FERRY_DESTINATIONS_VER2, 2, FALSE
+	multichoicedefault 18, 8, FERRYBUILDING_FERRY_DESTINATIONS_VER2, 2, FALSE
 	call SlateportCity_Harbor_EventScript_BoardFerry
 	switch VAR_RESULT
 	case 0, FerryBuilding_FerryState1_Script_2
@@ -95,11 +95,11 @@ FerryBuilding_FerryState1_Script::
 	return
 
 FerryBuilding_FerryState1_Script_2:
-	warp MAP_PSFCITY17, 3, 16
+	warp MAP_ALAMEDA, 3, 16
 	return
 
 FerryBuilding_FerryState1_Script_3:
-	warp MAP_PSFCAVE5, 15, 36
+	warp MAP_TREASUREISLAND, 15, 36
 	return
 
 FerryBuilding_FerryState1_Script_4:

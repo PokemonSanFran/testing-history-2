@@ -46,7 +46,7 @@
 #define FLAG_SYS_NO_TRAINER_SEE     0x22 // Unused Flag //DEBUG
 #define FLAG_SYS_NO_BAG_USE         0x23 // Unused Flag //DEBUG
 #define FLAG_SYS_NO_CATCHING        0x24 // Unused Flag //DEBUG
-#define FLAG_PSFPLACE14_TOURNAMENT_HAPPENING 0x25 // Previously Unused Flag
+#define FLAG_CHASECENTER_TOURNAMENT_HAPPENING 0x25 // Previously Unused Flag
 #define FLAG_SAVED_DAVID            0x26 // Previously Unused Flag
 #define FLAG_LOCKEDOUT_PLAYED 0x27 //Previously Unused Flag
 #define FLAG_HIDE_MADISON    0x28 // Previously Unused Flag
@@ -78,10 +78,10 @@
 #define FLAG_UNUSED_0x42 0x42 //Unused Flag
 #define FLAG_UNUSED_0x43 0x43 //Unused Flag
 #define FLAG_UNUSED_0x44 0x44 //Unused Flag
-#define FLAG_HIDE_PSFROUTE61_PSFTRANSRIVAL 0x45 // Previously Unused Flag
-#define FLAG_HIDE_PSFCAVE2_PSFTRANSRIVAL    0x46 // Previously Unused Flag
-#define FLAG_HIDE_PSFCAVE2_PSFELITE3 0x47 //Previously Unused Flag
-#define FLAG_HIDE_PSFCAVE2_PSFBADADMIN 0x48 // Previously Unused Flag
+#define FLAG_HIDE_PSFROUTE61_BIANCA 0x45 // Previously Unused Flag
+#define FLAG_HIDE_MUIRWOODS_BIANCA    0x46 // Previously Unused Flag
+#define FLAG_HIDE_MUIRWOODS_SIEBOLD 0x47 //Previously Unused Flag
+#define FLAG_HIDE_MUIRWOODS_OAK 0x48 // Previously Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag
@@ -660,22 +660,22 @@
 #define FLAG_UNSUED_0x26A               0x26A//Unused Flag
 #define FLAG_UNUSED_0x26B 0x26B //Unused Flag
 #define FLAG_UNUSED_0x26C 0x26C // Unused Flag
-#define FLAG_HIDE_PSFCITY15_PSFBADBOSS 0x26D// Previously Unused Flag
+#define FLAG_HIDE_SOMA_ROSE 0x26D// Previously Unused Flag
 #define FLAG_UNUSED_0x26E 0x26E //Unused Flag
-#define FLAG_HIDE_TOWER2_PSFTRANSRIVAL 0x26F // Previously Unused Flag
-#define FLAG_HIDE_TOWER2_PSFBADADMIN 0x270 // Previously Unused Flag
+#define FLAG_HIDE_TOWER2_BIANCA 0x26F // Previously Unused Flag
+#define FLAG_HIDE_TOWER2_OAK 0x270 // Previously Unused Flag
 #define FLAG_HIDE_TOWER2_POLICE 0x271 // Previously Unused Flag
 #define FLAG_HIDE_TOWER2_MAYOR 0x272 // Previously Unused Flag
-#define FLAG_HIDE_TOWER2_PSFBADBOSS 0x273 // Previously Unused Flag
+#define FLAG_HIDE_TOWER2_ROSE 0x273 // Previously Unused Flag
 #define FLAG_HIDE_SURVIVAL_CHANCE_FERRY 0x274 // Previously Unused Flag
 #define FLAG_HIDE_SURVIVAL_CHANCE_RAID 0x275 // Previously Unused Flag
 #define FLAG_HIDE_WHYAREYOU_POLICE 0x276 // Previously Unused Flag
 #define FLAG_HIDE_WHYAREYOU_NATIVERIVAL 0x277 // Previously Unused Flag
 #define FLAG_HIDE_WHYAREYOU_PKMN 0x278 // Previously Unused Flag
 #define FLAG_HIDE_HERESHOWTHIS_PSFBADGUY 0x279 // Previously Unused Flag
-#define FLAG_HIDE_HERESHOWTHIS_PSFNATIVERIVAL 0x27A // Previously Unused Flag
-#define FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFNATIVERIVAL 0x27B // Previously Unused Flag
-#define FLAG_HIDE_WHYDIDNTRAT_STANDS_PSFBADADMIN 0x27C // Previously Unused Flag
+#define FLAG_HIDE_HERESHOWTHIS_ARCHER 0x27A // Previously Unused Flag
+#define FLAG_HIDE_WHYDIDNTRAT_STANDS_ARCHER 0x27B // Previously Unused Flag
+#define FLAG_HIDE_WHYDIDNTRAT_STANDS_OAK 0x27C // Previously Unused Flag
 #define FLAG_HIDE_YOUREALIZE_B2F_GROUP 0x27D // Previously Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag
 #define FLAG_UNUSED_0x27F  0x27F // Unused Flag
@@ -1503,7 +1503,7 @@
 
 #define FLAG_TIMELINE_FALSE                         (SYSTEM_FLAGS + 0x85) // Previously Unused Flag
 #define FLAG_TIMELINE_TRUE                          (SYSTEM_FLAGS + 0x86) // Previously Unused Flag
-#define FLAG_HIDE_TOWER2_PSFBADADMIN2               (SYSTEM_FLAGS + 0x87) // Unused Flag
+#define FLAG_HIDE_TOWER2_KOGA               (SYSTEM_FLAGS + 0x87) // Unused Flag
 #define FLAG_TIMELINE_TIMETRAVEL                    (SYSTEM_FLAGS + 0x88) // Unused Flag
 #define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
 #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag

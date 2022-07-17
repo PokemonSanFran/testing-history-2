@@ -1,7 +1,7 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ALEKSANDER = 1
 const RAGHNALL = 2
-const PSFBADADMIN2 = 3
+const KOGA = 3
 const CRYING_MAID = 4
 const CAMERA = OBJ_EVENT_ID_CAMERA
 
@@ -43,7 +43,7 @@ script KogaRaisonDetre_KidsMeetPlayer_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)
     msgbox(gText_KogaRaisonDetre_AllRightAllRight)
-    applymovement(PSFBADADMIN2, KogaRaisonDetre_WalkIntoFoyer)
+    applymovement(KOGA, KogaRaisonDetre_WalkIntoFoyer)
     callnative(ClearMugshot)
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)
@@ -101,7 +101,7 @@ script KogaRaisonDetre_CityDiscussion_Dialogue {
     msgbox(gText_KogaRaisonDetre_ICompletelyUnderstand)
     closemessage
 
-    applymovement(PSFBADADMIN2, KogaRaisonDetre_WalkTowardsLiving)
+    applymovement(KOGA, KogaRaisonDetre_WalkTowardsLiving)
     waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_N)
@@ -109,11 +109,11 @@ script KogaRaisonDetre_CityDiscussion_Dialogue {
     msgbox(gText_KogaRaisonDetre_ItsMuchEasier)
     closemessage
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN2, KogaRaisonDetre_WalkToDining)
+    applymovement(KOGA, KogaRaisonDetre_WalkToDining)
     waitmovement(0)
-    setobjectxy(PSFBADADMIN2, 3, 4)
-    setobjectxyperm(PSFBADADMIN2, 3, 4)
-    turnobject(PSFBADADMIN2, DIR_EAST)
+    setobjectxy(KOGA, 3, 4)
+    setobjectxyperm(KOGA, 3, 4)
+    turnobject(KOGA, DIR_EAST)
     release
     end
 }
@@ -208,11 +208,11 @@ script KogaRaisonDetre_Wine_Dialogue {
     msgbox(gText_KogaRaisonDetre_AhExcellent)
     closemessage
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN2, WalkToDiningRoom)
+    applymovement(KOGA, WalkToDiningRoom)
     waitmovement(0)
     release
-    setobjectxy(PSFBADADMIN2, 37, 5)
-    setobjectxyperm(PSFBADADMIN2, 37, 5)
+    setobjectxy(KOGA, 37, 5)
+    setobjectxyperm(KOGA, 37, 5)
     addvar(VAR_ROUTE105_STATE, 1)
     end
 }
@@ -237,7 +237,7 @@ script KogaRaisonDetre_StartDinner_Script {
     addobject(RAGHNALL)
     setobjectxy(RAGHNALL, 42, 7)
     setobjectxy(ALEKSANDER, 40, 7)
-    setobjectxy(PSFBADADMIN2, 37, 5)
+    setobjectxy(KOGA, 37, 5)
     turnobject(RAGHNALL, DIR_NORTH)
     turnobject(ALEKSANDER, DIR_NORTH)
     goto(KogaRaisonDetre_DinnerConversation_Dialogue)
@@ -277,12 +277,12 @@ script KogaRaisonDetre_RunToWork_Dialogue {
     msgbox(gText_KogaRaisonDetre_SorryThatsMyPhone)
     callnative(ClearMugshot)
     closemessage
-    applymovement(PSFBADADMIN2, KogaRaisonDetre_StepAwayFromTable)
+    applymovement(KOGA, KogaRaisonDetre_StepAwayFromTable)
     waitmovement(0)
-    applymovement(PSFBADADMIN2, Common_Movement_FaceLeft)
+    applymovement(KOGA, Common_Movement_FaceLeft)
     waitmovement(0)
     delay(32)
-    applymovement(PSFBADADMIN2, Common_Movement_FaceRight)
+    applymovement(KOGA, Common_Movement_FaceRight)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)
@@ -290,7 +290,7 @@ script KogaRaisonDetre_RunToWork_Dialogue {
     callnative(ClearMugshot)
     closemessage
 
-    applymovement(PSFBADADMIN2, KogaRaisonDetre_KissKids)
+    applymovement(KOGA, KogaRaisonDetre_KissKids)
     waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -357,7 +357,7 @@ script KogaRaisonDetre_NewsStory_Script {
     applymovement(CRYING_MAID, KogaRaisonDetre_LeaveDiningRoomCrying)
     waitmovement(0)
     removeobject(CRYING_MAID)
-    removeobject(PSFBADADMIN2)
+    removeobject(KOGA)
     addvar(VAR_STORYLINE_STATE,1)
     addvar(VAR_ROUTE105_STATE, 1)
     addvar(VAR_ROUTE106_STATE, 1) 
@@ -383,7 +383,7 @@ text gText_KogaRaisonDetre_HasBeenSoGenerous {
 }
 
 text gText_KogaRaisonDetre_HasBeenExpectingYou {
-    format("{PLAYER}, PSFBADADMIN2 has been expecting you.")
+    format("{PLAYER}, KOGA has been expecting you.")
 }
 text gText_KogaRaisonDetre_YoureHereInTheFlesh {
     format("Aaaahhhh! {PLAYER}! You're here! In the flesh!")

@@ -136,7 +136,7 @@ LetsFinishThis_WalkAway:
 	step_end
 
 LetsFinishThis_GoToFlashback_Script_Text_0:
-	.string "this is a flashback to Psfbadadmin's\n"
+	.string "this is a flashback to Oak's\n"
 	.string "kids explaining the warp panels.$"
 
 gText_LetsFinishThis_IDontThinkIm::

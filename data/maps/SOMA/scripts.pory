@@ -1,4 +1,4 @@
-const PSFBADBOSS = 1
+const ROSE = 1
 
 mapscripts SOMA_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -6,12 +6,12 @@ mapscripts SOMA_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_PSFCITY15_STATE, 1: WowYoureStrong_WalkToPlayer_Script 
+        VAR_SOMA_STATE, 1: WowYoureStrong_WalkToPlayer_Script 
     ]
 }
 
 script SOMA_MapScripts_OnTransition {
-        if(!flag(FLAG_BADGE03_GET) || (var(VAR_PSFCITY15_STATE) > 1)) {
+        if(!flag(FLAG_BADGE03_GET) || (var(VAR_SOMA_STATE) > 1)) {
             setflag(FLAG_TEMP_1) 
         }
 

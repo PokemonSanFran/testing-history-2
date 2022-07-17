@@ -21,12 +21,12 @@
     {
       "direction": "left",
       "offset": 0,
-      "map": "MAP_PSFPLACE13"
+      "map": "MAP_FISHERMANSWHARF"
     },
     {
       "direction": "left",
       "offset": 17,
-      "map": "MAP_PSFCITY13"
+      "map": "MAP_CHINATOWN"
     }
   ],
   "object_events": [

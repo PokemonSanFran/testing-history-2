@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
-const PSFBADADMIN = 2 //FLAG_TEMP_2
+const BIANCA = 1 //FLAG_TEMP_1
+const OAK = 2 //FLAG_TEMP_2
 
 script AaandWereBack_ObjectSetUp_Script {
     setflag(FLAG_TEMP_3)
@@ -36,7 +36,7 @@ script AaandWereBack_WarpToCompound_Script {
         msgbox(gText_AaandWereBack_Question,MSGBOX_YESNO)
         closemessage
         if (var(VAR_RESULT) == YES){
-            warpsilent(MAP_PSFCITY8,255,3,10)
+            warpsilent(MAP_SOUTHBAY,255,3,10)
         }
 }
 
@@ -121,11 +121,11 @@ text gText_AaandWereBack_ImSureIllFigure {
 }
 
 text gText_AaandWereBack_OpeningMessage {
-    format("You have recieved a message from PSFSUBWAY.")
+    format("You have recieved a message from BARTACRONYM.")
 }
 
 text gText_AaandWereBack_FerryMessage {
-    format("A message from the PSFSUBWAY System. 
+    format("A message from the BARTACRONYM System. 
 
             The following service routes are now operational:\p
 

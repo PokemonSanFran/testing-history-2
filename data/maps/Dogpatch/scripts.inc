@@ -8,7 +8,7 @@ Dogpatch_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Dogpatch_MapScripts_OnTransition::
-	switch VAR_PSFCITY7_STATE
+	switch VAR_DOGPATCH_STATE
 	case 0, Dogpatch_MapScripts_OnTransition_2
 	case 1, Dogpatch_MapScripts_OnTransition_3
 	return

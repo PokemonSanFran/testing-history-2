@@ -1,7 +1,7 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFNATIVERIVAL = 1
-const PSFGOODADMIN = 2
-const PSFELITE2 = 3
+const ARCHER = 1
+const ARIANA = 2
+const DRASNA = 3
 const PKMNC = 6
 
 script WaitEvenThen_TurnOnMachine_Script {
@@ -19,21 +19,21 @@ script WaitEvenThen_TurnOnMachine_Script {
 script WaitEvenThen_BossSetUp_Script {
     clearflag(FLAG_TEMP_1)
 
-        addobject(PSFGOODADMIN)
-        addobject(PSFELITE2)
-        addobject(PSFNATIVERIVAL)
+        addobject(ARIANA)
+        addobject(DRASNA)
+        addobject(ARCHER)
 
-        setobjectmovementtype(PSFELITE2,MOVEMENT_TYPE_FACE_UP)
-        setobjectxyperm(PSFELITE2,39,4)
-        setobjectxy(PSFELITE2,39,4)
+        setobjectmovementtype(DRASNA,MOVEMENT_TYPE_FACE_UP)
+        setobjectxyperm(DRASNA,39,4)
+        setobjectxy(DRASNA,39,4)
 
-        setobjectmovementtype(PSFNATIVERIVAL,MOVEMENT_TYPE_FACE_UP)
-        setobjectxy(PSFNATIVERIVAL,34,6)
-        setobjectxyperm(PSFNATIVERIVAL,34,6)
+        setobjectmovementtype(ARCHER,MOVEMENT_TYPE_FACE_UP)
+        setobjectxy(ARCHER,34,6)
+        setobjectxyperm(ARCHER,34,6)
 
-        setobjectmovementtype(PSFGOODADMIN,MOVEMENT_TYPE_FACE_UP)
-        setobjectxy(PSFGOODADMIN,33,7)
-        setobjectxyperm(PSFGOODADMIN,33,7)
+        setobjectmovementtype(ARIANA,MOVEMENT_TYPE_FACE_UP)
+        setobjectxy(ARIANA,33,7)
+        setobjectxyperm(ARIANA,33,7)
 
         setobjectxy(PKMNC,33,5)
         setobjectxyperm(PKMNC,33,5)
@@ -48,17 +48,17 @@ script WaitEvenThen_ObjectSetUp_Script {
 
         clearflag(FLAG_TEMP_1)
 
-        addobject(PSFNATIVERIVAL)
-        setobjectxy(PSFNATIVERIVAL,25,5)
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceRight)
+        addobject(ARCHER)
+        setobjectxy(ARCHER,25,5)
+        applymovement(ARCHER,Common_Movement_FaceRight)
 
-        addobject(PSFGOODADMIN)
-        setobjectxy(PSFGOODADMIN,24,4)
-        applymovement(PSFGOODADMIN,Common_Movement_FaceRight)
+        addobject(ARIANA)
+        setobjectxy(ARIANA,24,4)
+        applymovement(ARIANA,Common_Movement_FaceRight)
 
-        addobject(PSFELITE2)
-        setobjectxy(PSFELITE2,24,5)
-        applymovement(PSFELITE2,Common_Movement_FaceRight)
+        addobject(DRASNA)
+        setobjectxy(DRASNA,24,5)
+        applymovement(DRASNA,Common_Movement_FaceRight)
 
         fadescreen(FADE_FROM_BLACK)
 }
@@ -68,10 +68,10 @@ script WaitEvenThen_PrepareBossEncounter_Dialogue {
         call(WaitEvenThen_ObjectSetUp_Script)
 
         applymovement(PLAYER,WaitEvenThen_WalkToSleepingA)
-        applymovement(PSFNATIVERIVAL,WaitEvenThen_WalkToSleepingB)
-        applymovement(PSFGOODADMIN,WaitEvenThen_WalkToSleepingC)
-        applymovement(PSFELITE2,WaitEvenThen_WalkToSleepingD)
-        waitmovement(PSFELITE2)
+        applymovement(ARCHER,WaitEvenThen_WalkToSleepingB)
+        applymovement(ARIANA,WaitEvenThen_WalkToSleepingC)
+        applymovement(DRASNA,WaitEvenThen_WalkToSleepingD)
+        waitmovement(DRASNA)
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
@@ -83,8 +83,8 @@ script WaitEvenThen_PrepareBossEncounter_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE2,WaitEvenThen_WalkToComputer)
-        waitmovement(PSFELITE2)
+        applymovement(DRASNA,WaitEvenThen_WalkToComputer)
+        waitmovement(DRASNA)
 
         playse(SE_PC_LOGIN)
         waitse
@@ -101,13 +101,13 @@ script WaitEvenThen_PrepareBossEncounter_Dialogue {
 
         msgbox(gText_IGuessWeShouldBeNiceNow_Roar,MSGBOX_AUTOCLOSE)
 
-        setobjectxy(PSFNATIVERIVAL,34,6)
-        setobjectxyperm(PSFNATIVERIVAL,34,6)
-        setobjectxy(PSFGOODADMIN,33,7)
-        setobjectxyperm(PSFGOODADMIN,33,7)
-        setobjectxyperm(PSFELITE2,39,4)
-        setobjectxy(PSFELITE2,39,4)
-        setobjectnewmovementtype(PSFELITE2,MOVEMENT_TYPE_FACE_UP)
+        setobjectxy(ARCHER,34,6)
+        setobjectxyperm(ARCHER,34,6)
+        setobjectxy(ARIANA,33,7)
+        setobjectxyperm(ARIANA,33,7)
+        setobjectxyperm(DRASNA,39,4)
+        setobjectxy(DRASNA,39,4)
+        setobjectnewmovementtype(DRASNA,MOVEMENT_TYPE_FACE_UP)
         call(Common_EventScript_SaveGame)
         goto(WaitEvenThen_BossEncounter_Script)
 }
@@ -162,8 +162,8 @@ script WaitEvenThen_PostBossDialogue {
         addvar(VAR_NATIVERIVALBETA_STATE,1)
 
         applymovement(PLAYER,Common_Movement_FaceDown)
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceDown)
-        applymovement(PSFELITE2,Common_Movement_FaceDown)
+        applymovement(ARCHER,Common_Movement_FaceDown)
+        applymovement(DRASNA,Common_Movement_FaceDown)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -179,11 +179,11 @@ script WaitEvenThen_PostBossDialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE2,WaitEvenThen_LeaveLabA)
-        applymovement(PSFGOODADMIN,WaitEvenThen_LeaveLabB)
-        waitmovement(PSFGOODADMIN)
+        applymovement(DRASNA,WaitEvenThen_LeaveLabA)
+        applymovement(ARIANA,WaitEvenThen_LeaveLabB)
+        waitmovement(ARIANA)
 
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceLeft)
+        applymovement(ARCHER,Common_Movement_FaceLeft)
         applymovement(PLAYER,Common_Movement_FaceRight)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -193,7 +193,7 @@ script WaitEvenThen_PostBossDialogue {
         closemessage
 
         if (var(VAR_RESULT) == YES){
-            warp(MAP_PSFCITY17,255,34,13)
+            warp(MAP_ALAMEDA,255,34,13)
                 end
         }else {
             setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -201,12 +201,12 @@ script WaitEvenThen_PostBossDialogue {
                 msgbox(gText_WaitEvenThen_MeetUsIn)
                 closemessage
                 callnative(ClearMugshot)
-                applymovement(PSFNATIVERIVAL,WaitEvenThen_WalkAwayFromPlayer)
-                waitmovement(PSFNATIVERIVAL)
+                applymovement(ARCHER,WaitEvenThen_WalkAwayFromPlayer)
+                waitmovement(ARCHER)
 
-                removeobject(PSFNATIVERIVAL)
-                removeobject(PSFELITE2)
-                removeobject(PSFGOODADMIN)
+                removeobject(ARCHER)
+                removeobject(DRASNA)
+                removeobject(ARIANA)
         }
     release
         end

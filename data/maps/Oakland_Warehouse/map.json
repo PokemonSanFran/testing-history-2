@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY9_WAREHOUSE",
+  "id": "MAP_OAKLAND_WAREHOUSE",
   "name": "Oakland_Warehouse",
-  "layout": "LAYOUT_PSFCITY9_WAREHOUSE",
+  "layout": "LAYOUT_OAKLAND_WAREHOUSE",
   "music": "MUS_PETALBURG_WOODS",
-  "region_map_section": "MAPSEC_PSFCITY9",
+  "region_map_section": "MAPSEC_OAKLAND",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -33,28 +33,28 @@
       "x": 9,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY9",
+      "dest_map": "MAP_OAKLAND",
       "dest_warp_id": 0
     },
     {
       "x": 9,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY9",
+      "dest_map": "MAP_OAKLAND",
       "dest_warp_id": 0
     },
     {
       "x": 9,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY9",
+      "dest_map": "MAP_OAKLAND",
       "dest_warp_id": 0
     },
     {
       "x": 9,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY9",
+      "dest_map": "MAP_OAKLAND",
       "dest_warp_id": 1
     }
   ],

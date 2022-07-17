@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE13",
+  "id": "MAP_FISHERMANSWHARF",
   "name": "FishermansWharf",
-  "layout": "LAYOUT_PSFPLACE13",
+  "layout": "LAYOUT_FISHERMANSWHARF",
   "music": "MUS_SLATEPORT",
-  "region_map_section": "MAPSEC_PSFPLACE13",
+  "region_map_section": "MAPSEC_FISHERMANSWHARF",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_TOWN",
@@ -152,7 +152,7 @@
       "x": 36,
       "y": 4,
       "elevation": 0,
-      "var": "VAR_PSFGOODTEAM_PSFPLACE13_STATE",
+      "var": "VAR_TEAMROCKET_FISHERMANSWHARF_STATE",
       "var_value": "0",
       "script": "GroupOfAssholesAppears_CheckPartySize"
     },
@@ -161,7 +161,7 @@
       "x": 26,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_PSFGOODTEAM_PSFPLACE13_STATE",
+      "var": "VAR_TEAMROCKET_FISHERMANSWHARF_STATE",
       "var_value": "0",
       "script": "GroupOfAssholesAppears_CheckPartySize"
     },
@@ -170,7 +170,7 @@
       "x": 31,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_PSFGOODTEAM_PSFPLACE13_STATE",
+      "var": "VAR_TEAMROCKET_FISHERMANSWHARF_STATE",
       "var_value": "1",
       "script": "GroupOfAssholes_PostSaveTrigger_Script"
     }

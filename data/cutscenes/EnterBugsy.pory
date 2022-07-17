@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER2 = 1
+const BUGSY = 1
 
 script EnterBugsy_BugsyIntro_Dialogue {
         addvar(VAR_GYM_2_STATE,1)
@@ -29,13 +29,13 @@ script EnterBugsy_BugsyIntro_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_EnterBugsy_HikedUpAMountain)
         callnative(ClearMugshot)
-        applymovement(PSFLEADER2,Common_Movement_FaceAwayPlayer)
+        applymovement(BUGSY,Common_Movement_FaceAwayPlayer)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_BUGSY)
         callnative(DrawMugshot)
         msgbox(gText_EnterBugsy_ThisCheapImitation)
         callnative(ClearMugshot)
-        applymovement(PSFLEADER2,Common_Movement_FacePlayer)
+        applymovement(BUGSY,Common_Movement_FacePlayer)
         waitmovement(0)
         call(Common_EventScript_SaveGame)
         closemessage

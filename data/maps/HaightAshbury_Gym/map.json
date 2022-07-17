@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY18_GYM",
+  "id": "MAP_HAIGHTASHBURY_GYM",
   "name": "HaightAshbury_Gym",
-  "layout": "LAYOUT_PSFCITY18_GYM",
+  "layout": "LAYOUT_HAIGHTASHBURY_GYM",
   "music": "MUS_GYM",
-  "region_map_section": "MAPSEC_PSFCITY18",
+  "region_map_section": "MAPSEC_HAIGHTASHBURY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -33,14 +33,14 @@
       "x": 9,
       "y": 15,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY18",
+      "dest_map": "MAP_HAIGHTASHBURY",
       "dest_warp_id": 1
     },
     {
       "x": 8,
       "y": 15,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY18",
+      "dest_map": "MAP_HAIGHTASHBURY",
       "dest_warp_id": 1
     }
   ],

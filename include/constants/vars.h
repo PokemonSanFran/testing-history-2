@@ -55,7 +55,7 @@
 #define VAR_SECRET_BASE_MAP                  0x4026
 #define VAR_NATIVERIVALALPHA_STATE                0x4027 //Previously VAR_CYCLING_ROAD_RECORD_COLLISIONS, not being used for PSF
 #define VAR_PSFROUTE9_STATE                        0x4028 //Previously VAR_CYCLING_ROAD_RECORD_TIME_L
-#define VAR_PSFPLACE13_STATE       0x4029 //Previously VAR_CYCLING_ROAD_RECORD_TIME_H, not being used for PSF
+#define VAR_FISHERMANSWHARF_STATE       0x4029 //Previously VAR_CYCLING_ROAD_RECORD_TIME_H, not being used for PSF
 #define VAR_FRIENDSHIP_STEP_COUNTER          0x402A
 #define VAR_POISON_STEP_COUNTER              0x402B
 #define VAR_RESET_RTC_ENABLE                 0x402C
@@ -102,7 +102,7 @@
 #define VAR_LAVARIDGE_TOWN_STATE             0x4053
 #define VAR_CURRENT_SECRET_BASE              0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
 #define VAR_NATIVETRANSALPHA_STATE           0x4055 // Previously Unsued (VAR_VERDANTURF_TOWN_STATE) 
-#define VAR_PSFPLACE7_STATE                  0x4056 // Previously Unused (VAR_PACIFIDLOG_TOWN_STATE )
+#define VAR_LOMBARDSTREET_STATE                  0x4056 // Previously Unused (VAR_PACIFIDLOG_TOWN_STATE )
 
 #define VAR_PETALBURG_CITY_STATE             0x4057
 #define VAR_SLATEPORT_CITY_STATE             0x4058
@@ -151,7 +151,7 @@
 #define VAR_UNUSED_0x4083                    0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                  0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman 
-#define VAR_PSFGOODTEAM_PSFPLACE13_STATE     0x4086 //Previously VAR_PSFGOODTEAM_PSFPLACE13_STATE
+#define VAR_TEAMROCKET_FISHERMANSWHARF_STATE     0x4086 //Previously VAR_TEAMROCKET_FISHERMANSWHARF_STATE
 #define VAR_CABLE_CLUB_STATE                 0x4087
 #define VAR_CONTEST_TYPE                     0x4088
 #define VAR_SECRET_BASE_INITIALIZED          0x4089
@@ -162,7 +162,7 @@
 #define VAR_BOARD_BRINEY_BOAT_STATE          0x408E
 #define VAR_DEVON_CORP_3F_STATE              0x408F
 #define VAR_BRINEY_HOUSE_STATE               0x4090
-#define VAR_PSFCITY11_STATE                    0x4091 // Previously Unused Var
+#define VAR_BERKELEY_STATE                    0x4091 // Previously Unused Var
 #define VAR_LITTLEROOT_INTRO_STATE           0x4092
 #define VAR_MAUVILLE_GYM_STATE               0x4093
 #define VAR_LILYCOVE_MUSEUM_2F_STATE         0x4094
@@ -172,9 +172,9 @@
 #define VAR_PETALBURG_WOODS_STATE            0x4098
 #define VAR_LILYCOVE_CONTEST_LOBBY_STATE     0x4099
 #define VAR_RUSTURF_TUNNEL_STATE             0x409A
-#define VAR_PSFCAVE7_STATE                   0x409B // Previously Unused Var
+#define VAR_ALCATRAZ_STATE                   0x409B // Previously Unused Var
 #define VAR_ELITE_4_STATE                    0x409C
-#define VAR_PSFCAVE7_EXHIBIT_STATE                    0x409D // Previously Unused Var
+#define VAR_ALCATRAZ_EXHIBIT_STATE                    0x409D // Previously Unused Var
 #define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE    0x409E
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE      0x409F
 #define VAR_SLATEPORT_HARBOR_STATE           0x40A0
@@ -201,7 +201,7 @@
 #define VAR_TRICK_HOUSE_ENTER_FROM_CORRIDOR  0x40B5
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE         0x40B7
-#define VAR_PSFPLACE9_STATE                    0x40B8 // Previously Unused Var
+#define VAR_FORTPOINT_STATE                    0x40B8 // Previously Unused Var
 #define VAR_MT_PYRE_STATE                    0x40B9
 #define VAR_NEW_MAUVILLE_STATE               0x40BA
 #define VAR_GYM_6_STATE                   0x40BB // Previously Unused Var
@@ -266,11 +266,11 @@
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER 0x40F6
 #define VAR_GYM_1_STATE                    0x40F7 // Previously Unused Var
 #define VAR_GYM_3_STATE                    0x40F8 // Previously Unused Var
-#define VAR_PSFCITY15_STATE                    0x40F9 // Previously Unused Var
+#define VAR_SOMA_STATE                    0x40F9 // Previously Unused Var
 #define VAR_GYM_2_STATE                    0x40FA // Previously Unused Var
-#define VAR_PSFCITY7_STATE                  0x40FB // Previously Unused Var
+#define VAR_DOGPATCH_STATE                  0x40FB // Previously Unused Var
 #define VAR_STORYLINE_STATE                 0x40FC // Previously Unused Var
-#define VAR_PSFBADGUY1TOWER_2F_STATE        0x40FD // Previously Unused Var
+#define VAR_YCOMBINATORTOWER_2F_STATE        0x40FD // Previously Unused Var
 #define VAR_UNUSED_0x40FE                    0x40FE // Unused Var
 #define VAR_UNUSED_0x40FF                    0x40FF // Unused Var
 

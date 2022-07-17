@@ -34,7 +34,7 @@ script Alameda_MapScripts_OnTransition {
 
 script Alameda_LayoutSwap_Script {
     if (var(VAR_NATIVERIVALBETA_STATE) > 7){
-        setmaplayoutindex(LAYOUT_PSFCITY17_POST_EARTHQUAKE)
+        setmaplayoutindex(LAYOUT_ALAMEDA_POST_EARTHQUAKE)
     }
 }
 
@@ -64,10 +64,10 @@ script Alameda_UnlockedDestinations_Script {
 }
 
 script Alameda_FerryState0_Script {
-    multichoicedefault(18,8,PSFCITY17_FERRY_DESTINATIONS_VER1,2,FALSE)
+    multichoicedefault(18,8,ALAMEDA_FERRY_DESTINATIONS_VER1,2,FALSE)
 
         switch (var(VAR_RESULT)){
-            case 0: warp(MAP_PSFPLACE11,8,11)
+            case 0: warp(MAP_FERRYBUILDING,8,11)
             case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
             case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         }
@@ -75,11 +75,11 @@ script Alameda_FerryState0_Script {
 }
 
 script Alameda_FerryState1_Script{
-    multichoicedefault(18,8,PSFCITY17_FERRY_DESTINATIONS_VER2,2,FALSE)
+    multichoicedefault(18,8,ALAMEDA_FERRY_DESTINATIONS_VER2,2,FALSE)
 
         switch (var(VAR_RESULT)){
-            case 0: warp(MAP_PSFPLACE11,8,11)
-            case 1: warp(MAP_PSFCAVE7,15,22)
+            case 0: warp(MAP_FERRYBUILDING,8,11)
+            case 1: warp(MAP_ALCATRAZ,15,22)
             case 2: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
             case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         }
@@ -87,12 +87,12 @@ script Alameda_FerryState1_Script{
 }
 
 script Alameda_FerryState2_Script{
-    multichoicedefault(18,8,PSFCITY17_FERRY_DESTINATIONS_VER3,2,FALSE)
+    multichoicedefault(18,8,ALAMEDA_FERRY_DESTINATIONS_VER3,2,FALSE)
 
         switch (var(VAR_RESULT)){
-            case 0: warp(MAP_PSFPLACE11,8,11)
-            case 1: warp(MAP_PSFCAVE7,15,22)
-            case 2: warp(MAP_PSFCAVE5,15,36)
+            case 0: warp(MAP_FERRYBUILDING,8,11)
+            case 1: warp(MAP_ALCATRAZ,15,22)
+            case 2: warp(MAP_TREASUREISLAND,15,36)
             case 3: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
             case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         }

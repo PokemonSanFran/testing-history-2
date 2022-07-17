@@ -404,7 +404,7 @@ gText_WeCanStopYouActually_I::
 	.string "I -$"
 
 gText_WeCanStopYouActually_Security::
-	.string "PSFTRANSRIVAL! PSFBADADMIN3!\n"
+	.string "BIANCA! SABRINA!\n"
 	.string "SECURITY!$"
 
 gText_WeCanStopYouActually_WeAlreadyBeatThem::

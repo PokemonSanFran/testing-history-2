@@ -16,7 +16,7 @@
     {
       "direction": "up",
       "offset": -6,
-      "map": "MAP_PSFCITY4"
+      "map": "MAP_PACIFICA"
     }
   ],
   "object_events": [
@@ -27,7 +27,7 @@
       "x": 2,
       "y": 18,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE9",
+      "dest_map": "MAP_GLDNGTEWILDS",
       "dest_warp_id": 0
     }
   ],

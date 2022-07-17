@@ -9,7 +9,7 @@ script ExhibitionBattle_TimeSkip_Script {
         special(HealPlayerParty)
             fadescreen(FADE_TO_BLACK)
             msgbox(gText_ExhibitionBattle_TimeSkip,MSGBOX_AUTOCLOSE)
-            warpsilent(MAP_PSFPLACE14_SKYBOX,10,3)
+            warpsilent(MAP_CHASECENTER_SKYBOX,10,3)
     }
 }
 
@@ -31,7 +31,7 @@ script ExhibitionBattle_PrepPlayer_Script {
     callnative(ClearMugshot)
         fadescreen(FADE_TO_BLACK)
         msgbox(gText_ExhibitionBattle_AndNow,MSGBOX_AUTOCLOSE)
-        warpsilent(MAP_PSFPLACE14_ARENA,1)
+        warpsilent(MAP_CHASECENTER_ARENA,1)
 }
 
 script ExhibitionBattle_MoveFromDoor_Script {
@@ -41,7 +41,7 @@ script ExhibitionBattle_MoveFromDoor_Script {
         closemessage
         if (var(VAR_RESULT) == YES){
             call(GroupStages_MoveObjects_Script)
-                warpsilent(MAP_PSFPLACE14_ARENA,1)
+                warpsilent(MAP_CHASECENTER_ARENA,1)
         }
     release
         end
@@ -73,7 +73,7 @@ script ExhibitionBattle_BattleDiantha_Script {
         special(HealPlayerParty)
         msgbox(gText_ExhibitionBattle_WhatAnAmazing,MSGBOX_AUTOCLOSE)
         addvar(VAR_STORYLINE_STATE,1)
-        warpsilent(MAP_PSFPLACE14_LOCKERS,255,9,5)
+        warpsilent(MAP_CHASECENTER_LOCKERS,255,9,5)
 
         //PSF TODO Add crowd booing
         //The crowd goes wild with booes and jeering. The screen cuts to black the player is warped back to the locker room. Rose, Koga, and Bianca are in the locker room. Rose approaches the player as they walk in.

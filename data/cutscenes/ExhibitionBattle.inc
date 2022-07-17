@@ -12,7 +12,7 @@ ExhibitionBattle_TimeSkip_Script_1:
 	special HealPlayerParty
 	fadescreen FADE_TO_BLACK
 	msgbox gText_ExhibitionBattle_TimeSkip, MSGBOX_AUTOCLOSE
-	warpsilent MAP_PSFPLACE14_SKYBOX, 10, 3
+	warpsilent MAP_CHASECENTER_SKYBOX, 10, 3
 	return
 
 
@@ -29,7 +29,7 @@ ExhibitionBattle_PrepPlayer_Script::
 	callnative ClearMugshot
 	fadescreen FADE_TO_BLACK
 	msgbox gText_ExhibitionBattle_AndNow, MSGBOX_AUTOCLOSE
-	warpsilent MAP_PSFPLACE14_ARENA, 1
+	warpsilent MAP_CHASECENTER_ARENA, 1
 	return
 
 ExhibitionBattle_PrepPlayer_Script_2:
@@ -51,7 +51,7 @@ ExhibitionBattle_MoveFromDoor_Script_1:
 
 ExhibitionBattle_MoveFromDoor_Script_2:
 	call GroupStages_MoveObjects_Script
-	warpsilent MAP_PSFPLACE14_ARENA, 1
+	warpsilent MAP_CHASECENTER_ARENA, 1
 	goto ExhibitionBattle_MoveFromDoor_Script_1
 
 
@@ -79,7 +79,7 @@ ExhibitionBattle_BattleDiantha_Script::
 	special HealPlayerParty
 	msgbox gText_ExhibitionBattle_WhatAnAmazing, MSGBOX_AUTOCLOSE
 	addvar VAR_STORYLINE_STATE, 1
-	warpsilent MAP_PSFPLACE14_LOCKERS, 255, 9, 5
+	warpsilent MAP_CHASECENTER_LOCKERS, 255, 9, 5
 	return
 
 

@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN = 1
+const OAK = 1
 
 script BeingChampionIsHard_ObjectCleanUp_Script {
     setflag(FLAG_TEMP_1)
@@ -17,7 +17,7 @@ script BeingChampionIsHard_PostTimeSkip {
         waitse
         fadescreen(FADE_FROM_BLACK)
 
-        applymovement(PLAYER,BeingChampionIsHard_WalkToPsfbadadmin)
+        applymovement(PLAYER,BeingChampionIsHard_WalkToOak)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -89,10 +89,10 @@ script BeingChampionIsHard_PostTimeSkip {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFBADADMIN,Common_Movement_WalkInPlaceDown)
+        applymovement(OAK,Common_Movement_WalkInPlaceDown)
         waitmovement(0)
         playse(SE_EXIT)
-        removeobject(PSFBADADMIN)
+        removeobject(OAK)
         addvar(VAR_STORYLINE_STATE,1)
         addvar(VAR_FERRY_STATE,1)
         releaseall
@@ -104,7 +104,7 @@ text gText_BeingChampionIsHard_OneMonthLater {
     format("One month later…")
 }
 text gText_BeingChampionIsHard_SighGoodMorning {
-    format("sigh* Good morning Psfbadadmin.")
+    format("sigh* Good morning Oak.")
 }
 text gText_BeingChampionIsHard_GoodMorningChampion {
     format("Good morning Champion {PLAYER}.")
@@ -149,7 +149,7 @@ text gText_BeingChampionIsHard_ThePleasureIsAllOurs {
     format("The pleasure is all ours, {PLAYER}. I'll be checking in, but don't hesitate to reach out.")
 }
 
-movement BeingChampionIsHard_WalkToPsfbadadmin {
+movement BeingChampionIsHard_WalkToOak {
     walk_down * 5
         walk_left * 4
         face_down

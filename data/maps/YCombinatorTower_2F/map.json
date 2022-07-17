@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFBADGUY1TOWER_2F",
+  "id": "MAP_YCOMBINATORTOWER_2F",
   "name": "YCombinatorTower_2F",
-  "layout": "LAYOUT_PSFBADGUY1TOWER_2F",
+  "layout": "LAYOUT_YCOMBINATORTOWER_2F",
   "music": "MUS_RG_SILPH",
-  "region_map_section": "MAPSEC_PSFBADGUY1TOWER",
+  "region_map_section": "MAPSEC_YCOMBINATORTOWER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -128,7 +128,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "YCombinatorTower_2F_Psfbadadmin_Event_Script",
+      "script": "YCombinatorTower_2F_Oak_Event_Script",
       "flag": "FLAG_TEMP_3"
     },
     {
@@ -267,35 +267,35 @@
       "x": 9,
       "y": 39,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_ELEVATOR",
+      "dest_map": "MAP_YCOMBINATORTOWER_ELEVATOR",
       "dest_warp_id": 1
     },
     {
       "x": 6,
       "y": 36,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_1F",
+      "dest_map": "MAP_YCOMBINATORTOWER_1F",
       "dest_warp_id": 3
     },
     {
       "x": 8,
       "y": 39,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_ELEVATOR",
+      "dest_map": "MAP_YCOMBINATORTOWER_ELEVATOR",
       "dest_warp_id": 0
     },
     {
       "x": 0,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY1_PSFBADADMIN3_HOUSE",
+      "dest_map": "MAP_SUNSET_SABRINA_HOUSE",
       "dest_warp_id": 1
     },
     {
       "x": 12,
       "y": 36,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_3F",
+      "dest_map": "MAP_YCOMBINATORTOWER_3F",
       "dest_warp_id": 0
     }
   ],
@@ -305,7 +305,7 @@
       "x": 9,
       "y": 36,
       "elevation": 0,
-      "var": "VAR_PSFBADGUY1TOWER_2F_STATE",
+      "var": "VAR_YCOMBINATORTOWER_2F_STATE",
       "var_value": "0",
       "script": "AlwaysWatchingWazowski_FloorWelcome_Script"
     },
@@ -314,7 +314,7 @@
       "x": 10,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_PSFBADGUY1TOWER_2F_STATE",
+      "var": "VAR_YCOMBINATORTOWER_2F_STATE",
       "var_value": "1",
       "script": "AlwaysWatchingWazowski_MovePlayerIntoPlace_Script"
     },
@@ -323,7 +323,7 @@
       "x": 7,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_PSFBADGUY1TOWER_2F_STATE",
+      "var": "VAR_YCOMBINATORTOWER_2F_STATE",
       "var_value": "1",
       "script": "AlwaysWatchingWazowski_MovePlayerIntoPlace_Script"
     }

@@ -33,7 +33,7 @@ LetsGettheBandBackTogether_PreventPlayerEnterTower_Script_2:
 
 
 LetsGettheBandBackTogether_MeetInBasement_Script::
-	compare VAR_PSFCAVE7_STATE, 6
+	compare VAR_ALCATRAZ_STATE, 6
 	goto_if_eq LetsGettheBandBackTogether_MeetInBasement_Script_2
 LetsGettheBandBackTogether_MeetInBasement_Script_1:
 	lock
@@ -69,7 +69,7 @@ LetsGettheBandBackTogether_MeetInBasement_Script_4:
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_IllWriteUpAPost
-	addvar VAR_PSFCAVE7_STATE, 1
+	addvar VAR_ALCATRAZ_STATE, 1
 	callnative ClearMugshot
 	closemessage
 	release
@@ -96,7 +96,7 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	msgbox gText_LetsGetTheBandBackTogether_ReadyToGoLive, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGettheBandBackTogether_TrueTimelineSplit_Script_2
-	addvar VAR_PSFCAVE7_STATE, 1
+	addvar VAR_ALCATRAZ_STATE, 1
 	setvar VAR_STORYLINE_STATE, 100
 	addvar VAR_LILYCOVE_CITY_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH

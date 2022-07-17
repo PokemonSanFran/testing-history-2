@@ -33,7 +33,7 @@ FishermansWharf_UnlockedDestinations_Script::
 
 
 FishermansWharf_FerryState0_Script::
-	multichoicedefault 18, 8, PSFPLACE13_FERRY_DESTINATIONS_VER1, 0, FALSE
+	multichoicedefault 18, 8, FISHERMANSWHARF_FERRY_DESTINATIONS_VER1, 0, FALSE
 	call SlateportCity_Harbor_EventScript_BoardFerry
 	switch VAR_RESULT
 	case 0, FishermansWharf_FerryState0_Script_2
@@ -42,7 +42,7 @@ FishermansWharf_FerryState0_Script::
 	return
 
 FishermansWharf_FerryState0_Script_2:
-	warp MAP_PSFCAVE7, 15, 22
+	warp MAP_ALCATRAZ, 15, 22
 	return
 
 FishermansWharf_FerryState0_Script_3:

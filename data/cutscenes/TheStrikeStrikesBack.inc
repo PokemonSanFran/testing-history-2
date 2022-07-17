@@ -260,7 +260,7 @@ gText_TheStrikeStrikesBack_DidYouFlyAll::
 	.string "here to tell me that?$"
 
 gText_TheStrikeStrikesBack_AskedMeToPick::
-	.string "Nah. Psfbadadmin asked me to pick you\n"
+	.string "Nah. Oak asked me to pick you\n"
 	.string "up. Turns out they need our help. Let's\l"
 	.string "go.$"
 
@@ -276,8 +276,8 @@ gText_TheStrikeStrikesBack_WellHeresTheProblem::
 	.string "Well, here's the problem. We - ! oh Lord.$"
 
 gText_TheStrikeStrikesBack_MyNameIs::
-	.string "My name is Giovanni, and I am the\n"
-	.string "leader of TeamRocket.$"
+	.string "My name is Giovanni, and I am the leader\n"
+	.string "of TeamRocket.$"
 
 gText_TheStrikeStrikesBack_WeAreFighting::
 	.string "We are fighting alongside the\n"
@@ -317,8 +317,8 @@ gText_TheStrikeStrikesBack_WaitWhatThatsInsane::
 
 gText_TheStrikeStrikesBack_AgreedAndThats::
 	.string "Agreed, and that's why we need you two\n"
-	.string "while Rose and I work on a\l"
-	.string "peaceful solution.$"
+	.string "while Rose and I work on a peaceful\l"
+	.string "solution.$"
 
 gText_TheStrikeStrikesBack_ThePoliceAreWorking::
 	.string "The police are working to make sure the\n"
@@ -328,9 +328,9 @@ gText_TheStrikeStrikesBack_ThePoliceAreWorking::
 gText_TheStrikeStrikesBack_AgitatedWildGarbodor::
 	.string "We think TeamRocket agitated wild\n"
 	.string "Garbodor, and we need you to capture\l"
-	.string "or knock them out while Rose and\l"
-	.string "I negotiate with Giovanni. Time is\l"
-	.string "of the essence!$"
+	.string "or knock them out while Rose and I\l"
+	.string "negotiate with Giovanni. Time is of the\l"
+	.string "essence!$"
 
 gText_TheStrikeStrikesBack_IllBeInThere::
 	.string "{PLAYER}, I'll be in there when you're\n"
@@ -358,7 +358,7 @@ gText_TheStrikeStrikesBack_CutToTheChase::
 	.string "You're right though, we're both about to\n"
 	.string "be very busy. I'll cut to the chase.\l"
 	.string "Could you head down to Psfroute22?\l"
-	.string "Psfbadadmin will meet you there and\l"
+	.string "Oak will meet you there and\l"
 	.string "explain everything.$"
 
 gText_TheStrikeStrikesBack_SureRightNow::

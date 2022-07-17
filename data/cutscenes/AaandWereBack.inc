@@ -42,7 +42,7 @@ AaandWereBack_WarpToCompound_Script::
 	return
 
 AaandWereBack_WarpToCompound_Script_1:
-	warpsilent MAP_PSFCITY8, 255, 3, 10
+	warpsilent MAP_SOUTHBAY, 255, 3, 10
 	return
 
 
@@ -139,10 +139,10 @@ gText_AaandWereBack_ImSureIllFigure::
 
 gText_AaandWereBack_OpeningMessage::
 	.string "You have recieved a message from\n"
-	.string "PSFSUBWAY.$"
+	.string "BARTACRONYM.$"
 
 gText_AaandWereBack_FerryMessage::
-	.string "A message from the PSFSUBWAY\n"
+	.string "A message from the BARTACRONYM\n"
 	.string "System. The following service\l"
 	.string "routes are now operational:\p"
 	.string "FerryBuilding to Alameda\p"

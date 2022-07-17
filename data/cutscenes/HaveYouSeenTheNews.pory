@@ -1,11 +1,11 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFELITE3 = 2
-const PSFBADADMIN = 3
+const BIANCA = 1
+const SIEBOLD = 2
+const OAK = 3
 
 script HaveYouSeenTheNews_AskHelp_Dialogue {
     addvar(VAR_ROUTE116_STATE, 1)
-    setvar(VAR_PSFBADGUY1TOWER_2F_STATE, 3)
+    setvar(VAR_YCOMBINATORTOWER_2F_STATE, 3)
     lockall
 
     playse(SE_PIN)
@@ -42,13 +42,13 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADADMIN, HaveYouSeenTheNews_LeaveClearingA)
-        applymovement(PSFTRANSRIVAL, HaveYouSeenTheNews_LeaveClearingB)
+        applymovement(OAK, HaveYouSeenTheNews_LeaveClearingA)
+        applymovement(BIANCA, HaveYouSeenTheNews_LeaveClearingB)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFTRANSRIVAL)
-        removeobject(PSFBADADMIN)
+        removeobject(BIANCA)
+        removeobject(OAK)
     } else {
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -56,7 +56,7 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
         callnative(ClearMugshot)
         closemessage
         releaseall
-        warpsilent(MAP_PSFBADGUY1TOWER_2F, 255, 7, 14)
+        warpsilent(MAP_YCOMBINATORTOWER_2F, 255, 7, 14)
         end
     }
 }

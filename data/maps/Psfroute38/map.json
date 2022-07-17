@@ -16,12 +16,12 @@
     {
       "direction": "right",
       "offset": -38,
-      "map": "MAP_PSFCITY12"
+      "map": "MAP_TENDERLOIN"
     },
     {
       "direction": "left",
       "offset": -7,
-      "map": "MAP_PSFCITY14"
+      "map": "MAP_JAPANTOWN"
     }
   ],
   "object_events": [

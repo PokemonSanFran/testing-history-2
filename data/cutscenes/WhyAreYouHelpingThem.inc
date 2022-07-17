@@ -317,7 +317,7 @@ WhyAreYouHelpingThem_PostBattle_Dialogue::
 	closemessage
 	addvar VAR_NATIVERIVALBETA_STATE, 1
 	fadescreen FADE_TO_BLACK
-	warpsilent MAP_PSFCITY17, 255, 26, 6
+	warpsilent MAP_ALAMEDA, 255, 26, 6
 	return
 
 
@@ -394,7 +394,7 @@ WhyAreYouHelpingThem_StartChampionship_Dialogue::
 	compare VAR_RESULT, NO
 	goto_if_eq WhyAreYouHelpingThem_StartChampionship_Dialogue_1
 	addvar VAR_STORYLINE_STATE, 1
-	warpsilent MAP_PSFPLACE14_LOCKERS, 9, 6
+	warpsilent MAP_CHASECENTER_LOCKERS, 9, 6
 	return
 
 WhyAreYouHelpingThem_StartChampionship_Dialogue_1:
@@ -700,7 +700,7 @@ gText_WhyAreYouHelpingThem_AShameStillWeveShutDown::
 	.string "This was an absolute win!$"
 
 gText_WhyAreYouHelpingThem_NotBadInThere::
-	.string "Not bad in there. Psfbadadmin wants you\n"
+	.string "Not bad in there. Oak wants you\n"
 	.string "kids back at SouthBay Compound.$"
 
 gText_WhyAreYouHelpingThem_WhatADay::

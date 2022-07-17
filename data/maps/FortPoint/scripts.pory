@@ -9,7 +9,7 @@ mapscripts FortPoint_MapScripts {
 }
 
 script FortPoint_MapScript_OnTransition {
-    switch (var(VAR_PSFPLACE9_STATE)){
+    switch (var(VAR_FORTPOINT_STATE)){
         case 1: return
         default: goto(YouLookTired_HideObjects_Script)
     }

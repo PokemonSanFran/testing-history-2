@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE2",
+  "id": "MAP_NAVALBASE",
   "name": "NavalBase",
-  "layout": "LAYOUT_PSFPLACE2",
+  "layout": "LAYOUT_NAVALBASE",
   "music": "MUS_RG_ROCKET_HIDEOUT",
-  "region_map_section": "MAPSEC_PSFPLACE2",
+  "region_map_section": "MAPSEC_NAVALBASE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -176,21 +176,21 @@
       "x": 22,
       "y": 26,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY17",
+      "dest_map": "MAP_ALAMEDA",
       "dest_warp_id": 0
     },
     {
       "x": 23,
       "y": 26,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY17",
+      "dest_map": "MAP_ALAMEDA",
       "dest_warp_id": 0
     },
     {
       "x": 12,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY17",
+      "dest_map": "MAP_ALAMEDA",
       "dest_warp_id": 1
     }
   ],

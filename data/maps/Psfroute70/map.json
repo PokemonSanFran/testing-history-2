@@ -16,12 +16,12 @@
     {
       "direction": "down",
       "offset": -7,
-      "map": "MAP_PSFCITY12"
+      "map": "MAP_TENDERLOIN"
     },
     {
       "direction": "up",
       "offset": -12,
-      "map": "MAP_PSFPLACE7"
+      "map": "MAP_LOMBARDSTREET"
     }
   ],
   "object_events": [

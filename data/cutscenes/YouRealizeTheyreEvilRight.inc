@@ -1,5 +1,5 @@
 YouRealizeTheyreEvilRight_HideObject_Script::
-	compare VAR_PSFCAVE7_STATE, 3
+	compare VAR_ALCATRAZ_STATE, 3
 	goto_if_ne YouRealizeTheyreEvilRight_HideObject_Script_1
 	return
 
@@ -9,7 +9,7 @@ YouRealizeTheyreEvilRight_HideObject_Script_1:
 
 
 YouRealizeTheyreEvilRight_ShowObject_Script::
-	compare VAR_PSFCAVE7_STATE, 3
+	compare VAR_ALCATRAZ_STATE, 3
 	goto_if_eq YouRealizeTheyreEvilRight_ShowObject_Script_1
 	return
 
@@ -42,7 +42,7 @@ YouRealizeTheyreEvilRight_HideBasement_Script::
 
 YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	lock
-	addvar VAR_PSFCAVE7_STATE, 1
+	addvar VAR_ALCATRAZ_STATE, 1
 	giveitem ITEM_HM03
 	clearflag FLAG_SCOTT_CALL_FORTREE_GYM
 	setvar VAR_0x8000, MUGSHOT_HILDA
@@ -104,7 +104,7 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue_2:
 YouRealizeTheyreEvilRight_PlayerLandedDialogue::
 	lock
 	givecustommon SPECIES_KYOGRE, 100, ITEM_BLUE_ORB, ITEM_LURE_BALL, NATURE_MODEST, 0, 0, 0, 4, 252, 0, 252, 31, 31, 31, 31, 31, 31, MOVE_SURF, MOVE_CALM_MIND, MOVE_ORIGIN_PULSE, MOVE_ICE_BEAM
-	addvar VAR_PSFCAVE7_STATE, 1
+	addvar VAR_ALCATRAZ_STATE, 1
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
@@ -391,7 +391,7 @@ YouRealizeTheyreEvilRight_Framing_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YeahOkay
-	addvar VAR_PSFCAVE7_STATE, 1
+	addvar VAR_ALCATRAZ_STATE, 1
 	compare VAR_TEMP_0, 99
 	goto_if_eq YouRealizeTheyreEvilRight_Framing_Dialogue_2
 YouRealizeTheyreEvilRight_Framing_Dialogue_1:

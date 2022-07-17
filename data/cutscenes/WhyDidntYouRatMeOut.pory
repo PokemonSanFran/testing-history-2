@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADBOSS = 1 //FLAG_TEMP_1
-const PSFTRANSRIVAL = 2 //FLAG_TEMP_2
-const PSFNATIVERIVAL = 3 //FLAG_TEMP_3
-const PSFBADADMIN = 4 //FLAG_TEMP_4
+const ROSE = 1 //FLAG_TEMP_1
+const BIANCA = 2 //FLAG_TEMP_2
+const ARCHER = 3 //FLAG_TEMP_3
+const OAK = 4 //FLAG_TEMP_4
 
 script WhyDidntYouRatMeOut_HideObject_Script {
     setflag(FLAG_TEMP_4)
@@ -17,7 +17,7 @@ script WhyDidntYouRatMeOut_StopPlayerLeaving {
         lock
         setflag(FLAG_TEMP_1)
         setflag(FLAG_TEMP_2)
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceDown)
+        applymovement(ARCHER,Common_Movement_FaceDown)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -31,9 +31,9 @@ script WhyDidntYouRatMeOut_StopPlayerLeaving {
 
         getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
         if (var(VAR_TEMP_0) == 9){
-            applymovement(PSFNATIVERIVAL,WhyDidntYouRatMeOut_WalkToPlayerLeft)
+            applymovement(ARCHER,WhyDidntYouRatMeOut_WalkToPlayerLeft)
         }else {
-            applymovement(PSFNATIVERIVAL,WhyDidntYouRatMeOut_WalkToPlayerRight)
+            applymovement(ARCHER,WhyDidntYouRatMeOut_WalkToPlayerRight)
         }
     waitmovement(0)
 
@@ -44,7 +44,7 @@ script WhyDidntYouRatMeOut_StopPlayerLeaving {
         closemessage
 
         playse(SE_EXIT)
-        warpsilent(MAP_PSFPLACE14_STANDS,4,6)
+        warpsilent(MAP_CHASECENTER_STANDS,4,6)
 }
 
 script WhyDidntYouRatMeOut_ConversationInStands {
@@ -171,7 +171,7 @@ script WhyDidntYouRatMeOut_ConversationInStands {
         closemessage
 
         playse(SE_EXIT)
-        warpsilent(MAP_PSFPLACE14_SKYBOX,10,3)
+        warpsilent(MAP_CHASECENTER_SKYBOX,10,3)
 }
 
 script WhyDidntYouRatMeOut_LookAround {

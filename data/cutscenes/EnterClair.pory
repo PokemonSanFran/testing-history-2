@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER8 = 1
+const CLAIR = 1
 
 script EnterClair_Event_Script {
     switch (var(VAR_GYM_8_STATE)) {

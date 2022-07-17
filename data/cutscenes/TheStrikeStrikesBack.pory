@@ -1,10 +1,10 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFBADADMIN = 2
-const PSFGOODBOSS = 3
+const BIANCA = 1
+const OAK = 2
+const GIOVANNI = 3
 const GOODTEAMA = 4
 const GOODTEAMB = 5
-const PSFBADBOSS = 14
+const ROSE = 14
 
 script TheStrikeStrikesBack_HideObject_Script {
     setflag(FLAG_TEMP_1)
@@ -25,7 +25,7 @@ script TheStrikeStrikesBack_ObjectSetup_Script {
         clearflag(FLAG_TEMP_2)
         clearflag(FLAG_TEMP_3)
         setflag(FLAG_TEMP_1)
-        removeobject(PSFBADBOSS)
+        removeobject(ROSE)
         removeobject(12)
         removeobject(13)
 }
@@ -34,9 +34,9 @@ script TheStrikeStrikesBack_ObjectCleanup_Script {
     setflag(FLAG_TEMP_2)
         setflag(FLAG_TEMP_4)
         setflag(FLAG_TEMP_3)
-        removeobject(PSFBADADMIN)
-        removeobject(PSFTRANSRIVAL)
-        removeobject(PSFGOODBOSS)
+        removeobject(OAK)
+        removeobject(BIANCA)
+        removeobject(GIOVANNI)
         removeobject(GOODTEAMA)
         removeobject(GOODTEAMB)
 }
@@ -49,8 +49,8 @@ script TheStrikeStrikesBack_CrowdFacesNorth_Script {
         applymovement(9,Common_Movement_FaceUp)
         applymovement(10,Common_Movement_FaceUp)
         applymovement(11,TheStrikeStrikesBack_FaceNorth)
-        applymovement(PSFTRANSRIVAL,TheStrikeStrikesBack_FaceNorth)
-        applymovement(PSFBADADMIN,TheStrikeStrikesBack_FaceNorth)
+        applymovement(BIANCA,TheStrikeStrikesBack_FaceNorth)
+        applymovement(OAK,TheStrikeStrikesBack_FaceNorth)
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(0)
 }
@@ -132,7 +132,7 @@ script TheStrikeStrikesBack_Intro_Dialogue {
                 callnative(ClearMugshot)
                 closemessage
 
-                applymovement(PSFGOODBOSS,TheStrikeStrikesBack_WalkIntoFrame)
+                applymovement(GIOVANNI,TheStrikeStrikesBack_WalkIntoFrame)
                 applymovement(GOODTEAMA,TheStrikeStrikesBack_WalkIntoFrame)
                 applymovement(GOODTEAMB,TheStrikeStrikesBack_WalkIntoFrame)
                 waitmovement(0)
@@ -167,10 +167,10 @@ script TheStrikeStrikesBack_Intro_Dialogue {
                 callnative(ClearMugshot)
                 closemessage
 
-                applymovement(PSFGOODBOSS,TheStrikeStrikesBack_WalkOutFrame)
+                applymovement(GIOVANNI,TheStrikeStrikesBack_WalkOutFrame)
                 applymovement(GOODTEAMA,TheStrikeStrikesBack_WalkOutFrame)
                 applymovement(GOODTEAMB,TheStrikeStrikesBack_WalkOutFrame)
-                applymovement(PSFTRANSRIVAL,Common_Movement_FaceLeft)
+                applymovement(BIANCA,Common_Movement_FaceLeft)
                 applymovement(PLAYER,Common_Movement_FaceDown)
                 applymovement(9,Common_Movement_FaceDown)
                 applymovement(7,Common_Movement_FaceLeft)
@@ -198,9 +198,9 @@ script TheStrikeStrikesBack_Intro_Dialogue {
                 callnative(ClearMugshot)
                 closemessage
 
-                applymovement(PSFBADADMIN,TheStrikeStrikesBack_WalkOutFrame)
+                applymovement(OAK,TheStrikeStrikesBack_WalkOutFrame)
                 waitmovement(0)
-                applymovement(PSFTRANSRIVAL,TheStrikeStrikesBack_GoToPlayer)
+                applymovement(BIANCA,TheStrikeStrikesBack_GoToPlayer)
                 waitmovement(0)
 
                 setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -208,7 +208,7 @@ script TheStrikeStrikesBack_Intro_Dialogue {
                 msgbox(gText_TheStrikeStrikesBack_IllBeInThere)
                 callnative(ClearMugshot)
                 closemessage
-                applymovement(PSFTRANSRIVAL,TheStrikeStrikesBack_WalkOutFrame)
+                applymovement(BIANCA,TheStrikeStrikesBack_WalkOutFrame)
                 waitmovement(0)
                 call(TheStrikeStrikesBack_ObjectCleanup_Script)
                 release
@@ -255,7 +255,7 @@ text gText_TheStrikeStrikesBack_DidYouFlyAll {
 }
 
 text gText_TheStrikeStrikesBack_AskedMeToPick {
-    format("Nah. Psfbadadmin asked me to pick you up. Turns out they need our help. Let's go.")
+    format("Nah. Oak asked me to pick you up. Turns out they need our help. Let's go.")
 }
 
 text gText_TheStrikeStrikesBack_AndCongratulations {
@@ -333,7 +333,7 @@ text gText_TheStrikeStrikesBack_ThankYou {
     format("Heh, thanks! Means a lot.")
 }
 text gText_TheStrikeStrikesBack_CutToTheChase {
-    format("You're right though, we're both about to be very busy. I'll cut to the chase. Could you head down to Psfroute22? Psfbadadmin will meet you there and explain everything.")
+    format("You're right though, we're both about to be very busy. I'll cut to the chase. Could you head down to Psfroute22? Oak will meet you there and explain everything.")
 }
 text gText_TheStrikeStrikesBack_SureRightNow {
     format("Sure. Right now?")

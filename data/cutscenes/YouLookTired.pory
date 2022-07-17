@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER 
-const PSFBADADMIN2 = 1
+const KOGA = 1
 
 script YouLookTired_BlockMansionAccess_Script {
-    if (var(VAR_PSFPLACE9_STATE) < 2){
+    if (var(VAR_FORTPOINT_STATE) < 2){
         setobjectxy(2,14,11)
             setobjectxyperm(2,14,11)
     }
@@ -14,14 +14,14 @@ script YouLookTired_HideObjects_Script {
 
 script YouLookTired_InteractKoga_Script {
     lock
-        applymovement(PSFBADADMIN2,Common_Movement_FacePlayer)
+        applymovement(KOGA,Common_Movement_FacePlayer)
         goto(YouLookTired_Intro_Dialogue)
 }
 
 script YouLookTired_Trigger_Script {
     lock
         call(YouLookTired_WalkToKoga_Script)
-        applymovement(PSFBADADMIN2,Common_Movement_FacePlayer)
+        applymovement(KOGA,Common_Movement_FacePlayer)
         goto(YouLookTired_Intro_Dialogue)
 }
 
@@ -116,7 +116,7 @@ script YouLookTired_AcceptInvite_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADADMIN2,Common_Movement_FaceLeft)
+        applymovement(KOGA,Common_Movement_FaceLeft)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_N)
@@ -125,7 +125,7 @@ script YouLookTired_AcceptInvite_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADADMIN2,Common_Movement_FacePlayer)
+        applymovement(KOGA,Common_Movement_FacePlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_N)
@@ -165,8 +165,8 @@ script YouLookTired_DataCollection_Dialogue {
         call(YouLookTired_WalkAway_Script)
         waitmovement(0)
         fadedefaultbgm
-        removeobject(PSFBADADMIN2)
-        addvar(VAR_PSFPLACE9_STATE,1)
+        removeobject(KOGA)
+        addvar(VAR_FORTPOINT_STATE,1)
         release
         end
 }
@@ -175,9 +175,9 @@ script YouLookTired_WalkAway_Script {
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
         if (var(VAR_TEMP_0) == 6){
-            applymovement(PSFBADADMIN2,YouLookTired_WalkAwayFrom6)
+            applymovement(KOGA,YouLookTired_WalkAwayFrom6)
         } else {
-            applymovement(PSFBADADMIN2,YouLookTired_WalkAwayFrom7)
+            applymovement(KOGA,YouLookTired_WalkAwayFrom7)
         }
 }
 

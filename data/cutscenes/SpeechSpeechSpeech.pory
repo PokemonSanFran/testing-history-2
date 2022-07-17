@@ -1,12 +1,12 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
-const PSFNATIVERIVAL = 1 //FLAG_TEMP_1
-const PSFELITE1 = 3 //FLAG_TEMP_2
-const PSFELITE2 = 2 //FLAG_TEMP_2
-const PSFELITE3 = 6 //FLAG_TEMP_5
-const PSFELITE4 = 5 //FLAG_TEMP_8
-const PSFGOODBOSS = 7 //FLAG_TEMP_6
-const PSFGOODADMIN = 8 //FLAG_TEMP_9
+const ARCHER = 1 //FLAG_TEMP_1
+const MALVA = 3 //FLAG_TEMP_2
+const DRASNA = 2 //FLAG_TEMP_2
+const SIEBOLD = 6 //FLAG_TEMP_5
+const WIKSTROM = 5 //FLAG_TEMP_8
+const GIOVANNI = 7 //FLAG_TEMP_6
+const ARIANA = 8 //FLAG_TEMP_9
 const GRUNTA = 9 //FLAG_TEMP_7
 const GRUNTB = 10//FLAG_TEMP_7
 const GRUNTC = 11//FLAG_TEMP_7
@@ -16,15 +16,15 @@ script SpeechSpeechSpeech_MoveObject_Script {
         setflag(FLAG_TEMP_4)
         setflag(FLAG_TEMP_8)
 
-        setobjectxy(PSFNATIVERIVAL,10,8)
-        setobjectxyperm(PSFNATIVERIVAL,10,8)
-        setobjectmovementtype(PSFNATIVERIVAL,MOVEMENT_TYPE_FACE_UP)
+        setobjectxy(ARCHER,10,8)
+        setobjectxyperm(ARCHER,10,8)
+        setobjectmovementtype(ARCHER,MOVEMENT_TYPE_FACE_UP)
 
-        setobjectxy(PSFELITE1,7,3)
-        setobjectxyperm(PSFELITE1,7,3)
+        setobjectxy(MALVA,7,3)
+        setobjectxyperm(MALVA,7,3)
 
-        setobjectxy(PSFELITE2,8,3)
-        setobjectxyperm(PSFELITE2,8,3)
+        setobjectxy(DRASNA,8,3)
+        setobjectxyperm(DRASNA,8,3)
 }
 
 script SpeechSpeechSpeech_MovePlayer_Script {
@@ -69,25 +69,25 @@ script SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script {
     setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_6)
 
-    setobjectxy(PSFELITE1,11,17)
-    setobjectxyperm(PSFELITE1,11,17)
-    setobjectmovementtype(PSFELITE1,MOVEMENT_TYPE_FACE_DOWN)
+    setobjectxy(MALVA,11,17)
+    setobjectxyperm(MALVA,11,17)
+    setobjectmovementtype(MALVA,MOVEMENT_TYPE_FACE_DOWN)
     
-    setobjectxy(PSFELITE2,17,15)
-    setobjectxyperm(PSFELITE2,17,15)
-    setobjectmovementtype(PSFELITE2,MOVEMENT_TYPE_FACE_LEFT)
+    setobjectxy(DRASNA,17,15)
+    setobjectxyperm(DRASNA,17,15)
+    setobjectmovementtype(DRASNA,MOVEMENT_TYPE_FACE_LEFT)
 
-    setobjectxy(PSFGOODADMIN,16,15)
-    setobjectxyperm(PSFGOODADMIN,16,15)
-    setobjectmovementtype(PSFGOODADMIN,MOVEMENT_TYPE_FACE_RIGHT)
+    setobjectxy(ARIANA,16,15)
+    setobjectxyperm(ARIANA,16,15)
+    setobjectmovementtype(ARIANA,MOVEMENT_TYPE_FACE_RIGHT)
     
-    setobjectxy(PSFELITE3,19,6)
-    setobjectxyperm(PSFELITE3,19,6)
-    setobjectmovementtype(PSFELITE3,MOVEMENT_TYPE_FACE_DOWN)
+    setobjectxy(SIEBOLD,19,6)
+    setobjectxyperm(SIEBOLD,19,6)
+    setobjectmovementtype(SIEBOLD,MOVEMENT_TYPE_FACE_DOWN)
     
-    setobjectxy(PSFELITE4,4,6)
-    setobjectxyperm(PSFELITE4,4,6)
-    setobjectmovementtype(PSFELITE4,MOVEMENT_TYPE_FACE_DOWN)
+    setobjectxy(WIKSTROM,4,6)
+    setobjectxyperm(WIKSTROM,4,6)
+    setobjectmovementtype(WIKSTROM,MOVEMENT_TYPE_FACE_DOWN)
 
     setobjectmovementtype(GRUNTA,MOVEMENT_TYPE_LOOK_AROUND)
     setobjectnewmovementtype(GRUNTA,MOVEMENT_TYPE_LOOK_AROUND)
@@ -169,23 +169,23 @@ script SpeechSpeechSpeech_StartTransformation_Script {
         clearflag(FLAG_TEMP_5)
         special(SpawnCameraObject)
         applymovement(CAMERA,SpeechSpeechSpeech_PanCameraUp)
-        applymovement(PSFGOODBOSS,SpeechSpeechSpeech_WalkBackstage)
+        applymovement(GIOVANNI,SpeechSpeechSpeech_WalkBackstage)
         waitmovement(CAMERA)
         delay(32)
-        applymovement(PSFGOODBOSS,SpeechSpeechSpeech_StartSpin)
-        waitmovement(PSFGOODBOSS)
-        applymovement(PSFELITE4,SpeechSpeechSpeech_FinishSpin)
-        waitmovement(PSFGOODBOSS)
-        removeobject(PSFGOODBOSS)
+        applymovement(GIOVANNI,SpeechSpeechSpeech_StartSpin)
+        waitmovement(GIOVANNI)
+        applymovement(WIKSTROM,SpeechSpeechSpeech_FinishSpin)
+        waitmovement(GIOVANNI)
+        removeobject(GIOVANNI)
         clearflag(FLAG_TEMP_8)
-        addobject(PSFELITE4)
+        addobject(WIKSTROM)
         delay(32)
 
-        applymovement(PSFELITE1,SpeechSpeechSpeech_WalkOutElite)
-        applymovement(PSFELITE2,SpeechSpeechSpeech_WalkOutElite)
-        applymovement(PSFELITE3,SpeechSpeechSpeech_WalkOutElite)
-        applymovement(PSFELITE4,SpeechSpeechSpeech_WalkOutElite)
-        applymovement(PSFGOODADMIN,SpeechSpeechSpeech_StepAside)
+        applymovement(MALVA,SpeechSpeechSpeech_WalkOutElite)
+        applymovement(DRASNA,SpeechSpeechSpeech_WalkOutElite)
+        applymovement(SIEBOLD,SpeechSpeechSpeech_WalkOutElite)
+        applymovement(WIKSTROM,SpeechSpeechSpeech_WalkOutElite)
+        applymovement(ARIANA,SpeechSpeechSpeech_StepAside)
         applymovement(CAMERA,SpeechSpeechSpeech_PanCameraDown)
         waitmovement(CAMERA)
 
@@ -249,7 +249,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         closemessage
         waitmovement(GRUNTD)
 
-        applymovement(PSFELITE2,Common_Movement_WalkDown)
+        applymovement(DRASNA,Common_Movement_WalkDown)
         waitmovement(0)
         //Drasna steps forward. Ariana steps aside.
 
@@ -259,7 +259,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE4,Common_Movement_WalkDown)
+        applymovement(WIKSTROM,Common_Movement_WalkDown)
         waitmovement(0)
         //Wikstrom steps forward.
 
@@ -269,8 +269,8 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE4,SpeechSpeechSpeech_WalkBackwards)
-        applymovement(PSFELITE3,Common_Movement_WalkDown)
+        applymovement(WIKSTROM,SpeechSpeechSpeech_WalkBackwards)
+        applymovement(SIEBOLD,Common_Movement_WalkDown)
         waitmovement(0)
         //Wikstrom steps back. Siebold steps forward.
 
@@ -280,8 +280,8 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE3,SpeechSpeechSpeech_WalkBackwards)
-        applymovement(PSFELITE1,Common_Movement_WalkDown)
+        applymovement(SIEBOLD,SpeechSpeechSpeech_WalkBackwards)
+        applymovement(MALVA,Common_Movement_WalkDown)
         waitmovement(0)
         //Wikstrom steps back. Malva steps forward.
 
@@ -291,7 +291,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE1,SpeechSpeechSpeech_WalkBackwards)
+        applymovement(MALVA,SpeechSpeechSpeech_WalkBackwards)
         waitmovement(0)
 
         //Malva steps back.
@@ -304,15 +304,15 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
         fadescreen(FADE_TO_BLACK)
         addvar(VAR_STORYLINE_STATE,1)
-        addvar(VAR_PSFCAVE7_STATE,1)
+        addvar(VAR_ALCATRAZ_STATE,1)
 
         TeleportCamera(9,9)
         callnative(DestroyVirtualObjects)
         call(SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script)
 
-        applymovement(PSFNATIVERIVAL,SpeechSpeechSpeech_WalkToPlayer)
+        applymovement(ARCHER,SpeechSpeechSpeech_WalkToPlayer)
         fadescreen(FADE_FROM_BLACK)
-        waitmovement(PSFNATIVERIVAL)
+        waitmovement(ARCHER)
 
         //Screen fades to black. Screen fades back in. Elite Four members are spaced around the room, surrounded by groups of TeamRocket members. Archer walks up to the player.
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -337,9 +337,9 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFNATIVERIVAL,SpeechSpeechSpeech_LeaveScreen)
+        applymovement(ARCHER,SpeechSpeechSpeech_LeaveScreen)
         waitmovement(0)
-        removeobject(PSFNATIVERIVAL)
+        removeobject(ARCHER)
         release
         end
 

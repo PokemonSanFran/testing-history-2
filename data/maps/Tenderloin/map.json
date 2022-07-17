@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY12",
+  "id": "MAP_TENDERLOIN",
   "name": "Tenderloin",
-  "layout": "LAYOUT_PSFCITY12",
+  "layout": "LAYOUT_TENDERLOIN",
   "music": "MUS_B_PYRAMID",
-  "region_map_section": "MAPSEC_PSFCITY12",
+  "region_map_section": "MAPSEC_TENDERLOIN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_CITY",
@@ -205,7 +205,7 @@
       "x": 14,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY12",
+      "dest_map": "MAP_TENDERLOIN",
       "dest_warp_id": 0
     }
   ],

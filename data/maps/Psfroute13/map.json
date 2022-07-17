@@ -16,12 +16,12 @@
     {
       "direction": "up",
       "offset": -9,
-      "map": "MAP_PSFPLACE3"
+      "map": "MAP_PAINTEDLADIES"
     },
     {
       "direction": "down",
       "offset": 0,
-      "map": "MAP_PSFCITY5"
+      "map": "MAP_CASTRO"
     }
   ],
   "object_events": [

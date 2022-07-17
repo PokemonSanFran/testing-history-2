@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE14_LOCKERS",
+  "id": "MAP_CHASECENTER_LOCKERS",
   "name": "ChaseCenter_Lockers",
-  "layout": "LAYOUT_PSFPLACE14_LOCKERS",
+  "layout": "LAYOUT_CHASECENTER_LOCKERS",
   "music": "MUS_VICTORY_ROAD",
-  "region_map_section": "MAPSEC_PSFPLACE14",
+  "region_map_section": "MAPSEC_CHASECENTER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -98,21 +98,21 @@
       "x": 9,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE14_ENTRANCE",
+      "dest_map": "MAP_CHASECENTER_ENTRANCE",
       "dest_warp_id": 2
     },
     {
       "x": 10,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE14_ENTRANCE",
+      "dest_map": "MAP_CHASECENTER_ENTRANCE",
       "dest_warp_id": 2
     },
     {
       "x": 10,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE14_ARENA",
+      "dest_map": "MAP_CHASECENTER_ARENA",
       "dest_warp_id": 0
     }
   ],

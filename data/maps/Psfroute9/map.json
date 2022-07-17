@@ -16,17 +16,17 @@
     {
       "direction": "dive",
       "offset": 0,
-      "map": "MAP_PSFCITY6"
+      "map": "MAP_MISSION"
     },
     {
       "direction": "down",
       "offset": -7,
-      "map": "MAP_PSFCITY6"
+      "map": "MAP_MISSION"
     },
     {
       "direction": "up",
       "offset": -8,
-      "map": "MAP_PSFCITY12"
+      "map": "MAP_TENDERLOIN"
     }
   ],
   "object_events": [

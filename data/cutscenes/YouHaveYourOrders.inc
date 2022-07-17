@@ -128,7 +128,7 @@ YouHaveYourOrders_Assignment_Dialogue_14:
 	goto YouHaveYourOrders_Assignment_Dialogue_13
 
 YouHaveYourOrders_Assignment_Dialogue_17:
-	warpsilent MAP_PSFCITY13, 255, 5, 12
+	warpsilent MAP_CHINATOWN, 255, 5, 12
 	goto YouHaveYourOrders_Assignment_Dialogue_16
 
 

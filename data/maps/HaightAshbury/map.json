@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY18",
+  "id": "MAP_HAIGHTASHBURY",
   "name": "HaightAshbury",
-  "layout": "LAYOUT_PSFCITY18",
+  "layout": "LAYOUT_HAIGHTASHBURY",
   "music": "MUS_FALLARBOR",
-  "region_map_section": "MAPSEC_PSFCITY18",
+  "region_map_section": "MAPSEC_HAIGHTASHBURY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_TOWN",
@@ -273,14 +273,14 @@
       "x": 1,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE9",
+      "dest_map": "MAP_GLDNGTEWILDS",
       "dest_warp_id": 6
     },
     {
       "x": 4,
       "y": 26,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY18_GYM",
+      "dest_map": "MAP_HAIGHTASHBURY_GYM",
       "dest_warp_id": 0
     }
   ],

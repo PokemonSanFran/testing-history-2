@@ -6,7 +6,7 @@ mapscripts Alcatraz_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [ 
-        VAR_PSFCAVE7_STATE, 3: YouRealizeTheyreEvilRight_PlayerLandedDialogue
+        VAR_ALCATRAZ_STATE, 3: YouRealizeTheyreEvilRight_PlayerLandedDialogue
     ]
 }
 
@@ -19,7 +19,7 @@ script Alcatraz_MapScripts_OnTransition {
 
 script Alcatraz_ExhibitCheck_Script {
     call(ResetAlcatrazExhibit_Script)
-        if (var(VAR_PSFCAVE7_EXHIBIT_STATE) < 2){
+        if (var(VAR_ALCATRAZ_EXHIBIT_STATE) < 2){
             setflag(FLAG_TEMP_2)
         }
 }
@@ -42,8 +42,8 @@ script ResetAlcatrazExhibit_Script {
         clearflag(TRAINER_FLAGS_START + TRAINER_ZANDER)
         clearflag(TRAINER_FLAGS_START + TRAINER_LEAH)
 
-        if (var(VAR_PSFCAVE7_STATE) < 2){
-            setvar(VAR_PSFCAVE7_EXHIBIT_STATE,0)
+        if (var(VAR_ALCATRAZ_STATE) < 2){
+            setvar(VAR_ALCATRAZ_EXHIBIT_STATE,0)
         }
 }
 
@@ -60,12 +60,12 @@ script Alcatraz_UnlockedDestinations_Script {
 }
 
 script Alcatraz_FerryState0_Script {
-    multichoicedefault(18,8,PSFCAVE7_FERRY_DESTINATIONS_VER1,0,FALSE)
+    multichoicedefault(18,8,ALCATRAZ_FERRY_DESTINATIONS_VER1,0,FALSE)
         call(SlateportCity_Harbor_EventScript_BoardFerry)
 
         switch (var(VAR_RESULT)){
-            case 0: warp(MAP_PSFPLACE13,5,6)
-            case 1: warp(MAP_PSFCITY17,3,16)
+            case 0: warp(MAP_FISHERMANSWHARF,5,6)
+            case 1: warp(MAP_ALAMEDA,3,16)
             case 2: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
             case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         }

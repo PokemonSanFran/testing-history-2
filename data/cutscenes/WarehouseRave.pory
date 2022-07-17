@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN2 = 1
-const PSFTRANSRIVAL = 1
+const KOGA = 1
+const BIANCA = 1
 
 script WarehouseRave_SetUpRave_Script {
     setweather(WEATHER_FOG_DIAGONAL)
@@ -13,8 +13,8 @@ script WarehouseRave_HideObject_Script {
 }
 
 script WarehouseRave_MoveObject_Script {
-    setobjectxy(PSFBADADMIN2,5,5)
-        setobjectxyperm(PSFBADADMIN2,5,5)
+    setobjectxy(KOGA,5,5)
+        setobjectxyperm(KOGA,5,5)
 }
 
 script WarehouseRave_ControlExits_Script {
@@ -72,8 +72,8 @@ script WarehouseRave_Intro_Dialogue {
         callnative(ClearMugshot)
 
         clearflag(FLAG_TEMP_1)
-        addobject(PSFBADADMIN2)
-        applymovement(PSFBADADMIN2,WarehouseRave_WalkOutShadows)
+        addobject(KOGA)
+        applymovement(KOGA,WarehouseRave_WalkOutShadows)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_N)
@@ -150,7 +150,7 @@ script WarehouseRave_PostBattle_Script {
 
         applymovement(PLAYER,WarehouseRave_RunOutTheWarehouse)
         waitmovement(0)
-        warpsilent(MAP_PSFCITY9,1)
+        warpsilent(MAP_OAKLAND,1)
 }
 
 script WarehouseRave_OutsideWarehouse_Dialogue {
@@ -159,9 +159,9 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         waitmovement(0)
         playse(SE_PIN)
         waitse
-        applymovement(PSFTRANSRIVAL,Common_Movement_ExclamationMark)
+        applymovement(BIANCA,Common_Movement_ExclamationMark)
         waitmovement(0)
-        applymovement(PSFTRANSRIVAL,WarehouseRave_RunToPlayer)
+        applymovement(BIANCA,WarehouseRave_RunToPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -223,9 +223,9 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFTRANSRIVAL,WarehouseRave_LeaveCity)
+        applymovement(BIANCA,WarehouseRave_LeaveCity)
         waitmovement(0)
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
 
         addvar(VAR_STORYLINE_STATE,1)
         addvar(VAR_FORTREE_CITY_STATE,1)

@@ -5,7 +5,7 @@ mapscripts Dogpatch_MapScripts {
 }
 
 script Dogpatch_MapScripts_OnTransition {
-    switch (var(VAR_PSFCITY7_STATE)){
+    switch (var(VAR_DOGPATCH_STATE)){
         case 0: call(HowDoWeGetHome_HideObject_Script)
         case 1:
             call(HowDoWeGetHome_ObjectCleanUp_Script)

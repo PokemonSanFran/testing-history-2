@@ -16,22 +16,22 @@
     {
       "direction": "right",
       "offset": 3,
-      "map": "MAP_PSFPLACE7"
+      "map": "MAP_LOMBARDSTREET"
     },
     {
       "direction": "up",
       "offset": -5,
-      "map": "MAP_PSFPLACE9"
+      "map": "MAP_FORTPOINT"
     },
     {
       "direction": "left",
       "offset": 0,
-      "map": "MAP_PSFCITY3"
+      "map": "MAP_PRESIDIO"
     },
     {
       "direction": "down",
       "offset": 16,
-      "map": "MAP_PSFPLACE3"
+      "map": "MAP_PAINTEDLADIES"
     }
   ],
   "object_events": [

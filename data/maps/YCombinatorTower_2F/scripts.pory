@@ -6,8 +6,8 @@ mapscripts YCombinatorTower_2F_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_PSFBADGUY1TOWER_2F_STATE, 3: YCombinatorTower_2F_MovePlayerIntoPosition_Script
-            VAR_PSFBADGUY1TOWER_2F_STATE, 5: YCombinatorTower_2F_MovePlayerIntoPosition_Script
+        VAR_YCOMBINATORTOWER_2F_STATE, 3: YCombinatorTower_2F_MovePlayerIntoPosition_Script
+            VAR_YCOMBINATORTOWER_2F_STATE, 5: YCombinatorTower_2F_MovePlayerIntoPosition_Script
             VAR_LILYCOVE_CONTEST_LOBBY_STATE,3: LetsBurnThisMotherDown_MissionComplete_Dialogue
             VAR_PETALBURG_WOODS_STATE,4: HowDisappointing_MissionComplete_Dialogue
             VAR_RUSTURF_TUNNEL_STATE,6: Manhunt_MissionComplete_Dialogue
@@ -17,7 +17,7 @@ mapscripts YCombinatorTower_2F_MapScripts {
 
 script YCombinatorTower_2F_MapScripts_OnTransition {
 
-    switch (var(VAR_PSFBADGUY1TOWER_2F_STATE)){
+    switch (var(VAR_YCOMBINATORTOWER_2F_STATE)){
         case 0: call(WelcomeToTheWarRoom_Object_Hide_Script)
         case 1: call(WelcomeToTheWarRoom_Object_Hide_Script)
         case 2: call(WelcomeToTheWarRoom_Object_Hide_Script)
@@ -65,13 +65,13 @@ script YCombinatorTower_2F_MovePlayerIntoPosition_Script {
                 fadescreen(FADE_FROM_BLACK)
         }
 
-    switch (var(VAR_PSFBADGUY1TOWER_2F_STATE)){
+    switch (var(VAR_YCOMBINATORTOWER_2F_STATE)){
         case 3: goto(WelcomeToTheWarRoom_ExplainSitaution_Dialogue)
         case 5: goto(YouRealizeWereEvilRight_Open_Dialogue)
     }
 }
 
-script YCombinatorTower_2F_Psfbadadmin_Event_Script {
+script YCombinatorTower_2F_Oak_Event_Script {
     lock
         switch (var(VAR_STORYLINE_STATE)){
             case 43: call(CongratsYourAssAsshole_Intro_Dialogue)

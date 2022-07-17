@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER2 = 1
+const BUGSY = 1
 
 mapscripts Japantown_Gym_MapScripts {
 }

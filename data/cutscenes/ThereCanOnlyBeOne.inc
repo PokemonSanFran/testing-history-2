@@ -212,7 +212,7 @@ ThereCanOnlyBeOne_StarterSelectEnd_Script::
 ThereCanOnlyBeOne_WarpPlayer_Script::
 	lock
 	clearflag FLAG_SPAWN_INVISIBLE
-	warpsilent MAP_PSFCITY8, 255, 3, 10
+	warpsilent MAP_SOUTHBAY, 255, 3, 10
 	return
 
 

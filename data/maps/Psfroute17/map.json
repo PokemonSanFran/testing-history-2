@@ -16,17 +16,17 @@
     {
       "direction": "down",
       "offset": 1,
-      "map": "MAP_PSFCITY8"
+      "map": "MAP_SOUTHBAY"
     },
     {
       "direction": "up",
       "offset": 0,
-      "map": "MAP_PSFCITYY16"
+      "map": "MAP_BERNALHEIGHTS"
     },
     {
       "direction": "up",
       "offset": 0,
-      "map": "MAP_PSFCITYY16"
+      "map": "MAP_BERNALHEIGHTS"
     }
   ],
   "object_events": [

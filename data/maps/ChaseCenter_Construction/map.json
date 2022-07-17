@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE14_CONSTRUCTION",
+  "id": "MAP_CHASECENTER_CONSTRUCTION",
   "name": "ChaseCenter_Construction",
-  "layout": "LAYOUT_PSFPLACE14_CONSTRUCTION",
+  "layout": "LAYOUT_CHASECENTER_CONSTRUCTION",
   "music": "MUS_RG_SEVII_CAVE",
-  "region_map_section": "MAPSEC_PSFPLACE14",
+  "region_map_section": "MAPSEC_CHASECENTER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",

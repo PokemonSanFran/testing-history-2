@@ -16,7 +16,7 @@ OaklandFerry_UnlockedDestinations_Script_1:
 	return
 
 OaklandFerry_UnlockedDestinations_Script_3:
-	multichoicedefault 18, 8, PSFCITY17_FERRY_DESTINATIONS_VER1, 2, FALSE
+	multichoicedefault 18, 8, ALAMEDA_FERRY_DESTINATIONS_VER1, 2, FALSE
 	goto OaklandFerry_UnlockedDestinations_Script_1
 
 
@@ -29,7 +29,7 @@ OaklandFerry_SetDestination_Script::
 	return
 
 OaklandFerry_SetDestination_Script_2:
-	warp MAP_PSFPLACE11, 8, 11
+	warp MAP_FERRYBUILDING, 8, 11
 	return
 
 OaklandFerry_SetDestination_Script_3:

@@ -32,7 +32,7 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	setvar VAR_ROUTE119_STATE, 0
-	clearflag FLAG_PSFPLACE14_TOURNAMENT_HAPPENING
+	clearflag FLAG_CHASECENTER_TOURNAMENT_HAPPENING
 	addvar VAR_STORYLINE_STATE, 1
 	fadescreenspeed FADE_TO_BLACK, 24
 	special HealPlayerParty

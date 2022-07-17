@@ -1,20 +1,20 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
-const PSFNATIVERIVAL = 3
-const PSFGOODADMIN = 13
-const PSFELITE1 = 15
-const PSFELITE2 = 16
-const PSFELITE3 = 17
-const PSFELITE4 = 18
+const ARCHER = 3
+const ARIANA = 13
+const MALVA = 15
+const DRASNA = 16
+const SIEBOLD = 17
+const WIKSTROM = 18
 
 script LetsFinishThis_ObjectSetUp_Script {
     setflag(FLAG_TEMP_2) //hide police
 
-        setobjectxy(PSFGOODADMIN,32,12)
-        setobjectxyperm(PSFGOODADMIN,32,12)
+        setobjectxy(ARIANA,32,12)
+        setobjectxyperm(ARIANA,32,12)
 
-        setobjectxy(PSFNATIVERIVAL,33,12)
-        setobjectxyperm(PSFNATIVERIVAL,33,12)
+        setobjectxy(ARCHER,33,12)
+        setobjectxyperm(ARCHER,33,12)
 }
 
 script LetsFinishThis_MovePlayer_Script {
@@ -117,7 +117,7 @@ script LetsFinishThis_Debrief_Dialogue {
 script LetsFinishThis_GoToFlashback_Script {
     fadescreen(FADE_TO_BLACK)
         //PSF TODO Flashback
-        msgbox(format("this is a flashback to Psfbadadmin's kids explaining the warp panels."),MSGBOX_AUTOCLOSE)
+        msgbox(format("this is a flashback to Oak's kids explaining the warp panels."),MSGBOX_AUTOCLOSE)
         fadescreen(FADE_FROM_BLACK)
         goto(LetsFinishThis_StartPlanning_Dialogue)
 }
@@ -136,8 +136,8 @@ script LetsFinishThis_StartPlanning_Dialogue {
         closemessage
 
         applymovement(PLAYER, Common_Movement_FaceDown)
-        applymovement(PSFELITE4, LetsFinishThis_WalkToPlayer)
-        waitmovement(PSFELITE4)
+        applymovement(WIKSTROM, LetsFinishThis_WalkToPlayer)
+        waitmovement(WIKSTROM)
 
         setvar(VAR_0x8000, MUGSHOT_CAITLIN)
         callnative(DrawMugshot)
@@ -145,8 +145,8 @@ script LetsFinishThis_StartPlanning_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE4, LetsFinishThis_WalkAway)
-        waitmovement(PSFELITE4)
+        applymovement(WIKSTROM, LetsFinishThis_WalkAway)
+        waitmovement(WIKSTROM)
         
         addvar(VAR_STORYLINE_STATE,1)
 

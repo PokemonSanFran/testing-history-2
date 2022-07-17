@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY4",
+  "id": "MAP_PACIFICA",
   "name": "Pacifica",
-  "layout": "LAYOUT_PSFCITY4",
+  "layout": "LAYOUT_PACIFICA",
   "music": "MUS_FORTREE",
-  "region_map_section": "MAPSEC_PSFCITY4",
+  "region_map_section": "MAPSEC_PACIFICA",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_CITY",

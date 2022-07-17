@@ -1,17 +1,17 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFNATIVERIVAL = 1
-const PSFELITE2 = 2
-const PSFELITE1 = 3
+const ARCHER = 1
+const DRASNA = 2
+const MALVA = 3
 const GARBODOR = 4
 
 script YouRealizeTheyreEvilRight_HideObject_Script {
-    if (var(VAR_PSFCAVE7_STATE) != 3){
+    if (var(VAR_ALCATRAZ_STATE) != 3){
         setflag(FLAG_TEMP_1)
     }
 }
 
 script YouRealizeTheyreEvilRight_ShowObject_Script {
-    if (var(VAR_PSFCAVE7_STATE) == 3){
+    if (var(VAR_ALCATRAZ_STATE) == 3){
         addobject(11) //Show Archer at entrance
     }
 }
@@ -37,7 +37,7 @@ script YouRealizeTheyreEvilRight_HideBasement_Script {
 
 script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
     lock
-        addvar(VAR_PSFCAVE7_STATE,1)
+        addvar(VAR_ALCATRAZ_STATE,1)
         giveitem(ITEM_HM03) //PSF TODO remove once actual surfing quest is in
         clearflag(FLAG_SCOTT_CALL_FORTREE_GYM)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -108,7 +108,7 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
 script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
     lock
         givecustommon(SPECIES_KYOGRE,100,ITEM_BLUE_ORB,ITEM_LURE_BALL,NATURE_MODEST,0,0,0,4,252,0,252,31,31,31,31,31,31,MOVE_SURF,MOVE_CALM_MIND,MOVE_ORIGIN_PULSE,MOVE_ICE_BEAM)
-        addvar(VAR_PSFCAVE7_STATE,1)
+        addvar(VAR_ALCATRAZ_STATE,1)
         playse(SE_POKENAV_CALL)
         waitse
         playse(SE_POKENAV_CALL)
@@ -187,7 +187,7 @@ script YouRealizeTheyreEvilRight_RemoveGhost {
 }
 
 script YouRealizeTheyreEvil_ReleaseGarbodor_Script {
-    applymovement(PSFNATIVERIVAL,YouRealizeTheyreEvilRight_StepBackward)
+    applymovement(ARCHER,YouRealizeTheyreEvilRight_StepBackward)
         waitmovement(0)
 
         playse(SE_BALL_OPEN)
@@ -220,8 +220,8 @@ script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
         closemessage
 
         playse(SE_PIN)
-        applymovement(PSFELITE1,Common_Movement_ExclamationMark)
-        applymovement(PSFELITE2,Common_Movement_ExclamationMark)
+        applymovement(MALVA,Common_Movement_ExclamationMark)
+        applymovement(DRASNA,Common_Movement_ExclamationMark)
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
@@ -262,8 +262,8 @@ script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
         closemessage
 
         call(YouRealizeTheyreEvil_ReleaseGarbodor_Script)
-        applymovement(PSFELITE2,Common_Movement_FaceLeft)
-        applymovement(PSFELITE1,Common_Movement_FaceUp)
+        applymovement(DRASNA,Common_Movement_FaceLeft)
+        applymovement(MALVA,Common_Movement_FaceUp)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -424,7 +424,7 @@ script YouRealizeTheyreEvilRight_Framing_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFNATIVERIVAL,YouRealizeTheyreEvilRight_WalkAroundToPlayer)
+        applymovement(ARCHER,YouRealizeTheyreEvilRight_WalkAroundToPlayer)
         waitmovement(0)
         applymovement(PLAYER,Common_Movement_FaceLeft)
         waitmovement(0)
@@ -437,7 +437,7 @@ script YouRealizeTheyreEvilRight_Framing_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_YeahOkay)
 
-        addvar(VAR_PSFCAVE7_STATE,1)
+        addvar(VAR_ALCATRAZ_STATE,1)
 
         if (var(VAR_TEMP_0) == 99){
             call(YouRealizeTheyreEvilRight_AskPlayerGift_Script)

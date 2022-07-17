@@ -1,21 +1,21 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN = 9 //FLAG_TEMP_3
-const PSFTRANSRIVAL = 10 //FLAG_TEMP_8
-const PSFBADBOSS = 11 // FLAG_TEMP_5
-const PSFBADADMIN2 = 14 // FLAG_TEMP_4
-const PSFBADADMIN3 = 2 // FLAG_TEMP_1
+const OAK = 9 //FLAG_TEMP_3
+const BIANCA = 10 //FLAG_TEMP_8
+const ROSE = 11 // FLAG_TEMP_5
+const KOGA = 14 // FLAG_TEMP_4
+const SABRINA = 2 // FLAG_TEMP_1
 
 script LetsBurnThisMotherDown_ObjectSetUp_Script {
-    setobjectxy(PSFBADADMIN3,8,6)
-        setobjectxyperm(PSFBADADMIN3,8,6)
-        setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_UP)
+    setobjectxy(SABRINA,8,6)
+        setobjectxyperm(SABRINA,8,6)
+        setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_UP)
 }
 
 script LetsBurnThisMotherDown_ObjectMove_Script {
     clearflag(FLAG_TEMP_5)
-    addobject(PSFBADBOSS)
-    setobjectxyperm(PSFBADBOSS,11,12)
-    setobjectmovementtype(PSFBADBOSS,MOVEMENT_TYPE_FACE_LEFT)
+    addobject(ROSE)
+    setobjectxyperm(ROSE,11,12)
+    setobjectmovementtype(ROSE,MOVEMENT_TYPE_FACE_LEFT)
 }
 
 script LetsBurnThisMotherDown_ObjectShow_Script {
@@ -194,7 +194,7 @@ script LetsBurnThisMotherDown_PostBattle_Dialogue {
         
         fadescreen(FADE_TO_BLACK)
         fadedefaultbgm
-        warpsilent(MAP_PSFBADGUY1TOWER_2F,255,10,12)
+        warpsilent(MAP_YCOMBINATORTOWER_2F,255,10,12)
         release
         end
 }
@@ -220,9 +220,9 @@ script LetsBurnThisMotherDown_MissionComplete_Dialogue {
         callnative(ClearMugshot)
         addvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,1)
         addvar(VAR_STORYLINE_STATE,1)
-        applymovement(PSFBADBOSS,LetsBurnThisMotherDown_LeaveRoom)
+        applymovement(ROSE,LetsBurnThisMotherDown_LeaveRoom)
         waitmovement(0)
-        removeobject(PSFBADBOSS)
+        removeobject(ROSE)
         release
         call(ExhibitionBattle_TimeSkip_Script)
         end

@@ -94,8 +94,8 @@ YoungPadawan_PostBattle_Dialogue_1:
 	applymovement OBJ_EVENT_ID_PLAYER, YoungPadawan_GetOutOfWay
 	waitmovement 0
 	removeobject 9
-	addvar VAR_PSFCAVE7_STATE, 1
-	addvar VAR_PSFCAVE7_EXHIBIT_STATE, 1
+	addvar VAR_ALCATRAZ_STATE, 1
+	addvar VAR_ALCATRAZ_EXHIBIT_STATE, 1
 	release
 	end
 

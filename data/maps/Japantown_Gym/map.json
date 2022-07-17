@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY14_GYM",
+  "id": "MAP_JAPANTOWN_GYM",
   "name": "Japantown_Gym",
-  "layout": "LAYOUT_PSFCITY14_GYM",
+  "layout": "LAYOUT_JAPANTOWN_GYM",
   "music": "MUS_GYM",
-  "region_map_section": "MAPSEC_PSFCITY14",
+  "region_map_section": "MAPSEC_JAPANTOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -33,7 +33,7 @@
       "x": 9,
       "y": 19,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY14",
+      "dest_map": "MAP_JAPANTOWN",
       "dest_warp_id": 0
     }
   ],

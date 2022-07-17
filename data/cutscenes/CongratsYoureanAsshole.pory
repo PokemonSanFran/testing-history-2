@@ -1,14 +1,14 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN = 9 //FLAG_TEMP_3
-const PSFTRANSRIVAL = 10 //FLAG_TEMP_8
-const PSFBADBOSS = 11 // FLAG_TEMP_5
-const PSFBADADMIN2 = 14 // FLAG_TEMP_4
-const PSFBADADMIN3 = 2 // FLAG_TEMP_1
+const OAK = 9 //FLAG_TEMP_3
+const BIANCA = 10 //FLAG_TEMP_8
+const ROSE = 11 // FLAG_TEMP_5
+const KOGA = 14 // FLAG_TEMP_4
+const SABRINA = 2 // FLAG_TEMP_1
 
 script CongratsYoureanAsshole_ObjectSetUp_Script {
-    addobject(PSFBADBOSS)
-    setobjectxy(PSFBADBOSS,9,21)
-    setobjectxyperm(PSFBADBOSS,9,21)
+    addobject(ROSE)
+    setobjectxy(ROSE,9,21)
+    setobjectxyperm(ROSE,9,21)
 }
 
 script CongratsYoureanAsshole_ObjectCleanUp_Script {
@@ -18,20 +18,20 @@ script CongratsYoureanAsshole_ObjectCleanUp_Script {
         setflag(FLAG_TEMP_8)
         setflag(FLAG_TEMP_9)
 
-        setobjectxy(PSFBADADMIN2,10,15)
-        setobjectxyperm(PSFBADADMIN2,10,15)
-        setobjectxy(PSFBADADMIN,10,13)
-        setobjectxyperm(PSFBADADMIN,10,13)
-        setobjectxy(PSFBADADMIN3,7,12)
-        setobjectxyperm(PSFBADADMIN3,7,12)
-        setobjectmovementtype(PSFBADADMIN2,MOVEMENT_TYPE_FACE_LEFT)
-        setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_RIGHT)
-        setobjectmovementtype(PSFBADADMIN,MOVEMENT_TYPE_FACE_LEFT)
+        setobjectxy(KOGA,10,15)
+        setobjectxyperm(KOGA,10,15)
+        setobjectxy(OAK,10,13)
+        setobjectxyperm(OAK,10,13)
+        setobjectxy(SABRINA,7,12)
+        setobjectxyperm(SABRINA,7,12)
+        setobjectmovementtype(KOGA,MOVEMENT_TYPE_FACE_LEFT)
+        setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_RIGHT)
+        setobjectmovementtype(OAK,MOVEMENT_TYPE_FACE_LEFT)
 }
 
 script CongratsYourAssAsshole_Intro_Dialogue {
 
-if (var(VAR_PSFBADGUY1TOWER_2F_STATE) == 6){
+if (var(VAR_YCOMBINATORTOWER_2F_STATE) == 6){
     goto(CongratsYoureanAsshole_FalseTimelineSplit_Script)
 }
 
@@ -60,10 +60,10 @@ setvar(VAR_0x8000, MUGSHOT_N)
 callnative(DrawMugshot)
 msgbox(gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal)
 
-applymovement(PSFBADADMIN2,Common_Movement_WalkInPlaceLeft)
+applymovement(KOGA,Common_Movement_WalkInPlaceLeft)
 waitmovement(0)
 
-addvar(VAR_PSFBADGUY1TOWER_2F_STATE,1)
+addvar(VAR_YCOMBINATORTOWER_2F_STATE,1)
 setvar(VAR_0x8000, MUGSHOT_N)
 callnative(DrawMugshot)
 msgbox(gText_CongratsYoureanAsshole_TheresNoTurningBack)
@@ -171,7 +171,7 @@ text gText_CongratsYoureanAsshole_ThingsWillTake {
 }
 
 text gText_CongratsYoureanAsshole_ThatsTheSpirit {
-	format("That’s the spirit! Psfbadadmin, Sabrina, and I all have different missions for you. Come talk to us when you're ready.")
+	format("That’s the spirit! Oak, Sabrina, and I all have different missions for you. Come talk to us when you're ready.")
 }
 
 movement CongratsYoureanAsshole_WalkTowardsPlayer {

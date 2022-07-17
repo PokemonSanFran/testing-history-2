@@ -34,7 +34,7 @@ WhyDidntYouRatMeOut_StopPlayerLeaving_1:
 	callnative ClearMugshot
 	closemessage
 	playse SE_EXIT
-	warpsilent MAP_PSFPLACE14_STANDS, 4, 6
+	warpsilent MAP_CHASECENTER_STANDS, 4, 6
 	return
 
 WhyDidntYouRatMeOut_StopPlayerLeaving_2:
@@ -138,7 +138,7 @@ WhyDidntYouRatMeOut_ConversationInStands::
 	callnative ClearMugshot
 	closemessage
 	playse SE_EXIT
-	warpsilent MAP_PSFPLACE14_SKYBOX, 10, 3
+	warpsilent MAP_CHASECENTER_SKYBOX, 10, 3
 	return
 
 

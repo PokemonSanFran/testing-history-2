@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFGOODADMIN = 2
-const PSFGOODBOSS = 3
-const PSFNATIVERIVAL = 4
+const BIANCA = 1
+const ARIANA = 2
+const GIOVANNI = 3
+const ARCHER = 4
 const PKMNA = 5
 const PKMNB = 6
 
@@ -18,24 +18,24 @@ script WhyAreYouHelpingThem_ObjectCleanUp_Script {
 }
 
 script WhyAreYouHelpingThem_MoveObject_Script {
-    setobjectxy(PSFTRANSRIVAL,2,16)
-        setobjectxyperm(PSFTRANSRIVAL,2,16)
+    setobjectxy(BIANCA,2,16)
+        setobjectxyperm(BIANCA,2,16)
 }
 
 script WhyAreYouHelpingThem_MoveObjectBoss_Script {
-    setobjectxy(PSFTRANSRIVAL,2,16)
-        setobjectxyperm(PSFTRANSRIVAL,2,16)
-        setobjectxy(PSFGOODBOSS,7,3)
-        setobjectxyperm(PSFGOODBOSS,7,3)
+    setobjectxy(BIANCA,2,16)
+        setobjectxyperm(BIANCA,2,16)
+        setobjectxy(GIOVANNI,7,3)
+        setobjectxyperm(GIOVANNI,7,3)
 }
 
 script WhyAreYouHelpingThem_MoveObjectAriana_Script {
     setflag(FLAG_TEMP_2)
-        setobjectxy(PSFGOODADMIN,1,9)
-        setobjectxyperm(PSFGOODADMIN,1,9)
-        setobjectxy(PSFTRANSRIVAL,2,16)
-        setobjectxyperm(PSFTRANSRIVAL,2,16)
-        turnobject(PSFGOODADMIN,DIR_NORTH)
+        setobjectxy(ARIANA,1,9)
+        setobjectxyperm(ARIANA,1,9)
+        setobjectxy(BIANCA,2,16)
+        setobjectxyperm(BIANCA,2,16)
+        turnobject(ARIANA,DIR_NORTH)
 }
 
 script WhyAreYouHelpingThem_BlowHoleWall {
@@ -46,11 +46,11 @@ script WhyAreYouHelpingThem_BlowHoleWall {
 script WhyAreYouHelpingThem_ObjectSetUpPostSave_Script {
         setflag(FLAG_TEMP_1)
         setflag(FLAG_TEMP_2)
-        setobjectxy(PSFNATIVERIVAL,6,3)
-        setobjectxyperm(PSFNATIVERIVAL,6,3)
-        turnobject(PSFNATIVERIVAL,DIR_WEST)
-        setobjectxy(PSFTRANSRIVAL,2,16)
-        setobjectxyperm(PSFTRANSRIVAL,2,16)
+        setobjectxy(ARCHER,6,3)
+        setobjectxyperm(ARCHER,6,3)
+        turnobject(ARCHER,DIR_WEST)
+        setobjectxy(BIANCA,2,16)
+        setobjectxyperm(BIANCA,2,16)
 }
 
 script WhyAreYouHelpingThem_ObjectDebriefSetUp_Script {
@@ -86,7 +86,7 @@ script WhyAreYouHelpingThem_StartRaid {
         playse(SE_FAILURE)
         playse(SE_FAILURE)
         playse(SE_FAILURE)
-        applymovement(PSFTRANSRIVAL,Common_Movement_FaceDown)
+        applymovement(BIANCA,Common_Movement_FaceDown)
         applymovement(7,WhyAreYouHelpingThem_PoliceRunIn)
         applymovement(8,WhyAreYouHelpingThem_PoliceRunIn)
         applymovement(9,WhyAreYouHelpingThem_PoliceRunIn)
@@ -116,7 +116,7 @@ script WhyAreYouHelpingThem_StartRaid {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_PoliceRunIn)
+        applymovement(BIANCA,WhyAreYouHelpingThem_PoliceRunIn)
         waitmovement(0)
         removeobject(7)
         removeobject(8)
@@ -129,7 +129,7 @@ script WhyAreYouHelpingThem_StartRaid {
 script WhyAreYouHelpingThem_WitnessBattle {
     addvar(VAR_ROUTE118_STATE,1)
         lock
-        applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_FleeTheBattle)
+        applymovement(GIOVANNI,WhyAreYouHelpingThem_FleeTheBattle)
         waitmovement(0)
         call(WhyAreYouHelpingThem_MoveObjectBoss_Script)
 
@@ -145,7 +145,7 @@ script WhyAreYouHelpingThem_WitnessBattle {
 
 script WhyAreYouHelpingThem_PreBattleBoss_Script {
     lock
-        applymovement(PSFGOODBOSS,Common_Movement_FaceLeft)
+        applymovement(GIOVANNI,Common_Movement_FaceLeft)
         applymovement(PLAYER,WhyAreYouHelpingThem_ApproachGiovanni)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
@@ -154,7 +154,7 @@ script WhyAreYouHelpingThem_PreBattleBoss_Script {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFGOODBOSS,Common_Movement_WalkLeft)
+        applymovement(GIOVANNI,Common_Movement_WalkLeft)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
@@ -169,7 +169,7 @@ script WhyAreYouHelpingThem_PreBattleBoss_Script {
 
 script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         addvar(VAR_ROUTE118_STATE,1)
-        addobject(PSFGOODADMIN)
+        addobject(ARIANA)
         call(WhyAreYouHelpingThem_MoveObjectAriana_Script)
 
         if (defeated(TRAINER_ARCHIE)){
@@ -179,7 +179,7 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
                 msgbox(gText_WhyAreYouHelpingThem_YoureIncredible)
                 closemessage
                 callnative(ClearMugshot)
-                applymovement(PSFGOODBOSS,Common_Movement_WalkInPlaceLeft)
+                applymovement(GIOVANNI,Common_Movement_WalkInPlaceLeft)
                 waitmovement(0)
                 giveitem(ITEM_MASTER_BALL,1)
 
@@ -199,8 +199,8 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_WalkPastPlayer)
-        applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_HealAndFaceAdmin)
+        applymovement(ARIANA,WhyAreYouHelpingThem_WalkPastPlayer)
+        applymovement(GIOVANNI,WhyAreYouHelpingThem_HealAndFaceAdmin)
         waitmovement(0)
         call(Common_EventScript_OutOfCenterPartyHeal)
 
@@ -212,7 +212,7 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
 
         playse(SE_PIN)
         waitse
-        applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_ExclaimAndFacePlayer)
+        applymovement(ARIANA,WhyAreYouHelpingThem_ExclaimAndFacePlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -229,8 +229,8 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_BeginEscape)
-        applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_BeginEscape)
+        applymovement(GIOVANNI,WhyAreYouHelpingThem_BeginEscape)
+        applymovement(ARIANA,WhyAreYouHelpingThem_BeginEscape)
         waitmovement(0)
         goto(WhyAreYouHelpingThem_ExplodeWall_Script)
 }
@@ -249,8 +249,8 @@ script WhyAreYouHelpingThem_ExplodeWall_Script {
         clearflag(FLAG_TEMP_3)
         playse(SE_EXIT)
         waitse
-        addobject(PSFNATIVERIVAL)
-        applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_WalkOutOfHole)
+        addobject(ARCHER)
+        applymovement(ARCHER,WhyAreYouHelpingThem_WalkOutOfHole)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -274,14 +274,14 @@ script WhyAreYouHelpingThem_ExplodeWall_Script {
         msgbox(gText_WhyAreYouHelpingThem_Sigh)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFGOODBOSS,WhyAreYouHelpingThem_WalkIntoHoleA)
-        applymovement(PSFGOODADMIN,WhyAreYouHelpingThem_WalkIntoHoleB)
+        applymovement(GIOVANNI,WhyAreYouHelpingThem_WalkIntoHoleA)
+        applymovement(ARIANA,WhyAreYouHelpingThem_WalkIntoHoleB)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFGOODADMIN)
-        removeobject(PSFGOODBOSS)
-        applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_ApproachPlayer)
+        removeobject(ARIANA)
+        removeobject(GIOVANNI)
+        applymovement(ARCHER,WhyAreYouHelpingThem_ApproachPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -327,14 +327,14 @@ script WhyAreYouHelpingThem_PostBattle_Dialogue {
         closemessage
 
         applymovement(PLAYER,Common_Movement_FaceLeft)
-        applymovement(PSFNATIVERIVAL,WhyAreYouHelpingThem_WalkIntoHoleC)
+        applymovement(ARCHER,WhyAreYouHelpingThem_WalkIntoHoleC)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFNATIVERIVAL)
-        setobjectxyperm(PSFTRANSRIVAL,1,8)
-        addobject(PSFTRANSRIVAL)
-        applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_RunToPlayer)
+        removeobject(ARCHER)
+        setobjectxyperm(BIANCA,1,8)
+        addobject(BIANCA)
+        applymovement(BIANCA,WhyAreYouHelpingThem_RunToPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -348,7 +348,7 @@ script WhyAreYouHelpingThem_PostBattle_Dialogue {
         closemessage
         addvar(VAR_NATIVERIVALBETA_STATE,1)
         fadescreen(FADE_TO_BLACK)
-        warpsilent(MAP_PSFCITY17,255,26,6)
+        warpsilent(MAP_ALAMEDA,255,26,6)
 }
 
 
@@ -427,7 +427,7 @@ script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
         closemessage
 
 
-        applymovement(PSFTRANSRIVAL,WhyAreYouHelpingThem_LeaveCompoundB)
+        applymovement(BIANCA,WhyAreYouHelpingThem_LeaveCompoundB)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
@@ -445,7 +445,7 @@ script WhyAreYouHelpingThem_StartChampionship_Dialogue {
                 return
         } else {
             addvar(VAR_STORYLINE_STATE,1)
-                warpsilent(MAP_PSFPLACE14_LOCKERS,9,6)
+                warpsilent(MAP_CHASECENTER_LOCKERS,9,6)
         }
 }
 
@@ -586,7 +586,7 @@ text gText_WhyAreYouHelpingThem_AShameStillWeveShutDown {
 }
 
 text gText_WhyAreYouHelpingThem_NotBadInThere {
-    format("Not bad in there. Psfbadadmin wants you kids back at SouthBay Compound.")
+    format("Not bad in there. Oak wants you kids back at SouthBay Compound.")
 }
 
 text gText_WhyAreYouHelpingThem_WhatADay {

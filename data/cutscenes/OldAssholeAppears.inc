@@ -35,7 +35,7 @@ OldAssholeAppears_Intro_Dialogue::
 
 
 OldAssholeAppears_HealPlayer_Dialogue::
-	addvar VAR_PSFPLACE7_STATE, 1
+	addvar VAR_LOMBARDSTREET_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_IllHealYou

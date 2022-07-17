@@ -74,7 +74,7 @@ EnterChuck_ChuckDefeated_Script::
 	giveitem ITEM_TM05
 	closemessage
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_PSFPLACE9_STATE, 1
+	setvar VAR_FORTPOINT_STATE, 1
 	release
 	end
 

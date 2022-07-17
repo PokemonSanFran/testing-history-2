@@ -3,7 +3,7 @@ const POLICEA = 1 //FLAG_TEMP_1
 const POLICEB = 2 //FLAG_TEMP_1
 const POLICEC = 3 //FLAG_TEMP_1
 const CHIEF = 4 //FLAG_TEMP_4
-const PSFGOODADMIN = 5 //FLAG_TEMP_5
+const ARIANA = 5 //FLAG_TEMP_5
 const GRUNTA = 6//FLAG_TEMP_5
 const GRUNTB = 7//FLAG_TEMP_5
 
@@ -20,8 +20,8 @@ script HowDisappointing_HideTeamRocket_Script {
 script HowDisappointing_HidePolice_Script {
     setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_4)
-    setobjectxy(PSFGOODADMIN,17,2)
-    setobjectxyperm(PSFGOODADMIN,17,2)
+    setobjectxy(ARIANA,17,2)
+    setobjectxyperm(ARIANA,17,2)
 }
 
 script HowDisappointing_StartRaid_Dialogue {
@@ -113,15 +113,15 @@ waitmovement(GRUNTB)
 
 playse(SE_EXIT)
 waitse
-addobject(PSFGOODADMIN)
-applymovement(PSFGOODADMIN,HowDisappointing_Escape)
+addobject(ARIANA)
+applymovement(ARIANA,HowDisappointing_Escape)
 waitmovement(0)
 
 playse(SE_PIN)
 applymovement(PLAYER,Common_Movement_ExclamationMark)
 waitmovement(0)
-setobjectxy(PSFGOODADMIN,17,2)
-setobjectxyperm(PSFGOODADMIN,17,2)
+setobjectxy(ARIANA,17,2)
+setobjectxyperm(ARIANA,17,2)
 release
 end
 }
@@ -183,32 +183,32 @@ script HowDisappointing_ArrestScene_Dialogue {
     waitmovement(0)
     msgbox(gText_HowDisappointing_YoureUnderArrest)
 addvar(VAR_PETALBURG_WOODS_STATE,1)
-    warpsilent(MAP_PSFBADGUY1TOWER_2F,255,16,26)
+    warpsilent(MAP_YCOMBINATORTOWER_2F,255,16,26)
 }
 
-const PSFBADADMIN = 9 //FLAG_TEMP_3
-const PSFTRANSRIVAL = 10 //FLAG_TEMP_8
-const PSFBADBOSS = 11 // FLAG_TEMP_5
-const PSFBADADMIN2 = 14 // FLAG_TEMP_4
-const PSFBADADMIN3 = 2 // FLAG_TEMP_1
+const OAK = 9 //FLAG_TEMP_3
+const BIANCA = 10 //FLAG_TEMP_8
+const ROSE = 11 // FLAG_TEMP_5
+const KOGA = 14 // FLAG_TEMP_4
+const SABRINA = 2 // FLAG_TEMP_1
 const CHIEF2 = 13 //FLAG_TEMP_7
 
 script HowDisappointing_PostMissionObjectSetUp_Script {
-    setobjectxy(PSFBADADMIN2,16,28)
-    setobjectxyperm(PSFBADADMIN2,16,28)
-    setobjectmovementtype(PSFBADADMIN2,MOVEMENT_TYPE_FACE_UP)
+    setobjectxy(KOGA,16,28)
+    setobjectxyperm(KOGA,16,28)
+    setobjectmovementtype(KOGA,MOVEMENT_TYPE_FACE_UP)
     clearflag(FLAG_TEMP_8)
     clearflag(FLAG_TEMP_7)
     clearflag(FLAG_TEMP_5)
-    addobject(PSFTRANSRIVAL)
+    addobject(BIANCA)
     addobject(CHIEF2)
-    addobject(PSFBADBOSS)
-    setobjectxyperm(PSFTRANSRIVAL,15,26)
+    addobject(ROSE)
+    setobjectxyperm(BIANCA,15,26)
     setobjectxyperm(CHIEF2,17,26)
-    setobjectxyperm(PSFBADBOSS,16,25)
+    setobjectxyperm(ROSE,16,25)
     setobjectmovementtype(CHIEF2,MOVEMENT_TYPE_FACE_UP)
-    setobjectmovementtype(PSFTRANSRIVAL,MOVEMENT_TYPE_FACE_UP)
-    setobjectmovementtype(PSFBADBOSS,MOVEMENT_TYPE_FACE_DOWN)
+    setobjectmovementtype(BIANCA,MOVEMENT_TYPE_FACE_UP)
+    setobjectmovementtype(ROSE,MOVEMENT_TYPE_FACE_DOWN)
 }
 
 script HowDisappointing_MissionComplete_Dialogue {
@@ -220,13 +220,13 @@ script HowDisappointing_MissionComplete_Dialogue {
     msgbox(gText_HowDisappointing_ExcellentWorkEverybody)
     callnative(ClearMugshot)
     closemessage
-    applymovement(PSFTRANSRIVAL,HowDisappointing_LeaveRoomA)
+    applymovement(BIANCA,HowDisappointing_LeaveRoomA)
     applymovement(CHIEF2,HowDisappointing_LeaveRoomB)
-    applymovement(PSFBADBOSS,HowDisappointing_LeaveRoomB)
+    applymovement(ROSE,HowDisappointing_LeaveRoomB)
     waitmovement(0)
-    removeobject(PSFTRANSRIVAL)
+    removeobject(BIANCA)
     removeobject(CHIEF2)
-    removeobject(PSFBADBOSS)
+    removeobject(ROSE)
     addvar(VAR_STORYLINE_STATE,1)
     addvar(VAR_PETALBURG_WOODS_STATE,1)
     release

@@ -1,7 +1,7 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
-const PSFNATIVERIVAL = 3 //outside house
-const PSFGOODADMIN = 13
+const ARCHER = 3 //outside house
+const ARIANA = 13
 const GRUNTA = 15
 const GRUNTB = 16
 const GRUNTC = 17
@@ -9,8 +9,8 @@ const GRUNTC = 17
 script Earthquake_HideObject_Script {
         setflag(FLAG_TEMP_4)
         setflag(FLAG_TEMP_2)
-        setobjectxyperm(PSFNATIVERIVAL,28,33)
-        turnobject(PSFNATIVERIVAL,DIR_NORTH)
+        setobjectxyperm(ARCHER,28,33)
+        turnobject(ARCHER,DIR_NORTH)
 }
 
 script Earthquake_PostRescue_Objects_Script {
@@ -18,8 +18,8 @@ script Earthquake_PostRescue_Objects_Script {
     clearflag(FLAG_TEMP_3)
     clearflag(FLAG_TEMP_4)
 
-        addobject(PSFNATIVERIVAL)
-        addobject(PSFGOODADMIN)
+        addobject(ARCHER)
+        addobject(ARIANA)
 
         createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,15,32,10)
         createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,16,31,12)
@@ -29,12 +29,12 @@ script Earthquake_PostRescue_Objects_Script {
         turnvobject(17,DIR_EAST)
 
         setobjectxy(PLAYER,32,13)
-        setobjectxy(PSFNATIVERIVAL,33,12)
-        setobjectxy(PSFGOODADMIN,33,11)
+        setobjectxy(ARCHER,33,12)
+        setobjectxy(ARIANA,33,11)
         turnobject(PLAYER,DIR_NORTH)
 
-        applymovement(PSFGOODADMIN,Common_Movement_FaceLeft)
-        turnobject(PSFNATIVERIVAL,DIR_WEST)
+        applymovement(ARIANA,Common_Movement_FaceLeft)
+        turnobject(ARCHER,DIR_WEST)
 
         TeleportCamera(32,13)
 }
@@ -105,7 +105,7 @@ script Earthquake_ThatNight_Dialogue {
         waitmovement(0)
 
         addvar(VAR_NATIVERIVALBETA_STATE,1)
-        warp(MAP_PSFCITY17,2)
+        warp(MAP_ALAMEDA,2)
 }
 
 script Earthquake_ShowDestroyedCity_Script {
@@ -144,9 +144,9 @@ script Earthquake_StartRescue_Dialogue {
 
     special(RemoveCameraObject)
 
-        addobject(PSFGOODADMIN)
+        addobject(ARIANA)
 
-        applymovement(PSFGOODADMIN,Earthquake_WalkToPair)
+        applymovement(ARIANA,Earthquake_WalkToPair)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -175,12 +175,12 @@ script Earthquake_StartRescue_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFNATIVERIVAL,Earthquake_WalkAwayA)
-        applymovement(PSFGOODADMIN,Earthquake_WalkAwayB)
-        waitmovement(PSFNATIVERIVAL)
-        waitmovement(PSFGOODADMIN)
-        removeobject(PSFNATIVERIVAL)
-        removeobject(PSFGOODADMIN)
+        applymovement(ARCHER,Earthquake_WalkAwayA)
+        applymovement(ARIANA,Earthquake_WalkAwayB)
+        waitmovement(ARCHER)
+        waitmovement(ARIANA)
+        removeobject(ARCHER)
+        removeobject(ARIANA)
 
         addvar(VAR_NATIVERIVALBETA_STATE,1)
         release
@@ -207,7 +207,7 @@ script Earthquake_PostRescue_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFGOODADMIN,Earthquake_Pace)
+        applymovement(ARIANA,Earthquake_Pace)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -242,14 +242,14 @@ script Earthquake_PostRescue_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceUp)
-        waitmovement(PSFNATIVERIVAL)
+        applymovement(ARCHER,Common_Movement_FaceUp)
+        waitmovement(ARCHER)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Earthquake_IGotAMessage)
 
-        applymovement(PSFGOODADMIN,Earthquake_TurnToPlayer)
+        applymovement(ARIANA,Earthquake_TurnToPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -278,8 +278,8 @@ script Earthquake_PostRescue_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceDown)
-        waitmovement(PSFNATIVERIVAL)
+        applymovement(ARCHER,Common_Movement_FaceDown)
+        waitmovement(ARCHER)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -299,8 +299,8 @@ script Earthquake_PostRescue_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceUp)
-        waitmovement(PSFNATIVERIVAL)
+        applymovement(ARCHER,Common_Movement_FaceUp)
+        waitmovement(ARCHER)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -313,7 +313,7 @@ script Earthquake_PostRescue_Dialogue {
 }
 
 script Earthquake_AskPlayerWarp_Script {
-    applymovement(PSFNATIVERIVAL,Earthquake_TurnToPlayer)
+    applymovement(ARCHER,Earthquake_TurnToPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -337,8 +337,8 @@ script Earthquake_AskPlayerWarp_Script {
         removeobject(GRUNTA)
         removeobject(GRUNTB)
         removeobject(GRUNTC)
-        removeobject(PSFNATIVERIVAL)
-        removeobject(PSFGOODADMIN)
+        removeobject(ARCHER)
+        removeobject(ARIANA)
         fadescreen(FADE_FROM_BLACK)
 
         release

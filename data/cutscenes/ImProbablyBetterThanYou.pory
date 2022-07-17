@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
-const PSFBADADMIN = 2 //FLAG_TEMP_2
+const BIANCA = 1 //FLAG_TEMP_1
+const OAK = 2 //FLAG_TEMP_2
 
 
 script ImProbablyBetterThanYou_ObjectSetUp {
@@ -9,7 +9,7 @@ script ImProbablyBetterThanYou_ObjectSetUp {
 }
 
 script ImProbablyBetterThanYou_MovePlayerInside_Script {
-    warpdoor(MAP_PSFCITY8_COMPOUND_1F,255,5,9)
+    warpdoor(MAP_SOUTHBAY_COMPOUND_1F,255,5,9)
         waitstate
         end
 }
@@ -32,9 +32,9 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
         lockall
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
         playse(SE_PIN)
-        applymovement(PSFTRANSRIVAL,Common_Movement_ExclamationMark)
+        applymovement(BIANCA,Common_Movement_ExclamationMark)
         waitmovement(0)
-        applymovement(PSFTRANSRIVAL,ImProbablyBetterThanYou_WalkToPlayer)
+        applymovement(BIANCA,ImProbablyBetterThanYou_WalkToPlayer)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -46,7 +46,7 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
 }
 
 script ImProbablyBetterThanYou_KindaShabby_Dialogue {
-        applymovement(PSFTRANSRIVAL,ImProbablyBetterThanYou_LookAround)
+        applymovement(BIANCA,ImProbablyBetterThanYou_LookAround)
         waitmovement(0)
         msgbox(gText_ImProbablyBetterThanYou_KindaShabbyHuh)
         closemessage
@@ -76,12 +76,12 @@ script ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue {
 
 script ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue {
         msgbox(gText_ImProbablyBetterThanYou_IKnowOurOrientation)
-        applymovement(PSFTRANSRIVAL,ImProbablyBetterThanYou_GestureUpstairs)
+        applymovement(BIANCA,ImProbablyBetterThanYou_GestureUpstairs)
         waitmovement(0)
         msgbox(gText_ImProbablyBetterThanYou_ButBothRooms)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFTRANSRIVAL,ImProbablyBetterThanYou_WalkToCouch)
+        applymovement(BIANCA,ImProbablyBetterThanYou_WalkToCouch)
         waitmovement(0)
         fadedefaultbgm
         releaseall
@@ -117,7 +117,7 @@ script ImProbablyBetterThanYou_Annoyed_Dialogue {
     }
     callnative(ClearMugshot)
     closemessage
-        applymovement(PSFTRANSRIVAL,ImProbablyBetterThanYou_GoBackToFood)
+        applymovement(BIANCA,ImProbablyBetterThanYou_GoBackToFood)
             waitmovement(0)
 }
 

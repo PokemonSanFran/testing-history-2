@@ -1,6 +1,6 @@
 WowYoureStrong_WalkToPlayer_Script::
 	lockall
-	setvar VAR_PSFCITY15_STATE, 2
+	setvar VAR_SOMA_STATE, 2
 	playse SE_PIN
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, TRUE
 	applymovement 1, Common_Movement_ExclamationMark
@@ -92,9 +92,8 @@ gText_WowYoureStrong_OhUhThanksALot::
 
 gText_WowYoureStrong_WhereMyManners::
 	.string "Hah! Oh my, I'm sorry. Where are my\n"
-	.string "manners? My name is Rose, and\l"
-	.string "I'm the YCombinator League\l"
-	.string "Commissioner.$"
+	.string "manners? My name is Rose, and I'm the\l"
+	.string "YCombinator League Commissioner.$"
 
 gText_WowYoureStrong_ShouldHaveKnown::
 	.string "Oh! I guess I should have known that.\n"

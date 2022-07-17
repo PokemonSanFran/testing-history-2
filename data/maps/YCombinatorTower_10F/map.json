@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFBADGUY1TOWER_10F",
+  "id": "MAP_YCOMBINATORTOWER_10F",
   "name": "YCombinatorTower_10F",
-  "layout": "LAYOUT_PSFBADGUY1TOWER_10F",
+  "layout": "LAYOUT_YCOMBINATORTOWER_10F",
   "music": "MUS_RG_SILPH",
-  "region_map_section": "MAPSEC_PSFBADGUY1TOWER",
+  "region_map_section": "MAPSEC_YCOMBINATORTOWER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -137,21 +137,21 @@
       "x": 8,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_ELEVATOR",
+      "dest_map": "MAP_YCOMBINATORTOWER_ELEVATOR",
       "dest_warp_id": 0
     },
     {
       "x": 4,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_9F",
+      "dest_map": "MAP_YCOMBINATORTOWER_9F",
       "dest_warp_id": 1
     },
     {
       "x": 14,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_11F",
+      "dest_map": "MAP_YCOMBINATORTOWER_11F",
       "dest_warp_id": 1
     }
   ],
@@ -161,7 +161,7 @@
       "x": 8,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_PSFCITY15_STATE",
+      "var": "VAR_SOMA_STATE",
       "var_value": "2",
       "script": "TheGangsAllHere_WhatBringsYou_Dialogue"
     },
@@ -170,7 +170,7 @@
       "x": 8,
       "y": 4,
       "elevation": 0,
-      "var": "VAR_PSFCITY15_STATE",
+      "var": "VAR_SOMA_STATE",
       "var_value": "3",
       "script": "TheGangsAllHere_OfficeIsntThatWay_Script"
     },
@@ -179,7 +179,7 @@
       "x": 7,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_PSFCITY15_STATE",
+      "var": "VAR_SOMA_STATE",
       "var_value": "3",
       "script": "TheGangsAllHere_ThisIsOffice_Script"
     },

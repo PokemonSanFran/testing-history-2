@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADBOSS = 3
-const PSFBADADMIN = 4
+const ROSE = 3
+const OAK = 4
 
 script TheGangsAllHere_ObjectCleanUp_Script {
     setflag(FLAG_TEMP_2)
@@ -9,12 +9,12 @@ script TheGangsAllHere_ObjectCleanUp_Script {
 
 script TheGangsAllHere_WhatBringsYou_Dialogue{
     lock
-    addvar(VAR_PSFCITY15_STATE,1)
+    addvar(VAR_SOMA_STATE,1)
     playse(SE_PIN)
     playbgm(MUS_RG_FOLLOW_ME,FALSE)
-    applymovement(PSFBADADMIN,Common_Movement_ExclamationMark)
+    applymovement(OAK,Common_Movement_ExclamationMark)
     waitmovement(0)
-    applymovement(PSFBADADMIN,Common_Movement_FacePlayer)
+    applymovement(OAK,Common_Movement_FacePlayer)
     waitmovement(0)
     applymovement(PLAYER, Common_Movement_FaceLeft)
     waitmovement(0)
@@ -39,12 +39,12 @@ script TheGangsAllHere_WhatBringsYou_Dialogue{
     callnative(ClearMugshot)
     closemessage
     special(HealPlayerParty)
-    applymovement(PSFBADADMIN,FollowMe_Movement)
+    applymovement(OAK,FollowMe_Movement)
     waitmovement(0)
-    setobjectxyperm(PSFBADADMIN,6,25)
+    setobjectxyperm(OAK,6,25)
     fadedefaultbgm
     //loadword(0,NewScript)
-    //setfollower(PSFBADADMIN,0x100) //TODO hook up FollowMe scripts
+    //setfollower(OAK,0x100) //TODO hook up FollowMe scripts
     //https://www.pokecommunity.com/showthread.php?t=432529
     releaseall
     end
@@ -61,37 +61,37 @@ script TheGangsAllHere_OfficeIsntThatWay_Script{
 }
 
 script TheGangsAllHere_ThisIsOffice_Script{
-    applymovement(PSFBADADMIN,FollowPlaceholder_Movement)
+    applymovement(OAK,FollowPlaceholder_Movement)
     waitmovement(0)
-    applymovement(PSFBADADMIN, Common_Movement_FaceRight)
+    applymovement(OAK, Common_Movement_FaceRight)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ThisIsOffice)
     closemessage
     callnative(ClearMugshot)
     applymovement(PLAYER,TheGangsAllHere_ThisIsOffice_Movement)
-    applymovement(PSFBADADMIN,TheGangsAllHere_ThisIsOffice_Movement)
+    applymovement(OAK,TheGangsAllHere_ThisIsOffice_Movement)
     waitmovement(0)
     goto(TheGangsAllHere_ComeOnIn_Dialogue)
     end
 }
 
 script TheGangsAllHere_ComeOnIn_Dialogue{
-    addvar(VAR_PSFCITY15_STATE,1)
+    addvar(VAR_SOMA_STATE,1)
     playbgm(MUS_RG_ENCOUNTER_DEOXYS,FALSE)
     playse(SE_PIN)
-    applymovement(PSFBADBOSS,Common_Movement_ExclamationMark)
+    applymovement(ROSE,Common_Movement_ExclamationMark)
     waitmovement(0)
-    applymovement(PSFBADBOSS,TheGangsAllHere_RoseWalkToDoor_Movement)
+    applymovement(ROSE,TheGangsAllHere_RoseWalkToDoor_Movement)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ComeOnIn)
     closemessage
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN,TheGangsAllHere_PsfbadadminWalkToDesk_Movement)
+    applymovement(OAK,TheGangsAllHere_OakWalkToDesk_Movement)
     waitmovement(0)
-    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
+    applymovement(ROSE,Common_Movement_FaceDown)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
@@ -112,20 +112,20 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally)
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN,Common_Movement_FaceLeft)
+    applymovement(OAK,Common_Movement_FaceLeft)
     applymovement(PLAYER,Common_Movement_FaceDown)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_LikeISaidWe)
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN,Common_Movement_FaceUp)
+    applymovement(OAK,Common_Movement_FaceUp)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_IHeardWonderfulThings)
     callnative(ClearMugshot)
-    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
-    applymovement(PSFBADADMIN,TheGangsAllHere_GivePackageToRose_Movement)
+    applymovement(ROSE,Common_Movement_FaceDown)
+    applymovement(OAK,TheGangsAllHere_GivePackageToRose_Movement)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
@@ -138,7 +138,7 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
 
 script TheGangsAllHere_GiveDowsingMachine_Script{
     applymovement(PLAYER,Common_Movement_FaceRight)
-    applymovement(PSFBADBOSS,TheGangsAllHere_GivePackageToPlayerChar_Movement)
+    applymovement(ROSE,TheGangsAllHere_GivePackageToPlayerChar_Movement)
     waitmovement(0)
     giveitem(ITEM_DOWSING_MACHINE,1)
     goto(TheGangsAllHere_GiveDowsingMachine_Dialogue)
@@ -150,7 +150,7 @@ script TheGangsAllHere_GiveDowsingMachine_Dialogue{
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_TheVSSeekerWillAlert)
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN,Common_Movement_FaceLeft)
+    applymovement(OAK,Common_Movement_FaceLeft)
     waitmovement(0)
     applymovement(PLAYER,Common_Movement_FaceDown)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
@@ -175,12 +175,12 @@ script TheGangsAllHere_EndScene_Dialogue{
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_TimeForNumber7)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
-    applymovement(PSFBADBOSS,Common_Movement_FaceDown)
-    applymovement(PSFBADADMIN,Common_Movement_FaceUp)
+    applymovement(ROSE,Common_Movement_FaceDown)
+    applymovement(OAK,Common_Movement_FaceUp)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_WeShall)
     callnative(ClearMugshot)
-    applymovement(PSFBADADMIN,Common_Movement_FaceLeft)
+    applymovement(OAK,Common_Movement_FaceLeft)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_FeelFreeToContinue)
@@ -188,12 +188,12 @@ script TheGangsAllHere_EndScene_Dialogue{
     closemessage
     applymovement(PLAYER,TheGangsAllHere_MoveOutOfWay_Movement)
     waitmovement(0)
-    applymovement(PSFBADBOSS,TheGangsAllHere_RoseWalkOut_Movement)
-    applymovement(PSFBADADMIN,TheGangsAllHere_PsfbadadminWalkOut_Movement)
+    applymovement(ROSE,TheGangsAllHere_RoseWalkOut_Movement)
+    applymovement(OAK,TheGangsAllHere_OakWalkOut_Movement)
     waitmovement(0)
     fadedefaultbgm
-    removeobject(PSFBADBOSS)
-    removeobject(PSFBADADMIN)
+    removeobject(ROSE)
+    removeobject(OAK)
     addvar(VAR_STORYLINE_STATE,1)
     call(Act1_1_Check_Script)
     release
@@ -246,7 +246,7 @@ text gText_TheGangsAllHere_ThisIsOffice{
 }
 
 text gText_TheGangsAllHere_ComeOnIn{
-    format("{PLAYER}! Psfbadadmin! Come on in, I just finished an email! Glad you're both here, and excellent timing that you ran into each other.")
+    format("{PLAYER}! Oak! Come on in, I just finished an email! Glad you're both here, and excellent timing that you ran into each other.")
 }
 text gText_TheGangsAllHere_AsYouAsked{
     format("As you asked, although I must say, it was not quite where you specified...")
@@ -258,7 +258,7 @@ text gText_TheGangsAllHere_IDidIsee{
     format("I did. I see Rose neglected to reveal his full title...?")
 }
 text gText_TheGangsAllHere_NotIntentionally{
-    format("Not intentionally! I was just so swept up in your battle! Psfbadadmin, please tell me you'll go back and watch Sabrina's highlight reel later, it was fantastic.")
+    format("Not intentionally! I was just so swept up in your battle! Oak, please tell me you'll go back and watch Sabrina's highlight reel later, it was fantastic.")
 }
 text gText_TheGangsAllHere_LikeISaidWe{
     format("Like I said, we wear a lot of hats.")
@@ -283,7 +283,7 @@ text gText_TheGangsAllHere_WeKnowButNoPressure{
     format("We know. But no pressure. Enjoy your journey!")
 }
 text gText_TheGangsAllHere_TimeForNumber7{
-    format("Time for Starbucks number 7. Shall we, Psfbadadmin?")
+    format("Time for Starbucks number 7. Shall we, Oak?")
 }
 text gText_TheGangsAllHere_WeShall{
     format("We shall.")
@@ -291,7 +291,7 @@ text gText_TheGangsAllHere_WeShall{
 text gText_TheGangsAllHere_FeelFreeToContinue{
     format("Feel free to continue your tour without us, {PLAYER}. Greatly appreciate your help in the battles. Hopefully supporting me wasn't too exhausting! Ah, and if you haven't already visited Sabrina, go do so. They're on Marketing, the second floor.")
 }
-movement TheGangsAllHere_PsfbadadminWalkToPlayer_Movement{
+movement TheGangsAllHere_OakWalkToPlayer_Movement{
     face_right
     step_end
 }
@@ -314,7 +314,7 @@ movement TheGangsAllHere_RoseWalkToDoor_Movement{
     step_end
 }
 
-movement TheGangsAllHere_PsfbadadminWalkToDesk_Movement{
+movement TheGangsAllHere_OakWalkToDesk_Movement{
     walk_down
     walk_right *2
     face_up
@@ -344,7 +344,7 @@ movement TheGangsAllHere_RoseWalkOut_Movement{
     step_end
 }
 
-movement TheGangsAllHere_PsfbadadminWalkOut_Movement{
+movement TheGangsAllHere_OakWalkOut_Movement{
     walk_up
     walk_left * 5
     walk_up * 6

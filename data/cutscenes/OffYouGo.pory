@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFBADADMIN = 2
+const BIANCA = 1
+const OAK = 2
 
 script OffYouGo_ObjectCleanUp_Script {
     setflag(FLAG_TEMP_1)
@@ -85,7 +85,7 @@ script OffYouGo_WelcomeParty_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL,Common_Movement_FaceRight)
+        applymovement(BIANCA,Common_Movement_FaceRight)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -94,7 +94,7 @@ script OffYouGo_WelcomeParty_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADADMIN,Common_Movement_FaceLeft)
+        applymovement(OAK,Common_Movement_FaceLeft)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_LANCE)
@@ -116,14 +116,14 @@ script OffYouGo_WelcomeParty_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+        applymovement(BIANCA,Common_Movement_FaceUp)
         waitmovement(0)
-        applymovement(PSFBADADMIN, Common_Movement_FaceUp)
-        applymovement(PSFTRANSRIVAL,OffYouGo_WalkNorth)
+        applymovement(OAK, Common_Movement_FaceUp)
+        applymovement(BIANCA,OffYouGo_WalkNorth)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
 
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
@@ -131,7 +131,7 @@ script OffYouGo_WelcomeParty_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADADMIN,Common_Movement_FaceDown)
+        applymovement(OAK,Common_Movement_FaceDown)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_LANCE)
@@ -152,7 +152,7 @@ script OffYouGo_WelcomeParty_Dialogue {
         end
 }
 
-script OffYouGo_InteractPsfbadadmin_Event_Script {
+script OffYouGo_InteractOak_Event_Script {
     lockall
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
@@ -187,7 +187,7 @@ text gText_OffYouGo_WaitingForMe {
     format("Waiting for me…? Hold on, let me read…")
 }
 text gText_OffYouGo_PleaseMeetMeOn {
-    format("Psfbadadmin: {PLAYER} and Bianca, please meet me on the northern side of GldnGteBridge. (32 mins ago)")
+    format("Oak: {PLAYER} and Bianca, please meet me on the northern side of GldnGteBridge. (32 mins ago)")
 }
 text gText_OffYouGo_IllBeRightOver {
     format("Bianca: I'll be right over! (31 mins ago)")

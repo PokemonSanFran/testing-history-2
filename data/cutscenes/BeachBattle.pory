@@ -1,12 +1,12 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
+const BIANCA = 1
 
 script BeachBattle_ObjectSetUp_Script {
     setflag(FLAG_TEMP_1)
 }
 
 script BeachBattle_BattleSetUp_Script {
-    setobjectxyperm(PSFTRANSRIVAL,10,24) 
+    setobjectxyperm(BIANCA,10,24) 
 }
 
 script BeachBattle_BiancaWalkToPlayer {
@@ -18,11 +18,11 @@ script BeachBattle_BiancaWalkToPlayer {
         callnative(ClearMugshot)
         playse(SE_PIN)
         clearflag(FLAG_TEMP_1)
-        addobject(PSFTRANSRIVAL)
+        addobject(BIANCA)
         applymovement(PLAYER,BeachBattle_ExclaimAndTurn)
         waitmovement(0)
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
-        applymovement(PSFTRANSRIVAL,BeachBattle_ApproachFromSouth)
+        applymovement(BIANCA,BeachBattle_ApproachFromSouth)
         waitmovement(0)
         goto(BeachBattle_Archer_Event_Script)
 }
@@ -42,7 +42,7 @@ script BeachBattle_Archer_Event_Script {
 
 script BeachBattle_Approach_Dialogue {
         setvar(VAR_ROUTE107_STATE,1)
-        setobjectxyperm(PSFTRANSRIVAL,10,24) 
+        setobjectxyperm(BIANCA,10,24) 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_BeachBattle_ImHeadingNorth)
@@ -118,10 +118,10 @@ script BeachBattle_PostBattle_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL,BeachBattle_WalkAway)
+        applymovement(BIANCA,BeachBattle_WalkAway)
         waitmovement(0)
         fadedefaultbgm
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         release
         end
 }

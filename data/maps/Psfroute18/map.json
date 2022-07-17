@@ -16,12 +16,12 @@
     {
       "direction": "down",
       "offset": -12,
-      "map": "MAP_PSFPLACE1"
+      "map": "MAP_TWINPEAKS"
     },
     {
       "direction": "up",
       "offset": 33,
-      "map": "MAP_PSFCITY5"
+      "map": "MAP_CASTRO"
     }
   ],
   "object_events": [

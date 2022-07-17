@@ -3,7 +3,7 @@ const PKMN1 = 1
 const PKMN2 = 2
 const PKMN3 = 3
 const PKMN4 = 4
-const PSFELITE1 = 5
+const MALVA = 5
 const RUPERT = 6
 const CAMERA = OBJ_EVENT_ID_CAMERA
 
@@ -40,7 +40,7 @@ script AndWeMarchOn_StartParadeMovement_Script {
         fadescreen(FADE_FROM_BLACK)
 
         applymovement(CAMERA, AndWeMarchOn_PanCameraParadeStop)
-        applymovement(PSFELITE1, AndWeMarchOn_ParadeProcession)
+        applymovement(MALVA, AndWeMarchOn_ParadeProcession)
         applymovement(10, AndWeMarchOn_ParadeProcession)
         applymovement(9, AndWeMarchOn_ParadeProcession)
         applymovement(8, AndWeMarchOn_ParadeProcession)
@@ -60,10 +60,10 @@ script AndWeMarchOn_StartParadeMovement_Script {
 
 script AndWeMarchOn_Opening_Dialogue {
     playbgm(MUS_ENCOUNTER_ELITE_FOUR,TRUE)
-    applymovement(PSFELITE1, AndWeMarchOn_LookAroundCrowd)
+    applymovement(MALVA, AndWeMarchOn_LookAroundCrowd)
         waitmovement(0)
         playse(SE_APPLAUSE)
-        applymovement(PSFELITE1, AndWeMarchOn_WalkToFloatCenter)
+        applymovement(MALVA, AndWeMarchOn_WalkToFloatCenter)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
@@ -88,7 +88,7 @@ script AndWeMarchOn_Opening_Dialogue {
         playse(SE_APPLAUSE)
         waitse
 
-        applymovement(PSFELITE1, AndWeMarchOn_PaceBackForth)
+        applymovement(MALVA, AndWeMarchOn_PaceBackForth)
         waitmovement(0)
         goto(AndWeMarchOn_InviteOntoStage_Dialogue)
 }
@@ -131,7 +131,7 @@ script AndWeMarchOn_StartCutsceneBattle_Script {
         msgbox(gText_AndWeMarchOn_Yeah)
         closemessage
 
-        applymovement(PSFELITE1, AndWeMarchOn_WalkToLeftSide)
+        applymovement(MALVA, AndWeMarchOn_WalkToLeftSide)
         applymovement(RUPERT, AndWeMarchOn_LookAroundCrowd)
         waitmovement(0)
         applymovement(RUPERT, Common_Movement_FaceLeft)
@@ -237,7 +237,7 @@ script AndWeMarchOn_PostBattleSpeech_Dialogue {
         playse(SE_APPLAUSE) //PSF TODO: change to booing sound
         waitse
 
-        applymovement(PSFELITE1, AndWeMarchOn_WalkToSouthStage)
+        applymovement(MALVA, AndWeMarchOn_WalkToSouthStage)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
@@ -246,7 +246,7 @@ script AndWeMarchOn_PostBattleSpeech_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE1, AndWeMarchOn_WalkToNorthStage)
+        applymovement(MALVA, AndWeMarchOn_WalkToNorthStage)
         waitmovement(0)
 
         msgbox(gText_AndWeMarchOn_Boo)
@@ -273,7 +273,7 @@ script AndWeMarchOn_PostBattleSpeech_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE1, AndWeMarchOn_GoBackToCenter)
+        applymovement(MALVA, AndWeMarchOn_GoBackToCenter)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
@@ -291,7 +291,7 @@ script AndWeMarchOn_ParadeEnd_Script {
         playse(SE_APPLAUSE)
         waitse
         fadescreen(FADE_TO_BLACK)
-        removeobject(PSFELITE1)
+        removeobject(MALVA)
         removeobject(8)
         setflag(FLAG_TEMP_3)
         addvar(VAR_ROUTE108_STATE,1)
@@ -371,7 +371,7 @@ text gText_AndWeMarchOn_HelpingHand {
 }
 
 text gText_AndWeMarchOn_AndWithASupercharged {
-    format("And with a supercharged Breaking Swipe, Malva ends the battle in one turn! The exhibition winner is the Elite Four's PSFELITE1!")
+    format("And with a supercharged Breaking Swipe, Malva ends the battle in one turn! The exhibition winner is the Elite Four's MALVA!")
 }
 
 text gText_AndWeMarchOn_DamnThatsHow {

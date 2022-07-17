@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFNATIVERIVAL = 1
+const ARCHER = 1
 
 mapscripts PaintedLadies_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {

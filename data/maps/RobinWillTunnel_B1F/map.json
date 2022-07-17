@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCAVE1_B1F",
+  "id": "MAP_ROBINWILLTUNNEL_B1F",
   "name": "RobinWillTunnel_B1F",
-  "layout": "LAYOUT_PSFCAVE1_B1F",
+  "layout": "LAYOUT_ROBINWILLTUNNEL_B1F",
   "music": "MUS_RG_MT_MOON",
-  "region_map_section": "MAPSEC_PSFCAVE1",
+  "region_map_section": "MAPSEC_ROBINWILLTUNNEL",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
@@ -98,7 +98,7 @@
       "x": 7,
       "y": 23,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE1",
+      "dest_map": "MAP_ROBINWILLTUNNEL",
       "dest_warp_id": 2
     }
   ],

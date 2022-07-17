@@ -1,5 +1,5 @@
 YouLookTired_BlockMansionAccess_Script::
-	compare VAR_PSFPLACE9_STATE, 2
+	compare VAR_FORTPOINT_STATE, 2
 	goto_if_lt YouLookTired_BlockMansionAccess_Script_1
 	return
 
@@ -169,7 +169,7 @@ YouLookTired_DataCollection_Dialogue::
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 1
-	addvar VAR_PSFPLACE9_STATE, 1
+	addvar VAR_FORTPOINT_STATE, 1
 	release
 	end
 

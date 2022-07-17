@@ -5,7 +5,7 @@ TheStorySoFar_ExplainExhibit_Dialogue::
 	msgbox gText_TheStorySoFar_WelcomeToExhibit
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-	setvar VAR_PSFCAVE7_EXHIBIT_STATE, 1
+	setvar VAR_ALCATRAZ_EXHIBIT_STATE, 1
 	waitmovement 0
 	release
 	end
@@ -28,7 +28,7 @@ TheStorySoFar_EntranceTrigger_Script::
 
 TheStorySoFar_Event_Script::
 	waitmovement 0
-	switch VAR_PSFCAVE7_EXHIBIT_STATE
+	switch VAR_ALCATRAZ_EXHIBIT_STATE
 	case 0, TheStorySoFar_Event_Script_2
 	case 1, TheStorySoFar_Event_Script_3
 	case 2, TheStorySoFar_Event_Script_4
@@ -121,8 +121,8 @@ TheStorySoFar_CheckNumberDefeated_Script_15:
 
 
 TheStorySoFar_AwardPlayer_Script::
-	addvar VAR_PSFCAVE7_EXHIBIT_STATE, 1
-	setvar VAR_PSFCAVE7_STATE, 1
+	addvar VAR_ALCATRAZ_EXHIBIT_STATE, 1
+	setvar VAR_ALCATRAZ_STATE, 1
 	msgbox gText_TheStorySoFar_ExcellentWork
 	giveitem ITEM_MACHO_BRACE, 1
 	closemessage

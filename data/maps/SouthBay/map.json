@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY8",
+  "id": "MAP_SOUTHBAY",
   "name": "SouthBay",
-  "layout": "LAYOUT_PSFCITY8",
+  "layout": "LAYOUT_SOUTHBAY",
   "music": "MUS_RUSTBORO",
-  "region_map_section": "MAPSEC_PSFCITY8",
+  "region_map_section": "MAPSEC_SOUTHBAY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_TOWN",
@@ -27,14 +27,14 @@
       "x": 3,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY8_COMPOUND_1F",
+      "dest_map": "MAP_SOUTHBAY_COMPOUND_1F",
       "dest_warp_id": 0
     },
     {
       "x": 10,
       "y": 26,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY8_POKEMON_CENTER_1F",
+      "dest_map": "MAP_SOUTHBAY_POKEMON_CENTER_1F",
       "dest_warp_id": 0
     }
   ],

@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFGOODBOSS = 1
+const GIOVANNI = 1
 
 script MaskOff_HideObject_Script {
     setflag(FLAG_TEMP_1) //Hide Siebold in their home
@@ -211,11 +211,11 @@ msgbox(gText_MaskOff_IShouldApologize)
 }
 
 script MaskOff_End_Dialogue {
-    applymovement(PSFGOODBOSS,MaskOff_WalkOffScreen)
+    applymovement(GIOVANNI,MaskOff_WalkOffScreen)
     waitmovement(0)
-    removeobject(PSFGOODBOSS)
+    removeobject(GIOVANNI)
 
-    //setflag(FLAG_DEFEATED_PSFGOODBOSS)
+    //setflag(FLAG_DEFEATED_GIOVANNI)
     release
     end
 }

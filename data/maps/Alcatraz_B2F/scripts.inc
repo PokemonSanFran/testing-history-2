@@ -8,15 +8,15 @@ Alcatraz_B2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Alcatraz_B2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_PSFCAVE7_STATE, 4, YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue
-	map_script_2 VAR_PSFCAVE7_STATE, 8, SpeechSpeechSpeech_PositionPlayer_Script
+	map_script_2 VAR_ALCATRAZ_STATE, 4, YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue
+	map_script_2 VAR_ALCATRAZ_STATE, 8, SpeechSpeechSpeech_PositionPlayer_Script
 	map_script_2 VAR_STORYLINE_STATE, 105, OneDown_SetUpObject_Script
 	.2byte 0
 
 
 Alcatraz_B2F_MapScripts_OnTransition::
 	call YouRealizeTheyreEvilRight_HideGarbodor_Script
-	switch VAR_PSFCAVE7_STATE
+	switch VAR_ALCATRAZ_STATE
 	case 0, Alcatraz_B2F_MapScripts_OnTransition_2
 	case 1, Alcatraz_B2F_MapScripts_OnTransition_3
 	case 2, Alcatraz_B2F_MapScripts_OnTransition_4

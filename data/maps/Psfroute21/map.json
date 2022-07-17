@@ -16,12 +16,12 @@
     {
       "direction": "left",
       "offset": -9,
-      "map": "MAP_PSFCITYY16"
+      "map": "MAP_BERNALHEIGHTS"
     },
     {
       "direction": "right",
       "offset": -23,
-      "map": "MAP_PSFCITY7"
+      "map": "MAP_DOGPATCH"
     }
   ],
   "object_events": [

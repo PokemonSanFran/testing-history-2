@@ -1,9 +1,9 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER7 = 1
+const PRYCE = 1
 
 script EnterPryce_StartBattle_ObjectSetup_Script {
-    setobjectxyperm(PSFLEADER7, 11, 10)
-    setobjectmovementtype(PSFLEADER7, MOVEMENT_TYPE_FACE_LEFT)
+    setobjectxyperm(PRYCE, 11, 10)
+    setobjectmovementtype(PRYCE, MOVEMENT_TYPE_FACE_LEFT)
 }
 
 script EnterPryce_Event_Script {
@@ -26,7 +26,7 @@ script EnterPryce_MumbleToSelf_Dialogue {
     msgbox(gText_EnterPryce_StupidParade)
     closemessage
     callnative(ClearMugshot)
-    applymovement(PSFLEADER7, EnterPryce_PaceLeftFrontOfDesk)
+    applymovement(PRYCE, EnterPryce_PaceLeftFrontOfDesk)
     waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_PRYCE)
@@ -35,7 +35,7 @@ script EnterPryce_MumbleToSelf_Dialogue {
     closemessage
     callnative(ClearMugshot)
 
-    applymovement(PSFLEADER7, EnterPryce_PaceRightFrontOfDesk)
+    applymovement(PRYCE, EnterPryce_PaceRightFrontOfDesk)
     waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_PRYCE)
@@ -49,9 +49,9 @@ script EnterPryce_MumbleToSelf_Dialogue {
     callnative(ClearMugshot)
 
     playse(SE_PIN)
-    applymovement(PSFLEADER7, Common_Movement_ExclamationMark)
+    applymovement(PRYCE, Common_Movement_ExclamationMark)
     waitmovement(0)
-    applymovement(PSFLEADER7, Common_Movement_FaceDown)
+    applymovement(PRYCE, Common_Movement_FaceDown)
     waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_PRYCE)
@@ -60,7 +60,7 @@ script EnterPryce_MumbleToSelf_Dialogue {
     closemessage
     callnative(ClearMugshot)
 
-    applymovement(PSFLEADER7, EnterPryce_TakeDrugs)
+    applymovement(PRYCE, EnterPryce_TakeDrugs)
     waitmovement(0)
     goto(EnterPryce_CalculateMovement_Script)
 }
@@ -96,39 +96,39 @@ script EnterPryce_CalculateMovement_Script {
 }
 
 script EnterPryce_PlayerPosition8 {
-    applymovement(PSFLEADER7, EnterPryce_Pryce_WalkToBattlefield)
+    applymovement(PRYCE, EnterPryce_Pryce_WalkToBattlefield)
     applymovement(PLAYER, EnterPryce_MovePlayerFrom8)
 }
 script EnterPryce_PlayerPosition9 {
-    applymovement(PSFLEADER7, EnterPryce_Pryce_WalkToBattlefield)
+    applymovement(PRYCE, EnterPryce_Pryce_WalkToBattlefield)
     applymovement(PLAYER, EnterPryce_MovePlayerFrom9)
 }
 script EnterPryce_PlayerPosition10 {
-    applymovement(PSFLEADER7, EnterPryce_Pryce_WalkToBattlefield)
+    applymovement(PRYCE, EnterPryce_Pryce_WalkToBattlefield)
     applymovement(PLAYER, EnterPryce_MovePlayerFrom10)
 }
 script EnterPryce_PlayerPosition11 {
-    applymovement(PSFLEADER7, EnterPryce_Pryce_WalkAroundToBattlefield)
+    applymovement(PRYCE, EnterPryce_Pryce_WalkAroundToBattlefield)
     applymovement(PLAYER, EnterPryce_MovePlayerFrom11)
 }
 script EnterPryce_PlayerPosition12 {
-    applymovement(PSFLEADER7, EnterPryce_Pryce_WalkToBattlefield)
+    applymovement(PRYCE, EnterPryce_Pryce_WalkToBattlefield)
     applymovement(PLAYER, EnterPryce_MovePlayerFrom12)
 }
 script EnterPryce_PlayerPosition13 {
-    applymovement(PSFLEADER7, EnterPryce_Pryce_WalkToBattlefield)
+    applymovement(PRYCE, EnterPryce_Pryce_WalkToBattlefield)
     applymovement(PLAYER, EnterPryce_MovePlayerFrom13)
 }
 script EnterPryce_PlayerPosition14 {
-    applymovement(PSFLEADER7, EnterPryce_Pryce_WalkToBattlefield)
+    applymovement(PRYCE, EnterPryce_Pryce_WalkToBattlefield)
     applymovement(PLAYER, EnterPryce_MovePlayerFrom14)
 }
 script EnterPryce_PlayerPosition15 {
-    applymovement(PSFLEADER7, EnterPryce_Pryce_WalkToBattlefield)
+    applymovement(PRYCE, EnterPryce_Pryce_WalkToBattlefield)
     applymovement(PLAYER, EnterPryce_MovePlayerFrom15)
 }
 script EnterPryce_PlayerPosition16 {
-    applymovement(PSFLEADER7, EnterPryce_Pryce_WalkToBattlefield)
+    applymovement(PRYCE, EnterPryce_Pryce_WalkToBattlefield)
     applymovement(PLAYER, EnterPryce_MovePlayerFrom16)
 }
 
@@ -185,9 +185,9 @@ script EnterPryce_MoveBacktoDesk_Script {
     getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 
     if (var (VAR_TEMP_0) != 12) {
-        applymovement(PSFLEADER7, EnterPryce_WalkBackToDesk)
+        applymovement(PRYCE, EnterPryce_WalkBackToDesk)
     } else {
-        applymovement(PSFLEADER7, EnterPryce_WalkAroundBackToDesk)
+        applymovement(PRYCE, EnterPryce_WalkAroundBackToDesk)
     }
 }
 
@@ -199,7 +199,7 @@ script EnterPryce_PostDefeat1_Dialogue {
     msgbox(gText_EnterPryce_TMAreLikeDrugs,MSGBOX_NPC)
     closemessage
     callnative(ClearMugshot)
-    applymovement(PSFLEADER7,Common_Movement_FaceUp)
+    applymovement(PRYCE,Common_Movement_FaceUp)
     waitmovement(0)
     release
     end

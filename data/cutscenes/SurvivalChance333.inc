@@ -97,7 +97,7 @@ SurvivalChance333_PostBattle_Script::
 	msgbox gText_SurvivalChance333_YoureAPairOfKids
 	closemessage
 	addvar VAR_NATIVERIVALBETA_STATE, 1
-	warpsilent MAP_PSFCITY17, 255, 21, 24
+	warpsilent MAP_ALAMEDA, 255, 21, 24
 	return
 
 

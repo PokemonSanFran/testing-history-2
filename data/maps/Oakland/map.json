@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY9",
+  "id": "MAP_OAKLAND",
   "name": "Oakland",
-  "layout": "LAYOUT_PSFCITY9",
+  "layout": "LAYOUT_OAKLAND",
   "music": "MUS_GSC_PEWTER",
-  "region_map_section": "MAPSEC_PSFCITY9",
+  "region_map_section": "MAPSEC_OAKLAND",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_CITY",
@@ -49,14 +49,14 @@
       "x": 3,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY9_WAREHOUSE",
+      "dest_map": "MAP_OAKLAND_WAREHOUSE",
       "dest_warp_id": 0
     },
     {
       "x": 4,
       "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY9_WAREHOUSE",
+      "dest_map": "MAP_OAKLAND_WAREHOUSE",
       "dest_warp_id": 1
     }
   ],

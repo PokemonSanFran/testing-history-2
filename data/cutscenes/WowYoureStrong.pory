@@ -1,13 +1,13 @@
-const PSFBADBOSS = 1
+const ROSE = 1
 
 script WowYoureStrong_WalkToPlayer_Script {
     lockall
-    setvar(VAR_PSFCITY15_STATE,2)
+    setvar(VAR_SOMA_STATE,2)
     playse(SE_PIN)
     playbgm(MUS_RG_ENCOUNTER_DEOXYS,TRUE) 
-    applymovement(PSFBADBOSS,Common_Movement_ExclamationMark)
+    applymovement(ROSE,Common_Movement_ExclamationMark)
     waitmovement(0)
-    applymovement(PSFBADBOSS,WowYoureStrong_WalkToPlayer_Movement)
+    applymovement(ROSE,WowYoureStrong_WalkToPlayer_Movement)
     waitmovement(0)
     goto(WowYoureStrong_Intro_Dialogue)
 }
@@ -50,9 +50,9 @@ script WowYoureStrong_End_Dialouge {
     msgbox(gText_WowYoureStrong_MeetingWithMayor)
     callnative(ClearMugshot)
     closemessage
-    applymovement(PSFBADBOSS,PsfBadbossWalkToMayor_Movement)
+    applymovement(ROSE,PsfBadbossWalkToMayor_Movement)
     waitmovement(0)
-    removeobject(PSFBADBOSS)
+    removeobject(ROSE)
     playbgm(MUS_RG_VERMILLION,TRUE)
     releaseall
     end

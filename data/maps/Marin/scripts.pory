@@ -1,4 +1,4 @@
-const PSFTRANSRIVAL = 1
+const BIANCA = 1
 
 mapscripts Marin_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -19,6 +19,6 @@ script Marin_MapScripts_OnTransition {
 
 script Marin_HideBianca_Script {
     setflag(FLAG_TEMP_3)
-    removeobject(PSFTRANSRIVAL)
+    removeobject(BIANCA)
 }
 

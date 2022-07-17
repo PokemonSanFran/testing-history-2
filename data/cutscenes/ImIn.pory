@@ -1,9 +1,9 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFELITE1 = 1
-const PSFELITE2 = 2
-const PSFELITE3 = 3
-const PSFELITE4 = 4
-const PSFNATIVERIVAL = 5
+const MALVA = 1
+const DRASNA = 2
+const SIEBOLD = 3
+const WIKSTROM = 4
+const ARCHER = 5
 const PKMNA = 6
 
 script ImIn_HideObject_OutsideHouse_Script {
@@ -43,11 +43,11 @@ script ImIn_DestroyWall_Script {
 script ImIn_CutsceneSetup_OutsideHouse_Script {
     clearflag(FLAG_TEMP_1)
 
-        addobject(PSFELITE1)
-        addobject(PSFELITE2)
-        addobject(PSFELITE3)
-        addobject(PSFELITE4)
-        addobject(PSFNATIVERIVAL)
+        addobject(MALVA)
+        addobject(DRASNA)
+        addobject(SIEBOLD)
+        addobject(WIKSTROM)
+        addobject(ARCHER)
 }
 
 script ImIn_ReleaseFromBall_Script {
@@ -60,42 +60,42 @@ script ImIn_ReleaseFromBall_Script {
 }
 
 script ImIn_ObjectSetUp_InsideHouse_Script {
-    setobjectxyperm(PSFELITE1,15,4)
-        setobjectxyperm(PSFELITE2,16,3)
-        setobjectxyperm(PSFELITE3,17,4)
-        setobjectxyperm(PSFELITE4,18,5)
-        setobjectxyperm(PSFNATIVERIVAL,19,3)
+    setobjectxyperm(MALVA,15,4)
+        setobjectxyperm(DRASNA,16,3)
+        setobjectxyperm(SIEBOLD,17,4)
+        setobjectxyperm(WIKSTROM,18,5)
+        setobjectxyperm(ARCHER,19,3)
 }
 
 script ImIn_MoveObject_BeforeWarp_Script {
-    addobject(PSFELITE1)
-        addobject(PSFELITE2)
-        addobject(PSFELITE3)
-        addobject(PSFELITE4)
-        addobject(PSFNATIVERIVAL)
+    addobject(MALVA)
+        addobject(DRASNA)
+        addobject(SIEBOLD)
+        addobject(WIKSTROM)
+        addobject(ARCHER)
 
-        setobjectxy(PSFELITE1,10,3)
-        setobjectxy(PSFELITE3,10,4)
-        setobjectxy(PSFELITE4,12,3)
-        setobjectxy(PSFNATIVERIVAL,12,4)
-        setobjectxy(PSFELITE2,11,2)
+        setobjectxy(MALVA,10,3)
+        setobjectxy(SIEBOLD,10,4)
+        setobjectxy(WIKSTROM,12,3)
+        setobjectxy(ARCHER,12,4)
+        setobjectxy(DRASNA,11,2)
 
         setobjectxy(PLAYER,11,4)
         TeleportCamera(11,4)
 
-        applymovement(PSFELITE1,Common_Movement_FaceRight)
-        applymovement(PSFELITE3,Common_Movement_FaceRight)
-        applymovement(PSFELITE4,Common_Movement_FaceLeft)
-        applymovement(PSFELITE2,Common_Movement_FaceDown)
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceLeft)
-        waitmovement(PSFELITE2)
+        applymovement(MALVA,Common_Movement_FaceRight)
+        applymovement(SIEBOLD,Common_Movement_FaceRight)
+        applymovement(WIKSTROM,Common_Movement_FaceLeft)
+        applymovement(DRASNA,Common_Movement_FaceDown)
+        applymovement(ARCHER,Common_Movement_FaceLeft)
+        waitmovement(DRASNA)
 }
 
-const PSFELITE1_B = 15
-const PSFELITE2_B = 16
-const PSFELITE3_B = 17
-const PSFELITE4_B = 18
-const PSFNATIVERIVAL_B = 19
+const MALVA_B = 15
+const DRASNA_B = 16
+const SIEBOLD_B = 17
+const WIKSTROM_B = 18
+const ARCHER_B = 19
 
 script ImIn_ObjectSetUp_PostWarp_Script {
         setflag(FLAG_TEMP_1)
@@ -131,7 +131,7 @@ script ImIn_StartHouseBreak_Script {
         applymovement(PLAYER,ImIn_ApproachHouse)
         waitmovement(PLAYER)
 
-        applymovement(PSFELITE3,Common_Movement_FaceDown)
+        applymovement(SIEBOLD,Common_Movement_FaceDown)
 
         setvar(VAR_0x8000, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
@@ -149,13 +149,13 @@ script ImIn_StartHouseBreak_Script {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFNATIVERIVAL,ImIn_WalkAroundHouse)
-        waitmovement(PSFNATIVERIVAL)
+        applymovement(ARCHER,ImIn_WalkAroundHouse)
+        waitmovement(ARCHER)
 
-        applymovement(PSFELITE1,Common_Movement_FaceRight)
-        applymovement(PSFELITE2,Common_Movement_FaceRight)
-        applymovement(PSFELITE3,Common_Movement_FaceRight)
-        applymovement(PSFELITE4,Common_Movement_FaceRight)
+        applymovement(MALVA,Common_Movement_FaceRight)
+        applymovement(DRASNA,Common_Movement_FaceRight)
+        applymovement(SIEBOLD,Common_Movement_FaceRight)
+        applymovement(WIKSTROM,Common_Movement_FaceRight)
         applymovement(PLAYER,Common_Movement_FaceRight)
         waitmovement(PLAYER)
 
@@ -169,8 +169,8 @@ script ImIn_StartHouseBreak_Script {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFNATIVERIVAL,ImIn_WalkToSideDoor)
-        waitmovement(PSFNATIVERIVAL)
+        applymovement(ARCHER,ImIn_WalkToSideDoor)
+        waitmovement(ARCHER)
 
         call(ImIn_ReleaseFromBall_Script)
 
@@ -187,11 +187,11 @@ script ImIn_StartHouseBreak_Script {
         call(ImIn_DestroyWall_Script)
 
         applymovement(PKMNA,ImIn_WalkIntoHouseA)
-        applymovement(PSFELITE1,ImIn_WalkIntoHouseB)
-        applymovement(PSFELITE2,ImIn_WalkIntoHouseC)
-        applymovement(PSFELITE3,ImIn_WalkIntoHouseD)
-        applymovement(PSFELITE4,ImIn_WalkIntoHouseE)
-        applymovement(PSFNATIVERIVAL,ImIn_WalkIntoHouseF)
+        applymovement(MALVA,ImIn_WalkIntoHouseB)
+        applymovement(DRASNA,ImIn_WalkIntoHouseC)
+        applymovement(SIEBOLD,ImIn_WalkIntoHouseD)
+        applymovement(WIKSTROM,ImIn_WalkIntoHouseE)
+        applymovement(ARCHER,ImIn_WalkIntoHouseF)
 
         playse(SE_EXIT)
         playse(SE_EXIT)
@@ -200,14 +200,14 @@ script ImIn_StartHouseBreak_Script {
         playse(SE_EXIT)
         playse(SE_EXIT)
         waitse
-        waitmovement(PSFELITE1)
+        waitmovement(MALVA)
 
         removeobject(PKMNA)
-        removeobject(PSFELITE1)
-        removeobject(PSFELITE2)
-        removeobject(PSFELITE3)
-        removeobject(PSFELITE4)
-        removeobject(PSFNATIVERIVAL)
+        removeobject(MALVA)
+        removeobject(DRASNA)
+        removeobject(SIEBOLD)
+        removeobject(WIKSTROM)
+        removeobject(ARCHER)
 
         release
         end
@@ -227,24 +227,24 @@ script Imin_BeginHouseSearch_Script {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFELITE1,ImIn_SpreadOutHouse)
-        applymovement(PSFELITE2,ImIn_SpreadOutHouse)
-        applymovement(PSFELITE3,ImIn_SpreadOutHouse)
-        applymovement(PSFELITE4,ImIn_SpreadOutHouse)
-        applymovement(PSFNATIVERIVAL,ImIn_SpreadOutHouse)
-        waitmovement(PSFNATIVERIVAL)
+        applymovement(MALVA,ImIn_SpreadOutHouse)
+        applymovement(DRASNA,ImIn_SpreadOutHouse)
+        applymovement(SIEBOLD,ImIn_SpreadOutHouse)
+        applymovement(WIKSTROM,ImIn_SpreadOutHouse)
+        applymovement(ARCHER,ImIn_SpreadOutHouse)
+        waitmovement(ARCHER)
 
-        setobjectxy(PSFELITE1,2,7)
-        setobjectxy(PSFELITE2,18,9)
-        setobjectxy(PSFELITE3,10,11)
-        setobjectxy(PSFELITE4,15,17)
-        setobjectxy(PSFNATIVERIVAL,3,13)
+        setobjectxy(MALVA,2,7)
+        setobjectxy(DRASNA,18,9)
+        setobjectxy(SIEBOLD,10,11)
+        setobjectxy(WIKSTROM,15,17)
+        setobjectxy(ARCHER,3,13)
 
-        setobjectxyperm(PSFELITE1,2,7)
-        setobjectxyperm(PSFELITE2,18,9)
-        setobjectxyperm(PSFELITE3,10,11)
-        setobjectxyperm(PSFELITE4,15,17)
-        setobjectxyperm(PSFNATIVERIVAL,3,13)
+        setobjectxyperm(MALVA,2,7)
+        setobjectxyperm(DRASNA,18,9)
+        setobjectxyperm(SIEBOLD,10,11)
+        setobjectxyperm(WIKSTROM,15,17)
+        setobjectxyperm(ARCHER,3,13)
 
         release
         end
@@ -311,25 +311,25 @@ script ImIn_EnterCorrectCode_Script {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFELITE1,Common_Movement_WalkRight)
-        waitmovement(PSFELITE1)
-        removeobject(PSFELITE1)
+        applymovement(MALVA,Common_Movement_WalkRight)
+        waitmovement(MALVA)
+        removeobject(MALVA)
         playse(SE_WARP_OUT)
-        applymovement(PSFELITE3,ImIn_WalkToWarpFromLeft)
-        waitmovement(PSFELITE3)
-        removeobject(PSFELITE3)
+        applymovement(SIEBOLD,ImIn_WalkToWarpFromLeft)
+        waitmovement(SIEBOLD)
+        removeobject(SIEBOLD)
         playse(SE_WARP_OUT)
-        applymovement(PSFELITE4,Common_Movement_WalkLeft)
-        waitmovement(PSFELITE4)
-        removeobject(PSFELITE4)
+        applymovement(WIKSTROM,Common_Movement_WalkLeft)
+        waitmovement(WIKSTROM)
+        removeobject(WIKSTROM)
         playse(SE_WARP_OUT)
-        applymovement(PSFELITE2,Common_Movement_WalkDown)
-        waitmovement(PSFELITE2)
-        removeobject(PSFELITE2)
+        applymovement(DRASNA,Common_Movement_WalkDown)
+        waitmovement(DRASNA)
+        removeobject(DRASNA)
         playse(SE_WARP_OUT)
-        applymovement(PSFNATIVERIVAL,ImIn_WalkToWarpFromRight)
-        waitmovement(PSFNATIVERIVAL)
-        removeobject(PSFNATIVERIVAL)
+        applymovement(ARCHER,ImIn_WalkToWarpFromRight)
+        waitmovement(ARCHER)
+        removeobject(ARCHER)
         playse(SE_WARP_OUT)
 
         addvar(VAR_STORYLINE_STATE,1)
@@ -357,9 +357,9 @@ script ImIn_PostWarpSplit_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFELITE3_B,ImIn_WalkAwayFromWarpB)
-        applymovement(PSFELITE2_B,ImIn_WalkAwayFromWarpA)
-        waitmovement(PSFELITE2_B)
+        applymovement(SIEBOLD_B,ImIn_WalkAwayFromWarpB)
+        applymovement(DRASNA_B,ImIn_WalkAwayFromWarpA)
+        waitmovement(DRASNA_B)
 
         setvar(VAR_0x8000, MUGSHOT_CAITLIN)
         callnative(DrawMugshot)
@@ -375,17 +375,17 @@ script ImIn_PostWarpSplit_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFELITE1_B,ImIn_WalkAwayFromWarpC)
-        applymovement(PSFELITE4_B,ImIn_WalkAwayFromWarpD)
-        applymovement(PSFNATIVERIVAL_B,ImIn_WalkAwayFromWarpE)
+        applymovement(MALVA_B,ImIn_WalkAwayFromWarpC)
+        applymovement(WIKSTROM_B,ImIn_WalkAwayFromWarpD)
+        applymovement(ARCHER_B,ImIn_WalkAwayFromWarpE)
 
-        waitmovement(PSFELITE4_B)
+        waitmovement(WIKSTROM_B)
 
-        removeobject(PSFELITE1_B)
-        removeobject(PSFELITE2_B)
-        removeobject(PSFELITE3_B)
-        removeobject(PSFELITE4_B)
-        removeobject(PSFNATIVERIVAL_B)
+        removeobject(MALVA_B)
+        removeobject(DRASNA_B)
+        removeobject(SIEBOLD_B)
+        removeobject(WIKSTROM_B)
+        removeobject(ARCHER_B)
 
         release
         end

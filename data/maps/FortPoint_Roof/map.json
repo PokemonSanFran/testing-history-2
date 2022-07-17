@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE9_ROOF",
+  "id": "MAP_FORTPOINT_ROOF",
   "name": "FortPoint_Roof",
-  "layout": "LAYOUT_PSFPLACE9_ROOF",
+  "layout": "LAYOUT_FORTPOINT_ROOF",
   "music": "MUS_GYM",
-  "region_map_section": "MAPSEC_PSFPLACE9",
+  "region_map_section": "MAPSEC_FORTPOINT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -33,7 +33,7 @@
       "x": 16,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE9",
+      "dest_map": "MAP_FORTPOINT",
       "dest_warp_id": 0
     }
   ],

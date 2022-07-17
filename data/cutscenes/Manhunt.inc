@@ -237,7 +237,7 @@ Manhunt_Encounter_Giovanni_Dialogue_1:
 	callnative DrawMugshot
 	msgbox gText_Manhunt_WhatWaitUhOkay
 	callnative ClearMugshot
-	warpsilent MAP_PSFBADGUY1TOWER_2F, 255, 8, 7
+	warpsilent MAP_YCOMBINATORTOWER_2F, 255, 8, 7
 	return
 
 Manhunt_Encounter_Giovanni_Dialogue_2:
@@ -581,7 +581,7 @@ gText_Manhunt_TheRegionIsYours::
 	.string "yours now.$"
 
 gText_Manhunt_IllBeAtTheEntrance::
-	.string "Psfbadadmin, I've defeated\n"
+	.string "Oak, I've defeated\n"
 	.string "Giovanni. I'll be at the entrance to\l"
 	.string "LakeMerritt.$"
 

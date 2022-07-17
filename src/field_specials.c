@@ -233,20 +233,20 @@ void FinishCyclingRoadChallenge(void)
 
 static void RecordCyclingRoadResults(u32 numFrames, u8 numBikeCollisions) {
     u16 low = VarGet(VAR_PSFROUTE9_STATE);
-    u16 high = VarGet(VAR_PSFPLACE13_STATE);
+    u16 high = VarGet(VAR_FISHERMANSWHARF_STATE);
     u32 framesRecord = low + (high << 16);
 
     if (framesRecord > numFrames || framesRecord == 0)
     {
         VarSet(VAR_PSFROUTE9_STATE, numFrames);
-        VarSet(VAR_PSFPLACE13_STATE, numFrames >> 16);
+        VarSet(VAR_FISHERMANSWHARF_STATE, numFrames >> 16);
         VarSet(VAR_NATIVERIVALALPHA_STATE, numBikeCollisions);
     }
 }
 
 u16 GetRecordedCyclingRoadResults(void) {
     u16 low = VarGet(VAR_PSFROUTE9_STATE);
-    u16 high = VarGet(VAR_PSFPLACE13_STATE);
+    u16 high = VarGet(VAR_FISHERMANSWHARF_STATE);
     u32 framesRecord = low + (high << 16);
 
     if (framesRecord == 0)
@@ -1686,17 +1686,17 @@ const u8 *const gDeptStoreFloorNames[] =
 const u8 *const gYCombinatorTowerFloorNames[] =
 {
     [DEPT_STORE_FLOORNUM_B4F] = gText_B4F,
-    [PSFBADGUY1TOWER_FLOORNUM_1F] = gText_1F,
-    [PSFBADGUY1TOWER_FLOORNUM_2F] = gText_2F,
-    [PSFBADGUY1TOWER_FLOORNUM_3F] = gText_3F,
-    [PSFBADGUY1TOWER_FLOORNUM_4F] = gText_4F,
-    [PSFBADGUY1TOWER_FLOORNUM_5F] = gText_5PF,
-    [PSFBADGUY1TOWER_FLOORNUM_6F] = gText_6F,
-    [PSFBADGUY1TOWER_FLOORNUM_7F] = gText_7F,
-    [PSFBADGUY1TOWER_FLOORNUM_8F] = gText_8F,
-    [PSFBADGUY1TOWER_FLOORNUM_9F] = gText_9F,
-    [PSFBADGUY1TOWER_FLOORNUM_10F] = gText_10F,
-    [PSFBADGUY1TOWER_FLOORNUM_11F] = gText_11F,
+    [YCOMBINATORTOWER_FLOORNUM_1F] = gText_1F,
+    [YCOMBINATORTOWER_FLOORNUM_2F] = gText_2F,
+    [YCOMBINATORTOWER_FLOORNUM_3F] = gText_3F,
+    [YCOMBINATORTOWER_FLOORNUM_4F] = gText_4F,
+    [YCOMBINATORTOWER_FLOORNUM_5F] = gText_5PF,
+    [YCOMBINATORTOWER_FLOORNUM_6F] = gText_6F,
+    [YCOMBINATORTOWER_FLOORNUM_7F] = gText_7F,
+    [YCOMBINATORTOWER_FLOORNUM_8F] = gText_8F,
+    [YCOMBINATORTOWER_FLOORNUM_9F] = gText_9F,
+    [YCOMBINATORTOWER_FLOORNUM_10F] = gText_10F,
+    [YCOMBINATORTOWER_FLOORNUM_11F] = gText_11F,
 };
 
 static const u16 sElevatorWindowTiles_Ascending[][3] =
@@ -1745,20 +1745,20 @@ void SetYCombinatorTowerFloor(void)
 
     switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
     {
-        case MAP_NUM(PSFBADGUY1TOWER_1F):
-            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_1F;
+        case MAP_NUM(YCOMBINATORTOWER_1F):
+            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_1F;
             break;
-        case MAP_NUM(PSFBADGUY1TOWER_2F):
-            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_2F;
+        case MAP_NUM(YCOMBINATORTOWER_2F):
+            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_2F;
             break;
-        case MAP_NUM(PSFBADGUY1TOWER_5F):
-            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_5F;
+        case MAP_NUM(YCOMBINATORTOWER_5F):
+            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_5F;
             break;
-        case MAP_NUM(PSFBADGUY1TOWER_10F):
-            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_10F;
+        case MAP_NUM(YCOMBINATORTOWER_10F):
+            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_10F;
             break;
         default:
-            YCombinatorTowerFloor = PSFBADGUY1TOWER_FLOORNUM_1F;
+            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_1F;
             break;
     }
     VarSet(VAR_DEPT_STORE_FLOOR, YCombinatorTowerFloor); //TODO Change VAR_DEPT_STORE_FLOOR to one more suited to PSF
@@ -1769,23 +1769,23 @@ u16 GetTowerFloorDefaultFloorChoice(void)
     sYCombinatorTower_NeverRead = 0;
     sYCombinatorTower_DefaultFloorChoice = 0;
 
-    if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(PSFBADGUY1TOWER_1F))
+    if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(YCOMBINATORTOWER_1F))
     {
         switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
         {
-            case MAP_NUM(PSFBADGUY1TOWER_10F):
+            case MAP_NUM(YCOMBINATORTOWER_10F):
                 sYCombinatorTower_NeverRead = 0;
                 sYCombinatorTower_DefaultFloorChoice = 0;
                 break;
-            case MAP_NUM(PSFBADGUY1TOWER_5F):
+            case MAP_NUM(YCOMBINATORTOWER_5F):
                 sYCombinatorTower_NeverRead = 0;
                 sYCombinatorTower_DefaultFloorChoice = 1;
                 break;
-            case MAP_NUM(PSFBADGUY1TOWER_2F):
+            case MAP_NUM(YCOMBINATORTOWER_2F):
                 sYCombinatorTower_NeverRead = 0;
                 sYCombinatorTower_DefaultFloorChoice = 2;
                 break;
-            case MAP_NUM(PSFBADGUY1TOWER_1F):
+            case MAP_NUM(YCOMBINATORTOWER_1F):
                 sYCombinatorTower_NeverRead = 0;
                 sYCombinatorTower_DefaultFloorChoice = 3;
                 break;
@@ -4387,7 +4387,7 @@ u8 CheckNumAlcatrazExhibitDefeated(void)
     }
 
     if (count > 5){
-        VarSet(VAR_PSFCAVE7_EXHIBIT_STATE,2);
+        VarSet(VAR_ALCATRAZ_EXHIBIT_STATE,2);
     }
 
     gSpecialVar_Result = count;

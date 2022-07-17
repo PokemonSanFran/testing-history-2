@@ -1,10 +1,10 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN3 = 2
+const SABRINA = 2
 
 script Manhunt_TowerObjectSetUp_Script {
-    setobjectxy(PSFBADADMIN3,8,6)
-    setobjectxyperm(PSFBADADMIN3,8,6)
-    setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_UP)
+    setobjectxy(SABRINA,8,6)
+    setobjectxyperm(SABRINA,8,6)
+    setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_UP)
 }
 
 script Manhunt_HideObject_Script {
@@ -29,15 +29,15 @@ script Manhunt_Assignment_Dialogue {
         end
 }
 
-const PSFTRANSRIVAL = 2
+const BIANCA = 2
 //SOMA
 script Manhunt_Cherie_Battle_Script {
     lock
         playse(SE_EXIT)
         waitse
         clearflag(FLAG_TEMP_2)
-        addobject(PSFTRANSRIVAL)
-        applymovement(PSFTRANSRIVAL,Manhunt_WalkInNewspaper)
+        addobject(BIANCA)
+        applymovement(BIANCA,Manhunt_WalkInNewspaper)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -88,11 +88,11 @@ script Manhunt_Cherie_Battle_Script {
         callnative(ClearMugshot)
 
         msgbox(gText_Manhunt_NowPleaseLeave,MSGBOX_AUTOCLOSE)
-        applymovement(PSFTRANSRIVAL,Manhunt_LeaveNewspaper)
+        applymovement(BIANCA,Manhunt_LeaveNewspaper)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         release
         end
 }
@@ -103,8 +103,8 @@ script Manhunt_Teodoro_Battle_Script {
         playse(SE_EXIT)
         waitse
         clearflag(FLAG_TEMP_2)
-        addobject(PSFTRANSRIVAL)
-        applymovement(PSFTRANSRIVAL,Manhunt_WalkIntoConsulting)
+        addobject(BIANCA)
+        applymovement(BIANCA,Manhunt_WalkIntoConsulting)
         msgbox(gText_Manhunt_WhatAreSomeKids,MSGBOX_NPC)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -143,11 +143,11 @@ script Manhunt_Teodoro_Battle_Script {
         callnative(ClearMugshot)
 
         msgbox(gText_Manhunt_GodForbidSomeGoodPeople,MSGBOX_AUTOCLOSE)
-        applymovement(PSFTRANSRIVAL,Manhunt_LeaveConsulting)
+        applymovement(BIANCA,Manhunt_LeaveConsulting)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         release
         end
 
@@ -160,8 +160,8 @@ script Manhunt_Dudley_Battle_Script {
         playse(SE_EXIT)
         waitse
         clearflag(FLAG_TEMP_2)
-        addobject(PSFTRANSRIVAL)
-        applymovement(PSFTRANSRIVAL,Manhunt_WalkIntoBallShop)
+        addobject(BIANCA)
+        applymovement(BIANCA,Manhunt_WalkIntoBallShop)
         applymovement(1,Manhunt_ExclaimAndTurn)
 
         msgbox(gText_Manhunt_HowCanIHelp,MSGBOX_NPC)
@@ -212,11 +212,11 @@ script Manhunt_Dudley_Battle_Script {
 
         msgbox(gText_Manhunt_OneTimeTheyHadDelivered)
         msgbox(gText_Manhunt_Sob,MSGBOX_AUTOCLOSE)
-        applymovement(PSFTRANSRIVAL,Manhunt_LeaveBallShop)
+        applymovement(BIANCA,Manhunt_LeaveBallShop)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         release
         end
 }
@@ -230,9 +230,9 @@ script Manhunt_TransformTreestoTallGrass {
 //Psfroute62
 script Manhunt_Matthew_Battle_Script {
         clearflag(FLAG_TEMP_2)
-        addobject(PSFTRANSRIVAL)
+        addobject(BIANCA)
         call(Manhunt_TransformTreestoTallGrass)
-        applymovement(PSFTRANSRIVAL,Manhunt_WalkOntoRoute)
+        applymovement(BIANCA,Manhunt_WalkOntoRoute)
         waitmovement(0)
         msgbox(gText_Manhunt_OhDamnLooksLike)
 
@@ -247,9 +247,9 @@ script Manhunt_Matthew_Battle_Script {
         addvar(VAR_RUSTURF_TUNNEL_STATE,1)
 
         msgbox(gText_Manhunt_IFeelBadForAll,MSGBOX_AUTOCLOSE)
-        applymovement(PSFTRANSRIVAL,Manhunt_LeaveRoute)
+        applymovement(BIANCA,Manhunt_LeaveRoute)
         waitmovement(0)
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         release
         end
 }
@@ -260,9 +260,9 @@ script Manhunt_Encounter_Giovanni_Dialogue {
         call(Common_EventScript_SaveGame)
         
         clearflag(FLAG_TEMP_2)
-        addobject(PSFTRANSRIVAL)
+        addobject(BIANCA)
 
-        applymovement(PSFTRANSRIVAL,Manhunt_ApproachAtLake)
+        applymovement(BIANCA,Manhunt_ApproachAtLake)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
@@ -274,7 +274,7 @@ script Manhunt_Encounter_Giovanni_Dialogue {
         multi_fixed_2_vs_1(TRAINER_MATT,gText_Manhunt_IfIDontHave,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
         addvar(VAR_RUSTURF_TUNNEL_STATE,1)
         addvar(VAR_STORYLINE_STATE,1)
-        //setflag(FLAG_DEFEATED_PSFGOODBOSS)
+        //setflag(FLAG_DEFEATED_GIOVANNI)
 
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
@@ -296,14 +296,14 @@ script Manhunt_Encounter_Giovanni_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_Manhunt_WhatWaitUhOkay)
         callnative(ClearMugshot)
-        warpsilent(MAP_PSFBADGUY1TOWER_2F,255,8,7)
+        warpsilent(MAP_YCOMBINATORTOWER_2F,255,8,7)
 }
 
 script Manhunt_MissionComplete_Dialogue {
     lock
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(0)
-        applymovement(PSFBADADMIN3,Common_Movement_FaceDown)
+        applymovement(SABRINA,Common_Movement_FaceDown)
         waitmovement(0)
         addvar(VAR_STORYLINE_STATE,1)
         addvar(VAR_RUSTURF_TUNNEL_STATE,1)
@@ -518,7 +518,7 @@ text gText_Manhunt_TheRegionIsYours {
 }
 
 text gText_Manhunt_IllBeAtTheEntrance {
-    format("Psfbadadmin, I've defeated Giovanni. I'll be at the entrance to LakeMerritt.")
+    format("Oak, I've defeated Giovanni. I'll be at the entrance to LakeMerritt.")
 }
 
 text gText_Manhunt_WhatWaitUhOkay {

@@ -16,12 +16,12 @@
     {
       "direction": "down",
       "offset": 0,
-      "map": "MAP_PSFCITYY16"
+      "map": "MAP_BERNALHEIGHTS"
     },
     {
       "direction": "up",
       "offset": -8,
-      "map": "MAP_PSFCITY6"
+      "map": "MAP_MISSION"
     }
   ],
   "object_events": [

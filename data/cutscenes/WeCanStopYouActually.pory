@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADBOSS = 2
+const ROSE = 2
 const POLICEA = 3
 const POLICEB = 4
 
@@ -8,9 +8,9 @@ script WeCanStopYouActually_FixPlayerPosition_Script {
 
         if (var(VAR_TEMP_0) != 15 || (var(VAR_TEMP_1) != 6)){
             fadescreen(FADE_TO_BLACK)
-                applymovement(PSFBADBOSS,Common_Movement_FaceDown)
-                waitmovement(PSFBADBOSS)
-                setobjectxy(PSFBADBOSS,15,5)
+                applymovement(ROSE,Common_Movement_FaceDown)
+                waitmovement(ROSE)
+                setobjectxy(ROSE,15,5)
                 applymovement(PLAYER,Common_Movement_FaceUp)
                 setobjectxy(PLAYER,15,6)
                 TeleportCamera(15,6)
@@ -38,8 +38,8 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADBOSS,WeCanStopYouActually_RunToDesk)
-        waitmovement(PSFBADBOSS)
+        applymovement(ROSE,WeCanStopYouActually_RunToDesk)
+        waitmovement(ROSE)
         playse(SE_PC_LOGIN)
         special(TurnOnTVScreen)
         delay(16)
@@ -72,8 +72,8 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADBOSS,WeCanStopYouActually_RageRun)
-        waitmovement(PSFBADBOSS)
+        applymovement(ROSE,WeCanStopYouActually_RageRun)
+        waitmovement(ROSE)
 
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
@@ -85,7 +85,7 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADBOSS,Common_Movement_FaceLeft)
+        applymovement(ROSE,Common_Movement_FaceLeft)
 
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
@@ -97,8 +97,8 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADBOSS,Common_Movement_FaceDown)
-        waitmovement(PSFBADBOSS)
+        applymovement(ROSE,Common_Movement_FaceDown)
+        waitmovement(ROSE)
 
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
@@ -106,8 +106,8 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADBOSS,Common_Movement_WalkDown)
-        waitmovement(PSFBADBOSS)
+        applymovement(ROSE,Common_Movement_WalkDown)
+        waitmovement(ROSE)
 
 
         goto(WeCanStopYouActually_StartBossBattle_Script)
@@ -156,16 +156,16 @@ const GRUNTA = 1
 const GRUNTB = 2
 const GRUNTC = 3
 const POLICEC = 4
-const PSFBADADMIN = 5
-const PSFBADBOSS_B = 6
-const PSFTRANSRIVAL = 7
-const PSFBADADMIN3 = 8
+const OAK = 5
+const ROSE_B = 6
+const BIANCA = 7
+const SABRINA = 8
 const POLICED = 9
-const PSFELITE4 = 10
-const PSFELITE1 = 11
-const PSFELITE2 = 12
-const PSFELITE3 = 13
-const PSFGOODADMIN = 14
+const WIKSTROM = 10
+const MALVA = 11
+const DRASNA = 12
+const SIEBOLD = 13
+const ARIANA = 14
 
 script WeCanStopYouActaully_ArrestCutscene {
     addvar(VAR_STORYLINE_STATE,1)
@@ -174,8 +174,8 @@ script WeCanStopYouActaully_ArrestCutscene {
         applymovement(GRUNTA,WeCanStopYouActually_MarchLeft)
         applymovement(GRUNTB,WeCanStopYouActually_MarchRight)
         applymovement(GRUNTC,WeCanStopYouActually_MarchLeft)
-        applymovement(PSFGOODADMIN,WeCanStopYouActually_MarchRight)
-        waitmovement(PSFGOODADMIN)
+        applymovement(ARIANA,WeCanStopYouActually_MarchRight)
+        waitmovement(ARIANA)
         applymovement(PLAYER,WeCanStopYouActually_StepAside)
         waitmovement(PLAYER)
         delay(8)
@@ -184,20 +184,20 @@ script WeCanStopYouActaully_ArrestCutscene {
         applymovement(POLICEC,WeCanStopYouActually_WalkOutOfBuilding)
         delay(16)
 
-        addobject(PSFBADADMIN)
-        applymovement(PSFBADADMIN,WeCanStopYouActually_WalkOutOfBuilding)
+        addobject(OAK)
+        applymovement(OAK,WeCanStopYouActually_WalkOutOfBuilding)
         delay(16)
 
-        addobject(PSFBADBOSS_B)
-        applymovement(PSFBADBOSS_B,WeCanStopYouActually_WalkOutOfBuilding)
+        addobject(ROSE_B)
+        applymovement(ROSE_B,WeCanStopYouActually_WalkOutOfBuilding)
         delay(16)
 
-        addobject(PSFTRANSRIVAL)
-        applymovement(PSFTRANSRIVAL,WeCanStopYouActually_WalkOutOfBuilding)
+        addobject(BIANCA)
+        applymovement(BIANCA,WeCanStopYouActually_WalkOutOfBuilding)
         delay(16)
 
-        addobject(PSFBADADMIN3)
-        applymovement(PSFBADADMIN3,WeCanStopYouActually_WalkOutOfBuilding)
+        addobject(SABRINA)
+        applymovement(SABRINA,WeCanStopYouActually_WalkOutOfBuilding)
         delay(16)
 
         addobject(POLICED)
@@ -207,57 +207,57 @@ script WeCanStopYouActaully_ArrestCutscene {
         waitmovement(POLICED)
 
         removeobject(POLICEC)
-        removeobject(PSFBADADMIN)
-        removeobject(PSFBADBOSS_B)
-        removeobject(PSFTRANSRIVAL)
-        removeobject(PSFBADADMIN3)
+        removeobject(OAK)
+        removeobject(ROSE_B)
+        removeobject(BIANCA)
+        removeobject(SABRINA)
         removeobject(POLICED)
 
-        addobject(PSFELITE4)
+        addobject(WIKSTROM)
         random(4)
         if (var(VAR_RESULT) == 1){
-            applymovement(PSFELITE4,WeCanStopYouActually_SalutePlayerHeart)
+            applymovement(WIKSTROM,WeCanStopYouActually_SalutePlayerHeart)
         }else {
-            applymovement(PSFELITE4,WeCanStopYouActually_SalutePlayer)
+            applymovement(WIKSTROM,WeCanStopYouActually_SalutePlayer)
         }
     delay(32)
-        waitmovement(PSFELITE4)
+        waitmovement(WIKSTROM)
 
-        addobject(PSFELITE1)
+        addobject(MALVA)
         random(4)
         if (var(VAR_RESULT) == 1){
-            applymovement(PSFELITE1,WeCanStopYouActually_SalutePlayerHeart)
+            applymovement(MALVA,WeCanStopYouActually_SalutePlayerHeart)
         }else {
-            applymovement(PSFELITE1,WeCanStopYouActually_SalutePlayer)
+            applymovement(MALVA,WeCanStopYouActually_SalutePlayer)
         }
     delay(32)
-        waitmovement(PSFELITE1)
+        waitmovement(MALVA)
 
-        addobject(PSFELITE2)
+        addobject(DRASNA)
         random(4)
         if (var(VAR_RESULT) == 1){
-            applymovement(PSFELITE2,WeCanStopYouActually_SalutePlayerHeart)
+            applymovement(DRASNA,WeCanStopYouActually_SalutePlayerHeart)
         }else {
-            applymovement(PSFELITE2,WeCanStopYouActually_SalutePlayer)
+            applymovement(DRASNA,WeCanStopYouActually_SalutePlayer)
         }
     delay(32)
-        waitmovement(PSFELITE2)
+        waitmovement(DRASNA)
 
-        addobject(PSFELITE3)
+        addobject(SIEBOLD)
         random(4)
         if (var(VAR_RESULT) == 1){
-            applymovement(PSFELITE3,WeCanStopYouActually_SalutePlayerHeart)
+            applymovement(SIEBOLD,WeCanStopYouActually_SalutePlayerHeart)
         }else {
-            applymovement(PSFELITE3,WeCanStopYouActually_SalutePlayer)
+            applymovement(SIEBOLD,WeCanStopYouActually_SalutePlayer)
         }
     delay(32)
 
-        waitmovement(PSFELITE3)
+        waitmovement(SIEBOLD)
 
-        removeobject(PSFELITE1)
-        removeobject(PSFELITE2)
-        removeobject(PSFELITE3)
-        removeobject(PSFELITE4)
+        removeobject(MALVA)
+        removeobject(DRASNA)
+        removeobject(SIEBOLD)
+        removeobject(WIKSTROM)
 
 
         applymovement(PLAYER,Common_Movement_FaceDown)
@@ -321,7 +321,7 @@ text gText_WeCanStopYouActually_I {
 }
 
 text gText_WeCanStopYouActually_Security {
-    format("PSFTRANSRIVAL! PSFBADADMIN3! SECURITY!")
+    format("BIANCA! SABRINA! SECURITY!")
 }
 
 text gText_WeCanStopYouActually_WeAlreadyBeatThem {

@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFBADGUY1TOWER_ELEVATOR",
+  "id": "MAP_YCOMBINATORTOWER_ELEVATOR",
   "name": "YCombinatorTower_Elevator",
-  "layout": "LAYOUT_PSFBADGUY1TOWER_ELEVATOR",
+  "layout": "LAYOUT_YCOMBINATORTOWER_ELEVATOR",
   "music": "MUS_RG_SILPH",
-  "region_map_section": "MAPSEC_PSFBADGUY1TOWER",
+  "region_map_section": "MAPSEC_YCOMBINATORTOWER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",

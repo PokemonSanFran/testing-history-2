@@ -16,12 +16,12 @@
     {
       "direction": "left",
       "offset": 0,
-      "map": "MAP_PSFCITY9"
+      "map": "MAP_OAKLAND"
     },
     {
       "direction": "right",
       "offset": -44,
-      "map": "MAP_PSFCAVE3"
+      "map": "MAP_LAKEMERRITT"
     }
   ],
   "object_events": [

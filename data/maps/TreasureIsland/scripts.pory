@@ -29,11 +29,11 @@ script TreasureIsland_UnlockedDestinations_Script {
 }
 
 script TreasureIsland_FerryState0_Script {
-    multichoicedefault(18,8,PSFCAVE5_FERRY_DESTINATIONS_VER1,2,TRUE)
+    multichoicedefault(18,8,TREASUREISLAND_FERRY_DESTINATIONS_VER1,2,TRUE)
     call(SlateportCity_Harbor_EventScript_BoardFerry)
 
     switch (var(VAR_RESULT)){
-        case 0: warp(MAP_PSFPLACE11,8,11)
+        case 0: warp(MAP_FERRYBUILDING,8,11)
         case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
 }

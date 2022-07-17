@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCAVE10",
+  "id": "MAP_UNDERGROUNDLAB",
   "name": "UndergroundLab",
-  "layout": "LAYOUT_PSFCAVE10",
+  "layout": "LAYOUT_UNDERGROUNDLAB",
   "music": "MUS_RG_POKE_MANSION",
-  "region_map_section": "MAPSEC_PSFCAVE10",
+  "region_map_section": "MAPSEC_UNDERGROUNDLAB",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",

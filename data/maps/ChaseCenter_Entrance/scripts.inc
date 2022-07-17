@@ -7,7 +7,7 @@ ChaseCenter_Entrance_KeepPlayerInside_Script::
 	compare VAR_STORYLINE_STATE, 51
 	goto_if_eq ChaseCenter_Entrance_KeepPlayerInside_Script_2
 ChaseCenter_Entrance_KeepPlayerInside_Script_1:
-	goto_if_set FLAG_PSFPLACE14_TOURNAMENT_HAPPENING, ChaseCenter_Entrance_KeepPlayerInside_Script_5
+	goto_if_set FLAG_CHASECENTER_TOURNAMENT_HAPPENING, ChaseCenter_Entrance_KeepPlayerInside_Script_5
 ChaseCenter_Entrance_KeepPlayerInside_Script_4:
 	release
 	end

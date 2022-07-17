@@ -185,7 +185,7 @@ WaitHeDidWhat_PreparePlayer_Script_1:
 
 WaitHeDidWhat_PreparePlayer_Script_2:
 	call GroupStages_MoveObjects_Script
-	warpsilent MAP_PSFPLACE14_ARENA, 0
+	warpsilent MAP_CHASECENTER_ARENA, 0
 	goto WaitHeDidWhat_PreparePlayer_Script_1
 
 

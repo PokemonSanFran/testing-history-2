@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY7",
+  "id": "MAP_DOGPATCH",
   "name": "Dogpatch",
-  "layout": "LAYOUT_PSFCITY7",
+  "layout": "LAYOUT_DOGPATCH",
   "music": "MUS_RUSTBORO",
-  "region_map_section": "MAPSEC_PSFCITY7",
+  "region_map_section": "MAPSEC_DOGPATCH",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_CITY",
@@ -217,7 +217,7 @@
       "x": 9,
       "y": 9,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -226,7 +226,7 @@
       "x": 12,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "NULL"
     },
@@ -235,7 +235,7 @@
       "x": 11,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -244,7 +244,7 @@
       "x": 10,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -253,7 +253,7 @@
       "x": 13,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -262,7 +262,7 @@
       "x": 12,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -271,7 +271,7 @@
       "x": 11,
       "y": 11,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -280,7 +280,7 @@
       "x": 10,
       "y": 10,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -289,7 +289,7 @@
       "x": 13,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -298,7 +298,7 @@
       "x": 16,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -307,7 +307,7 @@
       "x": 17,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -316,7 +316,7 @@
       "x": 14,
       "y": 11,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MovePlayerOffPath_Script"
     },
@@ -325,7 +325,7 @@
       "x": 15,
       "y": 11,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -334,7 +334,7 @@
       "x": 16,
       "y": 11,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -343,7 +343,7 @@
       "x": 17,
       "y": 10,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -352,7 +352,7 @@
       "x": 14,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MoveCameraToFight_Script"
     },
@@ -361,7 +361,7 @@
       "x": 15,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_PSFCITY7_STATE",
+      "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
       "script": "HowDoWeGetHome_MovePlayerOffPath_Script"
     }

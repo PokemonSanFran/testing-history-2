@@ -15,7 +15,7 @@ BeingChampionIsHard_PostTimeSkip::
 	playse SE_EXIT
 	waitse
 	fadescreen FADE_FROM_BLACK
-	applymovement OBJ_EVENT_ID_PLAYER, BeingChampionIsHard_WalkToPsfbadadmin
+	applymovement OBJ_EVENT_ID_PLAYER, BeingChampionIsHard_WalkToOak
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -79,7 +79,7 @@ BeingChampionIsHard_PostTimeSkip::
 	end
 
 
-BeingChampionIsHard_WalkToPsfbadadmin:
+BeingChampionIsHard_WalkToOak:
 	walk_down
 	walk_down
 	walk_down
@@ -96,7 +96,7 @@ gText_BeingChampionIsHard_OneMonthLater::
 	.string "One month later…$"
 
 gText_BeingChampionIsHard_SighGoodMorning::
-	.string "sigh* Good morning Psfbadadmin.$"
+	.string "sigh* Good morning Oak.$"
 
 gText_BeingChampionIsHard_GoodMorningChampion::
 	.string "Good morning Champion {PLAYER}.$"

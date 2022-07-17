@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADBOSS = 1 //FLAG_TEMP_1
-const PSFTRANSRIVAL = 2 //FLAG_TEMP_2
-const PSFNATIVERIVAL = 3 //FLAG_TEMP_3
-const PSFBADADMIN = 4 //FLAG_TEMP_4
+const ROSE = 1 //FLAG_TEMP_1
+const BIANCA = 2 //FLAG_TEMP_2
+const ARCHER = 3 //FLAG_TEMP_3
+const OAK = 4 //FLAG_TEMP_4
 
 script Finals_HideObject_Script {
     setflag(FLAG_TEMP_1)
@@ -17,7 +17,7 @@ script Finals_PreparePlayer_Script {
     closemessage
         if (var(VAR_RESULT) == YES){
             call(GroupStages_MoveObjects_Script)
-            warpsilent(MAP_PSFPLACE14_ARENA,255,5,6)
+            warpsilent(MAP_CHASECENTER_ARENA,255,5,6)
         }
     release
         end
@@ -25,7 +25,7 @@ script Finals_PreparePlayer_Script {
 
 script Finals_StopPlayerLeaveLockers_Script {
     lock
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceDown)
+    applymovement(BIANCA,Common_Movement_FaceDown)
     waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
     callnative(DrawMugshot)

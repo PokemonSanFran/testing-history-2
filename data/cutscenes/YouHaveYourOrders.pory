@@ -1,14 +1,14 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN = 9 //FLAG_TEMP_3
-const PSFTRANSRIVAL = 10 //FLAG_TEMP_8
-const PSFBADBOSS = 11 // FLAG_TEMP_5
-const PSFBADADMIN2 = 14 // FLAG_TEMP_4
-const PSFBADADMIN3 = 2 // FLAG_TEMP_1
+const OAK = 9 //FLAG_TEMP_3
+const BIANCA = 10 //FLAG_TEMP_8
+const ROSE = 11 // FLAG_TEMP_5
+const KOGA = 14 // FLAG_TEMP_4
+const SABRINA = 2 // FLAG_TEMP_1
 
 script YouHaveYourOrders_ObjectSetUp_Script {
-    setobjectxy(PSFBADADMIN2,16,28)
-    setobjectxyperm(PSFBADADMIN2,16,28)
-    setobjectmovementtype(PSFBADADMIN2,MOVEMENT_TYPE_FACE_UP)
+    setobjectxy(KOGA,16,28)
+    setobjectxyperm(KOGA,16,28)
+    setobjectmovementtype(KOGA,MOVEMENT_TYPE_FACE_UP)
 }
 
 script YouHaveYourOrders_Assignment_Dialogue {
@@ -36,7 +36,7 @@ msgbox(gText_YouHaveYourOrders_HmmGoodPoint)
 
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
-    applymovement(PSFBADADMIN2,YouHaveYourOrders_WalkToOfficeA)
+    applymovement(KOGA,YouHaveYourOrders_WalkToOfficeA)
 
     if (var(VAR_TEMP_0) != 10){
     applymovement(PLAYER,YouHaveYourOrders_WalkToOfficeB_FromRight)
@@ -46,7 +46,7 @@ msgbox(gText_YouHaveYourOrders_HmmGoodPoint)
     applymovement(PLAYER,YouHaveYourOrders_WalkToOfficeB_FromDown)
     }
 
-    applymovement(PSFBADADMIN2,YouHaveYourOrders_PaceInOffice)
+    applymovement(KOGA,YouHaveYourOrders_PaceInOffice)
     waitmovement(0)
     
     setvar(VAR_0x8000, MUGSHOT_N)
@@ -92,7 +92,7 @@ msgbox(gText_YouHaveYourOrders_WhatAbout)
 msgbox(gText_YouHaveYourOrders_OurIntelligenceTells)
     }
 
-    applymovement(PSFBADADMIN2,YouHaveYourOrders_LookOutWindow)
+    applymovement(KOGA,YouHaveYourOrders_LookOutWindow)
     waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_N)
@@ -105,7 +105,7 @@ msgbox(gText_YouHaveYourOrders_IStillFeelLike)
     callnative(ClearMugshot)
     closemessage
 
-    applymovement(PSFBADADMIN2,Common_Movement_FaceUp)
+    applymovement(KOGA,Common_Movement_FaceUp)
     waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_N)
@@ -134,7 +134,7 @@ msgbox(gText_YouHaveYourOrders_WasThatHard)
     callnative(DrawMugshot)
 msgbox(gText_YouHaveYourOrders_AtTheTimeNo)
 
-    applymovement(PSFBADADMIN2,YouHaveYourOrders_LookOutWindow)
+    applymovement(KOGA,YouHaveYourOrders_LookOutWindow)
     waitmovement(0)
 
     setvar(VAR_0x8000, MUGSHOT_N)
@@ -144,7 +144,7 @@ msgbox(gText_YouHaveYourOrders_ICouldGoShut)
 
 msgbox(gText_YouHaveYourOrders_DoYouWantTo,MSGBOX_YESNO)
 if (var(VAR_RESULT)){
-    warpsilent(MAP_PSFCITY13,255,5,12)
+    warpsilent(MAP_CHINATOWN,255,5,12)
 }
 
 closemessage

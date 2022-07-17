@@ -65,7 +65,7 @@ EnterWhitney_StartBattle_Script::
 
 EnterWhitney_Defeated_Script::
 	setflag FLAG_BADGE03_GET
-	addvar VAR_PSFCITY15_STATE, 1
+	addvar VAR_SOMA_STATE, 1
 	addvar VAR_GYM_3_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_WHITNEY

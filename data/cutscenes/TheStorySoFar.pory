@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFELITE1 = 9
+const MALVA = 9
 
 script TheStorySoFar_ExplainExhibit_Dialogue {
     lock
@@ -8,7 +8,7 @@ script TheStorySoFar_ExplainExhibit_Dialogue {
         msgbox(gText_TheStorySoFar_WelcomeToExhibit)
         closemessage
         applymovement(PLAYER,Common_Movement_WalkUp)
-        setvar(VAR_PSFCAVE7_EXHIBIT_STATE,1)
+        setvar(VAR_ALCATRAZ_EXHIBIT_STATE,1)
         waitmovement(0)
         release
         end
@@ -29,7 +29,7 @@ script TheStorySoFar_EntranceTrigger_Script {
 
 script TheStorySoFar_Event_Script {
     waitmovement(0)
-        switch(var(VAR_PSFCAVE7_EXHIBIT_STATE)){
+        switch(var(VAR_ALCATRAZ_EXHIBIT_STATE)){
             case 0: goto(TheStorySoFar_ExplainExhibit_Dialogue)
             case 1: goto(TheStorySoFar_CheckNumberDefeated_Script)
             case 2: goto(TheStorySoFar_AwardPlayer_Script) 
@@ -69,8 +69,8 @@ script TheStorySoFar_CheckNumberDefeated_Script {
 }
 
 script TheStorySoFar_AwardPlayer_Script {
-        addvar(VAR_PSFCAVE7_EXHIBIT_STATE,1)
-        setvar(VAR_PSFCAVE7_STATE,1)
+        addvar(VAR_ALCATRAZ_EXHIBIT_STATE,1)
+        setvar(VAR_ALCATRAZ_STATE,1)
         msgbox(gText_TheStorySoFar_ExcellentWork)
         giveitem(ITEM_MACHO_BRACE,1)
         closemessage

@@ -519,7 +519,7 @@ gText_KogaRaisonDetre_HasBeenSoGenerous::
 	.string "should stay.$"
 
 gText_KogaRaisonDetre_HasBeenExpectingYou::
-	.string "{PLAYER}, PSFBADADMIN2 has been\n"
+	.string "{PLAYER}, KOGA has been\n"
 	.string "expecting you.$"
 
 gText_KogaRaisonDetre_YoureHereInTheFlesh::

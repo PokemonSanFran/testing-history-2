@@ -1,13 +1,13 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFNATIVERIVAL = 1
+const ARCHER = 1
 
 script Battle8_SetUpObject_Script {
     setflag(FLAG_TEMP_1)
 }
 
 script Battle8_StartBattle_ObjectSetUp_Script {
-    setobjectxyperm(PSFNATIVERIVAL,19,16)
-        setobjectxy(PSFNATIVERIVAL,19,16)
+    setobjectxyperm(ARCHER,19,16)
+        setobjectxy(ARCHER,19,16)
 }
 
 
@@ -17,9 +17,9 @@ script Battle8_ArcherWalksOut_Script {
         opendoor(19, 13)
         waitdooranim
         clearflag(FLAG_TEMP_1)
-        addobject(PSFNATIVERIVAL)
+        addobject(ARCHER)
         playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
-        applymovement(PSFNATIVERIVAL,Battle8_WalkOutOfHouse)
+        applymovement(ARCHER,Battle8_WalkOutOfHouse)
 
         getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
         if (var(VAR_TEMP_0) != 26){
@@ -39,9 +39,9 @@ script Battle8_ArcherWalksOut_Script {
         callnative(ClearMugshot)
 
         playse(SE_PIN)
-        applymovement(PSFNATIVERIVAL,Common_Movement_ExclamationMark)
+        applymovement(ARCHER,Common_Movement_ExclamationMark)
         waitmovement(0)
-        applymovement(PSFNATIVERIVAL,Common_Movement_FaceRight)
+        applymovement(ARCHER,Common_Movement_FaceRight)
         waitmovement(0)
 
 
@@ -56,7 +56,7 @@ script Battle8_ExplainAttraction_Dialogue {
         if (var(VAR_TEMP_0) == 26){
             closemessage
                 callnative(ClearMugshot)
-                applymovement(PSFNATIVERIVAL,Battle8_WalkToPlayer)
+                applymovement(ARCHER,Battle8_WalkToPlayer)
                 waitmovement(0)
         }
 
@@ -139,9 +139,9 @@ script Battle8_ArcherDefeated_Dialogue {
                 applymovement(PLAYER,Common_Movement_FaceUp)
         }
 
-    applymovement(PSFNATIVERIVAL,Battle8_WalkToTheWest)
+    applymovement(ARCHER,Battle8_WalkToTheWest)
         waitmovement(0)
-        removeobject(PSFNATIVERIVAL)
+        removeobject(ARCHER)
         fadedefaultbgm
         release
         end

@@ -1,13 +1,13 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
-const PSFBADADMIN = 2 //FLAG_TEMP_2
+const BIANCA = 1 //FLAG_TEMP_1
+const OAK = 2 //FLAG_TEMP_2
 
 script TwoHoursAgo_ObjectSetUp {
         setflag(FLAG_TEMP_3)
         setflag(FLAG_TEMP_1)
-        setobjectmovementtype(PSFBADADMIN,MOVEMENT_TYPE_WANDER_AROUND)
+        setobjectmovementtype(OAK,MOVEMENT_TYPE_WANDER_AROUND)
 
-        if (var (VAR_LITTLEROOT_INTRO_STATE) > 6) { //If you've got four badges, Psfbadadmin no longer provides help and tutorials and isn't in the house
+        if (var (VAR_LITTLEROOT_INTRO_STATE) > 6) { //If you've got four badges, Oak no longer provides help and tutorials and isn't in the house
             setflag(FLAG_TEMP_2)
         }
 }
@@ -42,9 +42,9 @@ script TwoHoursAgo_TheyreEager_Dialogue {
 script TwoHoursAgo_ExplainLeague_ObjectSetUp_Script {
         lock
         fadescreen(FADE_TO_BLACK)
-        setobjectxy(PSFBADADMIN, 4, 6)
-        turnobject(PSFBADADMIN, DIR_WEST)
-        setobjectnewmovementtype(PSFBADADMIN, MOVEMENT_TYPE_FACE_LEFT)
+        setobjectxy(OAK, 4, 6)
+        turnobject(OAK, DIR_WEST)
+        setobjectnewmovementtype(OAK, MOVEMENT_TYPE_FACE_LEFT)
         setobjectxy(PLAYER, 1, 6)
         turnobject(PLAYER, DIR_EAST)
         call(TwoHoursAgo_CameraToPlayer_Script)

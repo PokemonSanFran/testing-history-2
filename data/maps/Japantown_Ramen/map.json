@@ -1,7 +1,7 @@
 {
-  "id": "MAP_PSFCITY14_RAMEN",
+  "id": "MAP_JAPANTOWN_RAMEN",
   "name": "Japantown_Ramen",
-  "layout": "LAYOUT_PSFCITY14_RAMEN",
+  "layout": "LAYOUT_JAPANTOWN_RAMEN",
   "music": "MUS_VERDANTURF",
   "region_map_section": "MAPSEC_LAVARIDGE_TOWN",
   "requires_flash": false,
@@ -33,14 +33,14 @@
       "x": 7,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY14",
+      "dest_map": "MAP_JAPANTOWN",
       "dest_warp_id": 1
     },
     {
       "x": 8,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY14",
+      "dest_map": "MAP_JAPANTOWN",
       "dest_warp_id": 1
     }
   ],

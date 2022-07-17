@@ -1,6 +1,6 @@
 HaveYouSeenTheNews_AskHelp_Dialogue::
 	addvar VAR_ROUTE116_STATE, 1
-	setvar VAR_PSFBADGUY1TOWER_2F_STATE, 3
+	setvar VAR_YCOMBINATORTOWER_2F_STATE, 3
 	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -30,7 +30,7 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	releaseall
-	warpsilent MAP_PSFBADGUY1TOWER_2F, 255, 7, 14
+	warpsilent MAP_YCOMBINATORTOWER_2F, 255, 7, 14
 	end
 
 HaveYouSeenTheNews_AskHelp_Dialogue_1:

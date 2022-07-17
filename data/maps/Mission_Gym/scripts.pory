@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER1 = 1
+const FALKNER = 1
 
 mapscripts Mission_Gym_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {

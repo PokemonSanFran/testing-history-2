@@ -133,13 +133,13 @@ YCombinatorTowerElevator_EventScript_ChooseFloor_8:
 
 
 YCombinatorTowerElevator_EventScript_1stFloor::
-	setvar VAR_0x8006, PSFBADGUY1TOWER_FLOORNUM_1F
-	setdynamicwarp MAP_PSFBADGUY1TOWER_1F, 255, 8, 2
-	compare VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_1F
+	setvar VAR_0x8006, YCOMBINATORTOWER_FLOORNUM_1F
+	setdynamicwarp MAP_YCOMBINATORTOWER_1F, 255, 8, 2
+	compare VAR_DEPT_STORE_FLOOR, YCOMBINATORTOWER_FLOORNUM_1F
 	goto_if_eq YCombinatorTowerElevator_EventScript_1stFloor_2
 YCombinatorTowerElevator_EventScript_1stFloor_1:
 	call YCombinatorTowerElevator_EventScript_MoveElevator
-	setvar VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_1F
+	setvar VAR_DEPT_STORE_FLOOR, YCOMBINATORTOWER_FLOORNUM_1F
 	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
 	end
 
@@ -149,13 +149,13 @@ YCombinatorTowerElevator_EventScript_1stFloor_2:
 
 
 YCombinatorTowerElevator_EventScript_2ndFloor::
-	setvar VAR_0x8006, PSFBADGUY1TOWER_FLOORNUM_2F
-	setdynamicwarp MAP_PSFBADGUY1TOWER_2F, 255, 9, 39
-	compare VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_2F
+	setvar VAR_0x8006, YCOMBINATORTOWER_FLOORNUM_2F
+	setdynamicwarp MAP_YCOMBINATORTOWER_2F, 255, 9, 39
+	compare VAR_DEPT_STORE_FLOOR, YCOMBINATORTOWER_FLOORNUM_2F
 	goto_if_eq YCombinatorTowerElevator_EventScript_2ndFloor_2
 YCombinatorTowerElevator_EventScript_2ndFloor_1:
 	call YCombinatorTowerElevator_EventScript_MoveElevator
-	setvar VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_2F
+	setvar VAR_DEPT_STORE_FLOOR, YCOMBINATORTOWER_FLOORNUM_2F
 	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
 	end
 
@@ -165,13 +165,13 @@ YCombinatorTowerElevator_EventScript_2ndFloor_2:
 
 
 YCombinatorTowerElevator_EventScript_5thFloor::
-	setvar VAR_0x8006, PSFBADGUY1TOWER_FLOORNUM_5F
-	setdynamicwarp MAP_PSFBADGUY1TOWER_5F, 255, 16, 28
-	compare VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_5F
+	setvar VAR_0x8006, YCOMBINATORTOWER_FLOORNUM_5F
+	setdynamicwarp MAP_YCOMBINATORTOWER_5F, 255, 16, 28
+	compare VAR_DEPT_STORE_FLOOR, YCOMBINATORTOWER_FLOORNUM_5F
 	goto_if_eq YCombinatorTowerElevator_EventScript_5thFloor_2
 YCombinatorTowerElevator_EventScript_5thFloor_1:
 	call YCombinatorTowerElevator_EventScript_MoveElevator
-	setvar VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_5F
+	setvar VAR_DEPT_STORE_FLOOR, YCOMBINATORTOWER_FLOORNUM_5F
 	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
 	end
 
@@ -181,13 +181,13 @@ YCombinatorTowerElevator_EventScript_5thFloor_2:
 
 
 YCombinatorTowerElevator_EventScript_10thFloor::
-	setvar VAR_0x8006, PSFBADGUY1TOWER_FLOORNUM_10F
-	setdynamicwarp MAP_PSFBADGUY1TOWER_10F, 255, 8, 2
-	compare VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_10F
+	setvar VAR_0x8006, YCOMBINATORTOWER_FLOORNUM_10F
+	setdynamicwarp MAP_YCOMBINATORTOWER_10F, 255, 8, 2
+	compare VAR_DEPT_STORE_FLOOR, YCOMBINATORTOWER_FLOORNUM_10F
 	goto_if_eq YCombinatorTowerElevator_EventScript_10thFloor_2
 YCombinatorTowerElevator_EventScript_10thFloor_1:
 	call YCombinatorTowerElevator_EventScript_MoveElevator
-	setvar VAR_DEPT_STORE_FLOOR, PSFBADGUY1TOWER_FLOORNUM_10F
+	setvar VAR_DEPT_STORE_FLOOR, YCOMBINATORTOWER_FLOORNUM_10F
 	goto YCombinatorTowerElevator_EventScript_ExitFloorSelect
 	end
 

@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
+const BIANCA = 1
 
 script LetsGettheBandBackTogether_HideObject_Script {
     if (var(VAR_STORYLINE_STATE) == 43){ //If player has slept after being pitched by Archer, Alcatraz should be empty except for Archer
@@ -31,14 +31,14 @@ script LetsGettheBandBackTogether_PreventPlayerEnterTower_Script {
 //This cutscene plays after the player has decided to side with TeamRocket.
 script LetsGettheBandBackTogether_MeetInBasement_Script {
 
-    if (var(VAR_PSFCAVE7_STATE) == 6){
+    if (var(VAR_ALCATRAZ_STATE) == 6){
         goto(LetsGettheBandBackTogether_TrueTimelineSplit_Script)
     }
 
     lock
         playse(SE_PIN)
         waitse
-        applymovement(PSFTRANSRIVAL,Common_Movement_ExclamationMark)
+        applymovement(BIANCA,Common_Movement_ExclamationMark)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -82,7 +82,7 @@ script LetsGettheBandBackTogether_MeetInBasement_Script {
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_IllWriteUpAPost)
-        addvar(VAR_PSFCAVE7_STATE,1)
+        addvar(VAR_ALCATRAZ_STATE,1)
         callnative(ClearMugshot)
         closemessage
         release
@@ -107,7 +107,7 @@ script LetsGettheBandBackTogether_TrueTimelineSplit_Script {
                 end
         }
 
-    addvar(VAR_PSFCAVE7_STATE,1)
+    addvar(VAR_ALCATRAZ_STATE,1)
         setvar(VAR_STORYLINE_STATE,100)
         addvar(VAR_LILYCOVE_CITY_STATE,1)
 
@@ -136,11 +136,11 @@ script LetsGettheBandBackTogether_TrueTimelineSplit_Script {
 
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFTRANSRIVAL,LetsGettheBandBackTogether_WalkOffScreen)
+        applymovement(BIANCA,LetsGettheBandBackTogether_WalkOffScreen)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         release
         end
 

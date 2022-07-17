@@ -16,12 +16,12 @@
     {
       "direction": "left",
       "offset": -12,
-      "map": "MAP_PSFPLACE7"
+      "map": "MAP_LOMBARDSTREET"
     },
     {
       "direction": "right",
       "offset": -9,
-      "map": "MAP_PSFPLACE13"
+      "map": "MAP_FISHERMANSWHARF"
     }
   ],
   "object_events": [

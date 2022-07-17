@@ -1,24 +1,24 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFBADADMIN = 2
-const PSFGOODBOSS = 3
+const BIANCA = 1
+const OAK = 2
+const GIOVANNI = 3
 const GOODTEAMA = 4
 const GOODTEAMB = 5
 const POLICEA = 12
 const POLICEB = 13
-const PSFBADBOSS = 14
+const ROSE = 14
 
 script VSGarbodor_Arrest_ObjectSetup_Script {
         setflag(FLAG_TEMP_6)
     setobjectxy(GOODTEAMA, 26, 19)
         setobjectxy(GOODTEAMB, 26, 20)
-        setobjectxy(PSFTRANSRIVAL, 21, 21)
-        setobjectxy(PSFBADADMIN, 21, 22)
+        setobjectxy(BIANCA, 21, 21)
+        setobjectxy(OAK, 21, 22)
 
         setobjectxyperm(GOODTEAMA, 26, 19)
         setobjectxyperm(GOODTEAMB, 26, 20)
-        setobjectxyperm(PSFTRANSRIVAL, 21, 21)
-        setobjectxyperm(PSFBADADMIN, 21, 22)
+        setobjectxyperm(BIANCA, 21, 21)
+        setobjectxyperm(OAK, 21, 22)
 }
 
 script VSGarbodor_ObjectCleanUp_Script {
@@ -62,11 +62,11 @@ script VSGarbodor_ChooseLeft_Script {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL, VSGarbodor_WalkFurtherRight)
+        applymovement(BIANCA, VSGarbodor_WalkFurtherRight)
         delay(60)
         applymovement(PLAYER, VSGarbodor_WalkTowardsLeftSide)
         waitmovement(0)
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         release
         end
 }
@@ -79,11 +79,11 @@ script VSGarbodor_ChooseRight_Script {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL, VSGarbodor_WalkFurtherLeft)
+        applymovement(BIANCA, VSGarbodor_WalkFurtherLeft)
         delay(60)
         applymovement(PLAYER, VSGarbodor_WalkTowardsRightSide)
         waitmovement(0)
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         release
         end
 }
@@ -177,30 +177,30 @@ script VSGarbodor_MoveBianca_Script {
 
         getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
         clearflag(FLAG_TEMP_1)
-        addobject(PSFTRANSRIVAL)
+        addobject(BIANCA)
 
         if (var (VAR_TEMP_0) < 10) {
             applymovement(PLAYER, Common_Movement_FaceRight)
                 if (var (VAR_TEMP_1) > 9) {
-                    setobjectxy(PSFTRANSRIVAL, 11, 12)
-                        copyobjectxytoperm(PSFTRANSRIVAL)
-                        applymovement(PSFTRANSRIVAL, BiancaApproachSW)
+                    setobjectxy(BIANCA, 11, 12)
+                        copyobjectxytoperm(BIANCA)
+                        applymovement(BIANCA, BiancaApproachSW)
                 } else {
-                    setobjectxy(PSFTRANSRIVAL, 13, 6)
-                        copyobjectxytoperm(PSFTRANSRIVAL)
-                        applymovement(PSFTRANSRIVAL, BiancaApproachNW)
+                    setobjectxy(BIANCA, 13, 6)
+                        copyobjectxytoperm(BIANCA)
+                        applymovement(BIANCA, BiancaApproachNW)
                 }
         } else {
             if (var (VAR_TEMP_1) > 9) {
                 applymovement(PLAYER, Common_Movement_FaceUp)
-                    setobjectxy(PSFTRANSRIVAL, 22, 4)
-                    copyobjectxytoperm(PSFTRANSRIVAL)
-                    applymovement(PSFTRANSRIVAL, BiancaApproachSE)
+                    setobjectxy(BIANCA, 22, 4)
+                    copyobjectxytoperm(BIANCA)
+                    applymovement(BIANCA, BiancaApproachSE)
             } else {
                 applymovement(PLAYER, Common_Movement_FaceLeft)
-                    setobjectxy(PSFTRANSRIVAL, 10, 6)
-                    copyobjectxytoperm(PSFTRANSRIVAL)
-                    applymovement(PSFTRANSRIVAL, BiancaApproachNE)
+                    setobjectxy(BIANCA, 10, 6)
+                    copyobjectxytoperm(BIANCA)
+                    applymovement(BIANCA, BiancaApproachNE)
             }
         }
     waitmovement(0)
@@ -214,7 +214,7 @@ script VSGarbodor_DefeatedAll_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFTRANSRIVAL, VSGarbodor_LookAround)
+        applymovement(BIANCA, VSGarbodor_LookAround)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -230,9 +230,9 @@ script VSGarbodor_Arrest_Script {
     addvar(VAR_ROUTE110_STATE, 1)
         addvar(VAR_STORYLINE_STATE,1)
 
-        applymovement(PSFBADBOSS,Common_Movement_FaceUp)
-        applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
-        applymovement(PSFBADADMIN,Common_Movement_FaceUp)
+        applymovement(ROSE,Common_Movement_FaceUp)
+        applymovement(BIANCA,Common_Movement_FaceUp)
+        applymovement(OAK,Common_Movement_FaceUp)
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(0)
 
@@ -243,8 +243,8 @@ script VSGarbodor_Arrest_Script {
         waitmovement(0)
 
         call(VSGarbodor_CleanUpPerpWalk)
-        applymovement(PSFBADBOSS, Common_Movement_FaceDown)
-        applymovement(PSFTRANSRIVAL, Common_Movement_FaceDown)
+        applymovement(ROSE, Common_Movement_FaceDown)
+        applymovement(BIANCA, Common_Movement_FaceDown)
         waitmovement(0)
         goto(VSGarbodor_Negotiating_Dialogue)
 }
@@ -254,7 +254,7 @@ script VSGarbodor_CleanUpPerpWalk {
         removeobject(GOODTEAMB)
         removeobject(POLICEA)
         removeobject(POLICEB)
-        removeobject(PSFGOODBOSS)
+        removeobject(GIOVANNI)
 }
 
 script VSGarbodor_Negotiating_Dialogue {
@@ -293,35 +293,35 @@ script VSGarbodor_Negotiating_Dialogue {
                 msgbox(gText_VSGarbodor_LetsBounce)
                 callnative(ClearMugshot)
                 closemessage
-                warpsilent(MAP_PSFCITY8_COMPOUND_1F, 7, 3)
+                warpsilent(MAP_SOUTHBAY_COMPOUND_1F, 7, 3)
                 release
                 end
         }
 }
 
 script VSGarbodor_FlyWithoutPlayer_Script {
-    applymovement(PSFTRANSRIVAL, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(BIANCA, Common_Movement_WalkInPlaceFasterDown)
         waitmovement(0)
         delay(50)
         setfieldeffectargument(0,1)
         dofieldeffect(FLDEFF_NPCFLY_OUT)
         delay(15)
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         waitfieldeffect(FLDEFF_NPCFLY_OUT)
 }
 
 script VSGarbodor_ReturnToTheCompound_ObjectSetUp {
     setflag(FLAG_TEMP_2)
         setflag(FLAG_TEMP_3)
-        setobjectxy(PSFTRANSRIVAL,7,2)
-        setobjectxyperm(PSFTRANSRIVAL,7,2)
-        setobjectmovementtype(PSFTRANSRIVAL,MOVEMENT_ACTION_FACE_DOWN)
+        setobjectxy(BIANCA,7,2)
+        setobjectxyperm(BIANCA,7,2)
+        setobjectmovementtype(BIANCA,MOVEMENT_ACTION_FACE_DOWN)
 }
 
 script VSGarbodor_ReturnToTheCompound_Dialogue {
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
         if (var(VAR_TEMP_0) != 7){
-            warpsilent(MAP_PSFCITY8_COMPOUND_1F, 7, 3)
+            warpsilent(MAP_SOUTHBAY_COMPOUND_1F, 7, 3)
             waitstate
         }else{
             applymovement(PLAYER,Common_Movement_FaceUp)
@@ -336,11 +336,11 @@ script VSGarbodor_ReturnToTheCompound_Dialogue {
                 callnative(ClearMugshot)
                 closemessage
 
-                applymovement(PSFTRANSRIVAL, VSGarbodor_WalkUpstairs)
+                applymovement(BIANCA, VSGarbodor_WalkUpstairs)
                 waitmovement(0)
                 playse(SE_EXIT)
                 waitse
-                removeobject(PSFTRANSRIVAL)
+                removeobject(BIANCA)
                 addvar(VAR_STORYLINE_STATE,1)
 
                 release
@@ -481,7 +481,7 @@ text gText_VSGarbodor_GodYouWereTaking {
 }
 
 text gText_VSGarbodor_WhateverMineWereEasy {
-    format("Whatever. Mine were easy, they just both used Self-Destruct before I could really get a move in. I already texted Psfbadadmin, he said meet in front of the construction site.")
+    format("Whatever. Mine were easy, they just both used Self-Destruct before I could really get a move in. I already texted Oak, he said meet in front of the construction site.")
 }
 
 text gText_VSGarbodor_AsWeWereNegotiating {

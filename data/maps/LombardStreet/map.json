@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE7",
+  "id": "MAP_LOMBARDSTREET",
   "name": "LombardStreet",
-  "layout": "LAYOUT_PSFPLACE7",
+  "layout": "LAYOUT_LOMBARDSTREET",
   "music": "MUS_ROUTE119",
-  "region_map_section": "MAPSEC_PSFPLACE7",
+  "region_map_section": "MAPSEC_LOMBARDSTREET",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
@@ -53,7 +53,7 @@
       "x": 21,
       "y": 10,
       "elevation": 0,
-      "var": "VAR_PSFPLACE7_STATE",
+      "var": "VAR_LOMBARDSTREET_STATE",
       "var_value": "0",
       "script": "OldAssholeAppears_WalktoBianca_Script"
     },
@@ -62,7 +62,7 @@
       "x": 12,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_PSFPLACE7_STATE",
+      "var": "VAR_LOMBARDSTREET_STATE",
       "var_value": "0",
       "script": "OldAssholeAppears_WalktoBianca_Script"
     }

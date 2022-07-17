@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFNATIVERIVAL = 1
+const ARCHER = 1
 
 script LetsFixThis_HideObjectHouse_Script {
     setflag(FLAG_TEMP_1)
@@ -9,7 +9,7 @@ script LetsFixThis_EliteVideo_Dialogue {
     lock
         fadescreen(FADE_TO_BLACK)
         clearflag(FLAG_TEMP_1)
-        addobject(PSFNATIVERIVAL)
+        addobject(ARCHER)
 
         //PSF TODO show video
 
@@ -35,7 +35,7 @@ script LetsFixThis_EliteVideo_Dialogue {
 }
 
 script LetsFixThis_GetMessage_Dialogue {
-    applymovement(PSFNATIVERIVAL,Common_Movement_FaceLeft)
+    applymovement(ARCHER,Common_Movement_FaceLeft)
         fadescreen(FADE_FROM_BLACK)
         applymovement(PLAYER,Common_Movement_WalkRight)
         waitmovement(0)
@@ -79,16 +79,16 @@ script LetsFixThis_GetMessage_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        addvar(VAR_PSFCAVE7_STATE,1)
+        addvar(VAR_ALCATRAZ_STATE,1)
         addvar(VAR_STORYLINE_STATE,1)
         addvar(VAR_FORTREE_CITY_STATE,1)
         setflag(FLAG_LOCKEDOUT_PLAYED)
 
-        applymovement(PSFNATIVERIVAL,LetFixThis_WalkOutHouse)
+        applymovement(ARCHER,LetFixThis_WalkOutHouse)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFNATIVERIVAL)
+        removeobject(ARCHER)
         release
         end
 }

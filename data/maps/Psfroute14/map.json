@@ -16,12 +16,12 @@
     {
       "direction": "right",
       "offset": -14,
-      "map": "MAP_PSFCITY6"
+      "map": "MAP_MISSION"
     },
     {
       "direction": "left",
       "offset": -8,
-      "map": "MAP_PSFCITY5"
+      "map": "MAP_CASTRO"
     }
   ],
   "object_events": [

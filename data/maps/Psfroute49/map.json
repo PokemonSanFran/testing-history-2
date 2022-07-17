@@ -16,12 +16,12 @@
     {
       "direction": "up",
       "offset": 42,
-      "map": "MAP_PSFCITY3"
+      "map": "MAP_PRESIDIO"
     },
     {
       "direction": "left",
       "offset": -15,
-      "map": "MAP_PSFCITY4"
+      "map": "MAP_PACIFICA"
     }
   ],
   "object_events": [

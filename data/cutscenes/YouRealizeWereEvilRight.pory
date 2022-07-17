@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN3 = 2
-const PSFBADADMIN = 9
-const PSFTRANSRIVAL = 10
-const PSFBADADMIN2 = 14
+const SABRINA = 2
+const OAK = 9
+const BIANCA = 10
+const KOGA = 14
 
 script YouRealizeWereEvilRight_Object_Setup_Script {
         setflag(FLAG_TEMP_5)
@@ -11,14 +11,14 @@ script YouRealizeWereEvilRight_Object_Setup_Script {
         setflag(FLAG_TEMP_8)
         setflag(FLAG_TEMP_9)
 
-        setobjectxy(PSFBADADMIN,10,13)
-        setobjectxyperm(PSFBADADMIN,10,13)
-        setobjectxy(PSFBADADMIN2,9,20)
-        setobjectxyperm(PSFBADADMIN2,9,20)
-        setobjectxy(PSFBADADMIN3,7,12)
-        setobjectxyperm(PSFBADADMIN3,7,12)
-        setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_DOWN)
-        setobjectmovementtype(PSFBADADMIN,MOVEMENT_TYPE_FACE_LEFT)
+        setobjectxy(OAK,10,13)
+        setobjectxyperm(OAK,10,13)
+        setobjectxy(KOGA,9,20)
+        setobjectxyperm(KOGA,9,20)
+        setobjectxy(SABRINA,7,12)
+        setobjectxyperm(SABRINA,7,12)
+        setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_DOWN)
+        setobjectmovementtype(OAK,MOVEMENT_TYPE_FACE_LEFT)
 }
 
 script YouRealizeWereEvilRight_Object_Cleanup_Script {
@@ -26,15 +26,15 @@ script YouRealizeWereEvilRight_Object_Cleanup_Script {
         setflag(FLAG_TEMP_6)
         setflag(FLAG_TEMP_7)
         setflag(FLAG_TEMP_8)
-        setobjectxy(PSFBADADMIN2,10,15)
-        setobjectxyperm(PSFBADADMIN2,10,15)
-        setobjectxy(PSFBADADMIN,10,13)
-        setobjectxyperm(PSFBADADMIN,10,13)
-        setobjectxy(PSFBADADMIN3,7,12)
-        setobjectxyperm(PSFBADADMIN3,7,12)
-        setobjectmovementtype(PSFBADADMIN2,MOVEMENT_TYPE_FACE_LEFT)
-        setobjectmovementtype(PSFBADADMIN3,MOVEMENT_TYPE_FACE_RIGHT)
-        setobjectmovementtype(PSFBADADMIN,MOVEMENT_TYPE_FACE_LEFT)
+        setobjectxy(KOGA,10,15)
+        setobjectxyperm(KOGA,10,15)
+        setobjectxy(OAK,10,13)
+        setobjectxyperm(OAK,10,13)
+        setobjectxy(SABRINA,7,12)
+        setobjectxyperm(SABRINA,7,12)
+        setobjectmovementtype(KOGA,MOVEMENT_TYPE_FACE_LEFT)
+        setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_RIGHT)
+        setobjectmovementtype(OAK,MOVEMENT_TYPE_FACE_LEFT)
 }
 
 
@@ -56,7 +56,7 @@ script YouRealizeWereEvilRight_PhoneCall_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_YeahImOnMyWay)
         callnative(ClearMugshot)
-        addvar(VAR_PSFBADGUY1TOWER_2F_STATE,1)
+        addvar(VAR_YCOMBINATORTOWER_2F_STATE,1)
 
         msgbox(gText_YouRealizeWereEvilRight_WouldYouLikeToGo,MSGBOX_YESNO)
 
@@ -65,17 +65,17 @@ script YouRealizeWereEvilRight_PhoneCall_Dialogue {
                 releaseall
                 end
         } else {
-            warpsilent(MAP_PSFBADGUY1TOWER_2F,255,7,14)
+            warpsilent(MAP_YCOMBINATORTOWER_2F,255,7,14)
         }
 }
 
 
 script YouRealizeWereEvilRight_Open_Dialogue {
     lockall
-        addvar(VAR_PSFBADGUY1TOWER_2F_STATE,1)
+        addvar(VAR_YCOMBINATORTOWER_2F_STATE,1)
         applymovement(PLAYER,Common_Movement_FaceRight)
 
-        //Psfbadadmin and the player walk to the conference table. Sabrina is already at the table. The screens behind Sabrina light up as they all sit, showing Archer, the player, and the “Leader” of whatever Gym was restored first. PSF TODO
+        //Oak and the player walk to the conference table. Sabrina is already at the table. The screens behind Sabrina light up as they all sit, showing Archer, the player, and the “Leader” of whatever Gym was restored first. PSF TODO
 
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
@@ -116,10 +116,10 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADADMIN2,YouRealizeWereEvilRight_WalkToTable)
+        applymovement(KOGA,YouRealizeWereEvilRight_WalkToTable)
         waitmovement(0)
-        setobjectxy(PSFBADADMIN2,10,15)
-        setobjectxyperm(PSFBADADMIN2,10,15)
+        setobjectxy(KOGA,10,15)
+        setobjectxyperm(KOGA,10,15)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_LANCE)
@@ -142,7 +142,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADADMIN, YouRealizeWereEvilRight_MoveAwayFromTable)
+        applymovement(OAK, YouRealizeWereEvilRight_MoveAwayFromTable)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_N)

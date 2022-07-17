@@ -9,9 +9,9 @@ SouthBay_Compound_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 SouthBay_Compound_2F_Bed_Script::
 	lock
-	compare VAR_PSFCAVE7_STATE, 4
+	compare VAR_ALCATRAZ_STATE, 4
 	goto_if_eq SouthBay_Compound_2F_Bed_Script_2
-	compare VAR_PSFCAVE7_STATE, 3
+	compare VAR_ALCATRAZ_STATE, 3
 	goto_if_eq SouthBay_Compound_2F_Bed_Script_2
 SouthBay_Compound_2F_Bed_Script_1:
 	callnative HealPlayerParty

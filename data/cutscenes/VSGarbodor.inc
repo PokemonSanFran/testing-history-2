@@ -304,7 +304,7 @@ VSGarbodor_Negotiating_Dialogue::
 	msgbox gText_VSGarbodor_LetsBounce
 	callnative ClearMugshot
 	closemessage
-	warpsilent MAP_PSFCITY8_COMPOUND_1F, 7, 3
+	warpsilent MAP_SOUTHBAY_COMPOUND_1F, 7, 3
 	release
 	end
 
@@ -364,7 +364,7 @@ VSGarbodor_ReturnToTheCompound_Dialogue::
 	end
 
 VSGarbodor_ReturnToTheCompound_Dialogue_1:
-	warpsilent MAP_PSFCITY8_COMPOUND_1F, 7, 3
+	warpsilent MAP_SOUTHBAY_COMPOUND_1F, 7, 3
 	waitstate
 	return
 
@@ -580,7 +580,7 @@ gText_VSGarbodor_WhateverMineWereEasy::
 	.string "Whatever. Mine were easy, they just\n"
 	.string "both used Self-Destruct before I\l"
 	.string "could really get a move in. I already\l"
-	.string "texted Psfbadadmin, he said meet in\l"
+	.string "texted Oak, he said meet in\l"
 	.string "front of the construction site.$"
 
 gText_VSGarbodor_AsWeWereNegotiating::

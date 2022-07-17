@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER6 = 1
+const JASMINE = 1
 
 script EnterJasmine_Event_Script {
     switch (var (VAR_GYM_6_STATE)) {

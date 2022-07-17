@@ -61,7 +61,7 @@ LetsFixThis_GetMessage_Dialogue::
 	msgbox gText_LetsFixThis_ActuallyGivenHowMuch
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_PSFCAVE7_STATE, 1
+	addvar VAR_ALCATRAZ_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
 	addvar VAR_FORTREE_CITY_STATE, 1
 	setflag FLAG_LOCKEDOUT_PLAYED

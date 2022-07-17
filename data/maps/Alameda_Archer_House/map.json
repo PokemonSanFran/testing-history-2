@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY17_PSFNATIVERIVAL_HOUSE",
+  "id": "MAP_ALAMEDA_ARCHER_HOUSE",
   "name": "Alameda_Archer_House",
-  "layout": "LAYOUT_PSFCITY17_PSFNATIVERIVAL_HOUSE",
+  "layout": "LAYOUT_ALAMEDA_ARCHER_HOUSE",
   "music": "MUS_BIRCH_LAB",
-  "region_map_section": "MAPSEC_PSFCITY17",
+  "region_map_section": "MAPSEC_ALAMEDA",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
@@ -33,7 +33,7 @@
       "x": 7,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY17",
+      "dest_map": "MAP_ALAMEDA",
       "dest_warp_id": 2
     }
   ],

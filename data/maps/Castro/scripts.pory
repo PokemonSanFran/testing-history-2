@@ -1,4 +1,4 @@
-const PSFTRANSRIVAL = 1
+const BIANCA = 1
 
 mapscripts Castro_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {

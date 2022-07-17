@@ -29,13 +29,13 @@
 1: Has met Archer
 2: Has defeated Archer
 
-#VAR_PSFCITY15_STATE
+#VAR_SOMA_STATE
 1: Defeated Whitney
 2: Invited to Tower by Rose
 3: Talked to Oak on 3rd floor
 4: Got to Rose's office
 
-#VAR_PSFBADGUY1TOWER_2F_STATE
+#VAR_YCOMBINATORTOWER_2F_STATE
 1: Stepped onto floor, greeted by Sabrina
 2: Has talked to Sabrina
 3: War room is created, cutscene is about to play
@@ -44,7 +44,7 @@
 6: YC has told you to stop helping Team Rocket
 7: YC waiting for you to tell them you'll work with them
 
-#VAR_PSFCITY7_STATE
+#VAR_DOGPATCH_STATE
 1: Has watched the fight that Ariana broke up
 
 #VAR_ROUTE109_STATE
@@ -52,7 +52,7 @@
 1: Has talked to Archer, battle has not started
 2: Has defeated Archer
 
-# VAR_PSFCAVE7_STATE
+# VAR_ALCATRAZ_STATE
 1: First arrived
 2: Has battled Malva
 3: Archer has asked to come to see real Alcatraz
@@ -75,7 +75,7 @@
 7: Finished puzzles, toggles "Have You Seen The News"
 8: removes everybody from the clearing
 
-#VAR_PSFBADGUY1TOWER_2F_STATE
+#VAR_YCOMBINATORTOWER_2F_STATE
 **RELEVANCE**: Tracking state of the 2nd floor of Salesforce Tower
 
 1: Has stepped onto the floor and has been spotted by Sabrina
@@ -92,7 +92,7 @@
 2: After "Sorry About My Friends", Alcatraz available from Alameda and Fisherman's Wharf
 3: Post league, TreasureIsland available
 
-#VAR_PSFCAVE7_EXHIBIT_STATE
+#VAR_ALCATRAZ_EXHIBIT_STATE
 1: started the exhibit challenge
 2: has finished challenge, has not gotten prize
 3: has finished challenge, has gotten prize
@@ -138,7 +138,7 @@
 8: Completed raid on naval base
 9: Oak has told player that championship will start soon
 
-#VAR_PSFGOODTEAM_PSFPLACE13_STATE
+#VAR_TEAMROCKET_FISHERMANSWHARF_STATE
 **RELEVANCE**: Track Fisherman's Wharf
 1: Team Rocket is attacking the shopkeeper
 2: Player has defeated Team Rocket, shopkeeper is happy
@@ -150,7 +150,7 @@
 3: Talked to Ariana
 4: Got ticket from Ariana
 
-#VAR_PSFCITY11_STATE
+#VAR_BERKELEY_STATE
 1: "swagbag2" has played out
 
 #VAR_STORYLINE_STATE

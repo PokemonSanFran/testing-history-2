@@ -16,12 +16,12 @@
     {
       "direction": "left",
       "offset": -8,
-      "map": "MAP_PSFCITY18"
+      "map": "MAP_HAIGHTASHBURY"
     },
     {
       "direction": "right",
       "offset": -10,
-      "map": "MAP_PSFPLACE3"
+      "map": "MAP_PAINTEDLADIES"
     }
   ],
   "object_events": [

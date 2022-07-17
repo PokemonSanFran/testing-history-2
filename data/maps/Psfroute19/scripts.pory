@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN = 1
+const OAK = 1
 
 mapscripts Psfroute19_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {

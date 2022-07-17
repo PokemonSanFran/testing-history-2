@@ -146,7 +146,7 @@ script ThereCanOnlyBeOne_StarterSelectEnd_Script {
 script ThereCanOnlyBeOne_WarpPlayer_Script {
   lock 
       clearflag(FLAG_SPAWN_INVISIBLE)
-  warpsilent(MAP_PSFCITY8, 255, 3, 10)
+  warpsilent(MAP_SOUTHBAY, 255, 3, 10)
 }
 
 text gText_ThereCanOnlyBe_AlmostPackedAndReady {

@@ -16,12 +16,12 @@
     {
       "direction": "down",
       "offset": 0,
-      "map": "MAP_PSFCITY7"
+      "map": "MAP_DOGPATCH"
     },
     {
       "direction": "left",
       "offset": -30,
-      "map": "MAP_PSFCITY15"
+      "map": "MAP_SOMA"
     },
     {
       "direction": "up",
@@ -231,21 +231,21 @@
       "x": 16,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE11",
+      "dest_map": "MAP_FERRYBUILDING",
       "dest_warp_id": 0
     },
     {
       "x": 21,
       "y": 18,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE14_CONSTRUCTION",
+      "dest_map": "MAP_CHASECENTER_CONSTRUCTION",
       "dest_warp_id": 0
     },
     {
       "x": 21,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE14_ENTRANCE",
+      "dest_map": "MAP_CHASECENTER_ENTRANCE",
       "dest_warp_id": 0
     }
   ],

@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY1",
+  "id": "MAP_SUNSET",
   "name": "Sunset",
-  "layout": "LAYOUT_PSFCITY1",
+  "layout": "LAYOUT_SUNSET",
   "music": "MUS_FALLARBOR",
-  "region_map_section": "MAPSEC_PSFCITY1",
+  "region_map_section": "MAPSEC_SUNSET",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_CITY",
@@ -104,14 +104,14 @@
       "x": 3,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY1_APARTMENT",
+      "dest_map": "MAP_SUNSET_APARTMENT",
       "dest_warp_id": 0
     },
     {
       "x": 15,
       "y": 13,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY1_PSFBADADMIN3_HOUSE",
+      "dest_map": "MAP_SUNSET_SABRINA_HOUSE",
       "dest_warp_id": 0
     }
   ],

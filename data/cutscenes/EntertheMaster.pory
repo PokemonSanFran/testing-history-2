@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFELITE3 = 2
+const BIANCA = 1
+const SIEBOLD = 2
 
 script EnterTheMaster_HideObject_Script {
     setflag(FLAG_TEMP_1)
@@ -50,11 +50,11 @@ msgbox(gText_EnterTheMaster_ThanksDad)
 callnative(ClearMugshot)
 closemessage
 
-applymovement(PSFTRANSRIVAL,EnterTheMaster_WalkIntoWoods)
+applymovement(BIANCA,EnterTheMaster_WalkIntoWoods)
 waitmovement(0)
 playse(SE_EXIT)
 waitse
-removeobject(PSFTRANSRIVAL)
+removeobject(BIANCA)
 release
 end
 
@@ -95,9 +95,9 @@ script EnterTheMaster_CompleteMaze_Dialogue {
 
 addvar(VAR_ROUTE116_STATE,1)
 lock
-    addobject(PSFTRANSRIVAL)
-    setobjectxy(PSFTRANSRIVAL,24,22) //PSF TODO Remove when followers are implemented
-    setobjectxyperm(PSFTRANSRIVAL,24,22)
+    addobject(BIANCA)
+    setobjectxy(BIANCA,24,22) //PSF TODO Remove when followers are implemented
+    setobjectxyperm(BIANCA,24,22)
 
     faceplayer
 setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -114,11 +114,11 @@ msgbox(gText_EnterTheMaster_TheyreGettingPaid)
 closemessage
 callnative(ClearMugshot)
 
-applymovement(PSFTRANSRIVAL,EnterTheMaster_WalkIntoWoods)
+applymovement(BIANCA,EnterTheMaster_WalkIntoWoods)
 waitmovement(0)
 playse(SE_EXIT)
 waitse
-removeobject(PSFTRANSRIVAL)
+removeobject(BIANCA)
 release
 end
 }
@@ -143,8 +143,8 @@ msgbox(gText_EnterTheMaster_AndMyNotebook)
 callnative(ClearMugshot)
 closemessage
 
-applymovement(PSFELITE3,Common_Movement_FaceLeft)
-applymovement(PSFTRANSRIVAL,EnterTheMaster_GiveNotebook)
+applymovement(SIEBOLD,Common_Movement_FaceLeft)
+applymovement(BIANCA,EnterTheMaster_GiveNotebook)
 waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
@@ -161,10 +161,10 @@ msgbox(gText_EnterTheMaster_EveryClientAlways)
 closemessage
 callnative(ClearMugshot)
 
-applymovement(PSFTRANSRIVAL,EnterTheMaster_StandNextToPlayer)
+applymovement(BIANCA,EnterTheMaster_StandNextToPlayer)
 waitmovement(0)
 
-applymovement(PSFELITE3,EnterTheMaster_Pace)
+applymovement(SIEBOLD,EnterTheMaster_Pace)
 waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_MARSHAL)
@@ -187,7 +187,7 @@ setvar(VAR_0x8000, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_EnterTheMaster_SorryDidntGoTo)
 
-applymovement(PSFTRANSRIVAL,Common_Movement_FaceRight)
+applymovement(BIANCA,Common_Movement_FaceRight)
 applymovement(PLAYER,Common_Movement_FaceLeft)
 waitmovement(0)
 
@@ -197,7 +197,7 @@ msgbox(gText_EnterTheMaster_ScottIsTheFounder)
 
 fadescreen(FADE_TO_BLACK)
 msgbox(gText_EnterTheMaster_OneEternity)
-applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+applymovement(BIANCA,Common_Movement_FaceUp)
 applymovement(PLAYER,Common_Movement_FaceUp)
 waitmovement(0)
 fadescreen(FADE_FROM_BLACK)

@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER2 = 1
+const BUGSY = 1
 
 //VAR_GYM_4_STATE
 //1: Solved puzzles, ready to fight

@@ -12,7 +12,7 @@ YCombinatorTower_10F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 YCombinatorTower_10F_MapScripts_OnTransition::
-	switch VAR_PSFCITY15_STATE
+	switch VAR_SOMA_STATE
 	case 4, YCombinatorTower_10F_MapScripts_OnTransition_3
 YCombinatorTower_10F_MapScripts_OnTransition_1:
 	switch VAR_MAUVILLE_CITY_STATE

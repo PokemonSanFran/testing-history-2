@@ -13,7 +13,7 @@ script Presidio_MapScripts_OnTransition {
 
 script Presidio_MansionGuard_InteractScript {
     lock
-    if (var(VAR_PSFPLACE9_STATE) < 2){
+    if (var(VAR_FORTPOINT_STATE) < 2){
         msgbox("...")
     } else {
         msgbox(gText_KogaRaisonDetre_HasBeenExpectingYou, MSGBOX_NPC)

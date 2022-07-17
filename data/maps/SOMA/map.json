@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY15",
+  "id": "MAP_SOMA",
   "name": "SOMA",
-  "layout": "LAYOUT_PSFCITY15",
+  "layout": "LAYOUT_SOMA",
   "music": "MUS_RG_VERMILLION",
-  "region_map_section": "MAPSEC_PSFCITY15",
+  "region_map_section": "MAPSEC_SOMA",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
@@ -44,14 +44,14 @@
       "x": 4,
       "y": 43,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY15_GYM",
+      "dest_map": "MAP_SOMA_GYM",
       "dest_warp_id": 0
     },
     {
       "x": 4,
       "y": 57,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY15_NEWSPAPER",
+      "dest_map": "MAP_SOMA_NEWSPAPER",
       "dest_warp_id": 0
     }
   ],
@@ -61,7 +61,7 @@
       "x": 4,
       "y": 44,
       "elevation": 0,
-      "var": "VAR_PSFCITY15_STATE",
+      "var": "VAR_SOMA_STATE",
       "var_value": "1",
       "script": "NULL"
     }

@@ -1,12 +1,12 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1 //FLAG_TEMP_1
-const PSFBADADMIN = 2 //FLAG_TEMP_2
+const BIANCA = 1 //FLAG_TEMP_1
+const OAK = 2 //FLAG_TEMP_2
 
 script Swagbag_ObjectSetUp {
-    turnobject(PSFBADADMIN, DIR_WEST) 
-    setobjectmovementtype(PSFTRANSRIVAL,MOVEMENT_TYPE_FACE_RIGHT)
-    setobjectxy(PSFTRANSRIVAL,6,4)
-    setobjectxyperm(PSFTRANSRIVAL,6,4)
+    turnobject(OAK, DIR_WEST) 
+    setobjectmovementtype(BIANCA,MOVEMENT_TYPE_FACE_RIGHT)
+    setobjectxy(BIANCA,6,4)
+    setobjectxyperm(BIANCA,6,4)
 }
 
 script Swagbag_IncrementIntroState_Script {
@@ -14,10 +14,10 @@ script Swagbag_IncrementIntroState_Script {
 }
 
 script swagbag_ObjectHide_Script {
-    setobjectmovementtype(PSFBADADMIN, MOVEMENT_TYPE_FACE_RIGHT)
-    turnobject(PSFBADADMIN,DIR_EAST)
-    setobjectxy(PSFBADADMIN,8,6)
-    setobjectxyperm(PSFBADADMIN,8,6)
+    setobjectmovementtype(OAK, MOVEMENT_TYPE_FACE_RIGHT)
+    turnobject(OAK,DIR_EAST)
+    setobjectxy(OAK,8,6)
+    setobjectxyperm(OAK,8,6)
     setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_3)
 }
@@ -27,9 +27,9 @@ script Swagbag_WelcomeToSanFran_Dialogue {
         lockall
         playse(SE_PIN)
         playbgm(MUS_RG_FOLLOW_ME,TRUE)
-        applymovement(PSFBADADMIN,Common_Movement_ExclamationMark)
+        applymovement(OAK,Common_Movement_ExclamationMark)
         waitmovement(0)
-        applymovement(PSFBADADMIN,swagbag_GreetPlayer)
+        applymovement(OAK,swagbag_GreetPlayer)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
@@ -42,10 +42,10 @@ script Swagbag_WelcomeToSanFran_Dialogue {
         msgbox(gText_Swagbag_ExcellentYouveAlready)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFBADADMIN,swagbag_WalkToTable)
+        applymovement(OAK,swagbag_WalkToTable)
         waitmovement(0)
         applymovement(PLAYER,swagbag_PlayerToTable)
-        applymovement(PSFTRANSRIVAL,swagbag_BiancaToTable)
+        applymovement(BIANCA,swagbag_BiancaToTable)
         waitmovement(0)
         goto(Swagbag_LeagueStipend_Dialogue)
         end
@@ -114,10 +114,10 @@ script Swagbag_WhenCanWeStart_Dialogue {
         msgbox(gText_Swagbag_FineIllExploreTheCity)
         closemessage
         callnative(ClearMugshot)
-        applymovement(PSFTRANSRIVAL,swagbag_LeaveCompound)
+        applymovement(BIANCA,swagbag_LeaveCompound)
         waitmovement(0)
         playse(SE_EXIT)
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         goto(Swagbag_DontLeaveSouthBay_Dialogue)
 }
 
@@ -130,7 +130,7 @@ script Swagbag_DontLeaveSouthBay_Dialogue {
         msgbox(gText_Swagbag_GotItThanks)
         closemessage
         callnative(ClearMugshot)
-        applymovement(PSFBADADMIN,swagbag_WalkToLaptop) 
+        applymovement(OAK,swagbag_WalkToLaptop) 
         waitmovement(0)
         fadedefaultbgm
         releaseall
@@ -140,7 +140,7 @@ script Swagbag_DontLeaveSouthBay_Dialogue {
 script swagbag_HelpPlayer_Script {//TODO Set up actual question a answer for Oak here
         msgbox(gText_Swagbag_InTheActualGame,MSGBOX_NPC)
         callnative(ClearMugshot)
-        applymovement(PSFBADADMIN,Common_Movement_FaceRight)
+        applymovement(OAK,Common_Movement_FaceRight)
         waitmovement(0)
         return
 }

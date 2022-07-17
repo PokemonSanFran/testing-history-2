@@ -6,7 +6,7 @@ TheGangsAllHere_ObjectCleanUp_Script::
 
 TheGangsAllHere_WhatBringsYou_Dialogue::
 	lock
-	addvar VAR_PSFCITY15_STATE, 1
+	addvar VAR_SOMA_STATE, 1
 	playse SE_PIN
 	playbgm MUS_RG_FOLLOW_ME, FALSE
 	applymovement 4, Common_Movement_ExclamationMark
@@ -72,7 +72,7 @@ TheGangsAllHere_ThisIsOffice_Script::
 
 
 TheGangsAllHere_ComeOnIn_Dialogue::
-	addvar VAR_PSFCITY15_STATE, 1
+	addvar VAR_SOMA_STATE, 1
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, FALSE
 	playse SE_PIN
 	applymovement 3, Common_Movement_ExclamationMark
@@ -84,7 +84,7 @@ TheGangsAllHere_ComeOnIn_Dialogue::
 	msgbox gText_TheGangsAllHere_ComeOnIn
 	closemessage
 	callnative ClearMugshot
-	applymovement 4, TheGangsAllHere_PsfbadadminWalkToDesk_Movement
+	applymovement 4, TheGangsAllHere_OakWalkToDesk_Movement
 	waitmovement 0
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 0
@@ -184,7 +184,7 @@ TheGangsAllHere_EndScene_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_MoveOutOfWay_Movement
 	waitmovement 0
 	applymovement 3, TheGangsAllHere_RoseWalkOut_Movement
-	applymovement 4, TheGangsAllHere_PsfbadadminWalkOut_Movement
+	applymovement 4, TheGangsAllHere_OakWalkOut_Movement
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 3
@@ -211,7 +211,7 @@ YCombinatorTower_10F_EventScript_Ian::
 	end
 
 
-TheGangsAllHere_PsfbadadminWalkToPlayer_Movement:
+TheGangsAllHere_OakWalkToPlayer_Movement:
 	face_right
 	step_end
 
@@ -236,7 +236,7 @@ TheGangsAllHere_RoseWalkToDoor_Movement:
 	walk_left
 	step_end
 
-TheGangsAllHere_PsfbadadminWalkToDesk_Movement:
+TheGangsAllHere_OakWalkToDesk_Movement:
 	walk_down
 	walk_right
 	walk_right
@@ -273,7 +273,7 @@ TheGangsAllHere_RoseWalkOut_Movement:
 	walk_up
 	step_end
 
-TheGangsAllHere_PsfbadadminWalkOut_Movement:
+TheGangsAllHere_OakWalkOut_Movement:
 	walk_up
 	walk_left
 	walk_left
@@ -346,7 +346,7 @@ gText_TheGangsAllHere_ThisIsOffice::
 	.string "This is Rose's office. After you.$"
 
 gText_TheGangsAllHere_ComeOnIn::
-	.string "{PLAYER}! Psfbadadmin! Come on in, I\n"
+	.string "{PLAYER}! Oak! Come on in, I\n"
 	.string "just finished an email! Glad you're both\l"
 	.string "here, and excellent timing that you ran\l"
 	.string "into each other.$"
@@ -365,7 +365,7 @@ gText_TheGangsAllHere_IDidIsee::
 
 gText_TheGangsAllHere_NotIntentionally::
 	.string "Not intentionally! I was just so swept\n"
-	.string "up in your battle! Psfbadadmin, please\l"
+	.string "up in your battle! Oak, please\l"
 	.string "tell me you'll go back and watch\l"
 	.string "Sabrina's highlight reel later, it\l"
 	.string "was fantastic.$"
@@ -410,7 +410,7 @@ gText_TheGangsAllHere_WeKnowButNoPressure::
 
 gText_TheGangsAllHere_TimeForNumber7::
 	.string "Time for Starbucks number 7. Shall we,\n"
-	.string "Psfbadadmin?$"
+	.string "Oak?$"
 
 gText_TheGangsAllHere_WeShall::
 	.string "We shall.$"

@@ -19,7 +19,7 @@ Presidio_MapScripts_OnTransition::
 
 Presidio_MansionGuard_InteractScript::
 	lock
-	compare VAR_PSFPLACE9_STATE, 2
+	compare VAR_FORTPOINT_STATE, 2
 	goto_if_lt Presidio_MansionGuard_InteractScript_2
 	msgbox gText_KogaRaisonDetre_HasBeenExpectingYou, MSGBOX_NPC
 Presidio_MansionGuard_InteractScript_1:

@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE17",
+  "id": "MAP_GLDNGTEBRIDGE",
   "name": "GldnGteBridge",
-  "layout": "LAYOUT_PSFPLACE17",
+  "layout": "LAYOUT_GLDNGTEBRIDGE",
   "music": "MUS_EVER_GRANDE",
-  "region_map_section": "MAPSEC_PSFPLACE17",
+  "region_map_section": "MAPSEC_GLDNGTEBRIDGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -16,7 +16,7 @@
     {
       "direction": "down",
       "offset": 0,
-      "map": "MAP_PSFCITY3"
+      "map": "MAP_PRESIDIO"
     }
   ],
   "object_events": [
@@ -43,7 +43,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "OffYouGo_InteractPsfbadadmin_Event_Script",
+      "script": "OffYouGo_InteractOak_Event_Script",
       "flag": "FLAG_TEMP_1"
     }
   ],
@@ -52,7 +52,7 @@
       "x": 15,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE1",
+      "dest_map": "MAP_ROBINWILLTUNNEL",
       "dest_warp_id": 0
     }
   ],

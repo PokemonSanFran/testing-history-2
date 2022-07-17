@@ -499,7 +499,7 @@ gText_ThisIsntRandom_IfPeopleKnew::
 	.string "secret…$"
 
 gText_ThisIsntRandom_DidYouKnowAbout::
-	.string "Hey PSFNATIVERIVAL, did you know about\n"
+	.string "Hey ARCHER, did you know about\n"
 	.string "the secret laboratory under the\l"
 	.string "ocean?$"
 

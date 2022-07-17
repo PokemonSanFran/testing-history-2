@@ -102,7 +102,7 @@ WelcomeToTheWarRoom_FaceSpeakerPlayer::
 	return
 
 
-WelcomeToTheWarRoom_FaceSpeakerPsfbadadmin::
+WelcomeToTheWarRoom_FaceSpeakerOak::
 	applymovement 4, Common_Movement_FaceLeft
 	applymovement 3, Common_Movement_FaceLeft
 	applymovement 13, Common_Movement_FaceUp
@@ -116,7 +116,7 @@ WelcomeToTheWarRoom_FaceSpeakerPsfbadadmin::
 
 WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	lock
-	addvar VAR_PSFBADGUY1TOWER_2F_STATE, 1
+	addvar VAR_YCOMBINATORTOWER_2F_STATE, 1
 	setvar VAR_ROUTE117_STATE, 1
 	call WelcomeToTheWarRoom_FaceSpeakerRose
 	applymovement 11, WelcomeToTheWarRoom_Pace
@@ -189,7 +189,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	msgbox gText_WelcomeToTheWarRoom_ThatsAgainYouTwo
 	closemessage
 	callnative ClearMugshot
-	applymovement 9, WelcomeToTheWarRoom_PsfbadadminLeaveRoom
+	applymovement 9, WelcomeToTheWarRoom_OakLeaveRoom
 	waitmovement 0
 	removeobject 9
 	applymovement 10, Common_Movement_WalkDown
@@ -288,7 +288,7 @@ WelcomeToTheWarRoom_AddressTrainers:
 	face_right
 	step_end
 
-WelcomeToTheWarRoom_PsfbadadminLeaveRoom:
+WelcomeToTheWarRoom_OakLeaveRoom:
 	walk_down
 	walk_down
 	walk_down

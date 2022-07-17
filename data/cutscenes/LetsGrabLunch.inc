@@ -70,7 +70,7 @@ LetsGrabLunch_PostBattle_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	fadedefaultbgm
-	warpsilent MAP_PSFCAVE5_RESTAURANT, 14, 9
+	warpsilent MAP_TREASUREISLAND_RESTAURANT, 14, 9
 	releaseall
 	end
 
@@ -174,7 +174,7 @@ LetsGrabLunch_Chinatown::
 	msgbox gText_LetsGrabLunch_DoYouWantChinatown, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Chinatown_1
-	warpsilent MAP_PSFCITY13, 9, 10
+	warpsilent MAP_CHINATOWN, 9, 10
 	return
 
 LetsGrabLunch_Chinatown_1:
@@ -189,7 +189,7 @@ LetsGrabLunch_Marin::
 	msgbox gText_LetsGrabLunch_DoYouWantMarin, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Marin_1
-	warpsilent MAP_PSFCITY13, 5, 15
+	warpsilent MAP_CHINATOWN, 5, 15
 	return
 
 LetsGrabLunch_Marin_1:
@@ -210,7 +210,7 @@ LetsGrabLunch_TreasureIsland::
 	msgbox gText_LetsGrabLunch_DoYouWantTreasureIsland, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_TreasureIsland_1
-	warpsilent MAP_PSFCAVE5, 17, 15
+	warpsilent MAP_TREASUREISLAND, 17, 15
 	return
 
 LetsGrabLunch_TreasureIsland_1:
@@ -231,7 +231,7 @@ LetsGrabLunch_HaightAshbury_1:
 	msgbox gText_LetsGrabLunch_DoYouWantHaightAshbury, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_HaightAshbury_5
-	warpsilent MAP_PSFCITY18, 9, 27
+	warpsilent MAP_HAIGHTASHBURY, 9, 27
 	return
 
 LetsGrabLunch_HaightAshbury_2:

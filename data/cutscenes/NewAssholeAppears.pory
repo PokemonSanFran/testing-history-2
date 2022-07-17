@@ -1,26 +1,26 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFNATIVERIVAL = 1
+const ARCHER = 1
 
 script NewAssholeAppears_WalkToPlayer_Script {
     lockall
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-    applymovement(PSFNATIVERIVAL,Common_Movement_ExclamationMark)
+    applymovement(ARCHER,Common_Movement_ExclamationMark)
     playse(SE_PIN)
     playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
     waitmovement(0)
 
     switch(var(VAR_TEMP_0)){
-        case 0: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X0_WalkToPlayer_Movement)
-        case 1: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X1_WalkToPlayer_Movement)
-        case 2: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X2_WalkToPlayer_Movement)
-        case 3: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X3_WalkToPlayer_Movement)
-        case 4: applymovement(PSFNATIVERIVAL,NewAssholeAppears_X4_WalkToPlayer_Movement)
+        case 0: applymovement(ARCHER,NewAssholeAppears_X0_WalkToPlayer_Movement)
+        case 1: applymovement(ARCHER,NewAssholeAppears_X1_WalkToPlayer_Movement)
+        case 2: applymovement(ARCHER,NewAssholeAppears_X2_WalkToPlayer_Movement)
+        case 3: applymovement(ARCHER,NewAssholeAppears_X3_WalkToPlayer_Movement)
+        case 4: applymovement(ARCHER,NewAssholeAppears_X4_WalkToPlayer_Movement)
     }
     waitmovement(0)
     
     switch(var(VAR_TEMP_1)){
-        case 2: applymovement(PSFNATIVERIVAL,NewAssholeAppears_Y2_WalkToPlayer_Movement)
-        case 6: applymovement(PSFNATIVERIVAL,NewAssholeAppears_Y6_WalkToPlayer_Movement)
+        case 2: applymovement(ARCHER,NewAssholeAppears_Y2_WalkToPlayer_Movement)
+        case 6: applymovement(ARCHER,NewAssholeAppears_Y6_WalkToPlayer_Movement)
     }
     waitmovement(0)
     goto(ArcherAlpha_Event_Script)
@@ -105,12 +105,12 @@ script NewAssholeAppears_ArcherExit_Script{
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
     
     switch(var(VAR_TEMP_1)){
-        case 2: applymovement(PSFNATIVERIVAL,NewAssholeAppears_ArcherWalkAwaySouth_Movement)
-        case 6: applymovement(PSFNATIVERIVAL,NewAssholeAppears_ArcherWalkAwayNorth_Movement)
+        case 2: applymovement(ARCHER,NewAssholeAppears_ArcherWalkAwaySouth_Movement)
+        case 6: applymovement(ARCHER,NewAssholeAppears_ArcherWalkAwayNorth_Movement)
     }
     waitmovement(0)
     fadedefaultbgm
-    removeobject(PSFNATIVERIVAL)
+    removeobject(ARCHER)
     addvar(VAR_STORYLINE_STATE,1)
     call(Act1_1_Check_Script)
 

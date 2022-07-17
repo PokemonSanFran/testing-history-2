@@ -78,7 +78,7 @@ Earthquake_ThatNight_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Earthquake_RunFromBedOutside
 	waitmovement 0
 	addvar VAR_NATIVERIVALBETA_STATE, 1
-	warp MAP_PSFCITY17, 2
+	warp MAP_ALAMEDA, 2
 	return
 
 

@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE14_ARENA",
+  "id": "MAP_CHASECENTER_ARENA",
   "name": "ChaseCenter_Arena",
-  "layout": "LAYOUT_PSFPLACE14_ARENA",
+  "layout": "LAYOUT_CHASECENTER_ARENA",
   "music": "MUS_VICTORY_ROAD",
-  "region_map_section": "MAPSEC_PSFPLACE14",
+  "region_map_section": "MAPSEC_CHASECENTER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -46,14 +46,14 @@
       "x": 17,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE14_LOCKERS",
+      "dest_map": "MAP_CHASECENTER_LOCKERS",
       "dest_warp_id": 2
     },
     {
       "x": 18,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE14_LOCKERS",
+      "dest_map": "MAP_CHASECENTER_LOCKERS",
       "dest_warp_id": 2
     }
   ],

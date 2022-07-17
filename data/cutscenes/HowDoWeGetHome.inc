@@ -43,7 +43,7 @@ HowDoWeGetHome_MovePlayerOffPath_Script_2:
 
 
 HowDoWeGetHome_MoveCameraToFight_Script::
-	addvar VAR_PSFCITY7_STATE, 1
+	addvar VAR_DOGPATCH_STATE, 1
 	locktarget
 	fadescreen FADE_TO_BLACK
 	TeleportCamera 14, 9

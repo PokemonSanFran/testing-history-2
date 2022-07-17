@@ -5,7 +5,7 @@ ImProbablyBetterThanYou_ObjectSetUp::
 
 
 ImProbablyBetterThanYou_MovePlayerInside_Script::
-	warpdoor MAP_PSFCITY8_COMPOUND_1F, 255, 5, 9
+	warpdoor MAP_SOUTHBAY_COMPOUND_1F, 255, 5, 9
 	waitstate
 	end
 

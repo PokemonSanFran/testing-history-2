@@ -496,7 +496,7 @@ gText_IGuessWeShouldBeNiceNow_TookLongEnough::
 
 gText_IGuessWeShouldBeNiceNow_WeCantComplete::
 	.string "We can't complete the puzzles alone.\n"
-	.string "Psfbadadmin told me after you took\l"
+	.string "Oak told me after you took\l"
 	.string "off.$"
 
 gText_IGuessWeShouldBeNiceNow_OhShitWellUh::

@@ -1,11 +1,11 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN = 1
+const OAK = 1
 
 script WaitYouWentWhere_ObjectSetUp_Script {
     special(GetNumberOfBadges)
         //if player has less than 7 badges AND 
-        //if (var(VAR_TEMP_0) < 7 && var(VAR_PSFCAVE7_STATE) == 2){
-        if (var(VAR_TEMP_0) >= 7 || var(VAR_PSFCAVE7_STATE) != 2){
+        //if (var(VAR_TEMP_0) < 7 && var(VAR_ALCATRAZ_STATE) == 2){
+        if (var(VAR_TEMP_0) >= 7 || var(VAR_ALCATRAZ_STATE) != 2){
             setflag(FLAG_TEMP_1)
         }
 }
@@ -46,7 +46,7 @@ script WaitYouWentWhere_FirstInteract_Dialogue {
         waitmovement(0)
 
         applymovement(PLAYER,Player_WaitYouWentWhere_WalkWest)
-        applymovement(PSFBADADMIN,Psfbadadmin_WaitYouWentWhere_WalkWest)
+        applymovement(OAK,Oak_WaitYouWentWhere_WalkWest)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -86,9 +86,9 @@ script WaitYouWentWhere_FirstInteract_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADADMIN,WaitYouWentWhere_WalkUpHill)
+        applymovement(OAK,WaitYouWentWhere_WalkUpHill)
         waitmovement(0)
-        removeobject(PSFBADADMIN)
+        removeobject(OAK)
         release
         addvar(VAR_ROUTE104_STATE,1)
         end
@@ -170,7 +170,7 @@ movement Player_WaitYouWentWhere_WalkWest {
     walk_left * 41
         step_end
 }
-movement Psfbadadmin_WaitYouWentWhere_WalkWest {
+movement Oak_WaitYouWentWhere_WalkWest {
     walk_left * 41
         face_right
         step_end

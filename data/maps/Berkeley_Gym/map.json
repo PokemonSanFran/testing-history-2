@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY11_GYM",
+  "id": "MAP_BERKELEY_GYM",
   "name": "Berkeley_Gym",
-  "layout": "LAYOUT_PSFCITY11_GYM",
+  "layout": "LAYOUT_BERKELEY_GYM",
   "music": "MUS_GYM",
-  "region_map_section": "MAPSEC_PSFCITY11",
+  "region_map_section": "MAPSEC_BERKELEY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -33,7 +33,7 @@
       "x": 4,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY11",
+      "dest_map": "MAP_BERKELEY",
       "dest_warp_id": 0
     }
   ],

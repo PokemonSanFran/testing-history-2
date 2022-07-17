@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCAVE9",
+  "id": "MAP_GLDNGTEWILDS",
   "name": "GldnGteWilds",
-  "layout": "LAYOUT_PSFCAVE9",
+  "layout": "LAYOUT_GLDNGTEWILDS",
   "music": "MUS_PETALBURG_WOODS",
-  "region_map_section": "MAPSEC_PSFCAVE9",
+  "region_map_section": "MAPSEC_GLDNGTEWILDS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -49,21 +49,21 @@
       "x": 24,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY2",
+      "dest_map": "MAP_GLDNGTEPARK",
       "dest_warp_id": 0
     },
     {
       "x": 28,
       "y": 33,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY2",
+      "dest_map": "MAP_GLDNGTEPARK",
       "dest_warp_id": 1
     },
     {
       "x": 43,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY18",
+      "dest_map": "MAP_HAIGHTASHBURY",
       "dest_warp_id": 0
     }
   ],

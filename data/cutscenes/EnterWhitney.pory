@@ -1,15 +1,15 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER3 = 1
+const WHITNEY = 1
 
 script EnterWhitney_ObjectSetUp_Script {
-    setobjectmovementtype(PSFLEADER3, MOVEMENT_TYPE_FACE_LEFT)
+    setobjectmovementtype(WHITNEY, MOVEMENT_TYPE_FACE_LEFT)
 }
 
 script EnterWhitney_StartBattle_ObjectSetup_Script {
     setflag(FLAG_TEMP_1)
-    setobjectxy(PSFLEADER3, 10, 6)
-    setobjectxyperm(PSFLEADER3, 10, 6)
-    setobjectmovementtype(PSFLEADER3, MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectxy(WHITNEY, 10, 6)
+    setobjectxyperm(WHITNEY, 10, 6)
+    setobjectmovementtype(WHITNEY, MOVEMENT_TYPE_LOOK_AROUND)
 }
 
 script AutomaticSolvePuzzle_Script {
@@ -25,9 +25,9 @@ script EnterWhitney_WalkToBattlefield_Script {
     addvar(VAR_GYM_3_STATE, 1)
     lock
     playse(SE_PIN)
-    applymovement(PSFLEADER3, Common_Movement_ExclamationMark)
+    applymovement(WHITNEY, Common_Movement_ExclamationMark)
     waitmovement(0)
-    applymovement(PSFLEADER3, EnterWhitney_WalkToBattlefield_Movement)
+    applymovement(WHITNEY, EnterWhitney_WalkToBattlefield_Movement)
     waitmovement(0)
     releaseall
     end
@@ -39,7 +39,7 @@ script EnterWhitney_MuseumArrangement_Dialogue {
     msgbox(gText_EnterWhitney_IWasThinking, MSGBOX_NPC)
     callnative(ClearMugshot)
     closemessage
-    applymovement(PSFLEADER3, WhitneyLookAround_Movement)
+    applymovement(WHITNEY, WhitneyLookAround_Movement)
     waitmovement(0)
     callnative(DrawMugshot)
     msgbox(gText_EnterWhitney_HasYourVisit)
@@ -64,7 +64,7 @@ script EnterWhitney_StartBattle_Script {
 
 script EnterWhitney_Defeated_Script {
     setflag(FLAG_BADGE03_GET)
-    addvar(VAR_PSFCITY15_STATE, 1)
+    addvar(VAR_SOMA_STATE, 1)
     addvar(VAR_GYM_3_STATE, 1)
     addvar(VAR_STORYLINE_STATE, 1)
     setvar(VAR_0x8000, MUGSHOT_WHITNEY)

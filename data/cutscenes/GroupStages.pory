@@ -1,11 +1,11 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADBOSS = 1 //FLAG_TEMP_1
-const PSFTRANSRIVAL = 2 //FLAG_TEMP_2
-const PSFNATIVERIVAL = 3 //FLAG_TEMP_3
-const PSFBADADMIN = 4 //FLAG_TEMP_4
+const ROSE = 1 //FLAG_TEMP_1
+const BIANCA = 2 //FLAG_TEMP_2
+const ARCHER = 3 //FLAG_TEMP_3
+const OAK = 4 //FLAG_TEMP_4
 
 script GroupStages_Lockers_ObjectSetUp_Script {
-    setobjectxyperm(PSFTRANSRIVAL,10,3)
+    setobjectxyperm(BIANCA,10,3)
         setflag(FLAG_TEMP_4)
         setflag(FLAG_TEMP_1)
         setflag(FLAG_TEMP_6)
@@ -25,7 +25,7 @@ script GroupStages_Skybox_ObjectSetup_Script {
 
 script GroupStages_GreetBeforeStart_Dialogue {
     lock
-        applymovement(PSFTRANSRIVAL,GroupStages_WalkToPlayer)
+        applymovement(BIANCA,GroupStages_WalkToPlayer)
         waitmovement(0)
         applymovement(PLAYER,Common_Movement_FaceRight)
         waitmovement(0)
@@ -35,11 +35,11 @@ script GroupStages_GreetBeforeStart_Dialogue {
         msgbox(gText_GroupStages_Blank)
         closemessage
         callnative(ClearMugshot)
-        applymovement(PSFTRANSRIVAL,GroupStages_LeaveLockers)
+        applymovement(BIANCA,GroupStages_LeaveLockers)
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         fadedefaultbgm
         addvar(VAR_STORYLINE_STATE,1)
         addvar(VAR_ROUTE119_STATE,1)
@@ -55,14 +55,14 @@ script GroupStages_PreparePlayer_Script {
 
         if (var(VAR_RESULT) == YES){
                 call(GroupStages_ChooseParty_Script)
-                setflag(FLAG_PSFPLACE14_TOURNAMENT_HAPPENING)
+                setflag(FLAG_CHASECENTER_TOURNAMENT_HAPPENING)
                 call(GroupStages_MoveObjects_Script)
 
                 if (var(VAR_ROUTE119_STATE) != 4){
                     setvar(VAR_ROUTE119_STATE,1)
                 }
 
-            warpsilent(MAP_PSFPLACE14_ARENA,255,5,6)
+            warpsilent(MAP_CHASECENTER_ARENA,255,5,6)
         }
     release
         end
@@ -153,7 +153,7 @@ script GroupStages_RoundRobinGroupComplete_Script {
         special(DoDomeConfetti)
         playse(SE_APPLAUSE)
         waitse
-        warpsilent(MAP_PSFPLACE14_LOCKERS,255,10,3)
+        warpsilent(MAP_CHASECENTER_LOCKERS,255,10,3)
 }
 
 

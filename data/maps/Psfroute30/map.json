@@ -16,7 +16,7 @@
     {
       "direction": "right",
       "offset": 14,
-      "map": "MAP_PSFCITY15"
+      "map": "MAP_SOMA"
     }
   ],
   "object_events": [
@@ -27,7 +27,7 @@
       "x": 4,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_1F",
+      "dest_map": "MAP_YCOMBINATORTOWER_1F",
       "dest_warp_id": 0
     }
   ],

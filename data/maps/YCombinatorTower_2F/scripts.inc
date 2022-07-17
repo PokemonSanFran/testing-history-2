@@ -8,8 +8,8 @@ YCombinatorTower_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 YCombinatorTower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 3, YCombinatorTower_2F_MovePlayerIntoPosition_Script
-	map_script_2 VAR_PSFBADGUY1TOWER_2F_STATE, 5, YCombinatorTower_2F_MovePlayerIntoPosition_Script
+	map_script_2 VAR_YCOMBINATORTOWER_2F_STATE, 3, YCombinatorTower_2F_MovePlayerIntoPosition_Script
+	map_script_2 VAR_YCOMBINATORTOWER_2F_STATE, 5, YCombinatorTower_2F_MovePlayerIntoPosition_Script
 	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3, LetsBurnThisMotherDown_MissionComplete_Dialogue
 	map_script_2 VAR_PETALBURG_WOODS_STATE, 4, HowDisappointing_MissionComplete_Dialogue
 	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 6, Manhunt_MissionComplete_Dialogue
@@ -18,7 +18,7 @@ YCombinatorTower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 YCombinatorTower_2F_MapScripts_OnTransition::
-	switch VAR_PSFBADGUY1TOWER_2F_STATE
+	switch VAR_YCOMBINATORTOWER_2F_STATE
 	case 0, YCombinatorTower_2F_MapScripts_OnTransition_3
 	case 1, YCombinatorTower_2F_MapScripts_OnTransition_4
 	case 2, YCombinatorTower_2F_MapScripts_OnTransition_5
@@ -109,7 +109,7 @@ YCombinatorTower_2F_MovePlayerIntoPosition_Script::
 	compare VAR_TEMP_0, 7
 	goto_if_ne YCombinatorTower_2F_MovePlayerIntoPosition_Script_2
 YCombinatorTower_2F_MovePlayerIntoPosition_Script_1:
-	switch VAR_PSFBADGUY1TOWER_2F_STATE
+	switch VAR_YCOMBINATORTOWER_2F_STATE
 	case 3, YCombinatorTower_2F_MovePlayerIntoPosition_Script_5
 	case 5, YCombinatorTower_2F_MovePlayerIntoPosition_Script_6
 	return
@@ -130,32 +130,32 @@ YCombinatorTower_2F_MovePlayerIntoPosition_Script_6:
 	return
 
 
-YCombinatorTower_2F_Psfbadadmin_Event_Script::
+YCombinatorTower_2F_Oak_Event_Script::
 	lock
 	switch VAR_STORYLINE_STATE
-	case 43, YCombinatorTower_2F_Psfbadadmin_Event_Script_3
-	case 44, YCombinatorTower_2F_Psfbadadmin_Event_Script_4
-	case 45, YCombinatorTower_2F_Psfbadadmin_Event_Script_5
-	case 46, YCombinatorTower_2F_Psfbadadmin_Event_Script_6
-YCombinatorTower_2F_Psfbadadmin_Event_Script_1:
+	case 43, YCombinatorTower_2F_Oak_Event_Script_3
+	case 44, YCombinatorTower_2F_Oak_Event_Script_4
+	case 45, YCombinatorTower_2F_Oak_Event_Script_5
+	case 46, YCombinatorTower_2F_Oak_Event_Script_6
+YCombinatorTower_2F_Oak_Event_Script_1:
 	release
 	end
 
-YCombinatorTower_2F_Psfbadadmin_Event_Script_3:
+YCombinatorTower_2F_Oak_Event_Script_3:
 	call CongratsYourAssAsshole_Intro_Dialogue
-	goto YCombinatorTower_2F_Psfbadadmin_Event_Script_1
+	goto YCombinatorTower_2F_Oak_Event_Script_1
 
-YCombinatorTower_2F_Psfbadadmin_Event_Script_4:
+YCombinatorTower_2F_Oak_Event_Script_4:
 	call LetsBurnThisMotherDown_Assignment_Dialogue
-	goto YCombinatorTower_2F_Psfbadadmin_Event_Script_1
+	goto YCombinatorTower_2F_Oak_Event_Script_1
 
-YCombinatorTower_2F_Psfbadadmin_Event_Script_5:
+YCombinatorTower_2F_Oak_Event_Script_5:
 	call LetsBurnThisMotherDown_Assignment_Dialogue
-	goto YCombinatorTower_2F_Psfbadadmin_Event_Script_1
+	goto YCombinatorTower_2F_Oak_Event_Script_1
 
-YCombinatorTower_2F_Psfbadadmin_Event_Script_6:
+YCombinatorTower_2F_Oak_Event_Script_6:
 	call LetsBurnThisMotherDown_Assignment_Dialogue
-	goto YCombinatorTower_2F_Psfbadadmin_Event_Script_1
+	goto YCombinatorTower_2F_Oak_Event_Script_1
 
 
 YCombinatorTower_2F_Koga_Event_Script::

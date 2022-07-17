@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
+const BIANCA = 1
 const BOSSPKMNA = 2
 const BOSSPKMNB = 3
 const BOSSPKMNC = 6
@@ -13,19 +13,19 @@ script IGuessWeShouldBeNiceNow_ObjectSetup_Script {
     setflag(FLAG_TEMP_2)
 }
         script IGuessWeShouldBeNiceNow_PuzzlePrepareObject_Script{
-            setobjectxy(PSFTRANSRIVAL,8,23)
-            setobjectxyperm(PSFTRANSRIVAL,8,23)
+            setobjectxy(BIANCA,8,23)
+            setobjectxyperm(BIANCA,8,23)
             setflag(FLAG_TEMP_2)
         }
         script IGuessWeShouldBeNiceNow_PuzzleStartObject_Script{
-            setobjectxy(PSFTRANSRIVAL,15,19)
-            setobjectxyperm(PSFTRANSRIVAL,15,19)
+            setobjectxy(BIANCA,15,19)
+            setobjectxyperm(BIANCA,15,19)
             setflag(FLAG_TEMP_2)
         }
         script IGuessWeShouldBeNiceNow_PuzzleBSolvedObject_Script{
-            setobjectxy(PSFTRANSRIVAL,8,6)
-            setobjectxyperm(PSFTRANSRIVAL,8,6)
-            setobjectmovementtype(PSFTRANSRIVAL,MOVEMENT_TYPE_FACE_UP)
+            setobjectxy(BIANCA,8,6)
+            setobjectxyperm(BIANCA,8,6)
+            setobjectmovementtype(BIANCA,MOVEMENT_TYPE_FACE_UP)
             setobjectxy(5,7,9)
             setobjectxyperm(5,7,9)
         }
@@ -49,7 +49,7 @@ script IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script {
 script IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue {
     lock
     applymovement(PLAYER,Common_Movement_FaceRight)
-    applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_WalkToPlayer)
+    applymovement(BIANCA,IGuessWeShouldBeNiceNow_WalkToPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -72,14 +72,14 @@ script IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive)
 
-        applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+        applymovement(BIANCA,Common_Movement_FaceUp)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_IGuessWeShouldBeNiceNow_IAnalyzedTheRoom)
 
-        applymovement(PSFTRANSRIVAL,Common_Movement_FaceLeft)
+        applymovement(BIANCA,Common_Movement_FaceLeft)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -125,10 +125,10 @@ script IGuessWeShouldBeNiceNow_StartPuzzle_Script {
         lock
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_WalkIntoMaze)
+        applymovement(BIANCA,IGuessWeShouldBeNiceNow_WalkIntoMaze)
         waitmovement(0)
-            setobjectxy(PSFTRANSRIVAL,15,19)
-            setobjectxyperm(PSFTRANSRIVAL,15,19)
+            setobjectxy(BIANCA,15,19)
+            setobjectxyperm(BIANCA,15,19)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -174,9 +174,9 @@ script IGuessWeShouldBeNiceNow_SolvedPuzzleB {
         waitmovement(0)
         
         fadescreen(FADE_TO_BLACK)
-        turnobject(PSFTRANSRIVAL, DIR_NORTH)
-        setobjectxy(PSFTRANSRIVAL,9,12)
-        setobjectxyperm(PSFTRANSRIVAL,9,12)
+        turnobject(BIANCA, DIR_NORTH)
+        setobjectxy(BIANCA,9,12)
+        setobjectxyperm(BIANCA,9,12)
         special(ReturnCameraToPlayer)
         fadescreen(FADE_FROM_BLACK)
         applymovement(PLAYER,IGuessWeShouldBeNiceNow_WalkRight)
@@ -189,7 +189,7 @@ script IGuessWeShouldBeNiceNow_SolvedPuzzleB {
         closemessage
 
         applymovement(PLAYER,IGuessWeShouldBeNiceNow_ApproachBookB)
-        applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_ApproachBookA)
+        applymovement(BIANCA,IGuessWeShouldBeNiceNow_ApproachBookA)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -198,7 +198,7 @@ script IGuessWeShouldBeNiceNow_SolvedPuzzleB {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL,Common_Movement_WalkUp)
+        applymovement(BIANCA,Common_Movement_WalkUp)
         waitmovement(0)
         goto(IGuessWeShouldBeNiceNow_BossProtectBook_Script)
 }
@@ -250,7 +250,7 @@ script IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue {
         callnative(DrawMugshot)
     msgbox(gText_IGuessWeShouldBeNiceNow_Ready,MSGBOX_NPC)
         callnative(ClearMugshot)
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+    applymovement(BIANCA,Common_Movement_FaceUp)
     waitmovement(0)
     release
     end
@@ -269,7 +269,7 @@ script IGuessWeShouldBeNiceNow_ClearBossPokemon_Script {
 }
 
 script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceLeft)
+    applymovement(BIANCA,Common_Movement_FaceLeft)
     applymovement(PLAYER,Common_Movement_FaceRight)
     setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -301,7 +301,7 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_GetBook)
+        applymovement(BIANCA,IGuessWeShouldBeNiceNow_GetBook)
         waitmovement(0)
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(0)
@@ -311,7 +311,7 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_IGuessWeShouldBeNiceNow_SaysOnTheBack)
 
-        applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_LookAround)
+        applymovement(BIANCA,IGuessWeShouldBeNiceNow_LookAround)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -327,9 +327,9 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
         closemessage
         callnative(ClearMugshot)    
 
-        applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_LeaveCave)
+        applymovement(BIANCA,IGuessWeShouldBeNiceNow_LeaveCave)
         waitmovement(0)
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
         release
         end
 }
@@ -341,9 +341,9 @@ script IGuessWeShouldBeNiceNow_ExitCave_Script {
     playse(SE_EXIT)
     waitse
     clearflag(FLAG_TEMP_3)
-    addobject(PSFTRANSRIVAL)
+    addobject(BIANCA)
     applymovement(PLAYER,Common_Movement_WalkRight)
-    applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_WalkOutCave)
+    applymovement(BIANCA,IGuessWeShouldBeNiceNow_WalkOutCave)
     waitmovement(0)
     goto(IGuessWeShouldBeNiceNow_End_Dialogue)
 }
@@ -390,7 +390,7 @@ script IGuessWeShouldBeNiceNow_End_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_GestureHouse)
+        applymovement(BIANCA,IGuessWeShouldBeNiceNow_GestureHouse)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -400,9 +400,9 @@ script IGuessWeShouldBeNiceNow_End_Dialogue {
         closemessage
 
 
-        applymovement(PSFTRANSRIVAL,IGuessWeShouldBeNiceNow_WalkTowardsHouse)
+        applymovement(BIANCA,IGuessWeShouldBeNiceNow_WalkTowardsHouse)
         waitmovement(0)
-        removeobject(PSFTRANSRIVAL)
+        removeobject(BIANCA)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -419,7 +419,7 @@ text gText_IGuessWeShouldBeNiceNow_TookLongEnough {
 }
 
 text gText_IGuessWeShouldBeNiceNow_WeCantComplete {
-    format("We can't complete the puzzles alone. Psfbadadmin told me after you took off.")
+    format("We can't complete the puzzles alone. Oak told me after you took off.")
 }
 
 text gText_IGuessWeShouldBeNiceNow_OhShitWellUh {

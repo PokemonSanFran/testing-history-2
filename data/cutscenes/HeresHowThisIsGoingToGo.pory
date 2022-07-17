@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADBOSS = 1 //FLAG_TEMP_1
-const PSFTRANSRIVAL = 2 //FLAG_TEMP_2
-const PSFNATIVERIVAL = 3 //FLAG_TEMP_3
-const PSFBADADMIN = 4 //FLAG_TEMP_4
+const ROSE = 1 //FLAG_TEMP_1
+const BIANCA = 2 //FLAG_TEMP_2
+const ARCHER = 3 //FLAG_TEMP_3
+const OAK = 4 //FLAG_TEMP_4
 
 script HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script {
     setflag(FLAG_TEMP_1)
@@ -74,8 +74,8 @@ callnative(DestroyVirtualObjects)
 script HeresHowThisIsGoingToGo_ExplainLeagueDialogue {
     lockall
     applymovement(PLAYER,Common_Movement_FaceUp)
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
-    applymovement(PSFNATIVERIVAL,Common_Movement_FaceUp)
+    applymovement(BIANCA,Common_Movement_FaceUp)
+    applymovement(ARCHER,Common_Movement_FaceUp)
     waitmovement(0)
 
 setvar(VAR_0x8000, MUGSHOT_GHETSIS)
@@ -125,7 +125,7 @@ setvar(VAR_0x8000, MUGSHOT_GHETSIS)
 callnative(DrawMugshot)
 msgbox(gText_HeresHowThisIsGoingToGo_ItsInTheInformation)
 
-applymovement(PSFBADBOSS,Common_Movement_FaceLeft)
+applymovement(ROSE,Common_Movement_FaceLeft)
 setvar(VAR_0x8000, MUGSHOT_GHETSIS)
 callnative(DrawMugshot)
 msgbox(gText_HeresHowThisIsGoingToGo_YourGroupsAnd)
@@ -136,11 +136,11 @@ fadescreen(FADE_TO_BLACK)
 addvar(VAR_STORYLINE_STATE,1)
 playse(SE_EXIT)
 waitse
-removeobject(PSFBADBOSS)
-removeobject(PSFBADADMIN)
+removeobject(ROSE)
+removeobject(OAK)
 call(HeresHowThisIsGoingToGo_CleanUpVObjects_Script)
 fadescreen(FADE_FROM_BLACK)
-applymovement(PSFNATIVERIVAL,HeresHowThisIsGoingToGo_GoToBracket)
+applymovement(ARCHER,HeresHowThisIsGoingToGo_GoToBracket)
 waitmovement(0)
 releaseall
 end

@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 4
+const BIANCA = 4
 const CHIEF = 3
 
 script SurvivalChance333_HideObject_Script {
@@ -102,7 +102,7 @@ callnative(ClearMugshot)
 msgbox(gText_SurvivalChance333_YoureAPairOfKids)
 closemessage
 addvar(VAR_NATIVERIVALBETA_STATE,1)
-warpsilent(MAP_PSFCITY17,255,21,24)
+warpsilent(MAP_ALAMEDA,255,21,24)
 }
 
 script SurvivalChance333_MoveCameraFreeze_Script {

@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCAVE2_INNER",
+  "id": "MAP_MUIRWOODS_INNER",
   "name": "MuirWoods_Inner",
-  "layout": "LAYOUT_PSFCAVE2_INNER",
+  "layout": "LAYOUT_MUIRWOODS_INNER",
   "music": "MUS_MT_PYRE_EXTERIOR",
-  "region_map_section": "MAPSEC_PSFCAVE2",
+  "region_map_section": "MAPSEC_MUIRWOODS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -59,14 +59,14 @@
       "x": 9,
       "y": 18,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE2",
+      "dest_map": "MAP_MUIRWOODS",
       "dest_warp_id": 2
     },
     {
       "x": 10,
       "y": 18,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE2",
+      "dest_map": "MAP_MUIRWOODS",
       "dest_warp_id": 3
     }
   ],

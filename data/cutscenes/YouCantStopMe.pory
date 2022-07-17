@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADADMIN = 1
-const PSFBADBOSS = 2
+const OAK = 1
+const ROSE = 2
 
 script YouCantStopMe_HideObject_Script {
     setflag(FLAG_TEMP_1)
@@ -10,9 +10,9 @@ script YouCantStopMe_HideObject_Script {
 script YouCantStopMe_MoveObject_Script {
     setflag(FLAG_TEMP_1)
         setflag(FLAG_TEMP_2)
-        setobjectxy(PSFBADBOSS,15,5)
-        setobjectxyperm(PSFBADBOSS,15,5)
-        setobjectnewmovementtype(PSFBADBOSS,MOVEMENT_TYPE_FACE_DOWN)
+        setobjectxy(ROSE,15,5)
+        setobjectxyperm(ROSE,15,5)
+        setobjectnewmovementtype(ROSE,MOVEMENT_TYPE_FACE_DOWN)
 }
 
 script YouCantStopMe_ObjectCleanUp_Script {
@@ -27,17 +27,17 @@ script YouCantStopMe_LocatePlayer_Script {
         playse(SE_EXIT)
         waitse
 
-        addobject(PSFBADADMIN)
+        addobject(OAK)
 
         getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
         switch(var(VAR_TEMP_1)){
-            case 5: applymovement(PSFBADADMIN,YouCantStopMe_WalkToPlayerY5)
-            case 6: applymovement(PSFBADADMIN,YouCantStopMe_WalkToPlayerY6)
-            case 7: applymovement(PSFBADADMIN,YouCantStopMe_WalkToPlayerY7)
-            case 8: applymovement(PSFBADADMIN,YouCantStopMe_WalkToPlayerY8)
+            case 5: applymovement(OAK,YouCantStopMe_WalkToPlayerY5)
+            case 6: applymovement(OAK,YouCantStopMe_WalkToPlayerY6)
+            case 7: applymovement(OAK,YouCantStopMe_WalkToPlayerY7)
+            case 8: applymovement(OAK,YouCantStopMe_WalkToPlayerY8)
         }
-    waitmovement(PSFBADADMIN)
+    waitmovement(OAK)
 }
 
 script YouCantStopMe_LastChance_Dialogue {
@@ -102,11 +102,11 @@ script YouCantStopMe_LastChance_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFBADADMIN,YouCantStopMe_LeaveFloor)
-        waitmovement(PSFBADADMIN)
+        applymovement(OAK,YouCantStopMe_LeaveFloor)
+        waitmovement(OAK)
         playse(SE_EXIT)
         waitse
-        removeobject(PSFBADADMIN)
+        removeobject(OAK)
 
         addvar(VAR_MAUVILLE_CITY_STATE,1)
 
@@ -131,7 +131,7 @@ script YouCantStopMe_Confront_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PSFBADBOSS,Common_Movement_FaceUp)
+        applymovement(ROSE,Common_Movement_FaceUp)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -161,18 +161,18 @@ script YouCantStopMe_Confront_Dialogue {
 
         if (var(VAR_TEMP_0) != 15 || (var(VAR_TEMP_1) != 5)){
             fadescreen(FADE_TO_BLACK)
-                applymovement(PSFBADBOSS,Common_Movement_FaceDown)
-                waitmovement(PSFBADBOSS)
-                setobjectxy(PSFBADBOSS,15,4)
+                applymovement(ROSE,Common_Movement_FaceDown)
+                waitmovement(ROSE)
+                setobjectxy(ROSE,15,4)
                 applymovement(PLAYER,Common_Movement_FaceUp)
                 setobjectxy(PLAYER,15,5)
                 TeleportCamera(15,5)
                 fadescreen(FADE_FROM_BLACK)
         }
 
-    applymovement(PSFBADBOSS,Common_Movement_WalkDown)
+    applymovement(ROSE,Common_Movement_WalkDown)
         applymovement(PLAYER,YouCantStopMe_WalkBackwards)
-        waitmovement(PSFBADBOSS)
+        waitmovement(ROSE)
         waitmovement(PLAYER)
 
         call(Common_EventScript_SaveGame)
@@ -200,7 +200,7 @@ text gText_YouCantStopMe_PleaseItIsntToo {
 }
 
 text gText_YouCantStopMe_PeopleOnDied {
-    format("People on Alameda died, Psfbadadmin! We can’t fix that.")
+    format("People on Alameda died, Oak! We can’t fix that.")
 }
 
 text gText_YouCantStopMe_YesItsUnforuntate {

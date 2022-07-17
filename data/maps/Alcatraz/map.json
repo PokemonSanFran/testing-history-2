@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCAVE7",
+  "id": "MAP_ALCATRAZ",
   "name": "Alcatraz",
-  "layout": "LAYOUT_PSFCAVE7",
+  "layout": "LAYOUT_ALCATRAZ",
   "music": "MUS_ABANDONED_SHIP",
-  "region_map_section": "MAPSEC_PSFCAVE7",
+  "region_map_section": "MAPSEC_ALCATRAZ",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
@@ -163,7 +163,7 @@
       "x": 4,
       "y": 19,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE7_B1F",
+      "dest_map": "MAP_ALCATRAZ_B1F",
       "dest_warp_id": 0
     }
   ],
@@ -173,7 +173,7 @@
       "x": 15,
       "y": 16,
       "elevation": 0,
-      "var": "VAR_PSFCAVE7_STATE",
+      "var": "VAR_ALCATRAZ_STATE",
       "var_value": "0",
       "script": "TheStorySoFar_EntranceTrigger_Script"
     },
@@ -182,7 +182,7 @@
       "x": 15,
       "y": 19,
       "elevation": 0,
-      "var": "VAR_PSFCAVE7_STATE",
+      "var": "VAR_ALCATRAZ_STATE",
       "var_value": "1",
       "script": "YoungPadawan_Intro_Dialogue"
     }

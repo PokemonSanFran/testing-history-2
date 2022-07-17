@@ -1,9 +1,9 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFLEADER1 = 1
+const FALKNER = 1
 
 script EnterFalkner_StartGymBattle_ObjectSetup_Script {
-  setobjectxyperm(PSFLEADER1, 6, 5)
-  setobjectmovementtype(PSFLEADER1, MOVEMENT_TYPE_FACE_LEFT)
+  setobjectxyperm(FALKNER, 6, 5)
+  setobjectmovementtype(FALKNER, MOVEMENT_TYPE_FACE_LEFT)
 }
 
 script EnterFalkner_PutMeatInOven_Dialogue {
@@ -16,9 +16,9 @@ script EnterFalkner_PutMeatInOven_Dialogue {
   msgbox(gText_EnterFalkner_OneMoreLadle)
   callnative(ClearMugshot)
   closemessage
-  applymovement(PSFLEADER1, Common_Movement_Delay48)
+  applymovement(FALKNER, Common_Movement_Delay48)
   waitmovement(0)
-  applymovement(PSFLEADER1, Common_Movement_WalkInPlaceUp)
+  applymovement(FALKNER, Common_Movement_WalkInPlaceUp)
   waitmovement(0)
   closemessage
   setvar(VAR_0x8000, MUGSHOT_FALKNER)
@@ -33,7 +33,7 @@ script EnterFalkner_PutMeatInOven_Dialogue {
 script EnterFalkner_DetermineMovementToBattlefield_Script {
   getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
   if (var (VAR_TEMP_1) == 2) {
-    applymovement(PSFLEADER1, EnterFalkner_WalkSouthToBattlefield)
+    applymovement(FALKNER, EnterFalkner_WalkSouthToBattlefield)
 
     if (var (VAR_TEMP_0) == 7) {
       applymovement(PLAYER, EnterFalkner_PlayerWalkToBattlefieldFromLeft)
@@ -41,7 +41,7 @@ script EnterFalkner_DetermineMovementToBattlefield_Script {
       applymovement(PLAYER, EnterFalkner_PlayerWalkToBattlefieldFromRight)
     }
   } else {
-    applymovement(PSFLEADER1, EnterFalkner_WalkWestToBattlefield)
+    applymovement(FALKNER, EnterFalkner_WalkWestToBattlefield)
     applymovement(PLAYER, EnterFalkner_PlayerWalkToBattlefieldFromDown)
   }
   waitmovement(0)
@@ -96,9 +96,9 @@ script EnterFalkner_DetermineMovementBackToStove_Script {
   getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 
   if (var (VAR_TEMP_0) == 7) {
-    applymovement(PSFLEADER1, EnterFalkner_WalkNorthBackToStove)
+    applymovement(FALKNER, EnterFalkner_WalkNorthBackToStove)
   } else {
-    applymovement(PSFLEADER1, EnterFalkner_WalkEastBackToStove)
+    applymovement(FALKNER, EnterFalkner_WalkEastBackToStove)
   }
 }
 
@@ -109,7 +109,7 @@ script EnterFalkner_PostDefeat1_Dialogue {
   callnative(DrawMugshot)
   msgbox(gText_EnterFalkner_WithThatBadge,MSGBOX_NPC)
   callnative(ClearMugshot)
-    applymovement(PSFLEADER1,Common_Movement_FaceUp)
+    applymovement(FALKNER,Common_Movement_FaceUp)
     waitmovement(0)
   closemessage
   releaseall

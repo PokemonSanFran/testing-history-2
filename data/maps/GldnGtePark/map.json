@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCITY2",
+  "id": "MAP_GLDNGTEPARK",
   "name": "GldnGtePark",
-  "layout": "LAYOUT_PSFCITY2",
+  "layout": "LAYOUT_GLDNGTEPARK",
   "music": "MUS_FORTREE",
-  "region_map_section": "MAPSEC_PSFCITY2",
+  "region_map_section": "MAPSEC_GLDNGTEPARK",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_CITY",
@@ -21,21 +21,21 @@
       "x": 14,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE9",
+      "dest_map": "MAP_GLDNGTEWILDS",
       "dest_warp_id": 4
     },
     {
       "x": 14,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE9",
+      "dest_map": "MAP_GLDNGTEWILDS",
       "dest_warp_id": 5
     },
     {
       "x": 19,
       "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_PSFCITY2_GYM",
+      "dest_map": "MAP_GLDNGTEPARK_GYM",
       "dest_warp_id": 0
     }
   ],

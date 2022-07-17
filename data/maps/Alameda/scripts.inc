@@ -70,7 +70,7 @@ Alameda_LayoutSwap_Script::
 	return
 
 Alameda_LayoutSwap_Script_1:
-	setmaplayoutindex LAYOUT_PSFCITY17_POST_EARTHQUAKE
+	setmaplayoutindex LAYOUT_ALAMEDA_POST_EARTHQUAKE
 	return
 
 
@@ -123,7 +123,7 @@ Alameda_UnlockedDestinations_Script_4:
 
 
 Alameda_FerryState0_Script::
-	multichoicedefault 18, 8, PSFCITY17_FERRY_DESTINATIONS_VER1, 2, FALSE
+	multichoicedefault 18, 8, ALAMEDA_FERRY_DESTINATIONS_VER1, 2, FALSE
 	switch VAR_RESULT
 	case 0, Alameda_FerryState0_Script_3
 	case 1, Alameda_FerryState0_Script_4
@@ -133,7 +133,7 @@ Alameda_FerryState0_Script_1:
 	return
 
 Alameda_FerryState0_Script_3:
-	warp MAP_PSFPLACE11, 8, 11
+	warp MAP_FERRYBUILDING, 8, 11
 	goto Alameda_FerryState0_Script_1
 
 Alameda_FerryState0_Script_4:
@@ -146,7 +146,7 @@ Alameda_FerryState0_Script_5:
 
 
 Alameda_FerryState1_Script::
-	multichoicedefault 18, 8, PSFCITY17_FERRY_DESTINATIONS_VER2, 2, FALSE
+	multichoicedefault 18, 8, ALAMEDA_FERRY_DESTINATIONS_VER2, 2, FALSE
 	switch VAR_RESULT
 	case 0, Alameda_FerryState1_Script_3
 	case 1, Alameda_FerryState1_Script_4
@@ -157,11 +157,11 @@ Alameda_FerryState1_Script_1:
 	return
 
 Alameda_FerryState1_Script_3:
-	warp MAP_PSFPLACE11, 8, 11
+	warp MAP_FERRYBUILDING, 8, 11
 	goto Alameda_FerryState1_Script_1
 
 Alameda_FerryState1_Script_4:
-	warp MAP_PSFCAVE7, 15, 22
+	warp MAP_ALCATRAZ, 15, 22
 	goto Alameda_FerryState1_Script_1
 
 Alameda_FerryState1_Script_5:
@@ -174,7 +174,7 @@ Alameda_FerryState1_Script_6:
 
 
 Alameda_FerryState2_Script::
-	multichoicedefault 18, 8, PSFCITY17_FERRY_DESTINATIONS_VER3, 2, FALSE
+	multichoicedefault 18, 8, ALAMEDA_FERRY_DESTINATIONS_VER3, 2, FALSE
 	switch VAR_RESULT
 	case 0, Alameda_FerryState2_Script_3
 	case 1, Alameda_FerryState2_Script_4
@@ -186,15 +186,15 @@ Alameda_FerryState2_Script_1:
 	return
 
 Alameda_FerryState2_Script_3:
-	warp MAP_PSFPLACE11, 8, 11
+	warp MAP_FERRYBUILDING, 8, 11
 	goto Alameda_FerryState2_Script_1
 
 Alameda_FerryState2_Script_4:
-	warp MAP_PSFCAVE7, 15, 22
+	warp MAP_ALCATRAZ, 15, 22
 	goto Alameda_FerryState2_Script_1
 
 Alameda_FerryState2_Script_5:
-	warp MAP_PSFCAVE5, 15, 36
+	warp MAP_TREASUREISLAND, 15, 36
 	goto Alameda_FerryState2_Script_1
 
 Alameda_FerryState2_Script_6:

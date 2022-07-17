@@ -2,7 +2,7 @@ WaitYouWentWhere_ObjectSetUp_Script::
 	special GetNumberOfBadges
 	compare VAR_TEMP_0, 7
 	goto_if_ge WaitYouWentWhere_ObjectSetUp_Script_1
-	compare VAR_PSFCAVE7_STATE, 2
+	compare VAR_ALCATRAZ_STATE, 2
 	goto_if_ne WaitYouWentWhere_ObjectSetUp_Script_1
 	return
 
@@ -51,7 +51,7 @@ WaitYouWentWhere_FirstInteract_Dialogue::
 	call WaitYouWentWhere_PlayerSetUp_Script
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Player_WaitYouWentWhere_WalkWest
-	applymovement 1, Psfbadadmin_WaitYouWentWhere_WalkWest
+	applymovement 1, Oak_WaitYouWentWhere_WalkWest
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_IActuallyJustGot
@@ -147,7 +147,7 @@ Player_WaitYouWentWhere_WalkWest:
 	walk_left
 	step_end
 
-Psfbadadmin_WaitYouWentWhere_WalkWest:
+Oak_WaitYouWentWhere_WalkWest:
 	walk_left
 	walk_left
 	walk_left

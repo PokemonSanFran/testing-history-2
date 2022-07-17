@@ -57,12 +57,12 @@ GroupStages_PreparePlayer_Script_1:
 
 GroupStages_PreparePlayer_Script_2:
 	call GroupStages_ChooseParty_Script
-	setflag FLAG_PSFPLACE14_TOURNAMENT_HAPPENING
+	setflag FLAG_CHASECENTER_TOURNAMENT_HAPPENING
 	call GroupStages_MoveObjects_Script
 	compare VAR_ROUTE119_STATE, 4
 	goto_if_ne GroupStages_PreparePlayer_Script_5
 GroupStages_PreparePlayer_Script_4:
-	warpsilent MAP_PSFPLACE14_ARENA, 255, 5, 6
+	warpsilent MAP_CHASECENTER_ARENA, 255, 5, 6
 	goto GroupStages_PreparePlayer_Script_1
 
 GroupStages_PreparePlayer_Script_5:
@@ -176,7 +176,7 @@ GroupStages_RoundRobinGroupComplete_Script::
 	special DoDomeConfetti
 	playse SE_APPLAUSE
 	waitse
-	warpsilent MAP_PSFPLACE14_LOCKERS, 255, 10, 3
+	warpsilent MAP_CHASECENTER_LOCKERS, 255, 10, 3
 	return
 
 

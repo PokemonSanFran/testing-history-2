@@ -7,7 +7,7 @@ mapscripts YCombinatorTower_10F_MapScripts {
 }
 
 script YCombinatorTower_10F_MapScripts_OnTransition {
-    switch (var(VAR_PSFCITY15_STATE)){
+    switch (var(VAR_SOMA_STATE)){
         case 4: call(TheGangsAllHere_ObjectCleanUp_Script)
     }
 

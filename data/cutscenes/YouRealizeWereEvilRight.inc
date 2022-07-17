@@ -49,11 +49,11 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_YeahImOnMyWay
 	callnative ClearMugshot
-	addvar VAR_PSFBADGUY1TOWER_2F_STATE, 1
+	addvar VAR_YCOMBINATORTOWER_2F_STATE, 1
 	msgbox gText_YouRealizeWereEvilRight_WouldYouLikeToGo, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq YouRealizeWereEvilRight_PhoneCall_Dialogue_1
-	warpsilent MAP_PSFBADGUY1TOWER_2F, 255, 7, 14
+	warpsilent MAP_YCOMBINATORTOWER_2F, 255, 7, 14
 	return
 
 YouRealizeWereEvilRight_PhoneCall_Dialogue_1:
@@ -64,7 +64,7 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue_1:
 
 YouRealizeWereEvilRight_Open_Dialogue::
 	lockall
-	addvar VAR_PSFBADGUY1TOWER_2F_STATE, 1
+	addvar VAR_YCOMBINATORTOWER_2F_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -232,8 +232,8 @@ gText_YouRealizeWereEvilRight_IThinkYourKindness::
 	.string "TeamRocket.$"
 
 gText_YouRealizeWereEvilRight_ShitUsedToBe::
-	.string "(Shit, Archer did mention he\n"
-	.string "wanted their help. Was that all a ploy?)$"
+	.string "(Shit, Archer did mention he wanted\n"
+	.string "their help. Was that all a ploy?)$"
 
 gText_YouRealizeWereEvilRight_UsedToBeASmall::
 	.string "TeamRocket used to be a small problem,\n"
@@ -256,8 +256,8 @@ gText_YouRealizeWereEvilRight_TheLocalPolice::
 	.string "The local police have agreed to\n"
 	.string "continue to work with us to eliminate\l"
 	.string "TeamRocket. {PLAYER}, as you have\l"
-	.string "before, we'd like you and Bianca\l"
-	.string "to work alongside us to finish them.$"
+	.string "before, we'd like you and Bianca to work\l"
+	.string "alongside us to finish them.$"
 
 gText_YouRealizeWereEvilRight_IKnowThis::
 	.string "I know this is a lot to take in at once,\n"

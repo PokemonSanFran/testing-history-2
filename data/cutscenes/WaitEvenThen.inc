@@ -185,7 +185,7 @@ WaitEvenThen_PostBossDialogue::
 	end
 
 WaitEvenThen_PostBossDialogue_2:
-	warp MAP_PSFCITY17, 255, 34, 13
+	warp MAP_ALAMEDA, 255, 34, 13
 	end
 
 

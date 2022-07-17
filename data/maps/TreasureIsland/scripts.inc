@@ -39,7 +39,7 @@ TreasureIsland_UnlockedDestinations_Script_2:
 
 
 TreasureIsland_FerryState0_Script::
-	multichoicedefault 18, 8, PSFCAVE5_FERRY_DESTINATIONS_VER1, 2, TRUE
+	multichoicedefault 18, 8, TREASUREISLAND_FERRY_DESTINATIONS_VER1, 2, TRUE
 	call SlateportCity_Harbor_EventScript_BoardFerry
 	switch VAR_RESULT
 	case 0, TreasureIsland_FerryState0_Script_2
@@ -48,7 +48,7 @@ TreasureIsland_FerryState0_Script::
 	return
 
 TreasureIsland_FerryState0_Script_2:
-	warp MAP_PSFPLACE11, 8, 11
+	warp MAP_FERRYBUILDING, 8, 11
 	return
 
 TreasureIsland_FerryState0_Script_3:

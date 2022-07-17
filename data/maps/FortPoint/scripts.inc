@@ -13,7 +13,7 @@ FortPoint_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 FortPoint_MapScript_OnTransition::
-	switch VAR_PSFPLACE9_STATE
+	switch VAR_FORTPOINT_STATE
 	case 1, FortPoint_MapScript_OnTransition_2
 	goto YouLookTired_HideObjects_Script
 	return

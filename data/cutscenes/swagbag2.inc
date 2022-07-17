@@ -109,7 +109,7 @@ swagbag2_Scene_End_Script::
 	applymovement 1, swagbag2_LeaveCity
 	waitmovement 0
 	removeobject 1
-	addvar VAR_PSFCITY11_STATE, 1
+	addvar VAR_BERKELEY_STATE, 1
 	fadedefaultbgm
 	release
 	end

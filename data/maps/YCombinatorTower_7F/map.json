@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFBADGUY1TOWER_7F",
+  "id": "MAP_YCOMBINATORTOWER_7F",
   "name": "YCombinatorTower_7F",
-  "layout": "LAYOUT_PSFBADGUY1TOWER_7F",
+  "layout": "LAYOUT_YCOMBINATORTOWER_7F",
   "music": "MUS_RG_SILPH",
-  "region_map_section": "MAPSEC_PSFBADGUY1TOWER",
+  "region_map_section": "MAPSEC_YCOMBINATORTOWER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -21,21 +21,21 @@
       "x": 10,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_ELEVATOR",
+      "dest_map": "MAP_YCOMBINATORTOWER_ELEVATOR",
       "dest_warp_id": 0
     },
     {
       "x": 6,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_6F",
+      "dest_map": "MAP_YCOMBINATORTOWER_6F",
       "dest_warp_id": 1
     },
     {
       "x": 12,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_PSFBADGUY1TOWER_8F",
+      "dest_map": "MAP_YCOMBINATORTOWER_8F",
       "dest_warp_id": 0
     }
   ],

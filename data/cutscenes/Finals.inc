@@ -18,7 +18,7 @@ Finals_PreparePlayer_Script_1:
 
 Finals_PreparePlayer_Script_2:
 	call GroupStages_MoveObjects_Script
-	warpsilent MAP_PSFPLACE14_ARENA, 255, 5, 6
+	warpsilent MAP_CHASECENTER_ARENA, 255, 5, 6
 	goto Finals_PreparePlayer_Script_1
 
 

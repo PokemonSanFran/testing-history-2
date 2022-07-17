@@ -1,9 +1,9 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ARNAV = 3
 const OLIVER = 4
-const PSFBADADMIN = 9
-const PSFTRANSRIVAL = 10
-const PSFBADBOSS = 11
+const OAK = 9
+const BIANCA = 10
+const ROSE = 11
 const MAYOR = 12
 const CHIEF = 13
 
@@ -30,8 +30,8 @@ script WelcomeToTheWarRoom_FaceSpeakerRose {
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_FaceDown)
     applymovement(MAYOR,Common_Movement_FaceDown)
-    applymovement(PSFBADADMIN,Common_Movement_FaceDown)
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceDown)
+    applymovement(OAK,Common_Movement_FaceDown)
+    applymovement(BIANCA,Common_Movement_FaceDown)
     applymovement(PLAYER,Common_Movement_FaceDown)
     waitmovement(0)
 }
@@ -41,8 +41,8 @@ script WelcomeToTheWarRoom_FaceSpeakerArnav {
     applymovement(ARNAV,Common_Movement_WalkInPlaceFasterDown)
     applymovement(CHIEF,Common_Movement_FaceUp)
     applymovement(MAYOR,Common_Movement_FaceUp)
-    applymovement(PSFBADADMIN,Common_Movement_FaceRight)
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceRight)
+    applymovement(OAK,Common_Movement_FaceRight)
+    applymovement(BIANCA,Common_Movement_FaceRight)
     applymovement(PLAYER,Common_Movement_FaceRight)
     waitmovement(0)
 }
@@ -51,8 +51,8 @@ script WelcomeToTheWarRoom_FaceSpeakerOliver {
     applymovement(ARNAV,Common_Movement_FaceUp)
     applymovement(CHIEF,Common_Movement_FaceUp)
     applymovement(MAYOR,Common_Movement_FaceUp)
-    applymovement(PSFBADADMIN,Common_Movement_FaceRight)
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceRight)
+    applymovement(OAK,Common_Movement_FaceRight)
+    applymovement(BIANCA,Common_Movement_FaceRight)
     applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(0)
 }
@@ -61,8 +61,8 @@ script WelcomeToTheWarRoom_FaceSpeakerChief {
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_WalkInPlaceFasterLeft)
     applymovement(MAYOR,Common_Movement_FaceUp)
-    applymovement(PSFBADADMIN,Common_Movement_FaceDown)
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceRight)
+    applymovement(OAK,Common_Movement_FaceDown)
+    applymovement(BIANCA,Common_Movement_FaceRight)
     applymovement(PLAYER,Common_Movement_FaceRight)
     waitmovement(0)
 }
@@ -71,8 +71,8 @@ script WelcomeToTheWarRoom_FaceSpeakerMayor {
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_FaceDown)
     applymovement(MAYOR,Common_Movement_WalkInPlaceFasterLeft)
-    applymovement(PSFBADADMIN,Common_Movement_FaceDown)
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceRight)
+    applymovement(OAK,Common_Movement_FaceDown)
+    applymovement(BIANCA,Common_Movement_FaceRight)
     applymovement(PLAYER,Common_Movement_FaceRight)
     waitmovement(0)
 }
@@ -81,8 +81,8 @@ script WelcomeToTheWarRoom_FaceSpeakerBianca {
     applymovement(ARNAV,Common_Movement_FaceLeft)
     applymovement(CHIEF,Common_Movement_FaceLeft)
     applymovement(MAYOR,Common_Movement_FaceUp)
-    applymovement(PSFBADADMIN,Common_Movement_FaceDown)
-    applymovement(PSFTRANSRIVAL,Common_Movement_WalkInPlaceFasterRight)
+    applymovement(OAK,Common_Movement_FaceDown)
+    applymovement(BIANCA,Common_Movement_WalkInPlaceFasterRight)
     applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(0)
 }
@@ -91,28 +91,28 @@ script WelcomeToTheWarRoom_FaceSpeakerPlayer {
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_FaceLeft)
     applymovement(MAYOR,Common_Movement_FaceLeft)
-    applymovement(PSFBADADMIN,Common_Movement_FaceDown)
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceDown)
+    applymovement(OAK,Common_Movement_FaceDown)
+    applymovement(BIANCA,Common_Movement_FaceDown)
     applymovement(PLAYER,Common_Movement_WalkInPlaceFasterRight)
     waitmovement(0)
 }
-script WelcomeToTheWarRoom_FaceSpeakerPsfbadadmin {
+script WelcomeToTheWarRoom_FaceSpeakerOak {
     applymovement(OLIVER,Common_Movement_FaceLeft)
     applymovement(ARNAV,Common_Movement_FaceLeft)
     applymovement(CHIEF,Common_Movement_FaceUp)
     applymovement(MAYOR,Common_Movement_FaceUp)
-    applymovement(PSFBADADMIN,Common_Movement_WalkInPlaceFasterRight)
-    applymovement(PSFTRANSRIVAL,Common_Movement_FaceUp)
+    applymovement(OAK,Common_Movement_WalkInPlaceFasterRight)
+    applymovement(BIANCA,Common_Movement_FaceUp)
     applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(0)
 }
 
 script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
     lock
-    addvar(VAR_PSFBADGUY1TOWER_2F_STATE,1)
+    addvar(VAR_YCOMBINATORTOWER_2F_STATE,1)
     setvar(VAR_ROUTE117_STATE,1)
     call(WelcomeToTheWarRoom_FaceSpeakerRose)
-        applymovement(PSFBADBOSS,WelcomeToTheWarRoom_Pace)
+        applymovement(ROSE,WelcomeToTheWarRoom_Pace)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
@@ -187,13 +187,13 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         applymovement(ARNAV,WelcomeToTheWarRoom_ReturnToDeskA)
         applymovement(OLIVER,WelcomeToTheWarRoom_ReturnToDeskB)
         applymovement(MAYOR,WelcomeToTheWarRoom_MayorLeaveRoom)
-        applymovement(PSFBADBOSS,WelcomeToTheWarRoom_RoseLeaveRoom)
+        applymovement(ROSE,WelcomeToTheWarRoom_RoseLeaveRoom)
         waitmovement(0)
         removeobject(MAYOR)
-        removeobject(PSFBADBOSS)
+        removeobject(ROSE)
 
-        applymovement(PSFBADADMIN,WelcomeToTheWarRoom_AddressTrainers)
-        applymovement(PSFTRANSRIVAL,Common_Movement_FaceLeft)
+        applymovement(OAK,WelcomeToTheWarRoom_AddressTrainers)
+        applymovement(BIANCA,Common_Movement_FaceLeft)
         applymovement(PLAYER,Common_Movement_FaceLeft)
         waitmovement(0)
 
@@ -203,11 +203,11 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PSFBADADMIN,WelcomeToTheWarRoom_PsfbadadminLeaveRoom)
+        applymovement(OAK,WelcomeToTheWarRoom_OakLeaveRoom)
         waitmovement(0)
-        removeobject(PSFBADADMIN)
+        removeobject(OAK)
         
-        applymovement(PSFTRANSRIVAL,Common_Movement_WalkDown)
+        applymovement(BIANCA,Common_Movement_WalkDown)
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(0)
 
@@ -219,9 +219,9 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
             msgbox(gText_WelcomeToTheWarRoom_OkayIllMeetYou)
             closemessage
             callnative(ClearMugshot)
-            applymovement(PSFTRANSRIVAL,WelcomeToTheWarRoom_BiancaLeaveRoom)
+            applymovement(BIANCA,WelcomeToTheWarRoom_BiancaLeaveRoom)
             waitmovement(0)
-            removeobject(PSFTRANSRIVAL)
+            removeobject(BIANCA)
             releaseall
             end
         } else {
@@ -343,7 +343,7 @@ movement WelcomeToTheWarRoom_AddressTrainers {
     face_right
     step_end
 }
-movement WelcomeToTheWarRoom_PsfbadadminLeaveRoom {
+movement WelcomeToTheWarRoom_OakLeaveRoom {
     walk_down * 4
     walk_right * 3
     walk_down * 3

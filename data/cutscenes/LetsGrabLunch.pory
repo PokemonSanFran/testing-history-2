@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFNATIVERIVAL = 3
+const ARCHER = 3
 
 script LetsGrabLunch_HideObject_Script {
     setflag(FLAG_TEMP_2)
@@ -9,10 +9,10 @@ script LetsGrabLunch_StartConversation_Dialogue {
     lockall
         addvar(VAR_STORYLINE_STATE,1)
         clearflag(FLAG_TEMP_1)
-        addobject(PSFNATIVERIVAL)
+        addobject(ARCHER)
         playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
         applymovement(PLAYER,Common_Movement_FaceRight)
-        applymovement(PSFNATIVERIVAL,LetsGrabLunch_WalkUpToPlayer)
+        applymovement(ARCHER,LetsGrabLunch_WalkUpToPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -79,7 +79,7 @@ script LetsGrabLunch_PostBattle_Dialogue {
         callnative(ClearMugshot)
         closemessage
         fadedefaultbgm
-        warpsilent(MAP_PSFCAVE5_RESTAURANT,14,9)
+        warpsilent(MAP_TREASUREISLAND_RESTAURANT,14,9)
         releaseall
         end
 }
@@ -191,7 +191,7 @@ script LetsGrabLunch_Chinatown {
                 releaseall
                 end
         }else {
-            warpsilent(MAP_PSFCITY13,9,10)
+            warpsilent(MAP_CHINATOWN,9,10)
         }
 }
 script LetsGrabLunch_Marin {
@@ -204,7 +204,7 @@ script LetsGrabLunch_Marin {
                 releaseall
                 end
         }else {
-            warpsilent(MAP_PSFCITY13,5,15)
+            warpsilent(MAP_CHINATOWN,5,15)
         }
 }
 script LetsGrabLunch_TreasureIsland {
@@ -225,7 +225,7 @@ script LetsGrabLunch_TreasureIsland {
                 releaseall
                 end
         }else {
-            warpsilent(MAP_PSFCAVE5,17,15)
+            warpsilent(MAP_TREASUREISLAND,17,15)
         }
 }
 script LetsGrabLunch_HaightAshbury {
@@ -250,7 +250,7 @@ script LetsGrabLunch_HaightAshbury {
                 releaseall
                 end
         }else {
-            warpsilent(MAP_PSFCITY18,9,27)
+            warpsilent(MAP_HAIGHTASHBURY,9,27)
         }
 }
 

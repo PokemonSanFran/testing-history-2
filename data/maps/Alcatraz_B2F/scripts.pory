@@ -3,8 +3,8 @@ mapscripts Alcatraz_B2F_MapScripts {
         goto(Alcatraz_B2F_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_PSFCAVE7_STATE,4: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 
-        VAR_PSFCAVE7_STATE,8: SpeechSpeechSpeech_PositionPlayer_Script 
+        VAR_ALCATRAZ_STATE,4: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 
+        VAR_ALCATRAZ_STATE,8: SpeechSpeechSpeech_PositionPlayer_Script 
         VAR_STORYLINE_STATE, 105: OneDown_SetUpObject_Script
     ]
 }
@@ -13,7 +13,7 @@ script Alcatraz_B2F_MapScripts_OnTransition {
 
     call(YouRealizeTheyreEvilRight_HideGarbodor_Script)
 
-        switch(var(VAR_PSFCAVE7_STATE)){
+        switch(var(VAR_ALCATRAZ_STATE)){
             case 0: call(YouRealizeTheyreEvilRight_HideBasement_Script)
             case 1: call(YouRealizeTheyreEvilRight_HideBasement_Script)
             case 2: call(YouRealizeTheyreEvilRight_HideBasement_Script)

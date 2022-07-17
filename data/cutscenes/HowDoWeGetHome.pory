@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
-const PSFGOODADMIN = 1
+const ARIANA = 1
 const JULIUS = 7
 const MADISON = 6
 
@@ -44,7 +44,7 @@ script HowDoWeGetHome_MovePlayerOffPath_Script {
 }
 
 script HowDoWeGetHome_MoveCameraToFight_Script {
-        addvar(VAR_PSFCITY7_STATE,1)
+        addvar(VAR_DOGPATCH_STATE,1)
         locktarget
         fadescreen(FADE_TO_BLACK)
         TeleportCamera(14,9)
@@ -62,7 +62,7 @@ script HowDoWeGetHome_StartFight_Dialogue {
 }
 script HowDoWeGetHome_ArianaGetsInvolved_Dialogue {
     clearflag(FLAG_TEMP_1)
-        addobject(PSFGOODADMIN)
+        addobject(ARIANA)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_HowDoWeGetHome_YoChillOut)
@@ -111,11 +111,11 @@ script HowDoWeGetHome_MadisonHowDoWeGetHome_Dialogue {
         applymovement(MADISON,HowDoWeGetHome_DialogueFightNorth)
         waitmovement(0)
         removeobject(MADISON)
-        applymovement(PSFGOODADMIN,Common_Movement_LookAround)
+        applymovement(ARIANA,Common_Movement_LookAround)
         waitmovement(0)
-        applymovement(PSFGOODADMIN,HowDoWeGetHome_DialogueFightSouth)
+        applymovement(ARIANA,HowDoWeGetHome_DialogueFightSouth)
         waitmovement(0)
-        removeobject(PSFGOODADMIN)
+        removeobject(ARIANA)
         fadescreen(FADE_TO_BLACK)
         //TeleportCamera(9,9)
         special(ReturnCameraToPlayer)
@@ -141,7 +141,7 @@ script HowDoWeGetHome_ArianaEntrance{
         applymovement(8,HowDoWeGetHome_ExclaimLeft)
         applymovement(9,HowDoWeGetHome_ExclaimLeft)
         applymovement(13,HowDoWeGetHome_ExclaimLeft)
-        applymovement(PSFGOODADMIN,HowDoWeGetHome_WalkIntoFight)
+        applymovement(ARIANA,HowDoWeGetHome_WalkIntoFight)
         waitmovement(0)
         applymovement(MADISON,Common_Movement_FaceDown)
         applymovement(JULIUS,Common_Movement_FaceDown)

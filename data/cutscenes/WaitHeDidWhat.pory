@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFBADBOSS = 1 //FLAG_TEMP_1
-const PSFTRANSRIVAL = 2 //FLAG_TEMP_2
-const PSFNATIVERIVAL = 3 //FLAG_TEMP_3
-const PSFBADADMIN = 4 //FLAG_TEMP_4
+const ROSE = 1 //FLAG_TEMP_1
+const BIANCA = 2 //FLAG_TEMP_2
+const ARCHER = 3 //FLAG_TEMP_3
+const OAK = 4 //FLAG_TEMP_4
 
 script WaitHeDidWhat_HideObject_Script {
     setflag(FLAG_TEMP_1)
@@ -12,8 +12,8 @@ script WaitHeDidWhat_ObjectSetUp_Script {
     call(Finals_HideObject_Script)
         setflag(FLAG_TEMP_2)
         setflag(FLAG_TEMP_6)
-        setobjectxy(PSFNATIVERIVAL,10,5)
-        setobjectxyperm(PSFNATIVERIVAL,10,5)
+        setobjectxy(ARCHER,10,5)
+        setobjectxyperm(ARCHER,10,5)
 }
 
 script WaitHeDidWhat_ObjectMidSetUp_Script {
@@ -54,12 +54,12 @@ script WaitHeDidWhat_RivalsGoToMatch_Script {
     lock
         applymovement(5,WaitHeDidWhat_StepAside)
         applymovement(PLAYER,WaitHeDidWhat_GetOutOfWay)
-        applymovement(PSFNATIVERIVAL,WaitHeDidWhat_WalkToArena)
+        applymovement(ARCHER,WaitHeDidWhat_WalkToArena)
         opendoor(10,1)
         waitdooranim
         waitmovement(0)
         playse(SE_EXIT)
-        removeobject(PSFNATIVERIVAL)
+        removeobject(ARCHER)
         closedoor(10,1)
         waitdooranim
         goto(WaitHeDidWhat_CalledToSkybox_Script)
@@ -172,7 +172,7 @@ script WaitHeDidWhat_PreparePlayer_Script {
         closemessage
         if (var(VAR_RESULT) == YES){
             call(GroupStages_MoveObjects_Script)
-                warpsilent(MAP_PSFPLACE14_ARENA,0)
+                warpsilent(MAP_CHASECENTER_ARENA,0)
         }
     release
         end

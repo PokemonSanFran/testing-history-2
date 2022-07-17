@@ -153,7 +153,7 @@ WarehouseRave_PostBattle_Script::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, WarehouseRave_RunOutTheWarehouse
 	waitmovement 0
-	warpsilent MAP_PSFCITY9, 1
+	warpsilent MAP_OAKLAND, 1
 	return
 
 

@@ -1,8 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFTRANSRIVAL = 1
-const PSFGOODADMIN = 2
-const PSFGOODBOSS = 3
-const PSFNATIVERIVAL = 4
+const BIANCA = 1
+const ARIANA = 2
+const GIOVANNI = 3
+const ARCHER = 4
 const PKMNA = 5
 const PKMNB = 6
 

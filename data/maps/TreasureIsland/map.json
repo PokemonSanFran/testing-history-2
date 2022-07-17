@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFCAVE5",
+  "id": "MAP_TREASUREISLAND",
   "name": "TreasureIsland",
-  "layout": "LAYOUT_PSFCAVE5",
+  "layout": "LAYOUT_TREASUREISLAND",
   "music": "MUS_RG_CELADON",
-  "region_map_section": "MAPSEC_PSFCAVE5",
+  "region_map_section": "MAPSEC_TREASUREISLAND",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_CITY",
@@ -59,14 +59,14 @@
       "x": 24,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE5_RESTAURANT",
+      "dest_map": "MAP_TREASUREISLAND_RESTAURANT",
       "dest_warp_id": 0
     },
     {
       "x": 13,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE5",
+      "dest_map": "MAP_TREASUREISLAND",
       "dest_warp_id": 1
     }
   ],

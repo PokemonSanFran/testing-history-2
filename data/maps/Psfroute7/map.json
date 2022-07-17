@@ -16,7 +16,7 @@
     {
       "direction": "down",
       "offset": -12,
-      "map": "MAP_PSFCITY1"
+      "map": "MAP_SUNSET"
     }
   ],
   "object_events": [
@@ -27,7 +27,7 @@
       "x": 14,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_PSFCAVE9",
+      "dest_map": "MAP_GLDNGTEWILDS",
       "dest_warp_id": 2
     }
   ],

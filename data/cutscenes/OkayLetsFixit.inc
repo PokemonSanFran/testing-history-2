@@ -73,7 +73,7 @@ OkayLetsFixit_StartFlashback_Script::
 	closemessage
 	callnative ClearMugshot
 	delay 30
-	warpsilent MAP_PSFPLACE1, 255, 17, 43
+	warpsilent MAP_TWINPEAKS, 255, 17, 43
 	end
 
 
@@ -108,7 +108,7 @@ OkayLetsFixit_ReturnToPeak_Script::
 	waitmoncry
 	playmoncry SPECIES_JIRACHI, CRY_MODE_ENCOUNTER
 	waitmoncry
-	warpsilent MAP_PSFCITY3_COMPOUND_1F, 255, 9, 7
+	warpsilent MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7
 	return
 
 

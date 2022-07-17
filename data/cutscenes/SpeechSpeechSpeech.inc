@@ -239,7 +239,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	closemessage
 	fadescreen FADE_TO_BLACK
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_PSFCAVE7_STATE, 1
+	addvar VAR_ALCATRAZ_STATE, 1
 	TeleportCamera 9, 9
 	callnative DestroyVirtualObjects
 	call SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script

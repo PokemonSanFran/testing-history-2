@@ -9,7 +9,7 @@ mapscripts SouthBay_Compound_2F_MapScripts {
 script SouthBay_Compound_2F_Bed_Script {
     lock
         //If has not visited Alcatraz after being called there by Archer, prevent player from sleeping
-        if (var(VAR_PSFCAVE7_STATE) == 4 || (var(VAR_PSFCAVE7_STATE) == 3)){
+        if (var(VAR_ALCATRAZ_STATE) == 4 || (var(VAR_ALCATRAZ_STATE) == 3)){
             call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
         }
 

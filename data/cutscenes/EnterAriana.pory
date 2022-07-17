@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const PSFGOODADMIN = 1
+const ARIANA = 1
 const SIARL = 2
 const PERSON1 = 6
 const PERSON2 = 7
@@ -48,14 +48,14 @@ script EnterAriana_Intro_Dialogue{
         msgbox(gText_EnterAriana_WaitListen)
         callnative(ClearMugshot)
         msgbox(gText_EnterAriana_NoPunk)
-        applymovement(PSFGOODADMIN,Common_Movement_FaceDown)
+        applymovement(ARIANA,Common_Movement_FaceDown)
         playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterAriana_HoldOn)
         closemessage
         callnative(ClearMugshot)
-        applymovement(PSFGOODADMIN,EnterAriana_ArianaWalkToPlayer_Movement)
+        applymovement(ARIANA,EnterAriana_ArianaWalkToPlayer_Movement)
         waitmovement(0)
         applymovement(SIARL,Common_Movement_FaceRight)
         waitmovement(0)
@@ -80,7 +80,7 @@ script EnterAriana_Explain_Dialogue{
         msgbox(gText_EnterAriana_WhatYouHeard)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFGOODADMIN,Common_Movement_FaceDown)
+        applymovement(ARIANA,Common_Movement_FaceDown)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -94,7 +94,7 @@ script EnterAriana_Explain_Dialogue{
 }
 
 script EnterAriana_Apology_Dialogue{
-    applymovement(PSFGOODADMIN,Common_Movement_FaceLeft)
+    applymovement(ARIANA,Common_Movement_FaceLeft)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -107,14 +107,14 @@ script EnterAriana_Apology_Dialogue{
         callnative(ClearMugshot)
         msgbox(gText_EnterAriana_Sorry)
         closemessage
-        applymovement(PSFGOODADMIN,Common_Movement_FaceDown)
+        applymovement(ARIANA,Common_Movement_FaceDown)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterAriana_WhatsYourName)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFGOODADMIN,Common_Movement_FaceLeft)
+        applymovement(ARIANA,Common_Movement_FaceLeft)
         waitmovement(0)
         applymovement(SIARL,Common_Movement_FaceDown)
         waitmovement(0)
@@ -128,7 +128,7 @@ script EnterAriana_Apology_Dialogue{
         applymovement(SIARL,Common_Movement_FaceRight)
         msgbox(gText_EnterAriana_ShouldBeNear)
         closemessage
-        applymovement(PSFGOODADMIN,EnterAriana_HopOverTable_Movement)
+        applymovement(ARIANA,EnterAriana_HopOverTable_Movement)
         waitmovement(0)
         applymovement(PLAYER,Common_Movement_FaceRight)
         waitmovement(0)
@@ -139,7 +139,7 @@ script EnterAriana_Apology_Dialogue{
         msgbox(gText_EnterAriana_NeedToWalk)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFGOODADMIN,EnterAriana_WalkToLine_Movement)
+        applymovement(ARIANA,EnterAriana_WalkToLine_Movement)
         applymovement(PLAYER,EnterAriana_PlayerWalkToLine_Movement)
         goto(EnterAriana_ExplainHope_Dialogue)
 }
@@ -171,17 +171,17 @@ script EnterAriana_ExplainHope_Dialogue{
         msgbox(gText_EnterAriana_YoureNotFromHere)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFGOODADMIN,EnterAriana_PlaceConesA_Movement)
+        applymovement(ARIANA,EnterAriana_PlaceConesA_Movement)
         waitmovement(0)
     setmetatile(3,37,0x2E9,TRUE)
     special(DrawWholeMapView)
         applymovement(PLAYER,EnterAriana_WatchPlaceCones_Movement)
-        applymovement(PSFGOODADMIN,EnterAriana_PlaceConesB_Movement)
+        applymovement(ARIANA,EnterAriana_PlaceConesB_Movement)
         waitmovement(0)
     setmetatile(3,39,0x2E9,TRUE)
     special(DrawWholeMapView)
         //applymovement(PLAYER,EnterAriana_WatchPlaceConesB_Movement)
-        applymovement(PSFGOODADMIN,EnterAriana_PlaceConesC_Movement)
+        applymovement(ARIANA,EnterAriana_PlaceConesC_Movement)
         //applymovement(PLAYER,EnterAriana_WatchPlaceConesC_Movement)
         waitmovement(0)
     setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -208,8 +208,8 @@ script LineMovementEvent_Script{
 }
 
 script EnterAriana_GiveKeystone_Dialogue{
-        applymovement(PSFGOODADMIN,Common_Movement_WalkLeft)
-        applymovement(PSFGOODADMIN,Common_Movement_FacePlayer)
+        applymovement(ARIANA,Common_Movement_WalkLeft)
+        applymovement(ARIANA,Common_Movement_FacePlayer)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterAriana_ThereYouGo)
@@ -221,7 +221,7 @@ script EnterAriana_GiveKeystone_Dialogue{
         msgbox(gText_EnterAriana_WellGoodLuck)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFGOODADMIN,Common_Movement_WalkInPlaceUp)
+        applymovement(ARIANA,Common_Movement_WalkInPlaceUp)
         waitmovement(0)
         giveitem(ITEM_MEGA_RING)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -266,9 +266,9 @@ script EnterAriana_GiveKeystone_Dialogue{
         msgbox(gText_EnterAriana_IGottaGo)
         callnative(ClearMugshot)
         closemessage
-        applymovement(PSFGOODADMIN,Ariana_WalkAway)
+        applymovement(ARIANA,Ariana_WalkAway)
         waitmovement(0)
-        removeobject(PSFGOODADMIN)
+        removeobject(ARIANA)
         fadedefaultbgm
         addvar(VAR_STORYLINE_STATE,1)
         call(Act1_1_Check_Script)

@@ -8,7 +8,7 @@ Alcatraz_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Alcatraz_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_PSFCAVE7_STATE, 3, YouRealizeTheyreEvilRight_PlayerLandedDialogue
+	map_script_2 VAR_ALCATRAZ_STATE, 3, YouRealizeTheyreEvilRight_PlayerLandedDialogue
 	.2byte 0
 
 
@@ -21,7 +21,7 @@ Alcatraz_MapScripts_OnTransition::
 
 Alcatraz_ExhibitCheck_Script::
 	call ResetAlcatrazExhibit_Script
-	compare VAR_PSFCAVE7_EXHIBIT_STATE, 2
+	compare VAR_ALCATRAZ_EXHIBIT_STATE, 2
 	goto_if_lt Alcatraz_ExhibitCheck_Script_1
 	return
 
@@ -47,12 +47,12 @@ ResetAlcatrazExhibit_Script::
 	clearflag TRAINER_FLAGS_START + TRAINER_FREDRICK
 	clearflag TRAINER_FLAGS_START + TRAINER_ZANDER
 	clearflag TRAINER_FLAGS_START + TRAINER_LEAH
-	compare VAR_PSFCAVE7_STATE, 2
+	compare VAR_ALCATRAZ_STATE, 2
 	goto_if_lt ResetAlcatrazExhibit_Script_1
 	return
 
 ResetAlcatrazExhibit_Script_1:
-	setvar VAR_PSFCAVE7_EXHIBIT_STATE, 0
+	setvar VAR_ALCATRAZ_EXHIBIT_STATE, 0
 	return
 
 
@@ -69,7 +69,7 @@ Alcatraz_UnlockedDestinations_Script::
 
 
 Alcatraz_FerryState0_Script::
-	multichoicedefault 18, 8, PSFCAVE7_FERRY_DESTINATIONS_VER1, 0, FALSE
+	multichoicedefault 18, 8, ALCATRAZ_FERRY_DESTINATIONS_VER1, 0, FALSE
 	call SlateportCity_Harbor_EventScript_BoardFerry
 	switch VAR_RESULT
 	case 0, Alcatraz_FerryState0_Script_2
@@ -79,11 +79,11 @@ Alcatraz_FerryState0_Script::
 	return
 
 Alcatraz_FerryState0_Script_2:
-	warp MAP_PSFPLACE13, 5, 6
+	warp MAP_FISHERMANSWHARF, 5, 6
 	return
 
 Alcatraz_FerryState0_Script_3:
-	warp MAP_PSFCITY17, 3, 16
+	warp MAP_ALAMEDA, 3, 16
 	return
 
 Alcatraz_FerryState0_Script_4:

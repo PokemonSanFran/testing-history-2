@@ -609,12 +609,12 @@ static void Task_ShowContestResults(u8 taskId)
             SaveContestWinner(CONTEST_SAVE_FOR_ARTIST);
             gCurContestWinnerIsForArtist = TRUE;
             gCurContestWinnerSaveIdx = GetContestWinnerSaveIdx(CONTEST_SAVE_FOR_ARTIST, FALSE);
-            var = VarGet(VAR_PSFGOODTEAM_PSFPLACE13_STATE);
-            VarSet(VAR_PSFGOODTEAM_PSFPLACE13_STATE, 0);
+            var = VarGet(VAR_TEAMROCKET_FISHERMANSWHARF_STATE);
+            VarSet(VAR_TEAMROCKET_FISHERMANSWHARF_STATE, 0);
             SetContinueGameWarpStatusToDynamicWarp();
             TrySavingData(SAVE_LINK);
             ClearContinueGameWarpStatus2();
-            VarSet(VAR_PSFGOODTEAM_PSFPLACE13_STATE, var);
+            VarSet(VAR_TEAMROCKET_FISHERMANSWHARF_STATE, var);
             gTasks[taskId].tState++;
             break;
         case 1:

@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PSFPLACE14_STANDS",
+  "id": "MAP_CHASECENTER_STANDS",
   "name": "ChaseCenter_Stands",
-  "layout": "LAYOUT_PSFPLACE14_STANDS",
+  "layout": "LAYOUT_CHASECENTER_STANDS",
   "music": "MUS_VICTORY_ROAD",
-  "region_map_section": "MAPSEC_PSFPLACE14",
+  "region_map_section": "MAPSEC_CHASECENTER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -46,14 +46,14 @@
       "x": 4,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE14_ENTRANCE",
+      "dest_map": "MAP_CHASECENTER_ENTRANCE",
       "dest_warp_id": 3
     },
     {
       "x": 5,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_PSFPLACE14_ENTRANCE",
+      "dest_map": "MAP_CHASECENTER_ENTRANCE",
       "dest_warp_id": 3
     }
   ],

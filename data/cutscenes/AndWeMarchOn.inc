@@ -467,7 +467,7 @@ gText_AndWeMarchOn_AndWithASupercharged::
 	.string "And with a supercharged Breaking Swipe,\n"
 	.string "Malva ends the battle in one turn! The\l"
 	.string "exhibition winner is the Elite Four's\l"
-	.string "PSFELITE1!$"
+	.string "MALVA!$"
 
 gText_AndWeMarchOn_DamnThatsHow::
 	.string "Damn, that's how she beat me too… wait,\n"
