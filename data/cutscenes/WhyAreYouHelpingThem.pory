@@ -586,7 +586,7 @@ text gText_WhyAreYouHelpingThem_AShameStillWeveShutDown {
 }
 
 text gText_WhyAreYouHelpingThem_NotBadInThere {
-    format("Not bad in there. Oak wants you kids back at SouthBay Compound.")
+    format("Not bad in there. Oak wants you kids back at Southbay Compound.")
 }
 
 text gText_WhyAreYouHelpingThem_WhatADay {
@@ -598,7 +598,7 @@ text gText_WhyAreYouHelpingThem_ItWasADay {
 }
 
 text gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere {
-    format("Good news - while you were training in MuirWoods, construction on ChaseCenter finished up. The Group Stage will start in 3 days. Hopefully, that's enough time to rest up and get ready.")
+    format("Good news - while you were training in Muirwoods, construction on Chasecenter finished up. The Group Stage will start in 3 days. Hopefully, that's enough time to rest up and get ready.")
 }
 
 text gText_WhyAreYouHelpingThem_OhThatWasFast {

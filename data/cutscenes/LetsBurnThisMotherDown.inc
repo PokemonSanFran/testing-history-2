@@ -267,7 +267,7 @@ gText_LetsBurnThisMotherDown_WeStillNeedToFind::
 	.string "We still need to find their new base of\n"
 	.string "operations and their leader,\l"
 	.string "Giovanni. Ever since we shut down\l"
-	.string "NavalBase, we haven't been able to\l"
+	.string "Navalbase, we haven't been able to\l"
 	.string "make any progress on either of these\l"
 	.string "fronts.$"
 
@@ -281,7 +281,7 @@ gText_LetsBurnThisMotherDown_YoureCloserToThe::
 gText_LetsBurnThisMotherDown_INeedToTalk::
 	.string "(I need to talk to Archer… I\n"
 	.string "think I can still save him. I need to\l"
-	.string "get to RobinWillTunnel.)$"
+	.string "get to Robinwilltunnel.)$"
 
 gText_LetsBurnThisMotherDown_YouChoseTheWrong::
 	.string "You chose the wrong side!$"
@@ -296,7 +296,7 @@ gText_LetsBurnThisMotherDown_IKnowYouWant::
 gText_LetsBurnThisMotherDown_YouDontThinkWeve::
 	.string "You don't think we've tried that? You\n"
 	.string "just got here, {PLAYER} . People here\l"
-	.string "in RobinWillTunnel, died trying to do things\l"
+	.string "in Robinwilltunnel, died trying to do things\l"
 	.string "the right way. They don't care.$"
 
 gText_LetsBurnThisMotherDown_TheyIgnoreUs::
@@ -372,7 +372,7 @@ gText_LetsBurnThisMotherDown_YoureYoung::
 
 gText_LetsBurnThisMotherDown_ImStillShocked::
 	.string "I'm still shocked they were using the\n"
-	.string "inside of RobinWillTunnel. Absolutely insane.$"
+	.string "inside of Robinwilltunnel. Absolutely insane.$"
 
 gText_LetsBurnThisMotherDown_ThePoliceTold::
 	.string "The police told me they're going to\n"

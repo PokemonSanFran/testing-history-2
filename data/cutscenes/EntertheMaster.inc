@@ -288,7 +288,7 @@ gText_EnterTheMaster_TheyreGettingPaid::
 
 gText_EnterTheMaster_WelcomeTo::
 	.string "Bianca! {PLAYER}! Welcome to\n"
-	.string "MuirWoods. Excellent work so far!$"
+	.string "Muirwoods. Excellent work so far!$"
 
 gText_EnterTheMaster_ThanksYoure::
 	.string "Thanks. You're Siebold?$"
@@ -298,7 +298,7 @@ gText_EnterTheMaster_AndMyNotebook::
 
 gText_EnterTheMaster_GettingThemToBattle::
 	.string "I hope Pokémon 1 and Pokémon 2 in\n"
-	.string "RobinWillTunnel weren't too much\l"
+	.string "Robinwilltunnel weren't too much\l"
 	.string "trouble. Getting them to battle\l"
 	.string "without my direct commands was\l"
 	.string "certainly a challenge.$"

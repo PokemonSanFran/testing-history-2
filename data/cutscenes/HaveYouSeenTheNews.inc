@@ -71,7 +71,7 @@ gText_HaveYouSeenTheNews_YoureStartingToSound::
 	.string "they've completely infiltrated our\l"
 	.string "social media platforms. The mayor was\l"
 	.string "impressed with your work at\l"
-	.string "ChaseCenter, and thinks you two might\l"
+	.string "Chasecenter, and thinks you two might\l"
 	.string "be able to help.$"
 
 gText_HaveYouSeenTheNews_HowAreWeGoing::

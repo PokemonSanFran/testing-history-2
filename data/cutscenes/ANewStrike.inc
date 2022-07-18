@@ -19,7 +19,7 @@ ANewStrike_PlayerSelf_Dialogue::
 
 
 gText_ANewStrike_ConstructionCrew::
-	.string "BREAKING NEWS: ChaseCenter\n"
+	.string "BREAKING NEWS: Chasecenter\n"
 	.string "construction crew has declared\l"
 	.string "a strike.\p"
 	.string "Their demands at this time are\n"

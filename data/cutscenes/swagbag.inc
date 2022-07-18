@@ -116,11 +116,11 @@ Swagbag_WhenCanWeStart_Dialogue::
 	waitmovement 0
 	playse SE_EXIT
 	removeobject 1
-	goto Swagbag_DontLeaveSouthBay_Dialogue
+	goto Swagbag_DontLeaveSouthbay_Dialogue
 	return
 
 
-Swagbag_DontLeaveSouthBay_Dialogue::
+Swagbag_DontLeaveSouthbay_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_IllBeWorkingOnMyLaptop
@@ -144,11 +144,11 @@ swagbag_HelpPlayer_Script::
 	return
 
 
-swagbag_PreventPlayerLeavingSouthBay_Event_Script::
+swagbag_PreventPlayerLeavingSouthbay_Event_Script::
 	lock
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_DontLeaveSouthBay_Text1
+	msgbox gText_DontLeaveSouthbay_Text1
 	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, swagbag_WalkBackwards
@@ -330,6 +330,6 @@ gText_Swagbag_InTheActualGame::
 	.string "questions that the player can ask and\l"
 	.string "getr answers to. Tutorial level shit.$"
 
-gText_DontLeaveSouthBay_Text1::
-	.string "I don't think I should leave SouthBay\n"
+gText_DontLeaveSouthbay_Text1::
+	.string "I don't think I should leave Southbay\n"
 	.string "yet...$"

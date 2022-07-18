@@ -79,7 +79,7 @@ msgbox(gText_YouHaveYourOrders_TheyInvolved)
 msgbox(gText_YouHaveYourOrders_WeHiredThem)
 }
 
-    //If the player has converted the HaightAshbury Gym: PSF TODO
+    //If the player has converted the Haightashbury Gym: PSF TODO
 
     if (!var(VAR_TEMP_0)){
 
@@ -183,7 +183,7 @@ text gText_CongratsYoureanAsshole_OhWoWYouGuys {
 }
 
 text gText_YouHaveYourOrders_CorrectEachOfUs {
-    format("Each of us will be leading a different raid. Bianca will go to TreasureIsland, and I'll deal with Marin. {PLAYER}, you'll take on Chinatown.")
+    format("Each of us will be leading a different raid. Bianca will go to Treasureisland, and I'll deal with Marin. {PLAYER}, you'll take on Chinatown.")
 }
 
 text gText_YouHaveYourOrders_TheyInvolved {
@@ -195,7 +195,7 @@ text gText_YouHaveYourOrders_WeHiredThem {
 }
 
 text gText_YouHaveYourOrders_WhatAbout {
-    format("What about HaightAshbury?")
+    format("What about Haightashbury?")
 }
 
 text gText_YouHaveYourOrders_OurIntelligenceTells {

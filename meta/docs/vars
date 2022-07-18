@@ -90,7 +90,7 @@
 **RELEVANCE**: used to track what locations are available via ferry
 1: Default, Alameda available
 2: After "Sorry About My Friends", Alcatraz available from Alameda and Fisherman's Wharf
-3: Post league, TreasureIsland available
+3: Post league, Treasureisland available
 
 #VAR_ALCATRAZ_EXHIBIT_STATE
 1: started the exhibit challenge

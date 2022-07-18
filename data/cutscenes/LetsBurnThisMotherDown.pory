@@ -229,7 +229,7 @@ script LetsBurnThisMotherDown_MissionComplete_Dialogue {
 }
 
 text gText_LetsBurnThisMotherDown_WeStillNeedToFind {
-    format("We still need to find their new base of operations and their leader, Giovanni. Ever since we shut down NavalBase, we haven't been able to make any progress on either of these fronts.")
+    format("We still need to find their new base of operations and their leader, Giovanni. Ever since we shut down Navalbase, we haven't been able to make any progress on either of these fronts.")
 }
 
 text gText_LetsBurnThisMotherDown_YoureCloserToThe {
@@ -237,7 +237,7 @@ text gText_LetsBurnThisMotherDown_YoureCloserToThe {
 }
 
 text gText_LetsBurnThisMotherDown_INeedToTalk {
-    format("(I need to talk to Archer… I think I can still save him. I need to get to RobinWillTunnel.)")
+    format("(I need to talk to Archer… I think I can still save him. I need to get to Robinwilltunnel.)")
 }
 
 text gText_LetsBurnThisMotherDown_YouChoseTheWrong {
@@ -250,7 +250,7 @@ text gText_LetsBurnThisMotherDown_IKnowYouWant {
 
 text gText_LetsBurnThisMotherDown_YouDontThinkWeve {
     format("You don't think we've tried that? You just got here, {PLAYER}
-            . People here in RobinWillTunnel, died trying to do things the right way. They don't care.")
+            . People here in Robinwilltunnel, died trying to do things the right way. They don't care.")
 }
 
 text gText_LetsBurnThisMotherDown_TheyIgnoreUs {
@@ -320,7 +320,7 @@ text gText_LetsBurnThisMotherDown_YoureYoung {
 }
 
 text gText_LetsBurnThisMotherDown_ImStillShocked {
-    format("I'm still shocked they were using the inside of RobinWillTunnel. Absolutely insane.")
+    format("I'm still shocked they were using the inside of Robinwilltunnel. Absolutely insane.")
 }
 
 text gText_LetsBurnThisMotherDown_ThePoliceTold {

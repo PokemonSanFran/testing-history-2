@@ -167,7 +167,7 @@ text gText_LetsFinishThis_ButInnocentPeople {
 }        
 
 text gText_LetsFinishThis_PerfevtlySane {
-    format("Perfectly sane. It worked on RobinWillTunnel didn’t it? There’s no peaceful path forward. Do you all get it now? They’re poised to kill!")
+    format("Perfectly sane. It worked on Robinwilltunnel didn’t it? There’s no peaceful path forward. Do you all get it now? They’re poised to kill!")
 }        
 
 text gText_LetsFinishThis_ButTheyWerentAlways {

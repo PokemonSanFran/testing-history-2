@@ -1,0 +1,12 @@
+Robinwilltunnel_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Robinwilltunnel_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Robinwilltunnel_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Robinwilltunnel_MapScripts_OnTransition
+	return
+
+
+Robinwilltunnel_MapScripts_OnTransition::
+	return
+

@@ -178,7 +178,7 @@ text gText_OldAssholeAppears_YouveBeenSuperNice {
 }
 
 text gText_OldAssholeAppears_NowWereEven {
-    format("Now we're even after I ditched breakfast. All right, time to go challenge the FortPoint Gym. So glad Daddy sent me these Go-Goggles!")
+    format("Now we're even after I ditched breakfast. All right, time to go challenge the Fortpoint Gym. So glad Daddy sent me these Go-Goggles!")
 }
 
 movement OldAssholeAppears_WalkNorthtoBianca_Movement {

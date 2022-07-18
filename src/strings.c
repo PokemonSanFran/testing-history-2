@@ -1868,16 +1868,16 @@ const u8 gText_StarterSummary2[] = _("Cancel");
 
 //PSF Locations
 const u8 gText_Alameda[] = _("Alameda");
-const u8 gText_TreasureIsland[] = _("TreasureIsland");
-const u8 gText_OaklandFerry[] = _("OaklandFerry");
+const u8 gText_Treasureisland[] = _("Treasureisland");
+const u8 gText_Oaklandferry[] = _("Oaklandferry");
 const u8 gText_Alcatraz[] = _("Alcatraz");
-const u8 gText_FerryBuilding[] = _("FerryBuilding");
+const u8 gText_Ferrybuilding[] = _("Ferrybuilding");
 const u8 gText_Oakland[] = _("Oakland");
 const u8 gText_Marin[] = _("Marin");
 const u8 gText_Berkeley[] = _("Berkeley");
-const u8 gText_FishermansWharf[] = _("FishermansWharf");
+const u8 gText_Fishermanswharf[] = _("Fishermanswharf");
 const u8 gText_Chinatown[] = _("Chinatown");
-const u8 gText_HaightAshbury[] = _("HaightAshbury");
+const u8 gText_Haightashbury[] = _("Haightashbury");
 
 
 //VS Garbador Choose side

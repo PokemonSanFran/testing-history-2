@@ -701,7 +701,7 @@ gText_WhyAreYouHelpingThem_AShameStillWeveShutDown::
 
 gText_WhyAreYouHelpingThem_NotBadInThere::
 	.string "Not bad in there. Oak wants you\n"
-	.string "kids back at SouthBay Compound.$"
+	.string "kids back at Southbay Compound.$"
 
 gText_WhyAreYouHelpingThem_WhatADay::
 	.string "What… a day. I know that was a lot of\n"
@@ -713,7 +713,7 @@ gText_WhyAreYouHelpingThem_ItWasADay::
 
 gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere::
 	.string "Good news - while you were training in\n"
-	.string "MuirWoods, construction on ChaseCenter\l"
+	.string "Muirwoods, construction on Chasecenter\l"
 	.string "finished up. The Group Stage will start\l"
 	.string "in 3 days. Hopefully, that's enough time\l"
 	.string "to rest up and get ready.$"

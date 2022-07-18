@@ -1,6 +1,0 @@
-const PLAYER = OBJ_EVENT_ID_PLAYER
-const BIANCA = 1
-
-mapscripts LombardStreet_MapScripts {
-}
-

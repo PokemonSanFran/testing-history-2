@@ -1,0 +1,31 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const BIANCA = 1
+const ARIANA = 2
+const GIOVANNI = 3
+const ARCHER = 4
+const PKMNA = 5
+const PKMNB = 6
+
+mapscripts Navalbase_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{
+        goto(Navalbase_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_LOAD {
+        if (var(VAR_ROUTE118_STATE) > 2){
+            call(WhyAreYouHelpingThem_BlowHoleWall)
+        }
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ROUTE118_STATE, 0: WhyAreYouHelpingThem_StartRaid
+    ]
+}
+
+script Navalbase_MapScripts_OnTransition {
+    switch(var(VAR_ROUTE118_STATE)) {
+        case 0: goto(WhyAreYouHelpingThem_HideObject_Script)
+        case 1: goto(WhyAreYouHelpingThem_MoveObject_Script)
+        case 2: goto(WhyAreYouHelpingThem_MoveObjectBoss_Script)
+        case 3: goto(WhyAreYouHelpingThem_ObjectSetUpPostSave_Script)
+        default: goto(WhyAreYouHelpingThem_ObjectCleanUp_Script)
+    }
+}

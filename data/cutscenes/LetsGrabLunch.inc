@@ -154,11 +154,11 @@ LetsGrabLunch_InteractArcherDiner_Dialogue_3:
 	return
 
 LetsGrabLunch_InteractArcherDiner_Dialogue_4:
-	goto LetsGrabLunch_TreasureIsland
+	goto LetsGrabLunch_Treasureisland
 	return
 
 LetsGrabLunch_InteractArcherDiner_Dialogue_5:
-	goto LetsGrabLunch_HaightAshbury
+	goto LetsGrabLunch_Haightashbury
 	return
 
 
@@ -199,7 +199,7 @@ LetsGrabLunch_Marin_1:
 	end
 
 
-LetsGrabLunch_TreasureIsland::
+LetsGrabLunch_Treasureisland::
 	msgbox gText_LetsGrabLunch_AlmostWalkedOut
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -207,40 +207,40 @@ LetsGrabLunch_TreasureIsland::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_TheyreIntense
-	msgbox gText_LetsGrabLunch_DoYouWantTreasureIsland, MSGBOX_YESNO
+	msgbox gText_LetsGrabLunch_DoYouWantTreasureisland, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq LetsGrabLunch_TreasureIsland_1
+	goto_if_eq LetsGrabLunch_Treasureisland_1
 	warpsilent MAP_TREASUREISLAND, 17, 15
 	return
 
-LetsGrabLunch_TreasureIsland_1:
+LetsGrabLunch_Treasureisland_1:
 	callnative ClearMugshot
 	closemessage
 	releaseall
 	end
 
 
-LetsGrabLunch_HaightAshbury::
+LetsGrabLunch_Haightashbury::
 	random 2
 	compare VAR_RESULT, 1
-	goto_if_eq LetsGrabLunch_HaightAshbury_2
+	goto_if_eq LetsGrabLunch_Haightashbury_2
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_IsTheOnlyPlace
-LetsGrabLunch_HaightAshbury_1:
-	msgbox gText_LetsGrabLunch_DoYouWantHaightAshbury, MSGBOX_YESNO
+LetsGrabLunch_Haightashbury_1:
+	msgbox gText_LetsGrabLunch_DoYouWantHaightashbury, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq LetsGrabLunch_HaightAshbury_5
+	goto_if_eq LetsGrabLunch_Haightashbury_5
 	warpsilent MAP_HAIGHTASHBURY, 9, 27
 	return
 
-LetsGrabLunch_HaightAshbury_2:
+LetsGrabLunch_Haightashbury_2:
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_RightHandMan
-	goto LetsGrabLunch_HaightAshbury_1
+	goto LetsGrabLunch_Haightashbury_1
 
-LetsGrabLunch_HaightAshbury_5:
+LetsGrabLunch_Haightashbury_5:
 	callnative ClearMugshot
 	closemessage
 	releaseall
@@ -349,7 +349,7 @@ gText_LetsGrabLunch_Who::
 	.string "Who…?$"
 
 gText_LetsGrabLunch_OhTheOldLeaders::
-	.string "Oh, the old Leaders of the TreasureIsland and\n"
+	.string "Oh, the old Leaders of the Treasureisland and\n"
 	.string "Marin Gyms. If we can revive those\l"
 	.string "Gyms and strengthen our Trainers, then\l"
 	.string "Trainers from other regions will want\l"
@@ -389,7 +389,7 @@ gText_LetsGrabLunch_CanYouTryTalking::
 	.string "or Cilan? Or maybe visit\l"
 	.string "Chinatown's Gym and see what we can\l"
 	.string "do? Maybe there's even hope for\l"
-	.string "HaightAshbury's Gym… yeah, any of those\l"
+	.string "Haightashbury's Gym… yeah, any of those\l"
 	.string "are good starts.$"
 
 gText_LetsGrabLunch_WhatAreYouGoing::
@@ -448,8 +448,8 @@ gText_LetsGrabLunch_VeryRealistic::
 gText_LetsGrabLunch_TheyreIntense::
 	.string "They're… intense.$"
 
-gText_LetsGrabLunch_DoYouWantTreasureIsland::
-	.string "Do you want to go to TreasureIsland?$"
+gText_LetsGrabLunch_DoYouWantTreasureisland::
+	.string "Do you want to go to Treasureisland?$"
 
 gText_LetsGrabLunch_RightHandMan::
 	.string "Alan was Pryce's right hand man. I\n"
@@ -457,14 +457,14 @@ gText_LetsGrabLunch_RightHandMan::
 	.string "Pryce is gone…?$"
 
 gText_LetsGrabLunch_IsTheOnlyPlace::
-	.string "You know, HaightAshbury is the only place\n"
+	.string "You know, Haightashbury is the only place\n"
 	.string "that got to keep its Gym, but only\l"
 	.string "because Pryce is a friggin' snake.\l"
 	.string "Man, what I'd give to see him get what\l"
 	.string "he deserves…$"
 
-gText_LetsGrabLunch_DoYouWantHaightAshbury::
-	.string "Do you want to go to HaightAshbury?$"
+gText_LetsGrabLunch_DoYouWantHaightashbury::
+	.string "Do you want to go to Haightashbury?$"
 
 gText_LetsGrabLunch_FastForwardAdvance::
 	.string "You have restored the {STR_VAR_1}\n"

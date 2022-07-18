@@ -1,0 +1,27 @@
+Treasureisland_Restaurant_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Treasureisland_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Treasureisland_Restaurant_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Treasureisland_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Treasureisland_Restaurant_MapScripts_OnTransition
+	return
+
+Treasureisland_Restaurant_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 39, LetsGrabLunch_DinerBooth_Dialogue
+	.2byte 0
+
+
+Treasureisland_Restaurant_MapScripts_OnTransition::
+	switch VAR_STORYLINE_STATE
+	case 39, Treasureisland_Restaurant_MapScripts_OnTransition_3
+	case 40, Treasureisland_Restaurant_MapScripts_OnTransition_4
+	goto LetsGrabLunch_HideObject_Script
+	return
+
+Treasureisland_Restaurant_MapScripts_OnTransition_3:
+	return
+
+Treasureisland_Restaurant_MapScripts_OnTransition_4:
+	return
+

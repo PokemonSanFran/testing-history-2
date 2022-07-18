@@ -164,7 +164,7 @@ gText_OffYouGo_WaitingForMe::
 gText_OffYouGo_PleaseMeetMeOn::
 	.string "Oak: {PLAYER} and Bianca, please meet\n"
 	.string "me on the northern side of\l"
-	.string "GldnGteBridge. (32 mins ago)$"
+	.string "Gldngtebridge. (32 mins ago)$"
 
 gText_OffYouGo_IllBeRightOver::
 	.string "Bianca: I'll be right over! (31 mins ago)$"
@@ -214,7 +214,7 @@ gText_OffYouGo_SoWhereIs::
 gText_OffYouGo_AhYesWellTheyHave::
 	.string "Ah yes, well, they have… unconventional\n"
 	.string "training methods. In the middle of\l"
-	.string "RobinWillTunnel, you'll find a pathway\l"
+	.string "Robinwilltunnel, you'll find a pathway\l"
 	.string "leading underground where Siebold has\l"
 	.string "hidden their notebook. Once you get it,\l"
 	.string "you'll get your next instructions.$"
@@ -232,8 +232,8 @@ gText_OffYouGo_IDoWishThey::
 	.string "training requires teamwork. Bianca is\l"
 	.string "going to get stuck without you pretty\l"
 	.string "quickly. Second, there's very little\l"
-	.string "cell service in RobinWillTunnel and\l"
-	.string "MuirWoods. And now that they're\l"
+	.string "cell service in Robinwilltunnel and\l"
+	.string "Muirwoods. And now that they're\l"
 	.string "already inside, I can't message them.\l"
 	.string "So can you fill them in?$"
 
@@ -248,4 +248,4 @@ gText_OffYouGo_ItMightBeAGood::
 	.string "It might be a good idea to stock up\n"
 	.string "before you go in. I know the training is\l"
 	.string "extensive, but there is a town, Marin,\l"
-	.string "after RobinWillTunnel.$"
+	.string "after Robinwilltunnel.$"

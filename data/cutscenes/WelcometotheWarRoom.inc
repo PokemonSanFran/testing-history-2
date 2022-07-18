@@ -333,10 +333,10 @@ gText_WelcomeToTheWarRoom_TheNewOwnersOfOUrAccounts::
 	.string "to boycott the League and the\l"
 	.string "upcoming Championship. We've found\l"
 	.string "evidence that the perpetrators are at\l"
-	.string "NavalBase.$"
+	.string "Navalbase.$"
 
 gText_WelcomeToTheWarRoom_WeveLongTheorized::
-	.string "We've long theorized that NavalBase is\n"
+	.string "We've long theorized that Navalbase is\n"
 	.string "TeamRocket's primary base of\l"
 	.string "operations so we've got reason to\l"
 	.string "believe that they're the ones behind\l"
@@ -346,7 +346,7 @@ gText_WelcomeToTheWarRoom_WeveLongTheorized::
 
 gText_WelcomeToTheWarRoom_ThatsWhereYouKids::
 	.string "That's where you kids come in! Ya really\n"
-	.string "impressed me back at ChaseCenter, and\l"
+	.string "impressed me back at Chasecenter, and\l"
 	.string "we'd like you to assist us in the raid.\l"
 	.string "You'll work under Chief Bill, and help us\l"
 	.string "shut down those clowns once and for\l"
@@ -382,7 +382,7 @@ gText_WelcomeToTheWarRoom_GotItChief::
 gText_WelcomeToTheWarRoom_GreatWellStartTheOperation::
 	.string "Great. We'll start the operation as soon\n"
 	.string "as you're ready. Meet me outside\l"
-	.string "NavalBase.$"
+	.string "Navalbase.$"
 
 gText_WelcomeToTheWarRoom_DontPayHimNoMind::
 	.string "Don't pay him no mind, he's just a little\n"
@@ -394,7 +394,7 @@ gText_WelcomeToTheWarRoom_ThatsAgainYouTwo::
 	.string "there!$"
 
 gText_WelcomeToTheWarRoom_ImGoingToHeadOver::
-	.string "I'm going to head over to FerryBuilding.\n"
+	.string "I'm going to head over to Ferrybuilding.\n"
 	.string "Want to come with?$"
 
 gText_WelcomeToTheWarRoom_OkayIllMeetYou::

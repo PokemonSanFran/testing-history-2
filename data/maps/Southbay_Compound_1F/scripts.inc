@@ -1,0 +1,110 @@
+Southbay_Compound_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Southbay_Compound_1F_MapScripts_OnTransition
+	return
+
+Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_BiancaIntro_Dialogue
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, Swagbag_WelcomeToSanFran_Dialogue
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 8, WhyAreYouHelpingThem_BackAtCompound_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 23, VSGarbodor_ReturnToTheCompound_Dialogue
+	.2byte 0
+
+
+Southbay_Compound_1F_MapScripts_OnTransition::
+	switch VAR_LITTLEROOT_INTRO_STATE
+	case 1, Southbay_Compound_1F_MapScripts_OnTransition_3
+	case 3, Southbay_Compound_1F_MapScripts_OnTransition_4
+	case 4, Southbay_Compound_1F_MapScripts_OnTransition_5
+	case 6, Southbay_Compound_1F_MapScripts_OnTransition_6
+	case 7, Southbay_Compound_1F_MapScripts_OnTransition_7
+	case 8, Southbay_Compound_1F_MapScripts_OnTransition_8
+Southbay_Compound_1F_MapScripts_OnTransition_1:
+	switch VAR_STORYLINE_STATE
+	case 9, Southbay_Compound_1F_MapScripts_OnTransition_10
+	case 10, Southbay_Compound_1F_MapScripts_OnTransition_11
+	case 23, Southbay_Compound_1F_MapScripts_OnTransition_12
+	call VSGarbodor_ObjectCleanUp_Script
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_3:
+	call ImProbablyBetterThanYou_ObjectSetUp
+	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+
+Southbay_Compound_1F_MapScripts_OnTransition_4:
+	call Swagbag_ObjectSetUp
+	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+
+Southbay_Compound_1F_MapScripts_OnTransition_5:
+	call swagbag_ObjectHide_Script
+	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+
+Southbay_Compound_1F_MapScripts_OnTransition_6:
+	call TwoHoursAgo_ObjectSetUp
+	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+
+Southbay_Compound_1F_MapScripts_OnTransition_7:
+	call AaandWereBack_ObjectSetUp_Script
+	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+
+Southbay_Compound_1F_MapScripts_OnTransition_8:
+	call WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script
+	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+
+Southbay_Compound_1F_MapScripts_OnTransition_10:
+	call AaandWereBack_ObjectSetUp_Script
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_11:
+	call AaandWereBack_ObjectHide_Script
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_12:
+	call VSGarbodor_ReturnToTheCompound_ObjectSetUp
+	return
+
+
+Bianca_Southbay_Compound_1F_InteractScript::
+	lock
+	compare VAR_STORYLINE_STATE, 9
+	goto_if_eq Bianca_Southbay_Compound_1F_InteractScript_2
+	call ImProbablyBetterThanYou_Annoyed_Dialogue
+Bianca_Southbay_Compound_1F_InteractScript_1:
+	release
+	end
+
+Bianca_Southbay_Compound_1F_InteractScript_2:
+	call AaandWereBack_Bianca_Dialogue
+	goto Bianca_Southbay_Compound_1F_InteractScript_1
+
+
+Oak_Southbay_Compound_1F_InteractScript::
+	lockall
+	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative DrawMugshot
+	compare VAR_LITTLEROOT_INTRO_STATE, 6
+	goto_if_eq Oak_Southbay_Compound_1F_InteractScript_2
+	call swagbag_HelpPlayer_Script
+Oak_Southbay_Compound_1F_InteractScript_1:
+	closemessage
+	releaseall
+	end
+
+Oak_Southbay_Compound_1F_InteractScript_2:
+	goto_if_set FLAG_RECIEVED_LEFTOVERS, Oak_Southbay_Compound_1F_InteractScript_5
+	call TwoHoursAgo_TheyreEager_Dialogue
+	goto Oak_Southbay_Compound_1F_InteractScript_1
+
+Oak_Southbay_Compound_1F_InteractScript_5:
+	goto_if_set FLAG_TEMP_1F, Oak_Southbay_Compound_1F_InteractScript_8
+	call swagbag_HelpPlayer_Script
+	goto Oak_Southbay_Compound_1F_InteractScript_1
+
+Oak_Southbay_Compound_1F_InteractScript_8:
+	call TwoHoursAgo_ExplainLeftovers_Dialouge
+	goto Oak_Southbay_Compound_1F_InteractScript_1
+

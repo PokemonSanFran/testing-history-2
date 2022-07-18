@@ -1,0 +1,20 @@
+const ROSE = 1
+
+mapscripts SOMA_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(SOMA_MapScripts_OnTransition)
+    }
+
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_SOMA_STATE, 1: WowYoureStrong_WalkToPlayer_Script 
+    ]
+}
+
+script SOMA_MapScripts_OnTransition {
+        if(!flag(FLAG_BADGE03_GET) || (var(VAR_SOMA_STATE) > 1)) {
+            setflag(FLAG_TEMP_1) 
+        }
+
+}
+
+

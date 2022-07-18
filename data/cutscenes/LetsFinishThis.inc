@@ -157,7 +157,7 @@ gText_LetsFinishThis_ButInnocentPeople::
 
 gText_LetsFinishThis_PerfevtlySane::
 	.string "Perfectly sane. It worked on\n"
-	.string "RobinWillTunnel didn’t it? There’s no\l"
+	.string "Robinwilltunnel didn’t it? There’s no\l"
 	.string "peaceful path forward. Do you all get\l"
 	.string "it now? They’re poised to kill!$"
 

@@ -167,8 +167,8 @@ script LetsGrabLunch_InteractArcherDiner_Dialogue {
         switch (var(VAR_RESULT)){
             case 0: goto(LetsGrabLunch_Chinatown)   
             case 1: goto(LetsGrabLunch_Marin)   
-            case 2: goto(LetsGrabLunch_TreasureIsland)   
-            case 3: goto(LetsGrabLunch_HaightAshbury)
+            case 2: goto(LetsGrabLunch_Treasureisland)   
+            case 3: goto(LetsGrabLunch_Haightashbury)
             default: goto(LetsGrabLunch_CloseMenu)
         }
 }
@@ -207,7 +207,7 @@ script LetsGrabLunch_Marin {
             warpsilent(MAP_CHINATOWN,5,15)
         }
 }
-script LetsGrabLunch_TreasureIsland {
+script LetsGrabLunch_Treasureisland {
     msgbox(gText_LetsGrabLunch_AlmostWalkedOut)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -218,7 +218,7 @@ script LetsGrabLunch_TreasureIsland {
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_TheyreIntense)
 
-        msgbox(gText_LetsGrabLunch_DoYouWantTreasureIsland,MSGBOX_YESNO)
+        msgbox(gText_LetsGrabLunch_DoYouWantTreasureisland,MSGBOX_YESNO)
         if (var(VAR_RESULT) == NO){
             callnative(ClearMugshot)
                 closemessage
@@ -228,7 +228,7 @@ script LetsGrabLunch_TreasureIsland {
             warpsilent(MAP_TREASUREISLAND,17,15)
         }
 }
-script LetsGrabLunch_HaightAshbury {
+script LetsGrabLunch_Haightashbury {
     //PSF TODO Replace this with an if statement if the ousting Pryce quest is done
 
     random(2)
@@ -243,7 +243,7 @@ script LetsGrabLunch_HaightAshbury {
                 msgbox(gText_LetsGrabLunch_IsTheOnlyPlace)
         }
 
-    msgbox(gText_LetsGrabLunch_DoYouWantHaightAshbury,MSGBOX_YESNO)
+    msgbox(gText_LetsGrabLunch_DoYouWantHaightashbury,MSGBOX_YESNO)
         if (var(VAR_RESULT) == NO){
             callnative(ClearMugshot)
                 closemessage
@@ -333,7 +333,7 @@ text gText_LetsGrabLunch_Who {
 }
 
 text gText_LetsGrabLunch_OhTheOldLeaders {
-    format("Oh, the old Leaders of the TreasureIsland and Marin Gyms. If we can revive those Gyms and strengthen our Trainers, then Trainers from other regions will want to come here, battle us, and help stimulate the region… without any interference from Psfbadguy.")
+    format("Oh, the old Leaders of the Treasureisland and Marin Gyms. If we can revive those Gyms and strengthen our Trainers, then Trainers from other regions will want to come here, battle us, and help stimulate the region… without any interference from Psfbadguy.")
 }
 
 text gText_LetsGrabLunch_YouKnowTheyre {
@@ -361,7 +361,7 @@ text gText_LetsGrabLunch_HahaHowCanIHelp {
 }
 
 text gText_LetsGrabLunch_CanYouTryTalking {
-    format("Hmm. Can you try talking to Lenora or Cilan? Or maybe visit Chinatown's Gym and see what we can do? Maybe there's even hope for HaightAshbury's Gym… yeah, any of those are good starts.")
+    format("Hmm. Can you try talking to Lenora or Cilan? Or maybe visit Chinatown's Gym and see what we can do? Maybe there's even hope for Haightashbury's Gym… yeah, any of those are good starts.")
 }
 
 text gText_LetsGrabLunch_WhatAreYouGoing {
@@ -408,8 +408,8 @@ text gText_LetsGrabLunch_TheyreIntense {
     format("They're… intense.")
 }
 
-text gText_LetsGrabLunch_DoYouWantTreasureIsland {
-    format("Do you want to go to TreasureIsland?")
+text gText_LetsGrabLunch_DoYouWantTreasureisland {
+    format("Do you want to go to Treasureisland?")
 }
 
 text gText_LetsGrabLunch_RightHandMan {
@@ -417,11 +417,11 @@ text gText_LetsGrabLunch_RightHandMan {
 }
 
 text gText_LetsGrabLunch_IsTheOnlyPlace {
-    format("You know, HaightAshbury is the only place that got to keep its Gym, but only because Pryce is a friggin' snake. Man, what I'd give to see him get what he deserves…")
+    format("You know, Haightashbury is the only place that got to keep its Gym, but only because Pryce is a friggin' snake. Man, what I'd give to see him get what he deserves…")
 }
 
-text gText_LetsGrabLunch_DoYouWantHaightAshbury {
-    format("Do you want to go to HaightAshbury?")
+text gText_LetsGrabLunch_DoYouWantHaightashbury {
+    format("Do you want to go to Haightashbury?")
 }
 
 text gText_LetsGrabLunch_FastForwardAdvance {

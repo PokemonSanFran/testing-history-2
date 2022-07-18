@@ -1076,12 +1076,12 @@ Script_RemoveTint::
 .include "data/text/birch_speech.inc"
 
 .include "data/maps/BlackMap/scripts.inc"
-.include "data/maps/SouthBay/scripts.inc"
-.include "data/maps/SouthBay_Compound_1F/scripts.inc"
-.include "data/maps/SouthBay_Compound_2F/scripts.inc"
-.include "data/maps/SouthBay_PokemonCenter_1F/scripts.inc"
+.include "data/maps/Southbay/scripts.inc"
+.include "data/maps/Southbay_Compound_1F/scripts.inc"
+.include "data/maps/Southbay_Compound_2F/scripts.inc"
+.include "data/maps/Southbay_PokemonCenter_1F/scripts.inc"
 .include "data/maps/Psfroute17/scripts.inc"
-.include "data/maps/BernalHeights/scripts.inc"
+.include "data/maps/Bernalheights/scripts.inc"
 .include "data/maps/Psfroute11/scripts.inc"
 .include "data/maps/Psfroute21/scripts.inc"
 .include "data/maps/Dogpatch/scripts.inc"
@@ -1106,14 +1106,14 @@ Script_RemoveTint::
 .include "data/maps/Psfroute14/scripts.inc"
 .include "data/maps/Chinatown/scripts.inc"
 .include "data/maps/Japantown/scripts.inc"
-.include "data/maps/LombardStreet/scripts.inc"
-.include "data/maps/FerryBuilding/scripts.inc"
-.include "data/maps/FishermansWharf/scripts.inc"
+.include "data/maps/Lombardstreet/scripts.inc"
+.include "data/maps/Ferrybuilding/scripts.inc"
+.include "data/maps/Fishermanswharf/scripts.inc"
 .include "data/maps/Mission_Gym/scripts.inc"
 .include "data/maps/Japantown_Gym/scripts.inc"
 .include "data/maps/Psfroute1/scripts.inc"
 .include "data/maps/Alameda/scripts.inc"
-.include "data/maps/OaklandFerry/scripts.inc"
+.include "data/maps/Oaklandferry/scripts.inc"
 .include "data/maps/Psfroute72/scripts.inc"
 .include "data/maps/Psfroute12/scripts.inc"
 .include "data/maps/Oakland/scripts.inc"
@@ -1122,8 +1122,8 @@ Script_RemoveTint::
 .include "data/maps/Berkeley_Gym/scripts.inc"
 .include "data/maps/Berkeley_BreedingCenter/scripts.inc"
 .include "data/maps/Alcatraz/scripts.inc"
-.include "data/maps/FortPoint/scripts.inc"
-.include "data/maps/FortPoint_Roof/scripts.inc"
+.include "data/maps/Fortpoint/scripts.inc"
+.include "data/maps/Fortpoint_Roof/scripts.inc"
 
 ##CUTSCENES
 ##  .include "data/cutscenes/WiiWouldLikeToPlay.inc"
@@ -1184,9 +1184,9 @@ Script_RemoveTint::
 .include "data/cutscenes/BeingChampionisHard.inc"
 .include "data/cutscenes/LetsGrabLunch.inc"
 ##  .include "data/cutscenes/RestoreChinatown.inc"
-##  .include "data/cutscenes/RestoreTreasureIsland.inc"
+##  .include "data/cutscenes/RestoreTreasureisland.inc"
 ##  .include "data/cutscenes/RestoreMain.inc"
-##  .include "data/cutscenes/RestoreHaightAshbury.inc"
+##  .include "data/cutscenes/RestoreHaightashbury.inc"
 .include "data/cutscenes/YouRealizeWereEvilRight.inc"
 .include "data/cutscenes/YouRealizeTheyreEvilRight.inc"
 .include "data/cutscenes/CongratsYoureanAsshole.inc"
@@ -1225,19 +1225,19 @@ Script_RemoveTint::
 
 .include "data/maps/Psfroute7/scripts.inc"
 
-.include "data/maps/GldnGteWilds/scripts.inc"
+.include "data/maps/Gldngtewilds/scripts.inc"
 
-.include "data/maps/GldnGtePark/scripts.inc"
+.include "data/maps/Gldngtepark/scripts.inc"
 
-.include "data/maps/GldnGtePark_Gym/scripts.inc"
+.include "data/maps/Gldngtepark_Gym/scripts.inc"
 
-.include "data/maps/HaightAshbury/scripts.inc"
+.include "data/maps/Haightashbury/scripts.inc"
 
-.include "data/maps/HaightAshbury_Gym/scripts.inc"
+.include "data/maps/Haightashbury_Gym/scripts.inc"
 
 .include "data/maps/Psfroute43/scripts.inc"
 
-.include "data/maps/PaintedLadies/scripts.inc"
+.include "data/maps/Paintedladies/scripts.inc"
 
 .include "data/maps/Psfroute13/scripts.inc"
 
@@ -1245,41 +1245,41 @@ Script_RemoveTint::
 
 .include "data/maps/Castro_Gym/scripts.inc"
 
-.include "data/maps/ChaseCenter_Construction/scripts.inc"
+.include "data/maps/Chasecenter_Construction/scripts.inc"
 
-.include "data/maps/GldnGteBridge/scripts.inc"
+.include "data/maps/Gldngtebridge/scripts.inc"
 
-.include "data/maps/RobinWillTunnel/scripts.inc"
+.include "data/maps/Robinwilltunnel/scripts.inc"
 
 .include "data/maps/Marin/scripts.inc"
 
 .include "data/maps/Psfroute61/scripts.inc"
 
-.include "data/maps/MuirWoods/scripts.inc"
+.include "data/maps/Muirwoods/scripts.inc"
 
-.include "data/maps/RobinWillTunnel_B1F/scripts.inc"
+.include "data/maps/Robinwilltunnel_B1F/scripts.inc"
 
-.include "data/maps/MuirWoods_Inner/scripts.inc"
+.include "data/maps/Muirwoods_Inner/scripts.inc"
 
-.include "data/maps/RobinWillTunnel_B2F/scripts.inc"
+.include "data/maps/Robinwilltunnel_B2F/scripts.inc"
 
-.include "data/maps/NavalBase/scripts.inc"
+.include "data/maps/Navalbase/scripts.inc"
 
-.include "data/maps/ChaseCenter_Entrance/scripts.inc"
+.include "data/maps/Chasecenter_Entrance/scripts.inc"
 
-.include "data/maps/ChaseCenter_Lockers/scripts.inc"
+.include "data/maps/Chasecenter_Lockers/scripts.inc"
 
-.include "data/maps/ChaseCenter_Skybox/scripts.inc"
+.include "data/maps/Chasecenter_Skybox/scripts.inc"
 
-.include "data/maps/ChaseCenter_Arena/scripts.inc"
+.include "data/maps/Chasecenter_Arena/scripts.inc"
 
-.include "data/maps/ChaseCenter_Stands/scripts.inc"
+.include "data/maps/Chasecenter_Stands/scripts.inc"
 
 .include "data/maps/Presidio_Compound_1F/scripts.inc"
 
-.include "data/maps/TreasureIsland/scripts.inc"
+.include "data/maps/Treasureisland/scripts.inc"
 
-.include "data/maps/TreasureIsland_Restaurant/scripts.inc"
+.include "data/maps/Treasureisland_Restaurant/scripts.inc"
 
 .include "data/maps/Alcatraz_B1F/scripts.inc"
 
@@ -1293,11 +1293,11 @@ Script_RemoveTint::
 
 	.include "data/maps/Psfroute62/scripts.inc"
 
-	.include "data/maps/LakeMerritt/scripts.inc"
+	.include "data/maps/Lakemerritt/scripts.inc"
 
 	.include "data/maps/Psfroute18/scripts.inc"
 
-	.include "data/maps/TwinPeaks/scripts.inc"
+	.include "data/maps/Twinpeaks/scripts.inc"
 
 	.include "data/maps/OkayLetsFixit_Flashback/scripts.inc"
 
@@ -1321,7 +1321,7 @@ Script_RemoveTint::
 
 	.include "data/maps/Psfroute25/scripts.inc"
 
-	.include "data/maps/UndergroundLab/scripts.inc"
+	.include "data/maps/Undergroundlab/scripts.inc"
 
 	.include "data/maps/Sunset_Sabrina_House/scripts.inc"
 

@@ -45,7 +45,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_1",
       "var_value": "0",
-      "script": "SouthBay_Compound_2F_Bed_Script"
+      "script": "Southbay_Compound_2F_Bed_Script"
     }
   ],
   "bg_events": [

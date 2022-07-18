@@ -80,7 +80,7 @@ Alameda_MapScripts_OnLoad::
 	return
 
 Alameda_MapScripts_OnLoad_1:
-	call NavalBase_PostRaidTiles_Script
+	call Navalbase_PostRaidTiles_Script
 	return
 
 Alameda_MapScripts_OnLoad_2:
@@ -89,7 +89,7 @@ Alameda_MapScripts_OnLoad_2:
 	return
 
 
-NavalBase_PostRaidTiles_Script::
+Navalbase_PostRaidTiles_Script::
 	call SurvivalChance333_FreezeIce
 	call SurvivalChance333_SetLava
 	call SurvivalChance333_BlowOpenDoors

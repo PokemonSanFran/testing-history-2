@@ -1,0 +1,60 @@
+mapscripts Chasecenter_Lockers_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Chasecenter_Lockers_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_LOAD {
+    }
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_STORYLINE_STATE, 27: HeresHowThisIsGoingToGo_ObjectSetUp_Script 
+            VAR_STORYLINE_STATE, 28: HeresHowThisIsGoingToGo_CleanUpVObjects_Script
+    ]
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_STORYLINE_STATE, 27: HeresHowThisIsGoingToGo_ExplainLeagueDialogue
+        VAR_STORYLINE_STATE, 29: GroupStages_GreetBeforeStart_Dialogue 
+        VAR_STORYLINE_STATE, 32: WaitHeDidWhat_RivalsGoToMatch_Script 
+        VAR_STORYLINE_STATE, 50: ExhibitionBattle_PostBattle_Dialogue
+    ]
+}
+
+script Chasecenter_Lockers_MapScripts_OnTransition {
+    switch (var(VAR_STORYLINE_STATE)){
+        case 29: call(GroupStages_Lockers_ObjectSetUp_Script)
+        case 30: call(GroupStages_Lockers_ObjectCleanUp_Script)
+        case 31: call(Finals_HideObject_Script)
+        case 32: call(WaitHeDidWhat_ObjectSetUp_Script)
+        case 33: call(WaitHeDidWhat_ObjectMidSetUp_Script)
+        case 34: call(WaitHeDidWhat_MeltdownSetUp_Script)
+        case 35: call(WaitHeDidWhat_MeltdownPostSaveSetUp_Script)
+        case 50: call(ExhibitionBattle_HideObject_Script)
+        case 51: call(ExhibitionBattle_HideObject_Script)
+        default: call(WaitHeDidWhat_ObjectMidSetUp_Script)
+    }
+}
+
+script Chasecenter_Lockers_Bianca_Event_Script {
+    lock
+    faceplayer
+    switch (var(VAR_STORYLINE_STATE)){
+        case 34: call(WaitHeDidWhat_BiancaMeltdown_Dialogue)
+        case 51: call(ExhibitionBattle_Bianca_Dialogue)
+    }
+    closemessage
+    callnative(ClearMugshot)
+    release
+    end
+}
+
+script Chasecenter_Lockers_InteractArenaGuard_Script {
+    lock
+        faceplayer
+
+        switch (var(VAR_ROUTE119_STATE)){
+            case 1: goto(GroupStages_PreparePlayer_Script)
+            case 5: goto(WaitHeDidWhat_PreparePlayer_Script)
+            case 4: goto(Finals_PreparePlayer_Script)
+        }
+
+        switch (var(VAR_STORYLINE_STATE)){
+            case 49: goto(ExhibitionBattle_MoveFromDoor_Script)
+        }
+}

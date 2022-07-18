@@ -40,11 +40,11 @@ script Alameda_LayoutSwap_Script {
 
 script Alameda_MapScripts_OnLoad {
         if (var(VAR_NATIVERIVALBETA_STATE) > 3 && var(VAR_NATIVERIVALBETA_STATE) < 7){
-            call(NavalBase_PostRaidTiles_Script)
+            call(Navalbase_PostRaidTiles_Script)
         }
 }
 
-script NavalBase_PostRaidTiles_Script {
+script Navalbase_PostRaidTiles_Script {
         call(SurvivalChance333_FreezeIce)
         call(SurvivalChance333_SetLava)
         call(SurvivalChance333_BlowOpenDoors)

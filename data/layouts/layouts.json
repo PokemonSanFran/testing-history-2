@@ -4423,43 +4423,43 @@
     },
     {
       "id": "LAYOUT_SOUTHBAY",
-      "name": "SouthBay_Layout",
+      "name": "Southbay_Layout",
       "width": 19,
       "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
-      "border_filepath": "data/layouts/SouthBay/border.bin",
-      "blockdata_filepath": "data/layouts/SouthBay/map.bin"
+      "border_filepath": "data/layouts/Southbay/border.bin",
+      "blockdata_filepath": "data/layouts/Southbay/map.bin"
     },
     {
       "id": "LAYOUT_SOUTHBAY_COMPOUND_1F",
-      "name": "SouthBay_Compound_1F_Layout",
+      "name": "Southbay_Compound_1F_Layout",
       "width": 12,
       "height": 10,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/SouthBay_Compound_1F/border.bin",
-      "blockdata_filepath": "data/layouts/SouthBay_Compound_1F/map.bin"
+      "border_filepath": "data/layouts/Southbay_Compound_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Southbay_Compound_1F/map.bin"
     },
     {
       "id": "LAYOUT_SOUTHBAY_COMPOUND_2F",
-      "name": "SouthBay_Compound_2F_Layout",
+      "name": "Southbay_Compound_2F_Layout",
       "width": 12,
       "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BrendansMaysHouse",
-      "border_filepath": "data/layouts/SouthBay_Compound_2F/border.bin",
-      "blockdata_filepath": "data/layouts/SouthBay_Compound_2F/map.bin"
+      "border_filepath": "data/layouts/Southbay_Compound_2F/border.bin",
+      "blockdata_filepath": "data/layouts/Southbay_Compound_2F/map.bin"
     },
     {
       "id": "LAYOUT_SOUTHBAY_POKEMON_CENTER_1F",
-      "name": "SouthBay_PokemonCenter_1F_Layout",
+      "name": "Southbay_PokemonCenter_1F_Layout",
       "width": 14,
       "height": 9,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_PokemonCenter",
-      "border_filepath": "data/layouts/SouthBay_PokemonCenter_1F/border.bin",
-      "blockdata_filepath": "data/layouts/SouthBay_PokemonCenter_1F/map.bin"
+      "border_filepath": "data/layouts/Southbay_PokemonCenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Southbay_PokemonCenter_1F/map.bin"
     },
     {
       "id": "LAYOUT_PSFROUTE17",
@@ -4473,13 +4473,13 @@
     },
     {
       "id": "LAYOUT_BERNALHEIGHTS",
-      "name": "BernalHeights_Layout",
+      "name": "Bernalheights_Layout",
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Lavaridge",
-      "border_filepath": "data/layouts/BernalHeights/border.bin",
-      "blockdata_filepath": "data/layouts/BernalHeights/map.bin"
+      "border_filepath": "data/layouts/Bernalheights/border.bin",
+      "blockdata_filepath": "data/layouts/Bernalheights/map.bin"
     },
     {
       "id": "LAYOUT_PSFROUTE11",
@@ -4723,33 +4723,33 @@
     },
     {
       "id": "LAYOUT_LOMBARDSTREET",
-      "name": "LombardStreet_Layout",
+      "name": "Lombardstreet_Layout",
       "width": 31,
       "height": 80,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_NavelRock",
-      "border_filepath": "data/layouts/LombardStreet/border.bin",
-      "blockdata_filepath": "data/layouts/LombardStreet/map.bin"
+      "border_filepath": "data/layouts/Lombardstreet/border.bin",
+      "blockdata_filepath": "data/layouts/Lombardstreet/map.bin"
     },
     {
       "id": "LAYOUT_FERRYBUILDING",
-      "name": "FerryBuilding_Layout",
+      "name": "Ferrybuilding_Layout",
       "width": 24,
       "height": 15,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/FerryBuilding/border.bin",
-      "blockdata_filepath": "data/layouts/FerryBuilding/map.bin"
+      "border_filepath": "data/layouts/Ferrybuilding/border.bin",
+      "blockdata_filepath": "data/layouts/Ferrybuilding/map.bin"
     },
     {
       "id": "LAYOUT_FISHERMANSWHARF",
-      "name": "FishermansWharf_Layout",
+      "name": "Fishermanswharf_Layout",
       "width": 40,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Pacifidlog",
-      "border_filepath": "data/layouts/FishermansWharf/border.bin",
-      "blockdata_filepath": "data/layouts/FishermansWharf/map.bin"
+      "border_filepath": "data/layouts/Fishermanswharf/border.bin",
+      "blockdata_filepath": "data/layouts/Fishermanswharf/map.bin"
     },
     {
       "id": "LAYOUT_MISSION_GYM",
@@ -4793,13 +4793,13 @@
     },
     {
       "id": "LAYOUT_OAKLANDFERRY",
-      "name": "OaklandFerry_Layout",
+      "name": "Oaklandferry_Layout",
       "width": 17,
       "height": 13,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_IslandHarbor",
-      "border_filepath": "data/layouts/OaklandFerry/border.bin",
-      "blockdata_filepath": "data/layouts/OaklandFerry/map.bin"
+      "border_filepath": "data/layouts/Oaklandferry/border.bin",
+      "blockdata_filepath": "data/layouts/Oaklandferry/map.bin"
     },
     {
       "id": "LAYOUT_PSFROUTE72",
@@ -4883,23 +4883,23 @@
     },
     {
       "id": "LAYOUT_FORTPOINT",
-      "name": "FortPoint_Layout",
+      "name": "Fortpoint_Layout",
       "width": 24,
       "height": 19,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Pacifidlog",
-      "border_filepath": "data/layouts/FortPoint/border.bin",
-      "blockdata_filepath": "data/layouts/FortPoint/map.bin"
+      "border_filepath": "data/layouts/Fortpoint/border.bin",
+      "blockdata_filepath": "data/layouts/Fortpoint/map.bin"
     },
     {
       "id": "LAYOUT_FORTPOINT_ROOF",
-      "name": "FortPoint_Roof_Layout",
+      "name": "Fortpoint_Roof_Layout",
       "width": 27,
       "height": 24,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Pacifidlog",
-      "border_filepath": "data/layouts/FortPoint_Roof/border.bin",
-      "blockdata_filepath": "data/layouts/FortPoint_Roof/map.bin"
+      "border_filepath": "data/layouts/Fortpoint_Roof/border.bin",
+      "blockdata_filepath": "data/layouts/Fortpoint_Roof/map.bin"
     },
     {
       "id": "LAYOUT_PRESIDIO",
@@ -4963,53 +4963,53 @@
     },
     {
       "id": "LAYOUT_GLDNGTEWILDS",
-      "name": "GldnGteWilds_Layout",
+      "name": "Gldngtewilds_Layout",
       "width": 48,
       "height": 44,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
-      "border_filepath": "data/layouts/GldnGteWilds/border.bin",
-      "blockdata_filepath": "data/layouts/GldnGteWilds/map.bin"
+      "border_filepath": "data/layouts/Gldngtewilds/border.bin",
+      "blockdata_filepath": "data/layouts/Gldngtewilds/map.bin"
     },
     {
       "id": "LAYOUT_GLDNGTEPARK",
-      "name": "GldnGtePark_Layout",
+      "name": "Gldngtepark_Layout",
       "width": 30,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fortree",
-      "border_filepath": "data/layouts/GldnGtePark/border.bin",
-      "blockdata_filepath": "data/layouts/GldnGtePark/map.bin"
+      "border_filepath": "data/layouts/Gldngtepark/border.bin",
+      "blockdata_filepath": "data/layouts/Gldngtepark/map.bin"
     },
     {
       "id": "LAYOUT_GLDNGTEPARK_GYM",
-      "name": "GldnGtePark_Gym_Layout",
+      "name": "Gldngtepark_Gym_Layout",
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
-      "border_filepath": "data/layouts/GldnGtePark_Gym/border.bin",
-      "blockdata_filepath": "data/layouts/GldnGtePark_Gym/map.bin"
+      "border_filepath": "data/layouts/Gldngtepark_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Gldngtepark_Gym/map.bin"
     },
     {
       "id": "LAYOUT_HAIGHTASHBURY",
-      "name": "HaightAshbury_Layout",
+      "name": "Haightashbury_Layout",
       "width": 39,
       "height": 30,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fallarbor",
-      "border_filepath": "data/layouts/HaightAshbury/border.bin",
-      "blockdata_filepath": "data/layouts/HaightAshbury/map.bin"
+      "border_filepath": "data/layouts/Haightashbury/border.bin",
+      "blockdata_filepath": "data/layouts/Haightashbury/map.bin"
     },
     {
       "id": "LAYOUT_HAIGHTASHBURY_GYM",
-      "name": "HaightAshbury_Gym_Layout",
+      "name": "Haightashbury_Gym_Layout",
       "width": 17,
       "height": 16,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattleFactory",
-      "border_filepath": "data/layouts/HaightAshbury_Gym/border.bin",
-      "blockdata_filepath": "data/layouts/HaightAshbury_Gym/map.bin"
+      "border_filepath": "data/layouts/Haightashbury_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Haightashbury_Gym/map.bin"
     },
     {
       "id": "LAYOUT_PSFROUTE43",
@@ -5023,13 +5023,13 @@
     },
     {
       "id": "LAYOUT_PAINTEDLADIES",
-      "name": "PaintedLadies_Layout",
+      "name": "Paintedladies_Layout",
       "width": 40,
       "height": 22,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_BattleFrontierOutsideWest",
-      "border_filepath": "data/layouts/PaintedLadies/border.bin",
-      "blockdata_filepath": "data/layouts/PaintedLadies/map.bin"
+      "border_filepath": "data/layouts/Paintedladies/border.bin",
+      "blockdata_filepath": "data/layouts/Paintedladies/map.bin"
     },
     {
       "id": "LAYOUT_PSFROUTE13",
@@ -5063,33 +5063,33 @@
     },
     {
       "id": "LAYOUT_CHASECENTER_CONSTRUCTION",
-      "name": "ChaseCenter_Construction_Layout",
+      "name": "Chasecenter_Construction_Layout",
       "width": 25,
       "height": 25,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattlePalace",
-      "border_filepath": "data/layouts/ChaseCenter_Construction/border.bin",
-      "blockdata_filepath": "data/layouts/ChaseCenter_Construction/map.bin"
+      "border_filepath": "data/layouts/Chasecenter_Construction/border.bin",
+      "blockdata_filepath": "data/layouts/Chasecenter_Construction/map.bin"
     },
     {
       "id": "LAYOUT_GLDNGTEBRIDGE",
-      "name": "GldnGteBridge_Layout",
+      "name": "Gldngtebridge_Layout",
       "width": 30,
       "height": 80,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_BattleFrontierOutsideEast",
-      "border_filepath": "data/layouts/GldnGteBridge/border.bin",
-      "blockdata_filepath": "data/layouts/GldnGteBridge/map.bin"
+      "border_filepath": "data/layouts/Gldngtebridge/border.bin",
+      "blockdata_filepath": "data/layouts/Gldngtebridge/map.bin"
     },
     {
       "id": "LAYOUT_ROBINWILLTUNNEL",
-      "name": "RobinWillTunnel_Layout",
+      "name": "Robinwilltunnel_Layout",
       "width": 36,
       "height": 24,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_RusturfTunnel",
-      "border_filepath": "data/layouts/RobinWillTunnel/border.bin",
-      "blockdata_filepath": "data/layouts/RobinWillTunnel/map.bin"
+      "border_filepath": "data/layouts/Robinwilltunnel/border.bin",
+      "blockdata_filepath": "data/layouts/Robinwilltunnel/map.bin"
     },
     {
       "id": "LAYOUT_MARIN",
@@ -5113,103 +5113,103 @@
     },
     {
       "id": "LAYOUT_MUIRWOODS",
-      "name": "MuirWoods_Layout",
+      "name": "Muirwoods_Layout",
       "width": 50,
       "height": 48,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
-      "border_filepath": "data/layouts/MuirWoods/border.bin",
-      "blockdata_filepath": "data/layouts/MuirWoods/map.bin"
+      "border_filepath": "data/layouts/Muirwoods/border.bin",
+      "blockdata_filepath": "data/layouts/Muirwoods/map.bin"
     },
     {
       "id": "LAYOUT_ROBINWILLTUNNEL_B1F",
-      "name": "RobinWillTunnel_B1F_Layout",
+      "name": "Robinwilltunnel_B1F_Layout",
       "width": 18,
       "height": 25,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
-      "border_filepath": "data/layouts/RobinWillTunnel_B1F/border.bin",
-      "blockdata_filepath": "data/layouts/RobinWillTunnel_B1F/map.bin"
+      "border_filepath": "data/layouts/Robinwilltunnel_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/Robinwilltunnel_B1F/map.bin"
     },
     {
       "id": "LAYOUT_MUIRWOODS_INNER",
-      "name": "MuirWoods_Inner_Layout",
+      "name": "Muirwoods_Inner_Layout",
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
-      "border_filepath": "data/layouts/MuirWoods_Inner/border.bin",
-      "blockdata_filepath": "data/layouts/MuirWoods_Inner/map.bin"
+      "border_filepath": "data/layouts/Muirwoods_Inner/border.bin",
+      "blockdata_filepath": "data/layouts/Muirwoods_Inner/map.bin"
     },
     {
       "id": "LAYOUT_ROBINWILLTUNNEL_B2F",
-      "name": "RobinWillTunnel_B2F_Layout",
+      "name": "Robinwilltunnel_B2F_Layout",
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
-      "border_filepath": "data/layouts/RobinWillTunnel_B2F/border.bin",
-      "blockdata_filepath": "data/layouts/RobinWillTunnel_B2F/map.bin"
+      "border_filepath": "data/layouts/Robinwilltunnel_B2F/border.bin",
+      "blockdata_filepath": "data/layouts/Robinwilltunnel_B2F/map.bin"
     },
     {
       "id": "LAYOUT_NAVALBASE",
-      "name": "NavalBase_Layout",
+      "name": "Navalbase_Layout",
       "width": 24,
       "height": 27,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/NavalBase/border.bin",
-      "blockdata_filepath": "data/layouts/NavalBase/map.bin"
+      "border_filepath": "data/layouts/Navalbase/border.bin",
+      "blockdata_filepath": "data/layouts/Navalbase/map.bin"
     },
     {
       "id": "LAYOUT_CHASECENTER_ENTRANCE",
-      "name": "ChaseCenter_Entrance_Layout",
+      "name": "Chasecenter_Entrance_Layout",
       "width": 23,
       "height": 17,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattleDome",
-      "border_filepath": "data/layouts/ChaseCenter_Entrance/border.bin",
-      "blockdata_filepath": "data/layouts/ChaseCenter_Entrance/map.bin"
+      "border_filepath": "data/layouts/Chasecenter_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/Chasecenter_Entrance/map.bin"
     },
     {
       "id": "LAYOUT_CHASECENTER_LOCKERS",
-      "name": "ChaseCenter_Lockers_Layout",
+      "name": "Chasecenter_Lockers_Layout",
       "width": 20,
       "height": 10,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattleDome",
-      "border_filepath": "data/layouts/ChaseCenter_Lockers/border.bin",
-      "blockdata_filepath": "data/layouts/ChaseCenter_Lockers/map.bin"
+      "border_filepath": "data/layouts/Chasecenter_Lockers/border.bin",
+      "blockdata_filepath": "data/layouts/Chasecenter_Lockers/map.bin"
     },
     {
       "id": "LAYOUT_CHASECENTER_SKYBOX",
-      "name": "ChaseCenter_Skybox_Layout",
+      "name": "Chasecenter_Skybox_Layout",
       "width": 20,
       "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattleDome",
-      "border_filepath": "data/layouts/ChaseCenter_Skybox/border.bin",
-      "blockdata_filepath": "data/layouts/ChaseCenter_Skybox/map.bin"
+      "border_filepath": "data/layouts/Chasecenter_Skybox/border.bin",
+      "blockdata_filepath": "data/layouts/Chasecenter_Skybox/map.bin"
     },
     {
       "id": "LAYOUT_CHASECENTER_ARENA",
-      "name": "ChaseCenter_Arena_Layout",
+      "name": "Chasecenter_Arena_Layout",
       "width": 20,
       "height": 10,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattleDome",
-      "border_filepath": "data/layouts/ChaseCenter_Arena/border.bin",
-      "blockdata_filepath": "data/layouts/ChaseCenter_Arena/map.bin"
+      "border_filepath": "data/layouts/Chasecenter_Arena/border.bin",
+      "blockdata_filepath": "data/layouts/Chasecenter_Arena/map.bin"
     },
     {
       "id": "LAYOUT_CHASECENTER_STANDS",
-      "name": "ChaseCenter_Stands_Layout",
+      "name": "Chasecenter_Stands_Layout",
       "width": 10,
       "height": 7,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattleDome",
-      "border_filepath": "data/layouts/ChaseCenter_Stands/border.bin",
-      "blockdata_filepath": "data/layouts/ChaseCenter_Stands/map.bin"
+      "border_filepath": "data/layouts/Chasecenter_Stands/border.bin",
+      "blockdata_filepath": "data/layouts/Chasecenter_Stands/map.bin"
     },
     {
       "id": "LAYOUT_PRESIDIO_COMPOUND_1F",
@@ -5223,23 +5223,23 @@
     },
     {
       "id": "LAYOUT_TREASUREISLAND",
-      "name": "TreasureIsland_Layout",
+      "name": "Treasureisland_Layout",
       "width": 34,
       "height": 46,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
-      "border_filepath": "data/layouts/TreasureIsland/border.bin",
-      "blockdata_filepath": "data/layouts/TreasureIsland/map.bin"
+      "border_filepath": "data/layouts/Treasureisland/border.bin",
+      "blockdata_filepath": "data/layouts/Treasureisland/map.bin"
     },
     {
       "id": "LAYOUT_TREASUREISLAND_RESTAURANT",
-      "name": "TreasureIsland_Restaurant_Layout",
+      "name": "Treasureisland_Restaurant_Layout",
       "width": 15,
       "height": 10,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_SeashoreHouse",
-      "border_filepath": "data/layouts/TreasureIsland_Restaurant/border.bin",
-      "blockdata_filepath": "data/layouts/TreasureIsland_Restaurant/map.bin"
+      "border_filepath": "data/layouts/Treasureisland_Restaurant/border.bin",
+      "blockdata_filepath": "data/layouts/Treasureisland_Restaurant/map.bin"
     },
     {
       "id": "LAYOUT_ALCATRAZ_B1F",
@@ -5303,13 +5303,13 @@
     },
     {
       "id": "LAYOUT_LAKEMERRITT",
-      "name": "LakeMerritt_Layout",
+      "name": "Lakemerritt_Layout",
       "width": 50,
       "height": 50,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/LakeMerritt/border.bin",
-      "blockdata_filepath": "data/layouts/LakeMerritt/map.bin"
+      "border_filepath": "data/layouts/Lakemerritt/border.bin",
+      "blockdata_filepath": "data/layouts/Lakemerritt/map.bin"
     },
     {
       "id": "LAYOUT_PSFROUTE18",
@@ -5323,13 +5323,13 @@
     },
     {
       "id": "LAYOUT_TWINPEAKS",
-      "name": "TwinPeaks_Layout",
+      "name": "Twinpeaks_Layout",
       "width": 40,
       "height": 57,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fallarbor",
-      "border_filepath": "data/layouts/TwinPeaks/border.bin",
-      "blockdata_filepath": "data/layouts/TwinPeaks/map.bin"
+      "border_filepath": "data/layouts/Twinpeaks/border.bin",
+      "blockdata_filepath": "data/layouts/Twinpeaks/map.bin"
     },
     {
       "id": "LAYOUT_OKAY_LETS_FIXIT_FLASHBACK",
@@ -5443,13 +5443,13 @@
     },
     {
       "id": "LAYOUT_UNDERGROUNDLAB",
-      "name": "UndergroundLab_Layout",
+      "name": "Undergroundlab_Layout",
       "width": 41,
       "height": 41,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_BikeShop",
-      "border_filepath": "data/layouts/UndergroundLab/border.bin",
-      "blockdata_filepath": "data/layouts/UndergroundLab/map.bin"
+      "border_filepath": "data/layouts/Undergroundlab/border.bin",
+      "blockdata_filepath": "data/layouts/Undergroundlab/map.bin"
     },
     {
       "id": "LAYOUT_SUNSET_SABRINA_HOUSE",

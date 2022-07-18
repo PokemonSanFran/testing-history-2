@@ -1,0 +1,127 @@
+Chasecenter_Lockers_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Chasecenter_Lockers_MapScripts_OnTransition
+	return
+
+Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD:
+	return
+
+Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 27, HeresHowThisIsGoingToGo_ObjectSetUp_Script
+	map_script_2 VAR_STORYLINE_STATE, 28, HeresHowThisIsGoingToGo_CleanUpVObjects_Script
+	.2byte 0
+
+Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 27, HeresHowThisIsGoingToGo_ExplainLeagueDialogue
+	map_script_2 VAR_STORYLINE_STATE, 29, GroupStages_GreetBeforeStart_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, 32, WaitHeDidWhat_RivalsGoToMatch_Script
+	map_script_2 VAR_STORYLINE_STATE, 50, ExhibitionBattle_PostBattle_Dialogue
+	.2byte 0
+
+
+Chasecenter_Lockers_MapScripts_OnTransition::
+	switch VAR_STORYLINE_STATE
+	case 29, Chasecenter_Lockers_MapScripts_OnTransition_2
+	case 30, Chasecenter_Lockers_MapScripts_OnTransition_3
+	case 31, Chasecenter_Lockers_MapScripts_OnTransition_4
+	case 32, Chasecenter_Lockers_MapScripts_OnTransition_5
+	case 33, Chasecenter_Lockers_MapScripts_OnTransition_6
+	case 34, Chasecenter_Lockers_MapScripts_OnTransition_7
+	case 35, Chasecenter_Lockers_MapScripts_OnTransition_8
+	case 50, Chasecenter_Lockers_MapScripts_OnTransition_9
+	case 51, Chasecenter_Lockers_MapScripts_OnTransition_10
+	call WaitHeDidWhat_ObjectMidSetUp_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_2:
+	call GroupStages_Lockers_ObjectSetUp_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_3:
+	call GroupStages_Lockers_ObjectCleanUp_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_4:
+	call Finals_HideObject_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_5:
+	call WaitHeDidWhat_ObjectSetUp_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_6:
+	call WaitHeDidWhat_ObjectMidSetUp_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_7:
+	call WaitHeDidWhat_MeltdownSetUp_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_8:
+	call WaitHeDidWhat_MeltdownPostSaveSetUp_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_9:
+	call ExhibitionBattle_HideObject_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_10:
+	call ExhibitionBattle_HideObject_Script
+	return
+
+
+Chasecenter_Lockers_Bianca_Event_Script::
+	lock
+	faceplayer
+	switch VAR_STORYLINE_STATE
+	case 34, Chasecenter_Lockers_Bianca_Event_Script_3
+	case 51, Chasecenter_Lockers_Bianca_Event_Script_4
+Chasecenter_Lockers_Bianca_Event_Script_1:
+	closemessage
+	callnative ClearMugshot
+	release
+	end
+
+Chasecenter_Lockers_Bianca_Event_Script_3:
+	call WaitHeDidWhat_BiancaMeltdown_Dialogue
+	goto Chasecenter_Lockers_Bianca_Event_Script_1
+
+Chasecenter_Lockers_Bianca_Event_Script_4:
+	call ExhibitionBattle_Bianca_Dialogue
+	goto Chasecenter_Lockers_Bianca_Event_Script_1
+
+
+Chasecenter_Lockers_InteractArenaGuard_Script::
+	lock
+	faceplayer
+	switch VAR_ROUTE119_STATE
+	case 1, Chasecenter_Lockers_InteractArenaGuard_Script_3
+	case 5, Chasecenter_Lockers_InteractArenaGuard_Script_4
+	case 4, Chasecenter_Lockers_InteractArenaGuard_Script_5
+Chasecenter_Lockers_InteractArenaGuard_Script_1:
+	switch VAR_STORYLINE_STATE
+	case 49, Chasecenter_Lockers_InteractArenaGuard_Script_7
+	return
+
+Chasecenter_Lockers_InteractArenaGuard_Script_3:
+	goto GroupStages_PreparePlayer_Script
+	goto Chasecenter_Lockers_InteractArenaGuard_Script_1
+
+Chasecenter_Lockers_InteractArenaGuard_Script_4:
+	goto WaitHeDidWhat_PreparePlayer_Script
+	goto Chasecenter_Lockers_InteractArenaGuard_Script_1
+
+Chasecenter_Lockers_InteractArenaGuard_Script_5:
+	goto Finals_PreparePlayer_Script
+	goto Chasecenter_Lockers_InteractArenaGuard_Script_1
+
+Chasecenter_Lockers_InteractArenaGuard_Script_7:
+	goto ExhibitionBattle_MoveFromDoor_Script
+	return
+

@@ -492,7 +492,7 @@ gText_ThisIsntRandom_IfWereAllGoing::
 
 gText_ThisIsntRandom_DidYouKnowThereWas::
 	.string "Ariana, did you know there was a\n"
-	.string "secret tunnel underneath FerryBuilding?$"
+	.string "secret tunnel underneath Ferrybuilding?$"
 
 gText_ThisIsntRandom_IfPeopleKnew::
 	.string "If people knew about it it wouldn’t be a\n"
@@ -587,7 +587,7 @@ gText_ThisIsntRandom_AreThoseDatesSpecial::
 
 gText_ThisIsntRandom_TheSecondDateIsOne::
 	.string "The second date is the end of the\n"
-	.string "RobinWillTunnel riots. What types of Pokémon\l"
+	.string "Robinwilltunnel riots. What types of Pokémon\l"
 	.string "did you guys fight down here?$"
 
 gText_ThisIsntRandom_SilicobraGravelerLarvitar::
@@ -610,7 +610,7 @@ gText_ThisIsntRandom_TheDocumentationCalledOut::
 gText_ThisIsntRandom_AndGroundTypesTo::
 	.string "*sigh* And ground types to trigger\n"
 	.string "Earthquakes. Those bastards used this\l"
-	.string "system to attack RobinWillTunnel.$"
+	.string "system to attack Robinwilltunnel.$"
 
 gText_ThisIsntRandom_OhNoIDidnt::
 	.string "Oh no. I didn’t recognize the earlier\n"

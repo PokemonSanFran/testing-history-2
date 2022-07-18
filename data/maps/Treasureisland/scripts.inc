@@ -1,0 +1,61 @@
+Treasureisland_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Treasureisland_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Treasureisland_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Treasureisland_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Treasureisland_MapScripts_OnTransition
+	return
+
+Treasureisland_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 41, YouRealizeWereEvilRight_PhoneCall_Dialogue
+	.2byte 0
+
+
+Treasureisland_MapScripts_OnTransition::
+	switch VAR_STORYLINE_STATE
+	case 38, Treasureisland_MapScripts_OnTransition_2
+	goto LetsGrabLunch_HideObject_Script
+	return
+
+Treasureisland_MapScripts_OnTransition_2:
+	return
+
+
+Treasureisland_ChooseFerryDestination_Script::
+	msgbox gText_WhereWould, MSGBOX_NPC
+	goto Treasureisland_UnlockedDestinations_Script
+	return
+
+
+Treasureisland_UnlockedDestinations_Script::
+	switch VAR_FERRY_STATE
+	case 2, Treasureisland_UnlockedDestinations_Script_2
+	return
+
+Treasureisland_UnlockedDestinations_Script_2:
+	goto Treasureisland_FerryState0_Script
+	return
+
+
+Treasureisland_FerryState0_Script::
+	multichoicedefault 18, 8, TREASUREISLAND_FERRY_DESTINATIONS_VER1, 2, TRUE
+	call SlateportCity_Harbor_EventScript_BoardFerry
+	switch VAR_RESULT
+	case 0, Treasureisland_FerryState0_Script_2
+	case 1, Treasureisland_FerryState0_Script_3
+	case MULTI_B_PRESSED, Treasureisland_FerryState0_Script_4
+	return
+
+Treasureisland_FerryState0_Script_2:
+	warp MAP_FERRYBUILDING, 8, 11
+	return
+
+Treasureisland_FerryState0_Script_3:
+	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
+	return
+
+Treasureisland_FerryState0_Script_4:
+	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
+	return
+

@@ -1,0 +1,33 @@
+Paintedladies_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Paintedladies_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Paintedladies_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Paintedladies_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Paintedladies_MapScripts_OnTransition
+	return
+
+Paintedladies_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, 21, TheStrikeStrikesBack_PhoneCall_Dialogue
+	.2byte 0
+
+
+Paintedladies_MapScripts_OnTransition::
+	switch VAR_ROUTE109_STATE
+	case 0, Paintedladies_MapScripts_OnTransition_2
+	case 1, Paintedladies_MapScripts_OnTransition_3
+	case 2, Paintedladies_MapScripts_OnTransition_4
+	return
+
+Paintedladies_MapScripts_OnTransition_2:
+	call Battle8_SetUpObject_Script
+	return
+
+Paintedladies_MapScripts_OnTransition_3:
+	call Battle8_StartBattle_ObjectSetUp_Script
+	return
+
+Paintedladies_MapScripts_OnTransition_4:
+	call Battle8_SetUpObject_Script
+	return
+

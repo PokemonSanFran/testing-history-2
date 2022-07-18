@@ -1258,7 +1258,7 @@ badd +0 data/cutscenes/WeCanStopYouActually.pory
 badd +1 docs/flags
 badd +1 include/constants/vars.h
 badd +1 docs/vars
-badd +17 data/maps/UndergroundLab/scripts.pory
+badd +17 data/maps/Undergroundlab/scripts.pory
 badd +293 data/cutscenes/ImIn.pory
 badd +1 data/cutscenes/WaitEvenThen.pory
 badd +162 asm/macros/battle_frontier/battle_tower.inc
@@ -1269,7 +1269,7 @@ badd +368 data/cutscenes/WarehouseRave.pory
 badd +15 data/maps/Oakland_Warehouse/scripts.pory
 badd +12 data/maps/Alameda_Archer_House/scripts.pory
 badd +62 data/cutscenes/LockedOut.pory
-badd +43 data/maps/SouthBay_Compound_2F/scripts.pory
+badd +43 data/maps/Southbay_Compound_2F/scripts.pory
 badd +44 data/cutscenes/LetsFixThis.pory
 badd +16 data/maps/Presidio_Compound_1F/scripts.pory
 badd +218 data/cutscenes/MaskOff.pory
@@ -1278,10 +1278,10 @@ badd +3 data/maps/Japantown_Ramen/scripts.pory
 badd +12 data/cutscenes/LetsGettheBandBackTogether.pory
 badd +12 data/maps/OkayLetsFixit_Flashback/scripts.pory
 badd +60 data/cutscenes/OkayLetsFixit.pory
-badd +19 data/maps/TwinPeaks/scripts.pory
+badd +19 data/maps/Twinpeaks/scripts.pory
 badd +35 data/cutscenes/YouRealizeTheyreEvilRight.pory
 badd +3 data/maps/MossdeepCity_GameCorner_1F/scripts.inc
-badd +22 data/maps/ChaseCenter_Lockers/scripts.pory
+badd +22 data/maps/Chasecenter_Lockers/scripts.pory
 badd +3383 src/field_specials.c
 badd +72 include/overworld.h
 badd +1213 data/event_scripts.s
@@ -1293,10 +1293,10 @@ badd +18 data/maps/SOMA_Newspaper/scripts.pory
 badd +34 data/cutscenes/LetsGettheBandBackTogether.inc
 badd +277 data/cutscenes/Manhunt.pory
 badd +1 data/cutscenes/WhyAreYouHelpingThem.pory
-badd +11 data/maps/LakeMerritt/scripts.pory
+badd +11 data/maps/Lakemerritt/scripts.pory
 badd +6 include/constants/weather.h
 badd +15 data/maps/Presidio/scripts.pory
-badd +18 data/maps/ChaseCenter_Arena/scripts.pory
+badd +18 data/maps/Chasecenter_Arena/scripts.pory
 badd +8 include/constants/songs.h
 badd +93 data/cutscenes/BeachBattle.pory
 badd +9 data/maps/Psfroute22/scripts.pory

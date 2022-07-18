@@ -643,7 +643,7 @@ text gText_YouRealizeTheyreEvilRight_Look {
     format("Look.")
 }
 text gText_YouRealizeTheyreEvilRight_ThisIsOne {
-    format("This is one of the Garbodor from the ChaseCenter strike. {PLAYER}, you were told that TeamRocket planted these to blow up the construction site, right?")
+    format("This is one of the Garbodor from the Chasecenter strike. {PLAYER}, you were told that TeamRocket planted these to blow up the construction site, right?")
 }
 text gText_YouRealizeTheyreEvilRight_IHadToGo {
     format("Yeah. Bianca and I had to go down there and defeat them and your goons.")

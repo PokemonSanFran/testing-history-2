@@ -136,12 +136,12 @@ gText_BeingChampionIsHard_WoWWhatToDo::
 	.string "Wow, what to do with my days off…$"
 
 gText_BeingChampionIsHard_YouShouldGoTo::
-	.string "You should go to TreasureIsland! I\n"
+	.string "You should go to Treasureisland! I\n"
 	.string "don't think I ever got the chance to\l"
 	.string "tell you, but after you became\l"
 	.string "Champion, we upgraded your Ferry Pass\l"
 	.string "so you can travel there from\l"
-	.string "FerryBuilding.$"
+	.string "Ferrybuilding.$"
 
 gText_BeingChampionIsHard_ThatsWhereTheyFilm::
 	.string "That's where they film movies, right?$"

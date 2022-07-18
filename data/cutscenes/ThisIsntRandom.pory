@@ -406,7 +406,7 @@ text gText_ThisIsntRandom_IfWereAllGoing {
 }
 
 text gText_ThisIsntRandom_DidYouKnowThereWas {
-    format("Ariana, did you know there was a secret tunnel underneath FerryBuilding?")
+    format("Ariana, did you know there was a secret tunnel underneath Ferrybuilding?")
 }
 
 text gText_ThisIsntRandom_IfPeopleKnew {
@@ -494,7 +494,7 @@ text gText_ThisIsntRandom_AreThoseDatesSpecial {
 }
 
 text gText_ThisIsntRandom_TheSecondDateIsOne {
-    format("The second date is the end of the RobinWillTunnel riots. What types of Pokémon did you guys fight down here?")
+    format("The second date is the end of the Robinwilltunnel riots. What types of Pokémon did you guys fight down here?")
 }
 
 text gText_ThisIsntRandom_SilicobraGravelerLarvitar {
@@ -518,7 +518,7 @@ text gText_ThisIsntRandom_TheDocumentationCalledOut {
 }
 
 text gText_ThisIsntRandom_AndGroundTypesTo {
-    format("*sigh* And ground types to trigger Earthquakes. Those bastards used this system to attack RobinWillTunnel.")
+    format("*sigh* And ground types to trigger Earthquakes. Those bastards used this system to attack Robinwilltunnel.")
 }
 
 text gText_ThisIsntRandom_OhNoIDidnt {

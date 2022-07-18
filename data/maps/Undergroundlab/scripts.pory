@@ -1,0 +1,27 @@
+mapscripts Undergroundlab_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Undergroundlab_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_LOAD {
+        call(Undergroundlab_MapScripts_OnLoad)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEWFORD_TOWN_STATE, 3: ThisIsntRandom_WalkIntoLab_Dialogue 
+    ]
+}
+
+script Undergroundlab_MapScripts_OnTransition {
+
+    switch (var(VAR_DEWFORD_TOWN_STATE)){
+        case 3: return
+        case 7: call(WaitEvenThen_BossSetUp_Script)
+        default: call(ThisIsntRandom_HideObject_AboveGround_Script)
+    }
+
+}
+
+script Undergroundlab_MapScripts_OnLoad {
+    if (var(VAR_DEWFORD_TOWN_STATE) == 7){
+        call(WaitEvenThen_TurnOnMachine_Script)
+    }
+}

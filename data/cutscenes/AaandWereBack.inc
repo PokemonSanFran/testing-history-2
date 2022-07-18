@@ -105,10 +105,10 @@ gText_AaandWereBack_GotAllThree::
 	.string "at least tomorrow, and I can't head\l"
 	.string "west without Go-Goggles. It's been a\l"
 	.string "long day... I think I should head back\l"
-	.string "to SouthBay and call it a night.$"
+	.string "to Southbay and call it a night.$"
 
 gText_AaandWereBack_Question::
-	.string "Do you want to go back to SouthBay?$"
+	.string "Do you want to go back to Southbay?$"
 
 gText_AaandWereBack_WhatsYourProgress::
 	.string "Damn I'm beat. Getting five badges in\n"
@@ -121,7 +121,7 @@ gText_AaandWereBack_OnlyThree::
 gText_AaandWereBack_YeahThatBusted::
 	.string "Yeah, that busted ferry sucks. I'm\n"
 	.string "going to challenge the Castro and\l"
-	.string "HaightAshbury Gyms tomorrow, and the ferry\l"
+	.string "Haightashbury Gyms tomorrow, and the ferry\l"
 	.string "will definately be fixed after that, so\l"
 	.string "Berkeley Gym will be last.$"
 
@@ -145,7 +145,7 @@ gText_AaandWereBack_FerryMessage::
 	.string "A message from the BARTACRONYM\n"
 	.string "System. The following service\l"
 	.string "routes are now operational:\p"
-	.string "FerryBuilding to Alameda\p"
+	.string "Ferrybuilding to Alameda\p"
 	.string "Alameda to Oakland\p"
 	.string "We appreciate your patience\n"
 	.string "while the remaining routes are\l"

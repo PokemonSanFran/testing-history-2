@@ -147,7 +147,7 @@
 #define MAP_UNDERWATER_ROUTE105 (55 | (1 << 8))
 #define MAP_UNDERWATER_ROUTE125 (56 | (1 << 8))
 
-// gMapGroup_IndoorSouthBay
+// gMapGroup_IndoorSouthbay
 #define MAP_SOUTHBAY_COMPOUND_1F       (0 | (2 << 8))
 #define MAP_SOUTHBAY_COMPOUND_2F       (1 | (2 << 8))
 #define MAP_SOUTHBAY_POKEMON_CENTER_1F (2 | (2 << 8))
@@ -168,14 +168,14 @@
 #define MAP_BERKELEY_GYM             (0 | (6 << 8))
 #define MAP_BERKELEY_BREEDING_CENTER (1 | (6 << 8))
 
-// gMapGroup_IndoorFortPoint
+// gMapGroup_IndoorFortpoint
 #define MAP_FORTPOINT_ROOF (0 | (7 << 8))
 
 // gMapGroup_IndoorPresidio
 #define MAP_PRESIDIO_MANSION (0 | (8 << 8))
 #define MAP_GLDNGTEPARK_GYM  (1 | (8 << 8))
 
-// gMapGroup_IndoorHaightAshbury
+// gMapGroup_IndoorHaightashbury
 #define MAP_HAIGHTASHBURY_GYM (0 | (9 << 8))
 
 // gMapGroup_IndoorLittleroot

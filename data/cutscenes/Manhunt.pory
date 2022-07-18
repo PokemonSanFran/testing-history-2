@@ -254,7 +254,7 @@ script Manhunt_Matthew_Battle_Script {
         end
 }
 
-//LakeMerritt
+//Lakemerritt
 script Manhunt_Encounter_Giovanni_Dialogue {
     lock
         call(Common_EventScript_SaveGame)
@@ -518,7 +518,7 @@ text gText_Manhunt_TheRegionIsYours {
 }
 
 text gText_Manhunt_IllBeAtTheEntrance {
-    format("Oak, I've defeated Giovanni. I'll be at the entrance to LakeMerritt.")
+    format("Oak, I've defeated Giovanni. I'll be at the entrance to Lakemerritt.")
 }
 
 text gText_Manhunt_WhatWaitUhOkay {

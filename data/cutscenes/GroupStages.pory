@@ -138,7 +138,7 @@ script GroupStages_PostRoundRobinMatch_Script {
         call(GroupStages_ChooseParty_Script)
 
         removeobject(1)
-        call(ChaseCenter_Arena_MapScripts_OnTransition)
+        call(Chasecenter_Arena_MapScripts_OnTransition)
         addobject(1)
 
         goto(GroupStages_RoundRobinMatch_Script)
@@ -162,7 +162,7 @@ text gText_GroupStages_Blank {
 }
 
 text gText_GroupStages_OnceYouStart {
-    format("Once you start the Group Stage, there's no turning back. You must complete the group stage before you can leave again, and you must complete the tournament before you can leave ChaseCenter. Are you ready to continue?")
+    format("Once you start the Group Stage, there's no turning back. You must complete the group stage before you can leave again, and you must complete the tournament before you can leave Chasecenter. Are you ready to continue?")
 }
 
 text gText_GroupStages_PlayerReturnToArena {

@@ -240,15 +240,15 @@ text gText_WelcomeToTheWarRoom_AllMajorSocialMedia {
 }
 
 text gText_WelcomeToTheWarRoom_TheNewOwnersOfOUrAccounts {
-    format("The new owners of our accounts have been pushing a narrative about Psfbadguy's “crimes against the region”. They're calling for everybody to boycott the League and the upcoming Championship. We've found evidence that the perpetrators are at NavalBase. ")
+    format("The new owners of our accounts have been pushing a narrative about Psfbadguy's “crimes against the region”. They're calling for everybody to boycott the League and the upcoming Championship. We've found evidence that the perpetrators are at Navalbase. ")
 }
 
 text gText_WelcomeToTheWarRoom_WeveLongTheorized {
-    format("We've long theorized that NavalBase is TeamRocket's primary base of operations so we've got reason to believe that they're the ones behind this cyber-attack. We have authorization to raid their headquarters and are looking -")
+    format("We've long theorized that Navalbase is TeamRocket's primary base of operations so we've got reason to believe that they're the ones behind this cyber-attack. We have authorization to raid their headquarters and are looking -")
 }
 
 text gText_WelcomeToTheWarRoom_ThatsWhereYouKids {
-    format("That's where you kids come in! Ya really impressed me back at ChaseCenter, and we'd like you to assist us in the raid. You'll work under Chief Bill, and help us shut down those clowns once and for all.")
+    format("That's where you kids come in! Ya really impressed me back at Chasecenter, and we'd like you to assist us in the raid. You'll work under Chief Bill, and help us shut down those clowns once and for all.")
 }
 
 text gText_WelcomeToTheWarRoom_HellYeahWedLoveTo {
@@ -280,7 +280,7 @@ text gText_WelcomeToTheWarRoom_GotItChief {
 }
 
 text gText_WelcomeToTheWarRoom_GreatWellStartTheOperation {
-    format("Great. We'll start the operation as soon as you're ready. Meet me outside NavalBase.")
+    format("Great. We'll start the operation as soon as you're ready. Meet me outside Navalbase.")
 }
 
 text gText_WelcomeToTheWarRoom_DontPayHimNoMind {
@@ -292,7 +292,7 @@ text gText_WelcomeToTheWarRoom_ThatsAgainYouTwo {
 }
 
 text gText_WelcomeToTheWarRoom_ImGoingToHeadOver {
-    format("I'm going to head over to FerryBuilding. Want to come with?")
+    format("I'm going to head over to Ferrybuilding. Want to come with?")
 }
 
 text gText_WelcomeToTheWarRoom_OkayIllMeetYou {

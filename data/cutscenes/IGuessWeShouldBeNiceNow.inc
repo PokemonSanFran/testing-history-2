@@ -505,7 +505,7 @@ gText_IGuessWeShouldBeNiceNow_OhShitWellUh::
 gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow::
 	.string "You already know. There's no service\n"
 	.string "down here, and they said it was the\l"
-	.string "same for MuirWoods. We're more or less\l"
+	.string "same for Muirwoods. We're more or less\l"
 	.string "on our own.$"
 
 gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive::
@@ -598,12 +598,12 @@ gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast::
 
 gText_IGuessWeShouldBeNiceNow_SaysOnTheBack::
 	.string "Says on the back cover, “Bring to the\n"
-	.string "deepest part of MuirWoods.$"
+	.string "deepest part of Muirwoods.$"
 
 gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting::
 	.string "Whew, that was exhausting. How about we\n"
 	.string "crash at my place nearby in Marin\l"
-	.string "and then tackle MuirWoods tomorrow?$"
+	.string "and then tackle Muirwoods tomorrow?$"
 
 gText_IGuessWeShouldBeNiceNow_GreatSeeYou::
 	.string "Great, see you in Marin!$"
@@ -611,7 +611,7 @@ gText_IGuessWeShouldBeNiceNow_GreatSeeYou::
 gText_IGuessWeShouldBeNiceNow_WellTheChallenges::
 	.string "Well, the challenges need both of us…\n"
 	.string "and I'm tired. So I'm going to crash -\l"
-	.string "you're welcome to try MuirWoods by\l"
+	.string "you're welcome to try Muirwoods by\l"
 	.string "yourself though.$"
 
 gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming::
@@ -658,7 +658,7 @@ gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace::
 gText_IGuessWeShouldBeNiceNow_ImGonnaCrash::
 	.string "I'm gonna crash, but I'll leave the door\n"
 	.string "open for you. Let's meet at the\l"
-	.string "entrance of MuirWoods tomorrow\l"
+	.string "entrance of Muirwoods tomorrow\l"
 	.string "morning! DIRECTOR'S NOTE: Just go\l"
 	.string "there now.$"
 

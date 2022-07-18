@@ -399,7 +399,7 @@ text gText_AndWeMarchOn_GiveUsBackOur {
 }
 
 text gText_AndWeMarchOn_ButHeyItsNot {
-    format("But hey! It's not all bad, right? HaightAshbury got to keep its Gym!")
+    format("But hey! It's not all bad, right? Haightashbury got to keep its Gym!")
 }
 
 text gText_AndWeMarchOn_Traitor {

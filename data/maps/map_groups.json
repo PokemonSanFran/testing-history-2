@@ -3,14 +3,14 @@
   "group_order": [
     "gMapGroup_PsfTownsAndRoutes",
     "gMapGroup_TownsAndRoutes",
-    "gMapGroup_IndoorSouthBay",
+    "gMapGroup_IndoorSouthbay",
     "gMapGroup_IndoorSOMA",
     "gMapGroup_IndoorMission",
     "gMapGroup_IndoorJapantown",
     "gMapGroup_IndoorBerkeley",
-    "gMapGroup_IndoorFortPoint",
+    "gMapGroup_IndoorFortpoint",
     "gMapGroup_IndoorPresidio",
-    "gMapGroup_IndoorHaightAshbury",
+    "gMapGroup_IndoorHaightashbury",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -46,9 +46,9 @@
     "gMapGroup_IndoorRoute124"
   ],
   "gMapGroup_PsfTownsAndRoutes": [
-    "SouthBay",
+    "Southbay",
     "Psfroute17",
-    "BernalHeights",
+    "Bernalheights",
     "Psfroute11",
     "Psfroute21",
     "Dogpatch",
@@ -65,55 +65,55 @@
     "Psfroute14",
     "Chinatown",
     "Japantown",
-    "LombardStreet",
-    "FerryBuilding",
-    "FishermansWharf",
+    "Lombardstreet",
+    "Ferrybuilding",
+    "Fishermanswharf",
     "Psfroute1",
     "Alameda",
-    "OaklandFerry",
+    "Oaklandferry",
     "Psfroute72",
     "Psfroute12",
     "Oakland",
     "Psfroute63",
     "Berkeley",
     "Alcatraz",
-    "FortPoint",
+    "Fortpoint",
     "Presidio",
     "Psfroute49",
     "Pacifica",
     "Psfroute5",
     "Psfroute7",
-    "GldnGtePark",
-    "HaightAshbury",
+    "Gldngtepark",
+    "Haightashbury",
     "Psfroute43",
-    "PaintedLadies",
+    "Paintedladies",
     "Psfroute13",
     "Castro",
     "Castro_Gym",
-    "GldnGteBridge",
-    "RobinWillTunnel",
+    "Gldngtebridge",
+    "Robinwilltunnel",
     "Marin",
     "Psfroute61",
-    "MuirWoods",
-    "RobinWillTunnel_B1F",
-    "MuirWoods_Inner",
-    "RobinWillTunnel_B2F",
-    "NavalBase",
-    "ChaseCenter_Entrance",
-    "ChaseCenter_Lockers",
-    "ChaseCenter_Skybox",
-    "ChaseCenter_Arena",
-    "ChaseCenter_Stands",
+    "Muirwoods",
+    "Robinwilltunnel_B1F",
+    "Muirwoods_Inner",
+    "Robinwilltunnel_B2F",
+    "Navalbase",
+    "Chasecenter_Entrance",
+    "Chasecenter_Lockers",
+    "Chasecenter_Skybox",
+    "Chasecenter_Arena",
+    "Chasecenter_Stands",
     "Presidio_Compound_1F",
-    "TreasureIsland",
-    "TreasureIsland_Restaurant",
+    "Treasureisland",
+    "Treasureisland_Restaurant",
     "Alcatraz_B1F",
     "Alcatraz_B2F",
     "Castro_BallShop",
     "Psfroute62",
-    "LakeMerritt",
+    "Lakemerritt",
     "Psfroute18",
-    "TwinPeaks",
+    "Twinpeaks",
     "OkayLetsFixit_Flashback",
     "Sunset",
     "Sunset_Apartment",
@@ -124,7 +124,7 @@
     "LayoutTester",
     "Alameda_PostEarthquake",
     "Psfroute25",
-    "UndergroundLab",
+    "Undergroundlab",
     "Sunset_Sabrina_House",
     "WeCanStopYouActually_Cutscene"
   ],
@@ -187,10 +187,10 @@
     "Underwater_Route105",
     "Underwater_Route125"
   ],
-  "gMapGroup_IndoorSouthBay": [
-    "SouthBay_Compound_1F",
-    "SouthBay_Compound_2F",
-    "SouthBay_PokemonCenter_1F"
+  "gMapGroup_IndoorSouthbay": [
+    "Southbay_Compound_1F",
+    "Southbay_Compound_2F",
+    "Southbay_PokemonCenter_1F"
   ],
   "gMapGroup_IndoorSOMA": [
     "SOMA_Gym",
@@ -208,15 +208,15 @@
     "Berkeley_Gym",
     "Berkeley_BreedingCenter"
   ],
-  "gMapGroup_IndoorFortPoint": [
-    "FortPoint_Roof"
+  "gMapGroup_IndoorFortpoint": [
+    "Fortpoint_Roof"
   ],
   "gMapGroup_IndoorPresidio": [
     "Presidio_Mansion",
-    "GldnGtePark_Gym"
+    "Gldngtepark_Gym"
   ],
-  "gMapGroup_IndoorHaightAshbury": [
-    "HaightAshbury_Gym"
+  "gMapGroup_IndoorHaightashbury": [
+    "Haightashbury_Gym"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -566,8 +566,8 @@
     "TerraCave_End",
     "AlteringCave",
     "MeteorFalls_StevensCave",
-    "GldnGteWilds",
-    "ChaseCenter_Construction"
+    "Gldngtewilds",
+    "Chasecenter_Construction"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

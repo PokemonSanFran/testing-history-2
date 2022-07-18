@@ -311,7 +311,7 @@ gText_CongratsYoureanAsshole_OhWoWYouGuys::
 
 gText_YouHaveYourOrders_CorrectEachOfUs::
 	.string "Each of us will be leading a different\n"
-	.string "raid. Bianca will go to TreasureIsland,\l"
+	.string "raid. Bianca will go to Treasureisland,\l"
 	.string "and I'll deal with Marin. {PLAYER},\l"
 	.string "you'll take on Chinatown.$"
 
@@ -324,7 +324,7 @@ gText_YouHaveYourOrders_WeHiredThem::
 	.string "offer, they didn’t hesitate.$"
 
 gText_YouHaveYourOrders_WhatAbout::
-	.string "What about HaightAshbury?$"
+	.string "What about Haightashbury?$"
 
 gText_YouHaveYourOrders_OurIntelligenceTells::
 	.string "Our intelligence tells us that we'll be\n"

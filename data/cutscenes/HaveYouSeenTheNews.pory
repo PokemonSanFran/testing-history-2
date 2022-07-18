@@ -68,7 +68,7 @@ text gText_HaveYouSeenTheNews_ShitWhatDid {
     format("Shit, what did TeamRocket do now?")
 }
 text gText_HaveYouSeenTheNews_YoureStartingToSound {
-    format("You're starting to sound like a native… they've completely infiltrated our social media platforms. The mayor was impressed with your work at ChaseCenter, and thinks you two might be able to help.")
+    format("You're starting to sound like a native… they've completely infiltrated our social media platforms. The mayor was impressed with your work at Chasecenter, and thinks you two might be able to help.")
 }
 text gText_HaveYouSeenTheNews_HowAreWeGoing {
     format("How are we going to help? Sounds a little above us.")

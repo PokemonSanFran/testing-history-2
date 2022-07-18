@@ -503,7 +503,7 @@ gText_AndWeMarchOn_GiveUsBackOur::
 
 gText_AndWeMarchOn_ButHeyItsNot::
 	.string "But hey! It's not all bad, right?\n"
-	.string "HaightAshbury got to keep its Gym!$"
+	.string "Haightashbury got to keep its Gym!$"
 
 gText_AndWeMarchOn_Traitor::
 	.string "Traitor!$"

@@ -3079,16 +3079,16 @@ extern const u8 gText_StarterSummary2[];
 
 //PSF Locations
 extern const u8 gText_Alameda[];
-extern const u8 gText_TreasureIsland[];
-extern const u8 gText_OaklandFerry[];
+extern const u8 gText_Treasureisland[];
+extern const u8 gText_Oaklandferry[];
 extern const u8 gText_Alcatraz[];
-extern const u8 gText_FerryBuilding[];
+extern const u8 gText_Ferrybuilding[];
 extern const u8 gText_Oakland[];
 extern const u8 gText_Marin[];
 extern const u8 gText_Berkeley[];
-extern const u8 gText_FishermansWharf[];
+extern const u8 gText_Fishermanswharf[];
 extern const u8 gText_Chinatown[];
-extern const u8 gText_HaightAshbury[];
+extern const u8 gText_Haightashbury[];
 
 //VS Garbador Choose side
 extern const u8 gText_DontCare[];

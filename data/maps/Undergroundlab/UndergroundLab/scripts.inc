@@ -1,0 +1,43 @@
+Undergroundlab_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Undergroundlab_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Undergroundlab_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Undergroundlab_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Undergroundlab_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Undergroundlab_MapScripts_OnTransition
+	return
+
+Undergroundlab_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call Undergroundlab_MapScripts_OnLoad
+	return
+
+Undergroundlab_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_DEWFORD_TOWN_STATE, 3, ThisIsntRandom_WalkIntoLab_Dialogue
+	.2byte 0
+
+
+Undergroundlab_MapScripts_OnTransition::
+	switch VAR_DEWFORD_TOWN_STATE
+	case 3, Undergroundlab_MapScripts_OnTransition_2
+	case 7, Undergroundlab_MapScripts_OnTransition_3
+	call ThisIsntRandom_HideObject_AboveGround_Script
+	return
+
+Undergroundlab_MapScripts_OnTransition_2:
+	return
+
+Undergroundlab_MapScripts_OnTransition_3:
+	call WaitEvenThen_BossSetUp_Script
+	return
+
+
+Undergroundlab_MapScripts_OnLoad::
+	compare VAR_DEWFORD_TOWN_STATE, 7
+	goto_if_eq Undergroundlab_MapScripts_OnLoad_1
+	return
+
+Undergroundlab_MapScripts_OnLoad_1:
+	call WaitEvenThen_TurnOnMachine_Script
+	return
+

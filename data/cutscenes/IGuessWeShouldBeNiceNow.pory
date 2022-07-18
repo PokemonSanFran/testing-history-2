@@ -427,7 +427,7 @@ text gText_IGuessWeShouldBeNiceNow_OhShitWellUh {
 }
 
 text gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow {
-    format("You already know. There's no service down here, and they said it was the same for MuirWoods. We're more or less on our own.")
+    format("You already know. There's no service down here, and they said it was the same for Muirwoods. We're more or less on our own.")
 }
 
 text gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive {
@@ -519,11 +519,11 @@ text gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast {
 }
 
 text gText_IGuessWeShouldBeNiceNow_SaysOnTheBack {
-    format("Says on the back cover, “Bring to the deepest part of MuirWoods.")
+    format("Says on the back cover, “Bring to the deepest part of Muirwoods.")
 }
 
 text gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting {
-    format("Whew, that was exhausting. How about we crash at my place nearby in Marin and then tackle MuirWoods tomorrow?")
+    format("Whew, that was exhausting. How about we crash at my place nearby in Marin and then tackle Muirwoods tomorrow?")
 }
 
 text gText_IGuessWeShouldBeNiceNow_GreatSeeYou {
@@ -531,7 +531,7 @@ text gText_IGuessWeShouldBeNiceNow_GreatSeeYou {
 }
 
 text gText_IGuessWeShouldBeNiceNow_WellTheChallenges {
-    format("Well, the challenges need both of us… and I'm tired. So I'm going to crash - you're welcome to try MuirWoods by yourself though.")
+    format("Well, the challenges need both of us… and I'm tired. So I'm going to crash - you're welcome to try Muirwoods by yourself though.")
 }
 
 text gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming {
@@ -571,7 +571,7 @@ text gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace {
 }
 
 text gText_IGuessWeShouldBeNiceNow_ImGonnaCrash {
-    format("I'm gonna crash, but I'll leave the door open for you. Let's meet at the entrance of MuirWoods tomorrow morning! DIRECTOR'S NOTE: Just go there now.") //PSF TODO fix this line
+    format("I'm gonna crash, but I'll leave the door open for you. Let's meet at the entrance of Muirwoods tomorrow morning! DIRECTOR'S NOTE: Just go there now.") //PSF TODO fix this line
 }
 
 text gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion {

@@ -1,12 +1,12 @@
-TreasureIsland
+Treasureisland
 Sunset
-GldnGtePark
+Gldngtepark
 Presidio
 Pacifica
 Castro
 Mission
 Dogpatch
-SouthBay
+Southbay
 Oakland
 Marin
 Berkeley
@@ -14,6 +14,6 @@ Tenderloin
 Chinatown
 Japantown
 SOMA
-BernalHeights
+Bernalheights
 Alameda
-HaightAshbury
+Haightashbury

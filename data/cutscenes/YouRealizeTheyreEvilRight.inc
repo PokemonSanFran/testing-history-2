@@ -711,7 +711,7 @@ gText_YouRealizeTheyreEvilRight_Look::
 
 gText_YouRealizeTheyreEvilRight_ThisIsOne::
 	.string "This is one of the Garbodor from the\n"
-	.string "ChaseCenter strike. {PLAYER}, you\l"
+	.string "Chasecenter strike. {PLAYER}, you\l"
 	.string "were told that TeamRocket planted\l"
 	.string "these to blow up the construction\l"
 	.string "site, right?$"

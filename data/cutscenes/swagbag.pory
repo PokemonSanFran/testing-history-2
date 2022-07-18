@@ -118,10 +118,10 @@ script Swagbag_WhenCanWeStart_Dialogue {
         waitmovement(0)
         playse(SE_EXIT)
         removeobject(BIANCA)
-        goto(Swagbag_DontLeaveSouthBay_Dialogue)
+        goto(Swagbag_DontLeaveSouthbay_Dialogue)
 }
 
-script Swagbag_DontLeaveSouthBay_Dialogue {
+script Swagbag_DontLeaveSouthbay_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_Swagbag_IllBeWorkingOnMyLaptop)
@@ -145,11 +145,11 @@ script swagbag_HelpPlayer_Script {//TODO Set up actual question a answer for Oak
         return
 }
 
-script swagbag_PreventPlayerLeavingSouthBay_Event_Script {
+script swagbag_PreventPlayerLeavingSouthbay_Event_Script {
     lock
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
-    msgbox(gText_DontLeaveSouthBay_Text1) 
+    msgbox(gText_DontLeaveSouthbay_Text1) 
     callnative(ClearMugshot)
     closemessage
     applymovement(PLAYER,swagbag_WalkBackwards)
@@ -246,8 +246,8 @@ text gText_Swagbag_InTheActualGame {
     format("In the actual game, this will be a list of questions that the player can ask and getr answers to. Tutorial level shit.")
 }
 
-text gText_DontLeaveSouthBay_Text1 {
-    format("I don't think I should leave SouthBay yet...")
+text gText_DontLeaveSouthbay_Text1 {
+    format("I don't think I should leave Southbay yet...")
 }
 
 movement swagbag_GreetPlayer {

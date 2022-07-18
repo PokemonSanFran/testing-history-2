@@ -583,7 +583,7 @@ gText_Manhunt_TheRegionIsYours::
 gText_Manhunt_IllBeAtTheEntrance::
 	.string "Oak, I've defeated\n"
 	.string "Giovanni. I'll be at the entrance to\l"
-	.string "LakeMerritt.$"
+	.string "Lakemerritt.$"
 
 gText_Manhunt_WhatWaitUhOkay::
 	.string "What!? Wait uh - okay um, excellent\n"

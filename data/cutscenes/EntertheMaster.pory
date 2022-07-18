@@ -279,7 +279,7 @@ text gText_EnterTheMaster_TheyreGettingPaid{
 	}
 
 text gText_EnterTheMaster_WelcomeTo{
-	format("Bianca! {PLAYER}! Welcome to MuirWoods. Excellent work so far!")
+	format("Bianca! {PLAYER}! Welcome to Muirwoods. Excellent work so far!")
 	}
 
 text gText_EnterTheMaster_ThanksYoure{
@@ -291,7 +291,7 @@ text gText_EnterTheMaster_AndMyNotebook{
 	}
 
 text gText_EnterTheMaster_GettingThemToBattle{
-	format("I hope Pokémon 1 and Pokémon 2 in RobinWillTunnel weren't too much trouble. Getting them to battle without my direct commands was certainly a challenge.")
+	format("I hope Pokémon 1 and Pokémon 2 in Robinwilltunnel weren't too much trouble. Getting them to battle without my direct commands was certainly a challenge.")
 	}
 
 text gText_EnterTheMaster_IsThatWhatYoure{

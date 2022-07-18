@@ -227,5 +227,5 @@ gText_OldAssholeAppears_YouveBeenSuperNice::
 gText_OldAssholeAppears_NowWereEven::
 	.string "Now we're even after I ditched\n"
 	.string "breakfast. All right, time to go\l"
-	.string "challenge the FortPoint Gym. So glad\l"
+	.string "challenge the Fortpoint Gym. So glad\l"
 	.string "Daddy sent me these Go-Goggles!$"

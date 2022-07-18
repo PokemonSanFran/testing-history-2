@@ -1,0 +1,15 @@
+mapscripts Chasecenter_Construction_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Chasecenter_Construction_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_LOAD {
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+    ]
+}
+
+script Chasecenter_Construction_MapScripts_OnTransition {
+    if (var(VAR_ROUTE110_STATE)){
+        call(VSGarbodor_ObjectCleanUp_Script)
+}
+}

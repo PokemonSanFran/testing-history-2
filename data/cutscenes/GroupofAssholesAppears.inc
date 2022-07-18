@@ -152,12 +152,12 @@ GroupOfAssholesAppears_GroupLeaves_Dialogue::
 	msgbox gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent
 	msgbox gText_GroupOfAssholesAppears_YouBothMakeMeSick
 	closemessage
-	applymovement 1, GroupOfAssholesAppears_LeaveFishermansWharf_Slot1_Movement
-	applymovement 2, GroupOfAssholesAppears_LeaveFishermansWharf_Slot2_Movement
-	applymovement 3, GroupOfAssholesAppears_LeaveFishermansWharf_Slot3_Movement
-	applymovement 4, GroupOfAssholesAppears_LeaveFishermansWharf_Slot4_Movement
-	applymovement 5, GroupOfAssholesAppears_LeaveFishermansWharf_Slot5_Movement
-	applymovement 6, GroupOfAssholesAppears_LeaveFishermansWharf_Slot6_Movement
+	applymovement 1, GroupOfAssholesAppears_LeaveFishermanswharf_Slot1_Movement
+	applymovement 2, GroupOfAssholesAppears_LeaveFishermanswharf_Slot2_Movement
+	applymovement 3, GroupOfAssholesAppears_LeaveFishermanswharf_Slot3_Movement
+	applymovement 4, GroupOfAssholesAppears_LeaveFishermanswharf_Slot4_Movement
+	applymovement 5, GroupOfAssholesAppears_LeaveFishermanswharf_Slot5_Movement
+	applymovement 6, GroupOfAssholesAppears_LeaveFishermanswharf_Slot6_Movement
 	waitmovement 0
 	removeobject 1
 	removeobject 2
@@ -257,7 +257,7 @@ GroupOfAssholesAppears_WalkFromWest_Movement:
 	walk_up
 	step_end
 
-GroupOfAssholesAppears_LeaveFishermansWharf_Slot1_Movement:
+GroupOfAssholesAppears_LeaveFishermanswharf_Slot1_Movement:
 	walk_down
 	walk_down
 	walk_left
@@ -271,7 +271,7 @@ GroupOfAssholesAppears_LeaveFishermansWharf_Slot1_Movement:
 	walk_left
 	step_end
 
-GroupOfAssholesAppears_LeaveFishermansWharf_Slot2_Movement:
+GroupOfAssholesAppears_LeaveFishermanswharf_Slot2_Movement:
 	walk_down
 	walk_left
 	walk_left
@@ -284,7 +284,7 @@ GroupOfAssholesAppears_LeaveFishermansWharf_Slot2_Movement:
 	walk_left
 	step_end
 
-GroupOfAssholesAppears_LeaveFishermansWharf_Slot3_Movement:
+GroupOfAssholesAppears_LeaveFishermanswharf_Slot3_Movement:
 	walk_down
 	walk_left
 	walk_left
@@ -298,25 +298,8 @@ GroupOfAssholesAppears_LeaveFishermansWharf_Slot3_Movement:
 	walk_left
 	step_end
 
-GroupOfAssholesAppears_LeaveFishermansWharf_Slot4_Movement:
+GroupOfAssholesAppears_LeaveFishermanswharf_Slot4_Movement:
 	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-GroupOfAssholesAppears_LeaveFishermansWharf_Slot5_Movement:
-	walk_down
-	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -331,7 +314,24 @@ GroupOfAssholesAppears_LeaveFishermansWharf_Slot5_Movement:
 	walk_left
 	step_end
 
-GroupOfAssholesAppears_LeaveFishermansWharf_Slot6_Movement:
+GroupOfAssholesAppears_LeaveFishermanswharf_Slot5_Movement:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+GroupOfAssholesAppears_LeaveFishermanswharf_Slot6_Movement:
 	walk_down
 	walk_down
 	walk_left
