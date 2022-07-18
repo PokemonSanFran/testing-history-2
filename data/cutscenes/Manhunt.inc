@@ -237,7 +237,7 @@ Manhunt_Encounter_Giovanni_Dialogue_1:
 	callnative DrawMugshot
 	msgbox gText_Manhunt_WhatWaitUhOkay
 	callnative ClearMugshot
-	warpsilent MAP_YCOMBINATORTOWER_2F, 255, 8, 7
+	warpsilent MAP_SALESFORCETOWER_2F, 255, 8, 7
 	return
 
 Manhunt_Encounter_Giovanni_Dialogue_2:

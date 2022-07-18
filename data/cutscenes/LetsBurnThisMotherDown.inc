@@ -171,7 +171,7 @@ LetsBurnThisMotherDown_PostBattle_Dialogue::
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
 	fadedefaultbgm
-	warpsilent MAP_YCOMBINATORTOWER_2F, 255, 10, 12
+	warpsilent MAP_SALESFORCETOWER_2F, 255, 10, 12
 	release
 	end
 

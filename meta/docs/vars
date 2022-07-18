@@ -35,7 +35,7 @@
 3: Talked to Oak on 3rd floor
 4: Got to Rose's office
 
-#VAR_YCOMBINATORTOWER_2F_STATE
+#VAR_SALESFORCETOWER_2F_STATE
 1: Stepped onto floor, greeted by Sabrina
 2: Has talked to Sabrina
 3: War room is created, cutscene is about to play
@@ -75,7 +75,7 @@
 7: Finished puzzles, toggles "Have You Seen The News"
 8: removes everybody from the clearing
 
-#VAR_YCOMBINATORTOWER_2F_STATE
+#VAR_SALESFORCETOWER_2F_STATE
 **RELEVANCE**: Tracking state of the 2nd floor of Salesforce Tower
 
 1: Has stepped onto the floor and has been spotted by Sabrina

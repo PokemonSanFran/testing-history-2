@@ -162,8 +162,8 @@ gText_OffYouGo_WaitingForMe::
 	.string "Waiting for me…? Hold on, let me read…$"
 
 gText_OffYouGo_PleaseMeetMeOn::
-	.string "Oak: {PLAYER} and Bianca,\n"
-	.string "please meet me on the northern side of\l"
+	.string "Oak: {PLAYER} and Bianca, please meet\n"
+	.string "me on the northern side of\l"
 	.string "GldnGteBridge. (32 mins ago)$"
 
 gText_OffYouGo_IllBeRightOver::

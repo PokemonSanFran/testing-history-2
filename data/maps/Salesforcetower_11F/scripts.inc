@@ -1,0 +1,45 @@
+Salesforcetower_11F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Salesforcetower_11F_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Salesforcetower_11F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Salesforcetower_11F_MapScripts_OnTransition
+	return
+
+
+Salesforcetower_11F_MapScripts_OnTransition::
+	switch VAR_MAUVILLE_CITY_STATE
+	case 7, Salesforcetower_11F_MapScripts_OnTransition_2
+	case 8, Salesforcetower_11F_MapScripts_OnTransition_3
+	case 9, Salesforcetower_11F_MapScripts_OnTransition_4
+	call YouCantStopMe_ObjectCleanUp_Script
+	return
+
+Salesforcetower_11F_MapScripts_OnTransition_2:
+	call YouCantStopMe_HideObject_Script
+	return
+
+Salesforcetower_11F_MapScripts_OnTransition_3:
+	call YouCantStopMe_HideObject_Script
+	return
+
+Salesforcetower_11F_MapScripts_OnTransition_4:
+	call YouCantStopMe_MoveObject_Script
+	return
+
+
+Salesforcetower_11F_Rose_Event_Script::
+	lock
+	switch VAR_MAUVILLE_CITY_STATE
+	case 8, Salesforcetower_11F_Rose_Event_Script_2
+	case 9, Salesforcetower_11F_Rose_Event_Script_3
+	return
+
+Salesforcetower_11F_Rose_Event_Script_2:
+	goto YouCantStopMe_Confront_Dialogue
+	return
+
+Salesforcetower_11F_Rose_Event_Script_3:
+	goto YouCantStopMe_StartBossBattle_Script
+	return
+

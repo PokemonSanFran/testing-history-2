@@ -85,8 +85,8 @@ LetsFixThis_GetMessage_Dialogue_Text_0:
 	.string "You have a new text.$"
 
 gText_LetsFixThis_PeopleOf::
-	.string "People of SanFran, your Elite Four\n"
-	.string "has returned! We could not continue to\l"
+	.string "People of SanFran, your Elite Four has\n"
+	.string "returned! We could not continue to\l"
 	.string "stand by and watch these corporations\l"
 	.string "destroy our home for profits.$"
 
@@ -99,9 +99,9 @@ gText_LetsFixThis_WeWillBeGiving::
 	.string "Archer.$"
 
 gText_LetsFixThis_WePrayTheGovernment::
-	.string "We pray the government of SanFran\n"
-	.string "will open their eyes to the damage\l"
-	.string "these companies have done…$"
+	.string "We pray the government of SanFran will\n"
+	.string "open their eyes to the damage these\l"
+	.string "companies have done…$"
 
 gText_LetsFixThis_ButWeWillNot::
 	.string "…but we will not sit quietly and wait for\n"
@@ -128,8 +128,8 @@ gText_LetsFixThis_IMightGoALittle::
 	.string "I might go a little later. I don’t love\n"
 	.string "warehouse raves, but this is a special\l"
 	.string "occasion, you know? The other reason\l"
-	.string "I’m here is actually to tell you\l"
-	.string "Ariana new initiatives.$"
+	.string "I’m here is actually to tell you Ariana\l"
+	.string "new initiatives.$"
 
 gText_LetsFixThis_WhatreThey::
 	.string "What’re they up to?$"

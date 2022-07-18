@@ -1,0 +1,11 @@
+mapscripts Salesforcetower_5F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        goto(Salesforcetower_5F_MapScripts_OnTransition)
+    }
+}
+
+script Salesforcetower_5F_MapScripts_OnTransition {
+    if (var(VAR_MAUVILLE_CITY_STATE) > 4){
+        call(ImIn_HideStairsGuard_Script)
+    }
+}

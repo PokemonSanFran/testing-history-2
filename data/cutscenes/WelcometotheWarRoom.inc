@@ -116,7 +116,7 @@ WelcomeToTheWarRoom_FaceSpeakerOak::
 
 WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	lock
-	addvar VAR_YCOMBINATORTOWER_2F_STATE, 1
+	addvar VAR_SALESFORCETOWER_2F_STATE, 1
 	setvar VAR_ROUTE117_STATE, 1
 	call WelcomeToTheWarRoom_FaceSpeakerRose
 	applymovement 11, WelcomeToTheWarRoom_Pace

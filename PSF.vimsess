@@ -1246,10 +1246,10 @@ exe '4resize ' . ((&lines * 37 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 93 + 94) / 188)
 tabnext 1
 set stal=1
-badd +1 data/maps/YCombinatorTower_11F/scripts.pory
+badd +1 data/maps/Salesforcetower_11F/scripts.pory
 badd +1 include/constants/flags.h
 badd +38 data/maps/Alcatraz_B2F/scripts.pory
-badd +0 data/maps/YCombinatorTower_2F/scripts.pory
+badd +0 data/maps/Salesforcetower_2F/scripts.pory
 badd +64 data/scripts/debug.inc
 badd +0 data/cutscenes/YouCantStopMe.pory
 badd +1 data/maps/WeCanStopYouActually_Cutscene/scripts.pory

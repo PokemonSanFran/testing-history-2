@@ -1,6 +1,6 @@
 HaveYouSeenTheNews_AskHelp_Dialogue::
 	addvar VAR_ROUTE116_STATE, 1
-	setvar VAR_YCOMBINATORTOWER_2F_STATE, 3
+	setvar VAR_SALESFORCETOWER_2F_STATE, 3
 	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -30,7 +30,7 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	releaseall
-	warpsilent MAP_YCOMBINATORTOWER_2F, 255, 7, 14
+	warpsilent MAP_SALESFORCETOWER_2F, 255, 7, 14
 	end
 
 HaveYouSeenTheNews_AskHelp_Dialogue_1:
@@ -80,9 +80,8 @@ gText_HaveYouSeenTheNews_HowAreWeGoing::
 
 gText_HaveYouSeenTheNews_NoTimeToExplain::
 	.string "No time to explain! We're heading to\n"
-	.string "YCombinatortower right now. Do you\l"
-	.string "want to ride in our Uber,\l"
-	.string "{PLAYER}?$"
+	.string "Salesforcetower right now. Do you want\l"
+	.string "to ride in our Uber, {PLAYER}?$"
 
 gText_HaveYouSeenTheNews_FineButDontDawdle::
 	.string "Fine, but don't dawdle. Come to the\n"

@@ -4542,74 +4542,74 @@
       "blockdata_filepath": "data/layouts/SOMA_Gym/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_1F",
-      "name": "YCombinatorTower_1F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_1F",
+      "name": "Salesforcetower_1F_Layout",
       "width": 19,
       "height": 9,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_1F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_1F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_1F/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_10F",
-      "name": "YCombinatorTower_10F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_10F",
+      "name": "Salesforcetower_10F_Layout",
       "width": 19,
       "height": 30,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_10F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_10F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_10F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_10F/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_7F",
-      "name": "YCombinatorTower_7F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_7F",
+      "name": "Salesforcetower_7F_Layout",
       "width": 19,
       "height": 40,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_7F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_7F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_7F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_7F/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_ELEVATOR",
-      "name": "YCombinatorTower_Elevator_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_ELEVATOR",
+      "name": "Salesforcetower_Elevator_Layout",
       "width": 5,
       "height": 6,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattleFrontier",
-      "border_filepath": "data/layouts/YCombinatorTower_Elevator/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_Elevator/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_Elevator/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Elevator/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_2F",
-      "name": "YCombinatorTower_2F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_2F",
+      "name": "Salesforcetower_2F_Layout",
       "width": 19,
       "height": 40,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_2F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_2F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_2F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_2F/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_5F",
-      "name": "YCombinatorTower_5F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_5F",
+      "name": "Salesforcetower_5F_Layout",
       "width": 30,
       "height": 50,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Lilycove",
-      "border_filepath": "data/layouts/YCombinatorTower_5F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_5F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_5F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_5F/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_11F",
-      "name": "YCombinatorTower_11F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_11F",
+      "name": "Salesforcetower_11F_Layout",
       "width": 19,
       "height": 9,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_11F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_11F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_11F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_11F/map.bin"
     },
     {
       "id": "LAYOUT_MISSION",
@@ -5462,54 +5462,54 @@
       "blockdata_filepath": "data/layouts/Sunset_Sabrina_House/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_3F",
-      "name": "YCombinatorTower_3F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_3F",
+      "name": "Salesforcetower_3F_Layout",
       "width": 19,
       "height": 30,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_3F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_3F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_3F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_3F/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_4F",
-      "name": "YCombinatorTower_4F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_4F",
+      "name": "Salesforcetower_4F_Layout",
       "width": 19,
       "height": 30,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_4F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_4F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_4F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_4F/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_6F",
-      "name": "YCombinatorTower_6F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_6F",
+      "name": "Salesforcetower_6F_Layout",
       "width": 19,
       "height": 30,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_6F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_6F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_6F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_6F/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_8F",
-      "name": "YCombinatorTower_8F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_8F",
+      "name": "Salesforcetower_8F_Layout",
       "width": 19,
       "height": 30,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_8F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_8F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_8F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_8F/map.bin"
     },
     {
-      "id": "LAYOUT_YCOMBINATORTOWER_9F",
-      "name": "YCombinatorTower_9F_Layout",
+      "id": "LAYOUT_SALESFORCETOWER_9F",
+      "name": "Salesforcetower_9F_Layout",
       "width": 19,
       "height": 30,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
-      "border_filepath": "data/layouts/YCombinatorTower_9F/border.bin",
-      "blockdata_filepath": "data/layouts/YCombinatorTower_9F/map.bin"
+      "border_filepath": "data/layouts/Salesforcetower_9F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_9F/map.bin"
     },
     {
       "id": "LAYOUT_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE",

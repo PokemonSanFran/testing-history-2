@@ -76,7 +76,7 @@ AssholesHome_PostBattle_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_ILikeBeingPushed
-	compare VAR_YCOMBINATORTOWER_2F_STATE, 2
+	compare VAR_SALESFORCETOWER_2F_STATE, 2
 	goto_if_eq AssholesHome_PostBattle_Dialogue_2
 AssholesHome_PostBattle_Dialogue_1:
 	callnative ClearMugshot

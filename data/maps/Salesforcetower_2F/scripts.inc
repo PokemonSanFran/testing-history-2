@@ -1,0 +1,206 @@
+Salesforcetower_2F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Salesforcetower_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Salesforcetower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Salesforcetower_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Salesforcetower_2F_MapScripts_OnTransition
+	return
+
+Salesforcetower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_SALESFORCETOWER_2F_STATE, 3, Salesforcetower_2F_MovePlayerIntoPosition_Script
+	map_script_2 VAR_SALESFORCETOWER_2F_STATE, 5, Salesforcetower_2F_MovePlayerIntoPosition_Script
+	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3, LetsBurnThisMotherDown_MissionComplete_Dialogue
+	map_script_2 VAR_PETALBURG_WOODS_STATE, 4, HowDisappointing_MissionComplete_Dialogue
+	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 6, Manhunt_MissionComplete_Dialogue
+	map_script_2 VAR_MAUVILLE_CITY_STATE, 4, ImIn_PostWarpSplit_Dialogue
+	.2byte 0
+
+
+Salesforcetower_2F_MapScripts_OnTransition::
+	switch VAR_SALESFORCETOWER_2F_STATE
+	case 0, Salesforcetower_2F_MapScripts_OnTransition_3
+	case 1, Salesforcetower_2F_MapScripts_OnTransition_4
+	case 2, Salesforcetower_2F_MapScripts_OnTransition_5
+	case 3, Salesforcetower_2F_MapScripts_OnTransition_6
+	case 4, Salesforcetower_2F_MapScripts_OnTransition_7
+	case 5, Salesforcetower_2F_MapScripts_OnTransition_8
+	case 6, Salesforcetower_2F_MapScripts_OnTransition_9
+	case 7, Salesforcetower_2F_MapScripts_OnTransition_10
+	call WelcomeToTheWarRoom_Object_Hide_Script
+Salesforcetower_2F_MapScripts_OnTransition_1:
+	goto_if_set FLAG_TIMELINE_TRUE, Salesforcetower_2F_MapScripts_OnTransition_13
+Salesforcetower_2F_MapScripts_OnTransition_12:
+	goto_if_set FLAG_TIMELINE_FALSE, Salesforcetower_2F_MapScripts_OnTransition_15
+	return
+
+Salesforcetower_2F_MapScripts_OnTransition_3:
+	call WelcomeToTheWarRoom_Object_Hide_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_1
+
+Salesforcetower_2F_MapScripts_OnTransition_4:
+	call WelcomeToTheWarRoom_Object_Hide_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_1
+
+Salesforcetower_2F_MapScripts_OnTransition_5:
+	call WelcomeToTheWarRoom_Object_Hide_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_1
+
+Salesforcetower_2F_MapScripts_OnTransition_6:
+	call WelcomeToTheWarRoom_Object_Setup_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_1
+
+Salesforcetower_2F_MapScripts_OnTransition_7:
+	call WelcomeToTheWarRoom_Object_Hide_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_1
+
+Salesforcetower_2F_MapScripts_OnTransition_8:
+	call YouRealizeWereEvilRight_Object_Setup_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_1
+
+Salesforcetower_2F_MapScripts_OnTransition_9:
+	call YouRealizeWereEvilRight_Object_Cleanup_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_1
+
+Salesforcetower_2F_MapScripts_OnTransition_10:
+	call CongratsYoureanAsshole_ObjectCleanUp_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_1
+
+Salesforcetower_2F_MapScripts_OnTransition_13:
+	switch VAR_STORYLINE_STATE
+	case 110, Salesforcetower_2F_MapScripts_OnTransition_18
+	goto Salesforcetower_2F_MapScripts_OnTransition_12
+
+Salesforcetower_2F_MapScripts_OnTransition_15:
+	switch VAR_RUSTURF_TUNNEL_STATE
+	case 0, Salesforcetower_2F_MapScripts_OnTransition_21
+	call Manhunt_TowerObjectSetUp_Script
+	switch VAR_PETALBURG_WOODS_STATE
+	case 0, Salesforcetower_2F_MapScripts_OnTransition_25
+	case 4, Salesforcetower_2F_MapScripts_OnTransition_26
+	call YouHaveYourOrders_ObjectSetUp_Script
+Salesforcetower_2F_MapScripts_OnTransition_23:
+	compare VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3
+	goto_if_eq Salesforcetower_2F_MapScripts_OnTransition_28
+	return
+
+Salesforcetower_2F_MapScripts_OnTransition_18:
+	call ImIn_ObjectSetUp_PostWarp_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_12
+
+Salesforcetower_2F_MapScripts_OnTransition_21:
+	return
+
+Salesforcetower_2F_MapScripts_OnTransition_25:
+	return
+
+Salesforcetower_2F_MapScripts_OnTransition_26:
+	call HowDisappointing_PostMissionObjectSetUp_Script
+	goto Salesforcetower_2F_MapScripts_OnTransition_23
+
+Salesforcetower_2F_MapScripts_OnTransition_28:
+	call LetsBurnThisMotherDown_ObjectMove_Script
+	return
+
+
+Salesforcetower_2F_MovePlayerIntoPosition_Script::
+	lock
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_0, 7
+	goto_if_ne Salesforcetower_2F_MovePlayerIntoPosition_Script_2
+Salesforcetower_2F_MovePlayerIntoPosition_Script_1:
+	switch VAR_SALESFORCETOWER_2F_STATE
+	case 3, Salesforcetower_2F_MovePlayerIntoPosition_Script_5
+	case 5, Salesforcetower_2F_MovePlayerIntoPosition_Script_6
+	return
+
+Salesforcetower_2F_MovePlayerIntoPosition_Script_2:
+	fadescreen FADE_TO_BLACK
+	setobjectxy OBJ_EVENT_ID_PLAYER, 7, 14
+	TeleportCamera 7, 14
+	fadescreen FADE_FROM_BLACK
+	goto Salesforcetower_2F_MovePlayerIntoPosition_Script_1
+
+Salesforcetower_2F_MovePlayerIntoPosition_Script_5:
+	goto WelcomeToTheWarRoom_ExplainSitaution_Dialogue
+	return
+
+Salesforcetower_2F_MovePlayerIntoPosition_Script_6:
+	goto YouRealizeWereEvilRight_Open_Dialogue
+	return
+
+
+Salesforcetower_2F_Oak_Event_Script::
+	lock
+	switch VAR_STORYLINE_STATE
+	case 43, Salesforcetower_2F_Oak_Event_Script_3
+	case 44, Salesforcetower_2F_Oak_Event_Script_4
+	case 45, Salesforcetower_2F_Oak_Event_Script_5
+	case 46, Salesforcetower_2F_Oak_Event_Script_6
+Salesforcetower_2F_Oak_Event_Script_1:
+	release
+	end
+
+Salesforcetower_2F_Oak_Event_Script_3:
+	call CongratsYourAssAsshole_Intro_Dialogue
+	goto Salesforcetower_2F_Oak_Event_Script_1
+
+Salesforcetower_2F_Oak_Event_Script_4:
+	call LetsBurnThisMotherDown_Assignment_Dialogue
+	goto Salesforcetower_2F_Oak_Event_Script_1
+
+Salesforcetower_2F_Oak_Event_Script_5:
+	call LetsBurnThisMotherDown_Assignment_Dialogue
+	goto Salesforcetower_2F_Oak_Event_Script_1
+
+Salesforcetower_2F_Oak_Event_Script_6:
+	call LetsBurnThisMotherDown_Assignment_Dialogue
+	goto Salesforcetower_2F_Oak_Event_Script_1
+
+
+Salesforcetower_2F_Koga_Event_Script::
+	lock
+	switch VAR_STORYLINE_STATE
+	case 44, Salesforcetower_2F_Koga_Event_Script_3
+	case 45, Salesforcetower_2F_Koga_Event_Script_4
+	case 46, Salesforcetower_2F_Koga_Event_Script_5
+Salesforcetower_2F_Koga_Event_Script_1:
+	release
+	end
+
+Salesforcetower_2F_Koga_Event_Script_3:
+	call YouHaveYourOrders_Assignment_Dialogue
+	goto Salesforcetower_2F_Koga_Event_Script_1
+
+Salesforcetower_2F_Koga_Event_Script_4:
+	call YouHaveYourOrders_Assignment_Dialogue
+	goto Salesforcetower_2F_Koga_Event_Script_1
+
+Salesforcetower_2F_Koga_Event_Script_5:
+	call YouHaveYourOrders_Assignment_Dialogue
+	goto Salesforcetower_2F_Koga_Event_Script_1
+
+
+Salesforcetower_2F_Sabrina_Event_Script::
+	lock
+	switch VAR_STORYLINE_STATE
+	case 44, Salesforcetower_2F_Sabrina_Event_Script_3
+	case 45, Salesforcetower_2F_Sabrina_Event_Script_4
+	case 46, Salesforcetower_2F_Sabrina_Event_Script_5
+	call AlwaysWatchingWazowski_IgnoringPlayer_Dialogue
+Salesforcetower_2F_Sabrina_Event_Script_1:
+	release
+	end
+
+Salesforcetower_2F_Sabrina_Event_Script_3:
+	call Manhunt_Assignment_Dialogue
+	goto Salesforcetower_2F_Sabrina_Event_Script_1
+
+Salesforcetower_2F_Sabrina_Event_Script_4:
+	call Manhunt_Assignment_Dialogue
+	goto Salesforcetower_2F_Sabrina_Event_Script_1
+
+Salesforcetower_2F_Sabrina_Event_Script_5:
+	call Manhunt_Assignment_Dialogue
+	goto Salesforcetower_2F_Sabrina_Event_Script_1
+

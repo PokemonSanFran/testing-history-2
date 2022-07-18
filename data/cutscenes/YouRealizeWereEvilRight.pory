@@ -56,7 +56,7 @@ script YouRealizeWereEvilRight_PhoneCall_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_YeahImOnMyWay)
         callnative(ClearMugshot)
-        addvar(VAR_YCOMBINATORTOWER_2F_STATE,1)
+        addvar(VAR_SALESFORCETOWER_2F_STATE,1)
 
         msgbox(gText_YouRealizeWereEvilRight_WouldYouLikeToGo,MSGBOX_YESNO)
 
@@ -65,14 +65,14 @@ script YouRealizeWereEvilRight_PhoneCall_Dialogue {
                 releaseall
                 end
         } else {
-            warpsilent(MAP_YCOMBINATORTOWER_2F,255,7,14)
+            warpsilent(MAP_SALESFORCETOWER_2F,255,7,14)
         }
 }
 
 
 script YouRealizeWereEvilRight_Open_Dialogue {
     lockall
-        addvar(VAR_YCOMBINATORTOWER_2F_STATE,1)
+        addvar(VAR_SALESFORCETOWER_2F_STATE,1)
         applymovement(PLAYER,Common_Movement_FaceRight)
 
         //Oak and the player walk to the conference table. Sabrina is already at the table. The screens behind Sabrina light up as they all sit, showing Archer, the player, and the “Leader” of whatever Gym was restored first. PSF TODO
@@ -164,13 +164,13 @@ script YouRealizeWereEvilRight_Open_Dialogue {
 }
 
 text gText_YouRealizeWereEvilRight_SorryToBotherYou {
-    format("Hello {PLAYER}! Sorry to bother you, but there is a slight situation here at YCombinatortower. It's rather urgent. Please come to the second floor as soon as you can.")
+    format("Hello {PLAYER}! Sorry to bother you, but there is a slight situation here at Salesforcetower. It's rather urgent. Please come to the second floor as soon as you can.")
 }
 text gText_YouRealizeWereEvilRight_YeahImOnMyWay {
     format("Yeah, I'm on my way over!")
 }
 text gText_YouRealizeWereEvilRight_WouldYouLikeToGo {
-    format("Would you like to go to YCombinatortower?")
+    format("Would you like to go to Salesforcetower?")
 }
 text gText_YouRealizeWereEvilRight_ThisWay {
     format("This way.")

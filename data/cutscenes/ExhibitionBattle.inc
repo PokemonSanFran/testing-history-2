@@ -301,8 +301,8 @@ gText_ExhibitionBattle_WithTheirEntireLeadership::
 	.string "narrative around them. We're planning a\l"
 	.string "campaign to show the people of the\l"
 	.string "region the true dangers of collective\l"
-	.string "organizations like TeamRocket and\l"
-	.string "the Elite Four.$"
+	.string "organizations like TeamRocket and the\l"
+	.string "Elite Four.$"
 
 gText_ExhibitionBattle_WaitTheEliteFour::
 	.string "Wait, the Elite Four has a whole\n"

@@ -49,11 +49,11 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_YeahImOnMyWay
 	callnative ClearMugshot
-	addvar VAR_YCOMBINATORTOWER_2F_STATE, 1
+	addvar VAR_SALESFORCETOWER_2F_STATE, 1
 	msgbox gText_YouRealizeWereEvilRight_WouldYouLikeToGo, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq YouRealizeWereEvilRight_PhoneCall_Dialogue_1
-	warpsilent MAP_YCOMBINATORTOWER_2F, 255, 7, 14
+	warpsilent MAP_SALESFORCETOWER_2F, 255, 7, 14
 	return
 
 YouRealizeWereEvilRight_PhoneCall_Dialogue_1:
@@ -64,7 +64,7 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue_1:
 
 YouRealizeWereEvilRight_Open_Dialogue::
 	lockall
-	addvar VAR_YCOMBINATORTOWER_2F_STATE, 1
+	addvar VAR_SALESFORCETOWER_2F_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -158,7 +158,7 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue_Text_0:
 gText_YouRealizeWereEvilRight_SorryToBotherYou::
 	.string "Hello {PLAYER}! Sorry to bother you,\n"
 	.string "but there is a slight situation here at\l"
-	.string "YCombinatortower. It's rather urgent.\l"
+	.string "Salesforcetower. It's rather urgent.\l"
 	.string "Please come to the second floor as\l"
 	.string "soon as you can.$"
 
@@ -167,7 +167,7 @@ gText_YouRealizeWereEvilRight_YeahImOnMyWay::
 
 gText_YouRealizeWereEvilRight_WouldYouLikeToGo::
 	.string "Would you like to go to\n"
-	.string "YCombinatortower?$"
+	.string "Salesforcetower?$"
 
 gText_YouRealizeWereEvilRight_ThisWay::
 	.string "This way.$"

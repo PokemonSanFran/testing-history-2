@@ -78,8 +78,8 @@ static EWRAM_DATA u8 sSlidingDoorFrame = 0;
 static EWRAM_DATA u8 sTutorMoveAndElevatorWindowId = 0;
 static EWRAM_DATA u16 sLilycoveDeptStore_NeverRead = 0;
 static EWRAM_DATA u16 sLilycoveDeptStore_DefaultFloorChoice = 0;
-static EWRAM_DATA u16 sYCombinatorTower_NeverRead = 0;
-static EWRAM_DATA u16 sYCombinatorTower_DefaultFloorChoice = 0;
+static EWRAM_DATA u16 sSalesforcetower_NeverRead = 0;
+static EWRAM_DATA u16 sSalesforcetower_DefaultFloorChoice = 0;
 static EWRAM_DATA struct ListMenuItem *sScrollableMultichoice_ListMenuItem = NULL;
 static EWRAM_DATA u16 sScrollableMultichoice_ScrollOffset = 0;
 static EWRAM_DATA u16 sFrontierExchangeCorner_NeverRead = 0;
@@ -1683,20 +1683,20 @@ const u8 *const gDeptStoreFloorNames[] =
     [DEPT_STORE_FLOORNUM_ROOFTOP] = gText_Rooftop
 };
 
-const u8 *const gYCombinatorTowerFloorNames[] =
+const u8 *const gSalesforcetowerFloorNames[] =
 {
     [DEPT_STORE_FLOORNUM_B4F] = gText_B4F,
-    [YCOMBINATORTOWER_FLOORNUM_1F] = gText_1F,
-    [YCOMBINATORTOWER_FLOORNUM_2F] = gText_2F,
-    [YCOMBINATORTOWER_FLOORNUM_3F] = gText_3F,
-    [YCOMBINATORTOWER_FLOORNUM_4F] = gText_4F,
-    [YCOMBINATORTOWER_FLOORNUM_5F] = gText_5PF,
-    [YCOMBINATORTOWER_FLOORNUM_6F] = gText_6F,
-    [YCOMBINATORTOWER_FLOORNUM_7F] = gText_7F,
-    [YCOMBINATORTOWER_FLOORNUM_8F] = gText_8F,
-    [YCOMBINATORTOWER_FLOORNUM_9F] = gText_9F,
-    [YCOMBINATORTOWER_FLOORNUM_10F] = gText_10F,
-    [YCOMBINATORTOWER_FLOORNUM_11F] = gText_11F,
+    [SALESFORCETOWER_FLOORNUM_1F] = gText_1F,
+    [SALESFORCETOWER_FLOORNUM_2F] = gText_2F,
+    [SALESFORCETOWER_FLOORNUM_3F] = gText_3F,
+    [SALESFORCETOWER_FLOORNUM_4F] = gText_4F,
+    [SALESFORCETOWER_FLOORNUM_5F] = gText_5PF,
+    [SALESFORCETOWER_FLOORNUM_6F] = gText_6F,
+    [SALESFORCETOWER_FLOORNUM_7F] = gText_7F,
+    [SALESFORCETOWER_FLOORNUM_8F] = gText_8F,
+    [SALESFORCETOWER_FLOORNUM_9F] = gText_9F,
+    [SALESFORCETOWER_FLOORNUM_10F] = gText_10F,
+    [SALESFORCETOWER_FLOORNUM_11F] = gText_11F,
 };
 
 static const u16 sElevatorWindowTiles_Ascending[][3] =
@@ -1737,65 +1737,65 @@ static const u16 sElevatorWindowTiles_Descending[][3] =
     },
 };
 
-//Start YCombinatorTower Elevator Scripts
+//Start Salesforcetower Elevator Scripts
 
-void SetYCombinatorTowerFloor(void)
+void SetSalesforcetowerFloor(void)
 {
-    u8 YCombinatorTowerFloor; 
+    u8 SalesforcetowerFloor; 
 
     switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
     {
-        case MAP_NUM(YCOMBINATORTOWER_1F):
-            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_1F;
+        case MAP_NUM(SALESFORCETOWER_1F):
+            SalesforcetowerFloor = SALESFORCETOWER_FLOORNUM_1F;
             break;
-        case MAP_NUM(YCOMBINATORTOWER_2F):
-            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_2F;
+        case MAP_NUM(SALESFORCETOWER_2F):
+            SalesforcetowerFloor = SALESFORCETOWER_FLOORNUM_2F;
             break;
-        case MAP_NUM(YCOMBINATORTOWER_5F):
-            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_5F;
+        case MAP_NUM(SALESFORCETOWER_5F):
+            SalesforcetowerFloor = SALESFORCETOWER_FLOORNUM_5F;
             break;
-        case MAP_NUM(YCOMBINATORTOWER_10F):
-            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_10F;
+        case MAP_NUM(SALESFORCETOWER_10F):
+            SalesforcetowerFloor = SALESFORCETOWER_FLOORNUM_10F;
             break;
         default:
-            YCombinatorTowerFloor = YCOMBINATORTOWER_FLOORNUM_1F;
+            SalesforcetowerFloor = SALESFORCETOWER_FLOORNUM_1F;
             break;
     }
-    VarSet(VAR_DEPT_STORE_FLOOR, YCombinatorTowerFloor); //TODO Change VAR_DEPT_STORE_FLOOR to one more suited to PSF
+    VarSet(VAR_DEPT_STORE_FLOOR, SalesforcetowerFloor); //TODO Change VAR_DEPT_STORE_FLOOR to one more suited to PSF
 }
 
 u16 GetTowerFloorDefaultFloorChoice(void)
 {
-    sYCombinatorTower_NeverRead = 0;
-    sYCombinatorTower_DefaultFloorChoice = 0;
+    sSalesforcetower_NeverRead = 0;
+    sSalesforcetower_DefaultFloorChoice = 0;
 
-    if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(YCOMBINATORTOWER_1F))
+    if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(SALESFORCETOWER_1F))
     {
         switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
         {
-            case MAP_NUM(YCOMBINATORTOWER_10F):
-                sYCombinatorTower_NeverRead = 0;
-                sYCombinatorTower_DefaultFloorChoice = 0;
+            case MAP_NUM(SALESFORCETOWER_10F):
+                sSalesforcetower_NeverRead = 0;
+                sSalesforcetower_DefaultFloorChoice = 0;
                 break;
-            case MAP_NUM(YCOMBINATORTOWER_5F):
-                sYCombinatorTower_NeverRead = 0;
-                sYCombinatorTower_DefaultFloorChoice = 1;
+            case MAP_NUM(SALESFORCETOWER_5F):
+                sSalesforcetower_NeverRead = 0;
+                sSalesforcetower_DefaultFloorChoice = 1;
                 break;
-            case MAP_NUM(YCOMBINATORTOWER_2F):
-                sYCombinatorTower_NeverRead = 0;
-                sYCombinatorTower_DefaultFloorChoice = 2;
+            case MAP_NUM(SALESFORCETOWER_2F):
+                sSalesforcetower_NeverRead = 0;
+                sSalesforcetower_DefaultFloorChoice = 2;
                 break;
-            case MAP_NUM(YCOMBINATORTOWER_1F):
-                sYCombinatorTower_NeverRead = 0;
-                sYCombinatorTower_DefaultFloorChoice = 3;
+            case MAP_NUM(SALESFORCETOWER_1F):
+                sSalesforcetower_NeverRead = 0;
+                sSalesforcetower_DefaultFloorChoice = 3;
                 break;
         }
     }
 
-    return sYCombinatorTower_DefaultFloorChoice;
+    return sSalesforcetower_DefaultFloorChoice;
 }
 
-void ShowYCombinatorTowerElevatorFloorSelect(void)
+void ShowSalesforcetowerElevatorFloorSelect(void)
 {
     int xPos;
 
@@ -1805,13 +1805,13 @@ void ShowYCombinatorTowerElevatorFloorSelect(void)
     xPos = GetStringCenterAlignXOffset(1, gText_ElevatorNowOn, 64);
     AddTextPrinterParameterized(sTutorMoveAndElevatorWindowId, 1, gText_ElevatorNowOn, xPos, 1, TEXT_SKIP_DRAW, NULL);
 
-    xPos = GetStringCenterAlignXOffset(1, gYCombinatorTowerFloorNames[gSpecialVar_0x8005], 64);
-    AddTextPrinterParameterized(sTutorMoveAndElevatorWindowId, 1, gYCombinatorTowerFloorNames[gSpecialVar_0x8005], xPos, 17, TEXT_SKIP_DRAW, NULL);
+    xPos = GetStringCenterAlignXOffset(1, gSalesforcetowerFloorNames[gSpecialVar_0x8005], 64);
+    AddTextPrinterParameterized(sTutorMoveAndElevatorWindowId, 1, gSalesforcetowerFloorNames[gSpecialVar_0x8005], xPos, 17, TEXT_SKIP_DRAW, NULL);
 
     PutWindowTilemap(sTutorMoveAndElevatorWindowId);
     CopyWindowToVram(sTutorMoveAndElevatorWindowId, 3);
 }
-//End YCombinatorTower Elevator Scripts
+//End Salesforcetower Elevator Scripts
 
 void SetDeptStoreFloor(void)
 {

@@ -202,7 +202,7 @@ script TheGangsAllHere_EndScene_Dialogue{
 
 
 
-script YCombinatorTower_10F_EventScript_Tom {
+script Salesforcetower_10F_EventScript_Tom {
     trainerbattle_single(TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat)
     special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
     msgbox (Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE)
@@ -210,7 +210,7 @@ script YCombinatorTower_10F_EventScript_Tom {
     end
 }
 
-script YCombinatorTower_10F_EventScript_Ian {
+script Salesforcetower_10F_EventScript_Ian {
     trainerbattle_single (TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat)
     special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
     msgbox (Route104_Text_MiaPostBattle, MSGBOX_AUTOCLOSE)

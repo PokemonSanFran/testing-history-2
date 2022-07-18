@@ -195,7 +195,7 @@ TheGangsAllHere_EndScene_Dialogue::
 	end
 
 
-YCombinatorTower_10F_EventScript_Tom::
+Salesforcetower_10F_EventScript_Tom::
 	trainerbattle_single TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat
 	special GetPlayerBigGuyGirlString
 	msgbox Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE
@@ -203,7 +203,7 @@ YCombinatorTower_10F_EventScript_Tom::
 	end
 
 
-YCombinatorTower_10F_EventScript_Ian::
+Salesforcetower_10F_EventScript_Ian::
 	trainerbattle_single TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat
 	special GetPlayerBigGuyGirlString
 	msgbox Route104_Text_MiaPostBattle, MSGBOX_AUTOCLOSE
@@ -317,15 +317,15 @@ gText_TheGangsAllHere_WhatBringsYou::
 	.string "HQ?$"
 
 gText_TheGangsAllHere_ToldMeToVisit::
-	.string "Commissioner Rose told me to\n"
-	.string "visit after I beat Whitney!$"
+	.string "Commissioner Rose told me to visit\n"
+	.string "after I beat Whitney!$"
 
 gText_TheGangsAllHere_IsThisWhereYouWork::
 	.string "Is this where you work?$"
 
 gText_TheGangsAllHere_TheTowerYes::
-	.string "The Salesforce Tower? Yes! League\n"
-	.string "Ops? ...sort of. We wear a lot of hats!$"
+	.string "The Salesforce Tower? Yes! League Ops?\n"
+	.string "...sort of. We wear a lot of hats!$"
 
 gText_TheGangsAllHere_IHaventBeen::
 	.string "I haven't been up here in a while\n"
@@ -346,8 +346,8 @@ gText_TheGangsAllHere_ThisIsOffice::
 	.string "This is Rose's office. After you.$"
 
 gText_TheGangsAllHere_ComeOnIn::
-	.string "{PLAYER}! Oak! Come on in, I\n"
-	.string "just finished an email! Glad you're both\l"
+	.string "{PLAYER}! Oak! Come on in, I just\n"
+	.string "finished an email! Glad you're both\l"
 	.string "here, and excellent timing that you ran\l"
 	.string "into each other.$"
 
@@ -360,15 +360,14 @@ gText_TheGangsAllHere_IThoughtYouSaid::
 	.string "for the C.E.O.?$"
 
 gText_TheGangsAllHere_IDidIsee::
-	.string "I did. I see Rose neglected to\n"
-	.string "reveal his full title...?$"
+	.string "I did. I see Rose neglected to reveal\n"
+	.string "his full title...?$"
 
 gText_TheGangsAllHere_NotIntentionally::
 	.string "Not intentionally! I was just so swept\n"
-	.string "up in your battle! Oak, please\l"
-	.string "tell me you'll go back and watch\l"
-	.string "Sabrina's highlight reel later, it\l"
-	.string "was fantastic.$"
+	.string "up in your battle! Oak, please tell me\l"
+	.string "you'll go back and watch Sabrina's\l"
+	.string "highlight reel later, it was fantastic.$"
 
 gText_TheGangsAllHere_LikeISaidWe::
 	.string "Like I said, we wear a lot of hats.$"
@@ -421,5 +420,5 @@ gText_TheGangsAllHere_FeelFreeToContinue::
 	.string "help in the battles. Hopefully\l"
 	.string "supporting me wasn't too exhausting!\l"
 	.string "Ah, and if you haven't already visited\l"
-	.string "Sabrina, go do so. They're on\l"
-	.string "Marketing, the second floor.$"
+	.string "Sabrina, go do so. They're on Marketing,\l"
+	.string "the second floor.$"

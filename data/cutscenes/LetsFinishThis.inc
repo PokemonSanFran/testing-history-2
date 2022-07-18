@@ -136,8 +136,8 @@ LetsFinishThis_WalkAway:
 	step_end
 
 LetsFinishThis_GoToFlashback_Script_Text_0:
-	.string "this is a flashback to Oak's\n"
-	.string "kids explaining the warp panels.$"
+	.string "this is a flashback to Oak's kids\n"
+	.string "explaining the warp panels.$"
 
 gText_LetsFinishThis_IDontThinkIm::
 	.string "I don’t think I’m surprised by Psfbadguy,\n"
@@ -203,8 +203,8 @@ gText_LetsFinishThis_TheyCameForTheKings::
 	.string "back.$"
 
 gText_LetsFinishThis_SoBreakInto::
-	.string "So, break into YCombinatortower, force\n"
-	.string "a confession from Rose, broadcast it\l"
+	.string "So, break into Salesforcetower, force a\n"
+	.string "confession from Rose, broadcast it\l"
 	.string "using their equipment and public\l"
 	.string "sentiment will come crashing down.\l"
 	.string "Right?$"

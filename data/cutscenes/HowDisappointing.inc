@@ -158,7 +158,7 @@ HowDisappointing_ArrestScene_Dialogue::
 	waitmovement 0
 	msgbox gText_HowDisappointing_YoureUnderArrest
 	addvar VAR_PETALBURG_WOODS_STATE, 1
-	warpsilent MAP_YCOMBINATORTOWER_2F, 255, 16, 26
+	warpsilent MAP_SALESFORCETOWER_2F, 255, 16, 26
 	return
 
 

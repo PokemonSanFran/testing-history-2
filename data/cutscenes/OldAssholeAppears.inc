@@ -213,7 +213,7 @@ gText_OldAssholeAppears_LetsYouCallARide::
 
 gText_OldAssholeAppears_LetsYouUse::
 	.string "That card lets you use Uber for\n"
-	.string "free! I went to the YCombinatortower,\l"
+	.string "free! I went to the Salesforcetower,\l"
 	.string "and the League Commissioner gave me\l"
 	.string "these for being the first Challenger to\l"
 	.string "visit! It also lets you use the Subway\l"

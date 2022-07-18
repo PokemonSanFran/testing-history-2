@@ -170,7 +170,7 @@ text gText_OldAssholeAppears_LetsYouCallARide {
 }
 
 text gText_OldAssholeAppears_LetsYouUse {
-    format("That card lets you use Uber for free! I went to the YCombinatortower, and the League Commissioner gave me these for being the first Challenger to visit! It also lets you use the Subway System for free, but I think I'll stick to Uber. Less homeless people to deal with, you know?")
+    format("That card lets you use Uber for free! I went to the Salesforcetower, and the League Commissioner gave me these for being the first Challenger to visit! It also lets you use the Subway System for free, but I think I'll stick to Uber. Less homeless people to deal with, you know?")
 }
 
 text gText_OldAssholeAppears_YouveBeenSuperNice {

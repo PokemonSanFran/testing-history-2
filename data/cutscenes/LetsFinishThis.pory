@@ -206,7 +206,7 @@ text gText_LetsFinishThis_TheyCameForTheKings {
 }
 
 text gText_LetsFinishThis_SoBreakInto {
-    format("So, break into YCombinatortower, force a confession from Rose, broadcast it using their equipment and public sentiment will come crashing down. Right?")
+    format("So, break into Salesforcetower, force a confession from Rose, broadcast it using their equipment and public sentiment will come crashing down. Right?")
 }
 
 text gText_LetsFinishThis_APublicConfession {

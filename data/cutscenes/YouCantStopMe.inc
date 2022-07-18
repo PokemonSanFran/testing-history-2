@@ -240,8 +240,8 @@ gText_YouCantStopMe_PleaseItIsntToo::
 	.string "Please! It isn’t too late to fix things.$"
 
 gText_YouCantStopMe_PeopleOnDied::
-	.string "People on Alameda died, Oak! We\n"
-	.string "can’t fix that.$"
+	.string "People on Alameda died, Oak! We can’t fix\n"
+	.string "that.$"
 
 gText_YouCantStopMe_YesItsUnforuntate::
 	.string "*sigh* Yes, it's unfortunate that there\n"

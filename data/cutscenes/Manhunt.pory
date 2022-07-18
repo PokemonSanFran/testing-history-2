@@ -296,7 +296,7 @@ script Manhunt_Encounter_Giovanni_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_Manhunt_WhatWaitUhOkay)
         callnative(ClearMugshot)
-        warpsilent(MAP_YCOMBINATORTOWER_2F,255,8,7)
+        warpsilent(MAP_SALESFORCETOWER_2F,255,8,7)
 }
 
 script Manhunt_MissionComplete_Dialogue {

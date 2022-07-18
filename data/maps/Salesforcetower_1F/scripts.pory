@@ -1,0 +1,13 @@
+mapscripts Salesforcetower_1F_MapScripts {}
+
+script Salesforcetower_BlockedStairs_Dialogue {
+    lockall
+    msgbox(SalesforcetowerElevator_BlockedStairs_Text1,MSGBOX_NPC)
+    closemessage
+    releaseall 
+    end
+}
+
+text SalesforcetowerElevator_BlockedStairs_Text1 {
+    format("Sorry, this floor is employees only.")
+}

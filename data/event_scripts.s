@@ -1088,13 +1088,13 @@ Script_RemoveTint::
 .include "data/maps/Psfroute22/scripts.inc"
 .include "data/maps/SOMA/scripts.inc"
 .include "data/maps/SOMA_Gym/scripts.inc"
-.include "data/maps/YCombinatorTower_1F/scripts.inc"
-.include "data/maps/YCombinatorTower_10F/scripts.inc"
-.include "data/maps/YCombinatorTower_7F/scripts.inc"
-.include "data/maps/YCombinatorTower_Elevator/scripts.inc"
-.include "data/maps/YCombinatorTower_2F/scripts.inc"
-.include "data/maps/YCombinatorTower_5F/scripts.inc"
-.include "data/maps/YCombinatorTower_11F/scripts.inc"
+.include "data/maps/Salesforcetower_1F/scripts.inc"
+.include "data/maps/Salesforcetower_10F/scripts.inc"
+.include "data/maps/Salesforcetower_7F/scripts.inc"
+.include "data/maps/Salesforcetower_Elevator/scripts.inc"
+.include "data/maps/Salesforcetower_2F/scripts.inc"
+.include "data/maps/Salesforcetower_5F/scripts.inc"
+.include "data/maps/Salesforcetower_11F/scripts.inc"
 .include "data/maps/Mission/scripts.inc"
 .include "data/maps/Psfroute9/scripts.inc"
 .include "data/maps/Tenderloin/scripts.inc"
@@ -1325,14 +1325,14 @@ Script_RemoveTint::
 
 	.include "data/maps/Sunset_Sabrina_House/scripts.inc"
 
-	.include "data/maps/YCombinatorTower_3F/scripts.inc"
+	.include "data/maps/Salesforcetower_3F/scripts.inc"
 
-	.include "data/maps/YCombinatorTower_4F/scripts.inc"
+	.include "data/maps/Salesforcetower_4F/scripts.inc"
 
-	.include "data/maps/YCombinatorTower_6F/scripts.inc"
+	.include "data/maps/Salesforcetower_6F/scripts.inc"
 
-	.include "data/maps/YCombinatorTower_8F/scripts.inc"
+	.include "data/maps/Salesforcetower_8F/scripts.inc"
 
-	.include "data/maps/YCombinatorTower_9F/scripts.inc"
+	.include "data/maps/Salesforcetower_9F/scripts.inc"
 
 	.include "data/maps/WeCanStopYouActually_Cutscene/scripts.inc"

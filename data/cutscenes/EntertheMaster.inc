@@ -263,9 +263,9 @@ gText_EnterTheMaster_YouKnow::
 	.string "we're stuck in this stupid forest.$"
 
 gText_EnterTheMaster_IThoughtGymLeaders::
-	.string "I thought SanFran's Gym Leaders\n"
-	.string "would be tougher. I wonder how their\l"
-	.string "old Elite Four stacks up to Unova's?$"
+	.string "I thought SanFran's Gym Leaders would\n"
+	.string "be tougher. I wonder how their old Elite\l"
+	.string "Four stacks up to Unova's?$"
 
 gText_EnterTheMaster_DoYouThinkTheyre::
 	.string "Do you think they're going to be worth\n"
@@ -298,10 +298,10 @@ gText_EnterTheMaster_AndMyNotebook::
 
 gText_EnterTheMaster_GettingThemToBattle::
 	.string "I hope Pokémon 1 and Pokémon 2 in\n"
-	.string "RobinWillTunnel weren't too much trouble.\l"
-	.string "Getting them to battle without my\l"
-	.string "direct commands was certainly a\l"
-	.string "challenge.$"
+	.string "RobinWillTunnel weren't too much\l"
+	.string "trouble. Getting them to battle\l"
+	.string "without my direct commands was\l"
+	.string "certainly a challenge.$"
 
 gText_EnterTheMaster_IsThatWhatYoure::
 	.string "Is that what you're teaching us?\n"

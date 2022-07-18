@@ -538,9 +538,9 @@ gSpecials::
 	def_special SetTotemBoost
     def_special TeleportCamera
     def_special ReturnCameraToPlayer
-	def_special SetYCombinatorTowerFloor
+	def_special SetSalesforcetowerFloor
 	def_special GetTowerFloorDefaultFloorChoice
-    def_special ShowYCombinatorTowerElevatorFloorSelect
+    def_special ShowSalesforcetowerElevatorFloorSelect
     def_special GetNumberOfBadges
     def_special GetMegaEvolutionPartyMember
     def_special CheckMegaEvolutionPartyMember

@@ -24,7 +24,7 @@ CongratsYoureanAsshole_ObjectCleanUp_Script::
 
 
 CongratsYourAssAsshole_Intro_Dialogue::
-	compare VAR_YCOMBINATORTOWER_2F_STATE, 6
+	compare VAR_SALESFORCETOWER_2F_STATE, 6
 	goto_if_eq CongratsYourAssAsshole_Intro_Dialogue_2
 CongratsYourAssAsshole_Intro_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_LANCE
@@ -47,7 +47,7 @@ CongratsYourAssAsshole_Intro_Dialogue_1:
 	msgbox gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal
 	applymovement 14, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
-	addvar VAR_YCOMBINATORTOWER_2F_STATE, 1
+	addvar VAR_SALESFORCETOWER_2F_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_TheresNoTurningBack
@@ -190,6 +190,6 @@ gText_CongratsYoureanAsshole_ThingsWillTake::
 	.string "Things will take time.$"
 
 gText_CongratsYoureanAsshole_ThatsTheSpirit::
-	.string "That’s the spirit! Oak, Sabrina,\n"
-	.string "and I all have different missions for\l"
-	.string "you. Come talk to us when you're ready.$"
+	.string "That’s the spirit! Oak, Sabrina, and I all\n"
+	.string "have different missions for you. Come\l"
+	.string "talk to us when you're ready.$"

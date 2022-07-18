@@ -260,9 +260,8 @@ gText_TheStrikeStrikesBack_DidYouFlyAll::
 	.string "here to tell me that?$"
 
 gText_TheStrikeStrikesBack_AskedMeToPick::
-	.string "Nah. Oak asked me to pick you\n"
-	.string "up. Turns out they need our help. Let's\l"
-	.string "go.$"
+	.string "Nah. Oak asked me to pick you up. Turns\n"
+	.string "out they need our help. Let's go.$"
 
 gText_TheStrikeStrikesBack_AndCongratulations::
 	.string "Congratulations to you, {PLAYER}!\n"
@@ -358,8 +357,8 @@ gText_TheStrikeStrikesBack_CutToTheChase::
 	.string "You're right though, we're both about to\n"
 	.string "be very busy. I'll cut to the chase.\l"
 	.string "Could you head down to Psfroute22?\l"
-	.string "Oak will meet you there and\l"
-	.string "explain everything.$"
+	.string "Oak will meet you there and explain\l"
+	.string "everything.$"
 
 gText_TheStrikeStrikesBack_SureRightNow::
 	.string "Sure. Right now?$"

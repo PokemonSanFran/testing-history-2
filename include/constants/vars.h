@@ -270,7 +270,7 @@
 #define VAR_GYM_2_STATE                    0x40FA // Previously Unused Var
 #define VAR_DOGPATCH_STATE                  0x40FB // Previously Unused Var
 #define VAR_STORYLINE_STATE                 0x40FC // Previously Unused Var
-#define VAR_YCOMBINATORTOWER_2F_STATE        0x40FD // Previously Unused Var
+#define VAR_SALESFORCETOWER_2F_STATE        0x40FD // Previously Unused Var
 #define VAR_UNUSED_0x40FE                    0x40FE // Unused Var
 #define VAR_UNUSED_0x40FF                    0x40FF // Unused Var
 
