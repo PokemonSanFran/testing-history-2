@@ -25,9 +25,18 @@ Southbay_Compound_1F_MapScripts_OnTransition::
 	case 8, Southbay_Compound_1F_MapScripts_OnTransition_8
 Southbay_Compound_1F_MapScripts_OnTransition_1:
 	switch VAR_STORYLINE_STATE
-	case 9, Southbay_Compound_1F_MapScripts_OnTransition_10
-	case 10, Southbay_Compound_1F_MapScripts_OnTransition_11
-	case 23, Southbay_Compound_1F_MapScripts_OnTransition_12
+	case 0, Southbay_Compound_1F_MapScripts_OnTransition_10
+	case 1, Southbay_Compound_1F_MapScripts_OnTransition_11
+	case 2, Southbay_Compound_1F_MapScripts_OnTransition_12
+	case 3, Southbay_Compound_1F_MapScripts_OnTransition_13
+	case 4, Southbay_Compound_1F_MapScripts_OnTransition_14
+	case 5, Southbay_Compound_1F_MapScripts_OnTransition_15
+	case 6, Southbay_Compound_1F_MapScripts_OnTransition_16
+	case 7, Southbay_Compound_1F_MapScripts_OnTransition_17
+	case 8, Southbay_Compound_1F_MapScripts_OnTransition_18
+	case 9, Southbay_Compound_1F_MapScripts_OnTransition_19
+	case 10, Southbay_Compound_1F_MapScripts_OnTransition_20
+	case 23, Southbay_Compound_1F_MapScripts_OnTransition_21
 	call VSGarbodor_ObjectCleanUp_Script
 	return
 
@@ -56,14 +65,41 @@ Southbay_Compound_1F_MapScripts_OnTransition_8:
 	goto Southbay_Compound_1F_MapScripts_OnTransition_1
 
 Southbay_Compound_1F_MapScripts_OnTransition_10:
-	call AaandWereBack_ObjectSetUp_Script
 	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_11:
-	call AaandWereBack_ObjectHide_Script
 	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_12:
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_13:
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_14:
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_15:
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_16:
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_17:
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_18:
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_19:
+	call AaandWereBack_ObjectSetUp_Script
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_20:
+	call AaandWereBack_ObjectHide_Script
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_21:
 	call VSGarbodor_ReturnToTheCompound_ObjectSetUp
 	return
 

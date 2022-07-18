@@ -24,6 +24,15 @@ script Southbay_Compound_1F_MapScripts_OnTransition {
     }
 
     switch (var(VAR_STORYLINE_STATE)){
+        case 0: return
+        case 1: return
+        case 2: return
+        case 3: return
+        case 4: return
+        case 5: return
+        case 6: return
+        case 7: return
+        case 8: return
         case 9: call(AaandWereBack_ObjectSetUp_Script)
         case 10: call(AaandWereBack_ObjectHide_Script)
         case 23: call(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
