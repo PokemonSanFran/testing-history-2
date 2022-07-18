@@ -647,14 +647,14 @@ gText_ImIn_WereCertainNobody::
 	.string "We're certain nobody is home?$"
 
 gText_ImIn_HasntLeftWorkEarly::
-	.string "Sabrina hasn't left work early a\n"
-	.string "day in their life. Psfbadguy is led by\l"
+	.string "Sabrina hasn't left work early a day in\n"
+	.string "their life. Psfbadguy is led by\l"
 	.string "monsters, but at least they're\l"
 	.string "hard-working monsters.$"
 
 gText_ImIn_WereInPosition::
-	.string "We're in position at Tenderloin. Ready to\n"
-	.string "mobilize this diversion when you are.$"
+	.string "We're in position at Tenderloin. Ready\n"
+	.string "to mobilize this diversion when you are.$"
 
 gText_ImIn_TheSideDoorWill::
 	.string "The side door will definitely work,\n"
@@ -682,8 +682,8 @@ gText_ImIn_GuessWereAllLooking::
 	.string "their birthday, right?$"
 
 gText_ImIn_WereIn::
-	.string "Ariana, we're in. Everybody\n"
-	.string "remember the plan?$"
+	.string "Ariana, we're in. Everybody remember the\n"
+	.string "plan?$"
 
 gText_ImIn_OnceYoureAllThrough::
 	.string "Once you're all through the panel, I'll\n"
@@ -717,8 +717,8 @@ gText_ImIn_ThisPlaceIsProbably::
 	.string "Trainers. Let's spread out.$"
 
 gText_ImIn_HasAnOfficeOn::
-	.string "Rose has an office on the 10th\n"
-	.string "floor, I've been there myself.$"
+	.string "Rose has an office on the 10th floor,\n"
+	.string "I've been there myself.$"
 
 gText_ImIn_FloorThenLets::
 	.string "10th floor then, let's move!$"
@@ -763,9 +763,8 @@ gText_ImIn_DaddyWontBeAble::
 	.string "of this one.$"
 
 gText_ImIn_AreDeadDoYou::
-	.string "If you and Archer are dead, do\n"
-	.string "you think I get to be Champion\l"
-	.string "instead?$"
+	.string "If you and Archer are dead, do you think\n"
+	.string "I get to be Champion instead?$"
 
 gText_ImIn_HowDoesThisKeep::
 	.string "How does this keep happening?!?!?$"

@@ -385,11 +385,10 @@ gText_SurvivalChance333_OhHellThatsRight::
 
 gText_SurvivalChance333_IAlwaysForget::
 	.string "I always forget - we took those out of\n"
-	.string "circulation in SanFran a few years\l"
-	.string "ago. Criminals were using them for too\l"
-	.string "many smash and grabs, so now they're\l"
-	.string "for police use only. Any other\l"
-	.string "questions?$"
+	.string "circulation in SanFran a few years ago.\l"
+	.string "Criminals were using them for too many\l"
+	.string "smash and grabs, so now they're for\l"
+	.string "police use only. Any other questions?$"
 
 gText_SurvivalChance333_NoSir::
 	.string "NO sir.$"

@@ -96,8 +96,8 @@ EnterMorty_PostDefeat2_Dialogue::
 
 
 gText_EnterMorty_SuhDude::
-	.string "Suh dude. Name's Morty. Sick job\n"
-	.string "making it up here!$"
+	.string "Suh dude. Name's Morty. Sick job making\n"
+	.string "it up here!$"
 
 gText_EnterMorty_EvenBeenBattleResort::
 	.string "Ever been to the Battle Resort?$"

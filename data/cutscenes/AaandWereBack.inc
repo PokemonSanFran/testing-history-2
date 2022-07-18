@@ -121,9 +121,9 @@ gText_AaandWereBack_OnlyThree::
 gText_AaandWereBack_YeahThatBusted::
 	.string "Yeah, that busted ferry sucks. I'm\n"
 	.string "going to challenge the Castro and\l"
-	.string "Haightashbury Gyms tomorrow, and the ferry\l"
-	.string "will definately be fixed after that, so\l"
-	.string "Berkeley Gym will be last.$"
+	.string "Haightashbury Gyms tomorrow, and the\l"
+	.string "ferry will definately be fixed after\l"
+	.string "that, so Berkeley Gym will be last.$"
 
 gText_AaandWereBack_INeedToFigure::
 	.string "I need to figure out how to get some\n"

@@ -330,10 +330,9 @@ gText_WaitEvenThen_AndTheGovernment::
 	.string "I guess nothing is off limits.$"
 
 gText_WaitEvenThen_IllHaveSomeOther::
-	.string "I’ll have some other TeamRocket\n"
-	.string "members clear out the rest of the\l"
-	.string "trapped Pokémon… Let’s go back to\l"
-	.string "Alameda.$"
+	.string "I’ll have some other TeamRocket members\n"
+	.string "clear out the rest of the trapped\l"
+	.string "Pokémon… Let’s go back to Alameda.$"
 
 gText_WaitEvenThen_ComingWithMe::
 	.string "Coming with me, {PLAYER}?$"

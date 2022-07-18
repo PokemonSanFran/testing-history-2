@@ -260,8 +260,8 @@ gText_MaskOff_YouveMadeIncredible::
 gText_MaskOff_ItsNiceToNotGet::
 	.string "Thank you! It’s nice to not get crushed\n"
 	.string "as easily anymore… wait! I was\l"
-	.string "following a lead looking for Wikstrom.\l"
-	.string "I think they train around here, and I\l"
+	.string "following a lead looking for Wikstrom. I\l"
+	.string "think they train around here, and I\l"
 	.string "want to try to convince them to work\l"
 	.string "with us.$"
 
@@ -292,12 +292,12 @@ gText_MaskOff_IHidMyIdentity::
 	.string "I hid my identity because I was worried\n"
 	.string "about my influence diluting the\l"
 	.string "message. If people could unite under a\l"
-	.string "symbol like Giovanni, then in\l"
-	.string "theory, anybody could lead\l"
-	.string "TeamRocket if something happened to\l"
-	.string "me. And if the Elite Four wasn’t directly\l"
-	.string "connected to TeamRocket, then they\l"
-	.string "couldn’t retaliate against the others.$"
+	.string "symbol like Giovanni, then in theory,\l"
+	.string "anybody could lead TeamRocket if\l"
+	.string "something happened to me. And if the\l"
+	.string "Elite Four wasn’t directly connected to\l"
+	.string "TeamRocket, then they couldn’t\l"
+	.string "retaliate against the others.$"
 
 gText_MaskOff_ThingsAre::
 	.string "Things are… a little different now. I\n"
@@ -306,9 +306,9 @@ gText_MaskOff_ThingsAre::
 gText_MaskOff_ISee::
 	.string "I see. If the Elite Four is going to\n"
 	.string "present as a united front, I’ll need to\l"
-	.string "give up leadership to Ariana.\l"
-	.string "You know, I think they’ve purposely\l"
-	.string "kept me in the dark about this.$"
+	.string "give up leadership to Ariana. You know,\l"
+	.string "I think they’ve purposely kept me in\l"
+	.string "the dark about this.$"
 
 gText_MaskOff_WaitWhatDO::
 	.string "Wait, what do you mean?$"
@@ -331,11 +331,11 @@ gText_MaskOff_WhatCanYou::
 	.string "Wikstrom?$"
 
 gText_MaskOff_IUsedToSee::
-	.string "I used to see Wikstrom all the time,\n"
-	.string "but I'm pretty sure he moved away. He\l"
-	.string "used to come back super late at night,\l"
-	.string "so he must have been pulling really\l"
-	.string "long hours.$"
+	.string "I used to see Wikstrom all the time, but\n"
+	.string "I'm pretty sure he moved away. He used\l"
+	.string "to come back super late at night, so he\l"
+	.string "must have been pulling really long\l"
+	.string "hours.$"
 
 gText_MaskOff_HeWorkedInThe::
 	.string "He worked in the Mission as a business\n"
@@ -372,9 +372,9 @@ gText_MaskOff_IKnowHeUsedToLive::
 
 gText_MaskOff_ItUsedToBeSuper::
 	.string "It used to be super common to see him\n"
-	.string "zipping around in the skies. Wikstrom\l"
-	.string "is one of the few trainers that flies\l"
-	.string "on his Pokémon to travel around!$"
+	.string "zipping around in the skies. Wikstrom is\l"
+	.string "one of the few trainers that flies on\l"
+	.string "his Pokémon to travel around!$"
 
 gText_MaskOff_IMissWorking::
 	.string "I miss working with Wikstrom. Whenever\n"
@@ -445,9 +445,9 @@ gText_MaskOff_IThinkSoHe::
 
 gText_MaskOff_ADigitalPhoto::
 	.string "A digital photo frame. The picture being\n"
-	.string "displayed shows Wikstrom and\l"
-	.string "Siebold together at the ramen\l"
-	.string "restaurantin Japantown.$"
+	.string "displayed shows Wikstrom and Siebold\l"
+	.string "together at the ramen restaurantin\l"
+	.string "Japantown.$"
 
 gText_MaskOff_FancyABattle::
 	.string "A surprise, seeing you here, {PLAYER}.\n"

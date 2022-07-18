@@ -480,8 +480,7 @@ gText_ThisIsntRandom_TheSecondSet::
 	.string "code.$"
 
 gText_ThisIsntRandom_SoIsActuallyTrying::
-	.string "So… is Koga actually trying to\n"
-	.string "help us?$"
+	.string "So… is Koga actually trying to help us?$"
 
 gText_ThisIsntRandom_AboutToFindOut::
 	.string "About to find out. Let’s rage!$"
@@ -491,17 +490,16 @@ gText_ThisIsntRandom_IfWereAllGoing::
 	.string "okay. Let’s see.$"
 
 gText_ThisIsntRandom_DidYouKnowThereWas::
-	.string "Ariana, did you know there was a\n"
-	.string "secret tunnel underneath Ferrybuilding?$"
+	.string "Ariana, did you know there was a secret\n"
+	.string "tunnel underneath Ferrybuilding?$"
 
 gText_ThisIsntRandom_IfPeopleKnew::
 	.string "If people knew about it it wouldn’t be a\n"
 	.string "secret…$"
 
 gText_ThisIsntRandom_DidYouKnowAbout::
-	.string "Hey ARCHER, did you know about\n"
-	.string "the secret laboratory under the\l"
-	.string "ocean?$"
+	.string "Hey ARCHER, did you know about the\n"
+	.string "secret laboratory under the ocean?$"
 
 gText_ThisIsntRandom_DotDotDot::
 	.string "…$"
@@ -569,8 +567,8 @@ gText_ThisIsntRandom_IFoundSomeAccessLogs::
 	.string "three… in the last week.$"
 
 gText_ThisIsntRandom_CanYouGetMeTheExact::
-	.string "Ariana… can you get me the exact\n"
-	.string "dates of the ones in 1971?$"
+	.string "Ariana… can you get me the exact dates\n"
+	.string "of the ones in 1971?$"
 
 gText_ThisIsntRandom_IThinkSoHoldOn::
 	.string "I think so, hold on… yeah! Oh, when I get\n"
@@ -587,8 +585,8 @@ gText_ThisIsntRandom_AreThoseDatesSpecial::
 
 gText_ThisIsntRandom_TheSecondDateIsOne::
 	.string "The second date is the end of the\n"
-	.string "Robinwilltunnel riots. What types of Pokémon\l"
-	.string "did you guys fight down here?$"
+	.string "Robinwilltunnel riots. What types of\l"
+	.string "Pokémon did you guys fight down here?$"
 
 gText_ThisIsntRandom_SilicobraGravelerLarvitar::
 	.string "Silicobra, Graveler, Larvitar…$"

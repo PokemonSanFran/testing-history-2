@@ -426,10 +426,9 @@ gText_Earthquake_SoundsLikeWere::
 
 gText_Earthquake_ImGoingToMakeAnother::
 	.string "*sigh* I'm going to make another lap\n"
-	.string "around Alameda and see who else I\l"
-	.string "can help, and I've asked other\l"
-	.string "TeamRocket members to do the same.\l"
-	.string "Could you two -$"
+	.string "around Alameda and see who else I can\l"
+	.string "help, and I've asked other TeamRocket\l"
+	.string "members to do the same. Could you two -$"
 
 gText_Earthquake_OfCourse::
 	.string "Of course. Let's meet back in the town\n"
@@ -437,8 +436,8 @@ gText_Earthquake_OfCourse::
 
 gText_Earthquake_OkayThingsSeemToBe::
 	.string "Okay… things seem to be stabilizing. I\n"
-	.string "should go meet Ariana in the\l"
-	.string "center of town.$"
+	.string "should go meet Ariana in the center of\l"
+	.string "town.$"
 
 gText_Earthquake_WeveManagedToReestablish::
 	.string "We've managed to re-establish cell\n"
@@ -468,11 +467,10 @@ gText_Earthquake_ShitWeNever::
 	.string "Shit, we never got a chance to tell you.$"
 
 gText_Earthquake_IGotAMessage::
-	.string "Archer and I got a message from\n"
-	.string "that account a few days ago. I went to\l"
-	.string "a warehouse in Oakland, and\l"
-	.string "Koga trapped me there and\l"
-	.string "attacked me.$"
+	.string "Archer and I got a message from that\n"
+	.string "account a few days ago. I went to a\l"
+	.string "warehouse in Oakland, and Koga trapped\l"
+	.string "me there and attacked me.$"
 
 gText_Earthquake_WaitWhat::
 	.string "Wait what?$"
@@ -495,9 +493,9 @@ gText_Earthquake_ItsJustABunch::
 	.string "of nonsense. Maybe a glitch?$"
 
 gText_Earthquake_IDontThinkSo::
-	.string "…I don't think so. Koga was\n"
-	.string "really trying to help me. Even when I\l"
-	.string "had dinner with him, their energy was\l"
+	.string "…I don't think so. Koga was really\n"
+	.string "trying to help me. Even when I had\l"
+	.string "dinner with him, their energy was\l"
 	.string "different from everybody else in\l"
 	.string "Psfbadguy.$"
 

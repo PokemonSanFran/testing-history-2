@@ -287,9 +287,9 @@ gText_TheStorySoFar_TheBestOffense::
 	.string "stronger with time.$"
 
 gText_TheStorySoFar_TheCriminalUnderbelly::
-	.string "The SanFran criminal underbelly,\n"
-	.string "using agents within the prison, staged\l"
-	.string "a prison riot. The agents took guards\l"
+	.string "The SanFran criminal underbelly, using\n"
+	.string "agents within the prison, staged a\l"
+	.string "prison riot. The agents took guards\l"
 	.string "hostage, and demanded that the\l"
 	.string "government turn the island over to the\l"
 	.string "prisoners. This occupation lasted for\l"
@@ -311,14 +311,13 @@ gText_TheStorySoFar_ItsHardToDoAnything::
 gText_TheStorySoFar_ThePrisonersBeganToTurn::
 	.string "The prisoners began to turn to the\n"
 	.string "citizens of the region for support. One\l"
-	.string "of their most vocal allies was\l"
-	.string "Drasna, the strongest member of the\l"
-	.string "SanFran Elite Four. Drasna\l"
-	.string "organized public rallies and marches,\l"
-	.string "demanding for the release of the\l"
-	.string "prisoners into society, citing the need\l"
-	.string "for a different rehabilitation\l"
-	.string "approach.$"
+	.string "of their most vocal allies was Drasna,\l"
+	.string "the strongest member of the SanFran\l"
+	.string "Elite Four. Drasna organized public\l"
+	.string "rallies and marches, demanding for the\l"
+	.string "release of the prisoners into society,\l"
+	.string "citing the need for a different\l"
+	.string "rehabilitation approach.$"
 
 gText_TheStorySoFar_PhysicallyDefensiveMasterpiece::
 	.string "Alcatraz is a physically defensive\n"
@@ -373,14 +372,14 @@ gText_TheStorySoFar_IHearVoicesStanding::
 	.string "all day.$"
 
 gText_TheStorySoFar_ParksAndRecreation::
-	.string "The SanFran Parks and Recreation\n"
-	.string "has dedicated this plaza to the guards\l"
-	.string "who lost their lives in the disaster and\l"
-	.string "the struggle that divided the region\l"
-	.string "for so long. Late at night, some say you\l"
-	.string "can hear their spirits, still fighting\l"
-	.string "to this day to keep our region safe\l"
-	.string "from criminals.$"
+	.string "The SanFran Parks and Recreation has\n"
+	.string "dedicated this plaza to the guards who\l"
+	.string "lost their lives in the disaster and the\l"
+	.string "struggle that divided the region for so\l"
+	.string "long. Late at night, some say you can\l"
+	.string "hear their spirits, still fighting to\l"
+	.string "this day to keep our region safe from\l"
+	.string "criminals.$"
 
 gText_TheStorySoFar_ExcellentWork::
 	.string "Excellent work! For completing the\n"

@@ -361,14 +361,14 @@ Manhunt_Encounter_Giovanni_Dialogue_Text_0:
 	.string "This phone is ringing.$"
 
 gText_Manhunt_GoFind::
-	.string "Go find Giovanni. Bianca will\n"
-	.string "help. The newspaper in SOMA is a\l"
-	.string "good place to start, they ran a story\l"
-	.string "on TeamRocket last year.$"
+	.string "Go find Giovanni. Bianca will help. The\n"
+	.string "newspaper in SOMA is a good place to\l"
+	.string "start, they ran a story on TeamRocket\l"
+	.string "last year.$"
 
 gText_Manhunt_HeyWereTrying::
-	.string "Hey, we're trying to find Giovanni,\n"
-	.string "and we were told you might have a\l"
+	.string "Hey, we're trying to find Giovanni, and\n"
+	.string "we were told you might have a\l"
 	.string "connection.$"
 
 gText_Manhunt_YeahIWrote::
@@ -378,8 +378,8 @@ gText_Manhunt_YeahIWrote::
 	.string "group of youngsters really start to\l"
 	.string "get the recognition they deserve. And\l"
 	.string "getting to really sit down with\l"
-	.string "Giovanni... I feel blessed to have\l"
-	.string "been able to do it!$"
+	.string "Giovanni... I feel blessed to have been\l"
+	.string "able to do it!$"
 
 gText_Manhunt_Blessed::
 	.string "Blessed? TeamRocket? Ugh, they've\n"
@@ -413,12 +413,12 @@ gText_Manhunt_PleaseDontHurtUs::
 	.string "do you want?$"
 
 gText_Manhunt_StartTalking::
-	.string "Start talking. Who's Giovanni\n"
-	.string "behind the mask?$"
+	.string "Start talking. Who's Giovanni behind the\n"
+	.string "mask?$"
 
 gText_Manhunt_ISwearIDontKnow::
-	.string "Giovanni? I swear, I don't know who\n"
-	.string "he is. Nobody does. I'm a reporter.... I\l"
+	.string "Giovanni? I swear, I don't know who he\n"
+	.string "is. Nobody does. I'm a reporter.... I\l"
 	.string "wouldn't keep that a secret.$"
 
 gText_Manhunt_IKnowYouKnow::
@@ -426,11 +426,10 @@ gText_Manhunt_IKnowYouKnow::
 
 gText_Manhunt_TheOnlyLeadIHave::
 	.string "The only lead I have is a consulting\n"
-	.string "firm in Mission... there's money\l"
-	.string "flowing between there and\l"
-	.string "TeamRocket, or, at least there was. I\l"
-	.string "never figured out what was going on\l"
-	.string "though.$"
+	.string "firm in Mission... there's money flowing\l"
+	.string "between there and TeamRocket, or, at\l"
+	.string "least there was. I never figured out\l"
+	.string "what was going on though.$"
 
 gText_Manhunt_ThatsAStart::
 	.string "That's a start…$"
@@ -450,9 +449,8 @@ gText_Manhunt_WhatTheHellAreYou::
 	.string "talking about?$"
 
 gText_Manhunt_WeKnowYoureWorkingWith::
-	.string "We know you're working with\n"
-	.string "TeamRocket, and we need to find their\l"
-	.string "leader.$"
+	.string "We know you're working with TeamRocket,\n"
+	.string "and we need to find their leader.$"
 
 gText_Manhunt_YeahIDidSomeWork::
 	.string "Yeah, I did some work for them a while\n"
@@ -551,18 +549,17 @@ gText_Manhunt_WhosHe::
 	.string "Who's he?$"
 
 gText_Manhunt_YeahToldMeYoud::
-	.string "Yeah, Giovanni told me you'd be\n"
-	.string "coming. But I wonder how tough you\l"
-	.string "actually are!$"
+	.string "Yeah, Giovanni told me you'd be coming.\n"
+	.string "But I wonder how tough you actually\l"
+	.string "are!$"
 
 gText_Manhunt_IFeelBadForAll::
 	.string "I feel bad for all the innocent people\n"
 	.string "you've been harassing... you're no joke.\l"
-	.string "Giovanni wants you to meet him at\l"
-	.string "the Lake, after sunset. Just the two\l"
-	.string "of you - no police or Psfbadguy\l"
-	.string "cronies, or the trail goes cold again.\l"
-	.string "Up to you.$"
+	.string "Giovanni wants you to meet him at the\l"
+	.string "Lake, after sunset. Just the two of\l"
+	.string "you - no police or Psfbadguy cronies,\l"
+	.string "or the trail goes cold again. Up to you.$"
 
 gText_Manhunt_StopHurtingPeople::
 	.string "Stop hurting people. I'm here.$"
@@ -581,9 +578,8 @@ gText_Manhunt_TheRegionIsYours::
 	.string "yours now.$"
 
 gText_Manhunt_IllBeAtTheEntrance::
-	.string "Oak, I've defeated\n"
-	.string "Giovanni. I'll be at the entrance to\l"
-	.string "Lakemerritt.$"
+	.string "Oak, I've defeated Giovanni. I'll be at\n"
+	.string "the entrance to Lakemerritt.$"
 
 gText_Manhunt_WhatWaitUhOkay::
 	.string "What!? Wait uh - okay um, excellent\n"

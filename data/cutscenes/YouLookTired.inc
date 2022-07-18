@@ -242,19 +242,18 @@ gText_YouLookTired_YeahWhatsUp::
 	.string "Yeah, what's up?$"
 
 gText_YouLookTired_GladIWasAbleToRun::
-	.string "Ah, Sabrina was right, glad I was\n"
-	.string "able to run into you. I'm Koga.$"
+	.string "Ah, Sabrina was right, glad I was able to\n"
+	.string "run into you. I'm Koga.$"
 
 gText_YouLookTired_IGuessYouDoToo::
-	.string "Sabrina... they work for\n"
-	.string "YCombinator, right? So I guess you do\l"
-	.string "too?$"
+	.string "Sabrina... they work for YCombinator,\n"
+	.string "right? So I guess you do too?$"
 
 gText_YouLookTired_ChiefOperatingOfficer::
 	.string "Yes sorry, I'm the YCombinator Chief\n"
-	.string "Operating Officer, and Rose's\l"
-	.string "right hand. It's a pleasure to meet you,\l"
-	.string "we're all very impressed with you.$"
+	.string "Operating Officer, and Rose's right\l"
+	.string "hand. It's a pleasure to meet you, we're\l"
+	.string "all very impressed with you.$"
 
 gText_YouLookTired_IKeepHearingThat::
 	.string "Yeah, I keep hearing that! It's a little\n"
@@ -277,8 +276,8 @@ gText_YouLookTired_IKnowYoureRacing::
 gText_YouLookTired_CanBeAHandful::
 	.string "So far, you're certainly living up to\n"
 	.string "your title! Congratulations on\l"
-	.string "defeating Chuck, I know they can\l"
-	.string "be... a handful.$"
+	.string "defeating Chuck, I know they can be... a\l"
+	.string "handful.$"
 
 gText_YouLookTired_ItsBeenAnInterestingRide::
 	.string "It's been an interesting ride, but I'm\n"
@@ -321,16 +320,17 @@ gText_YouLookTired_ImNotReally::
 
 gText_YouLookTired_Nonsense::
 	.string "Nonsense. I'll pull some data from\n"
-	.string "DoorDash and find something to\l"
-	.string "suite your tastes!$"
+	.string "DoorDash and find something to suite\l"
+	.string "your tastes!$"
 
 gText_YouLookTired_YouCanDoThat::
 	.string "You can do that?$"
 
 gText_YouLookTired_DataIsTheMost::
 	.string "Of course! Data is the most powerful\n"
-	.string "resource in the world - YCombinator has\l"
-	.string "quite the vast library available to us.$"
+	.string "resource in the world - YCombinator\l"
+	.string "has quite the vast library available to\l"
+	.string "us.$"
 
 gText_YouLookTired_IllSeeYouForDinner::
 	.string "I'll see you for dinner then?$"

@@ -496,8 +496,7 @@ gText_IGuessWeShouldBeNiceNow_TookLongEnough::
 
 gText_IGuessWeShouldBeNiceNow_WeCantComplete::
 	.string "We can't complete the puzzles alone.\n"
-	.string "Oak told me after you took\l"
-	.string "off.$"
+	.string "Oak told me after you took off.$"
 
 gText_IGuessWeShouldBeNiceNow_OhShitWellUh::
 	.string "Oh shit. Well uh, what else did I miss?$"
@@ -602,8 +601,8 @@ gText_IGuessWeShouldBeNiceNow_SaysOnTheBack::
 
 gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting::
 	.string "Whew, that was exhausting. How about we\n"
-	.string "crash at my place nearby in Marin\l"
-	.string "and then tackle Muirwoods tomorrow?$"
+	.string "crash at my place nearby in Marin and\l"
+	.string "then tackle Muirwoods tomorrow?$"
 
 gText_IGuessWeShouldBeNiceNow_GreatSeeYou::
 	.string "Great, see you in Marin!$"
@@ -642,10 +641,10 @@ gText_IGuessWeShouldBeNiceNow_IDidntKnow::
 	.string "well… congrats!$"
 
 gText_IGuessWeShouldBeNiceNow_DaddyOwnsA::
-	.string "Daddy owns a Airbnb out here. I\n"
-	.string "called him earlier and had him kick out\l"
-	.string "the people that were staying there, so\l"
-	.string "it should be good for us now.$"
+	.string "Daddy owns a Airbnb out here. I called\n"
+	.string "him earlier and had him kick out the\l"
+	.string "people that were staying there, so it\l"
+	.string "should be good for us now.$"
 
 gText_IGuessWeShouldBeNiceNow_WaitWhatIThought::
 	.string "Wait what? I thought Psfbadguy -$"

@@ -331,8 +331,8 @@ gText_LetsGrabLunch_OkayLetsHear::
 
 gText_LetsGrabLunch_IWantToCreate::
 	.string "I want to create training centers all\n"
-	.string "over SanFran, to help more Trainers\l"
-	.string "get a real start, kind of like what\l"
+	.string "over SanFran, to help more Trainers get\l"
+	.string "a real start, kind of like what\l"
 	.string "Psfbadguy gave you. I wanna use the\l"
 	.string "decommissioned Gyms, like the one you\l"
 	.string "saw earlier today, as those hubs.$"
@@ -342,20 +342,21 @@ gText_LetsGrabLunch_HuhThatsActually::
 
 gText_LetsGrabLunch_YeahITried::
 	.string "Yeah! I tried to talk to Lenora and\n"
-	.string "Cilan, but they didn't take it\l"
-	.string "nearly as well as you did.$"
+	.string "Cilan, but they didn't take it nearly as\l"
+	.string "well as you did.$"
 
 gText_LetsGrabLunch_Who::
 	.string "Who…?$"
 
 gText_LetsGrabLunch_OhTheOldLeaders::
-	.string "Oh, the old Leaders of the Treasureisland and\n"
-	.string "Marin Gyms. If we can revive those\l"
-	.string "Gyms and strengthen our Trainers, then\l"
-	.string "Trainers from other regions will want\l"
-	.string "to come here, battle us, and help\l"
-	.string "stimulate the region… without any\l"
-	.string "interference from Psfbadguy.$"
+	.string "Oh, the old Leaders of the\n"
+	.string "Treasureisland and Marin Gyms. If we\l"
+	.string "can revive those Gyms and strengthen\l"
+	.string "our Trainers, then Trainers from other\l"
+	.string "regions will want to come here, battle\l"
+	.string "us, and help stimulate the region…\l"
+	.string "without any interference from\l"
+	.string "Psfbadguy.$"
 
 gText_LetsGrabLunch_YouKnowTheyre::
 	.string "You know, they're not as bad as you\n"
@@ -385,21 +386,19 @@ gText_LetsGrabLunch_HahaHowCanIHelp::
 	.string "Haha, how can I help?$"
 
 gText_LetsGrabLunch_CanYouTryTalking::
-	.string "Hmm. Can you try talking to Lenora\n"
-	.string "or Cilan? Or maybe visit\l"
-	.string "Chinatown's Gym and see what we can\l"
-	.string "do? Maybe there's even hope for\l"
-	.string "Haightashbury's Gym… yeah, any of those\l"
-	.string "are good starts.$"
+	.string "Hmm. Can you try talking to Lenora or\n"
+	.string "Cilan? Or maybe visit Chinatown's Gym\l"
+	.string "and see what we can do? Maybe there's\l"
+	.string "even hope for Haightashbury's Gym…\l"
+	.string "yeah, any of those are good starts.$"
 
 gText_LetsGrabLunch_WhatAreYouGoing::
 	.string "What are you going to do?$"
 
 gText_LetsGrabLunch_ImGoingToBring::
 	.string "I'm going to bring the idea to\n"
-	.string "TeamRocket too. I think it's\l"
-	.string "something everybody can rally behind,\l"
-	.string "right?$"
+	.string "TeamRocket too. I think it's something\l"
+	.string "everybody can rally behind, right?$"
 
 gText_LetsGrabLunch_Yeah::
 	.string "Yeah!$"
@@ -433,14 +432,13 @@ gText_LetsGrabLunch_DoYouWantMarin::
 	.string "Do you want to go to Marin?$"
 
 gText_LetsGrabLunch_AlmostWalkedOut::
-	.string "Cilan almost walked out when I\n"
-	.string "first proposed the idea. I think their\l"
-	.string "exact quote was “I'd rather be dead\l"
-	.string "than a “training stop” for more\l"
-	.string "transplants”. They want TeamRocket\l"
-	.string "to totally dismantle the new League,\l"
-	.string "and restore their Gym to its former\l"
-	.string "glory.$"
+	.string "Cilan almost walked out when I first\n"
+	.string "proposed the idea. I think their exact\l"
+	.string "quote was “I'd rather be dead than a\l"
+	.string "“training stop” for more transplants”.\l"
+	.string "They want TeamRocket to totally\l"
+	.string "dismantle the new League, and restore\l"
+	.string "their Gym to its former glory.$"
 
 gText_LetsGrabLunch_VeryRealistic::
 	.string "Very realistic, I see.$"
@@ -457,9 +455,9 @@ gText_LetsGrabLunch_RightHandMan::
 	.string "Pryce is gone…?$"
 
 gText_LetsGrabLunch_IsTheOnlyPlace::
-	.string "You know, Haightashbury is the only place\n"
-	.string "that got to keep its Gym, but only\l"
-	.string "because Pryce is a friggin' snake.\l"
+	.string "You know, Haightashbury is the only\n"
+	.string "place that got to keep its Gym, but\l"
+	.string "only because Pryce is a friggin' snake.\l"
 	.string "Man, what I'd give to see him get what\l"
 	.string "he deserves…$"
 

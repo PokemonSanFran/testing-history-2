@@ -580,8 +580,8 @@ gText_VSGarbodor_WhateverMineWereEasy::
 	.string "Whatever. Mine were easy, they just\n"
 	.string "both used Self-Destruct before I\l"
 	.string "could really get a move in. I already\l"
-	.string "texted Oak, he said meet in\l"
-	.string "front of the construction site.$"
+	.string "texted Oak, he said meet in front of\l"
+	.string "the construction site.$"
 
 gText_VSGarbodor_AsWeWereNegotiating::
 	.string "As we were negotiating, things started\n"
@@ -591,8 +591,8 @@ gText_VSGarbodor_AsWeWereNegotiating::
 	.string "How's the Psfbadguy Task Force?$"
 
 gText_VSGarbodor_DoneLikeYouGuys::
-	.string "Done. Like you guys said, TeamRocket\n"
-	.string "up to their shit as usual.$"
+	.string "Done. Like you guys said, TeamRocket up\n"
+	.string "to their shit as usual.$"
 
 gText_VSGarbodor_ThankYouBoth::
 	.string "Thank you both, and I'm sorry you had to\n"

@@ -44,5 +44,5 @@ gText_Marin_EliteHome_ADigitalPhoto_Unknown::
 
 gText_Marin_EliteHome_ADigitalPhoto::
 	.string "A digital photo frame. The picture being\n"
-	.string "displayed shows Siebold with\l"
-	.string "somebody at a ramen restaurant.$"
+	.string "displayed shows Siebold with somebody\l"
+	.string "at a ramen restaurant.$"

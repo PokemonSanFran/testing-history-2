@@ -157,8 +157,9 @@ gText_OneDown_YoureGonnaCall::
 
 gText_OneDown_WeGetQuakes::
 	.string "We get quakes all the time. The\n"
-	.string "SanAndreasFault will do that, you know? I'm\l"
-	.string "sure they all start to feel the same.$"
+	.string "SanAndreasFault will do that, you\l"
+	.string "know? I'm sure they all start to feel\l"
+	.string "the same.$"
 
 gText_OneDown_GuessYoureRight::
 	.string "Guess you're right, kid.$"
@@ -166,5 +167,5 @@ gText_OneDown_GuessYoureRight::
 gText_OneDown_GetSomeRest::
 	.string "I know its been a long day, {PLAYER},\n"
 	.string "you should get some rest. You're still\l"
-	.string "staying at Archer's place in\l"
-	.string "Alameda, right?$"
+	.string "staying at Archer's place in Alameda,\l"
+	.string "right?$"

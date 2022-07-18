@@ -285,19 +285,17 @@ gText_WaitHeDidWhat_AreYouReady::
 
 gText_WaitHeDidWhat_CongratsComeOnUp::
 	.string "Congrats on making it to the Finals!\n"
-	.string "Come to the Skybox to watch\l"
-	.string "Bianca's battle!$"
+	.string "Come to the Skybox to watch Bianca's\l"
+	.string "battle!$"
 
 gText_WaitHeDidWhat_GoodShitDownThere::
 	.string "Good shit down there! Time to crush\n"
-	.string "this Archer kid. See you in the\l"
-	.string "Finals!$"
+	.string "this Archer kid. See you in the Finals!$"
 
 gText_WaitHeDidWhat_InAStunningUpset::
 	.string "In a stunning upset, the hometown hero,\n"
-	.string "Archer defeats Bianca\l"
-	.string "and moves onto the Finals! What a wild\l"
-	.string "match!$"
+	.string "Archer defeats Bianca and moves onto\l"
+	.string "the Finals! What a wild match!$"
 
 gText_WaitHeDidWhat_HolyShit::
 	.string "(...holy shit!)$"
@@ -305,8 +303,8 @@ gText_WaitHeDidWhat_HolyShit::
 gText_WaitHeDidWhat_WellTakeAQuick::
 	.string "We'll take a quick break, and when we\n"
 	.string "come back... your Championship match!\l"
-	.string "Archer VS {PLAYER}, for all\l"
-	.string "the marbles!$"
+	.string "Archer VS {PLAYER}, for all the\l"
+	.string "marbles!$"
 
 gText_WaitHeDidWhat_MakeSureYouGive::
 	.string "Make sure you give us a good show down\n"

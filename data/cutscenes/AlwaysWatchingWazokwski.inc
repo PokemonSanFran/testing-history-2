@@ -166,19 +166,17 @@ gText_AlwaysWatchingWazowski_IImagineAllTheScreens::
 	.string "new comes to visit.$"
 
 gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime::
-	.string "I wish Oak had picked a\n"
-	.string "different time to tell you to come\l"
-	.string "visit. I have at least 493 more minutes\l"
-	.string "of work, and don't have the 12 minutes\l"
-	.string "required to appropriately entertain\l"
-	.string "you...$"
+	.string "I wish Oak had picked a different time\n"
+	.string "to tell you to come visit. I have at\l"
+	.string "least 493 more minutes of work, and\l"
+	.string "don't have the 12 minutes required to\l"
+	.string "appropriately entertain you...$"
 
 gText_AlwaysWatchingWazowski_IWishYouHadVisited::
-	.string "I wish you had visited Rose\n"
-	.string "first. I have at least 493 more minutes\l"
-	.string "of work and don't have the 12 minutes\l"
-	.string "required to appropriately entertain\l"
-	.string "you...$"
+	.string "I wish you had visited Rose first. I\n"
+	.string "have at least 493 more minutes of work\l"
+	.string "and don't have the 12 minutes required\l"
+	.string "to appropriately entertain you...$"
 
 gText_AlwaysWatchingWazowski_WaitHowDidYouKnow::
 	.string "Wait, how did you know that stuff?$"

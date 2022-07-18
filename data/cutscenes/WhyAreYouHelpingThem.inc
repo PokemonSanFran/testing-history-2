@@ -662,15 +662,14 @@ gText_WhyAreYouHelpingThem_AnotherVictory::
 	.string "establishment.$"
 
 gText_WhyAreYouHelpingThem_TellsMeYoureAll::
-	.string "Ariana tells me you're all good\n"
-	.string "guys… now all this shit? And you? None\l"
-	.string "of this makes any sense!$"
+	.string "Ariana tells me you're all good guys…\n"
+	.string "now all this shit? And you? None of\l"
+	.string "this makes any sense!$"
 
 gText_WhyAreYouHelpingThem_WhyWouldIt::
 	.string "Why would it? You don't see what your\n"
-	.string "bosses are doing to SanFran. You\l"
-	.string "don't see what you're doing to\l"
-	.string "SanFran.$"
+	.string "bosses are doing to SanFran. You don't\l"
+	.string "see what you're doing to SanFran.$"
 
 gText_WhyAreYouHelpingThem_Player::
 	.string "{PLAYER}!$"
@@ -700,8 +699,8 @@ gText_WhyAreYouHelpingThem_AShameStillWeveShutDown::
 	.string "This was an absolute win!$"
 
 gText_WhyAreYouHelpingThem_NotBadInThere::
-	.string "Not bad in there. Oak wants you\n"
-	.string "kids back at Southbay Compound.$"
+	.string "Not bad in there. Oak wants you kids\n"
+	.string "back at Southbay Compound.$"
 
 gText_WhyAreYouHelpingThem_WhatADay::
 	.string "What… a day. I know that was a lot of\n"
@@ -713,10 +712,11 @@ gText_WhyAreYouHelpingThem_ItWasADay::
 
 gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere::
 	.string "Good news - while you were training in\n"
-	.string "Muirwoods, construction on Chasecenter\l"
-	.string "finished up. The Group Stage will start\l"
-	.string "in 3 days. Hopefully, that's enough time\l"
-	.string "to rest up and get ready.$"
+	.string "Muirwoods, construction on\l"
+	.string "Chasecenter finished up. The Group\l"
+	.string "Stage will start in 3 days. Hopefully,\l"
+	.string "that's enough time to rest up and get\l"
+	.string "ready.$"
 
 gText_WhyAreYouHelpingThem_OhThatWasFast::
 	.string "Oh, that was fast. How did you…$"

@@ -265,11 +265,10 @@ LetsBurnThisMotherDown_Assignment_Dialogue_Text_0:
 
 gText_LetsBurnThisMotherDown_WeStillNeedToFind::
 	.string "We still need to find their new base of\n"
-	.string "operations and their leader,\l"
-	.string "Giovanni. Ever since we shut down\l"
-	.string "Navalbase, we haven't been able to\l"
-	.string "make any progress on either of these\l"
-	.string "fronts.$"
+	.string "operations and their leader, Giovanni.\l"
+	.string "Ever since we shut down Navalbase, we\l"
+	.string "haven't been able to make any progress\l"
+	.string "on either of these fronts.$"
 
 gText_LetsBurnThisMotherDown_YoureCloserToThe::
 	.string "{PLAYER}, you're closer to the\n"
@@ -279,25 +278,25 @@ gText_LetsBurnThisMotherDown_YoureCloserToThe::
 	.string "hideout.$"
 
 gText_LetsBurnThisMotherDown_INeedToTalk::
-	.string "(I need to talk to Archer… I\n"
-	.string "think I can still save him. I need to\l"
-	.string "get to Robinwilltunnel.)$"
+	.string "(I need to talk to Archer… I think I can\n"
+	.string "still save him. I need to get to\l"
+	.string "Robinwilltunnel.)$"
 
 gText_LetsBurnThisMotherDown_YouChoseTheWrong::
 	.string "You chose the wrong side!$"
 
 gText_LetsBurnThisMotherDown_IKnowYouWant::
-	.string "Archer, I know you want to do\n"
-	.string "good. But this isn't the way! If you\l"
-	.string "want real meaningful change, let's work\l"
-	.string "with them. They're good people. We all\l"
-	.string "want the same thing!$"
+	.string "Archer, I know you want to do good. But\n"
+	.string "this isn't the way! If you want real\l"
+	.string "meaningful change, let's work with\l"
+	.string "them. They're good people. We all want\l"
+	.string "the same thing!$"
 
 gText_LetsBurnThisMotherDown_YouDontThinkWeve::
 	.string "You don't think we've tried that? You\n"
 	.string "just got here, {PLAYER} . People here\l"
-	.string "in Robinwilltunnel, died trying to do things\l"
-	.string "the right way. They don't care.$"
+	.string "in Robinwilltunnel, died trying to do\l"
+	.string "things the right way. They don't care.$"
 
 gText_LetsBurnThisMotherDown_TheyIgnoreUs::
 	.string "They ignore us, and when we get fed up\n"
@@ -372,7 +371,8 @@ gText_LetsBurnThisMotherDown_YoureYoung::
 
 gText_LetsBurnThisMotherDown_ImStillShocked::
 	.string "I'm still shocked they were using the\n"
-	.string "inside of Robinwilltunnel. Absolutely insane.$"
+	.string "inside of Robinwilltunnel. Absolutely\l"
+	.string "insane.$"
 
 gText_LetsBurnThisMotherDown_ThePoliceTold::
 	.string "The police told me they're going to\n"

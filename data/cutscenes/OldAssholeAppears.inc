@@ -207,19 +207,19 @@ gText_OldAssholeAppears_ThoughtSo::
 	.string "Thought so. They're everywhere, right?$"
 
 gText_OldAssholeAppears_LetsYouCallARide::
-	.string "Don't have it in Orre? Uber lets\n"
-	.string "you call a ride from anywhere to\l"
-	.string "anywhere else that you've been.$"
+	.string "Don't have it in Orre? Uber lets you call\n"
+	.string "a ride from anywhere to anywhere else\l"
+	.string "that you've been.$"
 
 gText_OldAssholeAppears_LetsYouUse::
-	.string "That card lets you use Uber for\n"
-	.string "free! I went to the Salesforcetower,\l"
-	.string "and the League Commissioner gave me\l"
-	.string "these for being the first Challenger to\l"
-	.string "visit! It also lets you use the Subway\l"
-	.string "System for free, but I think I'll stick\l"
-	.string "to Uber. Less homeless people\l"
-	.string "to deal with, you know?$"
+	.string "That card lets you use Uber for free! I\n"
+	.string "went to the Salesforcetower, and the\l"
+	.string "League Commissioner gave me these for\l"
+	.string "being the first Challenger to visit! It\l"
+	.string "also lets you use the Subway System\l"
+	.string "for free, but I think I'll stick to Uber.\l"
+	.string "Less homeless people to deal with, you\l"
+	.string "know?$"
 
 gText_OldAssholeAppears_YouveBeenSuperNice::
 	.string "Thanks! You've been super nice today!$"

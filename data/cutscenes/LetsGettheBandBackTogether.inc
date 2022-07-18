@@ -161,11 +161,10 @@ gText_LetsGetTheBandBackTogether_WaitTheEliteFour::
 
 gText_LetsGetTheBandBackTogether_OkayKindaThatsActually::
 	.string "Okay, kinda. That’s actually the next\n"
-	.string "step. Malva and Drasna\l"
-	.string "convinced Siebold to work with us\l"
-	.string "too, but we’ve gotta find Wikstrom if\l"
-	.string "we really want to present a united\l"
-	.string "front.$"
+	.string "step. Malva and Drasna convinced\l"
+	.string "Siebold to work with us too, but we’ve\l"
+	.string "gotta find Wikstrom if we really want\l"
+	.string "to present a united front.$"
 
 gText_LetsGetTheBandBackTogether_WhatAmIMissing::
 	.string "What am I missing? Can’t we just call\n"
@@ -214,20 +213,19 @@ gText_LetsGetTheBandBackTogether_WereSickOf::
 	.string "together.$"
 
 gText_LetsGetTheBandBackTogether_LetsSplitUp::
-	.string "Let’s split up. I’m going to talk to\n"
-	.string "Ariana and try to convince them\l"
-	.string "of the plan going forward. Can you see\l"
-	.string "if you can get an idea where Wikstrom\l"
-	.string "might be?$"
+	.string "Let’s split up. I’m going to talk to Ariana\n"
+	.string "and try to convince them of the plan\l"
+	.string "going forward. Can you see if you can\l"
+	.string "get an idea where Wikstrom might be?$"
 
 gText_LetsGetTheBandBackTogether_AnyLeads::
 	.string "Where do I even start?$"
 
 gText_LetsGetTheBandBackTogether_OkayGetGoing::
-	.string "Try the newspaper in SOMA, they\n"
-	.string "did an interview with Wikstrom right\l"
-	.string "before he disappeared. I’m gonna make\l"
-	.string "some moves too.$"
+	.string "Try the newspaper in SOMA, they did an\n"
+	.string "interview with Wikstrom right before he\l"
+	.string "disappeared. I’m gonna make some moves\l"
+	.string "too.$"
 
 gText_LetsGetTheBandBackTogether_IDontThinkIShould::
 	.string "…I don’t think I should go in there. I\n"

@@ -414,9 +414,8 @@ gText_HousingProtest_AintGonnaBeNothing::
 	.string "we done...$"
 
 gText_HousingProtest_PeopleCantStayHere::
-	.string "If we, the people of Oakland can't\n"
-	.string "stay here, nobody can. Let's bring it\l"
-	.string "down!$"
+	.string "If we, the people of Oakland can't stay\n"
+	.string "here, nobody can. Let's bring it down!$"
 
 gText_HousingProtest_Yeah::
 	.string "Yeah!$"

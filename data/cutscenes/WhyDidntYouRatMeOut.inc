@@ -320,9 +320,8 @@ gText_WhyDidntYouRatMeOut_NoYouLook::
 	.string "take that from you. Not like that.$"
 
 gText_WhyDidntYouRatMeOut_WasNiceToMe4::
-	.string "(Ariana and Archer...\n"
-	.string "even Giovanni was nice to me. What\l"
-	.string "am I missing?)$"
+	.string "(Ariana and Archer... even Giovanni was\n"
+	.string "nice to me. What am I missing?)$"
 
 gText_WhyDidntYouRatMeOut_ThankYouAndImSorry::
 	.string "...Thank you. And I'm sorry I've been\n"
@@ -369,10 +368,10 @@ gText_WhyDidntYouRatMeOut_IMeantToTell::
 	.string "Bianca's group!$"
 
 gText_WhyDidntYouRatMeOut_WinsTheirGroup::
-	.string "And Bianca wins their group,\n"
-	.string "without losing a single Pokémon! What\l"
-	.string "an incredible display of force from\l"
-	.string "this Unovan superstar!$"
+	.string "And Bianca wins their group, without\n"
+	.string "losing a single Pokémon! What an\l"
+	.string "incredible display of force from this\l"
+	.string "Unovan superstar!$"
 
 gText_WhyDidntYouRatMeOut_YourGroupIsNext::
 	.string "Your group is up next! Head through the\n"

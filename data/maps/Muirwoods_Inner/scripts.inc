@@ -54,5 +54,5 @@ Muirwoods_Siebold_Interact_Script_3:
 
 
 HaveYouSeenTheNews_SolvePuzzles_Script_Text_0:
-	.string "you've solved Siebold's tests. go\n"
-	.string "back now.$"
+	.string "you've solved Siebold's tests. go back\n"
+	.string "now.$"

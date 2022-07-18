@@ -94,10 +94,10 @@ gText_YouCanChangeYourOutfit::
 	.string "found in your Bag's Key Items pocket.$"
 
 gText_TwoHoursAgo_LooksLikeWokeUp::
-	.string "Looks like Bianca woke up early\n"
-	.string "and already left! They're eager, I'll\l"
-	.string "give them that. I guess they didn't\l"
-	.string "need the explanation... or breakfast.$"
+	.string "Looks like Bianca woke up early and\n"
+	.string "already left! They're eager, I'll give\l"
+	.string "them that. I guess they didn't need the\l"
+	.string "explanation... or breakfast.$"
 
 gText_TwoHoursAgo_YoureInARace::
 	.string "You're in a race against hundreds of\n"
@@ -114,23 +114,22 @@ gText_TwoHoursAgo_TheTouranemtnWillTest::
 	.string "Pokémon Trainer.$"
 
 gText_TwoHoursAgo_WeExpectTheBest::
-	.string "We expect the best from you and\n"
-	.string "Bianca! If you fail to qualify\l"
-	.string "for the Championship, we'll be\l"
-	.string "terminating your contract, and you'll\l"
-	.string "be on your own... but we know that won't\l"
-	.string "be the case! So don't worry.$"
+	.string "We expect the best from you and Bianca!\n"
+	.string "If you fail to qualify for the\l"
+	.string "Championship, we'll be terminating your\l"
+	.string "contract, and you'll be on your own...\l"
+	.string "but we know that won't be the case! So\l"
+	.string "don't worry.$"
 
 gText_TwoHoursAgo_CafeIsAlwaysSoDelicious::
 	.string "CafeVenetia is always so delicious! Too\n"
-	.string "bad Bianca didn't eat with us. I\l"
-	.string "guess you can take their portion of\l"
-	.string "the food, and I bought you both\l"
-	.string "PokéBalls, but you can have theirs too!$"
+	.string "bad Bianca didn't eat with us. I guess\l"
+	.string "you can take their portion of the food,\l"
+	.string "and I bought you both PokéBalls, but\l"
+	.string "you can have theirs too!$"
 
 gText_TwoHoursAgo_CanHoldThose::
 	.string "Your {STR_VAR_1} can hold those\n"
 	.string "Leftovers to restore HP during battle.\l"
 	.string "Now, you should get a move on! Don't let\l"
-	.string "Bianca get too far ahead of\l"
-	.string "you!$"
+	.string "Bianca get too far ahead of you!$"

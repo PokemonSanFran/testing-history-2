@@ -648,24 +648,22 @@ gText_YouRealizeTheyreEvilRight_TheInmateWasAlso::
 gText_YouRealizeTheyreEvilRight_TheProtests::
 	.string "The protests gained national attention\n"
 	.string "and seemed to be gathering interest,\l"
-	.string "particularly with the help of\l"
-	.string "Drasna's support, and pressure\l"
-	.string "mounted on the government to comply.\l"
-	.string "At the height of tension, an\l"
-	.string "earthquake broke out, destroying a\l"
-	.string "large portion of the prison and killing\l"
-	.string "inmates and guards and effectively\l"
-	.string "ending the occupation.$"
+	.string "particularly with the help of Drasna's\l"
+	.string "support, and pressure mounted on the\l"
+	.string "government to comply. At the height of\l"
+	.string "tension, an earthquake broke out,\l"
+	.string "destroying a large portion of the\l"
+	.string "prison and killing inmates and guards\l"
+	.string "and effectively ending the occupation.$"
 
 gText_YouRealizeTheyreEvilRight_TheChampionHasArrived::
 	.string "The Champion has arrived! Great to meet\n"
-	.string "you, I'm Drasna, and I'm the leader\l"
-	.string "of the SanFran Elite Four. Or, I was.\l"
-	.string "Now I'm not really sure what I do.$"
+	.string "you, I'm Drasna, and I'm the leader of\l"
+	.string "the SanFran Elite Four. Or, I was. Now\l"
+	.string "I'm not really sure what I do.$"
 
 gText_YouRealizeTheyreEvilRight_NiceToMeetYou::
-	.string "Nice to meet you! …Archer,\n"
-	.string "where are we?$"
+	.string "Nice to meet you! …Archer, where are we?$"
 
 gText_YouRealizeTheyreEvilRight_HasBeenUsing::
 	.string "TeamRocket has been using Psfcave's\n"
@@ -681,8 +679,8 @@ gText_YouRealizeTheyreEvilRight_ICanFinallyProve::
 	.string "I can finally prove that Psfbadguy is\n"
 	.string "worse than we originally thought. Once\l"
 	.string "I do that, I want all of us to find a way\l"
-	.string "to work together to protect\l"
-	.string "SanFran from their bullshit.$"
+	.string "to work together to protect SanFran\l"
+	.string "from their bullshit.$"
 
 gText_YouRealizeTheyreEvilRight_DidYouDragMe::
 	.string "Did you drag me out here to join a\n"
@@ -717,9 +715,8 @@ gText_YouRealizeTheyreEvilRight_ThisIsOne::
 	.string "site, right?$"
 
 gText_YouRealizeTheyreEvilRight_IHadToGo::
-	.string "Yeah. Bianca and I had to go\n"
-	.string "down there and defeat them and your\l"
-	.string "goons.$"
+	.string "Yeah. Bianca and I had to go down there\n"
+	.string "and defeat them and your goons.$"
 
 gText_YouRealizeTheyreEvilRight_ThisOneIsLevel::
 	.string "This one is Level 40. Garbodor learns\n"
@@ -781,17 +778,17 @@ gText_YouRealizeTheyreEvilRight_IDontGetIt::
 	.string "that mean?$"
 
 gText_YouRealizeTheyreEvilRight_HasBeenFramingYou::
-	.string "Archer… Psfbadguy has been\n"
-	.string "framing you?$"
+	.string "Archer… Psfbadguy has been framing\n"
+	.string "you?$"
 
 gText_YouRealizeTheyreEvilRight_YouAlsoMetUp::
 	.string "{PLAYER}, you also met up with\n"
 	.string "TeamRocket in Oakland too, right?$"
 
 gText_YouRealizeTheyreEvilRight_ButArianaSaid::
-	.string "…yeah. But Ariana said that\n"
-	.string "situation was super weird and was\l"
-	.string "trying to track them down.$"
+	.string "…yeah. But Ariana said that situation\n"
+	.string "was super weird and was trying to track\l"
+	.string "them down.$"
 
 gText_YouRealizeTheyreEvilRight_YeahNobodyKnows::
 	.string "Yeah, nobody knows who they are or\n"
@@ -844,8 +841,8 @@ gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour::
 	.string "any help.$"
 
 gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow::
-	.string "Look Drasna… things are different\n"
-	.string "now. We've been fighting the good fight\l"
+	.string "Look Drasna… things are different now.\n"
+	.string "We've been fighting the good fight\l"
 	.string "without any help so far… and look where\l"
 	.string "that's gotten us. Perhaps they're onto\l"
 	.string "something, and it's time for some real\l"

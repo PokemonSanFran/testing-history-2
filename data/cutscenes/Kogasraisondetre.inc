@@ -515,12 +515,12 @@ KogaRaisonDetre_RunToWork_Dialogue_Text_0:
 	.string "The next morning…$"
 
 gText_KogaRaisonDetre_HasBeenSoGenerous::
-	.string "Koga has been so generous... I\n"
-	.string "should stay.$"
+	.string "Koga has been so generous... I should\n"
+	.string "stay.$"
 
 gText_KogaRaisonDetre_HasBeenExpectingYou::
-	.string "{PLAYER}, KOGA has been\n"
-	.string "expecting you.$"
+	.string "{PLAYER}, KOGA has been expecting\n"
+	.string "you.$"
 
 gText_KogaRaisonDetre_YoureHereInTheFlesh::
 	.string "Aaaahhhh! {PLAYER}! You're here! In\n"
@@ -538,9 +538,9 @@ gText_KogaRaisonDetre_ShutUp::
 
 gText_KogaRaisonDetre_ShowUsHowYouTookDown::
 	.string "Oh oh oh, show us how you took down\n"
-	.string "Falkner! Can we see some battle\l"
-	.string "moves? Oh come on yes, let's battle,\l"
-	.string "right now, yeah yeah yeah!$"
+	.string "Falkner! Can we see some battle moves?\l"
+	.string "Oh come on yes, let's battle, right now,\l"
+	.string "yeah yeah yeah!$"
 
 gText_KogaRaisonDetre_AllRightAllRight::
 	.string "All right, all right, calm down. I told you\n"
@@ -559,8 +559,8 @@ gText_KogaRaisonDetre_SorryAboutThat::
 	.string "Sorry about that. They get… very\n"
 	.string "excited. And don't let Raghnall's\l"
 	.string "demeanor fool you. I think they've\l"
-	.string "watched your battle against\l"
-	.string "Whitney at least 40 times.$"
+	.string "watched your battle against Whitney\l"
+	.string "at least 40 times.$"
 
 gText_KogaRaisonDetre_OhArceus::
 	.string "Oh Arceus, Dad!$"
@@ -614,8 +614,7 @@ gText_KogaRaisonDetre_IPickedOut::
 	.string "for you. Come have a seat.$"
 
 gText_KogaRaisonDetre_HowMuch::
-	.string "How much do you know about\n"
-	.string "Rose?$"
+	.string "How much do you know about Rose?$"
 
 gText_KogaRaisonDetre_IJustRecentlyMet::
 	.string "I just recently met them. They're the\n"
@@ -623,17 +622,16 @@ gText_KogaRaisonDetre_IJustRecentlyMet::
 	.string "prefer working alongside people.$"
 
 gText_KogaRaisonDetre_ThatLastPartIsImportant::
-	.string "That last part is important -\n"
-	.string "Rose grew up here. They take\l"
-	.string "great pride in SanFran, and want all\l"
-	.string "of their work at YCombinator to go\l"
-	.string "towards making the entire region a\l"
-	.string "better place to live. It's why we\l"
-	.string "acquired the Pokémon League.\l"
-	.string "Rose saw its potential and knew\l"
-	.string "we could use its draw and our resources\l"
-	.string "to make it even better, and bring in\l"
-	.string "Trainers like you.$"
+	.string "That last part is important - Rose grew\n"
+	.string "up here. They take great pride in\l"
+	.string "SanFran, and want all of their work at\l"
+	.string "YCombinator to go towards making the\l"
+	.string "entire region a better place to live.\l"
+	.string "It's why we acquired the Pokémon\l"
+	.string "League. Rose saw its potential and\l"
+	.string "knew we could use its draw and our\l"
+	.string "resources to make it even better, and\l"
+	.string "bring in Trainers like you.$"
 
 gText_KogaRaisonDetre_WhatDoYouMean::
 	.string "What do you mean?$"
@@ -657,12 +655,12 @@ gText_KogaRaisonDetre_WoahWaitBigger::
 	.string "Woah wait, bigger than Alolan tourism?$"
 
 gText_KogaRaisonDetre_PeopleLoveBattles::
-	.string "People love Pokémon battles.\n"
-	.string "Rose knew if we used our\l"
-	.string "resources to create a compelling\l"
-	.string "product, we wouldn't need Dynamax or\l"
-	.string "League HQs built into cathedrals. We've\l"
-	.string "got what the people want to see.$"
+	.string "People love Pokémon battles. Rose knew\n"
+	.string "if we used our resources to create a\l"
+	.string "compelling product, we wouldn't need\l"
+	.string "Dynamax or League HQs built into\l"
+	.string "cathedrals. We've got what the people\l"
+	.string "want to see.$"
 
 gText_KogaRaisonDetre_TheBroadcasts::
 	.string "The broadcasts?$"
@@ -673,13 +671,13 @@ gText_KogaRaisonDetre_MyKidsBeingObsessed::
 	.string "rockstars.$"
 
 gText_KogaRaisonDetre_WereGoingToMake::
-	.string "We're going to make SanFran the\n"
-	.string "region where rock stars are born.\l"
-	.string "Trainers are going to want to emulate\l"
-	.string "you! The region will be richer for it. It\l"
-	.string "can afford to uplift all of its citizens\l"
-	.string "to something much much greater. You're\l"
-	.string "an investment, {PLAYER}, but it's all\l"
+	.string "We're going to make SanFran the region\n"
+	.string "where rock stars are born. Trainers are\l"
+	.string "going to want to emulate you! The\l"
+	.string "region will be richer for it. It can\l"
+	.string "afford to uplift all of its citizens to\l"
+	.string "something much much greater. You're an\l"
+	.string "investment, {PLAYER}, but it's all\l"
 	.string "part of a much bigger play.$"
 
 gText_KogaRaisonDetre_IBroughtYouHere::
@@ -759,11 +757,11 @@ gText_KogaRaisonDetre_ThanksKen::
 	.string "the ground here, but it sounds like\l"
 	.string "this riot was instigated by members of\l"
 	.string "TeamRocket, culminating in violent\l"
-	.string "attacks on the Tenderloin Police Force.\l"
-	.string "Both sides sustained significant\l"
-	.string "injury, and dozens of members of\l"
-	.string "TeamRocket were taken into custody\l"
-	.string "last night. Back to you, Ken.$"
+	.string "attacks on the Tenderloin Police\l"
+	.string "Force. Both sides sustained\l"
+	.string "significant injury, and dozens of\l"
+	.string "members of TeamRocket were taken into\l"
+	.string "custody last night. Back to you, Ken.$"
 
 gText_KogaRaisonDetre_WereAlsoLearningThat::
 	.string "We're also learning that the Mayor's\n"
@@ -783,8 +781,7 @@ gText_KogaRaisonDetre_AreYouOkay::
 
 gText_KogaRaisonDetre_MySobSonIsInTheICU::
 	.string "I'm sorry. My… *sob* son is in the ICU\n"
-	.string "after the riots last night.\l"
-	.string "TeamRocket keeps getting\l"
-	.string "impressionable young folk involved in\l"
-	.string "their nonsense… *sob* I hope the city\l"
-	.string "can get rid of them!$"
+	.string "after the riots last night. TeamRocket\l"
+	.string "keeps getting impressionable young\l"
+	.string "folk involved in their nonsense… *sob* I\l"
+	.string "hope the city can get rid of them!$"

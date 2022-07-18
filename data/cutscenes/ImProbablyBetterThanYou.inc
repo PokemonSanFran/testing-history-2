@@ -185,8 +185,8 @@ gText_ImProbablyBetterThanYou_MyFlightWasEarlierToday::
 	.string "been waiting around.$"
 
 gText_ImProbablyBetterThanYou_IOrderedSomeFoodToo::
-	.string "I ordered some food too - DoorDash\n"
-	.string "is the same here as it is back in Unova,\l"
+	.string "I ordered some food too - DoorDash is\n"
+	.string "the same here as it is back in Unova,\l"
 	.string "and my Mom's card is still on the\l"
 	.string "account! I'm sure she gets... points or\l"
 	.string "something, right?$"

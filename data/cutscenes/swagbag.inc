@@ -57,6 +57,8 @@ Swagbag_LeagueStipend_Dialogue::
 	msgbox gText_Swagbag_BecauseTheBoard
 	closemessage
 	addmoney 50000, 0
+	setflag FLAG_SYS_POKENAV_GET
+	setflag FLAG_SYS_QUEST_MENU_GET
 	givecustommon SPECIES_SLOWKING_GALARIAN, 100, ITEM_ASSAULT_VEST, ITEM_BEAST_BALL, NATURE_CALM, 2, 252, 0, 12, 124, 120, 0, 31, 0, 31, 31, 31, 31, MOVE_SURF, MOVE_PSYCHIC, MOVE_FLAMETHROWER, MOVE_SLUDGE_BOMB
 	goto Swagbag_PokedexApps_Dialogue
 	end
@@ -220,8 +222,8 @@ swagbag_WalkBackwards:
 	step_end
 
 gText_Swagbag_WelcomeToRegion::
-	.string "{PLAYER}! Welcome to SanFran! How\n"
-	.string "was your flight?$"
+	.string "{PLAYER}! Welcome to SanFran! How was\n"
+	.string "your flight?$"
 
 gText_Swagbag_GreatThePrivateCar::
 	.string "Great! The private car from the airport\n"
@@ -293,8 +295,7 @@ gText_Swagbag_HmmThoseAllSound::
 
 gText_Swagbag_PlayerRecivedMoney::
 	.string "{PLAYER} received ¥50000, a PokéDex,\n"
-	.string "and new phone applications from\l"
-	.string "Oak.$"
+	.string "and new phone applications from Oak.$"
 
 gText_Swagbag_IBelieveThatsEverything::
 	.string "I believe that's everything. Questions?$"
@@ -321,9 +322,9 @@ gText_Swagbag_IllBeWorkingOnMyLaptop::
 	.string "leave South Bay, okay?$"
 
 gText_Swagbag_GotItThanks::
-	.string "Got it. Thanks for all the help,\n"
-	.string "Oak! I'm still so stoked for\l"
-	.string "the opportunity and the Challenge!$"
+	.string "Got it. Thanks for all the help, Oak! I'm\n"
+	.string "still so stoked for the opportunity\l"
+	.string "and the Challenge!$"
 
 gText_Swagbag_InTheActualGame::
 	.string "In the actual game, this will be a list of\n"
