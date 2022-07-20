@@ -9,6 +9,7 @@ mapscripts Sunset_MapScripts {
 
 script Sunset_MapScripts_OnTransition {
     call(ImIn_HideObject_OutsideHouse_Script)
+    call(Quest_ReturnDoll_HideObject_Script)
 }
 
 

@@ -56,6 +56,7 @@
 #include "constants/weather.h"
 #include "constants/mugshots.h"
 #include "constants/rgb.h"
+#include "constants/quests.h"
 .include "asm/macros.inc"
 .include "asm/macros/event.inc"
 .include "constants/constants.inc"
@@ -1212,127 +1213,70 @@ Script_RemoveTint::
 .include "data/cutscenes/YouCantStopMe.inc"
 .include "data/cutscenes/WeCanStopYouActually.inc"
 
-
+## PSF MAPS
 .include "data/maps/Presidio/scripts.inc"
-
 .include "data/maps/Presidio_Mansion/scripts.inc"
-
 .include "data/maps/Psfroute49/scripts.inc"
-
 .include "data/maps/Pacifica/scripts.inc"
-
 .include "data/maps/Psfroute5/scripts.inc"
-
 .include "data/maps/Psfroute7/scripts.inc"
-
 .include "data/maps/Gldngtewilds/scripts.inc"
-
 .include "data/maps/Gldngtepark/scripts.inc"
-
 .include "data/maps/Gldngtepark_Gym/scripts.inc"
-
 .include "data/maps/Haightashbury/scripts.inc"
-
 .include "data/maps/Haightashbury_Gym/scripts.inc"
-
 .include "data/maps/Psfroute43/scripts.inc"
-
 .include "data/maps/Paintedladies/scripts.inc"
-
 .include "data/maps/Psfroute13/scripts.inc"
-
 .include "data/maps/Castro/scripts.inc"
-
 .include "data/maps/Castro_Gym/scripts.inc"
-
 .include "data/maps/Chasecenter_Construction/scripts.inc"
-
 .include "data/maps/Gldngtebridge/scripts.inc"
-
 .include "data/maps/Robinwilltunnel/scripts.inc"
-
 .include "data/maps/Marin/scripts.inc"
-
 .include "data/maps/Psfroute61/scripts.inc"
-
 .include "data/maps/Muirwoods/scripts.inc"
-
 .include "data/maps/Robinwilltunnel_B1F/scripts.inc"
-
 .include "data/maps/Muirwoods_Inner/scripts.inc"
-
 .include "data/maps/Robinwilltunnel_B2F/scripts.inc"
-
 .include "data/maps/Navalbase/scripts.inc"
-
 .include "data/maps/Chasecenter_Entrance/scripts.inc"
-
 .include "data/maps/Chasecenter_Lockers/scripts.inc"
-
 .include "data/maps/Chasecenter_Skybox/scripts.inc"
-
 .include "data/maps/Chasecenter_Arena/scripts.inc"
-
 .include "data/maps/Chasecenter_Stands/scripts.inc"
-
 .include "data/maps/Presidio_Compound_1F/scripts.inc"
-
 .include "data/maps/Treasureisland/scripts.inc"
-
 .include "data/maps/Treasureisland_Restaurant/scripts.inc"
-
 .include "data/maps/Alcatraz_B1F/scripts.inc"
-
 .include "data/maps/Alcatraz_B2F/scripts.inc"
+.include "data/maps/SOMA_Newspaper/scripts.inc"
+.include "data/maps/Mission_Consulting/scripts.inc"
+.include "data/maps/Castro_BallShop/scripts.inc"
+.include "data/maps/Psfroute62/scripts.inc"
+.include "data/maps/Lakemerritt/scripts.inc"
+.include "data/maps/Psfroute18/scripts.inc"
+.include "data/maps/Twinpeaks/scripts.inc"
+.include "data/maps/OkayLetsFixit_Flashback/scripts.inc"
+.include "data/maps/Sunset/scripts.inc"
+.include "data/maps/Sunset_Apartment/scripts.inc"
+.include "data/maps/Tenderloin_Library/scripts.inc"
+.include "data/maps/Japantown_Ramen/scripts.inc"
+.include "data/maps/Marin_EliteHome/scripts.inc"
+.include "data/maps/Alameda_Archer_House/scripts.inc"
+.include "data/maps/Oakland_Warehouse/scripts.inc"
+.include "data/maps/LayoutTester/scripts.inc"
+.include "data/maps/Alameda_PostEarthquake/scripts.inc"
+.include "data/maps/Psfroute25/scripts.inc"
+.include "data/maps/Undergroundlab/scripts.inc"
+.include "data/maps/Sunset_Sabrina_House/scripts.inc"
+.include "data/maps/Salesforcetower_3F/scripts.inc"
+.include "data/maps/Salesforcetower_4F/scripts.inc"
+.include "data/maps/Salesforcetower_6F/scripts.inc"
+.include "data/maps/Salesforcetower_8F/scripts.inc"
+.include "data/maps/Salesforcetower_9F/scripts.inc"
+.include "data/maps/WeCanStopYouActually_Cutscene/scripts.inc"
 
-	.include "data/maps/SOMA_Newspaper/scripts.inc"
-
-	.include "data/maps/Mission_Consulting/scripts.inc"
-
-	.include "data/maps/Castro_BallShop/scripts.inc"
-
-	.include "data/maps/Psfroute62/scripts.inc"
-
-	.include "data/maps/Lakemerritt/scripts.inc"
-
-	.include "data/maps/Psfroute18/scripts.inc"
-
-	.include "data/maps/Twinpeaks/scripts.inc"
-
-	.include "data/maps/OkayLetsFixit_Flashback/scripts.inc"
-
-	.include "data/maps/Sunset/scripts.inc"
-
-	.include "data/maps/Sunset_Apartment/scripts.inc"
-
-	.include "data/maps/Tenderloin_Library/scripts.inc"
-
-	.include "data/maps/Japantown_Ramen/scripts.inc"
-
-	.include "data/maps/Marin_EliteHome/scripts.inc"
-
-	.include "data/maps/Alameda_Archer_House/scripts.inc"
-
-	.include "data/maps/Oakland_Warehouse/scripts.inc"
-
-	.include "data/maps/LayoutTester/scripts.inc"
-
-	.include "data/maps/Alameda_PostEarthquake/scripts.inc"
-
-	.include "data/maps/Psfroute25/scripts.inc"
-
-	.include "data/maps/Undergroundlab/scripts.inc"
-
-	.include "data/maps/Sunset_Sabrina_House/scripts.inc"
-
-	.include "data/maps/Salesforcetower_3F/scripts.inc"
-
-	.include "data/maps/Salesforcetower_4F/scripts.inc"
-
-	.include "data/maps/Salesforcetower_6F/scripts.inc"
-
-	.include "data/maps/Salesforcetower_8F/scripts.inc"
-
-	.include "data/maps/Salesforcetower_9F/scripts.inc"
-
-	.include "data/maps/WeCanStopYouActually_Cutscene/scripts.inc"
+## QUESTS
+.include "data/quests/playersadventure.inc"
+.include "data/quests/returndoll.inc"

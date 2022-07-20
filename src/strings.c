@@ -1850,6 +1850,7 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
+
 // Starter Select Menu
 const u8 gText_Starter0[] = _("Poliwhirl");
 const u8 gText_Starter1[] = _("Fletchinder");
@@ -1895,3 +1896,7 @@ const u8 gText_StmpngTantrm[] = _("StmpngTantrm");
 
 //Secret Lab Discovery
 const u8 gText_WantToUseDig[] = _("Do you want to use Dig here?");
+
+//QuestAnnounce
+const u8 gText_QuestActive[] = _("active");
+const u8 gText_QuestComplete[] = _("complete");

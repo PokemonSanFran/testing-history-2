@@ -3106,4 +3106,8 @@ extern const u8 gText_StmpngTantrm[];
 //Secret Lab Discovery
 extern const u8 gText_WantToUseDig[];
 
+//QuestAnnounce
+extern const u8 gText_QuestActive[];
+extern const u8 gText_QuestComplete[];
+
 #endif // GUARD_STRINGS_H

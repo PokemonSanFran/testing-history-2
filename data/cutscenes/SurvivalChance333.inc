@@ -96,7 +96,7 @@ SurvivalChance333_PostBattle_Script::
 	callnative ClearMugshot
 	msgbox gText_SurvivalChance333_YoureAPairOfKids
 	closemessage
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	warpsilent MAP_ALAMEDA, 255, 21, 24
 	return
 
@@ -188,7 +188,7 @@ SurvivalChance333_SetLava::
 
 SurvivalChance333_ExplainOperation::
 	lock
-	setvar VAR_NATIVERIVALBETA_STATE, 4
+	setvar VAR_ALAMEDA_STATE, 4
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	msgbox gText_SurvivalChance333_SoThatsThePlan

@@ -8,15 +8,15 @@ Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, ImProbablyBetterThanYou_BiancaIntro_Dialogue
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, Swagbag_WelcomeToSanFran_Dialogue
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 8, WhyAreYouHelpingThem_BackAtCompound_Dialogue
-	map_script_2 VAR_STORYLINE_STATE, 23, VSGarbodor_ReturnToTheCompound_Dialogue
+	map_script_2 VAR_PLAYER_HOME_STATE, 1, ImProbablyBetterThanYou_BiancaIntro_Dialogue
+	map_script_2 VAR_PLAYER_HOME_STATE, 3, Swagbag_WelcomeToSanFran_Dialogue
+	map_script_2 VAR_PLAYER_HOME_STATE, 8, WhyAreYouHelpingThem_BackAtCompound_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR, VSGarbodor_ReturnToTheCompound_Dialogue
 	.2byte 0
 
 
 Southbay_Compound_1F_MapScripts_OnTransition::
-	switch VAR_LITTLEROOT_INTRO_STATE
+	switch VAR_PLAYER_HOME_STATE
 	case 1, Southbay_Compound_1F_MapScripts_OnTransition_3
 	case 3, Southbay_Compound_1F_MapScripts_OnTransition_4
 	case 4, Southbay_Compound_1F_MapScripts_OnTransition_5
@@ -122,7 +122,7 @@ Oak_Southbay_Compound_1F_InteractScript::
 	lockall
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
+	compare VAR_PLAYER_HOME_STATE, 6
 	goto_if_eq Oak_Southbay_Compound_1F_InteractScript_2
 	call swagbag_HelpPlayer_Script
 Oak_Southbay_Compound_1F_InteractScript_1:

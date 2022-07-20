@@ -2033,6 +2033,11 @@ static const u8 sFashionCaseDesc[] = _(
     "the arragement of\n"
     "clothes.");
 
+static const u8 sLostDollDesc[] = _(
+    "Abigayle's lost doll.\n"
+    "Return it to her in\n"
+    "BernalHeights.");
+
 // Species-specific Held Items
 static const u8 sLightBallDesc[] = _(
     "A hold item that\n"

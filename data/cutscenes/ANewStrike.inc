@@ -1,5 +1,5 @@
 ANewStrike_BreakingNews_Dialogue::
-	clearflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL
+	clearflag FLAG_CONSTRUCTION_BREAKING_NEWS
 	lockall
 	pokenavcall gText_ANewStrike_ConstructionCrew
 	waitmessage

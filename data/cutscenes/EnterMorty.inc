@@ -58,6 +58,7 @@ EnterMorty_StartGymBattle_Script::
 EnterMorty_MortyDefeated_Script::
 	lock
 	setflag FLAG_BADGE04_GET
+	setflag FLAG_CONSTRUCTION_BREAKING_NEWS
 	addvar VAR_GYM_4_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_MORTY
 	callnative DrawMugshot

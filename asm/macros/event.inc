@@ -2155,3 +2155,44 @@
 	setvar VAR_0x8002, \tryMultiple
 	special TrySpecialOverworldEvo
 	.endm
+
+    .macro questmenu case:req, questId:req
+    .byte 0xe5
+    .byte \case
+    .byte \questId
+    .endm
+
+    .macro subquestmenu case:req, parentId:req, childId:req
+    .byte 0xe6
+    .byte \case
+    .2byte \parentId
+    .2byte \childId
+    .endm
+    
+    .macro openquestmenu
+    questmenu 0 0
+    .endm
+
+@ Starts the specified quest.
+	.macro startquest quest:req
+	closemessage
+	delay 30
+	questmenu QUEST_MENU_SET_ACTIVE, \quest
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
+    bufferstring 1 gText_QuestActive
+	playfanfare MUS_LEVEL_UP 
+	msgbox gText_QuestAnnounce, MSGBOX_SIGN
+	waitfanfare
+	.endm
+
+@ Completes the specified quest.
+	.macro completequest quest:req
+	closemessage
+	delay 30
+	questmenu QUEST_MENU_COMPLETE_QUEST, \quest
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
+    bufferstring 1 gText_QuestComplete
+	playfanfare MUS_LEVEL_UP 
+	msgbox gText_QuestAnnounce, MSGBOX_SIGN
+	waitfanfare
+	.endm

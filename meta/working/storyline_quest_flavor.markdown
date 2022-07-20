@@ -1,128 +1,129 @@
-# VAR > 0
-Explore everything eastern SanFran has to offer on your way to the Championship.
+if(VAR === 111 && if(VAR TIME TRAVEL FALSE)
+	gText_Players_Adventure_Flavor43
 
-# VAR == 9
-Head back to the Compound in Southbay and get a good night's sleep.
+else if(VAR == 111 && if(VAR TIME TRAVEL TRUE)
+	gText_Players_Adventure_Flavor42
 
-# VAR == 10
-Go to the Ferrybuilding and take the ferry to Alameda. Head to Berkeley for your next badge!
+else if(VAR == 110)
+	gText_Players_Adventure_Flavor41
 
-# VAR == 13
-Backtrack down Psfroute22 to get back to the Alameda Ferry.
+else if(VAR == 109)
+	gText_Players_Adventure_Flavor40
 
-# VAR == 13 && HAS SS TICKET
-Complete the challenge on Alcatraz and learn more about SanFran's history.
+else if(VAR == 108)
+	gText_Players_Adventure_Flavor39
 
-# VAR > 13
-Explore everything western SanFran has to offer on your way to the Championship.
+else if(VAR == 107)
+	gText_Players_Adventure_Flavor38
 
-# VAR == 22
-Head to the Chasecenter construction site on Psfroute22.
+else if(VAR > 104)
+	gText_Players_Adventure_Flavor37
 
-# VAR == 22 && ROUTE22 STATE IS XXX
-Defeat the Garbordor holding the stadium hostage!
+else if(VAR == 104)
+	gText_Players_Adventure_Flavor36
 
-# VAR > 22
-Head back to the Compound in Southbay and get a good night's sleep.
+else if(VAR > 100)
+	gText_Players_Adventure_Flavor35
 
-# VAR == 25
-Complete all of Siebold's challenges in Muirwoods.
+else if(VAR = 100)
+	gText_Players_Adventure_Flavor34
 
-# VAR == 25 && NAVAL BASE STATEW IS XXX
-Join the police raid on Team Rocket's base!
+else if(VAR > 51)
+	gText_Players_Adventure_Flavor33
 
-# VAR == 26
-Head back to the Compound in Southbay. The Championship begins first thing tomorrow!
+else if(VAR > 49)
+	gText_Players_Adventure_Flavor32
 
-# VAR == 27
-Go the Chasecenter and get ready for the Championship!
+else if(VAR == 49)
+	gText_Players_Adventure_Flavor31
 
-# VAR == 28
-Take a walk, cool your head before the matches start.
+else if(VAR == 48)
+	gText_Players_Adventure_Flavor30
 
-# VAR > 28
-Head to the Arena for your Group Stage match. Good luck!
+else if(VAR > 43)
+	gText_Players_Adventure_Flavor29
 
-# VAR == 31
-Head to the Arena for your Semifinal match. Good luck!
+else if(VAR == 43 && TIME TRAVEL)
+	gText_Players_Adventure_Flavor28
 
-# VAR == 33
-Watch Archer vs Bianca from the Skybox.
+else if(VAR == 43)
+	gText_Players_Adventure_Flavor27
 
-# VAR > 33
-Go the Arena, and face Archer for the Championship!
+else if(VAR == 42)
+	gText_Players_Adventure_Flavor26
 
-# VAR == 36
-You're the Champion. Congratulations!
+else if(VAR == 41 && if(VAR ALCATRAZ XXX)
+	gText_Players_Adventure_Flavor25
 
-# VAR == 37
-Take a break; explore Treasureisland.
+else if(VAR > 40)
+	gText_Players_Adventure_Flavor24
 
-# VAR == 38
-Defeat Archer on Treasureisland.
+else if(VAR == 40)
+	gText_Players_Adventure_Flavor23
 
-# VAR == 39
-Have lunch with Archer on Treasureisland.
+else if(VAR == 39)
+	gText_Players_Adventure_Flavor22
 
-# VAR == 40
-Help Archer out with his project. Talk to them on Treasureisland to figure out where to start.
+else if(VAR == 38)
+	gText_Players_Adventure_Flavor21
 
-# VAR > 40
-Head to the Salesforcetower to talk to Ycombinator.
+else if(VAR == 37)
+	gText_Players_Adventure_Flavor20
 
-# VAR == 41 && # VAR ALCATRAZ XXX
-Head to Alcatraz to talk to TeamRocket.
+else if(VAR == 36)
+	gText_Players_Adventure_Flavor19
 
-# VAR == 42
-Head back to the Compound in Presidio and get some rest. You've got a big decision to make.
+else if(VAR > 33)
+	gText_Players_Adventure_Flavor18
 
-# VAR == 43
-Go to Alcatraz to help Team Rocket, or go to Salesforcetower to help Ycombinator.
+else if(VAR == 33)
+	gText_Players_Adventure_Flavor17
 
-# VAR == 43 && TIME TRAVEL
-You're back to the day of the big decision. Will you help TeamRocket at Alcatraz this time?
+else if(VAR == 31)
+	gText_Players_Adventure_Flavor16
 
-# VAR > 43
-Head to the Salesforcetower to help take down TeamRocket once and for all.
+else if(VAR > 28)
+	gText_Players_Adventure_Flavor15
 
-# VAR == 48
-TeamRocket is finished. You've done it.
+else if(VAR == 28)
+	gText_Players_Adventure_Flavor14
 
-# VAR == 49
-Enter the Chasecenter Arena for your exhibition battle!
+else if(VAR == 27)
+	gText_Players_Adventure_Flavor13
 
-# VAR > 49
-TeamRocket is disbanded. You're the Champion. Life is good.
+else if(VAR == 26)
+	gText_Players_Adventure_Flavor12
 
-# VAR > 51
-If you want a do-over, head to the top of Twin Peaks.
+else if(VAR == 25 && NAVAL BASE STATEW IS XXX)
+	gText_Players_Adventure_Flavor11
 
-# VAR = 100
-Look all over SanFran to find clues on the location of Wikstrom.
+else if(VAR == 25)
+	gText_Players_Adventure_Flavor10
 
-# VAR > 100
-Head to Oakland for the warehouse rave, or Alcatraz for the all hands meeting.
+else if(VAR > 22)
+	gText_Players_Adventure_Flavor9
 
-# VAR == 104
-Which corporation should Teamrocket tackle first? Head to Alcatraz to start working on it!
+else if(VAR == 22 && ROUTE22 STATE IS XXX)
+	gText_Players_Adventure_Flavor8
 
-# VAR > 104
-Head back to Archer's house in Alameda and get a good night's sleep.
+else if(VAR == 22)
+	gText_Players_Adventure_Flavor7
 
-# VAR == 107
-Is the message a clue? Meet the team at Psfroute8.
+else if(VAR > 13)
+	gText_Players_Adventure_Flavor6
 
-# VAR == 108
-Head back to Alcatraz to regroup.
+else if(VAR == 13 && HAS SS TICKET)
+	gText_Players_Adventure_Flavor5
 
-# VAR == 109
-Head into the belly of the beast. Meet at Sabrina's house in Sunset.
+else if(VAR == 13)
+	gText_Players_Adventure_Flavor4
 
-# VAR == 110
-Sabrina's home in the sunset has a warp tile directly into the Salesforce. It's time to finish this!
+else if(VAR == 10)
+	gText_Players_Adventure_Flavor3
 
-# VAR == 111 && # VAR TIME TRAVEL TRUE
-You became Champion, made some mistakes, but the region is just a little better because of your efforts. Thank you!
+else if(VAR == 9)
+	gText_Players_Adventure_Flavor2
 
-# VAR === 111 && # VAR TIME TRAVEL FALSE
-You became Champion, stamped out Ycombinator, and the region is a just a little better because of your efforts. Thank you!
+else if(VAR > 0)
+	gText_Players_Adventure_Flavor1
+

@@ -63,7 +63,6 @@ EnterChuck_StartBattle_Script::
 EnterChuck_ChuckDefeated_Script::
 	lock
 	setflag FLAG_BADGE05_GET
-	setflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL
 	addvar VAR_GYM_5_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot

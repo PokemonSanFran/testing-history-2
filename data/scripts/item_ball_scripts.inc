@@ -661,3 +661,7 @@ MagmaHideout_3F_3R_EventScript_ItemEscapeRope::
 Sunset_Sabrina_House_EventScript_ItemMagmaEmblem::
 	finditem ITEM_MAGMA_EMBLEM 
 	end
+
+Sunset_Quest_ReturnDoll_EventScript_ItemLostDoll::
+    finditem ITEM_LOST_DOLL
+    end
