@@ -144,7 +144,7 @@ WaitEvenThen_ClearBossPokemon_Script::
 WaitEvenThen_PostBossDialogue::
 	lock
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 1, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceDown

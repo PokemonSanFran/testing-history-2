@@ -346,14 +346,14 @@ script WhyAreYouHelpingThem_PostBattle_Dialogue {
         msgbox(gText_WhyAreYouHelpingThem_NoILostToo)
         callnative(ClearMugshot)
         closemessage
-        addvar(VAR_NATIVERIVALBETA_STATE,1)
+        addvar(VAR_ALAMEDA_STATE,1)
         fadescreen(FADE_TO_BLACK)
         warpsilent(MAP_ALAMEDA,255,26,6)
 }
 
 
 script WhyAreYouHelpingThem_MissionDebrief_Dialogue {
-        addvar(VAR_NATIVERIVALBETA_STATE,1)
+        addvar(VAR_ALAMEDA_STATE,1)
         addvar(VAR_LITTLEROOT_INTRO_STATE,1)
         lock
         applymovement(PLAYER,Common_Movement_FaceUp)
@@ -437,7 +437,7 @@ script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
 }
 
 script WhyAreYouHelpingThem_StartChampionship_Dialogue {
-        addvar(VAR_NATIVERIVALBETA_STATE,1) //advance Alameda forward to clean up raid damage
+        addvar(VAR_ALAMEDA_STATE,1) //advance Alameda forward to clean up raid damage
     msgbox(gText_WhyAreYouHelpingThem_AreYouReadyToBegin,MSGBOX_YESNO)
 
         if (var(VAR_RESULT) == NO){

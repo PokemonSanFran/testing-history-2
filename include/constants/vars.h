@@ -1,7 +1,7 @@
 #ifndef GUARD_CONSTANTS_VARS_H
 #define GUARD_CONSTANTS_VARS_H
 
-//#include "vars_define.h"
+#include "vars_define.h"
 
 #define VARS_START 0x4000
 
@@ -96,11 +96,12 @@
 #define VAR_POKELOT_RND1                     0x404B
 #define VAR_POKELOT_RND2                     0x404C
 #define VAR_POKELOT_PRIZE_PLACE              0x404D
-#define VAR_NATIVERIVALBETA_STATE            0x404E // Previously Unused Var
+#define VAR_ALAMEDA_STATE            0x404E // Previously Unused Var
 #define VAR_LOTAD_SIZE_RECORD                0x404F
 #define VAR_LITTLEROOT_TOWN_STATE            0x4050
 #define VAR_OLDALE_TOWN_STATE                0x4051
 #define VAR_DEWFORD_TOWN_STATE               0x4052 // Previously Unused Var
+#define VAR_UNDERGROUNDLAB_STATE             0x4052
 #define VAR_LAVARIDGE_TOWN_STATE             0x4053
 #define VAR_CURRENT_SECRET_BASE              0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
 #define VAR_NATIVETRANSALPHA_STATE           0x4055 // Previously Unsued (VAR_VERDANTURF_TOWN_STATE) 
@@ -111,30 +112,49 @@
 #define VAR_MAUVILLE_CITY_STATE              0x4059 // Previously Unused Var
 #define VAR_RUSTBORO_CITY_STATE              0x405A
 #define VAR_FORTREE_CITY_STATE               0x405B // Previously Unused Var
+#define VAR_WAREHOUSE_RAVE_STATE             0x405B 
 #define VAR_LILYCOVE_CITY_STATE              0x405C // Previously Unused Var
+#define VAR_MASK_OFF_STATE                   0x405C
 #define VAR_MOSSDEEP_CITY_STATE              0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E
 #define VAR_EVER_GRANDE_CITY_STATE           0x405F // Unused Var
 #define VAR_ROUTE101_STATE                   0x4060
+#define VAR_PSFROUTE63_STATE                 0x4060
 #define VAR_FAINTED_FOG_STATE                  0x4061 //Previously ROUTE102_STATE
 #define VAR_ROUTE103_STATE                   0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                   0x4063
+#define VAR_YOU_LOOK_TIRED_STATE             0x4063
 #define VAR_ROUTE105_STATE                   0x4064 // Unused Var
+#define VAR_KOGA_RAISON_DETRE_STATE          0x4064
 #define VAR_ROUTE106_STATE                   0x4065 // Unused Var
+#define VAR_KOGA_MANSION_STATE               0x4065
 #define VAR_ROUTE107_STATE                   0x4066 // Unused Var
+#define VAR_BEACH_BATTLE_STATE               0x4066
 #define VAR_ROUTE108_STATE                   0x4067 // Unused Var
+#define VAR_HAIGHTASHBURY_STATE              0x4067
 #define VAR_ROUTE109_STATE                   0x4068 // Unused Var
+#define VAR_BATTLE_8_STATE                   0x4068
 #define VAR_ROUTE110_STATE                   0x4069
+#define VAR_CONSTRUCTION_STRIKE_STATE        0x4069
 #define VAR_ROUTE111_STATE                   0x406A // Unused Var
+#define VAR_INNER_CONSTRUCTION_SITE_STATE    0x406A
 #define VAR_ROUTE112_STATE                   0x406B // Unused Var
 #define VAR_ROUTE113_STATE                   0x406C // Unused Var
+#define VAR_GOLDENGATEBRIDGE_STATE           0x406C
 #define VAR_ROUTE114_STATE                   0x406D // Unused Var
+#define VAR_ROBINWILLIAMSTUNNEL              0x406D 
 #define VAR_ROUTE115_STATE                   0x406E // Unused Var
+#define VAR_MARIN_STATE                      0x406E
 #define VAR_ROUTE116_STATE                   0x406F
+#define VAR_MUIRWOODS_STATE                 0x406F
 #define VAR_ROUTE117_STATE                   0x4070 // Unused Var
+#define VAR_FERRYBUILDING_STATE              0x4070
 #define VAR_ROUTE118_STATE                   0x4071
+#define VAR_NAVALBASE_STATE                  0x4071
 #define VAR_ROUTE119_STATE                   0x4072
+#define VAR_CHASECENTER_TOURNAMENT_STATE     0x4072
 #define VAR_ROUTE120_STATE                   0x4073 // Unused Var
+#define VAR_LAST_RESTORATION_TAKEDOWN_QUEST  0x4073
 #define VAR_ROUTE121_STATE                   0x4074
 #define VAR_ROUTE122_STATE                   0x4075 // Unused Var
 #define VAR_ROUTE123_STATE                   0x4076 // Unused Var
@@ -153,7 +173,8 @@
 #define VAR_UNUSED_0x4083                    0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                  0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman 
-#define VAR_TEAMROCKET_FISHERMANSWHARF_STATE     0x4086 //Previously VAR_TEAMROCKET_FISHERMANSWHARF_STATE
+#define VAR_GROUP_OF_ASSHOLES_STATE 0x4086 
+#define VAR_CONTEST_HALL_STATE               0x4086
 #define VAR_CABLE_CLUB_STATE                 0x4087
 #define VAR_CONTEST_TYPE                     0x4088
 #define VAR_SECRET_BASE_INITIALIZED          0x4089
@@ -166,14 +187,18 @@
 #define VAR_BRINEY_HOUSE_STATE               0x4090
 #define VAR_BERKELEY_STATE                    0x4091 // Previously Unused Var
 #define VAR_LITTLEROOT_INTRO_STATE           0x4092
+#define VAR_PLAYER_HOME_STATE                0x4092
 #define VAR_MAUVILLE_GYM_STATE               0x4093
 #define VAR_LILYCOVE_MUSEUM_2F_STATE         0x4094
 #define VAR_LILYCOVE_FAN_CLUB_STATE          0x4095
 #define VAR_BRINEY_LOCATION                  0x4096
 #define VAR_INIT_SECRET_BASE                 0x4097
 #define VAR_PETALBURG_WOODS_STATE            0x4098
+#define VAR_YOU_LOOK_TIRED_STATE             0x4098
 #define VAR_LILYCOVE_CONTEST_LOBBY_STATE     0x4099
+#define VAR_LETS_BURN_THIS_MOTHER_STATE      0x4099
 #define VAR_RUSTURF_TUNNEL_STATE             0x409A
+#define VAR_MANHUNT_STATE                    0x409A
 #define VAR_ALCATRAZ_STATE                   0x409B // Previously Unused Var
 #define VAR_ELITE_4_STATE                    0x409C
 #define VAR_ALCATRAZ_EXHIBIT_STATE                    0x409D // Previously Unused Var

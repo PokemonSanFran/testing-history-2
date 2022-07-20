@@ -77,7 +77,7 @@ Earthquake_ThatNight_Dialogue::
 	removeobject 1
 	applymovement OBJ_EVENT_ID_PLAYER, Earthquake_RunFromBedOutside
 	waitmovement 0
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	warp MAP_ALAMEDA, 2
 	return
 
@@ -139,7 +139,7 @@ Earthquake_StartRescue_Dialogue::
 	waitmovement 13
 	removeobject 3
 	removeobject 13
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	release
 	end
 
@@ -237,7 +237,7 @@ Earthquake_PostRescue_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	goto Earthquake_AskPlayerWarp_Script
 	return
 

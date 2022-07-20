@@ -159,7 +159,7 @@ script WaitEvenThen_PostBossDialogue {
     lock
 
         addvar(VAR_STORYLINE_STATE,1)
-        addvar(VAR_NATIVERIVALBETA_STATE,1)
+        addvar(VAR_ALAMEDA_STATE,1)
 
         applymovement(PLAYER,Common_Movement_FaceDown)
         applymovement(ARCHER,Common_Movement_FaceDown)

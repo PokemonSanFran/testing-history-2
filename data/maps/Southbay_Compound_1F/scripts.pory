@@ -4,16 +4,16 @@ mapscripts Southbay_Compound_1F_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_LITTLEROOT_INTRO_STATE, 1: ImProbablyBetterThanYou_BiancaIntro_Dialogue 
-        VAR_LITTLEROOT_INTRO_STATE, 3: Swagbag_WelcomeToSanFran_Dialogue 
-        VAR_LITTLEROOT_INTRO_STATE, 8:WhyAreYouHelpingThem_BackAtCompound_Dialogue
-        VAR_STORYLINE_STATE, 23: VSGarbodor_ReturnToTheCompound_Dialogue 
+        VAR_PLAYER_HOME_STATE, 1: ImProbablyBetterThanYou_BiancaIntro_Dialogue 
+        VAR_PLAYER_HOME_STATE, 3: Swagbag_WelcomeToSanFran_Dialogue 
+        VAR_PLAYER_HOME_STATE, 8:WhyAreYouHelpingThem_BackAtCompound_Dialogue
+        VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR: VSGarbodor_ReturnToTheCompound_Dialogue 
     ]
 }
 
 script Southbay_Compound_1F_MapScripts_OnTransition {
 
-    switch (var(VAR_LITTLEROOT_INTRO_STATE)) {
+    switch (var(VAR_PLAYER_HOME_STATE)) {
         case 1: call(ImProbablyBetterThanYou_ObjectSetUp) 
         case 3: call(Swagbag_ObjectSetUp) 
         case 4: call(swagbag_ObjectHide_Script) 
@@ -62,7 +62,7 @@ script Oak_Southbay_Compound_1F_InteractScript {
         //var is 6, does not have leftovers, explain league
         //var is not 6, help menu
 
-        if (var(VAR_LITTLEROOT_INTRO_STATE) == 6){
+        if (var(VAR_PLAYER_HOME_STATE) == 6){
             if (flag(FLAG_RECIEVED_LEFTOVERS)){
                 if(flag(FLAG_TEMP_1F)){
                     call(TwoHoursAgo_ExplainLeftovers_Dialouge)

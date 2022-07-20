@@ -13,17 +13,17 @@ Alameda_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Alameda_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_NATIVERIVALBETA_STATE, 3, SurvivalChance333_ExplainOperation
-	map_script_2 VAR_NATIVERIVALBETA_STATE, 5, WhyAreYouHelpingThem_MissionDebrief_Dialogue
-	map_script_2 VAR_NATIVERIVALBETA_STATE, 8, Earthquake_ShowDestroyedCity_Script
-	map_script_2 VAR_NATIVERIVALBETA_STATE, 11, Earthquake_PostRescue_Dialogue
+	map_script_2 VAR_ALAMEDA_STATE, 3, SurvivalChance333_ExplainOperation
+	map_script_2 VAR_ALAMEDA_STATE, 5, WhyAreYouHelpingThem_MissionDebrief_Dialogue
+	map_script_2 VAR_ALAMEDA_STATE, 8, Earthquake_ShowDestroyedCity_Script
+	map_script_2 VAR_ALAMEDA_STATE, 11, Earthquake_PostRescue_Dialogue
 	map_script_2 VAR_STORYLINE_STATE, 108, LetsFinishThis_MovePlayer_Script
 	.2byte 0
 
 
 Alameda_MapScripts_OnTransition::
 	call Alameda_LayoutSwap_Script
-	switch VAR_NATIVERIVALBETA_STATE
+	switch VAR_ALAMEDA_STATE
 	case 0, Alameda_MapScripts_OnTransition_2
 	case 1, Alameda_MapScripts_OnTransition_3
 	case 3, Alameda_MapScripts_OnTransition_4
@@ -65,7 +65,7 @@ Alameda_MapScripts_OnTransition_8:
 
 
 Alameda_LayoutSwap_Script::
-	compare VAR_NATIVERIVALBETA_STATE, 7
+	compare VAR_ALAMEDA_STATE, 7
 	goto_if_gt Alameda_LayoutSwap_Script_1
 	return
 
@@ -75,7 +75,7 @@ Alameda_LayoutSwap_Script_1:
 
 
 Alameda_MapScripts_OnLoad::
-	compare VAR_NATIVERIVALBETA_STATE, 3
+	compare VAR_ALAMEDA_STATE, 3
 	goto_if_gt Alameda_MapScripts_OnLoad_2
 	return
 
@@ -84,7 +84,7 @@ Alameda_MapScripts_OnLoad_1:
 	return
 
 Alameda_MapScripts_OnLoad_2:
-	compare VAR_NATIVERIVALBETA_STATE, 7
+	compare VAR_ALAMEDA_STATE, 7
 	goto_if_lt Alameda_MapScripts_OnLoad_1
 	return
 
@@ -207,14 +207,14 @@ Alameda_FerryState2_Script_7:
 
 
 Alameda_Person1_Fisherman::
-	compare VAR_NATIVERIVALBETA_STATE, 9
+	compare VAR_ALAMEDA_STATE, 9
 	goto_if_eq Alameda_Person1_Fisherman_2
 Alameda_Person1_Fisherman_1:
 	end
 
 Alameda_Person1_Fisherman_2:
 	msgbox Alameda_Person1_Fisherman_Text_0, MSGBOX_NPC
-	addvar VAR_NATIVERIVALBETA_STATE, 2
+	addvar VAR_ALAMEDA_STATE, 2
 	goto Alameda_Person1_Fisherman_1
 
 

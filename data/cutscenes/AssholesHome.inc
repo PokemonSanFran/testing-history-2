@@ -20,7 +20,7 @@ AssholesHome_WalkToPlayer_Script::
 AssholesHome_BattleEvent_Script::
 	lock
 	faceplayer
-	switch VAR_NATIVERIVALBETA_STATE
+	switch VAR_ALAMEDA_STATE
 	case 0, AssholesHome_BattleEvent_Script_2
 	case 1, AssholesHome_BattleEvent_Script_3
 	return
@@ -35,7 +35,7 @@ AssholesHome_BattleEvent_Script_3:
 
 
 AssholesHome_Archer_Dialogue::
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_JudgingFromSwarm
@@ -66,7 +66,7 @@ AssholesHome_StartBattle_Script::
 
 AssholesHome_PostBattle_Dialogue::
 	lockall
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_SoMuchForThe

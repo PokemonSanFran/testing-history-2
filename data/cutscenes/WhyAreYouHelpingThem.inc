@@ -315,14 +315,14 @@ WhyAreYouHelpingThem_PostBattle_Dialogue::
 	msgbox gText_WhyAreYouHelpingThem_NoILostToo
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	fadescreen FADE_TO_BLACK
 	warpsilent MAP_ALAMEDA, 255, 26, 6
 	return
 
 
 WhyAreYouHelpingThem_MissionDebrief_Dialogue::
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	addvar VAR_LITTLEROOT_INTRO_STATE, 1
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
@@ -389,7 +389,7 @@ WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 
 
 WhyAreYouHelpingThem_StartChampionship_Dialogue::
-	addvar VAR_NATIVERIVALBETA_STATE, 1
+	addvar VAR_ALAMEDA_STATE, 1
 	msgbox gText_WhyAreYouHelpingThem_AreYouReadyToBegin, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq WhyAreYouHelpingThem_StartChampionship_Dialogue_1
