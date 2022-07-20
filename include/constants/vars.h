@@ -1,7 +1,7 @@
 #ifndef GUARD_CONSTANTS_VARS_H
 #define GUARD_CONSTANTS_VARS_H
 
-#include "constants/vars_define.h"
+//#include "vars_define.h"
 
 #define VARS_START 0x4000
 

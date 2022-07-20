@@ -2155,3 +2155,20 @@
 	setvar VAR_0x8002, \tryMultiple
 	special TrySpecialOverworldEvo
 	.endm
+
+    .macro questmenu case:req, questId:req
+    .byte 0xe6
+    .byte \case
+    .byte \questId
+    .endm
+
+    .macro subquestmenu case:req, parentId:req, childId:req
+    .byte 0xe7
+    .byte \case
+    .2byte \parentId
+    .2byte \childId
+    .endm
+    
+    .macro openquestmenu
+    questmenu 0 0
+    .endm
