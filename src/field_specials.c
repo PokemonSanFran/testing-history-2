@@ -348,8 +348,7 @@ u8 GetSSTidalLocation(s8 *mapGroup, s8 *mapNum, s16 *x, s16 *y)
 bool32 ShouldDoWallyCall(void)
 {
     //This function runs after the player has 6 badges and takes 250 steps - this triggers the "A New Strike" cutscene.
-    if (GetNumberOfBadges() > 5 && FlagGet(FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL))
-    //if (FlagGet(FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL))
+    if (GetNumberOfBadges() > 5 && FlagGet(FLAG_CONSTRUCTION_BREAKING_NEWS))
     {
         switch (gMapHeader.mapType)
         {

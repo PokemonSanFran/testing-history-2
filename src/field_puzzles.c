@@ -16,7 +16,7 @@
 
 bool8 ShouldDoSecretLabDigEffect(void)
 {
-    if (!FlagGet(FLAG_SYS_BRAILLE_DIG)
+    if (!FlagGet(FLAG_DISCOVERED_UNDERGROUNDLAB)
      && (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE8)
      && gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE8)))
     {
