@@ -141,6 +141,8 @@ static void GenerateQuestLocation(s32 questId);
 static void PrintQuestLocation(s32 questId);
 static void GenerateQuestFlavorText(s32 questId);
 static void UpdateQuestFlavorText(s32 questId);
+static u8 LookUpFlavorText(s32 questId);
+static u8 LookUpFlavorText_Players_Adventure();
 static void PrintQuestFlavorText(s32 questId);
 
 static bool8 IsQuestUnlocked(s32 questId);
@@ -2058,8 +2060,154 @@ void GenerateQuestFlavorText(s32 questId)
 }
 void UpdateQuestFlavorText(s32 questId)
 {
-	StringCopy(gStringVar1, sSideQuests[questId].desc);
+	//StringCopy(gStringVar1, sSideQuests[questId].desc);
+	StringCopy(gStringVar1, LookUpFlavorText(questId));
 }
+
+u8 LookUpFlavorText(s32 questId)
+{
+    switch(questId)
+    {
+        case QUEST_PLAYERS_ADVENTURE: return LookUpFlavorText_Players_Adventure();
+        default: return sSideQuests[questId].desc;
+    }
+}
+
+//PSF TODO Seperate flavor text quest updates into their own file
+u8 LookUpFlavorText_Players_Adventure()
+{
+    u8 storyline = VarGet(VAR_STORYLINE_STATE);
+
+    if(storyline == 111 && !FlagGet(FLAG_TIMELINE_TIMETRAVEL))
+        return gText_Players_Adventure_Flavor43;
+
+    else if(storyline == 111 && FlagGet(FLAG_TIMELINE_TIMETRAVEL))
+        return gText_Players_Adventure_Flavor42;
+
+    else if(storyline == 110)
+        return gText_Players_Adventure_Flavor41;
+
+    else if(storyline == 109)
+        return gText_Players_Adventure_Flavor40;
+
+    else if(storyline == 108)
+        return gText_Players_Adventure_Flavor39;
+
+    else if(storyline == 107)
+        return gText_Players_Adventure_Flavor38;
+
+    else if(storyline > 104)
+        return gText_Players_Adventure_Flavor37;
+
+    else if(storyline == 104)
+        return gText_Players_Adventure_Flavor36;
+
+    else if(storyline > 100)
+        return gText_Players_Adventure_Flavor35;
+
+    else if(storyline = 100)
+        return gText_Players_Adventure_Flavor34;
+
+    else if(storyline > 51)
+        return gText_Players_Adventure_Flavor33;
+
+    else if(storyline > 49)
+        return gText_Players_Adventure_Flavor32;
+
+    else if(storyline == 49)
+        return gText_Players_Adventure_Flavor31;
+
+    else if(storyline == 48)
+        return gText_Players_Adventure_Flavor30;
+
+    else if(storyline > 43)
+        return gText_Players_Adventure_Flavor29;
+
+    else if(storyline == 43 && FlagGet(FLAG_TIMELINE_TIMETRAVEL))
+        return gText_Players_Adventure_Flavor28;
+
+    else if(storyline == 43)
+        return gText_Players_Adventure_Flavor27;
+
+    else if(storyline == 42)
+        return gText_Players_Adventure_Flavor26;
+
+    else if(storyline == 41 && (VarGet(VAR_ALCATRAZ_STATE) == ARCHER_SUMMONED_ALCATRAZ))
+        return gText_Players_Adventure_Flavor25;
+
+    else if(storyline > 40)
+        return gText_Players_Adventure_Flavor24;
+
+    else if(storyline == 40)
+        return gText_Players_Adventure_Flavor23;
+
+    else if(storyline == 39)
+        return gText_Players_Adventure_Flavor22;
+
+    else if(storyline == 38)
+        return gText_Players_Adventure_Flavor21;
+
+    else if(storyline == 37)
+        return gText_Players_Adventure_Flavor20;
+
+    else if(storyline == 36)
+        return gText_Players_Adventure_Flavor19;
+
+    else if(storyline > 33)
+        return gText_Players_Adventure_Flavor18;
+
+    else if(storyline == 33)
+        return gText_Players_Adventure_Flavor17;
+
+    else if(storyline == 31)
+        return gText_Players_Adventure_Flavor16;
+
+    else if(storyline > 28)
+        return gText_Players_Adventure_Flavor15;
+
+    else if(storyline == 28)
+        return gText_Players_Adventure_Flavor14;
+
+    else if(storyline == 27)
+        return gText_Players_Adventure_Flavor13;
+
+    else if(storyline == 26)
+        return gText_Players_Adventure_Flavor12;
+
+    else if(storyline == 25 && (VarGet(VAR_SALESFORCETOWER_2F_STATE) > PRE_WELCOME_TO_THE_WAR_ROOM))
+        return gText_Players_Adventure_Flavor11;
+
+    else if(storyline == 25)
+        return gText_Players_Adventure_Flavor10;
+
+    else if(storyline > 22)
+        return gText_Players_Adventure_Flavor9;
+
+    else if(storyline == 22 && (VarGet(VAR_CONSTRUCTION_STRIKE_STATE) == START_VS_GARBODOR))
+        return gText_Players_Adventure_Flavor8;
+
+    else if(storyline == 22)
+        return gText_Players_Adventure_Flavor7;
+
+    else if(storyline > 13)
+        return gText_Players_Adventure_Flavor6;
+
+    else if(storyline == 13 && (CheckBagHasItem(ITEM_SS_TICKET, 1)))
+        return gText_Players_Adventure_Flavor5;
+
+    else if(storyline == 13)
+        return gText_Players_Adventure_Flavor4;
+
+    else if(storyline == 10)
+        return gText_Players_Adventure_Flavor3;
+
+    else if(storyline == 9)
+        return gText_Players_Adventure_Flavor2;
+
+    else if(storyline > 0)
+        return gText_Players_Adventure_Flavor1;
+}
+
 void PrintQuestFlavorText(s32 questId)
 {
 	QuestMenu_AddTextPrinterParameterized(1, 2, gStringVar3, 40, 19, 5, 0, 0,
