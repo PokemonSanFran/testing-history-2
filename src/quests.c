@@ -141,8 +141,10 @@ static void GenerateAndPrintQuestDetails(s32 questId);
 static void GenerateQuestLocation(s32 questId);
 static void PrintQuestLocation(s32 questId);
 static void GenerateQuestFlavorText(s32 questId);
-static void UpdateQuestFlavorText(s32 questId);
-static const u8 *LookUpFlavorText(s32 questId);
+static void UpdateQuestDesc(s32 questId);
+static void UpdateQuestDoneDesc(s32 questId);
+static const u8 *GetQuestDesc(s32 questId);
+static const u8 *GetQuestDoneDesc(s32 questId);
 static void PrintQuestFlavorText(s32 questId);
 
 static bool8 IsQuestUnlocked(s32 questId);
@@ -250,7 +252,7 @@ static const struct SubQuest sSubQuests1[QUEST_1_SUB_COUNT] =
 	      0,
 	      gText_SubQuest1_Name1,
 	      gText_SubQuest1_Desc1,
-	      gText_QuestMap_1,
+          gText_QuestMap_29,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
 	      sText_Found
@@ -353,7 +355,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	      10,
 	      gText_SubQuest2_Name1,
 	      gText_SubQuest2_Desc1,
-	      gText_QuestMap_1,
+          gText_QuestMap_2,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
 	      sText_Found
@@ -562,16 +564,16 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 #define side_quest(n, d, dd, m, s, st, sq, ns) {.name = n, .desc = d, .donedesc = dd, .map = m, .sprite = s, .spritetype = st, .subquests = sq, .numSubquests = ns}
 static const struct SideQuest sSideQuests[QUEST_COUNT] =
 {
-	side_quest(
-	      gText_QuestName_1,
-	      gText_QuestDesc_1,
-	      gText_QuestDoneDesc_1,
-	      gText_QuestMap_1,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
+    side_quest(
+            gText_Quest_PlayersAdventure_Name,
+            gText_Quest_PlayersAdventure_Desc,
+            gText_Quest_PlayersAdventure_DoneDesc,
+            gText_Quest_PlayersAdventure_Map,
+            OBJ_EVENT_GFX_WALLY,
+            OBJECT,
+            NULL,
+            0
+            ),
 	side_quest(
 	      gText_QuestName_2,
 	      gText_QuestDesc_2,
@@ -2032,7 +2034,7 @@ void GenerateQuestFlavorText(s32 questId)
 		}
 		if (IsQuestActiveState(questId) == TRUE)
 		{
-			UpdateQuestFlavorText(questId);
+			UpdateQuestDesc(questId);
 		}
 		if (IsQuestRewardState(questId) == TRUE)
 		{
@@ -2040,7 +2042,7 @@ void GenerateQuestFlavorText(s32 questId)
 		}
 		if (IsQuestCompletedState(questId) == TRUE)
 		{
-			StringCopy(gStringVar1, sSideQuests[questId].donedesc);
+			UpdateQuestDoneDesc(questId);
 		}
 	}
 	else
@@ -2058,20 +2060,33 @@ void GenerateQuestFlavorText(s32 questId)
 
 	StringExpandPlaceholders(gStringVar3, gStringVar1);
 }
-void UpdateQuestFlavorText(s32 questId)
+void UpdateQuestDesc(s32 questId)
 {
-	StringCopy(gStringVar1, LookUpFlavorText(questId));
+	StringExpandPlaceholders(gStringVar1, GetQuestDesc(questId));
 }
 
-const u8 *LookUpFlavorText(s32 questId)
+void UpdateQuestDoneDesc(s32 questId)
+{
+	StringExpandPlaceholders(gStringVar1, GetQuestDoneDesc(questId));
+}
+
+const u8 *GetQuestDesc(s32 questId)
 {
     switch(questId)
     {
-        case QUEST_PLAYERS_ADVENTURE: return LookUpQuestFlavorText_Players_Adventure();
+        case QUEST_PLAYERSADVENTURE: return GetQuestDesc_PlayersAdventure();
         default: return sSideQuests[questId].desc;
     }
 }
 
+const u8 *GetQuestDoneDesc(s32 questId)
+{
+    switch(questId)
+    {
+        case QUEST_PLAYERSADVENTURE: return GetQuestDoneDesc_PlayersAdventure();
+        default: return sSideQuests[questId].donedesc;
+}
+}
 
 void PrintQuestFlavorText(s32 questId)
 {

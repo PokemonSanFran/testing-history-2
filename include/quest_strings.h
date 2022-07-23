@@ -1,10 +1,10 @@
 #ifndef GUARD_QUEST_STRINGS_H
 #define GUARD_QUEST_STRINGS_H
 
-extern const u8 gText_QuestName_1[];
-extern const u8 gText_QuestDesc_1[];
-extern const u8 gText_QuestDoneDesc_1[];
-extern const u8 gText_QuestMap_1[];
+extern const u8 gText_Quest_PlayersAdventure_Name[];
+extern const u8 gText_Quest_PlayersAdventure_Desc[];
+extern const u8 gText_Quest_PlayersAdventure_DoneDesc[];
+extern const u8 gText_Quest_PlayersAdventure_Map[];
 
 extern const u8 gText_QuestName_2[];
 extern const u8 gText_QuestDesc_2[];
@@ -151,8 +151,6 @@ extern const u8 gText_QuestDesc_30[];
 extern const u8 gText_QuestDoneDesc_30[];
 extern const u8 gText_QuestMap_30[];
 
-
-
 //subquests
 extern const u8 gText_SubQuest1_Name1[];
 extern const u8 gText_SubQuest1_Name2[];
@@ -218,48 +216,48 @@ extern const u8 gText_SubQuest2_Desc18[];
 extern const u8 gText_SubQuest2_Desc19[];
 extern const u8 gText_SubQuest2_Desc20[];
 
-extern const u8 gText_Players_Adventure_Flavor1[];
-extern const u8 gText_Players_Adventure_Flavor2[];
-extern const u8 gText_Players_Adventure_Flavor3[];
-extern const u8 gText_Players_Adventure_Flavor4[];
-extern const u8 gText_Players_Adventure_Flavor5[];
-extern const u8 gText_Players_Adventure_Flavor6[];
-extern const u8 gText_Players_Adventure_Flavor7[];
-extern const u8 gText_Players_Adventure_Flavor8[];
-extern const u8 gText_Players_Adventure_Flavor9[];
-extern const u8 gText_Players_Adventure_Flavor10[];
-extern const u8 gText_Players_Adventure_Flavor11[];
-extern const u8 gText_Players_Adventure_Flavor12[];
-extern const u8 gText_Players_Adventure_Flavor13[];
-extern const u8 gText_Players_Adventure_Flavor14[];
-extern const u8 gText_Players_Adventure_Flavor15[];
-extern const u8 gText_Players_Adventure_Flavor16[];
-extern const u8 gText_Players_Adventure_Flavor17[];
-extern const u8 gText_Players_Adventure_Flavor18[];
-extern const u8 gText_Players_Adventure_Flavor19[];
-extern const u8 gText_Players_Adventure_Flavor20[];
-extern const u8 gText_Players_Adventure_Flavor21[];
-extern const u8 gText_Players_Adventure_Flavor22[];
-extern const u8 gText_Players_Adventure_Flavor23[];
-extern const u8 gText_Players_Adventure_Flavor24[];
-extern const u8 gText_Players_Adventure_Flavor25[];
-extern const u8 gText_Players_Adventure_Flavor26[];
-extern const u8 gText_Players_Adventure_Flavor27[];
-extern const u8 gText_Players_Adventure_Flavor28[];
-extern const u8 gText_Players_Adventure_Flavor29[];
-extern const u8 gText_Players_Adventure_Flavor30[];
-extern const u8 gText_Players_Adventure_Flavor31[];
-extern const u8 gText_Players_Adventure_Flavor32[];
-extern const u8 gText_Players_Adventure_Flavor33[];
-extern const u8 gText_Players_Adventure_Flavor34[];
-extern const u8 gText_Players_Adventure_Flavor35[];
-extern const u8 gText_Players_Adventure_Flavor36[];
-extern const u8 gText_Players_Adventure_Flavor37[];
-extern const u8 gText_Players_Adventure_Flavor38[];
-extern const u8 gText_Players_Adventure_Flavor39[];
-extern const u8 gText_Players_Adventure_Flavor40[];
-extern const u8 gText_Players_Adventure_Flavor41[];
-extern const u8 gText_Players_Adventure_Flavor42[];
-extern const u8 gText_Players_Adventure_Flavor43[];
+extern const u8 gText_PlayersAdventure_Flavor1[];
+extern const u8 gText_PlayersAdventure_Flavor2[];
+extern const u8 gText_PlayersAdventure_Flavor3[];
+extern const u8 gText_PlayersAdventure_Flavor4[];
+extern const u8 gText_PlayersAdventure_Flavor5[];
+extern const u8 gText_PlayersAdventure_Flavor6[];
+extern const u8 gText_PlayersAdventure_Flavor7[];
+extern const u8 gText_PlayersAdventure_Flavor8[];
+extern const u8 gText_PlayersAdventure_Flavor9[];
+extern const u8 gText_PlayersAdventure_Flavor10[];
+extern const u8 gText_PlayersAdventure_Flavor11[];
+extern const u8 gText_PlayersAdventure_Flavor12[];
+extern const u8 gText_PlayersAdventure_Flavor13[];
+extern const u8 gText_PlayersAdventure_Flavor14[];
+extern const u8 gText_PlayersAdventure_Flavor15[];
+extern const u8 gText_PlayersAdventure_Flavor16[];
+extern const u8 gText_PlayersAdventure_Flavor17[];
+extern const u8 gText_PlayersAdventure_Flavor18[];
+extern const u8 gText_PlayersAdventure_Flavor19[];
+extern const u8 gText_PlayersAdventure_Flavor20[];
+extern const u8 gText_PlayersAdventure_Flavor21[];
+extern const u8 gText_PlayersAdventure_Flavor22[];
+extern const u8 gText_PlayersAdventure_Flavor23[];
+extern const u8 gText_PlayersAdventure_Flavor24[];
+extern const u8 gText_PlayersAdventure_Flavor25[];
+extern const u8 gText_PlayersAdventure_Flavor26[];
+extern const u8 gText_PlayersAdventure_Flavor27[];
+extern const u8 gText_PlayersAdventure_Flavor28[];
+extern const u8 gText_PlayersAdventure_Flavor29[];
+extern const u8 gText_PlayersAdventure_Flavor30[];
+extern const u8 gText_PlayersAdventure_Flavor31[];
+extern const u8 gText_PlayersAdventure_Flavor32[];
+extern const u8 gText_PlayersAdventure_Flavor33[];
+extern const u8 gText_PlayersAdventure_Flavor34[];
+extern const u8 gText_PlayersAdventure_Flavor35[];
+extern const u8 gText_PlayersAdventure_Flavor36[];
+extern const u8 gText_PlayersAdventure_Flavor37[];
+extern const u8 gText_PlayersAdventure_Flavor38[];
+extern const u8 gText_PlayersAdventure_Flavor39[];
+extern const u8 gText_PlayersAdventure_Flavor40[];
+extern const u8 gText_PlayersAdventure_Flavor41[];
+extern const u8 gText_PlayersAdventure_Flavor42[];
+extern const u8 gText_PlayersAdventure_Flavor43[];
 
 #endif // GUARD_QUEST_STRINGS_H
