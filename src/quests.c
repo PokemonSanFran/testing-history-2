@@ -260,9 +260,9 @@ static const struct SubQuest sSubQuests1[QUEST_1_SUB_COUNT] =
 
 	sub_quest(
 	      1,
-	      gText_SubQuest1_Name2,
-	      gText_SubQuest1_Desc2,
-	      gText_QuestMap_2,
+          gText_Quest_ReturnDoll_Name,
+          gText_Quest_ReturnDoll_Desc,
+          gText_Quest_ReturnDoll_DoneDesc,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
 	      sText_Found
@@ -353,9 +353,9 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 {
 	sub_quest(
 	      10,
-	      gText_SubQuest2_Name1,
-	      gText_SubQuest2_Desc1,
-          gText_QuestMap_2,
+          gText_Quest_ReturnDoll_Name,
+          gText_Quest_ReturnDoll_Desc,
+          gText_Quest_ReturnDoll_Map,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
 	      sText_Found
@@ -363,9 +363,9 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 
 	sub_quest(
 	      11,
-	      gText_SubQuest2_Name2,
-	      gText_SubQuest2_Desc2,
-	      gText_QuestMap_2,
+          gText_Quest_ReturnDoll_Name,
+          gText_Quest_ReturnDoll_Desc,
+          gText_Quest_ReturnDoll_Map,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
 	      sText_Found
@@ -569,20 +569,20 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
             gText_Quest_PlayersAdventure_Desc,
             gText_Quest_PlayersAdventure_DoneDesc,
             gText_Quest_PlayersAdventure_Map,
-            OBJ_EVENT_GFX_WALLY,
+            OBJ_EVENT_GFX_BRENDAN_NORMAL,
             OBJECT,
             NULL,
             0
             ),
 	side_quest(
-	      gText_QuestName_2,
-	      gText_QuestDesc_2,
-	      gText_QuestDoneDesc_2,
-	      gText_QuestMap_2,
-	      OBJ_EVENT_GFX_WALLY,
+	      gText_Quest_ReturnDoll_Name,
+	      gText_Quest_ReturnDoll_Desc,
+	      gText_Quest_ReturnDoll_DoneDesc,
+	      gText_Quest_ReturnDoll_Map,
+          OBJ_EVENT_GFX_LITTLE_GIRL,
 	      OBJECT,
-	      sSubQuests1,
-	      QUEST_1_SUB_COUNT
+            NULL,
+            0
 	),
 	side_quest(
 	      gText_QuestName_3,

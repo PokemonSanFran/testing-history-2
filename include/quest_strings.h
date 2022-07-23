@@ -1,15 +1,17 @@
 #ifndef GUARD_QUEST_STRINGS_H
 #define GUARD_QUEST_STRINGS_H
 
+extern const u8 gText_QuestAnnounce[];
+
 extern const u8 gText_Quest_PlayersAdventure_Name[];
 extern const u8 gText_Quest_PlayersAdventure_Desc[];
 extern const u8 gText_Quest_PlayersAdventure_DoneDesc[];
 extern const u8 gText_Quest_PlayersAdventure_Map[];
 
-extern const u8 gText_QuestName_2[];
-extern const u8 gText_QuestDesc_2[];
-extern const u8 gText_QuestDoneDesc_2[];
-extern const u8 gText_QuestMap_2[];
+extern const u8 gText_Quest_ReturnDoll_Name[];
+extern const u8 gText_Quest_ReturnDoll_Desc[];
+extern const u8 gText_Quest_ReturnDoll_DoneDesc[];
+extern const u8 gText_Quest_ReturnDoll_Map[];
 
 extern const u8 gText_QuestName_3[];
 extern const u8 gText_QuestDesc_3[];

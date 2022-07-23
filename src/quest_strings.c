@@ -1,15 +1,17 @@
 #include "global.h"
 #include "strings.h"
 
+const u8 gText_QuestAnnounce[] = _("The quest '{STR_VAR_1}'\nis now {STR_VAR_2}.");
+
 const u8 gText_Quest_PlayersAdventure_Name[] = _("{PLAYER}'s Adventure");
 const u8 gText_Quest_PlayersAdventure_Desc[] = _("Get some sleep,\nyour big adventure starts tomorrow!");
 const u8 gText_Quest_PlayersAdventure_DoneDesc[] = _("Completed Quest 1");
 const u8 gText_Quest_PlayersAdventure_Map[] = _("SanFran Region");
 
-const u8 gText_QuestName_2[] = _("Quest 2");
-const u8 gText_QuestDesc_2[] = _("Description 2");
-const u8 gText_QuestDoneDesc_2[] = _("Completed Quest 2");
-const u8 gText_QuestMap_2[] = _("Map2");
+const u8 gText_Quest_ReturnDoll_Name[] = _("Return Doll");
+const u8 gText_Quest_ReturnDoll_Desc[] = _("Help Abigayle find her lost doll. The\nlast time she saw it was in Sunset.");
+const u8 gText_Quest_ReturnDoll_DoneDesc[] = _("You found Abigayle's lost doll in Sunset\nand returned it to her.");
+const u8 gText_Quest_ReturnDoll_Map[] = _("Bernalheights");
 
 const u8 gText_QuestName_3[] = _("Quest 3");
 const u8 gText_QuestDesc_3[] = _("Description 3");

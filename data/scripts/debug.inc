@@ -60,8 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    setvar VAR_STORYLINE_STATE,9
-    questmenu QUEST_MENU_SET_ACTIVE QUEST_PLAYERSADVENTURE 
+    startquest QUEST_RETURNDOLL
     openquestmenu
     end
 
