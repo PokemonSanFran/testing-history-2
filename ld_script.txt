@@ -340,6 +340,9 @@ SECTIONS {
         src/pokemon_debug.o(.text);
         src/field_puzzles.o(.text);
         src/quests.o(.text);
+        src/quest_flavor_lookup.o(.text);
+        src/quest_strings.o(.text);
+
     } =0
 
     script_data :
@@ -708,6 +711,8 @@ SECTIONS {
         src/pokemon_debug.o(.rodata);
         src/field_puzzles.o(.rodata);
         src/quests.o(.rodata);
+        src/quest_flavor_lookup.o(.rodata);
+        src/quest_strings.o(.rodata);
     } =0
 
     song_data :

@@ -1,8 +1,6 @@
 #ifndef GUARD_QUESTS_H
 #define GUARD_QUESTS_H
 
-//#include constants/quests.h       //included in global.h
-
 #define SORT_DEFAULT 0
 #define SORT_INACTIVE 1
 #define SORT_ACTIVE 2
