@@ -60,11 +60,10 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    setvar VAR_STORYLINE_STATE,52
-    setflag FLAG_TIMELINE_TIMETRAVEL
-    questmenu QUEST_MENU_COMPLETE_QUEST QUEST_PLAYERSADVENTURE 
+    setvar VAR_STORYLINE_STATE,9
+    questmenu QUEST_MENU_SET_ACTIVE QUEST_PLAYERSADVENTURE 
     openquestmenu
-	end
+    end
 
 Debug_Script_2::
     call EventScript_PCMainMenu

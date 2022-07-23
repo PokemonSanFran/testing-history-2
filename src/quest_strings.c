@@ -1,8 +1,7 @@
 #include "global.h"
 #include "strings.h"
-#include "item_menu.h"
-//names
-const u8 gText_Quest_PlayersAdventure_Name[] = _("Your Adventure");
+
+const u8 gText_Quest_PlayersAdventure_Name[] = _("{PLAYER}'s Adventure");
 const u8 gText_Quest_PlayersAdventure_Desc[] = _("Get some sleep,\nyour big adventure starts tomorrow!");
 const u8 gText_Quest_PlayersAdventure_DoneDesc[] = _("Completed Quest 1");
 const u8 gText_Quest_PlayersAdventure_Map[] = _("SanFran Region");

@@ -172,7 +172,6 @@ const u8 *GetQuestDoneDesc_PlayersAdventure()
 {
     if(!FlagGet(FLAG_TIMELINE_TIMETRAVEL))
         return gText_PlayersAdventure_Flavor43;
-
     else 
         return gText_PlayersAdventure_Flavor42;
 }

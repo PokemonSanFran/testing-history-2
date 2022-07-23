@@ -1894,8 +1894,8 @@ void PopulateQuestName(u8 countQuest)
 {
 	if (QuestMenu_GetSetQuestState(countQuest, FLAG_GET_UNLOCKED))
 	{
-		questNamePointer = StringAppend(questNameArray[countQuest],
-		                                sSideQuests[countQuest].name);
+        StringExpandPlaceholders(gStringVar2,sSideQuests[countQuest].name);
+		questNamePointer = StringAppend(questNameArray[countQuest],gStringVar2);
 		AddSubQuestButton(countQuest);
 	}
 	else
@@ -1908,8 +1908,8 @@ void PopulateSubquestName(u8 parentQuest, u8 countQuest)
 {
 	if (IsSubquestCompletedState(countQuest))
 	{
-		questNamePointer = StringAppend(questNamePointer,
-		                                sSideQuests[parentQuest].subquests[countQuest].name);
+        StringExpandPlaceholders(gStringVar2,sSideQuests[parentQuest].subquests[countQuest].name);
+		questNamePointer = StringAppend(questNameArray[countQuest],gStringVar2);
 	}
 	else
 	{
@@ -2426,9 +2426,8 @@ static void GenerateMenuContext(void)
 	}
 	if (IsSubquestMode())
 	{
-		questNamePointer = StringCopy(questNameArray[QUEST_ARRAY_COUNT],
-		                              sSideQuests[parentQuest].name);
-
+        StringExpandPlaceholders(gStringVar2,sSideQuests[parentQuest].name);
+		questNamePointer = StringCopy(questNameArray[QUEST_ARRAY_COUNT],gStringVar2);
 	}
 }
 
@@ -2809,7 +2808,7 @@ void Task_QuestMenu_OpenFromStartMenu(u8 taskId)
 
 void QuestMenu_CopyQuestName(u8 *dst, u8 questId)
 {
-	StringCopy(dst, sSideQuests[questId].name);
+    StringCopy(dst,sSideQuests[questId].name);
 }
 
 void QuestMenu_CopySubquestName(u8 *dst, u8 parentId, u8 childId)
