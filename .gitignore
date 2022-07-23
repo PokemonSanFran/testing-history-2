@@ -42,3 +42,4 @@ misc/log.txt
 *.js
 tools/poryscript.zip
 make.txt
+*.vim

@@ -66,10 +66,10 @@ set shortmess=aoO
 badd +1 data/maps/WeCanStopYouActually_Cutscene/scripts.pory
 badd +1 include/constants/flags.h
 badd +38 data/maps/Alcatraz_B2F/scripts.pory
-badd +74 include/constants/heal_locations.h
+badd +0 include/constants/heal_locations.h
 badd +12 data/cutscenes/YouCantStopMe.pory
 badd +36 data/cutscenes/WeCanStopYouActually.pory
-badd +0 include/constants/songs.h
+badd +300 include/constants/songs.h
 badd +1 docs/flags
 badd +1 include/constants/vars.h
 badd +1 docs/vars
@@ -104,7 +104,7 @@ badd +22 data/maps/Chasecenter_Lockers/scripts.pory
 badd +3383 src/field_specials.c
 badd +72 include/overworld.h
 badd +1213 data/event_scripts.s
-badd +2166 asm/macros/event.inc
+badd +2193 asm/macros/event.inc
 badd +973 src/item.c
 badd +111 ~/.zshrc
 badd +11 data/maps/Marin_EliteHome/scripts.pory
@@ -122,7 +122,7 @@ badd +1 data/scripts/movement.inc
 badd +53 asm/macros/movement.inc
 badd +22 asm/macros/map.inc
 badd +13 include/constants/map_scripts.h
-badd +44 .gitignore
+badd +45 .gitignore
 badd +62 data/cutscenes/HowDisappointing.pory
 badd +121 data/cutscenes/SurvivalChance333.pory
 badd +223 data/maps/SootopolisCity/scripts.inc
@@ -141,8 +141,8 @@ badd +153 sym_ewram.txt
 badd +722 ld_script.txt
 badd +35 src/fldeff_dig.c
 badd +3688 src/party_menu.c
-badd +254 src/strings.c
-badd +3109 include/strings.h
+badd +1894 src/strings.c
+badd +3111 include/strings.h
 badd +80 src/fldeff_flash.c
 badd +49 src/field_poison.c
 badd +1186 src/debug.c
@@ -166,17 +166,18 @@ badd +129 data/maps/map_groups.json
 badd +43 data/cutscenes/WelcometotheHallofFame.pory
 badd +43 src/post_battle_event_funcs.c
 badd +71 src/data/heal_locations.h
-badd +36 src/quests.c
+badd +226 src/quests.c
 badd +54 include/constants/vars_define.h
 badd +15 include/constants/quests.h
 badd +233 data/script_cmd_table.inc
-badd +1 src/quest_flavor_lookup.c
-badd +85 include/quests.h
+badd +36 src/quest_flavor_lookup.c
+badd +1 include/quests.h
 badd +5 include/quest_flavor_lookup.h
 badd +0 include/event_object_movement.h
 badd +0 src/quest_strings.c
 badd +0 include/quest_strings.h
 badd +4 include/constants/event_objects.h
+badd +2 data/quests/ReturnDoll.pory
 argglobal
 %argdel
 set stal=2
@@ -203,6 +204,10 @@ wincmd w
 wincmd w
 wincmd w
 wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
 wincmd t
@@ -217,11 +222,14 @@ exe '2resize ' . ((&lines * 14 + 32) / 64)
 exe 'vert 2resize ' . ((&columns * 79 + 119) / 238)
 exe '3resize ' . ((&lines * 15 + 32) / 64)
 exe 'vert 3resize ' . ((&columns * 79 + 119) / 238)
-exe '4resize ' . ((&lines * 15 + 32) / 64)
+exe '4resize ' . ((&lines * 14 + 32) / 64)
 exe 'vert 4resize ' . ((&columns * 79 + 119) / 238)
-exe '5resize ' . ((&lines * 14 + 32) / 64)
+exe '5resize ' . ((&lines * 15 + 32) / 64)
 exe 'vert 5resize ' . ((&columns * 79 + 119) / 238)
+exe '6resize ' . ((&lines * 30 + 32) / 64)
 exe 'vert 6resize ' . ((&columns * 78 + 119) / 238)
+exe '7resize ' . ((&lines * 30 + 32) / 64)
+exe 'vert 7resize ' . ((&columns * 78 + 119) / 238)
 argglobal
 terminal ++curwin ++cols=79 ++rows=61 
 let s:term_buf_3 = bufnr()
@@ -493,12 +501,12 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 66 - ((8 * winheight(0) + 7) / 14)
+let s:l = 65 - ((7 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 66
-normal! 017|
+keepjumps 65
+normal! 05|
 wincmd w
 argglobal
 if bufexists(fnamemodify("include/constants/quests.h", ":p")) | buffer include/constants/quests.h | else | edit include/constants/quests.h | endif
@@ -773,16 +781,16 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 13 - ((9 * winheight(0) + 7) / 15)
+let s:l = 4 - ((3 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 13
-normal! 0
+keepjumps 4
+normal! 038|
 wincmd w
 argglobal
 if bufexists(fnamemodify("src/quest_strings.c", ":p")) | buffer src/quest_strings.c | else | edit src/quest_strings.c | endif
-balt ld_script.txt
+balt .gitignore
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -913,16 +921,156 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 11 - ((5 * winheight(0) + 7) / 14)
+let s:l = 4 - ((3 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 11
-normal! 090|
+keepjumps 4
+normal! 028|
 wincmd w
 argglobal
-if bufexists(fnamemodify("src/quests.c", ":p")) | buffer src/quests.c | else | edit src/quests.c | endif
-balt include/constants/event_objects.h
+if bufexists(fnamemodify("data/event_scripts.s", ":p")) | buffer data/event_scripts.s | else | edit data/event_scripts.s | endif
+balt data/quests/ReturnDoll.pory
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=:;,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=;%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'asm'
+setlocal filetype=asm
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'asm'
+setlocal syntax=asm
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1282 - ((29 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1282
+normal! 037|
+wincmd w
+argglobal
+if bufexists(fnamemodify("data/quests/ReturnDoll.pory", ":p")) | buffer data/quests/ReturnDoll.pory | else | edit data/quests/ReturnDoll.pory | endif
+balt src/quests.c
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -1053,24 +1201,27 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 578 - ((20 * winheight(0) + 30) / 61)
+let s:l = 3 - ((2 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 578
-normal! 030|
+keepjumps 3
+normal! 0
 wincmd w
-6wincmd w
+5wincmd w
 exe 'vert 1resize ' . ((&columns * 79 + 119) / 238)
 exe '2resize ' . ((&lines * 14 + 32) / 64)
 exe 'vert 2resize ' . ((&columns * 79 + 119) / 238)
 exe '3resize ' . ((&lines * 15 + 32) / 64)
 exe 'vert 3resize ' . ((&columns * 79 + 119) / 238)
-exe '4resize ' . ((&lines * 15 + 32) / 64)
+exe '4resize ' . ((&lines * 14 + 32) / 64)
 exe 'vert 4resize ' . ((&columns * 79 + 119) / 238)
-exe '5resize ' . ((&lines * 14 + 32) / 64)
+exe '5resize ' . ((&lines * 15 + 32) / 64)
 exe 'vert 5resize ' . ((&columns * 79 + 119) / 238)
+exe '6resize ' . ((&lines * 30 + 32) / 64)
 exe 'vert 6resize ' . ((&columns * 78 + 119) / 238)
+exe '7resize ' . ((&lines * 30 + 32) / 64)
+exe 'vert 7resize ' . ((&columns * 78 + 119) / 238)
 tabnext
 edit include/constants/flags.h
 let s:save_splitbelow = &splitbelow
