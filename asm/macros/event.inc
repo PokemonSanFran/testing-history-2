@@ -2181,10 +2181,11 @@
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
     bufferstring 1 gText_QuestActive
 	playfanfare MUS_LEVEL_UP 
-	msgbox gText_QuestAnnounce, MSGBOX_DEFAULT
+	msgbox gText_QuestAnnounce, MSGBOX_SIGN
 	waitfanfare
 	.endm
 
+@ Completes the specified quest.
 	.macro completequest quest:req
 	closemessage
 	delay 30
@@ -2192,6 +2193,6 @@
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
     bufferstring 1 gText_QuestComplete
 	playfanfare MUS_LEVEL_UP 
-	msgbox gText_QuestAnnounce, MSGBOX_DEFAULT
+	msgbox gText_QuestAnnounce, MSGBOX_SIGN
 	waitfanfare
 	.endm

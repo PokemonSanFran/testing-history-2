@@ -5210,6 +5210,17 @@ const struct Item gItems[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_PokeblockCase,
     },
+    [ITEM_LOST_DOLL] =
+    {
+        .name = _("Lost Doll"),
+        .itemId = ITEM_LOST_DOLL,
+        .price = 0,
+        .description = sFashionCaseDesc,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    },
 
 // Species-specific Held Items
 

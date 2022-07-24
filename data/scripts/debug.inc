@@ -60,8 +60,6 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    startquest QUEST_RETURNDOLL
-    openquestmenu
     end
 
 Debug_Script_2::

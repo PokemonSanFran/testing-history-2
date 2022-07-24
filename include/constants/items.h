@@ -928,8 +928,9 @@
 #define ITEM_RUBY 756
 #define ITEM_SAPPHIRE 757
 #define ITEM_FASHION_CASE 758
+#define ITEM_LOST_DOLL 759
 
-#define ITEMS_COUNT 759
+#define ITEMS_COUNT 760
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // Range of berries given out by various NPCS
