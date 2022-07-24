@@ -59,7 +59,6 @@ Swagbag_LeagueStipend_Dialogue::
 	addmoney 50000, 0
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_SYS_QUEST_MENU_GET
-	startquest QUEST_PLAYERSADVENTURE
 	givecustommon SPECIES_SLOWKING_GALARIAN, 100, ITEM_ASSAULT_VEST, ITEM_BEAST_BALL, NATURE_CALM, 2, 252, 0, 12, 124, 120, 0, 31, 0, 31, 31, 31, 31, MOVE_SURF, MOVE_PSYCHIC, MOVE_FLAMETHROWER, MOVE_SLUDGE_BOMB
 	goto Swagbag_PokedexApps_Dialogue
 	end
@@ -135,6 +134,7 @@ Swagbag_DontLeaveSouthbay_Dialogue::
 	applymovement 2, swagbag_WalkToLaptop
 	waitmovement 0
 	fadedefaultbgm
+	startquest QUEST_PLAYERSADVENTURE
 	releaseall
 	end
 
