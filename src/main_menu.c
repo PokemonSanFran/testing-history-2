@@ -3129,7 +3129,12 @@ void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
 {
     const u8* name;
     u8 i;
+        //A randomly generated number is passed to this function. If the number is even, the player will get a randomly assigned "male" name. If odd, the player will get a randomly assigned "female" name.	
 
+if (nameId % 2 == 0)	
+        name = sMalePresetNames[nameId];	
+    else	
+        name = sFemalePresetNames[nameId];	
     /*
     if (gSaveBlock2Ptr->playerGender == MALE)
         name = sMalePresetNames[nameId];
