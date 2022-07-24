@@ -60,13 +60,15 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
+    warp MAP_SUNSET, 19, 1
     end
 
 Debug_Script_2::
-    call EventScript_PCMainMenu
+    warp MAP_BERNALHEIGHTS, 16, 12
 	end
 
 Debug_Script_3::
+    call EventScript_PCMainMenu
 	end
 
 Debug_Script_4::

@@ -1,3 +1,22 @@
+Quest_ReturnDoll_HideObject_Script::
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_RETURNDOLL
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_ReturnDoll_HideObject_Script_2
+Quest_ReturnDoll_HideObject_Script_1:
+	checkitem ITEM_LOST_DOLL, 1
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_ReturnDoll_HideObject_Script_4
+	return
+
+Quest_ReturnDoll_HideObject_Script_2:
+	setflag FLAG_TEMP_3
+	goto Quest_ReturnDoll_HideObject_Script_1
+
+Quest_ReturnDoll_HideObject_Script_4:
+	setflag FLAG_TEMP_3
+	return
+
+
 Quest_ReturnDoll_Interact_Script::
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RETURNDOLL
 	compare VAR_RESULT, 0

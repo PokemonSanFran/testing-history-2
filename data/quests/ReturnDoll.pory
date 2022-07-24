@@ -1,5 +1,17 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 
+script Quest_ReturnDoll_HideObject_Script {
+    questmenu(QUEST_MENU_CHECK_ACTIVE, QUEST_RETURNDOLL)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_TEMP_3)
+        }
+
+    checkitem(ITEM_LOST_DOLL, 1)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_TEMP_3)
+        }
+}
+
 script Quest_ReturnDoll_Interact_Script {
 	questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RETURNDOLL)
 	if (var(VAR_RESULT)) {

@@ -14,6 +14,7 @@ Sunset_MapScripts_MAP_SCRIPT_ON_LOAD:
 
 Sunset_MapScripts_OnTransition::
 	call ImIn_HideObject_OutsideHouse_Script
+	call Quest_ReturnDoll_HideObject_Script
 	return
 
 
