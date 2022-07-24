@@ -1,35 +1,16 @@
-Quest_BringFruit_HideObject_Script::
-	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_RETURNDOLL
-	compare VAR_RESULT, 0
-	goto_if_eq Quest_BringFruit_HideObject_Script_2
-Quest_BringFruit_HideObject_Script_1:
-	checkitem ITEM_LOST_DOLL, 1
-	compare VAR_RESULT, 0
-	goto_if_ne Quest_BringFruit_HideObject_Script_4
-	return
-
-Quest_BringFruit_HideObject_Script_2:
-	setflag FLAG_TEMP_3
-	goto Quest_BringFruit_HideObject_Script_1
-
-Quest_BringFruit_HideObject_Script_4:
-	setflag FLAG_TEMP_3
-	return
-
-
 Quest_BringFruit_Interact_Script::
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RETURNDOLL
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_BRINGFRUIT
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_BringFruit_Interact_Script_2
 Quest_BringFruit_Interact_Script_1:
-	questmenu QUEST_MENU_CHECK_REWARD, QUEST_RETURNDOLL
+	questmenu QUEST_MENU_CHECK_REWARD, QUEST_BRINGFRUIT
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_BringFruit_Interact_Script_5
 Quest_BringFruit_Interact_Script_4:
-	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_RETURNDOLL
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_BRINGFRUIT
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_BringFruit_Interact_Script_8
-	goto Quest_BringFruit_PreQuestScript
+	goto Quest_BringFruit_CheckBadges
 Quest_BringFruit_Interact_Script_7:
 	closemessage
 	end
@@ -48,12 +29,20 @@ Quest_BringFruit_Interact_Script_8:
 
 
 Quest_BringFruit_PostQuest_Script::
-	msgbox gText_BringFruit_IHeardMommy, MSGBOX_NPC
+	compare VAR_STORYLINE_STATE, STORY_WON_FINALS
+	goto_if_lt Quest_BringFruit_PostQuest_Script_2
+	msgbox gText_BringFruit_ChampionPlayerMyFriend, MSGBOX_NPC
+Quest_BringFruit_PostQuest_Script_1:
 	end
+
+Quest_BringFruit_PostQuest_Script_2:
+	msgbox gText_BringFruit_PlayerMyFriend, MSGBOX_NPC
+	goto Quest_BringFruit_PostQuest_Script_1
 
 
 Quest_BringFruit_CheckPlayerBag_Script::
-	checkitemspace ITEM_CHOICE_BAND, 1
+	msgbox gText_BringFruit_MuchMoreNicer, MSGBOX_NPC
+	checkitemspace ITEM_LEFTOVERS, 1
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_BringFruit_CheckPlayerBag_Script_1
 	goto Quest_BringFruit_PlayerBagFull_Script
@@ -68,66 +57,172 @@ Quest_BringFruit_CheckPlayerBag_Script_1:
 
 
 Quest_BringFruit_PlayerBagHasSpace_Script::
-	msgbox gText_BringFruit_YouCanHave, MSGBOX_DEFAULT
-	giveitem ITEM_CHOICE_BAND, 1
-	completequest QUEST_RETURNDOLL
+	giveitem ITEM_LEFTOVERS, 1
+	showmoneybox 0, 0
+	delay 30
+	addmoney 30000, 0
+	updatemoneybox
+	delay 60
+	waitbuttonpress
+	hidemoneybox
+	completequest QUEST_BRINGFRUIT
 	return
 
 
 Quest_BringFruit_PlayerBagFull_Script::
-	msgbox gText_BringFruit_YourBagLooks, MSGBOX_NPC
+	msgbox gText_BringFruit_YouCarrySoMuch, MSGBOX_NPC
 	end
 
 
 Quest_BringFruit_DuringQuest_Script::
-	checkitem ITEM_LOST_DOLL, 1
+	checkitem ITEM_WATMEL_BERRY, 6
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_BringFruit_DuringQuest_Script_1
-	msgbox gText_BringFruit_WhenImGrownUp, MSGBOX_NPC
+	msgbox gText_BringFruit_PleaseDontLeave, MSGBOX_NPC
 	end
 
 Quest_BringFruit_DuringQuest_Script_1:
-	goto Quest_BringFruit_PlayerHasDoll_Script
+	goto Quest_BringFruit_PlayerHasFruit_Script
 	return
 
 
-Quest_BringFruit_PlayerHasDoll_Script::
-	msgbox gText_BringFruit_ThatsMyDoll, MSGBOX_NPC
-	removeitem ITEM_LOST_DOLL, 1
-	questmenu QUEST_MENU_SET_REWARD, QUEST_RETURNDOLL
+Quest_BringFruit_PlayerHasFruit_Script::
+	msgbox gText_BringFruit_MyFriendThose, MSGBOX_NPC
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_BringFruit_YeahYouSeemed, MSGBOX_NPC
+	callnative ClearMugshot
+	msgbox gText_BringFruit_YesYesYes, MSGBOX_NPC
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_BringFruit_ItWasJustAFew, MSGBOX_NPC
+	callnative ClearMugshot
+	msgbox gText_BringFruit_NoNoNo, MSGBOX_NPC
+	removeitem ITEM_WATMEL_BERRY, 6
+	questmenu QUEST_MENU_SET_REWARD, QUEST_BRINGFRUIT
 	goto Quest_BringFruit_CheckPlayerBag_Script
 	return
 
 
 Quest_BringFruit_PreQuestScript::
-	msgbox gText_BringFruit_DaddyAndI, MSGBOX_NPC
-	msgbox gText_BringFruit_WhenImGrownUp, MSGBOX_NPC
-	startquest QUEST_RETURNDOLL
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_BringFruit_CouldIPlease, MSGBOX_NPC
+	callnative ClearMugshot
+	msgbox gText_BringFruit_SorryMyFriend, MSGBOX_NPC
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_BringFruit_AwThoseAre, MSGBOX_NPC
+	callnative ClearMugshot
+	msgbox gText_BringFruit_IUsuallyGo, MSGBOX_NPC
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_BringFruit_ThatsOkayCan, MSGBOX_NPC
+	callnative ClearMugshot
+	msgbox gText_BringFruit_IJustNeedSix, MSGBOX_NPC
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_BringFruit_OkayIThink, MSGBOX_NPC
+	callnative ClearMugshot
+	msgbox gText_BringFruit_PleaseDontLeave, MSGBOX_NPC
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_BringFruit_ActuallyIllBeRight, MSGBOX_NPC
+	callnative ClearMugshot
+	startquest QUEST_BRINGFRUIT
 	return
 
 
-gText_BringFruit_DaddyAndI::
-	.string "Daddy and I moved here from Sunset. I\n"
-	.string "like it here, but I miss my doll.$"
+Quest_BringFruit_NotEnoughBadges::
+	msgbox gText_BringFruit_IAmStillSetting, MSGBOX_NPC
+	return
 
-gText_BringFruit_WhenImGrownUp::
-	.string "When I'm a grown up like you, I'm going\n"
-	.string "to go back and get my doll!$"
 
-gText_BringFruit_ThatsMyDoll::
-	.string "That's my doll! MY DOLL! You found her!\n"
-	.string "Thank you so much!$"
+Quest_BringFruit_CheckBadges::
+	special GetNumberOfBadges
+	compare VAR_TEMP_0, 0
+	goto_if_gt Quest_BringFruit_CheckBadges_2
+	call Quest_BringFruit_NotEnoughBadges
+Quest_BringFruit_CheckBadges_1:
+	release
+	end
 
-gText_BringFruit_YouCanHave::
-	.string "You can have her headband! It matched\n"
-	.string "her dress, but I want you to have it\l"
-	.string "instead.$"
+Quest_BringFruit_CheckBadges_2:
+	call Quest_BringFruit_PreQuestScript
+	goto Quest_BringFruit_CheckBadges_1
 
-gText_BringFruit_IHeardMommy::
-	.string "I heard Mommy tell her friend we got\n"
-	.string "priced out of our old neighborhood.\l"
-	.string "What does priced out mean?$"
 
-gText_BringFruit_YourBagLooks::
-	.string "YOU BAG IS FULL! Take some stuff out of\n"
-	.string "your bag, I wanna give you something.$"
+gText_BringFruit_IAmStillSetting::
+	.string "Sorry my friend, I am still setting up.\n"
+	.string "Please come back later!$"
+
+gText_BringFruit_CouldIPlease::
+	.string "Could I please have a cup of Watmel and\n"
+	.string "Pinap Berries?$"
+
+gText_BringFruit_SorryMyFriend::
+	.string "Sorry my friend, I don't have any more\n"
+	.string "Watmel Berry right now!$"
+
+gText_BringFruit_AwThoseAre::
+	.string "(Aw, those are my favorite!) Okay, could\n"
+	.string "I just get Pinap instead?$"
+
+gText_BringFruit_IUsuallyGo::
+	.string "I usually go to the farmer's market\n"
+	.string "before work, but I had to run here to\l"
+	.string "open up in time...$"
+
+gText_BringFruit_ThatsOkayCan::
+	.string "That's okay, can I just get Pinap\n"
+	.string "Berries instead with extra chili-lime?$"
+
+gText_BringFruit_IJustNeedSix::
+	.string "I just need six Watmel Berries to make\n"
+	.string "it through this shift... those are my\l"
+	.string "best sellers!$"
+
+gText_BringFruit_OkayIThink::
+	.string "(Okay, I think I need to get this guy\n"
+	.string "some Watmel Berries.)$"
+
+gText_BringFruit_PleaseDontLeave::
+	.string "Please don't leave a negative review\n"
+	.string "online! I usually have lots and lots of\l"
+	.string "fruits!$"
+
+gText_BringFruit_ActuallyIllBeRight::
+	.string "Actually, I'll be right back...$"
+
+gText_BringFruit_MyFriendThose::
+	.string "My friend! Those Watmel Berries!$"
+
+gText_BringFruit_YeahYouSeemed::
+	.string "Yeah, you seemed stressed out, so I\n"
+	.string "brought you some. Six, right?$"
+
+gText_BringFruit_YesYesYes::
+	.string "Yes yes yes! I pay you, you're so nice\n"
+	.string "ma'amsir.$"
+
+gText_BringFruit_ItWasJustAFew::
+	.string "It was just a few berries, it's no big\n"
+	.string "deal!$"
+
+gText_BringFruit_NoNoNo::
+	.string "No no no, you are so kind!$"
+
+gText_BringFruit_MuchMoreNicer::
+	.string "Much more nicer than other Trainer!$"
+
+gText_BringFruit_YouCarrySoMuch::
+	.string "You carry so much my friend! Empty your\n"
+	.string "bag and come back.$"
+
+gText_BringFruit_PlayerMyFriend::
+	.string "{PLAYER} my friend! Watmel and Pinap\n"
+	.string "with extra chili lime?$"
+
+gText_BringFruit_ChampionPlayerMyFriend::
+	.string "Champion {PLAYER}, my friend! Watmel\n"
+	.string "and Pinap with extra chili lime?$"

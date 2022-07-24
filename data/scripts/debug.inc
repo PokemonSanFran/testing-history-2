@@ -60,11 +60,11 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    warp MAP_SUNSET, 19, 1
+    setflag(FLAG_BADGE06_GET)
+    giveitem ITEM_WATMEL_BERRY,99
     end
 
 Debug_Script_2::
-    warp MAP_BERNALHEIGHTS, 16, 12
 	end
 
 Debug_Script_3::

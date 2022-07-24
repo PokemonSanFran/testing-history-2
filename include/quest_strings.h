@@ -13,10 +13,10 @@ extern const u8 gText_Quest_ReturnDoll_Desc[];
 extern const u8 gText_Quest_ReturnDoll_DoneDesc[];
 extern const u8 gText_Quest_ReturnDoll_Map[];
 
-extern const u8 gText_QuestName_3[];
-extern const u8 gText_QuestDesc_3[];
-extern const u8 gText_QuestDoneDesc_3[];
-extern const u8 gText_QuestMap_3[];
+extern const u8 gText_Quest_BringFruit_Name_3[];
+extern const u8 gText_Quest_BringFruit_Desc_3[];
+extern const u8 gText_Quest_BringFruit_DoneDesc_3[];
+extern const u8 gText_Quest_BringFruit_Map_3[];
 
 extern const u8 gText_QuestName_4[];
 extern const u8 gText_QuestDesc_4[];

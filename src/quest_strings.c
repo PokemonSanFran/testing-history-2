@@ -13,10 +13,10 @@ const u8 gText_Quest_ReturnDoll_Desc[] = _("Help Abigayle find her lost doll. Th
 const u8 gText_Quest_ReturnDoll_DoneDesc[] = _("You found Abigayle's lost doll in Sunset\nand returned it to her.");
 const u8 gText_Quest_ReturnDoll_Map[] = _("Bernalheights");
 
-const u8 gText_QuestName_3[] = _("Quest 3");
-const u8 gText_QuestDesc_3[] = _("Description 3");
-const u8 gText_QuestDoneDesc_3[] = _("Completed Quest 3");
-const u8 gText_QuestMap_3[] = _("Map3");
+const u8 gText_Quest_BringFruit_Name_3[] = _("Bring Fruit");
+const u8 gText_Quest_BringFruit_Desc_3[] = _("Hester can't leave his post, but needs\n6 Watmel Berries.\nYou have {STR_VAR_3} right now.");
+const u8 gText_Quest_BringFruit_DoneDesc_3[] = _("You brought 6 Watmel Berries to Hester.");
+const u8 gText_Quest_BringFruit_Map_3[] = _("Mission");
 
 const u8 gText_QuestName_4[] = _("Quest 4");
 const u8 gText_QuestDesc_4[] = _("Description 4");

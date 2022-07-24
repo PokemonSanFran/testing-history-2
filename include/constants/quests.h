@@ -16,7 +16,7 @@
 // quest number defines
 #define QUEST_PLAYERSADVENTURE 0
 #define QUEST_RETURNDOLL          1
-#define QUEST_3          2
+#define QUEST_BRINGFRUIT    2
 #define QUEST_4          3
 #define QUEST_5          4
 #define QUEST_6          5
@@ -77,7 +77,7 @@
 #define SUB_QUEST_29        28
 #define SUB_QUEST_30        29
 
-#define QUEST_1_SUB_COUNT 10
+#define QUEST_1_SUB_COUNT 1
 #define SUB_QUEST_COUNT (QUEST_1_SUB_COUNT)
 
 #define QUEST_ARRAY_COUNT (SUB_QUEST_COUNT > QUEST_COUNT ? SUB_QUEST_COUNT : QUEST_COUNT)

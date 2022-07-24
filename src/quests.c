@@ -257,96 +257,6 @@ static const struct SubQuest sSubQuests1[QUEST_1_SUB_COUNT] =
 	      OBJECT,
 	      sText_Found
 	),
-
-	sub_quest(
-	      1,
-          gText_Quest_ReturnDoll_Name,
-          gText_Quest_ReturnDoll_Desc,
-          gText_Quest_ReturnDoll_DoneDesc,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      2,
-	      gText_SubQuest1_Name3,
-	      gText_SubQuest1_Desc3,
-	      gText_QuestMap_3,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      3,
-	      gText_SubQuest1_Name4,
-	      gText_SubQuest1_Desc4,
-	      gText_QuestMap_4,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      4,
-	      gText_SubQuest1_Name5,
-	      gText_SubQuest1_Desc5,
-	      gText_QuestMap_5,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      5,
-	      gText_SubQuest1_Name6,
-	      gText_SubQuest1_Desc6,
-	      gText_QuestMap_6,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      6,
-	      gText_SubQuest1_Name7,
-	      gText_SubQuest1_Desc7,
-	      gText_QuestMap_7,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      7,
-	      gText_SubQuest1_Name8,
-	      gText_SubQuest1_Desc8,
-	      gText_QuestMap_8,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      8,
-	      gText_SubQuest1_Name9,
-	      gText_SubQuest1_Desc9,
-	      gText_QuestMap_9,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      9,
-	      gText_SubQuest1_Name10,
-	      gText_SubQuest1_Desc10,
-	      gText_QuestMap_10,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
 };
 
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
@@ -380,11 +290,11 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
             0
 	),
 	side_quest(
-	      gText_QuestName_3,
-	      gText_QuestDesc_3,
-	      gText_QuestDoneDesc_3,
-	      gText_QuestMap_3,
-	      OBJ_EVENT_GFX_WALLY,
+	      gText_Quest_BringFruit_Name_3,
+	      gText_Quest_BringFruit_Desc_3,
+	      gText_Quest_BringFruit_DoneDesc_3,
+	      gText_Quest_BringFruit_Map_3,
+          OBJ_EVENT_GFX_POKEFAN_M,
 	      OBJECT,
           NULL,
           0
@@ -1869,8 +1779,14 @@ const u8 *GetQuestDesc(s32 questId)
 {
     switch(questId)
     {
-        case QUEST_PLAYERSADVENTURE: return GetQuestDesc_PlayersAdventure();
-        default: return sSideQuests[questId].desc;
+        case QUEST_PLAYERSADVENTURE: 
+            return GetQuestDesc_PlayersAdventure();
+            break;
+        case QUEST_BRINGFRUIT: 
+            return GetQuestDesc_BringFruit();
+            break;
+        default: 
+            return sSideQuests[questId].desc;
     }
 }
 

@@ -1,33 +1,21 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 
-script Quest_BringFruit_HideObject_Script {
-    questmenu(QUEST_MENU_CHECK_ACTIVE, QUEST_RETURNDOLL)
-        if (!var(VAR_RESULT)){
-            setflag(FLAG_TEMP_3)
-        }
-
-    checkitem(ITEM_LOST_DOLL, 1)
-        if (var(VAR_RESULT)){
-            setflag(FLAG_TEMP_3)
-        }
-}
-
-script Quest_BringFruit_Interact_Script {
-	questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RETURNDOLL)
+script Quest_BringFruit_Interact_Script{
+	questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BRINGFRUIT)
 	if (var(VAR_RESULT)) {
 		goto(Quest_BringFruit_PostQuest_Script)
 	}
 
-	questmenu(QUEST_MENU_CHECK_REWARD, QUEST_RETURNDOLL)
+	questmenu(QUEST_MENU_CHECK_REWARD, QUEST_BRINGFRUIT)
 	if (var(VAR_RESULT)) {
 		goto(Quest_BringFruit_CheckPlayerBag_Script)
 	}
 
-	questmenu(QUEST_MENU_CHECK_ACTIVE, QUEST_RETURNDOLL)
+	questmenu(QUEST_MENU_CHECK_ACTIVE, QUEST_BRINGFRUIT)
 	if (var(VAR_RESULT)) {
 		goto(Quest_BringFruit_DuringQuest_Script)
 	} else {
-		goto (Quest_BringFruit_PreQuestScript)
+		goto(Quest_BringFruit_CheckBadges)
 	}
 
 	closemessage
@@ -35,18 +23,24 @@ script Quest_BringFruit_Interact_Script {
 }
 
 script Quest_BringFruit_PostQuest_Script {
-	msgbox(gText_BringFruit_IHeardMommy, MSGBOX_NPC)
+	if (var(VAR_STORYLINE_STATE) < STORY_WON_FINALS) {
+		msgbox(gText_BringFruit_PlayerMyFriend, MSGBOX_NPC)
+	}
+	else{
+		msgbox(gText_BringFruit_ChampionPlayerMyFriend, MSGBOX_NPC)
+	}
 	end
 }
 
 script Quest_BringFruit_CheckPlayerBag_Script{
-	checkitemspace(ITEM_CHOICE_BAND, 1)
+	msgbox(gText_BringFruit_MuchMoreNicer, MSGBOX_NPC)
+	checkitemspace(ITEM_LEFTOVERS, 1)
 	if (var(VAR_RESULT)) {
-        lock
-        faceplayer
-        call(Quest_BringFruit_PlayerBagHasSpace_Script)
-        release
-        end
+		lock
+		faceplayer
+		call(Quest_BringFruit_PlayerBagHasSpace_Script)
+		release
+		end
 	}
 	else {
 		goto(Quest_BringFruit_PlayerBagFull_Script)
@@ -54,61 +48,170 @@ script Quest_BringFruit_CheckPlayerBag_Script{
 }
 
 script Quest_BringFruit_PlayerBagHasSpace_Script {
-	msgbox(gText_BringFruit_YouCanHave, MSGBOX_DEFAULT)
-	giveitem(ITEM_CHOICE_BAND, 1)
-	completequest(QUEST_RETURNDOLL)
+	giveitem(ITEM_LEFTOVERS, 1)
+	showmoneybox(0, 0)
+	delay(30)
+	addmoney(30000, 0)
+	updatemoneybox
+	delay(60)
+    waitbuttonpress
+	hidemoneybox
+	completequest(QUEST_BRINGFRUIT)
 }
 
 script Quest_BringFruit_PlayerBagFull_Script {
-	msgbox(gText_BringFruit_YourBagLooks, MSGBOX_NPC)
-    end
+	msgbox(gText_BringFruit_YouCarrySoMuch, MSGBOX_NPC)
+	end
 }
 
 script Quest_BringFruit_DuringQuest_Script {
-	checkitem(ITEM_LOST_DOLL, 1)
+	checkitem(ITEM_WATMEL_BERRY, 6)
 
 	if (var(VAR_RESULT)) {
-		goto(Quest_BringFruit_PlayerHasDoll_Script)
+		goto(Quest_BringFruit_PlayerHasFruit_Script)
 	}
 	else {
-		msgbox(gText_BringFruit_WhenImGrownUp, MSGBOX_NPC)
+		msgbox(gText_BringFruit_PleaseDontLeave, MSGBOX_NPC)
 		end
 	}
 }
 
-script Quest_BringFruit_PlayerHasDoll_Script {
-	msgbox(gText_BringFruit_ThatsMyDoll, MSGBOX_NPC)
-	removeitem(ITEM_LOST_DOLL, 1)
-	questmenu(QUEST_MENU_SET_REWARD, QUEST_RETURNDOLL)
-    goto(Quest_BringFruit_CheckPlayerBag_Script)
+script Quest_BringFruit_PlayerHasFruit_Script {
+	msgbox(gText_BringFruit_MyFriendThose, MSGBOX_NPC)
+	setvar(VAR_0x8000, MUGSHOT_HILDA)
+	callnative(DrawMugshot)
+	msgbox(gText_BringFruit_YeahYouSeemed, MSGBOX_NPC)
+	callnative(ClearMugshot)
+	msgbox(gText_BringFruit_YesYesYes, MSGBOX_NPC)
+	setvar(VAR_0x8000, MUGSHOT_HILDA)
+	callnative(DrawMugshot)
+	msgbox(gText_BringFruit_ItWasJustAFew, MSGBOX_NPC)
+	callnative(ClearMugshot)
+	msgbox(gText_BringFruit_NoNoNo, MSGBOX_NPC)
+	removeitem(ITEM_WATMEL_BERRY, 6)
+	questmenu(QUEST_MENU_SET_REWARD, QUEST_BRINGFRUIT)
+	goto(Quest_BringFruit_CheckPlayerBag_Script)
 }
 
 script Quest_BringFruit_PreQuestScript {
-	msgbox(gText_BringFruit_DaddyAndI, MSGBOX_NPC)
-	msgbox(gText_BringFruit_WhenImGrownUp, MSGBOX_NPC)
-	startquest(QUEST_RETURNDOLL)
-    return
+	setvar(VAR_0x8000, MUGSHOT_HILDA)
+	callnative(DrawMugshot)
+	msgbox(gText_BringFruit_CouldIPlease, MSGBOX_NPC)
+	callnative(ClearMugshot)
+	msgbox(gText_BringFruit_SorryMyFriend, MSGBOX_NPC)
+	setvar(VAR_0x8000, MUGSHOT_HILDA)
+	callnative(DrawMugshot)
+	msgbox(gText_BringFruit_AwThoseAre, MSGBOX_NPC)
+	callnative(ClearMugshot)
+	msgbox(gText_BringFruit_IUsuallyGo, MSGBOX_NPC)
+	setvar(VAR_0x8000, MUGSHOT_HILDA)
+	callnative(DrawMugshot)
+	msgbox(gText_BringFruit_ThatsOkayCan, MSGBOX_NPC)
+	callnative(ClearMugshot)
+	msgbox(gText_BringFruit_IJustNeedSix, MSGBOX_NPC)
+	setvar(VAR_0x8000, MUGSHOT_HILDA)
+	callnative(DrawMugshot)
+	msgbox(gText_BringFruit_OkayIThink, MSGBOX_NPC)
+	callnative(ClearMugshot)
+	msgbox(gText_BringFruit_PleaseDontLeave, MSGBOX_NPC)
+	setvar(VAR_0x8000, MUGSHOT_HILDA)
+	callnative(DrawMugshot)
+	msgbox(gText_BringFruit_ActuallyIllBeRight, MSGBOX_NPC)
+	callnative(ClearMugshot)
+	startquest(QUEST_BRINGFRUIT)
+	return
 }
 
-text gText_BringFruit_DaddyAndI {
-	format("Daddy and I moved here from Sunset. I like it here, but I miss my doll.")}
-
-text gText_BringFruit_WhenImGrownUp {
-	format("When I'm a grown up like you, I'm going to go back and get my doll!")
+script Quest_BringFruit_NotEnoughBadges {
+	msgbox(gText_BringFruit_IAmStillSetting, MSGBOX_NPC)
+	return
 }
 
-text gText_BringFruit_ThatsMyDoll {
-	format("That's my doll! MY DOLL! You found her! Thank you so much!")
+script Quest_BringFruit_CheckBadges {
+	special(GetNumberOfBadges)
+
+	if (var(VAR_TEMP_0) > 0) {
+		call(Quest_BringFruit_PreQuestScript)
+	}
+	else {
+		call(Quest_BringFruit_NotEnoughBadges)
+	}
+	release
+	end
 }
 
-text gText_BringFruit_YouCanHave {
-	format("You can have her headband! It matched her dress, but I want you to have it instead.")
+text gText_BringFruit_IAmStillSetting{
+	format("Sorry my friend, I am still setting up. Please come back later!")
 }
 
-text gText_BringFruit_IHeardMommy {
-	format("I heard Mommy tell her friend we got priced out of our old neighborhood. What does priced out mean?")
+text gText_BringFruit_CouldIPlease{
+	format("Could I please have a cup of Watmel and Pinap Berries?")
 }
 
-text gText_BringFruit_YourBagLooks {
-	format("YOU BAG IS FULL! Take some stuff out of your bag, I wanna give you something.")
+text gText_BringFruit_SorryMyFriend{
+	format("Sorry my friend, I don't have any more Watmel Berry right now!")
+}
+
+text gText_BringFruit_AwThoseAre{
+	format("(Aw, those are my favorite!) Okay, could I just get Pinap instead?")
+}
+
+text gText_BringFruit_IUsuallyGo{
+	format("I usually go to the farmer's market before work, but I had to run here to open up in time...")
+}
+
+text gText_BringFruit_ThatsOkayCan{
+	format("That's okay, can I just get Pinap Berries instead with extra chili-lime?")
+}
+
+text gText_BringFruit_IJustNeedSix{
+	format("I just need six Watmel Berries to make it through this shift... those are my best sellers!")
+}
+
+text gText_BringFruit_OkayIThink{
+	format("(Okay, I think I need to get this guy some Watmel Berries.)")
+}
+
+text gText_BringFruit_PleaseDontLeave{
+	format("Please don't leave a negative review online! I usually have lots and lots of fruits!")
+}
+
+text gText_BringFruit_ActuallyIllBeRight{
+	format("Actually, I'll be right back...")
+}
+
+text gText_BringFruit_MyFriendThose{
+	format("My friend! Those Watmel Berries!")
+}
+
+text gText_BringFruit_YeahYouSeemed{
+	format("Yeah, you seemed stressed out, so I brought you some. Six, right?")
+}
+
+text gText_BringFruit_YesYesYes{
+	format("Yes yes yes! I pay you, you're so nice ma'amsir.")
+}
+
+text gText_BringFruit_ItWasJustAFew{
+	format("It was just a few berries, it's no big deal!")
+}
+
+text gText_BringFruit_NoNoNo{
+	format("No no no, you are so kind!")
+}
+
+text gText_BringFruit_MuchMoreNicer{
+	format("Much more nicer than other Trainer!")
+}
+
+text gText_BringFruit_YouCarrySoMuch{
+	format("You carry so much my friend! Empty your bag and come back.")
+}
+
+text gText_BringFruit_PlayerMyFriend{
+	format("{PLAYER} my friend! Watmel and Pinap with extra chili lime?")
+}
+
+text gText_BringFruit_ChampionPlayerMyFriend{
+	format("Champion {PLAYER}, my friend! Watmel and Pinap with extra chili lime?")
 }

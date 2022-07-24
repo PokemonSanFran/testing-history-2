@@ -1280,3 +1280,4 @@ Script_RemoveTint::
 ## QUESTS
 .include "data/quests/playersadventure.inc"
 .include "data/quests/returndoll.inc"
+.include "data/quests/bringfruit.inc"

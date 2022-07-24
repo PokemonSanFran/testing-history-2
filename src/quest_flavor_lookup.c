@@ -40,7 +40,7 @@
 const u8 *GetQuestDesc_PlayersAdventure()
 {
     u8 storyline = VarGet(VAR_STORYLINE_STATE);
-    
+
     if(storyline == STORY_WARP_TILE_ACCESSIBLE)
         return gText_PlayersAdventure_Flavor41;
 
@@ -177,4 +177,18 @@ const u8 *GetQuestDoneDesc_PlayersAdventure()
         return gText_PlayersAdventure_Flavor43;
     else 
         return gText_PlayersAdventure_Flavor42;
+}
+
+const u8 *GetQuestDesc_BringFruit()
+{
+    u8 berryCount = 0, i = 0;
+
+    for (i = 0; i < 7; i++)
+        if (CheckBagHasItem(ITEM_WATMEL_BERRY,i))
+            berryCount = i;
+
+    ConvertIntToDecimalStringN(gStringVar3, berryCount,STR_CONV_MODE_LEFT_ALIGN,6);
+    StringExpandPlaceholders(gStringVar2,gText_Quest_BringFruit_Desc_3);
+
+    return gStringVar2;
 }
