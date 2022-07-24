@@ -133,6 +133,7 @@ script Swagbag_DontLeaveSouthbay_Dialogue {
         applymovement(OAK,swagbag_WalkToLaptop) 
         waitmovement(0)
         fadedefaultbgm
+        startquest(QUEST_PLAYERSADVENTURE)
         releaseall
         end
 }

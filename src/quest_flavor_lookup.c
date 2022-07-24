@@ -164,6 +164,9 @@ const u8 *GetQuestDesc_PlayersAdventure()
     else if(storyline > 0)
         return gText_PlayersAdventure_Flavor1;
 
+    else if((storyline == 0) && ((VarGet(VAR_PLAYER_HOME_STATE) > POST_SWAGBAG)))
+        return gText_PlayersAdventure_Flavor1;
+
     else
         return gText_Quest_PlayersAdventure_Desc;
 }
