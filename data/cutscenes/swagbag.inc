@@ -134,6 +134,7 @@ Swagbag_DontLeaveSouthbay_Dialogue::
 	applymovement 2, swagbag_WalkToLaptop
 	waitmovement 0
 	fadedefaultbgm
+	startquest QUEST_PLAYERSADVENTURE
 	releaseall
 	end
 

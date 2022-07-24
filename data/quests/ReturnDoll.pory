@@ -84,13 +84,13 @@ script Quest_ReturnDoll_PlayerHasDoll_Script {
 }
 
 script Quest_ReturnDoll_PreQuestScript {
-	msgbox(gText_ReturnDoll_WeMovedHere, MSGBOX_NPC)
+	msgbox(gText_ReturnDoll_DaddyAndI, MSGBOX_NPC)
 	msgbox(gText_ReturnDoll_WhenImGrownUp, MSGBOX_NPC)
 	startquest(QUEST_RETURNDOLL)
     return
 }
 
-text gText_ReturnDoll_WeMovedHere {
+text gText_ReturnDoll_DaddyAndI {
 	format("Daddy and I moved here from Sunset. I like it here, but I miss my doll.")}
 
 text gText_ReturnDoll_WhenImGrownUp {

@@ -3625,7 +3625,7 @@ static const u8 sPokeRadarDesc[] = _(
 
 static const u8 sPokeblockCaseDesc[] = _(
     "A case for holding\n"
-    "Pokéblocks made with\n"
+    "{POKEBLOCK}s made with\n"
     "a Berry Blender.");
 
 static const u8 sSootSackDesc[] = _(

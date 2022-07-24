@@ -100,13 +100,13 @@ Quest_ReturnDoll_PlayerHasDoll_Script::
 
 
 Quest_ReturnDoll_PreQuestScript::
-	msgbox gText_ReturnDoll_WeMovedHere, MSGBOX_NPC
+	msgbox gText_ReturnDoll_DaddyAndI, MSGBOX_NPC
 	msgbox gText_ReturnDoll_WhenImGrownUp, MSGBOX_NPC
 	startquest QUEST_RETURNDOLL
 	return
 
 
-gText_ReturnDoll_WeMovedHere::
+gText_ReturnDoll_DaddyAndI::
 	.string "Daddy and I moved here from Sunset. I\n"
 	.string "like it here, but I miss my doll.$"
 
