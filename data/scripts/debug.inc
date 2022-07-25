@@ -60,7 +60,7 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-	givemon SPECIES_TORCHIC, 20, ITEM_NONE
+    questmenu QUEST_MENU_SET_ACTIVE QUEST_STOPMUGGING
     end
 
 Debug_Script_2::

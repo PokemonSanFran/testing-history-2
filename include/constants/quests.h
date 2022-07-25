@@ -18,7 +18,7 @@
 #define QUEST_RETURNDOLL          1
 #define QUEST_BRINGFRUIT    2
 #define QUEST_BRINGFIRETYPE  3
-#define QUEST_5          4
+#define QUEST_STOPMUGGING   4
 #define QUEST_6          5
 #define QUEST_7          6
 #define QUEST_8          7

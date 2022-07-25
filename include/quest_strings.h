@@ -23,10 +23,10 @@ extern const u8 gText_Quest_BringFireType_Desc_4[];
 extern const u8 gText_Quest_BringFireType_DoneDesc_4[];
 extern const u8 gText_Quest_BringFireType_Map_4[];
 
-extern const u8 gText_QuestName_5[];
-extern const u8 gText_QuestDesc_5[];
-extern const u8 gText_QuestDoneDesc_5[];
-extern const u8 gText_QuestMap_5[];
+extern const u8 gText_Quest_StopMugging_Name_5[];
+extern const u8 gText_Quest_StopMugging_Desc_5[];
+extern const u8 gText_Quest_StopMugging_DoneDesc_5[];
+extern const u8 gText_Quest_StopMugging_Map_5[];
 
 extern const u8 gText_QuestName_6[];
 extern const u8 gText_QuestDesc_6[];

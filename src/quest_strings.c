@@ -23,10 +23,10 @@ const u8 gText_Quest_BringFireType_Desc_4[] = _("Marcel wants to stop using prop
 const u8 gText_Quest_BringFireType_DoneDesc_4[] = _("You brought Marcel a Fire-type\nto power their grill.");
 const u8 gText_Quest_BringFireType_Map_4[] = _("Tenderloin");
 
-const u8 gText_QuestName_5[] = _("Quest 5");
-const u8 gText_QuestDesc_5[] = _("Description 5");
-const u8 gText_QuestDoneDesc_5[] = _("Completed Quest 5");
-const u8 gText_QuestMap_5[] = _("Map5");
+const u8 gText_Quest_StopMugging_Name_5[] = _("Stop Mugging");
+const u8 gText_Quest_StopMugging_Desc_5[] = _("Somebody is getting mugged in an alley way. Stop the perpatrators!");
+const u8 gText_Quest_StopMugging_DoneDesc_5[] = _("You stopped a mugging from taking\nplace.");
+const u8 gText_Quest_StopMugging_Map_5[] = _("SOMA");
 
 const u8 gText_QuestName_6[] = _("Quest 6");
 const u8 gText_QuestDesc_6[] = _("Description 6");
