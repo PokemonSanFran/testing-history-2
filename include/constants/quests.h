@@ -12,6 +12,7 @@
 #define QUEST_MENU_CHECK_REWARD         7  //checks if questId is in Reward state. Returns result to gSpecialVar_Result
 #define QUEST_MENU_CHECK_COMPLETE       8   //checks if questId has been completed. Returns result to gSpecialVar_Result
 #define QUEST_MENU_BUFFER_QUEST_NAME    9   //buffers a quest name to gStringVar1
+#define QUEST_MENU_CHECK_INACTIVE       10
 
 // quest number defines
 #define QUEST_PLAYERSADVENTURE 0
@@ -19,7 +20,7 @@
 #define QUEST_BRINGFRUIT    2
 #define QUEST_BRINGFIRETYPE  3
 #define QUEST_STOPMUGGING   4
-#define QUEST_6          5
+#define QUEST_STOLENTRADE   5
 #define QUEST_7          6
 #define QUEST_8          7
 #define QUEST_9          8

@@ -28,10 +28,10 @@ const u8 gText_Quest_StopMugging_Desc_5[] = _("Somebody is getting mugged in an 
 const u8 gText_Quest_StopMugging_DoneDesc_5[] = _("You stopped a mugging from taking\nplace.");
 const u8 gText_Quest_StopMugging_Map_5[] = _("SOMA");
 
-const u8 gText_QuestName_6[] = _("Quest 6");
-const u8 gText_QuestDesc_6[] = _("Description 6");
-const u8 gText_QuestDoneDesc_6[] = _("Completed Quest 6");
-const u8 gText_QuestMap_6[] = _("Map6");
+const u8 gText_Quest_StolenTrade_Name_6[] = _("Stolen Trade");
+const u8 gText_Quest_StolenTrade_Desc_6[] = _("She wanted to trade with you to evolve\nher Swirlix and then trade back,\nbut she ran away with your Gurdurr!");
+const u8 gText_Quest_StolenTrade_DoneDesc_6[] = _("You hunted down the Trainer\nand got back your Conkeldurr.");
+const u8 gText_Quest_StolenTrade_Map_6[] = _("???");
 
 const u8 gText_QuestName_7[] = _("Quest 7");
 const u8 gText_QuestDesc_7[] = _("Description 7");

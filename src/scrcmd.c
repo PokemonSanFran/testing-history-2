@@ -2416,6 +2416,12 @@ bool8 ScrCmd_questmenu(struct ScriptContext *ctx)
         else
             gSpecialVar_Result = FALSE;
         break;
+    case QUEST_MENU_CHECK_INACTIVE:
+        if (QuestMenu_GetSetQuestState(questId, FLAG_GET_INACTIVE))
+            gSpecialVar_Result = TRUE;
+        else
+            gSpecialVar_Result = FALSE;
+        break;
     case QUEST_MENU_CHECK_ACTIVE:
         if (QuestMenu_GetSetQuestState(questId, FLAG_GET_ACTIVE))
             gSpecialVar_Result = TRUE;

@@ -18,7 +18,6 @@ HowDoWeGetHome_ChangeCrowdMovementType_Script::
 	setobjectmovementtype 12, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	setobjectmovementtype 10, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectmovementtype 5, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
-	setobjectmovementtype 8, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectmovementtype 9, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	setobjectmovementtype 13, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectmovementtype 7, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
@@ -94,7 +93,6 @@ HowDoWeGetHome_CrowdRecgonizesAriana_Dialogue::
 	applymovement 10, Common_Movement_FaceLeft
 	msgbox gText_HowDoWeGetHome_BetterBackDown
 	applymovement 5, Common_Movement_FaceDown
-	applymovement 8, Common_Movement_FaceUp
 	msgbox gText_HowDoWeGetHome_ThreeTrainersAtOnce
 	applymovement 9, Common_Movement_FaceDown
 	applymovement 13, Common_Movement_FaceUp
@@ -123,6 +121,7 @@ HowDoWeGetHome_MadisonHowDoWeGetHome_Dialogue::
 	special ReturnCameraToPlayer
 	fadescreen FADE_FROM_BLACK
 	call HowDoWeGetHome_SetCrowdMovementType_Script
+	call HowDoWeGetHome_SetCrowdNewMovementType_Script
 	releaseall
 	addvar VAR_STORYLINE_STATE, 1
 	call Act1_1_Check_Script
@@ -140,7 +139,6 @@ HowDoWeGetHome_ArianaEntrance::
 	applymovement 12, HowDoWeGetHome_ExclaimRight
 	applymovement 10, HowDoWeGetHome_ExclaimRight
 	applymovement 5, HowDoWeGetHome_ExclaimLeft
-	applymovement 8, HowDoWeGetHome_ExclaimLeft
 	applymovement 9, HowDoWeGetHome_ExclaimLeft
 	applymovement 13, HowDoWeGetHome_ExclaimLeft
 	applymovement 1, HowDoWeGetHome_WalkIntoFight
@@ -151,7 +149,7 @@ HowDoWeGetHome_ArianaEntrance::
 	return
 
 
-HowDoWeGetHome_SetCrowdMovementType_Script::
+HowDoWeGetHome_SetCrowdNewMovementType_Script::
 	setobjectnewmovementtype 14, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectnewmovementtype 3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	setobjectnewmovementtype 11, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
@@ -160,10 +158,24 @@ HowDoWeGetHome_SetCrowdMovementType_Script::
 	setobjectnewmovementtype 12, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	setobjectnewmovementtype 10, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectnewmovementtype 5, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
-	setobjectnewmovementtype 8, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectnewmovementtype 9, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	setobjectnewmovementtype 13, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectnewmovementtype 7, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
+	return
+
+
+HowDoWeGetHome_SetCrowdMovementType_Script::
+	setobjectmovementtype 14, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	setobjectmovementtype 3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
+	setobjectmovementtype 11, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	setobjectmovementtype 2, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
+	setobjectmovementtype 4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	setobjectmovementtype 12, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
+	setobjectmovementtype 10, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	setobjectmovementtype 5, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
+	setobjectmovementtype 9, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
+	setobjectmovementtype 13, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	setobjectmovementtype 7, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	return
 
 

@@ -320,11 +320,11 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	      0
 	),
 	side_quest(
-	      gText_QuestName_6,
-	      gText_QuestDesc_6,
-	      gText_QuestDoneDesc_6,
-	      gText_QuestMap_6,
-	      OBJ_EVENT_GFX_WALLY,
+	      gText_Quest_StolenTrade_Name_6,
+	      gText_Quest_StolenTrade_Desc_6,
+	      gText_Quest_StolenTrade_DoneDesc_6,
+	      gText_Quest_StolenTrade_Map_6,
+          OBJ_EVENT_GFX_GIRL_3,
 	      OBJECT,
 	      NULL,
 	      0

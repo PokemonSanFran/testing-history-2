@@ -2,7 +2,7 @@
 #define GUARD_CONSTANTS_OPPONENTS_H
 
 #define TRAINER_NONE                          0
-//#define TRAINER_SAWYER                     1
+#define TRAINER_SAWYER                     1
 #define TRAINER_IHSAN_AND_EMMITT              1
 #define TRAINER_GRUNT_AQUA_HIDEOUT_1          2
 #define TRAINER_GRUNT_AQUA_HIDEOUT_2          3
@@ -860,6 +860,7 @@
 
 //PSF OPPONENTS
 #define TRAINER_MUGGERA_MUGGERB             51
+#define TRAINER_STOLENTRADE_THIEF           11
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

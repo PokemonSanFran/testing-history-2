@@ -3,6 +3,7 @@ Dogpatch_MapScripts::
 	.byte 0
 
 Dogpatch_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_StolenTrade_HideObjectB_Script
 	goto Dogpatch_MapScripts_OnTransition
 	return
 

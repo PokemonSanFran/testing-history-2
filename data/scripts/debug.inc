@@ -60,16 +60,21 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    questmenu QUEST_MENU_SET_ACTIVE QUEST_STOPMUGGING
+    questmenu QUEST_MENU_SET_ACTIVE QUEST_PLAYERSADVENTURE
     end
 
 Debug_Script_2::
+    setvar VAR_STORYLINE_STATE,29
+    warp MAP_SUNSET,10,3
 	end
 
 Debug_Script_3::
+    setvar VAR_STORYLINE_STATE,44
+    warp MAP_DOGPATCH,6,7
 	end
 
 Debug_Script_4::
+	givemon SPECIES_GURDURR, 20, ITEM_NONE
 	end
 
 Debug_Script_5::

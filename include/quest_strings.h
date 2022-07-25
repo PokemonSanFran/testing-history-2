@@ -28,10 +28,10 @@ extern const u8 gText_Quest_StopMugging_Desc_5[];
 extern const u8 gText_Quest_StopMugging_DoneDesc_5[];
 extern const u8 gText_Quest_StopMugging_Map_5[];
 
-extern const u8 gText_QuestName_6[];
-extern const u8 gText_QuestDesc_6[];
-extern const u8 gText_QuestDoneDesc_6[];
-extern const u8 gText_QuestMap_6[];
+extern const u8 gText_Quest_StolenTrade_Name_6[];
+extern const u8 gText_Quest_StolenTrade_Desc_6[];
+extern const u8 gText_Quest_StolenTrade_DoneDesc_6[];
+extern const u8 gText_Quest_StolenTrade_Map_6[];
 
 extern const u8 gText_QuestName_7[];
 extern const u8 gText_QuestDesc_7[];
