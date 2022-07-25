@@ -60,15 +60,13 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    setflag(FLAG_BADGE06_GET)
-    giveitem ITEM_WATMEL_BERRY,99
+	givemon SPECIES_TORCHIC, 20, ITEM_NONE
     end
 
 Debug_Script_2::
 	end
 
 Debug_Script_3::
-    call EventScript_PCMainMenu
 	end
 
 Debug_Script_4::

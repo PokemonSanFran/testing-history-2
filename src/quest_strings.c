@@ -18,10 +18,10 @@ const u8 gText_Quest_BringFruit_Desc_3[] = _("Hester can't leave his post, but n
 const u8 gText_Quest_BringFruit_DoneDesc_3[] = _("You brought 6 Watmel Berries to Hester.");
 const u8 gText_Quest_BringFruit_Map_3[] = _("Mission");
 
-const u8 gText_QuestName_4[] = _("Quest 4");
-const u8 gText_QuestDesc_4[] = _("Description 4");
-const u8 gText_QuestDoneDesc_4[] = _("Completed Quest 4");
-const u8 gText_QuestMap_4[] = _("Map4");
+const u8 gText_Quest_BringFireType_Name_4[] = _("Bring Fire-type");
+const u8 gText_Quest_BringFireType_Desc_4[] = _("Marcel wants to stop using propane\nin favor of a Fire-type Pokemon. Bring\nthem one!");
+const u8 gText_Quest_BringFireType_DoneDesc_4[] = _("You brought Marcel a Fire-type\nto power their grill.");
+const u8 gText_Quest_BringFireType_Map_4[] = _("Tenderloin");
 
 const u8 gText_QuestName_5[] = _("Quest 5");
 const u8 gText_QuestDesc_5[] = _("Description 5");

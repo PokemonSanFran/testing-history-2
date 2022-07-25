@@ -310,6 +310,7 @@ gSpecials::
 	def_special InitRoamer
 	def_special TryUpdateRusturfTunnelState
 	def_special IsGrassTypeInParty
+	def_special IsFireTypeInParty 
 	def_special DoContestHallWarp
 	def_special PutZigzagoonInPlayerParty
 	def_special IsStarterInParty

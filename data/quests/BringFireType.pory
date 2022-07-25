@@ -1,0 +1,79 @@
+script Quest_BringFireType_Interact_Script {
+    questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BRINGFIRETYPE)
+        if (var(VAR_RESULT)) {
+            goto(Quest_BringFireType_PostQuest_Dialogue)
+        }
+
+    questmenu(QUEST_MENU_CHECK_ACTIVE, QUEST_BRINGFIRETYPE)
+        if (var(VAR_RESULT)) {
+            call(Quest_BringFireType_DuringQuest_Dialogue)
+        } else {
+            call(Quest_BringFireType_PreQuest_Script)
+        }
+
+    closemessage
+        end
+}
+
+script Quest_BringFireType_PostQuest_Dialogue {
+    msgbox(gText_BringFireType_WhatCanIGetYou,MSGBOX_NPC)
+}
+
+script Quest_BringFireType_PlayerHasFireType_Script {
+    msgbox(gText_BringFireType_YouCaughtA,MSGBOX_NPC)
+        //remove pokemon
+        //PSF TODO PurgeMonOrBoxMon
+        questmenu(QUEST_MENU_SET_REWARD, QUEST_BRINGFIRETYPE)
+        giveitem(ITEM_TM13_ICE_BEAM, 1)
+        completequest(QUEST_BRINGFIRETYPE)
+}
+
+script Quest_BringFireType_CheckFireType_Script {
+    //PSF TODO implement box searching
+    //open box 
+    //check if any fire types in party or boxes
+    //open boxes, not fire types are grayed out, can't be selected
+    //press B, go back return false
+    //click on pokemon, select / summary
+    //select 
+
+    special(IsFireTypeInParty)
+
+    if (var(VAR_RESULT)) {
+        call(Quest_BringFireType_PlayerHasFireType_Script)
+    }
+    else {
+        msgbox(gText_BringFireType_IWonderIfICould,MSGBOX_NPC)
+    }
+}
+
+script Quest_BringFireType_PreQuest_Script {
+    msgbox(gText_BringFireType_WereOutOfPropane,MSGBOX_NPC)
+        startquest(QUEST_BRINGFIRETYPE)
+        return
+}
+
+script Quest_BringFireType_DuringQuest_Dialogue {
+    msgbox(gText_BringFireType_MarginsOnThis,MSGBOX_NPC)
+        call(Quest_BringFireType_CheckFireType_Script)
+}
+
+text gText_BringFireType_WhatCanIGetYou{
+	format("{PLAYER}! What can get I you today?")
+}
+
+text gText_BringFireType_YouCaughtA{
+	format("You caught a POKEMON for me? Are you sure? That's absolutely huge! Here, let me give you something, since I won't need it now.")
+}
+
+text gText_BringFireType_IWonderIfICould{
+	format("I wonder if I could lure a Fire-type here with the smell of food...")
+}
+
+text gText_BringFireType_WereOutOfPropane{
+	format("We're out of propane, so I'm closing up shop today. I wish I could use a Fire-type Pokémon for this grill...")
+}
+
+text gText_BringFireType_MarginsOnThis{
+	format("Margins on this stand are so slim... I can't even afford to live, never mind upgrade!")
+}

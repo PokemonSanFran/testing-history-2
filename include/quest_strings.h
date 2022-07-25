@@ -18,10 +18,10 @@ extern const u8 gText_Quest_BringFruit_Desc_3[];
 extern const u8 gText_Quest_BringFruit_DoneDesc_3[];
 extern const u8 gText_Quest_BringFruit_Map_3[];
 
-extern const u8 gText_QuestName_4[];
-extern const u8 gText_QuestDesc_4[];
-extern const u8 gText_QuestDoneDesc_4[];
-extern const u8 gText_QuestMap_4[];
+extern const u8 gText_Quest_BringFireType_Name_4[];
+extern const u8 gText_Quest_BringFireType_Desc_4[];
+extern const u8 gText_Quest_BringFireType_DoneDesc_4[];
+extern const u8 gText_Quest_BringFireType_Map_4[];
 
 extern const u8 gText_QuestName_5[];
 extern const u8 gText_QuestDesc_5[];

@@ -67,6 +67,7 @@
 #include "palette.h"
 #include "printf.h"
 #include "mgba.h"
+#include "pokemon_storage_system.h"
 
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
 
@@ -1206,6 +1207,28 @@ void IsGrassTypeInParty(void)
             if (gBaseStats[species].type1 == TYPE_GRASS || gBaseStats[species].type2 == TYPE_GRASS)
             {
                 gSpecialVar_Result = TRUE;
+                return;
+            }
+        }
+    }
+    gSpecialVar_Result = FALSE;
+}
+
+void IsFireTypeInParty(void)
+{
+    u8 i;
+    u16 species;
+    struct Pokemon *pokemon;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        pokemon = &gPlayerParty[i];
+        if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && !GetMonData(pokemon, MON_DATA_IS_EGG))
+        {
+            species = GetMonData(pokemon, MON_DATA_SPECIES);
+            if (gBaseStats[species].type1 == TYPE_FIRE || gBaseStats[species].type2 == TYPE_FIRE)
+            {
+                gSpecialVar_Result = TRUE;
+                PurgeMonOrBoxMon(TOTAL_BOXES_COUNT,i);
                 return;
             }
         }

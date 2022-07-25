@@ -300,11 +300,11 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
           0
 	),
 	side_quest(
-	      gText_QuestName_4,
-	      gText_QuestDesc_4,
-	      gText_QuestDoneDesc_4,
-	      gText_QuestMap_4,
-	      OBJ_EVENT_GFX_WALLY,
+	      gText_Quest_BringFireType_Name_4,
+	      gText_Quest_BringFireType_Desc_4,
+	      gText_Quest_BringFireType_DoneDesc_4,
+	      gText_Quest_BringFireType_Map_4,
+          OBJ_EVENT_GFX_MAN_1,
 	      OBJECT,
 	      NULL,
 	      0
