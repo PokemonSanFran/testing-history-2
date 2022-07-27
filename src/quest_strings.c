@@ -13,145 +13,435 @@ const u8 gText_Quest_ReturnDoll_Desc[] = _("Help Abigayle find her lost doll. Th
 const u8 gText_Quest_ReturnDoll_DoneDesc[] = _("You found Abigayle's lost doll in Sunset\nand returned it to her.");
 const u8 gText_Quest_ReturnDoll_Map[] = _("Bernalheights");
 
-const u8 gText_Quest_BringFruit_Name_3[] = _("Bring Fruit");
-const u8 gText_Quest_BringFruit_Desc_3[] = _("Hester can't leave his post, but needs\n6 Watmel Berries.\nYou have {STR_VAR_3} right now.");
-const u8 gText_Quest_BringFruit_DoneDesc_3[] = _("You brought 6 Watmel Berries to Hester.");
-const u8 gText_Quest_BringFruit_Map_3[] = _("Mission");
+const u8 gText_Quest_BringFruit_Name[] = _("Bring Fruit");
+const u8 gText_Quest_BringFruit_Desc[] = _("Hester can't leave his post, but needs\n6 Watmel Berries.\nYou have {STR_VAR_1} right now.");
+const u8 gText_Quest_BringFruit_DoneDesc[] = _("You brought 6 Watmel Berries to Hester.");
+const u8 gText_Quest_BringFruit_Map[] = _("Mission");
 
-const u8 gText_Quest_BringFireType_Name_4[] = _("Bring Fire-type");
-const u8 gText_Quest_BringFireType_Desc_4[] = _("Marcel wants to stop using propane\nin favor of a Fire-type Pokemon. Bring\nthem one!");
-const u8 gText_Quest_BringFireType_DoneDesc_4[] = _("You brought Marcel a Fire-type\nto power their grill.");
-const u8 gText_Quest_BringFireType_Map_4[] = _("Tenderloin");
+const u8 gText_Quest_BringFireType_Name[] = _("Bring Fire-type");
+const u8 gText_Quest_BringFireType_Desc[] = _("Marcel wants to stop using propane\nin favor of a Fire-type Pokemon. Bring\nthem one!");
+const u8 gText_Quest_BringFireType_DoneDesc[] = _("You brought Marcel a Fire-type\nto power their grill.");
+const u8 gText_Quest_BringFireType_Map[] = _("Tenderloin");
 
-const u8 gText_Quest_StopMugging_Name_5[] = _("Stop Mugging");
-const u8 gText_Quest_StopMugging_Desc_5[] = _("Somebody is getting mugged in an alley way. Stop the perpatrators!");
-const u8 gText_Quest_StopMugging_DoneDesc_5[] = _("You stopped a mugging from taking\nplace.");
-const u8 gText_Quest_StopMugging_Map_5[] = _("SOMA");
+const u8 gText_Quest_StopMugging_Name[] = _("Stop Mugging");
+const u8 gText_Quest_StopMugging_Desc[] = _("Somebody is getting mugged in an alley way. Stop the perpatrators!");
+const u8 gText_Quest_StopMugging_DoneDesc[] = _("You stopped a mugging from taking\nplace.");
+const u8 gText_Quest_StopMugging_Map[] = _("SOMA");
 
-const u8 gText_Quest_StolenTrade_Name_6[] = _("Stolen Trade");
-const u8 gText_Quest_StolenTrade_Desc_6[] = _("She wanted to trade with you to evolve\nher Swirlix and then trade back,\nbut she ran away with your Gurdurr!");
-const u8 gText_Quest_StolenTrade_DoneDesc_6[] = _("You hunted down the Trainer\nand got back your Conkeldurr.");
-const u8 gText_Quest_StolenTrade_Map_6[] = _("???");
+const u8 gText_Quest_StolenTrade_Name[] = _("Stolen Trade");
+const u8 gText_Quest_StolenTrade_Desc[] = _("She wanted to trade with you to evolve\nher Swirlix and then trade back,\nbut she ran away with your Gurdurr!");
+const u8 gText_Quest_StolenTrade_DoneDesc[] = _("You hunted down the Trainer\nand got back your Conkeldurr.");
+const u8 gText_Quest_StolenTrade_Map[] = _("???");
 
-const u8 gText_QuestName_7[] = _("Quest 7");
-const u8 gText_QuestDesc_7[] = _("Description 7");
-const u8 gText_QuestDoneDesc_7[] = _("Completed Quest 7");
-const u8 gText_QuestMap_7[] = _("Map7");
+const u8 gText_Quest_HauntABuilding_Name[] = _("Haunt a Building");
+const u8 gText_Quest_HauntABuilding_Desc[] =_("Lorem");
+const u8 gText_Quest_HauntABuilding_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_HauntABuilding_Map[] =_("Lorem");
 
-const u8 gText_QuestName_8[] = _("Quest 8");
-const u8 gText_QuestDesc_8[] = _("Description 8");
-const u8 gText_QuestDoneDesc_8[] = _("Completed Quest 8");
-const u8 gText_QuestMap_8[] = _("Map8");
+const u8 gText_Quest_SocialMedia_Name[] = _("Social Media");
+const u8 gText_Quest_SocialMedia_Desc[] =_("Lorem");
+const u8 gText_Quest_SocialMedia_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_SocialMedia_Map[] =_("Lorem");
 
-const u8 gText_QuestName_9[] = _("Quest 9");
-const u8 gText_QuestDesc_9[] = _("Description 9");
-const u8 gText_QuestDoneDesc_9[] = _("Completed Quest 9");
-const u8 gText_QuestMap_9[] = _("Map9");
+const u8 gText_Quest_ConsolationPrize_Name[] = _("Consolation Prize");
+const u8 gText_Quest_ConsolationPrize_Desc[] =_("Lorem");
+const u8 gText_Quest_ConsolationPrize_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ConsolationPrize_Map[] =_("Lorem");
 
-const u8 gText_QuestName_10[] = _("Quest 10");
-const u8 gText_QuestDesc_10[] = _("Description 10");
-const u8 gText_QuestDoneDesc_10[] = _("Completed Quest 10");
-const u8 gText_QuestMap_10[] = _("Map10");
+const u8 gText_Quest_RightingWrongs_Name[] = _("Righting Wrongs");
+const u8 gText_Quest_RightingWrongs_Desc[] =_("Lorem");
+const u8 gText_Quest_RightingWrongs_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_RightingWrongs_Map[] =_("Lorem");
 
-const u8 gText_QuestName_11[] = _("Quest 11");
-const u8 gText_QuestDesc_11[] = _("Description 11");
-const u8 gText_QuestDoneDesc_11[] = _("Completed Quest 11");
-const u8 gText_QuestMap_11[] = _("Map11");
+const u8 gText_Quest_EnterTheDragon_Name[] = _("Enter the Dragon");
+const u8 gText_Quest_EnterTheDragon_Desc[] =_("Lorem");
+const u8 gText_Quest_EnterTheDragon_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_EnterTheDragon_Map[] =_("Lorem");
 
-const u8 gText_QuestName_12[] = _("Quest 12");
-const u8 gText_QuestDesc_12[] = _("Description 12");
-const u8 gText_QuestDoneDesc_12[] = _("Completed Quest 12");
-const u8 gText_QuestMap_12[] = _("Map12");
+const u8 gText_Quest_BreakTheInternet_Name[] = _("Break the Internet");
+const u8 gText_Quest_BreakTheInternet_Desc[] =_("Lorem");
+const u8 gText_Quest_BreakTheInternet_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_BreakTheInternet_Map[] =_("Lorem");
 
-const u8 gText_QuestName_13[] = _("Quest 13");
-const u8 gText_QuestDesc_13[] = _("Description 13");
-const u8 gText_QuestDoneDesc_13[] = _("Completed Quest 13");
-const u8 gText_QuestMap_13[] = _("Map13");
+const u8 gText_Quest_ShutDownMedicineMan_Name[] = _("Shut Down Medicine Man");
+const u8 gText_Quest_ShutDownMedicineMan_Desc[] =_("Lorem");
+const u8 gText_Quest_ShutDownMedicineMan_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ShutDownMedicineMan_Map[] =_("Lorem");
 
-const u8 gText_QuestName_14[] = _("Quest 14");
-const u8 gText_QuestDesc_14[] = _("Description 14");
-const u8 gText_QuestDoneDesc_14[] = _("Completed Quest 14");
-const u8 gText_QuestMap_14[] = _("Map14");
+const u8 gText_Quest_BuildingScope_Name[] = _("Building Scope");
+const u8 gText_Quest_BuildingScope_Desc[] =_("Lorem");
+const u8 gText_Quest_BuildingScope_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_BuildingScope_Map[] =_("Lorem");
 
-const u8 gText_QuestName_15[] = _("Quest 15");
-const u8 gText_QuestDesc_15[] = _("Description 15");
-const u8 gText_QuestDoneDesc_15[] = _("Completed Quest 15");
-const u8 gText_QuestMap_15[] = _("Map15");
+const u8 gText_Quest_NoGoodDeed_Name[] = _("No Good Deed");
+const u8 gText_Quest_NoGoodDeed_Desc[] =_("Lorem");
+const u8 gText_Quest_NoGoodDeed_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_NoGoodDeed_Map[] =_("Lorem");
 
-const u8 gText_QuestName_16[] = _("Quest 16");
-const u8 gText_QuestDesc_16[] = _("Description 16");
-const u8 gText_QuestDoneDesc_16[] = _("Completed Quest 16");
-const u8 gText_QuestMap_16[] = _("Map16");
+const u8 gText_Quest_ImprovBattling_Name[] = _("Improv Battling");
+const u8 gText_Quest_ImprovBattling_Desc[] =_("Lorem");
+const u8 gText_Quest_ImprovBattling_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ImprovBattling_Map[] =_("Lorem");
 
-const u8 gText_QuestName_17[] = _("Quest 17");
-const u8 gText_QuestDesc_17[] = _("Description 17");
-const u8 gText_QuestDoneDesc_17[] = _("Completed Quest 17");
-const u8 gText_QuestMap_17[] = _("Map17");
+const u8 gText_Quest_ImprovBattlingChampionship_Name[] = _("Improv Battling Championship");
+const u8 gText_Quest_ImprovBattlingChampionship_Desc[] =_("Lorem");
+const u8 gText_Quest_ImprovBattlingChampionship_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ImprovBattlingChampionship_Map[] =_("Lorem");
 
-const u8 gText_QuestName_18[] = _("Quest 18");
-const u8 gText_QuestDesc_18[] = _("Description 18");
-const u8 gText_QuestDoneDesc_18[] = _("Completed Quest 18");
-const u8 gText_QuestMap_18[] = _("Map18");
+const u8 gText_Quest_InstallNatureProbes_Name[] = _("Install Nature Probes");
+const u8 gText_Quest_InstallNatureProbes_Desc[] =_("Lorem");
+const u8 gText_Quest_InstallNatureProbes_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_InstallNatureProbes_Map[] =_("Lorem");
 
-const u8 gText_QuestName_19[] = _("Quest 19");
-const u8 gText_QuestDesc_19[] = _("Description 19");
-const u8 gText_QuestDoneDesc_19[] = _("Completed Quest 19");
-const u8 gText_QuestMap_19[] = _("Map19");
+const u8 gText_Quest_ManOfManyHats_Name[] = _("Man of Many Hats");
+const u8 gText_Quest_ManOfManyHats_Desc[] =_("Lorem");
+const u8 gText_Quest_ManOfManyHats_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ManOfManyHats_Map[] =_("Lorem");
 
-const u8 gText_QuestName_20[] = _("Quest 20");
-const u8 gText_QuestDesc_20[] = _("Description 20");
-const u8 gText_QuestDoneDesc_20[] = _("Completed Quest 20");
-const u8 gText_QuestMap_20[] = _("Map20");
+const u8 gText_Quest_RecruitLocalArtists_Name[] = _("Recruit Local Artists");
+const u8 gText_Quest_RecruitLocalArtists_Desc[] =_("Lorem");
+const u8 gText_Quest_RecruitLocalArtists_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_RecruitLocalArtists_Map[] =_("Lorem");
 
-const u8 gText_QuestName_21[] = _("Quest 21");
-const u8 gText_QuestDesc_21[] = _("Description 21");
-const u8 gText_QuestDoneDesc_21[] = _("Completed Quest 21");
-const u8 gText_QuestMap_21[] = _("Map21");
+const u8 gText_Quest_RestaurantExpansion1_Name[] = _("Restaurant Expansion 1");
+const u8 gText_Quest_RestaurantExpansion1_Desc[] =_("Lorem");
+const u8 gText_Quest_RestaurantExpansion1_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_RestaurantExpansion1_Map[] =_("Lorem");
 
-const u8 gText_QuestName_22[] = _("Quest 22");
-const u8 gText_QuestDesc_22[] = _("Description 22");
-const u8 gText_QuestDoneDesc_22[] = _("Completed Quest 22");
-const u8 gText_QuestMap_22[] = _("Map22");
+const u8 gText_Quest_RestaurantExpansion2_Name[] = _("Restaurant Expansion 2");
+const u8 gText_Quest_RestaurantExpansion2_Desc[] =_("Lorem");
+const u8 gText_Quest_RestaurantExpansion2_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_RestaurantExpansion2_Map[] =_("Lorem");
 
-const u8 gText_QuestName_23[] = _("Quest 23");
-const u8 gText_QuestDesc_23[] = _("Description 23");
-const u8 gText_QuestDoneDesc_23[] = _("Completed Quest 23");
-const u8 gText_QuestMap_23[] = _("Map23");
+const u8 gText_Quest_RestaurantExpansion3_Name[] = _("Restaurant Expansion 3");
+const u8 gText_Quest_RestaurantExpansion3_Desc[] =_("Lorem");
+const u8 gText_Quest_RestaurantExpansion3_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_RestaurantExpansion3_Map[] =_("Lorem");
 
-const u8 gText_QuestName_24[] = _("Quest 24");
-const u8 gText_QuestDesc_24[] = _("Description 24");
-const u8 gText_QuestDoneDesc_24[] = _("Completed Quest 24");
-const u8 gText_QuestMap_24[] = _("Map24");
+const u8 gText_Quest_CulturalPurity_Name[] = _("Cultural Purity");
+const u8 gText_Quest_CulturalPurity_Desc[] =_("Lorem");
+const u8 gText_Quest_CulturalPurity_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_CulturalPurity_Map[] =_("Lorem");
 
-const u8 gText_QuestName_25[] = _("Quest 25");
-const u8 gText_QuestDesc_25[] = _("Description 25");
-const u8 gText_QuestDoneDesc_25[] = _("Completed Quest 25");
-const u8 gText_QuestMap_25[] = _("Map25");
+const u8 gText_Quest_HybridCulture_Name[] = _("Hybrid Culture");
+const u8 gText_Quest_HybridCulture_Desc[] =_("Lorem");
+const u8 gText_Quest_HybridCulture_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_HybridCulture_Map[] =_("Lorem");
 
-const u8 gText_QuestName_26[] = _("Quest 26");
-const u8 gText_QuestDesc_26[] = _("Description 26");
-const u8 gText_QuestDoneDesc_26[] = _("Completed Quest 26");
-const u8 gText_QuestMap_26[] = _("Map26");
+const u8 gText_Quest_AlohaFromAlola_Name[] = _("Aloha from Alola");
+const u8 gText_Quest_AlohaFromAlola_Desc[] =_("Lorem");
+const u8 gText_Quest_AlohaFromAlola_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_AlohaFromAlola_Map[] =_("Lorem");
 
-const u8 gText_QuestName_27[] = _("Quest 27");
-const u8 gText_QuestDesc_27[] = _("Description 27");
-const u8 gText_QuestDoneDesc_27[] = _("Completed Quest 27");
-const u8 gText_QuestMap_27[] = _("Map27");
+const u8 gText_Quest_BuildingAnExhibit_Name[] = _("Building an Exhibit");
+const u8 gText_Quest_BuildingAnExhibit_Desc[] =_("Lorem");
+const u8 gText_Quest_BuildingAnExhibit_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_BuildingAnExhibit_Map[] =_("Lorem");
 
-const u8 gText_QuestName_28[] = _("Quest 28");
-const u8 gText_QuestDesc_28[] = _("Description 28");
-const u8 gText_QuestDoneDesc_28[] = _("Completed Quest 28");
-const u8 gText_QuestMap_28[] = _("Map28");
+const u8 gText_Quest_UnknownMortyQuestA_Name[] = _("Unknown Morty Quest A");
+const u8 gText_Quest_UnknownMortyQuestA_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownMortyQuestA_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownMortyQuestA_Map[] =_("Lorem");
 
-const u8 gText_QuestName_29[] = _("Quest 29");
-const u8 gText_QuestDesc_29[] = _("Description 29");
-const u8 gText_QuestDoneDesc_29[] = _("Completed Quest 29");
-const u8 gText_QuestMap_29[] = _("Map29");
+const u8 gText_Quest_UnknownMortyQuestB_Name[] = _("Unknown Morty Quest B");
+const u8 gText_Quest_UnknownMortyQuestB_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownMortyQuestB_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownMortyQuestB_Map[] =_("Lorem");
 
-const u8 gText_QuestName_30[] = _("Quest 30");
-const u8 gText_QuestDesc_30[] = _("Description 30");
-const u8 gText_QuestDoneDesc_30[] = _("Completed Quest 30");
-const u8 gText_QuestMap_30[] = _("Map30");
+const u8 gText_Quest_UnknownChuckQuestA_Name[] = _("Unknown Chuck Quest A");
+const u8 gText_Quest_UnknownChuckQuestA_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownChuckQuestA_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownChuckQuestA_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownChuckQuestB_Name[] = _("Unknown Chuck Quest B");
+const u8 gText_Quest_UnknownChuckQuestB_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownChuckQuestB_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownChuckQuestB_Map[] =_("Lorem");
+
+const u8 gText_Quest_BiomeResearch_Name[] = _("Biome Research");
+const u8 gText_Quest_BiomeResearch_Desc[] =_("Lorem");
+const u8 gText_Quest_BiomeResearch_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_BiomeResearch_Map[] =_("Lorem");
+
+const u8 gText_Quest_BerrySustainability_Name[] = _("Berry Sustainability");
+const u8 gText_Quest_BerrySustainability_Desc[] =_("Lorem");
+const u8 gText_Quest_BerrySustainability_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_BerrySustainability_Map[] =_("Lorem");
+
+const u8 gText_Quest_TheOnlyHeadShopInTown_Name[] = _("The Only Head Shop in Town");
+const u8 gText_Quest_TheOnlyHeadShopInTown_Desc[] =_("Lorem");
+const u8 gText_Quest_TheOnlyHeadShopInTown_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_TheOnlyHeadShopInTown_Map[] =_("Lorem");
+
+const u8 gText_Quest_InverseHallucinogenic_Name[] = _("Inverse Hallucinogenic");
+const u8 gText_Quest_InverseHallucinogenic_Desc[] =_("Lorem");
+const u8 gText_Quest_InverseHallucinogenic_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_InverseHallucinogenic_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownClairQuestA_Name[] = _("Unknown Clair Quest A");
+const u8 gText_Quest_UnknownClairQuestA_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownClairQuestA_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownClairQuestA_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownClairQuestB_Name[] = _("Unknown Clair Quest B");
+const u8 gText_Quest_UnknownClairQuestB_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownClairQuestB_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownClairQuestB_Map[] =_("Lorem");
+
+const u8 gText_Quest_ContractorPorygon_Name[] = _("Contractor Porygon");
+const u8 gText_Quest_ContractorPorygon_Desc[] =_("Lorem");
+const u8 gText_Quest_ContractorPorygon_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ContractorPorygon_Map[] =_("Lorem");
+
+const u8 gText_Quest_AngelDelivery_Name[] = _("Angel Delivery");
+const u8 gText_Quest_AngelDelivery_Desc[] =_("Lorem");
+const u8 gText_Quest_AngelDelivery_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_AngelDelivery_Map[] =_("Lorem");
+
+const u8 gText_Quest_GetTheBandBackTogether_Name[] = _("Get The Band Back Together");
+const u8 gText_Quest_GetTheBandBackTogether_Desc[] =_("Lorem");
+const u8 gText_Quest_GetTheBandBackTogether_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_GetTheBandBackTogether_Map[] =_("Lorem");
+
+const u8 gText_Quest_FoodTruckBureacracy_Name[] = _("Food Truck Bureacracy");
+const u8 gText_Quest_FoodTruckBureacracy_Desc[] =_("Lorem");
+const u8 gText_Quest_FoodTruckBureacracy_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_FoodTruckBureacracy_Map[] =_("Lorem");
+
+const u8 gText_Quest_DetectiveAriana_Name[] = _("Detective Ariana");
+const u8 gText_Quest_DetectiveAriana_Desc[] =_("Lorem");
+const u8 gText_Quest_DetectiveAriana_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_DetectiveAriana_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownBruceLeeQuest_Name[] = _("Unknown Bruce Lee Quest");
+const u8 gText_Quest_UnknownBruceLeeQuest_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownBruceLeeQuest_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownBruceLeeQuest_Map[] =_("Lorem");
+
+const u8 gText_Quest_ChallengeOfThe7Sisters_Name[] = _("Challenge of the 7 Sisters");
+const u8 gText_Quest_ChallengeOfThe7Sisters_Desc[] =_("Lorem");
+const u8 gText_Quest_ChallengeOfThe7Sisters_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ChallengeOfThe7Sisters_Map[] =_("Lorem");
+
+const u8 gText_Quest_Esports_Name[] = _("Esports");
+const u8 gText_Quest_Esports_Desc[] =_("Lorem");
+const u8 gText_Quest_Esports_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_Esports_Map[] =_("Lorem");
+
+const u8 gText_Quest_CutePokemon_Name[] = _("Cute Pokémon");
+const u8 gText_Quest_CutePokemon_Desc[] =_("Lorem");
+const u8 gText_Quest_CutePokemon_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_CutePokemon_Map[] =_("Lorem");
+
+const u8 gText_Quest_WallaceArmy_Name[] = _("Wallace Army");
+const u8 gText_Quest_WallaceArmy_Desc[] =_("Lorem");
+const u8 gText_Quest_WallaceArmy_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_WallaceArmy_Map[] =_("Lorem");
+
+const u8 gText_Quest_DexCompletion_Name[] = _("Dex Completion");
+const u8 gText_Quest_DexCompletion_Desc[] =_("Lorem");
+const u8 gText_Quest_DexCompletion_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_DexCompletion_Map[] =_("Lorem");
+
+const u8 gText_Quest_CableCarDancing_Name[] = _("Cable Car Dancing");
+const u8 gText_Quest_CableCarDancing_Desc[] =_("Lorem");
+const u8 gText_Quest_CableCarDancing_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_CableCarDancing_Map[] =_("Lorem");
+
+const u8 gText_Quest_KitchenVolunteering_Name[] = _("Kitchen Volunteering");
+const u8 gText_Quest_KitchenVolunteering_Desc[] =_("Lorem");
+const u8 gText_Quest_KitchenVolunteering_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_KitchenVolunteering_Map[] =_("Lorem");
+
+const u8 gText_Quest_ArtisanBalls1_Name[] = _("Artisan Balls 1");
+const u8 gText_Quest_ArtisanBalls1_Desc[] =_("Lorem");
+const u8 gText_Quest_ArtisanBalls1_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ArtisanBalls1_Map[] =_("Lorem");
+
+const u8 gText_Quest_ArtisanBalls2_Name[] = _("Artisan Balls 2");
+const u8 gText_Quest_ArtisanBalls2_Desc[] =_("Lorem");
+const u8 gText_Quest_ArtisanBalls2_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ArtisanBalls2_Map[] =_("Lorem");
+
+const u8 gText_Quest_ArtisanBalls3_Name[] = _("Artisan Balls 3");
+const u8 gText_Quest_ArtisanBalls3_Desc[] =_("Lorem");
+const u8 gText_Quest_ArtisanBalls3_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ArtisanBalls3_Map[] =_("Lorem");
+
+const u8 gText_Quest_ShelterSwitcheroo_Name[] = _("Shelter Switcheroo");
+const u8 gText_Quest_ShelterSwitcheroo_Desc[] =_("Lorem");
+const u8 gText_Quest_ShelterSwitcheroo_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ShelterSwitcheroo_Map[] =_("Lorem");
+
+const u8 gText_Quest_ShelterTaxiSolution_Name[] = _("Shelter Taxi Solution");
+const u8 gText_Quest_ShelterTaxiSolution_Desc[] =_("Lorem");
+const u8 gText_Quest_ShelterTaxiSolution_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ShelterTaxiSolution_Map[] =_("Lorem");
+
+const u8 gText_Quest_LastMusicVenueInSanFrancisco_Name[] = _("Last Music Venue in San Francisco");
+const u8 gText_Quest_LastMusicVenueInSanFrancisco_Desc[] =_("Lorem");
+const u8 gText_Quest_LastMusicVenueInSanFrancisco_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_LastMusicVenueInSanFrancisco_Map[] =_("Lorem");
+
+const u8 gText_Quest_GardenCleanup_Name[] = _("Garden Cleanup");
+const u8 gText_Quest_GardenCleanup_Desc[] =_("Lorem");
+const u8 gText_Quest_GardenCleanup_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_GardenCleanup_Map[] =_("Lorem");
+
+const u8 gText_Quest_GardenCleanupAdvanced_Name[] = _("Garden Cleanup Advanced");
+const u8 gText_Quest_GardenCleanupAdvanced_Desc[] =_("Lorem");
+const u8 gText_Quest_GardenCleanupAdvanced_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_GardenCleanupAdvanced_Map[] =_("Lorem");
+
+const u8 gText_Quest_EmployedEverAfter_Name[] = _("Employed Ever After");
+const u8 gText_Quest_EmployedEverAfter_Desc[] =_("Lorem");
+const u8 gText_Quest_EmployedEverAfter_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_EmployedEverAfter_Map[] =_("Lorem");
+
+const u8 gText_Quest_ButOnlyInMyBackyard_Name[] = _("But Only in My Backyard");
+const u8 gText_Quest_ButOnlyInMyBackyard_Desc[] =_("Lorem");
+const u8 gText_Quest_ButOnlyInMyBackyard_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_ButOnlyInMyBackyard_Map[] =_("Lorem");
+
+const u8 gText_Quest_NeighborhoodCleanUp_Name[] = _("Neighborhood Clean Up");
+const u8 gText_Quest_NeighborhoodCleanUp_Desc[] =_("Lorem");
+const u8 gText_Quest_NeighborhoodCleanUp_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_NeighborhoodCleanUp_Map[] =_("Lorem");
+
+const u8 gText_Quest_NeighborhoodCleanUp2_Name[] = _("Neighborhood Clean Up 2");
+const u8 gText_Quest_NeighborhoodCleanUp2_Desc[] =_("Lorem");
+const u8 gText_Quest_NeighborhoodCleanUp2_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_NeighborhoodCleanUp2_Map[] =_("Lorem");
+
+const u8 gText_Quest_NeighborhoodCleanUp3_Name[] = _("Neighborhood Clean Up 3");
+const u8 gText_Quest_NeighborhoodCleanUp3_Desc[] =_("Lorem");
+const u8 gText_Quest_NeighborhoodCleanUp3_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_NeighborhoodCleanUp3_Map[] =_("Lorem");
+
+const u8 gText_Quest_NeighborhoodCleanUp4_Name[] = _("Neighborhood Clean Up 4");
+const u8 gText_Quest_NeighborhoodCleanUp4_Desc[] =_("Lorem");
+const u8 gText_Quest_NeighborhoodCleanUp4_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_NeighborhoodCleanUp4_Map[] =_("Lorem");
+
+const u8 gText_Quest_RockCollector_Name[] = _("Rock Collector");
+const u8 gText_Quest_RockCollector_Desc[] =_("Lorem");
+const u8 gText_Quest_RockCollector_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_RockCollector_Map[] =_("Lorem");
+
+const u8 gText_Quest_Hang20_Name[] = _("Hang 20");
+const u8 gText_Quest_Hang20_Desc[] =_("Lorem");
+const u8 gText_Quest_Hang20_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_Hang20_Map[] =_("Lorem");
+
+const u8 gText_Quest_AllThatGlittersMightBeGold_Name[] = _("All That Glitters Might Be Gold?");
+const u8 gText_Quest_AllThatGlittersMightBeGold_Desc[] =_("Lorem");
+const u8 gText_Quest_AllThatGlittersMightBeGold_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_AllThatGlittersMightBeGold_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownFishingQuest_Name[] = _("Unknown Fishing Quest");
+const u8 gText_Quest_UnknownFishingQuest_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownFishingQuest_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownFishingQuest_Map[] =_("Lorem");
+
+const u8 gText_Quest_HiddenGrottoMapping_Name[] = _("Hidden Grotto Mapping");
+const u8 gText_Quest_HiddenGrottoMapping_Desc[] =_("Lorem");
+const u8 gText_Quest_HiddenGrottoMapping_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_HiddenGrottoMapping_Map[] =_("Lorem");
+
+const u8 gText_Quest_HiddenGrottoMapping2_Name[] = _("Hidden Grotto Mapping 2");
+const u8 gText_Quest_HiddenGrottoMapping2_Desc[] =_("Lorem");
+const u8 gText_Quest_HiddenGrottoMapping2_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_HiddenGrottoMapping2_Map[] =_("Lorem");
+
+const u8 gText_Quest_UltraWormholeResearch_Name[] = _("Ultra Wormhole Research");
+const u8 gText_Quest_UltraWormholeResearch_Desc[] =_("Lorem");
+const u8 gText_Quest_UltraWormholeResearch_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UltraWormholeResearch_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownGovernmentSocialMediaQuest_Name[] = _("Unknown Government Social Media Quest");
+const u8 gText_Quest_UnknownGovernmentSocialMediaQuest_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownGovernmentSocialMediaQuest_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownGovernmentSocialMediaQuest_Map[] =_("Lorem");
+
+const u8 gText_Quest_DrumCircle_Name[] = _("Drum Circle");
+const u8 gText_Quest_DrumCircle_Desc[] =_("Lorem");
+const u8 gText_Quest_DrumCircle_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_DrumCircle_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownProp22Quest_Name[] = _("Unknown Prop 22 Quest");
+const u8 gText_Quest_UnknownProp22Quest_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownProp22Quest_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownProp22Quest_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownTimeTravelQuest_Name[] = _("Unknown Time Travel Quest");
+const u8 gText_Quest_UnknownTimeTravelQuest_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownTimeTravelQuest_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownTimeTravelQuest_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownConstructionStrikeQuest_Name[] = _("Unknown Construction Strike Quest");
+const u8 gText_Quest_UnknownConstructionStrikeQuest_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownConstructionStrikeQuest_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownConstructionStrikeQuest_Map[] =_("Lorem");
+
+const u8 gText_Quest_IBelieveICanFly_Name[] = _("I Believe I Can Fly");
+const u8 gText_Quest_IBelieveICanFly_Desc[] =_("Lorem");
+const u8 gText_Quest_IBelieveICanFly_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_IBelieveICanFly_Map[] =_("Lorem");
+
+const u8 gText_Quest_WildfireRisk_Name[] = _("Wildfire Risk");
+const u8 gText_Quest_WildfireRisk_Desc[] =_("Lorem");
+const u8 gText_Quest_WildfireRisk_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_WildfireRisk_Map[] =_("Lorem");
+
+const u8 gText_Quest_TheBoyWhoCriesWithWolves_Name[] = _("The Boy Who Cries With Wolves");
+const u8 gText_Quest_TheBoyWhoCriesWithWolves_Desc[] =_("Lorem");
+const u8 gText_Quest_TheBoyWhoCriesWithWolves_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_TheBoyWhoCriesWithWolves_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownTrolleyProblem_Name[] = _("Unknown Trolley Problem");
+const u8 gText_Quest_UnknownTrolleyProblem_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownTrolleyProblem_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownTrolleyProblem_Map[] =_("Lorem");
+
+const u8 gText_Quest_UnknownLandfillQuest_Name[] = _("Unknown Landfill Quest");
+const u8 gText_Quest_UnknownLandfillQuest_Desc[] =_("Lorem");
+const u8 gText_Quest_UnknownLandfillQuest_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_UnknownLandfillQuest_Map[] =_("Lorem");
+
+const u8 gText_Quest_TaxicabTurnaroundSea_Name[] = _("Taxicab Turnaround - Sea");
+const u8 gText_Quest_TaxicabTurnaroundSea_Desc[] =_("Lorem");
+const u8 gText_Quest_TaxicabTurnaroundSea_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_TaxicabTurnaroundSea_Map[] =_("Lorem");
+
+const u8 gText_Quest_TaxicabTurnaroundAir_Name[] = _("Taxicab Turnaround - Air");
+const u8 gText_Quest_TaxicabTurnaroundAir_Desc[] =_("Lorem");
+const u8 gText_Quest_TaxicabTurnaroundAir_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_TaxicabTurnaroundAir_Map[] =_("Lorem");
+
+const u8 gText_Quest_TaxicabTurnaroundLand_Name[] = _("Taxicab Turnaround - Land");
+const u8 gText_Quest_TaxicabTurnaroundLand_Desc[] =_("Lorem");
+const u8 gText_Quest_TaxicabTurnaroundLand_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_TaxicabTurnaroundLand_Map[] =_("Lorem");
+
+const u8 gText_Quest_PersuasivePassenger_Name[] = _("Persuasive Passenger");
+const u8 gText_Quest_PersuasivePassenger_Desc[] =_("Lorem");
+const u8 gText_Quest_PersuasivePassenger_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_PersuasivePassenger_Map[] =_("Lorem");
+
+const u8 gText_Quest_BodegaBurnout_Name[] = _("Bodega Burnout");
+const u8 gText_Quest_BodegaBurnout_Desc[] =_("Lorem");
+const u8 gText_Quest_BodegaBurnout_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_BodegaBurnout_Map[] =_("Lorem");
+
+const u8 gText_Quest_WarehouseWarfare_Name[] = _("Warehouse Warfare");
+const u8 gText_Quest_WarehouseWarfare_Desc[] =_("Lorem");
+const u8 gText_Quest_WarehouseWarfare_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_WarehouseWarfare_Map[] =_("Lorem");
+
+const u8 gText_Quest_RestoreToTheirFormerGlory_Name[] = _("Restore to their Former Glory");
+const u8 gText_Quest_RestoreToTheirFormerGlory_Desc[] =_("Lorem");
+const u8 gText_Quest_RestoreToTheirFormerGlory_DoneDesc[] =_("Lorem");
+const u8 gText_Quest_RestoreToTheirFormerGlory_Map[] =_("Lorem");
 
 //subquests
 const u8 gText_SubQuest1_Name1[] = _("Part 1");

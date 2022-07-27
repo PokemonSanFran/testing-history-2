@@ -13,145 +13,435 @@ extern const u8 gText_Quest_ReturnDoll_Desc[];
 extern const u8 gText_Quest_ReturnDoll_DoneDesc[];
 extern const u8 gText_Quest_ReturnDoll_Map[];
 
-extern const u8 gText_Quest_BringFruit_Name_3[];
-extern const u8 gText_Quest_BringFruit_Desc_3[];
-extern const u8 gText_Quest_BringFruit_DoneDesc_3[];
-extern const u8 gText_Quest_BringFruit_Map_3[];
+extern const u8 gText_Quest_BringFruit_Name[];
+extern const u8 gText_Quest_BringFruit_Desc[];
+extern const u8 gText_Quest_BringFruit_DoneDesc[];
+extern const u8 gText_Quest_BringFruit_Map[];
 
-extern const u8 gText_Quest_BringFireType_Name_4[];
-extern const u8 gText_Quest_BringFireType_Desc_4[];
-extern const u8 gText_Quest_BringFireType_DoneDesc_4[];
-extern const u8 gText_Quest_BringFireType_Map_4[];
+extern const u8 gText_Quest_BringFireType_Name[];
+extern const u8 gText_Quest_BringFireType_Desc[];
+extern const u8 gText_Quest_BringFireType_DoneDesc[];
+extern const u8 gText_Quest_BringFireType_Map[];
 
-extern const u8 gText_Quest_StopMugging_Name_5[];
-extern const u8 gText_Quest_StopMugging_Desc_5[];
-extern const u8 gText_Quest_StopMugging_DoneDesc_5[];
-extern const u8 gText_Quest_StopMugging_Map_5[];
+extern const u8 gText_Quest_StopMugging_Name[];
+extern const u8 gText_Quest_StopMugging_Desc[];
+extern const u8 gText_Quest_StopMugging_DoneDesc[];
+extern const u8 gText_Quest_StopMugging_Map[];
 
-extern const u8 gText_Quest_StolenTrade_Name_6[];
-extern const u8 gText_Quest_StolenTrade_Desc_6[];
-extern const u8 gText_Quest_StolenTrade_DoneDesc_6[];
-extern const u8 gText_Quest_StolenTrade_Map_6[];
+extern const u8 gText_Quest_StolenTrade_Name[];
+extern const u8 gText_Quest_StolenTrade_Desc[];
+extern const u8 gText_Quest_StolenTrade_DoneDesc[];
+extern const u8 gText_Quest_StolenTrade_Map[];
 
-extern const u8 gText_QuestName_7[];
-extern const u8 gText_QuestDesc_7[];
-extern const u8 gText_QuestDoneDesc_7[];
-extern const u8 gText_QuestMap_7[];
+extern const u8 gText_Quest_HauntABuilding_Name[];
+extern const u8 gText_Quest_HauntABuilding_Desc[];
+extern const u8 gText_Quest_HauntABuilding_DoneDesc[];
+extern const u8 gText_Quest_HauntABuilding_Map[];
 
-extern const u8 gText_QuestName_8[];
-extern const u8 gText_QuestDesc_8[];
-extern const u8 gText_QuestDoneDesc_8[];
-extern const u8 gText_QuestMap_8[];
+extern const u8 gText_Quest_SocialMedia_Name[];
+extern const u8 gText_Quest_SocialMedia_Desc[];
+extern const u8 gText_Quest_SocialMedia_DoneDesc[];
+extern const u8 gText_Quest_SocialMedia_Map[];
 
-extern const u8 gText_QuestName_9[];
-extern const u8 gText_QuestDesc_9[];
-extern const u8 gText_QuestDoneDesc_9[];
-extern const u8 gText_QuestMap_9[];
+extern const u8 gText_Quest_ConsolationPrize_Name[];
+extern const u8 gText_Quest_ConsolationPrize_Desc[];
+extern const u8 gText_Quest_ConsolationPrize_DoneDesc[];
+extern const u8 gText_Quest_ConsolationPrize_Map[];
 
-extern const u8 gText_QuestName_10[];
-extern const u8 gText_QuestDesc_10[];
-extern const u8 gText_QuestDoneDesc_10[];
-extern const u8 gText_QuestMap_10[];
+extern const u8 gText_Quest_RightingWrongs_Name[];
+extern const u8 gText_Quest_RightingWrongs_Desc[];
+extern const u8 gText_Quest_RightingWrongs_DoneDesc[];
+extern const u8 gText_Quest_RightingWrongs_Map[];
 
-extern const u8 gText_QuestName_11[];
-extern const u8 gText_QuestDesc_11[];
-extern const u8 gText_QuestDoneDesc_11[];
-extern const u8 gText_QuestMap_11[];
+extern const u8 gText_Quest_EnterTheDragon_Name[];
+extern const u8 gText_Quest_EnterTheDragon_Desc[];
+extern const u8 gText_Quest_EnterTheDragon_DoneDesc[];
+extern const u8 gText_Quest_EnterTheDragon_Map[];
 
-extern const u8 gText_QuestName_12[];
-extern const u8 gText_QuestDesc_12[];
-extern const u8 gText_QuestDoneDesc_12[];
-extern const u8 gText_QuestMap_12[];
+extern const u8 gText_Quest_BreakTheInternet_Name[];
+extern const u8 gText_Quest_BreakTheInternet_Desc[];
+extern const u8 gText_Quest_BreakTheInternet_DoneDesc[];
+extern const u8 gText_Quest_BreakTheInternet_Map[];
 
-extern const u8 gText_QuestName_13[];
-extern const u8 gText_QuestDesc_13[];
-extern const u8 gText_QuestDoneDesc_13[];
-extern const u8 gText_QuestMap_13[];
+extern const u8 gText_Quest_ShutDownMedicineMan_Name[];
+extern const u8 gText_Quest_ShutDownMedicineMan_Desc[];
+extern const u8 gText_Quest_ShutDownMedicineMan_DoneDesc[];
+extern const u8 gText_Quest_ShutDownMedicineMan_Map[];
 
-extern const u8 gText_QuestName_14[];
-extern const u8 gText_QuestDesc_14[];
-extern const u8 gText_QuestDoneDesc_14[];
-extern const u8 gText_QuestMap_14[];
+extern const u8 gText_Quest_BuildingScope_Name[];
+extern const u8 gText_Quest_BuildingScope_Desc[];
+extern const u8 gText_Quest_BuildingScope_DoneDesc[];
+extern const u8 gText_Quest_BuildingScope_Map[];
 
-extern const u8 gText_QuestName_15[];
-extern const u8 gText_QuestDesc_15[];
-extern const u8 gText_QuestDoneDesc_15[];
-extern const u8 gText_QuestMap_15[];
+extern const u8 gText_Quest_NoGoodDeed_Name[];
+extern const u8 gText_Quest_NoGoodDeed_Desc[];
+extern const u8 gText_Quest_NoGoodDeed_DoneDesc[];
+extern const u8 gText_Quest_NoGoodDeed_Map[];
 
-extern const u8 gText_QuestName_16[];
-extern const u8 gText_QuestDesc_16[];
-extern const u8 gText_QuestDoneDesc_16[];
-extern const u8 gText_QuestMap_16[];
+extern const u8 gText_Quest_ImprovBattling_Name[];
+extern const u8 gText_Quest_ImprovBattling_Desc[];
+extern const u8 gText_Quest_ImprovBattling_DoneDesc[];
+extern const u8 gText_Quest_ImprovBattling_Map[];
 
-extern const u8 gText_QuestName_17[];
-extern const u8 gText_QuestDesc_17[];
-extern const u8 gText_QuestDoneDesc_17[];
-extern const u8 gText_QuestMap_17[];
+extern const u8 gText_Quest_ImprovBattlingChampionship_Name[];
+extern const u8 gText_Quest_ImprovBattlingChampionship_Desc[];
+extern const u8 gText_Quest_ImprovBattlingChampionship_DoneDesc[];
+extern const u8 gText_Quest_ImprovBattlingChampionship_Map[];
 
-extern const u8 gText_QuestName_18[];
-extern const u8 gText_QuestDesc_18[];
-extern const u8 gText_QuestDoneDesc_18[];
-extern const u8 gText_QuestMap_18[];
+extern const u8 gText_Quest_InstallNatureProbes_Name[];
+extern const u8 gText_Quest_InstallNatureProbes_Desc[];
+extern const u8 gText_Quest_InstallNatureProbes_DoneDesc[];
+extern const u8 gText_Quest_InstallNatureProbes_Map[];
 
-extern const u8 gText_QuestName_19[];
-extern const u8 gText_QuestDesc_19[];
-extern const u8 gText_QuestDoneDesc_19[];
-extern const u8 gText_QuestMap_19[];
+extern const u8 gText_Quest_ManOfManyHats_Name[];
+extern const u8 gText_Quest_ManOfManyHats_Desc[];
+extern const u8 gText_Quest_ManOfManyHats_DoneDesc[];
+extern const u8 gText_Quest_ManOfManyHats_Map[];
 
-extern const u8 gText_QuestName_20[];
-extern const u8 gText_QuestDesc_20[];
-extern const u8 gText_QuestDoneDesc_20[];
-extern const u8 gText_QuestMap_20[];
+extern const u8 gText_Quest_RecruitLocalArtists_Name[];
+extern const u8 gText_Quest_RecruitLocalArtists_Desc[];
+extern const u8 gText_Quest_RecruitLocalArtists_DoneDesc[];
+extern const u8 gText_Quest_RecruitLocalArtists_Map[];
 
-extern const u8 gText_QuestName_21[];
-extern const u8 gText_QuestDesc_21[];
-extern const u8 gText_QuestDoneDesc_21[];
-extern const u8 gText_QuestMap_21[];
+extern const u8 gText_Quest_RestaurantExpansion1_Name[];
+extern const u8 gText_Quest_RestaurantExpansion1_Desc[];
+extern const u8 gText_Quest_RestaurantExpansion1_DoneDesc[];
+extern const u8 gText_Quest_RestaurantExpansion1_Map[];
 
-extern const u8 gText_QuestName_22[];
-extern const u8 gText_QuestDesc_22[];
-extern const u8 gText_QuestDoneDesc_22[];
-extern const u8 gText_QuestMap_22[];
+extern const u8 gText_Quest_RestaurantExpansion2_Name[];
+extern const u8 gText_Quest_RestaurantExpansion2_Desc[];
+extern const u8 gText_Quest_RestaurantExpansion2_DoneDesc[];
+extern const u8 gText_Quest_RestaurantExpansion2_Map[];
 
-extern const u8 gText_QuestName_23[];
-extern const u8 gText_QuestDesc_23[];
-extern const u8 gText_QuestDoneDesc_23[];
-extern const u8 gText_QuestMap_23[];
+extern const u8 gText_Quest_RestaurantExpansion3_Name[];
+extern const u8 gText_Quest_RestaurantExpansion3_Desc[];
+extern const u8 gText_Quest_RestaurantExpansion3_DoneDesc[];
+extern const u8 gText_Quest_RestaurantExpansion3_Map[];
 
-extern const u8 gText_QuestName_24[];
-extern const u8 gText_QuestDesc_24[];
-extern const u8 gText_QuestDoneDesc_24[];
-extern const u8 gText_QuestMap_24[];
+extern const u8 gText_Quest_CulturalPurity_Name[];
+extern const u8 gText_Quest_CulturalPurity_Desc[];
+extern const u8 gText_Quest_CulturalPurity_DoneDesc[];
+extern const u8 gText_Quest_CulturalPurity_Map[];
 
-extern const u8 gText_QuestName_25[];
-extern const u8 gText_QuestDesc_25[];
-extern const u8 gText_QuestDoneDesc_25[];
-extern const u8 gText_QuestMap_25[];
+extern const u8 gText_Quest_HybridCulture_Name[];
+extern const u8 gText_Quest_HybridCulture_Desc[];
+extern const u8 gText_Quest_HybridCulture_DoneDesc[];
+extern const u8 gText_Quest_HybridCulture_Map[];
 
-extern const u8 gText_QuestName_26[];
-extern const u8 gText_QuestDesc_26[];
-extern const u8 gText_QuestDoneDesc_26[];
-extern const u8 gText_QuestMap_26[];
+extern const u8 gText_Quest_AlohaFromAlola_Name[];
+extern const u8 gText_Quest_AlohaFromAlola_Desc[];
+extern const u8 gText_Quest_AlohaFromAlola_DoneDesc[];
+extern const u8 gText_Quest_AlohaFromAlola_Map[];
 
-extern const u8 gText_QuestName_27[];
-extern const u8 gText_QuestDesc_27[];
-extern const u8 gText_QuestDoneDesc_27[];
-extern const u8 gText_QuestMap_27[];
+extern const u8 gText_Quest_BuildingAnExhibit_Name[];
+extern const u8 gText_Quest_BuildingAnExhibit_Desc[];
+extern const u8 gText_Quest_BuildingAnExhibit_DoneDesc[];
+extern const u8 gText_Quest_BuildingAnExhibit_Map[];
 
-extern const u8 gText_QuestName_28[];
-extern const u8 gText_QuestDesc_28[];
-extern const u8 gText_QuestDoneDesc_28[];
-extern const u8 gText_QuestMap_28[];
+extern const u8 gText_Quest_UnknownMortyQuestA_Name[];
+extern const u8 gText_Quest_UnknownMortyQuestA_Desc[];
+extern const u8 gText_Quest_UnknownMortyQuestA_DoneDesc[];
+extern const u8 gText_Quest_UnknownMortyQuestA_Map[];
 
-extern const u8 gText_QuestName_29[];
-extern const u8 gText_QuestDesc_29[];
-extern const u8 gText_QuestDoneDesc_29[];
-extern const u8 gText_QuestMap_29[];
+extern const u8 gText_Quest_UnknownMortyQuestB_Name[];
+extern const u8 gText_Quest_UnknownMortyQuestB_Desc[];
+extern const u8 gText_Quest_UnknownMortyQuestB_DoneDesc[];
+extern const u8 gText_Quest_UnknownMortyQuestB_Map[];
 
-extern const u8 gText_QuestName_30[];
-extern const u8 gText_QuestDesc_30[];
-extern const u8 gText_QuestDoneDesc_30[];
-extern const u8 gText_QuestMap_30[];
+extern const u8 gText_Quest_UnknownChuckQuestA_Name[];
+extern const u8 gText_Quest_UnknownChuckQuestA_Desc[];
+extern const u8 gText_Quest_UnknownChuckQuestA_DoneDesc[];
+extern const u8 gText_Quest_UnknownChuckQuestA_Map[];
+
+extern const u8 gText_Quest_UnknownChuckQuestB_Name[];
+extern const u8 gText_Quest_UnknownChuckQuestB_Desc[];
+extern const u8 gText_Quest_UnknownChuckQuestB_DoneDesc[];
+extern const u8 gText_Quest_UnknownChuckQuestB_Map[];
+
+extern const u8 gText_Quest_BiomeResearch_Name[];
+extern const u8 gText_Quest_BiomeResearch_Desc[];
+extern const u8 gText_Quest_BiomeResearch_DoneDesc[];
+extern const u8 gText_Quest_BiomeResearch_Map[];
+
+extern const u8 gText_Quest_BerrySustainability_Name[];
+extern const u8 gText_Quest_BerrySustainability_Desc[];
+extern const u8 gText_Quest_BerrySustainability_DoneDesc[];
+extern const u8 gText_Quest_BerrySustainability_Map[];
+
+extern const u8 gText_Quest_TheOnlyHeadShopInTown_Name[];
+extern const u8 gText_Quest_TheOnlyHeadShopInTown_Desc[];
+extern const u8 gText_Quest_TheOnlyHeadShopInTown_DoneDesc[];
+extern const u8 gText_Quest_TheOnlyHeadShopInTown_Map[];
+
+extern const u8 gText_Quest_InverseHallucinogenic_Name[];
+extern const u8 gText_Quest_InverseHallucinogenic_Desc[];
+extern const u8 gText_Quest_InverseHallucinogenic_DoneDesc[];
+extern const u8 gText_Quest_InverseHallucinogenic_Map[];
+
+extern const u8 gText_Quest_UnknownClairQuestA_Name[];
+extern const u8 gText_Quest_UnknownClairQuestA_Desc[];
+extern const u8 gText_Quest_UnknownClairQuestA_DoneDesc[];
+extern const u8 gText_Quest_UnknownClairQuestA_Map[];
+
+extern const u8 gText_Quest_UnknownClairQuestB_Name[];
+extern const u8 gText_Quest_UnknownClairQuestB_Desc[];
+extern const u8 gText_Quest_UnknownClairQuestB_DoneDesc[];
+extern const u8 gText_Quest_UnknownClairQuestB_Map[];
+
+extern const u8 gText_Quest_ContractorPorygon_Name[];
+extern const u8 gText_Quest_ContractorPorygon_Desc[];
+extern const u8 gText_Quest_ContractorPorygon_DoneDesc[];
+extern const u8 gText_Quest_ContractorPorygon_Map[];
+
+extern const u8 gText_Quest_AngelDelivery_Name[];
+extern const u8 gText_Quest_AngelDelivery_Desc[];
+extern const u8 gText_Quest_AngelDelivery_DoneDesc[];
+extern const u8 gText_Quest_AngelDelivery_Map[];
+
+extern const u8 gText_Quest_GetTheBandBackTogether_Name[];
+extern const u8 gText_Quest_GetTheBandBackTogether_Desc[];
+extern const u8 gText_Quest_GetTheBandBackTogether_DoneDesc[];
+extern const u8 gText_Quest_GetTheBandBackTogether_Map[];
+
+extern const u8 gText_Quest_FoodTruckBureacracy_Name[];
+extern const u8 gText_Quest_FoodTruckBureacracy_Desc[];
+extern const u8 gText_Quest_FoodTruckBureacracy_DoneDesc[];
+extern const u8 gText_Quest_FoodTruckBureacracy_Map[];
+
+extern const u8 gText_Quest_DetectiveAriana_Name[];
+extern const u8 gText_Quest_DetectiveAriana_Desc[];
+extern const u8 gText_Quest_DetectiveAriana_DoneDesc[];
+extern const u8 gText_Quest_DetectiveAriana_Map[];
+
+extern const u8 gText_Quest_UnknownBruceLeeQuest_Name[];
+extern const u8 gText_Quest_UnknownBruceLeeQuest_Desc[];
+extern const u8 gText_Quest_UnknownBruceLeeQuest_DoneDesc[];
+extern const u8 gText_Quest_UnknownBruceLeeQuest_Map[];
+
+extern const u8 gText_Quest_ChallengeOfThe7Sisters_Name[];
+extern const u8 gText_Quest_ChallengeOfThe7Sisters_Desc[];
+extern const u8 gText_Quest_ChallengeOfThe7Sisters_DoneDesc[];
+extern const u8 gText_Quest_ChallengeOfThe7Sisters_Map[];
+
+extern const u8 gText_Quest_Esports_Name[];
+extern const u8 gText_Quest_Esports_Desc[];
+extern const u8 gText_Quest_Esports_DoneDesc[];
+extern const u8 gText_Quest_Esports_Map[];
+
+extern const u8 gText_Quest_CutePokemon_Name[];
+extern const u8 gText_Quest_CutePokemon_Desc[];
+extern const u8 gText_Quest_CutePokemon_DoneDesc[];
+extern const u8 gText_Quest_CutePokemon_Map[];
+
+extern const u8 gText_Quest_WallaceArmy_Name[];
+extern const u8 gText_Quest_WallaceArmy_Desc[];
+extern const u8 gText_Quest_WallaceArmy_DoneDesc[];
+extern const u8 gText_Quest_WallaceArmy_Map[];
+
+extern const u8 gText_Quest_DexCompletion_Name[];
+extern const u8 gText_Quest_DexCompletion_Desc[];
+extern const u8 gText_Quest_DexCompletion_DoneDesc[];
+extern const u8 gText_Quest_DexCompletion_Map[];
+
+extern const u8 gText_Quest_CableCarDancing_Name[];
+extern const u8 gText_Quest_CableCarDancing_Desc[];
+extern const u8 gText_Quest_CableCarDancing_DoneDesc[];
+extern const u8 gText_Quest_CableCarDancing_Map[];
+
+extern const u8 gText_Quest_KitchenVolunteering_Name[];
+extern const u8 gText_Quest_KitchenVolunteering_Desc[];
+extern const u8 gText_Quest_KitchenVolunteering_DoneDesc[];
+extern const u8 gText_Quest_KitchenVolunteering_Map[];
+
+extern const u8 gText_Quest_ArtisanBalls1_Name[];
+extern const u8 gText_Quest_ArtisanBalls1_Desc[];
+extern const u8 gText_Quest_ArtisanBalls1_DoneDesc[];
+extern const u8 gText_Quest_ArtisanBalls1_Map[];
+
+extern const u8 gText_Quest_ArtisanBalls2_Name[];
+extern const u8 gText_Quest_ArtisanBalls2_Desc[];
+extern const u8 gText_Quest_ArtisanBalls2_DoneDesc[];
+extern const u8 gText_Quest_ArtisanBalls2_Map[];
+
+extern const u8 gText_Quest_ArtisanBalls3_Name[];
+extern const u8 gText_Quest_ArtisanBalls3_Desc[];
+extern const u8 gText_Quest_ArtisanBalls3_DoneDesc[];
+extern const u8 gText_Quest_ArtisanBalls3_Map[];
+
+extern const u8 gText_Quest_ShelterSwitcheroo_Name[];
+extern const u8 gText_Quest_ShelterSwitcheroo_Desc[];
+extern const u8 gText_Quest_ShelterSwitcheroo_DoneDesc[];
+extern const u8 gText_Quest_ShelterSwitcheroo_Map[];
+
+extern const u8 gText_Quest_ShelterTaxiSolution_Name[];
+extern const u8 gText_Quest_ShelterTaxiSolution_Desc[];
+extern const u8 gText_Quest_ShelterTaxiSolution_DoneDesc[];
+extern const u8 gText_Quest_ShelterTaxiSolution_Map[];
+
+extern const u8 gText_Quest_LastMusicVenueInSanFrancisco_Name[];
+extern const u8 gText_Quest_LastMusicVenueInSanFrancisco_Desc[];
+extern const u8 gText_Quest_LastMusicVenueInSanFrancisco_DoneDesc[];
+extern const u8 gText_Quest_LastMusicVenueInSanFrancisco_Map[];
+
+extern const u8 gText_Quest_GardenCleanup_Name[];
+extern const u8 gText_Quest_GardenCleanup_Desc[];
+extern const u8 gText_Quest_GardenCleanup_DoneDesc[];
+extern const u8 gText_Quest_GardenCleanup_Map[];
+
+extern const u8 gText_Quest_GardenCleanupAdvanced_Name[];
+extern const u8 gText_Quest_GardenCleanupAdvanced_Desc[];
+extern const u8 gText_Quest_GardenCleanupAdvanced_DoneDesc[];
+extern const u8 gText_Quest_GardenCleanupAdvanced_Map[];
+
+extern const u8 gText_Quest_EmployedEverAfter_Name[];
+extern const u8 gText_Quest_EmployedEverAfter_Desc[];
+extern const u8 gText_Quest_EmployedEverAfter_DoneDesc[];
+extern const u8 gText_Quest_EmployedEverAfter_Map[];
+
+extern const u8 gText_Quest_ButOnlyInMyBackyard_Name[];
+extern const u8 gText_Quest_ButOnlyInMyBackyard_Desc[];
+extern const u8 gText_Quest_ButOnlyInMyBackyard_DoneDesc[];
+extern const u8 gText_Quest_ButOnlyInMyBackyard_Map[];
+
+extern const u8 gText_Quest_NeighborhoodCleanUp_Name[];
+extern const u8 gText_Quest_NeighborhoodCleanUp_Desc[];
+extern const u8 gText_Quest_NeighborhoodCleanUp_DoneDesc[];
+extern const u8 gText_Quest_NeighborhoodCleanUp_Map[];
+
+extern const u8 gText_Quest_NeighborhoodCleanUp2_Name[];
+extern const u8 gText_Quest_NeighborhoodCleanUp2_Desc[];
+extern const u8 gText_Quest_NeighborhoodCleanUp2_DoneDesc[];
+extern const u8 gText_Quest_NeighborhoodCleanUp2_Map[];
+
+extern const u8 gText_Quest_NeighborhoodCleanUp3_Name[];
+extern const u8 gText_Quest_NeighborhoodCleanUp3_Desc[];
+extern const u8 gText_Quest_NeighborhoodCleanUp3_DoneDesc[];
+extern const u8 gText_Quest_NeighborhoodCleanUp3_Map[];
+
+extern const u8 gText_Quest_NeighborhoodCleanUp4_Name[];
+extern const u8 gText_Quest_NeighborhoodCleanUp4_Desc[];
+extern const u8 gText_Quest_NeighborhoodCleanUp4_DoneDesc[];
+extern const u8 gText_Quest_NeighborhoodCleanUp4_Map[];
+
+extern const u8 gText_Quest_RockCollector_Name[];
+extern const u8 gText_Quest_RockCollector_Desc[];
+extern const u8 gText_Quest_RockCollector_DoneDesc[];
+extern const u8 gText_Quest_RockCollector_Map[];
+
+extern const u8 gText_Quest_Hang20_Name[];
+extern const u8 gText_Quest_Hang20_Desc[];
+extern const u8 gText_Quest_Hang20_DoneDesc[];
+extern const u8 gText_Quest_Hang20_Map[];
+
+extern const u8 gText_Quest_AllThatGlittersMightBeGold_Name[];
+extern const u8 gText_Quest_AllThatGlittersMightBeGold_Desc[];
+extern const u8 gText_Quest_AllThatGlittersMightBeGold_DoneDesc[];
+extern const u8 gText_Quest_AllThatGlittersMightBeGold_Map[];
+
+extern const u8 gText_Quest_UnknownFishingQuest_Name[];
+extern const u8 gText_Quest_UnknownFishingQuest_Desc[];
+extern const u8 gText_Quest_UnknownFishingQuest_DoneDesc[];
+extern const u8 gText_Quest_UnknownFishingQuest_Map[];
+
+extern const u8 gText_Quest_HiddenGrottoMapping_Name[];
+extern const u8 gText_Quest_HiddenGrottoMapping_Desc[];
+extern const u8 gText_Quest_HiddenGrottoMapping_DoneDesc[];
+extern const u8 gText_Quest_HiddenGrottoMapping_Map[];
+
+extern const u8 gText_Quest_HiddenGrottoMapping2_Name[];
+extern const u8 gText_Quest_HiddenGrottoMapping2_Desc[];
+extern const u8 gText_Quest_HiddenGrottoMapping2_DoneDesc[];
+extern const u8 gText_Quest_HiddenGrottoMapping2_Map[];
+
+extern const u8 gText_Quest_UltraWormholeResearch_Name[];
+extern const u8 gText_Quest_UltraWormholeResearch_Desc[];
+extern const u8 gText_Quest_UltraWormholeResearch_DoneDesc[];
+extern const u8 gText_Quest_UltraWormholeResearch_Map[];
+
+extern const u8 gText_Quest_UnknownGovernmentSocialMediaQuest_Name[];
+extern const u8 gText_Quest_UnknownGovernmentSocialMediaQuest_Desc[];
+extern const u8 gText_Quest_UnknownGovernmentSocialMediaQuest_DoneDesc[];
+extern const u8 gText_Quest_UnknownGovernmentSocialMediaQuest_Map[];
+
+extern const u8 gText_Quest_DrumCircle_Name[];
+extern const u8 gText_Quest_DrumCircle_Desc[];
+extern const u8 gText_Quest_DrumCircle_DoneDesc[];
+extern const u8 gText_Quest_DrumCircle_Map[];
+
+extern const u8 gText_Quest_UnknownProp22Quest_Name[];
+extern const u8 gText_Quest_UnknownProp22Quest_Desc[];
+extern const u8 gText_Quest_UnknownProp22Quest_DoneDesc[];
+extern const u8 gText_Quest_UnknownProp22Quest_Map[];
+
+extern const u8 gText_Quest_UnknownTimeTravelQuest_Name[];
+extern const u8 gText_Quest_UnknownTimeTravelQuest_Desc[];
+extern const u8 gText_Quest_UnknownTimeTravelQuest_DoneDesc[];
+extern const u8 gText_Quest_UnknownTimeTravelQuest_Map[];
+
+extern const u8 gText_Quest_UnknownConstructionStrikeQuest_Name[];
+extern const u8 gText_Quest_UnknownConstructionStrikeQuest_Desc[];
+extern const u8 gText_Quest_UnknownConstructionStrikeQuest_DoneDesc[];
+extern const u8 gText_Quest_UnknownConstructionStrikeQuest_Map[];
+
+extern const u8 gText_Quest_IBelieveICanFly_Name[];
+extern const u8 gText_Quest_IBelieveICanFly_Desc[];
+extern const u8 gText_Quest_IBelieveICanFly_DoneDesc[];
+extern const u8 gText_Quest_IBelieveICanFly_Map[];
+
+extern const u8 gText_Quest_WildfireRisk_Name[];
+extern const u8 gText_Quest_WildfireRisk_Desc[];
+extern const u8 gText_Quest_WildfireRisk_DoneDesc[];
+extern const u8 gText_Quest_WildfireRisk_Map[];
+
+extern const u8 gText_Quest_TheBoyWhoCriesWithWolves_Name[];
+extern const u8 gText_Quest_TheBoyWhoCriesWithWolves_Desc[];
+extern const u8 gText_Quest_TheBoyWhoCriesWithWolves_DoneDesc[];
+extern const u8 gText_Quest_TheBoyWhoCriesWithWolves_Map[];
+
+extern const u8 gText_Quest_UnknownTrolleyProblem_Name[];
+extern const u8 gText_Quest_UnknownTrolleyProblem_Desc[];
+extern const u8 gText_Quest_UnknownTrolleyProblem_DoneDesc[];
+extern const u8 gText_Quest_UnknownTrolleyProblem_Map[];
+
+extern const u8 gText_Quest_UnknownLandfillQuest_Name[];
+extern const u8 gText_Quest_UnknownLandfillQuest_Desc[];
+extern const u8 gText_Quest_UnknownLandfillQuest_DoneDesc[];
+extern const u8 gText_Quest_UnknownLandfillQuest_Map[];
+
+extern const u8 gText_Quest_TaxicabTurnaroundSea_Name[];
+extern const u8 gText_Quest_TaxicabTurnaroundSea_Desc[];
+extern const u8 gText_Quest_TaxicabTurnaroundSea_DoneDesc[];
+extern const u8 gText_Quest_TaxicabTurnaroundSea_Map[];
+
+extern const u8 gText_Quest_TaxicabTurnaroundAir_Name[];
+extern const u8 gText_Quest_TaxicabTurnaroundAir_Desc[];
+extern const u8 gText_Quest_TaxicabTurnaroundAir_DoneDesc[];
+extern const u8 gText_Quest_TaxicabTurnaroundAir_Map[];
+
+extern const u8 gText_Quest_TaxicabTurnaroundLand_Name[];
+extern const u8 gText_Quest_TaxicabTurnaroundLand_Desc[];
+extern const u8 gText_Quest_TaxicabTurnaroundLand_DoneDesc[];
+extern const u8 gText_Quest_TaxicabTurnaroundLand_Map[];
+
+extern const u8 gText_Quest_PersuasivePassenger_Name[];
+extern const u8 gText_Quest_PersuasivePassenger_Desc[];
+extern const u8 gText_Quest_PersuasivePassenger_DoneDesc[];
+extern const u8 gText_Quest_PersuasivePassenger_Map[];
+
+extern const u8 gText_Quest_BodegaBurnout_Name[];
+extern const u8 gText_Quest_BodegaBurnout_Desc[];
+extern const u8 gText_Quest_BodegaBurnout_DoneDesc[];
+extern const u8 gText_Quest_BodegaBurnout_Map[];
+
+extern const u8 gText_Quest_WarehouseWarfare_Name[];
+extern const u8 gText_Quest_WarehouseWarfare_Desc[];
+extern const u8 gText_Quest_WarehouseWarfare_DoneDesc[];
+extern const u8 gText_Quest_WarehouseWarfare_Map[];
+
+extern const u8 gText_Quest_RestoreToTheirFormerGlory_Name[];
+extern const u8 gText_Quest_RestoreToTheirFormerGlory_Desc[];
+extern const u8 gText_Quest_RestoreToTheirFormerGlory_DoneDesc[];
+extern const u8 gText_Quest_RestoreToTheirFormerGlory_Map[];
 
 //subquests
 extern const u8 gText_SubQuest1_Name1[];

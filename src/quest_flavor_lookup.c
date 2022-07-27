@@ -188,7 +188,7 @@ const u8 *GetQuestDesc_BringFruit()
             berryCount = i;
 
     ConvertIntToDecimalStringN(gStringVar3, berryCount,STR_CONV_MODE_LEFT_ALIGN,6);
-    StringExpandPlaceholders(gStringVar2,gText_Quest_BringFruit_Desc_3);
+    StringExpandPlaceholders(gStringVar2,gText_Quest_BringFruit_Desc);
 
     return gStringVar2;
 }
