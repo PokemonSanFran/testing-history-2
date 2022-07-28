@@ -5520,6 +5520,16 @@
       "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/WeCanStopYouActually_Cutscene/border.bin",
       "blockdata_filepath": "data/layouts/WeCanStopYouActually_Cutscene/map.bin"
+    },
+    {
+      "id": "LAYOUT_PRESIDIO_HAUNTEDHOUSE",
+      "name": "Presidio_Hauntedhouse_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Presidio_Hauntedhouse/border.bin",
+      "blockdata_filepath": "data/layouts/Presidio_Hauntedhouse/map.bin"
     }
   ]
 }

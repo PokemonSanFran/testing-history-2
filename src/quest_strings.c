@@ -31,12 +31,13 @@ const u8 gText_Quest_StopMugging_Map[] = _("SOMA");
 const u8 gText_Quest_StolenTrade_Name[] = _("Stolen Trade");
 const u8 gText_Quest_StolenTrade_Desc[] = _("She wanted to trade with you to evolve\nher Swirlix and then trade back,\nbut she ran away with your Gurdurr!");
 const u8 gText_Quest_StolenTrade_DoneDesc[] = _("You hunted down the Trainer\nand got back your Conkeldurr.");
-const u8 gText_Quest_StolenTrade_Map[] = _("???");
+const u8 gText_Quest_StolenTrade_Map[] = _("Sunset");
 
 const u8 gText_Quest_HauntABuilding_Name[] = _("Haunt a Building");
-const u8 gText_Quest_HauntABuilding_Desc[] =_("Lorem");
-const u8 gText_Quest_HauntABuilding_DoneDesc[] =_("Lorem");
-const u8 gText_Quest_HauntABuilding_Map[] =_("Lorem");
+const u8 gText_Quest_HauntABuilding_Desc[] =_("Bring 2 Litwick, 2 Sinistea,1\nChandelure & 1 Trevenant to scare off\nthe property developer. Come at night.");
+const u8 gText_Quest_HauntABuilding_DoneDesc[] =_("You scared off the developer!\nBut... perhaps the house was haunted after all.");
+const u8 gText_Quest_HauntABuilding_Map[] =_("Presidio");
+//const u8 gText_Quest_HauntABuilding_Map[] = gText_Quest_StolenTrade_Map;
 
 const u8 gText_Quest_SocialMedia_Name[] = _("Social Media");
 const u8 gText_Quest_SocialMedia_Desc[] =_("Lorem");

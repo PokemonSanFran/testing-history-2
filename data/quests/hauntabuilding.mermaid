@@ -1,0 +1,27 @@
+flowchart TD
+
+id1(Interact_Script)
+id3(Activate_Dialogue)
+id4(AskPokemon_Dialogue)
+id5(CheckPokemon_Dialogue)
+id6(CheckPokemon_Script)
+id7(TakePokemon_Script)
+id8(TakePokemon_Dialogue)
+id9(AllPokemonCheck_Script)
+id10(NoPokemon_Script)
+id11(NoPokemon_Dialogue)
+id12(LastPokemon_Dialogue)
+id13(AllPokemon_Dialogue)
+id14(ScareCutscene_Script)
+id15(ThankPlayer_Dialogue)
+id16(GiveReward_Dialogue)
+id17(PostScare_Dialogue)
+
+id1 --> id3
+id1 --> id4
+id1 --> id17
+id4 --> id5 --> id6
+id6 --> id8 --> id7
+id6 --> id11 --> id10
+id6 --> id12
+id7 --> id9 --> id13 --> id14 --> id15 --> id16

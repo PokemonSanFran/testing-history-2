@@ -1,0 +1,13 @@
+Presidio_Hauntedhouse_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Presidio_Hauntedhouse_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Presidio_Hauntedhouse_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto Presidio_Hauntedhouse_MapScripts_OnTransition
+	return
+
+
+Presidio_Hauntedhouse_MapScripts_OnTransition::
+	call Quest_HauntABuilding_HideObject_Script
+	return
+

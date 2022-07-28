@@ -1,0 +1,309 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CAMERA = OBJ_EVENT_ID_CAMERA
+const HUNTER = 2
+const DEVELOPER = 3
+
+script Quest_HauntABuilding_HideObject_Script{
+    setflag(FLAG_TEMP_1)
+    setflag(FLAG_TEMP_3)
+
+    removeobject(4)
+    removeobject(5)
+    removeobject(6)
+    removeobject(7)
+    removeobject(8)
+    removeobject(9)
+    removeobject(10)
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING)
+
+    if (var(VAR_RESULT)){
+        setflag(FLAG_TEMP_2)
+    }
+}
+script Quest_HauntABuilding_Interact_Script{
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_HAUNTABUILDING)
+
+        if (var(VAR_RESULT)){
+            goto(Quest_HauntABuilding_AskPokemon_Dialogue)
+        }
+        else {
+            goto(Quest_HauntABuilding_Activate_Dialogue)
+        }
+}
+script Quest_HauntABuilding_Activate_Dialogue{
+    lock
+        msgbox(gText_HauntABuilding_IDontKnow,MSGBOX_DEFAULT)
+        msgbox(gText_HauntABuilding_OhMaybeYou,MSGBOX_NPC)
+        msgbox(gText_HauntABuilding_IToldTheDeveloper,MSGBOX_NPC)
+        msgbox(gText_HauntABuilding_IWouldDoIt,MSGBOX_NPC)
+        msgbox(gText_HauntABuilding_BringSomeScary,MSGBOX_NPC)
+        startquest(QUEST_HAUNTABUILDING)
+        release
+        end
+}
+script Quest_HauntABuilding_AskPokemon_Dialogue{
+    msgbox(gText_HauntABuilding_DoYouHaveAScary,MSGBOX_NPC)
+        goto(Quest_HauntABuilding_CheckPokemon_Script)
+
+}
+script Quest_HauntABuilding_CheckPokemon_Script{
+    special(ChoosePartyMon)
+        waitstate
+
+
+        specialvar(VAR_RESULT,CountPartyNonEggMons)
+        if (var(VAR_RESULT) == 1){
+            goto(Quest_HauntABuilding_LastPokemon_Dialogue)
+        }
+
+    //PSF TODO implement special to take pokemon
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_1)
+        if (!var(VAR_RESULT)){
+            specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+                if (var(VAR_RESULT) == SPECIES_LITWICK){ 
+                    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_HAUNTABUILDING,SUB_QUEST_1)
+                    goto(Quest_HauntABuilding_TakePokemon_Dialogue)
+                }
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_2)
+        if (!var(VAR_RESULT)){
+            specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+                if (var(VAR_RESULT) == SPECIES_LITWICK){ 
+                    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_HAUNTABUILDING,SUB_QUEST_2)
+                    goto(Quest_HauntABuilding_TakePokemon_Dialogue)
+                }
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_3)
+        if (!var(VAR_RESULT)){
+            specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+                if (var(VAR_RESULT) == SPECIES_SINISTEA){ 
+                    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_HAUNTABUILDING,SUB_QUEST_3)
+                    goto(Quest_HauntABuilding_TakePokemon_Dialogue)
+                }
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_4)
+        if (!var(VAR_RESULT)){
+            specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+                if (var(VAR_RESULT) == SPECIES_SINISTEA){ 
+                    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_HAUNTABUILDING,SUB_QUEST_4)
+                    goto(Quest_HauntABuilding_TakePokemon_Dialogue)
+                }
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_5)
+        if (!var(VAR_RESULT)){
+            specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+                if (var(VAR_RESULT) == SPECIES_CHANDELURE){ 
+                    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_HAUNTABUILDING,SUB_QUEST_5)
+                    goto(Quest_HauntABuilding_TakePokemon_Dialogue)
+                }
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_6)
+        if (!var(VAR_RESULT)){
+            specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+                if (var(VAR_RESULT) == SPECIES_TREVENANT){ 
+                    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_HAUNTABUILDING,SUB_QUEST_6)
+                    goto(Quest_HauntABuilding_TakePokemon_Dialogue)
+                }
+        }
+
+        //if (var(VAR_RESULT) == 255){
+            goto(Quest_HauntABuilding_NoPokemon_Dialogue)
+        //}
+}
+script Quest_HauntABuilding_TakePokemon_Script{
+    msgbox(format("okay taking the thingy now"))
+        //remove pokemon
+}
+script Quest_HauntABuilding_TakePokemon_Dialogue{
+        call(Quest_HauntABuilding_TakePokemon_Script)
+        msgbox(gText_HauntABuilding_OhPerfect,MSGBOX_NPC)
+        goto(Quest_HauntABuilding_AllPokemonCheck_Script)
+}
+script Quest_HauntABuilding_AllPokemonCheck_Script{
+    setvar(VAR_TEMP_0,0)
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_1)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_2)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_3)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_4)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_5)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HAUNTABUILDING,SUB_QUEST_6)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+
+    if (var(VAR_TEMP_0) == 6){
+        goto(Quest_HauntABuilding_AllPokemon_Dialogue)
+    }
+    end
+}
+script Quest_HauntABuilding_NoPokemon_Dialogue{
+    msgbox(gText_HauntABuilding_NothingYet,MSGBOX_NPC)
+    end
+}
+script Quest_HauntABuilding_LastPokemon_Dialogue{
+    msgbox(gText_HauntABuilding_YouCantGiveMe,MSGBOX_NPC)
+    end
+}
+script Quest_HauntABuilding_AllPokemon_Dialogue{
+    msgbox(gText_HauntABuilding_OhIThinkWereReady,MSGBOX_NPC)
+    goto(Quest_HauntABuilding_ScareCutscene_Script)
+}
+
+script Quest_HauntABuilding_ScareCutscene_Script{
+    clearflag(FLAG_TEMP_1)
+    playse(SE_EXIT)
+    addobject(DEVELOPER)
+    applymovement(HUNTER,Common_Movement_FaceLeft)
+    applymovement(DEVELOPER,HauntABuilding_WalkToPair_Movement)
+    waitmovement(0)
+    msgbox(gText_HauntABuilding_OkayImHere,MSGBOX_DEFAULT)
+    closemessage
+
+    playmoncry(SPECIES_GENGAR,CRY_MODE_ENCOUNTER)
+    waitmoncry
+    msgbox(gText_HauntABuilding_WhatWasThat,MSGBOX_DEFAULT)
+    closemessage
+
+    fadescreenspeed(FADE_TO_BLACK,0)
+    call(Quest_HauntABuilding_MoveDeveloper_Script)
+    fadescreenspeed(FADE_FROM_BLACK,0)
+
+    playse(SE_PIN)
+    applymovement(DEVELOPER,Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(gText_HauntABuilding_HowDidI,MSGBOX_DEFAULT)
+    closemessage
+
+    fadescreenspeed(FADE_TO_BLACK,0)
+    playmoncry(SPECIES_TREVENANT,CRY_MODE_ENCOUNTER)
+    waitmoncry
+    call(Quest_HauntABuilding_MakeGhostsVisibleA_Script)
+    fadescreenspeed(FADE_FROM_BLACK,0)
+
+    playse(SE_PIN)
+    applymovement(DEVELOPER,Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(gText_HauntABuilding_ImOuttaHere,MSGBOX_DEFAULT)
+    closemessage
+    applymovement(DEVELOPER,HauntABuilding_Flee_Movement)
+    waitmovement(0)
+    playse(SE_EXIT)
+    removeobject(DEVELOPER)
+
+    fadescreenspeed(FADE_TO_BLACK,0)
+    call(Quest_HauntABuilding_HideObject_Script)
+    fadescreenspeed(FADE_FROM_BLACK,0)
+    goto(Quest_HauntABuilding_ThankPlayer_Dialogue)
+}
+
+script Quest_HauntABuilding_MoveDeveloper_Script{
+    setobjectxy(DEVELOPER,4,4)
+    applymovement(DEVELOPER,Common_Movement_FaceUp)
+    waitmovement(DEVELOPER)
+}
+
+script Quest_HauntABuilding_MakeGhostsVisibleA_Script{
+    clearflag(FLAG_TEMP_3)
+    addobject(3)
+    addobject(4)
+    addobject(5)
+}
+
+script Quest_HauntABuilding_ThankPlayer_Dialogue{
+    msgbox(gText_HauntABuilding_ItWorked,MSGBOX_NPC)
+    call(Quest_HauntABuilding_GiveReward_Dialogue)
+    msgbox(gText_HauntABuilding_ImGoingToCelebrate,MSGBOX_NPC)
+    closemessage
+    applymovement(HUNTER,HauntABuilding_LeaveHouse_Movement)
+    waitmovement(0)
+    playse(SE_EXIT)
+    removeobject(HUNTER)
+    release
+    end
+}
+
+script Quest_HauntABuilding_GiveReward_Dialogue{
+    giveitem(ITEM_TM38)
+}
+
+text gText_HauntABuilding_IDontKnow{
+	format("I don't know what to do...I can't let them have this!")
+}
+text gText_HauntABuilding_OhMaybeYou{
+	format("Oh! Maybe you can help me.")
+}
+text gText_HauntABuilding_IToldTheDeveloper{
+	format("I told the developer trying to convert this place into a mansion that I wasn't going to sell. But they keep coming back and harrassing me... so I finally told them the place was haunted. Now I need to convince them that its actually haunted!")
+}
+text gText_HauntABuilding_IWouldDoIt{
+	format("I'd do it, but I can't leave. It's weird and complicated, but I have to stay here.")
+}
+text gText_HauntABuilding_BringSomeScary{
+	format("Can you help me? Bring me some scary Pokémon. I think two Litwick, 2 Sinistea, a Chandelure, and a Trevanant should do the trick. Come back at night, okay?")
+}
+text gText_HauntABuilding_DoYouHaveAScary{
+	format("You're back! Do you have a scary Pokémon?")
+}
+text gText_HauntABuilding_OhPerfect{
+	format("Oh, perfect! This will work nicely.")
+}
+text gText_HauntABuilding_NothingYet{
+	format("Nothing yet? Okay. Make sure you come back at night!")
+}
+text gText_HauntABuilding_YouCantGiveMe{
+	format("You can't give me your last Pokémon!")
+}
+text gText_HauntABuilding_OhIThinkWereReady{
+	format("Oh! I've got all six now. I think we're ready!")
+}
+text gText_HauntABuilding_OkayImHere{
+	format("Okay, I'm here, at night, like you requested... and I don't see anything looking haunted. Are you ready to sell?")
+}
+text gText_HauntABuilding_WhatWasThat{
+	format("...what was that?")
+}
+text gText_HauntABuilding_HowDidI{
+	format("How did I get over here?")
+}
+text gText_HauntABuilding_ImOuttaHere{
+	format("I'm outta here! This IS haunted!")
+}
+text gText_HauntABuilding_ItWorked{
+	format("It worked! Thank you so much! Please take this reward.")
+}
+text gText_HauntABuilding_ImGoingToCelebrate{
+	format("You know, I wouldn't mind if the house was going to be built for people that needed it... but they were just going to put a stupid luxury condo here. We don't need more of these, you know? I'm going out to celebrate, this was great! See you around.")
+}
+movement HauntABuilding_WalkToPair_Movement{
+    walk_up * 2
+    walk_right * 2
+	step_end
+}
+movement HauntABuilding_Flee_Movement{
+    walk_faster_down * 3
+	step_end
+}
+movement HauntABuilding_LeaveHouse_Movement{
+    walk_left * 3
+    walk_down * 3
+    face_up
+	step_end
+}

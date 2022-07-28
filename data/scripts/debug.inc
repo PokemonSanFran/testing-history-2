@@ -60,21 +60,20 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    questmenu QUEST_MENU_SET_ACTIVE QUEST_PLAYERSADVENTURE
+	givemon SPECIES_LITWICK, 20, ITEM_NONE
+	givemon SPECIES_SINISTEA, 20, ITEM_NONE
+	givemon SPECIES_TREVENANT, 20, ITEM_NONE
+	givemon SPECIES_CHANDELURE, 20, ITEM_NONE
     end
 
 Debug_Script_2::
-    setvar VAR_STORYLINE_STATE,29
-    warp MAP_SUNSET,10,3
+    warp MAP_PRESIDIO,2
 	end
 
 Debug_Script_3::
-    setvar VAR_STORYLINE_STATE,44
-    warp MAP_DOGPATCH,6,7
 	end
 
 Debug_Script_4::
-	givemon SPECIES_GURDURR, 20, ITEM_NONE
 	end
 
 Debug_Script_5::
