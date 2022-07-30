@@ -323,7 +323,8 @@ static const struct SubQuest
 	),
 };
 
-static const struct SubQuest sSocialMedia_Sub[QUEST_SOCIALMEDIA_SUB_COUNT] =
+/*
+ static const struct SubQuest sSocialMedia_Sub[QUEST_SOCIALMEDIA_SUB_COUNT] =
 {
 sub_quest(
 	6,
@@ -407,6 +408,7 @@ sub_quest(
 	sText_Delievered
 ),
 };
+*/
 
 static const struct SubQuest sConsolationPrize_Sub[QUEST_CONSOLATIONPRIZE_SUB_COUNT] =
 {
@@ -2475,16 +2477,86 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	      sHauntABuilding_Sub,
 	      6
 	),
-	side_quest(
-	      gText_Quest_SocialMedia_Name,
-	      gText_Quest_SocialMedia_Desc,
-	      gText_Quest_SocialMedia_DoneDesc,
-	      gText_Quest_SocialMedia_Map,
-	      ITEM_FAME_CHECKER,
-	      ITEM,
-	      sSocialMedia_Sub,
-	      9
-	),
+    side_quest(
+	gText_Quest_RabiesOutbreak_Name,
+	gText_Quest_RabiesOutbreak_Desc,
+	gText_Quest_RabiesOutbreak_DoneDesc,
+	gText_Quest_RabiesOutbreak_Map,
+	SPECIES_GLAMEOW,
+	PKMN,
+	NULL,
+	0
+),
+side_quest(
+	gText_Quest_BlueRobbery_Name,
+	gText_Quest_BlueRobbery_Desc,
+	gText_Quest_BlueRobbery_DoneDesc,
+	gText_Quest_BlueRobbery_Map,
+	SPECIES_QUAGSIRE,
+	PKMN,
+	NULL,
+	0
+),
+side_quest(
+	gText_Quest_IceCreamCrafting_Name,
+	gText_Quest_IceCreamCrafting_Desc,
+	gText_Quest_IceCreamCrafting_DoneDesc,
+	gText_Quest_IceCreamCrafting_Map,
+	ITEM_NANAB_BERRY,
+	ITEM,
+	NULL,
+	0
+),
+side_quest(
+	gText_Quest_VSDeoxys_Name,
+	gText_Quest_VSDeoxys_Desc,
+	gText_Quest_VSDeoxys_DoneDesc,
+	gText_Quest_VSDeoxys_Map,
+	SPECIES_MINIOR,
+	PKMN,
+	NULL,
+	0
+),
+side_quest(
+	gText_Quest_ChinatownTunnels_Name,
+	gText_Quest_ChinatownTunnels_Desc,
+	gText_Quest_ChinatownTunnels_DoneDesc,
+	gText_Quest_ChinatownTunnels_Map,
+	OBJ_EVENT_GFX_OLD_MAN,
+	OBJECT,
+	NULL,
+	0
+),
+side_quest(
+	gText_Quest_FreshwaterEvolution_Name,
+	gText_Quest_FreshwaterEvolution_Desc,
+	gText_Quest_FreshwaterEvolution_DoneDesc,
+	gText_Quest_FreshwaterEvolution_Map,
+	SPECIES_OCTILLERY,
+	PKMN,
+	NULL,
+	0
+),
+side_quest(
+	gText_Quest_GemArtist_Name,
+	gText_Quest_GemArtist_Desc,
+	gText_Quest_GemArtist_DoneDesc,
+	gText_Quest_GemArtist_Map,
+	ITEM_NORMAL_GEM,
+	ITEM,
+	NULL,
+	0
+),
+side_quest(
+	gText_Quest_BetweenAStoneAndAHardPlace_Name,
+	gText_Quest_BetweenAStoneAndAHardPlace_Desc,
+	gText_Quest_BetweenAStoneAndAHardPlace_DoneDesc,
+	gText_Quest_BetweenAStoneAndAHardPlace_Map,
+	ITEM_FIRE_STONE,
+	ITEM,
+	NULL,
+	0
+),
 	side_quest(
 	      gText_Quest_ConsolationPrize_Name,
 	      gText_Quest_ConsolationPrize_Desc,
@@ -4502,6 +4574,9 @@ const u8 *GetQuestDesc(s32 questId)
 		case QUEST_BRINGFRUIT:
 			return GetQuestDesc_BringFruit();
 			break;
+        case QUEST_RABIESOUTBREAK:
+            return GetQuestDesc_RabiesOutbreak();
+            break;
 		default:
 			return sSideQuests[questId].desc;
 	}

@@ -38,10 +38,45 @@ extern const u8 gText_Quest_HauntABuilding_Desc[];
 extern const u8 gText_Quest_HauntABuilding_DoneDesc[];
 extern const u8 gText_Quest_HauntABuilding_Map[];
 
-extern const u8 gText_Quest_SocialMedia_Name[];
-extern const u8 gText_Quest_SocialMedia_Desc[];
-extern const u8 gText_Quest_SocialMedia_DoneDesc[];
-extern const u8 gText_Quest_SocialMedia_Map[];
+extern const u8 gText_Quest_RabiesOutbreak_Name[];
+extern const u8 gText_Quest_RabiesOutbreak_Desc[];
+extern const u8 gText_Quest_RabiesOutbreak_DoneDesc[];
+extern const u8 gText_Quest_RabiesOutbreak_Map[];
+
+extern const u8 gText_Quest_BlueRobbery_Name[];
+extern const u8 gText_Quest_BlueRobbery_Desc[];
+extern const u8 gText_Quest_BlueRobbery_DoneDesc[];
+extern const u8 gText_Quest_BlueRobbery_Map[];
+
+extern const u8 gText_Quest_IceCreamCrafting_Name[];
+extern const u8 gText_Quest_IceCreamCrafting_Desc[];
+extern const u8 gText_Quest_IceCreamCrafting_DoneDesc[];
+extern const u8 gText_Quest_IceCreamCrafting_Map[];
+
+extern const u8 gText_Quest_VSDeoxys_Name[];
+extern const u8 gText_Quest_VSDeoxys_Desc[];
+extern const u8 gText_Quest_VSDeoxys_DoneDesc[];
+extern const u8 gText_Quest_VSDeoxys_Map[];
+
+extern const u8 gText_Quest_ChinatownTunnels_Name[];
+extern const u8 gText_Quest_ChinatownTunnels_Desc[];
+extern const u8 gText_Quest_ChinatownTunnels_DoneDesc[];
+extern const u8 gText_Quest_ChinatownTunnels_Map[];
+
+extern const u8 gText_Quest_FreshwaterEvolution_Name[];
+extern const u8 gText_Quest_FreshwaterEvolution_Desc[];
+extern const u8 gText_Quest_FreshwaterEvolution_DoneDesc[];
+extern const u8 gText_Quest_FreshwaterEvolution_Map[];
+
+extern const u8 gText_Quest_GemArtist_Name[];
+extern const u8 gText_Quest_GemArtist_Desc[];
+extern const u8 gText_Quest_GemArtist_DoneDesc[];
+extern const u8 gText_Quest_GemArtist_Map[];
+
+extern const u8 gText_Quest_BetweenAStoneAndAHardPlace_Name[];
+extern const u8 gText_Quest_BetweenAStoneAndAHardPlace_Desc[];
+extern const u8 gText_Quest_BetweenAStoneAndAHardPlace_DoneDesc[];
+extern const u8 gText_Quest_BetweenAStoneAndAHardPlace_Map[];
 
 extern const u8 gText_Quest_ConsolationPrize_Name[];
 extern const u8 gText_Quest_ConsolationPrize_Desc[];

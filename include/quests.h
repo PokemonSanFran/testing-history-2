@@ -47,7 +47,7 @@ struct SideQuest
 }; 
 
 extern const struct SubQuest gHauntABuilding_Sub[QUEST_HAUNTABUILDING_SUB_COUNT];
-extern const struct SubQuest gSocialMedia_Sub[QUEST_SOCIALMEDIA_SUB_COUNT];
+//extern const struct SubQuest gSocialMedia_Sub[QUEST_SOCIALMEDIA_SUB_COUNT];
 extern const struct SubQuest gConsolationPrize_Sub[QUEST_CONSOLATIONPRIZE_SUB_COUNT];
 extern const struct SubQuest gRightingWrongs_Sub[QUEST_RIGHTINGWRONGS_SUB_COUNT];
 extern const struct SubQuest gBreakTheInternet_Sub[QUEST_BREAKTHEINTERNET_SUB_COUNT];

@@ -192,3 +192,8 @@ const u8 *GetQuestDesc_BringFruit()
 
     return gStringVar2;
 }
+
+const u8 *GetQuestDesc_RabiesOutbreak()
+{
+    return;
+}
