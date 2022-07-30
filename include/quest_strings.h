@@ -1225,4 +1225,6 @@ extern const u8 gText_PlayersAdventure_Flavor41[];
 extern const u8 gText_PlayersAdventure_Flavor42[];
 extern const u8 gText_PlayersAdventure_Flavor43[];
 
+extern const u8 gText_RabiesOutbreak_Flavor1[];
+
 #endif // GUARD_QUEST_STRINGS_H

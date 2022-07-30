@@ -39,7 +39,7 @@ const u8 gText_Quest_HauntABuilding_DoneDesc[] =_("You scared off the developer!
 const u8 gText_Quest_HauntABuilding_Map[] =_("Presidio");
 
 const u8 gText_Quest_RabiesOutbreak_Name[] = _("Rabies Outbreak");
-const u8 gText_Quest_RabiesOutbreak_Desc[] =_("Description");
+const u8 gText_Quest_RabiesOutbreak_Desc[] =_("Feral Glameow are endangering wildlife\nin Bernal Heights.");
 const u8 gText_Quest_RabiesOutbreak_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_RabiesOutbreak_Map[] =_("Bernalheights");
 
@@ -1191,3 +1191,5 @@ const u8 gText_PlayersAdventure_Flavor40[] =_("Head into the belly of the beast.
 const u8 gText_PlayersAdventure_Flavor41[] =_("Sabrina's home in the sunset has a warp\ntile directly into the Salesforce. It's\ntime to finish this!");
 const u8 gText_PlayersAdventure_Flavor42[] =_("You became Champion, made some\nmistakes, but the region is just a\nlittle better because of your efforts.");
 const u8 gText_PlayersAdventure_Flavor43[] =_("You became Champion, stamped out\nYcombinator, and the region is a just a\nlittle better because of your efforts.");
+
+const u8 gText_RabiesOutbreak_Flavor1[] =_("Feral Glameow are endangering wildlife\nin Bernal Heights. Defeat {STR_VAR_3} of them\nand report back to he ASPCA Officer.");
