@@ -9,6 +9,7 @@ Presidio_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Presidio_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 21, TheStrikeStrikesBack_PhoneCall_Dialogue
+	map_script_2 VAR_TEMP_9, 0, Quest_HauntABuilding_EndQuestCheck_Script
 	.2byte 0
 
 

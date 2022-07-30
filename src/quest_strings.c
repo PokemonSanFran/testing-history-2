@@ -35,7 +35,7 @@ const u8 gText_Quest_StolenTrade_Map[] = _("Sunset");
 
 const u8 gText_Quest_HauntABuilding_Name[] = _("Haunt a Building");
 const u8 gText_Quest_HauntABuilding_Desc[] =_("Bring 2 Litwick, 2 Sinistea,1\nChandelure & 1 Trevenant to scare off\nthe property developer. Come at night.");
-const u8 gText_Quest_HauntABuilding_DoneDesc[] =_("You scared off the developer!\nBut... perhaps the house was haunted after all.");
+const u8 gText_Quest_HauntABuilding_DoneDesc[] =_("You scared off the developer!\nBut... perhaps the house was haunted\nafter all.");
 const u8 gText_Quest_HauntABuilding_Map[] =_("Presidio");
 
 const u8 gText_Quest_SocialMedia_Name[] = _("Social Media");

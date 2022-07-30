@@ -2,7 +2,7 @@
   "id": "MAP_PRESIDIO",
   "name": "Presidio",
   "layout": "LAYOUT_PRESIDIO",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_VERDANTURF",
   "region_map_section": "MAPSEC_PRESIDIO",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -102,15 +102,6 @@
       "var": "VAR_TEMP_1",
       "var_value": "0",
       "script": "LockedOut_PreventPlayer_Script"
-    },
-    {
-      "type": "trigger",
-      "x": 26,
-      "y": 6,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
     }
   ],
   "bg_events": [

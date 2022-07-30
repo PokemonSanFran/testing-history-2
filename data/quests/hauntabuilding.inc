@@ -1,13 +1,12 @@
 Quest_HauntABuilding_HideObject_Script::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_3
+	removeobject 3
 	removeobject 4
 	removeobject 5
 	removeobject 6
 	removeobject 7
 	removeobject 8
-	removeobject 9
-	removeobject 10
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_HAUNTABUILDING
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_HauntABuilding_HideObject_Script_1
@@ -161,8 +160,16 @@ Quest_HauntABuilding_TakePokemon_Script::
 Quest_HauntABuilding_TakePokemon_Dialogue::
 	call Quest_HauntABuilding_TakePokemon_Script
 	msgbox gText_HauntABuilding_OhPerfect, MSGBOX_NPC
-	goto Quest_HauntABuilding_AllPokemonCheck_Script
-	return
+	call Quest_HauntABuilding_AllPokemonCheck_Script
+	compare VAR_TEMP_0, 6
+	goto_if_eq Quest_HauntABuilding_TakePokemon_Dialogue_2
+Quest_HauntABuilding_TakePokemon_Dialogue_1:
+	release
+	end
+
+Quest_HauntABuilding_TakePokemon_Dialogue_2:
+	goto Quest_HauntABuilding_AllPokemon_Dialogue
+	goto Quest_HauntABuilding_TakePokemon_Dialogue_1
 
 
 Quest_HauntABuilding_AllPokemonCheck_Script::
@@ -189,12 +196,8 @@ Quest_HauntABuilding_AllPokemonCheck_Script_10:
 Quest_HauntABuilding_AllPokemonCheck_Script_13:
 	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_HAUNTABUILDING, SUB_QUEST_6
 	compare VAR_RESULT, 0
-	goto_if_ne Quest_HauntABuilding_AllPokemonCheck_Script_17
-Quest_HauntABuilding_AllPokemonCheck_Script_16:
-	compare VAR_TEMP_0, 6
-	goto_if_eq Quest_HauntABuilding_AllPokemonCheck_Script_20
-Quest_HauntABuilding_AllPokemonCheck_Script_19:
-	end
+	goto_if_ne Quest_HauntABuilding_AllPokemonCheck_Script_16
+	return
 
 Quest_HauntABuilding_AllPokemonCheck_Script_2:
 	addvar VAR_TEMP_0, 1
@@ -216,13 +219,9 @@ Quest_HauntABuilding_AllPokemonCheck_Script_14:
 	addvar VAR_TEMP_0, 1
 	goto Quest_HauntABuilding_AllPokemonCheck_Script_13
 
-Quest_HauntABuilding_AllPokemonCheck_Script_17:
+Quest_HauntABuilding_AllPokemonCheck_Script_16:
 	addvar VAR_TEMP_0, 1
-	goto Quest_HauntABuilding_AllPokemonCheck_Script_16
-
-Quest_HauntABuilding_AllPokemonCheck_Script_20:
-	goto Quest_HauntABuilding_AllPokemon_Dialogue
-	goto Quest_HauntABuilding_AllPokemonCheck_Script_19
+	return
 
 
 Quest_HauntABuilding_NoPokemon_Dialogue::
@@ -244,21 +243,22 @@ Quest_HauntABuilding_AllPokemon_Dialogue::
 Quest_HauntABuilding_ScareCutscene_Script::
 	clearflag FLAG_TEMP_1
 	playse SE_EXIT
-	addobject 3
-	applymovement 2, Common_Movement_FaceLeft
-	applymovement 3, HauntABuilding_WalkToPair_Movement
+	addobject 2
+	applymovement 1, Common_Movement_FaceLeft
+	applymovement 2, HauntABuilding_WalkToPair_Movement
 	waitmovement 0
 	msgbox gText_HauntABuilding_OkayImHere, MSGBOX_DEFAULT
 	closemessage
 	playmoncry SPECIES_GENGAR, CRY_MODE_ENCOUNTER
 	waitmoncry
+	playbgm MUS_MT_PYRE, TRUE
 	msgbox gText_HauntABuilding_WhatWasThat, MSGBOX_DEFAULT
 	closemessage
 	fadescreenspeed FADE_TO_BLACK, 0
 	call Quest_HauntABuilding_MoveDeveloper_Script
 	fadescreenspeed FADE_FROM_BLACK, 0
 	playse SE_PIN
-	applymovement 3, Common_Movement_ExclamationMark
+	applymovement 2, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox gText_HauntABuilding_HowDidI, MSGBOX_DEFAULT
 	closemessage
@@ -268,14 +268,14 @@ Quest_HauntABuilding_ScareCutscene_Script::
 	call Quest_HauntABuilding_MakeGhostsVisibleA_Script
 	fadescreenspeed FADE_FROM_BLACK, 0
 	playse SE_PIN
-	applymovement 3, Common_Movement_ExclamationMark
+	applymovement 2, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox gText_HauntABuilding_ImOuttaHere, MSGBOX_DEFAULT
 	closemessage
-	applymovement 3, HauntABuilding_Flee_Movement
+	applymovement 2, HauntABuilding_Flee_Movement
 	waitmovement 0
 	playse SE_EXIT
-	removeobject 3
+	removeobject 2
 	fadescreenspeed FADE_TO_BLACK, 0
 	call Quest_HauntABuilding_HideObject_Script
 	fadescreenspeed FADE_FROM_BLACK, 0
@@ -284,9 +284,11 @@ Quest_HauntABuilding_ScareCutscene_Script::
 
 
 Quest_HauntABuilding_MoveDeveloper_Script::
-	setobjectxy 3, 4, 4
-	applymovement 3, Common_Movement_FaceUp
-	waitmovement 3
+	setobjectxy 2, 4, 4
+	applymovement 2, Common_Movement_FaceUp
+	waitmovement 2
+	applymovement 1, Common_Movement_FaceUp
+	waitmovement 2
 	return
 
 
@@ -299,14 +301,15 @@ Quest_HauntABuilding_MakeGhostsVisibleA_Script::
 
 
 Quest_HauntABuilding_ThankPlayer_Dialogue::
+	fadedefaultbgm
 	msgbox gText_HauntABuilding_ItWorked, MSGBOX_NPC
 	call Quest_HauntABuilding_GiveReward_Dialogue
 	msgbox gText_HauntABuilding_ImGoingToCelebrate, MSGBOX_NPC
 	closemessage
-	applymovement 2, HauntABuilding_LeaveHouse_Movement
+	applymovement 1, HauntABuilding_LeaveHouse_Movement
 	waitmovement 0
 	playse SE_EXIT
-	removeobject 2
+	removeobject 1
 	release
 	end
 
@@ -314,6 +317,58 @@ Quest_HauntABuilding_ThankPlayer_Dialogue::
 Quest_HauntABuilding_GiveReward_Dialogue::
 	giveitem ITEM_TM38
 	return
+
+
+Quest_HauntABuilding_EndQuestCheck_Script::
+	addvar VAR_TEMP_9, 1
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_HAUNTABUILDING
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest_HauntABuilding_EndQuestCheck_Script_2
+	call Quest_HauntABuilding_AllPokemonCheck_Script
+	getplayerxy VAR_TEMP_1, VAR_TEMP_2
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_HAUNTABUILDING
+	compare VAR_TEMP_0, 6
+	goto_if_eq Quest_HauntABuilding_EndQuestCheck_Script_6
+Quest_HauntABuilding_EndQuestCheck_Script_4:
+	release
+	end
+
+Quest_HauntABuilding_EndQuestCheck_Script_2:
+	release
+	end
+
+Quest_HauntABuilding_EndQuestCheck_Script_5:
+	goto Quest_HauntABuilding_EndQuest_Dialogue
+	goto Quest_HauntABuilding_EndQuestCheck_Script_4
+
+Quest_HauntABuilding_EndQuestCheck_Script_6:
+	compare VAR_TEMP_1, 26
+	goto_if_eq Quest_HauntABuilding_EndQuestCheck_Script_8
+	goto Quest_HauntABuilding_EndQuestCheck_Script_4
+
+Quest_HauntABuilding_EndQuestCheck_Script_8:
+	compare VAR_TEMP_2, 6
+	goto_if_eq Quest_HauntABuilding_EndQuestCheck_Script_5
+	goto Quest_HauntABuilding_EndQuestCheck_Script_4
+
+
+Quest_HauntABuilding_EndQuest_Dialogue::
+	playse SE_PIN
+	applymovement 3, Common_Movement_ExclamationMark
+	waitmovement 3
+	applymovement 3, HauntABuilding_ApproachPlayer_Movement
+	waitmovement 3
+	lock
+	msgbox gText_HauntABuilding_WhatWereYouDoing, MSGBOX_DEFAULT
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_HauntABuilding_WhatDoYouMean, MSGBOX_DEFAULT
+	callnative ClearMugshot
+	msgbox gText_HauntABuilding_AFriend, MSGBOX_DEFAULT
+	closemessage
+	completequest QUEST_HAUNTABUILDING
+	release
+	end
 
 
 HauntABuilding_WalkToPair_Movement:
@@ -336,6 +391,13 @@ HauntABuilding_LeaveHouse_Movement:
 	walk_down
 	walk_down
 	walk_down
+	face_up
+	delay_16
+	step_end
+
+HauntABuilding_ApproachPlayer_Movement:
+	walk_right
+	walk_right
 	face_up
 	step_end
 
@@ -365,7 +427,7 @@ gText_HauntABuilding_IWouldDoIt::
 
 gText_HauntABuilding_BringSomeScary::
 	.string "Can you help me? Bring me some scary\n"
-	.string "Pokémon. I think two Litwick, 2\l"
+	.string "Pokémon. I think two Litwick, two\l"
 	.string "Sinistea, a Chandelure, and a Trevanant\l"
 	.string "should do the trick. Come back at\l"
 	.string "night, okay?$"
@@ -414,3 +476,18 @@ gText_HauntABuilding_ImGoingToCelebrate::
 	.string "don't need more of these, you know? I'm\l"
 	.string "going out to celebrate, this was great!\l"
 	.string "See you around.$"
+
+gText_HauntABuilding_WhatWereYouDoing::
+	.string "I've seen you coming and going a few\n"
+	.string "times and I'm just curious - why do ya\l"
+	.string "keep going into the abandoned house?$"
+
+gText_HauntABuilding_WhatDoYouMean::
+	.string "What do you mean abandoned? I'm\n"
+	.string "helping a friend!$"
+
+gText_HauntABuilding_AFriend::
+	.string "A friend? Nobody lived there for 50\n"
+	.string "years since that Hunter kid died in\l"
+	.string "there. Must be some crazy social media\l"
+	.string "thing...$"
