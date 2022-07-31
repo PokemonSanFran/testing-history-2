@@ -303,7 +303,7 @@ Quest_HauntABuilding_MakeGhostsVisibleA_Script::
 Quest_HauntABuilding_ThankPlayer_Dialogue::
 	fadedefaultbgm
 	msgbox gText_HauntABuilding_ItWorked, MSGBOX_NPC
-	call Quest_HauntABuilding_GiveReward_Dialogue
+	call Quest_HauntABuilding_GiveReward_Script
 	msgbox gText_HauntABuilding_ImGoingToCelebrate, MSGBOX_NPC
 	closemessage
 	applymovement 1, HauntABuilding_LeaveHouse_Movement
@@ -314,7 +314,7 @@ Quest_HauntABuilding_ThankPlayer_Dialogue::
 	end
 
 
-Quest_HauntABuilding_GiveReward_Dialogue::
+Quest_HauntABuilding_GiveReward_Script::
 	giveitem ITEM_TM38
 	return
 

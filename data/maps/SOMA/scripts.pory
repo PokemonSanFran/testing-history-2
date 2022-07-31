@@ -3,6 +3,7 @@ const ROSE = 1
 const VICTIM = 2
 const MUGGERA = 3
 const MUGGERB = 4
+const ISMAIL = 5
 
 mapscripts SOMA_MapScripts {
     MAP_SCRIPT_ON_RESUME {
@@ -20,6 +21,7 @@ mapscripts SOMA_MapScripts {
 
 script SOMA_MapScripts_OnTransition {
         call(Quest_StopMugging_HideObject_Script)
+        call(RabiesOutbreak_HideReporter_Script)
 
         if(!flag(FLAG_BADGE03_GET) || (var(VAR_SOMA_STATE) > 1)) {
             setflag(FLAG_TEMP_1) 

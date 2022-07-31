@@ -1286,6 +1286,7 @@ Script_RemoveTint::
 .include "data/quests/stopmugging.inc"
 .include "data/quests/stolentrade.inc"
 .include "data/quests/hauntabuilding.inc"
+.include "data/quests/rabiesoutbreak.inc"
 /*
 .include "data/quests/socialmedia.inc"
 .include "data/quests/consolationprize.inc"

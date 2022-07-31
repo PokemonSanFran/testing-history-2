@@ -34,6 +34,7 @@
 #include "event_object_movement.h"
 #include "pokemon_icon.h"
 #include "quest_strings.h"
+#include "battle_main.h"
 
 #include "random.h"
 
@@ -195,16 +196,10 @@ const u8 *GetQuestDesc_BringFruit()
 
 const u8 *GetQuestDesc_RabiesOutbreak()
 {
-    ConvertIntToDecimalStringN(gStringVar3, 10,STR_CONV_MODE_LEFT_ALIGN,6);
+    u8 defeatedGlameowCount = VarGet(VAR_DEFEATED_GLAMEOW_COUNT);
+
+    ConvertIntToDecimalStringN(gStringVar3, 10 - defeatedGlameowCount,STR_CONV_MODE_LEFT_ALIGN,6);
+    //ConvertIntToDecimalStringN(gStringVar3, 10 - CountDefeatedGlameow() ,STR_CONV_MODE_LEFT_ALIGN,6);
     StringExpandPlaceholders(gStringVar2,gText_RabiesOutbreak_Flavor1);
     return gStringVar2;
-/*
-defeat Glameow in bernal heights
-increase glameow count by one
-if quest is active and if glameow count is 0, set state to Reward
-
-in rabies outbreak flavor
-	run glameow count script
-	output that number to gstringvar3 
- */
 }

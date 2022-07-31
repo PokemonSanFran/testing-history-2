@@ -267,7 +267,7 @@ script Quest_HauntABuilding_ThankPlayer_Dialogue
 {
     fadedefaultbgm
     msgbox(gText_HauntABuilding_ItWorked, MSGBOX_NPC)
-        call(Quest_HauntABuilding_GiveReward_Dialogue)
+        call(Quest_HauntABuilding_GiveReward_Script)
         msgbox(gText_HauntABuilding_ImGoingToCelebrate, MSGBOX_NPC)
         closemessage
         applymovement(HUNTER, HauntABuilding_LeaveHouse_Movement)
@@ -278,7 +278,7 @@ script Quest_HauntABuilding_ThankPlayer_Dialogue
         end
 }
 
-script Quest_HauntABuilding_GiveReward_Dialogue
+script Quest_HauntABuilding_GiveReward_Script
 {
     giveitem(ITEM_TM38)
 }

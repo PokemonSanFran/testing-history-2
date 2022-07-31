@@ -69,6 +69,7 @@
 #include "printf.h"
 #include "mgba.h"
 #include "../gflib/string_util.h" //for ConvertToAscii()
+#include "quests.h"
 
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
 
@@ -5016,6 +5017,7 @@ static void HandleEndTurn_BattleWon(void)
     }
     else
     {
+        CountDefeatedGlameow();
         gBattlescriptCurrInstr = BattleScript_PayDayMoneyAndPickUpItems;
     }
 
@@ -5067,6 +5069,30 @@ static void CheckWhiteoutOnFogRoute(void) { //Used for PSF Flying Blind
             VarSet(VAR_FAINTED_FOG_STATE,1);
             }
         }
+}
+
+void CountDefeatedGlameow(void){
+    /*
+    Iterate every spot in the enemy's party
+    If one is Glameow AND you're in Bernal Heights AND its not a Trainer battle, then increment the defeated Glameow count by one
+   If the Glameow count is > 9, AND the Rabies Outbreak quest is active  change the Rabies Outbreak quest to Reward state
+*/
+    u8 defeatedGlameowCount = VarGet(VAR_DEFEATED_GLAMEOW_COUNT), i = 0;
+
+    for (i = 0;i < 6;i++)
+    {
+        s32 enemySpecies = GetMonData(&gEnemyParty[i],MON_DATA_SPECIES);
+
+        if (GetCurrentMap() == MAP_NUM(BERNALHEIGHTS) && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) && (enemySpecies == SPECIES_GLAMEOW)){
+            defeatedGlameowCount++;
+        }
+    }
+
+    if ((defeatedGlameowCount > 9) && QuestMenu_GetSetQuestState(QUEST_RABIESOUTBREAK,FLAG_GET_ACTIVE)){
+        QuestMenu_GetSetQuestState(QUEST_RABIESOUTBREAK,FLAG_SET_REWARD);
+    }
+
+    VarSet(VAR_DEFEATED_GLAMEOW_COUNT,defeatedGlameowCount);
 }
 
 static void HandleEndTurn_RanFromBattle(void)

@@ -65,6 +65,7 @@
 #define VAR_WONDER_NEWS_COUNTER              0x402E
 
 #define VAR_FRONTIER_MANIAC_FACILITY         0x402F
+#define VAR_DEFEATED_GLAMEOW_COUNT           0x402F
 #define VAR_FRONTIER_GAMBLER_CHALLENGE       0x4030
 #define VAR_FRONTIER_GAMBLER_SET_CHALLENGE   0x4031
 #define VAR_FRONTIER_GAMBLER_AMOUNT_BET      0x4032
@@ -308,6 +309,7 @@
 // special vars
 // They are commonly used as parameters to commands, or return values from commands.
 #define VAR_0x8000                    0x8000
+#define VAR_MUGSHOT                   0x8000
 #define VAR_0x8001                    0x8001
 #define VAR_0x8002                    0x8002
 #define VAR_0x8003                    0x8003

@@ -19,6 +19,7 @@ SOMA_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 SOMA_MapScripts_OnTransition::
 	call Quest_StopMugging_HideObject_Script
+	call RabiesOutbreak_HideReporter_Script
 	goto_if_unset FLAG_BADGE03_GET, SOMA_MapScripts_OnTransition_1
 	compare VAR_SOMA_STATE, 1
 	goto_if_gt SOMA_MapScripts_OnTransition_1

@@ -60,11 +60,13 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    questmenu QUEST_MENU_SET_ACTIVE,QUEST_RABIESOUTBREAK
+    //questmenu QUEST_MENU_SET_ACTIVE,QUEST_RABIESOUTBREAK
+    questmenu QUEST_MENU_COMPLETE_QUEST,QUEST_RABIESOUTBREAK
     openquestmenu
     end
 
 Debug_Script_2::
+    warp MAP_SOMA, 6, 58
 	end
 
 Debug_Script_3::
