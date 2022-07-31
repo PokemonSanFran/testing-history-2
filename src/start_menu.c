@@ -74,6 +74,7 @@ enum
     MENU_ACTION_PYRAMID_BAG,
     MENU_ACTION_DEBUG,
     MENU_ACTION_QUEST_MENU,
+    MENU_ACTION_TWITTER,
 };
 
 // Save status
@@ -116,6 +117,7 @@ static bool8 StartMenuBattlePyramidRetireCallback(void);
 static bool8 StartMenuBattlePyramidBagCallback(void);
 static bool8 StartMenuDebugCallback(void);
 static bool8 QuestMenuCallback(void);
+static bool8 TwitterCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -169,6 +171,8 @@ static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC
 
 static const u8 gText_MenuDebug[] = _("DEBUG");
 static const u8 sText_QuestMenu[] = _("QUESTS");
+static const u8 gText_MenuTwitter[] = _("TWITTER");
+
 static const struct MenuAction sStartMenuItems[] =
 {
     {gText_MenuPokedex, {.u8_void = StartMenuPokedexCallback}},
@@ -186,6 +190,7 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}},
     {gText_MenuDebug, {.u8_void = StartMenuDebugCallback}},
     {sText_QuestMenu, {.u8_void = QuestMenuCallback}},
+    {gText_MenuTwitter, {.u8_void = TwitterCallback}},
 };
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
@@ -337,8 +342,10 @@ static void BuildNormalStartMenu(void)
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
 
-    if (FlagGet(FLAG_SYS_QUEST_MENU_GET))
+    if (FlagGet(FLAG_SYS_QUEST_MENU_GET)){
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
+        AddStartMenuAction(MENU_ACTION_TWITTER);
+    }
 
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
@@ -1502,5 +1509,14 @@ static bool8 DebugMenuCallback(void)
 static bool8 QuestMenuCallback(void)
 {
     CreateTask(Task_QuestMenu_OpenFromStartMenu, 0);
+    return TRUE;
+}
+
+static bool8 TwitterCallback(void)
+{
+    RemoveExtraStartMenuWindows();
+    HideStartMenu();
+    PlaySE(SE_WIN_OPEN);
+    Debug_ShowMainMenu();
     return TRUE;
 }
