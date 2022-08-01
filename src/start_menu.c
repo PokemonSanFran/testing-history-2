@@ -42,6 +42,7 @@
 #include "text.h"
 #include "text_window.h"
 #include "trainer_card.h"
+#include "twitter.h"
 #include "window.h"
 #include "quests.h"
 #include "constants/songs.h"
@@ -659,7 +660,8 @@ static bool8 HandleStartMenuInput(void)
             && gMenuCallback != StartMenuExitCallback
             && gMenuCallback != StartMenuDebugCallback
             && gMenuCallback != StartMenuSafariZoneRetireCallback
-            && gMenuCallback != StartMenuBattlePyramidRetireCallback)
+            && gMenuCallback != StartMenuBattlePyramidRetireCallback
+            && gMenuCallback != TwitterCallback)
         {
            FadeScreen(FADE_TO_BLACK, 0);
         }
@@ -1517,6 +1519,6 @@ static bool8 TwitterCallback(void)
     RemoveExtraStartMenuWindows();
     HideStartMenu();
     PlaySE(SE_WIN_OPEN);
-    Debug_ShowMainMenu();
+    Twitter_ShowMainMenu();
     return TRUE;
 }

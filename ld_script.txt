@@ -343,6 +343,7 @@ SECTIONS {
         src/quests.o(.text);
         src/quest_flavor_lookup.o(.text);
         src/quest_strings.o(.text);
+        src/twitter.o(.text);
 
     } =0
 
@@ -715,6 +716,7 @@ SECTIONS {
         src/quests.o(.rodata);
         src/quest_flavor_lookup.o(.rodata);
         src/quest_strings.o(.rodata);
+        src/twitter.o(.rodata);
     } =0
 
     song_data :
