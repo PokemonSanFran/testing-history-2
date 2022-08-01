@@ -1517,8 +1517,10 @@ static bool8 QuestMenuCallback(void)
 static bool8 TwitterCallback(void)
 {
     RemoveExtraStartMenuWindows();
-    HideStartMenu();
+    HideStartMenuDebug(); // Hide start menu without enabling movement
+
     PlaySE(SE_WIN_OPEN);
     Twitter_ShowMainMenu();
+
     return TRUE;
 }

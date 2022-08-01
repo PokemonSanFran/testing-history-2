@@ -1,0 +1,30 @@
+script TwitterPost_RabiesOutbreak_Script {
+    msgbox(gText_Twitter_RabiesOutBreak_Dialogue,MSGBOX_DEFAULT)
+    startquest(QUEST_RABIESOUTBREAK)
+    end
+}
+script TwitterPost_BlueRobbery_Script {
+	
+}
+script TwitterPost_IceCreamCrafting_Script {
+	
+}
+script TwitterPost_VSDeoxys_Script {
+	
+}
+script TwitterPost_ChinatownTunnels_Script {
+	
+}
+script TwitterPost_FreshwaterEvolution_Script {
+	
+}
+script TwitterPost_GemArtist_Script {
+	
+}
+script TwitterPost_BetweenAStoneAndAHardPlace_Script {
+	
+}
+
+text gText_Twitter_RabiesOutBreak_Dialogue{
+    format("My cousin told me there's a mass rabies outbreak in Bernalheights! Feral Glameow are attacking pets and people, accelerating the spread of the disease. He heard the ASPCA is gonna hook people up who can subdue or capture Glameow to reduce their impact on the local community. I'll be doing my part! hashtagDefeat10Glameow")
+}

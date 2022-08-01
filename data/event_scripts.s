@@ -1126,6 +1126,7 @@ Script_RemoveTint::
 .include "data/maps/Fortpoint/scripts.inc"
 .include "data/maps/Fortpoint_Roof/scripts.inc"
 
+.include "data/scripts/twitter.inc"
 ##CUTSCENES
 ##  .include "data/cutscenes/WiiWouldLikeToPlay.inc"
 ##  .include "data/cutscenes/WelcometotheWorldofPokemon.inc"
