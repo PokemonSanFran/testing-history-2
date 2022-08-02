@@ -1,30 +1,132 @@
 script TwitterPost_RabiesOutbreak_Script {
-    msgbox(gText_Twitter_RabiesOutBreak_Dialogue,MSGBOX_DEFAULT)
-    startquest(QUEST_RABIESOUTBREAK)
+    lock
+    msgbox(gText_Twitter_RabiesOutBreak_Message, MSGBOX_DEFAULT)
+
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_RABIESOUTBREAK) 
+    if (var (VAR_RESULT)) {
+        startquest(QUEST_RABIESOUTBREAK)
+    } closemessage
+    end
+}
+
+script Twitter_HideReporter_Script {
+    questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RABIESOUTBREAK) 
+        if (!var (VAR_RESULT) || (flag(FLAG_MET_SOCIALMEDIA_REPORTER))) {
+            setflag(FLAG_TEMP_4)
+        }
+}
+
+script TwitterPost_CheckProgress_Script {
+    lock
+    if (flag(FLAG_MET_SOCIALMEDIA_REPORTER)) {
+        return
+    } else {
+        msgbox(gText_Twitter_ThereWasAnError, MSGBOX_DEFAULT)
+    }
+    closemessage
     end
 }
 script TwitterPost_BlueRobbery_Script {
-	
-}
-script TwitterPost_IceCreamCrafting_Script {
-	
-}
-script TwitterPost_VSDeoxys_Script {
-	
-}
-script TwitterPost_ChinatownTunnels_Script {
-	
-}
-script TwitterPost_FreshwaterEvolution_Script {
-	
-}
-script TwitterPost_GemArtist_Script {
-	
-}
-script TwitterPost_BetweenAStoneAndAHardPlace_Script {
-	
+    call(TwitterPost_CheckProgress_Script)
+    showmonpic(SPECIES_QUAGSIRE, 10, 3)
+    msgbox(gText_Twitter_BlueRobbery_Message, MSGBOX_DEFAULT)
+    hidemonpic
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_BLUEROBBERRY) 
+    if (var (VAR_RESULT)) {
+        startquest(QUEST_BLUEROBBERRY)
+    }
+    closemessage
+    end
 }
 
-text gText_Twitter_RabiesOutBreak_Dialogue{
+script TwitterPost_IceCreamCrafting_Script {
+    call(TwitterPost_CheckProgress_Script)
+    msgbox(gText_Twitter_IceCreamCrafting_Message, MSGBOX_DEFAULT)
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_ICECREAMCRAFTING)
+    if (var (VAR_RESULT)) {
+        startquest(QUEST_ICECREAMCRAFTING)
+    }
+    closemessage
+    end
+}
+script TwitterPost_VSDeoxys_Script {
+    call(TwitterPost_CheckProgress_Script)
+    msgbox(gText_Twitter_VSDeoxys_Message, MSGBOX_DEFAULT)
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_VSDEOXYS)
+    if (var (VAR_RESULT)) {
+        startquest(QUEST_VSDEOXYS)
+    }
+    closemessage
+    end
+}
+script TwitterPost_ChinatownTunnels_Script {
+    call(TwitterPost_CheckProgress_Script)
+    msgbox(gText_Twitter_ChinatownTunnels_Message, MSGBOX_DEFAULT)
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_CHINATOWNTUNNELS)
+    if (var (VAR_RESULT)) {
+        startquest(QUEST_CHINATOWNTUNNELS)
+    }
+    closemessage
+    end
+}
+script TwitterPost_FreshwaterEvolution_Script {
+    call(TwitterPost_CheckProgress_Script)
+    msgbox(gText_Twitter_FreshwaterEvolution_Message, MSGBOX_DEFAULT)
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_FRESHWATEREVOLUTION)
+    if (var (VAR_RESULT)) {
+        startquest(QUEST_FRESHWATEREVOLUTION)
+    }
+    closemessage
+    end
+}
+script TwitterPost_GemArtist_Script {
+    call(TwitterPost_CheckProgress_Script)
+    msgbox(gText_Twitter_GemArtist_Message, MSGBOX_DEFAULT)
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_GEMARTIST)
+    if (var (VAR_RESULT)) {
+        startquest(QUEST_GEMARTIST)
+    }
+    closemessage
+    end
+}
+script TwitterPost_BetweenAStoneAndAHardPlace_Script {
+    call(TwitterPost_CheckProgress_Script)
+    msgbox(gText_Twitter_BetweenAStoneAndAHardPlace_Message, MSGBOX_DEFAULT)
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_BETWEENASTONEANDAHARD)
+    if (var (VAR_RESULT)) {
+        startquest(QUEST_BETWEENASTONEANDAHARD)
+    }
+    closemessage
+    end
+}
+
+text gText_Twitter_ThereWasAnError {
+    format("There was an error displying this content. Please try again later.")
+}
+
+text gText_Twitter_RabiesOutBreak_Message {
     format("My cousin told me there's a mass rabies outbreak in Bernalheights! Feral Glameow are attacking pets and people, accelerating the spread of the disease. He heard the ASPCA is gonna hook people up who can subdue or capture Glameow to reduce their impact on the local community. I'll be doing my part! hashtagDefeat10Glameow")
+}
+
+text gText_Twitter_BlueRobbery_Message {
+    format("Last night our store's window was smashed and our stuff was stolen... I caught this brunette and her Wobbuffet in 4K stealing from us. I've seen her in Castro, and I need Twitter to hashtagdoitsthing and help me get justice for small business!")
+}
+
+text gText_Twitter_IceCreamCrafting_Message {
+    format("")
+}
+text gText_Twitter_VSDeoxys_Message {
+    format("")
+}
+text gText_Twitter_ChinatownTunnels_Message {
+    format("")
+}
+text gText_Twitter_FreshwaterEvolution_Message {
+    format("")
+}
+text gText_Twitter_GemArtist_Message {
+    format("")
+}
+text gText_Twitter_BetweenAStoneAndAHardPlace_Message {
+    format("")
 }

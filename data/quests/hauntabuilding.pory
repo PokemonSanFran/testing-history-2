@@ -3,6 +3,8 @@ const CAMERA = OBJ_EVENT_ID_CAMERA
 const HUNTER = 1
 const DEVELOPER = 2
 
+//PSF TODO make check for only at night
+
 script Quest_HauntABuilding_HideObject_Script
 {
     setflag(FLAG_TEMP_1)

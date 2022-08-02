@@ -60,13 +60,12 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    //questmenu QUEST_MENU_SET_ACTIVE,QUEST_RABIESOUTBREAK
-    questmenu QUEST_MENU_COMPLETE_QUEST,QUEST_RABIESOUTBREAK
-    openquestmenu
+    warp MAP_CASTRO,14, 24
     end
 
 Debug_Script_2::
-    warp MAP_SOMA, 6, 58
+    completequest QUEST_BLUEROBBERRY
+    warp MAP_JAPANTOWN_RAMEN,4,2
 	end
 
 Debug_Script_3::

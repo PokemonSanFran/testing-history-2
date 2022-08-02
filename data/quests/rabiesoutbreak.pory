@@ -2,16 +2,6 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
 
 //PSF TODO Create script so that Glameow captured here have a much higher chance of PokéRus
-//PSF TODO Only show Unlocked quests in quest menu
-//PSF TODO Only unlock social media quests after talking to the reporter
-
-script RabiesOutbreak_HideReporter_Script {
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RABIESOUTBREAK)
-    if (!var(VAR_RESULT))
-    {
-        setflag(FLAG_TEMP_4)
-    }
-}
 
 script RabiesOutbreak_Officer_Event_Script{
     questmenu(QUEST_MENU_CHECK_REWARD,QUEST_RABIESOUTBREAK)

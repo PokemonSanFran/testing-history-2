@@ -21,11 +21,39 @@ mapscripts SOMA_MapScripts {
 
 script SOMA_MapScripts_OnTransition {
         call(Quest_StopMugging_HideObject_Script)
-        call(RabiesOutbreak_HideReporter_Script)
-
-        if(!flag(FLAG_BADGE03_GET) || (var(VAR_SOMA_STATE) > 1)) {
-            setflag(FLAG_TEMP_1) 
-        }
+        call(Twitter_HideReporter_Script)
+        call(WowYoureStrong_HideObject_Script)
 }
 
+script SOMA_SocialMediaReporter_Dialogue{
+    setflag(FLAG_MET_SOCIALMEDIA_REPORTER)
+    msgbox(gText_SOMA_SocialMediaIs,MSGBOX_NPC)
 
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_SOMA_TotallyIHunted,MSGBOX_DEFAULT)
+    callnative(ClearMugshot)
+
+    msgbox(gText_SOMA_OhRight,MSGBOX_DEFAULT)
+    closemessage
+    applymovement(ISMAIL,SOMA_WalkInside)
+    playse(SE_EXIT)
+    waitmovement(ISMAIL)
+    removeobject(ISMAIL)
+}
+
+text gText_SOMA_SocialMediaIs{
+    format("Social media is getting out of control! I spend more of my day trying to verify wild claims than actually reporting on real news.")
+}
+text gText_SOMA_TotallyIHunted{
+    format("Totally! I hunted a bunch of Glameow in Bernalheights only for the whole story to be totally bogus.")
+}
+text gText_SOMA_OhRight{
+    format("Oh right, the rabies outbreak! So ridiculous. I want to try to investigate where all these claims are coming from, because I think its only going to get worse. You're a Trainer, right? Let's exchange contact info. Keep your eyes peeled on social media for any more bogus stories, and I'll hit you up once I find a good lead.")
+}
+
+movement SOMA_WalkInside{
+    walk_left
+    walk_up
+    step_end
+}

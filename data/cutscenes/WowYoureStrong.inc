@@ -1,3 +1,14 @@
+WowYoureStrong_HideObject_Script::
+	goto_if_unset FLAG_BADGE03_GET, WowYoureStrong_HideObject_Script_1
+	compare VAR_SOMA_STATE, 1
+	goto_if_gt WowYoureStrong_HideObject_Script_1
+	return
+
+WowYoureStrong_HideObject_Script_1:
+	setflag FLAG_TEMP_1
+	return
+
+
 WowYoureStrong_WalkToPlayer_Script::
 	lockall
 	setvar VAR_SOMA_STATE, 2

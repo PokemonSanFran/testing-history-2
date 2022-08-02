@@ -1,5 +1,3 @@
-const BIANCA = 1
-
 mapscripts Castro_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Castro_MapScripts_OnTransition)
@@ -11,5 +9,6 @@ mapscripts Castro_MapScripts {
 }
 
 script Castro_MapScripts_OnTransition {
-    end
+    call(Quest_BlueRobbery_HideObject_Script)
 }
+

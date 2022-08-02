@@ -1,14 +1,3 @@
-RabiesOutbreak_HideReporter_Script::
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RABIESOUTBREAK
-	compare VAR_RESULT, 0
-	goto_if_eq RabiesOutbreak_HideReporter_Script_1
-	return
-
-RabiesOutbreak_HideReporter_Script_1:
-	setflag FLAG_TEMP_4
-	return
-
-
 RabiesOutbreak_Officer_Event_Script::
 	questmenu QUEST_MENU_CHECK_REWARD, QUEST_RABIESOUTBREAK
 	compare VAR_RESULT, 0

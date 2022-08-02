@@ -66,6 +66,8 @@ static const struct ListMenuItem sTwitterMenuItems[] =
     [TWITTER_MENU_ITEM_CANCEL] = {gTwitterText_Cancel, TWITTER_MENU_ITEM_CANCEL}
 };
 
+//PSF TODO If the player has not spoken to the reporter yet, the quests beyond BlueRobbery should not be available.
+
 static const struct ListMenuItem sTwitterMenuQuests[] =
 {
     [TWITTER_RABIESOUTBREAK] = {gText_Quest_RabiesOutbreak_Name,  TWITTER_RABIESOUTBREAK},

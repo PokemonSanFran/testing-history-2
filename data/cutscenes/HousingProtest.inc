@@ -225,7 +225,7 @@ HousingProtest_PostBattle_Dialogue::
 	setobjectnewmovementtype 4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectnewmovementtype 6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	playse SE_BALL_OPEN
-	waitfanfare
+	waitse
 	removeobject 13
 	addvar VAR_ROUTE101_STATE, 1
 	msgbox gText_HousingProtest_YouProudNow

@@ -13,5 +13,6 @@ Castro_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Castro_MapScripts_OnTransition::
-	end
+	call Quest_BlueRobbery_HideObject_Script
+	return
 
