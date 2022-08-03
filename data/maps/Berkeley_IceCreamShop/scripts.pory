@@ -1,0 +1,9 @@
+//PSF TODO Give player ability to buy more Sherbet Surprise
+mapscripts Berkeley_IceCreamShop_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_IceCreamCrafting_HidePatron_Script)
+    }
+}
+script Berkeley_IceCreamShop_Cashier_Event_Script{
+    return
+}

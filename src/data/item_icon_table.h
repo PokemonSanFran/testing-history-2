@@ -806,6 +806,7 @@ const u32 *const gItemIconTable[][2] =
     //New PSF Items
     [ITEM_FASHION_CASE] = {gItemIcon_FashionCase, gItemIconPalette_FashionCase},
     [ITEM_LOST_DOLL] = {gItemIcon_OaksParcel, gItemIconPalette_OaksParcel},
+    [ITEM_SHERBET_SURPRISE] = {gItemIcon_Casteliacone, gItemIconPalette_Casteliacone},
     // Return to field arrow
     [ITEM_FIELD_ARROW] = {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},
 };

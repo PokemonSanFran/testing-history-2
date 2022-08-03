@@ -323,93 +323,6 @@ static const struct SubQuest
 	),
 };
 
-/*
- static const struct SubQuest sSocialMedia_Sub[QUEST_SOCIALMEDIA_SUB_COUNT] =
-{
-sub_quest(
-	6,
-	gText_Quest_SocialMedia_Sub1_Name,
-	gText_Quest_SocialMedia_Sub1_Desc,
-	gText_Quest_SocialMedia_Sub1_Map,
-	SPECIES_GLAMEOW,
-	PKMN,
-	sText_Defeated
-),
-sub_quest(
-	7,
-	gText_Quest_SocialMedia_Sub2_Name,
-	gText_Quest_SocialMedia_Sub2_Desc,
-	gText_Quest_SocialMedia_Sub2_Map,
-	OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
-	OBJECT,
-	sText_Met
-),
-sub_quest(
-	8,
-	gText_Quest_SocialMedia_Sub3_Name,
-	gText_Quest_SocialMedia_Sub3_Desc,
-	gText_Quest_SocialMedia_Sub3_Map,
-	SPECIES_QUAGSIRE,
-	PKMN,
-	sText_Arrested
-),
-sub_quest(
-	9,
-	gText_Quest_SocialMedia_Sub4_Name,
-	gText_Quest_SocialMedia_Sub4_Desc,
-	gText_Quest_SocialMedia_Sub4_Map,
-	ITEM_NANAB_BERRY,
-	ITEM,
-	sText_Debunked
-),
-sub_quest(
-	10,
-	gText_Quest_SocialMedia_Sub5_Name,
-	gText_Quest_SocialMedia_Sub5_Desc,
-	gText_Quest_SocialMedia_Sub5_Map,
-	SPECIES_MINIOR,
-	PKMN,
-	sText_Debunked
-),
-sub_quest(
-	11,
-	gText_Quest_SocialMedia_Sub6_Name,
-	gText_Quest_SocialMedia_Sub6_Desc,
-	gText_Quest_SocialMedia_Sub6_Map,
-	OBJ_EVENT_GFX_OLD_MAN,
-	OBJECT,
-	sText_Debunked
-),
-sub_quest(
-	12,
-	gText_Quest_SocialMedia_Sub7_Name,
-	gText_Quest_SocialMedia_Sub7_Desc,
-	gText_Quest_SocialMedia_Sub7_Map,
-	SPECIES_OCTILLERY,
-	PKMN,
-	sText_Discovered
-),
-sub_quest(
-	13,
-	gText_Quest_SocialMedia_Sub8_Name,
-	gText_Quest_SocialMedia_Sub8_Desc,
-	gText_Quest_SocialMedia_Sub8_Map,
-	ITEM_NORMAL_GEM,
-	ITEM,
-	sText_Discovered
-),
-sub_quest(
-	14,
-	gText_Quest_SocialMedia_Sub9_Name,
-	gText_Quest_SocialMedia_Sub9_Desc,
-	gText_Quest_SocialMedia_Sub9_Map,
-	ITEM_FIRE_STONE,
-	ITEM,
-	sText_Delievered
-),
-};
-*/
-
 static const struct SubQuest sConsolationPrize_Sub[QUEST_CONSOLATIONPRIZE_SUB_COUNT] =
 {
 sub_quest(
@@ -2492,7 +2405,7 @@ side_quest(
 	gText_Quest_BlueRobbery_Desc,
 	gText_Quest_BlueRobbery_DoneDesc,
 	gText_Quest_BlueRobbery_Map,
-	SPECIES_QUAGSIRE,
+	SPECIES_WOBBUFFET,
 	PKMN,
 	NULL,
 	0

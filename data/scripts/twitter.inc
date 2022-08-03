@@ -168,7 +168,13 @@ gText_Twitter_BlueRobbery_Message::
 	.string "justice for small business!$"
 
 gText_Twitter_IceCreamCrafting_Message::
-	.string "$"
+	.string "Calling all Trainers! We're a new ice\n"
+	.string "cream shop in Berkeley, and we've got\l"
+	.string "the perfect smoothie to clean out your\l"
+	.string "Pokémon and make them easier to train.\l"
+	.string "Bring 3 Pecha Berry, 2 Nanab Berry, and\l"
+	.string "a Rabuta Berry, and we'll make the first\l"
+	.string "one for free! hashtagdetox$"
 
 gText_Twitter_VSDeoxys_Message::
 	.string "$"

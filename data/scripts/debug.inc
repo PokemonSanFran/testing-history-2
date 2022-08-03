@@ -60,12 +60,14 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    warp MAP_CASTRO,14, 24
+    questmenu QUEST_MENU_SET_ACTIVE QUEST_ICECREAMCRAFTING
+    warp MAP_BERKELEY_ICE_CREAM_SHOP, 4,4
     end
 
 Debug_Script_2::
-    completequest QUEST_BLUEROBBERRY
-    warp MAP_JAPANTOWN_RAMEN,4,2
+    additem ITEM_PECHA_BERRY,3
+    additem ITEM_NANAB_BERRY,2
+    additem ITEM_RABUTA_BERRY,1
 	end
 
 Debug_Script_3::

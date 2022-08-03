@@ -469,6 +469,12 @@ const u8 gItemEffect_TamatoBerry[10] = {
     EV_BERRY_FRIENDSHIP_CHANGE,
 };
 
+const u8 gItemEffect_SherbetSurprise[10] = {
+    [5] = ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_RESET_EV | ITEM6_EV_ALL,
+    EV_BERRY_FRIENDSHIP_CHANGE,
+};
+
 const u8 *const gItemEffectTable[] =
 {
     // Medicine
@@ -592,5 +598,6 @@ const u8 *const gItemEffectTable[] =
     [ITEM_HONDEW_BERRY - ITEM_POTION]     = gItemEffect_HondewBerry,
     [ITEM_GREPA_BERRY - ITEM_POTION]      = gItemEffect_GrepaBerry,
     [ITEM_TAMATO_BERRY - ITEM_POTION]     = gItemEffect_TamatoBerry,
+    [ITEM_SHERBET_SURPRISE - ITEM_POTION]     = gItemEffect_SherbetSurprise,
     [LAST_BERRY_INDEX - ITEM_POTION]      = NULL,
 };

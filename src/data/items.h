@@ -5221,6 +5221,17 @@ const struct Item gItems[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
+    [ITEM_SHERBET_SURPRISE] =
+    {
+        .name = _("ShrbtSrprise"),
+        .itemId = ITEM_SHERBET_SURPRISE,
+        .price = 300,
+        .description = sSherbetSurpriseDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
+        .flingPower = 30,
+    },
 
 // Species-specific Held Items
 

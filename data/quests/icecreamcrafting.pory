@@ -1,0 +1,161 @@
+//PSF TODO Implement actual item effect for ITEM_SHERBET_SURPRISE
+//PSF TODO Modify additem script to check for berries and mark this quest as complete if player has the berries
+
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const CASHIER = 1
+const PATRON = 2
+const POKEMON = 3
+
+script Quest_IceCreamCrafting_HidePatron_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_ICECREAMCRAFTING)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_TEMP_1)
+        }
+}
+
+script Quest_IceCreamCrafting_Event_Script{
+    msgbox(gText_Quest_IceCreamCrafting_WelcomeToMarble,MSGBOX_NPC)
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_ICECREAMCRAFTING)
+        if (var(VAR_RESULT)){
+            goto(Berkeley_IceCreamShop_Cashier_Event_Script)
+        }
+
+    call(Quest_IceCreamCrafting_CheckBerries_Script)
+
+        questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_ICECREAMCRAFTING)
+        if (var(VAR_RESULT)){
+            goto(Quest_IceCreamCrafting_GiveRecipe_Dialogue)
+        }
+
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_ICECREAMCRAFTING)
+        if (var(VAR_RESULT)){
+            goto(Quest_IceCreamCrafting_TakeBerries_Dialogue)
+        }
+}
+
+script Quest_IceCreamCrafting_GiveRecipe_Dialogue{
+        msgbox(gText_Quest_IceCreamCrafting_IfYouWant,MSGBOX_NPC)
+        end
+}
+
+script Quest_IceCreamCrafting_TakeBerries_Dialogue{
+        lock
+        msgbox(gText_Quest_IceCreamCrafting_SickYouBrought,MSGBOX_NPC)
+        closemessage
+
+        call(Quest_IceCreamCrafting_TakeBerries_Script)
+        giveitem(ITEM_SHERBET_SURPRISE,6)
+
+        applymovement(PATRON,Quest_IceCreamCrafting_ToCounter_Movement)
+        waitmovement(PATRON)
+        applymovement(CASHIER,Quest_IceCreamCrafting_StepRight_Movement)
+        waitmovement(CASHIER)
+
+        msgbox(gText_Quest_IceCreamCrafting_WhatTheHell)
+        msgbox(gText_Quest_IceCreamCrafting_WhatDoYouMean)
+        msgbox(gText_Quest_IceCreamCrafting_MyPokemonGotWeaker)
+        msgbox(gText_Quest_IceCreamCrafting_YeahWeCleanOut)
+        msgbox(gText_Quest_IceCreamCrafting_ICantBelieveThis)
+        closemessage
+
+        applymovement(PATRON,Quest_IceCreamCrafting_BackToSeat_Movement)
+        waitmovement(PATRON)
+        call(Quest_IceCreamCrafting_RemovePokemon_Script)
+        applymovement(PATRON,Quest_IceCreamCrafting_LeaveShop_Movement)
+        waitmovement(PATRON)
+        playse(SE_EXIT)
+        removeobject(PATRON)
+        applymovement(CASHIER,Quest_IceCreamCrafting_SlideBack_Movement)
+        waitmovement(CASHIER)
+        release
+        completequest(QUEST_ICECREAMCRAFTING)
+        end
+}
+
+script Quest_IceCreamCrafting_RemovePokemon_Script{
+    playse(SE_BALL_OPEN)
+        waitse
+        setflag(FLAG_TEMP_1)
+        removeobject(POKEMON)
+}
+
+script Quest_IceCreamCrafting_TakeBerries_Script{
+    removeitem(ITEM_PECHA_BERRY,3)
+    removeitem(ITEM_NANAB_BERRY,2)
+    removeitem(ITEM_RABUTA_BERRY,1)
+}
+
+script Quest_IceCreamCrafting_CheckBerries_Script{
+    setvar(VAR_TEMP_8,0)
+
+    checkitem(ITEM_PECHA_BERRY,3)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_8,1)
+        }
+    checkitem(ITEM_NANAB_BERRY,2)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_8,1)
+        }
+    checkitem(ITEM_RABUTA_BERRY,1)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_8,1)
+        }
+    if (var(VAR_TEMP_8) == 3){
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_ICECREAMCRAFTING)
+    }
+}
+
+
+movement Quest_IceCreamCrafting_ToCounter_Movement{
+    walk_faster_up
+        walk_fast_left * 4
+        face_up
+        step_end
+}
+movement Quest_IceCreamCrafting_StepRight_Movement{
+    lock_facing_direction
+        walk_right 
+        step_end
+}
+movement Quest_IceCreamCrafting_BackToSeat_Movement{
+        walk_right * 4
+        walk_down
+        step_end
+}
+movement Quest_IceCreamCrafting_LeaveShop_Movement{
+    walk_down * 3
+    walk_left * 4
+    face_down
+        step_end
+}
+movement Quest_IceCreamCrafting_SlideBack_Movement{
+    lock_facing_direction
+    walk_left
+    step_end
+}
+
+text gText_Quest_IceCreamCrafting_WelcomeToMarble{
+    format("Welcome to the Marble Slab!")
+}
+text gText_Quest_IceCreamCrafting_IfYouWant{
+    format("We're actually not serving customers yet, today is just our soft open! If you want to try our signature Sherbet Surprise, bring in 3 Pecha Berries, 2 Nanab Berries, and 1 Rabuta Berry!")
+}
+text gText_Quest_IceCreamCrafting_SickYouBrought{
+    format("Sick, you brought the berries! Okay, I'll make this.... and here you go!")
+}
+text gText_Quest_IceCreamCrafting_WhatTheHell{
+    format("What the hell are you serving us? What is going on?")
+}
+text gText_Quest_IceCreamCrafting_WhatDoYouMean{
+    format("What do you mean? Did your Pokémon not like their treat?")
+}
+text gText_Quest_IceCreamCrafting_MyPokemonGotWeaker{
+    format("My Pokémon got weaker after eating it! What gives?")
+}
+text gText_Quest_IceCreamCrafting_YeahWeCleanOut{
+    format("Yeah! We clean out your Pokémon bodies so you can toughen them up the way they should be! That's what our ad said, right?")
+}
+text gText_Quest_IceCreamCrafting_ICantBelieveThis{
+    format("...I can't believe this shit! I wanted to toughen my team up! Ugh!")
+}

@@ -1,0 +1,12 @@
+Berkeley_IceCreamShop_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Berkeley_IceCreamShop_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Berkeley_IceCreamShop_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_IceCreamCrafting_HidePatron_Script
+	return
+
+
+Berkeley_IceCreamShop_Cashier_Event_Script::
+	return
+

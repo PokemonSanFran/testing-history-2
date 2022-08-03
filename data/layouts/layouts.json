@@ -5530,6 +5530,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Presidio_Hauntedhouse/border.bin",
       "blockdata_filepath": "data/layouts/Presidio_Hauntedhouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_BERKELEY_ICE_CREAM_SHOP",
+      "name": "Berkeley_IceCreamShop_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/Berkeley_IceCreamShop/border.bin",
+      "blockdata_filepath": "data/layouts/Berkeley_IceCreamShop/map.bin"
     }
   ]
 }

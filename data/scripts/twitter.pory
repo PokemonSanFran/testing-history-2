@@ -113,8 +113,9 @@ text gText_Twitter_BlueRobbery_Message {
 }
 
 text gText_Twitter_IceCreamCrafting_Message {
-    format("")
+    format("Calling all Trainers! We're a new ice cream shop in Berkeley, and we've got the perfect smoothie to clean out your Pokémon and make them easier to train. Bring 3 Pecha Berry, 2 Nanab Berry, and a Rabuta Berry, and we'll make the first one for free! hashtagdetox")
 }
+
 text gText_Twitter_VSDeoxys_Message {
     format("")
 }

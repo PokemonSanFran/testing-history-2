@@ -168,6 +168,7 @@
 // gMapGroup_IndoorBerkeley
 #define MAP_BERKELEY_GYM             (0 | (6 << 8))
 #define MAP_BERKELEY_BREEDING_CENTER (1 | (6 << 8))
+#define MAP_BERKELEY_ICE_CREAM_SHOP  (2 | (6 << 8))
 
 // gMapGroup_IndoorFortpoint
 #define MAP_FORTPOINT_ROOF (0 | (7 << 8))

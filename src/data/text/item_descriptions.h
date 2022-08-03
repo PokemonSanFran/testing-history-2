@@ -2038,6 +2038,11 @@ static const u8 sLostDollDesc[] = _(
     "Return it to her in\n"
     "BernalHeights.");
 
+static const u8 sSherbetSurpriseDesc[] = _(
+    "Makes a Pokémon\n"
+    "friendly but resets\n"
+    "EVs to zero.");
+
 // Species-specific Held Items
 static const u8 sLightBallDesc[] = _(
     "A hold item that\n"

@@ -1278,6 +1278,7 @@ Script_RemoveTint::
 .include "data/maps/Salesforcetower_8F/scripts.inc"
 .include "data/maps/Salesforcetower_9F/scripts.inc"
 .include "data/maps/WeCanStopYouActually_Cutscene/scripts.inc"
+.include "data/maps/Berkeley_IceCreamShop/scripts.inc"
 
 ## QUESTS
 .include "data/quests/playersadventure.inc"
@@ -1289,8 +1290,8 @@ Script_RemoveTint::
 .include "data/quests/hauntabuilding.inc"
 .include "data/quests/rabiesoutbreak.inc"
 .include "data/quests/bluerobbery.inc"
+.include "data/quests/icecreamcrafting.inc"
 /*
-.include "data/quests/socialmedia.inc"
 .include "data/quests/consolationprize.inc"
 .include "data/quests/rightingwrongs.inc"
 .include "data/quests/enterthedragon.inc"
@@ -1372,3 +1373,4 @@ Script_RemoveTint::
 .include "data/quests/warehousewarfare.inc"
 .include "data/quests/restoretotheirformerglory.inc"
 /*
+

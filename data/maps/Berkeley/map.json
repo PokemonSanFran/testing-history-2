@@ -48,6 +48,13 @@
       "elevation": 0,
       "dest_map": "MAP_BERKELEY_BREEDING_CENTER",
       "dest_warp_id": 0
+    },
+    {
+      "x": 17,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_BERKELEY_ICE_CREAM_SHOP",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

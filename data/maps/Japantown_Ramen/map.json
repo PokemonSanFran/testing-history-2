@@ -3,7 +3,7 @@
   "name": "Japantown_Ramen",
   "layout": "LAYOUT_JAPANTOWN_RAMEN",
   "music": "MUS_VERDANTURF",
-  "region_map_section": "MAPSEC_LAVARIDGE_TOWN",
+  "region_map_section": "MAPSEC_JAPANTOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",

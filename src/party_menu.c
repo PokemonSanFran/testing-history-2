@@ -4670,6 +4670,8 @@ static u16 ItemEffectToMonEv(struct Pokemon *mon, u8 effectType)
         return GetMonData(mon, MON_DATA_SPATK_EV);
     case ITEM_EFFECT_SPDEF_EV:
         return GetMonData(mon, MON_DATA_SPDEF_EV);
+    case ITEM_EFFECT_ALL_EV:
+        return GetMonData(mon, MON_DATA_SPDEF_EV);
     }
     return 0;
 }
@@ -4694,6 +4696,8 @@ static void ItemEffectToStatString(u8 effectType, u8 *dest)
         StringCopy(dest, gText_SpAtk3);
         break;
     case ITEM_EFFECT_SPDEF_EV:
+        StringCopy(dest, gText_SpDef3);
+    case ITEM_EFFECT_ALL_EV:
         StringCopy(dest, gText_SpDef3);
         break;
     }
@@ -5600,6 +5604,8 @@ u8 GetItemEffectType(u16 item)
         return ITEM_EFFECT_SPEED_EV;
     else if (itemEffect[5] & ITEM5_EV_DEF)
         return ITEM_EFFECT_DEF_EV;
+    else if (itemEffect[6] & ITEM6_EV_ALL)
+        return ITEM_EFFECT_ALL_EV;
     else if (itemEffect[4] & ITEM4_EVO_STONE)
         return ITEM_EFFECT_EVO_STONE;
     else if (itemEffect[4] & ITEM4_PP_UP)

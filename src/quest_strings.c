@@ -44,13 +44,13 @@ const u8 gText_Quest_RabiesOutbreak_DoneDesc[] =_("You defeated the Glameow... b
 const u8 gText_Quest_RabiesOutbreak_Map[] =_("Bernalheights");
 
 const u8 gText_Quest_BlueRobbery_Name[] = _("Blue Robbery");
-const u8 gText_Quest_BlueRobbery_Desc[] =_("Description");
-const u8 gText_Quest_BlueRobbery_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_BlueRobbery_Desc[] =_("Find the brunette and her Wobbuffet\nthat were breaking and entering in the\nTenderloin!");
+const u8 gText_Quest_BlueRobbery_DoneDesc[] =_("You found the Trainer, but she refused\nto even hint at being guilty...");
 const u8 gText_Quest_BlueRobbery_Map[] =_("Castro");
 
 const u8 gText_Quest_IceCreamCrafting_Name[] = _("Ice Cream Crafting");
-const u8 gText_Quest_IceCreamCrafting_Desc[] =_("Description");
-const u8 gText_Quest_IceCreamCrafting_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_IceCreamCrafting_Desc[] =_("Bring 3 Pecha, 2 Nanab, and 1 Rabuta\nBerry to the new ice cream shop to make\na Pokémon training smoothie!");
+const u8 gText_Quest_IceCreamCrafting_DoneDesc[] =_("The Sherbert Surprise zeroes out your\nPokémon's EVs. It could be useful...");
 const u8 gText_Quest_IceCreamCrafting_Map[] =_("Berkeley");
 
 const u8 gText_Quest_VSDeoxys_Name[] = _("VS Deoxys");

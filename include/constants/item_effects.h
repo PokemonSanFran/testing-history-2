@@ -72,6 +72,9 @@
 #define ITEM6_HEAL_HP_LVL_UP  ((u8) -3)
 #define ITEM6_HEAL_HP_QUARTER ((u8) -4)
 
+//Sherbet Surprise effect
+#define ITEM6_EV_ALL         0x2
+
 // Special PP recovery amounts for ITEM4_HEAL_PP
 #define ITEM6_HEAL_PP_FULL   0x7F
 
@@ -79,6 +82,7 @@
 #define ITEM6_ADD_EV       10
 #define ITEM6_SUBTRACT_EV -10
 #define ITEM6_ADD_ONE_EV    1
+#define ITEM6_RESET_EV  -25 //-255
 
 // Used for GetItemEffectType.
 #define ITEM_EFFECT_X_ITEM 0
@@ -104,5 +108,6 @@
 #define ITEM_EFFECT_PP_MAX 20
 #define ITEM_EFFECT_HEAL_PP 21
 #define ITEM_EFFECT_NONE 22
+#define ITEM_EFFECT_ALL_EV 23
 
 #endif // GUARD_CONSTANTS_ITEM_EFFECTS_H
