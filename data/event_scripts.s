@@ -1291,6 +1291,7 @@ Script_RemoveTint::
 .include "data/quests/rabiesoutbreak.inc"
 .include "data/quests/bluerobbery.inc"
 .include "data/quests/icecreamcrafting.inc"
+.include "data/quests/vsdeoxys.inc"
 /*
 .include "data/quests/consolationprize.inc"
 .include "data/quests/rightingwrongs.inc"

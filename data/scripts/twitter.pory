@@ -51,7 +51,9 @@ script TwitterPost_IceCreamCrafting_Script {
 }
 script TwitterPost_VSDeoxys_Script {
     call(TwitterPost_CheckProgress_Script)
+    showmonpic(SPECIES_DEOXYS_SPEED, 10, 3)
     msgbox(gText_Twitter_VSDeoxys_Message, MSGBOX_DEFAULT)
+    hidemonpic
     questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_VSDEOXYS)
     if (var (VAR_RESULT)) {
         startquest(QUEST_VSDEOXYS)
@@ -117,7 +119,7 @@ text gText_Twitter_IceCreamCrafting_Message {
 }
 
 text gText_Twitter_VSDeoxys_Message {
-    format("")
+    format("I was attacked by a wild Pokémon! It suddenly fell from the sky, changed it shape into this super fast orange thing, and started shooting lasers at me... I did some googling, and I think it was a Deoxys!")
 }
 text gText_Twitter_ChinatownTunnels_Message {
     format("")

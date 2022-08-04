@@ -2425,7 +2425,7 @@ side_quest(
 	gText_Quest_VSDeoxys_Desc,
 	gText_Quest_VSDeoxys_DoneDesc,
 	gText_Quest_VSDeoxys_Map,
-	SPECIES_MINIOR,
+	SPECIES_DEOXYS_SPEED,
 	PKMN,
 	NULL,
 	0

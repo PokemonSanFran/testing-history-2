@@ -70,7 +70,9 @@ TwitterPost_IceCreamCrafting_Script_2:
 
 TwitterPost_VSDeoxys_Script::
 	call TwitterPost_CheckProgress_Script
+	showmonpic SPECIES_DEOXYS_SPEED, 10, 3
 	msgbox gText_Twitter_VSDeoxys_Message, MSGBOX_DEFAULT
+	hidemonpic
 	questmenu QUEST_MENU_CHECK_INACTIVE, QUEST_VSDEOXYS
 	compare VAR_RESULT, 0
 	goto_if_ne TwitterPost_VSDeoxys_Script_2
@@ -177,7 +179,12 @@ gText_Twitter_IceCreamCrafting_Message::
 	.string "one for free! hashtagdetox$"
 
 gText_Twitter_VSDeoxys_Message::
-	.string "$"
+	.string "I was attacked by a wild Pokémon! It\n"
+	.string "suddenly fell from the sky, changed it\l"
+	.string "shape into this super fast orange\l"
+	.string "thing, and started shooting lasers at\l"
+	.string "me... I did some googling, and I think it\l"
+	.string "was a Deoxys!$"
 
 gText_Twitter_ChinatownTunnels_Message::
 	.string "$"

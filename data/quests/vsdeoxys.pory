@@ -1,0 +1,9 @@
+//PSF TODO Implement forced shiny https://github.com/Sierraffinity/CrystalDust/blob/474a6867e259ebf8dfa310777251712ef63f3933/src/pokemon.c#L6612
+
+script Quest_VSDeoxys_HideObject_Script {
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_VSDEOXYS)
+
+    if(!var(VAR_RESULT)){
+        setflag(FLAG_TEMP_1)
+    }
+}

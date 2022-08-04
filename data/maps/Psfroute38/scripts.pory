@@ -1,1 +1,5 @@
-mapscripts Psfroute38_MapScripts {}
+mapscripts Psfroute38_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_VSDeoxys_HideObject_Script)
+    }
+}

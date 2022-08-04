@@ -1,3 +1,8 @@
 Psfroute38_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute38_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfroute38_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_VSDeoxys_HideObject_Script
+	return
 

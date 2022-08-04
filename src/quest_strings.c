@@ -54,9 +54,9 @@ const u8 gText_Quest_IceCreamCrafting_DoneDesc[] =_("The Sherbert Surprise zeroe
 const u8 gText_Quest_IceCreamCrafting_Map[] =_("Berkeley");
 
 const u8 gText_Quest_VSDeoxys_Name[] = _("VS Deoxys");
-const u8 gText_Quest_VSDeoxys_Desc[] =_("Description");
-const u8 gText_Quest_VSDeoxys_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_VSDeoxys_Map[] =_("Lakemerced");
+const u8 gText_Quest_VSDeoxys_Desc[] =_("Subdue the rare, orange,\nforme-changing Pokémon from space!");
+const u8 gText_Quest_VSDeoxys_DoneDesc[] =_("You found the Shiny Minior...");
+const u8 gText_Quest_VSDeoxys_Map[] =_("Psfroute38");
 
 const u8 gText_Quest_ChinatownTunnels_Name[] = _("Chinatown Tunnels");
 const u8 gText_Quest_ChinatownTunnels_Desc[] =_("Description");
