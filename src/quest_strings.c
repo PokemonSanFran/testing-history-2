@@ -55,7 +55,7 @@ const u8 gText_Quest_IceCreamCrafting_Map[] =_("Berkeley");
 
 const u8 gText_Quest_VSDeoxys_Name[] = _("VS Deoxys");
 const u8 gText_Quest_VSDeoxys_Desc[] =_("Subdue the rare, orange,\nforme-changing Pokémon from space!");
-const u8 gText_Quest_VSDeoxys_DoneDesc[] =_("You found the Shiny Minior...");
+const u8 gText_Quest_VSDeoxys_DoneDesc[] =_("You found the Minior...");
 const u8 gText_Quest_VSDeoxys_Map[] =_("Psfroute38");
 
 const u8 gText_Quest_ChinatownTunnels_Name[] = _("Chinatown Tunnels");
@@ -77,11 +77,6 @@ const u8 gText_Quest_BetweenAStoneAndAHardPlace_Name[] = _("Between a Stone and 
 const u8 gText_Quest_BetweenAStoneAndAHardPlace_Desc[] =_("Description");
 const u8 gText_Quest_BetweenAStoneAndAHardPlace_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_BetweenAStoneAndAHardPlace_Map[] =_("Presidio");
-
-const u8 gText_Quest_ConsolationPrize_Name[] = _("Consolation Prize");
-const u8 gText_Quest_ConsolationPrize_Desc[] =_("Description");
-const u8 gText_Quest_ConsolationPrize_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_ConsolationPrize_Map[] =_("Lakemerced");
 
 const u8 gText_Quest_RightingWrongs_Name[] = _("Righting Wrongs");
 const u8 gText_Quest_RightingWrongs_Desc[] =_("Description");

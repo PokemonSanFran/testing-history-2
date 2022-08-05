@@ -78,11 +78,6 @@ extern const u8 gText_Quest_BetweenAStoneAndAHardPlace_Desc[];
 extern const u8 gText_Quest_BetweenAStoneAndAHardPlace_DoneDesc[];
 extern const u8 gText_Quest_BetweenAStoneAndAHardPlace_Map[];
 
-extern const u8 gText_Quest_ConsolationPrize_Name[];
-extern const u8 gText_Quest_ConsolationPrize_Desc[];
-extern const u8 gText_Quest_ConsolationPrize_DoneDesc[];
-extern const u8 gText_Quest_ConsolationPrize_Map[];
-
 extern const u8 gText_Quest_RightingWrongs_Name[];
 extern const u8 gText_Quest_RightingWrongs_Desc[];
 extern const u8 gText_Quest_RightingWrongs_DoneDesc[];

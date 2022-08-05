@@ -323,55 +323,6 @@ static const struct SubQuest
 	),
 };
 
-static const struct SubQuest sConsolationPrize_Sub[QUEST_CONSOLATIONPRIZE_SUB_COUNT] =
-{
-sub_quest(
-	15,
-	gText_Quest_ConsolationPrize_Sub1_Name,
-	gText_Quest_ConsolationPrize_Sub1_Desc,
-	gText_Quest_ConsolationPrize_Sub1_Map,
-	ITEM_PROTEIN,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	16,
-	gText_Quest_ConsolationPrize_Sub2_Name,
-	gText_Quest_ConsolationPrize_Sub2_Desc,
-	gText_Quest_ConsolationPrize_Sub2_Map,
-	ITEM_IRON,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	17,
-	gText_Quest_ConsolationPrize_Sub3_Name,
-	gText_Quest_ConsolationPrize_Sub3_Desc,
-	gText_Quest_ConsolationPrize_Sub3_Map,
-	ITEM_ZINC,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	18,
-	gText_Quest_ConsolationPrize_Sub4_Name,
-	gText_Quest_ConsolationPrize_Sub4_Desc,
-	gText_Quest_ConsolationPrize_Sub4_Map,
-	ITEM_CALCIUM,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	19,
-	gText_Quest_ConsolationPrize_Sub5_Name,
-	gText_Quest_ConsolationPrize_Sub5_Desc,
-	gText_Quest_ConsolationPrize_Sub5_Map,
-	ITEM_CARBOS,
-	ITEM,
-	sText_Delievered
-),
-};
-
 static const struct SubQuest sRightingWrongs_Sub[QUEST_RIGHTINGWRONGS_SUB_COUNT] =
 {
 sub_quest(
@@ -2470,16 +2421,6 @@ side_quest(
 	NULL,
 	0
 ),
-	side_quest(
-	      gText_Quest_ConsolationPrize_Name,
-	      gText_Quest_ConsolationPrize_Desc,
-	      gText_Quest_ConsolationPrize_DoneDesc,
-	      gText_Quest_ConsolationPrize_Map,
-	      OBJ_EVENT_GFX_SCIENTIST_2,
-	      OBJECT,
-	      sConsolationPrize_Sub,
-	      5
-	),
 	side_quest(
 	      gText_Quest_RightingWrongs_Name,
 	      gText_Quest_RightingWrongs_Desc,
