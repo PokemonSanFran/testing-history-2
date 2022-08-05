@@ -4,31 +4,26 @@ Chinatown_MapScripts::
 	.byte 0
 
 Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Chinatown_MapScripts_OnTransition
+	switch VAR_PETALBURG_WOODS_STATE
+	case 1, Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	case 2, Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
+	case 3, Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	call HowDisappointing_HideObject_Script
+	return
+
+Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	call HowDisappointing_HideTeamRocket_Script
+	return
+
+Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+	call HowDisappointing_HidePolice_Script
+	return
+
+Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	call HowDisappointing_HidePolice_Script
 	return
 
 Chinatown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 41, YouRealizeWereEvilRight_PhoneCall_Dialogue
 	.2byte 0
-
-
-Chinatown_MapScripts_OnTransition::
-	switch VAR_PETALBURG_WOODS_STATE
-	case 1, Chinatown_MapScripts_OnTransition_2
-	case 2, Chinatown_MapScripts_OnTransition_3
-	case 3, Chinatown_MapScripts_OnTransition_4
-	call HowDisappointing_HideObject_Script
-	return
-
-Chinatown_MapScripts_OnTransition_2:
-	call HowDisappointing_HideTeamRocket_Script
-	return
-
-Chinatown_MapScripts_OnTransition_3:
-	call HowDisappointing_HidePolice_Script
-	return
-
-Chinatown_MapScripts_OnTransition_4:
-	call HowDisappointing_HidePolice_Script
-	return
 

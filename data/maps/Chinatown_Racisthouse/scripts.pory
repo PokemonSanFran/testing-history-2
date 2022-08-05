@@ -1,0 +1,23 @@
+mapscripts Chinatown_Racisthouse_MapScripts{
+}
+
+script Chinatown_Racisthouse_Scroll_Script{
+    lock
+
+    switch (var(VAR_QUEST_CHINATOWN_TUNNELS)){
+        case 2: goto(Quest_ChinatownTunnels_FirstScrollWarp_Script)
+        case 3: goto(Chinatown_Racisthouse_ScrollWarp_Script)
+        case 4: goto(Chinatown_Racisthouse_ScrollWarp_Script)
+        default: call(Chinatown_Racisthouse_ScrollNoWarp_Dialogue) 
+    }
+    release
+    end
+}
+
+script Chinatown_Racisthouse_ScrollNoWarp_Dialogue{
+    msgbox(gText_Chinatown_Racisthouse_ScrollDesc,MSGBOX_SIGN)
+}
+
+text gText_Chinatown_Racisthouse_ScrollDesc{
+    format("There is a beautiful red scroll hanging on the wall.")
+}

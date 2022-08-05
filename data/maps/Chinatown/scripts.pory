@@ -1,18 +1,14 @@
 mapscripts Chinatown_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Chinatown_MapScripts_OnTransition)
+        switch (var(VAR_PETALBURG_WOODS_STATE)){
+            case 1: call(HowDisappointing_HideTeamRocket_Script) 
+            case 2: call(HowDisappointing_HidePolice_Script)
+            case 3: call(HowDisappointing_HidePolice_Script)
+            default: call(HowDisappointing_HideObject_Script)
+        }
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 41: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
-}
-
-script Chinatown_MapScripts_OnTransition {
-    switch (var(VAR_PETALBURG_WOODS_STATE)){
-        case 1: call(HowDisappointing_HideTeamRocket_Script) 
-        case 2: call(HowDisappointing_HidePolice_Script)
-        case 3: call(HowDisappointing_HidePolice_Script)
-        default: call(HowDisappointing_HideObject_Script)
-    }
 }

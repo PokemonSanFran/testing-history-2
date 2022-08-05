@@ -59,8 +59,8 @@ const u8 gText_Quest_VSDeoxys_DoneDesc[] =_("You found the Minior...");
 const u8 gText_Quest_VSDeoxys_Map[] =_("Psfroute38");
 
 const u8 gText_Quest_ChinatownTunnels_Name[] = _("Chinatown Tunnels");
-const u8 gText_Quest_ChinatownTunnels_Desc[] =_("Description");
-const u8 gText_Quest_ChinatownTunnels_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_ChinatownTunnels_Desc[] =_("Find somebody who might know the oldest secrets of the treasures hidden under Chinatown.");
+const u8 gText_Quest_ChinatownTunnels_DoneDesc[] =_("The eldest member of Chinatown tricked you into helping him recover a treasure - his childhood photos...");
 const u8 gText_Quest_ChinatownTunnels_Map[] =_("Chinatown");
 
 const u8 gText_Quest_FreshwaterEvolution_Name[] = _("Freshwater Evolution");

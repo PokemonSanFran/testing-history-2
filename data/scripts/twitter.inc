@@ -187,7 +187,10 @@ gText_Twitter_VSDeoxys_Message::
 	.string "was a Deoxys!$"
 
 gText_Twitter_ChinatownTunnels_Message::
-	.string "$"
+	.string "Theres a rumor that there is a lost\n"
+	.string "treasure hidden under Chinatown. Is\l"
+	.string "anybody who knows the secrets still\l"
+	.string "alive?$"
 
 gText_Twitter_FreshwaterEvolution_Message::
 	.string "$"

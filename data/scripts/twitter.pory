@@ -122,7 +122,7 @@ text gText_Twitter_VSDeoxys_Message {
     format("I was attacked by a wild Pokémon! It suddenly fell from the sky, changed it shape into this super fast orange thing, and started shooting lasers at me... I did some googling, and I think it was a Deoxys!")
 }
 text gText_Twitter_ChinatownTunnels_Message {
-    format("")
+    format("Theres a rumor that there is a lost treasure hidden under Chinatown. Is anybody who knows the secrets still alive?")
 }
 text gText_Twitter_FreshwaterEvolution_Message {
     format("")

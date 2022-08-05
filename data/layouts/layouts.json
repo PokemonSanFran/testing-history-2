@@ -5540,6 +5540,26 @@
       "secondary_tileset": "gTileset_Shop",
       "border_filepath": "data/layouts/Berkeley_IceCreamShop/border.bin",
       "blockdata_filepath": "data/layouts/Berkeley_IceCreamShop/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHINATOWN_RACISTHOUSE",
+      "name": "Chinatown_Racisthouse_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Chinatown_Racisthouse/border.bin",
+      "blockdata_filepath": "data/layouts/Chinatown_Racisthouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHINATOWN_TUNNEL",
+      "name": "Chinatown_Tunnel_Layout",
+      "width": 13,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Chinatown_Tunnel/border.bin",
+      "blockdata_filepath": "data/layouts/Chinatown_Tunnel/map.bin"
     }
   ]
 }
