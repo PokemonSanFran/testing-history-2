@@ -60,8 +60,6 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    warp MAP_CHINATOWN,10,15 
-    questmenu QUEST_MENU_SET_ACTIVE, QUEST_CHINATOWNTUNNELS
     end
 
 Debug_Script_2::

@@ -1,3 +1,8 @@
 Chinatown_Tunnel_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Chinatown_Tunnel_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Chinatown_Tunnel_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_ChinatownTunnels_HideTreasure_Script
+	return
 

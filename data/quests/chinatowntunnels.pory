@@ -1,24 +1,40 @@
-const ELDEST = 8
+const ELDEST_OUTSIDE= 8
+const ELDEST_TUNNEL = 2
+const TREASURE = 1
 const PLAYER = OBJ_EVENT_ID_PLAYER
+
+script Quest_ChinatownTunnels_HideTreasure_Script{
+    setflag(FLAG_TEMP_2)
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHINATOWNTUNNELS)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_TEMP_1)
+        }
+}
 
 script Quest_ChinatownTunnels_Event_Script{
 
-questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_CHINATOWNTUNNELS)
-    if (var(VAR_RESULT)){
-        goto(Quest_ChinatownTunnels_Active_Event_Script)
-    }
-
-questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHINATOWNTUNNELS)
-    if (var(VAR_RESULT)){
-        return
-    }
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHINATOWNTUNNELS)
+        if (var(VAR_RESULT)){
+            msgbox(gText_Quest_ChinatownTunnels_ICannotThank,MSGBOX_NPC)
+        }
+        else {
+        questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_CHINATOWNTUNNELS)
+            if (var(VAR_RESULT)){
+                goto(Quest_ChinatownTunnels_Active_Event_Script)
+            }
+            msgbox(gText_Chinatown_IMissTheOld,MSGBOX_NPC)
+        }
+    end
 }
 
 script Quest_ChinatownTunnels_Active_Event_Script{
     switch(var(VAR_QUEST_CHINATOWN_TUNNELS)){
-        case 0:goto(Quest_ChinatownTunnels_Intro_Dialogue)
-        case 1:goto(Quest_ChinatownTunnels_BadgeCheck_Dialogue)
-}
+        case NEVER_SPOKEN_ELDER:goto(Quest_ChinatownTunnels_Intro_Dialogue)
+        case SPOKEN_ELDER_FIRST_TIME:goto(Quest_ChinatownTunnels_BadgeCheck_Dialogue)
+        case SENT_TO_FIND_RED_SCROLL:goto(Quest_ChinatownTunnels_WaitingScroll_Dialogue)
+        case FOUND_RED_SCROLL:goto(Quest_ChinatownTunnels_WaitingScroll_Dialogue)
+    }
 }
 
 script Quest_ChinatownTunnels_Intro_Dialogue{
@@ -51,12 +67,12 @@ script Quest_ChinatownTunnels_RevealSecret_Dialogue{
     msgbox(gText_Quest_ChinatownTunnels_HmmYouLookStrong,MSGBOX_NPC)
     closemessage
 
-    applymovement(ELDEST,Common_Movement_FaceAwayPlayer)
-    waitmovement(ELDEST)
+    applymovement(ELDEST_OUTSIDE,Common_Movement_FaceAwayPlayer)
+    waitmovement(ELDEST_OUTSIDE)
     delay(16)
 
-    applymovement(ELDEST,Common_Movement_FacePlayer)
-    waitmovement(ELDEST)
+    applymovement(ELDEST_OUTSIDE,Common_Movement_FacePlayer)
+    waitmovement(ELDEST_OUTSIDE)
     msgbox(gText_Quest_ChinatownTunnels_YouveHeardCorrectly,MSGBOX_NPC)
     closemessage
     release
@@ -82,9 +98,85 @@ script Quest_ChinatownTunnels_FirstScrollWarp_Script{
     goto(Chinatown_Racisthouse_ScrollWarp_Script)
 }
 
-script Chinatown_Racisthouse_ScrollWarp_Script{
+script Quest_ChinatownTunnels_WaitingScroll_Dialogue{
+    msgbox(gText_Quest_ChinatownTunnels_HaveYou,MSGBOX_NPC)
+    end
+}
+
+script Quest_ChinatownTunnels_Treasure_Script{
     lock
-    warpsilent(MAP_CHINATOWN_TUNNEL,1)
+    msgbox(gText_Quest_ChinatownTunnels_ThereIsAnOrnate,MSGBOX_DEFAULT)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_ChinatownTunnels_ThisMustBe,MSGBOX_DEFAULT)
+    callnative(ClearMugshot)
+
+    msgbox(gText_Quest_ChinatownTunnels_ThatWontBe,MSGBOX_DEFAULT)
+    closemessage
+
+    clearflag(FLAG_TEMP_2)
+    addobject(ELDEST_TUNNEL)
+
+    playse(SE_PIN)
+    applymovement(PLAYER,Common_Movement_ExclamationMark)
+    waitmovement(PLAYER)
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    if (var(VAR_TEMP_0) != 6){
+        applymovement(PLAYER,Quest_ChinatownTunnels_MoveToTreasureFront_Movement)
+        waitmovement(PLAYER)
+    }
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    waitse
+
+    applymovement(ELDEST_TUNNEL,Quest_ChinatownTunnels_WalkToPlayer_Movement)
+    waitmovement(ELDEST_TUNNEL)
+
+    msgbox(gText_Quest_ChinatownTunnels_ThankYouFor,MSGBOX_NPC)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_ChinatownTunnels_NoProblemThisBox,MSGBOX_NPC)
+    callnative(ClearMugshot)
+
+    msgbox(gText_Quest_ChinatownTunnels_IMayHaveMislead,MSGBOX_NPC)
+    closemessage
+
+    applymovement(ELDEST_TUNNEL,Quest_ChinatownTunnels_TakeTreasure_Movement)
+    applymovement(PLAYER,Quest_ChinatownTunnels_MoveWhileTreasure_Movement)
+    delay(16)
+    delay(16)
+    removeobject(TREASURE)
+
+    playse(SE_CLICK)
+    waitse
+    waitmovement(ELDEST_TUNNEL)
+
+    playse(SE_PIN)
+    waitse
+    applymovement(PLAYER,Common_Movement_ExclamationMark)
+    waitmovement(PLAYER)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_ChinatownTunnels_YouHad,MSGBOX_DEFAULT)
+    callnative(ClearMugshot)
+
+    applymovement(ELDEST_TUNNEL,Common_Movement_FaceLeft)
+
+    msgbox(gText_Quest_ChinatownTunnels_IUsedToLiveHere,MSGBOX_DEFAULT)
+    closemessage
+
+    applymovement(ELDEST_TUNNEL,Common_Movement_FaceLeft)
+    waitmovement(ELDEST_TUNNEL)
+
+    msgbox(gText_Quest_ChinatownTunnels_IAsked,MSGBOX_DEFAULT)
+    closemessage
+    applymovement(ELDEST_TUNNEL,Quest_ChinatownTunnels_LeaveTunnel_Movement)
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    waitmovement(ELDEST_TUNNEL)
+    removeobject(ELDEST_TUNNEL)
+    completequest(QUEST_CHINATOWNTUNNELS)
     release
     end
 }
@@ -93,6 +185,56 @@ movement Quest_ChinatownTunnels_PushScroll_Movement{
     walk_in_place_up
     emote_exclamation_mark
     step_end
+}
+movement Quest_ChinatownTunnels_LeaveTunnel_Movement{
+    walk_down * 6
+    step_end
+}
+movement Quest_ChinatownTunnels_TakeTreasure_Movement{
+    walk_up
+    walk_in_place_up
+    step_end
+}
+movement Quest_ChinatownTunnels_WalkToPlayer_Movement{
+    walk_up * 6
+    step_end
+}
+movement Quest_ChinatownTunnels_MoveToTreasureFront_Movement{
+    walk_down
+    walk_right
+    step_end
+}
+movement Quest_ChinatownTunnels_MoveWhileTreasure_Movement{
+    walk_left
+    face_right
+    step_end
+}
+text gText_Quest_ChinatownTunnels_IAsked{
+    format("I asked one of the children in town to post a story about hidden treasure, hoping somebody strong could help me get in here. I tried to reason with these thugs, but as you know, they don't like to listen. Your kindness will not be forgotten. Thank you so much, young Trainer.")
+}
+text gText_Quest_ChinatownTunnels_IMayHaveMislead{
+    format("I may have mislead you. I'm sorry.")
+}
+text gText_Quest_ChinatownTunnels_IUsedToLiveHere{
+    format("I used to live here. I didn't dig this tunnel though - it was always here. I used it for storage away from my wife, haha! When I was drafted many years ago, I lost my home and while I was gone, I lost my family. When I returned, my home had been taken, and access to the tunnel was gone. My treasure is simple... photos of my family. Its all I have left of them.")
+}
+text gText_Quest_ChinatownTunnels_NoProblemThisBox{
+    format("No problem. This box is locked though. We have to find the key.")
+}
+text gText_Quest_ChinatownTunnels_ThankYouFor{
+    format("Thank you for dealing with those thugs. I was able to follow you inside.")
+}
+text gText_Quest_ChinatownTunnels_ThatWontBe{
+    format("That won't be neccesary.")
+}
+text gText_Quest_ChinatownTunnels_ThereIsAnOrnate{
+    format("This is an ornate box on the ground. There is clearly something inside, but it is locked.")
+}
+text gText_Quest_ChinatownTunnels_ThisMustBe{
+    format("This must be the treasure! Ugh, do I have to find a key too?")
+}
+text gText_Quest_ChinatownTunnels_YouHad{
+    format("You had the key the entire time?")
 }
 
 text gText_Quest_ChinatownTunnels_OhoHowCanIHelp{
@@ -116,4 +258,12 @@ text gText_Quest_ChinatownTunnels_WaitIsThis{
 
 text gText_Quest_ChinatownTunnels_TheresNoWall{
     format("There's no wall behind the scroll!")
+}
+
+text gText_Quest_ChinatownTunnels_HaveYou{
+    format("Have you had any luck finding the red scroll?")
+}
+
+text gText_Quest_ChinatownTunnels_ICannotThank{
+    format("I cannot thank you enough.")
 }

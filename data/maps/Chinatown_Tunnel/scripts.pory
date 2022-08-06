@@ -1,2 +1,6 @@
 mapscripts Chinatown_Tunnel_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+    call(Quest_ChinatownTunnels_HideTreasure_Script)
+    }
 }
+

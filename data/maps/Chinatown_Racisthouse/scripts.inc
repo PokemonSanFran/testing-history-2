@@ -26,6 +26,14 @@ Chinatown_Racisthouse_Scroll_Script_5:
 	goto Chinatown_Racisthouse_Scroll_Script_1
 
 
+Chinatown_Racisthouse_ScrollWarp_Script::
+	lock
+	playse SE_EXIT
+	warpsilent MAP_CHINATOWN_TUNNEL, 1
+	release
+	end
+
+
 Chinatown_Racisthouse_ScrollNoWarp_Dialogue::
 	msgbox gText_Chinatown_Racisthouse_ScrollDesc, MSGBOX_SIGN
 	return

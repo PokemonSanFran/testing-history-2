@@ -12,3 +12,7 @@ mapscripts Chinatown_MapScripts {
         VAR_STORYLINE_STATE, 41: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
 }
+
+text gText_Chinatown_IMissTheOld{
+    format("I miss the old days. I get so nostalgic for my childhood...I loved growing up in these streets.")
+}

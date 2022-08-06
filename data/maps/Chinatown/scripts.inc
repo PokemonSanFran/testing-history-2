@@ -27,3 +27,8 @@ Chinatown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 41, YouRealizeWereEvilRight_PhoneCall_Dialogue
 	.2byte 0
 
+
+gText_Chinatown_IMissTheOld::
+	.string "I miss the old days. I get so nostalgic\n"
+	.string "for my childhood...I loved growing up in\l"
+	.string "these streets.$"
