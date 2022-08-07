@@ -109,14 +109,6 @@ enum QuestCases
 	FLAG_REMOVE_FAVORITE, //remove favorite flag from quest
 };
 
-enum SubQuestTypes
-{
-	SUBQUEST_NONE,
-	SUBQUEST_CATCH,
-	SUBQUEST_FIND,
-	SUBQUEST_READ,
-};
-
 // functions
 void QuestMenu_Init(u8 a0, MainCallback callback);
 u8 QuestMenu_GetSetSubquestState(u8 quest, u8 caseId, u8 childQuest);
