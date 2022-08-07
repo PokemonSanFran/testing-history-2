@@ -10,20 +10,6 @@ Quest_ChinatownTunnels_HideTreasure_Script_1:
 	return
 
 
-Quest_ChinatownTunnels_Debug::
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_CHINATOWNTUNNELS
-	setflag FLAG_BADGE01_GET
-	setflag FLAG_BADGE02_GET
-	setflag FLAG_BADGE03_GET
-	setflag FLAG_BADGE04_GET
-	return
-
-
-Quest_ChinatownTunnels_Debug2::
-	warp MAP_CHINATOWN_TUNNEL, 5, 3
-	return
-
-
 Quest_ChinatownTunnels_Event_Script::
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_CHINATOWNTUNNELS
 	compare VAR_RESULT, 0
@@ -109,7 +95,6 @@ Quest_ChinatownTunnels_RevealSecret_Dialogue::
 	msgbox gText_Quest_ChinatownTunnels_YouveHeardCorrectly, MSGBOX_NPC
 	closemessage
 	release
-	call Quest_ChinatownTunnels_Debug2
 	end
 
 
