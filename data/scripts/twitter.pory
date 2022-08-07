@@ -125,7 +125,7 @@ text gText_Twitter_ChinatownTunnels_Message {
     format("Theres a rumor that there is a lost treasure hidden under Chinatown. Is anybody who knows the secrets still alive?")
 }
 text gText_Twitter_FreshwaterEvolution_Message {
-    format("")
+    format("Check out my favorite spot in Gldngtepark! There's a clearing with no tall grass, beautiful trees, and a fresh water spring! The water tastes better than anywhere else in the region, and its got magical properties. If you bring an octopus Pokémon, it'll turn shiny!")
 }
 text gText_Twitter_GemArtist_Message {
     format("")

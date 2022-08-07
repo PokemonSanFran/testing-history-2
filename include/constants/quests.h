@@ -13,7 +13,7 @@
 #define QUEST_MENU_CHECK_REWARD         8  //checks if questId is in Reward state. Returns result to gSpecialVar_Result
 #define QUEST_MENU_CHECK_COMPLETE       9   //checks if questId has been completed. Returns result to gSpecialVar_Result
 #define QUEST_MENU_BUFFER_QUEST_NAME    10   //buffers a quest name to gStringVar1
-#define QUEST_MENU_SET_FAVORITE         12
+#define QUEST_MENU_SET_FAVORITE         11
 
 // quest number defines
 #define QUEST_PLAYERSADVENTURE	0
@@ -144,7 +144,6 @@
 #define SUB_QUEST_30        29
 
 #define QUEST_HAUNTABUILDING_SUB_COUNT 6
-//#define QUEST_SOCIALMEDIA_SUB_COUNT	9
 #define QUEST_RIGHTINGWRONGS_SUB_COUNT	4
 #define QUEST_BREAKTHEINTERNET_SUB_COUNT	3
 #define QUEST_IMPROVBATTLING_SUB_COUNT	4

@@ -1227,8 +1227,8 @@ Script_RemoveTint::
 .include "data/quests/icecreamcrafting.inc"
 .include "data/quests/vsdeoxys.inc"
 .include "data/quests/chinatowntunnels.inc"
+.include "data/quests/freshwaterevolution.inc"
 /*
-.include "data/quests/consolationprize.inc"
 .include "data/quests/rightingwrongs.inc"
 .include "data/quests/enterthedragon.inc"
 .include "data/quests/breaktheinternet.inc"
