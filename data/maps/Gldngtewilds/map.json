@@ -21,7 +21,7 @@
       "x": 14,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_PSFROUTE5",
+      "dest_map": "MAP_GLDNGTEWILDS_SPRING",
       "dest_warp_id": 0
     },
     {
@@ -64,6 +64,13 @@
       "y": 14,
       "elevation": 0,
       "dest_map": "MAP_HAIGHTASHBURY",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 6,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_GLDNGTEWILDS_SPRING",
       "dest_warp_id": 0
     }
   ],

@@ -1378,3 +1378,5 @@ Script_RemoveTint::
 .include "data/maps/Chinatown_Racisthouse/scripts.inc"
 .include "data/maps/Chinatown_Tunnel/scripts.inc"
 
+
+	.include "data/maps/Gldngtewilds_Spring/scripts.inc"

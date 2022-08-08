@@ -193,7 +193,14 @@ gText_Twitter_ChinatownTunnels_Message::
 	.string "alive?$"
 
 gText_Twitter_FreshwaterEvolution_Message::
-	.string "$"
+	.string "Check out my favorite spot in\n"
+	.string "Gldngtewilds! There's a clearing with\l"
+	.string "no tall grass, beautiful trees, and a\l"
+	.string "fresh water spring! The water tastes\l"
+	.string "better than anywhere else in the\l"
+	.string "region, and its got magical properties.\l"
+	.string "If you bring an octopus Pokémon, it'll\l"
+	.string "turn shiny!$"
 
 gText_Twitter_GemArtist_Message::
 	.string "$"

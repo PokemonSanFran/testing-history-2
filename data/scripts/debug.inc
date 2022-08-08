@@ -60,9 +60,12 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
+    questmenu QUEST_MENU_SET_ACTIVE QUEST_FRESHWATEREVOLUTION
+    //questmenu QUEST_MENU_COMPLETE_QUEST QUEST_FRESHWATEREVOLUTION
     end
 
 Debug_Script_2::
+    warp MAP_GLDNGTEWILDS_SPRING,5,6
 	end
 
 Debug_Script_3::

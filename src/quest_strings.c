@@ -64,9 +64,9 @@ const u8 gText_Quest_ChinatownTunnels_DoneDesc[] =_("The eldest member of Chinat
 const u8 gText_Quest_ChinatownTunnels_Map[] =_("Chinatown");
 
 const u8 gText_Quest_FreshwaterEvolution_Name[] = _("Freshwater Evolution");
-const u8 gText_Quest_FreshwaterEvolution_Desc[] =_("Description");
-const u8 gText_Quest_FreshwaterEvolution_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_FreshwaterEvolution_Map[] =_("Gldngtepark");
+const u8 gText_Quest_FreshwaterEvolution_Desc[] =_("Finding the secret spring inside\nGldngtewilds and putting in an\nOctillery will turn it shiny!");
+const u8 gText_Quest_FreshwaterEvolution_DoneDesc[] =_("There's a spring, but Octillery don't\nlike freshwater. There is something\nunusual about this place though....");
+const u8 gText_Quest_FreshwaterEvolution_Map[] =_("Gldngtewilds");
 
 const u8 gText_Quest_GemArtist_Name[] = _("Gem Artist");
 const u8 gText_Quest_GemArtist_Desc[] =_("Description");

@@ -1,0 +1,169 @@
+const BYSTANDER = 1
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const OCTILLERY = 2
+
+script Quest_FreshwaterEvolution_HideObject_Script{
+    setflag(FLAG_TEMP_1)
+}
+
+script Quest_FreshwaterEvolution_CheckPartyAndQuest_Script{
+//PSF TODO if player has Octillery in their party, buffer the nickname of the first non shiny one (or the last one)
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_FRESHWATEREVOLUTION)
+
+    if (var(VAR_RESULT)){
+        goto(Quest_FreshwaterEvolution_StartCutscene_Dialogue)
+    }
+    release
+    end
+}
+
+script Quest_FreshwaterEvolution_AlreadyShiny_Dialogue{
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_FreshwaterEvolution_OhWaitYoure,MSGBOX_DEFAULT)
+        callnative(ClearMugshot)
+        closemessage
+        call(Quest_FreshwaterEvolution_Recall_Script)
+        applymovement(PLAYER,Common_Movement_WalkUp)
+        waitmovement(PLAYER)
+        release
+        end
+}
+
+script Quest_FreshwaterEvolution_StartCutscene_Dialogue{
+    lock
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    waitmovement(PLAYER)
+    delay(30)
+
+    playse(SE_BALL_OPEN)
+    waitse
+    clearflag(FLAG_TEMP_1)
+    addobject(OCTILLERY)
+    playmoncry(SPECIES_OCTILLERY, CRY_MODE_ENCOUNTER)
+    waitmoncry
+
+    //PSF TODO if all the Octillery in your party are shiny, do this
+    //setvar(VAR_0x8000,999)
+    if (var(VAR_0x8000) == 999){
+        goto(Quest_FreshwaterEvolution_AlreadyShiny_Dialogue)
+    }
+
+   bufferleadmonspeciesname(STR_VAR_1)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_FreshwaterEvolution_OkayLetsSee,MSGBOX_DEFAULT)
+    callnative(ClearMugshot)
+    closemessage
+
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    applymovement(OCTILLERY,Quest_FreshwaterEvolution_JumpIntoWater_Movement)
+    waitmovement(OCTILLERY)
+    hideobjectat(OCTILLERY, MAP_GLDNGTEWILDS_SPRING)
+    delay(120)
+
+    playse(SE_PIN)
+    applymovement(PLAYER,Common_Movement_ExclamationMark)
+    waitmovement(PLAYER)
+    waitse
+
+    showobjectat(OCTILLERY, MAP_GLDNGTEWILDS_SPRING)
+    applymovement(OCTILLERY,Quest_FreshwaterEvolution_JumpOutWater_Movement)
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    playmoncry(SPECIES_OCTILLERY, CRY_MODE_HIGH_PITCH)
+    waitmoncry
+    waitmovement(OCTILLERY)
+    msgbox(gText_Quest_FreshwaterEvolution_LooksVery,MSGBOX_DEFAULT)
+    closemessage
+
+    call(Quest_FreshwaterEvolution_Recall_Script)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_FreshwaterEvolution_TheColorChangedBut,MSGBOX_DEFAULT)
+    callnative(ClearMugshot)
+    goto(Quest_FreshwaterEvolution_BystanderScene_Script)
+}
+
+script Quest_FreshwaterEvolution_BystanderScene_Script{
+    applymovement(BYSTANDER,Quest_FreshwaterEvolution_WalkToPlayer_Movement)
+    waitmovement(BYSTANDER)
+    applymovement(PLAYER,Common_Movement_FaceUp)
+
+    msgbox(gText_Quest_FreshwaterEvolution_HahaAreYouTrying,MSGBOX_DEFAULT)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_FreshwaterEvolution_YeahYouKnow,MSGBOX_DEFAULT)
+    callnative(ClearMugshot)
+
+    msgbox(gText_Quest_FreshwaterEvolution_BeenSeeingIt,MSGBOX_DEFAULT)
+    msgbox(gText_Quest_FreshwaterEvolution_ThereIsSomething,MSGBOX_DEFAULT)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_FreshwaterEvolution_GoodToKnow,MSGBOX_DEFAULT)
+    callnative(ClearMugshot)
+
+    closemessage
+    completequest(QUEST_FRESHWATEREVOLUTION)
+    release
+    end
+}
+
+script Quest_FreshwaterEvolution_Recall_Script{
+    playse(SE_BALL_OPEN)
+    waitse
+    removeobject(OCTILLERY)
+    }
+
+movement Quest_FreshwaterEvolution_JumpIntoWater_Movement{
+    face_down
+    delay_16
+    jump_2_down
+    step_end
+}
+movement Quest_FreshwaterEvolution_JumpOutWater_Movement{
+    jump_in_place_up
+    jump_2_up
+    face_right
+    jump_in_place_right * 2
+    step_end
+}
+movement Quest_FreshwaterEvolution_WalkToPlayer_Movement{
+    walk_right * 2
+    face_down
+    step_end
+}
+
+text gText_Quest_FreshwaterEvolution_OhWaitYoure{
+    format("Oh wait, you're already shiny...")
+}
+text gText_Quest_FreshwaterEvolution_OkayLetsSee{
+    format("Okay let's see... come on {STR_VAR_1}, hop in the water!")
+}
+text gText_Quest_FreshwaterEvolution_LooksVery{
+    format("{STR_VAR_1} looks very distressed!")
+}
+text gText_Quest_FreshwaterEvolution_TheColorChangedBut{
+    format("The color changed, but I don't think its a shiny now...")
+}
+text gText_Quest_FreshwaterEvolution_HahaAreYouTrying{
+    format("Hahaha are you trying that Shiny Octillery trick from Twitter?")
+}
+text gText_Quest_FreshwaterEvolution_YeahYouKnow{
+    format("Yeah, you know about that?")
+}
+text gText_Quest_FreshwaterEvolution_BeenSeeingIt{
+    format("Been seeing it a lot lately! Octopuses naturally change color when under stress, and they're seawater animals. Any ol' octopus would react that way. Poor thing, it'll probably be fine after chilling in your Pokeball for a bit.")
+}
+text gText_Quest_FreshwaterEvolution_GoodToKnow{
+    format("Good to know...")
+}
+text gText_Quest_FreshwaterEvolution_ThereIsSomething{
+    format("There is something weird about this spring though. I was training a Graveler here, and it suddenly evolved on its own! No Linking Cord or anything!")
+}
+text gText_Quest_FreshwaterEvolution_IWonderWhat{
+    format("I wonder what other Pokemon will evolve here?")
+}

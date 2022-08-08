@@ -5560,6 +5560,16 @@
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/Chinatown_Tunnel/border.bin",
       "blockdata_filepath": "data/layouts/Chinatown_Tunnel/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLDNGTEWILDS_SPRING",
+      "name": "Gldngtewilds_Spring_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Gldngtewilds_Spring/border.bin",
+      "blockdata_filepath": "data/layouts/Gldngtewilds_Spring/map.bin"
     }
   ]
 }

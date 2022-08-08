@@ -532,6 +532,7 @@
 #define MAP_METEOR_FALLS_STEVENS_CAVE                (119 | (33 << 8))
 #define MAP_GLDNGTEWILDS                             (120 | (33 << 8))
 #define MAP_CHASECENTER_CONSTRUCTION                 (121 | (33 << 8))
+#define MAP_GLDNGTEWILDS_SPRING                      (122 | (33 << 8))
 
 // gMapGroup_IndoorDynamic
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (34 << 8))

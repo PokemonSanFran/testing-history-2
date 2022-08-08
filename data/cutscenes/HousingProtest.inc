@@ -44,7 +44,7 @@ HousingProtest_StartChanting_Dialogue::
 	msgbox gText_HousingProtest_YoureNoGood
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_EverybodySoAngry
 	callnative ClearMugshot
@@ -170,7 +170,7 @@ HousingProtest_LandlordTalkToCrowd_Dialogue::
 	waitmoncry
 	msgbox gText_HousingProtest_ToTryReason
 	msgbox gText_HousingProtest_AintAThreat
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_CutItOut
 	callnative ClearMugshot
@@ -178,13 +178,13 @@ HousingProtest_LandlordTalkToCrowd_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, HousingProtest_DefendLandlord
 	applymovement 12, HousingProtest_StepAside
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_EveryTimeISee
 	callnative ClearMugshot
 	msgbox gText_HousingProtest_TheseClowns
 	msgbox gText_HousingProtest_ThisAintYourBusiness
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_ICanTakeBoth
 	callnative ClearMugshot
@@ -289,18 +289,18 @@ HousingProtest_InteractLandlord_Script_3:
 HousingProtest_InteractLandlord_Dialogue::
 	addvar VAR_TEMP_4, 1
 	msgbox gText_HousingProtest_HasATendency, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_WhyWereProtesting
 	callnative ClearMugshot
 	msgbox gText_HousingProtest_EntitledToLiveAnyWhere
 	msgbox gText_HousingProtest_SubjectToTheSameRent
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_SoPeopleWereComing
 	callnative ClearMugshot
 	msgbox gText_HousingProtest_IGuessSo
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HousingProtest_WhatAboutThePolice
 	callnative ClearMugshot
