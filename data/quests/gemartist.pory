@@ -1,0 +1,161 @@
+const ARTIST = 1
+//PSF TODO create beach glass item
+//make sure beach glass has no monetary value
+//PSF TODO write script to generate 10 new hidden tiles where beach glass can be found if quest_gemartist is not inactive
+//activate on entering the beach
+//check how much beach glass is left, if not 10, run this script
+//check if quest is not inactive
+//pick 10 beach tiles on the route
+//drop a hidden item there
+//check bag, if 10 AND gem_artist is active, move to reward
+//PSF TODO run a function every frame, if bag doesn't have 10 Beach Glass _and_ quest is Reward, move back to Active
+//PSF TODO run a function every frame, if bag doesn't have 10 Beach Glass _and_ quest is Reward, move back to Active
+
+script Quest_GemArtist_AskForGlass_Dialogue{
+	msgbox(gText_Quest_GemArtist_AhYouSaw, MSGBOX_NPC)
+    call(Quest_GemArtist_CheckBag_Script)
+    if (var(VAR_RESULT))
+    {
+        goto(Quest_GemArtist_GiveFirstGem_Script)
+    }
+	else
+	{
+        goto(Quest_GemArtist_NotEnough_Script)
+	}
+
+}
+
+script Quest_GemArtist_WantGem_Dialogue{
+    msgbox(gText_Quest_GemArtist_YoureBack,MSGBOX_NPC)
+    call(Quest_GemArtist_CheckBag_Script)
+    if (var(VAR_RESULT))
+    {
+        goto(Quest_GemArtist_GiveNextGem_Script)
+    }
+	else
+	{
+        goto(Quest_GemArtist_NotEnough_Script)
+	}
+}
+
+script Quest_GemArtist_NotEnough_Script{
+    msgbox(gText_Quest_GemArtist_OhYouDont, MSGBOX_NPC)
+    end
+}
+
+script Quest_GemArtist_CheckBag_Script{
+	additem(ITEM_RARE_CANDY,10)
+	checkitem(ITEM_RARE_CANDY, 10)
+    return
+}
+
+script Quest_GemArtist_GiveFirstGem_Script{
+    call(Quest_GemArtist_MakeGem_Script)
+    msgbox(gText_Quest_GemArtist_JustLikeTheAd, MSGBOX_NPC)
+    questmenu(QUEST_MENU_SET_REWARD, QUEST_GEMARTIST)
+    completequest(QUEST_GEMARTIST)
+    end
+}
+
+script Quest_GemArtist_GiveNextGem_Script{
+    call(Quest_GemArtist_MakeGem_Script)
+    msgbox(gText_Quest_GemArtist_ThereYouGo, MSGBOX_NPC)
+    release
+    end
+}
+
+script Quest_GemArtist_RandomOrChosenGem_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_GEMARTIST)
+
+        if(!var(VAR_RESULT)){
+            random(17)
+        }else {
+            //PSF TODO get list of types that user can pick from
+            multichoice(16,0,MULTI_STARTER_SELECT,FALSE)
+            if (var(VAR_RESULT) == MULTI_B_PRESSED){
+                goto(Quest_GemArtist_CancelGem_Dialogue)
+            }
+        }
+    return
+}
+
+script Quest_GemArtist_MakeGem_Script
+{
+    call(Quest_GemArtist_RandomOrChosenGem_Script)
+
+    applymovement(ARTIST,Common_Movement_FaceRight)
+    waitmovement(ARTIST)
+    msgbox(gText_Quest_GemArtist_NowJustToDoThis)
+    closemessage
+    delay(30)
+    faceplayer
+
+    switch (var(VAR_RESULT))
+            {
+            case 0:
+                giveitem(ITEM_NORMAL_GEM,1)
+            case 1:
+                 giveitem(ITEM_FIRE_GEM,1)
+            case 2:
+                 giveitem(ITEM_WATER_GEM,1)
+            case 3:
+                 giveitem(ITEM_ELECTRIC_GEM,1)
+            case 4:
+                 giveitem(ITEM_GRASS_GEM,1)
+            case 5:
+                 giveitem(ITEM_ICE_GEM,1)
+            case 6:
+                 giveitem(ITEM_FIGHTING_GEM,1)
+            case 7:
+                 giveitem(ITEM_POISON_GEM,1)
+            case 8:
+                 giveitem(ITEM_GROUND_GEM,1)
+            case 9:
+                 giveitem(ITEM_FLYING_GEM,1)
+            case 10:
+                 giveitem(ITEM_PSYCHIC_GEM,1)
+            case 11:
+                 giveitem(ITEM_BUG_GEM,1)
+            case 12:
+                 giveitem(ITEM_ROCK_GEM,1)
+            case 13:
+                 giveitem(ITEM_GHOST_GEM,1)
+            case 14:
+                 giveitem(ITEM_DRAGON_GEM,1)
+            case 15:
+                 giveitem(ITEM_DARK_GEM,1)
+            case 16:
+                 giveitem(ITEM_STEEL_GEM,1)
+            case 17:
+                 giveitem(ITEM_FAIRY_GEM,1)
+            }
+    removeitem(ITEM_RARE_CANDY, 10)
+    return
+}
+
+script Quest_GemArtist_CancelGem_Dialogue{
+    msgbox(gText_Quest_GemArtist_ChangedYourMind,MSGBOX_NPC)
+    end
+}
+
+text gText_Quest_GemArtist_AhYouSaw{
+    format("Ah, you saw my ad on Twitter! Well, do you have 10 Beach Glass?")
+}
+text gText_Quest_GemArtist_YoureBack{
+    format("You're back! Did you bring 10 more Beach Glass?")
+}
+text gText_Quest_GemArtist_OhYouDont{
+    format("Oh, you don't have enough Beach Glass. Go get some and come back!")
+}
+text gText_Quest_GemArtist_JustLikeTheAd{
+    format("Just like the ad said, here's your beautiful Unovaian Gem. Enjoy!")
+}
+text gText_Quest_GemArtist_ThereYouGo{
+    format("There you go!")
+}
+text gText_Quest_GemArtist_NowJustToDoThis{
+    format("Okay, now just melt these down...")
+}
+text gText_Quest_GemArtist_ChangedYourMind{
+    format("Changed your mind?")
+}

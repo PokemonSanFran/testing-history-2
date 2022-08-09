@@ -69,8 +69,8 @@ const u8 gText_Quest_FreshwaterEvolution_DoneDesc[] =_("There's a spring, but Oc
 const u8 gText_Quest_FreshwaterEvolution_Map[] =_("Gldngtewilds");
 
 const u8 gText_Quest_GemArtist_Name[] = _("Gem Artist");
-const u8 gText_Quest_GemArtist_Desc[] =_("Description");
-const u8 gText_Quest_GemArtist_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_GemArtist_Desc[] =_("A local artist is willing to make rare\ngems from Unova. Bring them 10 Beach\nGlass!");
+const u8 gText_Quest_GemArtist_DoneDesc[] =_("The artist made you powerful Gem for\nbattle, but the glass wasn't easy to\nfind...");
 const u8 gText_Quest_GemArtist_Map[] =_("Pacifica");
 
 const u8 gText_Quest_BetweenAStoneAndAHardPlace_Name[] = _("Between a Stone and a Hard Place");

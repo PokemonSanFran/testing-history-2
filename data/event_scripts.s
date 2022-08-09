@@ -1228,6 +1228,7 @@ Script_RemoveTint::
 .include "data/quests/vsdeoxys.inc"
 .include "data/quests/chinatowntunnels.inc"
 .include "data/quests/freshwaterevolution.inc"
+.include "data/quests/gemartist.inc"
 /*
 .include "data/quests/rightingwrongs.inc"
 .include "data/quests/enterthedragon.inc"
@@ -1380,3 +1381,5 @@ Script_RemoveTint::
 
 
 	.include "data/maps/Gldngtewilds_Spring/scripts.inc"
+
+	.include "data/maps/Pacifica_Gemhouse/scripts.inc"

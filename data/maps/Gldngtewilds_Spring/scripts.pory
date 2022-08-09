@@ -10,14 +10,12 @@ script Gldngtewilds_Spring_Bystander_Event_Script
 
 	switch (var(VAR_RESULT))
 	{
-        //PSF TODO why doesn't this constant work here?
-		//case FLAG_GET_COMPLETED:
         case 4:
 			msgbox(gText_Quest_FreshwaterEvolution_IWonderWhat, MSGBOX_NPC)
 		default:
 			msgbox(gText_Gldngtewilds_Spring_ThisPlace, MSGBOX_NPC)
-	}
 	end
+}
 }
 
 text gText_Gldngtewilds_Spring_ThisPlace

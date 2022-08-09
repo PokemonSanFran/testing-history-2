@@ -203,7 +203,11 @@ gText_Twitter_FreshwaterEvolution_Message::
 	.string "turn shiny!$"
 
 gText_Twitter_GemArtist_Message::
-	.string "$"
+	.string "I'm a small business owner and artist\n"
+	.string "from Unova. I love the beach and making\l"
+	.string "art, so I recycle old Beach Glass into\l"
+	.string "beautiful gem. Bring me 10 Beach Glass\l"
+	.string "and I'll make you a gem too!f$"
 
 gText_Twitter_BetweenAStoneAndAHardPlace_Message::
 	.string "$"

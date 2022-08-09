@@ -1,0 +1,28 @@
+mapscripts Pacifica_Gemhouse_MapScripts{}
+
+script Quest_GemArtist_Event_Script
+{
+	lock
+	returnqueststate(QUEST_GEMARTIST)
+
+	switch (var(VAR_RESULT))
+	{
+		case 1:
+			goto(Pacifica_Gemhouse_Artist_Dialogue)
+		case 2:
+		case 3:
+			goto(Quest_GemArtist_AskForGlass_Dialogue)
+		case 4:
+			goto(Quest_GemArtist_WantGem_Dialogue)
+	}
+}
+
+script Pacifica_Gemhouse_Artist_Dialogue
+{
+	msgbox(gText_Pacifica_Gemhouse_LivingByTheBeach, MSGBOX_NPC)
+	end
+}
+
+text gText_Pacifica_Gemhouse_LivingByTheBeach{
+    format("Living by the beach is so perfect. The sounds of the waves, the beautiful shimmer of the glasss... *sigh*")
+}

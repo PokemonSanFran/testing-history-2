@@ -60,12 +60,14 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    questmenu QUEST_MENU_SET_ACTIVE QUEST_FRESHWATEREVOLUTION
-    //questmenu QUEST_MENU_COMPLETE_QUEST QUEST_FRESHWATEREVOLUTION
+    //questmenu QUEST_MENU_SET_ACTIVE QUEST_GEMARTIST 
+    questmenu QUEST_MENU_SET_REWARD QUEST_GEMARTIST 
+    additem ITEM_RARE_CANDY,10
+    setvar VAR_BEACH_BATTLE_STATE 2
     end
 
 Debug_Script_2::
-    warp MAP_GLDNGTEWILDS_SPRING,5,6
+    warp MAP_PACIFICA_GEMHOUSE,4,5
 	end
 
 Debug_Script_3::

@@ -90,6 +90,7 @@
 #define MAP_PRESIDIO_HAUNTEDHOUSE             (81 | (0 << 8))
 #define MAP_CHINATOWN_RACISTHOUSE             (82 | (0 << 8))
 #define MAP_CHINATOWN_TUNNEL                  (83 | (0 << 8))
+#define MAP_PACIFICA_GEMHOUSE                 (84 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))
