@@ -4432,6 +4432,9 @@ const u8 *GetQuestDesc(s32 questId)
         case QUEST_RABIESOUTBREAK:
             return GetQuestDesc_RabiesOutbreak();
             break;
+        case QUEST_BETWEENASTONEANDAHARD:
+            return GetQuestDesc_BetweenAStoneAndAHardPlace();
+            break;
 		default:
 			return sSideQuests[questId].desc;
 	}

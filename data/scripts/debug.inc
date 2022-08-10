@@ -60,10 +60,9 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    //questmenu QUEST_MENU_SET_ACTIVE QUEST_GEMARTIST 
-    questmenu QUEST_MENU_SET_REWARD QUEST_GEMARTIST 
-    additem ITEM_RARE_CANDY,10
-    setvar VAR_BEACH_BATTLE_STATE 2
+    incrementgamestat(GAME_STAT_CABLE_CAR_RIDES);
+    questmenu QUEST_MENU_SET_ACTIVE QUEST_BETWEENASTONEANDAHARD 
+    openquestmenu
     end
 
 Debug_Script_2::

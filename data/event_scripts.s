@@ -1229,6 +1229,7 @@ Script_RemoveTint::
 .include "data/quests/chinatowntunnels.inc"
 .include "data/quests/freshwaterevolution.inc"
 .include "data/quests/gemartist.inc"
+.include "data/quests/betweenastoneandahardplace.inc"
 /*
 .include "data/quests/rightingwrongs.inc"
 .include "data/quests/enterthedragon.inc"

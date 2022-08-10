@@ -74,8 +74,8 @@ const u8 gText_Quest_GemArtist_DoneDesc[] =_("The artist made you powerful Gem f
 const u8 gText_Quest_GemArtist_Map[] =_("Pacifica");
 
 const u8 gText_Quest_BetweenAStoneAndAHardPlace_Name[] = _("Between a Stone and a Hard Place");
-const u8 gText_Quest_BetweenAStoneAndAHardPlace_Desc[] =_("Description");
-const u8 gText_Quest_BetweenAStoneAndAHardPlace_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_BetweenAStoneAndAHardPlace_Desc[] =_("Ride the cable ar enough times to get a rare stone to power up Pokemon.");
+const u8 gText_Quest_BetweenAStoneAndAHardPlace_DoneDesc[] =_("You got a stone for riding the cable car\n3 times, but it was a Evolutionary\nStone, not a Mega Stone...");
 const u8 gText_Quest_BetweenAStoneAndAHardPlace_Map[] =_("Presidio");
 
 const u8 gText_Quest_RightingWrongs_Name[] = _("Righting Wrongs");
@@ -1188,3 +1188,5 @@ const u8 gText_PlayersAdventure_Flavor42[] =_("You became Champion, made some\nm
 const u8 gText_PlayersAdventure_Flavor43[] =_("You became Champion, stamped out\nYcombinator, and the region is a just a\nlittle better because of your efforts.");
 
 const u8 gText_RabiesOutbreak_Flavor1[] =_("Feral Glameow are endangering wildlife\nin Bernalheights. Defeat {STR_VAR_3} of them\nand report back to he ASPCA Officer.");
+
+const u8 gText_BetweenAStoneAndAHardPlace_Flavor1[] =_("Take {STR_VAR_3} more trolley ride(s), and get a\nstone 'capable of pushing a Pokemon\nfurther beyond'!");
