@@ -210,4 +210,8 @@ gText_Twitter_GemArtist_Message::
 	.string "and I'll make you a gem too!f$"
 
 gText_Twitter_BetweenAStoneAndAHardPlace_Message::
-	.string "$"
+	.string "Riding the trolley is the best way to\n"
+	.string "get around! If you ride the trolley\l"
+	.string "more ten times, come to the Bart HQ for\l"
+	.string "a stone that can help push Pokémon\l"
+	.string "even further beyond!$"

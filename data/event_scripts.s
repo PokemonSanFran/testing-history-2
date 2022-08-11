@@ -1384,3 +1384,5 @@ Script_RemoveTint::
 	.include "data/maps/Gldngtewilds_Spring/scripts.inc"
 
 	.include "data/maps/Pacifica_Gemhouse/scripts.inc"
+
+	.include "data/maps/Tenderloin_TrolleyHQ/scripts.inc"

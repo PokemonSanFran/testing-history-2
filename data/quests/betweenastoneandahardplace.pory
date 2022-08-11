@@ -1,3 +1,38 @@
-script test {
-    return
+incrementgamestat(GAME_STAT_TROLLEY_RIDES)
+
+//Quest_BetweenAStoneAndAHardPlace
+//gText_Quest_BetweenAStoneAndAHardPlace
+
+script Quest_BetweenAStoneAndAHardPlace_Event_Script{
+    returnqueststate(QUEST_BETWEENASTONEANDAHARD)
+
+    switch(var(VAR_RESULT)){
+        case 1: goto(Tenderloin_TrolleyHQ_CounterWorker_Dialogue)
+        case 2: goto(Quest_BetweenAStoneAndAHardPlace_Active_Dialogue)
+        case 3: goto(Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue)
+        case 4: goto(Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue)
+    }
+}
+
+script Quest_BetweenAStoneAndAHardPlace_Active_Dialogue{
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear,MSGBOX_NPC)
+    copyvar(STR_VAR_1,GAME_STAT_TROLLEY_RIDES)
+
+    switch(var(GAME_STAT_TROLLEY_RIDES)){
+        case 0: 
+            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_YouShouldTry,MSGBOX_NPC)
+        case 1: 
+        case 2:
+        case 3: 
+            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_AreYouNew,MSGBOX_NPC)
+        case 4:
+        case 5:
+        case 6:
+            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_YoureARegular,MSGBOX_NPC)
+        case 7:
+        case 8:
+        case 9:
+            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly,MSGBOX_NPC)
+    }
+    end
 }

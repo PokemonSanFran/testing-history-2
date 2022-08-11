@@ -305,17 +305,17 @@ const u8 *GetQuestDesc_RabiesOutbreak()
 
 const u8  *GetQuestDesc_BetweenAStoneAndAHardPlace()
 {
-	u8 requiredNumberCableCarRides = 3;
-    u8 numberCableCarRides = GetGameStat((GAME_STAT_CABLE_CAR_RIDES));
-    u8 remainingCableCarRide = (requiredNumberCableCarRides - numberCableCarRides);
+	u8 goalNumTrolleyRides = 10;
+    u8 numTrolleyRides = GetGameStat(GAME_STAT_TROLLEY_RIDES);
+    u8 numRemainingTrolleyRides = (goalNumTrolleyRides - numTrolleyRides);
 
-	switch (numberCableCarRides)
+	switch (numTrolleyRides)
 	{
 		case 0:
 		case 1:
 		case 2:
 			ConvertIntToDecimalStringN(gStringVar3,
-			                           remainingCableCarRide,
+			                           numRemainingTrolleyRides,
 			                           STR_CONV_MODE_LEFT_ALIGN, 6);
 			StringExpandPlaceholders(gStringVar2,
 			                         gText_BetweenAStoneAndAHardPlace_Flavor1);

@@ -60,13 +60,11 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    incrementgamestat(GAME_STAT_CABLE_CAR_RIDES);
     questmenu QUEST_MENU_SET_ACTIVE QUEST_BETWEENASTONEANDAHARD 
-    openquestmenu
+    warp MAP_TENDERLOIN_TROLLYHQ,2,0
     end
 
 Debug_Script_2::
-    warp MAP_PACIFICA_GEMHOUSE,4,5
 	end
 
 Debug_Script_3::
