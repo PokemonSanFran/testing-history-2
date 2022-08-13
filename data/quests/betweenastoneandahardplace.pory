@@ -1,4 +1,4 @@
-incrementgamestat(GAME_STAT_TROLLEY_RIDES)
+//incrementgamestat(GAME_STAT_TROLLEY_RIDES)
 
 //Quest_BetweenAStoneAndAHardPlace
 //gText_Quest_BetweenAStoneAndAHardPlace
@@ -16,7 +16,7 @@ script Quest_BetweenAStoneAndAHardPlace_Event_Script{
 
 script Quest_BetweenAStoneAndAHardPlace_Active_Dialogue{
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear,MSGBOX_NPC)
-    copyvar(STR_VAR_1,GAME_STAT_TROLLEY_RIDES)
+    buffernumberstring(STR_VAR_1,GAME_STAT_TROLLEY_RIDES)
 
     switch(var(GAME_STAT_TROLLEY_RIDES)){
         case 0: 
@@ -35,4 +35,64 @@ script Quest_BetweenAStoneAndAHardPlace_Active_Dialogue{
             msgbox(gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly,MSGBOX_NPC)
     }
     end
+}
+
+script Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue{
+    buffernumberstring(STR_VAR_1,GAME_STAT_TROLLEY_RIDES)
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying,MSGBOX_NPC)
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership,MSGBOX_NPC)
+
+    random(10)
+    switch(var(VAR_RESULT)){
+        case 0: giveitem(ITEM_ICE_STONE)
+        case 1: giveitem(ITEM_FIRE_STONE)
+        case 2: giveitem(ITEM_WATER_STONE)
+        case 3: giveitem(ITEM_THUNDER_STONE)
+        case 4: giveitem(ITEM_LEAF_STONE)
+        case 5: giveitem(ITEM_MOON_STONE)
+        case 6: giveitem(ITEM_SUN_STONE)
+        case 7: giveitem(ITEM_SHINY_STONE)
+        case 8: giveitem(ITEM_DUSK_STONE)
+        case 9: giveitem(ITEM_DAWN_STONE)
+    }
+
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont,MSGBOX_NPC)
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_Yeah,MSGBOX_NPC)
+    callnative(ClearMugshot)
+
+}
+
+script Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue{}
+
+text gText_Quest_BetweenAStoneAndAHardPlace {
+    format("")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear {
+    format("")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_YouShouldTry {
+    format("")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_AreYouNew {
+    format("")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_YoureARegular {
+    format("")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly {
+    format("")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying {
+    format("")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership {
+    format("")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont {
+    format("")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_Yeah {
+    format("")
 }

@@ -5090,6 +5090,7 @@ void CountDefeatedGlameow(void){
 
     if ((defeatedGlameowCount > 9) && QuestMenu_GetSetQuestState(QUEST_RABIESOUTBREAK,FLAG_GET_ACTIVE)){
         QuestMenu_GetSetQuestState(QUEST_RABIESOUTBREAK,FLAG_SET_REWARD);
+        QuestMenu_GetSetQuestState(QUEST_RABIESOUTBREAK,FLAG_REMOVE_ACTIVE);
     }
 
     VarSet(VAR_DEFEATED_GLAMEOW_COUNT,defeatedGlameowCount);
