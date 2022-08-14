@@ -76,7 +76,7 @@ const u8 gText_Quest_GemArtist_Map[] =_("Pacifica");
 const u8 gText_Quest_BetweenAStoneAndAHardPlace_Name[] = _("Between a Stone and a Hard Place");
 const u8 gText_Quest_BetweenAStoneAndAHardPlace_Desc[] =_("Ride the cable ar enough times to get a rare stone to power up Pokemon.");
 const u8 gText_Quest_BetweenAStoneAndAHardPlace_DoneDesc[] =_("You got a stone for riding the cable car\n3 times, but it was a Evolutionary\nStone, not a Mega Stone...");
-const u8 gText_Quest_BetweenAStoneAndAHardPlace_Map[] =_("Presidio");
+const u8 gText_Quest_BetweenAStoneAndAHardPlace_Map[] =_("Tenderloin");
 
 const u8 gText_Quest_RightingWrongs_Name[] = _("Righting Wrongs");
 const u8 gText_Quest_RightingWrongs_Desc[] =_("Description");

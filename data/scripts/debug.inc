@@ -60,19 +60,16 @@ Debug_CheatStart::
 	end
 
 Debug_Script_1::
-    warp MAP_BERNALHEIGHTS,15,11
+    questmenu QUEST_MENU_SET_ACTIVE QUEST_BETWEENASTONEANDAHARD
     end
 
 Debug_Script_2::
-    warp MAP_SUNSET,12,11
 	end
 
 Debug_Script_3::
-    warp MAP_SOMA,6,58
 	end
 
 Debug_Script_4::
-    warp MAP_PSFROUTE38,9,1
 	end
 
 Debug_Script_5::

@@ -1,7 +1,8 @@
-//incrementgamestat(GAME_STAT_TROLLEY_RIDES)
-
 //Quest_BetweenAStoneAndAHardPlace
 //gText_Quest_BetweenAStoneAndAHardPlace
+//
+//PSF TODO Look into StorytellerGetRecordedTrainerStat to figure out how to cnvert GAME_STAT into stringvar or something that be used or read
+//PSF TODO replace all uses of VAR_NUM_TROLLEY_RIDES with GAME_STAT_TROLLEY_RIDES so we're not using two variables for the same thing
 
 script Quest_BetweenAStoneAndAHardPlace_Event_Script{
     returnqueststate(QUEST_BETWEENASTONEANDAHARD)
@@ -16,14 +17,14 @@ script Quest_BetweenAStoneAndAHardPlace_Event_Script{
 
 script Quest_BetweenAStoneAndAHardPlace_Active_Dialogue{
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear,MSGBOX_NPC)
-    buffernumberstring(STR_VAR_1,GAME_STAT_TROLLEY_RIDES)
+    buffernumberstring(STR_VAR_1,VAR_NUM_TROLLEY_RIDES)
 
-    switch(var(GAME_STAT_TROLLEY_RIDES)){
-        case 0: 
+    switch(var(VAR_NUM_TROLLEY_RIDES)){
+        case 0:
             msgbox(gText_Quest_BetweenAStoneAndAHardPlace_YouShouldTry,MSGBOX_NPC)
-        case 1: 
+        case 1:
         case 2:
-        case 3: 
+        case 3:
             msgbox(gText_Quest_BetweenAStoneAndAHardPlace_AreYouNew,MSGBOX_NPC)
         case 4:
         case 5:
@@ -34,11 +35,13 @@ script Quest_BetweenAStoneAndAHardPlace_Active_Dialogue{
         case 9:
             msgbox(gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly,MSGBOX_NPC)
     }
+
+    incrementgamestat(GAME_STAT_TROLLEY_RIDES)
+    addvar(VAR_NUM_TROLLEY_RIDES,1)
     end
 }
 
 script Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue{
-    buffernumberstring(STR_VAR_1,GAME_STAT_TROLLEY_RIDES)
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying,MSGBOX_NPC)
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership,MSGBOX_NPC)
 
@@ -62,37 +65,43 @@ script Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue{
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_Yeah,MSGBOX_NPC)
     callnative(ClearMugshot)
 
+    completequest(QUEST_BETWEENASTONEANDAHARD)
+    release
+    end
 }
 
-script Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue{}
-
-text gText_Quest_BetweenAStoneAndAHardPlace {
-    format("")
+script Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue{
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot,MSGBOX_NPC)
+    end
 }
+
 text gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear {
-    format("")
+    format("Did you hear about the promotion we're doing? Ride the trolleys in SanFran 10 times, and get a mega powerful stone for pushing the limits of your Pokemons power!")
 }
 text gText_Quest_BetweenAStoneAndAHardPlace_YouShouldTry {
-    format("")
+    format("You should try out the trolleys around the region. They're a great way to get around!")
 }
 text gText_Quest_BetweenAStoneAndAHardPlace_AreYouNew {
-    format("")
+    format("Are you new to the region? You should really give the trolleys a try!")
 }
 text gText_Quest_BetweenAStoneAndAHardPlace_YoureARegular {
-    format("")
+    format("You're a regular, {PLAYER}! Thanks for supporting the trolley system. Come back when you've done 10 rides!")
 }
 text gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly {
-    format("")
+    format("Oh wow! {STR_VAR_1} rides! Excited to get your prize?")
 }
 text gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying {
-    format("")
+    format("Glad to see you're enjoying the trolley system, {PLAYER}!")
 }
 text gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership {
-    format("")
+    format("For your continued ridership, we'd like to present you with a special evolutionary stones!")
 }
 text gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont {
-    format("")
+    format("Aaah, I can tell you're disappointed. Please don't be mad... we had some Mega Stones, but then we ran out. We had to reword the ad to keep people coming in, but all of the Trainers have been so mad!")
 }
 text gText_Quest_BetweenAStoneAndAHardPlace_Yeah {
-    format("")
+    format("...yeah. Not what I was expecting. But thanks, I guess.")
+}
+text gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot{
+    format("We should pivot to a more hoonest advertising model. I don't think I can handle more angry messages on Twitter!")
 }

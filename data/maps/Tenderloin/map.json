@@ -220,18 +220,17 @@
       "elevation": 0,
       "dest_map": "MAP_TENDERLOIN_LIBRARY",
       "dest_warp_id": 0
+    },
+    {
+      "x": 14,
+      "y": 31,
+      "elevation": 0,
+      "dest_map": "MAP_TENDERLOIN_TROLLEY_HQ",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 34,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "LineMovementEvent_Script"
-    }
+
   ],
   "bg_events": [
     {

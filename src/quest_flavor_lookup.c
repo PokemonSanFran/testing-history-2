@@ -305,25 +305,14 @@ const u8 *GetQuestDesc_RabiesOutbreak()
 
 const u8  *GetQuestDesc_BetweenAStoneAndAHardPlace()
 {
-	u8 goalNumTrolleyRides = 10;
+    u8 goalNumTrolleyRides = 10;
     u8 numTrolleyRides = GetGameStat(GAME_STAT_TROLLEY_RIDES);
     u8 numRemainingTrolleyRides = (goalNumTrolleyRides - numTrolleyRides);
 
-	switch (numTrolleyRides)
-	{
-		case 0:
-		case 1:
-		case 2:
-			ConvertIntToDecimalStringN(gStringVar3,
-			                           numRemainingTrolleyRides,
-			                           STR_CONV_MODE_LEFT_ALIGN, 6);
-			StringExpandPlaceholders(gStringVar2,
-			                         gText_BetweenAStoneAndAHardPlace_Flavor1);
-            break;
-		case 3:
-			QuestMenu_GetSetQuestState(QUEST_BETWEENASTONEANDAHARD,
-			                           QUEST_MENU_SET_REWARD);
-    break;
-	}
-	return gStringVar2;
+    ConvertIntToDecimalStringN(gStringVar3,
+            numRemainingTrolleyRides,
+            STR_CONV_MODE_LEFT_ALIGN, 6);
+    StringExpandPlaceholders(gStringVar2,
+            gText_BetweenAStoneAndAHardPlace_Flavor1);
+    return gStringVar2;
 }

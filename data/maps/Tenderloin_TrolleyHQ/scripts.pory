@@ -5,6 +5,17 @@ script Tenderloin_TrolleyHQ_CounterWorker_Dialogue{
     end
 }
 
+script Tenderloin_TrolleyHQ_Machine_Script{
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_BETWEENASTONEANDAHARD)
+    if (var(VAR_RESULT)){
+    //PSF TODO There should be a script every frame that checks if you've ridden the Trolley more than 10 times, AND if the quest is active, marks it as complete
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_BETWEENASTONEANDAHARD)
+    }
+
+    msgbox("if that quest is acitve,\pyou rode the BART ten times.\pTalk to the guy now",MSGBOX_SIGN)
+    end
+}
+
 text gText_Tenderloin_TrolleyHQ_DoYouHave{
     format("Do you have any idea what it takes to make sure all the trolleys run on time? Especially when ridership is down...")
 }

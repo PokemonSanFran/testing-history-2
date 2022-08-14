@@ -26,8 +26,8 @@ Quest_BetweenAStoneAndAHardPlace_Event_Script_5:
 
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue::
 	msgbox gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear, MSGBOX_NPC
-	buffernumberstring STR_VAR_1, GAME_STAT_TROLLEY_RIDES
-	switch GAME_STAT_TROLLEY_RIDES
+	buffernumberstring STR_VAR_1, VAR_NUM_TROLLEY_RIDES
+	switch VAR_NUM_TROLLEY_RIDES
 	case 0, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_3
 	case 1, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_4
 	case 2, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_4
@@ -39,6 +39,8 @@ Quest_BetweenAStoneAndAHardPlace_Active_Dialogue::
 	case 8, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_6
 	case 9, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_6
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_1:
+	incrementgamestat GAME_STAT_TROLLEY_RIDES
+	addvar VAR_NUM_TROLLEY_RIDES, 1
 	end
 
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_3:
@@ -59,7 +61,6 @@ Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_6:
 
 
 Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue::
-	buffernumberstring STR_VAR_1, GAME_STAT_TROLLEY_RIDES
 	msgbox gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying, MSGBOX_NPC
 	msgbox gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership, MSGBOX_NPC
 	random 10
@@ -80,7 +81,9 @@ Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue_1:
 	callnative DrawMugshot
 	msgbox gText_Quest_BetweenAStoneAndAHardPlace_Yeah, MSGBOX_NPC
 	callnative ClearMugshot
-	return
+	completequest QUEST_BETWEENASTONEANDAHARD
+	release
+	end
 
 Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue_3:
 	giveitem ITEM_ICE_STONE
@@ -124,35 +127,57 @@ Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue_12:
 
 
 Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue::
-	return
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot, MSGBOX_NPC
+	end
 
-
-gText_Quest_BetweenAStoneAndAHardPlace::
-	.string "$"
 
 gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear::
-	.string "$"
+	.string "Did you hear about the promotion we're\n"
+	.string "doing? Ride the trolleys in SanFran 10\l"
+	.string "times, and get a mega powerful stone\l"
+	.string "for pushing the limits of your\l"
+	.string "Pokemons power!$"
 
 gText_Quest_BetweenAStoneAndAHardPlace_YouShouldTry::
-	.string "$"
+	.string "You should try out the trolleys around\n"
+	.string "the region. They're a great way to get\l"
+	.string "around!$"
 
 gText_Quest_BetweenAStoneAndAHardPlace_AreYouNew::
-	.string "$"
+	.string "Are you new to the region? You should\n"
+	.string "really give the trolleys a try!$"
 
 gText_Quest_BetweenAStoneAndAHardPlace_YoureARegular::
-	.string "$"
+	.string "You're a regular, {PLAYER}! Thanks for\n"
+	.string "supporting the trolley system. Come\l"
+	.string "back when you've done 10 rides!$"
 
 gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly::
-	.string "$"
+	.string "Oh wow! {STR_VAR_1} rides! Excited\n"
+	.string "to get your prize?$"
 
 gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying::
-	.string "$"
+	.string "Glad to see you're enjoying the trolley\n"
+	.string "system, {PLAYER}!$"
 
 gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership::
-	.string "$"
+	.string "For your continued ridership, we'd like\n"
+	.string "to present you with a special\l"
+	.string "evolutionary stones!$"
 
 gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont::
-	.string "$"
+	.string "Aaah, I can tell you're disappointed.\n"
+	.string "Please don't be mad... we had some Mega\l"
+	.string "Stones, but then we ran out. We had to\l"
+	.string "reword the ad to keep people coming in,\l"
+	.string "but all of the Trainers have been so\l"
+	.string "mad!$"
 
 gText_Quest_BetweenAStoneAndAHardPlace_Yeah::
-	.string "$"
+	.string "...yeah. Not what I was expecting. But\n"
+	.string "thanks, I guess.$"
+
+gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot::
+	.string "We should pivot to a more hoonest\n"
+	.string "advertising model. I don't think I can\l"
+	.string "handle more angry messages on Twitter!$"
