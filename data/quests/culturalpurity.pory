@@ -1,0 +1,7 @@
+script Quest_CulturalPurity_HideLeader_Script{
+
+    special(GetNumberOfBadges)
+    if ((var(VAR_BUGSY_STATE) != BATTLE_1_COMPLETE) || (var(VAR_RESULT) < 2)){
+        setflag(FLAG_TEMP_1) //Make Bugsy invisible in Chinatown
+    }
+}

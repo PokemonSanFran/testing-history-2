@@ -7,7 +7,17 @@ const ARIANA = 5 //FLAG_TEMP_5
 const GRUNTA = 6//FLAG_TEMP_5
 const GRUNTB = 7//FLAG_TEMP_5
 
-script HowDisappointing_HideObject_Script {
+script HowDisappointing_HideObject_Script{
+        switch (var(VAR_PETALBURG_WOODS_STATE)){
+            case 1: call(HowDisappointing_HideTeamRocket_Script) 
+            case 2: call(HowDisappointing_HidePolice_Script)
+            case 3: call(HowDisappointing_HidePolice_Script)
+            default: call(HowDisappointing_HideAll_Script)
+        }
+        return
+}
+
+script HowDisappointing_HideAll_Script{
     setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_4)
     setflag(FLAG_TEMP_5)

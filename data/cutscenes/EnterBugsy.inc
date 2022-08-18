@@ -50,6 +50,7 @@ EnterBugsy_StartGymBattle_Script::
 EnterBugsy_BugsyDefeated_Script::
 	lockall
 	setflag FLAG_BADGE02_GET
+	setvar VAR_BUGSY_STATE, BATTLE_1_COMPLETE
 	addvar VAR_GYM_2_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_BUGSY
 	callnative DrawMugshot

@@ -562,7 +562,7 @@ sub_quest(
 	gText_Quest_HybridCulture_Sub1_Name,
 	gText_Quest_HybridCulture_Sub1_Desc,
 	gText_Quest_HybridCulture_Sub1_Map,
-	OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
+    OBJ_EVENT_GFX_GENTLEMAN,
 	OBJECT,
 	sText_Discovered
 ),

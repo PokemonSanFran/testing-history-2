@@ -154,8 +154,8 @@ const u8 gText_Quest_CulturalPurity_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_CulturalPurity_Map[] =_("Chinatown");
 
 const u8 gText_Quest_HybridCulture_Name[] = _("Hybrid Culture");
-const u8 gText_Quest_HybridCulture_Desc[] =_("Description");
-const u8 gText_Quest_HybridCulture_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_HybridCulture_Desc[] =_("Bugsy wants to better understandn the\nmixed culture of SanFran & Japantown.\nFind Japantown's cultural gems!");
+const u8 gText_Quest_HybridCulture_DoneDesc[] =_("Bugsy has a lot to learn about SanFran\nculture, but is greateful for your\nhelp.");
 const u8 gText_Quest_HybridCulture_Map[] =_("Japantown");
 
 const u8 gText_Quest_AlohaFromAlola_Name[] = _("Aloha from Alola");
@@ -584,13 +584,13 @@ const u8 gText_Quest_RestaurantExpansion2_Sub5_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_RestaurantExpansion2_Sub5_Map[] = _("Haightashbury");
 
 const u8 gText_Quest_HybridCulture_Sub1_Name[] = _("Food");
-const u8 gText_Quest_HybridCulture_Sub1_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_HybridCulture_Sub1_Desc[] = _("Poffins stuffed with flavors not\nnative to Sinnoh are a popular dessert\nat the ramen restaurant.");
 const u8 gText_Quest_HybridCulture_Sub1_Map[] = _("Japantown");
 const u8 gText_Quest_HybridCulture_Sub2_Name[] = _("Fashion");
-const u8 gText_Quest_HybridCulture_Sub2_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_HybridCulture_Sub2_Desc[] = _("Tourists from Sinnoh wear the latest\nfashion from their country, which in\nturn inspires designers in SanFran.");
 const u8 gText_Quest_HybridCulture_Sub2_Map[] = _("Japantown");
-const u8 gText_Quest_HybridCulture_Sub3_Name[] = _("Music");
-const u8 gText_Quest_HybridCulture_Sub3_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_HybridCulture_Sub3_Name[] = _("Traditions");
+const u8 gText_Quest_HybridCulture_Sub3_Desc[] = _("The best way to get berries only found\nin Sinnoh is to defeat their Trainers in\nbattle.");
 const u8 gText_Quest_HybridCulture_Sub3_Map[] = _("Japantown");
 
 const u8 gText_Quest_BuildingAnExhibit_Sub1_Name[] = _("Ticket Stub");

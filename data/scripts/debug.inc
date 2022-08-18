@@ -5,10 +5,6 @@ Debug_ShowFieldMessageStringVar4::
 	releaseall
 	end
 
-Debug_CheckWeekDay_Text:
-	.string "Aaaaah, yes!\l"
-	.string "{STR_VAR_1}s are made for dads!\l"
-	.string "And dad's car!$"
 
 Debug_CheatStart::
 	lockall
@@ -26,15 +22,13 @@ Debug_CheatStart::
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
-	@ setflag FLAG_SYS_NATIONAL_DEX
-	@ special EnableNationalPokedex
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
-	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
-	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
-	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom  and is corresponding gender)
-	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2 @ 2: Met Rival's Mom  and is corresponding gender)
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4 @ 4: Received Pokedex
+	setvar VAR_LITTLEROOT_TOWN_STATE, 4
+	setvar VAR_LITTLEROOT_INTRO_STATE, 7
+	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2
+	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
 	setflag FLAG_RECEIVED_BIKE
 	giveitem ITEM_ACRO_BIKE
 	setvar VAR_BRINEY_HOUSE_STATE, 1
@@ -42,58 +36,53 @@ Debug_CheatStart::
 	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
-	@ additem ITEM_MAX_REPEL, 10
-	@ giveitem ITEM_EON_TICKET
-	@ setflag FLAG_SYS_HAS_EON_TICKET
-	@ setvar VAR_DISTRIBUTE_EON_TICKET, 0
-	@ giveitem ITEM_MYSTIC_TICKET
-	@ setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
-	@ setflag FLAG_RECEIVED_MYSTIC_TICKET
-	@ giveitem ITEM_AURORA_TICKET
-	@ setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
-	@ setflag FLAG_RECEIVED_AURORA_TICKET
-	@ setflag FLAG_BADGE06_GET @ Badge for flying filed move
-	@ setweather WEATHER_VOLCANIC_ASH
-	@ doweather
 	closemessage
 	release
 	end
 
+
 Debug_Script_1::
-    questmenu QUEST_MENU_SET_ACTIVE QUEST_BETWEENASTONEANDAHARD
-    end
+	setvar VAR_BUGSY_STATE, QUEST_1_COMPLETE
+	end
+
 
 Debug_Script_2::
 	end
 
+
 Debug_Script_3::
 	end
+
 
 Debug_Script_4::
 	end
 
+
 Debug_Script_5::
 	end
+
 
 Debug_Script_6::
 	end
 
+
 Debug_Script_7::
 	end
 
-Debug_Script_8::
 
-//Debug_Script_8::
-//givecustommon SPECIES_PRIMARINA,100,ITEM_LEFTOVERS,ITEM_ULTRA_BALL,NATURE_CALM,0,248,0,0,36,44,180,31,0,31,31,31,31,MOVE_SUBSTITUTE,MOVE_CALM_MIND,MOVE_SCALD,MOVE_MOONBLAST,TRUE
-//givecustommon SPECIES_SKARMORY,100,ITEM_ROCKY_HELMET,ITEM_ULTRA_BALL,NATURE_BOLD,1,248,0,160,0,0,100,31,0,31,31,31,31,MOVE_SPIKES,MOVE_BODY_PRESS,MOVE_ROOST,MOVE_TAUNT
-//givecustommon SPECIES_CLEFABLE,100,ITEM_LEFTOVERS,ITEM_ULTRA_BALL,NATURE_BOLD,1,252,0,252,0,4,0,31,31,31,31,31,31,MOVE_MOONBLAST,MOVE_SOFT_BOILED,MOVE_STEALTH_ROCK,MOVE_KNOCK_OFF,TRUE
-//givecustommon SPECIES_MANDIBUZZ,100,ITEM_HEAVY_DUTY_BOOTS,ITEM_ULTRA_BALL,NATURE_CAREFUL,1,248,0,112,0,132,16,31,31,31,31,31,31,MOVE_FOUL_PLAY,MOVE_DEFOG,MOVE_ROOST,MOVE_U_TURN
-//givecustommon SPECIES_GASTRODON_EAST_SEA,100,ITEM_LEFTOVERS,ITEM_ULTRA_BALL,NATURE_SASSY,0,248,0,8,0,252,0,31,31,31,31,31,31,MOVE_SCALD,MOVE_EARTHQUAKE,MOVE_RECOVER,MOVE_TOXIC
-//givecustommon SPECIES_JIRACHI,100,ITEM_CHOICE_SCARF,ITEM_ULTRA_BALL,NATURE_JOLLY,0,0,252,0,0,4,252,31,31,31,31,31,31,MOVE_IRON_HEAD,MOVE_U_TURN,MOVE_TRICK,MOVE_HEALING_WISH
+Debug_Script_8::
 	end
 
+
 Debug_Script_9::
-    end
+	end
+
 
 Debug_Script_10::
-    end
+	end
+
+
+Debug_CheckWeekDay_Text::
+	.string "Aaaah, yes!\l"
+	.string "{STR_VAR_1}s are made for dads!\l"
+	.string "And dad's car!$"

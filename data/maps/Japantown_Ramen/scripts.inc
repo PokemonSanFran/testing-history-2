@@ -29,3 +29,19 @@ Japantown_Ramen_InteractFanny_Event_Script_5:
 Japantown_Ramen_InteractFanny_Event_Script_6:
 	return
 
+
+Japantown_Ramen_FoodCulture_Script::
+	msgbox gText_Japantown_Ramen_TheRamenIsGreat, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_HYBRIDCULTURE, SUB_QUEST_1
+	call Quest_HybridCulture_CheckSubquests_Script
+	end
+
+
+gText_Japantown_Ramen_TheRamenIsGreat::
+	.string "The ramen is great, but my favorite item\n"
+	.string "on the menu are the Poffins! Poffins\l"
+	.string "are a Sinnoh dessert, but here they use\l"
+	.string "all sorts of flavors you can't find\l"
+	.string "overseas! The tastiest are the yellow\l"
+	.string "Poke Bean! Or wait, is it the\l"
+	.string "Casteliacone flavor...?$"

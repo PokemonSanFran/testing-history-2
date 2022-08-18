@@ -1,4 +1,26 @@
 HowDisappointing_HideObject_Script::
+	switch VAR_PETALBURG_WOODS_STATE
+	case 1, HowDisappointing_HideObject_Script_3
+	case 2, HowDisappointing_HideObject_Script_4
+	case 3, HowDisappointing_HideObject_Script_5
+	call HowDisappointing_HideAll_Script
+HowDisappointing_HideObject_Script_1:
+	return
+
+HowDisappointing_HideObject_Script_3:
+	call HowDisappointing_HideTeamRocket_Script
+	goto HowDisappointing_HideObject_Script_1
+
+HowDisappointing_HideObject_Script_4:
+	call HowDisappointing_HidePolice_Script
+	goto HowDisappointing_HideObject_Script_1
+
+HowDisappointing_HideObject_Script_5:
+	call HowDisappointing_HidePolice_Script
+	goto HowDisappointing_HideObject_Script_1
+
+
+HowDisappointing_HideAll_Script::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_4
 	setflag FLAG_TEMP_5

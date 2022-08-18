@@ -4,23 +4,8 @@ Chinatown_MapScripts::
 	.byte 0
 
 Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	switch VAR_PETALBURG_WOODS_STATE
-	case 1, Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
-	case 2, Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
-	case 3, Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	call HowDisappointing_HideObject_Script
-	return
-
-Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	call HowDisappointing_HideTeamRocket_Script
-	return
-
-Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
-	call HowDisappointing_HidePolice_Script
-	return
-
-Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	call HowDisappointing_HidePolice_Script
+	call Quest_CulturalPurity_HideLeader_Script
 	return
 
 Chinatown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

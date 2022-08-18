@@ -4717,7 +4717,7 @@
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Lavaridge",
+      "secondary_tileset": "gTileset_Dewford",
       "border_filepath": "data/layouts/Japantown/border.bin",
       "blockdata_filepath": "data/layouts/Japantown/map.bin"
     },

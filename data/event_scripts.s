@@ -1245,8 +1245,8 @@ Script_RemoveTint::
 .include "data/quests/restaurantexpansion1.inc"
 .include "data/quests/restaurantexpansion2.inc"
 .include "data/quests/restaurantexpansion3.inc"
-.include "data/quests/culturalpurity.inc"
 */
+.include "data/quests/culturalpurity.inc"
 .include "data/quests/hybridculture.inc"
 /*
 .include "data/quests/alohafromalola.inc"
