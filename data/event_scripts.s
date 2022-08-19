@@ -1274,9 +1274,11 @@ Script_RemoveTint::
 .include "data/quests/dexcompletion.inc"
 .include "data/quests/cablecardancing.inc"
 .include "data/quests/kitchenvolunteering.inc"
+*/
 .include "data/quests/artisanballs1.inc"
 .include "data/quests/artisanballs2.inc"
 .include "data/quests/artisanballs3.inc"
+/*
 .include "data/quests/shelterswitcheroo.inc"
 .include "data/quests/sheltertaxisolution.inc"
 .include "data/quests/lastmusicvenueinsanfrancisco.inc"
@@ -1388,3 +1390,5 @@ Script_RemoveTint::
 	.include "data/maps/Pacifica_Gemhouse/scripts.inc"
 
 	.include "data/maps/Tenderloin_TrolleyHQ/scripts.inc"
+
+	.include "data/maps/Japantown_Balls/scripts.inc"

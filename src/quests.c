@@ -580,7 +580,7 @@ sub_quest(
 	gText_Quest_HybridCulture_Sub3_Name,
 	gText_Quest_HybridCulture_Sub3_Desc,
 	gText_Quest_HybridCulture_Sub3_Map,
-	OBJ_EVENT_GFX_NINJA_BOY,
+    OBJ_EVENT_GFX_MAN_2,
 	OBJECT,
 	sText_Discovered
 ),

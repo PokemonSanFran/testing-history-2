@@ -168,6 +168,7 @@
 // gMapGroup_IndoorJapantown
 #define MAP_JAPANTOWN_GYM   (0 | (5 << 8))
 #define MAP_JAPANTOWN_RAMEN (1 | (5 << 8))
+#define MAP_JAPANTOWN_BALLS (2 | (5 << 8))
 
 // gMapGroup_IndoorBerkeley
 #define MAP_BERKELEY_GYM             (0 | (6 << 8))

@@ -1,0 +1,10 @@
+//PSF TODO 
+//Quest_ArtisanBalls_
+//Quest_ArtisanBalls2_
+//Quest_ArtisanBalls3_
+//gText_Quest_ArtisanBalls_
+//gText_Quest_ArtisanBalls2_
+//gText_Quest_ArtisanBalls3_
+
+script Quest_ArtisanBalls_HideSilph_Script{
+    setflag(FLAG_TEMP_1)

@@ -1,0 +1,5 @@
+mapscripts Japantown_Balls_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Quest_ArtisanBalls_HideSilph_Script)
+    }
+}

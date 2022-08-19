@@ -5590,6 +5590,16 @@
       "secondary_tileset": "gTileset_BikeShop",
       "border_filepath": "data/layouts/Tenderloin_TrolleyHQ/border.bin",
       "blockdata_filepath": "data/layouts/Tenderloin_TrolleyHQ/map.bin"
+    },
+    {
+      "id": "LAYOUT_JAPANTOWN_BALLS",
+      "name": "Japantown_Balls_Layout",
+      "width": 10,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Japantown_Balls/border.bin",
+      "blockdata_filepath": "data/layouts/Japantown_Balls/map.bin"
     }
   ]
 }
