@@ -6,5 +6,114 @@
 //gText_Quest_ArtisanBalls2_
 //gText_Quest_ArtisanBalls3_
 
-script Quest_ArtisanBalls_HideSilph_Script{
-    setflag(FLAG_TEMP_1)
+script Quest_ArtisanBalls3_HideSilph_Script{
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_ARTISANBALLS3)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_TEMP_1)
+        }
+}
+
+script Quest_ArtisanBalls1_CheckStatus_Script{
+    returnqueststate(QUEST_ARTISANBALLS1)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_ArtisanBalls1_During_BagCheck_Script)
+        case QUEST_MENU_SET_REWARD: goto(Quest_ArtisanBalls1_Reward_Dialogue)
+        default goto(Quest_ArtisanBalls1_Start_Dialogue)
+}
+
+script Quest_ArtisanBalls1_Start_Dialogue{
+    msgbox(gText_Quest_ArtisanBalls_IGotFired,MSGBOX_NPC)
+    call(Quest_ArtisanBalls1_GiveFirstSet)
+    startquest(QUEST_ARTISANBALLS1)
+}
+
+script Quest_ArtisanBalls1_GiveFirstSet{
+    additem(ITEM_FAST_BALL,1)
+    additem(ITEM_LEVEL_BALL,1)
+    additem(ITEM_LURE_BALL,1)
+    additem(ITEM_HEAVY_BALL,1)
+    additem(ITEM_LOVE_BALL,1)
+    additem(ITEM_FRIEND_BALL,1)
+    additem(ITEM_MOON_BALL,1)
+    playfanfare(MUS_OBTAIN_ITEM)
+    msgbox(gText_Quest_ArtisanBalls_SergeyGaveYou)
+    waitmessage
+    waitfanfare
+    return 
+}
+
+script Quest_ArtisanBalls1_During_BagCheck_Script{
+}
+
+script Quest_ArtisanBalls1_During_Dialogue{
+}
+
+script Quest_ArtisanBalls1_During_ReplenishBalls_Script{
+}
+
+script Quest_ArtisanBalls1_During_ReplenishBalls_Dialogue{
+}
+
+script Quest_ArtisanBalls1_Reward_Dialogue{
+}
+
+script Quest_ArtisanBalls1_GiveReward_Script{
+}
+
+
+script Quest_ArtisanBalls2_ShopQuestChoice_Script{
+}
+
+script Quest_ArtisanBalls2_GenerateDailyBall_Script{
+}
+
+script Quest_ArtisanBalls2_AskRandomBall_Script{
+}
+
+script Quest_ArtisanBalls2_BuyRandomBall_Script{
+}
+
+script Quest_ArtisanBalls2_DeclineRandomBall_Script{
+}
+
+script Quest_ArtisanBalls2_Start_Dialogue{
+}
+
+script Quest_ArtisanBalls2_During_ProgressCheck_Script{
+}
+
+script Quest_ArtisanBalls2_During_Dialogue{
+}
+
+script Quest_ArtisanBalls2_Reward_Dialogue{
+}
+
+script Quest_ArtisanBalls2_GiveReward_Script{
+}
+
+
+script Quest_ArtisanBalls3_ShopQuestChoice_Script{
+}
+
+script Quest_ArtisanBalls3_GenerateMart_Script{
+}
+
+script Quest_ArtisanBalls3_DuringProgressCheck_Script{
+}
+
+script Quest_ArtisanBalls3_Start_Dialogue{
+}
+
+script Quest_ArtisanBalls3_During_Dialogue{
+}
+
+script Quest_ArtisanBalls3_Reward_Dialogue{
+}
+
+script Quest_ArtisanBalls3_GiveReward_Script{
+}
+
+
+script Quest_ArtisanBalls3_Post_Dialogue{
+}

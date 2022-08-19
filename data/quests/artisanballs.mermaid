@@ -1,0 +1,51 @@
+graph LR
+    A[Japantown_Balls_Interact_Sergey_Script]
+        
+    C[Quest_ArtisanBalls1_CheckStatus_Script]
+    D[Quest_ArtisanBalls1_Start_Dialogue]
+    E[Quest_ArtisanBalls1_During_BagCheck_Script]
+    F[Quest_ArtisanBalls1_During_Dialogue]
+    G[Quest_ArtisanBalls1_During_ReplenishBalls_Script]
+    H[Quest_ArtisanBalls1_During_ReplenishBalls_Dialogue]
+    I[Quest_ArtisanBalls1_Reward_Dialogue]
+    J[Quest_ArtisanBalls1_GiveReward_Script]
+    
+    K[Quest_ArtisanBalls2_ShopQuestChoice_Script]
+    L[Quest_ArtisanBalls2_GenerateDailyBall_Script]
+    M[Quest_ArtisanBalls2_AskRandomBall_Script]
+    N[Quest_ArtisanBalls2_BuyRandomBall_Script]
+    O[Quest_ArtisanBalls2_DeclineRandomBall_Script]
+    P[Quest_ArtisanBalls2_Start_Dialogue]
+    Q[Quest_ArtisanBalls2_During_ProgressCheck_Script]
+    R[Quest_ArtisanBalls2_During_Dialogue]
+    S[Quest_ArtisanBalls2_Reward_Dialogue]
+    T[Quest_ArtisanBalls2_GiveReward_Script]
+    
+    U[Quest_ArtisanBalls3_ShopQuestChoice_Script]
+    V[Quest_ArtisanBalls3_GenerateMart_Script]
+    BB[Quest_ArtisanBalls3_DuringProgressCheck_Script]
+    W[Quest_ArtisanBalls3_Start_Dialogue]
+    X[Quest_ArtisanBalls3_During_Dialogue]
+    Y[Quest_ArtisanBalls3_Reward_Dialogue]
+    Z[Quest_ArtisanBalls3_GiveReward_Script]
+    
+    AA[Quest_ArtisanBalls3_Post_Dialogue]
+
+    A --> |quest 1 is not complete| C --> |quest 1 is inactive| D
+    C --> |quest 1 is active| E
+    E --> |bag has balls| F
+    E --> |bag is out of balls| G --> H
+    E --> |quest 1 is reward| I --> J
+    C --> |quest 1 is reward| I 
+    A --> |quest 2 is not complete| K
+    A --> |quest 3 is not complete| U
+    A --> |quest 3 is complete| AA
+    K --> |wants to buy| L --> M --> |buys ball| N
+    M --> |declines ball| O
+    K --> |wants goss| Q --> |quest 2 inactive| P
+    Q --> |quest 2 is not reward| R
+    Q --> |quest 2 is reward| S --> T
+    U --> |wants to buy| V
+    U --> |wants goss| BB --> |quest 3 inactive| W
+    U --> |quest 3 active| BB --> |quest 3 not reward| X
+    BB --> |quest 3 is reward| Y --> Z

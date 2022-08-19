@@ -1,5 +1,31 @@
+//PSF TODO implement buying stuff scripts
+const SILPH = 2
+
 mapscripts Japantown_Balls_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        call(Quest_ArtisanBalls_HideSilph_Script)
+        call(Quest_ArtisanBalls3_HideSilph_Script)
     }
+}
+
+script Japantown_Balls_Interact_Sergey_Script{
+    lock
+
+questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_ARTISANBALLS)
+    if (!var(VAR_RESULT)){
+        goto(Quest_ArtisanBalls1_CheckStatus_Script)
+    }
+
+questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_ARTISANBALLS2)
+    if (!var(VAR_RESULT)){
+        goto(Quest_ArtisanBalls2_ShopQuestChoice_Script)
+    }
+
+questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_ARTISANBALLS3)
+    if (!var(VAR_RESULT)){
+        goto(Quest_ArtisanBalls3_ShopQuestChoice_Script)
+    }else{
+        goto(Quest_ArtisanBalls3_Post_Dialogue)
+    }
+    release
+    end
 }
