@@ -1,4 +1,4 @@
-//PSF TODO 
+//PSF TODO
 //Quest_ArtisanBalls_
 //Quest_ArtisanBalls2_
 //Quest_ArtisanBalls3_
@@ -6,114 +6,321 @@
 //gText_Quest_ArtisanBalls2_
 //gText_Quest_ArtisanBalls3_
 
-script Quest_ArtisanBalls3_HideSilph_Script{
-    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_ARTISANBALLS3)
-        if (!var(VAR_RESULT)){
-            setflag(FLAG_TEMP_1)
-        }
+script Quest_ArtisanBalls3_HideSilph_Script
+{
+	questmenu(QUEST_MENU_CHECK_REWARD, QUEST_ARTISANBALLS3)
+	if (!var(VAR_RESULT))
+	{
+		setflag(FLAG_TEMP_1)
+	}
 }
 
-script Quest_ArtisanBalls1_CheckStatus_Script{
-    returnqueststate(QUEST_ARTISANBALLS1)
+script Quest_ArtisanBalls1_CheckStatus_Script
+{
+	returnqueststate(QUEST_ARTISANBALLS1)
+
+	switch (var(VAR_RESULT))
+	{
+		case QUEST_MENU_SET_ACTIVE:
+			goto(Quest_ArtisanBalls1_During_Dialogue)
+		case QUEST_MENU_SET_REWARD:
+			goto(Quest_ArtisanBalls1_Reward_Dialogue)
+		default:
+			goto(Quest_ArtisanBalls1_Start_Dialogue)
+	}
+}
+
+script Quest_ArtisanBalls1_Start_Dialogue
+{
+	msgbox(gText_Quest_ArtisanBalls_IGotFired, MSGBOX_NPC)
+	call(Quest_ArtisanBalls1_GiveFirstSet)
+	startquest(QUEST_ARTISANBALLS1)
+}
+
+script Quest_ArtisanBalls1_GiveFirstSet
+{
+	additem(ITEM_FAST_BALL, 1)
+	additem(ITEM_LEVEL_BALL, 1)
+	additem(ITEM_LURE_BALL, 1)
+	additem(ITEM_HEAVY_BALL, 1)
+	additem(ITEM_LOVE_BALL, 1)
+	additem(ITEM_FRIEND_BALL, 1)
+	additem(ITEM_MOON_BALL, 1)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(gText_Quest_ArtisanBalls_SergeyGaveYou)
+	waitmessage
+	waitfanfare
+	return
+}
+
+
+script Quest_ArtisanBalls1_During_Dialogue
+{
+	msgbox(gText_Quest_ArtisanBalls_HowIsProgress, MSGBOX_NPC)
+	call(Quest_ArtisanBalls1_During_ReplenishBalls_Script)
+
+	if (var(VAR_TEMP_0) > 0)
+	{
+        msgbox(gText_Quest_ArtisanBalls_JustMadeThatToday, MSGBOX_NPC)
+        end
+	}
+	msgbox(gText_Quest_ArtisanBalls__ThoseBallsCanBe, MSGBOX_NPC)
+	end
+}
+
+script Quest_ArtisanBalls1_During_ReplenishBalls_Script
+{
+
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1, SUB_QUEST_1)
+	if (!var(VAR_RESULT))
+	{
+		checkitem(ITEM_FAST_BALL, 1)
+		if (!var(VAR_RESULT))
+		{
+			giveitem(ITEM_FAST_BALL, 1)
+			addvar(VAR_TEMP_0, 1)
+
+		}
+	}
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1, SUB_QUEST_2)
+	if (!var(VAR_RESULT))
+	{
+		checkitem(ITEM_LEVEL_BALL, 1)
+		if (!var(VAR_RESULT))
+		{
+			giveitem(ITEM_LEVEL_BALL, 1)
+			addvar(VAR_TEMP_0, 1)
+		}
+	}
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1, SUB_QUEST_3)
+	if (!var(VAR_RESULT))
+	{
+		checkitem(ITEM_LURE_BALL, 1)
+		if (!var(VAR_RESULT))
+		{
+			giveitem(ITEM_LURE_BALL, 1)
+			addvar(VAR_TEMP_0, 1)
+		}
+	}
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1, SUB_QUEST_4)
+	if (!var(VAR_RESULT))
+	{
+		checkitem(ITEM_HEAVY_BALL, 1)
+		if (!var(VAR_RESULT))
+		{
+			giveitem(ITEM_HEAVY_BALL, 1)
+			addvar(VAR_TEMP_0, 1)
+		}
+	}
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1, SUB_QUEST_5)
+	if (!var(VAR_RESULT))
+	{
+		checkitem(ITEM_LOVE_BALL, 1)
+		if (!var(VAR_RESULT))
+		{
+			giveitem(ITEM_LOVE_BALL, 1)
+			addvar(VAR_TEMP_0, 1)
+		}
+	}
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1, SUB_QUEST_6)
+	if (!var(VAR_RESULT))
+	{
+		checkitem(ITEM_FRIEND_BALL, 1)
+		if (!var(VAR_RESULT))
+		{
+			giveitem(ITEM_FRIEND_BALL, 1)
+			addvar(VAR_TEMP_0, 1)
+		}
+	}
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1, SUB_QUEST_7)
+	if (!var(VAR_RESULT))
+	{
+		checkitem(ITEM_MOON_BALL, 1)
+		if (!var(VAR_RESULT))
+		{
+			giveitem(ITEM_MOON_BALL, 1)
+			addvar(VAR_TEMP_0, 1)
+		}
+	}
+	return
+}
+
+script Quest_ArtisanBalls1_Reward_Dialogue
+{
+	msgbox(gText_Quest_ArtisanBalls_MyOrdersWentUp, MSGBOX_NPC)
+	call(Quest_ArtisanBalls1_GiveReward_Script)
+	completequest(QUEST_ARTISANBALLS1)
+	end
+}
+
+script Quest_ArtisanBalls1_GiveReward_Script
+{
+	giveitem(ITEM_CHERISH_BALL, 1)
+}
+
+script Quest_ArtisanBalls2_ShopQuestChoice_Script
+{
+    //PSF TODO  this should not be a yes or no question, it should be "I want to shop" or "I want to hear the latest"
+
+    msgbox(gText_Quest_ArtisanBalls2_LookingToBuyOr,MSGBOX_YESNO)
+
+    if (var(VAR_RESULT) == YES){
+        goto(Quest_ArtisanBalls2_GenerateDailyBall_Script)
+    }
+    else {
+        goto(Quest_ArtisanBalls2_During_ProgressCheck_Script)
+    }
+}
+
+script Quest_ArtisanBalls2_GenerateDailyBall_Script
+{
+    random(6)
+
+    //PSF TODO change this random to happen once daily
+    copyvar(VAR_TEMP_1,VAR_RESULT)
 
     switch(var(VAR_RESULT)){
-        case QUEST_MENU_SET_ACTIVE: goto(Quest_ArtisanBalls1_During_BagCheck_Script)
-        case QUEST_MENU_SET_REWARD: goto(Quest_ArtisanBalls1_Reward_Dialogue)
-        default goto(Quest_ArtisanBalls1_Start_Dialogue)
+        case 0: bufferstring(STR_VAR_1,ITEM_FAST_BALL)
+        case 1: bufferstring(STR_VAR_1,ITEM_LEVEL_BALL)
+        case 2: bufferstring(STR_VAR_1,ITEM_LURE_BALL)
+        case 3: bufferstring(STR_VAR_1,ITEM_HEAVY_BALL)
+        case 4: bufferstring(STR_VAR_1,ITEM_LOVE_BALL)
+        case 5: bufferstring(STR_VAR_1,ITEM_FRIEND_BALL)
+        case 6: bufferstring(STR_VAR_1,ITEM_MOON_BALL)
+}
 }
 
-script Quest_ArtisanBalls1_Start_Dialogue{
-    msgbox(gText_Quest_ArtisanBalls_IGotFired,MSGBOX_NPC)
-    call(Quest_ArtisanBalls1_GiveFirstSet)
-    startquest(QUEST_ARTISANBALLS1)
+script Quest_ArtisanBalls2_AskRandomBall_Script
+{
+    showmoneybox(0,0)
+    msgbox(gText_Quest_ArtisanBalls2_IMadeA,MSGBOX_YESNO)
+
+    if (var(VAR_RESULT) == YES){
+        call(Quest_ArtisanBalls2_BuyRandomBall_Script)
+    }
+    else {
+        call(Quest_ArtisanBalls2_DeclineRandomBall_Script)
+    }
+    hidemoneybox
+    release
+    end
 }
 
-script Quest_ArtisanBalls1_GiveFirstSet{
-    additem(ITEM_FAST_BALL,1)
-    additem(ITEM_LEVEL_BALL,1)
-    additem(ITEM_LURE_BALL,1)
-    additem(ITEM_HEAVY_BALL,1)
-    additem(ITEM_LOVE_BALL,1)
-    additem(ITEM_FRIEND_BALL,1)
-    additem(ITEM_MOON_BALL,1)
-    playfanfare(MUS_OBTAIN_ITEM)
-    msgbox(gText_Quest_ArtisanBalls_SergeyGaveYou)
-    waitmessage
-    waitfanfare
-    return 
+script Quest_ArtisanBalls2_BuyRandomBall_Script
+{
+    removemoney(1300,0)
+    updatemoneybox(0)
+    switch(var(VAR_RESULT)){
+        case 0: giveitem(ITEM_FAST_BALL,1)
+        case 1: giveitem(ITEM_LEVEL_BALL,1)
+        case 2: giveitem(ITEM_LURE_BALL,1)
+        case 3: giveitem(ITEM_HEAVY_BALL,1)
+        case 4: giveitem(ITEM_LOVE_BALL,1)
+        case 5: giveitem(ITEM_FRIEND_BALL,1)
+        case 6: giveitem(ITEM_MOON_BALL,1)
+    }
+    return
 }
 
-script Quest_ArtisanBalls1_During_BagCheck_Script{
+script Quest_ArtisanBalls2_DeclineRandomBall_Script
+{
+    msgbox(gText_Quest_ArtisanBalls2_NoWorries,MSGBOX_NPC)
+    return
 }
 
-script Quest_ArtisanBalls1_During_Dialogue{
-}
-
-script Quest_ArtisanBalls1_During_ReplenishBalls_Script{
-}
-
-script Quest_ArtisanBalls1_During_ReplenishBalls_Dialogue{
-}
-
-script Quest_ArtisanBalls1_Reward_Dialogue{
-}
-
-script Quest_ArtisanBalls1_GiveReward_Script{
-}
-
-
-script Quest_ArtisanBalls2_ShopQuestChoice_Script{
-}
-
-script Quest_ArtisanBalls2_GenerateDailyBall_Script{
-}
-
-script Quest_ArtisanBalls2_AskRandomBall_Script{
-}
-
-script Quest_ArtisanBalls2_BuyRandomBall_Script{
-}
-
-script Quest_ArtisanBalls2_DeclineRandomBall_Script{
-}
-
-script Quest_ArtisanBalls2_Start_Dialogue{
-}
-
-script Quest_ArtisanBalls2_During_ProgressCheck_Script{
-}
-
-script Quest_ArtisanBalls2_During_Dialogue{
-}
-
-script Quest_ArtisanBalls2_Reward_Dialogue{
-}
-
-script Quest_ArtisanBalls2_GiveReward_Script{
+script Quest_ArtisanBalls2_During_ProgressCheck_Script
+{
+    returnqueststate(QUEST_ARTISANBALLS2)
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_ArtisanBalls2_During_Dialogue)
+        case QUEST_MENU_SET_REWARD: goto(Quest_ArtisanBalls2_Reward_Dialogue)
+        default: goto(Quest_ArtisanBalls2_Start_Dialogue)
+    }
 }
 
 
-script Quest_ArtisanBalls3_ShopQuestChoice_Script{
-}
-
-script Quest_ArtisanBalls3_GenerateMart_Script{
-}
-
-script Quest_ArtisanBalls3_DuringProgressCheck_Script{
-}
-
-script Quest_ArtisanBalls3_Start_Dialogue{
-}
-
-script Quest_ArtisanBalls3_During_Dialogue{
-}
-
-script Quest_ArtisanBalls3_Reward_Dialogue{
-}
-
-script Quest_ArtisanBalls3_GiveReward_Script{
+script Quest_ArtisanBalls2_Start_Dialogue
+{
+    msgbox(gText_Quest_ArtisanBalls2_ImReadyToExpand,MSGBOX_NPC)
+    
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_ArtisanBalls2_ThatsAmazing,MSGBOX_NPC)
+    callnative(ClearMugshot)
 }
 
 
-script Quest_ArtisanBalls3_Post_Dialogue{
+script Quest_ArtisanBalls2_During_Dialogue
+{
+}
+
+script Quest_ArtisanBalls2_Reward_Dialogue
+{
+}
+
+script Quest_ArtisanBalls2_GiveReward_Script
+{
+}
+
+
+script Quest_ArtisanBalls3_ShopQuestChoice_Script
+{
+}
+
+script Quest_ArtisanBalls3_GenerateMart_Script
+{
+}
+
+script Quest_ArtisanBalls3_DuringProgressCheck_Script
+{
+}
+
+script Quest_ArtisanBalls3_Start_Dialogue
+{
+}
+
+script Quest_ArtisanBalls3_During_Dialogue
+{
+}
+
+script Quest_ArtisanBalls3_Reward_Dialogue
+{
+}
+
+script Quest_ArtisanBalls3_GiveReward_Script
+{
+}
+
+
+script Quest_ArtisanBalls3_Post_Dialogue
+{
+}
+
+text gText_Quest_ArtisanBalls_IGotFired
+{
+	format("")
+}
+text gText_Quest_ArtisanBalls_SergeyGaveYou
+{
+	format("")
+}
+text gText_Quest_ArtisanBalls_HowIsProgress
+{
+	format("")
+}
+text gText_Quest_ArtisanBalls__ThoseBallsCanBe
+{
+	format("")
+}
+text gText_Quest_ArtisanBalls_DidYouRunOut
+{
+	format("")
+}
+text gText_Quest_ArtisanBalls_JustMadeThatToday
+{
+	format("")
+}
+text gText_Quest_ArtisanBalls_MyOrdersWentUp
+{
+	format("")
 }

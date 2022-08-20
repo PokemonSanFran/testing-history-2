@@ -1,2 +1,39 @@
 Japantown_Balls_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Japantown_Balls_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Japantown_Balls_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_ArtisanBalls3_HideSilph_Script
+	return
+
+
+Japantown_Balls_Interact_Sergey_Script::
+	lock
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1
+	compare VAR_RESULT, 0
+	goto_if_eq Japantown_Balls_Interact_Sergey_Script_2
+Japantown_Balls_Interact_Sergey_Script_1:
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS2
+	compare VAR_RESULT, 0
+	goto_if_eq Japantown_Balls_Interact_Sergey_Script_5
+Japantown_Balls_Interact_Sergey_Script_4:
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS3
+	compare VAR_RESULT, 0
+	goto_if_eq Japantown_Balls_Interact_Sergey_Script_8
+	goto Quest_ArtisanBalls3_Post_Dialogue
+Japantown_Balls_Interact_Sergey_Script_7:
+	release
+	end
+
+Japantown_Balls_Interact_Sergey_Script_2:
+	goto Quest_ArtisanBalls1_CheckStatus_Script
+	goto Japantown_Balls_Interact_Sergey_Script_1
+
+Japantown_Balls_Interact_Sergey_Script_5:
+	goto Quest_ArtisanBalls2_ShopQuestChoice_Script
+	goto Japantown_Balls_Interact_Sergey_Script_4
+
+Japantown_Balls_Interact_Sergey_Script_8:
+	goto Quest_ArtisanBalls3_ShopQuestChoice_Script
+	goto Japantown_Balls_Interact_Sergey_Script_7
+

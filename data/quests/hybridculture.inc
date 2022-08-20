@@ -134,11 +134,11 @@ Quest_HybridCulture_Complete_Dialogue::
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, Quest_HybridCulture_WalkBackIntoGym_Movement
+	waitmovement 1
 	opendoor 17, 6
 	waitdooranim
 	applymovement 1, Common_Movement_WalkUp2
 	waitmovement 1
-	delay 16
 	playse SE_EXIT
 	removeobject 1
 	waitse

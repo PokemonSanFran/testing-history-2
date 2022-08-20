@@ -6,9 +6,9 @@ mapscripts Japantown_MapScripts {
 
 script Japantown_FashionDesigner_Script{
     msgbox(gText_Japantown_ImAFashion,MSGBOX_NPC)
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_HYBRIDCULTURE, SUB_QUEST_2)
-    call(Quest_HybridCulture_CheckSubquests_Script)
-    end
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_HYBRIDCULTURE, SUB_QUEST_2)
+        call(Quest_HybridCulture_CheckSubquests_Script)
+        end
 }
 
 text gText_Japantown_ImAFashion{

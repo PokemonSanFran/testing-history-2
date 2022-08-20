@@ -61,7 +61,8 @@ script Debug_CheatStart{
 }
 
 script Debug_Script_1{
-    questmenu(QUEST_MENU_SET_ACTIVE,QUEST_HYBRIDCULTURE)
+    //questmenu(QUEST_MENU_SET_REWARD,QUEST_ARTISANBALLS1)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_ARTISANBALLS1)
     end
 }
 script Debug_Script_2{

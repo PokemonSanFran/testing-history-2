@@ -783,7 +783,8 @@ const u8 gText_Quest_ArtisanBalls_Sub3_Name[] = _("Lure Ball");
 const u8 gText_Quest_ArtisanBalls_Sub3_Desc[] = _("You caught a Pokémon in a Lure Ball.");
 const u8 gText_Quest_ArtisanBalls_Sub3_Map[] = _("N/A");
 const u8 gText_Quest_ArtisanBalls_Sub4_Name[] = _("Heavy Ball");
-const u8 gText_Quest_ArtisanBalls_Sub4_Desc[] = _("Sub You caught a Pokémon in a Heavy Ball.);
+const u8 gText_Quest_ArtisanBalls_Sub4_Desc[] = _("Sub You caught a Pokémon in a Heavy Ball.");
+
 const u8 gText_Quest_ArtisanBalls_Sub4_Map[] = _("N/A");
 const u8 gText_Quest_ArtisanBalls_Sub5_Name[] = _("Love Ball");
 const u8 gText_Quest_ArtisanBalls_Sub5_Desc[] = _("You caught a Pokémon in a Love Ball.");

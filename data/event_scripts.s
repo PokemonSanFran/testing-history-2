@@ -1276,9 +1276,9 @@ Script_RemoveTint::
 .include "data/quests/kitchenvolunteering.inc"
 */
 .include "data/quests/artisanballs1.inc"
+/*
 .include "data/quests/artisanballs2.inc"
 .include "data/quests/artisanballs3.inc"
-/*
 .include "data/quests/shelterswitcheroo.inc"
 .include "data/quests/sheltertaxisolution.inc"
 .include "data/quests/lastmusicvenueinsanfrancisco.inc"

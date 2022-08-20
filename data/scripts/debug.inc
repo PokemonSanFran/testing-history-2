@@ -42,7 +42,7 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	setvar VAR_BUGSY_STATE, QUEST_1_COMPLETE
+	questmenu QUEST_MENU_SET_REWARD, QUEST_ARTISANBALLS1
 	end
 
 
