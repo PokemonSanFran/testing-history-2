@@ -251,7 +251,7 @@ static const u8 sText_Distributed[] = _("Distributed");
 static const u8 sText_Recruited[] = _("Recruited");
 static const u8 sText_Informed[] = _("Informed");
 static const u8 sText_Investigated[] = _("Investigated");
-static const u8 sText_Advertised[] = _("Advertised");
+static const u8 sText_Tested[] = _("Tested");
 static const u8 sText_Helped[] = _("Helped");
 static const u8 sText_Restored[] = _("Restored");
 static const u8 sText_Back[] = _("Back");
@@ -1147,7 +1147,7 @@ sub_quest(
 	gText_Quest_ArtisanBalls_Sub1_Map,
 	ITEM_FAST_BALL,
 	ITEM,
-	sText_Advertised
+	sText_Tested
 ),
 sub_quest(
 	103,
@@ -1156,7 +1156,7 @@ sub_quest(
 	gText_Quest_ArtisanBalls_Sub2_Map,
 	ITEM_LEVEL_BALL,
 	ITEM,
-	sText_Advertised
+	sText_Tested
 ),
 sub_quest(
 	104,
@@ -1165,7 +1165,7 @@ sub_quest(
 	gText_Quest_ArtisanBalls_Sub3_Map,
 	ITEM_LURE_BALL,
 	ITEM,
-	sText_Advertised
+	sText_Tested
 ),
 sub_quest(
 	105,
@@ -1174,7 +1174,7 @@ sub_quest(
 	gText_Quest_ArtisanBalls_Sub4_Map,
 	ITEM_HEAVY_BALL,
 	ITEM,
-	sText_Advertised
+	sText_Tested
 ),
 sub_quest(
 	106,
@@ -1183,7 +1183,7 @@ sub_quest(
 	gText_Quest_ArtisanBalls_Sub5_Map,
 	ITEM_LOVE_BALL,
 	ITEM,
-	sText_Advertised
+	sText_Tested
 ),
 sub_quest(
 	107,
@@ -1192,7 +1192,7 @@ sub_quest(
 	gText_Quest_ArtisanBalls_Sub6_Map,
 	ITEM_FRIEND_BALL,
 	ITEM,
-	sText_Advertised
+	sText_Tested
 ),
 sub_quest(
 	108,
@@ -1201,7 +1201,7 @@ sub_quest(
 	gText_Quest_ArtisanBalls_Sub7_Map,
 	ITEM_MOON_BALL,
 	ITEM,
-	sText_Advertised
+	sText_Tested
 ),
 };
 

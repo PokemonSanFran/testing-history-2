@@ -113,7 +113,8 @@ Quest_ArtisanBalls1_Start_Dialogue::
 	msgbox gText_Quest_ArtisanBalls_IGotFired, MSGBOX_NPC
 	call Quest_ArtisanBalls1_GiveFirstSet
 	startquest QUEST_ARTISANBALLS1
-	return
+	msgbox gText_Quest_ArtisanBalls_ComeBack, MSGBOX_NPC
+	end
 
 
 Quest_ArtisanBalls1_GiveFirstSet::
@@ -255,7 +256,7 @@ Quest_ArtisanBalls1_During_ReplenishBalls_Script_34:
 
 
 Quest_ArtisanBalls1_Reward_Dialogue::
-	msgbox gText_Quest_ArtisanBalls_MyOrdersWentUp, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls_SoTheyAllWork, MSGBOX_NPC
 	call Quest_ArtisanBalls1_GiveReward_Script
 	completequest QUEST_ARTISANBALLS1
 	end
@@ -316,9 +317,22 @@ Quest_ArtisanBalls2_CheckTrainerC_Script::
 	return
 
 
+Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script::
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script_2
+	msgbox gText_Quest_ArtisanBalls2_LookingToBuyOr, MSGBOX_YESNO
+Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script_1:
+	return
+
+Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script_2:
+	msgbox gText_Quest_ArtisanBalls2_LookingToBuyActive, MSGBOX_YESNO
+	goto Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script_1
+
+
 Quest_ArtisanBalls2_ShopQuestChoice_Script::
 	faceplayer
-	msgbox gText_Quest_ArtisanBalls2_LookingToBuyOr, MSGBOX_YESNO
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_ARTISANBALLS2
+	call Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script
 	compare VAR_RESULT, YES
 	goto_if_eq Quest_ArtisanBalls2_ShopQuestChoice_Script_1
 	goto Quest_ArtisanBalls2_During_ProgressCheck_Script
@@ -608,7 +622,8 @@ Quest_ArtisanBalls2_GiveReward_Script::
 
 Quest_ArtisanBalls3_ShopQuestChoice_Script::
 	faceplayer
-	msgbox gText_Quest_ArtisanBalls2_LookingToBuyOr, MSGBOX_YESNO
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_ARTISANBALLS3
+	call Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script
 	compare VAR_RESULT, YES
 	goto_if_eq Quest_ArtisanBalls3_ShopQuestChoice_Script_1
 	goto Quest_ArtisanBalls3_DuringProgressCheck_Script
@@ -749,6 +764,8 @@ Quest_ArtisanBalls3_RunToDoor_Movement:
 	walk_faster_right
 	walk_faster_down
 	face_right
+	jump_in_place_right
+	jump_in_place_right
 	step_end
 
 Quest_ArtisanBalls1_DebugA_Script_Text_0:
@@ -769,19 +786,17 @@ Quest_ArtisanBalls3_DebugA_Script_Text_0:
 	.string "a ball$"
 
 gText_Quest_ArtisanBalls_IGotFired::
-	.string "I got fired from my job with the League.\n"
-	.string "I used to make craft PokéBalls, but\l"
-	.string "Silph Co. took over my contact. I think\l"
-	.string "I want to try going independent, and\l"
-	.string "making balls for everybody. I don't\l"
-	.string "have all of my old tools, so I'm starting\l"
-	.string "from scratch. Would you be willing to\l"
-	.string "test them out for me? I'll give you\l"
-	.string "some balls for free!$"
+	.string "I make craft PokéBalls. I'm tired of\n"
+	.string "working for somebody else, and want to\l"
+	.string "open a shop selling my Balls! Would you\l"
+	.string "be willing to test my PokeBalls?$"
 
 gText_Quest_ArtisanBalls_SergeyGaveYou::
 	.string "{PLAYER} obtained a set of craft\n"
 	.string "PokéBalls!$"
+
+gText_Quest_ArtisanBalls_ComeBack::
+	.string "Come back if you need more PokeBalls.$"
 
 gText_Quest_ArtisanBalls_HowIsProgress::
 	.string "How is progress going?$"
@@ -798,30 +813,31 @@ gText_Quest_ArtisanBalls_JustMadeThatToday::
 	.string "Just made those today. Let me know how\n"
 	.string "they do!$"
 
-gText_Quest_ArtisanBalls_MyOrdersWentUp::
-	.string "My orders went up! I think people saw\n"
-	.string "you using them, and it looks like its\l"
-	.string "going well! Thank you so much for your\l"
-	.string "help!$"
+gText_Quest_ArtisanBalls_SoTheyAllWork::
+	.string "So they all work well? Fantastic. Thank\n"
+	.string "you so much for your help! Time to\l"
+	.string "start reaching out and really selling\l"
+	.string "them. Take this as a thanks!$"
 
 gText_Quest_ArtisanBalls2_LookingToBuyOr::
-	.string "Hey {PLAYER}! Are you here to buy a\n"
-	.string "ball, or do you wanna hear the latest\l"
-	.string "news with the business?$"
+	.string "Hey {PLAYER}! Are you here to buy, or\n"
+	.string "do you wanna hear the latest news with\l"
+	.string "the business?$"
+
+gText_Quest_ArtisanBalls2_LookingToBuyActive::
+	.string "Hey {PLAYER}! Are you here to buy, or\n"
+	.string "do you have an update?$"
 
 gText_Quest_ArtisanBalls2_IMadeA::
-	.string "I made a small batch this morning. Do\n"
-	.string "you a {STR_VAR_3} for ¥1300?$"
+	.string "I made a small batch this morning. Want\n"
+	.string "{STR_VAR_3} for ¥1300?$"
 
 gText_Quest_ArtisanBalls2_NoWorries::
-	.string "No worries! I'll be here if you change\n"
-	.string "your mind.$"
+	.string "I'll be here if you change your mind.$"
 
 gText_Quest_ArtisanBalls2_ImReadyToExpand::
 	.string "Things are going well, and I think I'm\n"
-	.string "ready to expand. But there's a lot of\l"
-	.string "work to do! I think I need to hire some\l"
-	.string "employees.$"
+	.string "ready to expand.$"
 
 gText_Quest_ArtisanBalls2_ThatsAmazing::
 	.string "That's amazing! Congrats Sergey!$"
@@ -934,16 +950,14 @@ gText_Quest_ArtisanBalls3_BusinessHasBeen::
 	.string "good product, and I'm doing what I love.$"
 
 gText_Quest_ArtisanBalls3_IveBeenTalkingTo::
-	.string "I've been talking to some Silph\n"
-	.string "executives too. I think things have\l"
-	.string "finally come full circle - they want to\l"
-	.string "acquire us! I want to see if we can do a\l"
-	.string "big marketing push soon so I can keep\l"
+	.string "I've been talking to some Silph Co.\n"
+	.string "executives too. They want to acquire\l"
+	.string "us! I want to see if we can do a big\l"
+	.string "marketing push soon so I can keep\l"
 	.string "showing them growth. Could you do me\l"
 	.string "one last favor? Go defeat one of the\l"
 	.string "Gym Leaders in SanFran using a Pokémon\l"
-	.string "in one of those Balls. That bumpwill\l"
-	.string "really be helpful!$"
+	.string "in one of those Balls.$"
 
 gText_Quest_ArtisanBalls3_CantWaitToSee::
 	.string "I can't wait to see your battle!$"
