@@ -289,8 +289,8 @@ const u8 gText_Quest_ArtisanBalls1_DoneDesc[] =_("The craft Balls are a success!
 const u8 gText_Quest_ArtisanBalls1_Map[] =_("Japantown");
 
 const u8 gText_Quest_ArtisanBalls2_Name[] = _("Artisan Balls 2");
-const u8 gText_Quest_ArtisanBalls2_Desc[] =_("Description");
-const u8 gText_Quest_ArtisanBalls2_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_ArtisanBalls2_Desc[] =_("Sergey needs to find an office manager,\nmarketing manager, & a customer\nservice rep.");
+const u8 gText_Quest_ArtisanBalls2_DoneDesc[] =_("Sergey is done hiring and is ready to\nexpand his business! He can sell their\nwhole collection now.");
 const u8 gText_Quest_ArtisanBalls2_Map[] =_("Japantown");
 
 const u8 gText_Quest_ArtisanBalls3_Name[] = _("Artisan Balls 3");

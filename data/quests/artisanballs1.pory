@@ -106,6 +106,8 @@ script Quest_ArtisanBalls1_Start_Dialogue {
 	msgbox(gText_Quest_ArtisanBalls_IGotFired, MSGBOX_NPC)
 	call(Quest_ArtisanBalls1_GiveFirstSet)
 	startquest(QUEST_ARTISANBALLS1)
+    msgbox(gText_Quest_ArtisanBalls_ComeBack,MSGBOX_NPC)
+    end
 }
 
 script Quest_ArtisanBalls1_GiveFirstSet {
@@ -209,7 +211,7 @@ script Quest_ArtisanBalls1_During_ReplenishBalls_Script {
 }
 
 script Quest_ArtisanBalls1_Reward_Dialogue {
-	msgbox(gText_Quest_ArtisanBalls_MyOrdersWentUp, MSGBOX_NPC)
+	msgbox(gText_Quest_ArtisanBalls_SoTheyAllWork, MSGBOX_NPC)
 	call(Quest_ArtisanBalls1_GiveReward_Script)
 	completequest(QUEST_ARTISANBALLS1)
 	end
@@ -263,12 +265,22 @@ script Quest_ArtisanBalls2_CheckTrainerC_Script{
 	return
 }
 
+script Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script{
+    if (var(VAR_RESULT)){
+        msgbox(gText_Quest_ArtisanBalls2_LookingToBuyActive,MSGBOX_YESNO)
+    }else{
+	msgbox(gText_Quest_ArtisanBalls2_LookingToBuyOr, MSGBOX_YESNO)
+    }
+    return
+}
+
 
 script Quest_ArtisanBalls2_ShopQuestChoice_Script {
 	//PSF TODO  this should not be a yes or no question, it should be "I want to shop" or "I want to hear the latest"
 
     faceplayer
-	msgbox(gText_Quest_ArtisanBalls2_LookingToBuyOr, MSGBOX_YESNO)
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_ARTISANBALLS2)
+    call(Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script)
 
 	if (var(VAR_RESULT) == YES)
 	{
@@ -524,7 +536,8 @@ script Quest_ArtisanBalls2_GiveReward_Script {
 
 script Quest_ArtisanBalls3_ShopQuestChoice_Script {
     faceplayer
-	msgbox(gText_Quest_ArtisanBalls2_LookingToBuyOr, MSGBOX_YESNO)
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_ARTISANBALLS3)
+    call(Quest_ArtisanBalls2_ShopQuestChoiceChoosePrompt_Script)
 
 	if (var(VAR_RESULT) == YES)
 	{
@@ -544,6 +557,8 @@ script Quest_ArtisanBalls3_GenerateMart_Script {
     msgbox(gText_Quest_ArtisanBalls3_ThanksAgain,MSGBOX_NPC)
 	release
 }
+
+//PSF TODO set apriballs sell price to 0, but buy price is 1300
 
 mart ArtisanBallsShop{
 	ITEM_FAST_BALL
@@ -649,10 +664,13 @@ script Quest_ArtisanBalls3_ChangeDoorMetatile_Script {
 }
 
 text gText_Quest_ArtisanBalls_IGotFired {
-	format("I got fired from my job with the League. I used to make craft PokéBalls, but Silph Co. took over my contact. I think I want to try going independent, and making balls for everybody. I don't have all of my old tools, so I'm starting from scratch. Would you be willing to test them out for me? I'll give you some balls for free!")
+	format("I make craft PokéBalls. I'm tired of working for somebody else, and want to open a shop selling my Balls! Would you be willing to test my PokeBalls?")
 }
 text gText_Quest_ArtisanBalls_SergeyGaveYou {
 	format("{PLAYER} obtained a set of craft PokéBalls!")
+}
+text gText_Quest_ArtisanBalls_ComeBack{
+    format("Come back if you need more PokeBalls.")
 }
 text gText_Quest_ArtisanBalls_HowIsProgress {
 	format("How is progress going?")
@@ -666,20 +684,23 @@ text gText_Quest_ArtisanBalls_DidYouRunOut {
 text gText_Quest_ArtisanBalls_JustMadeThatToday {
 	format("Just made those today. Let me know how they do!")
 }
-text gText_Quest_ArtisanBalls_MyOrdersWentUp {
-	format("My orders went up! I think people saw you using them, and it looks like its going well! Thank you so much for your help!")
+text gText_Quest_ArtisanBalls_SoTheyAllWork {
+	format("So they all work well? Fantastic. Thank you so much for your help! Time to start reaching out and really selling them. Take this as a thanks!")
 }
 text gText_Quest_ArtisanBalls2_LookingToBuyOr{
-	format("Hey {PLAYER}! Are you here to buy a ball, or do you wanna hear the latest news with the business?")
+	format("Hey {PLAYER}! Are you here to buy, or do you wanna hear the latest news with the business?")
+}
+text gText_Quest_ArtisanBalls2_LookingToBuyActive{
+	format("Hey {PLAYER}! Are you here to buy, or do you have an update?")
 }
 text gText_Quest_ArtisanBalls2_IMadeA {
-	format("I made a small batch this morning. Do you a {STR_VAR_3} for ¥1300?")
+	format("I made a small batch this morning. Want {STR_VAR_3} for ¥1300?")
 }
 text gText_Quest_ArtisanBalls2_NoWorries {
-	format("No worries! I'll be here if you change your mind.")
+	format("I'll be here if you change your mind.")
 }
 text gText_Quest_ArtisanBalls2_ImReadyToExpand {
-	format("Things are going well, and I think I'm ready to expand. But there's a lot of work to do! I think I need to hire some employees.")
+	format("Things are going well, and I think I'm ready to expand.")
 }
 text gText_Quest_ArtisanBalls2_ThatsAmazing {
 	format("That's amazing! Congrats Sergey!")
@@ -754,7 +775,7 @@ text gText_Quest_ArtisanBalls3_BusinessHasBeen{
 	format("Business has been crazy! The new staff really has been amazing, we've got a good product, and I'm doing what I love.")
 }
 text gText_Quest_ArtisanBalls3_IveBeenTalkingTo{
-	format("I've been talking to some Silph executives too. I think things have finally come full circle - they want to acquire us! I want to see if we can do a big marketing push soon so I can keep showing them growth. Could you do me one last favor? Go defeat one of the Gym Leaders in SanFran using a Pokémon in one of those Balls. That bumpwill really be helpful!")
+	format("I've been talking to some Silph Co. executives too. They want to acquire us! I want to see if we can do a big marketing push soon so I can keep showing them growth. Could you do me one last favor? Go defeat one of the Gym Leaders in SanFran using a Pokémon in one of those Balls.")
 }
 text gText_Quest_ArtisanBalls3_CantWaitToSee{
 	format("I can't wait to see your battle!")
@@ -789,5 +810,6 @@ movement Quest_ArtisanBalls3_RunToDoor_Movement{
     walk_faster_right
     walk_faster_down
     face_right
+    jump_in_place_right * 2
     step_end
 }
