@@ -1,17 +1,10 @@
 mapscripts Psfroute61_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Psfroute61_MapScripts_OnTransition)
+        call(Quest_ArtisanBalls2_CheckTrainerC_Script)
+        call(EnterTheMaster_ObjectsVisible_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
 
     ]
 }
-
-script Psfroute61_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE116_STATE)) {
-        case 1: goto(EnterTheMaster_Object_SetUp_Script)
-        default: goto(EnterTheMaster_HideObject_Script)
-}
-}
-
 

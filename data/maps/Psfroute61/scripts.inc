@@ -4,20 +4,10 @@ Psfroute61_MapScripts::
 	.byte 0
 
 Psfroute61_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Psfroute61_MapScripts_OnTransition
+	call Quest_ArtisanBalls2_CheckTrainerC_Script
+	call EnterTheMaster_ObjectsVisible_Script
 	return
 
 Psfroute61_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
-
-
-Psfroute61_MapScripts_OnTransition::
-	switch VAR_ROUTE116_STATE
-	case 1, Psfroute61_MapScripts_OnTransition_2
-	goto EnterTheMaster_HideObject_Script
-	return
-
-Psfroute61_MapScripts_OnTransition_2:
-	goto EnterTheMaster_Object_SetUp_Script
-	return
 

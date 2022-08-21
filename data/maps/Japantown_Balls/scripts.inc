@@ -1,39 +1,52 @@
 Japantown_Balls_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Japantown_Balls_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Japantown_Balls_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Japantown_Balls_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_ArtisanBalls3_HideSilph_Script
+	call Quest_ArtisanBalls2_HideEmployees_Script
 	return
+
+Japantown_Balls_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TEMP_3, 0, Quest_ArtisanBalls3_Reward_Cutscene
+	.2byte 0
 
 
 Japantown_Balls_Interact_Sergey_Script::
 	lock
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1
-	compare VAR_RESULT, 0
-	goto_if_eq Japantown_Balls_Interact_Sergey_Script_2
+	compare VAR_TEMP_5, 0
+	goto_if_ne Japantown_Balls_Interact_Sergey_Script_2
 Japantown_Balls_Interact_Sergey_Script_1:
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS2
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS1
 	compare VAR_RESULT, 0
 	goto_if_eq Japantown_Balls_Interact_Sergey_Script_5
 Japantown_Balls_Interact_Sergey_Script_4:
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS3
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS2
 	compare VAR_RESULT, 0
 	goto_if_eq Japantown_Balls_Interact_Sergey_Script_8
-	goto Quest_ArtisanBalls3_Post_Dialogue
 Japantown_Balls_Interact_Sergey_Script_7:
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_ARTISANBALLS3
+	compare VAR_RESULT, 0
+	goto_if_eq Japantown_Balls_Interact_Sergey_Script_11
+	goto Quest_ArtisanBalls3_Post_Dialogue
+Japantown_Balls_Interact_Sergey_Script_10:
 	release
 	end
 
 Japantown_Balls_Interact_Sergey_Script_2:
-	goto Quest_ArtisanBalls1_CheckStatus_Script
+	goto Quest_ArtisanBalls_BetweenStates_Dialogue
 	goto Japantown_Balls_Interact_Sergey_Script_1
 
 Japantown_Balls_Interact_Sergey_Script_5:
-	goto Quest_ArtisanBalls2_ShopQuestChoice_Script
+	goto Quest_ArtisanBalls1_CheckStatus_Script
 	goto Japantown_Balls_Interact_Sergey_Script_4
 
 Japantown_Balls_Interact_Sergey_Script_8:
-	goto Quest_ArtisanBalls3_ShopQuestChoice_Script
+	goto Quest_ArtisanBalls2_ShopQuestChoice_Script
 	goto Japantown_Balls_Interact_Sergey_Script_7
+
+Japantown_Balls_Interact_Sergey_Script_11:
+	goto Quest_ArtisanBalls3_ShopQuestChoice_Script
+	goto Japantown_Balls_Interact_Sergey_Script_10
 

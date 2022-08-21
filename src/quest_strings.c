@@ -294,8 +294,8 @@ const u8 gText_Quest_ArtisanBalls2_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_ArtisanBalls2_Map[] =_("Japantown");
 
 const u8 gText_Quest_ArtisanBalls3_Name[] = _("Artisan Balls 3");
-const u8 gText_Quest_ArtisanBalls3_Desc[] =_("Description");
-const u8 gText_Quest_ArtisanBalls3_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_ArtisanBalls3_Desc[] =_("Defeat one of the Gym Leaders using a\nPokémon in Sergey's craft PokéBalls!");
+const u8 gText_Quest_ArtisanBalls3_DoneDesc[] =_("Serey's PokéBalls got enough publicity to get acquired by Silph Co.!");
 const u8 gText_Quest_ArtisanBalls3_Map[] =_("Japantown");
 
 const u8 gText_Quest_ShelterSwitcheroo_Name[] = _("Shelter Switcheroo");
@@ -774,37 +774,36 @@ const u8 gText_Quest_KitchenVolunteering_Sub5_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_KitchenVolunteering_Sub5_Map[] = _("Tenderloin");
 
 const u8 gText_Quest_ArtisanBalls_Sub1_Name[] = _("Fast Ball");
-const u8 gText_Quest_ArtisanBalls_Sub1_Desc[] = _("You caught a Pokémon in a Fast Ball.");
+const u8 gText_Quest_ArtisanBalls_Sub1_Desc[] = _("You caught a Pokémon in a\nFast Ball.");
 const u8 gText_Quest_ArtisanBalls_Sub1_Map[] = _("N/A");
 const u8 gText_Quest_ArtisanBalls_Sub2_Name[] = _("Level Ball");
-const u8 gText_Quest_ArtisanBalls_Sub2_Desc[] = _("Sub You caught a Pokémon in a Level Ball.");
+const u8 gText_Quest_ArtisanBalls_Sub2_Desc[] = _("Sub You caught a Pokémon in a\nLevel Ball.");
 const u8 gText_Quest_ArtisanBalls_Sub2_Map[] = _("N/A");
 const u8 gText_Quest_ArtisanBalls_Sub3_Name[] = _("Lure Ball");
-const u8 gText_Quest_ArtisanBalls_Sub3_Desc[] = _("You caught a Pokémon in a Lure Ball.");
+const u8 gText_Quest_ArtisanBalls_Sub3_Desc[] = _("You caught a Pokémon in a\nLure Ball.");
 const u8 gText_Quest_ArtisanBalls_Sub3_Map[] = _("N/A");
 const u8 gText_Quest_ArtisanBalls_Sub4_Name[] = _("Heavy Ball");
-const u8 gText_Quest_ArtisanBalls_Sub4_Desc[] = _("Sub You caught a Pokémon in a Heavy Ball.");
-
+const u8 gText_Quest_ArtisanBalls_Sub4_Desc[] = _("Sub You caught a Pokémon in a\nHeavy Ball.");
 const u8 gText_Quest_ArtisanBalls_Sub4_Map[] = _("N/A");
 const u8 gText_Quest_ArtisanBalls_Sub5_Name[] = _("Love Ball");
-const u8 gText_Quest_ArtisanBalls_Sub5_Desc[] = _("You caught a Pokémon in a Love Ball.");
+const u8 gText_Quest_ArtisanBalls_Sub5_Desc[] = _("You caught a Pokémon in a\nLove Ball.");
 const u8 gText_Quest_ArtisanBalls_Sub5_Map[] = _("N/A");
 const u8 gText_Quest_ArtisanBalls_Sub6_Name[] = _("Friend Ball");
-const u8 gText_Quest_ArtisanBalls_Sub6_Desc[] = _("Sub You caught a Pokémon in a Friend Ball.");
+const u8 gText_Quest_ArtisanBalls_Sub6_Desc[] = _("Sub You caught a Pokémon in a\nFriend Ball.");
 const u8 gText_Quest_ArtisanBalls_Sub6_Map[] = _("N/A");
 const u8 gText_Quest_ArtisanBalls_Sub7_Name[] = _("Moon Ball");
-const u8 gText_Quest_ArtisanBalls_Sub7_Desc[] = _("You caught a Pokémon in a Moon Ball.");
+const u8 gText_Quest_ArtisanBalls_Sub7_Desc[] = _("You caught a Pokémon in a\nMoon Ball.");
 const u8 gText_Quest_ArtisanBalls_Sub7_Map[] = _("N/A");
 
 const u8 gText_Quest_ArtisanBalls2_Sub1_Name[] = _("Office Manager");
-const u8 gText_Quest_ArtisanBalls2_Sub1_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ArtisanBalls2_Sub1_Map[] = _("Dogpatch");
+const u8 gText_Quest_ArtisanBalls2_Sub1_Desc[] = _("You battled an Office Manager that is\ninterested in working with Sergey.");
+const u8 gText_Quest_ArtisanBalls2_Sub1_Map[] = _("Psfroute21");
 const u8 gText_Quest_ArtisanBalls2_Sub2_Name[] = _("Marketing");
-const u8 gText_Quest_ArtisanBalls2_Sub2_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_ArtisanBalls2_Sub2_Desc[] = _("You battled a Marketing Director that is\ninterested in working with Sergey.");
 const u8 gText_Quest_ArtisanBalls2_Sub2_Map[] = _("Psfroute70");
 const u8 gText_Quest_ArtisanBalls2_Sub3_Name[] = _("Customer Service");
-const u8 gText_Quest_ArtisanBalls2_Sub3_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_ArtisanBalls2_Sub3_Map[] = _("Marin");
+const u8 gText_Quest_ArtisanBalls2_Sub3_Desc[] = _("You battled a Customer Service rep that\nis interested in working with Sergey.");
+const u8 gText_Quest_ArtisanBalls2_Sub3_Map[] = _("Psfroute61");
 
 const u8 gText_Quest_ShelterSwitcheroo_Sub1_Name[] = _("Shelter 1");
 const u8 gText_Quest_ShelterSwitcheroo_Sub1_Desc[] = _("Sub Lorem");

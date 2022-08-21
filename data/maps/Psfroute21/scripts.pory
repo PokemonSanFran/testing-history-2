@@ -1,1 +1,5 @@
-mapscripts Psfroute21_MapScripts {}
+mapscripts Psfroute21_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_ArtisanBalls2_CheckTrainerA_Script)
+    }
+}

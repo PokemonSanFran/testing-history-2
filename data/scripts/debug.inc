@@ -42,7 +42,10 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_SET_REWARD, QUEST_ARTISANBALLS1
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS1
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2
+	call Quest_ArtisanBalls1_DebugB_Script
+	call Quest_ArtisanBalls2_DebugB_Script
 	end
 
 
@@ -67,18 +70,25 @@ Debug_Script_6::
 
 
 Debug_Script_7::
+	warp MAP_PSFROUTE61, 23, 4
 	end
 
 
 Debug_Script_8::
+	warp MAP_PSFROUTE70, 4, 11
 	end
 
 
 Debug_Script_9::
+	warp MAP_PSFROUTE21, 30, 5
 	end
 
 
 Debug_Script_10::
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_2
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_3
+	call Quest_ArtisanBalls2_CheckReward_Script
 	end
 
 

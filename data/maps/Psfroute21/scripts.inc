@@ -1,3 +1,8 @@
 Psfroute21_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute21_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfroute21_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_ArtisanBalls2_CheckTrainerA_Script
+	return
 

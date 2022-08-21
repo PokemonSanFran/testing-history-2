@@ -1,9 +1,14 @@
 Japantown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Japantown_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Japantown_MapScripts_MAP_SCRIPT_ON_LOAD
 	.byte 0
 
 Japantown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_HybridCulture_HideLeader_Script
+	return
+
+Japantown_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call Quest_ArtisanBalls3_ChangeDoorMetatile_Script
 	return
 
 

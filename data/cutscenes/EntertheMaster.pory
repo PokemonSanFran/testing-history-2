@@ -2,10 +2,18 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
 const SIEBOLD = 2
 
+script EnterTheMaster_ObjectsVisible_Script{
+    switch (var(VAR_ROUTE116_STATE)) {
+        case 1: goto(EnterTheMaster_Object_SetUp_Script)
+        default: goto(EnterTheMaster_HideObject_Script)
+    }
+    return
+}
+
 script EnterTheMaster_HideObject_Script {
     setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_3)
+        setflag(FLAG_TEMP_2)
+        setflag(FLAG_TEMP_3)
 }
 
 script EnterTheMaster_Object_SetUp_Script {
@@ -18,361 +26,361 @@ script EnterTheMaster_Clearing_Object_SetUp_Script {
 
 script EnterTheMaster_Interact_Script {
     lock
-    faceplayer
-    goto(EnterTheMaster_Ready_Dialogue)
+        faceplayer
+        goto(EnterTheMaster_Ready_Dialogue)
 }
 
 script EnterTheMaster_WalkingTrigger_Script {
     lock
-    applymovement(PLAYER,Common_Movement_FaceLeft)
-    waitmovement(0)
-    goto(EnterTheMaster_Ready_Dialogue)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        waitmovement(0)
+        goto(EnterTheMaster_Ready_Dialogue)
 }
 
 script EnterTheMaster_Ready_Dialogue {
 
-addvar(VAR_ROUTE116_STATE,1)
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_MorningReady)
+    addvar(VAR_ROUTE116_STATE,1)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_MorningReady)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_AsReadyAs)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_AsReadyAs)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_DaddySentAnother)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_DaddySentAnother)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_ThanksDad)
-callnative(ClearMugshot)
-closemessage
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_ThanksDad)
+        callnative(ClearMugshot)
+        closemessage
 
-applymovement(BIANCA,EnterTheMaster_WalkIntoWoods)
-waitmovement(0)
-playse(SE_EXIT)
-waitse
-removeobject(BIANCA)
-release
-end
+        applymovement(BIANCA,EnterTheMaster_WalkIntoWoods)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(BIANCA)
+        release
+        end
 
-//PSF TODO implement follow me nonsense
+        //PSF TODO implement follow me nonsense
 }
 
 script EnterTheMaster_InteractFollower_Script {
 
-lock
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-random(4)
+    lock
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        random(4)
 
-switch(var(VAR_RESULT)){
-    case 0: msgbox(gText_EnterTheMaster_HowDoYouThink,MSGBOX_NPC)
-    case 1: msgbox(gText_EnterTheMaster_YouKnow,MSGBOX_NPC)
-    case 2: msgbox(gText_EnterTheMaster_IThoughtGymLeaders,MSGBOX_NPC)
-    case 3: msgbox(gText_EnterTheMaster_DoYouThinkTheyre,MSGBOX_NPC)
-}
+        switch(var(VAR_RESULT)){
+            case 0: msgbox(gText_EnterTheMaster_HowDoYouThink,MSGBOX_NPC)
+            case 1: msgbox(gText_EnterTheMaster_YouKnow,MSGBOX_NPC)
+            case 2: msgbox(gText_EnterTheMaster_IThoughtGymLeaders,MSGBOX_NPC)
+            case 3: msgbox(gText_EnterTheMaster_DoYouThinkTheyre,MSGBOX_NPC)
+        }
 
-closemessage
-callnative(ClearMugshot)
-release
-end
+    closemessage
+        callnative(ClearMugshot)
+        release
+        end
 }
 
 script EnterTheMaster_LeaveWoods_Script {
     lock
-    faceplayer
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_TiredAlready)
-closemessage
-callnative(ClearMugshot)
+        faceplayer
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_TiredAlready)
+        closemessage
+        callnative(ClearMugshot)
 }
 
 script EnterTheMaster_CompleteMaze_Dialogue {
 
-addvar(VAR_ROUTE116_STATE,1)
-lock
-    addobject(BIANCA)
-    setobjectxy(BIANCA,24,22) //PSF TODO Remove when followers are implemented
-    setobjectxyperm(BIANCA,24,22)
+    addvar(VAR_ROUTE116_STATE,1)
+        lock
+        addobject(BIANCA)
+        setobjectxy(BIANCA,24,22) //PSF TODO Remove when followers are implemented
+        setobjectxyperm(BIANCA,24,22)
 
-    faceplayer
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_IDontThinkTheres)
+        faceplayer
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_IDontThinkTheres)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_YouThinkTheyve)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_YouThinkTheyve)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_TheyreGettingPaid)
-closemessage
-callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_TheyreGettingPaid)
+        closemessage
+        callnative(ClearMugshot)
 
-applymovement(BIANCA,EnterTheMaster_WalkIntoWoods)
-waitmovement(0)
-playse(SE_EXIT)
-waitse
-removeobject(BIANCA)
-release
-end
+        applymovement(BIANCA,EnterTheMaster_WalkIntoWoods)
+        waitmovement(0)
+        playse(SE_EXIT)
+        waitse
+        removeobject(BIANCA)
+        release
+        end
 }
 
 script EnterTheMaster_ClearingIntro_Dialogue {
     addvar(VAR_ROUTE116_STATE,1)
 
-applymovement(PLAYER,EnterTheMaster_ApproachSiebold)
-waitmovement(0)
+        applymovement(PLAYER,EnterTheMaster_ApproachSiebold)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_MARSHAL)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_WelcomeTo)
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_WelcomeTo)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_ThanksYoure)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_ThanksYoure)
 
-setvar(VAR_0x8000, MUGSHOT_MARSHAL)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_AndMyNotebook)
-callnative(ClearMugshot)
-closemessage
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_AndMyNotebook)
+        callnative(ClearMugshot)
+        closemessage
 
-applymovement(SIEBOLD,Common_Movement_FaceLeft)
-applymovement(BIANCA,EnterTheMaster_GiveNotebook)
-waitmovement(0)
+        applymovement(SIEBOLD,Common_Movement_FaceLeft)
+        applymovement(BIANCA,EnterTheMaster_GiveNotebook)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_MARSHAL)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_GettingThemToBattle)
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_GettingThemToBattle)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_IsThatWhatYoure)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_IsThatWhatYoure)
 
-setvar(VAR_0x8000, MUGSHOT_MARSHAL)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_EveryClientAlways)
-closemessage
-callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_EveryClientAlways)
+        closemessage
+        callnative(ClearMugshot)
 
-applymovement(BIANCA,EnterTheMaster_StandNextToPlayer)
-waitmovement(0)
+        applymovement(BIANCA,EnterTheMaster_StandNextToPlayer)
+        waitmovement(0)
 
-applymovement(SIEBOLD,EnterTheMaster_Pace)
-waitmovement(0)
+        applymovement(SIEBOLD,EnterTheMaster_Pace)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_MARSHAL)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_AreEitherOfYou)
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_AreEitherOfYou)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_YeahThatsTheBattleFrontier)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_YeahThatsTheBattleFrontier)
 
-setvar(VAR_0x8000, MUGSHOT_MARSHAL)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_HmmTheSmartass)
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_HmmTheSmartass)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_OhDoesEachPart)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_OhDoesEachPart)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_SorryDidntGoTo)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_SorryDidntGoTo)
 
-applymovement(BIANCA,Common_Movement_FaceRight)
-applymovement(PLAYER,Common_Movement_FaceLeft)
-waitmovement(0)
+        applymovement(BIANCA,Common_Movement_FaceRight)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        waitmovement(0)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_ScottIsTheFounder)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_ScottIsTheFounder)
 
-fadescreen(FADE_TO_BLACK)
-msgbox(gText_EnterTheMaster_OneEternity)
-applymovement(BIANCA,Common_Movement_FaceUp)
-applymovement(PLAYER,Common_Movement_FaceUp)
-waitmovement(0)
-fadescreen(FADE_FROM_BLACK)
+        fadescreen(FADE_TO_BLACK)
+        msgbox(gText_EnterTheMaster_OneEternity)
+        applymovement(BIANCA,Common_Movement_FaceUp)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        waitmovement(0)
+        fadescreen(FADE_FROM_BLACK)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_AndSoConcludes)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_AndSoConcludes)
 
-setvar(VAR_0x8000, MUGSHOT_MARSHAL)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_SortaKindaNotReally)
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_Oh)
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_SortaKindaNotReally)
+        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_Oh)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_SoWhatsNext)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_SoWhatsNext)
 
-setvar(VAR_0x8000, MUGSHOT_MARSHAL)
-callnative(DrawMugshot)
-msgbox(gText_EnterTheMaster_WellUntilNSFigures)
-callnative(ClearMugshot)
-closemessage
-end
+        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        callnative(DrawMugshot)
+        msgbox(gText_EnterTheMaster_WellUntilNSFigures)
+        callnative(ClearMugshot)
+        closemessage
+        end
 }
 
 movement EnterTheMaster_WalkIntoWoods {
     walk_up
-    step_end
+        step_end
 }
 
 text gText_EnterTheMaster_MorningReady{
-	format("Morning. Ready to find this old dude?")
-	}
+    format("Morning. Ready to find this old dude?")
+}
 
 text gText_EnterTheMaster_AsReadyAs{
-	format("As ready as I'm going to be!")
-	}
+    format("As ready as I'm going to be!")
+}
 
 text gText_EnterTheMaster_DaddySentAnother{
-	format("Daddy sent another care package, so if we stick together, I'll keep you healed up.")
-	}
+    format("Daddy sent another care package, so if we stick together, I'll keep you healed up.")
+}
 
 text gText_EnterTheMaster_ThanksDad{
-	format("Thanks… dad?")
-	}
+    format("Thanks… dad?")
+}
 
 text gText_EnterTheMaster_HowDoYouThink{
-	format("How do you think my new Pokémon is faring? I'm curious to see how it integrates with the rest of my team.")
-	}
+    format("How do you think my new Pokémon is faring? I'm curious to see how it integrates with the rest of my team.")
+}
 
 text gText_EnterTheMaster_YouKnow{
-	format("You know, I'm really sick of TeamRocket's shit. Its their fault we're stuck in this stupid forest.")
-	}
+    format("You know, I'm really sick of TeamRocket's shit. Its their fault we're stuck in this stupid forest.")
+}
 
 text gText_EnterTheMaster_IThoughtGymLeaders{
-	format("I thought SanFran's Gym Leaders would be tougher. I wonder how their old Elite Four stacks up to Unova's?")
-	}
+    format("I thought SanFran's Gym Leaders would be tougher. I wonder how their old Elite Four stacks up to Unova's?")
+}
 
 text gText_EnterTheMaster_DoYouThinkTheyre{
-	format("Do you think they're going to be worth all this hassle?")
-	}
+    format("Do you think they're going to be worth all this hassle?")
+}
 
 text gText_EnterTheMaster_TiredAlready{
-	format("Tired already? I'll be waiting here.")
-	}
+    format("Tired already? I'll be waiting here.")
+}
 
 text gText_EnterTheMaster_IDontThinkTheres{
-	format("I don't think there's anywhere else for them to be… they've gotta be in here.")
-	}
+    format("I don't think there's anywhere else for them to be… they've gotta be in here.")
+}
 
 text gText_EnterTheMaster_YouThinkTheyve{
-	format("You think they've just been alone in here, waiting for us for Dialga knows how long?")
-	}
+    format("You think they've just been alone in here, waiting for us for Dialga knows how long?")
+}
 
 text gText_EnterTheMaster_TheyreGettingPaid{
-	format("They're getting paid. ")
-	}
+    format("They're getting paid. ")
+}
 
 text gText_EnterTheMaster_WelcomeTo{
-	format("Bianca! {PLAYER}! Welcome to Muirwoods. Excellent work so far!")
-	}
+    format("Bianca! {PLAYER}! Welcome to Muirwoods. Excellent work so far!")
+}
 
 text gText_EnterTheMaster_ThanksYoure{
-	format("Thanks. You're Siebold?")
-	}
+    format("Thanks. You're Siebold?")
+}
 
 text gText_EnterTheMaster_AndMyNotebook{
-	format("Yeah! And my notebook?")
-	}
+    format("Yeah! And my notebook?")
+}
 
 text gText_EnterTheMaster_GettingThemToBattle{
-	format("I hope Pokémon 1 and Pokémon 2 in Robinwilltunnel weren't too much trouble. Getting them to battle without my direct commands was certainly a challenge.")
-	}
+    format("I hope Pokémon 1 and Pokémon 2 in Robinwilltunnel weren't too much trouble. Getting them to battle without my direct commands was certainly a challenge.")
+}
 
 text gText_EnterTheMaster_IsThatWhatYoure{
-	format("Is that what you're teaching us? Battling with our eyes closed? Sounds useful.")
-	}
+    format("Is that what you're teaching us? Battling with our eyes closed? Sounds useful.")
+}
 
 text gText_EnterTheMaster_EveryClientAlways{
-	format("Every client always sends me a smartass… Let's get started.")
-	}
+    format("Every client always sends me a smartass… Let's get started.")
+}
 
 text gText_EnterTheMaster_AreEitherOfYou{
-	format("Are either of you familiar with the Scott's Trainer Theory?")
-	}
+    format("Are either of you familiar with the Scott's Trainer Theory?")
+}
 
 text gText_EnterTheMaster_YeahThatsTheBattleFrontier{
-	format("Yeah, that's the Battle Frontier guy, right?")
-	}
+    format("Yeah, that's the Battle Frontier guy, right?")
+}
 
 text gText_EnterTheMaster_HmmTheSmartass{
-	format("Hmm, the smartass actually knows something!")
-	}
+    format("Hmm, the smartass actually knows something!")
+}
 
 text gText_EnterTheMaster_OhDoesEachPart{
-	format("Oh… does each part of this training map to each of those principles?")
-	}
+    format("Oh… does each part of this training map to each of those principles?")
+}
 
 text gText_EnterTheMaster_SorryDidntGoTo{
-	format("Sorry, didn't go to Battle prep school. Who is Scott and what are these principles?")
-	}
+    format("Sorry, didn't go to Battle prep school. Who is Scott and what are these principles?")
+}
 
 text gText_EnterTheMaster_ScottIsTheFounder{
-	format("Scott is the founder of an amusement park in Hoenn. Its attractions were designed to test what Scott believed were the qualities that all Master trainers require… ")
-	}
+    format("Scott is the founder of an amusement park in Hoenn. Its attractions were designed to test what Scott believed were the qualities that all Master trainers require… ")
+}
 
 text gText_EnterTheMaster_OneEternity{
-	format("One eternity later…")
+    format("One eternity later…")
 }
 text gText_EnterTheMaster_AndSoConcludes{
-	format("…and so concludes my theory on how your silly little tests correspond with each of Scott's 7 principles.")
-	}
+    format("…and so concludes my theory on how your silly little tests correspond with each of Scott's 7 principles.")
+}
 
 text gText_EnterTheMaster_SortaKindaNotReally{
-	format("…sorta, kinda, not really. If you think life is going to map one to one like that for you, you've got a rude awakening ahead.")
-	}
+    format("…sorta, kinda, not really. If you think life is going to map one to one like that for you, you've got a rude awakening ahead.")
+}
 
 text gText_EnterTheMaster_Oh{
-	format("…Oh.")
-	}
+    format("…Oh.")
+}
 
 text gText_EnterTheMaster_SoWhatsNext{
-	format("So what's next?")
-	}
+    format("So what's next?")
+}
 
 text gText_EnterTheMaster_WellUntilNSFigures{
-	format("Well, until NS figures out what these quests are, just leave and come back.")
-	}
+    format("Well, until NS figures out what these quests are, just leave and come back.")
+}
 
 movement EnterTheMaster_GiveNotebook {
     walk_up
-    face_right
-    delay_16
-    walk_in_place_slow_right
-    step_end
+        face_right
+        delay_16
+        walk_in_place_slow_right
+        step_end
 }
 
 movement EnterTheMaster_StandNextToPlayer {
     walk_down
-    face_up
-    step_end
+        face_up
+        step_end
 }
 
 movement EnterTheMaster_Pace {
     walk_left * 2
-    walk_right *2
-    walk_left * 2
-    walk_right *2
-    face_down
-    step_end
+        walk_right *2
+        walk_left * 2
+        walk_right *2
+        face_down
+        step_end
 }
 
 movement EnterTheMaster_ApproachSiebold {
     walk_up * 1
-    step_end
+        step_end
 }
