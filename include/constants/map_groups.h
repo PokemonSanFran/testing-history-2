@@ -166,9 +166,10 @@
 #define MAP_MISSION_CONSULTING (1 | (4 << 8))
 
 // gMapGroup_IndoorJapantown
-#define MAP_JAPANTOWN_GYM   (0 | (5 << 8))
-#define MAP_JAPANTOWN_RAMEN (1 | (5 << 8))
-#define MAP_JAPANTOWN_BALLS (2 | (5 << 8))
+#define MAP_JAPANTOWN_GYM        (0 | (5 << 8))
+#define MAP_JAPANTOWN_RAMEN      (1 | (5 << 8))
+#define MAP_JAPANTOWN_BALLS      (2 | (5 << 8))
+#define MAP_JAPANTOWN_MUSICVENUE (3 | (5 << 8))
 
 // gMapGroup_IndoorBerkeley
 #define MAP_BERKELEY_GYM             (0 | (6 << 8))

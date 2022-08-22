@@ -1281,7 +1281,9 @@ Script_RemoveTint::
 .include "data/quests/artisanballs3.inc"
 .include "data/quests/shelterswitcheroo.inc"
 .include "data/quests/sheltertaxisolution.inc"
+*/
 .include "data/quests/lastmusicvenueinsanfrancisco.inc"
+/*
 .include "data/quests/gardencleanup.inc"
 .include "data/quests/gardencleanupadvanced.inc"
 .include "data/quests/employedeverafter.inc"
@@ -1392,3 +1394,5 @@ Script_RemoveTint::
 	.include "data/maps/Tenderloin_TrolleyHQ/scripts.inc"
 
 	.include "data/maps/Japantown_Balls/scripts.inc"
+
+	.include "data/maps/Japantown_Musicvenue/scripts.inc"

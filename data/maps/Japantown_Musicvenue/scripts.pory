@@ -1,0 +1,20 @@
+mapscripts Japantown_Musicvenue_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Quest_LastMusicVenue_HideDrummers)
+        call(Quest_LastMusicVenue_ChangeMusic)
+    }
+}
+
+script Japantown_Musicvenue_Interact_Ladislau_Script{
+    lock
+
+    returnqueststate(QUEST_LASTMUSICVENUEINSANFRANCISCO)
+    switch(var(VAR_RESULT){
+            case QUEST_MENU_SET_ACTIVE: goto(Quest_LastMusicVenue_Active_Dialogue)
+            case QUEST_MENU_SET_REWARD: goto(Quest_LastMusicVenue_Reward_Dialogue)
+            case QUEST_MENU_COMPLETE_QUEST: goto(Japantown_Musicvenue_Drummers_Dialogue)
+            default: goto(Quest_LastMusicVenue_StartQuest_Script)
+            }
+}
+
+Japan

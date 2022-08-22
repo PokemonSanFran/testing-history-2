@@ -5600,6 +5600,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Japantown_Balls/border.bin",
       "blockdata_filepath": "data/layouts/Japantown_Balls/map.bin"
+    },
+    {
+      "id": "LAYOUT_JAPANTOWN_MUSICVENUE",
+      "name": "Japantown_Musicvenue_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Japantown_Musicvenue/border.bin",
+      "blockdata_filepath": "data/layouts/Japantown_Musicvenue/map.bin"
     }
   ]
 }

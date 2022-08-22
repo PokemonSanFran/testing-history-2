@@ -308,9 +308,9 @@ const u8 gText_Quest_ShelterTaxiSolution_Desc[] =_("Description");
 const u8 gText_Quest_ShelterTaxiSolution_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_ShelterTaxiSolution_Map[] =_("SouthBay");
 
-const u8 gText_Quest_LastMusicVenueInSanFrancisco_Name[] = _("Last Music Venue in San Francisco");
-const u8 gText_Quest_LastMusicVenueInSanFrancisco_Desc[] =_("Description");
-const u8 gText_Quest_LastMusicVenueInSanFrancisco_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_LastMusicVenueInSanFrancisco_Name[] = _("Last Music Venue in SanFran");
+const u8 gText_Quest_LastMusicVenueInSanFrancisco_Desc[] =_("Help Ladislau find local musicians\nlooking for a regular venue to perform\nin.");
+const u8 gText_Quest_LastMusicVenueInSanFrancisco_DoneDesc[] =_("The drum circle you previously battled\nare thrilled to have a new venue to\nperform in!");
 const u8 gText_Quest_LastMusicVenueInSanFrancisco_Map[] =_("Japantown");
 
 const u8 gText_Quest_GardenCleanup_Name[] = _("Garden Cleanup");

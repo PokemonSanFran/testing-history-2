@@ -1,0 +1,81 @@
+//Quest_LastMusicVenue_
+//gText_Quest_LastMusicVenue_
+
+script Quest_LastMusicVenue_CheckDrummerImpact{
+    returnqueststate(QUEST_LASTMUSICVENUEINSANFRANCISCO)
+    if (var(VAR_RESULT) < QUEST_MENU_SET_REWARD){
+        call(Quest_ArtisanBalls3_HideSilph_Script)
+        call(Quest_ArtisanBalls2_HideEmployees_Script)
+    }
+}
+
+script Quest_LastMusicVenue_HideDrummers{
+        setflag(FLAG_TEMP_1)
+}
+
+script Quest_LastMusicVenue_ChangeMusic{
+    fadedefaultbgm(MUS_FUSCHIA,TRUE)
+}
+
+script Quest_LastMusicVenue_StartQuest_Script{
+    msgbox(gText_Quest_LastMusicVenue_IHopeYoureNot,MSGBOX_NPC)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Quest_LastMusicVenue_WhyIsThat,MSGBOX_NPC)
+    callnative(ClearMugshot)
+
+    msgbox(gText_Quest_LastMusicVenue_ItsAViciousCycle,MSGBOX_NPC)
+    msgbox(gText_Quest_LastMusicVenue_YoureYoungDoYouKnow,MSGBOX_NPC)
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_DRUMCIRCLE)
+    
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+
+    if (var(VAR_RESULT){
+        msgbox(gText_Quest_LastMusicVenue_ActuallyIMetSome,MSGBOX_NPC)
+        msgbox(gText_Quest_LastMusicVenue_TheDrumCircle,MSGBOX_NPC)
+    }else{
+        msgbox(gText_Quest_LastMusicVenue_IllKeepMyEyesPeeled,MSGBOX_NPC)
+    }
+
+    callnative(ClearMugshot)
+
+    start(QUEST_LASTMUSICVENUEINSANFRANCISCO)
+    release
+    end
+}
+
+script Quest_LastMusicVenue_Active_Dialogue{
+    msgbox(gText_Quest_LastMusicVenue_AnyLuck,MSGBOX_NPC)
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_DRUMCIRCLE)
+    
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+
+    if (var(VAR_RESULT){
+        msgbox(gText_Quest_LastMusicVenue_IHavent,MSGBOX_NPC)
+    }else{
+        msgbox(gText_Quest_LastMusicVenue_ImStillLooking,MSGBOX_NPC)
+    }
+
+    callnative(ClearMugshot)
+    release
+    end
+}
+
+script Quest_LastMusicVenue_Reward_Dialogue{
+    msgbox(gText_Quest_LastMusicVenue_TheseDrummers,MSGBOX_NPC)
+    msgbox(gText_Quest_LastMusicVenue_TurnsOutTheyKnow,MSGBOX_NPC)
+    call(Quest_LastMusicVenue_GiveReward_Script)
+    completequest(QUEST_LASTMUSICVENUEINSANFRANCISCO)
+    release
+    end
+}
+
+script Quest_LastMusicVenue_GiveReward_Script{
+    giveitem(ITEM_STARF_BERRY,1)
+    return
+}
