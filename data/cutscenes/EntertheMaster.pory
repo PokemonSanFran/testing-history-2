@@ -5,6 +5,7 @@ const SIEBOLD = 2
 script EnterTheMaster_ObjectsVisible_Script{
     switch (var(VAR_ROUTE116_STATE)) {
         case 1: goto(EnterTheMaster_Object_SetUp_Script)
+        case 2: goto(EnterTheMaster_Object_SetUp_Script)
         default: goto(EnterTheMaster_HideObject_Script)
     }
     return

@@ -6,6 +6,7 @@ Marin_MapScripts::
 
 Marin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Marin_HideBianca_Script
+	call Marin_HideLiidia_Script
 	return
 
 Marin_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -61,4 +62,4 @@ Marin_RangerStationDoor_Script_1:
 
 
 gText_Marin_TheDoorIsLocked::
-	.string "$"
+	.string "The door is locked.$"

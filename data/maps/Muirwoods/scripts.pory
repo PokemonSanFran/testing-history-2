@@ -1,6 +1,6 @@
 mapscripts Muirwoods_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Muirwoods_MapScripts_OnTransition)
+        goto(EnterTheMaster_ObjectsVisible_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ROUTE116_STATE, 4: HaveYouSeenTheNews_SolvePuzzles_Script
@@ -8,11 +8,54 @@ mapscripts Muirwoods_MapScripts {
     ]
 }
 
-script Muirwoods_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE116_STATE)) {
-        case 2: goto(EnterTheMaster_Object_SetUp_Script)
-        default: goto(EnterTheMaster_HideObject_Script)
-}
+script Muirwoods_ForestSign_Script{
+    msgbox(gText_Muirwoods_RegionParkSign,MSGBOX_SIGN)
+
+    returnqueststate(QUEST_INSTALLNATUREPROBES)
+    
+    switch (var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: 
+            goto(Quest_InstallNatureProbes_InstallForestProbe_Script)
+        case QUEST_MENU_COMPLETE_QUEST:
+            msgbox(gText_InstallNatureProbes_ThereIsAProbe,MSGBOX_SIGN)
+        default:
+            release
+            end
+    }
 }
 
+script Muirwoods_HillSign_Script{
+   msgbox(gText_Muirwoods_RegionParkSign,MSGBOX_SIGN)
 
+    returnqueststate(QUEST_INSTALLNATUREPROBES)
+    
+    switch (var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: 
+            goto(Quest_InstallNatureProbes_InstallHillProbe_Script)
+        case QUEST_MENU_COMPLETE_QUEST:
+            msgbox(gText_InstallNatureProbes_ThereIsAProbe,MSGBOX_SIGN)
+        default:
+            release
+            end
+    }
+}
+
+script Muirwoods_ShoreSign_Script{
+   msgbox(gText_Muirwoods_RegionParkSign,MSGBOX_SIGN)
+
+    returnqueststate(QUEST_INSTALLNATUREPROBES)
+    
+    switch (var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: 
+            goto(Quest_InstallNatureProbes_InstallShoreProbe_Script)
+        case QUEST_MENU_COMPLETE_QUEST:
+            msgbox(gText_InstallNatureProbes_ThereIsAProbe,MSGBOX_SIGN)
+        default:
+            release
+            end
+    }
+}
+
+text gText_Muirwoods_RegionParkSign{
+    format("Muirwoods Regional Park")
+}

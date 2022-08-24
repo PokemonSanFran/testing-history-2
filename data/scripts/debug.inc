@@ -42,11 +42,12 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	warp MAP_MARIN, 13, 10
+	warp MAP_MUIRWOODS, 45, 9
 	end
 
 
 Debug_Script_2::
+	warp MAP_MARIN, 13, 10
 	end
 
 

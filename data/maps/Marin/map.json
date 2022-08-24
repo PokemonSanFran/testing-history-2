@@ -68,6 +68,13 @@
       "elevation": 0,
       "dest_map": "MAP_MARIN",
       "dest_warp_id": 0
+    },
+    {
+      "x": 4,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_MARIN",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
@@ -78,7 +85,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "Quest_InstallNatureProbes_InstallForestProbe_Script"
+      "script": "Muirwoods_ShoreSign_Script"
     },
     {
       "type": "trigger",
@@ -87,7 +94,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "Quest_InstallNatureProbes_InstallHillProbe_Script"
+      "script": "Muirwoods_ForestSign_Script"
     },
     {
       "type": "trigger",
@@ -96,7 +103,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "Quest_InstallNatureProbes_InstallShoreProbe_Script"
+      "script": "Muirwoods_HillSign_Script"
     }
   ],
   "bg_events": [
@@ -106,7 +113,7 @@
       "y": 15,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "LetsGrabLunch_FastForwardFirstRestoration_Quest"
+      "script": "NULL"
     },
     {
       "type": "sign",

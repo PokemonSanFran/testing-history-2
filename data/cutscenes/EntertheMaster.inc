@@ -1,11 +1,16 @@
 EnterTheMaster_ObjectsVisible_Script::
 	switch VAR_ROUTE116_STATE
 	case 1, EnterTheMaster_ObjectsVisible_Script_3
+	case 2, EnterTheMaster_ObjectsVisible_Script_4
 	goto EnterTheMaster_HideObject_Script
 EnterTheMaster_ObjectsVisible_Script_1:
 	return
 
 EnterTheMaster_ObjectsVisible_Script_3:
+	goto EnterTheMaster_Object_SetUp_Script
+	goto EnterTheMaster_ObjectsVisible_Script_1
+
+EnterTheMaster_ObjectsVisible_Script_4:
 	goto EnterTheMaster_Object_SetUp_Script
 	goto EnterTheMaster_ObjectsVisible_Script_1
 

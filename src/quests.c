@@ -246,7 +246,7 @@ static const u8 sText_Followed[] = _("Followed");
 static const u8 sText_Listened[] = _("Listened");
 static const u8 sText_Defeated[] = _("Defeated");
 static const u8 sText_Completed[] = _("Completed");
-static const u8 sText_Installed[] = _("Installed");
+static const u8 sText_PutIn[] = _("Put In");
 static const u8 sText_Distributed[] = _("Distributed");
 static const u8 sText_Recruited[] = _("Recruited");
 static const u8 sText_Informed[] = _("Informed");
@@ -444,7 +444,7 @@ sub_quest(
 	gText_Quest_InstallNatureProbes_Sub1_Map,
 	OBJ_EVENT_GFX_ARTIST,
 	OBJECT,
-	sText_Installed
+	sText_PutIn
 ),
 sub_quest(
 	32,
@@ -453,7 +453,7 @@ sub_quest(
 	gText_Quest_InstallNatureProbes_Sub2_Map,
 	OBJ_EVENT_GFX_ARTIST,
 	OBJECT,
-	sText_Installed
+	sText_PutIn
 ),
 sub_quest(
 	33,
@@ -462,7 +462,7 @@ sub_quest(
 	gText_Quest_InstallNatureProbes_Sub3_Map,
 	OBJ_EVENT_GFX_ARTIST,
 	OBJECT,
-	sText_Installed
+	sText_PutIn
 ),
 };
 
