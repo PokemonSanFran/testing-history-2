@@ -24,7 +24,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Japantown_Musicvenue_Interact_Ladislau_Script",
       "flag": "0"
     },
     {
@@ -45,7 +45,7 @@
       "x": 13,
       "y": 17,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -81,10 +81,31 @@
     }
   ],
   "warp_events": [
-
+    {
+      "x": 9,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_JAPANTOWN",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 10,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_JAPANTOWN",
+      "dest_warp_id": 3
+    }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "Quest_LastMusicVenue_Debug_Script"
+    }
   ],
   "bg_events": [
 

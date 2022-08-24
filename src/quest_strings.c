@@ -119,8 +119,8 @@ const u8 gText_Quest_ImprovBattlingChampionship_DoneDesc[] =_("DoneDescription")
 const u8 gText_Quest_ImprovBattlingChampionship_Map[] =_("Presidio");
 
 const u8 gText_Quest_InstallNatureProbes_Name[] = _("Install Nature Probes");
-const u8 gText_Quest_InstallNatureProbes_Desc[] =_("Description");
-const u8 gText_Quest_InstallNatureProbes_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_InstallNatureProbes_Desc[] =_("Help Liidia install three probes in\nMuirwoods! One deep in the forest, one\non a hill, and one near a shore.");
+const u8 gText_Quest_InstallNatureProbes_DoneDesc[] =_("You helped Liidia install nature probes\nin Muirwoods! And then they got fired.");
 const u8 gText_Quest_InstallNatureProbes_Map[] =_("Marin");
 
 const u8 gText_Quest_ManOfManyHats_Name[] = _("Man of Many Hats");
@@ -545,13 +545,13 @@ const u8 gText_Quest_ImprovBattling_Sub4_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_ImprovBattling_Sub4_Map[] = _("Presidio");
 
 const u8 gText_Quest_InstallNatureProbes_Sub1_Name[] = _("Forest");
-const u8 gText_Quest_InstallNatureProbes_Sub1_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_InstallNatureProbes_Sub1_Desc[] = _("You installed a probe for tracking\nPokemon on a hill.");
 const u8 gText_Quest_InstallNatureProbes_Sub1_Map[] = _("MuirWoods");
 const u8 gText_Quest_InstallNatureProbes_Sub2_Name[] = _("Hill");
-const u8 gText_Quest_InstallNatureProbes_Sub2_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_InstallNatureProbes_Sub2_Desc[] = _("You installed a probe for tracking\nPokemon deep in the forest.");
 const u8 gText_Quest_InstallNatureProbes_Sub2_Map[] = _("MuirWoods");
 const u8 gText_Quest_InstallNatureProbes_Sub3_Name[] = _("Shore");
-const u8 gText_Quest_InstallNatureProbes_Sub3_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_InstallNatureProbes_Sub3_Desc[] = _("You installed a probe for tracking\nPokemon by the lakeshore.");
 const u8 gText_Quest_InstallNatureProbes_Sub3_Map[] = _("MuirWoods");
 
 const u8 gText_Quest_RestaurantExpansion1_Sub1_Name[] = _("Center 1");

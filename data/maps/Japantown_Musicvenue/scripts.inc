@@ -1,2 +1,39 @@
 Japantown_Musicvenue_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Japantown_Musicvenue_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Japantown_Musicvenue_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_LastMusicVenue_CheckDrummerImpact
+	return
+
+
+Japantown_Musicvenue_Interact_Ladislau_Script::
+	lock
+	returnqueststate QUEST_LASTMUSICVENUEINSANFRANCISCO
+	switch VAR_RESULT
+	case QUEST_MENU_SET_ACTIVE, Japantown_Musicvenue_Interact_Ladislau_Script_2
+	case QUEST_MENU_SET_REWARD, Japantown_Musicvenue_Interact_Ladislau_Script_3
+	case QUEST_MENU_COMPLETE_QUEST, Japantown_Musicvenue_Interact_Ladislau_Script_4
+	goto Quest_LastMusicVenue_StartQuest_Script
+	return
+
+Japantown_Musicvenue_Interact_Ladislau_Script_2:
+	goto Quest_LastMusicVenue_Active_Dialogue
+	return
+
+Japantown_Musicvenue_Interact_Ladislau_Script_3:
+	goto Quest_LastMusicVenue_Reward_Dialogue
+	return
+
+Japantown_Musicvenue_Interact_Ladislau_Script_4:
+	goto Japantown_Musicvenue_Drummers_Dialogue
+	return
+
+
+Japantown_Musicvenue_Drummers_Dialogue::
+	msgbox gText_Japantown_Musicvenue_ManTheseDummers, MSGBOX_NPC
+	end
+
+
+gText_Japantown_Musicvenue_ManTheseDummers::
+	.string "Man, these drummers are something else!$"

@@ -42,10 +42,7 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS1
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2
-	call Quest_ArtisanBalls1_DebugB_Script
-	call Quest_ArtisanBalls2_DebugB_Script
+	warp MAP_MARIN, 13, 10
 	end
 
 

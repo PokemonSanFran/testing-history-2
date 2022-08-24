@@ -1,24 +1,55 @@
 const BIANCA = 1
+const LIIDIA = 2
 
 mapscripts Marin_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Marin_MapScripts_OnTransition)
+        call(Marin_HideBianca_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ROUTE115_STATE, 1: IGuessWeShouldBeNiceNow_ExitCave_Script 
         VAR_STORYLINE_STATE, 41: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
-}
 
-script Marin_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE115_STATE)){
-        default: goto(Marin_HideBianca_Script)
+    MAP_SCRIPT_ON_LOAD{
+        call(Marin_LockRangerDoor_Script)
     }
 }
 
 script Marin_HideBianca_Script {
-    setflag(FLAG_TEMP_3)
-    removeobject(BIANCA)
+    switch (var(VAR_ROUTE115_STATE)){
+    default: setflag(FLAG_TEMP_3)
+            removeobject(BIANCA)
+    }
 }
 
+script Marin_HideLiidia_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_INSTALLNATUREPROBES)
+
+    if (var(VAR_RESULT)){
+        setflag(FLAG_TEMP_4)
+    }
+}
+
+script Marin_LockRangerDoor_Script{
+    checkitem(ITEM_KEY_TO_ROOM_1,1)
+
+    if(!var(VAR_RESULT)){
+        setmetatile(13,8,0x23B,TRUE)
+    }
+}
+
+script Marin_RangerStationDoor_Script{
+    lock
+    checkitem(ITEM_KEY_TO_ROOM_1,1)
+
+    if(!var(VAR_RESULT)){
+        msgbox(gText_Marin_TheDoorIsLocked,MSGBOX_SIGN)
+        release
+        end
+    }
+}
+
+text gText_Marin_TheDoorIsLocked{
+    format("")
+}

@@ -1,0 +1,233 @@
+//Quest_InstallNatureProbes_
+//gText_InstallNatureProbes_
+
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const LIIDIA = 2
+
+script Quest_InstallNatureProbes_Interact_Liidia_Script
+{
+	lock
+    call(Quest_InstallNatureProbes_CheckCompletionRate_Script)
+	returnqueststate(QUEST_INSTALLNATUREPROBES)
+
+	switch (var(VAR_RESULT))
+	{
+		case QUEST_MENU_SET_ACTIVE: goto(Quest_InstallNatureProbes_Active_Dialogue)
+		case QUEST_MENU_SET_REWARD: goto(Quest_InstallNatureProbes_Reward_Cutscene)
+		default: goto(Quest_InstallNatureProbes_StartQuest_Dialogue)
+	}
+}
+
+script Quest_InstallNatureProbes_StartQuest_Dialogue
+{
+	msgbox(gText_InstallNatureProbes_GeezIGottaWorkTonight, MSGBOX_NPC)
+	msgbox(gText_InstallNatureProbes_ActuallyYoureATrainer, MSGBOX_NPC)
+	msgbox(gText_InstallNatureProbes_CanYouHelp, MSGBOX_NPC)
+
+	startquest(QUEST_INSTALLNATUREPROBES)
+	release
+	end
+}
+
+script Quest_InstallNatureProbes_Active_Dialogue
+{
+	msgbox(gText_InstallNatureProbes_WhatProbes,MSGBOX_NPC)
+
+    if (var(VAR_TEMP_1) > 0){
+        msgbox(gText_InstallNatureProbes_TheProbeInTheForest,MSGBOX_NPC)
+    }
+
+    if (var(VAR_TEMP_2) > 0){
+        msgbox(gText_InstallNatureProbes_TheProbeOnTheHill,MSGBOX_NPC)
+    }
+
+    if (var(VAR_TEMP_3) > 0){
+        msgbox(gText_InstallNatureProbes_TheProbeByTheShore,MSGBOX_NPC)
+    }
+}
+
+
+script Quest_InstallNatureProbes_InstallForestProbe_Script{
+    lock
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_InstallNatureProbes_YeahThisSeemsToMatch)
+    callnative(ClearMugshot)
+
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_INSTALLNATUREPROBES,SUB_QUEST_1)
+    call(Quest_InstallNatureProbes_CheckCompletionRate_Script)
+    playse(SE_CONTEST_HEART)
+    msgbox(gText_InstallNatureProbes_PlayerInstalledForest)
+    waitse
+    waitmessage
+
+    release
+    end
+}
+script Quest_InstallNatureProbes_InstallHillProbe_Script{
+    lock
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_InstallNatureProbes_ThisIsAsGoodOfAHill)
+    callnative(ClearMugshot)
+
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_INSTALLNATUREPROBES,SUB_QUEST_2)
+    call(Quest_InstallNatureProbes_CheckCompletionRate_Script)
+    playse(SE_CONTEST_HEART)
+    msgbox(gText_InstallNatureProbes_PlayerInstalledHill)
+    waitse
+    waitmessage
+
+    release
+    end
+}
+script Quest_InstallNatureProbes_InstallShoreProbe_Script{
+    lock
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_InstallNatureProbes_JustGottaMakeSure)
+    callnative(ClearMugshot)
+
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_INSTALLNATUREPROBES,SUB_QUEST_3)
+    call(Quest_InstallNatureProbes_CheckCompletionRate_Script)
+    playse(SE_CONTEST_HEART)
+    msgbox(gText_InstallNatureProbes_PlayerInstalledShore)
+    waitse
+    waitmessage
+
+    release
+    end
+}
+
+script Quest_InstallNatureProbes_CheckCompletionRate_Script
+{
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_INSTALLNATUREPROBES)
+
+	setvar(VAR_TEMP_0, 0)
+	setvar(VAR_TEMP_1, 0)
+	setvar(VAR_TEMP_2, 0)
+	setvar(VAR_TEMP_3, 0)
+
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_INSTALLNATUREPROBES, SUB_QUEST_1)
+	if (var(VAR_RESULT))
+	{
+		addvar(VAR_TEMP_0, 1)
+		addvar(VAR_TEMP_1, 1)
+	}
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_INSTALLNATUREPROBES, SUB_QUEST_2)
+	if (var(VAR_RESULT))
+	{
+		addvar(VAR_TEMP_0, 1)
+		addvar(VAR_TEMP_2, 0)
+	}
+	subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_INSTALLNATUREPROBES, SUB_QUEST_3)
+	if (var(VAR_RESULT))
+	{
+		addvar(VAR_TEMP_0, 1)
+		addvar(VAR_TEMP_3, 0)
+	}
+
+	if (var(VAR_TEMP_0) == 3)
+	{
+		questmenu(QUEST_MENU_SET_REWARD, QUEST_INSTALLNATUREPROBES)
+	}
+}
+
+script Quest_InstallNatureProbes_Reward_Cutscene
+{
+    msgbox(gText_InstallNatureProbes_WowYouGotAll,MSGBOX_NPC)
+
+    applymovement(LIIDIA,Common_Movement_FaceAwayPlayer)
+    waitmovement(LIIDIA)
+
+    playse(SE_PC_LOGIN)
+    waitse
+
+    applymovement(LIIDIA,Common_Movement_FacePlayer)
+    waitmovement(LIIDIA)
+    msgbox(gText_InstallNatureProbes_TheTrackingIsWorking,MSGBOX_NPC)
+    closemessage
+    
+    playse(SE_POKENAV_CALL)
+    waitse
+
+    msgbox(gText_InstallNatureProbes_ThatsMyBoss)
+
+    msgbox(gText_InstallNatureProbes_GoForLiidia)
+    closemessage
+    delay(32)
+    msgbox(gText_InstallNatureProbes_IUnderstand)
+
+    playse(SE_POKENAV_HANG_UP)
+    waitse
+
+    msgbox(gText_InstallNatureProbes_HeThankedMe)
+    msgbox(gText_InstallNatureProbes_IRealizeNow)
+
+    applymovement(LIIDIA,Quest_InstallNatureProbes_LeaveStation_Movement)
+    applymovement(PLAYER,Quest_InstallNatureProbes_WatchLiidiaLeave_Movement)
+
+    waitmovement(LIIDIA)
+    removeobject(LIIDIA)
+    completequest(QUEST_INSTALLNATUREPROBES)
+    release
+    end
+}
+
+text gText_InstallNatureProbes_GeezIGottaWorkTonight{
+	format("")
+}
+text gText_InstallNatureProbes_ActuallyYoureATrainer{
+	format("")
+}
+text gText_InstallNatureProbes_CanYouHelp{
+	format("")
+}
+text gText_InstallNatureProbes_WhatProbes{
+	format("")
+}
+text gText_InstallNatureProbes_TheProbeInTheForest{
+	format("")
+}
+text gText_InstallNatureProbes_TheProbeOnTheHill{
+	format("")
+}
+text gText_InstallNatureProbes_TheProbeByTheShore{
+	format("")
+}
+text gText_InstallNatureProbes_WowYouGotAll{
+	format("")
+}
+text gText_InstallNatureProbes_TheTrackingIsWorking{
+	format("")
+}
+text gText_InstallNatureProbes_ThatsMyBoss{
+	format("")
+}
+text gText_InstallNatureProbes_GoForLiidia{
+	format("")
+}
+text gText_InstallNatureProbes_IUnderstand{
+	format("")
+}
+text gText_InstallNatureProbes_HeThankedMe{
+	format("")
+}
+text gText_InstallNatureProbes_IRealizeNow{
+	format("")
+}
+movement Quest_InstallNatureProbes_LeaveStation_Movement{
+    walk_right
+    walk_down * 7
+    step_end
+}
+movement Quest_InstallNatureProbes_WatchLiidiaLeave_Movement{
+    delay_16
+    face_right
+    face_down
+    step_end
+}
