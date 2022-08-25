@@ -5610,6 +5610,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Japantown_Musicvenue/border.bin",
       "blockdata_filepath": "data/layouts/Japantown_Musicvenue/map.bin"
+    },
+    {
+      "id": "LAYOUT_MARIN_SOLAR",
+      "name": "Marin_Solar_Layout",
+      "width": 7,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Marin_Solar/border.bin",
+      "blockdata_filepath": "data/layouts/Marin_Solar/map.bin"
     }
   ]
 }

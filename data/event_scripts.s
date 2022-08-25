@@ -1388,3 +1388,5 @@ Script_RemoveTint::
 	.include "data/maps/Japantown_Balls/scripts.inc"
 
 	.include "data/maps/Japantown_Musicvenue/scripts.inc"
+
+	.include "data/maps/Marin_Solar/scripts.inc"

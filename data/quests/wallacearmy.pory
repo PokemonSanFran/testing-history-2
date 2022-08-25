@@ -1,0 +1,129 @@
+//Quest_WallaceArmy_
+//gText_WallaceArmy_
+//
+//
+script Quest_WallaceArmy_HideObject_Script{
+    setflag(FLAG_TEMP_1)
+}
+
+script Quest_WallaceArmy_Interact_Shashi_Script{
+    lock
+    
+    if (!flag(FLAG_IS_CHAMPION)){
+        goto(Quest_WallaceArmy_QuestStart_Dialogue)
+    }else{
+        msgbox(gText_WallaceArmy_WhatMakesThemThinkTheyCanTreat,MSGBOX_DEFAULT)
+    }
+}
+
+script Quest_WallaceArmy_QuestStart_Dialogue{
+        msgbox(gText_WallaceArmy_TheseKidsAreGonnaRuin,MSGBOX_DEFAULT)
+        msgbox(gText_WallaceArmy_FirstTheBidNowTheDamnKids,MSGBOX_NPC)
+        msgbox(gText_WallaceArmy_OhTheChampionJustWhat,MSGBOX_NPC)
+
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WallaceArmy_TheLeagueDidntSend)
+        callnative(ClearMugshot)
+
+        msgbox(gText_WallaceArmy_SighWereMarinSolar,MSGBOX_NPC)
+
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WallaceArmy_YouThinkTheLeague)
+        callnative(ClearMugshot)
+
+        msgbox(gText_WallaceArmy_LookIHaveNoIdea,MSGBOX_NPC)
+        start(QUEST_WALLACEARMY)
+}
+
+script Quest_WallaceArmy_Active_Dialogue{
+    call(Quest_WallaceArmy_CheckCompletionRate_Script)
+    call(Quest_WallaceArmy_ListRemainingLocations_Script)
+
+    lock
+    msgbox(Quest_WallaceArmy_LooksLikeThereStill,MSGBOX_NPC)
+    end
+}
+
+script Quest_WallaceArmy_Reward_Cutscene{
+}
+
+script Quest_WallaceArmy_ListRemainingLocations_Script{
+    //PSF TODO write a C special to handle this list - she lists out all the cities where there are still stans, and I should use StringAppend / Copy to modifiy this string on the fly
+    if (var(VAR_TEMP_1) == 0){
+        bufferstdstring(STR_VAR_1,gText_Alameda)
+    }
+
+    if (var(VAR_TEMP_2) == 0){
+        bufferstdstring(STR_VAR_2,gText_Haightashbury)
+    }
+
+    if (var(VAR_TEMP_3) == 0){
+        bufferstdstring(STR_VAR_3,gText_SOMA)
+    }
+
+    if (var(VAR_TEMP_4) == 0){
+        bufferstdstring(STR_VAR_3,gText_Berekeley)
+    }
+
+    if (var(VAR_TEMP_5) == 0){
+        bufferstdstring(STR_VAR_3,gText_Marin)
+    }
+
+    return
+}
+
+script Quest_WallaceArmy_CheckCompletionRate_Script{
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_WALLACEARMY)
+
+    if(!var(VAR_RESULT)){
+        return
+    }
+
+	setvar(VAR_TEMP_0, 0)
+	setvar(VAR_TEMP_1, 0)
+	setvar(VAR_TEMP_2, 0)
+	setvar(VAR_TEMP_3, 0)
+    setvar(VAR_TEMP_4, 0)
+    setvar(VAR_TEMP_5, 0)
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_WALLACEARMY,SUB_QUEST_1)
+    if (var(VAR_RESULT))
+    {
+        addvar(VAR_TEMP_0,1)
+        addvar(VAR_TEMP_1,1)
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_WALLACEARMY,SUB_QUEST_2)
+    if (var(VAR_RESULT))
+    {
+        addvar(VAR_TEMP_0,1)
+        addvar(VAR_TEMP_2,1)
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_WALLACEARMY,SUB_QUEST_3)
+    if (var(VAR_RESULT))
+    {
+        addvar(VAR_TEMP_0,1)
+        addvar(VAR_TEMP_3,1)
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_WALLACEARMY,SUB_QUEST_4)
+    if (var(VAR_RESULT))
+    {
+        addvar(VAR_TEMP_0,1)
+        addvar(VAR_TEMP_4,1)
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_WALLACEARMY,SUB_QUEST_5)
+    if (var(VAR_RESULT))
+    {
+        addvar(VAR_TEMP_0,1)
+        addvar(VAR_TEMP_5,1)
+    }
+
+    if (var(VAR_TEMP_0) == 5){
+        questmenu(QUEST_MENU_SET_REWARD, QUEST_WALLACEARMY)
+    }
+}
