@@ -3089,6 +3089,7 @@ extern const u8 gText_Berkeley[];
 extern const u8 gText_Fishermanswharf[];
 extern const u8 gText_Chinatown[];
 extern const u8 gText_Haightashbury[];
+extern const u8 gText_SOMA[];
 
 //VS Garbador Choose side
 extern const u8 gText_DontCare[];

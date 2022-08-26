@@ -1879,7 +1879,7 @@ const u8 gText_Berkeley[] = _("Berkeley");
 const u8 gText_Fishermanswharf[] = _("Fishermanswharf");
 const u8 gText_Chinatown[] = _("Chinatown");
 const u8 gText_Haightashbury[] = _("Haightashbury");
-
+const u8 gText_SOMA[] = _("SOMA");
 
 //VS Garbador Choose side
 const u8 gText_DontCare[] = _("Either one.");

@@ -1,2 +1,13 @@
 Marin_Solar_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Marin_Solar_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Marin_Solar_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Marin_Solar_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_WallaceArmy_HideObject_Script
+	return
+
+Marin_Solar_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TEMP_0, 0, Quest_WallaceArmy_Reward_Cutscene
+	.2byte 0
+

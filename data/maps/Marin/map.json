@@ -73,7 +73,7 @@
       "x": 4,
       "y": 25,
       "elevation": 0,
-      "dest_map": "MAP_MARIN",
+      "dest_map": "MAP_MARIN_SOLAR",
       "dest_warp_id": 0
     }
   ],

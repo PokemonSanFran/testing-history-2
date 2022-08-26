@@ -1,0 +1,13 @@
+const LEAD_STAN = 3
+
+mapscripts Marin_Solar_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_WallaceArmy_HideObject_Script)
+    }
+
+    MAP_SCRIPT_ON_FRAME_TABLE[
+        VAR_TEMP_0,0: Quest_WallaceArmy_Reward_Cutscene
+    ]
+}
+
+
