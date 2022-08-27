@@ -42,24 +42,31 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	warp MAP_MUIRWOODS, 45, 9
+	setflag FLAG_IS_CHAMPION
 	end
 
 
 Debug_Script_2::
-	warp MAP_MARIN, 13, 10
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_WALLACEARMY
 	end
 
 
 Debug_Script_3::
+	questmenu QUEST_MENU_SET_REWARD, QUEST_WALLACEARMY
 	end
 
 
 Debug_Script_4::
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY
 	end
 
 
 Debug_Script_5::
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY, SUB_QUEST_1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY, SUB_QUEST_2
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY, SUB_QUEST_3
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY, SUB_QUEST_4
+	call Quest_WallaceArmy_CheckCompletionRate_Script
 	end
 
 
@@ -68,25 +75,19 @@ Debug_Script_6::
 
 
 Debug_Script_7::
-	warp MAP_PSFROUTE61, 23, 4
+	warp MAP_ALAMEDA, 12, 26
 	end
 
 
 Debug_Script_8::
-	warp MAP_PSFROUTE70, 4, 11
 	end
 
 
 Debug_Script_9::
-	warp MAP_PSFROUTE21, 30, 5
 	end
 
 
 Debug_Script_10::
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_1
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_2
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_3
-	call Quest_ArtisanBalls2_CheckReward_Script
 	end
 
 

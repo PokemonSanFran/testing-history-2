@@ -3,6 +3,7 @@ const OAK = 1
 
 script swagbag2_SetUp_Object_Script {
     setflag(FLAG_TEMP_1)
+    return
 }
 
 script swagbag2_OakWalkOutGym_Script {

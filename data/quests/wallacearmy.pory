@@ -3,15 +3,23 @@
 //PSF TODO Change Wallace to Lisia? maybe?
 //
 
+const PLAYER = OBJ_EVENT_ID_PLAYER
 const SOLAR_CEO = 1
 const SOLAR_LADY = 2
 const LEAD_STAN = 3
-const PLAYER = OBJ_EVENT_ID_PLAYER
 const FLAG_HIDE_LEAD_STAN = FLAG_TEMP_1
 
 
 script Quest_WallaceArmy_HideObject_Script{
     setflag(FLAG_HIDE_LEAD_STAN)
+}
+
+script Quest_WallaceArmy_SetMovementType_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY)
+    if (var(VAR_RESULT)){
+   setobjectmovementtype(SOLAR_CEO,MOVEMENT_TYPE_FACE_UP) 
+   setobjectmovementtype(SOLAR_LADY,MOVEMENT_TYPE_FACE_UP) 
+    }
 }
 
 script Quest_WallaceArmy_PreQuest_Dialogue{
@@ -25,6 +33,7 @@ script Quest_WallaceArmy_PreQuest_Dialogue{
 
 script Quest_WallaceArmy_CheckQuestState_Script{
     lock
+    faceplayer
 
     returnqueststate(QUEST_WALLACEARMY)
 
@@ -36,7 +45,7 @@ script Quest_WallaceArmy_CheckQuestState_Script{
 }
 
 script Quest_WallaceArmy_QuestStart_Dialogue{
-        msgbox(gText_WallaceArmy_TheseKidsAreGonnaRuin,MSGBOX_NPC)
+        msgbox(gText_WallaceArmy_TheseKidsAreGonnaRuin)
         msgbox(gText_WallaceArmy_FirstTheBidNowTheDamnKids)
         msgbox(gText_WallaceArmy_OhTheChampionJustWhat)
 
@@ -65,15 +74,48 @@ script Quest_WallaceArmy_Active_Dialogue{
     end
 }
 
-script Quest_WallaceArmy_Reward_Cutscene{
-    lock
+script Quest_WallaceArmy_PreBattleStan_Script{
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_WALLACEARMY)
 
-    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_WALLACEARMY)
-    if (!var(VAR_RESULT)){
-        setvar(VAR_TEMP_0,1)
+    if (var(VAR_RESULT)){
         release
         end
     }
+    closemessage
+    return
+}
+
+script Quest_WallaceArmy_LoadStanSpeech_Script{
+    random(4)
+
+    switch(var(VAR_RESULT)){
+        case 0:
+            bufferstring(STR_VAR_1,gText_Beauty3)
+            bufferspeciesname(STR_VAR_2,SPECIES_MILOTIC)
+        case 1:
+            bufferstring(STR_VAR_1,gText_Coolness)
+            bufferspeciesname(STR_VAR_2,SPECIES_GYARADOS)
+        case 2:
+            bufferstring(STR_VAR_1,gText_Cuteness)
+            bufferspeciesname(STR_VAR_2,SPECIES_LUDICOLO)
+        case 3:
+            bufferstring(STR_VAR_1,gText_Smartness)
+            bufferspeciesname(STR_VAR_2,SPECIES_WHISCASH)
+        case 4:
+            bufferstring(STR_VAR_1,gText_Toughness)
+            bufferspeciesname(STR_VAR_2,SPECIES_WAILORD)
+}
+return
+}
+
+script Quest_WallaceArmy_Reward_Cutscene{
+    setvar(VAR_TEMP_0,1)
+
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_WALLACEARMY)
+    if (!var(VAR_RESULT)){
+        release
+        end
+   }
 
     applymovement(SOLAR_CEO,Quest_WallaceArmy_ExclaimAndWalkToPlayer_Movement)
     waitmovement(SOLAR_CEO)
@@ -111,7 +153,7 @@ script Quest_WallaceArmy_Reward_Cutscene{
 
 script Quest_WallaceArmy_StartBattle_Script{
     msgbox(gText_WallaceArmy_ACrimePunishableByDeath)
-    trainerbattle_no_intro(TRAINER_ROSE_3,gText_WallaceArmy_MyLord)
+    trainerbattle_no_intro(TRAINER_CHIP,gText_WallaceArmy_MyLord)
     closemessage
     goto(Quest_WallaceArmy_PostBattle_Script)
 }
@@ -121,6 +163,7 @@ script Quest_WallaceArmy_PostBattle_Script{
 
     msgbox(gText_WallaceArmy_WhyAreYouDefending)
     msgbox(gText_WallaceArmy_WeReallyHadNothing)
+    closemessage
 
     fadescreen(FADE_TO_BLACK)
     fadedefaultbgm
@@ -132,12 +175,15 @@ script Quest_WallaceArmy_PostBattle_Script{
     
     msgbox(gText_WallaceArmy_ThereWasNoWallaceAtAll) 
     msgbox(gText_WallaceArmy_IStillDontKnowWhoThatIs)
+    closemessage
 
     applymovement(LEAD_STAN,Common_Movement_WalkDown)
     waitmovement(LEAD_STAN)
 
     msgbox(gText_WallaceArmy_ImSorryForAttacking)
     giveitem(ITEM_LIFE_ORB,1)
+    waitmessage
+    closemessage
 
     applymovement(LEAD_STAN,Quest_WallaceArmy_WalkOut_Movement)
     waitmovement(LEAD_STAN)
@@ -162,8 +208,8 @@ script Quest_WallaceArmy_MoveAllObjects_Script{
     setobjectxy(SOLAR_CEO,2,4)
     setobjectxyperm(SOLAR_CEO,2,4)
 
-    setobjectxy(LEAD_STAN,2,4)
-    setobjectxyperm(LEAD_STAN,2,4)
+    setobjectxy(LEAD_STAN,1,4)
+    setobjectxyperm(LEAD_STAN,1,4)
     applymovement(LEAD_STAN,Common_Movement_FaceUp)
     waitmovement(LEAD_STAN)
 
@@ -177,6 +223,8 @@ script Quest_WallaceArmy_LeadStanAppearance_Script{
     clearflag(FLAG_HIDE_LEAD_STAN)
     addobject(LEAD_STAN)
     delay(16)
+    playse(SE_EXIT)
+    waitse
     playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
     fadescreen(FADE_FROM_BLACK)
 }
@@ -264,7 +312,7 @@ script Quest_WallaceArmy_CheckCompletionRate_Script{
 movement Quest_WallaceArmy_ExclaimAndWalkToPlayer_Movement{
     emote_exclamation_mark
     walk_fast_right * 2
-    walk_fast_down * 6
+    walk_fast_down * 2
     step_end
 }
 movement Quest_WallaceArmy_ExclaimAndFaceNorth_Movement{
@@ -274,88 +322,128 @@ movement Quest_WallaceArmy_ExclaimAndFaceNorth_Movement{
 }
 movement Quest_WallaceArmy_WalkOut_Movement{
     walk_right * 2
-    walk_down * 7
+    walk_down * 2
     step_end
 }
 
 text gText_WallaceArmy_WhatMakesThemThinkTheyCanTreat{
-    format("")
+    format("What makes them think they can treat us like this? You can't just back out like that...")
 }
 text gText_WallaceArmy_TheseKidsAreGonnaRuin{
-    format("")
+    format("These kids are gonna ruin my business! First the League, now this?")
 }
 text gText_WallaceArmy_FirstTheBidNowTheDamnKids{
-    format("")
+    format("First the bid goes tits up, and now some kids are going take my business apart...")
 }
 text gText_WallaceArmy_OhTheChampionJustWhat{
-    format("")
+    format("Oh, the Champion. Just what else does the League want to do now?!?")
 }
 text gText_WallaceArmy_TheLeagueDidntSend{
-    format("")
+    format("The League didn't send me! Why did you think so?")
 }
 text gText_WallaceArmy_SighWereMarinSolar{
-    format("")
+    format("*sigh* We're Marin Solar. We were working with the League to provide solar power for their fancy new statement. They had it all buttoned up, they signed a deal, and then a lawyer pulled a fast one and pulled out of the deal right after I got the materials and staff together. They said some shit about a better option. But I'm absolutely screwed! So I went online and wrote a nasty post about them... and the next thing I know, some kids called the 'Wallace Army' are blowing up my phone, leaving bad reviews, and attacking my servers. We can't even get online! The League sent them!")
 }
 text gText_WallaceArmy_YouThinkTheLeague{
-    format("")
+    format("...You think the League sent Wallace stans after you?")
 }
 text gText_WallaceArmy_LookIHaveNoIdea{
-    format("")
+    format("Look, I don't even know what a stan is, but I do know that I haven't been able to log into all morning. I can't get any work done like this! My newphew is a computer guy and he told me the attacks are coming from specific spots in the region... but I don't even know where to start!")
 }
 text gText_WallaceArmy_LooksLikeThereStill{
-    format("")
+    format("According to my nephew, there are attacks from Alameda, Haightashbury, SOMA, Berkeley, and Marin.")
 }
 text gText_WallaceArmy_WereBackUp{
-    format("")
+    format("We're back up! I don't know what you did,but I can access my systems again!")
 }
 text gText_WallaceArmy_TheStanArmyWillNeverDie{
-    format("")
+    format("The Wallace Army will never die!")
 }
 text gText_WallaceArmy_HowDidYouGetInHere{
-    format("")
+    format("How did you get in here?")
 }
 text gText_WallaceArmy_WhatIsThatMusic{
-    format("")
+    format("...what is that music?")
 }
 text gText_WallaceArmy_OurArmyWillAlwaysPrevail{
-    format("")
+    format("Our Army will always prevail!")
 }
 text gText_WallaceArmy_ImLeahLeaderOfTheStanArmy{
-    format("")
+    format("I'm Leah, and I'm the Leader of the Wallace Army!")
 }
 text gText_WallaceArmy_WaitYoureTheLeader{
-    format("")
+    format("Wait, you're the leader? You?")
 }
 text gText_WallaceArmy_CanItOldMan{
-    format("")
+    format("Can it, old man.")
 }
 text gText_WallaceArmy_AndYouAttackingTheArmy{
-    format("")
+    format("And you! Champion {PLAYER}, attacking the army?")
 }
 text gText_WallaceArmy_ACrimePunishableByDeath{
-    format("")
+    format("A crime punishable by death!")
 }
 text gText_WallaceArmy_MyLord{
-    format("")
+    format("My Lord...")
 }
 text gText_WallaceArmy_WhyAreYouDefending{
-    format("")
+    format("Why are you defending them anyways? You're young! Don't you understand the might of Wallace!")
 }
 text gText_WallaceArmy_WeReallyHadNothing{
-    format("")
+    format("We really had nothing to do with this Wallace thing, I swear.")
 }
 text gText_WallaceArmy_ThatsTheWholeStorySee{
-    format("")
+    format("That's the whole story, see? Those are all the messages. I didn't know anything about Wallace or anything.")
 }
 text gText_WallaceArmy_ThereWasNoWallaceAtAll {
-    format("")
+    format("...there was no Wallace at all.")
 }
 text gText_WallaceArmy_IStillDontKnowWhoThatIs{
-    format("")
+    format("I still don't know who that is.")
 }
 text gText_WallaceArmy_ImSorryForAttacking{
-    format("")
+    format("I'm sorry for mobilizing the Army. We will now retreat. Take this as an apology.")
 }
 text gText_WallaceArmy_ThankYouForStopping{
-    format("")
+    format("Thank you for stopping them! Now... can somebody explain who Wallace is?")
+}
+text gText_WallaceArmy_OhWallaceSama{
+    format("Oh Wallace-sama... so dreamy! The {STR_VAR_1}of his {STR_VAR_2}...oh! I can't get enough.")
+}
+        //PSF TODO write unique text for each stan
+text gText_WallaceArmy_MarinSolarTheySpoke{
+    format("Marin Solar? They spoke against our Lord, so we're taking them down! Anybody who gets in our way... is getting taken out!")
+}
+text gText_WallaceArmy_YouDidntHear{
+    format("You didn't hear? After Marin Solar heard that Wallace was going to perform at the Chase Center, they said refused to power a stadium that was hiring 'tasteless hacks'. How dare they?!")
+}
+text gText_WallaceArmy_PostBattlePlaceholder1{
+	format("PostBattlePlaceholder1")
+}
+text gText_WallaceArmy_PostQuestPlaceholder1{
+	format("PostQuestPlaceholder1")
+}
+text gText_WallaceArmy_PostBattlePlaceholder2{
+	format("PostBattlePlaceholder2")
+}
+text gText_WallaceArmy_PostQuestPlaceholder2{
+	format("PostQuestPlaceholder2")
+}
+text gText_WallaceArmy_PostBattlePlaceholder3{
+	format("PostBattlePlaceholder3")
+}
+text gText_WallaceArmy_PostQuestPlaceholder3{
+	format("PostQuestPlaceholder3")
+}
+text gText_WallaceArmy_PostBattlePlaceholder4{
+	format("PostBattlePlaceholder4")
+}
+text gText_WallaceArmy_PostQuestPlaceholder4{
+	format("PostQuestPlaceholder4")
+}
+text gText_WallaceArmy_PostBattlePlaceholder5{
+	format("PostBattlePlaceholder5")
+}
+text gText_WallaceArmy_PostQuestPlaceholder5{
+	format("PostQuestPlaceholder5")
 }

@@ -3,11 +3,32 @@ Berkeley_MapScripts::
 	.byte 0
 
 Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Berkeley_MapScripts_OnTransition
+	call swagbag2_SetUp_Object_Script
 	return
 
 
-Berkeley_MapScripts_OnTransition::
-	goto swagbag2_SetUp_Object_Script
+Berkeley_Stan_Interact_Script::
+	lock
+	call Quest_WallaceArmy_LoadStanSpeech_Script
+	msgbox gText_WallaceArmy_OhWallaceSama, MSGBOX_NPC
+	call Quest_WallaceArmy_PreBattleStan_Script
+	trainerbattle_single TRAINER_LOLA_4, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Berkeley_Stan_PostBattle_Script
+	goto Berkeley_Stan_PostBattle_Script
 	return
+
+
+Berkeley_Stan_PostBattle_Script::
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY, SUB_QUEST_4
+	call Quest_WallaceArmy_CheckCompletionRate_Script
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY
+	compare VAR_RESULT, 0
+	goto_if_eq Berkeley_Stan_PostBattle_Script_2
+	msgbox gText_WallaceArmy_PostQuestPlaceholder1
+Berkeley_Stan_PostBattle_Script_1:
+	release
+	end
+
+Berkeley_Stan_PostBattle_Script_2:
+	msgbox gText_WallaceArmy_PostBattlePlaceholder1
+	goto Berkeley_Stan_PostBattle_Script_1
 

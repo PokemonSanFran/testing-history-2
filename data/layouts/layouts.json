@@ -5615,7 +5615,7 @@
       "id": "LAYOUT_MARIN_SOLAR",
       "name": "Marin_Solar_Layout",
       "width": 7,
-      "height": 12,
+      "height": 8,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Marin_Solar/border.bin",

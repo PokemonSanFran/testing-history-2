@@ -61,5 +61,31 @@ Marin_RangerStationDoor_Script_1:
 	end
 
 
+Marin_Stan_Interact_Script::
+	lock
+	call Quest_WallaceArmy_LoadStanSpeech_Script
+	msgbox gText_WallaceArmy_OhWallaceSama, MSGBOX_NPC
+	call Quest_WallaceArmy_PreBattleStan_Script
+	trainerbattle_single TRAINER_LOLA_5, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Marin_Stan_PostBattle_Script
+	goto Marin_Stan_PostBattle_Script
+	return
+
+
+Marin_Stan_PostBattle_Script::
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY, SUB_QUEST_5
+	call Quest_WallaceArmy_CheckCompletionRate_Script
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY
+	compare VAR_RESULT, 0
+	goto_if_eq Marin_Stan_PostBattle_Script_2
+	msgbox gText_WallaceArmy_PostQuestPlaceholder1
+Marin_Stan_PostBattle_Script_1:
+	release
+	end
+
+Marin_Stan_PostBattle_Script_2:
+	msgbox gText_WallaceArmy_PostBattlePlaceholder1
+	goto Marin_Stan_PostBattle_Script_1
+
+
 gText_Marin_TheDoorIsLocked::
 	.string "The door is locked.$"

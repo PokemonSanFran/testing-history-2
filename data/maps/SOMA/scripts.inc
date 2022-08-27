@@ -9,19 +9,14 @@ SOMA_MapScripts_MAP_SCRIPT_ON_RESUME:
 	return
 
 SOMA_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call SOMA_MapScripts_OnTransition
+	call Quest_StopMugging_HideObject_Script
+	call Twitter_HideReporter_Script
+	call WowYoureStrong_HideObject_Script
 	return
 
 SOMA_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_SOMA_STATE, 1, WowYoureStrong_WalkToPlayer_Script
 	.2byte 0
-
-
-SOMA_MapScripts_OnTransition::
-	call Quest_StopMugging_HideObject_Script
-	call Twitter_HideReporter_Script
-	call WowYoureStrong_HideObject_Script
-	return
 
 
 SOMA_SocialMediaReporter_Dialogue::
@@ -44,6 +39,32 @@ SOMA_WalkInside:
 	walk_left
 	walk_up
 	step_end
+
+SOMA_Stan_Interact_Script::
+	lock
+	call Quest_WallaceArmy_LoadStanSpeech_Script
+	msgbox gText_WallaceArmy_OhWallaceSama, MSGBOX_NPC
+	call Quest_WallaceArmy_PreBattleStan_Script
+	trainerbattle_single TRAINER_LOLA_3, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, SOMA_Stan_PostBattle_Script
+	goto SOMA_Stan_PostBattle_Script
+	return
+
+
+SOMA_Stan_PostBattle_Script::
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY, SUB_QUEST_3
+	call Quest_WallaceArmy_CheckCompletionRate_Script
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY
+	compare VAR_RESULT, 0
+	goto_if_eq SOMA_Stan_PostBattle_Script_2
+	msgbox gText_WallaceArmy_PostQuestPlaceholder1
+SOMA_Stan_PostBattle_Script_1:
+	release
+	end
+
+SOMA_Stan_PostBattle_Script_2:
+	msgbox gText_WallaceArmy_PostBattlePlaceholder1
+	goto SOMA_Stan_PostBattle_Script_1
+
 
 gText_SOMA_SocialMediaIs::
 	.string "Social media is getting out of control!\n"

@@ -4,7 +4,7 @@ Haightashbury_MapScripts::
 	.byte 0
 
 Haightashbury_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Haightashbury_MapScripts_OnTransition
+	call AndWeMarchOn_ObjectVisibility_Script
 	return
 
 Haightashbury_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -13,17 +13,28 @@ Haightashbury_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-Haightashbury_MapScripts_OnTransition::
-	switch VAR_ROUTE108_STATE
-	case 0, Haightashbury_MapScripts_OnTransition_2
-	case 1, Haightashbury_MapScripts_OnTransition_3
+Haightashbury_Stan_Interact_Script::
+	lock
+	call Quest_WallaceArmy_LoadStanSpeech_Script
+	msgbox gText_WallaceArmy_OhWallaceSama, MSGBOX_NPC
+	call Quest_WallaceArmy_PreBattleStan_Script
+	trainerbattle_single TRAINER_LOLA_2, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Haightashbury_Stan_PostBattle_Script
+	goto Haightashbury_Stan_PostBattle_Script
 	return
 
-Haightashbury_MapScripts_OnTransition_2:
-	call AndWeMarchOn_ObjectSetUp_Script
-	return
 
-Haightashbury_MapScripts_OnTransition_3:
-	call AndWeMarchOn_ObjectCleanUp_Script
-	return
+Haightashbury_Stan_PostBattle_Script::
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY, SUB_QUEST_2
+	call Quest_WallaceArmy_CheckCompletionRate_Script
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY
+	compare VAR_RESULT, 0
+	goto_if_eq Haightashbury_Stan_PostBattle_Script_2
+	msgbox gText_WallaceArmy_PostQuestPlaceholder1
+Haightashbury_Stan_PostBattle_Script_1:
+	release
+	end
+
+Haightashbury_Stan_PostBattle_Script_2:
+	msgbox gText_WallaceArmy_PostBattlePlaceholder1
+	goto Haightashbury_Stan_PostBattle_Script_1
 

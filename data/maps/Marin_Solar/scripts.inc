@@ -5,6 +5,7 @@ Marin_Solar_MapScripts::
 
 Marin_Solar_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_WallaceArmy_HideObject_Script
+	call Quest_WallaceArmy_SetMovementType_Script
 	return
 
 Marin_Solar_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

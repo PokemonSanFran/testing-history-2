@@ -218,5 +218,31 @@ Alameda_Person1_Fisherman_2:
 	goto Alameda_Person1_Fisherman_1
 
 
+Alameda_Stan_Interact_Script::
+	lock
+	call Quest_WallaceArmy_LoadStanSpeech_Script
+	msgbox gText_WallaceArmy_OhWallaceSama, MSGBOX_NPC
+	call Quest_WallaceArmy_PreBattleStan_Script
+	trainerbattle_single TRAINER_LOLA_1, gText_WallaceArmy_MarinSolarTheySpoke, gText_WallaceArmy_MyLord, Alameda_Stan_PostBattle_Script
+	goto Alameda_Stan_PostBattle_Script
+	return
+
+
+Alameda_Stan_PostBattle_Script::
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY, SUB_QUEST_1
+	call Quest_WallaceArmy_CheckCompletionRate_Script
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY
+	compare VAR_RESULT, 0
+	goto_if_eq Alameda_Stan_PostBattle_Script_2
+	msgbox gText_WallaceArmy_PostQuestPlaceholder1
+Alameda_Stan_PostBattle_Script_1:
+	release
+	end
+
+Alameda_Stan_PostBattle_Script_2:
+	msgbox gText_WallaceArmy_PostBattlePlaceholder1
+	goto Alameda_Stan_PostBattle_Script_1
+
+
 Alameda_Person1_Fisherman_Text_0:
 	.string "thanks for saving me!$"

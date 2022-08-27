@@ -7,6 +7,14 @@ const MALVA = 5
 const RUPERT = 6
 const CAMERA = OBJ_EVENT_ID_CAMERA
 
+script AndWeMarchOn_ObjectVisibility_Script{
+    switch (var(VAR_ROUTE108_STATE)){
+        case 0: call(AndWeMarchOn_ObjectSetUp_Script)
+        case 1: call(AndWeMarchOn_ObjectCleanUp_Script)
+    }
+    return
+}
+
 script AndWeMarchOn_ObjectSetUp_Script {
     setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_2)

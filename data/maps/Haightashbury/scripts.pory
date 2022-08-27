@@ -1,19 +1,35 @@
 mapscripts Haightashbury_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Haightashbury_MapScripts_OnTransition)
+        call(AndWeMarchOn_ObjectVisibility_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
-        VAR_STORYLINE_STATE, 41: YouRealizeWereEvilRight_PhoneCall_Dialogue
+            VAR_STORYLINE_STATE, 41: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
 }
 
-script Haightashbury_MapScripts_OnTransition {
+script Haightashbury_Stan_Interact_Script{
+    lock
+        call(Quest_WallaceArmy_LoadStanSpeech_Script)
+        msgbox(gText_WallaceArmy_OhWallaceSama,MSGBOX_NPC)
+        call(Quest_WallaceArmy_PreBattleStan_Script)
 
-    switch (var(VAR_ROUTE108_STATE)){
-        case 0: call(AndWeMarchOn_ObjectSetUp_Script)
-        case 1: call(AndWeMarchOn_ObjectCleanUp_Script)
-    }
+        trainerbattle_single(TRAINER_LOLA_2,gText_WallaceArmy_MarinSolarTheySpoke,gText_WallaceArmy_MyLord,Haightashbury_Stan_PostBattle_Script)
+        goto(Haightashbury_Stan_PostBattle_Script)
 }
 
+script Haightashbury_Stan_PostBattle_Script{
+
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WALLACEARMY,SUB_QUEST_2)
+        call(Quest_WallaceArmy_CheckCompletionRate_Script)
+        questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY)
+        if (!var(VAR_RESULT)){
+            msgbox(gText_WallaceArmy_PostBattlePlaceholder1)
+        }else {
+            msgbox(gText_WallaceArmy_PostQuestPlaceholder1)
+        }
+
+    release
+        end
+}

@@ -1,3 +1,19 @@
+AndWeMarchOn_ObjectVisibility_Script::
+	switch VAR_ROUTE108_STATE
+	case 0, AndWeMarchOn_ObjectVisibility_Script_3
+	case 1, AndWeMarchOn_ObjectVisibility_Script_4
+AndWeMarchOn_ObjectVisibility_Script_1:
+	return
+
+AndWeMarchOn_ObjectVisibility_Script_3:
+	call AndWeMarchOn_ObjectSetUp_Script
+	goto AndWeMarchOn_ObjectVisibility_Script_1
+
+AndWeMarchOn_ObjectVisibility_Script_4:
+	call AndWeMarchOn_ObjectCleanUp_Script
+	goto AndWeMarchOn_ObjectVisibility_Script_1
+
+
 AndWeMarchOn_ObjectSetUp_Script::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2

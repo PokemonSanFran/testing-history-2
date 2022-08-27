@@ -11,18 +11,14 @@ mapscripts SOMA_MapScripts {
     }
 
     MAP_SCRIPT_ON_TRANSITION {
-        call(SOMA_MapScripts_OnTransition)
+        call(Quest_StopMugging_HideObject_Script)
+        call(Twitter_HideReporter_Script)
+        call(WowYoureStrong_HideObject_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SOMA_STATE, 1: WowYoureStrong_WalkToPlayer_Script 
     ]
-}
-
-script SOMA_MapScripts_OnTransition {
-        call(Quest_StopMugging_HideObject_Script)
-        call(Twitter_HideReporter_Script)
-        call(WowYoureStrong_HideObject_Script)
 }
 
 script SOMA_SocialMediaReporter_Dialogue{
@@ -56,4 +52,28 @@ movement SOMA_WalkInside{
     walk_left
     walk_up
     step_end
+}
+script SOMA_Stan_Interact_Script{
+    lock
+        call(Quest_WallaceArmy_LoadStanSpeech_Script)
+        msgbox(gText_WallaceArmy_OhWallaceSama,MSGBOX_NPC)
+        call(Quest_WallaceArmy_PreBattleStan_Script)
+
+        trainerbattle_single(TRAINER_LOLA_3,gText_WallaceArmy_MarinSolarTheySpoke,gText_WallaceArmy_MyLord,SOMA_Stan_PostBattle_Script)
+        goto(SOMA_Stan_PostBattle_Script)
+}
+
+script SOMA_Stan_PostBattle_Script{
+
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WALLACEARMY,SUB_QUEST_3)
+        call(Quest_WallaceArmy_CheckCompletionRate_Script)
+        questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY)
+        if (!var(VAR_RESULT)){
+            msgbox(gText_WallaceArmy_PostBattlePlaceholder1)
+        }else {
+            msgbox(gText_WallaceArmy_PostQuestPlaceholder1)
+        }
+
+    release
+        end
 }
