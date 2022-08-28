@@ -1,4 +1,136 @@
-//this was an empty script, you can replace this no problem
-script hype{
-    return
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const FLAG_HIDE_DRUMMERS = FLAG_TEMP_6
+const DRUMMER_A = 23
+const DRUMMER_B = 24
+const DRUMMER_C = 25
+const DRUMMER_D = 26
+
+//Quest_DrumCircle_
+//gText_DrumCircle_
+script Quest_DrumCircle_Interact_Event_Script{
+    lock
+    faceplayer
+    returnqueststate(QUEST_DRUMCIRCLE)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_DrumCircle_ActiveDialogue)
+        case QUEST_MENU_SET_REWARD: goto(Quest_DrumCircle_RewardCutscene)
+        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_DrumCircle_CheckVenueCompletion_Script)
+        default: goto(Quest_DrumCircle_ExplainQuest_Dialogue)
+    }
+}
+
+script Quest_DrumCircle_ExplainQuest_Dialogue{
+    msgbox(gText_DrumCircle_YoureATrainerWantAChallenge)
+    msgbox(gText_DrumCircle_BattleAllOfUs)
+    msgbox(gText_DrumCircle_IfYouWin)
+    msgbox(gText_DrumCircle_IfYouLose)
+    msgbox(gText_DrumCircle_WhatDoYouSay,MSGBOX_YESNO)
+    
+    if (var(VAR_RESULT) == YES){
+        goto(Quest_DrumCircle_StartQuest_Dialogue)
+    }else{
+        goto(Quest_DrumCircle_DeclineQuest_Dialogue)
+    }
+}
+
+script Quest_DrumCircle_DeclineQuest_Dialogue{
+    msgbox(gText_DrumCircle_HehNotReady)
+    release
+    end
+}
+
+script Quest_DrumCircle_StartQuest_Dialogue{
+    msgbox(gText_DrumCircle_ThatsWhatImTalking)
+    startquest(QUEST_DRUMCIRCLE)
+    goto(Quest_DrumCircle_ActiveDialogue)
+}
+
+script Quest_DrumCircle_ActiveDialogue{
+    msgbox(gText_DrumCircle_WantAHeal,MSGBOX_YESNO)
+
+    if (var(VAR_RESULT) == YES){
+        special(HealPlayerParty)
+    }
+
+    goto(Quest_DrumCircle_BattleA_Script)
+}
+
+script Quest_DrumCircle_BattleA_Script{
+    applymovement(DRUMMER_A,Quest_DrumCircle_HopFace_Movement)
+    waitse(SE_BIKE_HOP)
+    waitmovement(DRUMMER_A)
+    closemessage
+    msgbox(gText_DrumCircle_ImFirst)
+    trainerbattle_no_intro(TRAINER_DUSTY_2,gText_DrumCircle_OhNo)
+    goto(Quest_DrumCircle_BattleB_Script)
+}
+
+script Quest_DrumCircle_BattleB_Script{
+    applymovement(DRUMMER_B,Quest_DrumCircle_HopFace_Movement)
+    waitse(SE_BIKE_HOP)
+    waitmovement(DRUMMER_B)
+    closemessage
+    msgbox(gText_DrumCircle_ImFirst)
+    trainerbattle_no_intro(TRAINER_DUSTY_3,gText_DrumCircle_OhNo)
+    goto(Quest_DrumCircle_BattleC_Script)
+}
+script Quest_DrumCircle_BattleC_Script{
+    applymovement(DRUMMER_C,Quest_DrumCircle_HopFace_Movement)
+    waitse(SE_BIKE_HOP)
+    waitmovement(DRUMMER_C)
+    closemessage
+    msgbox(gText_DrumCircle_ImFirst)
+    trainerbattle_no_intro(TRAINER_DUSTY_4,gText_DrumCircle_OhNo)
+    goto(Quest_DrumCircle_BattleD_Script)
+}
+script Quest_DrumCircle_BattleD_Script{
+    applymovement(DRUMMER_D,Quest_DrumCircle_HopFace_Movement)
+    waitse(SE_BIKE_HOP)
+    waitmovement(DRUMMER_D)
+    closemessage
+    msgbox(gText_DrumCircle_ImFirst)
+    trainerbattle_no_intro(TRAINER_DUSTY_5,gText_DrumCircle_OhNo)
+    goto(Quest_DrumCircle_RewardCutscene)
+}
+
+script Quest_DrumCircle_RewardCutscene{
+    msgbox(gText_DrumCircle_YoureNoJoke)
+    msgbox(gText_DrumCircle_WayToGoIdiot)
+    msgbox(gText_DrumCircle_DudeIsntThat)
+    msgbox(gText_DrumCircle_HowWasISupposed)
+    msgbox(gText_DrumCircle_ThatWasOneOfAKind)
+    msgbox(gText_DrumCircle_IgnoreThemYouWon)
+
+    giveitem(ITEM_OLD_GATEAU,1)
+
+    msgbox(gText_DrumCircle_ComeBackSoWeCanWin)
+    completequest(QUEST_DRUMCIRCLE)
+    release
+    end
+}
+
+script Quest_DrumCircle_CheckVenueCompletion_Script{
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_LASTMUSICVENUEINSANFRANCISCO)
+    if (var(VAR_RESULT)){
+        goto(Quest_DrumCircle_Completed_YesVenue_Dialogue)
+    }else{
+        goto(Quest_DrumCircle_Completed_NoVenue_Dialogue)
+    }
+}
+
+script Quest_DrumCircle_Completed_NoVenue_Dialogue{
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_DrumCircle_YouGuysAreDrummers)
+    callnative(ClearMugshot)
+
+    msgbox(gText_DrumCircle_WeLostOurVenue)
+    msgbox(gText_DrumCircle_MakingEnds)
+    closemessage
+    release
+    end
+}
+
+script Quest_DrumCircle_Completed_YesVenue_Dialogue{
 }
