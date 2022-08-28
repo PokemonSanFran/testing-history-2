@@ -42,22 +42,22 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	setflag FLAG_IS_CHAMPION
+	warp MAP_HAIGHTASHBURY, 11, 17
 	end
 
 
 Debug_Script_2::
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_WALLACEARMY
+	warp MAP_SOUTHBAY, 2, 21
 	end
 
 
 Debug_Script_3::
-	questmenu QUEST_MENU_SET_REWARD, QUEST_WALLACEARMY
+	warp MAP_DOGPATCH, 2, 21
 	end
 
 
 Debug_Script_4::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_WALLACEARMY
+	questmenu QUEST_MENU_SET_REWARD, QUEST_ANGELDELIVERY
 	end
 
 

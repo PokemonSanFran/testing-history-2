@@ -1,0 +1,49 @@
+const BIKER_C = 1
+const BIKER_D = 2
+const BIKER_E = 3
+const BIKER_F = 4
+
+//Dogpatch_BIkerhq_
+//gText_Dogpatch_BIkerhq_
+
+mapscripts Dogpatch_BIkerhq_MapScripts{
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0: Dogpatch_BIkerhq_CheckAcceptance_Script
+    ]
+}
+
+script Dogpatch_BIkerhq_CheckAcceptance_Script{
+    addvar(VAR_TEMP_0,1)
+    lock
+
+    returnqueststate(QUEST_ANGELDELIVERY)
+
+    switch (var(VAR_RESULT)){
+        case QUEST_MENU_SET_REWARD: goto(Quest_AngelDelivery_StartBattle_Cutscene)
+        case QUEST_MENU_COMPLETE_QUEST:
+            release
+            end
+        default: goto(Dogpatch_BIkerhq_KickOut_Cutscene)
+    }
+}
+
+script Dogpatch_BIkerhq_GuardsBlockDoor_Cutscene{
+    applymovement(BIKER_C,Dogpatch_BIkerhq_GuardFromLeft_Movement)
+    applymovement(BIKER_D,Dogpatch_BIkerhq_GuardFromRight_Movement)
+
+    waitmovement(BIKER_D)
+    msgbox(gText_Dogpatch_BIkerhq_ClubMembersOnly)
+    closemessage
+    return
+}
+
+script Dogpatch_BIkerhq_KickOut_Cutscene{
+   call(Dogpatch_BIkerhq_GuardsBlockDoor_Cutscene) 
+    warp(MAP_DOGPATCH,2,21)
+    release
+    end
+}
+
+text gText_Dogpatch_BIkerhq_ClubMembersOnly{
+    format("Sorry, members only. You'll have to leave.")
+}

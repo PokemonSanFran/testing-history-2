@@ -1,0 +1,9 @@
+//PSF TODO if the player talks to gertrude before the detective ariana quest, she will teach fly to one of your pokemon
+//
+//if you talk to her during the right phase of the quest, she will just talk about team rocket
+//
+//if you talk to her after the detective ariana quest, this quest will start
+
+script Quest_IBelieveICanFly_Dummy{
+    return
+}

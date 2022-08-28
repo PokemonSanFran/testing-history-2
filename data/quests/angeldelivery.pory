@@ -1,0 +1,229 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const FLAG_HIDE_BIKER = FLAG_TEMP_5
+const BIKER_C = 1
+const BIKER_D = 2
+const BIKER_E = 3
+const BIKER_F = 4
+
+//Quest_AngelDelivery
+//gText_AngelDelivery
+
+script Quest_AngelDelivery_Hide_BikerA_Script{
+    questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_ANGELDELIVERY)
+
+    if(!var(VAR_RESULT)){
+        setflag(FLAG_HIDE_BIKER)
+    }
+    return
+}
+script Quest_AngelDelivery_Hide_BikerB_Script{
+    returnqueststate(QUEST_ANGELDELIVERY)
+
+    if(var(VAR_RESULT) > QUEST_MENU_SET_ACTIVE){
+        setflag(FLAG_HIDE_BIKER)
+    }
+    return
+}
+
+script Quest_AngelDelivery_StartQuest_Dialogue{
+    lock
+    faceplayer
+    
+    call(Quest_AngelDelivery_BikerA_Active_Dialogue)
+
+    msgbox(gText_AngelDelivery_ShitMyBike)
+    msgbox(gText_AngelDelivery_CanYouDeliever)
+    giveitem(ITEM_SCANNER,1)
+    closemessage
+    startquest(QUEST_ANGELDELIVERY)
+    release
+    end
+}
+
+script Quest_AngelDelivery_BikerA_Active_Dialogue{
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_ANGELDELIVERY)
+
+    if (var(VAR_RESULT)){
+    msgbox(gText_AngelDelivery_HopefullyICanGetThisFixed,MSGBOX_NPC)
+    end
+    }
+}
+
+script Quest_AngelDelivery_BikerB_Event_Script{
+    lock
+    returnqueststate(QUEST_ANGELDELIVERY)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_AngelDelivery_BikerB_Active_Dialogue)
+        case QUEST_MENU_SET_REWARD: goto(Quest_AngelDelivery_BikerB_Reward_Dialogue)
+        default: goto(Quest_AngelDelivery_BikerB_Inactive_Dialogue)
+    }
+}
+
+script Quest_AngelDelivery_BikerB_Inactive_Dialogue{
+    msgbox(gText_AngelDelivery_ShitTheyreLate,MSGBOX_NPC)
+    end
+}
+
+script Quest_AngelDelivery_BikerB_Active_Dialogue{
+    faceplayer
+    msgbox(gText_AngelDelivery_ShitTheyreLate)
+    msgbox(gText_AngelDelivery_OhTheySentYou)
+    msgbox(gText_AngelDelivery_PlayerGaveThe)
+
+    removeitem(ITEM_SCANNER,1)
+
+    msgbox(gText_AngelDelivery_ICantThankYouBut)
+    msgbox(gText_AngelDelivery_TellThemThePassword)
+    closemessage
+    //PSF TODO Reward text should tell player to go the HQ, not back to HaightAshbury
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_ANGELDELIVERY)
+    release
+    end
+}
+
+script Quest_AngelDelivery_BikerB_Reward_Dialogue{
+    msgbox(gText_AngelDelivery_IllCatchUpWithYou,MSGBOX_NPC)
+    end
+}
+
+script Quest_AngelDelivery_StartBattle_Cutscene{
+   call(Dogpatch_BIkerhq_GuardsBlockDoor_Cutscene) 
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_AngelDelivery_WaitThePassword)
+    callnative(ClearMugshot)
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(BIKER_C,Common_Movement_QuestionMark)
+    applymovement(BIKER_D,Common_Movement_QuestionMark)
+    applymovement(BIKER_E,Common_Movement_ExclamationMark)
+    applymovement(BIKER_F,Common_Movement_ExclamationMark)
+    waitse
+    waitmovement(BIKER_F)
+
+    msgbox(gText_AngelDelivery_LetsHearEmOut)
+    closemessage
+
+    applymovement(BIKER_C,Quest_AngelDelivery_BackOffLeft_Movement)
+    applymovement(BIKER_D,Quest_AngelDelivery_BackOffRight_Movement)
+
+    waitmovement(BIKER_D)
+
+    fadescreen(FADE_TO_BLACK)
+    msgbox(gText_AngelDelivery_PlayerExplained)
+    waitbuttonpress
+    closemessage
+    fadescreen(FADE_FROM_BLACK)
+
+    msgbox(gText_AngelDelivery_WellDamnAnybodyWhoHelps)
+    msgbox(gText_AngelDelivery_MatterOfFatIGotSomething)
+    closemessage
+    applymovement(BIKER_E,Quest_AngelDelivery_WalkToPlayer_Movement)
+
+    goto(Quest_AngelDelivery_StartBattle_Script)
+}
+
+script Quest_AngelDelivery_StartBattle_Script{
+    msgbox(gText_AngelDelivery_ButLetsSeeIfYoureToughEnough)
+    trainerbattle_no_intro(TRAINER_FOSTER,gText_AngelDelivery_YeahYoureTough) 
+    closemessage
+    goto(Quest_AngelDelivery_PostBattle_Script)
+}
+
+script Quest_AngelDelivery_PostBattle_Script{
+    msgbox(gText_AngelDelivery_AsPromised)
+    closemessage
+    giveitem(ITEM_MACH_BIKE,1)
+    msgbox(gText_AngelDelivery_OneOfYourOwn)
+    closemessage
+
+    completequest(QUEST_ANGELDELIVERY)
+    release
+    end
+}
+
+movement Dogpatch_BIkerhq_GuardFromLeft_Movement{
+    walk_faster_right
+    face_down
+    step_end
+}
+movement Dogpatch_BIkerhq_GuardFromRight_Movement{
+    walk_faster_left
+    face_down
+    step_end
+}
+movement Quest_AngelDelivery_BackOffLeft_Movement{
+    face_right
+    lock_facing_direction
+    walk_left
+    step_end
+}
+movement Quest_AngelDelivery_BackOffRight_Movement{
+    face_left
+    lock_facing_direction
+    walk_right
+    step_end
+}
+movement Quest_AngelDelivery_WalkToPlayer_Movement{
+    walk_right * 4
+    walk_down * 2
+    step_end
+}
+
+text gText_AngelDelivery_ShitMyBike{
+    format("Shit my bike is broken")
+}
+text gText_AngelDelivery_CanYouDeliever{
+    format("you're that hotshot trainer right? can you help me out and deliever this")
+}
+text gText_AngelDelivery_HopefullyICanGetThisFixed{
+    format("hopefully i can get this fixed...")
+}
+text gText_AngelDelivery_ShitTheyreLate{
+    format("shit they're late...")
+}
+text gText_AngelDelivery_OhTheySentYou{
+    format("oh, they sent you? why didn't they just call...")
+}
+text gText_AngelDelivery_PlayerGaveThe{
+    format("you gave the thingy to the other biker.")
+}
+text gText_AngelDelivery_ICantThankYouBut{
+    format("I can't thank you enough")
+}
+text gText_AngelDelivery_TellThemThePassword{
+    format("if they give you trouble, just recite the password 'fixies rule'")
+}
+text gText_AngelDelivery_IllCatchUpWithYou{
+    format("I'll catch up with you later")
+}
+text gText_AngelDelivery_WaitThePassword{
+    format("wait i know the password")
+}
+text gText_AngelDelivery_LetsHearEmOut{
+    format("what? okay, let's hear 'em out.")
+}
+text gText_AngelDelivery_PlayerExplained{
+    format("{PLAYER} explained the situation to the gang.")
+}
+text gText_AngelDelivery_WellDamnAnybodyWhoHelps{
+    format("Well damn, anybody who helps us out in a bind is an honoary member. Welcome to the bikerz, {PLAYER}!")
+}
+text gText_AngelDelivery_MatterOfFatIGotSomething{
+    format("Matter of fact, I got something for ya to celebrate your initation.")
+}
+text gText_AngelDelivery_YeahYoureTough{
+    format("yeah youre hella tough!")
+}
+text gText_AngelDelivery_ButLetsSeeIfYoureToughEnough{
+    format("But let's see if you're tough enough to use it!")
+}
+text gText_AngelDelivery_AsPromised{
+    format("As promised!")
+}
+text gText_AngelDelivery_OneOfYourOwn{
+    format("One of your own! I know Uber has those rent-bikes all over, but this is yours, free of charge.")
+}

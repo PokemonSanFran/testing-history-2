@@ -1,0 +1,146 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const JASMINE = 5
+const FLAG_HIDE_JASMINE = FLAG_TEMP_4
+//script Quest_BerrySustaiability_
+//script gText_BerrySustaiability_
+
+script Quest_BerrySustaiability_HideLeader_Script{
+    if (var(VAR_JASMINE_STATE) != QUEST_1_COMPLETE){
+        setflag(FLAG_HIDE_JASMINE)
+    }
+}
+
+script Quest_BerrySustaiability_DebugComplete_Script{
+
+    addvar(VAR_TEMP_1,1)
+
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_BERRYSUSTAINABILITY)
+    if (!var(VAR_RESULT)){
+        release
+        end
+    }
+
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_1)
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_2)
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_3)
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_4)
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_5)
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_6)
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_7)
+call(Quest_BerrySustaiability_CheckCompletionRate_Script)
+msgbox(format("you got all the berries"))
+closemessage
+end
+}
+
+script Quest_BerrySustaiability_CheckCompletionRate_Script{
+    //PSF TODO I think I want the berries in Muir Woods and OGlden Gate Wilds to spawn in six different places, every day. the berries that spawn are Jasmine's six berries, and can only be gotten this way
+    //
+    //once you pick the berry, the subquest is marked as complete, but the text will remind the player to BRING the berry to jasmine
+    //getting the berry in another way does not moove the quest into reward, you must actively pick all the trees in Muir Woods
+    questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BERRYSUSTAINABILITY)
+    if (var(VAR_RESULT)){
+        release
+        return
+    }
+
+    setvar(VAR_TEMP_0,0)
+
+        subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_4)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_5)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BERRYSUSTAINABILITY,SUB_QUEST_6)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    if (var(VAR_TEMP_0) == QUEST_BERRYSUSTAINABILITY_SUB_COUNT){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_BERRYSUSTAINABILITY)
+    }
+}
+
+script Quest_BerrySustaiability_Event_Script{
+    lock
+    call(Quest_BerrySustaiability_CheckCompletionRate_Script)
+    returnqueststate(QUEST_BERRYSUSTAINABILITY)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_BerrySustaiability_Active_Dialogue)
+        case QUEST_MENU_SET_REWARD: goto(Quest_BerrySustaiability_Reward_Dialogue)
+        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_BerrySustaiability_Complete_Dialogue)
+        default: goto(Quest_BerrySustaiability_StartQuest_Dialogue)
+    }
+}
+
+script Quest_BerrySustaiability_StartQuest_Dialogue{
+    setvar(VAR_MUGSHOT,MUGSHOT_JASMINE)
+    callnative(DrawMugshot)
+    msgbox(gText_BerrySustaiability_GetBerries,MSGBOX_NPC)
+    callnative(ClearMugshot)
+
+    startquest(QUEST_BERRYSUSTAINABILITY)
+    end
+}
+script Quest_BerrySustaiability_Active_Dialogue{
+    setvar(VAR_MUGSHOT,MUGSHOT_JASMINE)
+    callnative(DrawMugshot)
+    msgbox(gText_BerrySustaiability_DidYouFind,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    end
+}
+script Quest_BerrySustaiability_Reward_Dialogue{
+    setvar(VAR_MUGSHOT,MUGSHOT_JASMINE)
+    callnative(DrawMugshot)
+    msgbox(gText_BerrySustaiability_YouFoundThem,MSGBOX_NPC)
+    callnative(ClearMugshot)
+
+    giveitem(ITEM_GANLON_BERRY,1)
+    waitmessage
+    closemessage
+    setvar(VAR_JASMINE_STATE,QUEST_2_COMPLETE)
+    completequest(QUEST_BERRYSUSTAINABILITY)
+    end
+}
+script Quest_BerrySustaiability_Complete_Dialogue{
+    setvar(VAR_MUGSHOT,MUGSHOT_JASMINE)
+    callnative(DrawMugshot)
+    msgbox(gText_BerrySustaiability_ThanksFor,MSGBOX_NPC)
+    callnative(ClearMugshot)
+    applymovement(JASMINE,Quest_BerrySustaiability_LeaveMarin_Movement)
+    waitmovement(JASMINE)
+    removeobject(JASMINE)
+    end
+}
+movement Quest_BerrySustaiability_LeaveMarin_Movement{
+    walk_down * 7
+    step_end
+}
+text gText_BerrySustaiability_GetBerries{
+    format("go get berries from miur woods")
+}
+text gText_BerrySustaiability_DidYouFind{
+    format("have you found the berries yet")
+}
+text gText_BerrySustaiability_YouFoundThem{
+    format("you found the berries!")
+}
+text gText_BerrySustaiability_ThanksFor{
+    format("thanks for getting the berries. i'm going back to the gym now. let's battle again!")
+}

@@ -5620,6 +5620,16 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Marin_Solar/border.bin",
       "blockdata_filepath": "data/layouts/Marin_Solar/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOGPATCH_BIKERHQ",
+      "name": "Dogpatch_BIkerhq_Layout",
+      "width": 15,
+      "height": 5,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Dogpatch_BIkerhq/border.bin",
+      "blockdata_filepath": "data/layouts/Dogpatch_BIkerhq/map.bin"
     }
   ]
 }

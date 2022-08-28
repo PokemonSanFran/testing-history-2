@@ -1,0 +1,189 @@
+Quest_BerrySustaiability_HideLeader_Script::
+	compare VAR_JASMINE_STATE, QUEST_1_COMPLETE
+	goto_if_ne Quest_BerrySustaiability_HideLeader_Script_1
+	return
+
+Quest_BerrySustaiability_HideLeader_Script_1:
+	setflag FLAG_TEMP_4
+	return
+
+
+Quest_BerrySustaiability_DebugComplete_Script::
+	addvar VAR_TEMP_1, 1
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_BERRYSUSTAINABILITY
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_BerrySustaiability_DebugComplete_Script_2
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_2
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_3
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_4
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_5
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_6
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_7
+	call Quest_BerrySustaiability_CheckCompletionRate_Script
+	msgbox Quest_BerrySustaiability_DebugComplete_Script_Text_0
+	closemessage
+	end
+
+Quest_BerrySustaiability_DebugComplete_Script_2:
+	release
+	end
+
+
+Quest_BerrySustaiability_CheckCompletionRate_Script::
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_BERRYSUSTAINABILITY
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_BerrySustaiability_CheckCompletionRate_Script_2
+	setvar VAR_TEMP_0, 0
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_1
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_BerrySustaiability_CheckCompletionRate_Script_5
+Quest_BerrySustaiability_CheckCompletionRate_Script_4:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_2
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_BerrySustaiability_CheckCompletionRate_Script_8
+Quest_BerrySustaiability_CheckCompletionRate_Script_7:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_3
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_BerrySustaiability_CheckCompletionRate_Script_11
+Quest_BerrySustaiability_CheckCompletionRate_Script_10:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_4
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_BerrySustaiability_CheckCompletionRate_Script_14
+Quest_BerrySustaiability_CheckCompletionRate_Script_13:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_5
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_BerrySustaiability_CheckCompletionRate_Script_17
+Quest_BerrySustaiability_CheckCompletionRate_Script_16:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_BERRYSUSTAINABILITY, SUB_QUEST_6
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_BerrySustaiability_CheckCompletionRate_Script_20
+Quest_BerrySustaiability_CheckCompletionRate_Script_19:
+	compare VAR_TEMP_0, QUEST_BERRYSUSTAINABILITY_SUB_COUNT
+	goto_if_eq Quest_BerrySustaiability_CheckCompletionRate_Script_22
+	return
+
+Quest_BerrySustaiability_CheckCompletionRate_Script_2:
+	release
+	return
+
+Quest_BerrySustaiability_CheckCompletionRate_Script_5:
+	addvar VAR_TEMP_0, 1
+	goto Quest_BerrySustaiability_CheckCompletionRate_Script_4
+
+Quest_BerrySustaiability_CheckCompletionRate_Script_8:
+	addvar VAR_TEMP_0, 1
+	goto Quest_BerrySustaiability_CheckCompletionRate_Script_7
+
+Quest_BerrySustaiability_CheckCompletionRate_Script_11:
+	addvar VAR_TEMP_0, 1
+	goto Quest_BerrySustaiability_CheckCompletionRate_Script_10
+
+Quest_BerrySustaiability_CheckCompletionRate_Script_14:
+	addvar VAR_TEMP_0, 1
+	goto Quest_BerrySustaiability_CheckCompletionRate_Script_13
+
+Quest_BerrySustaiability_CheckCompletionRate_Script_17:
+	addvar VAR_TEMP_0, 1
+	goto Quest_BerrySustaiability_CheckCompletionRate_Script_16
+
+Quest_BerrySustaiability_CheckCompletionRate_Script_20:
+	addvar VAR_TEMP_0, 1
+	goto Quest_BerrySustaiability_CheckCompletionRate_Script_19
+
+Quest_BerrySustaiability_CheckCompletionRate_Script_22:
+	questmenu QUEST_MENU_SET_REWARD, QUEST_BERRYSUSTAINABILITY
+	return
+
+
+Quest_BerrySustaiability_Event_Script::
+	lock
+	call Quest_BerrySustaiability_CheckCompletionRate_Script
+	returnqueststate QUEST_BERRYSUSTAINABILITY
+	switch VAR_RESULT
+	case QUEST_MENU_SET_ACTIVE, Quest_BerrySustaiability_Event_Script_2
+	case QUEST_MENU_SET_REWARD, Quest_BerrySustaiability_Event_Script_3
+	case QUEST_MENU_COMPLETE_QUEST, Quest_BerrySustaiability_Event_Script_4
+	goto Quest_BerrySustaiability_StartQuest_Dialogue
+	return
+
+Quest_BerrySustaiability_Event_Script_2:
+	goto Quest_BerrySustaiability_Active_Dialogue
+	return
+
+Quest_BerrySustaiability_Event_Script_3:
+	goto Quest_BerrySustaiability_Reward_Dialogue
+	return
+
+Quest_BerrySustaiability_Event_Script_4:
+	goto Quest_BerrySustaiability_Complete_Dialogue
+	return
+
+
+Quest_BerrySustaiability_StartQuest_Dialogue::
+	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
+	callnative DrawMugshot
+	msgbox gText_BerrySustaiability_GetBerries, MSGBOX_NPC
+	callnative ClearMugshot
+	startquest QUEST_BERRYSUSTAINABILITY
+	end
+
+
+Quest_BerrySustaiability_Active_Dialogue::
+	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
+	callnative DrawMugshot
+	msgbox gText_BerrySustaiability_DidYouFind, MSGBOX_NPC
+	callnative ClearMugshot
+	end
+
+
+Quest_BerrySustaiability_Reward_Dialogue::
+	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
+	callnative DrawMugshot
+	msgbox gText_BerrySustaiability_YouFoundThem, MSGBOX_NPC
+	callnative ClearMugshot
+	giveitem ITEM_GANLON_BERRY, 1
+	waitmessage
+	closemessage
+	setvar VAR_JASMINE_STATE, QUEST_2_COMPLETE
+	completequest QUEST_BERRYSUSTAINABILITY
+	end
+
+
+Quest_BerrySustaiability_Complete_Dialogue::
+	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
+	callnative DrawMugshot
+	msgbox gText_BerrySustaiability_ThanksFor, MSGBOX_NPC
+	callnative ClearMugshot
+	applymovement 5, Quest_BerrySustaiability_LeaveMarin_Movement
+	waitmovement 5
+	removeobject 5
+	end
+
+
+Quest_BerrySustaiability_LeaveMarin_Movement:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Quest_BerrySustaiability_DebugComplete_Script_Text_0:
+	.string "you got all the berries$"
+
+gText_BerrySustaiability_GetBerries::
+	.string "go get berries from miur woods$"
+
+gText_BerrySustaiability_DidYouFind::
+	.string "have you found the berries yet$"
+
+gText_BerrySustaiability_YouFoundThem::
+	.string "you found the berries!$"
+
+gText_BerrySustaiability_ThanksFor::
+	.string "thanks for getting the berries. i'm\n"
+	.string "going back to the gym now. let's battle\l"
+	.string "again!$"

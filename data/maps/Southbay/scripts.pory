@@ -1,6 +1,9 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 
 mapscripts Southbay_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_AngelDelivery_Hide_BikerB_Script)
+    }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_LITTLEROOT_INTRO_STATE, 0: ImProbablyBetterThanYou_StandingOutside_Dialogue
     ]

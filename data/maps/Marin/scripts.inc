@@ -7,6 +7,7 @@ Marin_MapScripts::
 Marin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Marin_HideBianca_Script
 	call Marin_HideLiidia_Script
+	call Quest_BerrySustaiability_HideLeader_Script
 	return
 
 Marin_MapScripts_MAP_SCRIPT_ON_LOAD:

@@ -1,10 +1,12 @@
 const BIANCA = 1
 const LIIDIA = 2
+const JASMINE = 3
 
 mapscripts Marin_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(Marin_HideBianca_Script)
         call(Marin_HideLiidia_Script)
+        call(Quest_BerrySustaiability_HideLeader_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
