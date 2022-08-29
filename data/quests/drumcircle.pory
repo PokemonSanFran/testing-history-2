@@ -58,38 +58,42 @@ script Quest_DrumCircle_ActiveDialogue{
 
 script Quest_DrumCircle_BattleA_Script{
     applymovement(DRUMMER_A,Quest_DrumCircle_HopFace_Movement)
-    waitse(SE_BIKE_HOP)
+    playse(SE_BIKE_HOP)
+    waitse
     waitmovement(DRUMMER_A)
     closemessage
-    msgbox(gText_DrumCircle_ImFirst)
+    msgbox(gText_DrumCircle_MyTurn)
     trainerbattle_no_intro(TRAINER_DUSTY_2,gText_DrumCircle_OhNo)
     goto(Quest_DrumCircle_BattleB_Script)
 }
 
 script Quest_DrumCircle_BattleB_Script{
     applymovement(DRUMMER_B,Quest_DrumCircle_HopFace_Movement)
-    waitse(SE_BIKE_HOP)
+    playse(SE_BIKE_HOP)
+    waitse
     waitmovement(DRUMMER_B)
     closemessage
-    msgbox(gText_DrumCircle_ImFirst)
+    msgbox(gText_DrumCircle_MyTurn)
     trainerbattle_no_intro(TRAINER_DUSTY_3,gText_DrumCircle_OhNo)
     goto(Quest_DrumCircle_BattleC_Script)
 }
 script Quest_DrumCircle_BattleC_Script{
     applymovement(DRUMMER_C,Quest_DrumCircle_HopFace_Movement)
-    waitse(SE_BIKE_HOP)
+    playse(SE_BIKE_HOP)
+    waitse
     waitmovement(DRUMMER_C)
     closemessage
-    msgbox(gText_DrumCircle_ImFirst)
+    msgbox(gText_DrumCircle_MyTurn)
     trainerbattle_no_intro(TRAINER_DUSTY_4,gText_DrumCircle_OhNo)
     goto(Quest_DrumCircle_BattleD_Script)
 }
 script Quest_DrumCircle_BattleD_Script{
     applymovement(DRUMMER_D,Quest_DrumCircle_HopFace_Movement)
-    waitse(SE_BIKE_HOP)
+    playse(SE_BIKE_HOP)
+    waitse
     waitmovement(DRUMMER_D)
     closemessage
-    msgbox(gText_DrumCircle_ImFirst)
+    msgbox(gText_DrumCircle_MyTurn)
     trainerbattle_no_intro(TRAINER_DUSTY_5,gText_DrumCircle_OhNo)
     goto(Quest_DrumCircle_RewardCutscene)
 }
@@ -113,7 +117,7 @@ script Quest_DrumCircle_RewardCutscene{
 script Quest_DrumCircle_CheckVenueCompletion_Script{
     questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_LASTMUSICVENUEINSANFRANCISCO)
     if (var(VAR_RESULT)){
-        goto(Quest_DrumCircle_Completed_YesVenue_Dialogue)
+        goto(Quest_LastMusicVenue_InformDrummers_Dialogue)
     }else{
         goto(Quest_DrumCircle_Completed_NoVenue_Dialogue)
     }
@@ -131,6 +135,70 @@ script Quest_DrumCircle_Completed_NoVenue_Dialogue{
     release
     end
 }
+movement Quest_DrumCircle_HopFace_Movement{
+    face_player
+    lock_facing_direction
+    jump_in_place_up * 2
+    step_end
+}
 
-script Quest_DrumCircle_Completed_YesVenue_Dialogue{
+text gText_DrumCircle_YoureATrainerWantAChallenge{
+    format("youre a trainer, want a challenge?")
+}
+text gText_DrumCircle_BattleAllOfUs{
+    format("battle all of us back to back, no healing at all")
+}
+text gText_DrumCircle_IfYouWin{
+    format("if you win, you get a super rare prize")
+}
+text gText_DrumCircle_IfYouLose{
+    format("if you lose, you gotta fork over double the prize money")
+}
+text gText_DrumCircle_WhatDoYouSay{
+    format("sound good?")
+}
+text gText_DrumCircle_HehNotReady{
+    format("not ready for all that? i get it.")
+}
+text gText_DrumCircle_ThatsWhatImTalking{
+    format("that's what I'm talking about!")
+}
+text gText_DrumCircle_WantAHeal{
+    format("wanna heal before we get started?")
+}
+text gText_DrumCircle_MyTurn{
+    format("my turn!")
+}
+text gText_DrumCircle_OhNo{
+    format("oh no!")
+}
+text gText_DrumCircle_YoureNoJoke{
+    format("you're no joke")
+}
+text gText_DrumCircle_WayToGoIdiot{
+    format("way to go idiot!")
+}
+text gText_DrumCircle_DudeIsntThat{
+    format("dude isn't that {PLAYER}")
+}
+text gText_DrumCircle_HowWasISupposed{
+    format("how was I supposed to know it was them")
+}
+text gText_DrumCircle_ThatWasOneOfAKind{
+    format("that was one of a kind! mom is gonna kill us.")
+}
+text gText_DrumCircle_IgnoreThemYouWon{
+    format("look, ignore them. you won fair and square, take this.")
+}
+text gText_DrumCircle_ComeBackSoWeCanWin{
+    format("come challenge us again somebody so we can win it back!")
+}
+text gText_DrumCircle_YouGuysAreDrummers{
+    format("you guys are drummers, right? why are you doing high stakes battles?")
+}
+text gText_DrumCircle_WeLostOurVenue{
+    format("we used to play around the Gym. Pryce was cool with us and we got paid as performers and everything. when the league came in, they kicked us out and all the local venues are getting bought up by the league to become arenas")
+}
+text gText_DrumCircle_MakingEnds{
+    format("making ends meet without a venue has been tough, so we had to get creative! and it was working until you showed up...")
 }

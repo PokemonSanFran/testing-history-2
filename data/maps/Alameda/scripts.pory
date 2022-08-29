@@ -1,45 +1,46 @@
 mapscripts Alameda_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Alameda_MapScripts_OnTransition)
+        call(Alameda_LayoutSwap_Script)
+        call(Quest_UnknownChuckA_HideLeader_Script)
+        call(Alameda_ObjectVisibility_Script)
     }
     MAP_SCRIPT_ON_LOAD {
         goto(Alameda_MapScripts_OnLoad)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ALAMEDA_STATE, 3: SurvivalChance333_ExplainOperation 
-        VAR_ALAMEDA_STATE, 5: WhyAreYouHelpingThem_MissionDebrief_Dialogue
-        VAR_ALAMEDA_STATE, 8: Earthquake_ShowDestroyedCity_Script
-        VAR_ALAMEDA_STATE, 11: Earthquake_PostRescue_Dialogue
-        VAR_STORYLINE_STATE, 108: LetsFinishThis_MovePlayer_Script
+        VAR_ALAMEDA_STATE, START_SURVIVAL_CHANCE: SurvivalChance333_ExplainOperation 
+        VAR_ALAMEDA_STATE, WHY_ARE_YOU_HELPING_THEM: WhyAreYouHelpingThem_MissionDebrief_Dialogue
+        VAR_ALAMEDA_STATE, POST_EARTHQUAKE: Earthquake_ShowDestroyedCity_Script
+        VAR_ALAMEDA_STATE, POST_EARTHQUAKE_RESCUE: Earthquake_PostRescue_Dialogue
+        VAR_STORYLINE_STATE, STORY_POST_DYNAMAX_BOSS: LetsFinishThis_MovePlayer_Script
     ]
 }
 
-script Alameda_MapScripts_OnTransition {
-    call(Alameda_LayoutSwap_Script)
+script Alameda_ObjectVisibility_Script {
 
     switch (var(VAR_ALAMEDA_STATE)){
         case 0: goto(SurvivalChance333_HideObject_Alameda_Script)
-        case 1: goto(SurvivalChance333_HideObject_Alameda_Script)
-        case 3: call(AssholesHome_HideObject_Script)
-        case 5: goto(WhyAreYouHelpingThem_ObjectDebriefSetUp_Script)
-        case 8: call(Earthquake_HideObject_Script)
-        case 9: call(Earthquake_HideObject_Script)
-        case 13: call(LetsFinishThis_ObjectSetUp_Script)
+        case SAVE_ARCHER_ALAMEDA: goto(SurvivalChance333_HideObject_Alameda_Script)
+        case START_SURVIVAL_CHANCE: call(AssholesHome_HideObject_Script)
+        case WHY_ARE_YOU_HELPING_THEM: goto(WhyAreYouHelpingThem_ObjectDebriefSetUp_Script)
+        case POST_EARTHQUAKE: call(Earthquake_HideObject_Script)
+        case POST_EARTHQUAKE_RESCUE: call(Earthquake_HideObject_Script)
+        case POST_LETS_FINISH_THIS: call(LetsFinishThis_ObjectSetUp_Script)
         default:
             call(AssholesHome_HideObject_Script)
             call(SurvivalChance333_HideObject_Alameda_Script)
     }
-
+    return
 }
 
 script Alameda_LayoutSwap_Script {
-    if (var(VAR_ALAMEDA_STATE) > 7){
+    if (var(VAR_ALAMEDA_STATE) > START_CHAMPIONSHIP_CLEAN_RAID){
         setmaplayoutindex(LAYOUT_ALAMEDA_POST_EARTHQUAKE)
     }
 }
 
 script Alameda_MapScripts_OnLoad {
-        if (var(VAR_ALAMEDA_STATE) > 3 && var(VAR_ALAMEDA_STATE) < 7){
+        if (var(VAR_ALAMEDA_STATE) > START_SURVIVAL_CHANCE && var(VAR_ALAMEDA_STATE) < START_CHAMPIONSHIP_CLEAN_RAID){
             call(Navalbase_PostRaidTiles_Script)
         }
 }
@@ -58,8 +59,8 @@ script Alameda_ChooseFerryDestination_Script {
 script Alameda_UnlockedDestinations_Script {
     switch (var(VAR_FERRY_STATE)){
         case 0: goto(Alameda_FerryState0_Script)
-        case 1: goto(Alameda_FerryState1_Script)
-        case 2: goto(Alameda_FerryState2_Script)
+        case FERRY_ALAMEDA_AVAILABLE: goto(Alameda_FerryState1_Script)
+        case FERRY_ALCATRAZ_AVAILABLE: goto(Alameda_FerryState2_Script)
     }
 }
 
@@ -100,7 +101,7 @@ script Alameda_FerryState2_Script{
 }
 
 script Alameda_Person1_Fisherman {
-    if (var(VAR_ALAMEDA_STATE) == 9){
+    if (var(VAR_ALAMEDA_STATE) == START_EARTHQUAKE_RESCUE){
         msgbox(format("thanks for saving me!"),MSGBOX_NPC)
         addvar(VAR_ALAMEDA_STATE,2)
     }

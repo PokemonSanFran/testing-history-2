@@ -189,6 +189,10 @@
 #define SAVE_BIANCA_BEACH   1
 #define POST_BEACH_BATTLE   2
 
+//VAR_FORTPOINT_STATE
+#define DEFEATED_CHUCK 1
+#define MET_KOGA_OUTSIDE_GYM 2  
+
 //VAR_KOGA_RAISON_DETRE_STATE
 #define NOT_ENTERED_KOGA_HOUSE 0
 #define MET_KOGA_KIDS   1
@@ -313,3 +317,7 @@
 #define QUEST_1_COMPLETE     2
 #define QUEST_2_COMPLETE     3
 #define BATTLE_2_COMPLETE    4
+
+//VAR_CUTE_POKEMON_GUESS
+//Number of times you have incorrectly brought a pokemon to the girl in the Quest Cute Pokemon
+//resets after a subquest is completed

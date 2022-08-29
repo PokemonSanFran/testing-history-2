@@ -17,9 +17,9 @@ WarehouseRave_MoveObject_Script::
 
 
 WarehouseRave_ControlExits_Script::
-	switch VAR_FORTREE_CITY_STATE
-	case 2, WarehouseRave_ControlExits_Script_2
-	case 3, WarehouseRave_ControlExits_Script_3
+	switch VAR_WAREHOUSE_RAVE_STATE
+	case SAVE_KOGA_OAKLAND, WarehouseRave_ControlExits_Script_2
+	case DEFEATED_KOGA_OAKLAND, WarehouseRave_ControlExits_Script_3
 	case 4, WarehouseRave_ControlExits_Script_4
 	return
 

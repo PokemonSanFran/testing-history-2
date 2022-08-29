@@ -223,7 +223,9 @@
   ],
   "gMapGroup_IndoorPresidio": [
     "Presidio_Mansion",
-    "Gldngtepark_Gym"
+    "Gldngtepark_Gym",
+    "Presidio_Improv",
+    "Presidio_Squattersmansion"
   ],
   "gMapGroup_IndoorHaightashbury": [
     "Haightashbury_Gym"

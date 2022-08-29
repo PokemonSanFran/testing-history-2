@@ -1234,9 +1234,9 @@ Script_RemoveTint::
 // .include "data/quests/enterthedragon.inc"
 // .include "data/quests/breaktheinternet.inc"
 // .include "data/quests/shutdownmedicineman.inc"
-// .include "data/quests/buildingscope.inc"
+.include "data/quests/buildingscope.inc"
 // .include "data/quests/nogooddeed.inc"
-// .include "data/quests/improvbattling.inc"
+.include "data/quests/improvbattling.inc"
 // .include "data/quests/improvbattlingchampionship.inc"
 .include "data/quests/installnatureprobes.inc"
 // .include "data/quests/manofmanyhats.inc"
@@ -1250,7 +1250,7 @@ Script_RemoveTint::
 // .include "data/quests/buildinganexhibit.inc"
 // .include "data/quests/unknownmortyquesta.inc"
 // .include "data/quests/unknownmortyquestb.inc"
-// .include "data/quests/unknownchuckquesta.inc"
+.include "data/quests/unknownchuckquesta.inc"
 // .include "data/quests/unknownchuckquestb.inc"
 // .include "data/quests/biomeresearch.inc"
 .include "data/quests/berrysustainability.inc"
@@ -1266,7 +1266,7 @@ Script_RemoveTint::
 // .include "data/quests/unknownbruceleequest.inc"
 // .include "data/quests/challengeofthe7sisters.inc"
 // .include "data/quests/esports.inc"
-// .include "data/quests/cutepokemon.inc"
+.include "data/quests/cutepokemon.inc"
 .include "data/quests/wallacearmy.inc"
 // .include "data/quests/dexcompletion.inc"
 // .include "data/quests/cablecardancing.inc"
@@ -1392,3 +1392,7 @@ Script_RemoveTint::
 	.include "data/maps/Marin_Solar/scripts.inc"
 
 	.include "data/maps/Dogpatch_BIkerhq/scripts.inc"
+
+	.include "data/maps/Presidio_Improv/scripts.inc"
+
+	.include "data/maps/Presidio_Squattersmansion/scripts.inc"

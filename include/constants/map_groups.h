@@ -182,8 +182,10 @@
 #define MAP_FORTPOINT_ROOF (0 | (7 << 8))
 
 // gMapGroup_IndoorPresidio
-#define MAP_PRESIDIO_MANSION (0 | (8 << 8))
-#define MAP_GLDNGTEPARK_GYM  (1 | (8 << 8))
+#define MAP_PRESIDIO_MANSION          (0 | (8 << 8))
+#define MAP_GLDNGTEPARK_GYM           (1 | (8 << 8))
+#define MAP_PRESIDIO_IMPROV           (2 | (8 << 8))
+#define MAP_PRESIDIO_SQUATTERSMANSION (3 | (8 << 8))
 
 // gMapGroup_IndoorHaightashbury
 #define MAP_HAIGHTASHBURY_GYM (0 | (9 << 8))

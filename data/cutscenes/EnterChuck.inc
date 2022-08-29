@@ -64,6 +64,7 @@ EnterChuck_ChuckDefeated_Script::
 	lock
 	setflag FLAG_BADGE05_GET
 	addvar VAR_GYM_5_STATE, 1
+	setvar VAR_CHUCK_STATE, BATTLE_1_COMPLETE
 	setvar VAR_0x8000, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_YoureNoJoke

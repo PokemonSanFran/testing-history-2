@@ -1,3 +1,7 @@
+const DRUMMER_A = 23
+const DRUMMER_B = 24
+const DRUMMER_C = 25
+const DRUMMER_D = 26
 //Quest_LastMusicVenue_
 //gText_Quest_LastMusicVenue_
 
@@ -12,14 +16,21 @@ script Quest_LastMusicVenue_CheckDrummerImpact{
     returnqueststate(QUEST_LASTMUSICVENUEINSANFRANCISCO)
 
     if (var(VAR_RESULT) < QUEST_MENU_SET_REWARD){
-        call(Quest_LastMusicVenue_HideDrummers)
+        call(Quest_LastMusicVenue_HideVenueDrummers)
         call(Quest_LastMusicVenue_ChangeMusic)
     }
 }
 
-script Quest_LastMusicVenue_HideDrummers{
+script Quest_LastMusicVenue_HideVenueDrummers{
     setflag(FLAG_TEMP_1)
     return
+}
+
+script Quest_LastMusicVenue_HidePublicDrummers{
+    returnqueststate(QUEST_LASTMUSICVENUEINSANFRANCISCO)
+    if (var(VAR_RESULT) > QUEST_MENU_SET_ACTIVE){
+        setflag(FLAG_TEMP_6)
+    }
 }
 
 script Quest_LastMusicVenue_ChangeMusic{
@@ -76,6 +87,34 @@ script Quest_LastMusicVenue_Active_Dialogue{
     end
 }
 
+script Quest_LastMusicVenue_InformDrummers_Dialogue{
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_LastMusicVenue_HaveYouGuysSeen)
+    callnative(ClearMugshot)
+
+    msgbox(gText_LastMusicVenue_Nah)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_LastMusicVenue_YouNeed)
+    callnative(ClearMugshot)
+
+    msgbox(gText_LastMusicVenue_ThisCouldBe)
+    closemessage
+
+    fadescreen(FADE_TO_BLACK)
+    removeobject(DRUMMER_A)
+    removeobject(DRUMMER_B)
+    removeobject(DRUMMER_C)
+    removeobject(DRUMMER_D)
+    fadescreen(FADE_FROM_BLACK)
+
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_LASTMUSICVENUEINSANFRANCISCO)
+    release
+    end
+}
+
 script Quest_LastMusicVenue_Reward_Dialogue{
     msgbox(gText_Quest_LastMusicVenue_TheseDrummers,MSGBOX_NPC)
     msgbox(gText_Quest_LastMusicVenue_TurnsOutTheyKnow,MSGBOX_NPC)
@@ -125,4 +164,16 @@ text gText_Quest_LastMusicVenue_TheseDrummers{
 }
 text gText_Quest_LastMusicVenue_TurnsOutTheyKnow{
 	format("Turns out they know other artists too!")
+}
+text gText_LastMusicVenue_HaveYouGuysSeen{
+    format("Have you guys seen the Masonic venue?")
+}
+text gText_LastMusicVenue_Nah{
+    format("Nah, what's that?")
+}
+text gText_LastMusicVenue_YouNeed{
+    format("You need to get down there! They're really looking for musicians and I think you'd be a good fit.")
+}
+text gText_LastMusicVenue_ThisCouldBe{
+    format("This could be our shot yo!")
 }

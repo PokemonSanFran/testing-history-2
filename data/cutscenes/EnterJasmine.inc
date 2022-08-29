@@ -50,6 +50,7 @@ EnterJasmine_PostGymBattle_Script::
 	setflag FLAG_BADGE06_GET
 	addvar VAR_STORYLINE_STATE, 1
 	addvar VAR_GYM_6_STATE, 1
+	setvar VAR_JASMINE_STATE, BATTLE_1_COMPLETE
 	msgbox gText_EnterJasmine_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM06

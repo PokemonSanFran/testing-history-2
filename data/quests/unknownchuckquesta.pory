@@ -1,0 +1,33 @@
+const CHUCK = 21
+const FLAG_HIDE_CHUCK = FLAG_TEMP_5
+
+//gText_UnknownChuckA_
+//Quest_UnknownChuckA_
+
+script Quest_UnknownChuckA_HideLeader_Script{
+    special(GetNumberOfBadges)
+
+    if (var(VAR_CHUCK_STATE) != BATTLE_1_COMPLETE){
+        setflag(FLAG_HIDE_CHUCK)
+    }
+
+    if (var(VAR_TEMP_0) < 6){
+        setflag(FLAG_HIDE_CHUCK)
+    }
+
+    switch (var(VAR_ALAMEDA_STATE)){
+        case START_SURVIVAL_CHANCE:
+        case POST_SURVIVAL_CHANCE:
+        case WHY_ARE_YOU_HELPING_THEM:
+        case POST_EARTHQUAKE:
+        case START_EARTHQUAKE_RESCUE:
+        case POST_EARTHQUAKE_RESCUE:
+        case MEET_AT_PSFROUTE8:
+            setflag(FLAG_HIDE_CHUCK)
+    }
+}
+
+script Quest_UnknownChuckA_Event_Script{
+    msgbox(format("this is placeholder text since we had no idea what this quest is."),MSGBOX_NPC)
+    end
+}

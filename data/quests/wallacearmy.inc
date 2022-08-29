@@ -179,9 +179,9 @@ Quest_WallaceArmy_PostBattle_Script::
 	applymovement 3, Common_Movement_WalkDown
 	waitmovement 3
 	msgbox gText_WallaceArmy_ImSorryForAttacking
-	closemessage
 	giveitem ITEM_LIFE_ORB, 1
 	waitmessage
+	closemessage
 	applymovement 3, Quest_WallaceArmy_WalkOut_Movement
 	waitmovement 3
 	playse SE_EXIT

@@ -5,7 +5,9 @@ Alameda_MapScripts::
 	.byte 0
 
 Alameda_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Alameda_MapScripts_OnTransition
+	call Alameda_LayoutSwap_Script
+	call Quest_UnknownChuckA_HideLeader_Script
+	call Alameda_ObjectVisibility_Script
 	return
 
 Alameda_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -13,59 +15,59 @@ Alameda_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Alameda_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ALAMEDA_STATE, 3, SurvivalChance333_ExplainOperation
-	map_script_2 VAR_ALAMEDA_STATE, 5, WhyAreYouHelpingThem_MissionDebrief_Dialogue
-	map_script_2 VAR_ALAMEDA_STATE, 8, Earthquake_ShowDestroyedCity_Script
-	map_script_2 VAR_ALAMEDA_STATE, 11, Earthquake_PostRescue_Dialogue
-	map_script_2 VAR_STORYLINE_STATE, 108, LetsFinishThis_MovePlayer_Script
+	map_script_2 VAR_ALAMEDA_STATE, START_SURVIVAL_CHANCE, SurvivalChance333_ExplainOperation
+	map_script_2 VAR_ALAMEDA_STATE, WHY_ARE_YOU_HELPING_THEM, WhyAreYouHelpingThem_MissionDebrief_Dialogue
+	map_script_2 VAR_ALAMEDA_STATE, POST_EARTHQUAKE, Earthquake_ShowDestroyedCity_Script
+	map_script_2 VAR_ALAMEDA_STATE, POST_EARTHQUAKE_RESCUE, Earthquake_PostRescue_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, STORY_POST_DYNAMAX_BOSS, LetsFinishThis_MovePlayer_Script
 	.2byte 0
 
 
-Alameda_MapScripts_OnTransition::
-	call Alameda_LayoutSwap_Script
+Alameda_ObjectVisibility_Script::
 	switch VAR_ALAMEDA_STATE
-	case 0, Alameda_MapScripts_OnTransition_2
-	case 1, Alameda_MapScripts_OnTransition_3
-	case 3, Alameda_MapScripts_OnTransition_4
-	case 5, Alameda_MapScripts_OnTransition_5
-	case 8, Alameda_MapScripts_OnTransition_6
-	case 9, Alameda_MapScripts_OnTransition_7
-	case 13, Alameda_MapScripts_OnTransition_8
+	case 0, Alameda_ObjectVisibility_Script_3
+	case SAVE_ARCHER_ALAMEDA, Alameda_ObjectVisibility_Script_4
+	case START_SURVIVAL_CHANCE, Alameda_ObjectVisibility_Script_5
+	case WHY_ARE_YOU_HELPING_THEM, Alameda_ObjectVisibility_Script_6
+	case POST_EARTHQUAKE, Alameda_ObjectVisibility_Script_7
+	case POST_EARTHQUAKE_RESCUE, Alameda_ObjectVisibility_Script_8
+	case POST_LETS_FINISH_THIS, Alameda_ObjectVisibility_Script_9
 	call AssholesHome_HideObject_Script
 	call SurvivalChance333_HideObject_Alameda_Script
+Alameda_ObjectVisibility_Script_1:
 	return
 
-Alameda_MapScripts_OnTransition_2:
+Alameda_ObjectVisibility_Script_3:
 	goto SurvivalChance333_HideObject_Alameda_Script
-	return
+	goto Alameda_ObjectVisibility_Script_1
 
-Alameda_MapScripts_OnTransition_3:
+Alameda_ObjectVisibility_Script_4:
 	goto SurvivalChance333_HideObject_Alameda_Script
-	return
+	goto Alameda_ObjectVisibility_Script_1
 
-Alameda_MapScripts_OnTransition_4:
+Alameda_ObjectVisibility_Script_5:
 	call AssholesHome_HideObject_Script
-	return
+	goto Alameda_ObjectVisibility_Script_1
 
-Alameda_MapScripts_OnTransition_5:
+Alameda_ObjectVisibility_Script_6:
 	goto WhyAreYouHelpingThem_ObjectDebriefSetUp_Script
-	return
+	goto Alameda_ObjectVisibility_Script_1
 
-Alameda_MapScripts_OnTransition_6:
+Alameda_ObjectVisibility_Script_7:
 	call Earthquake_HideObject_Script
-	return
+	goto Alameda_ObjectVisibility_Script_1
 
-Alameda_MapScripts_OnTransition_7:
+Alameda_ObjectVisibility_Script_8:
 	call Earthquake_HideObject_Script
-	return
+	goto Alameda_ObjectVisibility_Script_1
 
-Alameda_MapScripts_OnTransition_8:
+Alameda_ObjectVisibility_Script_9:
 	call LetsFinishThis_ObjectSetUp_Script
-	return
+	goto Alameda_ObjectVisibility_Script_1
 
 
 Alameda_LayoutSwap_Script::
-	compare VAR_ALAMEDA_STATE, 7
+	compare VAR_ALAMEDA_STATE, START_CHAMPIONSHIP_CLEAN_RAID
 	goto_if_gt Alameda_LayoutSwap_Script_1
 	return
 
@@ -75,7 +77,7 @@ Alameda_LayoutSwap_Script_1:
 
 
 Alameda_MapScripts_OnLoad::
-	compare VAR_ALAMEDA_STATE, 3
+	compare VAR_ALAMEDA_STATE, START_SURVIVAL_CHANCE
 	goto_if_gt Alameda_MapScripts_OnLoad_2
 	return
 
@@ -84,7 +86,7 @@ Alameda_MapScripts_OnLoad_1:
 	return
 
 Alameda_MapScripts_OnLoad_2:
-	compare VAR_ALAMEDA_STATE, 7
+	compare VAR_ALAMEDA_STATE, START_CHAMPIONSHIP_CLEAN_RAID
 	goto_if_lt Alameda_MapScripts_OnLoad_1
 	return
 
@@ -105,8 +107,8 @@ Alameda_ChooseFerryDestination_Script::
 Alameda_UnlockedDestinations_Script::
 	switch VAR_FERRY_STATE
 	case 0, Alameda_UnlockedDestinations_Script_2
-	case 1, Alameda_UnlockedDestinations_Script_3
-	case 2, Alameda_UnlockedDestinations_Script_4
+	case FERRY_ALAMEDA_AVAILABLE, Alameda_UnlockedDestinations_Script_3
+	case FERRY_ALCATRAZ_AVAILABLE, Alameda_UnlockedDestinations_Script_4
 	return
 
 Alameda_UnlockedDestinations_Script_2:
@@ -207,7 +209,7 @@ Alameda_FerryState2_Script_7:
 
 
 Alameda_Person1_Fisherman::
-	compare VAR_ALAMEDA_STATE, 9
+	compare VAR_ALAMEDA_STATE, START_EARTHQUAKE_RESCUE
 	goto_if_eq Alameda_Person1_Fisherman_2
 Alameda_Person1_Fisherman_1:
 	end

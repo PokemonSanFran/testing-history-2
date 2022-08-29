@@ -1,0 +1,8 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+//Quest_ImprovBattling
+//gText_Quest_ImprovBattling
+
+script Quest_ImprovBattling_Event_Script{
+    msgbox(format("i am a placeholder for the improv battling work."),MSGBOX_NPC)
+        end
+}

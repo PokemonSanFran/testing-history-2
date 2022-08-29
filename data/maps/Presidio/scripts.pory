@@ -1,24 +1,19 @@
 mapscripts Presidio_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
+        VAR_STORYLINE_STATE, STORY_EAST_SANFRAN_COMPLETE: TheStrikeStrikesBack_PhoneCall_Dialogue
         VAR_TEMP_9, 0: Quest_HauntABuilding_EndQuestCheck_Script
     ]
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Presidio_MapScripts_OnTransition)
+        call(YouLookTired_BlockMansionAccess_Script)
+        call(Quest_BuildingScope_MoveEmployee_Script)
     }
-}
-
-script Presidio_MapScripts_OnTransition {
-    call(YouLookTired_BlockMansionAccess_Script)
 }
 
 script Presidio_MansionGuard_InteractScript {
-    lock
-    if (var(VAR_FORTPOINT_STATE) < 2){
-        msgbox("...")
+    if (var(VAR_FORTPOINT_STATE) < MET_KOGA_OUTSIDE_GYM){
+        msgbox("...",MSGBOX_NPC)
     } else {
         msgbox(gText_KogaRaisonDetre_HasBeenExpectingYou, MSGBOX_NPC)
     }
-    releaseall
     end
 }

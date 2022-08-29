@@ -18,9 +18,9 @@ script WarehouseRave_MoveObject_Script {
 }
 
 script WarehouseRave_ControlExits_Script {
-    switch (var(VAR_FORTREE_CITY_STATE)){
-        case 2: call(WarehouseRave_PostSaveUnlock)
-        case 3: call(WarehouseRave_MakeExplosionHole_Script)
+    switch (var(VAR_WAREHOUSE_RAVE_STATE)){
+        case SAVE_KOGA_OAKLAND: call(WarehouseRave_PostSaveUnlock)
+        case DEFEATED_KOGA_OAKLAND: call(WarehouseRave_MakeExplosionHole_Script)
         case 4: call(WarehouseRave_MakeExplosionHole_Script)
     }
 }

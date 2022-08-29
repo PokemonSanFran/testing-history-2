@@ -12,13 +12,24 @@ Quest_LastMusicVenue_CheckDrummerImpact::
 	return
 
 Quest_LastMusicVenue_CheckDrummerImpact_1:
-	call Quest_LastMusicVenue_HideDrummers
+	call Quest_LastMusicVenue_HideVenueDrummers
 	call Quest_LastMusicVenue_ChangeMusic
 	return
 
 
-Quest_LastMusicVenue_HideDrummers::
+Quest_LastMusicVenue_HideVenueDrummers::
 	setflag FLAG_TEMP_1
+	return
+
+
+Quest_LastMusicVenue_HidePublicDrummers::
+	returnqueststate QUEST_LASTMUSICVENUEINSANFRANCISCO
+	compare VAR_RESULT, QUEST_MENU_SET_ACTIVE
+	goto_if_gt Quest_LastMusicVenue_HidePublicDrummers_1
+	return
+
+Quest_LastMusicVenue_HidePublicDrummers_1:
+	setflag FLAG_TEMP_6
 	return
 
 
@@ -69,6 +80,29 @@ Quest_LastMusicVenue_Active_Dialogue_1:
 Quest_LastMusicVenue_Active_Dialogue_2:
 	msgbox gText_Quest_LastMusicVenue_IHavent, MSGBOX_NPC
 	goto Quest_LastMusicVenue_Active_Dialogue_1
+
+
+Quest_LastMusicVenue_InformDrummers_Dialogue::
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_LastMusicVenue_HaveYouGuysSeen
+	callnative ClearMugshot
+	msgbox gText_LastMusicVenue_Nah
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_LastMusicVenue_YouNeed
+	callnative ClearMugshot
+	msgbox gText_LastMusicVenue_ThisCouldBe
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject 23
+	removeobject 24
+	removeobject 25
+	removeobject 26
+	fadescreen FADE_FROM_BLACK
+	questmenu QUEST_MENU_SET_REWARD, QUEST_LASTMUSICVENUEINSANFRANCISCO
+	release
+	end
 
 
 Quest_LastMusicVenue_Reward_Dialogue::
@@ -138,3 +172,17 @@ gText_Quest_LastMusicVenue_TheseDrummers::
 
 gText_Quest_LastMusicVenue_TurnsOutTheyKnow::
 	.string "Turns out they know other artists too!$"
+
+gText_LastMusicVenue_HaveYouGuysSeen::
+	.string "Have you guys seen the Masonic venue?$"
+
+gText_LastMusicVenue_Nah::
+	.string "Nah, what's that?$"
+
+gText_LastMusicVenue_YouNeed::
+	.string "You need to get down there! They're\n"
+	.string "really looking for musicians and I\l"
+	.string "think you'd be a good fit.$"
+
+gText_LastMusicVenue_ThisCouldBe::
+	.string "This could be our shot yo!$"
