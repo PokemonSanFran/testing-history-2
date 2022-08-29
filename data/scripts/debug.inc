@@ -42,7 +42,8 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	warp MAP_ALAMEDA, 25, 12
+	warp MAP_BERNALHEIGHTS, 15, 19
+	givemon SPECIES_DUSKULL, 5
 	end
 
 

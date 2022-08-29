@@ -1,0 +1,167 @@
+//gText_CutePokemon_
+//Quest_CutePokemon_
+
+const MELISSA_A = 3
+const FLAG_HIDE_MELISSA_A = FLAG_TEMP_1
+
+script Quest_CutePokemon_Event_Script{
+    lock
+    faceplayer
+
+    returnqueststate(QUEST_CUTEPOKEMON)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_CutePokemon_SelectSubquest_Script)
+        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_CutePokemon_PostQuest_Dialogue)
+        default: goto(Quest_CutePokemon_StartQuest_Script)
+    }
+}
+
+script Quest_CutePokemon_StartQuest_Script{
+    startquest(QUEST_CUTEPOKEMON)
+}
+
+script Quest_CutePokemon_SelectSubquest_Script{
+    setvar(VAR_TEMP_0,0)
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CUTEPOKEMON,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CUTEPOKEMON,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CUTEPOKEMON,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    switch(var(VAR_TEMP_0)){
+        case 0: goto(Quest_CutePokemon_Sub1_Event_Script)
+        //case 1: goto(Quest_CutePokemon_Sub2_Event_Script)
+        //case 2: goto(Quest_CutePokemon_Sub3_Event_Script)
+        //case 3: goto(Quest_CutePokemon_Sub4_Event_Script)
+    }
+}
+
+script Quest_CutePokemon_Sub1_Event_Script{
+    call(Quest_CutePokemon_Sub1_Hints_Dialogue)
+    call(Quest_CutePokemon_CheckPokemon_Script)
+
+    if (var(VAR_RESULT) == SPECIES_DUSKULL){
+        goto(Quest_CutePokemon_Sub1_Correct_Dialogue)
+    }else{
+        goto(Quest_CutePokemon_Incorrect_Dialogue)
+}
+}
+
+script Quest_CutePokemon_CancelCheck_Dialogue{
+    msgbox(gText_CutePokemon_ChangedYourMind)
+    release
+    end
+}
+
+script Quest_CutePokemon_Incorrect_Dialogue{
+    addvar(VAR_CUTE_POKEMON_GUESS,1)
+    msgbox(gText_CutePokemon_NoThatsNotIt)
+    release
+    end
+}
+
+script Quest_CutePokemon_Sub1_Correct_Dialogue{
+    msgbox(gText_CutePokemon_YesDuskull)
+    msgbox(gText_CutePokemon_ItsSoCute,MSGBOX_YESNO)
+
+    if (var(VAR_RESULT) == NO){
+        goto(Quest_CutePokemon_CancelCheck_Dialogue)
+    }
+
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CUTEPOKEMON,SUB_QUEST_1)
+    msgbox(gText_CutePokemon_IGottaGoMyBreak)
+    giveitem(ITEM_RED_SCARF,1)
+    closemessage
+    opendoor(15,18)
+    waitdooranim
+    applymovement(MELISSA_A,Quest_CutePokemon_WalkInside_Movement)
+    waitmovement(MELISSA_A)
+    playse(SE_EXIT)
+    waitse
+    removeobject(MELISSA_A)
+    closedoor(15,18)
+    waitdooranim
+    release
+    end
+}
+
+
+script Quest_CutePokemon_CheckPokemon_Script{
+    special(ChoosePartyMon)
+    waitstate
+    if (var(VAR_RESULT) == 255){
+        goto(Quest_CutePokemon_CancelCheck_Dialogue)
+    }
+    specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
+}
+
+script Quest_CutePokemon_Sub1_Hints_Dialogue{
+
+    msgbox(gText_CutePokemon_ISawThisCute)
+
+    if (var(VAR_CUTE_POKEMON_GUESS) > -1){
+        msgbox(gText_CutePokemon_ItDoesntNormally)
+    }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 0){
+        msgbox(gText_CutePokemon_ItHasBig)
+    }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 1){
+        msgbox(gText_CutePokemon_ItsLooksLikeItsWearing)
+    }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 2){
+        msgbox(gText_CutePokemon_WearingASkull)
+    }
+    return
+}
+
+script Quest_CutePokemon_PostQuest_Dialogue{
+    return
+}
+
+movement Quest_CutePokemon_WalkInside_Movement {
+    walk_left
+    walk_up
+    step_end
+}
+
+text gText_CutePokemon_ChangedYourMind{
+    format("")
+}
+text gText_CutePokemon_NoThatsNotIt{
+    format("")
+}
+text gText_CutePokemon_YesDuskull{
+    format("")
+}
+text gText_CutePokemon_ItsSoCute{
+    format("")
+}
+text gText_CutePokemon_IGottaGoMyBreak{
+    format("")
+}
+text gText_CutePokemon_ISawThisCute{
+    format("")
+}
+text gText_CutePokemon_ItDoesntNormally{
+    format("")
+}
+text gText_CutePokemon_ItHasBig{
+    format("")
+}
+
+text gText_CutePokemon_ItsLooksLikeItsWearing{
+    format("")
+}
+
+text gText_CutePokemon_WearingASkull{
+    format("")
+}
