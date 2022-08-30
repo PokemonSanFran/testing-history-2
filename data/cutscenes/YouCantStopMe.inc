@@ -104,7 +104,7 @@ YouCantStopMe_LastChance_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	release
 	end
 
@@ -140,7 +140,7 @@ YouCantStopMe_Confront_Dialogue::
 	msgbox gText_YouCantStopMe_JustAGlorified
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 15
 	goto_if_ne YouCantStopMe_Confront_Dialogue_2

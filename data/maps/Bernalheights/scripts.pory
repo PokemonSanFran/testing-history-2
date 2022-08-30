@@ -1,1 +1,5 @@
-mapscripts Bernalheights_MapScripts {}
+mapscripts Bernalheights_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_CutePokemon_HideMelissaA_Script)
+    }
+}

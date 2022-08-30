@@ -108,7 +108,7 @@ script YouCantStopMe_LastChance_Dialogue {
         waitse
         removeobject(OAK)
 
-        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_TOWER_RAID_STATE,1)
 
         release
         end
@@ -155,7 +155,7 @@ script YouCantStopMe_Confront_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_TOWER_RAID_STATE,1)
 
         getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 

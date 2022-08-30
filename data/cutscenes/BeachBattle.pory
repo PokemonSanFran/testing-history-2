@@ -1,6 +1,15 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
 
+script BeachBattle_ObjectVisibility_Script{
+    switch (var(VAR_BEACH_BATTLE_STATE)){
+        case 0: return
+        case SAVE_BIANCA_BEACH: call(BeachBattle_BattleSetUp_Script)
+        default: call(BeachBattle_ObjectSetUp_Script)
+    }
+    return
+}
+
 script BeachBattle_ObjectSetUp_Script {
     setflag(FLAG_TEMP_1)
 }
@@ -34,14 +43,14 @@ script BeachBattle_Interact_Script {
 }
 
 script BeachBattle_Archer_Event_Script {
-    switch (var(VAR_ROUTE107_STATE)) {
+    switch (var(VAR_BEACH_BATTLE_STATE)) {
         case 0: goto(BeachBattle_Approach_Dialogue)
-        case 1: goto(BeachBattle_StartBattle_Script)
+        case SAVE_BIANCA_BEACH: goto(BeachBattle_StartBattle_Script)
     }
 }
 
 script BeachBattle_Approach_Dialogue {
-        setvar(VAR_ROUTE107_STATE,1)
+        setvar(VAR_BEACH_BATTLE_STATE,1)
         setobjectxyperm(BIANCA,10,24) 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -100,7 +109,7 @@ script BeachBattle_PostBattle_Dialogue {
     lock
         addvar(VAR_STORYLINE_STATE,1)
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
-        addvar(VAR_ROUTE107_STATE,1)
+        addvar(VAR_BEACH_BATTLE_STATE,1)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)

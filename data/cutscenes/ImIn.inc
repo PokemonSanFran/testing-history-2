@@ -34,9 +34,15 @@ ImIn_MoveBianca_Script::
 
 
 ImIn_DestroyWall_Script::
+	compare VAR_TOWER_RAID_STATE, 0
+	goto_if_ne ImIn_DestroyWall_Script_2
+ImIn_DestroyWall_Script_1:
+	return
+
+ImIn_DestroyWall_Script_2:
 	setmetatile 15, 13, 0x0A7, FALSE
 	special DrawWholeMapView
-	return
+	goto ImIn_DestroyWall_Script_1
 
 
 ImIn_CutsceneSetup_OutsideHouse_Script::
@@ -117,7 +123,7 @@ ImIn_CheckPlayer_Script_2:
 
 
 ImIn_StartHouseBreak_Script::
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	fadescreen FADE_TO_BLACK
 	call ImIn_CutsceneSetup_OutsideHouse_Script
 	fadescreen FADE_FROM_BLACK
@@ -196,7 +202,7 @@ ImIn_UnlockDoor_Script::
 
 Imin_BeginHouseSearch_Script::
 	lock
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_OkaySpreadOut
@@ -224,7 +230,7 @@ Imin_BeginHouseSearch_Script::
 
 ImIn_FindLockedDoor_Script::
 	lock
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_IFoundADoor
@@ -252,7 +258,7 @@ ImIn_InteractDoor_Script_2:
 
 ImIn_EnterCorrectCode_Script::
 	lock
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	playse SE_DING_DONG
 	waitse
 	playse SE_SLIDING_DOOR
@@ -302,7 +308,7 @@ ImIn_EnterCorrectCode_Script::
 
 ImIn_PostWarpSplit_Dialogue::
 	lock
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_WereAllIn
@@ -342,7 +348,7 @@ ImIn_PostWarpSplit_Dialogue::
 
 
 ImIn_PreventPlayerProgress_Script::
-	compare VAR_MAUVILLE_CITY_STATE, 6
+	compare VAR_TOWER_RAID_STATE, SAVE_BIANCA_SALESFORCETOWER
 	goto_if_gt ImIn_PreventPlayerProgress_Script_2
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
@@ -364,7 +370,7 @@ ImIn_PreventPlayerProgress_Script_2:
 
 ImIn_OfficeReveal_Dialogue::
 	lock
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
@@ -431,7 +437,7 @@ ImIn_InteractBiancaBattle_Script::
 
 ImIn_BiancaDefeated_Dialogue::
 	lock
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	call ImIn_MoveBianca_Script
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -461,8 +467,8 @@ ImIn_PostBiancaBattle_Interact_Dialogue::
 
 ImIn_InteractBianca_Event_Script::
 	lock
-	switch VAR_MAUVILLE_CITY_STATE
-	case 6, ImIn_InteractBianca_Event_Script_3
+	switch VAR_TOWER_RAID_STATE
+	case SAVE_BIANCA_SALESFORCETOWER, ImIn_InteractBianca_Event_Script_3
 	call ImIn_PostBiancaBattle_Interact_Dialogue
 ImIn_InteractBianca_Event_Script_1:
 	closemessage

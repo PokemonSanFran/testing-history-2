@@ -1,19 +1,11 @@
 mapscripts Pacifica_MapScripts {
 
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Pacifica_MapScripts_OnTransition)
+        call(BeachBattle_ObjectVisibility_Script)
+        call(Quest_CutePokemon_HideMelissaC_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
+        VAR_STORYLINE_STATE, STORY_EAST_SANFRAN_COMPLETE: TheStrikeStrikesBack_PhoneCall_Dialogue
     ]
 }
-
-script Pacifica_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE107_STATE)){
-        case 0: return
-        case 1: call(BeachBattle_BattleSetUp_Script)
-        default: call(BeachBattle_ObjectSetUp_Script)
-    }
-}
-

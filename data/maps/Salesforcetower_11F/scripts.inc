@@ -8,10 +8,10 @@ Salesforcetower_11F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Salesforcetower_11F_MapScripts_OnTransition::
-	switch VAR_MAUVILLE_CITY_STATE
-	case 7, Salesforcetower_11F_MapScripts_OnTransition_2
-	case 8, Salesforcetower_11F_MapScripts_OnTransition_3
-	case 9, Salesforcetower_11F_MapScripts_OnTransition_4
+	switch VAR_TOWER_RAID_STATE
+	case DEFEATED_BIANCA_SALESFORCETOWER, Salesforcetower_11F_MapScripts_OnTransition_2
+	case SAVE_ROSE_SALESFORCETOWER, Salesforcetower_11F_MapScripts_OnTransition_3
+	case DEFEATED_ROSE_SALESFORCETOWER, Salesforcetower_11F_MapScripts_OnTransition_4
 	call YouCantStopMe_ObjectCleanUp_Script
 	return
 
@@ -30,9 +30,9 @@ Salesforcetower_11F_MapScripts_OnTransition_4:
 
 Salesforcetower_11F_Rose_Event_Script::
 	lock
-	switch VAR_MAUVILLE_CITY_STATE
-	case 8, Salesforcetower_11F_Rose_Event_Script_2
-	case 9, Salesforcetower_11F_Rose_Event_Script_3
+	switch VAR_TOWER_RAID_STATE
+	case SAVE_ROSE_SALESFORCETOWER, Salesforcetower_11F_Rose_Event_Script_2
+	case DEFEATED_ROSE_SALESFORCETOWER, Salesforcetower_11F_Rose_Event_Script_3
 	return
 
 Salesforcetower_11F_Rose_Event_Script_2:

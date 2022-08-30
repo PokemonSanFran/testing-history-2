@@ -105,7 +105,7 @@ WeCanStopYouActually_StartBossBattle_Script::
 
 WeCanStopYouActually_Arrest_Dialogue::
 	lock
-	addvar VAR_MAUVILLE_CITY_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
 	clearflag FLAG_TEMP_2
 	addobject 3

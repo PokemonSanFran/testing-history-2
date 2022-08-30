@@ -1,21 +1,11 @@
 mapscripts Sunset_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Sunset_MapScripts_OnTransition)
+        call(ImIn_HideObject_OutsideHouse_Script)
+        call(Quest_ReturnDoll_HideObject_Script)
+        call(Quest_StolenTrade_HideObjectA_Script)
+        call(Quest_CutePokemon_HideMelissaB_Script)
     }
     MAP_SCRIPT_ON_LOAD {
-        goto(Sunset_MapScripts_OnLoad)
-    }
-}
-
-script Sunset_MapScripts_OnTransition {
-    call(ImIn_HideObject_OutsideHouse_Script)
-    call(Quest_ReturnDoll_HideObject_Script)
-    call(Quest_StolenTrade_HideObjectA_Script)
-}
-
-
-script Sunset_MapScripts_OnLoad {
-    if (var(VAR_MAUVILLE_CITY_STATE)){
         call(ImIn_DestroyWall_Script)
     }
 }

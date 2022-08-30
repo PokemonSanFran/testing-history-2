@@ -6,10 +6,10 @@ mapscripts Salesforcetower_11F_MapScripts {
 
 script Salesforcetower_11F_MapScripts_OnTransition {
 
-     switch (var(VAR_MAUVILLE_CITY_STATE)){
-         case 7: call(YouCantStopMe_HideObject_Script)
-         case 8: call(YouCantStopMe_HideObject_Script)
-         case 9: call(YouCantStopMe_MoveObject_Script)
+     switch (var(VAR_TOWER_RAID_STATE)){
+         case DEFEATED_BIANCA_SALESFORCETOWER: call(YouCantStopMe_HideObject_Script)
+         case SAVE_ROSE_SALESFORCETOWER: call(YouCantStopMe_HideObject_Script)
+         case DEFEATED_ROSE_SALESFORCETOWER: call(YouCantStopMe_MoveObject_Script)
         default: call(YouCantStopMe_ObjectCleanUp_Script)
     }
 }
@@ -17,9 +17,9 @@ script Salesforcetower_11F_MapScripts_OnTransition {
 script Salesforcetower_11F_Rose_Event_Script {
     lock
 
-    switch (var(VAR_MAUVILLE_CITY_STATE)){
-        case 8: goto(YouCantStopMe_Confront_Dialogue)
-        case 9: goto(YouCantStopMe_StartBossBattle_Script)
+    switch (var(VAR_TOWER_RAID_STATE)){
+        case SAVE_ROSE_SALESFORCETOWER: goto(YouCantStopMe_Confront_Dialogue)
+        case DEFEATED_ROSE_SALESFORCETOWER: goto(YouCantStopMe_StartBossBattle_Script)
     }
 }
 

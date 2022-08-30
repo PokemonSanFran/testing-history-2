@@ -3,6 +3,54 @@
 
 const MELISSA_A = 3
 const FLAG_HIDE_MELISSA_A = FLAG_TEMP_1
+const MELISSA_B = 9
+const FLAG_HIDE_MELISSA_B = FLAG_TEMP_5
+const MELISSA_C = 2
+const FLAG_HIDE_MELISSA_C = FLAG_TEMP_2
+const MELISSA_D = 23
+const FLAG_HIDE_MELISSA_D = FLAG_TEMP_6
+
+script Quest_CutePokemon_Debug_Script{
+    lock
+    addvar(VAR_TEMP_0,1)
+    call(Quest_CutePokemon_CountCompletedQuests_Script)
+    switch(var(VAR_TEMP_0)){
+        case 0: givemon(SPECIES_DUSKULL,100)
+        case 1: givemon(SPECIES_SCRAFTY,100)
+        case 2: givemon(SPECIES_TEDDIURSA,100)
+        case 3: givemon(SPECIES_EISCUE,100)
+    }
+    release
+    end
+}
+
+script Quest_CutePokemon_HideMelissaA_Script{
+
+    call(Quest_CutePokemon_CountCompletedQuests_Script)
+        if (var(VAR_TEMP_0) != 0){
+            setflag(FLAG_HIDE_MELISSA_A)
+        }
+}
+
+script Quest_CutePokemon_HideMelissaB_Script{
+    call(Quest_CutePokemon_CountCompletedQuests_Script)
+        if (var(VAR_TEMP_0) != 1){
+            setflag(FLAG_HIDE_MELISSA_B)
+        }
+}
+
+script Quest_CutePokemon_HideMelissaC_Script{
+    call(Quest_CutePokemon_CountCompletedQuests_Script)
+        if (var(VAR_TEMP_0) != 2){
+            setflag(FLAG_HIDE_MELISSA_C)
+        }
+}
+script Quest_CutePokemon_HideMelissaD_Script{
+    call(Quest_CutePokemon_CountCompletedQuests_Script)
+        if (var(VAR_TEMP_0) != 3){
+            setflag(FLAG_HIDE_MELISSA_D)
+        }
+}
 
 script Quest_CutePokemon_Event_Script{
     lock
@@ -18,10 +66,12 @@ script Quest_CutePokemon_Event_Script{
 }
 
 script Quest_CutePokemon_StartQuest_Script{
+    msgbox(gText_CutePokemon_ImTired,MSGBOX_NPC)
     startquest(QUEST_CUTEPOKEMON)
+    goto(Quest_CutePokemon_Sub1_Event_Script)
 }
 
-script Quest_CutePokemon_SelectSubquest_Script{
+script Quest_CutePokemon_CountCompletedQuests_Script{
     setvar(VAR_TEMP_0,0)
 
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CUTEPOKEMON,SUB_QUEST_1)
@@ -36,24 +86,31 @@ script Quest_CutePokemon_SelectSubquest_Script{
     if (var(VAR_RESULT)){
         addvar(VAR_TEMP_0,1)
     }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CUTEPOKEMON,SUB_QUEST_4)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    return
+}
 
+script Quest_CutePokemon_SelectSubquest_Script{
+
+    call(Quest_CutePokemon_CountCompletedQuests_Script)
     switch(var(VAR_TEMP_0)){
         case 0: goto(Quest_CutePokemon_Sub1_Event_Script)
-        //case 1: goto(Quest_CutePokemon_Sub2_Event_Script)
-        //case 2: goto(Quest_CutePokemon_Sub3_Event_Script)
-        //case 3: goto(Quest_CutePokemon_Sub4_Event_Script)
+        case 1: goto(Quest_CutePokemon_Sub2_Event_Script)
+        case 2: goto(Quest_CutePokemon_Sub3_Event_Script)
+        case 3: goto(Quest_CutePokemon_Sub4_Event_Script)
     }
 }
-
-script Quest_CutePokemon_Sub1_Event_Script{
-    call(Quest_CutePokemon_Sub1_Hints_Dialogue)
-    call(Quest_CutePokemon_CheckPokemon_Script)
-
-    if (var(VAR_RESULT) == SPECIES_DUSKULL){
-        goto(Quest_CutePokemon_Sub1_Correct_Dialogue)
-    }else{
-        goto(Quest_CutePokemon_Incorrect_Dialogue)
-}
+script Quest_CutePokemon_CheckPokemon_Script{
+    special(ChoosePartyMon)
+    waitstate
+    if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+        goto(Quest_CutePokemon_CancelCheck_Dialogue)
+    }
+    specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
+    return
 }
 
 script Quest_CutePokemon_CancelCheck_Dialogue{
@@ -69,18 +126,55 @@ script Quest_CutePokemon_Incorrect_Dialogue{
     end
 }
 
-script Quest_CutePokemon_Sub1_Correct_Dialogue{
-    msgbox(gText_CutePokemon_YesDuskull)
+script Quest_CutePokemon_ConfirmTake_Dialogue{
     msgbox(gText_CutePokemon_ItsSoCute,MSGBOX_YESNO)
+    //PSF TODO take pokemon from player
+    //PSF TODO write case for when its the last healthy pokemon
 
     if (var(VAR_RESULT) == NO){
         goto(Quest_CutePokemon_CancelCheck_Dialogue)
     }
+    return
+}
 
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CUTEPOKEMON,SUB_QUEST_1)
-    msgbox(gText_CutePokemon_IGottaGoMyBreak)
-    giveitem(ITEM_RED_SCARF,1)
-    closemessage
+script Quest_CutePokemon_Sub1_Event_Script{
+    call(Quest_CutePokemon_Sub1_Hints_Dialogue)
+        call(Quest_CutePokemon_CheckPokemon_Script)
+
+        if (var(VAR_RESULT) == SPECIES_DUSKULL){
+            goto(Quest_CutePokemon_Sub1_Correct_Dialogue)
+        }else{
+            goto(Quest_CutePokemon_Incorrect_Dialogue)
+        }
+}
+
+script Quest_CutePokemon_Sub1_Hints_Dialogue{
+
+    msgbox(gText_CutePokemon_ISawThisCute)
+
+        msgbox(gText_CutePokemon_ItDoesntNormally)
+
+        if (var(VAR_CUTE_POKEMON_GUESS) > 0){
+            msgbox(gText_CutePokemon_ItHasBig)
+        }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 1){
+        msgbox(gText_CutePokemon_ItsLooksLikeItsWearing)
+    }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 2){
+        msgbox(gText_CutePokemon_WearingASkull)
+    }
+    return
+}
+
+script Quest_CutePokemon_Sub1_Correct_Dialogue{
+    msgbox(gText_CutePokemon_YesDuskull)
+        call(Quest_CutePokemon_ConfirmTake_Dialogue)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CUTEPOKEMON,SUB_QUEST_1)
+        setvar(VAR_CUTE_POKEMON_GUESS,0)
+        goto(Quest_CutePokemon_Sub1_ReturnToWork_Cutscene)
+}
+script Quest_CutePokemon_Sub1_ReturnToWork_Cutscene{
+    call(Quest_CutePokemon_GiveItem_Script)
     opendoor(15,18)
     waitdooranim
     applymovement(MELISSA_A,Quest_CutePokemon_WalkInside_Movement)
@@ -94,34 +188,203 @@ script Quest_CutePokemon_Sub1_Correct_Dialogue{
     end
 }
 
+script Quest_CutePokemon_Sub2_Event_Script{
 
-script Quest_CutePokemon_CheckPokemon_Script{
-    special(ChoosePartyMon)
-    waitstate
-    if (var(VAR_RESULT) == 255){
-        goto(Quest_CutePokemon_CancelCheck_Dialogue)
-    }
-    specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
+    call(Quest_CutePokemon_Sub2_Battle_Script)
+    call(Quest_CutePokemon_Sub2_Hints_Dialogue)
+        call(Quest_CutePokemon_CheckPokemon_Script)
+
+        if (var(VAR_RESULT) == SPECIES_SCRAFTY){
+            goto(Quest_CutePokemon_Sub2_Correct_Dialogue)
+        }else{
+            goto(Quest_CutePokemon_Incorrect_Dialogue)
+        }
 }
 
-script Quest_CutePokemon_Sub1_Hints_Dialogue{
-
-    msgbox(gText_CutePokemon_ISawThisCute)
-
-    if (var(VAR_CUTE_POKEMON_GUESS) > -1){
-        msgbox(gText_CutePokemon_ItDoesntNormally)
-    }
-    if (var(VAR_CUTE_POKEMON_GUESS) > 0){
-        msgbox(gText_CutePokemon_ItHasBig)
-    }
-    if (var(VAR_CUTE_POKEMON_GUESS) > 1){
-        msgbox(gText_CutePokemon_ItsLooksLikeItsWearing)
-    }
-    if (var(VAR_CUTE_POKEMON_GUESS) > 2){
-        msgbox(gText_CutePokemon_WearingASkull)
+script Quest_CutePokemon_Sub2_Battle_Script{
+    if (!defeated(TRAINER_RICKY_1)){
+        msgbox(gText_CutePokemon_HeyItsYou)
+        trainerbattle_no_intro(TRAINER_RICKY_1,gText_CutePokemon_ButTheyreStillCute)
     }
     return
 }
+
+script Quest_CutePokemon_Sub2_Hints_Dialogue{
+
+    msgbox(gText_CutePokemon_ISawAnother)
+
+        msgbox(gText_CutePokemon_BreedsWithDragons)
+
+        if (var(VAR_CUTE_POKEMON_GUESS) > 0){
+            msgbox(gText_CutePokemon_ItsMostlyOrange)
+        }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 1){
+        msgbox(gText_CutePokemon_TheyCanSprayAcid)
+    }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 2){
+        msgbox(gText_CutePokemon_HasAMohawk)
+    }
+    return
+}
+
+script Quest_CutePokemon_Sub2_Correct_Dialogue{
+    msgbox(gText_CutePokemon_YesScrafty)
+        call(Quest_CutePokemon_ConfirmTake_Dialogue)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CUTEPOKEMON,SUB_QUEST_2)
+        setvar(VAR_CUTE_POKEMON_GUESS,0)
+        goto(Quest_CutePokemon_Sub2_ReturnToWork_Cutscene)
+}
+
+script Quest_CutePokemon_Sub2_ReturnToWork_Cutscene{
+    call(Quest_CutePokemon_GiveItem_Script)
+    opendoor(2,16)
+    waitdooranim
+    applymovement(MELISSA_B,Quest_CutePokemon_WalkInside_Movement)
+    waitmovement(MELISSA_B)
+    playse(SE_EXIT)
+    waitse
+    removeobject(MELISSA_B)
+    closedoor(2,16)
+    waitdooranim
+    release
+    end
+}
+
+script Quest_CutePokemon_Sub3_Battle_Script{
+    if (!defeated(TRAINER_RICKY_2)){
+        msgbox(gText_CutePokemon_HeyItsYou)
+        trainerbattle_no_intro(TRAINER_RICKY_2,gText_CutePokemon_ButTheyreStillCute)
+    }
+    return
+}
+
+script Quest_CutePokemon_Sub3_Event_Script{
+    call(Quest_CutePokemon_Sub3_Battle_Script)
+    call(Quest_CutePokemon_Sub3_Hints_Dialogue)
+        call(Quest_CutePokemon_CheckPokemon_Script)
+
+        if (var(VAR_RESULT) == SPECIES_TEDDIURSA){
+            goto(Quest_CutePokemon_Sub3_Correct_Dialogue)
+        }else{
+            goto(Quest_CutePokemon_Incorrect_Dialogue)
+        }
+}
+
+script Quest_CutePokemon_Sub3_Hints_Dialogue{
+
+    msgbox(gText_CutePokemon_ISawThisCute)
+
+        msgbox(gText_CutePokemon_ItsANormal)
+
+        if (var(VAR_CUTE_POKEMON_GUESS) > 0){
+            msgbox(gText_CutePokemon_IfYoureReallyLucky)
+        }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 1){
+        msgbox(gText_CutePokemon_ItsAboutTwo)
+    }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 2){
+        msgbox(gText_CutePokemon_ItLikesHoney)
+    }
+    return
+}
+
+script Quest_CutePokemon_Sub3_Correct_Dialogue{
+    msgbox(gText_CutePokemon_YesTeddiursa)
+        call(Quest_CutePokemon_ConfirmTake_Dialogue)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CUTEPOKEMON,SUB_QUEST_3)
+        setvar(VAR_CUTE_POKEMON_GUESS,0)
+        goto(Quest_CutePokemon_Sub3_ReturnToWork_Cutscene)
+}
+script Quest_CutePokemon_Sub3_ReturnToWork_Cutscene{
+    call(Quest_CutePokemon_GiveItem_Script)
+    opendoor(25,33)
+    waitdooranim
+    applymovement(MELISSA_C,Quest_CutePokemon_WalkInside_Movement)
+    waitmovement(MELISSA_C)
+    playse(SE_EXIT)
+    waitse
+    removeobject(MELISSA_C)
+    closedoor(25,33)
+    waitdooranim
+    release
+    end
+}
+
+script Quest_CutePokemon_Sub4_Battle_Script{
+    if (!defeated(TRAINER_RICKY_3)){
+        msgbox(gText_CutePokemon_HeyItsYou)
+        trainerbattle_no_intro(TRAINER_RICKY_3,gText_CutePokemon_ButTheyreStillCute)
+    }
+    return
+}
+
+script Quest_CutePokemon_Sub4_Event_Script{
+    call(Quest_CutePokemon_Sub4_Battle_Script)
+    call(Quest_CutePokemon_Sub4_Hints_Dialogue)
+        call(Quest_CutePokemon_CheckPokemon_Script)
+
+        if (var(VAR_RESULT) == SPECIES_EISCUE){
+            goto(Quest_CutePokemon_Sub4_Correct_Dialogue)
+        }else{
+            goto(Quest_CutePokemon_Incorrect_Dialogue)
+        }
+}
+
+script Quest_CutePokemon_Sub4_Hints_Dialogue{
+
+    msgbox(gText_CutePokemon_ISawThisCute)
+
+        msgbox(gText_CutePokemon_ItLikesTheCold)
+
+        if (var(VAR_CUTE_POKEMON_GUESS) > 0){
+            msgbox(gText_CutePokemon_ItLooksWorried)
+        }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 1){
+        msgbox(gText_CutePokemon_ItsBlackAndWhite)
+    }
+    if (var(VAR_CUTE_POKEMON_GUESS) > 2){
+        msgbox(gText_CutePokemon_ItsFromGalar)
+    }
+    return
+}
+
+script Quest_CutePokemon_Sub4_Correct_Dialogue{
+    msgbox(gText_CutePokemon_YesEiscue)
+        call(Quest_CutePokemon_ConfirmTake_Dialogue)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CUTEPOKEMON,SUB_QUEST_4)
+        setvar(VAR_CUTE_POKEMON_GUESS,0)
+        goto(Quest_CutePokemon_Sub4_ReturnToWork_Cutscene)
+}
+script Quest_CutePokemon_Sub4_ReturnToWork_Cutscene{
+    call(Quest_CutePokemon_GiveItem_Script)
+    opendoor(16,30)
+    waitdooranim
+    applymovement(MELISSA_D,Quest_CutePokemon_WalkInside_Movement)
+    waitmovement(MELISSA_D)
+    playse(SE_EXIT)
+    waitse
+    removeobject(MELISSA_D)
+    closedoor(16,30)
+    waitdooranim
+    completequest(QUEST_CUTEPOKEMON)
+    release
+    end
+}
+
+script Quest_CutePokemon_GiveItem_Script{
+    msgbox(gText_CutePokemon_IGottaGoMyBreak)
+
+    call(Quest_CutePokemon_CountCompletedQuests_Script)
+    switch(var(VAR_TEMP_0)){
+        case 1: giveitem(ITEM_RED_SCARF,1) 
+        case 2: giveitem(ITEM_GREEN_SCARF,1) 
+        case 3: giveitem(ITEM_BLUE_SCARF,1) 
+        case 4: giveitem(ITEM_PINK_SCARF,1) 
+    }
+    closemessage
+    return
+}
+
 
 script Quest_CutePokemon_PostQuest_Dialogue{
     return
@@ -134,34 +397,89 @@ movement Quest_CutePokemon_WalkInside_Movement {
 }
 
 text gText_CutePokemon_ChangedYourMind{
-    format("")
+    format("changed your mind? das coo")
 }
 text gText_CutePokemon_NoThatsNotIt{
-    format("")
+    format("no thats not it...")
 }
 text gText_CutePokemon_YesDuskull{
-    format("")
+    format("yes! duskull")
 }
 text gText_CutePokemon_ItsSoCute{
-    format("")
+    format("its so cute. are you sure i can have it?")
 }
 text gText_CutePokemon_IGottaGoMyBreak{
-    format("")
+    format("i gotta go my break is over. quick, take this, i made it!")
+}
+text gText_CutePokemon_ImTired{
+    format("i'm tired.... this job is so nuts! i work like 80 hours. i just wanna quit and be a trainer and catch cute pokemon... you're a trainer! can you catch cute pokemon for me?")
 }
 text gText_CutePokemon_ISawThisCute{
-    format("")
+    format("I saw this cute Pokémon I want! But I don't remember its name.. Can you catch me one? I'd love to explore but I'm too busy between my crazy job...")
 }
 text gText_CutePokemon_ItDoesntNormally{
-    format("")
+    format("it doesn't normally touch the ground")
 }
 text gText_CutePokemon_ItHasBig{
-    format("")
+    format("it has big eyes")
 }
-
 text gText_CutePokemon_ItsLooksLikeItsWearing{
-    format("")
+    format("it looks like its wearing something")
 }
-
 text gText_CutePokemon_WearingASkull{
-    format("")
+    format("looks like its wearing a skull")
+}
+text gText_CutePokemon_HeyItsYou{
+    format("hey its you i trained that cutie got me. lets battle!")
+}
+text gText_CutePokemon_ButTheyreStillCute{
+    format("but they're still soooo cute")
+}
+text gText_CutePokemon_ISawAnother{
+    format("I saw ANOTHER cute Pokémon! But I don't remember its name... Can you catch me one?")
+}
+text gText_CutePokemon_BreedsWithDragons{
+    format("It breeds with Dragon-type Pokémon!")
+}
+text gText_CutePokemon_ItsMostlyOrange{
+    format("Its mostly orange.")
+}
+text gText_CutePokemon_TheyCanSprayAcid{
+    format("They can spray acid!")
+}
+text gText_CutePokemon_HasAMohawk{
+    format("it has a mohawk")
+}
+text gText_CutePokemon_YesScrafty{
+    format("yas scrafty")
+}
+text gText_CutePokemon_ItsANormal{
+    format("Its a normal type")
+}
+text gText_CutePokemon_IfYoureReallyLucky{
+    format("if you're really lucky, they're green")
+}
+text gText_CutePokemon_ItsAboutTwo{
+    format("its about two feet tall")
+}
+text gText_CutePokemon_ItLikesHoney{
+    format("it likes honey")
+}
+text gText_CutePokemon_YesTeddiursa{
+    format("yasss Teddiursa!")
+}
+text gText_CutePokemon_ItLikesTheCold{
+    format("it likes the cold!")
+}
+text gText_CutePokemon_ItLooksWorried{
+    format("it looks worried all the time")
+}
+text gText_CutePokemon_ItsBlackAndWhite{
+    format("its black and white and kinda blue")
+}
+text gText_CutePokemon_ItsFromGalar{
+    format("its from galar")
+}
+text gText_CutePokemon_YesEiscue{
+    format("yass Eiscue!")
 }

@@ -36,8 +36,11 @@ script ImIn_MoveBianca_Script {
 }
 
 script ImIn_DestroyWall_Script {
-    setmetatile(15,13,0x0A7,FALSE)
-        special(DrawWholeMapView)
+    if (var(VAR_TOWER_RAID_STATE)){
+        setmetatile(15,13,0x0A7,FALSE)
+            special(DrawWholeMapView)
+    }
+    return
 }
 
 script ImIn_CutsceneSetup_OutsideHouse_Script {
@@ -122,7 +125,7 @@ script ImIn_CheckPlayer_Script {
 }
 
 script ImIn_StartHouseBreak_Script {
-        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_TOWER_RAID_STATE,1)
 
         fadescreen(FADE_TO_BLACK)
         call(ImIn_CutsceneSetup_OutsideHouse_Script)
@@ -220,7 +223,7 @@ script ImIn_UnlockDoor_Script {
 
 script Imin_BeginHouseSearch_Script {
     lock
-        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_TOWER_RAID_STATE,1)
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_OkaySpreadOut)
@@ -253,7 +256,7 @@ script Imin_BeginHouseSearch_Script {
 script ImIn_FindLockedDoor_Script {
     lock
 
-        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_TOWER_RAID_STATE,1)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -281,7 +284,7 @@ script ImIn_InteractDoor_Script {
 
 script ImIn_EnterCorrectCode_Script {
     lock
-        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_TOWER_RAID_STATE,1)
 
         playse(SE_DING_DONG)
         waitse
@@ -341,7 +344,7 @@ script ImIn_EnterCorrectCode_Script {
 script ImIn_PostWarpSplit_Dialogue {
     lock
 
-        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_TOWER_RAID_STATE,1)
 
         setvar(VAR_0x8000, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
@@ -392,7 +395,7 @@ script ImIn_PostWarpSplit_Dialogue {
 }
 
 script ImIn_PreventPlayerProgress_Script {
-    if (var(VAR_MAUVILLE_CITY_STATE) > 6){
+    if (var(VAR_TOWER_RAID_STATE) > SAVE_BIANCA_SALESFORCETOWER){
         release
             end
     }
@@ -415,7 +418,7 @@ script ImIn_PreventPlayerProgress_Script {
 
 script ImIn_OfficeReveal_Dialogue {
     lock
-        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_TOWER_RAID_STATE,1)
         playbgm(MUS_ENCOUNTER_MAY,TRUE)
 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
@@ -492,7 +495,7 @@ script ImIn_InteractBiancaBattle_Script {
 
 script ImIn_BiancaDefeated_Dialogue {
     lock
-        addvar(VAR_MAUVILLE_CITY_STATE,1)
+        addvar(VAR_TOWER_RAID_STATE,1)
         call(ImIn_MoveBianca_Script)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -527,8 +530,8 @@ script ImIn_PostBiancaBattle_Interact_Dialogue {
 script ImIn_InteractBianca_Event_Script {
     lock
 
-        switch(var(VAR_MAUVILLE_CITY_STATE)){
-            case 6: call(ImIn_InteractBiancaBattle_Script)
+        switch(var(VAR_TOWER_RAID_STATE)){
+            case SAVE_BIANCA_SALESFORCETOWER: call(ImIn_InteractBiancaBattle_Script)
             default: call(ImIn_PostBiancaBattle_Interact_Dialogue)
         }
 

@@ -112,6 +112,7 @@
 #define VAR_PETALBURG_CITY_STATE             0x4057
 #define VAR_SLATEPORT_CITY_STATE             0x4058
 #define VAR_MAUVILLE_CITY_STATE              0x4059 // Previously Unused Var
+#define VAR_TOWER_RAID_STATE                 0x4059
 #define VAR_RUSTBORO_CITY_STATE              0x405A
 #define VAR_FORTREE_CITY_STATE               0x405B // Previously Unused Var
 #define VAR_WAREHOUSE_RAVE_STATE             0x405B 

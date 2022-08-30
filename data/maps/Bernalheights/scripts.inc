@@ -1,3 +1,8 @@
 Bernalheights_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Bernalheights_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Bernalheights_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_CutePokemon_HideMelissaA_Script
+	return
 

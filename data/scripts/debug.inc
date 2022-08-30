@@ -43,32 +43,30 @@ Debug_CheatStart::
 
 Debug_Script_1::
 	warp MAP_BERNALHEIGHTS, 15, 19
-	givemon SPECIES_DUSKULL, 5
 	end
 
 
 Debug_Script_2::
-	setvar VAR_CHUCK_STATE, BATTLE_1_COMPLETE
+	warp MAP_SUNSET, 3, 18
 	end
 
 
 Debug_Script_3::
-	setvar VAR_CHUCK_STATE, 0
+	warp MAP_PACIFICA, 24, 33
 	end
 
 
 Debug_Script_4::
-	setvar VAR_ALAMEDA_STATE, START_SURVIVAL_CHANCE
+	warp MAP_ALAMEDA, 16, 30
 	end
 
 
 Debug_Script_5::
-	setvar VAR_ALAMEDA_STATE, START_EARTHQUAKE_RESCUE
 	end
 
 
 Debug_Script_6::
-	setvar VAR_ALAMEDA_STATE, 2
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_CUTEPOKEMON, SUB_QUEST_1
 	end
 
 
