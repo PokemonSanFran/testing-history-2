@@ -321,7 +321,7 @@ const u8 gText_Quest_GardenCleanup_Map[] =_("BernalHeights");
 const u8 gText_Quest_GardenCleanupAdvanced_Name[] = _("Garden Cleanup Advanced");
 const u8 gText_Quest_GardenCleanupAdvanced_Desc[] =_("Description");
 const u8 gText_Quest_GardenCleanupAdvanced_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_GardenCleanupAdvanced_Map[] =_("BernalHeights");
+const u8 gText_Quest_GardenCleanupAdvanced_Map[] =_("Psfroute21");
 
 const u8 gText_Quest_EmployedEverAfter_Name[] = _("Employed Ever After");
 const u8 gText_Quest_EmployedEverAfter_Desc[] =_("Description");

@@ -47,12 +47,14 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-	warp MAP_SUNSET, 3, 18
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_GARDENCLEANUP
+	warp MAP_PSFROUTE21, 8, 7
 	end
 
 
 Debug_Script_3::
-	warp MAP_PACIFICA, 24, 33
+	setvar VAR_STORYLINE_STATE, 24
+	warp MAP_PSFROUTE22, 21, 13
 	end
 
 

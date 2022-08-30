@@ -5018,6 +5018,7 @@ static void HandleEndTurn_BattleWon(void)
     else
     {
         CountDefeatedGlameow();
+        CountDefeatedGardenMons();
         gBattlescriptCurrInstr = BattleScript_PayDayMoneyAndPickUpItems;
     }
 
@@ -5069,6 +5070,22 @@ static void CheckWhiteoutOnFogRoute(void) { //Used for PSF Flying Blind
             VarSet(VAR_FAINTED_FOG_STATE,1);
             }
         }
+}
+//used for Quest_GardenCleanUp
+// if defeated a mon on Psfroute21 while quest is astive, increment by 1
+// if quest is active AND defeated more than 47, mark quest as reward
+void CountDefeatedGardenMons(void){
+    u8 defeatedGardenMonCount = VarGet(VAR_DEFEATED_GARDEN_POKEMON), i = 0;
+
+    if (GetCurrentMap() == MAP_NUM(PSFROUTE21))
+        defeatedGardenMonCount += 1;
+
+    if ((defeatedGardenMonCount > 47) && QuestMenu_GetSetQuestState(QUEST_GARDENCLEANUP,FLAG_GET_ACTIVE)){
+        QuestMenu_GetSetQuestState(QUEST_GARDENCLEANUP,FLAG_SET_REWARD);
+        QuestMenu_GetSetQuestState(QUEST_GARDENCLEANUP,FLAG_REMOVE_ACTIVE);
+    }
+
+    VarSet(VAR_DEFEATED_GARDEN_POKEMON,defeatedGardenMonCount);
 }
 
 void CountDefeatedGlameow(void){

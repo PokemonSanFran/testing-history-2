@@ -1,8 +1,19 @@
 Psfroute21_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute21_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Psfroute21_MapScripts_MAP_SCRIPT_ON_LOAD
 	.byte 0
 
 Psfroute21_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_ArtisanBalls2_CheckTrainerA_Script
+	call Quest_GardenCleanUpAdvanced_HideObjects_Script
+	return
+
+Psfroute21_MapScripts_MAP_SCRIPT_ON_LOAD:
+	goto Psfroute21_MapScripts_OnLoad
+	return
+
+
+Psfroute21_MapScripts_OnLoad::
+	goto Quest_GardenCleanUp_ClearGarden_Script
 	return
 

@@ -1277,7 +1277,7 @@ Script_RemoveTint::
 // .include "data/quests/shelterswitcheroo.inc"
 // .include "data/quests/sheltertaxisolution.inc"
 .include "data/quests/lastmusicvenueinsanfrancisco.inc"
-// .include "data/quests/gardencleanup.inc"
+.include "data/quests/gardencleanup.inc"
 // .include "data/quests/gardencleanupadvanced.inc"
 // .include "data/quests/employedeverafter.inc"
 // .include "data/quests/butonlyinmybackyard.inc"
