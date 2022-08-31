@@ -52,7 +52,8 @@
 #define FLAG_HIDE_MADISON    0x28 // Previously Unused Flag
 #define FLAG_UNUSED_0x29 0x29 // Unused Flag
 #define FLAG_MET_SOCIALMEDIA_REPORTER 0x29 // Unused Flag
-#define FLAG_UNSUED_0x2A 0x2A // Unused Flag
+#define FLAG_UNUSED_0x2A 0x2A // Unused Flag
+#define FLAG_DEFEATED_GARDEN_BOSS 0x2A
 #define FLAG_UNUSED_0x2B 0x2B // Unused Flag
 #define FLAG_UNUSED_0x2C 0x2C // Unused Flag
 #define FLAG_UNUSED_0x2D 0x2D // Unused Flag

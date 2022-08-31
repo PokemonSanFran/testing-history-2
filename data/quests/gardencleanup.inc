@@ -34,13 +34,20 @@ Quest_GardenCleanUpAdvanced_HideObjects_Script_2:
 Quest_GardenCleanUp_ClearGarden_Script::
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_GARDENCLEANUP
 	compare VAR_RESULT, 0
-	goto_if_ne Quest_GardenCleanUp_ClearGarden_Script_1
+	goto_if_ne Quest_GardenCleanUp_ClearGarden_Script_2
+Quest_GardenCleanUp_ClearGarden_Script_1:
 	return
 
-Quest_GardenCleanUp_ClearGarden_Script_1:
-	setmetatile 9, 8, 0x01C, FALSE
+Quest_GardenCleanUp_ClearGarden_Script_2:
+	setmetatile 4, 4, 0x01C, FALSE
+	setmetatile 2, 6, 0x1CE, FALSE
+	setmetatile 2, 7, 0x1D6, TRUE
+	setmetatile 2, 8, 0x1DE, TRUE
+	setmetatile 3, 6, 0x1CF, FALSE
+	setmetatile 3, 7, 0x1D7, TRUE
+	setmetatile 3, 8, 0x1DF, TRUE
 	special DrawWholeMapView
-	return
+	goto Quest_GardenCleanUp_ClearGarden_Script_1
 
 
 Quest_GardenCleanUp_CheckCompletion_Script::
@@ -75,28 +82,6 @@ Quest_GardenCleanUp_Event_Script_3:
 	return
 
 Quest_GardenCleanUp_Event_Script_4:
-	goto Quest_GardenCleanUp_Active_Dialogue
-	return
-
-
-Quest_GardenCleanUpAdvanced_Event_Script::
-	returnqueststate QUEST_GARDENCLEANUP
-	switch VAR_RESULT
-	case QUEST_MENU_COMPLETE_QUEST, Quest_GardenCleanUpAdvanced_Event_Script_2
-	case QUEST_MENU_SET_REWARD, Quest_GardenCleanUpAdvanced_Event_Script_3
-	case QUEST_MENU_SET_ACTIVE, Quest_GardenCleanUpAdvanced_Event_Script_4
-	goto Quest_GardenCleanUp_Start_Dialogue
-	return
-
-Quest_GardenCleanUpAdvanced_Event_Script_2:
-	goto Quest_GardenCleanUp_Complete_Dialogue
-	return
-
-Quest_GardenCleanUpAdvanced_Event_Script_3:
-	goto Quest_GardenCleanUp_Reward_Cutscene
-	return
-
-Quest_GardenCleanUpAdvanced_Event_Script_4:
 	goto Quest_GardenCleanUp_Active_Dialogue
 	return
 
@@ -163,6 +148,48 @@ Quest_GardenCleanUp_Reward_Cutscene::
 Quest_GardenCleanUp_Complete_Dialogue::
 	msgbox gText_GardenCleanUp_ImSoExcitedToStartPlanting, MSGBOX_NPC
 	end
+
+
+Quest_GardenCleanUpAdvanced_Event_Script::
+	returnqueststate QUEST_GARDENCLEANUPADVANCED
+	switch VAR_RESULT
+	case QUEST_MENU_COMPLETE_QUEST, Quest_GardenCleanUpAdvanced_Event_Script_2
+	case QUEST_MENU_SET_REWARD, Quest_GardenCleanUpAdvanced_Event_Script_3
+	case QUEST_MENU_SET_ACTIVE, Quest_GardenCleanUpAdvanced_Event_Script_4
+	goto Quest_GardenCleanUp_Start_Dialogue
+	return
+
+Quest_GardenCleanUpAdvanced_Event_Script_2:
+	goto Quest_GardenCleanUp_Complete_Dialogue
+	return
+
+Quest_GardenCleanUpAdvanced_Event_Script_3:
+	goto Quest_GardenCleanUp_Reward_Cutscene
+	return
+
+Quest_GardenCleanUpAdvanced_Event_Script_4:
+	goto Quest_GardenCleanUp_Active_Dialogue
+	return
+
+
+Quest_GardenCleanUpAdvanced_Start_Dialogue::
+	return
+
+
+Quest_GardenCleanUpAdvanced_Active_Dialogue::
+	return
+
+
+Quest_GardenCleanUpAdvanced_Reward_Dialogue::
+	return
+
+
+Quest_GardenCleanUpAdvanced_Complete_Dialogue::
+	return
+
+
+Quest_GardenCleanUpAdvanced_InteractTree_Cutscene::
+	return
 
 
 Quest_GardenCleanUp_RunToGarden_Movement:

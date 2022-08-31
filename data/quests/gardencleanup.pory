@@ -4,6 +4,9 @@ const FLAG_HIDE_MARIA = FLAG_TEMP_2
 //Quest_GardenCleanUp_
 //gText_GardenCleanUp_
 
+//Quest_GardenCleanUpAdvanced_
+//gText_GardenCleanUpAdvanced_
+
 script Quest_GardenCleanUp_Debug_Script{
     addvar(VAR_TEMP_0,1)
     setvar(VAR_DEFEATED_GARDEN_POKEMON,47)
@@ -33,6 +36,12 @@ script Quest_GardenCleanUp_ClearGarden_Script{
         if (var(VAR_RESULT)){
             //PSF TODO clear the entire grassy patch
             setmetatile(4,4,0x01C,FALSE)
+            setmetatile(2,6,0x1CE,FALSE)
+            setmetatile(2,7,0x1D6,TRUE)
+            setmetatile(2,8,0x1DE,TRUE)
+            setmetatile(3,6,0x1CF,FALSE)
+            setmetatile(3,7,0x1D7,TRUE)
+            setmetatile(3,8,0x1DF,TRUE)
             special(DrawWholeMapView)
         }
     return
@@ -52,17 +61,6 @@ script Quest_GardenCleanUp_Event_Script{
 
     call(Quest_GardenCleanUp_CheckCompletion_Script)
 
-    returnqueststate(QUEST_GARDENCLEANUP)
-
-    switch(var(VAR_RESULT)){
-        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_GardenCleanUp_Complete_Dialogue)
-        case QUEST_MENU_SET_REWARD: goto(Quest_GardenCleanUp_Reward_Cutscene)
-        case QUEST_MENU_SET_ACTIVE: goto(Quest_GardenCleanUp_Active_Dialogue)
-        default: goto(Quest_GardenCleanUp_Start_Dialogue)
-    }
-}
-
-script Quest_GardenCleanUpAdvanced_Event_Script{
     returnqueststate(QUEST_GARDENCLEANUP)
 
     switch(var(VAR_RESULT)){
@@ -115,6 +113,51 @@ script Quest_GardenCleanUp_Reward_Cutscene{
 script Quest_GardenCleanUp_Complete_Dialogue{
     msgbox(gText_GardenCleanUp_ImSoExcitedToStartPlanting,MSGBOX_NPC)
     end
+}
+
+script Quest_GardenCleanUpAdvanced_Event_Script{
+    lock
+    faceplayer
+    returnqueststate(QUEST_GARDENCLEANUPADVANCED)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_GardenCleanUp_Complete_Dialogue)
+        case QUEST_MENU_SET_REWARD: goto(Quest_GardenCleanUp_Reward_Cutscene)
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_GardenCleanUp_Active_Dialogue)
+        default: goto(Quest_GardenCleanUp_Start_Dialogue)
+    }
+}
+
+script Quest_GardenCleanUpAdvanced_Start_Dialogue{    
+    if flag(FLAG_DEFEATED_GARDEN_BOSS)){
+        goto(Quest_GardenCleanUpAdvanced_Secret_Dialogue)
+    }
+
+    msgbox(gText_GardenCleanUpAdvanced_WeStartedThisCommunityGarden)
+    giveitem(ITEM_WAILMER_PAIL,1)
+    msgbox(gText_GardenCleanUpAdvanced_WildPokemonWereEatingItSo)
+    msgbox(gText_GardenCleanUpAdvanced_ButOneKeptComing)
+
+    startquest(QUEST_GARDENCLEANUPADVANCED)
+    release
+    end
+}
+script Quest_GardenCleanUpAdvanced_Active_Dialogue{
+    msgbox(gText_GardenCleanUpAdvanced_ItDidntShowUpUntil)
+    release
+    end
+}
+script Quest_GardenCleanUpAdvanced_Reward_Dialogue{
+    msgbox(gText_GardenCleanUpAdvanced_AStrongGreedent)
+    completequest(QUEST_GARDENCLEANUPADVANCED)
+}
+script Quest_GardenCleanUpAdvanced_Complete_Dialogue{
+}
+script Quest_GardenCleanUpAdvanced_InteractTree_Cutscene{
+    lock
+    msgbox(gText_GardenCleanUpAdvanced_PlayerApproachedTheTree)
+}
+script Quest_GardenCleanUpAdvanced_Start_Dialogue{
 }
 
 movement Quest_GardenCleanUp_RunToGarden_Movement{
