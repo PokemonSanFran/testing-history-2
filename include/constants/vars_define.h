@@ -321,3 +321,10 @@
 //VAR_CUTE_POKEMON_GUESS
 //Number of times you have incorrectly brought a pokemon to the girl in the Quest Cute Pokemon
 //resets after a subquest is completed
+
+
+//VAR_QUEST_GARDENCLEANUPADVANCED
+#define INCOMPLETE_GARDEN_QUEST 0
+#define HAS_NOT_INTERACTED 1
+#define SAVED_BEFORE_BATTLE 2
+#define DEFEATED_GARDEN_BOSS 3

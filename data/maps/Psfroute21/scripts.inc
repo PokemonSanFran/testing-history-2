@@ -9,11 +9,6 @@ Psfroute21_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Psfroute21_MapScripts_MAP_SCRIPT_ON_LOAD:
-	goto Psfroute21_MapScripts_OnLoad
-	return
-
-
-Psfroute21_MapScripts_OnLoad::
-	goto Quest_GardenCleanUp_ClearGarden_Script
+	call Quest_GardenCleanUp_ClearGarden_Script
 	return
 
