@@ -1,11 +1,7 @@
 const MARIA_A = 4
-const MARIA_B = 2
 const FLAG_HIDE_MARIA = FLAG_TEMP_2
 //Quest_GardenCleanUp_
 //gText_GardenCleanUp_
-
-//Quest_GardenCleanUpAdvanced_
-//gText_GardenCleanUpAdvanced_
 
 script Quest_GardenCleanUp_Debug_Script{
     addvar(VAR_TEMP_0,1)
@@ -18,14 +14,6 @@ script Quest_GardenCleanUp_Debug_Script{
 script Quest_GardenCleanUp_HideObjects_Script{
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_GARDENCLEANUP)
         if (var(VAR_RESULT)){
-            setflag(FLAG_HIDE_MARIA) 
-        }
-    return
-}
-
-script Quest_GardenCleanUpAdvanced_HideObjects_Script{
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_GARDENCLEANUP)
-        if (!var(VAR_RESULT)){
             setflag(FLAG_HIDE_MARIA) 
         }
     return
@@ -109,188 +97,6 @@ script Quest_GardenCleanUp_Complete_Dialogue{
         end
 }
 
-script Quest_GardenCleanUpAdvanced_Event_Script{
-    lock
-        faceplayer
-        returnqueststate(QUEST_GARDENCLEANUPADVANCED)
-
-        switch(var(VAR_RESULT)){
-            case QUEST_MENU_COMPLETE_QUEST: goto(Quest_GardenCleanUpAdvanced_Complete_Dialogue)
-            case QUEST_MENU_SET_REWARD: goto(Quest_GardenCleanUpAdvanced_Reward_Dialogue)
-            case QUEST_MENU_SET_ACTIVE: goto(Quest_GardenCleanUpAdvanced_Active_Dialogue)
-            default: goto(Quest_GardenCleanUpAdvanced_Start_Dialogue)
-        }
-}
-
-script Quest_GardenCleanUpAdvanced_Start_Dialogue{    
-    msgbox(gText_GardenCleanUpAdvanced_WeStartedThisCommunityGarden)
-    giveitem(ITEM_WAILMER_PAIL,1)
-
-    if (var(VAR_QUEST_GARDENCLEANUPADVANCED) > SAVED_BEFORE_BATTLE){
-        goto(Quest_GardenCleanUpAdvanced_Secret_Dialogue)
-    }
-
-    msgbox(gText_GardenCleanUpAdvanced_WildPokemonWereEatingItSo)
-    msgbox(gText_GardenCleanUpAdvanced_ButOneKeptComing)
-
-    startquest(QUEST_GARDENCLEANUPADVANCED)
-    release
-    end
-}
-
-script Quest_GardenCleanUpAdvanced_Active_Dialogue{
-    msgbox(gText_GardenCleanUpAdvanced_ItDidntShowUpUntil)
-    release
-    end
-}
-
-script Quest_GardenCleanUpAdvanced_Reward_Dialogue{
-    msgbox(gText_GardenCleanUpAdvanced_AStrongGreedent)
-    giveitem(ITEM_ORAN_BERRY,1)
-    completequest(QUEST_GARDENCLEANUPADVANCED)
-    release
-    end
-}
-
-script Quest_GardenCleanUpAdvanced_Complete_Dialogue{
-    msgbox(gText_GardenCleanUpAdvanced_ImSoProudOfMyGarden)
-    release
-    end
-}
-
-script Quest_GardenCleanUpAdvanced_InteractTree_Script{
-    lock
-
-    //if(!flag(PLAYER_HAS_REPEL_ON)){
-        //call(Quest_GardenCleanUpAdvanced_Tree_Dialogue)
-    //}
-
-    switch (var(VAR_QUEST_GARDENCLEANUPADVANCED)){
-        case HAS_NOT_INTERACTED: goto(Quest_GardenCleanUpAdvanced_ShakeTree_Cutscene)
-        case SAVED_BEFORE_BATTLE: goto(Quest_GardenCleanUpAdvanced_Battle_Script)
-        case INCOMPLETE_GARDEN_QUEST:
-        case DEFEATED_GARDEN_BOSS: goto(Quest_GardenCleanUpAdvanced_Tree_Dialogue)
-}
-}
-
-script Quest_GardenCleanUpAdvanced_ShakeTree_Cutscene{
-    setvar(VAR_TEMP_0,0)
-    msgbox(gText_GardenCleanUpAdvanced_WhatAHugeTree)
-
-    msgbox(gText_GardenCleanUpAdvanced_ShouldYouGiveItAShake,MSGBOX_YESNO)
-    if (var(VAR_RESULT) == NO){
-        release
-        end
-    }
-    while {
-        call(Quest_GardenCleanUpAdvanced_ShakeScreen_Script)
-        if (var(VAR_TEMP_0) == 5){
-            break
-        }
-        msgbox(gText_GardenCleanUpAdvanced_TheHugeTreeDoesntMove,MSGBOX_YESNO)
-        if (var(VAR_RESULT) == NO){
-                setvar(VAR_TEMP_0,0)
-                release
-                end
-        }
-    }
-    goto(Quest_GardenCleanUpAdvanced_FinalShake_Cutscene)
-}
-
-script Quest_GardenCleanUpAdvanced_ShakeScreen_Script{
-    addvar(VAR_TEMP_0,1)
-    delay(16)
-    setvar(VAR_0x8004,0) //vertical pan
-    setvar(VAR_0x8005,2) //horizontal pan
-    setvar(VAR_0x8006,3) //number of shakes
-    setvar(VAR_0x8007,1) //shake delay
-    special(ShakeCamera)
-    waitstate
-    delay(10)
-    return
-}
-
-script Quest_GardenCleanUpAdvanced_FinalShake_Cutscene{
-    msgbox(gText_GardenCleanUpAdvanced_DidSomethingMove,MSGBOX_YESNO)
-
-    if (var(VAR_RESULT) == NO){
-        setvar(VAR_TEMP_0,0)
-       release
-      end
-    } 
-
-    call(Quest_GardenCleanUpAdvanced_ShakeScreen_Script)
-
-    playmoncry(SPECIES_GREEDENT, CRY_MODE_ENCOUNTER)
-    waitmoncry
-    msgbox(gText_GardenCleanUpAdvanced_SomethingSwoopedDown)
-    closemessage
-    setvar(VAR_QUEST_GARDENCLEANUPADVANCED,SAVED_BEFORE_BATTLE)
-    call(Common_EventScript_SaveGame)
-    goto(Quest_GardenCleanUpAdvanced_Battle_Script)
-}
-
-script Quest_GardenCleanUpAdvanced_Battle_Script{
-    setwildbattle(SPECIES_GREEDENT, 60, ITEM_NONE)
-    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
-    dowildbattle
-    clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
-    specialvar(VAR_RESULT, GetBattleOutcome)
-
-    switch (var (VAR_RESULT)) {
-        case B_OUTCOME_WON: goto(Quest_GardenCleanUpAdvanced_PostBattle_Cutscene)
-    }
-
-    release
-    end
-}
-
-script Quest_GardenCleanUpAdvanced_AddItems_Script{
-    additem(ITEM_ORAN_BERRY,30)
-    additem(ITEM_SITRUS_BERRY,10)
-    additem(ITEM_LANSAT_BERRY,1)
-    additem(ITEM_TAMATO_BERRY,20)
-    additem(ITEM_HONDEW_BERRY,15)
-    additem(ITEM_CHOPLE_BERRY,5)
-    additem(ITEM_STARF_BERRY,1)
-}
-
-script Quest_GardenCleanUpAdvanced_PostBattle_Cutscene{
-    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_GARDENCLEANUPADVANCED)
-
-    if (var(VAR_RESULT)){
-        questmenu(QUEST_MENU_SET_REWARD,QUEST_GARDENCLEANUPADVANCED)
-    }
-
-    setvar(VAR_QUEST_GARDENCLEANUPADVANCED,DEFEATED_GARDEN_BOSS)
-    call(Quest_GardenCleanUpAdvanced_AddItems_Script)
-
-    msgbox(gText_GardenCleanUpAdvanced_TheAftershocks)
-	playfanfare(MUS_OBTAIN_BERRY)
-	waitmessage
-	waitfanfare
-    msgbox(gText_GardenCleanUpAdvanced_GotBerries)
-    //PSF TODO use the buffers and the plural versions of these correctly
-    //"player got X Y Berries"
-    release
-    end
-}
-
-script Quest_GardenCleanUpAdvanced_Tree_Dialogue{
-    msgbox(gText_GardenCleanUpAdvanced_WhatAHugeTree)
-
-    if (var(VAR_QUEST_GARDENCLEANUPADVANCED) == DEFEATED_GARDEN_BOSS){
-        msgbox(gText_GardenCleanUpAdvanced_TheTreeWhere)
-    }
-    release
-    end
-}
-
-script Quest_GardenCleanUpAdvanced_Secret_Dialogue{
-    msgbox(gText_GardenCleanUpAdvanced_ThereWasSomethingInThe)
-    goto(Quest_GardenCleanUpAdvanced_Reward_Dialogue)
-}
-
 movement Quest_GardenCleanUp_RunToGarden_Movement{
     walk_faster_down * 6
         step_end
@@ -327,53 +133,4 @@ text gText_GardenCleanUp_OhMyGodYoureDone{
 }
 text gText_GardenCleanUp_ImSoExcitedToStartPlanting{
     format("im so excited to start planting!")
-}
-text gText_GardenCleanUpAdvanced_WeStartedThisCommunityGarden{
-    format("We started this community garden thanks to you! I forgot to give you this, but we got an extra one in case you come back.")
-}
-text gText_GardenCleanUpAdvanced_WildPokemonWereEatingItSo{
-    format("wild pokemon were eating some fruit so we sprayed repelsd..")
-}
-text gText_GardenCleanUpAdvanced_ButOneKeptComing{
-    format("but one kept coming back. can you help us get rid of it")
-}
-text gText_GardenCleanUpAdvanced_ItDidntShowUpUntil{
-    format("it didn't show up until after we started spraying the repels...")
-}
-text gText_GardenCleanUpAdvanced_AStrongGreedent{
-    format("a strong greedent was hoarding the berries? wow! well you can keep them as thanks, and take this too!")
-}
-text gText_GardenCleanUpAdvanced_ImSoProudOfMyGarden{
-    format("i'm so proud of my garden!")
-}
-text gText_GardenCleanUpAdvanced_WhatAHugeTree{
-    format("What a huge tree...")
-}
-text gText_GardenCleanUpAdvanced_ShouldYouGiveItAShake{
-    format("Should you give it a shake?")
-}
-text gText_GardenCleanUpAdvanced_TheHugeTreeDoesntMove{
-    format("... ... ...\pThe huge tree doesn't move an inch.")
-}
-text gText_GardenCleanUpAdvanced_DidSomethingMove{
-    format("Did something move in the upper branch?")
-}
-text gText_GardenCleanUpAdvanced_SomethingSwoopedDown{
-    format("Something swooped down from the tree and attacked!")
-}
-text gText_GardenCleanUpAdvanced_TheAftershocks{
-    format("The aftershocks of the battle caused a lot of berries to fall from the tree!")
-}
-text gText_GardenCleanUpAdvanced_GotBerries{
-    format("{PLAYER} got a bunch of berries.")
-}
-text gText_GardenCleanUpAdvanced_TheTreeWhere{
-    format("The used to be a Greedent that was hoarding the berries from Maria's community garden.")
-}
-text gText_GardenCleanUpAdvanced_ATreeMakingWeirdSounds{
-    format("What a huge tree...")
-}
-
-text gText_GardenCleanUpAdvanced_ThereWasSomethingInThe{
-    format("There was something in that tree? Yeah, we had a berry problem, how did you know?")
 }

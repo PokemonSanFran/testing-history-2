@@ -1,38 +1,31 @@
+const FLAG_HIDE_ORI = FLAG_TEMP_6
+
 mapscripts Psfroute22_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Psfroute22_MapScripts_OnTransition)
+        call(Psfroute22_ObjectVisibility_Script)
     }
     MAP_SCRIPT_ON_LOAD {
-        goto(Psfroute22_MapScripts_OnLoad)
+        call(HeresHowThisIsGoingToGo_ConstructionCompleted_Script)
+        call(TheStrikeStrikesBack_UnblockConstruction_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ROUTE110_STATE, 1: TheStrikeStrikesBack_Intro_Dialogue
-        VAR_ROUTE110_STATE, 3: VSGarbodor_Arrest_Script
-        VAR_STORYLINE_STATE, 51: MaybeIFuckedUp_Dialogue
+        VAR_CONSTRUCTION_STRIKE_STATE, 1: TheStrikeStrikesBack_Intro_Dialogue
+            VAR_CONSTRUCTION_STRIKE_STATE, 3: VSGarbodor_Arrest_Script
+            VAR_STORYLINE_STATE, 51: MaybeIFuckedUp_Dialogue
     ]
 }
 
-script Psfroute22_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE110_STATE)){
-        case 0: call(TheStrikeStrikesBack_HideObject_Script)
-        case 1: call(TheStrikeStrikesBack_ObjectSetup_Script)
-        case 2: call(TheStrikeStrikesBack_HideObject_Script)
-        case 3: call(VSGarbodor_Arrest_ObjectSetup_Script)
-        case 4: call(TheStrikeStrikesBack_HideObject_Script)
+script Psfroute22_ObjectVisibility_Script {
+    switch (var(VAR_CONSTRUCTION_STRIKE_STATE)){
+        case STRIKE_NOT_STARTED: call(TheStrikeStrikesBack_HideObject_Script)
+        case STRIKE_HAS_BEGUN: call(TheStrikeStrikesBack_ObjectSetup_Script)
+        case START_VS_GARBODOR: call(TheStrikeStrikesBack_HideObject_Script)
+        case DEFEATED_GARBODOR: call(VSGarbodor_Arrest_ObjectSetup_Script)
+        case TEAM_ROCKET_ARRESTED: call(TheStrikeStrikesBack_HideObject_Script)
     }
 
-    if (var(VAR_STORYLINE_STATE) == 51){
-        clearflag(FLAG_TEMP_6)
+    if (var(VAR_STORYLINE_STATE) == STORY_CONGRATULATED_BY_ROSE){
+        clearflag(FLAG_HIDE_ORI)
     }
-
-}
-
-script Psfroute22_MapScripts_OnLoad {
-        if (var(VAR_STORYLINE_STATE) > 23){ //PSF TODO what is this variable supposed to be
-            call(HeresHowThisIsGoingToGo_ConstructionCompleted_Script)
-        }
-
-        if (var(VAR_ROUTE110_STATE)) {
-            call(TheStrikeStrikesBack_UnblockConstruction_Script)
-        }
+    return
 }

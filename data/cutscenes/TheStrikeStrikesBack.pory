@@ -15,8 +15,11 @@ script TheStrikeStrikesBack_HideObject_Script {
 }
 
 script TheStrikeStrikesBack_UnblockConstruction_Script {
+        if (var(VAR_CONSTRUCTION_STRIKE_STATE)) {
     setmetatile(21,19,0x211,FALSE)
     special(DrawWholeMapView)
+        }
+        return
 }
 
 script TheStrikeStrikesBack_ObjectSetup_Script {
