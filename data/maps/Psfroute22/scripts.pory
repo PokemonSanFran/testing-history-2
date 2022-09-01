@@ -1,4 +1,3 @@
-const FLAG_HIDE_ORI = FLAG_TEMP_6
 
 mapscripts Psfroute22_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -9,9 +8,9 @@ mapscripts Psfroute22_MapScripts {
         call(TheStrikeStrikesBack_UnblockConstruction_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_CONSTRUCTION_STRIKE_STATE, 1: TheStrikeStrikesBack_Intro_Dialogue
-            VAR_CONSTRUCTION_STRIKE_STATE, 3: VSGarbodor_Arrest_Script
-            VAR_STORYLINE_STATE, 51: MaybeIFuckedUp_Dialogue
+        VAR_CONSTRUCTION_STRIKE_STATE, STRIKE_HAS_BEGUN: TheStrikeStrikesBack_Intro_Dialogue
+            VAR_CONSTRUCTION_STRIKE_STATE, DEFEATED_GARBODOR: VSGarbodor_Arrest_Script
+            VAR_STORYLINE_STATE, STORY_CONGRATULATED_BY_ROSE: MaybeIFuckedUp_Dialogue
     ]
 }
 
@@ -24,8 +23,6 @@ script Psfroute22_ObjectVisibility_Script {
         case TEAM_ROCKET_ARRESTED: call(TheStrikeStrikesBack_HideObject_Script)
     }
 
-    if (var(VAR_STORYLINE_STATE) == STORY_CONGRATULATED_BY_ROSE){
-        clearflag(FLAG_HIDE_ORI)
-    }
+    call(MaybeIFuckedUp_ShowOri_Script)
     return
 }
