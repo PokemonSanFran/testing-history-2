@@ -5,6 +5,12 @@ HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script::
 
 
 HeresHowThisIsGoingToGo_ConstructionCompleted_Script::
+	compare VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR
+	goto_if_gt HeresHowThisIsGoingToGo_ConstructionCompleted_Script_2
+HeresHowThisIsGoingToGo_ConstructionCompleted_Script_1:
+	return
+
+HeresHowThisIsGoingToGo_ConstructionCompleted_Script_2:
 	setmetatile 19, 13, 0x371, TRUE
 	setmetatile 19, 14, 0x379, TRUE
 	setmetatile 19, 15, 0x381, TRUE
@@ -32,7 +38,7 @@ HeresHowThisIsGoingToGo_ConstructionCompleted_Script::
 	setmetatile 23, 17, 0x395, TRUE
 	setmetatile 21, 18, 0x211, FALSE
 	special DrawWholeMapView
-	return
+	goto HeresHowThisIsGoingToGo_ConstructionCompleted_Script_1
 
 
 HeresHowThisIsGoingToGo_ObjectSetUp_Script::

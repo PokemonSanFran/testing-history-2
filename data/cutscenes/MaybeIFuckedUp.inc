@@ -1,3 +1,13 @@
+MaybeIFuckedUp_ShowOri_Script::
+	compare VAR_STORYLINE_STATE, STORY_CONGRATULATED_BY_ROSE
+	goto_if_eq MaybeIFuckedUp_ShowOri_Script_1
+	return
+
+MaybeIFuckedUp_ShowOri_Script_1:
+	clearflag FLAG_TEMP_6
+	return
+
+
 MaybeIFuckedUp_Dialogue::
 	lock
 	addvar VAR_STORYLINE_STATE, 1

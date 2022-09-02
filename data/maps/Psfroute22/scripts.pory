@@ -1,7 +1,8 @@
 
 mapscripts Psfroute22_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        call(Psfroute22_ObjectVisibility_Script)
+        call(Psfroute22_ConstructionVisibility_Script)
+        call(Quest_NeighborhoodCleanUp_ObjectVisibility_Script)
     }
     MAP_SCRIPT_ON_LOAD {
         call(HeresHowThisIsGoingToGo_ConstructionCompleted_Script)
@@ -14,7 +15,7 @@ mapscripts Psfroute22_MapScripts {
     ]
 }
 
-script Psfroute22_ObjectVisibility_Script {
+script Psfroute22_ConstructionVisibility_Script {
     switch (var(VAR_CONSTRUCTION_STRIKE_STATE)){
         case STRIKE_NOT_STARTED: call(TheStrikeStrikesBack_HideObject_Script)
         case STRIKE_HAS_BEGUN: call(TheStrikeStrikesBack_ObjectSetup_Script)

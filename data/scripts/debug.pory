@@ -65,18 +65,13 @@ script Debug_Script_1{
     end
 }
 script Debug_Script_2{
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_GARDENCLEANUP)
-    setvar(VAR_QUEST_GARDENCLEANUPADVANCED,HAS_NOT_INTERACTED)
-    warp(MAP_PSFROUTE21,3,6)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP2)
     end
 }
 script Debug_Script_3{
-    setvar(VAR_STORYLINE_STATE,24)
-    warp(MAP_PSFROUTE22,21,13)
     end
 }
 script Debug_Script_4{
-    warp(MAP_ALAMEDA,16,30)
     end
 }
 script Debug_Script_5{

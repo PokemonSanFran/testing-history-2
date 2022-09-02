@@ -1,0 +1,96 @@
+Quest_NeighborhoodCleanUp_ObjectVisibility_Script::
+	call Quest_NeighborhoodCleanUp_HidePeople_Script
+	call Quest_NeighborhoodCleanUp_HideCop_Script
+	return
+
+
+Quest_NeighborhoodCleanUp_HideCop_Script::
+	compare VAR_STORYLINE_STATE, STORY_WON_FINALS
+	goto_if_gt Quest_NeighborhoodCleanUp_HideCop_Script_2
+Quest_NeighborhoodCleanUp_HideCop_Script_1:
+	return
+
+Quest_NeighborhoodCleanUp_HideCop_Script_2:
+	setflag FLAG_TEMP_C
+	goto Quest_NeighborhoodCleanUp_HideCop_Script_1
+
+
+Quest_NeighborhoodCleanUp_HidePeople_Script::
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_1
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_NeighborhoodCleanUp_HidePeople_Script_2
+Quest_NeighborhoodCleanUp_HidePeople_Script_1:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_2
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_NeighborhoodCleanUp_HidePeople_Script_5
+Quest_NeighborhoodCleanUp_HidePeople_Script_4:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_3
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_NeighborhoodCleanUp_HidePeople_Script_8
+Quest_NeighborhoodCleanUp_HidePeople_Script_7:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_4
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_NeighborhoodCleanUp_HidePeople_Script_11
+Quest_NeighborhoodCleanUp_HidePeople_Script_10:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_5
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_NeighborhoodCleanUp_HidePeople_Script_14
+Quest_NeighborhoodCleanUp_HidePeople_Script_13:
+	return
+
+Quest_NeighborhoodCleanUp_HidePeople_Script_2:
+	setflag FLAG_TEMP_7
+	goto Quest_NeighborhoodCleanUp_HidePeople_Script_1
+
+Quest_NeighborhoodCleanUp_HidePeople_Script_5:
+	setflag FLAG_TEMP_8
+	goto Quest_NeighborhoodCleanUp_HidePeople_Script_4
+
+Quest_NeighborhoodCleanUp_HidePeople_Script_8:
+	setflag FLAG_TEMP_9
+	goto Quest_NeighborhoodCleanUp_HidePeople_Script_7
+
+Quest_NeighborhoodCleanUp_HidePeople_Script_11:
+	setflag FLAG_TEMP_A
+	goto Quest_NeighborhoodCleanUp_HidePeople_Script_10
+
+Quest_NeighborhoodCleanUp_HidePeople_Script_14:
+	setflag FLAG_TEMP_B
+	goto Quest_NeighborhoodCleanUp_HidePeople_Script_13
+
+
+Quest_NeighborhoodCleanUp_Interact_Cop_Script::
+	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	startquest QUEST_NEIGHBORHOODCLEANUP
+	end
+
+
+Quest_NeighborhoodCleanUp_Interact_PersonA_Script::
+	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	end
+
+
+Quest_NeighborhoodCleanUp_Interact_PersonB_Script::
+	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	end
+
+
+Quest_NeighborhoodCleanUp_Interact_PersonC_Script::
+	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	end
+
+
+Quest_NeighborhoodCleanUp_Interact_PersonD_Script::
+	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	end
+
+
+Quest_NeighborhoodCleanUp_Interact_PersonE_Script::
+	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	end
+
+
+gText_NeighborhoodCleanUp_ThisIsPlaceholder::
+	.string "this is placeholder text for\n"
+	.string "neighborhood cleanup. you can't finish\l"
+	.string "the quest yet.$"

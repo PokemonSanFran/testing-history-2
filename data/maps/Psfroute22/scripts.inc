@@ -5,70 +5,50 @@ Psfroute22_MapScripts::
 	.byte 0
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Psfroute22_MapScripts_OnTransition
+	call Psfroute22_ConstructionVisibility_Script
+	call Quest_NeighborhoodCleanUp_ObjectVisibility_Script
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD:
-	goto Psfroute22_MapScripts_OnLoad
+	call HeresHowThisIsGoingToGo_ConstructionCompleted_Script
+	call TheStrikeStrikesBack_UnblockConstruction_Script
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE110_STATE, 1, TheStrikeStrikesBack_Intro_Dialogue
-	map_script_2 VAR_ROUTE110_STATE, 3, VSGarbodor_Arrest_Script
-	map_script_2 VAR_STORYLINE_STATE, 51, MaybeIFuckedUp_Dialogue
+	map_script_2 VAR_CONSTRUCTION_STRIKE_STATE, STRIKE_HAS_BEGUN, TheStrikeStrikesBack_Intro_Dialogue
+	map_script_2 VAR_CONSTRUCTION_STRIKE_STATE, DEFEATED_GARBODOR, VSGarbodor_Arrest_Script
+	map_script_2 VAR_STORYLINE_STATE, STORY_CONGRATULATED_BY_ROSE, MaybeIFuckedUp_Dialogue
 	.2byte 0
 
 
-Psfroute22_MapScripts_OnTransition::
-	switch VAR_ROUTE110_STATE
-	case 0, Psfroute22_MapScripts_OnTransition_3
-	case 1, Psfroute22_MapScripts_OnTransition_4
-	case 2, Psfroute22_MapScripts_OnTransition_5
-	case 3, Psfroute22_MapScripts_OnTransition_6
-	case 4, Psfroute22_MapScripts_OnTransition_7
-Psfroute22_MapScripts_OnTransition_1:
-	compare VAR_STORYLINE_STATE, 51
-	goto_if_eq Psfroute22_MapScripts_OnTransition_8
+Psfroute22_ConstructionVisibility_Script::
+	switch VAR_CONSTRUCTION_STRIKE_STATE
+	case STRIKE_NOT_STARTED, Psfroute22_ConstructionVisibility_Script_3
+	case STRIKE_HAS_BEGUN, Psfroute22_ConstructionVisibility_Script_4
+	case START_VS_GARBODOR, Psfroute22_ConstructionVisibility_Script_5
+	case DEFEATED_GARBODOR, Psfroute22_ConstructionVisibility_Script_6
+	case TEAM_ROCKET_ARRESTED, Psfroute22_ConstructionVisibility_Script_7
+Psfroute22_ConstructionVisibility_Script_1:
+	call MaybeIFuckedUp_ShowOri_Script
 	return
 
-Psfroute22_MapScripts_OnTransition_3:
+Psfroute22_ConstructionVisibility_Script_3:
 	call TheStrikeStrikesBack_HideObject_Script
-	goto Psfroute22_MapScripts_OnTransition_1
+	goto Psfroute22_ConstructionVisibility_Script_1
 
-Psfroute22_MapScripts_OnTransition_4:
+Psfroute22_ConstructionVisibility_Script_4:
 	call TheStrikeStrikesBack_ObjectSetup_Script
-	goto Psfroute22_MapScripts_OnTransition_1
+	goto Psfroute22_ConstructionVisibility_Script_1
 
-Psfroute22_MapScripts_OnTransition_5:
+Psfroute22_ConstructionVisibility_Script_5:
 	call TheStrikeStrikesBack_HideObject_Script
-	goto Psfroute22_MapScripts_OnTransition_1
+	goto Psfroute22_ConstructionVisibility_Script_1
 
-Psfroute22_MapScripts_OnTransition_6:
+Psfroute22_ConstructionVisibility_Script_6:
 	call VSGarbodor_Arrest_ObjectSetup_Script
-	goto Psfroute22_MapScripts_OnTransition_1
+	goto Psfroute22_ConstructionVisibility_Script_1
 
-Psfroute22_MapScripts_OnTransition_7:
+Psfroute22_ConstructionVisibility_Script_7:
 	call TheStrikeStrikesBack_HideObject_Script
-	goto Psfroute22_MapScripts_OnTransition_1
-
-Psfroute22_MapScripts_OnTransition_8:
-	clearflag FLAG_TEMP_6
-	return
-
-
-Psfroute22_MapScripts_OnLoad::
-	compare VAR_STORYLINE_STATE, 23
-	goto_if_gt Psfroute22_MapScripts_OnLoad_2
-Psfroute22_MapScripts_OnLoad_1:
-	compare VAR_ROUTE110_STATE, 0
-	goto_if_ne Psfroute22_MapScripts_OnLoad_4
-	return
-
-Psfroute22_MapScripts_OnLoad_2:
-	call HeresHowThisIsGoingToGo_ConstructionCompleted_Script
-	goto Psfroute22_MapScripts_OnLoad_1
-
-Psfroute22_MapScripts_OnLoad_4:
-	call TheStrikeStrikesBack_UnblockConstruction_Script
-	return
+	goto Psfroute22_ConstructionVisibility_Script_1
 

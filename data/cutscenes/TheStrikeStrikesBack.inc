@@ -8,9 +8,15 @@ TheStrikeStrikesBack_HideObject_Script::
 
 
 TheStrikeStrikesBack_UnblockConstruction_Script::
+	compare VAR_CONSTRUCTION_STRIKE_STATE, 0
+	goto_if_ne TheStrikeStrikesBack_UnblockConstruction_Script_2
+TheStrikeStrikesBack_UnblockConstruction_Script_1:
+	return
+
+TheStrikeStrikesBack_UnblockConstruction_Script_2:
 	setmetatile 21, 19, 0x211, FALSE
 	special DrawWholeMapView
-	return
+	goto TheStrikeStrikesBack_UnblockConstruction_Script_1
 
 
 TheStrikeStrikesBack_ObjectSetup_Script::
