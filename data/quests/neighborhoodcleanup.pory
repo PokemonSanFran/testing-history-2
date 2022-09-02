@@ -1,2 +1,26 @@
+const PERSON_A =  16
+const PERSON_B = 17
+const PERSON_C = 18
+const PERSON_D = 19
+const PERSON_E = 20
+const HIDE_PERSON_A = FLAG_TEMP_7
+const HIDE_PERSON_B = FLAG_TEMP_8
+const HIDE_PERSON_C = FLAG_TEMP_9
+const HIDE_PERSON_D = FLAG_TEMP_A
+const HIDE_PERSON_E = FLAG_TEMP_B
+//gText_NeighborhoodCleanUp_
+//Quest_NeighborhoodCleanUp_
+
 script test3{
+}
+
+script Quest_NeighborhoodCleanUp_Interact_PersonA_Script{
+}
+script Quest_NeighborhoodCleanUp_Interact_PersonB_Script{
+}
+script Quest_NeighborhoodCleanUp_Interact_PersonC_Script{
+}
+script Quest_NeighborhoodCleanUp_Interact_PersonD_Script{
+}
+script Quest_NeighborhoodCleanUp_Interact_PersonE_Script{
 }
