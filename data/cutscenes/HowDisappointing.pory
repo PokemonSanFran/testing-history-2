@@ -1,44 +1,50 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const POLICEA = 1 //FLAG_TEMP_1
-const POLICEB = 2 //FLAG_TEMP_1
-const POLICEC = 3 //FLAG_TEMP_1
-const CHIEF = 4 //FLAG_TEMP_4
-const ARIANA = 5 //FLAG_TEMP_5
-const GRUNTA = 6//FLAG_TEMP_5
-const GRUNTB = 7//FLAG_TEMP_5
+const POLICEA = 1 
+const POLICEB = 2
+const POLICEC = 3
+const CHIEF = 4 
+const ARIANA = 5
+const GRUNTA = 6
+const GRUNTB = 7
+
+const FLAG_HIDE_POLICE = FLAG_TEMP_1
+const FLAG_HIDE_CHIEF = FLAG_TEMP_4
+const FLAG_HIDE_ROCKET = FLAG_TEMP_5
 
 script HowDisappointing_HideObject_Script{
-        switch (var(VAR_PETALBURG_WOODS_STATE)){
-            case 1: call(HowDisappointing_HideTeamRocket_Script) 
-            case 2: call(HowDisappointing_HidePolice_Script)
-            case 3: call(HowDisappointing_HidePolice_Script)
-            default: call(HowDisappointing_HideAll_Script)
-        }
-        return
+    switch (var(VAR_HOW_DISAPPOINTING_STATE)){
+        case MISSION_ASSIGNED: call(HowDisappointing_HideTeamRocket_Script) 
+        case GYM_RAID_STARTED: 
+        case SAVED_BEFORE_ARIANA: call(HowDisappointing_HidePolice_Script)
+        default: call(HowDisappointing_HideAll_Script)
+    }
+    return
 }
 
 script HowDisappointing_HideAll_Script{
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_4)
-    setflag(FLAG_TEMP_5)
+    setflag(FLAG_HIDE_POLICE)
+    setflag(FLAG_HIDE_CHIEF)
+    setflag(FLAG_HIDE_ROCKET)
+    return
 }
 
 script HowDisappointing_HideTeamRocket_Script {
-    setflag(FLAG_TEMP_5)
+    setflag(FLAG_HIDE_ROCKET)
+    return
 }
 
 script HowDisappointing_HidePolice_Script {
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_4)
+    setflag(FLAG_HIDE_POLICE)
+    setflag(FLAG_HIDE_CHIEF)
     setobjectxy(ARIANA,17,2)
     setobjectxyperm(ARIANA,17,2)
+    return
 }
 
 script HowDisappointing_StartRaid_Dialogue {
     lock
     applymovement(PLAYER,Common_Movement_WalkUp)
     waitmovement(0)
-goto(HowDisappointing_RaidMovement_Script)
 
 msgbox(gText_HowDisappointing_ThanksForJoining)
 closemessage
@@ -79,7 +85,7 @@ fadescreen(FADE_TO_BLACK)
 delay(16)
 fadescreen(FADE_FROM_BLACK)
 
-addvar(VAR_PETALBURG_WOODS_STATE,1)
+addvar(VAR_HOW_DISAPPOINTING_STATE,1)
 opendoor(5,8)
 waitdooranim
 
@@ -109,7 +115,7 @@ waitse
 playse(SE_M_EXPLOSION)
 waitse
 
-clearflag(FLAG_TEMP_5)
+clearflag(FLAG_HIDE_ROCKET)
 playse(SE_EXIT)
 addobject(GRUNTA)
 applymovement(GRUNTA,HowDisappointing_EscapeA)
@@ -139,11 +145,11 @@ end
 script HowDisappointing_Interfact_Ariana_Script {
     lock
 
-    if (var(VAR_PETALBURG_WOODS_STATE) == 3){
+    if (var(VAR_HOW_DISAPPOINTING_STATE) == SAVED_BEFORE_ARIANA){
         goto(HowDisappointing_StartBattle_Script)
     }
 
-    addvar(VAR_PETALBURG_WOODS_STATE,1)
+    addvar(VAR_HOW_DISAPPOINTING_STATE,1)
     setvar(VAR_0x8000, MUGSHOT_ARIANA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_HowDisappointing,MSGBOX_NPC)
@@ -185,31 +191,34 @@ msgbox(gText_HowDisappointing_SighHowDisappointing,MSGBOX_NPC)
 
 script HowDisappointing_ArrestScene_Dialogue {
     lock
-    clearflag(FLAG_TEMP_1)
+    clearflag(FLAG_HIDE_POLICE)
     addobject(POLICEA)
     setobjectxyperm(POLICEA,17,8)
     setobjectxy(POLICEA,17,8)
     applymovement(POLICEA,HowDisappointing_WalkToArrest)
     waitmovement(0)
     msgbox(gText_HowDisappointing_YoureUnderArrest)
-addvar(VAR_PETALBURG_WOODS_STATE,1)
+addvar(VAR_HOW_DISAPPOINTING_STATE,1)
     warpsilent(MAP_SALESFORCETOWER_2F,255,16,26)
 }
 
 const OAK = 9 //FLAG_TEMP_3
-const BIANCA = 10 //FLAG_TEMP_8
-const ROSE = 11 // FLAG_TEMP_5
+const BIANCA = 10
+const ROSE = 11
 const KOGA = 14 // FLAG_TEMP_4
 const SABRINA = 2 // FLAG_TEMP_1
-const CHIEF2 = 13 //FLAG_TEMP_7
+const CHIEF2 = 13
+const FLAG_HIDE_BIANCA = FLAG_TEMP_8
+const FLAG_HIDE_CHIEF2 = FLAG_TEMP_7
+const FLAG_HIDE_ROSE = FLAG_TEMP_5
 
 script HowDisappointing_PostMissionObjectSetUp_Script {
     setobjectxy(KOGA,16,28)
     setobjectxyperm(KOGA,16,28)
     setobjectmovementtype(KOGA,MOVEMENT_TYPE_FACE_UP)
-    clearflag(FLAG_TEMP_8)
-    clearflag(FLAG_TEMP_7)
-    clearflag(FLAG_TEMP_5)
+    clearflag(FLAG_HIDE_BIANCA)
+    clearflag(FLAG_HIDE_CHIEF2)
+    clearflag(FLAG_HIDE_ROSE)
     addobject(BIANCA)
     addobject(CHIEF2)
     addobject(ROSE)
@@ -238,7 +247,7 @@ script HowDisappointing_MissionComplete_Dialogue {
     removeobject(CHIEF2)
     removeobject(ROSE)
     addvar(VAR_STORYLINE_STATE,1)
-    addvar(VAR_PETALBURG_WOODS_STATE,1)
+    addvar(VAR_HOW_DISAPPOINTING_STATE,1)
     release
         call(ExhibitionBattle_TimeSkip_Script)
     end

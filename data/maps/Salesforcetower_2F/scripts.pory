@@ -9,7 +9,7 @@ mapscripts Salesforcetower_2F_MapScripts {
         VAR_SALESFORCETOWER_2F_STATE, 3: Salesforcetower_2F_MovePlayerIntoPosition_Script
             VAR_SALESFORCETOWER_2F_STATE, 5: Salesforcetower_2F_MovePlayerIntoPosition_Script
             VAR_LILYCOVE_CONTEST_LOBBY_STATE,3: LetsBurnThisMotherDown_MissionComplete_Dialogue
-            VAR_PETALBURG_WOODS_STATE,4: HowDisappointing_MissionComplete_Dialogue
+            VAR_HOW_DISAPPOINTING_STATE,DEFEATED_ARIANA_CHINATOWN: HowDisappointing_MissionComplete_Dialogue
             VAR_RUSTURF_TUNNEL_STATE,6: Manhunt_MissionComplete_Dialogue
             VAR_MAUVILLE_CITY_STATE,4: ImIn_PostWarpSplit_Dialogue 
     ]
@@ -42,9 +42,9 @@ script Salesforcetower_2F_MapScripts_OnTransition {
             default: call(Manhunt_TowerObjectSetUp_Script) //Sabrina is in her office, already gave you mission
         }
 
-        switch (var(VAR_PETALBURG_WOODS_STATE)){
-            case 0:return
-            case 4: call(HowDisappointing_PostMissionObjectSetUp_Script) //Rose is in Koga's office, thanking everybody for their work
+        switch (var(VAR_HOW_DISAPPOINTING_STATE)){
+            case MISSION_NOT_ASSIGNED:return
+            case DEFEATED_ARIANA_CHINATOWN: call(HowDisappointing_PostMissionObjectSetUp_Script) //Rose is in Koga's office, thanking everybody for their work
             default: call(YouHaveYourOrders_ObjectSetUp_Script) //Koga is in his office, already gave you mission
         }
 

@@ -6,9 +6,9 @@ YouHaveYourOrders_ObjectSetUp_Script::
 
 
 YouHaveYourOrders_Assignment_Dialogue::
-	compare VAR_PETALBURG_WOODS_STATE, 0
+	compare VAR_HOW_DISAPPOINTING_STATE, 0
 	goto_if_ne YouHaveYourOrders_Assignment_Dialogue_2
-	addvar VAR_PETALBURG_WOODS_STATE, 1
+	addvar VAR_HOW_DISAPPOINTING_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_AreYouSure, MSGBOX_NPC

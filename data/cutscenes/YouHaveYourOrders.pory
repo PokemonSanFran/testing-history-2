@@ -12,13 +12,13 @@ script YouHaveYourOrders_ObjectSetUp_Script {
 }
 
 script YouHaveYourOrders_Assignment_Dialogue {
-    if (var(VAR_PETALBURG_WOODS_STATE)){
+    if (var(VAR_HOW_DISAPPOINTING_STATE)){
         msgbox("...")
         closemessage
         end
     }
 
-    addvar(VAR_PETALBURG_WOODS_STATE,1)
+    addvar(VAR_HOW_DISAPPOINTING_STATE,1)
     
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)

@@ -11,7 +11,7 @@ Salesforcetower_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_SALESFORCETOWER_2F_STATE, 3, Salesforcetower_2F_MovePlayerIntoPosition_Script
 	map_script_2 VAR_SALESFORCETOWER_2F_STATE, 5, Salesforcetower_2F_MovePlayerIntoPosition_Script
 	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3, LetsBurnThisMotherDown_MissionComplete_Dialogue
-	map_script_2 VAR_PETALBURG_WOODS_STATE, 4, HowDisappointing_MissionComplete_Dialogue
+	map_script_2 VAR_HOW_DISAPPOINTING_STATE, DEFEATED_ARIANA_CHINATOWN, HowDisappointing_MissionComplete_Dialogue
 	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 6, Manhunt_MissionComplete_Dialogue
 	map_script_2 VAR_MAUVILLE_CITY_STATE, 4, ImIn_PostWarpSplit_Dialogue
 	.2byte 0
@@ -75,9 +75,9 @@ Salesforcetower_2F_MapScripts_OnTransition_15:
 	switch VAR_RUSTURF_TUNNEL_STATE
 	case 0, Salesforcetower_2F_MapScripts_OnTransition_21
 	call Manhunt_TowerObjectSetUp_Script
-	switch VAR_PETALBURG_WOODS_STATE
-	case 0, Salesforcetower_2F_MapScripts_OnTransition_25
-	case 4, Salesforcetower_2F_MapScripts_OnTransition_26
+	switch VAR_HOW_DISAPPOINTING_STATE
+	case MISSION_NOT_ASSIGNED, Salesforcetower_2F_MapScripts_OnTransition_25
+	case DEFEATED_ARIANA_CHINATOWN, Salesforcetower_2F_MapScripts_OnTransition_26
 	call YouHaveYourOrders_ObjectSetUp_Script
 Salesforcetower_2F_MapScripts_OnTransition_23:
 	compare VAR_LILYCOVE_CONTEST_LOBBY_STATE, 3

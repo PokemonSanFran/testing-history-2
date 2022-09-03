@@ -1,8 +1,8 @@
 HowDisappointing_HideObject_Script::
-	switch VAR_PETALBURG_WOODS_STATE
-	case 1, HowDisappointing_HideObject_Script_3
-	case 2, HowDisappointing_HideObject_Script_4
-	case 3, HowDisappointing_HideObject_Script_5
+	switch VAR_HOW_DISAPPOINTING_STATE
+	case MISSION_ASSIGNED, HowDisappointing_HideObject_Script_3
+	case GYM_RAID_STARTED, HowDisappointing_HideObject_Script_4
+	case SAVED_BEFORE_ARIANA, HowDisappointing_HideObject_Script_4
 	call HowDisappointing_HideAll_Script
 HowDisappointing_HideObject_Script_1:
 	return
@@ -12,10 +12,6 @@ HowDisappointing_HideObject_Script_3:
 	goto HowDisappointing_HideObject_Script_1
 
 HowDisappointing_HideObject_Script_4:
-	call HowDisappointing_HidePolice_Script
-	goto HowDisappointing_HideObject_Script_1
-
-HowDisappointing_HideObject_Script_5:
 	call HowDisappointing_HidePolice_Script
 	goto HowDisappointing_HideObject_Script_1
 
@@ -44,7 +40,6 @@ HowDisappointing_StartRaid_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
-	goto HowDisappointing_RaidMovement_Script
 	msgbox gText_HowDisappointing_ThanksForJoining
 	closemessage
 	applymovement 4, HowDisappointing_WalkToPlayer
@@ -75,7 +70,7 @@ HowDisappointing_RaidMovement_Script::
 	fadescreen FADE_TO_BLACK
 	delay 16
 	fadescreen FADE_FROM_BLACK
-	addvar VAR_PETALBURG_WOODS_STATE, 1
+	addvar VAR_HOW_DISAPPOINTING_STATE, 1
 	opendoor 5, 8
 	waitdooranim
 	applymovement 4, HowDisappointing_RunIntoGymD
@@ -127,10 +122,10 @@ HowDisappointing_RaidMovement_Script::
 
 HowDisappointing_Interfact_Ariana_Script::
 	lock
-	compare VAR_PETALBURG_WOODS_STATE, 3
+	compare VAR_HOW_DISAPPOINTING_STATE, SAVED_BEFORE_ARIANA
 	goto_if_eq HowDisappointing_Interfact_Ariana_Script_2
 HowDisappointing_Interfact_Ariana_Script_1:
-	addvar VAR_PETALBURG_WOODS_STATE, 1
+	addvar VAR_HOW_DISAPPOINTING_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_HowDisappointing, MSGBOX_NPC
@@ -179,7 +174,7 @@ HowDisappointing_ArrestScene_Dialogue::
 	applymovement 1, HowDisappointing_WalkToArrest
 	waitmovement 0
 	msgbox gText_HowDisappointing_YoureUnderArrest
-	addvar VAR_PETALBURG_WOODS_STATE, 1
+	addvar VAR_HOW_DISAPPOINTING_STATE, 1
 	warpsilent MAP_SALESFORCETOWER_2F, 255, 16, 26
 	return
 
@@ -220,7 +215,7 @@ HowDisappointing_MissionComplete_Dialogue::
 	removeobject 13
 	removeobject 11
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_PETALBURG_WOODS_STATE, 1
+	addvar VAR_HOW_DISAPPOINTING_STATE, 1
 	release
 	call ExhibitionBattle_TimeSkip_Script
 	end
