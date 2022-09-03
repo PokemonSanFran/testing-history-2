@@ -67,7 +67,7 @@ Quest_BuildingScope_Event_Script_4:
 
 Quest_BuildingScope_CheckBadges_Script::
 	special GetNumberOfBadges
-	compare VAR_TEMP_0, 5
+	compare VAR_RESULT, 5
 	goto_if_lt Quest_BuildingScope_CheckBadges_Script_1
 	goto Quest_BuildingScope_StartQuest_Dialogue
 	return

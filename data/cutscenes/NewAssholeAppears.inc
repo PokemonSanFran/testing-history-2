@@ -81,7 +81,7 @@ NewAssholeAppears_BadgeJudge_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	special GetNumberOfBadges
-	switch VAR_TEMP_0
+	switch VAR_RESULT
 	case 0, NewAssholeAppears_BadgeJudge_Dialogue_3
 	case 1, NewAssholeAppears_BadgeJudge_Dialogue_4
 	msgbox gText_NewAssholeAppears_ColonizersAreReallyGetting, MSGBOX_NPC

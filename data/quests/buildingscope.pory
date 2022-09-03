@@ -67,7 +67,7 @@ script Quest_BuildingScope_Event_Script{
 script Quest_BuildingScope_CheckBadges_Script{
    special(GetNumberOfBadges)
 
-   if (var(VAR_TEMP_0) < 5){
+   if (var(VAR_RESULT) < 5){
       goto(Quest_BuildingScope_ScaredEmployee_Dialogue) 
    }else{
        goto(Quest_BuildingScope_StartQuest_Dialogue)

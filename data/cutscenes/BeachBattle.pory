@@ -58,7 +58,7 @@ script BeachBattle_Approach_Dialogue {
 
         special(GetNumberOfBadges)
 
-        switch (var(VAR_TEMP_0)) {
+        switch (var(VAR_RESULT)) {
             case 8: msgbox(gText_BeachBattle_OhShit)
             case 7: goto(BeachBattle_SevenBadges_Dialogue)
             case 6: msgbox(gText_BeachBattle_TwoLeft) 

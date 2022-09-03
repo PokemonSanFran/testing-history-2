@@ -85,7 +85,7 @@ YouLookTired_Intro_Dialogue::
 
 YouLookTired_BadgeJudge_Script::
 	special GetNumberOfBadges
-	compare VAR_TEMP_0, 8
+	compare VAR_RESULT, 8
 	goto_if_eq YouLookTired_BadgeJudge_Script_1
 	goto YouLookTired_OnlyThisBadge_Dialogue
 	return

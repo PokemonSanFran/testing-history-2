@@ -130,7 +130,7 @@ script Quest_BringFruit_NotEnoughBadges {
 script Quest_BringFruit_CheckBadges {
 	special(GetNumberOfBadges)
 
-	if (var(VAR_TEMP_0) > 0) {
+	if (var(VAR_RESULT) > 0) {
 		call(Quest_BringFruit_PreQuestScript)
 	}
 	else {

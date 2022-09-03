@@ -5,7 +5,7 @@ script WaitYouWentWhere_ObjectSetUp_Script {
     special(GetNumberOfBadges)
         //if player has less than 7 badges AND 
         //if (var(VAR_TEMP_0) < 7 && var(VAR_ALCATRAZ_STATE) == 2){
-        if (var(VAR_TEMP_0) >= 7 || var(VAR_ALCATRAZ_STATE) != 2){
+        if (var(VAR_RESULT) >= 7 || var(VAR_ALCATRAZ_STATE) != 2){
             setflag(FLAG_TEMP_1)
         }
 }

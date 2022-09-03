@@ -72,7 +72,7 @@ BeachBattle_Approach_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_ImHeadingNorth
 	special GetNumberOfBadges
-	switch VAR_TEMP_0
+	switch VAR_RESULT
 	case 8, BeachBattle_Approach_Dialogue_3
 	case 7, BeachBattle_Approach_Dialogue_4
 	case 6, BeachBattle_Approach_Dialogue_5

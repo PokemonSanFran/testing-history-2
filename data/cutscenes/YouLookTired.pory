@@ -71,7 +71,7 @@ script YouLookTired_Intro_Dialogue {
 script YouLookTired_BadgeJudge_Script {
 
     special(GetNumberOfBadges)
-        if (var(VAR_TEMP_0) == 8){
+        if (var(VAR_RESULT) == 8){
             goto(YouLookTired_AllBadges_Dialogue)
         } else {
             goto(YouLookTired_OnlyThisBadge_Dialogue)

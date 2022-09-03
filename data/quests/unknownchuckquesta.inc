@@ -3,7 +3,7 @@ Quest_UnknownChuckA_HideLeader_Script::
 	compare VAR_CHUCK_STATE, BATTLE_1_COMPLETE
 	goto_if_ne Quest_UnknownChuckA_HideLeader_Script_2
 Quest_UnknownChuckA_HideLeader_Script_1:
-	compare VAR_TEMP_0, 6
+	compare VAR_RESULT, 6
 	goto_if_lt Quest_UnknownChuckA_HideLeader_Script_5
 Quest_UnknownChuckA_HideLeader_Script_4:
 	switch VAR_ALAMEDA_STATE

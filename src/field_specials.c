@@ -4340,7 +4340,7 @@ u8 GetNumberOfBadges(void)
         if (FlagGet(badgeFlag))
         count++;
         }
-    VarSet(VAR_TEMP_0, count);
+    gSpecialVar_Result = count;
     return count;
 }
 
@@ -4413,6 +4413,5 @@ u8 CheckNumAlcatrazExhibitDefeated(void)
     }
 
     gSpecialVar_Result = count;
-    //VarSet(VAR_RESULT, count);
     return count;
 }

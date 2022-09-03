@@ -140,7 +140,7 @@ Quest_BringFruit_NotEnoughBadges::
 
 Quest_BringFruit_CheckBadges::
 	special GetNumberOfBadges
-	compare VAR_TEMP_0, 0
+	compare VAR_RESULT, 0
 	goto_if_gt Quest_BringFruit_CheckBadges_2
 	call Quest_BringFruit_NotEnoughBadges
 Quest_BringFruit_CheckBadges_1:

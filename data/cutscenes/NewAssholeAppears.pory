@@ -50,7 +50,7 @@ script NewAssholeAppears_BadgeJudge_Dialogue {
 
     special(GetNumberOfBadges) 
 
-    switch (var(VAR_TEMP_0)){
+    switch (var(VAR_RESULT)){
         case 0: msgbox(gText_NewAssholeAppears_NotDoingMuchGood,MSGBOX_NPC)
         case 1: msgbox(gText_NewAssholeAppears_ThoughtIRecognized,MSGBOX_NPC)
         default: msgbox(gText_NewAssholeAppears_ColonizersAreReallyGetting,MSGBOX_NPC)

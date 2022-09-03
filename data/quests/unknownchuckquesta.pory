@@ -11,7 +11,7 @@ script Quest_UnknownChuckA_HideLeader_Script{
         setflag(FLAG_HIDE_CHUCK)
     }
 
-    if (var(VAR_TEMP_0) < 6){
+    if (var(VAR_RESULT) < 6){
         setflag(FLAG_HIDE_CHUCK)
     }
 
