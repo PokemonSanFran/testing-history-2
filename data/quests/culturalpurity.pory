@@ -11,3 +11,15 @@ script Quest_CulturalPurity_HideLeader_Script{
         setflag(FLAG_HIDE_BUGSY)
     }
 }
+
+script Quest_CulturalPurity_Interact_Event_Script{
+    returnqueststate(QUEST_CULTURALPURITY)
+
+    switch (var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto()
+        case QUEST_MENU_SET_REWARD: goto()
+        case QUEST_MENU_COMPLETE_QUEST: goto()
+        default: goto()
+    }
+    end
+}
