@@ -17,18 +17,25 @@ script Quest_CulturalPurity_HideLeader_Script{
 }
 
 script Quest_CulturalPurity_Interact_Event_Script{
+    lock
+    faceplayer
     returnqueststate(QUEST_CULTURALPURITY)
 
     switch (var(VAR_RESULT)){
-        //case QUEST_MENU_SET_ACTIVE: goto()
-        //case QUEST_MENU_SET_REWARD: goto()
-        //case QUEST_MENU_COMPLETE_QUEST: goto()
-        default: return// goto()
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_CulturalPurity_QuestActive_Dialogue)
+        case QUEST_MENU_SET_REWARD: goto(Quest_CulturalPurity_QuestReward_Dialogue)
+        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_CulturalPurity_QuestComplete_Dialogue)
+        default: goto(Quest_CulturalPurity_QuestStart_Dialogue)
     }
-    end
 }
 
 script Quest_CulturalPurity_QuestStart_Dialogue{
+    msgbox(gText_CulturalPurity_Player)
+    msgbox(gText_CulturalPurity_IReadOnline)
+    msgbox(gText_CulturalPurity_TheSaidToStart)
+    release
+    end
+    startquest(QUEST_CULTURALPURITY)
 }
 
 script Quest_CulturalPurity_QuestActive_Dialogue{
@@ -37,3 +44,5 @@ script Quest_CulturalPurity_QuestActive_Dialogue{
 script Quest_CulturalPurity_QuestReward_Dialogue{
 }
 
+script Quest_CulturalPurity_QuestComplete_Dialogue{
+}
