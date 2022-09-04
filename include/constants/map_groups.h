@@ -94,6 +94,10 @@
 #define MAP_TENDERLOIN_TROLLEY_HQ             (85 | (0 << 8))
 #define MAP_MARIN_SOLAR                       (86 | (0 << 8))
 #define MAP_DOGPATCH_BIKERHQ                  (87 | (0 << 8))
+#define MAP_CHINATOWN_BACKROOM_A              (88 | (0 << 8))
+#define MAP_CHINATOWN_BACKROOM_B              (89 | (0 << 8))
+#define MAP_CHINATOWN_BACKROOM_C              (90 | (0 << 8))
+#define MAP_CHINATOWN_BACKROOM_D              (91 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

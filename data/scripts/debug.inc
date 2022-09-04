@@ -42,16 +42,12 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	setvar VAR_BUGSY_STATE, BATTLE_1_COMPLETE
-	setflag FLAG_BADGE01_GET
-	setflag FLAG_BADGE02_GET
-	setflag FLAG_BADGE03_GET
-	warp MAP_CHINATOWN, 5, 10
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_CULTURALPURITY
+	warp MAP_CHINATOWN, 15, 19
 	end
 
 
 Debug_Script_2::
-	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_ASSIGNED
 	end
 
 

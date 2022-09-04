@@ -14,18 +14,15 @@ script Quest_ChinatownTunnels_HideTreasure_Script{
 
 script Quest_ChinatownTunnels_Event_Script{
 
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHINATOWNTUNNELS)
-        if (var(VAR_RESULT)){
-            msgbox(gText_Quest_ChinatownTunnels_ICannotThank,MSGBOX_NPC)
+    returnqueststate(QUEST_CULTURALPURITY)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_COMPLETE_QUEST: msgbox(gText_Quest_ChinatownTunnels_ICannotThank,MSGBOX_NPC)
+        case QUEST_MENU_CHECK_ACTIVE: goto(Quest_ChinatownTunnels_Active_Event_Script)
+        default: msgbox(gText_Chinatown_IMissTheOld,MSGBOX_NPC)
         }
-        else {
-        questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_CHINATOWNTUNNELS)
-            if (var(VAR_RESULT)){
-                goto(Quest_ChinatownTunnels_Active_Event_Script)
-            }
-            msgbox(gText_Chinatown_IMissTheOld,MSGBOX_NPC)
-        }
-    end
+            release
+            end
 }
 
 script Quest_ChinatownTunnels_Active_Event_Script{

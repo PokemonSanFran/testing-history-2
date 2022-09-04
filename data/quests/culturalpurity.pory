@@ -1,19 +1,55 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
 const BUGSY = 9
+const BUGSY_2 = 2
+const GUARD = 10
+const BACKUP =  12
+const FLAG_HIDE_BACKUP = FLAG_TEMP_3
 const FLAG_HIDE_BUGSY = FLAG_TEMP_2
 
 //gText_CulturalPurity_
 //Quest_CulturalPurity_
 
+//PSF TODO The text that appears when the quest is active should change for every mahjong tile that the player recieves
+//PSF TODO replace key item with mahjong tile
+
+script Quest_CulturalPurity_HideBackUp_Script{
+    setflag(FLAG_HIDE_BACKUP)
+    return
+}
+
+script Quest_CulturalPurity_MoveGuard_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CULTURALPURITY)
+    if (var(VAR_RESULT)){
+        setobjectxy(GUARD,16,19)
+        setobjectxyperm(GUARD,16,19)
+    }
+    return
+}
+
+script Quest_CulturalPurity_HideBugsyInside_Script{
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_CULTURALPURITY)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BUGSY)
+        }
+}
+
 script Quest_CulturalPurity_HideLeader_Script{
 
     special(GetNumberOfBadges)
-    if ((var(VAR_BUGSY_STATE) != BATTLE_1_COMPLETE) || (var(VAR_RESULT) < 2)){
+        if ((var(VAR_BUGSY_STATE) != BATTLE_1_COMPLETE) || (var(VAR_RESULT) < 2)){
+            setflag(FLAG_HIDE_BUGSY)
+        }
+    
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_CULTURALPURITY)
+    if (var(VAR_RESULT)){
         setflag(FLAG_HIDE_BUGSY)
     }
 
     if ((var(VAR_HOW_DISAPPOINTING_STATE) > 0) && (var(VAR_HOW_DISAPPOINTING_STATE) != HOW_DISAPPOINTING_COMPLETE)){
         setflag(FLAG_HIDE_BUGSY)
     }
+
+    return
 }
 
 script Quest_CulturalPurity_Interact_Event_Script{
@@ -22,9 +58,6 @@ script Quest_CulturalPurity_Interact_Event_Script{
     returnqueststate(QUEST_CULTURALPURITY)
 
     switch (var(VAR_RESULT)){
-        case QUEST_MENU_SET_ACTIVE: goto(Quest_CulturalPurity_QuestActive_Dialogue)
-        case QUEST_MENU_SET_REWARD: goto(Quest_CulturalPurity_QuestReward_Dialogue)
-        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_CulturalPurity_QuestComplete_Dialogue)
         default: goto(Quest_CulturalPurity_QuestStart_Dialogue)
     }
 }
@@ -33,16 +66,365 @@ script Quest_CulturalPurity_QuestStart_Dialogue{
     msgbox(gText_CulturalPurity_Player)
     msgbox(gText_CulturalPurity_IReadOnline)
     msgbox(gText_CulturalPurity_TheSaidToStart)
+    applymovement(BUGSY,Quest_CulturalPurity_LeaderWalkAway_Movement)
+    waitmovement(BUGSY)
+    removeobject(BUGSY)
+    startquest(QUEST_CULTURALPURITY)
     release
     end
-    startquest(QUEST_CULTURALPURITY)
 }
 
-script Quest_CulturalPurity_QuestActive_Dialogue{
+script Quest_CulturalPurity_CheckProgress_Script{
+    setvar(VAR_TEMP_0,0)
+
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_CULTURALPURITY)
+
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    checkitem(ITEM_KEY_TO_ROOM_1,1)
+
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    checkitem(ITEM_KEY_TO_ROOM_2,1)
+
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    checkitem(ITEM_KEY_TO_ROOM_4,1)
+
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    checkitem(ITEM_KEY_TO_ROOM_6,1)
+
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+   return 
 }
 
-script Quest_CulturalPurity_QuestReward_Dialogue{
+script Quest_CulturalPurity_BackroomA_Interact_Script{
+    lock
+    faceplayer
+    msgbox(gText_CulturalPurity_GoAway)
+    call(Quest_CulturalPurity_CheckProgress_Script)
+
+    if (var(VAR_TEMP_0) == 1){
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA) 
+        callnative(DrawMugshot)
+        msgbox(gText_CulturalPurity_WaitIKnowThePassword)
+        callnative(ClearMugshot)
+
+        msgbox(gText_CulturalPurity_OhHereYouGo)
+        giveitem(ITEM_KEY_TO_ROOM_1,1)
+    }
+    release
+    end
 }
 
-script Quest_CulturalPurity_QuestComplete_Dialogue{
+script Quest_CulturalPurity_BackroomB_Interact_Script{
+    lock
+    faceplayer
+    msgbox(gText_CulturalPurity_GoAway)
+    call(Quest_CulturalPurity_CheckProgress_Script)
+
+    if (var(VAR_TEMP_0) == 2){
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA) 
+        callnative(DrawMugshot)
+        msgbox(gText_CulturalPurity_WaitIKnowThePassword)
+        callnative(ClearMugshot)
+
+        msgbox(gText_CulturalPurity_OhHereYouGo)
+        giveitem(ITEM_KEY_TO_ROOM_2,1)
+    }
+    release
+    end
+}
+
+script Quest_CulturalPurity_BackroomC_Interact_Script{
+    lock
+    faceplayer
+    msgbox(gText_CulturalPurity_GoAway)
+    call(Quest_CulturalPurity_CheckProgress_Script)
+
+    if (var(VAR_TEMP_0) == 3){
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA) 
+        callnative(DrawMugshot)
+        msgbox(gText_CulturalPurity_WaitIKnowThePassword)
+        callnative(ClearMugshot)
+
+        msgbox(gText_CulturalPurity_OhHereYouGo)
+        giveitem(ITEM_KEY_TO_ROOM_4,1)
+    }
+    release
+    end
+}
+
+script Quest_CulturalPurity_BackroomD_Interact_Script{
+    lock
+    faceplayer
+    msgbox(gText_CulturalPurity_GoAway)
+    call(Quest_CulturalPurity_CheckProgress_Script)
+
+    if (var(VAR_TEMP_0) == 4){
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA) 
+        callnative(DrawMugshot)
+        msgbox(gText_CulturalPurity_WaitIKnowThePassword)
+        callnative(ClearMugshot)
+
+        msgbox(gText_CulturalPurity_OhHereYouGo)
+        giveitem(ITEM_KEY_TO_ROOM_6,1)
+    }
+    release
+    end
+}
+
+script Quest_CulturalPurity_Racist_Interact_Script{
+    lock
+    faceplayer
+returnqueststate(QUEST_CULTURALPURITY)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_REWARD: goto(Quest_CulturalPurity_ObjectSetUp_Script)
+        default: goto(Quest_CulturalPurity_Racist_FirstGuard_Dialogue)
+}
+}
+
+script Quest_CulturalPurity_ObjectSetUp_Script{
+    fadescreen(FADE_TO_BLACK)
+    call(Quest_CulturalPurity_MakeBugsyVisible_Script)
+    call(Quest_CulturalPurity_MakeBackupVisible_Script)
+
+    setobjectxyperm(BUGSY,14,20)
+    setobjectxy(BUGSY,14,20)
+    turnobject(BUGSY,DIR_NORTH)
+
+    setobjectxyperm(BACKUP,14,19)
+    setobjectxy(BACKUP,14,19)
+
+    fadescreen(FADE_FROM_BLACK)
+    goto(Quest_CulturalPurity_Battle_Script)
+}
+
+script Quest_CulturalPurity_Racist_FirstGuard_Dialogue{
+    msgbox(gText_CulturalPurity_GoAway)
+    call(Quest_CulturalPurity_CheckProgress_Script)
+
+    if (var(VAR_TEMP_0) == 5){
+        goto(Quest_CulturalPurity_BugsyJoin_Dialogue)
+    }
+    release
+    end
+}
+
+script Quest_CulturalPurity_MakeBugsyVisible_Script{
+    clearflag(FLAG_HIDE_BUGSY)
+    addobject(BUGSY)
+    return
+}
+
+script Quest_CulturalPurity_MakeBackupVisible_Script{
+    clearflag(FLAG_HIDE_BACKUP)
+    addobject(BACKUP)
+    return
+}
+
+script Quest_CulturalPurity_BugsyJoin_Dialogue{
+        setvar(VAR_MUGSHOT,MUGSHOT_BUGSY) 
+        callnative(DrawMugshot)
+        msgbox(gText_CulturalPurity_IFiguredItOut)
+        callnative(ClearMugshot)
+
+        call(Quest_CulturalPurity_MakeBugsyVisible_Script)
+        applymovement(BUGSY,Quest_CulturalPurity_BugsyWalkToGuard_Movement)
+        waitmovement(BUGSY)
+
+        setvar(VAR_MUGSHOT,MUGSHOT_BUGSY) 
+        callnative(DrawMugshot)
+        msgbox(gText_CulturalPurity_IHaveTheCodeButWeNeed)
+        callnative(ClearMugshot)
+
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_CulturalPurity_YepGotEm)
+        callnative(ClearMugshot)
+
+        msgbox(gText_CulturalPurity_LetMeSee)
+
+        call(Quest_CulturalPurity_LoseTiles_Script)
+
+        msgbox(gText_CulturalPurity_HeyCleetus)
+        call(Quest_CulturalPurity_BackupWalkOut_Script)
+
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_CULTURALPURITY)
+        goto(Quest_CulturalPurity_Battle_Script)
+}
+
+script Quest_CulturalPurity_LoseTiles_Script{
+    removeitem(ITEM_KEY_TO_ROOM_1,1)
+    removeitem(ITEM_KEY_TO_ROOM_2,1)
+    removeitem(ITEM_KEY_TO_ROOM_4,1)
+    removeitem(ITEM_KEY_TO_ROOM_6,1)
+    return
+}
+
+script Quest_CulturalPurity_BackupWalkOut_Script{
+    opendoor(15,18)
+    waitdooranim
+    call(Quest_CulturalPurity_MakeBackupVisible_Script)
+    applymovement(BACKUP,Quest_CulturalPurity_BackupWalkOutside_Movement)
+    waitmovement(BACKUP)
+    closedoor(15,18)
+    applymovement(BUGSY,Common_Movement_FaceUp)
+    waitmovement(BUGSY)
+    return
+}
+
+script Quest_CulturalPurity_Battle_Script{
+        msgbox(gText_CulturalPurity_WellThenItsTimeForYourInitation)
+        //PSF TODO replace Brawly and Wally
+        multi_fixed_2_vs_2(TRAINER_RANDALL,gText_CulturalPurity_OneOfUs,TRAINER_PARKER,gText_CulturalPurity_OneOfUs,TRAINER_BRAWLY_1,TRAINER_BACK_PIC_WALLY)
+        goto(Quest_CulturalPurity_PostBattle_Script)
+}
+
+script Quest_CulturalPurity_PostBattle_Script{
+    msgbox(gText_CulturalPurity_WowWelcomeInside)
+    closemessage
+    applymovement(GUARD,Quest_CulturalPurity_StepAside_Movement)
+    waitmovement(GUARD)
+
+    opendoor(15,18)
+    applymovement(BUGSY,Quest_CulturalPurity_WalkInside_Movement)
+    applymovement(PLAYER,Quest_CulturalPurity_FollowBugsy_Movement)
+    waitmovement(PLAYER)
+    warp(MAP_CHINATOWN_RACISTHOUSE,0)
+}
+
+script Quest_CulturalPurity_InsideClubhouse_Dialogue{
+    lock
+    addvar(VAR_TEMP_0,1)
+
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_CULTURALPURITY)
+        if (!var(VAR_RESULT)){
+            release
+            end
+        }
+
+    applymovement(BUGSY_2,Quest_CulturalPurity_WalkToPlayer_Movement)
+    waitmovement(BUGSY_2)
+    setvar(VAR_MUGSHOT,MUGSHOT_BUGSY)
+    callnative(DrawMugshot)
+    msgbox(gText_CulturalPurity_NeverMind)
+    callnative(ClearMugshot)
+    closemessage
+    giveitem(ITEM_ORAN_BERRY,1)
+    setvar(VAR_MUGSHOT,MUGSHOT_BUGSY)
+    callnative(DrawMugshot)
+    msgbox(gText_CulturalPurity_IHaveSomeThiking)
+    callnative(ClearMugshot)
+    closemessage
+    applymovement(BUGSY_2,Quest_CulturalPurity_LeaveClubhouse_Movement)
+    waitmovement(BUGSY_2)
+    playse(SE_EXIT)
+    removeobject(BUGSY_2)
+    waitse
+    setvar(VAR_BUGSY_STATE,QUEST_1_COMPLETE)
+    completequest(QUEST_CULTURALPURITY)
+    release
+    end
+}
+movement Quest_CulturalPurity_LeaderWalkAway_Movement{
+    walk_down * 6
+    step_end
+}
+
+movement Quest_CulturalPurity_BugsyWalkToGuard_Movement{
+    walk_down * 2
+    walk_right * 5
+}
+
+movement Quest_CulturalPurity_BackupWalkOutside_Movement{
+    walk_down
+    walk_left
+    face_down
+    step_end
+}
+movement Quest_CulturalPurity_StepAside_Movement{
+    lock_facing_direction
+    walk_right
+    step_end
+}
+movement Quest_CulturalPurity_WalkInside_Movement{
+    walk_right
+    walk_up * 2
+    step_end
+}
+movement Quest_CulturalPurity_FollowBugsy_Movement{
+    walk_up * 2
+    step_end
+}
+movement Quest_CulturalPurity_WalkToPlayer_Movement{
+    walk_left
+    walk_down
+    step_end
+}
+movement Quest_CulturalPurity_LeaveClubhouse_Movement{
+    walk_left
+    walk_down
+    step_end
+}
+
+text gText_CulturalPurity_Player{
+    format("{PLAYER} Hello!")
+}
+text gText_CulturalPurity_IReadOnline{
+    format("i read online about a group of people in chinatown who have stayed tru")
+}
+text gText_CulturalPurity_TheSaidToStart{
+    format("they said start at the center... what does that mean?")
+}
+text gText_CulturalPurity_GoAway{
+    format("go away.")
+}
+text gText_CulturalPurity_WaitIKnowThePassword{
+    format("wait i know the password")
+}
+text gText_CulturalPurity_OhHereYouGo{
+    format("oh here you go")
+}
+text gText_CulturalPurity_IFiguredItOut{
+    format("i figured it out!")
+}
+text gText_CulturalPurity_IHaveTheCodeButWeNeed{
+    format("i have the code word, but need all the tiles")
+}
+text gText_CulturalPurity_YepGotEm{
+    format("yep got em here")
+}
+text gText_CulturalPurity_LetMeSee{
+    format("let me see your tiles.")
+}
+text gText_CulturalPurity_HeyCleetus{
+    format("hey cleetus!")
+}
+text gText_CulturalPurity_WellThenItsTimeForYourInitation{
+    format("Well then, its time for your initation!")
+}
+text gText_CulturalPurity_OneOfUs{
+    format("one of us one of us")
+}
+text gText_CulturalPurity_WowWelcomeInside{
+    format("wow welcome inside")
+}
+text gText_CulturalPurity_NeverMind{
+    format("never mind. they're just nationalists.")
+}
+text gText_CulturalPurity_IHaveSomeThiking{
+    format("i have some thinking to do.")
 }

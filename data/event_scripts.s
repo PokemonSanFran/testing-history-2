@@ -1396,3 +1396,11 @@ Script_RemoveTint::
 	.include "data/maps/Presidio_Improv/scripts.inc"
 
 	.include "data/maps/Presidio_Squattersmansion/scripts.inc"
+
+	.include "data/maps/Chinatown_BackroomA/scripts.inc"
+
+	.include "data/maps/Chinatown_BackroomB/scripts.inc"
+
+	.include "data/maps/Chinatown_BackroomC/scripts.inc"
+
+	.include "data/maps/Chinatown_BackroomD/scripts.inc"

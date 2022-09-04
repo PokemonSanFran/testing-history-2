@@ -1,5 +1,16 @@
 Chinatown_Racisthouse_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Chinatown_Racisthouse_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Chinatown_Racisthouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Chinatown_Racisthouse_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_CulturalPurity_HideBugsyInside_Script
+	call Quest_CulturalPurity_MoveGuard_Script
+	return
+
+Chinatown_Racisthouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TEMP_0, 0, Quest_CulturalPurity_InsideClubhouse_Dialogue
+	.2byte 0
 
 
 Chinatown_Racisthouse_Scroll_Script::

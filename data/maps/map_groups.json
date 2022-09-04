@@ -133,7 +133,11 @@
     "Pacifica_Gemhouse",
     "Tenderloin_TrolleyHQ",
     "Marin_Solar",
-    "Dogpatch_BIkerhq"
+    "Dogpatch_BIkerhq",
+    "Chinatown_BackroomA",
+    "Chinatown_BackroomB",
+    "Chinatown_BackroomC",
+    "Chinatown_BackroomD"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

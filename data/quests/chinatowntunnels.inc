@@ -11,24 +11,22 @@ Quest_ChinatownTunnels_HideTreasure_Script_1:
 
 
 Quest_ChinatownTunnels_Event_Script::
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_CHINATOWNTUNNELS
-	compare VAR_RESULT, 0
-	goto_if_ne Quest_ChinatownTunnels_Event_Script_2
-	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_CHINATOWNTUNNELS
-	compare VAR_RESULT, 0
-	goto_if_ne Quest_ChinatownTunnels_Event_Script_6
-Quest_ChinatownTunnels_Event_Script_5:
+	returnqueststate QUEST_CULTURALPURITY
+	switch VAR_RESULT
+	case QUEST_MENU_COMPLETE_QUEST, Quest_ChinatownTunnels_Event_Script_3
+	case QUEST_MENU_CHECK_ACTIVE, Quest_ChinatownTunnels_Event_Script_4
 	msgbox gText_Chinatown_IMissTheOld, MSGBOX_NPC
 Quest_ChinatownTunnels_Event_Script_1:
+	release
 	end
 
-Quest_ChinatownTunnels_Event_Script_2:
+Quest_ChinatownTunnels_Event_Script_3:
 	msgbox gText_Quest_ChinatownTunnels_ICannotThank, MSGBOX_NPC
 	goto Quest_ChinatownTunnels_Event_Script_1
 
-Quest_ChinatownTunnels_Event_Script_6:
+Quest_ChinatownTunnels_Event_Script_4:
 	goto Quest_ChinatownTunnels_Active_Event_Script
-	goto Quest_ChinatownTunnels_Event_Script_5
+	goto Quest_ChinatownTunnels_Event_Script_1
 
 
 Quest_ChinatownTunnels_Active_Event_Script::

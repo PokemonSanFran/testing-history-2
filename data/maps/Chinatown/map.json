@@ -147,8 +147,34 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
+      "script": "Quest_CulturalPurity_Racist_Interact_Script",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRUCK",
+      "x": 17,
+      "y": 36,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 15,
+      "y": 18,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_3"
     }
   ],
   "warp_events": [
@@ -157,6 +183,34 @@
       "y": 18,
       "elevation": 0,
       "dest_map": "MAP_CHINATOWN_RACISTHOUSE",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 16,
+      "y": 26,
+      "elevation": 0,
+      "dest_map": "MAP_CHINATOWN_BACKROOM_A",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 14,
+      "y": 33,
+      "elevation": 0,
+      "dest_map": "MAP_CHINATOWN_BACKROOM_B",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 4,
+      "y": 37,
+      "elevation": 0,
+      "dest_map": "MAP_CHINATOWN_BACKROOM_C",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 11,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_CHINATOWN_BACKROOM_D",
       "dest_warp_id": 0
     }
   ],

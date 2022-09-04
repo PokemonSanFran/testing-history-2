@@ -1,4 +1,11 @@
 mapscripts Chinatown_Racisthouse_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_CulturalPurity_HideBugsyInside_Script)
+        call(Quest_CulturalPurity_MoveGuard_Script)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE[
+        VAR_TEMP_0, 0: Quest_CulturalPurity_InsideClubhouse_Dialogue
+    ]
 }
 
 script Chinatown_Racisthouse_Scroll_Script{

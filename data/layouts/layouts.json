@@ -5650,6 +5650,46 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Presidio_Squattersmansion/border.bin",
       "blockdata_filepath": "data/layouts/Presidio_Squattersmansion/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHINATOWN_BACKROOM_A",
+      "name": "Chinatown_BackroomA_Layout",
+      "width": 12,
+      "height": 6,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MossdeepGameCorner",
+      "border_filepath": "data/layouts/Chinatown_BackroomA/border.bin",
+      "blockdata_filepath": "data/layouts/Chinatown_BackroomA/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHINATOWN_BACKROOM_B",
+      "name": "Chinatown_BackroomB_Layout",
+      "width": 12,
+      "height": 6,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MossdeepGameCorner",
+      "border_filepath": "data/layouts/Chinatown_BackroomB/border.bin",
+      "blockdata_filepath": "data/layouts/Chinatown_BackroomB/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHINATOWN_BACKROOM_C",
+      "name": "Chinatown_BackroomC_Layout",
+      "width": 12,
+      "height": 6,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MossdeepGameCorner",
+      "border_filepath": "data/layouts/Chinatown_BackroomC/border.bin",
+      "blockdata_filepath": "data/layouts/Chinatown_BackroomC/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHINATOWN_BACKROOM_D",
+      "name": "Chinatown_BackroomD_Layout",
+      "width": 12,
+      "height": 6,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MossdeepGameCorner",
+      "border_filepath": "data/layouts/Chinatown_BackroomD/border.bin",
+      "blockdata_filepath": "data/layouts/Chinatown_BackroomD/map.bin"
     }
   ]
 }
