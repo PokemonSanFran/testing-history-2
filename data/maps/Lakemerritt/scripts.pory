@@ -1,6 +1,8 @@
 mapscripts Lakemerritt_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+        call(Quest_ShutDownMedicineMan_HideDealer_Script)
         goto(Lakemerritt_MapScripts_OnTransition)
+
     }
 }
 
@@ -32,4 +34,47 @@ script Lakemerritt_InteractWikstrom_Event_Script {
         }
     release
         end
+}
+
+script LakeMerritt_Herb_Dealer_Script{
+    lock
+    faceplayer
+    msgbox(gText_Lakemerritt_HeyManWhatCanI)
+	waitmessage
+	pokemart(HerbDealerShop)
+    msgbox(gText_Lakemerritt_ThanksComeAgain)
+    //PSF TODO script should only proceed to Quest_ShutDownMedicineMan_MakePurchase_Dialogue if the player actually made a purchase
+    goto(Quest_ShutDownMedicineMan_MakePurchase_Dialogue)
+}
+
+mart HerbDealerShop{
+    ITEM_ENERGY_ROOT
+    ITEM_HEAL_POWDER
+}
+
+script Lakemerritt_Interact_HerbBystander_Dialogue{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SHUTDOWNMEDICINEMAN)
+    
+    if(var(VAR_RESULT)){
+        msgbox(gText_Lakemerritt_OhManDidYouHear,MSGBOX_NPC)
+    }else {
+        msgbox(gText_Lakemerritt_ThisGuyIs,MSGBOX_NPC)
+    }
+    end
+}
+
+text gText_Lakemerritt_HeyManWhatCanI{
+    format("hey man what can i get you today")
+}
+
+text gText_Lakemerritt_ThanksComeAgain{
+    format("thanks come again!")
+}
+
+text gText_Lakemerritt_ThisGuyIs{
+    format("this guy has the best herbs, and so much cheaper than the place in Pacifica! I don't think this guy is like totally above board...")
+}
+
+text gText_Lakemerritt_OhManDidYouHear{
+    format("oh man did you hear? the herb guy got shut down. looks like somebody ratted him out for not having a license. now we can only buy from that place in Pacifica!")
 }

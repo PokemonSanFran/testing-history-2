@@ -1233,7 +1233,7 @@ Script_RemoveTint::
 // .include "data/quests/rightingwrongs.inc"
 // .include "data/quests/enterthedragon.inc"
 // .include "data/quests/breaktheinternet.inc"
-// .include "data/quests/shutdownmedicineman.inc"
+.include "data/quests/shutdownmedicineman.inc"
 .include "data/quests/buildingscope.inc"
 // .include "data/quests/nogooddeed.inc"
 .include "data/quests/improvbattling.inc"

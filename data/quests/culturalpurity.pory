@@ -188,7 +188,7 @@ script Quest_CulturalPurity_BackroomD_Interact_Script{
 script Quest_CulturalPurity_Racist_Interact_Script{
     lock
     faceplayer
-returnqueststate(QUEST_CULTURALPURITY)
+    returnqueststate(QUEST_CULTURALPURITY)
 
     switch(var(VAR_RESULT)){
         case QUEST_MENU_SET_REWARD: goto(Quest_CulturalPurity_ObjectSetUp_Script)

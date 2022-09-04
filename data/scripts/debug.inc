@@ -42,16 +42,17 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_CULTURALPURITY
-	warp MAP_CHINATOWN, 15, 19
+	warp MAP_PACIFICA, 30, 16
 	end
 
 
 Debug_Script_2::
+	warp MAP_LAKEMERRITT, 15, 41
 	end
 
 
 Debug_Script_3::
+	questmenu QUEST_MENU_SET_REWARD, QUEST_SHUTDOWNMEDICINEMAN
 	end
 
 

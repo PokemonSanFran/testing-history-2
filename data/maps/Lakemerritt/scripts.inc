@@ -3,6 +3,7 @@ Lakemerritt_MapScripts::
 	.byte 0
 
 Lakemerritt_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_ShutDownMedicineMan_HideDealer_Script
 	goto Lakemerritt_MapScripts_OnTransition
 	return
 
@@ -76,5 +77,54 @@ Lakemerritt_InteractWikstrom_Event_Script_9:
 	goto Lakemerritt_InteractWikstrom_Event_Script_7
 
 
+LakeMerritt_Herb_Dealer_Script::
+	lock
+	faceplayer
+	msgbox gText_Lakemerritt_HeyManWhatCanI
+	waitmessage
+	pokemart HerbDealerShop
+	msgbox gText_Lakemerritt_ThanksComeAgain
+	goto Quest_ShutDownMedicineMan_MakePurchase_Dialogue
+	return
+
+
+	.align 2
+HerbDealerShop:
+	.2byte ITEM_ENERGY_ROOT
+	.2byte ITEM_HEAL_POWDER
+	.2byte ITEM_NONE
+
+Lakemerritt_Interact_HerbBystander_Dialogue::
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_SHUTDOWNMEDICINEMAN
+	compare VAR_RESULT, 0
+	goto_if_ne Lakemerritt_Interact_HerbBystander_Dialogue_2
+	msgbox gText_Lakemerritt_ThisGuyIs, MSGBOX_NPC
+Lakemerritt_Interact_HerbBystander_Dialogue_1:
+	end
+
+Lakemerritt_Interact_HerbBystander_Dialogue_2:
+	msgbox gText_Lakemerritt_OhManDidYouHear, MSGBOX_NPC
+	goto Lakemerritt_Interact_HerbBystander_Dialogue_1
+
+
 Lakemerritt_InteractWikstrom_Event_Script_Text_0:
 	.string "random flavor text about training here$"
+
+gText_Lakemerritt_HeyManWhatCanI::
+	.string "hey man what can i get you today$"
+
+gText_Lakemerritt_ThanksComeAgain::
+	.string "thanks come again!$"
+
+gText_Lakemerritt_ThisGuyIs::
+	.string "this guy has the best herbs, and so\n"
+	.string "much cheaper than the place in\l"
+	.string "Pacifica! I don't think this guy is like\l"
+	.string "totally above board...$"
+
+gText_Lakemerritt_OhManDidYouHear::
+	.string "oh man did you hear? the herb guy got\n"
+	.string "shut down. looks like somebody ratted\l"
+	.string "him out for not having a license. now we\l"
+	.string "can only buy from that place in\l"
+	.string "Pacifica!$"

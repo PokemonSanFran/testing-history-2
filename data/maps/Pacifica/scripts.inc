@@ -6,6 +6,7 @@ Pacifica_MapScripts::
 Pacifica_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call BeachBattle_ObjectVisibility_Script
 	call Quest_CutePokemon_HideMelissaC_Script
+	call Quest_ShutDownMedicineMan_HideBusinessMan_Script
 	return
 
 Pacifica_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
