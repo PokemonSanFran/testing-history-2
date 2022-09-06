@@ -1,4 +1,9 @@
 MaskOff_HideObject_Script::
+	compare VAR_STORYLINE_STATE, STORY_START_TRUE_TIMELINE
+	goto_if_lt MaskOff_HideObject_Script_1
+	return
+
+MaskOff_HideObject_Script_1:
 	setflag FLAG_TEMP_1
 	return
 

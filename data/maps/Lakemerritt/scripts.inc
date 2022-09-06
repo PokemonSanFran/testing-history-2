@@ -4,42 +4,42 @@ Lakemerritt_MapScripts::
 
 Lakemerritt_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_ShutDownMedicineMan_HideDealer_Script
-	goto Lakemerritt_MapScripts_OnTransition
+	call Lakemerritt_ObjectVisibility_Script
 	return
 
 
-Lakemerritt_MapScripts_OnTransition::
+Lakemerritt_ObjectVisibility_Script::
 	setflag FLAG_TEMP_2
-	goto_if_set FLAG_TIMELINE_TRUE, Lakemerritt_MapScripts_OnTransition_9
-Lakemerritt_MapScripts_OnTransition_7:
-	goto_if_set FLAG_TIMELINE_FALSE, Lakemerritt_MapScripts_OnTransition_6
-Lakemerritt_MapScripts_OnTransition_5:
-	compare VAR_STORYLINE_STATE, 25
-	goto_if_lt Lakemerritt_MapScripts_OnTransition_3
-	call Manhunt_HideObject_Script
+	goto_if_set FLAG_TIMELINE_TRUE, Lakemerritt_ObjectVisibility_Script_9
+Lakemerritt_ObjectVisibility_Script_7:
+	goto_if_set FLAG_TIMELINE_FALSE, Lakemerritt_ObjectVisibility_Script_6
+Lakemerritt_ObjectVisibility_Script_5:
+	compare VAR_STORYLINE_STATE, STORY_ASSIGNED_SIEBOLD_QUESTS
+	goto_if_lt Lakemerritt_ObjectVisibility_Script_3
+	call Manhunt_HideGiovanni_Script
 	return
 
-Lakemerritt_MapScripts_OnTransition_1:
+Lakemerritt_ObjectVisibility_Script_1:
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
 	return
 
-Lakemerritt_MapScripts_OnTransition_2:
+Lakemerritt_ObjectVisibility_Script_2:
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
 	return
 
-Lakemerritt_MapScripts_OnTransition_3:
+Lakemerritt_ObjectVisibility_Script_3:
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
 	return
 
-Lakemerritt_MapScripts_OnTransition_6:
-	compare VAR_RUSTURF_TUNNEL_STATE, 6
-	goto_if_lt Lakemerritt_MapScripts_OnTransition_2
-	goto Lakemerritt_MapScripts_OnTransition_5
+Lakemerritt_ObjectVisibility_Script_6:
+	compare VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI
+	goto_if_lt Lakemerritt_ObjectVisibility_Script_2
+	goto Lakemerritt_ObjectVisibility_Script_5
 
-Lakemerritt_MapScripts_OnTransition_9:
-	compare VAR_LILYCOVE_CITY_STATE, 8
-	goto_if_lt Lakemerritt_MapScripts_OnTransition_1
-	goto Lakemerritt_MapScripts_OnTransition_7
+Lakemerritt_ObjectVisibility_Script_9:
+	compare VAR_MASK_OFF_STATE, DEFEATED_MASK_OFF_GIOVANNI
+	goto_if_lt Lakemerritt_ObjectVisibility_Script_1
+	goto Lakemerritt_ObjectVisibility_Script_7
 
 
 Lakemerritt_InteractWikstrom_Event_Script::

@@ -1,13 +1,4 @@
 mapscripts Marin_EliteHome_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
-        goto(Marin_EliteHome_OnTransition)
-    }
-}
-
-script Marin_EliteHome_OnTransition {
-    if (var(VAR_STORYLINE_STATE) < 100){//If player is not in the true timeline, Siebold is not in their home
-        call(MaskOff_HideObject_Script) 
-    }
 }
 
 script Marin_EliteHome_PictureFrame_Dialogue {

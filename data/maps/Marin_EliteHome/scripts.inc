@@ -1,20 +1,5 @@
 Marin_EliteHome_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Marin_EliteHome_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
-
-Marin_EliteHome_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Marin_EliteHome_OnTransition
-	return
-
-
-Marin_EliteHome_OnTransition::
-	compare VAR_STORYLINE_STATE, 100
-	goto_if_lt Marin_EliteHome_OnTransition_1
-	return
-
-Marin_EliteHome_OnTransition_1:
-	call MaskOff_HideObject_Script
-	return
 
 
 Marin_EliteHome_PictureFrame_Dialogue::

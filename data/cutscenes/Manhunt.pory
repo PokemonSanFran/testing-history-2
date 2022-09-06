@@ -1,5 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const SABRINA = 2
+const FLAG_HIDE_GIOVANNI = FLAG_TEMP_1
 
 script Manhunt_TowerObjectSetUp_Script {
     setobjectxy(SABRINA,8,6)
@@ -7,8 +8,8 @@ script Manhunt_TowerObjectSetUp_Script {
     setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_UP)
 }
 
-script Manhunt_HideObject_Script {
-    setflag(FLAG_TEMP_1)
+script Manhunt_HideGiovanni_Script {
+    setflag(FLAG_HIDE_GIOVANNI)
 }
 
 script Manhunt_Assignment_Dialogue {

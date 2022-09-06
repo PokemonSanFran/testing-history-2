@@ -1,8 +1,11 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const GIOVANNI = 1
+const FLAG_HIDE_SIEBOLD = FLAG_TEMP_1
 
 script MaskOff_HideObject_Script {
-    setflag(FLAG_TEMP_1) //Hide Siebold in their home
+    if (var(VAR_STORYLINE_STATE) < STORY_START_TRUE_TIMELINE){
+        setflag(FLAG_HIDE_SIEBOLD)
+    }
 }
 
 script MaskOff_TransformObject_Script {

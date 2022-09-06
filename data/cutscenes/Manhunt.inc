@@ -5,7 +5,7 @@ Manhunt_TowerObjectSetUp_Script::
 	return
 
 
-Manhunt_HideObject_Script::
+Manhunt_HideGiovanni_Script::
 	setflag FLAG_TEMP_1
 	return
 
