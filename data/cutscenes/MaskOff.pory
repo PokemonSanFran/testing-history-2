@@ -16,18 +16,20 @@ script MaskOff_TransformObject_Script {
 
 script MaskOff_QuestH_Dialogue {
     faceplayer
-        if (var(VAR_LILYCOVE_CITY_STATE) == 1){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
-                callnative(DrawMugshot)
-                msgbox(gText_MaskOff_WhatCanYou)
-                callnative(ClearMugshot)
-                addvar(VAR_LILYCOVE_CITY_STATE,1)
-        }
+
+    if (var(VAR_LILYCOVE_CITY_STATE) == 1){
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+            callnative(DrawMugshot)
+            msgbox(gText_MaskOff_WhatCanYou)
+            callnative(ClearMugshot)
+            addvar(VAR_LILYCOVE_CITY_STATE,1)
+    }
     msgbox(gText_MaskOff_IRememberMeeting)
-        msgbox(gText_MaskOff_HeSaidEvenThen)
-        msgbox(gText_MaskOff_IThinkThatAccident)
-        closemessage
+    msgbox(gText_MaskOff_HeSaidEvenThen)
+    msgbox(gText_MaskOff_IThinkThatAccident)
+    closemessage
 }
+
 script MaskOff_QuestF_Dialogue {
     faceplayer
         if (var(VAR_LILYCOVE_CITY_STATE) == 2){

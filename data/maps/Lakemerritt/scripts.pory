@@ -11,12 +11,14 @@ script Lakemerritt_ObjectVisibility_Script {
     setflag(FLAG_HIDE_BIANCA)
 
         //if on the last stage of "MaskOff", OR the last stage of "Manhunt", OR before the raid on the Naval Base, then show Giovanni. otherwise, hide
+        setvar(VAR_OBJ_GFX_ID_1,OBJ_EVENT_GFX_ARCHIE)
+
         if (flag(FLAG_TIMELINE_TRUE) && var(VAR_MASK_OFF_STATE) < DEFEATED_MASK_OFF_GIOVANNI){
-            setvar(VAR_OBJ_GFX_ID_1,OBJ_EVENT_GFX_ARCHIE)
+            return
         } elif (flag(FLAG_TIMELINE_FALSE) && var(VAR_MANHUNT_STATE) < DEFEATED_MANHUNT_GIOVANNI){
-            setvar(VAR_OBJ_GFX_ID_1,OBJ_EVENT_GFX_ARCHIE)
-        } elif (var(VAR_STORYLINE_STATE) < STORY_ASSIGNED_SIEBOLD_QUESTS){ 
-            setvar(VAR_OBJ_GFX_ID_1,OBJ_EVENT_GFX_ARCHIE)
+            return
+        } elif (var(VAR_STORYLINE_STATE) < STORY_EAST_SANFRAN_COMPLETE){
+            return
         } else {
             call(Manhunt_HideGiovanni_Script)
         }
