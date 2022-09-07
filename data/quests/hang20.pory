@@ -1,0 +1,191 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const SURFER = 6
+//gText_Hang20_
+//Quest_Hang20_
+
+script Quest_Hang20_ResetCount_Script{
+    setvar(VAR_DEFEATED_PACIFICA_COUNT,0)
+    return
+}
+
+script Quest_Hang20_Debug_Script{
+    addvar(VAR_TEMP_0,1)
+    setvar(VAR_DEFEATED_PACIFICA_COUNT,47)
+
+    //PSF TODO this count needs to reset if the user
+    //changes the pokemon in their party
+    //uses a healing item
+    callnative(CountDefeatedPacifica)
+}
+
+script Quest_Hang20_Interact_Script{
+    lock
+        faceplayer
+        returnqueststate(QUEST_HANG20)
+
+        switch(var(VAR_RESULT)){
+            case QUEST_MENU_SET_ACTIVE: goto(Quest_Hang20_Active_Dialogue)
+            case QUEST_MENU_SET_REWARD: goto(Quest_Hang20_Reward_Dialogue)
+            case QUEST_MENU_COMPLETE_QUEST: goto(Quest_Hang20_Completed_Dialogue)
+            default: goto(Quest_Hang20_StartQuest_Dialogue)
+        }
+}
+
+script Quest_Hang20_CheckPreCompletion{
+    if (var(VAR_DEFEATED_PACIFICA_COUNT) > 29){
+        goto(Quest_Hang20_Secret_Dialogue)
+    }
+    return
+}
+
+script Quest_Hang20_StartQuest_Dialogue{
+
+    call(Quest_Hang20_CheckPreCompletion)
+
+    msgbox(gText_Hang20_HeyYouNewHere)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Hang20_YeahOrre)
+    callnative(ClearMugshot)
+    
+    msgbox(gText_Hang20_OhDamnThatsLandLocked)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Hang20_WereTouchingTheSea)
+    callnative(ClearMugshot)
+
+    msgbox(gText_Hang20_NoWaves)
+    msgbox(gText_Hang20_DoYouWannaLearn)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Hang20_OhIveNever)
+    callnative(ClearMugshot)
+
+    msgbox(gText_Hang20_ItsToughSoWeGotta)
+    msgbox(gText_Hang20_WellTeachYouToSurfIf)
+
+    closemessage
+    startquest(QUEST_HANG20)
+    release
+    end
+}
+
+script Quest_Hang20_Active_Dialogue{
+    if (var(VAR_DEFEATED_PACIFICA_COUNT) > 28){
+        msgbox(gText_Hang20_AlmostThere,MSGBOX_NPC)
+    }elif (var(VAR_DEFEATED_PACIFICA_COUNT) > 20){
+        msgbox(gText_Hang20_MaybeYoureTough,MSGBOX_NPC)
+    }elif (var(VAR_DEFEATED_PACIFICA_COUNT) > 10){
+        msgbox(gText_Hang20_SawYouKickingAss,MSGBOX_NPC)
+    }else{
+        msgbox(gText_Hang20_WellTeachYouToSurfIf,MSGBOX_NPC)
+    }
+    end
+}
+
+script Quest_Hang20_Reward_Dialogue{
+    msgbox(gText_Hang20_DamnYouAreTough)
+    msgbox(gText_Hang20_AlthoughIAlreadyKnew)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_Hang20_WaitYouKnew)
+    callnative(ClearMugshot)
+
+    msgbox(gText_Hang20_AnywaysWeGotYouABoard)
+    giveitem(ITEM_SOOT_SACK,1)
+
+    msgbox(gText_Hang20_OkaySoHeresHow)
+    fadescreen(FADE_TO_BLACK)
+    delay(32)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox(gText_Hang20_YoureANatural)
+    completequest(QUEST_HANG20)
+    release
+    end
+}
+
+script Quest_Hang20_Completed_Dialogue{
+    msgbox(gText_Hang20_HowsTheWaves,MSGBOX_NPC)
+    end
+}
+
+script Quest_Hang20_Secret_Dialogue{
+    msgbox(gText_Hang20_OhShitYoure) 
+    msgbox(gText_Hang20_YoureSuperTough)
+    giveitem(ITEM_SOOT_SACK,1)
+    msgbox(gText_Hang20_JustWalkUp)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_HANG20)
+    release
+    end
+
+}
+text gText_Hang20_HeyYouNewHere{
+    format("Hey you new here? You don't look like you're from here.")
+}
+text gText_Hang20_YeahOrre{
+    format("Yeah, I'm from Oree.")
+}
+text gText_Hang20_OhDamnThatsLandLocked{
+    format("Oh damn, that's land locked, right?")
+}
+text gText_Hang20_WereTouchingTheSea{
+    format("We're touching the sea, but not anything you can surf in, unfortunately.")
+}
+text gText_Hang20_NoWaves{
+    format("No waves? Damn that sucks!")
+}
+text gText_Hang20_DoYouWannaLearn{
+    format("do you wanna learn to surf")
+}
+text gText_Hang20_OhIveNever{
+    format("oh ive never done it but it looks cool")
+}
+text gText_Hang20_ItsToughSoWeGotta{
+    format("its tough, so we gotta make sure you're tough enough to handle it")
+}
+text gText_Hang20_WellTeachYouToSurfIf{
+    format("we'll teach you to surf if you can defeat 30 pokemon here in a row. no healing, no changing pokemon, no leaving.")
+}
+text gText_Hang20_AlmostThere{
+    format("almost there, keep at it!")
+}
+text gText_Hang20_MaybeYoureTough{
+    format("maybe you're tough after al!")
+}
+text gText_Hang20_SawYouKickingAss{
+    format("saw you kicking ass out there")
+}
+text gText_Hang20_DamnYouAreTough{
+    format("damn you are tough")
+}
+text gText_Hang20_AlthoughIAlreadyKnew{
+    format("although i already knew that. you're {PLAYER}")
+}
+text gText_Hang20_WaitYouKnew{
+    format("wait you knew who i was")
+}
+text gText_Hang20_AnywaysWeGotYouABoard{
+    format("anyways, we got you a surfboard. figured you didn't have one")
+}
+text gText_Hang20_OkaySoHeresHow{
+    format("okay so heres how you surf....")
+}
+text gText_Hang20_YoureANatural{
+    format("you're a natural! you're ready to shred your way around the region.")
+}
+text gText_Hang20_HowsTheWaves{
+    format("how's the waves?")
+}
+text gText_Hang20_OhShitYoure{
+    format("oh shit you're {PLAYER}")
+}
+text gText_Hang20_YoureSuperTough{
+    format("you're super tough. do you surf? we've got an extra board.")
+}
+text gText_Hang20_JustWalkUp{
+    format("just walk up to the waves and press {A_BUTTON}")
+}

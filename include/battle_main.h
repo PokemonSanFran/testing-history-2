@@ -74,6 +74,7 @@ void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk);
 bool32 IsWildMonSmart(void);
 void CountDefeatedGlameow(void);
 void CountDefeatedGardenMons(void);
+void CountDefeatedPacifica(void);
 
 extern struct MultiPartnerMenuPokemon gMultiPartnerParty[MULTI_PARTY_SIZE];
 

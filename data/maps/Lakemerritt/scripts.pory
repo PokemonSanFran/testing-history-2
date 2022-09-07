@@ -1,5 +1,3 @@
-const FLAG_HIDE_BIANCA = FLAG_TEMP_2
-
 mapscripts Lakemerritt_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(Quest_ShutDownMedicineMan_HideDealer_Script)
@@ -8,8 +6,7 @@ mapscripts Lakemerritt_MapScripts {
 }
 
 script Lakemerritt_ObjectVisibility_Script {
-    setflag(FLAG_HIDE_BIANCA)
-
+        call(Manhunt_HideBianca_Script)
         //if on the last stage of "MaskOff", OR the last stage of "Manhunt", OR before the raid on the Naval Base, then show Giovanni. otherwise, hide
         setvar(VAR_OBJ_GFX_ID_1,OBJ_EVENT_GFX_ARCHIE)
 

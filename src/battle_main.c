@@ -5017,6 +5017,7 @@ static void HandleEndTurn_BattleWon(void)
     }
     else
     {
+        CountDefeatedPacifica();
         CountDefeatedGlameow();
         CountDefeatedGardenMons();
         gBattlescriptCurrInstr = BattleScript_PayDayMoneyAndPickUpItems;
@@ -5111,6 +5112,26 @@ void CountDefeatedGlameow(void){
     }
 
     VarSet(VAR_DEFEATED_GLAMEOW_COUNT,defeatedGlameowCount);
+}
+
+void CountDefeatedPacifica(void){
+    /*
+    If you're in Pacifica AND its not a Trainer battle, then increment the defeated count by one
+    If Hang 20 quest is active AND the count is more than 29, then go to the reward state
+*/
+    u8 defeatedPacificaCount = VarGet(VAR_DEFEATED_PACIFICA_COUNT);
+
+    if (GetCurrentMap() == MAP_NUM(PACIFICA) && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))){
+        //defeatedPacificaCount++;
+        defeatedPacificaCount = 30;
+    }
+
+    if ((defeatedPacificaCount > 29) && QuestMenu_GetSetQuestState(QUEST_HANG20,FLAG_GET_ACTIVE)){
+        QuestMenu_GetSetQuestState(QUEST_HANG20,FLAG_SET_REWARD);
+        QuestMenu_GetSetQuestState(QUEST_HANG20,FLAG_REMOVE_ACTIVE);
+    }
+
+    VarSet(VAR_DEFEATED_PACIFICA_COUNT,defeatedPacificaCount);
 }
 
 static void HandleEndTurn_RanFromBattle(void)

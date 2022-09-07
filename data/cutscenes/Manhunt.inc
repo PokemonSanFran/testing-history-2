@@ -10,12 +10,17 @@ Manhunt_HideGiovanni_Script::
 	return
 
 
+Manhunt_HideBianca_Script::
+	setflag FLAG_TEMP_2
+	return
+
+
 Manhunt_Assignment_Dialogue::
 	lock
-	compare VAR_RUSTURF_TUNNEL_STATE, 0
+	compare VAR_MANHUNT_STATE, 0
 	goto_if_ne Manhunt_Assignment_Dialogue_2
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_SABRINA
+	addvar VAR_MANHUNT_STATE, 1
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_GoFind, MSGBOX_NPC
 	callnative ClearMugshot
@@ -34,39 +39,39 @@ Manhunt_Cherie_Battle_Script::
 	clearflag FLAG_TEMP_2
 	addobject 2
 	applymovement 2, Manhunt_WalkInNewspaper
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_HeyWereTrying, MSGBOX_NPC
 	callnative ClearMugshot
 	msgbox gText_Manhunt_YeahIWrote
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_Blessed
 	callnative ClearMugshot
 	msgbox gText_Manhunt_WaitYoureThatKid
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_ThatsUs
 	callnative ClearMugshot
 	msgbox gText_Manhunt_IShouldHaveRecognized
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_HeyWeJustWant
 	callnative ClearMugshot
 	msgbox gText_Manhunt_AsAMatterOfFact
 	multi_fixed_2_vs_1 TRAINER_RICK, gText_Manhunt_PleaseDontHurtUs, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	addvar VAR_MANHUNT_STATE, 1
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_StartTalking
 	callnative ClearMugshot
 	msgbox gText_Manhunt_ISwearIDontKnow
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_IKnowYouKnow
 	callnative ClearMugshot
 	msgbox gText_Manhunt_TheOnlyLeadIHave
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_ThatsAStart
 	callnative ClearMugshot
@@ -88,29 +93,29 @@ Manhunt_Teodoro_Battle_Script::
 	addobject 2
 	applymovement 2, Manhunt_WalkIntoConsulting
 	msgbox gText_Manhunt_WhatAreSomeKids, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_YouGonnaMakeThisEasy
 	callnative ClearMugshot
 	msgbox gText_Manhunt_WhatTheHellAreYou
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_WeKnowYoureWorkingWith
 	callnative ClearMugshot
 	msgbox gText_Manhunt_YeahIDidSomeWork
 	multi_fixed_2_vs_1 TRAINER_ALLEN, gText_Manhunt_DamnPunks, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	addvar VAR_MANHUNT_STATE, 1
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_WhatDoYouKnow
 	callnative ClearMugshot
 	msgbox gText_Manhunt_LookIDontKnowWhat
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_GoodInTheWorld
 	callnative ClearMugshot
 	msgbox gText_Manhunt_TheOnlyWeirdThing
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_ThatsInPresidio
 	callnative ClearMugshot
@@ -133,35 +138,35 @@ Manhunt_Dudley_Battle_Script::
 	applymovement 2, Manhunt_WalkIntoBallShop
 	applymovement 1, Manhunt_ExclaimAndTurn
 	msgbox gText_Manhunt_HowCanIHelp, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_CutTheShit
 	callnative ClearMugshot
 	msgbox gText_Manhunt_WoahTheChampion
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_WhatDoYouKnow
 	callnative ClearMugshot
 	msgbox gText_Manhunt_YeahTheyreOneOf
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_BecauseWereBusting
 	callnative ClearMugshot
 	msgbox gText_Manhunt_WhatDidTheyBuy
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_ImSureWeCanHelp
 	callnative ClearMugshot
 	msgbox gText_Manhunt_WoahWaitHold
 	multi_fixed_2_vs_1 TRAINER_TIANA, gText_Manhunt_ShitMan, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_MANHUNT_STATE, 1
 	msgbox gText_Manhunt_ShitMan
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_AndWereDoingOurs
 	callnative ClearMugshot
 	msgbox gText_Manhunt_TheyBoughtABunch
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_WhatElse
 	callnative ClearMugshot
@@ -191,13 +196,13 @@ Manhunt_Matthew_Battle_Script::
 	applymovement 2, Manhunt_WalkOntoRoute
 	waitmovement 0
 	msgbox gText_Manhunt_OhDamnLooksLike
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_WhosHe
 	callnative ClearMugshot
 	msgbox gText_Manhunt_YeahToldMeYoud
 	multi_fixed_2_vs_1 TRAINER_HOPE, gText_Manhunt_IFeelBadForAll, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_MANHUNT_STATE, 1
 	msgbox gText_Manhunt_IFeelBadForAll, MSGBOX_AUTOCLOSE
 	applymovement 2, Manhunt_LeaveRoute
 	waitmovement 0
@@ -213,15 +218,15 @@ Manhunt_Encounter_Giovanni_Dialogue::
 	addobject 2
 	applymovement 2, Manhunt_ApproachAtLake
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_Manhunt_StopHurtingPeople, MSGBOX_NPC
 	callnative ClearMugshot
 	lock
 	multi_fixed_2_vs_1 TRAINER_MATT, gText_Manhunt_IfIDontHave, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
+	addvar VAR_MANHUNT_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_Manhunt_IWontFightYouAnyFurther
 	compare VAR_STORYLINE_STATE, 47
@@ -230,10 +235,10 @@ Manhunt_Encounter_Giovanni_Dialogue_1:
 	callnative ClearMugshot
 	pokenavcall Manhunt_Encounter_Giovanni_Dialogue_Text_0
 	waitmessage
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_IllBeAtTheEntrance
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Manhunt_WhatWaitUhOkay
 	callnative ClearMugshot
@@ -248,12 +253,11 @@ Manhunt_Encounter_Giovanni_Dialogue_2:
 Manhunt_MissionComplete_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement 0
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 0
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_RUSTURF_TUNNEL_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_SABRINA
+	addvar VAR_MANHUNT_STATE, 1
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_GoodWork
 	callnative ClearMugshot
