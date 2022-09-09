@@ -111,6 +111,13 @@
       "elevation": 0,
       "dest_map": "MAP_PACIFICA_GEMHOUSE",
       "dest_warp_id": 0
+    },
+    {
+      "x": 35,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_PACIFICA_UNION_HQ",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
@@ -140,6 +147,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "Quest_Hang20_Debug_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "Quest_WarehouseWarfare_CallPlayer_Dialogue"
     }
   ],
   "bg_events": [

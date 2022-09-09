@@ -61,7 +61,7 @@ script Debug_CheatStart{
 }
 
 script Debug_Script_1{
-    warp(MAP_PACIFICA,21,5)
+    warp(MAP_PACIFICA,35,28)
     end
 }
 script Debug_Script_2{

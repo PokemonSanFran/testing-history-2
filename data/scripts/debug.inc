@@ -42,7 +42,7 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	warp MAP_PACIFICA, 21, 5
+	warp MAP_PACIFICA, 35, 28
 	end
 
 
