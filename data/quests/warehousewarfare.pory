@@ -1,0 +1,183 @@
+//script Quest_WarehouseWarfare_
+//text gText_WarehouseWarfare_
+
+script Quest_WarehouseWarfare_CheckBodegaProgress_Script{
+
+    setvar(VAR_TEMP_0,0)
+
+    call(Quest_WarehouseWarfare_CheckBodegaProgress1_Script)
+    call(Quest_WarehouseWarfare_CheckBodegaProgress2_Script)
+    call(Quest_WarehouseWarfare_CheckBodegaProgress3_Script)
+    call(Quest_WarehouseWarfare_CheckBodegaProgress4_Script)
+    call(Quest_WarehouseWarfare_CheckBodegaProgress5_Script)
+    call(Quest_WarehouseWarfare_CheckBodegaProgress6_Script)
+
+    if (var(VAR_TEMP_0) > 5){
+        call(Quest_WarehouseWarfare_CallPlayer_Dialogue)
+    }
+}
+
+script Quest_WarehouseWarfare_CheckBodegaProgress1_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_4)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_5)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+script Quest_WarehouseWarfare_CheckBodegaProgress2_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_6)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_7)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_8)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_9)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_10)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+script Quest_WarehouseWarfare_CheckBodegaProgress3_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_11)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_12)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+script Quest_WarehouseWarfare_CheckBodegaProgress4_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_13)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_14)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+script Quest_WarehouseWarfare_CheckBodegaProgress5_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_15)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_16)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+script Quest_WarehouseWarfare_CheckBodegaProgress6_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_17)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+script Quest_WarehouseWarfare_CallPlayer_Dialogue{
+    lock
+    playse(SE_POKENAV_CALL)
+    msgbox(gText_WarehouseWarfare_HeyIsThisPlayer)
+    msgbox(gText_WarehouseWarfare_WeReallyAppreciate)
+    msgbox(gText_WarehouseWarfare_WedLoveToWorkWith)
+    closemessage
+
+    startquest(QUEST_WAREHOUSEWARFARE)
+    release
+    end
+}
+
+script Quest_WarehouseWarfare_Interact_Event_Script{
+    lock
+    faceplayer
+
+    	returnqueststate(QUEST_WAREHOUSEWARFARE)
+
+	    switch(var(VAR_RESULT)){
+	        case QUEST_MENU_SET_ACTIVE: goto(Quest_WarehouseWarfare_CheckSubquestProgress_Script)
+	        case QUEST_MENU_SET_REWARD: goto(Quest_WarehouseWarfare_Reward_Dialogue)
+	        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_WarehouseWarfare_Complete_Dialogue)
+	        default: goto(Quest_WarehouseWarfare_Welcome_Dialogue)
+	}
+}
+
+script Quest_WarehouseWarfare_CheckSubquestProgress_Script{
+}
+
+script Quest_WarehouseWarfare_Welcome_Dialogue{
+    msgbox(gText_WarehouseWarfare_WelcomeTo,MSGBOX_NPC)
+    end
+}
+
+script Quest_WarehouseWarfare_Reward_Dialogue{
+}
+
+script Quest_WarehouseWarfare_Complete_Dialogue{
+}

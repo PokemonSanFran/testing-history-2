@@ -1,3 +1,8 @@
+Quest_Hang20_ResetCount_Script::
+	setvar VAR_DEFEATED_PACIFICA_COUNT, 0
+	return
+
+
 Quest_Hang20_Debug_Script::
 	addvar VAR_TEMP_0, 1
 	setvar VAR_DEFEATED_PACIFICA_COUNT, 47
@@ -61,8 +66,8 @@ Quest_Hang20_StartQuest_Dialogue::
 	msgbox gText_Hang20_ItsToughSoWeGotta
 	msgbox gText_Hang20_WellTeachYouToSurfIf
 	closemessage
-	release
 	startquest QUEST_HANG20
+	release
 	end
 
 

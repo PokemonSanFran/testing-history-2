@@ -1288,7 +1288,7 @@ Script_RemoveTint::
 // .include "data/quests/rockcollector.inc"
 .include "data/quests/hang20.inc"
 // .include "data/quests/allthatglittersmightbegold.inc"
-// .include "data/quests/unknownfishingquest.inc"
+.include "data/quests/unknownfishingquest.inc"
 // .include "data/quests/hiddengrottomapping.inc"
 // .include "data/quests/hiddengrottomapping2.inc"
 // .include "data/quests/ultrawormholeresearch.inc"
@@ -1307,7 +1307,7 @@ Script_RemoveTint::
 // .include "data/quests/taxicabturnaroundland.inc"
 // .include "data/quests/persuasivepassenger.inc"
 // .include "data/quests/bodegaburnout.inc"
-// .include "data/quests/warehousewarfare.inc"
+.include "data/quests/warehousewarfare.inc"
 // .include "data/quests/restoretotheirformerglory.inc"
 
 ## PSF MAPS
@@ -1404,3 +1404,5 @@ Script_RemoveTint::
 	.include "data/maps/Chinatown_BackroomC/scripts.inc"
 
 	.include "data/maps/Chinatown_BackroomD/scripts.inc"
+
+	.include "data/maps/Pacifica_UnionHQ/scripts.inc"

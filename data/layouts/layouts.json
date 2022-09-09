@@ -5690,6 +5690,16 @@
       "secondary_tileset": "gTileset_MossdeepGameCorner",
       "border_filepath": "data/layouts/Chinatown_BackroomD/border.bin",
       "blockdata_filepath": "data/layouts/Chinatown_BackroomD/map.bin"
+    },
+    {
+      "id": "LAYOUT_PACIFICA_UNION_HQ",
+      "name": "Pacifica_UnionHQ_Layout",
+      "width": 6,
+      "height": 5,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/Pacifica_UnionHQ/border.bin",
+      "blockdata_filepath": "data/layouts/Pacifica_UnionHQ/map.bin"
     }
   ]
 }
