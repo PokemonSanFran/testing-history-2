@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const JASMINE = 5
-const FLAG_HIDE_JASMINE = FLAG_TEMP_4
+const FLAG_HIDE_JASMINE = FLAG_TEMP_5
 //script Quest_BerrySustaiability_
 //script gText_BerrySustaiability_
 

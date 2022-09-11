@@ -4,6 +4,7 @@ Berkeley_MapScripts::
 
 Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call swagbag2_SetUp_Object_Script
+	call Quest_GetTheBand_HideBikerA_Script
 	return
 
 
@@ -32,3 +33,20 @@ Berkeley_Stan_PostBattle_Script_2:
 	msgbox gText_WallaceArmy_PostBattlePlaceholder1
 	goto Berkeley_Stan_PostBattle_Script_1
 
+
+Berkeley_Biker_Interact_Script::
+	msgbox gText_Berkeley_PlaceholderBiker, MSGBOX_NPC
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_GETTHEBANDBACKTOGETHER
+	compare VAR_RESULT, 0
+	goto_if_ne Berkeley_Biker_Interact_Script_2
+Berkeley_Biker_Interact_Script_1:
+	end
+
+Berkeley_Biker_Interact_Script_2:
+	goto Quest_GetTheBand_Interact_BikerA_Dialogue
+	goto Berkeley_Biker_Interact_Script_1
+
+
+gText_Berkeley_PlaceholderBiker::
+	.string "i am a biker, and this is placeholder\n"
+	.string "text.$"

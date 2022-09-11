@@ -1074,8 +1074,8 @@ sub_quest(
 	gText_Quest_DexCompletion_Sub1_Name,
 	gText_Quest_DexCompletion_Sub1_Desc,
 	gText_Quest_DexCompletion_Sub1_Map,
-	OBJ_EVENT_GFX_TUBER_M,
-	OBJECT,
+    ITEM_OVAL_CHARM,
+    ITEM,
 	sText_Completed
 ),
 sub_quest(
@@ -1083,8 +1083,8 @@ sub_quest(
 	gText_Quest_DexCompletion_Sub2_Name,
 	gText_Quest_DexCompletion_Sub2_Desc,
 	gText_Quest_DexCompletion_Sub2_Map,
-	OBJ_EVENT_GFX_BEAUTY,
-	OBJECT,
+    ITEM_SHINY_CHARM,
+    ITEM,
 	sText_Completed
 ),
 };

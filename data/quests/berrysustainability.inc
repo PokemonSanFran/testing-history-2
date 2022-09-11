@@ -4,7 +4,7 @@ Quest_BerrySustaiability_HideLeader_Script::
 	return
 
 Quest_BerrySustaiability_HideLeader_Script_1:
-	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_5
 	return
 
 

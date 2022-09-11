@@ -1,11 +1,12 @@
-HowDoWeGetHome_HideObject_Script::
+HowDoWeGetHome_ObjectVisibility_Script::
 	setflag FLAG_TEMP_1
+	compare VAR_DOGPATCH_STATE, PRE_HOW_DO_WE_GET_HOME
+	goto_if_gt HowDoWeGetHome_ObjectVisibility_Script_1
 	return
 
-
-HowDoWeGetHome_ObjectCleanUp_Script::
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
+HowDoWeGetHome_ObjectVisibility_Script_1:
+	setflag FLAG_HIDE_MADISON
+	call HowDoWeGetHome_ChangeCrowdMovementType_Script
 	return
 
 

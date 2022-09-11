@@ -7,6 +7,7 @@ mapscripts Marin_MapScripts {
         call(Marin_HideBianca_Script)
         call(Marin_HideLiidia_Script)
         call(Quest_BerrySustaiability_HideLeader_Script)
+        call(Quest_GetTheBand_HideBikerD_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -76,6 +77,21 @@ script Marin_Stan_PostBattle_Script{
 
     release
         end
+}
+
+script Marin_Biker_Interact_Script{
+    msgbox(gText_Marin_PlaceholderBiker,MSGBOX_NPC)
+
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_GETTHEBANDBACKTOGETHER)
+
+    if(var(VAR_RESULT)){
+        goto(Quest_GetTheBand_Interact_BikerD_Dialogue)
+    }
+    end
+}
+
+text gText_Marin_PlaceholderBiker{
+    format("i am a biker, and this is placeholder text.")
 }
 
 text gText_Marin_TheDoorIsLocked{

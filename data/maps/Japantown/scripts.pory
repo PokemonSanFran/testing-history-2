@@ -1,6 +1,7 @@
 mapscripts Japantown_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(Quest_HybridCulture_HideLeader_Script)
+        call(Quest_GetTheBand_HideBikerE_Script)
     }
     MAP_SCRIPT_ON_LOAD{
        call(Quest_ArtisanBalls3_ChangeDoorMetatile_Script)   
@@ -12,6 +13,21 @@ script Japantown_FashionDesigner_Script{
         subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_HYBRIDCULTURE, SUB_QUEST_2)
         call(Quest_HybridCulture_CheckSubquests_Script)
         end
+}
+
+script Japantown_Biker_Interact_Script{
+    msgbox(gText_Japantown_PlaceholderBiker,MSGBOX_NPC)
+
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_GETTHEBANDBACKTOGETHER)
+
+    if(var(VAR_RESULT)){
+        goto(Quest_GetTheBand_Interact_BikerE_Dialogue)
+    }
+    end
+}
+
+text gText_Japantown_PlaceholderBiker{
+    format("i am a biker, and this is placeholder text.")
 }
 
 text gText_Japantown_ImAFashion{

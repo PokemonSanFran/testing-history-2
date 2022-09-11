@@ -1260,7 +1260,7 @@ Script_RemoveTint::
 // .include "data/quests/unknownclairquestb.inc"
 // .include "data/quests/contractorporygon.inc"
 .include "data/quests/angeldelivery.inc"
-// .include "data/quests/getthebandbacktogether.inc"
+.include "data/quests/getthebandbacktogether.inc"
 // .include "data/quests/foodtruckbureacracy.inc"
 // .include "data/quests/detectiveariana.inc"
 // .include "data/quests/unknownbruceleequest.inc"
@@ -1268,7 +1268,7 @@ Script_RemoveTint::
 // .include "data/quests/esports.inc"
 .include "data/quests/cutepokemon.inc"
 .include "data/quests/wallacearmy.inc"
-// .include "data/quests/dexcompletion.inc"
+.include "data/quests/dexcompletion.inc"
 // .include "data/quests/cablecardancing.inc"
 // .include "data/quests/kitchenvolunteering.inc"
 .include "data/quests/artisanballs1.inc"
@@ -1406,3 +1406,5 @@ Script_RemoveTint::
 	.include "data/maps/Chinatown_BackroomD/scripts.inc"
 
 	.include "data/maps/Pacifica_UnionHQ/scripts.inc"
+
+	.include "data/maps/Berkeley_Research/scripts.inc"

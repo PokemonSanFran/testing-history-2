@@ -61,15 +61,19 @@ script Debug_CheatStart{
 }
 
 script Debug_Script_1{
-    warp(MAP_PACIFICA,35,28)
+    warp(MAP_DOGPATCH,2,21)
     end
 }
 script Debug_Script_2{
-    warp(MAP_LAKEMERRITT,15,41)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_ANGELDELIVERY)
     end
 }
 script Debug_Script_3{
-    questmenu(QUEST_MENU_SET_REWARD,QUEST_SHUTDOWNMEDICINEMAN)
+    setvar(VAR_TEMP_0,5)
+
+    if (var(VAR_TEMP_0) > 4){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_GETTHEBANDBACKTOGETHER)
+    }
     end
 }
 script Debug_Script_4{
@@ -79,16 +83,9 @@ script Debug_Script_5{
     end
 }
 script Debug_Script_6{
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CUTEPOKEMON,SUB_QUEST_1)
     end
 }
 script Debug_Script_7{
-    setflag(FLAG_BADGE01_GET)
-    setflag(FLAG_BADGE02_GET)
-    setflag(FLAG_BADGE03_GET)
-    setflag(FLAG_BADGE04_GET)
-    setflag(FLAG_BADGE05_GET)
-    setflag(FLAG_BADGE06_GET)
     end
 }
 script Debug_Script_8{

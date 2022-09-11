@@ -6,6 +6,11 @@ WarehouseRave_SetUpRave_Script::
 
 
 WarehouseRave_HideObject_Script::
+	compare VAR_WAREHOUSE_RAVE_STATE, DEFEATED_KOGA_OAKLAND
+	goto_if_ne WarehouseRave_HideObject_Script_1
+	return
+
+WarehouseRave_HideObject_Script_1:
 	setflag FLAG_TEMP_1
 	return
 
@@ -20,7 +25,7 @@ WarehouseRave_ControlExits_Script::
 	switch VAR_WAREHOUSE_RAVE_STATE
 	case SAVE_KOGA_OAKLAND, WarehouseRave_ControlExits_Script_2
 	case DEFEATED_KOGA_OAKLAND, WarehouseRave_ControlExits_Script_3
-	case 4, WarehouseRave_ControlExits_Script_4
+	case TOLD_ARCHER_ABOUT_KOGA, WarehouseRave_ControlExits_Script_4
 	return
 
 WarehouseRave_ControlExits_Script_2:
@@ -104,7 +109,7 @@ WarehouseRave_Intro_Dialogue::
 	msgbox gText_WarehouseRave_HasInstructed
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_FORTREE_CITY_STATE, 1
+	addvar VAR_WAREHOUSE_RAVE_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, WarehouseRave_WalkToBattle
 	waitmovement 0
 	call Common_EventScript_SaveGame
@@ -133,7 +138,7 @@ WarehouseRave_Battle_Script::
 
 WarehouseRave_PostBattle_Script::
 	lock
-	addvar VAR_FORTREE_CITY_STATE, 1
+	addvar VAR_WAREHOUSE_RAVE_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_IFailedToKill
@@ -215,7 +220,7 @@ WarehouseRave_OutsideWarehouse_Dialogue_1:
 	waitmovement 0
 	removeobject 1
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_FORTREE_CITY_STATE, 1
+	addvar VAR_WAREHOUSE_RAVE_STATE, 1
 	end
 
 WarehouseRave_OutsideWarehouse_Dialogue_2:

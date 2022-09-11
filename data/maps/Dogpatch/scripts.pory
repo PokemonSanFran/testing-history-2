@@ -1,15 +1,7 @@
 mapscripts Dogpatch_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(Quest_StolenTrade_HideObjectB_Script)
-        goto(Dogpatch_MapScripts_OnTransition)
-}
-}
-
-script Dogpatch_MapScripts_OnTransition {
-    switch (var(VAR_DOGPATCH_STATE)){
-        case 0: call(HowDoWeGetHome_HideObject_Script)
-        case 1:
-            call(HowDoWeGetHome_ObjectCleanUp_Script)
-            call(HowDoWeGetHome_ChangeCrowdMovementType_Script)
+        call(HowDoWeGetHome_ObjectVisibility_Script)
+        call(Quest_GetTheBand_HideTedore_Script)
     }
 }

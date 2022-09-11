@@ -8,6 +8,7 @@ Marin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Marin_HideBianca_Script
 	call Marin_HideLiidia_Script
 	call Quest_BerrySustaiability_HideLeader_Script
+	call Quest_GetTheBand_HideBikerD_Script
 	return
 
 Marin_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -87,6 +88,23 @@ Marin_Stan_PostBattle_Script_2:
 	msgbox gText_WallaceArmy_PostBattlePlaceholder1
 	goto Marin_Stan_PostBattle_Script_1
 
+
+Marin_Biker_Interact_Script::
+	msgbox gText_Marin_PlaceholderBiker, MSGBOX_NPC
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_GETTHEBANDBACKTOGETHER
+	compare VAR_RESULT, 0
+	goto_if_ne Marin_Biker_Interact_Script_2
+Marin_Biker_Interact_Script_1:
+	end
+
+Marin_Biker_Interact_Script_2:
+	goto Quest_GetTheBand_Interact_BikerD_Dialogue
+	goto Marin_Biker_Interact_Script_1
+
+
+gText_Marin_PlaceholderBiker::
+	.string "i am a biker, and this is placeholder\n"
+	.string "text.$"
 
 gText_Marin_TheDoorIsLocked::
 	.string "The door is locked.$"

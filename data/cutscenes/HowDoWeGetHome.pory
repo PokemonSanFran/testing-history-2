@@ -1,30 +1,33 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
 const ARIANA = 1
+const FLAG_HIDE_ARIANA = FLAG_TEMP_1 
 const JULIUS = 7
 const MADISON = 6
+const FLAG_HIDE_MADISON = FLAG_HIDE_MADISON
 
-script HowDoWeGetHome_HideObject_Script {
-    setflag(FLAG_TEMP_1)
-}
+script HowDoWeGetHome_ObjectVisibility_Script{
+    setflag(FLAG_HIDE_ARIANA)
 
-script HowDoWeGetHome_ObjectCleanUp_Script {
-    setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_2)
+    if (var(VAR_DOGPATCH_STATE) > PRE_HOW_DO_WE_GET_HOME){
+        setflag(FLAG_HIDE_MADISON)
+        call(HowDoWeGetHome_ChangeCrowdMovementType_Script)
+    }
 }
 
 script HowDoWeGetHome_ChangeCrowdMovementType_Script {
     setobjectmovementtype(14,MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
-        setobjectmovementtype(3,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
-        setobjectmovementtype(11,MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
-        setobjectmovementtype(2,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
-        setobjectmovementtype(4,MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
-        setobjectmovementtype(12,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
-        setobjectmovementtype(10,MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
-        setobjectmovementtype(5,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
-        setobjectmovementtype(9,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
-        setobjectmovementtype(13,MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
-        setobjectmovementtype(JULIUS,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+    setobjectmovementtype(3,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+    setobjectmovementtype(11,MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+    setobjectmovementtype(2,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+    setobjectmovementtype(4,MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+    setobjectmovementtype(12,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+    setobjectmovementtype(10,MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+    setobjectmovementtype(5,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+    setobjectmovementtype(9,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+    setobjectmovementtype(13,MOVEMENT_TYPE_WANDER_UP_AND_DOWN)
+    setobjectmovementtype(JULIUS,MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT)
+    return
 }
 
 script HowDoWeGetHome_MovePlayerOffPath_Script {
@@ -47,7 +50,6 @@ script HowDoWeGetHome_MoveCameraToFight_Script {
         locktarget
         fadescreen(FADE_TO_BLACK)
         TeleportCamera(14,9)
-        //delay(16)
         fadescreen(FADE_FROM_BLACK)
         goto(HowDoWeGetHome_StartFight_Dialogue)
 }
@@ -60,7 +62,7 @@ script HowDoWeGetHome_StartFight_Dialogue {
         goto(HowDoWeGetHome_ArianaGetsInvolved_Dialogue)
 }
 script HowDoWeGetHome_ArianaGetsInvolved_Dialogue {
-    clearflag(FLAG_TEMP_1)
+    clearflag(FLAG_HIDE_ARIANA)
         addobject(ARIANA)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)

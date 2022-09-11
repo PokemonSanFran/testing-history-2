@@ -4,22 +4,7 @@ Dogpatch_MapScripts::
 
 Dogpatch_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_StolenTrade_HideObjectB_Script
-	goto Dogpatch_MapScripts_OnTransition
-	return
-
-
-Dogpatch_MapScripts_OnTransition::
-	switch VAR_DOGPATCH_STATE
-	case 0, Dogpatch_MapScripts_OnTransition_2
-	case 1, Dogpatch_MapScripts_OnTransition_3
-	return
-
-Dogpatch_MapScripts_OnTransition_2:
-	call HowDoWeGetHome_HideObject_Script
-	return
-
-Dogpatch_MapScripts_OnTransition_3:
-	call HowDoWeGetHome_ObjectCleanUp_Script
-	call HowDoWeGetHome_ChangeCrowdMovementType_Script
+	call HowDoWeGetHome_ObjectVisibility_Script
+	call Quest_GetTheBand_HideTedore_Script
 	return
 

@@ -1,15 +1,23 @@
 mapscripts Oakland_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_FORTREE_CITY_STATE, 3: WarehouseRave_OutsideWarehouse_Dialogue
+        VAR_WAREHOUSE_RAVE_STATE, DEFEATED_KOGA_OAKLAND: WarehouseRave_OutsideWarehouse_Dialogue
     ]
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Oakland_MapScripts_OnTransition)
+        call(WarehouseRave_HideObject_Script)
+        call(Quest_GetTheBand_HideBikerC_Script)
     }
 }
+script Oakland_Biker_Interact_Script{
+    msgbox(gText_Oakland_PlaceholderBiker,MSGBOX_NPC)
 
-script Oakland_MapScripts_OnTransition {
-    switch (var(VAR_FORTREE_CITY_STATE)){
-        case 3: return
-        default: call(WarehouseRave_HideObject_Script)
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_GETTHEBANDBACKTOGETHER)
+
+    if(var(VAR_RESULT)){
+        goto(Quest_GetTheBand_Interact_BikerC_Dialogue)
     }
+    end
+}
+
+text gText_Oakland_PlaceholderBiker{
+    format("i am a biker, and this is placeholder text.")
 }
