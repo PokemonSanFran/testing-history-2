@@ -8,6 +8,7 @@ Sunset_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_ReturnDoll_HideObject_Script
 	call Quest_StolenTrade_HideObjectA_Script
 	call Quest_CutePokemon_HideMelissaB_Script
+	call Quest_ButOnlyIn_HideGunda_Script
 	return
 
 Sunset_MapScripts_MAP_SCRIPT_ON_LOAD:

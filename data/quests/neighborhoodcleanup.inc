@@ -4,15 +4,33 @@ Quest_NeighborhoodCleanUp_ObjectVisibility_Script::
 	return
 
 
+Quest_NeighborhoodCleanUp_HideAll_Script::
+	setflag FLAG_TEMP_7
+	setflag FLAG_TEMP_8
+	setflag FLAG_TEMP_9
+	setflag FLAG_TEMP_A
+	setflag FLAG_TEMP_B
+	setflag FLAG_TEMP_C
+	return
+
+
 Quest_NeighborhoodCleanUp_HideCop_Script::
 	compare VAR_STORYLINE_STATE, STORY_WON_FINALS
-	goto_if_gt Quest_NeighborhoodCleanUp_HideCop_Script_2
+	goto_if_lt Quest_NeighborhoodCleanUp_HideCop_Script_2
 Quest_NeighborhoodCleanUp_HideCop_Script_1:
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_NEIGHBORHOODCLEANUP
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_NeighborhoodCleanUp_HideCop_Script_5
+Quest_NeighborhoodCleanUp_HideCop_Script_4:
 	return
 
 Quest_NeighborhoodCleanUp_HideCop_Script_2:
-	setflag FLAG_TEMP_C
+	call Quest_NeighborhoodCleanUp_HideAll_Script
 	goto Quest_NeighborhoodCleanUp_HideCop_Script_1
+
+Quest_NeighborhoodCleanUp_HideCop_Script_5:
+	call Quest_NeighborhoodCleanUp_HideAll_Script
+	goto Quest_NeighborhoodCleanUp_HideCop_Script_4
 
 
 Quest_NeighborhoodCleanUp_HidePeople_Script::
@@ -60,33 +78,72 @@ Quest_NeighborhoodCleanUp_HidePeople_Script_14:
 
 
 Quest_NeighborhoodCleanUp_Interact_Cop_Script::
+	returnqueststate QUEST_NEIGHBORHOODCLEANUP
+	switch VAR_RESULT
+	case QUEST_MENU_SET_ACTIVE, Quest_NeighborhoodCleanUp_Interact_Cop_Script_2
+	case QUEST_MENU_SET_REWARD, Quest_NeighborhoodCleanUp_Interact_Cop_Script_3
+	case QUEST_MENU_COMPLETE_QUEST, Quest_NeighborhoodCleanUp_Interact_Cop_Script_4
+	goto Quest_NeighborhoodCleanUp_StartQuest_Dialogue
+	return
+
+Quest_NeighborhoodCleanUp_Interact_Cop_Script_2:
+	goto Quest_NeighborhoodCleanUp_Active_Dialogue
+	return
+
+Quest_NeighborhoodCleanUp_Interact_Cop_Script_3:
+	goto Quest_NeighborhoodCleanUp_Reward_Dialogue
+	return
+
+Quest_NeighborhoodCleanUp_Interact_Cop_Script_4:
+	goto Quest_NeighborhoodCleanUp_Complete_Dialogue
+	return
+
+
+Quest_NeighborhoodCleanUp_StartQuest_Dialogue::
 	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
 	startquest QUEST_NEIGHBORHOODCLEANUP
 	end
 
 
+Quest_NeighborhoodCleanUp_Active_Dialogue::
+	return
+
+
+Quest_NeighborhoodCleanUp_Reward_Dialogue::
+	return
+
+
+Quest_NeighborhoodCleanUp_Complete_Dialogue::
+	return
+
+
 Quest_NeighborhoodCleanUp_Interact_PersonA_Script::
 	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_1
 	end
 
 
 Quest_NeighborhoodCleanUp_Interact_PersonB_Script::
 	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_2
 	end
 
 
 Quest_NeighborhoodCleanUp_Interact_PersonC_Script::
 	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_3
 	end
 
 
 Quest_NeighborhoodCleanUp_Interact_PersonD_Script::
 	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_4
 	end
 
 
 Quest_NeighborhoodCleanUp_Interact_PersonE_Script::
 	msgbox gText_NeighborhoodCleanUp_ThisIsPlaceholder, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP, SUB_QUEST_5
 	end
 
 

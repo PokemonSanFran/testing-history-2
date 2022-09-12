@@ -5,12 +5,12 @@ const PERSON_D = 19
 const PERSON_E = 20
 const COP = 21
 
-const HIDE_PERSON_A = FLAG_TEMP_7
-const HIDE_PERSON_B = FLAG_TEMP_8
-const HIDE_PERSON_C = FLAG_TEMP_9
-const HIDE_PERSON_D = FLAG_TEMP_A
-const HIDE_PERSON_E = FLAG_TEMP_B
-const HIDE_COP = FLAG_TEMP_C
+const FLAG_HIDE_PERSON_A = FLAG_TEMP_7
+const FLAG_HIDE_PERSON_B = FLAG_TEMP_8
+const FLAG_HIDE_PERSON_C = FLAG_TEMP_9
+const FLAG_HIDE_PERSON_D = FLAG_TEMP_A
+const FLAG_HIDE_PERSON_E = FLAG_TEMP_B
+const FLAG_HIDE_COP = FLAG_TEMP_C
 //gText_NeighborhoodCleanUp_
 //Quest_NeighborhoodCleanUp_
 
@@ -20,61 +20,103 @@ script Quest_NeighborhoodCleanUp_ObjectVisibility_Script{
     return
 }
 
+script Quest_NeighborhoodCleanUp_HideAll_Script{
+        setflag(FLAG_HIDE_PERSON_A)
+        setflag(FLAG_HIDE_PERSON_B)
+        setflag(FLAG_HIDE_PERSON_C)
+        setflag(FLAG_HIDE_PERSON_D)
+        setflag(FLAG_HIDE_PERSON_E)
+        setflag(FLAG_HIDE_COP)
+        return
+}
+
 script Quest_NeighborhoodCleanUp_HideCop_Script{
-    if (var(VAR_STORYLINE_STATE) > STORY_WON_FINALS){
-        setflag(FLAG_TEMP_C)
+    if (var(VAR_STORYLINE_STATE) < STORY_WON_FINALS){
+        call(Quest_NeighborhoodCleanUp_HideAll_Script)
     }
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP)
+    if (var(VAR_RESULT)){
+        call(Quest_NeighborhoodCleanUp_HideAll_Script)
+    }
+
     return
 }
 
 script Quest_NeighborhoodCleanUp_HidePeople_Script{
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_1)
     if (var(VAR_RESULT)){
-        setflag(HIDE_PERSON_A)
+        setflag(FLAG_HIDE_PERSON_A)
     }
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_2)
     if (var(VAR_RESULT)){
-        setflag(HIDE_PERSON_B)
+        setflag(FLAG_HIDE_PERSON_B)
     }
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_3)
     if (var(VAR_RESULT)){
-        setflag(HIDE_PERSON_C)
+        setflag(FLAG_HIDE_PERSON_C)
     }
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_4)
     if (var(VAR_RESULT)){
-        setflag(HIDE_PERSON_D)
+        setflag(FLAG_HIDE_PERSON_D)
     }
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_5)
     if (var(VAR_RESULT)){
-        setflag(HIDE_PERSON_E)
+        setflag(FLAG_HIDE_PERSON_E)
     }
     return
 }
 
 script Quest_NeighborhoodCleanUp_Interact_Cop_Script{
+    	returnqueststate(QUEST_NEIGHBORHOODCLEANUP)
+
+	    switch(var(VAR_RESULT)){
+	        case QUEST_MENU_SET_ACTIVE: goto(Quest_NeighborhoodCleanUp_Active_Dialogue)
+	        case QUEST_MENU_SET_REWARD: goto(Quest_NeighborhoodCleanUp_Reward_Dialogue)
+	        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_NeighborhoodCleanUp_Complete_Dialogue)
+	        default: goto(Quest_NeighborhoodCleanUp_StartQuest_Dialogue)
+	}
+}
+
+script Quest_NeighborhoodCleanUp_StartQuest_Dialogue{
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
     startquest(QUEST_NEIGHBORHOODCLEANUP)
     end
 }
 
+script Quest_NeighborhoodCleanUp_Active_Dialogue{
+}
+
+script Quest_NeighborhoodCleanUp_Reward_Dialogue{
+
+}
+
+script Quest_NeighborhoodCleanUp_Complete_Dialogue{
+}
+
 script Quest_NeighborhoodCleanUp_Interact_PersonA_Script{
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_1)
     end
 }
 script Quest_NeighborhoodCleanUp_Interact_PersonB_Script{
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_2)
     end
 }
 script Quest_NeighborhoodCleanUp_Interact_PersonC_Script{
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_3)
     end
 }
 script Quest_NeighborhoodCleanUp_Interact_PersonD_Script{
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_4)
     end
 }
 script Quest_NeighborhoodCleanUp_Interact_PersonE_Script{
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_5)
     end
 }
 

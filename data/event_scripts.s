@@ -1280,7 +1280,7 @@ Script_RemoveTint::
 .include "data/quests/gardencleanup.inc"
 .include "data/quests/gardencleanupadvanced.inc"
 // .include "data/quests/employedeverafter.inc"
-// .include "data/quests/butonlyinmybackyard.inc"
+.include "data/quests/butonlyinmybackyard.inc"
 .include "data/quests/neighborhoodcleanup.inc"
 .include "data/quests/neighborhoodcleanup2.inc"
 .include "data/quests/neighborhoodcleanup3.inc"
@@ -1408,3 +1408,7 @@ Script_RemoveTint::
 	.include "data/maps/Pacifica_UnionHQ/scripts.inc"
 
 	.include "data/maps/Berkeley_Research/scripts.inc"
+
+	.include "data/maps/Psfroute32/scripts.inc"
+
+	.include "data/maps/Mission_Bar/scripts.inc"

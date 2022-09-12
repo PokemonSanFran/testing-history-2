@@ -1,0 +1,5 @@
+mapscripts Mission_Bar_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Quest_ButOnlyIn_HideNimby_Script)
+    }
+}

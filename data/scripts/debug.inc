@@ -42,25 +42,21 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	warp MAP_DOGPATCH, 2, 21
+	setwildbattle SPECIES_PIDGEY, 1, ITEM_ORAN_BERRY
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	end
 
 
 Debug_Script_2::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ANGELDELIVERY
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP
 	end
 
 
 Debug_Script_3::
-	setvar VAR_TEMP_0, 5
-	compare VAR_TEMP_0, 4
-	goto_if_gt Debug_Script_3_2
-Debug_Script_3_1:
+	warp MAP_DOGPATCH, 5, 5
 	end
-
-Debug_Script_3_2:
-	questmenu QUEST_MENU_SET_REWARD, QUEST_GETTHEBANDBACKTOGETHER
-	goto Debug_Script_3_1
 
 
 Debug_Script_4::

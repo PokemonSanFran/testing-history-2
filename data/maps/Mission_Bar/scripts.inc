@@ -1,0 +1,8 @@
+Mission_Bar_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Mission_Bar_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Mission_Bar_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_ButOnlyIn_HideNimby_Script
+	return
+

@@ -5017,6 +5017,7 @@ static void HandleEndTurn_BattleWon(void)
     }
     else
     {
+        CountDefeatedBackyard();
         CountDefeatedPacifica();
         CountDefeatedGlameow();
         CountDefeatedGardenMons();
@@ -5122,8 +5123,7 @@ void CountDefeatedPacifica(void){
     u8 defeatedPacificaCount = VarGet(VAR_DEFEATED_PACIFICA_COUNT);
 
     if (GetCurrentMap() == MAP_NUM(PACIFICA) && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))){
-        //defeatedPacificaCount++;
-        defeatedPacificaCount = 30;
+        defeatedPacificaCount++;
     }
 
     if ((defeatedPacificaCount > 29) && QuestMenu_GetSetQuestState(QUEST_HANG20,FLAG_GET_ACTIVE)){
@@ -5132,6 +5132,29 @@ void CountDefeatedPacifica(void){
     }
 
     VarSet(VAR_DEFEATED_PACIFICA_COUNT,defeatedPacificaCount);
+}
+
+void CountDefeatedBackyard(void){
+    u8 defeatedBackyardCount = VarGet(VAR_DEFEATED_BACKYARD_COUNT), i = 0;
+
+    for (i = 0;i < 6;i++)
+    {
+        s32 enemySpecies = GetMonData(&gEnemyParty[i],MON_DATA_SPECIES);
+
+        //PSF TODO The following line currently checks if the map is correct AND its not a trainer battle, but it needs to also check if the enemy type (either of them) is flying type
+        if ((GetCurrentMap() == MAP_NUM(PSFROUTE7) || GetCurrentMap() == MAP_NUM(PSFROUTE32)) && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) && (enemySpecies)){
+            defeatedBackyardCount++;
+        }
+    }
+
+    //PSF TODO the second half of the quest related "count" quests need to all be split into two seperate functions, one for the battle increments and one for the actual counts
+    //for example, this should be something like CheckBackyardQuestState(defeatedBackyardCount) and should live in a new file like quests_psf.c
+    if ((defeatedBackyardCount > 26) && QuestMenu_GetSetQuestState(QUEST_BUTONLYINMYBACKYARD,FLAG_GET_ACTIVE)){
+        QuestMenu_GetSetQuestState(QUEST_BUTONLYINMYBACKYARD,FLAG_SET_REWARD);
+        QuestMenu_GetSetQuestState(QUEST_BUTONLYINMYBACKYARD,FLAG_REMOVE_ACTIVE);
+    }
+
+    VarSet(VAR_DEFEATED_BACKYARD_COUNT,defeatedBackyardCount);
 }
 
 static void HandleEndTurn_RanFromBattle(void)

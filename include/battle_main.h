@@ -75,6 +75,7 @@ bool32 IsWildMonSmart(void);
 void CountDefeatedGlameow(void);
 void CountDefeatedGardenMons(void);
 void CountDefeatedPacifica(void);
+void CountDefeatedBackyard(void);
 
 extern struct MultiPartnerMenuPokemon gMultiPartnerParty[MULTI_PARTY_SIZE];
 

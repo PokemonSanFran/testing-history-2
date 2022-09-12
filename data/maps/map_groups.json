@@ -139,7 +139,9 @@
     "Chinatown_BackroomC",
     "Chinatown_BackroomD",
     "Pacifica_UnionHQ",
-    "Berkeley_Research"
+    "Berkeley_Research",
+    "Psfroute32",
+    "Mission_Bar"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

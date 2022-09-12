@@ -6,5 +6,6 @@ Dogpatch_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_StolenTrade_HideObjectB_Script
 	call HowDoWeGetHome_ObjectVisibility_Script
 	call Quest_GetTheBand_HideTedore_Script
+	call Quest_NeighborhoodCleanUp2_ObjectVisibility_Script
 	return
 
