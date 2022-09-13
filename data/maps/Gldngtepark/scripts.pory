@@ -4,3 +4,7 @@ mapscripts Gldngtepark_MapScripts {
         VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
     ]
 }
+
+text gText_Gldgtepark_PlaceholderOaklandFan{
+    format("I wish i could swear my signed Champion's cape, but I know i'll just get it dirty")
+}

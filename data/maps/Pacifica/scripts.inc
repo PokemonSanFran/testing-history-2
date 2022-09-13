@@ -32,3 +32,7 @@ Pacifica_Biker_Interact_Script_2:
 gText_Pacifica_PlaceholderBiker::
 	.string "i am a biker, and this is placeholder\n"
 	.string "text.$"
+
+gText_Pacifica_PlaceholderOaklandFan::
+	.string "i used to go to the Oakland stadium a\n"
+	.string "lot. i sitll have my ticket stub!$"

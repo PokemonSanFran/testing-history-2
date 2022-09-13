@@ -61,18 +61,16 @@ script Debug_CheatStart{
 }
 
 script Debug_Script_1{
-    setwildbattle(SPECIES_PIDGEY,1,ITEM_ORAN_BERRY)
-    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
-    dowildbattle
-    clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	warp(MAP_SOMA, 2)
     end
 }
 script Debug_Script_2{
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP)
+    additem(ITEM_LAVA_COOKIE,1)
+    additem(ITEM_RAGE_CANDY_BAR,1)
+    additem(ITEM_PEWTER_CRUNCHIES,1)
     end
 }
 script Debug_Script_3{
-    warp(MAP_DOGPATCH,5,5)
     end
 }
 script Debug_Script_4{

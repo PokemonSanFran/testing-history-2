@@ -12,3 +12,6 @@ script Castro_MapScripts_OnTransition {
     call(Quest_BlueRobbery_HideObject_Script)
 }
 
+text gText_Castro_PlaceholderOaklandFan{
+    format("did you know that Toxic Spikes lose their potency after a few hours? safe to touch and everything")
+}

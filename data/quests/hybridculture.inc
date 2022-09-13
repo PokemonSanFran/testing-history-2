@@ -25,7 +25,7 @@ Quest_HybridCulture_CheckSubquests_Script_7:
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_HybridCulture_CheckSubquests_Script_11
 Quest_HybridCulture_CheckSubquests_Script_10:
-	compare VAR_TEMP_0, 3
+	compare VAR_TEMP_0, QUEST_HYBRIDCULTURE_SUB_COUNT
 	goto_if_eq Quest_HybridCulture_CheckSubquests_Script_14
 Quest_HybridCulture_CheckSubquests_Script_13:
 	return
@@ -77,17 +77,17 @@ Quest_HybridCulture_Event_Script_4:
 Quest_HybridCulture_StartQuest_Dialogue::
 	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
-	msgbox gText_Quest_HybridCulture_HeyThanksFor, MSGBOX_NPC
-	msgbox gText_Quest_HybridCulture_IThinkINeedToLearn, MSGBOX_NPC
+	msgbox gText_HybridCulture_HeyThanksFor, MSGBOX_NPC
+	msgbox gText_HybridCulture_IThinkINeedToLearn, MSGBOX_NPC
 	callnative ClearMugshot
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
-	msgbox gText_Quest_HybridCulture_HaveYouStarted, MSGBOX_NPC
+	msgbox gText_HybridCulture_HaveYouStarted, MSGBOX_NPC
 	callnative ClearMugshot
 	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
-	msgbox gText_Quest_HybridCulture_IHaventYet, MSGBOX_NPC
-	msgbox gText_Quest_HybridCulture_CanYouHelp, MSGBOX_NPC
+	msgbox gText_HybridCulture_IHaventYet, MSGBOX_NPC
+	msgbox gText_HybridCulture_CanYouHelp, MSGBOX_NPC
 	callnative ClearMugshot
 	startquest QUEST_HYBRIDCULTURE
 	end
@@ -96,7 +96,7 @@ Quest_HybridCulture_StartQuest_Dialogue::
 Quest_HybridCulture_Active_Dialogue::
 	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
-	msgbox gText_Quest_HybridCulture_HaveYouHad, MSGBOX_NPC
+	msgbox gText_HybridCulture_HaveYouHad, MSGBOX_NPC
 	callnative ClearMugshot
 	end
 
@@ -104,16 +104,16 @@ Quest_HybridCulture_Active_Dialogue::
 Quest_HybridCulture_Reward_Dialogue::
 	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
-	msgbox gText_Quest_HybridCulture_OhWhatDidYouLearn, MSGBOX_NPC
+	msgbox gText_HybridCulture_OhWhatDidYouLearn, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
 	fadescreen FADE_TO_BLACK
-	msgbox gText_Quest_HybridCulture_PlayerExplained
+	msgbox gText_HybridCulture_PlayerExplained
 	closemessage
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
-	msgbox gText_Quest_HybridCulture_ThankYou, MSGBOX_NPC
+	msgbox gText_HybridCulture_ThankYou, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
 	call Quest_HybridCulture_GiveReward_Script
@@ -130,7 +130,7 @@ Quest_HybridCulture_GiveReward_Script::
 Quest_HybridCulture_Complete_Dialogue::
 	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
-	msgbox gText_Quest_HybridCulture_IHaveSoMuch, MSGBOX_NPC
+	msgbox gText_HybridCulture_IHaveSoMuch, MSGBOX_NPC
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, Quest_HybridCulture_WalkBackIntoGym_Movement
@@ -153,52 +153,52 @@ Quest_HybridCulture_WalkBackIntoGym_Movement:
 	face_up
 	step_end
 
-gText_Quest_HybridCulture_HeyThanksFor::
+gText_HybridCulture_HeyThanksFor::
 	.string "Hey, thanks again for your help in\n"
 	.string "Chinatown. That was a rough situation,\l"
 	.string "but was a wake up call. That's not\l"
 	.string "anything like what I want to be.$"
 
-gText_Quest_HybridCulture_IThinkINeedToLearn::
+gText_HybridCulture_IThinkINeedToLearn::
 	.string "I think I need to learn more about the\n"
 	.string "culture of SanFran.$"
 
-gText_Quest_HybridCulture_HaveYouStarted::
+gText_HybridCulture_HaveYouStarted::
 	.string "Have you started with just Japantown?\n"
 	.string "Maybe find the best parts of your\l"
 	.string "culture and see how they're\l"
 	.string "represented here.$"
 
-gText_Quest_HybridCulture_IHaventYet::
+gText_HybridCulture_IHaventYet::
 	.string "I haven't yet. But perhaps that's a\n"
 	.string "good idea.$"
 
-gText_Quest_HybridCulture_CanYouHelp::
+gText_HybridCulture_CanYouHelp::
 	.string "Can you help with that? You're a\n"
 	.string "traveling Trainer, so you'll see more of\l"
 	.string "Japantown than I will. What are the\l"
 	.string "great parts of Japantown culture?$"
 
-gText_Quest_HybridCulture_HaveYouHad::
+gText_HybridCulture_HaveYouHad::
 	.string "Have you had any luck learning about\n"
 	.string "Japantown culture?$"
 
-gText_Quest_HybridCulture_OhWhatDidYouLearn::
+gText_HybridCulture_OhWhatDidYouLearn::
 	.string "Oh! What did you learn?$"
 
-gText_Quest_HybridCulture_PlayerExplained::
+gText_HybridCulture_PlayerExplained::
 	.string "{PLAYER} explained what they learned\n"
 	.string "about Japantown's food, traditions,\l"
 	.string "and fashion.$"
 
-gText_Quest_HybridCulture_ThankYou::
+gText_HybridCulture_ThankYou::
 	.string "Thank you. *sniff* In a way, it is\n"
 	.string "beautiful to see my country\l"
 	.string "appreciated in this new way. I'm glad\l"
 	.string "the people here love my culture as much\l"
 	.string "I do. Please, take this!$"
 
-gText_Quest_HybridCulture_IHaveSoMuch::
+gText_HybridCulture_IHaveSoMuch::
 	.string "I think for now, I'll go back to my Gym.\n"
 	.string "Now that you're stronger, I'd love to\l"
 	.string "battle you again!$"

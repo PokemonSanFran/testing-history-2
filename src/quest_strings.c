@@ -604,7 +604,7 @@ const u8 gText_Quest_BuildingAnExhibit_Sub3_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_BuildingAnExhibit_Sub3_Map[] = _("Castro");
 const u8 gText_Quest_BuildingAnExhibit_Sub4_Name[] = _("Bobblehead");
 const u8 gText_Quest_BuildingAnExhibit_Sub4_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_BuildingAnExhibit_Sub4_Map[] = _("Marin");
+const u8 gText_Quest_BuildingAnExhibit_Sub4_Map[] = _("Oakland");
 
 const u8 gText_Quest_BiomeResearch_Sub1_Name[] = _("Jynx");
 const u8 gText_Quest_BiomeResearch_Sub1_Desc[] = _("Sub Lorem");

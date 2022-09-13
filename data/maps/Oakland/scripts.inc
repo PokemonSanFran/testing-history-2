@@ -29,3 +29,7 @@ Oakland_Biker_Interact_Script_2:
 gText_Oakland_PlaceholderBiker::
 	.string "i am a biker, and this is placeholder\n"
 	.string "text.$"
+
+gText_Oakland_PlaceholderOaklandFan::
+	.string "I'm off to buy some shelves for my\n"
+	.string "Drasna bobblehead set!$"

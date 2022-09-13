@@ -28,3 +28,7 @@ script Pacifica_Biker_Interact_Script{
 text gText_Pacifica_PlaceholderBiker{
     format("i am a biker, and this is placeholder text.")
 }
+
+text gText_Pacifica_PlaceholderOaklandFan{
+    format("i used to go to the Oakland stadium a lot. i sitll have my ticket stub!")
+}

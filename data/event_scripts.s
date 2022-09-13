@@ -1247,7 +1247,7 @@ Script_RemoveTint::
 .include "data/quests/culturalpurity.inc"
 .include "data/quests/hybridculture.inc"
 // .include "data/quests/alohafromalola.inc"
-// .include "data/quests/buildinganexhibit.inc"
+.include "data/quests/buildinganexhibit.inc"
 // .include "data/quests/unknownmortyquesta.inc"
 // .include "data/quests/unknownmortyquestb.inc"
 .include "data/quests/unknownchuckquesta.inc"
@@ -1258,7 +1258,7 @@ Script_RemoveTint::
 // .include "data/quests/inversehallucinogenic.inc"
 // .include "data/quests/unknownclairquesta.inc"
 // .include "data/quests/unknownclairquestb.inc"
-// .include "data/quests/contractorporygon.inc"
+.include "data/quests/contractorporygon.inc"
 .include "data/quests/angeldelivery.inc"
 .include "data/quests/getthebandbacktogether.inc"
 // .include "data/quests/foodtruckbureacracy.inc"
@@ -1412,3 +1412,5 @@ Script_RemoveTint::
 	.include "data/maps/Psfroute32/scripts.inc"
 
 	.include "data/maps/Mission_Bar/scripts.inc"
+
+	.include "data/maps/SOMA_smashgg/scripts.inc"

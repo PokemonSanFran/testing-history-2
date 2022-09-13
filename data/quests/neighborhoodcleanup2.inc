@@ -110,21 +110,25 @@ Quest_NeighborhoodCleanUp2_Complete_Dialogue::
 
 Quest_NeighborhoodCleanUp2_Interact_PersonA_Script::
 	msgbox gText_NeighborhoodCleanUp2_ThisIsPlaceholder, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP2, SUB_QUEST_1
 	end
 
 
 Quest_NeighborhoodCleanUp2_Interact_PersonB_Script::
 	msgbox gText_NeighborhoodCleanUp2_ThisIsPlaceholder, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP2, SUB_QUEST_2
 	end
 
 
 Quest_NeighborhoodCleanUp2_Interact_PersonC_Script::
 	msgbox gText_NeighborhoodCleanUp2_ThisIsPlaceholder, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP2, SUB_QUEST_3
 	end
 
 
 Quest_NeighborhoodCleanUp2_Interact_PersonD_Script::
 	msgbox gText_NeighborhoodCleanUp2_ThisIsPlaceholder, MSGBOX_NPC
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP2, SUB_QUEST_4
 	end
 
 

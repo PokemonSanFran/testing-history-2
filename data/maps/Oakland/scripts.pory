@@ -21,3 +21,6 @@ script Oakland_Biker_Interact_Script{
 text gText_Oakland_PlaceholderBiker{
     format("i am a biker, and this is placeholder text.")
 }
+text gText_Oakland_PlaceholderOaklandFan{
+    format("I'm off to buy some shelves for my Drasna bobblehead set!")
+}

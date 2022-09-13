@@ -16,3 +16,8 @@ Castro_MapScripts_OnTransition::
 	call Quest_BlueRobbery_HideObject_Script
 	return
 
+
+gText_Castro_PlaceholderOaklandFan::
+	.string "did you know that Toxic Spikes lose\n"
+	.string "their potency after a few hours? safe\l"
+	.string "to touch and everything$"
