@@ -186,9 +186,24 @@ script Quest_ContractorPorygon_Subquest3_Script{
     }
 }
 
+script Quest_ContractorPorygon_HandleMoney_Script{
+	showmoneybox(0, 0)
+    waitbuttonpress
+    addmoney(200000)
+    playse(SE_SHOP)
+    updatemoneybox(0)
+    waitse
+    waitbuttonpress
+    hidemoneybox
+    closemessage
+    return
+}
+
 script Quest_ContractorPorygon_Reward_Dialogue{
     msgbox(gText_ContractorPorygon_HellYesCurry)
-    closemessage
+    msgbox(gText_ContractorPorygon_ThisShouldPay)
+    call(Quest_ContractorPorygon_HandleMoney_Script)
+    msgbox(gText_ContractorPorygon_AndForHelpingUs)
     call(Quest_ContractorPorygon_GivePorygon_Script)
     subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CONTRACTORPORYGON,SUB_QUEST_3)
     applymovement(VAR_LAST_TALKED,Common_Movement_FaceOriginalDirection)
@@ -279,7 +294,13 @@ text gText_ContractorPorygon_YesssDumpling{
 	format("yesssss dumplings this is gonna be so good. here, take this Pokemon.")
 }
 text gText_ContractorPorygon_HellYesCurry{
-	format("hellllll yes curry! UGH this shit is gonna slap. here, take one of these!")
+	format("hellllll yes curry! UGH this shit is gonna slap.")
+}
+text gText_ContractorPorygon_ThisShouldPay{
+    format("This cash should cover the cost of lunch, right??")
+}
+text gText_ContractorPorygon_AndForHelpingUs{
+    format("And for helping us, you can have this too. You're a beta tester!")
 }
 text gText_ContractorPorygon_IThinkWereGonnaMake{
 	format("I think we're gonna make the deadline!")
