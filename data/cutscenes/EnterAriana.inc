@@ -1,16 +1,30 @@
 EnterAriana_ObjectCleanUp_Script::
+	checkitem ITEM_MEGA_RING, 1
+	compare VAR_RESULT, 0
+	goto_if_ne EnterAriana_ObjectCleanUp_Script_2
+EnterAriana_ObjectCleanUp_Script_1:
+	return
+
+EnterAriana_ObjectCleanUp_Script_2:
 	setobjectxyperm 6, 2, 40
 	setobjectxyperm 7, 2, 41
 	setobjectxyperm 10, 2, 42
 	setflag FLAG_TEMP_2
-	return
+	goto EnterAriana_ObjectCleanUp_Script_1
 
 
 EnterAriana_SetConeTiles_Script::
+	checkitem ITEM_MEGA_RING, 1
+	compare VAR_RESULT, 0
+	goto_if_ne EnterAriana_SetConeTiles_Script_2
+EnterAriana_SetConeTiles_Script_1:
+	return
+
+EnterAriana_SetConeTiles_Script_2:
 	setmetatile 3, 37, 0x2E9, TRUE
 	setmetatile 3, 39, 0x2E9, TRUE
 	special DrawWholeMapView
-	return
+	goto EnterAriana_SetConeTiles_Script_1
 
 
 EnterAriana_InteractSiarl_Script::

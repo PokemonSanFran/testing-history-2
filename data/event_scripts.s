@@ -1235,7 +1235,7 @@ Script_RemoveTint::
 // .include "data/quests/breaktheinternet.inc"
 .include "data/quests/shutdownmedicineman.inc"
 .include "data/quests/buildingscope.inc"
-// .include "data/quests/nogooddeed.inc"
+.include "data/quests/nogooddeed.inc"
 .include "data/quests/improvbattling.inc"
 // .include "data/quests/improvbattlingchampionship.inc"
 .include "data/quests/installnatureprobes.inc"

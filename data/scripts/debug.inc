@@ -42,14 +42,12 @@ Debug_CheatStart::
 
 
 Debug_Script_1::
-	warp MAP_SOMA, 2
+	warp MAP_PRESIDIO, 2
 	end
 
 
 Debug_Script_2::
-	additem ITEM_LAVA_COOKIE, 1
-	additem ITEM_RAGE_CANDY_BAR, 1
-	additem ITEM_PEWTER_CRUNCHIES, 1
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BUILDINGSCOPE
 	end
 
 

@@ -223,11 +223,26 @@ Quest_ContractorPorygon_Subquest3_Script_10:
 	return
 
 
+Quest_ContractorPorygon_HandleMoney_Script::
+	showmoneybox 0, 0
+	waitbuttonpress
+	addmoney 200000
+	playse SE_SHOP
+	updatemoneybox 0
+	waitse
+	waitbuttonpress
+	hidemoneybox
+	closemessage
+	return
+
+
 Quest_ContractorPorygon_Reward_Dialogue::
 	msgbox gText_ContractorPorygon_HellYesCurry
-	closemessage
+	msgbox gText_ContractorPorygon_ThisShouldPay
+	call Quest_ContractorPorygon_HandleMoney_Script
+	msgbox gText_ContractorPorygon_AndForHelpingUs
 	call Quest_ContractorPorygon_GivePorygon_Script
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_CONTRACTORPORYGON, SUB_QUEST_2
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_CONTRACTORPORYGON, SUB_QUEST_3
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement VAR_LAST_TALKED
 	completequest QUEST_CONTRACTORPORYGON
@@ -360,7 +375,15 @@ gText_ContractorPorygon_YesssDumpling::
 
 gText_ContractorPorygon_HellYesCurry::
 	.string "hellllll yes curry! UGH this shit is\n"
-	.string "gonna slap. here, take one of these!$"
+	.string "gonna slap.$"
+
+gText_ContractorPorygon_ThisShouldPay::
+	.string "This cash should cover the cost of\n"
+	.string "lunch, right??$"
+
+gText_ContractorPorygon_AndForHelpingUs::
+	.string "And for helping us, you can have this\n"
+	.string "too. You're a beta tester!$"
 
 gText_ContractorPorygon_IThinkWereGonnaMake::
 	.string "I think we're gonna make the deadline!$"

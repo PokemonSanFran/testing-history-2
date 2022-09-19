@@ -5,6 +5,7 @@ mapscripts Oakland_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(WarehouseRave_HideObject_Script)
         call(Quest_GetTheBand_HideBikerC_Script)
+        call(Quest_NoGoodDeed_HideRainer_Script)
     }
 }
 script Oakland_Biker_Interact_Script{

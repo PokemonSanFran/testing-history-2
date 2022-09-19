@@ -6,6 +6,7 @@ mapscripts Presidio_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(YouLookTired_BlockMansionAccess_Script)
         call(Quest_BuildingScope_MoveEmployee_Script)
+        call(Quest_NoGoodDeed_HideEmployee_Script)
     }
 }
 

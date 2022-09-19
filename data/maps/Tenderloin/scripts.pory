@@ -1,22 +1,9 @@
 mapscripts Tenderloin_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Tenderloin_MapScripts_OnTransition)
+        call(EnterAriana_ObjectCleanUp_Script)
+        call(Quest_NoGoodDeed_HideRainer_Hotel_Script)
     }
     MAP_SCRIPT_ON_LOAD {
-        goto(Tenderloin_MapScripts_OnLoad)
-}
-}
-
-script Tenderloin_MapScripts_OnTransition {
-        checkitem(ITEM_MEGA_RING,1)
-        if (var(VAR_RESULT)) {
-            call(EnterAriana_ObjectCleanUp_Script)
-        }
-}
-
-script Tenderloin_MapScripts_OnLoad {
-        checkitem(ITEM_MEGA_RING,1)
-        if (var(VAR_RESULT)) {
-    call(EnterAriana_SetConeTiles_Script)
-        }
+        call(EnterAriana_SetConeTiles_Script)
+    }
 }

@@ -1,0 +1,267 @@
+//gText_NoGoodDeed_
+//Quest_NoGoodDeed_
+
+const FLAG_HIDE_NOGOODDEED_FAMILY = FLAG_TEMP_3
+const FLAG_HIDE_NOGOODDEED_ITEM = FLAG_TEMP_3
+const FLAG_HIDE_RAINER = FLAG_TEMP_3
+const FLAG_HIDE_EMPLOYEE = FLAG_TEMP_1
+const RAINER = 15
+const EMPLOYEE = 5
+
+script Quest_NoGoodDeed_HideEmployee_Script{
+    returnqueststate(QUEST_NOGOODDEED)
+
+    if(var(VAR_RESULT) > QUEST_MENU_SET_ACTIVE){
+        setflag(FLAG_HIDE_EMPLOYEE)
+    }
+}
+
+script Quest_NoGoodDeed_HideRainer_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BUILDINGSCOPE)
+
+    if (!var(VAR_RESULT)){
+        setflag(FLAG_HIDE_NOGOODDEED_FAMILY)
+    }
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NOGOODDEED)
+    if (var(VAR_RESULT)){
+        setflag(FLAG_HIDE_NOGOODDEED_FAMILY)
+    }
+
+    return
+}
+
+script Quest_NoGoodDeed_HideRainer_Hotel_Script{
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_NOGOODDEED)
+
+    if (!var(VAR_RESULT)){
+        setflag(FLAG_HIDE_RAINER)
+    }
+
+    return
+
+}
+
+script Quest_NoGoodDeed_Rainer_Interact_Script{
+    lock
+    faceplayer
+    returnqueststate(QUEST_NOGOODDEED)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_NoGoodDeed_Rainer_Active_Dialogue)
+        case QUEST_MENU_SET_REWARD: goto(Quest_NoGoodDeed_Rainer_Reward_Dialogue)
+        default: goto(Quest_NoGoodDeed_StartQuest_Dialogue)
+    }
+}
+
+script Quest_NoGoodDeed_StartQuest_Dialogue{
+    msgbox(gText_NoGoodDeed_HeyYou)
+    msgbox(gText_NoGoodDeed_YoureTheOne)
+    msgbox(gText_NoGoodDeed_TheyJustKickedUs)
+    trainerbattle_no_intro(TRAINER_LOLA_4,gText_NoGoodDeed_Heartless)
+    goto(Quest_NoGoodDeed_PostBattle_Script)
+}
+
+script Quest_NoGoodDeed_PostBattle_Script{
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NoGoodDeed_OkaySlowDown)
+    callnative(ClearMugshot)
+
+    msgbox(gText_NoGoodDeed_YouSaid)
+    msgbox(gText_NoGoodDeed_SoTheyCame)
+    msgbox(gText_NoGoodDeed_WithNoContact)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NoGoodDeed_ThatCantBeRight)
+    callnative(ClearMugshot)
+
+    msgbox(gText_NoGoodDeed_IToldYouBefore)
+
+    goto(Quest_NoGoodDeed_Rainer_Active_Dialogue)
+}
+
+script Quest_NoGoodDeed_Rainer_Active_Dialogue{
+    
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NoGoodDeed_LetMeTalk)
+    callnative(ClearMugshot)
+
+    msgbox(gText_NoGoodDeed_UhHuhIllBe)
+    closemessage
+    release
+    end
+}
+script Quest_NoGoodDeed_Rainer_Reward_Dialogue{
+    msgbox(gText_NoGoodDeed_HeyItMeansALot)
+    msgbox(gText_NoGoodDeed_TheyCameAndGot)
+    msgbox(gText_NoGoodDeed_IWishIHad)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NoGoodDeed_NoDontWorry)
+    callnative(ClearMugshot)
+
+    applymovement(RAINER,Common_Movement_WalkUp)
+    waitmovement(RAINER)
+    playse(SE_EXIT)
+    removeobject(RAINER)
+
+}
+
+script Quest_NoGoodDeed_YCEmployee_Interact_Script{
+    lock
+    faceplayer
+    returnqueststate(QUEST_NOGOODDEED)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Quest_NoGoodDeed_Employee_Active_Dialogue)
+        default: goto(Quest_BuildingScope_Event_Script)
+    }
+}
+script Quest_NoGoodDeed_Employee_Active_Dialogue{
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NoGoodDeed_HeyYou)
+    callnative(ClearMugshot)
+
+    msgbox(gText_NoGoodDeed_PlayerRight)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NoGoodDeed_DoYouRemember)
+    callnative(ClearMugshot)
+
+    msgbox(gText_NoGoodDeed_YeahIThinkSo)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NoGoodDeed_ITalkedTo)
+    callnative(ClearMugshot)
+
+    msgbox(gText_NoGoodDeed_WeSaid)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NoGoodDeed_YouToldMe)
+    callnative(ClearMugshot)
+
+    msgbox(gText_NoGoodDeed_OkayOkay)
+
+    applymovement(EMPLOYEE,Common_Movement_FaceAwayPlayer)
+    waitmovement(EMPLOYEE)
+    
+    msgbox(gText_NoGoodDeed_HeyCanYou)
+
+    applymovement(EMPLOYEE,Common_Movement_FacePlayer)
+    waitmovement(EMPLOYEE)
+
+    msgbox(gText_NoGoodDeed_IMadeACall)
+    msgbox(gText_NoGoodDeed_YouCanGo)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_NoGoodDeed_WaitSeriously)
+    callnative(ClearMugshot)
+
+    msgbox(gText_NoGoodDeed_AsAMatter)
+    closemessage
+
+    applymovement(EMPLOYEE,Quest_NoGoodDeed_LeaveScene_Movement)
+    waitmovement(EMPLOYEE)
+
+    removeobject(EMPLOYEE)
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_NOGOODDEED)
+    release
+    end
+}
+movement Quest_NoGoodDeed_LeaveScene_Movement{
+    walk_right * 6
+    step_end
+}
+text gText_NoGoodDeed_HeyYou{
+    format("")
+}
+text gText_NoGoodDeed_YoureTheOne{
+    format("")
+}
+text gText_NoGoodDeed_TheyJustKickedUs{
+    format("")
+}
+text gText_NoGoodDeed_Heartless{
+    format("")
+}
+text gText_NoGoodDeed_OkaySlowDown{
+    format("")
+}
+text gText_NoGoodDeed_YouSaid{
+    format("")
+}
+text gText_NoGoodDeed_SoTheyCame{
+    format("")
+}
+text gText_NoGoodDeed_WithNoContact{
+    format("")
+}
+text gText_NoGoodDeed_ThatCantBeRight{
+    format("")
+}
+text gText_NoGoodDeed_IToldYouBefore{
+    format("")
+}
+text gText_NoGoodDeed_LetMeTalk{
+    format("")
+}
+text gText_NoGoodDeed_UhHuhIllBe{
+    format("")
+}
+text gText_NoGoodDeed_HeyItMeansALot{
+    format("")
+}
+text gText_NoGoodDeed_TheyCameAndGot{
+    format("")
+}
+text gText_NoGoodDeed_IWishIHad{
+    format("")
+}
+text gText_NoGoodDeed_NoDontWorry{
+    format("")
+}
+text gText_NoGoodDeed_PlayerRight{
+    format("")
+}
+text gText_NoGoodDeed_DoYouRemember{
+    format("")
+}
+text gText_NoGoodDeed_YeahIThinkSo{
+    format("")
+}
+text gText_NoGoodDeed_ITalkedTo{
+    format("")
+}
+text gText_NoGoodDeed_WeSaid{
+    format("")
+}
+text gText_NoGoodDeed_YouToldMe{
+    format("")
+}
+text gText_NoGoodDeed_OkayOkay{
+    format("")
+}
+text gText_NoGoodDeed_HeyCanYou{
+    format("")
+}
+text gText_NoGoodDeed_IMadeACall{
+    format("")
+}
+text gText_NoGoodDeed_YouCanGo{
+    format("")
+}
+text gText_NoGoodDeed_WaitSeriously{
+    format("")
+}
+text gText_NoGoodDeed_AsAMatter{
+    format("")
+}

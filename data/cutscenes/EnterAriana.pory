@@ -4,19 +4,28 @@ const SIARL = 2
 const PERSON1 = 6
 const PERSON2 = 7
 const PERSON3 = 10
-
+const FLAG_HIDE_ARIANA = FLAG_TEMP_2
 
 script EnterAriana_ObjectCleanUp_Script {
-    setobjectxyperm(PERSON1,2,40)
-    setobjectxyperm(PERSON2,2,41)
-    setobjectxyperm(PERSON3,2,42)
-    setflag(FLAG_TEMP_2)
+    checkitem(ITEM_MEGA_RING,1)
+
+    if (var(VAR_RESULT)) {
+        setobjectxyperm(PERSON1,2,40)
+        setobjectxyperm(PERSON2,2,41)
+        setobjectxyperm(PERSON3,2,42)
+        setflag(FLAG_HIDE_ARIANA)
+    }
+    return
 }
 
 script EnterAriana_SetConeTiles_Script {
-    setmetatile(3,37,0x2E9,TRUE)
-    setmetatile(3,39,0x2E9,TRUE)
-    special(DrawWholeMapView)
+    checkitem(ITEM_MEGA_RING,1)
+        if (var(VAR_RESULT)) {
+            setmetatile(3,37,0x2E9,TRUE)
+            setmetatile(3,39,0x2E9,TRUE)
+            special(DrawWholeMapView)
+        }
+    return
 }
 
 
