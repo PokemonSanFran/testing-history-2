@@ -171,11 +171,11 @@ SorryAboutMyFriends_WalkSouth:
 	step_end
 
 gText_SorryAboutMyFriends_CongratsOnYourWin::
-	.string "{PLAYER}. Congrats on your win in\n"
-	.string "Berkeley.$"
+	.string "{PLAYER}. How goes your Gym\n"
+	.string "Challenge?$"
 
 gText_SorryAboutMyFriends_ItWasWait::
-	.string "Thanks! It was - wait.$"
+	.string "Good thanks! It's been - wait.$"
 
 gText_SorryAboutMyFriends_YourePartOf::
 	.string "You're part of TeamRocket, right?$"

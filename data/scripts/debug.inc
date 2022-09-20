@@ -5,6 +5,7 @@ Debug_ShowFieldMessageStringVar4::
 	releaseall
 	end
 
+
 Debug_CheatStart::
 	lockall
 	setflag FLAG_SYS_POKEMON_GET
@@ -26,11 +27,11 @@ Debug_CheatStart::
 	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
-	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
-	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
-	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom (and is corresponding gender)
-	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2 @ 2: Met Rival's Mom (and is corresponding gender)
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4 @ 4: Received Pokedex
+	setvar VAR_LITTLEROOT_TOWN_STATE, 4
+	setvar VAR_LITTLEROOT_INTRO_STATE, 7
+	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2
+	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
 	setflag FLAG_RECEIVED_BIKE
 	additem ITEM_ACRO_BIKE
 	setvar VAR_BRINEY_HOUSE_STATE, 1
@@ -38,8 +39,10 @@ Debug_CheatStart::
 	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
+	closemessage
 	release
 	end
+
 
 Debug_FlagsNotSetMessage::
 	lockall
@@ -49,35 +52,55 @@ Debug_FlagsNotSetMessage::
 	releaseall
 	end
 
-Debug_FlagsNotSetMessage_Text:
-	.string "Feature unavailable!\n"
-	.string "Please define a usable flag in:\l"
-	.string "'include/constants/overworld{UNDERSCORE}config.h'!$"
 
 Debug_Script_1::
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BUILDINGSCOPE
+	warp MAP_OAKLAND, 0
 	end
+
 
 Debug_Script_2::
+	warp MAP_PRESIDIO, 0
 	end
 
+
 Debug_Script_3::
+	warp MAP_TENDERLOIN, 0
 	end
+
 
 Debug_Script_4::
 	end
 
+
 Debug_Script_5::
 	end
+
 
 Debug_Script_6::
 	end
 
+
 Debug_Script_7::
 	end
 
+
 Debug_Script_8::
 	end
+
+
 Debug_Script_9::
 	end
+
+
 Debug_Script_10::
 	end
+
+
+Debug_CheckWeekDay_Text::
+	.string "Aaaah, yes!\l"
+	.string "{STR_VAR_1}s are made for dads!\l"
+	.string "And dad's car!$"
+
+Debug_FlagsNotSetMessage_Text::
+	.string "feature unavailable$"

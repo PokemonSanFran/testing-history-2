@@ -1,8 +1,8 @@
 EnterMorty_Event_Script::
 	switch VAR_GYM_4_STATE
-	case 3, EnterMorty_Event_Script_2
-	case 4, EnterMorty_Event_Script_3
-	case 5, EnterMorty_Event_Script_4
+	case GYM_SAVE_BEFORE_LEADER, EnterMorty_Event_Script_2
+	case GYM_DEFEATED_LEADER, EnterMorty_Event_Script_3
+	case GYM_EXPLAINED_BADGE_AND_TM, EnterMorty_Event_Script_4
 	goto EnterMorty_MortyIntro_Dialogue
 	return
 
@@ -41,7 +41,7 @@ EnterMorty_MortyIntro_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_SoundsExciting, MSGBOX_NPC
-	setvar VAR_GYM_4_STATE, 3
+	setvar VAR_GYM_4_STATE, GYM_SAVE_BEFORE_LEADER
 	call Common_EventScript_SaveGame
 	closemessage
 	goto EnterMorty_StartGymBattle_Script
@@ -59,7 +59,7 @@ EnterMorty_MortyDefeated_Script::
 	lock
 	setflag FLAG_BADGE04_GET
 	setflag FLAG_CONSTRUCTION_BREAKING_NEWS
-	addvar VAR_GYM_4_STATE, 1
+	setvar VAR_GYM_4_STATE, GYM_DEFEATED_LEADER
 	setvar VAR_0x8000, MUGSHOT_MORTY
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_ThatBattleWasHype, MSGBOX_NPC
@@ -79,7 +79,7 @@ EnterMorty_PostDefeat1_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_KeepingTheBabiesSafe, MSGBOX_NPC
 	callnative ClearMugshot
-	addvar VAR_GYM_4_STATE, 1
+	setvar VAR_GYM_4_STATE, GYM_EXPLAINED_BADGE_AND_TM
 	closemessage
 	release
 	end

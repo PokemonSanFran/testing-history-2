@@ -180,11 +180,11 @@ script SorryAboutMyFriends_GiveTicket_Script {
 }
 
 text gText_SorryAboutMyFriends_CongratsOnYourWin {
-    format("{PLAYER}. Congrats on your win in Berkeley.")
+    format("{PLAYER}. How goes your Gym Challenge?")
 }
 
 text gText_SorryAboutMyFriends_ItWasWait {
-    format("Thanks! It was - wait.")
+    format("Good thanks! It's been - wait.")
 }
 
 text gText_SorryAboutMyFriends_YourePartOf {

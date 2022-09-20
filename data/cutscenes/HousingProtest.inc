@@ -189,7 +189,7 @@ HousingProtest_LandlordTalkToCrowd_Dialogue::
 	msgbox gText_HousingProtest_ICanTakeBoth
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_ROUTE101_STATE, 1
+	setvar VAR_PSFROUTE63_STATE, SAVE_TEAMROCKET_PSFROUTE63
 	copyobjectxytoperm 12
 	copyobjectxytoperm 10
 	copyobjectxytoperm 11
@@ -227,7 +227,7 @@ HousingProtest_PostBattle_Dialogue::
 	playse SE_BALL_OPEN
 	waitse
 	removeobject 13
-	addvar VAR_ROUTE101_STATE, 1
+	setvar VAR_PSFROUTE63_STATE, DEFEATED_TEAMROCKET_PSFROUTE63
 	msgbox gText_HousingProtest_YouProudNow
 	msgbox gText_HousingProtest_KeepOnLicking
 	closemessage
@@ -267,7 +267,7 @@ HousingProtest_MoveGruntsAroundPlayer_Script::
 
 HousingProtest_InteractLandlord_Script::
 	lock
-	compare VAR_ROUTE101_STATE, 2
+	compare VAR_PSFROUTE63_STATE, DEFEATED_TEAMROCKET_PSFROUTE63
 	goto_if_lt HousingProtest_InteractLandlord_Script_2
 	compare VAR_TEMP_4, 3
 	goto_if_ne HousingProtest_InteractLandlord_Script_3

@@ -4,7 +4,7 @@ const ARIANA = 1
 const FLAG_HIDE_ARIANA = FLAG_TEMP_1 
 const JULIUS = 7
 const MADISON = 6
-const FLAG_HIDE_MADISON = FLAG_HIDE_MADISON
+const FLAG_HIDE_MADISON = FLAG_TEMP_2
 
 script HowDoWeGetHome_ObjectVisibility_Script{
     setflag(FLAG_HIDE_ARIANA)

@@ -176,7 +176,7 @@ script HousingProtest_LandlordTalkToCrowd_Dialogue {
     msgbox(gText_HousingProtest_ICanTakeBoth)
     callnative(ClearMugshot)
     closemessage
-    addvar(VAR_ROUTE101_STATE, 1)
+    setvar(VAR_PSFROUTE63_STATE,SAVE_TEAMROCKET_PSFROUTE63)
     copyobjectxytoperm(LANDLORD)
     copyobjectxytoperm(RABIA)
     copyobjectxytoperm(VITOMIR)
@@ -211,7 +211,7 @@ script HousingProtest_PostBattle_Dialogue {
     playse(SE_BALL_OPEN)
     waitse
     removeobject(TURTONATOR)
-    addvar(VAR_ROUTE101_STATE, 1)
+    setvar(VAR_PSFROUTE63_STATE,DEFEATED_TEAMROCKET_PSFROUTE63)
     msgbox(gText_HousingProtest_YouProudNow)
     msgbox(gText_HousingProtest_KeepOnLicking)
     closemessage
@@ -247,7 +247,7 @@ script HousingProtest_MoveGruntsAroundPlayer_Script {
 script HousingProtest_InteractLandlord_Script {
     lock
     
-    if (var (VAR_ROUTE101_STATE) < 2){
+    if (var (VAR_PSFROUTE63_STATE) < DEFEATED_TEAMROCKET_PSFROUTE63){
         msgbox(gText_HousingProtest_OhGod, MSGBOX_NPC)
     } elif (var (VAR_TEMP_4) != 3) {
         call(HousingProtest_InteractLandlord_Dialogue)

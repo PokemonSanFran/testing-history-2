@@ -126,8 +126,6 @@ script GroupOfAssholes_PostSaveTrigger_Script {
 script GroupOfAssholesAppears_GruntInteract_Script {
     lockall
         msgbox(gText_GroupOfAssholesAppears_GoDefend,MSGBOX_NPC)
-        closemessage
-        release
         end
 }
 
@@ -135,8 +133,9 @@ script GroupOfAssholes_StartBattle_Script {
         lockall
         applymovement(DAVID,Common_Movement_FaceDown)
         waitmovement(0)
-        //applymovement(PLAYER,Common_Movement_FaceRight) //TODO figure out why I can't control the direction the player faces here
-        trainerbattle_double(TRAINER_IHSAN_AND_EMMITT,gText_GroupOfAssholesAppears_WhoTheHellYouThink,gText_GroupOfAssholesAppears_WoahWhoDidWePick,gText_GroupOfAssholesAppears_NotEnoughMons,GroupOfAssholesAppears_GroupLeaves_Dialogue,NO_MUSIC)
+        msgbox(gText_GroupOfAssholesAppears_WhoTheHellYouThink)
+        trainerbattle_no_intro(TRAINER_IHSAN_AND_EMMITT,gText_GroupOfAssholesAppears_WoahWhoDidWePick)
+        goto(GroupOfAssholesAppears_GroupLeaves_Dialogue)
         closemessage
 }
 

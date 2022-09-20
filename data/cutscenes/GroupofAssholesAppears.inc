@@ -132,8 +132,6 @@ GroupOfAssholes_PostSaveTrigger_Script::
 GroupOfAssholesAppears_GruntInteract_Script::
 	lockall
 	msgbox gText_GroupOfAssholesAppears_GoDefend, MSGBOX_NPC
-	closemessage
-	release
 	end
 
 
@@ -141,7 +139,9 @@ GroupOfAssholes_StartBattle_Script::
 	lockall
 	applymovement 7, Common_Movement_FaceDown
 	waitmovement 0
-	trainerbattle_double TRAINER_IHSAN_AND_EMMITT, gText_GroupOfAssholesAppears_WhoTheHellYouThink, gText_GroupOfAssholesAppears_WoahWhoDidWePick, gText_GroupOfAssholesAppears_NotEnoughMons, GroupOfAssholesAppears_GroupLeaves_Dialogue, NO_MUSIC
+	msgbox gText_GroupOfAssholesAppears_WhoTheHellYouThink
+	trainerbattle_no_intro TRAINER_IHSAN_AND_EMMITT, gText_GroupOfAssholesAppears_WoahWhoDidWePick
+	goto GroupOfAssholesAppears_GroupLeaves_Dialogue
 	closemessage
 	return
 

@@ -196,6 +196,7 @@ script Quest_GetTheBand_Reward_Dialogue{
 
 script Quest_GetTheBand_Completed_Dialogue{
     msgbox(gText_GetTheBand_HowsTheUpgrade,MSGBOX_NPC)
+    end
 }
 
 text gText_GetTheBand_TheBikersSentYou{

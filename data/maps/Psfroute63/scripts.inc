@@ -23,12 +23,12 @@ Psfroute63_MapScripts_OnResume_1:
 
 
 Psfroute63_MapScripts_OnTransition::
-	switch VAR_ROUTE101_STATE
-	case 0, Psfroute63_MapScripts_OnTransition_2
-	case 1, Psfroute63_MapScripts_OnTransition_3
-	case 2, Psfroute63_MapScripts_OnTransition_4
-	case 3, Psfroute63_MapScripts_OnTransition_5
-	case 4, Psfroute63_MapScripts_OnTransition_6
+	switch VAR_PSFROUTE63_STATE
+	case PROTEST_NOTSTARTED, Psfroute63_MapScripts_OnTransition_2
+	case SAVE_TEAMROCKET_PSFROUTE63, Psfroute63_MapScripts_OnTransition_3
+	case DEFEATED_TEAMROCKET_PSFROUTE63, Psfroute63_MapScripts_OnTransition_4
+	case ENCOUNTER_ARIANA, Psfroute63_MapScripts_OnTransition_5
+	case GOT_ALCATRAZ_TICKET, Psfroute63_MapScripts_OnTransition_6
 	return
 
 Psfroute63_MapScripts_OnTransition_2:

@@ -14,9 +14,9 @@ Quest_NoGoodDeed_HideRainer_Script::
 	compare VAR_RESULT, 0
 	goto_if_eq Quest_NoGoodDeed_HideRainer_Script_2
 Quest_NoGoodDeed_HideRainer_Script_1:
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_NOGOODDEED
-	compare VAR_RESULT, 0
-	goto_if_ne Quest_NoGoodDeed_HideRainer_Script_5
+	returnqueststate QUEST_NOGOODDEED
+	compare VAR_RESULT, QUEST_MENU_SET_ACTIVE
+	goto_if_gt Quest_NoGoodDeed_HideRainer_Script_5
 Quest_NoGoodDeed_HideRainer_Script_4:
 	return
 
@@ -82,6 +82,7 @@ Quest_NoGoodDeed_PostBattle_Script::
 	msgbox gText_NoGoodDeed_ThatCantBeRight
 	callnative ClearMugshot
 	msgbox gText_NoGoodDeed_IToldYouBefore
+	startquest QUEST_NOGOODDEED
 	goto Quest_NoGoodDeed_Rainer_Active_Dialogue
 	return
 
@@ -109,7 +110,9 @@ Quest_NoGoodDeed_Rainer_Reward_Dialogue::
 	waitmovement 15
 	playse SE_EXIT
 	removeobject 15
-	return
+	completequest QUEST_NOGOODDEED
+	release
+	end
 
 
 Quest_NoGoodDeed_YCEmployee_Interact_Script::
@@ -178,85 +181,105 @@ Quest_NoGoodDeed_LeaveScene_Movement:
 	step_end
 
 gText_NoGoodDeed_HeyYou::
-	.string "$"
+	.string "Hey! You!$"
 
 gText_NoGoodDeed_YoureTheOne::
-	.string "$"
+	.string "youre that trainer that helped them\n"
+	.string "kick us out of our place$"
 
 gText_NoGoodDeed_TheyJustKickedUs::
-	.string "$"
+	.string "they told us to kick rocks,\n"
+	.string "misunderstanding my ass$"
 
 gText_NoGoodDeed_Heartless::
-	.string "$"
+	.string "they're heartless and you're no better$"
 
 gText_NoGoodDeed_OkaySlowDown::
-	.string "$"
+	.string "okay slow down$"
 
 gText_NoGoodDeed_YouSaid::
-	.string "$"
+	.string "you said they would helpm us relocate,\n"
+	.string "that they wouldn't just put us out$"
 
 gText_NoGoodDeed_SoTheyCame::
-	.string "$"
+	.string "so they came, helped us out, plopped us\n"
+	.string "in oakland and that was it$"
 
 gText_NoGoodDeed_WithNoContact::
-	.string "$"
+	.string "no contact no nothing, just back on the\n"
+	.string "streets$"
 
 gText_NoGoodDeed_ThatCantBeRight::
-	.string "$"
+	.string "that can't be right...$"
 
 gText_NoGoodDeed_IToldYouBefore::
-	.string "$"
+	.string "i told you before, theyre all monsters$"
 
 gText_NoGoodDeed_LetMeTalk::
-	.string "$"
+	.string "let me talk to them$"
 
 gText_NoGoodDeed_UhHuhIllBe::
-	.string "$"
+	.string "uh huh. i'll be here. waiting. on the\n"
+	.string "streets, where they want us.$"
 
 gText_NoGoodDeed_HeyItMeansALot::
-	.string "$"
+	.string "hey it means a lot that you made this\n"
+	.string "right$"
 
 gText_NoGoodDeed_TheyCameAndGot::
-	.string "$"
+	.string "they did one better and got a room in\n"
+	.string "here. there's a whole program they\l"
+	.string "hooked up and everything to help us to\l"
+	.string "something more stable$"
 
 gText_NoGoodDeed_IWishIHad::
-	.string "$"
+	.string "i wish i had something to give$"
 
 gText_NoGoodDeed_NoDontWorry::
-	.string "$"
+	.string "no dont worry about it$"
 
 gText_NoGoodDeed_PlayerRight::
-	.string "$"
+	.string "{PLAYER}, right?$"
 
 gText_NoGoodDeed_DoYouRemember::
-	.string "$"
+	.string "do you remember that building in town\n"
+	.string "you wanted to revamp, but you had to\l"
+	.string "empty the house first?$"
 
 gText_NoGoodDeed_YeahIThinkSo::
-	.string "$"
+	.string "yeah i think so$"
 
 gText_NoGoodDeed_ITalkedTo::
-	.string "$"
+	.string "i talked to those people that you\n"
+	.string "thought were pokemon. you just\l"
+	.string "dropped them off on th street? that\l"
+	.string "wasn't the deal.$"
 
 gText_NoGoodDeed_WeSaid::
-	.string "$"
+	.string "we said we'd do what....?$"
 
 gText_NoGoodDeed_YouToldMe::
-	.string "$"
+	.string "you told me you'd help them out, you\n"
+	.string "didn't want anybody to be put out$"
 
 gText_NoGoodDeed_OkayOkay::
-	.string "$"
+	.string "okay okay hold on$"
 
 gText_NoGoodDeed_HeyCanYou::
-	.string "$"
+	.string "hey can you do me a favor...$"
 
 gText_NoGoodDeed_IMadeACall::
-	.string "$"
+	.string "i made a call. we're gonna get them a\n"
+	.string "room in Tenderloin.$"
 
 gText_NoGoodDeed_YouCanGo::
-	.string "$"
+	.string "you can go to Tenderloin right now, they\n"
+	.string "should outside the hotel, you can see\l"
+	.string "for yourself.$"
 
 gText_NoGoodDeed_WaitSeriously::
-	.string "$"
+	.string "wait seriously?$"
 
 gText_NoGoodDeed_AsAMatter::
-	.string "$"
+	.string "as a matter of fact, I might head over\n"
+	.string "there too...$"

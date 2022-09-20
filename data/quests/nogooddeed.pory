@@ -23,8 +23,9 @@ script Quest_NoGoodDeed_HideRainer_Script{
         setflag(FLAG_HIDE_NOGOODDEED_FAMILY)
     }
 
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NOGOODDEED)
-    if (var(VAR_RESULT)){
+    returnqueststate(QUEST_NOGOODDEED)
+
+    if (var(VAR_RESULT) > QUEST_MENU_SET_ACTIVE){
         setflag(FLAG_HIDE_NOGOODDEED_FAMILY)
     }
 
@@ -78,6 +79,7 @@ script Quest_NoGoodDeed_PostBattle_Script{
     callnative(ClearMugshot)
 
     msgbox(gText_NoGoodDeed_IToldYouBefore)
+    startquest(QUEST_NOGOODDEED)
 
     goto(Quest_NoGoodDeed_Rainer_Active_Dialogue)
 }
@@ -109,6 +111,9 @@ script Quest_NoGoodDeed_Rainer_Reward_Dialogue{
     playse(SE_EXIT)
     removeobject(RAINER)
 
+    completequest(QUEST_NOGOODDEED)
+    release
+    end
 }
 
 script Quest_NoGoodDeed_YCEmployee_Interact_Script{
@@ -182,86 +187,86 @@ movement Quest_NoGoodDeed_LeaveScene_Movement{
     step_end
 }
 text gText_NoGoodDeed_HeyYou{
-    format("")
+    format("Hey! You!")
 }
 text gText_NoGoodDeed_YoureTheOne{
-    format("")
+    format("youre that trainer that helped them kick us out of our place")
 }
 text gText_NoGoodDeed_TheyJustKickedUs{
-    format("")
+    format("they told us to kick rocks, misunderstanding my ass")
 }
 text gText_NoGoodDeed_Heartless{
-    format("")
+    format("they're heartless and you're no better")
 }
 text gText_NoGoodDeed_OkaySlowDown{
-    format("")
+    format("okay slow down")
 }
 text gText_NoGoodDeed_YouSaid{
-    format("")
+    format("you said they would helpm us relocate, that they wouldn't just put us out")
 }
 text gText_NoGoodDeed_SoTheyCame{
-    format("")
+    format("so they came, helped us out, plopped us in oakland and that was it")
 }
 text gText_NoGoodDeed_WithNoContact{
-    format("")
+    format("no contact no nothing, just back on the streets")
 }
 text gText_NoGoodDeed_ThatCantBeRight{
-    format("")
+    format("that can't be right...")
 }
 text gText_NoGoodDeed_IToldYouBefore{
-    format("")
+    format("i told you before, theyre all monsters")
 }
 text gText_NoGoodDeed_LetMeTalk{
-    format("")
+    format("let me talk to them")
 }
 text gText_NoGoodDeed_UhHuhIllBe{
-    format("")
+    format("uh huh. i'll be here. waiting. on the streets, where they want us.")
 }
 text gText_NoGoodDeed_HeyItMeansALot{
-    format("")
+    format("hey it means a lot that you made this right")
 }
 text gText_NoGoodDeed_TheyCameAndGot{
-    format("")
+    format("they did one better and got a room in here. there's a whole program they hooked up and everything to help us to something more stable")
 }
 text gText_NoGoodDeed_IWishIHad{
-    format("")
+    format("i wish i had something to give")
 }
 text gText_NoGoodDeed_NoDontWorry{
-    format("")
+    format("no dont worry about it")
 }
 text gText_NoGoodDeed_PlayerRight{
-    format("")
+    format("{PLAYER}, right?")
 }
 text gText_NoGoodDeed_DoYouRemember{
-    format("")
+    format("do you remember that building in town you wanted to revamp, but you had to empty the house first?")
 }
 text gText_NoGoodDeed_YeahIThinkSo{
-    format("")
+    format("yeah i think so")
 }
 text gText_NoGoodDeed_ITalkedTo{
-    format("")
+    format("i talked to those people that you thought were pokemon. you just dropped them off on th street? that wasn't the deal.")
 }
 text gText_NoGoodDeed_WeSaid{
-    format("")
+    format("we said we'd do what....?")
 }
 text gText_NoGoodDeed_YouToldMe{
-    format("")
+    format("you told me you'd help them out, you didn't want anybody to be put out")
 }
 text gText_NoGoodDeed_OkayOkay{
-    format("")
+    format("okay okay hold on")
 }
 text gText_NoGoodDeed_HeyCanYou{
-    format("")
+    format("hey can you do me a favor...")
 }
 text gText_NoGoodDeed_IMadeACall{
-    format("")
+    format("i made a call. we're gonna get them a room in Tenderloin.")
 }
 text gText_NoGoodDeed_YouCanGo{
-    format("")
+    format("you can go to Tenderloin right now, they should outside the hotel, you can see for yourself.")
 }
 text gText_NoGoodDeed_WaitSeriously{
-    format("")
+    format("wait seriously?")
 }
 text gText_NoGoodDeed_AsAMatter{
-    format("")
+    format("as a matter of fact, I might head over there too...")
 }

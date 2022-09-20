@@ -262,7 +262,7 @@
       "x": 5,
       "y": 15,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     },
@@ -271,7 +271,7 @@
       "x": 6,
       "y": 15,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     },
@@ -280,7 +280,7 @@
       "x": 7,
       "y": 15,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     },
@@ -289,7 +289,7 @@
       "x": 8,
       "y": 15,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     },
@@ -298,7 +298,7 @@
       "x": 9,
       "y": 15,
       "elevation": 0,
-      "var": "VAR_ROUTE101_STATE",
+      "var": "VAR_PSFROUTE63_STATE",
       "var_value": "2",
       "script": "SorryAboutMyFriends_WalkToScene_Script"
     }

@@ -5,7 +5,7 @@ HowDoWeGetHome_ObjectVisibility_Script::
 	return
 
 HowDoWeGetHome_ObjectVisibility_Script_1:
-	setflag FLAG_HIDE_MADISON
+	setflag FLAG_TEMP_2
 	call HowDoWeGetHome_ChangeCrowdMovementType_Script
 	return
 

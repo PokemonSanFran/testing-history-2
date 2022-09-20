@@ -238,7 +238,7 @@ Quest_GetTheBand_Reward_Dialogue::
 
 Quest_GetTheBand_Completed_Dialogue::
 	msgbox gText_GetTheBand_HowsTheUpgrade, MSGBOX_NPC
-	return
+	end
 
 
 gText_GetTheBand_TheBikersSentYou::
