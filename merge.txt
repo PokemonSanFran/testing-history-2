@@ -1,0 +1,1195 @@
+On branch preOffSite
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+	modified:   INSTALL.md
+	modified:   Makefile
+	modified:   README.md
+	modified:   asm/macros/battle_ai_script.inc
+	modified:   asm/macros/battle_anim_script.inc
+	modified:   asm/macros/battle_frontier/battle_tower.inc
+	modified:   asm/macros/battle_script.inc
+	modified:   asm/macros/movement.inc
+	modified:   asm/macros/music_voice.inc
+	modified:   charmap.txt
+	modified:   data/battle_anim_scripts.s
+	modified:   data/battle_scripts_1.s
+	modified:   data/contest_ai_scripts.s
+	modified:   data/event_scripts.s
+	modified:   data/maps/AbandonedShip_HiddenFloorRooms/map.json
+	modified:   data/maps/AbandonedShip_Room_B1F/map.json
+	modified:   data/maps/BattleFrontier_BattleFactoryPreBattleRoom/scripts.inc
+	modified:   data/maps/BattleFrontier_BattlePalaceLobby/scripts.inc
+	modified:   data/maps/BattleFrontier_Lounge7/scripts.inc
+	modified:   data/maps/EverGrandeCity_ChampionsRoom/scripts.inc
+	modified:   data/maps/FortreeCity_DecorationShop/scripts.inc
+	modified:   data/maps/MeteorFalls_1F_1R/map.json
+	modified:   data/maps/MeteorFalls_B1F_2R/map.json
+	modified:   data/maps/MtPyre_6F/map.json
+	modified:   data/maps/MtPyre_Exterior/map.json
+	modified:   data/maps/OldaleTown/map.json
+	modified:   data/maps/OldaleTown/scripts.inc
+	modified:   data/maps/PacifidlogTown_House2/scripts.inc
+	modified:   data/maps/Route111/map.json
+	modified:   data/maps/Route111/scripts.inc
+	modified:   data/maps/Route113/map.json
+	modified:   data/maps/Route115/map.json
+	modified:   data/maps/SafariZone_Northwest/map.json
+	modified:   data/maps/ScorchedSlab/map.json
+	modified:   data/maps/SeafloorCavern_Room9/map.json
+	modified:   data/maps/ShoalCave_LowTideIceRoom/map.json
+	modified:   data/maps/SkyPillar_Top/map.json
+	modified:   data/maps/SkyPillar_Top/scripts.inc
+	modified:   data/maps/SlateportCity_PokemonFanClub/scripts.inc
+	modified:   data/maps/VerdanturfTown_FriendshipRatersHouse/scripts.inc
+	modified:   data/maps/VictoryRoad_B1F/map.json
+	modified:   data/scripts/mauville_man.inc
+	modified:   data/scripts/move_tutors.inc
+	modified:   data/scripts/new_game.inc
+	modified:   data/scripts/roulette.inc
+	modified:   data/sound_data.s
+	modified:   data/text/event_ticket_2.inc
+	modified:   data/text/pkmn_center_nurse.inc
+	modified:   data/text/secret_base_trainers.inc
+	modified:   gflib/bg.c
+	modified:   gflib/bg.h
+	modified:   gflib/sprite.c
+	modified:   gflib/sprite.h
+	modified:   gflib/string_util.c
+	modified:   gflib/text.c
+	modified:   gflib/text.h
+	modified:   gflib/window.c
+	modified:   gflib/window.h
+	renamed:    graphics/battle_anims/backgrounds/new/aeroblast.pal -> graphics/battle_anims/backgrounds/aeroblast.pal
+	renamed:    graphics/battle_anims/backgrounds/new/aeroblast_map.bin -> graphics/battle_anims/backgrounds/aeroblast_map.bin
+	renamed:    graphics/battle_anims/backgrounds/new/aeroblast_tiles.png -> graphics/battle_anims/backgrounds/aeroblast_tiles.png
+	renamed:    graphics/battle_anims/backgrounds/new/aura_sphere.pal -> graphics/battle_anims/backgrounds/aura_sphere.pal
+	renamed:    graphics/battle_anims/backgrounds/new/blackhole_eclipse.bin -> graphics/battle_anims/backgrounds/blackhole_eclipse.bin
+	renamed:    graphics/battle_anims/backgrounds/new/blackhole_eclipse.png -> graphics/battle_anims/backgrounds/blackhole_eclipse.png
+	renamed:    graphics/battle_anims/backgrounds/new/bloom_doom.bin -> graphics/battle_anims/backgrounds/bloom_doom.bin
+	renamed:    graphics/battle_anims/backgrounds/new/bloom_doom.pal -> graphics/battle_anims/backgrounds/bloom_doom.pal
+	renamed:    graphics/battle_anims/backgrounds/new/bloom_doom.png -> graphics/battle_anims/backgrounds/bloom_doom.png
+	renamed:    graphics/battle_anims/backgrounds/new/bolt_strike.bin -> graphics/battle_anims/backgrounds/bolt_strike.bin
+	renamed:    graphics/battle_anims/backgrounds/new/bolt_strike.pal -> graphics/battle_anims/backgrounds/bolt_strike.pal
+	renamed:    graphics/battle_anims/backgrounds/new/bolt_strike.png -> graphics/battle_anims/backgrounds/bolt_strike.png
+	renamed:    graphics/battle_anims/backgrounds/new/clangorous_soulblaze.bin -> graphics/battle_anims/backgrounds/clangorous_soulblaze.bin
+	renamed:    graphics/battle_anims/backgrounds/new/clangorous_soulblaze.pal -> graphics/battle_anims/backgrounds/clangorous_soulblaze.pal
+	renamed:    graphics/battle_anims/backgrounds/new/clangorous_soulblaze.png -> graphics/battle_anims/backgrounds/clangorous_soulblaze.png
+	renamed:    graphics/battle_anims/backgrounds/new/dynamax_cannon.pal -> graphics/battle_anims/backgrounds/dynamax_cannon.pal
+	renamed:    graphics/battle_anims/backgrounds/new/electric_terrain.bin -> graphics/battle_anims/backgrounds/electric_terrain.bin
+	renamed:    graphics/battle_anims/backgrounds/new/electric_terrain.pal -> graphics/battle_anims/backgrounds/electric_terrain.pal
+	renamed:    graphics/battle_anims/backgrounds/new/electric_terrain.png -> graphics/battle_anims/backgrounds/electric_terrain.png
+	renamed:    graphics/battle_anims/backgrounds/new/fire1.bin -> graphics/battle_anims/backgrounds/fire1.bin
+	renamed:    graphics/battle_anims/backgrounds/new/fire1.pal -> graphics/battle_anims/backgrounds/fire1.pal
+	renamed:    graphics/battle_anims/backgrounds/new/fire1.png -> graphics/battle_anims/backgrounds/fire1.png
+	renamed:    graphics/battle_anims/backgrounds/new/fire2.pal -> graphics/battle_anims/backgrounds/fire2.pal
+	renamed:    graphics/battle_anims/backgrounds/new/focus_blast.bin -> graphics/battle_anims/backgrounds/focus_blast.bin
+	renamed:    graphics/battle_anims/backgrounds/new/focus_blast.pal -> graphics/battle_anims/backgrounds/focus_blast.pal
+	renamed:    graphics/battle_anims/backgrounds/new/focus_blast.png -> graphics/battle_anims/backgrounds/focus_blast.png
+	renamed:    graphics/battle_anims/backgrounds/new/garbage_falls.pal -> graphics/battle_anims/backgrounds/garbage_falls.pal
+	renamed:    graphics/battle_anims/backgrounds/new/giga_impact.png -> graphics/battle_anims/backgrounds/giga_impact.png
+	renamed:    graphics/battle_anims/backgrounds/new/giga_impact_contest.bin -> graphics/battle_anims/backgrounds/giga_impact_contest.bin
+	renamed:    graphics/battle_anims/backgrounds/new/giga_impact_opponent.bin -> graphics/battle_anims/backgrounds/giga_impact_opponent.bin
+	renamed:    graphics/battle_anims/backgrounds/new/giga_impact_player.bin -> graphics/battle_anims/backgrounds/giga_impact_player.bin
+	renamed:    graphics/battle_anims/backgrounds/new/grassy_terrain.bin -> graphics/battle_anims/backgrounds/grassy_terrain.bin
+	renamed:    graphics/battle_anims/backgrounds/new/grassy_terrain.pal -> graphics/battle_anims/backgrounds/grassy_terrain.pal
+	renamed:    graphics/battle_anims/backgrounds/new/grassy_terrain.png -> graphics/battle_anims/backgrounds/grassy_terrain.png
+	renamed:    graphics/battle_anims/backgrounds/new/gunk_shot.pal -> graphics/battle_anims/backgrounds/gunk_shot.pal
+	renamed:    graphics/battle_anims/backgrounds/new/hurricane.bin -> graphics/battle_anims/backgrounds/hurricane.bin
+	renamed:    graphics/battle_anims/backgrounds/new/hurricane.pal -> graphics/battle_anims/backgrounds/hurricane.pal
+	renamed:    graphics/battle_anims/backgrounds/new/hurricane.png -> graphics/battle_anims/backgrounds/hurricane.png
+	renamed:    graphics/battle_anims/backgrounds/new/hydro_cannon.bin -> graphics/battle_anims/backgrounds/hydro_cannon.bin
+	renamed:    graphics/battle_anims/backgrounds/new/hydro_cannon.pal -> graphics/battle_anims/backgrounds/hydro_cannon.pal
+	renamed:    graphics/battle_anims/backgrounds/new/hydro_cannon.png -> graphics/battle_anims/backgrounds/hydro_cannon.png
+	renamed:    graphics/battle_anims/backgrounds/new/hydro_pump.bin -> graphics/battle_anims/backgrounds/hydro_pump.bin
+	renamed:    graphics/battle_anims/backgrounds/new/hydro_pump.pal -> graphics/battle_anims/backgrounds/hydro_pump.pal
+	renamed:    graphics/battle_anims/backgrounds/new/hydro_pump.png -> graphics/battle_anims/backgrounds/hydro_pump.png
+	renamed:    graphics/battle_anims/backgrounds/new/hyper_beam.pal -> graphics/battle_anims/backgrounds/hyper_beam.pal
+	renamed:    graphics/battle_anims/backgrounds/new/hyperspace_fury.pal -> graphics/battle_anims/backgrounds/hyperspace_fury.pal
+	renamed:    graphics/battle_anims/backgrounds/new/inferno_overdrive.bin -> graphics/battle_anims/backgrounds/inferno_overdrive.bin
+	renamed:    graphics/battle_anims/backgrounds/new/inferno_overdrive.pal -> graphics/battle_anims/backgrounds/inferno_overdrive.pal
+	renamed:    graphics/battle_anims/backgrounds/new/inferno_overdrive.png -> graphics/battle_anims/backgrounds/inferno_overdrive.png
+	renamed:    graphics/battle_anims/backgrounds/new/leaf_storm.bin -> graphics/battle_anims/backgrounds/leaf_storm.bin
+	renamed:    graphics/battle_anims/backgrounds/new/leaf_storm.pal -> graphics/battle_anims/backgrounds/leaf_storm.pal
+	renamed:    graphics/battle_anims/backgrounds/new/leaf_storm.png -> graphics/battle_anims/backgrounds/leaf_storm.png
+	renamed:    graphics/battle_anims/backgrounds/new/magic_room.pal -> graphics/battle_anims/backgrounds/magic_room.pal
+	renamed:    graphics/battle_anims/backgrounds/new/malicious_moonsault.bin -> graphics/battle_anims/backgrounds/malicious_moonsault.bin
+	renamed:    graphics/battle_anims/backgrounds/new/malicious_moonsault.pal -> graphics/battle_anims/backgrounds/malicious_moonsault.pal
+	renamed:    graphics/battle_anims/backgrounds/new/malicious_moonsault.png -> graphics/battle_anims/backgrounds/malicious_moonsault.png
+	renamed:    graphics/battle_anims/backgrounds/new/max_lightning.bin -> graphics/battle_anims/backgrounds/max_lightning.bin
+	renamed:    graphics/battle_anims/backgrounds/new/max_lightning.pal -> graphics/battle_anims/backgrounds/max_lightning.pal
+	renamed:    graphics/battle_anims/backgrounds/new/max_lightning.png -> graphics/battle_anims/backgrounds/max_lightning.png
+	renamed:    graphics/battle_anims/backgrounds/new/misty_terrain.bin -> graphics/battle_anims/backgrounds/misty_terrain.bin
+	renamed:    graphics/battle_anims/backgrounds/new/misty_terrain.pal -> graphics/battle_anims/backgrounds/misty_terrain.pal
+	renamed:    graphics/battle_anims/backgrounds/new/misty_terrain.png -> graphics/battle_anims/backgrounds/misty_terrain.png
+	renamed:    graphics/battle_anims/backgrounds/new/neverending_nightmare.bin -> graphics/battle_anims/backgrounds/neverending_nightmare.bin
+	renamed:    graphics/battle_anims/backgrounds/new/neverending_nightmare.pal -> graphics/battle_anims/backgrounds/neverending_nightmare.pal
+	renamed:    graphics/battle_anims/backgrounds/new/neverending_nightmare.png -> graphics/battle_anims/backgrounds/neverending_nightmare.png
+	deleted:    graphics/battle_anims/backgrounds/new/dark_void.bin
+	deleted:    graphics/battle_anims/backgrounds/new/giga_impact.pal
+	deleted:    graphics/battle_anims/backgrounds/new/giga_impact_opponent.pal
+	deleted:    graphics/battle_anims/backgrounds/new/giga_impact_opponent.png
+	deleted:    graphics/battle_anims/backgrounds/new/giga_impact_player.pal
+	deleted:    graphics/battle_anims/backgrounds/new/giga_impact_player.png
+	deleted:    graphics/battle_anims/backgrounds/new/high_speed.bin
+	deleted:    graphics/battle_anims/backgrounds/new/high_speed.pal
+	deleted:    graphics/battle_anims/backgrounds/new/high_speed.png
+	deleted:    graphics/battle_anims/backgrounds/new/rock_wrecker.bin
+	deleted:    graphics/battle_anims/backgrounds/new/tectonic_rage.bin
+	deleted:    graphics/battle_anims/backgrounds/new/trick_room.png
+	renamed:    graphics/battle_anims/backgrounds/new/nightmare.bin -> graphics/battle_anims/backgrounds/nightmare.bin
+	renamed:    graphics/battle_anims/backgrounds/new/nightmare.pal -> graphics/battle_anims/backgrounds/nightmare.pal
+	renamed:    graphics/battle_anims/backgrounds/new/nightmare.png -> graphics/battle_anims/backgrounds/nightmare.png
+	renamed:    graphics/battle_anims/backgrounds/new/poison_falls.pal -> graphics/battle_anims/backgrounds/poison_falls.pal
+	renamed:    graphics/battle_anims/backgrounds/new/psychic.pal -> graphics/battle_anims/backgrounds/psychic_new.pal
+	renamed:    graphics/battle_anims/backgrounds/new/psychic_terrain.bin -> graphics/battle_anims/backgrounds/psychic_terrain.bin
+	renamed:    graphics/battle_anims/backgrounds/new/psychic_terrain.pal -> graphics/battle_anims/backgrounds/psychic_terrain.pal
+	renamed:    graphics/battle_anims/backgrounds/new/psychic_terrain.png -> graphics/battle_anims/backgrounds/psychic_terrain.png
+	renamed:    graphics/battle_anims/backgrounds/new/rock_wrecker.pal -> graphics/battle_anims/backgrounds/rock_wrecker.pal
+	renamed:    graphics/battle_anims/backgrounds/new/shattered_psyche.bin -> graphics/battle_anims/backgrounds/shattered_psyche.bin
+	renamed:    graphics/battle_anims/backgrounds/new/shattered_psyche.pal -> graphics/battle_anims/backgrounds/shattered_psyche.pal
+	renamed:    graphics/battle_anims/backgrounds/new/shattered_psyche.png -> graphics/battle_anims/backgrounds/shattered_psyche.png
+	renamed:    graphics/battle_anims/backgrounds/new/sky_afternoon.pal -> graphics/battle_anims/backgrounds/sky_afternoon.pal
+	renamed:    graphics/battle_anims/backgrounds/new/sky_day.bin -> graphics/battle_anims/backgrounds/sky_day.bin
+	renamed:    graphics/battle_anims/backgrounds/new/sky_day.pal -> graphics/battle_anims/backgrounds/sky_day.pal
+	renamed:    graphics/battle_anims/backgrounds/new/sky_day.png -> graphics/battle_anims/backgrounds/sky_day.png
+	renamed:    graphics/battle_anims/backgrounds/new/sky_night.pal -> graphics/battle_anims/backgrounds/sky_night.pal
+	renamed:    graphics/battle_anims/backgrounds/new/sludge_wave.pal -> graphics/battle_anims/backgrounds/sludge_wave.pal
+	renamed:    graphics/battle_anims/backgrounds/new/snuggle_forever.bin -> graphics/battle_anims/backgrounds/snuggle_forever.bin
+	renamed:    graphics/battle_anims/backgrounds/new/snuggle_forever.pal -> graphics/battle_anims/backgrounds/snuggle_forever.pal
+	renamed:    graphics/battle_anims/backgrounds/new/snuggle_forever.png -> graphics/battle_anims/backgrounds/snuggle_forever.png
+	renamed:    graphics/battle_anims/backgrounds/new/soulstealing_7star_strike.bin -> graphics/battle_anims/backgrounds/soulstealing_7star_strike.bin
+	renamed:    graphics/battle_anims/backgrounds/new/soulstealing_7star_strike.pal -> graphics/battle_anims/backgrounds/soulstealing_7star_strike.pal
+	renamed:    graphics/battle_anims/backgrounds/new/soulstealing_7star_strike.png -> graphics/battle_anims/backgrounds/soulstealing_7star_strike.png
+	renamed:    graphics/battle_anims/backgrounds/new/spacial_rend.pal -> graphics/battle_anims/backgrounds/spacial_rend.pal
+	renamed:    graphics/battle_anims/backgrounds/new/spacial_rend.png -> graphics/battle_anims/backgrounds/spacial_rend.png
+	renamed:    graphics/battle_anims/backgrounds/new/steel_beam_bg.pal -> graphics/battle_anims/backgrounds/steel_beam.pal
+	renamed:    graphics/battle_anims/backgrounds/new/tectonic_rage.pal -> graphics/battle_anims/backgrounds/tectonic_rage.pal
+	renamed:    graphics/battle_anims/backgrounds/new/trick_room.bin -> graphics/battle_anims/backgrounds/trick_room.bin
+	renamed:    graphics/battle_anims/backgrounds/new/trick_room.pal -> graphics/battle_anims/backgrounds/trick_room.pal
+	renamed:    graphics/battle_anims/backgrounds/new/twinkle_tackle.bin -> graphics/battle_anims/backgrounds/twinkle_tackle.bin
+	renamed:    graphics/battle_anims/backgrounds/new/twinkle_tackle.pal -> graphics/battle_anims/backgrounds/twinkle_tackle.pal
+	renamed:    graphics/battle_anims/backgrounds/new/twinkle_tackle.png -> graphics/battle_anims/backgrounds/twinkle_tackle.png
+	renamed:    graphics/battle_anims/backgrounds/new/water_pulse.bin -> graphics/battle_anims/backgrounds/water_pulse.bin
+	renamed:    graphics/battle_anims/backgrounds/new/water_pulse.pal -> graphics/battle_anims/backgrounds/water_pulse.pal
+	renamed:    graphics/battle_anims/backgrounds/new/water_pulse.png -> graphics/battle_anims/backgrounds/water_pulse.png
+	renamed:    graphics/battle_anims/backgrounds/new/waterfall.bin -> graphics/battle_anims/backgrounds/waterfall.bin
+	renamed:    graphics/battle_anims/backgrounds/new/waterfall.pal -> graphics/battle_anims/backgrounds/waterfall.pal
+	renamed:    graphics/battle_anims/backgrounds/new/waterfall.png -> graphics/battle_anims/backgrounds/waterfall.png
+	new file:   graphics/battle_anims/backgrounds/windstorm_brew.pal
+	deleted:    graphics/battle_anims/backgrounds/windstorm_brew.png
+	renamed:    graphics/battle_anims/backgrounds/new/wonder_room.pal -> graphics/battle_anims/backgrounds/wonder_room.pal
+	renamed:    graphics/battle_anims/backgrounds/new/zmove_activate.bin -> graphics/battle_anims/backgrounds/zmove_activate.bin
+	renamed:    graphics/battle_anims/backgrounds/new/zmove_activate.pal -> graphics/battle_anims/backgrounds/zmove_activate.pal
+	renamed:    graphics/battle_anims/backgrounds/new/zmove_activate.png -> graphics/battle_anims/backgrounds/zmove_activate.png
+	renamed:    graphics/battle_anims/backgrounds/new/zmove_mountain.bin -> graphics/battle_anims/backgrounds/zmove_mountain.bin
+	renamed:    graphics/battle_anims/backgrounds/new/zmove_mountain.pal -> graphics/battle_anims/backgrounds/zmove_mountain.pal
+	renamed:    graphics/battle_anims/backgrounds/new/zmove_mountain.png -> graphics/battle_anims/backgrounds/zmove_mountain.png
+	deleted:    graphics/battle_anims/sprites/accupressure.png
+	new file:   graphics/battle_anims/sprites/acupressure.png
+	renamed:    graphics/battle_anims/sprites/new/alpha_stone.png -> graphics/battle_anims/sprites/alpha_stone.png
+	renamed:    graphics/battle_anims/sprites/new/anchor.png -> graphics/battle_anims/sprites/anchor.png
+	renamed:    graphics/battle_anims/sprites/new/apple.png -> graphics/battle_anims/sprites/apple.png
+	renamed:    graphics/battle_anims/sprites/new/arrows.png -> graphics/battle_anims/sprites/arrows.png
+	renamed:    graphics/battle_anims/sprites/new/assurance_hand.png -> graphics/battle_anims/sprites/assurance_hand.png
+	renamed:    graphics/battle_anims/sprites/new/aura_sphere.png -> graphics/battle_anims/sprites/aura_sphere.png
+	renamed:    graphics/battle_anims/sprites/new/avalanche_rocks.pal -> graphics/battle_anims/sprites/avalanche_rocks.pal
+	renamed:    graphics/battle_anims/sprites/new/baton_pass_ball.png -> graphics/battle_anims/sprites/baton_pass_ball.png
+	renamed:    graphics/battle_anims/sprites/new/berry_eaten.png -> graphics/battle_anims/sprites/berry_eaten.png
+	renamed:    graphics/battle_anims/sprites/new/berry_normal.png -> graphics/battle_anims/sprites/berry_normal.png
+	renamed:    graphics/battle_anims/sprites/new/big_rock.png -> graphics/battle_anims/sprites/big_rock.png
+	renamed:    graphics/battle_anims/sprites/new/blacephalon_head.png -> graphics/battle_anims/sprites/blacephalon_head.png
+	renamed:    graphics/battle_anims/sprites/new/blue_flare.pal -> graphics/battle_anims/sprites/blue_flare.pal
+	renamed:    graphics/battle_anims/sprites/new/branch.png -> graphics/battle_anims/sprites/branch.png
+	renamed:    graphics/battle_anims/sprites/new/brine.png -> graphics/battle_anims/sprites/brine.png
+	renamed:    graphics/battle_anims/sprites/new/cacoon.png -> graphics/battle_anims/sprites/cacoon.png
+	renamed:    graphics/battle_anims/sprites/new/chain_link.png -> graphics/battle_anims/sprites/chain_link.png
+	renamed:    graphics/battle_anims/sprites/new/chop.png -> graphics/battle_anims/sprites/chop.png
+	renamed:    graphics/battle_anims/sprites/new/confide.png -> graphics/battle_anims/sprites/confide.png
+	renamed:    graphics/battle_anims/sprites/new/crafty_shield.png -> graphics/battle_anims/sprites/crafty_shield.png
+	renamed:    graphics/battle_anims/sprites/new/curse_nail.png -> graphics/battle_anims/sprites/curse_nail.png
+	renamed:    graphics/battle_anims/sprites/new/draco_meteor.pal -> graphics/battle_anims/sprites/draco_meteor.pal
+	renamed:    graphics/battle_anims/sprites/new/dragon_pulse_ring.png -> graphics/battle_anims/sprites/dragon_pulse_ring.png
+	renamed:    graphics/battle_anims/sprites/new/dreepy_missile.png -> graphics/battle_anims/sprites/dreepy_missile.png
+	renamed:    graphics/battle_anims/sprites/new/drill.png -> graphics/battle_anims/sprites/drill.png
+	renamed:    graphics/battle_anims/sprites/new/embers.png -> graphics/battle_anims/sprites/embers.png
+	renamed:    graphics/battle_anims/sprites/new/fairy_lock_chains.png -> graphics/battle_anims/sprites/fairy_lock_chains.png
+	renamed:    graphics/battle_anims/sprites/new/fishies.png -> graphics/battle_anims/sprites/fishies.png
+	renamed:    graphics/battle_anims/sprites/new/fly.png -> graphics/battle_anims/sprites/fly.png
+	renamed:    graphics/battle_anims/sprites/new/fusion_flare.pal -> graphics/battle_anims/sprites/fusion_flare.pal
+	renamed:    graphics/battle_anims/sprites/new/garbage_poison_column.pal -> graphics/battle_anims/sprites/garbage_poison_column.pal
+	renamed:    graphics/battle_anims/sprites/new/gear.png -> graphics/battle_anims/sprites/gear.png
+	renamed:    graphics/battle_anims/sprites/new/gigavolt_havoc_spear.png -> graphics/battle_anims/sprites/gigavolt_havoc_spear.png
+	renamed:    graphics/battle_anims/sprites/new/golden_apple.png -> graphics/battle_anims/sprites/golden_apple.png
+	renamed:    graphics/battle_anims/sprites/new/green_drake.pal -> graphics/battle_anims/sprites/green_drake.pal
+	renamed:    graphics/battle_anims/sprites/new/green_star.png -> graphics/battle_anims/sprites/green_star_new.png
+	renamed:    graphics/battle_anims/sprites/new/thrash.png -> graphics/battle_anims/sprites/hands_and_feet_new.png
+	renamed:    graphics/battle_anims/sprites/new/heart_stamp.png -> graphics/battle_anims/sprites/heart_stamp.png
+	renamed:    graphics/battle_anims/sprites/new/hexes.png -> graphics/battle_anims/sprites/hexes.png
+	renamed:    graphics/battle_anims/sprites/new/hoopa_hand.png -> graphics/battle_anims/sprites/hoopa_hand.png
+	renamed:    graphics/battle_anims/sprites/new/hoopa_ring.png -> graphics/battle_anims/sprites/hoopa_ring.png
+	renamed:    graphics/battle_anims/sprites/new/horn.png -> graphics/battle_anims/sprites/horn_hit_new.png
+	renamed:    graphics/battle_anims/sprites/new/horn_leech.png -> graphics/battle_anims/sprites/horn_leech.png
+	renamed:    graphics/battle_anims/sprites/new/horseshoe_fist.png -> graphics/battle_anims/sprites/horseshoe_fist.png
+	renamed:    graphics/battle_anims/sprites/new/hydro_pump.png -> graphics/battle_anims/sprites/hydro_pump.png
+	renamed:    graphics/battle_anims/sprites/new/ice_rock.png -> graphics/battle_anims/sprites/ice_rock.png
+	renamed:    graphics/battle_anims/sprites/new/impact.pal -> graphics/battle_anims/sprites/impact_new.pal
+	renamed:    graphics/battle_anims/sprites/new/large_spike.png -> graphics/battle_anims/sprites/large_spike.png
+	renamed:    graphics/battle_anims/sprites/new/leaves.png -> graphics/battle_anims/sprites/leaves.png
+	renamed:    graphics/battle_anims/sprites/new/leech_seed.png -> graphics/battle_anims/sprites/leech_seed.png
+	renamed:    graphics/battle_anims/sprites/new/lightning_rain.png -> graphics/battle_anims/sprites/lightning_rain.png
+	renamed:    graphics/battle_anims/sprites/new/mean_look.png -> graphics/battle_anims/sprites/mean_look.png
+	renamed:    graphics/battle_anims/sprites/new/metal_bits.png -> graphics/battle_anims/sprites/metal_bits.png
+	renamed:    graphics/battle_anims/sprites/new/mud_bomb.png -> graphics/battle_anims/sprites/mud_bomb.png
+	renamed:    graphics/battle_anims/sprites/new/mushroom.png -> graphics/battle_anims/sprites/mushroom.png
+	renamed:    graphics/battle_anims/sprites/new/natural_gift_ring.pal -> graphics/battle_anims/sprites/natural_gift_ring.pal
+	renamed:    graphics/battle_anims/sprites/new/necrozma_star.png -> graphics/battle_anims/sprites/necrozma_star.png
+	deleted:    graphics/battle_anims/sprites/new/ability_pop_up.png
+	deleted:    graphics/battle_anims/sprites/new/acupressure_finger.png
+	deleted:    graphics/battle_anims/sprites/new/bee.png
+	deleted:    graphics/battle_anims/sprites/new/energy_ball.png
+	deleted:    graphics/battle_anims/sprites/new/flash_cannon_ball.png
+	deleted:    graphics/battle_anims/sprites/new/poison_jab.png
+	deleted:    graphics/battle_anims/sprites/new/power_gem.png
+	deleted:    graphics/battle_anims/sprites/new/punishment.png
+	deleted:    graphics/battle_anims/sprites/new/quick_guard.png
+	deleted:    graphics/battle_anims/sprites/new/stealth_rock.png
+	deleted:    graphics/battle_anims/sprites/new/stone_edge.png
+	deleted:    graphics/battle_anims/sprites/new/water_gun.png
+	deleted:    graphics/battle_anims/sprites/new/wood.png
+	renamed:    graphics/battle_anims/sprites/new/obstruct.png -> graphics/battle_anims/sprites/obstruct.png
+	renamed:    graphics/battle_anims/sprites/new/omega_stone.png -> graphics/battle_anims/sprites/omega_stone.png
+	renamed:    graphics/battle_anims/sprites/new/pink_diamond.png -> graphics/battle_anims/sprites/pink_diamond.png
+	renamed:    graphics/battle_anims/sprites/new/poison_column.png -> graphics/battle_anims/sprites/poison_column.png
+	renamed:    graphics/battle_anims/sprites/new/poltergeist.pal -> graphics/battle_anims/sprites/poltergeist.pal
+	renamed:    graphics/battle_anims/sprites/new/power_trick.png -> graphics/battle_anims/sprites/power_trick.png
+	deleted:    graphics/battle_anims/sprites/primal_particles.png
+	renamed:    graphics/battle_anims/sprites/new/purple_drake.png -> graphics/battle_anims/sprites/purple_drake.png
+	renamed:    graphics/battle_anims/sprites/new/razor_shell.png -> graphics/battle_anims/sprites/razor_shell.png
+	renamed:    graphics/battle_anims/sprites/new/rock_small.png -> graphics/battle_anims/sprites/rock_small.png
+	renamed:    graphics/battle_anims/sprites/new/rocks.png -> graphics/battle_anims/sprites/rocks_new.png
+	renamed:    graphics/battle_anims/sprites/new/shell_left.png -> graphics/battle_anims/sprites/shell_left.png
+	renamed:    graphics/battle_anims/sprites/new/shell_right.png -> graphics/battle_anims/sprites/shell_right.png
+	renamed:    graphics/battle_anims/sprites/new/spacial_rend_slices.pal -> graphics/battle_anims/sprites/spacial_rend_slices.pal
+	renamed:    graphics/battle_anims/sprites/new/spikes.png -> graphics/battle_anims/sprites/spikes_new.png
+	renamed:    graphics/battle_anims/sprites/new/spirit_shackle_arrow.png -> graphics/battle_anims/sprites/spirit_shackle_arrow.png
+	renamed:    graphics/battle_anims/sprites/new/steam_eruption.png -> graphics/battle_anims/sprites/steam_eruption.png
+	renamed:    graphics/battle_anims/sprites/new/steamroller.png -> graphics/battle_anims/sprites/steamroller.png
+	renamed:    graphics/battle_anims/sprites/new/steel_beam.pal -> graphics/battle_anims/sprites/steel_beam.pal
+	renamed:    graphics/battle_anims/sprites/new/stone_pillar.png -> graphics/battle_anims/sprites/stone_pillar.png
+	renamed:    graphics/battle_anims/sprites/new/straight_beam.png -> graphics/battle_anims/sprites/straight_beam.png
+	renamed:    graphics/battle_anims/sprites/new/substitute_back.png -> graphics/battle_anims/sprites/substitute_back_new.png
+	renamed:    graphics/battle_anims/sprites/new/substitute_front.png -> graphics/battle_anims/sprites/substitute_new.png
+	renamed:    graphics/battle_anims/sprites/new/surf_new.pal -> graphics/battle_anims/sprites/surf_new.pal
+	renamed:    graphics/battle_anims/sprites/new/sword.png -> graphics/battle_anims/sprites/sword_new.png
+	renamed:    graphics/battle_anims/sprites/new/teeth.png -> graphics/battle_anims/sprites/teeth_new.png
+	renamed:    graphics/battle_anims/sprites/new/tornado.png -> graphics/battle_anims/sprites/tornado.png
+	renamed:    graphics/battle_anims/sprites/new/z_move_symbol.png -> graphics/battle_anims/sprites/z_move_symbol.png
+	renamed:    graphics/battle_frontier/arena_judgement_symbols.png -> graphics/battle_frontier/arena_judgment_symbols.png
+	modified:   graphics/battle_transitions/rayquaza.png
+	modified:   graphics/battle_transitions/regis.png
+	new file:   graphics/naming_screen/back_button.png
+	new file:   graphics/naming_screen/buttons.pal
+	renamed:    graphics/battle_anims/backgrounds/new/dark_void.pal -> graphics/naming_screen/cursor.pal
+	modified:   graphics/naming_screen/cursor.png
+	new file:   graphics/naming_screen/cursor_filled.png
+	new file:   graphics/naming_screen/cursor_squished.png
+	modified:   graphics/naming_screen/input_arrow.png
+	modified:   graphics/naming_screen/menu.pal
+	new file:   graphics/naming_screen/ok_button.png
+	deleted:    graphics/naming_screen/page_button.png
+	new file:   graphics/naming_screen/page_swap_button.png
+	new file:   graphics/naming_screen/page_swap_frame.png
+	new file:   graphics/naming_screen/page_swap_lower.pal
+	new file:   graphics/naming_screen/page_swap_lower.png
+	new file:   graphics/naming_screen/page_swap_others.pal
+	new file:   graphics/naming_screen/page_swap_others.png
+	new file:   graphics/naming_screen/page_swap_upper.pal
+	new file:   graphics/naming_screen/page_swap_upper.png
+	renamed:    graphics/naming_screen/pc_icon/off.png -> graphics/naming_screen/pc_icon_off.png
+	renamed:    graphics/naming_screen/pc_icon/on.png -> graphics/naming_screen/pc_icon_on.png
+	renamed:    graphics/naming_screen/unused.pal -> graphics/naming_screen/rival.pal
+	deleted:    graphics/naming_screen/roptions.png
+	deleted:    graphics/naming_screen/rwindow.png
+	modified:   graphics/naming_screen/underscore.png
+	modified:   graphics/picture_frame/lobby.png
+	renamed:    graphics/pokemon/mega_abomasnow/back.png -> graphics/pokemon/abomasnow/mega/back.png
+	renamed:    graphics/pokemon/mega_abomasnow/front.png -> graphics/pokemon/abomasnow/mega/front.png
+	renamed:    graphics/pokemon/mega_abomasnow/icon.png -> graphics/pokemon/abomasnow/mega/icon.png
+	renamed:    graphics/pokemon/mega_abomasnow/normal.pal -> graphics/pokemon/abomasnow/mega/normal.pal
+	renamed:    graphics/pokemon/mega_abomasnow/shiny.pal -> graphics/pokemon/abomasnow/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_absol/back.png -> graphics/pokemon/absol/mega/back.png
+	renamed:    graphics/pokemon/mega_absol/front.png -> graphics/pokemon/absol/mega/front.png
+	renamed:    graphics/pokemon/mega_absol/icon.png -> graphics/pokemon/absol/mega/icon.png
+	renamed:    graphics/pokemon/mega_absol/normal.pal -> graphics/pokemon/absol/mega/normal.pal
+	renamed:    graphics/pokemon/mega_absol/shiny.pal -> graphics/pokemon/absol/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_aerodactyl/back.png -> graphics/pokemon/aerodactyl/mega/back.png
+	renamed:    graphics/pokemon/mega_aerodactyl/front.png -> graphics/pokemon/aerodactyl/mega/front.png
+	renamed:    graphics/pokemon/mega_aerodactyl/icon.png -> graphics/pokemon/aerodactyl/mega/icon.png
+	renamed:    graphics/pokemon/mega_aerodactyl/normal.pal -> graphics/pokemon/aerodactyl/mega/normal.pal
+	renamed:    graphics/pokemon/mega_aerodactyl/shiny.pal -> graphics/pokemon/aerodactyl/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_aggron/back.png -> graphics/pokemon/aggron/mega/back.png
+	renamed:    graphics/pokemon/mega_aggron/front.png -> graphics/pokemon/aggron/mega/front.png
+	renamed:    graphics/pokemon/mega_aggron/icon.png -> graphics/pokemon/aggron/mega/icon.png
+	renamed:    graphics/pokemon/mega_aggron/normal.pal -> graphics/pokemon/aggron/mega/normal.pal
+	renamed:    graphics/pokemon/mega_aggron/shiny.pal -> graphics/pokemon/aggron/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_alakazam/back.png -> graphics/pokemon/alakazam/mega/back.png
+	renamed:    graphics/pokemon/mega_alakazam/front.png -> graphics/pokemon/alakazam/mega/front.png
+	renamed:    graphics/pokemon/mega_alakazam/icon.png -> graphics/pokemon/alakazam/mega/icon.png
+	renamed:    graphics/pokemon/mega_alakazam/normal.pal -> graphics/pokemon/alakazam/mega/normal.pal
+	renamed:    graphics/pokemon/mega_alakazam/shiny.pal -> graphics/pokemon/alakazam/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_altaria/back.png -> graphics/pokemon/altaria/mega/back.png
+	renamed:    graphics/pokemon/mega_altaria/front.png -> graphics/pokemon/altaria/mega/front.png
+	renamed:    graphics/pokemon/mega_altaria/icon.png -> graphics/pokemon/altaria/mega/icon.png
+	renamed:    graphics/pokemon/mega_altaria/normal.pal -> graphics/pokemon/altaria/mega/normal.pal
+	renamed:    graphics/pokemon/mega_altaria/shiny.pal -> graphics/pokemon/altaria/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_ampharos/back.png -> graphics/pokemon/ampharos/mega/back.png
+	renamed:    graphics/pokemon/mega_ampharos/front.png -> graphics/pokemon/ampharos/mega/front.png
+	renamed:    graphics/pokemon/mega_ampharos/icon.png -> graphics/pokemon/ampharos/mega/icon.png
+	renamed:    graphics/pokemon/mega_ampharos/normal.pal -> graphics/pokemon/ampharos/mega/normal.pal
+	renamed:    graphics/pokemon/mega_ampharos/shiny.pal -> graphics/pokemon/ampharos/mega/shiny.pal
+	modified:   graphics/pokemon/appletun/icon.png
+	modified:   graphics/pokemon/applin/icon.png
+	new file:   graphics/pokemon/arcanine/hisuian/back.png
+	new file:   graphics/pokemon/arcanine/hisuian/front.png
+	new file:   graphics/pokemon/arcanine/hisuian/icon.png
+	new file:   graphics/pokemon/arcanine/hisuian/normal.pal
+	new file:   graphics/pokemon/arcanine/hisuian/shiny.pal
+	modified:   graphics/pokemon/articuno/galarian/icon.png
+	renamed:    graphics/pokemon/mega_audino/back.png -> graphics/pokemon/audino/mega/back.png
+	renamed:    graphics/pokemon/mega_audino/front.png -> graphics/pokemon/audino/mega/front.png
+	renamed:    graphics/pokemon/mega_audino/icon.png -> graphics/pokemon/audino/mega/icon.png
+	renamed:    graphics/pokemon/mega_audino/normal.pal -> graphics/pokemon/audino/mega/normal.pal
+	renamed:    graphics/pokemon/mega_audino/shiny.pal -> graphics/pokemon/audino/mega/shiny.pal
+	new file:   graphics/pokemon/avalugg/hisuian/back.png
+	new file:   graphics/pokemon/avalugg/hisuian/front.png
+	new file:   graphics/pokemon/avalugg/hisuian/icon.png
+	new file:   graphics/pokemon/avalugg/hisuian/normal.pal
+	new file:   graphics/pokemon/avalugg/hisuian/shiny.pal
+	renamed:    graphics/pokemon/mega_banette/back.png -> graphics/pokemon/banette/mega/back.png
+	renamed:    graphics/pokemon/mega_banette/front.png -> graphics/pokemon/banette/mega/front.png
+	renamed:    graphics/pokemon/mega_banette/icon.png -> graphics/pokemon/banette/mega/icon.png
+	renamed:    graphics/pokemon/mega_banette/normal.pal -> graphics/pokemon/banette/mega/normal.pal
+	renamed:    graphics/pokemon/mega_banette/shiny.pal -> graphics/pokemon/banette/mega/shiny.pal
+	new file:   graphics/pokemon/basculegion/icon.png
+	new file:   graphics/pokemon/basculegion/iconf.png
+	new file:   graphics/pokemon/basculin/white_striped/back.png
+	new file:   graphics/pokemon/basculin/white_striped/front.png
+	new file:   graphics/pokemon/basculin/white_striped/icon.png
+	new file:   graphics/pokemon/basculin/white_striped/normal.pal
+	new file:   graphics/pokemon/basculin/white_striped/shiny.pal
+	renamed:    graphics/pokemon/mega_beedrill/back.png -> graphics/pokemon/beedrill/mega/back.png
+	renamed:    graphics/pokemon/mega_beedrill/front.png -> graphics/pokemon/beedrill/mega/front.png
+	new file:   graphics/pokemon/beedrill/mega/icon.png
+	renamed:    graphics/pokemon/mega_beedrill/normal.pal -> graphics/pokemon/beedrill/mega/normal.pal
+	renamed:    graphics/pokemon/mega_beedrill/shiny.pal -> graphics/pokemon/beedrill/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_blastoise/back.png -> graphics/pokemon/blastoise/mega/back.png
+	renamed:    graphics/pokemon/mega_blastoise/front.png -> graphics/pokemon/blastoise/mega/front.png
+	renamed:    graphics/pokemon/mega_blastoise/icon.png -> graphics/pokemon/blastoise/mega/icon.png
+	renamed:    graphics/pokemon/mega_blastoise/normal.pal -> graphics/pokemon/blastoise/mega/normal.pal
+	renamed:    graphics/pokemon/mega_blastoise/shiny.pal -> graphics/pokemon/blastoise/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_blaziken/back.png -> graphics/pokemon/blaziken/mega/back.png
+	renamed:    graphics/pokemon/mega_blaziken/front.png -> graphics/pokemon/blaziken/mega/front.png
+	renamed:    graphics/pokemon/mega_blaziken/icon.png -> graphics/pokemon/blaziken/mega/icon.png
+	renamed:    graphics/pokemon/mega_blaziken/normal.pal -> graphics/pokemon/blaziken/mega/normal.pal
+	renamed:    graphics/pokemon/mega_blaziken/shiny.pal -> graphics/pokemon/blaziken/mega/shiny.pal
+	modified:   graphics/pokemon/blipbug/icon.png
+	new file:   graphics/pokemon/braviary/hisuian/back.png
+	new file:   graphics/pokemon/braviary/hisuian/front.png
+	new file:   graphics/pokemon/braviary/hisuian/icon.png
+	new file:   graphics/pokemon/braviary/hisuian/normal.pal
+	new file:   graphics/pokemon/braviary/hisuian/shiny.pal
+	new file:   graphics/pokemon/calyrex/icon.png
+	renamed:    graphics/pokemon/mega_camerupt/back.png -> graphics/pokemon/camerupt/mega/back.png
+	renamed:    graphics/pokemon/mega_camerupt/front.png -> graphics/pokemon/camerupt/mega/front.png
+	renamed:    graphics/pokemon/mega_camerupt/icon.png -> graphics/pokemon/camerupt/mega/icon.png
+	renamed:    graphics/pokemon/mega_camerupt/normal.pal -> graphics/pokemon/camerupt/mega/normal.pal
+	renamed:    graphics/pokemon/mega_camerupt/shiny.pal -> graphics/pokemon/camerupt/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_charizard_x/back.png -> graphics/pokemon/charizard/mega_x/back.png
+	renamed:    graphics/pokemon/mega_charizard_x/front.png -> graphics/pokemon/charizard/mega_x/front.png
+	renamed:    graphics/pokemon/mega_charizard_x/icon.png -> graphics/pokemon/charizard/mega_x/icon.png
+	renamed:    graphics/pokemon/mega_charizard_x/normal.pal -> graphics/pokemon/charizard/mega_x/normal.pal
+	renamed:    graphics/pokemon/mega_charizard_x/shiny.pal -> graphics/pokemon/charizard/mega_x/shiny.pal
+	renamed:    graphics/pokemon/mega_charizard_y/back.png -> graphics/pokemon/charizard/mega_y/back.png
+	renamed:    graphics/pokemon/mega_charizard_y/front.png -> graphics/pokemon/charizard/mega_y/front.png
+	renamed:    graphics/pokemon/mega_charizard_y/icon.png -> graphics/pokemon/charizard/mega_y/icon.png
+	renamed:    graphics/pokemon/mega_charizard_y/normal.pal -> graphics/pokemon/charizard/mega_y/normal.pal
+	renamed:    graphics/pokemon/mega_charizard_y/shiny.pal -> graphics/pokemon/charizard/mega_y/shiny.pal
+	new file:   graphics/pokemon/decidueye/hisuian/icon.png
+	new file:   graphics/pokemon/dialga/origin/back.png
+	new file:   graphics/pokemon/dialga/origin/front.png
+	new file:   graphics/pokemon/dialga/origin/icon.png
+	new file:   graphics/pokemon/dialga/origin/normal.pal
+	new file:   graphics/pokemon/dialga/origin/shiny.pal
+	renamed:    graphics/pokemon/mega_diancie/back.png -> graphics/pokemon/diancie/mega/back.png
+	renamed:    graphics/pokemon/mega_diancie/front.png -> graphics/pokemon/diancie/mega/front.png
+	renamed:    graphics/pokemon/mega_diancie/icon.png -> graphics/pokemon/diancie/mega/icon.png
+	renamed:    graphics/pokemon/mega_diancie/normal.pal -> graphics/pokemon/diancie/mega/normal.pal
+	renamed:    graphics/pokemon/mega_diancie/shiny.pal -> graphics/pokemon/diancie/mega/shiny.pal
+	renamed:    graphics/pokemon/alolan_diglett/back.png -> graphics/pokemon/diglett/alolan/back.png
+	renamed:    graphics/pokemon/alolan_diglett/front.png -> graphics/pokemon/diglett/alolan/front.png
+	renamed:    graphics/pokemon/alolan_diglett/icon.png -> graphics/pokemon/diglett/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_diglett/normal.pal -> graphics/pokemon/diglett/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_diglett/shiny.pal -> graphics/pokemon/diglett/alolan/shiny.pal
+	renamed:    graphics/pokemon/alolan_dugtrio/back.png -> graphics/pokemon/dugtrio/alolan/back.png
+	renamed:    graphics/pokemon/alolan_dugtrio/front.png -> graphics/pokemon/dugtrio/alolan/front.png
+	renamed:    graphics/pokemon/alolan_dugtrio/icon.png -> graphics/pokemon/dugtrio/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_dugtrio/normal.pal -> graphics/pokemon/dugtrio/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_dugtrio/shiny.pal -> graphics/pokemon/dugtrio/alolan/shiny.pal
+	new file:   graphics/pokemon/electrode/hisuian/back.png
+	new file:   graphics/pokemon/electrode/hisuian/front.png
+	new file:   graphics/pokemon/electrode/hisuian/icon.png
+	new file:   graphics/pokemon/electrode/hisuian/normal.pal
+	new file:   graphics/pokemon/electrode/hisuian/shiny.pal
+	new file:   graphics/pokemon/enamorus/icon.png
+	new file:   graphics/pokemon/enamorus/therian/icon.png
+	renamed:    graphics/pokemon/alolan_exeggutor/back.png -> graphics/pokemon/exeggutor/alolan/back.png
+	renamed:    graphics/pokemon/alolan_exeggutor/front.png -> graphics/pokemon/exeggutor/alolan/front.png
+	renamed:    graphics/pokemon/alolan_exeggutor/icon.png -> graphics/pokemon/exeggutor/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_exeggutor/normal.pal -> graphics/pokemon/exeggutor/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_exeggutor/shiny.pal -> graphics/pokemon/exeggutor/alolan/shiny.pal
+	renamed:    graphics/pokemon/mega_gallade/back.png -> graphics/pokemon/gallade/mega/back.png
+	renamed:    graphics/pokemon/mega_gallade/front.png -> graphics/pokemon/gallade/mega/front.png
+	renamed:    graphics/pokemon/mega_gallade/icon.png -> graphics/pokemon/gallade/mega/icon.png
+	renamed:    graphics/pokemon/mega_gallade/normal.pal -> graphics/pokemon/gallade/mega/normal.pal
+	renamed:    graphics/pokemon/mega_gallade/shiny.pal -> graphics/pokemon/gallade/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_garchomp/back.png -> graphics/pokemon/garchomp/mega/back.png
+	renamed:    graphics/pokemon/mega_garchomp/front.png -> graphics/pokemon/garchomp/mega/front.png
+	new file:   graphics/pokemon/garchomp/mega/icon.png
+	renamed:    graphics/pokemon/mega_garchomp/normal.pal -> graphics/pokemon/garchomp/mega/normal.pal
+	renamed:    graphics/pokemon/mega_garchomp/shiny.pal -> graphics/pokemon/garchomp/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_gardevoir/back.png -> graphics/pokemon/gardevoir/mega/back.png
+	renamed:    graphics/pokemon/mega_gardevoir/front.png -> graphics/pokemon/gardevoir/mega/front.png
+	renamed:    graphics/pokemon/mega_gardevoir/icon.png -> graphics/pokemon/gardevoir/mega/icon.png
+	renamed:    graphics/pokemon/mega_gardevoir/normal.pal -> graphics/pokemon/gardevoir/mega/normal.pal
+	renamed:    graphics/pokemon/mega_gardevoir/shiny.pal -> graphics/pokemon/gardevoir/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_gengar/back.png -> graphics/pokemon/gengar/mega/back.png
+	renamed:    graphics/pokemon/mega_gengar/front.png -> graphics/pokemon/gengar/mega/front.png
+	renamed:    graphics/pokemon/mega_gengar/icon.png -> graphics/pokemon/gengar/mega/icon.png
+	renamed:    graphics/pokemon/mega_gengar/normal.pal -> graphics/pokemon/gengar/mega/normal.pal
+	renamed:    graphics/pokemon/mega_gengar/shiny.pal -> graphics/pokemon/gengar/mega/shiny.pal
+	renamed:    graphics/pokemon/alolan_geodude/back.png -> graphics/pokemon/geodude/alolan/back.png
+	renamed:    graphics/pokemon/alolan_geodude/front.png -> graphics/pokemon/geodude/alolan/front.png
+	renamed:    graphics/pokemon/alolan_geodude/icon.png -> graphics/pokemon/geodude/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_geodude/normal.pal -> graphics/pokemon/geodude/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_geodude/shiny.pal -> graphics/pokemon/geodude/alolan/shiny.pal
+	renamed:    graphics/pokemon/mega_glalie/back.png -> graphics/pokemon/glalie/mega/back.png
+	renamed:    graphics/pokemon/mega_glalie/front.png -> graphics/pokemon/glalie/mega/front.png
+	new file:   graphics/pokemon/glalie/mega/icon.png
+	renamed:    graphics/pokemon/mega_glalie/normal.pal -> graphics/pokemon/glalie/mega/normal.pal
+	renamed:    graphics/pokemon/mega_glalie/shiny.pal -> graphics/pokemon/glalie/mega/shiny.pal
+	renamed:    graphics/pokemon/alolan_golem/back.png -> graphics/pokemon/golem/alolan/back.png
+	renamed:    graphics/pokemon/alolan_golem/front.png -> graphics/pokemon/golem/alolan/front.png
+	renamed:    graphics/pokemon/alolan_golem/icon.png -> graphics/pokemon/golem/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_golem/normal.pal -> graphics/pokemon/golem/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_golem/shiny.pal -> graphics/pokemon/golem/alolan/shiny.pal
+	new file:   graphics/pokemon/goodra/hisuian/back.png
+	new file:   graphics/pokemon/goodra/hisuian/front.png
+	new file:   graphics/pokemon/goodra/hisuian/icon.png
+	new file:   graphics/pokemon/goodra/hisuian/normal.pal
+	new file:   graphics/pokemon/goodra/hisuian/shiny.pal
+	renamed:    graphics/pokemon/alolan_graveler/back.png -> graphics/pokemon/graveler/alolan/back.png
+	renamed:    graphics/pokemon/alolan_graveler/front.png -> graphics/pokemon/graveler/alolan/front.png
+	renamed:    graphics/pokemon/alolan_graveler/icon.png -> graphics/pokemon/graveler/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_graveler/normal.pal -> graphics/pokemon/graveler/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_graveler/shiny.pal -> graphics/pokemon/graveler/alolan/shiny.pal
+	renamed:    graphics/pokemon/alolan_grimer/back.png -> graphics/pokemon/grimer/alolan/back.png
+	renamed:    graphics/pokemon/alolan_grimer/front.png -> graphics/pokemon/grimer/alolan/front.png
+	renamed:    graphics/pokemon/alolan_grimer/icon.png -> graphics/pokemon/grimer/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_grimer/normal.pal -> graphics/pokemon/grimer/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_grimer/shiny.pal -> graphics/pokemon/grimer/alolan/shiny.pal
+	renamed:    graphics/pokemon/primal_groudon/back.png -> graphics/pokemon/groudon/primal/back.png
+	renamed:    graphics/pokemon/primal_groudon/front.png -> graphics/pokemon/groudon/primal/front.png
+	renamed:    graphics/pokemon/primal_groudon/icon.png -> graphics/pokemon/groudon/primal/icon.png
+	renamed:    graphics/pokemon/primal_groudon/normal.pal -> graphics/pokemon/groudon/primal/normal.pal
+	renamed:    graphics/pokemon/primal_groudon/shiny.pal -> graphics/pokemon/groudon/primal/shiny.pal
+	new file:   graphics/pokemon/growlithe/hisuian/back.png
+	new file:   graphics/pokemon/growlithe/hisuian/front.png
+	new file:   graphics/pokemon/growlithe/hisuian/icon.png
+	new file:   graphics/pokemon/growlithe/hisuian/normal.pal
+	new file:   graphics/pokemon/growlithe/hisuian/shiny.pal
+	renamed:    graphics/pokemon/mega_gyarados/back.png -> graphics/pokemon/gyarados/mega/back.png
+	renamed:    graphics/pokemon/mega_gyarados/front.png -> graphics/pokemon/gyarados/mega/front.png
+	renamed:    graphics/pokemon/mega_gyarados/icon.png -> graphics/pokemon/gyarados/mega/icon.png
+	renamed:    graphics/pokemon/mega_gyarados/normal.pal -> graphics/pokemon/gyarados/mega/normal.pal
+	renamed:    graphics/pokemon/mega_gyarados/shiny.pal -> graphics/pokemon/gyarados/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_heracross/back.png -> graphics/pokemon/heracross/mega/back.png
+	renamed:    graphics/pokemon/mega_heracross/front.png -> graphics/pokemon/heracross/mega/front.png
+	renamed:    graphics/pokemon/mega_heracross/icon.png -> graphics/pokemon/heracross/mega/icon.png
+	renamed:    graphics/pokemon/mega_heracross/normal.pal -> graphics/pokemon/heracross/mega/normal.pal
+	renamed:    graphics/pokemon/mega_heracross/shiny.pal -> graphics/pokemon/heracross/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_houndoom/back.png -> graphics/pokemon/houndoom/mega/back.png
+	renamed:    graphics/pokemon/mega_houndoom/front.png -> graphics/pokemon/houndoom/mega/front.png
+	renamed:    graphics/pokemon/mega_houndoom/icon.png -> graphics/pokemon/houndoom/mega/icon.png
+	renamed:    graphics/pokemon/mega_houndoom/normal.pal -> graphics/pokemon/houndoom/mega/normal.pal
+	renamed:    graphics/pokemon/mega_houndoom/shiny.pal -> graphics/pokemon/houndoom/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_kangaskhan/back.png -> graphics/pokemon/kangaskhan/mega/back.png
+	renamed:    graphics/pokemon/mega_kangaskhan/front.png -> graphics/pokemon/kangaskhan/mega/front.png
+	renamed:    graphics/pokemon/mega_kangaskhan/icon.png -> graphics/pokemon/kangaskhan/mega/icon.png
+	renamed:    graphics/pokemon/mega_kangaskhan/normal.pal -> graphics/pokemon/kangaskhan/mega/normal.pal
+	renamed:    graphics/pokemon/mega_kangaskhan/shiny.pal -> graphics/pokemon/kangaskhan/mega/shiny.pal
+	new file:   graphics/pokemon/kleavor/back.png
+	new file:   graphics/pokemon/kleavor/front.png
+	new file:   graphics/pokemon/kleavor/icon.png
+	new file:   graphics/pokemon/kleavor/normal.pal
+	new file:   graphics/pokemon/kleavor/shiny.pal
+	renamed:    graphics/pokemon/primal_kyogre/back.png -> graphics/pokemon/kyogre/primal/back.png
+	renamed:    graphics/pokemon/primal_kyogre/front.png -> graphics/pokemon/kyogre/primal/front.png
+	renamed:    graphics/pokemon/primal_kyogre/icon.png -> graphics/pokemon/kyogre/primal/icon.png
+	renamed:    graphics/pokemon/primal_kyogre/normal.pal -> graphics/pokemon/kyogre/primal/normal.pal
+	renamed:    graphics/pokemon/primal_kyogre/shiny.pal -> graphics/pokemon/kyogre/primal/shiny.pal
+	renamed:    graphics/pokemon/mega_latias/back.png -> graphics/pokemon/latias/mega/back.png
+	renamed:    graphics/pokemon/mega_latias/front.png -> graphics/pokemon/latias/mega/front.png
+	new file:   graphics/pokemon/latias/mega/icon.png
+	renamed:    graphics/pokemon/mega_latias/normal.pal -> graphics/pokemon/latias/mega/normal.pal
+	renamed:    graphics/pokemon/mega_latias/shiny.pal -> graphics/pokemon/latias/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_latios/back.png -> graphics/pokemon/latios/mega/back.png
+	renamed:    graphics/pokemon/mega_latios/front.png -> graphics/pokemon/latios/mega/front.png
+	new file:   graphics/pokemon/latios/mega/icon.png
+	renamed:    graphics/pokemon/mega_latios/normal.pal -> graphics/pokemon/latios/mega/normal.pal
+	renamed:    graphics/pokemon/mega_latios/shiny.pal -> graphics/pokemon/latios/mega/shiny.pal
+	new file:   graphics/pokemon/lilligant/hisuian/back.png
+	new file:   graphics/pokemon/lilligant/hisuian/front.png
+	new file:   graphics/pokemon/lilligant/hisuian/icon.png
+	new file:   graphics/pokemon/lilligant/hisuian/normal.pal
+	new file:   graphics/pokemon/lilligant/hisuian/shiny.pal
+	renamed:    graphics/pokemon/mega_lopunny/back.png -> graphics/pokemon/lopunny/mega/back.png
+	renamed:    graphics/pokemon/mega_lopunny/front.png -> graphics/pokemon/lopunny/mega/front.png
+	renamed:    graphics/pokemon/mega_lopunny/icon.png -> graphics/pokemon/lopunny/mega/icon.png
+	renamed:    graphics/pokemon/mega_lopunny/normal.pal -> graphics/pokemon/lopunny/mega/normal.pal
+	renamed:    graphics/pokemon/mega_lopunny/shiny.pal -> graphics/pokemon/lopunny/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_lucario/back.png -> graphics/pokemon/lucario/mega/back.png
+	renamed:    graphics/pokemon/mega_lucario/front.png -> graphics/pokemon/lucario/mega/front.png
+	renamed:    graphics/pokemon/mega_lucario/icon.png -> graphics/pokemon/lucario/mega/icon.png
+	renamed:    graphics/pokemon/mega_lucario/normal.pal -> graphics/pokemon/lucario/mega/normal.pal
+	renamed:    graphics/pokemon/mega_lucario/shiny.pal -> graphics/pokemon/lucario/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_manectric/back.png -> graphics/pokemon/manectric/mega/back.png
+	renamed:    graphics/pokemon/mega_manectric/front.png -> graphics/pokemon/manectric/mega/front.png
+	renamed:    graphics/pokemon/mega_manectric/icon.png -> graphics/pokemon/manectric/mega/icon.png
+	renamed:    graphics/pokemon/mega_manectric/normal.pal -> graphics/pokemon/manectric/mega/normal.pal
+	renamed:    graphics/pokemon/mega_manectric/shiny.pal -> graphics/pokemon/manectric/mega/shiny.pal
+	renamed:    graphics/pokemon/alolan_marowak/back.png -> graphics/pokemon/marowak/alolan/back.png
+	renamed:    graphics/pokemon/alolan_marowak/front.png -> graphics/pokemon/marowak/alolan/front.png
+	renamed:    graphics/pokemon/alolan_marowak/icon.png -> graphics/pokemon/marowak/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_marowak/normal.pal -> graphics/pokemon/marowak/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_marowak/shiny.pal -> graphics/pokemon/marowak/alolan/shiny.pal
+	renamed:    graphics/pokemon/mega_mawile/back.png -> graphics/pokemon/mawile/mega/back.png
+	renamed:    graphics/pokemon/mega_mawile/front.png -> graphics/pokemon/mawile/mega/front.png
+	new file:   graphics/pokemon/mawile/mega/icon.png
+	renamed:    graphics/pokemon/mega_mawile/normal.pal -> graphics/pokemon/mawile/mega/normal.pal
+	renamed:    graphics/pokemon/mega_mawile/shiny.pal -> graphics/pokemon/mawile/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_medicham/back.png -> graphics/pokemon/medicham/mega/back.png
+	renamed:    graphics/pokemon/mega_medicham/front.png -> graphics/pokemon/medicham/mega/front.png
+	renamed:    graphics/pokemon/mega_medicham/icon.png -> graphics/pokemon/medicham/mega/icon.png
+	renamed:    graphics/pokemon/mega_medicham/normal.pal -> graphics/pokemon/medicham/mega/normal.pal
+	renamed:    graphics/pokemon/mega_medicham/shiny.pal -> graphics/pokemon/medicham/mega/shiny.pal
+	deleted:    graphics/pokemon/mega_beedrill/icon.png
+	deleted:    graphics/pokemon/mega_garchomp/icon.png
+	deleted:    graphics/pokemon/mega_glalie/icon.png
+	deleted:    graphics/pokemon/mega_latias/icon.png
+	deleted:    graphics/pokemon/mega_latios/icon.png
+	deleted:    graphics/pokemon/mega_mawile/icon.png
+	deleted:    graphics/pokemon/mega_pidgeot/icon.png
+	deleted:    graphics/pokemon/mega_scizor/icon.png
+	deleted:    graphics/pokemon/mega_slowbro/icon.png
+	renamed:    graphics/pokemon/alolan_meowth/back.png -> graphics/pokemon/meowth/alolan/back.png
+	renamed:    graphics/pokemon/alolan_meowth/front.png -> graphics/pokemon/meowth/alolan/front.png
+	renamed:    graphics/pokemon/alolan_meowth/icon.png -> graphics/pokemon/meowth/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_meowth/normal.pal -> graphics/pokemon/meowth/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_meowth/shiny.pal -> graphics/pokemon/meowth/alolan/shiny.pal
+	renamed:    graphics/pokemon/mega_metagross/back.png -> graphics/pokemon/metagross/mega/back.png
+	renamed:    graphics/pokemon/mega_metagross/front.png -> graphics/pokemon/metagross/mega/front.png
+	renamed:    graphics/pokemon/mega_metagross/icon.png -> graphics/pokemon/metagross/mega/icon.png
+	renamed:    graphics/pokemon/mega_metagross/normal.pal -> graphics/pokemon/metagross/mega/normal.pal
+	renamed:    graphics/pokemon/mega_metagross/shiny.pal -> graphics/pokemon/metagross/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_mewtwo_x/back.png -> graphics/pokemon/mewtwo/mega_x/back.png
+	renamed:    graphics/pokemon/mega_mewtwo_x/front.png -> graphics/pokemon/mewtwo/mega_x/front.png
+	renamed:    graphics/pokemon/mega_mewtwo_x/icon.png -> graphics/pokemon/mewtwo/mega_x/icon.png
+	renamed:    graphics/pokemon/mega_mewtwo_x/normal.pal -> graphics/pokemon/mewtwo/mega_x/normal.pal
+	renamed:    graphics/pokemon/mega_mewtwo_x/shiny.pal -> graphics/pokemon/mewtwo/mega_x/shiny.pal
+	renamed:    graphics/pokemon/mega_mewtwo_y/back.png -> graphics/pokemon/mewtwo/mega_y/back.png
+	renamed:    graphics/pokemon/mega_mewtwo_y/front.png -> graphics/pokemon/mewtwo/mega_y/front.png
+	renamed:    graphics/pokemon/mega_mewtwo_y/icon.png -> graphics/pokemon/mewtwo/mega_y/icon.png
+	renamed:    graphics/pokemon/mega_mewtwo_y/normal.pal -> graphics/pokemon/mewtwo/mega_y/normal.pal
+	renamed:    graphics/pokemon/mega_mewtwo_y/shiny.pal -> graphics/pokemon/mewtwo/mega_y/shiny.pal
+	modified:   graphics/pokemon/moltres/galarian/icon.png
+	renamed:    graphics/pokemon/alolan_muk/back.png -> graphics/pokemon/muk/alolan/back.png
+	renamed:    graphics/pokemon/alolan_muk/front.png -> graphics/pokemon/muk/alolan/front.png
+	renamed:    graphics/pokemon/alolan_muk/icon.png -> graphics/pokemon/muk/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_muk/normal.pal -> graphics/pokemon/muk/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_muk/shiny.pal -> graphics/pokemon/muk/alolan/shiny.pal
+	renamed:    graphics/pokemon/alolan_ninetales/back.png -> graphics/pokemon/ninetales/alolan/back.png
+	renamed:    graphics/pokemon/alolan_ninetales/front.png -> graphics/pokemon/ninetales/alolan/front.png
+	renamed:    graphics/pokemon/alolan_ninetales/icon.png -> graphics/pokemon/ninetales/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_ninetales/normal.pal -> graphics/pokemon/ninetales/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_ninetales/shiny.pal -> graphics/pokemon/ninetales/alolan/shiny.pal
+	new file:   graphics/pokemon/overqwil/back.png
+	new file:   graphics/pokemon/overqwil/front.png
+	new file:   graphics/pokemon/overqwil/icon.png
+	new file:   graphics/pokemon/overqwil/normal.pal
+	new file:   graphics/pokemon/overqwil/shiny.pal
+	new file:   graphics/pokemon/palkia/origin/back.png
+	new file:   graphics/pokemon/palkia/origin/front.png
+	new file:   graphics/pokemon/palkia/origin/icon.png
+	new file:   graphics/pokemon/palkia/origin/normal.pal
+	new file:   graphics/pokemon/palkia/origin/shiny.pal
+	renamed:    graphics/pokemon/alolan_persian/back.png -> graphics/pokemon/persian/alolan/back.png
+	renamed:    graphics/pokemon/alolan_persian/front.png -> graphics/pokemon/persian/alolan/front.png
+	renamed:    graphics/pokemon/alolan_persian/icon.png -> graphics/pokemon/persian/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_persian/normal.pal -> graphics/pokemon/persian/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_persian/shiny.pal -> graphics/pokemon/persian/alolan/shiny.pal
+	renamed:    graphics/pokemon/mega_pidgeot/back.png -> graphics/pokemon/pidgeot/mega/back.png
+	renamed:    graphics/pokemon/mega_pidgeot/front.png -> graphics/pokemon/pidgeot/mega/front.png
+	new file:   graphics/pokemon/pidgeot/mega/icon.png
+	renamed:    graphics/pokemon/mega_pidgeot/normal.pal -> graphics/pokemon/pidgeot/mega/normal.pal
+	renamed:    graphics/pokemon/mega_pidgeot/shiny.pal -> graphics/pokemon/pidgeot/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_pinsir/back.png -> graphics/pokemon/pinsir/mega/back.png
+	renamed:    graphics/pokemon/mega_pinsir/front.png -> graphics/pokemon/pinsir/mega/front.png
+	renamed:    graphics/pokemon/mega_pinsir/icon.png -> graphics/pokemon/pinsir/mega/icon.png
+	renamed:    graphics/pokemon/mega_pinsir/normal.pal -> graphics/pokemon/pinsir/mega/normal.pal
+	renamed:    graphics/pokemon/mega_pinsir/shiny.pal -> graphics/pokemon/pinsir/mega/shiny.pal
+	new file:   graphics/pokemon/qwilfish/hisuian/back.png
+	new file:   graphics/pokemon/qwilfish/hisuian/front.png
+	new file:   graphics/pokemon/qwilfish/hisuian/icon.png
+	new file:   graphics/pokemon/qwilfish/hisuian/normal.pal
+	new file:   graphics/pokemon/qwilfish/hisuian/shiny.pal
+	renamed:    graphics/pokemon/alolan_raichu/back.png -> graphics/pokemon/raichu/alolan/back.png
+	renamed:    graphics/pokemon/alolan_raichu/front.png -> graphics/pokemon/raichu/alolan/front.png
+	renamed:    graphics/pokemon/alolan_raichu/icon.png -> graphics/pokemon/raichu/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_raichu/normal.pal -> graphics/pokemon/raichu/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_raichu/shiny.pal -> graphics/pokemon/raichu/alolan/shiny.pal
+	renamed:    graphics/pokemon/alolan_raticate/back.png -> graphics/pokemon/raticate/alolan/back.png
+	renamed:    graphics/pokemon/alolan_raticate/front.png -> graphics/pokemon/raticate/alolan/front.png
+	renamed:    graphics/pokemon/alolan_raticate/icon.png -> graphics/pokemon/raticate/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_raticate/normal.pal -> graphics/pokemon/raticate/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_raticate/shiny.pal -> graphics/pokemon/raticate/alolan/shiny.pal
+	renamed:    graphics/pokemon/alolan_rattata/back.png -> graphics/pokemon/rattata/alolan/back.png
+	renamed:    graphics/pokemon/alolan_rattata/front.png -> graphics/pokemon/rattata/alolan/front.png
+	renamed:    graphics/pokemon/alolan_rattata/icon.png -> graphics/pokemon/rattata/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_rattata/normal.pal -> graphics/pokemon/rattata/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_rattata/shiny.pal -> graphics/pokemon/rattata/alolan/shiny.pal
+	renamed:    graphics/pokemon/mega_rayquaza/back.png -> graphics/pokemon/rayquaza/mega/back.png
+	renamed:    graphics/pokemon/mega_rayquaza/front.png -> graphics/pokemon/rayquaza/mega/front.png
+	renamed:    graphics/pokemon/mega_rayquaza/icon.png -> graphics/pokemon/rayquaza/mega/icon.png
+	renamed:    graphics/pokemon/mega_rayquaza/normal.pal -> graphics/pokemon/rayquaza/mega/normal.pal
+	renamed:    graphics/pokemon/mega_rayquaza/shiny.pal -> graphics/pokemon/rayquaza/mega/shiny.pal
+	modified:   graphics/pokemon/regidrago/icon.png
+	modified:   graphics/pokemon/regieleki/icon.png
+	renamed:    graphics/pokemon/mega_sableye/back.png -> graphics/pokemon/sableye/mega/back.png
+	renamed:    graphics/pokemon/mega_sableye/front.png -> graphics/pokemon/sableye/mega/front.png
+	renamed:    graphics/pokemon/mega_sableye/icon.png -> graphics/pokemon/sableye/mega/icon.png
+	renamed:    graphics/pokemon/mega_sableye/normal.pal -> graphics/pokemon/sableye/mega/normal.pal
+	renamed:    graphics/pokemon/mega_sableye/shiny.pal -> graphics/pokemon/sableye/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_salamence/back.png -> graphics/pokemon/salamence/mega/back.png
+	renamed:    graphics/pokemon/mega_salamence/front.png -> graphics/pokemon/salamence/mega/front.png
+	renamed:    graphics/pokemon/mega_salamence/icon.png -> graphics/pokemon/salamence/mega/icon.png
+	renamed:    graphics/pokemon/mega_salamence/normal.pal -> graphics/pokemon/salamence/mega/normal.pal
+	renamed:    graphics/pokemon/mega_salamence/shiny.pal -> graphics/pokemon/salamence/mega/shiny.pal
+	new file:   graphics/pokemon/samurott/hisuian/icon.png
+	renamed:    graphics/pokemon/alolan_sandshrew/back.png -> graphics/pokemon/sandshrew/alolan/back.png
+	renamed:    graphics/pokemon/alolan_sandshrew/front.png -> graphics/pokemon/sandshrew/alolan/front.png
+	renamed:    graphics/pokemon/alolan_sandshrew/icon.png -> graphics/pokemon/sandshrew/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_sandshrew/normal.pal -> graphics/pokemon/sandshrew/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_sandshrew/shiny.pal -> graphics/pokemon/sandshrew/alolan/shiny.pal
+	renamed:    graphics/pokemon/alolan_sandslash/back.png -> graphics/pokemon/sandslash/alolan/back.png
+	renamed:    graphics/pokemon/alolan_sandslash/front.png -> graphics/pokemon/sandslash/alolan/front.png
+	renamed:    graphics/pokemon/alolan_sandslash/icon.png -> graphics/pokemon/sandslash/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_sandslash/normal.pal -> graphics/pokemon/sandslash/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_sandslash/shiny.pal -> graphics/pokemon/sandslash/alolan/shiny.pal
+	renamed:    graphics/pokemon/mega_sceptile/back.png -> graphics/pokemon/sceptile/mega/back.png
+	renamed:    graphics/pokemon/mega_sceptile/front.png -> graphics/pokemon/sceptile/mega/front.png
+	renamed:    graphics/pokemon/mega_sceptile/icon.png -> graphics/pokemon/sceptile/mega/icon.png
+	renamed:    graphics/pokemon/mega_sceptile/normal.pal -> graphics/pokemon/sceptile/mega/normal.pal
+	renamed:    graphics/pokemon/mega_sceptile/shiny.pal -> graphics/pokemon/sceptile/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_scizor/back.png -> graphics/pokemon/scizor/mega/back.png
+	renamed:    graphics/pokemon/mega_scizor/front.png -> graphics/pokemon/scizor/mega/front.png
+	new file:   graphics/pokemon/scizor/mega/icon.png
+	renamed:    graphics/pokemon/mega_scizor/normal.pal -> graphics/pokemon/scizor/mega/normal.pal
+	renamed:    graphics/pokemon/mega_scizor/shiny.pal -> graphics/pokemon/scizor/mega/shiny.pal
+	modified:   graphics/pokemon/scorbunny/icon.png
+	modified:   graphics/pokemon/scyther/anim_front.png
+	modified:   graphics/pokemon/scyther/front.png
+	renamed:    graphics/pokemon/mega_sharpedo/back.png -> graphics/pokemon/sharpedo/mega/back.png
+	renamed:    graphics/pokemon/mega_sharpedo/front.png -> graphics/pokemon/sharpedo/mega/front.png
+	renamed:    graphics/pokemon/mega_sharpedo/icon.png -> graphics/pokemon/sharpedo/mega/icon.png
+	renamed:    graphics/pokemon/mega_sharpedo/normal.pal -> graphics/pokemon/sharpedo/mega/normal.pal
+	renamed:    graphics/pokemon/mega_sharpedo/shiny.pal -> graphics/pokemon/sharpedo/mega/shiny.pal
+	new file:   graphics/pokemon/sliggoo/hisuian/back.png
+	new file:   graphics/pokemon/sliggoo/hisuian/front.png
+	new file:   graphics/pokemon/sliggoo/hisuian/icon.png
+	new file:   graphics/pokemon/sliggoo/hisuian/normal.pal
+	new file:   graphics/pokemon/sliggoo/hisuian/shiny.pal
+	renamed:    graphics/pokemon/mega_slowbro/back.png -> graphics/pokemon/slowbro/mega/back.png
+	renamed:    graphics/pokemon/mega_slowbro/front.png -> graphics/pokemon/slowbro/mega/front.png
+	new file:   graphics/pokemon/slowbro/mega/icon.png
+	renamed:    graphics/pokemon/mega_slowbro/normal.pal -> graphics/pokemon/slowbro/mega/normal.pal
+	renamed:    graphics/pokemon/mega_slowbro/shiny.pal -> graphics/pokemon/slowbro/mega/shiny.pal
+	new file:   graphics/pokemon/sneasel/hisuian/back.png
+	new file:   graphics/pokemon/sneasel/hisuian/front.png
+	new file:   graphics/pokemon/sneasel/hisuian/icon.png
+	new file:   graphics/pokemon/sneasel/hisuian/normal.pal
+	new file:   graphics/pokemon/sneasel/hisuian/shiny.pal
+	new file:   graphics/pokemon/sneasler/icon.png
+	renamed:    graphics/pokemon/mega_steelix/back.png -> graphics/pokemon/steelix/mega/back.png
+	renamed:    graphics/pokemon/mega_steelix/front.png -> graphics/pokemon/steelix/mega/front.png
+	renamed:    graphics/pokemon/mega_steelix/icon.png -> graphics/pokemon/steelix/mega/icon.png
+	renamed:    graphics/pokemon/mega_steelix/normal.pal -> graphics/pokemon/steelix/mega/normal.pal
+	renamed:    graphics/pokemon/mega_steelix/shiny.pal -> graphics/pokemon/steelix/mega/shiny.pal
+	renamed:    graphics/pokemon/mega_swampert/back.png -> graphics/pokemon/swampert/mega/back.png
+	renamed:    graphics/pokemon/mega_swampert/front.png -> graphics/pokemon/swampert/mega/front.png
+	renamed:    graphics/pokemon/mega_swampert/icon.png -> graphics/pokemon/swampert/mega/icon.png
+	renamed:    graphics/pokemon/mega_swampert/normal.pal -> graphics/pokemon/swampert/mega/normal.pal
+	renamed:    graphics/pokemon/mega_swampert/shiny.pal -> graphics/pokemon/swampert/mega/shiny.pal
+	new file:   graphics/pokemon/typhlosion/hisuian/back.png
+	new file:   graphics/pokemon/typhlosion/hisuian/front.png
+	new file:   graphics/pokemon/typhlosion/hisuian/icon.png
+	new file:   graphics/pokemon/typhlosion/hisuian/normal.pal
+	new file:   graphics/pokemon/typhlosion/hisuian/shiny.pal
+	renamed:    graphics/pokemon/mega_tyranitar/back.png -> graphics/pokemon/tyranitar/mega/back.png
+	renamed:    graphics/pokemon/mega_tyranitar/front.png -> graphics/pokemon/tyranitar/mega/front.png
+	renamed:    graphics/pokemon/mega_tyranitar/icon.png -> graphics/pokemon/tyranitar/mega/icon.png
+	renamed:    graphics/pokemon/mega_tyranitar/normal.pal -> graphics/pokemon/tyranitar/mega/normal.pal
+	renamed:    graphics/pokemon/mega_tyranitar/shiny.pal -> graphics/pokemon/tyranitar/mega/shiny.pal
+	new file:   graphics/pokemon/ursaluna/back.png
+	new file:   graphics/pokemon/ursaluna/front.png
+	new file:   graphics/pokemon/ursaluna/icon.png
+	new file:   graphics/pokemon/ursaluna/normal.pal
+	new file:   graphics/pokemon/ursaluna/shiny.pal
+	renamed:    graphics/pokemon/mega_venusaur/back.png -> graphics/pokemon/venusaur/mega/back.png
+	renamed:    graphics/pokemon/mega_venusaur/front.png -> graphics/pokemon/venusaur/mega/front.png
+	renamed:    graphics/pokemon/mega_venusaur/icon.png -> graphics/pokemon/venusaur/mega/icon.png
+	renamed:    graphics/pokemon/mega_venusaur/normal.pal -> graphics/pokemon/venusaur/mega/normal.pal
+	renamed:    graphics/pokemon/mega_venusaur/shiny.pal -> graphics/pokemon/venusaur/mega/shiny.pal
+	new file:   graphics/pokemon/voltorb/hisuian/back.png
+	new file:   graphics/pokemon/voltorb/hisuian/front.png
+	new file:   graphics/pokemon/voltorb/hisuian/icon.png
+	new file:   graphics/pokemon/voltorb/hisuian/normal.pal
+	new file:   graphics/pokemon/voltorb/hisuian/shiny.pal
+	renamed:    graphics/pokemon/alolan_vulpix/back.png -> graphics/pokemon/vulpix/alolan/back.png
+	renamed:    graphics/pokemon/alolan_vulpix/front.png -> graphics/pokemon/vulpix/alolan/front.png
+	renamed:    graphics/pokemon/alolan_vulpix/icon.png -> graphics/pokemon/vulpix/alolan/icon.png
+	renamed:    graphics/pokemon/alolan_vulpix/normal.pal -> graphics/pokemon/vulpix/alolan/normal.pal
+	renamed:    graphics/pokemon/alolan_vulpix/shiny.pal -> graphics/pokemon/vulpix/alolan/shiny.pal
+	new file:   graphics/pokemon/wyrdeer/icon.png
+	modified:   graphics/pokemon/zapdos/galarian/icon.png
+	new file:   graphics/pokemon/zoroark/hisuian/back.png
+	new file:   graphics/pokemon/zoroark/hisuian/front.png
+	new file:   graphics/pokemon/zoroark/hisuian/icon.png
+	new file:   graphics/pokemon/zoroark/hisuian/normal.pal
+	new file:   graphics/pokemon/zoroark/hisuian/shiny.pal
+	new file:   graphics/pokemon/zorua/hisuian/back.png
+	new file:   graphics/pokemon/zorua/hisuian/front.png
+	new file:   graphics/pokemon/zorua/hisuian/icon.png
+	new file:   graphics/pokemon/zorua/hisuian/normal.pal
+	new file:   graphics/pokemon/zorua/hisuian/shiny.pal
+	modified:   graphics/types/fairy.png
+	modified:   include/apprentice.h
+	modified:   include/battle.h
+	modified:   include/battle_ai_util.h
+	modified:   include/battle_anim.h
+	modified:   include/battle_arena.h
+	modified:   include/battle_interface.h
+	modified:   include/battle_message.h
+	modified:   include/battle_script_commands.h
+	modified:   include/battle_scripts.h
+	modified:   include/battle_util.h
+	modified:   include/battle_z_move.h
+	modified:   include/config.h
+	modified:   include/constants/battle.h
+	modified:   include/constants/battle_ai.h
+	modified:   include/constants/battle_anim.h
+	modified:   include/constants/battle_arena.h
+	modified:   include/constants/battle_script_commands.h
+	modified:   include/constants/event_object_movement.h
+	deleted:    include/constants/expansion_branches.h
+	modified:   include/constants/flags.h
+	modified:   include/constants/global.h
+	modified:   include/constants/item_config.h
+	modified:   include/constants/item_effects.h
+	modified:   include/constants/items.h
+	modified:   include/constants/moves.h
+	new file:   include/constants/overworld_config.h
+	modified:   include/constants/party_menu.h
+	modified:   include/constants/pokedex.h
+	modified:   include/constants/pokemon_config.h
+	modified:   include/constants/species.h
+	modified:   include/constants/trainer_hill.h
+	modified:   include/constants/union_room.h
+	modified:   include/contest.h
+	modified:   include/decompress.h
+	modified:   include/easy_chat.h
+	modified:   include/evolution_scene.h
+	modified:   include/faraway_island.h
+	modified:   include/field_effect.h
+	modified:   include/field_effect_helpers.h
+	modified:   include/fieldmap.h
+	modified:   include/gba/isagbprint.h
+	modified:   include/global.fieldmap.h
+	modified:   include/global.tv.h
+	modified:   include/graphics.h
+	modified:   include/international_string_util.h
+	modified:   include/intro.h
+	modified:   include/item_menu.h
+	modified:   include/item_use.h
+	modified:   include/link.h
+	modified:   include/link_rfu.h
+	modified:   include/load_save.h
+	modified:   include/mail.h
+	modified:   include/menu.h
+	modified:   include/money.h
+	modified:   include/palette.h
+	modified:   include/party_menu.h
+	modified:   include/pokedex_area_screen.h
+	modified:   include/pokedex_cry_screen.h
+	modified:   include/pokemon_icon.h
+	modified:   include/pokemon_storage_system.h
+	modified:   include/pokemon_summary_screen.h
+	modified:   include/pokenav.h
+	modified:   include/save.h
+	modified:   include/script.h
+	modified:   include/script_menu.h
+	modified:   include/secret_base.h
+	modified:   include/sound.h
+	modified:   include/start_menu.h
+	modified:   include/trade.h
+	modified:   include/trainer_card.h
+	modified:   include/trainer_hill.h
+	modified:   include/union_room.h
+	modified:   include/util.h
+	modified:   ld_script.txt
+	modified:   sound/cry_tables.inc
+	modified:   sound/direct_sound_data.inc
+	modified:   src/AgbRfu_LinkManager.c
+	modified:   src/apprentice.c
+	modified:   src/battle_ai_main.c
+	modified:   src/battle_ai_switch_items.c
+	modified:   src/battle_ai_util.c
+	modified:   src/battle_anim.c
+	modified:   src/battle_anim_bug.c
+	modified:   src/battle_anim_dark.c
+	modified:   src/battle_anim_effects_1.c
+	modified:   src/battle_anim_effects_2.c
+	modified:   src/battle_anim_effects_3.c
+	modified:   src/battle_anim_electric.c
+	modified:   src/battle_anim_fight.c
+	modified:   src/battle_anim_fire.c
+	modified:   src/battle_anim_flying.c
+	modified:   src/battle_anim_ghost.c
+	modified:   src/battle_anim_ground.c
+	modified:   src/battle_anim_ice.c
+	modified:   src/battle_anim_mon_movement.c
+	modified:   src/battle_anim_mons.c
+	modified:   src/battle_anim_new.c
+	modified:   src/battle_anim_normal.c
+	modified:   src/battle_anim_poison.c
+	modified:   src/battle_anim_psychic.c
+	modified:   src/battle_anim_rock.c
+	modified:   src/battle_anim_smokescreen.c
+	modified:   src/battle_anim_sound_tasks.c
+	modified:   src/battle_anim_throw.c
+	modified:   src/battle_anim_utility_funcs.c
+	modified:   src/battle_anim_water.c
+	modified:   src/battle_arena.c
+	modified:   src/battle_bg.c
+	modified:   src/battle_controller_link_opponent.c
+	modified:   src/battle_controller_link_partner.c
+	modified:   src/battle_controller_opponent.c
+	modified:   src/battle_controller_player.c
+	modified:   src/battle_controller_player_partner.c
+	modified:   src/battle_controller_recorded_opponent.c
+	modified:   src/battle_controller_recorded_player.c
+	modified:   src/battle_controller_safari.c
+	modified:   src/battle_controller_wally.c
+	modified:   src/battle_controllers.c
+	modified:   src/battle_dome.c
+	modified:   src/battle_factory_screen.c
+	modified:   src/battle_interface.c
+	modified:   src/battle_pike.c
+	modified:   src/battle_pyramid.c
+	modified:   src/battle_pyramid_bag.c
+	modified:   src/battle_records.c
+	modified:   src/battle_setup.c
+	modified:   src/battle_tent.c
+	modified:   src/battle_tower.c
+	modified:   src/battle_transition.c
+	modified:   src/battle_transition_frontier.c
+	modified:   src/battle_tv.c
+	modified:   src/battle_util2.c
+	modified:   src/battle_z_move.c
+	modified:   src/berry.c
+	modified:   src/berry_blender.c
+	modified:   src/berry_crush.c
+	modified:   src/berry_tag_screen.c
+	modified:   src/braille_puzzles.c
+	modified:   src/cable_car.c
+	modified:   src/cable_club.c
+	modified:   src/clear_save_data_screen.c
+	modified:   src/contest.c
+	modified:   src/contest_painting.c
+	modified:   src/contest_util.c
+	modified:   src/credits.c
+	modified:   src/crt0.s
+	modified:   src/data/battle_anim.h
+	modified:   src/data/battle_frontier/battle_frontier_trainer_mons.h
+	modified:   src/data/battle_moves.h
+	modified:   src/data/contest_moves.h
+	modified:   src/data/easy_chat/easy_chat_group_pokemon2.h
+	modified:   src/data/field_effects/field_effect_object_template_pointers.h
+	modified:   src/data/field_effects/field_effect_objects.h
+	modified:   src/data/graphics/pokemon.h
+	modified:   src/data/items.h
+	new file:   src/data/map_group_count.h
+	modified:   src/data/object_events/movement_action_func_tables.h
+	modified:   src/data/party_menu.h
+	modified:   src/data/pokemon/egg_moves.h
+	new file:   src/data/pokemon/evolution_old.h
+	modified:   src/data/pokemon/form_change_table_pointers.h
+	modified:   src/data/pokemon/form_change_tables.h
+	modified:   src/data/pokemon/form_species_table_pointers.h
+	modified:   src/data/pokemon/form_species_tables.h
+	modified:   src/data/pokemon/item_effects.h
+	modified:   src/data/pokemon/level_up_learnset_pointers.h
+	modified:   src/data/pokemon/level_up_learnsets.h
+	modified:   src/data/pokemon/pokedex_entries.h
+	modified:   src/data/pokemon/pokedex_orders.h
+	modified:   src/data/pokemon/pokedex_text.h
+	new file:   src/data/pokemon/teachable_learnset_pointers.h
+	new file:   src/data/pokemon/teachable_learnsets.h
+	deleted:    src/data/pokemon/tmhm_learnsets.h
+	deleted:    src/data/pokemon/tutor_learnsets.h
+	modified:   src/data/pokemon_graphics/back_pic_coordinates.h
+	modified:   src/data/pokemon_graphics/back_pic_table.h
+	modified:   src/data/pokemon_graphics/enemy_mon_elevation.h
+	modified:   src/data/pokemon_graphics/footprint_table.h
+	modified:   src/data/pokemon_graphics/front_pic_anims.h
+	modified:   src/data/pokemon_graphics/front_pic_coordinates.h
+	modified:   src/data/pokemon_graphics/front_pic_table.h
+	modified:   src/data/pokemon_graphics/palette_table.h
+	modified:   src/data/pokemon_graphics/shiny_palette_table.h
+	modified:   src/data/text/abilities.h
+	modified:   src/data/text/item_descriptions.h
+	modified:   src/data/text/move_descriptions.h
+	modified:   src/data/text/move_names.h
+	modified:   src/data/text/species_names.h
+	modified:   src/data/union_room.h
+	modified:   src/daycare.c
+	modified:   src/decompress.c
+	modified:   src/decoration.c
+	modified:   src/digit_obj_util.c
+	modified:   src/dodrio_berry_picking.c
+	modified:   src/easy_chat.c
+	modified:   src/egg_hatch.c
+	modified:   src/ereader_helpers.c
+	modified:   src/ereader_screen.c
+	modified:   src/evolution_graphics.c
+	modified:   src/evolution_scene.c
+	modified:   src/faraway_island.c
+	modified:   src/field_effect.c
+	modified:   src/field_effect_helpers.c
+	modified:   src/field_message_box.c
+	modified:   src/field_player_avatar.c
+	modified:   src/field_poison.c
+	modified:   src/field_region_map.c
+	modified:   src/field_screen_effect.c
+	modified:   src/field_special_scene.c
+	modified:   src/field_tasks.c
+	modified:   src/field_weather_effect.c
+	modified:   src/fldeff_cut.c
+	modified:   src/fldeff_flash.c
+	modified:   src/fldeff_misc.c
+	modified:   src/fldeff_rocksmash.c
+	modified:   src/fldeff_strength.c
+	modified:   src/fldeff_sweetscent.c
+	modified:   src/fonts.c
+	modified:   src/graphics.c
+	modified:   src/hall_of_fame.c
+	modified:   src/hof_pc.c
+	modified:   src/image_processing_effects.c
+	modified:   src/international_string_util.c
+	modified:   src/intro.c
+	modified:   src/intro_credits_graphics.c
+	modified:   src/item.c
+	modified:   src/item_icon.c
+	modified:   src/item_menu.c
+	modified:   src/item_menu_icons.c
+	modified:   src/item_use.c
+	modified:   src/libisagbprn.c
+	modified:   src/librfu_intr.c
+	modified:   src/librfu_rfu.c
+	modified:   src/librfu_stwi.c
+	modified:   src/lilycove_lady.c
+	modified:   src/link.c
+	modified:   src/link_rfu_2.c
+	modified:   src/link_rfu_3.c
+	modified:   src/load_save.c
+	modified:   src/m4a.c
+	modified:   src/mail.c
+	modified:   src/main_menu.c
+	modified:   src/map_name_popup.c
+	modified:   src/match_call.c
+	modified:   src/mauville_old_man.c
+	modified:   src/menu.c
+	modified:   src/menu_helpers.c
+	modified:   src/menu_specialized.c
+	modified:   src/metatile_behavior.c
+	modified:   src/minigame_countdown.c
+	modified:   src/mirage_tower.c
+	modified:   src/mon_markings.c
+	modified:   src/money.c
+	modified:   src/move_relearner.c
+	modified:   src/mystery_event_menu.c
+	modified:   src/mystery_event_script.c
+	modified:   src/mystery_gift.c
+	modified:   src/mystery_gift_menu.c
+	modified:   src/mystery_gift_view.c
+	modified:   src/naming_screen.c
+	modified:   src/new_game.c
+	modified:   src/option_menu.c
+	modified:   src/party_menu.c
+	modified:   src/player_pc.c
+	modified:   src/pokeball.c
+	modified:   src/pokeblock.c
+	modified:   src/pokeblock_feed.c
+	modified:   src/pokedex.c
+	modified:   src/pokedex_area_screen.c
+	modified:   src/pokedex_cry_screen.c
+	modified:   src/pokemon_debug.c
+	modified:   src/pokemon_icon.c
+	modified:   src/pokemon_jump.c
+	modified:   src/pokemon_summary_screen.c
+	modified:   src/pokenav_conditions.c
+	modified:   src/pokenav_conditions_gfx.c
+	modified:   src/pokenav_conditions_search_results.c
+	modified:   src/pokenav_list.c
+	modified:   src/pokenav_main_menu.c
+	modified:   src/pokenav_match_call_gfx.c
+	modified:   src/pokenav_match_call_list.c
+	modified:   src/pokenav_menu_handler.c
+	modified:   src/pokenav_menu_handler_gfx.c
+	modified:   src/pokenav_region_map.c
+	modified:   src/pokenav_ribbons_list.c
+	modified:   src/pokenav_ribbons_summary.c
+	modified:   src/rayquaza_scene.c
+	modified:   src/record_mixing.c
+	modified:   src/recorded_battle.c
+	modified:   src/reset_rtc_screen.c
+	modified:   src/reshow_battle_screen.c
+	modified:   src/roamer.c
+	modified:   src/rom_header.s
+	modified:   src/rom_header_gf.c
+	modified:   src/rotating_gate.c
+	modified:   src/rotating_tile_puzzle.c
+	modified:   src/roulette.c
+	modified:   src/safari_zone.c
+	modified:   src/save.c
+	modified:   src/save_failed_screen.c
+	modified:   src/scrcmd.c
+	modified:   src/script.c
+	modified:   src/script_menu.c
+	modified:   src/script_pokemon_util.c
+	modified:   src/secret_base.c
+	modified:   src/shop.c
+	modified:   src/slot_machine.c
+	modified:   src/sound.c
+	modified:   src/starter_choose.c
+	modified:   src/strings.c
+	modified:   src/time_events.c
+	modified:   src/title_screen.c
+	modified:   src/trade.c
+	modified:   src/trader.c
+	modified:   src/trainer_card.c
+	modified:   src/trainer_hill.c
+	modified:   src/trainer_pokemon_sprites.c
+	modified:   src/tv.c
+	modified:   src/union_room.c
+	modified:   src/union_room_battle.c
+	modified:   src/union_room_chat.c
+	modified:   src/union_room_player_avatar.c
+	modified:   src/use_pokeblock.c
+	modified:   src/util.c
+	modified:   src/walda_phrase.c
+	modified:   src/wild_encounter.c
+	modified:   src/wireless_communication_status_screen.c
+	modified:   src/wonder_news.c
+	modified:   sym_common.txt
+	modified:   tools/aif2pcm/main.c
+	modified:   tools/gbagfx/font.c
+	modified:   tools/gbagfx/gfx.c
+	modified:   tools/gbagfx/gfx.h
+	modified:   tools/gbagfx/main.c
+	modified:   tools/gbagfx/options.h
+	modified:   tools/jsonproc/inja.hpp
+	modified:   tools/mapjson/mapjson.cpp
+	modified:   tools/preproc/c_file.cpp
+	modified:   tools/preproc/charmap.cpp
+	modified:   tools/scaninc/source_file.cpp
+
+Unmerged paths:
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+	both modified:   asm/macros/event.inc
+	both added:      data/scripts/debug.inc
+	both modified:   data/specials.inc
+	deleted by us:   docs/legacy_WSL1_INSTALL.md
+	both added:      graphics/battle_anims/backgrounds/dark_void.bin
+	both added:      graphics/battle_anims/backgrounds/dark_void.pal
+	both added:      graphics/battle_anims/backgrounds/giga_impact.pal
+	added by us:     graphics/battle_anims/backgrounds/giga_impact_opponent.pal
+	added by us:     graphics/battle_anims/backgrounds/giga_impact_opponent.png
+	added by us:     graphics/battle_anims/backgrounds/giga_impact_player.pal
+	added by us:     graphics/battle_anims/backgrounds/giga_impact_player.png
+	added by us:     graphics/battle_anims/backgrounds/high_speed.bin
+	added by us:     graphics/battle_anims/backgrounds/high_speed.pal
+	added by us:     graphics/battle_anims/backgrounds/high_speed.png
+	added by us:     graphics/battle_anims/backgrounds/rock_wrecker.bin
+	both added:      graphics/battle_anims/backgrounds/trick_room.png
+	both modified:   graphics_file_rules.mk
+	both modified:   include/battle_controllers.h
+	both modified:   include/battle_main.h
+	both modified:   include/constants/battle_config.h
+	both modified:   include/constants/battle_string_ids.h
+	both modified:   include/constants/pokemon.h
+	both modified:   include/constants/region_map_sections.h
+	both modified:   include/constants/vars.h
+	both modified:   include/data.h
+	both added:      include/debug.h
+	both modified:   include/event_object_movement.h
+	both modified:   include/field_player_avatar.h
+	both modified:   include/global.h
+	both modified:   include/main_menu.h
+	both modified:   include/pokemon.h
+	both modified:   include/strings.h
+	both modified:   src/battle_debug.c
+	both modified:   src/battle_gfx_sfx_util.c
+	both modified:   src/battle_main.c
+	both modified:   src/battle_message.c
+	both modified:   src/battle_script_commands.c
+	both modified:   src/battle_util.c
+	both modified:   src/data/object_events/object_event_graphics_info_pointers.h
+	both modified:   src/data/pokemon/base_stats.h
+	both modified:   src/data/region_map/region_map_entries.h
+	both modified:   src/data/trainers.h
+	both added:      src/debug.c
+	both modified:   src/event_object_movement.c
+	both modified:   src/field_control_avatar.c
+	both modified:   src/field_specials.c
+	both modified:   src/fieldmap.c
+	both modified:   src/list_menu.c
+	both modified:   src/overworld.c
+	both modified:   src/pokemon.c
+	both modified:   src/pokemon_storage_system.c
+	both modified:   src/start_menu.c
+	both modified:   src/trainer_see.c
+	both modified:   sym_ewram.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/maps/MuirWoods/map.json
+	modified:   data/maps/MuirWoods/scripts.pory
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	merge.txt
+

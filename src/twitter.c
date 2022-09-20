@@ -191,7 +191,7 @@ static void TwitterTask_HandleMainMenuInput(u8 taskId)
     {
         PlaySE(SE_SELECT);
         Twitter_DestroyMenu(taskId);
-        EnableBothScriptContexts();
+        ScriptContext_Enable();
     }
 }
 
@@ -229,48 +229,48 @@ static void TwitterAction_Cancel(u8 taskId)
 static void TwitterMenu_Actions_Quests_RabiesOutbreak_Script(u8 taskId)
 {
     Twitter_DestroyMenu(taskId);
-    ScriptContext2_Enable();
-    ScriptContext1_SetupScript(TwitterPost_RabiesOutbreak_Script);
+    ScriptContext_Enable();
+    ScriptContext_SetupScript(TwitterPost_RabiesOutbreak_Script);
 }
 static void TwitterMenu_Actions_Quests_BlueRobbery_Script(u8 taskId)
 {
     Twitter_DestroyMenu(taskId);
-    ScriptContext2_Enable();
-    ScriptContext1_SetupScript(TwitterPost_BlueRobbery_Script);
+    ScriptContext_Enable();
+    ScriptContext_SetupScript(TwitterPost_BlueRobbery_Script);
 }
 static void TwitterMenu_Actions_Quests_IceCreamCrafting_Script(u8 taskId)
 {
     Twitter_DestroyMenu(taskId);
-    ScriptContext2_Enable();
-    ScriptContext1_SetupScript(TwitterPost_IceCreamCrafting_Script);
+    ScriptContext_Enable();
+    ScriptContext_SetupScript(TwitterPost_IceCreamCrafting_Script);
 }
 static void TwitterMenu_Actions_Quests_VSDeoxys_Script(u8 taskId)
 {
     Twitter_DestroyMenu(taskId);
-    ScriptContext2_Enable();
-    ScriptContext1_SetupScript(TwitterPost_VSDeoxys_Script);
+    ScriptContext_Enable();
+    ScriptContext_SetupScript(TwitterPost_VSDeoxys_Script);
 }
 static void TwitterMenu_Actions_Quests_ChinatownTunnels_Script(u8 taskId)
 {
     Twitter_DestroyMenu(taskId);
-    ScriptContext2_Enable();
-    ScriptContext1_SetupScript(TwitterPost_ChinatownTunnels_Script);
+    ScriptContext_Enable();
+    ScriptContext_SetupScript(TwitterPost_ChinatownTunnels_Script);
 }
 static void TwitterMenu_Actions_Quests_FreshwaterEvolution_Script(u8 taskId)
 {
     Twitter_DestroyMenu(taskId);
-    ScriptContext2_Enable();
-    ScriptContext1_SetupScript(TwitterPost_FreshwaterEvolution_Script);
+    ScriptContext_Enable();
+    ScriptContext_SetupScript(TwitterPost_FreshwaterEvolution_Script);
 }
 static void TwitterMenu_Actions_Quests_GemArtist_Script(u8 taskId)
 {
     Twitter_DestroyMenu(taskId);
-    ScriptContext2_Enable();
-    ScriptContext1_SetupScript(TwitterPost_GemArtist_Script);
+    ScriptContext_Enable();
+    ScriptContext_SetupScript(TwitterPost_GemArtist_Script);
 }
 static void TwitterMenu_Actions_Quests_BetweenAStoneAndAHardPlace_Script(u8 taskId)
 {
     Twitter_DestroyMenu(taskId);
-    ScriptContext2_Enable();
-    ScriptContext1_SetupScript(TwitterPost_BetweenAStoneAndAHardPlace_Script);
+    ScriptContext_Enable();
+    ScriptContext_SetupScript(TwitterPost_BetweenAStoneAndAHardPlace_Script);
 }

@@ -28,8 +28,8 @@
 #include "constants/battle_palace.h"
 
 extern const u8 gBattlePalaceNatureToMoveTarget[];
-extern const u8 * const gBattleAnims_General[];
-extern const u8 * const gBattleAnims_Special[];
+extern const u8 *const gBattleAnims_General[];
+extern const u8 *const gBattleAnims_Special[];
 extern const struct CompressedSpriteSheet gSpriteSheet_EnemyShadow;
 extern const struct SpriteTemplate gSpriteTemplate_EnemyShadow;
 
@@ -115,7 +115,7 @@ u16 ChooseMoveAndTargetInBattlePalace(void)
 {
     s32 i, var1, var2;
     s32 chosenMoveId = -1;
-    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[gActiveBattler][4]);
     u8 unusableMovesBits = CheckMoveLimitations(gActiveBattler, 0, MOVE_LIMITATIONS_ALL);
     s32 percent = Random() % 100;
 
@@ -259,7 +259,7 @@ u16 ChooseMoveAndTargetInBattlePalace(void)
     else if (moveTarget == MOVE_TARGET_SELECTED)
         chosenMoveId |= GetBattlePalaceTarget();
     else
-        chosenMoveId |= (GetBattlerAtPosition((GetBattlerPosition(gActiveBattler) & BIT_SIDE) ^ BIT_SIDE) << 8);
+        chosenMoveId |= (GetBattlerAtPosition(BATTLE_OPPOSITE(GET_BATTLER_SIDE(gActiveBattler))) << 8);
 
     return chosenMoveId;
 }
@@ -277,18 +277,12 @@ static u8 GetBattlePalaceMoveGroup(u8 battlerId, u16 move)
 {
     switch (GetBattlerMoveTargetType(battlerId, move))
     {
-        case MOVE_TARGET_SELECTED:
-        case MOVE_TARGET_USER_OR_SELECTED:
-        case MOVE_TARGET_RANDOM:
-        case MOVE_TARGET_BOTH:
-        case MOVE_TARGET_FOES_AND_ALLY:
-            if (gBattleMoves[move].power == 0)
-                return PALACE_MOVE_GROUP_SUPPORT;
-            else
-                return PALACE_MOVE_GROUP_ATTACK;
-            break;
-        case MOVE_TARGET_DEPENDS:
-        case MOVE_TARGET_OPPONENTS_FIELD:
+    case MOVE_TARGET_SELECTED:
+    case MOVE_TARGET_USER_OR_SELECTED:
+    case MOVE_TARGET_RANDOM:
+    case MOVE_TARGET_BOTH:
+    case MOVE_TARGET_FOES_AND_ALLY:
+        if (IS_MOVE_STATUS(move))
             return PALACE_MOVE_GROUP_SUPPORT;
         case MOVE_TARGET_USER:
             return PALACE_MOVE_GROUP_DEFENSE;
@@ -315,26 +309,26 @@ static u16 GetBattlePalaceTarget(void)
         }
 
         if (gBattleMons[opposing1].hp == gBattleMons[opposing2].hp)
-            return (((gActiveBattler & BIT_SIDE) ^ BIT_SIDE) + (Random() & 2)) << 8;
+            return (BATTLE_OPPOSITE(gActiveBattler & BIT_SIDE) + (Random() & 2)) << 8;
 
         switch (gBattlePalaceNatureToMoveTarget[GetNatureFromPersonality(gBattleMons[gActiveBattler].personality)])
         {
-            case PALACE_TARGET_STRONGER:
-                if (gBattleMons[opposing1].hp > gBattleMons[opposing2].hp)
-                    return opposing1 << 8;
-                else
-                    return opposing2 << 8;
-            case PALACE_TARGET_WEAKER:
-                if (gBattleMons[opposing1].hp < gBattleMons[opposing2].hp)
-                    return opposing1 << 8;
-                else
-                    return opposing2 << 8;
-            case PALACE_TARGET_RANDOM:
-                return (((gActiveBattler & BIT_SIDE) ^ BIT_SIDE) + (Random() & 2)) << 8;
+        case PALACE_TARGET_STRONGER:
+            if (gBattleMons[opposing1].hp > gBattleMons[opposing2].hp)
+                return opposing1 << 8;
+            else
+                return opposing2 << 8;
+        case PALACE_TARGET_WEAKER:
+            if (gBattleMons[opposing1].hp < gBattleMons[opposing2].hp)
+                return opposing1 << 8;
+            else
+                return opposing2 << 8;
+        case PALACE_TARGET_RANDOM:
+            return (BATTLE_OPPOSITE(gActiveBattler & BIT_SIDE) + (Random() & 2)) << 8;
         }
     }
 
-    return (gActiveBattler ^ BIT_SIDE) << 8;
+    return BATTLE_OPPOSITE(gActiveBattler) << 8;
 }
 
 // Wait for the pokemon to finish appearing out from the pokeball on send out
@@ -586,15 +580,15 @@ static void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battlerId, bool32 op
     position = GetBattlerPosition(battlerId);
     if (opponent)
     {
-        HandleLoadSpecialPokePic(&gMonFrontPicTable[species],
-                gMonSpritesGfxPtr->sprites.ptr[position],
-                species, currentPersonality);
+        HandleLoadSpecialPokePic(TRUE,
+                                 gMonSpritesGfxPtr->sprites.ptr[position],
+                                 species, currentPersonality);
     }
     else
     {
-        HandleLoadSpecialPokePic(&gMonBackPicTable[species],
-                gMonSpritesGfxPtr->sprites.ptr[position],
-                species, currentPersonality);
+        HandleLoadSpecialPokePic(FALSE,
+                                 gMonSpritesGfxPtr->sprites.ptr[position],
+                                 species, currentPersonality);
     }
 
     paletteOffset = 0x100 + battlerId * 16;
@@ -723,7 +717,12 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
         else
         {
             if (state == 2)
-                LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
+            {
+                if (WhichBattleCoords(0))
+                    LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
+                else
+                    LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
+            }
             else if (state == 3)
                 LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
             else if (state == 4)
@@ -868,10 +867,10 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool8 castform, bo
         personalityValue = gContestResources->moveAnim->personality;
         otId = gContestResources->moveAnim->otId;
 
-        HandleLoadSpecialPokePic(&gMonBackPicTable[targetSpecies],
-                gMonSpritesGfxPtr->sprites.ptr[position],
-                targetSpecies,
-                gContestResources->moveAnim->targetPersonality);
+        HandleLoadSpecialPokePic(FALSE,
+                                 gMonSpritesGfxPtr->sprites.ptr[position],
+                                 targetSpecies,
+                                 gContestResources->moveAnim->targetPersonality);
     }
     else
     {
@@ -887,20 +886,20 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool8 castform, bo
             personalityValue = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_PERSONALITY);
             otId = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
 
-            HandleLoadSpecialPokePic(&gMonBackPicTable[targetSpecies],
-                    gMonSpritesGfxPtr->sprites.ptr[position],
-                    targetSpecies,
-                    gTransformedPersonalities[battlerAtk]);
+            HandleLoadSpecialPokePic(FALSE,
+                                     gMonSpritesGfxPtr->sprites.ptr[position],
+                                     targetSpecies,
+                                     gTransformedPersonalities[battlerAtk]);
         }
         else
         {
             personalityValue = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_PERSONALITY);
             otId = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_OT_ID);
 
-            HandleLoadSpecialPokePic(&gMonFrontPicTable[targetSpecies],
-                    gMonSpritesGfxPtr->sprites.ptr[position],
-                    targetSpecies,
-                    gTransformedPersonalities[battlerAtk]);
+            HandleLoadSpecialPokePic(TRUE,
+                                     gMonSpritesGfxPtr->sprites.ptr[position],
+                                     targetSpecies,
+                                     gTransformedPersonalities[battlerAtk]);
         }
     }
 
@@ -1022,7 +1021,7 @@ void HandleLowHpMusicChange(struct Pokemon *mon, u8 battlerId)
     {
         if (!gBattleSpritesDataPtr->battlerData[battlerId].lowHpSong)
         {
-            if (!gBattleSpritesDataPtr->battlerData[battlerId ^ BIT_FLANK].lowHpSong)
+            if (!gBattleSpritesDataPtr->battlerData[BATTLE_PARTNER(battlerId)].lowHpSong)
                 PlaySE(SE_LOW_HEALTH);
             gBattleSpritesDataPtr->battlerData[battlerId].lowHpSong = 1;
         }
@@ -1035,7 +1034,7 @@ void HandleLowHpMusicChange(struct Pokemon *mon, u8 battlerId)
             m4aSongNumStop(SE_LOW_HEALTH);
             return;
         }
-        if (IsDoubleBattle() && !gBattleSpritesDataPtr->battlerData[battlerId ^ BIT_FLANK].lowHpSong)
+        if (IsDoubleBattle() && !gBattleSpritesDataPtr->battlerData[BATTLE_PARTNER(battlerId)].lowHpSong)
         {
             m4aSongNumStop(SE_LOW_HEALTH);
             return;
@@ -1049,7 +1048,7 @@ void BattleStopLowHpSound(void)
 
     gBattleSpritesDataPtr->battlerData[playerBattler].lowHpSong = 0;
     if (IsDoubleBattle())
-        gBattleSpritesDataPtr->battlerData[playerBattler ^ BIT_FLANK].lowHpSong = 0;
+        gBattleSpritesDataPtr->battlerData[BATTLE_PARTNER(playerBattler)].lowHpSong = 0;
 
     m4aSongNumStop(SE_LOW_HEALTH);
 }
@@ -1181,7 +1180,7 @@ void HideBattlerShadowSprite(u8 battlerId)
 // Color the background tiles surrounding the action selection and move windows
 void FillAroundBattleWindows(void)
 {
-    u16 *vramPtr = (u16*)(VRAM + 0x240);
+    u16 *vramPtr = (u16 *)(VRAM + 0x240);
     s32 i;
     s32 j;
 

@@ -29,7 +29,6 @@ bool8 ShouldDoSecretLabDigEffect(void)
 
 void DoSecretLabDigEffect(void)
 {
-    ScriptContext1_SetupScript(Psfroute8_UncoverSecretLab_Script);
+    ScriptContext_SetupScript(Psfroute8_UncoverSecretLab_Script);
     PlaySE(SE_BANG);
-    ScriptContext2_Disable();
 }

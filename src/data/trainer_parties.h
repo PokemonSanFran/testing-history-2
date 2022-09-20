@@ -357,26 +357,21 @@ static const struct TrainerMonNoItemDefaultMoves sParty_ShellySeafloorCavern[] =
     }
 };
 
-//static const struct TrainerMonNoItemDefaultMoves sParty_Archie[] = {
-static const struct TrainerMonItemDefaultMoves sParty_Archie[] = {
-    {
-    //.lvl = 43,
-    .iv = 150,
-    .lvl = 100,
-    .species = SPECIES_SHARPEDO,
-    .heldItem = ITEM_SHARPEDONITE //PSF TODO remove
-    },
+static const struct TrainerMonNoItemDefaultMoves sParty_Archie[] = {
     {
     .iv = 150,
-    //.lvl = 41,
-    .lvl = 100,
+    .lvl = 41,
     .species = SPECIES_MIGHTYENA,
     },
     {
     .iv = 150,
-    //.lvl = 41,
-    .lvl = 100,
+    .lvl = 41,
     .species = SPECIES_CROBAT,
+    },
+    {
+    .iv = 150,
+    .lvl = 43,
+    .species = SPECIES_SHARPEDO,
     }
 };
 

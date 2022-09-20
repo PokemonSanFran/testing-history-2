@@ -44,7 +44,7 @@ static void FillWestConnection(struct MapHeader const *mapHeader, struct MapHead
 static void FillEastConnection(struct MapHeader const *mapHeader, struct MapHeader const *connectedMapHeader, s32 offset);
 static void InitBackupMapLayoutConnections(struct MapHeader *mapHeader);
 static void LoadSavedMapView(void);
-static bool8 SkipCopyingMetatileFromSavedMap(u16* mapBlock, u16 mapWidth, u8 yMode);
+static bool8 SkipCopyingMetatileFromSavedMap(u16 *mapBlock, u16 mapWidth, u8 yMode);
 static struct MapConnection *GetIncomingConnection(u8 direction, int x, int y);
 static bool8 IsPosInIncomingConnectingMap(u8 direction, int x, int y, struct MapConnection *connection);
 static bool8 IsCoordInIncomingConnectingMap(int coord, int srcMax, int destMax, int offset);
@@ -88,13 +88,13 @@ void InitMapFromSavedGame(void)
 
 void InitBattlePyramidMap(bool8 setPlayerPosition)
 {
-    CpuFastFill(MAPGRID_UNDEFINED << 16 | MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
+    CpuFastFill16(MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
     GenerateBattlePyramidFloorLayout(sBackupMapData, setPlayerPosition);
 }
 
 void InitTrainerHillMap(void)
 {
-    CpuFastFill(MAPGRID_UNDEFINED << 16 | MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
+    CpuFastFill16(MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
     GenerateTrainerHillFloorLayout(sBackupMapData);
 }
 
@@ -353,7 +353,7 @@ u8 MapGridGetElevationAt(int x, int y)
     return block >> MAPGRID_ELEVATION_SHIFT;
 }
 
-bool8 MapGridIsImpassableAt(int x, int y)
+u8 MapGridGetCollisionAt(int x, int y)
 {
     u16 block = GetMapGridBlockAt(x, y);
 
@@ -754,7 +754,7 @@ static int IsPosInConnectingMap(struct MapConnection *connection, int x, int y)
     return FALSE;
 }
 
-struct MapConnection *GetConnectionAtCoords(s16 x, s16 y)
+struct MapConnection *GetMapConnectionAtPos(s16 x, s16 y)
 {
     int count;
     struct MapConnection *connection;
@@ -824,7 +824,7 @@ void MapGridSetMetatileImpassabilityAt(int x, int y, bool32 impassable)
     }
 }
 
-static bool8 SkipCopyingMetatileFromSavedMap(u16* mapBlock, u16 mapWidth, u8 yMode)
+static bool8 SkipCopyingMetatileFromSavedMap(u16 *mapBlock, u16 mapWidth, u8 yMode)
 {
     if (yMode == 0xFF)
         return FALSE;
@@ -861,6 +861,7 @@ static void CopyTilesetToVramUsingHeap(struct Tileset const *tileset, u16 numTil
     }
 }
 
+// Below two are dummied functions from FRLG, used to tint the overworld palettes for the Quest Log
 static void ApplyGlobalTintToPaletteEntries(u16 offset, u16 size)
 {
     switch (gGlobalFieldTintMode)
@@ -879,6 +880,12 @@ static void ApplyGlobalTintToPaletteEntries(u16 offset, u16 size)
             return;
     }
     CpuCopy16(gPlttBufferUnfaded + offset, gPlttBufferFaded + offset, size * sizeof(u16));
+
+}
+
+static void ApplyGlobalTintToPaletteSlot(u8 slot, u8 count)
+{
+
 }
 
 void LoadTilesetPalette(struct Tileset const *tileset, u16 destOffset, u16 size)
@@ -890,17 +897,17 @@ void LoadTilesetPalette(struct Tileset const *tileset, u16 destOffset, u16 size)
         if (tileset->isSecondary == FALSE)
         {
             LoadPalette(&black, destOffset, 2);
-            LoadPalette(((u16*)tileset->palettes) + 1, destOffset + 1, size - 2);
+            LoadPalette(((u16 *)tileset->palettes) + 1, destOffset + 1, size - 2);
             ApplyGlobalTintToPaletteEntries(destOffset + 1, (size - 2) >> 1);
         }
         else if (tileset->isSecondary == TRUE)
         {
-            LoadPalette(((u16*)tileset->palettes) + (NUM_PALS_IN_PRIMARY * 16), destOffset, size);
+            LoadPalette(((u16 *)tileset->palettes) + (NUM_PALS_IN_PRIMARY * 16), destOffset, size);
             ApplyGlobalTintToPaletteEntries(destOffset, size >> 1);
         }
         else
         {
-            LoadCompressedPalette((u32*)tileset->palettes, destOffset, size);
+            LoadCompressedPalette((u32 *)tileset->palettes, destOffset, size);
             ApplyGlobalTintToPaletteEntries(destOffset, size >> 1);
         }
     }

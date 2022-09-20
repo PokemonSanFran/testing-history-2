@@ -5,12 +5,12 @@ Debug_ShowFieldMessageStringVar4::
 	releaseall
 	end
 
-
 Debug_CheatStart::
 	lockall
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_RESCUED_BIRCH
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+	setflag FLAG_ADVENTURE_STARTED
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
 	setvar VAR_BIRCH_LAB_STATE, 2
@@ -22,68 +22,62 @@ Debug_CheatStart::
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
+	setflag FLAG_SYS_NATIONAL_DEX
+	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
-	setvar VAR_LITTLEROOT_TOWN_STATE, 4
-	setvar VAR_LITTLEROOT_INTRO_STATE, 7
-	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2
-	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
+	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
+	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
+	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom (and is corresponding gender)
+	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2 @ 2: Met Rival's Mom (and is corresponding gender)
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 4 @ 4: Received Pokedex
 	setflag FLAG_RECEIVED_BIKE
-	giveitem ITEM_ACRO_BIKE
+	additem ITEM_ACRO_BIKE
 	setvar VAR_BRINEY_HOUSE_STATE, 1
 	setvar VAR_ROUTE116_STATE, 2
 	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
-	closemessage
 	release
 	end
 
+Debug_FlagsNotSetMessage::
+	lockall
+	message Debug_FlagsNotSetMessage_Text
+	waitmessage
+	waitbuttonpress
+	releaseall
+	end
+
+Debug_FlagsNotSetMessage_Text:
+	.string "Feature unavailable!\n"
+	.string "Please define a usable flag in:\l"
+	.string "'include/constants/overworld{UNDERSCORE}config.h'!$"
 
 Debug_Script_1::
-	warp MAP_PRESIDIO, 2
 	end
-
 
 Debug_Script_2::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BUILDINGSCOPE
 	end
-
 
 Debug_Script_3::
 	end
 
-
 Debug_Script_4::
 	end
-
 
 Debug_Script_5::
 	end
 
-
 Debug_Script_6::
 	end
-
 
 Debug_Script_7::
 	end
 
-
 Debug_Script_8::
 	end
-
-
 Debug_Script_9::
 	end
-
-
 Debug_Script_10::
 	end
-
-
-Debug_CheckWeekDay_Text::
-	.string "Aaaah, yes!\l"
-	.string "{STR_VAR_1}s are made for dads!\l"
-	.string "And dad's car!$"

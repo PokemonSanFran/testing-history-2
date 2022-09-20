@@ -2,7 +2,7 @@
 #define GUARD_CONSTANTS_OPPONENTS_H
 
 #define TRAINER_NONE                          0
-#define TRAINER_SAWYER                     1
+#define TRAINER_SAWYER_1                     1
 #define TRAINER_IHSAN_AND_EMMITT              1
 #define TRAINER_GRUNT_AQUA_HIDEOUT_1          2
 #define TRAINER_GRUNT_AQUA_HIDEOUT_2          3
