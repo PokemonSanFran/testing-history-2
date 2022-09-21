@@ -317,7 +317,7 @@ text gText_WhyDidntYouRatMeOut_UhYeahWeMet {
 }
 
 text gText_WhyDidntYouRatMeOut_IMeantToTell {
-    format("I meant to tell you earlier - the Psfbadguy executives have a fully catered skybox to watch the Championship. We're about to watch Bianca's group!")
+    format("I meant to tell you earlier - the Ycombinator executives have a fully catered skybox to watch the Championship. We're about to watch Bianca's group!")
 }
 
 text gText_WhyDidntYouRatMeOut_WinsTheirGroup {

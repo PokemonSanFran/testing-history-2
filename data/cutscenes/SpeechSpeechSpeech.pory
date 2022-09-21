@@ -381,7 +381,7 @@ text gText_SpeechSpeechSpeech_HolyShit {
 }
 
 text gText_SpeechSpeechSpeech_IsAnybodyHurt {
-    format("Is anybody hurt? …no? Wonderful. Let’s continue. Psfnatrival’s restoration project has been going excellently, and we’re going to use that momentum for our next stage. It’s time to take the fight to Psfbadguy!")
+    format("Is anybody hurt? …no? Wonderful. Let’s continue. Psfnatrival’s restoration project has been going excellently, and we’re going to use that momentum for our next stage. It’s time to take the fight to Ycombinator!")
 }
 
 text gText_SpeechSpeechSpeech_Yeah {

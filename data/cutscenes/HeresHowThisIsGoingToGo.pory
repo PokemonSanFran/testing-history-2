@@ -10,7 +10,7 @@ script HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script {
 }
 
 script HeresHowThisIsGoingToGo_ConstructionCompleted_Script {
-    if (var(VAR_STORYLINE_STATE) > STORY_DEFEATED_GARBODOR){ 
+    if (var(VAR_STORYLINE_STATE) > STORY_COMPLETED_NAVAL_BASE){ 
         setmetatile(19,13,0x371,TRUE)
         setmetatile(19,14,0x379,TRUE)
         setmetatile(19,15,0x381,TRUE)

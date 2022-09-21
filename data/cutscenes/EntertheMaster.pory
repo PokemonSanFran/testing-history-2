@@ -1,9 +1,17 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
 const SIEBOLD = 2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1
+
+script EnterTheMaster_HideBianca_Entrance_Script{
+    if (var(VAR_MUIRWOODS_STATE) > BIANCA_WAITING_MUIRWOODS){
+        setflag(FLAG_HIDE_BIANCA)
+    }
+    return
+}
 
 script EnterTheMaster_ObjectsVisible_Script{
-    switch (var(VAR_ROUTE116_STATE)) {
+    switch (var(VAR_MUIRWOODS_STATE)) {
         case 1: goto(EnterTheMaster_Object_SetUp_Script)
         case 2: goto(EnterTheMaster_Object_SetUp_Script)
         default: goto(EnterTheMaster_HideObject_Script)
@@ -40,7 +48,7 @@ script EnterTheMaster_WalkingTrigger_Script {
 
 script EnterTheMaster_Ready_Dialogue {
 
-    addvar(VAR_ROUTE116_STATE,1)
+        setvar(VAR_MUIRWOODS_STATE,BIANCA_ENTERED_MUIRWOODS)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_MorningReady)
@@ -102,7 +110,7 @@ script EnterTheMaster_LeaveWoods_Script {
 
 script EnterTheMaster_CompleteMaze_Dialogue {
 
-    addvar(VAR_ROUTE116_STATE,1)
+        setvar(VAR_MUIRWOODS_STATE,MUIRWOODS_MAZE_COMPLETE)
         lock
         addobject(BIANCA)
         setobjectxy(BIANCA,24,22) //PSF TODO Remove when followers are implemented
@@ -133,7 +141,7 @@ script EnterTheMaster_CompleteMaze_Dialogue {
 }
 
 script EnterTheMaster_ClearingIntro_Dialogue {
-    addvar(VAR_ROUTE116_STATE,1)
+        setvar(VAR_MUIRWOODS_STATE,MET_SIEBOLD)
 
         applymovement(PLAYER,EnterTheMaster_ApproachSiebold)
         waitmovement(0)

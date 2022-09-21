@@ -428,7 +428,7 @@ text gText_VSGarbodor_CoolIWanted {
 }
 
 text gText_VSGarbodor_ScrewThisStadium {
-    format("Heh, we're TeamRocket! Screw this stadium and screw Psfbadguy!")
+    format("Heh, we're TeamRocket! Screw this stadium and screw Ycombinator!")
 }
 
 text gText_VSGarbodor_IsTheName {

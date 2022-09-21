@@ -545,7 +545,7 @@ text gText_ImIn_WereCertainNobody {
 }
 
 text gText_ImIn_HasntLeftWorkEarly {
-    format("Sabrina hasn't left work early a day in their life. Psfbadguy is led by monsters, but at least they're hard-working monsters.")
+    format("Sabrina hasn't left work early a day in their life. Ycombinator is led by monsters, but at least they're hard-working monsters.")
 }
 
 text gText_ImIn_WereInPosition {
@@ -637,7 +637,7 @@ text gText_ImIn_WaitTrash {
 }
 
 text gText_ImIn_WasDestryogingThisRegion {
-    format("TeamRocket was destroying this region with their idiocy. We wiped ‘em out. And you decided to help them? After everything Psfbadguy did for you?")
+    format("TeamRocket was destroying this region with their idiocy. We wiped ‘em out. And you decided to help them? After everything Ycombinator did for you?")
 }
 
 text gText_ImIn_SoYouJustDontCare {
@@ -669,7 +669,7 @@ text gText_ImIn_WhatsTheSecret {
 }
 
 text gText_ImIn_EverythingAboutIsBullshit {
-    format("Everything about Psfbadguy is bullshit. You're not any stronger. The region isn't any better. But as long as they have stans like you, they're going to continue to get richer and more toxic. Tell me where Rose is.")
+    format("Everything about Ycombinator is bullshit. You're not any stronger. The region isn't any better. But as long as they have stans like you, they're going to continue to get richer and more toxic. Tell me where Rose is.")
 }
 
 text gText_ImIn_Floor {

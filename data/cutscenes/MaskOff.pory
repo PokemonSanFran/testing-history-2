@@ -244,7 +244,7 @@ text gText_MaskOff_TheOneAndOnly {
     format("the one and only… Wikstrom.")
 }
 text gText_MaskOff_IFormedTeamRocket {
-    format("I formed TeamRocket as a response to Psfbadguy’s growing influence over the region a few years ago. ")
+    format("I formed TeamRocket as a response to Ycombinator’s growing influence over the region a few years ago. ")
 }
 text gText_MaskOff_ButWhyGo {
     format("But why go into hiding as Wikstrom?")

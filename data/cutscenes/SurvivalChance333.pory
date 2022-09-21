@@ -300,7 +300,7 @@ text gText_SurvivalChance333_IsSomethingWrong {
 }
 
 text gText_SurvivalChance333_ISpent15Years {
-	format("I spent 15 years in the military, dedicated my life to tactical warfare and I've never run a failed operation… and now somehow I'm doing the dirty work for some tech bros. And while I'm Psfbadguy's bitch, I have to babysit two hotshots from nowhere as I try to infiltrate a terrorist organization.")
+	format("I spent 15 years in the military, dedicated my life to tactical warfare and I've never run a failed operation… and now somehow I'm doing the dirty work for some tech bros. And while I'm Ycombinator's bitch, I have to babysit two hotshots from nowhere as I try to infiltrate a terrorist organization.")
 
 }
 text gText_SurvivalChance333_WoahWerePlentyTough {

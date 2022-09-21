@@ -1,5 +1,16 @@
+EnterTheMaster_HideBianca_Entrance_Script::
+	compare VAR_MUIRWOODS_STATE, BIANCA_WAITING_MUIRWOODS
+	goto_if_gt EnterTheMaster_HideBianca_Entrance_Script_2
+EnterTheMaster_HideBianca_Entrance_Script_1:
+	return
+
+EnterTheMaster_HideBianca_Entrance_Script_2:
+	setflag FLAG_TEMP_1
+	goto EnterTheMaster_HideBianca_Entrance_Script_1
+
+
 EnterTheMaster_ObjectsVisible_Script::
-	switch VAR_ROUTE116_STATE
+	switch VAR_MUIRWOODS_STATE
 	case 1, EnterTheMaster_ObjectsVisible_Script_3
 	case 2, EnterTheMaster_ObjectsVisible_Script_4
 	goto EnterTheMaster_HideObject_Script
@@ -48,7 +59,7 @@ EnterTheMaster_WalkingTrigger_Script::
 
 
 EnterTheMaster_Ready_Dialogue::
-	addvar VAR_ROUTE116_STATE, 1
+	setvar VAR_MUIRWOODS_STATE, BIANCA_ENTERED_MUIRWOODS
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_EnterTheMaster_MorningReady
@@ -117,7 +128,7 @@ EnterTheMaster_LeaveWoods_Script::
 
 
 EnterTheMaster_CompleteMaze_Dialogue::
-	addvar VAR_ROUTE116_STATE, 1
+	setvar VAR_MUIRWOODS_STATE, MUIRWOODS_MAZE_COMPLETE
 	lock
 	addobject 1
 	setobjectxy 1, 24, 22
@@ -144,7 +155,7 @@ EnterTheMaster_CompleteMaze_Dialogue::
 
 
 EnterTheMaster_ClearingIntro_Dialogue::
-	addvar VAR_ROUTE116_STATE, 1
+	setvar VAR_MUIRWOODS_STATE, MET_SIEBOLD
 	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachSiebold
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_MARSHAL

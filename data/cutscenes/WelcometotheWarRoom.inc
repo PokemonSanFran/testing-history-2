@@ -10,6 +10,7 @@ WelcomeToTheWarRoom_Object_Hide_Script::
 
 
 WelcomeToTheWarRoom_Object_Setup_Script::
+	setflag FLAG_TEMP_9
 	setflag FLAG_TEMP_4
 	setobjectxy 3, 10, 9
 	setobjectxy 4, 10, 11

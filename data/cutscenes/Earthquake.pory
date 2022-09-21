@@ -450,7 +450,7 @@ text gText_Earthquake_ItsJustABunch {
 }
 
 text gText_Earthquake_IDontThinkSo {
-    format("…I don't think so. Koga was really trying to help me. Even when I had dinner with him, their energy was different from everybody else in Psfbadguy.")
+    format("…I don't think so. Koga was really trying to help me. Even when I had dinner with him, their energy was different from everybody else in Ycombinator.")
 }
 
 text gText_Earthquake_HowCanYouTrust {

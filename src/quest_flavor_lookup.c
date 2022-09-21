@@ -200,17 +200,29 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor11;
 	}
 
-	else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS)
+    else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS
+                && (VarGet(VAR_MUIRWOODS_STATE) > MUIRWOODS_MAZE_COMPLETE))
 	{
 		return gText_PlayersAdventure_Flavor10;
 	}
 
-	else if (storyline > STORY_NEED_SLEEP_BEFORE_SIEBOLD)
+	else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS
+                && (VarGet(VAR_GOLDENGATEBRIDGE_STATE) > CALLED_BY_BIANCA))
+	{
+		return gText_PlayersAdventure_Flavor9_B;
+	}
+
+    else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS && (VarGet(VAR_GOLDENGATEBRIDGE_STATE) == CALLED_BY_BIANCA))
+	{
+		return gText_PlayersAdventure_Flavor9_A;
+	}
+
+	else if (storyline == STORY_NEED_SLEEP_BEFORE_SIEBOLD)
 	{
 		return gText_PlayersAdventure_Flavor9;
 	}
 
-	else if (storyline == STORY_DEFEATED_GARBODOR
+	else if (storyline == STORY_CALLED_TO_CONSTRUCTION
 	            && (VarGet(VAR_CONSTRUCTION_STRIKE_STATE) == START_VS_GARBODOR))
 	{
 		return gText_PlayersAdventure_Flavor8;

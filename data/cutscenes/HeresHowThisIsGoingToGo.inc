@@ -5,7 +5,7 @@ HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script::
 
 
 HeresHowThisIsGoingToGo_ConstructionCompleted_Script::
-	compare VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR
+	compare VAR_STORYLINE_STATE, STORY_COMPLETED_NAVAL_BASE
 	goto_if_gt HeresHowThisIsGoingToGo_ConstructionCompleted_Script_2
 HeresHowThisIsGoingToGo_ConstructionCompleted_Script_1:
 	return

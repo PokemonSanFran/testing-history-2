@@ -182,7 +182,7 @@ text gText_YouRealizeWereEvilRight_ItsBeenSuperRewarding {
     format("It's been super rewarding!")
 }
 text gText_YouRealizeWereEvilRight_HoweverTheNext {
-    format("However, the next season of the Challenge is coming up, and we're slightly concerned with your activities and the perception that a Psfbadguy sponsored Trainer is so intimately involved with the same structure that we sunset when we took over.")
+    format("However, the next season of the Challenge is coming up, and we're slightly concerned with your activities and the perception that a Ycombinator sponsored Trainer is so intimately involved with the same structure that we sunset when we took over.")
 }
 text gText_YouRealizeWereEvilRight_ItWouldBeBetter {
     format("It would be better if you found other extracurricular activities instead. A popular way to give back is volunteering at a shelter, or perhaps helping the researchers in Berkeley complete the Pokédex.")

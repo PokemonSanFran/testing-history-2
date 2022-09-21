@@ -277,7 +277,7 @@ text gText_LetsGrabLunch_TakingABreak {
 }
 
 text gText_LetsGrabLunch_YeahBeingOfficial {
-    format("Yeah, being Psfbadguy's official lapdog must be exhausting! Bummer.")
+    format("Yeah, being Ycombinator's official lapdog must be exhausting! Bummer.")
 }
 
 text gText_LetsGrabLunch_ThisAgain {
@@ -317,7 +317,7 @@ text gText_LetsGrabLunch_OkayLetsHear {
 }
 
 text gText_LetsGrabLunch_IWantToCreate {
-    format("I want to create training centers all over SanFran, to help more Trainers get a real start, kind of like what Psfbadguy gave you. I wanna use the decommissioned Gyms, like the one you saw earlier today, as those hubs.")
+    format("I want to create training centers all over SanFran, to help more Trainers get a real start, kind of like what Ycombinator gave you. I wanna use the decommissioned Gyms, like the one you saw earlier today, as those hubs.")
 }
 
 text gText_LetsGrabLunch_HuhThatsActually {
@@ -333,7 +333,7 @@ text gText_LetsGrabLunch_Who {
 }
 
 text gText_LetsGrabLunch_OhTheOldLeaders {
-    format("Oh, the old Leaders of the Treasureisland and Marin Gyms. If we can revive those Gyms and strengthen our Trainers, then Trainers from other regions will want to come here, battle us, and help stimulate the region… without any interference from Psfbadguy.")
+    format("Oh, the old Leaders of the Treasureisland and Marin Gyms. If we can revive those Gyms and strengthen our Trainers, then Trainers from other regions will want to come here, battle us, and help stimulate the region… without any interference from Ycombinator.")
 }
 
 text gText_LetsGrabLunch_YouKnowTheyre {
@@ -381,7 +381,7 @@ text gText_LetsGrabLunch_ImJustPlanning {
 }
 
 text gText_LetsGrabLunch_TheLeaderOfThat {
-    format("The Leader of that Gym more or less disappeared after Psfbadguy shut it down. I know some of his Gym Trainers are still around… but I'm not sure where. ")
+    format("The Leader of that Gym more or less disappeared after Ycombinator shut it down. I know some of his Gym Trainers are still around… but I'm not sure where. ")
 }
 
 text gText_LetsGrabLunch_DoYouWantChinatown {

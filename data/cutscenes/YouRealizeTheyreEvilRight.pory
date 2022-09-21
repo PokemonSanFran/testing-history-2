@@ -559,7 +559,7 @@ script YouRealizeTheyreEvilRight_NoIdea_Dialogue {
                 format("Awesome job in {STR_VAR_1}. I heard all about it, and I'm so happy things are getting off the ground. I heard you got a phone call and disappeared. Everything okay?") //PSF TODO Buffer in the name of the last resotration quest city that was completed
                 }
                 text gText_YouRealizeTheyreEvilRight_TheyDontLove {
-                format("Psfbadguy called me. They don't love our project.")
+                format("Ycombinator called me. They don't love our project.")
                 }
 text gText_YouRealizeTheyreEvilRight_YouSeemSurprised {
     format("You seem surprised.")
@@ -622,7 +622,7 @@ text gText_YouRealizeTheyreEvilRight_WhyAreWeHere {
     format("Why are we here?")
 }
 text gText_YouRealizeTheyreEvilRight_ICanFinallyProve {
-    format("I can finally prove that Psfbadguy is worse than we originally thought. Once I do that, I want all of us to find a way to work together to protect SanFran from their bullshit.")
+    format("I can finally prove that Ycombinator is worse than we originally thought. Once I do that, I want all of us to find a way to work together to protect SanFran from their bullshit.")
 }
 text gText_YouRealizeTheyreEvilRight_DidYouDragMe {
     format("Did you drag me out here to join a terrorist organiziation? Did you hear ANYTHING I said on the phone?")
@@ -691,7 +691,7 @@ text gText_YouRealizeTheyreEvilRight_IDontGetIt {
     format("I don't get it then. So this Garbodor was taught Self-Destruct. What does that mean?")
 }
 text gText_YouRealizeTheyreEvilRight_HasBeenFramingYou {
-    format("Archer… Psfbadguy has been framing you? ")
+    format("Archer… Ycombinator has been framing you? ")
 }
 text gText_YouRealizeTheyreEvilRight_YouAlsoMetUp {
     format("{PLAYER}, you also met up with TeamRocket in Oakland too, right?")
@@ -700,13 +700,13 @@ text gText_YouRealizeTheyreEvilRight_ButArianaSaid {
     format("…yeah. But Ariana said that situation was super weird and was trying to track them down.")
 }
 text gText_YouRealizeTheyreEvilRight_YeahNobodyKnows {
-    format("Yeah, nobody knows who they are or where they came from. I'm pretty sure Psfbadguy has been sending in agents to make us look shitty. Between that and whatever else Psfbadguy is feeding you, I'm not surprised you feel the way you do.")
+    format("Yeah, nobody knows who they are or where they came from. I'm pretty sure Ycombinator has been sending in agents to make us look shitty. Between that and whatever else Ycombinator is feeding you, I'm not surprised you feel the way you do.")
 }
 text gText_YouRealizeTheyreEvilRight_WhyWhyDoAll {
     format("Why? Why do all this to just to screw with you guys?")
 }
 text gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney {
-    format("Psfbadguy exists to make money. They don't care about you. Or us. Or the region. You weren't here when they first bought the League. They were ruthless. Fired thousands of people, dismantled and reshaped communities - all for their agenda.")
+    format("Ycombinator exists to make money. They don't care about you. Or us. Or the region. You weren't here when they first bought the League. They were ruthless. Fired thousands of people, dismantled and reshaped communities - all for their agenda.")
 }
 text gText_YouRealizeTheyreEvilRight_CantArgueWithThat {
     format("Can't argue with that.")
@@ -718,7 +718,7 @@ text gText_YouRealizeTheyreEvilRight_AndThatsWhyWere {
     format("And that's why we're all here?")
 }
 text gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally {
-    format("Yep. I think it's finally time we all come together to expose Psfbadguy for the assholes that they are, and start to take power back for the people.")
+    format("Yep. I think it's finally time we all come together to expose Ycombinator for the assholes that they are, and start to take power back for the people.")
 }
 text gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour {
     format("Kid, if the Elite Four couldn't stop them in their prime, I don't know what you think TeamRocket will be able to do. Matter of fact, going solo might actually be better! Hell, I was able to start the Alcatraz campaigns without any help.")
@@ -748,7 +748,7 @@ text gText_YouRealizeTheyreEvilRight_DoYouWantToGo {
     format("Do you want to go to bed?")
 }
 text gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat {
-    format("…I have no idea what I'm going to do. Do I help Psfbadguy and the police end TeamRocket permanently? Or do I help TeamRocket clear their name and help the people of SanFran?")
+    format("…I have no idea what I'm going to do. Do I help Ycombinator and the police end TeamRocket permanently? Or do I help TeamRocket clear their name and help the people of SanFran?")
 }
 text gText_YouRealizeTheyreEvilRight_ObtainedGift {
     format("{PLAYER} was given the {STR_VAR_2}.")

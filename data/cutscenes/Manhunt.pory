@@ -503,7 +503,7 @@ text gText_Manhunt_YeahToldMeYoud {
 }
 
 text gText_Manhunt_IFeelBadForAll {
-    format("I feel bad for all the innocent people you've been harassing... you're no joke. Giovanni wants you to meet him at the Lake, after sunset. Just the two of you - no police or Psfbadguy cronies, or the trail goes cold again. Up to you.")
+    format("I feel bad for all the innocent people you've been harassing... you're no joke. Giovanni wants you to meet him at the Lake, after sunset. Just the two of you - no police or Ycombinator cronies, or the trail goes cold again. Up to you.")
 }
 
 text gText_Manhunt_StopHurtingPeople {

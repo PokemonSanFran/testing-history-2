@@ -229,7 +229,7 @@ text gText_WaitEvenThen_DamnAPowerSpot {
 }
 
 text gText_WaitEvenThen_AndTheGovernment {
-    format("Between Psfbadguy and the government, I guess nothing is off limits.")
+    format("Between Ycombinator and the government, I guess nothing is off limits.")
 }
 
 text gText_WaitEvenThen_IllHaveSomeOther {

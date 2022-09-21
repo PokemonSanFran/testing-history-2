@@ -155,7 +155,7 @@ script LetsFinishThis_StartPlanning_Dialogue {
 }
 
 text gText_LetsFinishThis_IDontThinkIm {
-    format("I don’t think I’m surprised by Psfbadguy, but the government too? All those talks, those negotiations… aren’t they supposed to protect their citizens?")
+    format("I don’t think I’m surprised by Ycombinator, but the government too? All those talks, those negotiations… aren’t they supposed to protect their citizens?")
 }
 
 text gText_LetsFinishThis_ThatPartDoesnt {
@@ -175,7 +175,7 @@ text gText_LetsFinishThis_ButTheyWerentAlways {
 }
 
 text gText_LetsFinishThis_HasAlwaysBeenRuthless {
-    format("Psfbadguy has always been ruthless! Killing is… new though.")
+    format("Ycombinator has always been ruthless! Killing is… new though.")
 }
 
 text gText_LetsFinishThis_ThatsWhatIMean {

@@ -595,7 +595,7 @@ gText_VSGarbodor_AsWeWereNegotiating::
 	.string "to get a little rowdy. The police aren't\l"
 	.string "taking any chances this time, so\l"
 	.string "they've halted escalation… for now.\l"
-	.string "How's the Psfbadguy Task Force?$"
+	.string "How's the YCombinator Task Force?$"
 
 gText_VSGarbodor_DoneLikeYouGuys::
 	.string "Done. Like you guys said, TeamRocket up\n"

@@ -223,7 +223,7 @@ text gText_YouHaveYourOrders_YouWereAGym {
 }
 
 text gText_YouHaveYourOrders_ItWasOneOfMyGreatest {
-    format("It was one of my greatest accomplishments. But when Psfbadguy came along and I saw them beginning to usher in a new age for the region, I knew I wanted to help them. I made sure I was absolutely invaluable to them, and that's how I ended up in this spot now.")
+    format("It was one of my greatest accomplishments. But when Ycombinator came along and I saw them beginning to usher in a new age for the region, I knew I wanted to help them. I made sure I was absolutely invaluable to them, and that's how I ended up in this spot now.")
 }
 
 text gText_YouHaveYourOrders_WasThatHard {

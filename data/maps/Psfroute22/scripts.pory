@@ -1,4 +1,3 @@
-
 mapscripts Psfroute22_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(Psfroute22_ConstructionVisibility_Script)

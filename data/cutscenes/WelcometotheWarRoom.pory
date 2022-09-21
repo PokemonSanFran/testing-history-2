@@ -18,6 +18,7 @@ script WelcomeToTheWarRoom_Object_Hide_Script {
 }
 
 script WelcomeToTheWarRoom_Object_Setup_Script {
+        setflag(FLAG_TEMP_9)
         setflag(FLAG_TEMP_4)
         setobjectxy(ARNAV,10,9)
         setobjectxy(OLIVER,10,11)
@@ -240,7 +241,7 @@ text gText_WelcomeToTheWarRoom_AllMajorSocialMedia {
 }
 
 text gText_WelcomeToTheWarRoom_TheNewOwnersOfOUrAccounts {
-    format("The new owners of our accounts have been pushing a narrative about Psfbadguy's “crimes against the region”. They're calling for everybody to boycott the League and the upcoming Championship. We've found evidence that the perpetrators are at Navalbase. ")
+    format("The new owners of our accounts have been pushing a narrative about Ycombinator's “crimes against the region”. They're calling for everybody to boycott the League and the upcoming Championship. We've found evidence that the perpetrators are at Navalbase. ")
 }
 
 text gText_WelcomeToTheWarRoom_WeveLongTheorized {

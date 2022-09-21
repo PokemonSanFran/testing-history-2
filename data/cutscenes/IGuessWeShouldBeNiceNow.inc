@@ -647,7 +647,7 @@ gText_IGuessWeShouldBeNiceNow_DaddyOwnsA::
 	.string "should be good for us now.$"
 
 gText_IGuessWeShouldBeNiceNow_WaitWhatIThought::
-	.string "Wait what? I thought Psfbadguy -$"
+	.string "Wait what? I thought YCombinator -$"
 
 gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace::
 	.string "Yeah, Daddy's place is way nicer than\n"

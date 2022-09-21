@@ -518,7 +518,7 @@ text gText_KogaRaisonDetre_What {
     format("…what?")
 }
 text gText_KogaRaisonDetre_TonOfMoneyInWarp {
-    format("Psfbadguy has a ton of money in warp tiles. All the executives have panels from their house to their office installed. He literally teleports to work, everyday.")
+    format("Ycombinator has a ton of money in warp tiles. All the executives have panels from their house to their office installed. He literally teleports to work, everyday.")
 }
 text gText_KogaRaisonDetre_OhDamnYouWerent {
     format("Oh damn, you weren't kidding.")

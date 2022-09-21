@@ -168,7 +168,7 @@ text gText_OkayLetsFixIt_LetsLookBack {
 }
 
 text gText_OkayLetsFixIt_ThisWasTheNight {
-    format("This was the night I decided to help Psfbadguy.")
+    format("This was the night I decided to help Ycombinator.")
 }
 
 text gText_OkayLetsFixIt_Why {
@@ -200,7 +200,7 @@ text gText_OkayLetsFixIt_WhatTheHell {
 }
 
 text gText_OkayLetsFixIt_IHaveNoIdea {
-    format("…I have no idea what I'm going to do. Do I help Psfbadguy and the police end TeamRocket permanently? Or do I help TeamRocket clear their name and help the people of SanFran?")
+    format("…I have no idea what I'm going to do. Do I help Ycombinator and the police end TeamRocket permanently? Or do I help TeamRocket clear their name and help the people of SanFran?")
 }
 
 movement OkayLetsFixit_WalkToPeak {

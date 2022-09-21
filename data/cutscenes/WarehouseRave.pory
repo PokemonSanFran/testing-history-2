@@ -254,7 +254,7 @@ text gText_WarehouseRave_WhyAmITrapped {
 }
 
 text gText_WarehouseRave_HasBeenPredicting {
-    format("Psfbadguy has been predicting this for a while now, unfortunately. We've always had a few plans in case your empathy became unmanageable.")
+    format("Ycombinator has been predicting this for a while now, unfortunately. We've always had a few plans in case your empathy became unmanageable.")
 }
 
 text gText_WarehouseRave_SoIDecideTo {
@@ -262,7 +262,7 @@ text gText_WarehouseRave_SoIDecideTo {
 }
 
 text gText_WarehouseRave_HasInstructed {
-    format("Psfbadguy has instructed me to neutralize this new threat.")
+    format("Ycombinator has instructed me to neutralize this new threat.")
 }
 
 text gText_WarehouseRave_PrepareToFight {
@@ -302,7 +302,7 @@ text gText_WarehouseRave_ItWasATrap {
 }
 
 text gText_WarehouseRave_HolyShitThatWas {
-    format("Holy shit that was fast! An attempt on your LIFE? Psfbadguy is out of control.")
+    format("Holy shit that was fast! An attempt on your LIFE? Ycombinator is out of control.")
 }
 
 text gText_WarehouseRave_TheBattleFelt {
@@ -322,7 +322,7 @@ text gText_WarehouseRave_WhatDoYouMean {
 }
 
 text gText_WarehouseRave_CameToTown {
-    format("He's like Pryce - once Psfbadguy came to town, he jumped ship. He was playing both sides for a while, both working on Psfbadguy's board and running the Gym in Chinatown.")
+    format("He's like Pryce - once Ycombinator came to town, he jumped ship. He was playing both sides for a while, both working on Ycombinator's board and running the Gym in Chinatown.")
 }
 
 text gText_WarehouseRave_MaybeItIsGuilt {

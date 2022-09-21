@@ -5,7 +5,7 @@ Psfroute61_MapScripts::
 
 Psfroute61_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_ArtisanBalls2_CheckTrainerC_Script
-	call EnterTheMaster_ObjectsVisible_Script
+	call EnterTheMaster_HideBianca_Entrance_Script
 	return
 
 Psfroute61_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
