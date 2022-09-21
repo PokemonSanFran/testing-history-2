@@ -61,7 +61,7 @@ TheStrikeStrikesBack_CrowdFacesNorth_Script::
 TheStrikeStrikesBack_PhoneCall_Dialogue::
 	lock
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_ROUTE110_STATE, 1
+	setvar VAR_CONSTRUCTION_STRIKE_STATE, STRIKE_HAS_BEGUN
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
@@ -126,7 +126,7 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 21
 	goto_if_ne TheStrikeStrikesBack_Intro_Dialogue_1
-	addvar VAR_ROUTE110_STATE, 1
+	setvar VAR_CONSTRUCTION_STRIKE_STATE, START_VS_GARBODOR
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AndCongratulations

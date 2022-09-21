@@ -5,7 +5,7 @@ Chasecenter_Construction_MapScripts::
 	.byte 0
 
 Chasecenter_Construction_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Chasecenter_Construction_MapScripts_OnTransition
+	call VSGarbodor_ObjectCleanUp_Script
 	return
 
 Chasecenter_Construction_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -13,14 +13,4 @@ Chasecenter_Construction_MapScripts_MAP_SCRIPT_ON_LOAD:
 
 Chasecenter_Construction_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
-
-
-Chasecenter_Construction_MapScripts_OnTransition::
-	compare VAR_ROUTE110_STATE, 0
-	goto_if_ne Chasecenter_Construction_MapScripts_OnTransition_1
-	return
-
-Chasecenter_Construction_MapScripts_OnTransition_1:
-	call VSGarbodor_ObjectCleanUp_Script
-	return
 

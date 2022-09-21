@@ -12,10 +12,16 @@ VSGarbodor_Arrest_ObjectSetup_Script::
 
 
 VSGarbodor_ObjectCleanUp_Script::
+	compare VAR_CONSTRUCTION_STRIKE_STATE, START_VS_GARBODOR
+	goto_if_gt VSGarbodor_ObjectCleanUp_Script_2
+VSGarbodor_ObjectCleanUp_Script_1:
+	return
+
+VSGarbodor_ObjectCleanUp_Script_2:
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_3
-	return
+	goto VSGarbodor_ObjectCleanUp_Script_1
 
 
 VSGarbodor_Scouting_Dialogue::
@@ -57,7 +63,7 @@ VSGarbodor_ChooseSide_Script_4:
 
 
 VSGarbodor_ChooseLeft_Script::
-	setvar VAR_ROUTE111_STATE, 1
+	setvar VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_LEFT_SIDE
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_ThenIllTakeTheRight
@@ -73,7 +79,7 @@ VSGarbodor_ChooseLeft_Script::
 
 
 VSGarbodor_ChooseRight_Script::
-	setvar VAR_ROUTE111_STATE, 2
+	setvar VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_RIGHT_SIDE
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_CoolIWanted
@@ -180,7 +186,7 @@ VSGarbodor_PreventCrossingSides_Script::
 	msgbox gText_VSGarbodor_FeelingLonely
 	closemessage
 	callnative ClearMugshot
-	compare VAR_ROUTE111_STATE, 2
+	compare VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_RIGHT_SIDE
 	goto_if_eq VSGarbodor_PreventCrossingSides_Script_2
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 VSGarbodor_PreventCrossingSides_Script_1:
@@ -247,14 +253,14 @@ VSGarbodor_DefeatedAll_Dialogue::
 	msgbox gText_VSGarbodor_WhateverMineWereEasy
 	closemessage
 	callnative ClearMugshot
-	addvar VAR_ROUTE110_STATE, 1
+	setvar VAR_CONSTRUCTION_STRIKE_STATE, DEFEATED_GARBODOR
 	warpsilent MAP_PSFROUTE22, 255, 20, 22
 	delay 100
 	return
 
 
 VSGarbodor_Arrest_Script::
-	addvar VAR_ROUTE110_STATE, 1
+	setvar VAR_CONSTRUCTION_STRIKE_STATE, TEAM_ROCKET_ARRESTED
 	addvar VAR_STORYLINE_STATE, 1
 	applymovement 14, Common_Movement_FaceUp
 	applymovement 1, Common_Movement_FaceUp

@@ -22,9 +22,12 @@ script VSGarbodor_Arrest_ObjectSetup_Script {
 }
 
 script VSGarbodor_ObjectCleanUp_Script {
+    if (var(VAR_CONSTRUCTION_STRIKE_STATE) > START_VS_GARBODOR){
     setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_2)
     setflag(FLAG_TEMP_3)
+    }
+    return
 }
 
 script VSGarbodor_Scouting_Dialogue {
@@ -55,7 +58,7 @@ script VSGarbodor_ChooseSide_Script {
 }
 
 script VSGarbodor_ChooseLeft_Script {
-    setvar(VAR_ROUTE111_STATE, 1)
+    setvar(VAR_INNER_CONSTRUCTION_SITE_STATE,PLAYER_LEFT_SIDE) 
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_ThenIllTakeTheRight)
@@ -72,7 +75,7 @@ script VSGarbodor_ChooseLeft_Script {
 }
 
 script VSGarbodor_ChooseRight_Script {
-    setvar(VAR_ROUTE111_STATE, 2)
+    setvar(VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_RIGHT_SIDE)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_CoolIWanted)
@@ -163,7 +166,7 @@ script VSGarbodor_PreventCrossingSides_Script {
         closemessage
         callnative(ClearMugshot)
 
-        if (var (VAR_ROUTE111_STATE) == 2) {
+        if (var (VAR_INNER_CONSTRUCTION_SITE_STATE) == PLAYER_RIGHT_SIDE) {
             applymovement(PLAYER, Common_Movement_WalkRight)
         } else {
             applymovement(PLAYER, Common_Movement_WalkLeft)
@@ -222,13 +225,16 @@ script VSGarbodor_DefeatedAll_Dialogue {
         msgbox(gText_VSGarbodor_WhateverMineWereEasy)
         closemessage
         callnative(ClearMugshot)
-        addvar(VAR_ROUTE110_STATE,1)
+
+        setvar(VAR_CONSTRUCTION_STRIKE_STATE,DEFEATED_GARBODOR)
+
         warpsilent(MAP_PSFROUTE22, 255, 20, 22)
         delay(100)
 }
 
 script VSGarbodor_Arrest_Script {
-    addvar(VAR_ROUTE110_STATE, 1)
+        setvar(VAR_CONSTRUCTION_STRIKE_STATE,TEAM_ROCKET_ARRESTED)
+
         addvar(VAR_STORYLINE_STATE,1)
 
         applymovement(ROSE,Common_Movement_FaceUp)
@@ -486,7 +492,7 @@ text gText_VSGarbodor_WhateverMineWereEasy {
 }
 
 text gText_VSGarbodor_AsWeWereNegotiating {
-    format("As we were negotiating, things started to get a little rowdy. The police aren't taking any chances this time, so they've halted escalation… for now. How's the Psfbadguy Task Force?")
+    format("As we were negotiating, things started to get a little rowdy. The police aren't taking any chances this time, so they've halted escalation… for now. How's the YCombinator Task Force?")
 }
 
 text gText_VSGarbodor_DoneLikeYouGuys {
