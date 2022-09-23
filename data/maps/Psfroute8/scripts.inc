@@ -13,7 +13,7 @@ Psfroute8_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Psfroute8_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_DEWFORD_TOWN_STATE, 1, ThisIsntRandom_CheckDoor_Script
+	map_script_2 VAR_TEMP_C, 0, ThisIsntRandom_CheckDoor_Script
 	.2byte 0
 
 
@@ -28,12 +28,13 @@ Psfroute8_UncoverSecretLab_Script::
 	setmetatile 11, 18, 0x066, FALSE
 	setmetatile 12, 18, 0x067, FALSE
 	special DrawWholeMapView
-	compare VAR_DEWFORD_TOWN_STATE, 0
+	compare VAR_UNDERGROUNDLAB_STATE, LAB_NOT_DISCOVERED
 	goto_if_eq Psfroute8_UncoverSecretLab_Script_1
 	return
 
 Psfroute8_UncoverSecretLab_Script_1:
-	addvar VAR_DEWFORD_TOWN_STATE, 1
+	addvar VAR_UNDERGROUNDLAB_STATE, PLAYER_DISCOVERED_LAB
+	setvar VAR_TEMP_C, 0
 	return
 
 
@@ -43,7 +44,7 @@ Psfroute8_MapScripts_OnTransition::
 
 
 Psfroute8_MapScripts_OnLoad::
-	compare VAR_DEWFORD_TOWN_STATE, 0
+	compare VAR_UNDERGROUNDLAB_STATE, 0
 	goto_if_ne Psfroute8_MapScripts_OnLoad_1
 	return
 

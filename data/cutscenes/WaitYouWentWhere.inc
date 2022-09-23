@@ -2,7 +2,7 @@ WaitYouWentWhere_ObjectSetUp_Script::
 	special GetNumberOfBadges
 	compare VAR_RESULT, 7
 	goto_if_ge WaitYouWentWhere_ObjectSetUp_Script_1
-	compare VAR_ALCATRAZ_STATE, 2
+	compare VAR_ALCATRAZ_STATE, BATTLED_MALVA
 	goto_if_ne WaitYouWentWhere_ObjectSetUp_Script_1
 	return
 

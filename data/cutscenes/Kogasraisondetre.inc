@@ -732,7 +732,7 @@ gText_KogaRaisonDetre_What::
 	.string "…what?$"
 
 gText_KogaRaisonDetre_TonOfMoneyInWarp::
-	.string "Psfbadguy has a ton of money in warp\n"
+	.string "Ycombinator has a ton of money in warp\n"
 	.string "tiles. All the executives have panels\l"
 	.string "from their house to their office\l"
 	.string "installed. He literally teleports to\l"

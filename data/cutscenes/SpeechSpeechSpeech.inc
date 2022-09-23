@@ -239,7 +239,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	closemessage
 	fadescreen FADE_TO_BLACK
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_ALCATRAZ_STATE, 1
+	setvar VAR_ALCATRAZ_STATE, POST_SPEECHSPEECH
 	TeleportCamera 9, 9
 	callnative DestroyVirtualObjects
 	call SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script
@@ -393,7 +393,7 @@ gText_SpeechSpeechSpeech_IsAnybodyHurt::
 	.string "project has been going excellently,\l"
 	.string "and we’re going to use that momentum\l"
 	.string "for our next stage. It’s time to take\l"
-	.string "the fight to Psfbadguy!$"
+	.string "the fight to Ycombinator!$"
 
 gText_SpeechSpeechSpeech_Yeah::
 	.string "Yeah!$"

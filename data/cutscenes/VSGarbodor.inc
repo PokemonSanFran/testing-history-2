@@ -532,7 +532,7 @@ gText_VSGarbodor_CoolIWanted::
 
 gText_VSGarbodor_ScrewThisStadium::
 	.string "Heh, we're TeamRocket! Screw this\n"
-	.string "stadium and screw Psfbadguy!$"
+	.string "stadium and screw Ycombinator!$"
 
 gText_VSGarbodor_IsTheName::
 	.string "TeamRocket is the name, and shutting\n"

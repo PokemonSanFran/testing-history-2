@@ -355,7 +355,7 @@ gText_YouHaveYourOrders_YouWereAGym::
 
 gText_YouHaveYourOrders_ItWasOneOfMyGreatest::
 	.string "It was one of my greatest\n"
-	.string "accomplishments. But when Psfbadguy\l"
+	.string "accomplishments. But when Ycombinator\l"
 	.string "came along and I saw them beginning to\l"
 	.string "usher in a new age for the region, I\l"
 	.string "knew I wanted to help them. I made sure\l"

@@ -118,13 +118,14 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor27;
 	}
 
-	else if (storyline == STORY_POST_YOU_REALIZE_WERE_EVIL)
+	else if (storyline == STORY_POST_YOU_REALIZE_WERE_EVIL
+	            && (VarGet(VAR_ALCATRAZ_STATE) >= POST_YOU_REALIZE_THEYRE_EVIL_RIGHT))
 	{
 		return gText_PlayersAdventure_Flavor26;
 	}
 
-	else if (storyline == STORY_RESTORATION_1_COMPLETE
-	            && (VarGet(VAR_ALCATRAZ_STATE) == ARCHER_SUMMONED_ALCATRAZ))
+	else if (storyline == STORY_POST_YOU_REALIZE_WERE_EVIL
+	            && (VarGet(VAR_ALCATRAZ_STATE) < POST_YOU_REALIZE_THEYRE_EVIL_RIGHT))
 	{
 		return gText_PlayersAdventure_Flavor25;
 	}
@@ -159,7 +160,7 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor19;
 	}
 
-	else if (storyline > STORY_SAVE_FINALS)
+	else if (storyline > STORY_READY_FINALS)
 	{
 		return gText_PlayersAdventure_Flavor18;
 	}

@@ -6,7 +6,7 @@ mapscripts Alcatraz_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [ 
-        VAR_ALCATRAZ_STATE, 3: YouRealizeTheyreEvilRight_PlayerLandedDialogue
+        VAR_ALCATRAZ_STATE, ARCHER_SUMMONED_ALCATRAZ: YouRealizeTheyreEvilRight_PlayerLandedDialogue
     ]
 }
 
@@ -42,7 +42,7 @@ script ResetAlcatrazExhibit_Script {
         clearflag(TRAINER_FLAGS_START + TRAINER_ZANDER)
         clearflag(TRAINER_FLAGS_START + TRAINER_LEAH)
 
-        if (var(VAR_ALCATRAZ_STATE) < 2){
+        if (var(VAR_ALCATRAZ_STATE) < BATTLED_MALVA){
             setvar(VAR_ALCATRAZ_EXHIBIT_STATE,0)
         }
 }

@@ -654,7 +654,7 @@ gText_ImIn_WereCertainNobody::
 
 gText_ImIn_HasntLeftWorkEarly::
 	.string "Sabrina hasn't left work early a day in\n"
-	.string "their life. Psfbadguy is led by\l"
+	.string "their life. Ycombinator is led by\l"
 	.string "monsters, but at least they're\l"
 	.string "hard-working monsters.$"
 
@@ -752,7 +752,7 @@ gText_ImIn_WasDestryogingThisRegion::
 	.string "TeamRocket was destroying this region\n"
 	.string "with their idiocy. We wiped ‘em out. And\l"
 	.string "you decided to help them? After\l"
-	.string "everything Psfbadguy did for you?$"
+	.string "everything Ycombinator did for you?$"
 
 gText_ImIn_SoYouJustDontCare::
 	.string "So you just don't care that you work\n"
@@ -783,12 +783,12 @@ gText_ImIn_WhatsTheSecret::
 	.string "Why do I keep LOSING?$"
 
 gText_ImIn_EverythingAboutIsBullshit::
-	.string "Everything about Psfbadguy is bullshit.\n"
-	.string "You're not any stronger. The region\l"
-	.string "isn't any better. But as long as they\l"
-	.string "have stans like you, they're going to\l"
-	.string "continue to get richer and more toxic.\l"
-	.string "Tell me where Rose is.$"
+	.string "Everything about Ycombinator is\n"
+	.string "bullshit. You're not any stronger. The\l"
+	.string "region isn't any better. But as long as\l"
+	.string "they have stans like you, they're going\l"
+	.string "to continue to get richer and more\l"
+	.string "toxic. Tell me where Rose is.$"
 
 gText_ImIn_Floor::
 	.string "Floor 11.$"

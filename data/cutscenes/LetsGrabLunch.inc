@@ -283,8 +283,8 @@ gText_LetsGrabLunch_TakingABreak::
 	.string "to relax since I last saw you.$"
 
 gText_LetsGrabLunch_YeahBeingOfficial::
-	.string "Yeah, being Psfbadguy's official lapdog\n"
-	.string "must be exhausting! Bummer.$"
+	.string "Yeah, being Ycombinator's official\n"
+	.string "lapdog must be exhausting! Bummer.$"
 
 gText_LetsGrabLunch_ThisAgain::
 	.string "This again? And besides, I know you've\n"
@@ -333,7 +333,7 @@ gText_LetsGrabLunch_IWantToCreate::
 	.string "I want to create training centers all\n"
 	.string "over SanFran, to help more Trainers get\l"
 	.string "a real start, kind of like what\l"
-	.string "Psfbadguy gave you. I wanna use the\l"
+	.string "Ycombinator gave you. I wanna use the\l"
 	.string "decommissioned Gyms, like the one you\l"
 	.string "saw earlier today, as those hubs.$"
 
@@ -356,7 +356,7 @@ gText_LetsGrabLunch_OhTheOldLeaders::
 	.string "regions will want to come here, battle\l"
 	.string "us, and help stimulate the region…\l"
 	.string "without any interference from\l"
-	.string "Psfbadguy.$"
+	.string "Ycombinator.$"
 
 gText_LetsGrabLunch_YouKnowTheyre::
 	.string "You know, they're not as bad as you\n"
@@ -411,7 +411,7 @@ gText_LetsGrabLunch_ImJustPlanning::
 
 gText_LetsGrabLunch_TheLeaderOfThat::
 	.string "The Leader of that Gym more or less\n"
-	.string "disappeared after Psfbadguy shut it\l"
+	.string "disappeared after Ycombinator shut it\l"
 	.string "down. I know some of his Gym Trainers\l"
 	.string "are still around… but I'm not sure\l"
 	.string "where.$"

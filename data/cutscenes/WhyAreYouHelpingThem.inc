@@ -65,6 +65,8 @@ WhyAreYouHelpingThem_ObjectDebriefSetUp_Script::
 
 
 WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script::
+	clearflag FLAG_TEMP_1
+	clearflag FLAG_TEMP_2
 	setflag FLAG_TEMP_3
 	setobjectxy 1, 6, 6
 	setobjectxy 2, 6, 5
@@ -323,6 +325,7 @@ WhyAreYouHelpingThem_PostBattle_Dialogue::
 
 WhyAreYouHelpingThem_MissionDebrief_Dialogue::
 	addvar VAR_ALAMEDA_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_COMPLETED_NAVAL_BASE
 	addvar VAR_LITTLEROOT_INTRO_STATE, 1
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
@@ -345,8 +348,6 @@ WhyAreYouHelpingThem_MissionDebrief_Dialogue::
 
 
 WhyAreYouHelpingThem_BackAtCompound_Dialogue::
-	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_LITTLEROOT_INTRO_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_WalkIntoHome
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
@@ -384,6 +385,7 @@ WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
+	addvar VAR_PLAYER_HOME_STATE, 1
 	release
 	end
 

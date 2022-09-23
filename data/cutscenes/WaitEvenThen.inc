@@ -326,8 +326,9 @@ gText_WaitEvenThen_DamnAPowerSpot::
 	.string "here?$"
 
 gText_WaitEvenThen_AndTheGovernment::
-	.string "Between Psfbadguy and the government,\n"
-	.string "I guess nothing is off limits.$"
+	.string "Between Ycombinator and the\n"
+	.string "government, I guess nothing is off\l"
+	.string "limits.$"
 
 gText_WaitEvenThen_IllHaveSomeOther::
 	.string "I’ll have some other TeamRocket members\n"

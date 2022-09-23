@@ -376,7 +376,7 @@ bool32 ShouldDoWallyCall(void)
 bool32 ShouldDoScottFortreeCall(void)
 {
     //This function runs 10 steps after "You Realize We're Evil" plays
-    if (VarGet(VAR_STORYLINE_STATE) == 42 && FlagGet(FLAG_SCOTT_CALL_FORTREE_GYM))
+    if (VarGet(VAR_STORYLINE_STATE) == STORY_POST_YOU_REALIZE_WERE_EVIL && FlagGet(FLAG_ARCHER_CALL_ALCATRAZ))
     //if (FlagGet(FLAG_SCOTT_CALL_FORTREE_GYM))
     {
         switch (gMapHeader.mapType)
@@ -385,7 +385,7 @@ bool32 ShouldDoScottFortreeCall(void)
         case MAP_TYPE_CITY:
         case MAP_TYPE_ROUTE:
         case MAP_TYPE_OCEAN_ROUTE:
-            if (++(*GetVarPointer(VAR_SCOTT_FORTREE_CALL_STEP_COUNTER)) < 10)
+            if (++(*GetVarPointer(VAR_ARCHER_CALL_ALCATRAZ_STEP_COUNTER)) < 10)
                 return FALSE;
             break;
         default:

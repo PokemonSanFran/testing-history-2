@@ -13,7 +13,7 @@ Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 27, HeresHowThisIsGoingToGo_ObjectSetUp_Script
+	map_script_2 VAR_STORYLINE_STATE, 27, HeresHowThisIsGoingToGo_VirtualObjectSetUp_Script
 	map_script_2 VAR_STORYLINE_STATE, 28, HeresHowThisIsGoingToGo_CleanUpVObjects_Script
 	.2byte 0
 
@@ -27,51 +27,56 @@ Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 Chasecenter_Lockers_MapScripts_OnTransition::
 	switch VAR_STORYLINE_STATE
-	case 29, Chasecenter_Lockers_MapScripts_OnTransition_2
-	case 30, Chasecenter_Lockers_MapScripts_OnTransition_3
-	case 31, Chasecenter_Lockers_MapScripts_OnTransition_4
-	case 32, Chasecenter_Lockers_MapScripts_OnTransition_5
-	case 33, Chasecenter_Lockers_MapScripts_OnTransition_6
-	case 34, Chasecenter_Lockers_MapScripts_OnTransition_7
-	case 35, Chasecenter_Lockers_MapScripts_OnTransition_8
-	case 50, Chasecenter_Lockers_MapScripts_OnTransition_9
-	case 51, Chasecenter_Lockers_MapScripts_OnTransition_10
+	case 27, Chasecenter_Lockers_MapScripts_OnTransition_2
+	case 29, Chasecenter_Lockers_MapScripts_OnTransition_3
+	case 30, Chasecenter_Lockers_MapScripts_OnTransition_4
+	case 31, Chasecenter_Lockers_MapScripts_OnTransition_5
+	case 32, Chasecenter_Lockers_MapScripts_OnTransition_6
+	case 33, Chasecenter_Lockers_MapScripts_OnTransition_7
+	case 34, Chasecenter_Lockers_MapScripts_OnTransition_8
+	case 35, Chasecenter_Lockers_MapScripts_OnTransition_9
+	case 50, Chasecenter_Lockers_MapScripts_OnTransition_10
+	case 51, Chasecenter_Lockers_MapScripts_OnTransition_11
 	call WaitHeDidWhat_ObjectMidSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_2:
-	call GroupStages_Lockers_ObjectSetUp_Script
+	call HeresHowThisIsGoingToGo_ObjectSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_3:
-	call GroupStages_Lockers_ObjectCleanUp_Script
+	call GroupStages_Lockers_ObjectSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_4:
-	call Finals_HideObject_Script
+	call GroupStages_Lockers_ObjectCleanUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_5:
-	call WaitHeDidWhat_ObjectSetUp_Script
+	call Finals_HideObject_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_6:
-	call WaitHeDidWhat_ObjectMidSetUp_Script
+	call WaitHeDidWhat_ObjectSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_7:
-	call WaitHeDidWhat_MeltdownSetUp_Script
+	call WaitHeDidWhat_ObjectMidSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_8:
-	call WaitHeDidWhat_MeltdownPostSaveSetUp_Script
+	call WaitHeDidWhat_MeltdownSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_9:
-	call ExhibitionBattle_HideObject_Script
+	call WaitHeDidWhat_MeltdownPostSaveSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_10:
+	call ExhibitionBattle_HideObject_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_11:
 	call ExhibitionBattle_HideObject_Script
 	return
 

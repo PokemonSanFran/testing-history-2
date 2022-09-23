@@ -122,7 +122,7 @@ TheStorySoFar_CheckNumberDefeated_Script_15:
 
 TheStorySoFar_AwardPlayer_Script::
 	addvar VAR_ALCATRAZ_EXHIBIT_STATE, 1
-	setvar VAR_ALCATRAZ_STATE, 1
+	setvar VAR_ALCATRAZ_STATE, FIRST_ARRIVED_ALCATRAZ
 	msgbox gText_TheStorySoFar_ExcellentWork
 	giveitem ITEM_MACHO_BRACE, 1
 	closemessage

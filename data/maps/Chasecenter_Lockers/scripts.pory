@@ -5,7 +5,7 @@ mapscripts Chasecenter_Lockers_MapScripts {
     MAP_SCRIPT_ON_LOAD {
     }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-        VAR_STORYLINE_STATE, 27: HeresHowThisIsGoingToGo_ObjectSetUp_Script 
+        VAR_STORYLINE_STATE, 27: HeresHowThisIsGoingToGo_VirtualObjectSetUp_Script 
             VAR_STORYLINE_STATE, 28: HeresHowThisIsGoingToGo_CleanUpVObjects_Script
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -18,6 +18,7 @@ mapscripts Chasecenter_Lockers_MapScripts {
 
 script Chasecenter_Lockers_MapScripts_OnTransition {
     switch (var(VAR_STORYLINE_STATE)){
+        case 27: call(HeresHowThisIsGoingToGo_ObjectSetUp_Script)
         case 29: call(GroupStages_Lockers_ObjectSetUp_Script)
         case 30: call(GroupStages_Lockers_ObjectCleanUp_Script)
         case 31: call(Finals_HideObject_Script)

@@ -9,7 +9,7 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	addobject 2
 	applymovement 2, WelcomeToTheHallOfFame_MoveRoseToPodium
 	applymovement 1, WelcomeToTheHallOfFame_WalkOutOfWay
-	waitmovement 0
+	waitmovement 2
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheHallOfFame_ToTheHundreds
@@ -31,9 +31,9 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	msgbox gText_WelcomeToTheHallOfFame_AndNowLetsCreate
 	callnative ClearMugshot
 	closemessage
-	setvar VAR_ROUTE119_STATE, 0
+	setvar VAR_CHASECENTER_TOURNAMENT_STATE, NO_TOURNAMENT
 	clearflag FLAG_CHASECENTER_TOURNAMENT_HAPPENING
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_WON_FINALS
 	fadescreenspeed FADE_TO_BLACK, 24
 	special HealPlayerParty
 	special GameClear
@@ -79,6 +79,6 @@ gText_WelcomeToTheHallOfFame_ToTheHundreds::
 gText_WelcomeToTheHallOfFame_AndNowLetsCreate::
 	.string "And now, let's create history together.\n"
 	.string "I am proud to present the first\l"
-	.string "inductee to the Psfbadguy Hall of\l"
+	.string "inductee to the Ycombinator Hall of\l"
 	.string "Fame. Psfregion's Champion:\l"
 	.string "{PLAYER}.$"

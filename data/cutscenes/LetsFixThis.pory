@@ -79,7 +79,7 @@ script LetsFixThis_GetMessage_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        addvar(VAR_ALCATRAZ_STATE,1)
+        addvar(VAR_ALCATRAZ_STATE,PRE_SPEECHSPEECH)
         addvar(VAR_STORYLINE_STATE,1)
         addvar(VAR_FORTREE_CITY_STATE,1)
         setflag(FLAG_LOCKEDOUT_PLAYED)

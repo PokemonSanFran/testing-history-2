@@ -1,9 +1,15 @@
 ThisIsntRandom_CheckDoor_Script::
-	compare VAR_STORYLINE_STATE, 107
+	addvar VAR_TEMP_C, 1
+	compare VAR_UNDERGROUNDLAB_STATE, PLAYER_DISCOVERED_LAB
 	goto_if_eq ThisIsntRandom_CheckDoor_Script_1
 	return
 
 ThisIsntRandom_CheckDoor_Script_1:
+	compare VAR_STORYLINE_STATE, STORY_POST_EARTHQUAKE
+	goto_if_eq ThisIsntRandom_CheckDoor_Script_3
+	return
+
+ThisIsntRandom_CheckDoor_Script_3:
 	call ThisIsntRandom_UnlockDoor_Dialogue
 	return
 

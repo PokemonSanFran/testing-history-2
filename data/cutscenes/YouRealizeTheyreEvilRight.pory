@@ -4,42 +4,61 @@ const DRASNA = 2
 const MALVA = 3
 const GARBODOR = 4
 
+const FLAG_HIDE_ARCHER = FLAG_TEMP_1
+const FLAG_HIDE_ELITES_1 = FLAG_TEMP_2
+const FLAG_HIDE_GARBODOR = FLAG_TEMP_4
+const FLAG_HIDE_SIEBOLD = FLAG_TEMP_5
+const FLAG_HIDE_GIOVANNI = FLAG_TEMP_6
+const FLAG_HIDE_GRUNTS = FLAG_TEMP_7
+const FLAG_HIDE_WIKSTROM = FLAG_TEMP_8
+const FLAG_HIDE_ARIANNA = FLAG_TEMP_9
+
 script YouRealizeTheyreEvilRight_HideObject_Script {
-    if (var(VAR_ALCATRAZ_STATE) != 3){
-        setflag(FLAG_TEMP_1)
+    if (var(VAR_ALCATRAZ_STATE) != ARCHER_SUMMONED_ALCATRAZ && var(VAR_ALCATRAZ_STATE) != POST_ARRIVE_ALCATRAZ){
+        setflag(FLAG_HIDE_ARCHER)
     }
+    return
 }
 
 script YouRealizeTheyreEvilRight_ShowObject_Script {
-    if (var(VAR_ALCATRAZ_STATE) == 3){
+    if (var(VAR_ALCATRAZ_STATE) == ARCHER_SUMMONED_ALCATRAZ || var(VAR_ALCATRAZ_STATE) == POST_ARRIVE_ALCATRAZ){
         addobject(11) //Show Archer at entrance
     }
-}
-
-script YouRealizeTheyreEvilRight_ShowBasement_Script {
-        clearflag(FLAG_HIDE_YOUREALIZE_B2F_GROUP)
-        setflag(FLAG_TEMP_1)
+    return
 }
 
 script YouRealizeTheyreEvilRight_HideGarbodor_Script {
-    setflag(FLAG_TEMP_4)
+    setflag(FLAG_HIDE_GARBODOR)
+    return
 }
 
 script YouRealizeTheyreEvilRight_HideBasement_Script {
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_5)
-    setflag(FLAG_TEMP_6)
-    setflag(FLAG_TEMP_7)
-    setflag(FLAG_TEMP_8)
-    setflag(FLAG_TEMP_9)
+    setflag(FLAG_HIDE_ARCHER)
+    setflag(FLAG_HIDE_ELITES_1)
+    setflag(FLAG_HIDE_GARBODOR)
+    setflag(FLAG_HIDE_SIEBOLD)
+    setflag(FLAG_HIDE_GIOVANNI)
+    setflag(FLAG_HIDE_GRUNTS)
+    setflag(FLAG_HIDE_WIKSTROM)
+    setflag(FLAG_HIDE_ARIANNA)
+    return
+}
+
+script YouRealizeTheyreEvilRight_Basement_SetUpObjects_Script {
+    setflag(FLAG_HIDE_GARBODOR)
+    setflag(FLAG_HIDE_SIEBOLD)
+    setflag(FLAG_HIDE_GIOVANNI)
+    setflag(FLAG_HIDE_GRUNTS)
+    setflag(FLAG_HIDE_WIKSTROM)
+    setflag(FLAG_HIDE_ARIANNA)
+    return
 }
 
 script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
     lock
-        addvar(VAR_ALCATRAZ_STATE,1)
+        setvar(VAR_ALCATRAZ_STATE,ARCHER_SUMMONED_ALCATRAZ)
         giveitem(ITEM_HM03) //PSF TODO remove once actual surfing quest is in
-        clearflag(FLAG_SCOTT_CALL_FORTREE_GYM)
+        clearflag(FLAG_ARCHER_CALL_ALCATRAZ)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_HolyShit)
@@ -107,8 +126,7 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
 
 script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
     lock
-        givecustommon(SPECIES_KYOGRE,100,ITEM_BLUE_ORB,ITEM_LURE_BALL,NATURE_MODEST,0,0,0,4,252,0,252,31,31,31,31,31,31,MOVE_SURF,MOVE_CALM_MIND,MOVE_ORIGIN_PULSE,MOVE_ICE_BEAM)
-        addvar(VAR_ALCATRAZ_STATE,1)
+        setvar(VAR_ALCATRAZ_STATE,POST_ARRIVE_ALCATRAZ)
         playse(SE_POKENAV_CALL)
         waitse
         playse(SE_POKENAV_CALL)
@@ -132,6 +150,7 @@ script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
 
 script YouRealizeTheyreEvilRight_InteractArcher {
     lock
+        setvar(VAR_ALCATRAZ_STATE,PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT)
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_WelcomeToTheReal,MSGBOX_NPC)
@@ -142,7 +161,6 @@ script YouRealizeTheyreEvilRight_InteractArcher {
         waitmovement(0)
         playse(SE_EXIT)
         waitse
-        setflag(FLAG_TEMP_1)
         removeobject(11)
         release
         end
@@ -192,7 +210,7 @@ script YouRealizeTheyreEvil_ReleaseGarbodor_Script {
 
         playse(SE_BALL_OPEN)
         waitse
-        clearflag(FLAG_TEMP_4)
+        clearflag(FLAG_HIDE_GARBODOR)
         addobject(GARBODOR)
         playmoncry(SPECIES_GARBODOR, CRY_MODE_ENCOUNTER)
         waitmoncry
@@ -350,7 +368,7 @@ script YouRealizeTheyreEvilRight_CorrectAnswer_Script {
     setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_VeryClever)
-        setvar(VAR_TEMP_0,99)
+        setflag(FLAG_TEMP_1F)
         goto(YouRealizeTheyreEvilRight_Framing_Dialogue)
 }
 
@@ -437,9 +455,9 @@ script YouRealizeTheyreEvilRight_Framing_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_YeahOkay)
 
-        addvar(VAR_ALCATRAZ_STATE,1)
+        setvar(VAR_ALCATRAZ_STATE,POST_YOU_REALIZE_THEYRE_EVIL_RIGHT)
 
-        if (var(VAR_TEMP_0) == 99){
+        if (flag(FLAG_TEMP_1F)){
             call(YouRealizeTheyreEvilRight_AskPlayerGift_Script)
         }
 

@@ -67,7 +67,7 @@ WaitHeDidWhat_RivalsGoToMatch_Script::
 
 
 WaitHeDidWhat_CalledToSkybox_Script::
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_WATCH_SEMIFINAL
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
@@ -85,7 +85,7 @@ WaitHeDidWhat_CalledToSkybox_Script::
 
 
 WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_WATCH_SEMIFINAL
 	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
@@ -200,7 +200,7 @@ WaitHeDidWhat_WalkIntoChampionshipPosition::
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_ImReallyHappy
 	callnative ClearMugshot
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_SAVE_FINALS
 	call Common_EventScript_SaveGame
 	goto WaitHeDidWhat_StartBattle_Script
 	return

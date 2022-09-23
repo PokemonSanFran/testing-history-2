@@ -33,7 +33,7 @@ LetsGettheBandBackTogether_PreventPlayerEnterTower_Script_2:
 
 
 LetsGettheBandBackTogether_MeetInBasement_Script::
-	compare VAR_ALCATRAZ_STATE, 6
+	compare VAR_ALCATRAZ_STATE, LAST_CHANCE_TRUE_TIMELINE_START
 	goto_if_eq LetsGettheBandBackTogether_MeetInBasement_Script_2
 LetsGettheBandBackTogether_MeetInBasement_Script_1:
 	lock
@@ -69,7 +69,7 @@ LetsGettheBandBackTogether_MeetInBasement_Script_4:
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_IllWriteUpAPost
-	addvar VAR_ALCATRAZ_STATE, 1
+	setvar VAR_ALCATRAZ_STATE, LAST_CHANCE_TRUE_TIMELINE_START
 	callnative ClearMugshot
 	closemessage
 	release
@@ -96,7 +96,7 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	msgbox gText_LetsGetTheBandBackTogether_ReadyToGoLive, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGettheBandBackTogether_TrueTimelineSplit_Script_2
-	addvar VAR_ALCATRAZ_STATE, 1
+	setvar VAR_ALCATRAZ_STATE, START_TRUE_TIMELINE
 	setvar VAR_STORYLINE_STATE, 100
 	addvar VAR_LILYCOVE_CITY_STATE, 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
@@ -172,8 +172,8 @@ gText_LetsGetTheBandBackTogether_WhatAmIMissing::
 
 gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver::
 	.string "Wikstrom hasn’t been heard from ever\n"
-	.string "since Psfbadguy took over. Just up and\l"
-	.string "disappeared. I thought the other\l"
+	.string "since Ycombinator took over. Just up\l"
+	.string "and disappeared. I thought the other\l"
 	.string "members would have heard from him, but\l"
 	.string "Drasna said he’s been totally gone.\l"
 	.string "They’re not even sure if they’re in the\l"
@@ -207,7 +207,7 @@ gText_LetsGetTheBandBackTogether_Yes::
 	.string "Yes!$"
 
 gText_LetsGetTheBandBackTogether_WereSickOf::
-	.string "We’re sick of Psfbadguy’s shit. We’re\n"
+	.string "We’re sick of Ycombinator’s shit. We’re\n"
 	.string "tired of the lies, the attacks, and the\l"
 	.string "greed. Let’s take back our region,\l"
 	.string "together.$"

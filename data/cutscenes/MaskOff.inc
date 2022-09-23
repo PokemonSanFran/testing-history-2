@@ -167,7 +167,7 @@ MaskOff_Encounter_Giovanni_Dialogue::
 	msgbox gText_MaskOff_FancyABattle, MSGBOX_NPC
 	callnative ClearMugshot
 	lock
-	trainerbattle_no_intro TRAINER_SHELLY_SEAFLOOR_CAVERN, gText_GroupStages_Blank
+	trainerbattle_no_intro TRAINER_SHELLY_SEAFLOOR_CAVERN, gText_GroupStages_Placeholder
 	addvar VAR_LILYCOVE_CITY_STATE, 1
 	addvar VAR_STORYLINE_STATE, 1
 	goto MaskOff_PostBattle_Dialogue
@@ -287,8 +287,8 @@ gText_MaskOff_TheOneAndOnly::
 
 gText_MaskOff_IFormedTeamRocket::
 	.string "I formed TeamRocket as a response to\n"
-	.string "Psfbadguy’s growing influence over the\l"
-	.string "region a few years ago.$"
+	.string "Ycombinator’s growing influence over\l"
+	.string "the region a few years ago.$"
 
 gText_MaskOff_ButWhyGo::
 	.string "But why go into hiding as Wikstrom?$"

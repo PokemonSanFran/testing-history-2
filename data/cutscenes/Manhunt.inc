@@ -562,7 +562,7 @@ gText_Manhunt_IFeelBadForAll::
 	.string "you've been harassing... you're no joke.\l"
 	.string "Giovanni wants you to meet him at the\l"
 	.string "Lake, after sunset. Just the two of\l"
-	.string "you - no police or Psfbadguy cronies,\l"
+	.string "you - no police or Ycombinator cronies,\l"
 	.string "or the trail goes cold again. Up to you.$"
 
 gText_Manhunt_StopHurtingPeople::

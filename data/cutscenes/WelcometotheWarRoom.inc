@@ -329,7 +329,7 @@ gText_WelcomeToTheWarRoom_AllMajorSocialMedia::
 gText_WelcomeToTheWarRoom_TheNewOwnersOfOUrAccounts::
 	.string "The new owners of our accounts have\n"
 	.string "been pushing a narrative about\l"
-	.string "Psfbadguy's “crimes against the\l"
+	.string "Ycombinator's “crimes against the\l"
 	.string "region”. They're calling for everybody\l"
 	.string "to boycott the League and the\l"
 	.string "upcoming Championship. We've found\l"

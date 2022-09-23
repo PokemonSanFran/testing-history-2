@@ -159,6 +159,7 @@
 #define FLAG_CONSTRUCTION_BREAKING_NEWS      0x88
 #define FLAG_RECEIVED_HM01                   0x89
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
+#define FLAG_ARCHER_CALL_ALCATRAZ            0x8A
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
 #define FLAG_RECEIVED_6_SODA_POP             0x8C
 #define FLAG_DEFEATED_SEASHORE_HOUSE         0x8D
@@ -679,7 +680,7 @@
 #define FLAG_HIDE_HERESHOWTHIS_ARCHER 0x27A // Previously Unused Flag
 #define FLAG_HIDE_WHYDIDNTRAT_STANDS_ARCHER 0x27B // Previously Unused Flag
 #define FLAG_HIDE_WHYDIDNTRAT_STANDS_OAK 0x27C // Previously Unused Flag
-#define FLAG_HIDE_YOUREALIZE_B2F_GROUP 0x27D // Previously Unused Flag
+#define FLAG_UNUSED_0x27D  0x27D // Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag
 #define FLAG_UNUSED_0x27F  0x27F // Unused Flag
 #define FLAG_UNUSED_0x280  0x280 // Unused Flag

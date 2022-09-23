@@ -6,7 +6,7 @@ mapscripts Treasureisland_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 41: YouRealizeWereEvilRight_PhoneCall_Dialogue
+        VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
 }
 

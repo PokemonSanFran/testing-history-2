@@ -8,9 +8,9 @@ Alcatraz_B2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Alcatraz_B2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ALCATRAZ_STATE, 4, YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue
-	map_script_2 VAR_ALCATRAZ_STATE, 8, SpeechSpeechSpeech_PositionPlayer_Script
-	map_script_2 VAR_STORYLINE_STATE, 105, OneDown_SetUpObject_Script
+	map_script_2 VAR_ALCATRAZ_STATE, PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT, YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue
+	map_script_2 VAR_ALCATRAZ_STATE, PRE_SPEECHSPEECH, SpeechSpeechSpeech_PositionPlayer_Script
+	map_script_2 VAR_STORYLINE_STATE, STORY_1ST_TAKEDOWN, OneDown_SetUpObject_Script
 	.2byte 0
 
 
@@ -18,14 +18,14 @@ Alcatraz_B2F_MapScripts_OnTransition::
 	call YouRealizeTheyreEvilRight_HideGarbodor_Script
 	switch VAR_ALCATRAZ_STATE
 	case 0, Alcatraz_B2F_MapScripts_OnTransition_2
-	case 1, Alcatraz_B2F_MapScripts_OnTransition_3
-	case 2, Alcatraz_B2F_MapScripts_OnTransition_4
-	case 3, Alcatraz_B2F_MapScripts_OnTransition_5
-	case 5, Alcatraz_B2F_MapScripts_OnTransition_6
-	case 6, Alcatraz_B2F_MapScripts_OnTransition_7
-	case 7, Alcatraz_B2F_MapScripts_OnTransition_8
-	case 8, Alcatraz_B2F_MapScripts_OnTransition_9
-	case 9, Alcatraz_B2F_MapScripts_OnTransition_10
+	case FIRST_ARRIVED_ALCATRAZ, Alcatraz_B2F_MapScripts_OnTransition_3
+	case BATTLED_MALVA, Alcatraz_B2F_MapScripts_OnTransition_4
+	case PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT, Alcatraz_B2F_MapScripts_OnTransition_5
+	case POST_YOU_REALIZE_THEYRE_EVIL_RIGHT, Alcatraz_B2F_MapScripts_OnTransition_6
+	case LAST_CHANCE_TRUE_TIMELINE_START, Alcatraz_B2F_MapScripts_OnTransition_7
+	case START_TRUE_TIMELINE, Alcatraz_B2F_MapScripts_OnTransition_8
+	case PRE_SPEECHSPEECH, Alcatraz_B2F_MapScripts_OnTransition_9
+	case POST_SPEECHSPEECH, Alcatraz_B2F_MapScripts_OnTransition_10
 	return
 
 Alcatraz_B2F_MapScripts_OnTransition_2:
@@ -41,7 +41,7 @@ Alcatraz_B2F_MapScripts_OnTransition_4:
 	return
 
 Alcatraz_B2F_MapScripts_OnTransition_5:
-	call YouRealizeTheyreEvilRight_HideBasement_Script
+	call YouRealizeTheyreEvilRight_Basement_SetUpObjects_Script
 	return
 
 Alcatraz_B2F_MapScripts_OnTransition_6:

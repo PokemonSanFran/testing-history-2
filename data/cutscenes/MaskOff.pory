@@ -127,7 +127,7 @@ script MaskOff_Encounter_Giovanni_Dialogue {
         callnative(ClearMugshot)
         lock
 
-        trainerbattle_no_intro(TRAINER_SHELLY_SEAFLOOR_CAVERN,gText_GroupStages_Blank)
+        trainerbattle_no_intro(TRAINER_SHELLY_SEAFLOOR_CAVERN,gText_GroupStages_Placeholder)
 
         addvar(VAR_LILYCOVE_CITY_STATE,1)
         addvar(VAR_STORYLINE_STATE,1)

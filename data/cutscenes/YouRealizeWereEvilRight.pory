@@ -40,8 +40,6 @@ script YouRealizeWereEvilRight_Object_Cleanup_Script {
 
 script YouRealizeWereEvilRight_PhoneCall_Dialogue {
     lockall
-        setflag(FLAG_SCOTT_CALL_FORTREE_GYM)
-        addvar(VAR_STORYLINE_STATE,1)
         playse(SE_POKENAV_CALL)
         waitse
         playse(SE_POKENAV_CALL)
@@ -56,17 +54,8 @@ script YouRealizeWereEvilRight_PhoneCall_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_YeahImOnMyWay)
         callnative(ClearMugshot)
-        addvar(VAR_SALESFORCETOWER_2F_STATE,1)
-
-        msgbox(gText_YouRealizeWereEvilRight_WouldYouLikeToGo,MSGBOX_YESNO)
-
-        if (var(VAR_RESULT) == NO){
-            closemessage
-                releaseall
-                end
-        } else {
-            warpsilent(MAP_SALESFORCETOWER_2F,255,7,14)
-        }
+        setvar(VAR_SALESFORCETOWER_2F_STATE,PRE_YOU_REALIZE_WERE_EVIL_RIGHT)
+        warpsilent(MAP_SALESFORCETOWER_2F,255,7,14)
 }
 
 
@@ -76,6 +65,9 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         applymovement(PLAYER,Common_Movement_FaceRight)
 
         //Oak and the player walk to the conference table. Sabrina is already at the table. The screens behind Sabrina light up as they all sit, showing Archer, the player, and the “Leader” of whatever Gym was restored first. PSF TODO
+        
+        setflag(FLAG_ARCHER_CALL_ALCATRAZ)
+        setvar(VAR_STORYLINE_STATE,STORY_POST_YOU_REALIZE_WERE_EVIL)
 
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
@@ -128,6 +120,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
 
         //One of the monitors changes to show TeamRocket members marching. PSF TODO
 
+        
         setvar(VAR_0x8000, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_IThinkYourKindness)
@@ -164,7 +157,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
 }
 
 text gText_YouRealizeWereEvilRight_SorryToBotherYou {
-    format("Hello {PLAYER}! Sorry to bother you, but there is a slight situation here at Salesforcetower. It's rather urgent. Please come to the second floor as soon as you can.")
+    format("Hello {PLAYER}! Sorry to bother you, but there is a slight situation here at Salesforcetower. It's rather urgent. Please come to the second floor.")
 }
 text gText_YouRealizeWereEvilRight_YeahImOnMyWay {
     format("Yeah, I'm on my way over!")

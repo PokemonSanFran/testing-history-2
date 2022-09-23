@@ -40,14 +40,14 @@ Finals_StopPlayerLeaveLockers_Script::
 Finals_StartSemifinals_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	msgbox gText_GroupStages_Blank
+	msgbox gText_GroupStages_Placeholder
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
 	waitmovement 0
-	msgbox gText_GroupStages_Blank
+	msgbox gText_GroupStages_Placeholder
 	closemessage
-	trainerbattle_no_intro TRAINER_HALLE, gText_GroupStages_Blank
+	trainerbattle_no_intro TRAINER_HALLE, gText_GroupStages_Placeholder
 	addvar VAR_ROUTE119_STATE, 1
 	call GroupStages_RoundRobinGroupComplete_Script
 	return

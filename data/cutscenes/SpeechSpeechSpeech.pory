@@ -304,7 +304,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
         fadescreen(FADE_TO_BLACK)
         addvar(VAR_STORYLINE_STATE,1)
-        addvar(VAR_ALCATRAZ_STATE,1)
+        setvar(VAR_ALCATRAZ_STATE,POST_SPEECHSPEECH)
 
         TeleportCamera(9,9)
         callnative(DestroyVirtualObjects)

@@ -34,8 +34,6 @@ YouRealizeWereEvilRight_Object_Cleanup_Script::
 
 YouRealizeWereEvilRight_PhoneCall_Dialogue::
 	lockall
-	setflag FLAG_SCOTT_CALL_FORTREE_GYM
-	addvar VAR_STORYLINE_STATE, 1
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
@@ -49,23 +47,17 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_YeahImOnMyWay
 	callnative ClearMugshot
-	addvar VAR_SALESFORCETOWER_2F_STATE, 1
-	msgbox gText_YouRealizeWereEvilRight_WouldYouLikeToGo, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq YouRealizeWereEvilRight_PhoneCall_Dialogue_1
+	setvar VAR_SALESFORCETOWER_2F_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT
 	warpsilent MAP_SALESFORCETOWER_2F, 255, 7, 14
 	return
-
-YouRealizeWereEvilRight_PhoneCall_Dialogue_1:
-	closemessage
-	releaseall
-	end
 
 
 YouRealizeWereEvilRight_Open_Dialogue::
 	lockall
 	addvar VAR_SALESFORCETOWER_2F_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	setflag FLAG_ARCHER_CALL_ALCATRAZ
+	setvar VAR_STORYLINE_STATE, STORY_POST_YOU_REALIZE_WERE_EVIL
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_WereEnamored
@@ -159,8 +151,7 @@ gText_YouRealizeWereEvilRight_SorryToBotherYou::
 	.string "Hello {PLAYER}! Sorry to bother you,\n"
 	.string "but there is a slight situation here at\l"
 	.string "Salesforcetower. It's rather urgent.\l"
-	.string "Please come to the second floor as\l"
-	.string "soon as you can.$"
+	.string "Please come to the second floor.$"
 
 gText_YouRealizeWereEvilRight_YeahImOnMyWay::
 	.string "Yeah, I'm on my way over!$"
@@ -186,7 +177,7 @@ gText_YouRealizeWereEvilRight_HoweverTheNext::
 	.string "Challenge is coming up, and we're\l"
 	.string "slightly concerned with your\l"
 	.string "activities and the perception that a\l"
-	.string "Psfbadguy sponsored Trainer is so\l"
+	.string "Ycombinator sponsored Trainer is so\l"
 	.string "intimately involved with the same\l"
 	.string "structure that we sunset when we took\l"
 	.string "over.$"

@@ -35,17 +35,16 @@ int GameClear(void)
 
     SetContinueGameWarpStatus();
 
+    /*
     if (gSaveBlock2Ptr->playerGender == MALE)
-        //SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F); //vanilla game original line
+        SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F); //vanilla game original line
+                                                                                            */
         SetContinueGameWarpToHealLocation(HEAL_LOCATION_PRESIDIO_COMPOUND_1F); 
 
     if (FlagGet(FLAG_TIMELINE_TRUE)){
         SetContinueGameWarpToHealLocation(HEAL_LOCATION_ALAMEDA_ARCHER_HOUSE); 
     }
-
-    else
-        SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F);
-
+    
     ribbonGet = FALSE;
 
     for (i = 0; i < PARTY_SIZE; i++)

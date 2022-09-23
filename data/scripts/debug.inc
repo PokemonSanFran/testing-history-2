@@ -70,6 +70,7 @@ Debug_Script_3::
 
 
 Debug_Script_4::
+	setvar VAR_STORYLINE_STATE, STORY_POST_EARTHQUAKE
 	end
 
 

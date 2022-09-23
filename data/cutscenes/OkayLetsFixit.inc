@@ -216,7 +216,7 @@ gText_OkayLetsFixIt_LetsLookBack::
 
 gText_OkayLetsFixIt_ThisWasTheNight::
 	.string "This was the night I decided to help\n"
-	.string "Psfbadguy.$"
+	.string "Ycombinator.$"
 
 gText_OkayLetsFixIt_Why::
 	.string "Why?$"
@@ -246,7 +246,7 @@ gText_OkayLetsFixIt_WhatTheHell::
 
 gText_OkayLetsFixIt_IHaveNoIdea::
 	.string "…I have no idea what I'm going to do. Do\n"
-	.string "I help Psfbadguy and the police end\l"
+	.string "I help Ycombinator and the police end\l"
 	.string "TeamRocket permanently? Or do I help\l"
 	.string "TeamRocket clear their name and help\l"
 	.string "the people of SanFran?$"

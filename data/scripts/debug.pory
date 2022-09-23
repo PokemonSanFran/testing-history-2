@@ -76,6 +76,7 @@ script Debug_Script_3{
     end
 }
 script Debug_Script_4{
+    setvar(VAR_STORYLINE_STATE,STORY_POST_EARTHQUAKE)
     end
 }
 script Debug_Script_5{

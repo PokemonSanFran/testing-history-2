@@ -134,7 +134,7 @@ script YoungPadawan_PostBattle_Dialogue{
         applymovement(PLAYER,YoungPadawan_GetOutOfWay)
         waitmovement(0)
         removeobject(MALVA)
-        addvar(VAR_ALCATRAZ_STATE,1)
+        setvar(VAR_ALCATRAZ_STATE,BATTLED_MALVA)
         addvar(VAR_ALCATRAZ_EXHIBIT_STATE,1)
         release
         end

@@ -497,7 +497,7 @@ gText_Earthquake_IDontThinkSo::
 	.string "trying to help me. Even when I had\l"
 	.string "dinner with him, their energy was\l"
 	.string "different from everybody else in\l"
-	.string "Psfbadguy.$"
+	.string "Ycombinator.$"
 
 gText_Earthquake_HowCanYouTrust::
 	.string "How can you trust them after ALL of\n"

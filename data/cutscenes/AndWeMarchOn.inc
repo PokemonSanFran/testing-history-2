@@ -538,5 +538,5 @@ gText_AndWeMarchOn_WeveGotAResponsibility::
 	.string "profit motive can not… WILL NOT erase\l"
 	.string "our history. It lives on in our hearts.\l"
 	.string "In our stories Our legends. And no\l"
-	.string "corporation, Psfbadguy or otherwise,\l"
+	.string "corporation, Ycombinator or otherwise,\l"
 	.string "can take that away from us!$"

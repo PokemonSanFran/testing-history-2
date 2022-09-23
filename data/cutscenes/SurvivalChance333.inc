@@ -321,7 +321,7 @@ gText_SurvivalChance333_ISpent15Years::
 	.string "and I've never run a failed operation…\l"
 	.string "and now somehow I'm doing the dirty\l"
 	.string "work for some tech bros. And while I'm\l"
-	.string "Psfbadguy's bitch, I have to babysit\l"
+	.string "Ycombinator's bitch, I have to babysit\l"
 	.string "two hotshots from nowhere as I try to\l"
 	.string "infiltrate a terrorist organization.$"
 

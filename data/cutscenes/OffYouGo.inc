@@ -195,7 +195,7 @@ gText_OffYouGo_WellYoureBothHere::
 	.string "are going to delay the Championship by\l"
 	.string "a few weeks. Rather than kill your\l"
 	.string "momentum now, Siebold has agreed to\l"
-	.string "train you both, and Psfbadguy will be\l"
+	.string "train you both, and Ycombinator will be\l"
 	.string "footing the bill.$"
 
 gText_OffYouGo_ThanksButWho::

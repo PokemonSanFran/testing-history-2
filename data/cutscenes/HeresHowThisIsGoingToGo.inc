@@ -1,3 +1,8 @@
+HeresHowThisIsGoingToGo_ObjectSetUp_Script::
+	setflag FLAG_TEMP_6
+	return
+
+
 HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_4
@@ -41,7 +46,7 @@ HeresHowThisIsGoingToGo_ConstructionCompleted_Script_2:
 	goto HeresHowThisIsGoingToGo_ConstructionCompleted_Script_1
 
 
-HeresHowThisIsGoingToGo_ObjectSetUp_Script::
+HeresHowThisIsGoingToGo_VirtualObjectSetUp_Script::
 	createvobject OBJ_EVENT_GFX_BOY_2, 6, 8, 5, 3, DIR_NORTH
 	createvobject OBJ_EVENT_GFX_MAN_2, 7, 9, 5, 3, DIR_NORTH
 	createvobject OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F, 8, 10, 5, 3, DIR_NORTH

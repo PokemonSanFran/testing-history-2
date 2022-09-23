@@ -29,7 +29,7 @@ GroupStages_GreetBeforeStart_Dialogue::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_GroupStages_Blank
+	msgbox gText_GroupStages_EasyPeasy
 	closemessage
 	callnative ClearMugshot
 	applymovement 2, GroupStages_LeaveLockers
@@ -114,12 +114,12 @@ GroupStages_ChooseParty_Script::
 GroupStages_RoundRobinMatch_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	msgbox gText_GroupStages_Blank
+	msgbox gText_GroupStages_Placeholder
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
 	waitmovement 0
-	msgbox gText_GroupStages_Blank
+	msgbox gText_GroupStages_Placeholder
 	closemessage
 	switch VAR_ROUTE119_STATE
 	case 1, GroupStages_RoundRobinMatch_Script_3
@@ -130,15 +130,15 @@ GroupStages_RoundRobinMatch_Script_1:
 	return
 
 GroupStages_RoundRobinMatch_Script_3:
-	trainerbattle_no_intro TRAINER_QUINCY, gText_GroupStages_Blank
+	trainerbattle_no_intro TRAINER_QUINCY, gText_GroupStages_Placeholder
 	goto GroupStages_RoundRobinMatch_Script_1
 
 GroupStages_RoundRobinMatch_Script_4:
-	trainerbattle_no_intro TRAINER_KATELYNN, gText_GroupStages_Blank
+	trainerbattle_no_intro TRAINER_KATELYNN, gText_GroupStages_Placeholder
 	goto GroupStages_RoundRobinMatch_Script_1
 
 GroupStages_RoundRobinMatch_Script_5:
-	trainerbattle_no_intro TRAINER_EDGAR, gText_GroupStages_Blank
+	trainerbattle_no_intro TRAINER_EDGAR, gText_GroupStages_Placeholder
 	goto GroupStages_RoundRobinMatch_Script_1
 
 
@@ -150,12 +150,12 @@ GroupStages_PostRoundRobinMatch_Script::
 	compare VAR_ROUTE119_STATE, 4
 	goto_if_eq GroupStages_PostRoundRobinMatch_Script_2
 GroupStages_PostRoundRobinMatch_Script_1:
-	msgbox gText_GroupStages_Blank
+	msgbox gText_GroupStages_Placeholder
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_GetPlayerIntoPosition
 	applymovement 1, GroupStages_WalkOffStage
 	waitmovement 0
-	msgbox gText_GroupStages_Blank
+	msgbox gText_GroupStages_Placeholder
 	call GroupStages_ChooseParty_Script
 	removeobject 1
 	call Chasecenter_Arena_MapScripts_OnTransition
@@ -172,7 +172,7 @@ GroupStages_RoundRobinGroupComplete_Script::
 	addvar VAR_STORYLINE_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_WalkToCenterStage
 	waitmovement 0
-	msgbox gText_GroupStages_Blank
+	msgbox gText_GroupStages_Placeholder
 	special DoDomeConfetti
 	playse SE_APPLAUSE
 	waitse
@@ -226,8 +226,11 @@ GroupStages_WalkToCenterStage:
 	face_down
 	step_end
 
-gText_GroupStages_Blank::
-	.string "...$"
+gText_GroupStages_EasyPeasy::
+	.string "Easy peasy! Good luck in there!$"
+
+gText_GroupStages_Placeholder::
+	.string "this is placeholder text.$"
 
 gText_GroupStages_OnceYouStart::
 	.string "Once you start the Group Stage, there's\n"

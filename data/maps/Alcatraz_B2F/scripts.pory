@@ -3,9 +3,9 @@ mapscripts Alcatraz_B2F_MapScripts {
         goto(Alcatraz_B2F_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ALCATRAZ_STATE,4: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 
-        VAR_ALCATRAZ_STATE,8: SpeechSpeechSpeech_PositionPlayer_Script 
-        VAR_STORYLINE_STATE, 105: OneDown_SetUpObject_Script
+        VAR_ALCATRAZ_STATE, PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 
+        VAR_ALCATRAZ_STATE, PRE_SPEECHSPEECH: SpeechSpeechSpeech_PositionPlayer_Script 
+        VAR_STORYLINE_STATE, STORY_1ST_TAKEDOWN: OneDown_SetUpObject_Script
     ]
 }
 
@@ -15,14 +15,14 @@ script Alcatraz_B2F_MapScripts_OnTransition {
 
         switch(var(VAR_ALCATRAZ_STATE)){
             case 0: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-            case 1: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-            case 2: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-            case 3: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-            case 5: call(LetsGettheBandBackTogether_HideObject_Script)
-            case 6: call(LetsGettheBandBackTogether_HideObject_Script)
-            case 7: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-            case 8: call(SpeechSpeechSpeech_MoveObject_Script)
-            case 9: call(SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script)
+            case FIRST_ARRIVED_ALCATRAZ: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case BATTLED_MALVA: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT: call(YouRealizeTheyreEvilRight_Basement_SetUpObjects_Script)
+            case POST_YOU_REALIZE_THEYRE_EVIL_RIGHT: call(LetsGettheBandBackTogether_HideObject_Script)
+            case LAST_CHANCE_TRUE_TIMELINE_START: call(LetsGettheBandBackTogether_HideObject_Script)
+            case START_TRUE_TIMELINE: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+            case PRE_SPEECHSPEECH: call(SpeechSpeechSpeech_MoveObject_Script)
+            case POST_SPEECHSPEECH: call(SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script)
         }
 }
 

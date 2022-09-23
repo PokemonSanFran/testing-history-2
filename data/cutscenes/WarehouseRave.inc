@@ -290,8 +290,8 @@ gText_WarehouseRave_WhyAmITrapped::
 	.string "Why am I trapped here?!$"
 
 gText_WarehouseRave_HasBeenPredicting::
-	.string "Psfbadguy has been predicting this for\n"
-	.string "a while now, unfortunately. We've\l"
+	.string "Ycombinator has been predicting this\n"
+	.string "for a while now, unfortunately. We've\l"
 	.string "always had a few plans in case your\l"
 	.string "empathy became unmanageable.$"
 
@@ -300,7 +300,7 @@ gText_WarehouseRave_SoIDecideTo::
 	.string "me in a warehouse?$"
 
 gText_WarehouseRave_HasInstructed::
-	.string "Psfbadguy has instructed me to\n"
+	.string "Ycombinator has instructed me to\n"
 	.string "neutralize this new threat.$"
 
 gText_WarehouseRave_PrepareToFight::
@@ -340,7 +340,7 @@ gText_WarehouseRave_ItWasATrap::
 
 gText_WarehouseRave_HolyShitThatWas::
 	.string "Holy shit that was fast! An attempt on\n"
-	.string "your LIFE? Psfbadguy is out of\l"
+	.string "your LIFE? Ycombinator is out of\l"
 	.string "control.$"
 
 gText_WarehouseRave_TheBattleFelt::
@@ -359,11 +359,11 @@ gText_WarehouseRave_WhatDoYouMean::
 	.string "What do you mean?$"
 
 gText_WarehouseRave_CameToTown::
-	.string "He's like Pryce - once Psfbadguy came\n"
+	.string "He's like Pryce - once Ycombinator came\n"
 	.string "to town, he jumped ship. He was playing\l"
 	.string "both sides for a while, both working on\l"
-	.string "Psfbadguy's board and running the Gym\l"
-	.string "in Chinatown.$"
+	.string "Ycombinator's board and running the\l"
+	.string "Gym in Chinatown.$"
 
 gText_WarehouseRave_MaybeItIsGuilt::
 	.string "Maybe it is guilt. So weird.$"

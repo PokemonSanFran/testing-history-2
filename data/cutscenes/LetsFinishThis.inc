@@ -140,10 +140,11 @@ LetsFinishThis_GoToFlashback_Script_Text_0:
 	.string "explaining the warp panels.$"
 
 gText_LetsFinishThis_IDontThinkIm::
-	.string "I don’t think I’m surprised by Psfbadguy,\n"
-	.string "but the government too? All those\l"
-	.string "talks, those negotiations… aren’t they\l"
-	.string "supposed to protect their citizens?$"
+	.string "I don’t think I’m surprised by\n"
+	.string "Ycombinator, but the government too?\l"
+	.string "All those talks, those negotiations…\l"
+	.string "aren’t they supposed to protect their\l"
+	.string "citizens?$"
 
 gText_LetsFinishThis_ThatPartDoesnt::
 	.string "That part doesn’t surprise me. Old age\n"
@@ -165,7 +166,7 @@ gText_LetsFinishThis_ButTheyWerentAlways::
 	.string "But they weren’t always, were they?$"
 
 gText_LetsFinishThis_HasAlwaysBeenRuthless::
-	.string "Psfbadguy has always been ruthless!\n"
+	.string "Ycombinator has always been ruthless!\n"
 	.string "Killing is… new though.$"
 
 gText_LetsFinishThis_ThatsWhatIMean::

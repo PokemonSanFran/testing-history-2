@@ -4,9 +4,13 @@ const ARIANA = 2
 const DRASNA = 3
 
 script ThisIsntRandom_CheckDoor_Script {
-    if (var(VAR_STORYLINE_STATE) == 107){ 
-        call(ThisIsntRandom_UnlockDoor_Dialogue)
-    }
+    addvar(VAR_TEMP_C,1)
+
+        if (var(VAR_UNDERGROUNDLAB_STATE) == PLAYER_DISCOVERED_LAB){
+            if (var(VAR_STORYLINE_STATE) == STORY_POST_EARTHQUAKE){ 
+                call(ThisIsntRandom_UnlockDoor_Dialogue)
+            }
+        }
 }
 
 script ThisIsntRandom_HideObject_AboveGround_Script {

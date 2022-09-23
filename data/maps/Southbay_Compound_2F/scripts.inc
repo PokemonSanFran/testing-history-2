@@ -9,10 +9,8 @@ Southbay_Compound_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 Southbay_Compound_2F_Bed_Script::
 	lock
-	compare VAR_ALCATRAZ_STATE, 4
-	goto_if_eq Southbay_Compound_2F_Bed_Script_2
-	compare VAR_ALCATRAZ_STATE, 3
-	goto_if_eq Southbay_Compound_2F_Bed_Script_2
+	compare VAR_ALCATRAZ_STATE, BATTLED_MALVA
+	goto_if_gt Southbay_Compound_2F_Bed_Script_3
 Southbay_Compound_2F_Bed_Script_1:
 	callnative HealPlayerParty
 	fadescreen FADE_TO_BLACK
@@ -38,6 +36,11 @@ Southbay_Compound_2F_Bed_Script_16:
 
 Southbay_Compound_2F_Bed_Script_2:
 	call YouRealizeTheyreEvilRight_CantSleep_Dialogue
+	goto Southbay_Compound_2F_Bed_Script_1
+
+Southbay_Compound_2F_Bed_Script_3:
+	compare VAR_ALCATRAZ_STATE, POST_YOU_REALIZE_THEYRE_EVIL_RIGHT
+	goto_if_lt Southbay_Compound_2F_Bed_Script_2
 	goto Southbay_Compound_2F_Bed_Script_1
 
 Southbay_Compound_2F_Bed_Script_8:

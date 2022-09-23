@@ -32,7 +32,7 @@ script GroupStages_GreetBeforeStart_Dialogue {
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
-        msgbox(gText_GroupStages_Blank)
+        msgbox(gText_GroupStages_EasyPeasy)
         closemessage
         callnative(ClearMugshot)
         applymovement(BIANCA,GroupStages_LeaveLockers)
@@ -52,6 +52,7 @@ script GroupStages_PreparePlayer_Script {
         faceplayer
         msgbox(gText_GroupStages_OnceYouStart,MSGBOX_YESNO)
         closemessage
+
 
         if (var(VAR_RESULT) == YES){
                 call(GroupStages_ChooseParty_Script)
@@ -101,18 +102,18 @@ script GroupStages_ChooseParty_Script {
 script GroupStages_RoundRobinMatch_Script {
     applymovement(PLAYER,Common_Movement_FaceRight)
         waitmovement(0)
-        msgbox(gText_GroupStages_Blank)
+        msgbox(gText_GroupStages_Placeholder)
         closemessage
         applymovement(PLAYER,Common_Movement_WalkRight)
         applymovement(1,Common_Movement_WalkLeft)
         waitmovement(0)
-        msgbox(gText_GroupStages_Blank)
+        msgbox(gText_GroupStages_Placeholder)
         closemessage
 
         switch (var(VAR_ROUTE119_STATE)){
-            case 1: trainerbattle_no_intro(TRAINER_QUINCY,gText_GroupStages_Blank)
-            case 2: trainerbattle_no_intro(TRAINER_KATELYNN,gText_GroupStages_Blank)
-            case 3: trainerbattle_no_intro(TRAINER_EDGAR,gText_GroupStages_Blank)
+            case 1: trainerbattle_no_intro(TRAINER_QUINCY,gText_GroupStages_Placeholder)
+            case 2: trainerbattle_no_intro(TRAINER_KATELYNN,gText_GroupStages_Placeholder)
+            case 3: trainerbattle_no_intro(TRAINER_EDGAR,gText_GroupStages_Placeholder)
         }
 
     goto(GroupStages_PostRoundRobinMatch_Script)
@@ -128,13 +129,13 @@ script GroupStages_PostRoundRobinMatch_Script {
             goto(GroupStages_RoundRobinGroupComplete_Script)
         }
 
-        msgbox(gText_GroupStages_Blank)
+        msgbox(gText_GroupStages_Placeholder)
         closemessage
 
         applymovement(PLAYER,GroupStages_GetPlayerIntoPosition)
         applymovement(1,GroupStages_WalkOffStage)
         waitmovement(0)
-        msgbox(gText_GroupStages_Blank)
+        msgbox(gText_GroupStages_Placeholder)
         call(GroupStages_ChooseParty_Script)
 
         removeobject(1)
@@ -149,7 +150,7 @@ script GroupStages_RoundRobinGroupComplete_Script {
         addvar(VAR_STORYLINE_STATE,1)
         applymovement(PLAYER,GroupStages_WalkToCenterStage)
         waitmovement(0)
-        msgbox(gText_GroupStages_Blank)
+        msgbox(gText_GroupStages_Placeholder)
         special(DoDomeConfetti)
         playse(SE_APPLAUSE)
         waitse
@@ -157,8 +158,12 @@ script GroupStages_RoundRobinGroupComplete_Script {
 }
 
 
-text gText_GroupStages_Blank {
-    format("...")
+text gText_GroupStages_EasyPeasy {
+    format("Easy peasy! Good luck in there!")
+}
+
+text gText_GroupStages_Placeholder{
+    format("this is placeholder text.")
 }
 
 text gText_GroupStages_OnceYouStart {

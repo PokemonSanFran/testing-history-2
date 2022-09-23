@@ -1,27 +1,30 @@
 YouRealizeTheyreEvilRight_HideObject_Script::
-	compare VAR_ALCATRAZ_STATE, 3
-	goto_if_ne YouRealizeTheyreEvilRight_HideObject_Script_1
+	compare VAR_ALCATRAZ_STATE, ARCHER_SUMMONED_ALCATRAZ
+	goto_if_ne YouRealizeTheyreEvilRight_HideObject_Script_3
+YouRealizeTheyreEvilRight_HideObject_Script_1:
 	return
 
-YouRealizeTheyreEvilRight_HideObject_Script_1:
+YouRealizeTheyreEvilRight_HideObject_Script_2:
 	setflag FLAG_TEMP_1
-	return
+	goto YouRealizeTheyreEvilRight_HideObject_Script_1
+
+YouRealizeTheyreEvilRight_HideObject_Script_3:
+	compare VAR_ALCATRAZ_STATE, POST_ARRIVE_ALCATRAZ
+	goto_if_ne YouRealizeTheyreEvilRight_HideObject_Script_2
+	goto YouRealizeTheyreEvilRight_HideObject_Script_1
 
 
 YouRealizeTheyreEvilRight_ShowObject_Script::
-	compare VAR_ALCATRAZ_STATE, 3
-	goto_if_eq YouRealizeTheyreEvilRight_ShowObject_Script_1
-	return
-
+	compare VAR_ALCATRAZ_STATE, ARCHER_SUMMONED_ALCATRAZ
+	goto_if_eq YouRealizeTheyreEvilRight_ShowObject_Script_2
+	compare VAR_ALCATRAZ_STATE, POST_ARRIVE_ALCATRAZ
+	goto_if_eq YouRealizeTheyreEvilRight_ShowObject_Script_2
 YouRealizeTheyreEvilRight_ShowObject_Script_1:
+	return
+
+YouRealizeTheyreEvilRight_ShowObject_Script_2:
 	addobject 11
-	return
-
-
-YouRealizeTheyreEvilRight_ShowBasement_Script::
-	clearflag FLAG_HIDE_YOUREALIZE_B2F_GROUP
-	setflag FLAG_TEMP_1
-	return
+	goto YouRealizeTheyreEvilRight_ShowObject_Script_1
 
 
 YouRealizeTheyreEvilRight_HideGarbodor_Script::
@@ -32,6 +35,17 @@ YouRealizeTheyreEvilRight_HideGarbodor_Script::
 YouRealizeTheyreEvilRight_HideBasement_Script::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_7
+	setflag FLAG_TEMP_8
+	setflag FLAG_TEMP_9
+	return
+
+
+YouRealizeTheyreEvilRight_Basement_SetUpObjects_Script::
+	setflag FLAG_TEMP_4
 	setflag FLAG_TEMP_5
 	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_7
@@ -42,9 +56,9 @@ YouRealizeTheyreEvilRight_HideBasement_Script::
 
 YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	lock
-	addvar VAR_ALCATRAZ_STATE, 1
+	setvar VAR_ALCATRAZ_STATE, ARCHER_SUMMONED_ALCATRAZ
 	giveitem ITEM_HM03
-	clearflag FLAG_SCOTT_CALL_FORTREE_GYM
+	clearflag FLAG_ARCHER_CALL_ALCATRAZ
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_HolyShit
@@ -103,8 +117,7 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue_2:
 
 YouRealizeTheyreEvilRight_PlayerLandedDialogue::
 	lock
-	givecustommon SPECIES_KYOGRE, 100, ITEM_BLUE_ORB, ITEM_LURE_BALL, NATURE_MODEST, 0, 0, 0, 4, 252, 0, 252, 31, 31, 31, 31, 31, 31, MOVE_SURF, MOVE_CALM_MIND, MOVE_ORIGIN_PULSE, MOVE_ICE_BEAM
-	addvar VAR_ALCATRAZ_STATE, 1
+	setvar VAR_ALCATRAZ_STATE, POST_ARRIVE_ALCATRAZ
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
@@ -125,6 +138,7 @@ YouRealizeTheyreEvilRight_PlayerLandedDialogue::
 
 YouRealizeTheyreEvilRight_InteractArcher::
 	lock
+	setvar VAR_ALCATRAZ_STATE, PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WelcomeToTheReal, MSGBOX_NPC
@@ -134,7 +148,6 @@ YouRealizeTheyreEvilRight_InteractArcher::
 	waitmovement 0
 	playse SE_EXIT
 	waitse
-	setflag FLAG_TEMP_1
 	removeobject 11
 	release
 	end
@@ -321,7 +334,7 @@ YouRealizeTheyreEvilRight_CorrectAnswer_Script::
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_VeryClever
-	setvar VAR_TEMP_0, 99
+	setflag FLAG_TEMP_1F
 	goto YouRealizeTheyreEvilRight_Framing_Dialogue
 	return
 
@@ -391,9 +404,8 @@ YouRealizeTheyreEvilRight_Framing_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YeahOkay
-	addvar VAR_ALCATRAZ_STATE, 1
-	compare VAR_TEMP_0, 99
-	goto_if_eq YouRealizeTheyreEvilRight_Framing_Dialogue_2
+	setvar VAR_ALCATRAZ_STATE, POST_YOU_REALIZE_THEYRE_EVIL_RIGHT
+	goto_if_set FLAG_TEMP_1F, YouRealizeTheyreEvilRight_Framing_Dialogue_2
 YouRealizeTheyreEvilRight_Framing_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
@@ -565,7 +577,7 @@ gText_YouRealizeTheyreEvilRight_AwesomeJobIn::
 	.string "Everything okay?$"
 
 gText_YouRealizeTheyreEvilRight_TheyDontLove::
-	.string "Psfbadguy called me. They don't love\n"
+	.string "Ycombinator called me. They don't love\n"
 	.string "our project.$"
 
 gText_YouRealizeTheyreEvilRight_YouSeemSurprised::
@@ -676,7 +688,7 @@ gText_YouRealizeTheyreEvilRight_WhyAreWeHere::
 	.string "Why are we here?$"
 
 gText_YouRealizeTheyreEvilRight_ICanFinallyProve::
-	.string "I can finally prove that Psfbadguy is\n"
+	.string "I can finally prove that Ycombinator is\n"
 	.string "worse than we originally thought. Once\l"
 	.string "I do that, I want all of us to find a way\l"
 	.string "to work together to protect SanFran\l"
@@ -778,7 +790,7 @@ gText_YouRealizeTheyreEvilRight_IDontGetIt::
 	.string "that mean?$"
 
 gText_YouRealizeTheyreEvilRight_HasBeenFramingYou::
-	.string "Archer… Psfbadguy has been framing\n"
+	.string "Archer… Ycombinator has been framing\n"
 	.string "you?$"
 
 gText_YouRealizeTheyreEvilRight_YouAlsoMetUp::
@@ -793,9 +805,9 @@ gText_YouRealizeTheyreEvilRight_ButArianaSaid::
 gText_YouRealizeTheyreEvilRight_YeahNobodyKnows::
 	.string "Yeah, nobody knows who they are or\n"
 	.string "where they came from. I'm pretty sure\l"
-	.string "Psfbadguy has been sending in agents\l"
-	.string "to make us look shitty. Between that\l"
-	.string "and whatever else Psfbadguy is\l"
+	.string "Ycombinator has been sending in\l"
+	.string "agents to make us look shitty. Between\l"
+	.string "that and whatever else Ycombinator is\l"
 	.string "feeding you, I'm not surprised you feel\l"
 	.string "the way you do.$"
 
@@ -804,7 +816,7 @@ gText_YouRealizeTheyreEvilRight_WhyWhyDoAll::
 	.string "with you guys?$"
 
 gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney::
-	.string "Psfbadguy exists to make money. They\n"
+	.string "Ycombinator exists to make money. They\n"
 	.string "don't care about you. Or us. Or the\l"
 	.string "region. You weren't here when they\l"
 	.string "first bought the League. They were\l"
@@ -827,9 +839,9 @@ gText_YouRealizeTheyreEvilRight_AndThatsWhyWere::
 
 gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally::
 	.string "Yep. I think it's finally time we all come\n"
-	.string "together to expose Psfbadguy for the\l"
-	.string "assholes that they are, and start to\l"
-	.string "take power back for the people.$"
+	.string "together to expose Ycombinator for\l"
+	.string "the assholes that they are, and start\l"
+	.string "to take power back for the people.$"
 
 gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour::
 	.string "Kid, if the Elite Four couldn't stop them\n"
@@ -879,7 +891,7 @@ gText_YouRealizeTheyreEvilRight_DoYouWantToGo::
 
 gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat::
 	.string "…I have no idea what I'm going to do. Do\n"
-	.string "I help Psfbadguy and the police end\l"
+	.string "I help Ycombinator and the police end\l"
 	.string "TeamRocket permanently? Or do I help\l"
 	.string "TeamRocket clear their name and help\l"
 	.string "the people of SanFran?$"

@@ -16,53 +16,50 @@ Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Southbay_Compound_1F_MapScripts_OnTransition::
-	switch VAR_PLAYER_HOME_STATE
-	case 1, Southbay_Compound_1F_MapScripts_OnTransition_3
-	case 3, Southbay_Compound_1F_MapScripts_OnTransition_4
-	case 4, Southbay_Compound_1F_MapScripts_OnTransition_5
-	case 6, Southbay_Compound_1F_MapScripts_OnTransition_6
-	case 7, Southbay_Compound_1F_MapScripts_OnTransition_7
-	case 8, Southbay_Compound_1F_MapScripts_OnTransition_8
-Southbay_Compound_1F_MapScripts_OnTransition_1:
 	switch VAR_STORYLINE_STATE
-	case 0, Southbay_Compound_1F_MapScripts_OnTransition_10
-	case 1, Southbay_Compound_1F_MapScripts_OnTransition_11
-	case 2, Southbay_Compound_1F_MapScripts_OnTransition_12
-	case 3, Southbay_Compound_1F_MapScripts_OnTransition_13
-	case 4, Southbay_Compound_1F_MapScripts_OnTransition_14
-	case 5, Southbay_Compound_1F_MapScripts_OnTransition_15
-	case 6, Southbay_Compound_1F_MapScripts_OnTransition_16
-	case 7, Southbay_Compound_1F_MapScripts_OnTransition_17
-	case 8, Southbay_Compound_1F_MapScripts_OnTransition_18
-	case 9, Southbay_Compound_1F_MapScripts_OnTransition_19
-	case 10, Southbay_Compound_1F_MapScripts_OnTransition_20
-	case 23, Southbay_Compound_1F_MapScripts_OnTransition_21
+	case 0, Southbay_Compound_1F_MapScripts_OnTransition_3
+	case 1, Southbay_Compound_1F_MapScripts_OnTransition_4
+	case 2, Southbay_Compound_1F_MapScripts_OnTransition_5
+	case 3, Southbay_Compound_1F_MapScripts_OnTransition_6
+	case 4, Southbay_Compound_1F_MapScripts_OnTransition_7
+	case 5, Southbay_Compound_1F_MapScripts_OnTransition_8
+	case 6, Southbay_Compound_1F_MapScripts_OnTransition_9
+	case 7, Southbay_Compound_1F_MapScripts_OnTransition_10
+	case 8, Southbay_Compound_1F_MapScripts_OnTransition_11
+	case 9, Southbay_Compound_1F_MapScripts_OnTransition_12
+	case 10, Southbay_Compound_1F_MapScripts_OnTransition_13
+	case 23, Southbay_Compound_1F_MapScripts_OnTransition_14
 	call VSGarbodor_ObjectCleanUp_Script
+Southbay_Compound_1F_MapScripts_OnTransition_1:
+	switch VAR_PLAYER_HOME_STATE
+	case 1, Southbay_Compound_1F_MapScripts_OnTransition_17
+	case 3, Southbay_Compound_1F_MapScripts_OnTransition_18
+	case 4, Southbay_Compound_1F_MapScripts_OnTransition_19
+	case 6, Southbay_Compound_1F_MapScripts_OnTransition_20
+	case 7, Southbay_Compound_1F_MapScripts_OnTransition_21
+	case 8, Southbay_Compound_1F_MapScripts_OnTransition_22
 	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_3:
-	call ImProbablyBetterThanYou_ObjectSetUp
-	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_4:
-	call Swagbag_ObjectSetUp
-	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_5:
-	call swagbag_ObjectHide_Script
-	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_6:
-	call TwoHoursAgo_ObjectSetUp
-	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_7:
-	call AaandWereBack_ObjectSetUp_Script
-	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_8:
-	call WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script
-	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_9:
+	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_10:
 	return
@@ -71,36 +68,39 @@ Southbay_Compound_1F_MapScripts_OnTransition_11:
 	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_12:
-	return
+	call AaandWereBack_ObjectSetUp_Script
+	goto Southbay_Compound_1F_MapScripts_OnTransition_1
 
 Southbay_Compound_1F_MapScripts_OnTransition_13:
-	return
+	call AaandWereBack_ObjectHide_Script
+	goto Southbay_Compound_1F_MapScripts_OnTransition_1
 
 Southbay_Compound_1F_MapScripts_OnTransition_14:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_15:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_16:
-	return
+	call VSGarbodor_ReturnToTheCompound_ObjectSetUp
+	goto Southbay_Compound_1F_MapScripts_OnTransition_1
 
 Southbay_Compound_1F_MapScripts_OnTransition_17:
+	call ImProbablyBetterThanYou_ObjectSetUp
 	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_18:
+	call Swagbag_ObjectSetUp
 	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_19:
-	call AaandWereBack_ObjectSetUp_Script
+	call swagbag_ObjectHide_Script
 	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_20:
-	call AaandWereBack_ObjectHide_Script
+	call TwoHoursAgo_ObjectSetUp
 	return
 
 Southbay_Compound_1F_MapScripts_OnTransition_21:
-	call VSGarbodor_ReturnToTheCompound_ObjectSetUp
+	call AaandWereBack_ObjectSetUp_Script
+	return
+
+Southbay_Compound_1F_MapScripts_OnTransition_22:
+	call WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script
 	return
 
 

@@ -362,7 +362,7 @@ gText_WhyDidntYouRatMeOut_UhYeahWeMet::
 
 gText_WhyDidntYouRatMeOut_IMeantToTell::
 	.string "I meant to tell you earlier - the\n"
-	.string "Psfbadguy executives have a fully\l"
+	.string "Ycombinator executives have a fully\l"
 	.string "catered skybox to watch the\l"
 	.string "Championship. We're about to watch\l"
 	.string "Bianca's group!$"

@@ -94,7 +94,7 @@ YoungPadawan_PostBattle_Dialogue_1:
 	applymovement OBJ_EVENT_ID_PLAYER, YoungPadawan_GetOutOfWay
 	waitmovement 0
 	removeobject 9
-	addvar VAR_ALCATRAZ_STATE, 1
+	setvar VAR_ALCATRAZ_STATE, BATTLED_MALVA
 	addvar VAR_ALCATRAZ_EXHIBIT_STATE, 1
 	release
 	end

@@ -360,17 +360,17 @@ static const struct TrainerMonNoItemDefaultMoves sParty_ShellySeafloorCavern[] =
 static const struct TrainerMonNoItemDefaultMoves sParty_Archie[] = {
     {
     .iv = 150,
-    .lvl = 41,
+    .lvl = 100,
     .species = SPECIES_MIGHTYENA,
     },
     {
     .iv = 150,
-    .lvl = 41,
+    .lvl = 100,
     .species = SPECIES_CROBAT,
     },
     {
     .iv = 150,
-    .lvl = 43,
+    .lvl = 100,
     .species = SPECIES_SHARPEDO,
     }
 };

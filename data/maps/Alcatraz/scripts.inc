@@ -8,7 +8,7 @@ Alcatraz_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Alcatraz_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ALCATRAZ_STATE, 3, YouRealizeTheyreEvilRight_PlayerLandedDialogue
+	map_script_2 VAR_ALCATRAZ_STATE, ARCHER_SUMMONED_ALCATRAZ, YouRealizeTheyreEvilRight_PlayerLandedDialogue
 	.2byte 0
 
 
@@ -47,7 +47,7 @@ ResetAlcatrazExhibit_Script::
 	clearflag TRAINER_FLAGS_START + TRAINER_FREDRICK
 	clearflag TRAINER_FLAGS_START + TRAINER_ZANDER
 	clearflag TRAINER_FLAGS_START + TRAINER_LEAH
-	compare VAR_ALCATRAZ_STATE, 2
+	compare VAR_ALCATRAZ_STATE, BATTLED_MALVA
 	goto_if_lt ResetAlcatrazExhibit_Script_1
 	return
 

@@ -4,6 +4,11 @@ const BIANCA = 2 //FLAG_TEMP_2
 const ARCHER = 3 //FLAG_TEMP_3
 const OAK = 4 //FLAG_TEMP_4
 
+script HeresHowThisIsGoingToGo_ObjectSetUp_Script{
+    setflag(FLAG_TEMP_6)
+        return
+}
+
 script HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script {
     setflag(FLAG_TEMP_1)
     setflag(FLAG_TEMP_4)
@@ -42,7 +47,7 @@ script HeresHowThisIsGoingToGo_ConstructionCompleted_Script {
     return
 }
 
-script HeresHowThisIsGoingToGo_ObjectSetUp_Script {
+script HeresHowThisIsGoingToGo_VirtualObjectSetUp_Script {
 createvobject(OBJ_EVENT_GFX_BOY_2,6,8,5,3,DIR_NORTH)
 createvobject(OBJ_EVENT_GFX_MAN_2,7,9,5,3,DIR_NORTH)
 createvobject(OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F,8,10,5,3,DIR_NORTH)
@@ -56,6 +61,7 @@ createvobject(OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M,15,10,6,3,DIR_NORTH)
 createvobject(OBJ_EVENT_GFX_WOMAN_4,16,12,6,3,DIR_NORTH)
 createvobject(OBJ_EVENT_GFX_MYSTERY_GIFT_MAN,17,13,6,3,DIR_NORTH)
 createvobject(OBJ_EVENT_GFX_LITTLE_BOY,18,6,5,3,DIR_NORTH)
+return
 }
 
 script HeresHowThisIsGoingToGo_CleanUpVObjects_Script {
