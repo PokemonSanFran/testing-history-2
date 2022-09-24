@@ -280,7 +280,7 @@ gText_LetsBurnThisMotherDown_YoureCloserToThe::
 gText_LetsBurnThisMotherDown_INeedToTalk::
 	.string "(I need to talk to Archer… I think I can\n"
 	.string "still save him. I need to get to\l"
-	.string "Robinwilltunnel.)$"
+	.string "Alcatraz.)$"
 
 gText_LetsBurnThisMotherDown_YouChoseTheWrong::
 	.string "You chose the wrong side!$"
@@ -294,9 +294,9 @@ gText_LetsBurnThisMotherDown_IKnowYouWant::
 
 gText_LetsBurnThisMotherDown_YouDontThinkWeve::
 	.string "You don't think we've tried that? You\n"
-	.string "just got here, {PLAYER} . People here\l"
-	.string "in Robinwilltunnel, died trying to do\l"
-	.string "things the right way. They don't care.$"
+	.string "just got here, {PLAYER}. People here\l"
+	.string "in Alcatraz, died trying to do things\l"
+	.string "the right way. They don't care.$"
 
 gText_LetsBurnThisMotherDown_TheyIgnoreUs::
 	.string "They ignore us, and when we get fed up\n"
@@ -305,7 +305,7 @@ gText_LetsBurnThisMotherDown_TheyIgnoreUs::
 	.string "us. They try to turn our region against\l"
 	.string "us. For what? Feeding the homeless?\l"
 	.string "Asking workers to be treated fairly?\l"
-	.string "{PLAYER} , these people are monsters.$"
+	.string "{PLAYER}, these people are monsters.$"
 
 gText_LetsBurnThisMotherDown_DotDotDot::
 	.string "…$"
@@ -371,8 +371,7 @@ gText_LetsBurnThisMotherDown_YoureYoung::
 
 gText_LetsBurnThisMotherDown_ImStillShocked::
 	.string "I'm still shocked they were using the\n"
-	.string "inside of Robinwilltunnel. Absolutely\l"
-	.string "insane.$"
+	.string "inside of Alcatraz. Absolutely insane.$"
 
 gText_LetsBurnThisMotherDown_ThePoliceTold::
 	.string "The police told me they're going to\n"

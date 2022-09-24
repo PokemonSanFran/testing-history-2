@@ -1,19 +1,19 @@
-HowDisappointing_HideObject_Script::
+HowDisappointing_ManageObject_Script::
 	switch VAR_HOW_DISAPPOINTING_STATE
-	case MISSION_ASSIGNED, HowDisappointing_HideObject_Script_3
-	case GYM_RAID_STARTED, HowDisappointing_HideObject_Script_4
-	case SAVED_BEFORE_ARIANA, HowDisappointing_HideObject_Script_4
+	case MISSION_ASSIGNED, HowDisappointing_ManageObject_Script_3
+	case GYM_RAID_STARTED, HowDisappointing_ManageObject_Script_4
+	case SAVED_BEFORE_ARIANA, HowDisappointing_ManageObject_Script_4
 	call HowDisappointing_HideAll_Script
-HowDisappointing_HideObject_Script_1:
+HowDisappointing_ManageObject_Script_1:
 	return
 
-HowDisappointing_HideObject_Script_3:
+HowDisappointing_ManageObject_Script_3:
 	call HowDisappointing_HideTeamRocket_Script
-	goto HowDisappointing_HideObject_Script_1
+	goto HowDisappointing_ManageObject_Script_1
 
-HowDisappointing_HideObject_Script_4:
+HowDisappointing_ManageObject_Script_4:
 	call HowDisappointing_HidePolice_Script
-	goto HowDisappointing_HideObject_Script_1
+	goto HowDisappointing_ManageObject_Script_1
 
 
 HowDisappointing_HideAll_Script::
@@ -33,6 +33,10 @@ HowDisappointing_HidePolice_Script::
 	setflag FLAG_TEMP_4
 	setobjectxy 5, 17, 2
 	setobjectxyperm 5, 17, 2
+	setobjectxy 6, 10, 2
+	setobjectxyperm 6, 10, 2
+	setobjectxy 7, 10, 16
+	setobjectxyperm 7, 10, 16
 	return
 
 
@@ -114,8 +118,7 @@ HowDisappointing_RaidMovement_Script::
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	setobjectxy 5, 17, 2
-	setobjectxyperm 5, 17, 2
+	call HowDisappointing_ManageObject_Script
 	release
 	end
 

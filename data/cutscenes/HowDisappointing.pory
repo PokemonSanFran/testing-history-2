@@ -11,7 +11,7 @@ const FLAG_HIDE_POLICE = FLAG_TEMP_1
 const FLAG_HIDE_CHIEF = FLAG_TEMP_4
 const FLAG_HIDE_ROCKET = FLAG_TEMP_5
 
-script HowDisappointing_HideObject_Script{
+script HowDisappointing_ManageObject_Script{
     switch (var(VAR_HOW_DISAPPOINTING_STATE)){
         case MISSION_ASSIGNED: call(HowDisappointing_HideTeamRocket_Script) 
         case GYM_RAID_STARTED: 
@@ -38,6 +38,10 @@ script HowDisappointing_HidePolice_Script {
     setflag(FLAG_HIDE_CHIEF)
     setobjectxy(ARIANA,17,2)
     setobjectxyperm(ARIANA,17,2)
+    setobjectxy(GRUNTA,10,2)
+    setobjectxyperm(GRUNTA,10,2)
+    setobjectxy(GRUNTB,10,16)
+    setobjectxyperm(GRUNTB,10,16)
     return
 }
 
@@ -136,8 +140,7 @@ waitmovement(0)
 playse(SE_PIN)
 applymovement(PLAYER,Common_Movement_ExclamationMark)
 waitmovement(0)
-setobjectxy(ARIANA,17,2)
-setobjectxyperm(ARIANA,17,2)
+call(HowDisappointing_ManageObject_Script)
 release
 end
 }

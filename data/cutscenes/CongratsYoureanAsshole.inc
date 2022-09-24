@@ -1,10 +1,3 @@
-CongratsYoureanAsshole_ObjectSetUp_Script::
-	addobject 11
-	setobjectxy 11, 9, 21
-	setobjectxyperm 11, 9, 21
-	return
-
-
 CongratsYoureanAsshole_ObjectCleanUp_Script::
 	setflag FLAG_TEMP_5
 	setflag FLAG_TEMP_6
