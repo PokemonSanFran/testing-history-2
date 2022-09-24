@@ -9,9 +9,7 @@ mapscripts Southbay_Compound_2F_MapScripts {
 script Southbay_Compound_2F_Bed_Script {
     lock
         //If has not visited Alcatraz after being called there by Archer, prevent player from sleeping
-        if (var(VAR_ALCATRAZ_STATE) > BATTLED_MALVA && (var(VAR_ALCATRAZ_STATE) < POST_YOU_REALIZE_THEYRE_EVIL_RIGHT)){
-            call(YouRealizeTheyreEvilRight_CantSleep_Dialogue)
-        }
+        call(YouRealizeTheyreEvilRight_CantSleep_Script)
 
         //Heal Player
         callnative(HealPlayerParty)

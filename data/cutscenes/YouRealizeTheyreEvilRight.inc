@@ -498,6 +498,22 @@ YouRealizeTheyreEvilRight_RecievedGiftFanfare::
 	return
 
 
+YouRealizeTheyreEvilRight_CantSleep_Script::
+	compare VAR_ALCATRAZ_STATE, BATTLED_MALVA
+	goto_if_gt YouRealizeTheyreEvilRight_CantSleep_Script_3
+YouRealizeTheyreEvilRight_CantSleep_Script_1:
+	return
+
+YouRealizeTheyreEvilRight_CantSleep_Script_2:
+	call YouRealizeTheyreEvilRight_CantSleep_Dialogue
+	goto YouRealizeTheyreEvilRight_CantSleep_Script_1
+
+YouRealizeTheyreEvilRight_CantSleep_Script_3:
+	compare VAR_ALCATRAZ_STATE, POST_YOU_REALIZE_THEYRE_EVIL_RIGHT
+	goto_if_lt YouRealizeTheyreEvilRight_CantSleep_Script_2
+	goto YouRealizeTheyreEvilRight_CantSleep_Script_1
+
+
 YouRealizeTheyreEvilRight_CantSleep_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -510,7 +526,7 @@ YouRealizeTheyreEvilRight_CantSleep_Dialogue::
 
 YouRealizeTheyreEvilRight_NoIdea_Dialogue::
 	fadescreen FADE_FROM_BLACK
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_MORNING_OF_TIMELINE_SPLIT
 	goto_if_set FLAG_TIMELINE_TIMETRAVEL, YouRealizeTheyreEvilRight_NoIdea_Dialogue_2
 YouRealizeTheyreEvilRight_NoIdea_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_HILDA

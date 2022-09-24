@@ -54,23 +54,19 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BUILDINGSCOPE
-	warp MAP_OAKLAND, 0
+	warp MAP_SALESFORCETOWER_2F, 10, 14
 	end
 
 
 Debug_Script_2::
-	warp MAP_PRESIDIO, 0
 	end
 
 
 Debug_Script_3::
-	warp MAP_TENDERLOIN, 0
 	end
 
 
 Debug_Script_4::
-	setvar VAR_STORYLINE_STATE, STORY_POST_EARTHQUAKE
 	end
 
 

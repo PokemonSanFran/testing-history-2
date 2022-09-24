@@ -237,7 +237,7 @@ text gText_LetsBurnThisMotherDown_YoureCloserToThe {
 }
 
 text gText_LetsBurnThisMotherDown_INeedToTalk {
-    format("(I need to talk to Archer… I think I can still save him. I need to get to Robinwilltunnel.)")
+    format("(I need to talk to Archer… I think I can still save him. I need to get to Alcatraz.)")
 }
 
 text gText_LetsBurnThisMotherDown_YouChoseTheWrong {
@@ -249,13 +249,11 @@ text gText_LetsBurnThisMotherDown_IKnowYouWant {
 }
 
 text gText_LetsBurnThisMotherDown_YouDontThinkWeve {
-    format("You don't think we've tried that? You just got here, {PLAYER}
-            . People here in Robinwilltunnel, died trying to do things the right way. They don't care.")
+    format("You don't think we've tried that? You just got here, {PLAYER}. People here in Alcatraz, died trying to do things the right way. They don't care.")
 }
 
 text gText_LetsBurnThisMotherDown_TheyIgnoreUs {
-    format("They ignore us, and when we get fed up and take matters into our own hands, they label us terrorists. They frame us. They try to turn our region against us. For what? Feeding the homeless? Asking workers to be treated fairly? {PLAYER}
-            , these people are monsters.")
+    format("They ignore us, and when we get fed up and take matters into our own hands, they label us terrorists. They frame us. They try to turn our region against us. For what? Feeding the homeless? Asking workers to be treated fairly? {PLAYER}, these people are monsters.")
 }
 
 text gText_LetsBurnThisMotherDown_DotDotDot {
@@ -320,7 +318,7 @@ text gText_LetsBurnThisMotherDown_YoureYoung {
 }
 
 text gText_LetsBurnThisMotherDown_ImStillShocked {
-    format("I'm still shocked they were using the inside of Robinwilltunnel. Absolutely insane.")
+    format("I'm still shocked they were using the inside of Alcatraz. Absolutely insane.")
 }
 
 text gText_LetsBurnThisMotherDown_ThePoliceTold {

@@ -24,7 +24,7 @@ CongratsYoureanAsshole_ObjectCleanUp_Script::
 
 
 CongratsYourAssAsshole_Intro_Dialogue::
-	compare VAR_SALESFORCETOWER_2F_STATE, 6
+	compare VAR_SALESFORCETOWER_2F_STATE, START_FALSE_TIMELINE
 	goto_if_eq CongratsYourAssAsshole_Intro_Dialogue_2
 CongratsYourAssAsshole_Intro_Dialogue_1:
 	setvar VAR_0x8000, MUGSHOT_LANCE
@@ -35,10 +35,6 @@ CongratsYourAssAsshole_Intro_Dialogue_1:
 	msgbox gText_CongratsYoureanAsshole_YeahIWantToWork
 	callnative ClearMugshot
 	closemessage
-	call CongratsYoureanAsshole_ObjectSetUp_Script
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_WhyAreYouHere
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_WevePreparedAStatement
@@ -47,7 +43,7 @@ CongratsYourAssAsshole_Intro_Dialogue_1:
 	msgbox gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal
 	applymovement 14, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
-	addvar VAR_SALESFORCETOWER_2F_STATE, 1
+	setvar VAR_SALESFORCETOWER_2F_STATE, START_FALSE_TIMELINE
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_TheresNoTurningBack
@@ -121,22 +117,6 @@ gText_CongratsYoureanAsshole_YeahIWantToWork::
 	.string "make sure the League’s next season is\l"
 	.string "as successful as possible.$"
 
-gText_CongratsYoureanAsshole_HellYeahThatsAwesome::
-	.string "Hell yeah, that’s awesome. Welcome to\n"
-	.string "the squad.$"
-
-gText_CongratsYoureanAsshole_WhyAreYouHere::
-	.string "Why are you here?$"
-
-gText_CongratsYoureanAsshole_IHiredThem::
-	.string "I hired them. Their help was invaluable\n"
-	.string "in the past, and when I presented the\l"
-	.string "offer, they didn’t hesitate.$"
-
-gText_CongratsYoureanAsshole_ExcellentWeKnew::
-	.string "Excellent! We knew you’d make the right\n"
-	.string "choice.$"
-
 gText_CongratsYoureanAsshole_WevePreparedAStatement::
 	.string "We’ve prepared a statement reinforcing\n"
 	.string "our commitment to ending TeamRocket’s\l"
@@ -145,15 +125,11 @@ gText_CongratsYoureanAsshole_WevePreparedAStatement::
 	.string "that their days are numbered.$"
 
 gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal::
-	.string "We’d like you two to signal boost that\n"
+	.string "We’d like you to signal boost that\n"
 	.string "statement online as soon as it’s\l"
 	.string "posted. A public condemnation from the\l"
-	.string "two most powerful Trainers will send a\l"
+	.string "most powerful Trainer will send a\l"
 	.string "strong message.$"
-
-gText_CongratsYoureanAsshole_The50000Followers::
-	.string "The 50,000 followers Daddy bought me\n"
-	.string "are gonna love this!$"
 
 gText_CongratsYoureanAsshole_TheresNoTurningBack::
 	.string "There’s no turning back from this- once\n"

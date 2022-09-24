@@ -9,9 +9,7 @@ Southbay_Compound_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 Southbay_Compound_2F_Bed_Script::
 	lock
-	compare VAR_ALCATRAZ_STATE, BATTLED_MALVA
-	goto_if_gt Southbay_Compound_2F_Bed_Script_3
-Southbay_Compound_2F_Bed_Script_1:
+	call YouRealizeTheyreEvilRight_CantSleep_Script
 	callnative HealPlayerParty
 	fadescreen FADE_TO_BLACK
 	delay 16
@@ -19,62 +17,53 @@ Southbay_Compound_2F_Bed_Script_1:
 	closemessage
 	call PlayersHouse_2F_EventScript_SetWallClock
 	switch VAR_STORYLINE_STATE
-	case 9, Southbay_Compound_2F_Bed_Script_8
-	case 24, Southbay_Compound_2F_Bed_Script_9
-	case 26, Southbay_Compound_2F_Bed_Script_10
-	case 42, Southbay_Compound_2F_Bed_Script_11
-	case 99, Southbay_Compound_2F_Bed_Script_12
-	case 101, Southbay_Compound_2F_Bed_Script_13
-	case 106, Southbay_Compound_2F_Bed_Script_14
+	case 9, Southbay_Compound_2F_Bed_Script_3
+	case 24, Southbay_Compound_2F_Bed_Script_4
+	case 26, Southbay_Compound_2F_Bed_Script_5
+	case 42, Southbay_Compound_2F_Bed_Script_6
+	case 99, Southbay_Compound_2F_Bed_Script_7
+	case 101, Southbay_Compound_2F_Bed_Script_8
+	case 106, Southbay_Compound_2F_Bed_Script_9
 	fadescreen FADE_FROM_BLACK
-Southbay_Compound_2F_Bed_Script_6:
+Southbay_Compound_2F_Bed_Script_1:
 	compare VAR_LITTLEROOT_INTRO_STATE, 4
-	goto_if_eq Southbay_Compound_2F_Bed_Script_17
-Southbay_Compound_2F_Bed_Script_16:
+	goto_if_eq Southbay_Compound_2F_Bed_Script_12
+Southbay_Compound_2F_Bed_Script_11:
 	release
 	end
 
-Southbay_Compound_2F_Bed_Script_2:
-	call YouRealizeTheyreEvilRight_CantSleep_Dialogue
+Southbay_Compound_2F_Bed_Script_3:
+	call AaandWereBack_FerryRepaired_Dialogue
 	goto Southbay_Compound_2F_Bed_Script_1
 
-Southbay_Compound_2F_Bed_Script_3:
-	compare VAR_ALCATRAZ_STATE, POST_YOU_REALIZE_THEYRE_EVIL_RIGHT
-	goto_if_lt Southbay_Compound_2F_Bed_Script_2
+Southbay_Compound_2F_Bed_Script_4:
+	call OffYouGo_WakeUp_Dialogue
+	goto Southbay_Compound_2F_Bed_Script_1
+
+Southbay_Compound_2F_Bed_Script_5:
+	call WhyAreYouHelpingThem_StartChampionship_Dialogue
+	goto Southbay_Compound_2F_Bed_Script_1
+
+Southbay_Compound_2F_Bed_Script_6:
+	call YouRealizeTheyreEvilRight_NoIdea_Dialogue
+	goto Southbay_Compound_2F_Bed_Script_1
+
+Southbay_Compound_2F_Bed_Script_7:
+	call YouRealizeTheyreEvilRight_NoIdea_Dialogue
 	goto Southbay_Compound_2F_Bed_Script_1
 
 Southbay_Compound_2F_Bed_Script_8:
-	call AaandWereBack_FerryRepaired_Dialogue
-	goto Southbay_Compound_2F_Bed_Script_6
+	call LetsFixThis_EliteVideo_Dialogue
+	goto Southbay_Compound_2F_Bed_Script_1
 
 Southbay_Compound_2F_Bed_Script_9:
-	call OffYouGo_WakeUp_Dialogue
-	goto Southbay_Compound_2F_Bed_Script_6
-
-Southbay_Compound_2F_Bed_Script_10:
-	call WhyAreYouHelpingThem_StartChampionship_Dialogue
-	goto Southbay_Compound_2F_Bed_Script_6
-
-Southbay_Compound_2F_Bed_Script_11:
-	call YouRealizeTheyreEvilRight_NoIdea_Dialogue
-	goto Southbay_Compound_2F_Bed_Script_6
+	call Earthquake_ThatNight_Dialogue
+	goto Southbay_Compound_2F_Bed_Script_1
 
 Southbay_Compound_2F_Bed_Script_12:
-	call YouRealizeTheyreEvilRight_NoIdea_Dialogue
-	goto Southbay_Compound_2F_Bed_Script_6
-
-Southbay_Compound_2F_Bed_Script_13:
-	call LetsFixThis_EliteVideo_Dialogue
-	goto Southbay_Compound_2F_Bed_Script_6
-
-Southbay_Compound_2F_Bed_Script_14:
-	call Earthquake_ThatNight_Dialogue
-	goto Southbay_Compound_2F_Bed_Script_6
-
-Southbay_Compound_2F_Bed_Script_17:
 	addvar VAR_LITTLEROOT_INTRO_STATE, 1
 	giveitem ITEM_FASHION_CASE
-	goto Southbay_Compound_2F_Bed_Script_16
+	goto Southbay_Compound_2F_Bed_Script_11
 
 
 gText_BedScript_WhenShouldWake::

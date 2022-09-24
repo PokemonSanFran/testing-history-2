@@ -5,11 +5,12 @@ const ROSE = 11 // FLAG_TEMP_5
 const KOGA = 14 // FLAG_TEMP_4
 const SABRINA = 2 // FLAG_TEMP_1
 
-script CongratsYoureanAsshole_ObjectSetUp_Script {
-    addobject(ROSE)
-    setobjectxy(ROSE,9,21)
-    setobjectxyperm(ROSE,9,21)
-}
+const FLAG_HIDE_SABRINA = FLAG_TEMP_1
+const FLAG_HIDE_RAID_PARTY = FLAG_TEMP_9
+const FLAG_HIDE_OAK = FLAG_TEMP_3
+const FLAG_HIDE_BIANCA = FLAG_TEMP_8
+const FLAG_HIDE_ROSE = FLAG_TEMP_5
+const FLAG_HIDE_KOGA = FLAG_TEMP_4
 
 script CongratsYoureanAsshole_ObjectCleanUp_Script {
         setflag(FLAG_TEMP_5)
@@ -31,7 +32,7 @@ script CongratsYoureanAsshole_ObjectCleanUp_Script {
 
 script CongratsYourAssAsshole_Intro_Dialogue {
 
-if (var(VAR_SALESFORCETOWER_2F_STATE) == 6){
+if (var(VAR_SALESFORCETOWER_2F_STATE) == START_FALSE_TIMELINE){
     goto(CongratsYoureanAsshole_FalseTimelineSplit_Script)
 }
 
@@ -45,12 +46,7 @@ msgbox(gText_CongratsYoureanAsshole_YeahIWantToWork)
 callnative(ClearMugshot)
 closemessage
 
-call(CongratsYoureanAsshole_ObjectSetUp_Script)
-
-setvar(VAR_0x8000, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_CongratsYoureanAsshole_WhyAreYouHere)
-
+//call(CongratsYoureanAsshole_ObjectSetUp_Script)
 
 setvar(VAR_0x8000, MUGSHOT_LANCE)
 callnative(DrawMugshot)
@@ -63,7 +59,7 @@ msgbox(gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal)
 applymovement(KOGA,Common_Movement_WalkInPlaceLeft)
 waitmovement(0)
 
-addvar(VAR_SALESFORCETOWER_2F_STATE,1)
+setvar(VAR_SALESFORCETOWER_2F_STATE,START_FALSE_TIMELINE)
 setvar(VAR_0x8000, MUGSHOT_N)
 callnative(DrawMugshot)
 msgbox(gText_CongratsYoureanAsshole_TheresNoTurningBack)
@@ -119,32 +115,13 @@ text gText_CongratsYoureanAsshole_YeahIWantToWork {
 	format("Yeah. I want to work with you guys and make sure the League’s next season is as successful as possible.")
 }
 
-text gText_CongratsYoureanAsshole_HellYeahThatsAwesome {
-	format("Hell yeah, that’s awesome. Welcome to the squad.")
-}
-
-text gText_CongratsYoureanAsshole_WhyAreYouHere {
-	format("Why are you here?")
-}
-
-text gText_CongratsYoureanAsshole_IHiredThem {
-	format("I hired them. Their help was invaluable in the past, and when I presented the offer, they didn’t hesitate.")
-}
-
-text gText_CongratsYoureanAsshole_ExcellentWeKnew {
-	format("Excellent! We knew you’d make the right choice.")
-}
-
 text gText_CongratsYoureanAsshole_WevePreparedAStatement {
 	format("We’ve prepared a statement reinforcing our commitment to ending TeamRocket’s operations. We want them to know we’re officially working with the police and that their days are numbered.")
 }
 
 text gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal {
-	format("We’d like you two to signal boost that statement online as soon as it’s posted. A public condemnation from the two most powerful Trainers will send a strong message.")
+	format("We’d like you to signal boost that statement online as soon as it’s posted. A public condemnation from the most powerful Trainer will send a strong message.")
 	}
-text gText_CongratsYoureanAsshole_The50000Followers {
-	format("The 50,000 followers Daddy bought me are gonna love this!")
-}
 
 text gText_CongratsYoureanAsshole_TheresNoTurningBack {
 	format("There’s no turning back from this- once the statement is out the region natives aren’t going to be so friendly to you. If there’s anything you need to do before sending the message, handle it now. Come back and talk to me when you’re ready.")
