@@ -1,20 +1,30 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
-const ARCHER = 1 //FLAG_TEMP_1
-const MALVA = 3 //FLAG_TEMP_2
-const DRASNA = 2 //FLAG_TEMP_2
-const SIEBOLD = 6 //FLAG_TEMP_5
-const WIKSTROM = 5 //FLAG_TEMP_8
-const GIOVANNI = 7 //FLAG_TEMP_6
-const ARIANA = 8 //FLAG_TEMP_9
-const GRUNTA = 9 //FLAG_TEMP_7
-const GRUNTB = 10//FLAG_TEMP_7
-const GRUNTC = 11//FLAG_TEMP_7
-const GRUNTD = 12//FLAG_TEMP_7
+
+const ARCHER = 1
+const MALVA = 3
+const DRASNA = 2
+const SIEBOLD = 6
+const WIKSTROM = 5
+const GIOVANNI = 7
+const ARIANA = 8
+const GRUNTA = 9
+const GRUNTB = 10
+const GRUNTC = 11
+const GRUNTD = 12
+
+const FLAG_HIDE_ARCHER = FLAG_TEMP_1
+const FLAG_HIDE_ELITES = FLAG_TEMP_2
+const FLAG_HIDE_GARBODOR = FLAG_TEMP_4
+const FLAG_HIDE_SIEBOLD = FLAG_TEMP_5
+const FLAG_HIDE_GIOVANNI = FLAG_TEMP_6
+const FLAG_HIDE_GRUNTS = FLAG_TEMP_7
+const FLAG_HIDE_WIKSTROM = FLAG_TEMP_8
+const FLAG_HIDE_ARIANA = FLAG_TEMP_9
 
 script SpeechSpeechSpeech_MoveObject_Script {
-        setflag(FLAG_TEMP_4)
-        setflag(FLAG_TEMP_8)
+        setflag(FLAG_HIDE_GARBODOR)
+        setflag(FLAG_HIDE_WIKSTROM)
 
         setobjectxy(ARCHER,10,8)
         setobjectxyperm(ARCHER,10,8)
@@ -31,7 +41,7 @@ script SpeechSpeechSpeech_MovePlayer_Script {
     setobjectxy(PLAYER,9,9)
         TeleportCamera(9,9)
         applymovement(PLAYER,Common_Movement_FaceUp)
-        waitmovement(0)
+        waitmovement(PLAYER)
 
         createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,13,8,8)
         createvobject(OBJ_EVENT_GFX_AQUA_MEMBER_M,14,11,8)
@@ -65,9 +75,9 @@ script SpeechSpeechSpeech_ResetFacing_Script {
 
 script SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script {
 
-    setflag(FLAG_TEMP_4)
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_6)
+    setflag(FLAG_HIDE_GARBODOR)
+    setflag(FLAG_HIDE_ARCHER)
+    setflag(FLAG_HIDE_GIOVANNI)
 
     setobjectxy(MALVA,11,17)
     setobjectxyperm(MALVA,11,17)
@@ -108,8 +118,6 @@ script SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script {
     setobjectnewmovementtype(GRUNTD,MOVEMENT_TYPE_LOOK_AROUND)
     setobjectxy(GRUNTD,4,7)
     setobjectxyperm(GRUNTD,4,7)
-
-
 }
 
 script SpeechSpeechSpeech_PositionPlayer_Script {
@@ -166,7 +174,7 @@ script SpeechSpeechSpeech_Intro_Dialogue {
 
 script SpeechSpeechSpeech_StartTransformation_Script {
 
-        clearflag(FLAG_TEMP_5)
+        clearflag(FLAG_HIDE_SIEBOLD)
         special(SpawnCameraObject)
         applymovement(CAMERA,SpeechSpeechSpeech_PanCameraUp)
         applymovement(GIOVANNI,SpeechSpeechSpeech_WalkBackstage)
@@ -177,7 +185,7 @@ script SpeechSpeechSpeech_StartTransformation_Script {
         applymovement(WIKSTROM,SpeechSpeechSpeech_FinishSpin)
         waitmovement(GIOVANNI)
         removeobject(GIOVANNI)
-        clearflag(FLAG_TEMP_8)
+        clearflag(FLAG_HIDE_WIKSTROM)
         addobject(WIKSTROM)
         delay(32)
 
@@ -217,7 +225,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         applymovement(GRUNTB,Common_Movement_ExclamationMark)
         applymovement(GRUNTC,Common_Movement_ExclamationMark)
         applymovement(GRUNTD,Common_Movement_ExclamationMark)
-        waitmovement(0)
+        waitmovement(GRUNTD)
 
         delay(100) //wait until after earthquake
         waitstate
@@ -250,7 +258,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         waitmovement(GRUNTD)
 
         applymovement(DRASNA,Common_Movement_WalkDown)
-        waitmovement(0)
+        waitmovement(DRASNA)
         //Drasna steps forward. Ariana steps aside.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
@@ -260,7 +268,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         closemessage
 
         applymovement(WIKSTROM,Common_Movement_WalkDown)
-        waitmovement(0)
+        waitmovement(WIKSTROM)
         //Wikstrom steps forward.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
@@ -271,7 +279,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
         applymovement(WIKSTROM,SpeechSpeechSpeech_WalkBackwards)
         applymovement(SIEBOLD,Common_Movement_WalkDown)
-        waitmovement(0)
+        waitmovement(SIEBOLD)
         //Wikstrom steps back. Siebold steps forward.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
@@ -282,7 +290,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
         applymovement(SIEBOLD,SpeechSpeechSpeech_WalkBackwards)
         applymovement(MALVA,Common_Movement_WalkDown)
-        waitmovement(0)
+        waitmovement(MALVA)
         //Wikstrom steps back. Malva steps forward.
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
@@ -292,7 +300,8 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         closemessage
 
         applymovement(MALVA,SpeechSpeechSpeech_WalkBackwards)
-        waitmovement(0)
+        waitmovement(MALVA)
+
 
         //Malva steps back.
 
@@ -327,7 +336,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_Yeah)
 
-        if (var(VAR_STORYLINE_STATE) != 104){
+        if (var(VAR_STORYLINE_STATE) != STORY_2ND_PRE_SPEECHSPPECH){
             msgbox(gText_SpeechSpeechSpeech_YeahAlsoAre)
         }else {
             msgbox(gText_SpeechSpeechSpeech_ByTheWay)
@@ -338,7 +347,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         closemessage
 
         applymovement(ARCHER,SpeechSpeechSpeech_LeaveScreen)
-        waitmovement(0)
+        waitmovement(ARCHER)
         removeobject(ARCHER)
         release
         end

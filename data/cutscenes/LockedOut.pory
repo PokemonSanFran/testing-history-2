@@ -2,7 +2,6 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 
 script LockedOut_PreventPlayer_Script {
     lock
-
         if (!flag(FLAG_TIMELINE_TRUE)){
             release
                 end
@@ -75,7 +74,7 @@ script LockedOut_WarpPlayer_Script {
     msgbox(gText_LockedOut_DoYouWant,MSGBOX_YESNO)
 
         if (var(VAR_RESULT) == YES){
-            warpsilent(MAP_ALAMEDA,26,33)
+            warpsilent(MAP_ALAMEDA,29,33)
         }
 }
 

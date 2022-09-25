@@ -69,7 +69,7 @@ LockedOut_WarpPlayer_Script::
 	return
 
 LockedOut_WarpPlayer_Script_1:
-	warpsilent MAP_ALAMEDA, 26, 33
+	warpsilent MAP_ALAMEDA, 29, 33
 	return
 
 

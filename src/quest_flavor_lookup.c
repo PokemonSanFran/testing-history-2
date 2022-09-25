@@ -72,6 +72,18 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor36;
 	}
 
+	else if (storyline == STORY_1ST_PRE_SPEECHSPEECH 
+	            && (VarGet(TOLD_ARCHER_ABOUT_KOGA) >= TOLD_ARCHER_ABOUT_KOGA))
+    {
+        return gText_PlayersAdventure_Flavor35A;
+    }
+
+	else if (storyline == STORY_1ST_PRE_SPEECHSPEECH
+	            && (VarGet(VAR_ALCATRAZ_STATE) >= POST_SPEECHSPEECH))
+    {
+        return gText_PlayersAdventure_Flavor35B;
+    }
+
     else if (storyline == STORY_RECIVED_RAVE_INVITE)
     {
         return gText_PlayersAdventure_Flavor35;

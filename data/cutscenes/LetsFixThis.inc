@@ -61,9 +61,9 @@ LetsFixThis_GetMessage_Dialogue::
 	msgbox gText_LetsFixThis_ActuallyGivenHowMuch
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_ALCATRAZ_STATE, PRE_SPEECHSPEECH
-	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_FORTREE_CITY_STATE, 1
+	setvar VAR_ALCATRAZ_STATE, PRE_SPEECHSPEECH
+	setvar VAR_STORYLINE_STATE, STORY_RECIVED_RAVE_INVITE
+	setvar VAR_WAREHOUSE_RAVE_STATE, GOT_RAVE_MESSAGE
 	setflag FLAG_LOCKEDOUT_PLAYED
 	applymovement 1, LetFixThis_WalkOutHouse
 	waitmovement 0
