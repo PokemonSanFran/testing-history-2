@@ -6,6 +6,21 @@ Earthquake_HideObject_Script::
 	return
 
 
+Earthquake_HideTransport_Script::
+	compare VAR_ALAMEDA_STATE, START_CHAMPIONSHIP_CLEAN_RAID
+	goto_if_gt Earthquake_HideTransport_Script_2
+	return
+
+Earthquake_HideTransport_Script_1:
+	setflag FLAG_TEMP_1F
+	return
+
+Earthquake_HideTransport_Script_2:
+	compare VAR_ALAMEDA_STATE, MEET_AT_PSFROUTE8
+	goto_if_lt Earthquake_HideTransport_Script_1
+	return
+
+
 Earthquake_PostRescue_Objects_Script::
 	clearflag FLAG_TEMP_1
 	clearflag FLAG_TEMP_3

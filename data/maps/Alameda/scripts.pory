@@ -4,6 +4,7 @@ mapscripts Alameda_MapScripts {
         call(Quest_UnknownChuckA_HideLeader_Script)
         call(Alameda_ObjectVisibility_Script)
         call(Quest_CutePokemon_HideMelissaD_Script)
+        call(Earthquake_HideTransport_Script)
     }
     MAP_SCRIPT_ON_LOAD {
         goto(Alameda_MapScripts_OnLoad)

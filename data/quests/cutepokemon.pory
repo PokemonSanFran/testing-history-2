@@ -50,6 +50,7 @@ script Quest_CutePokemon_HideMelissaD_Script{
         if (var(VAR_TEMP_0) != 3){
             setflag(FLAG_HIDE_MELISSA_D)
         }
+    return
 }
 
 script Quest_CutePokemon_Event_Script{

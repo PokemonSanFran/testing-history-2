@@ -30,7 +30,7 @@ LetsFixThis_GetMessage_Dialogue::
 	applymovement 1, Common_Movement_FaceLeft
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_POKENAV_CALL
 	waitse
 	pokenavcall LetsFixThis_GetMessage_Dialogue_Text_0
@@ -66,7 +66,7 @@ LetsFixThis_GetMessage_Dialogue::
 	setvar VAR_WAREHOUSE_RAVE_STATE, GOT_RAVE_MESSAGE
 	setflag FLAG_LOCKEDOUT_PLAYED
 	applymovement 1, LetFixThis_WalkOutHouse
-	waitmovement 0
+	waitmovement 1
 	playse SE_EXIT
 	waitse
 	removeobject 1

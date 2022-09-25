@@ -15,7 +15,7 @@ SpeechSpeechSpeech_MovePlayer_Script::
 	setobjectxy OBJ_EVENT_ID_PLAYER, 9, 9
 	TeleportCamera 9, 9
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 13, 8, 8
 	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 14, 11, 8
 	createvobject OBJ_EVENT_GFX_AQUA_MEMBER_M, 15, 7, 9
@@ -176,7 +176,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	applymovement 10, Common_Movement_ExclamationMark
 	applymovement 11, Common_Movement_ExclamationMark
 	applymovement 12, Common_Movement_ExclamationMark
-	waitmovement 0
+	waitmovement 12
 	delay 100
 	waitstate
 	setvar VAR_0x8000, MUGSHOT_ARIANA
@@ -201,14 +201,14 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	closemessage
 	waitmovement 12
 	applymovement 2, Common_Movement_WalkDown
-	waitmovement 0
+	waitmovement 2
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_WeWantToBegin
 	callnative ClearMugshot
 	closemessage
 	applymovement 5, Common_Movement_WalkDown
-	waitmovement 0
+	waitmovement 5
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_4LeadCharge
@@ -216,7 +216,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	closemessage
 	applymovement 5, SpeechSpeechSpeech_WalkBackwards
 	applymovement 6, Common_Movement_WalkDown
-	waitmovement 0
+	waitmovement 6
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_3LeadCharge
@@ -224,14 +224,14 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	closemessage
 	applymovement 6, SpeechSpeechSpeech_WalkBackwards
 	applymovement 3, Common_Movement_WalkDown
-	waitmovement 0
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_1LeadCharge
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, SpeechSpeechSpeech_WalkBackwards
-	waitmovement 0
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_IllBeHandling
@@ -255,7 +255,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_Yeah
-	compare VAR_STORYLINE_STATE, 104
+	compare VAR_STORYLINE_STATE, STORY_2ND_PRE_SPEECHSPPECH
 	goto_if_ne SpeechSpeechSpeech_EliteReveal_Dialogue_2
 	msgbox gText_SpeechSpeechSpeech_ByTheWay
 SpeechSpeechSpeech_EliteReveal_Dialogue_1:
@@ -263,7 +263,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, SpeechSpeechSpeech_LeaveScreen
-	waitmovement 0
+	waitmovement 1
 	removeobject 1
 	release
 	end

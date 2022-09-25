@@ -64,12 +64,13 @@ Quest_CutePokemon_HideMelissaC_Script_1:
 Quest_CutePokemon_HideMelissaD_Script::
 	call Quest_CutePokemon_CountCompletedQuests_Script
 	compare VAR_TEMP_0, 3
-	goto_if_ne Quest_CutePokemon_HideMelissaD_Script_1
+	goto_if_ne Quest_CutePokemon_HideMelissaD_Script_2
+Quest_CutePokemon_HideMelissaD_Script_1:
 	return
 
-Quest_CutePokemon_HideMelissaD_Script_1:
+Quest_CutePokemon_HideMelissaD_Script_2:
 	setflag FLAG_TEMP_6
-	return
+	goto Quest_CutePokemon_HideMelissaD_Script_1
 
 
 Quest_CutePokemon_Event_Script::

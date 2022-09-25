@@ -57,12 +57,20 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor39;
 	}
 
-	else if (storyline == STORY_POST_EARTHQUAKE)
+	else if (storyline == STORY_PRE_EARTHQUAKE
+	            && (VarGet(VAR_ALAMEDA_STATE) >= POST_EARTHQUAKE_RESCUE))
 	{
 		return gText_PlayersAdventure_Flavor38;
 	}
 
-	else if (storyline > STORY_PRE_EARTHQUAKE)
+	else if (storyline == STORY_PRE_EARTHQUAKE
+	            && (VarGet(VAR_ALAMEDA_STATE) >= POST_EARTHQUAKE))
+	{
+		return gText_PlayersAdventure_Flavor37A;
+	}
+
+
+	else if (storyline == STORY_PRE_EARTHQUAKE)
 	{
 		return gText_PlayersAdventure_Flavor37;
 	}
@@ -73,7 +81,7 @@ const u8 *GetQuestDesc_PlayersAdventure()
 	}
 
 	else if (storyline == STORY_1ST_PRE_SPEECHSPEECH 
-	            && (VarGet(TOLD_ARCHER_ABOUT_KOGA) >= TOLD_ARCHER_ABOUT_KOGA))
+	            && (VarGet(VAR_WAREHOUSE_RAVE_STATE) >= TOLD_ARCHER_ABOUT_KOGA))
     {
         return gText_PlayersAdventure_Flavor35A;
     }

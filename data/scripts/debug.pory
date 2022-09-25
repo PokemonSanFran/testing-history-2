@@ -63,15 +63,12 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    setvar(VAR_MASK_OFF_STATE,ASSIGNED_MASK_OFF)
     end
 }
 script Debug_Script_2{
-    setvar(VAR_MASK_OFF_STATE,GOT_MASK_OFF_CLUE_3)
     end
 }
 script Debug_Script_3{
-    setflag(FLAG_TIMELINE_TRUE)
     end
 }
 script Debug_Script_4{

@@ -9,6 +9,7 @@ Alameda_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_UnknownChuckA_HideLeader_Script
 	call Alameda_ObjectVisibility_Script
 	call Quest_CutePokemon_HideMelissaD_Script
+	call Earthquake_HideTransport_Script
 	return
 
 Alameda_MapScripts_MAP_SCRIPT_ON_LOAD:

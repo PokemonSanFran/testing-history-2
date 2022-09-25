@@ -68,7 +68,7 @@ Alcatraz_B2F_MapScripts_OnTransition_10:
 Alcatraz_B2F_Archer_Event_Script::
 	lock
 	switch VAR_STORYLINE_STATE
-	case 43, Alcatraz_B2F_Archer_Event_Script_3
+	case STORY_MORNING_OF_TIMELINE_SPLIT, Alcatraz_B2F_Archer_Event_Script_3
 Alcatraz_B2F_Archer_Event_Script_1:
 	release
 	end
@@ -83,8 +83,8 @@ Alcatraz_B2F_Malva_Event_Script::
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
-	case 103, Alcatraz_B2F_Malva_Event_Script_3
-	case 104, Alcatraz_B2F_Malva_Event_Script_4
+	case STORY_1ST_PRE_SPEECHSPEECH, Alcatraz_B2F_Malva_Event_Script_3
+	case STORY_2ND_PRE_SPEECHSPPECH, Alcatraz_B2F_Malva_Event_Script_4
 Alcatraz_B2F_Malva_Event_Script_1:
 	closemessage
 	callnative ClearMugshot
@@ -106,8 +106,8 @@ Alcatraz_B2F_Drasna_Event_Script::
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
-	case 103, Alcatraz_B2F_Drasna_Event_Script_3
-	case 104, Alcatraz_B2F_Drasna_Event_Script_4
+	case STORY_1ST_PRE_SPEECHSPEECH, Alcatraz_B2F_Drasna_Event_Script_3
+	case STORY_2ND_PRE_SPEECHSPPECH, Alcatraz_B2F_Drasna_Event_Script_4
 Alcatraz_B2F_Drasna_Event_Script_1:
 	closemessage
 	callnative ClearMugshot
@@ -128,8 +128,8 @@ Alcatraz_B2F_Siebold_Event_Script::
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
-	case 103, Alcatraz_B2F_Siebold_Event_Script_3
-	case 104, Alcatraz_B2F_Siebold_Event_Script_4
+	case STORY_1ST_PRE_SPEECHSPEECH, Alcatraz_B2F_Siebold_Event_Script_3
+	case STORY_2ND_PRE_SPEECHSPPECH, Alcatraz_B2F_Siebold_Event_Script_4
 Alcatraz_B2F_Siebold_Event_Script_1:
 	closemessage
 	callnative ClearMugshot
@@ -151,8 +151,8 @@ Alcatraz_B2F_Wikstrom_Event_Script::
 	setvar VAR_0x8000, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
-	case 103, Alcatraz_B2F_Wikstrom_Event_Script_3
-	case 104, Alcatraz_B2F_Wikstrom_Event_Script_4
+	case STORY_1ST_PRE_SPEECHSPEECH, Alcatraz_B2F_Wikstrom_Event_Script_3
+	case STORY_2ND_PRE_SPEECHSPPECH, Alcatraz_B2F_Wikstrom_Event_Script_4
 Alcatraz_B2F_Wikstrom_Event_Script_1:
 	closemessage
 	callnative ClearMugshot

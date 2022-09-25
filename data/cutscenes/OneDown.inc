@@ -5,7 +5,7 @@ OneDown_SetUpObject_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 8, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceUp
-	waitmovement 0
+	waitmovement 2
 	fadescreen FADE_FROM_BLACK
 	lock
 	goto OneDown_StartCutscene_Script
@@ -45,7 +45,7 @@ OneDown_StartEarthquake_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement 2, Common_Movement_ExclamationMark
 	applymovement 8, Common_Movement_ExclamationMark
-	waitmovement 0
+	waitmovement 8
 	waitstate
 	playse SE_M_EARTHQUAKE
 	special ShakeCamera
@@ -82,8 +82,8 @@ OneDown_Finish_Dialogue::
 	closemessage
 	applymovement 8, Common_Movement_FaceRight
 	applymovement 2, Common_Movement_FaceLeft
-	waitmovement 0
-	addvar VAR_STORYLINE_STATE, 1
+	waitmovement 2
+	setvar VAR_STORYLINE_STATE, STORY_1ST_TAKEDOWN
 	release
 	end
 
@@ -130,8 +130,8 @@ gText_OneDown_ThanksAndYouve::
 
 gText_OneDown_IDidntThinkIHad::
 	.string "I didn't think I had it in me, to be\n"
-	.string "honest. Psfgood- Wikstrom knew\l"
-	.string "better, I guess.$"
+	.string "honest. Giovan- Wikstrom knew better,\l"
+	.string "I guess.$"
 
 gText_OneDown_SoundsLikeWereBoth::
 	.string "Sounds like we're both having excellent\n"

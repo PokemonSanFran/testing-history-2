@@ -54,17 +54,14 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_MASK_OFF_STATE, ASSIGNED_MASK_OFF
 	end
 
 
 Debug_Script_2::
-	setvar VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_3
 	end
 
 
 Debug_Script_3::
-	setflag FLAG_TIMELINE_TRUE
 	end
 
 

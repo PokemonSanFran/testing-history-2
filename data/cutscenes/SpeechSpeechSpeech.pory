@@ -22,18 +22,18 @@ const FLAG_HIDE_WIKSTROM = FLAG_TEMP_8
 const FLAG_HIDE_ARIANA = FLAG_TEMP_9
 
 script SpeechSpeechSpeech_MoveObject_Script {
-        setflag(FLAG_HIDE_GARBODOR)
-        setflag(FLAG_HIDE_WIKSTROM)
+    setflag(FLAG_HIDE_GARBODOR)
+    setflag(FLAG_HIDE_WIKSTROM)
 
-        setobjectxy(ARCHER,10,8)
-        setobjectxyperm(ARCHER,10,8)
-        setobjectmovementtype(ARCHER,MOVEMENT_TYPE_FACE_UP)
+    setobjectxy(ARCHER,10,8)
+    setobjectxyperm(ARCHER,10,8)
+    setobjectmovementtype(ARCHER,MOVEMENT_TYPE_FACE_UP)
 
-        setobjectxy(MALVA,7,3)
-        setobjectxyperm(MALVA,7,3)
+    setobjectxy(MALVA,7,3)
+    setobjectxyperm(MALVA,7,3)
 
-        setobjectxy(DRASNA,8,3)
-        setobjectxyperm(DRASNA,8,3)
+    setobjectxy(DRASNA,8,3)
+    setobjectxyperm(DRASNA,8,3)
 }
 
 script SpeechSpeechSpeech_MovePlayer_Script {
