@@ -91,8 +91,8 @@ Earthquake_ThatNight_Dialogue::
 	waitse
 	removeobject 1
 	applymovement OBJ_EVENT_ID_PLAYER, Earthquake_RunFromBedOutside
-	waitmovement 0
-	addvar VAR_ALAMEDA_STATE, 1
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_ALAMEDA_STATE, POST_EARTHQUAKE
 	warp MAP_ALAMEDA, 2
 	return
 
@@ -109,13 +109,13 @@ Earthquake_ShowDestroyedCity_Script::
 	special SpawnCameraObject
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_CAMERA, Earthquake_PanCameraDown
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_CAMERA
 	fadescreen FADE_TO_BLACK
 	TeleportCamera 33, 26
 	special SpawnCameraObject
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_CAMERA, Earthquake_PanCameraUp
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_CAMERA
 	fadescreen FADE_TO_BLACK
 	TeleportCamera 29, 33
 	fadescreen FADE_FROM_BLACK
@@ -127,7 +127,7 @@ Earthquake_StartRescue_Dialogue::
 	special RemoveCameraObject
 	addobject 13
 	applymovement 13, Earthquake_WalkToPair
-	waitmovement 0
+	waitmovement 13
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_OhYoureOkay
@@ -154,7 +154,7 @@ Earthquake_StartRescue_Dialogue::
 	waitmovement 13
 	removeobject 3
 	removeobject 13
-	addvar VAR_ALAMEDA_STATE, 1
+	setvar VAR_ALAMEDA_STATE, START_EARTHQUAKE_RESCUE
 	release
 	end
 
@@ -175,7 +175,7 @@ Earthquake_PostRescue_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	applymovement 13, Earthquake_Pace
-	waitmovement 0
+	waitmovement 13
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IReally
@@ -189,7 +189,7 @@ Earthquake_PostRescue_Dialogue::
 	playse SE_PIN
 	waitse
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ThatsATrap
@@ -207,7 +207,7 @@ Earthquake_PostRescue_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IGotAMessage
 	applymovement 13, Earthquake_TurnToPlayer
-	waitmovement 0
+	waitmovement 13
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_WaitWhat
@@ -251,15 +251,15 @@ Earthquake_PostRescue_Dialogue::
 	msgbox gText_Earthquake_FineTheThreeOfUs
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_ALAMEDA_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_POST_EARTHQUAKE
+	setvar VAR_ALAMEDA_STATE, MEET_AT_PSFROUTE8
 	goto Earthquake_AskPlayerWarp_Script
 	return
 
 
 Earthquake_AskPlayerWarp_Script::
 	applymovement 3, Earthquake_TurnToPlayer
-	waitmovement 0
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ImGonnaHead, MSGBOX_YESNO

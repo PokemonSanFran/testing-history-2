@@ -57,8 +57,7 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor39;
 	}
 
-	else if (storyline == STORY_PRE_EARTHQUAKE
-	            && (VarGet(VAR_ALAMEDA_STATE) >= POST_EARTHQUAKE_RESCUE))
+	else if (storyline == STORY_POST_EARTHQUAKE)
 	{
 		return gText_PlayersAdventure_Flavor38;
 	}

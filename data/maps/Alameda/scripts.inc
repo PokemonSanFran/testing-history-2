@@ -213,13 +213,13 @@ Alameda_FerryState2_Script_7:
 Alameda_Person1_Fisherman::
 	compare VAR_ALAMEDA_STATE, START_EARTHQUAKE_RESCUE
 	goto_if_eq Alameda_Person1_Fisherman_2
-Alameda_Person1_Fisherman_1:
+	msgbox Alameda_Person1_Fisherman_Text_1, MSGBOX_NPC
 	end
 
 Alameda_Person1_Fisherman_2:
-	msgbox Alameda_Person1_Fisherman_Text_0, MSGBOX_NPC
 	addvar VAR_ALAMEDA_STATE, 2
-	goto Alameda_Person1_Fisherman_1
+	msgbox Alameda_Person1_Fisherman_Text_0, MSGBOX_NPC
+	end
 
 
 Alameda_Stan_Interact_Script::
@@ -250,3 +250,6 @@ Alameda_Stan_PostBattle_Script_2:
 
 Alameda_Person1_Fisherman_Text_0:
 	.string "thanks for saving me!$"
+
+Alameda_Person1_Fisherman_Text_1:
+	.string "i am a dude!$"

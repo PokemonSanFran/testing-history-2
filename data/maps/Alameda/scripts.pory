@@ -104,8 +104,11 @@ script Alameda_FerryState2_Script{
 
 script Alameda_Person1_Fisherman {
     if (var(VAR_ALAMEDA_STATE) == START_EARTHQUAKE_RESCUE){
-        msgbox(format("thanks for saving me!"),MSGBOX_NPC)
         addvar(VAR_ALAMEDA_STATE,2)
+        msgbox(format("thanks for saving me!"),MSGBOX_NPC)
+        end
+    }else {
+        msgbox(format("i am a dude!"),MSGBOX_NPC)
     }
     end
 }
