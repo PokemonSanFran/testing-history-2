@@ -10,7 +10,7 @@ SOMA_Newspaper_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 SOMA_Newspaper_InteractCherie_Event_Script::
 	lock
 	goto_if_set FLAG_TIMELINE_FALSE, SOMA_Newspaper_InteractCherie_Event_Script_2
-	switch VAR_LILYCOVE_CITY_STATE
+	switch VAR_MASK_OFF_STATE
 	case 0, SOMA_Newspaper_InteractCherie_Event_Script_10
 	case 8, SOMA_Newspaper_InteractCherie_Event_Script_11
 	call MaskOff_QuestH_Dialogue

@@ -2,145 +2,148 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const HIKO = 1
 const JIRACHI = 2
 const CAMERA = OBJ_EVENT_ID_CAMERA
+const FLAG_HIDE_HIKO = FLAG_TEMP_1
+const FLAG_HIDE_JIRACHI = FLAG_TEMP_2
 
 script OkayLetsFixit_HideObject_Script {
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
+    setflag(FLAG_HIDE_HIKO)
+        setflag(FLAG_HIDE_JIRACHI)
 }
 
 script OkayLetsFixIt_ShowObject_Script {
-    setflag(FLAG_TEMP_2)
+    setflag(FLAG_HIDE_JIRACHI)
 }
 
 script OkayLetsFixit_ReachTop_Script {
 
     checkitem(ITEM_METEORITE, 1)
-    if (!var (VAR_RESULT)) {
-        release
-        end
-    }
+        if (!var (VAR_RESULT)) {
+            release
+                end
+        }
 
     lock
-    applymovement(PLAYER, OkayLetsFixit_WalkToPeak)
-    waitmovement(0)
-    msgbox(gText_OkayLetsFixIt_TheBambooStar)
-    closemessage
+        applymovement(PLAYER, OkayLetsFixit_WalkToPeak)
+        waitmovement(PLAYER)
+        msgbox(gText_OkayLetsFixIt_TheBambooStar)
+        closemessage
 
-    playse(SE_M_DETECT)
-    dofieldeffectsparkle(17, 42, 0)
-    waitfieldeffect(FLDEFF_SPARKLE)
-    playse(SE_ORB)
-    fadescreen(FADE_TO_WHITE)
-    delay(150)
-    clearflag(FLAG_TEMP_1)
-    addobject(HIKO)
-    fadescreen(FADE_FROM_WHITE)
+        playse(SE_M_DETECT)
+        dofieldeffectsparkle(17, 42, 0)
+        waitfieldeffect(FLDEFF_SPARKLE)
+        playse(SE_ORB)
+        fadescreen(FADE_TO_WHITE)
+        delay(150)
+        clearflag(FLAG_HIDE_HIKO)
+        addobject(HIKO)
+        fadescreen(FADE_FROM_WHITE)
 
-    msgbox(gText_OkayLetsFixIt_ImGladYouCame)
-    closemessage
+        msgbox(gText_OkayLetsFixIt_ImGladYouCame)
+        closemessage
 
-    applymovement(PLAYER, OkayLetsFixit_LookAround)
-    waitmovement(0)
+        applymovement(PLAYER, OkayLetsFixit_LookAround)
+        waitmovement(0)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_OkayLetsFixIt_WhatWhereDidYou)
-    callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_OkayLetsFixIt_WhatWhereDidYou)
+        callnative(ClearMugshot)
 
-    msgbox(gText_OkayLetsFixIt_HaveYouRealized)
+        msgbox(gText_OkayLetsFixIt_HaveYouRealized)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_OkayLetsFixIt_InComingHere)
-    callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_OkayLetsFixIt_InComingHere)
+        callnative(ClearMugshot)
 
-    msgbox(gText_OkayLetsFixIt_LetsLookBack)
-    closemessage
+        msgbox(gText_OkayLetsFixIt_LetsLookBack)
+        closemessage
 
-    warpsilent(MAP_OKAY_LETS_FIXIT_FLASHBACK, 255, 9, 4)
-    end
+        warpsilent(MAP_OKAY_LETS_FIXIT_FLASHBACK, 255, 9, 4)
+        end
 }
 
 script OkayLetsFixit_StartFlashback_Script {
     lock
-    addvar(VAR_STORYLINE_STATE, 1)
+        setvar(VAR_STORYLINE_STATE,STORY_BEGIN_LETS_FIX_IT)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_OkayLetsFixIt_ThisWasTheNight)
-    callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_OkayLetsFixIt_ThisWasTheNight)
+        callnative(ClearMugshot)
 
-    applymovement(HIKO, Common_Movement_FaceLeft)
-    waitmovement(0)
-    msgbox(gText_OkayLetsFixIt_Why)
+        applymovement(HIKO, Common_Movement_FaceLeft)
+        waitmovement(HIKO)
+        msgbox(gText_OkayLetsFixIt_Why)
 
-    applymovement(PLAYER, Common_Movement_FaceRight)
-    waitmovement(0)
+        applymovement(PLAYER, Common_Movement_FaceRight)
+        waitmovement(PLAYER)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_OkayLetsFixIt_IWasTryingToHelp)
-    callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_OkayLetsFixIt_IWasTryingToHelp)
+        callnative(ClearMugshot)
 
-    msgbox(gText_OkayLetsFixIt_WouldYouChoose)
+        msgbox(gText_OkayLetsFixIt_WouldYouChoose)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_OkayLetsFixIt_IfICouldDoItOver)
-    closemessage
-    callnative(ClearMugshot)
-    delay(30)
-    warpsilent(MAP_TWINPEAKS, 255, 17, 43)
-    end
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_OkayLetsFixIt_IfICouldDoItOver)
+        closemessage
+        callnative(ClearMugshot)
+        delay(30)
+        warpsilent(MAP_TWINPEAKS, 255, 17, 43)
+        end
 }
 
 script OkayLetsFixit_ReturnToPeak_Script {
     lock
-    clearflag(FLAG_TEMP_1)
-    addobject(HIKO)
+        clearflag(FLAG_TEMP_1)
+        addobject(HIKO)
 
-    call(OkayLetsFixit_TimelineReset_Script)
-    applymovement(PLAYER, Common_Movement_FaceLeft)
-    waitmovement(0)
+        call(OkayLetsFixit_TimelineReset_Script)
+        applymovement(PLAYER, Common_Movement_FaceLeft)
+        waitmovement(PLAYER)
 
-    applymovement(PLAYER, OkayLetsFixit_WatchCliffWalk)
-    applymovement(HIKO, OkayLetsFixit_WalkOffCliff)
-    special(SpawnCameraObject)
-    applymovement(CAMERA, OkayLetsFixit_PanCamera)
-    waitmovement(CAMERA)
-    waitmovement(HIKO)
-    waitmovement(PLAYER)
+        applymovement(PLAYER, OkayLetsFixit_WatchCliffWalk)
+        applymovement(HIKO, OkayLetsFixit_WalkOffCliff)
+        special(SpawnCameraObject)
+        applymovement(CAMERA, OkayLetsFixit_PanCamera)
+        waitmovement(CAMERA)
+        waitmovement(HIKO)
+        waitmovement(PLAYER)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_OkayLetsFixIt_WaitWhatWhoAreYou)
-    callnative(ClearMugshot)
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_OkayLetsFixIt_WaitWhatWhoAreYou)
+        callnative(ClearMugshot)
 
-    msgbox(gText_OkayLetsFixIt_IHopeYouMake)
-    closemessage
-    playse(SE_ORB)
-    fadescreen(FADE_TO_WHITE) //PSF TODO Implement glowing with Hiko as source, mimic "DoOrbEffect"
-    delay(150)
-    removeobject(HIKO)
-    clearflag(FLAG_TEMP_2)
-    addobject(JIRACHI)
-    fadescreen(FADE_FROM_WHITE)
+        msgbox(gText_OkayLetsFixIt_IHopeYouMake)
+        closemessage
+        playse(SE_ORB)
+        fadescreen(FADE_TO_WHITE) //PSF TODO Implement glowing with Hiko as source, mimic "DoOrbEffect"
+        delay(150)
+        removeobject(HIKO)
+        clearflag(FLAG_TEMP_2)
+        addobject(JIRACHI)
+        fadescreen(FADE_FROM_WHITE)
 
-    playmoncry(SPECIES_JIRACHI, CRY_MODE_ENCOUNTER)
-    waitmoncry
-    playmoncry(SPECIES_JIRACHI, CRY_MODE_ENCOUNTER)
-    waitmoncry
+        playmoncry(SPECIES_JIRACHI, CRY_MODE_ENCOUNTER)
+        waitmoncry
+        playmoncry(SPECIES_JIRACHI, CRY_MODE_ENCOUNTER)
+        waitmoncry
 
-    warpsilent(MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7)
+        warpsilent(MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7)
 }
 
 script OkayLetsFixit_TimelineReset_Script {
     setflag(FLAG_TIMELINE_TIMETRAVEL)
-    clearflag(FLAG_TIMELINE_FALSE)
-    setvar(VAR_STORYLINE_STATE, 42)
-    setvar(VAR_RUSTURF_TUNNEL_STATE,0)
-    setvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,0)
-    setvar(VAR_HOW_DISAPPOINTING_STATE,MISSION_NOT_ASSIGNED)
+        clearflag(FLAG_TIMELINE_FALSE)
+
+        setvar(VAR_STORYLINE_STATE,STORY_POST_YOU_REALIZE_WERE_EVIL)
+        setvar(VAR_MANHUNT_STATE,NOT_ASSIGNED)
+        setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,NOT_ASSIGNED)
+        setvar(VAR_HOW_DISAPPOINTING_STATE,MISSION_NOT_ASSIGNED)
 }
 
 text gText_OkayLetsFixIt_TheBambooStar {
@@ -205,46 +208,46 @@ text gText_OkayLetsFixIt_IHaveNoIdea {
 
 movement OkayLetsFixit_WalkToPeak {
     walk_up * 4
-    walk_left * 7
-    step_end
+        walk_left * 7
+        step_end
 }
 
 movement OkayLetsFixit_LookAround {
     lock_facing_direction
-    walk_right
-    unlock_facing_direction
-    face_up
-    delay_16
-    face_down
-    delay_16
-    face_left
-    step_end
+        walk_right
+        unlock_facing_direction
+        face_up
+        delay_16
+        face_down
+        delay_16
+        face_left
+        step_end
 }
 
 movement OkayLetsFixit_WalkOffCliff {
     walk_up
-    walk_right * 3
-    walk_up * 7
-    step_end
+        walk_right * 3
+        walk_up * 7
+        step_end
 }
 
 movement OkayLetsFixit_PanCamera {
     walk_right
-    walk_up * 6
-    step_end
+        walk_up * 6
+        step_end
 }
 
 movement OkayLetsFixit_WatchCliffWalk {
     delay_16 * 5
-    face_up
-    walk_right
-    walk_up * 4
-    step_end
+        face_up
+        walk_right
+        walk_up * 4
+        step_end
 }
 
 movement OkayLetsFixIt_PaceNightmare {
     walk_down
-    walk_left * 2
-    walk_right * 2
-    step_end
+        walk_left * 2
+        walk_right * 2
+        step_end
 }

@@ -125,8 +125,8 @@
 #define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
 #define VAR_WAREHOUSE_RAVE_STATE    0x405B
 #define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
-#define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_MASK_OFF_STATE                   0x405C
+#define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
 #define VAR_ROUTE101_STATE                               0x4060

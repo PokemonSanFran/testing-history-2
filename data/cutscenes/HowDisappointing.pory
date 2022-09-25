@@ -48,7 +48,7 @@ script HowDisappointing_HidePolice_Script {
 script HowDisappointing_StartRaid_Dialogue {
     lock
     applymovement(PLAYER,Common_Movement_WalkUp)
-    waitmovement(0)
+    waitmovement(PLAYER)
 
 msgbox(gText_HowDisappointing_ThanksForJoining)
 closemessage
@@ -89,7 +89,7 @@ fadescreen(FADE_TO_BLACK)
 delay(16)
 fadescreen(FADE_FROM_BLACK)
 
-addvar(VAR_HOW_DISAPPOINTING_STATE,1)
+setvar(VAR_HOW_DISAPPOINTING_STATE,GYM_RAID_STARTED)
 opendoor(5,8)
 waitdooranim
 
@@ -152,7 +152,7 @@ script HowDisappointing_Interfact_Ariana_Script {
         goto(HowDisappointing_StartBattle_Script)
     }
 
-    addvar(VAR_HOW_DISAPPOINTING_STATE,1)
+    setvar(VAR_HOW_DISAPPOINTING_STATE,SAVED_BEFORE_ARIANA)
     setvar(VAR_0x8000, MUGSHOT_ARIANA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_HowDisappointing,MSGBOX_NPC)
@@ -201,7 +201,7 @@ script HowDisappointing_ArrestScene_Dialogue {
     applymovement(POLICEA,HowDisappointing_WalkToArrest)
     waitmovement(0)
     msgbox(gText_HowDisappointing_YoureUnderArrest)
-addvar(VAR_HOW_DISAPPOINTING_STATE,1)
+    setvar(VAR_HOW_DISAPPOINTING_STATE,DEFEATED_ARIANA_CHINATOWN)
     warpsilent(MAP_SALESFORCETOWER_2F,255,16,26)
 }
 
@@ -250,9 +250,9 @@ script HowDisappointing_MissionComplete_Dialogue {
     removeobject(CHIEF2)
     removeobject(ROSE)
     addvar(VAR_STORYLINE_STATE,1)
-    addvar(VAR_HOW_DISAPPOINTING_STATE,1)
+    setvar(VAR_HOW_DISAPPOINTING_STATE,HOW_DISAPPOINTING_COMPLETE)
     release
-        call(ExhibitionBattle_TimeSkip_Script)
+    call(ExhibitionBattle_TimeSkip_Script)
     end
 }
     text gText_HowDisappointing_ThanksForJoining{

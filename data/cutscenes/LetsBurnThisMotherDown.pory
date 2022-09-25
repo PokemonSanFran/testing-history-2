@@ -1,9 +1,22 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const OAK = 9 //FLAG_TEMP_3
-const BIANCA = 10 //FLAG_TEMP_8
-const ROSE = 11 // FLAG_TEMP_5
-const KOGA = 14 // FLAG_TEMP_4
-const SABRINA = 2 // FLAG_TEMP_1
+const OAK = 9 
+const BIANCA = 10 
+const ROSE = 11 
+const KOGA = 14 
+const SABRINA = 2 
+const ARCHER = 5
+const BIANCA_ALCATRAZ = 6
+const POLICE_A = 7
+const POLICE_B = 8
+
+const FLAG_HIDE_OAK = FLAG_TEMP_3
+const FLAG_HIDE_BIANCA = FLAG_TEMP_8
+const FLAG_HIDE_BIANCA_ALCATRAZ = FLAG_TEMP_6
+const FLAG_HIDE_POLICE = FLAG_TEMP_7
+const FLAG_HIDE_ROSE =  FLAG_TEMP_5
+const FLAG_HIDE_KOGA =  FLAG_TEMP_4
+const FLAG_HIDE_SABRINA =  FLAG_TEMP_1
+const FLAG_HIDE_ARCHER_ALCATRAZ = FLAG_TEMP_5
 
 script LetsBurnThisMotherDown_ObjectSetUp_Script {
     setobjectxy(SABRINA,8,6)
@@ -12,14 +25,14 @@ script LetsBurnThisMotherDown_ObjectSetUp_Script {
 }
 
 script LetsBurnThisMotherDown_ObjectMove_Script {
-    clearflag(FLAG_TEMP_5)
+    clearflag(FLAG_HIDE_ROSE)
     addobject(ROSE)
     setobjectxyperm(ROSE,11,12)
     setobjectmovementtype(ROSE,MOVEMENT_TYPE_FACE_LEFT)
 }
 
 script LetsBurnThisMotherDown_ObjectShow_Script {
-    clearflag(FLAG_TEMP_5)
+    clearflag(FLAG_HIDE_ARCHER_ALCATRAZ)
     setflag(FLAG_TEMP_6)
     setflag(FLAG_TEMP_7)
     addobject(5)
@@ -29,19 +42,19 @@ script LetsBurnThisMotherDown_ObjectShow_Script {
     
 
 script LetsBurnThisMotherDown_ObjectHide_Script {
-    setflag(FLAG_TEMP_5)
-    setflag(FLAG_TEMP_6)
-    setflag(FLAG_TEMP_7)
+    setflag(FLAG_HIDE_ARCHER_ALCATRAZ)
+    setflag(FLAG_HIDE_BIANCA_ALCATRAZ)
+    setflag(FLAG_HIDE_POLICE)
 }
 
 script LetsBurnThisMotherDown_Assignment_Dialogue {
 
-    if (var(VAR_LILYCOVE_CONTEST_LOBBY_STATE)){
+    if (var(VAR_LETS_BURN_THIS_MOTHER_STATE)){
         msgbox("...")
         closemessage
         end
     }
-    addvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,1)
+    setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,ASSIGNED_BURN_MOTHER)
 
     setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
@@ -60,14 +73,14 @@ script LetsBurnThisMotherDown_Assignment_Dialogue {
 
 script LetsBurnThisMotherDown_ConfrontPlayer {
         lock
-        addvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,1)
+        setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,SAVE_ARCHER_ALCATRAZ)
 
-        clearflag(FLAG_TEMP_5)
-        addobject(5)
+        clearflag(FLAG_HIDE_ARCHER_ALCATRAZ)
+        addobject(ARCHER)
         playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
 
         applymovement(PLAYER,Common_Movement_WalkUp)
-        applymovement(5,LetsBurnThisMotherDown_WalkTowardsPlayer)
+        applymovement(ARCHER,LetsBurnThisMotherDown_WalkTowardsPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -84,7 +97,7 @@ script LetsBurnThisMotherDown_ConfrontPlayer {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(5,Common_Movement_WalkDown)
+        applymovement(ARCHER,Common_Movement_WalkDown)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -125,7 +138,7 @@ script LetsBurnThisMotherDown_StartBattle_Script {
 }
 
 script LetsBurnThisMotherDown_PostBattle_Dialogue {
-        addvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,1)
+        setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,DEFEATED_ARCHER_ALCATRAZ)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -133,7 +146,7 @@ script LetsBurnThisMotherDown_PostBattle_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(5,LetsBurnThisMotherDown_WalkBackwards)
+        applymovement(ARCHER,LetsBurnThisMotherDown_WalkBackwards)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -149,12 +162,12 @@ script LetsBurnThisMotherDown_PostBattle_Dialogue {
         playse(SE_M_HYPER_BEAM) //PSF TODO figure out what hyper beam looks like
         waitse
         fadescreen(FADE_TO_WHITE)
-        applymovement(5,LetsBurnThisMotherDown_HitByHyperBeam)
+        applymovement(ARCHER,LetsBurnThisMotherDown_HitByHyperBeam)
         waitmovement(0)
         fadescreen(FADE_FROM_WHITE)
 
-        clearflag(FLAG_TEMP_6)
-        addobject(6)
+        clearflag(FLAG_HIDE_BIANCA_ALCATRAZ)
+        addobject(BIANCA_ALCATRAZ)
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
         applymovement(6,LetsBurnThisMotherDown_Attack)
         waitmovement(0)
@@ -185,11 +198,11 @@ script LetsBurnThisMotherDown_PostBattle_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        clearflag(FLAG_TEMP_7)
-        addobject(7)
-        addobject(8)
-        applymovement(7,LetsBurnThisMotherDown_ArrestA)
-        applymovement(8,LetsBurnThisMotherDown_ArrestB)
+        clearflag(FLAG_HIDE_POLICE)
+        addobject(POLICE_A)
+        addobject(POLICE_B)
+        applymovement(POLICE_A,LetsBurnThisMotherDown_ArrestA)
+        applymovement(POLICE_B,LetsBurnThisMotherDown_ArrestB)
         waitmovement(0)
         
         fadescreen(FADE_TO_BLACK)
@@ -218,10 +231,10 @@ script LetsBurnThisMotherDown_MissionComplete_Dialogue {
         msgbox(gText_LetsBurnThisMotherDown_ThePoliceTold)
         closemessage
         callnative(ClearMugshot)
-        addvar(VAR_LILYCOVE_CONTEST_LOBBY_STATE,1)
+        setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,BURN_MOTHER_COMPLETE)
         addvar(VAR_STORYLINE_STATE,1)
         applymovement(ROSE,LetsBurnThisMotherDown_LeaveRoom)
-        waitmovement(0)
+        waitmovement(ROSE)
         removeobject(ROSE)
         release
         call(ExhibitionBattle_TimeSkip_Script)

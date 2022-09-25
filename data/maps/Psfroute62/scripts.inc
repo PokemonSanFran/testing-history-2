@@ -15,21 +15,21 @@ Psfroute62_MapScripts_OnTransition::
 Psfroute62_InteractMatthew_Event_Script::
 	lock
 	goto_if_set FLAG_TIMELINE_FALSE, Psfroute62_InteractMatthew_Event_Script_2
-	switch VAR_LILYCOVE_CITY_STATE
-	case 0, Psfroute62_InteractMatthew_Event_Script_10
-	case 1, Psfroute62_InteractMatthew_Event_Script_11
-	case 2, Psfroute62_InteractMatthew_Event_Script_12
-	case 3, Psfroute62_InteractMatthew_Event_Script_13
-	case 4, Psfroute62_InteractMatthew_Event_Script_14
-	call MaskOff_QuestF_Dialogue
+	switch VAR_MASK_OFF_STATE
+	case NOT_ASSIGNED, Psfroute62_InteractMatthew_Event_Script_10
+	case ASSIGNED_MASK_OFF, Psfroute62_InteractMatthew_Event_Script_10
+	case GOT_MASK_OFF_CLUE_1, Psfroute62_InteractMatthew_Event_Script_10
+	case GOT_MASK_OFF_CLUE_2, Psfroute62_InteractMatthew_Event_Script_10
+	case GOT_MASK_OFF_CLUE_3, Psfroute62_InteractMatthew_Event_Script_10
+	call MaskOff_QuestE_Dialogue
 Psfroute62_InteractMatthew_Event_Script_1:
 	release
 	end
 
 Psfroute62_InteractMatthew_Event_Script_2:
-	switch VAR_RUSTURF_TUNNEL_STATE
-	case 0, Psfroute62_InteractMatthew_Event_Script_6
-	case 5, Psfroute62_InteractMatthew_Event_Script_7
+	switch VAR_MANHUNT_STATE
+	case NOT_ASSIGNED, Psfroute62_InteractMatthew_Event_Script_6
+	case GOT_MANHUNT_CLUE_3, Psfroute62_InteractMatthew_Event_Script_7
 	msgbox Psfroute62_InteractMatthew_Event_Script_Text_0, MSGBOX_AUTOCLOSE
 	goto Psfroute62_InteractMatthew_Event_Script_1
 
@@ -41,18 +41,6 @@ Psfroute62_InteractMatthew_Event_Script_7:
 	goto Psfroute62_InteractMatthew_Event_Script_1
 
 Psfroute62_InteractMatthew_Event_Script_10:
-	return
-
-Psfroute62_InteractMatthew_Event_Script_11:
-	return
-
-Psfroute62_InteractMatthew_Event_Script_12:
-	return
-
-Psfroute62_InteractMatthew_Event_Script_13:
-	return
-
-Psfroute62_InteractMatthew_Event_Script_14:
 	return
 
 

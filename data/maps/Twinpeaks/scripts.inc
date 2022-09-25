@@ -5,30 +5,20 @@ Twinpeaks_MapScripts::
 	.byte 0
 
 Twinpeaks_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Twinpeaks_MapScripts_OnTransition
-	return
-
-Twinpeaks_MapScripts_MAP_SCRIPT_ON_LOAD:
-	goto Twinpeaks_MapScripts_OnLoad
-	return
-
-Twinpeaks_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 53, OkayLetsFixit_ReturnToPeak_Script
-	.2byte 0
-
-
-Twinpeaks_MapScripts_OnTransition::
 	switch VAR_STORYLINE_STATE
-	case 53, Twinpeaks_MapScripts_OnTransition_2
+	case STORY_BEGIN_LETS_FIX_IT, Twinpeaks_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 	call OkayLetsFixit_HideObject_Script
 	return
 
-Twinpeaks_MapScripts_OnTransition_2:
+Twinpeaks_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	call OkayLetsFixIt_ShowObject_Script
 	return
 
-
-Twinpeaks_MapScripts_OnLoad::
+Twinpeaks_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call Script_RemoveTint
 	return
+
+Twinpeaks_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_STORYLINE_STATE, STORY_BEGIN_LETS_FIX_IT, OkayLetsFixit_ReturnToPeak_Script
+	.2byte 0
 

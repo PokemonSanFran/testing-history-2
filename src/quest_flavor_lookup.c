@@ -72,9 +72,14 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor36;
 	}
 
+    else if (storyline == STORY_RECIVED_RAVE_INVITE)
+    {
+        return gText_PlayersAdventure_Flavor35;
+    }
+
 	else if (storyline > STORY_START_TRUE_TIMELINE)
 	{
-		return gText_PlayersAdventure_Flavor35;
+		return gText_PlayersAdventure_Flavor34A;
 	}
 
 	else if (storyline == STORY_START_TRUE_TIMELINE)

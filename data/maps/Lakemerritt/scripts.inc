@@ -11,33 +11,37 @@ Lakemerritt_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Lakemerritt_ObjectVisibility_Script::
 	call Manhunt_HideBianca_Script
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
-	goto_if_set FLAG_TIMELINE_TRUE, Lakemerritt_ObjectVisibility_Script_9
-Lakemerritt_ObjectVisibility_Script_7:
-	goto_if_set FLAG_TIMELINE_FALSE, Lakemerritt_ObjectVisibility_Script_6
-Lakemerritt_ObjectVisibility_Script_5:
+	goto_if_set FLAG_TIMELINE_TRUE, Lakemerritt_ObjectVisibility_Script_10
+Lakemerritt_ObjectVisibility_Script_8:
+	goto_if_set FLAG_TIMELINE_FALSE, Lakemerritt_ObjectVisibility_Script_7
+Lakemerritt_ObjectVisibility_Script_6:
 	compare VAR_STORYLINE_STATE, STORY_EAST_SANFRAN_COMPLETE
-	goto_if_lt Lakemerritt_ObjectVisibility_Script_3
+	goto_if_lt Lakemerritt_ObjectVisibility_Script_4
+	setweather WEATHER_RAIN
+	doweather
 	call Manhunt_HideGiovanni_Script
 	return
 
-Lakemerritt_ObjectVisibility_Script_1:
-	return
-
 Lakemerritt_ObjectVisibility_Script_2:
+	setweather WEATHER_SUNNY
+	doweather
 	return
 
 Lakemerritt_ObjectVisibility_Script_3:
 	return
 
-Lakemerritt_ObjectVisibility_Script_6:
-	compare VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI
-	goto_if_lt Lakemerritt_ObjectVisibility_Script_2
-	goto Lakemerritt_ObjectVisibility_Script_5
+Lakemerritt_ObjectVisibility_Script_4:
+	return
 
-Lakemerritt_ObjectVisibility_Script_9:
-	compare VAR_MASK_OFF_STATE, DEFEATED_MASK_OFF_GIOVANNI
-	goto_if_lt Lakemerritt_ObjectVisibility_Script_1
-	goto Lakemerritt_ObjectVisibility_Script_7
+Lakemerritt_ObjectVisibility_Script_7:
+	compare VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI
+	goto_if_lt Lakemerritt_ObjectVisibility_Script_3
+	goto Lakemerritt_ObjectVisibility_Script_6
+
+Lakemerritt_ObjectVisibility_Script_10:
+	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_3
+	goto_if_gt Lakemerritt_ObjectVisibility_Script_2
+	goto Lakemerritt_ObjectVisibility_Script_8
 
 
 Lakemerritt_InteractWikstrom_Event_Script::
@@ -70,7 +74,7 @@ Lakemerritt_InteractWikstrom_Event_Script_6:
 	goto Lakemerritt_InteractWikstrom_Event_Script_5
 
 Lakemerritt_InteractWikstrom_Event_Script_9:
-	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_2
+	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_3
 	goto_if_gt Lakemerritt_InteractWikstrom_Event_Script_2
 	goto Lakemerritt_InteractWikstrom_Event_Script_7
 

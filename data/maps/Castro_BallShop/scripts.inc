@@ -13,7 +13,7 @@ Castro_BallShop_InteractDudley_Event_Script::
 	switch VAR_LILYCOVE_CITY_STATE
 	case 1, Castro_BallShop_InteractDudley_Event_Script_10
 	case 8, Castro_BallShop_InteractDudley_Event_Script_11
-	call MaskOff_QuestF_Dialogue
+	call MaskOff_QuestD_Dialogue
 Castro_BallShop_InteractDudley_Event_Script_1:
 	release
 	end

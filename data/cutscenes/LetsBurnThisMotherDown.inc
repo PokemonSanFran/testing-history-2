@@ -31,9 +31,9 @@ LetsBurnThisMotherDown_ObjectHide_Script::
 
 
 LetsBurnThisMotherDown_Assignment_Dialogue::
-	compare VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
+	compare VAR_LETS_BURN_THIS_MOTHER_STATE, 0
 	goto_if_ne LetsBurnThisMotherDown_Assignment_Dialogue_2
-	addvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1
+	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, ASSIGNED_BURN_MOTHER
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_WeStillNeedToFind, MSGBOX_NPC
@@ -54,7 +54,7 @@ LetsBurnThisMotherDown_Assignment_Dialogue_2:
 
 LetsBurnThisMotherDown_ConfrontPlayer::
 	lock
-	addvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1
+	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, SAVE_ARCHER_ALCATRAZ
 	clearflag FLAG_TEMP_5
 	addobject 5
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
@@ -116,7 +116,7 @@ LetsBurnThisMotherDown_StartBattle_Script_3:
 
 
 LetsBurnThisMotherDown_PostBattle_Dialogue::
-	addvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1
+	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, DEFEATED_ARCHER_ALCATRAZ
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_ItDoesntMatter
@@ -192,10 +192,10 @@ LetsBurnThisMotherDown_MissionComplete_Dialogue::
 	msgbox gText_LetsBurnThisMotherDown_ThePoliceTold
 	closemessage
 	callnative ClearMugshot
-	addvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1
+	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, BURN_MOTHER_COMPLETE
 	addvar VAR_STORYLINE_STATE, 1
 	applymovement 11, LetsBurnThisMotherDown_LeaveRoom
-	waitmovement 0
+	waitmovement 11
 	removeobject 11
 	release
 	call ExhibitionBattle_TimeSkip_Script

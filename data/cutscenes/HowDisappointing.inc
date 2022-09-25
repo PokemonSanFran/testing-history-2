@@ -43,7 +43,7 @@ HowDisappointing_HidePolice_Script::
 HowDisappointing_StartRaid_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox gText_HowDisappointing_ThanksForJoining
 	closemessage
 	applymovement 4, HowDisappointing_WalkToPlayer
@@ -74,7 +74,7 @@ HowDisappointing_RaidMovement_Script::
 	fadescreen FADE_TO_BLACK
 	delay 16
 	fadescreen FADE_FROM_BLACK
-	addvar VAR_HOW_DISAPPOINTING_STATE, 1
+	setvar VAR_HOW_DISAPPOINTING_STATE, GYM_RAID_STARTED
 	opendoor 5, 8
 	waitdooranim
 	applymovement 4, HowDisappointing_RunIntoGymD
@@ -128,7 +128,7 @@ HowDisappointing_Interfact_Ariana_Script::
 	compare VAR_HOW_DISAPPOINTING_STATE, SAVED_BEFORE_ARIANA
 	goto_if_eq HowDisappointing_Interfact_Ariana_Script_2
 HowDisappointing_Interfact_Ariana_Script_1:
-	addvar VAR_HOW_DISAPPOINTING_STATE, 1
+	setvar VAR_HOW_DISAPPOINTING_STATE, SAVED_BEFORE_ARIANA
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_HowDisappointing, MSGBOX_NPC
@@ -177,7 +177,7 @@ HowDisappointing_ArrestScene_Dialogue::
 	applymovement 1, HowDisappointing_WalkToArrest
 	waitmovement 0
 	msgbox gText_HowDisappointing_YoureUnderArrest
-	addvar VAR_HOW_DISAPPOINTING_STATE, 1
+	setvar VAR_HOW_DISAPPOINTING_STATE, DEFEATED_ARIANA_CHINATOWN
 	warpsilent MAP_SALESFORCETOWER_2F, 255, 16, 26
 	return
 
@@ -218,7 +218,7 @@ HowDisappointing_MissionComplete_Dialogue::
 	removeobject 13
 	removeobject 11
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_HOW_DISAPPOINTING_STATE, 1
+	setvar VAR_HOW_DISAPPOINTING_STATE, HOW_DISAPPOINTING_COMPLETE
 	release
 	call ExhibitionBattle_TimeSkip_Script
 	end

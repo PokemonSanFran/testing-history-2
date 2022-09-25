@@ -40,7 +40,7 @@ LetsGettheBandBackTogether_MeetInBasement_Script_1:
 	playse SE_PIN
 	waitse
 	applymovement 1, Common_Movement_ExclamationMark
-	waitmovement 0
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_IDidntThinkYouWere, MSGBOX_NPC
@@ -97,8 +97,9 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGettheBandBackTogether_TrueTimelineSplit_Script_2
 	setvar VAR_ALCATRAZ_STATE, START_TRUE_TIMELINE
-	setvar VAR_STORYLINE_STATE, 100
-	addvar VAR_LILYCOVE_CITY_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_START_TRUE_TIMELINE
+	setflag FLAG_TIMELINE_TRUE
+	setvar VAR_MASK_OFF_STATE, ASSIGNED_MASK_OFF
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_Yes
@@ -120,7 +121,7 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, LetsGettheBandBackTogether_WalkOffScreen
-	waitmovement 0
+	waitmovement 1
 	playse SE_EXIT
 	waitse
 	removeobject 1

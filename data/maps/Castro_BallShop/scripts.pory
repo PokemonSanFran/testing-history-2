@@ -17,7 +17,7 @@ script Castro_BallShop_InteractDudley_Event_Script {
             switch(var(VAR_LILYCOVE_CITY_STATE)){
                 case 1: return
                 case 8: return
-                default: call(MaskOff_QuestF_Dialogue)
+                default: call(MaskOff_QuestD_Dialogue)
             }
         }
     release

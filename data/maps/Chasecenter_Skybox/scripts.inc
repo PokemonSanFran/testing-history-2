@@ -4,63 +4,58 @@ Chasecenter_Skybox_MapScripts::
 	.byte 0
 
 Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Chasecenter_Skybox_MapScripts_OnTransition
+	switch VAR_STORYLINE_STATE
+	case STORY_CHAMPIONSHIP_EXPLAINED, Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	case STORY_BIANCA_WON_GROUP, Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
+	case STORY_READY_GROUP_STAGE, Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	case STORY_WATCH_SEMIFINAL, Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+	case STORY_READY_FINALS, Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
+	case STORY_SAVE_FINALS, Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	case STORY_TEAMROCKET_FINISHED, Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
+	case STORY_SAVE_DIANTHA, Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
+	call Chasecenter_Skybox_EmptySkybox_Script
+	return
+
+Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	call GroupStages_Skybox_ObjectSetup_Script
+	return
+
+Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
+	return
+
+Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
+	call WaitHeDidWhat_HideObject_Script
+	return
+
+Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
+	call WaitHeDidWhat_HideObject_Script
 	return
 
 Chasecenter_Skybox_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 28, WhyDidntYouRatMeOut_WatchBiancaMatches
-	map_script_2 VAR_STORYLINE_STATE, 33, WaitHeDidWhat_WatchOtherSemifinal_Dialogue
-	map_script_2 VAR_STORYLINE_STATE, 48, ExhibitionBattle_PrepPlayer_Script
+	map_script_2 VAR_STORYLINE_STATE, STORY_CHAMPIONSHIP_EXPLAINED, WhyDidntYouRatMeOut_WatchBiancaMatches
+	map_script_2 VAR_STORYLINE_STATE, STORY_WATCH_SEMIFINAL, WaitHeDidWhat_WatchOtherSemifinal_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, STORY_TEAMROCKET_FINISHED, ExhibitionBattle_PrepPlayer_Script
 	.2byte 0
 
 
 Chasecenter_Skybox_EmptySkybox_Script::
-	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_1
-	return
-
-
-Chasecenter_Skybox_MapScripts_OnTransition::
-	switch VAR_STORYLINE_STATE
-	case 28, Chasecenter_Skybox_MapScripts_OnTransition_2
-	case 29, Chasecenter_Skybox_MapScripts_OnTransition_3
-	case 30, Chasecenter_Skybox_MapScripts_OnTransition_4
-	case 33, Chasecenter_Skybox_MapScripts_OnTransition_5
-	case 34, Chasecenter_Skybox_MapScripts_OnTransition_6
-	case 35, Chasecenter_Skybox_MapScripts_OnTransition_7
-	case 48, Chasecenter_Skybox_MapScripts_OnTransition_8
-	case 49, Chasecenter_Skybox_MapScripts_OnTransition_9
-	call Chasecenter_Skybox_EmptySkybox_Script
-	return
-
-Chasecenter_Skybox_MapScripts_OnTransition_2:
-	call WaitHeDidWhat_HideObject_Script
-	return
-
-Chasecenter_Skybox_MapScripts_OnTransition_3:
-	call WaitHeDidWhat_HideObject_Script
-	return
-
-Chasecenter_Skybox_MapScripts_OnTransition_4:
-	call GroupStages_Skybox_ObjectSetup_Script
-	return
-
-Chasecenter_Skybox_MapScripts_OnTransition_5:
-	return
-
-Chasecenter_Skybox_MapScripts_OnTransition_6:
-	call WaitHeDidWhat_HideObject_Script
-	return
-
-Chasecenter_Skybox_MapScripts_OnTransition_7:
-	call WaitHeDidWhat_HideObject_Script
-	return
-
-Chasecenter_Skybox_MapScripts_OnTransition_8:
-	call WaitHeDidWhat_HideObject_Script
-	return
-
-Chasecenter_Skybox_MapScripts_OnTransition_9:
-	call WaitHeDidWhat_HideObject_Script
+	setflag FLAG_TEMP_2
 	return
 

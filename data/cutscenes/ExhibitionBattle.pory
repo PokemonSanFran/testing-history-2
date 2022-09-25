@@ -1,11 +1,24 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
+const DIANTHA = 1
+const FLAG_HIDE_ARCHER = FLAG_TEMP_3
+const ROSE = 5
+const VAR_TALKED_BIANCA = VAR_TEMP_F
 
 script ExhibitionBattle_HideObject_Script {
-    setflag(FLAG_TEMP_3)
+    setflag(FLAG_HIDE_ARCHER)
+}
+
+script ExhibitionBattle_CheckMissionProgress_Script{
+    if (var(VAR_STORYLINE_STATE) == STORY_3RD_TEAMROCKET_TAKEDOWN){
+        setvar(VAR_STORYLINE_STATE,STORY_TEAMROCKET_FINISHED)
+    }
+    return
 }
 
 script ExhibitionBattle_TimeSkip_Script {
-    if (var(VAR_STORYLINE_STATE) == 48){
+    call(ExhibitionBattle_CheckMissionProgress_Script)
+
+    if (var(VAR_STORYLINE_STATE) == STORY_TEAMROCKET_FINISHED){
         special(HealPlayerParty)
             fadescreen(FADE_TO_BLACK)
             msgbox(gText_ExhibitionBattle_TimeSkip,MSGBOX_AUTOCLOSE)
@@ -15,8 +28,8 @@ script ExhibitionBattle_TimeSkip_Script {
 
 script ExhibitionBattle_PrepPlayer_Script {
     lock
-        addvar(VAR_STORYLINE_STATE,1)
-        applymovement(5, WaitHeDidWhat_EncouragePlayer)
+        setvar(VAR_STORYLINE_STATE,STORY_SAVE_DIANTHA)
+        applymovement(ROSE, ExhibitionBattle_EncouragePlayer_Movement)
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
@@ -50,10 +63,8 @@ script ExhibitionBattle_MoveFromDoor_Script {
 script ExhibitionBattle_SetChampionName_Script {
         random(2)
         if (var(VAR_RESULT) == 1){
-            //bufferstring(STR_VAR_3,gText_ExhibitionBattle_Serena)
             bufferstring(STR_VAR_3,"Serena")
         }else {
-            //bufferstring(STR_VAR_3,gText_ExhibitionBattle_Calem)
             bufferstring(STR_VAR_3,"Calem")
         }
 }
@@ -65,14 +76,14 @@ script ExhibitionBattle_BattleDiantha_Script {
 
         msgbox(gText_ExhibitionBattle_CanTheGrand,MSGBOX_AUTOCLOSE)
 
-        applymovement(1,Common_Movement_WalkLeft)
+        applymovement(DIANTHA,Common_Movement_WalkLeft)
         waitmovement(0)
 
         call(ExhibitionBattle_SetChampionName_Script)
         trainerbattle_continue_after_lose(TRAINER_WALLACE,gText_ExhibitionBattle_Incredible)
         special(HealPlayerParty)
         msgbox(gText_ExhibitionBattle_WhatAnAmazing,MSGBOX_AUTOCLOSE)
-        addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_STORYLINE_STATE,STORY_POST_DIANTHA) 
         warpsilent(MAP_CHASECENTER_LOCKERS,255,9,5)
 
         //PSF TODO Add crowd booing
@@ -83,7 +94,7 @@ script ExhibitionBattle_PostBattle_Dialogue {
         lock
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(0)
-        addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_STORYLINE_STATE,STORY_CONGRATULATED_BY_ROSE)
 
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
@@ -109,12 +120,12 @@ script ExhibitionBattle_Bianca_Dialogue {
             setvar(VAR_0x8000, MUGSHOT_BIANCA)
             callnative(DrawMugshot)
 
-        if (var(VAR_TEMP_F) > 0){
+        if (var(VAR_TALKED_BIANCA) > 0){
             msgbox(gText_ExhibitionBattle_IWonderIfThat)
             return
         }
 
-        setvar(VAR_TEMP_F,1)
+        setvar(VAR_TALKED_BIANCA,1)
         msgbox(gText_ExhibitionBattle_SickBattleOut)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -187,6 +198,12 @@ script ExhibitionBattle_FalseCredits_Script {
     warpsilent(MAP_PSFROUTE22,2)
 }
 
+movement ExhibitionBattle_EncouragePlayer_Movement{
+    walk_right * 5
+    walk_up
+    step_end
+}
+
 text gText_ExhibitionBattle_TimeSkip {
     format("A few weeks later...")
 }
@@ -200,7 +217,7 @@ text gText_ExhibitionBattle_NervousStill {
 }
 
 text gText_ExhibitionBattle_AndNow {
-    format("And now, the SanFran Champion…. {PLAYER}!!!")
+    format("And now, the SanFran Champion… {PLAYER}!!!")
 }
 
 text gText_ExhibitionBattle_CanTheGrand {

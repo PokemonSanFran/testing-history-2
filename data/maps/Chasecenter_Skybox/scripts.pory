@@ -1,29 +1,28 @@
+const FLAG_HIDE_SPECTATORS = FLAG_TEMP_2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1
+
 mapscripts Chasecenter_Skybox_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Chasecenter_Skybox_MapScripts_OnTransition)
+        switch (var(VAR_STORYLINE_STATE)){
+            case STORY_CHAMPIONSHIP_EXPLAINED: call(WaitHeDidWhat_HideObject_Script)
+            case STORY_BIANCA_WON_GROUP: call(WaitHeDidWhat_HideObject_Script)
+            case STORY_READY_GROUP_STAGE: call(GroupStages_Skybox_ObjectSetup_Script)
+            case STORY_WATCH_SEMIFINAL: return
+            case STORY_READY_FINALS: call(WaitHeDidWhat_HideObject_Script)
+            case STORY_SAVE_FINALS: call(WaitHeDidWhat_HideObject_Script)
+            case STORY_TEAMROCKET_FINISHED: call(WaitHeDidWhat_HideObject_Script)
+            case STORY_SAVE_DIANTHA: call(WaitHeDidWhat_HideObject_Script)
+            default: call(Chasecenter_Skybox_EmptySkybox_Script)
+        }
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 28: WhyDidntYouRatMeOut_WatchBiancaMatches
-        VAR_STORYLINE_STATE, 33: WaitHeDidWhat_WatchOtherSemifinal_Dialogue 
-        VAR_STORYLINE_STATE, 48: ExhibitionBattle_PrepPlayer_Script
+        VAR_STORYLINE_STATE, STORY_CHAMPIONSHIP_EXPLAINED: WhyDidntYouRatMeOut_WatchBiancaMatches
+            VAR_STORYLINE_STATE, STORY_WATCH_SEMIFINAL: WaitHeDidWhat_WatchOtherSemifinal_Dialogue 
+            VAR_STORYLINE_STATE, STORY_TEAMROCKET_FINISHED: ExhibitionBattle_PrepPlayer_Script
     ]
 }
 
 script Chasecenter_Skybox_EmptySkybox_Script {
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_1)
-}
-
-script Chasecenter_Skybox_MapScripts_OnTransition {
-    switch (var(VAR_STORYLINE_STATE)){
-        case 28: call(WaitHeDidWhat_HideObject_Script)
-        case 29: call(WaitHeDidWhat_HideObject_Script)
-        case 30: call(GroupStages_Skybox_ObjectSetup_Script)
-        case 33: return
-        case 34: call(WaitHeDidWhat_HideObject_Script)
-        case 35: call(WaitHeDidWhat_HideObject_Script)
-        case 48: call(WaitHeDidWhat_HideObject_Script)
-        case 49: call(WaitHeDidWhat_HideObject_Script)
-        default: call(Chasecenter_Skybox_EmptySkybox_Script)
-    }
+    setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_SPECTATORS)
 }

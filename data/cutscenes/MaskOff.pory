@@ -1,3 +1,4 @@
+// Player needs to learn hints B, C, and D to trigger Giovanni appearing at Lake Merrit. This means player needs to talk to H, F, and G.
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const GIOVANNI = 1
 const FLAG_HIDE_SIEBOLD = FLAG_TEMP_1
@@ -9,20 +10,20 @@ script MaskOff_HideObject_Script {
 }
 
 script MaskOff_TransformObject_Script {
-    removeobject(1)
+    removeobject(GIOVANNI)
     setvar(VAR_OBJ_GFX_ID_1,OBJ_EVENT_GFX_DRAKE)
-    addobject(1)
+    addobject(GIOVANNI)
 }
 
 script MaskOff_QuestH_Dialogue {
     faceplayer
 
-    if (var(VAR_LILYCOVE_CITY_STATE) == 1){
+    if (var(VAR_MASK_OFF_STATE) == ASSIGNED_MASK_OFF){
         setvar(VAR_0x8000, MUGSHOT_HILDA)
             callnative(DrawMugshot)
             msgbox(gText_MaskOff_WhatCanYou)
             callnative(ClearMugshot)
-            addvar(VAR_LILYCOVE_CITY_STATE,1)
+            addvar(VAR_MASK_OFF_STATE,1)
     }
     msgbox(gText_MaskOff_IRememberMeeting)
     msgbox(gText_MaskOff_HeSaidEvenThen)
@@ -32,12 +33,12 @@ script MaskOff_QuestH_Dialogue {
 
 script MaskOff_QuestF_Dialogue {
     faceplayer
-        if (var(VAR_LILYCOVE_CITY_STATE) == 2){
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_1){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_LILYCOVE_CITY_STATE,1)
+                addvar(VAR_MASK_OFF_STATE,1)
         }
     msgbox(gText_MaskOff_IMissWorking)
         msgbox(gText_MaskOff_HeWouldLeaveRight)
@@ -45,12 +46,12 @@ script MaskOff_QuestF_Dialogue {
 }
 script MaskOff_QuestI_Dialogue {
     faceplayer
-        if (var(VAR_LILYCOVE_CITY_STATE) == 3){
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_2){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_LILYCOVE_CITY_STATE,1)
+                addvar(VAR_MASK_OFF_STATE,1)
         }
     msgbox(gText_MaskOff_UsedToCome)
         msgbox(gText_MaskOff_TheyWouldJust)
@@ -59,12 +60,12 @@ script MaskOff_QuestI_Dialogue {
 }
 script MaskOff_QuestD_Dialogue {
     faceplayer
-        if (var(VAR_LILYCOVE_CITY_STATE) == 3){
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_2){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_LILYCOVE_CITY_STATE,1)
+                addvar(VAR_MASK_OFF_STATE,1)
         }
     msgbox(gText_MaskOff_UsedToBeHere)
         msgbox(gText_MaskOff_BookwormsTendToBe)
@@ -76,12 +77,12 @@ script MaskOff_QuestK_Dialogue {
 }
 script MaskOff_QuestG_Dialogue {
     faceplayer
-        if (var(VAR_LILYCOVE_CITY_STATE) == 4){
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_3){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_LILYCOVE_CITY_STATE,1)
+                addvar(VAR_MASK_OFF_STATE,1)
         }
     msgbox(gText_MaskOff_GaveATalkHereOnce)
         msgbox(gText_MaskOff_WhateverHeDidWorked)
@@ -90,12 +91,11 @@ script MaskOff_QuestG_Dialogue {
 }
 script MaskOff_QuestA_Dialogue {
     faceplayer
-        if (var(VAR_LILYCOVE_CITY_STATE) == 4){
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_5){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
-                addvar(VAR_LILYCOVE_CITY_STATE,1)
         }
     msgbox(gText_MaskOff_IUsedToSee)
         msgbox(gText_MaskOff_HeWorkedInThe)
@@ -104,7 +104,7 @@ script MaskOff_QuestA_Dialogue {
 }
 script MaskOff_QuestE_Dialogue {
     faceplayer
-        if (var(VAR_LILYCOVE_CITY_STATE) == 5){
+        if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_4){
             setvar(VAR_0x8000, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
@@ -118,7 +118,7 @@ script MaskOff_QuestE_Dialogue {
 
 script MaskOff_Encounter_Giovanni_Dialogue {
     lock
-        setvar(VAR_LILYCOVE_CITY_STATE,7)
+        setvar(VAR_MASK_OFF_STATE,SAVE_GIOVANNI_LAKEMERRITT_TRUE)
         call(Common_EventScript_SaveGame)
 
         setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
@@ -129,8 +129,8 @@ script MaskOff_Encounter_Giovanni_Dialogue {
 
         trainerbattle_no_intro(TRAINER_SHELLY_SEAFLOOR_CAVERN,gText_GroupStages_Placeholder)
 
-        addvar(VAR_LILYCOVE_CITY_STATE,1)
-        addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_MASK_OFF_STATE,DEFEATED_MASK_OFF_GIOVANNI)
+        setvar(VAR_STORYLINE_STATE,STORY_DEFEATED_GIOVANNI)
         goto(MaskOff_PostBattle_Dialogue)
 }
 
@@ -171,7 +171,7 @@ msgbox(gText_MaskOff_TheOneAndOnly,MSGBOX_NPC)
     
     playse(SE_PIN)
     applymovement(PLAYER,Common_Movement_ExclamationMark)
-    waitmovement(0)
+    waitmovement(PLAYER)
 
     setvar(VAR_0x8000, MUGSHOT_CAITLIN)
     callnative(DrawMugshot)
@@ -217,10 +217,9 @@ msgbox(gText_MaskOff_IShouldApologize)
 
 script MaskOff_End_Dialogue {
     applymovement(GIOVANNI,MaskOff_WalkOffScreen)
-    waitmovement(0)
+    waitmovement(GIOVANNI)
     removeobject(GIOVANNI)
 
-    //setflag(FLAG_DEFEATED_GIOVANNI)
     release
     end
 }

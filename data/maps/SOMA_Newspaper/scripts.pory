@@ -15,7 +15,7 @@ script SOMA_Newspaper_InteractCherie_Event_Script {
             }
 
         } else {
-            switch(var(VAR_LILYCOVE_CITY_STATE)){
+            switch(var(VAR_MASK_OFF_STATE)){
                 case 0: return
                 case 8: return
                 default: call(MaskOff_QuestH_Dialogue)

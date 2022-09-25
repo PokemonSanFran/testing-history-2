@@ -3,8 +3,20 @@ ExhibitionBattle_HideObject_Script::
 	return
 
 
+ExhibitionBattle_CheckMissionProgress_Script::
+	compare VAR_STORYLINE_STATE, STORY_3RD_TEAMROCKET_TAKEDOWN
+	goto_if_eq ExhibitionBattle_CheckMissionProgress_Script_2
+ExhibitionBattle_CheckMissionProgress_Script_1:
+	return
+
+ExhibitionBattle_CheckMissionProgress_Script_2:
+	setvar VAR_STORYLINE_STATE, STORY_TEAMROCKET_FINISHED
+	goto ExhibitionBattle_CheckMissionProgress_Script_1
+
+
 ExhibitionBattle_TimeSkip_Script::
-	compare VAR_STORYLINE_STATE, 48
+	call ExhibitionBattle_CheckMissionProgress_Script
+	compare VAR_STORYLINE_STATE, STORY_TEAMROCKET_FINISHED
 	goto_if_eq ExhibitionBattle_TimeSkip_Script_1
 	return
 
@@ -18,8 +30,8 @@ ExhibitionBattle_TimeSkip_Script_1:
 
 ExhibitionBattle_PrepPlayer_Script::
 	lock
-	addvar VAR_STORYLINE_STATE, 1
-	applymovement 5, WaitHeDidWhat_EncouragePlayer
+	setvar VAR_STORYLINE_STATE, STORY_SAVE_DIANTHA
+	applymovement 5, ExhibitionBattle_EncouragePlayer_Movement
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -78,7 +90,7 @@ ExhibitionBattle_BattleDiantha_Script::
 	trainerbattle_continue_after_lose TRAINER_WALLACE, gText_ExhibitionBattle_Incredible
 	special HealPlayerParty
 	msgbox gText_ExhibitionBattle_WhatAnAmazing, MSGBOX_AUTOCLOSE
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_POST_DIANTHA
 	warpsilent MAP_CHASECENTER_LOCKERS, 255, 9, 5
 	return
 
@@ -87,7 +99,7 @@ ExhibitionBattle_PostBattle_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_CONGRATULATED_BY_ROSE
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_ThatWasPositively
@@ -181,6 +193,15 @@ ExhibitionBattle_FalseCredits_Script::
 	return
 
 
+ExhibitionBattle_EncouragePlayer_Movement:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
 ExhibitionBattle_SetChampionName_Script_Text_0:
 	.string "Serena$"
 
@@ -203,7 +224,7 @@ gText_ExhibitionBattle_NervousStill::
 	.string "into the stadium when you're ready.$"
 
 gText_ExhibitionBattle_AndNow::
-	.string "And now, the SanFran Champion….\n"
+	.string "And now, the SanFran Champion…\n"
 	.string "{PLAYER}!!!$"
 
 gText_ExhibitionBattle_CanTheGrand::

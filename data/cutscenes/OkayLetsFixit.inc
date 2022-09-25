@@ -15,7 +15,7 @@ OkayLetsFixit_ReachTop_Script::
 	goto_if_eq OkayLetsFixit_ReachTop_Script_2
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, OkayLetsFixit_WalkToPeak
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox gText_OkayLetsFixIt_TheBambooStar
 	closemessage
 	playse SE_M_DETECT
@@ -52,16 +52,16 @@ OkayLetsFixit_ReachTop_Script_2:
 
 OkayLetsFixit_StartFlashback_Script::
 	lock
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_BEGIN_LETS_FIX_IT
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_ThisWasTheNight
 	callnative ClearMugshot
 	applymovement 1, Common_Movement_FaceLeft
-	waitmovement 0
+	waitmovement 1
 	msgbox gText_OkayLetsFixIt_Why
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_IWasTryingToHelp
@@ -83,7 +83,7 @@ OkayLetsFixit_ReturnToPeak_Script::
 	addobject 1
 	call OkayLetsFixit_TimelineReset_Script
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, OkayLetsFixit_WatchCliffWalk
 	applymovement 1, OkayLetsFixit_WalkOffCliff
 	special SpawnCameraObject
@@ -115,9 +115,9 @@ OkayLetsFixit_ReturnToPeak_Script::
 OkayLetsFixit_TimelineReset_Script::
 	setflag FLAG_TIMELINE_TIMETRAVEL
 	clearflag FLAG_TIMELINE_FALSE
-	setvar VAR_STORYLINE_STATE, 42
-	setvar VAR_RUSTURF_TUNNEL_STATE, 0
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
+	setvar VAR_STORYLINE_STATE, STORY_POST_YOU_REALIZE_WERE_EVIL
+	setvar VAR_MANHUNT_STATE, NOT_ASSIGNED
+	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, NOT_ASSIGNED
 	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_NOT_ASSIGNED
 	return
 
