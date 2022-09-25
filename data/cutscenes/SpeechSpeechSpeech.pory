@@ -1,6 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const CAMERA = OBJ_EVENT_ID_CAMERA
-
 const ARCHER = 1
 const MALVA = 3
 const DRASNA = 2
