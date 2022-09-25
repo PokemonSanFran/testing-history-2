@@ -4,6 +4,8 @@ const ARIANA = 2
 const DRASNA = 3
 const PKMNC = 6
 
+const FLAG_HIDE_SEARCH = FLAG_TEMP_1
+
 script WaitEvenThen_TurnOnMachine_Script {
     setmetatile(32, 2, 0x2D8, TRUE)
         setmetatile(33, 2, 0x2D9, TRUE)
@@ -17,7 +19,7 @@ script WaitEvenThen_TurnOnMachine_Script {
 }
 
 script WaitEvenThen_BossSetUp_Script {
-    clearflag(FLAG_TEMP_1)
+        clearflag(FLAG_HIDE_SEARCH)
 
         addobject(ARIANA)
         addobject(DRASNA)
@@ -46,7 +48,7 @@ script WaitEvenThen_ObjectSetUp_Script {
         TeleportCamera(25,4)
         applymovement(PLAYER,Common_Movement_FaceRight)
 
-        clearflag(FLAG_TEMP_1)
+        clearflag(FLAG_HIDE_SEARCH)
 
         addobject(ARCHER)
         setobjectxy(ARCHER,25,5)
@@ -97,7 +99,7 @@ script WaitEvenThen_PrepareBossEncounter_Dialogue {
 
         playmoncry(SPECIES_EXCADRILL,CRY_MODE_ENCOUNTER)
         waitmoncry
-        addvar(VAR_DEWFORD_TOWN_STATE,1)
+        setvar(VAR_UNDERGROUNDLAB_STATE,SAVE_BEFORE_DYNAMAX)
 
         msgbox(gText_IGuessWeShouldBeNiceNow_Roar,MSGBOX_AUTOCLOSE)
 
@@ -145,7 +147,7 @@ script WaitEvenThen_BossEncounter_Script {
 }
 
 script WaitEvenThen_ClearBossPokemon_Script {
-    addvar(VAR_DEWFORD_TOWN_STATE,1)
+        setvar(VAR_UNDERGROUNDLAB_STATE,DEFEATED_DYNAMAX)
 
         lock
         closemessage
@@ -158,8 +160,8 @@ script WaitEvenThen_ClearBossPokemon_Script {
 script WaitEvenThen_PostBossDialogue {
     lock
 
-        addvar(VAR_STORYLINE_STATE,1)
-        addvar(VAR_ALAMEDA_STATE,1)
+        setvar(VAR_STORYLINE_STATE,STORY_POST_DYNAMAX_BOSS)
+        setvar(VAR_ALAMEDA_STATE,POST_THIS_ISNT_RANDOM)
 
         applymovement(PLAYER,Common_Movement_FaceDown)
         applymovement(ARCHER,Common_Movement_FaceDown)
