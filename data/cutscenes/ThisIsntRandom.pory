@@ -3,6 +3,8 @@ const ARCHER = 1
 const ARIANA = 2
 const DRASNA = 3
 
+const FLAG_HIDE_SEARCH = FLAG_TEMP_1
+
 script ThisIsntRandom_CheckDoor_Script {
     addvar(VAR_TEMP_C,1)
 
@@ -14,7 +16,7 @@ script ThisIsntRandom_CheckDoor_Script {
 }
 
 script ThisIsntRandom_HideObject_AboveGround_Script {
-    setflag(FLAG_TEMP_1)
+    setflag(FLAG_HIDE_SEARCH)
 }
 
 script ThisIsntRandom_ObjectSetUp_Script {
@@ -23,7 +25,7 @@ script ThisIsntRandom_ObjectSetUp_Script {
         setobjectxy(PLAYER,11,18)
         TeleportCamera(11,18)
 
-        clearflag(FLAG_TEMP_1)
+        clearflag(FLAG_HIDE_SEARCH)
 
         addobject(ARCHER)
         setobjectxy(ARCHER,10,19)
@@ -43,7 +45,7 @@ script ThisIsntRandom_ObjectSetUp_Script {
 script ThisIsntRandom_UnlockDoor_Dialogue {
     lock
         call(ThisIsntRandom_ObjectSetUp_Script)
-        addvar(VAR_DEWFORD_TOWN_STATE,1)
+        setvar(VAR_UNDERGROUNDLAB_STATE,TEAMROCKET_DISCOVERED_LAB)
 
         playse(SE_PIN)
         waitse
@@ -96,7 +98,7 @@ script ThisIsntRandom_UndergroundDoor_Dialogue {
         closemessage
 
         applymovement(DRASNA,ThisIsntRandom_WalkToKeypad)
-        waitmovement(0)
+        waitmovement(DRASNA)
 
         playse(SE_DING_DONG)
         waitse
@@ -112,7 +114,8 @@ script ThisIsntRandom_UndergroundDoor_Dialogue {
         closemessage
 
         applymovement(DRASNA,Common_Movement_FaceLeft)
-        waitmovement(0)
+        waitmovement(DRASNA)
+
 
         setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
@@ -141,20 +144,19 @@ script ThisIsntRandom_UndergroundDoor_Dialogue {
         applymovement(ARCHER,ThisIsntRandom_WalkDownHallwayC)
         waitmovement(ARCHER)
 
-        setflag(FLAG_TEMP_1)
+        setflag(FLAG_HIDE_SEARCH)
         removeobject(DRASNA)
         removeobject(ARIANA)
         removeobject(ARCHER)
 
-        addvar(VAR_DEWFORD_TOWN_STATE,1)
-
+        setvar(VAR_UNDERGROUNDLAB_STATE,DRASNA_UNLOCKED_DOOR)
         release
         end
 }
 
 script ThisIsntRandom_WalkIntoLab_Dialogue {
     lock
-        addvar(VAR_DEWFORD_TOWN_STATE,1)
+        setvar(VAR_UNDERGROUNDLAB_STATE,TEAM_INSIDE_LAB)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -273,7 +275,7 @@ script ThisIsntRandom_RemoveMon_Script {
 
 script ThisIsntRandom_DefeatedFirst_Script {
     lock
-        addvar(VAR_DEWFORD_TOWN_STATE,1)
+        setvar(VAR_UNDERGROUNDLAB_STATE,FREED_LAB_POKEMON_1)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_AreYouGuysSeeing)
@@ -314,7 +316,7 @@ script ThisIsntRandom_DefeatedFirst_Script {
 
 script ThisIsntRandom_DefeatedSecond_Script {
     lock
-        addvar(VAR_DEWFORD_TOWN_STATE,1)
+        setvar(VAR_UNDERGROUNDLAB_STATE,FREED_LAB_POKEMON_2)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_ThisIsntRandom_IFoundSomeAccessLogs)
@@ -376,7 +378,6 @@ script ThisIsntRandom_DefeatedSecond_Script {
         msgbox(gText_ThisIsntRandom_LetsKeepGoing)
         callnative(ClearMugshot)
         closemessage
-
         release
         end
 }
@@ -498,7 +499,7 @@ text gText_ThisIsntRandom_AreThoseDatesSpecial {
 }
 
 text gText_ThisIsntRandom_TheSecondDateIsOne {
-    format("The second date is the end of the Robinwilltunnel riots. What types of Pokémon did you guys fight down here?")
+    format("The second date is the end of the Alcatraz riots. What types of Pokémon did you guys fight down here?")
 }
 
 text gText_ThisIsntRandom_SilicobraGravelerLarvitar {
@@ -522,7 +523,7 @@ text gText_ThisIsntRandom_TheDocumentationCalledOut {
 }
 
 text gText_ThisIsntRandom_AndGroundTypesTo {
-    format("*sigh* And ground types to trigger Earthquakes. Those bastards used this system to attack Robinwilltunnel.")
+    format("*sigh* And ground types to trigger Earthquakes. Those bastards used this system to attack Alcatraz.")
 }
 
 text gText_ThisIsntRandom_OhNoIDidnt {
