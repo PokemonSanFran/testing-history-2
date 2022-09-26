@@ -24,6 +24,7 @@ WeCanStopYouActually_PostBattle_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_SoWhatsYourPlan
+	callnative ClearMugshot
 	msgbox gText_WeCanStopYouActually_BeepBeep
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
@@ -105,8 +106,8 @@ WeCanStopYouActually_StartBossBattle_Script::
 
 WeCanStopYouActually_Arrest_Dialogue::
 	lock
-	addvar VAR_TOWER_RAID_STATE, 1
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_TOWER_RAID_STATE, DEFEATED_ROSE_SALESFORCETOWER
+	setvar VAR_STORYLINE_STATE, STORY_CLEAR
 	clearflag FLAG_TEMP_2
 	addobject 3
 	addobject 4
@@ -126,7 +127,6 @@ WeCanStopYouActually_Arrest_Dialogue::
 
 
 WeCanStopYouActaully_ArrestCutscene::
-	addvar VAR_STORYLINE_STATE, 1
 	lockall
 	applymovement 1, WeCanStopYouActually_MarchLeft
 	applymovement 2, WeCanStopYouActually_MarchRight
@@ -417,7 +417,7 @@ gText_WeCanStopYouActually_AndIllFrigginKill::
 	.string "And I’ll FRIGGIN’ KILL YOU!$"
 
 gText_WeCanStopYouActually_Nonono::
-	.string "Nonononononono….$"
+	.string "Nonononononono…$"
 
 gText_WeCanStopYouActually_YoureUnderArrest::
 	.string "Rose, you’re under arrest!$"
