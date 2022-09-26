@@ -2,27 +2,30 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const OAK = 1
 const ROSE = 2
 
+const FLAG_HIDE_OAK= FLAG_TEMP_1
+const FLAG_HIDE_POLICE = FLAG_TEMP_2
+const FLAG_HIDE_ROSE = FLAG_TEMP_3
+
 script YouCantStopMe_HideObject_Script {
-    setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_2)
+    setflag(FLAG_HIDE_OAK)
+    setflag(FLAG_HIDE_POLICE)
+    return
 }
 
 script YouCantStopMe_MoveObject_Script {
-    setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_2)
+    call(YouCantStopMe_HideObject_Script)
         setobjectxy(ROSE,15,5)
         setobjectxyperm(ROSE,15,5)
         setobjectnewmovementtype(ROSE,MOVEMENT_TYPE_FACE_DOWN)
 }
 
 script YouCantStopMe_ObjectCleanUp_Script {
-    setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_3)
+    call(YouCantStopMe_HideObject_Script)
+    setflag(FLAG_HIDE_ROSE)
 }
 
 script YouCantStopMe_LocatePlayer_Script {
-    clearflag(FLAG_TEMP_1)
+        clearflag(FLAG_HIDE_OAK)
 
         playse(SE_EXIT)
         waitse
@@ -108,7 +111,7 @@ script YouCantStopMe_LastChance_Dialogue {
         waitse
         removeobject(OAK)
 
-        addvar(VAR_TOWER_RAID_STATE,1)
+        setvar(VAR_TOWER_RAID_STATE,STOPPED_BY_OAK)
 
         release
         end
@@ -155,7 +158,7 @@ script YouCantStopMe_Confront_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        addvar(VAR_TOWER_RAID_STATE,1)
+        setvar(VAR_TOWER_RAID_STATE,SAVE_ROSE_SALESFORCETOWER)
 
         getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 

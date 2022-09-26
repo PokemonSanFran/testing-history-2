@@ -31,8 +31,8 @@ Salesforcetower_11F_MapScripts_OnTransition_4:
 Salesforcetower_11F_Rose_Event_Script::
 	lock
 	switch VAR_TOWER_RAID_STATE
-	case SAVE_ROSE_SALESFORCETOWER, Salesforcetower_11F_Rose_Event_Script_2
-	case DEFEATED_ROSE_SALESFORCETOWER, Salesforcetower_11F_Rose_Event_Script_3
+	case STOPPED_BY_OAK, Salesforcetower_11F_Rose_Event_Script_2
+	case SAVE_ROSE_SALESFORCETOWER, Salesforcetower_11F_Rose_Event_Script_3
 	return
 
 Salesforcetower_11F_Rose_Event_Script_2:

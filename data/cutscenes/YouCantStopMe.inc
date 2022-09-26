@@ -5,8 +5,7 @@ YouCantStopMe_HideObject_Script::
 
 
 YouCantStopMe_MoveObject_Script::
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
+	call YouCantStopMe_HideObject_Script
 	setobjectxy 2, 15, 5
 	setobjectxyperm 2, 15, 5
 	setobjectnewmovementtype 2, MOVEMENT_TYPE_FACE_DOWN
@@ -14,8 +13,7 @@ YouCantStopMe_MoveObject_Script::
 
 
 YouCantStopMe_ObjectCleanUp_Script::
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
+	call YouCantStopMe_HideObject_Script
 	setflag FLAG_TEMP_3
 	return
 
@@ -104,7 +102,7 @@ YouCantStopMe_LastChance_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	addvar VAR_TOWER_RAID_STATE, 1
+	setvar VAR_TOWER_RAID_STATE, STOPPED_BY_OAK
 	release
 	end
 
@@ -140,7 +138,7 @@ YouCantStopMe_Confront_Dialogue::
 	msgbox gText_YouCantStopMe_JustAGlorified
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_TOWER_RAID_STATE, 1
+	setvar VAR_TOWER_RAID_STATE, SAVE_ROSE_SALESFORCETOWER
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 15
 	goto_if_ne YouCantStopMe_Confront_Dialogue_2

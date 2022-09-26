@@ -18,8 +18,8 @@ script Salesforcetower_11F_Rose_Event_Script {
     lock
 
     switch (var(VAR_TOWER_RAID_STATE)){
-        case SAVE_ROSE_SALESFORCETOWER: goto(YouCantStopMe_Confront_Dialogue)
-        case DEFEATED_ROSE_SALESFORCETOWER: goto(YouCantStopMe_StartBossBattle_Script)
+        case STOPPED_BY_OAK: goto(YouCantStopMe_Confront_Dialogue)
+        case SAVE_ROSE_SALESFORCETOWER: goto(YouCantStopMe_StartBossBattle_Script)
     }
 }
 

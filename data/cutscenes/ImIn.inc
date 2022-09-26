@@ -209,7 +209,7 @@ ImIn_UnlockDoor_Script::
 
 Imin_BeginHouseSearch_Script::
 	lock
-	addvar VAR_TOWER_RAID_STATE, 1
+	setvar VAR_TOWER_RAID_STATE, SEARCHING_SABRINA_HOUSE
 	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_OkaySpreadOut
@@ -237,7 +237,7 @@ Imin_BeginHouseSearch_Script::
 
 ImIn_FindLockedDoor_Script::
 	lock
-	addvar VAR_TOWER_RAID_STATE, 1
+	setvar VAR_TOWER_RAID_STATE, FOUND_SABRINA_WARP_DOOR
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_IFoundADoor
@@ -265,7 +265,7 @@ ImIn_InteractDoor_Script_2:
 
 ImIn_EnterCorrectCode_Script::
 	lock
-	addvar VAR_TOWER_RAID_STATE, 1
+	addvar VAR_TOWER_RAID_STATE, SABRINA_WARP_DOOR_UNLOCKED
 	playse SE_DING_DONG
 	waitse
 	playse SE_SLIDING_DOOR
@@ -308,14 +308,14 @@ ImIn_EnterCorrectCode_Script::
 	waitmovement 5
 	removeobject 5
 	playse SE_WARP_OUT
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_WARP_TILE_ACCESSIBLE
 	release
 	end
 
 
 ImIn_PostWarpSplit_Dialogue::
 	lock
-	addvar VAR_TOWER_RAID_STATE, 1
+	setvar VAR_TOWER_RAID_STATE, TEAM_ENTERED_SALESFORCETOWER
 	setvar VAR_0x8000, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_WereAllIn
@@ -377,7 +377,7 @@ ImIn_PreventPlayerProgress_Script_2:
 
 ImIn_OfficeReveal_Dialogue::
 	lock
-	addvar VAR_TOWER_RAID_STATE, 1
+	setvar VAR_TOWER_RAID_STATE, SAVE_BIANCA_SALESFORCETOWER
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
@@ -431,20 +431,13 @@ ImIn_StartBiancaBattle_Script::
 
 ImIn_InteractBiancaBattle_Script::
 	playbgm MUS_ENCOUNTER_MAY, TRUE
-	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_DaddyWontBeAble, MSGBOX_NPC
-	closemessage
-	callnative ClearMugshot
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, gText_ImIn_HowDoesThisKeep
-	goto ImIn_BiancaDefeated_Dialogue
+	goto ImIn_StartBiancaBattle_Script
 	return
 
 
 ImIn_BiancaDefeated_Dialogue::
 	lock
-	addvar VAR_TOWER_RAID_STATE, 1
+	setvar VAR_TOWER_RAID_STATE, DEFEATED_BIANCA_SALESFORCETOWER
 	call ImIn_MoveBianca_Script
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
