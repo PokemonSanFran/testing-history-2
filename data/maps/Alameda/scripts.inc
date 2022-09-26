@@ -33,7 +33,7 @@ Alameda_ObjectVisibility_Script::
 	case WHY_ARE_YOU_HELPING_THEM, Alameda_ObjectVisibility_Script_6
 	case POST_EARTHQUAKE, Alameda_ObjectVisibility_Script_7
 	case POST_EARTHQUAKE_RESCUE, Alameda_ObjectVisibility_Script_8
-	case POST_LETS_FINISH_THIS, Alameda_ObjectVisibility_Script_9
+	case POST_THIS_ISNT_RANDOM, Alameda_ObjectVisibility_Script_9
 	call AssholesHome_HideObject_Script
 	call SurvivalChance333_HideObject_Alameda_Script
 Alameda_ObjectVisibility_Script_1:

@@ -120,7 +120,7 @@ LetsFinishThis_StartPlanning_Dialogue::
 	closemessage
 	applymovement 18, LetsFinishThis_WalkAway
 	waitmovement 18
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_BEFORE_SABRINA_BREAKIN
 	release
 	end
 
@@ -246,4 +246,4 @@ gText_LetsFinishThis_WereOntoSomething::
 	.string "We’re onto something. You should go\n"
 	.string "prepare! Once we start, I don’t think\l"
 	.string "there’s any turning back. Meet us\l"
-	.string "outside Koga’s house in Sunset.$"
+	.string "outside Sabrina’s house in Sunset.$"

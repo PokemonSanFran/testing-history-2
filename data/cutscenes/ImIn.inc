@@ -1,6 +1,13 @@
 ImIn_HideObject_OutsideHouse_Script::
-	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
+	compare VAR_STORYLINE_STATE, STORY_BEFORE_SABRINA_BREAKIN
+	goto_if_ne ImIn_HideObject_OutsideHouse_Script_1
+	compare VAR_TOWER_RAID_STATE, 0
+	goto_if_ne ImIn_HideObject_OutsideHouse_Script_1
+	return
+
+ImIn_HideObject_OutsideHouse_Script_1:
+	setflag FLAG_TEMP_1
 	return
 
 
@@ -112,7 +119,7 @@ ImIn_ObjectSetUp_PostWarp_Script::
 
 ImIn_CheckPlayer_Script::
 	lock
-	compare VAR_STORYLINE_STATE < 109, 0
+	compare VAR_STORYLINE_STATE, STORY_BEFORE_SABRINA_BREAKIN
 	goto_if_ne ImIn_CheckPlayer_Script_2
 	goto ImIn_StartHouseBreak_Script
 	return
@@ -123,7 +130,7 @@ ImIn_CheckPlayer_Script_2:
 
 
 ImIn_StartHouseBreak_Script::
-	addvar VAR_TOWER_RAID_STATE, 1
+	setvar VAR_TOWER_RAID_STATE, BROKEN_IN_SABRINA
 	fadescreen FADE_TO_BLACK
 	call ImIn_CutsceneSetup_OutsideHouse_Script
 	fadescreen FADE_FROM_BLACK

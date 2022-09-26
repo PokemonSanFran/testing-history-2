@@ -40,7 +40,7 @@ ThisIsntRandom_ObjectSetUp_Script::
 ThisIsntRandom_UnlockDoor_Dialogue::
 	lock
 	call ThisIsntRandom_ObjectSetUp_Script
-	addvar VAR_DEWFORD_TOWN_STATE, 1
+	setvar VAR_UNDERGROUNDLAB_STATE, TEAMROCKET_DISCOVERED_LAB
 	playse SE_PIN
 	waitse
 	applymovement 1, Common_Movement_ExclamationMark
@@ -86,7 +86,7 @@ ThisIsntRandom_UndergroundDoor_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, ThisIsntRandom_WalkToKeypad
-	waitmovement 0
+	waitmovement 3
 	playse SE_DING_DONG
 	waitse
 	playse SE_BANG
@@ -98,7 +98,7 @@ ThisIsntRandom_UndergroundDoor_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, Common_Movement_FaceLeft
-	waitmovement 0
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_TheSecondSet
@@ -124,14 +124,14 @@ ThisIsntRandom_UndergroundDoor_Dialogue::
 	removeobject 3
 	removeobject 2
 	removeobject 1
-	addvar VAR_DEWFORD_TOWN_STATE, 1
+	setvar VAR_UNDERGROUNDLAB_STATE, DRASNA_UNLOCKED_DOOR
 	release
 	end
 
 
 ThisIsntRandom_WalkIntoLab_Dialogue::
 	lock
-	addvar VAR_DEWFORD_TOWN_STATE, 1
+	setvar VAR_UNDERGROUNDLAB_STATE, TEAM_INSIDE_LAB
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_LooksOldAsHell
@@ -254,7 +254,7 @@ ThisIsntRandom_RemoveMon_Script::
 
 ThisIsntRandom_DefeatedFirst_Script::
 	lock
-	addvar VAR_DEWFORD_TOWN_STATE, 1
+	setvar VAR_UNDERGROUNDLAB_STATE, FREED_LAB_POKEMON_1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AreYouGuysSeeing
@@ -287,7 +287,7 @@ ThisIsntRandom_DefeatedFirst_Script::
 
 ThisIsntRandom_DefeatedSecond_Script::
 	lock
-	addvar VAR_DEWFORD_TOWN_STATE, 1
+	setvar VAR_UNDERGROUNDLAB_STATE, FREED_LAB_POKEMON_2
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_IFoundSomeAccessLogs
@@ -591,8 +591,8 @@ gText_ThisIsntRandom_AreThoseDatesSpecial::
 
 gText_ThisIsntRandom_TheSecondDateIsOne::
 	.string "The second date is the end of the\n"
-	.string "Robinwilltunnel riots. What types of\l"
-	.string "Pokémon did you guys fight down here?$"
+	.string "Alcatraz riots. What types of Pokémon\l"
+	.string "did you guys fight down here?$"
 
 gText_ThisIsntRandom_SilicobraGravelerLarvitar::
 	.string "Silicobra, Graveler, Larvitar…$"
@@ -614,7 +614,7 @@ gText_ThisIsntRandom_TheDocumentationCalledOut::
 gText_ThisIsntRandom_AndGroundTypesTo::
 	.string "*sigh* And ground types to trigger\n"
 	.string "Earthquakes. Those bastards used this\l"
-	.string "system to attack Robinwilltunnel.$"
+	.string "system to attack Alcatraz.$"
 
 gText_ThisIsntRandom_OhNoIDidnt::
 	.string "Oh no. I didn’t recognize the earlier\n"

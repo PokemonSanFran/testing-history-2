@@ -173,7 +173,7 @@
       "x": 13,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_MAUVILLE_CITY_STATE",
+      "var": "VAR_TOWER_RAID_STATE",
       "var_value": "0",
       "script": "ImIn_CheckPlayer_Script"
     },

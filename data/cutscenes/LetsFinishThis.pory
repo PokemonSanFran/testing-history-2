@@ -7,8 +7,10 @@ const DRASNA = 16
 const SIEBOLD = 17
 const WIKSTROM = 18
 
+const FLAG_HIDE_POLICE = FLAG_TEMP_2
+
 script LetsFinishThis_ObjectSetUp_Script {
-    setflag(FLAG_TEMP_2) //hide police
+    setflag(FLAG_HIDE_POLICE) 
 
         setobjectxy(ARIANA,32,12)
         setobjectxyperm(ARIANA,32,12)
@@ -148,7 +150,7 @@ script LetsFinishThis_StartPlanning_Dialogue {
         applymovement(WIKSTROM, LetsFinishThis_WalkAway)
         waitmovement(WIKSTROM)
         
-        addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_STORYLINE_STATE,STORY_BEFORE_SABRINA_BREAKIN)
 
         release
         end
@@ -238,7 +240,7 @@ text gText_LetsFinishThis_WhatAbout {
 }
 
 text gText_LetsFinishThis_WereOntoSomething {
-    format("We’re onto something. You should go prepare! Once we start, I don’t think there’s any turning back. Meet us outside Koga’s house in Sunset.")
+    format("We’re onto something. You should go prepare! Once we start, I don’t think there’s any turning back. Meet us outside Sabrina’s house in Sunset.")
 }        
 
 movement LetsFinishThis_WalkToPlayer {

@@ -27,7 +27,7 @@ script Alameda_ObjectVisibility_Script {
         case WHY_ARE_YOU_HELPING_THEM: goto(WhyAreYouHelpingThem_ObjectDebriefSetUp_Script)
         case POST_EARTHQUAKE: call(Earthquake_HideObject_Script)
         case POST_EARTHQUAKE_RESCUE: call(Earthquake_HideObject_Script)
-        case POST_LETS_FINISH_THIS: call(LetsFinishThis_ObjectSetUp_Script)
+        case POST_THIS_ISNT_RANDOM: call(LetsFinishThis_ObjectSetUp_Script)
         default:
             call(AssholesHome_HideObject_Script)
             call(SurvivalChance333_HideObject_Alameda_Script)

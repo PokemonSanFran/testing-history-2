@@ -76,7 +76,7 @@ WaitEvenThen_PrepareBossEncounter_Dialogue::
 	applymovement 6, Common_Movement_WalkDown
 	playmoncry SPECIES_EXCADRILL, CRY_MODE_ENCOUNTER
 	waitmoncry
-	addvar VAR_DEWFORD_TOWN_STATE, 1
+	setvar VAR_UNDERGROUNDLAB_STATE, SAVE_BEFORE_DYNAMAX
 	msgbox gText_IGuessWeShouldBeNiceNow_Roar, MSGBOX_AUTOCLOSE
 	setobjectxy 1, 34, 6
 	setobjectxyperm 1, 34, 6
@@ -131,7 +131,7 @@ WaitEvenThen_BossEncounter_Script_3:
 
 
 WaitEvenThen_ClearBossPokemon_Script::
-	addvar VAR_DEWFORD_TOWN_STATE, 1
+	setvar VAR_UNDERGROUNDLAB_STATE, DEFEATED_DYNAMAX
 	lock
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
@@ -143,8 +143,8 @@ WaitEvenThen_ClearBossPokemon_Script::
 
 WaitEvenThen_PostBossDialogue::
 	lock
-	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_ALAMEDA_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_POST_DYNAMAX_BOSS
+	setvar VAR_ALAMEDA_STATE, POST_THIS_ISNT_RANDOM
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 1, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceDown
