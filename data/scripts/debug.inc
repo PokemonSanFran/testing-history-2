@@ -59,6 +59,8 @@ Debug_Script_1::
 
 
 Debug_Script_2::
+    setweather(WEATHER_RAIN)
+    doweather
 	end
 
 

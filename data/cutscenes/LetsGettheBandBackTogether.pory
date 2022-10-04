@@ -176,7 +176,7 @@ text gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver {
 
 
 text gText_LetsGetTheBandBackTogether_BeforeWeStart {
-    format("Before we start, we should start rallying the people behind our cause. You’re the champ, after all, let’s put that clout to work.")
+    format("We should start rallying the people behind our cause. You’re the champ, after all, let’s put that clout to work.")
 }
 
 text gText_LetsGetTheBandBackTogether_OhYeahOfCourse {
@@ -184,7 +184,7 @@ text gText_LetsGetTheBandBackTogether_OhYeahOfCourse {
 }
 
 text gText_LetsGetTheBandBackTogether_IllWriteUpAPost {
-    format("I’ll write up a post and you can share it. Once you do, though, Psfbadteam is probably gonna cut you off, so if there are any perks you wanna use before you lose access you should do it now. Let me know when you’re good to go.")
+    format("I’ll write up a post and you can share it. Once you do, though, Ycombinator is probably gonna cut you off, so if there are any perks you wanna use before you lose access you should do it now. Let me know when you’re good to go.")
 }
 
 text gText_LetsGetTheBandBackTogether_ReadyToGoLive {

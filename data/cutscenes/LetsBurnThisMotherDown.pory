@@ -262,7 +262,7 @@ text gText_LetsBurnThisMotherDown_IKnowYouWant {
 }
 
 text gText_LetsBurnThisMotherDown_YouDontThinkWeve {
-    format("You don't think we've tried that? You just got here, {PLAYER}. People here in Alcatraz, died trying to do things the right way. They don't care.")
+    format("You don't think we've tried that? You just got here, {PLAYER}. People here in Alcatraz died trying to do things the right way. They don't care.")
 }
 
 text gText_LetsBurnThisMotherDown_TheyIgnoreUs {
