@@ -178,8 +178,8 @@ gText_Battle8_GreatToSeeYouToo::
 	.string "were you talking about?$"
 
 gText_Battle8_PrimaryAttraction::
-	.string "Primary attraction of Fishermanswharf\n"
-	.string "- the Seven Sisters Challenge. It used\l"
+	.string "One of the big attractions of SanFran -\n"
+	.string "the Seven Sisters Challenge. It used\l"
 	.string "to be a lot more popular when 1v1\l"
 	.string "battles were a novelty- before the\l"
 	.string "corporations declared it as the\l"

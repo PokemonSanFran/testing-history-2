@@ -556,7 +556,7 @@ gText_IGuessWeShouldBeNiceNow_SomethingIsMissing::
 
 gText_IGuessWeShouldBeNiceNow_IfIWereACrustyOld::
 	.string "If I were a crusty old dude trying to\n"
-	.string "grift Psfbadguy out of some cash,\l"
+	.string "grift YCombinator out of some cash,\l"
 	.string "there would be something guarding this\l"
 	.string "book, right?$"
 

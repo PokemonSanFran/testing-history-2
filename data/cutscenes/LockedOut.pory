@@ -91,7 +91,7 @@ text gText_LockedOut_ImLockedOut {
     format("I’m locked out!")
 }
 text gText_LockedOut_ThatsActuallyWhy {
-    format("That’s actually why I called. I know you had a lot to lose with this, and I was right: Psfbadguy is straight up going to disown you. If you need someplace to go, you can absolutely crash with me in Alameda.")
+    format("That’s actually why I called. I know you had a lot to lose with this, and I was right: YCombinator is straight up going to disown you. If you need someplace to go, you can absolutely crash with me in Alameda.")
 }
 text gText_LockedOut_IActuallyHadnt {
     format("I actually hadn’t thought that far ahead… but thank you, a lot, Archer.")

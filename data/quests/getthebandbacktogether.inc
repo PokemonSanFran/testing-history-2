@@ -32,7 +32,7 @@ Quest_GetTheBand_HideBikerB_Script_1:
 
 
 Quest_GetTheBand_HideBikerC_Script::
-	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_GETTHEBANDBACKTOGETHER, SUB_QUEST_2
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_GETTHEBANDBACKTOGETHER, SUB_QUEST_3
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_GetTheBand_HideBikerC_Script_1
 	return
@@ -43,7 +43,7 @@ Quest_GetTheBand_HideBikerC_Script_1:
 
 
 Quest_GetTheBand_HideBikerD_Script::
-	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_GETTHEBANDBACKTOGETHER, SUB_QUEST_2
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_GETTHEBANDBACKTOGETHER, SUB_QUEST_4
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_GetTheBand_HideBikerD_Script_1
 	return
@@ -54,7 +54,7 @@ Quest_GetTheBand_HideBikerD_Script_1:
 
 
 Quest_GetTheBand_HideBikerE_Script::
-	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_GETTHEBANDBACKTOGETHER, SUB_QUEST_2
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_GETTHEBANDBACKTOGETHER, SUB_QUEST_5
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_GetTheBand_HideBikerE_Script_1
 	return

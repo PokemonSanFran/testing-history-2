@@ -158,7 +158,7 @@ text gText_EnterMorty_ThatBattleWasHype {
 }
 
 text gText_EnterMorty_KeepingTheBabiesSafe {
-        format("Protect is for keeping the babies safe, like an eggshell! Just don't use it over and over and over again, ‘cause it gets real janky, real quick, like an eggshell.")
+        format("Protect is for keeping the babies safe, like an eggshell! Just don't use it over and over and over again, ‘cause it gets real jank, real quick, like an eggshell.")
 }
 
 text gText_EnterMorty_HeadOutToHoenn {

@@ -163,11 +163,11 @@ gText_AlwaysWatchingWazowski_IImagineAllTheScreens::
 	.string "I imagine all the screens can be quite\n"
 	.string "overwhelming. I never really think\l"
 	.string "about how many we have until somebody\l"
-	.string "new comes to visit.$"
+	.string "new visits.$"
 
 gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime::
 	.string "I wish Oak had picked a different time\n"
-	.string "to tell you to come visit. I have at\l"
+	.string "to tell you to come see me. I have at\l"
 	.string "least 493 more minutes of work, and\l"
 	.string "don't have the 12 minutes required to\l"
 	.string "appropriately entertain you...$"

@@ -667,8 +667,8 @@ gText_KogaRaisonDetre_TheBroadcasts::
 
 gText_KogaRaisonDetre_MyKidsBeingObsessed::
 	.string "Yes. My kids being obsessed with you\n"
-	.string "isn't an accident. We're building\l"
-	.string "rockstars.$"
+	.string "isn't an accident. We're building rock\l"
+	.string "stars.$"
 
 gText_KogaRaisonDetre_WereGoingToMake::
 	.string "We're going to make SanFran the region\n"

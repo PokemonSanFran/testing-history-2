@@ -89,7 +89,7 @@ script AaandWereBack_FerryRepaired_Dialogue {
 }
 
 text gText_AaandWereBack_GotAllThree {
-    format("I've got all three Badges from this side of the mainland. The ferry to Oakland looks like it's going to be broken utnil at least tomorrow, and I can't head west without Go-Goggles. It's been a long day... I think I should head back to Southbay and call it a night.")
+    format("I've got all three Badges from this side of the pennisula. The ferry to Oakland looks like it's going to be broken until at least tomorrow, and I can't head west without Go-Goggles. It's been a long day... I think I should head back to Southbay and call it a night.")
 }
 
 text gText_AaandWereBack_Question {

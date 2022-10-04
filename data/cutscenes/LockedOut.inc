@@ -106,7 +106,7 @@ gText_LockedOut_ImLockedOut::
 gText_LockedOut_ThatsActuallyWhy::
 	.string "That’s actually why I called. I know you\n"
 	.string "had a lot to lose with this, and I was\l"
-	.string "right: Psfbadguy is straight up going\l"
+	.string "right: YCombinator is straight up going\l"
 	.string "to disown you. If you need someplace\l"
 	.string "to go, you can absolutely crash with me\l"
 	.string "in Alameda.$"

@@ -228,4 +228,7 @@ gText_OldAssholeAppears_NowWereEven::
 	.string "Now we're even after I ditched\n"
 	.string "breakfast. All right, time to go\l"
 	.string "challenge the Fortpoint Gym. So glad\l"
-	.string "Daddy sent me these Go-Goggles!$"
+	.string "Daddy sent me these Go-Goggles,\l"
+	.string "because they're impossible to find new.\l"
+	.string "And like hell I'm gonna get one from the\l"
+	.string "locals...$"

@@ -127,7 +127,7 @@ text gText_Hang20_HeyYouNewHere{
     format("Hey you new here? You don't look like you're from here.")
 }
 text gText_Hang20_YeahOrre{
-    format("Yeah, I'm from Oree.")
+    format("Yeah, I'm from Orre.")
 }
 text gText_Hang20_OhDamnThatsLandLocked{
     format("Oh damn, that's land locked, right?")

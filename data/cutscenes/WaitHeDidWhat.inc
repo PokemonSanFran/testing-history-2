@@ -85,7 +85,7 @@ WaitHeDidWhat_CalledToSkybox_Script::
 
 
 WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
-	setvar VAR_STORYLINE_STATE, STORY_WATCH_SEMIFINAL
+	setvar VAR_STORYLINE_STATE, STORY_READY_FINALS
 	lock
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot

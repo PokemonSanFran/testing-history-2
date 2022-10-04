@@ -115,10 +115,11 @@ gText_FlyingBlind_EverSinceYouPeople::
 	.string "Go-Goggles are always out of stock.\l"
 	.string "They let you see through all this\l"
 	.string "nonsense. You could getcha a Pokémon\l"
-	.string "that knows Defog but uh, most of ‘em\l"
-	.string "live on the other side of Karl! Karl\l"
-	.string "don't come through every day though,\l"
-	.string "so you could try to wait it out.$"
+	.string "that knows Defog, or meet a local takes\l"
+	.string "a liking to you and offers to lend you\l"
+	.string "theirs. Karl don't come through every\l"
+	.string "day though, so you could try to wait it\l"
+	.string "out.$"
 
 gText_FlyingBlind_GottaFindSomebody::
 	.string "(I've gotta find somebody that has\n"

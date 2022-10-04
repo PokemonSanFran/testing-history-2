@@ -476,7 +476,7 @@ text gText_KogaRaisonDetre_TheBroadcasts {
     format("The broadcasts?")
 }
 text gText_KogaRaisonDetre_MyKidsBeingObsessed {
-    format("Yes. My kids being obsessed with you isn't an accident. We're building rockstars.")
+    format("Yes. My kids being obsessed with you isn't an accident. We're building rock stars.")
 }
 text gText_KogaRaisonDetre_WereGoingToMake {
     format("We're going to make SanFran the region where rock stars are born. Trainers are going to want to emulate you! The region will be richer for it. It can afford to uplift all of its citizens to something much much greater. You're an investment, {PLAYER}, but it's all part of a much bigger play.")

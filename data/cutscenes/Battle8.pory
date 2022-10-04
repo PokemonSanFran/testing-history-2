@@ -160,7 +160,7 @@ text gText_Battle8_GreatToSeeYouToo {
 }
 
 text gText_Battle8_PrimaryAttraction {
-    format("Primary attraction of Fishermanswharf - the Seven Sisters Challenge. It used to be a lot more popular when 1v1 battles were a novelty- before the corporations declared it as the official League format.")
+    format("One of the big attractions of SanFran - the Seven Sisters Challenge. It used to be a lot more popular when 1v1 battles were a novelty- before the corporations declared it as the official League format.")
 }
 
 text gText_Battle8_SoWhatsTheChallenge {

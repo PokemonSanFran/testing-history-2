@@ -63,6 +63,7 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
+    givecustommon(SPECIES_PANGORO,80,ITEM_CHOICE_BAND,ITEM_POKE_BALL,NATURE_ADAMANT,2,0,252,0,252,0,4,31,31,31,31,31,31,MOVE_POISON_JAB,MOVE_DRAIN_PUNCH,MOVE_SUPERPOWER,MOVE_THUNDER_PUNCH)
     end
 }
 script Debug_Script_2{

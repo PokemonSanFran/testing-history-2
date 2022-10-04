@@ -17,14 +17,10 @@ Lakemerritt_ObjectVisibility_Script_8:
 Lakemerritt_ObjectVisibility_Script_6:
 	compare VAR_STORYLINE_STATE, STORY_EAST_SANFRAN_COMPLETE
 	goto_if_lt Lakemerritt_ObjectVisibility_Script_4
-	setweather WEATHER_RAIN
-	doweather
 	call Manhunt_HideGiovanni_Script
 	return
 
 Lakemerritt_ObjectVisibility_Script_2:
-	setweather WEATHER_SUNNY
-	doweather
 	return
 
 Lakemerritt_ObjectVisibility_Script_3:

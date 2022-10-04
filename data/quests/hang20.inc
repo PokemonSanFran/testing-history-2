@@ -134,7 +134,7 @@ gText_Hang20_HeyYouNewHere::
 	.string "you're from here.$"
 
 gText_Hang20_YeahOrre::
-	.string "Yeah, I'm from Oree.$"
+	.string "Yeah, I'm from Orre.$"
 
 gText_Hang20_OhDamnThatsLandLocked::
 	.string "Oh damn, that's land locked, right?$"

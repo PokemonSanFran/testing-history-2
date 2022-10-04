@@ -19,7 +19,7 @@ script ANewStrike_PlayerSelf_Dialogue {
     
 text gText_ANewStrike_ConstructionCrew {
     format("BREAKING NEWS: Chasecenter construction crew has declared a strike.\p
-     Their demands at this time are unclear, but this puts the upcoming dates of the Psfbadguy League Championship in danger. Anonymous sources claim that TeamRocket is responsible for instigating this protest, but we'll have more information as the situation develops.","1_latin",175)
+     Their demands at this time are unclear, but this puts the upcoming dates of the YCombinator League Championship in danger. Anonymous sources claim that TeamRocket is responsible for instigating this protest, but we'll have more information as the situation develops.","1_latin",175)
 }
 
 text gText_ANewStrike_OhDamn {

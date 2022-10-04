@@ -100,8 +100,8 @@ AaandWereBack_FerryRepaired_Dialogue_2:
 
 gText_AaandWereBack_GotAllThree::
 	.string "I've got all three Badges from this side\n"
-	.string "of the mainland. The ferry to Oakland\l"
-	.string "looks like it's going to be broken utnil\l"
+	.string "of the pennisula. The ferry to Oakland\l"
+	.string "looks like it's going to be broken until\l"
 	.string "at least tomorrow, and I can't head\l"
 	.string "west without Go-Goggles. It's been a\l"
 	.string "long day... I think I should head back\l"

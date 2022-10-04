@@ -109,7 +109,7 @@ text gText_AssholesHome_ReallyHopingLastTime {
 }
 
 text gText_AssholesHome_JustCurious {
-    format("Just curious if you're ready for Morty.")
+    format("Just curious if you're ready for the next Gym Leader.")
 }
 
 text gText_AssholesHome_IDoubtYoureGoing {

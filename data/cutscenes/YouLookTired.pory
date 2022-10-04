@@ -251,7 +251,7 @@ text gText_YouLookTired_ImNotReally {
 }
 
 text gText_YouLookTired_Nonsense {
-    format("Nonsense. I'll pull some data from DoorDash and find something to suite your tastes!")
+    format("Nonsense. I'll pull some data from DoorDash and find something to suit your tastes!")
 }
 
 text gText_YouLookTired_YouCanDoThat {

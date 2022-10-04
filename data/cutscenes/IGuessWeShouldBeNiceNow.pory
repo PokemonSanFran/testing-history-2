@@ -479,7 +479,7 @@ text gText_IGuessWeShouldBeNiceNow_SomethingIsMissing {
 }
 
 text gText_IGuessWeShouldBeNiceNow_IfIWereACrustyOld {
-    format("If I were a crusty old dude trying to grift Psfbadguy out of some cash, there would be something guarding this book, right?")
+    format("If I were a crusty old dude trying to grift YCombinator out of some cash, there would be something guarding this book, right?")
 }
 
 text gText_IGuessWeShouldBeNiceNow_Roar {

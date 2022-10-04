@@ -139,11 +139,11 @@ text gText_AlwaysWatchingWazowski_WelcomePlayer{
 }
 
 text gText_AlwaysWatchingWazowski_IImagineAllTheScreens{
-    format("I imagine all the screens can be quite overwhelming. I never really think about how many we have until somebody new comes to visit.")
+    format("I imagine all the screens can be quite overwhelming. I never really think about how many we have until somebody new visits.")
 }
 
 text gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime{
-    format("I wish Oak had picked a different time to tell you to come visit. I have at least 493 more minutes of work, and don't have the 12 minutes required to appropriately entertain you...")
+    format("I wish Oak had picked a different time to tell you to come see me. I have at least 493 more minutes of work, and don't have the 12 minutes required to appropriately entertain you...")
 }
 
 text gText_AlwaysWatchingWazowski_IWishYouHadVisited{

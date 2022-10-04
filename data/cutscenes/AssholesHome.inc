@@ -126,7 +126,8 @@ gText_AssholesHome_ReallyHopingLastTime::
 	.string "the last time. What do you want?$"
 
 gText_AssholesHome_JustCurious::
-	.string "Just curious if you're ready for Morty.$"
+	.string "Just curious if you're ready for the\n"
+	.string "next Gym Leader.$"
 
 gText_AssholesHome_IDoubtYoureGoing::
 	.string "I doubt you're going to be able to\n"

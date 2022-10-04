@@ -158,7 +158,7 @@ gText_EnterMorty_KeepingTheBabiesSafe::
 	.string "Protect is for keeping the babies safe,\n"
 	.string "like an eggshell! Just don't use it over\l"
 	.string "and over and over again, ‘cause it gets\l"
-	.string "real janky, real quick, like an eggshell.$"
+	.string "real jank, real quick, like an eggshell.$"
 
 gText_EnterMorty_HeadOutToHoenn::
 	.string "I'm gonna head out to Hoenn and breed a\n"

@@ -320,7 +320,7 @@ gText_YouLookTired_ImNotReally::
 
 gText_YouLookTired_Nonsense::
 	.string "Nonsense. I'll pull some data from\n"
-	.string "DoorDash and find something to suite\l"
+	.string "DoorDash and find something to suit\l"
 	.string "your tastes!$"
 
 gText_YouLookTired_YouCanDoThat::
