@@ -246,7 +246,7 @@ text gText_MaskOff_IFormedTeamRocket {
     format("I formed TeamRocket as a response to Ycombinator’s growing influence over the region a few years ago. ")
 }
 text gText_MaskOff_ButWhyGo {
-    format("But why go into hiding as Wikstrom?")
+    format("But why go into hiding as Giovanni?")
 }
 text gText_MaskOff_IHidMyIdentity {
     format("I hid my identity because I was worried about my influence diluting the message. If people could unite under a symbol like Giovanni, then in theory, anybody could lead TeamRocket if something happened to me. And if the Elite Four wasn’t directly connected to TeamRocket, then they couldn’t retaliate against the others.")
@@ -281,7 +281,7 @@ text gText_MaskOff_HeWorkedInThe {
 }
 
 text gText_MaskOff_WatchingHimBattle {
-    format("Watching him battle was so awesome! I loved watching use Ditto to confuse 'em before knocking them on their ass with super powerful moves... he would end matches so fast.")
+    format("Watching him battle was so awesome! I loved watching him use Ditto to confuse 'em before knocking them on their ass with super powerful moves... he would end matches so fast.")
 }
 
 //SECTION D
@@ -305,7 +305,7 @@ text gText_MaskOff_IKnowHeUsedToLive {
 }
 
 text gText_MaskOff_ItUsedToBeSuper {
-    format("It used to be super common to see him zipping around in the skies. Wikstrom is one of the few trainers that flies on his Pokémon to travel around!")
+    format("He sometimes trained around here. Afterwards, he and his Pokemon would take a walk and relax by Lakemerritt.")
 }
 
 //SECTION F
@@ -315,7 +315,7 @@ text gText_MaskOff_IMissWorking {
 }
 
 text gText_MaskOff_HeWouldLeaveRight {
-    format("He would leave right after, even when it was late. He liked using Dusk Balls to do his captures, so after dinner was the best time.")
+    format("He would leave right after, to stock up on supplies at his favorite shop in the Castro. He liked using Dusk Balls to do his captures, so after dinner was the best time.")
 }
 
 //SECTION G

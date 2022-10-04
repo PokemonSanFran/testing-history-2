@@ -115,7 +115,7 @@ text gText_LetsFixThis_SoundsLikeIt {
     format("Sounds like it could be fun. You going to go?")
 }
 text gText_LetsFixThis_IMightGoALittle {
-    format("I might go a little later. I don’t love warehouse raves, but this is a special occasion, you know? The other reason I’m here is actually to tell you Ariana new initiatives.")
+    format("I might go a little later. I don’t love warehouse raves, but this is a special occasion, you know? Actually I wanna tell you about Ariana's new initiatives.")
 }
 text gText_LetsFixThis_WhatreThey {
     format("What’re they up to?")
