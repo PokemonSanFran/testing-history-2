@@ -109,7 +109,7 @@ YouRealizeWereEvilRight_Open_Dialogue::
 	closemessage
 	applymovement 9, YouRealizeWereEvilRight_MoveAwayFromTable
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_HidingBehindTheirMask
 	setvar VAR_0x8000, MUGSHOT_LANCE

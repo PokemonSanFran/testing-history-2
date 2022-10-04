@@ -57,7 +57,6 @@ YouRealizeTheyreEvilRight_Basement_SetUpObjects_Script::
 YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	lock
 	setvar VAR_ALCATRAZ_STATE, ARCHER_SUMMONED_ALCATRAZ
-	giveitem ITEM_HM03
 	clearflag FLAG_ARCHER_CALL_ALCATRAZ
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot

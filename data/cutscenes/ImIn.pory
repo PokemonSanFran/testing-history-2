@@ -301,7 +301,7 @@ script ImIn_InteractDoor_Script {
 
 script ImIn_EnterCorrectCode_Script {
     lock
-        addvar(VAR_TOWER_RAID_STATE,SABRINA_WARP_DOOR_UNLOCKED)
+        setvar(VAR_TOWER_RAID_STATE,SABRINA_WARP_DOOR_UNLOCKED)
 
         playse(SE_DING_DONG)
         waitse

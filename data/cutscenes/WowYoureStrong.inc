@@ -104,7 +104,9 @@ gText_WowYoureStrong_OhUhThanksALot::
 gText_WowYoureStrong_WhereMyManners::
 	.string "Hah! Oh my, I'm sorry. Where are my\n"
 	.string "manners? My name is Rose, and I'm the\l"
-	.string "YCombinator League Commissioner.$"
+	.string "YCombinator League Commissioner,\l"
+	.string "appointed by our corporate sponsors,\l"
+	.string "Twitter, Amazon, and Uber.$"
 
 gText_WowYoureStrong_ShouldHaveKnown::
 	.string "Oh! I guess I should have known that.\n"

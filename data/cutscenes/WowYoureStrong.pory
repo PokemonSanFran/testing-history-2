@@ -82,7 +82,7 @@ text gText_WowYoureStrong_OhUhThanksALot {
 }
 
 text gText_WowYoureStrong_WhereMyManners {
-    format("Hah! Oh my, I'm sorry. Where are my manners? My name is Rose, and I'm the YCombinator League Commissioner.")
+    format("Hah! Oh my, I'm sorry. Where are my manners? My name is Rose, and I'm the YCombinator League Commissioner, appointed by our corporate sponsors, Twitter, Amazon, and Uber.")
 }
 
 text gText_WowYoureStrong_ShouldHaveKnown {

@@ -114,7 +114,7 @@ script OneDown_Finish_Dialogue {
         applymovement(DRASNA,Common_Movement_FaceLeft)
         waitmovement(DRASNA)
 
-        setvar(VAR_STORYLINE_STATE,STORY_1ST_TAKEDOWN)
+        setvar(VAR_STORYLINE_STATE,STORY_PRE_EARTHQUAKE)
         release
         end
 }

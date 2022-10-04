@@ -389,11 +389,11 @@ gText_SpeechSpeechSpeech_HolyShit::
 
 gText_SpeechSpeechSpeech_IsAnybodyHurt::
 	.string "Is anybody hurt? …no? Wonderful. Let’s\n"
-	.string "continue. Psfnatrival’s restoration\l"
-	.string "project has been going excellently,\l"
-	.string "and we’re going to use that momentum\l"
-	.string "for our next stage. It’s time to take\l"
-	.string "the fight to Ycombinator!$"
+	.string "continue. Archer’s restoration project\l"
+	.string "has been going excellently, and we’re\l"
+	.string "going to use that momentum for our\l"
+	.string "next stage. It’s time to take the fight\l"
+	.string "to Ycombinator!$"
 
 gText_SpeechSpeechSpeech_Yeah::
 	.string "Yeah!$"

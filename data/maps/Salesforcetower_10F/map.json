@@ -197,8 +197,8 @@
       "x": 8,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_MAUVILLE_CITY_STATE",
-      "var_value": "5",
+      "var": "VAR_TOWER_RAID_STATE",
+      "var_value": "TEAM_ENTERED_SALESFORCETOWER",
       "script": "ImIn_OfficeReveal_Dialogue"
     }
   ],

@@ -127,9 +127,8 @@ gText_LetsFixThis_SoundsLikeIt::
 gText_LetsFixThis_IMightGoALittle::
 	.string "I might go a little later. I don’t love\n"
 	.string "warehouse raves, but this is a special\l"
-	.string "occasion, you know? The other reason\l"
-	.string "I’m here is actually to tell you Ariana\l"
-	.string "new initiatives.$"
+	.string "occasion, you know? Actually I wanna\l"
+	.string "tell you about Ariana's new initiatives.$"
 
 gText_LetsFixThis_WhatreThey::
 	.string "What’re they up to?$"

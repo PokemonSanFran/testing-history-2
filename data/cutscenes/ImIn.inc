@@ -265,7 +265,7 @@ ImIn_InteractDoor_Script_2:
 
 ImIn_EnterCorrectCode_Script::
 	lock
-	addvar VAR_TOWER_RAID_STATE, SABRINA_WARP_DOOR_UNLOCKED
+	setvar VAR_TOWER_RAID_STATE, SABRINA_WARP_DOOR_UNLOCKED
 	playse SE_DING_DONG
 	waitse
 	playse SE_SLIDING_DOOR

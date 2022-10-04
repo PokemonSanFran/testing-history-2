@@ -15,6 +15,16 @@ ThisIsntRandom_CheckDoor_Script_3:
 
 
 ThisIsntRandom_HideObject_AboveGround_Script::
+	compare VAR_STORYLINE_STATE, STORY_POST_EARTHQUAKE
+	goto_if_ne ThisIsntRandom_HideObject_AboveGround_Script_1
+	return
+
+ThisIsntRandom_HideObject_AboveGround_Script_1:
+	compare VAR_UNDERGROUNDLAB_STATE, LAB_NOT_DISCOVERED
+	goto_if_ne ThisIsntRandom_HideObject_AboveGround_Script_3
+	return
+
+ThisIsntRandom_HideObject_AboveGround_Script_3:
 	setflag FLAG_TEMP_1
 	return
 

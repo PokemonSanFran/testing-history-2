@@ -149,20 +149,24 @@ script KogaRaisonDetre_Wine_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_KogaRaisonDetre_HowMuch)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_KogaRaisonDetre_IJustRecentlyMet)
-
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)
     msgbox(gText_KogaRaisonDetre_ThatLastPartIsImportant)
 
     setvar(VAR_0x8000, MUGSHOT_HILDA)
     callnative(DrawMugshot)
-    msgbox(gText_KogaRaisonDetre_WhatDoYouMean)
+    msgbox(gText_KogaRaisonDetre_Shareholders)
 
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_YeahTheCorporate)
+
+    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_WhatDoYouMean)
+
+    setvar(var_0x8000, mugshot_n)
+    callnative(drawmugshot)
     msgbox(gText_KogaRaisonDetre_DoYouKnowHow)
 
     setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -192,10 +196,14 @@ script KogaRaisonDetre_Wine_Dialogue {
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)
     msgbox(gText_KogaRaisonDetre_WereGoingToMake)
+    callnative(ClearMugshot)
+
+    applymovement(KOGA,Common_Movement_FaceAwayPlayer)
+    waitmovement(KOGA)
 
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)
-    msgbox(gText_KogaRaisonDetre_IBroughtYouHere)
+    msgbox(gText_KogaRaisonDetre_IHaveToBelieve)
     callnative(ClearMugshot)
     closemessage
     playse(SE_DING_DONG)
@@ -428,31 +436,36 @@ text gText_KogaRaisonDetre_IveBeenStruggling {
     format("I've been struggling to find the right word for it, but suffering is good. Tenderloin, Oakland… so many of the places I've been to so far are hurting.")
 }
 text gText_KogaRaisonDetre_ItsBeenSaidThat {
-    format("It's been said that most skilled Trainers are unusually compassionate, and I guess that means you too!")
+    format("I've noticed Bianca that doesn't quite see the region the way you do! I admire your compassion.")
 }
 text gText_KogaRaisonDetre_ToughToBeAround {
     format("It's tough to be around, especially as you guys are treating me so well, you know? Do I really deserve all of this just because I'm decent at battles?")
 }
 text gText_KogaRaisonDetre_ICompletelyUnderstand {
-    format("I completely understand, trust me.")
+    format("I completely understand, trust me. When I worked in Chinatown, it wasn't this bad, but despite my best efforts, things have gotten worse.")
 }
 text gText_KogaRaisonDetre_ItsMuchEasier {
-    format("It's much easier to have these talks over wine.")
+    format("Come, let's talk.")
 }
 text gText_KogaRaisonDetre_ComeSit {
-    format("Come, sit.")
+    format("Over here!")
 }
 text gText_KogaRaisonDetre_IPickedOut {
-    format("I picked out an excellent Chardonnay for you. Come have a seat.")
+    format("Take a seat.")
 }
 text gText_KogaRaisonDetre_HowMuch {
     format("How much do you know about Rose?")
 }
-text gText_KogaRaisonDetre_IJustRecentlyMet {
-    format("I just recently met them. They're the CEO, and the League Commissioner, and prefer working alongside people.")
-}
+
 text gText_KogaRaisonDetre_ThatLastPartIsImportant {
-    format("That last part is important - Rose grew up here. They take great pride in SanFran, and want all of their work at YCombinator to go towards making the entire region a better place to live. It's why we acquired the Pokémon League. Rose saw its potential and knew we could use its draw and our resources to make it even better, and bring in Trainers like you.")
+    format("They don't have deep roots here, but they're a brilliant business person. I don't always see eye to eye with him, but they've never let down a shareholder.")
+       
+text gText_KogaRaisonDetre_Shareholders{
+    format("What shareholders?")
+}
+
+text gText_KogaRaisonDetre_YeahTheCorporate{
+   format("Yeah, the corporate sponsors who helped us acquire the Pokémon League. Rose saw its potential and knew we use our resources to make it even bigger. Amazon, Uber and Facebook all quickly got on board.")
 }
 text gText_KogaRaisonDetre_WhatDoYouMean {
     format("What do you mean?")
@@ -463,7 +476,7 @@ text gText_KogaRaisonDetre_DoYouKnowHow {
 text gText_KogaRaisonDetre_IsntItMostly {
     format("Isn't it mostly manufacturing?")
 }
-text gText_KogaRaisonDetre_UsedToBe {
+text gText_KogaRaisonDetre_UsedToBe{
     format("Used to be. But after Red took the League by storm back in '96, the League has been the primary economic driver. Estimates show that revenue from the Pokémon League is about to eclipse tourism in Alola too.")
 }
 text gText_KogaRaisonDetre_WoahWaitBigger {
@@ -479,7 +492,10 @@ text gText_KogaRaisonDetre_MyKidsBeingObsessed {
     format("Yes. My kids being obsessed with you isn't an accident. We're building rock stars.")
 }
 text gText_KogaRaisonDetre_WereGoingToMake {
-    format("We're going to make SanFran the region where rock stars are born. Trainers are going to want to emulate you! The region will be richer for it. It can afford to uplift all of its citizens to something much much greater. You're an investment, {PLAYER}, but it's all part of a much bigger play.")
+    format("Ycombinator is going to make SanFran the region where Trainers come to become rock stars. SanFran's new talent will attract the best and the brightest, and the region will be richer for it. We can uplift all of SanFran's citizens to something much much greater. You're an investment, {PLAYER}, but it's all part of a much bigger play.")
+}
+text gText_KogaRaisonDetre_IPray{
+    format("*sigh* I choose to believe that this is for the greater good.")
 }
 text gText_KogaRaisonDetre_IBroughtYouHere {
     format("I brought you here to thank you {PLAYER}. You're part of the puzzle that is going to bring these people out of poverty. You're part of the solution.")
@@ -524,7 +540,7 @@ text gText_KogaRaisonDetre_OhDamnYouWerent {
     format("Oh damn, you weren't kidding.")
 }
 text gText_KogaRaisonDetre_IDontKnowWhy {
-    format("I don't know why they bother. Our parents are never even home. They're trying so hard to save the world, they're totally ignoring the one right in front of them.")
+    format("I don't know why they bother. Our parents are never even home. They're trying so hard to save the world, they're totally ignoring the one right in front of them.\nI wish he would go back to being a Gym Leader!")
 }
 text gText_KogaRaisonDetre_AndNowWeGoTo {
     format("And now we go to Da Lin, for more details about last night's riots. ")

@@ -157,10 +157,10 @@ gText_LetsFinishThis_ButInnocentPeople::
 	.string "TeamRocket? This is insane!$"
 
 gText_LetsFinishThis_PerfevtlySane::
-	.string "Perfectly sane. It worked on\n"
-	.string "Robinwilltunnel didn’t it? There’s no\l"
-	.string "peaceful path forward. Do you all get\l"
-	.string "it now? They’re poised to kill!$"
+	.string "Perfectly sane. It worked on Alcatraz\n"
+	.string "didn’t it? There’s no peaceful path\l"
+	.string "forward. Do you all get it now? They’re\l"
+	.string "poised to kill!$"
 
 gText_LetsFinishThis_ButTheyWerentAlways::
 	.string "But they weren’t always, were they?$"

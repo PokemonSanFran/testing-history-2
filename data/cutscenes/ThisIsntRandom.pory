@@ -16,7 +16,12 @@ script ThisIsntRandom_CheckDoor_Script {
 }
 
 script ThisIsntRandom_HideObject_AboveGround_Script {
-    setflag(FLAG_HIDE_SEARCH)
+
+    if (var(VAR_STORYLINE_STATE) != STORY_POST_EARTHQUAKE){
+        if (var(VAR_UNDERGROUNDLAB_STATE) != LAB_NOT_DISCOVERED){
+            setflag(FLAG_HIDE_SEARCH)
+        }
+    }
 }
 
 script ThisIsntRandom_ObjectSetUp_Script {

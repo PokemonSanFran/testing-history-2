@@ -1,3 +1,4 @@
+//PSF TODO whenever the announce talks, its an ad read, brought to you by one of the big companies
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ROSE = 1 //FLAG_TEMP_1
 const BIANCA = 2 //FLAG_TEMP_2

@@ -181,10 +181,9 @@ gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver::
 	.string "region anymore.$"
 
 gText_LetsGetTheBandBackTogether_BeforeWeStart::
-	.string "Before we start, we should start\n"
-	.string "rallying the people behind our cause.\l"
-	.string "You’re the champ, after all, let’s put\l"
-	.string "that clout to work.$"
+	.string "We should start rallying the people\n"
+	.string "behind our cause. You’re the champ,\l"
+	.string "after all, let’s put that clout to work.$"
 
 gText_LetsGetTheBandBackTogether_OhYeahOfCourse::
 	.string "Oh, yeah, of course. What were you\n"
@@ -192,7 +191,7 @@ gText_LetsGetTheBandBackTogether_OhYeahOfCourse::
 
 gText_LetsGetTheBandBackTogether_IllWriteUpAPost::
 	.string "I’ll write up a post and you can share it.\n"
-	.string "Once you do, though, Psfbadteam is\l"
+	.string "Once you do, though, Ycombinator is\l"
 	.string "probably gonna cut you off, so if there\l"
 	.string "are any perks you wanna use before you\l"
 	.string "lose access you should do it now. Let\l"

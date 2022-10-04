@@ -83,7 +83,7 @@ OneDown_Finish_Dialogue::
 	applymovement 8, Common_Movement_FaceRight
 	applymovement 2, Common_Movement_FaceLeft
 	waitmovement 2
-	setvar VAR_STORYLINE_STATE, STORY_1ST_TAKEDOWN
+	setvar VAR_STORYLINE_STATE, STORY_PRE_EARTHQUAKE
 	release
 	end
 

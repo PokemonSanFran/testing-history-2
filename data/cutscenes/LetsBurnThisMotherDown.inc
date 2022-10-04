@@ -295,7 +295,7 @@ gText_LetsBurnThisMotherDown_IKnowYouWant::
 gText_LetsBurnThisMotherDown_YouDontThinkWeve::
 	.string "You don't think we've tried that? You\n"
 	.string "just got here, {PLAYER}. People here\l"
-	.string "in Alcatraz, died trying to do things\l"
+	.string "in Alcatraz died trying to do things\l"
 	.string "the right way. They don't care.$"
 
 gText_LetsBurnThisMotherDown_TheyIgnoreUs::

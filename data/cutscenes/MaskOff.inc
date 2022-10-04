@@ -290,7 +290,7 @@ gText_MaskOff_IFormedTeamRocket::
 	.string "the region a few years ago.$"
 
 gText_MaskOff_ButWhyGo::
-	.string "But why go into hiding as Wikstrom?$"
+	.string "But why go into hiding as Giovanni?$"
 
 gText_MaskOff_IHidMyIdentity::
 	.string "I hid my identity because I was worried\n"
@@ -349,10 +349,10 @@ gText_MaskOff_HeWorkedInThe::
 
 gText_MaskOff_WatchingHimBattle::
 	.string "Watching him battle was so awesome! I\n"
-	.string "loved watching use Ditto to confuse\l"
-	.string "'em before knocking them on their ass\l"
-	.string "with super powerful moves... he would\l"
-	.string "end matches so fast.$"
+	.string "loved watching him use Ditto to\l"
+	.string "confuse 'em before knocking them on\l"
+	.string "their ass with super powerful moves...\l"
+	.string "he would end matches so fast.$"
 
 gText_MaskOff_UsedToBeHere::
 	.string "Wikstrom used to be here all the time,\n"
@@ -375,10 +375,9 @@ gText_MaskOff_IKnowHeUsedToLive::
 	.string "haven't seen him.$"
 
 gText_MaskOff_ItUsedToBeSuper::
-	.string "It used to be super common to see him\n"
-	.string "zipping around in the skies. Wikstrom is\l"
-	.string "one of the few trainers that flies on\l"
-	.string "his Pokémon to travel around!$"
+	.string "He sometimes trained around here.\n"
+	.string "Afterwards, he and his Pokemon would\l"
+	.string "take a walk and relax by Lakemerritt.$"
 
 gText_MaskOff_IMissWorking::
 	.string "I miss working with Wikstrom. Whenever\n"
@@ -386,10 +385,11 @@ gText_MaskOff_IMissWorking::
 	.string "the entire team to ramen in Japantown!$"
 
 gText_MaskOff_HeWouldLeaveRight::
-	.string "He would leave right after, even when it\n"
-	.string "was late. He liked using Dusk Balls to\l"
-	.string "do his captures, so after dinner was\l"
-	.string "the best time.$"
+	.string "He would leave right after, to stock up\n"
+	.string "on supplies at his favorite shop in the\l"
+	.string "Castro. He liked using Dusk Balls to do\l"
+	.string "his captures, so after dinner was the\l"
+	.string "best time.$"
 
 gText_MaskOff_GaveATalkHereOnce::
 	.string "Wikstrom gave a talk here once, where\n"

@@ -204,7 +204,7 @@ Manhunt_Matthew_Battle_Script::
 	msgbox gText_Manhunt_WhosHe
 	callnative ClearMugshot
 	msgbox gText_Manhunt_YeahToldMeYoud
-	multi_fixed_2_vs_1 TRAINER_HOPE, gText_Manhunt_OhDamnLooksLike, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
+	multi_fixed_2_vs_1 TRAINER_SHANNON, gText_Manhunt_OhDamnLooksLike, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
 	setvar VAR_MANHUNT_STATE, GOT_MANHUNT_CLUE_4
 	msgbox gText_Manhunt_IFeelBadForAll, MSGBOX_AUTOCLOSE
 	applymovement 2, Manhunt_LeaveRoute
