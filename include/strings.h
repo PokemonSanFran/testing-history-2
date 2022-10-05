@@ -3118,4 +3118,9 @@ extern const u8 gText_BoxName[];
 extern const u8 gText_PkmnsNickname[];
 extern const u8 gText_TellHimTheWords[];
 
+//CorporateSponsor
+extern const u8 gText_Twitter[];
+extern const u8 gText_Uber[];
+extern const u8 gText_Amazon[];
+
 #endif // GUARD_STRINGS_H

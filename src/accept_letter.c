@@ -29,6 +29,8 @@
 #include "accept_letter_text.h"
 #include "printf.h"
 #include "mgba.h" //https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
+#include "random.h"
+#include "strings.h"
 
 static void MainCB2(void);
 static void Task_DiplomaFadeIn(u8);
@@ -135,8 +137,20 @@ static void Task_DiplomaFadeOut(u8 taskId)
     }
 }
 
+static void GenerateCorporateSponsor()
+{
+    u8 pickSponsor = Random() % 3;
+
+    switch(pickSponsor){
+        case 0: StringExpandPlaceholders(gStringVar1,gText_Twitter);
+        case 1: StringExpandPlaceholders(gStringVar1,gText_Uber);
+        case 2: StringExpandPlaceholders(gStringVar1,gText_Amazon);
+    }
+}
+
 static void DisplayDiplomaText(void)
 {
+    GenerateCorporateSponsor();
     StringExpandPlaceholders(gStringVar4, gText_AcceptLetterText1);
     PrintDiplomaText(gStringVar4, 0, 0);
     PutWindowTilemap(0);

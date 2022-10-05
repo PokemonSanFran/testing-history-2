@@ -1903,3 +1903,8 @@ const u8 gText_WantToUseDig[] = _("Do you want to use Dig here?");
 //QuestAnnounce
 const u8 gText_QuestActive[] = _("active");
 const u8 gText_QuestComplete[] = _("complete");
+
+//CorporateSponsor
+const u8 gText_Twitter[] = _("Twitter");
+const u8 gText_Uber[] = _("Uber");
+const u8 gText_Amazon[] =_("Amazon");
