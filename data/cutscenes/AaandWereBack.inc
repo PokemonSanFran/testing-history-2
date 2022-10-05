@@ -1,14 +1,24 @@
 AaandWereBack_ObjectSetUp_Script::
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_2
+	compare VAR_STORYLINE_STATE, STORY_WEST_SANFRAN_COMPLETE
+	goto_if_eq AaandWereBack_ObjectSetUp_Script_2
+AaandWereBack_ObjectSetUp_Script_1:
 	return
+
+AaandWereBack_ObjectSetUp_Script_2:
+	setflag FLAG_TEMP_2
+	goto AaandWereBack_ObjectSetUp_Script_1
 
 
 AaandWereBack_ObjectHide_Script::
+	compare VAR_STORYLINE_STATE, STORY_FERRY_FIXED
+	goto_if_eq AaandWereBack_ObjectHide_Script_2
+AaandWereBack_ObjectHide_Script_1:
+	return
+
+AaandWereBack_ObjectHide_Script_2:
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
-	return
+	goto AaandWereBack_ObjectHide_Script_1
 
 
 Act1_1_Check_Script::

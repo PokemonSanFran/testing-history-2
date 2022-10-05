@@ -12,15 +12,19 @@ VSGarbodor_Arrest_ObjectSetup_Script::
 
 
 VSGarbodor_ObjectCleanUp_Script::
-	compare VAR_CONSTRUCTION_STRIKE_STATE, START_VS_GARBODOR
-	goto_if_gt VSGarbodor_ObjectCleanUp_Script_2
+	compare VAR_STORYLINE_STATE, 8
+	goto_if_gt VSGarbodor_ObjectCleanUp_Script_3
 VSGarbodor_ObjectCleanUp_Script_1:
 	return
 
 VSGarbodor_ObjectCleanUp_Script_2:
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
+	goto VSGarbodor_ObjectCleanUp_Script_1
+
+VSGarbodor_ObjectCleanUp_Script_3:
+	compare VAR_CONSTRUCTION_STRIKE_STATE, START_VS_GARBODOR
+	goto_if_gt VSGarbodor_ObjectCleanUp_Script_2
 	goto VSGarbodor_ObjectCleanUp_Script_1
 
 
@@ -339,8 +343,12 @@ VSGarbodor_FlyWithoutPlayer_Script::
 
 
 VSGarbodor_ReturnToTheCompound_ObjectSetUp::
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
+	compare VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR
+	goto_if_eq VSGarbodor_ReturnToTheCompound_ObjectSetUp_1
+	return
+
+VSGarbodor_ReturnToTheCompound_ObjectSetUp_1:
+	setflag FLAG_TEMP_1
 	setobjectxy 1, 7, 2
 	setobjectxyperm 1, 7, 2
 	setobjectmovementtype 1, MOVEMENT_ACTION_FACE_DOWN

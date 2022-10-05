@@ -8,6 +8,9 @@ const POLICEA = 12
 const POLICEB = 13
 const ROSE = 14
 
+const FLAG_HIDE_BIANCA_COMPOUND = FLAG_TEMP_1
+const FLAG_HIDE_OAK_COMPOUND = FLAG_TEMP_2
+
 script VSGarbodor_Arrest_ObjectSetup_Script {
         setflag(FLAG_TEMP_6)
     setobjectxy(GOODTEAMA, 26, 19)
@@ -22,10 +25,9 @@ script VSGarbodor_Arrest_ObjectSetup_Script {
 }
 
 script VSGarbodor_ObjectCleanUp_Script {
-    if (var(VAR_CONSTRUCTION_STRIKE_STATE) > START_VS_GARBODOR){
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_3)
+    if ((var(VAR_STORYLINE_STATE) > 8) && (var(VAR_CONSTRUCTION_STRIKE_STATE) > START_VS_GARBODOR)){
+        setflag(FLAG_HIDE_BIANCA_COMPOUND)
+        setflag(FLAG_HIDE_OAK_COMPOUND)
     }
     return
 }
@@ -318,11 +320,14 @@ script VSGarbodor_FlyWithoutPlayer_Script {
 }
 
 script VSGarbodor_ReturnToTheCompound_ObjectSetUp {
-    setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_3)
-        setobjectxy(BIANCA,7,2)
-        setobjectxyperm(BIANCA,7,2)
-        setobjectmovementtype(BIANCA,MOVEMENT_ACTION_FACE_DOWN)
+    if (var(VAR_STORYLINE_STATE) == STORY_DEFEATED_GARBODOR){
+        setflag(FLAG_HIDE_BIANCA_COMPOUND)
+
+            setobjectxy(BIANCA,7,2)
+            setobjectxyperm(BIANCA,7,2)
+            setobjectmovementtype(BIANCA,MOVEMENT_ACTION_FACE_DOWN)
+            return
+    }
 }
 
 script VSGarbodor_ReturnToTheCompound_Dialogue {

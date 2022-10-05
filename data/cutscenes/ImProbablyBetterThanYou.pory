@@ -1,11 +1,12 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const BIANCA = 1 //FLAG_TEMP_1
-const OAK = 2 //FLAG_TEMP_2
+const BIANCA = 1 
+const OAK = 2 
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
 
-
-script ImProbablyBetterThanYou_ObjectSetUp {
-    setflag(FLAG_TEMP_3)
-    setflag(FLAG_TEMP_2)
+script ImProbablyBetterThanYou_ObjectSetUp{
+    setflag(FLAG_HIDE_OAK)
+    return
 }
 
 script ImProbablyBetterThanYou_MovePlayerInside_Script {
@@ -16,7 +17,7 @@ script ImProbablyBetterThanYou_MovePlayerInside_Script {
 
 script ImProbablyBetterThanYou_StandingOutside_Dialogue {
     lockall
-        addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+        setvar(VAR_PLAYER_HOME_STATE,HAS_NOT_MET_BIANCA)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImProbablyBetterThanYou_DeepBreath)
@@ -28,7 +29,7 @@ script ImProbablyBetterThanYou_StandingOutside_Dialogue {
 }
 
 script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
-    addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+        setvar(VAR_PLAYER_HOME_STATE,HAS_MET_BIANCA)
         lockall
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
         playse(SE_PIN)
@@ -38,7 +39,8 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
         waitmovement(0)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
-        msgbox(gText_ImProbablyBetterThanYou_GreatToMeet)
+        msgbox(gText_ImProbablyBetterThanYou_YouMustBe)
+        msgbox(gText_ImProbablyBetterThanYou_WelcomeToTheMost)
         closemessage
         callnative(ClearMugshot)
         goto (ImProbablyBetterThanYou_KindaShabby_Dialogue) 
@@ -122,16 +124,20 @@ script ImProbablyBetterThanYou_Annoyed_Dialogue {
 }
 
 text gText_ImProbablyBetterThanYou_DeepBreath {
-    format("*sigh* Let's do this.")
+    format("*sigh* (Let's do this.)")
     //PSF TODO add asterisk to font, look at SKiLpVg.png and find best treatment for actions (color? bracket?)
 }
 
-text gText_ImProbablyBetterThanYou_GreatToMeet {
-    format("You must be {PLAYER}. Great to meet you!")
+text gText_ImProbablyBetterThanYou_YouMustBe{
+    format("You must be {PLAYER}! I'm the other trainer in the Kickstart program, Bianca.")
+}
+           
+text gText_ImProbablyBetterThanYou_WelcomeToTheMost{
+    format("Welcome to the most boring place in the SanFran region... Southbay.")
 }
 
 text gText_ImProbablyBetterThanYou_KindaShabbyHuh {
-    format("Kinda shabby, huh? I thought YCombinator was pulling out all the stops for us, but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
+    format("This place is kinda shabby, huh? I thought YCombinator was pulling out all the stops for us, but there's not a butler in sight! And no private tennis courts! Not that I ever play, but it's the principle of the thing...")
 }
 
 text gText_ImProbablyBetterThanYou_OhYeahUh {

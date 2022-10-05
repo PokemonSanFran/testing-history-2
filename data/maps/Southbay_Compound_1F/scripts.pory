@@ -4,38 +4,27 @@ mapscripts Southbay_Compound_1F_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_PLAYER_HOME_STATE, 1: ImProbablyBetterThanYou_BiancaIntro_Dialogue 
-        VAR_PLAYER_HOME_STATE, 3: Swagbag_WelcomeToSanFran_Dialogue 
-        VAR_PLAYER_HOME_STATE, 8:WhyAreYouHelpingThem_BackAtCompound_Dialogue
+        VAR_PLAYER_HOME_STATE, HAS_NOT_MET_BIANCA: ImProbablyBetterThanYou_BiancaIntro_Dialogue 
+        VAR_PLAYER_HOME_STATE, CHECKED_OUT_BEDROOM: Swagbag_WelcomeToSanFran_Dialogue 
+        VAR_PLAYER_HOME_STATE, POST_NAVALBASE_RAID:WhyAreYouHelpingThem_BackAtCompound_Dialogue
         VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR: VSGarbodor_ReturnToTheCompound_Dialogue 
     ]
 }
 
 script Southbay_Compound_1F_MapScripts_OnTransition {
 
-    switch (var(VAR_STORYLINE_STATE)){
-        case 0: return
-        case 1: return
-        case 2: return
-        case 3: return
-        case 4: return
-        case 5: return
-        case 6: return
-        case 7: return
-        case 8: return
-        case 9: call(AaandWereBack_ObjectSetUp_Script)
-        case 10: call(AaandWereBack_ObjectHide_Script)
-        case 23: call(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
-        default: call(VSGarbodor_ObjectCleanUp_Script)
-    }
+    call(AaandWereBack_ObjectSetUp_Script)
+    call(AaandWereBack_ObjectHide_Script)
+    call(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
+    call(VSGarbodor_ObjectCleanUp_Script)
 
     switch (var(VAR_PLAYER_HOME_STATE)) {
-        case 1: call(ImProbablyBetterThanYou_ObjectSetUp) 
-        case 3: call(Swagbag_ObjectSetUp) 
-        case 4: call(swagbag_ObjectHide_Script) 
-        case 6: call(TwoHoursAgo_ObjectSetUp) 
-        case 7: call(AaandWereBack_ObjectSetUp_Script)
-        case 8: call(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
+        case HAS_NOT_MET_BIANCA: call(ImProbablyBetterThanYou_ObjectSetUp) 
+        case CHECKED_OUT_BEDROOM: call(Swagbag_ObjectSetUp) 
+        case POST_SWAGBAG: call(swagbag_ObjectHide_Script) 
+        case OPENED_FASHION_CASE: call(TwoHoursAgo_ObjectSetUp) 
+        case FINISHED_1_1: call(AaandWereBack_ObjectSetUp_Script)
+        case POST_NAVALBASE_RAID: call(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
     }
 
 }
@@ -43,7 +32,7 @@ script Southbay_Compound_1F_MapScripts_OnTransition {
 script Bianca_Southbay_Compound_1F_InteractScript {
     lock
 
-        if (var(VAR_STORYLINE_STATE) == 9){
+        if (var(VAR_STORYLINE_STATE) == STORY_WEST_SANFRAN_COMPLETE){
             call(AaandWereBack_Bianca_Dialogue)
         }else {
             call(ImProbablyBetterThanYou_Annoyed_Dialogue)
@@ -62,7 +51,7 @@ script Oak_Southbay_Compound_1F_InteractScript {
         //var is 6, does not have leftovers, explain league
         //var is not 6, help menu
 
-        if (var(VAR_PLAYER_HOME_STATE) == 6){
+        if (var(VAR_PLAYER_HOME_STATE) == OPENED_FASHION_CASE){
             if (flag(FLAG_RECIEVED_LEFTOVERS)){
                 if(flag(FLAG_TEMP_1F)){
                     call(TwoHoursAgo_ExplainLeftovers_Dialouge)

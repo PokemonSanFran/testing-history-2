@@ -1,5 +1,4 @@
 ImProbablyBetterThanYou_ObjectSetUp::
-	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_2
 	return
 
@@ -12,7 +11,7 @@ ImProbablyBetterThanYou_MovePlayerInside_Script::
 
 ImProbablyBetterThanYou_StandingOutside_Dialogue::
 	lockall
-	addvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setvar VAR_PLAYER_HOME_STATE, HAS_NOT_MET_BIANCA
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_DeepBreath
@@ -25,7 +24,7 @@ ImProbablyBetterThanYou_StandingOutside_Dialogue::
 
 
 ImProbablyBetterThanYou_BiancaIntro_Dialogue::
-	addvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setvar VAR_PLAYER_HOME_STATE, HAS_MET_BIANCA
 	lockall
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	playse SE_PIN
@@ -157,12 +156,12 @@ ImProbablyBetterThanYou_GoBackToFood:
 	step_end
 
 gText_ImProbablyBetterThanYou_DeepBreath::
-	.string "{COLOR 09}<deep breath>\n"
-	.string "{COLOR DARK_GRAY}Let's do this.$"
+	.string "*sigh* (Let's do this.)$"
 
 gText_ImProbablyBetterThanYou_GreatToMeet::
-	.string "You must be {PLAYER}. Great to meet\n"
-	.string "you!$"
+	.string "You must be {PLAYER}! Welcome to the\n"
+	.string "most boring place in the SanFran\l"
+	.string "region... Southbay.$"
 
 gText_ImProbablyBetterThanYou_KindaShabbyHuh::
 	.string "Kinda shabby, huh? I thought\n"

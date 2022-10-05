@@ -8,105 +8,55 @@ Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_PLAYER_HOME_STATE, 1, ImProbablyBetterThanYou_BiancaIntro_Dialogue
-	map_script_2 VAR_PLAYER_HOME_STATE, 3, Swagbag_WelcomeToSanFran_Dialogue
-	map_script_2 VAR_PLAYER_HOME_STATE, 8, WhyAreYouHelpingThem_BackAtCompound_Dialogue
+	map_script_2 VAR_PLAYER_HOME_STATE, HAS_NOT_MET_BIANCA, ImProbablyBetterThanYou_BiancaIntro_Dialogue
+	map_script_2 VAR_PLAYER_HOME_STATE, CHECKED_OUT_BEDROOM, Swagbag_WelcomeToSanFran_Dialogue
+	map_script_2 VAR_PLAYER_HOME_STATE, POST_NAVALBASE_RAID, WhyAreYouHelpingThem_BackAtCompound_Dialogue
 	map_script_2 VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR, VSGarbodor_ReturnToTheCompound_Dialogue
 	.2byte 0
 
 
 Southbay_Compound_1F_MapScripts_OnTransition::
-	switch VAR_STORYLINE_STATE
-	case 0, Southbay_Compound_1F_MapScripts_OnTransition_3
-	case 1, Southbay_Compound_1F_MapScripts_OnTransition_4
-	case 2, Southbay_Compound_1F_MapScripts_OnTransition_5
-	case 3, Southbay_Compound_1F_MapScripts_OnTransition_6
-	case 4, Southbay_Compound_1F_MapScripts_OnTransition_7
-	case 5, Southbay_Compound_1F_MapScripts_OnTransition_8
-	case 6, Southbay_Compound_1F_MapScripts_OnTransition_9
-	case 7, Southbay_Compound_1F_MapScripts_OnTransition_10
-	case 8, Southbay_Compound_1F_MapScripts_OnTransition_11
-	case 9, Southbay_Compound_1F_MapScripts_OnTransition_12
-	case 10, Southbay_Compound_1F_MapScripts_OnTransition_13
-	case 23, Southbay_Compound_1F_MapScripts_OnTransition_14
-	call VSGarbodor_ObjectCleanUp_Script
-Southbay_Compound_1F_MapScripts_OnTransition_1:
-	switch VAR_PLAYER_HOME_STATE
-	case 1, Southbay_Compound_1F_MapScripts_OnTransition_17
-	case 3, Southbay_Compound_1F_MapScripts_OnTransition_18
-	case 4, Southbay_Compound_1F_MapScripts_OnTransition_19
-	case 6, Southbay_Compound_1F_MapScripts_OnTransition_20
-	case 7, Southbay_Compound_1F_MapScripts_OnTransition_21
-	case 8, Southbay_Compound_1F_MapScripts_OnTransition_22
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_3:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_4:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_5:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_6:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_7:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_8:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_9:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_10:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_11:
-	return
-
-Southbay_Compound_1F_MapScripts_OnTransition_12:
 	call AaandWereBack_ObjectSetUp_Script
-	goto Southbay_Compound_1F_MapScripts_OnTransition_1
-
-Southbay_Compound_1F_MapScripts_OnTransition_13:
 	call AaandWereBack_ObjectHide_Script
-	goto Southbay_Compound_1F_MapScripts_OnTransition_1
-
-Southbay_Compound_1F_MapScripts_OnTransition_14:
 	call VSGarbodor_ReturnToTheCompound_ObjectSetUp
-	goto Southbay_Compound_1F_MapScripts_OnTransition_1
+	call VSGarbodor_ObjectCleanUp_Script
+	switch VAR_PLAYER_HOME_STATE
+	case HAS_NOT_MET_BIANCA, Southbay_Compound_1F_MapScripts_OnTransition_2
+	case CHECKED_OUT_BEDROOM, Southbay_Compound_1F_MapScripts_OnTransition_3
+	case POST_SWAGBAG, Southbay_Compound_1F_MapScripts_OnTransition_4
+	case OPENED_FASHION_CASE, Southbay_Compound_1F_MapScripts_OnTransition_5
+	case FINISHED_1_1, Southbay_Compound_1F_MapScripts_OnTransition_6
+	case POST_NAVALBASE_RAID, Southbay_Compound_1F_MapScripts_OnTransition_7
+	return
 
-Southbay_Compound_1F_MapScripts_OnTransition_17:
+Southbay_Compound_1F_MapScripts_OnTransition_2:
 	call ImProbablyBetterThanYou_ObjectSetUp
 	return
 
-Southbay_Compound_1F_MapScripts_OnTransition_18:
+Southbay_Compound_1F_MapScripts_OnTransition_3:
 	call Swagbag_ObjectSetUp
 	return
 
-Southbay_Compound_1F_MapScripts_OnTransition_19:
+Southbay_Compound_1F_MapScripts_OnTransition_4:
 	call swagbag_ObjectHide_Script
 	return
 
-Southbay_Compound_1F_MapScripts_OnTransition_20:
+Southbay_Compound_1F_MapScripts_OnTransition_5:
 	call TwoHoursAgo_ObjectSetUp
 	return
 
-Southbay_Compound_1F_MapScripts_OnTransition_21:
+Southbay_Compound_1F_MapScripts_OnTransition_6:
 	call AaandWereBack_ObjectSetUp_Script
 	return
 
-Southbay_Compound_1F_MapScripts_OnTransition_22:
+Southbay_Compound_1F_MapScripts_OnTransition_7:
 	call WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script
 	return
 
 
 Bianca_Southbay_Compound_1F_InteractScript::
 	lock
-	compare VAR_STORYLINE_STATE, 9
+	compare VAR_STORYLINE_STATE, STORY_WEST_SANFRAN_COMPLETE
 	goto_if_eq Bianca_Southbay_Compound_1F_InteractScript_2
 	call ImProbablyBetterThanYou_Annoyed_Dialogue
 Bianca_Southbay_Compound_1F_InteractScript_1:
@@ -122,7 +72,7 @@ Oak_Southbay_Compound_1F_InteractScript::
 	lockall
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
-	compare VAR_PLAYER_HOME_STATE, 6
+	compare VAR_PLAYER_HOME_STATE, OPENED_FASHION_CASE
 	goto_if_eq Oak_Southbay_Compound_1F_InteractScript_2
 	call swagbag_HelpPlayer_Script
 Oak_Southbay_Compound_1F_InteractScript_1:
