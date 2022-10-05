@@ -34,7 +34,8 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
-	msgbox gText_ImProbablyBetterThanYou_GreatToMeet
+	msgbox gText_ImProbablyBetterThanYou_YouMustBe
+	msgbox gText_ImProbablyBetterThanYou_WelcomeToTheMost
 	closemessage
 	callnative ClearMugshot
 	goto ImProbablyBetterThanYou_KindaShabby_Dialogue
@@ -158,18 +159,22 @@ ImProbablyBetterThanYou_GoBackToFood:
 gText_ImProbablyBetterThanYou_DeepBreath::
 	.string "*sigh* (Let's do this.)$"
 
-gText_ImProbablyBetterThanYou_GreatToMeet::
-	.string "You must be {PLAYER}! Welcome to the\n"
-	.string "most boring place in the SanFran\l"
-	.string "region... Southbay.$"
+gText_ImProbablyBetterThanYou_YouMustBe::
+	.string "You must be {PLAYER}! I'm the other\n"
+	.string "trainer in the Kickstart program,\l"
+	.string "Bianca.$"
+
+gText_ImProbablyBetterThanYou_WelcomeToTheMost::
+	.string "Welcome to the most boring place in the\n"
+	.string "SanFran region... Southbay.$"
 
 gText_ImProbablyBetterThanYou_KindaShabbyHuh::
-	.string "Kinda shabby, huh? I thought\n"
-	.string "YCombinator was pulling out all the\l"
-	.string "stops for us, but there's not a butler\l"
-	.string "in sight! And no private tennis courts!\l"
-	.string "Not that I ever play, but it's the\l"
-	.string "principle of the thing...$"
+	.string "This place is kinda shabby, huh? I\n"
+	.string "thought YCombinator was pulling out\l"
+	.string "all the stops for us, but there's not a\l"
+	.string "butler in sight! And no private tennis\l"
+	.string "courts! Not that I ever play, but it's\l"
+	.string "the principle of the thing...$"
 
 gText_ImProbablyBetterThanYou_OhYeahUh::
 	.string "Oh yeah uh, it's too bad...$"

@@ -6,8 +6,8 @@ Swagbag_ObjectSetUp::
 	return
 
 
-Swagbag_IncrementIntroState_Script::
-	addvar VAR_LITTLEROOT_INTRO_STATE, 1
+Swagbag_IncrementState_Script::
+	setvar VAR_PLAYER_HOME_STATE, CHECKED_OUT_BEDROOM
 	return
 
 
@@ -41,11 +41,8 @@ Swagbag_WelcomeToSanFran_Dialogue::
 	msgbox gText_Swagbag_ExcellentYouveAlready
 	callnative ClearMugshot
 	closemessage
-	applymovement 2, swagbag_WalkToTable
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, swagbag_PlayerToTable
-	applymovement 1, swagbag_BiancaToTable
-	waitmovement 0
+	applymovement 1, swagbag_TurnFaceOak_Movement
+	waitmovement 1
 	goto Swagbag_LeagueStipend_Dialogue
 	end
 
@@ -67,7 +64,6 @@ Swagbag_LeagueStipend_Dialogue::
 
 
 Swagbag_PokedexApps_Dialogue::
-	msgbox gText_Swagbag_NextANewlyUpgraded
 	msgbox gText_Swagbag_AlsoWeveGoneAhead
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
@@ -81,18 +77,7 @@ Swagbag_PokedexApps_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_Correct
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_Swagbag_AndTheFameChecker
-	setvar VAR_0x8000, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_Swagbag_BingoYoureActually
-	setvar VAR_0x8000, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_Swagbag_HmmThoseAllSound
 	callnative ClearMugshot
-	removeobject 3
-	removeobject 4
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox gText_Swagbag_PlayerRecivedMoney
 	waitmessage
@@ -162,60 +147,32 @@ swagbag_PreventPlayerLeavingSouthbay_Event_Script::
 	end
 
 
+swagbag_TurnFaceOak_Movement:
+	walk_up
+	face_down
+	step_end
+
 swagbag_GreetPlayer:
 	face_up
 	walk_up
 	delay_16
 	step_end
 
-swagbag_WalkToTable:
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	face_down
-	step_end
-
-swagbag_BiancaToTable:
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	face_up
-	step_end
-
-swagbag_PlayerToTable:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	face_up
-	step_end
-
 swagbag_LeaveCompound:
 	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	walk_down
 	step_end
 
 swagbag_WalkToLaptop:
-	walk_left
-	walk_left
 	walk_down
-	face_right
+	walk_down
+	walk_down
+	walk_right
 	step_end
 
 swagbag_WalkBackwards:
@@ -250,68 +207,46 @@ gText_Swagbag_BecauseTheBoard::
 	.string "*muttering* Because the board absolutely\n"
 	.string "won't let us give you any more...$"
 
-gText_Swagbag_NextANewlyUpgraded::
-	.string "Next, a newly upgraded PokéDex. It\n"
-	.string "tracks all of the Pokémon you'll see\l"
-	.string "and capture. There's some more habitat\l"
-	.string "functionality, but it wasn't quite\l"
-	.string "ready for primetime yet. By the time\l"
-	.string "you visit the Research Institute in\l"
-	.string "Berkeley, it might be ready.$"
-
 gText_Swagbag_AlsoWeveGoneAhead::
-	.string "Also, we've gone ahead and pre-loaded\n"
-	.string "our internal apps onto your phones\l"
-	.string "last night.$"
+	.string "Next, we've gone ahead and loaded the\n"
+	.string "newest OS onto your phones last night.$"
 
 gText_Swagbag_InvasiveMuch::
 	.string "Invasive much?$"
 
 gText_Swagbag_WellAskNextTime::
-	.string "Ha ha, we'll ask next time. You've now\n"
-	.string "got access to our internal versions of\l"
-	.string "QuestLog, Teachy TV, and Fame Checker.$"
+	.string "Ha ha, we'll ask next time. Another perk:\n"
+	.string "you've also got the cutting edge\l"
+	.string "versions of all the best apps...\l"
+	.string "TeachyTV, FameChecker, QuestLog, and\l"
+	.string "of course, the we've changed your\l"
+	.string "Pokedex regions to SanFran mode.$"
 
 gText_Swagbag_TeachyTVSoIShould::
 	.string "Teachy TV... so I should use that if I\n"
 	.string "have a question or get stuck?$"
 
 gText_Swagbag_Correct::
-	.string "Correct.$"
-
-gText_Swagbag_AndTheFameChecker::
-	.string "And the Fame Checker - that's the app\n"
-	.string "that logs important facts about\l"
-	.string "important people, right?$"
-
-gText_Swagbag_BingoYoureActually::
-	.string "Bingo! You're actually the beta testers\n"
-	.string "of QuestLog, but it's used to keep\l"
-	.string "track of all the things you're working\l"
-	.string "on. We'll occasionally send you things\l"
-	.string "to do, so don't forget to read those\l"
-	.string "notifications!$"
-
-gText_Swagbag_HmmThoseAllSound::
-	.string "Hmmm... those all sound pretty useful.\n"
-	.string "Sweet, thanks!$"
+	.string "Right! All of the other apps have\n"
+	.string "tutorials, so if you press {START_BUTTON} later and\l"
+	.string "select an app, it'll walk you through all\l"
+	.string "of them.$"
 
 gText_Swagbag_PlayerRecivedMoney::
-	.string "{PLAYER} received ¥50000, a PokéDex,\n"
-	.string "and new phone applications from Oak.$"
+	.string "{PLAYER} received ¥50000, and\n"
+	.string "updated phone apps from Oak.$"
 
 gText_Swagbag_IBelieveThatsEverything::
 	.string "I believe that's everything. Questions?$"
 
 gText_Swagbag_YeahWhenTheTutorial::
-	.string "Yeah, when's the tutorial over? I wanna\n"
-	.string "get a move on!$"
+	.string "We can't start until tomorrow?$"
 
 gText_Swagbag_TheGymChallengeOfficially::
-	.string "The Gym Challenge officially starts\n"
-	.string "tomorrow. I suggest you get a good\l"
-	.string "night's sleep, and over breakfast, I'll\l"
-	.string "explain how it all works.$"
+	.string "Correct, the Gym Challenge officially\n"
+	.string "starts tomorrow. I suggest you get a\l"
+	.string "good night's sleep, and over breakfast,\l"
+	.string "I'll explain how it all works.$"
 
 gText_Swagbag_FineIllExploreTheCity::
 	.string "...fine. I'll explore the city a bit! Maybe\n"
@@ -322,7 +257,7 @@ gText_Swagbag_IllBeWorkingOnMyLaptop::
 	.string "here for the next few hours. If you've\l"
 	.string "got any questions, don't be afraid to\l"
 	.string "ask. It's fine if you explore, but don't\l"
-	.string "leave South Bay, okay?$"
+	.string "leave Southbay, okay?$"
 
 gText_Swagbag_GotItThanks::
 	.string "Got it. Thanks for all the help, Oak! I'm\n"

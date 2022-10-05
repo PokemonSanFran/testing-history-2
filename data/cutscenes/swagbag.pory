@@ -8,9 +8,9 @@ script Swagbag_ObjectSetUp {
     setobjectxy(BIANCA,6,4)
     setobjectxyperm(BIANCA,6,4)
 }
-
-script Swagbag_IncrementIntroState_Script {
-    addvar(VAR_LITTLEROOT_INTRO_STATE,1)
+script Swagbag_IncrementState_Script{
+    setvar(VAR_PLAYER_HOME_STATE,CHECKED_OUT_BEDROOM)
+    return
 }
 
 script swagbag_ObjectHide_Script {
@@ -42,11 +42,8 @@ script Swagbag_WelcomeToSanFran_Dialogue {
         msgbox(gText_Swagbag_ExcellentYouveAlready)
         callnative(ClearMugshot)
         closemessage
-        applymovement(OAK,swagbag_WalkToTable)
-        waitmovement(0)
-        applymovement(PLAYER,swagbag_PlayerToTable)
-        applymovement(BIANCA,swagbag_BiancaToTable)
-        waitmovement(0)
+        applymovement(BIANCA,swagbag_TurnFaceOak_Movement)
+        waitmovement(BIANCA)
         goto(Swagbag_LeagueStipend_Dialogue)
         end
 }
@@ -70,7 +67,6 @@ script Swagbag_LeagueStipend_Dialogue {
 }
 
 script Swagbag_PokedexApps_Dialogue {
-    msgbox(gText_Swagbag_NextANewlyUpgraded)
         msgbox(gText_Swagbag_AlsoWeveGoneAhead)
         setvar(VAR_0x8000, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
@@ -84,18 +80,7 @@ script Swagbag_PokedexApps_Dialogue {
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_Swagbag_Correct)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Swagbag_AndTheFameChecker)
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_Swagbag_BingoYoureActually)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Swagbag_HmmThoseAllSound)
         callnative(ClearMugshot)
-        removeobject(3)
-        removeobject(4)
         playfanfare(MUS_OBTAIN_ITEM)  
         msgbox(gText_Swagbag_PlayerRecivedMoney)
         waitmessage
@@ -183,12 +168,8 @@ text gText_Swagbag_BecauseTheBoard {
     format("*muttering* Because the board absolutely won't let us give you any more...")
 }
 
-text gText_Swagbag_NextANewlyUpgraded {
-    format("Next, a newly upgraded PokéDex. It tracks all of the Pokémon you'll see and capture. There's some more habitat functionality, but it wasn't quite ready for primetime yet. By the time you visit the Research Institute in Berkeley, it might be ready.")
-}
-
 text gText_Swagbag_AlsoWeveGoneAhead {
-    format("Also, we've gone ahead and pre-loaded our internal apps onto your phones last night.")
+    format("Next, we've gone ahead and loaded the newest OS onto your phones last night.")
 }
 
 text gText_Swagbag_InvasiveMuch {
@@ -196,7 +177,7 @@ text gText_Swagbag_InvasiveMuch {
 }
 
 text gText_Swagbag_WellAskNextTime {
-    format("Ha ha, we'll ask next time. You've now got access to our internal versions of QuestLog, Teachy TV, and Fame Checker.")
+    format("Ha ha, we'll ask next time. Another perk: you've also got the cutting edge versions of all the best apps... TeachyTV, FameChecker, QuestLog, and of course, the we've changed your Pokedex regions to SanFran mode.")
 }
 
 text gText_Swagbag_TeachyTVSoIShould {
@@ -204,23 +185,11 @@ text gText_Swagbag_TeachyTVSoIShould {
 }
 
 text gText_Swagbag_Correct {
-    format("Correct.")
-}
-
-text gText_Swagbag_AndTheFameChecker {
-    format("And the Fame Checker - that's the app that logs important facts about important people, right?")
-}
-
-text gText_Swagbag_BingoYoureActually {
-    format("Bingo! You're actually the beta testers of QuestLog, but it's used to keep track of all the things you're working on. We'll occasionally send you things to do, so don't forget to read those notifications!")
-}
-
-text gText_Swagbag_HmmThoseAllSound {
-    format("Hmmm... those all sound pretty useful. Sweet, thanks!")
+    format("Right! All of the other apps have tutorials, so if you press {START_BUTTON} later and select an app, it'll walk you through all of them.")
 }
 
 text gText_Swagbag_PlayerRecivedMoney {
-    format("{PLAYER} received ¥50000, a PokéDex, and new phone applications from Oak.")
+    format("{PLAYER} received ¥50000, and updated phone apps from Oak.")
 }
 
 text gText_Swagbag_IBelieveThatsEverything {
@@ -228,11 +197,11 @@ text gText_Swagbag_IBelieveThatsEverything {
 }
 
 text gText_Swagbag_YeahWhenTheTutorial {
-    format("Yeah, when's the tutorial over? I wanna get a move on!")
+    format("We can't start until tomorrow?")
 }
 
 text gText_Swagbag_TheGymChallengeOfficially {
-    format("The Gym Challenge officially starts tomorrow. I suggest you get a good night's sleep, and over breakfast, I'll explain how it all works.")
+    format("Correct, the Gym Challenge officially starts tomorrow. I suggest you get a good night's sleep, and over breakfast, I'll explain how it all works.")
 }
 
 text gText_Swagbag_FineIllExploreTheCity {
@@ -240,7 +209,7 @@ text gText_Swagbag_FineIllExploreTheCity {
 }
 
 text gText_Swagbag_IllBeWorkingOnMyLaptop {
-    format("{PLAYER}, I'll be working on my laptop here for the next few hours. If you've got any questions, don't be afraid to ask. It's fine if you explore, but don't leave South Bay, okay?")
+    format("{PLAYER}, I'll be working on my laptop here for the next few hours. If you've got any questions, don't be afraid to ask. It's fine if you explore, but don't leave Southbay, okay?")
 }
 
 text gText_Swagbag_GotItThanks {
@@ -255,6 +224,12 @@ text gText_DontLeaveSouthbay_Text1 {
     format("I don't think I should leave Southbay yet...")
 }
 
+movement swagbag_TurnFaceOak_Movement{
+    walk_up * 2
+    face_down
+    step_end
+}
+
 movement swagbag_GreetPlayer {
     face_up
         walk_up
@@ -262,36 +237,14 @@ movement swagbag_GreetPlayer {
         step_end
 }
 
-movement swagbag_WalkToTable {
-    walk_down * 2
-        walk_right * 3
-        face_down
-        step_end
-}
-movement swagbag_BiancaToTable {
-    walk_down * 3
-        walk_right * 5
-        face_up
-        step_end
-}
-movement swagbag_PlayerToTable {
-    walk_down * 5
-        walk_right * 3
-        face_up
-        step_end
-}
-
 movement swagbag_LeaveCompound {
-    walk_down
-        walk_left * 5
-        walk_down
+        walk_down * 7
         step_end
 }
 
 movement swagbag_WalkToLaptop {
-    walk_left * 2
-        walk_down * 1
-        face_right
+        walk_down * 3
+        walk_right
         step_end
 }
 

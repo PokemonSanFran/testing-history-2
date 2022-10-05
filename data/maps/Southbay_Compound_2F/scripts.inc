@@ -3,7 +3,7 @@ Southbay_Compound_2F_MapScripts::
 	.byte 0
 
 Southbay_Compound_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 2, Swagbag_IncrementIntroState_Script
+	map_script_2 VAR_PLAYER_HOME_STATE, HAS_MET_BIANCA, Swagbag_IncrementState_Script
 	.2byte 0
 
 
