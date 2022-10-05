@@ -122,7 +122,8 @@ script ImProbablyBetterThanYou_Annoyed_Dialogue {
 }
 
 text gText_ImProbablyBetterThanYou_DeepBreath {
-    format("{COLOR 09}<deep breath>\n{COLOR DARK_GRAY}Let's do this.") //PSF TODO add asterisk to font, look at SKiLpVg.png and find best treatment for actions (color? bracket?)
+    format("*sigh* Let's do this.")
+    //PSF TODO add asterisk to font, look at SKiLpVg.png and find best treatment for actions (color? bracket?)
 }
 
 text gText_ImProbablyBetterThanYou_GreatToMeet {
