@@ -1070,6 +1070,7 @@ extern const u8 gText_ItGotAway[];
 extern const u8 gText_HallOfFame[];
 extern const u8 gText_LogOff[];
 extern const u8 gText_LanettesPC[];
+extern const u8 gText_PokemonStorageSystem[];
 extern const u8 gText_SomeonesPC[];
 extern const u8 gText_PlayersPC[];
 extern const u8 gText_WhichPCShouldBeAccessed[];

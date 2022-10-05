@@ -10,8 +10,14 @@ YouLookTired_BlockMansionAccess_Script_1:
 
 
 YouLookTired_HideObjects_Script::
-	setflag FLAG_TEMP_1
+	compare VAR_FORTPOINT_STATE, DEFEATED_CHUCK
+	goto_if_ne YouLookTired_HideObjects_Script_2
+YouLookTired_HideObjects_Script_1:
 	return
+
+YouLookTired_HideObjects_Script_2:
+	setflag FLAG_TEMP_1
+	goto YouLookTired_HideObjects_Script_1
 
 
 YouLookTired_InteractKoga_Script::
