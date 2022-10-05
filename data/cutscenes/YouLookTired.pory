@@ -9,7 +9,10 @@ script YouLookTired_BlockMansionAccess_Script {
 }
 
 script YouLookTired_HideObjects_Script {
+    if (var(VAR_FORTPOINT_STATE) != DEFEATED_CHUCK){
     setflag(FLAG_TEMP_1)
+}
+return
 }
 
 script YouLookTired_InteractKoga_Script {
@@ -38,6 +41,9 @@ script YouLookTired_WalkToKoga_Script {
 }
 
 script YouLookTired_Intro_Dialogue {
+    //PSF TODO change this str_var the player's favorite food, which is defined in the character creation process
+        bufferspeciesname(STR_VAR_1,SPECIES_SNORLAX)
+
     playbgm(MUS_MT_PYRE,FALSE)
         setvar(VAR_0x8000, MUGSHOT_N)
         callnative(DrawMugshot)
@@ -72,40 +78,24 @@ script YouLookTired_BadgeJudge_Script {
 
     special(GetNumberOfBadges)
         if (var(VAR_RESULT) == 8){
-            goto(YouLookTired_AllBadges_Dialogue)
+            msgbox(gText_YouLookTired_FormallYCombinatorongratulate)
         } else {
-            goto(YouLookTired_OnlyThisBadge_Dialogue)
+            msgbox(gText_YouLookTired_CanBeAHandful)
         }
-}
-
-
-script YouLookTired_AllBadges_Dialogue {
-    msgbox(gText_YouLookTired_FormallYCombinatorongratulate)
-
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_ItsBeenAnInterestingRide)
-
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_IImagineYoureProbably)
-        goto(YouLookTired_AcceptInvite_Dialogue)
-}
-
-script YouLookTired_OnlyThisBadge_Dialogue {
-    msgbox(gText_YouLookTired_CanBeAHandful)
-
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_ItsBeenAnInterestingRide)
-
-        setvar(VAR_0x8000, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_IImagineYoureProbably)
         goto(YouLookTired_AcceptInvite_Dialogue)
 }
 
 script YouLookTired_AcceptInvite_Dialogue {
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_YouLookTired_ItsBeenAnInterestingRide)
+        msgbox(gText_YouLookTired_WaitDidntISeeYou)
+
+        setvar(VAR_0x8000, MUGSHOT_N)
+        callnative(DrawMugshot)
+        msgbox(gText_YouLookTired_WhereDidYou)
+        msgbox(gText_YouLookTired_IImagineYoureProbably)
+
     setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouLookTired_ItHasBeenAWhile)
@@ -186,11 +176,15 @@ text gText_YouLookTired_IKeepHearingThat {
     format("Yeah, I keep hearing that! It's a little overwhelming.")
 }
 
-text gText_YouLookTired_AsLongAsYouDont {
-    format("As long as you don't let it get to your head, you've got nothing to worry about. Take pride in your talent!")
+text gText_YouLookTired_WaitDidntISeeYou{
+    format("Wait, didn't I see you talking to Ariana in Dogpatch the other day?")
 }
 
-text gText_YouLookTired_IKnowYoureRacing {
+text gText_YouLookTired_WhereDidYou{
+    format("Where did you hear that name? You shouldn't repeat that around other members of Ycombinator. Besides, that couldn't have been me.")
+}
+
+text gText_YouLookTired_IKnowYoureRacing{
     format("I know you're racing against the other Trainers, but I'd love to have you over to my place for dinner. I bet you haven't had a home-cooked meal in a while, what do you say? I'm very confident one dinner won't set you back terribly far.")
 }
 

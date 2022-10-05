@@ -291,7 +291,8 @@ gText_YouCantStopMe_IThoughtSo::
 	.string "I thought so.$"
 
 gText_YouCantStopMe_WhatDoYouWant::
-	.string "*sigh* What do you want? We’re busy!$"
+	.string "*sigh* What do you want? I'm working on an\n"
+	.string "important email.$"
 
 gText_YouCantStopMe_OneMassCasualty::
 	.string "One mass casualty event wasn’t\n"

@@ -67,6 +67,8 @@ script Debug_Script_1{
     end
 }
 script Debug_Script_2{
+    setvar(VAR_FORTPOINT_STATE,DEFEATED_CHUCK)
+    warpsilent(MAP_FORTPOINT,0)
     end
 }
 script Debug_Script_3{

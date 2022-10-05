@@ -58,6 +58,7 @@ YouLookTired_WalkToKoga_Script_6:
 
 
 YouLookTired_Intro_Dialogue::
+	bufferspeciesname STR_VAR_1, SPECIES_SNORLAX
 	playbgm MUS_MT_PYRE, FALSE
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
@@ -86,40 +87,26 @@ YouLookTired_Intro_Dialogue::
 YouLookTired_BadgeJudge_Script::
 	special GetNumberOfBadges
 	compare VAR_RESULT, 8
-	goto_if_eq YouLookTired_BadgeJudge_Script_1
-	goto YouLookTired_OnlyThisBadge_Dialogue
-	return
-
-YouLookTired_BadgeJudge_Script_1:
-	goto YouLookTired_AllBadges_Dialogue
-	return
-
-
-YouLookTired_AllBadges_Dialogue::
-	msgbox gText_YouLookTired_FormallYCombinatorongratulate
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_ItsBeenAnInterestingRide
-	setvar VAR_0x8000, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_IImagineYoureProbably
-	goto YouLookTired_AcceptInvite_Dialogue
-	return
-
-
-YouLookTired_OnlyThisBadge_Dialogue::
+	goto_if_eq YouLookTired_BadgeJudge_Script_2
 	msgbox gText_YouLookTired_CanBeAHandful
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_ItsBeenAnInterestingRide
-	setvar VAR_0x8000, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_IImagineYoureProbably
+YouLookTired_BadgeJudge_Script_1:
 	goto YouLookTired_AcceptInvite_Dialogue
 	return
+
+YouLookTired_BadgeJudge_Script_2:
+	msgbox gText_YouLookTired_FormallYCombinatorongratulate
+	goto YouLookTired_BadgeJudge_Script_1
 
 
 YouLookTired_AcceptInvite_Dialogue::
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_YouLookTired_ItsBeenAnInterestingRide
+	msgbox gText_YouLookTired_WaitDidntISeeYou
+	setvar VAR_0x8000, MUGSHOT_N
+	callnative DrawMugshot
+	msgbox gText_YouLookTired_WhereDidYou
+	msgbox gText_YouLookTired_IImagineYoureProbably
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_ItHasBeenAWhile
@@ -140,23 +127,6 @@ YouLookTired_AcceptInvite_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_MyHouseHas
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_ImNotReally
-	setvar VAR_0x8000, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_Nonsense
-	goto YouLookTired_DataCollection_Dialogue
-	return
-
-
-YouLookTired_DataCollection_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_YouCanDoThat
-	setvar VAR_0x8000, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_DataIsTheMost
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_IllSeeYouForDinner
@@ -259,10 +229,15 @@ gText_YouLookTired_IKeepHearingThat::
 	.string "Yeah, I keep hearing that! It's a little\n"
 	.string "overwhelming.$"
 
-gText_YouLookTired_AsLongAsYouDont::
-	.string "As long as you don't let it get to your\n"
-	.string "head, you've got nothing to worry\l"
-	.string "about. Take pride in your talent!$"
+gText_YouLookTired_WaitDidntISeeYou::
+	.string "Wait, didn't I see you talking to Ariana\n"
+	.string "in Dogpatch the other day?$"
+
+gText_YouLookTired_WhereDidYou::
+	.string "Where did you hear that name? You\n"
+	.string "shouldn't repeat that around other\l"
+	.string "members of Ycombinator. Besides, that\l"
+	.string "couldn't have been me.$"
 
 gText_YouLookTired_IKnowYoureRacing::
 	.string "I know you're racing against the other\n"
@@ -311,29 +286,12 @@ gText_YouLookTired_WestOfHere::
 
 gText_YouLookTired_MyHouseHas::
 	.string "My house has the teal shutters, it'll be\n"
-	.string "easy to spot. Swing by later, and we'll\l"
-	.string "fix up one of my favorites. Preferred\l"
-	.string "varietal?$"
-
-gText_YouLookTired_ImNotReally::
-	.string "I'm not really a wine drinker, I'll just -$"
-
-gText_YouLookTired_Nonsense::
-	.string "Nonsense. I'll pull some data from\n"
-	.string "DoorDash and find something to suit\l"
-	.string "your tastes!$"
-
-gText_YouLookTired_YouCanDoThat::
-	.string "You can do that?$"
-
-gText_YouLookTired_DataIsTheMost::
-	.string "Of course! Data is the most powerful\n"
-	.string "resource in the world - YCombinator\l"
-	.string "has quite the vast library available to\l"
-	.string "us.$"
+	.string "easy to spot. My kids mentoned you\l"
+	.string "love to eat {STR_VAR_1}, so we'll\l"
+	.string "make sure you have that tonight.$"
 
 gText_YouLookTired_IllSeeYouForDinner::
 	.string "I'll see you for dinner then?$"
 
 gText_YouLookTired_YesThanksAgain::
-	.string "Yes! Thanks again.$"
+	.string "Uh... yeah. Sounds good.$"

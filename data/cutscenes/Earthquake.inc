@@ -499,8 +499,7 @@ gText_Earthquake_WeBattledBut::
 	.string "wasn't even trying.$"
 
 gText_Earthquake_ThatDoesntMake::
-	.string "That doesn't make any sense. Okay,\n"
-	.string "what's this message trying to do…$"
+	.string "Let's check this message out.$"
 
 gText_Earthquake_ItsJustABunch::
 	.string "“TM15@18030122@37.75030467013338,\n"

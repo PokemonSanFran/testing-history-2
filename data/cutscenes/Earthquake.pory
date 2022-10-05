@@ -452,7 +452,7 @@ text gText_Earthquake_WeBattledBut {
 }
 
 text gText_Earthquake_ThatDoesntMake {
-    format("That doesn't make any sense. Okay, what's this message trying to do…")
+    format("Let's check this message out.")
 }
 
 text gText_Earthquake_ItsJustABunch {

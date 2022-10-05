@@ -59,8 +59,8 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-    setweather(WEATHER_RAIN)
-    doweather
+	setvar VAR_FORTPOINT_STATE, DEFEATED_CHUCK
+	warpsilent MAP_FORTPOINT, 0
 	end
 
 

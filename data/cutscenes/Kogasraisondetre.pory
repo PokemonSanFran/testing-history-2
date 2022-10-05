@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ALEKSANDER = 1
-const RAGHNALL = 2
+const SUMMER = 2
 const KOGA = 3
 const CRYING_MAID = 4
 const CAMERA = OBJ_EVENT_ID_CAMERA
@@ -23,7 +23,7 @@ script KogaRaisonDetre_MoveIntoFoyer_Script {
     addvar(VAR_ROUTE105_STATE,1)
     applymovement(ALEKSANDER, KogaRaisonDetre_ComeDownStairs)
     delay(48)
-    applymovement(RAGHNALL, KogaRaisonDetre_ComeDownStairs)
+    applymovement(SUMMER, KogaRaisonDetre_ComeDownStairs)
     waitmovement(0)
     release
     goto(KogaRaisonDetre_KidsMeetPlayer_Dialogue)
@@ -57,13 +57,13 @@ script KogaRaisonDetre_KidsMeetPlayer_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_KogaRaisonDetre_SorryAboutThat)
     callnative(ClearMugshot)
-    applymovement(RAGHNALL, Common_Movement_FaceLeft)
+    applymovement(SUMMER, Common_Movement_FaceLeft)
     waitmovement(0)
     msgbox(gText_KogaRaisonDetre_OhArceus)
     closemessage
-    applymovement(RAGHNALL, KogaRaisonDetre_RunUpstairs)
+    applymovement(SUMMER, KogaRaisonDetre_RunUpstairs)
     waitmovement(0)
-    removeobject(RAGHNALL)
+    removeobject(SUMMER)
     removeobject(ALEKSANDER)
     goto(KogaRaisonDetre_CityDiscussion_Dialogue)
     end
@@ -165,8 +165,8 @@ script KogaRaisonDetre_Wine_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_KogaRaisonDetre_WhatDoYouMean)
 
-    setvar(var_0x8000, mugshot_n)
-    callnative(drawmugshot)
+    setvar(VAR_0x8000, MUGSHOT_N)
+    callnative(DrawMugshot)
     msgbox(gText_KogaRaisonDetre_DoYouKnowHow)
 
     setvar(VAR_0x8000, MUGSHOT_HILDA)
@@ -203,7 +203,11 @@ script KogaRaisonDetre_Wine_Dialogue {
 
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)
-    msgbox(gText_KogaRaisonDetre_IHaveToBelieve)
+    msgbox(gText_KogaRaisonDetre_IPray)
+
+    setvar(VAR_0x8000,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_KogaRaisonDetre_WhatWasThat)
     callnative(ClearMugshot)
     closemessage
     playse(SE_DING_DONG)
@@ -213,7 +217,7 @@ script KogaRaisonDetre_Wine_Dialogue {
 
     setvar(VAR_0x8000, MUGSHOT_N)
     callnative(DrawMugshot)
-    msgbox(gText_KogaRaisonDetre_AhExcellent)
+    msgbox(gText_KogaRaisonDetre_AhLetsEat)
     closemessage
     callnative(ClearMugshot)
     applymovement(KOGA, WalkToDiningRoom)
@@ -242,11 +246,11 @@ script KogaRaisonDetre_StartDinner_Script {
     closemessage
     fadescreen(FADE_TO_BLACK)
     addobject(ALEKSANDER)
-    addobject(RAGHNALL)
-    setobjectxy(RAGHNALL, 42, 7)
+    addobject(SUMMER)
+    setobjectxy(SUMMER, 42, 7)
     setobjectxy(ALEKSANDER, 40, 7)
     setobjectxy(KOGA, 37, 5)
-    turnobject(RAGHNALL, DIR_NORTH)
+    turnobject(SUMMER, DIR_NORTH)
     turnobject(ALEKSANDER, DIR_NORTH)
     goto(KogaRaisonDetre_DinnerConversation_Dialogue)
     end
@@ -321,10 +325,10 @@ script KogaRaisonDetre_RunToWork_Dialogue {
 
     msgbox(gText_KogaRaisonDetre_IDontKnowWhy)
     closemessage
-    applymovement(RAGHNALL, KogaRaisonDetre_LeaveDiningRoom)
+    applymovement(SUMMER, KogaRaisonDetre_LeaveDiningRoom)
     waitmovement(0)
     fadescreen(FADE_TO_BLACK)
-    removeobject(RAGHNALL)
+    removeobject(SUMMER)
     removeobject(ALEKSANDER)
     msgbox("The next morning…")
     closemessage
@@ -336,7 +340,6 @@ script KogaRaisonDetre_NewsStory_Script {
     setobjectxy(CRYING_MAID, 44, 4)
     turnobject(CRYING_MAID, DIR_NORTH)
     turnobject(5, DIR_NORTH)
-    //setobjectmovementtype(CRYING_MAID, MOVEMENT_TYPE_FACE_UP)
     setobjectnewmovementtype(CRYING_MAID, MOVEMENT_TYPE_FACE_UP)
     setobjectnewmovementtype(5, MOVEMENT_TYPE_FACE_UP)
     lockall
@@ -400,7 +403,7 @@ text gText_KogaRaisonDetre_YoureAFreak {
     format("…Alek, you're a freak.")
 }
 text gText_KogaRaisonDetre_MaybeTheyllSign {
-    format("Aren't you excited Raghnall?! Maybe they'll sign your {PLAYER} shirt! ")
+    format("Aren't you excited Summer?! Maybe they'll sign your {PLAYER} shirt! ")
 }
 text gText_KogaRaisonDetre_ShutUp {
     format("…shut up!")
@@ -418,7 +421,7 @@ text gText_KogaRaisonDetre_GonnaGoGet {
     format("No no no! Oh, I'm gonna go get all my League stuff, I'll be right back!")
 }
 text gText_KogaRaisonDetre_SorryAboutThat {
-    format("Sorry about that. They get… very excited. And don't let Raghnall's demeanor fool you. I think they've watched your battle against Whitney at least 40 times.")
+    format("Sorry about that. They get… very excited. And don't let Summer's demeanor fool you. I think they've watched your battle against Whitney at least 40 times.")
 }
 text gText_KogaRaisonDetre_OhArceus {
     format("Oh Arceus, Dad!")
@@ -436,10 +439,10 @@ text gText_KogaRaisonDetre_IveBeenStruggling {
     format("I've been struggling to find the right word for it, but suffering is good. Tenderloin, Oakland… so many of the places I've been to so far are hurting.")
 }
 text gText_KogaRaisonDetre_ItsBeenSaidThat {
-    format("I've noticed Bianca that doesn't quite see the region the way you do! I admire your compassion.")
+    format("I've noticed that Bianca doesn't quite see the region the way you do! I admire your compassion.")
 }
 text gText_KogaRaisonDetre_ToughToBeAround {
-    format("It's tough to be around, especially as you guys are treating me so well, you know? Do I really deserve all of this just because I'm decent at battles?")
+    format("Do I really deserve all of this just because I'm decent at battles?")
 }
 text gText_KogaRaisonDetre_ICompletelyUnderstand {
     format("I completely understand, trust me. When I worked in Chinatown, it wasn't this bad, but despite my best efforts, things have gotten worse.")
@@ -458,14 +461,15 @@ text gText_KogaRaisonDetre_HowMuch {
 }
 
 text gText_KogaRaisonDetre_ThatLastPartIsImportant {
-    format("They don't have deep roots here, but they're a brilliant business person. I don't always see eye to eye with him, but they've never let down a shareholder.")
+    format("They don't have deep roots here, but they're a brilliant business person. I don't always see eye to eye with them, but they've never let down a shareholder.")
+}
        
 text gText_KogaRaisonDetre_Shareholders{
     format("What shareholders?")
 }
 
 text gText_KogaRaisonDetre_YeahTheCorporate{
-   format("Yeah, the corporate sponsors who helped us acquire the Pokémon League. Rose saw its potential and knew we use our resources to make it even bigger. Amazon, Uber and Facebook all quickly got on board.")
+   format("The corporate sponsors who helped us acquire the Pokémon League. Rose saw its potential and knew we could make it even bigger. Amazon, Uber and Facebook all quickly got on board.")
 }
 text gText_KogaRaisonDetre_WhatDoYouMean {
     format("What do you mean?")
@@ -477,7 +481,7 @@ text gText_KogaRaisonDetre_IsntItMostly {
     format("Isn't it mostly manufacturing?")
 }
 text gText_KogaRaisonDetre_UsedToBe{
-    format("Used to be. But after Red took the League by storm back in '96, the League has been the primary economic driver. Estimates show that revenue from the Pokémon League is about to eclipse tourism in Alola too.")
+    format("Used to be. But after Red took the League by storm back in '96, the League has been the primary economic driver. Revenue from the Pokémon League is about to eclipse tourism in Alola too.")
 }
 text gText_KogaRaisonDetre_WoahWaitBigger {
     format("Woah wait, bigger than Alolan tourism?")
@@ -497,14 +501,14 @@ text gText_KogaRaisonDetre_WereGoingToMake {
 text gText_KogaRaisonDetre_IPray{
     format("*sigh* I choose to believe that this is for the greater good.")
 }
-text gText_KogaRaisonDetre_IBroughtYouHere {
-    format("I brought you here to thank you {PLAYER}. You're part of the puzzle that is going to bring these people out of poverty. You're part of the solution.")
+text gText_KogaRaisonDetre_WhatWasThat {
+    format("What did you sa -")
 }
 text gText_KogaRaisonDetre_DinnerIsServed {
     format("Dinner is served!")
 }
-text gText_KogaRaisonDetre_AhExcellent {
-    format("Ah excellent, passion makes me hungry. ")
+text gText_KogaRaisonDetre_AhLetsEat{
+    format("Ah, let's eat!")
 }
 text gText_KogaRaisonDetre_WereHonoredToHaveYou {
     format("{PLAYER}, we're honored to have you in our home. Enjoy dinner!")
@@ -516,7 +520,7 @@ text gText_KogaRaisonDetre_HowManyBadges {
     format("How many badges did you have in Orre?")
 }
 text gText_KogaRaisonDetre_DoIHaveToEat {
-    format("Dad, do I have to eat all my asparagus?")
+    format("Dad, I was right, {PLAYER} does like {STR_VAR_1}!")
 }
 text gText_KogaRaisonDetre_SorryThatsMyPhone {
     format("Sorry, that's my phone and I need to take that.")

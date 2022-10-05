@@ -133,12 +133,15 @@ KogaRaisonDetre_Wine_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_HowMuch
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_IJustRecentlyMet
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ThatLastPartIsImportant
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_KogaRaisonDetre_Shareholders
+	setvar VAR_0x8000, MUGSHOT_N
+	callnative DrawMugshot
+	msgbox gText_KogaRaisonDetre_YeahTheCorporate
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_WhatDoYouMean
@@ -166,9 +169,15 @@ KogaRaisonDetre_Wine_Dialogue::
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_WereGoingToMake
+	callnative ClearMugshot
+	applymovement 3, Common_Movement_FaceAwayPlayer
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_IBroughtYouHere
+	msgbox gText_KogaRaisonDetre_IPray
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_KogaRaisonDetre_WhatWasThat
 	callnative ClearMugshot
 	closemessage
 	playse SE_DING_DONG
@@ -176,7 +185,7 @@ KogaRaisonDetre_Wine_Dialogue::
 	msgbox gText_KogaRaisonDetre_DinnerIsServed
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_AhExcellent
+	msgbox gText_KogaRaisonDetre_AhLetsEat
 	closemessage
 	callnative ClearMugshot
 	applymovement 3, WalkToDiningRoom
@@ -530,7 +539,7 @@ gText_KogaRaisonDetre_YoureAFreak::
 	.string "…Alek, you're a freak.$"
 
 gText_KogaRaisonDetre_MaybeTheyllSign::
-	.string "Aren't you excited Raghnall?! Maybe\n"
+	.string "Aren't you excited Summer?! Maybe\n"
 	.string "they'll sign your {PLAYER} shirt!$"
 
 gText_KogaRaisonDetre_ShutUp::
@@ -557,7 +566,7 @@ gText_KogaRaisonDetre_GonnaGoGet::
 
 gText_KogaRaisonDetre_SorryAboutThat::
 	.string "Sorry about that. They get… very\n"
-	.string "excited. And don't let Raghnall's\l"
+	.string "excited. And don't let Summer's\l"
 	.string "demeanor fool you. I think they've\l"
 	.string "watched your battle against Whitney\l"
 	.string "at least 40 times.$"
@@ -589,49 +598,48 @@ gText_KogaRaisonDetre_IveBeenStruggling::
 	.string "places I've been to so far are hurting.$"
 
 gText_KogaRaisonDetre_ItsBeenSaidThat::
-	.string "It's been said that most skilled\n"
-	.string "Trainers are unusually compassionate,\l"
-	.string "and I guess that means you too!$"
+	.string "I've noticed that Bianca doesn't quite\n"
+	.string "see the region the way you do! I admire\l"
+	.string "your compassion.$"
 
 gText_KogaRaisonDetre_ToughToBeAround::
-	.string "It's tough to be around, especially as\n"
-	.string "you guys are treating me so well, you\l"
-	.string "know? Do I really deserve all of this\l"
-	.string "just because I'm decent at battles?$"
+	.string "Do I really deserve all of this just\n"
+	.string "because I'm decent at battles?$"
 
 gText_KogaRaisonDetre_ICompletelyUnderstand::
-	.string "I completely understand, trust me.$"
+	.string "I completely understand, trust me. When\n"
+	.string "I worked in Chinatown, it wasn't this\l"
+	.string "bad, but despite my best efforts,\l"
+	.string "things have gotten worse.$"
 
 gText_KogaRaisonDetre_ItsMuchEasier::
-	.string "It's much easier to have these talks\n"
-	.string "over wine.$"
+	.string "Come, let's talk.$"
 
 gText_KogaRaisonDetre_ComeSit::
-	.string "Come, sit.$"
+	.string "Over here!$"
 
 gText_KogaRaisonDetre_IPickedOut::
-	.string "I picked out an excellent Chardonnay\n"
-	.string "for you. Come have a seat.$"
+	.string "Take a seat.$"
 
 gText_KogaRaisonDetre_HowMuch::
 	.string "How much do you know about Rose?$"
 
-gText_KogaRaisonDetre_IJustRecentlyMet::
-	.string "I just recently met them. They're the\n"
-	.string "CEO, and the League Commissioner, and\l"
-	.string "prefer working alongside people.$"
-
 gText_KogaRaisonDetre_ThatLastPartIsImportant::
-	.string "That last part is important - Rose grew\n"
-	.string "up here. They take great pride in\l"
-	.string "SanFran, and want all of their work at\l"
-	.string "YCombinator to go towards making the\l"
-	.string "entire region a better place to live.\l"
-	.string "It's why we acquired the Pokémon\l"
-	.string "League. Rose saw its potential and\l"
-	.string "knew we could use its draw and our\l"
-	.string "resources to make it even better, and\l"
-	.string "bring in Trainers like you.$"
+	.string "They don't have deep roots here, but\n"
+	.string "they're a brilliant business person. I\l"
+	.string "don't always see eye to eye with them,\l"
+	.string "but they've never let down a\l"
+	.string "shareholder.$"
+
+gText_KogaRaisonDetre_Shareholders::
+	.string "What shareholders?$"
+
+gText_KogaRaisonDetre_YeahTheCorporate::
+	.string "The corporate sponsors who helped us\n"
+	.string "acquire the Pokémon League. Rose saw\l"
+	.string "its potential and knew we could make it\l"
+	.string "even bigger. Amazon, Uber and Facebook\l"
+	.string "all quickly got on board.$"
 
 gText_KogaRaisonDetre_WhatDoYouMean::
 	.string "What do you mean?$"
@@ -647,9 +655,8 @@ gText_KogaRaisonDetre_UsedToBe::
 	.string "Used to be. But after Red took the\n"
 	.string "League by storm back in '96, the League\l"
 	.string "has been the primary economic driver.\l"
-	.string "Estimates show that revenue from the\l"
-	.string "Pokémon League is about to eclipse\l"
-	.string "tourism in Alola too.$"
+	.string "Revenue from the Pokémon League is\l"
+	.string "about to eclipse tourism in Alola too.$"
 
 gText_KogaRaisonDetre_WoahWaitBigger::
 	.string "Woah wait, bigger than Alolan tourism?$"
@@ -671,27 +678,29 @@ gText_KogaRaisonDetre_MyKidsBeingObsessed::
 	.string "stars.$"
 
 gText_KogaRaisonDetre_WereGoingToMake::
-	.string "We're going to make SanFran the region\n"
-	.string "where rock stars are born. Trainers are\l"
-	.string "going to want to emulate you! The\l"
-	.string "region will be richer for it. It can\l"
-	.string "afford to uplift all of its citizens to\l"
-	.string "something much much greater. You're an\l"
-	.string "investment, {PLAYER}, but it's all\l"
-	.string "part of a much bigger play.$"
+	.string "Ycombinator is going to make SanFran\n"
+	.string "the region where Trainers come to\l"
+	.string "become rock stars. SanFran's new\l"
+	.string "talent will attract the best and the\l"
+	.string "brightest, and the region will be richer\l"
+	.string "for it. We can uplift all of SanFran's\l"
+	.string "citizens to something much much\l"
+	.string "greater. You're an investment,\l"
+	.string "{PLAYER}, but it's all part of a much\l"
+	.string "bigger play.$"
 
-gText_KogaRaisonDetre_IBroughtYouHere::
-	.string "I brought you here to thank you\n"
-	.string "{PLAYER}. You're part of the puzzle\l"
-	.string "that is going to bring these people out\l"
-	.string "of poverty. You're part of the\l"
-	.string "solution.$"
+gText_KogaRaisonDetre_IPray::
+	.string "*sigh* I choose to believe that this is\n"
+	.string "for the greater good.$"
+
+gText_KogaRaisonDetre_WhatWasThat::
+	.string "What did you sa -$"
 
 gText_KogaRaisonDetre_DinnerIsServed::
 	.string "Dinner is served!$"
 
-gText_KogaRaisonDetre_AhExcellent::
-	.string "Ah excellent, passion makes me hungry.$"
+gText_KogaRaisonDetre_AhLetsEat::
+	.string "Ah, let's eat!$"
 
 gText_KogaRaisonDetre_WereHonoredToHaveYou::
 	.string "{PLAYER}, we're honored to have you in\n"
@@ -705,7 +714,8 @@ gText_KogaRaisonDetre_HowManyBadges::
 	.string "How many badges did you have in Orre?$"
 
 gText_KogaRaisonDetre_DoIHaveToEat::
-	.string "Dad, do I have to eat all my asparagus?$"
+	.string "Dad, I was right, {PLAYER} does like\n"
+	.string "{STR_VAR_1}!$"
 
 gText_KogaRaisonDetre_SorryThatsMyPhone::
 	.string "Sorry, that's my phone and I need to\n"
@@ -746,7 +756,9 @@ gText_KogaRaisonDetre_IDontKnowWhy::
 	.string "parents are never even home. They're\l"
 	.string "trying so hard to save the world,\l"
 	.string "they're totally ignoring the one right\l"
-	.string "in front of them.$"
+	.string "in front of them.\n"
+	.string "I wish he would go back to being a Gym\l"
+	.string "Leader!$"
 
 gText_KogaRaisonDetre_AndNowWeGoTo::
 	.string "And now we go to Da Lin, for more details\n"
