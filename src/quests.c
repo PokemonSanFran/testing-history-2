@@ -1,3 +1,5 @@
+//PSF TODO when the player first opens this, there should be a tutorial to play to explain features and functionality
+//PSF TODO If a player recives a 2nd quest via startquest and the player has still never opened the questlog and done the tutorial, force the tutorial
 #include "global.h"
 #include "strings.h"
 #include "quest_strings.h"

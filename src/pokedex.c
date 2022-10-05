@@ -1,3 +1,4 @@
+//PSF TODO when the player first opens this, there should be a tutorial to play to explain features and functionality
 #include "global.h"
 #include "battle_main.h"
 #include "bg.h"

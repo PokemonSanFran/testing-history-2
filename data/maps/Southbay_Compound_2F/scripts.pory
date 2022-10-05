@@ -47,5 +47,5 @@ script Southbay_Compound_2F_Bed_Script {
 }
 
 text gText_BedScript_WhenShouldWake {
-    format("Let's get some rest...when should we wake up?")
+    format("What time of day do you want to wake up tomorrow?")
 }
