@@ -1,8 +1,7 @@
 TwoHoursAgo_ObjectSetUp::
-	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_1
 	setobjectmovementtype 2, MOVEMENT_TYPE_WANDER_AROUND
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
+	compare VAR_PLAYER_HOME_STATE, OPENED_FASHION_CASE
 	goto_if_gt TwoHoursAgo_ObjectSetUp_1
 	return
 
@@ -19,13 +18,14 @@ TwoHoursAgo_CameraToPlayer_Script::
 
 
 TwoHoursAgo_FashionCaseReminder_Script::
-	addvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setvar VAR_PLAYER_HOME_STATE, OPENED_FASHION_CASE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	lock
+	setvar VAR_0x8000, MUGSHOT_HILDA
+	callnative DrawMugshot
 	msgbox gText_WhatOutfitDoYou
-	special OpenPokeblockCaseOnFeeder
-	waitstate
+	callnative ClearMugshot
 	msgbox gText_YouCanChangeYourOutfit
 	closemessage
 	release
@@ -86,7 +86,7 @@ TwoHoursAgo_ExplainLeftovers_Dialouge::
 
 
 gText_WhatOutfitDoYou::
-	.string "What outfit do you want to wear today?$"
+	.string "Oh, I should get dressed!$"
 
 gText_YouCanChangeYourOutfit::
 	.string "You can change your outfit whenever\n"
@@ -109,9 +109,9 @@ gText_TwoHoursAgo_YoureInARace::
 
 gText_TwoHoursAgo_TheTouranemtnWillTest::
 	.string "The tournament will test all of your\n"
-	.string "skills as a Trainer, but the win will\l"
-	.string "become a YCombinator sponsored career\l"
-	.string "Pokémon Trainer.$"
+	.string "skills as a Trainer, but the winner will\l"
+	.string "become a Ycombinator-sponsored\l"
+	.string "career Pokémon Trainer.$"
 
 gText_TwoHoursAgo_WeExpectTheBest::
 	.string "We expect the best from you and Bianca!\n"

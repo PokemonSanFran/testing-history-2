@@ -62,7 +62,7 @@ Southbay_Compound_2F_Bed_Script_9:
 
 Southbay_Compound_2F_Bed_Script_12:
 	addvar VAR_LITTLEROOT_INTRO_STATE, 1
-	giveitem ITEM_FASHION_CASE
+	additem ITEM_FASHION_CASE
 	goto Southbay_Compound_2F_Bed_Script_11
 
 

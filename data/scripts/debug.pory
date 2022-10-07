@@ -78,6 +78,7 @@ script Debug_Script_3{
     end
 }
 script Debug_Script_4{
+    warpsilent(MAP_PACIFICA,33,5)
     end
 }
 script Debug_Script_5{

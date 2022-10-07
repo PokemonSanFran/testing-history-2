@@ -186,9 +186,9 @@ gText_Swagbag_WelcomeToRegion::
 	.string "your flight?$"
 
 gText_Swagbag_GreatThePrivateCar::
-	.string "Great! The private car from the airport\n"
-	.string "was a surprise, but everything was\l"
-	.string "super smooth, thanks!$"
+	.string "Great! The Premium Uber pickup from the\n"
+	.string "airport was a surprise, but everything\l"
+	.string "was super smooth, thanks!$"
 
 gText_Swagbag_ExcellentYouveAlready::
 	.string "Excellent. You've already seen the\n"
@@ -227,8 +227,10 @@ gText_Swagbag_TeachyTVSoIShould::
 	.string "have a question or get stuck?$"
 
 gText_Swagbag_Correct::
-	.string "Right! You can press {START_BUTTON} to access all the\n"
-	.string "other apps on your phone.$"
+	.string "Right! Maps works very well in SanFran,\n"
+	.string "and is another available app on your\l"
+	.string "phone. You can press {START_BUTTON} to access all\l"
+	.string "of your apps.$"
 
 gText_Swagbag_PlayerRecivedMoney::
 	.string "{PLAYER} received ¥50000, and\n"

@@ -183,7 +183,7 @@ text gText_Swagbag_TeachyTVSoIShould {
 }
 
 text gText_Swagbag_Correct {
-    format("Right! Maps works very well in SanFran, and is another available app on your phone. You can press {START_BUTTON} to access all of your apps.")
+    format("Right! Maps works very well in SanFran, and is another available app on your phone. You can press {START_BUTTON} to access all \lof your apps.")
 }
 
 text gText_Swagbag_PlayerRecivedMoney {

@@ -22,7 +22,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MYSTERY_GIFT_MAN",
-      "x": 20,
+      "x": 21,
       "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -227,6 +227,24 @@
     {
       "type": "trigger",
       "x": 25,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_HOW_DISAPPOINTING_STATE",
+      "var_value": "MISSION_ASSIGNED",
+      "script": "HowDisappointing_StartRaid_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_HOW_DISAPPOINTING_STATE",
+      "var_value": "MISSION_ASSIGNED",
+      "script": "HowDisappointing_StartRaid_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
       "y": 5,
       "elevation": 0,
       "var": "VAR_HOW_DISAPPOINTING_STATE",
