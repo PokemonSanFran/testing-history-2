@@ -151,7 +151,7 @@ text gText_Swagbag_WelcomeToRegion {
 }
 
 text gText_Swagbag_GreatThePrivateCar {
-    format("Great! The private car from the airport was a surprise, but everything was super smooth, thanks!")
+    format("Great! The Premium Uber pickup from the airport was a surprise, but everything was super smooth, thanks!")
 }
 
 text gText_Swagbag_ExcellentYouveAlready {
@@ -183,7 +183,7 @@ text gText_Swagbag_TeachyTVSoIShould {
 }
 
 text gText_Swagbag_Correct {
-    format("Right! You can press {START_BUTTON} to access all the other apps on your phone.")
+    format("Right! Maps works very well in SanFran, and is another available app on your phone. You can press {START_BUTTON} to access all of your apps.")
 }
 
 text gText_Swagbag_PlayerRecivedMoney {
