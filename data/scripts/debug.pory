@@ -73,6 +73,8 @@ script Debug_Script_2{
     end
 }
 script Debug_Script_3{
+    setvar(VAR_PLAYER_HOME_STATE,SLEPT_AFTER_SWAGBAG)
+    warpsilent(MAP_SOUTHBAY_COMPOUND_2F,0)
     end
 }
 script Debug_Script_4{

@@ -1,14 +1,15 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const BIANCA = 1 //FLAG_TEMP_1
-const OAK = 2 //FLAG_TEMP_2
+const BIANCA = 1 
+const OAK = 2 
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
 
 script TwoHoursAgo_ObjectSetUp {
-        setflag(FLAG_TEMP_3)
-        setflag(FLAG_TEMP_1)
+        setflag(FLAG_HIDE_BIANCA)
         setobjectmovementtype(OAK,MOVEMENT_TYPE_WANDER_AROUND)
 
-        if (var (VAR_LITTLEROOT_INTRO_STATE) > 6) { //If you've got four badges, Oak no longer provides help and tutorials and isn't in the house
-            setflag(FLAG_TEMP_2)
+        if (var (VAR_PLAYER_HOME_STATE) > OPENED_FASHION_CASE) { //If you've got four badges, Oak no longer provides help and tutorials and isn't in the house
+            setflag(FLAG_HIDE_OAK)
         }
 }
 
@@ -19,19 +20,26 @@ script TwoHoursAgo_CameraToPlayer_Script {
 }
 
 script TwoHoursAgo_FashionCaseReminder_Script {
-    //PSF TODO Add 1 to the VAR_LITTLEROOT_INTRO_STATE (only if at 5) to the fashion case script when I write it... someday.
-            addvar(VAR_LITTLEROOT_INTRO_STATE,1)
-            applymovement(PLAYER, Common_Movement_ExclamationMark)
-            waitmovement(0)
-            lock
-            msgbox(gText_WhatOutfitDoYou)
-            special(OpenPokeblockCaseOnFeeder)
-            waitstate
-            msgbox(gText_YouCanChangeYourOutfit)
-            closemessage
-            release
-            end
-    }
+    //PSF TODO uncomment this once you add this flag into the fashion case
+    //if (flag(FLAG_USED_FASHION_CASE)){
+    //setvar(VAR_PLAYER_HOME_STATE,OPENED_FASHION_CASE)
+    //release
+    //end
+    //}
+    setvar(VAR_PLAYER_HOME_STATE,OPENED_FASHION_CASE)
+        applymovement(PLAYER, Common_Movement_ExclamationMark)
+        waitmovement(0)
+        lock
+
+        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_WhatOutfitDoYou)
+        callnative(ClearMugshot)
+        msgbox(gText_YouCanChangeYourOutfit)
+        closemessage
+        release
+        end
+}
 
 script TwoHoursAgo_TheyreEager_Dialogue {
     msgbox(gText_TwoHoursAgo_LooksLikeWokeUp, MSGBOX_NPC)
@@ -85,7 +93,7 @@ script TwoHoursAgo_ExplainLeftovers_Dialouge {
 
 
 text gText_WhatOutfitDoYou {
-    format("What outfit do you want to wear today?")
+    format("Oh, I should get dressed!")
 }
 text gText_YouCanChangeYourOutfit {
     format("You can change your outfit whenever you like by using the Fashion Case, found in your Bag's Key Items pocket.")

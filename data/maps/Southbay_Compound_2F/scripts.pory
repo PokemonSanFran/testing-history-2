@@ -40,7 +40,7 @@ script Southbay_Compound_2F_Bed_Script {
     //If the day before League Challenge starts, advance forward by one day and give Fashion Case
     if (var(VAR_LITTLEROOT_INTRO_STATE) == 4) {
         addvar(VAR_LITTLEROOT_INTRO_STATE,1)
-            giveitem(ITEM_FASHION_CASE)
+            additem(ITEM_FASHION_CASE)
     }
     release
         end
