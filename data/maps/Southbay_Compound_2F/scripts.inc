@@ -67,5 +67,5 @@ Southbay_Compound_2F_Bed_Script_12:
 
 
 gText_BedScript_WhenShouldWake::
-	.string "Let's get some rest...when should we\n"
-	.string "wake up?$"
+	.string "What time of day do you want to wake up\n"
+	.string "tomorrow?$"

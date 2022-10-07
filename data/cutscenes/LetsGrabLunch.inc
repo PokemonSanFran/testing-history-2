@@ -210,7 +210,7 @@ LetsGrabLunch_Treasureisland::
 	msgbox gText_LetsGrabLunch_DoYouWantTreasureisland, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Treasureisland_1
-	warpsilent MAP_TREASUREISLAND, 17, 15
+	warpsilent MAP_TREASUREISLAND, 8, 15
 	return
 
 LetsGrabLunch_Treasureisland_1:

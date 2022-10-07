@@ -59,8 +59,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-	setvar VAR_FORTPOINT_STATE, DEFEATED_CHUCK
-	warpsilent MAP_FORTPOINT, 0
+	warp MAP_CHINATOWN, 40, 26
 	end
 
 

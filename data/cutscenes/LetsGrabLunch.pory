@@ -191,7 +191,7 @@ script LetsGrabLunch_Chinatown {
                 releaseall
                 end
         }else {
-            warpsilent(MAP_CHINATOWN,9,10)
+            warpsilent(MAP_CHINATOWN,21,4)
         }
 }
 script LetsGrabLunch_Marin {
@@ -225,7 +225,7 @@ script LetsGrabLunch_Treasureisland {
                 releaseall
                 end
         }else {
-            warpsilent(MAP_TREASUREISLAND,17,15)
+            warpsilent(MAP_TREASUREISLAND,8,15)
         }
 }
 script LetsGrabLunch_Haightashbury {

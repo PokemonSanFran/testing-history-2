@@ -58,10 +58,8 @@ script Swagbag_LeagueStipend_Dialogue {
         setflag(FLAG_SYS_POKENAV_GET)
         setflag(FLAG_SYS_QUEST_MENU_GET)
 
-        givecustommon(SPECIES_SLOWKING_GALARIAN, 100, ITEM_ASSAULT_VEST, ITEM_BEAST_BALL, NATURE_CALM, 2, 252,0,12,124,120,0,31,0,31,31,31,31,MOVE_SURF,MOVE_PSYCHIC,MOVE_FLAMETHROWER,MOVE_SPLASH) 
         givecustommon(SPECIES_KYOGRE,100,ITEM_BLUE_ORB,ITEM_LURE_BALL,NATURE_MODEST,0,0,0,4,252,0,252,31,31,31,31,31,31,MOVE_SURF,MOVE_CALM_MIND,MOVE_SPLASH,MOVE_ICE_BEAM) 
-        givecustommon(SPECIES_ZACIAN_CROWNED_SWORD,100,ITEM_GROUNDIUM_Z,ITEM_DUSK_BALL,NATURE_ADAMANT,0,0,252,4,252,0,0,31,31,31,31,31,31,MOVE_PLAY_ROUGH,MOVE_SPLASH,MOVE_DIG,MOVE_CRUNCH)
-
+    givecustommon(SPECIES_PANGORO,80,ITEM_CHOICE_BAND,ITEM_POKE_BALL,NATURE_ADAMANT,2,0,252,0,252,0,4,31,31,31,31,31,31,MOVE_POISON_JAB,MOVE_DRAIN_PUNCH,MOVE_SUPERPOWER,MOVE_THUNDER_PUNCH)
         goto(Swagbag_PokedexApps_Dialogue)
         end
 }
@@ -177,7 +175,7 @@ text gText_Swagbag_InvasiveMuch {
 }
 
 text gText_Swagbag_WellAskNextTime {
-    format("Ha ha, we'll ask next time. Another perk: you've also got the cutting edge versions of all the best apps... TeachyTV, FameChecker, QuestLog, and of course, the we've changed your Pokedex regions to SanFran mode.")
+    format("Ha ha, we'll ask next time. Another perk: you've also got the cutting edge versions of all the best apps... TeachyTV, FameChecker, QuestLog, and of course, we've reset your Pokedex regions to SanFran.")
 }
 
 text gText_Swagbag_TeachyTVSoIShould {
@@ -185,7 +183,7 @@ text gText_Swagbag_TeachyTVSoIShould {
 }
 
 text gText_Swagbag_Correct {
-    format("Right! All of the other apps have tutorials, so if you press {START_BUTTON} later and select an app, it'll walk you through all of them.")
+    format("Right! You can press {START_BUTTON} to access all the other apps on your phone.")
 }
 
 text gText_Swagbag_PlayerRecivedMoney {

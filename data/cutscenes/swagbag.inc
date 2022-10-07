@@ -56,9 +56,8 @@ Swagbag_LeagueStipend_Dialogue::
 	addmoney 50000, 0
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_SYS_QUEST_MENU_GET
-	givecustommon SPECIES_SLOWKING_GALARIAN, 100, ITEM_ASSAULT_VEST, ITEM_BEAST_BALL, NATURE_CALM, 2, 252, 0, 12, 124, 120, 0, 31, 0, 31, 31, 31, 31, MOVE_SURF, MOVE_PSYCHIC, MOVE_FLAMETHROWER, MOVE_SPLASH
 	givecustommon SPECIES_KYOGRE, 100, ITEM_BLUE_ORB, ITEM_LURE_BALL, NATURE_MODEST, 0, 0, 0, 4, 252, 0, 252, 31, 31, 31, 31, 31, 31, MOVE_SURF, MOVE_CALM_MIND, MOVE_SPLASH, MOVE_ICE_BEAM
-	givecustommon SPECIES_ZACIAN_CROWNED_SWORD, 100, ITEM_GROUNDIUM_Z, ITEM_DUSK_BALL, NATURE_ADAMANT, 0, 0, 252, 4, 252, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_PLAY_ROUGH, MOVE_SPLASH, MOVE_DIG, MOVE_CRUNCH
+	givecustommon SPECIES_PANGORO, 80, ITEM_CHOICE_BAND, ITEM_POKE_BALL, NATURE_ADAMANT, 2, 0, 252, 0, 252, 0, 4, 31, 31, 31, 31, 31, 31, MOVE_POISON_JAB, MOVE_DRAIN_PUNCH, MOVE_SUPERPOWER, MOVE_THUNDER_PUNCH
 	goto Swagbag_PokedexApps_Dialogue
 	end
 
@@ -149,6 +148,7 @@ swagbag_PreventPlayerLeavingSouthbay_Event_Script::
 
 swagbag_TurnFaceOak_Movement:
 	walk_up
+	walk_up
 	face_down
 	step_end
 
@@ -219,18 +219,16 @@ gText_Swagbag_WellAskNextTime::
 	.string "you've also got the cutting edge\l"
 	.string "versions of all the best apps...\l"
 	.string "TeachyTV, FameChecker, QuestLog, and\l"
-	.string "of course, the we've changed your\l"
-	.string "Pokedex regions to SanFran mode.$"
+	.string "of course, we've reset your Pokedex\l"
+	.string "regions to SanFran.$"
 
 gText_Swagbag_TeachyTVSoIShould::
 	.string "Teachy TV... so I should use that if I\n"
 	.string "have a question or get stuck?$"
 
 gText_Swagbag_Correct::
-	.string "Right! All of the other apps have\n"
-	.string "tutorials, so if you press {START_BUTTON} later and\l"
-	.string "select an app, it'll walk you through all\l"
-	.string "of them.$"
+	.string "Right! You can press {START_BUTTON} to access all the\n"
+	.string "other apps on your phone.$"
 
 gText_Swagbag_PlayerRecivedMoney::
 	.string "{PLAYER} received ¥50000, and\n"

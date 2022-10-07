@@ -2,7 +2,7 @@
   "id": "MAP_PSFROUTE8",
   "name": "Psfroute8",
   "layout": "LAYOUT_PSFROUTE8",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_ROUTE104",
   "region_map_section": "MAPSEC_PSFROUTE8",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

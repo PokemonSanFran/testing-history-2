@@ -15,8 +15,13 @@
   "connections": [
     {
       "direction": "right",
-      "offset": 14,
-      "map": "MAP_SOMA"
+      "offset": -5,
+      "map": "MAP_OAKLAND"
+    },
+    {
+      "direction": "left",
+      "offset": -25,
+      "map": "MAP_TREASUREISLAND"
     }
   ],
   "object_events": [
