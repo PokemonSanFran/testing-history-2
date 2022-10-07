@@ -13,7 +13,6 @@ mapscripts Southbay_Compound_1F_MapScripts {
 
 script Southbay_Compound_1F_MapScripts_OnTransition {
 
-    call(AaandWereBack_ObjectSetUp_Script)
     call(AaandWereBack_ObjectHide_Script)
     call(VSGarbodor_ReturnToTheCompound_ObjectSetUp)
     call(VSGarbodor_ObjectCleanUp_Script)
@@ -25,6 +24,7 @@ script Southbay_Compound_1F_MapScripts_OnTransition {
         case OPENED_FASHION_CASE: call(TwoHoursAgo_ObjectSetUp) 
         case FINISHED_1_1: call(AaandWereBack_ObjectSetUp_Script)
         case POST_NAVALBASE_RAID: call(WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script)
+        default: return
     }
 
 }

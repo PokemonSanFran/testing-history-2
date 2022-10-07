@@ -16,7 +16,6 @@ Southbay_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Southbay_Compound_1F_MapScripts_OnTransition::
-	call AaandWereBack_ObjectSetUp_Script
 	call AaandWereBack_ObjectHide_Script
 	call VSGarbodor_ReturnToTheCompound_ObjectSetUp
 	call VSGarbodor_ObjectCleanUp_Script

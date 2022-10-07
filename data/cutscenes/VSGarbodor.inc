@@ -12,20 +12,19 @@ VSGarbodor_Arrest_ObjectSetup_Script::
 
 
 VSGarbodor_ObjectCleanUp_Script::
-	compare VAR_STORYLINE_STATE, 8
-	goto_if_gt VSGarbodor_ObjectCleanUp_Script_3
+	compare VAR_STORYLINE_STATE, 10
+	goto_if_gt VSGarbodor_ObjectCleanUp_Script_2
+	return
+
 VSGarbodor_ObjectCleanUp_Script_1:
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
 	return
 
 VSGarbodor_ObjectCleanUp_Script_2:
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
-	goto VSGarbodor_ObjectCleanUp_Script_1
-
-VSGarbodor_ObjectCleanUp_Script_3:
-	compare VAR_CONSTRUCTION_STRIKE_STATE, START_VS_GARBODOR
-	goto_if_gt VSGarbodor_ObjectCleanUp_Script_2
-	goto VSGarbodor_ObjectCleanUp_Script_1
+	compare VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR
+	goto_if_ne VSGarbodor_ObjectCleanUp_Script_1
+	return
 
 
 VSGarbodor_Scouting_Dialogue::
@@ -265,7 +264,7 @@ VSGarbodor_DefeatedAll_Dialogue::
 
 VSGarbodor_Arrest_Script::
 	setvar VAR_CONSTRUCTION_STRIKE_STATE, TEAM_ROCKET_ARRESTED
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR
 	applymovement 14, Common_Movement_FaceUp
 	applymovement 1, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceUp
@@ -348,10 +347,10 @@ VSGarbodor_ReturnToTheCompound_ObjectSetUp::
 	return
 
 VSGarbodor_ReturnToTheCompound_ObjectSetUp_1:
-	setflag FLAG_TEMP_1
 	setobjectxy 1, 7, 2
 	setobjectxyperm 1, 7, 2
 	setobjectmovementtype 1, MOVEMENT_ACTION_FACE_DOWN
+	setflag FLAG_TEMP_2
 	return
 
 
@@ -374,7 +373,7 @@ VSGarbodor_ReturnToTheCompound_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_NEED_SLEEP_BEFORE_SIEBOLD
 	release
 	end
 

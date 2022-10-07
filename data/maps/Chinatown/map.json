@@ -152,8 +152,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GROUDON_FRONT",
-      "x": 39,
-      "y": 24,
+      "x": 30,
+      "y": 28,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -200,8 +200,8 @@
       "dest_warp_id": 0
     },
     {
-      "x": 4,
-      "y": 37,
+      "x": 18,
+      "y": 10,
       "elevation": 0,
       "dest_map": "MAP_CHINATOWN_BACKROOM_C",
       "dest_warp_id": 0

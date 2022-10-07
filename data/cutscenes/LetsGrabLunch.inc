@@ -174,7 +174,7 @@ LetsGrabLunch_Chinatown::
 	msgbox gText_LetsGrabLunch_DoYouWantChinatown, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Chinatown_1
-	warpsilent MAP_CHINATOWN, 9, 10
+	warpsilent MAP_CHINATOWN, 21, 4
 	return
 
 LetsGrabLunch_Chinatown_1:

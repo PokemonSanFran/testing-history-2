@@ -1,3 +1,4 @@
+//PSF TODO Ask the player their favorite food. Will be used for You Look Tired cutscene
 gText_Birch_Welcome::
 	.string "Hi! Sorry to keep you waiting!\p"
 	.string "Welcome to the world of POKéMON!\p"
