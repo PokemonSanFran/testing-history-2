@@ -54,11 +54,12 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warpsilent MAP_TENDERLOIN, 4, 38
+	warpsilent MAP_JAPANTOWN_RAMEN, 0
 	end
 
 
 Debug_Script_2::
+	completequest QUEST_BLUEROBBERRY
 	end
 
 

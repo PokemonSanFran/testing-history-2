@@ -1,14 +1,16 @@
 mapscripts Japantown_Ramen_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+        call(Quest_BlueRobbery_Restaurant_HideObject_Script)
     }
 }
+
 script Japantown_Ramen_InteractFanny_Event_Script {
     lock
         switch(var(VAR_LILYCOVE_CITY_STATE)){
-                case 0: return
-            case 1: return
-            case 2: return
-            case 8: return
+            case NOT_ASSIGNED: 
+            case ASSIGNED_MASK_OFF:
+            case GOT_MASK_OFF_CLUE_1:
+            case DEFEATED_MASK_OFF_GIOVANNI: return
             default: call(MaskOff_QuestI_Dialogue)
         }
     release

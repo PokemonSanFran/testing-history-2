@@ -5,22 +5,24 @@ const WOBBUFFET = 2
 const POLICE = 3
 const ROBBER = 2
 const FRIEND = 3
+const FLAG_HIDE_POLICE = FLAG_TEMP_1
+const FLAG_HIDE_FAKEROBBER = FLAG_TEMP_2
+const FLAG_HIDE_ROBBER = FLAG_TEMP_1
 
 script Quest_BlueRobbery_HideObject_Script {
-  setflag(FLAG_TEMP_1)
+  setflag(FLAG_HIDE_POLICE)
   questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BLUEROBBERRY)
   if (var (VAR_RESULT)) {
-    setflag(FLAG_TEMP_2)
+    setflag(FLAG_HIDE_FAKEROBBER)
   }
 }
 
 script Quest_BlueRobbery_Restaurant_HideObject_Script {
-  questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BLUEROBBERRY)
-  if (!
-    var (VAR_RESULT)) {
-    setflag(FLAG_TEMP_1)
-  }
-
+    questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BLUEROBBERRY)
+        if (!var (VAR_RESULT)) {
+            setflag(FLAG_HIDE_ROBBER)
+        }
+    return
 }
 
 script Quest_BlueRobbery_FakeRobber_Event_Script {

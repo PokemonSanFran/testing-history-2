@@ -63,10 +63,11 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    warpsilent(MAP_TENDERLOIN,4,38)
+    warpsilent(MAP_JAPANTOWN_RAMEN,0)
     end
 }
 script Debug_Script_2{
+    completequest(QUEST_BLUEROBBERRY)
     end
 }
 script Debug_Script_3{

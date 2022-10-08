@@ -663,6 +663,34 @@ script Quest_ArtisanBalls3_ChangeDoorMetatile_Script {
     return
 }
 
+text gText_Quest_ArtisanBalls_WhichPokeBall{
+    format("Sergey has noted on all of his craft Poke Balls. Which one would you like to read about?")
+}
+
+//PSF TODO add descriptions for each ball
+//PSF TODO build out the ball menu
+text gText_Quest_ArtisanBalls_ExplainFast{
+    format("")
+}
+text gText_Quest_ArtisanBalls_ExplainLevel{
+    format("")
+}
+text gText_Quest_ArtisanBalls_ExplainLure{
+    format("")
+}
+text gText_Quest_ArtisanBalls_ExplainHeavy{
+    format("")
+}
+text gText_Quest_ArtisanBalls_ExplainLove{
+    format("")
+}
+text gText_Quest_ArtisanBalls_ExplainFriend{
+    format("")
+}
+text gText_Quest_ArtisanBalls_ExplainMoon{
+    format("")
+}
+
 text gText_Quest_ArtisanBalls_IGotFired {
 	format("I make craft PokéBalls. I'm tired of working for somebody else, and want to open a shop selling my Balls! Would you be willing to test my PokeBalls?")
 }
@@ -670,7 +698,7 @@ text gText_Quest_ArtisanBalls_SergeyGaveYou {
 	format("{PLAYER} obtained a set of craft PokéBalls!")
 }
 text gText_Quest_ArtisanBalls_ComeBack{
-    format("Come back if you need more PokeBalls.")
+    format("That set has one of each: Fast, Level, Lure, Love, Friend and a Moon Ball. The books explain how to best use them. Come back if you need more PokeBalls.")
 }
 text gText_Quest_ArtisanBalls_HowIsProgress {
 	format("How is progress going?")

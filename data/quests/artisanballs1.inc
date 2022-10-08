@@ -785,6 +785,32 @@ Quest_ArtisanBalls3_DebugA_Script_Text_0:
 	.string "you defeated a gym leader while you had\n"
 	.string "a ball$"
 
+gText_Quest_ArtisanBalls_WhichPokeBall::
+	.string "Sergey has noted on all of his craft\n"
+	.string "Poke Balls. Which one would you like to\l"
+	.string "read about?$"
+
+gText_Quest_ArtisanBalls_ExplainFast::
+	.string "$"
+
+gText_Quest_ArtisanBalls_ExplainLevel::
+	.string "$"
+
+gText_Quest_ArtisanBalls_ExplainLure::
+	.string "$"
+
+gText_Quest_ArtisanBalls_ExplainHeavy::
+	.string "$"
+
+gText_Quest_ArtisanBalls_ExplainLove::
+	.string "$"
+
+gText_Quest_ArtisanBalls_ExplainFriend::
+	.string "$"
+
+gText_Quest_ArtisanBalls_ExplainMoon::
+	.string "$"
+
 gText_Quest_ArtisanBalls_IGotFired::
 	.string "I make craft PokéBalls. I'm tired of\n"
 	.string "working for somebody else, and want to\l"
@@ -796,6 +822,9 @@ gText_Quest_ArtisanBalls_SergeyGaveYou::
 	.string "PokéBalls!$"
 
 gText_Quest_ArtisanBalls_ComeBack::
+	.string "That set has one of each: Fast, Level,\n"
+	.string "Lure, Love, Friend and a Moon Ball. The\l"
+	.string "books explain how to best use them.\l"
 	.string "Come back if you need more PokeBalls.$"
 
 gText_Quest_ArtisanBalls_HowIsProgress::

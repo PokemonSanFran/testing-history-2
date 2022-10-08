@@ -13,12 +13,13 @@ Quest_BlueRobbery_HideObject_Script_1:
 Quest_BlueRobbery_Restaurant_HideObject_Script::
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_BLUEROBBERRY
 	compare VAR_RESULT, 0
-	goto_if_eq Quest_BlueRobbery_Restaurant_HideObject_Script_1
+	goto_if_eq Quest_BlueRobbery_Restaurant_HideObject_Script_2
+Quest_BlueRobbery_Restaurant_HideObject_Script_1:
 	return
 
-Quest_BlueRobbery_Restaurant_HideObject_Script_1:
+Quest_BlueRobbery_Restaurant_HideObject_Script_2:
 	setflag FLAG_TEMP_1
-	return
+	goto Quest_BlueRobbery_Restaurant_HideObject_Script_1
 
 
 Quest_BlueRobbery_FakeRobber_Event_Script::

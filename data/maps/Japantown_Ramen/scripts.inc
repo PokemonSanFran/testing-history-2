@@ -3,30 +3,22 @@ Japantown_Ramen_MapScripts::
 	.byte 0
 
 Japantown_Ramen_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_BlueRobbery_Restaurant_HideObject_Script
 	return
 
 
 Japantown_Ramen_InteractFanny_Event_Script::
 	lock
 	switch VAR_LILYCOVE_CITY_STATE
-	case 0, Japantown_Ramen_InteractFanny_Event_Script_3
-	case 1, Japantown_Ramen_InteractFanny_Event_Script_4
-	case 2, Japantown_Ramen_InteractFanny_Event_Script_5
-	case 8, Japantown_Ramen_InteractFanny_Event_Script_6
+	case NOT_ASSIGNED, Japantown_Ramen_InteractFanny_Event_Script_3
+	case ASSIGNED_MASK_OFF, Japantown_Ramen_InteractFanny_Event_Script_3
+	case GOT_MASK_OFF_CLUE_1, Japantown_Ramen_InteractFanny_Event_Script_3
+	case DEFEATED_MASK_OFF_GIOVANNI, Japantown_Ramen_InteractFanny_Event_Script_3
 	call MaskOff_QuestI_Dialogue
 	release
 	end
 
 Japantown_Ramen_InteractFanny_Event_Script_3:
-	return
-
-Japantown_Ramen_InteractFanny_Event_Script_4:
-	return
-
-Japantown_Ramen_InteractFanny_Event_Script_5:
-	return
-
-Japantown_Ramen_InteractFanny_Event_Script_6:
 	return
 
 
