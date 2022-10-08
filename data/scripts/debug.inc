@@ -54,8 +54,7 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_STORYLINE_STATE, STORY_WON_FINALS
-	warpsilent MAP_PRESIDIO_COMPOUND_1F, 11, 4
+	warpsilent MAP_MISSION_GYM, 0
 	end
 
 

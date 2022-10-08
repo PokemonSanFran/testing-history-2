@@ -75,7 +75,7 @@ EnterFalkner_StartGymBattle_Script::
 EnterFalkner_FalknerDefeated_Script::
 	lockall
 	setflag FLAG_BADGE01_GET
-	addvar VAR_GYM_1_STATE, 1
+	setvar VAR_GYM_1_STATE, GYM_DEFEATED_LEADER
 	setvar VAR_0x8000, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterFalkner_ThatWasDelicious
@@ -224,19 +224,18 @@ EnterFalkner_WalkNorthBackToStove:
 	step_end
 
 gText_EnterFalkner_OneMoreLadle::
-	.string "Hold on! I've got one more ladle of Pinap\n"
-	.string "braising liquid, and then into the\l"
-	.string "oven...$"
+	.string "Hold on! I've got one brushing of Pinap\n"
+	.string "glaze, and then into the oven...$"
 
 gText_EnterFalkner_MeatsInOven::
-	.string "Cool, meat's in the oven.$"
+	.string "Cool, cake's in the oven.$"
 
 gText_EnterFalkner_MyLatestCreation::
 	.string "Ticket said you're {PLAYER}, right?\n"
-	.string "I'm Falkner, head chef of Poc-Chuc and\l"
-	.string "the Gym Leader here. After you lose,\l"
-	.string "I'll treat you to my latest creation:\l"
-	.string "Galifeu au Vin Burrito with a Pinap\l"
+	.string "I'm Falkner, head baker of Poc-Chuc\l"
+	.string "and the Gym Leader here. After you\l"
+	.string "lose, I'll treat you to my latest\l"
+	.string "creation: crepe cake with a Pinap\l"
 	.string "glaze. It's my first time making it, but\l"
 	.string "from that amazing smell, it's gonna be\l"
 	.string "great.$"
@@ -248,7 +247,7 @@ gText_EnterFalkner_YourSenseOfTaste::
 	.string "together to create your culinary\l"
 	.string "experiences. I'll show how I do that in\l"
 	.string "battle too! Let's see if I can\l"
-	.string "overwhelm your palette before my meat\l"
+	.string "overwhelm your palette before my cake\l"
 	.string "burns!$"
 
 gText_EnterFalkner_IThinkYouTalk::
@@ -260,8 +259,7 @@ gText_EnterFalkner_FirstHitOfSpice::
 	.string "of spice on the tip of my tongue!$"
 
 gText_EnterFalkner_SimmerWasntEnough::
-	.string "Guess a simmer wasn't enough - I've\n"
-	.string "gotta crank it up to a rolling boil!$"
+	.string "I've gotta crank the heat, and quick!$"
 
 gText_EnterFalkner_WhatABitterDefeat::
 	.string "Ouch, what a bitter defeat. Try adding\n"
@@ -277,7 +275,7 @@ gText_EnterFalkner_ThatWasDelicious::
 	.string "my favorite Technical Machine.$"
 
 gText_EnterFalkner_OhTheMeat::
-	.string "Oh, the meat!$"
+	.string "Oh, the cake!$"
 
 gText_EnterFalkner_BadgeGet::
 	.string "You recieved the FalknerBadge Badge!$"
@@ -290,5 +288,5 @@ gText_EnterFalkner_WithThatBadge::
 	.string "to Psfgymattackdesc1.$"
 
 gText_EnterFalkner_LetsCookTogether::
-	.string "Let's cook together again soon! Now if\n"
+	.string "Let's bake together again soon! Now if\n"
 	.string "you'll excuse me...$"

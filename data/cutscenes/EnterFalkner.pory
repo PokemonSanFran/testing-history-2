@@ -69,7 +69,7 @@ script EnterFalkner_StartGymBattle_Script {
 script EnterFalkner_FalknerDefeated_Script {
   lockall
   setflag(FLAG_BADGE01_GET)
-  addvar(VAR_GYM_1_STATE,1)
+  setvar(VAR_GYM_1_STATE,GYM_DEFEATED_LEADER)
   setvar(VAR_0x8000, MUGSHOT_FALKNER)
   callnative(DrawMugshot)
   msgbox(gText_EnterFalkner_ThatWasDelicious)
@@ -193,19 +193,19 @@ movement EnterFalkner_WalkNorthBackToStove {
 }
 
 text gText_EnterFalkner_OneMoreLadle {
-  format("Hold on! I've got one more ladle of Pinap braising liquid, and then into the oven...")
+  format("Hold on! I've got one brushing of Pinap glaze, and then into the oven...")
 }
 
 text gText_EnterFalkner_MeatsInOven {
-  format("Cool, meat's in the oven. ")
+  format("Cool, cake's in the oven. ")
 }
 
 text gText_EnterFalkner_MyLatestCreation {
-  format("Ticket said you're {PLAYER}, right? I'm Falkner, head chef of Poc-Chuc and the Gym Leader here. After you lose, I'll treat you to my latest creation: Galifeu au Vin Burrito with a Pinap glaze. It's my first time making it, but from that amazing smell, it's gonna be great.")
+  format("Ticket said you're {PLAYER}, right? I'm Falkner, head baker of Poc-Chuc and the Gym Leader here. After you lose, I'll treat you to my latest creation: crepe cake with a Pinap glaze. It's my first time making it, but from that amazing smell, it's gonna be great.")
 }
 
 text gText_EnterFalkner_YourSenseOfTaste {
-  format("Did you know that a lot of your sense of taste actually is because of your sense of smell? All of your senses work together to create your culinary experiences. I'll show how I do that in battle too! Let's see if I can overwhelm your palette before my meat burns!")
+  format("Did you know that a lot of your sense of taste actually is because of your sense of smell? All of your senses work together to create your culinary experiences. I'll show how I do that in battle too! Let's see if I can overwhelm your palette before my cake burns!")
 }
 
 text gText_EnterFalkner_IThinkYouTalk {
@@ -217,7 +217,7 @@ text gText_EnterFalkner_FirstHitOfSpice {
 }
 
 text gText_EnterFalkner_SimmerWasntEnough {
-  format("Guess a simmer wasn't enough - I've gotta crank it up to a rolling boil!")
+  format("I've gotta crank the heat, and quick!")
 }
 
 text gText_EnterFalkner_WhatABitterDefeat {
@@ -233,7 +233,7 @@ text gText_EnterFalkner_ThatWasDelicious {
 }
 
 text gText_EnterFalkner_OhTheMeat {
-  format("Oh, the meat!")
+  format("Oh, the cake!")
 }
 
 text gText_EnterFalkner_BadgeGet {
@@ -245,5 +245,5 @@ text gText_EnterFalkner_WithThatBadge {
 }
 
 text gText_EnterFalkner_LetsCookTogether {
-  format("Let's cook together again soon! Now if you'll excuse me...")
+  format("Let's bake together again soon! Now if you'll excuse me...")
 }

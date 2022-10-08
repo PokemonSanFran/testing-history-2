@@ -136,9 +136,9 @@ gText_BeingChampionIsHard_WoWWhatToDo::
 
 gText_BeingChampionIsHard_YouShouldGoTo::
 	.string "You should go to Treasureisland! The\n"
-	.string "construction on the bridge has finally\l"
-	.string "been completed, and its a fun place to\l"
-	.string "sightsee.$"
+	.string "construction on Psfroute30 and\l"
+	.string "Psfroute25 has finally been completed,\l"
+	.string "and its a fun place to sightsee.$"
 
 gText_BeingChampionIsHard_ThatsWhereTheyFilm::
 	.string "That's where they film movies, right?$"
