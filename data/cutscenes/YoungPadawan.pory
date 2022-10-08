@@ -1,13 +1,14 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const MALVA = 9
+const FLAG_HIDE_MALVA = FLAG_TEMP_2
 
 script YoungPadawan_Intro_Dialogue {
     lock
-        clearflag(FLAG_TEMP_2)
+        clearflag(FLAG_HIDE_MALVA)
         addobject(MALVA)
         playbgm(MUS_ENCOUNTER_ELITE_FOUR,TRUE)
-        applymovement(MALVA,YoungPadawan_GetOffBoat)
-        waitmovement(0)
+        applymovement(MALVA,YoungPadawan_ApproachFromIsland_Movement)
+        waitmovement(MALVA)
 
         setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
@@ -232,8 +233,8 @@ text gText_YoungPadawan_ThoseCanBeTough {
     format("Those can be tough to get if you're not from here. Good luck with the rest of your challenge, {PLAYER}.")
 }
 
-movement YoungPadawan_GetOffBoat {
-    walk_up * 5
+movement YoungPadawan_ApproachFromIsland_Movement {
+        walk_right * 8
         step_end
 }
 movement YoungPadawan_StepDownWalkBeside {
@@ -242,7 +243,8 @@ movement YoungPadawan_StepDownWalkBeside {
         step_end
 }
 movement YoungPadawan_LookAtOcean {
-    walk_left * 1
+        walk_up * 3
+        walk_right * 2
         step_end
 }
 movement YoungPadawan_WalkBackToPlayer {

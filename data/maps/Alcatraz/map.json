@@ -108,7 +108,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
       "x": 38,
-      "y": 59,
+      "y": 60,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -120,8 +120,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SIDNEY",
-      "x": 36,
-      "y": 61,
+      "x": 28,
+      "y": 60,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -194,15 +194,6 @@
       "var": "VAR_ALCATRAZ_STATE",
       "var_value": "1",
       "script": "YoungPadawan_Intro_Dialogue"
-    },
-    {
-      "type": "trigger",
-      "x": 38,
-      "y": 60,
-      "elevation": 0,
-      "var": "VAR_ALCATRAZ_STATE",
-      "var_value": "0",
-      "script": "TheStorySoFar_EntranceTrigger_Script"
     }
   ],
   "bg_events": [
