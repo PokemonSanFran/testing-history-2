@@ -187,7 +187,7 @@ text gText_AlwaysWatchingWazowski_WhatDoYouMean{
 }
 
 text gText_AlwaysWatchingWazowski_TensOfThousandsOfKids{
-    format("Tens of thousands of kids at home watching you all right now. Everybody loves competition, and even more so, they love watching their favorites progress. Our inbound sponsorship requests have skyrocketed 44.15% percent, and the challenge just started.")
+    format("Tens of thousands of kids at home watching you all right now. Everybody loves competition, and even more so, they love watching their favorites progress. Our inbound sponsorship requests have skyrocketed 44.15% , and the challenge just started.")
 }
 
 text gText_AlwaysWatchingWazowski_ToPutItSimply{
