@@ -104,20 +104,6 @@ HeresHowThisIsGoingToGo_ExplainLeagueDialogue::
 	msgbox gText_HeresHowThisIsGoingToGo_SoIllGoOver
 	closemessage
 	callnative ClearMugshot
-	fadescreen FADE_TO_BLACK
-	msgbox gText_HeresHowThisIsGoingToGo_ForTheGroupStage
-	msgbox gText_HeresHowThisIsGoingToGo_TheTrainerWith
-	msgbox gText_HeresHowThisIsGoingToGo_InTheFinalStage
-	closemessage
-	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_HeresHowThisIsGoingToGo_AnyQuestions
-	callnative ClearMugshot
-	msgbox gText_HeresHowThisIsGoingToGo_WhatsTheTiebreaker
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_HeresHowThisIsGoingToGo_ItsInTheInformation
 	applymovement 1, Common_Movement_FaceLeft
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
@@ -125,7 +111,7 @@ HeresHowThisIsGoingToGo_ExplainLeagueDialogue::
 	callnative ClearMugshot
 	closemessage
 	fadescreen FADE_TO_BLACK
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_CHAMPIONSHIP_EXPLAINED
 	playse SE_EXIT
 	waitse
 	removeobject 1
@@ -133,7 +119,7 @@ HeresHowThisIsGoingToGo_ExplainLeagueDialogue::
 	call HeresHowThisIsGoingToGo_CleanUpVObjects_Script
 	fadescreen FADE_FROM_BLACK
 	applymovement 3, HeresHowThisIsGoingToGo_GoToBracket
-	waitmovement 0
+	waitmovement 3
 	releaseall
 	end
 
@@ -208,52 +194,14 @@ gText_HeresHowThisIsGoingToGo_DotDotDot::
 	.string "…$"
 
 gText_HeresHowThisIsGoingToGo_SoIllGoOver::
-	.string "So I'll go over how the Championship\n"
-	.string "works.$"
-
-gText_HeresHowThisIsGoingToGo_ForTheGroupStage::
-	.string "For the Group Stage, you'll be randomly\n"
-	.string "split into four groups of four\l"
-	.string "trainers. You'll battle all of the other\l"
-	.string "Trainers in your group, and each match\l"
-	.string "will be on a different terrain\l"
-	.string "battlefield. You will bring six Pokémon\l"
-	.string "with you, and choose three before the\l"
-	.string "start of each match in the Group\l"
-	.string "Stage. You will be healed after every\l"
-	.string "match, but you may not use items from\l"
-	.string "your bag during battle.$"
-
-gText_HeresHowThisIsGoingToGo_TheTrainerWith::
-	.string "The Trainer with the best record in a\n"
-	.string "group will proceed to the Semi-Finals.\l"
-	.string "In the event of a tie, we will go to a\l"
-	.string "tiebreaker.$"
-
-gText_HeresHowThisIsGoingToGo_InTheFinalStage::
-	.string "In the Final Stage, you will be paired\n"
-	.string "against another winning Trainer from a\l"
-	.string "different Group. You will battle on a\l"
-	.string "neutral battlefield, with a full party\l"
-	.string "of six. The Semi-Final winners will then\l"
-	.string "face off for the Championship!\l"
-	.string "Trainers can change their six Pokémon\l"
-	.string "between matches, but are still not\l"
-	.string "permitted to use items during battle.$"
-
-gText_HeresHowThisIsGoingToGo_AnyQuestions::
-	.string "Any questions?$"
-
-gText_HeresHowThisIsGoingToGo_WhatsTheTiebreaker::
-	.string "What's the tiebreaker?$"
-
-gText_HeresHowThisIsGoingToGo_ItsInTheInformation::
-	.string "It's in the information packet. But\n"
-	.string "also, don't lose. Anything else? No?\l"
-	.string "Great. Let's assign matches.$"
+	.string "So here's the simple explanation: Win\n"
+	.string "five battles in a row, and you'll be the\l"
+	.string "Champion! If you want the more\l"
+	.string "detailed version, you can view the\l"
+	.string "rules on the monitor to my right.$"
 
 gText_HeresHowThisIsGoingToGo_YourGroupsAnd::
 	.string "Your groups, and the eventual final\n"
-	.string "bracket, can be seen here. We'll be\l"
-	.string "starting with Group A in two hours.\l"
-	.string "Good luck.$"
+	.string "bracket, can also be seen on the\l"
+	.string "monitor. We'll be starting with Group A\l"
+	.string "in two hours. Good luck.$"

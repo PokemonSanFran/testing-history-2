@@ -8,9 +8,9 @@ GroupStages_Lockers_ObjectSetUp_Script::
 
 GroupStages_Lockers_ObjectCleanUp_Script::
 	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_4
 	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_6
 	return
 
 
@@ -22,24 +22,24 @@ GroupStages_Skybox_ObjectSetup_Script::
 
 GroupStages_GreetBeforeStart_Dialogue::
 	lock
-	applymovement 2, GroupStages_WalkToPlayer
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement 2, GroupStages_WalkToPlayer
+	waitmovement 2
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_GroupStages_EasyPeasy
 	closemessage
 	callnative ClearMugshot
 	applymovement 2, GroupStages_LeaveLockers
-	waitmovement 0
+	waitmovement 2
 	playse SE_EXIT
 	waitse
 	removeobject 2
 	fadedefaultbgm
-	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_ROUTE119_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_READY_GROUP_STAGE
+	setvar VAR_CHASECENTER_TOURNAMENT_STATE, PRE_BATTLE_1
 	release
 	end
 
@@ -59,14 +59,14 @@ GroupStages_PreparePlayer_Script_2:
 	call GroupStages_ChooseParty_Script
 	setflag FLAG_CHASECENTER_TOURNAMENT_HAPPENING
 	call GroupStages_MoveObjects_Script
-	compare VAR_ROUTE119_STATE, 4
+	compare VAR_CHASECENTER_TOURNAMENT_STATE, PRE_BATTLE_4
 	goto_if_ne GroupStages_PreparePlayer_Script_5
 GroupStages_PreparePlayer_Script_4:
 	warpsilent MAP_CHASECENTER_ARENA, 255, 5, 6
 	goto GroupStages_PreparePlayer_Script_1
 
 GroupStages_PreparePlayer_Script_5:
-	setvar VAR_ROUTE119_STATE, 1
+	setvar VAR_CHASECENTER_TOURNAMENT_STATE, PRE_BATTLE_1
 	goto GroupStages_PreparePlayer_Script_4
 
 
@@ -84,7 +84,7 @@ GroupStages_MoveObjects_Script::
 	case 10, GroupStages_MoveObjects_Script_4
 	case 11, GroupStages_MoveObjects_Script_5
 GroupStages_MoveObjects_Script_1:
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_EXIT
 	return
 
@@ -113,18 +113,18 @@ GroupStages_ChooseParty_Script::
 
 GroupStages_RoundRobinMatch_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox gText_GroupStages_Placeholder
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
-	waitmovement 0
+	waitmovement 1
 	msgbox gText_GroupStages_Placeholder
 	closemessage
-	switch VAR_ROUTE119_STATE
-	case 1, GroupStages_RoundRobinMatch_Script_3
-	case 2, GroupStages_RoundRobinMatch_Script_4
-	case 3, GroupStages_RoundRobinMatch_Script_5
+	switch VAR_CHASECENTER_TOURNAMENT_STATE
+	case PRE_BATTLE_1, GroupStages_RoundRobinMatch_Script_3
+	case PRE_BATTLE_2, GroupStages_RoundRobinMatch_Script_4
+	case PRE_BATTLE_3, GroupStages_RoundRobinMatch_Script_5
 GroupStages_RoundRobinMatch_Script_1:
 	goto GroupStages_PostRoundRobinMatch_Script
 	return
@@ -144,17 +144,17 @@ GroupStages_RoundRobinMatch_Script_5:
 
 GroupStages_PostRoundRobinMatch_Script::
 	lock
-	addvar VAR_ROUTE119_STATE, 1
+	addvar VAR_CHASECENTER_TOURNAMENT_STATE, 1
 	special LoadPlayerParty
 	special HealPlayerParty
-	compare VAR_ROUTE119_STATE, 4
+	compare VAR_CHASECENTER_TOURNAMENT_STATE, 4
 	goto_if_eq GroupStages_PostRoundRobinMatch_Script_2
 GroupStages_PostRoundRobinMatch_Script_1:
 	msgbox gText_GroupStages_Placeholder
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_GetPlayerIntoPosition
 	applymovement 1, GroupStages_WalkOffStage
-	waitmovement 0
+	waitmovement 1
 	msgbox gText_GroupStages_Placeholder
 	call GroupStages_ChooseParty_Script
 	removeobject 1
@@ -169,9 +169,9 @@ GroupStages_PostRoundRobinMatch_Script_2:
 
 
 GroupStages_RoundRobinGroupComplete_Script::
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_GROUP_STATE_COMPLETE
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_WalkToCenterStage
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox gText_GroupStages_Placeholder
 	special DoDomeConfetti
 	playse SE_APPLAUSE

@@ -54,12 +54,12 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warpsilent MAP_JAPANTOWN_RAMEN, 0
+	setvar VAR_STORYLINE_STATE, STORY_START_CHAMPIONSHIP
+	warpsilent MAP_CHASECENTER_LOCKERS, 9, 6
 	end
 
 
 Debug_Script_2::
-	completequest QUEST_BLUEROBBERRY
 	end
 
 

@@ -3,15 +3,20 @@ const ROSE = 1 //FLAG_TEMP_1
 const BIANCA = 2 //FLAG_TEMP_2
 const ARCHER = 3 //FLAG_TEMP_3
 const OAK = 4 //FLAG_TEMP_4
+const FLAG_HIDE_ROSE = FLAG_TEMP_1
+const FLAG_HIDE_BIANCA = FLAG_TEMP_2
+const FLAG_HIDE_ARCEHR = FLAG_TEMP_3
+const FLAG_HIDE_OAK = FLAG_TEMP_4
+const FLAG_HIDE_SABRINA = FLAG_TEMP_6
 
 script HeresHowThisIsGoingToGo_ObjectSetUp_Script{
-    setflag(FLAG_TEMP_6)
+        setflag(FLAG_HIDE_SABRINA)
         return
 }
 
 script HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script {
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_4)
+    setflag(FLAG_HIDE_ROSE)
+    setflag(FLAG_HIDE_OAK)
 }
 
 script HeresHowThisIsGoingToGo_ConstructionCompleted_Script {
@@ -111,29 +116,6 @@ msgbox(gText_HeresHowThisIsGoingToGo_SoIllGoOver)
 closemessage
 callnative(ClearMugshot)
 
-fadescreen(FADE_TO_BLACK)
-// PSF TODO The screen shows images of the League breakdown as Rose explains the structure.
-
-msgbox(gText_HeresHowThisIsGoingToGo_ForTheGroupStage)
-
-msgbox(gText_HeresHowThisIsGoingToGo_TheTrainerWith)
-
-msgbox(gText_HeresHowThisIsGoingToGo_InTheFinalStage)
-closemessage
-
-fadescreen(FADE_FROM_BLACK)
-
-setvar(VAR_0x8000, MUGSHOT_GHETSIS)
-callnative(DrawMugshot)
-msgbox(gText_HeresHowThisIsGoingToGo_AnyQuestions)
-callnative(ClearMugshot)
-
-msgbox(gText_HeresHowThisIsGoingToGo_WhatsTheTiebreaker)
-
-setvar(VAR_0x8000, MUGSHOT_GHETSIS)
-callnative(DrawMugshot)
-msgbox(gText_HeresHowThisIsGoingToGo_ItsInTheInformation)
-
 applymovement(ROSE,Common_Movement_FaceLeft)
 setvar(VAR_0x8000, MUGSHOT_GHETSIS)
 callnative(DrawMugshot)
@@ -142,7 +124,7 @@ callnative(ClearMugshot)
 closemessage
 
 fadescreen(FADE_TO_BLACK)
-addvar(VAR_STORYLINE_STATE,1)
+setvar(VAR_STORYLINE_STATE,STORY_CHAMPIONSHIP_EXPLAINED)
 playse(SE_EXIT)
 waitse
 removeobject(ROSE)
@@ -150,7 +132,7 @@ removeobject(OAK)
 call(HeresHowThisIsGoingToGo_CleanUpVObjects_Script)
 fadescreen(FADE_FROM_BLACK)
 applymovement(ARCHER,HeresHowThisIsGoingToGo_GoToBracket)
-waitmovement(0)
+waitmovement(ARCHER)
 releaseall
 end
 }
@@ -175,32 +157,11 @@ text gText_HeresHowThisIsGoingToGo_DotDotDot {
 }
 
 text gText_HeresHowThisIsGoingToGo_SoIllGoOver {
-	format("So I'll go over how the Championship works. ")
-}
-
-text gText_HeresHowThisIsGoingToGo_ForTheGroupStage {
-	format("For the Group Stage, you'll be randomly split into four groups of four trainers. You'll battle all of the other Trainers in your group, and each match will be on a different terrain battlefield. You will bring six Pokémon with you, and choose three before the start of each match in the Group Stage. You will be healed after every match, but you may not use items from your bag during battle. ")
-	}
-text gText_HeresHowThisIsGoingToGo_TheTrainerWith {
-	format("The Trainer with the best record in a group will proceed to the Semi-Finals. In the event of a tie, we will go to a tiebreaker.")
-	}
-text gText_HeresHowThisIsGoingToGo_InTheFinalStage {
-	format("In the Final Stage, you will be paired against another winning Trainer from a different Group. You will battle on a neutral battlefield, with a full party of six. The Semi-Final winners will then face off for the Championship! Trainers can change their six Pokémon between matches, but are still not permitted to use items during battle.")
-	}
-text gText_HeresHowThisIsGoingToGo_AnyQuestions {
-	format("Any questions?")
-}
-
-text gText_HeresHowThisIsGoingToGo_WhatsTheTiebreaker {
-	format("What's the tiebreaker?")
-}
-
-text gText_HeresHowThisIsGoingToGo_ItsInTheInformation {
-	format("It's in the information packet. But also, don't lose. Anything else? No? Great. Let's assign matches.")
+	format("So here's the simple explanation: Win five battles in a row, and you'll be the Champion! If you want the more detailed version, you can view the rules on the monitor to my right.")
 }
 
 text gText_HeresHowThisIsGoingToGo_YourGroupsAnd {
-	format("Your groups, and the eventual final bracket, can be seen here. We'll be starting with Group A in two hours. Good luck.")
+	format("Your groups, and the eventual final bracket, can also be seen on the monitor. We'll be starting with Group A in two hours. Good luck.")
 }
 
 movement HeresHowThisIsGoingToGo_LeaveLockersA {
