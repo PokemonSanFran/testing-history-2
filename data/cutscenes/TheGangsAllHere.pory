@@ -9,15 +9,15 @@ script TheGangsAllHere_ObjectCleanUp_Script {
 
 script TheGangsAllHere_WhatBringsYou_Dialogue{
     lock
-    addvar(VAR_SOMA_STATE,1)
+    setvar(VAR_SOMA_STATE,START_THE_GANGS_ALL_HERE)
     playse(SE_PIN)
     playbgm(MUS_RG_FOLLOW_ME,FALSE)
     applymovement(OAK,Common_Movement_ExclamationMark)
-    waitmovement(0)
+    waitmovement(OAK)
     applymovement(OAK,Common_Movement_FacePlayer)
-    waitmovement(0)
+    waitmovement(OAK)
     applymovement(PLAYER, Common_Movement_FaceLeft)
-    waitmovement(0)
+    waitmovement(PLAYER)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_WhatBringsYou)
@@ -40,11 +40,11 @@ script TheGangsAllHere_WhatBringsYou_Dialogue{
     closemessage
     special(HealPlayerParty)
     applymovement(OAK,FollowMe_Movement)
-    waitmovement(0)
+    waitmovement(OAK)
     setobjectxyperm(OAK,6,25)
     fadedefaultbgm
     //loadword(0,NewScript)
-    //setfollower(OAK,0x100) //TODO hook up FollowMe scripts
+    //setfollower(OAK,0x100) //PSF TODO hook up FollowMe scripts
     //https://www.pokecommunity.com/showthread.php?t=432529
     releaseall
     end
@@ -62,7 +62,7 @@ script TheGangsAllHere_OfficeIsntThatWay_Script{
 
 script TheGangsAllHere_ThisIsOffice_Script{
     applymovement(OAK,FollowPlaceholder_Movement)
-    waitmovement(0)
+    waitmovement(OAK)
     applymovement(OAK, Common_Movement_FaceRight)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
@@ -71,28 +71,28 @@ script TheGangsAllHere_ThisIsOffice_Script{
     callnative(ClearMugshot)
     applymovement(PLAYER,TheGangsAllHere_ThisIsOffice_Movement)
     applymovement(OAK,TheGangsAllHere_ThisIsOffice_Movement)
-    waitmovement(0)
+    waitmovement(OAK)
     goto(TheGangsAllHere_ComeOnIn_Dialogue)
     end
 }
 
 script TheGangsAllHere_ComeOnIn_Dialogue{
-    addvar(VAR_SOMA_STATE,1)
+    setvar(VAR_SOMA_STATE,POST_THE_GANGS_ALL_HERE) 
     playbgm(MUS_RG_ENCOUNTER_DEOXYS,FALSE)
     playse(SE_PIN)
     applymovement(ROSE,Common_Movement_ExclamationMark)
-    waitmovement(0)
+    waitmovement(ROSE)
     applymovement(ROSE,TheGangsAllHere_RoseWalkToDoor_Movement)
-    waitmovement(0)
+    waitmovement(ROSE)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ComeOnIn)
     closemessage
     callnative(ClearMugshot)
     applymovement(OAK,TheGangsAllHere_OakWalkToDesk_Movement)
-    waitmovement(0)
+    waitmovement(OAK)
     applymovement(ROSE,Common_Movement_FaceDown)
-    waitmovement(0)
+    waitmovement(ROSE)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_AsYouAsked)
@@ -123,7 +123,7 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
     callnative(ClearMugshot)
     applymovement(ROSE,Common_Movement_FaceDown)
     applymovement(OAK,TheGangsAllHere_GivePackageToRose_Movement)
-    waitmovement(0)
+    waitmovement(OAK)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ImThrilledTheTiming)
@@ -136,7 +136,7 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
 script TheGangsAllHere_GiveDowsingMachine_Script{
     applymovement(PLAYER,Common_Movement_FaceRight)
     applymovement(ROSE,TheGangsAllHere_GivePackageToPlayerChar_Movement)
-    waitmovement(0)
+    waitmovement(ROSE)
     giveitem(ITEM_DOWSING_MACHINE,1)
     goto(TheGangsAllHere_GiveDowsingMachine_Dialogue)
     end
@@ -148,7 +148,7 @@ script TheGangsAllHere_GiveDowsingMachine_Dialogue{
     msgbox(gText_TheGangsAllHere_TheVSSeekerWillAlert)
     callnative(ClearMugshot)
     applymovement(OAK,Common_Movement_FaceLeft)
-    waitmovement(0)
+    waitmovement(OAK)
     applymovement(PLAYER,Common_Movement_FaceDown)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
@@ -158,7 +158,7 @@ script TheGangsAllHere_GiveDowsingMachine_Dialogue{
     msgbox(gText_TheGangsAllHere_OhWowThatMeans)
     closemessage
     applymovement(PLAYER,Common_Movement_FaceRight)
-    waitmovement(0)
+    waitmovement(PLAYER)
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_WeKnowButNoPressure)
@@ -190,10 +190,10 @@ script TheGangsAllHere_EndScene_Dialogue{
     callnative(ClearMugshot)
     closemessage
     applymovement(PLAYER,TheGangsAllHere_MoveOutOfWay_Movement)
-    waitmovement(0)
+    waitmovement(PLAYER)
     applymovement(ROSE,TheGangsAllHere_RoseWalkOut_Movement)
     applymovement(OAK,TheGangsAllHere_OakWalkOut_Movement)
-    waitmovement(0)
+    waitmovement(OAK)
     fadedefaultbgm
     removeobject(ROSE)
     removeobject(OAK)
