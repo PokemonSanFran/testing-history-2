@@ -6,15 +6,15 @@ TheGangsAllHere_ObjectCleanUp_Script::
 
 TheGangsAllHere_WhatBringsYou_Dialogue::
 	lock
-	addvar VAR_SOMA_STATE, 1
+	setvar VAR_SOMA_STATE, START_THE_GANGS_ALL_HERE
 	playse SE_PIN
 	playbgm MUS_RG_FOLLOW_ME, FALSE
 	applymovement 4, Common_Movement_ExclamationMark
-	waitmovement 0
+	waitmovement 4
 	applymovement 4, Common_Movement_FacePlayer
-	waitmovement 0
+	waitmovement 4
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_WhatBringsYou
@@ -37,7 +37,7 @@ TheGangsAllHere_WhatBringsYou_Dialogue::
 	closemessage
 	special HealPlayerParty
 	applymovement 4, FollowMe_Movement
-	waitmovement 0
+	waitmovement 4
 	setobjectxyperm 4, 6, 25
 	fadedefaultbgm
 	releaseall
@@ -57,7 +57,7 @@ TheGangsAllHere_OfficeIsntThatWay_Script::
 
 TheGangsAllHere_ThisIsOffice_Script::
 	applymovement 4, FollowPlaceholder_Movement
-	waitmovement 0
+	waitmovement 4
 	applymovement 4, Common_Movement_FaceRight
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -66,28 +66,28 @@ TheGangsAllHere_ThisIsOffice_Script::
 	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_ThisIsOffice_Movement
 	applymovement 4, TheGangsAllHere_ThisIsOffice_Movement
-	waitmovement 0
+	waitmovement 4
 	goto TheGangsAllHere_ComeOnIn_Dialogue
 	end
 
 
 TheGangsAllHere_ComeOnIn_Dialogue::
-	addvar VAR_SOMA_STATE, 1
+	setvar VAR_SOMA_STATE, POST_THE_GANGS_ALL_HERE
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, FALSE
 	playse SE_PIN
 	applymovement 3, Common_Movement_ExclamationMark
-	waitmovement 0
+	waitmovement 3
 	applymovement 3, TheGangsAllHere_RoseWalkToDoor_Movement
-	waitmovement 0
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ComeOnIn
 	closemessage
 	callnative ClearMugshot
 	applymovement 4, TheGangsAllHere_OakWalkToDesk_Movement
-	waitmovement 0
+	waitmovement 4
 	applymovement 3, Common_Movement_FaceDown
-	waitmovement 0
+	waitmovement 3
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_AsYouAsked
@@ -113,7 +113,7 @@ TheGangsAllHere_NotIntentionally_Dialogue_1:
 	callnative ClearMugshot
 	applymovement 3, Common_Movement_FaceDown
 	applymovement 4, TheGangsAllHere_GivePackageToRose_Movement
-	waitmovement 0
+	waitmovement 4
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ImThrilledTheTiming
@@ -134,7 +134,7 @@ TheGangsAllHere_NotIntentionally_Dialogue_2:
 TheGangsAllHere_GiveDowsingMachine_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 3, TheGangsAllHere_GivePackageToPlayerChar_Movement
-	waitmovement 0
+	waitmovement 3
 	giveitem ITEM_DOWSING_MACHINE, 1
 	goto TheGangsAllHere_GiveDowsingMachine_Dialogue
 	end
@@ -146,7 +146,7 @@ TheGangsAllHere_GiveDowsingMachine_Dialogue::
 	msgbox gText_TheGangsAllHere_TheVSSeekerWillAlert
 	callnative ClearMugshot
 	applymovement 4, Common_Movement_FaceLeft
-	waitmovement 0
+	waitmovement 4
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
@@ -156,7 +156,7 @@ TheGangsAllHere_GiveDowsingMachine_Dialogue::
 	msgbox gText_TheGangsAllHere_OhWowThatMeans
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_WeKnowButNoPressure
@@ -185,10 +185,10 @@ TheGangsAllHere_EndScene_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_MoveOutOfWay_Movement
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 3, TheGangsAllHere_RoseWalkOut_Movement
 	applymovement 4, TheGangsAllHere_OakWalkOut_Movement
-	waitmovement 0
+	waitmovement 4
 	fadedefaultbgm
 	removeobject 3
 	removeobject 4

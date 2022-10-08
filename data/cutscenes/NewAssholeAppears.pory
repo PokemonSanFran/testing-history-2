@@ -28,24 +28,29 @@ script NewAssholeAppears_WalkToPlayer_Script {
 
 script ArcherAlpha_Event_Script{
     switch(var(VAR_PSFROUTE9_STATE)) {
-        case 0: goto(NewAssholeAppears_Intro_Dialogue)
-        case 1: goto(NewAssholeAppears_StartBattle_Script)
+        case HAS_NOT_MET_ARCHER: goto(NewAssholeAppears_Intro_Dialogue)
+        case SAVED_BEFORE_ARCHER_PSFROUTE9: goto(NewAssholeAppears_StartBattle_Script)
     }
 }
 
 script NewAssholeAppears_Intro_Dialogue {
-    addvar(VAR_PSFROUTE9_STATE,1)
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_PSFROUTE9_STATE,SAVED_BEFORE_ARCHER_PSFROUTE9)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
     callnative(DrawMugshot)
     msgbox(gText_NewAssholeAppears_YouLookFamiliar,MSGBOX_NPC)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
-    msgbox(gText_NewAssholeAppears_JustStarted,MSGBOX_NPC)
+
+    if (var(VAR_SOMA_STATE) > DEFEATED_WHITNEY){
+        msgbox(gText_NewAssholeAppears_YeahYouHadSome,MSGBOX_NPC)
+    }else{
+        msgbox(gText_NewAssholeAppears_JustStarted,MSGBOX_NPC)
+    }
     goto(NewAssholeAppears_BadgeJudge_Dialogue)
 }
 
 script NewAssholeAppears_BadgeJudge_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
     callnative(DrawMugshot)
 
     special(GetNumberOfBadges) 
@@ -56,7 +61,7 @@ script NewAssholeAppears_BadgeJudge_Dialogue {
         default: msgbox(gText_NewAssholeAppears_ColonizersAreReallyGetting,MSGBOX_NPC)
     }
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_NewAssholeAppears_WhatIsYourProblem,MSGBOX_NPC)
     callnative(ClearMugshot)
@@ -68,7 +73,7 @@ script NewAssholeAppears_BadgeJudge_Dialogue {
 
 script NewAssholeAppears_StartBattle_Script{
     lockall
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
     callnative(DrawMugshot)
     trainerbattle_single(TRAINER_WALLY_MAUVILLE,gText_NewAssholeAppears_GoMindYourBusiness,gText_NewAssholeAppears_YoureTough,NewAssholeAppears_PostBattle_Script, NO_MUSIC)
     closemessage
@@ -77,23 +82,23 @@ script NewAssholeAppears_StartBattle_Script{
 
 script NewAssholeAppears_PostBattle_Script {
     lockall
-    addvar(VAR_PSFROUTE9_STATE,1)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_PSFROUTE9_STATE,DEFEATED_ARCHER_PSFROUTE9)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_NewAssholeAppears_Whateveryournameis,MSGBOX_NPC)
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
     callnative(DrawMugshot)
     msgbox(gText_NewAssholeAppears_GentrificationOfMyHome,MSGBOX_NPC)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_NewAssholeAppears_YouSoundCrazyPerson,MSGBOX_NPC)
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
     callnative(DrawMugshot)
     msgbox(gText_NewAssholeAppears_NotStupidJustIgnorant,MSGBOX_NPC)
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
     callnative(DrawMugshot)
     msgbox(gText_NewAssholeAppears_SeeYouAround,MSGBOX_NPC)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_NewAssholeAppears_IHopeNot,MSGBOX_NPC)
     callnative(ClearMugshot)
@@ -121,6 +126,11 @@ script NewAssholeAppears_ArcherExit_Script{
 text gText_NewAssholeAppears_YouLookFamiliar {
     format("You look familiar. You flew here to do the YCombinator League Challenge, right?")
 }
+
+text gText_NewAssholeAppears_YeahYouHadSome{
+    format("Yeah, you had some weird rant in SOMA the other day. I'm {PLAYER}, and yes, I'm doing the challenge.")
+}
+
 text gText_NewAssholeAppears_JustStarted {
     format("Yeah! Just started not too long ago. Name's {PLAYER}.")
 }
@@ -134,7 +144,7 @@ text gText_NewAssholeAppears_ThoughtIRecognized {
 }
 
 text gText_NewAssholeAppears_ColonizersAreReallyGetting {
-    format("Yeah, I heard about you from the guys. The colonizers are really getting a head start, huh?")
+    format("Yeah, I heard about your wins from the guys. The colonizers are really getting a head start, huh?")
 }
 
 text gText_NewAssholeAppears_WhatIsYourProblem {

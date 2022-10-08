@@ -52,8 +52,8 @@ NewAssholeAppears_WalkToPlayer_Script_11:
 
 ArcherAlpha_Event_Script::
 	switch VAR_PSFROUTE9_STATE
-	case 0, ArcherAlpha_Event_Script_2
-	case 1, ArcherAlpha_Event_Script_3
+	case HAS_NOT_MET_ARCHER, ArcherAlpha_Event_Script_2
+	case SAVED_BEFORE_ARCHER_PSFROUTE9, ArcherAlpha_Event_Script_3
 	return
 
 ArcherAlpha_Event_Script_2:
@@ -66,19 +66,26 @@ ArcherAlpha_Event_Script_3:
 
 
 NewAssholeAppears_Intro_Dialogue::
-	addvar VAR_PSFROUTE9_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_PSFROUTE9_STATE, SAVED_BEFORE_ARCHER_PSFROUTE9
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_NewAssholeAppears_YouLookFamiliar, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
+	compare VAR_SOMA_STATE, DEFEATED_WHITNEY
+	goto_if_gt NewAssholeAppears_Intro_Dialogue_2
 	msgbox gText_NewAssholeAppears_JustStarted, MSGBOX_NPC
+NewAssholeAppears_Intro_Dialogue_1:
 	goto NewAssholeAppears_BadgeJudge_Dialogue
 	return
 
+NewAssholeAppears_Intro_Dialogue_2:
+	msgbox gText_NewAssholeAppears_YeahYouHadSome, MSGBOX_NPC
+	goto NewAssholeAppears_Intro_Dialogue_1
+
 
 NewAssholeAppears_BadgeJudge_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	special GetNumberOfBadges
 	switch VAR_RESULT
@@ -86,7 +93,7 @@ NewAssholeAppears_BadgeJudge_Dialogue::
 	case 1, NewAssholeAppears_BadgeJudge_Dialogue_4
 	msgbox gText_NewAssholeAppears_ColonizersAreReallyGetting, MSGBOX_NPC
 NewAssholeAppears_BadgeJudge_Dialogue_1:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_NewAssholeAppears_WhatIsYourProblem, MSGBOX_NPC
 	callnative ClearMugshot
@@ -107,7 +114,7 @@ NewAssholeAppears_BadgeJudge_Dialogue_4:
 
 NewAssholeAppears_StartBattle_Script::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	trainerbattle_single TRAINER_WALLY_MAUVILLE, gText_NewAssholeAppears_GoMindYourBusiness, gText_NewAssholeAppears_YoureTough, NewAssholeAppears_PostBattle_Script, NO_MUSIC
 	closemessage
@@ -117,23 +124,23 @@ NewAssholeAppears_StartBattle_Script::
 
 NewAssholeAppears_PostBattle_Script::
 	lockall
-	addvar VAR_PSFROUTE9_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_PSFROUTE9_STATE, DEFEATED_ARCHER_PSFROUTE9
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_NewAssholeAppears_Whateveryournameis, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_NewAssholeAppears_GentrificationOfMyHome, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_NewAssholeAppears_YouSoundCrazyPerson, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_NewAssholeAppears_NotStupidJustIgnorant, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_NewAssholeAppears_SeeYouAround, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_NewAssholeAppears_IHopeNot, MSGBOX_NPC
 	callnative ClearMugshot
@@ -225,6 +232,11 @@ gText_NewAssholeAppears_YouLookFamiliar::
 	.string "the YCombinator League Challenge,\l"
 	.string "right?$"
 
+gText_NewAssholeAppears_YeahYouHadSome::
+	.string "Yeah, you had some weird rant in SOMA\n"
+	.string "the other day. I'm {PLAYER}, and yes,\l"
+	.string "I'm doing the challenge.$"
+
 gText_NewAssholeAppears_JustStarted::
 	.string "Yeah! Just started not too long ago.\n"
 	.string "Name's {PLAYER}.$"
@@ -239,9 +251,9 @@ gText_NewAssholeAppears_ThoughtIRecognized::
 	.string "total joke!$"
 
 gText_NewAssholeAppears_ColonizersAreReallyGetting::
-	.string "Yeah, I heard about you from the guys.\n"
-	.string "The colonizers are really getting a\l"
-	.string "head start, huh?$"
+	.string "Yeah, I heard about your wins from the\n"
+	.string "guys. The colonizers are really getting\l"
+	.string "a head start, huh?$"
 
 gText_NewAssholeAppears_WhatIsYourProblem::
 	.string "Woah, what the hell is your problem?$"

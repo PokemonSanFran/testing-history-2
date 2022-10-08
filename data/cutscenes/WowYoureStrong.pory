@@ -1,20 +1,29 @@
 const ROSE = 1
+const ARCHER = 10
+const CAMERA = OBJ_EVENT_ID_CAMERA
+const FLAG_HIDE_ROSE = FLAG_TEMP_1
+const FLAG_HIDE_ARCHER = FLAG_TEMP_6
 
 script WowYoureStrong_HideObject_Script {
-        if(!flag(FLAG_BADGE03_GET) || (var(VAR_SOMA_STATE) > 1)) {
-            setflag(FLAG_TEMP_1) 
-        }
+    if(!flag(FLAG_BADGE03_GET) || (var(VAR_SOMA_STATE) > DEFEATED_WHITNEY)) {
+        setflag(FLAG_HIDE_ROSE)
+        setflag(FLAG_HIDE_ARCHER)
+    }
+    if (var(VAR_PSFROUTE9_STATE) == SAVED_BEFORE_ARCHER_PSFROUTE9){
+        setflag(FLAG_HIDE_ARCHER)
+    }
 }
 
 script WowYoureStrong_WalkToPlayer_Script {
     lockall
-    setvar(VAR_SOMA_STATE,2)
+    setvar(VAR_SOMA_STATE,POST_WOW_YOURE_STRONG)
     playse(SE_PIN)
     playbgm(MUS_RG_ENCOUNTER_DEOXYS,TRUE) 
     applymovement(ROSE,Common_Movement_ExclamationMark)
-    waitmovement(0)
+    waitmovement(ROSE)
     applymovement(ROSE,WowYoureStrong_WalkToPlayer_Movement)
-    waitmovement(0)
+    waitmovement(ROSE)
+    setobjectxyperm(ROSE,28,25)
     goto(WowYoureStrong_Intro_Dialogue)
 }
 
@@ -39,15 +48,27 @@ script WowYoureStrong_Intro_Dialogue {
     callnative(DrawMugshot)
     msgbox(gText_WowYoureStrong_DreamBig)
     callnative(ClearMugshot)
-    goto(WowYoureStrong_ShowTower_Script) //PSF TODO Show scrolling up view of the tower
+    goto(WowYoureStrong_ShowTower_Script) 
 }
 
 script WowYoureStrong_ShowTower_Script {
     fadescreen(FADE_TO_BLACK)
+    TeleportCamera(7,14)
+    special(SpawnCameraObject)
+    fadescreen(FADE_FROM_BLACK)
+
+    applymovement(CAMERA,WowYoureStrong_PanCameraUp_Movement)
     callnative(DrawMugshot)
     msgbox(gText_WowYoureStrong_YouShouldComeBy)
+    waitmovement(CAMERA)
+    closemessage
     callnative(ClearMugshot)
+
+    fadescreen(FADE_TO_BLACK)
+    TeleportCamera(28,24)
+    special(RemoveCameraObject)
     fadescreen(FADE_FROM_BLACK)
+
     goto (WowYoureStrong_End_Dialouge)
 }
 
@@ -56,21 +77,82 @@ script WowYoureStrong_End_Dialouge {
     msgbox(gText_WowYoureStrong_MeetingWithMayor)
     callnative(ClearMugshot)
     closemessage
-    applymovement(ROSE,PsfBadbossWalkToMayor_Movement)
-    waitmovement(0)
+    applymovement(ROSE,WowYoureStrong_WalkToMayor_Movement)
+    waitmovement(ROSE)
     removeobject(ROSE)
     playbgm(MUS_RG_VERMILLION,TRUE)
-    releaseall
+    
+    if (var(VAR_PSFROUTE9_STATE) == SAVED_BEFORE_ARCHER_PSFROUTE9){
+        release
+        end
+    }
+    goto(WowYourStrong_ArcherConfrontation_Dialogue)
+
+}
+
+script WowYourStrong_ArcherConfrontation_Dialogue{
+
+    applymovement(ARCHER,WowYoureStrong_ArcherToPlayer_Movement)
+    waitmovement(ARCHER)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    msgbox(gText_WowYoureStrong_IDontGetIt)
+    
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    if (var(VAR_PSFROUTE9_STATE) == DEFEATED_ARCHER_PSFROUTE9){
+        msgbox(gText_WowYoureStrong_YouAgain)
+    }else{
+        msgbox(gText_WowYoureStrong_WhatAreYouTalking)
+    }
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HUGH)
+    callnative(DrawMugshot)
+    msgbox(gText_WowYoureStrong_IJustCant)
+    closemessage
+    callnative(ClearMugshot)
+
+    applymovement(ARCHER,WowYoureStrong_WalkToMayor_Movement)
+    waitmovement(ARCHER)
+    removeobject(ARCHER)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    if (var(VAR_PSFROUTE9_STATE) == DEFEATED_ARCHER_PSFROUTE9){
+        msgbox(gText_WowYoureStrong_IHopeThats)
+    }else{
+        msgbox(gText_WowYoureStrong_ThisRegionHasSome)
+    }
+    closemessage
+    callnative(ClearMugshot)
+
+    release
     end
 }
 
 movement WowYoureStrong_WalkToPlayer_Movement {
-    walk_left * 4
-    walk_up * 3
+    walk_up
+    walk_right * 5
+    face_up
+    step_end
 }
 
-movement PsfBadbossWalkToMayor_Movement {
-    walk_right * 8
+movement WowYoureStrong_PanCameraUp_Movement{
+    walk_up * 9
+        step_end
+}
+
+movement WowYoureStrong_WalkToMayor_Movement {
+    walk_left * 8
+    step_end
+}
+
+movement WowYoureStrong_ArcherToPlayer_Movement{
+    walk_up * 2
+    walk_right * 2
+    face_up
+    step_end
 }
 
 text gText_WowYoureStrong_WhatAShow {
@@ -99,4 +181,23 @@ text gText_WowYoureStrong_YouShouldComeBy {
 
 text gText_WowYoureStrong_MeetingWithMayor {
     format("I have to run to a meeting with the Mayor. Again, excellent job against Whitney. I hope to see what else you can do!")
+}
+
+text gText_WowYoureStrong_IDontGetIt{
+	format("I don't get it. Do all of you transplants just worship the ground these tycoons walk on?")
+}
+text gText_WowYoureStrong_YouAgain{
+	format("You again? Are you following me? What is your deal?")
+}
+text gText_WowYoureStrong_WhatAreYouTalking{
+	format("What are you talking about?")
+}
+text gText_WowYoureStrong_IJustCant{
+	format("I just can't understood why you would willingly buy into a system that just makes these people more money. Do you think they need MORE money?")
+}
+text gText_WowYoureStrong_IHopeThats{
+	format("I hope that this isn't going to be a regular thing...")
+}
+text gText_WowYoureStrong_ThisRegionHasSome{
+	format("The region has some... characters.")
 }

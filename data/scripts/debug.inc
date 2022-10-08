@@ -54,30 +54,50 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_SOMA_STATE, POST_WOW_YOURE_STRONG
-	warp MAP_SALESFORCETOWER_10F, 0
+	setflag FLAG_BADGE03_GET
+	setvar VAR_SOMA_STATE, DEFEATED_WHITNEY
+	setvar VAR_PSFROUTE9_STATE, SAVED_BEFORE_ARCHER_PSFROUTE9
+	msgbox Debug_Script_1_Text_0
 	closemessage
+	warp MAP_SOMA, 4
 	end
 
 
 Debug_Script_2::
-	setvar VAR_SALESFORCETOWER_2F_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
-	setvar VAR_SOMA_STATE, POST_WOW_YOURE_STRONG
+	setflag FLAG_BADGE03_GET
+	setvar VAR_SOMA_STATE, DEFEATED_WHITNEY
+	setvar VAR_PSFROUTE9_STATE, DEFEATED_ARCHER_PSFROUTE9
 	msgbox Debug_Script_2_Text_0
 	closemessage
-	warp MAP_SALESFORCETOWER_10F, 6, 26
+	warp MAP_SOMA, 4
 	end
 
 
 Debug_Script_3::
+	setflag FLAG_BADGE03_GET
+	setvar VAR_SOMA_STATE, DEFEATED_WHITNEY
+	setvar VAR_PSFROUTE9_STATE, HAS_NOT_MET_ARCHER
+	msgbox Debug_Script_3_Text_0
+	closemessage
+	warp MAP_SOMA, 4
 	end
 
 
 Debug_Script_4::
+	setvar VAR_PSFROUTE9_STATE, HAS_NOT_MET_ARCHER
+	setvar VAR_SOMA_STATE, POST_WOW_YOURE_STRONG
+	msgbox Debug_Script_4_Text_0
+	closemessage
+	warp MAP_PSFROUTE9, 3, 7
 	end
 
 
 Debug_Script_5::
+	setvar VAR_PSFROUTE9_STATE, HAS_NOT_MET_ARCHER
+	setvar VAR_SOMA_STATE, 0
+	msgbox Debug_Script_5_Text_0
+	closemessage
+	warp MAP_PSFROUTE9, 3, 7
 	end
 
 
@@ -101,8 +121,20 @@ Debug_Script_10::
 	end
 
 
+Debug_Script_1_Text_0:
+	.string "you have met but NOT DEFEATED archer$"
+
 Debug_Script_2_Text_0:
-	.string "you are now going to an alt timeline where you did visit sabrina first$"
+	.string "you HAVE DEFEATED archer$"
+
+Debug_Script_3_Text_0:
+	.string "you have NOT MET archer$"
+
+Debug_Script_4_Text_0:
+	.string "you HAVE DEFEATED whitney$"
+
+Debug_Script_5_Text_0:
+	.string "you NOT DEFEATED whitney$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"
