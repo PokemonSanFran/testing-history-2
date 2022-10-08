@@ -15,7 +15,7 @@
   "connections": [
     {
       "direction": "left",
-      "offset": 0,
+      "offset": -17,
       "map": "MAP_OAKLAND"
     },
     {

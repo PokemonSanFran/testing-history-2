@@ -54,25 +54,19 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warpsilent MAP_CHASECENTER_CONSTRUCTION, 0
-	setvar VAR_PLAYER_HOME_STATE, FINISHED_1_1
+	warpsilent MAP_SOMA, 31, 40
 	end
 
 
 Debug_Script_2::
-	setvar VAR_PLAYER_HOME_STATE, POST_NAVALBASE_RAID
-	setvar VAR_STORYLINE_STATE, STORY_COMPLETED_NAVAL_BASE
 	end
 
 
 Debug_Script_3::
-	setvar VAR_PLAYER_HOME_STATE, SLEPT_AFTER_SWAGBAG
-	warpsilent MAP_SOUTHBAY_COMPOUND_2F, 0
 	end
 
 
 Debug_Script_4::
-	warpsilent MAP_PACIFICA, 33, 5
 	end
 
 

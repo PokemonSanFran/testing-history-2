@@ -19,14 +19,14 @@
       "map": "MAP_MISSION"
     },
     {
-      "direction": "down",
-      "offset": -7,
-      "map": "MAP_MISSION"
-    },
-    {
       "direction": "up",
       "offset": -8,
       "map": "MAP_TENDERLOIN"
+    },
+    {
+      "direction": "down",
+      "offset": -3,
+      "map": "MAP_MISSION"
     }
   ],
   "object_events": [

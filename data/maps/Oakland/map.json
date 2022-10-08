@@ -15,30 +15,30 @@
   "connections": [
     {
       "direction": "down",
-      "offset": 9,
+      "offset": 7,
       "map": "MAP_PSFROUTE12"
     },
     {
       "direction": "up",
-      "offset": 8,
+      "offset": 6,
       "map": "MAP_PSFROUTE63"
     },
     {
       "direction": "right",
-      "offset": 0,
+      "offset": 17,
       "map": "MAP_PSFROUTE62"
     },
     {
       "direction": "left",
-      "offset": 5,
+      "offset": 25,
       "map": "MAP_PSFROUTE30"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_WALLY",
-      "x": 6,
-      "y": 16,
+      "x": 17,
+      "y": 28,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -50,8 +50,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-      "x": 22,
-      "y": 10,
+      "x": 17,
+      "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -63,8 +63,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
-      "x": 15,
-      "y": 15,
+      "x": 10,
+      "y": 17,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -116,15 +116,15 @@
   ],
   "warp_events": [
     {
-      "x": 3,
-      "y": 16,
+      "x": 15,
+      "y": 28,
       "elevation": 0,
       "dest_map": "MAP_OAKLAND_WAREHOUSE",
       "dest_warp_id": 0
     },
     {
-      "x": 4,
-      "y": 11,
+      "x": 16,
+      "y": 22,
       "elevation": 0,
       "dest_map": "MAP_OAKLAND_WAREHOUSE",
       "dest_warp_id": 1

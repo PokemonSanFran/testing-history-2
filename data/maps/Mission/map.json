@@ -2,7 +2,7 @@
   "id": "MAP_MISSION",
   "name": "Mission",
   "layout": "LAYOUT_MISSION",
-  "music": "MUS_RG_SEVII_67",
+  "music": "MUS_RG_VS_MEWTWO",
   "region_map_section": "MAPSEC_MISSION",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -14,31 +14,31 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
-      "offset": 8,
-      "map": "MAP_PSFROUTE11"
-    },
-    {
       "direction": "emerge",
       "offset": 0,
       "map": "MAP_PSFROUTE9"
     },
     {
+      "direction": "down",
+      "offset": 16,
+      "map": "MAP_PSFROUTE11"
+    },
+    {
       "direction": "up",
-      "offset": 7,
+      "offset": 3,
       "map": "MAP_PSFROUTE9"
     },
     {
       "direction": "left",
-      "offset": 14,
+      "offset": 15,
       "map": "MAP_PSFROUTE14"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
-      "x": 15,
-      "y": 21,
+      "x": 36,
+      "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -51,15 +51,15 @@
   ],
   "warp_events": [
     {
-      "x": 15,
-      "y": 6,
+      "x": 31,
+      "y": 19,
       "elevation": 0,
       "dest_map": "MAP_MISSION_GYM",
       "dest_warp_id": 0
     },
     {
-      "x": 3,
-      "y": 16,
+      "x": 18,
+      "y": 12,
       "elevation": 0,
       "dest_map": "MAP_MISSION_CONSULTING",
       "dest_warp_id": 0

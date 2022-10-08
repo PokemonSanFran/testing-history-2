@@ -4524,10 +4524,10 @@
     {
       "id": "LAYOUT_SOMA",
       "name": "SOMA_Layout",
-      "width": 31,
-      "height": 62,
+      "width": 44,
+      "height": 44,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Slateport",
+      "secondary_tileset": "gTileset_BattleFrontierOutsideEast",
       "border_filepath": "data/layouts/SOMA/border.bin",
       "blockdata_filepath": "data/layouts/SOMA/map.bin"
     },
@@ -4614,10 +4614,10 @@
     {
       "id": "LAYOUT_MISSION",
       "name": "Mission_Layout",
-      "width": 20,
-      "height": 40,
+      "width": 40,
+      "height": 27,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Mossdeep",
+      "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/Mission/border.bin",
       "blockdata_filepath": "data/layouts/Mission/map.bin"
     },
@@ -4674,7 +4674,7 @@
     {
       "id": "LAYOUT_PSFROUTE8",
       "name": "Psfroute8_Layout",
-      "width": 13,
+      "width": 20,
       "height": 100,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
@@ -4824,10 +4824,10 @@
     {
       "id": "LAYOUT_OAKLAND",
       "name": "Oakland_Layout",
-      "width": 30,
-      "height": 30,
+      "width": 32,
+      "height": 32,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_FortreeGym",
+      "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/Oakland/border.bin",
       "blockdata_filepath": "data/layouts/Oakland/map.bin"
     },
@@ -4874,10 +4874,10 @@
     {
       "id": "LAYOUT_ALCATRAZ",
       "name": "Alcatraz_Layout",
-      "width": 30,
-      "height": 30,
+      "width": 50,
+      "height": 70,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Dewford",
+      "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/Alcatraz/border.bin",
       "blockdata_filepath": "data/layouts/Alcatraz/map.bin"
     },

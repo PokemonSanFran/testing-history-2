@@ -15,18 +15,18 @@
   "connections": [
     {
       "direction": "down",
-      "offset": 0,
-      "map": "MAP_PSFROUTE22"
+      "offset": -23,
+      "map": "MAP_SOMA"
+    },
+    {
+      "direction": "left",
+      "offset": 16,
+      "map": "MAP_CHINATOWN"
     },
     {
       "direction": "left",
       "offset": 0,
       "map": "MAP_FISHERMANSWHARF"
-    },
-    {
-      "direction": "left",
-      "offset": 17,
-      "map": "MAP_CHINATOWN"
     }
   ],
   "object_events": [
