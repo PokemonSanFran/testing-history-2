@@ -13,7 +13,6 @@ script AndWeMarchOn_ObjectVisibility_Script{
         case 1: call(AndWeMarchOn_ObjectCleanUp_Script)
     }
     return
-
 }
 
 script AndWeMarchOn_ObjectSetUp_Script {

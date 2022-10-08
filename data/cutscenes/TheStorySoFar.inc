@@ -1,12 +1,12 @@
 TheStorySoFar_ExplainExhibit_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox gText_TheStorySoFar_WelcomeToExhibit
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-	setvar VAR_ALCATRAZ_EXHIBIT_STATE, 1
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_ALCATRAZ_EXHIBIT_STATE, ALCATRAZ_EXHIBIT_START
 	release
 	end
 
@@ -30,10 +30,10 @@ TheStorySoFar_Event_Script::
 	waitmovement 0
 	switch VAR_ALCATRAZ_EXHIBIT_STATE
 	case 0, TheStorySoFar_Event_Script_2
-	case 1, TheStorySoFar_Event_Script_3
-	case 2, TheStorySoFar_Event_Script_4
-	case 3, TheStorySoFar_Event_Script_5
-	case 4, TheStorySoFar_Event_Script_6
+	case ALCATRAZ_EXHIBIT_START, TheStorySoFar_Event_Script_3
+	case ALCATRAZ_EXHIBIT_FINISH, TheStorySoFar_Event_Script_4
+	case ALCATRAZ_EXHIBIT_REWARD, TheStorySoFar_Event_Script_5
+	case ALCATRAZ_EXHIBIT_COMPLETE, TheStorySoFar_Event_Script_6
 	return
 
 TheStorySoFar_Event_Script_2:
@@ -69,7 +69,7 @@ TheStorySoFar_CheckNumberDefeated_Script::
 	case 5, TheStorySoFar_CheckNumberDefeated_Script_8
 TheStorySoFar_CheckNumberDefeated_Script_1:
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	compare VAR_TEMP_0, 15
+	compare VAR_TEMP_0, 37
 	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_11
 TheStorySoFar_CheckNumberDefeated_Script_9:
 	closemessage
@@ -111,7 +111,7 @@ TheStorySoFar_CheckNumberDefeated_Script_14:
 	goto TheStorySoFar_CheckNumberDefeated_Script_9
 
 TheStorySoFar_CheckNumberDefeated_Script_11:
-	compare VAR_TEMP_1, 16
+	compare VAR_TEMP_1, 60
 	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_10
 	goto TheStorySoFar_CheckNumberDefeated_Script_9
 
@@ -121,11 +121,12 @@ TheStorySoFar_CheckNumberDefeated_Script_15:
 
 
 TheStorySoFar_AwardPlayer_Script::
-	addvar VAR_ALCATRAZ_EXHIBIT_STATE, 1
+	setvar VAR_ALCATRAZ_EXHIBIT_STATE, ALCATRAZ_EXHIBIT_REWARD
 	setvar VAR_ALCATRAZ_STATE, FIRST_ARRIVED_ALCATRAZ
 	msgbox gText_TheStorySoFar_ExcellentWork
 	giveitem ITEM_MACHO_BRACE, 1
 	closemessage
+	goto YoungPadawan_Intro_Dialogue
 	release
 	end
 
@@ -139,67 +140,79 @@ TheStorySoFar_Congratulate_Dialogue::
 
 
 TheStorySoFar_StartBattle1_Script::
-	trainerbattle_single TRAINER_ALBERTO, gText_TheStorySoFar_IHopeYouDont, gText_TheStorySoFar_SlowDown, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	trainerbattle_single TRAINER_ALBERTO, gText_TheStorySoFar_IHopeYouDont, gText_TheStorySoFar_SlowDown, TheStorySoFar_ReadSign1_Dialogue, NO_MUSIC
 	msgbox gText_TheStorySoFar_DontForgetToStop, MSGBOX_AUTOCLOSE
 	return
 
 
 TheStorySoFar_ReadSign1_Dialogue::
+	special CheckNumAlcatrazExhibitDefeated
+	msgbox gText_TheStorySoFar_SpeakerStarted
 	msgbox gText_TheStorySoFar_OriginallyBuiltAsAPrison, MSGBOX_SIGN
 	return
 
 
 TheStorySoFar_StartBattle2_Script::
-	trainerbattle_single TRAINER_ED, gText_TheStorySoFar_IThinkDefense, gText_TheStorySoFar_NotStrongEnough, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	trainerbattle_single TRAINER_ED, gText_TheStorySoFar_IThinkDefense, gText_TheStorySoFar_NotStrongEnough, TheStorySoFar_ReadSign2_Dialogue, NO_MUSIC
 	msgbox gText_TheStorySoFar_TheBestOffense, MSGBOX_AUTOCLOSE
 	return
 
 
 TheStorySoFar_ReadSign2_Dialogue::
+	special CheckNumAlcatrazExhibitDefeated
+	msgbox gText_TheStorySoFar_SpeakerStarted
 	msgbox gText_TheStorySoFar_TheCriminalUnderbelly, MSGBOX_SIGN
 	return
 
 
 TheStorySoFar_StartBattle3_Script::
-	trainerbattle_single TRAINER_DECLAN, gText_TheStorySoFar_TheresSomethingSpecial, gText_TheStorySoFar_ImNotSpecial, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	trainerbattle_single TRAINER_DECLAN, gText_TheStorySoFar_TheresSomethingSpecial, gText_TheStorySoFar_ImNotSpecial, TheStorySoFar_ReadSign3_Dialogue, NO_MUSIC
 	msgbox gText_TheStorySoFar_ItsHardToDoAnything, MSGBOX_AUTOCLOSE
 	return
 
 
 TheStorySoFar_ReadSign3_Dialogue::
+	special CheckNumAlcatrazExhibitDefeated
+	msgbox gText_TheStorySoFar_SpeakerStarted
 	msgbox gText_TheStorySoFar_ThePrisonersBeganToTurn, MSGBOX_SIGN
 	return
 
 
 TheStorySoFar_StartBattle4_Script::
-	trainerbattle_single TRAINER_FREDRICK, gText_TheStorySoFar_PhysicallyDefensiveMasterpiece, gText_TheStorySoFar_ButLikeTheShip, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	trainerbattle_single TRAINER_FREDRICK, gText_TheStorySoFar_PhysicallyDefensiveMasterpiece, gText_TheStorySoFar_ButLikeTheShip, TheStorySoFar_ReadSign4_Dialogue, NO_MUSIC
 	msgbox gText_TheStorySoFar_HumansWillAlwaysFind, MSGBOX_AUTOCLOSE
 	return
 
 
 TheStorySoFar_ReadSign4_Dialogue::
+	special CheckNumAlcatrazExhibitDefeated
+	msgbox gText_TheStorySoFar_SpeakerStarted
 	msgbox gText_TheStorySoFar_AsTensionsBetweenThePrisoners, MSGBOX_SIGN
 	return
 
 
 TheStorySoFar_StartBattle5_Script::
-	trainerbattle_single TRAINER_ZANDER, gText_TheStorySoFar_BrokenBonesHealEasily, gText_TheStorySoFar_SomePeopleNeverRecover, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	trainerbattle_single TRAINER_ZANDER, gText_TheStorySoFar_BrokenBonesHealEasily, gText_TheStorySoFar_SomePeopleNeverRecover, TheStorySoFar_ReadSign5_Dialogue, NO_MUSIC
 	msgbox gText_TheStorySoFar_MakingSureToTakeCare, MSGBOX_AUTOCLOSE
 	return
 
 
 TheStorySoFar_ReadSign5_Dialogue::
+	special CheckNumAlcatrazExhibitDefeated
+	msgbox gText_TheStorySoFar_SpeakerStarted
 	msgbox gText_TheStorySoFar_TheNaturalDisasterLeft, MSGBOX_SIGN
 	return
 
 
 TheStorySoFar_StartBattle6_Script::
-	trainerbattle_single TRAINER_LEAH, gText_TheStorySoFar_HowToughAreYou, gText_TheStorySoFar_TurnsOutPrettyTough, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC
+	trainerbattle_single TRAINER_LEAH, gText_TheStorySoFar_HowToughAreYou, gText_TheStorySoFar_TurnsOutPrettyTough, TheStorySoFar_ReadSign6_Dialogue, NO_MUSIC
 	msgbox gText_TheStorySoFar_IHearVoicesStanding, MSGBOX_AUTOCLOSE
 	return
 
 
 TheStorySoFar_ReadSign6_Dialogue::
+	special CheckNumAlcatrazExhibitDefeated
+	msgbox gText_TheStorySoFar_SpeakerStarted
 	msgbox gText_TheStorySoFar_ParksAndRecreation, MSGBOX_SIGN
 	return
 
@@ -210,14 +223,18 @@ TheStorySoFar_RunDefeatedCheck_Script::
 
 
 gText_TheStorySoFar_WelcomeToExhibit::
-	.string "Welcome to the Alcatraz Exhibit. To\n"
-	.string "learn about the island, you'll need to\l"
-	.string "battle our staff. Trainers who can\l"
-	.string "defeat all six without leaving the park\l"
-	.string "or being defeated will complete the\l"
-	.string "challenge and win a prize! If you leave,\l"
-	.string "you'll need to start the challenge over\l"
-	.string "again.$"
+	.string "Welcome to the Alcatraz Exhibit! If\n"
+	.string "you're looking to learn about the\l"
+	.string "island's history and culture, you'll\l"
+	.string "need to complete our challenge! Across\l"
+	.string "the island, there are six audio spots.\l"
+	.string "Stepping on an audio spot will teach\l"
+	.string "you some history, but you'll have the\l"
+	.string "defeat the Trainer guarding it. If you\l"
+	.string "can defeat all six Trainers without\l"
+	.string "leaving the park, you'll win a prize! If\l"
+	.string "you leave, you'll need to start the\l"
+	.string "challenge over again.$"
 
 gText_TheStorySoFar_YoureNotQuiteDone::
 	.string "You're not quite done.$"
@@ -388,3 +405,7 @@ gText_TheStorySoFar_ExcellentWork::
 gText_TheStorySoFar_WeHopeYouReturn::
 	.string "Congratulations! We hope you return\n"
 	.string "for more training!$"
+
+gText_TheStorySoFar_SpeakerStarted::
+	.string "The speaker beneath you feet starting\n"
+	.string "talking!$"

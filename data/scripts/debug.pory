@@ -63,47 +63,15 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    setflag(FLAG_BADGE03_GET)
-    setvar(VAR_SOMA_STATE,DEFEATED_WHITNEY)
-    setvar(VAR_PSFROUTE9_STATE,SAVED_BEFORE_ARCHER_PSFROUTE9)
-    msgbox(format("you have met but NOT DEFEATED archer"))
-    closemessage
-    warp(MAP_SOMA,4)
-    end
+    warp(MAP_ALCATRAZ,29,61)
 }
 script Debug_Script_2{
-    setflag(FLAG_BADGE03_GET)
-    setvar(VAR_SOMA_STATE,DEFEATED_WHITNEY)
-    setvar(VAR_PSFROUTE9_STATE,DEFEATED_ARCHER_PSFROUTE9)
-    msgbox(format("you HAVE DEFEATED archer"))
-    closemessage
-    warp(MAP_SOMA,4)
-    end
 }
 script Debug_Script_3{
-    setflag(FLAG_BADGE03_GET)
-    setvar(VAR_SOMA_STATE,DEFEATED_WHITNEY)
-    setvar(VAR_PSFROUTE9_STATE,HAS_NOT_MET_ARCHER)
-    msgbox(format("you have NOT MET archer"))
-    closemessage
-    warp(MAP_SOMA,4)
-    end
 }
 script Debug_Script_4{
-    setvar(VAR_PSFROUTE9_STATE,HAS_NOT_MET_ARCHER)
-    setvar(VAR_SOMA_STATE,POST_WOW_YOURE_STRONG)
-    msgbox(format("you HAVE DEFEATED whitney"))
-    closemessage
-    warp(MAP_PSFROUTE9,3,7)
-    end
 }
 script Debug_Script_5{
-    setvar(VAR_PSFROUTE9_STATE,HAS_NOT_MET_ARCHER)
-    setvar(VAR_SOMA_STATE,0)
-    msgbox(format("you NOT DEFEATED whitney"))
-    closemessage
-    warp(MAP_PSFROUTE9,3,7)
-    end
 }
 script Debug_Script_6{
     end

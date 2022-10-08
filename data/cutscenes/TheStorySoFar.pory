@@ -1,29 +1,29 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const MALVA = 9
+const ATTENDANT = 8
 
 script TheStorySoFar_ExplainExhibit_Dialogue {
     lock
         applymovement(PLAYER,Common_Movement_FaceRight)
-        waitmovement(0)
+        waitmovement(PLAYER)
         msgbox(gText_TheStorySoFar_WelcomeToExhibit)
         closemessage
         applymovement(PLAYER,Common_Movement_WalkUp)
-        setvar(VAR_ALCATRAZ_EXHIBIT_STATE,1)
-        waitmovement(0)
+        waitmovement(PLAYER)
+        setvar(VAR_ALCATRAZ_EXHIBIT_STATE,ALCATRAZ_EXHIBIT_START)
         release
         end
 }
 
 script Alcatraz_InteractWithAttendant_Script {
     lock
-       applymovement(8,Common_Movement_FacePlayer)
+       applymovement(ATTENDANT,Common_Movement_FacePlayer)
         goto(TheStorySoFar_Event_Script)
 }
 
 script TheStorySoFar_EntranceTrigger_Script {
     lock
         applymovement(PLAYER,Common_Movement_FaceRight)
-        applymovement(8,Common_Movement_FaceLeft)
+        applymovement(ATTENDANT,Common_Movement_FaceLeft)
         goto(TheStorySoFar_Event_Script)
 }
 
@@ -31,10 +31,10 @@ script TheStorySoFar_Event_Script {
     waitmovement(0)
         switch(var(VAR_ALCATRAZ_EXHIBIT_STATE)){
             case 0: goto(TheStorySoFar_ExplainExhibit_Dialogue)
-            case 1: goto(TheStorySoFar_CheckNumberDefeated_Script)
-            case 2: goto(TheStorySoFar_AwardPlayer_Script) 
-            case 3: goto(TheStorySoFar_Congratulate_Dialogue)
-            case 4: goto(AlcatrazAttendant_HealPlayer_Script)
+            case ALCATRAZ_EXHIBIT_START: goto(TheStorySoFar_CheckNumberDefeated_Script)
+            case ALCATRAZ_EXHIBIT_FINISH: goto(TheStorySoFar_AwardPlayer_Script) 
+            case ALCATRAZ_EXHIBIT_REWARD: goto(TheStorySoFar_Congratulate_Dialogue)
+            case ALCATRAZ_EXHIBIT_COMPLETE: goto(AlcatrazAttendant_HealPlayer_Script)
         }
 }
 
@@ -53,7 +53,7 @@ script TheStorySoFar_CheckNumberDefeated_Script {
 
     //If player is standing to leave, and not talking to the attendant
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-        if (var(VAR_TEMP_0) == 15 && var(VAR_TEMP_1) == 16){
+        if (var(VAR_TEMP_0) == 37 && var(VAR_TEMP_1) == 60){
             msgbox(gText_TheStorySoFar_AreYouSure,MSGBOX_YESNO)
                 if (var(VAR_RESULT) == NO) {
                     applymovement(PLAYER,Common_Movement_WalkUp)
@@ -69,11 +69,12 @@ script TheStorySoFar_CheckNumberDefeated_Script {
 }
 
 script TheStorySoFar_AwardPlayer_Script {
-        addvar(VAR_ALCATRAZ_EXHIBIT_STATE,1)
+        setvar(VAR_ALCATRAZ_EXHIBIT_STATE,ALCATRAZ_EXHIBIT_REWARD)
         setvar(VAR_ALCATRAZ_STATE,FIRST_ARRIVED_ALCATRAZ)
         msgbox(gText_TheStorySoFar_ExcellentWork)
         giveitem(ITEM_MACHO_BRACE,1)
         closemessage
+        goto(YoungPadawan_Intro_Dialogue)
         release
         end
 }
@@ -87,57 +88,69 @@ script TheStorySoFar_Congratulate_Dialogue {
 }
 
 script TheStorySoFar_StartBattle1_Script {
-    trainerbattle_single(TRAINER_ALBERTO,gText_TheStorySoFar_IHopeYouDont,gText_TheStorySoFar_SlowDown, TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC)
+    trainerbattle_single(TRAINER_ALBERTO,gText_TheStorySoFar_IHopeYouDont,gText_TheStorySoFar_SlowDown, TheStorySoFar_ReadSign1_Dialogue, NO_MUSIC)
         msgbox(gText_TheStorySoFar_DontForgetToStop,MSGBOX_AUTOCLOSE)
 }
 
 script TheStorySoFar_ReadSign1_Dialogue {
+    special(CheckNumAlcatrazExhibitDefeated)
+    msgbox(gText_TheStorySoFar_SpeakerStarted)
     msgbox(gText_TheStorySoFar_OriginallyBuiltAsAPrison,MSGBOX_SIGN)
 }
 
 
 script TheStorySoFar_StartBattle2_Script {
-    trainerbattle_single(TRAINER_ED,gText_TheStorySoFar_IThinkDefense,gText_TheStorySoFar_NotStrongEnough,TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC)
+    trainerbattle_single(TRAINER_ED,gText_TheStorySoFar_IThinkDefense,gText_TheStorySoFar_NotStrongEnough,TheStorySoFar_ReadSign2_Dialogue, NO_MUSIC)
         msgbox(gText_TheStorySoFar_TheBestOffense,MSGBOX_AUTOCLOSE)
 }
 
 script TheStorySoFar_ReadSign2_Dialogue {
+    special(CheckNumAlcatrazExhibitDefeated)
+    msgbox(gText_TheStorySoFar_SpeakerStarted)
     msgbox(gText_TheStorySoFar_TheCriminalUnderbelly,MSGBOX_SIGN)
 }
 
 script TheStorySoFar_StartBattle3_Script {
-    trainerbattle_single(TRAINER_DECLAN,gText_TheStorySoFar_TheresSomethingSpecial,gText_TheStorySoFar_ImNotSpecial,TheStorySoFar_RunDefeatedCheck_Script, NO_MUSIC)
+    trainerbattle_single(TRAINER_DECLAN,gText_TheStorySoFar_TheresSomethingSpecial,gText_TheStorySoFar_ImNotSpecial,TheStorySoFar_ReadSign3_Dialogue, NO_MUSIC)
         msgbox(gText_TheStorySoFar_ItsHardToDoAnything,MSGBOX_AUTOCLOSE)
 }
 
 script TheStorySoFar_ReadSign3_Dialogue {
+    special(CheckNumAlcatrazExhibitDefeated)
+    msgbox(gText_TheStorySoFar_SpeakerStarted)
     msgbox(gText_TheStorySoFar_ThePrisonersBeganToTurn,MSGBOX_SIGN)
 }
 
 script TheStorySoFar_StartBattle4_Script {
-    trainerbattle_single(TRAINER_FREDRICK,gText_TheStorySoFar_PhysicallyDefensiveMasterpiece,gText_TheStorySoFar_ButLikeTheShip,TheStorySoFar_RunDefeatedCheck_Script,NO_MUSIC)
+    trainerbattle_single(TRAINER_FREDRICK,gText_TheStorySoFar_PhysicallyDefensiveMasterpiece,gText_TheStorySoFar_ButLikeTheShip,TheStorySoFar_ReadSign4_Dialogue,NO_MUSIC)
         msgbox(gText_TheStorySoFar_HumansWillAlwaysFind,MSGBOX_AUTOCLOSE)
 }
 
 script TheStorySoFar_ReadSign4_Dialogue {
+    special(CheckNumAlcatrazExhibitDefeated)
+    msgbox(gText_TheStorySoFar_SpeakerStarted)
     msgbox(gText_TheStorySoFar_AsTensionsBetweenThePrisoners,MSGBOX_SIGN)
 }
 
 script TheStorySoFar_StartBattle5_Script {
-    trainerbattle_single(TRAINER_ZANDER,gText_TheStorySoFar_BrokenBonesHealEasily,gText_TheStorySoFar_SomePeopleNeverRecover,TheStorySoFar_RunDefeatedCheck_Script,NO_MUSIC)
+    trainerbattle_single(TRAINER_ZANDER,gText_TheStorySoFar_BrokenBonesHealEasily,gText_TheStorySoFar_SomePeopleNeverRecover,TheStorySoFar_ReadSign5_Dialogue,NO_MUSIC)
         msgbox(gText_TheStorySoFar_MakingSureToTakeCare,MSGBOX_AUTOCLOSE)
 }
 
 script TheStorySoFar_ReadSign5_Dialogue {
+    special(CheckNumAlcatrazExhibitDefeated)
+    msgbox(gText_TheStorySoFar_SpeakerStarted)
     msgbox(gText_TheStorySoFar_TheNaturalDisasterLeft,MSGBOX_SIGN)
 }
 
 script TheStorySoFar_StartBattle6_Script {
-    trainerbattle_single(TRAINER_LEAH,gText_TheStorySoFar_HowToughAreYou,gText_TheStorySoFar_TurnsOutPrettyTough,TheStorySoFar_RunDefeatedCheck_Script,NO_MUSIC)
+    trainerbattle_single(TRAINER_LEAH,gText_TheStorySoFar_HowToughAreYou,gText_TheStorySoFar_TurnsOutPrettyTough,TheStorySoFar_ReadSign6_Dialogue,NO_MUSIC)
         msgbox(gText_TheStorySoFar_IHearVoicesStanding,MSGBOX_AUTOCLOSE)
 }
 
 script TheStorySoFar_ReadSign6_Dialogue {
+    special(CheckNumAlcatrazExhibitDefeated)
+    msgbox(gText_TheStorySoFar_SpeakerStarted)
     msgbox(gText_TheStorySoFar_ParksAndRecreation,MSGBOX_SIGN)
 }
 
@@ -147,7 +160,7 @@ script TheStorySoFar_RunDefeatedCheck_Script {
 }
 
 text gText_TheStorySoFar_WelcomeToExhibit {
-    format("Welcome to the Alcatraz Exhibit. To learn about the island, you'll need to battle our staff. Trainers who can defeat all six without leaving the park or being defeated will complete the challenge and win a prize! If you leave, you'll need to start the challenge over again.")
+    format("Welcome to the Alcatraz Exhibit! If you're looking to learn about the island's history and culture, you'll need to complete our challenge! Across the island, there are six audio spots. Stepping on an audio spot will teach you some history, but you'll have the defeat the Trainer guarding it. If you can defeat all six Trainers without leaving the park, you'll win a prize! If you leave, you'll need to start the challenge over again.")
 }
 
 text gText_TheStorySoFar_YoureNotQuiteDone {
@@ -284,4 +297,8 @@ text gText_TheStorySoFar_ExcellentWork {
 
 text gText_TheStorySoFar_WeHopeYouReturn {
     format("Congratulations! We hope you return for more training!")
+}
+
+text gText_TheStorySoFar_SpeakerStarted{
+    format("The speaker beneath you feet starting talking!")
 }

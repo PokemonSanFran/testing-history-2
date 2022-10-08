@@ -165,7 +165,7 @@ Alameda_FerryState1_Script_3:
 	goto Alameda_FerryState1_Script_1
 
 Alameda_FerryState1_Script_4:
-	warp MAP_ALCATRAZ, 15, 22
+	warp MAP_ALCATRAZ, 24, 61
 	goto Alameda_FerryState1_Script_1
 
 Alameda_FerryState1_Script_5:
@@ -194,7 +194,7 @@ Alameda_FerryState2_Script_3:
 	goto Alameda_FerryState2_Script_1
 
 Alameda_FerryState2_Script_4:
-	warp MAP_ALCATRAZ, 15, 22
+	warp MAP_ALCATRAZ, 24, 61
 	goto Alameda_FerryState2_Script_1
 
 Alameda_FerryState2_Script_5:

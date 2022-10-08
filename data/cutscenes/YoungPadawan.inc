@@ -3,48 +3,50 @@ YoungPadawan_Intro_Dialogue::
 	clearflag FLAG_TEMP_2
 	addobject 9
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-	applymovement 9, YoungPadawan_GetOffBoat
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	applymovement 9, YoungPadawan_ApproachFromIsland_Movement
+	waitmovement 9
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_WowYouLookTired
 	call Common_EventScript_OutOfCenterPartyHeal
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_DidTheChallenge
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_ThankYou
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_DontMentionIt
 	callnative ClearMugshot
 	closemessage
-	applymovement 9, YoungPadawan_LookAtOcean
-	applymovement OBJ_EVENT_ID_PLAYER, YoungPadawan_StepDownWalkBeside
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	applymovement 9, YoungPadawan_LookAtOcean_Movement
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 9
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_LearnALot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_TheStoryOfTheIsland
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_ThatQuakeWasOne
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_HistoryBooksAreCrazy
 	callnative ClearMugshot
 	closemessage
-	applymovement 9, YoungPadawan_WalkBackToPlayer
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	applymovement 9, YoungPadawan_WalkBackToPlayer_Movement
+	waitmovement 9
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_MakesYouWonder
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_MakesSenseYeah
 	goto YoungPadawan_StartBattle_Script
@@ -52,7 +54,7 @@ YoungPadawan_Intro_Dialogue::
 
 
 YoungPadawan_StartBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_YouveGotAGoodSpirit
 	callnative ClearMugshot
@@ -62,86 +64,104 @@ YoungPadawan_StartBattle_Script::
 	return
 
 
+YoungPadawan_Secret_Dialogue::
+	msgbox gText_YoungPadawan_DidYouHack
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_GotItYouWon
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
+	callnative DrawMugshot
+	msgbox gText_YoungPadawan_KeepItSecretToo
+	callnative ClearMugshot
+	closemessage
+	additem ITEM_POWER_ANKLET, 1
+	additem ITEM_POWER_BAND, 1
+	additem ITEM_POWER_BRACER, 1
+	additem ITEM_POWER_LENS, 1
+	additem ITEM_POWER_WEIGHT, 1
+	additem ITEM_POWER_BELT, 1
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox gText_YoungPadawan_FullSet
+	waitmessage
+	waitfanfare
+	return
+
+
 YoungPadawan_PostBattle_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	checktrainerflag TRAINER_SIDNEY
 	goto_if 1, YoungPadawan_PostBattle_Dialogue_2
 	special HealPlayerParty
 	msgbox gText_YoungPadawan_KeepTraining
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_IveNeverBattled
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_YeahTotally
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_UntilThenHeres
 	closemessage
 	callnative ClearMugshot
 YoungPadawan_PostBattle_Dialogue_1:
 	giveitem ITEM_GO_GOGGLES, 1
-	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_STORYLINE_STATE, STORY_COMPLETE_ALCATRAZ
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YoungPadawan_ThoseCanBeTough
 	callnative ClearMugshot
 	closemessage
-	applymovement 9, YoungPadawan_WalkUpStairs
+	applymovement 9, YoungPadawan_WalkUpStairs_Movement
+	waitmovement 9
 	fadedefaultbgm
-	applymovement OBJ_EVENT_ID_PLAYER, YoungPadawan_GetOutOfWay
-	waitmovement 0
 	removeobject 9
 	setvar VAR_ALCATRAZ_STATE, BATTLED_MALVA
-	addvar VAR_ALCATRAZ_EXHIBIT_STATE, 1
+	setvar VAR_ALCATRAZ_EXHIBIT_STATE, ALCATRAZ_EXHIBIT_COMPLETE
 	release
 	end
 
 YoungPadawan_PostBattle_Dialogue_2:
-	msgbox gText_YoungPadawan_DidYouHack
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_GotItYouWon
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_KeepItSecretToo
-	callnative ClearMugshot
-	closemessage
-	giveitem ITEM_POWER_ANKLET, 1
-	giveitem ITEM_POWER_BAND, 1
-	giveitem ITEM_POWER_BRACER, 1
-	giveitem ITEM_POWER_LENS, 1
-	giveitem ITEM_POWER_WEIGHT, 1
-	giveitem ITEM_POWER_BELT, 1
+	call YoungPadawan_Secret_Dialogue
 	goto YoungPadawan_PostBattle_Dialogue_1
 
 
-YoungPadawan_GetOffBoat:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+YoungPadawan_ApproachFromIsland_Movement:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
-YoungPadawan_StepDownWalkBeside:
+YoungPadawan_StepDownWalkBeside_Movement:
 	walk_down
 	face_left
 	step_end
 
-YoungPadawan_LookAtOcean:
-	walk_left
+YoungPadawan_LookAtOcean_Movement:
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
 	step_end
 
-YoungPadawan_WalkBackToPlayer:
+YoungPadawan_WalkBackToPlayer_Movement:
+	walk_left
+	walk_left
 	walk_down
-	walk_right
-	face_up
+	walk_down
+	walk_down
+	face_right
 	step_end
 
-YoungPadawan_WalkUpStairs:
+YoungPadawan_WalkUpStairs_Movement:
 	walk_up
 	walk_up
 	walk_up
@@ -149,13 +169,6 @@ YoungPadawan_WalkUpStairs:
 	walk_up
 	walk_up
 	walk_up
-	step_end
-
-YoungPadawan_GetOutOfWay:
-	walk_left
-	delay_16
-	walk_right
-	face_up
 	step_end
 
 gText_YoungPadawan_WowYouLookTired::
@@ -252,3 +265,7 @@ gText_YoungPadawan_ThoseCanBeTough::
 	.string "Those can be tough to get if you're not\n"
 	.string "from here. Good luck with the rest of\l"
 	.string "your challenge, {PLAYER}.$"
+
+gText_YoungPadawan_FullSet::
+	.string "{PLAYER} obtained a set of Power\n"
+	.string "items!$"
