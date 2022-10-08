@@ -4637,7 +4637,7 @@
       "width": 20,
       "height": 60,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
+      "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/Tenderloin/border.bin",
       "blockdata_filepath": "data/layouts/Tenderloin/map.bin"
     },

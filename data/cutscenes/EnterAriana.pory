@@ -1,28 +1,28 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ARIANA = 1
 const SIARL = 2
-const PERSON1 = 6
-const PERSON2 = 7
-const PERSON3 = 10
+const PERSON1 = 10
+const PERSON2 = 11
+const PERSON3 = 12
 const FLAG_HIDE_ARIANA = FLAG_TEMP_2
 
 script EnterAriana_ObjectCleanUp_Script {
     checkitem(ITEM_MEGA_RING,1)
 
-    if (var(VAR_RESULT)) {
-        setobjectxyperm(PERSON1,2,40)
-        setobjectxyperm(PERSON2,2,41)
-        setobjectxyperm(PERSON3,2,42)
-        setflag(FLAG_HIDE_ARIANA)
-    }
+        if (var(VAR_RESULT)) {
+        setobjectxyperm(PERSON1,3,44)
+        setobjectxyperm(PERSON2,3,45)
+        setobjectxyperm(PERSON3,3,46)
+                setflag(FLAG_HIDE_ARIANA)
+        }
     return
 }
 
 script EnterAriana_SetConeTiles_Script {
     checkitem(ITEM_MEGA_RING,1)
         if (var(VAR_RESULT)) {
-            setmetatile(3,37,0x2E9,TRUE)
-            setmetatile(3,39,0x2E9,TRUE)
+            setmetatile(4,37,0x344,TRUE)
+            setmetatile(4,43,0x344,TRUE)
             special(DrawWholeMapView)
         }
     return
@@ -35,12 +35,45 @@ script EnterAriana_InteractSiarl_Script {
             goto(EnterAriana_GruntApologize_Dialogue)
         }
         else {
+            //goto(Debug_Hop)
             goto(EnterAriana_Intro_Dialogue)
         }
 }
 
+script EnterAriana_PreventPlayerProgress_Dialogue{
+    lock
+    setvar(VAR_TEMP_1,0)
+
+    checkitem(ITEM_MEGA_RING,1)
+        if (var(VAR_RESULT)){
+            release
+            end
+        }
+
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    switch(var(VAR_TEMP_1)){
+        case 38: applymovement(PERSON1,Common_Movement_ExclamationMark)
+        case 40: applymovement(PERSON2,Common_Movement_ExclamationMark)
+        case 42: applymovement(PERSON3,Common_Movement_ExclamationMark)
+    }
+    waitmovement(0)
+
+    playse(SE_PIN)
+    waitse
+
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    waitmovement(PLAYER)
+    msgbox(gText_EnterAriana_NoCutting)
+    closemessage
+
+    applymovement(PLAYER,Common_Movement_WalkRight)
+    waitmovement(PLAYER)
+    release
+    end
+}
+
 script EnterAriana_Intro_Dialogue{
-        lockall
+    lockall
         msgbox(gText_EnterAriana_WhoTheHell)
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -65,9 +98,9 @@ script EnterAriana_Intro_Dialogue{
         closemessage
         callnative(ClearMugshot)
         applymovement(ARIANA,EnterAriana_ArianaWalkToPlayer_Movement)
-        waitmovement(0)
+        waitmovement(ARIANA)
         applymovement(SIARL,Common_Movement_FaceRight)
-        waitmovement(0)
+        waitmovement(SIARL)
         goto(EnterAriana_Explain_Dialogue)
 }
 
@@ -78,11 +111,11 @@ script EnterAriana_Explain_Dialogue{
         closemessage
         callnative(ClearMugshot)
         applymovement(SIARL,Common_Movement_FaceDown)
-        waitmovement(0)
+        waitmovement(SIARL)
         applymovement(SIARL,Common_Movement_Delay48)
-        waitmovement(0)
+        waitmovement(SIARL)
         applymovement(SIARL,Common_Movement_FaceRight)
-        waitmovement(0)
+        waitmovement(SIARL)
         msgbox(gText_EnterAriana_TryingToCut)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -90,7 +123,7 @@ script EnterAriana_Explain_Dialogue{
         callnative(ClearMugshot)
         closemessage
         applymovement(ARIANA,Common_Movement_FaceDown)
-        waitmovement(0)
+        waitmovement(ARIANA)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterAriana_WhatProblem)
@@ -104,7 +137,7 @@ script EnterAriana_Explain_Dialogue{
 
 script EnterAriana_Apology_Dialogue{
     applymovement(ARIANA,Common_Movement_FaceLeft)
-        waitmovement(0)
+        waitmovement(ARIANA)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterAriana_ShouldntTheCones)
@@ -117,16 +150,16 @@ script EnterAriana_Apology_Dialogue{
         msgbox(gText_EnterAriana_Sorry)
         closemessage
         applymovement(ARIANA,Common_Movement_FaceDown)
-        waitmovement(0)
+        waitmovement(ARIANA)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterAriana_WhatsYourName)
         callnative(ClearMugshot)
         closemessage
         applymovement(ARIANA,Common_Movement_FaceLeft)
-        waitmovement(0)
+        waitmovement(ARIANA)
         applymovement(SIARL,Common_Movement_FaceDown)
-        waitmovement(0)
+        waitmovement(SIARL)
         msgbox(gText_EnterAriana_IGotHeated)
         callnative(ClearMugshot)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
@@ -137,19 +170,27 @@ script EnterAriana_Apology_Dialogue{
         applymovement(SIARL,Common_Movement_FaceRight)
         msgbox(gText_EnterAriana_ShouldBeNear)
         closemessage
+
+
         applymovement(ARIANA,EnterAriana_HopOverTable_Movement)
-        waitmovement(0)
+        waitmovement(ARIANA)
         applymovement(PLAYER,Common_Movement_FaceRight)
-        waitmovement(0)
+        waitmovement(PLAYER)
         applymovement(SIARL,Common_Movement_FaceDown)
-        waitmovement(0)
+        waitmovement(SIARL)
+
+
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterAriana_NeedToWalk)
         callnative(ClearMugshot)
         closemessage
+        //Debug_Hop:
+        //setobjectxy(ARIANA,4,25) 
+
         applymovement(ARIANA,EnterAriana_WalkToLine_Movement)
         applymovement(PLAYER,EnterAriana_PlayerWalkToLine_Movement)
+        //goto(Debug_Cones)
         goto(EnterAriana_ExplainHope_Dialogue)
 }
 
@@ -180,45 +221,44 @@ script EnterAriana_ExplainHope_Dialogue{
         msgbox(gText_EnterAriana_YoureNotFromHere)
         callnative(ClearMugshot)
         closemessage
+        //Debug_Cones:
         applymovement(ARIANA,EnterAriana_PlaceConesA_Movement)
-        waitmovement(0)
-    setmetatile(3,37,0x2E9,TRUE)
-    special(DrawWholeMapView)
+        waitmovement(ARIANA)
+            setmetatile(4,37,0x344,TRUE)
+        special(DrawWholeMapView)
         applymovement(PLAYER,EnterAriana_WatchPlaceCones_Movement)
         applymovement(ARIANA,EnterAriana_PlaceConesB_Movement)
-        waitmovement(0)
-    setmetatile(3,39,0x2E9,TRUE)
-    special(DrawWholeMapView)
-        //applymovement(PLAYER,EnterAriana_WatchPlaceConesB_Movement)
+        waitmovement(ARIANA)
+            setmetatile(4,43,0x344,TRUE)
+        special(DrawWholeMapView)
         applymovement(ARIANA,EnterAriana_PlaceConesC_Movement)
-        //applymovement(PLAYER,EnterAriana_WatchPlaceConesC_Movement)
-        waitmovement(0)
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        waitmovement(ARIANA)
+        setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterAriana_BetweenTheCones)
         callnative(ClearMugshot)
         closemessage
-        call(LineMovementEvent_Script)
+        call(EnterAriana_MoveLine_Script)
         goto(EnterAriana_GiveKeystone_Dialogue)
 }
 
-script LineMovementEvent_Script{
-        playse(SE_PIN)
+script EnterAriana_MoveLine_Script{
+    playse(SE_PIN)
         applymovement(PERSON1,EnterAriana_MoveLine1_Movement)
-        applymovement(PERSON2,EnterAriana_MoveLine2_Movement)
-        applymovement(PERSON3,EnterAriana_MoveLine3_Movement)
+        applymovement(PERSON2,EnterAriana_MoveLine1_Movement)
+        applymovement(PERSON3,EnterAriana_MoveLine1_Movement)
         waitmovement(0)
-        setobjectxy(PERSON1,2,40)
-        setobjectxy(PERSON2,2,41)
-        setobjectxy(PERSON3,2,42)
-        setobjectxyperm(PERSON1,2,40)
-        setobjectxyperm(PERSON2,2,41)
-        setobjectxyperm(PERSON3,2,42)
+        setobjectxy(PERSON1,3,44)
+        setobjectxy(PERSON2,3,45)
+        setobjectxy(PERSON3,3,46)
+        setobjectxyperm(PERSON1,3,44)
+        setobjectxyperm(PERSON2,3,45)
+        setobjectxyperm(PERSON3,3,46)
 }
 
 script EnterAriana_GiveKeystone_Dialogue{
-        applymovement(ARIANA,Common_Movement_WalkLeft)
-        applymovement(ARIANA,Common_Movement_FacePlayer)
+        applymovement(ARIANA,EnterAriana_FacePlayer_Movement)
+        waitmovement(ARIANA)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_EnterAriana_ThereYouGo)
@@ -231,7 +271,7 @@ script EnterAriana_GiveKeystone_Dialogue{
         callnative(ClearMugshot)
         closemessage
         applymovement(ARIANA,Common_Movement_WalkInPlaceUp)
-        waitmovement(0)
+        waitmovement(ARIANA)
         giveitem(ITEM_MEGA_RING)
         setvar(VAR_0x8000, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
@@ -255,14 +295,14 @@ script EnterAriana_GiveKeystone_Dialogue{
             }
 
             setvar(VAR_0x8000, MUGSHOT_ARIANA)
-            callnative(DrawMugshot)
+                callnative(DrawMugshot)
 
-            if (var(VAR_TEMP_2) != 1){
+                if (var(VAR_TEMP_2) != 1){
                     msgbox(gTextEnterAriana_CanMegaEvolve)
-            }
-            else{
+                }
+                else{
                     msgbox(gTextEnterAriana_CanMegaEvolveSomeday)
-            }
+                }
         }
     setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -275,8 +315,8 @@ script EnterAriana_GiveKeystone_Dialogue{
         msgbox(gText_EnterAriana_IGottaGo)
         callnative(ClearMugshot)
         closemessage
-        applymovement(ARIANA,Ariana_WalkAway)
-        waitmovement(0)
+        applymovement(ARIANA,EnterAriana_WalkAway_Movement)
+        waitmovement(ARIANA)
         removeobject(ARIANA)
         fadedefaultbgm
         addvar(VAR_STORYLINE_STATE,1)
@@ -286,10 +326,7 @@ script EnterAriana_GiveKeystone_Dialogue{
 }
 
 script EnterAriana_GruntApologize_Dialogue {
-    lockall
-        msgbox(gText_EnterAriana_SorryAgain)
-        closemessage
-        releaseall
+        msgbox(gText_EnterAriana_SorryAgain,MSGBOX_NPC)
         end
 }
 
@@ -300,93 +337,93 @@ movement EnterAriana_ArianaWalkToPlayer_Movement {
 }
 movement EnterAriana_HopOverTable_Movement {
     walk_up * 4
-    delay_16
-    walk_down * 4
-    jump_2_down
-    face_left
-    step_end
+        delay_16
+        walk_down * 4
+        jump_2_down
+        face_left
+        step_end
 }
 movement EnterAriana_WalkToLine_Movement {
-    walk_down * 12
-    walk_left * 3
-    face_player
-    step_end
+        walk_down * 14
+        face_left
+        face_player
+        step_end
 }
 movement EnterAriana_PlayerWalkToLine_Movement {
-    walk_down * 13
-    walk_left * 2
-    face_up
-    step_end
+        walk_right
+        walk_down * 13
+        step_end
 }
 movement EnterAriana_WatchPlaceCones_Movement {
-    delay_16
-    delay_16
-    delay_16
-    delay_16
-    delay_16
-    face_right
-    delay_16
-    walk_right
-    face_down
-    step_end
+        face_right
+        face_up
+        delay_16 * 2
+        face_down
+        step_end
 }
 
 movement EnterAriana_PlaceConesA_Movement {
-    walk_right
-    face_left
-    walk_in_place_left
-    step_end
+        walk_right
+        walk_up * 2
+        face_left
+        walk_in_place_left
+        step_end
 }
 movement EnterAriana_PlaceConesB_Movement {
-    walk_right
-    walk_down * 2
-    walk_left
-    walk_in_place_left
-    step_end
+        walk_down * 6
+        face_left
+        walk_in_place_left
+        step_end
 }
 movement EnterAriana_PlaceConesC_Movement {
-    walk_right
-    face_left
+        walk_up * 4
+        face_left
     step_end
 }
 movement EnterAriana_MoveLine1_Movement {
     emote_exclamation_mark
-    walk_down * 3
-    face_up
-    step_end
+        walk_down * 5
+        face_up
+        step_end
 }
 movement EnterAriana_MoveLine2_Movement {
     emote_exclamation_mark
-    delay_16
-    delay_16
-    delay_16
-    walk_right 
-    walk_down
-    walk_right
-    walk_down * 2
-    walk_left
-    face_up
-    step_end
+        delay_16
+        delay_16
+        delay_16
+        walk_right 
+        walk_down
+        walk_right
+        walk_down * 2
+        walk_left
+        face_up
+        step_end
 }
 movement EnterAriana_MoveLine3_Movement {
     emote_exclamation_mark
-    delay_16
-    delay_16
-    delay_16
-    delay_16
-    walk_right * 3
-    walk_down * 3
+        delay_16
+        delay_16
+        delay_16
+        delay_16
+        walk_right * 3
+        walk_down * 3
+        walk_left
+        face_up
+        step_end
+}
+movement EnterAriana_FacePlayer_Movement{
     walk_left
     face_up
     step_end
 }
-movement Ariana_LookAround_Movement {
-    step_end
-}
-movement Ariana_WalkAway {
+movement EnterAriana_WalkAway_Movement {
     walk_right
-    walk_up * 7
-    step_end
+        walk_up * 7
+        step_end
+}
+
+text gText_EnterAriana_NoCutting{
+    format("No cutting the line!")
 }
 
 text gText_EnterAriana_WhoTheHell {
@@ -510,7 +547,7 @@ text gText_EnterAriana_YoureNotFromHere {
 }
 
 text gText_EnterAriana_BetweenTheCones {
-    format("Yo, if you're between the cones, move behind the second one. Wanna make sure there's a path for people to get through.")
+    format("Yo, clear a path between the cones.")
 }
 
 text gText_EnterAriana_ThereYouGo {
@@ -542,7 +579,7 @@ text gText_EnterAriana_ThankYouSo {
 }
 
 text gText_EnterAriana_HopeThatMakes {
-    format("Hope that makes up for the hassle. I found it earlier, but you can totally have it. Some tech bro was probably being careless.")
+    format("Hope that makes up for the hassle. It fell off the back of a truck, but you can totally have it.")
 }
 
 text gText_EnterAriana_IGottaGo {

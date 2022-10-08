@@ -54,7 +54,7 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warpsilent MAP_MISSION_GYM, 0
+	warpsilent MAP_TENDERLOIN, 4, 38
 	end
 
 

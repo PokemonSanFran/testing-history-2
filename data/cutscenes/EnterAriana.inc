@@ -6,9 +6,9 @@ EnterAriana_ObjectCleanUp_Script_1:
 	return
 
 EnterAriana_ObjectCleanUp_Script_2:
-	setobjectxyperm 6, 2, 40
-	setobjectxyperm 7, 2, 41
-	setobjectxyperm 10, 2, 42
+	setobjectxyperm 10, 3, 44
+	setobjectxyperm 11, 3, 45
+	setobjectxyperm 12, 3, 46
 	setflag FLAG_TEMP_2
 	goto EnterAriana_ObjectCleanUp_Script_1
 
@@ -21,8 +21,8 @@ EnterAriana_SetConeTiles_Script_1:
 	return
 
 EnterAriana_SetConeTiles_Script_2:
-	setmetatile 3, 37, 0x2E9, TRUE
-	setmetatile 3, 39, 0x2E9, TRUE
+	setmetatile 4, 37, 0x344, TRUE
+	setmetatile 4, 43, 0x344, TRUE
 	special DrawWholeMapView
 	goto EnterAriana_SetConeTiles_Script_1
 
@@ -37,6 +37,47 @@ EnterAriana_InteractSiarl_Script::
 EnterAriana_InteractSiarl_Script_1:
 	goto EnterAriana_GruntApologize_Dialogue
 	return
+
+
+EnterAriana_PreventPlayerProgress_Dialogue::
+	lock
+	setvar VAR_TEMP_1, 0
+	checkitem ITEM_MEGA_RING, 1
+	compare VAR_RESULT, 0
+	goto_if_ne EnterAriana_PreventPlayerProgress_Dialogue_2
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	switch VAR_TEMP_1
+	case 38, EnterAriana_PreventPlayerProgress_Dialogue_6
+	case 40, EnterAriana_PreventPlayerProgress_Dialogue_7
+	case 42, EnterAriana_PreventPlayerProgress_Dialogue_8
+EnterAriana_PreventPlayerProgress_Dialogue_4:
+	waitmovement 0
+	playse SE_PIN
+	waitse
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox gText_EnterAriana_NoCutting
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+
+EnterAriana_PreventPlayerProgress_Dialogue_2:
+	release
+	end
+
+EnterAriana_PreventPlayerProgress_Dialogue_6:
+	applymovement 10, Common_Movement_ExclamationMark
+	goto EnterAriana_PreventPlayerProgress_Dialogue_4
+
+EnterAriana_PreventPlayerProgress_Dialogue_7:
+	applymovement 11, Common_Movement_ExclamationMark
+	goto EnterAriana_PreventPlayerProgress_Dialogue_4
+
+EnterAriana_PreventPlayerProgress_Dialogue_8:
+	applymovement 12, Common_Movement_ExclamationMark
+	goto EnterAriana_PreventPlayerProgress_Dialogue_4
 
 
 EnterAriana_Intro_Dialogue::
@@ -65,9 +106,9 @@ EnterAriana_Intro_Dialogue::
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, EnterAriana_ArianaWalkToPlayer_Movement
-	waitmovement 0
+	waitmovement 1
 	applymovement 2, Common_Movement_FaceRight
-	waitmovement 0
+	waitmovement 2
 	goto EnterAriana_Explain_Dialogue
 	return
 
@@ -79,11 +120,11 @@ EnterAriana_Explain_Dialogue::
 	closemessage
 	callnative ClearMugshot
 	applymovement 2, Common_Movement_FaceDown
-	waitmovement 0
+	waitmovement 2
 	applymovement 2, Common_Movement_Delay48
-	waitmovement 0
+	waitmovement 2
 	applymovement 2, Common_Movement_FaceRight
-	waitmovement 0
+	waitmovement 2
 	msgbox gText_EnterAriana_TryingToCut
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
@@ -91,7 +132,7 @@ EnterAriana_Explain_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
-	waitmovement 0
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_WhatProblem
@@ -106,7 +147,7 @@ EnterAriana_Explain_Dialogue::
 
 EnterAriana_Apology_Dialogue::
 	applymovement 1, Common_Movement_FaceLeft
-	waitmovement 0
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_ShouldntTheCones
@@ -119,16 +160,16 @@ EnterAriana_Apology_Dialogue::
 	msgbox gText_EnterAriana_Sorry
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
-	waitmovement 0
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_WhatsYourName
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Common_Movement_FaceLeft
-	waitmovement 0
+	waitmovement 1
 	applymovement 2, Common_Movement_FaceDown
-	waitmovement 0
+	waitmovement 2
 	msgbox gText_EnterAriana_IGotHeated
 	callnative ClearMugshot
 	setvar VAR_0x8000, MUGSHOT_ARIANA
@@ -140,11 +181,11 @@ EnterAriana_Apology_Dialogue::
 	msgbox gText_EnterAriana_ShouldBeNear
 	closemessage
 	applymovement 1, EnterAriana_HopOverTable_Movement
-	waitmovement 0
+	waitmovement 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
+	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 2, Common_Movement_FaceDown
-	waitmovement 0
+	waitmovement 2
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_NeedToWalk
@@ -184,44 +225,44 @@ EnterAriana_ExplainHope_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, EnterAriana_PlaceConesA_Movement
-	waitmovement 0
-	setmetatile 3, 37, 0x2E9, TRUE
+	waitmovement 1
+	setmetatile 4, 37, 0x344, TRUE
 	special DrawWholeMapView
 	applymovement OBJ_EVENT_ID_PLAYER, EnterAriana_WatchPlaceCones_Movement
 	applymovement 1, EnterAriana_PlaceConesB_Movement
-	waitmovement 0
-	setmetatile 3, 39, 0x2E9, TRUE
+	waitmovement 1
+	setmetatile 4, 43, 0x344, TRUE
 	special DrawWholeMapView
 	applymovement 1, EnterAriana_PlaceConesC_Movement
-	waitmovement 0
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_BetweenTheCones
 	callnative ClearMugshot
 	closemessage
-	call LineMovementEvent_Script
+	call EnterAriana_MoveLine_Script
 	goto EnterAriana_GiveKeystone_Dialogue
 	return
 
 
-LineMovementEvent_Script::
+EnterAriana_MoveLine_Script::
 	playse SE_PIN
-	applymovement 6, EnterAriana_MoveLine1_Movement
-	applymovement 7, EnterAriana_MoveLine2_Movement
-	applymovement 10, EnterAriana_MoveLine3_Movement
+	applymovement 10, EnterAriana_MoveLine1_Movement
+	applymovement 11, EnterAriana_MoveLine1_Movement
+	applymovement 12, EnterAriana_MoveLine1_Movement
 	waitmovement 0
-	setobjectxy 6, 2, 40
-	setobjectxy 7, 2, 41
-	setobjectxy 10, 2, 42
-	setobjectxyperm 6, 2, 40
-	setobjectxyperm 7, 2, 41
-	setobjectxyperm 10, 2, 42
+	setobjectxy 10, 3, 44
+	setobjectxy 11, 3, 45
+	setobjectxy 12, 3, 46
+	setobjectxyperm 10, 3, 44
+	setobjectxyperm 11, 3, 45
+	setobjectxyperm 12, 3, 46
 	return
 
 
 EnterAriana_GiveKeystone_Dialogue::
-	applymovement 1, Common_Movement_WalkLeft
-	applymovement 1, Common_Movement_FacePlayer
+	applymovement 1, EnterAriana_FacePlayer_Movement
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_ThereYouGo
@@ -234,7 +275,7 @@ EnterAriana_GiveKeystone_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Common_Movement_WalkInPlaceUp
-	waitmovement 0
+	waitmovement 1
 	giveitem ITEM_MEGA_RING
 	setvar VAR_0x8000, MUGSHOT_ARIANA
 	callnative DrawMugshot
@@ -254,8 +295,8 @@ EnterAriana_GiveKeystone_Dialogue_1:
 	msgbox gText_EnterAriana_IGottaGo
 	callnative ClearMugshot
 	closemessage
-	applymovement 1, Ariana_WalkAway
-	waitmovement 0
+	applymovement 1, EnterAriana_WalkAway_Movement
+	waitmovement 1
 	removeobject 1
 	fadedefaultbgm
 	addvar VAR_STORYLINE_STATE, 1
@@ -309,10 +350,7 @@ EnterAriana_GiveKeystone_Dialogue_12:
 
 
 EnterAriana_GruntApologize_Dialogue::
-	lockall
-	msgbox gText_EnterAriana_SorryAgain
-	closemessage
-	releaseall
+	msgbox gText_EnterAriana_SorryAgain, MSGBOX_NPC
 	end
 
 
@@ -350,13 +388,14 @@ EnterAriana_WalkToLine_Movement:
 	walk_down
 	walk_down
 	walk_down
-	walk_left
-	walk_left
-	walk_left
+	walk_down
+	walk_down
+	face_left
 	face_player
 	step_end
 
 EnterAriana_PlayerWalkToLine_Movement:
+	walk_right
 	walk_down
 	walk_down
 	walk_down
@@ -370,44 +409,47 @@ EnterAriana_PlayerWalkToLine_Movement:
 	walk_down
 	walk_down
 	walk_down
-	walk_left
-	walk_left
-	face_up
 	step_end
 
 EnterAriana_WatchPlaceCones_Movement:
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
 	face_right
+	face_up
 	delay_16
-	walk_right
+	delay_16
 	face_down
 	step_end
 
 EnterAriana_PlaceConesA_Movement:
 	walk_right
+	walk_up
+	walk_up
 	face_left
 	walk_in_place_left
 	step_end
 
 EnterAriana_PlaceConesB_Movement:
-	walk_right
 	walk_down
 	walk_down
-	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	face_left
 	walk_in_place_left
 	step_end
 
 EnterAriana_PlaceConesC_Movement:
-	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	face_left
 	step_end
 
 EnterAriana_MoveLine1_Movement:
 	emote_exclamation_mark
+	walk_down
+	walk_down
 	walk_down
 	walk_down
 	walk_down
@@ -444,10 +486,12 @@ EnterAriana_MoveLine3_Movement:
 	face_up
 	step_end
 
-Ariana_LookAround_Movement:
+EnterAriana_FacePlayer_Movement:
+	walk_left
+	face_up
 	step_end
 
-Ariana_WalkAway:
+EnterAriana_WalkAway_Movement:
 	walk_right
 	walk_up
 	walk_up
@@ -457,6 +501,9 @@ Ariana_WalkAway:
 	walk_up
 	walk_up
 	step_end
+
+gText_EnterAriana_NoCutting::
+	.string "No cutting the line!$"
 
 gText_EnterAriana_WhoTheHell::
 	.string "Woah, who the hell do you think you are?$"
@@ -583,10 +630,7 @@ gText_EnterAriana_YoureNotFromHere::
 	.string "{PLAYER}.$"
 
 gText_EnterAriana_BetweenTheCones::
-	.string "Yo, if you're between the cones, move\n"
-	.string "behind the second one. Wanna make sure\l"
-	.string "there's a path for people to get\l"
-	.string "through.$"
+	.string "Yo, clear a path between the cones.$"
 
 gText_EnterAriana_ThereYouGo::
 	.string "There you go. Sorry about all of that.\n"
@@ -621,10 +665,9 @@ gText_EnterAriana_ThankYouSo::
 	.string "That's amazing, thank you so much!$"
 
 gText_EnterAriana_HopeThatMakes::
-	.string "Hope that makes up for the hassle. I\n"
-	.string "found it earlier, but you can totally\l"
-	.string "have it. Some tech bro was probably\l"
-	.string "being careless.$"
+	.string "Hope that makes up for the hassle. It\n"
+	.string "fell off the back of a truck, but you\l"
+	.string "can totally have it.$"
 
 gText_EnterAriana_IGottaGo::
 	.string "I gotta go back before Siarl cusses out\n"
