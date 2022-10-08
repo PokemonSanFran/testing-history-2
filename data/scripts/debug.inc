@@ -54,7 +54,8 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warpsilent MAP_SOMA, 31, 40
+	setvar VAR_STORYLINE_STATE, STORY_WON_FINALS
+	warpsilent MAP_PRESIDIO_COMPOUND_1F, 11, 4
 	end
 
 

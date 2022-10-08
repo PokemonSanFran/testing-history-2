@@ -12,13 +12,13 @@ Presidio_Compound_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Presidio_Compound_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 36, BeingChampionIsHard_TimeSkip
-	map_script_2 VAR_STORYLINE_STATE, 99, Southbay_Compound_2F_Bed_Script
+	map_script_2 VAR_STORYLINE_STATE, STORY_WON_FINALS, BeingChampionIsHard_TimeSkip
+	map_script_2 VAR_STORYLINE_STATE, START_TRUE_TIMELINE, Southbay_Compound_2F_Bed_Script
 	.2byte 0
 
 
 Presidio_Compound_1F_MapScripts_OnTransition::
-	compare VAR_STORYLINE_STATE, 36
+	compare VAR_STORYLINE_STATE, STORY_WON_FINALS
 	goto_if_ne Presidio_Compound_1F_MapScripts_OnTransition_1
 	return
 

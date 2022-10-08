@@ -73,8 +73,7 @@ BeingChampionIsHard_PostTimeSkip::
 	waitmovement 0
 	playse SE_EXIT
 	removeobject 1
-	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_FERRY_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_EXPLORE_TREASUREISLAND
 	releaseall
 	end
 
@@ -136,12 +135,10 @@ gText_BeingChampionIsHard_WoWWhatToDo::
 	.string "Wow, what to do with my days off…$"
 
 gText_BeingChampionIsHard_YouShouldGoTo::
-	.string "You should go to Treasureisland! I\n"
-	.string "don't think I ever got the chance to\l"
-	.string "tell you, but after you became\l"
-	.string "Champion, we upgraded your Ferry Pass\l"
-	.string "so you can travel there from\l"
-	.string "Ferrybuilding.$"
+	.string "You should go to Treasureisland! The\n"
+	.string "construction on the bridge has finally\l"
+	.string "been completed, and its a fun place to\l"
+	.string "sightsee.$"
 
 gText_BeingChampionIsHard_ThatsWhereTheyFilm::
 	.string "That's where they film movies, right?$"
@@ -154,6 +151,5 @@ gText_BeingChampionIsHard_SoundsLikeItll::
 	.string "Sounds like it'll be cool. Thanks!$"
 
 gText_BeingChampionIsHard_ThePleasureIsAllOurs::
-	.string "The pleasure is all ours, {PLAYER}. I'll\n"
-	.string "be checking in, but don't hesitate to\l"
-	.string "reach out.$"
+	.string "My pleasure. I'll be checking in, but\n"
+	.string "don't hesitate to reach out.$"
