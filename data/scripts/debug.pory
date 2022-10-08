@@ -63,11 +63,17 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    setvar(VAR_STORYLINE_STATE,STORY_START_CHAMPIONSHIP)
-    warpsilent(MAP_CHASECENTER_LOCKERS,9,6)
+    setvar(VAR_SOMA_STATE,POST_WOW_YOURE_STRONG)
+    warp(MAP_SALESFORCETOWER_10F,0)
+    closemessage
     end
 }
 script Debug_Script_2{
+    setvar(VAR_SALESFORCETOWER_2F_STATE,POST_ALWAYS_WATCHING_WAZOWSKI)
+    setvar(VAR_SOMA_STATE,POST_WOW_YOURE_STRONG)
+    msgbox("you are now going to an alt timeline where you did visit sabrina first")
+    closemessage
+    warp(MAP_SALESFORCETOWER_10F,6,26)
     end
 }
 script Debug_Script_3{

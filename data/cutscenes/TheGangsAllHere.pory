@@ -111,18 +111,15 @@ script TheGangsAllHere_NotIntentionally_Dialogue{
     setvar(VAR_0x8000, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally)
+
+    if(var(VAR_SALESFORCETOWER_2F_STATE) == POST_ALWAYS_WATCHING_WAZOWSKI){
+        msgbox(gText_TheGangsAllHere_PleaseTellMe)
     callnative(ClearMugshot)
-    applymovement(OAK,Common_Movement_FaceLeft)
-    applymovement(PLAYER,Common_Movement_FaceDown)
-    waitmovement(0)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_TheGangsAllHere_LikeISaidWe)
-    callnative(ClearMugshot)
-    applymovement(OAK,Common_Movement_FaceUp)
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_IHeardWonderfulThings)
+    }
+    msgbox(gText_TheGangsAllHere_InAnyCase)
     callnative(ClearMugshot)
     applymovement(ROSE,Common_Movement_FaceDown)
     applymovement(OAK,TheGangsAllHere_GivePackageToRose_Movement)
@@ -184,6 +181,12 @@ script TheGangsAllHere_EndScene_Dialogue{
     setvar(VAR_0x8000, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_FeelFreeToContinue)
+
+
+    if(var(VAR_SALESFORCETOWER_2F_STATE) != POST_ALWAYS_WATCHING_WAZOWSKI){
+        msgbox(gText_TheGangsAllHere_AhAndIf)
+    }
+
     callnative(ClearMugshot)
     closemessage
     applymovement(PLAYER,TheGangsAllHere_MoveOutOfWay_Movement)
@@ -228,10 +231,10 @@ text gText_TheGangsAllHere_IsThisWhereYouWork{
     format("Is this where you work?")
 }
 text gText_TheGangsAllHere_TheTowerYes{
-    format("The Salesforce Tower? Yes! League Ops? ...sort of. We wear a lot of hats!")
+    format("My office is on this floor, yeah! This is League Ops, and everybody here is solely dedicated to making sure the Ycombinator Pokemon League is a success.")
 }
 text gText_TheGangsAllHere_IHaventBeen{
-    format("I haven't been up here in a while though. I've an important delivery for the C.E.O., but the workers here in League Ops can be a little... rowdy. Do you mind if I tag along on your tour? I'll keep you in tip-top shape!")
+    format("I've an important delivery for the C.E.O., but the workers here in League Ops can be a little... rowdy. Do you mind if I tag along on your tour? I'll keep you in tip-top shape!")
 }
 text gText_TheGangsAllHere_OfCourseNot{
     format("Of course not!")
@@ -249,7 +252,7 @@ text gText_TheGangsAllHere_ComeOnIn{
     format("{PLAYER}! Oak! Come on in, I just finished an email! Glad you're both here, and excellent timing that you ran into each other.")
 }
 text gText_TheGangsAllHere_AsYouAsked{
-    format("As you asked, although I must say, it was not quite where you specified...")
+    format("As you asked, I have your package.")
 }
 text gText_TheGangsAllHere_IThoughtYouSaid{
     format("I thought you said you had a delivery for the C.E.O.?")
@@ -258,13 +261,20 @@ text gText_TheGangsAllHere_IDidIsee{
     format("I did. I see Rose neglected to reveal his full title...?")
 }
 text gText_TheGangsAllHere_NotIntentionally{
-    format("Not intentionally! I was just so swept up in your battle! Oak, please tell me you'll go back and watch Sabrina's highlight reel later, it was fantastic.")
+    format("Not intentionally! I was just so swept up in your battle!")
+}
+
+text gText_TheGangsAllHere_PleaseTellMe{
+    format("Oak, please tell me you'll go back and watch Sabrina's highlight reel later, it was fantastic.")
 }
 text gText_TheGangsAllHere_LikeISaidWe{
     format("Like I said, we wear a lot of hats.")
 }
 text gText_TheGangsAllHere_IHeardWonderfulThings{
-    format("I heard wonderful things on the way over here, but I'll be certain to observe later. In any case, your package, Rose.")
+    format("I heard wonderful things on the way over here, but I'll be certain to observe later.")
+}
+text gText_TheGangsAllHere_InAnyCase{
+    format("In any case, your pacakge, Rose.")
 }
 text gText_TheGangsAllHere_ImThrilledTheTiming{
     format("I'm thrilled the timing worked out, because the package actually isn't for me!")
@@ -283,13 +293,16 @@ text gText_TheGangsAllHere_WeKnowButNoPressure{
     format("We know. But no pressure. Enjoy your journey!")
 }
 text gText_TheGangsAllHere_TimeForNumber7{
-    format("Time for Starbucks number 7. Shall we, Oak?")
+    format("Time for Starbucks coffee number 7. Shall we, Oak?")
 }
 text gText_TheGangsAllHere_WeShall{
     format("We shall.")
 }
 text gText_TheGangsAllHere_FeelFreeToContinue{
-    format("Feel free to continue your tour without us, {PLAYER}. Greatly appreciate your help in the battles. Hopefully supporting me wasn't too exhausting! Ah, and if you haven't already visited Sabrina, go do so. They're on Marketing, the second floor.")
+    format("Feel free to continue your tour without us, {PLAYER}. Greatly appreciate your help in the battles. Hopefully supporting me wasn't too exhausting!")
+}
+text gText_TheGangsAllHere_AhAndIf{
+    format("Ah, and if you haven't already visited Sabrina, go do so. They're on Marketing, the second floor.")
 }
 movement TheGangsAllHere_OakWalkToPlayer_Movement{
     face_right

@@ -54,12 +54,18 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_STORYLINE_STATE, STORY_START_CHAMPIONSHIP
-	warpsilent MAP_CHASECENTER_LOCKERS, 9, 6
+	setvar VAR_SOMA_STATE, POST_WOW_YOURE_STRONG
+	warp MAP_SALESFORCETOWER_10F, 0
+	closemessage
 	end
 
 
 Debug_Script_2::
+	setvar VAR_SALESFORCETOWER_2F_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
+	setvar VAR_SOMA_STATE, POST_WOW_YOURE_STRONG
+	msgbox Debug_Script_2_Text_0
+	closemessage
+	warp MAP_SALESFORCETOWER_10F, 6, 26
 	end
 
 
@@ -94,6 +100,9 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
+
+Debug_Script_2_Text_0:
+	.string "you are now going to an alt timeline where you did visit sabrina first$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"
