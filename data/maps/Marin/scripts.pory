@@ -1,6 +1,8 @@
 const BIANCA = 1
 const LIIDIA = 2
 const JASMINE = 3
+const FLAG_HIDE_BIANCA = FLAG_TEMP_3
+const FLAG_HIDE_LIIDIA = FLAG_TEMP_4
 
 mapscripts Marin_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -11,8 +13,8 @@ mapscripts Marin_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ROUTE115_STATE, 1: IGuessWeShouldBeNiceNow_ExitCave_Script 
-        VAR_STORYLINE_STATE, 41: YouRealizeWereEvilRight_PhoneCall_Dialogue
+        VAR_MARIN_STATE, ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED: IGuessWeShouldBeNiceNow_ExitCave_Script 
+        VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
 
     MAP_SCRIPT_ON_LOAD{
@@ -21,18 +23,17 @@ mapscripts Marin_MapScripts {
 }
 
 script Marin_HideBianca_Script {
-    switch (var(VAR_ROUTE115_STATE)){
-    default: setflag(FLAG_TEMP_3)
-            removeobject(BIANCA)
-    }
+    setflag(FLAG_HIDE_BIANCA)
+    return
 }
 
 script Marin_HideLiidia_Script{
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_INSTALLNATUREPROBES)
 
     if (var(VAR_RESULT)){
-        setflag(FLAG_TEMP_4)
+        setflag(FLAG_HIDE_LIIDIA)
     }
+    return
 }
 
 script Marin_LockRangerDoor_Script{
