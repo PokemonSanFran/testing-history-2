@@ -16,9 +16,9 @@ script Marin_EliteHome_Siebold_Visibility_Script{
 script Marin_EliteHome_PictureFrame_Dialogue {
     lock
 
-        if (var(VAR_LILYCOVE_CITY_STATE)> 2){
+        if (var(VAR_MASK_OFF_STATE)> GOT_MASK_OFF_CLUE_1){
             call(MaskOff_QuestK_Dialogue)
-        } elif (var(VAR_ROUTE116_STATE) > 4){
+        } elif (var(VAR_MUIRWOODS_STATE) > MUIRWOODS_MAZE_COMPLETE){
             msgbox(gText_Marin_EliteHome_ADigitalPhoto,MSGBOX_AUTOCLOSE)
         } else {
             msgbox(gText_Marin_EliteHome_ADigitalPhoto_Unknown,MSGBOX_AUTOCLOSE)
