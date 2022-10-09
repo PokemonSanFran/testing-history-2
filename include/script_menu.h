@@ -1,6 +1,8 @@
 #ifndef GUARD_SCRIPT_MENU_H
 #define GUARD_SCRIPT_MENU_H
 
+#include "menu.h" //MULTICHOICE2 https://www.pokecommunity.com/showpost.php?p=10521985
+
 extern const u8 *const gStdStrings[];
 
 bool8 ScriptMenu_Multichoice(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress);
@@ -17,4 +19,8 @@ int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width);
 bool16 ScriptMenu_CreatePCMultichoice(void);
 void ScriptMenu_DisplayPCStartupPrompt(void);
 
+// START MULTICHOICE2 https://www.pokecommunity.com/showpost.php?p=10521985
+bool8 ScriptMenu_MultichoiceGridCustom(u8 left, u8 top, u8 cursorPos, bool8 ignoreBPress, u8 columnCount, const struct MenuAction *actions, int count);
+void DrawMultichoiceMenuCustom(u8 left, u8 top, u8 multichoiceId, u8 ignoreBPress, u8 cursorPos, const struct MenuAction *actions, int count);
+// END MULTICHOICE2 https://www.pokecommunity.com/showpost.php?p=10521985
 #endif //GUARD_SCRIPT_MENU_H
