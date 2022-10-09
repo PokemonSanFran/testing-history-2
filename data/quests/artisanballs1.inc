@@ -752,6 +752,56 @@ Quest_ArtisanBalls3_ChangeDoorMetatile_Script_2:
 	goto Quest_ArtisanBalls3_ChangeDoorMetatile_Script_1
 
 
+Quest_ArtisanBalls_ReadBook_Dialogue::
+	msgbox gText_Quest_ArtisanBalls_WhichPokeBall
+	multichoice2 1, 1, Quest_ArtisanBalls_CraftBallList, 0, 2, 0
+	closemessage
+	switch VAR_RESULT
+	case 1, Quest_ArtisanBalls_ReadBook_Dialogue_3
+	case 5, Quest_ArtisanBalls_ReadBook_Dialogue_4
+	case 0, Quest_ArtisanBalls_ReadBook_Dialogue_5
+	case 6, Quest_ArtisanBalls_ReadBook_Dialogue_6
+	case 4, Quest_ArtisanBalls_ReadBook_Dialogue_7
+	case 3, Quest_ArtisanBalls_ReadBook_Dialogue_8
+	case 2, Quest_ArtisanBalls_ReadBook_Dialogue_9
+	case 7, Quest_ArtisanBalls_ReadBook_Dialogue_10
+	case MULTI_B_PRESSED, Quest_ArtisanBalls_ReadBook_Dialogue_10
+Quest_ArtisanBalls_ReadBook_Dialogue_1:
+	goto Quest_ArtisanBalls_ReadBook_Dialogue
+	return
+
+Quest_ArtisanBalls_ReadBook_Dialogue_3:
+	msgbox gText_Quest_ArtisanBalls_ExplainLure
+	goto Quest_ArtisanBalls_ReadBook_Dialogue_1
+
+Quest_ArtisanBalls_ReadBook_Dialogue_4:
+	msgbox gText_Quest_ArtisanBalls_ExplainFast
+	goto Quest_ArtisanBalls_ReadBook_Dialogue_1
+
+Quest_ArtisanBalls_ReadBook_Dialogue_5:
+	msgbox gText_Quest_ArtisanBalls_ExplainLevel
+	goto Quest_ArtisanBalls_ReadBook_Dialogue_1
+
+Quest_ArtisanBalls_ReadBook_Dialogue_6:
+	msgbox gText_Quest_ArtisanBalls_ExplainHeavy
+	goto Quest_ArtisanBalls_ReadBook_Dialogue_1
+
+Quest_ArtisanBalls_ReadBook_Dialogue_7:
+	msgbox gText_Quest_ArtisanBalls_ExplainLove
+	goto Quest_ArtisanBalls_ReadBook_Dialogue_1
+
+Quest_ArtisanBalls_ReadBook_Dialogue_8:
+	msgbox gText_Quest_ArtisanBalls_ExplainFriend
+	goto Quest_ArtisanBalls_ReadBook_Dialogue_1
+
+Quest_ArtisanBalls_ReadBook_Dialogue_9:
+	msgbox gText_Quest_ArtisanBalls_ExplainMoon
+	goto Quest_ArtisanBalls_ReadBook_Dialogue_1
+
+Quest_ArtisanBalls_ReadBook_Dialogue_10:
+	end
+
+
 Quest_ArtisanBalls3_LeaveRoom_Movement:
 	walk_down
 	walk_right
@@ -785,31 +835,56 @@ Quest_ArtisanBalls3_DebugA_Script_Text_0:
 	.string "you defeated a gym leader while you had\n"
 	.string "a ball$"
 
+Quest_ArtisanBalls_CraftBallList::
+	.string "Level Ball$"
+	.string "Lure Ball$"
+	.string "Moon Ball$"
+	.string "Friend Ball$"
+	.string "Love Ball$"
+	.string "Fast Ball$"
+	.string "Heavy Ball$"
+	.string "Cancel$"
+	.string "$"
+
 gText_Quest_ArtisanBalls_WhichPokeBall::
-	.string "Sergey has noted on all of his craft\n"
+	.string "Sergey has notes on all of his craft\n"
 	.string "Poke Balls. Which one would you like to\l"
 	.string "read about?$"
 
 gText_Quest_ArtisanBalls_ExplainFast::
-	.string "$"
+	.string "Pokémon that are naturally very fast\n"
+	.string "will be more easily captured with the\l"
+	.string "Fast Ball.$"
 
 gText_Quest_ArtisanBalls_ExplainLevel::
-	.string "$"
+	.string "The Level Ball is most successful when\n"
+	.string "the user's Pokémon is a higher level\l"
+	.string "than the wild Pokémon being captured.$"
 
 gText_Quest_ArtisanBalls_ExplainLure::
-	.string "$"
+	.string "The Lure Ball works best in a battle\n"
+	.string "that was initated by fishing.$"
 
 gText_Quest_ArtisanBalls_ExplainHeavy::
-	.string "$"
+	.string "The Heavy Ball is less successful on\n"
+	.string "light Pokémon and more successful on\l"
+	.string "Heavy Pokémon!$"
 
 gText_Quest_ArtisanBalls_ExplainLove::
-	.string "$"
+	.string "The Love Ball works best when the\n"
+	.string "user's Pokémon is the opposite gender\l"
+	.string "of the wild Pokémon being captured.$"
 
 gText_Quest_ArtisanBalls_ExplainFriend::
-	.string "$"
+	.string "Pokémon captured with the Friend Ball\n"
+	.string "will initally be more friendly to the\l"
+	.string "Trainer that captured it.$"
 
 gText_Quest_ArtisanBalls_ExplainMoon::
-	.string "$"
+	.string "If the Pokémon being captured is part\n"
+	.string "of an evolutionary family that uses a\l"
+	.string "Moon Stone to evolve, the Moon Ball will\l"
+	.string "be more effective.$"
 
 gText_Quest_ArtisanBalls_IGotFired::
 	.string "I make craft PokéBalls. I'm tired of\n"

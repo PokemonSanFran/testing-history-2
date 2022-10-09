@@ -54,25 +54,13 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warp MAP_MISSION, 5, 23
+	warp MAP_JAPANTOWN_BALLS, 0
 	return
 
 
 Debug_Script_2::
-	messageinstant Text_Demo1
-	multichoice2 1, 1, Text_DemoOptions
-	closemessage
-	end
+	return
 
-
-Text_Demo1:
-    .string "Select an option.$"
-
-Text_DemoOptions:
-    .string "Option 1$"
-    .string "Option 2$"
-    .string "Option 3$"
-    .string "$"
 
 Debug_Script_3::
 	return

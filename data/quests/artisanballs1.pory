@@ -663,32 +663,61 @@ script Quest_ArtisanBalls3_ChangeDoorMetatile_Script {
     return
 }
 
-text gText_Quest_ArtisanBalls_WhichPokeBall{
-    format("Sergey has noted on all of his craft Poke Balls. Which one would you like to read about?")
+script Quest_ArtisanBalls_ReadBook_Dialogue{
+    msgbox(gText_Quest_ArtisanBalls_WhichPokeBall)
+    multichoice2(1,1,Quest_ArtisanBalls_CraftBallList,0,2,0)
+    closemessage
+
+    switch(var(VAR_RESULT)){
+        case 1: msgbox(gText_Quest_ArtisanBalls_ExplainLure)
+        case 5: msgbox(gText_Quest_ArtisanBalls_ExplainFast)
+        case 0: msgbox(gText_Quest_ArtisanBalls_ExplainLevel)
+        case 6: msgbox(gText_Quest_ArtisanBalls_ExplainHeavy)
+        case 4: msgbox(gText_Quest_ArtisanBalls_ExplainLove)
+        case 3: msgbox(gText_Quest_ArtisanBalls_ExplainFriend)
+        case 2: msgbox(gText_Quest_ArtisanBalls_ExplainMoon)
+        case 7: 
+        case MULTI_B_PRESSED: end
+    }
+    goto(Quest_ArtisanBalls_ReadBook_Dialogue)
 }
 
-//PSF TODO add descriptions for each ball
-//PSF TODO build out the ball menu
+text Quest_ArtisanBalls_CraftBallList{
+    "Level Ball$"
+    "Lure Ball$"
+    "Moon Ball$"
+    "Friend Ball$"
+    "Love Ball$"
+    "Fast Ball$"
+    "Heavy Ball$"
+    "Cancel$"
+    "$"
+}
+
+text gText_Quest_ArtisanBalls_WhichPokeBall{
+    format("Which craft Poké Ball would you like to read about?")
+}
+
 text gText_Quest_ArtisanBalls_ExplainFast{
-    format("")
+    format("Pokémon that are naturally very fast will be more easily captured with the Fast Ball.")
 }
 text gText_Quest_ArtisanBalls_ExplainLevel{
-    format("")
+    format("The Level Ball is most successful when the user's Pokémon is a higher level than the wild Pokémon being captured.")
 }
 text gText_Quest_ArtisanBalls_ExplainLure{
-    format("")
+    format("The Lure Ball works best in a battle that was initated by fishing.")
 }
 text gText_Quest_ArtisanBalls_ExplainHeavy{
-    format("")
+    format("The Heavy Ball is less successful on light Pokémon and more successful on Heavy Pokémon!")
 }
 text gText_Quest_ArtisanBalls_ExplainLove{
-    format("")
+    format("The Love Ball works best when the user's Pokémon is the opposite gender of the wild Pokémon being captured.")
 }
 text gText_Quest_ArtisanBalls_ExplainFriend{
-    format("")
+    format("Pokémon captured with the Friend Ball will initally be more friendly to the Trainer that captured it.")
 }
 text gText_Quest_ArtisanBalls_ExplainMoon{
-    format("")
+    format("If the Pokémon being captured is part of an evolutionary family that uses a Moon Stone to evolve, the Moon Ball will be more effective.")
 }
 
 text gText_Quest_ArtisanBalls_IGotFired {
