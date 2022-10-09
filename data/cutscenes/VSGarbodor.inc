@@ -139,6 +139,7 @@ VS_Garbodor_CoreEncounter_Script::
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	switch VAR_RESULT
+	case B_OUTCOME_CAUGHT, VS_Garbodor_CoreEncounter_Script_3
 	case B_OUTCOME_WON, VS_Garbodor_CoreEncounter_Script_3
 VS_Garbodor_CoreEncounter_Script_1:
 	release

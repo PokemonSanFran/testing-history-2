@@ -165,6 +165,7 @@ Quest_GardenCleanUpAdvanced_Battle_Script::
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	switch VAR_RESULT
+	case B_OUTCOME_CAUGHT, Quest_GardenCleanUpAdvanced_Battle_Script_3
 	case B_OUTCOME_WON, Quest_GardenCleanUpAdvanced_Battle_Script_3
 Quest_GardenCleanUpAdvanced_Battle_Script_1:
 	release

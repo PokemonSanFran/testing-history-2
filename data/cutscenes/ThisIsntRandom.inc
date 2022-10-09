@@ -230,6 +230,7 @@ ThisIsntRandom_CoreEncounter_Script_1:
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	switch VAR_RESULT
+	case B_OUTCOME_CAUGHT, ThisIsntRandom_CoreEncounter_Script_8
 	case B_OUTCOME_WON, ThisIsntRandom_CoreEncounter_Script_8
 ThisIsntRandom_CoreEncounter_Script_6:
 	release

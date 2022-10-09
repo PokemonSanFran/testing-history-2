@@ -120,6 +120,7 @@ WaitEvenThen_BossEncounter_Script::
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	switch VAR_RESULT
+	case B_OUTCOME_CAUGHT, WaitEvenThen_BossEncounter_Script_3
 	case B_OUTCOME_WON, WaitEvenThen_BossEncounter_Script_3
 WaitEvenThen_BossEncounter_Script_1:
 	release

@@ -135,6 +135,7 @@ script VS_Garbodor_CoreEncounter_Script {
         clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
         specialvar(VAR_RESULT, GetBattleOutcome)
         switch (var (VAR_RESULT)) {
+            case B_OUTCOME_CAUGHT:
             case B_OUTCOME_WON:
                 goto(VSGarbodor_RemoveGrunt)
         }

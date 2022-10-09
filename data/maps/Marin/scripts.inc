@@ -16,27 +16,26 @@ Marin_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 Marin_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE115_STATE, 1, IGuessWeShouldBeNiceNow_ExitCave_Script
-	map_script_2 VAR_STORYLINE_STATE, 41, YouRealizeWereEvilRight_PhoneCall_Dialogue
+	map_script_2 VAR_MARIN_STATE, ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED, IGuessWeShouldBeNiceNow_ExitCave_Script
+	map_script_2 VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE, YouRealizeWereEvilRight_PhoneCall_Dialogue
 	.2byte 0
 
 
 Marin_HideBianca_Script::
-	switch VAR_ROUTE115_STATE
 	setflag FLAG_TEMP_3
-	removeobject 1
 	return
 
 
 Marin_HideLiidia_Script::
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_INSTALLNATUREPROBES
 	compare VAR_RESULT, 0
-	goto_if_ne Marin_HideLiidia_Script_1
+	goto_if_ne Marin_HideLiidia_Script_2
+Marin_HideLiidia_Script_1:
 	return
 
-Marin_HideLiidia_Script_1:
+Marin_HideLiidia_Script_2:
 	setflag FLAG_TEMP_4
-	return
+	goto Marin_HideLiidia_Script_1
 
 
 Marin_LockRangerDoor_Script::

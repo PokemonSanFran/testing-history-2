@@ -22,9 +22,9 @@ Marin_EliteHome_Siebold_Visibility_Script_2:
 
 Marin_EliteHome_PictureFrame_Dialogue::
 	lock
-	compare VAR_LILYCOVE_CITY_STATE, 2
+	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_1
 	goto_if_gt Marin_EliteHome_PictureFrame_Dialogue_2
-	compare VAR_ROUTE116_STATE, 4
+	compare VAR_MUIRWOODS_STATE, MUIRWOODS_MAZE_COMPLETE
 	goto_if_gt Marin_EliteHome_PictureFrame_Dialogue_3
 	msgbox gText_Marin_EliteHome_ADigitalPhoto_Unknown, MSGBOX_AUTOCLOSE
 Marin_EliteHome_PictureFrame_Dialogue_1:

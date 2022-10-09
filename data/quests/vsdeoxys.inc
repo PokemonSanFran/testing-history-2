@@ -28,6 +28,7 @@ Quest_VSDeoxys_CoreEnounter_Script::
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	switch VAR_RESULT
+	case B_OUTCOME_CAUGHT, Quest_VSDeoxys_CoreEnounter_Script_2
 	case B_OUTCOME_WON, Quest_VSDeoxys_CoreEnounter_Script_2
 	return
 

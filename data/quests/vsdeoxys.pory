@@ -33,6 +33,7 @@ script Quest_VSDeoxys_CoreEnounter_Script
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	switch (var(VAR_RESULT))
 	{
+        case B_OUTCOME_CAUGHT:
 		case B_OUTCOME_WON:
             goto(Quest_VSDeoxys_Victory_Script)
 	}

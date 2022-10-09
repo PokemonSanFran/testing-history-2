@@ -54,8 +54,10 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_ROUTE115_STATE, 1
-	warp MAP_MARIN, 0
+	completequest QUEST_GARDENCLEANUP
+	setvar VAR_QUEST_GARDENCLEANUPADVANCED, HAS_NOT_INTERACTED
+	additem ITEM_MASTER_BALL, 5
+	warp MAP_PSFROUTE21, 4, 7
 	return
 
 
