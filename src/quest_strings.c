@@ -11,7 +11,7 @@ const u8 gText_Quest_PlayersAdventure_Map[] = _("SanFran Region");
 const u8 gText_Quest_ReturnDoll_Name[] = _("Return Doll");
 const u8 gText_Quest_ReturnDoll_Desc[] = _("Help Abigayle find her lost doll. The\nlast time she saw it was in Sunset.");
 const u8 gText_Quest_ReturnDoll_DoneDesc[] = _("You found Abigayle's lost doll in Sunset\nand returned it to her.");
-const u8 gText_Quest_ReturnDoll_Map[] = _("Bernalheights");
+const u8 gText_Quest_ReturnDoll_Map[] = _("Mission");
 
 const u8 gText_Quest_BringFruit_Name[] = _("Bring Fruit");
 const u8 gText_Quest_BringFruit_Desc[] = _("Hester can't leave his post, but needs\n6 Watmel Berries.\nYou have {STR_VAR_1} right now.");
@@ -723,7 +723,7 @@ const u8 gText_Quest_ChallengeOfThe7Sisters_Sub7_Map[] = _("PaintedLadies");
 
 const u8 gText_Quest_CutePokemon_Sub1_Name[] = _("Duskull");
 const u8 gText_Quest_CutePokemon_Sub1_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_CutePokemon_Sub1_Map[] = _("Bernalheights");
+const u8 gText_Quest_CutePokemon_Sub1_Map[] = _("Japantown");
 const u8 gText_Quest_CutePokemon_Sub2_Name[] = _("Scrafty");
 const u8 gText_Quest_CutePokemon_Sub2_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_CutePokemon_Sub2_Map[] = _("Sunset");

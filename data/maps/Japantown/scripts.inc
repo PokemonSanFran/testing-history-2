@@ -6,6 +6,7 @@ Japantown_MapScripts::
 Japantown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_HybridCulture_HideLeader_Script
 	call Quest_GetTheBand_HideBikerE_Script
+	call Quest_CutePokemon_HideMelissaA_Script
 	return
 
 Japantown_MapScripts_MAP_SCRIPT_ON_LOAD:

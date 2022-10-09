@@ -3,7 +3,6 @@ Bernalheights_MapScripts::
 	.byte 0
 
 Bernalheights_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call Quest_CutePokemon_HideMelissaA_Script
 	call Quest_GardenCleanUp_HideObjects_Script
 	call Quest_NeighborhoodCleanUp3_ObjectVisibility_Script
 	return

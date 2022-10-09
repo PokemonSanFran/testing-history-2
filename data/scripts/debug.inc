@@ -54,10 +54,7 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	completequest QUEST_GARDENCLEANUP
-	setvar VAR_QUEST_GARDENCLEANUPADVANCED, HAS_NOT_INTERACTED
-	additem ITEM_MASTER_BALL, 5
-	warp MAP_PSFROUTE21, 4, 7
+	warp MAP_JAPANTOWN, 2
 	return
 
 

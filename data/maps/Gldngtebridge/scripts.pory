@@ -1,13 +1,8 @@
 mapscripts Gldngtebridge_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Gldngtebridge_MapScripts_OnTransition)
+        call(OffYouGo_ObjectCleanUp_Script)
     }
+    MAP_SCRIPT_ON_FRAME_TABLE[
+        VAR_GOLDENGATEBRIDGE_STATE, CALLED_BY_BIANCA:OffYouGo_WarpPlayer_Script
+    ]
 }
-
-script Gldngtebridge_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE113_STATE)){
-        case 1: return
-        default: goto(OffYouGo_ObjectCleanUp_Script)
-    }
-}
-

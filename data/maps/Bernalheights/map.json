@@ -31,19 +31,6 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
-      "x": 18,
-      "y": 14,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Quest_ReturnDoll_Interact_Script",
-      "flag": "0"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
       "x": 6,
       "y": 9,
@@ -55,19 +42,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RabiesOutbreak_Officer_Event_Script",
       "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-      "x": 16,
-      "y": 18,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Quest_CutePokemon_Event_Script",
-      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
@@ -126,15 +100,6 @@
 
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 15,
-      "y": 18,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "Quest_CutePokemon_Debug_Script"
-    },
     {
       "type": "trigger",
       "x": 13,

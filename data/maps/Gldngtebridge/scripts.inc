@@ -1,18 +1,13 @@
 Gldngtebridge_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Gldngtebridge_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Gldngtebridge_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Gldngtebridge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Gldngtebridge_MapScripts_OnTransition
+	call OffYouGo_ObjectCleanUp_Script
 	return
 
-
-Gldngtebridge_MapScripts_OnTransition::
-	switch VAR_ROUTE113_STATE
-	case 1, Gldngtebridge_MapScripts_OnTransition_2
-	goto OffYouGo_ObjectCleanUp_Script
-	return
-
-Gldngtebridge_MapScripts_OnTransition_2:
-	return
+Gldngtebridge_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_GOLDENGATEBRIDGE_STATE, CALLED_BY_BIANCA, OffYouGo_WarpPlayer_Script
+	.2byte 0
 

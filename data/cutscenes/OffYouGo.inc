@@ -1,47 +1,71 @@
 OffYouGo_ObjectCleanUp_Script::
-	setflag FLAG_TEMP_1
+	compare VAR_GOLDENGATEBRIDGE_STATE, CALLED_BY_BIANCA
+	goto_if_ne OffYouGo_ObjectCleanUp_Script_2
+OffYouGo_ObjectCleanUp_Script_1:
 	return
+
+OffYouGo_ObjectCleanUp_Script_2:
+	setflag FLAG_TEMP_1
+	goto OffYouGo_ObjectCleanUp_Script_1
+
+
+OffYouGo_WarpPlayer_Script::
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_1, 11
+	goto_if_lt OffYouGo_WarpPlayer_Script_2
+OffYouGo_WarpPlayer_Script_1:
+	release
+	end
+
+OffYouGo_WarpPlayer_Script_2:
+	fadescreen FADE_TO_BLACK
+	setobjectxy OBJ_EVENT_ID_PLAYER, 16, 11
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	TeleportCamera 16, 11
+	fadescreen FADE_FROM_BLACK
+	goto OffYouGo_WelcomeParty_Dialogue
+	goto OffYouGo_WarpPlayer_Script_1
 
 
 OffYouGo_WakeUp_Dialogue::
-	setvar VAR_ROUTE113_STATE, 1
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_GOLDENGATEBRIDGE_STATE, CALLED_BY_BIANCA
+	setvar VAR_STORYLINE_STATE, STORY_ASSIGNED_SIEBOLD_QUESTS
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
 	waitse
 	pokenavcall OffYouGo_WakeUp_Dialogue_Text_0
 	waitmessage
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_HuhHello
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_HeyWhereAreYou
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_YeahImInBed
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_ComeOnGetUp
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_WaitingForMe
 	callnative ClearMugshot
 	closemessage
 	msgbox gText_OffYouGo_PleaseMeetMeOn
 	msgbox gText_OffYouGo_IllBeRightOver
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_YeahIDidntSee
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_UghFine
 	callnative ClearMugshot
 	closemessage
 	playse SE_POKENAV_HANG_UP
 	waitse
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_HowAreTheyAlways
 	callnative ClearMugshot
@@ -50,67 +74,67 @@ OffYouGo_WakeUp_Dialogue::
 
 
 OffYouGo_WelcomeParty_Dialogue::
-	addvar VAR_ROUTE113_STATE, 1
-	addvar VAR_ROUTE114_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_GOLDENGATEBRIDGE_STATE, POST_OFF_YOU_GO
+	setvar VAR_ROBINWILLIAMSTUNNEL, BIANCA_INSIDE_TUNNEL
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_WelcomeToTheParty
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_HonestlyItsFine
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_NeitherWasI
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_WellYoureBothHere
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Common_Movement_FaceRight
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	waitmovement 1
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_ThanksButWho
 	callnative ClearMugshot
 	closemessage
 	applymovement 2, Common_Movement_FaceLeft
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	waitmovement 2
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_AsYesYoureNot
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_SoWhereIs
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_AhYesWellTheyHave
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_WeirdOkay
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Common_Movement_FaceUp
-	waitmovement 0
+	waitmovement 1
 	applymovement 2, Common_Movement_FaceUp
 	applymovement 1, OffYouGo_WalkNorth
-	waitmovement 0
+	waitmovement 1
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_OhWait
 	callnative ClearMugshot
 	closemessage
 	applymovement 2, Common_Movement_FaceDown
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	waitmovement 2
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_IDoWishThey
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_IllHurrySo
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_GoodLuck
 	callnative ClearMugshot
@@ -121,7 +145,7 @@ OffYouGo_WelcomeParty_Dialogue::
 
 OffYouGo_InteractOak_Event_Script::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_ItMightBeAGood, MSGBOX_NPC
 	callnative ClearMugshot

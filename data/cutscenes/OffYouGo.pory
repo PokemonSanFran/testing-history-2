@@ -1,38 +1,58 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
 const OAK = 2
+const FLAG_HIDE_OAK_BIANCA = FLAG_TEMP_1
 
 script OffYouGo_ObjectCleanUp_Script {
-    setflag(FLAG_TEMP_1)
+    if (var(VAR_GOLDENGATEBRIDGE_STATE) != CALLED_BY_BIANCA){
+        setflag(FLAG_HIDE_OAK_BIANCA)
+    }
+    return
 }
+
+script OffYouGo_WarpPlayer_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+    
+    if (var(VAR_TEMP_1) < 11){
+        fadescreen(FADE_TO_BLACK)
+        setobjectxy(PLAYER,16,11)
+        turnobject(PLAYER,DIR_NORTH)
+        TeleportCamera(16,11)
+        fadescreen(FADE_FROM_BLACK)
+        goto(OffYouGo_WelcomeParty_Dialogue)
+    }
+    release
+    end
+}
+
 
 script OffYouGo_WakeUp_Dialogue {
     //PSF TODO alter clock so that the screen stays black
-    setvar(VAR_ROUTE113_STATE,1)
-        addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_GOLDENGATEBRIDGE_STATE,CALLED_BY_BIANCA)
+        setvar(VAR_STORYLINE_STATE,STORY_ASSIGNED_SIEBOLD_QUESTS)
         playse(SE_POKENAV_CALL)
         waitse
         playse(SE_POKENAV_CALL)
         waitse
         pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
         waitmessage
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_HuhHello)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_HeyWhereAreYou)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_YeahImInBed)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_ComeOnGetUp)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_WaitingForMe)
         callnative(ClearMugshot)
@@ -43,11 +63,11 @@ script OffYouGo_WakeUp_Dialogue {
 
         msgbox(gText_OffYouGo_IllBeRightOver)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_YeahIDidntSee)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_UghFine)
         callnative(ClearMugshot)
@@ -56,7 +76,7 @@ script OffYouGo_WakeUp_Dialogue {
         playse(SE_POKENAV_HANG_UP)
         waitse
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_HowAreTheyAlways)
         callnative(ClearMugshot)
@@ -65,84 +85,84 @@ script OffYouGo_WakeUp_Dialogue {
 
 script OffYouGo_WelcomeParty_Dialogue {
 
-    addvar(VAR_ROUTE113_STATE,1)
-        addvar(VAR_ROUTE114_STATE,1)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_GOLDENGATEBRIDGE_STATE,POST_OFF_YOU_GO)
+        setvar(VAR_ROBINWILLIAMSTUNNEL,BIANCA_INSIDE_TUNNEL)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_WelcomeToTheParty)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_HonestlyItsFine)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_NeitherWasI)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_WellYoureBothHere)
         callnative(ClearMugshot)
         closemessage
 
         applymovement(BIANCA,Common_Movement_FaceRight)
-        waitmovement(0)
+        waitmovement(BIANCA)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_ThanksButWho)
         callnative(ClearMugshot)
         closemessage
 
         applymovement(OAK,Common_Movement_FaceLeft)
-        waitmovement(0)
+        waitmovement(OAK)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_AsYesYoureNot)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_SoWhereIs)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_AhYesWellTheyHave)
 
-
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_WeirdOkay)
         callnative(ClearMugshot)
         closemessage
 
         applymovement(BIANCA,Common_Movement_FaceUp)
-        waitmovement(0)
+        waitmovement(BIANCA)
         applymovement(OAK, Common_Movement_FaceUp)
         applymovement(BIANCA,OffYouGo_WalkNorth)
-        waitmovement(0)
+        waitmovement(BIANCA)
         playse(SE_EXIT)
         waitse
         removeobject(BIANCA)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_OhWait)
         callnative(ClearMugshot)
         closemessage
 
         applymovement(OAK,Common_Movement_FaceDown)
-        waitmovement(0)
+        waitmovement(OAK)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_IDoWishThey)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_IllHurrySo)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_GoodLuck)
         callnative(ClearMugshot)
@@ -154,7 +174,7 @@ script OffYouGo_WelcomeParty_Dialogue {
 
 script OffYouGo_InteractOak_Event_Script {
     lockall
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_ItMightBeAGood,MSGBOX_NPC)
         callnative(ClearMugshot)

@@ -1,8 +1,8 @@
 //gText_CutePokemon_
 //Quest_CutePokemon_
 
-const MELISSA_A = 3
-const FLAG_HIDE_MELISSA_A = FLAG_TEMP_1
+const MELISSA_A = 5
+const FLAG_HIDE_MELISSA_A = FLAG_TEMP_3
 const MELISSA_B = 9
 const FLAG_HIDE_MELISSA_B = FLAG_TEMP_5
 const MELISSA_C = 2
@@ -12,7 +12,6 @@ const FLAG_HIDE_MELISSA_D = FLAG_TEMP_6
 
 script Quest_CutePokemon_Debug_Script{
     lock
-    addvar(VAR_TEMP_0,1)
     call(Quest_CutePokemon_CountCompletedQuests_Script)
     switch(var(VAR_TEMP_0)){
         case 0: givemon(SPECIES_DUSKULL,100)
@@ -176,14 +175,14 @@ script Quest_CutePokemon_Sub1_Correct_Dialogue{
 }
 script Quest_CutePokemon_Sub1_ReturnToWork_Cutscene{
     call(Quest_CutePokemon_GiveItem_Script)
-    opendoor(15,18)
+    opendoor(9,5)
     waitdooranim
     applymovement(MELISSA_A,Quest_CutePokemon_WalkInside_Movement)
     waitmovement(MELISSA_A)
     playse(SE_EXIT)
     waitse
     removeobject(MELISSA_A)
-    closedoor(15,18)
+    closedoor(9,5)
     waitdooranim
     release
     end

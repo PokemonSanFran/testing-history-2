@@ -1,6 +1,5 @@
 Quest_CutePokemon_Debug_Script::
 	lock
-	addvar VAR_TEMP_0, 1
 	call Quest_CutePokemon_CountCompletedQuests_Script
 	switch VAR_TEMP_0
 	case 0, Quest_CutePokemon_Debug_Script_3
@@ -35,7 +34,7 @@ Quest_CutePokemon_HideMelissaA_Script::
 	return
 
 Quest_CutePokemon_HideMelissaA_Script_1:
-	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
 	return
 
 
@@ -252,14 +251,14 @@ Quest_CutePokemon_Sub1_Correct_Dialogue::
 
 Quest_CutePokemon_Sub1_ReturnToWork_Cutscene::
 	call Quest_CutePokemon_GiveItem_Script
-	opendoor 15, 18
+	opendoor 9, 5
 	waitdooranim
-	applymovement 3, Quest_CutePokemon_WalkInside_Movement
-	waitmovement 3
+	applymovement 5, Quest_CutePokemon_WalkInside_Movement
+	waitmovement 5
 	playse SE_EXIT
 	waitse
-	removeobject 3
-	closedoor 15, 18
+	removeobject 5
+	closedoor 9, 5
 	waitdooranim
 	release
 	end
