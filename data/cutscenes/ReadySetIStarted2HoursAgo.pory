@@ -5,7 +5,7 @@ const FLAG_HIDE_BIANCA = FLAG_TEMP_1
 const FLAG_HIDE_OAK = FLAG_TEMP_2
 
 script TwoHoursAgo_ObjectSetUp {
-        setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_BIANCA)
         setobjectmovementtype(OAK,MOVEMENT_TYPE_WANDER_AROUND)
 
         if (var (VAR_PLAYER_HOME_STATE) > OPENED_FASHION_CASE) { //If you've got four badges, Oak no longer provides help and tutorials and isn't in the house
@@ -17,6 +17,14 @@ script TwoHoursAgo_CameraToPlayer_Script {
     setvar(VAR_0x8004, 1)
         setvar(VAR_0x8005, 6)
         special(TeleportCamera)
+}
+
+script TwoHoursAgo_GiveFashionCase_Script{
+    if (var(VAR_PLAYER_HOME_STATE) == POST_SWAGBAG) {
+            setvar(VAR_PLAYER_HOME_STATE,SLEPT_AFTER_SWAGBAG)
+            additem(ITEM_FASHION_CASE)
+    }
+    return
 }
 
 script TwoHoursAgo_FashionCaseReminder_Script {

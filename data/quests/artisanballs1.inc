@@ -847,8 +847,7 @@ Quest_ArtisanBalls_CraftBallList::
 	.string "$"
 
 gText_Quest_ArtisanBalls_WhichPokeBall::
-	.string "Sergey has notes on all of his craft\n"
-	.string "Poke Balls. Which one would you like to\l"
+	.string "Which craft Poké Ball would you like to\n"
 	.string "read about?$"
 
 gText_Quest_ArtisanBalls_ExplainFast::

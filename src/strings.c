@@ -1908,8 +1908,3 @@ const u8 gText_QuestComplete[] = _("complete");
 const u8 gText_Twitter[] = _("Twitter");
 const u8 gText_Uber[] = _("Uber");
 const u8 gText_Amazon[] =_("Amazon");
-
-//Times of Day
-const u8 gText_Morning[] = _("Morning");
-const u8 gText_Midday[] = _("Midday");
-const u8 gText_Night[] = _("Night");

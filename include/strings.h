@@ -3123,9 +3123,4 @@ extern const u8 gText_Twitter[];
 extern const u8 gText_Uber[];
 extern const u8 gText_Amazon[];
 
-//Times of Day
-extern const u8 gText_Morning[];
-extern const u8 gText_Midday[];
-extern const u8 gText_Night[];
-
 #endif // GUARD_STRINGS_H

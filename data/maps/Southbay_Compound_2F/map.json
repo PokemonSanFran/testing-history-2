@@ -31,7 +31,7 @@
       "x": 8,
       "y": 2,
       "elevation": 0,
-      "var": "VAR_LITTLEROOT_INTRO_STATE",
+      "var": "VAR_PLAYER_HOME_STATE",
       "var_value": "5",
       "script": "TwoHoursAgo_FashionCaseReminder_Script"
     },

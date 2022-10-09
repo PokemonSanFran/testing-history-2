@@ -17,6 +17,18 @@ TwoHoursAgo_CameraToPlayer_Script::
 	return
 
 
+TwoHoursAgo_GiveFashionCase_Script::
+	compare VAR_PLAYER_HOME_STATE, POST_SWAGBAG
+	goto_if_eq TwoHoursAgo_GiveFashionCase_Script_2
+TwoHoursAgo_GiveFashionCase_Script_1:
+	return
+
+TwoHoursAgo_GiveFashionCase_Script_2:
+	setvar VAR_PLAYER_HOME_STATE, SLEPT_AFTER_SWAGBAG
+	additem ITEM_FASHION_CASE
+	goto TwoHoursAgo_GiveFashionCase_Script_1
+
+
 TwoHoursAgo_FashionCaseReminder_Script::
 	setvar VAR_PLAYER_HOME_STATE, OPENED_FASHION_CASE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
