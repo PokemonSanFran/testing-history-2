@@ -262,8 +262,9 @@ AndWeMarchOn_ParadeEnd_Script::
 	setflag FLAG_TEMP_3
 	addvar VAR_ROUTE108_STATE, 1
 	special ReturnCameraToPlayer
-	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
+	savebgm MUS_DUMMY
+	fadedefaultbgm
 	release
 	end
 

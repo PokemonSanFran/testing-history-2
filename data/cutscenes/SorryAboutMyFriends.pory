@@ -1,185 +1,140 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const LANDLORD = 12 //FLAG_TEMP_3
-const RABIA = 10 //FLAG_TEMP_1
-const VITOMIR = 11 //FLAG_TEMP_1
-const TURTONATOR = 13 //FLAG_TEMP_2
-const ARIANA = 14 //FLAG_TEMP_4
+const ARIANA = 5
+const FLAG_HIDE_ARIANA = FLAG_TEMP_5
 
-script SorryAboutMyFriends_ObjectCleanUp_Script {
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_3)
-    setflag(FLAG_TEMP_4)
-    setflag(FLAG_TEMP_5)
+script SorryAboutMyFriends_Ariana_Visible_Script{
+    if (!flag(FLAG_BADGE04_GET) || var(VAR_BERKELEY_STATE) != SWAGBAG_2_COMPLETE){
+        setflag(FLAG_HIDE_ARIANA)
+    }
+    return
 }
 
-script SorryAboutMyFriends_WalkToScene_Script{
-    
-    if (flag(FLAG_TEMP_4)){
-        release
-            end
-    }
-
-        lock
-        call(HousingProtest_MovePlayerIntoPosition)
-        goto(SorryAboutMyFriends_Intro_Dialogue)
+script SorryAboutMyFriends_CheckBadge_Script{
+    lock
+        if (!flag(FLAG_HIDE_ARIANA)){
+            goto(SorryAboutMyFriends_Intro_Dialogue)
+        }
+    release
+        end
 }
 
 script SorryAboutMyFriends_Intro_Dialogue {
-        lock
-        applymovement(PLAYER,Common_Movement_FaceLeft)
-        applymovement(ARIANA,Common_Movement_FaceRight)
-        waitmovement(0)
+    lock
         playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+
+        applymovement(ARIANA,SorryAboutMyFriends_WalkToPlayer_Movement)
+        waitmovement(ARIANA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_CongratsOnYourWin)
-        goto(SorryAboutMyFriends_Continue_Dialogue)
-}
+        msgbox(gText_SorryAboutMyFriends_HowGoes)
 
-script SorryAboutMyFriends_TalkToIntro_Dialogue {
-        lock
-        playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        
-        if (var(VAR_ROUTE101_STATE) == 3){
-            msgbox(gText_SorryAboutMyFriends_WorldNeedsMoreCompassion,MSGBOX_NPC)
-            goto(SorryAboutMyFriends_CheckBadge_Script)
-        }
-
-        msgbox(gText_SorryAboutMyFriends_CongratsOnYourWin,MSGBOX_NPC)
-        goto(SorryAboutMyFriends_Continue_Dialogue)
-}
-
-script SorryAboutMyFriends_Continue_Dialogue {
-        lock
-        addvar(VAR_ROUTE101_STATE,1)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_ItWasWait)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_YourePartOf)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_DidINotMention)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_WaitThatWas)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_UnfortunateWorldview)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_AreYouGuysHelping)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_ThereWasAProtest)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_IWasTheOneWhoShut)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_WhenTheyMentionedPowerful)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_UhHuh)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace)
         msgbox(gText_SorryAboutMyFriends_TrackDownTheMembers)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_GotPrettyFiredUp)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_WorldNeedsMoreCompassion)
 
-        goto(SorryAboutMyFriends_CheckBadge_Script)
-}
-
-script SorryAboutMyFriends_CheckBadge_Script {
-        lock
-
-        if (flag(FLAG_BADGE04_GET)){
-            goto(SorryAboutMyFriends_GiveTicket_Script)
-        } else {
-            goto(SorryAboutMyFriends_GetBadgeFirst_Dialogue)
-        }
-}
-
-script SorryAboutMyFriends_GetBadgeFirst_Dialogue{
-        msgbox(gText_SorryAboutMyFriends_WaitHoldOn)
-        callnative(ClearMugshot)
-        fadedefaultbgm
-        release
-        end
+        goto(SorryAboutMyFriends_GiveTicket_Script)
 }
 
 script SorryAboutMyFriends_GiveTicket_Script {
-        callnative(ClearMugshot)
-        giveitem(ITEM_MYSTIC_TICKET,1)
-        addvar(VAR_ROUTE101_STATE,1)
-        addvar(VAR_FERRY_STATE,1)
+    giveitem(ITEM_MYSTIC_TICKET,1)
+        setvar(VAR_BERKELEY_STATE,GOT_ALCATRAZ_TICKET)
+        setvar(VAR_FERRY_STATE,FERRY_ALCATRAZ_AVAILABLE)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_IGiveYouALot)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_IAppreciateTheGesture)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_WantedYouToGoThere)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_ExcellentPlaceToTrain)
 
         if (var(VAR_FAINTED_FOG_STATE) > 0){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_SorryAboutMyFriends_WaitForTheFog)
         }
 
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+    setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_FollowSomeMoreLeads)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_AfterWeBattled)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SorryAboutMyFriends_ThankYouEnjoy)
         closemessage
         callnative(ClearMugshot)
 
         applymovement(ARIANA,SorryAboutMyFriends_WalkSouth)
-        waitmovement(0)
+        waitmovement(ARIANA)
         removeobject(ARIANA)
         fadedefaultbgm
         release
         end
 }
 
-text gText_SorryAboutMyFriends_CongratsOnYourWin {
+text gText_SorryAboutMyFriends_HowGoes {
     format("{PLAYER}. How goes your Gym Challenge?")
 }
 
@@ -277,5 +232,12 @@ text gText_SorryAboutMyFriends_ThankYouEnjoy {
 
 movement SorryAboutMyFriends_WalkSouth {
     walk_down * 6
+        step_end
+}
+
+movement SorryAboutMyFriends_WalkToPlayer_Movement{
+    emote_exclamation_mark
+        walk_left * 3
+        walk_up
         step_end
 }

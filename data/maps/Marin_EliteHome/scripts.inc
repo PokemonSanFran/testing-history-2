@@ -1,5 +1,23 @@
 Marin_EliteHome_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Marin_EliteHome_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Marin_EliteHome_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Marin_EliteHome_Siebold_Visibility_Script
+	return
+
+
+Marin_EliteHome_Siebold_Visibility_Script::
+	compare VAR_STORYLINE_STATE, STORY_START_CHAMPIONSHIP
+	goto_if_lt Marin_EliteHome_Siebold_Visibility_Script_2
+	compare VAR_STORYLINE_STATE, STORY_POST_YOU_REALIZE_WERE_EVIL
+	goto_if_gt Marin_EliteHome_Siebold_Visibility_Script_2
+Marin_EliteHome_Siebold_Visibility_Script_1:
+	return
+
+Marin_EliteHome_Siebold_Visibility_Script_2:
+	setflag FLAG_TEMP_1
+	goto Marin_EliteHome_Siebold_Visibility_Script_1
 
 
 Marin_EliteHome_PictureFrame_Dialogue::

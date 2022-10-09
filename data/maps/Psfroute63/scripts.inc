@@ -27,8 +27,6 @@ Psfroute63_MapScripts_OnTransition::
 	case PROTEST_NOTSTARTED, Psfroute63_MapScripts_OnTransition_2
 	case SAVE_TEAMROCKET_PSFROUTE63, Psfroute63_MapScripts_OnTransition_3
 	case DEFEATED_TEAMROCKET_PSFROUTE63, Psfroute63_MapScripts_OnTransition_4
-	case ENCOUNTER_ARIANA, Psfroute63_MapScripts_OnTransition_5
-	case GOT_ALCATRAZ_TICKET, Psfroute63_MapScripts_OnTransition_6
 	return
 
 Psfroute63_MapScripts_OnTransition_2:
@@ -41,13 +39,5 @@ Psfroute63_MapScripts_OnTransition_3:
 
 Psfroute63_MapScripts_OnTransition_4:
 	goto HousingProtest_CleanUp_Landlord_Script
-	return
-
-Psfroute63_MapScripts_OnTransition_5:
-	goto HousingProtest_CleanUp_Landlord_Script
-	return
-
-Psfroute63_MapScripts_OnTransition_6:
-	goto SorryAboutMyFriends_ObjectCleanUp_Script
 	return
 

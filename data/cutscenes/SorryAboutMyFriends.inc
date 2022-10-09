@@ -1,161 +1,118 @@
-SorryAboutMyFriends_ObjectCleanUp_Script::
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_4
+SorryAboutMyFriends_Ariana_Visible_Script::
+	goto_if_unset FLAG_BADGE04_GET, SorryAboutMyFriends_Ariana_Visible_Script_2
+	compare VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE
+	goto_if_ne SorryAboutMyFriends_Ariana_Visible_Script_2
+SorryAboutMyFriends_Ariana_Visible_Script_1:
+	return
+
+SorryAboutMyFriends_Ariana_Visible_Script_2:
 	setflag FLAG_TEMP_5
-	return
-
-
-SorryAboutMyFriends_WalkToScene_Script::
-	goto_if_set FLAG_TEMP_4, SorryAboutMyFriends_WalkToScene_Script_2
-	lock
-	call HousingProtest_MovePlayerIntoPosition
-	goto SorryAboutMyFriends_Intro_Dialogue
-	return
-
-SorryAboutMyFriends_WalkToScene_Script_2:
-	release
-	end
-
-
-SorryAboutMyFriends_Intro_Dialogue::
-	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	applymovement 14, Common_Movement_FaceRight
-	waitmovement 0
-	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
-	setvar VAR_0x8000, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_CongratsOnYourWin
-	goto SorryAboutMyFriends_Continue_Dialogue
-	return
-
-
-SorryAboutMyFriends_TalkToIntro_Dialogue::
-	lock
-	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
-	setvar VAR_0x8000, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	compare VAR_ROUTE101_STATE, 3
-	goto_if_eq SorryAboutMyFriends_TalkToIntro_Dialogue_2
-SorryAboutMyFriends_TalkToIntro_Dialogue_1:
-	msgbox gText_SorryAboutMyFriends_CongratsOnYourWin, MSGBOX_NPC
-	goto SorryAboutMyFriends_Continue_Dialogue
-	return
-
-SorryAboutMyFriends_TalkToIntro_Dialogue_2:
-	msgbox gText_SorryAboutMyFriends_WorldNeedsMoreCompassion, MSGBOX_NPC
-	goto SorryAboutMyFriends_CheckBadge_Script
-	goto SorryAboutMyFriends_TalkToIntro_Dialogue_1
-
-
-SorryAboutMyFriends_Continue_Dialogue::
-	lock
-	addvar VAR_ROUTE101_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_ItWasWait
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_YourePartOf
-	setvar VAR_0x8000, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_DidINotMention
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_WaitThatWas
-	setvar VAR_0x8000, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_UnfortunateWorldview
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_AreYouGuysHelping
-	setvar VAR_0x8000, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_ThereWasAProtest
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_IWasTheOneWhoShut
-	setvar VAR_0x8000, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_WhenTheyMentionedPowerful
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_UhHuh
-	setvar VAR_0x8000, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace
-	msgbox gText_SorryAboutMyFriends_TrackDownTheMembers
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_GotPrettyFiredUp
-	setvar VAR_0x8000, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_WorldNeedsMoreCompassion
-	goto SorryAboutMyFriends_CheckBadge_Script
-	return
+	goto SorryAboutMyFriends_Ariana_Visible_Script_1
 
 
 SorryAboutMyFriends_CheckBadge_Script::
 	lock
-	goto_if_set FLAG_BADGE04_GET, SorryAboutMyFriends_CheckBadge_Script_1
-	goto SorryAboutMyFriends_GetBadgeFirst_Dialogue
-	return
-
+	goto_if_unset FLAG_TEMP_5, SorryAboutMyFriends_CheckBadge_Script_2
 SorryAboutMyFriends_CheckBadge_Script_1:
+	release
+	end
+
+SorryAboutMyFriends_CheckBadge_Script_2:
+	goto SorryAboutMyFriends_Intro_Dialogue
+	goto SorryAboutMyFriends_CheckBadge_Script_1
+
+
+SorryAboutMyFriends_Intro_Dialogue::
+	lock
+	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
+	applymovement 5, SorryAboutMyFriends_WalkToPlayer_Movement
+	waitmovement 5
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_HowGoes
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_ItWasWait
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_YourePartOf
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_DidINotMention
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_WaitThatWas
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_UnfortunateWorldview
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_AreYouGuysHelping
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_ThereWasAProtest
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_IWasTheOneWhoShut
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_WhenTheyMentionedPowerful
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_UhHuh
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace
+	msgbox gText_SorryAboutMyFriends_TrackDownTheMembers
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_GotPrettyFiredUp
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
+	callnative DrawMugshot
+	msgbox gText_SorryAboutMyFriends_WorldNeedsMoreCompassion
 	goto SorryAboutMyFriends_GiveTicket_Script
 	return
 
 
-SorryAboutMyFriends_GetBadgeFirst_Dialogue::
-	msgbox gText_SorryAboutMyFriends_WaitHoldOn
-	callnative ClearMugshot
-	fadedefaultbgm
-	release
-	end
-
-
 SorryAboutMyFriends_GiveTicket_Script::
-	callnative ClearMugshot
 	giveitem ITEM_MYSTIC_TICKET, 1
-	addvar VAR_ROUTE101_STATE, 1
-	addvar VAR_FERRY_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_BERKELEY_STATE, GOT_ALCATRAZ_TICKET
+	setvar VAR_FERRY_STATE, FERRY_ALCATRAZ_AVAILABLE
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_IGiveYouALot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_IAppreciateTheGesture
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_WantedYouToGoThere
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_ExcellentPlaceToTrain
 	compare VAR_FAINTED_FOG_STATE, 0
 	goto_if_gt SorryAboutMyFriends_GiveTicket_Script_2
 SorryAboutMyFriends_GiveTicket_Script_1:
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_FollowSomeMoreLeads
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_AfterWeBattled
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_ThankYouEnjoy
 	closemessage
 	callnative ClearMugshot
-	applymovement 14, SorryAboutMyFriends_WalkSouth
-	waitmovement 0
-	removeobject 14
+	applymovement 5, SorryAboutMyFriends_WalkSouth
+	waitmovement 5
+	removeobject 5
 	fadedefaultbgm
 	release
 	end
 
 SorryAboutMyFriends_GiveTicket_Script_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_SorryAboutMyFriends_WaitForTheFog
 	goto SorryAboutMyFriends_GiveTicket_Script_1
@@ -170,7 +127,15 @@ SorryAboutMyFriends_WalkSouth:
 	walk_down
 	step_end
 
-gText_SorryAboutMyFriends_CongratsOnYourWin::
+SorryAboutMyFriends_WalkToPlayer_Movement:
+	emote_exclamation_mark
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+gText_SorryAboutMyFriends_HowGoes::
 	.string "{PLAYER}. How goes your Gym\n"
 	.string "Challenge?$"
 

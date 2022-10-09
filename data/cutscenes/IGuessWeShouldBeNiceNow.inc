@@ -323,9 +323,8 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue_2:
 
 
 IGuessWeShouldBeNiceNow_ExitCave_Script::
-	addvar VAR_ROUTE115_STATE, 1
 	lock
-	delay 32
+	addvar VAR_ROUTE115_STATE, 1
 	playse SE_EXIT
 	waitse
 	clearflag FLAG_TEMP_3

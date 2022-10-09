@@ -335,9 +335,9 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
 }
 
 script IGuessWeShouldBeNiceNow_ExitCave_Script {
-    addvar(VAR_ROUTE115_STATE,1)
+    //PSF TODO The map name popup shows up for a second before disappearing, need to figure out why that happens
     lock
-    delay(32)
+    addvar(VAR_ROUTE115_STATE,1)
     playse(SE_EXIT)
     waitse
     clearflag(FLAG_TEMP_3)

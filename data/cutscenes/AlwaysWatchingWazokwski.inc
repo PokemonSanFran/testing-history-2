@@ -231,9 +231,8 @@ gText_AlwaysWatchingWazowski_TensOfThousandsOfKids::
 	.string "loves competition, and even more so,\l"
 	.string "they love watching their favorites\l"
 	.string "progress. Our inbound sponsorship\l"
-	.string "requests have skyrocketed 44.15%\l"
-	.string "percent, and the challenge just\l"
-	.string "started.$"
+	.string "requests have skyrocketed 44.15% , and\l"
+	.string "the challenge just started.$"
 
 gText_AlwaysWatchingWazowski_ToPutItSimply::
 	.string "To put it simply, you're all going to be\n"

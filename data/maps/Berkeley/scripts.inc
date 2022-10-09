@@ -1,11 +1,17 @@
 Berkeley_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Berkeley_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call swagbag2_SetUp_Object_Script
 	call Quest_GetTheBand_HideBikerA_Script
+	call SorryAboutMyFriends_Ariana_Visible_Script
 	return
+
+Berkeley_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_BERKELEY_STATE, 1, SorryAboutMyFriends_CheckBadge_Script
+	.2byte 0
 
 
 Berkeley_Stan_Interact_Script::

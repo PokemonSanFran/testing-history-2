@@ -54,7 +54,8 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warp MAP_HAIGHTASHBURY, 0
+	setvar VAR_ROUTE115_STATE, 1
+	warp MAP_MARIN, 0
 	return
 
 

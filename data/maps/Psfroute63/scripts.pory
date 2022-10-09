@@ -19,7 +19,5 @@ script Psfroute63_MapScripts_OnTransition {
     case PROTEST_NOTSTARTED: goto(HousingProtest_ObjectSetUp_Script)
     case SAVE_TEAMROCKET_PSFROUTE63: goto(HousingProtest_PostSave_ObjectSetUp_Script)
     case DEFEATED_TEAMROCKET_PSFROUTE63: goto(HousingProtest_CleanUp_Landlord_Script)
-    case ENCOUNTER_ARIANA: goto(HousingProtest_CleanUp_Landlord_Script)
-    case GOT_ALCATRAZ_TICKET: goto(SorryAboutMyFriends_ObjectCleanUp_Script)
     }
 }
