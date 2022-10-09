@@ -54,7 +54,7 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warp MAP_ALCATRAZ, 29, 61
+	warp MAP_HAIGHTASHBURY, 0
 	return
 
 

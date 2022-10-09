@@ -27,7 +27,7 @@ TheStorySoFar_EntranceTrigger_Script::
 
 
 TheStorySoFar_Event_Script::
-	waitmovement 0
+	waitmovement 8
 	switch VAR_ALCATRAZ_EXHIBIT_STATE
 	case 0, TheStorySoFar_Event_Script_2
 	case ALCATRAZ_EXHIBIT_START, TheStorySoFar_Event_Script_3
@@ -407,5 +407,5 @@ gText_TheStorySoFar_WeHopeYouReturn::
 	.string "for more training!$"
 
 gText_TheStorySoFar_SpeakerStarted::
-	.string "The speaker beneath you feet starting\n"
+	.string "The speaker beneath your feet starting\n"
 	.string "talking!$"

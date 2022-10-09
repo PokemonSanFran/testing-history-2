@@ -21,15 +21,15 @@
       "x": 15,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_PSFROUTE30",
-      "dest_warp_id": 0
+      "dest_map": "MAP_SOMA",
+      "dest_warp_id": 6
     },
     {
       "x": 14,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_PSFROUTE30",
-      "dest_warp_id": 0
+      "dest_map": "MAP_SOMA",
+      "dest_warp_id": 6
     },
     {
       "x": 8,

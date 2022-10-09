@@ -28,7 +28,7 @@ script TheStorySoFar_EntranceTrigger_Script {
 }
 
 script TheStorySoFar_Event_Script {
-    waitmovement(0)
+    waitmovement(ATTENDANT)
         switch(var(VAR_ALCATRAZ_EXHIBIT_STATE)){
             case 0: goto(TheStorySoFar_ExplainExhibit_Dialogue)
             case ALCATRAZ_EXHIBIT_START: goto(TheStorySoFar_CheckNumberDefeated_Script)
@@ -300,5 +300,5 @@ text gText_TheStorySoFar_WeHopeYouReturn {
 }
 
 text gText_TheStorySoFar_SpeakerStarted{
-    format("The speaker beneath you feet starting talking!")
+    format("The speaker beneath your feet starting talking!")
 }

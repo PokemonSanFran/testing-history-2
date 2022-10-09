@@ -193,7 +193,7 @@ text gText_WowYoureStrong_WhatAreYouTalking{
 	format("What are you talking about?")
 }
 text gText_WowYoureStrong_IJustCant{
-	format("I just can't understood why you would willingly buy into a system that just makes these people more money. Do you think they need MORE money?")
+	format("I just can't understand why you would willingly buy into a system that just makes these people more money. Do you think they need MORE money?")
 }
 text gText_WowYoureStrong_IHopeThats{
 	format("I hope that this isn't going to be a regular thing...")

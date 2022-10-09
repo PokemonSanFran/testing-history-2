@@ -63,7 +63,7 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    warp(MAP_ALCATRAZ,29,61)
+    warp(MAP_HAIGHTASHBURY,0)
 }
 script Debug_Script_2{
 }

@@ -1,6 +1,6 @@
 mapscripts Psfroute8_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Psfroute8_MapScripts_OnTransition)
+        call(ThisIsntRandom_HideObject_AboveGround_Script)
     }
     MAP_SCRIPT_ON_LOAD {
        call(Psfroute8_MapScripts_OnLoad)
@@ -29,9 +29,6 @@ script Psfroute8_UncoverSecretLab_Script {
     }
 }
 
-script Psfroute8_MapScripts_OnTransition {
-    call(ThisIsntRandom_HideObject_AboveGround_Script)
-}
 
 script Psfroute8_MapScripts_OnLoad {
     if (var(VAR_UNDERGROUNDLAB_STATE)){

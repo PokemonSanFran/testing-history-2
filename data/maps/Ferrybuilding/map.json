@@ -72,15 +72,15 @@
       "x": 11,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_PSFROUTE22",
-      "dest_warp_id": 0
+      "dest_map": "MAP_PSFROUTE8",
+      "dest_warp_id": 1
     },
     {
       "x": 12,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_PSFROUTE22",
-      "dest_warp_id": 0
+      "dest_map": "MAP_PSFROUTE8",
+      "dest_warp_id": 1
     }
   ],
   "coord_events": [

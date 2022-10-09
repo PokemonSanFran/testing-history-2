@@ -20,7 +20,7 @@ bool8 ShouldDoSecretLabDigEffect(void)
      && (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE8)
      && gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE8)))
     {
-         if ((gSaveBlock1Ptr->pos.x > 9 && gSaveBlock1Ptr->pos.x < 13) && (gSaveBlock1Ptr->pos.y > 15 && gSaveBlock1Ptr->pos.y < 19))
+         if ((gSaveBlock1Ptr->pos.x > 11 && gSaveBlock1Ptr->pos.x < 15) && (gSaveBlock1Ptr->pos.y > 15 && gSaveBlock1Ptr->pos.y < 19))
              return TRUE;
     }
 

@@ -5,7 +5,7 @@ Psfroute8_MapScripts::
 	.byte 0
 
 Psfroute8_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Psfroute8_MapScripts_OnTransition
+	call ThisIsntRandom_HideObject_AboveGround_Script
 	return
 
 Psfroute8_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -35,11 +35,6 @@ Psfroute8_UncoverSecretLab_Script::
 Psfroute8_UncoverSecretLab_Script_1:
 	addvar VAR_UNDERGROUNDLAB_STATE, PLAYER_DISCOVERED_LAB
 	setvar VAR_TEMP_C, 0
-	return
-
-
-Psfroute8_MapScripts_OnTransition::
-	call ThisIsntRandom_HideObject_AboveGround_Script
 	return
 
 

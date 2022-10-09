@@ -16,13 +16,11 @@ script ThisIsntRandom_CheckDoor_Script {
 }
 
 script ThisIsntRandom_HideObject_AboveGround_Script {
-
-    if (var(VAR_STORYLINE_STATE) != STORY_POST_EARTHQUAKE){
-        if (var(VAR_UNDERGROUNDLAB_STATE) != LAB_NOT_DISCOVERED){
+    if (var(VAR_UNDERGROUNDLAB_STATE) != LAB_NOT_DISCOVERED || (var(VAR_STORYLINE_STATE) != STORY_POST_EARTHQUAKE)){
             setflag(FLAG_HIDE_SEARCH)
         }
+    return
     }
-}
 
 script ThisIsntRandom_ObjectSetUp_Script {
     fadescreen(FADE_TO_BLACK)

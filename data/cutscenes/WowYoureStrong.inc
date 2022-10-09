@@ -229,7 +229,7 @@ gText_WowYoureStrong_WhatAreYouTalking::
 	.string "What are you talking about?$"
 
 gText_WowYoureStrong_IJustCant::
-	.string "I just can't understood why you would\n"
+	.string "I just can't understand why you would\n"
 	.string "willingly buy into a system that just\l"
 	.string "makes these people more money. Do you\l"
 	.string "think they need MORE money?$"

@@ -15,7 +15,7 @@
   "connections": [
     {
       "direction": "up",
-      "offset": 23,
+      "offset": 22,
       "map": "MAP_PSFROUTE8"
     },
     {
@@ -248,6 +248,33 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "Quest_BuildingAnExhibit_Debug_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LetsGettheBandBackTogether_PreventPlayerEnterTower_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LetsGettheBandBackTogether_PreventPlayerEnterTower_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LetsGettheBandBackTogether_PreventPlayerEnterTower_Script"
     }
   ],
   "bg_events": [
