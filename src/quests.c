@@ -54,6 +54,7 @@ struct QuestMenuResources {
 	u8 filterMode;
 	u8 parentQuest;
 	bool8 restoreCursor;
+    bool8 initialLoad;
 };
 
 struct QuestMenuStaticResources {
@@ -97,15 +98,20 @@ static bool8 IfScrollIsOutOfBounds(void);
 static bool8 IfRowIsOutOfBounds(void);
 static void SaveScrollAndRow(s16 *data);
 
-static void LoadModeOnStartup(void);
+static void ClearModeOnStartup(void);
 static void WriteModeToSaveBlock(u8 mode);
 static u8 ManageMode(u8 action);
 static u8 ToggleAlphaMode(u8 mode);
-static u8 ToggleSubquestMode(u8 mode);
+static u8 ToggleSubsavedQuestMode(u8 mode);
 static u8 IncrementMode(u8 mode);
-static bool8 IsSubquestMode(void);
+static bool8 IsSubsavedQuestMode(void);
 static bool8 IsNotFilteredMode(void);
 static bool8 IsAlphaMode(void);
+static void SetInitalLoadTrue(void);
+static void SetInitalLoadFalse(void);
+static bool8 IsInitalLoad(void);
+static void GetSavedQuestMode(void);
+static void LoadSavedQuestMode(u8 taskId);
 
 static u16 BuildMenuTemplate(void);
 static u8 GetModeAndGenerateList();
@@ -181,7 +187,7 @@ static void Task_QuestMenuCleanUp(u8 taskId);
 static void RestoreSavedScrollAndRow(s16 *data);
 static void ResetCursorToTop(s16 *data);
 static void QuestMenu_RemoveScrollIndicatorArrowPair(void);
-static void EnterSubquestModeAndCleanUp(u8 taskId, s16 *data, s32 input);
+static void EnterSubsavedQuestModeAndCleanUp(u8 taskId, s16 *data, s32 input);
 static void ChangeModeAndCleanUp(u8 taskId);
 static void ToggleAlphaModeAndCleanUp(u8 taskId);
 static void ToggleFavoriteAndCleanUp(u8 taskId, u8 selectedQuestId);
@@ -3376,7 +3382,7 @@ static bool8 SetupGraphics(void)
 			gMain.state++;
 			break;
 		case 10:
-			LoadModeOnStartup();
+			ClearModeOnStartup();
 			InitItems();
 			SetCursorPosition();
 			SetScrollPosition();
@@ -3400,6 +3406,7 @@ static bool8 SetupGraphics(void)
 			gMain.state++;
 			break;
 		case 14:
+            SetInitalLoadTrue();
 			gMain.state++;
 			break;
 		case 15:
@@ -3624,15 +3631,16 @@ static void SaveScrollAndRow(s16 *data)
 }
 
 
-void LoadModeOnStartup(void)
+void ClearModeOnStartup(void)
 {
 	sStateDataPtr->filterMode = 0;
-	//sStateDataPtr->filterMode = gSaveBlock2Ptr->questMode;
 }
 
 void WriteModeToSaveBlock(u8 mode)
 {
-	gSaveBlock2Ptr->questMode = mode;
+	if (IsSubsavedQuestMode() == FALSE) {
+        gSaveBlock2Ptr->savedQuestMode = mode;
+    }
 }
 
 static u8 ManageMode(u8 action)
@@ -3641,7 +3649,7 @@ static u8 ManageMode(u8 action)
 
 	switch (action) {
 		case SUB:
-			mode = ToggleSubquestMode(mode);
+			mode = ToggleSubsavedQuestMode(mode);
 			break;
 
 		case ALPHA:
@@ -3658,9 +3666,9 @@ static u8 ManageMode(u8 action)
 	return mode;
 }
 
-u8 ToggleSubquestMode(u8 mode)
+u8 ToggleSubsavedQuestMode(u8 mode)
 {
-	if (IsSubquestMode()) {
+	if (IsSubsavedQuestMode()) {
 		mode -= SORT_SUBQUEST;
 		sStateDataPtr->restoreCursor = TRUE;
 	} else {
@@ -3693,7 +3701,7 @@ u8 IncrementMode(u8 mode)
 	return mode;
 }
 
-static bool8 IsSubquestMode(void)
+static bool8 IsSubsavedQuestMode(void)
 {
 	if (sStateDataPtr->filterMode > SORT_DONE_AZ) {
 		return TRUE;
@@ -3721,6 +3729,31 @@ static bool8 IsAlphaMode(void)
 	} else {
 		return FALSE;
 	}
+}
+
+static void SetInitalLoadTrue(void){
+    sStateDataPtr->initialLoad = TRUE;
+}
+
+static void SetInitalLoadFalse(void){
+    sStateDataPtr->initialLoad = FALSE;
+}
+
+static bool8 IsInitalLoad(void){
+    bool8 initialLoad = sStateDataPtr->initialLoad;
+    return initialLoad;
+}
+
+static void GetSavedQuestMode(void){
+    sStateDataPtr->filterMode = gSaveBlock2Ptr->savedQuestMode;
+}
+
+static void LoadSavedQuestMode(u8 taskId){
+    if (IsInitalLoad()){
+        SetInitalLoadFalse();
+        GetSavedQuestMode();
+        Task_QuestMenuCleanUp(taskId);
+    }
 }
 
 static u16 BuildMenuTemplate(void)
@@ -3751,7 +3784,7 @@ static u16 BuildMenuTemplate(void)
 
 u8 GetModeAndGenerateList()
 {
-	if (IsSubquestMode()) {
+	if (IsSubsavedQuestMode()) {
 		return GenerateSubquestList();
 	} else {
 		return GenerateList(!IsNotFilteredMode());
@@ -3762,7 +3795,7 @@ static u8 CountNumberListRows()
 {
 	u8 mode = sStateDataPtr->filterMode % 10;
 
-	if (IsSubquestMode()) {
+	if (IsSubsavedQuestMode()) {
 		return sSideQuests[sStateDataPtr->parentQuest].numSubquests + 1;
 	}
 
@@ -3859,7 +3892,7 @@ u8 GenerateList(bool8 isFiltered)
 
 static void AssignCancelNameAndId(u8 numRow)
 {
-	if (IsSubquestMode()) {
+	if (IsSubsavedQuestMode()) {
 		sListMenuItems[numRow].name = sText_Back;
 	} else {
 		sListMenuItems[numRow].name = sText_Close;
@@ -4045,7 +4078,7 @@ u8 CountCompletedQuests(void)
 
 	u8 parentQuest = sStateDataPtr->parentQuest;
 
-	if (IsSubquestMode()) {
+	if (IsSubsavedQuestMode()) {
 		for (i = 0; i < sSideQuests[parentQuest].numSubquests; i++) {
 			if (QuestMenu_GetSetSubquestState(parentQuest, FLAG_GET_COMPLETED, i)) {
 				q++;
@@ -4204,7 +4237,7 @@ void GenerateAndPrintQuestDetails(s32 questId)
 }
 void GenerateQuestLocation(s32 questId)
 {
-	if (!IsSubquestMode()) {
+	if (!IsSubsavedQuestMode()) {
 		StringCopy(gStringVar2, sSideQuests[questId].map);
 	} else {
 		StringCopy(gStringVar2,
@@ -4221,7 +4254,7 @@ void PrintQuestLocation(s32 questId)
 }
 void GenerateQuestFlavorText(s32 questId)
 {
-	if (IsSubquestMode() == FALSE) {
+	if (IsSubsavedQuestMode() == FALSE) {
 		if (IsQuestInactiveState(questId) == TRUE) {
 			StringCopy(gStringVar1, sText_StartForMore);
 		}
@@ -4351,7 +4384,7 @@ void DetermineSpriteType(s32 questId)
 	u16 spriteId;
 	u8 spriteType;
 
-	if (IsSubquestMode() == FALSE) {
+	if (IsSubsavedQuestMode() == FALSE) {
 		spriteId = sSideQuests[questId].sprite;
 		spriteType = sSideQuests[questId].spritetype;
 
@@ -4445,7 +4478,7 @@ static void GenerateStateAndPrint(u8 windowId, u32 questId,
 	u8 colorIndex;
 
 	if (questId != LIST_CANCEL) {
-		if (IsSubquestMode()) {
+		if (IsSubsavedQuestMode()) {
 			colorIndex = GenerateSubquestState(questId);
 		} else {
 			colorIndex = GenerateQuestState(questId);
@@ -4500,7 +4533,7 @@ static void GenerateAndPrintHeader(void)
 	PrintNumQuests();
 	PrintMenuContext();
 
-	if (!IsSubquestMode()) {
+	if (!IsSubsavedQuestMode()) {
 		PrintTypeFilterButton();
 	}
 }
@@ -4541,7 +4574,7 @@ static void GenerateNumeratorNumQuests(void)
 			break;
 	}
 
-	if (IsSubquestMode()) {
+	if (IsSubsavedQuestMode()) {
 		ConvertIntToDecimalStringN(gStringVar2,
 		                           sSideQuests[parentQuest].numSubquests,
 		                           STR_CONV_MODE_LEFT_ALIGN, 6);
@@ -4583,7 +4616,7 @@ static void GenerateMenuContext(void)
 		questNamePointer = StringAppend(questNameArray[QUEST_ARRAY_COUNT],
 		                                sText_AZ);
 	}
-	if (IsSubquestMode()) {
+	if (IsSubsavedQuestMode()) {
 		StringExpandPlaceholders(gStringVar4, sSideQuests[parentQuest].name);
 		questNamePointer = StringCopy(questNameArray[QUEST_ARRAY_COUNT],
 		                              gStringVar4);
@@ -4619,6 +4652,8 @@ static void Task_Main(u8 taskId)
 		ListMenuGetScrollAndRow(data[0], &sListMenuState.scroll,
 		                        &sListMenuState.row);
 
+        LoadSavedQuestMode(taskId);
+
 		switch (input) {
 			case LIST_NOTHING_CHOSEN:
 				if (JOY_NEW(R_BUTTON)) {
@@ -4633,7 +4668,7 @@ static void Task_Main(u8 taskId)
 				break;
 
 			case LIST_CANCEL:
-				if (IsSubquestMode()) {
+				if (IsSubsavedQuestMode()) {
 					ReturnFromSubquestAndCleanUp(taskId);
 				} else {
 					TurnOffQuestMenu(taskId);
@@ -4641,8 +4676,8 @@ static void Task_Main(u8 taskId)
 				break;
 
 			default:
-				if (!IsSubquestMode()) {
-					EnterSubquestModeAndCleanUp(taskId, data, input);
+				if (!IsSubsavedQuestMode()) {
+					EnterSubsavedQuestModeAndCleanUp(taskId, data, input);
 				}
 				break;
 		}
@@ -4709,7 +4744,7 @@ static void QuestMenu_RemoveScrollIndicatorArrowPair(void)
 }
 
 
-void EnterSubquestModeAndCleanUp(u8 taskId, s16 *data,
+void EnterSubsavedQuestModeAndCleanUp(u8 taskId, s16 *data,
                                  s32 input)
 {
 	if (DoesQuestHaveChildrenAndNotInactive(input)) {
@@ -4724,7 +4759,7 @@ void EnterSubquestModeAndCleanUp(u8 taskId, s16 *data,
 }
 void ChangeModeAndCleanUp(u8 taskId)
 {
-	if (!IsSubquestMode()) {
+	if (!IsSubsavedQuestMode()) {
 		PlaySE(SE_SELECT);
 		sStateDataPtr->filterMode = ManageMode(INCREMENT);
 		Task_QuestMenuCleanUp(taskId);
@@ -4732,7 +4767,7 @@ void ChangeModeAndCleanUp(u8 taskId)
 }
 void ToggleAlphaModeAndCleanUp(u8 taskId)
 {
-	if (!IsSubquestMode()) {
+	if (!IsSubsavedQuestMode()) {
 		PlaySE(SE_SELECT);
 		sStateDataPtr->filterMode = ManageMode(ALPHA);
 		Task_QuestMenuCleanUp(taskId);
@@ -4740,7 +4775,7 @@ void ToggleAlphaModeAndCleanUp(u8 taskId)
 }
 void ToggleFavoriteAndCleanUp(u8 taskId, u8 selectedQuestId)
 {
-	if (!IsSubquestMode()
+	if (!IsSubsavedQuestMode()
 	    && !CheckSelectedIsCancel(selectedQuestId)) {
 		PlaySE(SE_SELECT);
 		ManageFavorites(selectedQuestId);
@@ -4949,8 +4984,8 @@ void QuestMenu_CopySubquestName(u8 *dst, u8 parentId, u8 childId)
 
 void QuestMenu_ResetMenuSaveData(void)
 {
-	memset(&gSaveBlock2Ptr->questMode, 0,
-	       sizeof(gSaveBlock2Ptr->questMode));
+	memset(&gSaveBlock2Ptr->savedQuestMode, 0,
+	       sizeof(gSaveBlock2Ptr->savedQuestMode));
 	memset(&gSaveBlock2Ptr->questData, 0,
 	       sizeof(gSaveBlock2Ptr->questData));
 	memset(&gSaveBlock2Ptr->subQuests, 0,
