@@ -41,6 +41,6 @@ script Treasureisland_FerryState0_Script {
 
 
 script Treasureisland_Movies_Dialogue{
-    msgbox(format("this is a movie theater. the cafe is inside."))
+    msgbox(format("this is a movie theater. the cafe is inside."),MSGBOX_SIGN)
     end
 }

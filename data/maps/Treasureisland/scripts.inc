@@ -59,3 +59,12 @@ Treasureisland_FerryState0_Script_4:
 	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
 	return
 
+
+Treasureisland_Movies_Dialogue::
+	msgbox Treasureisland_Movies_Dialogue_Text_0, MSGBOX_SIGN
+	end
+
+
+Treasureisland_Movies_Dialogue_Text_0:
+	.string "this is a movie theater. the cafe is\n"
+	.string "inside.$"

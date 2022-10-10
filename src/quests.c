@@ -42,12 +42,11 @@
 #define tPageItems      data[4]
 #define tItemPcParam    data[6]
 
-struct QuestMenuResources
-{
+struct QuestMenuResources {
 	MainCallback savedCallback;
 	u8 moveModeOrigPos;
 	u8 spriteIconSlot;
-    u16 oldPaletteTag;
+	u16 oldPaletteTag;
 	u8 maxShowed;
 	u8 nItems;
 	u8 scrollIndicatorArrowPairId;
@@ -57,8 +56,7 @@ struct QuestMenuResources
 	bool8 restoreCursor;
 };
 
-struct QuestMenuStaticResources
-{
+struct QuestMenuStaticResources {
 	MainCallback savedCallback;
 	u16 scroll;
 	u16 row;
@@ -99,7 +97,8 @@ static bool8 IfScrollIsOutOfBounds(void);
 static bool8 IfRowIsOutOfBounds(void);
 static void SaveScrollAndRow(s16 *data);
 
-static void ClearModeOnStartup(void);
+static void LoadModeOnStartup(void);
+static void WriteModeToSaveBlock(u8 mode);
 static u8 ManageMode(u8 action);
 static u8 ToggleAlphaMode(u8 mode);
 static u8 ToggleSubquestMode(u8 mode);
@@ -133,8 +132,8 @@ static bool8 DoesQuestHaveChildrenAndNotInactive(u16 itemId);
 static void AddSubQuestButton(u8 countQuest);
 
 static void QuestMenu_AddTextPrinterParameterized(u8 windowId, u8 fontId,
-            const u8 *str, u8 x, u8 y, u8 letterSpacing, u8 lineSpacing, u8 speed,
-            u8 colorIdx);
+                const u8 *str, u8 x, u8 y, u8 letterSpacing, u8 lineSpacing, u8 speed,
+                u8 colorIdx);
 
 static void MoveCursorFunc(s32 itemIndex, bool8 onInit,
                            struct ListMenu *list);
@@ -177,6 +176,7 @@ static void PrintTypeFilterButton(void);
 
 static void Task_Main(u8 taskId);
 static u8 ManageFavorites(u8 index);
+static u8 CheckFavoriteAndRemove(u8 quest);
 static void Task_QuestMenuCleanUp(u8 taskId);
 static void RestoreSavedScrollAndRow(s16 *data);
 static void ResetCursorToTop(s16 *data);
@@ -207,11 +207,11 @@ static void Task_QuestMenuTurnOff2(u8 taskId);
 
 // Tiles, palettes and tilemaps for the Quest Menu
 static const u32 sQuestMenuTiles[] =
-      INCBIN_U32("graphics/quest_menu/menu.4bpp.lz");
+        INCBIN_U32("graphics/quest_menu/menu.4bpp.lz");
 static const u32 sQuestMenuBgPals[] =
-      INCBIN_U32("graphics/quest_menu/menu_pal.gbapal.lz");
+        INCBIN_U32("graphics/quest_menu/menu_pal.gbapal.lz");
 static const u32 sQuestMenuTilemap[] =
-      INCBIN_U32("graphics/quest_menu/tilemap.bin.lz");
+        INCBIN_U32("graphics/quest_menu/tilemap.bin.lz");
 
 //Strings used for the Quest Menu
 static const u8 sText_Empty[] = _("");
@@ -220,19 +220,19 @@ static const u8 sText_InactiveHeader[] = _("Inactive Missions");
 static const u8 sText_ActiveHeader[] = _("Active Missions");
 static const u8 sText_RewardHeader[] = _("Reward Available");
 static const u8 sText_CompletedHeader[] =
-      _("Completed Missions");
+        _("Completed Missions");
 static const u8 sText_QuestNumberDisplay[] =
-      _("{STR_VAR_1}/{STR_VAR_2}");
+        _("{STR_VAR_1}/{STR_VAR_2}");
 static const u8 sText_Unk[] = _("??????");
 static const u8 sText_Active[] = _("Active");
 static const u8 sText_Reward[] = _("Reward");
 static const u8 sText_Complete[] = _("Done");
 static const u8 sText_ShowLocation[] =
-      _("Location: {STR_VAR_2}");
+        _("Location: {STR_VAR_2}");
 static const u8 sText_StartForMore[] =
-      _("Start for more details.");
+        _("Start for more details.");
 static const u8 sText_ReturnRecieveReward[] =
-      _("Return to {STR_VAR_2}\nto recieve your reward!");
+        _("Return to {STR_VAR_2}\nto recieve your reward!");
 static const u8 sText_SubQuestButton[] = _(" {A_BUTTON}");
 static const u8 sText_Type[] = _("{R_BUTTON}Type");
 static const u8 sText_Caught[] = _("Caught");
@@ -268,2000 +268,1962 @@ static const u8 sText_AZ[] = _(" A-Z");
 //Declaration of subquest structures. Edits to subquests are made here.
 #define sub_quest(i, n, d, m, s, st, t) {.id = i, .name = n, .desc = d, .map = m, .sprite = s, .spritetype = st, .type = t}
 static const struct SubQuest
-	sHauntABuilding_Sub[QUEST_HAUNTABUILDING_SUB_COUNT] =
-{
+	sHauntABuilding_Sub[QUEST_HAUNTABUILDING_SUB_COUNT] = {
 	sub_quest(
-	      0,
-	      gText_Quest_HauntABuilding_Sub1_Name,
-	      gText_Quest_HauntABuilding_Sub1_Desc,
-	      gText_Quest_HauntABuilding_Sub1_Map,
-	      SPECIES_LITWICK,
-	      PKMN,
-	      sText_Found
+	        0,
+	        gText_Quest_HauntABuilding_Sub1_Name,
+	        gText_Quest_HauntABuilding_Sub1_Desc,
+	        gText_Quest_HauntABuilding_Sub1_Map,
+	        SPECIES_LITWICK,
+	        PKMN,
+	        sText_Found
 	),
 	sub_quest(
-	      1,
-	      gText_Quest_HauntABuilding_Sub2_Name,
-	      gText_Quest_HauntABuilding_Sub2_Desc,
-	      gText_Quest_HauntABuilding_Sub2_Map,
-	      SPECIES_LITWICK,
-	      PKMN,
-	      sText_Found
+	        1,
+	        gText_Quest_HauntABuilding_Sub2_Name,
+	        gText_Quest_HauntABuilding_Sub2_Desc,
+	        gText_Quest_HauntABuilding_Sub2_Map,
+	        SPECIES_LITWICK,
+	        PKMN,
+	        sText_Found
 	),
 	sub_quest(
-	      2,
-	      gText_Quest_HauntABuilding_Sub3_Name,
-	      gText_Quest_HauntABuilding_Sub3_Desc,
-	      gText_Quest_HauntABuilding_Sub3_Map,
-	      SPECIES_SINISTEA,
-	      PKMN,
-	      sText_Found
+	        2,
+	        gText_Quest_HauntABuilding_Sub3_Name,
+	        gText_Quest_HauntABuilding_Sub3_Desc,
+	        gText_Quest_HauntABuilding_Sub3_Map,
+	        SPECIES_SINISTEA,
+	        PKMN,
+	        sText_Found
 	),
 	sub_quest(
-	      3,
-	      gText_Quest_HauntABuilding_Sub4_Name,
-	      gText_Quest_HauntABuilding_Sub4_Desc,
-	      gText_Quest_HauntABuilding_Sub4_Map,
-	      SPECIES_SINISTEA,
-	      PKMN,
-	      sText_Found
+	        3,
+	        gText_Quest_HauntABuilding_Sub4_Name,
+	        gText_Quest_HauntABuilding_Sub4_Desc,
+	        gText_Quest_HauntABuilding_Sub4_Map,
+	        SPECIES_SINISTEA,
+	        PKMN,
+	        sText_Found
 	),
 	sub_quest(
-	      4,
-	      gText_Quest_HauntABuilding_Sub5_Name,
-	      gText_Quest_HauntABuilding_Sub5_Desc,
-	      gText_Quest_HauntABuilding_Sub5_Map,
-	      SPECIES_CHANDELURE,
-	      PKMN,
-	      sText_Found
+	        4,
+	        gText_Quest_HauntABuilding_Sub5_Name,
+	        gText_Quest_HauntABuilding_Sub5_Desc,
+	        gText_Quest_HauntABuilding_Sub5_Map,
+	        SPECIES_CHANDELURE,
+	        PKMN,
+	        sText_Found
 	),
 	sub_quest(
-	      5,
-	      gText_Quest_HauntABuilding_Sub6_Name,
-	      gText_Quest_HauntABuilding_Sub6_Desc,
-	      gText_Quest_HauntABuilding_Sub6_Map,
-	      SPECIES_TREVENANT,
-	      PKMN,
-	      sText_Found
+	        5,
+	        gText_Quest_HauntABuilding_Sub6_Name,
+	        gText_Quest_HauntABuilding_Sub6_Desc,
+	        gText_Quest_HauntABuilding_Sub6_Map,
+	        SPECIES_TREVENANT,
+	        PKMN,
+	        sText_Found
 	),
 };
 
-static const struct SubQuest sRightingWrongs_Sub[QUEST_RIGHTINGWRONGS_SUB_COUNT] =
-{
-sub_quest(
-	20,
-	gText_Quest_RightingWrongs_Sub1_Name,
-	gText_Quest_RightingWrongs_Sub1_Desc,
-	gText_Quest_RightingWrongs_Sub1_Map,
-	OBJ_EVENT_GFX_WOMAN_5,
-	OBJECT,
-	sText_Followed
-),
-sub_quest(
-	21,
-	gText_Quest_RightingWrongs_Sub2_Name,
-	gText_Quest_RightingWrongs_Sub2_Desc,
-	gText_Quest_RightingWrongs_Sub2_Map,
-	OBJ_EVENT_GFX_RICH_BOY,
-	OBJECT,
-	sText_Listened
-),
-sub_quest(
-	22,
-	gText_Quest_RightingWrongs_Sub3_Name,
-	gText_Quest_RightingWrongs_Sub3_Desc,
-	gText_Quest_RightingWrongs_Sub3_Map,
-	OBJ_EVENT_GFX_EXPERT_F,
-	OBJECT,
-	sText_Read
-),
-sub_quest(
-	23,
-	gText_Quest_RightingWrongs_Sub4_Name,
-	gText_Quest_RightingWrongs_Sub4_Desc,
-	gText_Quest_RightingWrongs_Sub4_Map,
-	OBJ_EVENT_GFX_WOMAN_5,
-	OBJECT,
-	sText_Arrested
-),
+static const struct SubQuest sRightingWrongs_Sub[QUEST_RIGHTINGWRONGS_SUB_COUNT] = {
+	sub_quest(
+	        20,
+	        gText_Quest_RightingWrongs_Sub1_Name,
+	        gText_Quest_RightingWrongs_Sub1_Desc,
+	        gText_Quest_RightingWrongs_Sub1_Map,
+	        OBJ_EVENT_GFX_WOMAN_5,
+	        OBJECT,
+	        sText_Followed
+	),
+	sub_quest(
+	        21,
+	        gText_Quest_RightingWrongs_Sub2_Name,
+	        gText_Quest_RightingWrongs_Sub2_Desc,
+	        gText_Quest_RightingWrongs_Sub2_Map,
+	        OBJ_EVENT_GFX_RICH_BOY,
+	        OBJECT,
+	        sText_Listened
+	),
+	sub_quest(
+	        22,
+	        gText_Quest_RightingWrongs_Sub3_Name,
+	        gText_Quest_RightingWrongs_Sub3_Desc,
+	        gText_Quest_RightingWrongs_Sub3_Map,
+	        OBJ_EVENT_GFX_EXPERT_F,
+	        OBJECT,
+	        sText_Read
+	),
+	sub_quest(
+	        23,
+	        gText_Quest_RightingWrongs_Sub4_Name,
+	        gText_Quest_RightingWrongs_Sub4_Desc,
+	        gText_Quest_RightingWrongs_Sub4_Map,
+	        OBJ_EVENT_GFX_WOMAN_5,
+	        OBJECT,
+	        sText_Arrested
+	),
 };
 
-static const struct SubQuest sBreakTheInternet_Sub[QUEST_BREAKTHEINTERNET_SUB_COUNT] =
-{
-sub_quest(
-	24,
-	gText_Quest_BreakTheInternet_Sub1_Name,
-	gText_Quest_BreakTheInternet_Sub1_Desc,
-	gText_Quest_BreakTheInternet_Sub1_Map,
-	OBJ_EVENT_GFX_REPORTER_F,
-	OBJECT,
-	sText_Debunked
-),
-sub_quest(
-	25,
-	gText_Quest_BreakTheInternet_Sub2_Name,
-	gText_Quest_BreakTheInternet_Sub2_Desc,
-	gText_Quest_BreakTheInternet_Sub2_Map,
-	OBJ_EVENT_GFX_REPORTER_M,
-	OBJECT,
-	sText_Debunked
-),
-sub_quest(
-	26,
-	gText_Quest_BreakTheInternet_Sub3_Name,
-	gText_Quest_BreakTheInternet_Sub3_Desc,
-	gText_Quest_BreakTheInternet_Sub3_Map,
-	SPECIES_SLURPUFF,
-	PKMN,
-	sText_Defeated
-),
+static const struct SubQuest sBreakTheInternet_Sub[QUEST_BREAKTHEINTERNET_SUB_COUNT] = {
+	sub_quest(
+	        24,
+	        gText_Quest_BreakTheInternet_Sub1_Name,
+	        gText_Quest_BreakTheInternet_Sub1_Desc,
+	        gText_Quest_BreakTheInternet_Sub1_Map,
+	        OBJ_EVENT_GFX_REPORTER_F,
+	        OBJECT,
+	        sText_Debunked
+	),
+	sub_quest(
+	        25,
+	        gText_Quest_BreakTheInternet_Sub2_Name,
+	        gText_Quest_BreakTheInternet_Sub2_Desc,
+	        gText_Quest_BreakTheInternet_Sub2_Map,
+	        OBJ_EVENT_GFX_REPORTER_M,
+	        OBJECT,
+	        sText_Debunked
+	),
+	sub_quest(
+	        26,
+	        gText_Quest_BreakTheInternet_Sub3_Name,
+	        gText_Quest_BreakTheInternet_Sub3_Desc,
+	        gText_Quest_BreakTheInternet_Sub3_Map,
+	        SPECIES_SLURPUFF,
+	        PKMN,
+	        sText_Defeated
+	),
 };
 
-static const struct SubQuest sImprovBattling_Sub[QUEST_IMPROVBATTLING_SUB_COUNT] =
-{
-sub_quest(
-	27,
-	gText_Quest_ImprovBattling_Sub1_Name,
-	gText_Quest_ImprovBattling_Sub1_Desc,
-	gText_Quest_ImprovBattling_Sub1_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Completed
-),
-sub_quest(
-	28,
-	gText_Quest_ImprovBattling_Sub2_Name,
-	gText_Quest_ImprovBattling_Sub2_Desc,
-	gText_Quest_ImprovBattling_Sub2_Map,
-	ITEM_GREAT_BALL,
-	ITEM,
-	sText_Completed
-),
-sub_quest(
-	29,
-	gText_Quest_ImprovBattling_Sub3_Name,
-	gText_Quest_ImprovBattling_Sub3_Desc,
-	gText_Quest_ImprovBattling_Sub3_Map,
-	ITEM_ULTRA_BALL,
-	ITEM,
-	sText_Completed
-),
-sub_quest(
-	30,
-	gText_Quest_ImprovBattling_Sub4_Name,
-	gText_Quest_ImprovBattling_Sub4_Desc,
-	gText_Quest_ImprovBattling_Sub4_Map,
-	ITEM_MASTER_BALL,
-	ITEM,
-	sText_Completed
-),
+static const struct SubQuest sImprovBattling_Sub[QUEST_IMPROVBATTLING_SUB_COUNT] = {
+	sub_quest(
+	        27,
+	        gText_Quest_ImprovBattling_Sub1_Name,
+	        gText_Quest_ImprovBattling_Sub1_Desc,
+	        gText_Quest_ImprovBattling_Sub1_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Completed
+	),
+	sub_quest(
+	        28,
+	        gText_Quest_ImprovBattling_Sub2_Name,
+	        gText_Quest_ImprovBattling_Sub2_Desc,
+	        gText_Quest_ImprovBattling_Sub2_Map,
+	        ITEM_GREAT_BALL,
+	        ITEM,
+	        sText_Completed
+	),
+	sub_quest(
+	        29,
+	        gText_Quest_ImprovBattling_Sub3_Name,
+	        gText_Quest_ImprovBattling_Sub3_Desc,
+	        gText_Quest_ImprovBattling_Sub3_Map,
+	        ITEM_ULTRA_BALL,
+	        ITEM,
+	        sText_Completed
+	),
+	sub_quest(
+	        30,
+	        gText_Quest_ImprovBattling_Sub4_Name,
+	        gText_Quest_ImprovBattling_Sub4_Desc,
+	        gText_Quest_ImprovBattling_Sub4_Map,
+	        ITEM_MASTER_BALL,
+	        ITEM,
+	        sText_Completed
+	),
 };
 
-static const struct SubQuest sInstallNatureProbes_Sub[QUEST_INSTALLNATUREPROBES_SUB_COUNT] =
-{
-sub_quest(
-	31,
-	gText_Quest_InstallNatureProbes_Sub1_Name,
-	gText_Quest_InstallNatureProbes_Sub1_Desc,
-	gText_Quest_InstallNatureProbes_Sub1_Map,
-	OBJ_EVENT_GFX_ARTIST,
-	OBJECT,
-	sText_PutIn
-),
-sub_quest(
-	32,
-	gText_Quest_InstallNatureProbes_Sub2_Name,
-	gText_Quest_InstallNatureProbes_Sub2_Desc,
-	gText_Quest_InstallNatureProbes_Sub2_Map,
-	OBJ_EVENT_GFX_ARTIST,
-	OBJECT,
-	sText_PutIn
-),
-sub_quest(
-	33,
-	gText_Quest_InstallNatureProbes_Sub3_Name,
-	gText_Quest_InstallNatureProbes_Sub3_Desc,
-	gText_Quest_InstallNatureProbes_Sub3_Map,
-	OBJ_EVENT_GFX_ARTIST,
-	OBJECT,
-	sText_PutIn
-),
+static const struct SubQuest sInstallNatureProbes_Sub[QUEST_INSTALLNATUREPROBES_SUB_COUNT] = {
+	sub_quest(
+	        31,
+	        gText_Quest_InstallNatureProbes_Sub1_Name,
+	        gText_Quest_InstallNatureProbes_Sub1_Desc,
+	        gText_Quest_InstallNatureProbes_Sub1_Map,
+	        OBJ_EVENT_GFX_ARTIST,
+	        OBJECT,
+	        sText_PutIn
+	),
+	sub_quest(
+	        32,
+	        gText_Quest_InstallNatureProbes_Sub2_Name,
+	        gText_Quest_InstallNatureProbes_Sub2_Desc,
+	        gText_Quest_InstallNatureProbes_Sub2_Map,
+	        OBJ_EVENT_GFX_ARTIST,
+	        OBJECT,
+	        sText_PutIn
+	),
+	sub_quest(
+	        33,
+	        gText_Quest_InstallNatureProbes_Sub3_Name,
+	        gText_Quest_InstallNatureProbes_Sub3_Desc,
+	        gText_Quest_InstallNatureProbes_Sub3_Map,
+	        OBJ_EVENT_GFX_ARTIST,
+	        OBJECT,
+	        sText_PutIn
+	),
 };
 
-static const struct SubQuest sRestaurantExpansion1_Sub[QUEST_RESTAURANTEXPANSION1_SUB_COUNT] =
-{
-sub_quest(
-	34,
-	gText_Quest_RestaurantExpansion1_Sub1_Name,
-	gText_Quest_RestaurantExpansion1_Sub1_Desc,
-	gText_Quest_RestaurantExpansion1_Sub1_Map,
-	OBJ_EVENT_GFX_NURSE,
-	OBJECT,
-	sText_Distributed
-),
-sub_quest(
-	35,
-	gText_Quest_RestaurantExpansion1_Sub2_Name,
-	gText_Quest_RestaurantExpansion1_Sub2_Desc,
-	gText_Quest_RestaurantExpansion1_Sub2_Map,
-	OBJ_EVENT_GFX_NURSE,
-	OBJECT,
-	sText_Distributed
-),
-sub_quest(
-	36,
-	gText_Quest_RestaurantExpansion1_Sub3_Name,
-	gText_Quest_RestaurantExpansion1_Sub3_Desc,
-	gText_Quest_RestaurantExpansion1_Sub3_Map,
-	OBJ_EVENT_GFX_NURSE,
-	OBJECT,
-	sText_Distributed
-),
-sub_quest(
-	37,
-	gText_Quest_RestaurantExpansion1_Sub4_Name,
-	gText_Quest_RestaurantExpansion1_Sub4_Desc,
-	gText_Quest_RestaurantExpansion1_Sub4_Map,
-	OBJ_EVENT_GFX_NURSE,
-	OBJECT,
-	sText_Distributed
-),
+static const struct SubQuest sRestaurantExpansion1_Sub[QUEST_RESTAURANTEXPANSION1_SUB_COUNT] = {
+	sub_quest(
+	        34,
+	        gText_Quest_RestaurantExpansion1_Sub1_Name,
+	        gText_Quest_RestaurantExpansion1_Sub1_Desc,
+	        gText_Quest_RestaurantExpansion1_Sub1_Map,
+	        OBJ_EVENT_GFX_NURSE,
+	        OBJECT,
+	        sText_Distributed
+	),
+	sub_quest(
+	        35,
+	        gText_Quest_RestaurantExpansion1_Sub2_Name,
+	        gText_Quest_RestaurantExpansion1_Sub2_Desc,
+	        gText_Quest_RestaurantExpansion1_Sub2_Map,
+	        OBJ_EVENT_GFX_NURSE,
+	        OBJECT,
+	        sText_Distributed
+	),
+	sub_quest(
+	        36,
+	        gText_Quest_RestaurantExpansion1_Sub3_Name,
+	        gText_Quest_RestaurantExpansion1_Sub3_Desc,
+	        gText_Quest_RestaurantExpansion1_Sub3_Map,
+	        OBJ_EVENT_GFX_NURSE,
+	        OBJECT,
+	        sText_Distributed
+	),
+	sub_quest(
+	        37,
+	        gText_Quest_RestaurantExpansion1_Sub4_Name,
+	        gText_Quest_RestaurantExpansion1_Sub4_Desc,
+	        gText_Quest_RestaurantExpansion1_Sub4_Map,
+	        OBJ_EVENT_GFX_NURSE,
+	        OBJECT,
+	        sText_Distributed
+	),
 };
 
-static const struct SubQuest sRestaurantExpansion2_Sub[QUEST_RESTAURANTEXPANSION2_SUB_COUNT] =
-{
-sub_quest(
-	38,
-	gText_Quest_RestaurantExpansion2_Sub1_Name,
-	gText_Quest_RestaurantExpansion2_Sub1_Desc,
-	gText_Quest_RestaurantExpansion2_Sub1_Map,
-	OBJ_EVENT_GFX_LINK_RECEPTIONIST,
-	OBJECT,
-	sText_Recruited
-),
-sub_quest(
-	39,
-	gText_Quest_RestaurantExpansion2_Sub2_Name,
-	gText_Quest_RestaurantExpansion2_Sub2_Desc,
-	gText_Quest_RestaurantExpansion2_Sub2_Map,
-	OBJ_EVENT_GFX_MAN_4,
-	OBJECT,
-	sText_Recruited
-),
-sub_quest(
-	40,
-	gText_Quest_RestaurantExpansion2_Sub3_Name,
-	gText_Quest_RestaurantExpansion2_Sub3_Desc,
-	gText_Quest_RestaurantExpansion2_Sub3_Map,
-	OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M,
-	OBJECT,
-	sText_Recruited
-),
-sub_quest(
-	41,
-	gText_Quest_RestaurantExpansion2_Sub4_Name,
-	gText_Quest_RestaurantExpansion2_Sub4_Desc,
-	gText_Quest_RestaurantExpansion2_Sub4_Map,
-	OBJ_EVENT_GFX_TEALA,
-	OBJECT,
-	sText_Recruited
-),
-sub_quest(
-	42,
-	gText_Quest_RestaurantExpansion2_Sub5_Name,
-	gText_Quest_RestaurantExpansion2_Sub5_Desc,
-	gText_Quest_RestaurantExpansion2_Sub5_Map,
-	OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN,
-	OBJECT,
-	sText_Recruited
-),
+static const struct SubQuest sRestaurantExpansion2_Sub[QUEST_RESTAURANTEXPANSION2_SUB_COUNT] = {
+	sub_quest(
+	        38,
+	        gText_Quest_RestaurantExpansion2_Sub1_Name,
+	        gText_Quest_RestaurantExpansion2_Sub1_Desc,
+	        gText_Quest_RestaurantExpansion2_Sub1_Map,
+	        OBJ_EVENT_GFX_LINK_RECEPTIONIST,
+	        OBJECT,
+	        sText_Recruited
+	),
+	sub_quest(
+	        39,
+	        gText_Quest_RestaurantExpansion2_Sub2_Name,
+	        gText_Quest_RestaurantExpansion2_Sub2_Desc,
+	        gText_Quest_RestaurantExpansion2_Sub2_Map,
+	        OBJ_EVENT_GFX_MAN_4,
+	        OBJECT,
+	        sText_Recruited
+	),
+	sub_quest(
+	        40,
+	        gText_Quest_RestaurantExpansion2_Sub3_Name,
+	        gText_Quest_RestaurantExpansion2_Sub3_Desc,
+	        gText_Quest_RestaurantExpansion2_Sub3_Map,
+	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M,
+	        OBJECT,
+	        sText_Recruited
+	),
+	sub_quest(
+	        41,
+	        gText_Quest_RestaurantExpansion2_Sub4_Name,
+	        gText_Quest_RestaurantExpansion2_Sub4_Desc,
+	        gText_Quest_RestaurantExpansion2_Sub4_Map,
+	        OBJ_EVENT_GFX_TEALA,
+	        OBJECT,
+	        sText_Recruited
+	),
+	sub_quest(
+	        42,
+	        gText_Quest_RestaurantExpansion2_Sub5_Name,
+	        gText_Quest_RestaurantExpansion2_Sub5_Desc,
+	        gText_Quest_RestaurantExpansion2_Sub5_Map,
+	        OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN,
+	        OBJECT,
+	        sText_Recruited
+	),
 };
 
-static const struct SubQuest sHybridCulture_Sub[QUEST_HYBRIDCULTURE_SUB_COUNT] =
-{
-sub_quest(
-	43,
-	gText_Quest_HybridCulture_Sub1_Name,
-	gText_Quest_HybridCulture_Sub1_Desc,
-	gText_Quest_HybridCulture_Sub1_Map,
-    OBJ_EVENT_GFX_GENTLEMAN,
-	OBJECT,
-	sText_Discovered
-),
-sub_quest(
-	44,
-	gText_Quest_HybridCulture_Sub2_Name,
-	gText_Quest_HybridCulture_Sub2_Desc,
-	gText_Quest_HybridCulture_Sub2_Map,
-	OBJ_EVENT_GFX_WOMAN_5,
-	OBJECT,
-	sText_Discovered
-),
-sub_quest(
-	45,
-	gText_Quest_HybridCulture_Sub3_Name,
-	gText_Quest_HybridCulture_Sub3_Desc,
-	gText_Quest_HybridCulture_Sub3_Map,
-    OBJ_EVENT_GFX_MAN_2,
-	OBJECT,
-	sText_Discovered
-),
+static const struct SubQuest sHybridCulture_Sub[QUEST_HYBRIDCULTURE_SUB_COUNT] = {
+	sub_quest(
+	        43,
+	        gText_Quest_HybridCulture_Sub1_Name,
+	        gText_Quest_HybridCulture_Sub1_Desc,
+	        gText_Quest_HybridCulture_Sub1_Map,
+	        OBJ_EVENT_GFX_GENTLEMAN,
+	        OBJECT,
+	        sText_Discovered
+	),
+	sub_quest(
+	        44,
+	        gText_Quest_HybridCulture_Sub2_Name,
+	        gText_Quest_HybridCulture_Sub2_Desc,
+	        gText_Quest_HybridCulture_Sub2_Map,
+	        OBJ_EVENT_GFX_WOMAN_5,
+	        OBJECT,
+	        sText_Discovered
+	),
+	sub_quest(
+	        45,
+	        gText_Quest_HybridCulture_Sub3_Name,
+	        gText_Quest_HybridCulture_Sub3_Desc,
+	        gText_Quest_HybridCulture_Sub3_Map,
+	        OBJ_EVENT_GFX_MAN_2,
+	        OBJECT,
+	        sText_Discovered
+	),
 };
 
-static const struct SubQuest sBuildingAnExhibit_Sub[QUEST_BUILDINGANEXHIBIT_SUB_COUNT] =
-{
-sub_quest(
-	46,
-	gText_Quest_BuildingAnExhibit_Sub1_Name,
-	gText_Quest_BuildingAnExhibit_Sub1_Desc,
-	gText_Quest_BuildingAnExhibit_Sub1_Map,
-	OBJ_EVENT_GFX_YOUNGSTER,
-	OBJECT,
-	sText_Found
-),
-sub_quest(
-	47,
-	gText_Quest_BuildingAnExhibit_Sub2_Name,
-	gText_Quest_BuildingAnExhibit_Sub2_Desc,
-	gText_Quest_BuildingAnExhibit_Sub2_Map,
-	OBJ_EVENT_GFX_HIKER,
-	OBJECT,
-	sText_Found
-),
-sub_quest(
-	48,
-	gText_Quest_BuildingAnExhibit_Sub3_Name,
-	gText_Quest_BuildingAnExhibit_Sub3_Desc,
-	gText_Quest_BuildingAnExhibit_Sub3_Map,
-	OBJ_EVENT_GFX_BEAUTY,
-	OBJECT,
-	sText_Found
-),
-sub_quest(
-	49,
-	gText_Quest_BuildingAnExhibit_Sub4_Name,
-	gText_Quest_BuildingAnExhibit_Sub4_Desc,
-	gText_Quest_BuildingAnExhibit_Sub4_Map,
-	OBJ_EVENT_GFX_OLD_MAN,
-	OBJECT,
-	sText_Found
-),
+static const struct SubQuest sBuildingAnExhibit_Sub[QUEST_BUILDINGANEXHIBIT_SUB_COUNT] = {
+	sub_quest(
+	        46,
+	        gText_Quest_BuildingAnExhibit_Sub1_Name,
+	        gText_Quest_BuildingAnExhibit_Sub1_Desc,
+	        gText_Quest_BuildingAnExhibit_Sub1_Map,
+	        OBJ_EVENT_GFX_YOUNGSTER,
+	        OBJECT,
+	        sText_Found
+	),
+	sub_quest(
+	        47,
+	        gText_Quest_BuildingAnExhibit_Sub2_Name,
+	        gText_Quest_BuildingAnExhibit_Sub2_Desc,
+	        gText_Quest_BuildingAnExhibit_Sub2_Map,
+	        OBJ_EVENT_GFX_HIKER,
+	        OBJECT,
+	        sText_Found
+	),
+	sub_quest(
+	        48,
+	        gText_Quest_BuildingAnExhibit_Sub3_Name,
+	        gText_Quest_BuildingAnExhibit_Sub3_Desc,
+	        gText_Quest_BuildingAnExhibit_Sub3_Map,
+	        OBJ_EVENT_GFX_BEAUTY,
+	        OBJECT,
+	        sText_Found
+	),
+	sub_quest(
+	        49,
+	        gText_Quest_BuildingAnExhibit_Sub4_Name,
+	        gText_Quest_BuildingAnExhibit_Sub4_Desc,
+	        gText_Quest_BuildingAnExhibit_Sub4_Map,
+	        OBJ_EVENT_GFX_OLD_MAN,
+	        OBJECT,
+	        sText_Found
+	),
 };
 
-static const struct SubQuest sBiomeResearch_Sub[QUEST_BIOMERESEARCH_SUB_COUNT] =
-{
-sub_quest(
-	50,
-	gText_Quest_BiomeResearch_Sub1_Name,
-	gText_Quest_BiomeResearch_Sub1_Desc,
-	gText_Quest_BiomeResearch_Sub1_Map,
-	SPECIES_JYNX,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	51,
-	gText_Quest_BiomeResearch_Sub2_Name,
-	gText_Quest_BiomeResearch_Sub2_Desc,
-	gText_Quest_BiomeResearch_Sub2_Map,
-	SPECIES_JYNX,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	52,
-	gText_Quest_BiomeResearch_Sub3_Name,
-	gText_Quest_BiomeResearch_Sub3_Desc,
-	gText_Quest_BiomeResearch_Sub3_Map,
-	SPECIES_BALTOY,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	53,
-	gText_Quest_BiomeResearch_Sub4_Name,
-	gText_Quest_BiomeResearch_Sub4_Desc,
-	gText_Quest_BiomeResearch_Sub4_Map,
-	SPECIES_BALTOY,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	54,
-	gText_Quest_BiomeResearch_Sub5_Name,
-	gText_Quest_BiomeResearch_Sub5_Desc,
-	gText_Quest_BiomeResearch_Sub5_Map,
-	SPECIES_PIDGEY,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	55,
-	gText_Quest_BiomeResearch_Sub6_Name,
-	gText_Quest_BiomeResearch_Sub6_Desc,
-	gText_Quest_BiomeResearch_Sub6_Map,
-	SPECIES_PIDGEY,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	56,
-	gText_Quest_BiomeResearch_Sub7_Name,
-	gText_Quest_BiomeResearch_Sub7_Desc,
-	gText_Quest_BiomeResearch_Sub7_Map,
-	SPECIES_SEVIPER,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	57,
-	gText_Quest_BiomeResearch_Sub8_Name,
-	gText_Quest_BiomeResearch_Sub8_Desc,
-	gText_Quest_BiomeResearch_Sub8_Map,
-	SPECIES_SEVIPER,
-	PKMN,
-	sText_Gave
-),
+static const struct SubQuest sBiomeResearch_Sub[QUEST_BIOMERESEARCH_SUB_COUNT] = {
+	sub_quest(
+	        50,
+	        gText_Quest_BiomeResearch_Sub1_Name,
+	        gText_Quest_BiomeResearch_Sub1_Desc,
+	        gText_Quest_BiomeResearch_Sub1_Map,
+	        SPECIES_JYNX,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        51,
+	        gText_Quest_BiomeResearch_Sub2_Name,
+	        gText_Quest_BiomeResearch_Sub2_Desc,
+	        gText_Quest_BiomeResearch_Sub2_Map,
+	        SPECIES_JYNX,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        52,
+	        gText_Quest_BiomeResearch_Sub3_Name,
+	        gText_Quest_BiomeResearch_Sub3_Desc,
+	        gText_Quest_BiomeResearch_Sub3_Map,
+	        SPECIES_BALTOY,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        53,
+	        gText_Quest_BiomeResearch_Sub4_Name,
+	        gText_Quest_BiomeResearch_Sub4_Desc,
+	        gText_Quest_BiomeResearch_Sub4_Map,
+	        SPECIES_BALTOY,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        54,
+	        gText_Quest_BiomeResearch_Sub5_Name,
+	        gText_Quest_BiomeResearch_Sub5_Desc,
+	        gText_Quest_BiomeResearch_Sub5_Map,
+	        SPECIES_PIDGEY,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        55,
+	        gText_Quest_BiomeResearch_Sub6_Name,
+	        gText_Quest_BiomeResearch_Sub6_Desc,
+	        gText_Quest_BiomeResearch_Sub6_Map,
+	        SPECIES_PIDGEY,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        56,
+	        gText_Quest_BiomeResearch_Sub7_Name,
+	        gText_Quest_BiomeResearch_Sub7_Desc,
+	        gText_Quest_BiomeResearch_Sub7_Map,
+	        SPECIES_SEVIPER,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        57,
+	        gText_Quest_BiomeResearch_Sub8_Name,
+	        gText_Quest_BiomeResearch_Sub8_Desc,
+	        gText_Quest_BiomeResearch_Sub8_Map,
+	        SPECIES_SEVIPER,
+	        PKMN,
+	        sText_Gave
+	),
 };
 
-static const struct SubQuest sBerrySustainability_Sub[QUEST_BERRYSUSTAINABILITY_SUB_COUNT] =
-{
-sub_quest(
-	58,
-	gText_Quest_BerrySustainability_Sub1_Name,
-	gText_Quest_BerrySustainability_Sub1_Desc,
-	gText_Quest_BerrySustainability_Sub1_Map,
-	ITEM_ORAN_BERRY,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	59,
-	gText_Quest_BerrySustainability_Sub2_Name,
-	gText_Quest_BerrySustainability_Sub2_Desc,
-	gText_Quest_BerrySustainability_Sub2_Map,
-	ITEM_PINAP_BERRY,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	60,
-	gText_Quest_BerrySustainability_Sub3_Name,
-	gText_Quest_BerrySustainability_Sub3_Desc,
-	gText_Quest_BerrySustainability_Sub3_Map,
-	ITEM_RAZZ_BERRY,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	61,
-	gText_Quest_BerrySustainability_Sub4_Name,
-	gText_Quest_BerrySustainability_Sub4_Desc,
-	gText_Quest_BerrySustainability_Sub4_Map,
-	ITEM_BELUE_BERRY,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	62,
-	gText_Quest_BerrySustainability_Sub5_Name,
-	gText_Quest_BerrySustainability_Sub5_Desc,
-	gText_Quest_BerrySustainability_Sub5_Map,
-	ITEM_WATMEL_BERRY,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	63,
-	gText_Quest_BerrySustainability_Sub6_Name,
-	gText_Quest_BerrySustainability_Sub6_Desc,
-	gText_Quest_BerrySustainability_Sub6_Map,
-	ITEM_LIECHI_BERRY,
-	ITEM,
-	sText_Delievered
-),
+static const struct SubQuest sBerrySustainability_Sub[QUEST_BERRYSUSTAINABILITY_SUB_COUNT] = {
+	sub_quest(
+	        58,
+	        gText_Quest_BerrySustainability_Sub1_Name,
+	        gText_Quest_BerrySustainability_Sub1_Desc,
+	        gText_Quest_BerrySustainability_Sub1_Map,
+	        ITEM_ORAN_BERRY,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        59,
+	        gText_Quest_BerrySustainability_Sub2_Name,
+	        gText_Quest_BerrySustainability_Sub2_Desc,
+	        gText_Quest_BerrySustainability_Sub2_Map,
+	        ITEM_PINAP_BERRY,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        60,
+	        gText_Quest_BerrySustainability_Sub3_Name,
+	        gText_Quest_BerrySustainability_Sub3_Desc,
+	        gText_Quest_BerrySustainability_Sub3_Map,
+	        ITEM_RAZZ_BERRY,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        61,
+	        gText_Quest_BerrySustainability_Sub4_Name,
+	        gText_Quest_BerrySustainability_Sub4_Desc,
+	        gText_Quest_BerrySustainability_Sub4_Map,
+	        ITEM_BELUE_BERRY,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        62,
+	        gText_Quest_BerrySustainability_Sub5_Name,
+	        gText_Quest_BerrySustainability_Sub5_Desc,
+	        gText_Quest_BerrySustainability_Sub5_Map,
+	        ITEM_WATMEL_BERRY,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        63,
+	        gText_Quest_BerrySustainability_Sub6_Name,
+	        gText_Quest_BerrySustainability_Sub6_Desc,
+	        gText_Quest_BerrySustainability_Sub6_Map,
+	        ITEM_LIECHI_BERRY,
+	        ITEM,
+	        sText_Delievered
+	),
 };
 
-static const struct SubQuest sContractorPorygon_Sub[QUEST_CONTRACTORPORYGON_SUB_COUNT] =
-{
-sub_quest(
-	64,
-	gText_Quest_ContractorPorygon_Sub1_Name,
-	gText_Quest_ContractorPorygon_Sub1_Desc,
-	gText_Quest_ContractorPorygon_Sub1_Map,
-	OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F,
-	OBJECT,
-	sText_Delievered
-),
-sub_quest(
-	65,
-	gText_Quest_ContractorPorygon_Sub2_Name,
-	gText_Quest_ContractorPorygon_Sub2_Desc,
-	gText_Quest_ContractorPorygon_Sub2_Map,
-	OBJ_EVENT_GFX_TEALA,
-	OBJECT,
-	sText_Delievered
-),
-sub_quest(
-	66,
-	gText_Quest_ContractorPorygon_Sub3_Name,
-	gText_Quest_ContractorPorygon_Sub3_Desc,
-	gText_Quest_ContractorPorygon_Sub3_Map,
-	OBJ_EVENT_GFX_COOK,
-	OBJECT,
-	sText_Delievered
-),
+static const struct SubQuest sContractorPorygon_Sub[QUEST_CONTRACTORPORYGON_SUB_COUNT] = {
+	sub_quest(
+	        64,
+	        gText_Quest_ContractorPorygon_Sub1_Name,
+	        gText_Quest_ContractorPorygon_Sub1_Desc,
+	        gText_Quest_ContractorPorygon_Sub1_Map,
+	        OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F,
+	        OBJECT,
+	        sText_Delievered
+	),
+	sub_quest(
+	        65,
+	        gText_Quest_ContractorPorygon_Sub2_Name,
+	        gText_Quest_ContractorPorygon_Sub2_Desc,
+	        gText_Quest_ContractorPorygon_Sub2_Map,
+	        OBJ_EVENT_GFX_TEALA,
+	        OBJECT,
+	        sText_Delievered
+	),
+	sub_quest(
+	        66,
+	        gText_Quest_ContractorPorygon_Sub3_Name,
+	        gText_Quest_ContractorPorygon_Sub3_Desc,
+	        gText_Quest_ContractorPorygon_Sub3_Map,
+	        OBJ_EVENT_GFX_COOK,
+	        OBJECT,
+	        sText_Delievered
+	),
 };
 
-static const struct SubQuest sGetTheBandBackTogether_Sub[QUEST_GETTHEBANDBACKTOGETHER_SUB_COUNT] = 
-{
-sub_quest(
-	67,
-	gText_Quest_GetTheBandBackTogether_Sub1_Name,
-	gText_Quest_GetTheBandBackTogether_Sub1_Desc,
-	gText_Quest_GetTheBandBackTogether_Sub1_Map,
-	OBJ_EVENT_GFX_BOY_1,
-	OBJECT,
-	sText_Informed
-),
-sub_quest(
-	68,
-	gText_Quest_GetTheBandBackTogether_Sub2_Name,
-	gText_Quest_GetTheBandBackTogether_Sub2_Desc,
-	gText_Quest_GetTheBandBackTogether_Sub2_Map,
-	OBJ_EVENT_GFX_TEALA,
-	OBJECT,
-	sText_Informed
-),
-sub_quest(
-	69,
-	gText_Quest_GetTheBandBackTogether_Sub3_Name,
-	gText_Quest_GetTheBandBackTogether_Sub3_Desc,
-	gText_Quest_GetTheBandBackTogether_Sub3_Map,
-	OBJ_EVENT_GFX_WOMAN_2,
-	OBJECT,
-	sText_Informed
-),
-sub_quest(
-	70,
-	gText_Quest_GetTheBandBackTogether_Sub4_Name,
-	gText_Quest_GetTheBandBackTogether_Sub4_Desc,
-	gText_Quest_GetTheBandBackTogether_Sub4_Map,
-	OBJ_EVENT_GFX_COOK,
-	OBJECT,
-	sText_Informed
-),
-sub_quest(
-	71,
-	gText_Quest_GetTheBandBackTogether_Sub5_Name,
-	gText_Quest_GetTheBandBackTogether_Sub5_Desc,
-	gText_Quest_GetTheBandBackTogether_Sub5_Map,
-	OBJ_EVENT_GFX_GAMEBOY_KID,
-	OBJECT,
-	sText_Informed
-),
+static const struct SubQuest sGetTheBandBackTogether_Sub[QUEST_GETTHEBANDBACKTOGETHER_SUB_COUNT] = {
+	sub_quest(
+	        67,
+	        gText_Quest_GetTheBandBackTogether_Sub1_Name,
+	        gText_Quest_GetTheBandBackTogether_Sub1_Desc,
+	        gText_Quest_GetTheBandBackTogether_Sub1_Map,
+	        OBJ_EVENT_GFX_BOY_1,
+	        OBJECT,
+	        sText_Informed
+	),
+	sub_quest(
+	        68,
+	        gText_Quest_GetTheBandBackTogether_Sub2_Name,
+	        gText_Quest_GetTheBandBackTogether_Sub2_Desc,
+	        gText_Quest_GetTheBandBackTogether_Sub2_Map,
+	        OBJ_EVENT_GFX_TEALA,
+	        OBJECT,
+	        sText_Informed
+	),
+	sub_quest(
+	        69,
+	        gText_Quest_GetTheBandBackTogether_Sub3_Name,
+	        gText_Quest_GetTheBandBackTogether_Sub3_Desc,
+	        gText_Quest_GetTheBandBackTogether_Sub3_Map,
+	        OBJ_EVENT_GFX_WOMAN_2,
+	        OBJECT,
+	        sText_Informed
+	),
+	sub_quest(
+	        70,
+	        gText_Quest_GetTheBandBackTogether_Sub4_Name,
+	        gText_Quest_GetTheBandBackTogether_Sub4_Desc,
+	        gText_Quest_GetTheBandBackTogether_Sub4_Map,
+	        OBJ_EVENT_GFX_COOK,
+	        OBJECT,
+	        sText_Informed
+	),
+	sub_quest(
+	        71,
+	        gText_Quest_GetTheBandBackTogether_Sub5_Name,
+	        gText_Quest_GetTheBandBackTogether_Sub5_Desc,
+	        gText_Quest_GetTheBandBackTogether_Sub5_Map,
+	        OBJ_EVENT_GFX_GAMEBOY_KID,
+	        OBJECT,
+	        sText_Informed
+	),
 };
 
-static const struct SubQuest sFoodTruckBureacracy_Sub[QUEST_FOODTRUCKBUREACRACY_SUB_COUNT] =
-{
-sub_quest(
-	72,
-	gText_Quest_FoodTruckBureacracy_Sub1_Name,
-	gText_Quest_FoodTruckBureacracy_Sub1_Desc,
-	gText_Quest_FoodTruckBureacracy_Sub1_Map,
-	OBJ_EVENT_GFX_BARD,
-	OBJECT,
-	sText_Delievered
-),
-sub_quest(
-	73,
-	gText_Quest_FoodTruckBureacracy_Sub2_Name,
-	gText_Quest_FoodTruckBureacracy_Sub2_Desc,
-	gText_Quest_FoodTruckBureacracy_Sub2_Map,
-	OBJ_EVENT_GFX_PICNICKER,
-	OBJECT,
-	sText_Delievered
-),
-sub_quest(
-	74,
-	gText_Quest_FoodTruckBureacracy_Sub3_Name,
-	gText_Quest_FoodTruckBureacracy_Sub3_Desc,
-	gText_Quest_FoodTruckBureacracy_Sub3_Map,
-	OBJ_EVENT_GFX_TEALA,
-	OBJECT,
-	sText_Delievered
-),
-sub_quest(
-	75,
-	gText_Quest_FoodTruckBureacracy_Sub4_Name,
-	gText_Quest_FoodTruckBureacracy_Sub4_Desc,
-	gText_Quest_FoodTruckBureacracy_Sub4_Map,
-	OBJ_EVENT_GFX_GIRL_2,
-	OBJECT,
-	sText_Delievered
-),
+static const struct SubQuest sFoodTruckBureacracy_Sub[QUEST_FOODTRUCKBUREACRACY_SUB_COUNT] = {
+	sub_quest(
+	        72,
+	        gText_Quest_FoodTruckBureacracy_Sub1_Name,
+	        gText_Quest_FoodTruckBureacracy_Sub1_Desc,
+	        gText_Quest_FoodTruckBureacracy_Sub1_Map,
+	        OBJ_EVENT_GFX_BARD,
+	        OBJECT,
+	        sText_Delievered
+	),
+	sub_quest(
+	        73,
+	        gText_Quest_FoodTruckBureacracy_Sub2_Name,
+	        gText_Quest_FoodTruckBureacracy_Sub2_Desc,
+	        gText_Quest_FoodTruckBureacracy_Sub2_Map,
+	        OBJ_EVENT_GFX_PICNICKER,
+	        OBJECT,
+	        sText_Delievered
+	),
+	sub_quest(
+	        74,
+	        gText_Quest_FoodTruckBureacracy_Sub3_Name,
+	        gText_Quest_FoodTruckBureacracy_Sub3_Desc,
+	        gText_Quest_FoodTruckBureacracy_Sub3_Map,
+	        OBJ_EVENT_GFX_TEALA,
+	        OBJECT,
+	        sText_Delievered
+	),
+	sub_quest(
+	        75,
+	        gText_Quest_FoodTruckBureacracy_Sub4_Name,
+	        gText_Quest_FoodTruckBureacracy_Sub4_Desc,
+	        gText_Quest_FoodTruckBureacracy_Sub4_Map,
+	        OBJ_EVENT_GFX_GIRL_2,
+	        OBJECT,
+	        sText_Delievered
+	),
 };
 
-static const struct SubQuest sDetectiveAriana_Sub[QUEST_DETECTIVEARIANA_SUB_COUNT] =
-{
-sub_quest(
-	76,
-	gText_Quest_DetectiveAriana_Sub1_Name,
-	gText_Quest_DetectiveAriana_Sub1_Desc,
-	gText_Quest_DetectiveAriana_Sub1_Map,
-	OBJ_EVENT_GFX_MAN_2,
-	OBJECT,
-	sText_Investigated
-),
-sub_quest(
-	77,
-	gText_Quest_DetectiveAriana_Sub2_Name,
-	gText_Quest_DetectiveAriana_Sub2_Desc,
-	gText_Quest_DetectiveAriana_Sub2_Map,
-	OBJ_EVENT_GFX_OLD_WOMAN,
-	OBJECT,
-	sText_Investigated
-),
-sub_quest(
-	78,
-	gText_Quest_DetectiveAriana_Sub3_Name,
-	gText_Quest_DetectiveAriana_Sub3_Desc,
-	gText_Quest_DetectiveAriana_Sub3_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Investigated
-),
+static const struct SubQuest sDetectiveAriana_Sub[QUEST_DETECTIVEARIANA_SUB_COUNT] = {
+	sub_quest(
+	        76,
+	        gText_Quest_DetectiveAriana_Sub1_Name,
+	        gText_Quest_DetectiveAriana_Sub1_Desc,
+	        gText_Quest_DetectiveAriana_Sub1_Map,
+	        OBJ_EVENT_GFX_MAN_2,
+	        OBJECT,
+	        sText_Investigated
+	),
+	sub_quest(
+	        77,
+	        gText_Quest_DetectiveAriana_Sub2_Name,
+	        gText_Quest_DetectiveAriana_Sub2_Desc,
+	        gText_Quest_DetectiveAriana_Sub2_Map,
+	        OBJ_EVENT_GFX_OLD_WOMAN,
+	        OBJECT,
+	        sText_Investigated
+	),
+	sub_quest(
+	        78,
+	        gText_Quest_DetectiveAriana_Sub3_Name,
+	        gText_Quest_DetectiveAriana_Sub3_Desc,
+	        gText_Quest_DetectiveAriana_Sub3_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Investigated
+	),
 };
 
-static const struct SubQuest sChallengeOfThe7Sisters_Sub[QUEST_CHALLENGEOFTHE7SISTERS_SUB_COUNT] = 
-{
-sub_quest(
-	79,
-	gText_Quest_ChallengeOfThe7Sisters_Sub1_Name,
-	gText_Quest_ChallengeOfThe7Sisters_Sub1_Desc,
-	gText_Quest_ChallengeOfThe7Sisters_Sub1_Map,
-	OBJ_EVENT_GFX_WOMAN_4,
-	OBJECT,
-	sText_Completed
-),
-sub_quest(
-	80,
-	gText_Quest_ChallengeOfThe7Sisters_Sub2_Name,
-	gText_Quest_ChallengeOfThe7Sisters_Sub2_Desc,
-	gText_Quest_ChallengeOfThe7Sisters_Sub2_Map,
-	OBJ_EVENT_GFX_WOMAN_4,
-	OBJECT,
-	sText_Completed
-),
-sub_quest(
-	81,
-	gText_Quest_ChallengeOfThe7Sisters_Sub3_Name,
-	gText_Quest_ChallengeOfThe7Sisters_Sub3_Desc,
-	gText_Quest_ChallengeOfThe7Sisters_Sub3_Map,
-	OBJ_EVENT_GFX_WOMAN_4,
-	OBJECT,
-	sText_Completed
-),
-sub_quest(
-	82,
-	gText_Quest_ChallengeOfThe7Sisters_Sub4_Name,
-	gText_Quest_ChallengeOfThe7Sisters_Sub4_Desc,
-	gText_Quest_ChallengeOfThe7Sisters_Sub4_Map,
-	OBJ_EVENT_GFX_WOMAN_4,
-	OBJECT,
-	sText_Completed
-),
-sub_quest(
-	83,
-	gText_Quest_ChallengeOfThe7Sisters_Sub5_Name,
-	gText_Quest_ChallengeOfThe7Sisters_Sub5_Desc,
-	gText_Quest_ChallengeOfThe7Sisters_Sub5_Map,
-	OBJ_EVENT_GFX_WOMAN_4,
-	OBJECT,
-	sText_Completed
-),
-sub_quest(
-	84,
-	gText_Quest_ChallengeOfThe7Sisters_Sub6_Name,
-	gText_Quest_ChallengeOfThe7Sisters_Sub6_Desc,
-	gText_Quest_ChallengeOfThe7Sisters_Sub6_Map,
-	OBJ_EVENT_GFX_WOMAN_4,
-	OBJECT,
-	sText_Completed
-),
-sub_quest(
-	85,
-	gText_Quest_ChallengeOfThe7Sisters_Sub7_Name,
-	gText_Quest_ChallengeOfThe7Sisters_Sub7_Desc,
-	gText_Quest_ChallengeOfThe7Sisters_Sub7_Map,
-	OBJ_EVENT_GFX_WOMAN_4,
-	OBJECT,
-	sText_Completed
-),
+static const struct SubQuest sChallengeOfThe7Sisters_Sub[QUEST_CHALLENGEOFTHE7SISTERS_SUB_COUNT] = {
+	sub_quest(
+	        79,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub1_Name,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub1_Desc,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub1_Map,
+	        OBJ_EVENT_GFX_WOMAN_4,
+	        OBJECT,
+	        sText_Completed
+	),
+	sub_quest(
+	        80,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub2_Name,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub2_Desc,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub2_Map,
+	        OBJ_EVENT_GFX_WOMAN_4,
+	        OBJECT,
+	        sText_Completed
+	),
+	sub_quest(
+	        81,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub3_Name,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub3_Desc,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub3_Map,
+	        OBJ_EVENT_GFX_WOMAN_4,
+	        OBJECT,
+	        sText_Completed
+	),
+	sub_quest(
+	        82,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub4_Name,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub4_Desc,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub4_Map,
+	        OBJ_EVENT_GFX_WOMAN_4,
+	        OBJECT,
+	        sText_Completed
+	),
+	sub_quest(
+	        83,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub5_Name,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub5_Desc,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub5_Map,
+	        OBJ_EVENT_GFX_WOMAN_4,
+	        OBJECT,
+	        sText_Completed
+	),
+	sub_quest(
+	        84,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub6_Name,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub6_Desc,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub6_Map,
+	        OBJ_EVENT_GFX_WOMAN_4,
+	        OBJECT,
+	        sText_Completed
+	),
+	sub_quest(
+	        85,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub7_Name,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub7_Desc,
+	        gText_Quest_ChallengeOfThe7Sisters_Sub7_Map,
+	        OBJ_EVENT_GFX_WOMAN_4,
+	        OBJECT,
+	        sText_Completed
+	),
 };
 
-static const struct SubQuest sCutePokemon_Sub[QUEST_CUTEPOKEMON_SUB_COUNT] =
-{
-sub_quest(
-	86,
-	gText_Quest_CutePokemon_Sub1_Name,
-	gText_Quest_CutePokemon_Sub1_Desc,
-	gText_Quest_CutePokemon_Sub1_Map,
-	SPECIES_DUSKULL,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	87,
-	gText_Quest_CutePokemon_Sub2_Name,
-	gText_Quest_CutePokemon_Sub2_Desc,
-	gText_Quest_CutePokemon_Sub2_Map,
-	SPECIES_SCRAFTY,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	88,
-	gText_Quest_CutePokemon_Sub3_Name,
-	gText_Quest_CutePokemon_Sub3_Desc,
-	gText_Quest_CutePokemon_Sub3_Map,
-	SPECIES_TEDDIURSA,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	89,
-	gText_Quest_CutePokemon_Sub4_Name,
-	gText_Quest_CutePokemon_Sub4_Desc,
-	gText_Quest_CutePokemon_Sub4_Map,
-	SPECIES_EISCUE,
-	PKMN,
-	sText_Gave
-),
+static const struct SubQuest sCutePokemon_Sub[QUEST_CUTEPOKEMON_SUB_COUNT] = {
+	sub_quest(
+	        86,
+	        gText_Quest_CutePokemon_Sub1_Name,
+	        gText_Quest_CutePokemon_Sub1_Desc,
+	        gText_Quest_CutePokemon_Sub1_Map,
+	        SPECIES_DUSKULL,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        87,
+	        gText_Quest_CutePokemon_Sub2_Name,
+	        gText_Quest_CutePokemon_Sub2_Desc,
+	        gText_Quest_CutePokemon_Sub2_Map,
+	        SPECIES_SCRAFTY,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        88,
+	        gText_Quest_CutePokemon_Sub3_Name,
+	        gText_Quest_CutePokemon_Sub3_Desc,
+	        gText_Quest_CutePokemon_Sub3_Map,
+	        SPECIES_TEDDIURSA,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        89,
+	        gText_Quest_CutePokemon_Sub4_Name,
+	        gText_Quest_CutePokemon_Sub4_Desc,
+	        gText_Quest_CutePokemon_Sub4_Map,
+	        SPECIES_EISCUE,
+	        PKMN,
+	        sText_Gave
+	),
 };
 
-static const struct SubQuest sWallaceArmy_Sub[QUEST_WALLACEARMY_SUB_COUNT] =
-{
-sub_quest(
-	90,
-	gText_Quest_WallaceArmy_Sub2_Name,
-	gText_Quest_WallaceArmy_Sub2_Desc,
-	gText_Quest_WallaceArmy_Sub2_Map,
-	OBJ_EVENT_GFX_GIRL_1,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	91,
-	gText_Quest_WallaceArmy_Sub3_Name,
-	gText_Quest_WallaceArmy_Sub3_Desc,
-	gText_Quest_WallaceArmy_Sub3_Map,
-	OBJ_EVENT_GFX_SAILOR,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	92,
-	gText_Quest_WallaceArmy_Sub4_Name,
-	gText_Quest_WallaceArmy_Sub4_Desc,
-	gText_Quest_WallaceArmy_Sub4_Map,
-	OBJ_EVENT_GFX_DEVON_EMPLOYEE,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	93,
-	gText_Quest_WallaceArmy_Sub5_Name,
-	gText_Quest_WallaceArmy_Sub5_Desc,
-	gText_Quest_WallaceArmy_Sub5_Map,
-	OBJ_EVENT_GFX_MAN_4,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	94,
-	gText_Quest_WallaceArmy_Sub6_Name,
-	gText_Quest_WallaceArmy_Sub6_Desc,
-	gText_Quest_WallaceArmy_Sub6_Map,
-	OBJ_EVENT_GFX_WOMAN_4,
-	OBJECT,
-	sText_Defeated
-),
+static const struct SubQuest sWallaceArmy_Sub[QUEST_WALLACEARMY_SUB_COUNT] = {
+	sub_quest(
+	        90,
+	        gText_Quest_WallaceArmy_Sub2_Name,
+	        gText_Quest_WallaceArmy_Sub2_Desc,
+	        gText_Quest_WallaceArmy_Sub2_Map,
+	        OBJ_EVENT_GFX_GIRL_1,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        91,
+	        gText_Quest_WallaceArmy_Sub3_Name,
+	        gText_Quest_WallaceArmy_Sub3_Desc,
+	        gText_Quest_WallaceArmy_Sub3_Map,
+	        OBJ_EVENT_GFX_SAILOR,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        92,
+	        gText_Quest_WallaceArmy_Sub4_Name,
+	        gText_Quest_WallaceArmy_Sub4_Desc,
+	        gText_Quest_WallaceArmy_Sub4_Map,
+	        OBJ_EVENT_GFX_DEVON_EMPLOYEE,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        93,
+	        gText_Quest_WallaceArmy_Sub5_Name,
+	        gText_Quest_WallaceArmy_Sub5_Desc,
+	        gText_Quest_WallaceArmy_Sub5_Map,
+	        OBJ_EVENT_GFX_MAN_4,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        94,
+	        gText_Quest_WallaceArmy_Sub6_Name,
+	        gText_Quest_WallaceArmy_Sub6_Desc,
+	        gText_Quest_WallaceArmy_Sub6_Map,
+	        OBJ_EVENT_GFX_WOMAN_4,
+	        OBJECT,
+	        sText_Defeated
+	),
 };
 
-static const struct SubQuest sDexCompletion_Sub[QUEST_DEXCOMPLETION_SUB_COUNT] =
-{
-sub_quest(
-	95,
-	gText_Quest_DexCompletion_Sub1_Name,
-	gText_Quest_DexCompletion_Sub1_Desc,
-	gText_Quest_DexCompletion_Sub1_Map,
-    ITEM_OVAL_CHARM,
-    ITEM,
-	sText_Completed
-),
-sub_quest(
-	96,
-	gText_Quest_DexCompletion_Sub2_Name,
-	gText_Quest_DexCompletion_Sub2_Desc,
-	gText_Quest_DexCompletion_Sub2_Map,
-    ITEM_SHINY_CHARM,
-    ITEM,
-	sText_Completed
-),
+static const struct SubQuest sDexCompletion_Sub[QUEST_DEXCOMPLETION_SUB_COUNT] = {
+	sub_quest(
+	        95,
+	        gText_Quest_DexCompletion_Sub1_Name,
+	        gText_Quest_DexCompletion_Sub1_Desc,
+	        gText_Quest_DexCompletion_Sub1_Map,
+	        ITEM_OVAL_CHARM,
+	        ITEM,
+	        sText_Completed
+	),
+	sub_quest(
+	        96,
+	        gText_Quest_DexCompletion_Sub2_Name,
+	        gText_Quest_DexCompletion_Sub2_Desc,
+	        gText_Quest_DexCompletion_Sub2_Map,
+	        ITEM_SHINY_CHARM,
+	        ITEM,
+	        sText_Completed
+	),
 };
 
-static const struct SubQuest sKitchenVolunteering_Sub[QUEST_KITCHENVOLUNTEERING_SUB_COUNT] =
-{
-sub_quest(
-	97,
-	gText_Quest_KitchenVolunteering_Sub1_Name,
-	gText_Quest_KitchenVolunteering_Sub1_Desc,
-	gText_Quest_KitchenVolunteering_Sub1_Map,
-	ITEM_BIG_MALASADA,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	98,
-	gText_Quest_KitchenVolunteering_Sub2_Name,
-	gText_Quest_KitchenVolunteering_Sub2_Desc,
-	gText_Quest_KitchenVolunteering_Sub2_Map,
-	ITEM_BIG_MALASADA,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	99,
-	gText_Quest_KitchenVolunteering_Sub3_Name,
-	gText_Quest_KitchenVolunteering_Sub3_Desc,
-	gText_Quest_KitchenVolunteering_Sub3_Map,
-	ITEM_BIG_MALASADA,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	100,
-	gText_Quest_KitchenVolunteering_Sub4_Name,
-	gText_Quest_KitchenVolunteering_Sub4_Desc,
-	gText_Quest_KitchenVolunteering_Sub4_Map,
-	ITEM_BIG_MALASADA,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	101,
-	gText_Quest_KitchenVolunteering_Sub5_Name,
-	gText_Quest_KitchenVolunteering_Sub5_Desc,
-	gText_Quest_KitchenVolunteering_Sub5_Map,
-	ITEM_BIG_MALASADA,
-	ITEM,
-	sText_Found
-),
+static const struct SubQuest sKitchenVolunteering_Sub[QUEST_KITCHENVOLUNTEERING_SUB_COUNT] = {
+	sub_quest(
+	        97,
+	        gText_Quest_KitchenVolunteering_Sub1_Name,
+	        gText_Quest_KitchenVolunteering_Sub1_Desc,
+	        gText_Quest_KitchenVolunteering_Sub1_Map,
+	        ITEM_BIG_MALASADA,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        98,
+	        gText_Quest_KitchenVolunteering_Sub2_Name,
+	        gText_Quest_KitchenVolunteering_Sub2_Desc,
+	        gText_Quest_KitchenVolunteering_Sub2_Map,
+	        ITEM_BIG_MALASADA,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        99,
+	        gText_Quest_KitchenVolunteering_Sub3_Name,
+	        gText_Quest_KitchenVolunteering_Sub3_Desc,
+	        gText_Quest_KitchenVolunteering_Sub3_Map,
+	        ITEM_BIG_MALASADA,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        100,
+	        gText_Quest_KitchenVolunteering_Sub4_Name,
+	        gText_Quest_KitchenVolunteering_Sub4_Desc,
+	        gText_Quest_KitchenVolunteering_Sub4_Map,
+	        ITEM_BIG_MALASADA,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        101,
+	        gText_Quest_KitchenVolunteering_Sub5_Name,
+	        gText_Quest_KitchenVolunteering_Sub5_Desc,
+	        gText_Quest_KitchenVolunteering_Sub5_Map,
+	        ITEM_BIG_MALASADA,
+	        ITEM,
+	        sText_Found
+	),
 };
 
-static const struct SubQuest sArtisanBalls_Sub[QUEST_ARTISANBALLS_SUB_COUNT] =
-{
-sub_quest(
-	102,
-	gText_Quest_ArtisanBalls_Sub1_Name,
-	gText_Quest_ArtisanBalls_Sub1_Desc,
-	gText_Quest_ArtisanBalls_Sub1_Map,
-	ITEM_FAST_BALL,
-	ITEM,
-	sText_Tested
-),
-sub_quest(
-	103,
-	gText_Quest_ArtisanBalls_Sub2_Name,
-	gText_Quest_ArtisanBalls_Sub2_Desc,
-	gText_Quest_ArtisanBalls_Sub2_Map,
-	ITEM_LEVEL_BALL,
-	ITEM,
-	sText_Tested
-),
-sub_quest(
-	104,
-	gText_Quest_ArtisanBalls_Sub3_Name,
-	gText_Quest_ArtisanBalls_Sub3_Desc,
-	gText_Quest_ArtisanBalls_Sub3_Map,
-	ITEM_LURE_BALL,
-	ITEM,
-	sText_Tested
-),
-sub_quest(
-	105,
-	gText_Quest_ArtisanBalls_Sub4_Name,
-	gText_Quest_ArtisanBalls_Sub4_Desc,
-	gText_Quest_ArtisanBalls_Sub4_Map,
-	ITEM_HEAVY_BALL,
-	ITEM,
-	sText_Tested
-),
-sub_quest(
-	106,
-	gText_Quest_ArtisanBalls_Sub5_Name,
-	gText_Quest_ArtisanBalls_Sub5_Desc,
-	gText_Quest_ArtisanBalls_Sub5_Map,
-	ITEM_LOVE_BALL,
-	ITEM,
-	sText_Tested
-),
-sub_quest(
-	107,
-	gText_Quest_ArtisanBalls_Sub6_Name,
-	gText_Quest_ArtisanBalls_Sub6_Desc,
-	gText_Quest_ArtisanBalls_Sub6_Map,
-	ITEM_FRIEND_BALL,
-	ITEM,
-	sText_Tested
-),
-sub_quest(
-	108,
-	gText_Quest_ArtisanBalls_Sub7_Name,
-	gText_Quest_ArtisanBalls_Sub7_Desc,
-	gText_Quest_ArtisanBalls_Sub7_Map,
-	ITEM_MOON_BALL,
-	ITEM,
-	sText_Tested
-),
+static const struct SubQuest sArtisanBalls_Sub[QUEST_ARTISANBALLS_SUB_COUNT] = {
+	sub_quest(
+	        102,
+	        gText_Quest_ArtisanBalls_Sub1_Name,
+	        gText_Quest_ArtisanBalls_Sub1_Desc,
+	        gText_Quest_ArtisanBalls_Sub1_Map,
+	        ITEM_FAST_BALL,
+	        ITEM,
+	        sText_Tested
+	),
+	sub_quest(
+	        103,
+	        gText_Quest_ArtisanBalls_Sub2_Name,
+	        gText_Quest_ArtisanBalls_Sub2_Desc,
+	        gText_Quest_ArtisanBalls_Sub2_Map,
+	        ITEM_LEVEL_BALL,
+	        ITEM,
+	        sText_Tested
+	),
+	sub_quest(
+	        104,
+	        gText_Quest_ArtisanBalls_Sub3_Name,
+	        gText_Quest_ArtisanBalls_Sub3_Desc,
+	        gText_Quest_ArtisanBalls_Sub3_Map,
+	        ITEM_LURE_BALL,
+	        ITEM,
+	        sText_Tested
+	),
+	sub_quest(
+	        105,
+	        gText_Quest_ArtisanBalls_Sub4_Name,
+	        gText_Quest_ArtisanBalls_Sub4_Desc,
+	        gText_Quest_ArtisanBalls_Sub4_Map,
+	        ITEM_HEAVY_BALL,
+	        ITEM,
+	        sText_Tested
+	),
+	sub_quest(
+	        106,
+	        gText_Quest_ArtisanBalls_Sub5_Name,
+	        gText_Quest_ArtisanBalls_Sub5_Desc,
+	        gText_Quest_ArtisanBalls_Sub5_Map,
+	        ITEM_LOVE_BALL,
+	        ITEM,
+	        sText_Tested
+	),
+	sub_quest(
+	        107,
+	        gText_Quest_ArtisanBalls_Sub6_Name,
+	        gText_Quest_ArtisanBalls_Sub6_Desc,
+	        gText_Quest_ArtisanBalls_Sub6_Map,
+	        ITEM_FRIEND_BALL,
+	        ITEM,
+	        sText_Tested
+	),
+	sub_quest(
+	        108,
+	        gText_Quest_ArtisanBalls_Sub7_Name,
+	        gText_Quest_ArtisanBalls_Sub7_Desc,
+	        gText_Quest_ArtisanBalls_Sub7_Map,
+	        ITEM_MOON_BALL,
+	        ITEM,
+	        sText_Tested
+	),
 };
 
-static const struct SubQuest sArtisanBalls2_Sub[QUEST_ARTISANBALLS2_SUB_COUNT] =
-{
-sub_quest(
-	109,
-	gText_Quest_ArtisanBalls2_Sub1_Name,
-	gText_Quest_ArtisanBalls2_Sub1_Desc,
-	gText_Quest_ArtisanBalls2_Sub1_Map,
-	OBJ_EVENT_GFX_MANIAC,
-	OBJECT,
-	sText_Recruited
-),
-sub_quest(
-	110,
-	gText_Quest_ArtisanBalls2_Sub2_Name,
-	gText_Quest_ArtisanBalls2_Sub2_Desc,
-	gText_Quest_ArtisanBalls2_Sub2_Map,
-	OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M,
-	OBJECT,
-	sText_Recruited
-),
-sub_quest(
-	111,
-	gText_Quest_ArtisanBalls2_Sub3_Name,
-	gText_Quest_ArtisanBalls2_Sub3_Desc,
-	gText_Quest_ArtisanBalls2_Sub3_Map,
-	OBJ_EVENT_GFX_MAN_1,
-	OBJECT,
-	sText_Recruited
-),
+static const struct SubQuest sArtisanBalls2_Sub[QUEST_ARTISANBALLS2_SUB_COUNT] = {
+	sub_quest(
+	        109,
+	        gText_Quest_ArtisanBalls2_Sub1_Name,
+	        gText_Quest_ArtisanBalls2_Sub1_Desc,
+	        gText_Quest_ArtisanBalls2_Sub1_Map,
+	        OBJ_EVENT_GFX_MANIAC,
+	        OBJECT,
+	        sText_Recruited
+	),
+	sub_quest(
+	        110,
+	        gText_Quest_ArtisanBalls2_Sub2_Name,
+	        gText_Quest_ArtisanBalls2_Sub2_Desc,
+	        gText_Quest_ArtisanBalls2_Sub2_Map,
+	        OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M,
+	        OBJECT,
+	        sText_Recruited
+	),
+	sub_quest(
+	        111,
+	        gText_Quest_ArtisanBalls2_Sub3_Name,
+	        gText_Quest_ArtisanBalls2_Sub3_Desc,
+	        gText_Quest_ArtisanBalls2_Sub3_Map,
+	        OBJ_EVENT_GFX_MAN_1,
+	        OBJECT,
+	        sText_Recruited
+	),
 };
 
-static const struct SubQuest sShelterSwitcheroo_Sub[QUEST_SHELTERSWITCHEROO_SUB_COUNT] =
-{
-sub_quest(
-	112,
-	gText_Quest_ShelterSwitcheroo_Sub1_Name,
-	gText_Quest_ShelterSwitcheroo_Sub1_Desc,
-	gText_Quest_ShelterSwitcheroo_Sub1_Map,
-	ITEM_REAPER_CLOTH,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	113,
-	gText_Quest_ShelterSwitcheroo_Sub2_Name,
-	gText_Quest_ShelterSwitcheroo_Sub2_Desc,
-	gText_Quest_ShelterSwitcheroo_Sub2_Map,
-	ITEM_REAPER_CLOTH,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	114,
-	gText_Quest_ShelterSwitcheroo_Sub3_Name,
-	gText_Quest_ShelterSwitcheroo_Sub3_Desc,
-	gText_Quest_ShelterSwitcheroo_Sub3_Map,
-	ITEM_REAPER_CLOTH,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	115,
-	gText_Quest_ShelterSwitcheroo_Sub4_Name,
-	gText_Quest_ShelterSwitcheroo_Sub4_Desc,
-	gText_Quest_ShelterSwitcheroo_Sub4_Map,
-	ITEM_REAPER_CLOTH,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	116,
-	gText_Quest_ShelterSwitcheroo_Sub5_Name,
-	gText_Quest_ShelterSwitcheroo_Sub5_Desc,
-	gText_Quest_ShelterSwitcheroo_Sub5_Map,
-	ITEM_REAPER_CLOTH,
-	ITEM,
-	sText_Delievered
-),
+static const struct SubQuest sShelterSwitcheroo_Sub[QUEST_SHELTERSWITCHEROO_SUB_COUNT] = {
+	sub_quest(
+	        112,
+	        gText_Quest_ShelterSwitcheroo_Sub1_Name,
+	        gText_Quest_ShelterSwitcheroo_Sub1_Desc,
+	        gText_Quest_ShelterSwitcheroo_Sub1_Map,
+	        ITEM_REAPER_CLOTH,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        113,
+	        gText_Quest_ShelterSwitcheroo_Sub2_Name,
+	        gText_Quest_ShelterSwitcheroo_Sub2_Desc,
+	        gText_Quest_ShelterSwitcheroo_Sub2_Map,
+	        ITEM_REAPER_CLOTH,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        114,
+	        gText_Quest_ShelterSwitcheroo_Sub3_Name,
+	        gText_Quest_ShelterSwitcheroo_Sub3_Desc,
+	        gText_Quest_ShelterSwitcheroo_Sub3_Map,
+	        ITEM_REAPER_CLOTH,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        115,
+	        gText_Quest_ShelterSwitcheroo_Sub4_Name,
+	        gText_Quest_ShelterSwitcheroo_Sub4_Desc,
+	        gText_Quest_ShelterSwitcheroo_Sub4_Map,
+	        ITEM_REAPER_CLOTH,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        116,
+	        gText_Quest_ShelterSwitcheroo_Sub5_Name,
+	        gText_Quest_ShelterSwitcheroo_Sub5_Desc,
+	        gText_Quest_ShelterSwitcheroo_Sub5_Map,
+	        ITEM_REAPER_CLOTH,
+	        ITEM,
+	        sText_Delievered
+	),
 };
 
-static const struct SubQuest sShelterTaxiSolution_Sub[QUEST_SHELTERTAXISOLUTION_SUB_COUNT] =
-{
-sub_quest(
-	117,
-	gText_Quest_ShelterTaxiSolution_Sub1_Name,
-	gText_Quest_ShelterTaxiSolution_Sub1_Desc,
-	gText_Quest_ShelterTaxiSolution_Sub1_Map,
-	SPECIES_CORVIKNIGHT,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	118,
-	gText_Quest_ShelterTaxiSolution_Sub2_Name,
-	gText_Quest_ShelterTaxiSolution_Sub2_Desc,
-	gText_Quest_ShelterTaxiSolution_Sub2_Map,
-	SPECIES_CORVIKNIGHT,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	119,
-	gText_Quest_ShelterTaxiSolution_Sub3_Name,
-	gText_Quest_ShelterTaxiSolution_Sub3_Desc,
-	gText_Quest_ShelterTaxiSolution_Sub3_Map,
-	SPECIES_CORVIKNIGHT,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	120,
-	gText_Quest_ShelterTaxiSolution_Sub4_Name,
-	gText_Quest_ShelterTaxiSolution_Sub4_Desc,
-	gText_Quest_ShelterTaxiSolution_Sub4_Map,
-	SPECIES_CORVIKNIGHT,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	121,
-	gText_Quest_ShelterTaxiSolution_Sub5_Name,
-	gText_Quest_ShelterTaxiSolution_Sub5_Desc,
-	gText_Quest_ShelterTaxiSolution_Sub5_Map,
-	SPECIES_CORVIKNIGHT,
-	PKMN,
-	sText_Gave
-),
+static const struct SubQuest sShelterTaxiSolution_Sub[QUEST_SHELTERTAXISOLUTION_SUB_COUNT] = {
+	sub_quest(
+	        117,
+	        gText_Quest_ShelterTaxiSolution_Sub1_Name,
+	        gText_Quest_ShelterTaxiSolution_Sub1_Desc,
+	        gText_Quest_ShelterTaxiSolution_Sub1_Map,
+	        SPECIES_CORVIKNIGHT,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        118,
+	        gText_Quest_ShelterTaxiSolution_Sub2_Name,
+	        gText_Quest_ShelterTaxiSolution_Sub2_Desc,
+	        gText_Quest_ShelterTaxiSolution_Sub2_Map,
+	        SPECIES_CORVIKNIGHT,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        119,
+	        gText_Quest_ShelterTaxiSolution_Sub3_Name,
+	        gText_Quest_ShelterTaxiSolution_Sub3_Desc,
+	        gText_Quest_ShelterTaxiSolution_Sub3_Map,
+	        SPECIES_CORVIKNIGHT,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        120,
+	        gText_Quest_ShelterTaxiSolution_Sub4_Name,
+	        gText_Quest_ShelterTaxiSolution_Sub4_Desc,
+	        gText_Quest_ShelterTaxiSolution_Sub4_Map,
+	        SPECIES_CORVIKNIGHT,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        121,
+	        gText_Quest_ShelterTaxiSolution_Sub5_Name,
+	        gText_Quest_ShelterTaxiSolution_Sub5_Desc,
+	        gText_Quest_ShelterTaxiSolution_Sub5_Map,
+	        SPECIES_CORVIKNIGHT,
+	        PKMN,
+	        sText_Gave
+	),
 };
 
-static const struct SubQuest sNeighborhoodCleanUp_Sub[QUEST_NEIGHBORHOODCLEANUP_SUB_COUNT] =
-{
-sub_quest(
-	122,
-	gText_Quest_NeighborhoodCleanUp_Sub1_Name,
-	gText_Quest_NeighborhoodCleanUp_Sub1_Desc,
-	gText_Quest_NeighborhoodCleanUp_Sub1_Map,
-	OBJ_EVENT_GFX_MAN_2,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	123,
-	gText_Quest_NeighborhoodCleanUp_Sub2_Name,
-	gText_Quest_NeighborhoodCleanUp_Sub2_Desc,
-	gText_Quest_NeighborhoodCleanUp_Sub2_Map,
-	OBJ_EVENT_GFX_FISHERMAN,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	124,
-	gText_Quest_NeighborhoodCleanUp_Sub3_Name,
-	gText_Quest_NeighborhoodCleanUp_Sub3_Desc,
-	gText_Quest_NeighborhoodCleanUp_Sub3_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	125,
-	gText_Quest_NeighborhoodCleanUp_Sub4_Name,
-	gText_Quest_NeighborhoodCleanUp_Sub4_Desc,
-	gText_Quest_NeighborhoodCleanUp_Sub4_Map,
-	OBJ_EVENT_GFX_BEAUTY,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	126,
-	gText_Quest_NeighborhoodCleanUp_Sub5_Name,
-	gText_Quest_NeighborhoodCleanUp_Sub5_Desc,
-	gText_Quest_NeighborhoodCleanUp_Sub5_Map,
-	OBJ_EVENT_GFX_GIRL_1,
-	OBJECT,
-	sText_Defeated
-),
+static const struct SubQuest sNeighborhoodCleanUp_Sub[QUEST_NEIGHBORHOODCLEANUP_SUB_COUNT] = {
+	sub_quest(
+	        122,
+	        gText_Quest_NeighborhoodCleanUp_Sub1_Name,
+	        gText_Quest_NeighborhoodCleanUp_Sub1_Desc,
+	        gText_Quest_NeighborhoodCleanUp_Sub1_Map,
+	        OBJ_EVENT_GFX_MAN_2,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        123,
+	        gText_Quest_NeighborhoodCleanUp_Sub2_Name,
+	        gText_Quest_NeighborhoodCleanUp_Sub2_Desc,
+	        gText_Quest_NeighborhoodCleanUp_Sub2_Map,
+	        OBJ_EVENT_GFX_FISHERMAN,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        124,
+	        gText_Quest_NeighborhoodCleanUp_Sub3_Name,
+	        gText_Quest_NeighborhoodCleanUp_Sub3_Desc,
+	        gText_Quest_NeighborhoodCleanUp_Sub3_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        125,
+	        gText_Quest_NeighborhoodCleanUp_Sub4_Name,
+	        gText_Quest_NeighborhoodCleanUp_Sub4_Desc,
+	        gText_Quest_NeighborhoodCleanUp_Sub4_Map,
+	        OBJ_EVENT_GFX_BEAUTY,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        126,
+	        gText_Quest_NeighborhoodCleanUp_Sub5_Name,
+	        gText_Quest_NeighborhoodCleanUp_Sub5_Desc,
+	        gText_Quest_NeighborhoodCleanUp_Sub5_Map,
+	        OBJ_EVENT_GFX_GIRL_1,
+	        OBJECT,
+	        sText_Defeated
+	),
 };
 
-static const struct SubQuest sNeighborhoodCleanUp2_Sub[QUEST_NEIGHBORHOODCLEANUP2_SUB_COUNT] =
-{
-sub_quest(
-	127,
-	gText_Quest_NeighborhoodCleanUp2_Sub1_Name,
-	gText_Quest_NeighborhoodCleanUp2_Sub1_Desc,
-	gText_Quest_NeighborhoodCleanUp2_Sub1_Map,
-	OBJ_EVENT_GFX_MAN_2,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	128,
-	gText_Quest_NeighborhoodCleanUp2_Sub2_Name,
-	gText_Quest_NeighborhoodCleanUp2_Sub2_Desc,
-	gText_Quest_NeighborhoodCleanUp2_Sub2_Map,
-	OBJ_EVENT_GFX_FISHERMAN,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	129,
-	gText_Quest_NeighborhoodCleanUp2_Sub3_Name,
-	gText_Quest_NeighborhoodCleanUp2_Sub3_Desc,
-	gText_Quest_NeighborhoodCleanUp2_Sub3_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	130,
-	gText_Quest_NeighborhoodCleanUp2_Sub4_Name,
-	gText_Quest_NeighborhoodCleanUp2_Sub4_Desc,
-	gText_Quest_NeighborhoodCleanUp2_Sub4_Map,
-	OBJ_EVENT_GFX_BEAUTY,
-	OBJECT,
-	sText_Defeated
-),
+static const struct SubQuest sNeighborhoodCleanUp2_Sub[QUEST_NEIGHBORHOODCLEANUP2_SUB_COUNT] = {
+	sub_quest(
+	        127,
+	        gText_Quest_NeighborhoodCleanUp2_Sub1_Name,
+	        gText_Quest_NeighborhoodCleanUp2_Sub1_Desc,
+	        gText_Quest_NeighborhoodCleanUp2_Sub1_Map,
+	        OBJ_EVENT_GFX_MAN_2,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        128,
+	        gText_Quest_NeighborhoodCleanUp2_Sub2_Name,
+	        gText_Quest_NeighborhoodCleanUp2_Sub2_Desc,
+	        gText_Quest_NeighborhoodCleanUp2_Sub2_Map,
+	        OBJ_EVENT_GFX_FISHERMAN,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        129,
+	        gText_Quest_NeighborhoodCleanUp2_Sub3_Name,
+	        gText_Quest_NeighborhoodCleanUp2_Sub3_Desc,
+	        gText_Quest_NeighborhoodCleanUp2_Sub3_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        130,
+	        gText_Quest_NeighborhoodCleanUp2_Sub4_Name,
+	        gText_Quest_NeighborhoodCleanUp2_Sub4_Desc,
+	        gText_Quest_NeighborhoodCleanUp2_Sub4_Map,
+	        OBJ_EVENT_GFX_BEAUTY,
+	        OBJECT,
+	        sText_Defeated
+	),
 };
 
-static const struct SubQuest sNeighborhoodCleanUp3_Sub[QUEST_NEIGHBORHOODCLEANUP3_SUB_COUNT] =
-{
-sub_quest(
-	131,
-	gText_Quest_NeighborhoodCleanUp3_Sub1_Name,
-	gText_Quest_NeighborhoodCleanUp3_Sub1_Desc,
-	gText_Quest_NeighborhoodCleanUp3_Sub1_Map,
-	OBJ_EVENT_GFX_MAN_2,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	132,
-	gText_Quest_NeighborhoodCleanUp3_Sub2_Name,
-	gText_Quest_NeighborhoodCleanUp3_Sub2_Desc,
-	gText_Quest_NeighborhoodCleanUp3_Sub2_Map,
-	OBJ_EVENT_GFX_FISHERMAN,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	133,
-	gText_Quest_NeighborhoodCleanUp3_Sub3_Name,
-	gText_Quest_NeighborhoodCleanUp3_Sub3_Desc,
-	gText_Quest_NeighborhoodCleanUp3_Sub3_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Defeated
-),
+static const struct SubQuest sNeighborhoodCleanUp3_Sub[QUEST_NEIGHBORHOODCLEANUP3_SUB_COUNT] = {
+	sub_quest(
+	        131,
+	        gText_Quest_NeighborhoodCleanUp3_Sub1_Name,
+	        gText_Quest_NeighborhoodCleanUp3_Sub1_Desc,
+	        gText_Quest_NeighborhoodCleanUp3_Sub1_Map,
+	        OBJ_EVENT_GFX_MAN_2,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        132,
+	        gText_Quest_NeighborhoodCleanUp3_Sub2_Name,
+	        gText_Quest_NeighborhoodCleanUp3_Sub2_Desc,
+	        gText_Quest_NeighborhoodCleanUp3_Sub2_Map,
+	        OBJ_EVENT_GFX_FISHERMAN,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        133,
+	        gText_Quest_NeighborhoodCleanUp3_Sub3_Name,
+	        gText_Quest_NeighborhoodCleanUp3_Sub3_Desc,
+	        gText_Quest_NeighborhoodCleanUp3_Sub3_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Defeated
+	),
 };
 
-static const struct SubQuest sRockCollector_Sub[QUEST_ROCKCOLLECTOR_SUB_COUNT] =
-{
-sub_quest(
-	134,
-	gText_Quest_RockCollector_Sub1_Name,
-	gText_Quest_RockCollector_Sub1_Desc,
-	gText_Quest_RockCollector_Sub1_Map,
-	ITEM_FIRE_STONE,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	135,
-	gText_Quest_RockCollector_Sub2_Name,
-	gText_Quest_RockCollector_Sub2_Desc,
-	gText_Quest_RockCollector_Sub2_Map,
-	ITEM_WATER_STONE,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	136,
-	gText_Quest_RockCollector_Sub3_Name,
-	gText_Quest_RockCollector_Sub3_Desc,
-	gText_Quest_RockCollector_Sub3_Map,
-	ITEM_THUNDER_STONE,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	137,
-	gText_Quest_RockCollector_Sub4_Name,
-	gText_Quest_RockCollector_Sub4_Desc,
-	gText_Quest_RockCollector_Sub4_Map,
-	ITEM_LEAF_STONE,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	138,
-	gText_Quest_RockCollector_Sub5_Name,
-	gText_Quest_RockCollector_Sub5_Desc,
-	gText_Quest_RockCollector_Sub5_Map,
-	ITEM_MOON_STONE,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	139,
-	gText_Quest_RockCollector_Sub6_Name,
-	gText_Quest_RockCollector_Sub6_Desc,
-	gText_Quest_RockCollector_Sub6_Map,
-	ITEM_SUN_STONE,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	140,
-	gText_Quest_RockCollector_Sub7_Name,
-	gText_Quest_RockCollector_Sub7_Desc,
-	gText_Quest_RockCollector_Sub7_Map,
-	ITEM_SHINY_STONE,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	141,
-	gText_Quest_RockCollector_Sub8_Name,
-	gText_Quest_RockCollector_Sub8_Desc,
-	gText_Quest_RockCollector_Sub8_Map,
-	ITEM_DUSK_BALL,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	142,
-	gText_Quest_RockCollector_Sub9_Name,
-	gText_Quest_RockCollector_Sub9_Desc,
-	gText_Quest_RockCollector_Sub9_Map,
-	ITEM_DAWN_STONE,
-	ITEM,
-	sText_Delievered
-),
-sub_quest(
-	143,
-	gText_Quest_RockCollector_Sub10_Name,
-	gText_Quest_RockCollector_Sub10_Desc,
-	gText_Quest_RockCollector_Sub10_Map,
-	ITEM_ICE_STONE,
-	ITEM,
-	sText_Delievered
-),
+static const struct SubQuest sRockCollector_Sub[QUEST_ROCKCOLLECTOR_SUB_COUNT] = {
+	sub_quest(
+	        134,
+	        gText_Quest_RockCollector_Sub1_Name,
+	        gText_Quest_RockCollector_Sub1_Desc,
+	        gText_Quest_RockCollector_Sub1_Map,
+	        ITEM_FIRE_STONE,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        135,
+	        gText_Quest_RockCollector_Sub2_Name,
+	        gText_Quest_RockCollector_Sub2_Desc,
+	        gText_Quest_RockCollector_Sub2_Map,
+	        ITEM_WATER_STONE,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        136,
+	        gText_Quest_RockCollector_Sub3_Name,
+	        gText_Quest_RockCollector_Sub3_Desc,
+	        gText_Quest_RockCollector_Sub3_Map,
+	        ITEM_THUNDER_STONE,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        137,
+	        gText_Quest_RockCollector_Sub4_Name,
+	        gText_Quest_RockCollector_Sub4_Desc,
+	        gText_Quest_RockCollector_Sub4_Map,
+	        ITEM_LEAF_STONE,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        138,
+	        gText_Quest_RockCollector_Sub5_Name,
+	        gText_Quest_RockCollector_Sub5_Desc,
+	        gText_Quest_RockCollector_Sub5_Map,
+	        ITEM_MOON_STONE,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        139,
+	        gText_Quest_RockCollector_Sub6_Name,
+	        gText_Quest_RockCollector_Sub6_Desc,
+	        gText_Quest_RockCollector_Sub6_Map,
+	        ITEM_SUN_STONE,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        140,
+	        gText_Quest_RockCollector_Sub7_Name,
+	        gText_Quest_RockCollector_Sub7_Desc,
+	        gText_Quest_RockCollector_Sub7_Map,
+	        ITEM_SHINY_STONE,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        141,
+	        gText_Quest_RockCollector_Sub8_Name,
+	        gText_Quest_RockCollector_Sub8_Desc,
+	        gText_Quest_RockCollector_Sub8_Map,
+	        ITEM_DUSK_BALL,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        142,
+	        gText_Quest_RockCollector_Sub9_Name,
+	        gText_Quest_RockCollector_Sub9_Desc,
+	        gText_Quest_RockCollector_Sub9_Map,
+	        ITEM_DAWN_STONE,
+	        ITEM,
+	        sText_Delievered
+	),
+	sub_quest(
+	        143,
+	        gText_Quest_RockCollector_Sub10_Name,
+	        gText_Quest_RockCollector_Sub10_Desc,
+	        gText_Quest_RockCollector_Sub10_Map,
+	        ITEM_ICE_STONE,
+	        ITEM,
+	        sText_Delievered
+	),
 };
 
-static const struct SubQuest sHiddenGrottoMapping_Sub[QUEST_HIDDENGROTTOMAPPING_SUB_COUNT] =
-{
-sub_quest(
-	144,
-	gText_Quest_HiddenGrottoMapping_Sub1_Name,
-	gText_Quest_HiddenGrottoMapping_Sub1_Desc,
-	gText_Quest_HiddenGrottoMapping_Sub1_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Discovered
-),
-sub_quest(
-	145,
-	gText_Quest_HiddenGrottoMapping_Sub2_Name,
-	gText_Quest_HiddenGrottoMapping_Sub2_Desc,
-	gText_Quest_HiddenGrottoMapping_Sub2_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Discovered
-),
-sub_quest(
-	146,
-	gText_Quest_HiddenGrottoMapping_Sub3_Name,
-	gText_Quest_HiddenGrottoMapping_Sub3_Desc,
-	gText_Quest_HiddenGrottoMapping_Sub3_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Discovered
-),
-sub_quest(
-	147,
-	gText_Quest_HiddenGrottoMapping_Sub4_Name,
-	gText_Quest_HiddenGrottoMapping_Sub4_Desc,
-	gText_Quest_HiddenGrottoMapping_Sub4_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Discovered
-),
-sub_quest(
-	148,
-	gText_Quest_HiddenGrottoMapping_Sub5_Name,
-	gText_Quest_HiddenGrottoMapping_Sub5_Desc,
-	gText_Quest_HiddenGrottoMapping_Sub5_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Discovered
-),
+static const struct SubQuest sHiddenGrottoMapping_Sub[QUEST_HIDDENGROTTOMAPPING_SUB_COUNT] = {
+	sub_quest(
+	        144,
+	        gText_Quest_HiddenGrottoMapping_Sub1_Name,
+	        gText_Quest_HiddenGrottoMapping_Sub1_Desc,
+	        gText_Quest_HiddenGrottoMapping_Sub1_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Discovered
+	),
+	sub_quest(
+	        145,
+	        gText_Quest_HiddenGrottoMapping_Sub2_Name,
+	        gText_Quest_HiddenGrottoMapping_Sub2_Desc,
+	        gText_Quest_HiddenGrottoMapping_Sub2_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Discovered
+	),
+	sub_quest(
+	        146,
+	        gText_Quest_HiddenGrottoMapping_Sub3_Name,
+	        gText_Quest_HiddenGrottoMapping_Sub3_Desc,
+	        gText_Quest_HiddenGrottoMapping_Sub3_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Discovered
+	),
+	sub_quest(
+	        147,
+	        gText_Quest_HiddenGrottoMapping_Sub4_Name,
+	        gText_Quest_HiddenGrottoMapping_Sub4_Desc,
+	        gText_Quest_HiddenGrottoMapping_Sub4_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Discovered
+	),
+	sub_quest(
+	        148,
+	        gText_Quest_HiddenGrottoMapping_Sub5_Name,
+	        gText_Quest_HiddenGrottoMapping_Sub5_Desc,
+	        gText_Quest_HiddenGrottoMapping_Sub5_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Discovered
+	),
 };
 
-static const struct SubQuest sHiddenGrottoMapping2_Sub[QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT] =
-{
-sub_quest(
-	149,
-	gText_Quest_HiddenGrottoMapping2_Sub1_Name,
-	gText_Quest_HiddenGrottoMapping2_Sub1_Desc,
-	gText_Quest_HiddenGrottoMapping2_Sub1_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Discovered
-),
-sub_quest(
-	150,
-	gText_Quest_HiddenGrottoMapping2_Sub2_Name,
-	gText_Quest_HiddenGrottoMapping2_Sub2_Desc,
-	gText_Quest_HiddenGrottoMapping2_Sub2_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Discovered
-),
-sub_quest(
-	151,
-	gText_Quest_HiddenGrottoMapping2_Sub3_Name,
-	gText_Quest_HiddenGrottoMapping2_Sub3_Desc,
-	gText_Quest_HiddenGrottoMapping2_Sub3_Map,
-	OBJ_EVENT_GFX_CAMPER,
-	OBJECT,
-	sText_Discovered
-),
+static const struct SubQuest sHiddenGrottoMapping2_Sub[QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT] = {
+	sub_quest(
+	        149,
+	        gText_Quest_HiddenGrottoMapping2_Sub1_Name,
+	        gText_Quest_HiddenGrottoMapping2_Sub1_Desc,
+	        gText_Quest_HiddenGrottoMapping2_Sub1_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Discovered
+	),
+	sub_quest(
+	        150,
+	        gText_Quest_HiddenGrottoMapping2_Sub2_Name,
+	        gText_Quest_HiddenGrottoMapping2_Sub2_Desc,
+	        gText_Quest_HiddenGrottoMapping2_Sub2_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Discovered
+	),
+	sub_quest(
+	        151,
+	        gText_Quest_HiddenGrottoMapping2_Sub3_Name,
+	        gText_Quest_HiddenGrottoMapping2_Sub3_Desc,
+	        gText_Quest_HiddenGrottoMapping2_Sub3_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sText_Discovered
+	),
 };
 
-static const struct SubQuest sUltraWormholeResearch_Sub[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT] =
-{
-sub_quest(
-	152,
-	gText_Quest_UltraWormholeResearch_Sub1_Name,
-	gText_Quest_UltraWormholeResearch_Sub1_Desc,
-	gText_Quest_UltraWormholeResearch_Sub1_Map,
-	SPECIES_POIPOLE,
-	PKMN,
-	sText_Caught
-),
-sub_quest(
-	153,
-	gText_Quest_UltraWormholeResearch_Sub2_Name,
-	gText_Quest_UltraWormholeResearch_Sub2_Desc,
-	gText_Quest_UltraWormholeResearch_Sub2_Map,
-	SPECIES_DUSCLOPS,
-	PKMN,
-	sText_Caught
-),
-sub_quest(
-	154,
-	gText_Quest_UltraWormholeResearch_Sub3_Name,
-	gText_Quest_UltraWormholeResearch_Sub3_Desc,
-	gText_Quest_UltraWormholeResearch_Sub3_Map,
-	SPECIES_VOLCARONA,
-	PKMN,
-	sText_Caught
-),
-sub_quest(
-	155,
-	gText_Quest_UltraWormholeResearch_Sub4_Name,
-	gText_Quest_UltraWormholeResearch_Sub4_Desc,
-	gText_Quest_UltraWormholeResearch_Sub4_Map,
-	SPECIES_CAMERUPT,
-	PKMN,
-	sText_Caught
-),
-sub_quest(
-	156,
-	gText_Quest_UltraWormholeResearch_Sub5_Name,
-	gText_Quest_UltraWormholeResearch_Sub5_Desc,
-	gText_Quest_UltraWormholeResearch_Sub5_Map,
-	SPECIES_DEINO,
-	PKMN,
-	sText_Caught
-),
-sub_quest(
-	157,
-	gText_Quest_UltraWormholeResearch_Sub6_Name,
-	gText_Quest_UltraWormholeResearch_Sub6_Desc,
-	gText_Quest_UltraWormholeResearch_Sub6_Map,
-	SPECIES_NOIVERN,
-	PKMN,
-	sText_Caught
-),
-sub_quest(
-	158,
-	gText_Quest_UltraWormholeResearch_Sub7_Name,
-	gText_Quest_UltraWormholeResearch_Sub7_Desc,
-	gText_Quest_UltraWormholeResearch_Sub7_Map,
-	SPECIES_SHUCKLE,
-	PKMN,
-	sText_Caught
-),
-sub_quest(
-	159,
-	gText_Quest_UltraWormholeResearch_Sub8_Name,
-	gText_Quest_UltraWormholeResearch_Sub8_Desc,
-	gText_Quest_UltraWormholeResearch_Sub8_Map,
-	SPECIES_KINGLER,
-	PKMN,
-	sText_Caught
-),
-sub_quest(
-	160,
-	gText_Quest_UltraWormholeResearch_Sub9_Name,
-	gText_Quest_UltraWormholeResearch_Sub9_Desc,
-	gText_Quest_UltraWormholeResearch_Sub9_Map,
-	SPECIES_ORBEETLE,
-	PKMN,
-	sText_Caught
-),
-sub_quest(
-	161,
-	gText_Quest_UltraWormholeResearch_Sub10_Name,
-	gText_Quest_UltraWormholeResearch_Sub10_Desc,
-	gText_Quest_UltraWormholeResearch_Sub10_Map,
-	SPECIES_DONPHAN,
-	PKMN,
-	sText_Caught
-),
+static const struct SubQuest sUltraWormholeResearch_Sub[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT] = {
+	sub_quest(
+	        152,
+	        gText_Quest_UltraWormholeResearch_Sub1_Name,
+	        gText_Quest_UltraWormholeResearch_Sub1_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub1_Map,
+	        SPECIES_POIPOLE,
+	        PKMN,
+	        sText_Caught
+	),
+	sub_quest(
+	        153,
+	        gText_Quest_UltraWormholeResearch_Sub2_Name,
+	        gText_Quest_UltraWormholeResearch_Sub2_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub2_Map,
+	        SPECIES_DUSCLOPS,
+	        PKMN,
+	        sText_Caught
+	),
+	sub_quest(
+	        154,
+	        gText_Quest_UltraWormholeResearch_Sub3_Name,
+	        gText_Quest_UltraWormholeResearch_Sub3_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub3_Map,
+	        SPECIES_VOLCARONA,
+	        PKMN,
+	        sText_Caught
+	),
+	sub_quest(
+	        155,
+	        gText_Quest_UltraWormholeResearch_Sub4_Name,
+	        gText_Quest_UltraWormholeResearch_Sub4_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub4_Map,
+	        SPECIES_CAMERUPT,
+	        PKMN,
+	        sText_Caught
+	),
+	sub_quest(
+	        156,
+	        gText_Quest_UltraWormholeResearch_Sub5_Name,
+	        gText_Quest_UltraWormholeResearch_Sub5_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub5_Map,
+	        SPECIES_DEINO,
+	        PKMN,
+	        sText_Caught
+	),
+	sub_quest(
+	        157,
+	        gText_Quest_UltraWormholeResearch_Sub6_Name,
+	        gText_Quest_UltraWormholeResearch_Sub6_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub6_Map,
+	        SPECIES_NOIVERN,
+	        PKMN,
+	        sText_Caught
+	),
+	sub_quest(
+	        158,
+	        gText_Quest_UltraWormholeResearch_Sub7_Name,
+	        gText_Quest_UltraWormholeResearch_Sub7_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub7_Map,
+	        SPECIES_SHUCKLE,
+	        PKMN,
+	        sText_Caught
+	),
+	sub_quest(
+	        159,
+	        gText_Quest_UltraWormholeResearch_Sub8_Name,
+	        gText_Quest_UltraWormholeResearch_Sub8_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub8_Map,
+	        SPECIES_KINGLER,
+	        PKMN,
+	        sText_Caught
+	),
+	sub_quest(
+	        160,
+	        gText_Quest_UltraWormholeResearch_Sub9_Name,
+	        gText_Quest_UltraWormholeResearch_Sub9_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub9_Map,
+	        SPECIES_ORBEETLE,
+	        PKMN,
+	        sText_Caught
+	),
+	sub_quest(
+	        161,
+	        gText_Quest_UltraWormholeResearch_Sub10_Name,
+	        gText_Quest_UltraWormholeResearch_Sub10_Desc,
+	        gText_Quest_UltraWormholeResearch_Sub10_Map,
+	        SPECIES_DONPHAN,
+	        PKMN,
+	        sText_Caught
+	),
 };
 
-static const struct SubQuest sWildfireRisk_Sub[QUEST_WILDFIRERISK_SUB_COUNT] =
-{
-sub_quest(
-	162,
-	gText_Quest_WildfireRisk_Sub1_Name,
-	gText_Quest_WildfireRisk_Sub1_Desc,
-	gText_Quest_WildfireRisk_Sub1_Map,
-	ITEM_FIRE_GEM,
-	ITEM,
-	sText_Defeated
-),
-sub_quest(
-	163,
-	gText_Quest_WildfireRisk_Sub2_Name,
-	gText_Quest_WildfireRisk_Sub2_Desc,
-	gText_Quest_WildfireRisk_Sub2_Map,
-	ITEM_FLYING_GEM,
-	ITEM,
-	sText_Defeated
-),
-sub_quest(
-	164,
-	gText_Quest_WildfireRisk_Sub3_Name,
-	gText_Quest_WildfireRisk_Sub3_Desc,
-	gText_Quest_WildfireRisk_Sub3_Map,
-	ITEM_ELECTRIC_GEM,
-	ITEM,
-	sText_Defeated
-),
+static const struct SubQuest sWildfireRisk_Sub[QUEST_WILDFIRERISK_SUB_COUNT] = {
+	sub_quest(
+	        162,
+	        gText_Quest_WildfireRisk_Sub1_Name,
+	        gText_Quest_WildfireRisk_Sub1_Desc,
+	        gText_Quest_WildfireRisk_Sub1_Map,
+	        ITEM_FIRE_GEM,
+	        ITEM,
+	        sText_Defeated
+	),
+	sub_quest(
+	        163,
+	        gText_Quest_WildfireRisk_Sub2_Name,
+	        gText_Quest_WildfireRisk_Sub2_Desc,
+	        gText_Quest_WildfireRisk_Sub2_Map,
+	        ITEM_FLYING_GEM,
+	        ITEM,
+	        sText_Defeated
+	),
+	sub_quest(
+	        164,
+	        gText_Quest_WildfireRisk_Sub3_Name,
+	        gText_Quest_WildfireRisk_Sub3_Desc,
+	        gText_Quest_WildfireRisk_Sub3_Map,
+	        ITEM_ELECTRIC_GEM,
+	        ITEM,
+	        sText_Defeated
+	),
 };
 
-static const struct SubQuest sTheBoyWhoCriesWithWolves_Sub[QUEST_THEBOYWHOCRIESWITHWOLVES_SUB_COUNT] =
-{
-sub_quest(
-	165,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub1_Name,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub1_Desc,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub1_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	166,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub2_Name,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub2_Desc,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub2_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	167,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub3_Name,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub3_Desc,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub3_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	168,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub4_Name,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub4_Desc,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub4_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	169,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub5_Name,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub5_Desc,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub5_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	170,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub6_Name,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub6_Desc,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub6_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	171,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub7_Name,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub7_Desc,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub7_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	172,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub8_Name,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub8_Desc,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub8_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Found
-),
-sub_quest(
-	173,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub9_Name,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub9_Desc,
-	gText_Quest_TheBoyWhoCriesWithWolves_Sub9_Map,
-	ITEM_POKE_BALL,
-	ITEM,
-	sText_Found
-),
+static const struct SubQuest sTheBoyWhoCriesWithWolves_Sub[QUEST_THEBOYWHOCRIESWITHWOLVES_SUB_COUNT]
+	= {
+	sub_quest(
+	        165,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub1_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub1_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub1_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        166,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub2_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub2_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub2_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        167,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub3_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub3_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub3_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        168,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub4_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub4_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub4_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        169,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub5_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub5_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub5_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        170,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub6_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub6_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub6_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        171,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub7_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub7_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub7_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        172,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub8_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub8_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub8_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Found
+	),
+	sub_quest(
+	        173,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub9_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub9_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Sub9_Map,
+	        ITEM_POKE_BALL,
+	        ITEM,
+	        sText_Found
+	),
 };
 
-static const struct SubQuest sTaxicabTurnAroundSea_Sub[QUEST_TAXICABTURNAROUNDSEA_SUB_COUNT] =
-{
-sub_quest(
-	174,
-	gText_Quest_TaxicabTurnAroundSea_Sub1_Name,
-	gText_Quest_TaxicabTurnAroundSea_Sub1_Desc,
-	gText_Quest_TaxicabTurnAroundSea_Sub1_Map,
-	SPECIES_LAPRAS,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	175,
-	gText_Quest_TaxicabTurnAroundSea_Sub2_Name,
-	gText_Quest_TaxicabTurnAroundSea_Sub2_Desc,
-	gText_Quest_TaxicabTurnAroundSea_Sub2_Map,
-	SPECIES_LAPRAS,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	176,
-	gText_Quest_TaxicabTurnAroundSea_Sub3_Name,
-	gText_Quest_TaxicabTurnAroundSea_Sub3_Desc,
-	gText_Quest_TaxicabTurnAroundSea_Sub3_Map,
-	SPECIES_LAPRAS,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	177,
-	gText_Quest_TaxicabTurnAroundSea_Sub4_Name,
-	gText_Quest_TaxicabTurnAroundSea_Sub4_Desc,
-	gText_Quest_TaxicabTurnAroundSea_Sub4_Map,
-	SPECIES_LAPRAS,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	178,
-	gText_Quest_TaxicabTurnAroundSea_Sub5_Name,
-	gText_Quest_TaxicabTurnAroundSea_Sub5_Desc,
-	gText_Quest_TaxicabTurnAroundSea_Sub5_Map,
-	SPECIES_LAPRAS,
-	PKMN,
-	sText_Gave
-),
+static const struct SubQuest sTaxicabTurnAroundSea_Sub[QUEST_TAXICABTURNAROUNDSEA_SUB_COUNT] = {
+	sub_quest(
+	        174,
+	        gText_Quest_TaxicabTurnAroundSea_Sub1_Name,
+	        gText_Quest_TaxicabTurnAroundSea_Sub1_Desc,
+	        gText_Quest_TaxicabTurnAroundSea_Sub1_Map,
+	        SPECIES_LAPRAS,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        175,
+	        gText_Quest_TaxicabTurnAroundSea_Sub2_Name,
+	        gText_Quest_TaxicabTurnAroundSea_Sub2_Desc,
+	        gText_Quest_TaxicabTurnAroundSea_Sub2_Map,
+	        SPECIES_LAPRAS,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        176,
+	        gText_Quest_TaxicabTurnAroundSea_Sub3_Name,
+	        gText_Quest_TaxicabTurnAroundSea_Sub3_Desc,
+	        gText_Quest_TaxicabTurnAroundSea_Sub3_Map,
+	        SPECIES_LAPRAS,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        177,
+	        gText_Quest_TaxicabTurnAroundSea_Sub4_Name,
+	        gText_Quest_TaxicabTurnAroundSea_Sub4_Desc,
+	        gText_Quest_TaxicabTurnAroundSea_Sub4_Map,
+	        SPECIES_LAPRAS,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        178,
+	        gText_Quest_TaxicabTurnAroundSea_Sub5_Name,
+	        gText_Quest_TaxicabTurnAroundSea_Sub5_Desc,
+	        gText_Quest_TaxicabTurnAroundSea_Sub5_Map,
+	        SPECIES_LAPRAS,
+	        PKMN,
+	        sText_Gave
+	),
 };
 
-static const struct SubQuest sTaxicabTurnAroundAir_Sub[QUEST_TAXICABTURNAROUNDAIR_SUB_COUNT] =
-{
-sub_quest(
-	179,
-	gText_Quest_TaxicabTurnAroundAir_Sub1_Name,
-	gText_Quest_TaxicabTurnAroundAir_Sub1_Desc,
-	gText_Quest_TaxicabTurnAroundAir_Sub1_Map,
-	SPECIES_PIDGEOT,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	180,
-	gText_Quest_TaxicabTurnAroundAir_Sub2_Name,
-	gText_Quest_TaxicabTurnAroundAir_Sub2_Desc,
-	gText_Quest_TaxicabTurnAroundAir_Sub2_Map,
-	SPECIES_PIDGEOT,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	181,
-	gText_Quest_TaxicabTurnAroundAir_Sub3_Name,
-	gText_Quest_TaxicabTurnAroundAir_Sub3_Desc,
-	gText_Quest_TaxicabTurnAroundAir_Sub3_Map,
-	SPECIES_PIDGEOT,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	182,
-	gText_Quest_TaxicabTurnAroundAir_Sub4_Name,
-	gText_Quest_TaxicabTurnAroundAir_Sub4_Desc,
-	gText_Quest_TaxicabTurnAroundAir_Sub4_Map,
-	SPECIES_PIDGEOT,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	183,
-	gText_Quest_TaxicabTurnAroundAir_Sub5_Name,
-	gText_Quest_TaxicabTurnAroundAir_Sub5_Desc,
-	gText_Quest_TaxicabTurnAroundAir_Sub5_Map,
-	SPECIES_PIDGEOT,
-	PKMN,
-	sText_Gave
-),
+static const struct SubQuest sTaxicabTurnAroundAir_Sub[QUEST_TAXICABTURNAROUNDAIR_SUB_COUNT] = {
+	sub_quest(
+	        179,
+	        gText_Quest_TaxicabTurnAroundAir_Sub1_Name,
+	        gText_Quest_TaxicabTurnAroundAir_Sub1_Desc,
+	        gText_Quest_TaxicabTurnAroundAir_Sub1_Map,
+	        SPECIES_PIDGEOT,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        180,
+	        gText_Quest_TaxicabTurnAroundAir_Sub2_Name,
+	        gText_Quest_TaxicabTurnAroundAir_Sub2_Desc,
+	        gText_Quest_TaxicabTurnAroundAir_Sub2_Map,
+	        SPECIES_PIDGEOT,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        181,
+	        gText_Quest_TaxicabTurnAroundAir_Sub3_Name,
+	        gText_Quest_TaxicabTurnAroundAir_Sub3_Desc,
+	        gText_Quest_TaxicabTurnAroundAir_Sub3_Map,
+	        SPECIES_PIDGEOT,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        182,
+	        gText_Quest_TaxicabTurnAroundAir_Sub4_Name,
+	        gText_Quest_TaxicabTurnAroundAir_Sub4_Desc,
+	        gText_Quest_TaxicabTurnAroundAir_Sub4_Map,
+	        SPECIES_PIDGEOT,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        183,
+	        gText_Quest_TaxicabTurnAroundAir_Sub5_Name,
+	        gText_Quest_TaxicabTurnAroundAir_Sub5_Desc,
+	        gText_Quest_TaxicabTurnAroundAir_Sub5_Map,
+	        SPECIES_PIDGEOT,
+	        PKMN,
+	        sText_Gave
+	),
 };
 
-static const struct SubQuest sTaxicabTurnAroundLand_Sub[QUEST_TAXICABTURNAROUNDLAND_SUB_COUNT] =
-{
-sub_quest(
-	184,
-	gText_Quest_TaxicabTurnAroundLand_Sub1_Name,
-	gText_Quest_TaxicabTurnAroundLand_Sub1_Desc,
-	gText_Quest_TaxicabTurnAroundLand_Sub1_Map,
-	SPECIES_DODRIO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	185,
-	gText_Quest_TaxicabTurnAroundLand_Sub2_Name,
-	gText_Quest_TaxicabTurnAroundLand_Sub2_Desc,
-	gText_Quest_TaxicabTurnAroundLand_Sub2_Map,
-	SPECIES_DODRIO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	186,
-	gText_Quest_TaxicabTurnAroundLand_Sub3_Name,
-	gText_Quest_TaxicabTurnAroundLand_Sub3_Desc,
-	gText_Quest_TaxicabTurnAroundLand_Sub3_Map,
-	SPECIES_DODRIO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	187,
-	gText_Quest_TaxicabTurnAroundLand_Sub4_Name,
-	gText_Quest_TaxicabTurnAroundLand_Sub4_Desc,
-	gText_Quest_TaxicabTurnAroundLand_Sub4_Map,
-	SPECIES_DODRIO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	188,
-	gText_Quest_TaxicabTurnAroundLand_Sub5_Name,
-	gText_Quest_TaxicabTurnAroundLand_Sub5_Desc,
-	gText_Quest_TaxicabTurnAroundLand_Sub5_Map,
-	SPECIES_DODRIO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	189,
-	gText_Quest_TaxicabTurnAroundLand_Sub6_Name,
-	gText_Quest_TaxicabTurnAroundLand_Sub6_Desc,
-	gText_Quest_TaxicabTurnAroundLand_Sub6_Map,
-	SPECIES_DODRIO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	190,
-	gText_Quest_TaxicabTurnAroundLand_Sub7_Name,
-	gText_Quest_TaxicabTurnAroundLand_Sub7_Desc,
-	gText_Quest_TaxicabTurnAroundLand_Sub7_Map,
-	SPECIES_DODRIO,
-	PKMN,
-	sText_Gave
-),
+static const struct SubQuest sTaxicabTurnAroundLand_Sub[QUEST_TAXICABTURNAROUNDLAND_SUB_COUNT] = {
+	sub_quest(
+	        184,
+	        gText_Quest_TaxicabTurnAroundLand_Sub1_Name,
+	        gText_Quest_TaxicabTurnAroundLand_Sub1_Desc,
+	        gText_Quest_TaxicabTurnAroundLand_Sub1_Map,
+	        SPECIES_DODRIO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        185,
+	        gText_Quest_TaxicabTurnAroundLand_Sub2_Name,
+	        gText_Quest_TaxicabTurnAroundLand_Sub2_Desc,
+	        gText_Quest_TaxicabTurnAroundLand_Sub2_Map,
+	        SPECIES_DODRIO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        186,
+	        gText_Quest_TaxicabTurnAroundLand_Sub3_Name,
+	        gText_Quest_TaxicabTurnAroundLand_Sub3_Desc,
+	        gText_Quest_TaxicabTurnAroundLand_Sub3_Map,
+	        SPECIES_DODRIO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        187,
+	        gText_Quest_TaxicabTurnAroundLand_Sub4_Name,
+	        gText_Quest_TaxicabTurnAroundLand_Sub4_Desc,
+	        gText_Quest_TaxicabTurnAroundLand_Sub4_Map,
+	        SPECIES_DODRIO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        188,
+	        gText_Quest_TaxicabTurnAroundLand_Sub5_Name,
+	        gText_Quest_TaxicabTurnAroundLand_Sub5_Desc,
+	        gText_Quest_TaxicabTurnAroundLand_Sub5_Map,
+	        SPECIES_DODRIO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        189,
+	        gText_Quest_TaxicabTurnAroundLand_Sub6_Name,
+	        gText_Quest_TaxicabTurnAroundLand_Sub6_Desc,
+	        gText_Quest_TaxicabTurnAroundLand_Sub6_Map,
+	        SPECIES_DODRIO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        190,
+	        gText_Quest_TaxicabTurnAroundLand_Sub7_Name,
+	        gText_Quest_TaxicabTurnAroundLand_Sub7_Desc,
+	        gText_Quest_TaxicabTurnAroundLand_Sub7_Map,
+	        SPECIES_DODRIO,
+	        PKMN,
+	        sText_Gave
+	),
 };
 
-static const struct SubQuest sPersuasivePassenger_Sub[QUEST_PERSUASIVEPASSENGER_SUB_COUNT] =
-{
-sub_quest(
-	191,
-	gText_Quest_PersuasivePassenger_Sub1_Name,
-	gText_Quest_PersuasivePassenger_Sub1_Desc,
-	gText_Quest_PersuasivePassenger_Sub1_Map,
-	OBJ_EVENT_GFX_GIRL_3,
-	OBJECT,
-	sText_Helped
-),
-sub_quest(
-	192,
-	gText_Quest_PersuasivePassenger_Sub2_Name,
-	gText_Quest_PersuasivePassenger_Sub2_Desc,
-	gText_Quest_PersuasivePassenger_Sub2_Map,
-	OBJ_EVENT_GFX_WOMAN_1,
-	OBJECT,
-	sText_Helped
-),
-sub_quest(
-	193,
-	gText_Quest_PersuasivePassenger_Sub3_Name,
-	gText_Quest_PersuasivePassenger_Sub3_Desc,
-	gText_Quest_PersuasivePassenger_Sub3_Map,
-	OBJ_EVENT_GFX_HIKER,
-	OBJECT,
-	sText_Defeated
-),
+static const struct SubQuest sPersuasivePassenger_Sub[QUEST_PERSUASIVEPASSENGER_SUB_COUNT] = {
+	sub_quest(
+	        191,
+	        gText_Quest_PersuasivePassenger_Sub1_Name,
+	        gText_Quest_PersuasivePassenger_Sub1_Desc,
+	        gText_Quest_PersuasivePassenger_Sub1_Map,
+	        OBJ_EVENT_GFX_GIRL_3,
+	        OBJECT,
+	        sText_Helped
+	),
+	sub_quest(
+	        192,
+	        gText_Quest_PersuasivePassenger_Sub2_Name,
+	        gText_Quest_PersuasivePassenger_Sub2_Desc,
+	        gText_Quest_PersuasivePassenger_Sub2_Map,
+	        OBJ_EVENT_GFX_WOMAN_1,
+	        OBJECT,
+	        sText_Helped
+	),
+	sub_quest(
+	        193,
+	        gText_Quest_PersuasivePassenger_Sub3_Name,
+	        gText_Quest_PersuasivePassenger_Sub3_Desc,
+	        gText_Quest_PersuasivePassenger_Sub3_Map,
+	        OBJ_EVENT_GFX_HIKER,
+	        OBJECT,
+	        sText_Defeated
+	),
 };
 
-static const struct SubQuest sBodegaBurnout_Sub[QUEST_BODEGABURNOUT_SUB_COUNT] =
-{
-sub_quest(
-	194,
-	gText_Quest_BodegaBurnout_Sub1_Name,
-	gText_Quest_BodegaBurnout_Sub1_Desc,
-	gText_Quest_BodegaBurnout_Sub1_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	195,
-	gText_Quest_BodegaBurnout_Sub2_Name,
-	gText_Quest_BodegaBurnout_Sub2_Desc,
-	gText_Quest_BodegaBurnout_Sub2_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	196,
-	gText_Quest_BodegaBurnout_Sub3_Name,
-	gText_Quest_BodegaBurnout_Sub3_Desc,
-	gText_Quest_BodegaBurnout_Sub3_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	197,
-	gText_Quest_BodegaBurnout_Sub4_Name,
-	gText_Quest_BodegaBurnout_Sub4_Desc,
-	gText_Quest_BodegaBurnout_Sub4_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	198,
-	gText_Quest_BodegaBurnout_Sub5_Name,
-	gText_Quest_BodegaBurnout_Sub5_Desc,
-	gText_Quest_BodegaBurnout_Sub5_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	199,
-	gText_Quest_BodegaBurnout_Sub6_Name,
-	gText_Quest_BodegaBurnout_Sub6_Desc,
-	gText_Quest_BodegaBurnout_Sub6_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	200,
-	gText_Quest_BodegaBurnout_Sub7_Name,
-	gText_Quest_BodegaBurnout_Sub7_Desc,
-	gText_Quest_BodegaBurnout_Sub7_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	201,
-	gText_Quest_BodegaBurnout_Sub8_Name,
-	gText_Quest_BodegaBurnout_Sub8_Desc,
-	gText_Quest_BodegaBurnout_Sub8_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	202,
-	gText_Quest_BodegaBurnout_Sub9_Name,
-	gText_Quest_BodegaBurnout_Sub9_Desc,
-	gText_Quest_BodegaBurnout_Sub9_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	203,
-	gText_Quest_BodegaBurnout_Sub10_Name,
-	gText_Quest_BodegaBurnout_Sub10_Desc,
-	gText_Quest_BodegaBurnout_Sub10_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	204,
-	gText_Quest_BodegaBurnout_Sub11_Name,
-	gText_Quest_BodegaBurnout_Sub11_Desc,
-	gText_Quest_BodegaBurnout_Sub11_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	205,
-	gText_Quest_BodegaBurnout_Sub12_Name,
-	gText_Quest_BodegaBurnout_Sub12_Desc,
-	gText_Quest_BodegaBurnout_Sub12_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	206,
-	gText_Quest_BodegaBurnout_Sub13_Name,
-	gText_Quest_BodegaBurnout_Sub13_Desc,
-	gText_Quest_BodegaBurnout_Sub13_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	207,
-	gText_Quest_BodegaBurnout_Sub14_Name,
-	gText_Quest_BodegaBurnout_Sub14_Desc,
-	gText_Quest_BodegaBurnout_Sub14_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	208,
-	gText_Quest_BodegaBurnout_Sub15_Name,
-	gText_Quest_BodegaBurnout_Sub15_Desc,
-	gText_Quest_BodegaBurnout_Sub15_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	209,
-	gText_Quest_BodegaBurnout_Sub16_Name,
-	gText_Quest_BodegaBurnout_Sub16_Desc,
-	gText_Quest_BodegaBurnout_Sub16_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
-sub_quest(
-	210,
-	gText_Quest_BodegaBurnout_Sub17_Name,
-	gText_Quest_BodegaBurnout_Sub17_Desc,
-	gText_Quest_BodegaBurnout_Sub17_Map,
-	SPECIES_DITTO,
-	PKMN,
-	sText_Gave
-),
+static const struct SubQuest sBodegaBurnout_Sub[QUEST_BODEGABURNOUT_SUB_COUNT] = {
+	sub_quest(
+	        194,
+	        gText_Quest_BodegaBurnout_Sub1_Name,
+	        gText_Quest_BodegaBurnout_Sub1_Desc,
+	        gText_Quest_BodegaBurnout_Sub1_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        195,
+	        gText_Quest_BodegaBurnout_Sub2_Name,
+	        gText_Quest_BodegaBurnout_Sub2_Desc,
+	        gText_Quest_BodegaBurnout_Sub2_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        196,
+	        gText_Quest_BodegaBurnout_Sub3_Name,
+	        gText_Quest_BodegaBurnout_Sub3_Desc,
+	        gText_Quest_BodegaBurnout_Sub3_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        197,
+	        gText_Quest_BodegaBurnout_Sub4_Name,
+	        gText_Quest_BodegaBurnout_Sub4_Desc,
+	        gText_Quest_BodegaBurnout_Sub4_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        198,
+	        gText_Quest_BodegaBurnout_Sub5_Name,
+	        gText_Quest_BodegaBurnout_Sub5_Desc,
+	        gText_Quest_BodegaBurnout_Sub5_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        199,
+	        gText_Quest_BodegaBurnout_Sub6_Name,
+	        gText_Quest_BodegaBurnout_Sub6_Desc,
+	        gText_Quest_BodegaBurnout_Sub6_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        200,
+	        gText_Quest_BodegaBurnout_Sub7_Name,
+	        gText_Quest_BodegaBurnout_Sub7_Desc,
+	        gText_Quest_BodegaBurnout_Sub7_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        201,
+	        gText_Quest_BodegaBurnout_Sub8_Name,
+	        gText_Quest_BodegaBurnout_Sub8_Desc,
+	        gText_Quest_BodegaBurnout_Sub8_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        202,
+	        gText_Quest_BodegaBurnout_Sub9_Name,
+	        gText_Quest_BodegaBurnout_Sub9_Desc,
+	        gText_Quest_BodegaBurnout_Sub9_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        203,
+	        gText_Quest_BodegaBurnout_Sub10_Name,
+	        gText_Quest_BodegaBurnout_Sub10_Desc,
+	        gText_Quest_BodegaBurnout_Sub10_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        204,
+	        gText_Quest_BodegaBurnout_Sub11_Name,
+	        gText_Quest_BodegaBurnout_Sub11_Desc,
+	        gText_Quest_BodegaBurnout_Sub11_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        205,
+	        gText_Quest_BodegaBurnout_Sub12_Name,
+	        gText_Quest_BodegaBurnout_Sub12_Desc,
+	        gText_Quest_BodegaBurnout_Sub12_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        206,
+	        gText_Quest_BodegaBurnout_Sub13_Name,
+	        gText_Quest_BodegaBurnout_Sub13_Desc,
+	        gText_Quest_BodegaBurnout_Sub13_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        207,
+	        gText_Quest_BodegaBurnout_Sub14_Name,
+	        gText_Quest_BodegaBurnout_Sub14_Desc,
+	        gText_Quest_BodegaBurnout_Sub14_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        208,
+	        gText_Quest_BodegaBurnout_Sub15_Name,
+	        gText_Quest_BodegaBurnout_Sub15_Desc,
+	        gText_Quest_BodegaBurnout_Sub15_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        209,
+	        gText_Quest_BodegaBurnout_Sub16_Name,
+	        gText_Quest_BodegaBurnout_Sub16_Desc,
+	        gText_Quest_BodegaBurnout_Sub16_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        210,
+	        gText_Quest_BodegaBurnout_Sub17_Name,
+	        gText_Quest_BodegaBurnout_Sub17_Desc,
+	        gText_Quest_BodegaBurnout_Sub17_Map,
+	        SPECIES_DITTO,
+	        PKMN,
+	        sText_Gave
+	),
 };
 
-static const struct SubQuest sWarehouseWarfare_Sub[QUEST_WAREHOUSEWARFARE_SUB_COUNT] =
-{
-sub_quest(
-	211,
-	gText_Quest_WarehouseWarfare_Sub1_Name,
-	gText_Quest_WarehouseWarfare_Sub1_Desc,
-	gText_Quest_WarehouseWarfare_Sub1_Map,
-	OBJ_EVENT_GFX_ARTIST,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	212,
-	gText_Quest_WarehouseWarfare_Sub2_Name,
-	gText_Quest_WarehouseWarfare_Sub2_Desc,
-	gText_Quest_WarehouseWarfare_Sub2_Map,
-	OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN,
-	OBJECT,
-	sText_Defeated
-),
-sub_quest(
-	213,
-	gText_Quest_WarehouseWarfare_Sub3_Name,
-	gText_Quest_WarehouseWarfare_Sub3_Desc,
-	gText_Quest_WarehouseWarfare_Sub3_Map,
-	OBJ_EVENT_GFX_MAN_5,
-	OBJECT,
-	sText_Defeated
-),
+static const struct SubQuest sWarehouseWarfare_Sub[QUEST_WAREHOUSEWARFARE_SUB_COUNT] = {
+	sub_quest(
+	        211,
+	        gText_Quest_WarehouseWarfare_Sub1_Name,
+	        gText_Quest_WarehouseWarfare_Sub1_Desc,
+	        gText_Quest_WarehouseWarfare_Sub1_Map,
+	        OBJ_EVENT_GFX_ARTIST,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        212,
+	        gText_Quest_WarehouseWarfare_Sub2_Name,
+	        gText_Quest_WarehouseWarfare_Sub2_Desc,
+	        gText_Quest_WarehouseWarfare_Sub2_Map,
+	        OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN,
+	        OBJECT,
+	        sText_Defeated
+	),
+	sub_quest(
+	        213,
+	        gText_Quest_WarehouseWarfare_Sub3_Name,
+	        gText_Quest_WarehouseWarfare_Sub3_Desc,
+	        gText_Quest_WarehouseWarfare_Sub3_Map,
+	        OBJ_EVENT_GFX_MAN_5,
+	        OBJECT,
+	        sText_Defeated
+	),
 };
 
-static const struct SubQuest sRestoreToTheirFormerGlory_Sub[QUEST_RESTORETOTHEIRFORMERGLORY_SUB_COUNT] =
-{
-sub_quest(
-	214,
-	gText_Quest_RestoreToTheirFormerGlory_Sub1_Name,
-	gText_Quest_RestoreToTheirFormerGlory_Sub1_Desc,
-	gText_Quest_RestoreToTheirFormerGlory_Sub1_Map,
-	OBJ_EVENT_GFX_WALLY,
-	OBJECT,
-	sText_Restored
-),
-sub_quest(
-	215,
-	gText_Quest_RestoreToTheirFormerGlory_Sub2_Name,
-	gText_Quest_RestoreToTheirFormerGlory_Sub2_Desc,
-	gText_Quest_RestoreToTheirFormerGlory_Sub2_Map,
-	OBJ_EVENT_GFX_WALLY,
-	OBJECT,
-	sText_Restored
-),
-sub_quest(
-	216,
-	gText_Quest_RestoreToTheirFormerGlory_Sub3_Name,
-	gText_Quest_RestoreToTheirFormerGlory_Sub3_Desc,
-	gText_Quest_RestoreToTheirFormerGlory_Sub3_Map,
-	OBJ_EVENT_GFX_WALLY,
-	OBJECT,
-	sText_Restored
-),
-sub_quest(
-	217,
-	gText_Quest_RestoreToTheirFormerGlory_Sub4_Name,
-	gText_Quest_RestoreToTheirFormerGlory_Sub4_Desc,
-	gText_Quest_RestoreToTheirFormerGlory_Sub4_Map,
-	OBJ_EVENT_GFX_WALLY,
-	OBJECT,
-	sText_Restored
-),
+static const struct SubQuest
+	sRestoreToTheirFormerGlory_Sub[QUEST_RESTORETOTHEIRFORMERGLORY_SUB_COUNT] = {
+	sub_quest(
+	        214,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub1_Name,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub1_Desc,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub1_Map,
+	        OBJ_EVENT_GFX_WALLY,
+	        OBJECT,
+	        sText_Restored
+	),
+	sub_quest(
+	        215,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub2_Name,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub2_Desc,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub2_Map,
+	        OBJ_EVENT_GFX_WALLY,
+	        OBJECT,
+	        sText_Restored
+	),
+	sub_quest(
+	        216,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub3_Name,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub3_Desc,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub3_Map,
+	        OBJ_EVENT_GFX_WALLY,
+	        OBJECT,
+	        sText_Restored
+	),
+	sub_quest(
+	        217,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub4_Name,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub4_Desc,
+	        gText_Quest_RestoreToTheirFormerGlory_Sub4_Map,
+	        OBJ_EVENT_GFX_WALLY,
+	        OBJECT,
+	        sText_Restored
+	),
 };
 
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
@@ -2272,955 +2234,953 @@ sub_quest(
 
 //Declaration of side quest structures. Edits to quests are made here.
 #define side_quest(n, d, dd, m, s, st, sq, ns) {.name = n, .desc = d, .donedesc = dd, .map = m, .sprite = s, .spritetype = st, .subquests = sq, .numSubquests = ns}
-static const struct SideQuest sSideQuests[QUEST_COUNT] =
-{
-	side_quest(
-	      gText_Quest_PlayersAdventure_Name,
-	      gText_Quest_PlayersAdventure_Desc,
-	      gText_Quest_PlayersAdventure_DoneDesc,
-	      gText_Quest_PlayersAdventure_Map,
-	      OBJ_EVENT_GFX_BRENDAN_NORMAL,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_ReturnDoll_Name,
-	      gText_Quest_ReturnDoll_Desc,
-	      gText_Quest_ReturnDoll_DoneDesc,
-	      gText_Quest_ReturnDoll_Map,
-	      OBJ_EVENT_GFX_LITTLE_GIRL,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_BringFruit_Name,
-	      gText_Quest_BringFruit_Desc,
-	      gText_Quest_BringFruit_DoneDesc,
-	      gText_Quest_BringFruit_Map,
-	      OBJ_EVENT_GFX_POKEFAN_M,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_BringFireType_Name,
-	      gText_Quest_BringFireType_Desc,
-	      gText_Quest_BringFireType_DoneDesc,
-	      gText_Quest_BringFireType_Map,
-	      OBJ_EVENT_GFX_MAN_1,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_StopMugging_Name,
-	      gText_Quest_StopMugging_Desc,
-	      gText_Quest_StopMugging_DoneDesc,
-	      gText_Quest_StopMugging_Map,
-	      OBJ_EVENT_GFX_ARTIST,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_StolenTrade_Name,
-	      gText_Quest_StolenTrade_Desc,
-	      gText_Quest_StolenTrade_DoneDesc,
-	      gText_Quest_StolenTrade_Map,
-	      OBJ_EVENT_GFX_GIRL_3,
-	      OBJECT,
-	      NULL,
-	      6
-	),
-	side_quest(
-	      gText_Quest_HauntABuilding_Name,
-	      gText_Quest_HauntABuilding_Desc,
-	      gText_Quest_HauntABuilding_DoneDesc,
-	      gText_Quest_HauntABuilding_Map,
-	      OBJ_EVENT_GFX_GIRL_2,
-	      OBJECT,
-	      sHauntABuilding_Sub,
-	      6
-	),
-    side_quest(
-	gText_Quest_RabiesOutbreak_Name,
-	gText_Quest_RabiesOutbreak_Desc,
-	gText_Quest_RabiesOutbreak_DoneDesc,
-	gText_Quest_RabiesOutbreak_Map,
-	SPECIES_GLAMEOW,
-	PKMN,
-	NULL,
-	0
-),
-side_quest(
-	gText_Quest_BlueRobbery_Name,
-	gText_Quest_BlueRobbery_Desc,
-	gText_Quest_BlueRobbery_DoneDesc,
-	gText_Quest_BlueRobbery_Map,
-	SPECIES_WOBBUFFET,
-	PKMN,
-	NULL,
-	0
-),
-side_quest(
-	gText_Quest_IceCreamCrafting_Name,
-	gText_Quest_IceCreamCrafting_Desc,
-	gText_Quest_IceCreamCrafting_DoneDesc,
-	gText_Quest_IceCreamCrafting_Map,
-	ITEM_NANAB_BERRY,
-	ITEM,
-	NULL,
-	0
-),
-side_quest(
-	gText_Quest_VSDeoxys_Name,
-	gText_Quest_VSDeoxys_Desc,
-	gText_Quest_VSDeoxys_DoneDesc,
-	gText_Quest_VSDeoxys_Map,
-	SPECIES_DEOXYS_SPEED,
-	PKMN,
-	NULL,
-	0
-),
-side_quest(
-	gText_Quest_ChinatownTunnels_Name,
-	gText_Quest_ChinatownTunnels_Desc,
-	gText_Quest_ChinatownTunnels_DoneDesc,
-	gText_Quest_ChinatownTunnels_Map,
-	OBJ_EVENT_GFX_OLD_MAN,
-	OBJECT,
-	NULL,
-	0
-),
-side_quest(
-	gText_Quest_FreshwaterEvolution_Name,
-	gText_Quest_FreshwaterEvolution_Desc,
-	gText_Quest_FreshwaterEvolution_DoneDesc,
-	gText_Quest_FreshwaterEvolution_Map,
-	SPECIES_OCTILLERY,
-	PKMN,
-	NULL,
-	0
-),
-side_quest(
-	gText_Quest_GemArtist_Name,
-	gText_Quest_GemArtist_Desc,
-	gText_Quest_GemArtist_DoneDesc,
-	gText_Quest_GemArtist_Map,
-	ITEM_NORMAL_GEM,
-	ITEM,
-	NULL,
-	0
-),
-side_quest(
-	gText_Quest_BetweenAStoneAndAHardPlace_Name,
-	gText_Quest_BetweenAStoneAndAHardPlace_Desc,
-	gText_Quest_BetweenAStoneAndAHardPlace_DoneDesc,
-	gText_Quest_BetweenAStoneAndAHardPlace_Map,
-	ITEM_FIRE_STONE,
-	ITEM,
-	NULL,
-	0
-),
-	side_quest(
-	      gText_Quest_RightingWrongs_Name,
-	      gText_Quest_RightingWrongs_Desc,
-	      gText_Quest_RightingWrongs_DoneDesc,
-	      gText_Quest_RightingWrongs_Map,
-	      OBJ_EVENT_GFX_BOY_1,
-	      OBJECT,
-	      sRightingWrongs_Sub,
-	      4
-	),
-	side_quest(
-	      gText_Quest_EnterTheDragon_Name,
-	      gText_Quest_EnterTheDragon_Desc,
-	      gText_Quest_EnterTheDragon_DoneDesc,
-	      gText_Quest_EnterTheDragon_Map,
-	      SPECIES_HITMONLEE,
-	      PKMN,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_BreakTheInternet_Name,
-	      gText_Quest_BreakTheInternet_Desc,
-	      gText_Quest_BreakTheInternet_DoneDesc,
-	      gText_Quest_BreakTheInternet_Map,
-	      OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
-	      OBJECT,
-	      sBreakTheInternet_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_ShutDownMedicineMan_Name,
-	      gText_Quest_ShutDownMedicineMan_Desc,
-	      gText_Quest_ShutDownMedicineMan_DoneDesc,
-	      gText_Quest_ShutDownMedicineMan_Map,
-	      OBJ_EVENT_GFX_RICH_BOY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_BuildingScope_Name,
-	      gText_Quest_BuildingScope_Desc,
-	      gText_Quest_BuildingScope_DoneDesc,
-	      gText_Quest_BuildingScope_Map,
-	      OBJ_EVENT_GFX_MAGMA_MEMBER_M,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_NoGoodDeed_Name,
-	      gText_Quest_NoGoodDeed_Desc,
-	      gText_Quest_NoGoodDeed_DoneDesc,
-	      gText_Quest_NoGoodDeed_Map,
-	      OBJ_EVENT_GFX_MOM,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_ImprovBattling_Name,
-	      gText_Quest_ImprovBattling_Desc,
-	      gText_Quest_ImprovBattling_DoneDesc,
-	      gText_Quest_ImprovBattling_Map,
-	      OBJ_EVENT_GFX_RICH_BOY,
-	      OBJECT,
-	      sImprovBattling_Sub,
-	      4
-	),
-	side_quest(
-	      gText_Quest_ImprovBattlingChampionship_Name,
-	      gText_Quest_ImprovBattlingChampionship_Desc,
-	      gText_Quest_ImprovBattlingChampionship_DoneDesc,
-	      gText_Quest_ImprovBattlingChampionship_Map,
-	      OBJ_EVENT_GFX_RICH_BOY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_InstallNatureProbes_Name,
-	      gText_Quest_InstallNatureProbes_Desc,
-	      gText_Quest_InstallNatureProbes_DoneDesc,
-	      gText_Quest_InstallNatureProbes_Map,
-	      OBJ_EVENT_GFX_ARTIST,
-	      OBJECT,
-	      sInstallNatureProbes_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_ManOfManyHats_Name,
-	      gText_Quest_ManOfManyHats_Desc,
-	      gText_Quest_ManOfManyHats_DoneDesc,
-	      gText_Quest_ManOfManyHats_Map,
-	      OBJ_EVENT_GFX_ARTIST,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_RecruitLocalArtists_Name,
-	      gText_Quest_RecruitLocalArtists_Desc,
-	      gText_Quest_RecruitLocalArtists_DoneDesc,
-	      gText_Quest_RecruitLocalArtists_Map,
-	      OBJ_EVENT_GFX_MAGMA_MEMBER_F,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_RestaurantExpansion1_Name,
-	      gText_Quest_RestaurantExpansion1_Desc,
-	      gText_Quest_RestaurantExpansion1_DoneDesc,
-	      gText_Quest_RestaurantExpansion1_Map,
-	      OBJ_EVENT_GFX_ROXANNE,
-	      OBJECT,
-	      sRestaurantExpansion1_Sub,
-	      4
-	),
-	side_quest(
-	      gText_Quest_RestaurantExpansion2_Name,
-	      gText_Quest_RestaurantExpansion2_Desc,
-	      gText_Quest_RestaurantExpansion2_DoneDesc,
-	      gText_Quest_RestaurantExpansion2_Map,
-	      OBJ_EVENT_GFX_ROXANNE,
-	      OBJECT,
-	      sRestaurantExpansion2_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_RestaurantExpansion3_Name,
-	      gText_Quest_RestaurantExpansion3_Desc,
-	      gText_Quest_RestaurantExpansion3_DoneDesc,
-	      gText_Quest_RestaurantExpansion3_Map,
-	      OBJ_EVENT_GFX_ROXANNE,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_CulturalPurity_Name,
-	      gText_Quest_CulturalPurity_Desc,
-	      gText_Quest_CulturalPurity_DoneDesc,
-	      gText_Quest_CulturalPurity_Map,
-	      OBJ_EVENT_GFX_BRAWLY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_HybridCulture_Name,
-	      gText_Quest_HybridCulture_Desc,
-	      gText_Quest_HybridCulture_DoneDesc,
-	      gText_Quest_HybridCulture_Map,
-	      OBJ_EVENT_GFX_BRAWLY,
-	      OBJECT,
-	      sHybridCulture_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_AlohaFromAlola_Name,
-	      gText_Quest_AlohaFromAlola_Desc,
-	      gText_Quest_AlohaFromAlola_DoneDesc,
-	      gText_Quest_AlohaFromAlola_Map,
-	      OBJ_EVENT_GFX_WATTSON,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_BuildingAnExhibit_Name,
-	      gText_Quest_BuildingAnExhibit_Desc,
-	      gText_Quest_BuildingAnExhibit_DoneDesc,
-	      gText_Quest_BuildingAnExhibit_Map,
-	      OBJ_EVENT_GFX_WATTSON,
-	      OBJECT,
-	      sBuildingAnExhibit_Sub,
-	      4
-	),
-	side_quest(
-	      gText_Quest_UnknownMortyQuestA_Name,
-	      gText_Quest_UnknownMortyQuestA_Desc,
-	      gText_Quest_UnknownMortyQuestA_DoneDesc,
-	      gText_Quest_UnknownMortyQuestA_Map,
-	      OBJ_EVENT_GFX_FLANNERY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownMortyQuestB_Name,
-	      gText_Quest_UnknownMortyQuestB_Desc,
-	      gText_Quest_UnknownMortyQuestB_DoneDesc,
-	      gText_Quest_UnknownMortyQuestB_Map,
-	      OBJ_EVENT_GFX_FLANNERY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownChuckQuestA_Name,
-	      gText_Quest_UnknownChuckQuestA_Desc,
-	      gText_Quest_UnknownChuckQuestA_DoneDesc,
-	      gText_Quest_UnknownChuckQuestA_Map,
-	      OBJ_EVENT_GFX_NORMAN,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownChuckQuestB_Name,
-	      gText_Quest_UnknownChuckQuestB_Desc,
-	      gText_Quest_UnknownChuckQuestB_DoneDesc,
-	      gText_Quest_UnknownChuckQuestB_Map,
-	      OBJ_EVENT_GFX_NORMAN,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_BiomeResearch_Name,
-	      gText_Quest_BiomeResearch_Desc,
-	      gText_Quest_BiomeResearch_DoneDesc,
-	      gText_Quest_BiomeResearch_Map,
-	      OBJ_EVENT_GFX_WINONA,
-	      OBJECT,
-	      sBiomeResearch_Sub,
-	      8
-	),
-	side_quest(
-	      gText_Quest_BerrySustainability_Name,
-	      gText_Quest_BerrySustainability_Desc,
-	      gText_Quest_BerrySustainability_DoneDesc,
-	      gText_Quest_BerrySustainability_Map,
-	      OBJ_EVENT_GFX_WINONA,
-	      OBJECT,
-	      sBerrySustainability_Sub,
-	      6
-	),
-	side_quest(
-	      gText_Quest_TheOnlyHeadShopInTown_Name,
-	      gText_Quest_TheOnlyHeadShopInTown_Desc,
-	      gText_Quest_TheOnlyHeadShopInTown_DoneDesc,
-	      gText_Quest_TheOnlyHeadShopInTown_Map,
-	      OBJ_EVENT_GFX_TATE,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_InverseHallucinogenic_Name,
-	      gText_Quest_InverseHallucinogenic_Desc,
-	      gText_Quest_InverseHallucinogenic_DoneDesc,
-	      gText_Quest_InverseHallucinogenic_Map,
-	      OBJ_EVENT_GFX_TATE,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownClairQuestA_Name,
-	      gText_Quest_UnknownClairQuestA_Desc,
-	      gText_Quest_UnknownClairQuestA_DoneDesc,
-	      gText_Quest_UnknownClairQuestA_Map,
-	      OBJ_EVENT_GFX_JUAN,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownClairQuestB_Name,
-	      gText_Quest_UnknownClairQuestB_Desc,
-	      gText_Quest_UnknownClairQuestB_DoneDesc,
-	      gText_Quest_UnknownClairQuestB_Map,
-	      OBJ_EVENT_GFX_JUAN,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_ContractorPorygon_Name,
-	      gText_Quest_ContractorPorygon_Desc,
-	      gText_Quest_ContractorPorygon_DoneDesc,
-	      gText_Quest_ContractorPorygon_Map,
-	      OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F,
-	      OBJECT,
-	      sContractorPorygon_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_AngelDelivery_Name,
-	      gText_Quest_AngelDelivery_Desc,
-	      gText_Quest_AngelDelivery_DoneDesc,
-	      gText_Quest_AngelDelivery_Map,
-	      OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_GetTheBandBackTogether_Name,
-	      gText_Quest_GetTheBandBackTogether_Desc,
-	      gText_Quest_GetTheBandBackTogether_DoneDesc,
-	      gText_Quest_GetTheBandBackTogether_Map,
-	      OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M,
-	      OBJECT,
-	      sGetTheBandBackTogether_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_FoodTruckBureacracy_Name,
-	      gText_Quest_FoodTruckBureacracy_Desc,
-	      gText_Quest_FoodTruckBureacracy_DoneDesc,
-	      gText_Quest_FoodTruckBureacracy_Map,
-	      OBJ_EVENT_GFX_YOUNGSTER,
-	      OBJECT,
-	      sFoodTruckBureacracy_Sub,
-	      4
-	),
-	side_quest(
-	      gText_Quest_DetectiveAriana_Name,
-	      gText_Quest_DetectiveAriana_Desc,
-	      gText_Quest_DetectiveAriana_DoneDesc,
-	      gText_Quest_DetectiveAriana_Map,
-	      OBJ_EVENT_GFX_MAGMA_MEMBER_F,
-	      OBJECT,
-	      sDetectiveAriana_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_UnknownBruceLeeQuest_Name,
-	      gText_Quest_UnknownBruceLeeQuest_Desc,
-	      gText_Quest_UnknownBruceLeeQuest_DoneDesc,
-	      gText_Quest_UnknownBruceLeeQuest_Map,
-	      OBJ_EVENT_GFX_BLACK_BELT,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_ChallengeOfThe7Sisters_Name,
-	      gText_Quest_ChallengeOfThe7Sisters_Desc,
-	      gText_Quest_ChallengeOfThe7Sisters_DoneDesc,
-	      gText_Quest_ChallengeOfThe7Sisters_Map,
-	      OBJ_EVENT_GFX_HEX_MANIAC,
-	      OBJECT,
-	      sChallengeOfThe7Sisters_Sub,
-	      7
-	),
-	side_quest(
-	      gText_Quest_Esports_Name,
-	      gText_Quest_Esports_Desc,
-	      gText_Quest_Esports_DoneDesc,
-	      gText_Quest_Esports_Map,
-	      OBJ_EVENT_GFX_BOY_2,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_CutePokemon_Name,
-	      gText_Quest_CutePokemon_Desc,
-	      gText_Quest_CutePokemon_DoneDesc,
-	      gText_Quest_CutePokemon_Map,
-	      OBJ_EVENT_GFX_WOMAN_5,
-	      OBJECT,
-	      sCutePokemon_Sub,
-	      4
-	),
-	side_quest(
-	      gText_Quest_WallaceArmy_Name,
-	      gText_Quest_WallaceArmy_Desc,
-	      gText_Quest_WallaceArmy_DoneDesc,
-	      gText_Quest_WallaceArmy_Map,
-	      OBJ_EVENT_GFX_SAILOR,
-	      OBJECT,
-	      sWallaceArmy_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_DexCompletion_Name,
-	      gText_Quest_DexCompletion_Desc,
-	      gText_Quest_DexCompletion_DoneDesc,
-	      gText_Quest_DexCompletion_Map,
-	      OBJ_EVENT_GFX_SCIENTIST_2,
-	      OBJECT,
-	      sDexCompletion_Sub,
-	      2
-	),
-	side_quest(
-	      gText_Quest_CableCarDancing_Name,
-	      gText_Quest_CableCarDancing_Desc,
-	      gText_Quest_CableCarDancing_DoneDesc,
-	      gText_Quest_CableCarDancing_Map,
-	      OBJ_EVENT_GFX_COOK,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_KitchenVolunteering_Name,
-	      gText_Quest_KitchenVolunteering_Desc,
-	      gText_Quest_KitchenVolunteering_DoneDesc,
-	      gText_Quest_KitchenVolunteering_Map,
-	      OBJ_EVENT_GFX_SCIENTIST_1,
-	      OBJECT,
-	      sKitchenVolunteering_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_ArtisanBalls1_Name,
-	      gText_Quest_ArtisanBalls1_Desc,
-	      gText_Quest_ArtisanBalls1_DoneDesc,
-	      gText_Quest_ArtisanBalls1_Map,
-	      OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
-	      OBJECT,
-	      sArtisanBalls_Sub,
-	      7
-	),
-	side_quest(
-	      gText_Quest_ArtisanBalls2_Name,
-	      gText_Quest_ArtisanBalls2_Desc,
-	      gText_Quest_ArtisanBalls2_DoneDesc,
-	      gText_Quest_ArtisanBalls2_Map,
-	      OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
-	      OBJECT,
-	      sArtisanBalls2_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_ArtisanBalls3_Name,
-	      gText_Quest_ArtisanBalls3_Desc,
-	      gText_Quest_ArtisanBalls3_DoneDesc,
-	      gText_Quest_ArtisanBalls3_Map,
-	      OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_ShelterSwitcheroo_Name,
-	      gText_Quest_ShelterSwitcheroo_Desc,
-	      gText_Quest_ShelterSwitcheroo_DoneDesc,
-	      gText_Quest_ShelterSwitcheroo_Map,
-	      OBJ_EVENT_GFX_FAT_MAN,
-	      OBJECT,
-	      sShelterSwitcheroo_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_ShelterTaxiSolution_Name,
-	      gText_Quest_ShelterTaxiSolution_Desc,
-	      gText_Quest_ShelterTaxiSolution_DoneDesc,
-	      gText_Quest_ShelterTaxiSolution_Map,
-	      OBJ_EVENT_GFX_FAT_MAN,
-	      OBJECT,
-	      sShelterTaxiSolution_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_LastMusicVenueInSanFrancisco_Name,
-	      gText_Quest_LastMusicVenueInSanFrancisco_Desc,
-	      gText_Quest_LastMusicVenueInSanFrancisco_DoneDesc,
-	      gText_Quest_LastMusicVenueInSanFrancisco_Map,
-	      OBJ_EVENT_GFX_YOUNGSTER,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_GardenCleanup_Name,
-	      gText_Quest_GardenCleanup_Desc,
-	      gText_Quest_GardenCleanup_DoneDesc,
-	      gText_Quest_GardenCleanup_Map,
-	      OBJ_EVENT_GFX_SCHOOL_KID_M,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_GardenCleanupAdvanced_Name,
-	      gText_Quest_GardenCleanupAdvanced_Desc,
-	      gText_Quest_GardenCleanupAdvanced_DoneDesc,
-	      gText_Quest_GardenCleanupAdvanced_Map,
-	      OBJ_EVENT_GFX_SCHOOL_KID_M,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_EmployedEverAfter_Name,
-	      gText_Quest_EmployedEverAfter_Desc,
-	      gText_Quest_EmployedEverAfter_DoneDesc,
-	      gText_Quest_EmployedEverAfter_Map,
-	      OBJ_EVENT_GFX_BEAUTY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_ButOnlyInMyBackyard_Name,
-	      gText_Quest_ButOnlyInMyBackyard_Desc,
-	      gText_Quest_ButOnlyInMyBackyard_DoneDesc,
-	      gText_Quest_ButOnlyInMyBackyard_Map,
-	      OBJ_EVENT_GFX_WOMAN_3,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_NeighborhoodCleanUp_Name,
-	      gText_Quest_NeighborhoodCleanUp_Desc,
-	      gText_Quest_NeighborhoodCleanUp_DoneDesc,
-	      gText_Quest_NeighborhoodCleanUp_Map,
-	      OBJ_EVENT_GFX_POKEFAN_M,
-	      OBJECT,
-	      sNeighborhoodCleanUp_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_NeighborhoodCleanUp2_Name,
-	      gText_Quest_NeighborhoodCleanUp2_Desc,
-	      gText_Quest_NeighborhoodCleanUp2_DoneDesc,
-	      gText_Quest_NeighborhoodCleanUp2_Map,
-	      OBJ_EVENT_GFX_POKEFAN_M,
-	      OBJECT,
-	      sNeighborhoodCleanUp2_Sub,
-	      4
-	),
-	side_quest(
-	      gText_Quest_NeighborhoodCleanUp3_Name,
-	      gText_Quest_NeighborhoodCleanUp3_Desc,
-	      gText_Quest_NeighborhoodCleanUp3_DoneDesc,
-	      gText_Quest_NeighborhoodCleanUp3_Map,
-	      OBJ_EVENT_GFX_POKEFAN_M,
-	      OBJECT,
-	      sNeighborhoodCleanUp3_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_NeighborhoodCleanUp4_Name,
-	      gText_Quest_NeighborhoodCleanUp4_Desc,
-	      gText_Quest_NeighborhoodCleanUp4_DoneDesc,
-	      gText_Quest_NeighborhoodCleanUp4_Map,
-	      OBJ_EVENT_GFX_WOMAN_4,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_RockCollector_Name,
-	      gText_Quest_RockCollector_Desc,
-	      gText_Quest_RockCollector_DoneDesc,
-	      gText_Quest_RockCollector_Map,
-	      OBJ_EVENT_GFX_COOK,
-	      OBJECT,
-	      sRockCollector_Sub,
-	      10
-	),
-	side_quest(
-	      gText_Quest_Hang20_Name,
-	      gText_Quest_Hang20_Desc,
-	      gText_Quest_Hang20_DoneDesc,
-	      gText_Quest_Hang20_Map,
-	      OBJ_EVENT_GFX_SWIMMER_M,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_AllThatGlittersMightBeGold_Name,
-	      gText_Quest_AllThatGlittersMightBeGold_Desc,
-	      gText_Quest_AllThatGlittersMightBeGold_DoneDesc,
-	      gText_Quest_AllThatGlittersMightBeGold_Map,
-	      OBJ_EVENT_GFX_FISHERMAN,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownFishingQuest_Name,
-	      gText_Quest_UnknownFishingQuest_Desc,
-	      gText_Quest_UnknownFishingQuest_DoneDesc,
-	      gText_Quest_UnknownFishingQuest_Map,
-	      OBJ_EVENT_GFX_FISHERMAN,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_HiddenGrottoMapping_Name,
-	      gText_Quest_HiddenGrottoMapping_Desc,
-	      gText_Quest_HiddenGrottoMapping_DoneDesc,
-	      gText_Quest_HiddenGrottoMapping_Map,
-	      OBJ_EVENT_GFX_CAMPER,
-	      OBJECT,
-	      sHiddenGrottoMapping_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_HiddenGrottoMapping2_Name,
-	      gText_Quest_HiddenGrottoMapping2_Desc,
-	      gText_Quest_HiddenGrottoMapping2_DoneDesc,
-	      gText_Quest_HiddenGrottoMapping2_Map,
-	      OBJ_EVENT_GFX_TWIN,
-	      OBJECT,
-	      sHiddenGrottoMapping2_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_UltraWormholeResearch_Name,
-	      gText_Quest_UltraWormholeResearch_Desc,
-	      gText_Quest_UltraWormholeResearch_DoneDesc,
-	      gText_Quest_UltraWormholeResearch_Map,
-	      OBJ_EVENT_GFX_OLD_MAN,
-	      OBJECT,
-	      sUltraWormholeResearch_Sub,
-	      10
-	),
-	side_quest(
-	      gText_Quest_UnknownGovernmentSocialMediaQuest_Name,
-	      gText_Quest_UnknownGovernmentSocialMediaQuest_Desc,
-	      gText_Quest_UnknownGovernmentSocialMediaQuest_DoneDesc,
-	      gText_Quest_UnknownGovernmentSocialMediaQuest_Map,
-	      ITEM_FAME_CHECKER,
-	      ITEM,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_DrumCircle_Name,
-	      gText_Quest_DrumCircle_Desc,
-	      gText_Quest_DrumCircle_DoneDesc,
-	      gText_Quest_DrumCircle_Map,
-	      OBJ_EVENT_GFX_GIRL_3,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownProp22Quest_Name,
-	      gText_Quest_UnknownProp22Quest_Desc,
-	      gText_Quest_UnknownProp22Quest_DoneDesc,
-	      gText_Quest_UnknownProp22Quest_Map,
-	      OBJ_EVENT_GFX_NINJA_BOY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownTimeTravelQuest_Name,
-	      gText_Quest_UnknownTimeTravelQuest_Desc,
-	      gText_Quest_UnknownTimeTravelQuest_DoneDesc,
-	      gText_Quest_UnknownTimeTravelQuest_Map,
-	      OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownConstructionStrikeQuest_Name,
-	      gText_Quest_UnknownConstructionStrikeQuest_Desc,
-	      gText_Quest_UnknownConstructionStrikeQuest_DoneDesc,
-	      gText_Quest_UnknownConstructionStrikeQuest_Map,
-	      OBJ_EVENT_GFX_BOY_2,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_IBelieveICanFly_Name,
-	      gText_Quest_IBelieveICanFly_Desc,
-	      gText_Quest_IBelieveICanFly_DoneDesc,
-	      gText_Quest_IBelieveICanFly_Map,
-	      OBJ_EVENT_GFX_BEAUTY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_WildfireRisk_Name,
-	      gText_Quest_WildfireRisk_Desc,
-	      gText_Quest_WildfireRisk_DoneDesc,
-	      gText_Quest_WildfireRisk_Map,
-	      OBJ_EVENT_GFX_ARTIST,
-	      OBJECT,
-	      sWildfireRisk_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_TheBoyWhoCriesWithWolves_Name,
-	      gText_Quest_TheBoyWhoCriesWithWolves_Desc,
-	      gText_Quest_TheBoyWhoCriesWithWolves_DoneDesc,
-	      gText_Quest_TheBoyWhoCriesWithWolves_Map,
-	      OBJ_EVENT_GFX_GENTLEMAN,
-	      OBJECT,
-	      sTheBoyWhoCriesWithWolves_Sub,
-	      9
-	),
-	side_quest(
-	      gText_Quest_UnknownTrolleyProblem_Name,
-	      gText_Quest_UnknownTrolleyProblem_Desc,
-	      gText_Quest_UnknownTrolleyProblem_DoneDesc,
-	      gText_Quest_UnknownTrolleyProblem_Map,
-	      OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_UnknownLandfillQuest_Name,
-	      gText_Quest_UnknownLandfillQuest_Desc,
-	      gText_Quest_UnknownLandfillQuest_DoneDesc,
-	      gText_Quest_UnknownLandfillQuest_Map,
-	      OBJ_EVENT_GFX_NINJA_BOY,
-	      OBJECT,
-	      NULL,
-	      0
-	),
-	side_quest(
-	      gText_Quest_TaxicabTurnaroundSea_Name,
-	      gText_Quest_TaxicabTurnaroundSea_Desc,
-	      gText_Quest_TaxicabTurnaroundSea_DoneDesc,
-	      gText_Quest_TaxicabTurnaroundSea_Map,
-	      OBJ_EVENT_GFX_GIRL_3,
-	      OBJECT,
-	      sTaxicabTurnAroundSea_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_TaxicabTurnaroundAir_Name,
-	      gText_Quest_TaxicabTurnaroundAir_Desc,
-	      gText_Quest_TaxicabTurnaroundAir_DoneDesc,
-	      gText_Quest_TaxicabTurnaroundAir_Map,
-	      OBJ_EVENT_GFX_GIRL_3,
-	      OBJECT,
-	      sTaxicabTurnAroundAir_Sub,
-	      5
-	),
-	side_quest(
-	      gText_Quest_TaxicabTurnaroundLand_Name,
-	      gText_Quest_TaxicabTurnaroundLand_Desc,
-	      gText_Quest_TaxicabTurnaroundLand_DoneDesc,
-	      gText_Quest_TaxicabTurnaroundLand_Map,
-	      OBJ_EVENT_GFX_GIRL_3,
-	      OBJECT,
-	      sTaxicabTurnAroundLand_Sub,
-	      7
-	),
-	side_quest(
-	      gText_Quest_PersuasivePassenger_Name,
-	      gText_Quest_PersuasivePassenger_Desc,
-	      gText_Quest_PersuasivePassenger_DoneDesc,
-	      gText_Quest_PersuasivePassenger_Map,
-	      OBJ_EVENT_GFX_GIRL_3,
-	      OBJECT,
-	      sPersuasivePassenger_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_BodegaBurnout_Name,
-	      gText_Quest_BodegaBurnout_Desc,
-	      gText_Quest_BodegaBurnout_DoneDesc,
-	      gText_Quest_BodegaBurnout_Map,
-	      OBJ_EVENT_GFX_TWIN,
-	      OBJECT,
-	      sBodegaBurnout_Sub,
-	      17
-	),
-	side_quest(
-	      gText_Quest_WarehouseWarfare_Name,
-	      gText_Quest_WarehouseWarfare_Desc,
-	      gText_Quest_WarehouseWarfare_DoneDesc,
-	      gText_Quest_WarehouseWarfare_Map,
-	      OBJ_EVENT_GFX_GENTLEMAN,
-	      OBJECT,
-	      sWarehouseWarfare_Sub,
-	      3
-	),
-	side_quest(
-	      gText_Quest_RestoreToTheirFormerGlory_Name,
-	      gText_Quest_RestoreToTheirFormerGlory_Desc,
-	      gText_Quest_RestoreToTheirFormerGlory_DoneDesc,
-	      gText_Quest_RestoreToTheirFormerGlory_Map,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sRestoreToTheirFormerGlory_Sub,
-	      4
+static const struct SideQuest sSideQuests[QUEST_COUNT] = {
+	side_quest(
+	        gText_Quest_PlayersAdventure_Name,
+	        gText_Quest_PlayersAdventure_Desc,
+	        gText_Quest_PlayersAdventure_DoneDesc,
+	        gText_Quest_PlayersAdventure_Map,
+	        OBJ_EVENT_GFX_BRENDAN_NORMAL,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_ReturnDoll_Name,
+	        gText_Quest_ReturnDoll_Desc,
+	        gText_Quest_ReturnDoll_DoneDesc,
+	        gText_Quest_ReturnDoll_Map,
+	        OBJ_EVENT_GFX_LITTLE_GIRL,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_BringFruit_Name,
+	        gText_Quest_BringFruit_Desc,
+	        gText_Quest_BringFruit_DoneDesc,
+	        gText_Quest_BringFruit_Map,
+	        OBJ_EVENT_GFX_POKEFAN_M,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_BringFireType_Name,
+	        gText_Quest_BringFireType_Desc,
+	        gText_Quest_BringFireType_DoneDesc,
+	        gText_Quest_BringFireType_Map,
+	        OBJ_EVENT_GFX_MAN_1,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_StopMugging_Name,
+	        gText_Quest_StopMugging_Desc,
+	        gText_Quest_StopMugging_DoneDesc,
+	        gText_Quest_StopMugging_Map,
+	        OBJ_EVENT_GFX_ARTIST,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_StolenTrade_Name,
+	        gText_Quest_StolenTrade_Desc,
+	        gText_Quest_StolenTrade_DoneDesc,
+	        gText_Quest_StolenTrade_Map,
+	        OBJ_EVENT_GFX_GIRL_3,
+	        OBJECT,
+	        NULL,
+	        6
+	),
+	side_quest(
+	        gText_Quest_HauntABuilding_Name,
+	        gText_Quest_HauntABuilding_Desc,
+	        gText_Quest_HauntABuilding_DoneDesc,
+	        gText_Quest_HauntABuilding_Map,
+	        OBJ_EVENT_GFX_GIRL_2,
+	        OBJECT,
+	        sHauntABuilding_Sub,
+	        6
+	),
+	side_quest(
+	        gText_Quest_RabiesOutbreak_Name,
+	        gText_Quest_RabiesOutbreak_Desc,
+	        gText_Quest_RabiesOutbreak_DoneDesc,
+	        gText_Quest_RabiesOutbreak_Map,
+	        SPECIES_GLAMEOW,
+	        PKMN,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_BlueRobbery_Name,
+	        gText_Quest_BlueRobbery_Desc,
+	        gText_Quest_BlueRobbery_DoneDesc,
+	        gText_Quest_BlueRobbery_Map,
+	        SPECIES_WOBBUFFET,
+	        PKMN,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_IceCreamCrafting_Name,
+	        gText_Quest_IceCreamCrafting_Desc,
+	        gText_Quest_IceCreamCrafting_DoneDesc,
+	        gText_Quest_IceCreamCrafting_Map,
+	        ITEM_NANAB_BERRY,
+	        ITEM,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_VSDeoxys_Name,
+	        gText_Quest_VSDeoxys_Desc,
+	        gText_Quest_VSDeoxys_DoneDesc,
+	        gText_Quest_VSDeoxys_Map,
+	        SPECIES_DEOXYS_SPEED,
+	        PKMN,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_ChinatownTunnels_Name,
+	        gText_Quest_ChinatownTunnels_Desc,
+	        gText_Quest_ChinatownTunnels_DoneDesc,
+	        gText_Quest_ChinatownTunnels_Map,
+	        OBJ_EVENT_GFX_OLD_MAN,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_FreshwaterEvolution_Name,
+	        gText_Quest_FreshwaterEvolution_Desc,
+	        gText_Quest_FreshwaterEvolution_DoneDesc,
+	        gText_Quest_FreshwaterEvolution_Map,
+	        SPECIES_OCTILLERY,
+	        PKMN,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_GemArtist_Name,
+	        gText_Quest_GemArtist_Desc,
+	        gText_Quest_GemArtist_DoneDesc,
+	        gText_Quest_GemArtist_Map,
+	        ITEM_NORMAL_GEM,
+	        ITEM,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_BetweenAStoneAndAHardPlace_Name,
+	        gText_Quest_BetweenAStoneAndAHardPlace_Desc,
+	        gText_Quest_BetweenAStoneAndAHardPlace_DoneDesc,
+	        gText_Quest_BetweenAStoneAndAHardPlace_Map,
+	        ITEM_FIRE_STONE,
+	        ITEM,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_RightingWrongs_Name,
+	        gText_Quest_RightingWrongs_Desc,
+	        gText_Quest_RightingWrongs_DoneDesc,
+	        gText_Quest_RightingWrongs_Map,
+	        OBJ_EVENT_GFX_BOY_1,
+	        OBJECT,
+	        sRightingWrongs_Sub,
+	        4
+	),
+	side_quest(
+	        gText_Quest_EnterTheDragon_Name,
+	        gText_Quest_EnterTheDragon_Desc,
+	        gText_Quest_EnterTheDragon_DoneDesc,
+	        gText_Quest_EnterTheDragon_Map,
+	        SPECIES_HITMONLEE,
+	        PKMN,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_BreakTheInternet_Name,
+	        gText_Quest_BreakTheInternet_Desc,
+	        gText_Quest_BreakTheInternet_DoneDesc,
+	        gText_Quest_BreakTheInternet_Map,
+	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
+	        OBJECT,
+	        sBreakTheInternet_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_ShutDownMedicineMan_Name,
+	        gText_Quest_ShutDownMedicineMan_Desc,
+	        gText_Quest_ShutDownMedicineMan_DoneDesc,
+	        gText_Quest_ShutDownMedicineMan_Map,
+	        OBJ_EVENT_GFX_RICH_BOY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_BuildingScope_Name,
+	        gText_Quest_BuildingScope_Desc,
+	        gText_Quest_BuildingScope_DoneDesc,
+	        gText_Quest_BuildingScope_Map,
+	        OBJ_EVENT_GFX_MAGMA_MEMBER_M,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_NoGoodDeed_Name,
+	        gText_Quest_NoGoodDeed_Desc,
+	        gText_Quest_NoGoodDeed_DoneDesc,
+	        gText_Quest_NoGoodDeed_Map,
+	        OBJ_EVENT_GFX_MOM,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_ImprovBattling_Name,
+	        gText_Quest_ImprovBattling_Desc,
+	        gText_Quest_ImprovBattling_DoneDesc,
+	        gText_Quest_ImprovBattling_Map,
+	        OBJ_EVENT_GFX_RICH_BOY,
+	        OBJECT,
+	        sImprovBattling_Sub,
+	        4
+	),
+	side_quest(
+	        gText_Quest_ImprovBattlingChampionship_Name,
+	        gText_Quest_ImprovBattlingChampionship_Desc,
+	        gText_Quest_ImprovBattlingChampionship_DoneDesc,
+	        gText_Quest_ImprovBattlingChampionship_Map,
+	        OBJ_EVENT_GFX_RICH_BOY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_InstallNatureProbes_Name,
+	        gText_Quest_InstallNatureProbes_Desc,
+	        gText_Quest_InstallNatureProbes_DoneDesc,
+	        gText_Quest_InstallNatureProbes_Map,
+	        OBJ_EVENT_GFX_ARTIST,
+	        OBJECT,
+	        sInstallNatureProbes_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_ManOfManyHats_Name,
+	        gText_Quest_ManOfManyHats_Desc,
+	        gText_Quest_ManOfManyHats_DoneDesc,
+	        gText_Quest_ManOfManyHats_Map,
+	        OBJ_EVENT_GFX_ARTIST,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_RecruitLocalArtists_Name,
+	        gText_Quest_RecruitLocalArtists_Desc,
+	        gText_Quest_RecruitLocalArtists_DoneDesc,
+	        gText_Quest_RecruitLocalArtists_Map,
+	        OBJ_EVENT_GFX_MAGMA_MEMBER_F,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_RestaurantExpansion1_Name,
+	        gText_Quest_RestaurantExpansion1_Desc,
+	        gText_Quest_RestaurantExpansion1_DoneDesc,
+	        gText_Quest_RestaurantExpansion1_Map,
+	        OBJ_EVENT_GFX_ROXANNE,
+	        OBJECT,
+	        sRestaurantExpansion1_Sub,
+	        4
+	),
+	side_quest(
+	        gText_Quest_RestaurantExpansion2_Name,
+	        gText_Quest_RestaurantExpansion2_Desc,
+	        gText_Quest_RestaurantExpansion2_DoneDesc,
+	        gText_Quest_RestaurantExpansion2_Map,
+	        OBJ_EVENT_GFX_ROXANNE,
+	        OBJECT,
+	        sRestaurantExpansion2_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_RestaurantExpansion3_Name,
+	        gText_Quest_RestaurantExpansion3_Desc,
+	        gText_Quest_RestaurantExpansion3_DoneDesc,
+	        gText_Quest_RestaurantExpansion3_Map,
+	        OBJ_EVENT_GFX_ROXANNE,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_CulturalPurity_Name,
+	        gText_Quest_CulturalPurity_Desc,
+	        gText_Quest_CulturalPurity_DoneDesc,
+	        gText_Quest_CulturalPurity_Map,
+	        OBJ_EVENT_GFX_BRAWLY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_HybridCulture_Name,
+	        gText_Quest_HybridCulture_Desc,
+	        gText_Quest_HybridCulture_DoneDesc,
+	        gText_Quest_HybridCulture_Map,
+	        OBJ_EVENT_GFX_BRAWLY,
+	        OBJECT,
+	        sHybridCulture_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_AlohaFromAlola_Name,
+	        gText_Quest_AlohaFromAlola_Desc,
+	        gText_Quest_AlohaFromAlola_DoneDesc,
+	        gText_Quest_AlohaFromAlola_Map,
+	        OBJ_EVENT_GFX_WATTSON,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_BuildingAnExhibit_Name,
+	        gText_Quest_BuildingAnExhibit_Desc,
+	        gText_Quest_BuildingAnExhibit_DoneDesc,
+	        gText_Quest_BuildingAnExhibit_Map,
+	        OBJ_EVENT_GFX_WATTSON,
+	        OBJECT,
+	        sBuildingAnExhibit_Sub,
+	        4
+	),
+	side_quest(
+	        gText_Quest_UnknownMortyQuestA_Name,
+	        gText_Quest_UnknownMortyQuestA_Desc,
+	        gText_Quest_UnknownMortyQuestA_DoneDesc,
+	        gText_Quest_UnknownMortyQuestA_Map,
+	        OBJ_EVENT_GFX_FLANNERY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownMortyQuestB_Name,
+	        gText_Quest_UnknownMortyQuestB_Desc,
+	        gText_Quest_UnknownMortyQuestB_DoneDesc,
+	        gText_Quest_UnknownMortyQuestB_Map,
+	        OBJ_EVENT_GFX_FLANNERY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownChuckQuestA_Name,
+	        gText_Quest_UnknownChuckQuestA_Desc,
+	        gText_Quest_UnknownChuckQuestA_DoneDesc,
+	        gText_Quest_UnknownChuckQuestA_Map,
+	        OBJ_EVENT_GFX_NORMAN,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownChuckQuestB_Name,
+	        gText_Quest_UnknownChuckQuestB_Desc,
+	        gText_Quest_UnknownChuckQuestB_DoneDesc,
+	        gText_Quest_UnknownChuckQuestB_Map,
+	        OBJ_EVENT_GFX_NORMAN,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_BiomeResearch_Name,
+	        gText_Quest_BiomeResearch_Desc,
+	        gText_Quest_BiomeResearch_DoneDesc,
+	        gText_Quest_BiomeResearch_Map,
+	        OBJ_EVENT_GFX_WINONA,
+	        OBJECT,
+	        sBiomeResearch_Sub,
+	        8
+	),
+	side_quest(
+	        gText_Quest_BerrySustainability_Name,
+	        gText_Quest_BerrySustainability_Desc,
+	        gText_Quest_BerrySustainability_DoneDesc,
+	        gText_Quest_BerrySustainability_Map,
+	        OBJ_EVENT_GFX_WINONA,
+	        OBJECT,
+	        sBerrySustainability_Sub,
+	        6
+	),
+	side_quest(
+	        gText_Quest_TheOnlyHeadShopInTown_Name,
+	        gText_Quest_TheOnlyHeadShopInTown_Desc,
+	        gText_Quest_TheOnlyHeadShopInTown_DoneDesc,
+	        gText_Quest_TheOnlyHeadShopInTown_Map,
+	        OBJ_EVENT_GFX_TATE,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_InverseHallucinogenic_Name,
+	        gText_Quest_InverseHallucinogenic_Desc,
+	        gText_Quest_InverseHallucinogenic_DoneDesc,
+	        gText_Quest_InverseHallucinogenic_Map,
+	        OBJ_EVENT_GFX_TATE,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownClairQuestA_Name,
+	        gText_Quest_UnknownClairQuestA_Desc,
+	        gText_Quest_UnknownClairQuestA_DoneDesc,
+	        gText_Quest_UnknownClairQuestA_Map,
+	        OBJ_EVENT_GFX_JUAN,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownClairQuestB_Name,
+	        gText_Quest_UnknownClairQuestB_Desc,
+	        gText_Quest_UnknownClairQuestB_DoneDesc,
+	        gText_Quest_UnknownClairQuestB_Map,
+	        OBJ_EVENT_GFX_JUAN,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_ContractorPorygon_Name,
+	        gText_Quest_ContractorPorygon_Desc,
+	        gText_Quest_ContractorPorygon_DoneDesc,
+	        gText_Quest_ContractorPorygon_Map,
+	        OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F,
+	        OBJECT,
+	        sContractorPorygon_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_AngelDelivery_Name,
+	        gText_Quest_AngelDelivery_Desc,
+	        gText_Quest_AngelDelivery_DoneDesc,
+	        gText_Quest_AngelDelivery_Map,
+	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_GetTheBandBackTogether_Name,
+	        gText_Quest_GetTheBandBackTogether_Desc,
+	        gText_Quest_GetTheBandBackTogether_DoneDesc,
+	        gText_Quest_GetTheBandBackTogether_Map,
+	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M,
+	        OBJECT,
+	        sGetTheBandBackTogether_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_FoodTruckBureacracy_Name,
+	        gText_Quest_FoodTruckBureacracy_Desc,
+	        gText_Quest_FoodTruckBureacracy_DoneDesc,
+	        gText_Quest_FoodTruckBureacracy_Map,
+	        OBJ_EVENT_GFX_YOUNGSTER,
+	        OBJECT,
+	        sFoodTruckBureacracy_Sub,
+	        4
+	),
+	side_quest(
+	        gText_Quest_DetectiveAriana_Name,
+	        gText_Quest_DetectiveAriana_Desc,
+	        gText_Quest_DetectiveAriana_DoneDesc,
+	        gText_Quest_DetectiveAriana_Map,
+	        OBJ_EVENT_GFX_MAGMA_MEMBER_F,
+	        OBJECT,
+	        sDetectiveAriana_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_UnknownBruceLeeQuest_Name,
+	        gText_Quest_UnknownBruceLeeQuest_Desc,
+	        gText_Quest_UnknownBruceLeeQuest_DoneDesc,
+	        gText_Quest_UnknownBruceLeeQuest_Map,
+	        OBJ_EVENT_GFX_BLACK_BELT,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_ChallengeOfThe7Sisters_Name,
+	        gText_Quest_ChallengeOfThe7Sisters_Desc,
+	        gText_Quest_ChallengeOfThe7Sisters_DoneDesc,
+	        gText_Quest_ChallengeOfThe7Sisters_Map,
+	        OBJ_EVENT_GFX_HEX_MANIAC,
+	        OBJECT,
+	        sChallengeOfThe7Sisters_Sub,
+	        7
+	),
+	side_quest(
+	        gText_Quest_Esports_Name,
+	        gText_Quest_Esports_Desc,
+	        gText_Quest_Esports_DoneDesc,
+	        gText_Quest_Esports_Map,
+	        OBJ_EVENT_GFX_BOY_2,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_CutePokemon_Name,
+	        gText_Quest_CutePokemon_Desc,
+	        gText_Quest_CutePokemon_DoneDesc,
+	        gText_Quest_CutePokemon_Map,
+	        OBJ_EVENT_GFX_WOMAN_5,
+	        OBJECT,
+	        sCutePokemon_Sub,
+	        4
+	),
+	side_quest(
+	        gText_Quest_WallaceArmy_Name,
+	        gText_Quest_WallaceArmy_Desc,
+	        gText_Quest_WallaceArmy_DoneDesc,
+	        gText_Quest_WallaceArmy_Map,
+	        OBJ_EVENT_GFX_SAILOR,
+	        OBJECT,
+	        sWallaceArmy_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_DexCompletion_Name,
+	        gText_Quest_DexCompletion_Desc,
+	        gText_Quest_DexCompletion_DoneDesc,
+	        gText_Quest_DexCompletion_Map,
+	        OBJ_EVENT_GFX_SCIENTIST_2,
+	        OBJECT,
+	        sDexCompletion_Sub,
+	        2
+	),
+	side_quest(
+	        gText_Quest_CableCarDancing_Name,
+	        gText_Quest_CableCarDancing_Desc,
+	        gText_Quest_CableCarDancing_DoneDesc,
+	        gText_Quest_CableCarDancing_Map,
+	        OBJ_EVENT_GFX_COOK,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_KitchenVolunteering_Name,
+	        gText_Quest_KitchenVolunteering_Desc,
+	        gText_Quest_KitchenVolunteering_DoneDesc,
+	        gText_Quest_KitchenVolunteering_Map,
+	        OBJ_EVENT_GFX_SCIENTIST_1,
+	        OBJECT,
+	        sKitchenVolunteering_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_ArtisanBalls1_Name,
+	        gText_Quest_ArtisanBalls1_Desc,
+	        gText_Quest_ArtisanBalls1_DoneDesc,
+	        gText_Quest_ArtisanBalls1_Map,
+	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
+	        OBJECT,
+	        sArtisanBalls_Sub,
+	        7
+	),
+	side_quest(
+	        gText_Quest_ArtisanBalls2_Name,
+	        gText_Quest_ArtisanBalls2_Desc,
+	        gText_Quest_ArtisanBalls2_DoneDesc,
+	        gText_Quest_ArtisanBalls2_Map,
+	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
+	        OBJECT,
+	        sArtisanBalls2_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_ArtisanBalls3_Name,
+	        gText_Quest_ArtisanBalls3_Desc,
+	        gText_Quest_ArtisanBalls3_DoneDesc,
+	        gText_Quest_ArtisanBalls3_Map,
+	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_ShelterSwitcheroo_Name,
+	        gText_Quest_ShelterSwitcheroo_Desc,
+	        gText_Quest_ShelterSwitcheroo_DoneDesc,
+	        gText_Quest_ShelterSwitcheroo_Map,
+	        OBJ_EVENT_GFX_FAT_MAN,
+	        OBJECT,
+	        sShelterSwitcheroo_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_ShelterTaxiSolution_Name,
+	        gText_Quest_ShelterTaxiSolution_Desc,
+	        gText_Quest_ShelterTaxiSolution_DoneDesc,
+	        gText_Quest_ShelterTaxiSolution_Map,
+	        OBJ_EVENT_GFX_FAT_MAN,
+	        OBJECT,
+	        sShelterTaxiSolution_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_LastMusicVenueInSanFrancisco_Name,
+	        gText_Quest_LastMusicVenueInSanFrancisco_Desc,
+	        gText_Quest_LastMusicVenueInSanFrancisco_DoneDesc,
+	        gText_Quest_LastMusicVenueInSanFrancisco_Map,
+	        OBJ_EVENT_GFX_YOUNGSTER,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_GardenCleanup_Name,
+	        gText_Quest_GardenCleanup_Desc,
+	        gText_Quest_GardenCleanup_DoneDesc,
+	        gText_Quest_GardenCleanup_Map,
+	        OBJ_EVENT_GFX_SCHOOL_KID_M,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_GardenCleanupAdvanced_Name,
+	        gText_Quest_GardenCleanupAdvanced_Desc,
+	        gText_Quest_GardenCleanupAdvanced_DoneDesc,
+	        gText_Quest_GardenCleanupAdvanced_Map,
+	        OBJ_EVENT_GFX_SCHOOL_KID_M,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_EmployedEverAfter_Name,
+	        gText_Quest_EmployedEverAfter_Desc,
+	        gText_Quest_EmployedEverAfter_DoneDesc,
+	        gText_Quest_EmployedEverAfter_Map,
+	        OBJ_EVENT_GFX_BEAUTY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_ButOnlyInMyBackyard_Name,
+	        gText_Quest_ButOnlyInMyBackyard_Desc,
+	        gText_Quest_ButOnlyInMyBackyard_DoneDesc,
+	        gText_Quest_ButOnlyInMyBackyard_Map,
+	        OBJ_EVENT_GFX_WOMAN_3,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_NeighborhoodCleanUp_Name,
+	        gText_Quest_NeighborhoodCleanUp_Desc,
+	        gText_Quest_NeighborhoodCleanUp_DoneDesc,
+	        gText_Quest_NeighborhoodCleanUp_Map,
+	        OBJ_EVENT_GFX_POKEFAN_M,
+	        OBJECT,
+	        sNeighborhoodCleanUp_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_NeighborhoodCleanUp2_Name,
+	        gText_Quest_NeighborhoodCleanUp2_Desc,
+	        gText_Quest_NeighborhoodCleanUp2_DoneDesc,
+	        gText_Quest_NeighborhoodCleanUp2_Map,
+	        OBJ_EVENT_GFX_POKEFAN_M,
+	        OBJECT,
+	        sNeighborhoodCleanUp2_Sub,
+	        4
+	),
+	side_quest(
+	        gText_Quest_NeighborhoodCleanUp3_Name,
+	        gText_Quest_NeighborhoodCleanUp3_Desc,
+	        gText_Quest_NeighborhoodCleanUp3_DoneDesc,
+	        gText_Quest_NeighborhoodCleanUp3_Map,
+	        OBJ_EVENT_GFX_POKEFAN_M,
+	        OBJECT,
+	        sNeighborhoodCleanUp3_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_NeighborhoodCleanUp4_Name,
+	        gText_Quest_NeighborhoodCleanUp4_Desc,
+	        gText_Quest_NeighborhoodCleanUp4_DoneDesc,
+	        gText_Quest_NeighborhoodCleanUp4_Map,
+	        OBJ_EVENT_GFX_WOMAN_4,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_RockCollector_Name,
+	        gText_Quest_RockCollector_Desc,
+	        gText_Quest_RockCollector_DoneDesc,
+	        gText_Quest_RockCollector_Map,
+	        OBJ_EVENT_GFX_COOK,
+	        OBJECT,
+	        sRockCollector_Sub,
+	        10
+	),
+	side_quest(
+	        gText_Quest_Hang20_Name,
+	        gText_Quest_Hang20_Desc,
+	        gText_Quest_Hang20_DoneDesc,
+	        gText_Quest_Hang20_Map,
+	        OBJ_EVENT_GFX_SWIMMER_M,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_AllThatGlittersMightBeGold_Name,
+	        gText_Quest_AllThatGlittersMightBeGold_Desc,
+	        gText_Quest_AllThatGlittersMightBeGold_DoneDesc,
+	        gText_Quest_AllThatGlittersMightBeGold_Map,
+	        OBJ_EVENT_GFX_FISHERMAN,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownFishingQuest_Name,
+	        gText_Quest_UnknownFishingQuest_Desc,
+	        gText_Quest_UnknownFishingQuest_DoneDesc,
+	        gText_Quest_UnknownFishingQuest_Map,
+	        OBJ_EVENT_GFX_FISHERMAN,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_HiddenGrottoMapping_Name,
+	        gText_Quest_HiddenGrottoMapping_Desc,
+	        gText_Quest_HiddenGrottoMapping_DoneDesc,
+	        gText_Quest_HiddenGrottoMapping_Map,
+	        OBJ_EVENT_GFX_CAMPER,
+	        OBJECT,
+	        sHiddenGrottoMapping_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_HiddenGrottoMapping2_Name,
+	        gText_Quest_HiddenGrottoMapping2_Desc,
+	        gText_Quest_HiddenGrottoMapping2_DoneDesc,
+	        gText_Quest_HiddenGrottoMapping2_Map,
+	        OBJ_EVENT_GFX_TWIN,
+	        OBJECT,
+	        sHiddenGrottoMapping2_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_UltraWormholeResearch_Name,
+	        gText_Quest_UltraWormholeResearch_Desc,
+	        gText_Quest_UltraWormholeResearch_DoneDesc,
+	        gText_Quest_UltraWormholeResearch_Map,
+	        OBJ_EVENT_GFX_OLD_MAN,
+	        OBJECT,
+	        sUltraWormholeResearch_Sub,
+	        10
+	),
+	side_quest(
+	        gText_Quest_UnknownGovernmentSocialMediaQuest_Name,
+	        gText_Quest_UnknownGovernmentSocialMediaQuest_Desc,
+	        gText_Quest_UnknownGovernmentSocialMediaQuest_DoneDesc,
+	        gText_Quest_UnknownGovernmentSocialMediaQuest_Map,
+	        ITEM_FAME_CHECKER,
+	        ITEM,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_DrumCircle_Name,
+	        gText_Quest_DrumCircle_Desc,
+	        gText_Quest_DrumCircle_DoneDesc,
+	        gText_Quest_DrumCircle_Map,
+	        OBJ_EVENT_GFX_GIRL_3,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownProp22Quest_Name,
+	        gText_Quest_UnknownProp22Quest_Desc,
+	        gText_Quest_UnknownProp22Quest_DoneDesc,
+	        gText_Quest_UnknownProp22Quest_Map,
+	        OBJ_EVENT_GFX_NINJA_BOY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownTimeTravelQuest_Name,
+	        gText_Quest_UnknownTimeTravelQuest_Desc,
+	        gText_Quest_UnknownTimeTravelQuest_DoneDesc,
+	        gText_Quest_UnknownTimeTravelQuest_Map,
+	        OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownConstructionStrikeQuest_Name,
+	        gText_Quest_UnknownConstructionStrikeQuest_Desc,
+	        gText_Quest_UnknownConstructionStrikeQuest_DoneDesc,
+	        gText_Quest_UnknownConstructionStrikeQuest_Map,
+	        OBJ_EVENT_GFX_BOY_2,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_IBelieveICanFly_Name,
+	        gText_Quest_IBelieveICanFly_Desc,
+	        gText_Quest_IBelieveICanFly_DoneDesc,
+	        gText_Quest_IBelieveICanFly_Map,
+	        OBJ_EVENT_GFX_BEAUTY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_WildfireRisk_Name,
+	        gText_Quest_WildfireRisk_Desc,
+	        gText_Quest_WildfireRisk_DoneDesc,
+	        gText_Quest_WildfireRisk_Map,
+	        OBJ_EVENT_GFX_ARTIST,
+	        OBJECT,
+	        sWildfireRisk_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_TheBoyWhoCriesWithWolves_Name,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Desc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_DoneDesc,
+	        gText_Quest_TheBoyWhoCriesWithWolves_Map,
+	        OBJ_EVENT_GFX_GENTLEMAN,
+	        OBJECT,
+	        sTheBoyWhoCriesWithWolves_Sub,
+	        9
+	),
+	side_quest(
+	        gText_Quest_UnknownTrolleyProblem_Name,
+	        gText_Quest_UnknownTrolleyProblem_Desc,
+	        gText_Quest_UnknownTrolleyProblem_DoneDesc,
+	        gText_Quest_UnknownTrolleyProblem_Map,
+	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_UnknownLandfillQuest_Name,
+	        gText_Quest_UnknownLandfillQuest_Desc,
+	        gText_Quest_UnknownLandfillQuest_DoneDesc,
+	        gText_Quest_UnknownLandfillQuest_Map,
+	        OBJ_EVENT_GFX_NINJA_BOY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_TaxicabTurnaroundSea_Name,
+	        gText_Quest_TaxicabTurnaroundSea_Desc,
+	        gText_Quest_TaxicabTurnaroundSea_DoneDesc,
+	        gText_Quest_TaxicabTurnaroundSea_Map,
+	        OBJ_EVENT_GFX_GIRL_3,
+	        OBJECT,
+	        sTaxicabTurnAroundSea_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_TaxicabTurnaroundAir_Name,
+	        gText_Quest_TaxicabTurnaroundAir_Desc,
+	        gText_Quest_TaxicabTurnaroundAir_DoneDesc,
+	        gText_Quest_TaxicabTurnaroundAir_Map,
+	        OBJ_EVENT_GFX_GIRL_3,
+	        OBJECT,
+	        sTaxicabTurnAroundAir_Sub,
+	        5
+	),
+	side_quest(
+	        gText_Quest_TaxicabTurnaroundLand_Name,
+	        gText_Quest_TaxicabTurnaroundLand_Desc,
+	        gText_Quest_TaxicabTurnaroundLand_DoneDesc,
+	        gText_Quest_TaxicabTurnaroundLand_Map,
+	        OBJ_EVENT_GFX_GIRL_3,
+	        OBJECT,
+	        sTaxicabTurnAroundLand_Sub,
+	        7
+	),
+	side_quest(
+	        gText_Quest_PersuasivePassenger_Name,
+	        gText_Quest_PersuasivePassenger_Desc,
+	        gText_Quest_PersuasivePassenger_DoneDesc,
+	        gText_Quest_PersuasivePassenger_Map,
+	        OBJ_EVENT_GFX_GIRL_3,
+	        OBJECT,
+	        sPersuasivePassenger_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_BodegaBurnout_Name,
+	        gText_Quest_BodegaBurnout_Desc,
+	        gText_Quest_BodegaBurnout_DoneDesc,
+	        gText_Quest_BodegaBurnout_Map,
+	        OBJ_EVENT_GFX_TWIN,
+	        OBJECT,
+	        sBodegaBurnout_Sub,
+	        17
+	),
+	side_quest(
+	        gText_Quest_WarehouseWarfare_Name,
+	        gText_Quest_WarehouseWarfare_Desc,
+	        gText_Quest_WarehouseWarfare_DoneDesc,
+	        gText_Quest_WarehouseWarfare_Map,
+	        OBJ_EVENT_GFX_GENTLEMAN,
+	        OBJECT,
+	        sWarehouseWarfare_Sub,
+	        3
+	),
+	side_quest(
+	        gText_Quest_RestoreToTheirFormerGlory_Name,
+	        gText_Quest_RestoreToTheirFormerGlory_Desc,
+	        gText_Quest_RestoreToTheirFormerGlory_DoneDesc,
+	        gText_Quest_RestoreToTheirFormerGlory_Map,
+	        OBJ_EVENT_GFX_WALLY,
+	        OBJECT,
+	        sRestoreToTheirFormerGlory_Sub,
+	        4
 	),
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
 //BG layer defintions
-static const struct BgTemplate sQuestMenuBgTemplates[2] =
-{
+static const struct BgTemplate sQuestMenuBgTemplates[2] = {
 	{
 		//All text and content is loaded to this window
 		.bg = 0,
@@ -3238,8 +3198,7 @@ static const struct BgTemplate sQuestMenuBgTemplates[2] =
 };
 
 //Window definitions
-static const struct WindowTemplate sQuestMenuHeaderWindowTemplates[] =
-{
+static const struct WindowTemplate sQuestMenuHeaderWindowTemplates[] = {
 	{
 		//0: Content window
 		.bg = 0,
@@ -3274,8 +3233,7 @@ static const struct WindowTemplate sQuestMenuHeaderWindowTemplates[] =
 };
 
 //Font color combinations for printed text
-static const u8 sQuestMenuWindowFontColors[][4] =
-{
+static const u8 sQuestMenuWindowFontColors[][4] = {
 	{
 		//Header of Quest Menu
 		TEXT_COLOR_TRANSPARENT,
@@ -3315,20 +3273,17 @@ void QuestMenu_Init(u8 a0, MainCallback callback)
 {
 	u8 i;
 
-	if (a0 >= 2)
-	{
+	if (a0 >= 2) {
 		SetMainCallback2(callback);
 		return;
 	}
 
-	if ((sStateDataPtr = Alloc(sizeof(struct QuestMenuResources))) == NULL)
-	{
+	if ((sStateDataPtr = Alloc(sizeof(struct QuestMenuResources))) == NULL) {
 		SetMainCallback2(callback);
 		return;
 	}
 
-	if (a0 != 1)
-	{
+	if (a0 != 1) {
 		sListMenuState.savedCallback = callback;
 		sListMenuState.scroll = sListMenuState.row = 0;
 	}
@@ -3337,8 +3292,7 @@ void QuestMenu_Init(u8 a0, MainCallback callback)
 	sStateDataPtr->spriteIconSlot = 0;
 	sStateDataPtr->scrollIndicatorArrowPairId = 0xFF;
 	sStateDataPtr->savedCallback = 0;
-	for (i = 0; i < 3; i++)
-	{
+	for (i = 0; i < 3; i++) {
 		sStateDataPtr->data[i] = 0;
 	}
 
@@ -3363,10 +3317,8 @@ static void VBlankCB(void)
 
 static void RunSetup(void)
 {
-	while (1)
-	{
-		if (SetupGraphics() == TRUE)
-		{
+	while (1) {
+		if (SetupGraphics() == TRUE) {
 			break;
 		}
 	}
@@ -3375,8 +3327,7 @@ static void RunSetup(void)
 static bool8 SetupGraphics(void)
 {
 	u8 taskId;
-	switch (gMain.state)
-	{
+	switch (gMain.state) {
 		case 0:
 			SetVBlankHBlankCallbacksToNull();
 			ClearScheduledBgCopiesToVram();
@@ -3407,20 +3358,16 @@ static bool8 SetupGraphics(void)
 			gMain.state++;
 			break;
 		case 7:
-			if (InitBackgrounds())
-			{
+			if (InitBackgrounds()) {
 				sStateDataPtr->data[0] = 0;
 				gMain.state++;
-			}
-			else
-			{
+			} else {
 				FadeAndBail();
 				return TRUE;
 			}
 			break;
 		case 8:
-			if (LoadGraphics() == TRUE)
-			{
+			if (LoadGraphics() == TRUE) {
 				gMain.state++;
 			}
 			break;
@@ -3429,19 +3376,16 @@ static bool8 SetupGraphics(void)
 			gMain.state++;
 			break;
 		case 10:
-			ClearModeOnStartup();
+			LoadModeOnStartup();
 			InitItems();
 			SetCursorPosition();
 			SetScrollPosition();
 			gMain.state++;
 			break;
 		case 11:
-			if (AllocateResourcesForListMenu())
-			{
+			if (AllocateResourcesForListMenu()) {
 				gMain.state++;
-			}
-			else
-			{
+			} else {
 				FadeAndBail();
 				return TRUE;
 			}
@@ -3473,20 +3417,15 @@ static bool8 SetupGraphics(void)
 			gMain.state++;
 			break;
 		case 18:
-			if (sListMenuState.initialized == 1)
-			{
+			if (sListMenuState.initialized == 1) {
 				BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
 			}
 			gMain.state++;
 			break;
 		case 19:
-			if (sListMenuState.initialized == 1)
-			{
+			if (sListMenuState.initialized == 1) {
 				BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
-			}
-			else
-			{
-
+			} else {
 				BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
 				SetInitializedFlag(1);
 			}
@@ -3502,16 +3441,14 @@ static bool8 SetupGraphics(void)
 
 static bool8 LoadGraphics(void)
 {
-	switch (sStateDataPtr->data[0])
-	{
+	switch (sStateDataPtr->data[0]) {
 		case 0:
 			ResetTempTileDataBuffers();
 			DecompressAndCopyTileDataToVram(1, sQuestMenuTiles, 0, 0, 0);
 			sStateDataPtr->data[0]++;
 			break;
 		case 1:
-			if (FreeTempTileDataBuffersIfPossible() != TRUE)
-			{
+			if (FreeTempTileDataBuffersIfPossible() != TRUE) {
 				LZDecompressWram(sQuestMenuTilemap, sBg1TilemapBuffer);
 				sStateDataPtr->data[0]++;
 			}
@@ -3537,8 +3474,7 @@ static void QuestMenu_InitWindows(void)
 	InitWindows(sQuestMenuHeaderWindowTemplates);
 	DeactivateAllTextPrinters();
 
-	for (i = 0; i < 3; i++)
-	{
+	for (i = 0; i < 3; i++) {
 		FillWindowPixelBuffer(i, 0x00);
 		PutWindowTilemap(i);
 	}
@@ -3550,8 +3486,7 @@ static bool8 InitBackgrounds(void)
 {
 	ResetAllBgsCoordinatesAndBgCntRegs();
 	sBg1TilemapBuffer = Alloc(0x800);
-	if (sBg1TilemapBuffer == NULL)
-	{
+	if (sBg1TilemapBuffer == NULL) {
 		return FALSE;
 	}
 
@@ -3601,8 +3536,7 @@ void AllocateMemoryForArray(void)
 
 	questNameArray = Alloc(sizeof(void *) * allocateRows);
 
-	for (i = 0; i < allocateRows; i++)
-	{
+	for (i = 0; i < allocateRows; i++) {
 		questNameArray[i] = Alloc(sizeof(u8) * 32);
 	}
 }
@@ -3611,14 +3545,13 @@ static void PlaceTopMenuScrollIndicatorArrows(void)
 {
 	u8 listSize = CountNumberListRows();
 
-	if (listSize < sStateDataPtr->maxShowed)
-	{
+	if (listSize < sStateDataPtr->maxShowed) {
 		listSize = sStateDataPtr->maxShowed;
 	}
 
 	sStateDataPtr->scrollIndicatorArrowPairId =
-	      AddScrollIndicatorArrowPairParameterized(2, 94, 8, 90,
-	                  (listSize - sStateDataPtr->maxShowed), 110, 110, &sListMenuState.scroll);
+	        AddScrollIndicatorArrowPairParameterized(2, 94, 8, 90,
+	                        (listSize - sStateDataPtr->maxShowed), 110, 110, &sListMenuState.scroll);
 }
 
 static void SetInitializedFlag(u8 a0)
@@ -3633,20 +3566,15 @@ static u8 GetCursorPosition(void)
 
 static void SetCursorPosition(void)
 {
-	if (IfScrollIsOutOfBounds())
-	{
+	if (IfScrollIsOutOfBounds()) {
 		sListMenuState.scroll = (sStateDataPtr->nItems + 1) -
 		                        sStateDataPtr->maxShowed;
 	}
 
-	if (IfRowIsOutOfBounds())
-	{
-		if (sStateDataPtr->nItems + 1 < 2)
-		{
+	if (IfRowIsOutOfBounds()) {
+		if (sStateDataPtr->nItems + 1 < 2) {
 			sListMenuState.row = 0;
-		}
-		else
-		{
+		} else {
 			sListMenuState.row = sStateDataPtr->nItems;
 		}
 	}
@@ -3657,14 +3585,11 @@ static void SetScrollPosition(void)
 {
 	u8 i;
 
-	if (sListMenuState.row > 3)
-	{
+	if (sListMenuState.row > 3) {
 		for (i = 0; i <= sListMenuState.row - 3;
-		            sListMenuState.row--, sListMenuState.scroll++, i++)
-		{
+		     sListMenuState.row--, sListMenuState.scroll++, i++) {
 			if (sListMenuState.scroll + sStateDataPtr->maxShowed ==
-			            sStateDataPtr->nItems + 1)
-			{
+			    sStateDataPtr->nItems + 1) {
 				break;
 			}
 		}
@@ -3674,13 +3599,10 @@ static void SetScrollPosition(void)
 bool8 IfScrollIsOutOfBounds(void)
 {
 	if (sListMenuState.scroll != 0
-	            && sListMenuState.scroll + sStateDataPtr->maxShowed >
-	            sStateDataPtr->nItems + 1)
-	{
+	    && sListMenuState.scroll + sStateDataPtr->maxShowed >
+	    sStateDataPtr->nItems + 1) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
@@ -3688,12 +3610,9 @@ bool8 IfScrollIsOutOfBounds(void)
 bool8 IfRowIsOutOfBounds(void)
 {
 	if (sListMenuState.scroll + sListMenuState.row >= sStateDataPtr->nItems +
-	            1)
-	{
+	    1) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
@@ -3705,17 +3624,22 @@ static void SaveScrollAndRow(s16 *data)
 }
 
 
-void ClearModeOnStartup(void)
+void LoadModeOnStartup(void)
 {
 	sStateDataPtr->filterMode = 0;
+	//sStateDataPtr->filterMode = gSaveBlock2Ptr->questMode;
+}
+
+void WriteModeToSaveBlock(u8 mode)
+{
+	gSaveBlock2Ptr->questMode = mode;
 }
 
 static u8 ManageMode(u8 action)
 {
 	u8 mode = sStateDataPtr->filterMode;
 
-	switch (action)
-	{
+	switch (action) {
 		case SUB:
 			mode = ToggleSubquestMode(mode);
 			break;
@@ -3730,18 +3654,16 @@ static u8 ManageMode(u8 action)
 			sStateDataPtr->restoreCursor = FALSE;
 			break;
 	}
+	WriteModeToSaveBlock(mode);
 	return mode;
 }
 
 u8 ToggleSubquestMode(u8 mode)
 {
-	if (IsSubquestMode())
-	{
+	if (IsSubquestMode()) {
 		mode -= SORT_SUBQUEST;
 		sStateDataPtr->restoreCursor = TRUE;
-	}
-	else
-	{
+	} else {
 		mode += SORT_SUBQUEST;
 		sStateDataPtr->restoreCursor = FALSE;
 	}
@@ -3751,12 +3673,9 @@ u8 ToggleSubquestMode(u8 mode)
 
 u8 ToggleAlphaMode(u8 mode)
 {
-	if (IsAlphaMode())
-	{
+	if (IsAlphaMode()) {
 		mode -= SORT_DEFAULT_AZ;
-	}
-	else
-	{
+	} else {
 		mode += SORT_DEFAULT_AZ;
 	}
 
@@ -3765,12 +3684,9 @@ u8 ToggleAlphaMode(u8 mode)
 
 u8 IncrementMode(u8 mode)
 {
-	if (mode % 10 == SORT_DONE)
-	{
+	if (mode % 10 == SORT_DONE) {
 		mode -= SORT_DONE;
-	}
-	else
-	{
+	} else {
 		mode++;
 	}
 
@@ -3779,12 +3695,9 @@ u8 IncrementMode(u8 mode)
 
 static bool8 IsSubquestMode(void)
 {
-	if (sStateDataPtr->filterMode > SORT_DONE_AZ)
-	{
+	if (sStateDataPtr->filterMode > SORT_DONE_AZ) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
@@ -3793,12 +3706,9 @@ static bool8 IsNotFilteredMode(void)
 {
 	u8 mode = sStateDataPtr->filterMode % 10;
 
-	if (mode == FLAG_GET_UNLOCKED)
-	{
+	if (mode == FLAG_GET_UNLOCKED) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
@@ -3806,12 +3716,9 @@ static bool8 IsNotFilteredMode(void)
 static bool8 IsAlphaMode(void)
 {
 	if (sStateDataPtr->filterMode < SORT_SUBQUEST
-	            && sStateDataPtr->filterMode > SORT_DONE)
-	{
+	    && sStateDataPtr->filterMode > SORT_DONE) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
@@ -3844,12 +3751,9 @@ static u16 BuildMenuTemplate(void)
 
 u8 GetModeAndGenerateList()
 {
-	if (IsSubquestMode())
-	{
+	if (IsSubquestMode()) {
 		return GenerateSubquestList();
-	}
-	else
-	{
+	} else {
 		return GenerateList(!IsNotFilteredMode());
 	}
 }
@@ -3858,13 +3762,11 @@ static u8 CountNumberListRows()
 {
 	u8 mode = sStateDataPtr->filterMode % 10;
 
-	if (IsSubquestMode())
-	{
+	if (IsSubquestMode()) {
 		return sSideQuests[sStateDataPtr->parentQuest].numSubquests + 1;
 	}
 
-	switch (mode)
-	{
+	switch (mode) {
 		case SORT_DEFAULT:
 			return QUEST_COUNT + 1;
 		case SORT_INACTIVE:
@@ -3885,20 +3787,15 @@ u8 *DefineQuestOrder()
 	u8 a, c, d, e;
 	u8 placeholderVariable;
 
-	for (a = 0; a < QUEST_COUNT; a++)
-	{
+	for (a = 0; a < QUEST_COUNT; a++) {
 		sortedList[a] = a;
 	}
 
-	if (IsAlphaMode())
-	{
-		for (c = 0; c < QUEST_COUNT; c++)
-		{
-			for (d = c + 1; d < QUEST_COUNT; d++)
-			{
+	if (IsAlphaMode()) {
+		for (c = 0; c < QUEST_COUNT; c++) {
+			for (d = c + 1; d < QUEST_COUNT; d++) {
 				if (StringCompare(sSideQuests[sortedList[c]].name,
-				                  sSideQuests[sortedList[d]].name) > 0)
-				{
+				                  sSideQuests[sortedList[d]].name) > 0) {
 					placeholderVariable = sortedList[c];
 					sortedList[c] = sortedList[d];
 					sortedList[d] = placeholderVariable;
@@ -3916,8 +3813,7 @@ u8 GenerateSubquestList()
 	u8 mode = sStateDataPtr->filterMode % 10;
 	u8 lastRow = 0, numRow = 0, countQuest = 0;
 
-	for (numRow = 0; numRow < sSideQuests[parentQuest].numSubquests; numRow++)
-	{
+	for (numRow = 0; numRow < sSideQuests[parentQuest].numSubquests; numRow++) {
 		PrependQuestNumber(countQuest);
 		PopulateSubquestName(parentQuest, countQuest);
 		PopulateListRowNameAndId(numRow, countQuest);
@@ -3937,25 +3833,20 @@ u8 GenerateList(bool8 isFiltered)
 
 	sortedQuestList = DefineQuestOrder();
 
-	for (countQuest = 0; countQuest < sStateDataPtr->nItems; countQuest++)
-	{
+	for (countQuest = 0; countQuest < sStateDataPtr->nItems; countQuest++) {
 		selectedQuestId = *(sortedQuestList + countQuest);
 
-		if (isFiltered && !QuestMenu_GetSetQuestState(selectedQuestId, mode))
-		{
+		if (isFiltered && !QuestMenu_GetSetQuestState(selectedQuestId, mode)) {
 			continue;
 		}
 
 		PopulateEmptyRow(selectedQuestId);
 
-		if (QuestMenu_GetSetQuestState(selectedQuestId, FLAG_GET_FAVORITE))
-		{
+		if (QuestMenu_GetSetQuestState(selectedQuestId, FLAG_GET_FAVORITE)) {
 			SetFavoriteQuest(selectedQuestId);
 			newRow = numRow;
 			numRow++;
-		}
-		else
-		{
+		} else {
 			newRow = CountFavoriteQuests() + offset;
 			offset++;
 		}
@@ -3968,12 +3859,9 @@ u8 GenerateList(bool8 isFiltered)
 
 static void AssignCancelNameAndId(u8 numRow)
 {
-	if (IsSubquestMode())
-	{
+	if (IsSubquestMode()) {
 		sListMenuItems[numRow].name = sText_Back;
-	}
-	else
-	{
+	} else {
 		sListMenuItems[numRow].name = sText_Close;
 	}
 
@@ -3988,8 +3876,7 @@ u8 QuestMenu_GetSetSubquestState(u8 quest, u8 caseId, u8 childQuest)
 	u8	bit = uniqueId % 8;
 	u8	mask = 1 << bit;
 
-	switch (caseId)
-	{
+	switch (caseId) {
 		case FLAG_GET_COMPLETED:
 			return gSaveBlock2Ptr->subQuests[index] & mask;
 		case FLAG_SET_COMPLETED:
@@ -4013,8 +3900,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 	// 3 : completed
 	// 4 : favorited
 
-	switch (caseId)
-	{
+	switch (caseId) {
 		case FLAG_GET_UNLOCKED:
 		case FLAG_SET_UNLOCKED:
 			break;
@@ -4039,15 +3925,13 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 			bit += 4;
 			break;
 	}
-	if (bit >= 8)
-	{
+	if (bit >= 8) {
 		index += 1;
 		bit %= 8;
 	}
 	mask = 1 << bit;
 
-	switch (caseId)
-	{
+	switch (caseId) {
 		case FLAG_GET_UNLOCKED:
 			return gSaveBlock2Ptr->questData[index] & mask;
 		case FLAG_SET_UNLOCKED:
@@ -4059,13 +3943,11 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 			index2 = index;
 			index3 = index;
 
-			if (bit2 >= 8)
-			{
+			if (bit2 >= 8) {
 				index2 += 1;
 				bit2 %= 8;
 			}
-			if (bit3 >= 8)
-			{
+			if (bit3 >= 8) {
 				index3 += 1;
 				bit3 %= 8;
 			}
@@ -4095,6 +3977,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 			return gSaveBlock2Ptr->questData[index] & mask;
 		case FLAG_SET_COMPLETED:
 			gSaveBlock2Ptr->questData[index] |= mask;
+			CheckFavoriteAndRemove(quest);
 			return 1;
 		case FLAG_GET_FAVORITE:
 			return gSaveBlock2Ptr->questData[index] & mask;
@@ -4112,10 +3995,8 @@ u8 CountUnlockedQuests(void)
 {
 	u8 q = 0, i = 0;
 
-	for (i = 0; i < QUEST_COUNT; i++)
-	{
-		if (QuestMenu_GetSetQuestState(i, FLAG_GET_UNLOCKED))
-		{
+	for (i = 0; i < QUEST_COUNT; i++) {
+		if (QuestMenu_GetSetQuestState(i, FLAG_GET_UNLOCKED)) {
 			q++;
 		}
 	}
@@ -4126,10 +4007,8 @@ u8 CountInactiveQuests(void)
 {
 	u8 q = 0, i = 0;
 
-	for (i = 0; i < QUEST_COUNT; i++)
-	{
-		if (QuestMenu_GetSetQuestState(i, FLAG_GET_INACTIVE))
-		{
+	for (i = 0; i < QUEST_COUNT; i++) {
+		if (QuestMenu_GetSetQuestState(i, FLAG_GET_INACTIVE)) {
 			q++;
 		}
 	}
@@ -4140,10 +4019,8 @@ u8 CountActiveQuests(void)
 {
 	u8 q = 0, i = 0;
 
-	for (i = 0; i < QUEST_COUNT; i++)
-	{
-		if (QuestMenu_GetSetQuestState(i, FLAG_GET_ACTIVE))
-		{
+	for (i = 0; i < QUEST_COUNT; i++) {
+		if (QuestMenu_GetSetQuestState(i, FLAG_GET_ACTIVE)) {
 			q++;
 		}
 	}
@@ -4154,10 +4031,8 @@ u8 CountRewardQuests(void)
 {
 	u8 q = 0, i = 0;
 
-	for (i = 0; i < QUEST_COUNT; i++)
-	{
-		if (QuestMenu_GetSetQuestState(i, FLAG_GET_REWARD))
-		{
+	for (i = 0; i < QUEST_COUNT; i++) {
+		if (QuestMenu_GetSetQuestState(i, FLAG_GET_REWARD)) {
 			q++;
 		}
 	}
@@ -4170,22 +4045,15 @@ u8 CountCompletedQuests(void)
 
 	u8 parentQuest = sStateDataPtr->parentQuest;
 
-	if (IsSubquestMode())
-	{
-		for (i = 0; i < sSideQuests[parentQuest].numSubquests; i++)
-		{
-			if (QuestMenu_GetSetSubquestState(parentQuest, FLAG_GET_COMPLETED, i))
-			{
+	if (IsSubquestMode()) {
+		for (i = 0; i < sSideQuests[parentQuest].numSubquests; i++) {
+			if (QuestMenu_GetSetSubquestState(parentQuest, FLAG_GET_COMPLETED, i)) {
 				q++;
 			}
 		}
-	}
-	else
-	{
-		for (i = 0; i < QUEST_COUNT; i++)
-		{
-			if (QuestMenu_GetSetQuestState(i, FLAG_GET_COMPLETED))
-			{
+	} else {
+		for (i = 0; i < QUEST_COUNT; i++) {
+			if (QuestMenu_GetSetQuestState(i, FLAG_GET_COMPLETED)) {
 				q++;
 			}
 		}
@@ -4199,24 +4067,18 @@ u8 CountFavoriteQuests(void)
 	u8 q = 0, i = 0, x = 0;
 	u8 mode = sStateDataPtr->filterMode % 10;
 
-	for (i = 0; i < QUEST_COUNT; i++)
-	{
-		if (QuestMenu_GetSetQuestState(i, FLAG_GET_FAVORITE))
-		{
-			if (QuestMenu_GetSetQuestState(i, mode))
-			{
+	for (i = 0; i < QUEST_COUNT; i++) {
+		if (QuestMenu_GetSetQuestState(i, FLAG_GET_FAVORITE)) {
+			if (QuestMenu_GetSetQuestState(i, mode)) {
 				x++;
 			}
 			q++;
 		}
 	}
 
-	if (IsNotFilteredMode())
-	{
+	if (IsNotFilteredMode()) {
 		return q;
-	}
-	else
-	{
+	} else {
 		return x;
 	}
 
@@ -4242,28 +4104,22 @@ void SetFavoriteQuest(u8 countQuest)
 
 void PopulateQuestName(u8 countQuest)
 {
-	if (QuestMenu_GetSetQuestState(countQuest, FLAG_GET_UNLOCKED))
-	{
+	if (QuestMenu_GetSetQuestState(countQuest, FLAG_GET_UNLOCKED)) {
 		StringExpandPlaceholders(gStringVar4, sSideQuests[countQuest].name);
 		questNamePointer = StringAppend(questNameArray[countQuest], gStringVar4);
 		AddSubQuestButton(countQuest);
-	}
-	else
-	{
+	} else {
 		StringAppend(questNameArray[countQuest], sText_Unk);
 	}
 }
 
 void PopulateSubquestName(u8 parentQuest, u8 countQuest)
 {
-	if (IsSubquestCompletedState(countQuest))
-	{
+	if (IsSubquestCompletedState(countQuest)) {
 		StringExpandPlaceholders(gStringVar4,
 		                         sSideQuests[parentQuest].subquests[countQuest].name);
 		questNamePointer = StringAppend(questNameArray[countQuest], gStringVar4);
-	}
-	else
-	{
+	} else {
 		questNamePointer = StringAppend(questNamePointer, sText_Unk);
 	}
 }
@@ -4277,29 +4133,25 @@ u8 PopulateListRowNameAndId(u8 row, u8 countQuest)
 static bool8 DoesQuestHaveChildrenAndNotInactive(u16 itemId)
 {
 	if (sSideQuests[itemId].numSubquests != 0
-	            && QuestMenu_GetSetQuestState(itemId, FLAG_GET_UNLOCKED)
-	            && !QuestMenu_GetSetQuestState(itemId, FLAG_GET_INACTIVE))
-	{
+	    && QuestMenu_GetSetQuestState(itemId, FLAG_GET_UNLOCKED)
+	    && !QuestMenu_GetSetQuestState(itemId, FLAG_GET_INACTIVE)) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
 
 void AddSubQuestButton(u8 countQuest)
 {
-	if (DoesQuestHaveChildrenAndNotInactive(countQuest))
-	{
+	if (DoesQuestHaveChildrenAndNotInactive(countQuest)) {
 		questNamePointer = StringAppend(questNameArray[countQuest],
 		                                sText_SubQuestButton);
 	}
 
 }
 static void QuestMenu_AddTextPrinterParameterized(u8 windowId, u8 fontId,
-            const u8 *str, u8 x, u8 y,
-            u8 letterSpacing, u8 lineSpacing, u8 speed, u8 colorIdx)
+                const u8 *str, u8 x, u8 y,
+                u8 letterSpacing, u8 lineSpacing, u8 speed, u8 colorIdx)
 {
 	AddTextPrinterParameterized4(windowId, fontId, x, y, letterSpacing,
 	                             lineSpacing,
@@ -4311,17 +4163,13 @@ static void MoveCursorFunc(s32 questId, bool8 onInit,
 {
 	PlayCursorSound(onInit);
 
-	if (sStateDataPtr->moveModeOrigPos == 0xFF)
-	{
+	if (sStateDataPtr->moveModeOrigPos == 0xFF) {
 		QuestMenu_DestroySprite(sStateDataPtr->spriteIconSlot ^ 1);
 		sStateDataPtr->spriteIconSlot ^= 1;
 
-		if (questId == LIST_CANCEL)
-		{
+		if (questId == LIST_CANCEL) {
 			PrintDetailsForCancel();
-		}
-		else
-		{
+		} else {
 			GenerateAndPrintQuestDetails(questId);
 			DetermineSpriteType(questId);
 		}
@@ -4330,8 +4178,7 @@ static void MoveCursorFunc(s32 questId, bool8 onInit,
 
 static void PlayCursorSound(bool8 firstRun)
 {
-	if (firstRun == FALSE)
-	{
+	if (firstRun == FALSE) {
 		PlaySE(SE_RG_BAG_CURSOR);
 	}
 }
@@ -4357,12 +4204,9 @@ void GenerateAndPrintQuestDetails(s32 questId)
 }
 void GenerateQuestLocation(s32 questId)
 {
-	if (!IsSubquestMode())
-	{
+	if (!IsSubquestMode()) {
 		StringCopy(gStringVar2, sSideQuests[questId].map);
-	}
-	else
-	{
+	} else {
 		StringCopy(gStringVar2,
 		           sSideQuests[sStateDataPtr->parentQuest].subquests[questId].map);
 	}
@@ -4377,34 +4221,24 @@ void PrintQuestLocation(s32 questId)
 }
 void GenerateQuestFlavorText(s32 questId)
 {
-	if (IsSubquestMode() == FALSE)
-	{
-		if (IsQuestInactiveState(questId) == TRUE)
-		{
+	if (IsSubquestMode() == FALSE) {
+		if (IsQuestInactiveState(questId) == TRUE) {
 			StringCopy(gStringVar1, sText_StartForMore);
 		}
-		if (IsQuestActiveState(questId) == TRUE)
-		{
+		if (IsQuestActiveState(questId) == TRUE) {
 			UpdateQuestDesc(questId);
 		}
-		if (IsQuestRewardState(questId) == TRUE)
-		{
+		if (IsQuestRewardState(questId) == TRUE) {
 			StringCopy(gStringVar1, sText_ReturnRecieveReward);
 		}
-		if (IsQuestCompletedState(questId) == TRUE)
-		{
+		if (IsQuestCompletedState(questId) == TRUE) {
 			UpdateQuestDoneDesc(questId);
 		}
-	}
-	else
-	{
-		if (IsSubquestCompletedState(questId) == TRUE)
-		{
+	} else {
+		if (IsSubquestCompletedState(questId) == TRUE) {
 			StringCopy(gStringVar1,
 			           sSideQuests[sStateDataPtr->parentQuest].subquests[questId].desc);
-		}
-		else
-		{
+		} else {
 			StringCopy(gStringVar1, sText_Empty);
 		}
 	}
@@ -4423,20 +4257,19 @@ void UpdateQuestDoneDesc(s32 questId)
 
 const u8 *GetQuestDesc(s32 questId)
 {
-	switch (questId)
-	{
+	switch (questId) {
 		case QUEST_PLAYERSADVENTURE:
 			return GetQuestDesc_PlayersAdventure();
 			break;
 		case QUEST_BRINGFRUIT:
 			return GetQuestDesc_BringFruit();
 			break;
-        case QUEST_RABIESOUTBREAK:
-            return GetQuestDesc_RabiesOutbreak();
-            break;
-        case QUEST_BETWEENASTONEANDAHARD:
-            return GetQuestDesc_BetweenAStoneAndAHardPlace();
-            break;
+		case QUEST_RABIESOUTBREAK:
+			return GetQuestDesc_RabiesOutbreak();
+			break;
+		case QUEST_BETWEENASTONEANDAHARD:
+			return GetQuestDesc_BetweenAStoneAndAHardPlace();
+			break;
 		default:
 			return sSideQuests[questId].desc;
 	}
@@ -4444,8 +4277,7 @@ const u8 *GetQuestDesc(s32 questId)
 
 const u8 *GetQuestDoneDesc(s32 questId)
 {
-	switch (questId)
-	{
+	switch (questId) {
 		case QUEST_PLAYERSADVENTURE:
 			return GetQuestDoneDesc_PlayersAdventure();
 		default:
@@ -4463,71 +4295,53 @@ bool8 IsSubquestCompletedState(s32 questId)
 {
 	if (QuestMenu_GetSetSubquestState(sStateDataPtr->parentQuest,
 	                                  FLAG_GET_COMPLETED,
-	                                  questId))
-	{
+	                                  questId)) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
 bool8 IsQuestRewardState(s32 questId)
 {
-	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_REWARD))
-	{
+	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_REWARD)) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
 
 bool8 IsQuestInactiveState(s32 questId)
 {
-	if (!QuestMenu_GetSetQuestState(questId, FLAG_GET_ACTIVE))
-	{
+	if (!QuestMenu_GetSetQuestState(questId, FLAG_GET_ACTIVE)) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
 
 bool8 IsQuestActiveState(s32 questId)
 {
-	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_ACTIVE))
-	{
+	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_ACTIVE)) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
 
 bool8 IsQuestCompletedState(s32 questId)
 {
-	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_COMPLETED))
-	{
+	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_COMPLETED)) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
 
 bool8 IsQuestUnlocked(s32 questId)
 {
-	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_UNLOCKED))
-	{
+	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_UNLOCKED)) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
@@ -4537,25 +4351,20 @@ void DetermineSpriteType(s32 questId)
 	u16 spriteId;
 	u8 spriteType;
 
-	if (IsSubquestMode() == FALSE)
-	{
+	if (IsSubquestMode() == FALSE) {
 		spriteId = sSideQuests[questId].sprite;
 		spriteType = sSideQuests[questId].spritetype;
 
 		QuestMenu_CreateSprite(spriteId, sStateDataPtr->spriteIconSlot,
 		                       spriteType);
-	}
-	else if (IsSubquestCompletedState(questId) == TRUE)
-	{
+	} else if (IsSubquestCompletedState(questId) == TRUE) {
 		spriteId =
-		      sSideQuests[sStateDataPtr->parentQuest].subquests[questId].sprite;
+		        sSideQuests[sStateDataPtr->parentQuest].subquests[questId].sprite;
 		spriteType =
-		      sSideQuests[sStateDataPtr->parentQuest].subquests[questId].spritetype;
+		        sSideQuests[sStateDataPtr->parentQuest].subquests[questId].spritetype;
 		QuestMenu_CreateSprite(spriteId, sStateDataPtr->spriteIconSlot,
 		                       spriteType);
-	}
-	else
-	{
+	} else {
 		QuestMenu_CreateSprite(ITEM_NONE, sStateDataPtr->spriteIconSlot, ITEM);
 	}
 	QuestMenu_DestroySprite(sStateDataPtr->spriteIconSlot ^ 1);
@@ -4569,13 +4378,11 @@ static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 	struct CompressedSpritePalette spritePalette;
 	struct SpriteTemplate *spriteTemplate;
 
-	if (ptr[idx] == 0xFF)
-	{
+	if (ptr[idx] == 0xFF) {
 		FreeSpriteTilesByTag(102 + idx);
 		FreeSpritePaletteByTag(102 + idx);
 
-		switch (spriteType)
-		{
+		switch (spriteType) {
 			case OBJECT:
 				spriteId = CreateObjectGraphicsSprite(itemId, SpriteCallbackDummy, 20,
 				                                      132, 0);
@@ -4593,12 +4400,10 @@ static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 
 		gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
 
-		if (spriteId != MAX_SPRITES)
-		{
+		if (spriteId != MAX_SPRITES) {
 			ptr[idx] = spriteId;
 
-			if (spriteType == ITEM)
-			{
+			if (spriteType == ITEM) {
 				gSprites[spriteId].x2 = 24;
 				gSprites[spriteId].y2 = 140;
 			}
@@ -4610,8 +4415,7 @@ void ResetSpriteState(void)
 {
 	u16 i;
 
-	for (i = 0; i < NELEMS(sItemMenuIconSpriteIds); i++)
-	{
+	for (i = 0; i < NELEMS(sItemMenuIconSpriteIds); i++) {
 		sItemMenuIconSpriteIds[i] = 0xFF;
 	}
 }
@@ -4620,17 +4424,14 @@ static void QuestMenu_DestroySprite(u8 idx)
 {
 	u8 *ptr = &sItemMenuIconSpriteIds[10];
 
-	if (ptr[idx] != 0xFF)
-	{
-        u16 palTag = GetSpritePaletteTagByPaletteNum(
-		                   gSprites[ptr[idx]].oam.paletteNum);
+	if (ptr[idx] != 0xFF) {
+		u16 palTag = GetSpritePaletteTagByPaletteNum(
+		                     gSprites[ptr[idx]].oam.paletteNum);
 		DestroySprite(&gSprites[ptr[idx]]);
 		ptr[idx] = 0xFF;
 
-        if (sStateDataPtr->oldPaletteTag != palTag)
-		{
-			if (sStateDataPtr->oldPaletteTag != 0)
-			{
+		if (sStateDataPtr->oldPaletteTag != palTag) {
+			if (sStateDataPtr->oldPaletteTag != 0) {
 				FreeSpriteTilesByTag(sStateDataPtr->oldPaletteTag);
 				sStateDataPtr->oldPaletteTag = palTag;
 			}
@@ -4643,14 +4444,10 @@ static void GenerateStateAndPrint(u8 windowId, u32 questId,
 {
 	u8 colorIndex;
 
-	if (questId != LIST_CANCEL)
-	{
-		if (IsSubquestMode())
-		{
+	if (questId != LIST_CANCEL) {
+		if (IsSubquestMode()) {
 			colorIndex = GenerateSubquestState(questId);
-		}
-		else
-		{
+		} else {
 			colorIndex = GenerateQuestState(questId);
 		}
 
@@ -4663,12 +4460,9 @@ u8 GenerateSubquestState(u8 questId)
 	u8 parentQuest = sStateDataPtr->parentQuest;
 
 	if (QuestMenu_GetSetSubquestState(parentQuest, FLAG_GET_COMPLETED,
-	                                  questId))
-	{
+	                                  questId)) {
 		StringCopy(gStringVar4, sSideQuests[parentQuest].subquests[questId].type);
-	}
-	else
-	{
+	} else {
 		StringCopy(gStringVar4, sText_Empty);
 	}
 
@@ -4677,23 +4471,16 @@ u8 GenerateSubquestState(u8 questId)
 
 u8 GenerateQuestState(u8 questId)
 {
-	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_COMPLETED))
-	{
+	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_COMPLETED)) {
 		StringCopy(gStringVar4, sText_Complete);
 		return 2;
-	}
-	else if (QuestMenu_GetSetQuestState(questId, FLAG_GET_REWARD))
-	{
+	} else if (QuestMenu_GetSetQuestState(questId, FLAG_GET_REWARD)) {
 		StringCopy(gStringVar4, sText_Reward);
 		return 1;
-	}
-	else if (QuestMenu_GetSetQuestState(questId, FLAG_GET_ACTIVE))
-	{
+	} else if (QuestMenu_GetSetQuestState(questId, FLAG_GET_ACTIVE)) {
 		StringCopy(gStringVar4, sText_Active);
 		return 3;
-	}
-	else
-	{
+	} else {
 		StringCopy(gStringVar4, sText_Empty);
 	}
 }
@@ -4713,8 +4500,7 @@ static void GenerateAndPrintHeader(void)
 	PrintNumQuests();
 	PrintMenuContext();
 
-	if (!IsSubquestMode())
-	{
+	if (!IsSubquestMode()) {
 		PrintTypeFilterButton();
 	}
 }
@@ -4729,8 +4515,7 @@ static void GenerateNumeratorNumQuests(void)
 	u8 mode = sStateDataPtr->filterMode % 10;
 	u8 parentQuest = sStateDataPtr->parentQuest;
 
-	switch (mode)
-	{
+	switch (mode) {
 		case SORT_DEFAULT:
 			ConvertIntToDecimalStringN(gStringVar1, CountUnlockedQuests(),
 			                           STR_CONV_MODE_LEFT_ALIGN,
@@ -4756,8 +4541,7 @@ static void GenerateNumeratorNumQuests(void)
 			break;
 	}
 
-	if (IsSubquestMode())
-	{
+	if (IsSubquestMode()) {
 		ConvertIntToDecimalStringN(gStringVar2,
 		                           sSideQuests[parentQuest].numSubquests,
 		                           STR_CONV_MODE_LEFT_ALIGN, 6);
@@ -4772,8 +4556,7 @@ static void GenerateMenuContext(void)
 	u8 mode = sStateDataPtr->filterMode % 10;
 	u8 parentQuest = sStateDataPtr->parentQuest;
 
-	switch (mode)
-	{
+	switch (mode) {
 		case SORT_DEFAULT:
 			questNamePointer = StringCopy(questNameArray[QUEST_ARRAY_COUNT],
 			                              sText_AllHeader);
@@ -4796,13 +4579,11 @@ static void GenerateMenuContext(void)
 			break;
 	}
 
-	if (IsAlphaMode())
-	{
+	if (IsAlphaMode()) {
 		questNamePointer = StringAppend(questNameArray[QUEST_ARRAY_COUNT],
 		                                sText_AZ);
 	}
-	if (IsSubquestMode())
-	{
+	if (IsSubquestMode()) {
 		StringExpandPlaceholders(gStringVar4, sSideQuests[parentQuest].name);
 		questNamePointer = StringCopy(questNameArray[QUEST_ARRAY_COUNT],
 		                              gStringVar4);
@@ -4834,42 +4615,33 @@ static void Task_Main(u8 taskId)
 
 	u8 selectedQuestId = sListMenuItems[GetCursorPosition()].id;
 
-	if (!gPaletteFade.active)
-	{
+	if (!gPaletteFade.active) {
 		ListMenuGetScrollAndRow(data[0], &sListMenuState.scroll,
 		                        &sListMenuState.row);
 
-		switch (input)
-		{
+		switch (input) {
 			case LIST_NOTHING_CHOSEN:
-				if (JOY_NEW(R_BUTTON))
-				{
+				if (JOY_NEW(R_BUTTON)) {
 					ChangeModeAndCleanUp(taskId);
 				}
-				if (JOY_NEW(START_BUTTON))
-				{
+				if (JOY_NEW(START_BUTTON)) {
 					ToggleAlphaModeAndCleanUp(taskId);
 				}
-				if (JOY_NEW(SELECT_BUTTON))
-				{
+				if (JOY_NEW(SELECT_BUTTON)) {
 					ToggleFavoriteAndCleanUp(taskId, selectedQuestId);
 				}
 				break;
 
 			case LIST_CANCEL:
-				if (IsSubquestMode())
-				{
+				if (IsSubquestMode()) {
 					ReturnFromSubquestAndCleanUp(taskId);
-				}
-				else
-				{
+				} else {
 					TurnOffQuestMenu(taskId);
 				}
 				break;
 
 			default:
-				if (!IsSubquestMode())
-				{
+				if (!IsSubquestMode()) {
 					EnterSubquestModeAndCleanUp(taskId, data, input);
 				}
 				break;
@@ -4879,13 +4651,17 @@ static void Task_Main(u8 taskId)
 
 u8 ManageFavorites(u8 selectedQuestId)
 {
-	if (QuestMenu_GetSetQuestState(selectedQuestId, FLAG_GET_FAVORITE))
-	{
+	if (QuestMenu_GetSetQuestState(selectedQuestId, FLAG_GET_FAVORITE)) {
 		QuestMenu_GetSetQuestState(selectedQuestId, FLAG_REMOVE_FAVORITE);
-	}
-	else
-	{
+	} else {
 		QuestMenu_GetSetQuestState(selectedQuestId, FLAG_SET_FAVORITE);
+	}
+}
+
+u8 CheckFavoriteAndRemove(u8 quest)
+{
+	if (QuestMenu_GetSetQuestState(quest, FLAG_GET_FAVORITE)) {
+		QuestMenu_GetSetQuestState(quest, FLAG_REMOVE_FAVORITE);
 	}
 }
 
@@ -4902,12 +4678,9 @@ static void Task_QuestMenuCleanUp(u8 taskId)
 	BuildMenuTemplate();
 	PlaceTopMenuScrollIndicatorArrows();
 
-	if (sStateDataPtr->restoreCursor == TRUE)
-	{
+	if (sStateDataPtr->restoreCursor == TRUE) {
 		RestoreSavedScrollAndRow(data);
-	}
-	else
-	{
+	} else {
 		ResetCursorToTop(data);
 	}
 
@@ -4929,8 +4702,7 @@ static void ResetCursorToTop(s16 *data)
 
 static void QuestMenu_RemoveScrollIndicatorArrowPair(void)
 {
-	if (sStateDataPtr->scrollIndicatorArrowPairId != 0xFF)
-	{
+	if (sStateDataPtr->scrollIndicatorArrowPairId != 0xFF) {
 		RemoveScrollIndicatorArrowPair(sStateDataPtr->scrollIndicatorArrowPairId);
 		sStateDataPtr->scrollIndicatorArrowPairId = 0xFF;
 	}
@@ -4940,8 +4712,7 @@ static void QuestMenu_RemoveScrollIndicatorArrowPair(void)
 void EnterSubquestModeAndCleanUp(u8 taskId, s16 *data,
                                  s32 input)
 {
-	if (DoesQuestHaveChildrenAndNotInactive(input))
-	{
+	if (DoesQuestHaveChildrenAndNotInactive(input)) {
 		PrepareFadeOut(taskId);
 
 		PlaySE(SE_SELECT);
@@ -4953,8 +4724,7 @@ void EnterSubquestModeAndCleanUp(u8 taskId, s16 *data,
 }
 void ChangeModeAndCleanUp(u8 taskId)
 {
-	if (!IsSubquestMode())
-	{
+	if (!IsSubquestMode()) {
 		PlaySE(SE_SELECT);
 		sStateDataPtr->filterMode = ManageMode(INCREMENT);
 		Task_QuestMenuCleanUp(taskId);
@@ -4962,8 +4732,7 @@ void ChangeModeAndCleanUp(u8 taskId)
 }
 void ToggleAlphaModeAndCleanUp(u8 taskId)
 {
-	if (!IsSubquestMode())
-	{
+	if (!IsSubquestMode()) {
 		PlaySE(SE_SELECT);
 		sStateDataPtr->filterMode = ManageMode(ALPHA);
 		Task_QuestMenuCleanUp(taskId);
@@ -4972,8 +4741,7 @@ void ToggleAlphaModeAndCleanUp(u8 taskId)
 void ToggleFavoriteAndCleanUp(u8 taskId, u8 selectedQuestId)
 {
 	if (!IsSubquestMode()
-	            && !CheckSelectedIsCancel(selectedQuestId))
-	{
+	    && !CheckSelectedIsCancel(selectedQuestId)) {
 		PlaySE(SE_SELECT);
 		ManageFavorites(selectedQuestId);
 		sStateDataPtr->restoreCursor = FALSE;
@@ -4982,12 +4750,9 @@ void ToggleFavoriteAndCleanUp(u8 taskId, u8 selectedQuestId)
 }
 bool8 CheckSelectedIsCancel(u8 selectedQuestId)
 {
-	if (selectedQuestId == (0xFF - 1))
-	{
+	if (selectedQuestId == (0xFF - 1)) {
 		return TRUE;
-	}
-	else
-	{
+	} else {
 		return FALSE;
 	}
 }
@@ -5031,8 +4796,7 @@ static void PrepareFadeOut(u8 taskId)
 
 static bool8 HandleFadeOut(u8 taskId)
 {
-	if (gTasks[taskId].data[3]-- != 0)
-	{
+	if (gTasks[taskId].data[3]-- != 0) {
 		return FALSE;
 	}
 
@@ -5042,14 +4806,13 @@ static bool8 HandleFadeOut(u8 taskId)
 	gTasks[taskId].data[2] += gTasks[taskId].data[3];
 
 	//When blend weight runs out, set final blend and quit
-	if (gTasks[taskId].data[1] <= 0)
-	{
+	if (gTasks[taskId].data[1] <= 0) {
 		SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0, gTasks[taskId].data[1]));
 		return TRUE;
 	}
 	//Set intermediate blend state
 	SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(gTasks[taskId].data[1],
-	            MAX_FADE_INTENSITY - gTasks[taskId].data[1]));
+	                MAX_FADE_INTENSITY - gTasks[taskId].data[1]));
 	return FALSE;
 }
 
@@ -5057,7 +4820,7 @@ static void PrepareFadeIn(u8 taskId)
 {
 	SetGpuRegBaseForFade();
 	SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0,
-	            MAX_FADE_INTENSITY));
+	                MAX_FADE_INTENSITY));
 	InitFadeVariables(taskId, MIN_FADE_INTENSITY, 0, 1, 2);
 }
 
@@ -5068,22 +4831,20 @@ static bool8 HandleFadeIn(u8 taskId)
 	gTasks[taskId].data[1] += gTasks[taskId].data[4];
 
 	//When blend weight reaches max, set final blend and quit
-	if (gTasks[taskId].data[1] >= MAX_FADE_INTENSITY)
-	{
+	if (gTasks[taskId].data[1] >= MAX_FADE_INTENSITY) {
 		SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(MAX_FADE_INTENSITY,
-		            MIN_FADE_INTENSITY));
+		                MIN_FADE_INTENSITY));
 		return TRUE;
 	}
 	//Set intermediate blend state
 	SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(gTasks[taskId].data[1],
-	            MAX_FADE_INTENSITY - gTasks[taskId].data[1]));
+	                MAX_FADE_INTENSITY - gTasks[taskId].data[1]));
 	return FALSE;
 }
 
 static void Task_FadeOut(u8 taskId)
 {
-	if (HandleFadeOut(taskId))
-	{
+	if (HandleFadeOut(taskId)) {
 		PrepareFadeIn(taskId);
 		Task_QuestMenuCleanUp(taskId);
 		gTasks[taskId].func = Task_FadeIn;
@@ -5092,16 +4853,14 @@ static void Task_FadeOut(u8 taskId)
 
 static void Task_FadeIn(u8 taskId)
 {
-	if (HandleFadeIn(taskId))
-	{
+	if (HandleFadeIn(taskId)) {
 		gTasks[taskId].func = Task_Main;
 	}
 }
 
 static void Task_QuestMenuWaitFadeAndBail(u8 taskId)
 {
-	if (!gPaletteFade.active)
-	{
+	if (!gPaletteFade.active) {
 		SetMainCallback2(sListMenuState.savedCallback);
 		FreeResources();
 		DestroyTask(taskId);
@@ -5131,8 +4890,7 @@ static void FreeResources(void)
 	try_free(sBg1TilemapBuffer);
 	try_free(sListMenuItems);
 
-	for (i = QUEST_ARRAY_COUNT; i > -1; i--)
-	{
+	for (i = QUEST_ARRAY_COUNT; i > -1; i--) {
 		try_free(questNameArray[i]);
 	}
 
@@ -5155,15 +4913,11 @@ static void Task_QuestMenuTurnOff2(u8 taskId)
 {
 	s16 *data = gTasks[taskId].data;
 
-	if (!gPaletteFade.active)
-	{
+	if (!gPaletteFade.active) {
 		DestroyListMenuTask(data[0], &sListMenuState.scroll, &sListMenuState.row);
-		if (sStateDataPtr->savedCallback != NULL)
-		{
+		if (sStateDataPtr->savedCallback != NULL) {
 			SetMainCallback2(sStateDataPtr->savedCallback);
-		}
-		else
-		{
+		} else {
 			SetMainCallback2(sListMenuState.savedCallback);
 		}
 
@@ -5176,8 +4930,7 @@ static void Task_QuestMenuTurnOff2(u8 taskId)
 void Task_QuestMenu_OpenFromStartMenu(u8 taskId)
 {
 	s16 *data = gTasks[taskId].data;
-	if (!gPaletteFade.active)
-	{
+	if (!gPaletteFade.active) {
 		CleanupOverworldWindowsAndTilemaps();
 		QuestMenu_Init(tItemPcParam, CB2_ReturnToFieldWithOpenMenu);
 		DestroyTask(taskId);
@@ -5196,6 +4949,8 @@ void QuestMenu_CopySubquestName(u8 *dst, u8 parentId, u8 childId)
 
 void QuestMenu_ResetMenuSaveData(void)
 {
+	memset(&gSaveBlock2Ptr->questMode, 0,
+	       sizeof(gSaveBlock2Ptr->questMode));
 	memset(&gSaveBlock2Ptr->questData, 0,
 	       sizeof(gSaveBlock2Ptr->questData));
 	memset(&gSaveBlock2Ptr->subQuests, 0,

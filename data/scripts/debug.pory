@@ -63,9 +63,10 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    warp(MAP_JAPANTOWN_BALLS,0)
+    startquest(QUEST_CUTEPOKEMON)
 }
 script Debug_Script_2{
+    completequest(QUEST_CUTEPOKEMON)
 }
 
 script Debug_Script_3{

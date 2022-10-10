@@ -54,11 +54,12 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warp MAP_JAPANTOWN_BALLS, 0
+	startquest QUEST_CUTEPOKEMON
 	return
 
 
 Debug_Script_2::
+	completequest QUEST_CUTEPOKEMON
 	return
 
 
