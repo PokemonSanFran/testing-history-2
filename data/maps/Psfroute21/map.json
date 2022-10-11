@@ -19,8 +19,8 @@
       "map": "MAP_BERNALHEIGHTS"
     },
     {
-      "direction": "right",
-      "offset": -23,
+      "direction": "up",
+      "offset": 57,
       "map": "MAP_DOGPATCH"
     }
   ],

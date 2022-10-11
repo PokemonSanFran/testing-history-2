@@ -4504,8 +4504,8 @@
     {
       "id": "LAYOUT_DOGPATCH",
       "name": "Dogpatch_Layout",
-      "width": 18,
-      "height": 32,
+      "width": 34,
+      "height": 55,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/Dogpatch/border.bin",
