@@ -21,15 +21,15 @@ WeCanStopYouActually_FixPlayerPosition_Script_1:
 WeCanStopYouActually_PostBattle_Dialogue::
 	lock
 	call WeCanStopYouActually_FixPlayerPosition_Script
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_SoWhatsYourPlan
 	callnative ClearMugshot
 	msgbox gText_WeCanStopYouActually_BeepBeep
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_ThatsTheAuthorities
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_OhNo
 	callnative ClearMugshot
@@ -40,49 +40,49 @@ WeCanStopYouActually_PostBattle_Dialogue::
 	special TurnOnTVScreen
 	delay 16
 	fadescreen FADE_TO_BLACK
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_IAmChiefOperatingOfficer
 	callnative ClearMugshot
 	closemessage
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_WaitTheHell
 	callnative ClearMugshot
 	playse SE_POKENAV_CALL
 	waitse
 	msgbox gText_WeCanStopYouActually_Ring
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_FindThem
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_IDontCare
 	callnative ClearMugshot
 	closemessage
 	applymovement 2, WeCanStopYouActually_RageRun
 	waitmovement 2
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_TheyToldYou
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_I
 	callnative ClearMugshot
 	closemessage
 	applymovement 2, Common_Movement_FaceLeft
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_Security
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_WeAlreadyBeatThem
 	callnative ClearMugshot
 	closemessage
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 2
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_ImNotGoingToPrison
 	callnative ClearMugshot
@@ -94,7 +94,7 @@ WeCanStopYouActually_PostBattle_Dialogue::
 
 
 WeCanStopYouActually_StartBossBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_AndIllFrigginKill
 	callnative ClearMugshot
@@ -117,7 +117,7 @@ WeCanStopYouActually_Arrest_Dialogue::
 	applymovement 4, WeCanStopYouActually_ArrestWalkInB
 	applymovement OBJ_EVENT_ID_PLAYER, WeCanStopYouActually_ArrestWalkInC
 	waitmovement 4
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_ForWhat
 	callnative ClearMugshot

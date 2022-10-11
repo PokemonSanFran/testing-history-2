@@ -66,8 +66,8 @@ script BedScript_AdvanceStory_Script{
         case 9: call(AaandWereBack_FerryRepaired_Dialogue)
         case 24: call(OffYouGo_WakeUp_Dialogue)
         case 26: call(WhyAreYouHelpingThem_StartChampionship_Dialogue)
-        case 42: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
-        case 99: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
+        case STORY_POST_YOU_REALIZE_WERE_EVIL: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
+        case STORY_MORNING_AFTER_TIMETRAVEL: call(YouRealizeTheyreEvilRight_NoIdea_Dialogue)
         case 101: call(LetsFixThis_EliteVideo_Dialogue)
         case 106: call(Earthquake_ThatNight_Dialogue)
         default:

@@ -559,10 +559,11 @@ script YouRealizeTheyreEvilRight_NoIdea_Dialogue {
         fadescreen(FADE_FROM_BLACK)
         setvar(VAR_STORYLINE_STATE,STORY_MORNING_OF_TIMELINE_SPLIT)
 
-        if (flag(FLAG_TIMELINE_TIMETRAVEL)){
-                lock
                 applymovement(PLAYER,OkayLetsFixIt_PaceNightmare)
                 waitmovement(0)
+
+        if (flag(FLAG_TIMELINE_TIMETRAVEL)){
+                lock
             setvar(VAR_0x8000, MUGSHOT_HILDA)
             callnative(DrawMugshot)
                 msgbox(gText_OkayLetsFixIt_WhatTheHell)

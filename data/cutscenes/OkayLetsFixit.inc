@@ -31,12 +31,12 @@ OkayLetsFixit_ReachTop_Script::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, OkayLetsFixit_LookAround
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_WhatWhereDidYou
 	callnative ClearMugshot
 	msgbox gText_OkayLetsFixIt_HaveYouRealized
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_InComingHere
 	callnative ClearMugshot
@@ -53,7 +53,7 @@ OkayLetsFixit_ReachTop_Script_2:
 OkayLetsFixit_StartFlashback_Script::
 	lock
 	setvar VAR_STORYLINE_STATE, STORY_BEGIN_LETS_FIX_IT
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_ThisWasTheNight
 	callnative ClearMugshot
@@ -62,12 +62,12 @@ OkayLetsFixit_StartFlashback_Script::
 	msgbox gText_OkayLetsFixIt_Why
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_IWasTryingToHelp
 	callnative ClearMugshot
 	msgbox gText_OkayLetsFixIt_WouldYouChoose
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_IfICouldDoItOver
 	closemessage
@@ -91,7 +91,7 @@ OkayLetsFixit_ReturnToPeak_Script::
 	waitmovement OBJ_EVENT_ID_CAMERA
 	waitmovement 1
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_WaitWhatWhoAreYou
 	callnative ClearMugshot
@@ -115,7 +115,7 @@ OkayLetsFixit_ReturnToPeak_Script::
 OkayLetsFixit_TimelineReset_Script::
 	setflag FLAG_TIMELINE_TIMETRAVEL
 	clearflag FLAG_TIMELINE_FALSE
-	setvar VAR_STORYLINE_STATE, STORY_POST_YOU_REALIZE_WERE_EVIL
+	setvar VAR_STORYLINE_STATE, STORY_MORNING_AFTER_TIMETRAVEL
 	setvar VAR_MANHUNT_STATE, NOT_ASSIGNED
 	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, NOT_ASSIGNED
 	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_NOT_ASSIGNED
@@ -243,10 +243,3 @@ gText_OkayLetsFixIt_WhatTheHell::
 	.string "What the hell was that? That dream was…\n"
 	.string "insane. What the hell did I eat for\l"
 	.string "dinner?$"
-
-gText_OkayLetsFixIt_IHaveNoIdea::
-	.string "…I have no idea what I'm going to do. Do\n"
-	.string "I help Ycombinator and the police end\l"
-	.string "TeamRocket permanently? Or do I help\l"
-	.string "TeamRocket clear their name and help\l"
-	.string "the people of SanFran?$"

@@ -86,8 +86,8 @@ BedScript_AdvanceStory_Script::
 	case 9, BedScript_AdvanceStory_Script_4
 	case 24, BedScript_AdvanceStory_Script_5
 	case 26, BedScript_AdvanceStory_Script_6
-	case 42, BedScript_AdvanceStory_Script_7
-	case 99, BedScript_AdvanceStory_Script_8
+	case STORY_POST_YOU_REALIZE_WERE_EVIL, BedScript_AdvanceStory_Script_7
+	case STORY_MORNING_AFTER_TIMETRAVEL, BedScript_AdvanceStory_Script_8
 	case 101, BedScript_AdvanceStory_Script_9
 	case 106, BedScript_AdvanceStory_Script_10
 BedScript_AdvanceStory_Script_1:

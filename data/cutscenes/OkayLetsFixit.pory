@@ -44,14 +44,14 @@ script OkayLetsFixit_ReachTop_Script {
         applymovement(PLAYER, OkayLetsFixit_LookAround)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OkayLetsFixIt_WhatWhereDidYou)
         callnative(ClearMugshot)
 
         msgbox(gText_OkayLetsFixIt_HaveYouRealized)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OkayLetsFixIt_InComingHere)
         callnative(ClearMugshot)
@@ -67,7 +67,7 @@ script OkayLetsFixit_StartFlashback_Script {
     lock
         setvar(VAR_STORYLINE_STATE,STORY_BEGIN_LETS_FIX_IT)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OkayLetsFixIt_ThisWasTheNight)
         callnative(ClearMugshot)
@@ -79,14 +79,14 @@ script OkayLetsFixit_StartFlashback_Script {
         applymovement(PLAYER, Common_Movement_FaceRight)
         waitmovement(PLAYER)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OkayLetsFixIt_IWasTryingToHelp)
         callnative(ClearMugshot)
 
         msgbox(gText_OkayLetsFixIt_WouldYouChoose)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OkayLetsFixIt_IfICouldDoItOver)
         closemessage
@@ -113,7 +113,7 @@ script OkayLetsFixit_ReturnToPeak_Script {
         waitmovement(HIKO)
         waitmovement(PLAYER)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_OkayLetsFixIt_WaitWhatWhoAreYou)
         callnative(ClearMugshot)
@@ -137,10 +137,10 @@ script OkayLetsFixit_ReturnToPeak_Script {
 }
 
 script OkayLetsFixit_TimelineReset_Script {
-    setflag(FLAG_TIMELINE_TIMETRAVEL)
+        setflag(FLAG_TIMELINE_TIMETRAVEL)
         clearflag(FLAG_TIMELINE_FALSE)
 
-        setvar(VAR_STORYLINE_STATE,STORY_POST_YOU_REALIZE_WERE_EVIL)
+        setvar(VAR_STORYLINE_STATE,STORY_MORNING_AFTER_TIMETRAVEL)
         setvar(VAR_MANHUNT_STATE,NOT_ASSIGNED)
         setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,NOT_ASSIGNED)
         setvar(VAR_HOW_DISAPPOINTING_STATE,MISSION_NOT_ASSIGNED)
@@ -200,10 +200,6 @@ text gText_OkayLetsFixIt_IHopeYouMake {
 
 text gText_OkayLetsFixIt_WhatTheHell {
     format("What the hell was that? That dream was… insane. What the hell did I eat for dinner?")
-}
-
-text gText_OkayLetsFixIt_IHaveNoIdea {
-    format("…I have no idea what I'm going to do. Do I help Ycombinator and the police end TeamRocket permanently? Or do I help TeamRocket clear their name and help the people of SanFran?")
 }
 
 movement OkayLetsFixit_WalkToPeak {

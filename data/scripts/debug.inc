@@ -54,8 +54,8 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_STORYLINE_STATE, STORY_CLEAR
-	warpsilent MAP_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE, 0
+	call OkayLetsFixit_TimelineReset_Script
+	warpsilent MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7
 	return
 
 

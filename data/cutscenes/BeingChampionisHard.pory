@@ -3,7 +3,10 @@ const OAK = 1
 const FLAG_HIDE_OAK = FLAG_TEMP_1
 
 script BeingChampionIsHard_ObjectCleanUp_Script {
-    setflag(FLAG_HIDE_OAK)
+    if (var(VAR_STORYLINE_STATE) != STORY_WON_FINALS){
+        setflag(FLAG_HIDE_OAK)
+    }
+    return
 }
 
 script BeingChampionIsHard_TimeSkip {
