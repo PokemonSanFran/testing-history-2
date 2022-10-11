@@ -2,6 +2,7 @@
 mapscripts Fortpoint_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, STORY_EAST_SANFRAN_COMPLETE: TheStrikeStrikesBack_PhoneCall_Dialogue
+        VAR_FORTPOINT_STATE, DEFEATED_CHUCK: YouLookTired_Intro_Dialogue 
     ]
     MAP_SCRIPT_ON_TRANSITION {
         call(YouLookTired_HideObjects_Script)

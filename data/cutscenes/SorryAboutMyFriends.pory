@@ -9,7 +9,7 @@ script SorryAboutMyFriends_Ariana_Visible_Script{
     return
 }
 
-script SorryAboutMyFriends_CheckBadge_Script{
+script SorryAboutMyFriends_CheckCutscene_Script{
     lock
         if (!flag(FLAG_HIDE_ARIANA)){
             goto(SorryAboutMyFriends_Intro_Dialogue)

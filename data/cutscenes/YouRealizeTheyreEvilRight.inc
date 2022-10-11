@@ -524,6 +524,7 @@ YouRealizeTheyreEvilRight_CantSleep_Dialogue::
 
 
 YouRealizeTheyreEvilRight_NoIdea_Dialogue::
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_STORYLINE_STATE, STORY_MORNING_OF_TIMELINE_SPLIT
 	applymovement OBJ_EVENT_ID_PLAYER, OkayLetsFixIt_PaceNightmare
 	waitmovement 0

@@ -9,5 +9,6 @@ Fortpoint_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 Fortpoint_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, STORY_EAST_SANFRAN_COMPLETE, TheStrikeStrikesBack_PhoneCall_Dialogue
+	map_script_2 VAR_FORTPOINT_STATE, DEFEATED_CHUCK, YouLookTired_Intro_Dialogue
 	.2byte 0
 

@@ -63,10 +63,14 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    call(OkayLetsFixit_TimelineReset_Script)
-    warpsilent(MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7)
+    setvar(VAR_FORTPOINT_STATE,0)
+    warpsilent(MAP_FORTPOINT,0)
 }
 script Debug_Script_2{
+    msgbox("you just got travelled back in time.")
+    closemessage
+    call(OkayLetsFixit_TimelineReset_Script)
+    warpsilent(MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7)
 }
 
 script Debug_Script_3{

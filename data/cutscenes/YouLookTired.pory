@@ -40,14 +40,28 @@ script YouLookTired_WalkToKoga_Script {
     waitmovement(0)
 }
 
+
 script YouLookTired_Intro_Dialogue {
     //PSF TODO change this str_var the player's favorite food, which is defined in the character creation process
+    lock
         bufferspeciesname(STR_VAR_1,SPECIES_SNORLAX)
 
     playbgm(MUS_MT_PYRE,FALSE)
+
+    applymovement(KOGA,Common_Movement_FaceRight)
+    waitmovement(KOGA)
+
         setvar(VAR_0x8000, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_YouLookTired_SorryToInterrupt)
+        callnative(ClearMugshot)
+        closemessage
+
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    waitmovement(PLAYER)
+
+    applymovement(KOGA,YouLookTired_KogaWalksToPlayer_Movement)
+    waitmovement(KOGA)
 
         setvar(VAR_0x8000, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -263,3 +277,7 @@ movement YouLookTired_WalkAwayFrom7 {
         step_end
 }
 
+movement YouLookTired_KogaWalksToPlayer_Movement{
+    walk_right * 3
+    step_end
+}

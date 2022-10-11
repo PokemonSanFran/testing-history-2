@@ -10,16 +10,16 @@ SorryAboutMyFriends_Ariana_Visible_Script_2:
 	goto SorryAboutMyFriends_Ariana_Visible_Script_1
 
 
-SorryAboutMyFriends_CheckBadge_Script::
+SorryAboutMyFriends_CheckCutscene_Script::
 	lock
-	goto_if_unset FLAG_TEMP_5, SorryAboutMyFriends_CheckBadge_Script_2
-SorryAboutMyFriends_CheckBadge_Script_1:
+	goto_if_unset FLAG_TEMP_5, SorryAboutMyFriends_CheckCutscene_Script_2
+SorryAboutMyFriends_CheckCutscene_Script_1:
 	release
 	end
 
-SorryAboutMyFriends_CheckBadge_Script_2:
+SorryAboutMyFriends_CheckCutscene_Script_2:
 	goto SorryAboutMyFriends_Intro_Dialogue
-	goto SorryAboutMyFriends_CheckBadge_Script_1
+	goto SorryAboutMyFriends_CheckCutscene_Script_1
 
 
 SorryAboutMyFriends_Intro_Dialogue::

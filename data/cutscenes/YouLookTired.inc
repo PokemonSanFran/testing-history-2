@@ -64,11 +64,20 @@ YouLookTired_WalkToKoga_Script_6:
 
 
 YouLookTired_Intro_Dialogue::
+	lock
 	bufferspeciesname STR_VAR_1, SPECIES_SNORLAX
 	playbgm MUS_MT_PYRE, FALSE
+	applymovement 1, Common_Movement_FaceRight
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_SorryToInterrupt
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 1, YouLookTired_KogaWalksToPlayer_Movement
+	waitmovement 1
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_YeahWhatsUp
@@ -208,6 +217,12 @@ YouLookTired_WalkAwayFrom7:
 	walk_down
 	walk_down
 	walk_down
+	step_end
+
+YouLookTired_KogaWalksToPlayer_Movement:
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 gText_YouLookTired_SorryToInterrupt::

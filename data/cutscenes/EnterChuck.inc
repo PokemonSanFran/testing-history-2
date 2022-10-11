@@ -21,32 +21,32 @@ EnterChuck_Event_Script_4:
 
 EnterChuck_Intro_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_AintItBeautiful, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_DoYouKnow
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_NoWh
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_IllTellYouWhy
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_YaKnowWhat
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_WeWould
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_WeWouldBlowThem
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_ThatRawPower
 	callnative ClearMugshot
-	setvar VAR_GYM_5_STATE, 3
+	setvar VAR_GYM_5_STATE, GYM_SAVE_BEFORE_LEADER
 	call Common_EventScript_SaveGame
 	closemessage
 	goto EnterChuck_StartBattle_Script
@@ -54,7 +54,7 @@ EnterChuck_Intro_Dialogue::
 
 
 EnterChuck_StartBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	trainerbattle_single TRAINER_NORMAN_1, gText_EnterChuck_NowImGonnaShow, gText_EnterChuck_ManDown, EnterChuck_ChuckDefeated_Script, NO_MUSIC
 	return
@@ -63,9 +63,9 @@ EnterChuck_StartBattle_Script::
 EnterChuck_ChuckDefeated_Script::
 	lock
 	setflag FLAG_BADGE05_GET
-	addvar VAR_GYM_5_STATE, 1
+	setvar VAR_GYM_5_STATE, GYM_DEFEATED_LEADER
 	setvar VAR_CHUCK_STATE, BATTLE_1_COMPLETE
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_YoureNoJoke
 	callnative ClearMugshot
@@ -74,15 +74,15 @@ EnterChuck_ChuckDefeated_Script::
 	giveitem ITEM_TM05
 	closemessage
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_FORTPOINT_STATE, 1
+	setvar VAR_FORTPOINT_STATE, DEFEATED_CHUCK
 	release
 	end
 
 
 EnterChuck_PostDefeat1_Dialogue::
-	setvar VAR_GYM_5_STATE, 5
+	setvar VAR_GYM_5_STATE, GYM_EXPLAINED_BADGE_AND_TM
 	lock
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_MaybeMyDefense, MSGBOX_NPC
 	callnative ClearMugshot
@@ -93,7 +93,7 @@ EnterChuck_PostDefeat1_Dialogue::
 
 EnterChuck_PostDefeat2_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_CHUCK
+	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
 	callnative DrawMugshot
 	msgbox gText_EnterChuck_ManTheCompetition, MSGBOX_NPC
 	callnative ClearMugshot

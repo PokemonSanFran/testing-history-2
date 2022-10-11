@@ -1,6 +1,12 @@
 BeingChampionIsHard_ObjectCleanUp_Script::
-	setflag FLAG_TEMP_1
+	compare VAR_STORYLINE_STATE, STORY_WON_FINALS
+	goto_if_ne BeingChampionIsHard_ObjectCleanUp_Script_2
+BeingChampionIsHard_ObjectCleanUp_Script_1:
 	return
+
+BeingChampionIsHard_ObjectCleanUp_Script_2:
+	setflag FLAG_TEMP_1
+	goto BeingChampionIsHard_ObjectCleanUp_Script_1
 
 
 BeingChampionIsHard_TimeSkip::

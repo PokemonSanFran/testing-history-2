@@ -54,12 +54,16 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	call OkayLetsFixit_TimelineReset_Script
-	warpsilent MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7
+	setvar VAR_FORTPOINT_STATE, 0
+	warpsilent MAP_FORTPOINT, 0
 	return
 
 
 Debug_Script_2::
+	msgbox Debug_Script_2_Text_0
+	closemessage
+	call OkayLetsFixit_TimelineReset_Script
+	warpsilent MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7
 	return
 
 
@@ -94,6 +98,9 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
+
+Debug_Script_2_Text_0:
+	.string "you just got travelled back in time.$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"

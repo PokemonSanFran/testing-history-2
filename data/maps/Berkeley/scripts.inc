@@ -10,7 +10,7 @@ Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Berkeley_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_BERKELEY_STATE, 1, SorryAboutMyFriends_CheckBadge_Script
+	map_script_2 VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE, SorryAboutMyFriends_CheckCutscene_Script
 	.2byte 0
 
 

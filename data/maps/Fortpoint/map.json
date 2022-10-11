@@ -44,42 +44,7 @@
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 7,
-      "y": 7,
-      "elevation": 0,
-      "var": "VAR_FORTPOINT_STATE",
-      "var_value": "1",
-      "script": "YouLookTired_Trigger_Script"
-    },
-    {
-      "type": "trigger",
-      "x": 8,
-      "y": 8,
-      "elevation": 0,
-      "var": "VAR_FORTPOINT_STATE",
-      "var_value": "1",
-      "script": "YouLookTired_Trigger_Script"
-    },
-    {
-      "type": "trigger",
-      "x": 9,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_FORTPOINT_STATE",
-      "var_value": "1",
-      "script": "YouLookTired_Trigger_Script"
-    },
-    {
-      "type": "trigger",
-      "x": 10,
-      "y": 10,
-      "elevation": 0,
-      "var": "VAR_FORTPOINT_STATE",
-      "var_value": "1",
-      "script": "YouLookTired_Trigger_Script"
-    }
+
   ],
   "bg_events": [
 
