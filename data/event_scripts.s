@@ -1414,3 +1414,5 @@ Script_RemoveTint::
 	.include "data/maps/Mission_Bar/scripts.inc"
 
 	.include "data/maps/SOMA_smashgg/scripts.inc"
+
+	.include "data/maps/Psfroute2/scripts.inc"

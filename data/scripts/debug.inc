@@ -54,16 +54,19 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warp MAP_CHINATOWN, 26, 4
-	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_ASSIGNED
+	warp MAP_PSFROUTE22, 12, 4
 	return
 
 
 Debug_Script_2::
+	warp MAP_OAKLAND, 0
 	return
 
 
 Debug_Script_3::
+	msgbox Debug_Script_3_Text_0
+	closemessage
+	setflag FLAG_IS_CHAMPION
 	return
 
 
@@ -94,6 +97,9 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
+
+Debug_Script_3_Text_0:
+	.string "you're the champion.$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"

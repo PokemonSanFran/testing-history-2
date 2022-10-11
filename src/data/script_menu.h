@@ -797,12 +797,6 @@ static const struct MenuAction sFerrybuildingFerryDestinations_Ver1[] =
     {gText_Alameda},
     {gText_Exit},
 };
-static const struct MenuAction sFerrybuildingFerryDestinations_Ver2[] =
-{
-	{gText_Alameda},
-	{gText_Treasureisland},
-	{gText_Exit},
-};
 static const struct MenuAction sAlamedaFerryDestinations_Ver1[] =
 {
 	{gText_Ferrybuilding},
@@ -815,33 +809,6 @@ static const struct MenuAction sAlamedaFerryDestinations_Ver2[] =
 	{gText_Exit},
 };
 
-static const struct MenuAction sAlamedaFerryDestinations_Ver3[] =
-{
-	{gText_Ferrybuilding},
-	{gText_Alcatraz},
-	{gText_Treasureisland},
-	{gText_Exit},
-};
-
-static const struct MenuAction sOaklandferryDestinations_Ver1[] =
-{
-	{gText_Treasureisland},
-	{gText_Exit},
-};
-
-static const struct MenuAction sTreasureislandFerryDestinations_Ver1[] =
-{
-	{gText_Ferrybuilding},
-	{gText_Exit},
-};
-
-static const struct MenuAction sTreasureislandFerryDestinations_Ver2[] =
-{
-	{gText_Ferrybuilding},
-	{gText_Oakland},
-	{gText_Exit},
-};
-
 static const struct MenuAction sBerkeleyFerryDestinations_Ver1[] =
 {
 	{gText_Marin},
@@ -851,12 +818,6 @@ static const struct MenuAction sBerkeleyFerryDestinations_Ver1[] =
 static const struct MenuAction sMarinFerryDestinations_Ver1[] =
 {
 	{gText_Berkeley},
-	{gText_Exit},
-};
-
-static const struct MenuAction sOaklandferryFerryDestinations_Ver1[] =
-{
-	{gText_Alameda},
 	{gText_Exit},
 };
 
@@ -1035,16 +996,10 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_STARTER_SELECT]             = MULTICHOICE(MultichoiceList_StarterSelect), //Starter Select Menu
     [MULTI_STARTER_SUMMARY]             = MULTICHOICE(MultichoiceList_StarterSummarySelect), //Starter Choose / Summary / Cancel Menu
     [FERRYBUILDING_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sFerrybuildingFerryDestinations_Ver1),
-[FERRYBUILDING_FERRY_DESTINATIONS_VER2] = MULTICHOICE(sFerrybuildingFerryDestinations_Ver2),
 [ALAMEDA_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sAlamedaFerryDestinations_Ver1),
 [ALAMEDA_FERRY_DESTINATIONS_VER2] = MULTICHOICE(sAlamedaFerryDestinations_Ver2),
-[ALAMEDA_FERRY_DESTINATIONS_VER3] = MULTICHOICE(sAlamedaFerryDestinations_Ver3),
-[OAKLAND_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sOaklandferryDestinations_Ver1),
-[TREASUREISLAND_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sTreasureislandFerryDestinations_Ver1),
-[TREASUREISLAND_FERRY_DESTINATIONS_VER2] = MULTICHOICE(sTreasureislandFerryDestinations_Ver2),
 [BERKELEY_FERRY_DESTINATIONS_VER1] = MULTICHOICE(sBerkeleyFerryDestinations_Ver1),
 [MARIN_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sMarinFerryDestinations_Ver1),
-[OAKLANDFERRY_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sOaklandferryFerryDestinations_Ver1),
 [ALCATRAZ_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sAlcatrazFerryDestinations_Ver1),
 [FISHERMANSWHARF_FERRY_DESTINATIONS_VER1 ] = MULTICHOICE(sFishermanswharfFerryDestinations_Ver1),
 

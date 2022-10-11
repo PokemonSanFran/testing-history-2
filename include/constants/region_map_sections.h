@@ -164,6 +164,7 @@
 #define MAPSEC_PSFROUTE76	0xA0
 #define MAPSEC_GLDNGTEWILDS	0xA1
 #define MAPSEC_SALESFORCETOWER   0xA2
+#define MAPSEC_PSFROUTE2	0xA3
 //#define MAPSEC_VIRIDIAN_CITY                0x59
 //#define MAPSEC_PEWTER_CITY                  0x5A
 //#define MAPSEC_CERULEAN_CITY                0x5B

@@ -30,8 +30,8 @@
     },
     {
       "direction": "down",
-      "offset": 16,
-      "map": "MAP_PAINTEDLADIES"
+      "offset": 0,
+      "map": "MAP_PSFROUTE2"
     }
   ],
   "object_events": [

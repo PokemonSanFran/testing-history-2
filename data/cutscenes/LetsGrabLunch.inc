@@ -7,10 +7,10 @@ LetsGrabLunch_StartConversation_Dialogue::
 	lockall
 	addvar VAR_STORYLINE_STATE, 1
 	clearflag FLAG_TEMP_1
-	addobject 3
+	addobject 1
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	applymovement 3, LetsGrabLunch_WalkUpToPlayer
+	applymovement 1, LetsGrabLunch_WalkUpToPlayer
 	waitmovement 0
 	setvar VAR_0x8000, MUGSHOT_HUGH
 	callnative DrawMugshot

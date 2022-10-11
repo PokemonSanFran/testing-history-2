@@ -22,44 +22,6 @@ Treasureisland_MapScripts_OnTransition_2:
 	return
 
 
-Treasureisland_ChooseFerryDestination_Script::
-	msgbox gText_WhereWould, MSGBOX_NPC
-	goto Treasureisland_UnlockedDestinations_Script
-	return
-
-
-Treasureisland_UnlockedDestinations_Script::
-	switch VAR_FERRY_STATE
-	case 2, Treasureisland_UnlockedDestinations_Script_2
-	return
-
-Treasureisland_UnlockedDestinations_Script_2:
-	goto Treasureisland_FerryState0_Script
-	return
-
-
-Treasureisland_FerryState0_Script::
-	multichoicedefault 18, 8, TREASUREISLAND_FERRY_DESTINATIONS_VER1, 2, TRUE
-	call SlateportCity_Harbor_EventScript_BoardFerry
-	switch VAR_RESULT
-	case 0, Treasureisland_FerryState0_Script_2
-	case 1, Treasureisland_FerryState0_Script_3
-	case MULTI_B_PRESSED, Treasureisland_FerryState0_Script_4
-	return
-
-Treasureisland_FerryState0_Script_2:
-	warp MAP_FERRYBUILDING, 8, 11
-	return
-
-Treasureisland_FerryState0_Script_3:
-	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
-	return
-
-Treasureisland_FerryState0_Script_4:
-	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
-	return
-
-
 Treasureisland_Movies_Dialogue::
 	msgbox Treasureisland_Movies_Dialogue_Text_0, MSGBOX_SIGN
 	end

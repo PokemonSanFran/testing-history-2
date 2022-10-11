@@ -63,14 +63,16 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    warp(MAP_CHINATOWN,26,4)
-    setvar(VAR_HOW_DISAPPOINTING_STATE,MISSION_ASSIGNED)
+    warp(MAP_PSFROUTE22,12,4)
 }
 script Debug_Script_2{
-
+    warp(MAP_OAKLAND,0)
 }
 
 script Debug_Script_3{
+    msgbox(format("you're the champion."))
+    closemessage
+    setflag(FLAG_IS_CHAMPION)
 }
 script Debug_Script_4{
 }

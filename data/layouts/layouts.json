@@ -4684,7 +4684,7 @@
     {
       "id": "LAYOUT_PSFROUTE30",
       "name": "Psfroute30_Layout",
-      "width": 30,
+      "width": 90,
       "height": 5,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Slateport",
@@ -4775,7 +4775,7 @@
       "id": "LAYOUT_PSFROUTE1",
       "name": "Psfroute1_Layout",
       "width": 80,
-      "height": 30,
+      "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Psfroute1/border.bin",
@@ -5514,10 +5514,10 @@
     {
       "id": "LAYOUT_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE",
       "name": "WeCanStopYouActually_Cutscene_Layout",
-      "width": 10,
+      "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Slateport",
+      "secondary_tileset": "gTileset_BattleFrontierOutsideEast",
       "border_filepath": "data/layouts/WeCanStopYouActually_Cutscene/border.bin",
       "blockdata_filepath": "data/layouts/WeCanStopYouActually_Cutscene/map.bin"
     },
@@ -5740,6 +5740,16 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/SOMA_smashgg/border.bin",
       "blockdata_filepath": "data/layouts/SOMA_smashgg/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE2",
+      "name": "Psfroute2_Layout",
+      "width": 80,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Psfroute2/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute2/map.bin"
     }
   ]
 }

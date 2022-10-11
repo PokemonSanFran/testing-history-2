@@ -17,29 +17,6 @@ script Treasureisland_MapScripts_OnTransition {
     }
 }
 
-script Treasureisland_ChooseFerryDestination_Script {
-    msgbox(gText_WhereWould,MSGBOX_NPC)
-    goto(Treasureisland_UnlockedDestinations_Script)
-}
-
-script Treasureisland_UnlockedDestinations_Script {
-    switch (var(VAR_FERRY_STATE)){
-        case 2:goto(Treasureisland_FerryState0_Script)
-    }
-}
-
-script Treasureisland_FerryState0_Script {
-    multichoicedefault(18,8,TREASUREISLAND_FERRY_DESTINATIONS_VER1,2,TRUE)
-    call(SlateportCity_Harbor_EventScript_BoardFerry)
-
-    switch (var(VAR_RESULT)){
-        case 0: warp(MAP_FERRYBUILDING,8,11)
-        case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
-        case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
-}
-}
-
-
 script Treasureisland_Movies_Dialogue{
     msgbox(format("this is a movie theater. the cafe is inside."),MSGBOX_SIGN)
     end

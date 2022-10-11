@@ -1,0 +1,10 @@
+mapscripts Psfroute30_MapScripts{}
+
+script Psfroute30_ConstructionWorker_Dialogue{
+    msgbox(Psfroute30_TheBridgeIs,MSGBOX_NPC)
+    end
+}
+
+text Psfroute30_TheBridgeIs{
+    format("The bridge is under construction.")
+}

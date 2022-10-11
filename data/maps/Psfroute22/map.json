@@ -22,6 +22,11 @@
       "direction": "down",
       "offset": 4,
       "map": "MAP_DOGPATCH"
+    },
+    {
+      "direction": "right",
+      "offset": 2,
+      "map": "MAP_PSFROUTE30"
     }
   ],
   "object_events": [
@@ -300,13 +305,6 @@
     }
   ],
   "warp_events": [
-    {
-      "x": 16,
-      "y": 4,
-      "elevation": 0,
-      "dest_map": "MAP_FERRYBUILDING",
-      "dest_warp_id": 0
-    },
     {
       "x": 21,
       "y": 18,

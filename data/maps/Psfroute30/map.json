@@ -19,33 +19,101 @@
       "map": "MAP_OAKLAND"
     },
     {
-      "direction": "left",
-      "offset": -25,
+      "direction": "up",
+      "offset": 25,
       "map": "MAP_TREASUREISLAND"
+    },
+    {
+      "direction": "left",
+      "offset": -2,
+      "map": "MAP_PSFROUTE22"
     }
   ],
   "object_events": [
-
+    {
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "x": 2,
+      "y": 1,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Psfroute30_ConstructionWorker_Dialogue",
+      "flag": "FLAG_IS_CHAMPION"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "x": 3,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Psfroute30_ConstructionWorker_Dialogue",
+      "flag": "FLAG_IS_CHAMPION"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "x": 4,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Psfroute30_ConstructionWorker_Dialogue",
+      "flag": "FLAG_IS_CHAMPION"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "x": 88,
+      "y": 1,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Psfroute30_ConstructionWorker_Dialogue",
+      "flag": "FLAG_IS_CHAMPION"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "x": 87,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Psfroute30_ConstructionWorker_Dialogue",
+      "flag": "FLAG_IS_CHAMPION"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "x": 86,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Psfroute30_ConstructionWorker_Dialogue",
+      "flag": "FLAG_IS_CHAMPION"
+    }
   ],
   "warp_events": [
-    {
-      "x": 4,
-      "y": 4,
-      "elevation": 0,
-      "dest_map": "MAP_SALESFORCETOWER_1F",
-      "dest_warp_id": 0
-    }
+
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 4,
-      "y": 5,
-      "elevation": 0,
-      "var": "VAR_TEMP_1",
-      "var_value": "0",
-      "script": "LetsGettheBandBackTogether_PreventPlayerEnterTower_Script"
-    }
+
   ],
   "bg_events": [
 

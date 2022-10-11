@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const ARCHER = 3
+const ARCHER = 1
 
 script LetsGrabLunch_HideObject_Script {
     setflag(FLAG_TEMP_2)
