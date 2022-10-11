@@ -26,18 +26,18 @@ script WeCanStopYouActually_PostBattle_Dialogue {
     lock
         call(WeCanStopYouActually_FixPlayerPosition_Script)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_SoWhatsYourPlan)
         callnative(ClearMugshot)
 
         msgbox(gText_WeCanStopYouActually_BeepBeep)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_ThatsTheAuthorities)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_OhNo)
         callnative(ClearMugshot)
@@ -50,7 +50,7 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         delay(16)
         fadescreen(FADE_TO_BLACK)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_IAmChiefOperatingOfficer)
         callnative(ClearMugshot)
@@ -58,7 +58,7 @@ script WeCanStopYouActually_PostBattle_Dialogue {
 
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_WaitTheHell)
         callnative(ClearMugshot)
@@ -67,11 +67,11 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         waitse
         msgbox(gText_WeCanStopYouActually_Ring)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_FindThem)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_IDontCare)
         callnative(ClearMugshot)
@@ -80,11 +80,11 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         applymovement(ROSE,WeCanStopYouActually_RageRun)
         waitmovement(ROSE)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_TheyToldYou)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_I)
         callnative(ClearMugshot)
@@ -92,11 +92,11 @@ script WeCanStopYouActually_PostBattle_Dialogue {
 
         applymovement(ROSE,Common_Movement_FaceLeft)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_Security)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_WeAlreadyBeatThem)
         callnative(ClearMugshot)
@@ -105,7 +105,7 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         applymovement(ROSE,Common_Movement_FaceDown)
         waitmovement(ROSE)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_ImNotGoingToPrison)
         callnative(ClearMugshot)
@@ -119,7 +119,7 @@ script WeCanStopYouActually_PostBattle_Dialogue {
 }
 
 script WeCanStopYouActually_StartBossBattle_Script {
-    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_AndIllFrigginKill)
         callnative(ClearMugshot)
@@ -148,12 +148,12 @@ script WeCanStopYouActually_Arrest_Dialogue {
 
         waitmovement(POLICEB)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WeCanStopYouActually_ForWhat)
         callnative(ClearMugshot)
         closemessage
-        warpsilent(MAP_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE,255,4,4)
+        warpsilent(MAP_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE,0)
         end
 }
 
@@ -175,10 +175,10 @@ const ARIANA = 14
 script WeCanStopYouActaully_ArrestCutscene {
         lockall
 
-        applymovement(GRUNTA,WeCanStopYouActually_MarchLeft)
-        applymovement(GRUNTB,WeCanStopYouActually_MarchRight)
-        applymovement(GRUNTC,WeCanStopYouActually_MarchLeft)
-        applymovement(ARIANA,WeCanStopYouActually_MarchRight)
+        applymovement(GRUNTA,WeCanStopYouActually_MarchRight)
+        applymovement(GRUNTB,WeCanStopYouActually_MarchLeft)
+        applymovement(GRUNTC,WeCanStopYouActually_MarchRight)
+        applymovement(ARIANA,WeCanStopYouActually_MarchLeft)
         waitmovement(ARIANA)
         applymovement(PLAYER,WeCanStopYouActually_StepAside)
         waitmovement(PLAYER)
@@ -398,22 +398,23 @@ movement WeCanStopYouActually_ArrestWalkInC {
 }
 
 movement WeCanStopYouActually_MarchLeft {
-    walk_left * 4
-        walk_right * 7
+        walk_left * 2
+        walk_right * 4
         delay_8
         face_up
         step_end
 }
 movement WeCanStopYouActually_MarchRight {
-    walk_right * 4
-        walk_left * 7
+    walk_right * 2
+        walk_left * 4
         delay_8
         face_up
         step_end
 }
 
 movement WeCanStopYouActually_WalkOutOfBuilding {
-    walk_down * 7
+        walk_down * 4
+        walk_right * 9
         step_end
 }
 
@@ -428,7 +429,8 @@ movement WeCanStopYouActually_SalutePlayerHeart {
         face_right
         emote_heart
         delay_16 * 2
-        walk_down * 6
+        walk_down * 3
+        walk_right * 9
         step_end
 }
 
@@ -436,6 +438,7 @@ movement WeCanStopYouActually_SalutePlayer{
     walk_down
         face_right
         delay_16 * 2
-        walk_down * 6
+        walk_down * 3
+        walk_right * 9
         step_end
 }

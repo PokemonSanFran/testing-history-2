@@ -4,15 +4,10 @@ WeCanStopYouActually_Cutscene_MapScripts::
 	.byte 0
 
 WeCanStopYouActually_Cutscene_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call WeCanStopYouActually_Cutscene_MapScripts_OnTransition
+	setflag FLAG_TEMP_1
 	return
 
 WeCanStopYouActually_Cutscene_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 111, WeCanStopYouActaully_ArrestCutscene
+	map_script_2 VAR_STORYLINE_STATE, STORY_CLEAR, WeCanStopYouActaully_ArrestCutscene
 	.2byte 0
-
-
-WeCanStopYouActually_Cutscene_MapScripts_OnTransition::
-	setflag FLAG_TEMP_1
-	return
 

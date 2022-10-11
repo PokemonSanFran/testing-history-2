@@ -122,16 +122,16 @@ WeCanStopYouActually_Arrest_Dialogue::
 	msgbox gText_WeCanStopYouActually_ForWhat
 	callnative ClearMugshot
 	closemessage
-	warpsilent MAP_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE, 255, 4, 4
+	warpsilent MAP_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE, 0
 	end
 
 
 WeCanStopYouActaully_ArrestCutscene::
 	lockall
-	applymovement 1, WeCanStopYouActually_MarchLeft
-	applymovement 2, WeCanStopYouActually_MarchRight
-	applymovement 3, WeCanStopYouActually_MarchLeft
-	applymovement 14, WeCanStopYouActually_MarchRight
+	applymovement 1, WeCanStopYouActually_MarchRight
+	applymovement 2, WeCanStopYouActually_MarchLeft
+	applymovement 3, WeCanStopYouActually_MarchRight
+	applymovement 14, WeCanStopYouActually_MarchLeft
 	waitmovement 14
 	applymovement OBJ_EVENT_ID_PLAYER, WeCanStopYouActually_StepAside
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -282,11 +282,6 @@ WeCanStopYouActually_ArrestWalkInC:
 WeCanStopYouActually_MarchLeft:
 	walk_left
 	walk_left
-	walk_left
-	walk_left
-	walk_right
-	walk_right
-	walk_right
 	walk_right
 	walk_right
 	walk_right
@@ -298,11 +293,6 @@ WeCanStopYouActually_MarchLeft:
 WeCanStopYouActually_MarchRight:
 	walk_right
 	walk_right
-	walk_right
-	walk_right
-	walk_left
-	walk_left
-	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -316,9 +306,15 @@ WeCanStopYouActually_WalkOutOfBuilding:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
-	walk_down
-	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 WeCanStopYouActually_StepAside:
@@ -335,9 +331,15 @@ WeCanStopYouActually_SalutePlayerHeart:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
-	walk_down
-	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 WeCanStopYouActually_SalutePlayer:
@@ -348,9 +350,15 @@ WeCanStopYouActually_SalutePlayer:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
-	walk_down
-	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 gText_WeCanStopYouActually_SoWhatsYourPlan::
