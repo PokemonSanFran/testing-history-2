@@ -31,29 +31,47 @@ HowDisappointing_HideTeamRocket_Script::
 HowDisappointing_HidePolice_Script::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_4
-	setobjectxy 5, 17, 2
-	setobjectxyperm 5, 17, 2
-	setobjectxy 6, 10, 2
-	setobjectxyperm 6, 10, 2
-	setobjectxy 7, 10, 16
-	setobjectxyperm 7, 10, 16
+	setobjectxy 5, 35, 20
+	setobjectxyperm 5, 35, 20
+	setobjectxy 6, 37, 0
+	setobjectxyperm 6, 37, 0
+	turnobject 6, DIR_WEST
+	setobjectxy 7, 17, 16
+	setobjectxyperm 7, 17, 16
+	turnobject 6, DIR_EAST
 	return
+
+
+HowDisappointing_DeterminePlayerPath_Script::
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_1, 5
+	goto_if_gt HowDisappointing_DeterminePlayerPath_Script_2
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+HowDisappointing_DeterminePlayerPath_Script_1:
+	fadescreen FADE_TO_BLACK
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setobjectxy OBJ_EVENT_ID_PLAYER, 28, 9
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	TeleportCamera 28, 9
+	fadescreen FADE_FROM_BLACK
+	return
+
+HowDisappointing_DeterminePlayerPath_Script_2:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+	goto HowDisappointing_DeterminePlayerPath_Script_1
 
 
 HowDisappointing_StartRaid_Dialogue::
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-	waitmovement OBJ_EVENT_ID_PLAYER
+	call HowDisappointing_DeterminePlayerPath_Script
 	msgbox gText_HowDisappointing_ThanksForJoining
-	closemessage
-	applymovement 4, HowDisappointing_WalkToPlayer
-	waitmovement 4
 	msgbox gText_HowDisappointing_OnceTheyTry
 	closemessage
 	applymovement 1, Common_Movement_WalkInPlaceUp
 	applymovement 2, Common_Movement_WalkInPlaceUp
 	applymovement 3, Common_Movement_WalkInPlaceUp
 	msgbox gText_HowDisappointing_YesSir
+	waitmovement 3
 	msgbox gText_HowDisappointing_OhAndChampion
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -70,8 +88,19 @@ HowDisappointing_StartRaid_Dialogue::
 	return
 
 
+HowDisappointing_MoveRaidIntoPosition_Script::
+	setobjectxy 1, 20, 5
+	setobjectxy 2, 21, 5
+	setobjectxy 3, 23, 5
+	setobjectxy OBJ_EVENT_ID_PLAYER, 24, 5
+	TeleportCamera 24, 5
+	setobjectxy 4, 22, 4
+	return
+
+
 HowDisappointing_RaidMovement_Script::
 	fadescreen FADE_TO_BLACK
+	call HowDisappointing_MoveRaidIntoPosition_Script
 	delay 16
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_HOW_DISAPPOINTING_STATE, GYM_RAID_STARTED
@@ -81,9 +110,9 @@ HowDisappointing_RaidMovement_Script::
 	waitmovement 4
 	playse SE_EXIT
 	removeobject 4
-	applymovement 3, HowDisappointing_RunIntoGymC
 	applymovement 1, HowDisappointing_RunIntoGymA
 	applymovement 2, HowDisappointing_RunIntoGymB
+	applymovement 3, HowDisappointing_RunIntoGymC
 	waitmovement 2
 	playse SE_EXIT
 	playse SE_EXIT
@@ -172,8 +201,8 @@ HowDisappointing_ArrestScene_Dialogue::
 	lock
 	clearflag FLAG_TEMP_1
 	addobject 1
-	setobjectxyperm 1, 17, 8
-	setobjectxy 1, 17, 8
+	setobjectxyperm 1, 35, 13
+	setobjectxy 1, 35, 13
 	applymovement 1, HowDisappointing_WalkToArrest
 	waitmovement 0
 	msgbox gText_HowDisappointing_YoureUnderArrest
@@ -224,6 +253,31 @@ HowDisappointing_MissionComplete_Dialogue::
 	end
 
 
+HowDisappointing_WalkIntoFormationNorthLeft_Movement:
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	step_end
+
+HowDisappointing_WalkIntoFormationNorthRight_Movement:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	step_end
+
+HowDisappointing_WalkIntoFormationEast_Movement:
+	walk_left
+	step_end
+
+HowDisappointing_WalkIntoFormationFinal_Movement:
+	walk_down
+	face_up
+	step_end
+
 HowDisappointing_WalkToPlayer:
 	walk_right
 	face_down
@@ -253,7 +307,21 @@ HowDisappointing_RunIntoGymD:
 	step_end
 
 HowDisappointing_Escape:
-	jump_2_right
+	delay_16
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
 	walk_faster_right
 	walk_faster_right
 	walk_faster_right
@@ -262,21 +330,38 @@ HowDisappointing_Escape:
 	step_end
 
 HowDisappointing_EscapeA:
+	delay_16
 	walk_down
-	jump_2_right
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
+	walk_down
+	walk_down
+	face_left
+	emote_exclamation_mark
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
 	step_end
 
 HowDisappointing_EscapeB:
-	jump_2_right
+	delay_16
 	walk_faster_down
 	walk_faster_down
 	walk_faster_down
-	walk_faster_down
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
 	walk_faster_down
 	walk_faster_down
 	walk_faster_down
@@ -286,11 +371,12 @@ HowDisappointing_EscapeB:
 	step_end
 
 HowDisappointing_WalkToArrest:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 HowDisappointing_LeaveRoomA:

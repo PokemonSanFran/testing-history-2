@@ -36,26 +36,39 @@ script HowDisappointing_HideTeamRocket_Script {
 script HowDisappointing_HidePolice_Script {
     setflag(FLAG_HIDE_POLICE)
     setflag(FLAG_HIDE_CHIEF)
-    setobjectxy(ARIANA,17,2)
-    setobjectxyperm(ARIANA,17,2)
-    setobjectxy(GRUNTA,10,2)
-    setobjectxyperm(GRUNTA,10,2)
-    setobjectxy(GRUNTB,10,16)
-    setobjectxyperm(GRUNTB,10,16)
+    setobjectxy(ARIANA,35,20)
+    setobjectxyperm(ARIANA,35,20)
+    setobjectxy(GRUNTA,37,0)
+    setobjectxyperm(GRUNTA,37,0)
+    turnobject(GRUNTA,DIR_WEST)
+    setobjectxy(GRUNTB,17,16)
+    setobjectxyperm(GRUNTB,17,16)
+    turnobject(GRUNTA,DIR_EAST)
     return
+}
+
+script HowDisappointing_DeterminePlayerPath_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        if(var(VAR_TEMP_1) > 5){
+            applymovement(PLAYER,Common_Movement_WalkLeft)
+        }else {
+            applymovement(PLAYER,Common_Movement_WalkDown)
+        }
+        fadescreen(FADE_TO_BLACK)
+    waitmovement(PLAYER)
+        setobjectxy(PLAYER,28,9)
+        turnobject(PLAYER,DIR_NORTH)
+        TeleportCamera(28,9)
+        fadescreen(FADE_FROM_BLACK)
+        return
 }
 
 script HowDisappointing_StartRaid_Dialogue {
     lock
-    applymovement(PLAYER,Common_Movement_WalkUp)
-    waitmovement(PLAYER)
+    call(HowDisappointing_DeterminePlayerPath_Script)
 
 msgbox(gText_HowDisappointing_ThanksForJoining)
-closemessage
-
-applymovement(CHIEF,HowDisappointing_WalkToPlayer)
-waitmovement(CHIEF)
-
 msgbox(gText_HowDisappointing_OnceTheyTry)
 closemessage
 
@@ -63,6 +76,7 @@ applymovement(POLICEA,Common_Movement_WalkInPlaceUp)
 applymovement(POLICEB,Common_Movement_WalkInPlaceUp)
 applymovement(POLICEC,Common_Movement_WalkInPlaceUp)
 msgbox(gText_HowDisappointing_YesSir)
+waitmovement(POLICEC)
 
 msgbox(gText_HowDisappointing_OhAndChampion)
 
@@ -82,10 +96,17 @@ msgbox(gText_HowDisappointing_Hehehehee)
 closemessage
 goto(HowDisappointing_RaidMovement_Script)
 }
-
+script HowDisappointing_MoveRaidIntoPosition_Script{
+    setobjectxy(POLICEA,20,5)
+    setobjectxy(POLICEB,21,5)
+    setobjectxy(POLICEC,23,5)
+    setobjectxy(PLAYER,24,5)
+    TeleportCamera(24,5)
+    setobjectxy(CHIEF,22,4)
+}
 script HowDisappointing_RaidMovement_Script {
-
 fadescreen(FADE_TO_BLACK)
+call(HowDisappointing_MoveRaidIntoPosition_Script)
 delay(16)
 fadescreen(FADE_FROM_BLACK)
 
@@ -98,9 +119,9 @@ waitmovement(CHIEF)
 playse(SE_EXIT)
 removeobject(CHIEF)
 
-applymovement(POLICEC,HowDisappointing_RunIntoGymC)
 applymovement(POLICEA,HowDisappointing_RunIntoGymA)
 applymovement(POLICEB,HowDisappointing_RunIntoGymB)
+applymovement(POLICEC,HowDisappointing_RunIntoGymC)
 waitmovement(POLICEB)
 playse(SE_EXIT)
 playse(SE_EXIT)
@@ -196,8 +217,8 @@ script HowDisappointing_ArrestScene_Dialogue {
     lock
     clearflag(FLAG_HIDE_POLICE)
     addobject(POLICEA)
-    setobjectxyperm(POLICEA,17,8)
-    setobjectxy(POLICEA,17,8)
+    setobjectxyperm(POLICEA,35,13)
+    setobjectxy(POLICEA,35,13)
     applymovement(POLICEA,HowDisappointing_WalkToArrest)
     waitmovement(0)
     msgbox(gText_HowDisappointing_YoureUnderArrest)
@@ -322,6 +343,30 @@ text gText_HowDisappointing_ExcellentWorkEverybody{
     format("Excellent work everybody! Lenora, Cilan, and Ariana have all been arrested, and all of the Gyms were successfully shut down. The region will see how quickly we’re responding to these threats, and hopefully, this will slow their efforts.")
 }
 
+movement HowDisappointing_WalkIntoFormationNorthLeft_Movement{
+    walk_down * 3
+    walk_right
+    step_end
+}
+
+movement HowDisappointing_WalkIntoFormationNorthRight_Movement{
+    walk_left
+    walk_down * 4
+    walk_right
+    step_end
+}
+
+movement HowDisappointing_WalkIntoFormationEast_Movement{
+    walk_left
+    step_end
+}
+
+movement HowDisappointing_WalkIntoFormationFinal_Movement{
+    walk_down
+    face_up
+    step_end
+}
+
 movement HowDisappointing_WalkToPlayer {
     walk_right
     face_down
@@ -350,24 +395,34 @@ movement HowDisappointing_RunIntoGymD {
     step_end
 }
 movement HowDisappointing_Escape {
-    jump_2_right
+    delay_16
+    walk_faster_down * 3
+    walk_faster_right * 3
+    walk_faster_down * 4
+    walk_faster_right * 4
     walk_faster_right * 5
     step_end
 }
 
 movement HowDisappointing_EscapeA {
-    walk_down
-    jump_2_right
-    walk_faster_up * 5
+    delay_16
+    walk_down * 3
+    face_left
+    emote_exclamation_mark
+    walk_up * 4
+    walk_right * 2
+    walk_faster_right* 4
     step_end
 }
 movement HowDisappointing_EscapeB {
-    jump_2_right
-    walk_faster_down * 10
+    delay_16
+    walk_faster_down * 3
+    walk_faster_left * 9
+    walk_faster_down * 6
     step_end
 }
 movement HowDisappointing_WalkToArrest {
-    walk_up * 5
+    walk_down * 6
     step_end
 }
 

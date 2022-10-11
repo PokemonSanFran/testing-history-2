@@ -63,10 +63,11 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    startquest(QUEST_CUTEPOKEMON)
+    warp(MAP_CHINATOWN,26,4)
+    setvar(VAR_HOW_DISAPPOINTING_STATE,MISSION_ASSIGNED)
 }
 script Debug_Script_2{
-    completequest(QUEST_CUTEPOKEMON)
+
 }
 
 script Debug_Script_3{

@@ -54,12 +54,12 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	startquest QUEST_CUTEPOKEMON
+	warp MAP_CHINATOWN, 26, 4
+	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_ASSIGNED
 	return
 
 
 Debug_Script_2::
-	completequest QUEST_CUTEPOKEMON
 	return
 
 
