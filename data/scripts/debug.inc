@@ -54,8 +54,7 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_TOWER_RAID_STATE, SABRINA_WARP_DOOR_UNLOCKED
-	warpsilent MAP_SUNSET_SABRINA_HOUSE, 1
+	warpsilent MAP_SALESFORCETOWER_PRODUCTION, 1
 	return
 
 

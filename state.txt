@@ -1,0 +1,34 @@
+../pkmnsnfrn/data/maps/Salesforcetower_2F/map.json:308:      "var": "VAR_SALESFORCETOWER_2F_STATE",
+../pkmnsnfrn/data/maps/Salesforcetower_2F/map.json:317:      "var": "VAR_SALESFORCETOWER_2F_STATE",
+../pkmnsnfrn/data/maps/Salesforcetower_2F/map.json:326:      "var": "VAR_SALESFORCETOWER_2F_STATE",
+../pkmnsnfrn/data/maps/Salesforcetower_2F/scripts.pory:9:        VAR_SALESFORCETOWER_2F_STATE, PRE_WELCOME_TO_THE_WAR_ROOM: Salesforcetower_2F_MovePlayerIntoPosition_Script
+../pkmnsnfrn/data/maps/Salesforcetower_2F/scripts.pory:10:            VAR_SALESFORCETOWER_2F_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT: Salesforcetower_2F_MovePlayerIntoPosition_Script
+../pkmnsnfrn/data/maps/Salesforcetower_2F/scripts.pory:20:    switch (var(VAR_SALESFORCETOWER_2F_STATE)){
+../pkmnsnfrn/data/maps/Salesforcetower_2F/scripts.pory:62:    switch (var(VAR_SALESFORCETOWER_2F_STATE)){
+../pkmnsnfrn/data/maps/Salesforcetower_2F/events.inc:34:	coord_event 9, 36, 0, VAR_SALESFORCETOWER_2F_STATE, 0, AlwaysWatchingWazowski_FloorWelcome_Script
+../pkmnsnfrn/data/maps/Salesforcetower_2F/events.inc:35:	coord_event 10, 8, 0, VAR_SALESFORCETOWER_2F_STATE, 1, AlwaysWatchingWazowski_MovePlayerIntoPlace_Script
+../pkmnsnfrn/data/maps/Salesforcetower_2F/events.inc:36:	coord_event 7, 8, 0, VAR_SALESFORCETOWER_2F_STATE, 1, AlwaysWatchingWazowski_MovePlayerIntoPlace_Script
+../pkmnsnfrn/data/maps/Salesforcetower_2F/scripts.inc:11:	map_script_2 VAR_SALESFORCETOWER_2F_STATE, PRE_WELCOME_TO_THE_WAR_ROOM, Salesforcetower_2F_MovePlayerIntoPosition_Script
+../pkmnsnfrn/data/maps/Salesforcetower_2F/scripts.inc:12:	map_script_2 VAR_SALESFORCETOWER_2F_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT, Salesforcetower_2F_MovePlayerIntoPosition_Script
+../pkmnsnfrn/data/maps/Salesforcetower_2F/scripts.inc:21:	switch VAR_SALESFORCETOWER_2F_STATE
+../pkmnsnfrn/data/maps/Salesforcetower_2F/scripts.inc:89:	switch VAR_SALESFORCETOWER_2F_STATE
+../pkmnsnfrn/data/cutscenes/WelcometotheWarRoom.pory:113:    addvar(VAR_SALESFORCETOWER_2F_STATE,1)
+../pkmnsnfrn/data/cutscenes/CongratsYoureanAsshole.inc:20:	compare VAR_SALESFORCETOWER_2F_STATE, START_FALSE_TIMELINE
+../pkmnsnfrn/data/cutscenes/CongratsYoureanAsshole.inc:39:	setvar VAR_SALESFORCETOWER_2F_STATE, START_FALSE_TIMELINE
+../pkmnsnfrn/data/cutscenes/AssholesHome.inc:79:	compare VAR_SALESFORCETOWER_2F_STATE, 2
+../pkmnsnfrn/data/cutscenes/HaveYouSeenTheNews.inc:3:	setvar VAR_SALESFORCETOWER_2F_STATE, 3
+../pkmnsnfrn/data/cutscenes/TheGangsAllHere.inc:109:	compare VAR_SALESFORCETOWER_2F_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
+../pkmnsnfrn/data/cutscenes/TheGangsAllHere.inc:182:	compare VAR_SALESFORCETOWER_2F_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
+../pkmnsnfrn/data/cutscenes/AssholesHome.pory:71:        if (var(VAR_SALESFORCETOWER_2F_STATE) == 2){
+../pkmnsnfrn/data/cutscenes/YouRealizeWereEvilRight.inc:51:	setvar VAR_SALESFORCETOWER_2F_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT
+../pkmnsnfrn/data/cutscenes/YouRealizeWereEvilRight.inc:58:	addvar VAR_SALESFORCETOWER_2F_STATE, 1
+../pkmnsnfrn/data/cutscenes/HaveYouSeenTheNews.pory:8:    setvar(VAR_SALESFORCETOWER_2F_STATE, 3)
+../pkmnsnfrn/data/cutscenes/TheGangsAllHere.pory:115:    if(var(VAR_SALESFORCETOWER_2F_STATE) == POST_ALWAYS_WATCHING_WAZOWSKI){
+../pkmnsnfrn/data/cutscenes/TheGangsAllHere.pory:186:    if(var(VAR_SALESFORCETOWER_2F_STATE) != POST_ALWAYS_WATCHING_WAZOWSKI){
+../pkmnsnfrn/data/cutscenes/YouRealizeWereEvilRight.pory:65:        setvar(VAR_SALESFORCETOWER_2F_STATE,PRE_YOU_REALIZE_WERE_EVIL_RIGHT)
+../pkmnsnfrn/data/cutscenes/YouRealizeWereEvilRight.pory:72:        addvar(VAR_SALESFORCETOWER_2F_STATE,1)
+../pkmnsnfrn/data/cutscenes/WelcometotheWarRoom.inc:120:	addvar VAR_SALESFORCETOWER_2F_STATE, 1
+../pkmnsnfrn/data/cutscenes/CongratsYoureanAsshole.pory:35:if (var(VAR_SALESFORCETOWER_2F_STATE) == START_FALSE_TIMELINE){
+../pkmnsnfrn/data/cutscenes/CongratsYoureanAsshole.pory:62:setvar(VAR_SALESFORCETOWER_2F_STATE,START_FALSE_TIMELINE)
+grep: input file ‘../pkmnsnfrn/state.txt’ is also the output
+../pkmnsnfrn/new:27:VAR_SALESFORCETOWER_2F_STATE

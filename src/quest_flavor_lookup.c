@@ -220,7 +220,7 @@ const u8 *GetQuestDesc_PlayersAdventure()
 	}
 
 	else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS
-	            && (VarGet(VAR_SALESFORCETOWER_2F_STATE) > PRE_WELCOME_TO_THE_WAR_ROOM))
+	            && (VarGet(VAR_SALESFORCETOWER_CONFERENCE_STATE) > PRE_WELCOME_TO_THE_WAR_ROOM))
 	{
 		return gText_PlayersAdventure_Flavor11;
 	}

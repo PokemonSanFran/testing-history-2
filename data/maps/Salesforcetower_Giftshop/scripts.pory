@@ -1,0 +1,6 @@
+mapscripts Salesforcetower_Giftshop_MapScripts{
+	    MAP_SCRIPT_ON_TRANSITION{
+        call(Salesforcetower_GuardRaidFloors_Script)
+    }
+
+}

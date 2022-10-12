@@ -1,2 +1,8 @@
 Salesforcetower_Giftshop_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Salesforcetower_Giftshop_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Salesforcetower_Giftshop_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Salesforcetower_GuardRaidFloors_Script
+	return
+

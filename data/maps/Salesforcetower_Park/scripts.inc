@@ -1,2 +1,12 @@
 Salesforcetower_Park_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Salesforcetower_Park_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Salesforcetower_Park_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Salesforcetower_Park_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Salesforcetower_GuardRaidFloors_Script
+	return
+
+Salesforcetower_Park_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	.2byte 0
+

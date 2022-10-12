@@ -2,9 +2,9 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const SABRINA = 2
 
 script AlwaysWatchingWazowski_FloorWelcome_Script{
-    lockall
-        addvar(VAR_SALESFORCETOWER_2F_STATE,1)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+        lock
+        setvar(VAR_SALESFORCETOWER_PRODUCTION_STATE,STEPPED_INTO_SABRINA_ROOM)
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_WelcomePlayer)
         closemessage
@@ -14,29 +14,29 @@ script AlwaysWatchingWazowski_FloorWelcome_Script{
 }
 
 script AlwaysWatchingWazowski_MovePlayerIntoPlace_Script{
-    lockall
-        addvar(VAR_SALESFORCETOWER_2F_STATE,1)
-        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+        lock
+        setvar(VAR_SALESFORCETOWER_PRODUCTION_STATE,POST_ALWAYS_WATCHING_WAZOWSKI)
 
-        if(var(VAR_TEMP_0) == 7){
-            applymovement(PLAYER,PlayerCharDeskWalkFromLeft_Movement)
-        }   else {
-            applymovement(PLAYER,PlayerCharDeskWalkFromRight_Movement)
-        }
-        waitmovement(0)
+        applymovement(PLAYER,Common_Movement_WalkUp2)
+        fadescreen(FADE_TO_BLACK)
+        waitmovement(PLAYER)
+        setobjectxy(PLAYER,9,9)
+        TeleportCamera(9,9)
+        applymovement(PLAYER,Common_Movement_WalkUp2)
+        fadescreen(FADE_FROM_BLACK)
+        waitmovement(PLAYER)
 
-    applymovement(SABRINA,Common_Movement_FacePlayer)
-        waitmovement(0)
+        playbgm(MUS_MT_PYRE,FALSE)
+        applymovement(SABRINA,Common_Movement_FacePlayer)
         goto(AlwaysWatchingWazowski_Intro_Dialogue)
 }
 
 script AlwaysWatchingWazowski_Intro_Dialogue{
-    playbgm(MUS_MT_PYRE,FALSE)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_IImagineAllTheScreens)
 
-        if(var(VAR_SOMA_STATE) > 3){
+        if(var(VAR_SOMA_STATE) > START_THE_GANGS_ALL_HERE){
             msgbox(gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime)
         }   else {
             msgbox(gText_AlwaysWatchingWazowski_IWishYouHadVisited)
@@ -45,33 +45,31 @@ script AlwaysWatchingWazowski_Intro_Dialogue{
 }
 
 script AlwaysWatchingWazowski_HowDidYouKnow_Dialogue{
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_WaitHowDidYouKnow)
         closemessage
-        callnative(ClearMugshot)
-        applymovement(SABRINA,Common_Movement_FaceDown)
-        waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_LookAroundDoYouThink)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_SecurityUsedToAlsoPerform)
         goto(AlwaysWatchingWazowski_MarketingandProduction_Dialogue)
 }
 script AlwaysWatchingWazowski_MarketingandProduction_Dialogue{
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_OhOkayYeah)
-        callnative(ClearMugshot)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_WeDevelopContent)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_WhatDoYouMeanMe)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_YouCanSeeForYourself)
         callnative(ClearMugshot)
@@ -79,27 +77,31 @@ script AlwaysWatchingWazowski_MarketingandProduction_Dialogue{
         goto(AlwaysWatchingWazowski_ProgramCutscene_Script)
 }
 script AlwaysWatchingWazowski_ProgramCutscene_Script{
-    applymovement(PLAYER,Common_Movement_FaceLeft)
-        waitmovement(0)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
         fadescreen(FADE_TO_BLACK)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_OurBiggestContentInitiative)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_WhatDoYouMean)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_TensOfThousandsOfKids)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_ToPutItSimply)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_HistoricallyOurInRegion)
 
-        if (var(VAR_PSFROUTE9_STATE) > 0){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+        if (var(VAR_PSFROUTE9_STATE) > HAS_NOT_MET_ARCHER){
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_AlwaysWatchingWazowski_WaitHesDoingTheLeagueChallenge)
                 callnative(ClearMugshot)
@@ -110,15 +112,16 @@ script AlwaysWatchingWazowski_ProgramCutscene_Script{
 
 }
 script AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue{
-    applymovement(PLAYER,Common_Movement_FaceUp)
-        waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_IImagineThisHasBeenVery)
+
         applymovement(SABRINA,Common_Movement_FaceUp)
-        waitmovement(0)
+
         fadedefaultbgm
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AlwaysWatchingWazowski_SorryToBugYou)
         callnative(ClearMugshot)
