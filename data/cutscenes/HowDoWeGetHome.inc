@@ -1,16 +1,12 @@
-HowDoWeGetHome_ObjectVisibility_Script::
-	setflag FLAG_TEMP_1
+HowDoWeGetHome_PostSceneObjectCleanUp_Script::
 	compare VAR_DOGPATCH_STATE, PRE_HOW_DO_WE_GET_HOME
-	goto_if_gt HowDoWeGetHome_ObjectVisibility_Script_1
+	goto_if_gt HowDoWeGetHome_PostSceneObjectCleanUp_Script_2
+HowDoWeGetHome_PostSceneObjectCleanUp_Script_1:
 	return
 
-HowDoWeGetHome_ObjectVisibility_Script_1:
+HowDoWeGetHome_PostSceneObjectCleanUp_Script_2:
 	setflag FLAG_TEMP_2
-	call HowDoWeGetHome_ChangeCrowdMovementType_Script
-	return
-
-
-HowDoWeGetHome_ChangeCrowdMovementType_Script::
+	setflag FLAG_TEMP_1
 	setobjectmovementtype 14, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectmovementtype 3, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	setobjectmovementtype 11, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
@@ -22,60 +18,58 @@ HowDoWeGetHome_ChangeCrowdMovementType_Script::
 	setobjectmovementtype 9, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	setobjectmovementtype 13, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectmovementtype 7, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
+	goto HowDoWeGetHome_PostSceneObjectCleanUp_Script_1
+
+
+HowDoWeGetHome_FerryFixed_Script::
+	compare VAR_STORYLINE_STATE, STORY_WEST_SANFRAN_COMPLETE
+	goto_if_gt HowDoWeGetHome_FerryFixed_Script_2
+HowDoWeGetHome_FerryFixed_Script_1:
 	return
 
-
-HowDoWeGetHome_MovePlayerOffPath_Script::
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
-	waitmovement 0
-	compare VAR_TEMP_1, 6
-	goto_if_eq HowDoWeGetHome_MovePlayerOffPath_Script_2
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-HowDoWeGetHome_MovePlayerOffPath_Script_1:
-	waitmovement 0
-	goto HowDoWeGetHome_MoveCameraToFight_Script
-	return
-
-HowDoWeGetHome_MovePlayerOffPath_Script_2:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	goto HowDoWeGetHome_MovePlayerOffPath_Script_1
+HowDoWeGetHome_FerryFixed_Script_2:
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_1
+	goto HowDoWeGetHome_FerryFixed_Script_1
 
 
-HowDoWeGetHome_MoveCameraToFight_Script::
-	addvar VAR_DOGPATCH_STATE, 1
+HowDoWeGetHome_YellingDistance_Dialogue::
+	setvar VAR_DOGPATCH_STATE, POST_HOW_DO_WE_GET_HOME
 	locktarget
-	fadescreen FADE_TO_BLACK
-	TeleportCamera 14, 9
-	fadescreen FADE_FROM_BLACK
-	goto HowDoWeGetHome_StartFight_Dialogue
-	return
-
-
-HowDoWeGetHome_StartFight_Dialogue::
 	msgbox gText_HowDoWeGetHome_LookWeDontWant
 	msgbox gText_HowDoWeGetHome_OrJustLeave
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+	fadescreen FADE_TO_BLACK
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setobjectxy OBJ_EVENT_ID_PLAYER, 7, 22
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	TeleportCamera 7, 22
+	fadescreen FADE_FROM_BLACK
 	msgbox gText_HowDoWeGetHome_LosersYouWannaSay
 	msgbox gText_HowDoWeGetHome_YouThinkYouScareMe
+	closemessage
 	goto HowDoWeGetHome_ArianaGetsInvolved_Dialogue
 	return
 
 
 HowDoWeGetHome_ArianaGetsInvolved_Dialogue::
-	clearflag FLAG_TEMP_1
-	addobject 1
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	applymovement 21, HowDoWeGetHome_LeaveFight_Movement
+	applymovement 1, Common_Movement_FaceLeft
+	waitmovement 1
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDoWeGetHome_YoChillOut
 	callnative ClearMugshot
 	closemessage
-	call HowDoWeGetHome_ArianaEntrance
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	call HowDoWeGetHome_ArianaEntrance_Script
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDoWeGetHome_WereDoneWithThisBeef
 	callnative ClearMugshot
 	msgbox gText_HowDoWeGetHome_ShouldntIMessYou
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDoWeGetHome_TheWayYouThinkItIs
 	callnative ClearMugshot
@@ -95,8 +89,8 @@ HowDoWeGetHome_CrowdRecgonizesAriana_Dialogue::
 	msgbox gText_HowDoWeGetHome_BetterBackDown
 	applymovement 5, Common_Movement_FaceDown
 	msgbox gText_HowDoWeGetHome_ThreeTrainersAtOnce
-	applymovement 9, Common_Movement_FaceDown
-	applymovement 13, Common_Movement_FaceUp
+	applymovement 13, Common_Movement_FaceDown
+	applymovement 9, Common_Movement_FaceUp
 	msgbox gText_HowDoWeGetHome_Worldstar
 	closemessage
 	goto HowDoWeGetHome_MadisonHowDoWeGetHome_Dialogue
@@ -110,39 +104,41 @@ HowDoWeGetHome_MadisonHowDoWeGetHome_Dialogue::
 	waitmovement 0
 	msgbox gText_HowDoWeGetHome_YouKnowWhatWhatever
 	closemessage
-	applymovement 6, HowDoWeGetHome_DialogueFightNorth
-	waitmovement 0
-	removeobject 6
+	applymovement 6, HowDoWeGetHome_Madison_LeaveFight_Movement
+	applymovement OBJ_EVENT_ID_PLAYER, HowDoWeGetHome_MoveOutOfWay_Movement
+	delay 120
 	applymovement 1, Common_Movement_LookAround
-	waitmovement 0
-	applymovement 1, HowDoWeGetHome_DialogueFightSouth
-	waitmovement 0
-	removeobject 1
+	waitmovement 1
+	applymovement 1, HowDoWeGetHome_LeaveFight_Movement
+	delay 60
 	fadescreen FADE_TO_BLACK
-	special ReturnCameraToPlayer
-	fadescreen FADE_FROM_BLACK
+	delay 60
+	removeobject 6
+	removeobject 1
+	removeobject 21
 	call HowDoWeGetHome_SetCrowdMovementType_Script
 	call HowDoWeGetHome_SetCrowdNewMovementType_Script
+	fadescreen FADE_FROM_BLACK
 	releaseall
 	addvar VAR_STORYLINE_STATE, 1
 	call Act1_1_Check_Script
 	end
 
 
-HowDoWeGetHome_ArianaEntrance::
+HowDoWeGetHome_ArianaEntrance_Script::
 	lock
 	playse SE_PIN
-	applymovement 14, HowDoWeGetHome_ExclaimRight
-	applymovement 3, HowDoWeGetHome_ExclaimRight
-	applymovement 11, HowDoWeGetHome_ExclaimRight
-	applymovement 2, HowDoWeGetHome_ExclaimRight
-	applymovement 4, HowDoWeGetHome_ExclaimRight
-	applymovement 12, HowDoWeGetHome_ExclaimRight
-	applymovement 10, HowDoWeGetHome_ExclaimRight
-	applymovement 5, HowDoWeGetHome_ExclaimLeft
-	applymovement 9, HowDoWeGetHome_ExclaimLeft
-	applymovement 13, HowDoWeGetHome_ExclaimLeft
-	applymovement 1, HowDoWeGetHome_WalkIntoFight
+	applymovement 14, HowDoWeGetHome_ExclaimDown
+	applymovement 3, HowDoWeGetHome_ExclaimDown
+	applymovement 11, HowDoWeGetHome_ExclaimDown
+	applymovement 5, HowDoWeGetHome_ExclaimDown
+	applymovement 9, HowDoWeGetHome_ExclaimDown
+	applymovement 13, HowDoWeGetHome_ExclaimDown
+	applymovement 2, HowDoWeGetHome_ExclaimUp
+	applymovement 4, HowDoWeGetHome_ExclaimUp
+	applymovement 12, HowDoWeGetHome_ExclaimUp
+	applymovement 10, HowDoWeGetHome_ExclaimUp
+	applymovement 1, HowDoWeGetHome_WalkIntoFight_Movement
 	waitmovement 0
 	applymovement 6, Common_Movement_FaceDown
 	applymovement 7, Common_Movement_FaceDown
@@ -180,15 +176,15 @@ HowDoWeGetHome_SetCrowdMovementType_Script::
 	return
 
 
-HowDoWeGetHome_WalkIntoFight:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+HowDoWeGetHome_WalkIntoFight_Movement:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_up
 	step_end
 
-HowDoWeGetHome_ExclaimLeft:
+HowDoWeGetHome_ExclaimDown:
 	emote_exclamation_mark
 	face_down
 	delay_16
@@ -196,36 +192,51 @@ HowDoWeGetHome_ExclaimLeft:
 	delay_16
 	delay_16
 	delay_16
-	face_left
 	step_end
 
-HowDoWeGetHome_ExclaimRight:
+HowDoWeGetHome_ExclaimUp:
 	emote_exclamation_mark
-	face_down
+	face_up
 	delay_16
 	delay_16
 	delay_16
 	delay_16
 	delay_16
-	face_right
 	step_end
 
-HowDoWeGetHome_DialogueFightSouth:
+HowDoWeGetHome_LeaveFight_Movement:
 	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-HowDoWeGetHome_DialogueFightNorth:
-	walk_up
 	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+HowDoWeGetHome_Madison_LeaveFight_Movement:
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 HowDoWeGetHome_MovePlayerOffPath_South:
@@ -236,6 +247,12 @@ HowDoWeGetHome_MovePlayerOffPath_South:
 HowDoWeGetHome_MovePlayerOffPath_North:
 	walk_right
 	face_down
+	step_end
+
+HowDoWeGetHome_MoveOutOfWay_Movement:
+	walk_left
+	walk_down
+	face_up
 	step_end
 
 gText_HowDoWeGetHome_LookWeDontWant::

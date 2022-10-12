@@ -54,20 +54,20 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_FORTPOINT_STATE, 0
-	warpsilent MAP_FORTPOINT, 0
+	setvar VAR_DOGPATCH_STATE, 0
+	warp MAP_DOGPATCH, 19, 21
 	return
 
 
 Debug_Script_2::
 	msgbox Debug_Script_2_Text_0
 	closemessage
-	call OkayLetsFixit_TimelineReset_Script
-	warpsilent MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7
+	setvar VAR_STORYLINE_STATE, STORY_CLEAR
 	return
 
 
 Debug_Script_3::
+	warp MAP_PSFROUTE1, 0
 	return
 
 
@@ -100,7 +100,7 @@ Debug_Script_10::
 
 
 Debug_Script_2_Text_0:
-	.string "you just got travelled back in time.$"
+	.string "the ferry is fixed.$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"

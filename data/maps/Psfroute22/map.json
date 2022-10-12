@@ -19,14 +19,14 @@
       "map": "MAP_SOMA"
     },
     {
-      "direction": "down",
-      "offset": 4,
-      "map": "MAP_DOGPATCH"
-    },
-    {
       "direction": "right",
       "offset": 2,
       "map": "MAP_PSFROUTE30"
+    },
+    {
+      "direction": "down",
+      "offset": -7,
+      "map": "MAP_DOGPATCH"
     }
   ],
   "object_events": [

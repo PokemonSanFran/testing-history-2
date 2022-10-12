@@ -20,7 +20,7 @@
     },
     {
       "direction": "up",
-      "offset": 8,
+      "offset": 7,
       "map": "MAP_PSFROUTE22"
     }
   ],
@@ -49,7 +49,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_1",
@@ -62,7 +62,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
@@ -75,12 +75,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
       "x": 5,
-      "y": 17,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -88,7 +88,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
@@ -114,7 +114,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
@@ -132,7 +132,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
       "x": 6,
-      "y": 18,
+      "y": 19,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -140,7 +140,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
@@ -153,11 +153,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
-      "x": 3,
+      "x": 2,
       "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -166,7 +166,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BARD",
@@ -179,12 +179,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
       "x": 6,
-      "y": 17,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -192,7 +192,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
@@ -205,7 +205,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_5"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M",
@@ -296,7 +296,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMP_1"
     }
   ],
   "warp_events": [
@@ -316,7 +316,7 @@
       "elevation": 0,
       "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
-      "script": "HowDoWeGetHome_MoveCameraToFight_Script"
+      "script": "HowDoWeGetHome_YellingDistance_Dialogue"
     },
     {
       "type": "trigger",
@@ -325,7 +325,61 @@
       "elevation": 0,
       "var": "VAR_DOGPATCH_STATE",
       "var_value": "0",
-      "script": "HowDoWeGetHome_MovePlayerOffPath_Script"
+      "script": "HowDoWeGetHome_YellingDistance_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_DOGPATCH_STATE",
+      "var_value": "0",
+      "script": "HowDoWeGetHome_YellingDistance_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_DOGPATCH_STATE",
+      "var_value": "0",
+      "script": "HowDoWeGetHome_YellingDistance_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_DOGPATCH_STATE",
+      "var_value": "0",
+      "script": "HowDoWeGetHome_YellingDistance_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_DOGPATCH_STATE",
+      "var_value": "0",
+      "script": "HowDoWeGetHome_YellingDistance_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_DOGPATCH_STATE",
+      "var_value": "0",
+      "script": "HowDoWeGetHome_YellingDistance_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_DOGPATCH_STATE",
+      "var_value": "0",
+      "script": "HowDoWeGetHome_YellingDistance_Dialogue"
     }
   ],
   "bg_events": [

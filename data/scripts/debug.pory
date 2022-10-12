@@ -63,17 +63,18 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    setvar(VAR_FORTPOINT_STATE,0)
-    warpsilent(MAP_FORTPOINT,0)
+    setvar(VAR_DOGPATCH_STATE,0)
+    warp(MAP_DOGPATCH,19,21)
 }
 script Debug_Script_2{
-    msgbox("you just got travelled back in time.")
+    msgbox("the ferry is fixed.")
     closemessage
-    call(OkayLetsFixit_TimelineReset_Script)
-    warpsilent(MAP_PRESIDIO_COMPOUND_1F, 255, 9, 7)
+    setvar(VAR_STORYLINE_STATE , STORY_CLEAR)
+
 }
 
 script Debug_Script_3{
+    warp(MAP_PSFROUTE1,0)
 }
 script Debug_Script_4{
 }
