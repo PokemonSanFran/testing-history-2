@@ -5750,6 +5750,196 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Psfroute2/border.bin",
       "blockdata_filepath": "data/layouts/Psfroute2/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_30F",
+      "name": "Salesforcetower_30F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_30F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_30F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_31F",
+      "name": "Salesforcetower_31F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_31F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_31F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_32F",
+      "name": "Salesforcetower_32F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_32F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_32F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_33F",
+      "name": "Salesforcetower_33F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_33F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_33F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_34F",
+      "name": "Salesforcetower_34F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_34F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_34F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_35F",
+      "name": "Salesforcetower_35F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_35F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_35F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_36F",
+      "name": "Salesforcetower_36F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_36F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_36F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_37F",
+      "name": "Salesforcetower_37F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_37F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_37F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_38F",
+      "name": "Salesforcetower_38F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_38F/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_38F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_LOBBY",
+      "name": "Salesforcetower_Lobby_Layout",
+      "width": 15,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Lobby/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Lobby/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_UBER",
+      "name": "Salesforcetower_Uber_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Uber/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Uber/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_AMAZON",
+      "name": "Salesforcetower_Amazon_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Amazon/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Amazon/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_TWITTER",
+      "name": "Salesforcetower_Twitter_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Twitter/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Twitter/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_PARK",
+      "name": "Salesforcetower_Park_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Park/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Park/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_GIFTSHOP",
+      "name": "Salesforcetower_Giftshop_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Giftshop/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Giftshop/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_SERVERROOM",
+      "name": "Salesforcetower_Serverroom_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Serverroom/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Serverroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_PRODUCTION",
+      "name": "Salesforcetower_Production_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Production/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Production/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_LEAGUEOPS",
+      "name": "Salesforcetower_Leagueops_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Leagueops/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Leagueops/map.bin"
+    },
+    {
+      "id": "LAYOUT_SALESFORCETOWER_TOP",
+      "name": "Salesforcetower_Top_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Salesforcetower_Top/border.bin",
+      "blockdata_filepath": "data/layouts/Salesforcetower_Top/map.bin"
     }
   ]
 }

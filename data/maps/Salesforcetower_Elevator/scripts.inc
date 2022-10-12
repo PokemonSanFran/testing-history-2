@@ -13,7 +13,7 @@ Salesforcetower_Elevator_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Salesforcetower_Elevator_MapScripts_OnTransition::
-	compare VAR_MAUVILLE_CITY_STATE, 4
+	compare VAR_TOWER_RAID_STATE, SABRINA_WARP_DOOR_UNLOCKED
 	goto_if_gt Salesforcetower_Elevator_MapScripts_OnTransition_1
 	goto_if_unset FLAG_BADGE03_GET, Salesforcetower_Elevator_MapScripts_OnTransition_1
 	return
@@ -47,6 +47,49 @@ Salesforcetower_Elevator_AttendantMissing_Dialogue_1:
 Salesforcetower_Elevator_HideAttendant_Script::
 	setflag FLAG_TEMP_1
 	return
+
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script::
+	msgbox gText_WhichFloorWouldYouLike, MSGBOX_NPC
+	multichoice2 1, 1, Salesforcetower_FloorList, 0, 1, 0
+	closemessage
+	switch VAR_RESULT
+	case 0, Salesforcetower_ElevatorAttendant_PickFloor_Script_2
+	case 1, Salesforcetower_ElevatorAttendant_PickFloor_Script_3
+	case 2, Salesforcetower_ElevatorAttendant_PickFloor_Script_4
+	case 3, Salesforcetower_ElevatorAttendant_PickFloor_Script_5
+	case 4, Salesforcetower_ElevatorAttendant_PickFloor_Script_6
+	case 5, Salesforcetower_ElevatorAttendant_PickFloor_Script_7
+	case 6, Salesforcetower_ElevatorAttendant_PickFloor_Script_8
+	case MULTI_B_PRESSED, Salesforcetower_ElevatorAttendant_PickFloor_Script_8
+	return
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_2:
+	warpsilent MAP_SALESFORCETOWER_1F, 2
+	return
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_3:
+	warpsilent MAP_SALESFORCETOWER_LOBBY, 2
+	return
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_4:
+	warpsilent MAP_SALESFORCETOWER_PARK, 2
+	return
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_5:
+	warpsilent MAP_SALESFORCETOWER_GIFTSHOP, 2
+	return
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_6:
+	warpsilent MAP_SALESFORCETOWER_PRODUCTION, 2
+	return
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_7:
+	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 2
+	return
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_8:
+	end
 
 
 Salesforcetower_ElevatorAttendant_Script::
@@ -218,6 +261,16 @@ SalesforcetowerElevator_EventScript_SetFloor::
 	special SetSalesforcetowerFloor
 	return
 
+
+Salesforcetower_FloorList::
+	.string "Floor 1: Foyer$"
+	.string "Floor 30: Lobby$"
+	.string "Floor 34: Park$"
+	.string "Floor 35: Giftshop$"
+	.string "Floor 37: Production$"
+	.string "Floor 38: Leagueops$"
+	.string "Cancel$"
+	.string "$"
 
 gText_Salesforcetower_Elevator_TheAttendantIsGone::
 	.string "The attendant is gone...but I don't\n"

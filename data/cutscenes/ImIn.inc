@@ -103,20 +103,6 @@ ImIn_MoveObject_BeforeWarp_Script::
 	return
 
 
-ImIn_ObjectSetUp_PostWarp_Script::
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_4
-	setflag FLAG_TEMP_5
-	setflag FLAG_TEMP_6
-	setflag FLAG_TEMP_7
-	setflag FLAG_TEMP_8
-	clearflag FLAG_TEMP_9
-	call ImIn_HideStairsGuard_Script
-	return
-
-
 ImIn_CheckPlayer_Script::
 	lock
 	compare VAR_STORYLINE_STATE, STORY_BEFORE_SABRINA_BREAKIN
@@ -137,13 +123,13 @@ ImIn_StartHouseBreak_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, ImIn_ApproachHouse
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 3, Common_Movement_FaceDown
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
+	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_WereCertainNobody
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ImIn_HasntLeftWorkEarly
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ImIn_WereInPosition
 	closemessage
@@ -156,10 +142,10 @@ ImIn_StartHouseBreak_Script::
 	applymovement 4, Common_Movement_FaceRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ImIn_TheSideDoorWill
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_LetsMoveThen
 	closemessage
@@ -167,7 +153,7 @@ ImIn_StartHouseBreak_Script::
 	applymovement 5, ImIn_WalkToSideDoor
 	waitmovement 5
 	call ImIn_ReleaseFromBall_Script
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ImIn_BrickBreakSureComes
 	callnative ClearMugshot
@@ -210,7 +196,7 @@ ImIn_UnlockDoor_Script::
 Imin_BeginHouseSearch_Script::
 	lock
 	setvar VAR_TOWER_RAID_STATE, SEARCHING_SABRINA_HOUSE
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_OkaySpreadOut
 	closemessage
@@ -238,10 +224,10 @@ Imin_BeginHouseSearch_Script::
 ImIn_FindLockedDoor_Script::
 	lock
 	setvar VAR_TOWER_RAID_STATE, FOUND_SABRINA_WARP_DOOR
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_IFoundADoor
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ImIn_GuessWereAllLooking
 	callnative ClearMugshot
@@ -274,16 +260,16 @@ ImIn_EnterCorrectCode_Script::
 	fadescreen FADE_TO_BLACK
 	call ImIn_MoveObject_BeforeWarp_Script
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
+	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_WereIn
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ImIn_OnceYoureAllThrough
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ImIn_ImTooOldFor
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_ImIn_ThesePeopleAreFighting
 	callnative ClearMugshot
@@ -313,43 +299,55 @@ ImIn_EnterCorrectCode_Script::
 	end
 
 
+ImIn_MakeRaidPartyVisible_Script::
+	compare VAR_TOWER_RAID_STATE, SABRINA_WARP_DOOR_UNLOCKED
+	goto_if_ne ImIn_MakeRaidPartyVisible_Script_1
+	return
+
+ImIn_MakeRaidPartyVisible_Script_1:
+	setflag FLAG_TEMP_2
+	return
+
+
 ImIn_PostWarpSplit_Dialogue::
 	lock
 	setvar VAR_TOWER_RAID_STATE, TEAM_ENTERED_SALESFORCETOWER
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp2
+	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_WereAllIn
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ImIn_LetTheMarch
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
+	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_LetsGoSecure
 	closemessage
 	callnative ClearMugshot
-	applymovement 17, ImIn_WalkAwayFromWarpB
-	applymovement 16, ImIn_WalkAwayFromWarpA
-	waitmovement 16
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	applymovement 5, ImIn_WalkAwayFromWarpA
+	applymovement 4, ImIn_WalkAwayFromWarpA
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_ImIn_ThisPlaceIsProbably
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_HasAnOfficeOn
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_ImIn_FloorThenLets
 	closemessage
 	callnative ClearMugshot
-	applymovement 15, ImIn_WalkAwayFromWarpC
-	applymovement 18, ImIn_WalkAwayFromWarpD
-	applymovement 19, ImIn_WalkAwayFromWarpE
-	waitmovement 18
-	removeobject 15
-	removeobject 16
-	removeobject 17
-	removeobject 18
-	removeobject 19
+	applymovement 3, ImIn_WalkAwayFromWarpC
+	applymovement 6, ImIn_WalkAwayFromWarpC
+	applymovement 7, ImIn_WalkAwayFromWarpC
+	delay 30
+	fadescreen FADE_TO_BLACK
+	removeobject 3
+	removeobject 4
+	removeobject 5
+	removeobject 6
+	removeobject 7
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 
@@ -360,7 +358,7 @@ ImIn_PreventPlayerProgress_Script::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_OfficeIsOn
 	callnative ClearMugshot
@@ -379,32 +377,32 @@ ImIn_OfficeReveal_Dialogue::
 	lock
 	setvar VAR_TOWER_RAID_STATE, SAVE_BIANCA_SALESFORCETOWER
 	playbgm MUS_ENCOUNTER_MAY, TRUE
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_DoYouLikeMy
 	closemessage
 	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, ImIn_ApproachDesk
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_WhatAreYouDoing
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_IDidntChooseToAlign
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_WaitTrash
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_WasDestryogingThisRegion
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_SoYouJustDontCare
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_LookAllThisHelping
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_DaddyWontBeAble
 	closemessage
@@ -419,7 +417,7 @@ ImIn_OfficeReveal_Dialogue::
 
 ImIn_StartBiancaBattle_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_AreDeadDoYou
 	closemessage
@@ -439,16 +437,16 @@ ImIn_BiancaDefeated_Dialogue::
 	lock
 	setvar VAR_TOWER_RAID_STATE, DEFEATED_BIANCA_SALESFORCETOWER
 	call ImIn_MoveBianca_Script
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_Wheres
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_WhatsTheSecret
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_EverythingAboutIsBullshit
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_Floor
 	callnative ClearMugshot
@@ -458,7 +456,7 @@ ImIn_BiancaDefeated_Dialogue::
 
 
 ImIn_PostBiancaBattle_Interact_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_AllThatTraining, MSGBOX_NPC
 	callnative ClearMugshot
@@ -577,19 +575,20 @@ ImIn_WalkToWarpFromRight:
 	step_end
 
 ImIn_WalkAwayFromWarpA:
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_down
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
 	step_end
 
 ImIn_WalkAwayFromWarpB:
@@ -600,11 +599,13 @@ ImIn_WalkAwayFromWarpB:
 	step_end
 
 ImIn_WalkAwayFromWarpC:
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
 	step_end
 
 ImIn_WalkAwayFromWarpD:

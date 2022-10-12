@@ -9,6 +9,7 @@ Marin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Marin_HideLiidia_Script
 	call Quest_BerrySustaiability_HideLeader_Script
 	call Quest_GetTheBand_HideBikerD_Script
+	call IGuessWeShouldBeNiceNow_HidePopup_Script
 	return
 
 Marin_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -86,6 +87,11 @@ Marin_Stan_PostBattle_Script_1:
 Marin_Stan_PostBattle_Script_2:
 	msgbox gText_WallaceArmy_PostBattlePlaceholder1
 	goto Marin_Stan_PostBattle_Script_1
+
+
+Marin_HideMapNamePopup_Script::
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	return
 
 
 Marin_Biker_Interact_Script::

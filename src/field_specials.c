@@ -1752,6 +1752,7 @@ void SetSalesforcetowerFloor(void)
 {
     u8 SalesforcetowerFloor; 
 
+/*
     switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
     {
         case MAP_NUM(SALESFORCETOWER_1F):
@@ -1770,6 +1771,7 @@ void SetSalesforcetowerFloor(void)
             SalesforcetowerFloor = SALESFORCETOWER_FLOORNUM_1F;
             break;
     }
+    */
     VarSet(VAR_DEPT_STORE_FLOOR, SalesforcetowerFloor); //TODO Change VAR_DEPT_STORE_FLOOR to one more suited to PSF
 }
 
@@ -1778,6 +1780,7 @@ u16 GetTowerFloorDefaultFloorChoice(void)
     sSalesforcetower_NeverRead = 0;
     sSalesforcetower_DefaultFloorChoice = 0;
 
+    /*
     if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(SALESFORCETOWER_1F))
     {
         switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
@@ -1800,6 +1803,7 @@ u16 GetTowerFloorDefaultFloorChoice(void)
                 break;
         }
     }
+*/
 
     return sSalesforcetower_DefaultFloorChoice;
 }

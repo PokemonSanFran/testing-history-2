@@ -63,18 +63,14 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    setvar(VAR_DOGPATCH_STATE,0)
-    warp(MAP_DOGPATCH,19,21)
+    setvar(VAR_TOWER_RAID_STATE,SABRINA_WARP_DOOR_UNLOCKED)
+    warpsilent(MAP_SUNSET_SABRINA_HOUSE,1)
 }
 script Debug_Script_2{
-    msgbox("the ferry is fixed.")
-    closemessage
-    setvar(VAR_STORYLINE_STATE , STORY_CLEAR)
 
 }
 
 script Debug_Script_3{
-    warp(MAP_PSFROUTE1,0)
 }
 script Debug_Script_4{
 }

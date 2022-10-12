@@ -19,6 +19,7 @@ const FLAG_HIDE_BIANCA_CONFERENCE = FLAG_TEMP_8
 const FLAG_HIDE_ROSE_CONFERENCE = FLAG_TEMP_5
 const FLAG_HIDE_KOGA_CONFERENCE = FLAG_TEMP_4
 
+const FLAG_HIDE_TOWER_RAID_PARTY = FLAG_TEMP_2
 
 script ImIn_HideObject_OutsideHouse_Script {
 
@@ -111,24 +112,6 @@ script ImIn_MoveObject_BeforeWarp_Script {
         waitmovement(DRASNA)
 }
 
-const MALVA_B = 15
-const DRASNA_B = 16
-const SIEBOLD_B = 17
-const WIKSTROM_B = 18
-const ARCHER_B = 19
-
-script ImIn_ObjectSetUp_PostWarp_Script {
-        setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_3)
-        setflag(FLAG_TEMP_4)
-        setflag(FLAG_TEMP_5)
-        setflag(FLAG_TEMP_6)
-        setflag(FLAG_TEMP_7)
-        setflag(FLAG_TEMP_8)
-        clearflag(FLAG_TEMP_9)
-        call(ImIn_HideStairsGuard_Script)
-}
 
 script ImIn_CheckPlayer_Script {
     lock
@@ -153,17 +136,17 @@ script ImIn_StartHouseBreak_Script {
 
         applymovement(SIEBOLD,Common_Movement_FaceDown)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_WereCertainNobody)
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_HasntLeftWorkEarly)
 
         //PSF TODO Figure out how to show that they're talking via walkie
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_WereInPosition)
         closemessage
@@ -179,11 +162,11 @@ script ImIn_StartHouseBreak_Script {
         applymovement(PLAYER,Common_Movement_FaceRight)
         waitmovement(PLAYER)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_TheSideDoorWill)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_LetsMoveThen)
         closemessage
@@ -194,7 +177,7 @@ script ImIn_StartHouseBreak_Script {
 
         call(ImIn_ReleaseFromBall_Script)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_BrickBreakSureComes)
         callnative(ClearMugshot)
@@ -241,7 +224,7 @@ script ImIn_UnlockDoor_Script {
 script Imin_BeginHouseSearch_Script {
     lock
         setvar(VAR_TOWER_RAID_STATE,SEARCHING_SABRINA_HOUSE)
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_OkaySpreadOut)
         closemessage
@@ -275,11 +258,11 @@ script ImIn_FindLockedDoor_Script {
 
         setvar(VAR_TOWER_RAID_STATE,FOUND_SABRINA_WARP_DOOR)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_IFoundADoor)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_GuessWereAllLooking)
         callnative(ClearMugshot)
@@ -313,19 +296,19 @@ script ImIn_EnterCorrectCode_Script {
         call(ImIn_MoveObject_BeforeWarp_Script)
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_WereIn)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_OnceYoureAllThrough)
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_ImTooOldFor)
 
-        setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+        setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_ThesePeopleAreFighting)
         callnative(ClearMugshot)
@@ -358,54 +341,67 @@ script ImIn_EnterCorrectCode_Script {
         end
 }
 
+const MALVA_B = 3
+const DRASNA_B = 4
+const SIEBOLD_B = 5
+const WIKSTROM_B = 6
+const ARCHER_B = 7
+
+script ImIn_MakeRaidPartyVisible_Script{
+    if (var(VAR_TOWER_RAID_STATE) != SABRINA_WARP_DOOR_UNLOCKED){
+        setflag(FLAG_HIDE_TOWER_RAID_PARTY)
+    }
+}
+
 script ImIn_PostWarpSplit_Dialogue {
     lock
-
         setvar(VAR_TOWER_RAID_STATE,TEAM_ENTERED_SALESFORCETOWER)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        applymovement(PLAYER,Common_Movement_WalkUp2)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_WereAllIn)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_LetTheMarch)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_LetsGoSecure)
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(SIEBOLD_B,ImIn_WalkAwayFromWarpB)
+        applymovement(SIEBOLD_B,ImIn_WalkAwayFromWarpA)
         applymovement(DRASNA_B,ImIn_WalkAwayFromWarpA)
-        waitmovement(DRASNA_B)
 
-        setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+        setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_ThisPlaceIsProbably)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_HasAnOfficeOn)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_FloorThenLets)
         closemessage
         callnative(ClearMugshot)
 
         applymovement(MALVA_B,ImIn_WalkAwayFromWarpC)
-        applymovement(WIKSTROM_B,ImIn_WalkAwayFromWarpD)
-        applymovement(ARCHER_B,ImIn_WalkAwayFromWarpE)
+        applymovement(WIKSTROM_B,ImIn_WalkAwayFromWarpC)
+        applymovement(ARCHER_B,ImIn_WalkAwayFromWarpC)
+        delay(30)
 
-        waitmovement(WIKSTROM_B)
-
+        fadescreen(FADE_TO_BLACK)
         removeobject(MALVA_B)
         removeobject(DRASNA_B)
         removeobject(SIEBOLD_B)
         removeobject(WIKSTROM_B)
         removeobject(ARCHER_B)
+        fadescreen(FADE_FROM_BLACK)
 
         release
         end
@@ -421,7 +417,7 @@ script ImIn_PreventPlayerProgress_Script {
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(PLAYER)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_OfficeIsOn)
         callnative(ClearMugshot)
@@ -438,7 +434,7 @@ script ImIn_OfficeReveal_Dialogue {
         setvar(VAR_TOWER_RAID_STATE,SAVE_BIANCA_SALESFORCETOWER)
         playbgm(MUS_ENCOUNTER_MAY,TRUE)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_DoYouLikeMy)
         closemessage
@@ -447,31 +443,31 @@ script ImIn_OfficeReveal_Dialogue {
         applymovement(PLAYER,ImIn_ApproachDesk)
         waitmovement(PLAYER)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_WhatAreYouDoing)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_IDidntChooseToAlign)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_WaitTrash)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_WasDestryogingThisRegion)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_SoYouJustDontCare)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_LookAllThisHelping)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_DaddyWontBeAble)
         closemessage
@@ -488,7 +484,7 @@ script ImIn_OfficeReveal_Dialogue {
 script ImIn_StartBiancaBattle_Script {
 
     lock
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_AreDeadDoYou)
         closemessage
@@ -508,19 +504,19 @@ script ImIn_BiancaDefeated_Dialogue {
         setvar(VAR_TOWER_RAID_STATE,DEFEATED_BIANCA_SALESFORCETOWER)
         call(ImIn_MoveBianca_Script)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_Wheres)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_WhatsTheSecret)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_EverythingAboutIsBullshit)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_Floor)
         callnative(ClearMugshot)
@@ -530,7 +526,7 @@ script ImIn_BiancaDefeated_Dialogue {
 }
 
 script ImIn_PostBiancaBattle_Interact_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_AllThatTraining,MSGBOX_NPC)
         callnative(ClearMugshot)
@@ -769,10 +765,8 @@ movement ImIn_WalkToWarpFromRight {
 }
 
 movement ImIn_WalkAwayFromWarpA {
-    walk_right * 2
-        walk_down * 3
-        walk_left * 4
-        walk_down * 4
+        walk_fast_up
+        walk_fast_right * 13
         step_end
 }
 
@@ -782,8 +776,7 @@ movement ImIn_WalkAwayFromWarpB {
 }
 
 movement ImIn_WalkAwayFromWarpC {
-    walk_left
-        walk_down * 4
+        walk_fast_right * 7
         step_end
 }
 

@@ -63,34 +63,34 @@ IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 1, IGuessWeShouldBeNiceNow_WalkToPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_TookLongEnough
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_WeCantComplete
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_OhShitWellUh
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive
 	applymovement 1, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_IAnalyzedTheRoom
 	applymovement 1, Common_Movement_FaceLeft
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_YouSolvePuzzleA
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_AndThenISolvePuzzle
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze
 	callnative ClearMugshot
@@ -102,7 +102,7 @@ IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue::
 
 IGuessWeShouldBeNiceNow_AskPlayer_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_Ready, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -116,7 +116,7 @@ IGuessWeShouldBeNiceNow_AskPlayer_Script_1:
 
 
 IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_WellGoGetReady
 	callnative ClearMugshot
@@ -133,10 +133,10 @@ IGuessWeShouldBeNiceNow_StartPuzzle_Script::
 	waitmovement 0
 	setobjectxy 1, 15, 19
 	setobjectxyperm 1, 15, 19
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_IMemorizedThisWhile
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_OnIt
 	callnative ClearMugshot
@@ -149,10 +149,10 @@ IGuessWeShouldBeNiceNow_SolvedPuzzleA::
 	addvar VAR_ROUTE114_STATE, 1
 	playse SE_SWITCH
 	waitse
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_OkayYourTurn
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_LetsSeeOhWow
 	callnative ClearMugshot
@@ -179,7 +179,7 @@ IGuessWeShouldBeNiceNow_SolvedPuzzleB::
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER, IGuessWeShouldBeNiceNow_WalkRight
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_SomethingIsMissing
 	callnative ClearMugshot
@@ -187,7 +187,7 @@ IGuessWeShouldBeNiceNow_SolvedPuzzleB::
 	applymovement OBJ_EVENT_ID_PLAYER, IGuessWeShouldBeNiceNow_ApproachBookB
 	applymovement 1, IGuessWeShouldBeNiceNow_ApproachBookA
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_IfIWereACrustyOld
 	callnative ClearMugshot
@@ -207,7 +207,7 @@ IGuessWeShouldBeNiceNow_BossProtectBook_Script::
 	addobject 2
 	addobject 3
 	addobject 6
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_BingoIllTake
 	closemessage
@@ -242,7 +242,7 @@ IGuessWeShouldBeNiceNow_CoreEncounter_Script_3:
 
 IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_Ready, MSGBOX_NPC
 	callnative ClearMugshot
@@ -268,25 +268,25 @@ IGuessWeShouldBeNiceNow_ClearBossPokemon_Script::
 IGuessWeShouldBeNiceNow_PostBoss_Dialogue::
 	applymovement 1, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_OkayImStarting
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_WhatAmIMissing
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_ThosePuzzlesWerent
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_YeahIHadToThink
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_ExactlyYouHad
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_SoTheyreTraining
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast
 	callnative ClearMugshot
@@ -296,12 +296,12 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	removeobject 4
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_SaysOnTheBack
 	applymovement 1, IGuessWeShouldBeNiceNow_LookAround
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting, MSGBOX_YESNO
 	setvar VAR_ROUTE115_STATE, 1
@@ -322,6 +322,16 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue_2:
 	goto IGuessWeShouldBeNiceNow_PostBoss_Dialogue_1
 
 
+IGuessWeShouldBeNiceNow_HidePopup_Script::
+	compare VAR_MARIN_STATE, ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED
+	goto_if_eq IGuessWeShouldBeNiceNow_HidePopup_Script_1
+	return
+
+IGuessWeShouldBeNiceNow_HidePopup_Script_1:
+	call Marin_HideMapNamePopup_Script
+	return
+
+
 IGuessWeShouldBeNiceNow_ExitCave_Script::
 	lock
 	addvar VAR_ROUTE115_STATE, 1
@@ -338,50 +348,52 @@ IGuessWeShouldBeNiceNow_ExitCave_Script::
 
 IGuessWeShouldBeNiceNow_End_Dialogue::
 	addvar VAR_ROUTE116_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_WhatTookYouSoLong
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_ISpottedAnInteresting
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_WaitWhat
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_AllOfMyPokemon
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_IDidntKnow
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_DaddyOwnsA
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_WaitWhatIThought
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, IGuessWeShouldBeNiceNow_GestureHouse
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_ImGonnaCrash
 	callnative ClearMugshot
 	closemessage
-	applymovement 1, IGuessWeShouldBeNiceNow_WalkTowardsHouse
-	waitmovement 0
-	removeobject 1
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	applymovement 1, IGuessWeShouldBeNiceNow_WalkTowardsHouse_Movement
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion
 	callnative ClearMugshot
 	closemessage
+	waitmovement 1
+	removeobject 1
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	warpsilent MAP_MARIN, 6, 33
 	release
 	end
 
@@ -478,7 +490,7 @@ IGuessWeShouldBeNiceNow_GestureHouse:
 	face_left
 	step_end
 
-IGuessWeShouldBeNiceNow_WalkTowardsHouse:
+IGuessWeShouldBeNiceNow_WalkTowardsHouse_Movement:
 	walk_right
 	walk_right
 	walk_right

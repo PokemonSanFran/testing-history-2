@@ -1,0 +1,24 @@
+Salesforcetower_Lobby_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Salesforcetower_Lobby_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Salesforcetower_Lobby_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Salesforcetower_Lobby_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Salesforcetower_GuardRaidFloors_Script
+	call ImIn_MakeRaidPartyVisible_Script
+	return
+
+Salesforcetower_Lobby_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TOWER_RAID_STATE, SABRINA_WARP_DOOR_UNLOCKED, ImIn_PostWarpSplit_Dialogue
+	.2byte 0
+
+
+Salesforcetower_GuardRaidFloors_Script::
+	compare VAR_TOWER_RAID_STATE, FOUND_SABRINA_WARP_DOOR
+	goto_if_gt Salesforcetower_GuardRaidFloors_Script_1
+	return
+
+Salesforcetower_GuardRaidFloors_Script_1:
+	setflag FLAG_TEMP_1
+	return
+

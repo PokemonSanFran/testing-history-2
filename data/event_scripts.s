@@ -1416,3 +1416,41 @@ Script_RemoveTint::
 	.include "data/maps/SOMA_smashgg/scripts.inc"
 
 	.include "data/maps/Psfroute2/scripts.inc"
+
+	.include "data/maps/Salesforcetower_30F/scripts.inc"
+
+	.include "data/maps/Salesforcetower_31F/scripts.inc"
+
+	.include "data/maps/Salesforcetower_32F/scripts.inc"
+
+	.include "data/maps/Salesforcetower_33F/scripts.inc"
+
+	.include "data/maps/Salesforcetower_34F/scripts.inc"
+
+	.include "data/maps/Salesforcetower_35F/scripts.inc"
+
+	.include "data/maps/Salesforcetower_36F/scripts.inc"
+
+	.include "data/maps/Salesforcetower_37F/scripts.inc"
+
+	.include "data/maps/Salesforcetower_38F/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Lobby/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Uber/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Amazon/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Twitter/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Park/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Giftshop/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Serverroom/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Production/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Leagueops/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Top/scripts.inc"

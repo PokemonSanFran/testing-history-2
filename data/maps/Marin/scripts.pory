@@ -10,6 +10,7 @@ mapscripts Marin_MapScripts {
         call(Marin_HideLiidia_Script)
         call(Quest_BerrySustaiability_HideLeader_Script)
         call(Quest_GetTheBand_HideBikerD_Script)
+        call(IGuessWeShouldBeNiceNow_HidePopup_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -78,6 +79,11 @@ script Marin_Stan_PostBattle_Script{
 
     release
         end
+}
+
+script Marin_HideMapNamePopup_Script{
+    setflag(FLAG_HIDE_MAP_NAME_POPUP)
+        return
 }
 
 script Marin_Biker_Interact_Script{

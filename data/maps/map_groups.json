@@ -11,6 +11,7 @@
     "gMapGroup_IndoorFortpoint",
     "gMapGroup_IndoorPresidio",
     "gMapGroup_IndoorHaightashbury",
+    "gMapGroup_Salesforcetower",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -240,6 +241,28 @@
   "gMapGroup_IndoorHaightashbury": [
     "Haightashbury_Gym"
   ],
+  "gMapGroup_Salesforcetower": [
+    "Salesforcetower_1F",
+    "Salesforcetower_30F",
+    "Salesforcetower_31F",
+    "Salesforcetower_32F",
+    "Salesforcetower_33F",
+    "Salesforcetower_34F",
+    "Salesforcetower_35F",
+    "Salesforcetower_36F",
+    "Salesforcetower_37F",
+    "Salesforcetower_38F",
+    "Salesforcetower_Lobby",
+    "Salesforcetower_Uber",
+    "Salesforcetower_Amazon",
+    "Salesforcetower_Twitter",
+    "Salesforcetower_Park",
+    "Salesforcetower_Giftshop",
+    "Salesforcetower_Serverroom",
+    "Salesforcetower_Production",
+    "Salesforcetower_Leagueops",
+    "Salesforcetower_Top"
+  ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
     "LittlerootTown_BrendansHouse_2F",
@@ -468,7 +491,6 @@
     "Route121_SafariZoneEntrance"
   ],
   "gMapGroup_Dungeons": [
-    "Salesforcetower_1F",
     "Salesforcetower_2F",
     "Salesforcetower_3F",
     "Salesforcetower_4F",

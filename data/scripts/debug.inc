@@ -54,20 +54,16 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_DOGPATCH_STATE, 0
-	warp MAP_DOGPATCH, 19, 21
+	setvar VAR_TOWER_RAID_STATE, SABRINA_WARP_DOOR_UNLOCKED
+	warpsilent MAP_SUNSET_SABRINA_HOUSE, 1
 	return
 
 
 Debug_Script_2::
-	msgbox Debug_Script_2_Text_0
-	closemessage
-	setvar VAR_STORYLINE_STATE, STORY_CLEAR
 	return
 
 
 Debug_Script_3::
-	warp MAP_PSFROUTE1, 0
 	return
 
 
@@ -98,9 +94,6 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
-
-Debug_Script_2_Text_0:
-	.string "the ferry is fixed.$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"

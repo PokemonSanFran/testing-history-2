@@ -1,0 +1,18 @@
+const FLAG_HIDE_GUARD = FLAG_TEMP_1
+
+mapscripts Salesforcetower_Lobby_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Salesforcetower_GuardRaidFloors_Script)
+        call(ImIn_MakeRaidPartyVisible_Script)
+    }
+
+    MAP_SCRIPT_ON_FRAME_TABLE[
+        VAR_TOWER_RAID_STATE,SABRINA_WARP_DOOR_UNLOCKED: ImIn_PostWarpSplit_Dialogue
+    ]
+}
+
+script Salesforcetower_GuardRaidFloors_Script{
+    if (var(VAR_TOWER_RAID_STATE) > FOUND_SABRINA_WARP_DOOR){
+        setflag(FLAG_HIDE_GUARD)
+    }
+}
