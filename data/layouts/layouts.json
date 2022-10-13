@@ -5924,9 +5924,9 @@
     {
       "id": "LAYOUT_SALESFORCETOWER_LEAGUEOPS",
       "name": "Salesforcetower_Leagueops_Layout",
-      "width": 10,
-      "height": 10,
-      "primary_tileset": "gTileset_General",
+      "width": 40,
+      "height": 58,
+      "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Salesforcetower_Leagueops/border.bin",
       "blockdata_filepath": "data/layouts/Salesforcetower_Leagueops/map.bin"

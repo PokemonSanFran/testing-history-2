@@ -52,10 +52,10 @@ script Salesforcetower_2F_MovePlayerIntoPosition_Script {
     lock
         getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
-        if (var(VAR_TEMP_0) != 7){
+        if (var(VAR_TEMP_0) != 17){
             fadescreen(FADE_TO_BLACK)
-                setobjectxy(PLAYER,7,14)
-                TeleportCamera(7,14)
+                setobjectxy(PLAYER,17,33)
+                TeleportCamera(17,33)
                 fadescreen(FADE_FROM_BLACK)
         }
 

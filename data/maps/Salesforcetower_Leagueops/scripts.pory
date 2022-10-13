@@ -1,0 +1,43 @@
+mapscripts Salesforcetower_Leagueops_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        switch(VAR_SALESFORCETOWER_CONFERENCE_STATE)){
+            case POST_WOW_YOURE_STRONG: call()
+            case START_THE_GANGS_ALL_HERE: call()
+            case POST_THE_GANGS_ALL_HERE: call()
+            case PRE_WELCOME_TO_THE_WAR_ROOM: call()
+            case POST_WELCOME_TO_THE_WAR_ROOM: call()
+            case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call()
+            case POST_YOU_REALIZE_WERE_EVIL_RIGHT: call()
+            case START_FALSE_TIMELINE: call()
+            default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
+        }
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+    VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM: Salesforcetower_Leagueops_MovePlayerIntoPosition_Script
+    ]
+}
+
+script Salesforcetower_Leagueops_EmptyConferenceRoomOffices{
+        setflag(FLAG_HIDE_NERDS_COPS)
+        setflag(FLAG_HIDE_OAK)
+        setflag(FLAG_HIDE_BIANCA)
+        setflag(FLAG_HIDE_ROSE)
+        return
+}
+script Salesforcetower_Leagueops_MovePlayerIntoPosition_Script{
+    lock
+        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        if (var(VAR_TEMP_0) != 17){
+            fadescreen(FADE_TO_BLACK)
+                setobjectxy(PLAYER,17,33)
+                TeleportCamera(17,33)
+                fadescreen(FADE_FROM_BLACK)
+        }
+
+    switch (var(VAR_SALESFORCETOWER_CONFERENCE_STATE)){
+        case PRE_WELCOME_TO_THE_WAR_ROOM: goto(WelcomeToTheWarRoom_ExplainSitaution_Dialogue)
+        case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: goto(YouRealizeWereEvilRight_Open_Dialogue)
+    }
+}
+

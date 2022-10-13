@@ -1,29 +1,18 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const ARNAV = 3
-const OLIVER = 4
-const OAK = 9
-const BIANCA = 10
-const ROSE = 11
-const MAYOR = 12
-const CHIEF = 13
+const ARNAV = 1
+const OLIVER = 2
+const OAK = 3
+const BIANCA = 4
+const ROSE = 5
+const MAYOR = 6
+const CHIEF = 7
 
-script WelcomeToTheWarRoom_Object_Hide_Script {
-        setflag(FLAG_TEMP_8)
-        setflag(FLAG_TEMP_3)
-        setflag(FLAG_TEMP_4)
-        setflag(FLAG_TEMP_7)
-        setflag(FLAG_TEMP_6)
-        setflag(FLAG_TEMP_5)
-        setflag(FLAG_TEMP_9)
-}
+const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_3
+const FLAG_HIDE_ROSE = FLAG_TEMP_4
 
-script WelcomeToTheWarRoom_Object_Setup_Script {
-        setflag(FLAG_TEMP_9)
-        setflag(FLAG_TEMP_4)
-        setobjectxy(ARNAV,10,9)
-        setobjectxy(OLIVER,10,11)
-        setobjectxyperm(ARNAV,10,9)
-        setobjectxyperm(OLIVER,10,11)
+script WelcomeToTheWarRoom_ObjectSetUp_Script{
 }
 
 script WelcomeToTheWarRoom_FaceSpeakerRose {
@@ -110,8 +99,9 @@ script WelcomeToTheWarRoom_FaceSpeakerOak {
 
 script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
     lock
-    addvar(VAR_SALESFORCETOWER_2F_STATE,1)
-    setvar(VAR_ROUTE117_STATE,1)
+    setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,POST_WELCOME_TO_THE_WAR_ROOM)
+    setvar(VAR_FERRYBUILDING_STATE,POST_WELCOME_TO_THE_WAR_ROOM)
+
     call(WelcomeToTheWarRoom_FaceSpeakerRose)
         applymovement(ROSE,WelcomeToTheWarRoom_Pace)
         waitmovement(0)
@@ -228,7 +218,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         } else {
             closemessage
             callnative(ClearMugshot)
-            warpsilent(MAP_PSFROUTE22,255,16,5)
+            warpsilent(MAP_PSFROUTE8,18,90)
         }
 }
 

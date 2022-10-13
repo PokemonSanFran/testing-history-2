@@ -327,7 +327,8 @@
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 #define VAR_GYM_1_STATE                    0x40F7 // Previously Unused Var
 #define VAR_GYM_3_STATE                    0x40F8 // Previously Unused Var
-#define VAR_SOMA_STATE                    0x40F9 // Previously Unused Var
+#define VAR_SALESFORCETOWER_CONFERENCE_STATE 0x40F9 // Previously Unused Var
+#define VAR_SOMA_STATE 0x40F9 // Previously Unused Var
 #define VAR_GYM_2_STATE                    0x40FA // Previously Unused Var
 #define VAR_DOGPATCH_STATE                  0x40FB // Previously Unused Var
 #define VAR_STORYLINE_STATE                 0x40FC // Previously Unused Var
