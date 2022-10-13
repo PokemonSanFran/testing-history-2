@@ -1,6 +1,6 @@
 HaveYouSeenTheNews_AskHelp_Dialogue::
-	addvar VAR_ROUTE116_STATE, 1
-	setvar VAR_SALESFORCETOWER_2F_STATE, 3
+	addvar VAR_MUIRWOODS_STATE, POST_HAVE_YOU_SEEN_THE_NEWS
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM
 	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -30,7 +30,7 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	releaseall
-	warpsilent MAP_SALESFORCETOWER_2F, 255, 7, 14
+	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 17, 33
 	end
 
 HaveYouSeenTheNews_AskHelp_Dialogue_1:

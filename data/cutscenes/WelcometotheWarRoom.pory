@@ -12,22 +12,30 @@ const FLAG_HIDE_OAK = FLAG_TEMP_2
 const FLAG_HIDE_BIANCA = FLAG_TEMP_3
 const FLAG_HIDE_ROSE = FLAG_TEMP_4
 
-script WelcomeToTheWarRoom_ObjectSetUp_Script{
+script WelcomeToTheWarRoom_Object_Setup_Script{
+}
+
+script WelcomeToTheWarRoom_Object_Hide_Script{
+    setflag(FLAG_HIDE_NERDS_COPS)
+    setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_ROSE)
+    setobjectxy(OAK,34,2)
+    setobjectmovementtype(OAK,MOVEMENT_TYPE_FACE_DOWN)
 }
 
 script WelcomeToTheWarRoom_FaceSpeakerRose {
-    applymovement(OLIVER,Common_Movement_FaceDown)
-    applymovement(ARNAV,Common_Movement_FaceDown)
-    applymovement(CHIEF,Common_Movement_FaceDown)
-    applymovement(MAYOR,Common_Movement_FaceDown)
-    applymovement(OAK,Common_Movement_FaceDown)
-    applymovement(BIANCA,Common_Movement_FaceDown)
-    applymovement(PLAYER,Common_Movement_FaceDown)
+    applymovement(OLIVER,Common_Movement_FaceUp)
+    applymovement(ARNAV,Common_Movement_FaceUp)
+    applymovement(CHIEF,Common_Movement_FaceUp)
+    applymovement(MAYOR,Common_Movement_FaceUp)
+    applymovement(OAK,Common_Movement_FaceUp)
+    applymovement(BIANCA,Common_Movement_FaceUp)
+    applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(0)
 }
 
 script WelcomeToTheWarRoom_FaceSpeakerArnav {
-    applymovement(OLIVER,Common_Movement_FaceUp)
+    applymovement(OLIVER,Common_Movement_FaceRight)
     applymovement(ARNAV,Common_Movement_WalkInPlaceFasterDown)
     applymovement(CHIEF,Common_Movement_FaceUp)
     applymovement(MAYOR,Common_Movement_FaceUp)
@@ -37,21 +45,21 @@ script WelcomeToTheWarRoom_FaceSpeakerArnav {
     waitmovement(0)
 }
 script WelcomeToTheWarRoom_FaceSpeakerOliver {
-    applymovement(OLIVER,Common_Movement_WalkInPlaceFasterLeft)
-    applymovement(ARNAV,Common_Movement_FaceUp)
-    applymovement(CHIEF,Common_Movement_FaceUp)
-    applymovement(MAYOR,Common_Movement_FaceUp)
-    applymovement(OAK,Common_Movement_FaceRight)
-    applymovement(BIANCA,Common_Movement_FaceRight)
+    applymovement(OLIVER,Common_Movement_WalkInPlaceFasterDown)
+    applymovement(ARNAV,Common_Movement_FaceLeft)
+    applymovement(CHIEF,Common_Movement_FaceLeft)
+    applymovement(MAYOR,Common_Movement_FaceLeft)
+    applymovement(OAK,Common_Movement_FaceUp)
+    applymovement(BIANCA,Common_Movement_FaceUp)
     applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(0)
 }
 script WelcomeToTheWarRoom_FaceSpeakerChief {
-    applymovement(OLIVER,Common_Movement_FaceDown)
+    applymovement(OLIVER,Common_Movement_FaceRight)
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_WalkInPlaceFasterLeft)
     applymovement(MAYOR,Common_Movement_FaceUp)
-    applymovement(OAK,Common_Movement_FaceDown)
+    applymovement(OAK,Common_Movement_FaceRight)
     applymovement(BIANCA,Common_Movement_FaceRight)
     applymovement(PLAYER,Common_Movement_FaceRight)
     waitmovement(0)
@@ -61,14 +69,14 @@ script WelcomeToTheWarRoom_FaceSpeakerMayor {
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_FaceDown)
     applymovement(MAYOR,Common_Movement_WalkInPlaceFasterLeft)
-    applymovement(OAK,Common_Movement_FaceDown)
+    applymovement(OAK,Common_Movement_FaceRight)
     applymovement(BIANCA,Common_Movement_FaceRight)
     applymovement(PLAYER,Common_Movement_FaceRight)
     waitmovement(0)
 }
 script WelcomeToTheWarRoom_FaceSpeakerBianca {
     applymovement(OLIVER,Common_Movement_FaceDown)
-    applymovement(ARNAV,Common_Movement_FaceLeft)
+    applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_FaceLeft)
     applymovement(MAYOR,Common_Movement_FaceUp)
     applymovement(OAK,Common_Movement_FaceDown)
@@ -88,8 +96,8 @@ script WelcomeToTheWarRoom_FaceSpeakerPlayer {
 }
 script WelcomeToTheWarRoom_FaceSpeakerOak {
     applymovement(OLIVER,Common_Movement_FaceLeft)
-    applymovement(ARNAV,Common_Movement_FaceLeft)
-    applymovement(CHIEF,Common_Movement_FaceUp)
+    applymovement(ARNAV,Common_Movement_FaceDown)
+    applymovement(CHIEF,Common_Movement_FaceLeft)
     applymovement(MAYOR,Common_Movement_FaceUp)
     applymovement(OAK,Common_Movement_WalkInPlaceFasterRight)
     applymovement(BIANCA,Common_Movement_FaceUp)
@@ -100,13 +108,13 @@ script WelcomeToTheWarRoom_FaceSpeakerOak {
 script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
     lock
     setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,POST_WELCOME_TO_THE_WAR_ROOM)
-    setvar(VAR_FERRYBUILDING_STATE,POST_WELCOME_TO_THE_WAR_ROOM)
+    setvar(VAR_FERRYBUILDING_STATE,CHIEF_LEFT_WAR_ROOM)
 
     call(WelcomeToTheWarRoom_FaceSpeakerRose)
-        applymovement(ROSE,WelcomeToTheWarRoom_Pace)
+        applymovement(ROSE,WelcomeToTheWarRoom_Pace_Movement)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_OkayEverybodyLetsHearIt)
         closemessage
@@ -126,17 +134,17 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         msgbox(gText_WelcomeToTheWarRoom_ThatsWhereYouKids)
 
         call(WelcomeToTheWarRoom_FaceSpeakerBianca)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_HellYeahWedLoveTo)
 
         call(WelcomeToTheWarRoom_FaceSpeakerPlayer)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_ImHappyToHelp)
 
         call(WelcomeToTheWarRoom_FaceSpeakerRose)
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_EverybodyUnderstand)
         closemessage
@@ -146,7 +154,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         msgbox(gText_WelcomeToTheWarRoom_WeveAlreadyOutlined)
 
         call(WelcomeToTheWarRoom_FaceSpeakerBianca)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_WhyCantWeJust)
         closemessage
@@ -157,7 +165,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
 
 
         call(WelcomeToTheWarRoom_FaceSpeakerBianca)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_GotItChief)
         closemessage
@@ -167,42 +175,51 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         msgbox(gText_WelcomeToTheWarRoom_GreatWellStartTheOperation)
         closemessage
 
-        applymovement(CHIEF,WelcomeToTheWarRoom_ChiefLeaveRoom)
-        waitmovement(0)
+        applymovement(CHIEF,WelcomeToTheWarRoom_ChiefLeaveRoom_Movement)
+        delay(30)
+        fadescreen(FADE_TO_BLACK)
         removeobject(CHIEF)
+        fadescreen(FADE_FROM_BLACK)
 
         call(WelcomeToTheWarRoom_FaceSpeakerMayor)
         msgbox(gText_WelcomeToTheWarRoom_DontPayHimNoMind)
         closemessage
         
-        applymovement(ARNAV,WelcomeToTheWarRoom_ReturnToDeskA)
-        applymovement(OLIVER,WelcomeToTheWarRoom_ReturnToDeskB)
-        applymovement(MAYOR,WelcomeToTheWarRoom_MayorLeaveRoom)
-        applymovement(ROSE,WelcomeToTheWarRoom_RoseLeaveRoom)
-        waitmovement(0)
+        applymovement(ARNAV,WelcomeToTheWarRoom_LeaveRight_Movement)
+        applymovement(OLIVER,WelcomeToTheWarRoom_LeaveLeft_Movement)
+        applymovement(ROSE,WelcomeToTheWarRoom_RoseLeaveRoom_Movement)
+        applymovement(MAYOR,WelcomeToTheWarRoom_ChiefLeaveRoom_Movement)
+    
+        
+        delay(30)
+        fadescreen(FADE_TO_BLACK)
         removeobject(MAYOR)
         removeobject(ROSE)
+        removeobject(ARNAV)
+        removeobject(OLIVER)
+        fadescreen(FADE_FROM_BLACK)
 
-        applymovement(OAK,WelcomeToTheWarRoom_AddressTrainers)
+        applymovement(OAK,WelcomeToTheWarRoom_AddressTrainers_Movement)
         applymovement(BIANCA,Common_Movement_FaceLeft)
         applymovement(PLAYER,Common_Movement_FaceLeft)
-        waitmovement(0)
+        waitmovement(OAK)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_ThatsAgainYouTwo)
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(OAK,WelcomeToTheWarRoom_OakLeaveRoom)
-        waitmovement(0)
+        applymovement(OAK,WelcomeToTheWarRoom_OakLeaveRoom_Movement)
+        delay(30)
+        fadescreen(FADE_TO_BLACK)
         removeobject(OAK)
+        fadescreen(FADE_FROM_BLACK)
         
-        applymovement(BIANCA,Common_Movement_WalkDown)
+        applymovement(BIANCA,Common_Movement_FaceDown)
         applymovement(PLAYER,Common_Movement_FaceUp)
-        waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheWarRoom_ImGoingToHeadOver,MSGBOX_YESNO)
 
@@ -210,10 +227,11 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
             msgbox(gText_WelcomeToTheWarRoom_OkayIllMeetYou)
             closemessage
             callnative(ClearMugshot)
-            applymovement(BIANCA,WelcomeToTheWarRoom_BiancaLeaveRoom)
-            waitmovement(0)
+            applymovement(BIANCA,WelcomeToTheWarRoom_BiancaLeaveRoom_Movement)
+            fadescreen(FADE_TO_BLACK)
             removeobject(BIANCA)
-            releaseall
+            fadescreen(FADE_FROM_BLACK)
+            release
             end
         } else {
             closemessage
@@ -289,61 +307,50 @@ text gText_WelcomeToTheWarRoom_ImGoingToHeadOver {
 text gText_WelcomeToTheWarRoom_OkayIllMeetYou {
     format("Okay, I'll meet you over there.")
 }
-movement WelcomeToTheWarRoom_Pace {
+movement WelcomeToTheWarRoom_Pace_Movement {
     walk_left * 2
     walk_right *2
     walk_left * 2
     walk_right *2
-    face_up
+    face_down
     step_end
 }
-movement WelcomeToTheWarRoom_ChiefLeaveRoom {
+movement WelcomeToTheWarRoom_ChiefLeaveRoom_Movement {
     walk_right
     walk_down * 4
     walk_left * 2
     walk_down * 3
     step_end
 }
-movement WelcomeToTheWarRoom_ReturnToDeskA {
-    walk_up
-    walk_left * 6
-    walk_down * 2
-    walk_left * 2
-    face_up
-    step_end
-}
-movement WelcomeToTheWarRoom_ReturnToDeskB {
-    walk_right * 4
-    walk_up
-    step_end
-}
-movement WelcomeToTheWarRoom_MayorLeaveRoom {
-    walk_down * 2
+movement WelcomeToTheWarRoom_LeaveLeft_Movement{
     walk_left
-    walk_down * 3
+    walk_down * 5
     step_end
 }
-movement WelcomeToTheWarRoom_RoseLeaveRoom {
+movement WelcomeToTheWarRoom_LeaveRight_Movement{
     walk_right
-    walk_down * 3
+    walk_down * 5
     step_end
 }
-movement WelcomeToTheWarRoom_AddressTrainers {
+movement WelcomeToTheWarRoom_AddressTrainers_Movement {
     walk_left
-    walk_down * 3
+    walk_down
     face_right
     step_end
 }
-movement WelcomeToTheWarRoom_OakLeaveRoom {
+movement WelcomeToTheWarRoom_RoseLeaveRoom_Movement{
+    walk_right * 3
+    walk_down * 5
+    step_end
+}
+movement WelcomeToTheWarRoom_OakLeaveRoom_Movement {
     walk_down * 4
     walk_right * 3
     walk_down * 3
     step_end
 }
-movement WelcomeToTheWarRoom_BiancaLeaveRoom {
+movement WelcomeToTheWarRoom_BiancaLeaveRoom_Movement {
     walk_left
-    walk_down * 3
-    walk_right * 3
-    walk_down * 3
+    walk_down * 4
     step_end
 }

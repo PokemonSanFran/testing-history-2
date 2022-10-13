@@ -1,115 +1,107 @@
-WelcomeToTheWarRoom_Object_Hide_Script::
-	setflag FLAG_TEMP_8
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_4
-	setflag FLAG_TEMP_7
-	setflag FLAG_TEMP_6
-	setflag FLAG_TEMP_5
-	setflag FLAG_TEMP_9
+WelcomeToTheWarRoom_Object_Setup_Script::
 	return
 
 
-WelcomeToTheWarRoom_Object_Setup_Script::
-	setflag FLAG_TEMP_9
+WelcomeToTheWarRoom_Object_Hide_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_4
-	setobjectxy 3, 10, 9
-	setobjectxy 4, 10, 11
-	setobjectxyperm 3, 10, 9
-	setobjectxyperm 4, 10, 11
+	setobjectxy 3, 34, 2
+	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 
 WelcomeToTheWarRoom_FaceSpeakerRose::
-	applymovement 4, Common_Movement_FaceDown
-	applymovement 3, Common_Movement_FaceDown
-	applymovement 13, Common_Movement_FaceDown
-	applymovement 12, Common_Movement_FaceDown
-	applymovement 9, Common_Movement_FaceDown
-	applymovement 10, Common_Movement_FaceDown
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement 2, Common_Movement_FaceUp
+	applymovement 1, Common_Movement_FaceUp
+	applymovement 7, Common_Movement_FaceUp
+	applymovement 6, Common_Movement_FaceUp
+	applymovement 3, Common_Movement_FaceUp
+	applymovement 4, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	return
 
 
 WelcomeToTheWarRoom_FaceSpeakerArnav::
-	applymovement 4, Common_Movement_FaceUp
-	applymovement 3, Common_Movement_WalkInPlaceFasterDown
-	applymovement 13, Common_Movement_FaceUp
-	applymovement 12, Common_Movement_FaceUp
-	applymovement 9, Common_Movement_FaceRight
-	applymovement 10, Common_Movement_FaceRight
+	applymovement 2, Common_Movement_FaceRight
+	applymovement 1, Common_Movement_WalkInPlaceFasterDown
+	applymovement 7, Common_Movement_FaceUp
+	applymovement 6, Common_Movement_FaceUp
+	applymovement 3, Common_Movement_FaceRight
+	applymovement 4, Common_Movement_FaceRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	return
 
 
 WelcomeToTheWarRoom_FaceSpeakerOliver::
-	applymovement 4, Common_Movement_WalkInPlaceFasterLeft
+	applymovement 2, Common_Movement_WalkInPlaceFasterDown
+	applymovement 1, Common_Movement_FaceLeft
+	applymovement 7, Common_Movement_FaceLeft
+	applymovement 6, Common_Movement_FaceLeft
 	applymovement 3, Common_Movement_FaceUp
-	applymovement 13, Common_Movement_FaceUp
-	applymovement 12, Common_Movement_FaceUp
-	applymovement 9, Common_Movement_FaceRight
-	applymovement 10, Common_Movement_FaceRight
+	applymovement 4, Common_Movement_FaceUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	return
 
 
 WelcomeToTheWarRoom_FaceSpeakerChief::
-	applymovement 4, Common_Movement_FaceDown
-	applymovement 3, Common_Movement_FaceDown
-	applymovement 13, Common_Movement_WalkInPlaceFasterLeft
-	applymovement 12, Common_Movement_FaceUp
-	applymovement 9, Common_Movement_FaceDown
-	applymovement 10, Common_Movement_FaceRight
+	applymovement 2, Common_Movement_FaceRight
+	applymovement 1, Common_Movement_FaceDown
+	applymovement 7, Common_Movement_WalkInPlaceFasterLeft
+	applymovement 6, Common_Movement_FaceUp
+	applymovement 3, Common_Movement_FaceRight
+	applymovement 4, Common_Movement_FaceRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	return
 
 
 WelcomeToTheWarRoom_FaceSpeakerMayor::
-	applymovement 4, Common_Movement_FaceDown
-	applymovement 3, Common_Movement_FaceDown
-	applymovement 13, Common_Movement_FaceDown
-	applymovement 12, Common_Movement_WalkInPlaceFasterLeft
-	applymovement 9, Common_Movement_FaceDown
-	applymovement 10, Common_Movement_FaceRight
+	applymovement 2, Common_Movement_FaceDown
+	applymovement 1, Common_Movement_FaceDown
+	applymovement 7, Common_Movement_FaceDown
+	applymovement 6, Common_Movement_WalkInPlaceFasterLeft
+	applymovement 3, Common_Movement_FaceRight
+	applymovement 4, Common_Movement_FaceRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	return
 
 
 WelcomeToTheWarRoom_FaceSpeakerBianca::
-	applymovement 4, Common_Movement_FaceDown
-	applymovement 3, Common_Movement_FaceLeft
-	applymovement 13, Common_Movement_FaceLeft
-	applymovement 12, Common_Movement_FaceUp
-	applymovement 9, Common_Movement_FaceDown
-	applymovement 10, Common_Movement_WalkInPlaceFasterRight
+	applymovement 2, Common_Movement_FaceDown
+	applymovement 1, Common_Movement_FaceDown
+	applymovement 7, Common_Movement_FaceLeft
+	applymovement 6, Common_Movement_FaceUp
+	applymovement 3, Common_Movement_FaceDown
+	applymovement 4, Common_Movement_WalkInPlaceFasterRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	return
 
 
 WelcomeToTheWarRoom_FaceSpeakerPlayer::
-	applymovement 4, Common_Movement_FaceDown
+	applymovement 2, Common_Movement_FaceDown
+	applymovement 1, Common_Movement_FaceDown
+	applymovement 7, Common_Movement_FaceLeft
+	applymovement 6, Common_Movement_FaceLeft
 	applymovement 3, Common_Movement_FaceDown
-	applymovement 13, Common_Movement_FaceLeft
-	applymovement 12, Common_Movement_FaceLeft
-	applymovement 9, Common_Movement_FaceDown
-	applymovement 10, Common_Movement_FaceDown
+	applymovement 4, Common_Movement_FaceDown
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	return
 
 
 WelcomeToTheWarRoom_FaceSpeakerOak::
-	applymovement 4, Common_Movement_FaceLeft
-	applymovement 3, Common_Movement_FaceLeft
-	applymovement 13, Common_Movement_FaceUp
-	applymovement 12, Common_Movement_FaceUp
-	applymovement 9, Common_Movement_WalkInPlaceFasterRight
-	applymovement 10, Common_Movement_FaceUp
+	applymovement 2, Common_Movement_FaceLeft
+	applymovement 1, Common_Movement_FaceDown
+	applymovement 7, Common_Movement_FaceLeft
+	applymovement 6, Common_Movement_FaceUp
+	applymovement 3, Common_Movement_WalkInPlaceFasterRight
+	applymovement 4, Common_Movement_FaceUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	return
@@ -117,12 +109,12 @@ WelcomeToTheWarRoom_FaceSpeakerOak::
 
 WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	lock
-	addvar VAR_SALESFORCETOWER_2F_STATE, 1
-	setvar VAR_ROUTE117_STATE, 1
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_WELCOME_TO_THE_WAR_ROOM
+	setvar VAR_FERRYBUILDING_STATE, CHIEF_LEFT_WAR_ROOM
 	call WelcomeToTheWarRoom_FaceSpeakerRose
-	applymovement 11, WelcomeToTheWarRoom_Pace
+	applymovement 5, WelcomeToTheWarRoom_Pace_Movement
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_OkayEverybodyLetsHearIt
 	closemessage
@@ -136,15 +128,15 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	call WelcomeToTheWarRoom_FaceSpeakerMayor
 	msgbox gText_WelcomeToTheWarRoom_ThatsWhereYouKids
 	call WelcomeToTheWarRoom_FaceSpeakerBianca
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_HellYeahWedLoveTo
 	call WelcomeToTheWarRoom_FaceSpeakerPlayer
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_ImHappyToHelp
 	call WelcomeToTheWarRoom_FaceSpeakerRose
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_EverybodyUnderstand
 	closemessage
@@ -152,7 +144,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	call WelcomeToTheWarRoom_FaceSpeakerChief
 	msgbox gText_WelcomeToTheWarRoom_WeveAlreadyOutlined
 	call WelcomeToTheWarRoom_FaceSpeakerBianca
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_WhyCantWeJust
 	closemessage
@@ -160,7 +152,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	call WelcomeToTheWarRoom_FaceSpeakerChief
 	msgbox gText_WelcomeToTheWarRoom_GladToHear
 	call WelcomeToTheWarRoom_FaceSpeakerBianca
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_GotItChief
 	closemessage
@@ -168,56 +160,64 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	call WelcomeToTheWarRoom_FaceSpeakerChief
 	msgbox gText_WelcomeToTheWarRoom_GreatWellStartTheOperation
 	closemessage
-	applymovement 13, WelcomeToTheWarRoom_ChiefLeaveRoom
-	waitmovement 0
-	removeobject 13
+	applymovement 7, WelcomeToTheWarRoom_ChiefLeaveRoom_Movement
+	delay 30
+	fadescreen FADE_TO_BLACK
+	removeobject 7
+	fadescreen FADE_FROM_BLACK
 	call WelcomeToTheWarRoom_FaceSpeakerMayor
 	msgbox gText_WelcomeToTheWarRoom_DontPayHimNoMind
 	closemessage
-	applymovement 3, WelcomeToTheWarRoom_ReturnToDeskA
-	applymovement 4, WelcomeToTheWarRoom_ReturnToDeskB
-	applymovement 12, WelcomeToTheWarRoom_MayorLeaveRoom
-	applymovement 11, WelcomeToTheWarRoom_RoseLeaveRoom
-	waitmovement 0
-	removeobject 12
-	removeobject 11
-	applymovement 9, WelcomeToTheWarRoom_AddressTrainers
-	applymovement 10, Common_Movement_FaceLeft
+	applymovement 1, WelcomeToTheWarRoom_LeaveRight_Movement
+	applymovement 2, WelcomeToTheWarRoom_LeaveLeft_Movement
+	applymovement 5, WelcomeToTheWarRoom_RoseLeaveRoom_Movement
+	applymovement 6, WelcomeToTheWarRoom_ChiefLeaveRoom_Movement
+	delay 30
+	fadescreen FADE_TO_BLACK
+	removeobject 6
+	removeobject 5
+	removeobject 1
+	removeobject 2
+	fadescreen FADE_FROM_BLACK
+	applymovement 3, WelcomeToTheWarRoom_AddressTrainers_Movement
+	applymovement 4, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	waitmovement 3
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_ThatsAgainYouTwo
 	closemessage
 	callnative ClearMugshot
-	applymovement 9, WelcomeToTheWarRoom_OakLeaveRoom
-	waitmovement 0
-	removeobject 9
-	applymovement 10, Common_Movement_WalkDown
+	applymovement 3, WelcomeToTheWarRoom_OakLeaveRoom_Movement
+	delay 30
+	fadescreen FADE_TO_BLACK
+	removeobject 3
+	fadescreen FADE_FROM_BLACK
+	applymovement 4, Common_Movement_FaceDown
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WelcomeToTheWarRoom_ImGoingToHeadOver, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq WelcomeToTheWarRoom_ExplainSitaution_Dialogue_1
 	closemessage
 	callnative ClearMugshot
-	warpsilent MAP_PSFROUTE22, 255, 16, 5
+	warpsilent MAP_PSFROUTE8, 18, 90
 	return
 
 WelcomeToTheWarRoom_ExplainSitaution_Dialogue_1:
 	msgbox gText_WelcomeToTheWarRoom_OkayIllMeetYou
 	closemessage
 	callnative ClearMugshot
-	applymovement 10, WelcomeToTheWarRoom_BiancaLeaveRoom
-	waitmovement 0
-	removeobject 10
-	releaseall
+	applymovement 4, WelcomeToTheWarRoom_BiancaLeaveRoom_Movement
+	fadescreen FADE_TO_BLACK
+	removeobject 4
+	fadescreen FADE_FROM_BLACK
+	release
 	end
 
 
-WelcomeToTheWarRoom_Pace:
+WelcomeToTheWarRoom_Pace_Movement:
 	walk_left
 	walk_left
 	walk_right
@@ -226,70 +226,58 @@ WelcomeToTheWarRoom_Pace:
 	walk_left
 	walk_right
 	walk_right
-	face_up
+	face_down
 	step_end
 
-WelcomeToTheWarRoom_ChiefLeaveRoom:
+WelcomeToTheWarRoom_ChiefLeaveRoom_Movement:
 	walk_right
 	walk_down
 	walk_down
 	walk_down
 	walk_down
 	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-WelcomeToTheWarRoom_ReturnToDeskA:
-	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	face_up
-	step_end
-
-WelcomeToTheWarRoom_ReturnToDeskB:
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_up
-	step_end
-
-WelcomeToTheWarRoom_MayorLeaveRoom:
-	walk_down
-	walk_down
 	walk_left
 	walk_down
 	walk_down
 	walk_down
 	step_end
 
-WelcomeToTheWarRoom_RoseLeaveRoom:
-	walk_right
+WelcomeToTheWarRoom_LeaveLeft_Movement:
+	walk_left
+	walk_down
+	walk_down
 	walk_down
 	walk_down
 	walk_down
 	step_end
 
-WelcomeToTheWarRoom_AddressTrainers:
+WelcomeToTheWarRoom_LeaveRight_Movement:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+WelcomeToTheWarRoom_AddressTrainers_Movement:
 	walk_left
-	walk_down
-	walk_down
 	walk_down
 	face_right
 	step_end
 
-WelcomeToTheWarRoom_OakLeaveRoom:
+WelcomeToTheWarRoom_RoseLeaveRoom_Movement:
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+WelcomeToTheWarRoom_OakLeaveRoom_Movement:
 	walk_down
 	walk_down
 	walk_down
@@ -302,14 +290,9 @@ WelcomeToTheWarRoom_OakLeaveRoom:
 	walk_down
 	step_end
 
-WelcomeToTheWarRoom_BiancaLeaveRoom:
+WelcomeToTheWarRoom_BiancaLeaveRoom_Movement:
 	walk_left
 	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
 	walk_down
 	walk_down
 	walk_down

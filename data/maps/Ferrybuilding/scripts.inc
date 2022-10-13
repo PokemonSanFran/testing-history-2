@@ -8,14 +8,14 @@ Ferrybuilding_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Ferrybuilding_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE117_STATE, 1, SurvivalChance333_MovePlayerIntoPosition
-	map_script_2 VAR_ROUTE117_STATE, 2, SurvivalChance333_ExplainPlan_Dialogue
+	map_script_2 VAR_FERRYBUILDING_STATE, CHIEF_LEFT_WAR_ROOM, SurvivalChance333_MovePlayerIntoPosition
+	map_script_2 VAR_FERRYBUILDING_STATE, PLAYER_READY_SURVIVAL_CHANCE_BATTLE, SurvivalChance333_ExplainPlan_Dialogue
 	.2byte 0
 
 
 Ferrybuilding_MapScripts_OnTransition::
-	switch VAR_ROUTE117_STATE
-	case 1, Ferrybuilding_MapScripts_OnTransition_2
+	switch VAR_FERRYBUILDING_STATE
+	case CHIEF_LEFT_WAR_ROOM, Ferrybuilding_MapScripts_OnTransition_2
 	goto SurvivalChance333_HideObject_Script
 	return
 

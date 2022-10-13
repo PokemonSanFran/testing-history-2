@@ -1,2 +1,59 @@
 Salesforcetower_Leagueops_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	switch VAR_SALESFORCETOWER_CONFERENCE_STATE
+	case PRE_WELCOME_TO_THE_WAR_ROOM, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	case POST_WELCOME_TO_THE_WAR_ROOM, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
+	call Salesforcetower_Leagueops_EmptyConferenceRoomOffices
+	return
+
+Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	call WelcomeToTheWarRoom_Object_Setup_Script
+	return
+
+Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+	call WelcomeToTheWarRoom_Object_Hide_Script
+	return
+
+Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM, Salesforcetower_Leagueops_MovePlayerIntoPosition_Script
+	.2byte 0
+
+
+Salesforcetower_Leagueops_EmptyConferenceRoomOffices::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
+	return
+
+
+Salesforcetower_Leagueops_MovePlayerIntoPosition_Script::
+	lock
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_0, 17
+	goto_if_ne Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_2
+Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_1:
+	switch VAR_SALESFORCETOWER_CONFERENCE_STATE
+	case PRE_WELCOME_TO_THE_WAR_ROOM, Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_5
+	case PRE_YOU_REALIZE_WERE_EVIL_RIGHT, Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_6
+	return
+
+Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_2:
+	fadescreen FADE_TO_BLACK
+	setobjectxy OBJ_EVENT_ID_PLAYER, 17, 29
+	TeleportCamera 17, 29
+	fadescreen FADE_FROM_BLACK
+	goto Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_1
+
+Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_5:
+	goto WelcomeToTheWarRoom_ExplainSitaution_Dialogue
+	return
+
+Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_6:
+	goto YouRealizeWereEvilRight_Open_Dialogue
+	return
+

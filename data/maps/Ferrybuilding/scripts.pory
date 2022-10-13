@@ -6,14 +6,14 @@ mapscripts Ferrybuilding_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ROUTE117_STATE, 1: SurvivalChance333_MovePlayerIntoPosition
-        VAR_ROUTE117_STATE, 2: SurvivalChance333_ExplainPlan_Dialogue
+        VAR_FERRYBUILDING_STATE, CHIEF_LEFT_WAR_ROOM: SurvivalChance333_MovePlayerIntoPosition
+        VAR_FERRYBUILDING_STATE, PLAYER_READY_SURVIVAL_CHANCE_BATTLE: SurvivalChance333_ExplainPlan_Dialogue
     ]
 }
 
 script Ferrybuilding_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE117_STATE)){
-        case 1: return
+    switch (var(VAR_FERRYBUILDING_STATE)){
+        case CHIEF_LEFT_WAR_ROOM: return
         default: goto(SurvivalChance333_HideObject_Script)
 }
 }

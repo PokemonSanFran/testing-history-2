@@ -1,14 +1,28 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const ARNAV = 1
+const OLIVER = 2
+const OAK = 3
+const BIANCA = 4
+const ROSE = 5
+const MAYOR = 6
+const CHIEF = 7
+
+const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_3
+const FLAG_HIDE_ROSE = FLAG_TEMP_4
+
 mapscripts Salesforcetower_Leagueops_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
-        switch(VAR_SALESFORCETOWER_CONFERENCE_STATE)){
-            case POST_WOW_YOURE_STRONG: call()
-            case START_THE_GANGS_ALL_HERE: call()
-            case POST_THE_GANGS_ALL_HERE: call()
-            case PRE_WELCOME_TO_THE_WAR_ROOM: call()
-            case POST_WELCOME_TO_THE_WAR_ROOM: call()
-            case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call()
-            case POST_YOU_REALIZE_WERE_EVIL_RIGHT: call()
-            case START_FALSE_TIMELINE: call()
+        switch(var(VAR_SALESFORCETOWER_CONFERENCE_STATE)){
+            //case POST_WOW_YOURE_STRONG: call()
+            //case START_THE_GANGS_ALL_HERE: call()
+            //case POST_THE_GANGS_ALL_HERE: call()
+            case PRE_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Setup_Script)
+            case POST_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Hide_Script)
+            //case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call()
+            //case POST_YOU_REALIZE_WERE_EVIL_RIGHT: call()
+            //case START_FALSE_TIMELINE: call()
             default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
         }
     }
@@ -30,8 +44,8 @@ script Salesforcetower_Leagueops_MovePlayerIntoPosition_Script{
 
         if (var(VAR_TEMP_0) != 17){
             fadescreen(FADE_TO_BLACK)
-                setobjectxy(PLAYER,17,33)
-                TeleportCamera(17,33)
+                setobjectxy(PLAYER,17,29)
+                TeleportCamera(17,29)
                 fadescreen(FADE_FROM_BLACK)
         }
 

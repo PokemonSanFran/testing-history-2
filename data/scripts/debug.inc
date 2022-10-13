@@ -54,7 +54,9 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	warpsilent MAP_SALESFORCETOWER_PRODUCTION, 1
+	msgbox Debug_Script_1_Text_0
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM
+	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 0
 	return
 
 
@@ -93,6 +95,9 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
+
+Debug_Script_1_Text_0:
+	.string "{F7}$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"
