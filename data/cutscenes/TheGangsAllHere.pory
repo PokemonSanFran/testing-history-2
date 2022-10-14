@@ -1,10 +1,43 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const ROSE = 3
-const OAK = 4
+const ARNAV = 1
+const OLIVER = 2
+const OAK = 3
+const BIANCA = 4
+const ROSE = 5
+const MAYOR = 6
+const CHIEF = 7
+const SABRINA = 8
+const KOGA = 9
+
+const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_3
+const FLAG_HIDE_ROSE = FLAG_TEMP_4
+const FLAG_HIDE_SABRINA = FLAG_TEMP_5
+const FLAG_HIDE_KOGA = FLAG_TEMP_6
 
 script TheGangsAllHere_ObjectCleanUp_Script {
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_4)
+    call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
+}
+
+script TheGangsAllHere_ObjectSetup_Script{
+    setflag(FLAG_HIDE_NERDS_COPS)
+    setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_SABRINA)
+    setflag(FLAG_HIDE_KOGA) 
+    return
+}
+
+script TheGangsAllHere_OakAppearStairs_Script{
+    lock
+    playse(SE_EXIT)
+    waitse
+    applymovement(PLAYER,Common_Movement_WalkDown)
+    setobjectmovementtype(OAK,MOVEMENT_TYPE_FACE_DOWN)
+    setobjectxy(OAK,21,12)
+    setobjectxyperm(OAK,21,12)
+    applymovement(OAK,Common_Movement_MoveDown)
+    waitmovement(OAK)
 }
 
 script TheGangsAllHere_WhatBringsYou_Dialogue{
@@ -199,24 +232,6 @@ script TheGangsAllHere_EndScene_Dialogue{
     removeobject(OAK)
     addvar(VAR_STORYLINE_STATE,1)
     call(Act1_1_Check_Script)
-    release
-    end
-}
-
-
-
-script Salesforcetower_10F_EventScript_Tom {
-    trainerbattle_single(TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat)
-    special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
-    msgbox (Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE)
-    release
-    end
-}
-
-script Salesforcetower_10F_EventScript_Ian {
-    trainerbattle_single (TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat)
-    special (GetPlayerBigGuyGirlString) //replace STR_VAR_1 with big guy or big girl depending on your sex
-    msgbox (Route104_Text_MiaPostBattle, MSGBOX_AUTOCLOSE)
     release
     end
 }

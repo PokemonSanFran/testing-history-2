@@ -113,16 +113,17 @@ YouRealizeWereEvilRight_WalkToTable:
 	walk_right
 	walk_up
 	walk_up
+	walk_up
 	face_left
 	step_end
 
 YouRealizeWereEvilRight_MoveAwayFromTable:
-	walk_right
+	walk_left
 	walk_up
 	walk_down
 	walk_down
 	walk_up
-	face_left
+	face_right
 	step_end
 
 YouRealizeWereEvilRight_PhoneCall_Dialogue_Text_0:

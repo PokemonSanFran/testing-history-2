@@ -9,6 +9,7 @@ Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	case POST_WELCOME_TO_THE_WAR_ROOM, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
 	case PRE_YOU_REALIZE_WERE_EVIL_RIGHT, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	case POST_YOU_REALIZE_WERE_EVIL_RIGHT, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+	case START_FALSE_TIMELINE, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
 	call Salesforcetower_Leagueops_EmptyConferenceRoomOffices
 	return
 
@@ -26,6 +27,10 @@ Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 
 Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
 	call YouRealizeWereEvilRight_Object_Cleanup_Script
+	return
+
+Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
+	call CongratsYoureanAsshole_ObjectCleanUp_Script
 	return
 
 Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -67,4 +72,12 @@ Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_5:
 Salesforcetower_Leagueops_MovePlayerIntoPosition_Script_6:
 	goto YouRealizeWereEvilRight_Open_Dialogue
 	return
+
+
+Salesforcetower_Leagueops_Oak_Event_Script::
+	lock
+	faceplayer
+	call CongratsYourAssAsshole_Intro_Dialogue
+	release
+	end
 

@@ -1,43 +1,41 @@
 CongratsYoureanAsshole_ObjectCleanUp_Script::
-	setflag FLAG_TEMP_5
-	setflag FLAG_TEMP_6
-	setflag FLAG_TEMP_7
-	setflag FLAG_TEMP_8
-	setflag FLAG_TEMP_9
-	setobjectxy 14, 10, 15
-	setobjectxyperm 14, 10, 15
-	setobjectxy 9, 10, 13
-	setobjectxyperm 9, 10, 13
-	setobjectxy 2, 7, 12
-	setobjectxyperm 2, 7, 12
-	setobjectmovementtype 14, MOVEMENT_TYPE_FACE_LEFT
-	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_LEFT
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_1
+	setobjectxy 9, 34, 56
+	setobjectxyperm 9, 34, 56
+	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_UP
+	setobjectxy 3, 33, 2
+	setobjectxyperm 3, 33, 2
+	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxy 8, 5, 2
+	setobjectxyperm 8, 5, 2
+	setobjectmovementtype 8, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 
 CongratsYourAssAsshole_Intro_Dialogue::
-	compare VAR_SALESFORCETOWER_2F_STATE, START_FALSE_TIMELINE
+	compare VAR_SALESFORCETOWER_CONFERENCE_STATE, START_FALSE_TIMELINE
 	goto_if_eq CongratsYourAssAsshole_Intro_Dialogue_2
 CongratsYourAssAsshole_Intro_Dialogue_1:
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_WelcomeBack, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_YeahIWantToWork
 	callnative ClearMugshot
 	closemessage
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_WevePreparedAStatement
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal
-	applymovement 14, Common_Movement_WalkInPlaceLeft
-	waitmovement 0
-	setvar VAR_SALESFORCETOWER_2F_STATE, START_FALSE_TIMELINE
-	setvar VAR_0x8000, MUGSHOT_N
+	applymovement 9, Common_Movement_WalkInPlaceLeft
+	waitmovement 9
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, START_FALSE_TIMELINE
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_TheresNoTurningBack
 	callnative ClearMugshot
@@ -51,7 +49,7 @@ CongratsYourAssAsshole_Intro_Dialogue_2:
 
 CongratsYoureanAsshole_FalseTimelineSplit_Script::
 	faceplayer
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_WereGoingToSend, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -59,23 +57,28 @@ CongratsYoureanAsshole_FalseTimelineSplit_Script::
 	fadescreen FADE_TO_BLACK
 	msgbox gText_CongratsYoureanAsshole_PresenceIn
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_SABRINA
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_ThankYouForThat
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_ThingsWillTake
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_ThatsTheSpirit
 	callnative ClearMugshot
 	closemessage
 	setflag FLAG_TIMELINE_FALSE
-	addvar VAR_STORYLINE_STATE, 1
-	return
+	setvar VAR_STORYLINE_STATE, STORY_START_FALSE_TIMELINE
+	fadescreen FADE_TO_BLACK
+	delay 30
+	call CongratsYoureanAsshole_ObjectCleanUp_Script
+	fadescreen FADE_FROM_BLACK
+	release
+	end
 
 CongratsYoureanAsshole_FalseTimelineSplit_Script_1:
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_OfCouseIfTheres
 	callnative ClearMugshot
@@ -161,4 +164,5 @@ gText_CongratsYoureanAsshole_ThingsWillTake::
 gText_CongratsYoureanAsshole_ThatsTheSpirit::
 	.string "That’s the spirit! Oak, Sabrina, and I all\n"
 	.string "have different missions for you. Come\l"
-	.string "talk to us when you're ready.$"
+	.string "talk to us our offices when you're\l"
+	.string "ready.$"

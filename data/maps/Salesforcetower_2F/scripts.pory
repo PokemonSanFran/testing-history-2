@@ -68,7 +68,7 @@ script Salesforcetower_2F_MovePlayerIntoPosition_Script {
 script Salesforcetower_2F_Oak_Event_Script {
     lock
         switch (var(VAR_STORYLINE_STATE)){
-            case STORY_MORNING_OF_TIMELINE_SPLIT: call(CongratsYourAssAsshole_Intro_Dialogue)
+            case STORY_MORNING_OF_TIMELINE_SPLIT: call(CongratsYourAnAsshole_Intro_Dialogue)
             case STORY_START_FALSE_TIMELINE: call(LetsBurnThisMotherDown_Assignment_Dialogue)
             case STORY_1ST_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
             case STORY_2ND_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)

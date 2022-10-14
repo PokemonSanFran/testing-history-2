@@ -22,7 +22,7 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
             case POST_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Hide_Script)
             case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Setup_Script)
             case POST_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Cleanup_Script)
-            //case START_FALSE_TIMELINE: call()
+            case START_FALSE_TIMELINE: call(CongratsYoureanAsshole_ObjectCleanUp_Script)
             default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
         }
     }
@@ -56,3 +56,15 @@ script Salesforcetower_Leagueops_MovePlayerIntoPosition_Script{
     }
 }
 
+script Salesforcetower_Leagueops_Oak_Event_Script{
+    lock
+    faceplayer
+    switch (var(VAR_STORYLINE_STATE)){
+        case STORY_MORNING_OF_TIMELINE_SPLIT: call(CongratsYourAnAsshole_Intro_Dialogue)
+        case STORY_START_FALSE_TIMELINE: call(LetsBurnThisMotherDown_Assignment_Dialogue)
+        case STORY_1ST_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
+        case STORY_2ND_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
+    }
+    release
+    end
+}
