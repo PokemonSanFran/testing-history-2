@@ -1,8 +1,12 @@
 WelcomeToTheWarRoom_Object_Setup_Script::
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_5
 	return
 
 
 WelcomeToTheWarRoom_Object_Hide_Script::
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_5
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_4

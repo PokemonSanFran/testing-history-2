@@ -20,14 +20,15 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
             //case POST_THE_GANGS_ALL_HERE: call()
             case PRE_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Setup_Script)
             case POST_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Hide_Script)
-            //case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call()
-            //case POST_YOU_REALIZE_WERE_EVIL_RIGHT: call()
+            case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Setup_Script)
+            case POST_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Cleanup_Script)
             //case START_FALSE_TIMELINE: call()
             default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
         }
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
     VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM: Salesforcetower_Leagueops_MovePlayerIntoPosition_Script
+    VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT: Salesforcetower_Leagueops_MovePlayerIntoPosition_Script
     ]
 }
 

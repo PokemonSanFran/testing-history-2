@@ -1,50 +1,37 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const SABRINA = 2
-const OAK = 9
-const BIANCA = 10
-const KOGA = 14
+const ARNAV = 1
+const OLIVER = 2
+const OAK = 3
+const BIANCA = 4
+const ROSE = 5
+const MAYOR = 6
+const CHIEF = 7
+const SABRINA = 8
+const KOGA = 9
 
-const FLAG_HIDE_SABRINA = FLAG_TEMP_1
-const FLAG_HIDE_RAID_PARTY = FLAG_TEMP_9
-const FLAG_HIDE_OAK = FLAG_TEMP_3
-const FLAG_HIDE_BIANCA = FLAG_TEMP_8
-const FLAG_HIDE_ROSE = FLAG_TEMP_5
-const FLAG_HIDE_KOGA = FLAG_TEMP_4
+const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_3
+const FLAG_HIDE_ROSE = FLAG_TEMP_4
+const FLAG_HIDE_SABRINA = FLAG_TEMP_5
+const FLAG_HIDE_KOGA = FLAG_TEMP_6
 
 script YouRealizeWereEvilRight_Object_Setup_Script {
-        setflag(FLAG_TEMP_5)
-        setflag(FLAG_TEMP_6)
-        setflag(FLAG_TEMP_7)
-        setflag(FLAG_TEMP_8)
-        setflag(FLAG_TEMP_9)
-
-        setobjectxy(OAK,10,13)
-        setobjectxyperm(OAK,10,13)
-        setobjectxy(KOGA,9,20)
-        setobjectxyperm(KOGA,9,20)
-        setobjectxy(SABRINA,7,12)
-        setobjectxyperm(SABRINA,7,12)
-        setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_DOWN)
-        setobjectmovementtype(OAK,MOVEMENT_TYPE_FACE_LEFT)
+setflag(FLAG_HIDE_BIANCA)
+setflag(FLAG_HIDE_ROSE)
+setflag(FLAG_HIDE_NERDS_COPS)
+return
 }
 
 script YouRealizeWereEvilRight_Object_Cleanup_Script {
-        setflag(FLAG_TEMP_5)
-        setflag(FLAG_TEMP_6)
-        setflag(FLAG_TEMP_7)
-        setflag(FLAG_TEMP_8)
-        setflag(FLAG_HIDE_RAID_PARTY)
-        setobjectxy(KOGA,10,15)
-        setobjectxyperm(KOGA,10,15)
-        setobjectxy(OAK,10,13)
-        setobjectxyperm(OAK,10,13)
-        setobjectxy(SABRINA,7,12)
-        setobjectxyperm(SABRINA,7,12)
-        setobjectmovementtype(KOGA,MOVEMENT_TYPE_FACE_LEFT)
-        setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_RIGHT)
-        setobjectmovementtype(OAK,MOVEMENT_TYPE_FACE_LEFT)
-}
+setflag(FLAG_HIDE_BIANCA)
+setflag(FLAG_HIDE_ROSE)
+setflag(FLAG_HIDE_NERDS_COPS)
 
+setobjectxy(KOGA,21,29)
+setobjectxyperm(KOGA,21,29)
+return
+}
 
 script YouRealizeWereEvilRight_PhoneCall_Dialogue {
     lockall
@@ -54,22 +41,22 @@ script YouRealizeWereEvilRight_PhoneCall_Dialogue {
         waitse
         pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
         waitmessage
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_SorryToBotherYou)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_YeahImOnMyWay)
         callnative(ClearMugshot)
         setvar(VAR_SALESFORCETOWER_2F_STATE,PRE_YOU_REALIZE_WERE_EVIL_RIGHT)
-        warpsilent(MAP_SALESFORCETOWER_2F,255,7,14)
+        warpsilent(MAP_SALESFORCETOWER_2F,255,17,29)
 }
 
 
 script YouRealizeWereEvilRight_Open_Dialogue {
     lockall
-        addvar(VAR_SALESFORCETOWER_2F_STATE,1)
+        setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,POST_YOU_REALIZE_WERE_EVIL_RIGHT)
         applymovement(PLAYER,Common_Movement_FaceRight)
 
         //Oak and the player walk to the conference table. Sabrina is already at the table. The screens behind Sabrina light up as they all sit, showing Archer, the player, and the “Leader” of whatever Gym was restored first. PSF TODO
@@ -77,19 +64,19 @@ script YouRealizeWereEvilRight_Open_Dialogue {
         setflag(FLAG_ARCHER_CALL_ALCATRAZ)
         setvar(VAR_STORYLINE_STATE,STORY_POST_YOU_REALIZE_WERE_EVIL)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_WereEnamored)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_ItsBeenSuperRewarding)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_HoweverTheNext)
 
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_ItWouldBeBetter)
         callnative(ClearMugshot)
@@ -97,7 +84,7 @@ script YouRealizeWereEvilRight_Open_Dialogue {
 
         applymovement(PLAYER,Common_Movement_FaceUp)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_AreYouSayingIHave)
         callnative(ClearMugshot)
@@ -105,59 +92,57 @@ script YouRealizeWereEvilRight_Open_Dialogue {
 
         applymovement(PLAYER,Common_Movement_FaceRight)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_WereNotHere)
 
-
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_WaitI)
         callnative(ClearMugshot)
         closemessage
 
         applymovement(KOGA,YouRealizeWereEvilRight_WalkToTable)
-        waitmovement(0)
-        setobjectxy(KOGA,10,15)
-        setobjectxyperm(KOGA,10,15)
-        waitmovement(0)
+        waitmovement(KOGA)
+        setobjectxy(KOGA,21,29)
+        setobjectxyperm(KOGA,21,29)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_ExcellentTiming)
 
         //One of the monitors changes to show TeamRocket members marching. PSF TODO
-
         
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_IThinkYourKindness)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_ShitUsedToBe)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_UsedToBeASmall)
         callnative(ClearMugshot)
         closemessage
 
         applymovement(OAK, YouRealizeWereEvilRight_MoveAwayFromTable)
-        waitmovement(0)
+        waitmovement(OAK)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_HidingBehindTheirMask)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_WasActingInGoodFaith)
 
-        setvar(VAR_0x8000, MUGSHOT_SABRINA)
+        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_TheLocalPolice)
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeWereEvilRight_IKnowThis)
         callnative(ClearMugshot)
@@ -226,14 +211,14 @@ text gText_YouRealizeWereEvilRight_IKnowThis {
 movement YouRealizeWereEvilRight_WalkToTable {
     walk_up * 3
         walk_right
-        walk_up * 2
+        walk_up * 3
         face_left
 }
 
 movement YouRealizeWereEvilRight_MoveAwayFromTable {
-    walk_right
+        walk_left
         walk_up
         walk_down * 2
         walk_up
-        face_left
+        face_right
 }

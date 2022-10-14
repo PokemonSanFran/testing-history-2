@@ -6,16 +6,24 @@ const BIANCA = 4
 const ROSE = 5
 const MAYOR = 6
 const CHIEF = 7
+const SABRINA = 8
+const KOGA = 9
 
 const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
 const FLAG_HIDE_OAK = FLAG_TEMP_2
 const FLAG_HIDE_BIANCA = FLAG_TEMP_3
 const FLAG_HIDE_ROSE = FLAG_TEMP_4
+const FLAG_HIDE_SABRINA = FLAG_TEMP_5
+const FLAG_HIDE_KOGA = FLAG_TEMP_6
 
 script WelcomeToTheWarRoom_Object_Setup_Script{
+    setflag(FLAG_HIDE_KOGA)
+    setflag(FLAG_HIDE_SABRINA)
 }
 
 script WelcomeToTheWarRoom_Object_Hide_Script{
+    setflag(FLAG_HIDE_KOGA)
+    setflag(FLAG_HIDE_SABRINA)
     setflag(FLAG_HIDE_NERDS_COPS)
     setflag(FLAG_HIDE_BIANCA)
     setflag(FLAG_HIDE_ROSE)

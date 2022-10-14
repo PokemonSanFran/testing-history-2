@@ -1,35 +1,16 @@
 YouRealizeWereEvilRight_Object_Setup_Script::
-	setflag FLAG_TEMP_5
-	setflag FLAG_TEMP_6
-	setflag FLAG_TEMP_7
-	setflag FLAG_TEMP_8
-	setflag FLAG_TEMP_9
-	setobjectxy 9, 10, 13
-	setobjectxyperm 9, 10, 13
-	setobjectxy 14, 9, 20
-	setobjectxyperm 14, 9, 20
-	setobjectxy 2, 7, 12
-	setobjectxyperm 2, 7, 12
-	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_DOWN
-	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_LEFT
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_1
 	return
 
 
 YouRealizeWereEvilRight_Object_Cleanup_Script::
-	setflag FLAG_TEMP_5
-	setflag FLAG_TEMP_6
-	setflag FLAG_TEMP_7
-	setflag FLAG_TEMP_8
-	setflag FLAG_TEMP_9
-	setobjectxy 14, 10, 15
-	setobjectxyperm 14, 10, 15
-	setobjectxy 9, 10, 13
-	setobjectxyperm 9, 10, 13
-	setobjectxy 2, 7, 12
-	setobjectxyperm 2, 7, 12
-	setobjectmovementtype 14, MOVEMENT_TYPE_FACE_LEFT
-	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_LEFT
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_1
+	setobjectxy 9, 21, 29
+	setobjectxyperm 9, 21, 29
 	return
 
 
@@ -41,84 +22,83 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue::
 	waitse
 	pokenavcall YouRealizeWereEvilRight_PhoneCall_Dialogue_Text_0
 	waitmessage
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_SorryToBotherYou
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_YeahImOnMyWay
 	callnative ClearMugshot
 	setvar VAR_SALESFORCETOWER_2F_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT
-	warpsilent MAP_SALESFORCETOWER_2F, 255, 7, 14
+	warpsilent MAP_SALESFORCETOWER_2F, 255, 17, 29
 	return
 
 
 YouRealizeWereEvilRight_Open_Dialogue::
 	lockall
-	addvar VAR_SALESFORCETOWER_2F_STATE, 1
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_YOU_REALIZE_WERE_EVIL_RIGHT
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	setflag FLAG_ARCHER_CALL_ALCATRAZ
 	setvar VAR_STORYLINE_STATE, STORY_POST_YOU_REALIZE_WERE_EVIL
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_WereEnamored
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_ItsBeenSuperRewarding
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_HoweverTheNext
-	setvar VAR_0x8000, MUGSHOT_SABRINA
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_ItWouldBeBetter
 	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_AreYouSayingIHave
 	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_WereNotHere
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_WaitI
 	callnative ClearMugshot
 	closemessage
-	applymovement 14, YouRealizeWereEvilRight_WalkToTable
-	waitmovement 0
-	setobjectxy 14, 10, 15
-	setobjectxyperm 14, 10, 15
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	applymovement 9, YouRealizeWereEvilRight_WalkToTable
+	waitmovement 9
+	setobjectxy 9, 21, 29
+	setobjectxyperm 9, 21, 29
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_ExcellentTiming
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_IThinkYourKindness
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_ShitUsedToBe
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_UsedToBeASmall
 	callnative ClearMugshot
 	closemessage
-	applymovement 9, YouRealizeWereEvilRight_MoveAwayFromTable
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	applymovement 3, YouRealizeWereEvilRight_MoveAwayFromTable
+	waitmovement 3
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_HidingBehindTheirMask
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_WasActingInGoodFaith
-	setvar VAR_0x8000, MUGSHOT_SABRINA
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_TheLocalPolice
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouRealizeWereEvilRight_IKnowThis
 	callnative ClearMugshot
