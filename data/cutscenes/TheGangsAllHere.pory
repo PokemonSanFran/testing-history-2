@@ -18,6 +18,18 @@ const FLAG_HIDE_KOGA = FLAG_TEMP_6
 
 script TheGangsAllHere_ObjectCleanUp_Script {
     call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
+    return
+}
+
+script TheGangsAllHere_MidMission_Object_Script{
+    setflag(FLAG_HIDE_NERDS_COPS)
+    setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_SABRINA)
+    setflag(FLAG_HIDE_KOGA) 
+    setobjectxy(OAK,6,46)
+    setobjectxy(ROSE,5,56)
+    setobjectxyperm(ROSE,5,56)
+    return
 }
 
 script TheGangsAllHere_ObjectSetup_Script{
@@ -25,48 +37,63 @@ script TheGangsAllHere_ObjectSetup_Script{
     setflag(FLAG_HIDE_BIANCA)
     setflag(FLAG_HIDE_SABRINA)
     setflag(FLAG_HIDE_KOGA) 
+    setobjectxy(ROSE,5,56)
+    setobjectxyperm(ROSE,5,56)
     return
+}
+
+script TheGangsAllHere_MoveOakToStairs_Script{
+        addobject(OAK) //PSF TODO why is oak invisible without this
+        setobjectmovementtype(OAK,MOVEMENT_TYPE_FACE_DOWN)
+        setobjectxy(OAK,16,9)
+        setobjectxyperm(OAK,16,9)
+        return
 }
 
 script TheGangsAllHere_OakAppearStairs_Script{
     lock
     playse(SE_EXIT)
     waitse
-    applymovement(PLAYER,Common_Movement_WalkDown)
-    setobjectmovementtype(OAK,MOVEMENT_TYPE_FACE_DOWN)
-    setobjectxy(OAK,21,12)
-    setobjectxyperm(OAK,21,12)
-    applymovement(OAK,Common_Movement_MoveDown)
-    waitmovement(OAK)
+
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+    if (var(VAR_TEMP_0) == 16){
+        applymovement(PLAYER,TheGangsAllHere_StepAsideOak_Movement)
+        waitmovement(PLAYER)
+        call(TheGangsAllHere_MoveOakToStairs_Script)
+        applymovement(OAK,TheGangsAllHere_WalkStairs_FacePlayer_Movement)
+        waitmovement(OAK)
+    }else{
+        call(TheGangsAllHere_MoveOakToStairs_Script)
+        playse(SE_PIN)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        applymovement(OAK,TheGangAllHere_WalkStairsToElevator_Movement)
+        waitmovement(OAK)
+    }
+
+    goto(TheGangsAllHere_WhatBringsYou_Dialogue)
 }
 
 script TheGangsAllHere_WhatBringsYou_Dialogue{
     lock
-    setvar(VAR_SOMA_STATE,START_THE_GANGS_ALL_HERE)
-    playse(SE_PIN)
+    setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,START_THE_GANGS_ALL_HERE)
     playbgm(MUS_RG_FOLLOW_ME,FALSE)
-    applymovement(OAK,Common_Movement_ExclamationMark)
-    waitmovement(OAK)
-    applymovement(OAK,Common_Movement_FacePlayer)
-    waitmovement(OAK)
-    applymovement(PLAYER, Common_Movement_FaceLeft)
-    waitmovement(PLAYER)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_WhatBringsYou)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ToldMeToVisit)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_IsThisWhereYouWork)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_TheTowerYes)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_IHaventBeen)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_OfCourseNot)
     callnative(ClearMugshot)
@@ -74,7 +101,8 @@ script TheGangsAllHere_WhatBringsYou_Dialogue{
     special(HealPlayerParty)
     applymovement(OAK,FollowMe_Movement)
     waitmovement(OAK)
-    setobjectxyperm(OAK,6,25)
+    setobjectxy(OAK,6,46)
+    setobjectxyperm(OAK,6,46)
     fadedefaultbgm
     //loadword(0,NewScript)
     //setfollower(OAK,0x100) //PSF TODO hook up FollowMe scripts
@@ -85,7 +113,7 @@ script TheGangsAllHere_WhatBringsYou_Dialogue{
 
 script TheGangsAllHere_OfficeIsntThatWay_Script{
     lockall
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_OfficeIsntThatWay)
     callnative(ClearMugshot)
@@ -93,81 +121,98 @@ script TheGangsAllHere_OfficeIsntThatWay_Script{
     applymovement(PLAYER,TheGangsAllHere_OfficeIsntThatWay_Movement)
 }
 
+script TheGangsAllHere_WalkHallway_Script{
+    applymovement(OAK,Common_Movement_WalkDown)
+    applymovement(PLAYER,Common_Movement_WalkDown)
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    setobjectxy(PLAYER,5,52)
+    setobjectxy(OAK,6,52)
+    TeleportCamera(5,52)
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
 script TheGangsAllHere_ThisIsOffice_Script{
-    applymovement(OAK,FollowPlaceholder_Movement)
-    waitmovement(OAK)
-    applymovement(OAK, Common_Movement_FaceRight)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    lock
+    faceplayer
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ThisIsOffice)
     closemessage
     callnative(ClearMugshot)
-    applymovement(PLAYER,TheGangsAllHere_ThisIsOffice_Movement)
-    applymovement(OAK,TheGangsAllHere_ThisIsOffice_Movement)
-    waitmovement(OAK)
+    call(TheGangsAllHere_WalkHallway_Script)
     goto(TheGangsAllHere_ComeOnIn_Dialogue)
-    end
 }
 
 script TheGangsAllHere_ComeOnIn_Dialogue{
-    setvar(VAR_SOMA_STATE,POST_THE_GANGS_ALL_HERE) 
+    setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,POST_THE_GANGS_ALL_HERE) 
     playbgm(MUS_RG_ENCOUNTER_DEOXYS,FALSE)
     playse(SE_PIN)
+
     applymovement(ROSE,Common_Movement_ExclamationMark)
     waitmovement(ROSE)
     applymovement(ROSE,TheGangsAllHere_RoseWalkToDoor_Movement)
-    waitmovement(ROSE)
-    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ComeOnIn)
     closemessage
     callnative(ClearMugshot)
-    applymovement(OAK,TheGangsAllHere_OakWalkToDesk_Movement)
-    waitmovement(OAK)
-    applymovement(ROSE,Common_Movement_FaceDown)
-    waitmovement(ROSE)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_AsYouAsked)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    closemessage
+    callnative(ClearMugshot)
+
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    applymovement(OAK,Common_Movement_FaceLeft)
+    waitmovement(PLAYER)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_IThoughtYouSaid)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_IDidIsee)
-    callnative(ClearMugshot)
+
     goto(TheGangsAllHere_NotIntentionally_Dialogue)
     end
 }
 
 script TheGangsAllHere_NotIntentionally_Dialogue{
-    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotIntentionally)
 
-    if(var(VAR_SALESFORCETOWER_2F_STATE) == POST_ALWAYS_WATCHING_WAZOWSKI){
+    if(var(VAR_SALESFORCETOWER_PRODUCTION_STATE) == POST_ALWAYS_WATCHING_WAZOWSKI){
         msgbox(gText_TheGangsAllHere_PleaseTellMe)
-    callnative(ClearMugshot)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_IHeardWonderfulThings)
     }
+
     msgbox(gText_TheGangsAllHere_InAnyCase)
     callnative(ClearMugshot)
-    applymovement(ROSE,Common_Movement_FaceDown)
-    applymovement(OAK,TheGangsAllHere_GivePackageToRose_Movement)
+
+    applymovement(OAK,Common_Movement_WalkInPlaceDown)
     waitmovement(OAK)
-    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_ImThrilledTheTiming)
     closemessage
     callnative(ClearMugshot)
+
     goto(TheGangsAllHere_GiveDowsingMachine_Script)
     end
 }
 
 script TheGangsAllHere_GiveDowsingMachine_Script{
-    applymovement(PLAYER,Common_Movement_FaceRight)
+    applymovement(PLAYER,Common_Movement_FaceDown)
     applymovement(ROSE,TheGangsAllHere_GivePackageToPlayerChar_Movement)
     waitmovement(ROSE)
     giveitem(ITEM_DOWSING_MACHINE,1)
@@ -176,54 +221,58 @@ script TheGangsAllHere_GiveDowsingMachine_Script{
 }
 
 script TheGangsAllHere_GiveDowsingMachine_Dialogue{
-    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_TheVSSeekerWillAlert)
     callnative(ClearMugshot)
-    applymovement(OAK,Common_Movement_FaceLeft)
+
+    applymovement(OAK,Common_Movement_FacePlayer)
     waitmovement(OAK)
-    applymovement(PLAYER,Common_Movement_FaceDown)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    applymovement(PLAYER,Common_Movement_FaceRight)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_NotToPlaceAnyUndue)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_OhWowThatMeans)
     closemessage
-    applymovement(PLAYER,Common_Movement_FaceRight)
-    waitmovement(PLAYER)
-    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_WeKnowButNoPressure)
-    closemessage
-    callnative(ClearMugshot)
+
     goto(TheGangsAllHere_EndScene_Dialogue)
-    end
 }
 
 script TheGangsAllHere_EndScene_Dialogue{
-    callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_TimeForNumber7)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
-    applymovement(ROSE,Common_Movement_FaceDown)
-    applymovement(OAK,Common_Movement_FaceUp)
+    closemessage
+    callnative(ClearMugshot)
+
+    applymovement(OAK,Common_Movement_FaceDown)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_WeShall)
     callnative(ClearMugshot)
-    applymovement(OAK,Common_Movement_FaceLeft)
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+
+    applymovement(OAK,Common_Movement_FacePlayer)
+    applymovement(PLAYER,Common_Movement_FaceRight)
+
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_TheGangsAllHere_FeelFreeToContinue)
 
-
-    if(var(VAR_SALESFORCETOWER_2F_STATE) != POST_ALWAYS_WATCHING_WAZOWSKI){
+    if(var(VAR_SALESFORCETOWER_CONFERENCE_STATE) != POST_ALWAYS_WATCHING_WAZOWSKI){
         msgbox(gText_TheGangsAllHere_AhAndIf)
     }
-
     callnative(ClearMugshot)
     closemessage
-    applymovement(PLAYER,TheGangsAllHere_MoveOutOfWay_Movement)
-    waitmovement(PLAYER)
+
+    applymovement(PLAYER,TheGangsAllHere_WatchPairLeave_Movement)
     applymovement(ROSE,TheGangsAllHere_RoseWalkOut_Movement)
     applymovement(OAK,TheGangsAllHere_OakWalkOut_Movement)
     waitmovement(OAK)
@@ -332,54 +381,58 @@ movement TheGangsAllHere_ThisIsOffice_Movement{
     step_end
 }
 
-movement FollowPlaceholder_Movement{
-    walk_down
-    step_end
-}
 movement TheGangsAllHere_RoseWalkToDoor_Movement{
-    walk_down
-    walk_left * 3
-    step_end
-}
-
-movement TheGangsAllHere_OakWalkToDesk_Movement{
-    walk_down
-    walk_right *2
+    walk_right * 2
+    walk_up * 3
+    walk_left
     face_up
-    delay_16 *2
-}
-
-movement TheGangsAllHere_GivePackageToRose_Movement{
-    walk_in_place_up
     step_end
 }
 
 movement TheGangsAllHere_GivePackageToPlayerChar_Movement{
-    face_left
-    walk_in_place_left
+    walk_left
+    face_up
+    walk_in_place_up
     step_end
 }    
 
-movement TheGangsAllHere_MoveOutOfWay_Movement{
-    walk_up
-    face_down
+movement TheGangsAllHere_WatchPairLeave_Movement{
+    delay_16 * 2
+    face_up
     step_end
 }
 
 movement TheGangsAllHere_RoseWalkOut_Movement{
-    walk_left * 5
-    walk_up * 6
+    walk_right
+    walk_up * 8
     step_end
 }
 
 movement TheGangsAllHere_OakWalkOut_Movement{
-    walk_up
-    walk_left * 5
-    walk_up * 6
+    walk_up * 8
     step_end
 }
 movement FollowMe_Movement{
     walk_left
     walk_down * 20
+    step_end
+}
+
+movement TheGangsAllHere_StepAsideOak_Movement{
+    walk_down
+    walk_right
+    face_left
+    step_end
+}
+movement TheGangsAllHere_WalkStairs_FacePlayer_Movement{
+    walk_down * 2
+    emote_exclamation_mark
+    face_right
+    step_end
+}
+
+movement TheGangAllHere_WalkStairsToElevator_Movement{
+    walk_down
+    walk_right * 2
     step_end
 }

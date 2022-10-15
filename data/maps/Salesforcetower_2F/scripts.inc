@@ -83,7 +83,7 @@ Salesforcetower_2F_MapScripts_OnTransition_20:
 Salesforcetower_2F_MovePlayerIntoPosition_Script::
 	lock
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	compare VAR_TEMP_0, 7
+	compare VAR_TEMP_0, 17
 	goto_if_ne Salesforcetower_2F_MovePlayerIntoPosition_Script_2
 Salesforcetower_2F_MovePlayerIntoPosition_Script_1:
 	switch VAR_SALESFORCETOWER_2F_STATE
@@ -93,8 +93,8 @@ Salesforcetower_2F_MovePlayerIntoPosition_Script_1:
 
 Salesforcetower_2F_MovePlayerIntoPosition_Script_2:
 	fadescreen FADE_TO_BLACK
-	setobjectxy OBJ_EVENT_ID_PLAYER, 7, 14
-	TeleportCamera 7, 14
+	setobjectxy OBJ_EVENT_ID_PLAYER, 17, 33
+	TeleportCamera 17, 33
 	fadescreen FADE_FROM_BLACK
 	goto Salesforcetower_2F_MovePlayerIntoPosition_Script_1
 
@@ -119,7 +119,7 @@ Salesforcetower_2F_Oak_Event_Script_1:
 	end
 
 Salesforcetower_2F_Oak_Event_Script_3:
-	call CongratsYourAssAsshole_Intro_Dialogue
+	call CongratsYoureAnAsshole_Intro_Dialogue
 	goto Salesforcetower_2F_Oak_Event_Script_1
 
 Salesforcetower_2F_Oak_Event_Script_4:

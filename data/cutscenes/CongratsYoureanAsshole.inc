@@ -14,10 +14,11 @@ CongratsYoureanAsshole_ObjectCleanUp_Script::
 	return
 
 
-CongratsYourAssAsshole_Intro_Dialogue::
+CongratsYoureAnAsshole_Intro_Dialogue::
 	compare VAR_SALESFORCETOWER_CONFERENCE_STATE, START_FALSE_TIMELINE
-	goto_if_eq CongratsYourAssAsshole_Intro_Dialogue_2
-CongratsYourAssAsshole_Intro_Dialogue_1:
+	goto_if_eq CongratsYoureAnAsshole_Intro_Dialogue_2
+CongratsYoureAnAsshole_Intro_Dialogue_1:
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, START_FALSE_TIMELINE
 	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_WelcomeBack, MSGBOX_NPC
@@ -34,7 +35,6 @@ CongratsYourAssAsshole_Intro_Dialogue_1:
 	msgbox gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal
 	applymovement 9, Common_Movement_WalkInPlaceLeft
 	waitmovement 9
-	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, START_FALSE_TIMELINE
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_TheresNoTurningBack
@@ -42,9 +42,9 @@ CongratsYourAssAsshole_Intro_Dialogue_1:
 	closemessage
 	return
 
-CongratsYourAssAsshole_Intro_Dialogue_2:
+CongratsYoureAnAsshole_Intro_Dialogue_2:
 	goto CongratsYoureanAsshole_FalseTimelineSplit_Script
-	goto CongratsYourAssAsshole_Intro_Dialogue_1
+	goto CongratsYoureAnAsshole_Intro_Dialogue_1
 
 
 CongratsYoureanAsshole_FalseTimelineSplit_Script::
@@ -54,6 +54,8 @@ CongratsYoureanAsshole_FalseTimelineSplit_Script::
 	msgbox gText_CongratsYoureanAsshole_WereGoingToSend, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq CongratsYoureanAsshole_FalseTimelineSplit_Script_1
+	setflag FLAG_TIMELINE_FALSE
+	setvar VAR_STORYLINE_STATE, STORY_START_FALSE_TIMELINE
 	fadescreen FADE_TO_BLACK
 	msgbox gText_CongratsYoureanAsshole_PresenceIn
 	fadescreen FADE_FROM_BLACK
@@ -68,8 +70,6 @@ CongratsYoureanAsshole_FalseTimelineSplit_Script::
 	msgbox gText_CongratsYoureanAsshole_ThatsTheSpirit
 	callnative ClearMugshot
 	closemessage
-	setflag FLAG_TIMELINE_FALSE
-	setvar VAR_STORYLINE_STATE, STORY_START_FALSE_TIMELINE
 	fadescreen FADE_TO_BLACK
 	delay 30
 	call CongratsYoureanAsshole_ObjectCleanUp_Script

@@ -156,7 +156,24 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 46,
+      "elevation": 0,
+      "var": "VAR_SALESFORCETOWER_CONFERENCE_STATE",
+      "var_value": "START_THE_GANGS_ALL_HERE",
+      "script": "TheGangsAllHere_ThisIsOffice_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 46,
+      "elevation": 0,
+      "var": "VAR_SALESFORCETOWER_CONFERENCE_STATE",
+      "var_value": "START_THE_GANGS_ALL_HERE",
+      "script": "TheGangsAllHere_ThisIsOffice_Script"
+    }
   ],
   "bg_events": [
 

@@ -1,44 +1,91 @@
 TheGangsAllHere_ObjectCleanUp_Script::
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_4
+	call Salesforcetower_Leagueops_EmptyConferenceRoomOffices
 	return
+
+
+TheGangsAllHere_MidMission_Object_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setobjectxy 3, 6, 46
+	setobjectxy 5, 5, 56
+	setobjectxyperm 5, 5, 56
+	return
+
+
+TheGangsAllHere_ObjectSetup_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setobjectxy 5, 5, 56
+	setobjectxyperm 5, 5, 56
+	return
+
+
+TheGangsAllHere_MoveOakToStairs_Script::
+	addobject 3
+	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxy 3, 16, 9
+	setobjectxyperm 3, 16, 9
+	return
+
+
+TheGangsAllHere_OakAppearStairs_Script::
+	lock
+	playse SE_EXIT
+	waitse
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	compare VAR_TEMP_0, 16
+	goto_if_eq TheGangsAllHere_OakAppearStairs_Script_2
+	call TheGangsAllHere_MoveOakToStairs_Script
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 3, TheGangAllHere_WalkStairsToElevator_Movement
+	waitmovement 3
+TheGangsAllHere_OakAppearStairs_Script_1:
+	goto TheGangsAllHere_WhatBringsYou_Dialogue
+	return
+
+TheGangsAllHere_OakAppearStairs_Script_2:
+	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_StepAsideOak_Movement
+	waitmovement OBJ_EVENT_ID_PLAYER
+	call TheGangsAllHere_MoveOakToStairs_Script
+	applymovement 3, TheGangsAllHere_WalkStairs_FacePlayer_Movement
+	waitmovement 3
+	goto TheGangsAllHere_OakAppearStairs_Script_1
 
 
 TheGangsAllHere_WhatBringsYou_Dialogue::
 	lock
-	setvar VAR_SOMA_STATE, START_THE_GANGS_ALL_HERE
-	playse SE_PIN
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, START_THE_GANGS_ALL_HERE
 	playbgm MUS_RG_FOLLOW_ME, FALSE
-	applymovement 4, Common_Movement_ExclamationMark
-	waitmovement 4
-	applymovement 4, Common_Movement_FacePlayer
-	waitmovement 4
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_WhatBringsYou
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ToldMeToVisit
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_IsThisWhereYouWork
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_TheTowerYes
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_IHaventBeen
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_OfCourseNot
 	callnative ClearMugshot
 	closemessage
 	special HealPlayerParty
-	applymovement 4, FollowMe_Movement
-	waitmovement 4
-	setobjectxyperm 4, 6, 25
+	applymovement 3, FollowMe_Movement
+	waitmovement 3
+	setobjectxy 3, 6, 46
+	setobjectxyperm 3, 6, 46
 	fadedefaultbgm
 	releaseall
 	end
@@ -46,7 +93,7 @@ TheGangsAllHere_WhatBringsYou_Dialogue::
 
 TheGangsAllHere_OfficeIsntThatWay_Script::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_OfficeIsntThatWay
 	callnative ClearMugshot
@@ -55,66 +102,73 @@ TheGangsAllHere_OfficeIsntThatWay_Script::
 	return
 
 
+TheGangsAllHere_WalkHallway_Script::
+	applymovement 3, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	fadescreen FADE_TO_BLACK
+	delay 30
+	setobjectxy OBJ_EVENT_ID_PLAYER, 5, 52
+	setobjectxy 3, 6, 52
+	TeleportCamera 5, 52
+	fadescreen FADE_FROM_BLACK
+	return
+
+
 TheGangsAllHere_ThisIsOffice_Script::
-	applymovement 4, FollowPlaceholder_Movement
-	waitmovement 4
-	applymovement 4, Common_Movement_FaceRight
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	lock
+	faceplayer
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ThisIsOffice
 	closemessage
 	callnative ClearMugshot
-	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_ThisIsOffice_Movement
-	applymovement 4, TheGangsAllHere_ThisIsOffice_Movement
-	waitmovement 4
+	call TheGangsAllHere_WalkHallway_Script
 	goto TheGangsAllHere_ComeOnIn_Dialogue
-	end
+	return
 
 
 TheGangsAllHere_ComeOnIn_Dialogue::
-	setvar VAR_SOMA_STATE, POST_THE_GANGS_ALL_HERE
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_THE_GANGS_ALL_HERE
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, FALSE
 	playse SE_PIN
-	applymovement 3, Common_Movement_ExclamationMark
-	waitmovement 3
-	applymovement 3, TheGangsAllHere_RoseWalkToDoor_Movement
-	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	applymovement 5, Common_Movement_ExclamationMark
+	waitmovement 5
+	applymovement 5, TheGangsAllHere_RoseWalkToDoor_Movement
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ComeOnIn
 	closemessage
 	callnative ClearMugshot
-	applymovement 4, TheGangsAllHere_OakWalkToDesk_Movement
-	waitmovement 4
-	applymovement 3, Common_Movement_FaceDown
-	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_AsYouAsked
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	closemessage
+	callnative ClearMugshot
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement 3, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_IThoughtYouSaid
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_IDidIsee
-	callnative ClearMugshot
 	goto TheGangsAllHere_NotIntentionally_Dialogue
 	end
 
 
 TheGangsAllHere_NotIntentionally_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_NotIntentionally
-	compare VAR_SALESFORCETOWER_2F_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
+	compare VAR_SALESFORCETOWER_PRODUCTION_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
 	goto_if_eq TheGangsAllHere_NotIntentionally_Dialogue_2
 TheGangsAllHere_NotIntentionally_Dialogue_1:
 	msgbox gText_TheGangsAllHere_InAnyCase
 	callnative ClearMugshot
-	applymovement 3, Common_Movement_FaceDown
-	applymovement 4, TheGangsAllHere_GivePackageToRose_Movement
-	waitmovement 4
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	applymovement 3, Common_Movement_WalkInPlaceDown
+	waitmovement 3
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_ImThrilledTheTiming
 	closemessage
@@ -124,74 +178,70 @@ TheGangsAllHere_NotIntentionally_Dialogue_1:
 
 TheGangsAllHere_NotIntentionally_Dialogue_2:
 	msgbox gText_TheGangsAllHere_PleaseTellMe
-	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_IHeardWonderfulThings
 	goto TheGangsAllHere_NotIntentionally_Dialogue_1
 
 
 TheGangsAllHere_GiveDowsingMachine_Script::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	applymovement 3, TheGangsAllHere_GivePackageToPlayerChar_Movement
-	waitmovement 3
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement 5, TheGangsAllHere_GivePackageToPlayerChar_Movement
+	waitmovement 5
 	giveitem ITEM_DOWSING_MACHINE, 1
 	goto TheGangsAllHere_GiveDowsingMachine_Dialogue
 	end
 
 
 TheGangsAllHere_GiveDowsingMachine_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_TheVSSeekerWillAlert
 	callnative ClearMugshot
-	applymovement 4, Common_Movement_FaceLeft
-	waitmovement 4
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	applymovement 3, Common_Movement_FacePlayer
+	waitmovement 3
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_NotToPlaceAnyUndue
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_OhWowThatMeans
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_WeKnowButNoPressure
-	closemessage
-	callnative ClearMugshot
 	goto TheGangsAllHere_EndScene_Dialogue
-	end
+	return
 
 
 TheGangsAllHere_EndScene_Dialogue::
-	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_TimeForNumber7
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	closemessage
+	callnative ClearMugshot
 	applymovement 3, Common_Movement_FaceDown
-	applymovement 4, Common_Movement_FaceUp
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_WeShall
 	callnative ClearMugshot
-	applymovement 4, Common_Movement_FaceLeft
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	applymovement 3, Common_Movement_FacePlayer
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheGangsAllHere_FeelFreeToContinue
-	compare VAR_SALESFORCETOWER_2F_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
+	compare VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
 	goto_if_ne TheGangsAllHere_EndScene_Dialogue_2
 TheGangsAllHere_EndScene_Dialogue_1:
 	callnative ClearMugshot
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_MoveOutOfWay_Movement
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement 3, TheGangsAllHere_RoseWalkOut_Movement
-	applymovement 4, TheGangsAllHere_OakWalkOut_Movement
-	waitmovement 4
+	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_WatchPairLeave_Movement
+	applymovement 5, TheGangsAllHere_RoseWalkOut_Movement
+	applymovement 3, TheGangsAllHere_OakWalkOut_Movement
+	waitmovement 3
 	fadedefaultbgm
+	removeobject 5
 	removeobject 3
-	removeobject 4
 	addvar VAR_STORYLINE_STATE, 1
 	call Act1_1_Check_Script
 	release
@@ -200,22 +250,6 @@ TheGangsAllHere_EndScene_Dialogue_1:
 TheGangsAllHere_EndScene_Dialogue_2:
 	msgbox gText_TheGangsAllHere_AhAndIf
 	goto TheGangsAllHere_EndScene_Dialogue_1
-
-
-Salesforcetower_10F_EventScript_Tom::
-	trainerbattle_single TRAINER_ALVARO, Route104_Text_GinaIntro, Route104_Text_GinaDefeat
-	special GetPlayerBigGuyGirlString
-	msgbox Route104_Text_GinaPostBattle, MSGBOX_AUTOCLOSE
-	release
-	end
-
-
-Salesforcetower_10F_EventScript_Ian::
-	trainerbattle_single TRAINER_RED, Route104_Text_MiaIntro, Route104_Text_MiaDefeat
-	special GetPlayerBigGuyGirlString
-	msgbox Route104_Text_MiaPostBattle, MSGBOX_AUTOCLOSE
-	release
-	end
 
 
 TheGangsAllHere_OakWalkToPlayer_Movement:
@@ -232,46 +266,29 @@ TheGangsAllHere_ThisIsOffice_Movement:
 	walk_right
 	step_end
 
-FollowPlaceholder_Movement:
-	walk_down
-	step_end
-
 TheGangsAllHere_RoseWalkToDoor_Movement:
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-TheGangsAllHere_OakWalkToDesk_Movement:
-	walk_down
 	walk_right
 	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_left
 	face_up
-	delay_16
-	delay_16
-	step_end
-
-TheGangsAllHere_GivePackageToRose_Movement:
-	walk_in_place_up
 	step_end
 
 TheGangsAllHere_GivePackageToPlayerChar_Movement:
-	face_left
-	walk_in_place_left
+	walk_left
+	face_up
+	walk_in_place_up
 	step_end
 
-TheGangsAllHere_MoveOutOfWay_Movement:
-	walk_up
-	face_down
+TheGangsAllHere_WatchPairLeave_Movement:
+	delay_16
+	delay_16
+	face_up
 	step_end
 
 TheGangsAllHere_RoseWalkOut_Movement:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
 	walk_up
 	walk_up
 	walk_up
@@ -281,12 +298,6 @@ TheGangsAllHere_RoseWalkOut_Movement:
 	step_end
 
 TheGangsAllHere_OakWalkOut_Movement:
-	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
 	walk_up
 	walk_up
 	walk_up
@@ -317,6 +328,25 @@ FollowMe_Movement:
 	walk_down
 	walk_down
 	walk_down
+	step_end
+
+TheGangsAllHere_StepAsideOak_Movement:
+	walk_down
+	walk_right
+	face_left
+	step_end
+
+TheGangsAllHere_WalkStairs_FacePlayer_Movement:
+	walk_down
+	walk_down
+	emote_exclamation_mark
+	face_right
+	step_end
+
+TheGangAllHere_WalkStairsToElevator_Movement:
+	walk_down
+	walk_right
+	walk_right
 	step_end
 
 gText_TheGangsAllHere_WhatBringsYou::

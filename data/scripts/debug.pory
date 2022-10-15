@@ -63,12 +63,10 @@ text Debug_FlagsNotSetMessage_Text{
 }
 
 script Debug_Script_1{
-    setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,POST_YOU_REALIZE_WERE_EVIL_RIGHT)
-    setvar(VAR_STORYLINE_STATE,STORY_MORNING_OF_TIMELINE_SPLIT)
+    setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,POST_WOW_YOURE_STRONG)
     warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,0)
 }
 script Debug_Script_2{
-
 }
 
 script Debug_Script_3{

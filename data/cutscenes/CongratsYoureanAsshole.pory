@@ -34,7 +34,7 @@ script CongratsYoureanAsshole_ObjectCleanUp_Script {
     setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_DOWN)
 }
 
-script CongratsYourAnAsshole_Intro_Dialogue {
+script CongratsYoureAnAsshole_Intro_Dialogue{
 
 if (var(VAR_SALESFORCETOWER_CONFERENCE_STATE) == START_FALSE_TIMELINE){
     goto(CongratsYoureanAsshole_FalseTimelineSplit_Script)

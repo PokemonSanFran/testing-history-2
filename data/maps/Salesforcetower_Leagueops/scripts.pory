@@ -11,13 +11,15 @@ const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
 const FLAG_HIDE_OAK = FLAG_TEMP_2
 const FLAG_HIDE_BIANCA = FLAG_TEMP_3
 const FLAG_HIDE_ROSE = FLAG_TEMP_4
+const FLAG_HIDE_SABRINA = FLAG_TEMP_5
+const FLAG_HIDE_KOGA = FLAG_TEMP_6
 
 mapscripts Salesforcetower_Leagueops_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
         switch(var(VAR_SALESFORCETOWER_CONFERENCE_STATE)){
-            //case POST_WOW_YOURE_STRONG: call()
-            //case START_THE_GANGS_ALL_HERE: call()
-            //case POST_THE_GANGS_ALL_HERE: call()
+            case POST_WOW_YOURE_STRONG: call(TheGangsAllHere_ObjectSetup_Script)
+            case START_THE_GANGS_ALL_HERE: call(TheGangsAllHere_MidMission_Object_Script)
+            case POST_THE_GANGS_ALL_HERE: call(TheGangsAllHere_ObjectCleanUp_Script)
             case PRE_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Setup_Script)
             case POST_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Hide_Script)
             case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Setup_Script)
@@ -29,6 +31,7 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
     MAP_SCRIPT_ON_FRAME_TABLE [
     VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM: Salesforcetower_Leagueops_MovePlayerIntoPosition_Script
     VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT: Salesforcetower_Leagueops_MovePlayerIntoPosition_Script
+    VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_WOW_YOURE_STRONG: TheGangsAllHere_OakAppearStairs_Script
     ]
 }
 
@@ -37,6 +40,8 @@ script Salesforcetower_Leagueops_EmptyConferenceRoomOffices{
         setflag(FLAG_HIDE_OAK)
         setflag(FLAG_HIDE_BIANCA)
         setflag(FLAG_HIDE_ROSE)
+        setflag(FLAG_HIDE_SABRINA)
+        setflag(FLAG_HIDE_KOGA)
         return
 }
 script Salesforcetower_Leagueops_MovePlayerIntoPosition_Script{
@@ -60,7 +65,7 @@ script Salesforcetower_Leagueops_Oak_Event_Script{
     lock
     faceplayer
     switch (var(VAR_STORYLINE_STATE)){
-        case STORY_MORNING_OF_TIMELINE_SPLIT: call(CongratsYourAnAsshole_Intro_Dialogue)
+        case STORY_MORNING_OF_TIMELINE_SPLIT: call(CongratsYoureAnAsshole_Intro_Dialogue)
         case STORY_START_FALSE_TIMELINE: call(LetsBurnThisMotherDown_Assignment_Dialogue)
         case STORY_1ST_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
         case STORY_2ND_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
