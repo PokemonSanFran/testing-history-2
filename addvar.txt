@@ -1,5 +1,3 @@
-BeachBattle:110:        addvar(VAR_STORYLINE_STATE,1)
-BeachBattle:112:        addvar(VAR_BEACH_BATTLE_STATE,1)
 EnterAriana:322:        addvar(VAR_STORYLINE_STATE,1)
 EnterBugsy:55:        addvar(VAR_GYM_2_STATE,1)
 EnterBugsy:5:        addvar(VAR_GYM_2_STATE,1)

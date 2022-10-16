@@ -1,9 +1,10 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1
 
 script BeachBattle_ObjectVisibility_Script{
     switch (var(VAR_BEACH_BATTLE_STATE)){
-        case 0: return
+        case NOT_SEEN_BIANCA_BEACH: return
         case SAVE_BIANCA_BEACH: call(BeachBattle_BattleSetUp_Script)
         default: call(BeachBattle_ObjectSetUp_Script)
     }
@@ -11,7 +12,7 @@ script BeachBattle_ObjectVisibility_Script{
 }
 
 script BeachBattle_ObjectSetUp_Script {
-    setflag(FLAG_TEMP_1)
+    setflag(FLAG_HIDE_BIANCA)
 }
 
 script BeachBattle_BattleSetUp_Script {
@@ -20,7 +21,7 @@ script BeachBattle_BattleSetUp_Script {
 
 script BeachBattle_BiancaWalkToPlayer {
     lock
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_BeachBattle_HeyPlayer)
         closemessage
@@ -33,26 +34,26 @@ script BeachBattle_BiancaWalkToPlayer {
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
         applymovement(BIANCA,BeachBattle_ApproachFromSouth)
         waitmovement(0)
-        goto(BeachBattle_Archer_Event_Script)
+        goto(BeachBattle_Bianca_Event_Script)
 }
 
 script BeachBattle_Interact_Script {
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
     faceplayer
-        goto(BeachBattle_Archer_Event_Script)
+        goto(BeachBattle_Bianca_Event_Script)
 }
 
-script BeachBattle_Archer_Event_Script {
+script BeachBattle_Bianca_Event_Script {
     switch (var(VAR_BEACH_BATTLE_STATE)) {
-        case 0: goto(BeachBattle_Approach_Dialogue)
+        case NOT_SEEN_BIANCA_BEACH: goto(BeachBattle_Approach_Dialogue)
         case SAVE_BIANCA_BEACH: goto(BeachBattle_StartBattle_Script)
     }
 }
 
 script BeachBattle_Approach_Dialogue {
-        setvar(VAR_BEACH_BATTLE_STATE,1)
+        setvar(VAR_BEACH_BATTLE_STATE,SAVE_BIANCA_BEACH)
         setobjectxyperm(BIANCA,10,24) 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_BeachBattle_ImHeadingNorth)
 
@@ -72,7 +73,7 @@ script BeachBattle_Approach_Dialogue {
 script BeachBattle_SevenBadges_Dialogue {
     msgbox(gText_BeachBattle_OhNiceLastOne)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_BeachBattle_JustTheOneIn)
         goto(BeachBattle_SaveProgress)
@@ -81,7 +82,7 @@ script BeachBattle_SevenBadges_Dialogue {
 script BeachBattle_FourBadges_Dialogue {
         msgbox(gText_BeachBattle_ImNotSureThatSlow)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_BeachBattle_IveBeenALittleDistracted)
         goto(BeachBattle_SaveProgress)
@@ -96,7 +97,7 @@ script BeachBattle_SaveProgress {
 
 script BeachBattle_StartBattle_Script {
     lock
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_BeachBattle_MyBrainIsScrambled)
         trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_MUDKIP,gText_BeachBattle_ImLegitShook)
@@ -109,13 +110,13 @@ script BeachBattle_PostBattle_Dialogue {
     lock
         addvar(VAR_STORYLINE_STATE,1)
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
-        addvar(VAR_BEACH_BATTLE_STATE,1)
+        setvar(VAR_BEACH_BATTLE_STATE,POST_BEACH_BATTLE)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_BeachBattle_WellImNotSurprised)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_BeachBattle_UghIShouldBe)
 
