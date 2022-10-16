@@ -6,9 +6,9 @@ YouCantStopMe_HideObject_Script::
 
 YouCantStopMe_MoveObject_Script::
 	call YouCantStopMe_HideObject_Script
-	setobjectxy 2, 15, 5
-	setobjectxyperm 2, 15, 5
-	setobjectnewmovementtype 2, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxy 4, 15, 5
+	setobjectxyperm 4, 15, 5
+	setobjectnewmovementtype 4, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 
@@ -18,36 +18,21 @@ YouCantStopMe_ObjectCleanUp_Script::
 	return
 
 
-YouCantStopMe_LocatePlayer_Script::
+YouCantStopMe_MoveOakPlayer_Script::
 	clearflag FLAG_TEMP_1
 	playse SE_EXIT
 	waitse
 	addobject 1
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	switch VAR_TEMP_1
-	case 5, YouCantStopMe_LocatePlayer_Script_3
-	case 6, YouCantStopMe_LocatePlayer_Script_4
-	case 7, YouCantStopMe_LocatePlayer_Script_5
-	case 8, YouCantStopMe_LocatePlayer_Script_6
-YouCantStopMe_LocatePlayer_Script_1:
-	waitmovement 1
+	applymovement 1, Common_Movement_WalkDown
+	fadescreen FADE_TO_BLACK
+	applymovement 1, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	delay 30
+	setobjectxy 1, 5, 7
+	setobjectxy OBJ_EVENT_ID_PLAYER, 6, 7
+	TeleportCamera 6, 7
+	fadescreen FADE_FROM_BLACK
 	return
-
-YouCantStopMe_LocatePlayer_Script_3:
-	applymovement 1, YouCantStopMe_WalkToPlayerY5
-	goto YouCantStopMe_LocatePlayer_Script_1
-
-YouCantStopMe_LocatePlayer_Script_4:
-	applymovement 1, YouCantStopMe_WalkToPlayerY6
-	goto YouCantStopMe_LocatePlayer_Script_1
-
-YouCantStopMe_LocatePlayer_Script_5:
-	applymovement 1, YouCantStopMe_WalkToPlayerY7
-	goto YouCantStopMe_LocatePlayer_Script_1
-
-YouCantStopMe_LocatePlayer_Script_6:
-	applymovement 1, YouCantStopMe_WalkToPlayerY8
-	goto YouCantStopMe_LocatePlayer_Script_1
 
 
 YouCantStopMe_LastChance_Dialogue::
@@ -57,8 +42,7 @@ YouCantStopMe_LastChance_Dialogue::
 	msgbox gText_YouCantStopMe_Wait
 	callnative ClearMugshot
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	call YouCantStopMe_LocatePlayer_Script
+	call YouCantStopMe_MoveOakPlayer_Script
 	setvar VAR_0x8000, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_PleaseItIsntToo
@@ -97,7 +81,7 @@ YouCantStopMe_LastChance_Dialogue::
 	msgbox gText_YouCantStopMe_IThoughtSo
 	closemessage
 	callnative ClearMugshot
-	applymovement 1, YouCantStopMe_LeaveFloor
+	applymovement 1, YouCantStopMe_LeaveFloor_Movement
 	waitmovement 1
 	playse SE_EXIT
 	waitse
@@ -108,6 +92,7 @@ YouCantStopMe_LastChance_Dialogue::
 
 
 YouCantStopMe_Confront_Dialogue::
+	lock
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, TRUE
 	setvar VAR_0x8000, MUGSHOT_GHETSIS
 	callnative DrawMugshot
@@ -120,7 +105,7 @@ YouCantStopMe_Confront_Dialogue::
 	msgbox gText_YouCantStopMe_HahIThinkMass
 	callnative ClearMugshot
 	closemessage
-	applymovement 2, Common_Movement_FaceUp
+	applymovement 4, Common_Movement_FaceUp
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_DidYouEverCare
@@ -145,9 +130,9 @@ YouCantStopMe_Confront_Dialogue::
 	compare VAR_TEMP_1, 5
 	goto_if_ne YouCantStopMe_Confront_Dialogue_2
 YouCantStopMe_Confront_Dialogue_1:
-	applymovement 2, Common_Movement_WalkDown
-	applymovement OBJ_EVENT_ID_PLAYER, YouCantStopMe_WalkBackwards
-	waitmovement 2
+	applymovement 4, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_PLAYER, YouCantStopMe_WalkBackwards_Movement
+	waitmovement 4
 	waitmovement OBJ_EVENT_ID_PLAYER
 	call Common_EventScript_SaveGame
 	closemessage
@@ -156,10 +141,10 @@ YouCantStopMe_Confront_Dialogue_1:
 
 YouCantStopMe_Confront_Dialogue_2:
 	fadescreen FADE_TO_BLACK
-	applymovement 2, Common_Movement_FaceDown
-	waitmovement 2
-	setobjectxy 2, 15, 4
+	delay 30
+	applymovement 4, Common_Movement_FaceDown
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	setobjectxy 4, 15, 4
 	setobjectxy OBJ_EVENT_ID_PLAYER, 15, 5
 	TeleportCamera 15, 5
 	fadescreen FADE_FROM_BLACK
@@ -177,45 +162,7 @@ YouCantStopMe_StartBossBattle_Script::
 	return
 
 
-YouCantStopMe_WalkToPlayerY5:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	step_end
-
-YouCantStopMe_WalkToPlayerY6:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	step_end
-
-YouCantStopMe_WalkToPlayerY7:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	step_end
-
-YouCantStopMe_WalkToPlayerY8:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	step_end
-
-YouCantStopMe_LeaveFloor:
+YouCantStopMe_LeaveFloor_Movement:
 	walk_left
 	walk_up
 	walk_up
@@ -225,7 +172,7 @@ YouCantStopMe_LeaveFloor:
 	walk_up
 	step_end
 
-YouCantStopMe_WalkBackwards:
+YouCantStopMe_WalkBackwards_Movement:
 	lock_facing_direction
 	walk_down
 	unlock_facing_direction

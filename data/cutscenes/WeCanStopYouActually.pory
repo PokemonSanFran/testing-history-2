@@ -1,7 +1,7 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const ROSE = 2
-const POLICEA = 3
-const POLICEB = 4
+const POLICE_A = 2
+const POLICE_B = 3
+const ROSE = 4
 
 const FLAG_HIDE_OAK= FLAG_TEMP_1
 const FLAG_HIDE_POLICE = FLAG_TEMP_2
@@ -47,7 +47,7 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         waitmovement(ROSE)
         playse(SE_PC_LOGIN)
         special(TurnOnTVScreen)
-        delay(16)
+        delay(30)
         fadescreen(FADE_TO_BLACK)
 
         setvar(VAR_MUGSHOT, MUGSHOT_N)
@@ -114,7 +114,6 @@ script WeCanStopYouActually_PostBattle_Dialogue {
         applymovement(ROSE,Common_Movement_WalkDown)
         waitmovement(ROSE)
 
-
         goto(WeCanStopYouActually_StartBossBattle_Script)
 }
 
@@ -136,17 +135,17 @@ script WeCanStopYouActually_Arrest_Dialogue {
         setvar(VAR_STORYLINE_STATE,STORY_CLEAR)
 
         clearflag(FLAG_HIDE_POLICE)
-        addobject(POLICEA)
-        addobject(POLICEB)
+        addobject(POLICE_A)
+        addobject(POLICE_B)
 
         msgbox(gText_WeCanStopYouActually_YoureUnderArrest)
         closemessage
 
-        applymovement(POLICEA,WeCanStopYouActually_ArrestWalkInA)
-        applymovement(POLICEB,WeCanStopYouActually_ArrestWalkInB)
+        applymovement(POLICE_A,WeCanStopYouActually_ArrestWalkInA)
+        applymovement(POLICE_B,WeCanStopYouActually_ArrestWalkInB)
         applymovement(PLAYER,WeCanStopYouActually_ArrestWalkInC)
 
-        waitmovement(POLICEB)
+        waitmovement(POLICE_B)
 
         setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)

@@ -24,8 +24,11 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
             case POST_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Hide_Script)
             case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Setup_Script)
             case POST_YOU_REALIZE_WERE_EVIL_RIGHT: 
+              if (var(VAR_TOWER_RAID_STATE) > SABRINA_WARP_DOOR_UNLOCKED){
                 call(Salesforcetower_Leagueops_TrueTimeline_Objects_Script)
-                call(YouRealizeWereEvilRight_Object_Cleanup_Script)
+}else{
+        call(YouRealizeWereEvilRight_Object_Cleanup_Script)
+    }
             case START_FALSE_TIMELINE: call(CongratsYoureanAsshole_ObjectCleanUp_Script)
             default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
         }
@@ -41,12 +44,10 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
 }
 
 script Salesforcetower_Leagueops_TrueTimeline_Objects_Script{
-    if (var(VAR_TOWER_RAID_STATE) > SABRINA_WARP_DOOR_UNLOCKED){
         switch(var(VAR_TOWER_RAID_STATE)){
             case TEAM_ENTERED_SALESFORCETOWER: call(ImIn_PreBianca_Object_Script)
             case SAVE_BIANCA_SALESFORCETOWER: 
             default: call(ImIn_SaveBianca_Object_Script)
-        }
     }
     return
 }
@@ -88,4 +89,14 @@ script Salesforcetower_Leagueops_Oak_Event_Script{
     }
     release
     end
+}
+
+
+script Salesforcetower_Leagueops_Bianca_Event_Script{
+    lock
+    faceplayer
+    call(ImIn_InteractBiancaBattle_Script)
+    call(ImIn_PostBiancaBattle_Interact_Dialogue)
+    closemessage
+    callnative(ClearMugshot)
 }

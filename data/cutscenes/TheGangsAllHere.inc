@@ -289,6 +289,9 @@ TheGangsAllHere_WatchPairLeave_Movement:
 	step_end
 
 TheGangsAllHere_RoseWalkOut_Movement:
+	walk_right
+	walk_up
+	walk_up
 	walk_up
 	walk_up
 	walk_up
@@ -298,6 +301,8 @@ TheGangsAllHere_RoseWalkOut_Movement:
 	step_end
 
 TheGangsAllHere_OakWalkOut_Movement:
+	walk_up
+	walk_up
 	walk_up
 	walk_up
 	walk_up

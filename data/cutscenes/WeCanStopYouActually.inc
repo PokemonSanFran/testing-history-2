@@ -8,9 +8,9 @@ WeCanStopYouActually_FixPlayerPosition_Script::
 
 WeCanStopYouActually_FixPlayerPosition_Script_1:
 	fadescreen FADE_TO_BLACK
-	applymovement 2, Common_Movement_FaceDown
-	waitmovement 2
-	setobjectxy 2, 15, 5
+	applymovement 4, Common_Movement_FaceDown
+	waitmovement 4
+	setobjectxy 4, 15, 5
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	setobjectxy OBJ_EVENT_ID_PLAYER, 15, 6
 	TeleportCamera 15, 6
@@ -34,11 +34,11 @@ WeCanStopYouActually_PostBattle_Dialogue::
 	msgbox gText_WeCanStopYouActually_OhNo
 	callnative ClearMugshot
 	closemessage
-	applymovement 2, WeCanStopYouActually_RunToDesk
-	waitmovement 2
+	applymovement 4, WeCanStopYouActually_RunToDesk
+	waitmovement 4
 	playse SE_PC_LOGIN
 	special TurnOnTVScreen
-	delay 16
+	delay 30
 	fadescreen FADE_TO_BLACK
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
@@ -61,8 +61,8 @@ WeCanStopYouActually_PostBattle_Dialogue::
 	msgbox gText_WeCanStopYouActually_IDontCare
 	callnative ClearMugshot
 	closemessage
-	applymovement 2, WeCanStopYouActually_RageRun
-	waitmovement 2
+	applymovement 4, WeCanStopYouActually_RageRun
+	waitmovement 4
 	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_TheyToldYou
@@ -71,7 +71,7 @@ WeCanStopYouActually_PostBattle_Dialogue::
 	msgbox gText_WeCanStopYouActually_I
 	callnative ClearMugshot
 	closemessage
-	applymovement 2, Common_Movement_FaceLeft
+	applymovement 4, Common_Movement_FaceLeft
 	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_Security
@@ -80,15 +80,15 @@ WeCanStopYouActually_PostBattle_Dialogue::
 	msgbox gText_WeCanStopYouActually_WeAlreadyBeatThem
 	callnative ClearMugshot
 	closemessage
-	applymovement 2, Common_Movement_FaceDown
-	waitmovement 2
+	applymovement 4, Common_Movement_FaceDown
+	waitmovement 4
 	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_ImNotGoingToPrison
 	callnative ClearMugshot
 	closemessage
-	applymovement 2, Common_Movement_WalkDown
-	waitmovement 2
+	applymovement 4, Common_Movement_WalkDown
+	waitmovement 4
 	goto WeCanStopYouActually_StartBossBattle_Script
 	return
 
@@ -109,14 +109,14 @@ WeCanStopYouActually_Arrest_Dialogue::
 	setvar VAR_TOWER_RAID_STATE, DEFEATED_ROSE_SALESFORCETOWER
 	setvar VAR_STORYLINE_STATE, STORY_CLEAR
 	clearflag FLAG_TEMP_2
+	addobject 2
 	addobject 3
-	addobject 4
 	msgbox gText_WeCanStopYouActually_YoureUnderArrest
 	closemessage
-	applymovement 3, WeCanStopYouActually_ArrestWalkInA
-	applymovement 4, WeCanStopYouActually_ArrestWalkInB
+	applymovement 2, WeCanStopYouActually_ArrestWalkInA
+	applymovement 3, WeCanStopYouActually_ArrestWalkInB
 	applymovement OBJ_EVENT_ID_PLAYER, WeCanStopYouActually_ArrestWalkInC
-	waitmovement 4
+	waitmovement 3
 	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WeCanStopYouActually_ForWhat

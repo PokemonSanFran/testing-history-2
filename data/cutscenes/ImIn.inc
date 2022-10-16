@@ -19,7 +19,7 @@ ImIn_PreBianca_Object_Script::
 	setflag FLAG_TEMP_6
 	setobjectxy 4, 6, 56
 	setobjectxyperm 4, 6, 56
-	setobjectmovementtype 4, DIR_NORTH
+	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_UP
 	return
 
 
@@ -31,12 +31,12 @@ ImIn_SaveBianca_Object_Script::
 	setflag FLAG_TEMP_6
 	setobjectxy 4, 7, 53
 	setobjectxyperm 4, 7, 53
-	setobjectmovementtype 4, DIR_WEST
+	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_LEFT
 	return
 
 
 ImIn_RevealRoseWarp_Script::
-	compare VAR_TOWER_RAID_STATE, DEFEATED_BIANCA_SALESFORCETOWER
+	compare VAR_TOWER_RAID_STATE, SAVE_BIANCA_SALESFORCETOWER
 	goto_if_gt ImIn_RevealRoseWarp_Script_2
 ImIn_RevealRoseWarp_Script_1:
 	return
@@ -417,6 +417,7 @@ ImIn_OfficeReveal_Dialogue::
 	callnative ClearMugshot
 	applymovement 4, ImIn_WalkFromDesk_Movement
 	waitmovement 4
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	call Common_EventScript_SaveGame
 	closemessage
 	goto ImIn_StartBiancaBattle_Script
@@ -436,9 +437,15 @@ ImIn_StartBiancaBattle_Script::
 
 
 ImIn_InteractBiancaBattle_Script::
+	compare VAR_TOWER_RAID_STATE, SAVE_BIANCA_SALESFORCETOWER
+	goto_if_eq ImIn_InteractBiancaBattle_Script_2
+ImIn_InteractBiancaBattle_Script_1:
+	return
+
+ImIn_InteractBiancaBattle_Script_2:
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	goto ImIn_StartBiancaBattle_Script
-	return
+	goto ImIn_InteractBiancaBattle_Script_1
 
 
 ImIn_BiancaDefeated_Dialogue::
@@ -464,11 +471,17 @@ ImIn_BiancaDefeated_Dialogue::
 
 
 ImIn_PostBiancaBattle_Interact_Dialogue::
+	compare VAR_TOWER_RAID_STATE, DEFEATED_BIANCA_SALESFORCETOWER
+	goto_if_eq ImIn_PostBiancaBattle_Interact_Dialogue_2
+ImIn_PostBiancaBattle_Interact_Dialogue_1:
+	return
+
+ImIn_PostBiancaBattle_Interact_Dialogue_2:
 	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_AllThatTraining, MSGBOX_NPC
 	callnative ClearMugshot
-	return
+	goto ImIn_PostBiancaBattle_Interact_Dialogue_1
 
 
 ImIn_InteractBianca_Event_Script::

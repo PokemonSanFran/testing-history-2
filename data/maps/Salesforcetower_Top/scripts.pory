@@ -1,0 +1,28 @@
+mapscripts Salesforcetower_Top_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Salesforcetower_Top_ObjectVisibility_Script)
+    }
+}
+
+script Salesforcetower_Top_ObjectVisibility_Script{
+
+     switch (var(VAR_TOWER_RAID_STATE)){
+         case DEFEATED_BIANCA_SALESFORCETOWER: call(YouCantStopMe_HideObject_Script)
+         case SAVE_ROSE_SALESFORCETOWER: call(YouCantStopMe_HideObject_Script)
+         case DEFEATED_ROSE_SALESFORCETOWER: call(YouCantStopMe_MoveObject_Script)
+        default: call(YouCantStopMe_ObjectCleanUp_Script)
+    }
+     return
+}
+
+script Salesforcetower_Top_Rose_Event_Script {
+    lock
+
+    if (var(VAR_TOWER_RAID_STATE) == STOPPED_BY_OAK){
+        goto(YouCantStopMe_Confront_Dialogue)
+    }else {
+        goto(YouCantStopMe_StartBossBattle_Script)
+    }
+}
+
+

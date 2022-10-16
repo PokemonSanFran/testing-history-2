@@ -1,29 +1,37 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
+const CAMERA = OBJ_EVENT_ID_CAMERA
+
 const PKMN1 = 1
 const PKMN2 = 2
 const PKMN3 = 3
 const PKMN4 = 4
 const MALVA = 5
 const RUPERT = 6
-const CAMERA = OBJ_EVENT_ID_CAMERA
+const PARADE_FLOAT_A = 9
+const PARADE_FLOAT_B = 8
+const PARADE_FLOAT_C = 7
+
+const FLAG_HIDE_MALVA_PKMN = FLAG_TEMP_1
+const FLAG_HIDE_RUPERT_PKMN = FLAG_TEMP_2
+const FLAG_HIDE_PARADE = FLAG_TEMP_3
 
 script AndWeMarchOn_ObjectVisibility_Script{
-    switch (var(VAR_ROUTE108_STATE)){
-        case 0: call(AndWeMarchOn_ObjectSetUp_Script)
-        case 1: call(AndWeMarchOn_ObjectCleanUp_Script)
+    switch (var(VAR_HAIGHTASHBURY_STATE)){
+        case PARADE_NOT_STARTED: call(AndWeMarchOn_ObjectSetUp_Script)
+        case PARADE_COMPLETE: call(AndWeMarchOn_ObjectCleanUp_Script)
     }
     return
 }
 
 script AndWeMarchOn_ObjectSetUp_Script {
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
+    setflag(FLAG_HIDE_MALVA_PKMN)
+    setflag(FLAG_HIDE_RUPERT_PKMN)
 }
 
 script AndWeMarchOn_ObjectCleanUp_Script {
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_2)
-    setflag(FLAG_TEMP_3)
+    setflag(FLAG_HIDE_MALVA_PKMN)
+    setflag(FLAG_HIDE_RUPERT_PKMN)
+    setflag(FLAG_HIDE_PARADE)
 }
 
 script AndWeMarchOn_MoveCameraToParade_Script {
@@ -38,22 +46,21 @@ script AndWeMarchOn_MoveCameraToParade_Script {
 
 script AndWeMarchOn_StartParadeMovement_Script {
     lock
-        applymovement(PLAYER, AndWeMarchOn_WatchParade)
+        applymovement(PLAYER, AndWeMarchOn_WatchParade_Movement)
         waitmovement(0)
         fadescreen(FADE_TO_BLACK)
         call(AndWeMarchOn_MoveCameraToParade_Script)
-        setobjectxyperm(9, 26, 10)
-        setobjectxy(9, 26, 10)
-        setobjectxy(10, 30, 10)
+        setobjectxyperm(PARADE_FLOAT_A, 26, 10)
+        setobjectxy(PARADE_FLOAT_A, 26, 10)
         fadescreen(FADE_FROM_BLACK)
 
-        applymovement(CAMERA, AndWeMarchOn_PanCameraParadeStop)
-        applymovement(MALVA, AndWeMarchOn_ParadeProcession)
-        applymovement(10, AndWeMarchOn_ParadeProcession)
-        applymovement(9, AndWeMarchOn_ParadeProcession)
-        applymovement(8, AndWeMarchOn_ParadeProcession)
+        applymovement(CAMERA, AndWeMarchOn_PanCameraParadeStop_Movement)
+        applymovement(MALVA, AndWeMarchOn_ParadeProcession_Movement)
+        applymovement(PARADE_FLOAT_A, AndWeMarchOn_ParadeProcession_Movement)
+        applymovement(PARADE_FLOAT_B, AndWeMarchOn_ParadeProcession_Movement)
+        applymovement(PARADE_FLOAT_C, AndWeMarchOn_ParadeProcession_Movement)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_WowPeopleHere)
         callnative(ClearMugshot)
@@ -68,13 +75,13 @@ script AndWeMarchOn_StartParadeMovement_Script {
 
 script AndWeMarchOn_Opening_Dialogue {
     playbgm(MUS_ENCOUNTER_ELITE_FOUR,TRUE)
-    applymovement(MALVA, AndWeMarchOn_LookAroundCrowd)
+    applymovement(MALVA, AndWeMarchOn_LookAroundCrowd_Movement)
         waitmovement(0)
         playse(SE_APPLAUSE)
-        applymovement(MALVA, AndWeMarchOn_WalkToFloatCenter)
+        applymovement(MALVA, AndWeMarchOn_WalkToFloatCenter_Movement)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_SanFran)
         callnative(ClearMugshot)
@@ -87,7 +94,7 @@ script AndWeMarchOn_Opening_Dialogue {
         playse(SE_BANG)
         waitse
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_ThankYouForSupporting)
         callnative(ClearMugshot)
@@ -96,22 +103,22 @@ script AndWeMarchOn_Opening_Dialogue {
         playse(SE_APPLAUSE)
         waitse
 
-        applymovement(MALVA, AndWeMarchOn_PaceBackForth)
+        applymovement(MALVA, AndWeMarchOn_PaceBackForth_Movement)
         waitmovement(0)
         goto(AndWeMarchOn_InviteOntoStage_Dialogue)
 }
 
 script AndWeMarchOn_InviteOntoStage_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_WeHaveASpecialGuest)
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(RUPERT, AndWeMarchOn_WalkOntoStage)
+        applymovement(RUPERT, AndWeMarchOn_WalkOntoStage_Movement)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_RupertHereIsTheWinner)
         callnative(ClearMugshot)
@@ -120,7 +127,7 @@ script AndWeMarchOn_InviteOntoStage_Dialogue {
         msgbox(gText_AndWeMarchOn_Boo)
         msgbox(gText_AndWeMarchOn_LetsGo)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_ButThatsNotGoing)
         callnative(ClearMugshot)
@@ -131,7 +138,7 @@ script AndWeMarchOn_InviteOntoStage_Dialogue {
 }
 
 script AndWeMarchOn_StartCutsceneBattle_Script {
-    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_RupertAreYouReady)
         callnative(ClearMugshot)
@@ -139,13 +146,13 @@ script AndWeMarchOn_StartCutsceneBattle_Script {
         msgbox(gText_AndWeMarchOn_Yeah)
         closemessage
 
-        applymovement(MALVA, AndWeMarchOn_WalkToLeftSide)
-        applymovement(RUPERT, AndWeMarchOn_LookAroundCrowd)
+        applymovement(MALVA, AndWeMarchOn_WalkToLeftSide_Movement)
+        applymovement(RUPERT, AndWeMarchOn_LookAroundCrowd_Movement)
         waitmovement(0)
-        applymovement(RUPERT, Common_Movement_FaceLeft)
+        applymovement(RUPERT, Common_Movement_FaceLeft_Movement)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_LetsRock)
         callnative(ClearMugshot)
@@ -158,11 +165,11 @@ script AndWeMarchOn_StartCutsceneBattle_Script {
 }
 script AndWeMarchOn_CutsceneBattleScript {
 
-        applymovement(CAMERA,AndWeMarchOn_CenterBattleFrame)
+        applymovement(CAMERA,AndWeMarchOn_CenterBattleFrame_Movement)
         playse(SE_BALL_OPEN)
         playse(SE_BALL_OPEN)
         waitse
-        clearflag(FLAG_TEMP_1)
+        clearflag(FLAG_HIDE_MALVA_PKMN)
         addobject(PKMN1)
         addobject(PKMN2)
         playmoncry(SPECIES_GROUDON, CRY_MODE_ENCOUNTER)
@@ -173,7 +180,7 @@ script AndWeMarchOn_CutsceneBattleScript {
         playse(SE_BALL_OPEN)
         playse(SE_BALL_OPEN)
         waitse
-        clearflag(FLAG_TEMP_2)
+        clearflag(FLAG_HIDE_RUPERT_PKMN)
         addobject(PKMN3)
         addobject(PKMN4)
         playmoncry(SPECIES_AZUMARILL, CRY_MODE_ENCOUNTER)
@@ -183,14 +190,14 @@ script AndWeMarchOn_CutsceneBattleScript {
 
         msgbox(gText_AndWeMarchOn_AttackPatternSigma)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_HelpingHand)
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(PKMN1, AndWeMarchOn_Attack)
-        applymovement(PKMN2, AndWeMarchOn_Attack)
+        applymovement(PKMN1, AndWeMarchOn_Attack_Movement)
+        applymovement(PKMN2, AndWeMarchOn_Attack_Movement)
         waitmovement(0)
 
         //PSF TODO figure out how to flash screen back    
@@ -211,11 +218,11 @@ script AndWeMarchOn_CutsceneBattleScript {
 
 script AndWeMarchOn_PostBattle_Dialogue {
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_DamnThatsHow)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_LetsGiveItUp)
         closemessage
@@ -231,30 +238,30 @@ script AndWeMarchOn_PostBattle_Dialogue {
         removeobject(PKMN2)
         removeobject(PKMN3)
         removeobject(PKMN4)
-        applymovement(RUPERT, AndWeMarchOn_WalkOffStage)
+        applymovement(RUPERT, AndWeMarchOn_WalkOffStage_Movement)
         waitmovement(0)
         goto(AndWeMarchOn_PostBattleSpeech_Dialogue)
 }
 
 script AndWeMarchOn_PostBattleSpeech_Dialogue {
 
-    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_ItsBeenAWildYear)
 
         playse(SE_APPLAUSE) //PSF TODO: change to booing sound
         waitse
 
-        applymovement(MALVA, AndWeMarchOn_WalkToSouthStage)
+        applymovement(MALVA, AndWeMarchOn_WalkToSouthStage_Movement)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_OhItsNotAllBad)
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(MALVA, AndWeMarchOn_WalkToNorthStage)
+        applymovement(MALVA, AndWeMarchOn_WalkToNorthStage_Movement)
         waitmovement(0)
 
         msgbox(gText_AndWeMarchOn_Boo)
@@ -263,7 +270,7 @@ script AndWeMarchOn_PostBattleSpeech_Dialogue {
 
         msgbox(gText_AndWeMarchOn_GiveUsBackOur)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_ButHeyItsNot)
         callnative(ClearMugshot)
@@ -275,16 +282,16 @@ script AndWeMarchOn_PostBattleSpeech_Dialogue {
 
         msgbox(gText_AndWeMarchOn_WhatASlimeball)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_JustNotTheWay)
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(MALVA, AndWeMarchOn_GoBackToCenter)
+        applymovement(MALVA, AndWeMarchOn_GoBackToCenter_Movement)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_AndWeMarchOn_WeveGotAResponsibility)
         callnative(ClearMugshot)
@@ -300,9 +307,11 @@ script AndWeMarchOn_ParadeEnd_Script {
         waitse
         fadescreen(FADE_TO_BLACK)
         removeobject(MALVA)
-        removeobject(8)
-        setflag(FLAG_TEMP_3)
-        addvar(VAR_ROUTE108_STATE,1)
+        removeobject(PARADE_FLOAT_A)
+        removeobject(PARADE_FLOAT_B)
+        removeobject(PARADE_FLOAT_C)
+        setflag(FLAG_HIDE_PARADE)
+        setvar(VAR_HAIGHTASHBURY_STATE,PARADE_COMPLETE)
         special(ReturnCameraToPlayer)
         fadescreen(FADE_FROM_BLACK)
         savebgm(MUS_DUMMY)
@@ -431,41 +440,41 @@ text gText_AndWeMarchOn_WeveGotAResponsibility {
     format("We've got a responsibility here. The profit motive can not… WILL NOT erase our history. It lives on in our hearts. In our stories Our legends. And no corporation, Ycombinator or otherwise, can take that away from us!")
 }
 
-movement AndWeMarchOn_WatchParade {
+movement AndWeMarchOn_WatchParade_Movement{
     face_down
         step_end
 }
 
-movement AndWeMarchOn_PanCameraParadeStop {
+movement AndWeMarchOn_PanCameraParadeStop_Movement{
     walk_right * 14
     step_end
 }
 
-movement AndWeMarchOn_ParadeProcession {
+movement AndWeMarchOn_ParadeProcession_Movement{
     walk_right * 12
     step_end
 }
 
-movement AndWeMarchOn_WalkToBattle {
+movement AndWeMarchOn_WalkToBattle_Movement{
     walk_right * 4
         step_end
 }
 
-movement AndWeMarchOn_LookAroundCrowd {
+movement AndWeMarchOn_LookAroundCrowd_Movement{
     face_up
         delay_16
         face_down
         delay_16
         step_end
 }
-movement AndWeMarchOn_WalkToFloatCenter {
+movement AndWeMarchOn_WalkToFloatCenter_Movement{
     walk_right
         walk_right
         walk_down
         face_right
         step_end
 }
-movement AndWeMarchOn_PaceBackForth {
+movement AndWeMarchOn_PaceBackForth_Movement{
     walk_up * 2
         delay_16
         walk_down * 4
@@ -473,45 +482,45 @@ movement AndWeMarchOn_PaceBackForth {
         walk_up * 2
         step_end
 }
-movement AndWeMarchOn_WalkOntoStage {
+movement AndWeMarchOn_WalkOntoStage_Movement{
     walk_up * 3
         face_left
         step_end
 }
-movement AndWeMarchOn_WalkToLeftSide {
+movement AndWeMarchOn_WalkToLeftSide_Movement{
     walk_left
         face_right
         step_end
 }
-movement AndWeMarchOn_Attack {
+movement AndWeMarchOn_Attack_Movement{
     walk_fast_right
         walk_fast_right
         step_end
 }
-movement AndWeMarchOn_WalkOffStage {
+movement AndWeMarchOn_WalkOffStage_Movement{
     walk_down * 3
         face_up
         step_end
 }
-movement AndWeMarchOn_WalkToSouthStage {
+movement AndWeMarchOn_WalkToSouthStage_Movement{
     walk_right * 3
         step_end
 }
-movement AndWeMarchOn_WalkToNorthStage {
+movement AndWeMarchOn_WalkToNorthStage_Movement{
     walk_left * 6
         step_end
 }
-movement AndWeMarchOn_GoBackToCenter {
+movement AndWeMarchOn_GoBackToCenter_Movement{
     walk_right * 3
         face_down
         step_end
 }
-movement AndWeMarchOn_WalkCameraToParade {
+movement AndWeMarchOn_WalkCameraToParade_Movement{
     walk_left * 16
         walk_down * 2
         step_end
 }
-movement AndWeMarchOn_CenterBattleFrame {
+movement AndWeMarchOn_CenterBattleFrame_Movement{
     walk_right * 3
     walk_down
     step_end

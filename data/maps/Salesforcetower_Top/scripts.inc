@@ -1,2 +1,42 @@
 Salesforcetower_Top_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Salesforcetower_Top_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Salesforcetower_Top_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Salesforcetower_Top_ObjectVisibility_Script
+	return
+
+
+Salesforcetower_Top_ObjectVisibility_Script::
+	switch VAR_TOWER_RAID_STATE
+	case DEFEATED_BIANCA_SALESFORCETOWER, Salesforcetower_Top_ObjectVisibility_Script_3
+	case SAVE_ROSE_SALESFORCETOWER, Salesforcetower_Top_ObjectVisibility_Script_4
+	case DEFEATED_ROSE_SALESFORCETOWER, Salesforcetower_Top_ObjectVisibility_Script_5
+	call YouCantStopMe_ObjectCleanUp_Script
+Salesforcetower_Top_ObjectVisibility_Script_1:
+	return
+
+Salesforcetower_Top_ObjectVisibility_Script_3:
+	call YouCantStopMe_HideObject_Script
+	goto Salesforcetower_Top_ObjectVisibility_Script_1
+
+Salesforcetower_Top_ObjectVisibility_Script_4:
+	call YouCantStopMe_HideObject_Script
+	goto Salesforcetower_Top_ObjectVisibility_Script_1
+
+Salesforcetower_Top_ObjectVisibility_Script_5:
+	call YouCantStopMe_MoveObject_Script
+	goto Salesforcetower_Top_ObjectVisibility_Script_1
+
+
+Salesforcetower_Top_Rose_Event_Script::
+	lock
+	compare VAR_TOWER_RAID_STATE, STOPPED_BY_OAK
+	goto_if_eq Salesforcetower_Top_Rose_Event_Script_1
+	goto YouCantStopMe_StartBossBattle_Script
+	return
+
+Salesforcetower_Top_Rose_Event_Script_1:
+	goto YouCantStopMe_Confront_Dialogue
+	return
+

@@ -1,6 +1,8 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const OAK = 1
-const ROSE = 2
+const POLICE_A = 2
+const POLICE_B = 3
+const ROSE = 4
 
 const FLAG_HIDE_OAK= FLAG_TEMP_1
 const FLAG_HIDE_POLICE = FLAG_TEMP_2
@@ -22,9 +24,10 @@ script YouCantStopMe_MoveObject_Script {
 script YouCantStopMe_ObjectCleanUp_Script {
     call(YouCantStopMe_HideObject_Script)
     setflag(FLAG_HIDE_ROSE)
+    return
 }
 
-script YouCantStopMe_LocatePlayer_Script {
+script YouCantStopMe_MoveOakPlayer_Script{
         clearflag(FLAG_HIDE_OAK)
 
         playse(SE_EXIT)
@@ -32,28 +35,26 @@ script YouCantStopMe_LocatePlayer_Script {
 
         addobject(OAK)
 
-        getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-
-        switch(var(VAR_TEMP_1)){
-            case 5: applymovement(OAK,YouCantStopMe_WalkToPlayerY5)
-            case 6: applymovement(OAK,YouCantStopMe_WalkToPlayerY6)
-            case 7: applymovement(OAK,YouCantStopMe_WalkToPlayerY7)
-            case 8: applymovement(OAK,YouCantStopMe_WalkToPlayerY8)
-        }
-    waitmovement(OAK)
+        applymovement(OAK,Common_Movement_WalkDown)
+        fadescreen(FADE_TO_BLACK)
+        applymovement(OAK,Common_Movement_FaceRight)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        delay(30)
+        setobjectxy(OAK,5,7)
+        setobjectxy(PLAYER,6,7)
+        TeleportCamera(6,7)
+        fadescreen(FADE_FROM_BLACK)
 }
 
 script YouCantStopMe_LastChance_Dialogue {
     lock
-
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_YouCantStopMe_Wait)
         callnative(ClearMugshot)
         closemessage
 
-        applymovement(PLAYER,Common_Movement_FaceLeft)
-        call(YouCantStopMe_LocatePlayer_Script)
+        call(YouCantStopMe_MoveOakPlayer_Script)
 
         setvar(VAR_0x8000, MUGSHOT_LANCE)
         callnative(DrawMugshot)
@@ -105,20 +106,20 @@ script YouCantStopMe_LastChance_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(OAK,YouCantStopMe_LeaveFloor)
+        applymovement(OAK,YouCantStopMe_LeaveFloor_Movement)
         waitmovement(OAK)
         playse(SE_EXIT)
         waitse
         removeobject(OAK)
 
         setvar(VAR_TOWER_RAID_STATE,STOPPED_BY_OAK)
-
         release
         end
 }
 
 script YouCantStopMe_Confront_Dialogue {
-    playbgm(MUS_RG_ENCOUNTER_DEOXYS,TRUE)
+        lock
+        playbgm(MUS_RG_ENCOUNTER_DEOXYS,TRUE)
 
         setvar(VAR_0x8000, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
@@ -164,17 +165,17 @@ script YouCantStopMe_Confront_Dialogue {
 
         if (var(VAR_TEMP_0) != 15 || (var(VAR_TEMP_1) != 5)){
             fadescreen(FADE_TO_BLACK)
+                delay(30)
                 applymovement(ROSE,Common_Movement_FaceDown)
-                waitmovement(ROSE)
-                setobjectxy(ROSE,15,4)
                 applymovement(PLAYER,Common_Movement_FaceUp)
+                setobjectxy(ROSE,15,4)
                 setobjectxy(PLAYER,15,5)
                 TeleportCamera(15,5)
                 fadescreen(FADE_FROM_BLACK)
         }
 
-    applymovement(ROSE,Common_Movement_WalkDown)
-        applymovement(PLAYER,YouCantStopMe_WalkBackwards)
+        applymovement(ROSE,Common_Movement_WalkDown)
+        applymovement(PLAYER,YouCantStopMe_WalkBackwards_Movement)
         waitmovement(ROSE)
         waitmovement(PLAYER)
 
@@ -282,37 +283,13 @@ text gText_YouCantStopMe_WowGuessWeShould {
     format("Wow! Guess we should have taken you out sooner, huh?")
 }
 
-movement YouCantStopMe_WalkToPlayerY5 {
-    walk_down * 4
-        walk_right
-        step_end
-}
-
-movement YouCantStopMe_WalkToPlayerY6 {
-    walk_down * 5
-        walk_right
-        step_end
-}
-
-movement YouCantStopMe_WalkToPlayerY7 {
-    walk_down * 6
-        walk_right
-        step_end
-}
-
-movement YouCantStopMe_WalkToPlayerY8 {
-    walk_down * 7
-        walk_right
-        step_end
-}
-
-movement YouCantStopMe_LeaveFloor {
+movement YouCantStopMe_LeaveFloor_Movement{
     walk_left
         walk_up * 6
         step_end
 }
 
-movement YouCantStopMe_WalkBackwards {
+movement YouCantStopMe_WalkBackwards_Movement{
     lock_facing_direction
         walk_down
         unlock_facing_direction

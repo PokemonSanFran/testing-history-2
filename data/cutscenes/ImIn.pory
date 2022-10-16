@@ -13,32 +13,33 @@ const FLAG_HIDE_PKMN = FLAG_TEMP_2
 const FLAG_HIDE_TOWER_RAID_PARTY = FLAG_TEMP_2
 
 //On League Ops Floor
+const BIANCA = 4
+
 const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
 const FLAG_HIDE_OAK = FLAG_TEMP_2
 const FLAG_HIDE_BIANCA = FLAG_TEMP_3
 const FLAG_HIDE_ROSE = FLAG_TEMP_4
 const FLAG_HIDE_SABRINA = FLAG_TEMP_5
 const FLAG_HIDE_KOGA = FLAG_TEMP_6
-const BIANCA = 4
 
 script ImIn_HideObject_OutsideHouse_Script {
 
     setflag(FLAG_HIDE_PKMN)
-    if (var(VAR_STORYLINE_STATE) != STORY_BEFORE_SABRINA_BREAKIN || var(VAR_TOWER_RAID_STATE) != 0){
-        setflag(FLAG_HIDE_RAID)
-    }
+        if (var(VAR_STORYLINE_STATE) != STORY_BEFORE_SABRINA_BREAKIN || var(VAR_TOWER_RAID_STATE) != 0){
+            setflag(FLAG_HIDE_RAID)
+        }
 }
 
 script ImIn_PreBianca_Object_Script{
-    setflag(FLAG_HIDE_NERDS_COPS)
-    setflag(FLAG_HIDE_OAK)
-    setflag(FLAG_HIDE_ROSE)
-    setflag(FLAG_HIDE_SABRINA)
-    setflag(FLAG_HIDE_KOGA)
+        setflag(FLAG_HIDE_NERDS_COPS)
+        setflag(FLAG_HIDE_OAK)
+        setflag(FLAG_HIDE_ROSE)
+        setflag(FLAG_HIDE_SABRINA)
+        setflag(FLAG_HIDE_KOGA)
 
-    setobjectxy(BIANCA,6,56)
-    setobjectxyperm(BIANCA,6,56)
-    setobjectmovementtype(BIANCA,DIR_NORTH)
+        setobjectxy(BIANCA,6,56)
+        setobjectxyperm(BIANCA,6,56)
+        setobjectmovementtype(BIANCA,MOVEMENT_TYPE_FACE_UP)
 }
 
 script ImIn_SaveBianca_Object_Script{
@@ -50,11 +51,11 @@ script ImIn_SaveBianca_Object_Script{
 
     setobjectxy(BIANCA,7,53)
     setobjectxyperm(BIANCA,7,53)
-    setobjectmovementtype(BIANCA,DIR_WEST)
+    setobjectmovementtype(BIANCA,MOVEMENT_TYPE_FACE_LEFT)
 }
 
 script ImIn_RevealRoseWarp_Script{
-    if (var(VAR_TOWER_RAID_STATE) > DEFEATED_BIANCA_SALESFORCETOWER){
+    if (var(VAR_TOWER_RAID_STATE) > SAVE_BIANCA_SALESFORCETOWER){
         setmetatile(10,55,0x2DF,FALSE)
         special(DrawWholeMapView)
     }
@@ -484,6 +485,7 @@ script ImIn_OfficeReveal_Dialogue{
 
         applymovement(BIANCA,ImIn_WalkFromDesk_Movement)
         waitmovement(BIANCA)
+        applymovement(PLAYER,Common_Movement_FaceRight)
 
         call(Common_EventScript_SaveGame)
         closemessage
@@ -503,9 +505,12 @@ script ImIn_StartBiancaBattle_Script {
         goto(ImIn_BiancaDefeated_Dialogue)
 }
 
-script ImIn_InteractBiancaBattle_Script {
+script ImIn_InteractBiancaBattle_Script{
+    if(var(VAR_TOWER_RAID_STATE) == SAVE_BIANCA_SALESFORCETOWER){
     playbgm(MUS_ENCOUNTER_MAY,TRUE)
     goto(ImIn_StartBiancaBattle_Script)
+    }
+    return
 }
 
 script ImIn_BiancaDefeated_Dialogue {
@@ -534,11 +539,14 @@ script ImIn_BiancaDefeated_Dialogue {
         end
 }
 
-script ImIn_PostBiancaBattle_Interact_Dialogue {
-    setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
+script ImIn_PostBiancaBattle_Interact_Dialogue{
+    if(var(VAR_TOWER_RAID_STATE) == DEFEATED_BIANCA_SALESFORCETOWER){
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_AllThatTraining,MSGBOX_NPC)
         callnative(ClearMugshot)
+    }
+    return
 }
 
 script ImIn_InteractBianca_Event_Script {
