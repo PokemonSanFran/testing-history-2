@@ -1,8 +1,8 @@
 EnterChuck_Event_Script::
 	switch VAR_GYM_5_STATE
-	case 3, EnterChuck_Event_Script_2
-	case 4, EnterChuck_Event_Script_3
-	case 5, EnterChuck_Event_Script_4
+	case GYM_SAVE_BEFORE_LEADER, EnterChuck_Event_Script_2
+	case GYM_DEFEATED_LEADER, EnterChuck_Event_Script_3
+	case GYM_EXPLAINED_BADGE_AND_TM, EnterChuck_Event_Script_4
 	goto EnterChuck_Intro_Dialogue
 	return
 

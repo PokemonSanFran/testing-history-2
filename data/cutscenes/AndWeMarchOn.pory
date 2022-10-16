@@ -149,7 +149,7 @@ script AndWeMarchOn_StartCutsceneBattle_Script {
         applymovement(MALVA, AndWeMarchOn_WalkToLeftSide_Movement)
         applymovement(RUPERT, AndWeMarchOn_LookAroundCrowd_Movement)
         waitmovement(0)
-        applymovement(RUPERT, Common_Movement_FaceLeft_Movement)
+        applymovement(RUPERT, Common_Movement_FaceLeft)
         waitmovement(0)
 
         setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)

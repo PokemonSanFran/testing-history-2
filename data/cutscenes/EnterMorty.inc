@@ -20,25 +20,25 @@ EnterMorty_Event_Script_4:
 
 
 EnterMorty_MortyIntro_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_MORTY
+	setvar VAR_MUGSHOT, MUGSHOT_MORTY
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_SuhDude, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_MORTY
+	setvar VAR_MUGSHOT, MUGSHOT_MORTY
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_EvenBeenBattleResort, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_No, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_MORTY
+	setvar VAR_MUGSHOT, MUGSHOT_MORTY
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_BruhYouveGotta, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_OhUhSoundsCool, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_MORTY
+	setvar VAR_MUGSHOT, MUGSHOT_MORTY
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_ForRealISwear, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_SoundsExciting, MSGBOX_NPC
 	setvar VAR_GYM_4_STATE, GYM_SAVE_BEFORE_LEADER
@@ -49,7 +49,7 @@ EnterMorty_MortyIntro_Dialogue::
 
 
 EnterMorty_StartGymBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_MORTY
+	setvar VAR_MUGSHOT, MUGSHOT_MORTY
 	callnative DrawMugshot
 	trainerbattle_single TRAINER_FLANNERY_1, gText_EnterMorty_HaHaNoYeah, gText_EnterMorty_ImNotTrippin, EnterMorty_MortyDefeated_Script, NO_MUSIC
 	return
@@ -60,7 +60,7 @@ EnterMorty_MortyDefeated_Script::
 	setflag FLAG_BADGE04_GET
 	setflag FLAG_CONSTRUCTION_BREAKING_NEWS
 	setvar VAR_GYM_4_STATE, GYM_DEFEATED_LEADER
-	setvar VAR_0x8000, MUGSHOT_MORTY
+	setvar VAR_MUGSHOT, MUGSHOT_MORTY
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_ThatBattleWasHype, MSGBOX_NPC
 	msgbox gText_EnterMorty_BadgeGet
@@ -75,7 +75,7 @@ EnterMorty_MortyDefeated_Script::
 
 EnterMorty_PostDefeat1_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_MORTY
+	setvar VAR_MUGSHOT, MUGSHOT_MORTY
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_KeepingTheBabiesSafe, MSGBOX_NPC
 	callnative ClearMugshot
@@ -87,7 +87,7 @@ EnterMorty_PostDefeat1_Dialogue::
 
 EnterMorty_PostDefeat2_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_MORTY
+	setvar VAR_MUGSHOT, MUGSHOT_MORTY
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_HeadOutToHoenn, MSGBOX_NPC
 	callnative ClearMugshot

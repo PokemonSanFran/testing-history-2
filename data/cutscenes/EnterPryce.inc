@@ -6,9 +6,9 @@ EnterPryce_StartBattle_ObjectSetup_Script::
 
 EnterPryce_Event_Script::
 	switch VAR_GYM_7_STATE
-	case 3, EnterPryce_Event_Script_2
-	case 4, EnterPryce_Event_Script_3
-	case 5, EnterPryce_Event_Script_4
+	case GYM_SAVE_BEFORE_LEADER, EnterPryce_Event_Script_2
+	case GYM_DEFEATED_LEADER, EnterPryce_Event_Script_3
+	case GYM_EXPLAINED_BADGE_AND_TM, EnterPryce_Event_Script_4
 	goto EnterPryce_MumbleToSelf_Dialogue
 	return
 
@@ -26,25 +26,25 @@ EnterPryce_Event_Script_4:
 
 
 EnterPryce_MumbleToSelf_Dialogue::
-	setvar VAR_GYM_7_STATE, 3
-	setvar VAR_0x8000, MUGSHOT_PRYCE
+	setvar VAR_GYM_7_STATE, GYM_SAVE_BEFORE_LEADER
+	setvar VAR_MUGSHOT, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_StupidParade
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, EnterPryce_PaceLeftFrontOfDesk
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_PRYCE
+	setvar VAR_MUGSHOT, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_TheyJustDontUnderstand
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, EnterPryce_PaceRightFrontOfDesk
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_PRYCE
+	setvar VAR_MUGSHOT, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_LookIWasWilling
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_HeyYouSeemBusy
 	closemessage
@@ -54,7 +54,7 @@ EnterPryce_MumbleToSelf_Dialogue::
 	waitmovement 0
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_PRYCE
+	setvar VAR_MUGSHOT, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_ShitShitShit, MSGBOX_NPC
 	closemessage
@@ -176,10 +176,10 @@ EnterPryce_PlayerPosition16::
 
 
 EnterPsf7leader_ExplainLab_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_PRYCE
+	setvar VAR_MUGSHOT, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_SoBackHere
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_WaitDoesTheLeague
 	callnative ClearMugshot
@@ -190,7 +190,7 @@ EnterPsf7leader_ExplainLab_Dialogue::
 
 
 EnterPryce_FacePlayerBeforeBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_PRYCE
+	setvar VAR_MUGSHOT, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_IDontKnow, MSGBOX_NPC
 	closemessage
@@ -201,7 +201,7 @@ EnterPryce_FacePlayerBeforeBattle_Script::
 
 
 EnterPryce_StartBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_PRYCE
+	setvar VAR_MUGSHOT, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_IDontKnow
 	closemessage
@@ -215,7 +215,7 @@ EnterPryce_PostBattle_Script::
 	lock
 	setflag FLAG_BADGE07_GET
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_GYM_7_STATE, 1
+	setvar VAR_GYM_7_STATE, GYM_DEFEATED_LEADER
 	msgbox gText_EnterPryce_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM07
@@ -240,8 +240,8 @@ EnterPryce_MoveBacktoDesk_Script_1:
 
 EnterPryce_PostDefeat1_Dialogue::
 	lock
-	addvar VAR_GYM_7_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_PRYCE
+	setvar VAR_GYM_7_STATE, GYM_DEFEATED_LEADER
+	setvar VAR_MUGSHOT, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_TMAreLikeDrugs, MSGBOX_NPC
 	closemessage
@@ -254,7 +254,7 @@ EnterPryce_PostDefeat1_Dialogue::
 
 EnterPryce_PostDefeat2_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_PRYCE
+	setvar VAR_MUGSHOT, MUGSHOT_PRYCE
 	callnative DrawMugshot
 	msgbox gText_EnterPryce_LetsSee
 	closemessage

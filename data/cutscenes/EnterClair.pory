@@ -3,12 +3,12 @@ const CLAIR = 1
 
 script EnterClair_Event_Script {
     switch (var(VAR_GYM_8_STATE)) {
-        case 3:
+        case GYM_SAVE_BEFORE_LEADER:
             goto(EnterClair_FacePlayerBeforeBattle_Script)
 
-        case 4:
+        case GYM_DEFEATED_LEADER:
                 goto(EnterClair_PostGymBattle1_Dialogue)
-        case 5:
+        case GYM_EXPLAINED_BADGE_AND_TM:
                     goto(EnterClair_PostGymBattle2_Dialogue)
         default:
                     goto(EnterClair_AskAboutGym_Dialogue)
@@ -17,28 +17,28 @@ script EnterClair_Event_Script {
 
 script EnterClair_AskAboutGym_Dialogue {
 
-        setvar(VAR_GYM_8_STATE,3)
-        setvar(VAR_0x8000, MUGSHOT_CLAIR)
+        setvar(VAR_GYM_8_STATE,GYM_SAVE_BEFORE_LEADER)
+        setvar(VAR_MUGSHOT, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_SkatingAround,MSGBOX_NPC)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_ItsInteresting)
 
-        setvar(VAR_0x8000, MUGSHOT_CLAIR)
+        setvar(VAR_MUGSHOT, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_OhComeOn)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_WeirdItsWeird)
 
-        setvar(VAR_0x8000, MUGSHOT_CLAIR)
+        setvar(VAR_MUGSHOT, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_IveAlwaysSaid)
 
-        setvar(VAR_0x8000, MUGSHOT_CLAIR)
+        setvar(VAR_MUGSHOT, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_WhenIWasAwarded)
         callnative(ClearMugshot)
@@ -48,7 +48,7 @@ script EnterClair_AskAboutGym_Dialogue {
 }
 
 script EnterClair_FacePlayerBeforeBattle_Script {
-        setvar(VAR_0x8000, MUGSHOT_CLAIR)
+        setvar(VAR_MUGSHOT, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_ButTheyNeverWill,MSGBOX_NPC)
         closemessage
@@ -58,7 +58,7 @@ script EnterClair_FacePlayerBeforeBattle_Script {
 }
 
 script EnterClair_StartGymBattle_Script {
-        setvar(VAR_0x8000, MUGSHOT_CLAIR)
+        setvar(VAR_MUGSHOT, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_ButTheyNeverWill)
         closemessage
@@ -71,7 +71,7 @@ script EnterClair_ClairDeafeated_Script {
     lock
     setflag(FLAG_BADGE08_GET)
     addvar(VAR_STORYLINE_STATE,1)
-    addvar(VAR_GYM_8_STATE,1)
+    setvar(VAR_GYM_8_STATE,GYM_DEFEATED_LEADER)
     msgbox(gText_EnterClair_BadgeGet)
     call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM08)
@@ -83,8 +83,8 @@ script EnterClair_ClairDeafeated_Script {
 
 script EnterClair_PostGymBattle1_Dialogue {
     lock
-        setvar(VAR_GYM_8_STATE,5)
-        setvar(VAR_0x8000, MUGSHOT_CLAIR)
+        setvar(VAR_GYM_8_STATE,GYM_EXPLAINED_BADGE_AND_TM)
+        setvar(VAR_MUGSHOT, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_ThatTMwill,MSGBOX_NPC)
         closemessage
@@ -94,7 +94,7 @@ script EnterClair_PostGymBattle1_Dialogue {
 }
 script EnterClair_PostGymBattle2_Dialogue {
     lock
-        setvar(VAR_0x8000, MUGSHOT_CLAIR)
+        setvar(VAR_MUGSHOT, MUGSHOT_CLAIR)
         callnative(DrawMugshot)
         msgbox(gText_EnterClair_IGetSoEmotional,MSGBOX_NPC)
         closemessage

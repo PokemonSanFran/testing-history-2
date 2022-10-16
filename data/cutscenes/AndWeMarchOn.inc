@@ -1,7 +1,7 @@
 AndWeMarchOn_ObjectVisibility_Script::
-	switch VAR_ROUTE108_STATE
-	case 0, AndWeMarchOn_ObjectVisibility_Script_3
-	case 1, AndWeMarchOn_ObjectVisibility_Script_4
+	switch VAR_HAIGHTASHBURY_STATE
+	case PARADE_NOT_STARTED, AndWeMarchOn_ObjectVisibility_Script_3
+	case PARADE_COMPLETE, AndWeMarchOn_ObjectVisibility_Script_4
 AndWeMarchOn_ObjectVisibility_Script_1:
 	return
 
@@ -37,20 +37,19 @@ AndWeMarchOn_MoveCameraToParade_Script::
 
 AndWeMarchOn_StartParadeMovement_Script::
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, AndWeMarchOn_WatchParade
+	applymovement OBJ_EVENT_ID_PLAYER, AndWeMarchOn_WatchParade_Movement
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
 	call AndWeMarchOn_MoveCameraToParade_Script
 	setobjectxyperm 9, 26, 10
 	setobjectxy 9, 26, 10
-	setobjectxy 10, 30, 10
 	fadescreen FADE_FROM_BLACK
-	applymovement OBJ_EVENT_ID_CAMERA, AndWeMarchOn_PanCameraParadeStop
-	applymovement 5, AndWeMarchOn_ParadeProcession
-	applymovement 10, AndWeMarchOn_ParadeProcession
-	applymovement 9, AndWeMarchOn_ParadeProcession
-	applymovement 8, AndWeMarchOn_ParadeProcession
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	applymovement OBJ_EVENT_ID_CAMERA, AndWeMarchOn_PanCameraParadeStop_Movement
+	applymovement 5, AndWeMarchOn_ParadeProcession_Movement
+	applymovement 9, AndWeMarchOn_ParadeProcession_Movement
+	applymovement 8, AndWeMarchOn_ParadeProcession_Movement
+	applymovement 7, AndWeMarchOn_ParadeProcession_Movement
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_WowPeopleHere
 	callnative ClearMugshot
@@ -65,12 +64,12 @@ AndWeMarchOn_StartParadeMovement_Script::
 
 AndWeMarchOn_Opening_Dialogue::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, TRUE
-	applymovement 5, AndWeMarchOn_LookAroundCrowd
+	applymovement 5, AndWeMarchOn_LookAroundCrowd_Movement
 	waitmovement 0
 	playse SE_APPLAUSE
-	applymovement 5, AndWeMarchOn_WalkToFloatCenter
+	applymovement 5, AndWeMarchOn_WalkToFloatCenter_Movement
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_SanFran
 	callnative ClearMugshot
@@ -79,35 +78,35 @@ AndWeMarchOn_Opening_Dialogue::
 	waitse
 	playse SE_BANG
 	waitse
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_ThankYouForSupporting
 	callnative ClearMugshot
 	closemessage
 	playse SE_APPLAUSE
 	waitse
-	applymovement 5, AndWeMarchOn_PaceBackForth
+	applymovement 5, AndWeMarchOn_PaceBackForth_Movement
 	waitmovement 0
 	goto AndWeMarchOn_InviteOntoStage_Dialogue
 	return
 
 
 AndWeMarchOn_InviteOntoStage_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_WeHaveASpecialGuest
 	callnative ClearMugshot
 	closemessage
-	applymovement 6, AndWeMarchOn_WalkOntoStage
+	applymovement 6, AndWeMarchOn_WalkOntoStage_Movement
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_RupertHereIsTheWinner
 	callnative ClearMugshot
 	closemessage
 	msgbox gText_AndWeMarchOn_Boo
 	msgbox gText_AndWeMarchOn_LetsGo
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_ButThatsNotGoing
 	callnative ClearMugshot
@@ -118,19 +117,19 @@ AndWeMarchOn_InviteOntoStage_Dialogue::
 
 
 AndWeMarchOn_StartCutsceneBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_RupertAreYouReady
 	callnative ClearMugshot
 	msgbox gText_AndWeMarchOn_Woo
 	msgbox gText_AndWeMarchOn_Yeah
 	closemessage
-	applymovement 5, AndWeMarchOn_WalkToLeftSide
-	applymovement 6, AndWeMarchOn_LookAroundCrowd
+	applymovement 5, AndWeMarchOn_WalkToLeftSide_Movement
+	applymovement 6, AndWeMarchOn_LookAroundCrowd_Movement
 	waitmovement 0
 	applymovement 6, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_LetsRock
 	callnative ClearMugshot
@@ -142,7 +141,7 @@ AndWeMarchOn_StartCutsceneBattle_Script::
 
 
 AndWeMarchOn_CutsceneBattleScript::
-	applymovement OBJ_EVENT_ID_CAMERA, AndWeMarchOn_CenterBattleFrame
+	applymovement OBJ_EVENT_ID_CAMERA, AndWeMarchOn_CenterBattleFrame_Movement
 	playse SE_BALL_OPEN
 	playse SE_BALL_OPEN
 	waitse
@@ -164,13 +163,13 @@ AndWeMarchOn_CutsceneBattleScript::
 	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
 	waitmoncry
 	msgbox gText_AndWeMarchOn_AttackPatternSigma
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_HelpingHand
 	closemessage
 	callnative ClearMugshot
-	applymovement 1, AndWeMarchOn_Attack
-	applymovement 2, AndWeMarchOn_Attack
+	applymovement 1, AndWeMarchOn_Attack_Movement
+	applymovement 2, AndWeMarchOn_Attack_Movement
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
 	playse SE_M_THUNDERBOLT
@@ -188,10 +187,10 @@ AndWeMarchOn_CutsceneBattleScript::
 
 
 AndWeMarchOn_PostBattle_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_DamnThatsHow
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_LetsGiveItUp
 	closemessage
@@ -204,31 +203,31 @@ AndWeMarchOn_PostBattle_Dialogue::
 	removeobject 2
 	removeobject 3
 	removeobject 4
-	applymovement 6, AndWeMarchOn_WalkOffStage
+	applymovement 6, AndWeMarchOn_WalkOffStage_Movement
 	waitmovement 0
 	goto AndWeMarchOn_PostBattleSpeech_Dialogue
 	return
 
 
 AndWeMarchOn_PostBattleSpeech_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_ItsBeenAWildYear
 	playse SE_APPLAUSE
 	waitse
-	applymovement 5, AndWeMarchOn_WalkToSouthStage
+	applymovement 5, AndWeMarchOn_WalkToSouthStage_Movement
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_OhItsNotAllBad
 	callnative ClearMugshot
 	closemessage
-	applymovement 5, AndWeMarchOn_WalkToNorthStage
+	applymovement 5, AndWeMarchOn_WalkToNorthStage_Movement
 	waitmovement 0
 	msgbox gText_AndWeMarchOn_Boo
 	msgbox gText_AndWeMarchOn_FuckTheseGuys
 	msgbox gText_AndWeMarchOn_GiveUsBackOur
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_ButHeyItsNot
 	callnative ClearMugshot
@@ -236,14 +235,14 @@ AndWeMarchOn_PostBattleSpeech_Dialogue::
 	msgbox gText_AndWeMarchOn_Traitor
 	msgbox gText_AndWeMarchOn_DownWith
 	msgbox gText_AndWeMarchOn_WhatASlimeball
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_JustNotTheWay
 	callnative ClearMugshot
 	closemessage
-	applymovement 5, AndWeMarchOn_GoBackToCenter
+	applymovement 5, AndWeMarchOn_GoBackToCenter_Movement
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_AndWeMarchOn_WeveGotAResponsibility
 	callnative ClearMugshot
@@ -258,9 +257,11 @@ AndWeMarchOn_ParadeEnd_Script::
 	waitse
 	fadescreen FADE_TO_BLACK
 	removeobject 5
+	removeobject 9
 	removeobject 8
+	removeobject 7
 	setflag FLAG_TEMP_3
-	addvar VAR_ROUTE108_STATE, 1
+	setvar VAR_HAIGHTASHBURY_STATE, PARADE_COMPLETE
 	special ReturnCameraToPlayer
 	fadescreen FADE_FROM_BLACK
 	savebgm MUS_DUMMY
@@ -269,11 +270,11 @@ AndWeMarchOn_ParadeEnd_Script::
 	end
 
 
-AndWeMarchOn_WatchParade:
+AndWeMarchOn_WatchParade_Movement:
 	face_down
 	step_end
 
-AndWeMarchOn_PanCameraParadeStop:
+AndWeMarchOn_PanCameraParadeStop_Movement:
 	walk_right
 	walk_right
 	walk_right
@@ -290,7 +291,7 @@ AndWeMarchOn_PanCameraParadeStop:
 	walk_right
 	step_end
 
-AndWeMarchOn_ParadeProcession:
+AndWeMarchOn_ParadeProcession_Movement:
 	walk_right
 	walk_right
 	walk_right
@@ -305,28 +306,28 @@ AndWeMarchOn_ParadeProcession:
 	walk_right
 	step_end
 
-AndWeMarchOn_WalkToBattle:
+AndWeMarchOn_WalkToBattle_Movement:
 	walk_right
 	walk_right
 	walk_right
 	walk_right
 	step_end
 
-AndWeMarchOn_LookAroundCrowd:
+AndWeMarchOn_LookAroundCrowd_Movement:
 	face_up
 	delay_16
 	face_down
 	delay_16
 	step_end
 
-AndWeMarchOn_WalkToFloatCenter:
+AndWeMarchOn_WalkToFloatCenter_Movement:
 	walk_right
 	walk_right
 	walk_down
 	face_right
 	step_end
 
-AndWeMarchOn_PaceBackForth:
+AndWeMarchOn_PaceBackForth_Movement:
 	walk_up
 	walk_up
 	delay_16
@@ -339,37 +340,37 @@ AndWeMarchOn_PaceBackForth:
 	walk_up
 	step_end
 
-AndWeMarchOn_WalkOntoStage:
+AndWeMarchOn_WalkOntoStage_Movement:
 	walk_up
 	walk_up
 	walk_up
 	face_left
 	step_end
 
-AndWeMarchOn_WalkToLeftSide:
+AndWeMarchOn_WalkToLeftSide_Movement:
 	walk_left
 	face_right
 	step_end
 
-AndWeMarchOn_Attack:
+AndWeMarchOn_Attack_Movement:
 	walk_fast_right
 	walk_fast_right
 	step_end
 
-AndWeMarchOn_WalkOffStage:
+AndWeMarchOn_WalkOffStage_Movement:
 	walk_down
 	walk_down
 	walk_down
 	face_up
 	step_end
 
-AndWeMarchOn_WalkToSouthStage:
+AndWeMarchOn_WalkToSouthStage_Movement:
 	walk_right
 	walk_right
 	walk_right
 	step_end
 
-AndWeMarchOn_WalkToNorthStage:
+AndWeMarchOn_WalkToNorthStage_Movement:
 	walk_left
 	walk_left
 	walk_left
@@ -378,14 +379,14 @@ AndWeMarchOn_WalkToNorthStage:
 	walk_left
 	step_end
 
-AndWeMarchOn_GoBackToCenter:
+AndWeMarchOn_GoBackToCenter_Movement:
 	walk_right
 	walk_right
 	walk_right
 	face_down
 	step_end
 
-AndWeMarchOn_WalkCameraToParade:
+AndWeMarchOn_WalkCameraToParade_Movement:
 	walk_left
 	walk_left
 	walk_left
@@ -406,7 +407,7 @@ AndWeMarchOn_WalkCameraToParade:
 	walk_down
 	step_end
 
-AndWeMarchOn_CenterBattleFrame:
+AndWeMarchOn_CenterBattleFrame_Movement:
 	walk_right
 	walk_right
 	walk_right

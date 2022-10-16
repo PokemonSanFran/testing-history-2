@@ -71,7 +71,7 @@ script AssholesHome_PostBattle_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_AssholesHome_ILikeBeingPushed)
 
-        if (var(VAR_SALESFORCETOWER_PRODUCTION_STATE) == POST_ALWAYS_WATCHING_WAZOWSKI)
+        if (var(VAR_SALESFORCETOWER_PRODUCTION_STATE) == POST_ALWAYS_WATCHING_WAZOWSKI){
             setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_AssholesHome_ISawThatYoure)

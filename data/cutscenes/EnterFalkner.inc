@@ -6,10 +6,8 @@ EnterFalkner_StartGymBattle_ObjectSetup_Script::
 
 EnterFalkner_PutMeatInOven_Dialogue::
 	lockall
-	addvar VAR_GYM_1_STATE, 1
-	addvar VAR_GYM_1_STATE, 1
-	addvar VAR_GYM_1_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_FALKNER
+	setvar VAR_GYM_1_STATE, GYM_SAVE_BEFORE_LEADER
+	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterFalkner_OneMoreLadle
 	callnative ClearMugshot
@@ -19,7 +17,7 @@ EnterFalkner_PutMeatInOven_Dialogue::
 	applymovement 1, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	closemessage
-	setvar VAR_0x8000, MUGSHOT_FALKNER
+	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterFalkner_MeatsInOven, MSGBOX_NPC
 	callnative ClearMugshot
@@ -53,7 +51,7 @@ EnterFalkner_DetermineMovementToBattlefield_Script_5:
 
 EnterFalkner_Intro_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_FALKNER
+	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterFalkner_MyLatestCreation
 	msgbox gText_EnterFalkner_YourSenseOfTaste
@@ -66,7 +64,7 @@ EnterFalkner_Intro_Dialogue::
 
 EnterFalkner_StartGymBattle_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	trainerbattle_single TRAINER_ROXANNE_1, gText_EnterFalkner_IThinkYouTalk, gText_EnterFalkner_WoahSuperSour, EnterFalkner_FalknerDefeated_Script, NO_MUSIC
 	return
@@ -76,14 +74,14 @@ EnterFalkner_FalknerDefeated_Script::
 	lockall
 	setflag FLAG_BADGE01_GET
 	setvar VAR_GYM_1_STATE, GYM_DEFEATED_LEADER
-	setvar VAR_0x8000, MUGSHOT_FALKNER
+	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterFalkner_ThatWasDelicious
 	callnative ClearMugshot
 	msgbox gText_EnterFalkner_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM01
-	setvar VAR_0x8000, MUGSHOT_FALKNER
+	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterFalkner_OhTheMeat
 	callnative ClearMugshot
@@ -110,8 +108,8 @@ EnterFalkner_DetermineMovementBackToStove_Script_1:
 
 EnterFalkner_PostDefeat1_Dialogue::
 	lockall
-	addvar VAR_GYM_1_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_FALKNER
+	setvar VAR_GYM_1_STATE, GYM_DEFEATED_LEADER
+	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterFalkner_WithThatBadge, MSGBOX_NPC
 	callnative ClearMugshot
@@ -124,7 +122,7 @@ EnterFalkner_PostDefeat1_Dialogue::
 
 EnterFalkner_PostDefeat2_Dialogue::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_FALKNER
+	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
 	callnative DrawMugshot
 	msgbox gText_EnterFalkner_LetsCookTogether
 	callnative ClearMugshot

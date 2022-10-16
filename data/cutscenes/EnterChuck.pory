@@ -3,11 +3,11 @@ const CHUCK = 1
 
 script EnterChuck_Event_Script {
     switch (var (VAR_GYM_5_STATE)) {
-    case 3:
+    case GYM_SAVE_BEFORE_LEADER:
         goto(EnterChuck_StartBattle_Script)
-    case 4:
+    case GYM_DEFEATED_LEADER:
         goto(EnterChuck_PostDefeat1_Dialogue)
-    case 5:
+    case GYM_EXPLAINED_BADGE_AND_TM:
         goto(EnterChuck_PostDefeat2_Dialogue)
     default:
         goto(EnterChuck_Intro_Dialogue)

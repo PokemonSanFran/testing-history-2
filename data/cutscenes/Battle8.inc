@@ -11,7 +11,7 @@ Battle8_StartBattle_ObjectSetUp_Script::
 
 Battle8_ArcherWalksOut_Script::
 	lock
-	addvar VAR_ROUTE109_STATE, 1
+	setvar VAR_BATTLE_8_STATE, SAVE_ARCHER_PAINTEDLADIES
 	opendoor 19, 13
 	waitdooranim
 	clearflag FLAG_TEMP_1
@@ -26,15 +26,13 @@ Battle8_ArcherWalksOut_Script_1:
 	closedoor 19, 13
 	waitdooranim
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Battle8_HellYesSRank
 	closemessage
 	callnative ClearMugshot
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark
-	waitmovement 0
 	applymovement 1, Common_Movement_FaceRight
 	waitmovement 0
 	goto Battle8_ExplainAttraction_Dialogue
@@ -46,22 +44,22 @@ Battle8_ArcherWalksOut_Script_2:
 
 
 Battle8_ExplainAttraction_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Battle8_YouKnowIWasInGoodMood
 	compare VAR_TEMP_0, 26
 	goto_if_eq Battle8_ExplainAttraction_Dialogue_2
 Battle8_ExplainAttraction_Dialogue_1:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Battle8_GreatToSeeYouToo
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Battle8_PrimaryAttraction
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Battle8_SoWhatsTheChallenge
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Battle8_TheSistersAreExperts
 	callnative ClearMugshot
@@ -80,7 +78,7 @@ Battle8_ExplainAttraction_Dialogue_2:
 
 Battle8_StartBattle_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Battle8_YouTalkALot
 	closemessage
@@ -93,7 +91,7 @@ Battle8_StartBattle_Script::
 Battle8_InteractBattle_Script::
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Battle8_YouTalkALot, MSGBOX_NPC
 	closemessage
@@ -105,18 +103,18 @@ Battle8_InteractBattle_Script::
 
 Battle8_ArcherDefeated_Dialogue::
 	lock
-	addvar VAR_ROUTE109_STATE, 1
+	setvar VAR_BATTLE_8_STATE, DEFEATED_ARCHER_PAINTEDLADIES
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Battle8_YouKnowItDoesnt
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Battle8_YeahThatsPart
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Battle8_WhatSituation
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Battle8_NotJustLikeMe
 	closemessage

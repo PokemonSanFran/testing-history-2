@@ -1,8 +1,8 @@
 EnterClair_Event_Script::
 	switch VAR_GYM_8_STATE
-	case 3, EnterClair_Event_Script_2
-	case 4, EnterClair_Event_Script_3
-	case 5, EnterClair_Event_Script_4
+	case GYM_SAVE_BEFORE_LEADER, EnterClair_Event_Script_2
+	case GYM_DEFEATED_LEADER, EnterClair_Event_Script_3
+	case GYM_EXPLAINED_BADGE_AND_TM, EnterClair_Event_Script_4
 	goto EnterClair_AskAboutGym_Dialogue
 	return
 
@@ -20,23 +20,23 @@ EnterClair_Event_Script_4:
 
 
 EnterClair_AskAboutGym_Dialogue::
-	setvar VAR_GYM_8_STATE, 3
-	setvar VAR_0x8000, MUGSHOT_CLAIR
+	setvar VAR_GYM_8_STATE, GYM_SAVE_BEFORE_LEADER
+	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterClair_SkatingAround, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterClair_ItsInteresting
-	setvar VAR_0x8000, MUGSHOT_CLAIR
+	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterClair_OhComeOn
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterClair_WeirdItsWeird
-	setvar VAR_0x8000, MUGSHOT_CLAIR
+	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterClair_IveAlwaysSaid
-	setvar VAR_0x8000, MUGSHOT_CLAIR
+	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterClair_WhenIWasAwarded
 	callnative ClearMugshot
@@ -47,7 +47,7 @@ EnterClair_AskAboutGym_Dialogue::
 
 
 EnterClair_FacePlayerBeforeBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_CLAIR
+	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterClair_ButTheyNeverWill, MSGBOX_NPC
 	closemessage
@@ -58,7 +58,7 @@ EnterClair_FacePlayerBeforeBattle_Script::
 
 
 EnterClair_StartGymBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_CLAIR
+	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterClair_ButTheyNeverWill
 	closemessage
@@ -72,7 +72,7 @@ EnterClair_ClairDeafeated_Script::
 	lock
 	setflag FLAG_BADGE08_GET
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_GYM_8_STATE, 1
+	setvar VAR_GYM_8_STATE, GYM_DEFEATED_LEADER
 	msgbox gText_EnterClair_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM08
@@ -83,8 +83,8 @@ EnterClair_ClairDeafeated_Script::
 
 EnterClair_PostGymBattle1_Dialogue::
 	lock
-	setvar VAR_GYM_8_STATE, 5
-	setvar VAR_0x8000, MUGSHOT_CLAIR
+	setvar VAR_GYM_8_STATE, GYM_EXPLAINED_BADGE_AND_TM
+	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterClair_ThatTMwill, MSGBOX_NPC
 	closemessage
@@ -95,7 +95,7 @@ EnterClair_PostGymBattle1_Dialogue::
 
 EnterClair_PostGymBattle2_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_CLAIR
+	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
 	callnative DrawMugshot
 	msgbox gText_EnterClair_IGetSoEmotional, MSGBOX_NPC
 	closemessage

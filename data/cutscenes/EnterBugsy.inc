@@ -1,39 +1,35 @@
 EnterBugsy_BugsyIntro_Dialogue::
-	addvar VAR_GYM_2_STATE, 1
-	addvar VAR_GYM_2_STATE, 1
-	addvar VAR_GYM_2_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_BUGSY
+	setvar VAR_GYM_2_STATE, GYM_SAVE_BEFORE_LEADER
+	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_ReachingTheSummit, MSGBOX_NPC
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_BUGSY
+	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_TotallyWornOut
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_YeahFromOrre
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_BUGSY
+	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_ManyMountainsLikeSinnoh
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_BUGSY
+	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_EverythingIsSoFlat
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_HikedUpAMountain
 	callnative ClearMugshot
 	applymovement 1, Common_Movement_FaceAwayPlayer
-	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BUGSY
+	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_ThisCheapImitation
 	callnative ClearMugshot
 	applymovement 1, Common_Movement_FacePlayer
-	waitmovement 0
 	call Common_EventScript_SaveGame
 	closemessage
 	goto EnterBugsy_StartGymBattle_Script
@@ -41,7 +37,7 @@ EnterBugsy_BugsyIntro_Dialogue::
 
 
 EnterBugsy_StartGymBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_BUGSY
+	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
 	trainerbattle_single TRAINER_BRAWLY_1, gText_EnterBugsy_EnGarde, gText_EnterBugsy_ItsAnHonorToLose, EnterBugsy_BugsyDefeated_Script, NO_MUSIC
 	return
@@ -51,8 +47,8 @@ EnterBugsy_BugsyDefeated_Script::
 	lockall
 	setflag FLAG_BADGE02_GET
 	setvar VAR_BUGSY_STATE, BATTLE_1_COMPLETE
-	addvar VAR_GYM_2_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_BUGSY
+	setvar VAR_GYM_2_STATE, GYM_DEFEATED_LEADER
+	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_ExploitedMyMistakes
 	callnative ClearMugshot
@@ -67,9 +63,9 @@ EnterBugsy_BugsyDefeated_Script::
 
 
 EnterBugsy_PostDefeat1_Dialogue::
-	addvar VAR_GYM_2_STATE, 1
+	setvar VAR_GYM_2_STATE, GYM_EXPLAINED_BADGE_AND_TM
 	lockall
-	setvar VAR_0x8000, MUGSHOT_BUGSY
+	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_TradedPokemonUpTo, MSGBOX_NPC
 	callnative ClearMugshot
@@ -80,7 +76,7 @@ EnterBugsy_PostDefeat1_Dialogue::
 
 EnterBugsy_PostDefeat2_Dialogue::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_BUGSY
+	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
 	callnative DrawMugshot
 	msgbox gText_EnterBugsy_NextTimeWeBattle, MSGBOX_NPC
 	callnative ClearMugshot

@@ -16,7 +16,7 @@ ThereCanOnlyBeOne_LoadFromSave_Script_2:
 
 ThereCanOnlyBeOne_PlayerMonologue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ThereCanOnlyBe_AlmostPackedAndReady
 	msgbox gText_ThereCanOnlyBe_ButTheRulesSay
@@ -199,6 +199,7 @@ ThereCanOnlyBeOne_StarterSelectConfirm_Script_14:
 
 
 ThereCanOnlyBeOne_StarterSelectEnd_Script::
+	setflag FLAG_SYS_B_DASH
 	givecustommon SPECIES_GRENINJA, 100, ITEM_LEFTOVERS, ITEM_LURE_BALL, NATURE_MODEST, 2, 0, 0, 4, 252, 0, 252, 31, 31, 31, 31, 31, 31, MOVE_SURF, MOVE_CALM_MIND, MOVE_SPLASH, MOVE_ICE_BEAM
 	givecustommon SPECIES_PANGORO, 100, ITEM_CHOICE_BAND, ITEM_POKE_BALL, NATURE_ADAMANT, 2, 0, 252, 0, 252, 0, 4, 31, 31, 31, 31, 31, 31, MOVE_POISON_JAB, MOVE_DRAIN_PUNCH, MOVE_SUPERPOWER, MOVE_THUNDER_PUNCH
 	setflag FLAG_SYS_POKEMON_GET

@@ -1,6 +1,6 @@
 BeachBattle_ObjectVisibility_Script::
 	switch VAR_BEACH_BATTLE_STATE
-	case 0, BeachBattle_ObjectVisibility_Script_3
+	case NOT_SEEN_BIANCA_BEACH, BeachBattle_ObjectVisibility_Script_3
 	case SAVE_BIANCA_BEACH, BeachBattle_ObjectVisibility_Script_4
 	call BeachBattle_ObjectSetUp_Script
 BeachBattle_ObjectVisibility_Script_1:
@@ -26,7 +26,7 @@ BeachBattle_BattleSetUp_Script::
 
 BeachBattle_BiancaWalkToPlayer::
 	lock
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_HeyPlayer
 	closemessage
@@ -39,36 +39,36 @@ BeachBattle_BiancaWalkToPlayer::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	applymovement 1, BeachBattle_ApproachFromSouth
 	waitmovement 0
-	goto BeachBattle_Archer_Event_Script
+	goto BeachBattle_Bianca_Event_Script
 	return
 
 
 BeachBattle_Interact_Script::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	faceplayer
-	goto BeachBattle_Archer_Event_Script
+	goto BeachBattle_Bianca_Event_Script
 	return
 
 
-BeachBattle_Archer_Event_Script::
+BeachBattle_Bianca_Event_Script::
 	switch VAR_BEACH_BATTLE_STATE
-	case 0, BeachBattle_Archer_Event_Script_2
-	case SAVE_BIANCA_BEACH, BeachBattle_Archer_Event_Script_3
+	case NOT_SEEN_BIANCA_BEACH, BeachBattle_Bianca_Event_Script_2
+	case SAVE_BIANCA_BEACH, BeachBattle_Bianca_Event_Script_3
 	return
 
-BeachBattle_Archer_Event_Script_2:
+BeachBattle_Bianca_Event_Script_2:
 	goto BeachBattle_Approach_Dialogue
 	return
 
-BeachBattle_Archer_Event_Script_3:
+BeachBattle_Bianca_Event_Script_3:
 	goto BeachBattle_StartBattle_Script
 	return
 
 
 BeachBattle_Approach_Dialogue::
-	setvar VAR_BEACH_BATTLE_STATE, 1
+	setvar VAR_BEACH_BATTLE_STATE, SAVE_BIANCA_BEACH
 	setobjectxyperm 1, 10, 24
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_ImHeadingNorth
 	special GetNumberOfBadges
@@ -105,7 +105,7 @@ BeachBattle_Approach_Dialogue_7:
 
 BeachBattle_SevenBadges_Dialogue::
 	msgbox gText_BeachBattle_OhNiceLastOne
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_JustTheOneIn
 	goto BeachBattle_SaveProgress
@@ -114,7 +114,7 @@ BeachBattle_SevenBadges_Dialogue::
 
 BeachBattle_FourBadges_Dialogue::
 	msgbox gText_BeachBattle_ImNotSureThatSlow
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_IveBeenALittleDistracted
 	goto BeachBattle_SaveProgress
@@ -131,7 +131,7 @@ BeachBattle_SaveProgress::
 
 BeachBattle_StartBattle_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_MyBrainIsScrambled
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_MUDKIP, gText_BeachBattle_ImLegitShook
@@ -145,11 +145,11 @@ BeachBattle_PostBattle_Dialogue::
 	lock
 	addvar VAR_STORYLINE_STATE, 1
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	addvar VAR_BEACH_BATTLE_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_BEACH_BATTLE_STATE, POST_BEACH_BATTLE
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_WellImNotSurprised
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_BeachBattle_UghIShouldBe
 	goto_if_set FLAG_BADGE05_GET, BeachBattle_PostBattle_Dialogue_2

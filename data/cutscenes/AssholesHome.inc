@@ -10,7 +10,6 @@ AssholesHome_WalkToPlayer_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	playse SE_PIN
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
-	waitmovement 0
 	applymovement 3, AssholesHomes_WalkToPlayer_Movement
 	waitmovement 0
 	goto AssholesHome_Archer_Dialogue
@@ -21,8 +20,8 @@ AssholesHome_BattleEvent_Script::
 	lock
 	faceplayer
 	switch VAR_ALAMEDA_STATE
-	case 0, AssholesHome_BattleEvent_Script_2
-	case 1, AssholesHome_BattleEvent_Script_3
+	case HAS_NOT_ENCOUNTERED_ARCHER, AssholesHome_BattleEvent_Script_2
+	case SAVE_ARCHER_ALAMEDA, AssholesHome_BattleEvent_Script_3
 	return
 
 AssholesHome_BattleEvent_Script_2:
@@ -35,11 +34,11 @@ AssholesHome_BattleEvent_Script_3:
 
 
 AssholesHome_Archer_Dialogue::
-	addvar VAR_ALAMEDA_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_ALAMEDA_STATE, SAVE_ARCHER_ALAMEDA
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_JudgingFromSwarm
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_ReallyHopingLastTime
 	callnative ClearMugshot
@@ -51,10 +50,10 @@ AssholesHome_Archer_Dialogue::
 
 AssholesHome_StartBattle_Script::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_JustCurious
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_IDoubtYoureGoing
 	closemessage
@@ -66,17 +65,17 @@ AssholesHome_StartBattle_Script::
 
 AssholesHome_PostBattle_Dialogue::
 	lockall
-	addvar VAR_ALAMEDA_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_ALAMEDA_STATE, DEFEATED_ARCHER_ALAMEDA
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_SoMuchForThe
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_NameInsteadOf
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_ILikeBeingPushed
-	compare VAR_SALESFORCETOWER_2F_STATE, 2
+	compare VAR_SALESFORCETOWER_PRODUCTION_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
 	goto_if_eq AssholesHome_PostBattle_Dialogue_2
 AssholesHome_PostBattle_Dialogue_1:
 	callnative ClearMugshot
@@ -90,13 +89,13 @@ AssholesHome_PostBattle_Dialogue_1:
 	end
 
 AssholesHome_PostBattle_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_ISawThatYoure
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_YoureRightItsHypocritical
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AssholesHome_WhatAWeirdKid
 	goto AssholesHome_PostBattle_Dialogue_1

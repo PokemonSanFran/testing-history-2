@@ -8,11 +8,11 @@ script EnterPryce_StartBattle_ObjectSetup_Script {
 
 script EnterPryce_Event_Script {
     switch (var (VAR_GYM_7_STATE)) {
-    case 3:
+    case GYM_SAVE_BEFORE_LEADER:
         goto(EnterPryce_FacePlayerBeforeBattle_Script)
-    case 4:
+    case GYM_DEFEATED_LEADER:
         goto(EnterPryce_PostDefeat1_Dialogue)
-    case 5:
+    case GYM_EXPLAINED_BADGE_AND_TM:
         goto(EnterPryce_PostDefeat2_Dialogue)
     default:
         goto(EnterPryce_MumbleToSelf_Dialogue)
@@ -20,8 +20,8 @@ script EnterPryce_Event_Script {
 }
 
 script EnterPryce_MumbleToSelf_Dialogue {
-    setvar(VAR_GYM_7_STATE, 3)
-    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+    setvar(VAR_GYM_7_STATE, GYM_SAVE_BEFORE_LEADER)
+    setvar(VAR_MUGSHOT, MUGSHOT_PRYCE)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_StupidParade)
     closemessage
@@ -29,7 +29,7 @@ script EnterPryce_MumbleToSelf_Dialogue {
     applymovement(PRYCE, EnterPryce_PaceLeftFrontOfDesk)
     waitmovement(0)
 
-    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_PRYCE)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_TheyJustDontUnderstand)
     closemessage
@@ -38,11 +38,11 @@ script EnterPryce_MumbleToSelf_Dialogue {
     applymovement(PRYCE, EnterPryce_PaceRightFrontOfDesk)
     waitmovement(0)
 
-    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_PRYCE)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_LookIWasWilling)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_HeyYouSeemBusy)
     closemessage
@@ -54,7 +54,7 @@ script EnterPryce_MumbleToSelf_Dialogue {
     applymovement(PRYCE, Common_Movement_FaceDown)
     waitmovement(0)
 
-    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_PRYCE)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_ShitShitShit, MSGBOX_NPC)
     closemessage
@@ -133,11 +133,11 @@ script EnterPryce_PlayerPosition16 {
 }
 
 script EnterPsf7leader_ExplainLab_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_PRYCE)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_SoBackHere)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_WaitDoesTheLeague)
     callnative(ClearMugshot)
@@ -147,7 +147,7 @@ script EnterPsf7leader_ExplainLab_Dialogue {
 }
 
 script EnterPryce_FacePlayerBeforeBattle_Script {
-    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_PRYCE)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_IDontKnow, MSGBOX_NPC)
     closemessage
@@ -157,7 +157,7 @@ script EnterPryce_FacePlayerBeforeBattle_Script {
 }
 
 script EnterPryce_StartBattle_Script {
-    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_PRYCE)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_IDontKnow)
     closemessage
@@ -170,7 +170,7 @@ script EnterPryce_PostBattle_Script {
     lock
     setflag(FLAG_BADGE07_GET)
     addvar(VAR_STORYLINE_STATE, 1)
-    addvar(VAR_GYM_7_STATE, 1)
+    setvar(VAR_GYM_7_STATE,GYM_DEFEATED_LEADER)
     msgbox(gText_EnterPryce_BadgeGet)
     call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM07)
@@ -193,8 +193,8 @@ script EnterPryce_MoveBacktoDesk_Script {
 
 script EnterPryce_PostDefeat1_Dialogue {
     lock
-    addvar(VAR_GYM_7_STATE, 1)
-    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+    setvar(VAR_GYM_7_STATE,GYM_DEFEATED_LEADER)
+    setvar(VAR_MUGSHOT, MUGSHOT_PRYCE)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_TMAreLikeDrugs,MSGBOX_NPC)
     closemessage
@@ -207,7 +207,7 @@ script EnterPryce_PostDefeat1_Dialogue {
 
 script EnterPryce_PostDefeat2_Dialogue {
     lock
-    setvar(VAR_0x8000, MUGSHOT_PRYCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_PRYCE)
     callnative(DrawMugshot)
     msgbox(gText_EnterPryce_LetsSee)
     closemessage

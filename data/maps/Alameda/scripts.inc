@@ -44,7 +44,7 @@ Alameda_ObjectVisibility_Script_3:
 	goto Alameda_ObjectVisibility_Script_1
 
 Alameda_ObjectVisibility_Script_4:
-	goto SurvivalChance333_HideObject_Alameda_Script
+	call SurvivalChance333_HideObject_Alameda_Script
 	goto Alameda_ObjectVisibility_Script_1
 
 Alameda_ObjectVisibility_Script_5:
@@ -52,7 +52,7 @@ Alameda_ObjectVisibility_Script_5:
 	goto Alameda_ObjectVisibility_Script_1
 
 Alameda_ObjectVisibility_Script_6:
-	goto WhyAreYouHelpingThem_ObjectDebriefSetUp_Script
+	call WhyAreYouHelpingThem_ObjectDebriefSetUp_Script
 	goto Alameda_ObjectVisibility_Script_1
 
 Alameda_ObjectVisibility_Script_7:
@@ -108,7 +108,7 @@ Alameda_ChooseFerryDestination_Script::
 
 Alameda_UnlockedDestinations_Script::
 	switch VAR_FERRY_STATE
-	case 0, Alameda_UnlockedDestinations_Script_2
+	case FERRY_DEFAULT, Alameda_UnlockedDestinations_Script_2
 	case FERRY_ALAMEDA_AVAILABLE, Alameda_UnlockedDestinations_Script_3
 	case FERRY_ALCATRAZ_AVAILABLE, Alameda_UnlockedDestinations_Script_4
 	return

@@ -20,7 +20,7 @@ script AaandWereBack_ObjectHide_Script {
 }
 
 script Act1_1_Check_Script {
-    if (var(VAR_STORYLINE_STATE) == STORY_WEST_SANFRAN_COMPLETE)
+    if (var(VAR_STORYLINE_STATE) == STORY_WEST_SANFRAN_COMPLETE){
         call(AaandWereBack_Monologue)
     }
 }

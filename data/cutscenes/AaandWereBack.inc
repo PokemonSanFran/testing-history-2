@@ -22,7 +22,7 @@ AaandWereBack_ObjectHide_Script_2:
 
 
 Act1_1_Check_Script::
-	compare VAR_STORYLINE_STATE, 9
+	compare VAR_STORYLINE_STATE, STORY_WEST_SANFRAN_COMPLETE
 	goto_if_eq Act1_1_Check_Script_1
 	return
 
@@ -33,7 +33,7 @@ Act1_1_Check_Script_1:
 
 AaandWereBack_Monologue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_GotAllThree
 	callnative ClearMugshot
@@ -44,7 +44,7 @@ AaandWereBack_Monologue::
 
 
 AaandWereBack_WarpToCompound_Script::
-	addvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setvar VAR_PLAYER_HOME_STATE, FINISHED_1_1
 	msgbox gText_AaandWereBack_Question, MSGBOX_YESNO
 	closemessage
 	compare VAR_RESULT, YES
@@ -52,27 +52,27 @@ AaandWereBack_WarpToCompound_Script::
 	return
 
 AaandWereBack_WarpToCompound_Script_1:
-	warpsilent MAP_SOUTHBAY, 255, 3, 10
+	warpsilent MAP_SOUTHBAY_COMPOUND_1F, 0
 	return
 
 
 AaandWereBack_Bianca_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_WhatsYourProgress, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_OnlyThree
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_YeahThatBusted
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_INeedToFigure
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_HardToComeBy
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_ImSureIllFigure
 	callnative ClearMugshot
@@ -81,27 +81,27 @@ AaandWereBack_Bianca_Dialogue::
 
 
 AaandWereBack_FerryRepaired_Dialogue::
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_FERRY_FIXED
 	msgbox gText_AaandWereBack_OpeningMessage, MSGBOX_POKENAV
 	waitmessage
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_ThatsDifferent
 	callnative ClearMugshot
 	pokenavcall gText_AaandWereBack_FerryMessage
 	waitmessage
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_TooBadTheresNoFerry
 	callnative ClearMugshot
-	compare VAR_FAINTED_FOG_STATE, 1
-	goto_if_gt AaandWereBack_FerryRepaired_Dialogue_2
+	compare VAR_FAINTED_FOG_STATE, DEFEATED_IN_FOG
+	goto_if_eq AaandWereBack_FerryRepaired_Dialogue_2
 AaandWereBack_FerryRepaired_Dialogue_1:
 	closemessage
 	return
 
 AaandWereBack_FerryRepaired_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_AaandWereBack_FindAWayThrough
 	callnative ClearMugshot
