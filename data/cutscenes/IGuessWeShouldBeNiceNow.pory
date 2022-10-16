@@ -40,9 +40,9 @@ script IGuessWeShouldBeNiceNow_ObjectSetup_Script {
 script IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script {
     lock
     faceplayer
-    switch (var(VAR_ROUTE114_STATE)){
-        case 2: goto(IGuessWeShouldBeNiceNow_AskPlayer_Script)
-        case 5: goto(IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue)
+    switch (var(VAR_ROBINWILLIAMSTUNNEL_STATE)){
+        case BIANCA_EXPLAINED_PUZZLE: goto(IGuessWeShouldBeNiceNow_AskPlayer_Script)
+        case PUZZLE_2_SOLVED: goto(IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue)
     }
 }
 
@@ -94,7 +94,7 @@ script IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue {
         msgbox(gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze)
         callnative(ClearMugshot)
         closemessage
-        addvar(VAR_ROUTE114_STATE,1) //Bianca is just asking if player is ready to go
+        setvar(VAR_ROBINWILLIAMSTUNNEL_STATE,BIANCA_EXPLAINED_PUZZLE)
         goto (IGuessWeShouldBeNiceNow_AskPlayer_Script)
 }
 
@@ -121,7 +121,7 @@ script IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue {
 }
 
 script IGuessWeShouldBeNiceNow_StartPuzzle_Script {
-    addvar(VAR_ROUTE114_STATE,1) //bianca in maze, first puzzle unsolved
+        setvar(VAR_ROBINWILLIAMSTUNNEL_STATE,BIANCA_EXPLAINED_PUZZLE)
         lock
         callnative(ClearMugshot)
         closemessage
@@ -144,8 +144,7 @@ script IGuessWeShouldBeNiceNow_StartPuzzle_Script {
 }
 
 script IGuessWeShouldBeNiceNow_SolvedPuzzleA {
-
-    addvar(VAR_ROUTE114_STATE,1) //first puzzle solved
+        setvar(VAR_ROBINWILLIAMSTUNNEL_STATE,PUZZLE_1_SOLVED)
         playse(SE_SWITCH)
         waitse
 
@@ -161,7 +160,7 @@ script IGuessWeShouldBeNiceNow_SolvedPuzzleA {
 }
 
 script IGuessWeShouldBeNiceNow_SolvedPuzzleB {
-    addvar(VAR_ROUTE114_STATE,1) //second puzzle solved, pokemon ready to kick your ass
+        setvar(VAR_ROBINWILLIAMSTUNNEL_STATE,PUZZLE_2_SOLVED)
         playse(SE_SWITCH)
         waitse
         fadescreen(FADE_TO_BLACK)
@@ -257,7 +256,7 @@ script IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue {
 }
 
 script IGuessWeShouldBeNiceNow_ClearBossPokemon_Script {
-    addvar(VAR_ROUTE114_STATE,1) 
+        setvar(VAR_ROBINWILLIAMSTUNNEL_STATE,SIEBOLD_BOSS_DEFEATED)
     lock
         closemessage
         fadescreenswapbuffers(FADE_TO_BLACK)
@@ -343,7 +342,7 @@ script IGuessWeShouldBeNiceNow_HidePopup_Script{
 script IGuessWeShouldBeNiceNow_ExitCave_Script {
     //PSF TODO The map name popup shows up for a second before disappearing, need to figure out why that happens
     lock
-    addvar(VAR_ROUTE115_STATE,1)
+    setvar(VAR_MARIN_STATE,ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED)
     playse(SE_EXIT)
     waitse
     clearflag(FLAG_TEMP_3)
@@ -356,7 +355,7 @@ script IGuessWeShouldBeNiceNow_ExitCave_Script {
 
 script IGuessWeShouldBeNiceNow_End_Dialogue {
     //PSF TODO move to inside of the airbnb behind a sleep script    
-    addvar(VAR_ROUTE116_STATE,1)    
+        setvar(VAR_MUIRWOODS_STATE,BIANCA_WAITING_MUIRWOODS)
 
         setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)

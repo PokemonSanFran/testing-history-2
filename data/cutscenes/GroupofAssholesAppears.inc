@@ -109,7 +109,7 @@ GroupOfAssholesAppears_PlayerIntervene_Dialogue::
 	waitmovement 0
 	msgbox gText_GroupOfAssholesAppears_HeMightBeAsking
 	callnative ClearMugshot
-	addvar VAR_GROUP_OF_ASSHOLES_STATE, 1
+	setvar VAR_GROUP_OF_ASSHOLES_STATE, SAVE_TEAMROCKET_FISHERMANSWHARF
 	call Common_EventScript_SaveGame
 	closemessage
 	goto GroupOfAssholes_StartBattle_Script
@@ -148,7 +148,7 @@ GroupOfAssholes_StartBattle_Script::
 
 GroupOfAssholesAppears_GroupLeaves_Dialogue::
 	lockall
-	addvar VAR_GROUP_OF_ASSHOLES_STATE, 1
+	setvar VAR_GROUP_OF_ASSHOLES_STATE, PLAYER_HAS_DEFEATED_TEAM_ROCKET
 	msgbox gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent
 	msgbox gText_GroupOfAssholesAppears_YouBothMakeMeSick
 	closemessage
@@ -216,7 +216,7 @@ GroupOfAssholesAppears_GiveRewards_Dialogue::
 GroupOfAssholesAppears_LookForXanax_Dialogue::
 	lockall
 	applymovement 7, GroupOfAssholesAppears_LookAround_Movement
-	compare VAR_GROUP_OF_ASSHOLES_STATE, 1
+	compare VAR_GROUP_OF_ASSHOLES_STATE, SAVE_TEAMROCKET_FISHERMANSWHARF
 	goto_if_eq GroupOfAssholesAppears_LookForXanax_Dialogue_2
 	msgbox gText_GroupOfAssholesAppears_WhereDidIPut
 GroupOfAssholesAppears_LookForXanax_Dialogue_1:

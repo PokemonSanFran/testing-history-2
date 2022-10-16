@@ -44,9 +44,9 @@ IGuessWeShouldBeNiceNow_PostCleanUp_Script::
 IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script::
 	lock
 	faceplayer
-	switch VAR_ROUTE114_STATE
-	case 2, IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script_2
-	case 5, IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script_3
+	switch VAR_ROBINWILLIAMSTUNNEL_STATE
+	case BIANCA_EXPLAINED_PUZZLE, IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script_2
+	case PUZZLE_2_SOLVED, IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script_3
 	return
 
 IGuessWeShouldBeNiceNow_BiancaInteract_Event_Script_2:
@@ -95,7 +95,7 @@ IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue::
 	msgbox gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_ROUTE114_STATE, 1
+	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, BIANCA_EXPLAINED_PUZZLE
 	goto IGuessWeShouldBeNiceNow_AskPlayer_Script
 	return
 
@@ -125,7 +125,7 @@ IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue::
 
 
 IGuessWeShouldBeNiceNow_StartPuzzle_Script::
-	addvar VAR_ROUTE114_STATE, 1
+	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, BIANCA_EXPLAINED_PUZZLE
 	lock
 	callnative ClearMugshot
 	closemessage
@@ -146,7 +146,7 @@ IGuessWeShouldBeNiceNow_StartPuzzle_Script::
 
 
 IGuessWeShouldBeNiceNow_SolvedPuzzleA::
-	addvar VAR_ROUTE114_STATE, 1
+	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, PUZZLE_1_SOLVED
 	playse SE_SWITCH
 	waitse
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
@@ -161,7 +161,7 @@ IGuessWeShouldBeNiceNow_SolvedPuzzleA::
 
 
 IGuessWeShouldBeNiceNow_SolvedPuzzleB::
-	addvar VAR_ROUTE114_STATE, 1
+	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, PUZZLE_2_SOLVED
 	playse SE_SWITCH
 	waitse
 	fadescreen FADE_TO_BLACK
@@ -253,7 +253,7 @@ IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue::
 
 
 IGuessWeShouldBeNiceNow_ClearBossPokemon_Script::
-	addvar VAR_ROUTE114_STATE, 1
+	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, SIEBOLD_BOSS_DEFEATED
 	lock
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
@@ -334,7 +334,7 @@ IGuessWeShouldBeNiceNow_HidePopup_Script_1:
 
 IGuessWeShouldBeNiceNow_ExitCave_Script::
 	lock
-	addvar VAR_ROUTE115_STATE, 1
+	setvar VAR_MARIN_STATE, ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED
 	playse SE_EXIT
 	waitse
 	clearflag FLAG_TEMP_3
@@ -347,7 +347,7 @@ IGuessWeShouldBeNiceNow_ExitCave_Script::
 
 
 IGuessWeShouldBeNiceNow_End_Dialogue::
-	addvar VAR_ROUTE116_STATE, 1
+	setvar VAR_MUIRWOODS_STATE, BIANCA_WAITING_MUIRWOODS
 	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming

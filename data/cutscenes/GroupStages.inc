@@ -147,7 +147,7 @@ GroupStages_PostRoundRobinMatch_Script::
 	addvar VAR_CHASECENTER_TOURNAMENT_STATE, 1
 	special LoadPlayerParty
 	special HealPlayerParty
-	compare VAR_CHASECENTER_TOURNAMENT_STATE, 4
+	compare VAR_CHASECENTER_TOURNAMENT_STATE, PRE_BATTLE_4
 	goto_if_eq GroupStages_PostRoundRobinMatch_Script_2
 GroupStages_PostRoundRobinMatch_Script_1:
 	msgbox gText_GroupStages_Placeholder

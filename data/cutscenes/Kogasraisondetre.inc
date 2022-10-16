@@ -34,12 +34,12 @@ KogaRaisonDetre_KidsMeetPlayer_Dialogue::
 	msgbox gText_KogaRaisonDetre_MaybeTheyllSign
 	msgbox gText_KogaRaisonDetre_ShutUp
 	msgbox gText_KogaRaisonDetre_ShowUsHowYouTookDown
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_AllRightAllRight
 	applymovement 3, KogaRaisonDetre_WalkIntoFoyer
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_YouDontWantToScare
 	callnative ClearMugshot
@@ -47,7 +47,7 @@ KogaRaisonDetre_KidsMeetPlayer_Dialogue::
 	closemessage
 	applymovement 1, KogaRaisonDetre_RunUpstairs
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_SorryAboutThat
 	callnative ClearMugshot
@@ -66,31 +66,31 @@ KogaRaisonDetre_KidsMeetPlayer_Dialogue::
 KogaRaisonDetre_CityDiscussion_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, KogaRaisonDetre_WalkFromEntrance
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_YourHouseIsBeautiful
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ItWasImportantToMe
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ButItsHardToJustify
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_IveBeenStruggling
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ItsBeenSaidThat
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ToughToBeAround
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ICompletelyUnderstand
 	closemessage
 	applymovement 3, KogaRaisonDetre_WalkTowardsLiving
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ItsMuchEasier
 	closemessage
@@ -106,7 +106,7 @@ KogaRaisonDetre_CityDiscussion_Dialogue::
 
 KogaRaisonDetre_ComeSit_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ComeSit, MSGBOX_NPC
 	callnative ClearMugshot
@@ -118,7 +118,7 @@ KogaRaisonDetre_ComeSit_Dialogue::
 
 KogaRaisonDetre_InteractAtTable_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_IPickedOut
 	closemessage
@@ -130,52 +130,52 @@ KogaRaisonDetre_InteractAtTable_Script::
 KogaRaisonDetre_Wine_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_HowMuch
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ThatLastPartIsImportant
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_Shareholders
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_YeahTheCorporate
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_WhatDoYouMean
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_DoYouKnowHow
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_IsntItMostly
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_UsedToBe
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_WoahWaitBigger
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_PeopleLoveBattles
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_TheBroadcasts
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_MyKidsBeingObsessed
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_WereGoingToMake
 	callnative ClearMugshot
 	applymovement 3, Common_Movement_FaceAwayPlayer
 	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_IPray
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_WhatWasThat
 	callnative ClearMugshot
@@ -183,7 +183,7 @@ KogaRaisonDetre_Wine_Dialogue::
 	playse SE_DING_DONG
 	waitfanfare
 	msgbox gText_KogaRaisonDetre_DinnerIsServed
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_AhLetsEat
 	closemessage
@@ -204,7 +204,7 @@ KogaRaisonDetre_StartDinner_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, WalkToTableFromRight
 KogaRaisonDetre_StartDinner_Script_1:
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_WereHonoredToHaveYou
 	callnative ClearMugshot
@@ -252,7 +252,7 @@ KogaRaisonDetre_DinnerConversation_Dialogue::
 
 
 KogaRaisonDetre_RunToWork_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_SorryThatsMyPhone
 	callnative ClearMugshot
@@ -264,24 +264,24 @@ KogaRaisonDetre_RunToWork_Dialogue::
 	delay 32
 	applymovement 3, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ShitTheresAnUrgent
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, KogaRaisonDetre_KissKids
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_WaitIThoughtThat
 	callnative ClearMugshot
 	msgbox gText_KogaRaisonDetre_YeahItDoes
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_What
 	callnative ClearMugshot
 	msgbox gText_KogaRaisonDetre_TonOfMoneyInWarp
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_OhDamnYouWerent
 	callnative ClearMugshot
@@ -318,7 +318,7 @@ KogaRaisonDetre_NewsStory_Script::
 	msgbox gText_KogaRaisonDetre_IsThereSobAnyhingElse
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_AreYouOkay
 	callnative ClearMugshot
@@ -337,7 +337,7 @@ KogaRaisonDetre_NewsStory_Script::
 
 KogaRaisonDetre_PreventPlayerLeaving_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_HasBeenSoGenerous
 	callnative ClearMugshot

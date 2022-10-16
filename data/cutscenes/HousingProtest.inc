@@ -269,8 +269,7 @@ HousingProtest_InteractLandlord_Script::
 	lock
 	compare VAR_PSFROUTE63_STATE, DEFEATED_TEAMROCKET_PSFROUTE63
 	goto_if_lt HousingProtest_InteractLandlord_Script_2
-	compare VAR_TEMP_4, 3
-	goto_if_ne HousingProtest_InteractLandlord_Script_3
+	goto_if_set FLAG_TEMP_1F, HousingProtest_InteractLandlord_Script_3
 	msgbox gText_HousingProtest_ShouldHireThatSecurity, MSGBOX_NPC
 HousingProtest_InteractLandlord_Script_1:
 	closemessage
@@ -287,7 +286,7 @@ HousingProtest_InteractLandlord_Script_3:
 
 
 HousingProtest_InteractLandlord_Dialogue::
-	addvar VAR_TEMP_4, 1
+	setflag FLAG_TEMP_1F
 	msgbox gText_HousingProtest_HasATendency, MSGBOX_NPC
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot

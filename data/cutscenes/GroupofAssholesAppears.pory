@@ -105,7 +105,7 @@ script GroupOfAssholesAppears_PlayerIntervene_Dialogue {
         waitmovement(0)
         msgbox(gText_GroupOfAssholesAppears_HeMightBeAsking)
         callnative(ClearMugshot)
-        addvar(VAR_GROUP_OF_ASSHOLES_STATE,1)
+        setvar(VAR_GROUP_OF_ASSHOLES_STATE,SAVE_TEAMROCKET_FISHERMANSWHARF)
         call(Common_EventScript_SaveGame)
         closemessage
         goto(GroupOfAssholes_StartBattle_Script)
@@ -141,7 +141,7 @@ script GroupOfAssholes_StartBattle_Script {
 
 script GroupOfAssholesAppears_GroupLeaves_Dialogue {
         lockall
-        addvar(VAR_GROUP_OF_ASSHOLES_STATE,1)
+        setvar(VAR_GROUP_OF_ASSHOLES_STATE,PLAYER_HAS_DEFEATED_TEAM_ROCKET)
         msgbox(gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent)
         msgbox(gText_GroupOfAssholesAppears_YouBothMakeMeSick)
         closemessage
@@ -208,7 +208,7 @@ script GroupOfAssholesAppears_LookForXanax_Dialogue {
         lockall
         applymovement(DAVID,GroupOfAssholesAppears_LookAround_Movement)
         
-        if (var(VAR_GROUP_OF_ASSHOLES_STATE) == 1)   {
+        if (var(VAR_GROUP_OF_ASSHOLES_STATE) == SAVE_TEAMROCKET_FISHERMANSWHARF)   {
             msgbox(gText_GroupOfAssholesAppears_Cries)
         }else{
             msgbox(gText_GroupOfAssholesAppears_WhereDidIPut)

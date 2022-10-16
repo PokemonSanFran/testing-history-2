@@ -48,7 +48,7 @@ Finals_StartSemifinals_Script::
 	msgbox gText_GroupStages_Placeholder
 	closemessage
 	trainerbattle_no_intro TRAINER_HALLE, gText_GroupStages_Placeholder
-	addvar VAR_ROUTE119_STATE, 1
+	setvar VAR_CHASECENTER_TOURNAMENT_STATE, PRE_BATTLE_5
 	call GroupStages_RoundRobinGroupComplete_Script
 	return
 

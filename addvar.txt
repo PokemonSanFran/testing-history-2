@@ -1,8 +1,3 @@
-Finals:52:        addvar(VAR_ROUTE119_STATE,1)
-GroupofAssholesAppears:108:        addvar(VAR_GROUP_OF_ASSHOLES_STATE,1)
-GroupofAssholesAppears:144:        addvar(VAR_GROUP_OF_ASSHOLES_STATE,1)
-GroupofAssholesAppears:201:        addvar(VAR_STORYLINE_STATE,1)
-GroupStages:132:        addvar(VAR_CHASECENTER_TOURNAMENT_STATE,1)
 HaveYouSeenTheNews:7:    addvar(VAR_MUIRWOODS_STATE, POST_HAVE_YOU_SEEN_THE_NEWS)
 HousingProtest:208:    addvar(VAR_STORYLINE_STATE, 1)
 HousingProtest:264:    addvar(VAR_TEMP_4,1)

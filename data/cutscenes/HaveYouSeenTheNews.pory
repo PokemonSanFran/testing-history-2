@@ -4,7 +4,7 @@ const SIEBOLD = 2
 const OAK = 3
 
 script HaveYouSeenTheNews_AskHelp_Dialogue {
-    addvar(VAR_MUIRWOODS_STATE, POST_HAVE_YOU_SEEN_THE_NEWS)
+    setvar(VAR_MUIRWOODS_STATE, POST_HAVE_YOU_SEEN_THE_NEWS)
     setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM)
     lockall
 

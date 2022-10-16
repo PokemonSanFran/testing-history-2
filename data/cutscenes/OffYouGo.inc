@@ -75,7 +75,7 @@ OffYouGo_WakeUp_Dialogue::
 
 OffYouGo_WelcomeParty_Dialogue::
 	setvar VAR_GOLDENGATEBRIDGE_STATE, POST_OFF_YOU_GO
-	setvar VAR_ROBINWILLIAMSTUNNEL, BIANCA_INSIDE_TUNNEL
+	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, BIANCA_INSIDE_TUNNEL
 	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_WelcomeToTheParty

@@ -154,7 +154,7 @@
 #define VAR_ROUTE113_STATE                               0x406C // Unused Var
 #define VAR_GOLDENGATEBRIDGE_STATE           0x406C
 #define VAR_ROUTE114_STATE                               0x406D // Unused Var
-#define VAR_ROBINWILLIAMSTUNNEL              0x406D 
+#define VAR_ROBINWILLIAMSTUNNEL_STATE              0x406D 
 #define VAR_ROUTE115_STATE                               0x406E // Unused Var
 #define VAR_MARIN_STATE                      0x406E
 #define VAR_ROUTE116_STATE                               0x406F

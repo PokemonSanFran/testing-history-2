@@ -4,6 +4,7 @@ const VITOMIR = 11 //FLAG_TEMP_1
 const TURTONATOR = 13 //FLAG_TEMP_2
 const LANDLORD = 12 //FLAG_TEMP_3
 const ARIANA = 14 //FLAG_TEMP_4
+const FLAG_TALKED_LANDLORD = FLAG_TEMP_1F
 
 script HousingProtest_ObjectSetUp_Script {
     setflag(FLAG_TEMP_1)
@@ -249,7 +250,7 @@ script HousingProtest_InteractLandlord_Script {
     
     if (var (VAR_PSFROUTE63_STATE) < DEFEATED_TEAMROCKET_PSFROUTE63){
         msgbox(gText_HousingProtest_OhGod, MSGBOX_NPC)
-    } elif (var (VAR_TEMP_4) != 3) {
+    } elif (flag (FLAG_TALKED_LANDLORD)){
         call(HousingProtest_InteractLandlord_Dialogue)
     } else {
         msgbox(gText_HousingProtest_ShouldHireThatSecurity, MSGBOX_NPC)
@@ -261,7 +262,7 @@ script HousingProtest_InteractLandlord_Script {
 }
 
 script HousingProtest_InteractLandlord_Dialogue {
-    addvar(VAR_TEMP_4,1)
+    setflag(FLAG_TALKED_LANDLORD)
 
     msgbox(gText_HousingProtest_HasATendency, MSGBOX_NPC)
     setvar(VAR_MUGSHOT, MUGSHOT_HILDA)

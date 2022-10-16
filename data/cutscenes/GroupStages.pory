@@ -133,7 +133,7 @@ script GroupStages_PostRoundRobinMatch_Script {
         special(LoadPlayerParty)
         special(HealPlayerParty)
 
-        if (var(VAR_CHASECENTER_TOURNAMENT_STATE) == 4){
+        if (var(VAR_CHASECENTER_TOURNAMENT_STATE) == PRE_BATTLE_4){
             goto(GroupStages_RoundRobinGroupComplete_Script)
         }
 
