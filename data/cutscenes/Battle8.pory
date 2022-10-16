@@ -1,22 +1,25 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ARCHER = 1
+const FLAG_HIDE_ARCHER = FLAG_TEMP_1
 
 script Battle8_SetUpObject_Script {
-    setflag(FLAG_TEMP_1)
+    setflag(FLAG_HIDE_ARCHER)
+    return
 }
 
 script Battle8_StartBattle_ObjectSetUp_Script {
     setobjectxyperm(ARCHER,19,16)
-        setobjectxy(ARCHER,19,16)
+    setobjectxy(ARCHER,19,16)
+    return
 }
 
 
 script Battle8_ArcherWalksOut_Script {
     lock
-    addvar(VAR_ROUTE109_STATE,1)
+        setvar(VAR_BATTLE_8_STATE,SAVE_ARCHER_PAINTEDLADIES)
         opendoor(19, 13)
         waitdooranim
-        clearflag(FLAG_TEMP_1)
+        clearflag(FLAG_HIDE_ARCHER)
         addobject(ARCHER)
         playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
         applymovement(ARCHER,Battle8_WalkOutOfHouse)
@@ -25,14 +28,13 @@ script Battle8_ArcherWalksOut_Script {
         if (var(VAR_TEMP_0) != 26){
             applymovement(PLAYER,Battle8_GetOutOfWay)
         }
+        waitmovement(0)
 
-    waitmovement(0)
         closedoor(19,13)
         waitdooranim
         applymovement(PLAYER,Common_Movement_FaceLeft)
-        waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_HellYesSRank)
         closemessage
@@ -40,7 +42,6 @@ script Battle8_ArcherWalksOut_Script {
 
         playse(SE_PIN)
         applymovement(ARCHER,Common_Movement_ExclamationMark)
-        waitmovement(0)
         applymovement(ARCHER,Common_Movement_FaceRight)
         waitmovement(0)
 
@@ -49,7 +50,7 @@ script Battle8_ArcherWalksOut_Script {
 }
 
 script Battle8_ExplainAttraction_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_YouKnowIWasInGoodMood)
 
@@ -60,19 +61,19 @@ script Battle8_ExplainAttraction_Dialogue {
                 waitmovement(0)
         }
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_GreatToSeeYouToo)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_PrimaryAttraction)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_SoWhatsTheChallenge)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_TheSistersAreExperts)
         callnative(ClearMugshot)
@@ -85,7 +86,7 @@ script Battle8_ExplainAttraction_Dialogue {
 script Battle8_StartBattle_Script {
 
     lock
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_YouTalkALot)
         closemessage
@@ -99,7 +100,7 @@ script Battle8_InteractBattle_Script {
 
     playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
         lock
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_YouTalkALot,MSGBOX_NPC)
         closemessage
@@ -112,21 +113,22 @@ script Battle8_InteractBattle_Script {
 script Battle8_ArcherDefeated_Dialogue {
 
     lock
-        addvar(VAR_ROUTE109_STATE,1)
+        setvar(VAR_BATTLE_8_STATE,DEFEATED_ARCHER_PAINTEDLADIES)
         addvar(VAR_STORYLINE_STATE,1)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_YouKnowItDoesnt)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_YeahThatsPart)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_WhatSituation)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_Battle8_NotJustLikeMe)
         closemessage
@@ -139,7 +141,7 @@ script Battle8_ArcherDefeated_Dialogue {
                 applymovement(PLAYER,Common_Movement_FaceUp)
         }
 
-    applymovement(ARCHER,Battle8_WalkToTheWest)
+        applymovement(ARCHER,Battle8_WalkToTheWest)
         waitmovement(0)
         removeobject(ARCHER)
         fadedefaultbgm
