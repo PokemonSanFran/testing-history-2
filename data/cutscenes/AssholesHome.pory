@@ -1,10 +1,14 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ARCHER = 3
 
+const FLAG_HIDE_ARCHER = FLAG_TEMP_1
+const FLAG_HIDE_ARIANA = FLAG_TEMP_3
+const FLAG_HIDE_ELITE4 = FLAG_TEMP_4
+
 script AssholesHome_HideObject_Script {
-    setflag(FLAG_TEMP_1)
-    setflag(FLAG_TEMP_3)
-    setflag(FLAG_TEMP_4)
+    setflag(FLAG_HIDE_ARCHER)
+    setflag(FLAG_HIDE_ARIANA)
+    setflag(FLAG_HIDE_ELITE4)
 }
 
 script AssholesHome_WalkToPlayer_Script {
@@ -12,7 +16,6 @@ script AssholesHome_WalkToPlayer_Script {
         applymovement(PLAYER,Common_Movement_ExclamationMark)
         playse(SE_PIN)
         playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
-        waitmovement(0)
         applymovement(ARCHER,AssholesHomes_WalkToPlayer_Movement)
         waitmovement(0)
         goto(AssholesHome_Archer_Dialogue)
@@ -22,17 +25,17 @@ script AssholesHome_BattleEvent_Script {
         lock
         faceplayer
     switch(var(VAR_ALAMEDA_STATE)) {
-        case 0: goto(AssholesHome_Archer_Dialogue)
-        case 1: goto(AssholesHome_StartBattle_Script)
+        case HAS_NOT_ENCOUNTERED_ARCHER: goto(AssholesHome_Archer_Dialogue)
+        case SAVE_ARCHER_ALAMEDA: goto(AssholesHome_StartBattle_Script)
     }
 }
 
 script AssholesHome_Archer_Dialogue {
-    addvar(VAR_ALAMEDA_STATE,1)
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_ALAMEDA_STATE,SAVE_ARCHER_ALAMEDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_AssholesHome_JudgingFromSwarm)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AssholesHome_ReallyHopingLastTime)
         callnative(ClearMugshot)
@@ -43,10 +46,10 @@ script AssholesHome_Archer_Dialogue {
 
 script AssholesHome_StartBattle_Script{
     lockall
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_AssholesHome_JustCurious)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AssholesHome_IDoubtYoureGoing)
         closemessage
@@ -57,25 +60,25 @@ script AssholesHome_StartBattle_Script{
 
 script AssholesHome_PostBattle_Dialogue {
     lockall
-        addvar(VAR_ALAMEDA_STATE,1)
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_ALAMEDA_STATE,DEFEATED_ARCHER_ALAMEDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_AssholesHome_SoMuchForThe)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_AssholesHome_NameInsteadOf)
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_AssholesHome_ILikeBeingPushed)
 
-        if (var(VAR_SALESFORCETOWER_2F_STATE) == 2){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+        if (var(VAR_SALESFORCETOWER_PRODUCTION_STATE) == POST_ALWAYS_WATCHING_WAZOWSKI)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_AssholesHome_ISawThatYoure)
-                setvar(VAR_0x8000, MUGSHOT_HUGH)
+                setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
                 callnative(DrawMugshot)
                 msgbox(gText_AssholesHome_YoureRightItsHypocritical)
-                setvar(VAR_0x8000, MUGSHOT_HILDA)
+                setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_AssholesHome_WhatAWeirdKid)
         }

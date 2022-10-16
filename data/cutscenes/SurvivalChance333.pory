@@ -2,6 +2,10 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 4
 const CHIEF = 3
 
+const FLAG_HIDE_ARCHER = FLAG_TEMP_1
+const FLAG_HIDE_ARIANA = FLAG_TEMP_3
+const FLAG_HIDE_ELITE4 = FLAG_TEMP_4
+
 script SurvivalChance333_HideObject_Script {
     setflag(FLAG_TEMP_1)
 }

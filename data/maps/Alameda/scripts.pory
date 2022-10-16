@@ -22,9 +22,9 @@ script Alameda_ObjectVisibility_Script {
 
     switch (var(VAR_ALAMEDA_STATE)){
         case 0: goto(SurvivalChance333_HideObject_Alameda_Script)
-        case SAVE_ARCHER_ALAMEDA: goto(SurvivalChance333_HideObject_Alameda_Script)
+        case SAVE_ARCHER_ALAMEDA: call(SurvivalChance333_HideObject_Alameda_Script)
         case START_SURVIVAL_CHANCE: call(AssholesHome_HideObject_Script)
-        case WHY_ARE_YOU_HELPING_THEM: goto(WhyAreYouHelpingThem_ObjectDebriefSetUp_Script)
+        case WHY_ARE_YOU_HELPING_THEM: call(WhyAreYouHelpingThem_ObjectDebriefSetUp_Script)
         case POST_EARTHQUAKE: call(Earthquake_HideObject_Script)
         case POST_EARTHQUAKE_RESCUE: call(Earthquake_HideObject_Script)
         case POST_THIS_ISNT_RANDOM: call(LetsFinishThis_ObjectSetUp_Script)
@@ -48,19 +48,19 @@ script Alameda_MapScripts_OnLoad {
 }
 
 script Navalbase_PostRaidTiles_Script {
-        call(SurvivalChance333_FreezeIce)
-        call(SurvivalChance333_SetLava)
-        call(SurvivalChance333_BlowOpenDoors)
+    call(SurvivalChance333_FreezeIce)
+    call(SurvivalChance333_SetLava)
+    call(SurvivalChance333_BlowOpenDoors)
 }
 
 script Alameda_ChooseFerryDestination_Script {
     msgbox(gText_WhereWould,MSGBOX_NPC)
-        goto(Alameda_UnlockedDestinations_Script)
+    goto(Alameda_UnlockedDestinations_Script)
 }
 
 script Alameda_UnlockedDestinations_Script {
     switch (var(VAR_FERRY_STATE)){
-        case 0: goto(Alameda_FerryState0_Script)
+        case FERRY_DEFAULT: goto(Alameda_FerryState0_Script)
         case FERRY_ALAMEDA_AVAILABLE: goto(Alameda_FerryState1_Script)
         case FERRY_ALCATRAZ_AVAILABLE: goto(Alameda_FerryState2_Script)
     }
