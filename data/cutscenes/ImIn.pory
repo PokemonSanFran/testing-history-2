@@ -1,3 +1,4 @@
+//At Sabrina's house
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const MALVA = 1
 const DRASNA = 2
@@ -5,21 +6,20 @@ const SIEBOLD = 3
 const WIKSTROM = 4
 const ARCHER = 5
 const PKMNA = 6
-const BIANCA = 9
-
 const FLAG_HIDE_RAID = FLAG_TEMP_1
 const FLAG_HIDE_PKMN = FLAG_TEMP_2
-const FLAG_HIDE_BIANCA = FLAG_TEMP_4
-const FLAG_HIDE_GUARD = FLAG_TEMP_1F
 
-const FLAG_HIDE_SABRINA_CONFERENCE = FLAG_TEMP_1
-const FLAG_HIDE_RAID_PARTY_CONFERENCE = FLAG_TEMP_9
-const FLAG_HIDE_OAK_CONFERENCE = FLAG_TEMP_3
-const FLAG_HIDE_BIANCA_CONFERENCE = FLAG_TEMP_8
-const FLAG_HIDE_ROSE_CONFERENCE = FLAG_TEMP_5
-const FLAG_HIDE_KOGA_CONFERENCE = FLAG_TEMP_4
-
+//Inside SalesforceTower
 const FLAG_HIDE_TOWER_RAID_PARTY = FLAG_TEMP_2
+
+//On League Ops Floor
+const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_3
+const FLAG_HIDE_ROSE = FLAG_TEMP_4
+const FLAG_HIDE_SABRINA = FLAG_TEMP_5
+const FLAG_HIDE_KOGA = FLAG_TEMP_6
+const BIANCA = 4
 
 script ImIn_HideObject_OutsideHouse_Script {
 
@@ -29,28 +29,36 @@ script ImIn_HideObject_OutsideHouse_Script {
     }
 }
 
-script ImIn_HideStairsGuard_Script {
-    setflag(FLAG_HIDE_GUARD)
+script ImIn_PreBianca_Object_Script{
+    setflag(FLAG_HIDE_NERDS_COPS)
+    setflag(FLAG_HIDE_OAK)
+    setflag(FLAG_HIDE_ROSE)
+    setflag(FLAG_HIDE_SABRINA)
+    setflag(FLAG_HIDE_KOGA)
+
+    setobjectxy(BIANCA,6,56)
+    setobjectxyperm(BIANCA,6,56)
+    setobjectmovementtype(BIANCA,DIR_NORTH)
 }
 
-script ImIn_ShowBianca_Script {
-    setflag(FLAG_HIDE_GUARD)
-    clearflag(FLAG_HIDE_BIANCA)
-    addobject(BIANCA)
+script ImIn_SaveBianca_Object_Script{
+    setflag(FLAG_HIDE_NERDS_COPS)
+    setflag(FLAG_HIDE_OAK)
+    setflag(FLAG_HIDE_ROSE)
+    setflag(FLAG_HIDE_SABRINA)
+    setflag(FLAG_HIDE_KOGA)
+
+    setobjectxy(BIANCA,7,53)
+    setobjectxyperm(BIANCA,7,53)
+    setobjectmovementtype(BIANCA,DIR_WEST)
 }
 
-script ImIn_HideBianca_Script {
-    setflag(FLAG_HIDE_BIANCA)
-}
-
-script ImIn_ResumeSave_Script {
-    call(ImIn_ShowBianca_Script)
-    call(ImIn_MoveBianca_Script)
-}
-
-script ImIn_MoveBianca_Script {
-    setobjectxy(9,12,26)
-        setobjectxyperm(9,12,26)
+script ImIn_RevealRoseWarp_Script{
+    if (var(VAR_TOWER_RAID_STATE) > DEFEATED_BIANCA_SALESFORCETOWER){
+        setmetatile(10,55,0x2DF,FALSE)
+        special(DrawWholeMapView)
+    }
+    return
 }
 
 script ImIn_DestroyWall_Script {
@@ -336,6 +344,7 @@ script ImIn_EnterCorrectCode_Script {
         playse(SE_WARP_OUT)
 
         setvar(VAR_STORYLINE_STATE,STORY_WARP_TILE_ACCESSIBLE)
+        setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,TRUE_RAID_START)
 
         release
         end
@@ -429,19 +438,19 @@ script ImIn_PreventPlayerProgress_Script {
         end
 }
 
-script ImIn_OfficeReveal_Dialogue {
+script ImIn_OfficeReveal_Dialogue{
     lock
         setvar(VAR_TOWER_RAID_STATE,SAVE_BIANCA_SALESFORCETOWER)
         playbgm(MUS_ENCOUNTER_MAY,TRUE)
+
+        applymovement(PLAYER,ImIn_ApproachDesk_Movement)
+        waitmovement(PLAYER)
 
         setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_ImIn_DoYouLikeMy)
         closemessage
         callnative(ClearMugshot)
-
-        applymovement(PLAYER,ImIn_ApproachDesk)
-        waitmovement(PLAYER)
 
         setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -473,8 +482,8 @@ script ImIn_OfficeReveal_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(9,ImIn_WalkFromDesk)
-        waitmovement(9)
+        applymovement(BIANCA,ImIn_WalkFromDesk_Movement)
+        waitmovement(BIANCA)
 
         call(Common_EventScript_SaveGame)
         closemessage
@@ -502,7 +511,6 @@ script ImIn_InteractBiancaBattle_Script {
 script ImIn_BiancaDefeated_Dialogue {
     lock
         setvar(VAR_TOWER_RAID_STATE,DEFEATED_BIANCA_SALESFORCETOWER)
-        call(ImIn_MoveBianca_Script)
 
         setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -520,6 +528,7 @@ script ImIn_BiancaDefeated_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_ImIn_Floor)
         callnative(ClearMugshot)
+        call(ImIn_RevealRoseWarp_Script)
         closemessage
         release
         end
@@ -800,13 +809,14 @@ movement ImIn_WalkAwayStairs {
         step_end
 }
 
-movement ImIn_ApproachDesk {
-    walk_right * 3
+movement ImIn_ApproachDesk_Movement{
+        walk_down * 4
         step_end
 }
 
-movement ImIn_WalkFromDesk {
-    walk_down
-        walk_left * 2
+movement ImIn_WalkFromDesk_Movement{
+    walk_right
+        walk_up * 3
+        face_left
         step_end
 }

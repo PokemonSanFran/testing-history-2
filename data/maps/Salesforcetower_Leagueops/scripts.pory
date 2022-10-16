@@ -23,7 +23,9 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
             case PRE_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Setup_Script)
             case POST_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Hide_Script)
             case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Setup_Script)
-            case POST_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Cleanup_Script)
+            case POST_YOU_REALIZE_WERE_EVIL_RIGHT: 
+                call(Salesforcetower_Leagueops_TrueTimeline_Objects_Script)
+                call(YouRealizeWereEvilRight_Object_Cleanup_Script)
             case START_FALSE_TIMELINE: call(CongratsYoureanAsshole_ObjectCleanUp_Script)
             default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
         }
@@ -33,6 +35,20 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
     VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT: Salesforcetower_Leagueops_MovePlayerIntoPosition_Script
     VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_WOW_YOURE_STRONG: TheGangsAllHere_OakAppearStairs_Script
     ]
+    MAP_SCRIPT_ON_LOAD {
+        call(ImIn_RevealRoseWarp_Script)
+    }
+}
+
+script Salesforcetower_Leagueops_TrueTimeline_Objects_Script{
+    if (var(VAR_TOWER_RAID_STATE) > SABRINA_WARP_DOOR_UNLOCKED){
+        switch(var(VAR_TOWER_RAID_STATE)){
+            case TEAM_ENTERED_SALESFORCETOWER: call(ImIn_PreBianca_Object_Script)
+            case SAVE_BIANCA_SALESFORCETOWER: 
+            default: call(ImIn_SaveBianca_Object_Script)
+        }
+    }
+    return
 }
 
 script Salesforcetower_Leagueops_EmptyConferenceRoomOffices{

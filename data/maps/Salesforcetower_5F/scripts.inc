@@ -13,6 +13,5 @@ Salesforcetower_5F_MapScripts_OnTransition::
 	return
 
 Salesforcetower_5F_MapScripts_OnTransition_1:
-	call ImIn_HideStairsGuard_Script
 	return
 

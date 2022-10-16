@@ -141,8 +141,8 @@
       "dest_warp_id": 1
     },
     {
-      "x": 24,
-      "y": 9,
+      "x": 10,
+      "y": 55,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_TOP",
       "dest_warp_id": 0
@@ -173,6 +173,24 @@
       "var": "VAR_SALESFORCETOWER_CONFERENCE_STATE",
       "var_value": "START_THE_GANGS_ALL_HERE",
       "script": "TheGangsAllHere_ThisIsOffice_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 49,
+      "elevation": 0,
+      "var": "VAR_TOWER_RAID_STATE",
+      "var_value": "TEAM_ENTERED_SALESFORCETOWER",
+      "script": "ImIn_OfficeReveal_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 49,
+      "elevation": 0,
+      "var": "VAR_TOWER_RAID_STATE",
+      "var_value": "TEAM_ENTERED_SALESFORCETOWER",
+      "script": "ImIn_OfficeReveal_Dialogue"
     }
   ],
   "bg_events": [

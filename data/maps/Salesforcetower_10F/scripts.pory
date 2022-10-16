@@ -11,14 +11,14 @@ script Salesforcetower_10F_MapScripts_OnTransition {
         case 4: call(TheGangsAllHere_ObjectCleanUp_Script)
     }
 
-    switch (var(VAR_MAUVILLE_CITY_STATE)){
-        case 0: call(ImIn_HideBianca_Script)
-        case 1: call(ImIn_HideBianca_Script)
-        case 2: call(ImIn_HideBianca_Script)
-        case 3: call(ImIn_HideBianca_Script)
-        case 4: call(ImIn_HideBianca_Script)
-        case 5: call(ImIn_HideStairsGuard_Script)
-                call(ImIn_ShowBianca_Script)
-        default: call(ImIn_ResumeSave_Script)
-    }
+    //switch (var(VAR_MAUVILLE_CITY_STATE)){
+        //case 0: call(ImIn_HideBianca_Script)
+        //case 1: call(ImIn_HideBianca_Script)
+        //case 2: call(ImIn_HideBianca_Script)
+        //case 3: call(ImIn_HideBianca_Script)
+        //case 4: call(ImIn_HideBianca_Script)
+        //case 5: call(ImIn_HideStairsGuard_Script)
+                //call(ImIn_ShowBianca_Script)
+        //default: call(ImIn_ResumeSave_Script)
+    //}
 }

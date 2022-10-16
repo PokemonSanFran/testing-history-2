@@ -11,33 +11,40 @@ ImIn_HideObject_OutsideHouse_Script_1:
 	return
 
 
-ImIn_HideStairsGuard_Script::
-	setflag FLAG_TEMP_1F
-	return
-
-
-ImIn_ShowBianca_Script::
-	setflag FLAG_TEMP_1F
-	clearflag FLAG_TEMP_4
-	addobject 9
-	return
-
-
-ImIn_HideBianca_Script::
+ImIn_PreBianca_Object_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setobjectxy 4, 6, 56
+	setobjectxyperm 4, 6, 56
+	setobjectmovementtype 4, DIR_NORTH
 	return
 
 
-ImIn_ResumeSave_Script::
-	call ImIn_ShowBianca_Script
-	call ImIn_MoveBianca_Script
+ImIn_SaveBianca_Object_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
+	setobjectxy 4, 7, 53
+	setobjectxyperm 4, 7, 53
+	setobjectmovementtype 4, DIR_WEST
 	return
 
 
-ImIn_MoveBianca_Script::
-	setobjectxy 9, 12, 26
-	setobjectxyperm 9, 12, 26
+ImIn_RevealRoseWarp_Script::
+	compare VAR_TOWER_RAID_STATE, DEFEATED_BIANCA_SALESFORCETOWER
+	goto_if_gt ImIn_RevealRoseWarp_Script_2
+ImIn_RevealRoseWarp_Script_1:
 	return
+
+ImIn_RevealRoseWarp_Script_2:
+	setmetatile 10, 55, 0x2DF, FALSE
+	special DrawWholeMapView
+	goto ImIn_RevealRoseWarp_Script_1
 
 
 ImIn_DestroyWall_Script::
@@ -295,6 +302,7 @@ ImIn_EnterCorrectCode_Script::
 	removeobject 5
 	playse SE_WARP_OUT
 	setvar VAR_STORYLINE_STATE, STORY_WARP_TILE_ACCESSIBLE
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, TRUE_RAID_START
 	release
 	end
 
@@ -377,13 +385,13 @@ ImIn_OfficeReveal_Dialogue::
 	lock
 	setvar VAR_TOWER_RAID_STATE, SAVE_BIANCA_SALESFORCETOWER
 	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement OBJ_EVENT_ID_PLAYER, ImIn_ApproachDesk_Movement
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImIn_DoYouLikeMy
 	closemessage
 	callnative ClearMugshot
-	applymovement OBJ_EVENT_ID_PLAYER, ImIn_ApproachDesk
-	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_WhatAreYouDoing
@@ -407,8 +415,8 @@ ImIn_OfficeReveal_Dialogue::
 	msgbox gText_ImIn_DaddyWontBeAble
 	closemessage
 	callnative ClearMugshot
-	applymovement 9, ImIn_WalkFromDesk
-	waitmovement 9
+	applymovement 4, ImIn_WalkFromDesk_Movement
+	waitmovement 4
 	call Common_EventScript_SaveGame
 	closemessage
 	goto ImIn_StartBiancaBattle_Script
@@ -436,7 +444,6 @@ ImIn_InteractBiancaBattle_Script::
 ImIn_BiancaDefeated_Dialogue::
 	lock
 	setvar VAR_TOWER_RAID_STATE, DEFEATED_BIANCA_SALESFORCETOWER
-	call ImIn_MoveBianca_Script
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImIn_Wheres
@@ -450,6 +457,7 @@ ImIn_BiancaDefeated_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_ImIn_Floor
 	callnative ClearMugshot
+	call ImIn_RevealRoseWarp_Script
 	closemessage
 	release
 	end
@@ -635,16 +643,19 @@ ImIn_WalkAwayStairs:
 	unlock_facing_direction
 	step_end
 
-ImIn_ApproachDesk:
-	walk_right
-	walk_right
-	walk_right
+ImIn_ApproachDesk_Movement:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
-ImIn_WalkFromDesk:
-	walk_down
-	walk_left
-	walk_left
+ImIn_WalkFromDesk_Movement:
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	face_left
 	step_end
 
 ImIn_InteractDoor_Script_Text_0:
