@@ -29,61 +29,61 @@ LetsFinishThis_MovePlayer_Script_2:
 
 LetsFinishThis_Debrief_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_IDontThinkIm
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
+	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_ThatPartDoesnt
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_ButInnocentPeople
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_PerfevtlySane
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_ButTheyWerentAlways
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_HasAlwaysBeenRuthless
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_ThatsWhatIMean
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
+	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_PerhapsDesperate
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_MaybeNowItsTime
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_NowMightBeTheTime
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_PublicSentimentIsStrong
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_EvenIfWePullIt
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_TheyCameForTheKings
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_SoBreakInto
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
+	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_APublicConfession
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_IWasBeingSarcastic
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_TheHardestPartOfThatPlan
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_TwoOldCoots
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_TheWarpPanels
 	callnative ClearMugshot
@@ -102,10 +102,10 @@ LetsFinishThis_GoToFlashback_Script::
 
 LetsFinishThis_StartPlanning_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_NobodyHasSeen
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
+	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_WhatAbout
 	callnative ClearMugshot
@@ -113,7 +113,7 @@ LetsFinishThis_StartPlanning_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 18, LetsFinishThis_WalkToPlayer
 	waitmovement 18
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_LetsFinishThis_WereOntoSomething
 	callnative ClearMugshot

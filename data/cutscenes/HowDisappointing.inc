@@ -73,12 +73,12 @@ HowDisappointing_StartRaid_Dialogue::
 	msgbox gText_HowDisappointing_YesSir
 	waitmovement 3
 	msgbox gText_HowDisappointing_OhAndChampion
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_YeahQuestion
 	callnative ClearMugshot
 	msgbox gText_HowDisappointing_TryToNotLet
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_Yeah
 	callnative ClearMugshot
@@ -158,22 +158,22 @@ HowDisappointing_Interfact_Ariana_Script::
 	goto_if_eq HowDisappointing_Interfact_Ariana_Script_2
 HowDisappointing_Interfact_Ariana_Script_1:
 	setvar VAR_HOW_DISAPPOINTING_STATE, SAVED_BEFORE_ARIANA
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_HowDisappointing, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_ImTiredOfYou
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_IveNeverLied
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_ThenWhyAreYou
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_TheseCompanies
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_AllISeeIs
 	callnative ClearMugshot
@@ -188,7 +188,7 @@ HowDisappointing_Interfact_Ariana_Script_2:
 
 HowDisappointing_StartBattle_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_SighHowDisappointing, MSGBOX_NPC
 	callnative ClearMugshot
@@ -234,7 +234,7 @@ HowDisappointing_MissionComplete_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_ExcellentWorkEverybody
 	callnative ClearMugshot

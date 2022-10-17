@@ -12,7 +12,7 @@ ImProbablyBetterThanYou_MovePlayerInside_Script::
 ImProbablyBetterThanYou_StandingOutside_Dialogue::
 	lockall
 	setvar VAR_PLAYER_HOME_STATE, HAS_NOT_MET_BIANCA
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_DeepBreath
 	callnative ClearMugshot
@@ -32,7 +32,7 @@ ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	waitmovement 0
 	applymovement 1, ImProbablyBetterThanYou_WalkToPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_YouMustBe
 	msgbox gText_ImProbablyBetterThanYou_WelcomeToTheMost
@@ -47,11 +47,11 @@ ImProbablyBetterThanYou_KindaShabby_Dialogue::
 	waitmovement 0
 	msgbox gText_ImProbablyBetterThanYou_KindaShabbyHuh
 	closemessage
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_OhYeahUh
 	msgbox gText_ImProbablyBetterThanYou_ThisHouseIsFriggin
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_MyFlightWasEarlierToday
 	goto ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue
@@ -61,10 +61,10 @@ ImProbablyBetterThanYou_KindaShabby_Dialogue::
 ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue::
 	msgbox gText_ImProbablyBetterThanYou_IOrderedSomeFoodToo
 	msgbox gText_ImProbablyBetterThanYou_WhereAreYouFrom
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_AgateVillageOrre
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_UndellaTownUnova
 	goto ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue
@@ -87,7 +87,7 @@ ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue::
 
 ImProbablyBetterThanYou_PreventPlayerLeaving_Script::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ImProbablyBetterThanYou_IShouldCheckOut
 	callnative ClearMugshot
@@ -99,7 +99,7 @@ ImProbablyBetterThanYou_PreventPlayerLeaving_Script::
 
 
 ImProbablyBetterThanYou_Annoyed_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	switch VAR_TEMP_0
 	case 1, ImProbablyBetterThanYou_Annoyed_Dialogue_3

@@ -58,7 +58,7 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	lock
 	setvar VAR_ALCATRAZ_STATE, ARCHER_SUMMONED_ALCATRAZ
 	clearflag FLAG_ARCHER_CALL_ALCATRAZ
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_HolyShit
 	callnative ClearMugshot
@@ -69,10 +69,10 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	pokenavcall YouRealizeTheyreEvilRight_CallPlayer_Dialogue_Text_0
 	waitmessage
 	bufferpartymonnick 0, 1
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_AwesomeJobIn
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_TheyDontLove
 	callnative ClearMugshot
@@ -80,20 +80,20 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 	fadescreen FADE_TO_BLACK
 	delay 30
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YouSeemSurprised
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YoureNot
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IveBeenTrying
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WhatDoYouMean
 	checkitem ITEM_HM03
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	compare VAR_RESULT, 0
 	goto_if_ne YouRealizeTheyreEvilRight_CallPlayer_Dialogue_2
@@ -101,7 +101,7 @@ YouRealizeTheyreEvilRight_CallPlayer_Dialogue::
 YouRealizeTheyreEvilRight_CallPlayer_Dialogue_1:
 	playse SE_POKENAV_HANG_UP
 	waitse
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IDontKnowIf
 	callnative ClearMugshot
@@ -121,10 +121,10 @@ YouRealizeTheyreEvilRight_PlayerLandedDialogue::
 	waitse
 	playse SE_POKENAV_CALL
 	waitse
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ImHereWhere
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_SwimAroundThe
 	callnative ClearMugshot
@@ -138,7 +138,7 @@ YouRealizeTheyreEvilRight_PlayerLandedDialogue::
 YouRealizeTheyreEvilRight_InteractArcher::
 	lock
 	setvar VAR_ALCATRAZ_STATE, PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WelcomeToTheReal, MSGBOX_NPC
 	callnative ClearMugshot
@@ -208,13 +208,13 @@ YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, YouRealizeTheyreEvilRight_WalkToGroup
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_TheChampionHasArrived
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_NiceToMeetYou
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_HasBeenUsing
 	callnative ClearMugshot
@@ -222,31 +222,31 @@ YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue::
 	playse SE_PIN
 	applymovement 3, Common_Movement_ExclamationMark
 	applymovement 2, Common_Movement_ExclamationMark
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WowSuperResourceful
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WhyAreWeHere
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ICanFinallyProve
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_DidYouDragMe
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YesWaitNo
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ICanProve
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_How
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_Look
 	callnative ClearMugshot
@@ -254,31 +254,31 @@ YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue::
 	call YouRealizeTheyreEvil_ReleaseGarbodor_Script
 	applymovement 2, Common_Movement_FaceLeft
 	applymovement 3, Common_Movement_FaceUp
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ThisIsOne
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IHadToGo
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ThisOneIsLevel
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_SoUsedATM
 	fadescreen FADE_TO_BLACK
 	msgbox YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue_Text_0
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_TakeACloserLook
 	goto YouRealizeTheyreEvilRight_StartQuestions_Script
@@ -286,7 +286,7 @@ YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue::
 
 
 YouRealizeTheyreEvilRight_StartQuestions_Script::
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_DoYouSeeNow, MSGBOX_YESNO
 	compare VAR_RESULT, YES
@@ -315,7 +315,7 @@ YouRealizeTheyreEvilRight_AskProperties_Script_2:
 
 
 YouRealizeTheyreEvilRight_AskMoves_Script::
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WaitWhichMove
 	multichoicedefault 18, 6, MULTI_GARBADOR_MOVES, 0, TRUE
@@ -330,7 +330,7 @@ YouRealizeTheyreEvilRight_AskMoves_Script_2:
 
 
 YouRealizeTheyreEvilRight_CorrectAnswer_Script::
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_VeryClever
 	setflag FLAG_TEMP_1F
@@ -339,56 +339,56 @@ YouRealizeTheyreEvilRight_CorrectAnswer_Script::
 
 
 YouRealizeTheyreEvilRight_EndQuestions_Script::
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_TheTipOff
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_So
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_HazeCanOnly
 	return
 
 
 YouRealizeTheyreEvilRight_Framing_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IDontGetIt
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_HasBeenFramingYou
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YouAlsoMetUp
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ButArianaSaid
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YeahNobodyKnows
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_WhyWhyDoAll
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_CantArgueWithThat
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IJoinedThe
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_AndThatsWhyWere
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow
 	callnative ClearMugshot
@@ -397,10 +397,10 @@ YouRealizeTheyreEvilRight_Framing_Dialogue::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_LookIKnowThis
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_YeahOkay
 	setvar VAR_ALCATRAZ_STATE, POST_YOU_REALIZE_THEYRE_EVIL_RIGHT
@@ -419,7 +419,7 @@ YouRealizeTheyreEvilRight_AskPlayerGift_Script::
 	playse SE_CONTEST_HEART
 	applymovement 4, YouRealizeTheyreEvilRight_ShowAffection
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ThisGarbodor, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -437,7 +437,7 @@ YouRealizeTheyreEvilRight_AskPlayerGift_Script_2:
 
 
 YouRealizeTheyreEvilRight_LeaveGift_Script::
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_ThatsFineIll
 	return
@@ -449,7 +449,7 @@ YouRealizeTheyreEvilRight_GiveGift_Script::
 	goto_if_eq YouRealizeTheyreEvilRight_GiveGift_Script_2
 	call YouRealizeTheyreEvilRight_SendGiftToPC_Script
 YouRealizeTheyreEvilRight_GiveGift_Script_1:
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_TakeGoodCare
 	return
@@ -514,7 +514,7 @@ YouRealizeTheyreEvilRight_CantSleep_Script_3:
 
 
 YouRealizeTheyreEvilRight_CantSleep_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IsStillWaiting
 	callnative ClearMugshot
@@ -530,7 +530,7 @@ YouRealizeTheyreEvilRight_NoIdea_Dialogue::
 	waitmovement 0
 	goto_if_set FLAG_TIMELINE_TIMETRAVEL, YouRealizeTheyreEvilRight_NoIdea_Dialogue_2
 YouRealizeTheyreEvilRight_NoIdea_Dialogue_1:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat
 	callnative ClearMugshot
@@ -539,7 +539,7 @@ YouRealizeTheyreEvilRight_NoIdea_Dialogue_1:
 
 YouRealizeTheyreEvilRight_NoIdea_Dialogue_2:
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OkayLetsFixIt_WhatTheHell
 	goto YouRealizeTheyreEvilRight_NoIdea_Dialogue_1

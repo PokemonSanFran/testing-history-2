@@ -99,23 +99,23 @@ script WhyAreYouHelpingThem_StartRaid {
         msgbox(gText_WhyAreYouHelpingThem_StructuralBreach,MSGBOX_AUTOCLOSE)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_DefenseMode)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_WeShouldRedefine)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_LetsSplitUp)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_WhaFineIllTry)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_SeeYa)
         callnative(ClearMugshot)
@@ -138,7 +138,7 @@ script WhyAreYouHelpingThem_WitnessBattle {
         waitmovement(0)
         call(WhyAreYouHelpingThem_MoveObjectBoss_Script)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_GoAfterIllHold)
         callnative(ClearMugshot)
@@ -153,7 +153,7 @@ script WhyAreYouHelpingThem_PreBattleBoss_Script {
         applymovement(GIOVANNI,Common_Movement_FaceLeft)
         applymovement(PLAYER,WhyAreYouHelpingThem_ApproachGiovanni)
         waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_ItsAShameThatThe)
         callnative(ClearMugshot)
@@ -162,7 +162,7 @@ script WhyAreYouHelpingThem_PreBattleBoss_Script {
         applymovement(GIOVANNI,Common_Movement_WalkLeft)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_ButBeatingYou)
         callnative(ClearMugshot)
@@ -179,7 +179,7 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
 
         if (defeated(TRAINER_ARCHIE)){
 
-            setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+            setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
                 callnative(DrawMugshot)
                 msgbox(gText_WhyAreYouHelpingThem_YoureIncredible)
                 closemessage
@@ -188,17 +188,17 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
                 waitmovement(0)
                 giveitem(ITEM_MASTER_BALL,1)
 
-                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
                 callnative(DrawMugshot)
                 msgbox(gText_WhyAreYouHelpingThem_AndNowWeHave)
         }else {
 
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_WhyAreYouHelpingThem_IDidntEvenTouch)
         }
 
-    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+    setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_ImSorryYouHad)
         callnative(ClearMugshot)
@@ -209,7 +209,7 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         waitmovement(0)
         call(Common_EventScript_OutOfCenterPartyHeal)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_IHandledTheBrat)
         callnative(ClearMugshot)
@@ -220,15 +220,15 @@ script WhyAreYouHelpingThem_PostBattleBoss_Dialogue{
         applymovement(ARIANA,WhyAreYouHelpingThem_ExclaimAndFacePlayer)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_DamnYouToo)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_WhatWasAllThatShit)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_WeveGotToHelp)
         callnative(ClearMugshot)
@@ -258,23 +258,23 @@ script WhyAreYouHelpingThem_ExplodeWall_Script {
         applymovement(ARCHER,WhyAreYouHelpingThem_WalkOutOfHole)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_ThisPlaceIs)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_WeCantLeavePeople)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_WeDontHaveTime)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_IThinkTheyreRight)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_Sigh)
         callnative(ClearMugshot)
@@ -289,7 +289,7 @@ script WhyAreYouHelpingThem_ExplodeWall_Script {
         applymovement(ARCHER,WhyAreYouHelpingThem_ApproachPlayer)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_YoureWorkingWith)
         callnative(ClearMugshot)
@@ -305,7 +305,7 @@ script WhyAreYouHelpingThem_InteractBattle_Script {
 
 script WhyAreYouHelpingThem_StartBattle_Script{
     lock
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_AlwaysHaveBeen)
         trainerbattle_no_intro(TRAINER_WALLY_VR_2,gText_WhyAreYouHelpingThem_AnotherVictory)
@@ -317,15 +317,15 @@ script WhyAreYouHelpingThem_StartBattle_Script{
 script WhyAreYouHelpingThem_PostBattle_Dialogue {
 
         setvar(VAR_NAVALBASE_STATE,DEFEATED_ARCHER_NAVALBASE)
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_TellsMeYoureAll)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_WhyWouldIt)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_Player)
         callnative(ClearMugshot)
@@ -342,11 +342,11 @@ script WhyAreYouHelpingThem_PostBattle_Dialogue {
         applymovement(BIANCA,WhyAreYouHelpingThem_RunToPlayer)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_IGotKnockedOut)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_NoILostToo)
         callnative(ClearMugshot)
@@ -391,27 +391,27 @@ script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
         applymovement(PLAYER,WhyAreYouHelpingThem_WalkIntoHome)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_WhatADay)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_ItWasADay)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_OhThatWasFast)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_DontWorryAboutIt)
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_NowIveGotALot)
         callnative(ClearMugshot)
@@ -423,7 +423,7 @@ script WhyAreYouHelpingThem_BackAtCompound_Dialogue {
         waitse
         removeobject(2)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WhyAreYouHelpingThem_WeveAllGot)
         callnative(ClearMugshot)

@@ -64,7 +64,7 @@ Earthquake_ThatNight_Dialogue::
 	special ShakeCamera
 	delay 100
 	waitstate
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_AreYouOkay
 	callnative ClearMugshot
@@ -73,14 +73,14 @@ Earthquake_ThatNight_Dialogue::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Earthquake_WalkOutOfBed
 	msgbox gText_Earthquake_HelpMe
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ImFine
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Earthquake_WalkToWall
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ThePowersDead
 	callnative ClearMugshot
@@ -99,7 +99,7 @@ Earthquake_ThatNight_Dialogue::
 
 Earthquake_ShowDestroyedCity_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_HolyShit
 	closemessage
@@ -128,22 +128,22 @@ Earthquake_StartRescue_Dialogue::
 	addobject 13
 	applymovement 13, Earthquake_WalkToPair
 	waitmovement 13
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_OhYoureOkay
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_YeahWhyDidnt
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_CellTowersWere
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_SoundsLikeWere
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ImGoingToMakeAnother
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_OfCourse
 	closemessage
@@ -161,7 +161,7 @@ Earthquake_StartRescue_Dialogue::
 
 Earthquake_PostRescue_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_OkayThingsSeemToBe
 	callnative ClearMugshot
@@ -169,19 +169,19 @@ Earthquake_PostRescue_Dialogue::
 	fadescreen FADE_TO_BLACK
 	call Earthquake_PostRescue_Objects_Script
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_WeveManagedToReestablish
 	callnative ClearMugshot
 	closemessage
 	applymovement 13, Earthquake_Pace
 	waitmovement 13
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IReally
 	playse SE_POKENAV_CALL
 	waitse
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_AMessageFromThe
 	callnative ClearMugshot
@@ -190,63 +190,63 @@ Earthquake_PostRescue_Dialogue::
 	waitse
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ThatsATrap
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_WhatDoYouMean
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ShitWeNever
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, Common_Movement_FaceUp
 	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IGotAMessage
 	applymovement 13, Earthquake_TurnToPlayer
 	waitmovement 13
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_WaitWhat
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ItGetsCrazier
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_WeBattledBut
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ThatDoesntMake
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ItsJustABunch
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IDontThinkSo
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_HowCanYouTrust
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_TheSecondHalf
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_SoSomebodyWantsUs
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_IThinkItsOn
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, Common_Movement_FaceUp
 	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_FineTheThreeOfUs
 	callnative ClearMugshot
@@ -260,14 +260,14 @@ Earthquake_PostRescue_Dialogue::
 Earthquake_AskPlayerWarp_Script::
 	applymovement 3, Earthquake_TurnToPlayer
 	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_Earthquake_ImGonnaHead, MSGBOX_YESNO
 	closemessage
 	callnative ClearMugshot
 	compare VAR_RESULT, YES
 	goto_if_eq Earthquake_AskPlayerWarp_Script_2
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_Earthquake_OkayWeve
 	closemessage

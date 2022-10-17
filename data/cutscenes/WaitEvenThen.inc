@@ -57,10 +57,10 @@ WaitEvenThen_PrepareBossEncounter_Dialogue::
 	applymovement 2, WaitEvenThen_WalkToSleepingC
 	applymovement 3, WaitEvenThen_WalkToSleepingD
 	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_WaitEvenThen_IFoundTheAccess
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WaitEvenThen_AndICanHandle
 	callnative ClearMugshot
@@ -149,13 +149,13 @@ WaitEvenThen_PostBossDialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 1, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceDown
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WaitEvenThen_DamnAPowerSpot
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_WaitEvenThen_AndTheGovernment
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_WaitEvenThen_IllHaveSomeOther
 	callnative ClearMugshot
@@ -165,14 +165,14 @@ WaitEvenThen_PostBossDialogue::
 	waitmovement 2
 	applymovement 1, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WaitEvenThen_ComingWithMe, MSGBOX_YESNO
 	callnative ClearMugshot
 	closemessage
 	compare VAR_RESULT, YES
 	goto_if_eq WaitEvenThen_PostBossDialogue_2
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WaitEvenThen_MeetUsIn
 	closemessage

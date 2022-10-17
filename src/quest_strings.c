@@ -473,6 +473,21 @@ const u8 gText_Quest_RestoreToTheirFormerGlory_Desc[] =_("Description");
 const u8 gText_Quest_RestoreToTheirFormerGlory_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_RestoreToTheirFormerGlory_Map[] =_("N/A");
 
+const u8 gText_Quest_HowDisappointing_Name[] = _("How Disappointing.");
+const u8 gText_Quest_HowDisappointing_Desc[] = _("Description");
+const u8 gText_Quest_HowDisappointing_DoneDesc[] = _("DoneDescription");
+const u8 gText_Quest_HowDisappointing_Map[] = _("Chinatown");
+
+const u8 gText_Quest_LetsBurnThisMotherDown_Name[] = _("Let's Burn This Mother Down.");
+const u8 gText_Quest_LetsBurnThisMotherDown_Desc[] = _("Description");
+const u8 gText_Quest_LetsBurnThisMotherDown_DoneDesc[] = _("DoneDescription");
+const u8 gText_Quest_LetsBurnThisMotherDown_Map[] = _("Alcatraz");
+
+const u8 gText_Quest_Manhunt_Name[] = _("Manhunt.");
+const u8 gText_Quest_Manhunt_Desc[] = _("Description");
+const u8 gText_Quest_Manhunt_DoneDesc[] = _("DoneDescription");
+const u8 gText_Quest_Manhunt_Map[] = _("???");
+
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
 const u8 gText_Quest_HauntABuilding_Sub1_Desc[] = _("You brought Hunter a Litwick.");

@@ -69,7 +69,7 @@ YouLookTired_Intro_Dialogue::
 	playbgm MUS_MT_PYRE, FALSE
 	applymovement 1, Common_Movement_FaceRight
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_SorryToInterrupt
 	callnative ClearMugshot
@@ -78,22 +78,22 @@ YouLookTired_Intro_Dialogue::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 1, YouLookTired_KogaWalksToPlayer_Movement
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_YeahWhatsUp
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_GladIWasAbleToRun
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_IGuessYouDoToo
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_ChiefOperatingOfficer
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_IKeepHearingThat
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	goto YouLookTired_BadgeJudge_Script
 	return
@@ -114,38 +114,38 @@ YouLookTired_BadgeJudge_Script_2:
 
 
 YouLookTired_AcceptInvite_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_ItsBeenAnInterestingRide
 	msgbox gText_YouLookTired_WaitDidntISeeYou
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_WhereDidYou
 	msgbox gText_YouLookTired_IImagineYoureProbably
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_ItHasBeenAWhile
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_WontBeAnIssue
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_WestOfHere
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Common_Movement_FacePlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_MyHouseHas
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_IllSeeYouForDinner
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouLookTired_YesThanksAgain
 	callnative ClearMugshot

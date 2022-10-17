@@ -29,7 +29,9 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
 }else{
         call(YouRealizeWereEvilRight_Object_Cleanup_Script)
     }
-            case START_FALSE_TIMELINE: call(CongratsYoureanAsshole_ObjectCleanUp_Script)
+            case START_FALSE_TIMELINE: 
+                call(LetsBurnThisMother_ShowRose_Script)
+                call(CongratsYoureanAsshole_ObjectCleanUp_Script)
             default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
         }
     }
@@ -37,6 +39,9 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
     VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM: Salesforcetower_Leagueops_MovePlayerIntoPosition_Script
     VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT: Salesforcetower_Leagueops_MovePlayerIntoPosition_Script
     VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_WOW_YOURE_STRONG: TheGangsAllHere_OakAppearStairs_Script
+    VAR_LETS_BURN_THIS_MOTHER_STATE,DEFEATED_ARCHER_ALCATRAZ: LetsBurnThisMotherDown_MissionComplete_Dialogue
+    VAR_HOW_DISAPPOINTING_STATE,DEFEATED_ARIANA_CHINATOWN: HowDisappointing_MissionComplete_Dialogue
+    VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI: Manhunt_MissionComplete_Dialogue
     ]
     MAP_SCRIPT_ON_LOAD {
         call(ImIn_RevealRoseWarp_Script)
@@ -83,9 +88,9 @@ script Salesforcetower_Leagueops_Oak_Event_Script{
     faceplayer
     switch (var(VAR_STORYLINE_STATE)){
         case STORY_MORNING_OF_TIMELINE_SPLIT: call(CongratsYoureAnAsshole_Intro_Dialogue)
-        case STORY_START_FALSE_TIMELINE: call(LetsBurnThisMotherDown_Assignment_Dialogue)
-        case STORY_1ST_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
-        case STORY_2ND_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
+        case STORY_START_FALSE_TIMELINE:
+        case STORY_1ST_TEAMROCKET_TAKEDOWN:
+        case STORY_2ND_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Interact_Oak_Script)
     }
     release
     end

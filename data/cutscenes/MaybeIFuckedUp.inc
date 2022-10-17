@@ -17,12 +17,12 @@ MaybeIFuckedUp_Dialogue::
 	closemessage
 	applymovement 15, Common_Movement_WalkUp
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaybeIFuckedUp_OhHi
 	callnative ClearMugshot
 	msgbox gText_MaybeIFuckedUp_ItsGoodToMeetYou
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaybeIFuckedUp_ItHasBeenACrazy
 	callnative ClearMugshot
@@ -30,7 +30,7 @@ MaybeIFuckedUp_Dialogue::
 	giveitem ITEM_METEORITE, 1
 	msgbox gText_MaybeIFuckedUp_AskYourself
 	msgbox gText_MaybeIFuckedUp_IfYouFindYourself
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaybeIFuckedUp_UhOkay
 	callnative ClearMugshot
@@ -40,7 +40,7 @@ MaybeIFuckedUp_Dialogue::
 	applymovement 15, MaybeIFuckedUp_WalkOffScreen
 	waitmovement 15
 	removeobject 15
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaybeIFuckedUp_WhatTheHellWasThat
 	callnative ClearMugshot

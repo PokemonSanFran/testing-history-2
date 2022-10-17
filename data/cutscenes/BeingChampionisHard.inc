@@ -23,22 +23,22 @@ BeingChampionIsHard_PostTimeSkip::
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER, BeingChampionIsHard_WalkToOak
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_SighGoodMorning
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_GoodMorningChampion
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_ItsAlmostBeenAMonth
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_OfCourseNot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_PleaseArceusLetItBe
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_YouveActuallyGotNothing
 	closemessage
@@ -46,31 +46,31 @@ BeingChampionIsHard_PostTimeSkip::
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_YouWereStarting
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_YouCouldTell
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_ThisIsOurFirst
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_WoWWhatToDo
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_YouShouldGoTo
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_ThatsWhereTheyFilm
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_ThereAlsoUsed
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_SoundsLikeItll
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_BeingChampionIsHard_ThePleasureIsAllOurs
 	closemessage

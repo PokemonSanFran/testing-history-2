@@ -36,14 +36,14 @@ WaitYouWentWhere_PlayerSetUp_Script_2:
 
 WaitYouWentWhere_FirstInteract_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_WelcomeBackFrom, MSGBOX_NPC
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_YeahThanksFor
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_IHaveSomeBusiness
 	closemessage
@@ -52,31 +52,31 @@ WaitYouWentWhere_FirstInteract_Dialogue::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Player_WaitYouWentWhere_WalkWest
 	applymovement 1, Oak_WaitYouWentWhere_WalkWest
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_IActuallyJustGot
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_ThePassWeGave
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_GaveMeAPass
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_WhatAPainIn
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_YeahIveSeenThem
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_YesBeforeWeRevamped
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_OrreHasALot
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_NoOffense
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitYouWentWhere_GoingThisWay
 	callnative ClearMugshot

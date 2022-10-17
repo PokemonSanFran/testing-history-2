@@ -98,7 +98,7 @@ SpeechSpeechSpeech_PositionPlayer_Script::
 
 
 SpeechSpeechSpeech_Intro_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_ThankYouAll
 	msgbox gText_SpeechSpeechSpeech_FirstOfAll
@@ -106,7 +106,7 @@ SpeechSpeechSpeech_Intro_Dialogue::
 	closemessage
 	call SpeechSpeechSpeech_CrowdLookAround_Script
 	call SpeechSpeechSpeech_ResetFacing_Script
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_ForAllYouve
 	callnative ClearMugshot
@@ -121,7 +121,7 @@ SpeechSpeechSpeech_Intro_Dialogue::
 	msgbox gText_SpeechSpeechSpeech_AreTheyEven
 	closemessage
 	call SpeechSpeechSpeech_ResetFacing_Script
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_HasMyFullConfidence
 	callnative ClearMugshot
@@ -158,7 +158,7 @@ SpeechSpeechSpeech_StartTransformation_Script::
 
 
 SpeechSpeechSpeech_EliteReveal_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_Us
 	callnative ClearMugshot
@@ -179,7 +179,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	waitmovement 12
 	delay 100
 	waitstate
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_IsAnybodyHurt
 	callnative ClearMugshot
@@ -189,7 +189,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	closemessage
 	applymovement 12, SpeechSpeechSpeech_LookAround
 	waitmovement 12
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_YouAllKnowHowCompanies
 	callnative ClearMugshot
@@ -202,14 +202,14 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	waitmovement 12
 	applymovement 2, Common_Movement_WalkDown
 	waitmovement 2
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_WeWantToBegin
 	callnative ClearMugshot
 	closemessage
 	applymovement 5, Common_Movement_WalkDown
 	waitmovement 5
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_4LeadCharge
 	callnative ClearMugshot
@@ -217,7 +217,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	applymovement 5, SpeechSpeechSpeech_WalkBackwards
 	applymovement 6, Common_Movement_WalkDown
 	waitmovement 6
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_3LeadCharge
 	callnative ClearMugshot
@@ -225,14 +225,14 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	applymovement 6, SpeechSpeechSpeech_WalkBackwards
 	applymovement 3, Common_Movement_WalkDown
 	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_1LeadCharge
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, SpeechSpeechSpeech_WalkBackwards
 	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
+	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_IllBeHandling
 	callnative ClearMugshot
@@ -246,13 +246,13 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	applymovement 1, SpeechSpeechSpeech_WalkToPlayer
 	fadescreen FADE_FROM_BLACK
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_DamnThisShit
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_ItFeelsReally
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_Yeah
 	compare VAR_STORYLINE_STATE, STORY_2ND_PRE_SPEECHSPPECH

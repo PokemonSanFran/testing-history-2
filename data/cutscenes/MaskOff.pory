@@ -19,7 +19,7 @@ script MaskOff_QuestH_Dialogue {
     faceplayer
 
     if (var(VAR_MASK_OFF_STATE) == ASSIGNED_MASK_OFF){
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
             callnative(DrawMugshot)
             msgbox(gText_MaskOff_WhatCanYou)
             callnative(ClearMugshot)
@@ -34,7 +34,7 @@ script MaskOff_QuestH_Dialogue {
 script MaskOff_QuestF_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_1){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
@@ -47,7 +47,7 @@ script MaskOff_QuestF_Dialogue {
 script MaskOff_QuestI_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_2){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
@@ -61,7 +61,7 @@ script MaskOff_QuestI_Dialogue {
 script MaskOff_QuestD_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_2){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
@@ -78,7 +78,7 @@ script MaskOff_QuestK_Dialogue {
 script MaskOff_QuestG_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_3){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
@@ -92,7 +92,7 @@ script MaskOff_QuestG_Dialogue {
 script MaskOff_QuestA_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_5){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
@@ -105,7 +105,7 @@ script MaskOff_QuestA_Dialogue {
 script MaskOff_QuestE_Dialogue {
     faceplayer
         if (var(VAR_MASK_OFF_STATE) == GOT_MASK_OFF_CLUE_4){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_MaskOff_WhatCanYou)
                 callnative(ClearMugshot)
@@ -121,7 +121,7 @@ script MaskOff_Encounter_Giovanni_Dialogue {
         setvar(VAR_MASK_OFF_STATE,SAVE_GIOVANNI_LAKEMERRITT_TRUE)
         call(Common_EventScript_SaveGame)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_MaskOff_FancyABattle,MSGBOX_NPC)
         callnative(ClearMugshot)
@@ -136,23 +136,23 @@ script MaskOff_Encounter_Giovanni_Dialogue {
 
 script MaskOff_PostBattle_Dialogue {
 
-    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+    setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_YouveMadeIncredible)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_ItsNiceToNotGet)
 
-    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+    setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_YouWontNeedTo)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_WhatDoYouMean)
 
-    setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+    setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_AllowMeTo)
     callnative(ClearMugshot)
@@ -164,7 +164,7 @@ msgbox(gText_MaskOff_AllowMeTo)
     lock
     fadescreen(FADE_FROM_BLACK)
 
-    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_TheOneAndOnly,MSGBOX_NPC)
     lock
@@ -173,19 +173,19 @@ msgbox(gText_MaskOff_TheOneAndOnly,MSGBOX_NPC)
     applymovement(PLAYER,Common_Movement_ExclamationMark)
     waitmovement(PLAYER)
 
-    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_IFormedTeamRocket)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_ButWhyGo)
 
-    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_IHidMyIdentity)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_ThingsAre)
     callnative(ClearMugshot)
@@ -195,19 +195,19 @@ msgbox(gText_MaskOff_ThingsAre)
     delay(32)
     fadescreen(FADE_FROM_BLACK)
 
-    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_ISee)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_WaitWhatDO)
 
-    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_IHaventExplicitly)
 
-    setvar(VAR_0x8000, MUGSHOT_CAITLIN)
+    setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
     callnative(DrawMugshot)
 msgbox(gText_MaskOff_IShouldApologize)
     callnative(ClearMugshot)

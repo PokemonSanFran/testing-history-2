@@ -1,7 +1,4 @@
 CongratsYoureanAsshole_ObjectCleanUp_Script::
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_4
-	setflag FLAG_TEMP_1
 	setobjectxy 9, 34, 56
 	setobjectxyperm 9, 34, 56
 	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_UP

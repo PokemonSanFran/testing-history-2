@@ -31,7 +31,7 @@ VSGarbodor_Scouting_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_IDidSomeScouting
 	multichoicedefault 18, 6, MULTI_GARBADOR_CHOOSE, 3, TRUE
@@ -67,7 +67,7 @@ VSGarbodor_ChooseSide_Script_4:
 
 VSGarbodor_ChooseLeft_Script::
 	setvar VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_LEFT_SIDE
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_ThenIllTakeTheRight
 	callnative ClearMugshot
@@ -83,7 +83,7 @@ VSGarbodor_ChooseLeft_Script::
 
 VSGarbodor_ChooseRight_Script::
 	setvar VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_RIGHT_SIDE
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_CoolIWanted
 	callnative ClearMugshot
@@ -185,7 +185,7 @@ VSGarbodor_CheckDefeated_Script_7:
 
 VSGarbodor_PreventCrossingSides_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_FeelingLonely
 	closemessage
@@ -245,14 +245,14 @@ VSGarbodor_MoveBianca_Script_8:
 
 
 VSGarbodor_DefeatedAll_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_GodYouWereTaking
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, VSGarbodor_LookAround
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_WhateverMineWereEasy
 	closemessage
@@ -294,23 +294,23 @@ VSGarbodor_CleanUpPerpWalk::
 
 
 VSGarbodor_Negotiating_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_AsWeWereNegotiating
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_DoneLikeYouGuys
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_ThankYouBoth
 	callnative ClearMugshot
 	closemessage
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_YeahImBeat, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq VSGarbodor_Negotiating_Dialogue_1
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_LetsBounce
 	callnative ClearMugshot
@@ -320,7 +320,7 @@ VSGarbodor_Negotiating_Dialogue::
 	end
 
 VSGarbodor_Negotiating_Dialogue_1:
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_WeirdButOkay
 	callnative ClearMugshot
@@ -361,10 +361,10 @@ VSGarbodor_ReturnToTheCompound_Dialogue::
 	goto_if_ne VSGarbodor_ReturnToTheCompound_Dialogue_1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_ImGonnaGet
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_HehWellSee
 	callnative ClearMugshot

@@ -73,7 +73,7 @@ script WaitHeDidWhat_CalledToSkybox_Script {
         waitse
         pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
         waitmessage
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_WaitHeDidWhat_CongratsComeOnUp)
         callnative(ClearMugshot)
@@ -87,7 +87,7 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
         setvar(VAR_STORYLINE_STATE,STORY_READY_FINALS)
         lock
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_WaitHeDidWhat_GoodShitDownThere)
         callnative(ClearMugshot)
@@ -118,7 +118,7 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
         applymovement(PLAYER,Common_Movement_ExclamationMark)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WaitHeDidWhat_HolyShit)
         callnative(ClearMugshot)
@@ -132,7 +132,7 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
 
         applymovement(PLAYER, Common_Movement_FaceLeft)
         waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WaitHeDidWhat_MakeSureYouGive)
         closemessage
@@ -140,7 +140,7 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
 
         applymovement(PLAYER, Common_Movement_FaceRight)
         waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_WaitHeDidWhat_GoodLuck)
         callnative(ClearMugshot)
@@ -151,7 +151,7 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
 
 script WaitHeDidWhat_BiancaMeltdown_Dialogue {
     random(4)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
 
         switch (var(VAR_RESULT)) {
@@ -182,12 +182,12 @@ script WaitHeDidWhat_WalkIntoChampionshipPosition {
     lock
         applymovement(PLAYER,WaitHeDidWhat_WalkToBattlefieldPosition)
         waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WaitHeDidWhat_IDontThinkYouCan)
 
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WaitHeDidWhat_ImReallyHappy)
         callnative(ClearMugshot)
@@ -202,7 +202,7 @@ script WaitHeDidWhat_StartBattle_Script{
         applymovement(PLAYER,Common_Movement_WalkRight)
         applymovement(1,Common_Movement_WalkLeft)
         waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WaitHeDidWhat_ForPsfregion)
         trainerbattle_no_intro(TRAINER_STEVEN,gText_WaitHeDidWhat_SoClose)

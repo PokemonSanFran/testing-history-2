@@ -3181,6 +3181,36 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        sRestoreToTheirFormerGlory_Sub,
 	        4
 	),
+    side_quest(
+            gText_Quest_HowDisappointing_Name,
+            gText_Quest_HowDisappointing_Desc,
+            gText_Quest_HowDisappointing_DoneDesc,
+            gText_Quest_HowDisappointing_Map,
+            OBJ_EVENT_GFX_AQUA_MEMBER_F,
+            OBJECT,
+            NULL,
+            0
+    ),
+    side_quest(
+            gText_Quest_LetsBurnThisMotherDown_Name,
+            gText_Quest_LetsBurnThisMotherDown_Desc,
+            gText_Quest_LetsBurnThisMotherDown_DoneDesc,
+            gText_Quest_LetsBurnThisMotherDown_Map,
+            OBJ_EVENT_GFX_WALLY,
+            OBJECT,
+            NULL,
+            0
+    ),
+    side_quest(
+            gText_Quest_Manhunt_Name,
+            gText_Quest_Manhunt_Desc,
+            gText_Quest_Manhunt_DoneDesc,
+            gText_Quest_Manhunt_Map,
+            OBJ_EVENT_GFX_ARCHIE,
+            OBJECT,
+            NULL,
+            0
+    ),
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

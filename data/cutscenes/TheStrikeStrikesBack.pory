@@ -68,32 +68,32 @@ script TheStrikeStrikesBack_PhoneCall_Dialogue {
         waitse
         pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
         waitmessage
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_HelloPlayer)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_OhHi)
 
         special(GetCurrentMap)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         if (var(VAR_TEMP_0) == 31 || var(VAR_TEMP_0) == 37 || var(VAR_TEMP_0) == 38 || var(VAR_TEMP_0) == 42){
             msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat)
         }else {
             msgbox(gText_TheStrikeStrikesBack_IKnowImLate)
         }
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_ThankYou)
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_CutToTheChase)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_SureRightNow)
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_AsSoonAsYouCan)
         callnative(ClearMugshot)
@@ -122,15 +122,15 @@ script TheStrikeStrikesBack_Intro_Dialogue {
         }else{
                 setvar(VAR_CONSTRUCTION_STRIKE_STATE,START_VS_GARBODOR)
 
-                setvar(VAR_0x8000, MUGSHOT_LANCE)
+                setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_AndCongratulations)
 
-                setvar(VAR_0x8000, MUGSHOT_HILDA)
+                setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_ISawThemOn)
 
-                setvar(VAR_0x8000, MUGSHOT_LANCE)
+                setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_WellHeresTheProblem)
                 callnative(ClearMugshot)
@@ -143,29 +143,29 @@ script TheStrikeStrikesBack_Intro_Dialogue {
 
                 call(TheStrikeStrikesBack_CrowdFacesNorth_Script)
 
-                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_MyNameIs)
                 callnative(ClearMugshot)
                 closemessage
 
-                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_WeAreFighting)
 
-                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_TheCityDoubles)
 
-                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_ManagementTriples)
 
-                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_TheCityQuadruples)
 
-                setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_TheseDemandsAreMore)
                 callnative(ClearMugshot)
@@ -182,21 +182,21 @@ script TheStrikeStrikesBack_Intro_Dialogue {
 
                 waitmovement(0)
 
-                setvar(VAR_0x8000, MUGSHOT_LANCE)
+                setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_SighOfCourse)
 
-                setvar(VAR_0x8000, MUGSHOT_HILDA)
+                setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_WaitWhatThatsInsane)
 
-                setvar(VAR_0x8000, MUGSHOT_LANCE)
+                setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_AgreedAndThats)
 
                 msgbox(gText_TheStrikeStrikesBack_ThePoliceAreWorking)
 
-            setvar(VAR_0x8000, MUGSHOT_LANCE)
+            setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_AgitatedWildGarbodor)
                 callnative(ClearMugshot)
@@ -207,7 +207,7 @@ script TheStrikeStrikesBack_Intro_Dialogue {
                 applymovement(BIANCA,TheStrikeStrikesBack_GoToPlayer)
                 waitmovement(0)
 
-                setvar(VAR_0x8000, MUGSHOT_BIANCA)
+                setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
                 callnative(DrawMugshot)
                 msgbox(gText_TheStrikeStrikesBack_IllBeInThere)
                 callnative(ClearMugshot)

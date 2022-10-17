@@ -33,7 +33,7 @@ ExhibitionBattle_PrepPlayer_Script::
 	setvar VAR_STORYLINE_STATE, STORY_SAVE_DIANTHA
 	applymovement 5, ExhibitionBattle_EncouragePlayer_Movement
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_OkayTime, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -100,7 +100,7 @@ ExhibitionBattle_PostBattle_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	setvar VAR_STORYLINE_STATE, STORY_CONGRATULATED_BY_ROSE
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_ThatWasPositively
 	checktrainerflag TRAINER_WALLACE
@@ -113,34 +113,34 @@ ExhibitionBattle_PostBattle_Dialogue_1:
 	end
 
 ExhibitionBattle_PostBattle_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_IveNeverSeen
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	goto ExhibitionBattle_PostBattle_Dialogue_1
 
 
 ExhibitionBattle_Bianca_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	compare VAR_TEMP_F, 0
 	goto_if_gt ExhibitionBattle_Bianca_Dialogue_2
 	setvar VAR_TEMP_F, 1
 	msgbox gText_ExhibitionBattle_SickBattleOut
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_YeahIHeardALittle
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_ImHeadingUpTheir
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_IsntThat
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_IveBeenWorkignWith
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_IThinkYoureGonna
 	return
@@ -152,28 +152,28 @@ ExhibitionBattle_Bianca_Dialogue_2:
 
 ExhibitionBattle_Sabrina_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_SABRINA
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_IDidntSeeYour, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_UhhThanks
-	setvar VAR_0x8000, MUGSHOT_SABRINA
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_YourWorkDismantling
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_ImHappy
-	setvar VAR_0x8000, MUGSHOT_SABRINA
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_WithTheirEntireLeadership
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_WaitTheEliteFour
-	setvar VAR_0x8000, MUGSHOT_SABRINA
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_NotReallyItsASlight
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ExhibitionBattle_NowUhYoureWelcome
 	callnative ClearMugshot

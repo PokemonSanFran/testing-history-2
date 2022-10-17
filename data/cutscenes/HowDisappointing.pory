@@ -80,14 +80,14 @@ waitmovement(POLICEC)
 
 msgbox(gText_HowDisappointing_OhAndChampion)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_YeahQuestion)
     callnative(ClearMugshot)
 
 msgbox(gText_HowDisappointing_TryToNotLet)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_Yeah)
     callnative(ClearMugshot)
@@ -174,27 +174,27 @@ script HowDisappointing_Interfact_Ariana_Script {
     }
 
     setvar(VAR_HOW_DISAPPOINTING_STATE,SAVED_BEFORE_ARIANA)
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+    setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_HowDisappointing,MSGBOX_NPC)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_ImTiredOfYou)
 
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+    setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_IveNeverLied)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_ThenWhyAreYou)
 
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+    setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_TheseCompanies)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_AllISeeIs)
     callnative(ClearMugshot)
@@ -205,7 +205,7 @@ msgbox(gText_HowDisappointing_AllISeeIs)
 
 script HowDisappointing_StartBattle_Script {
     lock
-    setvar(VAR_0x8000, MUGSHOT_ARIANA)
+    setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
     callnative(DrawMugshot)
 msgbox(gText_HowDisappointing_SighHowDisappointing,MSGBOX_NPC)
     callnative(ClearMugshot)
@@ -258,7 +258,7 @@ script HowDisappointing_MissionComplete_Dialogue {
     lock
     applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(0)
-    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_HowDisappointing_ExcellentWorkEverybody)
     callnative(ClearMugshot)

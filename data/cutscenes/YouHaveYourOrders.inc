@@ -8,14 +8,14 @@ YouHaveYourOrders_ObjectSetUp_Script::
 YouHaveYourOrders_Assignment_Dialogue::
 	compare VAR_HOW_DISAPPOINTING_STATE, 0
 	goto_if_ne YouHaveYourOrders_Assignment_Dialogue_2
-	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_NOT_ASSIGNED
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_ASSIGNED
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_AreYouSure, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_ItCantBeTougher
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_HmmGoodPoint
 	callnative ClearMugshot
@@ -30,19 +30,19 @@ YouHaveYourOrders_Assignment_Dialogue::
 YouHaveYourOrders_Assignment_Dialogue_4:
 	applymovement 14, YouHaveYourOrders_PaceInOffice
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_LawEnforcementHasConfirmed
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_WhyAllAtOnce
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_ThatWouldCompletelyCut
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_CongratsYoureanAsshole_OhWoWYouGuys
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_CorrectEachOfUs
 	compare VAR_STORYLINE_STATE, STORY_START_FALSE_TIMELINE
@@ -53,17 +53,17 @@ YouHaveYourOrders_Assignment_Dialogue_10:
 YouHaveYourOrders_Assignment_Dialogue_13:
 	applymovement 14, YouHaveYourOrders_LookOutWindow
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_ThankYouAsUsual
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_IStillFeelLike
 	callnative ClearMugshot
 	closemessage
 	applymovement 14, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_InCaseYouHavent
 	callnative ClearMugshot
@@ -71,21 +71,21 @@ YouHaveYourOrders_Assignment_Dialogue_13:
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_YouWereAGym
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_ItWasOneOfMyGreatest
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_WasThatHard
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_AtTheTimeNo
 	applymovement 14, YouHaveYourOrders_LookOutWindow
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_ICouldGoShut
 	callnative ClearMugshot
@@ -110,19 +110,19 @@ YouHaveYourOrders_Assignment_Dialogue_6:
 	goto YouHaveYourOrders_Assignment_Dialogue_4
 
 YouHaveYourOrders_Assignment_Dialogue_11:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_TheyInvolved
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_WeHiredThem
 	goto YouHaveYourOrders_Assignment_Dialogue_10
 
 YouHaveYourOrders_Assignment_Dialogue_14:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_WhatAbout
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_OurIntelligenceTells
 	goto YouHaveYourOrders_Assignment_Dialogue_13

@@ -16,18 +16,18 @@ OldAssholeAppears_WalktoBianca_Script_2:
 
 OldAssholeAppears_Intro_Dialogue::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	applymovement 1, Common_Movement_FaceDown
 	msgbox gText_OldAssholeAppears_StandingOnVolcano
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_ImSorryWhat
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_RegionCloseFaultline
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_DontKnowMagical
 	goto OldAssholeAppears_HealPlayer_Dialogue
@@ -36,15 +36,15 @@ OldAssholeAppears_Intro_Dialogue::
 
 OldAssholeAppears_HealPlayer_Dialogue::
 	setvar VAR_LOMBARDSTREET_STATE, NOT_SEEN_BIANCA_LOMBARD
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_IllHealYou
 	playse SE_USE_ITEM
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_OhUhThanks
 	special HealPlayerParty
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_DaddyShippedFullRestores
 	callnative ClearMugshot
@@ -63,7 +63,7 @@ OldAssholeAppears_Interact_Script::
 
 OldAssholeAppears_StartBattle_Script::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_HowFarBehind
 	closemessage
@@ -77,15 +77,15 @@ OldAssholeAppears_StartBattle_Script::
 OldAssholeAppears_GiveCorviknightCard_Script::
 	lockall
 	applymovement 1, Common_Movement_FacePlayer
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_TakingThisAllSeriously
 	callnative ClearMugshot
 	giveitem ITEM_SS_TICKET
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_FamiliarWith, MSGBOX_YESNO
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	compare VAR_RESULT, 1
 	goto_if_eq OldAssholeAppears_GiveCorviknightCard_Script_2
@@ -93,10 +93,10 @@ OldAssholeAppears_GiveCorviknightCard_Script::
 OldAssholeAppears_GiveCorviknightCard_Script_1:
 	msgbox gText_OldAssholeAppears_LetsYouUse
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_YouveBeenSuperNice
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_NowWereEven
 	callnative ClearMugshot

@@ -58,28 +58,28 @@ applymovement(PLAYER,Common_Movement_FaceUp)
     delay(25)
 msgbox(gText_SurvivalChance333_HeresThe)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
+setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_IsSomethingWrong)
 callnative(ClearMugshot)
 
 msgbox(gText_SurvivalChance333_ISpent15Years)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
+setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_WoahWerePlentyTough)
 callnative(ClearMugshot)
 
 msgbox(gText_SurvivalChance333_RightKidsWithZero)
 
-setvar(VAR_0x8000, MUGSHOT_HILDA)
+setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_HeyWeDidntAsk)
 callnative(ClearMugshot)
 
 msgbox(gText_SurvivalChance333_AndIDidntAsk)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
+setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_IllProveIt)
 callnative(ClearMugshot)
@@ -97,7 +97,7 @@ goto(SurvivalChance333_PostBattle_Script)
 
 script SurvivalChance333_PostBattle_Script {
 setvar(VAR_FERRYBUILDING_STATE,DEFEATED_SURVIVAL_CHANCE_BATTLE)
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
+setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_DoYouGetItNow)
 callnative(ClearMugshot)
@@ -197,14 +197,14 @@ waitmovement(0)
 
 msgbox(gText_SurvivalChance333_SoThatsThePlan)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
+setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_OneProblemForUs)
 callnative(ClearMugshot)
 
 msgbox(gText_SurvivalChance333_HereWeGo)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
+setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_IKnowWereSupposed)
 callnative(ClearMugshot)
@@ -234,14 +234,14 @@ goto(SurvivalChance333_TacticalPlan_Cutscene_Script)
 script SurvivalChance333_TacticalPlan_Cutscene_Script {
     lock
     call(SurvivalChance333_MoveCameraFreeze_Script)
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
+setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_ThoseRoutesFrozen)
 callnative(ClearMugshot)
 closemessage
 
 call(SurvivalChance333_MoveCameraLava_Script)
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
+setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_MeltingTheBedrock)
 callnative(ClearMugshot)
@@ -252,7 +252,7 @@ call(SurvivalChance333_SetUpRaidObject_Script)
 TeleportCamera(24,11)
 fadescreen(FADE_FROM_BLACK)
 
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
+setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_TheyllBlowTheWall)
 callnative(ClearMugshot)
@@ -268,7 +268,7 @@ special(ShakeCamera)
 waitstate
 
 call(SurvivalChance333_BlowOpenDoors)
-setvar(VAR_0x8000, MUGSHOT_BIANCA)
+setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
 callnative(DrawMugshot)
 msgbox(gText_SurvivalChance333_Showtime)
 callnative(ClearMugshot)

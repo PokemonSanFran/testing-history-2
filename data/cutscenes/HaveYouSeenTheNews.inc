@@ -7,24 +7,24 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachSiebold
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_HaveYouSeenTheNews_WedLikeYourHelp
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_HaveYouSeenTheNews_ShitWhatDid
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_HaveYouSeenTheNews_YoureStartingToSound
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_HaveYouSeenTheNews_HowAreWeGoing
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_HaveYouSeenTheNews_NoTimeToExplain, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq HaveYouSeenTheNews_AskHelp_Dialogue_1
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_HaveYouSeenTheNews_CoolTheCar
 	callnative ClearMugshot
@@ -34,7 +34,7 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	end
 
 HaveYouSeenTheNews_AskHelp_Dialogue_1:
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_HaveYouSeenTheNews_FineButDontDawdle
 	callnative ClearMugshot

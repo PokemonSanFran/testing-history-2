@@ -57,7 +57,7 @@ script WarehouseRave_LockDoors_Script {
 
 script WarehouseRave_Intro_Dialogue {
     lock
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_IsThisPlace)
         closemessage
@@ -68,7 +68,7 @@ script WarehouseRave_Intro_Dialogue {
         applymovement(PLAYER,Common_Movement_ExclamationMark)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_WhatTheHell)
         closemessage
@@ -79,23 +79,23 @@ script WarehouseRave_Intro_Dialogue {
         applymovement(KOGA,WarehouseRave_WalkOutShadows)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_ImSorryWeHad)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_WhyAmITrapped)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_HasBeenPredicting)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_SoIDecideTo)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_HasInstructed)
         callnative(ClearMugshot)
@@ -116,7 +116,7 @@ script Warehourse_Interact_Script {
 
 script WarehouseRave_Battle_Script {
     lock
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_PrepareToFight)
         trainerbattle_no_intro(TRAINER_TABITHA_MT_CHIMNEY,gText_WarehouseRave_YesTheyllBelieve)
@@ -129,23 +129,23 @@ script WarehouseRave_PostBattle_Script {
     lock
         setvar(VAR_WAREHOUSE_RAVE_STATE,DEFEATED_KOGA_OAKLAND)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_IFailedToKill)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_JustLike)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_YouNeedToGet)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_WaitWhyAreYou)
 
-        setvar(VAR_0x8000, MUGSHOT_N)
+        setvar(VAR_MUGSHOT, MUGSHOT_N)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_Now)
         callnative(ClearMugshot)
@@ -167,19 +167,19 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         applymovement(ARCHER,WarehouseRave_RunToPlayer)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_WhenIGotHere)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_ItWasATrap)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_HolyShitThatWas)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_TheBattleFelt)
         callnative(ClearMugshot)
@@ -188,11 +188,11 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         applymovement(PLAYER,Common_Movement_FaceDown)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_AndThenHeToldMe)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_ThatDoesntMake)
         callnative(ClearMugshot)
@@ -201,19 +201,19 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         applymovement(PLAYER,Common_Movement_FaceRight)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_WhatDoYouMean)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_CameToTown)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_MaybeItIsGuilt)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_WhateverImGlad)
 

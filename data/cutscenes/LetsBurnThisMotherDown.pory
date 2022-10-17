@@ -1,78 +1,99 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const OAK = 9 
-const BIANCA = 10 
-const ROSE = 11 
-const KOGA = 14 
-const SABRINA = 2 
+const ARNAV = 1
+const OLIVER = 2
+const OAK = 3
+const BIANCA = 4
+const ROSE = 5
+const MAYOR = 6
+const CHIEF = 7
+const SABRINA = 8
+const KOGA = 9
+
+const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_3
+const FLAG_HIDE_ROSE = FLAG_TEMP_4
+const FLAG_HIDE_SABRINA = FLAG_TEMP_5
+const FLAG_HIDE_KOGA = FLAG_TEMP_6
+
 const ARCHER = 5
 const BIANCA_ALCATRAZ = 6
 const POLICE_A = 7
 const POLICE_B = 8
 
-const FLAG_HIDE_OAK = FLAG_TEMP_3
-const FLAG_HIDE_BIANCA = FLAG_TEMP_8
 const FLAG_HIDE_BIANCA_ALCATRAZ = FLAG_TEMP_6
 const FLAG_HIDE_POLICE = FLAG_TEMP_7
-const FLAG_HIDE_ROSE =  FLAG_TEMP_5
-const FLAG_HIDE_KOGA =  FLAG_TEMP_4
-const FLAG_HIDE_SABRINA =  FLAG_TEMP_1
 const FLAG_HIDE_ARCHER_ALCATRAZ = FLAG_TEMP_5
 
-script LetsBurnThisMotherDown_ObjectSetUp_Script {
-    setobjectxy(SABRINA,8,6)
-        setobjectxyperm(SABRINA,8,6)
-        setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_UP)
-}
-
-script LetsBurnThisMotherDown_ObjectMove_Script {
-    clearflag(FLAG_HIDE_ROSE)
-    addobject(ROSE)
-    setobjectxyperm(ROSE,11,12)
-    setobjectmovementtype(ROSE,MOVEMENT_TYPE_FACE_LEFT)
-}
 
 script LetsBurnThisMotherDown_ObjectShow_Script {
     clearflag(FLAG_HIDE_ARCHER_ALCATRAZ)
-    setflag(FLAG_TEMP_6)
-    setflag(FLAG_TEMP_7)
-    addobject(5)
-    setobjectxy(5,1,8)
-    setobjectxyperm(5,1,8)
+    setflag(FLAG_HIDE_BIANCA_ALCATRAZ)
+    setflag(FLAG_HIDE_POLICE)
+    addobject(ARCHER)
+    setobjectxy(ARCHER,1,8)
+    setobjectxyperm(ARCHER,1,8)
 }
     
-
 script LetsBurnThisMotherDown_ObjectHide_Script {
     setflag(FLAG_HIDE_ARCHER_ALCATRAZ)
     setflag(FLAG_HIDE_BIANCA_ALCATRAZ)
     setflag(FLAG_HIDE_POLICE)
 }
 
-script LetsBurnThisMotherDown_Assignment_Dialogue {
+script LetsBurnThisMotherDown_Interact_Oak_Script{
+    returnqueststate(QUEST_LETS_BURN_THIS_MOTHER_DOWN)
 
-    if (var(VAR_LETS_BURN_THIS_MOTHER_STATE)){
-        msgbox("...")
-        closemessage
-        end
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(LetsBurnThisMotherDown_ActiveQuest_Dialogue)
+        case QUEST_MENU_COMPLETE_QUEST: goto(LetsBurnThisMotherDown_CompleteQuest_Dialogue)
+        default: goto(LetsBurnThisMotherDown_StartQuest_Dialogue)
     }
+}
+
+script LetsBurnThisMotherDown_ActiveQuest_Dialogue{
+    msgbox(gText_LetsBurnThisMotherDown_YoureCloserToThe,MSGBOX_NPC)
+    end
+}
+
+script LetsBurnThisMotherDown_CompleteQuest_Dialogue{
+    msgbox(gText_LetsBurnThisMotherDown_ImStillShocked,MSGBOX_NPC)
+    end
+}
+
+script LetsBurnThisMotherDown_StartQuest_Dialogue{
     setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,ASSIGNED_BURN_MOTHER)
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_WeStillNeedToFind,MSGBOX_NPC)
 
         msgbox(gText_LetsBurnThisMotherDown_YoureCloserToThe)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_INeedToTalk)
         callnative(ClearMugshot)
+        startquest(QUEST_LETS_BURN_THIS_MOTHER_DOWN)
         closemessage
+        release
+        end
+}
+
+script LetsBurnThisMotherDown_CheckActiveQuest_Script{
+        goto_if_quest_active(QUEST_LETS_BURN_THIS_MOTHER_DOWN, LetsBurnThisMotherDown_ConfrontPlayer)
         release
         end
 }
 
 script LetsBurnThisMotherDown_ConfrontPlayer {
         lock
+
+        if (var(VAR_LETS_BURN_THIS_MOTHER_STATE) == SAVE_ARCHER_ALCATRAZ){
+            release
+            end
+        }
+
         setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,SAVE_ARCHER_ALCATRAZ)
 
         clearflag(FLAG_HIDE_ARCHER_ALCATRAZ)
@@ -83,15 +104,15 @@ script LetsBurnThisMotherDown_ConfrontPlayer {
         applymovement(ARCHER,LetsBurnThisMotherDown_WalkTowardsPlayer)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_YouChoseTheWrong)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_IKnowYouWant)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_YouDontThinkWeve)
         closemessage
@@ -100,15 +121,15 @@ script LetsBurnThisMotherDown_ConfrontPlayer {
         applymovement(ARCHER,Common_Movement_WalkDown)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_TheyIgnoreUs)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_DotDotDot)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_IAlwaysHeld)
 
@@ -128,7 +149,7 @@ script LetsBurnThisMotherDown_StartBattle_Script {
     }
     waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_ImGoingForRevolution)
         closemessage
@@ -139,8 +160,9 @@ script LetsBurnThisMotherDown_StartBattle_Script {
 
 script LetsBurnThisMotherDown_PostBattle_Dialogue {
         setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,DEFEATED_ARCHER_ALCATRAZ)
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_LETS_BURN_THIS_MOTHER_DOWN)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_ItDoesntMatter)
         callnative(ClearMugshot)
@@ -149,11 +171,11 @@ script LetsBurnThisMotherDown_PostBattle_Dialogue {
         applymovement(ARCHER,LetsBurnThisMotherDown_WalkBackwards)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_ItsNotFair)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_HyperBeam)
         callnative(ClearMugshot)
@@ -172,27 +194,27 @@ script LetsBurnThisMotherDown_PostBattle_Dialogue {
         applymovement(6,LetsBurnThisMotherDown_Attack)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_WhatTheHell)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_IFollowedYou)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_NoITheyreNot)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_YeahNoShit)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_IKnow)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_TheCopsShould)
         callnative(ClearMugshot)
@@ -207,35 +229,56 @@ script LetsBurnThisMotherDown_PostBattle_Dialogue {
         
         fadescreen(FADE_TO_BLACK)
         fadedefaultbgm
-        warpsilent(MAP_SALESFORCETOWER_2F,255,10,12)
+        warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,34,5)
         release
         end
 }
 
+script LetsBurnThisMother_ShowRose_Script{
+    setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_NERDS_COPS)
+
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_LETS_BURN_THIS_MOTHER_DOWN)
+    if(!var(VAR_RESULT)){
+        setflag(FLAG_HIDE_ROSE)
+    }
+
+    setobjectxy(ROSE,33,5)
+    setobjectxyperm(ROSE,33,5)
+    setobjectmovementtype(ROSE,MOVEMENT_TYPE_FACE_RIGHT)
+}
+
 script LetsBurnThisMotherDown_MissionComplete_Dialogue {
     lock
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_ImSorryIReally)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_YoureYoung)
+        callnative(ClearMugshot)
+        closemessage
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        applymovement(ROSE,Common_Movement_FaceUp)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_ImStillShocked)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_LetsBurnThisMotherDown_ThePoliceTold)
         closemessage
         callnative(ClearMugshot)
-        setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,BURN_MOTHER_COMPLETE)
         addvar(VAR_STORYLINE_STATE,1)
         applymovement(ROSE,LetsBurnThisMotherDown_LeaveRoom)
         waitmovement(ROSE)
         removeobject(ROSE)
+        completequest(QUEST_LETS_BURN_THIS_MOTHER_DOWN)
+        setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,BURN_MOTHER_COMPLETE)
         release
         call(ExhibitionBattle_TimeSkip_Script)
         end
@@ -310,8 +353,7 @@ text gText_LetsBurnThisMotherDown_NoITheyreNot {
 }
 
 text gText_LetsBurnThisMotherDown_YeahNoShit {
-    format("Yeah, no shit! None of these people can be trusted. Ugh, {PLAYER}
-            , you could have gotten seriously hurt.")
+    format("Yeah, no shit! None of these people can be trusted. Ugh, {PLAYER}, you could have gotten seriously hurt.")
 }
 
 text gText_LetsBurnThisMotherDown_IKnow {

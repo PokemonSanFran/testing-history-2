@@ -37,46 +37,46 @@ YouCantStopMe_MoveOakPlayer_Script::
 
 YouCantStopMe_LastChance_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_Wait
 	callnative ClearMugshot
 	closemessage
 	call YouCantStopMe_MoveOakPlayer_Script
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_PleaseItIsntToo
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_PeopleOnDied
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_YesItsUnforuntate
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_DoYouReally
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_IKnowYouWant
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_LookAtTheJobs
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_WeveWorkedVeryHard
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_EverybodyDeservesAGoodLife
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_DotDotDot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_TheyreNotMurderers
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_DotDotDot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_IThoughtSo
 	closemessage
@@ -94,31 +94,31 @@ YouCantStopMe_LastChance_Dialogue::
 YouCantStopMe_Confront_Dialogue::
 	lock
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, TRUE
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_WhatDoYouWant, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_OneMassCasualty
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_HahIThinkMass
 	callnative ClearMugshot
 	closemessage
 	applymovement 4, Common_Movement_FaceUp
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_DidYouEverCare
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_ImNotJustifying
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_YouReallyDontGive
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_NopeIDoWish
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_JustAGlorified
 	callnative ClearMugshot
@@ -152,7 +152,7 @@ YouCantStopMe_Confront_Dialogue_2:
 
 
 YouCantStopMe_StartBossBattle_Script::
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_YouCantStopMe_YouWere, MSGBOX_NPC
 	closemessage

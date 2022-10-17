@@ -34,7 +34,7 @@ TwoHoursAgo_FashionCaseReminder_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhatOutfitDoYou
 	callnative ClearMugshot

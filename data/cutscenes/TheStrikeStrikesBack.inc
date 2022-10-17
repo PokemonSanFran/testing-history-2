@@ -68,14 +68,14 @@ TheStrikeStrikesBack_PhoneCall_Dialogue::
 	waitse
 	pokenavcall TheStrikeStrikesBack_PhoneCall_Dialogue_Text_0
 	waitmessage
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_HelloPlayer
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_OhHi
 	special GetCurrentMap
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	compare VAR_TEMP_0, 31
 	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
@@ -87,16 +87,16 @@ TheStrikeStrikesBack_PhoneCall_Dialogue::
 	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
 	msgbox gText_TheStrikeStrikesBack_IKnowImLate
 TheStrikeStrikesBack_PhoneCall_Dialogue_1:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_ThankYou
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_CutToTheChase
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_SureRightNow
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AsSoonAsYouCan
 	callnative ClearMugshot
@@ -127,13 +127,13 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	compare VAR_TEMP_0, 21
 	goto_if_ne TheStrikeStrikesBack_Intro_Dialogue_1
 	setvar VAR_CONSTRUCTION_STRIKE_STATE, START_VS_GARBODOR
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AndCongratulations
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_ISawThemOn
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_WellHeresTheProblem
 	callnative ClearMugshot
@@ -143,24 +143,24 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	applymovement 5, TheStrikeStrikesBack_WalkIntoFrame
 	waitmovement 0
 	call TheStrikeStrikesBack_CrowdFacesNorth_Script
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_MyNameIs
 	callnative ClearMugshot
 	closemessage
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_WeAreFighting
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_TheCityDoubles
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_ManagementTriples
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_TheCityQuadruples
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_TheseDemandsAreMore
 	callnative ClearMugshot
@@ -174,17 +174,17 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	applymovement 7, Common_Movement_FaceLeft
 	applymovement 6, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_SighOfCourse
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_WaitWhatThatsInsane
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AgreedAndThats
 	msgbox gText_TheStrikeStrikesBack_ThePoliceAreWorking
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_AgitatedWildGarbodor
 	callnative ClearMugshot
@@ -193,7 +193,7 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	waitmovement 0
 	applymovement 1, TheStrikeStrikesBack_GoToPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_IllBeInThere
 	callnative ClearMugshot

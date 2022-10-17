@@ -92,19 +92,19 @@ WhyAreYouHelpingThem_StartRaid::
 	waitmovement 0
 	msgbox gText_WhyAreYouHelpingThem_StructuralBreach, MSGBOX_AUTOCLOSE
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_DefenseMode
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WeShouldRedefine
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_LetsSplitUp
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WhaFineIllTry
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_SeeYa
 	callnative ClearMugshot
@@ -125,7 +125,7 @@ WhyAreYouHelpingThem_WitnessBattle::
 	applymovement 3, WhyAreYouHelpingThem_FleeTheBattle
 	waitmovement 0
 	call WhyAreYouHelpingThem_MoveObjectBoss_Script
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_GoAfterIllHold
 	callnative ClearMugshot
@@ -139,14 +139,14 @@ WhyAreYouHelpingThem_PreBattleBoss_Script::
 	applymovement 3, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_ApproachGiovanni
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_ItsAShameThatThe
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, Common_Movement_WalkLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_ButBeatingYou
 	callnative ClearMugshot
@@ -162,11 +162,11 @@ WhyAreYouHelpingThem_PostBattleBoss_Dialogue::
 	call WhyAreYouHelpingThem_MoveObjectAriana_Script
 	checktrainerflag TRAINER_ARCHIE
 	goto_if 1, WhyAreYouHelpingThem_PostBattleBoss_Dialogue_2
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_IDidntEvenTouch
 WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1:
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_ImSorryYouHad
 	callnative ClearMugshot
@@ -175,7 +175,7 @@ WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1:
 	applymovement 3, WhyAreYouHelpingThem_HealAndFaceAdmin
 	waitmovement 0
 	call Common_EventScript_OutOfCenterPartyHeal
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_IHandledTheBrat
 	callnative ClearMugshot
@@ -184,13 +184,13 @@ WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1:
 	waitse
 	applymovement 2, WhyAreYouHelpingThem_ExclaimAndFacePlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_DamnYouToo
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WhatWasAllThatShit
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WeveGotToHelp
 	callnative ClearMugshot
@@ -202,7 +202,7 @@ WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1:
 	return
 
 WhyAreYouHelpingThem_PostBattleBoss_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_YoureIncredible
 	closemessage
@@ -210,7 +210,7 @@ WhyAreYouHelpingThem_PostBattleBoss_Dialogue_2:
 	applymovement 3, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	giveitem ITEM_MASTER_BALL, 1
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_AndNowWeHave
 	goto WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1
@@ -232,19 +232,19 @@ WhyAreYouHelpingThem_ExplodeWall_Script::
 	addobject 4
 	applymovement 4, WhyAreYouHelpingThem_WalkOutOfHole
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_ThisPlaceIs
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WeCantLeavePeople
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WeDontHaveTime
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_IThinkTheyreRight
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_Sigh
 	callnative ClearMugshot
@@ -258,7 +258,7 @@ WhyAreYouHelpingThem_ExplodeWall_Script::
 	removeobject 3
 	applymovement 4, WhyAreYouHelpingThem_ApproachPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_YoureWorkingWith
 	callnative ClearMugshot
@@ -276,7 +276,7 @@ WhyAreYouHelpingThem_InteractBattle_Script::
 
 WhyAreYouHelpingThem_StartBattle_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_AlwaysHaveBeen
 	trainerbattle_no_intro TRAINER_WALLY_VR_2, gText_WhyAreYouHelpingThem_AnotherVictory
@@ -288,13 +288,13 @@ WhyAreYouHelpingThem_StartBattle_Script::
 
 WhyAreYouHelpingThem_PostBattle_Dialogue::
 	setvar VAR_NAVALBASE_STATE, DEFEATED_ARCHER_NAVALBASE
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_TellsMeYoureAll
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WhyWouldIt
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_Player
 	callnative ClearMugshot
@@ -309,10 +309,10 @@ WhyAreYouHelpingThem_PostBattle_Dialogue::
 	addobject 1
 	applymovement 1, WhyAreYouHelpingThem_RunToPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_IGotKnockedOut
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_NoILostToo
 	callnative ClearMugshot
@@ -349,22 +349,22 @@ WhyAreYouHelpingThem_MissionDebrief_Dialogue::
 WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_WalkIntoHome
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WhatADay
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_ItWasADay
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_OhThatWasFast
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_DontWorryAboutIt
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_NowIveGotALot
 	callnative ClearMugshot
@@ -374,7 +374,7 @@ WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 2
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_WeveAllGot
 	callnative ClearMugshot

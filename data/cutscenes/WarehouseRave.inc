@@ -74,7 +74,7 @@ WarehouseRave_LockDoors_Script::
 
 WarehouseRave_Intro_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_IsThisPlace
 	closemessage
@@ -83,7 +83,7 @@ WarehouseRave_Intro_Dialogue::
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhatTheHell
 	closemessage
@@ -92,19 +92,19 @@ WarehouseRave_Intro_Dialogue::
 	addobject 1
 	applymovement 1, WarehouseRave_WalkOutShadows
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_ImSorryWeHad
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhyAmITrapped
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_HasBeenPredicting
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_SoIDecideTo
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_HasInstructed
 	callnative ClearMugshot
@@ -126,7 +126,7 @@ Warehourse_Interact_Script::
 
 WarehouseRave_Battle_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_PrepareToFight
 	trainerbattle_no_intro TRAINER_TABITHA_MT_CHIMNEY, gText_WarehouseRave_YesTheyllBelieve
@@ -139,19 +139,19 @@ WarehouseRave_Battle_Script::
 WarehouseRave_PostBattle_Script::
 	lock
 	setvar VAR_WAREHOUSE_RAVE_STATE, DEFEATED_KOGA_OAKLAND
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_IFailedToKill
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_JustLike
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_YouNeedToGet
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WaitWhyAreYou
-	setvar VAR_0x8000, MUGSHOT_N
+	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_Now
 	callnative ClearMugshot
@@ -172,42 +172,42 @@ WarehouseRave_OutsideWarehouse_Dialogue::
 	waitmovement 0
 	applymovement 1, WarehouseRave_RunToPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhenIGotHere
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_ItWasATrap
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_HolyShitThatWas
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_TheBattleFelt
 	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_AndThenHeToldMe
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_ThatDoesntMake
 	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhatDoYouMean
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_CameToTown
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_MaybeItIsGuilt
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhateverImGlad
 	compare VAR_STORYLINE_STATE, 102

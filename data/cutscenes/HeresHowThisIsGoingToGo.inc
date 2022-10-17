@@ -86,26 +86,26 @@ HeresHowThisIsGoingToGo_ExplainLeagueDialogue::
 	applymovement 2, Common_Movement_FaceUp
 	applymovement 3, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_HeresHowThisIsGoingToGo_CongratulationsOnAll
 	callnative ClearMugshot
 	msgbox gText_HeresHowThisIsGoingToGo_WooYay
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_HeresHowThisIsGoingToGo_ImSureNone
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_HeresHowThisIsGoingToGo_WaitIDid
 	callnative ClearMugshot
 	msgbox gText_HeresHowThisIsGoingToGo_DotDotDot
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_HeresHowThisIsGoingToGo_SoIllGoOver
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, Common_Movement_FaceLeft
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_HeresHowThisIsGoingToGo_YourGroupsAnd
 	callnative ClearMugshot

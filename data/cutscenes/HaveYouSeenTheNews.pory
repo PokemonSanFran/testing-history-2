@@ -15,28 +15,28 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
     applymovement(PLAYER, EnterTheMaster_ApproachSiebold)
     waitmovement(0)
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_HaveYouSeenTheNews_WedLikeYourHelp)
 
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
     callnative(DrawMugshot)
     msgbox(gText_HaveYouSeenTheNews_ShitWhatDid)
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE) callnative(DrawMugshot)
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE) callnative(DrawMugshot)
     msgbox(gText_HaveYouSeenTheNews_YoureStartingToSound)
 
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
     callnative(DrawMugshot)
     msgbox(gText_HaveYouSeenTheNews_HowAreWeGoing)
 
-    setvar(VAR_0x8000, MUGSHOT_LANCE)
+    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
     callnative(DrawMugshot)
     msgbox(gText_HaveYouSeenTheNews_NoTimeToExplain, MSGBOX_YESNO)
 
     if (var (VAR_RESULT) == NO) {
 
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
+        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_HaveYouSeenTheNews_FineButDontDawdle)
         callnative(ClearMugshot)
@@ -50,7 +50,7 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
         removeobject(BIANCA)
         removeobject(OAK)
     } else {
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_HaveYouSeenTheNews_CoolTheCar)
         callnative(ClearMugshot)

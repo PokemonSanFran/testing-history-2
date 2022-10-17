@@ -1,20 +1,2 @@
-TheStrikeStrikesBack:63:        addvar(VAR_STORYLINE_STATE,1)
-ThisIsntRandom:9:    addvar(VAR_TEMP_C,1)
-WaitYouWentWhere:92:        addvar(VAR_ROUTE104_STATE,1)
-WarehouseRave:104:        addvar(VAR_WAREHOUSE_RAVE_STATE,1)
-WarehouseRave:130:        addvar(VAR_WAREHOUSE_RAVE_STATE,1)
-WarehouseRave:233:        addvar(VAR_STORYLINE_STATE,1)
-WarehouseRave:234:        addvar(VAR_WAREHOUSE_RAVE_STATE,1)
-WhyAreYouHelpingThem:135:    addvar(VAR_ROUTE118_STATE,1)
-WhyAreYouHelpingThem:176:        addvar(VAR_ROUTE118_STATE,1)
-WhyAreYouHelpingThem:319:        addvar(VAR_ROUTE118_STATE,1)
-WhyAreYouHelpingThem:354:        addvar(VAR_ALAMEDA_STATE,1)
-WhyAreYouHelpingThem:361:        addvar(VAR_ALAMEDA_STATE,1)
-WhyAreYouHelpingThem:363:        addvar(VAR_LITTLEROOT_INTRO_STATE,1)
-WhyAreYouHelpingThem:439:        addvar(VAR_PLAYER_HOME_STATE,1)
-WhyAreYouHelpingThem:445:        addvar(VAR_ALAMEDA_STATE,1) //advance Alameda forward to clean up raid damage
-WhyAreYouHelpingThem:452:            addvar(VAR_STORYLINE_STATE,1)
-WhyAreYouHelpingThem:88:        addvar(VAR_ROUTE118_STATE,1)
-WhyDidntYouRatMeOut:217:    addvar(VAR_STORYLINE_STATE,1)
-YouHaveYourOrders:21:    addvar(VAR_HOW_DISAPPOINTING_STATE,1)
-YouLookTired:153:        addvar(VAR_FORTPOINT_STATE,1)
+grep: ../../pkmnsnfrn/data/cutscenes: No such file or directory
+grep: .pory: No such file or directory

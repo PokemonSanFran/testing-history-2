@@ -473,6 +473,21 @@ extern const u8 gText_Quest_RestoreToTheirFormerGlory_Desc[];
 extern const u8 gText_Quest_RestoreToTheirFormerGlory_DoneDesc[];
 extern const u8 gText_Quest_RestoreToTheirFormerGlory_Map[];
 
+extern const u8 gText_Quest_HowDisappointing_Name[];
+extern const u8 gText_Quest_HowDisappointing_Desc[];
+extern const u8 gText_Quest_HowDisappointing_DoneDesc[];
+extern const u8 gText_Quest_HowDisappointing_Map[];
+
+extern const u8 gText_Quest_LetsBurnThisMotherDown_Name[];
+extern const u8 gText_Quest_LetsBurnThisMotherDown_Desc[];
+extern const u8 gText_Quest_LetsBurnThisMotherDown_DoneDesc[];
+extern const u8 gText_Quest_LetsBurnThisMotherDown_Map[];
+
+extern const u8 gText_Quest_Manhunt_Name[];
+extern const u8 gText_Quest_Manhunt_Desc[];
+extern const u8 gText_Quest_Manhunt_DoneDesc[];
+extern const u8 gText_Quest_Manhunt_Map[];
+
 //subquests
 extern const u8 gText_Quest_HauntABuilding_Sub1_Name[];
 extern const u8 gText_Quest_HauntABuilding_Sub1_Desc[];

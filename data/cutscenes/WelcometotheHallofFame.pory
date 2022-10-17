@@ -17,7 +17,7 @@ script WelcomeToTheHallOfFame_PostBattle_Dialogue {
         applymovement(ARCHER,WelcomeToTheHallOfFame_WalkOutOfWay)
         waitmovement(ROSE)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheHallOfFame_ToTheHundreds)
         callnative(ClearMugshot)
@@ -35,7 +35,7 @@ script WelcomeToTheHallOfFame_PostBattle_Dialogue {
         TeleportCamera(9,6)
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_WelcomeToTheHallOfFame_AndNowLetsCreate)
         callnative(ClearMugshot)

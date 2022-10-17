@@ -25,7 +25,7 @@ LockedOut_PreventPlayer_Script_5:
 
 LockedOut_PhoneCall_Dialogue::
 	setflag FLAG_LOCKEDOUT_PLAYED
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LockedOut_ShitWait
 	callnative ClearMugshot
@@ -42,16 +42,16 @@ LockedOut_PhoneCall_Dialogue::
 	waitse
 	pokenavcall LockedOut_PhoneCall_Dialogue_Text_0
 	waitmessage
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LockedOut_HeyIWasThinking
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LockedOut_ImLockedOut
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LockedOut_ThatsActuallyWhy
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LockedOut_IActuallyHadnt
 	closemessage

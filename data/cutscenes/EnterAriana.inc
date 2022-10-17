@@ -83,24 +83,24 @@ EnterAriana_PreventPlayerProgress_Dialogue_8:
 EnterAriana_Intro_Dialogue::
 	lockall
 	msgbox gText_EnterAriana_WhoTheHell
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_NoSorry
 	callnative ClearMugshot
 	msgbox gText_EnterAriana_TryingToHelpEverybody
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_ImNotInLine
 	callnative ClearMugshot
 	msgbox gText_EnterAriana_SwearToArceus
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_WaitListen
 	callnative ClearMugshot
 	msgbox gText_EnterAriana_NoPunk
 	applymovement 1, Common_Movement_FaceDown
 	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_HoldOn
 	closemessage
@@ -114,7 +114,7 @@ EnterAriana_Intro_Dialogue::
 
 
 EnterAriana_Explain_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_DidYouListen
 	closemessage
@@ -126,17 +126,17 @@ EnterAriana_Explain_Dialogue::
 	applymovement 2, Common_Movement_FaceRight
 	waitmovement 2
 	msgbox gText_EnterAriana_TryingToCut
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_WhatYouHeard
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_WhatProblem
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_AsshatInterrupted
 	callnative ClearMugshot
@@ -148,12 +148,12 @@ EnterAriana_Explain_Dialogue::
 EnterAriana_Apology_Dialogue::
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_ShouldntTheCones
 	callnative ClearMugshot
 	msgbox gText_EnterAriana_IForgotToSet
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_BeratedSomebody
 	callnative ClearMugshot
@@ -161,7 +161,7 @@ EnterAriana_Apology_Dialogue::
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_WhatsYourName
 	callnative ClearMugshot
@@ -172,7 +172,7 @@ EnterAriana_Apology_Dialogue::
 	waitmovement 2
 	msgbox gText_EnterAriana_IGotHeated
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_DontRuin
 	callnative ClearMugshot
@@ -186,7 +186,7 @@ EnterAriana_Apology_Dialogue::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 2
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_NeedToWalk
 	callnative ClearMugshot
@@ -198,28 +198,28 @@ EnterAriana_Apology_Dialogue::
 
 
 EnterAriana_ExplainHope_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_WhatIsEverybody
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_Hope
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_WaitHope
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_ICanGet
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_ThatsAmazing
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_CityIsntSuperChill
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_ButYoureHelping
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_YoureNotFromHere
 	callnative ClearMugshot
@@ -235,7 +235,7 @@ EnterAriana_ExplainHope_Dialogue::
 	special DrawWholeMapView
 	applymovement 1, EnterAriana_PlaceConesC_Movement
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_BetweenTheCones
 	callnative ClearMugshot
@@ -263,13 +263,13 @@ EnterAriana_MoveLine_Script::
 EnterAriana_GiveKeystone_Dialogue::
 	applymovement 1, EnterAriana_FacePlayer_Movement
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_ThereYouGo
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_AGym
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_WellGoodLuck
 	callnative ClearMugshot
@@ -277,20 +277,20 @@ EnterAriana_GiveKeystone_Dialogue::
 	applymovement 1, Common_Movement_WalkInPlaceUp
 	waitmovement 1
 	giveitem ITEM_MEGA_RING
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_IfYouHaveThat
 	special CheckMegaEvolutionPartyMember
 	compare VAR_TEMP_1, 6
 	goto_if_lt EnterAriana_GiveKeystone_Dialogue_2
 EnterAriana_GiveKeystone_Dialogue_1:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_ThankYouSo
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_HopeThatMakes
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_EnterAriana_IGottaGo
 	callnative ClearMugshot
@@ -313,7 +313,7 @@ EnterAriana_GiveKeystone_Dialogue_2:
 	case 4, EnterAriana_GiveKeystone_Dialogue_10
 	case 5, EnterAriana_GiveKeystone_Dialogue_11
 EnterAriana_GiveKeystone_Dialogue_4:
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	compare VAR_TEMP_2, 1
 	goto_if_ne EnterAriana_GiveKeystone_Dialogue_12

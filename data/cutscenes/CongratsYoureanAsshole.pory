@@ -17,10 +17,6 @@ const FLAG_HIDE_SABRINA = FLAG_TEMP_5
 const FLAG_HIDE_KOGA = FLAG_TEMP_6
 
 script CongratsYoureanAsshole_ObjectCleanUp_Script {
-    setflag(FLAG_HIDE_BIANCA)
-    setflag(FLAG_HIDE_ROSE)
-    setflag(FLAG_HIDE_NERDS_COPS)
-
     setobjectxy(KOGA,34,56)
     setobjectxyperm(KOGA,34,56)
     setobjectmovementtype(KOGA,MOVEMENT_TYPE_FACE_UP)

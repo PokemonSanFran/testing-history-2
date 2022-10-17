@@ -36,7 +36,7 @@ script VSGarbodor_Scouting_Dialogue {
     lock
         applymovement(PLAYER, Common_Movement_FaceRight)
         waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_IDidSomeScouting)
         multichoicedefault(18, 6, MULTI_GARBADOR_CHOOSE, 3, TRUE)
@@ -61,7 +61,7 @@ script VSGarbodor_ChooseSide_Script {
 
 script VSGarbodor_ChooseLeft_Script {
     setvar(VAR_INNER_CONSTRUCTION_SITE_STATE,PLAYER_LEFT_SIDE) 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_ThenIllTakeTheRight)
         callnative(ClearMugshot)
@@ -78,7 +78,7 @@ script VSGarbodor_ChooseLeft_Script {
 
 script VSGarbodor_ChooseRight_Script {
     setvar(VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_RIGHT_SIDE)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_CoolIWanted)
         callnative(ClearMugshot)
@@ -163,7 +163,7 @@ script VSGarbodor_CheckDefeated_Script {
 
 script VSGarbodor_PreventCrossingSides_Script {
     lock
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_FeelingLonely)
         closemessage
@@ -215,7 +215,7 @@ script VSGarbodor_MoveBianca_Script {
 }
 
 script VSGarbodor_DefeatedAll_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_BIANCA)
+    setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_GodYouWereTaking)
         closemessage
@@ -223,7 +223,7 @@ script VSGarbodor_DefeatedAll_Dialogue {
 
         applymovement(BIANCA, VSGarbodor_LookAround)
         waitmovement(0)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_WhateverMineWereEasy)
         closemessage
@@ -267,27 +267,27 @@ script VSGarbodor_CleanUpPerpWalk {
 }
 
 script VSGarbodor_Negotiating_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_AsWeWereNegotiating)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_DoneLikeYouGuys)
 
-        setvar(VAR_0x8000, MUGSHOT_GHETSIS)
+        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_ThankYouBoth)
         callnative(ClearMugshot)
         closemessage
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_VSGarbodor_YeahImBeat, MSGBOX_YESNO)
 
         if (var (VAR_RESULT) == NO) {
 
-            setvar(VAR_0x8000, MUGSHOT_BIANCA)
+            setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
                 callnative(DrawMugshot)
                 msgbox(gText_VSGarbodor_WeirdButOkay)
                 callnative(ClearMugshot)
@@ -297,7 +297,7 @@ script VSGarbodor_Negotiating_Dialogue {
                 end
         } else {
 
-            setvar(VAR_0x8000, MUGSHOT_BIANCA)
+            setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
                 callnative(DrawMugshot)
                 msgbox(gText_VSGarbodor_LetsBounce)
                 callnative(ClearMugshot)
@@ -337,11 +337,11 @@ script VSGarbodor_ReturnToTheCompound_Dialogue {
         }else{
             applymovement(PLAYER,Common_Movement_FaceUp)
                 waitmovement(0)
-                setvar(VAR_0x8000, MUGSHOT_BIANCA)
+                setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
                 callnative(DrawMugshot)
                 msgbox(gText_VSGarbodor_ImGonnaGet)
 
-                setvar(VAR_0x8000, MUGSHOT_HILDA)
+                setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_VSGarbodor_HehWellSee)
                 callnative(ClearMugshot)

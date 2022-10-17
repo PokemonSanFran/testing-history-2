@@ -27,7 +27,7 @@ MaskOff_QuestH_Dialogue_1:
 	return
 
 MaskOff_QuestH_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
@@ -46,7 +46,7 @@ MaskOff_QuestF_Dialogue_1:
 	return
 
 MaskOff_QuestF_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
@@ -66,7 +66,7 @@ MaskOff_QuestI_Dialogue_1:
 	return
 
 MaskOff_QuestI_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
@@ -85,7 +85,7 @@ MaskOff_QuestD_Dialogue_1:
 	return
 
 MaskOff_QuestD_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
@@ -111,7 +111,7 @@ MaskOff_QuestG_Dialogue_1:
 	return
 
 MaskOff_QuestG_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
@@ -131,7 +131,7 @@ MaskOff_QuestA_Dialogue_1:
 	return
 
 MaskOff_QuestA_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
@@ -150,7 +150,7 @@ MaskOff_QuestE_Dialogue_1:
 	return
 
 MaskOff_QuestE_Dialogue_2:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatCanYou
 	callnative ClearMugshot
@@ -161,7 +161,7 @@ MaskOff_Encounter_Giovanni_Dialogue::
 	lock
 	setvar VAR_MASK_OFF_STATE, SAVE_GIOVANNI_LAKEMERRITT_TRUE
 	call Common_EventScript_SaveGame
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_MaskOff_FancyABattle, MSGBOX_NPC
 	callnative ClearMugshot
@@ -174,19 +174,19 @@ MaskOff_Encounter_Giovanni_Dialogue::
 
 
 MaskOff_PostBattle_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_MaskOff_YouveMadeIncredible
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_ItsNiceToNotGet
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_MaskOff_YouWontNeedTo
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WhatDoYouMean
-	setvar VAR_0x8000, MUGSHOT_GIOVANNI
+	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
 	callnative DrawMugshot
 	msgbox gText_MaskOff_AllowMeTo
 	callnative ClearMugshot
@@ -195,23 +195,23 @@ MaskOff_PostBattle_Dialogue::
 	call MaskOff_TransformObject_Script
 	lock
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_MaskOff_TheOneAndOnly, MSGBOX_NPC
 	lock
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_MaskOff_IFormedTeamRocket
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_ButWhyGo
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_MaskOff_IHidMyIdentity
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_ThingsAre
 	callnative ClearMugshot
@@ -219,16 +219,16 @@ MaskOff_PostBattle_Dialogue::
 	fadescreen FADE_TO_BLACK
 	delay 32
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_MaskOff_ISee
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaskOff_WaitWhatDO
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_MaskOff_IHaventExplicitly
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
+	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
 	callnative DrawMugshot
 	msgbox gText_MaskOff_IShouldApologize
 	callnative ClearMugshot

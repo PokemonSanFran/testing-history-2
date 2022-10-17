@@ -9,7 +9,7 @@ ANewStrike_BreakingNews_Dialogue::
 
 
 ANewStrike_PlayerSelf_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ANewStrike_OhDamn
 	closemessage

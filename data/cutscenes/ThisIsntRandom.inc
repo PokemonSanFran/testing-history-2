@@ -53,7 +53,7 @@ ThisIsntRandom_UnlockDoor_Dialogue::
 	waitse
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_OhIsLiterally
 	callnative ClearMugshot
@@ -88,7 +88,7 @@ ThisIsntRandom_UnlockElectronicDoor_Script::
 
 ThisIsntRandom_UndergroundDoor_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AndNowMyTurn
 	callnative ClearMugshot
@@ -100,26 +100,26 @@ ThisIsntRandom_UndergroundDoor_Dialogue::
 	playse SE_BANG
 	waitse
 	call ThisIsntRandom_UnlockElectronicDoor_Script
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_HowDidYou
 	callnative ClearMugshot
 	closemessage
 	applymovement 3, Common_Movement_FaceLeft
 	waitmovement 3
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_TheSecondSet
 	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_SoIsActuallyTrying
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AboutToFindOut
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_IfWereAllGoing
 	callnative ClearMugshot
@@ -140,22 +140,22 @@ ThisIsntRandom_UndergroundDoor_Dialogue::
 ThisIsntRandom_WalkIntoLab_Dialogue::
 	lock
 	setvar VAR_UNDERGROUNDLAB_STATE, TEAM_INSIDE_LAB
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_LooksOldAsHell
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_TakeThese
 	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_WalkieTalkies
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_ToStayInTOuch
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_Yup
 	callnative ClearMugshot
@@ -193,7 +193,7 @@ ThisIsntRandom_CheckProgressB_Script_1:
 
 ThisIsntRandom_StopProgress_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	random 2
 	switch VAR_RESULT
@@ -264,28 +264,28 @@ ThisIsntRandom_RemoveMon_Script::
 ThisIsntRandom_DefeatedFirst_Script::
 	lock
 	setvar VAR_UNDERGROUNDLAB_STATE, FREED_LAB_POKEMON_1
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AreYouGuysSeeing
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_YeahIWasAbleTo
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_IGotAttackedButYeah
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_BothHugeProblems
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_RightLooksLikeTheyWanted
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_ButAllOfTheseMachines
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_ImJustTellingYouWhat
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_LetsKeepLooking
 	callnative ClearMugshot
@@ -297,49 +297,49 @@ ThisIsntRandom_DefeatedFirst_Script::
 ThisIsntRandom_DefeatedSecond_Script::
 	lock
 	setvar VAR_UNDERGROUNDLAB_STATE, FREED_LAB_POKEMON_2
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_IFoundSomeAccessLogs
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_CanYouGetMeTheExact
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_IThinkSoHoldOn
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_ThoseMonsters
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AreThoseDatesSpecial
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_TheSecondDateIsOne
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_SilicobraGravelerLarvitar
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_NumelPiloswineNidoking
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_TheyreAllGround
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_SoWhat
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_TheDocumentationCalledOut
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AndGroundTypesTo
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_OhNoIDidnt
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_AndTheyAttackedUs
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_ThisIsntRandom_LetsKeepGoing
 	callnative ClearMugshot

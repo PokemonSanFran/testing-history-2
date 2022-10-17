@@ -74,7 +74,7 @@ WaitHeDidWhat_CalledToSkybox_Script::
 	waitse
 	pokenavcall WaitHeDidWhat_CalledToSkybox_Script_Text_0
 	waitmessage
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_CongratsComeOnUp
 	callnative ClearMugshot
@@ -87,7 +87,7 @@ WaitHeDidWhat_CalledToSkybox_Script::
 WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 	setvar VAR_STORYLINE_STATE, STORY_READY_FINALS
 	lock
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_GoodShitDownThere
 	callnative ClearMugshot
@@ -114,7 +114,7 @@ WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 	applymovement 7, Common_Movement_ExclamationMark
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_HolyShit
 	callnative ClearMugshot
@@ -125,14 +125,14 @@ WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_MakeSureYouGive
 	closemessage
 	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_GoodLuck
 	callnative ClearMugshot
@@ -143,7 +143,7 @@ WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 
 WaitHeDidWhat_BiancaMeltdown_Dialogue::
 	random 4
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	switch VAR_RESULT
 	case 0, WaitHeDidWhat_BiancaMeltdown_Dialogue_3
@@ -193,10 +193,10 @@ WaitHeDidWhat_WalkIntoChampionshipPosition::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, WaitHeDidWhat_WalkToBattlefieldPosition
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_IDontThinkYouCan
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_ImReallyHappy
 	callnative ClearMugshot
@@ -211,7 +211,7 @@ WaitHeDidWhat_StartBattle_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WaitHeDidWhat_ForPsfregion
 	trainerbattle_no_intro TRAINER_STEVEN, gText_WaitHeDidWhat_SoClose

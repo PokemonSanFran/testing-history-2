@@ -16,7 +16,7 @@ script LetsGettheBandBackTogether_PreventPlayerEnterTower_Script {
 
     if (flag(FLAG_TIMELINE_TIMETRAVEL)) {
         lock
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
             callnative(DrawMugshot)
             msgbox(gText_LetsGetTheBandBackTogether_IDontThinkIShould)
             callnative(ClearMugshot)
@@ -40,46 +40,46 @@ script LetsGettheBandBackTogether_MeetInBasement_Script {
         waitse
         applymovement(ARCHER,Common_Movement_ExclamationMark)
         waitmovement(ARCHER)
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_IDidntThinkYouWere,MSGBOX_NPC)
 
         if (flag(FLAG_TIMELINE_TIMETRAVEL)){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
                 callnative(DrawMugshot)
                 msgbox(gText_LetsGetTheBandBackTogether_IHadAnInsane)
-                setvar(VAR_0x8000, MUGSHOT_HUGH)
+                setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
                 callnative(DrawMugshot)
         }
 
     msgbox(gText_LetsGetTheBandBackTogether_IReallyThinkWith)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_WaitTheEliteFour)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_OkayKindaThatsActually)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_WhatAmIMissing)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_LetsSplitUp)
         msgbox(gText_LetsGetTheBandBackTogether_BeforeWeStart)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_OhYeahOfCourse)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_IllWriteUpAPost)
         setvar(VAR_ALCATRAZ_STATE,LAST_CHANCE_TRUE_TIMELINE_START)
@@ -92,13 +92,13 @@ script LetsGettheBandBackTogether_MeetInBasement_Script {
 script LetsGettheBandBackTogether_TrueTimelineSplit_Script {
     lock
         faceplayer
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_ReadyToGoLive,MSGBOX_YESNO)
 
         if (var(VAR_RESULT) == NO){
 
-            setvar(VAR_0x8000, MUGSHOT_HUGH)
+            setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
                 callnative(DrawMugshot)
                 msgbox(gText_LetsGetTheBandBackTogether_YeahIGetIt)
                 callnative(ClearMugshot)
@@ -112,7 +112,7 @@ script LetsGettheBandBackTogether_TrueTimelineSplit_Script {
         setflag(FLAG_TIMELINE_TRUE)
         setvar(VAR_MASK_OFF_STATE,ASSIGNED_MASK_OFF)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_Yes)
         callnative(ClearMugshot)
@@ -123,15 +123,15 @@ script LetsGettheBandBackTogether_TrueTimelineSplit_Script {
         closemessage
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_LetsSplitUp)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_AnyLeads)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGetTheBandBackTogether_OkayGetGoing)
 

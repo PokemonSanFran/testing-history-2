@@ -58,7 +58,7 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
     lock
         setvar(VAR_ALCATRAZ_STATE,ARCHER_SUMMONED_ALCATRAZ)
         clearflag(FLAG_ARCHER_CALL_ALCATRAZ)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_HolyShit)
         callnative(ClearMugshot)
@@ -72,11 +72,11 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
 
         bufferpartymonnick(0,1)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_AwesomeJobIn)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_TheyDontLove)
         callnative(ClearMugshot)
@@ -86,24 +86,24 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
         delay(30)
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_YouSeemSurprised)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_YoureNot)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_IveBeenTrying)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_WhatDoYouMean)
 
         checkitem(ITEM_HM03)
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
 
         if (var(VAR_RESULT)){
@@ -114,7 +114,7 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
     playse(SE_POKENAV_HANG_UP)
         waitse
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf)
         callnative(ClearMugshot)
@@ -131,11 +131,11 @@ script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
         playse(SE_POKENAV_CALL)
         waitse
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ImHereWhere)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_SwimAroundThe)
         callnative(ClearMugshot)
@@ -150,7 +150,7 @@ script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
 script YouRealizeTheyreEvilRight_InteractArcher {
     lock
         setvar(VAR_ALCATRAZ_STATE,PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT)
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_WelcomeToTheReal,MSGBOX_NPC)
         callnative(ClearMugshot)
@@ -222,15 +222,15 @@ script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
         applymovement(PLAYER,YouRealizeTheyreEvilRight_WalkToGroup)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_TheChampionHasArrived)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_NiceToMeetYou)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_HasBeenUsing)
         callnative(ClearMugshot)
@@ -240,39 +240,39 @@ script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
         applymovement(MALVA,Common_Movement_ExclamationMark)
         applymovement(DRASNA,Common_Movement_ExclamationMark)
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_WowSuperResourceful)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_WhyAreWeHere)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ICanFinallyProve)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_DidYouDragMe)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_YesWaitNo)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_DoesntDoAnythingForThis)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ICanProve)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_How)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_Look)
         callnative(ClearMugshot)
@@ -282,27 +282,27 @@ script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
         applymovement(DRASNA,Common_Movement_FaceLeft)
         applymovement(MALVA,Common_Movement_FaceUp)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ThisIsOne)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_IHadToGo)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ThisOneIsLevel)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_DoesntLearnThatNaturally)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_SoUsedATM)
 
@@ -313,11 +313,11 @@ script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
 
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_NoItMustHaveBeenBred)
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_TakeACloserLook)
 
@@ -326,7 +326,7 @@ script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
 }
 
 script YouRealizeTheyreEvilRight_StartQuestions_Script {
-    setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+    setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_DoYouSeeNow,MSGBOX_YESNO)
 
@@ -350,7 +350,7 @@ script YouRealizeTheyreEvilRight_AskProperties_Script {
 
 script YouRealizeTheyreEvilRight_AskMoves_Script {
 
-    setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+    setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_WaitWhichMove)
 
@@ -364,7 +364,7 @@ script YouRealizeTheyreEvilRight_AskMoves_Script {
 
 script YouRealizeTheyreEvilRight_CorrectAnswer_Script {
 
-    setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+    setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_VeryClever)
         setflag(FLAG_TEMP_1F)
@@ -373,69 +373,69 @@ script YouRealizeTheyreEvilRight_CorrectAnswer_Script {
 
 script YouRealizeTheyreEvilRight_EndQuestions_Script {
 
-    setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+    setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_TheTipOff)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_So)
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_HazeCanOnly)
 }
 
 script YouRealizeTheyreEvilRight_Framing_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_IDontGetIt)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_HasBeenFramingYou)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_YouAlsoMetUp)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ButArianaSaid)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_YeahNobodyKnows)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_WhyWhyDoAll)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ExistsToMakeMoney)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_CantArgueWithThat)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_IJoinedThe)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_AndThatsWhyWere)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_YepIThinkItsFinally)
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_KidIfTheEliteFour)
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ThingsAreDifferentNow)
         callnative(ClearMugshot)
@@ -446,11 +446,11 @@ script YouRealizeTheyreEvilRight_Framing_Dialogue {
         applymovement(PLAYER,Common_Movement_FaceLeft)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_LookIKnowThis)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_YeahOkay)
 
@@ -471,7 +471,7 @@ script YouRealizeTheyreEvilRight_AskPlayerGift_Script {
         applymovement(GARBODOR,YouRealizeTheyreEvilRight_ShowAffection)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ThisGarbodor,MSGBOX_YESNO)
 
@@ -487,7 +487,7 @@ script YouRealizeTheyreEvilRight_AskPlayerGift_Script {
 }
 
 script YouRealizeTheyreEvilRight_LeaveGift_Script {
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_ThatsFineIll)
 }
@@ -503,7 +503,7 @@ script YouRealizeTheyreEvilRight_GiveGift_Script {
             call(YouRealizeTheyreEvilRight_SendGiftToPC_Script)
         }
 
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_TakeGoodCare)
 
@@ -546,7 +546,7 @@ script YouRealizeTheyreEvilRight_CantSleep_Script{
 }
 
 script YouRealizeTheyreEvilRight_CantSleep_Dialogue {
-    setvar(VAR_0x8000, MUGSHOT_HILDA)
+    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_YouRealizeTheyreEvilRight_IsStillWaiting)
         callnative(ClearMugshot)
@@ -564,12 +564,12 @@ script YouRealizeTheyreEvilRight_NoIdea_Dialogue {
 
         if (flag(FLAG_TIMELINE_TIMETRAVEL)){
                 lock
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
+            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
             callnative(DrawMugshot)
                 msgbox(gText_OkayLetsFixIt_WhatTheHell)
                 }
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
                 msgbox(gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat)
                 callnative(ClearMugshot)

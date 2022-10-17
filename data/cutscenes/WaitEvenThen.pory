@@ -75,11 +75,11 @@ script WaitEvenThen_PrepareBossEncounter_Dialogue {
         applymovement(DRASNA,WaitEvenThen_WalkToSleepingD)
         waitmovement(DRASNA)
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_WaitEvenThen_IFoundTheAccess)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WaitEvenThen_AndICanHandle)
         callnative(ClearMugshot)
@@ -168,15 +168,15 @@ script WaitEvenThen_PostBossDialogue {
         applymovement(ARCHER,Common_Movement_FaceDown)
         applymovement(DRASNA,Common_Movement_FaceDown)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WaitEvenThen_DamnAPowerSpot)
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_WaitEvenThen_AndTheGovernment)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_WaitEvenThen_IllHaveSomeOther)
         callnative(ClearMugshot)
@@ -189,7 +189,7 @@ script WaitEvenThen_PostBossDialogue {
         applymovement(ARCHER,Common_Movement_FaceLeft)
         applymovement(PLAYER,Common_Movement_FaceRight)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_WaitEvenThen_ComingWithMe,MSGBOX_YESNO)
         callnative(ClearMugshot)
@@ -199,7 +199,7 @@ script WaitEvenThen_PostBossDialogue {
             warp(MAP_ALAMEDA,255,34,13)
                 end
         }else {
-            setvar(VAR_0x8000, MUGSHOT_HUGH)
+            setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
                 callnative(DrawMugshot)
                 msgbox(gText_WaitEvenThen_MeetUsIn)
                 closemessage

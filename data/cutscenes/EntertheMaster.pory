@@ -49,19 +49,19 @@ script EnterTheMaster_WalkingTrigger_Script {
 script EnterTheMaster_Ready_Dialogue {
 
         setvar(VAR_MUIRWOODS_STATE,BIANCA_ENTERED_MUIRWOODS)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_MorningReady)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_AsReadyAs)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_DaddySentAnother)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_ThanksDad)
         callnative(ClearMugshot)
@@ -81,7 +81,7 @@ script EnterTheMaster_Ready_Dialogue {
 script EnterTheMaster_InteractFollower_Script {
 
     lock
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         random(4)
 
@@ -101,7 +101,7 @@ script EnterTheMaster_InteractFollower_Script {
 script EnterTheMaster_LeaveWoods_Script {
     lock
         faceplayer
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_TiredAlready)
         closemessage
@@ -117,15 +117,15 @@ script EnterTheMaster_CompleteMaze_Dialogue {
         setobjectxyperm(BIANCA,24,22)
 
         faceplayer
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_IDontThinkTheres)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_YouThinkTheyve)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_TheyreGettingPaid)
         closemessage
@@ -146,15 +146,15 @@ script EnterTheMaster_ClearingIntro_Dialogue {
         applymovement(PLAYER,EnterTheMaster_ApproachSiebold)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_WelcomeTo)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_ThanksYoure)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_AndMyNotebook)
         callnative(ClearMugshot)
@@ -164,15 +164,15 @@ script EnterTheMaster_ClearingIntro_Dialogue {
         applymovement(BIANCA,EnterTheMaster_GiveNotebook)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_GettingThemToBattle)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_IsThatWhatYoure)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_EveryClientAlways)
         closemessage
@@ -184,23 +184,23 @@ script EnterTheMaster_ClearingIntro_Dialogue {
         applymovement(SIEBOLD,EnterTheMaster_Pace)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_AreEitherOfYou)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_YeahThatsTheBattleFrontier)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_HmmTheSmartass)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_OhDoesEachPart)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_SorryDidntGoTo)
 
@@ -208,7 +208,7 @@ script EnterTheMaster_ClearingIntro_Dialogue {
         applymovement(PLAYER,Common_Movement_FaceLeft)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_ScottIsTheFounder)
 
@@ -219,22 +219,22 @@ script EnterTheMaster_ClearingIntro_Dialogue {
         waitmovement(0)
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_AndSoConcludes)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_SortaKindaNotReally)
-        setvar(VAR_0x8000, MUGSHOT_BIANCA)
+        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_Oh)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_SoWhatsNext)
 
-        setvar(VAR_0x8000, MUGSHOT_MARSHAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
         callnative(DrawMugshot)
         msgbox(gText_EnterTheMaster_WellUntilNSFigures)
         callnative(ClearMugshot)

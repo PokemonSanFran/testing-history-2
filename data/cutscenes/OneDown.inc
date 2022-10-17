@@ -13,19 +13,19 @@ OneDown_SetUpObject_Script::
 
 
 OneDown_StartCutscene_Script::
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_OneDown_IJustGotFilled
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OneDown_ThanksAndYouve
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_OneDown_IDidntThinkIHad
 	callnative ClearMugshot
 	closemessage
 	applymovement 8, Common_Movement_FaceRight
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_OneDown_SoundsLikeWereBoth
 	callnative ClearMugshot
@@ -57,25 +57,25 @@ OneDown_StartEarthquake_Script::
 
 OneDown_Finish_Dialogue::
 	applymovement 2, Common_Movement_FaceLeft
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_OneDown_MyOldBones
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_OneDown_WhatDoYouMean
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_OneDown_YoureGonnaCall
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_OneDown_WeGetQuakes
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
+	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
 	callnative DrawMugshot
 	msgbox gText_OneDown_GuessYoureRight
 	callnative ClearMugshot
 	closemessage
 	applymovement 8, Common_Movement_FaceUp
-	setvar VAR_0x8000, MUGSHOT_ARIANA
+	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
 	callnative DrawMugshot
 	msgbox gText_OneDown_GetSomeRest
 	callnative ClearMugshot

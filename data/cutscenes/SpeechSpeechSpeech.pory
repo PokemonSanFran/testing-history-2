@@ -134,7 +134,7 @@ script SpeechSpeechSpeech_PositionPlayer_Script {
 
 script SpeechSpeechSpeech_Intro_Dialogue {
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_ThankYouAll)
         msgbox(gText_SpeechSpeechSpeech_FirstOfAll)
@@ -144,7 +144,7 @@ script SpeechSpeechSpeech_Intro_Dialogue {
         call(SpeechSpeechSpeech_CrowdLookAround_Script)
         call(SpeechSpeechSpeech_ResetFacing_Script)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_ForAllYouve)
         callnative(ClearMugshot)
@@ -163,7 +163,7 @@ script SpeechSpeechSpeech_Intro_Dialogue {
 
         call(SpeechSpeechSpeech_ResetFacing_Script)
 
-        setvar(VAR_0x8000, MUGSHOT_GIOVANNI)
+        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_HasMyFullConfidence)
         callnative(ClearMugshot)
@@ -202,7 +202,7 @@ script SpeechSpeechSpeech_StartTransformation_Script {
 
 script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_Us)
         callnative(ClearMugshot)
@@ -229,7 +229,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         delay(100) //wait until after earthquake
         waitstate
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_IsAnybodyHurt)
         callnative(ClearMugshot)
@@ -242,7 +242,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         applymovement(GRUNTD,SpeechSpeechSpeech_LookAround)
         waitmovement(GRUNTD)
 
-        setvar(VAR_0x8000, MUGSHOT_ARIANA)
+        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_YouAllKnowHowCompanies)
         callnative(ClearMugshot)
@@ -260,7 +260,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         waitmovement(DRASNA)
         //Drasna steps forward. Ariana steps aside.
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_WeWantToBegin)
         callnative(ClearMugshot)
@@ -270,7 +270,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         waitmovement(WIKSTROM)
         //Wikstrom steps forward.
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_4LeadCharge)
         callnative(ClearMugshot)
@@ -281,7 +281,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         waitmovement(SIEBOLD)
         //Wikstrom steps back. Siebold steps forward.
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_3LeadCharge)
         callnative(ClearMugshot)
@@ -292,7 +292,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         waitmovement(MALVA)
         //Wikstrom steps back. Malva steps forward.
 
-        setvar(VAR_0x8000, MUGSHOT_GRIMSLEY)
+        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_1LeadCharge)
         callnative(ClearMugshot)
@@ -304,7 +304,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
         //Malva steps back.
 
-        setvar(VAR_0x8000, MUGSHOT_SHAUNTAL)
+        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_IllBeHandling)
         callnative(ClearMugshot)
@@ -323,15 +323,15 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         waitmovement(ARCHER)
 
         //Screen fades to black. Screen fades back in. Elite Four members are spaced around the room, surrounded by groups of TeamRocket members. Archer walks up to the player.
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_DamnThisShit)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_ItFeelsReally)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_Yeah)
 

@@ -32,23 +32,23 @@ WowYoureStrong_WalkToPlayer_Script::
 
 
 WowYoureStrong_Intro_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WowYoureStrong_WhatAShow
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WowYoureStrong_OhUhThanksALot
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WowYoureStrong_WhereMyManners
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WowYoureStrong_ShouldHaveKnown
 	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_WowYoureStrong_DreamBig
 	callnative ClearMugshot

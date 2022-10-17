@@ -1,18 +1,3 @@
-LetsBurnThisMotherDown_ObjectSetUp_Script::
-	setobjectxy 2, 8, 6
-	setobjectxyperm 2, 8, 6
-	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_UP
-	return
-
-
-LetsBurnThisMotherDown_ObjectMove_Script::
-	clearflag FLAG_TEMP_5
-	addobject 11
-	setobjectxyperm 11, 11, 12
-	setobjectmovementtype 11, MOVEMENT_TYPE_FACE_LEFT
-	return
-
-
 LetsBurnThisMotherDown_ObjectShow_Script::
 	clearflag FLAG_TEMP_5
 	setflag FLAG_TEMP_6
@@ -30,30 +15,59 @@ LetsBurnThisMotherDown_ObjectHide_Script::
 	return
 
 
-LetsBurnThisMotherDown_Assignment_Dialogue::
-	compare VAR_LETS_BURN_THIS_MOTHER_STATE, 0
-	goto_if_ne LetsBurnThisMotherDown_Assignment_Dialogue_2
+LetsBurnThisMotherDown_Interact_Oak_Script::
+	returnqueststate QUEST_LETS_BURN_THIS_MOTHER_DOWN
+	switch VAR_RESULT
+	case QUEST_MENU_SET_ACTIVE, LetsBurnThisMotherDown_Interact_Oak_Script_2
+	case QUEST_MENU_COMPLETE_QUEST, LetsBurnThisMotherDown_Interact_Oak_Script_3
+	goto LetsBurnThisMotherDown_StartQuest_Dialogue
+	return
+
+LetsBurnThisMotherDown_Interact_Oak_Script_2:
+	goto LetsBurnThisMotherDown_ActiveQuest_Dialogue
+	return
+
+LetsBurnThisMotherDown_Interact_Oak_Script_3:
+	goto LetsBurnThisMotherDown_CompleteQuest_Dialogue
+	return
+
+
+LetsBurnThisMotherDown_ActiveQuest_Dialogue::
+	msgbox gText_LetsBurnThisMotherDown_YoureCloserToThe, MSGBOX_NPC
+	end
+
+
+LetsBurnThisMotherDown_CompleteQuest_Dialogue::
+	msgbox gText_LetsBurnThisMotherDown_ImStillShocked, MSGBOX_NPC
+	end
+
+
+LetsBurnThisMotherDown_StartQuest_Dialogue::
 	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, ASSIGNED_BURN_MOTHER
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_WeStillNeedToFind, MSGBOX_NPC
 	msgbox gText_LetsBurnThisMotherDown_YoureCloserToThe
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_INeedToTalk
 	callnative ClearMugshot
+	startquest QUEST_LETS_BURN_THIS_MOTHER_DOWN
 	closemessage
 	release
 	end
 
-LetsBurnThisMotherDown_Assignment_Dialogue_2:
-	msgbox LetsBurnThisMotherDown_Assignment_Dialogue_Text_0
-	closemessage
+
+LetsBurnThisMotherDown_CheckActiveQuest_Script::
+	goto_if_quest_active QUEST_LETS_BURN_THIS_MOTHER_DOWN, LetsBurnThisMotherDown_ConfrontPlayer
+	release
 	end
 
 
 LetsBurnThisMotherDown_ConfrontPlayer::
 	lock
+	compare VAR_LETS_BURN_THIS_MOTHER_STATE, SAVE_ARCHER_ALCATRAZ
+	goto_if_eq LetsBurnThisMotherDown_ConfrontPlayer_2
 	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, SAVE_ARCHER_ALCATRAZ
 	clearflag FLAG_TEMP_5
 	addobject 5
@@ -61,32 +75,36 @@ LetsBurnThisMotherDown_ConfrontPlayer::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	applymovement 5, LetsBurnThisMotherDown_WalkTowardsPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_YouChoseTheWrong
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_IKnowYouWant
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_YouDontThinkWeve
 	closemessage
 	callnative ClearMugshot
 	applymovement 5, Common_Movement_WalkDown
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_TheyIgnoreUs
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_DotDotDot
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_IAlwaysHeld
 	call Common_EventScript_SaveGame
 	closemessage
 	goto LetsBurnThisMotherDown_StartBattle_Script
 	return
+
+LetsBurnThisMotherDown_ConfrontPlayer_2:
+	release
+	end
 
 
 LetsBurnThisMotherDown_StartBattle_Script::
@@ -98,7 +116,7 @@ LetsBurnThisMotherDown_StartBattle_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, LetsBurnThisMotherDown_WalkFromUp
 LetsBurnThisMotherDown_StartBattle_Script_1:
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_ImGoingForRevolution
 	closemessage
@@ -117,17 +135,18 @@ LetsBurnThisMotherDown_StartBattle_Script_3:
 
 LetsBurnThisMotherDown_PostBattle_Dialogue::
 	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, DEFEATED_ARCHER_ALCATRAZ
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	questmenu QUEST_MENU_SET_REWARD, QUEST_LETS_BURN_THIS_MOTHER_DOWN
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_ItDoesntMatter
 	callnative ClearMugshot
 	closemessage
 	applymovement 5, LetsBurnThisMotherDown_WalkBackwards
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_ItsNotFair
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_HyperBeam
 	callnative ClearMugshot
@@ -143,22 +162,22 @@ LetsBurnThisMotherDown_PostBattle_Dialogue::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	applymovement 6, LetsBurnThisMotherDown_Attack
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_WhatTheHell
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_IFollowedYou
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_NoITheyreNot
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_YeahNoShit
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_IKnow
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_TheCopsShould
 	callnative ClearMugshot
@@ -171,32 +190,55 @@ LetsBurnThisMotherDown_PostBattle_Dialogue::
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
 	fadedefaultbgm
-	warpsilent MAP_SALESFORCETOWER_2F, 255, 10, 12
+	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 34, 5
 	release
 	end
 
 
+LetsBurnThisMother_ShowRose_Script::
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_1
+	questmenu QUEST_MENU_CHECK_REWARD, QUEST_LETS_BURN_THIS_MOTHER_DOWN
+	compare VAR_RESULT, 0
+	goto_if_eq LetsBurnThisMother_ShowRose_Script_2
+LetsBurnThisMother_ShowRose_Script_1:
+	setobjectxy 5, 33, 5
+	setobjectxyperm 5, 33, 5
+	setobjectmovementtype 5, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
+LetsBurnThisMother_ShowRose_Script_2:
+	setflag FLAG_TEMP_4
+	goto LetsBurnThisMother_ShowRose_Script_1
+
+
 LetsBurnThisMotherDown_MissionComplete_Dialogue::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_ImSorryIReally
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_YoureYoung
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	callnative ClearMugshot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement 5, Common_Movement_FaceUp
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_ImStillShocked
-	setvar VAR_0x8000, MUGSHOT_GHETSIS
+	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_LetsBurnThisMotherDown_ThePoliceTold
 	closemessage
 	callnative ClearMugshot
-	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, BURN_MOTHER_COMPLETE
 	addvar VAR_STORYLINE_STATE, 1
-	applymovement 11, LetsBurnThisMotherDown_LeaveRoom
-	waitmovement 11
-	removeobject 11
+	applymovement 5, LetsBurnThisMotherDown_LeaveRoom
+	waitmovement 5
+	removeobject 5
+	completequest QUEST_LETS_BURN_THIS_MOTHER_DOWN
+	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, BURN_MOTHER_COMPLETE
 	release
 	call ExhibitionBattle_TimeSkip_Script
 	end
@@ -259,9 +301,6 @@ LetsBurnThisMotherDown_LeaveRoom:
 	walk_down
 	walk_down
 	step_end
-
-LetsBurnThisMotherDown_Assignment_Dialogue_Text_0:
-	.string "...$"
 
 gText_LetsBurnThisMotherDown_WeStillNeedToFind::
 	.string "We still need to find their new base of\n"
@@ -349,7 +388,7 @@ gText_LetsBurnThisMotherDown_NoITheyreNot::
 
 gText_LetsBurnThisMotherDown_YeahNoShit::
 	.string "Yeah, no shit! None of these people can\n"
-	.string "be trusted. Ugh, {PLAYER} , you could\l"
+	.string "be trusted. Ugh, {PLAYER}, you could\l"
 	.string "have gotten seriously hurt.$"
 
 gText_LetsBurnThisMotherDown_IKnow::

@@ -76,7 +76,6 @@ Salesforcetower_2F_MapScripts_OnTransition_18:
 	goto Salesforcetower_2F_MapScripts_OnTransition_15
 
 Salesforcetower_2F_MapScripts_OnTransition_20:
-	call LetsBurnThisMotherDown_ObjectMove_Script
 	return
 
 
@@ -110,29 +109,12 @@ Salesforcetower_2F_MovePlayerIntoPosition_Script_6:
 Salesforcetower_2F_Oak_Event_Script::
 	lock
 	switch VAR_STORYLINE_STATE
-	case STORY_MORNING_OF_TIMELINE_SPLIT, Salesforcetower_2F_Oak_Event_Script_3
-	case STORY_START_FALSE_TIMELINE, Salesforcetower_2F_Oak_Event_Script_4
-	case STORY_1ST_TEAMROCKET_TAKEDOWN, Salesforcetower_2F_Oak_Event_Script_5
-	case STORY_2ND_TEAMROCKET_TAKEDOWN, Salesforcetower_2F_Oak_Event_Script_6
-Salesforcetower_2F_Oak_Event_Script_1:
+	case STORY_2ND_TEAMROCKET_TAKEDOWN, Salesforcetower_2F_Oak_Event_Script_3
 	release
 	end
 
 Salesforcetower_2F_Oak_Event_Script_3:
-	call CongratsYoureAnAsshole_Intro_Dialogue
-	goto Salesforcetower_2F_Oak_Event_Script_1
-
-Salesforcetower_2F_Oak_Event_Script_4:
-	call LetsBurnThisMotherDown_Assignment_Dialogue
-	goto Salesforcetower_2F_Oak_Event_Script_1
-
-Salesforcetower_2F_Oak_Event_Script_5:
-	call LetsBurnThisMotherDown_Assignment_Dialogue
-	goto Salesforcetower_2F_Oak_Event_Script_1
-
-Salesforcetower_2F_Oak_Event_Script_6:
-	call LetsBurnThisMotherDown_Assignment_Dialogue
-	goto Salesforcetower_2F_Oak_Event_Script_1
+	return
 
 
 Salesforcetower_2F_Koga_Event_Script::

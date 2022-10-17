@@ -45,27 +45,27 @@ FlyingBlind_Dialogue::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox gText_FlyingBlind_NotSoEasy
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_FlyingBlind_GuessingYouSaw
 	callnative ClearMugshot
 	msgbox gText_FlyingBlind_NotJustYou
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_FlyingBlind_Karl
 	callnative ClearMugshot
 	msgbox gText_FlyingBlind_YouReallyBrandNew
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_FlyingBlind_WaitTheFogHas
 	callnative ClearMugshot
 	msgbox gText_FlyingBlind_NotVeryWell
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_FlyingBlind_NoResponse
 	callnative ClearMugshot
 	msgbox gText_FlyingBlind_EverSinceYouPeople
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_FlyingBlind_GottaFindSomebody
 	msgbox gText_FlyingBlind_ThankYouSoMuch

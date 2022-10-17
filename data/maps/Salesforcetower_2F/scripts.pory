@@ -43,7 +43,7 @@ script Salesforcetower_2F_MapScripts_OnTransition {
         }
 
         if (var(VAR_LETS_BURN_THIS_MOTHER_STATE) == DEFEATED_ARCHER_ALCATRAZ) {
-            call(LetsBurnThisMotherDown_ObjectMove_Script)
+            //call(LetsBurnThisMotherDown_ObjectMove_Script)
         }
     }
 }
@@ -68,10 +68,10 @@ script Salesforcetower_2F_MovePlayerIntoPosition_Script {
 script Salesforcetower_2F_Oak_Event_Script {
     lock
         switch (var(VAR_STORYLINE_STATE)){
-            case STORY_MORNING_OF_TIMELINE_SPLIT: call(CongratsYoureAnAsshole_Intro_Dialogue)
-            case STORY_START_FALSE_TIMELINE: call(LetsBurnThisMotherDown_Assignment_Dialogue)
-            case STORY_1ST_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
-            case STORY_2ND_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
+            //case STORY_MORNING_OF_TIMELINE_SPLIT: call(CongratsYoureAnAsshole_Intro_Dialogue)
+            //case STORY_START_FALSE_TIMELINE: call(LetsBurnThisMotherDown_Assignment_Dialogue)
+            //case STORY_1ST_TEAMROCKET_TAKEDOWN: call(LetsBurnThisMotherDown_Assignment_Dialogue)
+            case STORY_2ND_TEAMROCKET_TAKEDOWN: return//call(LetsBurnThisMotherDown_Assignment_Dialogue)
         }
     release
         end

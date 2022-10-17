@@ -22,7 +22,7 @@ LetsGettheBandBackTogether_PreventPlayerEnterTower_Script_1:
 
 LetsGettheBandBackTogether_PreventPlayerEnterTower_Script_2:
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_IDontThinkIShould
 	callnative ClearMugshot
@@ -41,32 +41,32 @@ LetsGettheBandBackTogether_MeetInBasement_Script_1:
 	waitse
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 1
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_IDidntThinkYouWere, MSGBOX_NPC
 	goto_if_set FLAG_TIMELINE_TIMETRAVEL, LetsGettheBandBackTogether_MeetInBasement_Script_5
 LetsGettheBandBackTogether_MeetInBasement_Script_4:
 	msgbox gText_LetsGetTheBandBackTogether_IReallyThinkWith
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_WaitTheEliteFour
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_OkayKindaThatsActually
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_WhatAmIMissing
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_LetsSplitUp
 	msgbox gText_LetsGetTheBandBackTogether_BeforeWeStart
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_OhYeahOfCourse
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_IllWriteUpAPost
 	setvar VAR_ALCATRAZ_STATE, LAST_CHANCE_TRUE_TIMELINE_START
@@ -80,10 +80,10 @@ LetsGettheBandBackTogether_MeetInBasement_Script_2:
 	goto LetsGettheBandBackTogether_MeetInBasement_Script_1
 
 LetsGettheBandBackTogether_MeetInBasement_Script_5:
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_IHadAnInsane
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	goto LetsGettheBandBackTogether_MeetInBasement_Script_4
 
@@ -91,7 +91,7 @@ LetsGettheBandBackTogether_MeetInBasement_Script_5:
 LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	lock
 	faceplayer
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_ReadyToGoLive, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -100,7 +100,7 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	setvar VAR_STORYLINE_STATE, STORY_START_TRUE_TIMELINE
 	setflag FLAG_TIMELINE_TRUE
 	setvar VAR_MASK_OFF_STATE, ASSIGNED_MASK_OFF
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_Yes
 	callnative ClearMugshot
@@ -109,13 +109,13 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	msgbox gText_LetsGetTheBandBackTogether_WereSickOf
 	closemessage
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_LetsSplitUp
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_AnyLeads
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_OkayGetGoing
 	callnative ClearMugshot
@@ -129,7 +129,7 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	end
 
 LetsGettheBandBackTogether_TrueTimelineSplit_Script_2:
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGetTheBandBackTogether_YeahIGetIt
 	callnative ClearMugshot

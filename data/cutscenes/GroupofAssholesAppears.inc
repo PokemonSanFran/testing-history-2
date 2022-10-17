@@ -12,7 +12,7 @@ GroupOfAssholesAppears_CheckPartySize_1:
 
 GroupOfAssholesAppears_MovePlayerAway_Script::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupOfAssholesAppears_IThinkINeedMore
 	callnative ClearMugshot
@@ -84,7 +84,7 @@ GroupOfAssholesAppears_PlayerToDavid_Script_3:
 
 
 GroupOfAssholesAppears_PlayerIntervene_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupOfAssholesAppears_WhatTheHell
 	callnative ClearMugshot
@@ -95,7 +95,7 @@ GroupOfAssholesAppears_PlayerIntervene_Dialogue::
 	applymovement 4, Common_Movement_FaceLeft
 	waitmovement 0
 	msgbox gText_GroupOfAssholesAppears_NothingWrongWith
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupOfAssholesAppears_ThisIsntAProtest
 	callnative ClearMugshot
@@ -103,7 +103,7 @@ GroupOfAssholesAppears_PlayerIntervene_Dialogue::
 	waitmovement 0
 	msgbox gText_GroupOfAssholesAppears_OhThankArceus
 	closemessage
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, GroupOfAssholesAppears_LookAround_Movement
 	waitmovement 0
@@ -174,27 +174,27 @@ GroupOfAssholesAppears_GroupLeaves_Dialogue::
 GroupOfAssholesAppears_ExplainTeam_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox gText_GroupOfAssholesAppears_ThankYou
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupOfAssholesAppears_AreYouGoing
 	callnative ClearMugshot
 	msgbox gText_GroupOfAssholesAppears_GonnaNeedToPop
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupOfAssholesAppears_WhyWereTheyBullying
 	callnative ClearMugshot
 	msgbox gText_GroupOfAssholesAppears_SomethingStupidLikeThat
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupOfAssholesAppears_ThatDoesntMakeAny
 	callnative ClearMugshot
 	msgbox gText_GroupOfAssholesAppears_MementoBoutique
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupOfAssholesAppears_ASouvenirShop
 	callnative ClearMugshot
 	msgbox gText_GroupOfAssholesAppears_WhenIPitchedIt
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_GroupOfAssholesAppears_ThatMakesSense
 	callnative ClearMugshot

@@ -27,7 +27,7 @@ GroupStages_GreetBeforeStart_Dialogue::
 	waitmovement 2
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_GroupStages_EasyPeasy
 	closemessage
