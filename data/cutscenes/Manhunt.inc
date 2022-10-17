@@ -1,7 +1,13 @@
-Manhunt_TowerObjectSetUp_Script::
-	setobjectxy 2, 8, 6
-	setobjectxyperm 2, 8, 6
-	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_UP
+Manhunt_ShowSabrina_Script::
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_1
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_MANHUNT
+	compare VAR_RESULT, 0
+	goto_if_ne Manhunt_ShowSabrina_Script_1
+	return
+
+Manhunt_ShowSabrina_Script_1:
+	setflag FLAG_TEMP_5
 	return
 
 
@@ -15,20 +21,42 @@ Manhunt_HideBianca_Script::
 	return
 
 
+Manhunt_Interact_Sabrina_Script::
+	returnqueststate QUEST_MANHUNT
+	switch VAR_RESULT
+	case QUEST_MENU_SET_ACTIVE, Manhunt_Interact_Sabrina_Script_2
+	case QUEST_MENU_COMPLETE_QUEST, Manhunt_Interact_Sabrina_Script_3
+	goto Manhunt_Assignment_Dialogue
+	return
+
+Manhunt_Interact_Sabrina_Script_2:
+	goto Manhunt_ActiveQuest_Dialogue
+	return
+
+Manhunt_Interact_Sabrina_Script_3:
+	goto Manhunt_CompleteQuest_Dialogue
+	return
+
+
+Manhunt_ActiveQuest_Dialogue::
+	msgbox gText_Manhunt_EverySecond, MSGBOX_NPC
+	end
+
+
+Manhunt_CompleteQuest_Dialogue::
+	msgbox gText_Manhunt_IllBeBack, MSGBOX_NPC
+	end
+
+
 Manhunt_Assignment_Dialogue::
 	lock
-	compare VAR_MANHUNT_STATE, 0
-	goto_if_ne Manhunt_Assignment_Dialogue_2
 	setvar VAR_MANHUNT_STATE, ASSIGNED_FIND_GIOVANNI
 	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_GoFind, MSGBOX_NPC
 	callnative ClearMugshot
+	startquest QUEST_MANHUNT
 	release
-	end
-
-Manhunt_Assignment_Dialogue_2:
-	call AlwaysWatchingWazowski_IgnoringPlayer_Dialogue
 	end
 
 
@@ -245,7 +273,7 @@ Manhunt_Encounter_Giovanni_Dialogue_1:
 	callnative DrawMugshot
 	msgbox gText_Manhunt_WhatWaitUhOkay
 	callnative ClearMugshot
-	warpsilent MAP_SALESFORCETOWER_2F, 255, 8, 7
+	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 5, 5
 	return
 
 Manhunt_Encounter_Giovanni_Dialogue_2:
@@ -255,15 +283,16 @@ Manhunt_Encounter_Giovanni_Dialogue_2:
 
 Manhunt_MissionComplete_Dialogue::
 	lock
+	setvar VAR_MANHUNT_STATE, MANHUNT_COMPLETE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 0
-	setvar VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI
 	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_GoodWork
 	callnative ClearMugshot
 	release
+	completequest QUEST_MANHUNT
 	call ExhibitionBattle_TimeSkip_Script
 	end
 
@@ -594,3 +623,13 @@ gText_Manhunt_WhatWaitUhOkay::
 
 gText_Manhunt_GoodWork::
 	.string "Good work.$"
+
+gText_Manhunt_EverySecond::
+	.string "Every second that I'm up here, I'm\n"
+	.string "losing time on the upcoming promo... I\l"
+	.string "hope you're able to track Giovanni down\l"
+	.string "soon.$"
+
+gText_Manhunt_IllBeBack::
+	.string "I'll be back in the Production studio if\n"
+	.string "you need me.$"

@@ -5,10 +5,18 @@ const FLAG_HIDE_GIOVANNI = FLAG_TEMP_1
 const FLAG_HIDE_BIANCA = FLAG_TEMP_2 
 const MATTHEW = 1
 
-script Manhunt_TowerObjectSetUp_Script {
-    setobjectxy(SABRINA,8,6)
-    setobjectxyperm(SABRINA,8,6)
-    setobjectmovementtype(SABRINA,MOVEMENT_TYPE_FACE_UP)
+const FLAG_HIDE_NERDS_COPS_SALESFORCETOWER = FLAG_TEMP_1
+const FLAG_HIDE_BIANCA_SALESFORCETOWER = FLAG_TEMP_3
+const FLAG_HIDE_SABRINA_SALESFORCETOWER = FLAG_TEMP_5
+
+script Manhunt_ShowSabrina_Script{
+    setflag(FLAG_HIDE_BIANCA_SALESFORCETOWER)
+    setflag(FLAG_HIDE_NERDS_COPS_SALESFORCETOWER)
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_MANHUNT)
+    if(var(VAR_RESULT)){
+        setflag(FLAG_HIDE_SABRINA_SALESFORCETOWER)
+    }
 }
 
 script Manhunt_HideGiovanni_Script {
@@ -21,13 +29,28 @@ script Manhunt_HideBianca_Script{
     return
 }
 
+script Manhunt_Interact_Sabrina_Script{
+    returnqueststate(QUEST_MANHUNT)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: goto(Manhunt_ActiveQuest_Dialogue)
+        case QUEST_MENU_COMPLETE_QUEST: goto(Manhunt_CompleteQuest_Dialogue)
+        default: goto(Manhunt_Assignment_Dialogue)
+    }
+}
+
+script Manhunt_ActiveQuest_Dialogue{
+    msgbox(gText_Manhunt_EverySecond,MSGBOX_NPC)
+    end
+}
+
+script Manhunt_CompleteQuest_Dialogue{
+    msgbox(gText_Manhunt_IllBeBack,MSGBOX_NPC)
+    end
+}
+
 script Manhunt_Assignment_Dialogue {
     lock
-
-        if (var(VAR_MANHUNT_STATE)){
-            call(AlwaysWatchingWazowski_IgnoringPlayer_Dialogue)
-            end
-        }
 
         setvar(VAR_MANHUNT_STATE,ASSIGNED_FIND_GIOVANNI)
 
@@ -35,6 +58,8 @@ script Manhunt_Assignment_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_Manhunt_GoFind,MSGBOX_NPC)
         callnative(ClearMugshot)
+
+        startquest(QUEST_MANHUNT)
         release
         end
 }
@@ -306,21 +331,24 @@ script Manhunt_Encounter_Giovanni_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_Manhunt_WhatWaitUhOkay)
         callnative(ClearMugshot)
-        warpsilent(MAP_SALESFORCETOWER_2F,255,8,7)
+        warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,5,5)
 }
 
 script Manhunt_MissionComplete_Dialogue {
     lock
+
+        setvar(VAR_MANHUNT_STATE,MANHUNT_COMPLETE)
+
         applymovement(PLAYER,Common_Movement_FaceUp)
         applymovement(SABRINA,Common_Movement_FaceDown)
         waitmovement(0)
-        setvar(VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI)
 
         setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)
         msgbox(gText_Manhunt_GoodWork)
         callnative(ClearMugshot)
         release
+        completequest(QUEST_MANHUNT)
         call(ExhibitionBattle_TimeSkip_Script)
         end
 }
@@ -535,6 +563,14 @@ text gText_Manhunt_WhatWaitUhOkay {
 
 text gText_Manhunt_GoodWork {
     format("Good work.")
+}
+
+text gText_Manhunt_EverySecond{
+    format("Every second that I'm up here, I'm losing time on the upcoming promo... I hope you're able to track Giovanni down soon.")
+}
+
+text gText_Manhunt_IllBeBack{
+    format("I'll be back in the Production studio if you need me.")
 }
 
 movement Manhunt_WalkInNewspaper {

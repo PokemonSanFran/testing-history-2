@@ -49,6 +49,7 @@ Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
 
 Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 	call LetsBurnThisMother_ShowRose_Script
+	call Manhunt_ShowSabrina_Script
 	call CongratsYoureanAsshole_ObjectCleanUp_Script
 	return
 
@@ -140,6 +141,44 @@ Salesforcetower_Leagueops_Oak_Event_Script_3:
 Salesforcetower_Leagueops_Oak_Event_Script_4:
 	call LetsBurnThisMotherDown_Interact_Oak_Script
 	goto Salesforcetower_Leagueops_Oak_Event_Script_1
+
+
+Salesforcetower_Leagueops_Koga_Event_Script::
+	lock
+	faceplayer
+	switch VAR_STORYLINE_STATE
+	case STORY_MORNING_OF_TIMELINE_SPLIT, Salesforcetower_Leagueops_Koga_Event_Script_3
+	case STORY_START_FALSE_TIMELINE, Salesforcetower_Leagueops_Koga_Event_Script_4
+	case STORY_1ST_TEAMROCKET_TAKEDOWN, Salesforcetower_Leagueops_Koga_Event_Script_4
+	case STORY_2ND_TEAMROCKET_TAKEDOWN, Salesforcetower_Leagueops_Koga_Event_Script_4
+	release
+	end
+
+Salesforcetower_Leagueops_Koga_Event_Script_3:
+	return
+
+Salesforcetower_Leagueops_Koga_Event_Script_4:
+	return
+
+
+Salesforcetower_Leagueops_Sabrina_Event_Script::
+	lock
+	faceplayer
+	switch VAR_STORYLINE_STATE
+	case STORY_MORNING_OF_TIMELINE_SPLIT, Salesforcetower_Leagueops_Sabrina_Event_Script_3
+	case STORY_START_FALSE_TIMELINE, Salesforcetower_Leagueops_Sabrina_Event_Script_4
+	case STORY_1ST_TEAMROCKET_TAKEDOWN, Salesforcetower_Leagueops_Sabrina_Event_Script_4
+	case STORY_2ND_TEAMROCKET_TAKEDOWN, Salesforcetower_Leagueops_Sabrina_Event_Script_4
+Salesforcetower_Leagueops_Sabrina_Event_Script_1:
+	release
+	end
+
+Salesforcetower_Leagueops_Sabrina_Event_Script_3:
+	return
+
+Salesforcetower_Leagueops_Sabrina_Event_Script_4:
+	goto Manhunt_Interact_Sabrina_Script
+	goto Salesforcetower_Leagueops_Sabrina_Event_Script_1
 
 
 Salesforcetower_Leagueops_Bianca_Event_Script::

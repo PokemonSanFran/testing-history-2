@@ -61,11 +61,12 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-	warp MAP_ALCATRAZ_B1F, 0
+	setvar VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI
 	return
 
 
 Debug_Script_3::
+	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 5, 5
 	return
 
 

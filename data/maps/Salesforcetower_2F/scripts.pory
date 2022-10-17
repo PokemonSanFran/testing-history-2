@@ -33,7 +33,7 @@ script Salesforcetower_2F_MapScripts_OnTransition {
 
         switch (var(VAR_MANHUNT_STATE)){
             case 0: return
-            default: call(Manhunt_TowerObjectSetUp_Script) //Sabrina is in her office, already gave you mission
+            //default: call(Manhunt_TowerObjectSetUp_Script) //Sabrina is in her office, already gave you mission
         }
 
         switch (var(VAR_HOW_DISAPPOINTING_STATE)){

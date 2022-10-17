@@ -31,6 +31,7 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
     }
             case START_FALSE_TIMELINE: 
                 call(LetsBurnThisMother_ShowRose_Script)
+                call(Manhunt_ShowSabrina_Script)
                 call(CongratsYoureanAsshole_ObjectCleanUp_Script)
             default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
         }
@@ -96,6 +97,31 @@ script Salesforcetower_Leagueops_Oak_Event_Script{
     end
 }
 
+script Salesforcetower_Leagueops_Koga_Event_Script{
+    lock
+    faceplayer
+    switch(var(VAR_STORYLINE_STATE)){
+        case STORY_MORNING_OF_TIMELINE_SPLIT: return
+        case STORY_START_FALSE_TIMELINE:
+        case STORY_1ST_TEAMROCKET_TAKEDOWN:
+        case STORY_2ND_TEAMROCKET_TAKEDOWN: return
+}
+release
+end
+}
+
+script Salesforcetower_Leagueops_Sabrina_Event_Script{
+    lock
+    faceplayer
+    switch(var(VAR_STORYLINE_STATE)){
+        case STORY_MORNING_OF_TIMELINE_SPLIT: return
+        case STORY_START_FALSE_TIMELINE:
+        case STORY_1ST_TEAMROCKET_TAKEDOWN:
+        case STORY_2ND_TEAMROCKET_TAKEDOWN: goto(Manhunt_Interact_Sabrina_Script)
+}
+release
+end
+}
 
 script Salesforcetower_Leagueops_Bianca_Event_Script{
     lock
