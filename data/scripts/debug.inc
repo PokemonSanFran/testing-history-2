@@ -54,8 +54,8 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Script_1::
-	setvar VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
-	warpsilent MAP_TREASUREISLAND_RESTAURANT, 0
+	setweather WEATHER_FOG_DIAGONAL
+	doweather
 	return
 
 

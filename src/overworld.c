@@ -542,6 +542,12 @@ void InitMapView(void)
     InitTilesetAnimations();
 }
 
+void RemoveTintFromObjectEvents(void)
+{
+    if (gGlobalFieldTintMode == GLOBAL_FIELD_TINT_NONE)
+        RemoveTintFromObjectEventPalettes();
+}
+
 const struct MapLayout *GetMapLayout(void)
 {
     u16 mapLayoutId = gSaveBlock1Ptr->mapLayoutId;

@@ -2517,6 +2517,11 @@ void InitObjectEventPalettes(u8 palSlot)
     }
 }
 
+void RemoveTintFromObjectEventPalettes()
+{
+    PatchObjectPaletteRange(sObjectPaletteTagSets[sCurrentReflectionType], 0, 5);
+}
+
 u16 GetObjectPaletteTag(u8 palSlot)
 {
     u8 i;
