@@ -247,21 +247,72 @@ LetsGrabLunch_Haightashbury_5:
 	end
 
 
-LetsGrabLunch_FastForwardFirstRestoration_Quest::
-	lock
-	compare VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
-	goto_if_eq LetsGrabLunch_FastForwardFirstRestoration_Quest_2
-	msgbox gText_LetsGrabLunch_FastForwardBlock
-LetsGrabLunch_FastForwardFirstRestoration_Quest_1:
-	closemessage
-	releaseall
-	end
+LetsGrabLunch_CheckRestorationProgress_Script::
+	setvar VAR_TEMP_0, 0
+	call_if_quest_complete QUEST_RESTORECHINATOWN, LetsGrabLunch_IncrementCount_Script
+	call_if_quest_complete QUEST_RESTOREMARIN, LetsGrabLunch_IncrementCount_Script
+	call_if_quest_complete QUEST_RESTOREHAIGHTASHBURY, LetsGrabLunch_IncrementCount_Script
+	call_if_quest_complete QUEST_RESTORETREASUREISLAND, LetsGrabLunch_IncrementCount_Script
+	compare VAR_TEMP_0, 0
+	goto_if_gt LetsGrabLunch_CheckRestorationProgress_Script_2
+	return
 
-LetsGrabLunch_FastForwardFirstRestoration_Quest_2:
+LetsGrabLunch_CheckRestorationProgress_Script_1:
 	setvar VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE
 	bufferpartymonnick 0, 1
 	msgbox gText_LetsGrabLunch_FastForwardAdvance
-	goto LetsGrabLunch_FastForwardFirstRestoration_Quest_1
+	return
+
+LetsGrabLunch_CheckRestorationProgress_Script_2:
+	compare VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
+	goto_if_eq LetsGrabLunch_CheckRestorationProgress_Script_1
+	return
+
+
+LetsGrabLunch_IncrementCount_Script::
+	addvar VAR_TEMP_0, 1
+	return
+
+
+LetsGrabLunch_Debug_Script::
+	compare VAR_STORYLINE_STATE, STORY_POST_BATTLE_ARCHER_TREASUREISLAND
+	goto_if_gt LetsGrabLunch_Debug_Script_2
+	msgbox gText_LetsGrabLunch_FastForwardBlock
+LetsGrabLunch_Debug_Script_1:
+	return
+
+LetsGrabLunch_Debug_Script_2:
+	special GetCurrentMap
+	switch VAR_RESULT
+	case MAP_TREASUREISLAND, LetsGrabLunch_Debug_Script_6
+	case MAP_CHINATOWN, LetsGrabLunch_Debug_Script_7
+	case MAP_MARIN, LetsGrabLunch_Debug_Script_8
+	case MAP_HAIGHTASHBURY, LetsGrabLunch_Debug_Script_9
+	goto LetsGrabLunch_Debug_Script_1
+
+LetsGrabLunch_Debug_Script_6:
+	completequest QUEST_RESTORETREASUREISLAND
+	goto LetsGrabLunch_Debug_Script_1
+
+LetsGrabLunch_Debug_Script_7:
+	completequest QUEST_RESTORECHINATOWN
+	goto LetsGrabLunch_Debug_Script_1
+
+LetsGrabLunch_Debug_Script_8:
+	completequest QUEST_RESTOREMARIN
+	goto LetsGrabLunch_Debug_Script_1
+
+LetsGrabLunch_Debug_Script_9:
+	completequest QUEST_RESTOREHAIGHTASHBURY
+	goto LetsGrabLunch_Debug_Script_1
+
+
+LetsGrabLunch_FastForwardFirstRestoration_Quest::
+	lock
+	call LetsGrabLunch_Debug_Script
+	call LetsGrabLunch_CheckRestorationProgress_Script
+	releaseall
+	end
 
 
 LetsGrabLunch_WalkUpToPlayer:

@@ -3907,10 +3907,9 @@ static void Task_MoveDeoxysRock(u8 taskId)
 
 u32 GetCurrentMap(void)//Used for PSF Flying Blind
 {
-    u8 map = 0;
-    map = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
+    u8 map = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
 
-    VarSet(VAR_TEMP_0,map);
-    return (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
+    gSpecialVar_Result = map;
+    return map;
 }
 

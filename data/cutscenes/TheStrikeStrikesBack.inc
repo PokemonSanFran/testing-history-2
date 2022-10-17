@@ -77,14 +77,11 @@ TheStrikeStrikesBack_PhoneCall_Dialogue::
 	special GetCurrentMap
 	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
-	compare VAR_TEMP_0, 31
-	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
-	compare VAR_TEMP_0, 37
-	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
-	compare VAR_TEMP_0, 38
-	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
-	compare VAR_TEMP_0, 42
-	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_2
+	switch VAR_RESULT
+	case 31, TheStrikeStrikesBack_PhoneCall_Dialogue_3
+	case 37, TheStrikeStrikesBack_PhoneCall_Dialogue_3
+	case 38, TheStrikeStrikesBack_PhoneCall_Dialogue_3
+	case 42, TheStrikeStrikesBack_PhoneCall_Dialogue_3
 	msgbox gText_TheStrikeStrikesBack_IKnowImLate
 TheStrikeStrikesBack_PhoneCall_Dialogue_1:
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
@@ -105,20 +102,20 @@ TheStrikeStrikesBack_PhoneCall_Dialogue_1:
 	waitse
 	msgbox gText_TheStrikeStrikesBack_DoYouWant, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_12
+	goto_if_eq TheStrikeStrikesBack_PhoneCall_Dialogue_6
 	closemessage
 	warpsilent MAP_PSFROUTE22, 255, 21, 25
-TheStrikeStrikesBack_PhoneCall_Dialogue_11:
+TheStrikeStrikesBack_PhoneCall_Dialogue_5:
 	release
 	end
 
-TheStrikeStrikesBack_PhoneCall_Dialogue_2:
+TheStrikeStrikesBack_PhoneCall_Dialogue_3:
 	msgbox gText_TheStrikeStrikesBack_CongratsOnYourFeat
 	goto TheStrikeStrikesBack_PhoneCall_Dialogue_1
 
-TheStrikeStrikesBack_PhoneCall_Dialogue_12:
+TheStrikeStrikesBack_PhoneCall_Dialogue_6:
 	closemessage
-	goto TheStrikeStrikesBack_PhoneCall_Dialogue_11
+	goto TheStrikeStrikesBack_PhoneCall_Dialogue_5
 
 
 TheStrikeStrikesBack_Intro_Dialogue::

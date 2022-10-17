@@ -79,11 +79,15 @@ script TheStrikeStrikesBack_PhoneCall_Dialogue {
 
         setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
-        if (var(VAR_TEMP_0) == 31 || var(VAR_TEMP_0) == 37 || var(VAR_TEMP_0) == 38 || var(VAR_TEMP_0) == 42){
-            msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat)
-        }else {
-            msgbox(gText_TheStrikeStrikesBack_IKnowImLate)
+
+        switch(var(VAR_RESULT)){
+            case 31:
+            case 37:
+            case 38:
+            case 42: msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat)
+            default: msgbox(gText_TheStrikeStrikesBack_IKnowImLate)
         }
+
     setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_ThankYou)

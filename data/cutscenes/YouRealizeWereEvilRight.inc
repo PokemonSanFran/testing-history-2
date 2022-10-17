@@ -30,7 +30,7 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue::
 	msgbox gText_YouRealizeWereEvilRight_YeahImOnMyWay
 	callnative ClearMugshot
 	setvar VAR_SALESFORCETOWER_2F_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT
-	warpsilent MAP_SALESFORCETOWER_2F, 255, 17, 29
+	warpsilent MAP_SALESFORCETOWER_PRODUCTION, 17, 29
 	return
 
 

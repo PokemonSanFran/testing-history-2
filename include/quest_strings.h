@@ -488,6 +488,26 @@ extern const u8 gText_Quest_Manhunt_Desc[];
 extern const u8 gText_Quest_Manhunt_DoneDesc[];
 extern const u8 gText_Quest_Manhunt_Map[];
 
+extern const u8 gText_Quest_RestoreMarin_Name[];
+extern const u8 gText_Quest_RestoreMarin_Desc[];
+extern const u8 gText_Quest_RestoreMarin_DoneDesc[];
+extern const u8 gText_Quest_RestoreMarin_Map[];
+
+extern const u8 gText_Quest_RestoreTreasureisland_Name[];
+extern const u8 gText_Quest_RestoreTreasureisland_Desc[];
+extern const u8 gText_Quest_RestoreTreasureisland_DoneDesc[];
+extern const u8 gText_Quest_RestoreTreasureisland_Map[];
+
+extern const u8 gText_Quest_RestoreChinatown_Name[];
+extern const u8 gText_Quest_RestoreChinatown_Desc[];
+extern const u8 gText_Quest_RestoreChinatown_DoneDesc[];
+extern const u8 gText_Quest_RestoreChinatown_Map[];
+
+extern const u8 gText_Quest_RestoreHaightashbury_Name[];
+extern const u8 gText_Quest_RestoreHaightashbury_Desc[];
+extern const u8 gText_Quest_RestoreHaightashbury_DoneDesc[];
+extern const u8 gText_Quest_RestoreHaightashbury_Map[];
+
 //subquests
 extern const u8 gText_Quest_HauntABuilding_Sub1_Name[];
 extern const u8 gText_Quest_HauntABuilding_Sub1_Desc[];

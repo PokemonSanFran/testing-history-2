@@ -158,6 +158,7 @@ SpeechSpeechSpeech_StartTransformation_Script::
 
 
 SpeechSpeechSpeech_EliteReveal_Dialogue::
+	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_Us
@@ -238,7 +239,6 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	fadescreen FADE_TO_BLACK
-	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_ALCATRAZ_STATE, POST_SPEECHSPEECH
 	TeleportCamera 9, 9
 	callnative DestroyVirtualObjects
@@ -255,7 +255,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_SpeechSpeechSpeech_Yeah
-	compare VAR_STORYLINE_STATE, STORY_2ND_PRE_SPEECHSPPECH
+	compare VAR_STORYLINE_STATE, STORY_RAVE_AND_SPEECH_COMPLETE
 	goto_if_ne SpeechSpeechSpeech_EliteReveal_Dialogue_2
 	msgbox gText_SpeechSpeechSpeech_ByTheWay
 SpeechSpeechSpeech_EliteReveal_Dialogue_1:

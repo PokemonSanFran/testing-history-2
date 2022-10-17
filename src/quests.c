@@ -54,7 +54,7 @@ struct QuestMenuResources {
 	u8 filterMode;
 	u8 parentQuest;
 	bool8 restoreCursor;
-    bool8 initialLoad;
+	bool8 initialLoad;
 };
 
 struct QuestMenuStaticResources {
@@ -3181,36 +3181,80 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        sRestoreToTheirFormerGlory_Sub,
 	        4
 	),
-    side_quest(
-            gText_Quest_HowDisappointing_Name,
-            gText_Quest_HowDisappointing_Desc,
-            gText_Quest_HowDisappointing_DoneDesc,
-            gText_Quest_HowDisappointing_Map,
-            OBJ_EVENT_GFX_AQUA_MEMBER_F,
-            OBJECT,
-            NULL,
-            0
-    ),
-    side_quest(
-            gText_Quest_LetsBurnThisMotherDown_Name,
-            gText_Quest_LetsBurnThisMotherDown_Desc,
-            gText_Quest_LetsBurnThisMotherDown_DoneDesc,
-            gText_Quest_LetsBurnThisMotherDown_Map,
-            OBJ_EVENT_GFX_WALLY,
-            OBJECT,
-            NULL,
-            0
-    ),
-    side_quest(
-            gText_Quest_Manhunt_Name,
-            gText_Quest_Manhunt_Desc,
-            gText_Quest_Manhunt_DoneDesc,
-            gText_Quest_Manhunt_Map,
-            OBJ_EVENT_GFX_ARCHIE,
-            OBJECT,
-            NULL,
-            0
-    ),
+	side_quest(
+	        gText_Quest_HowDisappointing_Name,
+	        gText_Quest_HowDisappointing_Desc,
+	        gText_Quest_HowDisappointing_DoneDesc,
+	        gText_Quest_HowDisappointing_Map,
+	        OBJ_EVENT_GFX_AQUA_MEMBER_F,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_LetsBurnThisMotherDown_Name,
+	        gText_Quest_LetsBurnThisMotherDown_Desc,
+	        gText_Quest_LetsBurnThisMotherDown_DoneDesc,
+	        gText_Quest_LetsBurnThisMotherDown_Map,
+	        OBJ_EVENT_GFX_WALLY,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+	side_quest(
+	        gText_Quest_Manhunt_Name,
+	        gText_Quest_Manhunt_Desc,
+	        gText_Quest_Manhunt_DoneDesc,
+	        gText_Quest_Manhunt_Map,
+	        OBJ_EVENT_GFX_ARCHIE,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+
+	side_quest(
+	        gText_Quest_RestoreChinatown_Name,
+	        gText_Quest_RestoreChinatown_Desc,
+	        gText_Quest_RestoreChinatown_DoneDesc,
+	        gText_Quest_RestoreChinatown_Map,
+	        OBJ_EVENT_GFX_WOMAN_3,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+
+	side_quest(
+	        gText_Quest_RestoreMarin_Name,
+	        gText_Quest_RestoreMarin_Desc,
+	        gText_Quest_RestoreMarin_DoneDesc,
+	        gText_Quest_RestoreMarin_Map,
+	        OBJ_EVENT_GFX_SCOTT,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+
+	side_quest(
+	        gText_Quest_RestoreTreasureisland_Name,
+	        gText_Quest_RestoreTreasureisland_Desc,
+	        gText_Quest_RestoreTreasureisland_DoneDesc,
+	        gText_Quest_RestoreTreasureisland_Map,
+	        OBJ_EVENT_GFX_JUAN,
+	        OBJECT,
+	        NULL,
+	        0
+	),
+
+	side_quest(
+	        gText_Quest_RestoreHaightashbury_Name,
+	        gText_Quest_RestoreHaightashbury_Desc,
+	        gText_Quest_RestoreHaightashbury_DoneDesc,
+            gText_Quest_RestoreHaightashbury_Map,
+	        OBJ_EVENT_GFX_MAN_3,
+	        OBJECT,
+	        NULL,
+	        0
+	),
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -3436,7 +3480,7 @@ static bool8 SetupGraphics(void)
 			gMain.state++;
 			break;
 		case 14:
-            SetInitalLoadTrue();
+			SetInitalLoadTrue();
 			gMain.state++;
 			break;
 		case 15:
@@ -3669,8 +3713,8 @@ void ClearModeOnStartup(void)
 void WriteModeToSaveBlock(u8 mode)
 {
 	if (IsSubsavedQuestMode() == FALSE) {
-        gSaveBlock2Ptr->savedQuestMode = mode;
-    }
+		gSaveBlock2Ptr->savedQuestMode = mode;
+	}
 }
 
 static u8 ManageMode(u8 action)
@@ -3761,29 +3805,34 @@ static bool8 IsAlphaMode(void)
 	}
 }
 
-static void SetInitalLoadTrue(void){
-    sStateDataPtr->initialLoad = TRUE;
+static void SetInitalLoadTrue(void)
+{
+	sStateDataPtr->initialLoad = TRUE;
 }
 
-static void SetInitalLoadFalse(void){
-    sStateDataPtr->initialLoad = FALSE;
+static void SetInitalLoadFalse(void)
+{
+	sStateDataPtr->initialLoad = FALSE;
 }
 
-static bool8 IsInitalLoad(void){
-    bool8 initialLoad = sStateDataPtr->initialLoad;
-    return initialLoad;
+static bool8 IsInitalLoad(void)
+{
+	bool8 initialLoad = sStateDataPtr->initialLoad;
+	return initialLoad;
 }
 
-static void GetSavedQuestMode(void){
-    sStateDataPtr->filterMode = gSaveBlock2Ptr->savedQuestMode;
+static void GetSavedQuestMode(void)
+{
+	sStateDataPtr->filterMode = gSaveBlock2Ptr->savedQuestMode;
 }
 
-static void LoadSavedQuestMode(u8 taskId){
-    if (IsInitalLoad()){
-        SetInitalLoadFalse();
-        GetSavedQuestMode();
-        Task_QuestMenuCleanUp(taskId);
-    }
+static void LoadSavedQuestMode(u8 taskId)
+{
+	if (IsInitalLoad()) {
+		SetInitalLoadFalse();
+		GetSavedQuestMode();
+		Task_QuestMenuCleanUp(taskId);
+	}
 }
 
 static u16 BuildMenuTemplate(void)
@@ -4682,7 +4731,7 @@ static void Task_Main(u8 taskId)
 		ListMenuGetScrollAndRow(data[0], &sListMenuState.scroll,
 		                        &sListMenuState.row);
 
-        LoadSavedQuestMode(taskId);
+		LoadSavedQuestMode(taskId);
 
 		switch (input) {
 			case LIST_NOTHING_CHOSEN:
@@ -4775,7 +4824,7 @@ static void QuestMenu_RemoveScrollIndicatorArrowPair(void)
 
 
 void EnterSubsavedQuestModeAndCleanUp(u8 taskId, s16 *data,
-                                 s32 input)
+                                      s32 input)
 {
 	if (DoesQuestHaveChildrenAndNotInactive(input)) {
 		PrepareFadeOut(taskId);

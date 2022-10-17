@@ -488,6 +488,26 @@ const u8 gText_Quest_Manhunt_Desc[] = _("Description");
 const u8 gText_Quest_Manhunt_DoneDesc[] = _("DoneDescription");
 const u8 gText_Quest_Manhunt_Map[] = _("???");
 
+const u8 gText_Quest_RestoreMarin_Name[] = _("Restore Marin Gym");
+const u8 gText_Quest_RestoreMarin_Desc[] = _("Description");
+const u8 gText_Quest_RestoreMarin_DoneDesc[] = _("DoneDescription");
+const u8 gText_Quest_RestoreMarin_Map[] = _("Marin");
+
+const u8 gText_Quest_RestoreTreasureisland_Name[] = _("Restore Treasureisland Gym");
+const u8 gText_Quest_RestoreTreasureisland_Desc[] = _("Description");
+const u8 gText_Quest_RestoreTreasureisland_DoneDesc[] = _("DoneDescription");
+const u8 gText_Quest_RestoreTreasureisland_Map[] = _("Treasureisland");
+
+const u8 gText_Quest_RestoreChinatown_Name[] = _("Restore Chinatown Gym");
+const u8 gText_Quest_RestoreChinatown_Desc[] = _("Description");
+const u8 gText_Quest_RestoreChinatown_DoneDesc[] = _("DoneDescription");
+const u8 gText_Quest_RestoreChinatown_Map[] = _("Chinatown");
+
+const u8 gText_Quest_RestoreHaightashbury_Name[] = _("Restore Haightashbury Gym");
+const u8 gText_Quest_RestoreHaightashbury_Desc[] = _("Description");
+const u8 gText_Quest_RestoreHaightashbury_DoneDesc[] = _("DoneDescription");
+const u8 gText_Quest_RestoreHaightashbury_Map[] = _("Haightashbury");
+
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
 const u8 gText_Quest_HauntABuilding_Sub1_Desc[] = _("You brought Hunter a Litwick.");
