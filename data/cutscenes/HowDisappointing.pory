@@ -215,6 +215,7 @@ msgbox(gText_HowDisappointing_SighHowDisappointing,MSGBOX_NPC)
 
 script HowDisappointing_ArrestScene_Dialogue {
     lock
+    setvar(VAR_HOW_DISAPPOINTING_STATE,DEFEATED_ARIANA_CHINATOWN)
     clearflag(FLAG_HIDE_POLICE)
     addobject(POLICEA)
     setobjectxyperm(POLICEA,35,13)
@@ -222,56 +223,45 @@ script HowDisappointing_ArrestScene_Dialogue {
     applymovement(POLICEA,HowDisappointing_WalkToArrest)
     waitmovement(0)
     msgbox(gText_HowDisappointing_YoureUnderArrest)
-    setvar(VAR_HOW_DISAPPOINTING_STATE,DEFEATED_ARIANA_CHINATOWN)
-    warpsilent(MAP_SALESFORCETOWER_2F,255,16,26)
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_HOW_DISAPPOINTING)
+    warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,32,53)
 }
 
-const OAK = 9 //FLAG_TEMP_3
-const BIANCA = 10
-const ROSE = 11
-const KOGA = 14 // FLAG_TEMP_4
-const SABRINA = 2 // FLAG_TEMP_1
-const CHIEF2 = 13
-const FLAG_HIDE_BIANCA = FLAG_TEMP_8
-const FLAG_HIDE_CHIEF2 = FLAG_TEMP_7
-const FLAG_HIDE_ROSE = FLAG_TEMP_5
+const ARNAV = 1
+const OLIVER = 2
+const OAK = 3
+const BIANCA = 4
+const ROSE = 5
+const MAYOR = 6
+const CHIEF2 = 7
 
-script HowDisappointing_PostMissionObjectSetUp_Script {
-    setobjectxy(KOGA,16,28)
-    setobjectxyperm(KOGA,16,28)
-    setobjectmovementtype(KOGA,MOVEMENT_TYPE_FACE_UP)
-    clearflag(FLAG_HIDE_BIANCA)
-    clearflag(FLAG_HIDE_CHIEF2)
-    clearflag(FLAG_HIDE_ROSE)
-    addobject(BIANCA)
-    addobject(CHIEF2)
-    addobject(ROSE)
-    setobjectxyperm(BIANCA,15,26)
-    setobjectxyperm(CHIEF2,17,26)
-    setobjectxyperm(ROSE,16,25)
-    setobjectmovementtype(CHIEF2,MOVEMENT_TYPE_FACE_UP)
-    setobjectmovementtype(BIANCA,MOVEMENT_TYPE_FACE_UP)
-    setobjectmovementtype(ROSE,MOVEMENT_TYPE_FACE_DOWN)
-}
+const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
+const FLAG_HIDE_OAK = FLAG_TEMP_2
+const FLAG_HIDE_BIANCA = FLAG_TEMP_3
+const FLAG_HIDE_ROSE = FLAG_TEMP_4
+const FLAG_HIDE_SABRINA = FLAG_TEMP_5
+const FLAG_HIDE_KOGA = FLAG_TEMP_6
 
 script HowDisappointing_MissionComplete_Dialogue {
     lock
-    applymovement(PLAYER,Common_Movement_FaceUp)
-    waitmovement(0)
+    addvar(VAR_STORYLINE_STATE,1)
+    setvar(VAR_HOW_DISAPPOINTING_STATE,HOW_DISAPPOINTING_COMPLETE)
+
     setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
     callnative(DrawMugshot)
     msgbox(gText_HowDisappointing_ExcellentWorkEverybody)
     callnative(ClearMugshot)
     closemessage
-    applymovement(BIANCA,HowDisappointing_LeaveRoomA)
-    applymovement(CHIEF2,HowDisappointing_LeaveRoomB)
-    applymovement(ROSE,HowDisappointing_LeaveRoomB)
-    waitmovement(0)
-    removeobject(BIANCA)
-    removeobject(CHIEF2)
-    removeobject(ROSE)
-    addvar(VAR_STORYLINE_STATE,1)
-    setvar(VAR_HOW_DISAPPOINTING_STATE,HOW_DISAPPOINTING_COMPLETE)
+    applymovement(BIANCA,Common_Movement_WalkUp)
+    applymovement(CHIEF2,Common_Movement_WalkUp)
+    applymovement(ROSE,Common_Movement_WalkRight)
+
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    call(Salesforcetower_Leagueops_ClearSecondaryCharacters_Script)
+    fadescreen(FADE_FROM_BLACK)
+
+    completequest(QUEST_HOW_DISAPPOINTING)
     release
     call(ExhibitionBattle_TimeSkip_Script)
     end
@@ -341,6 +331,10 @@ text gText_HowDisappointing_YoureUnderArrest{
 
 text gText_HowDisappointing_ExcellentWorkEverybody{
     format("Excellent work everybody! Lenora, Cilan, and Ariana have all been arrested, and all of the Gyms were successfully shut down. The region will see how quickly we’re responding to these threats, and hopefully, this will slow their efforts.")
+}
+
+text gText_HowDisappointing_IAppreciate{
+    format("I appreciate you handling that, {PLAYER}.")
 }
 
 movement HowDisappointing_WalkIntoFormationNorthLeft_Movement{
@@ -427,9 +421,10 @@ movement HowDisappointing_WalkToArrest {
 }
 
 movement HowDisappointing_LeaveRoomA {
-    walk_up
     walk_right
-    walk_up * 5
+    walk_up * 3
+    walk_left
+    walk_up * 6
     step_end 
 }
 

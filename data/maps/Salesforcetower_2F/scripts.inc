@@ -57,11 +57,9 @@ Salesforcetower_2F_MapScripts_OnTransition_9:
 	case 0, Salesforcetower_2F_MapScripts_OnTransition_13
 	switch VAR_HOW_DISAPPOINTING_STATE
 	case MISSION_NOT_ASSIGNED, Salesforcetower_2F_MapScripts_OnTransition_16
-	case DEFEATED_ARIANA_CHINATOWN, Salesforcetower_2F_MapScripts_OnTransition_17
 	call YouHaveYourOrders_ObjectSetUp_Script
-Salesforcetower_2F_MapScripts_OnTransition_14:
 	compare VAR_LETS_BURN_THIS_MOTHER_STATE, DEFEATED_ARCHER_ALCATRAZ
-	goto_if_eq Salesforcetower_2F_MapScripts_OnTransition_19
+	goto_if_eq Salesforcetower_2F_MapScripts_OnTransition_18
 	return
 
 Salesforcetower_2F_MapScripts_OnTransition_13:
@@ -70,11 +68,7 @@ Salesforcetower_2F_MapScripts_OnTransition_13:
 Salesforcetower_2F_MapScripts_OnTransition_16:
 	return
 
-Salesforcetower_2F_MapScripts_OnTransition_17:
-	call HowDisappointing_PostMissionObjectSetUp_Script
-	goto Salesforcetower_2F_MapScripts_OnTransition_14
-
-Salesforcetower_2F_MapScripts_OnTransition_19:
+Salesforcetower_2F_MapScripts_OnTransition_18:
 	return
 
 

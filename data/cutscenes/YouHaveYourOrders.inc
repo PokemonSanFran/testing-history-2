@@ -1,13 +1,44 @@
 YouHaveYourOrders_ObjectSetUp_Script::
-	setobjectxy 14, 16, 28
-	setobjectxyperm 14, 16, 28
-	setobjectmovementtype 14, MOVEMENT_TYPE_FACE_UP
+	setobjectxy 7, 34, 53
+	setobjectxyperm 7, 34, 53
+	setobjectmovementtype 7, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxy 5, 35, 56
+	setobjectxyperm 5, 35, 56
+	setobjectmovementtype 5, MOVEMENT_TYPE_FACE_UP
+	setobjectxy 4, 33, 53
+	setobjectxyperm 4, 33, 53
+	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 
+YouHaveYourOrders_Interact_Koga_Script::
+	returnqueststate QUEST_HOW_DISAPPOINTING
+	switch VAR_RESULT
+	case QUEST_MENU_SET_ACTIVE, YouHaveYourOrders_Interact_Koga_Script_2
+	case QUEST_MENU_COMPLETE_QUEST, YouHaveYourOrders_Interact_Koga_Script_3
+	goto YouHaveYourOrders_Assignment_Dialogue
+	return
+
+YouHaveYourOrders_Interact_Koga_Script_2:
+	goto YouHaveYourOrders_ActiveQuest_Dialogue
+	return
+
+YouHaveYourOrders_Interact_Koga_Script_3:
+	goto YouHaveYourOrders_CompleteQuest_Dialogue
+	return
+
+
+YouHaveYourOrders_ActiveQuest_Dialogue::
+	msgbox gText_YouHaveYourOrders_ICouldGoShut, MSGBOX_NPC
+	end
+
+
+YouHaveYourOrders_CompleteQuest_Dialogue::
+	msgbox gText_HowDisappointing_IAppreciate, MSGBOX_NPC
+	end
+
+
 YouHaveYourOrders_Assignment_Dialogue::
-	compare VAR_HOW_DISAPPOINTING_STATE, 0
-	goto_if_ne YouHaveYourOrders_Assignment_Dialogue_2
 	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_ASSIGNED
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
@@ -20,15 +51,7 @@ YouHaveYourOrders_Assignment_Dialogue::
 	msgbox gText_YouHaveYourOrders_HmmGoodPoint
 	callnative ClearMugshot
 	closemessage
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	applymovement 14, YouHaveYourOrders_WalkToOfficeA
-	compare VAR_TEMP_0, 10
-	goto_if_ne YouHaveYourOrders_Assignment_Dialogue_5
-	compare VAR_TEMP_1, 14
-	goto_if_eq YouHaveYourOrders_Assignment_Dialogue_6
-	applymovement OBJ_EVENT_ID_PLAYER, YouHaveYourOrders_WalkToOfficeB_FromDown
-YouHaveYourOrders_Assignment_Dialogue_4:
-	applymovement 14, YouHaveYourOrders_PaceInOffice
+	applymovement 9, YouHaveYourOrders_PaceInOffice
 	waitmovement 0
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
@@ -46,12 +69,12 @@ YouHaveYourOrders_Assignment_Dialogue_4:
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_CorrectEachOfUs
 	compare VAR_STORYLINE_STATE, STORY_START_FALSE_TIMELINE
-	goto_if_eq YouHaveYourOrders_Assignment_Dialogue_11
-YouHaveYourOrders_Assignment_Dialogue_10:
+	goto_if_eq YouHaveYourOrders_Assignment_Dialogue_2
+YouHaveYourOrders_Assignment_Dialogue_1:
 	compare VAR_TEMP_0, 0
-	goto_if_eq YouHaveYourOrders_Assignment_Dialogue_14
-YouHaveYourOrders_Assignment_Dialogue_13:
-	applymovement 14, YouHaveYourOrders_LookOutWindow
+	goto_if_eq YouHaveYourOrders_Assignment_Dialogue_5
+YouHaveYourOrders_Assignment_Dialogue_4:
+	applymovement 9, YouHaveYourOrders_LookOutWindow
 	waitmovement 0
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
@@ -61,8 +84,7 @@ YouHaveYourOrders_Assignment_Dialogue_13:
 	msgbox gText_YouHaveYourOrders_IStillFeelLike
 	callnative ClearMugshot
 	closemessage
-	applymovement 14, Common_Movement_FaceUp
-	waitmovement 0
+	applymovement 9, Common_Movement_FacePlayer
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_InCaseYouHavent
@@ -83,170 +105,42 @@ YouHaveYourOrders_Assignment_Dialogue_13:
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_AtTheTimeNo
-	applymovement 14, YouHaveYourOrders_LookOutWindow
+	applymovement 9, YouHaveYourOrders_LookOutWindow
 	waitmovement 0
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_ICouldGoShut
 	callnative ClearMugshot
+	startquest QUEST_HOW_DISAPPOINTING
 	msgbox gText_YouHaveYourOrders_DoYouWantTo, MSGBOX_YESNO
 	compare VAR_RESULT, 0
-	goto_if_ne YouHaveYourOrders_Assignment_Dialogue_17
-YouHaveYourOrders_Assignment_Dialogue_16:
+	goto_if_ne YouHaveYourOrders_Assignment_Dialogue_8
+YouHaveYourOrders_Assignment_Dialogue_7:
 	closemessage
 	end
 
 YouHaveYourOrders_Assignment_Dialogue_2:
-	msgbox YouHaveYourOrders_Assignment_Dialogue_Text_0
-	closemessage
-	end
-
-YouHaveYourOrders_Assignment_Dialogue_5:
-	applymovement OBJ_EVENT_ID_PLAYER, YouHaveYourOrders_WalkToOfficeB_FromRight
-	goto YouHaveYourOrders_Assignment_Dialogue_4
-
-YouHaveYourOrders_Assignment_Dialogue_6:
-	applymovement OBJ_EVENT_ID_PLAYER, YouHaveYourOrders_WalkToOfficeB_FromUp
-	goto YouHaveYourOrders_Assignment_Dialogue_4
-
-YouHaveYourOrders_Assignment_Dialogue_11:
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_TheyInvolved
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_WeHiredThem
-	goto YouHaveYourOrders_Assignment_Dialogue_10
+	goto YouHaveYourOrders_Assignment_Dialogue_1
 
-YouHaveYourOrders_Assignment_Dialogue_14:
+YouHaveYourOrders_Assignment_Dialogue_5:
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_WhatAbout
 	setvar VAR_MUGSHOT, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_OurIntelligenceTells
-	goto YouHaveYourOrders_Assignment_Dialogue_13
+	goto YouHaveYourOrders_Assignment_Dialogue_4
 
-YouHaveYourOrders_Assignment_Dialogue_17:
-	warpsilent MAP_CHINATOWN, 255, 5, 12
-	goto YouHaveYourOrders_Assignment_Dialogue_16
+YouHaveYourOrders_Assignment_Dialogue_8:
+	warpsilent MAP_CHINATOWN, 33, 8
+	goto YouHaveYourOrders_Assignment_Dialogue_7
 
-
-YouHaveYourOrders_WalkToOfficeA:
-	walk_right
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	face_up
-	step_end
-
-YouHaveYourOrders_WalkToOfficeB_FromUp:
-	delay_16
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-YouHaveYourOrders_WalkToOfficeB_FromRight:
-	delay_16
-	delay_16
-	delay_16
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-YouHaveYourOrders_WalkToOfficeB_FromDown:
-	delay_16
-	delay_16
-	delay_16
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-YouHaveYourOrders_WalkToOfficeC:
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	face_down
-	step_end
 
 YouHaveYourOrders_PaceInOffice:
 	walk_left
@@ -257,25 +151,12 @@ YouHaveYourOrders_PaceInOffice:
 	walk_left
 	walk_right
 	walk_right
-	face_up
-	step_end
-
-YouHaveYourOrders_LeaveOffice:
-	walk_up
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	walk_up
+	face_player
 	step_end
 
 YouHaveYourOrders_LookOutWindow:
 	face_down
 	step_end
-
-YouHaveYourOrders_Assignment_Dialogue_Text_0:
-	.string "...$"
 
 gText_YouHaveYourOrders_AreYouSure::
 	.string "{PLAYER}, are you sure you're ready\n"
@@ -286,10 +167,7 @@ gText_YouHaveYourOrders_ItCantBeTougher::
 	.string "other ones, right?$"
 
 gText_YouHaveYourOrders_HmmGoodPoint::
-	.string "Hmm. Good point. Let's go to my office.$"
-
-gText_YouHaveYourOrders_OohSomeAction::
-	.string "Ooh, some action? Hell yeah.$"
+	.string "Hmm. Good point.$"
 
 gText_YouHaveYourOrders_LawEnforcementHasConfirmed::
 	.string "Law enforcement has confirmed the old\n"

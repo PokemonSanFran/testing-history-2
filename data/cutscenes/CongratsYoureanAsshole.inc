@@ -1,4 +1,5 @@
 CongratsYoureanAsshole_ObjectCleanUp_Script::
+	call Salesforcetower_Leagueops_CheckRewardStatus_Script
 	setobjectxy 9, 34, 56
 	setobjectxyperm 9, 34, 56
 	setobjectmovementtype 9, MOVEMENT_TYPE_FACE_UP

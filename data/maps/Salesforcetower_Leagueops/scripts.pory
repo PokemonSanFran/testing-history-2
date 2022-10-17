@@ -32,7 +32,9 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
             case START_FALSE_TIMELINE: 
                 call(LetsBurnThisMother_ShowRose_Script)
                 call(Manhunt_ShowSabrina_Script)
+                call(YouHaveYourOrders_ObjectSetUp_Script)
                 call(CongratsYoureanAsshole_ObjectCleanUp_Script)
+
             default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
         }
     }
@@ -101,10 +103,10 @@ script Salesforcetower_Leagueops_Koga_Event_Script{
     lock
     faceplayer
     switch(var(VAR_STORYLINE_STATE)){
-        case STORY_MORNING_OF_TIMELINE_SPLIT: return
+        case STORY_MORNING_OF_TIMELINE_SPLIT: call(CongratsYoureAnAsshole_Intro_Dialogue)
         case STORY_START_FALSE_TIMELINE:
         case STORY_1ST_TEAMROCKET_TAKEDOWN:
-        case STORY_2ND_TEAMROCKET_TAKEDOWN: return
+        case STORY_2ND_TEAMROCKET_TAKEDOWN: call(YouHaveYourOrders_Interact_Koga_Script)
 }
 release
 end
@@ -130,4 +132,42 @@ script Salesforcetower_Leagueops_Bianca_Event_Script{
     call(ImIn_PostBiancaBattle_Interact_Dialogue)
     closemessage
     callnative(ClearMugshot)
+}
+
+script Salesforcetower_Leagueops_CheckRewardStatus_Script{
+    setvar(VAR_TEMP_1,0)
+
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_LETS_BURN_THIS_MOTHER_DOWN)
+
+    if(var(VAR_RESULT)){
+        addvar(VAR_TEMP_1,1)
+    }
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_HOW_DISAPPOINTING)
+
+    if(var(VAR_RESULT)){
+        addvar(VAR_TEMP_1,1)
+    }
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_MANHUNT)
+
+    if(var(VAR_RESULT)){
+        addvar(VAR_TEMP_1,1)
+    }
+
+    if (var(VAR_TEMP_1) == 0){
+        call(Salesforcetower_Leagueops_ClearSecondaryCharacters_Script)
+    }
+    return
+}
+
+script Salesforcetower_Leagueops_ClearSecondaryCharacters_Script{
+    removeobject(ARNAV)
+    removeobject(OLIVER)
+    removeobject(BIANCA)
+    removeobject(MAYOR)
+    removeobject(CHIEF)
+    removeobject(ROSE)
+    setflag(FLAG_HIDE_NERDS_COPS)
+    setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_ROSE)
+    return
 }

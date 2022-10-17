@@ -196,20 +196,10 @@ LetsBurnThisMotherDown_PostBattle_Dialogue::
 
 
 LetsBurnThisMother_ShowRose_Script::
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_1
-	questmenu QUEST_MENU_CHECK_REWARD, QUEST_LETS_BURN_THIS_MOTHER_DOWN
-	compare VAR_RESULT, 0
-	goto_if_eq LetsBurnThisMother_ShowRose_Script_2
-LetsBurnThisMother_ShowRose_Script_1:
 	setobjectxy 5, 33, 5
 	setobjectxyperm 5, 33, 5
 	setobjectmovementtype 5, MOVEMENT_TYPE_FACE_RIGHT
 	return
-
-LetsBurnThisMother_ShowRose_Script_2:
-	setflag FLAG_TEMP_4
-	goto LetsBurnThisMother_ShowRose_Script_1
 
 
 LetsBurnThisMotherDown_MissionComplete_Dialogue::
@@ -236,7 +226,7 @@ LetsBurnThisMotherDown_MissionComplete_Dialogue::
 	addvar VAR_STORYLINE_STATE, 1
 	applymovement 5, LetsBurnThisMotherDown_LeaveRoom
 	waitmovement 5
-	removeobject 5
+	call Salesforcetower_Leagueops_ClearSecondaryCharacters_Script
 	completequest QUEST_LETS_BURN_THIS_MOTHER_DOWN
 	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, BURN_MOTHER_COMPLETE
 	release

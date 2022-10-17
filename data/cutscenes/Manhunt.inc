@@ -1,6 +1,4 @@
 Manhunt_ShowSabrina_Script::
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_1
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_MANHUNT
 	compare VAR_RESULT, 0
 	goto_if_ne Manhunt_ShowSabrina_Script_1

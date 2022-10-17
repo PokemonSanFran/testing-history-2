@@ -50,6 +50,7 @@ Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
 Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 	call LetsBurnThisMother_ShowRose_Script
 	call Manhunt_ShowSabrina_Script
+	call YouHaveYourOrders_ObjectSetUp_Script
 	call CongratsYoureanAsshole_ObjectCleanUp_Script
 	return
 
@@ -151,14 +152,17 @@ Salesforcetower_Leagueops_Koga_Event_Script::
 	case STORY_START_FALSE_TIMELINE, Salesforcetower_Leagueops_Koga_Event_Script_4
 	case STORY_1ST_TEAMROCKET_TAKEDOWN, Salesforcetower_Leagueops_Koga_Event_Script_4
 	case STORY_2ND_TEAMROCKET_TAKEDOWN, Salesforcetower_Leagueops_Koga_Event_Script_4
+Salesforcetower_Leagueops_Koga_Event_Script_1:
 	release
 	end
 
 Salesforcetower_Leagueops_Koga_Event_Script_3:
-	return
+	call CongratsYoureAnAsshole_Intro_Dialogue
+	goto Salesforcetower_Leagueops_Koga_Event_Script_1
 
 Salesforcetower_Leagueops_Koga_Event_Script_4:
-	return
+	call YouHaveYourOrders_Interact_Koga_Script
+	goto Salesforcetower_Leagueops_Koga_Event_Script_1
 
 
 Salesforcetower_Leagueops_Sabrina_Event_Script::
@@ -188,5 +192,54 @@ Salesforcetower_Leagueops_Bianca_Event_Script::
 	call ImIn_PostBiancaBattle_Interact_Dialogue
 	closemessage
 	callnative ClearMugshot
+	return
+
+
+Salesforcetower_Leagueops_CheckRewardStatus_Script::
+	setvar VAR_TEMP_1, 0
+	questmenu QUEST_MENU_CHECK_REWARD, QUEST_LETS_BURN_THIS_MOTHER_DOWN
+	compare VAR_RESULT, 0
+	goto_if_ne Salesforcetower_Leagueops_CheckRewardStatus_Script_2
+Salesforcetower_Leagueops_CheckRewardStatus_Script_1:
+	questmenu QUEST_MENU_CHECK_REWARD, QUEST_HOW_DISAPPOINTING
+	compare VAR_RESULT, 0
+	goto_if_ne Salesforcetower_Leagueops_CheckRewardStatus_Script_5
+Salesforcetower_Leagueops_CheckRewardStatus_Script_4:
+	questmenu QUEST_MENU_CHECK_REWARD, QUEST_MANHUNT
+	compare VAR_RESULT, 0
+	goto_if_ne Salesforcetower_Leagueops_CheckRewardStatus_Script_8
+Salesforcetower_Leagueops_CheckRewardStatus_Script_7:
+	compare VAR_TEMP_1, 0
+	goto_if_eq Salesforcetower_Leagueops_CheckRewardStatus_Script_11
+Salesforcetower_Leagueops_CheckRewardStatus_Script_10:
+	return
+
+Salesforcetower_Leagueops_CheckRewardStatus_Script_2:
+	addvar VAR_TEMP_1, 1
+	goto Salesforcetower_Leagueops_CheckRewardStatus_Script_1
+
+Salesforcetower_Leagueops_CheckRewardStatus_Script_5:
+	addvar VAR_TEMP_1, 1
+	goto Salesforcetower_Leagueops_CheckRewardStatus_Script_4
+
+Salesforcetower_Leagueops_CheckRewardStatus_Script_8:
+	addvar VAR_TEMP_1, 1
+	goto Salesforcetower_Leagueops_CheckRewardStatus_Script_7
+
+Salesforcetower_Leagueops_CheckRewardStatus_Script_11:
+	call Salesforcetower_Leagueops_ClearSecondaryCharacters_Script
+	goto Salesforcetower_Leagueops_CheckRewardStatus_Script_10
+
+
+Salesforcetower_Leagueops_ClearSecondaryCharacters_Script::
+	removeobject 1
+	removeobject 2
+	removeobject 4
+	removeobject 6
+	removeobject 7
+	removeobject 5
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
 	return
 

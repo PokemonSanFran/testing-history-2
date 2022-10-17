@@ -38,7 +38,7 @@ script Salesforcetower_2F_MapScripts_OnTransition {
 
         switch (var(VAR_HOW_DISAPPOINTING_STATE)){
             case MISSION_NOT_ASSIGNED: return
-            case DEFEATED_ARIANA_CHINATOWN: call(HowDisappointing_PostMissionObjectSetUp_Script) //Rose is in Koga's office, thanking everybody for their work
+            //case DEFEATED_ARIANA_CHINATOWN: call(HowDisappointing_PostMissionObjectSetUp_Script) //Rose is in Koga's office, thanking everybody for their work
             default: call(YouHaveYourOrders_ObjectSetUp_Script) //Koga is in his office, already gave you mission
         }
 

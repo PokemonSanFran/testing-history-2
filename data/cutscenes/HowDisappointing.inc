@@ -199,6 +199,7 @@ HowDisappointing_StartBattle_Script::
 
 HowDisappointing_ArrestScene_Dialogue::
 	lock
+	setvar VAR_HOW_DISAPPOINTING_STATE, DEFEATED_ARIANA_CHINATOWN
 	clearflag FLAG_TEMP_1
 	addobject 1
 	setobjectxyperm 1, 35, 13
@@ -206,48 +207,28 @@ HowDisappointing_ArrestScene_Dialogue::
 	applymovement 1, HowDisappointing_WalkToArrest
 	waitmovement 0
 	msgbox gText_HowDisappointing_YoureUnderArrest
-	setvar VAR_HOW_DISAPPOINTING_STATE, DEFEATED_ARIANA_CHINATOWN
-	warpsilent MAP_SALESFORCETOWER_2F, 255, 16, 26
-	return
-
-
-HowDisappointing_PostMissionObjectSetUp_Script::
-	setobjectxy 14, 16, 28
-	setobjectxyperm 14, 16, 28
-	setobjectmovementtype 14, MOVEMENT_TYPE_FACE_UP
-	clearflag FLAG_TEMP_8
-	clearflag FLAG_TEMP_7
-	clearflag FLAG_TEMP_5
-	addobject 10
-	addobject 13
-	addobject 11
-	setobjectxyperm 10, 15, 26
-	setobjectxyperm 13, 17, 26
-	setobjectxyperm 11, 16, 25
-	setobjectmovementtype 13, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype 10, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype 11, MOVEMENT_TYPE_FACE_DOWN
+	questmenu QUEST_MENU_SET_REWARD, QUEST_HOW_DISAPPOINTING
+	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 32, 53
 	return
 
 
 HowDisappointing_MissionComplete_Dialogue::
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement 0
+	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_HOW_DISAPPOINTING_STATE, HOW_DISAPPOINTING_COMPLETE
 	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
 	msgbox gText_HowDisappointing_ExcellentWorkEverybody
 	callnative ClearMugshot
 	closemessage
-	applymovement 10, HowDisappointing_LeaveRoomA
-	applymovement 13, HowDisappointing_LeaveRoomB
-	applymovement 11, HowDisappointing_LeaveRoomB
-	waitmovement 0
-	removeobject 10
-	removeobject 13
-	removeobject 11
-	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_HOW_DISAPPOINTING_STATE, HOW_DISAPPOINTING_COMPLETE
+	applymovement 4, Common_Movement_WalkUp
+	applymovement 7, Common_Movement_WalkUp
+	applymovement 5, Common_Movement_WalkRight
+	fadescreen FADE_TO_BLACK
+	delay 30
+	call Salesforcetower_Leagueops_ClearSecondaryCharacters_Script
+	fadescreen FADE_FROM_BLACK
+	completequest QUEST_HOW_DISAPPOINTING
 	release
 	call ExhibitionBattle_TimeSkip_Script
 	end
@@ -380,8 +361,12 @@ HowDisappointing_WalkToArrest:
 	step_end
 
 HowDisappointing_LeaveRoomA:
-	walk_up
 	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_up
 	walk_up
 	walk_up
 	walk_up
@@ -483,3 +468,7 @@ gText_HowDisappointing_ExcellentWorkEverybody::
 	.string "see how quickly we’re responding to\l"
 	.string "these threats, and hopefully, this will\l"
 	.string "slow their efforts.$"
+
+gText_HowDisappointing_IAppreciate::
+	.string "I appreciate you handling that,\n"
+	.string "{PLAYER}.$"
