@@ -41,8 +41,8 @@ script Alcatraz_B2F_Malva_Event_Script {
     callnative(DrawMugshot)
     
     switch (var(VAR_STORYLINE_STATE)){
-        case STORY_1ST_PRE_SPEECHSPEECH: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
-        case STORY_2ND_PRE_SPEECHSPPECH: msgbox(format("you've started and finished a takedown quest."),MSGBOX_NPC)
+        case STORY_RAVE_OR_SPEECH_COMPLETE: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case STORY_RAVE_AND_SPEECH_COMPLETE: msgbox(format("you've started and finished a takedown quest."),MSGBOX_NPC)
                   addvar(VAR_STORYLINE_STATE,1)
     }
     closemessage
@@ -58,8 +58,8 @@ script Alcatraz_B2F_Drasna_Event_Script {
     callnative(DrawMugshot)
     
     switch (var(VAR_STORYLINE_STATE)){
-        case STORY_1ST_PRE_SPEECHSPEECH: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
-        case STORY_2ND_PRE_SPEECHSPPECH: msgbox("I don't have a takedown quest for you.",MSGBOX_NPC)
+        case STORY_RAVE_OR_SPEECH_COMPLETE: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case STORY_RAVE_AND_SPEECH_COMPLETE: msgbox("I don't have a takedown quest for you.",MSGBOX_NPC)
     }
 
     closemessage
@@ -75,8 +75,8 @@ script Alcatraz_B2F_Siebold_Event_Script {
     callnative(DrawMugshot)
     
     switch (var(VAR_STORYLINE_STATE)){
-        case STORY_1ST_PRE_SPEECHSPEECH: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
-        case STORY_2ND_PRE_SPEECHSPPECH: msgbox("you've started and finished a takedown quest.",MSGBOX_NPC)
+        case STORY_RAVE_OR_SPEECH_COMPLETE: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case STORY_RAVE_AND_SPEECH_COMPLETE: msgbox("you've started and finished a takedown quest.",MSGBOX_NPC)
                   addvar(VAR_STORYLINE_STATE,1)
     }
 
@@ -92,8 +92,8 @@ script Alcatraz_B2F_Wikstrom_Event_Script {
     callnative(DrawMugshot)
     
     switch (var(VAR_STORYLINE_STATE)){
-        case STORY_1ST_PRE_SPEECHSPEECH: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
-        case STORY_2ND_PRE_SPEECHSPPECH: msgbox("you've started and finished a takedown quest.",MSGBOX_NPC)
+        case STORY_RAVE_OR_SPEECH_COMPLETE: msgbox(gText_SpeechSpeechSpeech_GoWarehouseRave,MSGBOX_NPC)
+        case STORY_RAVE_AND_SPEECH_COMPLETE: msgbox("you've started and finished a takedown quest.",MSGBOX_NPC)
                   addvar(VAR_STORYLINE_STATE,1)
     }
 

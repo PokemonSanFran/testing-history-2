@@ -202,6 +202,8 @@ script SpeechSpeechSpeech_StartTransformation_Script {
 
 script SpeechSpeechSpeech_EliteReveal_Dialogue {
 
+        addvar(VAR_STORYLINE_STATE,1)
+
         setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_Us)
@@ -311,7 +313,6 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         closemessage
 
         fadescreen(FADE_TO_BLACK)
-        addvar(VAR_STORYLINE_STATE,1)
         setvar(VAR_ALCATRAZ_STATE,POST_SPEECHSPEECH)
 
         TeleportCamera(9,9)
@@ -335,7 +336,7 @@ script SpeechSpeechSpeech_EliteReveal_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_SpeechSpeechSpeech_Yeah)
 
-        if (var(VAR_STORYLINE_STATE) != STORY_2ND_PRE_SPEECHSPPECH){
+        if (var(VAR_STORYLINE_STATE) != STORY_RAVE_AND_SPEECH_COMPLETE){
             msgbox(gText_SpeechSpeechSpeech_YeahAlsoAre)
         }else {
             msgbox(gText_SpeechSpeechSpeech_ByTheWay)
