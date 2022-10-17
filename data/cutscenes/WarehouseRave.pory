@@ -1,6 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const KOGA = 1
-const BIANCA = 1
+const ARCHER = 1
 const FLAG_HIDE_KOGA = FLAG_TEMP_1
 
 script WarehouseRave_SetUpRave_Script {
@@ -101,7 +101,7 @@ script WarehouseRave_Intro_Dialogue {
         callnative(ClearMugshot)
         closemessage
 
-        addvar(VAR_WAREHOUSE_RAVE_STATE,1)
+        setvar(VAR_WAREHOUSE_RAVE_STATE,SAVE_KOGA_OAKLAND)
         applymovement(PLAYER,WarehouseRave_WalkToBattle)
         waitmovement(0)
         call(Common_EventScript_SaveGame)
@@ -127,7 +127,7 @@ script WarehouseRave_Battle_Script {
 
 script WarehouseRave_PostBattle_Script {
     lock
-        addvar(VAR_WAREHOUSE_RAVE_STATE,1)
+        setvar(VAR_WAREHOUSE_RAVE_STATE,DEFEATED_KOGA_OAKLAND)
 
         setvar(VAR_0x8000, MUGSHOT_N)
         callnative(DrawMugshot)
@@ -162,9 +162,9 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         waitmovement(0)
         playse(SE_PIN)
         waitse
-        applymovement(BIANCA,Common_Movement_ExclamationMark)
+        applymovement(ARCHER,Common_Movement_ExclamationMark)
         waitmovement(0)
-        applymovement(BIANCA,WarehouseRave_RunToPlayer)
+        applymovement(ARCHER,WarehouseRave_RunToPlayer)
         waitmovement(0)
 
         setvar(VAR_0x8000, MUGSHOT_HUGH)
@@ -226,13 +226,12 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         closemessage
         callnative(ClearMugshot)
 
-        applymovement(BIANCA,WarehouseRave_LeaveCity)
+        applymovement(ARCHER,WarehouseRave_LeaveCity)
         waitmovement(0)
-        removeobject(BIANCA)
+        removeobject(ARCHER)
 
         addvar(VAR_STORYLINE_STATE,1)
-        addvar(VAR_WAREHOUSE_RAVE_STATE,1)
-
+        setvar(VAR_WAREHOUSE_RAVE_STATE,TOLD_ARCHER_ABOUT_KOGA)
         end
 }
 

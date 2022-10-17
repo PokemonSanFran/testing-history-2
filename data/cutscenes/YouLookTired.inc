@@ -154,7 +154,7 @@ YouLookTired_AcceptInvite_Dialogue::
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 1
-	addvar VAR_FORTPOINT_STATE, 1
+	setvar VAR_FORTPOINT_STATE, MET_KOGA_OUTSIDE_GYM
 	release
 	end
 

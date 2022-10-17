@@ -16,7 +16,7 @@ KogaRaisonDetre_ObjectCleanUp_Script::
 
 KogaRaisonDetre_MoveIntoFoyer_Script::
 	lock
-	addvar VAR_ROUTE105_STATE, 1
+	setvar VAR_KOGA_RAISON_DETRE_STATE, MET_KOGA_KIDS
 	applymovement 1, KogaRaisonDetre_ComeDownStairs
 	delay 48
 	applymovement 2, KogaRaisonDetre_ComeDownStairs
@@ -110,7 +110,7 @@ KogaRaisonDetre_ComeSit_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_ComeSit, MSGBOX_NPC
 	callnative ClearMugshot
-	addvar VAR_ROUTE105_STATE, 1
+	setvar VAR_KOGA_RAISON_DETRE_STATE, START_KOGA_WINE_SPEECH
 	closemessage
 	release
 	end
@@ -193,7 +193,7 @@ KogaRaisonDetre_Wine_Dialogue::
 	release
 	setobjectxy 3, 37, 5
 	setobjectxyperm 3, 37, 5
-	addvar VAR_ROUTE105_STATE, 1
+	setvar VAR_KOGA_RAISON_DETRE_STATE, POST_KOGA_WINE_SPEECH
 	end
 
 
@@ -329,14 +329,20 @@ KogaRaisonDetre_NewsStory_Script::
 	removeobject 4
 	removeobject 3
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_ROUTE105_STATE, 1
-	addvar VAR_ROUTE106_STATE, 1
+	setvar VAR_KOGA_RAISON_DETRE_STATE, POST_KOGA_RAISON_DETRE
+	setvar VAR_KOGA_MANSION_STATE, 1
 	release
 	end
 
 
 KogaRaisonDetre_PreventPlayerLeaving_Script::
-	lock
+	compare VAR_KOGA_RAISON_DETRE_STATE, POST_KOGA_RAISON_DETRE
+	goto_if_lt KogaRaisonDetre_PreventPlayerLeaving_Script_2
+KogaRaisonDetre_PreventPlayerLeaving_Script_1:
+	release
+	end
+
+KogaRaisonDetre_PreventPlayerLeaving_Script_2:
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_KogaRaisonDetre_HasBeenSoGenerous
@@ -344,8 +350,7 @@ KogaRaisonDetre_PreventPlayerLeaving_Script::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
-	release
-	end
+	goto KogaRaisonDetre_PreventPlayerLeaving_Script_1
 
 
 KogaRaisonDetre_ComeDownStairs:

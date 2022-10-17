@@ -60,7 +60,7 @@ script TheStrikeStrikesBack_CrowdFacesNorth_Script {
 
 script TheStrikeStrikesBack_PhoneCall_Dialogue {
     lock
-        addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_STORYLINE_STATE,STORY_CALLED_TO_CONSTRUCTION)
         setvar(VAR_CONSTRUCTION_STRIKE_STATE,STRIKE_HAS_BEGUN)
         playse(SE_POKENAV_CALL)
         waitse

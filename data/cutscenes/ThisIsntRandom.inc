@@ -1,5 +1,5 @@
 ThisIsntRandom_CheckDoor_Script::
-	addvar VAR_TEMP_C, 1
+	setvar VAR_TEMP_C, 1
 	compare VAR_UNDERGROUNDLAB_STATE, PLAYER_DISCOVERED_LAB
 	goto_if_eq ThisIsntRandom_CheckDoor_Script_1
 	return

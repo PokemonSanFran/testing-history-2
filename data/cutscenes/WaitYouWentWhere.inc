@@ -85,7 +85,7 @@ WaitYouWentWhere_FirstInteract_Dialogue::
 	waitmovement 0
 	removeobject 1
 	release
-	addvar VAR_ROUTE104_STATE, 1
+	setvar VAR_WAIT_YOU_WENT_WHERE, POST_WAITYOUWENTWHERE
 	end
 
 

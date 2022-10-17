@@ -5,26 +5,26 @@ LetsGrabLunch_HideObject_Script::
 
 LetsGrabLunch_StartConversation_Dialogue::
 	lockall
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_SAVE_ARCHER_TREASUREISLAND
 	clearflag FLAG_TEMP_1
 	addobject 1
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 1, LetsGrabLunch_WalkUpToPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_HuhWhatAreYouDoing
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_TakingABreak
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_YeahBeingOfficial
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_ThisAgain
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_HeyYouBeatMe
 	callnative ClearMugshot
@@ -43,7 +43,7 @@ LetsGrabLunch_InteractBattle_Script::
 
 LetsGrabLunch_StartBattle_Script::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_ButLetsSee
 	closemessage
@@ -54,17 +54,17 @@ LetsGrabLunch_StartBattle_Script::
 
 
 LetsGrabLunch_PostBattle_Dialogue::
-	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_STORYLINE_STATE, STORY_POST_BATTLE_ARCHER_TREASUREISLAND
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_GoodGame
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_ImGoingToBe
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_HaventYouHad
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_NahThisIsCool
 	callnative ClearMugshot
@@ -77,54 +77,54 @@ LetsGrabLunch_PostBattle_Dialogue::
 
 LetsGrabLunch_DinerBooth_Dialogue::
 	lockall
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_OkayLetsHear
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_IWantToCreate
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_HuhThatsActually
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_YeahITried
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_Who
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_OhTheOldLeaders
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_YouKnowTheyre
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_IKnowItsHard
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_HmmNeverThought
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_YeahThisSounds
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_ItWouldBeSuch
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_HahaHowCanIHelp
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_CanYouTryTalking
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_WhatAreYouGoing
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_ImGoingToBring
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_Yeah
 	callnative ClearMugshot
@@ -133,7 +133,7 @@ LetsGrabLunch_DinerBooth_Dialogue::
 
 
 LetsGrabLunch_InteractArcherDiner_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_ImJustPlanning
 	multichoicedefault 18, 6, MULTI_LUNCH_WARP, 1, TRUE
@@ -201,10 +201,10 @@ LetsGrabLunch_Marin_1:
 
 LetsGrabLunch_Treasureisland::
 	msgbox gText_LetsGrabLunch_AlmostWalkedOut
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_VeryRealistic
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_TheyreIntense
 	msgbox gText_LetsGrabLunch_DoYouWantTreasureisland, MSGBOX_YESNO
@@ -224,7 +224,7 @@ LetsGrabLunch_Haightashbury::
 	random 2
 	compare VAR_RESULT, 1
 	goto_if_eq LetsGrabLunch_Haightashbury_2
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_IsTheOnlyPlace
 LetsGrabLunch_Haightashbury_1:
@@ -235,7 +235,7 @@ LetsGrabLunch_Haightashbury_1:
 	return
 
 LetsGrabLunch_Haightashbury_2:
-	setvar VAR_0x8000, MUGSHOT_HUGH
+	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_RightHandMan
 	goto LetsGrabLunch_Haightashbury_1
@@ -249,7 +249,7 @@ LetsGrabLunch_Haightashbury_5:
 
 LetsGrabLunch_FastForwardFirstRestoration_Quest::
 	lock
-	compare VAR_STORYLINE_STATE, 40
+	compare VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
 	goto_if_eq LetsGrabLunch_FastForwardFirstRestoration_Quest_2
 	msgbox gText_LetsGrabLunch_FastForwardBlock
 LetsGrabLunch_FastForwardFirstRestoration_Quest_1:
@@ -258,7 +258,7 @@ LetsGrabLunch_FastForwardFirstRestoration_Quest_1:
 	end
 
 LetsGrabLunch_FastForwardFirstRestoration_Quest_2:
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE
 	bufferpartymonnick 0, 1
 	msgbox gText_LetsGrabLunch_FastForwardAdvance
 	goto LetsGrabLunch_FastForwardFirstRestoration_Quest_1

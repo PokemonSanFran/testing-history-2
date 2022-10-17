@@ -4,9 +4,10 @@ const ARIANA = 2
 const DRASNA = 3
 
 const FLAG_HIDE_SEARCH = FLAG_TEMP_1
+const VAR_UNDERGROUND_DOOR = VAR_TEMP_C
 
 script ThisIsntRandom_CheckDoor_Script {
-    addvar(VAR_TEMP_C,1)
+        setvar(VAR_UNDERGROUND_DOOR,1)
 
         if (var(VAR_UNDERGROUNDLAB_STATE) == PLAYER_DISCOVERED_LAB){
             if (var(VAR_STORYLINE_STATE) == STORY_POST_EARTHQUAKE){ 

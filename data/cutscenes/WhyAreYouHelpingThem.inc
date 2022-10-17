@@ -80,7 +80,7 @@ WhyAreYouHelpingThem_BackAtCompound_ObjectSetUp_Script::
 
 WhyAreYouHelpingThem_StartRaid::
 	lock
-	addvar VAR_ROUTE118_STATE, 1
+	setvar VAR_NAVALBASE_STATE, NAVALBASE_RAID_START
 	playse SE_FAILURE
 	playse SE_FAILURE
 	playse SE_FAILURE
@@ -120,7 +120,7 @@ WhyAreYouHelpingThem_StartRaid::
 
 
 WhyAreYouHelpingThem_WitnessBattle::
-	addvar VAR_ROUTE118_STATE, 1
+	setvar VAR_NAVALBASE_STATE, CHASE_GIOVANNI
 	lock
 	applymovement 3, WhyAreYouHelpingThem_FleeTheBattle
 	waitmovement 0
@@ -157,7 +157,7 @@ WhyAreYouHelpingThem_PreBattleBoss_Script::
 
 
 WhyAreYouHelpingThem_PostBattleBoss_Dialogue::
-	addvar VAR_ROUTE118_STATE, 1
+	setvar VAR_NAVALBASE_STATE, SAVE_ARCHER_NAVALBASE
 	addobject 2
 	call WhyAreYouHelpingThem_MoveObjectAriana_Script
 	checktrainerflag TRAINER_ARCHIE
@@ -287,7 +287,7 @@ WhyAreYouHelpingThem_StartBattle_Script::
 
 
 WhyAreYouHelpingThem_PostBattle_Dialogue::
-	addvar VAR_ROUTE118_STATE, 1
+	setvar VAR_NAVALBASE_STATE, DEFEATED_ARCHER_NAVALBASE
 	setvar VAR_0x8000, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_WhyAreYouHelpingThem_TellsMeYoureAll
@@ -317,16 +317,15 @@ WhyAreYouHelpingThem_PostBattle_Dialogue::
 	msgbox gText_WhyAreYouHelpingThem_NoILostToo
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_ALAMEDA_STATE, 1
+	setvar VAR_ALAMEDA_STATE, WHY_ARE_YOU_HELPING_THEM
 	fadescreen FADE_TO_BLACK
 	warpsilent MAP_ALAMEDA, 255, 26, 6
 	return
 
 
 WhyAreYouHelpingThem_MissionDebrief_Dialogue::
-	addvar VAR_ALAMEDA_STATE, 1
 	setvar VAR_STORYLINE_STATE, STORY_COMPLETED_NAVAL_BASE
-	addvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setvar VAR_PLAYER_HOME_STATE, POST_NAVALBASE_RAID
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox gText_WhyAreYouHelpingThem_GreatWorkInThere
@@ -385,17 +384,16 @@ WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	addvar VAR_PLAYER_HOME_STATE, 1
 	release
 	end
 
 
 WhyAreYouHelpingThem_StartChampionship_Dialogue::
-	addvar VAR_ALAMEDA_STATE, 1
+	setvar VAR_ALAMEDA_STATE, SLEPT_AFTER_RAID
 	msgbox gText_WhyAreYouHelpingThem_AreYouReadyToBegin, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq WhyAreYouHelpingThem_StartChampionship_Dialogue_1
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_START_CHAMPIONSHIP
 	warpsilent MAP_CHASECENTER_LOCKERS, 9, 6
 	return
 

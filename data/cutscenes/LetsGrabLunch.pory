@@ -7,7 +7,7 @@ script LetsGrabLunch_HideObject_Script {
 
 script LetsGrabLunch_StartConversation_Dialogue {
     lockall
-        addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_STORYLINE_STATE,STORY_SAVE_ARCHER_TREASUREISLAND)
         clearflag(FLAG_TEMP_1)
         addobject(ARCHER)
         playbgm(MUS_ENCOUNTER_CHAMPION,TRUE)
@@ -15,23 +15,23 @@ script LetsGrabLunch_StartConversation_Dialogue {
         applymovement(ARCHER,LetsGrabLunch_WalkUpToPlayer)
         waitmovement(0)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_HuhWhatAreYouDoing)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_TakingABreak)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_YeahBeingOfficial)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_ThisAgain)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_HeyYouBeatMe)
         callnative(ClearMugshot)
@@ -48,7 +48,7 @@ script LetsGrabLunch_InteractBattle_Script {
 
 script LetsGrabLunch_StartBattle_Script {
     lockall
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_ButLetsSee)
         closemessage
@@ -59,21 +59,21 @@ script LetsGrabLunch_StartBattle_Script {
 }
 
 script LetsGrabLunch_PostBattle_Dialogue {
-    addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_STORYLINE_STATE,STORY_POST_BATTLE_ARCHER_TREASUREISLAND)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_GoodGame)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_ImGoingToBe)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_HaventYouHad)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_NahThisIsCool)
         callnative(ClearMugshot)
@@ -86,69 +86,69 @@ script LetsGrabLunch_PostBattle_Dialogue {
 
 script LetsGrabLunch_DinerBooth_Dialogue {
     lockall
-        addvar(VAR_STORYLINE_STATE,1)
+        setvar(VAR_STORYLINE_STATE,STORY_ARCHER_EXPLAIN_RESTORATION)
         applymovement(PLAYER,Common_Movement_FaceUp)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_OkayLetsHear)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_IWantToCreate)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_HuhThatsActually)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_YeahITried)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_Who)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_OhTheOldLeaders)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_YouKnowTheyre)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_IKnowItsHard)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_HmmNeverThought)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_YeahThisSounds)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_ItWouldBeSuch)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_HahaHowCanIHelp)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_CanYouTryTalking)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_WhatAreYouGoing)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_ImGoingToBring)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_Yeah)
         callnative(ClearMugshot)
@@ -158,7 +158,7 @@ script LetsGrabLunch_DinerBooth_Dialogue {
 
 script LetsGrabLunch_InteractArcherDiner_Dialogue {
 
-    setvar(VAR_0x8000, MUGSHOT_HUGH)
+    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_ImJustPlanning)
 
@@ -210,11 +210,11 @@ script LetsGrabLunch_Marin {
 script LetsGrabLunch_Treasureisland {
     msgbox(gText_LetsGrabLunch_AlmostWalkedOut)
 
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_VeryRealistic)
 
-        setvar(VAR_0x8000, MUGSHOT_HUGH)
+        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_TheyreIntense)
 
@@ -234,11 +234,11 @@ script LetsGrabLunch_Haightashbury {
     random(2)
 
         if (var(VAR_RESULT) == 1){
-            setvar(VAR_0x8000, MUGSHOT_HUGH)
+            setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
                 callnative(DrawMugshot)
                 msgbox(gText_LetsGrabLunch_RightHandMan)}
         else {
-            setvar(VAR_0x8000, MUGSHOT_HUGH)
+            setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
                 callnative(DrawMugshot)
                 msgbox(gText_LetsGrabLunch_IsTheOnlyPlace)
         }
@@ -256,8 +256,8 @@ script LetsGrabLunch_Haightashbury {
 
 script LetsGrabLunch_FastForwardFirstRestoration_Quest {
     lock
-        if (var(VAR_STORYLINE_STATE) == 40){
-                addvar(VAR_STORYLINE_STATE,1)
+        if (var(VAR_STORYLINE_STATE) == STORY_ARCHER_EXPLAIN_RESTORATION){
+                setvar(VAR_STORYLINE_STATE,STORY_RESTORATION_1_COMPLETE)
                 bufferpartymonnick(0,1)
                 msgbox(gText_LetsGrabLunch_FastForwardAdvance)
         } 

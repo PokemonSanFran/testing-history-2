@@ -61,6 +61,8 @@ Debug_Script_1::
 
 
 Debug_Script_2::
+	setvar VAR_KOGA_RAISON_DETRE_STATE, MET_KOGA_KIDS
+	warp MAP_PRESIDIO_MANSION, 0
 	return
 
 

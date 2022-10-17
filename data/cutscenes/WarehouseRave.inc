@@ -109,7 +109,7 @@ WarehouseRave_Intro_Dialogue::
 	msgbox gText_WarehouseRave_HasInstructed
 	callnative ClearMugshot
 	closemessage
-	addvar VAR_WAREHOUSE_RAVE_STATE, 1
+	setvar VAR_WAREHOUSE_RAVE_STATE, SAVE_KOGA_OAKLAND
 	applymovement OBJ_EVENT_ID_PLAYER, WarehouseRave_WalkToBattle
 	waitmovement 0
 	call Common_EventScript_SaveGame
@@ -138,7 +138,7 @@ WarehouseRave_Battle_Script::
 
 WarehouseRave_PostBattle_Script::
 	lock
-	addvar VAR_WAREHOUSE_RAVE_STATE, 1
+	setvar VAR_WAREHOUSE_RAVE_STATE, DEFEATED_KOGA_OAKLAND
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_IFailedToKill
@@ -220,7 +220,7 @@ WarehouseRave_OutsideWarehouse_Dialogue_1:
 	waitmovement 0
 	removeobject 1
 	addvar VAR_STORYLINE_STATE, 1
-	addvar VAR_WAREHOUSE_RAVE_STATE, 1
+	setvar VAR_WAREHOUSE_RAVE_STATE, TOLD_ARCHER_ABOUT_KOGA
 	end
 
 WarehouseRave_OutsideWarehouse_Dialogue_2:

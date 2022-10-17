@@ -68,6 +68,8 @@ script Debug_Script_1{
     warpsilent(MAP_SALESFORCETOWER_TOP,0)
 }
 script Debug_Script_2{
+    setvar(VAR_KOGA_RAISON_DETRE_STATE,MET_KOGA_KIDS)
+    warp(MAP_PRESIDIO_MANSION,0)
 }
 
 script Debug_Script_3{

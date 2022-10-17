@@ -22,7 +22,7 @@ swagbag_ObjectHide_Script::
 
 
 Swagbag_WelcomeToSanFran_Dialogue::
-	addvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setvar VAR_PLAYER_HOME_STATE, POST_SWAGBAG
 	lockall
 	playse SE_PIN
 	playbgm MUS_RG_FOLLOW_ME, TRUE
@@ -30,13 +30,13 @@ Swagbag_WelcomeToSanFran_Dialogue::
 	waitmovement 0
 	applymovement 2, swagbag_GreetPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_WelcomeToRegion
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Swagbag_GreatThePrivateCar
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_ExcellentYouveAlready
 	callnative ClearMugshot
@@ -48,7 +48,7 @@ Swagbag_WelcomeToSanFran_Dialogue::
 
 
 Swagbag_LeagueStipend_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_SoFirstYoullEach
 	msgbox gText_Swagbag_BecauseTheBoard
@@ -62,16 +62,16 @@ Swagbag_LeagueStipend_Dialogue::
 
 Swagbag_PokedexApps_Dialogue::
 	msgbox gText_Swagbag_AlsoWeveGoneAhead
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Swagbag_InvasiveMuch
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_WellAskNextTime
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Swagbag_TeachyTVSoIShould
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_Correct
 	callnative ClearMugshot
@@ -84,16 +84,16 @@ Swagbag_PokedexApps_Dialogue::
 
 
 Swagbag_WhenCanWeStart_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_IBelieveThatsEverything
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Swagbag_YeahWhenTheTutorial
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_TheGymChallengeOfficially
-	setvar VAR_0x8000, MUGSHOT_BIANCA
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_Swagbag_FineIllExploreTheCity
 	closemessage
@@ -107,10 +107,10 @@ Swagbag_WhenCanWeStart_Dialogue::
 
 
 Swagbag_DontLeaveSouthbay_Dialogue::
-	setvar VAR_0x8000, MUGSHOT_LANCE
+	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_Swagbag_IllBeWorkingOnMyLaptop
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_Swagbag_GotItThanks
 	closemessage
@@ -133,7 +133,7 @@ swagbag_HelpPlayer_Script::
 
 swagbag_PreventPlayerLeavingSouthbay_Event_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_HILDA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_DontLeaveSouthbay_Text1
 	callnative ClearMugshot

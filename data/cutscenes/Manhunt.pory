@@ -314,7 +314,7 @@ script Manhunt_MissionComplete_Dialogue {
         applymovement(PLAYER,Common_Movement_FaceUp)
         applymovement(SABRINA,Common_Movement_FaceDown)
         waitmovement(0)
-        addvar(VAR_MANHUNT_STATE,1)
+        setvar(VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI)
 
         setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)

@@ -12,7 +12,7 @@ SurvivalChance333_HideObject_Alameda_Script::
 
 SurvivalChance333_MovePlayerIntoPosition::
 	lock
-	addvar VAR_ROUTE117_STATE, 1
+	setvar VAR_FERRYBUILDING_STATE, PLAYER_READY_SURVIVAL_CHANCE_BATTLE
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 12
 	goto_if_ne SurvivalChance333_MovePlayerIntoPosition_1
@@ -50,7 +50,6 @@ SurvivalChance333_BlowOpenDoors::
 
 SurvivalChance333_ExplainPlan_Dialogue::
 	lock
-	addvar VAR_ROUTE117_STATE, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	delay 25
@@ -74,7 +73,7 @@ SurvivalChance333_ExplainPlan_Dialogue::
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_IllProveIt
 	callnative ClearMugshot
-	addvar VAR_ROUTE117_STATE, 1
+	setvar VAR_FERRYBUILDING_STATE, SAVE_SURVIVAL_CHANCE_BATTLE
 	call Common_EventScript_SaveGame
 	goto SurvivalChance333_Battle_Script
 	return
@@ -89,14 +88,14 @@ SurvivalChance333_Battle_Script::
 
 
 SurvivalChance333_PostBattle_Script::
-	addvar VAR_ROUTE117_STATE, 1
+	setvar VAR_FERRYBUILDING_STATE, DEFEATED_SURVIVAL_CHANCE_BATTLE
 	setvar VAR_0x8000, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_SurvivalChance333_DoYouGetItNow
 	callnative ClearMugshot
 	msgbox gText_SurvivalChance333_YoureAPairOfKids
 	closemessage
-	addvar VAR_ALAMEDA_STATE, 1
+	setvar VAR_ALAMEDA_STATE, START_SURVIVAL_CHANCE
 	warpsilent MAP_ALAMEDA, 255, 21, 24
 	return
 

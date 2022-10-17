@@ -258,7 +258,7 @@ Manhunt_MissionComplete_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 0
-	addvar VAR_MANHUNT_STATE, 1
+	setvar VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI
 	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
 	msgbox gText_Manhunt_GoodWork

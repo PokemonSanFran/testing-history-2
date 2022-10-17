@@ -8,7 +8,7 @@ YouHaveYourOrders_ObjectSetUp_Script::
 YouHaveYourOrders_Assignment_Dialogue::
 	compare VAR_HOW_DISAPPOINTING_STATE, 0
 	goto_if_ne YouHaveYourOrders_Assignment_Dialogue_2
-	addvar VAR_HOW_DISAPPOINTING_STATE, 1
+	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_NOT_ASSIGNED
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_AreYouSure, MSGBOX_NPC
@@ -45,7 +45,7 @@ YouHaveYourOrders_Assignment_Dialogue_4:
 	setvar VAR_0x8000, MUGSHOT_N
 	callnative DrawMugshot
 	msgbox gText_YouHaveYourOrders_CorrectEachOfUs
-	compare VAR_STORYLINE_STATE, 44
+	compare VAR_STORYLINE_STATE, STORY_START_FALSE_TIMELINE
 	goto_if_eq YouHaveYourOrders_Assignment_Dialogue_11
 YouHaveYourOrders_Assignment_Dialogue_10:
 	compare VAR_TEMP_0, 0
