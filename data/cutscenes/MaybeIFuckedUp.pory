@@ -3,8 +3,8 @@ const ORI = 15
 const FLAG_HIDE_ORI = FLAG_TEMP_6
 
 script MaybeIFuckedUp_ShowOri_Script{
-    if (var(VAR_STORYLINE_STATE) == STORY_CONGRATULATED_BY_ROSE){
-        clearflag(FLAG_HIDE_ORI)
+    if (var(VAR_STORYLINE_STATE) != STORY_CONGRATULATED_BY_ROSE){
+        setflag(FLAG_HIDE_ORI)
     }
 }
 

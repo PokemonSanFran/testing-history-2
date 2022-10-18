@@ -3,7 +3,7 @@ TheStrikeStrikesBack_HideObject_Script::
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_4
-	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_5
 	return
 
 
@@ -20,21 +20,22 @@ TheStrikeStrikesBack_UnblockConstruction_Script_2:
 
 
 TheStrikeStrikesBack_ObjectSetup_Script::
-	setflag FLAG_TEMP_6
-	clearflag FLAG_TEMP_4
-	clearflag FLAG_TEMP_2
-	clearflag FLAG_TEMP_3
 	setflag FLAG_TEMP_1
-	removeobject 14
-	removeobject 12
-	removeobject 13
+	setflag FLAG_TEMP_2
+	return
+
+
+TheStrikeStrikesBack_AddRocketObjects_Script::
+	addobject 3
+	addobject 4
+	addobject 5
+	setobjectxy 3, 21, 19
+	setobjectxy 4, 20, 18
+	setobjectxy 5, 22, 18
 	return
 
 
 TheStrikeStrikesBack_ObjectCleanup_Script::
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_4
-	setflag FLAG_TEMP_3
 	removeobject 2
 	removeobject 1
 	removeobject 3
@@ -74,9 +75,9 @@ TheStrikeStrikesBack_PhoneCall_Dialogue::
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_TheStrikeStrikesBack_OhHi
-	special GetCurrentMap
 	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
 	callnative DrawMugshot
+	special GetCurrentMap
 	switch VAR_RESULT
 	case 31, TheStrikeStrikesBack_PhoneCall_Dialogue_3
 	case 37, TheStrikeStrikesBack_PhoneCall_Dialogue_3
@@ -135,6 +136,7 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	msgbox gText_TheStrikeStrikesBack_WellHeresTheProblem
 	callnative ClearMugshot
 	closemessage
+	call TheStrikeStrikesBack_AddRocketObjects_Script
 	applymovement 3, TheStrikeStrikesBack_WalkIntoFrame
 	applymovement 4, TheStrikeStrikesBack_WalkIntoFrame
 	applymovement 5, TheStrikeStrikesBack_WalkIntoFrame
@@ -213,13 +215,6 @@ TheStrikeStrikesBack_FaceNorth:
 	step_end
 
 TheStrikeStrikesBack_WalkIntoFrame:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
 	walk_down
 	walk_down
 	walk_down

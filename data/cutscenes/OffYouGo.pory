@@ -13,16 +13,16 @@ script OffYouGo_ObjectCleanUp_Script {
 script OffYouGo_WarpPlayer_Script{
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
     
-    if (var(VAR_TEMP_1) < 11){
+    if (var(VAR_TEMP_1) < 11 && (var(VAR_GOLDENGATEBRIDGE_STATE) < POST_OFF_YOU_GO)){
         fadescreen(FADE_TO_BLACK)
         setobjectxy(PLAYER,16,11)
         turnobject(PLAYER,DIR_NORTH)
         TeleportCamera(16,11)
+        applymovement(PLAYER,Common_Movement_FaceUp)
         fadescreen(FADE_FROM_BLACK)
         goto(OffYouGo_WelcomeParty_Dialogue)
     }
-    release
-    end
+    return
 }
 
 
@@ -174,6 +174,7 @@ script OffYouGo_WelcomeParty_Dialogue {
 
 script OffYouGo_InteractOak_Event_Script {
     lockall
+        call(OffYouGo_WarpPlayer_Script)
         setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
         callnative(DrawMugshot)
         msgbox(gText_OffYouGo_ItMightBeAGood,MSGBOX_NPC)
@@ -201,7 +202,7 @@ text gText_OffYouGo_YeahImInBed {
     format("…yeah, I'm in bed.")
 }
 text gText_OffYouGo_ComeOnGetUp {
-    format("Come on get up, didn't you see Psfbadmin's text? We're waiting for you!")
+    format("Come on get up, didn't you see Oak's text? We're waiting for you!")
 }
 text gText_OffYouGo_WaitingForMe {
     format("Waiting for me…? Hold on, let me read…")
@@ -237,7 +238,7 @@ text gText_OffYouGo_ThanksButWho {
     format("Thanks but - who the hell is that?")
 }
 text gText_OffYouGo_AsYesYoureNot {
-    format("Ah yes, you're not from here. Siebold is one of the members of the disbanded SanFran Elite Four. A powerful trainer indeed, and we think this is an excellent opportunity for you both.")
+    format("Ah yes, you're not from here. Siebold is one of the members of the disbanded Sanfran Elite Four. A powerful trainer indeed, and we think this is an excellent opportunity for you both.")
 }
 text gText_OffYouGo_SoWhereIs {
     format("So, where is this dude?")

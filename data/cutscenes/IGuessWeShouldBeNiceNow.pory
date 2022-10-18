@@ -121,7 +121,7 @@ script IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue {
 }
 
 script IGuessWeShouldBeNiceNow_StartPuzzle_Script {
-        setvar(VAR_ROBINWILLIAMSTUNNEL_STATE,BIANCA_EXPLAINED_PUZZLE)
+        setvar(VAR_ROBINWILLIAMSTUNNEL_STATE,PUZZLE_1_UNSOLVED)
         lock
         callnative(ClearMugshot)
         closemessage
@@ -342,7 +342,7 @@ script IGuessWeShouldBeNiceNow_HidePopup_Script{
 script IGuessWeShouldBeNiceNow_ExitCave_Script {
     //PSF TODO The map name popup shows up for a second before disappearing, need to figure out why that happens
     lock
-    setvar(VAR_MARIN_STATE,ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED)
+    setvar(VAR_MARIN_STATE,BIANCA_INVITED_AIRBNB)
     playse(SE_EXIT)
     waitse
     clearflag(FLAG_TEMP_3)

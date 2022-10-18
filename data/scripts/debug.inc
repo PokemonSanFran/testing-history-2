@@ -53,9 +53,14 @@ Debug_FlagsNotSetMessage::
 	end
 
 
-Debug_Script_1::
+Debug_Weather::
 	setweather WEATHER_FOG_DIAGONAL
 	doweather
+	return
+
+
+Debug_Script_1::
+	warp MAP_GLDNGTEBRIDGE, 0
 	return
 
 

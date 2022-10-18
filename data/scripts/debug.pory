@@ -62,9 +62,13 @@ text Debug_FlagsNotSetMessage_Text{
     format("feature unavailable")
 }
 
-script Debug_Script_1{
+script Debug_Weather{
     setweather(WEATHER_FOG_DIAGONAL)
     doweather
+}
+
+script Debug_Script_1{
+    warp(MAP_GLDNGTEBRIDGE,0)
 }
 script Debug_Script_2{
 }

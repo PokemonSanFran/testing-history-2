@@ -125,13 +125,12 @@ script swagbag2_BringToCenter_Dialogue {
 }
 
 script swagbag2_Scene_End_Script {
-
+    setvar(VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE)
     closemessage
     applymovement(PLAYER, swagbag2_LetOakLeave)
     applymovement(OAK, swagbag2_LeaveCity)
     waitmovement(0)
     removeobject(OAK)
-    setvar(VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE)
     fadedefaultbgm
     release
     end

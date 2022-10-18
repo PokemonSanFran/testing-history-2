@@ -1,5 +1,4 @@
 VSGarbodor_Arrest_ObjectSetup_Script::
-	setflag FLAG_TEMP_6
 	setobjectxy 4, 26, 19
 	setobjectxy 5, 26, 20
 	setobjectxy 1, 21, 21
@@ -12,7 +11,7 @@ VSGarbodor_Arrest_ObjectSetup_Script::
 
 
 VSGarbodor_ObjectCleanUp_Script::
-	compare VAR_STORYLINE_STATE, 10
+	compare VAR_STORYLINE_STATE, STORY_FERRY_FIXED
 	goto_if_gt VSGarbodor_ObjectCleanUp_Script_2
 	return
 
@@ -25,6 +24,17 @@ VSGarbodor_ObjectCleanUp_Script_2:
 	compare VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR
 	goto_if_ne VSGarbodor_ObjectCleanUp_Script_1
 	return
+
+
+VSGarbodor_ConstructionObjectCleanUp_Script::
+	compare VAR_CONSTRUCTION_STRIKE_STATE, START_VS_GARBODOR
+	goto_if_ne VSGarbodor_ConstructionObjectCleanUp_Script_2
+VSGarbodor_ConstructionObjectCleanUp_Script_1:
+	return
+
+VSGarbodor_ConstructionObjectCleanUp_Script_2:
+	setflag FLAG_TEMP_1
+	goto VSGarbodor_ConstructionObjectCleanUp_Script_1
 
 
 VSGarbodor_Scouting_Dialogue::
@@ -245,6 +255,7 @@ VSGarbodor_MoveBianca_Script_8:
 
 
 VSGarbodor_DefeatedAll_Dialogue::
+	setvar VAR_CONSTRUCTION_STRIKE_STATE, DEFEATED_GARBODOR
 	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_VSGarbodor_GodYouWereTaking
@@ -257,7 +268,6 @@ VSGarbodor_DefeatedAll_Dialogue::
 	msgbox gText_VSGarbodor_WhateverMineWereEasy
 	closemessage
 	callnative ClearMugshot
-	setvar VAR_CONSTRUCTION_STRIKE_STATE, DEFEATED_GARBODOR
 	warpsilent MAP_PSFROUTE22, 255, 20, 22
 	delay 100
 	return
@@ -266,18 +276,18 @@ VSGarbodor_DefeatedAll_Dialogue::
 VSGarbodor_Arrest_Script::
 	setvar VAR_CONSTRUCTION_STRIKE_STATE, TEAM_ROCKET_ARRESTED
 	setvar VAR_STORYLINE_STATE, STORY_DEFEATED_GARBODOR
-	applymovement 14, Common_Movement_FaceUp
+	applymovement 11, Common_Movement_FaceUp
 	applymovement 1, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement 4, VSGarbodor_PerpWalk
 	applymovement 5, VSGarbodor_PerpWalk
-	applymovement 12, VSGarbodor_PerpWalk
-	applymovement 13, VSGarbodor_PerpWalk
+	applymovement 9, VSGarbodor_PerpWalk
+	applymovement 10, VSGarbodor_PerpWalk
 	waitmovement 0
 	call VSGarbodor_CleanUpPerpWalk
-	applymovement 14, Common_Movement_FaceDown
+	applymovement 11, Common_Movement_FaceDown
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 0
 	goto VSGarbodor_Negotiating_Dialogue
@@ -287,8 +297,8 @@ VSGarbodor_Arrest_Script::
 VSGarbodor_CleanUpPerpWalk::
 	removeobject 4
 	removeobject 5
-	removeobject 12
-	removeobject 13
+	removeobject 9
+	removeobject 10
 	removeobject 3
 	return
 

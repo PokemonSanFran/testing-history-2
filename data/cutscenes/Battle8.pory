@@ -41,8 +41,7 @@ script Battle8_ArcherWalksOut_Script {
         callnative(ClearMugshot)
 
         playse(SE_PIN)
-        applymovement(ARCHER,Common_Movement_ExclamationMark)
-        applymovement(ARCHER,Common_Movement_FaceRight)
+        applymovement(ARCHER,Battle8_ExclaimAndTurn_Movement)
         waitmovement(0)
 
 
@@ -212,4 +211,8 @@ movement Battle8_WalkToTheWest {
     walk_left * 7
         step_end
 }
-
+movement Battle8_ExclaimAndTurn_Movement{
+    emote_exclamation_mark
+    face_player
+    step_end
+}

@@ -97,7 +97,7 @@ AndWeMarchOn_InviteOntoStage_Dialogue::
 	msgbox gText_AndWeMarchOn_WeHaveASpecialGuest
 	callnative ClearMugshot
 	closemessage
-	applymovement 6, AndWeMarchOn_WalkOntoStage_Movement
+	applymovement 26, AndWeMarchOn_WalkOntoStage_Movement
 	waitmovement 0
 	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
@@ -125,9 +125,9 @@ AndWeMarchOn_StartCutsceneBattle_Script::
 	msgbox gText_AndWeMarchOn_Yeah
 	closemessage
 	applymovement 5, AndWeMarchOn_WalkToLeftSide_Movement
-	applymovement 6, AndWeMarchOn_LookAroundCrowd_Movement
+	applymovement 26, AndWeMarchOn_LookAroundCrowd_Movement
 	waitmovement 0
-	applymovement 6, Common_Movement_FaceLeft
+	applymovement 26, Common_Movement_FaceLeft
 	waitmovement 0
 	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
 	callnative DrawMugshot
@@ -203,7 +203,7 @@ AndWeMarchOn_PostBattle_Dialogue::
 	removeobject 2
 	removeobject 3
 	removeobject 4
-	applymovement 6, AndWeMarchOn_WalkOffStage_Movement
+	applymovement 26, AndWeMarchOn_WalkOffStage_Movement
 	waitmovement 0
 	goto AndWeMarchOn_PostBattleSpeech_Dialogue
 	return

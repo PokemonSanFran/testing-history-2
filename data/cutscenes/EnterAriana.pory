@@ -35,7 +35,6 @@ script EnterAriana_InteractSiarl_Script {
             goto(EnterAriana_GruntApologize_Dialogue)
         }
         else {
-            //goto(Debug_Hop)
             goto(EnterAriana_Intro_Dialogue)
         }
 }

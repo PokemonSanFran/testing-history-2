@@ -1,6 +1,6 @@
 mapscripts Chasecenter_Construction_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        call(VSGarbodor_ObjectCleanUp_Script)
+        call(VSGarbodor_ConstructionObjectCleanUp_Script)
     }
     MAP_SCRIPT_ON_LOAD {
     }

@@ -7,6 +7,7 @@ Psfroute22_MapScripts::
 Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Psfroute22_ConstructionVisibility_Script
 	call Quest_NeighborhoodCleanUp_ObjectVisibility_Script
+	call MaybeIFuckedUp_ShowOri_Script
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -29,7 +30,6 @@ Psfroute22_ConstructionVisibility_Script::
 	case DEFEATED_GARBODOR, Psfroute22_ConstructionVisibility_Script_6
 	case TEAM_ROCKET_ARRESTED, Psfroute22_ConstructionVisibility_Script_7
 Psfroute22_ConstructionVisibility_Script_1:
-	call MaybeIFuckedUp_ShowOri_Script
 	return
 
 Psfroute22_ConstructionVisibility_Script_3:

@@ -125,7 +125,7 @@ IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue::
 
 
 IGuessWeShouldBeNiceNow_StartPuzzle_Script::
-	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, BIANCA_EXPLAINED_PUZZLE
+	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, PUZZLE_1_UNSOLVED
 	lock
 	callnative ClearMugshot
 	closemessage
@@ -334,7 +334,7 @@ IGuessWeShouldBeNiceNow_HidePopup_Script_1:
 
 IGuessWeShouldBeNiceNow_ExitCave_Script::
 	lock
-	setvar VAR_MARIN_STATE, ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED
+	setvar VAR_MARIN_STATE, BIANCA_INVITED_AIRBNB
 	playse SE_EXIT
 	waitse
 	clearflag FLAG_TEMP_3

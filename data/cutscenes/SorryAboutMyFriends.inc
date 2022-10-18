@@ -1,6 +1,5 @@
 SorryAboutMyFriends_Ariana_Visible_Script::
-	goto_if_unset FLAG_BADGE04_GET, SorryAboutMyFriends_Ariana_Visible_Script_2
-	compare VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE
+	compare VAR_BERKELEY_STATE, DEFEATED_MORTY
 	goto_if_ne SorryAboutMyFriends_Ariana_Visible_Script_2
 SorryAboutMyFriends_Ariana_Visible_Script_1:
 	return

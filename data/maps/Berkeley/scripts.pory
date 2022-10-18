@@ -5,7 +5,7 @@ mapscripts Berkeley_MapScripts{
         call(SorryAboutMyFriends_Ariana_Visible_Script)
     }    
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE: SorryAboutMyFriends_CheckCutscene_Script
+        VAR_BERKELEY_STATE, DEFEATED_MORTY: SorryAboutMyFriends_CheckCutscene_Script
     ]
 }
 

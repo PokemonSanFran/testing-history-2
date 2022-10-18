@@ -12,18 +12,23 @@ OffYouGo_ObjectCleanUp_Script_2:
 OffYouGo_WarpPlayer_Script::
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_1, 11
-	goto_if_lt OffYouGo_WarpPlayer_Script_2
+	goto_if_lt OffYouGo_WarpPlayer_Script_3
 OffYouGo_WarpPlayer_Script_1:
-	release
-	end
+	return
 
 OffYouGo_WarpPlayer_Script_2:
 	fadescreen FADE_TO_BLACK
 	setobjectxy OBJ_EVENT_ID_PLAYER, 16, 11
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	TeleportCamera 16, 11
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	fadescreen FADE_FROM_BLACK
 	goto OffYouGo_WelcomeParty_Dialogue
+	goto OffYouGo_WarpPlayer_Script_1
+
+OffYouGo_WarpPlayer_Script_3:
+	compare VAR_GOLDENGATEBRIDGE_STATE, POST_OFF_YOU_GO
+	goto_if_lt OffYouGo_WarpPlayer_Script_2
 	goto OffYouGo_WarpPlayer_Script_1
 
 
@@ -145,6 +150,7 @@ OffYouGo_WelcomeParty_Dialogue::
 
 OffYouGo_InteractOak_Event_Script::
 	lockall
+	call OffYouGo_WarpPlayer_Script
 	setvar VAR_MUGSHOT, MUGSHOT_LANCE
 	callnative DrawMugshot
 	msgbox gText_OffYouGo_ItMightBeAGood, MSGBOX_NPC
@@ -178,9 +184,8 @@ gText_OffYouGo_YeahImInBed::
 	.string "…yeah, I'm in bed.$"
 
 gText_OffYouGo_ComeOnGetUp::
-	.string "Come on get up, didn't you see\n"
-	.string "Psfbadmin's text? We're waiting for\l"
-	.string "you!$"
+	.string "Come on get up, didn't you see Oak's\n"
+	.string "text? We're waiting for you!$"
 
 gText_OffYouGo_WaitingForMe::
 	.string "Waiting for me…? Hold on, let me read…$"
@@ -228,7 +233,7 @@ gText_OffYouGo_ThanksButWho::
 gText_OffYouGo_AsYesYoureNot::
 	.string "Ah yes, you're not from here. Siebold is\n"
 	.string "one of the members of the disbanded\l"
-	.string "SanFran Elite Four. A powerful trainer\l"
+	.string "Sanfran Elite Four. A powerful trainer\l"
 	.string "indeed, and we think this is an\l"
 	.string "excellent opportunity for you both.$"
 

@@ -1,5 +1,6 @@
 OldAssholeAppears_WalktoBianca_Script::
 	lockall
+	setvar VAR_LOMBARDSTREET_STATE, NOT_SEEN_BIANCA_LOMBARD
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 12
 	goto_if_eq OldAssholeAppears_WalktoBianca_Script_2
@@ -35,7 +36,7 @@ OldAssholeAppears_Intro_Dialogue::
 
 
 OldAssholeAppears_HealPlayer_Dialogue::
-	setvar VAR_LOMBARDSTREET_STATE, NOT_SEEN_BIANCA_LOMBARD
+	setvar VAR_LOMBARDSTREET_STATE, SAVE_BIANCA_LOMBARD
 	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
 	callnative DrawMugshot
 	msgbox gText_OldAssholeAppears_IllHealYou
@@ -110,12 +111,13 @@ OldAssholeAppears_GiveCorviknightCard_Script_2:
 
 
 OldAssholeAppears_BiancaExit_Script::
+	setvar VAR_LOMBARDSTREET_STATE, DEFEATED_BIANCA_LOMBARD
+	addvar VAR_STORYLINE_STATE, 1
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	applymovement 1, OldAssholeAppears_BiancaExit_Movement
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 1
-	addvar VAR_STORYLINE_STATE, 1
 	call Act1_1_Check_Script
 	releaseall
 	end

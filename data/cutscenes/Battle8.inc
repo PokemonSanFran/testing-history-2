@@ -32,8 +32,7 @@ Battle8_ArcherWalksOut_Script_1:
 	closemessage
 	callnative ClearMugshot
 	playse SE_PIN
-	applymovement 1, Common_Movement_ExclamationMark
-	applymovement 1, Common_Movement_FaceRight
+	applymovement 1, Battle8_ExclaimAndTurn_Movement
 	waitmovement 0
 	goto Battle8_ExplainAttraction_Dialogue
 	return
@@ -162,6 +161,11 @@ Battle8_WalkToTheWest:
 	walk_left
 	walk_left
 	walk_left
+	step_end
+
+Battle8_ExclaimAndTurn_Movement:
+	emote_exclamation_mark
+	face_player
 	step_end
 
 gText_Battle8_HellYesSRank::

@@ -104,12 +104,12 @@ swagbag2_BringToCenter_Dialogue::
 
 
 swagbag2_Scene_End_Script::
+	setvar VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, swagbag2_LetOakLeave
 	applymovement 1, swagbag2_LeaveCity
 	waitmovement 0
 	removeobject 1
-	setvar VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE
 	fadedefaultbgm
 	release
 	end

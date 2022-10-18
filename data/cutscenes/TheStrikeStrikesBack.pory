@@ -2,46 +2,62 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
 const OAK = 2
 const GIOVANNI = 3
-const GOODTEAMA = 4
-const GOODTEAMB = 5
-const ROSE = 14
+const ROCKET_A = 4
+const ROCKET_B = 5
+const CROWD_A = 6
+const CROWD_B = 7
+const CROWD_C = 8
+const POLICE_A = 9
+const POLICE_B = 10
+const ROSE = 11
+const ORI = 12
+
+const FLAG_HIDE_ROSE = FLAG_TEMP_1
+const FLAG_HIDE_ROCKET_POLICE = FLAG_TEMP_2
+const FLAG_HIDE_OAK = FLAG_TEMP_3
+const FLAG_HIDE_BIANCA = FLAG_TEMP_4
+const FLAG_HIDE_CROWD = FLAG_TEMP_5
+const FLAG_HIDE_ORI = FLAG_TEMP_6
 
 script TheStrikeStrikesBack_HideObject_Script {
-    setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_3)
-        setflag(FLAG_TEMP_4)
-        setflag(FLAG_TEMP_6)
+    setflag(FLAG_HIDE_ROSE)
+    setflag(FLAG_HIDE_ROCKET_POLICE)
+    setflag(FLAG_HIDE_OAK)
+    setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_CROWD)
+    return
 }
 
 script TheStrikeStrikesBack_UnblockConstruction_Script {
-        if (var(VAR_CONSTRUCTION_STRIKE_STATE)) {
-    setmetatile(21,19,0x211,FALSE)
-    special(DrawWholeMapView)
-        }
-        return
+    if (var(VAR_CONSTRUCTION_STRIKE_STATE)) {
+        setmetatile(21,19,0x211,FALSE)
+            special(DrawWholeMapView)
+    }
+    return
 }
 
 script TheStrikeStrikesBack_ObjectSetup_Script {
-        setflag(FLAG_TEMP_6)
-    clearflag(FLAG_TEMP_4)
-        clearflag(FLAG_TEMP_2)
-        clearflag(FLAG_TEMP_3)
-        setflag(FLAG_TEMP_1)
-        removeobject(ROSE)
-        removeobject(12)
-        removeobject(13)
+    setflag(FLAG_HIDE_ROSE)
+    setflag(FLAG_HIDE_ROCKET_POLICE)
+}
+
+script TheStrikeStrikesBack_AddRocketObjects_Script{
+    addobject(GIOVANNI)
+    addobject(ROCKET_A)
+    addobject(ROCKET_B)
+
+    setobjectxy(GIOVANNI,21,19)
+    setobjectxy(ROCKET_A,20,18)
+    setobjectxy(ROCKET_B,22,18)
+    return
 }
 
 script TheStrikeStrikesBack_ObjectCleanup_Script {
-    setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_4)
-        setflag(FLAG_TEMP_3)
-        removeobject(OAK)
-        removeobject(BIANCA)
-        removeobject(GIOVANNI)
-        removeobject(GOODTEAMA)
-        removeobject(GOODTEAMB)
+    removeobject(OAK)
+    removeobject(BIANCA)
+    removeobject(GIOVANNI)
+    removeobject(ROCKET_A)
+    removeobject(ROCKET_B)
 }
 
 script TheStrikeStrikesBack_CrowdFacesNorth_Script {
@@ -75,11 +91,11 @@ script TheStrikeStrikesBack_PhoneCall_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_TheStrikeStrikesBack_OhHi)
 
-        special(GetCurrentMap)
 
         setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
         callnative(DrawMugshot)
 
+        special(GetCurrentMap)
         switch(var(VAR_RESULT)){
             case 31:
             case 37:
@@ -140,9 +156,11 @@ script TheStrikeStrikesBack_Intro_Dialogue {
                 callnative(ClearMugshot)
                 closemessage
 
+                call(TheStrikeStrikesBack_AddRocketObjects_Script)
+
                 applymovement(GIOVANNI,TheStrikeStrikesBack_WalkIntoFrame)
-                applymovement(GOODTEAMA,TheStrikeStrikesBack_WalkIntoFrame)
-                applymovement(GOODTEAMB,TheStrikeStrikesBack_WalkIntoFrame)
+                applymovement(ROCKET_A,TheStrikeStrikesBack_WalkIntoFrame)
+                applymovement(ROCKET_B,TheStrikeStrikesBack_WalkIntoFrame)
                 waitmovement(0)
 
                 call(TheStrikeStrikesBack_CrowdFacesNorth_Script)
@@ -176,8 +194,8 @@ script TheStrikeStrikesBack_Intro_Dialogue {
                 closemessage
 
                 applymovement(GIOVANNI,TheStrikeStrikesBack_WalkOutFrame)
-                applymovement(GOODTEAMA,TheStrikeStrikesBack_WalkOutFrame)
-                applymovement(GOODTEAMB,TheStrikeStrikesBack_WalkOutFrame)
+                applymovement(ROCKET_A,TheStrikeStrikesBack_WalkOutFrame)
+                applymovement(ROCKET_B,TheStrikeStrikesBack_WalkOutFrame)
                 applymovement(BIANCA,Common_Movement_FaceLeft)
                 applymovement(PLAYER,Common_Movement_FaceDown)
                 applymovement(9,Common_Movement_FaceDown)
@@ -231,7 +249,6 @@ movement TheStrikeStrikesBack_FaceNorth {
         step_end
 }
 movement TheStrikeStrikesBack_WalkIntoFrame {
-    walk_left * 7
         walk_down * 3
         step_end
 }

@@ -5,7 +5,7 @@ Chasecenter_Construction_MapScripts::
 	.byte 0
 
 Chasecenter_Construction_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call VSGarbodor_ObjectCleanUp_Script
+	call VSGarbodor_ConstructionObjectCleanUp_Script
 	return
 
 Chasecenter_Construction_MapScripts_MAP_SCRIPT_ON_LOAD:

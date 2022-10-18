@@ -109,8 +109,8 @@ Alameda_ChooseFerryDestination_Script::
 Alameda_UnlockedDestinations_Script::
 	switch VAR_FERRY_STATE
 	case FERRY_DEFAULT, Alameda_UnlockedDestinations_Script_2
-	case FERRY_ALAMEDA_AVAILABLE, Alameda_UnlockedDestinations_Script_3
-	case FERRY_ALCATRAZ_AVAILABLE, Alameda_UnlockedDestinations_Script_4
+	case FERRY_ALAMEDA_AVAILABLE, Alameda_UnlockedDestinations_Script_2
+	case FERRY_ALCATRAZ_AVAILABLE, Alameda_UnlockedDestinations_Script_3
 	return
 
 Alameda_UnlockedDestinations_Script_2:
@@ -119,10 +119,6 @@ Alameda_UnlockedDestinations_Script_2:
 
 Alameda_UnlockedDestinations_Script_3:
 	goto Alameda_FerryState1_Script
-	return
-
-Alameda_UnlockedDestinations_Script_4:
-	goto Alameda_FerryState2_Script
 	return
 
 
@@ -165,7 +161,7 @@ Alameda_FerryState1_Script_3:
 	goto Alameda_FerryState1_Script_1
 
 Alameda_FerryState1_Script_4:
-	warp MAP_ALCATRAZ, 24, 61
+	warp MAP_ALCATRAZ, 48, 61
 	goto Alameda_FerryState1_Script_1
 
 Alameda_FerryState1_Script_5:
@@ -175,39 +171,6 @@ Alameda_FerryState1_Script_5:
 Alameda_FerryState1_Script_6:
 	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
 	goto Alameda_FerryState1_Script_1
-
-
-Alameda_FerryState2_Script::
-	multichoicedefault 18, 8, ALAMEDA_FERRY_DESTINATIONS_VER3, 2, FALSE
-	switch VAR_RESULT
-	case 0, Alameda_FerryState2_Script_3
-	case 1, Alameda_FerryState2_Script_4
-	case 2, Alameda_FerryState2_Script_5
-	case 3, Alameda_FerryState2_Script_6
-	case MULTI_B_PRESSED, Alameda_FerryState2_Script_7
-Alameda_FerryState2_Script_1:
-	call Common_EventScript_FerryDepartIsland
-	return
-
-Alameda_FerryState2_Script_3:
-	warp MAP_FERRYBUILDING, 8, 11
-	goto Alameda_FerryState2_Script_1
-
-Alameda_FerryState2_Script_4:
-	warp MAP_ALCATRAZ, 24, 61
-	goto Alameda_FerryState2_Script_1
-
-Alameda_FerryState2_Script_5:
-	warp MAP_TREASUREISLAND, 15, 36
-	goto Alameda_FerryState2_Script_1
-
-Alameda_FerryState2_Script_6:
-	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
-	goto Alameda_FerryState2_Script_1
-
-Alameda_FerryState2_Script_7:
-	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
-	goto Alameda_FerryState2_Script_1
 
 
 Alameda_Person1_Fisherman::

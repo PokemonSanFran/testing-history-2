@@ -109,6 +109,7 @@
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
 #define VAR_OLDALE_TOWN_STATE                            0x4051
+#define VAR_ALWAYS_ZERO 0x4051
 #define VAR_DEWFORD_TOWN_STATE                           0x4052 // Unused Var
 #define VAR_UNDERGROUNDLAB_STATE             0x4052
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053

@@ -1,10 +1,10 @@
 MaybeIFuckedUp_ShowOri_Script::
 	compare VAR_STORYLINE_STATE, STORY_CONGRATULATED_BY_ROSE
-	goto_if_eq MaybeIFuckedUp_ShowOri_Script_1
+	goto_if_ne MaybeIFuckedUp_ShowOri_Script_1
 	return
 
 MaybeIFuckedUp_ShowOri_Script_1:
-	clearflag FLAG_TEMP_6
+	setflag FLAG_TEMP_6
 	return
 
 

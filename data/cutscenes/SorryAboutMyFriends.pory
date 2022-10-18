@@ -3,7 +3,7 @@ const ARIANA = 5
 const FLAG_HIDE_ARIANA = FLAG_TEMP_5
 
 script SorryAboutMyFriends_Ariana_Visible_Script{
-    if (!flag(FLAG_BADGE04_GET) || var(VAR_BERKELEY_STATE) != SWAGBAG_2_COMPLETE){
+    if (var(VAR_BERKELEY_STATE) != DEFEATED_MORTY){
         setflag(FLAG_HIDE_ARIANA)
     }
     return

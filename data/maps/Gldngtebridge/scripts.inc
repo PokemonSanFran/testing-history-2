@@ -8,6 +8,5 @@ Gldngtebridge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Gldngtebridge_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_GOLDENGATEBRIDGE_STATE, CALLED_BY_BIANCA, OffYouGo_WarpPlayer_Script
 	.2byte 0
 
