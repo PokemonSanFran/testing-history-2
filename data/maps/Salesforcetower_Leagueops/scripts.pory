@@ -24,17 +24,14 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
             case POST_WELCOME_TO_THE_WAR_ROOM: call(WelcomeToTheWarRoom_Object_Hide_Script)
             case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: call(YouRealizeWereEvilRight_Object_Setup_Script)
             case POST_YOU_REALIZE_WERE_EVIL_RIGHT: 
-              if (var(VAR_TOWER_RAID_STATE) > SABRINA_WARP_DOOR_UNLOCKED){ 
-                  call(Salesforcetower_Leagueops_TrueTimeline_Objects_Script)
-            }else{
-        call(YouRealizeWereEvilRight_Object_Cleanup_Script)
-    }
+                call(YouRealizeWereEvilRight_Object_Cleanup_Script)
             case START_FALSE_TIMELINE: 
                 call(CongratsYoureanAsshole_ObjectCleanUp_Script)
                 call(YouHaveYourOrders_ObjectSetUp_Script)
                 call(LetsBurnThisMother_ShowRose_Script)
                 call(Manhunt_ShowSabrina_Script)
-
+            case TRUE_RAID_START:
+                  call(Salesforcetower_Leagueops_TrueTimeline_Objects_Script)
             default: call(Salesforcetower_Leagueops_EmptyConferenceRoomOffices)
         }
     }

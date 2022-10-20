@@ -29,17 +29,17 @@ ThisIsntRandom_HideObject_AboveGround_Script_2:
 
 ThisIsntRandom_ObjectSetUp_Script::
 	fadescreen FADE_TO_BLACK
-	setobjectxy OBJ_EVENT_ID_PLAYER, 11, 18
-	TeleportCamera 11, 18
+	setobjectxy OBJ_EVENT_ID_PLAYER, 13, 18
+	TeleportCamera 13, 18
 	clearflag FLAG_TEMP_1
 	addobject 1
-	setobjectxy 1, 10, 19
+	setobjectxy 1, 12, 19
 	applymovement 1, Common_Movement_FaceUp
 	addobject 2
-	setobjectxy 2, 11, 19
+	setobjectxy 2, 13, 19
 	applymovement 2, Common_Movement_FaceUp
 	addobject 3
-	setobjectxy 3, 12, 19
+	setobjectxy 3, 14, 19
 	applymovement 3, Common_Movement_FaceUp
 	fadescreen FADE_FROM_BLACK
 	return

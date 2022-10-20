@@ -166,6 +166,7 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         waitmovement(0)
         applymovement(ARCHER,WarehouseRave_RunToPlayer)
         waitmovement(0)
+        applymovement(PLAYER,Common_Movement_FaceRight)
 
         setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
         callnative(DrawMugshot)
@@ -217,7 +218,7 @@ script WarehouseRave_OutsideWarehouse_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_WarehouseRave_WhateverImGlad)
 
-        if (var(VAR_STORYLINE_STATE) != 102){
+        if (var(VAR_STORYLINE_STATE) != STORY_RECIVED_RAVE_INVITE){
             msgbox(gText_WarehouseRave_ImHeadingIntoTheCity)
             msgbox(gText_WarehouseRave_IllSeeYou)
         } else { 
@@ -362,8 +363,7 @@ movement WarehouseRave_RunOutTheWarehouse {
 }
 
 movement WarehouseRave_ExitWarehouse {
-    player_run_up
-    face_right
+    face_up 
     step_end
 }
 

@@ -7,14 +7,15 @@ mapscripts Paintedladies_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
+        VAR_STORYLINE_STATE, STORY_EAST_SANFRAN_COMPLETE: TheStrikeStrikesBack_PhoneCall_Dialogue
     ]
 }
 
 script Paintedladies_MapScripts_OnTransition {
-    switch (var(VAR_ROUTE109_STATE)){
+    switch (var(VAR_BATTLE_8_STATE)){
+        case DEFEATED_ARCHER_PAINTEDLADIES:
         case 0: call(Battle8_SetUpObject_Script)
-        case 1: call(Battle8_StartBattle_ObjectSetUp_Script)
-        case 2: call(Battle8_SetUpObject_Script)
+        case NOT_SEEN_ARCHER: call(Battle8_StartBattle_ObjectSetUp_Script)
+        case SAVE_ARCHER_PAINTEDLADIES: call(Battle8_SetUpObject_Script)
     }
 }

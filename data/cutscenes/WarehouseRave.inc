@@ -172,6 +172,7 @@ WarehouseRave_OutsideWarehouse_Dialogue::
 	waitmovement 0
 	applymovement 1, WarehouseRave_RunToPlayer
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhenIGotHere
@@ -210,7 +211,7 @@ WarehouseRave_OutsideWarehouse_Dialogue::
 	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_WarehouseRave_WhateverImGlad
-	compare VAR_STORYLINE_STATE, 102
+	compare VAR_STORYLINE_STATE, STORY_RECIVED_RAVE_INVITE
 	goto_if_ne WarehouseRave_OutsideWarehouse_Dialogue_2
 	msgbox gText_WarehouseRave_GladYouDidnt
 WarehouseRave_OutsideWarehouse_Dialogue_1:
@@ -253,8 +254,7 @@ WarehouseRave_RunOutTheWarehouse:
 	step_end
 
 WarehouseRave_ExitWarehouse:
-	player_run_up
-	face_right
+	face_up
 	step_end
 
 WarehouseRave_RunToPlayer:

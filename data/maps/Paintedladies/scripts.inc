@@ -8,15 +8,16 @@ Paintedladies_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Paintedladies_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_STORYLINE_STATE, 21, TheStrikeStrikesBack_PhoneCall_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, STORY_EAST_SANFRAN_COMPLETE, TheStrikeStrikesBack_PhoneCall_Dialogue
 	.2byte 0
 
 
 Paintedladies_MapScripts_OnTransition::
-	switch VAR_ROUTE109_STATE
+	switch VAR_BATTLE_8_STATE
+	case DEFEATED_ARCHER_PAINTEDLADIES, Paintedladies_MapScripts_OnTransition_2
 	case 0, Paintedladies_MapScripts_OnTransition_2
-	case 1, Paintedladies_MapScripts_OnTransition_3
-	case 2, Paintedladies_MapScripts_OnTransition_4
+	case NOT_SEEN_ARCHER, Paintedladies_MapScripts_OnTransition_3
+	case SAVE_ARCHER_PAINTEDLADIES, Paintedladies_MapScripts_OnTransition_4
 	return
 
 Paintedladies_MapScripts_OnTransition_2:

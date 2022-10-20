@@ -26,21 +26,21 @@ script ThisIsntRandom_HideObject_AboveGround_Script {
 script ThisIsntRandom_ObjectSetUp_Script {
     fadescreen(FADE_TO_BLACK)
 
-        setobjectxy(PLAYER,11,18)
-        TeleportCamera(11,18)
+        setobjectxy(PLAYER,13,18)
+        TeleportCamera(13,18)
 
         clearflag(FLAG_HIDE_SEARCH)
 
         addobject(ARCHER)
-        setobjectxy(ARCHER,10,19)
+        setobjectxy(ARCHER,12,19)
         applymovement(ARCHER,Common_Movement_FaceUp)
 
         addobject(ARIANA)
-        setobjectxy(ARIANA,11,19)
+        setobjectxy(ARIANA,13,19)
         applymovement(ARIANA,Common_Movement_FaceUp)
 
         addobject(DRASNA)
-        setobjectxy(DRASNA,12,19)
+        setobjectxy(DRASNA,14,19)
         applymovement(DRASNA,Common_Movement_FaceUp)
 
         fadescreen(FADE_FROM_BLACK)

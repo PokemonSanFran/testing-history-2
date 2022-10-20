@@ -14,6 +14,7 @@ Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	case PRE_YOU_REALIZE_WERE_EVIL_RIGHT, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
 	case POST_YOU_REALIZE_WERE_EVIL_RIGHT, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
 	case START_FALSE_TIMELINE, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
+	case TRUE_RAID_START, Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_10
 	call Salesforcetower_Leagueops_EmptyConferenceRoomOffices
 	return
 
@@ -42,8 +43,6 @@ Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
 	return
 
 Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
-	compare VAR_TOWER_RAID_STATE, SABRINA_WARP_DOOR_UNLOCKED
-	goto_if_gt Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_11
 	call YouRealizeWereEvilRight_Object_Cleanup_Script
 	return
 
@@ -54,7 +53,7 @@ Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 	call Manhunt_ShowSabrina_Script
 	return
 
-Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_11:
+Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_10:
 	call Salesforcetower_Leagueops_TrueTimeline_Objects_Script
 	return
 
