@@ -5934,9 +5934,9 @@
     {
       "id": "LAYOUT_SALESFORCETOWER_TOP",
       "name": "Salesforcetower_Top_Layout",
-      "width": 10,
-      "height": 10,
-      "primary_tileset": "gTileset_General",
+      "width": 19,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Salesforcetower_Top/border.bin",
       "blockdata_filepath": "data/layouts/Salesforcetower_Top/map.bin"
