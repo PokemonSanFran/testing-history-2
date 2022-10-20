@@ -2,6 +2,11 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const MALVA = 9
 const FLAG_HIDE_MALVA = FLAG_TEMP_2
 
+
+script YoungPadawan_HideMalva_Script{
+    setflag(FLAG_TEMP_2)
+        return
+}
 script YoungPadawan_Intro_Dialogue {
     lock
         clearflag(FLAG_HIDE_MALVA)

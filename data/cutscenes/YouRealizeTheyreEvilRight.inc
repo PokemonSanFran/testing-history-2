@@ -14,19 +14,6 @@ YouRealizeTheyreEvilRight_HideObject_Script_3:
 	goto YouRealizeTheyreEvilRight_HideObject_Script_1
 
 
-YouRealizeTheyreEvilRight_ShowObject_Script::
-	compare VAR_ALCATRAZ_STATE, ARCHER_SUMMONED_ALCATRAZ
-	goto_if_eq YouRealizeTheyreEvilRight_ShowObject_Script_2
-	compare VAR_ALCATRAZ_STATE, POST_ARRIVE_ALCATRAZ
-	goto_if_eq YouRealizeTheyreEvilRight_ShowObject_Script_2
-YouRealizeTheyreEvilRight_ShowObject_Script_1:
-	return
-
-YouRealizeTheyreEvilRight_ShowObject_Script_2:
-	addobject 11
-	goto YouRealizeTheyreEvilRight_ShowObject_Script_1
-
-
 YouRealizeTheyreEvilRight_HideGarbodor_Script::
 	setflag FLAG_TEMP_4
 	return

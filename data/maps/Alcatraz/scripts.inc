@@ -4,7 +4,9 @@ Alcatraz_MapScripts::
 	.byte 0
 
 Alcatraz_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call Alcatraz_MapScripts_OnTransition
+	call YoungPadawan_HideMalva_Script
+	call ResetAlcatrazExhibit_Script
+	call YouRealizeTheyreEvilRight_HideObject_Script
 	return
 
 Alcatraz_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -13,20 +15,6 @@ Alcatraz_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Alcatraz_MapScripts_OnTransition::
-	call Alcatraz_ExhibitCheck_Script
-	call YouRealizeTheyreEvilRight_HideObject_Script
-	call YouRealizeTheyreEvilRight_ShowObject_Script
-	return
-
-
-Alcatraz_ExhibitCheck_Script::
-	call ResetAlcatrazExhibit_Script
-	compare VAR_ALCATRAZ_EXHIBIT_STATE, 2
-	goto_if_lt Alcatraz_ExhibitCheck_Script_1
-	return
-
-Alcatraz_ExhibitCheck_Script_1:
-	setflag FLAG_TEMP_2
 	return
 
 

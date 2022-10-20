@@ -1,3 +1,8 @@
+YoungPadawan_HideMalva_Script::
+	setflag FLAG_TEMP_2
+	return
+
+
 YoungPadawan_Intro_Dialogue::
 	lock
 	clearflag FLAG_TEMP_2

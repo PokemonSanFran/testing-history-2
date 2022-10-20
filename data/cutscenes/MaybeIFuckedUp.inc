@@ -11,11 +11,11 @@ MaybeIFuckedUp_ShowOri_Script_1:
 MaybeIFuckedUp_Dialogue::
 	lock
 	setvar VAR_STORYLINE_STATE, STORY_RECIEVED_BAMBOO_STAR
-	applymovement 15, MaybeIFuckedUp_WalkToPlayer
+	applymovement 12, MaybeIFuckedUp_WalkToPlayer
 	waitmovement 0
 	msgbox gText_MaybeIFuckedUp_ExcuseMeLad
 	closemessage
-	applymovement 15, Common_Movement_WalkUp
+	applymovement 12, Common_Movement_WalkUp
 	waitmovement 0
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
@@ -37,9 +37,9 @@ MaybeIFuckedUp_Dialogue::
 	msgbox gText_MaybeIFuckedUp_OfCourse
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, MaybeIFuckedUp_WatchOriWalk
-	applymovement 15, MaybeIFuckedUp_WalkOffScreen
-	waitmovement 15
-	removeobject 15
+	applymovement 12, MaybeIFuckedUp_WalkOffScreen
+	waitmovement 12
+	removeobject 12
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_MaybeIFuckedUp_WhatTheHellWasThat

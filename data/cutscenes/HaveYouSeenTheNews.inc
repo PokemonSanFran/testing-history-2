@@ -30,7 +30,7 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	callnative ClearMugshot
 	closemessage
 	releaseall
-	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 17, 33
+	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 17, 29
 	end
 
 HaveYouSeenTheNews_AskHelp_Dialogue_1:

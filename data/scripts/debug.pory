@@ -65,10 +65,13 @@ text Debug_FlagsNotSetMessage_Text{
 script Debug_Weather{
     setweather(WEATHER_FOG_DIAGONAL)
     doweather
+    return
 }
 
 script Debug_Script_1{
-    warp(MAP_GLDNGTEBRIDGE,0)
+    setvar(VAR_LETS_BURN_THIS_MOTHER_STATE,DEFEATED_ARCHER_ALCATRAZ)
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_LETS_BURN_THIS_MOTHER_DOWN)
+        warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,34,5)
 }
 script Debug_Script_2{
 }

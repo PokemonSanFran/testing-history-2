@@ -42,7 +42,7 @@ Fishermanswharf_FerryState0_Script::
 	return
 
 Fishermanswharf_FerryState0_Script_2:
-	warp MAP_ALCATRAZ, 24, 61
+	warp MAP_ALCATRAZ, 48, 61
 	return
 
 Fishermanswharf_FerryState0_Script_3:

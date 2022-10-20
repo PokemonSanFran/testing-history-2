@@ -44,6 +44,7 @@ script WelcomeToTheHallOfFame_PostBattle_Dialogue {
         setvar(VAR_CHASECENTER_TOURNAMENT_STATE,NO_TOURNAMENT)
         clearflag(FLAG_CHASECENTER_TOURNAMENT_HAPPENING)
         setvar(VAR_STORYLINE_STATE,STORY_WON_FINALS)
+        setflag(FLAG_IS_CHAMPION)
         fadescreenspeed(FADE_TO_BLACK,24)
 
         special(HealPlayerParty)

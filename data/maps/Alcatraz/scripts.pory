@@ -2,7 +2,9 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 
 mapscripts Alcatraz_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        call(Alcatraz_MapScripts_OnTransition)
+        call(YoungPadawan_HideMalva_Script)
+        call(ResetAlcatrazExhibit_Script)
+        call(YouRealizeTheyreEvilRight_HideObject_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [ 
@@ -11,17 +13,6 @@ mapscripts Alcatraz_MapScripts {
 }
 
 script Alcatraz_MapScripts_OnTransition {
-    call(Alcatraz_ExhibitCheck_Script)
-
-        call(YouRealizeTheyreEvilRight_HideObject_Script)
-        call(YouRealizeTheyreEvilRight_ShowObject_Script) //PSF TODO clean these up
-}
-
-script Alcatraz_ExhibitCheck_Script {
-    call(ResetAlcatrazExhibit_Script)
-        if (var(VAR_ALCATRAZ_EXHIBIT_STATE) < 2){
-            setflag(FLAG_TEMP_2)
-        }
 }
 
 script AlcatrazAttendant_HealPlayer_Script {

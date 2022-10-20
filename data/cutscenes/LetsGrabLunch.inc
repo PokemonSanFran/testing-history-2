@@ -189,7 +189,7 @@ LetsGrabLunch_Marin::
 	msgbox gText_LetsGrabLunch_DoYouWantMarin, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Marin_1
-	warpsilent MAP_CHINATOWN, 5, 15
+	warpsilent MAP_MARIN, 8, 18
 	return
 
 LetsGrabLunch_Marin_1:
@@ -210,7 +210,7 @@ LetsGrabLunch_Treasureisland::
 	msgbox gText_LetsGrabLunch_DoYouWantTreasureisland, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Treasureisland_1
-	warpsilent MAP_TREASUREISLAND, 8, 15
+	warpsilent MAP_TREASUREISLAND, 3, 15
 	return
 
 LetsGrabLunch_Treasureisland_1:
@@ -231,7 +231,7 @@ LetsGrabLunch_Haightashbury_1:
 	msgbox gText_LetsGrabLunch_DoYouWantHaightashbury, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Haightashbury_5
-	warpsilent MAP_HAIGHTASHBURY, 9, 27
+	warpsilent MAP_HAIGHTASHBURY, 7, 27
 	return
 
 LetsGrabLunch_Haightashbury_2:

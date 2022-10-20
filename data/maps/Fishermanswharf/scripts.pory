@@ -32,7 +32,7 @@ script Fishermanswharf_FerryState0_Script {
     call(SlateportCity_Harbor_EventScript_BoardFerry)
 
     switch (var(VAR_RESULT)){
-        case 0: warp(MAP_ALCATRAZ,24,61)
+        case 0: warp(MAP_ALCATRAZ,48,61)
         case 1: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
         case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
 }

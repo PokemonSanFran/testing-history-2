@@ -48,10 +48,10 @@ Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
 	return
 
 Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
+	call CongratsYoureanAsshole_ObjectCleanUp_Script
+	call YouHaveYourOrders_ObjectSetUp_Script
 	call LetsBurnThisMother_ShowRose_Script
 	call Manhunt_ShowSabrina_Script
-	call YouHaveYourOrders_ObjectSetUp_Script
-	call CongratsYoureanAsshole_ObjectCleanUp_Script
 	return
 
 Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_TRANSITION_11:

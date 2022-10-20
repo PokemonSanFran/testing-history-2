@@ -14,6 +14,8 @@ WhyAreYouHelpingThem_ObjectCleanUp_Script::
 WhyAreYouHelpingThem_MoveObject_Script::
 	setobjectxy 1, 2, 16
 	setobjectxyperm 1, 2, 16
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_1
 	return
 
 
@@ -324,6 +326,7 @@ WhyAreYouHelpingThem_PostBattle_Dialogue::
 
 
 WhyAreYouHelpingThem_MissionDebrief_Dialogue::
+	setvar VAR_ALAMEDA_STATE, SLEPT_AFTER_RAID
 	setvar VAR_STORYLINE_STATE, STORY_COMPLETED_NAVAL_BASE
 	setvar VAR_PLAYER_HOME_STATE, POST_NAVALBASE_RAID
 	lock
@@ -341,12 +344,24 @@ WhyAreYouHelpingThem_MissionDebrief_Dialogue::
 	applymovement 4, Common_Movement_WalkDown
 	waitmovement 0
 	msgbox gText_WhyAreYouHelpingThem_NotBadInThere
+	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
+	callnative DrawMugshot
+	msgbox gText_WhyAreYouHelpingThem_WannaCome, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq WhyAreYouHelpingThem_MissionDebrief_Dialogue_1
 	closemessage
 	release
 	end
 
+WhyAreYouHelpingThem_MissionDebrief_Dialogue_1:
+	closemessage
+	warpsilent MAP_SOUTHBAY_COMPOUND_1F, 0
+	return
+
 
 WhyAreYouHelpingThem_BackAtCompound_Dialogue::
+	lock
+	setvar VAR_PLAYER_HOME_STATE, NEXT_DAY_CHAMPIONSHIP
 	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_WalkIntoHome
 	waitmovement 0
 	setvar VAR_MUGSHOT, MUGSHOT_LANCE
@@ -389,7 +404,6 @@ WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 
 
 WhyAreYouHelpingThem_StartChampionship_Dialogue::
-	setvar VAR_ALAMEDA_STATE, SLEPT_AFTER_RAID
 	msgbox gText_WhyAreYouHelpingThem_AreYouReadyToBegin, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq WhyAreYouHelpingThem_StartChampionship_Dialogue_1
@@ -737,3 +751,7 @@ gText_WhyAreYouHelpingThem_WeveAllGot::
 gText_WhyAreYouHelpingThem_AreYouReadyToBegin::
 	.string "Are you ready to begin the\n"
 	.string "Championship?$"
+
+gText_WhyAreYouHelpingThem_WannaCome::
+	.string "{PLAYER}, I'm gonna head over in a bit.\n"
+	.string "Wanna come?$"

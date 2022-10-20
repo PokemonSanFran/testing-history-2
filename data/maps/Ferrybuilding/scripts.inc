@@ -25,7 +25,7 @@ Ferrybuilding_MapScripts_OnTransition_2:
 
 Ferrybuilding_InteractFerryAttendant_Script::
 	lock
-	compare VAR_STORYLINE_STATE, 10
+	compare VAR_STORYLINE_STATE, STORY_FERRY_FIXED
 	goto_if_lt Ferrybuilding_InteractFerryAttendant_Script_1
 	goto Ferrybuilding_ChooseFerryDestination_Script
 	return
@@ -44,21 +44,7 @@ Ferrybuilding_ChooseFerryDestination_Script::
 
 Ferrybuilding_UnlockedDestinations_Script::
 	switch VAR_FERRY_STATE
-	case 0, Ferrybuilding_UnlockedDestinations_Script_2
-	case 1, Ferrybuilding_UnlockedDestinations_Script_3
-	case 2, Ferrybuilding_UnlockedDestinations_Script_4
-	return
-
-Ferrybuilding_UnlockedDestinations_Script_2:
 	goto Ferrybuilding_FerryState0_Script
-	return
-
-Ferrybuilding_UnlockedDestinations_Script_3:
-	goto Ferrybuilding_FerryState0_Script
-	return
-
-Ferrybuilding_UnlockedDestinations_Script_4:
-	goto Ferrybuilding_FerryState1_Script
 	return
 
 
@@ -80,33 +66,6 @@ Ferrybuilding_FerryState0_Script_3:
 	return
 
 Ferrybuilding_FerryState0_Script_4:
-	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
-	return
-
-
-Ferrybuilding_FerryState1_Script::
-	multichoicedefault 18, 8, FERRYBUILDING_FERRY_DESTINATIONS_VER2, 2, FALSE
-	call SlateportCity_Harbor_EventScript_BoardFerry
-	switch VAR_RESULT
-	case 0, Ferrybuilding_FerryState1_Script_2
-	case 1, Ferrybuilding_FerryState1_Script_3
-	case 2, Ferrybuilding_FerryState1_Script_4
-	case MULTI_B_PRESSED, Ferrybuilding_FerryState1_Script_5
-	return
-
-Ferrybuilding_FerryState1_Script_2:
-	warp MAP_ALAMEDA, 3, 16
-	return
-
-Ferrybuilding_FerryState1_Script_3:
-	warp MAP_TREASUREISLAND, 15, 36
-	return
-
-Ferrybuilding_FerryState1_Script_4:
-	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
-	return
-
-Ferrybuilding_FerryState1_Script_5:
 	goto SlateportCity_Harbor_EventScript_CancelDestinationSelect
 	return
 

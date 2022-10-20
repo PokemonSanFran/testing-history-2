@@ -20,7 +20,7 @@ script Ferrybuilding_MapScripts_OnTransition {
 
 script Ferrybuilding_InteractFerryAttendant_Script {
     lock
-    if (var(VAR_STORYLINE_STATE) < 10){
+    if (var(VAR_STORYLINE_STATE) < STORY_FERRY_FIXED){
         msgbox(gText_Ferrybuilding_OutOfOrder,MSGBOX_NPC)
         release
         end
@@ -38,9 +38,7 @@ script Ferrybuilding_ChooseFerryDestination_Script {
 
 script Ferrybuilding_UnlockedDestinations_Script {
     switch (var(VAR_FERRY_STATE)){
-        case 0:goto(Ferrybuilding_FerryState0_Script)
-        case 1:goto(Ferrybuilding_FerryState0_Script)
-        case 2:goto(Ferrybuilding_FerryState1_Script)
+        default :goto(Ferrybuilding_FerryState0_Script)
     }
 }
 
@@ -55,17 +53,6 @@ script Ferrybuilding_FerryState0_Script {
 }
 }
 
-script Ferrybuilding_FerryState1_Script {
-    multichoicedefault(18,8,FERRYBUILDING_FERRY_DESTINATIONS_VER2,2,FALSE)
-    call(SlateportCity_Harbor_EventScript_BoardFerry)
-
-    switch (var(VAR_RESULT)){
-        case 0: warp(MAP_ALAMEDA,3,16)
-        case 1: warp(MAP_TREASUREISLAND,15,36)
-        case 2: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
-        case MULTI_B_PRESSED: goto(SlateportCity_Harbor_EventScript_CancelDestinationSelect)
-}
-}
 text gText_WhereWould {
     format("Where would you like to go?")
 }

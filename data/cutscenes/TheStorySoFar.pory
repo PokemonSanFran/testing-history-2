@@ -1,5 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ATTENDANT = 8
+const FLAG_HIDE_MALVA = FLAG_TEMP_2
 
 script TheStorySoFar_ExplainExhibit_Dialogue {
     lock

@@ -189,7 +189,7 @@ ExhibitionBattle_FalseCredits_Script::
 	msgbox ExhibitionBattle_FalseCredits_Script_Text_0, MSGBOX_AUTOCLOSE
 	release
 	closemessage
-	warpsilent MAP_PSFROUTE22, 2
+	warpsilent MAP_PSFROUTE22, 1
 	return
 
 

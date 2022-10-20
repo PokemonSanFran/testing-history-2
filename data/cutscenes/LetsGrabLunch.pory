@@ -59,7 +59,7 @@ script LetsGrabLunch_StartBattle_Script {
 }
 
 script LetsGrabLunch_PostBattle_Dialogue {
-        setvar(VAR_STORYLINE_STATE,STORY_POST_BATTLE_ARCHER_TREASUREISLAND)
+    setvar(VAR_STORYLINE_STATE,STORY_POST_BATTLE_ARCHER_TREASUREISLAND)
 
         setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
         callnative(DrawMugshot)
@@ -204,7 +204,7 @@ script LetsGrabLunch_Marin {
                 releaseall
                 end
         }else {
-            warpsilent(MAP_CHINATOWN,5,15)
+            warpsilent(MAP_MARIN,8,18)
         }
 }
 script LetsGrabLunch_Treasureisland {
@@ -225,7 +225,7 @@ script LetsGrabLunch_Treasureisland {
                 releaseall
                 end
         }else {
-            warpsilent(MAP_TREASUREISLAND,8,15)
+            warpsilent(MAP_TREASUREISLAND,3,15)
         }
 }
 script LetsGrabLunch_Haightashbury {
@@ -250,7 +250,7 @@ script LetsGrabLunch_Haightashbury {
                 releaseall
                 end
         }else {
-            warpsilent(MAP_HAIGHTASHBURY,9,27)
+            warpsilent(MAP_HAIGHTASHBURY,7,27)
         }
 }
 
@@ -271,7 +271,7 @@ script LetsGrabLunch_CheckRestorationProgress_Script{
 
 script LetsGrabLunch_IncrementCount_Script{
     addvar(VAR_TEMP_0,1)
-    return
+        return
 }
 
 script LetsGrabLunch_Debug_Script{
@@ -292,7 +292,7 @@ script LetsGrabLunch_Debug_Script{
 }
 
 script LetsGrabLunch_FastForwardFirstRestoration_Quest {
-        lock
+    lock
         call(LetsGrabLunch_Debug_Script)
         call(LetsGrabLunch_CheckRestorationProgress_Script)
         releaseall

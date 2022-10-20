@@ -67,7 +67,6 @@ WaitHeDidWhat_RivalsGoToMatch_Script::
 
 
 WaitHeDidWhat_CalledToSkybox_Script::
-	setvar VAR_STORYLINE_STATE, STORY_WATCH_SEMIFINAL
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
@@ -80,6 +79,7 @@ WaitHeDidWhat_CalledToSkybox_Script::
 	callnative ClearMugshot
 	playse SE_POKENAV_HANG_UP
 	waitse
+	setvar VAR_STORYLINE_STATE, STORY_WATCH_SEMIFINAL
 	release
 	end
 

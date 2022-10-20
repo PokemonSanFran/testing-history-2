@@ -1,5 +1,5 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
-const ORI = 15 
+const ORI = 12
 const FLAG_HIDE_ORI = FLAG_TEMP_6
 
 script MaybeIFuckedUp_ShowOri_Script{

@@ -20,13 +20,6 @@ script YouRealizeTheyreEvilRight_HideObject_Script {
     return
 }
 
-script YouRealizeTheyreEvilRight_ShowObject_Script {
-    if (var(VAR_ALCATRAZ_STATE) == ARCHER_SUMMONED_ALCATRAZ || var(VAR_ALCATRAZ_STATE) == POST_ARRIVE_ALCATRAZ){
-        addobject(11) //Show Archer at entrance
-    }
-    return
-}
-
 script YouRealizeTheyreEvilRight_HideGarbodor_Script {
     setflag(FLAG_HIDE_GARBODOR)
     return

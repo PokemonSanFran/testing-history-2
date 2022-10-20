@@ -49,7 +49,19 @@ Finals_StartSemifinals_Script::
 	closemessage
 	trainerbattle_no_intro TRAINER_HALLE, gText_GroupStages_Placeholder
 	setvar VAR_CHASECENTER_TOURNAMENT_STATE, PRE_BATTLE_5
-	call GroupStages_RoundRobinGroupComplete_Script
+	setvar VAR_STORYLINE_STATE, STORY_SEMIFINAL_COMPLETE
+	call Semifinal_Complete_Script
+	return
+
+
+Semifinal_Complete_Script::
+	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_WalkToCenterStage
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox gText_GroupStages_Placeholder
+	special DoDomeConfetti
+	playse SE_APPLAUSE
+	waitse
+	warpsilent MAP_CHASECENTER_LOCKERS, 255, 10, 3
 	return
 
 
