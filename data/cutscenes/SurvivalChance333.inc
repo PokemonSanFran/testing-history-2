@@ -187,7 +187,7 @@ SurvivalChance333_SetLava::
 
 SurvivalChance333_ExplainOperation::
 	lock
-	setvar VAR_ALAMEDA_STATE, 4
+	setvar VAR_ALAMEDA_STATE, POST_SURVIVAL_CHANCE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	msgbox gText_SurvivalChance333_SoThatsThePlan

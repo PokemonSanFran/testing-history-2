@@ -214,6 +214,7 @@ EnterPryce_StartBattle_Script::
 EnterPryce_PostBattle_Script::
 	lock
 	setflag FLAG_BADGE07_GET
+	setvar VAR_PRYCE_STATE, BATTLE_1_COMPLETE
 	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_GYM_7_STATE, GYM_DEFEATED_LEADER
 	msgbox gText_EnterPryce_BadgeGet

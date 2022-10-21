@@ -64,6 +64,7 @@
 enum { // Main
     DEBUG_MENU_ITEM_UTILITIES,
     DEBUG_MENU_ITEM_SCRIPTS,
+    DEBUG_MENU_ITEM_JUMP,
     DEBUG_MENU_ITEM_FLAGS,
     DEBUG_MENU_ITEM_VARS,
     DEBUG_MENU_ITEM_GIVE,
@@ -97,6 +98,97 @@ enum { // Scripts
     DEBUG_UTIL_MENU_ITEM_SCRIPT_8,
     DEBUG_UTIL_MENU_ITEM_SCRIPT_9,
     DEBUG_UTIL_MENU_ITEM_SCRIPT_10,
+};
+enum { //Jump Acts
+    DEBUG_JUMP_MENU_ITEM_ACT0,
+    DEBUG_JUMP_MENU_ITEM_ACT1,
+    DEBUG_JUMP_MENU_ITEM_ACT2,
+    DEBUG_JUMP_MENU_ITEM_ACT3,
+    DEBUG_JUMP_MENU_ITEM_ACT4,
+    DEBUG_JUMP_MENU_ITEM_ACT5F,
+    DEBUG_JUMP_MENU_ITEM_ACT5T,
+};
+enum { //Jump Cutscenes
+    DEBUG_JUMP_MENU_ITEM_SWAGBAG,
+    DEBUG_JUMP_MENU_ITEM_READYSETI,
+    DEBUG_JUMP_MENU_ITEM_ENTERFALKNER,
+    DEBUG_JUMP_MENU_ITEM_ENTERBUGSY,
+    DEBUG_JUMP_MENU_ITEM_ENTERWHITNEY,
+    DEBUG_JUMP_MENU_ITEM_NEWASSHOLEAPPEARS,
+    DEBUG_JUMP_MENU_ITEM_OLDASSHOLEAPPEARS,
+    DEBUG_JUMP_MENU_ITEM_GROUPOFASSHOLESAPPEARS,
+    DEBUG_JUMP_MENU_ITEM_FLYINGBLIND,
+    DEBUG_JUMP_MENU_ITEM_WOWYOURESTRONG,
+    DEBUG_JUMP_MENU_ITEM_THEGANGSALLHERE,
+    DEBUG_JUMP_MENU_ITEM_ALWAYSWATCHINGWAZOKWSKI,
+    DEBUG_JUMP_MENU_ITEM_ENTERARIANA,
+    DEBUG_JUMP_MENU_ITEM_HOWDOWEGETHOME,
+    DEBUG_JUMP_MENU_ITEM_AAANDWEREBACK,
+    DEBUG_JUMP_MENU_ITEM_ASSHOLESHOME,
+    DEBUG_JUMP_MENU_ITEM_HOUSINGPROTEST,
+    DEBUG_JUMP_MENU_ITEM_SWAGBAG2,
+    DEBUG_JUMP_MENU_ITEM_ENTERMORTY,
+    DEBUG_JUMP_MENU_ITEM_SORRYABOUTMYFRIENDS,
+    DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR,
+    DEBUG_JUMP_MENU_ITEM_YOUNGPADAWAN,
+    DEBUG_JUMP_MENU_ITEM_WAITYOUWENTWHERE,
+    DEBUG_JUMP_MENU_ITEM_ENTERCHUCK,
+    DEBUG_JUMP_MENU_ITEM_YOULOOKTIRED,
+    DEBUG_JUMP_MENU_ITEM_KOGASRAISONDETRE,
+    DEBUG_JUMP_MENU_ITEM_BEACHBATTLE,
+    DEBUG_JUMP_MENU_ITEM_ENTERJASMINE,
+    DEBUG_JUMP_MENU_ITEM_ANEWSTRIKE,
+    DEBUG_JUMP_MENU_ITEM_ANDWEMARCHON,
+    DEBUG_JUMP_MENU_ITEM_ENTERPRYCE,
+    DEBUG_JUMP_MENU_ITEM_BATTLE8,
+    DEBUG_JUMP_MENU_ITEM_ENTERCLAIR,
+    DEBUG_JUMP_MENU_ITEM_THESTRIKESTRIKESBACK,
+    DEBUG_JUMP_MENU_ITEM_VSGARBODOR,
+    DEBUG_JUMP_MENU_ITEM_UNKNOWNALCATRAZCUTSCENE,
+    DEBUG_JUMP_MENU_ITEM_OFFYOUGO,
+    DEBUG_JUMP_MENU_ITEM_IGUESSWESHOULDBENICENOW,
+    DEBUG_JUMP_MENU_ITEM_ENTERTHEMASTER,
+    DEBUG_JUMP_MENU_ITEM_HAVEYOUSEENTHENEWS,
+    DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEWARROOM,
+    DEBUG_JUMP_MENU_ITEM_SURVIVALCHANCE333,
+    DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEM,
+    DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEMSLEEP,
+    DEBUG_JUMP_MENU_ITEM_HERESHOWTHISISGOINGTOGO,
+    DEBUG_JUMP_MENU_ITEM_WHYDIDNTYOURATMEOUT,
+    DEBUG_JUMP_MENU_ITEM_GROUPSTAGES,
+    DEBUG_JUMP_MENU_ITEM_FINALS,
+    DEBUG_JUMP_MENU_ITEM_WAITHEDIDWHAT,
+    DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEHALLOFFAME,
+    DEBUG_JUMP_MENU_ITEM_BEINGCHAMPIONISHARD,
+    DEBUG_JUMP_MENU_ITEM_LETSGRABLUNCH,
+    DEBUG_JUMP_MENU_ITEM_RESTORECHINATOWN,
+    DEBUG_JUMP_MENU_ITEM_RESTORETREASUREISLAND,
+    DEBUG_JUMP_MENU_ITEM_RESTOREMAIN,
+    DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY,
+    DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT,
+    DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT,
+    DEBUG_JUMP_MENU_ITEM_CONGRATSYOUREANASSHOLE,
+    DEBUG_JUMP_MENU_ITEM_YOUHAVEYOURORDERS,
+    DEBUG_JUMP_MENU_ITEM_HOWDISAPPOINTING,
+    DEBUG_JUMP_MENU_ITEM_LETSBURNTHISMOTHERDOWN,
+    DEBUG_JUMP_MENU_ITEM_MANHUNT,
+    DEBUG_JUMP_MENU_ITEM_EXHIBITIONBATTLE,
+    DEBUG_JUMP_MENU_ITEM_MAYBEIFUCKEDUP,
+    DEBUG_JUMP_MENU_ITEM_OKAYLETSFIXIT,
+    DEBUG_JUMP_MENU_ITEM_LETSGETTHEBANDBACKTOGETHER,
+    DEBUG_JUMP_MENU_ITEM_MASKOFF,
+    DEBUG_JUMP_MENU_ITEM_LETSFIXTHIS,
+    DEBUG_JUMP_MENU_ITEM_LOCKEDOUT,
+    DEBUG_JUMP_MENU_ITEM_WAREHOUSERAVE,
+    DEBUG_JUMP_MENU_ITEM_SPEECHSPEECHSPEECH,
+    DEBUG_JUMP_MENU_ITEM_ONEDOWN,
+    DEBUG_JUMP_MENU_ITEM_EARTHQUAKE,
+    DEBUG_JUMP_MENU_ITEM_THISISNTRANDOM,
+    DEBUG_JUMP_MENU_ITEM_WAITEVENTHEN,
+    DEBUG_JUMP_MENU_ITEM_LETSFINISHTHIS,
+    DEBUG_JUMP_MENU_ITEM_IMIN,
+    DEBUG_JUMP_MENU_ITEM_YOUCANTSTOPME,
+    DEBUG_JUMP_MENU_ITEM_WECANSTOPYOUACTUALLY,
 };
 enum { // Flags
     DEBUG_FLAG_MENU_ITEM_FLAGS,
@@ -199,6 +291,7 @@ static void DebugAction_Util_Script_10(u8 taskId);
 
 static void DebugAction_OpenUtilitiesMenu(u8 taskId);
 static void DebugAction_OpenScriptsMenu(u8 taskId);
+static void DebugAction_OpenJumpMenu(u8 taskId);
 static void DebugAction_OpenFlagsMenu(u8 taskId);
 static void DebugAction_OpenVariablesMenu(u8 taskId);
 static void DebugAction_OpenGiveMenu(u8 taskId);
@@ -228,6 +321,9 @@ static void DebugAction_Util_WatchCredits(u8 taskId);
 static void DebugAction_Util_Trainer_Name(u8 taskId);
 static void DebugAction_Util_Trainer_Gender(u8 taskId);
 static void DebugAction_Util_Trainer_Id(u8 taskId);
+
+static void DebugAction_Jump_ActSelect(u8 taskId);
+static void DebugAction_Jump_CutsceneSelect(u8 taskId);
 
 static void DebugAction_Flags_Flags(u8 taskId);
 static void DebugAction_Flags_FlagsSelect(u8 taskId);
@@ -302,6 +398,7 @@ extern u8 PlayersHouse_2F_EventScript_CheckWallClock[];
 // Main Menu
 static const u8 gDebugText_Utilities[] = _("Utilities");
 static const u8 gDebugText_Scripts[] =   _("Scripts");
+static const u8 gDebugText_Jump[] = _("Jump");
 static const u8 gDebugText_Flags[] =     _("Flags");
 static const u8 gDebugText_Vars[] =      _("Variables");
 static const u8 gDebugText_Give[] =      _("Give X");
@@ -337,6 +434,98 @@ static const u8 gDebugText_Util_WatchCredits[] =             _("Watch Credits");
 static const u8 gDebugText_Util_Trainer_Name[] =             _("Trainer name");
 static const u8 gDebugText_Util_Trainer_Gender[] =           _("Toggle T. Gender");
 static const u8 gDebugText_Util_Trainer_Id[] =               _("New Trainer Id");
+
+//Jump Act Menu
+static const u8 gDebugText_Jump_Act0[] = _("Act 0");
+static const u8 gDebugText_Jump_Act1[] = _("Act 1");
+static const u8 gDebugText_Jump_Act2[] = _("Act 2");
+static const u8 gDebugText_Jump_Act3[] = _("Act 3");
+static const u8 gDebugText_Jump_Act4[] = _("Act 4");
+static const u8 gDebugText_Jump_Act5F[] = _("Act 5 False");
+static const u8 gDebugText_Jump_Act5T[] = _("Act 5 True");
+
+//Jump Cutscene Menu
+static const u8 gDebugText_Jump_swagbag[] = _("#swagbag");
+static const u8 gDebugText_Jump_ReadySetI[] = ("Ready, Set, I Started 2 Hours Ago");
+static const u8 gDebugText_Jump_EnterFalkner[] = _("Enter Falkner");
+static const u8 gDebugText_Jump_EnterBugsy[] = _("Enter Bugsy");
+static const u8 gDebugText_Jump_EnterWhitney[] = _("Enter Whitney");
+static const u8 gDebugText_Jump_NewAssholeAppears[] = _("New Asshole Appears");
+static const u8 gDebugText_Jump_OldAssholeAppears[] = _("Old Asshole Appears");
+static const u8 gDebugText_Jump_GroupofAssholesAppears[] = ("Group of Assholes Appears");
+static const u8 gDebugText_Jump_FlyingBlind[] = _("Flying Blind");
+static const u8 gDebugText_Jump_WowYoureStrong[] = _("Wow, You're Strong");
+static const u8 gDebugText_Jump_TheGangsAllHere[] = _("The Gang's All Here");
+static const u8 gDebugText_Jump_AlwaysWatchingWazokwski[] = ("Always Watching, Wazokwski");
+static const u8 gDebugText_Jump_EnterAriana[] = _("Enter Ariana");
+static const u8 gDebugText_Jump_HowDoWeGetHome[] = _("How Do We Get Home?");
+static const u8 gDebugText_Jump_AaandWereBack[] = _("Aaand We're Back!");
+static const u8 gDebugText_Jump_AssholesHome[] = _("Asshole's Home");
+static const u8 gDebugText_Jump_HousingProtest[] = _("Housing Protest");
+static const u8 gDebugText_Jump_swagbag2[] = _("#swagbag2");
+static const u8 gDebugText_Jump_EnterMorty[] = _("Enter Morty");
+static const u8 gDebugText_Jump_SorryAboutMyFriends[] = ("Sorry About My Friends");
+static const u8 gDebugText_Jump_TheStorySoFar[] = _("The Story So Far");
+static const u8 gDebugText_Jump_YoungPadawan[] = _("Young Padawan");
+static const u8 gDebugText_Jump_WaitYouWentWhere[] = ("Wait, You Went Where?");
+static const u8 gDebugText_Jump_EnterChuck[] = _("Enter Chuck");
+static const u8 gDebugText_Jump_YouLookTired[] = _("You Look Tired");
+static const u8 gDebugText_Jump_Kogasraisondetre[] = ("Koga's raison d'etre.");
+static const u8 gDebugText_Jump_BeachBattle[] = _("Beach Battle");
+static const u8 gDebugText_Jump_EnterJasmine[] = _("Enter Jasmine");
+static const u8 gDebugText_Jump_ANewStrike[] = _("A New Strike");
+static const u8 gDebugText_Jump_AndWeMarchOn[] = _("And We March On");
+static const u8 gDebugText_Jump_EnterPryce[] = _("Enter Pryce");
+static const u8 gDebugText_Jump_Battle8[] = _("Battle #8");
+static const u8 gDebugText_Jump_EnterClair[] = _("Enter Clair");
+static const u8 gDebugText_Jump_TheStrikeStrikesBack[] = ("The Strike Strikes Back");
+static const u8 gDebugText_Jump_VSGarbodor[] = _("VS Garbodor");
+static const u8 gDebugText_Jump_UnknownAlcatrazCutscene[] = ("Unknown Alcatraz Cutscene");
+static const u8 gDebugText_Jump_OffYouGo[] = _("Off You Go!");
+static const u8 gDebugText_Jump_IGuessWeShouldBeNiceNow[] = ("I Guess We Should Be Nice Now");
+static const u8 gDebugText_Jump_EntertheMaster[] = _("Enter the Master");
+static const u8 gDebugText_Jump_HaveYouSeenTheNews[] = ("Have You Seen The News?");
+static const u8 gDebugText_Jump_WelcometotheWarRoom[] = _("Welcome to the War Room.");
+static const u8 gDebugText_Jump_SurvivalChance333[] = _("Survival Chance = 33.3%");
+static const u8 gDebugText_Jump_WhyAreYouHelpingThem[] = _("Why Are You Helping Them?");
+static const u8 gDebugText_Jump_WhyAreYouHelpingThemSleep[] = _("Why Are You Helping Sleep");
+static const u8 gDebugText_Jump_HeresHowThisIsGoingToGo[] = _("Here's How This Is Going To Go....");
+static const u8 gDebugText_Jump_WhyDidntYouRatMeOut[] = ("Why Didn't You Rat Me Out?");
+static const u8 gDebugText_Jump_GroupStages[] = _("Group Stages");
+static const u8 gDebugText_Jump_Finals[] = _("Finals");
+static const u8 gDebugText_Jump_WaitHeDidWhat[] = _("Wait He Did What?");
+static const u8 gDebugText_Jump_WelcometotheHallofFame[] = ("Welcome to the Hall of Fame.");
+static const u8 gDebugText_Jump_BeingChampionisHard[] = _("Being Champion is Hard!");
+static const u8 gDebugText_Jump_LetsGrabLunch[] = _("Let's Grab Lunch.");
+static const u8 gDebugText_Jump_RestoreChinatown[] = _("Restore Chinatown");
+static const u8 gDebugText_Jump_RestoreTreasureIsland[] = ("Restore Treasure Island");
+static const u8 gDebugText_Jump_RestoreMain[] = _("Restore Main");
+static const u8 gDebugText_Jump_RestoreHaightAshbury[] = ("Restore Haight-Ashbury");
+static const u8 gDebugText_Jump_YouRealizeWereEvilRight[] = _("You Realize We're Evil, Right?");
+static const u8 gDebugText_Jump_YouRealizeTheyreEvilRight[] = _("You Realize They're Evil, Right?");
+static const u8 gDebugText_Jump_CongratsYoureanAsshole[] = ("Congrats, You're an Asshole.");
+static const u8 gDebugText_Jump_YouHaveYourOrders[] = _("You Have Your Orders.");
+static const u8 gDebugText_Jump_HowDisappointing[] = _("How Disappointing.");
+static const u8 gDebugText_Jump_LetsBurnThisMotherDown[] = ("Let's Burn This Mother Down.");
+static const u8 gDebugText_Jump_Manhunt[] = _("Manhunt.");
+static const u8 gDebugText_Jump_ExhibitionBattle[] = _("Exhibition Battle!");
+static const u8 gDebugText_Jump_MaybeIFuckedUp[] = _("Maybe I Fucked Up.");
+static const u8 gDebugText_Jump_OkayLetsFixit[] = _("Okay, Let's Fix it.");
+static const u8 gDebugText_Jump_LetsGettheBandBackTogether[] = ("Let's Get the Band Back Together.");
+static const u8 gDebugText_Jump_MaskOff[] = _("Mask Off!");
+static const u8 gDebugText_Jump_LetsFixThis[] = _("Let's Fix This!");
+static const u8 gDebugText_Jump_LockedOut[] = _("Locked Out");
+static const u8 gDebugText_Jump_WarehouseRave[] = _("Warehouse Rave!");
+static const u8 gDebugText_Jump_SpeechSpeechSpeech[] = ("Speech! Speech! Speech!");
+static const u8 gDebugText_Jump_OneDown[] = _("One Down...");
+static const u8 gDebugText_Jump_Earthquake[] = _("Earthquake!");
+static const u8 gDebugText_Jump_ThisIsntRandom[] = _("This Isn't Random...");
+static const u8 gDebugText_Jump_WaitEvenThen[] = _("Wait, Even Then?");
+static const u8 gDebugText_Jump_LetsFinishThis[] = _("Let's Finish This.");
+static const u8 gDebugText_Jump_ImIn[] = _("I'm In.");
+static const u8 gDebugText_Jump_YouCantStopMe[] = _("You Can't Stop Me!");
+static const u8 gDebugText_Jump_WeCanStopYouActually[] = _("We Can Stop You, Actually.");
+
 // Flags Menu
 static const u8 gDebugText_Flags_Flags[] =              _("Set Flag XXXX");
 static const u8 gDebugText_Flags_SetPokedexFlags[] =    _("All Pokédex Flags");
@@ -436,6 +625,7 @@ static const struct ListMenuItem sDebugMenu_Items_Main[] =
 {
     [DEBUG_MENU_ITEM_UTILITIES] = {gDebugText_Utilities, DEBUG_MENU_ITEM_UTILITIES},
     [DEBUG_MENU_ITEM_SCRIPTS]   = {gDebugText_Scripts,   DEBUG_MENU_ITEM_SCRIPTS},
+    [DEBUG_MENU_ITEM_JUMP]      = {gDebugText_Jump,     DEBUG_MENU_ITEM_JUMP,
     [DEBUG_MENU_ITEM_FLAGS]     = {gDebugText_Flags,     DEBUG_MENU_ITEM_FLAGS},
     [DEBUG_MENU_ITEM_VARS]      = {gDebugText_Vars,      DEBUG_MENU_ITEM_VARS},
     [DEBUG_MENU_ITEM_GIVE]      = {gDebugText_Give,      DEBUG_MENU_ITEM_GIVE},
@@ -471,6 +661,9 @@ static const struct ListMenuItem sDebugMenu_Items_Scripts[] =
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_8] = {gDebugText_Util_Script_8, DEBUG_UTIL_MENU_ITEM_SCRIPT_8},
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_9]     = {gDebugText_Util_Script_9,    DEBUG_UTIL_MENU_ITEM_SCRIPT_9},
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_10]     = {gDebugText_Util_Script_10,    DEBUG_UTIL_MENU_ITEM_SCRIPT_10},
+};
+static const struct ListMenuItem sDebugMenu_Items_JumpActs[] =
+{
 };
 static const struct ListMenuItem sDebugMenu_Items_Flags[] =
 {

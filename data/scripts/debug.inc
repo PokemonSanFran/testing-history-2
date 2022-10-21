@@ -60,7 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	call EnterMorty_Storywarp_Script
+	call TheStrikeStrikesBack_Storywarp_Script
 	return
 
 

@@ -264,7 +264,7 @@ const u8 *GetQuestDesc_PlayersAdventure()
 	}
 
 	else if (storyline == STORY_DEFEAT_MORTY
-	            && (CheckBagHasItem(ITEM_SS_TICKET, 1)))
+	            && (CheckBagHasItem(ITEM_MYSTIC_TICKET, 1)))
 	{
 		return gText_PlayersAdventure_Flavor5;
 	}

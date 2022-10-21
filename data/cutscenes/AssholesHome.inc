@@ -65,6 +65,7 @@ AssholesHome_StartBattle_Script::
 
 AssholesHome_PostBattle_Dialogue::
 	lockall
+	setvar VAR_STORYLINE_STATE, STORY_DEFEAT_ARCHER_ALAMEDA
 	setvar VAR_ALAMEDA_STATE, DEFEATED_ARCHER_ALAMEDA
 	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
@@ -84,7 +85,6 @@ AssholesHome_PostBattle_Dialogue_1:
 	waitmovement 0
 	fadedefaultbgm
 	removeobject 3
-	addvar VAR_STORYLINE_STATE, 1
 	release
 	end
 

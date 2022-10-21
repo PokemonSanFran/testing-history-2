@@ -191,7 +191,7 @@ script SurvivalChance333_SetLava {
 
 script SurvivalChance333_ExplainOperation {
     lock
-setvar(VAR_ALAMEDA_STATE,4)
+setvar(VAR_ALAMEDA_STATE,POST_SURVIVAL_CHANCE)
 applymovement(PLAYER,Common_Movement_FaceUp)
 waitmovement(0)
 

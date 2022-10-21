@@ -221,7 +221,7 @@ HousingProtest_StartBattle_PostSave_Script::
 
 HousingProtest_PostBattle_Dialogue::
 	lockall
-	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_STORYLINE_STATE, STORY_DEFEAT_BERKELEY_PROTEST
 	setobjectnewmovementtype 4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectnewmovementtype 6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
 	playse SE_BALL_OPEN

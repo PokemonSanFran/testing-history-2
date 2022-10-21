@@ -330,7 +330,7 @@ KogaRaisonDetre_NewsStory_Script::
 	removeobject 3
 	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_KOGA_RAISON_DETRE_STATE, POST_KOGA_RAISON_DETRE
-	setvar VAR_KOGA_MANSION_STATE, 1
+	setvar VAR_KOGA_MANSION_STATE, FINISHED_KOGA_RAISON
 	release
 	end
 
