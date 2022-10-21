@@ -61,6 +61,8 @@ EnterMorty_MortyDefeated_Script::
 	setflag FLAG_CONSTRUCTION_BREAKING_NEWS
 	setvar VAR_GYM_4_STATE, GYM_DEFEATED_LEADER
 	setvar VAR_BERKELEY_STATE, DEFEATED_MORTY
+	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_MORTY_STATE, BATTLE_1_COMPLETE
 	setvar VAR_MUGSHOT, MUGSHOT_MORTY
 	callnative DrawMugshot
 	msgbox gText_EnterMorty_ThatBattleWasHype, MSGBOX_NPC
@@ -69,7 +71,6 @@ EnterMorty_MortyDefeated_Script::
 	giveitem ITEM_TM17
 	closemessage
 	callnative ClearMugshot
-	addvar VAR_STORYLINE_STATE, 1
 	release
 	end
 

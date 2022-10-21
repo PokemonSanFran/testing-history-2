@@ -68,6 +68,7 @@ script EnterFalkner_FalknerDefeated_Script {
   lockall
   setflag(FLAG_BADGE01_GET)
   setvar(VAR_GYM_1_STATE,GYM_DEFEATED_LEADER)
+  setvar(VAR_FALKNER_STATE,BATTLE_1_COMPLETE)
   setvar(VAR_MUGSHOT, MUGSHOT_FALKNER)
   callnative(DrawMugshot)
   msgbox(gText_EnterFalkner_ThatWasDelicious)

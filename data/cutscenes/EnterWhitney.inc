@@ -68,6 +68,7 @@ EnterWhitney_Defeated_Script::
 	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, DEFEATED_WHITNEY
 	setvar VAR_GYM_3_STATE, GYM_DEFEATED_LEADER
 	addvar VAR_STORYLINE_STATE, 1
+	setvar VAR_WHITNEY_STATE, BATTLE_1_COMPLETE
 	setvar VAR_MUGSHOT, MUGSHOT_WHITNEY
 	msgbox gText_EnterWhitney_WowIllReallyNeed
 	closemessage
