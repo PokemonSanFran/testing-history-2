@@ -39,6 +39,7 @@
 #include "pokemon.h"
 #include "pokemon_icon.h"
 #include "pokemon_storage_system.h"
+#include "quests.h"
 #include "random.h"
 #include "region_map.h"
 #include "script.h"
@@ -46,6 +47,7 @@
 #include "sound.h"
 #include "strings.h"
 #include "string_util.h"
+#include "story_jump.h"
 #include "task.h"
 #include "pokemon_summary_screen.h"
 #include "constants/abilities.h"
@@ -291,7 +293,7 @@ static void DebugAction_Util_Script_10(u8 taskId);
 
 static void DebugAction_OpenUtilitiesMenu(u8 taskId);
 static void DebugAction_OpenScriptsMenu(u8 taskId);
-static void DebugAction_OpenJumpMenu(u8 taskId);
+static void DebugAction_OpenJumpActsMenu(u8 taskId);
 static void DebugAction_OpenFlagsMenu(u8 taskId);
 static void DebugAction_OpenVariablesMenu(u8 taskId);
 static void DebugAction_OpenGiveMenu(u8 taskId);
@@ -299,6 +301,7 @@ static void DebugAction_OpenSoundMenu(u8 taskId);
 static void DebugTask_HandleMenuInput_Main(u8 taskId);
 static void DebugTask_HandleMenuInput_Utilities(u8 taskId);
 static void DebugTask_HandleMenuInput_Scripts(u8 taskId);
+static void DebugTask_HandleMenuInput_Jump(u8 taskId);
 static void DebugTask_HandleMenuInput_Flags(u8 taskId);
 static void DebugTask_HandleMenuInput_Vars(u8 taskId);
 static void DebugTask_HandleMenuInput_Give(u8 taskId);
@@ -322,8 +325,14 @@ static void DebugAction_Util_Trainer_Name(u8 taskId);
 static void DebugAction_Util_Trainer_Gender(u8 taskId);
 static void DebugAction_Util_Trainer_Id(u8 taskId);
 
-static void DebugAction_Jump_ActSelect(u8 taskId);
-static void DebugAction_Jump_CutsceneSelect(u8 taskId);
+static void DebugAction_OpenJumpAct0Menu(u8 taskId);
+static void DebugAction_OpenJumpAct1Menu(u8 taskId);
+static void DebugAction_OpenJumpAct2Menu(u8 taskId);
+static void DebugAction_OpenJumpAct3Menu(u8 taskId);
+static void DebugAction_OpenJumpAct4Menu(u8 taskId);
+static void DebugAction_OpenJumpAct5FMenu(u8 taskId);
+static void DebugAction_OpenJumpAct5TMenu(u8 taskId);
+static void DebugAction_Jump_JumpPlayerToStoryPoint(u8 taskId);
 
 static void DebugAction_Flags_Flags(u8 taskId);
 static void DebugAction_Flags_FlagsSelect(u8 taskId);
@@ -398,7 +407,7 @@ extern u8 PlayersHouse_2F_EventScript_CheckWallClock[];
 // Main Menu
 static const u8 gDebugText_Utilities[] = _("Utilities");
 static const u8 gDebugText_Scripts[] =   _("Scripts");
-static const u8 gDebugText_Jump[] = _("Jump");
+static const u8 gDebugText_StoryJump[] = _("Story Jump");
 static const u8 gDebugText_Flags[] =     _("Flags");
 static const u8 gDebugText_Vars[] =      _("Variables");
 static const u8 gDebugText_Give[] =      _("Give X");
@@ -445,78 +454,78 @@ static const u8 gDebugText_Jump_Act5F[] = _("Act 5 False");
 static const u8 gDebugText_Jump_Act5T[] = _("Act 5 True");
 
 //Jump Cutscene Menu
-static const u8 gDebugText_Jump_swagbag[] = _("#swagbag");
-static const u8 gDebugText_Jump_ReadySetI[] = ("Ready, Set, I Started 2 Hours Ago");
+static const u8 gDebugText_Jump_swagbag[] = _("swagbag");
+static const u8 gDebugText_Jump_ReadySetI[] = _("Ready, Set, I Started 2 Hours Ago");
 static const u8 gDebugText_Jump_EnterFalkner[] = _("Enter Falkner");
 static const u8 gDebugText_Jump_EnterBugsy[] = _("Enter Bugsy");
 static const u8 gDebugText_Jump_EnterWhitney[] = _("Enter Whitney");
 static const u8 gDebugText_Jump_NewAssholeAppears[] = _("New Asshole Appears");
 static const u8 gDebugText_Jump_OldAssholeAppears[] = _("Old Asshole Appears");
-static const u8 gDebugText_Jump_GroupofAssholesAppears[] = ("Group of Assholes Appears");
+static const u8 gDebugText_Jump_GroupofAssholesAppears[] = _("Group of Assholes Appears");
 static const u8 gDebugText_Jump_FlyingBlind[] = _("Flying Blind");
 static const u8 gDebugText_Jump_WowYoureStrong[] = _("Wow, You're Strong");
 static const u8 gDebugText_Jump_TheGangsAllHere[] = _("The Gang's All Here");
-static const u8 gDebugText_Jump_AlwaysWatchingWazokwski[] = ("Always Watching, Wazokwski");
+static const u8 gDebugText_Jump_AlwaysWatchingWazokwski[] = _("Always Watching, Wazokwski");
 static const u8 gDebugText_Jump_EnterAriana[] = _("Enter Ariana");
 static const u8 gDebugText_Jump_HowDoWeGetHome[] = _("How Do We Get Home?");
 static const u8 gDebugText_Jump_AaandWereBack[] = _("Aaand We're Back!");
 static const u8 gDebugText_Jump_AssholesHome[] = _("Asshole's Home");
 static const u8 gDebugText_Jump_HousingProtest[] = _("Housing Protest");
-static const u8 gDebugText_Jump_swagbag2[] = _("#swagbag2");
+static const u8 gDebugText_Jump_swagbag2[] = _("swagbag2");
 static const u8 gDebugText_Jump_EnterMorty[] = _("Enter Morty");
-static const u8 gDebugText_Jump_SorryAboutMyFriends[] = ("Sorry About My Friends");
+static const u8 gDebugText_Jump_SorryAboutMyFriends[] = _("Sorry About My Friends");
 static const u8 gDebugText_Jump_TheStorySoFar[] = _("The Story So Far");
 static const u8 gDebugText_Jump_YoungPadawan[] = _("Young Padawan");
-static const u8 gDebugText_Jump_WaitYouWentWhere[] = ("Wait, You Went Where?");
+static const u8 gDebugText_Jump_WaitYouWentWhere[] = _("Wait, You Went Where?");
 static const u8 gDebugText_Jump_EnterChuck[] = _("Enter Chuck");
 static const u8 gDebugText_Jump_YouLookTired[] = _("You Look Tired");
-static const u8 gDebugText_Jump_Kogasraisondetre[] = ("Koga's raison d'etre.");
+static const u8 gDebugText_Jump_Kogasraisondetre[] = _("Koga's raison d'etre.");
 static const u8 gDebugText_Jump_BeachBattle[] = _("Beach Battle");
 static const u8 gDebugText_Jump_EnterJasmine[] = _("Enter Jasmine");
 static const u8 gDebugText_Jump_ANewStrike[] = _("A New Strike");
 static const u8 gDebugText_Jump_AndWeMarchOn[] = _("And We March On");
 static const u8 gDebugText_Jump_EnterPryce[] = _("Enter Pryce");
-static const u8 gDebugText_Jump_Battle8[] = _("Battle #8");
+static const u8 gDebugText_Jump_Battle8[] = _("Battle 8");
 static const u8 gDebugText_Jump_EnterClair[] = _("Enter Clair");
-static const u8 gDebugText_Jump_TheStrikeStrikesBack[] = ("The Strike Strikes Back");
+static const u8 gDebugText_Jump_TheStrikeStrikesBack[] = _("The Strike Strikes Back");
 static const u8 gDebugText_Jump_VSGarbodor[] = _("VS Garbodor");
-static const u8 gDebugText_Jump_UnknownAlcatrazCutscene[] = ("Unknown Alcatraz Cutscene");
+static const u8 gDebugText_Jump_UnknownAlcatrazCutscene[] = _("Unknown Alcatraz Cutscene");
 static const u8 gDebugText_Jump_OffYouGo[] = _("Off You Go!");
-static const u8 gDebugText_Jump_IGuessWeShouldBeNiceNow[] = ("I Guess We Should Be Nice Now");
+static const u8 gDebugText_Jump_IGuessWeShouldBeNiceNow[] = _("I Guess We Should Be Nice Now");
 static const u8 gDebugText_Jump_EntertheMaster[] = _("Enter the Master");
-static const u8 gDebugText_Jump_HaveYouSeenTheNews[] = ("Have You Seen The News?");
+static const u8 gDebugText_Jump_HaveYouSeenTheNews[] = _("Have You Seen The News?");
 static const u8 gDebugText_Jump_WelcometotheWarRoom[] = _("Welcome to the War Room.");
 static const u8 gDebugText_Jump_SurvivalChance333[] = _("Survival Chance = 33.3%");
 static const u8 gDebugText_Jump_WhyAreYouHelpingThem[] = _("Why Are You Helping Them?");
 static const u8 gDebugText_Jump_WhyAreYouHelpingThemSleep[] = _("Why Are You Helping Sleep");
 static const u8 gDebugText_Jump_HeresHowThisIsGoingToGo[] = _("Here's How This Is Going To Go....");
-static const u8 gDebugText_Jump_WhyDidntYouRatMeOut[] = ("Why Didn't You Rat Me Out?");
+static const u8 gDebugText_Jump_WhyDidntYouRatMeOut[] = _("Why Didn't You Rat Me Out?");
 static const u8 gDebugText_Jump_GroupStages[] = _("Group Stages");
 static const u8 gDebugText_Jump_Finals[] = _("Finals");
 static const u8 gDebugText_Jump_WaitHeDidWhat[] = _("Wait He Did What?");
-static const u8 gDebugText_Jump_WelcometotheHallofFame[] = ("Welcome to the Hall of Fame.");
+static const u8 gDebugText_Jump_WelcometotheHallofFame[] = _("Welcome to the Hall of Fame.");
 static const u8 gDebugText_Jump_BeingChampionisHard[] = _("Being Champion is Hard!");
 static const u8 gDebugText_Jump_LetsGrabLunch[] = _("Let's Grab Lunch.");
 static const u8 gDebugText_Jump_RestoreChinatown[] = _("Restore Chinatown");
-static const u8 gDebugText_Jump_RestoreTreasureIsland[] = ("Restore Treasure Island");
+static const u8 gDebugText_Jump_RestoreTreasureIsland[] = _("Restore Treasure Island");
 static const u8 gDebugText_Jump_RestoreMain[] = _("Restore Main");
-static const u8 gDebugText_Jump_RestoreHaightAshbury[] = ("Restore Haight-Ashbury");
+static const u8 gDebugText_Jump_RestoreHaightAshbury[] = _("Restore Haight-Ashbury");
 static const u8 gDebugText_Jump_YouRealizeWereEvilRight[] = _("You Realize We're Evil, Right?");
 static const u8 gDebugText_Jump_YouRealizeTheyreEvilRight[] = _("You Realize They're Evil, Right?");
-static const u8 gDebugText_Jump_CongratsYoureanAsshole[] = ("Congrats, You're an Asshole.");
+static const u8 gDebugText_Jump_CongratsYoureanAsshole[] = _("Congrats, You're an Asshole.");
 static const u8 gDebugText_Jump_YouHaveYourOrders[] = _("You Have Your Orders.");
 static const u8 gDebugText_Jump_HowDisappointing[] = _("How Disappointing.");
-static const u8 gDebugText_Jump_LetsBurnThisMotherDown[] = ("Let's Burn This Mother Down.");
+static const u8 gDebugText_Jump_LetsBurnThisMotherDown[] = _("Let's Burn This Mother Down.");
 static const u8 gDebugText_Jump_Manhunt[] = _("Manhunt.");
 static const u8 gDebugText_Jump_ExhibitionBattle[] = _("Exhibition Battle!");
 static const u8 gDebugText_Jump_MaybeIFuckedUp[] = _("Maybe I Fucked Up.");
 static const u8 gDebugText_Jump_OkayLetsFixit[] = _("Okay, Let's Fix it.");
-static const u8 gDebugText_Jump_LetsGettheBandBackTogether[] = ("Let's Get the Band Back Together.");
+static const u8 gDebugText_Jump_LetsGettheBandBackTogether[] = _("Let's Get the Band Back Together.");
 static const u8 gDebugText_Jump_MaskOff[] = _("Mask Off!");
 static const u8 gDebugText_Jump_LetsFixThis[] = _("Let's Fix This!");
 static const u8 gDebugText_Jump_LockedOut[] = _("Locked Out");
 static const u8 gDebugText_Jump_WarehouseRave[] = _("Warehouse Rave!");
-static const u8 gDebugText_Jump_SpeechSpeechSpeech[] = ("Speech! Speech! Speech!");
+static const u8 gDebugText_Jump_SpeechSpeechSpeech[] = _("Speech! Speech! Speech!");
 static const u8 gDebugText_Jump_OneDown[] = _("One Down...");
 static const u8 gDebugText_Jump_Earthquake[] = _("Earthquake!");
 static const u8 gDebugText_Jump_ThisIsntRandom[] = _("This Isn't Random...");
@@ -625,7 +634,7 @@ static const struct ListMenuItem sDebugMenu_Items_Main[] =
 {
     [DEBUG_MENU_ITEM_UTILITIES] = {gDebugText_Utilities, DEBUG_MENU_ITEM_UTILITIES},
     [DEBUG_MENU_ITEM_SCRIPTS]   = {gDebugText_Scripts,   DEBUG_MENU_ITEM_SCRIPTS},
-    [DEBUG_MENU_ITEM_JUMP]      = {gDebugText_Jump,     DEBUG_MENU_ITEM_JUMP,
+    [DEBUG_MENU_ITEM_JUMP]      = {gDebugText_StoryJump,     DEBUG_MENU_ITEM_JUMP},
     [DEBUG_MENU_ITEM_FLAGS]     = {gDebugText_Flags,     DEBUG_MENU_ITEM_FLAGS},
     [DEBUG_MENU_ITEM_VARS]      = {gDebugText_Vars,      DEBUG_MENU_ITEM_VARS},
     [DEBUG_MENU_ITEM_GIVE]      = {gDebugText_Give,      DEBUG_MENU_ITEM_GIVE},
@@ -664,7 +673,116 @@ static const struct ListMenuItem sDebugMenu_Items_Scripts[] =
 };
 static const struct ListMenuItem sDebugMenu_Items_JumpActs[] =
 {
+    [DEBUG_JUMP_MENU_ITEM_ACT0] = {gDebugText_Jump_Act0, DEBUG_JUMP_MENU_ITEM_ACT0},
+    [DEBUG_JUMP_MENU_ITEM_ACT1] = {gDebugText_Jump_Act1, DEBUG_JUMP_MENU_ITEM_ACT1},
+    [DEBUG_JUMP_MENU_ITEM_ACT2] = {gDebugText_Jump_Act2, DEBUG_JUMP_MENU_ITEM_ACT2},
+    [DEBUG_JUMP_MENU_ITEM_ACT3] = {gDebugText_Jump_Act3, DEBUG_JUMP_MENU_ITEM_ACT3},
+    [DEBUG_JUMP_MENU_ITEM_ACT4] = {gDebugText_Jump_Act4, DEBUG_JUMP_MENU_ITEM_ACT4},
+    [DEBUG_JUMP_MENU_ITEM_ACT5F] = {gDebugText_Jump_Act5F, DEBUG_JUMP_MENU_ITEM_ACT5F},
+    [DEBUG_JUMP_MENU_ITEM_ACT5T] = {gDebugText_Jump_Act5T, DEBUG_JUMP_MENU_ITEM_ACT5T},
 };
+static const struct ListMenuItem sDebugMenu_Items_JumpAct0[] =
+{
+    [0] = {gDebugText_Jump_swagbag,DEBUG_JUMP_MENU_ITEM_SWAGBAG},
+    [1] = {gDebugText_Jump_ReadySetI,DEBUG_JUMP_MENU_ITEM_READYSETI},
+};
+static const struct ListMenuItem sDebugMenu_Items_JumpAct1[] =
+{
+    [0] = {gDebugText_Jump_EnterFalkner,DEBUG_JUMP_MENU_ITEM_ENTERFALKNER},
+    [1] = {gDebugText_Jump_EnterBugsy,DEBUG_JUMP_MENU_ITEM_ENTERBUGSY},
+    [2] = {gDebugText_Jump_EnterWhitney,DEBUG_JUMP_MENU_ITEM_ENTERWHITNEY},
+    [3] = {gDebugText_Jump_NewAssholeAppears,DEBUG_JUMP_MENU_ITEM_NEWASSHOLEAPPEARS},
+    [4] = {gDebugText_Jump_OldAssholeAppears,DEBUG_JUMP_MENU_ITEM_OLDASSHOLEAPPEARS},
+    [5] = {gDebugText_Jump_GroupofAssholesAppears,DEBUG_JUMP_MENU_ITEM_GROUPOFASSHOLESAPPEARS},
+    [6] = {gDebugText_Jump_FlyingBlind,DEBUG_JUMP_MENU_ITEM_FLYINGBLIND},
+    [7] = {gDebugText_Jump_WowYoureStrong,DEBUG_JUMP_MENU_ITEM_WOWYOURESTRONG},
+    [8] = {gDebugText_Jump_TheGangsAllHere,DEBUG_JUMP_MENU_ITEM_THEGANGSALLHERE},
+    [9] = {gDebugText_Jump_AlwaysWatchingWazokwski,DEBUG_JUMP_MENU_ITEM_ALWAYSWATCHINGWAZOKWSKI},
+    [10] = {gDebugText_Jump_EnterAriana,DEBUG_JUMP_MENU_ITEM_ENTERARIANA},
+    [11] = {gDebugText_Jump_HowDoWeGetHome,DEBUG_JUMP_MENU_ITEM_HOWDOWEGETHOME},
+    [12] = {gDebugText_Jump_AaandWereBack,DEBUG_JUMP_MENU_ITEM_AAANDWEREBACK},
+    [13] = {gDebugText_Jump_AssholesHome,DEBUG_JUMP_MENU_ITEM_ASSHOLESHOME},
+    [14] = {gDebugText_Jump_HousingProtest,DEBUG_JUMP_MENU_ITEM_HOUSINGPROTEST},
+    [15] = {gDebugText_Jump_swagbag2,DEBUG_JUMP_MENU_ITEM_SWAGBAG},
+    [16] = {gDebugText_Jump_EnterMorty,DEBUG_JUMP_MENU_ITEM_ENTERMORTY},
+    [17] = {gDebugText_Jump_SorryAboutMyFriends,DEBUG_JUMP_MENU_ITEM_SORRYABOUTMYFRIENDS},
+    [18] = {gDebugText_Jump_TheStorySoFar,DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR},
+    [19] = {gDebugText_Jump_YoungPadawan,DEBUG_JUMP_MENU_ITEM_YOUNGPADAWAN},
+};
+static const struct ListMenuItem sDebugMenu_Items_JumpAct2[] =
+{
+    [0] = {gDebugText_Jump_WaitYouWentWhere,DEBUG_JUMP_MENU_ITEM_WAITYOUWENTWHERE},
+    [1] = {gDebugText_Jump_EnterChuck,DEBUG_JUMP_MENU_ITEM_ENTERCHUCK},
+    [2] = {gDebugText_Jump_YouLookTired,DEBUG_JUMP_MENU_ITEM_YOULOOKTIRED},
+    [3] = {gDebugText_Jump_Kogasraisondetre,DEBUG_JUMP_MENU_ITEM_KOGASRAISONDETRE},
+    [4] = {gDebugText_Jump_BeachBattle,DEBUG_JUMP_MENU_ITEM_BEACHBATTLE},
+    [5] = {gDebugText_Jump_EnterJasmine,DEBUG_JUMP_MENU_ITEM_ENTERJASMINE},
+    [6] = {gDebugText_Jump_ANewStrike,DEBUG_JUMP_MENU_ITEM_ANEWSTRIKE},
+    [7] = {gDebugText_Jump_AndWeMarchOn,DEBUG_JUMP_MENU_ITEM_ANDWEMARCHON},
+    [8] = {gDebugText_Jump_EnterPryce,DEBUG_JUMP_MENU_ITEM_ENTERPRYCE},
+    [9] = {gDebugText_Jump_Battle8,DEBUG_JUMP_MENU_ITEM_BATTLE8},
+    [10] = {gDebugText_Jump_EnterClair,DEBUG_JUMP_MENU_ITEM_ENTERCLAIR},
+    [11] = {gDebugText_Jump_TheStrikeStrikesBack,DEBUG_JUMP_MENU_ITEM_THESTRIKESTRIKESBACK},
+    [12] = {gDebugText_Jump_VSGarbodor,DEBUG_JUMP_MENU_ITEM_VSGARBODOR},
+    [13] = {gDebugText_Jump_UnknownAlcatrazCutscene,DEBUG_JUMP_MENU_ITEM_UNKNOWNALCATRAZCUTSCENE},
+};
+static const struct ListMenuItem sDebugMenu_Items_JumpAct3[] =
+{
+    [0] = {gDebugText_Jump_OffYouGo,DEBUG_JUMP_MENU_ITEM_OFFYOUGO},
+    [1] = {gDebugText_Jump_IGuessWeShouldBeNiceNow,DEBUG_JUMP_MENU_ITEM_IGUESSWESHOULDBENICENOW},
+    [2] = {gDebugText_Jump_EntertheMaster,DEBUG_JUMP_MENU_ITEM_ENTERTHEMASTER},
+    [3] = {gDebugText_Jump_HaveYouSeenTheNews,DEBUG_JUMP_MENU_ITEM_HAVEYOUSEENTHENEWS},
+    [4] = {gDebugText_Jump_WelcometotheWarRoom,DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEWARROOM},
+    [333] = {gDebugText_Jump_SurvivalChance333,DEBUG_JUMP_MENU_ITEM_SURVIVALCHANCE333},
+    [5] = {gDebugText_Jump_WhyAreYouHelpingThem,DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEM},
+    [6] = {gDebugText_Jump_WhyAreYouHelpingThemSleep,DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEMSLEEP},
+    [7] = {gDebugText_Jump_HeresHowThisIsGoingToGo,DEBUG_JUMP_MENU_ITEM_HERESHOWTHISISGOINGTOGO},
+    [8] = {gDebugText_Jump_WhyDidntYouRatMeOut,DEBUG_JUMP_MENU_ITEM_WHYDIDNTYOURATMEOUT},
+    [9] = {gDebugText_Jump_GroupStages,DEBUG_JUMP_MENU_ITEM_GROUPSTAGES},
+    [10] = {gDebugText_Jump_Finals,DEBUG_JUMP_MENU_ITEM_FINALS},
+    [11] = {gDebugText_Jump_WaitHeDidWhat,DEBUG_JUMP_MENU_ITEM_WAITHEDIDWHAT},
+    [12] = {gDebugText_Jump_WelcometotheHallofFame,DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEHALLOFFAME},
+
+};
+static const struct ListMenuItem sDebugMenu_Items_JumpAct4[] =
+{
+    [0] = {gDebugText_Jump_BeingChampionisHard,DEBUG_JUMP_MENU_ITEM_BEINGCHAMPIONISHARD},
+    [1] = {gDebugText_Jump_LetsGrabLunch,DEBUG_JUMP_MENU_ITEM_LETSGRABLUNCH},
+    [2] = {gDebugText_Jump_RestoreChinatown,DEBUG_JUMP_MENU_ITEM_RESTORECHINATOWN},
+    [3] = {gDebugText_Jump_RestoreTreasureIsland,DEBUG_JUMP_MENU_ITEM_RESTORETREASUREISLAND},
+    [4] = {gDebugText_Jump_RestoreMain,DEBUG_JUMP_MENU_ITEM_RESTOREMAIN},
+    [5] = {gDebugText_Jump_RestoreHaightAshbury,DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY},
+    [6] = {gDebugText_Jump_YouRealizeWereEvilRight,DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT},
+    [7] = {gDebugText_Jump_YouRealizeTheyreEvilRight,DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT},
+};
+static const struct ListMenuItem sDebugMenu_Items_JumpAct5F[] =
+{
+    [0] = {gDebugText_Jump_CongratsYoureanAsshole,DEBUG_JUMP_MENU_ITEM_CONGRATSYOUREANASSHOLE},
+    [1] = {gDebugText_Jump_YouHaveYourOrders,DEBUG_JUMP_MENU_ITEM_YOUHAVEYOURORDERS},
+    [2] = {gDebugText_Jump_HowDisappointing,DEBUG_JUMP_MENU_ITEM_HOWDISAPPOINTING},
+    [3] = {gDebugText_Jump_LetsBurnThisMotherDown,DEBUG_JUMP_MENU_ITEM_LETSBURNTHISMOTHERDOWN},
+    [4] = {gDebugText_Jump_Manhunt,DEBUG_JUMP_MENU_ITEM_MANHUNT},
+    [5] = {gDebugText_Jump_ExhibitionBattle,DEBUG_JUMP_MENU_ITEM_EXHIBITIONBATTLE},
+    [6] = {gDebugText_Jump_MaybeIFuckedUp,DEBUG_JUMP_MENU_ITEM_MAYBEIFUCKEDUP},
+    [7] = {gDebugText_Jump_OkayLetsFixit,DEBUG_JUMP_MENU_ITEM_OKAYLETSFIXIT},
+};static const struct ListMenuItem sDebugMenu_Items_JumpAct5T[] =
+{
+    [0] = {gDebugText_Jump_LetsGettheBandBackTogether,DEBUG_JUMP_MENU_ITEM_LETSGETTHEBANDBACKTOGETHER},
+    [1] = {gDebugText_Jump_MaskOff,DEBUG_JUMP_MENU_ITEM_MASKOFF},
+    [2] = {gDebugText_Jump_LetsFixThis,DEBUG_JUMP_MENU_ITEM_LETSFIXTHIS},
+    [3] = {gDebugText_Jump_LockedOut,DEBUG_JUMP_MENU_ITEM_LOCKEDOUT},
+    [4] = {gDebugText_Jump_WarehouseRave,DEBUG_JUMP_MENU_ITEM_WAREHOUSERAVE},
+    [5] = {gDebugText_Jump_SpeechSpeechSpeech,DEBUG_JUMP_MENU_ITEM_SPEECHSPEECHSPEECH},
+    [6] = {gDebugText_Jump_OneDown,DEBUG_JUMP_MENU_ITEM_ONEDOWN},
+    [7] = {gDebugText_Jump_Earthquake,DEBUG_JUMP_MENU_ITEM_EARTHQUAKE},
+    [8] = {gDebugText_Jump_ThisIsntRandom,DEBUG_JUMP_MENU_ITEM_THISISNTRANDOM},
+    [9] = {gDebugText_Jump_WaitEvenThen,DEBUG_JUMP_MENU_ITEM_WAITEVENTHEN},
+    [10] = {gDebugText_Jump_LetsFinishThis,DEBUG_JUMP_MENU_ITEM_LETSFINISHTHIS},
+    [11] = {gDebugText_Jump_ImIn,DEBUG_JUMP_MENU_ITEM_IMIN},
+    [12] = {gDebugText_Jump_YouCantStopMe,DEBUG_JUMP_MENU_ITEM_YOUCANTSTOPME},
+    [13] = {gDebugText_Jump_WeCanStopYouActually,DEBUG_JUMP_MENU_ITEM_WECANSTOPYOUACTUALLY},
+};
+
 static const struct ListMenuItem sDebugMenu_Items_Flags[] =
 {
     [DEBUG_FLAG_MENU_ITEM_FLAGS]             = {gDebugText_Flags_Flags,              DEBUG_FLAG_MENU_ITEM_FLAGS},
@@ -710,6 +828,7 @@ static void (*const sDebugMenu_Actions_Main[])(u8) =
 {
     [DEBUG_MENU_ITEM_UTILITIES] = DebugAction_OpenUtilitiesMenu,
     [DEBUG_MENU_ITEM_SCRIPTS]   = DebugAction_OpenScriptsMenu,
+    [DEBUG_MENU_ITEM_JUMP]      = DebugAction_OpenJumpActsMenu,
     [DEBUG_MENU_ITEM_FLAGS]     = DebugAction_OpenFlagsMenu,
     [DEBUG_MENU_ITEM_VARS]      = DebugAction_OpenVariablesMenu,
     [DEBUG_MENU_ITEM_GIVE]      = DebugAction_OpenGiveMenu,
@@ -746,6 +865,121 @@ static void (*const sDebugMenu_Actions_Scripts[])(u8) =
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_9]     = DebugAction_Util_Script_9,
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_10]     = DebugAction_Util_Script_10,
 };
+
+static void (*const sDebugMenu_Actions_JumpActs[])(u8) =
+{
+    [DEBUG_JUMP_MENU_ITEM_ACT0] = DebugAction_OpenJumpAct0Menu,
+    [DEBUG_JUMP_MENU_ITEM_ACT1] = DebugAction_OpenJumpAct1Menu,
+    [DEBUG_JUMP_MENU_ITEM_ACT2] = DebugAction_OpenJumpAct2Menu,
+    [DEBUG_JUMP_MENU_ITEM_ACT3] = DebugAction_OpenJumpAct3Menu,
+    [DEBUG_JUMP_MENU_ITEM_ACT4] = DebugAction_OpenJumpAct4Menu,
+    [DEBUG_JUMP_MENU_ITEM_ACT5F] = DebugAction_OpenJumpAct5FMenu,
+    [DEBUG_JUMP_MENU_ITEM_ACT5T] = DebugAction_OpenJumpAct5TMenu,
+};
+
+static void (*const sDebugMenu_Action_JumpAct0[])(u8) =
+{
+    [DEBUG_JUMP_MENU_ITEM_SWAGBAG] = DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_READYSETI] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+};
+static void (*const sDebugMenu_Action_JumpAct1[])(u8) =
+{
+    [DEBUG_JUMP_MENU_ITEM_ENTERFALKNER] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ENTERBUGSY] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ENTERWHITNEY] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_NEWASSHOLEAPPEARS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_OLDASSHOLEAPPEARS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_GROUPOFASSHOLESAPPEARS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_FLYINGBLIND] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WOWYOURESTRONG] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_THEGANGSALLHERE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ALWAYSWATCHINGWAZOKWSKI] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ENTERARIANA] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_HOWDOWEGETHOME] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_AAANDWEREBACK] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ASSHOLESHOME] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_HOUSINGPROTEST] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_SWAGBAG2] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ENTERMORTY] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_SORRYABOUTMYFRIENDS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_THESTORYSOFAR] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_YOUNGPADAWAN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+};
+static void (*const sDebugMenu_Action_JumpAct2[])(u8) =
+{
+    [DEBUG_JUMP_MENU_ITEM_WAITYOUWENTWHERE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ENTERCHUCK] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_YOULOOKTIRED] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_KOGASRAISONDETRE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_BEACHBATTLE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ENTERJASMINE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ANEWSTRIKE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ANDWEMARCHON] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ENTERPRYCE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_BATTLE8] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ENTERCLAIR] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_THESTRIKESTRIKESBACK] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_VSGARBODOR] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_UNKNOWNALCATRAZCUTSCENE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+};
+static void (*const sDebugMenu_Action_JumpAct3[])(u8) =
+{
+    [DEBUG_JUMP_MENU_ITEM_OFFYOUGO] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_IGUESSWESHOULDBENICENOW] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ENTERTHEMASTER] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_HAVEYOUSEENTHENEWS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEWARROOM] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_SURVIVALCHANCE333] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEM] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEMSLEEP] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_HERESHOWTHISISGOINGTOGO] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WHYDIDNTYOURATMEOUT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_GROUPSTAGES] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_FINALS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WAITHEDIDWHAT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEHALLOFFAME] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+
+};
+static void (*const sDebugMenu_Action_JumpAct4[])(u8) =
+{
+    [DEBUG_JUMP_MENU_ITEM_BEINGCHAMPIONISHARD] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_LETSGRABLUNCH] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_RESTORECHINATOWN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_RESTORETREASUREISLAND] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_RESTOREMAIN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+};
+static void (*const sDebugMenu_Action_JumpAct5F[])(u8) =
+{
+    [DEBUG_JUMP_MENU_ITEM_CONGRATSYOUREANASSHOLE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_YOUHAVEYOURORDERS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_HOWDISAPPOINTING] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_LETSBURNTHISMOTHERDOWN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_MANHUNT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_EXHIBITIONBATTLE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_MAYBEIFUCKEDUP] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_OKAYLETSFIXIT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+};
+static void (*const sDebugMenu_Action_JumpAct5T[])(u8) =
+{
+    [DEBUG_JUMP_MENU_ITEM_LETSGETTHEBANDBACKTOGETHER] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_MASKOFF] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_LETSFIXTHIS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_LOCKEDOUT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WAREHOUSERAVE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_SPEECHSPEECHSPEECH] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_ONEDOWN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_EARTHQUAKE] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_THISISNTRANDOM] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WAITEVENTHEN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_LETSFINISHTHIS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_IMIN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_YOUCANTSTOPME] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_WECANSTOPYOUACTUALLY] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+};
+
 static void (*const sDebugMenu_Actions_Flags[])(u8) =
 {
     [DEBUG_FLAG_MENU_ITEM_FLAGS]             = DebugAction_Flags_Flags,
@@ -848,6 +1082,54 @@ static const struct ListMenuTemplate sDebugMenu_ListTemplate_Scripts =
     .items = sDebugMenu_Items_Scripts,
     .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
     .totalItems = ARRAY_COUNT(sDebugMenu_Items_Scripts),
+};
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_JumpActs =
+{
+    .items = sDebugMenu_Items_JumpActs,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_JumpActs),
+};
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_JumpAct0 =
+{
+    .items = sDebugMenu_Items_JumpAct0,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_JumpAct0),
+};
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_JumpAct1 =
+{
+    .items = sDebugMenu_Items_JumpAct1,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_JumpAct1),
+};
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_JumpAct2 =
+{
+    .items = sDebugMenu_Items_JumpAct2,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_JumpAct2),
+};
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_JumpAct3 =
+{
+    .items = sDebugMenu_Items_JumpAct3,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_JumpAct3),
+};
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_JumpAct4 =
+{
+    .items = sDebugMenu_Items_JumpAct4,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_JumpAct4),
+};
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_JumpAct5F =
+{
+    .items = sDebugMenu_Items_JumpAct5F,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_JumpAct5F),
+};
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_JumpAct5T =
+{
+    .items = sDebugMenu_Items_JumpAct5T,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_JumpAct5T),
 };
 static const struct ListMenuTemplate sDebugMenu_ListTemplate_Flags =
 {
@@ -1009,6 +1291,157 @@ static void DebugTask_HandleMenuInput_Scripts(u8 taskId)
         Debug_ShowMainMenu();
     }
 }
+static void DebugTask_HandleMenuInput_Jump(u8 taskId)
+{
+    void (*func)(u8);
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    if (gMain.newKeys & A_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        if ((func = sDebugMenu_Actions_JumpActs[input]) != NULL)
+            func(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        Debug_DestroyMenu(taskId);
+        Debug_ShowMainMenu();
+    }
+}
+static void DebugTask_HandleMenuInput_JumpAct0(u8 taskId)
+{
+    void (*func)(u8);
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    if (gMain.newKeys & A_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        if ((func = sDebugMenu_Action_JumpAct0[input]) != NULL)
+            gTasks[taskId].data[5] = input;
+        func(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        Debug_DestroyMenu(taskId);
+        DebugAction_OpenJumpActsMenu(taskId);
+    }
+}
+static void DebugTask_HandleMenuInput_JumpAct1(u8 taskId)
+{
+    void (*func)(u8);
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    if (gMain.newKeys & A_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        if ((func = sDebugMenu_Action_JumpAct1[input]) != NULL)
+            gTasks[taskId].data[5] = input;
+        func(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        Debug_DestroyMenu(taskId);
+        DebugAction_OpenJumpActsMenu(taskId);
+    }
+}
+static void DebugTask_HandleMenuInput_JumpAct2(u8 taskId)
+{
+    void (*func)(u8);
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    if (gMain.newKeys & A_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        if ((func = sDebugMenu_Action_JumpAct2[input]) != NULL)
+            gTasks[taskId].data[5] = input;
+        func(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        Debug_DestroyMenu(taskId);
+        DebugAction_OpenJumpActsMenu(taskId);
+    }
+}
+static void DebugTask_HandleMenuInput_JumpAct3(u8 taskId)
+{
+    void (*func)(u8);
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    if (gMain.newKeys & A_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        if ((func = sDebugMenu_Action_JumpAct3[input]) != NULL)
+            gTasks[taskId].data[5] = input;
+        func(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        Debug_DestroyMenu(taskId);
+        DebugAction_OpenJumpActsMenu(taskId);
+    }
+}
+static void DebugTask_HandleMenuInput_JumpAct4(u8 taskId)
+{
+    void (*func)(u8);
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    if (gMain.newKeys & A_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        if ((func = sDebugMenu_Action_JumpAct4[input]) != NULL)
+            gTasks[taskId].data[5] = input;
+        func(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        Debug_DestroyMenu(taskId);
+        DebugAction_OpenJumpActsMenu(taskId);
+    }
+}
+static void DebugTask_HandleMenuInput_JumpAct5F(u8 taskId)
+{
+    void (*func)(u8);
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    if (gMain.newKeys & A_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        if ((func = sDebugMenu_Action_JumpAct5F[input]) != NULL)
+            gTasks[taskId].data[5] = input;
+        func(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        Debug_DestroyMenu(taskId);
+        DebugAction_OpenJumpActsMenu(taskId);
+    }
+}
+static void DebugTask_HandleMenuInput_JumpAct5T(u8 taskId)
+{
+    void (*func)(u8);
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    if (gMain.newKeys & A_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        if ((func = sDebugMenu_Action_JumpAct5T[input]) != NULL)
+            gTasks[taskId].data[5] = input;
+        func(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+        Debug_DestroyMenu(taskId);
+        DebugAction_OpenJumpActsMenu(taskId);
+    }
+}
 static void DebugTask_HandleMenuInput_Flags(u8 taskId)
 {
     void (*func)(u8);
@@ -1093,6 +1526,46 @@ static void DebugAction_OpenScriptsMenu(u8 taskId)
 {
     Debug_DestroyMenu(taskId);
     Debug_ShowMenu(DebugTask_HandleMenuInput_Scripts, sDebugMenu_ListTemplate_Scripts);
+}
+static void DebugAction_OpenJumpActsMenu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_Jump, sDebugMenu_ListTemplate_JumpActs);
+}
+static void DebugAction_OpenJumpAct0Menu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_JumpAct0, sDebugMenu_ListTemplate_JumpAct0);
+}
+static void DebugAction_OpenJumpAct1Menu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_JumpAct1, sDebugMenu_ListTemplate_JumpAct1);
+}
+static void DebugAction_OpenJumpAct2Menu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_JumpAct2, sDebugMenu_ListTemplate_JumpAct2);
+}
+static void DebugAction_OpenJumpAct3Menu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_JumpAct3, sDebugMenu_ListTemplate_JumpAct3);
+}
+static void DebugAction_OpenJumpAct4Menu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_JumpAct4, sDebugMenu_ListTemplate_JumpAct4);
+}
+static void DebugAction_OpenJumpAct5FMenu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_JumpAct5F, sDebugMenu_ListTemplate_JumpAct5F);
+}
+static void DebugAction_OpenJumpAct5TMenu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_JumpAct5T, sDebugMenu_ListTemplate_JumpAct5T);
 }
 static void DebugAction_OpenFlagsMenu(u8 taskId)
 {
@@ -1582,6 +2055,21 @@ static void DebugAction_Util_Script_10(u8 taskId)
     Debug_DestroyMenu_Full(taskId);
     LockPlayerFieldControls();
     ScriptContext_SetupScript(Debug_Script_10);
+}
+// *******************************
+// Actions Jump 
+
+static void DebugAction_Jump_JumpPlayerToStoryPoint(u8 taskId)
+{
+
+    u8 chosenStoryPoint = gTasks[taskId].data[5];
+
+    JumpPlayerToStoryPoint(chosenStoryPoint, taskId);
+    WarpPlayerAfterVarSet();
+
+    PlaySE(SE_WARP_IN);
+    ScriptContext_Enable();
+    Debug_DestroyMenu_Full(taskId);
 }
 
 // *******************************

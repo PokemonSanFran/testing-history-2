@@ -60,7 +60,6 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	call TheStrikeStrikesBack_Storywarp_Script
 	return
 
 

@@ -31,6 +31,7 @@
 #include "pokemon.h"
 #include "pokemon_icon.h"
 #include "pokemon_storage_system.h"
+#include "quests.h"
 #include "random.h"
 #include "region_map.h"
 #include "script.h"
@@ -38,6 +39,7 @@
 #include "sound.h"
 #include "strings.h"
 #include "string_util.h"
+#include "story_jump.h"
 #include "task.h"
 #include "pokemon_summary_screen.h"
 #include "constants/abilities.h"
@@ -133,9 +135,89 @@ enum {
     JUMPPLAYER_WECANSTOPYOUACTUALLY
 };
 
+static void JumpPlayerTo_swagbag(void);
+static void JumpPlayerTo_ReadySetI(void);
+static void JumpPlayerTo_EnterFalkner(void);
+static void JumpPlayerTo_EnterBugsy(void);
+static void JumpPlayerTo_EnterWhitney(void);
+static void JumpPlayerTo_NewAssholeAppears(void);
+static void JumpPlayerTo_OldAssholeAppears(void);
+static void JumpPlayerTo_GroupofAssholesAppears(void);
+static void JumpPlayerTo_FlyingBlind(void);
+static void JumpPlayerTo_WowYoureStrong(void);
+static void JumpPlayerTo_TheGangsAllHere(void);
+static void JumpPlayerTo_AlwaysWatchingWazokwski(void);
+static void JumpPlayerTo_EnterAriana(void);
+static void JumpPlayerTo_HowDoWeGetHome(void);
+static void JumpPlayerTo_AaandWereBack(void);
+static void JumpPlayerTo_AssholesHome(void);
+static void JumpPlayerTo_HousingProtest(void);
+static void JumpPlayerTo_swagbag2(void);
+static void JumpPlayerTo_EnterMorty(void);
+static void JumpPlayerTo_SorryAboutMyFriends(void);
+static void JumpPlayerTo_TheStorySoFar(void);
+static void JumpPlayerTo_YoungPadawan(void);
+static void JumpPlayerTo_WaitYouWentWhere(void);
+static void JumpPlayerTo_EnterChuck(void);
+static void JumpPlayerTo_YouLookTired(void);
+static void JumpPlayerTo_Kogasraisondetre(void);
+static void JumpPlayerTo_BeachBattle(void);
+static void JumpPlayerTo_EnterJasmine(void);
+static void JumpPlayerTo_ANewStrike(void);
+static void JumpPlayerTo_AndWeMarchOn(void);
+static void JumpPlayerTo_EnterPryce(void);
+static void JumpPlayerTo_Battle8(void);
+static void JumpPlayerTo_EnterClair(void);
+static void JumpPlayerTo_TheStrikeStrikesBack(void);
+static void JumpPlayerTo_VSGarbodor(void);
+static void JumpPlayerTo_UnknownAlcatrazCutscene(void);
+static void JumpPlayerTo_OffYouGo(void);
+static void JumpPlayerTo_IGuessWeShouldBeNiceNow(void);
+static void JumpPlayerTo_EntertheMaster(void);
+static void JumpPlayerTo_HaveYouSeenTheNews(void);
+static void JumpPlayerTo_WelcometotheWarRoom(void);
+static void JumpPlayerTo_SurvivalChance333(void);
+static void JumpPlayerTo_WhyAreYouHelpingThem(void);
+static void JumpPlayerTo_WhyAreYouHelpingThemSleep(void);
+static void JumpPlayerTo_HeresHowThisIsGoingToGo(void);
+static void JumpPlayerTo_WhyDidntYouRatMeOut(void);
+static void JumpPlayerTo_GroupStages(void);
+static void JumpPlayerTo_Finals(void);
+static void JumpPlayerTo_WaitHeDidWhat(void);
+static void JumpPlayerTo_WelcometotheHallofFame(void);
+static void JumpPlayerTo_BeingChampionisHard(void);
+static void JumpPlayerTo_LetsGrabLunch(void);
+static void JumpPlayerTo_RestoreChinatown(void);
+static void JumpPlayerTo_RestoreTreasureIsland(void);
+static void JumpPlayerTo_RestoreMain(void);
+static void JumpPlayerTo_RestoreHaightAshbury(void);
+static void JumpPlayerTo_YouRealizeWereEvilRight(void);
+static void JumpPlayerTo_YouRealizeTheyreEvilRight(void);
+static void JumpPlayerTo_CongratsYoureanAsshole(void);
+static void JumpPlayerTo_YouHaveYourOrders(void);
+static void JumpPlayerTo_HowDisappointing(void);
+static void JumpPlayerTo_LetsBurnThisMotherDown(void);
+static void JumpPlayerTo_Manhunt(void);
+static void JumpPlayerTo_ExhibitionBattle(void);
+static void JumpPlayerTo_MaybeIFuckedUp(void);
+static void JumpPlayerTo_OkayLetsFixit(void);
+static void JumpPlayerTo_LetsGettheBandBackTogether(void);
+static void JumpPlayerTo_MaskOff(void);
+static void JumpPlayerTo_LetsFixThis(void);
+static void JumpPlayerTo_LockedOut(void);
+static void JumpPlayerTo_WarehouseRave(void);
+static void JumpPlayerTo_SpeechSpeechSpeech(void);
+static void JumpPlayerTo_OneDown(void);
+static void JumpPlayerTo_Earthquake(void);
+static void JumpPlayerTo_ThisIsntRandom(void);
+static void JumpPlayerTo_WaitEvenThen(void);
+static void JumpPlayerTo_LetsFinishThis(void);
+static void JumpPlayerTo_ImIn(void);
+static void JumpPlayerTo_YouCantStopMe(void);
+static void JumpPlayerTo_WeCanStopYouActually(void);
+
 void JumpPlayerToStoryPoint(u8 chosenStoryPoint, u8 taskId)
 {
-
     switch(chosenStoryPoint)
     {
         case JUMPPLAYER_SWAGBAG:
@@ -379,14 +461,12 @@ void JumpPlayerToStoryPoint(u8 chosenStoryPoint, u8 taskId)
             JumpPlayerTo_WeCanStopYouActually();
             break;
     }
-    WarpPlayerAfterVarSet();
 }
 
 void WarpPlayerAfterVarSet()
 {
     DoWarp();
     ResetInitialPlayerAvatarState();
-    DebugAction_DestroyExtraWindow(taskId);
 }
 
 void JumpPlayerTo_swagbag()
@@ -394,16 +474,328 @@ void JumpPlayerTo_swagbag()
     VarSet(VAR_PLAYER_HOME_STATE,POST_SWAGBAG);
     FlagSet(FLAG_SYS_POKENAV_GET);
     FlagSet(FLAG_SYS_QUEST_MENU_GET);
-    QuestMenu_GetSetQuestState(QUEST_PLAYERSADVENTURE,QUEST_MENU_SET_ACTIVE);
-    SetWarpDestinationToMapWarp(0, MAP_SOUTHBAY_COMPOUND_1F,0;
-
+    QuestMenu_GetSetQuestState(QUEST_PLAYERSADVENTURE,FLAG_SET_UNLOCKED);
+    QuestMenu_GetSetQuestState(QUEST_PLAYERSADVENTURE,FLAG_SET_ACTIVE);
+    SetWarpDestinationToMapWarp(2,0,0);
 }
 
 void JumpPlayerTo_ReadySetI()
 {
-    Storywarp_swagbag();
-    VarSet(VAR_PLAYER_HOME_STATE,OPENED_FASHION_CASE)
-    FlagSet(FLAG_RECIEVED_LEFTOVERS)
+    JumpPlayerTo_swagbag();
+    VarSet(VAR_PLAYER_HOME_STATE,OPENED_FASHION_CASE);
+    FlagSet(FLAG_RECIEVED_LEFTOVERS);
     gSpecialVar_Result = AddBagItem(ITEM_LEFTOVERS,1);
-    SetWarpDestinationToMapWarp(0,MAP_SOUTHBAY,0;
+    SetWarpDestinationToMapWarp(2,0,0);
+    
+}
+void JumpPlayerTo_EnterFalkner(){
+    JumpPlayerTo_ReadySetI();
+    SetWarpDestinationToMapWarp(3,0,0);
+}
+void JumpPlayerTo_EnterBugsy(){
+    
+
+}
+void JumpPlayerTo_EnterWhitney(){
+    
+
+}
+void JumpPlayerTo_NewAssholeAppears(){
+    
+
+}
+void JumpPlayerTo_OldAssholeAppears(){
+    
+
+}
+void JumpPlayerTo_GroupofAssholesAppears(){
+    
+
+}
+void JumpPlayerTo_FlyingBlind(){
+    
+
+}
+void JumpPlayerTo_WowYoureStrong(){
+    
+
+}
+void JumpPlayerTo_TheGangsAllHere(){
+    
+
+}
+void JumpPlayerTo_AlwaysWatchingWazokwski(){
+    
+
+}
+void JumpPlayerTo_EnterAriana(){
+    
+
+}
+void JumpPlayerTo_HowDoWeGetHome(){
+    
+
+}
+void JumpPlayerTo_AaandWereBack(){
+    
+
+}
+void JumpPlayerTo_AssholesHome(){
+    
+
+}
+void JumpPlayerTo_HousingProtest(){
+    
+
+}
+void JumpPlayerTo_swagbag2(){
+    
+
+}
+void JumpPlayerTo_EnterMorty(){
+    
+
+}
+void JumpPlayerTo_SorryAboutMyFriends(){
+    
+
+}
+void JumpPlayerTo_TheStorySoFar(){
+    
+
+}
+void JumpPlayerTo_YoungPadawan(){
+    
+
+}
+void JumpPlayerTo_WaitYouWentWhere(){
+    SetWarpDestinationToMapWarp(5,0,0);
+}
+void JumpPlayerTo_EnterChuck(){
+    
+
+}
+void JumpPlayerTo_YouLookTired(){
+    
+
+}
+void JumpPlayerTo_Kogasraisondetre(){
+    
+
+}
+void JumpPlayerTo_BeachBattle(){
+    
+
+}
+void JumpPlayerTo_EnterJasmine(){
+    
+
+}
+void JumpPlayerTo_ANewStrike(){
+    
+
+}
+void JumpPlayerTo_AndWeMarchOn(){
+    
+
+}
+void JumpPlayerTo_EnterPryce(){
+    
+
+}
+void JumpPlayerTo_Battle8(){
+    
+
+}
+void JumpPlayerTo_EnterClair(){
+    
+
+}
+void JumpPlayerTo_TheStrikeStrikesBack(){
+    
+
+}
+void JumpPlayerTo_VSGarbodor(){
+    
+
+}
+void JumpPlayerTo_UnknownAlcatrazCutscene(){
+    
+
+}
+void JumpPlayerTo_OffYouGo(){
+    
+
+}
+void JumpPlayerTo_IGuessWeShouldBeNiceNow(){
+    
+
+}
+void JumpPlayerTo_EntertheMaster(){
+    
+
+}
+void JumpPlayerTo_HaveYouSeenTheNews(){
+    
+
+}
+void JumpPlayerTo_WelcometotheWarRoom(){
+    
+
+}
+void JumpPlayerTo_SurvivalChance333(){
+    
+
+}
+void JumpPlayerTo_WhyAreYouHelpingThem(){
+    
+
+}
+void JumpPlayerTo_WhyAreYouHelpingThemSleep(){
+    
+
+}
+void JumpPlayerTo_HeresHowThisIsGoingToGo(){
+    
+
+}
+void JumpPlayerTo_WhyDidntYouRatMeOut(){
+    
+
+}
+void JumpPlayerTo_GroupStages(){
+    
+
+}
+void JumpPlayerTo_Finals(){
+    
+
+}
+void JumpPlayerTo_WaitHeDidWhat(){
+    
+
+}
+void JumpPlayerTo_WelcometotheHallofFame(){
+    
+
+}
+void JumpPlayerTo_BeingChampionisHard(){
+    
+
+}
+void JumpPlayerTo_LetsGrabLunch(){
+    
+
+}
+void JumpPlayerTo_RestoreChinatown(){
+    
+
+}
+void JumpPlayerTo_RestoreTreasureIsland(){
+    
+
+}
+void JumpPlayerTo_RestoreMain(){
+    
+
+}
+void JumpPlayerTo_RestoreHaightAshbury(){
+    
+
+}
+void JumpPlayerTo_YouRealizeWereEvilRight(){
+    
+
+}
+void JumpPlayerTo_YouRealizeTheyreEvilRight(){
+    
+
+}
+void JumpPlayerTo_CongratsYoureanAsshole(){
+    
+
+}
+void JumpPlayerTo_YouHaveYourOrders(){
+    
+
+}
+void JumpPlayerTo_HowDisappointing(){
+    
+
+}
+void JumpPlayerTo_LetsBurnThisMotherDown(){
+    
+
+}
+void JumpPlayerTo_Manhunt(){
+    
+
+}
+void JumpPlayerTo_ExhibitionBattle(){
+    
+
+}
+void JumpPlayerTo_MaybeIFuckedUp(){
+    
+
+}
+void JumpPlayerTo_OkayLetsFixit(){
+    
+
+}
+void JumpPlayerTo_LetsGettheBandBackTogether(){
+    
+
+}
+void JumpPlayerTo_MaskOff(){
+    
+
+}
+void JumpPlayerTo_LetsFixThis(){
+    
+
+}
+void JumpPlayerTo_LockedOut(){
+    
+
+}
+void JumpPlayerTo_WarehouseRave(){
+    
+
+}
+void JumpPlayerTo_SpeechSpeechSpeech(){
+    
+
+}
+void JumpPlayerTo_OneDown(){
+    
+
+}
+void JumpPlayerTo_Earthquake(){
+    
+
+}
+void JumpPlayerTo_ThisIsntRandom(){
+    
+
+}
+void JumpPlayerTo_WaitEvenThen(){
+    
+
+}
+void JumpPlayerTo_LetsFinishThis(){
+    
+
+}
+void JumpPlayerTo_ImIn(){
+    
+
+}
+void JumpPlayerTo_YouCantStopMe(){
+    
+
+}
+void JumpPlayerTo_WeCanStopYouActually(){
+    
+
 }
