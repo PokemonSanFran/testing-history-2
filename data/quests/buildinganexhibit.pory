@@ -18,7 +18,8 @@ script Quest_BuildingAnExhibit_Debug_Script{
 
 script Quest_BuildingAnExhibit_HideLeader_Script{
     
-    if (var(VAR_WHITNEY_STATE) != BATTLE_1_COMPLETE){
+    special(GetNumberOfBadges)
+    if (var(VAR_WHITNEY_STATE) != BATTLE_1_COMPLETE || var(VAR_RESULT) < 4){
         setflag(FLAG_HIDE_WHITNEY)
     }
     return

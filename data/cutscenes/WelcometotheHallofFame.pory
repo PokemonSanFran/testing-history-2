@@ -48,11 +48,15 @@ script WelcomeToTheHallOfFame_PostBattle_Dialogue {
         fadescreenspeed(FADE_TO_BLACK,24)
 
         special(HealPlayerParty)
-        special(GameClear)
+        call(WelcometotheHallofFame_GameClear_Script)
         waitstate
         releaseall
         end
+}
 
+script WelcometotheHallofFame_GameClear_Script{
+    special(GameClear)
+        return
 }
 
 text gText_WelcomeToTheHallOfFame_YourChampion {

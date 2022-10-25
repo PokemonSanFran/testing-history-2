@@ -37,10 +37,15 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	setflag FLAG_IS_CHAMPION
 	fadescreenspeed FADE_TO_BLACK, 24
 	special HealPlayerParty
-	special GameClear
+	call WelcometotheHallofFame_GameClear_Script
 	waitstate
 	releaseall
 	end
+
+
+WelcometotheHallofFame_GameClear_Script::
+	special GameClear
+	return
 
 
 WelcomeToTheHallOfFame_MoveRoseToPodium:

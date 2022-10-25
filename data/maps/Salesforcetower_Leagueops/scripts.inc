@@ -68,6 +68,7 @@ Salesforcetower_Leagueops_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_LETS_BURN_THIS_MOTHER_STATE, DEFEATED_ARCHER_ALCATRAZ, LetsBurnThisMotherDown_MissionComplete_Dialogue
 	map_script_2 VAR_HOW_DISAPPOINTING_STATE, DEFEATED_ARIANA_CHINATOWN, HowDisappointing_MissionComplete_Dialogue
 	map_script_2 VAR_MANHUNT_STATE, DEFEATED_MANHUNT_GIOVANNI, Manhunt_MissionComplete_Dialogue
+	map_script_2 VAR_STORYLINE_STATE, STORY_TEAMROCKET_FINISHED, ExhibitionBattle_TimeSkip_Script
 	.2byte 0
 
 

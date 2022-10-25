@@ -165,7 +165,7 @@ enum { //Jump Cutscenes
     DEBUG_JUMP_MENU_ITEM_LETSGRABLUNCH,
     DEBUG_JUMP_MENU_ITEM_RESTORECHINATOWN,
     DEBUG_JUMP_MENU_ITEM_RESTORETREASUREISLAND,
-    DEBUG_JUMP_MENU_ITEM_RESTOREMAIN,
+    DEBUG_JUMP_MENU_ITEM_RESTOREMARIN,
     DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY,
     DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT,
     DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT,
@@ -497,7 +497,7 @@ static const u8 gDebugText_Jump_HaveYouSeenTheNews[] = _("Have You Seen The News
 static const u8 gDebugText_Jump_WelcometotheWarRoom[] = _("Welcome to the War Room.");
 static const u8 gDebugText_Jump_SurvivalChance333[] = _("Survival Chance = 33.3%");
 static const u8 gDebugText_Jump_WhyAreYouHelpingThem[] = _("Why Are You Helping Them?");
-static const u8 gDebugText_Jump_WhyAreYouHelpingThemSleep[] = _("Why Are You Helping Sleep");
+static const u8 gDebugText_Jump_WhyAreYouHelpingThemSleep[] = _("Sleep Why Are You Helping");
 static const u8 gDebugText_Jump_HeresHowThisIsGoingToGo[] = _("Here's How This Is Going To Go....");
 static const u8 gDebugText_Jump_WhyDidntYouRatMeOut[] = _("Why Didn't You Rat Me Out?");
 static const u8 gDebugText_Jump_GroupStages[] = _("Group Stages");
@@ -508,7 +508,7 @@ static const u8 gDebugText_Jump_BeingChampionisHard[] = _("Being Champion is Har
 static const u8 gDebugText_Jump_LetsGrabLunch[] = _("Let's Grab Lunch.");
 static const u8 gDebugText_Jump_RestoreChinatown[] = _("Restore Chinatown");
 static const u8 gDebugText_Jump_RestoreTreasureIsland[] = _("Restore Treasure Island");
-static const u8 gDebugText_Jump_RestoreMain[] = _("Restore Main");
+static const u8 gDebugText_Jump_RestoreMarin[] = _("Restore Marin");
 static const u8 gDebugText_Jump_RestoreHaightAshbury[] = _("Restore Haight-Ashbury");
 static const u8 gDebugText_Jump_YouRealizeWereEvilRight[] = _("You Realize We're Evil, Right?");
 static const u8 gDebugText_Jump_YouRealizeTheyreEvilRight[] = _("You Realize They're Evil, Right?");
@@ -733,16 +733,15 @@ static const struct ListMenuItem sDebugMenu_Items_JumpAct3[] =
     [2] = {gDebugText_Jump_EntertheMaster,DEBUG_JUMP_MENU_ITEM_ENTERTHEMASTER},
     [3] = {gDebugText_Jump_HaveYouSeenTheNews,DEBUG_JUMP_MENU_ITEM_HAVEYOUSEENTHENEWS},
     [4] = {gDebugText_Jump_WelcometotheWarRoom,DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEWARROOM},
-    [333] = {gDebugText_Jump_SurvivalChance333,DEBUG_JUMP_MENU_ITEM_SURVIVALCHANCE333},
-    [5] = {gDebugText_Jump_WhyAreYouHelpingThem,DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEM},
-    [6] = {gDebugText_Jump_WhyAreYouHelpingThemSleep,DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEMSLEEP},
-    [7] = {gDebugText_Jump_HeresHowThisIsGoingToGo,DEBUG_JUMP_MENU_ITEM_HERESHOWTHISISGOINGTOGO},
-    [8] = {gDebugText_Jump_WhyDidntYouRatMeOut,DEBUG_JUMP_MENU_ITEM_WHYDIDNTYOURATMEOUT},
-    [9] = {gDebugText_Jump_GroupStages,DEBUG_JUMP_MENU_ITEM_GROUPSTAGES},
-    [10] = {gDebugText_Jump_Finals,DEBUG_JUMP_MENU_ITEM_FINALS},
-    [11] = {gDebugText_Jump_WaitHeDidWhat,DEBUG_JUMP_MENU_ITEM_WAITHEDIDWHAT},
-    [12] = {gDebugText_Jump_WelcometotheHallofFame,DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEHALLOFFAME},
-
+    [5] = {gDebugText_Jump_SurvivalChance333,DEBUG_JUMP_MENU_ITEM_SURVIVALCHANCE333},
+    [6] = {gDebugText_Jump_WhyAreYouHelpingThem,DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEM},
+    [7] = {gDebugText_Jump_WhyAreYouHelpingThemSleep,DEBUG_JUMP_MENU_ITEM_WHYAREYOUHELPINGTHEMSLEEP},
+    [8] = {gDebugText_Jump_HeresHowThisIsGoingToGo,DEBUG_JUMP_MENU_ITEM_HERESHOWTHISISGOINGTOGO},
+    [9] = {gDebugText_Jump_WhyDidntYouRatMeOut,DEBUG_JUMP_MENU_ITEM_WHYDIDNTYOURATMEOUT},
+    [10] = {gDebugText_Jump_GroupStages,DEBUG_JUMP_MENU_ITEM_GROUPSTAGES},
+    [11] = {gDebugText_Jump_Finals,DEBUG_JUMP_MENU_ITEM_FINALS},
+    [12] = {gDebugText_Jump_WaitHeDidWhat,DEBUG_JUMP_MENU_ITEM_WAITHEDIDWHAT},
+    [13] = {gDebugText_Jump_WelcometotheHallofFame,DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEHALLOFFAME},
 };
 static const struct ListMenuItem sDebugMenu_Items_JumpAct4[] =
 {
@@ -750,7 +749,7 @@ static const struct ListMenuItem sDebugMenu_Items_JumpAct4[] =
     [1] = {gDebugText_Jump_LetsGrabLunch,DEBUG_JUMP_MENU_ITEM_LETSGRABLUNCH},
     [2] = {gDebugText_Jump_RestoreChinatown,DEBUG_JUMP_MENU_ITEM_RESTORECHINATOWN},
     [3] = {gDebugText_Jump_RestoreTreasureIsland,DEBUG_JUMP_MENU_ITEM_RESTORETREASUREISLAND},
-    [4] = {gDebugText_Jump_RestoreMain,DEBUG_JUMP_MENU_ITEM_RESTOREMAIN},
+    [4] = {gDebugText_Jump_RestoreMarin,DEBUG_JUMP_MENU_ITEM_RESTOREMARIN},
     [5] = {gDebugText_Jump_RestoreHaightAshbury,DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY},
     [6] = {gDebugText_Jump_YouRealizeWereEvilRight,DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT},
     [7] = {gDebugText_Jump_YouRealizeTheyreEvilRight,DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT},
@@ -938,7 +937,6 @@ static void (*const sDebugMenu_Action_JumpAct3[])(u8) =
     [DEBUG_JUMP_MENU_ITEM_FINALS] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_WAITHEDIDWHAT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_WELCOMETOTHEHALLOFFAME] =     DebugAction_Jump_JumpPlayerToStoryPoint,
-
 };
 static void (*const sDebugMenu_Action_JumpAct4[])(u8) =
 {
@@ -946,7 +944,7 @@ static void (*const sDebugMenu_Action_JumpAct4[])(u8) =
     [DEBUG_JUMP_MENU_ITEM_LETSGRABLUNCH] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_RESTORECHINATOWN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_RESTORETREASUREISLAND] =     DebugAction_Jump_JumpPlayerToStoryPoint,
-    [DEBUG_JUMP_MENU_ITEM_RESTOREMAIN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
+    [DEBUG_JUMP_MENU_ITEM_RESTOREMARIN] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_RESTOREHAIGHTASHBURY] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_YOUREALIZEWEREEVILRIGHT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
     [DEBUG_JUMP_MENU_ITEM_YOUREALIZETHEYREEVILRIGHT] =     DebugAction_Jump_JumpPlayerToStoryPoint,
@@ -1189,7 +1187,8 @@ static void Debug_ShowMenu(void (*HandleInput)(u8), struct ListMenuTemplate LMte
     menuTemplate.cursorShadowPal = 3;
     menuTemplate.lettersSpacing = 1;
     menuTemplate.itemVerticalPadding = 0;
-    menuTemplate.scrollMultiple = LIST_NO_MULTIPLE_SCROLL;
+    //menuTemplate.scrollMultiple = LIST_NO_MULTIPLE_SCROLL;
+    menuTemplate.scrollMultiple = LIST_MULTIPLE_SCROLL_DPAD;
     menuTemplate.fontId = 1;
     menuTemplate.cursorKind = 0;
     menuTaskId = ListMenuInit(&menuTemplate, 0, 0);

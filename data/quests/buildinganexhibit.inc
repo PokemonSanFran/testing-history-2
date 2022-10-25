@@ -9,8 +9,11 @@ Quest_BuildingAnExhibit_Debug_Script::
 
 
 Quest_BuildingAnExhibit_HideLeader_Script::
+	special GetNumberOfBadges
 	compare VAR_WHITNEY_STATE, BATTLE_1_COMPLETE
 	goto_if_ne Quest_BuildingAnExhibit_HideLeader_Script_2
+	compare VAR_RESULT, 4
+	goto_if_lt Quest_BuildingAnExhibit_HideLeader_Script_2
 Quest_BuildingAnExhibit_HideLeader_Script_1:
 	return
 
