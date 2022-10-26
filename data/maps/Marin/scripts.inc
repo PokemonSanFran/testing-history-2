@@ -5,6 +5,8 @@ Marin_MapScripts::
 	.byte 0
 
 Marin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Restoremarin_HideLenora_Script
+	call Quest_Restoremarin_MoveLenora_Script
 	call Marin_HideBianca_Script
 	call Marin_HideLiidia_Script
 	call Quest_BerrySustaiability_HideLeader_Script
@@ -107,9 +109,48 @@ Marin_Biker_Interact_Script_2:
 	goto Marin_Biker_Interact_Script_1
 
 
+Marin_Lenora_Interact_Script::
+	lock
+	faceplayer
+	returnqueststate QUEST_RESTOREMARIN
+	switch VAR_RESULT
+	case QUEST_MENU_SET_ACTIVE, Marin_Lenora_Interact_Script_2
+	case QUEST_MENU_SET_REWARD, Marin_Lenora_Interact_Script_3
+	call Marin_Lenora_PreQuest_Dialogue
+	return
+
+Marin_Lenora_Interact_Script_2:
+	call Quest_Restoremarin_CheckProgress_Script
+	return
+
+Marin_Lenora_Interact_Script_3:
+	call Quest_Restoremarin_Reward_Dialogue
+	return
+
+
+Marin_Lenora_PreQuest_Dialogue::
+	compare VAR_STORYLINE_STATE, STORY_POST_BATTLE_ARCHER_TREASUREISLAND
+	goto_if_gt Marin_Lenora_PreQuest_Dialogue_1
+	call Marin_Lenora_Dialogue
+	return
+
+Marin_Lenora_PreQuest_Dialogue_1:
+	goto Quest_Restoremarin_StartQuest_Dialogue
+	return
+
+
+Marin_Lenora_Dialogue::
+	msgbox gText_Marin_IUsedToBe, MSGBOX_NPC
+	end
+
+
 gText_Marin_PlaceholderBiker::
 	.string "i am a biker, and this is placeholder\n"
 	.string "text.$"
 
 gText_Marin_TheDoorIsLocked::
 	.string "The door is locked.$"
+
+gText_Marin_IUsedToBe::
+	.string "i used to be the leader of the gym in\n"
+	.string "town!$"

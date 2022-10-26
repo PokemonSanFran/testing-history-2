@@ -6,16 +6,18 @@ const FLAG_HIDE_LIIDIA = FLAG_TEMP_4
 
 mapscripts Marin_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        call(Marin_HideBianca_Script)
-        call(Marin_HideLiidia_Script)
-        call(Quest_BerrySustaiability_HideLeader_Script)
-        call(Quest_GetTheBand_HideBikerD_Script)
-        call(IGuessWeShouldBeNiceNow_HidePopup_Script)
+            call(Quest_Restoremarin_HideLenora_Script)
+            call(Quest_Restoremarin_MoveLenora_Script)
+            call(Marin_HideBianca_Script)
+            call(Marin_HideLiidia_Script)
+            call(Quest_BerrySustaiability_HideLeader_Script)
+            call(Quest_GetTheBand_HideBikerD_Script)
+            call(IGuessWeShouldBeNiceNow_HidePopup_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_MARIN_STATE, ROBINWILLIAMSTUNNEL_PUZZLES_SOLVED: IGuessWeShouldBeNiceNow_ExitCave_Script 
-        VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE: YouRealizeWereEvilRight_PhoneCall_Dialogue
+            VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
 
     MAP_SCRIPT_ON_LOAD{
@@ -25,35 +27,35 @@ mapscripts Marin_MapScripts {
 
 script Marin_HideBianca_Script {
     setflag(FLAG_HIDE_BIANCA)
-    return
+        return
 }
 
 script Marin_HideLiidia_Script{
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_INSTALLNATUREPROBES)
 
-    if (var(VAR_RESULT)){
-        setflag(FLAG_HIDE_LIIDIA)
-    }
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_LIIDIA)
+        }
     return
 }
 
 script Marin_LockRangerDoor_Script{
     checkitem(ITEM_KEY_TO_ROOM_1,1)
 
-    if(!var(VAR_RESULT)){
-        setmetatile(13,8,0x23B,TRUE)
-    }
+        if(!var(VAR_RESULT)){
+            setmetatile(13,8,0x23B,TRUE)
+        }
 }
 
 script Marin_RangerStationDoor_Script{
     lock
-    checkitem(ITEM_KEY_TO_ROOM_1,1)
+        checkitem(ITEM_KEY_TO_ROOM_1,1)
 
-    if(!var(VAR_RESULT)){
-        msgbox(gText_Marin_TheDoorIsLocked,MSGBOX_SIGN)
-        release
-        end
-    }
+        if(!var(VAR_RESULT)){
+            msgbox(gText_Marin_TheDoorIsLocked,MSGBOX_SIGN)
+                release
+                end
+        }
 }
 
 script Marin_Stan_Interact_Script{
@@ -89,12 +91,38 @@ script Marin_HideMapNamePopup_Script{
 script Marin_Biker_Interact_Script{
     msgbox(gText_Marin_PlaceholderBiker,MSGBOX_NPC)
 
-    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_GETTHEBANDBACKTOGETHER)
+        questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_GETTHEBANDBACKTOGETHER)
 
-    if(var(VAR_RESULT)){
-        goto(Quest_GetTheBand_Interact_BikerD_Dialogue)
-    }
+        if(var(VAR_RESULT)){
+            goto(Quest_GetTheBand_Interact_BikerD_Dialogue)
+        }
     end
+}
+
+script Marin_Lenora_Interact_Script{
+    lock
+        faceplayer
+        returnqueststate(QUEST_RESTOREMARIN)
+
+        switch(var(VAR_RESULT)){
+            case QUEST_MENU_SET_ACTIVE: call(Quest_Restoremarin_CheckProgress_Script)
+            case QUEST_MENU_SET_REWARD: call(Quest_Restoremarin_Reward_Dialogue)
+            default: call(Marin_Lenora_PreQuest_Dialogue)
+        }
+}
+
+script Marin_Lenora_PreQuest_Dialogue{
+    if (var(VAR_STORYLINE_STATE) > STORY_POST_BATTLE_ARCHER_TREASUREISLAND){
+        goto(Quest_Restoremarin_StartQuest_Dialogue)
+    }
+    else{
+        call(Marin_Lenora_Dialogue)
+    }
+}
+
+script Marin_Lenora_Dialogue{
+    msgbox(gText_Marin_IUsedToBe,MSGBOX_NPC)
+        end
 }
 
 text gText_Marin_PlaceholderBiker{
@@ -103,4 +131,8 @@ text gText_Marin_PlaceholderBiker{
 
 text gText_Marin_TheDoorIsLocked{
     format("The door is locked.")
+}
+
+text gText_Marin_IUsedToBe{
+    format("i used to be the leader of the gym in town!")
 }

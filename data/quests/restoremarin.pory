@@ -1,0 +1,41 @@
+const LENORA_MARIN = 1
+
+//Quest_Restoremarin_
+//gText_Restoremarin_
+
+script Quest_Restoremarin_StartQuest_Dialogue{
+    startquest(QUEST_RESTOREMARIN)
+}
+
+script Quest_Restoremarin_CheckProgress_Script{
+    setvar(VAR_TEMP_0,0)
+
+        subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_1)
+
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_2)
+
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+
+    switch(var(VAR_TEMP_0)){
+        case 0: goto(Quest_Restoremarin_First_Active_Dialogue)
+        case 1: goto(Quest_Restoremarin_Second_Active_Dialogue)
+        case 2:
+                questmenu(QUEST_MENU_SET_REWARD,QUEST_RESTOREMARIN)
+                    goto(Quest_Restoremarin_Reward_Dialogue)
+    }
+}
+
+script Quest_Restoremarin_First_Active_Dialogue{
+}
+
+script Quest_Restoremarin_Second_Active_Dialogue{
+}
+
+script Quest_Restoremarin_Reward_Dialogue{
+}
