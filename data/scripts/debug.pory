@@ -70,7 +70,12 @@ script Debug_Weather{
 
 script Debug_Script_1{
     setvar(VAR_STORYLINE_STATE,STORY_ARCHER_EXPLAIN_RESTORATION)
-    warp(MAP_MARIN,0)
+    setflag(FLAG_SYS_QUEST_MENU_GET)
+
+    givemon(SPECIES_KRABBY,20,ITEM_NONE)
+    givemon(SPECIES_COPPERAJAH,20,ITEM_NONE)
+    questmenu(QUEST_MENU_SET_ACTIVE,QUEST_RESTOREMARIN)
+    warp(MAP_MARIN,12,19)
 }
 script Debug_Script_2{
     completequest(QUEST_RESTOREMARIN)

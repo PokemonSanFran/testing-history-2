@@ -105,7 +105,7 @@ script Marin_Lenora_Interact_Script{
         returnqueststate(QUEST_RESTOREMARIN)
 
         switch(var(VAR_RESULT)){
-            case QUEST_MENU_SET_ACTIVE: call(Quest_Restoremarin_CheckProgress_Script)
+            case QUEST_MENU_SET_ACTIVE: call(Quest_Restoremarin_Active_Script)
             case QUEST_MENU_SET_REWARD: call(Quest_Restoremarin_Reward_Dialogue)
             default: call(Marin_Lenora_PreQuest_Dialogue)
         }

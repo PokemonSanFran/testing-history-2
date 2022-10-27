@@ -120,7 +120,7 @@ Marin_Lenora_Interact_Script::
 	return
 
 Marin_Lenora_Interact_Script_2:
-	call Quest_Restoremarin_CheckProgress_Script
+	call Quest_Restoremarin_Active_Script
 	return
 
 Marin_Lenora_Interact_Script_3:

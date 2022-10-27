@@ -1186,10 +1186,6 @@ Script_RemoveTint::
 .include "data/cutscenes/WelcometotheHallofFame.inc"
 .include "data/cutscenes/BeingChampionisHard.inc"
 .include "data/cutscenes/LetsGrabLunch.inc"
-##  .include "data/quests/RestoreChinatown.inc"
-##  .include "data/quests/RestoreTreasureisland.inc"
-.include "data/quests/RestoreMain.inc"
-##  .include "data/quests/RestoreHaightashbury.inc"
 .include "data/cutscenes/YouRealizeWereEvilRight.inc"
 .include "data/cutscenes/YouRealizeTheyreEvilRight.inc"
 .include "data/cutscenes/CongratsYoureanAsshole.inc"
@@ -1310,6 +1306,10 @@ Script_RemoveTint::
 // .include "data/quests/bodegaburnout.inc"
 .include "data/quests/warehousewarfare.inc"
 // .include "data/quests/restoretotheirformerglory.inc"
+// .include "data/quests/restorechinatown.inc"
+// .include "data/quests/restoretreasureisland.inc"
+.include "data/quests/restoremarin.inc"
+// .include "data/quests/restorehaightashbury.inc"
 
 ## PSF MAPS
 .include "data/maps/Presidio/scripts.inc"

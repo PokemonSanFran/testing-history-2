@@ -1210,6 +1210,13 @@ extern const u8 gText_Quest_RestoreToTheirFormerGlory_Sub4_Name[];
 extern const u8 gText_Quest_RestoreToTheirFormerGlory_Sub4_Desc[];
 extern const u8 gText_Quest_RestoreToTheirFormerGlory_Sub4_Map[];
 
+extern const u8 gText_Quest_RestoreMarin_Sub1_Name[];
+extern const u8 gText_Quest_RestoreMarin_Sub1_Desc[];
+extern const u8 gText_Quest_RestoreMarin_Sub1_Map[];
+extern const u8 gText_Quest_RestoreMarin_Sub2_Name[];
+extern const u8 gText_Quest_RestoreMarin_Sub2_Desc[];
+extern const u8 gText_Quest_RestoreMarin_Sub2_Map[];
+
 //quest flavor
 extern const u8 gText_PlayersAdventure_Flavor1[];
 extern const u8 gText_PlayersAdventure_Flavor2[];

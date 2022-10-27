@@ -1,41 +1,270 @@
-const LENORA_MARIN = 1
+const LENORA_MARIN = 7
+const FLAG_HIDE_LENORA_MARIN = FLAG_TEMP_1
 
 //Quest_Restoremarin_
 //gText_Restoremarin_
 
-script Quest_Restoremarin_StartQuest_Dialogue{
-    startquest(QUEST_RESTOREMARIN)
+script Quest_Restoremarin_Debug_Script{
+    addvar(VAR_TEMP_0,1)
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_RESTOREMARIN)
+
+        if (var(VAR_RESULT)){
+            givemon(SPECIES_KRABBY,20,ITEM_NONE)
+            givemon(SPECIES_COPPERAJAH,20,ITEM_NONE)
+        }
+    release
+    end
+}
+
+script Quest_Restoremarin_MoveLenora_Script{
+    if (var(VAR_STORYLINE_STATE) > STORY_POST_BATTLE_ARCHER_TREASUREISLAND){
+        setobjectxy(LENORA_MARIN,12,18)
+        setobjectxyperm(LENORA_MARIN,12,18)
+            setobjectmovementtype(LENORA_MARIN,MOVEMENT_TYPE_FACE_DOWN)
+    }
+    return
+}
+script Quest_Restoremarin_HideLenora_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN)
+
+    if (var(VAR_RESULT)){
+        setflag(FLAG_HIDE_LENORA_MARIN)
+    }
 }
 
 script Quest_Restoremarin_CheckProgress_Script{
     setvar(VAR_TEMP_0,0)
+    setvar(VAR_TEMP_1,0)
+    setvar(VAR_TEMP_2,0)
 
-        subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_1)
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_1)
 
         if (var(VAR_RESULT)){
             addvar(VAR_TEMP_0,1)
+            addvar(VAR_TEMP_1,1)
         }
 
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_2)
 
         if (var(VAR_RESULT)){
             addvar(VAR_TEMP_0,1)
+            addvar(VAR_TEMP_2,1)
         }
 
-    switch(var(VAR_TEMP_0)){
-        case 0: goto(Quest_Restoremarin_First_Active_Dialogue)
-        case 1: goto(Quest_Restoremarin_Second_Active_Dialogue)
-        case 2:
-                questmenu(QUEST_MENU_SET_REWARD,QUEST_RESTOREMARIN)
-                    goto(Quest_Restoremarin_Reward_Dialogue)
+    if(var(VAR_TEMP_0) == 2){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_RESTOREMARIN)
     }
+    return
 }
 
-script Quest_Restoremarin_First_Active_Dialogue{
+script Quest_Restoremarin_BufferStrings_Part1_Script{
+    bufferspeciesname(STR_VAR_1,SPECIES_KRABBY)
+    buffermovename(STR_VAR_2,MOVE_KNOCK_OFF)
+    return
 }
 
-script Quest_Restoremarin_Second_Active_Dialogue{
+script Quest_Restoremarin_BufferStrings_Part2_Script{
+    bufferspeciesname(STR_VAR_1,SPECIES_COPPERAJAH)
+    buffermovename(STR_VAR_2,MOVE_POWER_WHIP)
+    return
+}
+
+script Quest_Restoremarin_StartQuest_Dialogue{
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_YourePlayer)
+
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_YeahImHelping) 
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_AreYouHelping)
+
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_IHearThat)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_TheBestWay)
+
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_RightBut)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_HmmI)
+        msgbox(gText_Restoremarin_IHave)
+
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_LikeTrainer)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_OhIDidnt)
+        msgbox(gText_Restoremarin_TheresABattle)
+        msgbox(gText_Restoremarin_CanYouBring)
+        msgbox(gText_Restoremarin_IFIWant)
+        call(Quest_Restoremarin_BufferStrings_Part1_Script)
+        msgbox(gText_Restoremarin_WeNeed_A)
+        call(Quest_Restoremarin_BufferStrings_Part2_Script)
+        msgbox(gText_Restoremarin_WeNeed_B)
+        msgbox(gText_Restoremarin_ComeBack)
+        callnative(ClearMugshot)
+
+        startquest(QUEST_RESTOREMARIN)
+        release
+        end
+}
+
+script Quest_Restoremarin_Active_Script{
+    setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+    callnative(DrawMugshot)
+    call(Quest_Restoremarin_CheckProgress_Script)
+
+    if (var(VAR_TEMP_1) == 1){
+        call(Quest_Restoremarin_BufferStrings_Part2_Script)
+        msgbox(gText_Restoremarin_WeNeed)
+    }elif (var(VAR_TEMP_2) == 1){
+        call(Quest_Restoremarin_BufferStrings_Part1_Script)
+        msgbox(gText_Restoremarin_WeNeed)
+    }else {
+        call(Quest_Restoremarin_BufferStrings_Part1_Script)
+        msgbox(gText_Restoremarin_WeNeed_A)
+        call(Quest_Restoremarin_BufferStrings_Part2_Script)
+        msgbox(gText_Restoremarin_WeNeed_B)
+    }
+
+    call(Quest_Restoremarin_CheckPokemon_Script)
+    callnative(ClearMugshot)
+    goto(Quest_Restoremarin_JudgeMon_Script)
+}
+
+script Quest_Restoremarin_CheckPokemon_Script{
+    //PSF TODO this needs to be changed from "look for krabby" to "look for krabby for knock off"
+    //PSF TODO need to write the script to take a pokemon from the player
+    special(ChoosePartyMon)
+    waitstate
+    if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+        goto(Quest_Restoremarin_Cancel_Dialogue)
+    }
+    specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
+    return
+}
+
+script Quest_Restoremarin_JudgeMon_Script{
+    if (var(VAR_RESULT) == SPECIES_KRABBY && var(VAR_TEMP_1) != 1){
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN,SUB_QUEST_1)
+        goto(Quest_Restoremarin_TakeMon_Dialogue)
+    }
+
+    if (var(VAR_RESULT) == SPECIES_COPPERAJAH && var(VAR_TEMP_2) != 1){
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN,SUB_QUEST_2)
+        goto(Quest_Restoremarin_TakeMon_Dialogue)
+    }
+
+    goto(Quest_Restoremarin_Cancel_Dialogue)
+}
+
+script Quest_Restoremarin_TakeMon_Dialogue{
+    setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+    callnative(DrawMugshot)
+    msgbox(gText_Restoremarin_Excellent,MSGBOX_NPC)
+    //PSF TODO special(TakePlayerMon)
+    callnative(ClearMugshot)
+
+    call(Quest_Restoremarin_CheckProgress_Script)
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_RESTOREMARIN)
+
+    if (var(VAR_RESULT)){
+        goto(Quest_Restoremarin_Reward_Dialogue)
+    }
+    end
+}
+
+script Quest_Restoremarin_Cancel_Dialogue{
+    setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+    callnative(DrawMugshot)
+        call(Quest_Restoremarin_BufferStrings_Part1_Script)
+        msgbox(gText_Restoremarin_WeNeed_A)
+        call(Quest_Restoremarin_BufferStrings_Part2_Script)
+        msgbox(gText_Restoremarin_WeNeed_B)
+        msgbox(gText_Restoremarin_ComeBack)
+    callnative(ClearMugshot)
+    closemessage
+        return
 }
 
 script Quest_Restoremarin_Reward_Dialogue{
+    setvar(
+}
+
+script Quest_Restoremarin_StartBattle_Script{
+}
+
+script Quest_Restoremarin_PostBattle_Dialogue{
+}
+
+text gText_Restoremarin_YourePlayer{
+    format("You're {PLAYER} - Archer mentioned you'd be coming.")
+}
+
+text gText_Restoremarin_YeahImHelping{
+    format("Yeah, I'm helping them get their project off the ground.")
+}
+text gText_Restoremarin_AreYouHelping{
+    format("I meant what I said to Archer. I'll help get this off the ground, but we still need to figure out the next steps to taking down the whole League.")
+}
+text gText_Restoremarin_IHearThat{
+    format("That's a future goal though, right? We want to focus on helping Trainers in the region now.")
+}
+text gText_Restoremarin_TheBestWay{
+    format("I'm not interested in bandaid fixes. This new League is hurting people now, right?")
+}
+text gText_Restoremarin_RightBut{
+    format("Right! But we have something we can do, right now, to make things better, right now. Archer is gonna make this happen, but it would mean so much to get you onboard.")
+}
+text gText_Restoremarin_HmmI{
+    format("Hmm. That kid does seem driven. Let's see what I can do.")
+}
+text gText_Restoremarin_IHave{
+    format("I want to help Trainers learn to adapt. When everything that Trainers trust are stripped away, how can they make the best of the hand they've been dealt?")
+}
+text gText_Restoremarin_LikeTrainer{
+    format("Like the Trainers of SanFran?")
+}
+text gText_Restoremarin_OhIDidnt{
+    format("Oh! I didn't think of it like that. You're right.")
+}
+text gText_Restoremarin_TheresABattle{
+    format("There's a Battle Facility in Hoenn and Sinnoh that has a similar concept. A trainer's Pokémon is taken away from them, and they are forced to use rental Pokémon. How hard would that be for us to do...?")
+}
+text gText_Restoremarin_CanYouBring{
+    format("Can you bring me two Pokémon? ")
+}
+text gText_Restoremarin_IFIWant{
+    format("If I want to start my own Battle Factory, we'll need to streamline to teaching moves to Pokémon.")
+}
+text gText_Restoremarin_DidYouFind{
+    format("Did you find the Pokémon I mentioned?")
+}
+
+text gText_Restoremarin_WeNeed_A{
+    format("We need a {STR_VAR_1} that knows {STR_VAR_2},")
+}
+text gText_Restoremarin_WeNeed_B{
+    format("and a {STR_VAR_1} that knows {STR_VAR_2}.")
+}
+text gText_Restoremarin_ComeBack{
+    format("Come back when you've caught one.")
+}
+text gText_Restoremarin_WeNeed{
+    format("We still need a {STR_VAR_1} that knows {STR_VAR_2}, but we're close!")
+}
+text gText_Restoremarin_Excellent{
+    format("Excellent! This is perfect.")
 }

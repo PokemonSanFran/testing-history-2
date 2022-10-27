@@ -1177,6 +1177,13 @@ const u8 gText_Quest_RestoreToTheirFormerGlory_Sub4_Name[] = _("Haightashbury");
 const u8 gText_Quest_RestoreToTheirFormerGlory_Sub4_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_RestoreToTheirFormerGlory_Sub4_Map[] = _("Haightashbury");
 
+const u8 gText_Quest_RestoreMarin_Sub1_Name[] = _("Krabby");
+const u8 gText_Quest_RestoreMarin_Sub1_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_RestoreMarin_Sub1_Map[] = _("Marin");
+const u8 gText_Quest_RestoreMarin_Sub2_Name[] = _("Copperajah");
+const u8 gText_Quest_RestoreMarin_Sub2_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_RestoreMarin_Sub2_Map[] = _("Marin");
+
 //quest flavor
 const u8 gText_PlayersAdventure_Flavor1[] =_("Explore everything eastern SanFran has\nto offer on your way to the\nChampionship.");
 const u8 gText_PlayersAdventure_Flavor2[] =_("Head back to the Compound in Southbay\nand get a good night's sleep.");

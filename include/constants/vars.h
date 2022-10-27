@@ -336,6 +336,7 @@
 #define VAR_SALESFORCETOWER_PRODUCTION_STATE 0x40FD // Previously Unused Var
 #define VAR_SALESFORCETOWER_2F_STATE 0x40FD // Previously Unused Var
 #define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
+#define VAR_QUEST_RESTOREMARIN 0x40F7 // Previously Unused Var
 #define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
 #define VAR_UNUSED_0x40FA                                0x40FA // Unused Var

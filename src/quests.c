@@ -2231,6 +2231,27 @@ static const struct SubQuest
 	        sText_Restored
 	),
 };
+static const struct SubQuest
+	sRestoreMarin_Sub[QUEST_RESTOREMARIN_SUB_COUNT] = {
+	sub_quest(
+	        218,
+	        gText_Quest_RestoreMarin_Sub1_Name,
+	        gText_Quest_RestoreMarin_Sub1_Desc,
+	        gText_Quest_RestoreMarin_Sub1_Map,
+	        SPECIES_KRABBY,
+	        PKMN,
+            sText_Caught
+	),
+	sub_quest(
+	        219,
+	        gText_Quest_RestoreMarin_Sub2_Name,
+	        gText_Quest_RestoreMarin_Sub2_Desc,
+	        gText_Quest_RestoreMarin_Sub2_Map,
+	        SPECIES_COPPERAJAH,
+	        PKMN,
+            sText_Caught
+	),
+};
 
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -3228,10 +3249,10 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_RestoreMarin_Desc,
 	        gText_Quest_RestoreMarin_DoneDesc,
 	        gText_Quest_RestoreMarin_Map,
-	        OBJ_EVENT_GFX_SCOTT,
+	        OBJ_EVENT_GFX_GRETA,
 	        OBJECT,
-	        NULL,
-	        0
+            sRestoreMarin_Sub,
+	        2
 	),
 
 	side_quest(
