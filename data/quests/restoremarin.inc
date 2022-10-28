@@ -1,3 +1,18 @@
+Quest_Restoremarin_Debug_Script::
+	addvar VAR_TEMP_0, 1
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_RESTOREMARIN
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_Restoremarin_Debug_Script_2
+Quest_Restoremarin_Debug_Script_1:
+	release
+	end
+
+Quest_Restoremarin_Debug_Script_2:
+	givemon SPECIES_KRABBY, 20, ITEM_NONE
+	givemon SPECIES_COPPERAJAH, 20, ITEM_NONE
+	goto Quest_Restoremarin_Debug_Script_1
+
+
 Quest_Restoremarin_MoveLenora_Script::
 	compare VAR_STORYLINE_STATE, STORY_POST_BATTLE_ARCHER_TREASUREISLAND
 	goto_if_gt Quest_Restoremarin_MoveLenora_Script_2
@@ -122,9 +137,8 @@ Quest_Restoremarin_Active_Script::
 	call Quest_Restoremarin_BufferStrings_Part2_Script
 	msgbox gText_Restoremarin_WeNeed_B
 Quest_Restoremarin_Active_Script_1:
-	call Quest_Restoremarin_CheckPokemon_Script
 	callnative ClearMugshot
-	goto Quest_Restoremarin_JudgeMon_Script
+	goto Quest_Restoremarin_CheckPokemon_Script
 	return
 
 Quest_Restoremarin_Active_Script_2:
@@ -141,46 +155,42 @@ Quest_Restoremarin_Active_Script_3:
 Quest_Restoremarin_CheckPokemon_Script::
 	special ChoosePartyMon
 	waitstate
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
 	goto_if_eq Quest_Restoremarin_CheckPokemon_Script_2
 Quest_Restoremarin_CheckPokemon_Script_1:
-	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	compare VAR_RESULT, SPECIES_KRABBY
+	goto_if_eq Quest_Restoremarin_CheckPokemon_Script_6
+Quest_Restoremarin_CheckPokemon_Script_4:
+	compare VAR_RESULT, SPECIES_COPPERAJAH
+	goto_if_eq Quest_Restoremarin_CheckPokemon_Script_11
+Quest_Restoremarin_CheckPokemon_Script_9:
+	goto Quest_Restoremarin_Cancel_Dialogue
 	return
 
 Quest_Restoremarin_CheckPokemon_Script_2:
 	goto Quest_Restoremarin_Cancel_Dialogue
 	goto Quest_Restoremarin_CheckPokemon_Script_1
 
-
-Quest_Restoremarin_JudgeMon_Script::
-	compare VAR_RESULT, SPECIES_KRABBY
-	goto_if_eq Quest_Restoremarin_JudgeMon_Script_3
-Quest_Restoremarin_JudgeMon_Script_1:
-	compare VAR_RESULT, SPECIES_COPPERAJAH
-	goto_if_eq Quest_Restoremarin_JudgeMon_Script_8
-Quest_Restoremarin_JudgeMon_Script_6:
-	goto Quest_Restoremarin_Cancel_Dialogue
-	return
-
-Quest_Restoremarin_JudgeMon_Script_2:
+Quest_Restoremarin_CheckPokemon_Script_5:
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTOREMARIN, SUB_QUEST_1
 	goto Quest_Restoremarin_TakeMon_Dialogue
-	goto Quest_Restoremarin_JudgeMon_Script_1
+	goto Quest_Restoremarin_CheckPokemon_Script_4
 
-Quest_Restoremarin_JudgeMon_Script_3:
+Quest_Restoremarin_CheckPokemon_Script_6:
 	compare VAR_TEMP_1, 1
-	goto_if_ne Quest_Restoremarin_JudgeMon_Script_2
-	goto Quest_Restoremarin_JudgeMon_Script_1
+	goto_if_ne Quest_Restoremarin_CheckPokemon_Script_5
+	goto Quest_Restoremarin_CheckPokemon_Script_4
 
-Quest_Restoremarin_JudgeMon_Script_7:
+Quest_Restoremarin_CheckPokemon_Script_10:
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTOREMARIN, SUB_QUEST_2
 	goto Quest_Restoremarin_TakeMon_Dialogue
-	goto Quest_Restoremarin_JudgeMon_Script_6
+	goto Quest_Restoremarin_CheckPokemon_Script_9
 
-Quest_Restoremarin_JudgeMon_Script_8:
+Quest_Restoremarin_CheckPokemon_Script_11:
 	compare VAR_TEMP_2, 1
-	goto_if_ne Quest_Restoremarin_JudgeMon_Script_7
-	goto Quest_Restoremarin_JudgeMon_Script_6
+	goto_if_ne Quest_Restoremarin_CheckPokemon_Script_10
+	goto Quest_Restoremarin_CheckPokemon_Script_9
 
 
 Quest_Restoremarin_TakeMon_Dialogue::
@@ -214,12 +224,86 @@ Quest_Restoremarin_Cancel_Dialogue::
 
 
 Quest_Restoremarin_Reward_Dialogue::
-	msgbox Quest_Restoremarin_Reward_Dialogue_Text_0
+	compare VAR_QUEST_RESTOREMARIN, SAVE_BEFORE_LENORA_BATTLE
+	goto_if_eq Quest_Restoremarin_Reward_Dialogue_2
+Quest_Restoremarin_Reward_Dialogue_1:
+	setvar VAR_QUEST_RESTOREMARIN, SAVE_BEFORE_LENORA_BATTLE
+	setvar VAR_MUGSHOT, MUGSHOT_LENORA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_IAskedA
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_IAbsolutely
+	setvar VAR_MUGSHOT, MUGSHOT_LENORA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_HellIKindaWanna
+	callnative ClearMugshot
+	call Common_EventScript_SaveGame
+	closemessage
+	goto Quest_Restoremarin_StartBattle_Script
+	return
+
+Quest_Restoremarin_Reward_Dialogue_2:
+	goto Quest_Restoremarin_StartBattle_Script
+	goto Quest_Restoremarin_Reward_Dialogue_1
+
+
+Quest_Restoremarin_StartBattle_Script::
+	lock
+	setvar VAR_MUGSHOT, MUGSHOT_LENORA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_OkayChampion
+	trainerbattle_no_intro TRAINER_GRETA, gText_Quest_Restoremarin_YoureTougherThan
+	closemessage
+	callnative ClearMugshot
+	goto Quest_Restoremarin_PostBattle_Dialogue
 	return
 
 
-Quest_Restoremarin_Reward_Dialogue_Text_0:
-	.string "test$"
+Quest_Restoremarin_PostBattle_Dialogue::
+	lock
+	setvar VAR_QUEST_RESTOREMARIN, DEFEATED_LENORA
+	setvar VAR_MUGSHOT, MUGSHOT_LENORA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_ManIfTrainersSeeYou
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_IThinkYoureGiving
+	setvar VAR_MUGSHOT, MUGSHOT_LENORA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_AndICantWait
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_IsThatYourGoal
+	setvar VAR_MUGSHOT, MUGSHOT_LENORA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_YeahThingsWere
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_YouCantGoBack
+	setvar VAR_MUGSHOT, MUGSHOT_LENORA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_YouDontGet
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_IWasntHere
+	setvar VAR_MUGSHOT, MUGSHOT_LENORA
+	callnative DrawMugshot
+	msgbox gText_Quest_Restoremarin_YourHeartFeels
+	callnative ClearMugshot
+	closemessage
+	opendoor 12, 17
+	waitdooranim
+	applymovement 7, Common_Movement_WalkUp
+	waitmovement 7
+	removeobject 7
+	playse SE_EXIT
+	waitse
+	completequest QUEST_RESTOREMARIN
+	call LetsGrabLunch_CheckRestorationProgress_Script
+	release
+	end
+
 
 gText_Restoremarin_YourePlayer::
 	.string "You're {PLAYER} - Archer mentioned\n"
@@ -306,3 +390,79 @@ gText_Restoremarin_WeNeed::
 
 gText_Restoremarin_Excellent::
 	.string "Excellent! This is perfect.$"
+
+gText_Quest_Restoremarin_IAskedA::
+	.string "I asked a few others Trainer for similar\n"
+	.string "things. I think after a few tests, we\l"
+	.string "might have something going here! You\l"
+	.string "should stop by and help us test it out.$"
+
+gText_Quest_Restoremarin_IAbsolutely::
+	.string "I absolutely will!$"
+
+gText_Quest_Restoremarin_HellIKindaWanna::
+	.string "Hell, I kinda wanna see it for myself\n"
+	.string "right now. Are you really all that?$"
+
+gText_Quest_Restoremarin_OkayChampion::
+	.string "Okay Champion, bring it on!$"
+
+gText_Quest_Restoremarin_YoureTougherThan::
+	.string "You're tougher than expected!$"
+
+gText_Quest_Restoremarin_ManIfTrainersSeeYou::
+	.string "Man, if Trainers see you backing this\n"
+	.string "and people already know how strong you\l"
+	.string "are... we've got a shot at real\l"
+	.string "legitimacy.$"
+
+gText_Quest_Restoremarin_IThinkYoureGiving::
+	.string "I think you're giving me too much\n"
+	.string "credit! Believe it or not, Ycombinator's\l"
+	.string "Kickstart problem was a huge part of\l"
+	.string "the reason I was able to hone my skills\l"
+	.string "this much.$"
+
+gText_Quest_Restoremarin_AndICantWait::
+	.string "And I can't wait to turn that power\n"
+	.string "against those assholes. They're gonna\l"
+	.string "collapse under their own weight, and\l"
+	.string "then we can reinstate all the old gyms\l"
+	.string "and go back to when times were good\l"
+	.string "and I was running this joint!$"
+
+gText_Quest_Restoremarin_IsThatYourGoal::
+	.string "Is that your goal? Just go to back to\n"
+	.string "the past?$"
+
+gText_Quest_Restoremarin_YeahThingsWere::
+	.string "Yeah! Things were so much better\n"
+	.string "before.$"
+
+gText_Quest_Restoremarin_YouCantGoBack::
+	.string "Lenora, you can't go back to the past.\n"
+	.string "You've gotta stick to the reality we've\l"
+	.string "got right now. I think what you're going\l"
+	.string "to do here is going to make a real\l"
+	.string "difference for Trainers, and that's\l"
+	.string "awesome. But if you want the Trainers\l"
+	.string "of the region to be the best they can\l"
+	.string "be, I think we need to figure out a path\l"
+	.string "forward... in the present. That's what\l"
+	.string "Archer and I want to do.$"
+
+gText_Quest_Restoremarin_YouDontGet::
+	.string "You don't get it, {PLAYER}, you\n"
+	.string "weren't here for before.$"
+
+gText_Quest_Restoremarin_IWasntHere::
+	.string "I wasn't here, but I'm here now. And\n"
+	.string "while I'm new, I'm really starting to\l"
+	.string "love it here and I want to help\l"
+	.string "Trainers, and help people, just like you\l"
+	.string "do. And we can do that, moving forward.$"
+
+gText_Quest_Restoremarin_YourHeartFeels::
+	.string "Your heart feels like its in the right\n"
+	.string "place. I gotta get back to work. Let's\l"
+	.string "at least get this test off the ground.$"

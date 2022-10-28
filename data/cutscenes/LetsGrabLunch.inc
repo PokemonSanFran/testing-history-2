@@ -259,8 +259,6 @@ LetsGrabLunch_CheckRestorationProgress_Script::
 
 LetsGrabLunch_CheckRestorationProgress_Script_1:
 	setvar VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE
-	bufferpartymonnick 0, 1
-	msgbox gText_LetsGrabLunch_FastForwardAdvance
 	return
 
 LetsGrabLunch_CheckRestorationProgress_Script_2:

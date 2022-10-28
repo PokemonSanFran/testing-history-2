@@ -6,20 +6,20 @@ const FLAG_HIDE_LENORA_MARIN = FLAG_TEMP_1
 
 script Quest_Restoremarin_Debug_Script{
     addvar(VAR_TEMP_0,1)
-    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_RESTOREMARIN)
+        questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_RESTOREMARIN)
 
         if (var(VAR_RESULT)){
             givemon(SPECIES_KRABBY,20,ITEM_NONE)
-            givemon(SPECIES_COPPERAJAH,20,ITEM_NONE)
+                givemon(SPECIES_COPPERAJAH,20,ITEM_NONE)
         }
     release
-    end
+        end
 }
 
 script Quest_Restoremarin_MoveLenora_Script{
     if (var(VAR_STORYLINE_STATE) > STORY_POST_BATTLE_ARCHER_TREASUREISLAND){
         setobjectxy(LENORA_MARIN,12,18)
-        setobjectxyperm(LENORA_MARIN,12,18)
+            setobjectxyperm(LENORA_MARIN,12,18)
             setobjectmovementtype(LENORA_MARIN,MOVEMENT_TYPE_FACE_DOWN)
     }
     return
@@ -27,28 +27,28 @@ script Quest_Restoremarin_MoveLenora_Script{
 script Quest_Restoremarin_HideLenora_Script{
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN)
 
-    if (var(VAR_RESULT)){
-        setflag(FLAG_HIDE_LENORA_MARIN)
-    }
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_LENORA_MARIN)
+        }
 }
 
 script Quest_Restoremarin_CheckProgress_Script{
     setvar(VAR_TEMP_0,0)
-    setvar(VAR_TEMP_1,0)
-    setvar(VAR_TEMP_2,0)
+        setvar(VAR_TEMP_1,0)
+        setvar(VAR_TEMP_2,0)
 
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_1)
+        subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_1)
 
         if (var(VAR_RESULT)){
             addvar(VAR_TEMP_0,1)
-            addvar(VAR_TEMP_1,1)
+                addvar(VAR_TEMP_1,1)
         }
 
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTOREMARIN,SUB_QUEST_2)
 
         if (var(VAR_RESULT)){
             addvar(VAR_TEMP_0,1)
-            addvar(VAR_TEMP_2,1)
+                addvar(VAR_TEMP_2,1)
         }
 
     if(var(VAR_TEMP_0) == 2){
@@ -59,18 +59,18 @@ script Quest_Restoremarin_CheckProgress_Script{
 
 script Quest_Restoremarin_BufferStrings_Part1_Script{
     bufferspeciesname(STR_VAR_1,SPECIES_KRABBY)
-    buffermovename(STR_VAR_2,MOVE_KNOCK_OFF)
-    return
+        buffermovename(STR_VAR_2,MOVE_KNOCK_OFF)
+        return
 }
 
 script Quest_Restoremarin_BufferStrings_Part2_Script{
     bufferspeciesname(STR_VAR_1,SPECIES_COPPERAJAH)
-    buffermovename(STR_VAR_2,MOVE_POWER_WHIP)
-    return
+        buffermovename(STR_VAR_2,MOVE_POWER_WHIP)
+        return
 }
 
 script Quest_Restoremarin_StartQuest_Dialogue{
-        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+    setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
         callnative(DrawMugshot)
         msgbox(gText_Restoremarin_YourePlayer)
 
@@ -123,90 +123,170 @@ script Quest_Restoremarin_StartQuest_Dialogue{
 
 script Quest_Restoremarin_Active_Script{
     setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
-    callnative(DrawMugshot)
-    call(Quest_Restoremarin_CheckProgress_Script)
+        callnative(DrawMugshot)
+        call(Quest_Restoremarin_CheckProgress_Script)
 
-    if (var(VAR_TEMP_1) == 1){
-        call(Quest_Restoremarin_BufferStrings_Part2_Script)
-        msgbox(gText_Restoremarin_WeNeed)
-    }elif (var(VAR_TEMP_2) == 1){
-        call(Quest_Restoremarin_BufferStrings_Part1_Script)
-        msgbox(gText_Restoremarin_WeNeed)
-    }else {
-        call(Quest_Restoremarin_BufferStrings_Part1_Script)
-        msgbox(gText_Restoremarin_WeNeed_A)
-        call(Quest_Restoremarin_BufferStrings_Part2_Script)
-        msgbox(gText_Restoremarin_WeNeed_B)
-    }
+        if (var(VAR_TEMP_1) == 1){
+            call(Quest_Restoremarin_BufferStrings_Part2_Script)
+                msgbox(gText_Restoremarin_WeNeed)
+        }elif (var(VAR_TEMP_2) == 1){
+            call(Quest_Restoremarin_BufferStrings_Part1_Script)
+                msgbox(gText_Restoremarin_WeNeed)
+        }else {
+            call(Quest_Restoremarin_BufferStrings_Part1_Script)
+                msgbox(gText_Restoremarin_WeNeed_A)
+                call(Quest_Restoremarin_BufferStrings_Part2_Script)
+                msgbox(gText_Restoremarin_WeNeed_B)
+        }
 
-    call(Quest_Restoremarin_CheckPokemon_Script)
-    callnative(ClearMugshot)
-    goto(Quest_Restoremarin_JudgeMon_Script)
+        callnative(ClearMugshot)
+
+        goto(Quest_Restoremarin_CheckPokemon_Script)
 }
 
 script Quest_Restoremarin_CheckPokemon_Script{
     //PSF TODO this needs to be changed from "look for krabby" to "look for krabby for knock off"
     //PSF TODO need to write the script to take a pokemon from the player
     special(ChoosePartyMon)
-    waitstate
-    if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
-        goto(Quest_Restoremarin_Cancel_Dialogue)
-    }
-    specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
-    return
-}
+        waitstate
+        specialvar(VAR_RESULT,ScriptGetPartyMonSpecies)
 
-script Quest_Restoremarin_JudgeMon_Script{
+        if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+            goto(Quest_Restoremarin_Cancel_Dialogue)
+        }
     if (var(VAR_RESULT) == SPECIES_KRABBY && var(VAR_TEMP_1) != 1){
         subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN,SUB_QUEST_1)
-        goto(Quest_Restoremarin_TakeMon_Dialogue)
+            goto(Quest_Restoremarin_TakeMon_Dialogue)
     }
 
     if (var(VAR_RESULT) == SPECIES_COPPERAJAH && var(VAR_TEMP_2) != 1){
         subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN,SUB_QUEST_2)
-        goto(Quest_Restoremarin_TakeMon_Dialogue)
+            goto(Quest_Restoremarin_TakeMon_Dialogue)
     }
-
     goto(Quest_Restoremarin_Cancel_Dialogue)
 }
 
 script Quest_Restoremarin_TakeMon_Dialogue{
     setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
-    callnative(DrawMugshot)
-    msgbox(gText_Restoremarin_Excellent,MSGBOX_NPC)
-    //PSF TODO special(TakePlayerMon)
-    callnative(ClearMugshot)
+        callnative(DrawMugshot)
+        msgbox(gText_Restoremarin_Excellent,MSGBOX_NPC)
+        //PSF TODO special(TakePlayerMon)
+        callnative(ClearMugshot)
 
-    call(Quest_Restoremarin_CheckProgress_Script)
-    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_RESTOREMARIN)
+        call(Quest_Restoremarin_CheckProgress_Script)
+        questmenu(QUEST_MENU_CHECK_REWARD,QUEST_RESTOREMARIN)
 
-    if (var(VAR_RESULT)){
-        goto(Quest_Restoremarin_Reward_Dialogue)
-    }
+        if (var(VAR_RESULT)){
+            goto(Quest_Restoremarin_Reward_Dialogue)
+        }
     end
 }
 
 script Quest_Restoremarin_Cancel_Dialogue{
     setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
-    callnative(DrawMugshot)
+        callnative(DrawMugshot)
         call(Quest_Restoremarin_BufferStrings_Part1_Script)
         msgbox(gText_Restoremarin_WeNeed_A)
         call(Quest_Restoremarin_BufferStrings_Part2_Script)
         msgbox(gText_Restoremarin_WeNeed_B)
         msgbox(gText_Restoremarin_ComeBack)
-    callnative(ClearMugshot)
-    closemessage
+        callnative(ClearMugshot)
+        closemessage
         return
 }
 
 script Quest_Restoremarin_Reward_Dialogue{
-    setvar(
+    if (var(VAR_QUEST_RESTOREMARIN) == SAVE_BEFORE_LENORA_BATTLE){
+        goto(Quest_Restoremarin_StartBattle_Script)
+    }
+    setvar(VAR_QUEST_RESTOREMARIN,SAVE_BEFORE_LENORA_BATTLE)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_IAskedA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_IAbsolutely)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_HellIKindaWanna)
+        callnative(ClearMugshot)
+
+        call(Common_EventScript_SaveGame)
+        closemessage
+
+        goto(Quest_Restoremarin_StartBattle_Script)
 }
 
 script Quest_Restoremarin_StartBattle_Script{
+    lock
+        setvar(VAR_MUGSHOT,MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_OkayChampion)
+        trainerbattle_no_intro(TRAINER_GRETA,gText_Quest_Restoremarin_YoureTougherThan)
+        closemessage
+        callnative(ClearMugshot)
+        goto(Quest_Restoremarin_PostBattle_Dialogue)
 }
 
 script Quest_Restoremarin_PostBattle_Dialogue{
+    lock
+        setvar(VAR_QUEST_RESTOREMARIN,DEFEATED_LENORA)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_ManIfTrainersSeeYou)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_IThinkYoureGiving)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_AndICantWait)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_IsThatYourGoal)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_YeahThingsWere)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_YouCantGoBack)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_YouDontGet)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_IWasntHere)
+
+        setvar(VAR_MUGSHOT, MUGSHOT_LENORA)
+        callnative(DrawMugshot)
+        msgbox(gText_Quest_Restoremarin_YourHeartFeels)
+        callnative(ClearMugshot)
+        closemessage
+
+        opendoor(12,17)
+        waitdooranim
+        applymovement(LENORA_MARIN,Common_Movement_WalkUp)
+        waitmovement(LENORA_MARIN)
+        removeobject(LENORA_MARIN)
+        playse(SE_EXIT)
+        waitse
+        closedoor(12,17)
+        waitdooranim
+
+        completequest(QUEST_RESTOREMARIN)
+        call(LetsGrabLunch_CheckRestorationProgress_Script)
+        release
+        end
 }
 
 text gText_Restoremarin_YourePlayer{
@@ -267,4 +347,96 @@ text gText_Restoremarin_WeNeed{
 }
 text gText_Restoremarin_Excellent{
     format("Excellent! This is perfect.")
+}
+
+
+
+text gText_Quest_Restoremarin_IAskedA{
+    format("I asked a few others Trainer for similar things. I think after a few tests, we might have something going here! You should stop by and help us test it out.")
+}
+
+
+
+text gText_Quest_Restoremarin_IAbsolutely{
+    format("I absolutely will!")
+}
+
+
+
+
+text gText_Quest_Restoremarin_HellIKindaWanna{
+    format("Hell, I kinda wanna see it for myself right now. Are you really all that?")
+}
+
+
+
+
+text gText_Quest_Restoremarin_OkayChampion{
+    format("Okay Champion, bring it on!")
+}
+
+
+
+
+text gText_Quest_Restoremarin_YoureTougherThan{
+    format("You're tougher than expected!")
+}
+
+
+
+
+text gText_Quest_Restoremarin_ManIfTrainersSeeYou{
+    format("Man, if Trainers see you backing this and people already know how strong you are... we've got a shot at real legitimacy.")
+}
+
+
+
+text gText_Quest_Restoremarin_IThinkYoureGiving{
+    format("I think you're giving me too much credit! Believe it or not, Ycombinator's Kickstart problem was a huge part of the reason I was able to hone my skills this much.")
+}
+
+
+
+
+text gText_Quest_Restoremarin_AndICantWait{
+    format("And I can't wait to turn that power against those assholes. They're gonna collapse under their own weight, and then we can reinstate all the old gyms and go back to when times were good and I was running this joint!")
+}
+
+
+
+text gText_Quest_Restoremarin_IsThatYourGoal{
+    format("Is that your goal? Just go to back to the past?")
+}
+
+
+
+
+text gText_Quest_Restoremarin_YeahThingsWere{
+    format("Yeah! Things were so much better before.")
+}
+
+
+
+text gText_Quest_Restoremarin_YouCantGoBack{
+    format("Lenora, you can't go back to the past. You've gotta stick to the reality we've got right now. I think what you're going to do here is going to make a real difference for Trainers, and that's awesome. But if you want the Trainers of the region to be the best they can be, I think we need to figure out a path forward... in the present. That's what Archer and I want to do.")
+}
+
+
+
+
+text gText_Quest_Restoremarin_YouDontGet{
+    format("You don't get it, {PLAYER}, you weren't here for before.")
+}
+
+
+
+text gText_Quest_Restoremarin_IWasntHere{
+    format("I wasn't here, but I'm here now. And while I'm new, I'm really starting to love it here and I want to help Trainers, and help people, just like you do. And we can do that, moving forward.")
+}
+
+
+
+
+text gText_Quest_Restoremarin_YourHeartFeels{
+    format("Your heart feels like its in the right place. I gotta get back to work. Let's at least get this test off the ground.")
 }

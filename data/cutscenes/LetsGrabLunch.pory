@@ -264,8 +264,6 @@ script LetsGrabLunch_CheckRestorationProgress_Script{
 
         if (var(VAR_TEMP_0) > 0 && var(VAR_STORYLINE_STATE) == STORY_ARCHER_EXPLAIN_RESTORATION){
             setvar(VAR_STORYLINE_STATE,STORY_RESTORATION_1_COMPLETE)
-                bufferpartymonnick(0,1)
-                msgbox(gText_LetsGrabLunch_FastForwardAdvance)
         }
 }
 

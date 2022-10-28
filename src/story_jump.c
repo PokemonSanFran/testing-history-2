@@ -877,6 +877,7 @@ void JumpPlayerTo_RestoreTreasureIsland(){
 }
 void JumpPlayerTo_RestoreMarin(){
     JumpPlayerTo_LetsGrabLunch();
+    VarSet(VAR_QUEST_RESTOREMARIN,DEFEATED_LENORA);
     QuestMenu_GetSetQuestState(QUEST_RESTOREMARIN,FLAG_SET_UNLOCKED);
     QuestMenu_GetSetQuestState(QUEST_RESTOREMARIN,FLAG_SET_COMPLETED);
     ScriptContext_SetupScript(LetsGrabLunch_CheckRestorationProgress_Script);
