@@ -336,15 +336,17 @@
 #define VAR_SALESFORCETOWER_PRODUCTION_STATE 0x40FD // Previously Unused Var
 #define VAR_SALESFORCETOWER_2F_STATE 0x40FD // Previously Unused Var
 #define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
-#define VAR_QUEST_RESTOREMARIN 0x40F7 // Previously Unused Var
 #define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
+
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
 #define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
+#define VAR_QUEST_RESTOREMARIN 0x40FE // Previously Unused Var
 #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
+#define VAR_QUEST_RESTORECHINATOWN 0x40FF // PreviouslyUnused Var
 
 #define VARS_END                                         0x40FF
 #define VARS_COUNT                                       (VARS_END - VARS_START + 1)

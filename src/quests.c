@@ -2252,6 +2252,71 @@ static const struct SubQuest
             sText_Caught
 	),
 };
+static const struct SubQuest sRestoreChinatown_Sub[QUEST_RESTORECHINATOWN_SUB_COUNT] = {
+    sub_quest(
+            220,
+            gText_Quest_RestoreChinatown_Sub1_Name,
+            gText_Quest_RestoreChinatown_Sub1_Desc,
+            gText_Quest_RestoreChinatown_Sub1_Map,
+            OBJ_EVENT_GFX_BLACK_BELT,
+            OBJECT,
+            sText_Recruited
+            ),
+    sub_quest(
+            221,
+            gText_Quest_RestoreChinatown_Sub2_Name,
+            gText_Quest_RestoreChinatown_Sub2_Desc,
+            gText_Quest_RestoreChinatown_Sub2_Map,
+            OBJ_EVENT_GFX_BLACK_BELT,
+            OBJECT,
+            sText_Recruited
+            ),
+    sub_quest(
+            222,
+            gText_Quest_RestoreChinatown_Sub3_Name,
+            gText_Quest_RestoreChinatown_Sub3_Desc,
+            gText_Quest_RestoreChinatown_Sub3_Map,
+            OBJ_EVENT_GFX_BLACK_BELT,
+            OBJECT,
+            sText_Recruited
+            ),
+    sub_quest(
+            223,
+            gText_Quest_RestoreChinatown_Sub4_Name,
+            gText_Quest_RestoreChinatown_Sub4_Desc,
+            gText_Quest_RestoreChinatown_Sub4_Map,
+            OBJ_EVENT_GFX_BLACK_BELT,
+            OBJECT,
+            sText_Recruited
+            ),
+    sub_quest(
+            224,
+            gText_Quest_RestoreChinatown_Sub5_Name,
+            gText_Quest_RestoreChinatown_Sub5_Desc,
+            gText_Quest_RestoreChinatown_Sub5_Map,
+            OBJ_EVENT_GFX_BLACK_BELT,
+            OBJECT,
+            sText_Recruited
+            ),
+    sub_quest(
+            225,
+            gText_Quest_RestoreChinatown_Sub6_Name,
+            gText_Quest_RestoreChinatown_Sub6_Desc,
+            gText_Quest_RestoreChinatown_Sub6_Map,
+            OBJ_EVENT_GFX_BLACK_BELT,
+            OBJECT,
+            sText_Recruited
+            ),
+    sub_quest(
+            226,
+            gText_Quest_RestoreChinatown_Sub7_Name,
+            gText_Quest_RestoreChinatown_Sub7_Desc,
+            gText_Quest_RestoreChinatown_Sub7_Map,
+            OBJ_EVENT_GFX_BLACK_BELT,
+            OBJECT,
+            sText_Recruited
+            ),
+};
 
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -3240,8 +3305,8 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_RestoreChinatown_Map,
 	        OBJ_EVENT_GFX_WOMAN_3,
 	        OBJECT,
-	        NULL,
-	        0
+            sRestoreChinatown_Sub,
+	        7
 	),
 
 	side_quest(

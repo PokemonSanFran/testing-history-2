@@ -60,21 +60,34 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	setvar VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
-	setflag FLAG_SYS_QUEST_MENU_GET
-	givemon SPECIES_KRABBY, 20, ITEM_NONE
-	givemon SPECIES_COPPERAJAH, 20, ITEM_NONE
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_RESTOREMARIN
-	warp MAP_MARIN, 12, 19
 	return
 
 
 Debug_Script_2::
-	completequest QUEST_RESTOREMARIN
+	setvar VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
+	setvar VAR_QUEST_RESTORECHINATOWN, FIND_BLACKBELTS
+	setflag FLAG_SYS_QUEST_MENU_GET
+	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_A
+	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_B
+	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_C
+	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_D
+	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_E
+	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_F
+	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_G
+	call Quest_Restorechinatown_Recruit_Blackbelt_A_Dialogue
+	call Quest_Restorechinatown_Recruit_Blackbelt_B_Dialogue
+	call Quest_Restorechinatown_Recruit_Blackbelt_C_Dialogue
+	call Quest_Restorechinatown_Recruit_Blackbelt_D_Dialogue
+	call Quest_Restorechinatown_Recruit_Blackbelt_E_Dialogue
+	call Quest_Restorechinatown_Recruit_Blackbelt_F_Dialogue
+	call Quest_Restorechinatown_Recruit_Blackbelt_G_Dialogue
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_RESTORECHINATOWN
+	call Quest_Restorechinatown_CheckProgress_Script
 	return
 
 
 Debug_Script_3::
+	warp MAP_CHINATOWN_GYM, 0
 	return
 
 

@@ -299,6 +299,8 @@ Quest_Restoremarin_PostBattle_Dialogue::
 	removeobject 7
 	playse SE_EXIT
 	waitse
+	closedoor 12, 17
+	waitdooranim
 	completequest QUEST_RESTOREMARIN
 	call LetsGrabLunch_CheckRestorationProgress_Script
 	release

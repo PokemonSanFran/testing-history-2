@@ -1,0 +1,360 @@
+const KEVIN_CHINATOWN = 13
+const ZAC_CHINATOWN =  14
+const FLAG_HIDE_PEWFAT = FLAG_TEMP_6
+
+const KEVIN = 1
+const ZAC = 2
+const PKMN_A = 3
+const PKMN_B = 4
+const FLAG_HIDE_PKMN = FLAG_TEMP_8
+
+const BLACKBELT_A_CHINATOWN = 5
+const BLACKBELT_B_CHINATOWN = 6
+const BLACKBELT_C_CHINATOWN = 7
+const BLACKBELT_D_CHINATOWN = 8
+const BLACKBELT_E_CHINATOWN = 9
+const BLACKBELT_F_CHINATOWN = 10
+const BLACKBELT_G_CHINATOWN = 11
+
+const FLAG_HIDE_BLACKBELT_A_CHINATOWN = FLAG_TEMP_1
+const FLAG_HIDE_BLACKBELT_B_CHINATOWN = FLAG_TEMP_2
+const FLAG_HIDE_BLACKBELT_C_CHINATOWN = FLAG_TEMP_3
+const FLAG_HIDE_BLACKBELT_D_CHINATOWN = FLAG_TEMP_4
+const FLAG_HIDE_BLACKBELT_E_CHINATOWN = FLAG_TEMP_5
+const FLAG_HIDE_BLACKBELT_F_CHINATOWN = FLAG_TEMP_6
+const FLAG_HIDE_BLACKBELT_G_CHINATOWN = FLAG_TEMP_7
+
+const FLAG_HIDE_BLACKBELT_A_ROUTE = FLAG_TEMP_1
+const FLAG_HIDE_BLACKBELT_B_ROUTE = FLAG_TEMP_2
+const FLAG_HIDE_BLACKBELT_C_ROUTE = FLAG_TEMP_1
+const FLAG_HIDE_BLACKBELT_D_ROUTE = FLAG_TEMP_1
+const FLAG_HIDE_BLACKBELT_E_ROUTE = FLAG_TEMP_1
+const FLAG_HIDE_BLACKBELT_F_ROUTE = FLAG_TEMP_1
+const FLAG_HIDE_BLACKBELT_G_ROUTE = FLAG_TEMP_1
+
+//
+//  player walks up to door, sees two trainers walking in
+//  zoey goes into, trainers attack in double battle
+//  trainers explain why they're  there
+//  zoey explains why they're there
+//  pewfat asks zoey to find james
+//  james made visible by pacifica beach
+//  player goes back to gym, james nad pewfat are strategizing
+//  they ask zoery to find the other black belts in the region
+//  zoey talks to trainers after beating them, they go back to chinatown
+//  tells zoey to come back later, thanks for the help getting trainers:w
+//
+
+// gText_Quest_Restorechinatown
+// Quest_Restorechinatown
+
+script Quest_Restorechinatown_HidePokemnon_Script{
+    if (var(VAR_QUEST_RESTORECHINATOWN) != POST_PEWFAT_INTO_GYM){
+        setflag(FLAG_HIDE_PKMN)
+    }
+}
+
+script Quest_Restorechinatown_LockGymDoor_Script{
+    call(Quest_Restorechinatown_CheckEligible_Script)
+        if (var(VAR_TEMP_0) != 3){
+            setmetatile(22,3,0x2B7,TRUE)
+        }
+    return
+}
+
+script Quest_Restorechinatown_CheckEligible_Script{
+    setvar(VAR_TEMP_0,0)
+
+        questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_RESTORECHINATOWN)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+
+    if (!flag(FLAG_TIMELINE_FALSE)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    if (var(VAR_STORYLINE_STATE) > STORY_POST_BATTLE_ARCHER_TREASUREISLAND){
+        addvar(VAR_TEMP_0,1)
+    }
+    return
+}
+
+script Quest_Restorechinatown_HideTrainers_Inside_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_1)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_A_CHINATOWN)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_2)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_B_CHINATOWN)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_3)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_C_CHINATOWN)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_4)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_D_CHINATOWN)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_5)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_E_CHINATOWN)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_6)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_F_CHINATOWN)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_7)
+        if (!var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_G_CHINATOWN)
+        }
+    return
+}
+
+script Quest_Restorechinatown_HideBlackbelt_Psfroute72_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_1)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_A_ROUTE)
+        }
+    return
+}
+
+script Quest_Restorechinatown_HideBlackbelt_Psfroute8_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_2)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_B_ROUTE)
+        }
+    return
+}
+
+script Quest_Restorechinatown_HideBlackbelt_Psfroute43_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_3)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_C_ROUTE)
+        }
+    return
+}
+
+
+script Quest_Restorechinatown_HideBlackbelt_Psfroute12_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_7)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_D_ROUTE)
+        }
+    return
+}
+
+script Quest_Restorechinatown_HideBlackbelt_Psfroute17_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_5)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_E_ROUTE)
+        }
+    return
+}
+script Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_6)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_F_ROUTE)
+        }
+    return
+}
+script Quest_Restorechinatown_HideBlackbelt_Psfroute1_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTORECHINATOWN,SUB_QUEST_7)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_BLACKBELT_G_ROUTE)
+        }
+    return
+}
+
+script Quest_Restorechinatown_HidePewfatOutside_Script{
+    call(Quest_Restorechinatown_CheckEligible_Script)
+
+        if (var(VAR_TEMP_0) != 3){
+            setflag(FLAG_HIDE_PEWFAT)
+        }
+}
+
+script Quest_Restorechinatown_PewfatWalkInside_Script{
+    lock
+
+        call(Quest_Restorechinatown_CheckEligible_Script)
+        if (var(VAR_TEMP_0) != 3){
+            release
+                end
+        }
+
+    setvar(VAR_QUEST_RESTORECHINATOWN,POST_PEWFAT_INTO_GYM)
+
+        delay(30)
+        opendoor(22,3)
+        applymovement(KEVIN_CHINATOWN,Common_Movement_WalkUp)
+        applymovement(ZAC_CHINATOWN,Quest_Restorechinatown_WalkInside_Movement)
+        waitmovement(ZAC_CHINATOWN)
+        playse(SE_EXIT)
+        waitse
+        removeobject(KEVIN_CHINATOWN)
+        removeobject(ZAC_CHINATOWN)
+        closedoor(22,3)
+        waitdooranim
+        startquest(QUEST_RESTORECHINATOWN)
+        release
+        end
+}
+
+script Quest_Restorechinatown_FirstTimeInside_Dialogue{
+    lock
+        playse(SE_EXIT)
+        applymovement(KEVIN,Quest_Restorechinatown_ExclaimLookDown_Movement)
+        applymovement(ZAC,Quest_Restorechinatown_ExclaimLookDown_Movement)
+        waitse
+        waitmovement(KEVIN)
+
+        msgbox(gText_ExpandedPlaceholder_Empty)
+        msgbox(gText_ExpandedPlaceholder_Empty)
+
+        applymovement(PKMN_A,Common_Movement_WalkDown)
+        applymovement(PKMN_B,Common_Movement_WalkDown)
+        waitmovement(PKMN_B)
+
+        trainerbattle_no_intro(TRAINER_PEWFAT,gText_ExpandedPlaceholder_Empty)
+        goto(Quest_Restorechinatown_PostBattle_Script)
+}
+
+script Quest_Restorechinatown_PostBattle_Script{
+    fadescreen(FADE_TO_BLACK)
+        removeobject(PKMN_A)
+        removeobject(PKMN_B)
+        fadescreen(FADE_FROM_BLACK)
+
+        setvar(VAR_QUEST_RESTORECHINATOWN,FIND_CHINATOWN_LEADER)
+        msgbox(gText_ExpandedPlaceholder_Empty)
+
+        release
+        end
+}
+
+script Quest_Restorechinatown_Kevin_Interact_Script{
+    switch(var(VAR_QUEST_RESTORECHINATOWN)){
+        case (FIND_BLACKBELTS + 1):
+        case (FIND_BLACKBELTS + 2):
+        case (FIND_BLACKBELTS + 3):
+        case (FIND_BLACKBELTS + 4):
+        case (FIND_BLACKBELTS + 5):
+        case (FIND_BLACKBELTS + 6):
+        case FIND_BLACKBELTS: return
+        case FOUND_ALL_BLACKBELTS: return
+        case RESTORECHINATOWN_COMPLETE: return
+    }
+}
+
+script Quest_Restorechinatown_Zac_Interact_Script{
+}
+
+script Quest_Restorechinatown_James_Interact_Script{
+}
+
+script Quest_Restorechinatown_FoundJames_Dialogue{
+}
+
+script Quest_Restorechinatown_Waiting_DialogueA_Script{
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script Quest_Restorechinatown_Waiting_DialogueB_Script{
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script Quest_Restorechinatown_Recruit_Blackbelt_A_Dialogue{
+    lock
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORECHINATOWN,SUB_QUEST_1)
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        addvar(VAR_QUEST_RESTORECHINATOWN,1)
+        call(Quest_GetTheBand_RemoveBikers_Script)
+        call(Quest_Restorechinatown_CheckProgress_Script)
+        release
+        end
+}
+script Quest_Restorechinatown_Recruit_Blackbelt_B_Dialogue{
+    lock
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORECHINATOWN,SUB_QUEST_2)
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        addvar(VAR_QUEST_RESTORECHINATOWN,1)
+        call(Quest_GetTheBand_RemoveBikers_Script)
+        call(Quest_Restorechinatown_CheckProgress_Script)
+        release
+        end
+}
+script Quest_Restorechinatown_Recruit_Blackbelt_C_Dialogue{
+    lock
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORECHINATOWN,SUB_QUEST_3)
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        addvar(VAR_QUEST_RESTORECHINATOWN,1)
+        call(Quest_GetTheBand_RemoveBikers_Script)
+        call(Quest_Restorechinatown_CheckProgress_Script)
+        release
+        end
+}
+script Quest_Restorechinatown_Recruit_Blackbelt_D_Dialogue{
+    lock
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORECHINATOWN,SUB_QUEST_4)
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        addvar(VAR_QUEST_RESTORECHINATOWN,1)
+        call(Quest_GetTheBand_RemoveBikers_Script)
+        call(Quest_Restorechinatown_CheckProgress_Script)
+        release
+        end
+}
+script Quest_Restorechinatown_Recruit_Blackbelt_E_Dialogue{
+    lock
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORECHINATOWN,SUB_QUEST_5)
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        addvar(VAR_QUEST_RESTORECHINATOWN,1)
+        call(Quest_GetTheBand_RemoveBikers_Script)
+        call(Quest_Restorechinatown_CheckProgress_Script)
+        release
+        end
+}
+script Quest_Restorechinatown_Recruit_Blackbelt_F_Dialogue{
+    lock
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORECHINATOWN,SUB_QUEST_6)
+        addvar(VAR_QUEST_RESTORECHINATOWN,1)
+        call(Quest_Restorechinatown_CheckProgress_Script)
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        call(Quest_GetTheBand_RemoveBikers_Script)
+        call(Quest_Restorechinatown_CheckProgress_Script)
+        release
+        end
+}
+script Quest_Restorechinatown_Recruit_Blackbelt_G_Dialogue{
+    lock
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTORECHINATOWN,SUB_QUEST_7)
+        addvar(VAR_QUEST_RESTORECHINATOWN,1)
+        call(Quest_Restorechinatown_CheckProgress_Script)
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        call(Quest_GetTheBand_RemoveBikers_Script)
+        call(Quest_Restorechinatown_CheckProgress_Script)
+        release
+        end
+}
+script Quest_Restorechinatown_CheckProgress_Script{
+    if (var(VAR_QUEST_RESTORECHINATOWN) == FOUND_ALL_BLACKBELTS){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_RESTORECHINATOWN)
+    }
+    return
+}
+movement Quest_Restorechinatown_WalkInside_Movement{
+    walk_right
+        walk_up
+        step_end
+}
+
+movement Quest_Restorechinatown_ExclaimLookDown_Movement{
+    emote_exclamation_mark
+        face_down
+        step_end
+}

@@ -69,7 +69,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "LetsGrabLunch_FastForwardFirstRestoration_Quest",
       "flag": "FLAG_TEMP_4"
     },
     {
@@ -175,6 +175,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_TEMP_3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "x": 22,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_6"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "x": 21,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_6"
     }
   ],
   "warp_events": [
@@ -211,6 +237,13 @@
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_CHINATOWN_BACKROOM_D",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 22,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_CHINATOWN_GYM",
       "dest_warp_id": 0
     }
   ],
@@ -250,6 +283,42 @@
       "var": "VAR_HOW_DISAPPOINTING_STATE",
       "var_value": "MISSION_ASSIGNED",
       "script": "HowDisappointing_StartRaid_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_QUEST_RESTORECHINATOWN",
+      "var_value": "PRE_PEWFAT_INTO_GYM",
+      "script": "Quest_Restorechinatown_PewfatWalkInside_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_QUEST_RESTORECHINATOWN",
+      "var_value": "PRE_PEWFAT_INTO_GYM",
+      "script": "Quest_Restorechinatown_PewfatWalkInside_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_QUEST_RESTORECHINATOWN",
+      "var_value": "PRE_PEWFAT_INTO_GYM",
+      "script": "Quest_Restorechinatown_PewfatWalkInside_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_QUEST_RESTORECHINATOWN",
+      "var_value": "PRE_PEWFAT_INTO_GYM",
+      "script": "Quest_Restorechinatown_PewfatWalkInside_Script"
     }
   ],
   "bg_events": [

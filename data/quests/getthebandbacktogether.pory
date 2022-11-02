@@ -63,6 +63,7 @@ script Quest_GetTheBand_RemoveBikers_Script{
     fadescreenswapbuffers(FADE_TO_BLACK)
     removeobject(VAR_LAST_TALKED)
     fadescreenswapbuffers(FADE_FROM_BLACK)
+    return
 }
 
 script Quest_GetTheBand_Interact_BikerA_Dialogue{

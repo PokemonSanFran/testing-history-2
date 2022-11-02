@@ -104,6 +104,7 @@
 #define MAP_MISSION_BAR                       (95 | (0 << 8))
 #define MAP_SOMA_SMASHGG                      (96 | (0 << 8))
 #define MAP_PSFROUTE2                         (97 | (0 << 8))
+#define MAP_CHINATOWN_GYM                     (98 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

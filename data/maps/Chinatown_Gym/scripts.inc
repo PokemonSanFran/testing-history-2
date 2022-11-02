@@ -1,0 +1,15 @@
+Chinatown_Gym_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Chinatown_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Chinatown_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+Chinatown_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Restorechinatown_HidePokemnon_Script
+	call Quest_Restorechinatown_HideTrainers_Inside_Script
+	return
+
+Chinatown_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_QUEST_RESTORECHINATOWN, POST_PEWFAT_INTO_GYM, Quest_Restorechinatown_FirstTimeInside_Dialogue
+	map_script_2 VAR_QUEST_RESTORECHINATOWN, FOUND_CHINATOWN_LEADER, Quest_Restorechinatown_FoundJames_Dialogue
+	.2byte 0
+

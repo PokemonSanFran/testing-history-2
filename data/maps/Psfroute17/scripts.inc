@@ -1,3 +1,21 @@
 Psfroute17_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute17_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfroute17_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Restorechinatown_HideBlackbelt_Psfroute17_Script
+	return
+
+
+Psfroute17_EventScript_BlackbeltE::
+	trainerbattle_single TRAINER_BLACKBELT_E, gText_ExpandedPlaceholder_Empty, gText_ExpandedPlaceholder_Empty
+	compare VAR_QUEST_RESTORECHINATOWN, FIND_BLACKBELTS
+	goto_if_eq Psfroute17_EventScript_BlackbeltE_2
+Psfroute17_EventScript_BlackbeltE_1:
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	end
+
+Psfroute17_EventScript_BlackbeltE_2:
+	goto Quest_Restorechinatown_Recruit_Blackbelt_E_Dialogue
+	goto Psfroute17_EventScript_BlackbeltE_1
 

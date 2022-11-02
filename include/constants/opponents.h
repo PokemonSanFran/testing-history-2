@@ -73,7 +73,7 @@
 #define TRAINER_RICKY_3                      68
 #define TRAINER_RICKY_4                      69
 #define TRAINER_RICKY_5                      70
-#define TRAINER_RANDALL                      71
+#define TRAINER_RANDALL                      71 //
 #define TRAINER_PARKER                       72
 #define TRAINER_GEORGE                       73
 #define TRAINER_BERKE                        74
@@ -862,6 +862,14 @@
 //PSF OPPONENTS
 #define TRAINER_MUGGERA_MUGGERB             51
 #define TRAINER_STOLENTRADE_THIEF           11
+#define TRAINER_PEWFAT  681
+#define TRAINER_BLACKBELT_A                 88
+#define TRAINER_BLACKBELT_B                 89
+#define TRAINER_BLACKBELT_C                 90
+#define TRAINER_BLACKBELT_D                 91
+#define TRAINER_BLACKBELT_E                 92
+#define TRAINER_BLACKBELT_F                 93
+#define TRAINER_BLACKBELT_G                 95
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

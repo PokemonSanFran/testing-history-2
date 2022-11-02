@@ -1,2 +1,21 @@
 Gldngtewilds_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Gldngtewilds_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Gldngtewilds_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script
+	return
+
+
+Gldngtewilds_EventScript_BlackbeltF::
+	trainerbattle_single TRAINER_BLACKBELT_F, gText_ExpandedPlaceholder_Empty, gText_ExpandedPlaceholder_Empty
+	compare VAR_QUEST_RESTORECHINATOWN, FIND_BLACKBELTS
+	goto_if_eq Gldngtewilds_EventScript_BlackbeltF_2
+Gldngtewilds_EventScript_BlackbeltF_1:
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	end
+
+Gldngtewilds_EventScript_BlackbeltF_2:
+	goto Quest_Restorechinatown_Recruit_Blackbelt_F_Dialogue
+	goto Gldngtewilds_EventScript_BlackbeltF_1
+

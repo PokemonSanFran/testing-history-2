@@ -1306,7 +1306,7 @@ Script_RemoveTint::
 // .include "data/quests/bodegaburnout.inc"
 .include "data/quests/warehousewarfare.inc"
 // .include "data/quests/restoretotheirformerglory.inc"
-// .include "data/quests/restorechinatown.inc"
+.include "data/quests/restorechinatown.inc"
 // .include "data/quests/restoretreasureisland.inc"
 .include "data/quests/restoremarin.inc"
 // .include "data/quests/restorehaightashbury.inc"
@@ -1455,3 +1455,5 @@ Script_RemoveTint::
 	.include "data/maps/Salesforcetower_Leagueops/scripts.inc"
 
 	.include "data/maps/Salesforcetower_Top/scripts.inc"
+
+	.include "data/maps/Chinatown_Gym/scripts.inc"

@@ -47,3 +47,16 @@ Psfroute8_MapScripts_OnLoad_1:
 	call Psfroute8_UncoverSecretLab_Script
 	return
 
+
+Psfroute8_EventScript_BlackbeltB::
+	trainerbattle_single TRAINER_BLACKBELT_B, gText_ExpandedPlaceholder_Empty, gText_ExpandedPlaceholder_Empty
+	compare VAR_QUEST_RESTORECHINATOWN, FIND_BLACKBELTS
+	goto_if_eq Psfroute8_EventScript_BlackbeltB_2
+Psfroute8_EventScript_BlackbeltB_1:
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	end
+
+Psfroute8_EventScript_BlackbeltB_2:
+	goto Quest_Restorechinatown_Recruit_Blackbelt_B_Dialogue
+	goto Psfroute8_EventScript_BlackbeltB_1
+

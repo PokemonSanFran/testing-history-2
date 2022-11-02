@@ -1184,6 +1184,28 @@ const u8 gText_Quest_RestoreMarin_Sub2_Name[] = _("Copperajah");
 const u8 gText_Quest_RestoreMarin_Sub2_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_RestoreMarin_Sub2_Map[] = _("Marin");
 
+const u8 gText_Quest_RestoreChinatown_Sub1_Name[] = _("Name");
+const u8 gText_Quest_RestoreChinatown_Sub1_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreChinatown_Sub1_Map[] = _("Psfroute72");
+const u8 gText_Quest_RestoreChinatown_Sub2_Name[] = _("Name");
+const u8 gText_Quest_RestoreChinatown_Sub2_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreChinatown_Sub2_Map[] = _("Psfroute8");
+const u8 gText_Quest_RestoreChinatown_Sub3_Name[] = _("Name");
+const u8 gText_Quest_RestoreChinatown_Sub3_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreChinatown_Sub3_Map[] = _("Psfroute43");
+const u8 gText_Quest_RestoreChinatown_Sub4_Name[] = _("Name");
+const u8 gText_Quest_RestoreChinatown_Sub4_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreChinatown_Sub4_Map[] = _("Psfroute12");
+const u8 gText_Quest_RestoreChinatown_Sub5_Name[] = _("Name");
+const u8 gText_Quest_RestoreChinatown_Sub5_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreChinatown_Sub5_Map[] = _("Psfroute17");
+const u8 gText_Quest_RestoreChinatown_Sub6_Name[] = _("Name");
+const u8 gText_Quest_RestoreChinatown_Sub6_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreChinatown_Sub6_Map[] = _("Psfroute22");
+const u8 gText_Quest_RestoreChinatown_Sub7_Name[] = _("Name");
+const u8 gText_Quest_RestoreChinatown_Sub7_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreChinatown_Sub7_Map[] = _("Psfroute1");
+
 //quest flavor
 const u8 gText_PlayersAdventure_Flavor1[] =_("Explore everything eastern SanFran has\nto offer on your way to the\nChampionship.");
 const u8 gText_PlayersAdventure_Flavor2[] =_("Head back to the Compound in Southbay\nand get a good night's sleep.");

@@ -1217,6 +1217,29 @@ extern const u8 gText_Quest_RestoreMarin_Sub2_Name[];
 extern const u8 gText_Quest_RestoreMarin_Sub2_Desc[];
 extern const u8 gText_Quest_RestoreMarin_Sub2_Map[];
 
+extern const u8 gText_Quest_RestoreChinatown_Sub1_Name[];
+extern const u8 gText_Quest_RestoreChinatown_Sub1_Desc[];
+extern const u8 gText_Quest_RestoreChinatown_Sub1_Map[];
+extern const u8 gText_Quest_RestoreChinatown_Sub2_Name[];
+extern const u8 gText_Quest_RestoreChinatown_Sub2_Desc[];
+extern const u8 gText_Quest_RestoreChinatown_Sub2_Map[];
+extern const u8 gText_Quest_RestoreChinatown_Sub3_Name[];
+extern const u8 gText_Quest_RestoreChinatown_Sub3_Desc[];
+extern const u8 gText_Quest_RestoreChinatown_Sub3_Map[];
+extern const u8 gText_Quest_RestoreChinatown_Sub4_Name[];
+extern const u8 gText_Quest_RestoreChinatown_Sub4_Desc[];
+extern const u8 gText_Quest_RestoreChinatown_Sub4_Map[];
+extern const u8 gText_Quest_RestoreChinatown_Sub5_Name[];
+extern const u8 gText_Quest_RestoreChinatown_Sub5_Desc[];
+extern const u8 gText_Quest_RestoreChinatown_Sub5_Map[];
+extern const u8 gText_Quest_RestoreChinatown_Sub6_Name[];
+extern const u8 gText_Quest_RestoreChinatown_Sub6_Desc[];
+extern const u8 gText_Quest_RestoreChinatown_Sub6_Map[];
+extern const u8 gText_Quest_RestoreChinatown_Sub7_Name[];
+extern const u8 gText_Quest_RestoreChinatown_Sub7_Desc[];
+extern const u8 gText_Quest_RestoreChinatown_Sub7_Map[];
+
+
 //quest flavor
 extern const u8 gText_PlayersAdventure_Flavor1[];
 extern const u8 gText_PlayersAdventure_Flavor2[];

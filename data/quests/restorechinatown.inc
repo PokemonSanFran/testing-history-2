@@ -1,0 +1,398 @@
+Quest_Restorechinatown_HidePokemnon_Script::
+	compare VAR_QUEST_RESTORECHINATOWN, POST_PEWFAT_INTO_GYM
+	goto_if_ne Quest_Restorechinatown_HidePokemnon_Script_1
+	return
+
+Quest_Restorechinatown_HidePokemnon_Script_1:
+	setflag FLAG_TEMP_8
+	return
+
+
+Quest_Restorechinatown_LockGymDoor_Script::
+	call Quest_Restorechinatown_CheckEligible_Script
+	compare VAR_TEMP_0, 3
+	goto_if_ne Quest_Restorechinatown_LockGymDoor_Script_2
+Quest_Restorechinatown_LockGymDoor_Script_1:
+	return
+
+Quest_Restorechinatown_LockGymDoor_Script_2:
+	setmetatile 22, 3, 0x2B7, TRUE
+	goto Quest_Restorechinatown_LockGymDoor_Script_1
+
+
+Quest_Restorechinatown_CheckEligible_Script::
+	setvar VAR_TEMP_0, 0
+	questmenu QUEST_MENU_CHECK_INACTIVE, QUEST_RESTORECHINATOWN
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_Restorechinatown_CheckEligible_Script_2
+Quest_Restorechinatown_CheckEligible_Script_1:
+	goto_if_unset FLAG_TIMELINE_FALSE, Quest_Restorechinatown_CheckEligible_Script_5
+Quest_Restorechinatown_CheckEligible_Script_4:
+	compare VAR_STORYLINE_STATE, STORY_POST_BATTLE_ARCHER_TREASUREISLAND
+	goto_if_gt Quest_Restorechinatown_CheckEligible_Script_8
+Quest_Restorechinatown_CheckEligible_Script_7:
+	return
+
+Quest_Restorechinatown_CheckEligible_Script_2:
+	addvar VAR_TEMP_0, 1
+	goto Quest_Restorechinatown_CheckEligible_Script_1
+
+Quest_Restorechinatown_CheckEligible_Script_5:
+	addvar VAR_TEMP_0, 1
+	goto Quest_Restorechinatown_CheckEligible_Script_4
+
+Quest_Restorechinatown_CheckEligible_Script_8:
+	addvar VAR_TEMP_0, 1
+	goto Quest_Restorechinatown_CheckEligible_Script_7
+
+
+Quest_Restorechinatown_HideTrainers_Inside_Script::
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_1
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_Restorechinatown_HideTrainers_Inside_Script_2
+Quest_Restorechinatown_HideTrainers_Inside_Script_1:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_2
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_Restorechinatown_HideTrainers_Inside_Script_5
+Quest_Restorechinatown_HideTrainers_Inside_Script_4:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_3
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_Restorechinatown_HideTrainers_Inside_Script_8
+Quest_Restorechinatown_HideTrainers_Inside_Script_7:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_4
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_Restorechinatown_HideTrainers_Inside_Script_11
+Quest_Restorechinatown_HideTrainers_Inside_Script_10:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_5
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_Restorechinatown_HideTrainers_Inside_Script_14
+Quest_Restorechinatown_HideTrainers_Inside_Script_13:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_6
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_Restorechinatown_HideTrainers_Inside_Script_17
+Quest_Restorechinatown_HideTrainers_Inside_Script_16:
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_7
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_Restorechinatown_HideTrainers_Inside_Script_20
+Quest_Restorechinatown_HideTrainers_Inside_Script_19:
+	return
+
+Quest_Restorechinatown_HideTrainers_Inside_Script_2:
+	setflag FLAG_TEMP_1
+	goto Quest_Restorechinatown_HideTrainers_Inside_Script_1
+
+Quest_Restorechinatown_HideTrainers_Inside_Script_5:
+	setflag FLAG_TEMP_2
+	goto Quest_Restorechinatown_HideTrainers_Inside_Script_4
+
+Quest_Restorechinatown_HideTrainers_Inside_Script_8:
+	setflag FLAG_TEMP_3
+	goto Quest_Restorechinatown_HideTrainers_Inside_Script_7
+
+Quest_Restorechinatown_HideTrainers_Inside_Script_11:
+	setflag FLAG_TEMP_4
+	goto Quest_Restorechinatown_HideTrainers_Inside_Script_10
+
+Quest_Restorechinatown_HideTrainers_Inside_Script_14:
+	setflag FLAG_TEMP_5
+	goto Quest_Restorechinatown_HideTrainers_Inside_Script_13
+
+Quest_Restorechinatown_HideTrainers_Inside_Script_17:
+	setflag FLAG_TEMP_6
+	goto Quest_Restorechinatown_HideTrainers_Inside_Script_16
+
+Quest_Restorechinatown_HideTrainers_Inside_Script_20:
+	setflag FLAG_TEMP_7
+	goto Quest_Restorechinatown_HideTrainers_Inside_Script_19
+
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute72_Script::
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_1
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_Restorechinatown_HideBlackbelt_Psfroute72_Script_2
+Quest_Restorechinatown_HideBlackbelt_Psfroute72_Script_1:
+	return
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute72_Script_2:
+	setflag FLAG_TEMP_1
+	goto Quest_Restorechinatown_HideBlackbelt_Psfroute72_Script_1
+
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute8_Script::
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_2
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_Restorechinatown_HideBlackbelt_Psfroute8_Script_2
+Quest_Restorechinatown_HideBlackbelt_Psfroute8_Script_1:
+	return
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute8_Script_2:
+	setflag FLAG_TEMP_2
+	goto Quest_Restorechinatown_HideBlackbelt_Psfroute8_Script_1
+
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute43_Script::
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_3
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_Restorechinatown_HideBlackbelt_Psfroute43_Script_2
+Quest_Restorechinatown_HideBlackbelt_Psfroute43_Script_1:
+	return
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute43_Script_2:
+	setflag FLAG_TEMP_1
+	goto Quest_Restorechinatown_HideBlackbelt_Psfroute43_Script_1
+
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute12_Script::
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_7
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_Restorechinatown_HideBlackbelt_Psfroute12_Script_2
+Quest_Restorechinatown_HideBlackbelt_Psfroute12_Script_1:
+	return
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute12_Script_2:
+	setflag FLAG_TEMP_1
+	goto Quest_Restorechinatown_HideBlackbelt_Psfroute12_Script_1
+
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute17_Script::
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_5
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_Restorechinatown_HideBlackbelt_Psfroute17_Script_2
+Quest_Restorechinatown_HideBlackbelt_Psfroute17_Script_1:
+	return
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute17_Script_2:
+	setflag FLAG_TEMP_1
+	goto Quest_Restorechinatown_HideBlackbelt_Psfroute17_Script_1
+
+
+Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script::
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_6
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script_2
+Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script_1:
+	return
+
+Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script_2:
+	setflag FLAG_TEMP_1
+	goto Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script_1
+
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute1_Script::
+	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTORECHINATOWN, SUB_QUEST_7
+	compare VAR_RESULT, 0
+	goto_if_ne Quest_Restorechinatown_HideBlackbelt_Psfroute1_Script_2
+Quest_Restorechinatown_HideBlackbelt_Psfroute1_Script_1:
+	return
+
+Quest_Restorechinatown_HideBlackbelt_Psfroute1_Script_2:
+	setflag FLAG_TEMP_1
+	goto Quest_Restorechinatown_HideBlackbelt_Psfroute1_Script_1
+
+
+Quest_Restorechinatown_HidePewfatOutside_Script::
+	call Quest_Restorechinatown_CheckEligible_Script
+	compare VAR_TEMP_0, 3
+	goto_if_ne Quest_Restorechinatown_HidePewfatOutside_Script_1
+	return
+
+Quest_Restorechinatown_HidePewfatOutside_Script_1:
+	setflag FLAG_TEMP_6
+	return
+
+
+Quest_Restorechinatown_PewfatWalkInside_Script::
+	lock
+	call Quest_Restorechinatown_CheckEligible_Script
+	compare VAR_TEMP_0, 3
+	goto_if_ne Quest_Restorechinatown_PewfatWalkInside_Script_2
+	setvar VAR_QUEST_RESTORECHINATOWN, POST_PEWFAT_INTO_GYM
+	delay 30
+	opendoor 22, 3
+	applymovement 13, Common_Movement_WalkUp
+	applymovement 14, Quest_Restorechinatown_WalkInside_Movement
+	waitmovement 14
+	playse SE_EXIT
+	waitse
+	removeobject 13
+	removeobject 14
+	closedoor 22, 3
+	waitdooranim
+	startquest QUEST_RESTORECHINATOWN
+	release
+	end
+
+Quest_Restorechinatown_PewfatWalkInside_Script_2:
+	release
+	end
+
+
+Quest_Restorechinatown_FirstTimeInside_Dialogue::
+	lock
+	playse SE_EXIT
+	applymovement 1, Quest_Restorechinatown_ExclaimLookDown_Movement
+	applymovement 2, Quest_Restorechinatown_ExclaimLookDown_Movement
+	waitse
+	waitmovement 1
+	msgbox gText_ExpandedPlaceholder_Empty
+	msgbox gText_ExpandedPlaceholder_Empty
+	applymovement 3, Common_Movement_WalkDown
+	applymovement 4, Common_Movement_WalkDown
+	waitmovement 4
+	trainerbattle_no_intro TRAINER_PEWFAT, gText_ExpandedPlaceholder_Empty
+	goto Quest_Restorechinatown_PostBattle_Script
+	return
+
+
+Quest_Restorechinatown_PostBattle_Script::
+	fadescreen FADE_TO_BLACK
+	removeobject 3
+	removeobject 4
+	fadescreen FADE_FROM_BLACK
+	setvar VAR_QUEST_RESTORECHINATOWN, FIND_CHINATOWN_LEADER
+	msgbox gText_ExpandedPlaceholder_Empty
+	release
+	end
+
+
+Quest_Restorechinatown_Kevin_Interact_Script::
+	switch VAR_QUEST_RESTORECHINATOWN
+	case FOUND_CHINATOWN_LEADER, Quest_Restorechinatown_Kevin_Interact_Script_2
+	case ( FIND_BLACKBELTS + 1 ), Quest_Restorechinatown_Kevin_Interact_Script_3
+	case FIND_BLACKBELTS, Quest_Restorechinatown_Kevin_Interact_Script_3
+	case FOUND_ALL_BLACKBELTS, Quest_Restorechinatown_Kevin_Interact_Script_4
+	return
+
+Quest_Restorechinatown_Kevin_Interact_Script_2:
+	return
+
+Quest_Restorechinatown_Kevin_Interact_Script_3:
+	return
+
+Quest_Restorechinatown_Kevin_Interact_Script_4:
+	return
+
+
+Quest_Restorechinatown_Zac_Interact_Script::
+	return
+
+
+Quest_Restorechinatown_James_Interact_Script::
+	return
+
+
+Quest_Restorechinatown_FoundJames_Dialogue::
+	return
+
+
+Quest_Restorechinatown_Waiting_DialogueA_Script::
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	release
+	end
+
+
+Quest_Restorechinatown_Waiting_DialogueB_Script::
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	release
+	end
+
+
+Quest_Restorechinatown_Recruit_Blackbelt_A_Dialogue::
+	lock
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_1
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	call Quest_GetTheBand_RemoveBikers_Script
+	call Quest_Restorechinatown_CheckProgress_Script
+	release
+	end
+
+
+Quest_Restorechinatown_Recruit_Blackbelt_B_Dialogue::
+	lock
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_2
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	call Quest_GetTheBand_RemoveBikers_Script
+	call Quest_Restorechinatown_CheckProgress_Script
+	release
+	end
+
+
+Quest_Restorechinatown_Recruit_Blackbelt_C_Dialogue::
+	lock
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_3
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	call Quest_GetTheBand_RemoveBikers_Script
+	call Quest_Restorechinatown_CheckProgress_Script
+	release
+	end
+
+
+Quest_Restorechinatown_Recruit_Blackbelt_D_Dialogue::
+	lock
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_4
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	call Quest_GetTheBand_RemoveBikers_Script
+	call Quest_Restorechinatown_CheckProgress_Script
+	release
+	end
+
+
+Quest_Restorechinatown_Recruit_Blackbelt_E_Dialogue::
+	lock
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_5
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	call Quest_GetTheBand_RemoveBikers_Script
+	call Quest_Restorechinatown_CheckProgress_Script
+	release
+	end
+
+
+Quest_Restorechinatown_Recruit_Blackbelt_F_Dialogue::
+	lock
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_6
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	call Quest_Restorechinatown_CheckProgress_Script
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	call Quest_GetTheBand_RemoveBikers_Script
+	call Quest_Restorechinatown_CheckProgress_Script
+	release
+	end
+
+
+Quest_Restorechinatown_Recruit_Blackbelt_G_Dialogue::
+	lock
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_7
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	call Quest_Restorechinatown_CheckProgress_Script
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	call Quest_GetTheBand_RemoveBikers_Script
+	call Quest_Restorechinatown_CheckProgress_Script
+	release
+	end
+
+
+Quest_Restorechinatown_CheckProgress_Script::
+	compare VAR_QUEST_RESTORECHINATOWN, FOUND_ALL_BLACKBELTS
+	goto_if_eq Quest_Restorechinatown_CheckProgress_Script_2
+Quest_Restorechinatown_CheckProgress_Script_1:
+	return
+
+Quest_Restorechinatown_CheckProgress_Script_2:
+	questmenu QUEST_MENU_SET_REWARD, QUEST_RESTORECHINATOWN
+	goto Quest_Restorechinatown_CheckProgress_Script_1
+
+
+Quest_Restorechinatown_WalkInside_Movement:
+	walk_right
+	walk_up
+	step_end
+
+Quest_Restorechinatown_ExclaimLookDown_Movement:
+	emote_exclamation_mark
+	face_down
+	step_end

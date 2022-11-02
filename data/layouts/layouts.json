@@ -5940,6 +5940,16 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Salesforcetower_Top/border.bin",
       "blockdata_filepath": "data/layouts/Salesforcetower_Top/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHINATOWN_GYM",
+      "name": "Chinatown_Gym_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PetalburgGym",
+      "border_filepath": "data/layouts/Chinatown_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Chinatown_Gym/map.bin"
     }
   ]
 }

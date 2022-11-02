@@ -4,11 +4,15 @@ mapscripts Chinatown_MapScripts{
         call(Quest_CulturalPurity_HideLeader_Script)
         call(Quest_CulturalPurity_HideBackUp_Script)
         call(Quest_CulturalPurity_MoveGuard_Script)
+        call(Quest_Restorechinatown_HidePewfatOutside_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
+    MAP_SCRIPT_ON_LOAD{
+        call(Quest_Restorechinatown_LockGymDoor_Script)
+    }
 }
 
 text gText_Chinatown_IMissTheOld{
