@@ -44,6 +44,7 @@
 #include "trainer_card.h"
 #include "twitter.h"
 #include "window.h"
+#include "ui_start_menu.h"
 #include "quests.h"
 #include "constants/songs.h"
 #include "union_room.h"
@@ -76,6 +77,7 @@ enum
     MENU_ACTION_DEBUG,
     MENU_ACTION_QUEST_MENU,
     MENU_ACTION_TWITTER,
+    MENU_ACTION_UI_MENU,
 };
 
 // Save status
@@ -119,6 +121,7 @@ static bool8 StartMenuBattlePyramidBagCallback(void);
 static bool8 StartMenuDebugCallback(void);
 static bool8 QuestMenuCallback(void);
 static bool8 TwitterCallback(void);
+static bool8 StartMenuUiStartMenuCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -173,6 +176,7 @@ static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC
 static const u8 gText_MenuDebug[] = _("DEBUG");
 static const u8 sText_QuestMenu[] = _("QUESTS");
 static const u8 gText_MenuTwitter[] = _("TWITTER");
+static const u8 sText_StartMenu[] = _("STARTMENU");
 
 static const struct MenuAction sStartMenuItems[] =
 {
@@ -192,6 +196,7 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_DEBUG]           = {gText_MenuDebug,   {.u8_void = StartMenuDebugCallback}},
     [MENU_ACTION_QUEST_MENU]      = {sText_QuestMenu,   {.u8_void = QuestMenuCallback}},
     [MENU_ACTION_TWITTER]         = {gText_MenuTwitter, {.u8_void = TwitterCallback}},
+    [MENU_ACTION_UI_MENU]         = {sText_StartMenu,   {.u8_void = StartMenuUiStartMenuCallback}}
 };
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
@@ -340,6 +345,8 @@ static void BuildNormalStartMenu(void)
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
         AddStartMenuAction(MENU_ACTION_TWITTER);
     }
+	
+	AddStartMenuAction(MENU_ACTION_UI_MENU);
 
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
@@ -1508,5 +1515,11 @@ static bool8 TwitterCallback(void)
     PlaySE(SE_WIN_OPEN);
     Twitter_ShowMainMenu();
 
+    return TRUE;
+}
+
+static bool8 StartMenuUiStartMenuCallback(void)
+{
+    CreateTask(Task_OpenMenuFromStartMenu, 0);
     return TRUE;
 }
