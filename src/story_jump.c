@@ -470,6 +470,7 @@ void WarpPlayerAfterVarSet()
 {
     DoWarp();
     ScriptContext_SetupScript(ExhibitionBattle_TimeSkip_Script);
+    ScriptContext_SetupScript(LetsGrabLunch_CheckRestorationProgress_Script);
     ResetInitialPlayerAvatarState();
 }
 
@@ -865,14 +866,30 @@ void JumpPlayerTo_RestoreChinatown(){
     JumpPlayerTo_LetsGrabLunch();
     QuestMenu_GetSetQuestState(QUEST_RESTORECHINATOWN,FLAG_SET_UNLOCKED);
     QuestMenu_GetSetQuestState(QUEST_RESTORECHINATOWN,FLAG_SET_COMPLETED);
-    ScriptContext_SetupScript(LetsGrabLunch_CheckRestorationProgress_Script);
-    SetWarpDestination(0,17,255,21,4);
+
+    FlagSet(TRAINER_FLAGS_START + TRAINER_BLACKBELT_A);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_BLACKBELT_B);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_BLACKBELT_C);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_BLACKBELT_D);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_BLACKBELT_E);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_BLACKBELT_F);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_BLACKBELT_G);
+
+    QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN,FLAG_SET_COMPLETED,SUB_QUEST_1);
+    QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN,FLAG_SET_COMPLETED,SUB_QUEST_2);
+    QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN,FLAG_SET_COMPLETED,SUB_QUEST_3);
+    QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN,FLAG_SET_COMPLETED,SUB_QUEST_4);
+    QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN,FLAG_SET_COMPLETED,SUB_QUEST_5);
+    QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN,FLAG_SET_COMPLETED,SUB_QUEST_6);
+    QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN,FLAG_SET_COMPLETED,SUB_QUEST_7);
+
+    VarSet(VAR_QUEST_RESTORECHINATOWN,RESTORECHINATOWN_COMPLETE);
+    SetWarpDestination(0,98,0,-1,-1);
 }
 void JumpPlayerTo_RestoreTreasureIsland(){
     JumpPlayerTo_LetsGrabLunch();
     QuestMenu_GetSetQuestState(QUEST_RESTORETREASUREISLAND,FLAG_SET_UNLOCKED);
     QuestMenu_GetSetQuestState(QUEST_RESTORETREASUREISLAND,FLAG_SET_COMPLETED);
-    ScriptContext_SetupScript(LetsGrabLunch_CheckRestorationProgress_Script);
     SetWarpDestination(0,59,255,3,15);
 }
 void JumpPlayerTo_RestoreMarin(){
@@ -880,14 +897,12 @@ void JumpPlayerTo_RestoreMarin(){
     VarSet(VAR_QUEST_RESTOREMARIN,DEFEATED_LENORA);
     QuestMenu_GetSetQuestState(QUEST_RESTOREMARIN,FLAG_SET_UNLOCKED);
     QuestMenu_GetSetQuestState(QUEST_RESTOREMARIN,FLAG_SET_COMPLETED);
-    ScriptContext_SetupScript(LetsGrabLunch_CheckRestorationProgress_Script);
     SetWarpDestination(0,46,255,8,18);
 }
 void JumpPlayerTo_RestoreHaightAshbury(){
     JumpPlayerTo_LetsGrabLunch();
     QuestMenu_GetSetQuestState(QUEST_RESTOREHAIGHTASHBURY,FLAG_SET_UNLOCKED);
     QuestMenu_GetSetQuestState(QUEST_RESTOREHAIGHTASHBURY,FLAG_SET_COMPLETED);
-    ScriptContext_SetupScript(LetsGrabLunch_CheckRestorationProgress_Script);
     SetWarpDestination(0,38,255,7,27);
 }
 void JumpPlayerTo_YouRealizeWereEvilRight(){

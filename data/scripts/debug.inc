@@ -60,13 +60,16 @@ Debug_Weather::
 
 
 Debug_Script_1::
+	warp MAP_PACIFICA, 6, 17
 	return
 
 
 Debug_Script_2::
-	setvar VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
-	setvar VAR_QUEST_RESTORECHINATOWN, FIND_BLACKBELTS
-	setflag FLAG_SYS_QUEST_MENU_GET
+	warp MAP_CHINATOWN_GYM, 0
+	return
+
+
+Debug_Script_3::
 	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_A
 	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_B
 	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_C
@@ -74,24 +77,27 @@ Debug_Script_2::
 	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_E
 	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_F
 	setflag TRAINER_FLAGS_START + TRAINER_BLACKBELT_G
-	call Quest_Restorechinatown_Recruit_Blackbelt_A_Dialogue
-	call Quest_Restorechinatown_Recruit_Blackbelt_B_Dialogue
-	call Quest_Restorechinatown_Recruit_Blackbelt_C_Dialogue
-	call Quest_Restorechinatown_Recruit_Blackbelt_D_Dialogue
-	call Quest_Restorechinatown_Recruit_Blackbelt_E_Dialogue
-	call Quest_Restorechinatown_Recruit_Blackbelt_F_Dialogue
-	call Quest_Restorechinatown_Recruit_Blackbelt_G_Dialogue
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_RESTORECHINATOWN
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_1
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_2
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_3
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_4
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_5
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_6
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORECHINATOWN, SUB_QUEST_7
+	addvar VAR_QUEST_RESTORECHINATOWN, 1
 	call Quest_Restorechinatown_CheckProgress_Script
-	return
-
-
-Debug_Script_3::
 	warp MAP_CHINATOWN_GYM, 0
 	return
 
 
 Debug_Script_4::
+	call LetsGrabLunch_CheckRestorationProgress_Script
 	return
 
 

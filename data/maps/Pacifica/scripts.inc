@@ -9,6 +9,7 @@ Pacifica_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_ShutDownMedicineMan_HideBusinessMan_Script
 	call Quest_Hang20_ResetCount_Script
 	call Quest_GetTheBand_HideBikerB_Script
+	call Quest_Restorechinatown_HideJames_Pacifica_Script
 	return
 
 Pacifica_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

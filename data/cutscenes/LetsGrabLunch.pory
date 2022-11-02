@@ -257,6 +257,8 @@ script LetsGrabLunch_Haightashbury {
 script LetsGrabLunch_CheckRestorationProgress_Script{
     setvar(VAR_TEMP_0,0)
 
+    givemon(SPECIES_TREECKO,100,ITEM_NONE)
+
         call_if_quest_complete(QUEST_RESTORECHINATOWN,LetsGrabLunch_IncrementCount_Script)
         call_if_quest_complete(QUEST_RESTOREMARIN,LetsGrabLunch_IncrementCount_Script)
         call_if_quest_complete(QUEST_RESTOREHAIGHTASHBURY,LetsGrabLunch_IncrementCount_Script)
