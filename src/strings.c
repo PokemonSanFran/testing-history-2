@@ -1908,3 +1908,7 @@ const u8 gText_QuestComplete[] = _("complete");
 const u8 gText_Twitter[] = _("Twitter");
 const u8 gText_Uber[] = _("Uber");
 const u8 gText_Amazon[] =_("Amazon");
+
+//Quest_Restoretreasureisland
+const u8 gText_PokemonPsychoShift[] = _("a Pokemon that knows the move Psycho Shift");
+const u8 gText_PokemonEffectSpore[] = _("a Pokemon that has the ability Effect Spore");

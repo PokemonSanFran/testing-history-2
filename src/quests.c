@@ -2317,6 +2317,45 @@ static const struct SubQuest sRestoreChinatown_Sub[QUEST_RESTORECHINATOWN_SUB_CO
             sText_Recruited
             ),
 };
+static const struct SubQuest
+	sRestoreTreasureisland_Sub[QUEST_RESTORETREASUREISLAND_SUB_COUNT] = {
+	sub_quest(
+	        227,
+	        gText_Quest_RestoreTreasureisland_Sub1_Name,
+	        gText_Quest_RestoreTreasureisland_Sub1_Desc,
+	        gText_Quest_RestoreTreasureisland_Sub1_Map,
+	        ITEM_FLAME_ORB,
+	        ITEM,
+            sText_Found
+	),
+	sub_quest(
+	        228,
+	        gText_Quest_RestoreTreasureisland_Sub2_Name,
+	        gText_Quest_RestoreTreasureisland_Sub2_Desc,
+	        gText_Quest_RestoreTreasureisland_Sub2_Map,
+	        ITEM_TM27,
+	        ITEM,
+            sText_Found
+	),
+	sub_quest(
+	        229,
+	        gText_Quest_RestoreTreasureisland_Sub3_Name,
+	        gText_Quest_RestoreTreasureisland_Sub3_Desc,
+	        gText_Quest_RestoreTreasureisland_Sub3_Map,
+	        SPECIES_BEHEEYEM,
+	        PKMN,
+            sText_Found
+	),
+	sub_quest(
+	        230,
+	        gText_Quest_RestoreTreasureisland_Sub4_Name,
+	        gText_Quest_RestoreTreasureisland_Sub4_Desc,
+	        gText_Quest_RestoreTreasureisland_Sub4_Map,
+	        SPECIES_SHROOMISH,
+	        PKMN,
+            sText_Found
+	),
+};
 
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -3303,7 +3342,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_RestoreChinatown_Desc,
 	        gText_Quest_RestoreChinatown_DoneDesc,
 	        gText_Quest_RestoreChinatown_Map,
-	        OBJ_EVENT_GFX_WOMAN_3,
+	        OBJ_EVENT_GFX_BLACK_BELT,
 	        OBJECT,
             sRestoreChinatown_Sub,
 	        7
@@ -3314,7 +3353,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_RestoreMarin_Desc,
 	        gText_Quest_RestoreMarin_DoneDesc,
 	        gText_Quest_RestoreMarin_Map,
-	        OBJ_EVENT_GFX_GRETA,
+	        OBJ_EVENT_GFX_NOLAND,
 	        OBJECT,
             sRestoreMarin_Sub,
 	        2
@@ -3325,10 +3364,10 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_RestoreTreasureisland_Desc,
 	        gText_Quest_RestoreTreasureisland_DoneDesc,
 	        gText_Quest_RestoreTreasureisland_Map,
-	        OBJ_EVENT_GFX_JUAN,
+	        OBJ_EVENT_GFX_LUCY,
 	        OBJECT,
-	        NULL,
-	        0
+	        sRestoreTreasureisland_Sub,
+	        4
 	),
 
 	side_quest(

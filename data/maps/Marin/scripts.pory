@@ -1,3 +1,4 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
 const LIIDIA = 2
 const JASMINE = 3

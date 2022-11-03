@@ -1307,7 +1307,7 @@ Script_RemoveTint::
 .include "data/quests/warehousewarfare.inc"
 // .include "data/quests/restoretotheirformerglory.inc"
 .include "data/quests/restorechinatown.inc"
-// .include "data/quests/restoretreasureisland.inc"
+.include "data/quests/restoretreasureisland.inc"
 .include "data/quests/restoremarin.inc"
 // .include "data/quests/restorehaightashbury.inc"
 

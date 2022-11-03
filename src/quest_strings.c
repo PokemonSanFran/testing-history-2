@@ -1206,6 +1206,19 @@ const u8 gText_Quest_RestoreChinatown_Sub7_Name[] = _("Name");
 const u8 gText_Quest_RestoreChinatown_Sub7_Desc[] = _("Lorem Desc");
 const u8 gText_Quest_RestoreChinatown_Sub7_Map[] = _("Psfroute1");
 
+const u8 gText_Quest_RestoreTreasureisland_Sub1_Name[] = _("Name");
+const u8 gText_Quest_RestoreTreasureisland_Sub1_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreTreasureisland_Sub1_Map[] = _("N/A");
+const u8 gText_Quest_RestoreTreasureisland_Sub2_Name[] = _("Name");
+const u8 gText_Quest_RestoreTreasureisland_Sub2_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreTreasureisland_Sub2_Map[] = _("N/A");
+const u8 gText_Quest_RestoreTreasureisland_Sub3_Name[] = _("Name");
+const u8 gText_Quest_RestoreTreasureisland_Sub3_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreTreasureisland_Sub3_Map[] = _("N/A");
+const u8 gText_Quest_RestoreTreasureisland_Sub4_Name[] = _("Name");
+const u8 gText_Quest_RestoreTreasureisland_Sub4_Desc[] = _("Lorem Desc");
+const u8 gText_Quest_RestoreTreasureisland_Sub4_Map[] =_("N/A");
+
 //quest flavor
 const u8 gText_PlayersAdventure_Flavor1[] =_("Explore everything eastern SanFran has\nto offer on your way to the\nChampionship.");
 const u8 gText_PlayersAdventure_Flavor2[] =_("Head back to the Compound in Southbay\nand get a good night's sleep.");

@@ -4,22 +4,13 @@ Treasureisland_MapScripts::
 	.byte 0
 
 Treasureisland_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Treasureisland_MapScripts_OnTransition
+	call LetsGrabLunch_HideArcher_Outside_Script
+	call Quest_Restoretreasureisland_HideCilan_Outside_Script
 	return
 
 Treasureisland_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE, YouRealizeWereEvilRight_PhoneCall_Dialogue
 	.2byte 0
-
-
-Treasureisland_MapScripts_OnTransition::
-	switch VAR_STORYLINE_STATE
-	case 38, Treasureisland_MapScripts_OnTransition_2
-	goto LetsGrabLunch_HideObject_Script
-	return
-
-Treasureisland_MapScripts_OnTransition_2:
-	return
 
 
 Treasureisland_Movies_Dialogue::

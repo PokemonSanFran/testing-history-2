@@ -1,8 +1,18 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const ARCHER = 1
+const FLAG_HIDE_ARCHER = FLAG_TEMP_2
 
-script LetsGrabLunch_HideObject_Script {
-    setflag(FLAG_TEMP_2)
+script LetsGrabLunch_HideArcher_Outside_Script{
+    if (var(VAR_STORYLINE_STATE) != STORY_SAVE_ARCHER_TREASUREISLAND){
+        setflag(FLAG_HIDE_ARCHER)
+    }
+    return
+}
+script LetsGrabLunch_HideArcher_Inside_Script{
+    if (var(VAR_STORYLINE_STATE) != STORY_POST_BATTLE_ARCHER_TREASUREISLAND && var(VAR_STORYLINE_STATE) != STORY_ARCHER_EXPLAIN_RESTORATION){
+        setflag(FLAG_HIDE_ARCHER)
+    }
+    return
 }
 
 script LetsGrabLunch_StartConversation_Dialogue {
@@ -256,8 +266,6 @@ script LetsGrabLunch_Haightashbury {
 
 script LetsGrabLunch_CheckRestorationProgress_Script{
     setvar(VAR_TEMP_0,0)
-
-    givemon(SPECIES_TREECKO,100,ITEM_NONE)
 
         call_if_quest_complete(QUEST_RESTORECHINATOWN,LetsGrabLunch_IncrementCount_Script)
         call_if_quest_complete(QUEST_RESTOREMARIN,LetsGrabLunch_IncrementCount_Script)

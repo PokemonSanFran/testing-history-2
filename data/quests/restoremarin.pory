@@ -19,8 +19,8 @@ script Quest_Restoremarin_Debug_Script{
 script Quest_Restoremarin_MoveLenora_Script{
     if (var(VAR_STORYLINE_STATE) > STORY_POST_BATTLE_ARCHER_TREASUREISLAND){
         setobjectxy(LENORA_MARIN,12,18)
-            setobjectxyperm(LENORA_MARIN,12,18)
-            setobjectmovementtype(LENORA_MARIN,MOVEMENT_TYPE_FACE_DOWN)
+        setobjectxyperm(LENORA_MARIN,12,18)
+        setobjectmovementtype(LENORA_MARIN,MOVEMENT_TYPE_FACE_DOWN)
     }
     return
 }

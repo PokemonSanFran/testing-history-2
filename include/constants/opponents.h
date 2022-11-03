@@ -870,6 +870,7 @@
 #define TRAINER_BLACKBELT_E                 92
 #define TRAINER_BLACKBELT_F                 93
 #define TRAINER_BLACKBELT_G                 95
+#define TRAINER_CILAN_TREASUREISLAND        810
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

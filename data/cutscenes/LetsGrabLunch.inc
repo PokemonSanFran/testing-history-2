@@ -1,6 +1,28 @@
-LetsGrabLunch_HideObject_Script::
-	setflag FLAG_TEMP_2
+LetsGrabLunch_HideArcher_Outside_Script::
+	compare VAR_STORYLINE_STATE, STORY_SAVE_ARCHER_TREASUREISLAND
+	goto_if_ne LetsGrabLunch_HideArcher_Outside_Script_2
+LetsGrabLunch_HideArcher_Outside_Script_1:
 	return
+
+LetsGrabLunch_HideArcher_Outside_Script_2:
+	setflag FLAG_TEMP_2
+	goto LetsGrabLunch_HideArcher_Outside_Script_1
+
+
+LetsGrabLunch_HideArcher_Inside_Script::
+	compare VAR_STORYLINE_STATE, STORY_POST_BATTLE_ARCHER_TREASUREISLAND
+	goto_if_ne LetsGrabLunch_HideArcher_Inside_Script_3
+LetsGrabLunch_HideArcher_Inside_Script_1:
+	return
+
+LetsGrabLunch_HideArcher_Inside_Script_2:
+	setflag FLAG_TEMP_2
+	goto LetsGrabLunch_HideArcher_Inside_Script_1
+
+LetsGrabLunch_HideArcher_Inside_Script_3:
+	compare VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
+	goto_if_ne LetsGrabLunch_HideArcher_Inside_Script_2
+	goto LetsGrabLunch_HideArcher_Inside_Script_1
 
 
 LetsGrabLunch_StartConversation_Dialogue::
@@ -249,7 +271,6 @@ LetsGrabLunch_Haightashbury_5:
 
 LetsGrabLunch_CheckRestorationProgress_Script::
 	setvar VAR_TEMP_0, 0
-	givemon SPECIES_TREECKO, 100, ITEM_NONE
 	call_if_quest_complete QUEST_RESTORECHINATOWN, LetsGrabLunch_IncrementCount_Script
 	call_if_quest_complete QUEST_RESTOREMARIN, LetsGrabLunch_IncrementCount_Script
 	call_if_quest_complete QUEST_RESTOREHAIGHTASHBURY, LetsGrabLunch_IncrementCount_Script

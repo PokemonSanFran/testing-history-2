@@ -3123,4 +3123,8 @@ extern const u8 gText_Twitter[];
 extern const u8 gText_Uber[];
 extern const u8 gText_Amazon[];
 
+//Quest_Restoretreasureisland
+extern const u8 gText_PokemonPsychoShift[];
+extern const u8 gText_PokemonEffectSpore[];
+
 #endif // GUARD_STRINGS_H

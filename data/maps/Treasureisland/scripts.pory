@@ -1,20 +1,16 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
+const CILAN = 2
+const FLAG_HIDE_CILAN = FLAG_TEMP_1
 
 mapscripts Treasureisland_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Treasureisland_MapScripts_OnTransition)
+        call(LetsGrabLunch_HideArcher_Outside_Script)
+        call(Quest_Restoretreasureisland_HideCilan_Outside_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, STORY_RESTORATION_1_COMPLETE: YouRealizeWereEvilRight_PhoneCall_Dialogue
     ]
-}
-
-script Treasureisland_MapScripts_OnTransition {
-    switch (var(VAR_STORYLINE_STATE)){
-        case 38: return
-        default: goto(LetsGrabLunch_HideObject_Script)
-    }
 }
 
 script Treasureisland_Movies_Dialogue{
