@@ -1910,5 +1910,5 @@ const u8 gText_Uber[] = _("Uber");
 const u8 gText_Amazon[] =_("Amazon");
 
 //Quest_Restoretreasureisland
-const u8 gText_PokemonPsychoShift[] = _("a Pokemon that knows the move Psycho Shift");
-const u8 gText_PokemonEffectSpore[] = _("a Pokemon that has the ability Effect Spore");
+const u8 gText_PokemonPsychoShift[] = _("a Pokemon that knows \nthe move Psycho Shift");
+const u8 gText_PokemonEffectSpore[] = _("a Pokemon that has \nthe ability Effect Spore");

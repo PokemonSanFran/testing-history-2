@@ -32,6 +32,8 @@ Quest_Restoretreasureisland_HideCilan_Outside_Script_11:
 
 
 Quest_Restoretreasureisland_Interact_Script::
+	lock
+	faceplayer
 	switch VAR_QUEST_RESTORETREASUREISLAND
 	case RESTORETREASUREISLAND_NOT_STARTED, Quest_Restoretreasureisland_Interact_Script_2
 	case SAVE_BEFORE_CILAN_BATTLE, Quest_Restoretreasureisland_Interact_Script_3
@@ -149,6 +151,8 @@ Quest_Restoretreasureisland_ConfirmTake_Dialogue::
 	callnative ClearMugshot
 	compare VAR_RESULT, NO
 	goto_if_eq Quest_Restoretreasureisland_ConfirmTake_Dialogue_1
+	msgbox gText_Restoretreasureisland_Thanks
+	closemessage
 	return
 
 Quest_Restoretreasureisland_ConfirmTake_Dialogue_1:
@@ -219,6 +223,7 @@ Quest_Restoretreasureisland_Handle_FlameOrb_Script::
 	goto_if_ne Quest_Restoretreasureisland_Handle_FlameOrb_Script_2
 Quest_Restoretreasureisland_Handle_FlameOrb_Script_1:
 	bufferitemname STR_VAR_1, ITEM_FLAME_ORB
+	bufferstring STR_VAR_2, Quest_Restoretreasureisland_Handle_FlameOrb_Script_Text_0
 	checkitem ITEM_FLAME_ORB, 1
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_Restoretreasureisland_Handle_FlameOrb_Script_4
@@ -247,6 +252,7 @@ Quest_Restoretreasureisland_Handle_TR27_Script::
 	goto_if_ne Quest_Restoretreasureisland_Handle_TR27_Script_2
 Quest_Restoretreasureisland_Handle_TR27_Script_1:
 	bufferitemname STR_VAR_1, ITEM_TM27
+	bufferstring STR_VAR_2, Quest_Restoretreasureisland_Handle_TR27_Script_Text_0
 	checkitem ITEM_TM27, 1
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_Restoretreasureisland_Handle_TR27_Script_4
@@ -274,10 +280,11 @@ Quest_Restoretreasureisland_Handle_PsychoShift_Script::
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_Restoretreasureisland_Handle_PsychoShift_Script_2
 Quest_Restoretreasureisland_Handle_PsychoShift_Script_1:
-	bufferstring STR_VAR_1, gText_PokemonPsychoShift
 	special ChoosePartyMon
 	waitstate
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	bufferstring STR_VAR_1, gText_PokemonPsychoShift
+	bufferstring STR_VAR_2, Quest_Restoretreasureisland_Handle_PsychoShift_Script_Text_0
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
 	goto_if_eq Quest_Restoretreasureisland_Handle_PsychoShift_Script_5
 Quest_Restoretreasureisland_Handle_PsychoShift_Script_4:
@@ -299,6 +306,7 @@ Quest_Restoretreasureisland_Handle_PsychoShift_Script_5:
 	goto Quest_Restoretreasureisland_Handle_PsychoShift_Script_4
 
 Quest_Restoretreasureisland_Handle_PsychoShift_Script_7:
+	special BufferMonNickname
 	call Quest_Restoretreasureisland_ConfirmTake_Dialogue
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORETREASUREISLAND, SUB_QUEST_3
 	goto Quest_Restoretreasureisland_HandleProgress_Dialogue
@@ -310,14 +318,14 @@ Quest_Restoretreasureisland_Handle_EffectSpore_Script::
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_Restoretreasureisland_Handle_EffectSpore_Script_2
 Quest_Restoretreasureisland_Handle_EffectSpore_Script_1:
-	bufferstring STR_VAR_1, gText_Amazon
 	special ChoosePartyMon
 	waitstate
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	bufferstring STR_VAR_1, gText_PokemonEffectSpore
+	bufferstring STR_VAR_2, Quest_Restoretreasureisland_Handle_PsychoShift_Script_Text_0
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
 	goto_if_eq Quest_Restoretreasureisland_Handle_EffectSpore_Script_5
 Quest_Restoretreasureisland_Handle_EffectSpore_Script_4:
-	bufferstring STR_VAR_1, gText_Amazon
 	compare VAR_RESULT, SPECIES_SHROOMISH
 	goto_if_eq Quest_Restoretreasureisland_Handle_EffectSpore_Script_7
 	setvar VAR_MUGSHOT, MUGSHOT_CILAN
@@ -336,6 +344,7 @@ Quest_Restoretreasureisland_Handle_EffectSpore_Script_5:
 	goto Quest_Restoretreasureisland_Handle_EffectSpore_Script_4
 
 Quest_Restoretreasureisland_Handle_EffectSpore_Script_7:
+	special BufferMonNickname
 	call Quest_Restoretreasureisland_ConfirmTake_Dialogue
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTORETREASUREISLAND, SUB_QUEST_4
 	goto Quest_Restoretreasureisland_HandleProgress_Dialogue
@@ -343,12 +352,36 @@ Quest_Restoretreasureisland_Handle_EffectSpore_Script_7:
 
 
 Quest_Restoretreasureisland_Reward_Dialogue::
-	msgbox Quest_Restoretreasureisland_Reward_Dialogue_Text_0
-	return
+	lock
+	setvar VAR_MUGSHOT, MUGSHOT_CILAN
+	callnative DrawMugshot
+	msgbox gText_ExpandedPlaceholder_Empty
+	setvar VAR_MUGSHOT, MUGSHOT_HILDA
+	callnative DrawMugshot
+	msgbox gText_ExpandedPlaceholder_Empty
+	opendoor 5, 12
+	waitdooranim
+	applymovement 2, Common_Movement_WalkUp
+	waitmovement 2
+	removeobject 2
+	playse SE_EXIT
+	waitse
+	closedoor 5, 12
+	waitdooranim
+	completequest QUEST_RESTORETREASUREISLAND
+	call LetsGrabLunch_CheckRestorationProgress_Script
+	release
+	end
 
 
-Quest_Restoretreasureisland_Reward_Dialogue_Text_0:
-	.string "reward$"
+Quest_Restoretreasureisland_Handle_FlameOrb_Script_Text_0:
+	.string "You don't have a $"
+
+Quest_Restoretreasureisland_Handle_TR27_Script_Text_0:
+	.string "You don't have a$"
+
+Quest_Restoretreasureisland_Handle_PsychoShift_Script_Text_0:
+	.string "That isn't $"
 
 Quest_Restoretreasureisland_CheckList::
 	.string "Flame Orb$"
@@ -373,4 +406,7 @@ gText_Restoretreasureisland_HeyYouSure::
 	.string "{STR_VAR_1}? i'm keeping it forever$"
 
 gText_Restoretreasureisland_YouDontHave::
-	.string "you don't have a {STR_VAR_1}!$"
+	.string "{STR_VAR_2}{STR_VAR_1}!$"
+
+gText_Restoretreasureisland_Thanks::
+	.string "thanks!$"
