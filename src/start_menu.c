@@ -53,7 +53,6 @@
 
 //https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
 #include "printf.h"
-#include "mgba.h"
 #include "../gflib/string_util.h" // for ConvertToAscii()
 
 // Menu actions

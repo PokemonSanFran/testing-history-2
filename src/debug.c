@@ -536,64 +536,64 @@ static const u8 gDebugText_Jump_YouCantStopMe[] = _("You Can't Stop Me!");
 static const u8 gDebugText_Jump_WeCanStopYouActually[] = _("We Can Stop You, Actually.");
 
 // Flags Menu
-static const u8 gDebugText_Flags_Flags[] =              _("Set Flag XXXX");
-static const u8 gDebugText_Flags_SetPokedexFlags[] =    _("All Pokédex Flags");
-static const u8 gDebugText_Flags_SwitchDex[] =          _("Pokédex ON/OFF");
-static const u8 gDebugText_Flags_SwitchNationalDex[] =  _("NatDex ON/OFF");
-static const u8 gDebugText_Flags_SwitchPokeNav[] =      _("PokéNav ON/OFF");
-static const u8 gDebugText_Flags_ToggleFlyFlags[] =     _("Fly Flags ON/OFF");
-static const u8 gDebugText_Flags_ToggleAllBadges[] =    _("All badges ON/OFF");
-static const u8 gDebugText_Flags_ToggleFrontierPass[] = _("Frontier Pass ON/OFF");
-static const u8 gDebugText_Flags_SwitchCollision[] =    _("Collision ON/OFF");
-static const u8 gDebugText_Flags_SwitchEncounter[] =    _("Encounter ON/OFF");
-static const u8 gDebugText_Flags_SwitchTrainerSee[] =   _("TrainerSee ON/OFF");
-static const u8 gDebugText_Flags_SwitchBagUse[] =       _("BagUse ON/OFF");
-static const u8 gDebugText_Flags_SwitchCatching[] =     _("Catching ON/OFF");
-static const u8 gDebugText_Flags_Flag[] =               _("Flag: {STR_VAR_1}   \n{STR_VAR_2}                   \n{STR_VAR_3}");
-static const u8 gDebugText_Flags_FlagHex[] =            _("{STR_VAR_1}           \n0x{STR_VAR_2}             ");
-static const u8 gDebugText_Flags_FlagSet[] =            _("TRUE");
-static const u8 gDebugText_Flags_FlagUnset[] =          _("FALSE");
+static const u8 sDebugText_Flags_Flags[] =              _("Set Flag XXXX");
+static const u8 sDebugText_Flags_SetPokedexFlags[] =    _("All Pokédex Flags");
+static const u8 sDebugText_Flags_SwitchDex[] =          _("Pokédex ON/OFF");
+static const u8 sDebugText_Flags_SwitchNationalDex[] =  _("NatDex ON/OFF");
+static const u8 sDebugText_Flags_SwitchPokeNav[] =      _("PokéNav ON/OFF");
+static const u8 sDebugText_Flags_ToggleFlyFlags[] =     _("Fly Flags ON/OFF");
+static const u8 sDebugText_Flags_ToggleAllBadges[] =    _("All badges ON/OFF");
+static const u8 sDebugText_Flags_ToggleFrontierPass[] = _("Frontier Pass ON/OFF");
+static const u8 sDebugText_Flags_SwitchCollision[] =    _("Collision ON/OFF");
+static const u8 sDebugText_Flags_SwitchEncounter[] =    _("Encounter ON/OFF");
+static const u8 sDebugText_Flags_SwitchTrainerSee[] =   _("TrainerSee ON/OFF");
+static const u8 sDebugText_Flags_SwitchBagUse[] =       _("BagUse ON/OFF");
+static const u8 sDebugText_Flags_SwitchCatching[] =     _("Catching ON/OFF");
+static const u8 sDebugText_Flags_Flag[] =               _("Flag: {STR_VAR_1}   \n{STR_VAR_2}                   \n{STR_VAR_3}");
+static const u8 sDebugText_Flags_FlagHex[] =            _("{STR_VAR_1}           \n0x{STR_VAR_2}             ");
+static const u8 sDebugText_Flags_FlagSet[] =            _("TRUE");
+static const u8 sDebugText_Flags_FlagUnset[] =          _("FALSE");
 // Variables Menu
-static const u8 gDebugText_Vars_Vars[] =             _("Set Vars XXXX");
-static const u8 gDebugText_Vars_VariableHex[] =      _("{STR_VAR_1}           \n0x{STR_VAR_2}             ");
-static const u8 gDebugText_Vars_Variable[] =         _("Var: {STR_VAR_1}             \nVal: {STR_VAR_3}             \n{STR_VAR_2}");
-static const u8 gDebugText_Vars_VariableValueSet[] = _("Var: {STR_VAR_1}             \nVal: {STR_VAR_3}             \n{STR_VAR_2}");
+static const u8 sDebugText_Vars_Vars[] =             _("Set Vars XXXX");
+static const u8 sDebugText_Vars_VariableHex[] =      _("{STR_VAR_1}           \n0x{STR_VAR_2}             ");
+static const u8 sDebugText_Vars_Variable[] =         _("Var: {STR_VAR_1}             \nVal: {STR_VAR_3}             \n{STR_VAR_2}");
+static const u8 sDebugText_Vars_VariableValueSet[] = _("Var: {STR_VAR_1}             \nVal: {STR_VAR_3}             \n{STR_VAR_2}");
 // Give Menu
-static const u8 gDebugText_Give_GiveItem[] =           _("Give item XXXX");
-static const u8 gDebugText_ItemQuantity[] =            _("Quantity:       \n{STR_VAR_1}    \n\n{STR_VAR_2}");
-static const u8 gDebugText_ItemID[] =                  _("Item Id: {STR_VAR_3}\n{STR_VAR_1}    \n\n{STR_VAR_2}");
-static const u8 gDebugText_Give_AllTMs[] =             _("Give all TMs");
-static const u8 gDebugText_Give_GivePokemonSimple[] =  _("Pkm(lvl)");
-static const u8 gDebugText_Give_GivePokemonComplex[] = _("Pkm(l,s,n,a,IV,mov)");
-static const u8 gDebugText_PokemonID[] =               _("Species: {STR_VAR_3}\n{STR_VAR_1}    \n\n{STR_VAR_2}");
-static const u8 gDebugText_PokemonLevel[] =            _("Level:                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
-static const u8 gDebugText_PokemonShiny[] =            _("Shiny:                   \n   {STR_VAR_2}             \n              \n                ");
-static const u8 gDebugText_PokemonNature[] =           _("NatureId: {STR_VAR_3}          \n{STR_VAR_1}          \n          \n{STR_VAR_2}");
-static const u8 gDebugText_PokemonAbility[] =          _("AbilityNum: {STR_VAR_3}          \n{STR_VAR_1}          \n          \n{STR_VAR_2}");
-static const u8 gDebugText_PokemonIVs[] =              _("All IVs:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
-static const u8 gDebugText_PokemonIV_0[] =             _("IV HP:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
-static const u8 gDebugText_PokemonIV_1[] =             _("IV Attack:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
-static const u8 gDebugText_PokemonIV_2[] =             _("IV Defense:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
-static const u8 gDebugText_PokemonIV_3[] =             _("IV Speed:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
-static const u8 gDebugText_PokemonIV_4[] =             _("IV Sp. Attack:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
-static const u8 gDebugText_PokemonIV_5[] =             _("IV Sp. Defense:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
-static const u8 gDebugText_PokemonMove_0[] =           _("Move 0: {STR_VAR_3}                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
-static const u8 gDebugText_PokemonMove_1[] =           _("Move 1: {STR_VAR_3}                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
-static const u8 gDebugText_PokemonMove_2[] =           _("Move 2: {STR_VAR_3}                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
-static const u8 gDebugText_PokemonMove_3[] =           _("Move 3: {STR_VAR_3}                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
-static const u8 gDebugText_Give_MaxMoney[] =           _("Max Money");
-static const u8 gDebugText_Give_MaxCoins[] =           _("Max Coins");
-static const u8 gDebugText_Give_BattlePoints[] =       _("Max Battle Points");
-static const u8 gDebugText_Give_DaycareEgg[] =         _("Daycare Egg");
-static const u8 gDebugText_Give_FillPc[] =             _("Fill Pc");
-static const u8 gDebugText_Give_GiveCHEAT[] =          _("CHEAT Start");
-static const u8 gDebugText_AccessPC[] =                _("Access PC");
+static const u8 sDebugText_Give_GiveItem[] =           _("Give item XXXX");
+static const u8 sDebugText_ItemQuantity[] =            _("Quantity:       \n{STR_VAR_1}    \n\n{STR_VAR_2}");
+static const u8 sDebugText_ItemID[] =                  _("Item Id: {STR_VAR_3}\n{STR_VAR_1}    \n\n{STR_VAR_2}");
+static const u8 sDebugText_Give_AllTMs[] =             _("Give all TMs");
+static const u8 sDebugText_Give_GivePokemonSimple[] =  _("Pkm(lvl)");
+static const u8 sDebugText_Give_GivePokemonComplex[] = _("Pkm(l,s,n,a,IV,mov)");
+static const u8 sDebugText_PokemonID[] =               _("Species: {STR_VAR_3}\n{STR_VAR_1}    \n\n{STR_VAR_2}");
+static const u8 sDebugText_PokemonLevel[] =            _("Level:                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
+static const u8 sDebugText_PokemonShiny[] =            _("Shiny:                   \n   {STR_VAR_2}             \n              \n                ");
+static const u8 sDebugText_PokemonNature[] =           _("NatureId: {STR_VAR_3}          \n{STR_VAR_1}          \n          \n{STR_VAR_2}");
+static const u8 sDebugText_PokemonAbility[] =          _("AbilityNum: {STR_VAR_3}          \n{STR_VAR_1}          \n          \n{STR_VAR_2}");
+static const u8 sDebugText_PokemonIVs[] =              _("All IVs:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
+static const u8 sDebugText_PokemonIV_0[] =             _("IV HP:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
+static const u8 sDebugText_PokemonIV_1[] =             _("IV Attack:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
+static const u8 sDebugText_PokemonIV_2[] =             _("IV Defense:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
+static const u8 sDebugText_PokemonIV_3[] =             _("IV Speed:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
+static const u8 sDebugText_PokemonIV_4[] =             _("IV Sp. Attack:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
+static const u8 sDebugText_PokemonIV_5[] =             _("IV Sp. Defense:               \n    {STR_VAR_3}            \n             \n{STR_VAR_2}          ");
+static const u8 sDebugText_PokemonMove_0[] =           _("Move 0: {STR_VAR_3}                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
+static const u8 sDebugText_PokemonMove_1[] =           _("Move 1: {STR_VAR_3}                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
+static const u8 sDebugText_PokemonMove_2[] =           _("Move 2: {STR_VAR_3}                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
+static const u8 sDebugText_PokemonMove_3[] =           _("Move 3: {STR_VAR_3}                   \n{STR_VAR_1}           \n          \n{STR_VAR_2}");
+static const u8 sDebugText_Give_MaxMoney[] =           _("Max Money");
+static const u8 sDebugText_Give_MaxCoins[] =           _("Max Coins");
+static const u8 sDebugText_Give_BattlePoints[] =       _("Max Battle Points");
+static const u8 sDebugText_Give_DaycareEgg[] =         _("Daycare Egg");
+static const u8 sDebugText_Give_FillPc[] =             _("Fill Pc");
+static const u8 sDebugText_Give_GiveCHEAT[] =          _("CHEAT Start");
+static const u8 sDebugText_AccessPC[] =                _("Access PC");
 // Sound Mneu
-static const u8 gDebugText_Sound_SE[] =     _("Effects");
-static const u8 gDebugText_Sound_SE_ID[] =  _("Sound Id: {STR_VAR_3}\n{STR_VAR_1}    \n{STR_VAR_2}");
-static const u8 gDebugText_Sound_MUS[] =    _("Music");
-static const u8 gDebugText_Sound_MUS_ID[] = _("Music Id: {STR_VAR_3}\n{STR_VAR_1}    \n{STR_VAR_2}");
-static const u8 gDebugText_Sound_Empty[] =  _("");
+static const u8 sDebugText_Sound_SE[] =     _("Effects");
+static const u8 sDebugText_Sound_SE_ID[] =  _("Sound Id: {STR_VAR_3}\n{STR_VAR_1}    \n{STR_VAR_2}");
+static const u8 sDebugText_Sound_MUS[] =    _("Music");
+static const u8 sDebugText_Sound_MUS_ID[] = _("Music Id: {STR_VAR_3}\n{STR_VAR_1}    \n{STR_VAR_2}");
+static const u8 sDebugText_Sound_Empty[] =  _("");
 
 static const u8 digitInidicator_1[] =        _("{LEFT_ARROW}+1{RIGHT_ARROW}        ");
 static const u8 digitInidicator_10[] =       _("{LEFT_ARROW}+10{RIGHT_ARROW}       ");
@@ -639,7 +639,7 @@ static const struct ListMenuItem sDebugMenu_Items_Main[] =
     [DEBUG_MENU_ITEM_VARS]      = {gDebugText_Vars,      DEBUG_MENU_ITEM_VARS},
     [DEBUG_MENU_ITEM_GIVE]      = {gDebugText_Give,      DEBUG_MENU_ITEM_GIVE},
     [DEBUG_MENU_ITEM_SOUND]     = {gDebugText_Sound,     DEBUG_MENU_ITEM_SOUND},
-    [DEBUG_MENU_ITEM_ACCESS_PC] = {gDebugText_AccessPC,  DEBUG_MENU_ITEM_ACCESS_PC},
+    [DEBUG_MENU_ITEM_ACCESS_PC] = {sDebugText_AccessPC,  DEBUG_MENU_ITEM_ACCESS_PC},
     [DEBUG_MENU_ITEM_CANCEL]    = {gDebugText_Cancel,    DEBUG_MENU_ITEM_CANCEL}
 };
 static const struct ListMenuItem sDebugMenu_Items_Utilities[] =
@@ -784,41 +784,41 @@ static const struct ListMenuItem sDebugMenu_Items_JumpAct5F[] =
 
 static const struct ListMenuItem sDebugMenu_Items_Flags[] =
 {
-    [DEBUG_FLAG_MENU_ITEM_FLAGS]             = {gDebugText_Flags_Flags,              DEBUG_FLAG_MENU_ITEM_FLAGS},
-    [DEBUG_FLAG_MENU_ITEM_POKEDEXFLAGS]      = {gDebugText_Flags_SetPokedexFlags,    DEBUG_FLAG_MENU_ITEM_POKEDEXFLAGS},
-    [DEBUG_FLAG_MENU_ITEM_POKEDEXONOFF]      = {gDebugText_Flags_SwitchDex,          DEBUG_FLAG_MENU_ITEM_POKEDEXONOFF},
-    [DEBUG_FLAG_MENU_ITEM_NATDEXONOFF]       = {gDebugText_Flags_SwitchNationalDex,  DEBUG_FLAG_MENU_ITEM_NATDEXONOFF},
-    [DEBUG_FLAG_MENU_ITEM_POKENAVONOFF]      = {gDebugText_Flags_SwitchPokeNav,      DEBUG_FLAG_MENU_ITEM_POKENAVONOFF},
-    [DEBUG_FLAG_MENU_ITEM_FLYANYWHERE]       = {gDebugText_Flags_ToggleFlyFlags,     DEBUG_FLAG_MENU_ITEM_FLYANYWHERE},
-    [DEBUG_FLAG_MENU_ITEM_GETALLBADGES]      = {gDebugText_Flags_ToggleAllBadges,    DEBUG_FLAG_MENU_ITEM_GETALLBADGES},
-    [DEBUG_FLAG_MENU_ITEM_FRONTIER_PASS]     = {gDebugText_Flags_ToggleFrontierPass, DEBUG_FLAG_MENU_ITEM_FRONTIER_PASS},
-    [DEBUG_FLAG_MENU_ITEM_COLISSION_ONOFF]   = {gDebugText_Flags_SwitchCollision,    DEBUG_FLAG_MENU_ITEM_COLISSION_ONOFF},
-    [DEBUG_FLAG_MENU_ITEM_ENCOUNTER_ONOFF]   = {gDebugText_Flags_SwitchEncounter,    DEBUG_FLAG_MENU_ITEM_ENCOUNTER_ONOFF},
-    [DEBUG_FLAG_MENU_ITEM_TRAINER_SEE_ONOFF] = {gDebugText_Flags_SwitchTrainerSee,   DEBUG_FLAG_MENU_ITEM_TRAINER_SEE_ONOFF},
-    [DEBUG_FLAG_MENU_ITEM_BAG_USE_ONOFF]     = {gDebugText_Flags_SwitchBagUse,       DEBUG_FLAG_MENU_ITEM_BAG_USE_ONOFF},
-    [DEBUG_FLAG_MENU_ITEM_CATCHING_ONOFF]    = {gDebugText_Flags_SwitchCatching,     DEBUG_FLAG_MENU_ITEM_CATCHING_ONOFF},
+    [DEBUG_FLAG_MENU_ITEM_FLAGS]             = {sDebugText_Flags_Flags,              DEBUG_FLAG_MENU_ITEM_FLAGS},
+    [DEBUG_FLAG_MENU_ITEM_POKEDEXFLAGS]      = {sDebugText_Flags_SetPokedexFlags,    DEBUG_FLAG_MENU_ITEM_POKEDEXFLAGS},
+    [DEBUG_FLAG_MENU_ITEM_POKEDEXONOFF]      = {sDebugText_Flags_SwitchDex,          DEBUG_FLAG_MENU_ITEM_POKEDEXONOFF},
+    [DEBUG_FLAG_MENU_ITEM_NATDEXONOFF]       = {sDebugText_Flags_SwitchNationalDex,  DEBUG_FLAG_MENU_ITEM_NATDEXONOFF},
+    [DEBUG_FLAG_MENU_ITEM_POKENAVONOFF]      = {sDebugText_Flags_SwitchPokeNav,      DEBUG_FLAG_MENU_ITEM_POKENAVONOFF},
+    [DEBUG_FLAG_MENU_ITEM_FLYANYWHERE]       = {sDebugText_Flags_ToggleFlyFlags,     DEBUG_FLAG_MENU_ITEM_FLYANYWHERE},
+    [DEBUG_FLAG_MENU_ITEM_GETALLBADGES]      = {sDebugText_Flags_ToggleAllBadges,    DEBUG_FLAG_MENU_ITEM_GETALLBADGES},
+    [DEBUG_FLAG_MENU_ITEM_FRONTIER_PASS]     = {sDebugText_Flags_ToggleFrontierPass, DEBUG_FLAG_MENU_ITEM_FRONTIER_PASS},
+    [DEBUG_FLAG_MENU_ITEM_COLISSION_ONOFF]   = {sDebugText_Flags_SwitchCollision,    DEBUG_FLAG_MENU_ITEM_COLISSION_ONOFF},
+    [DEBUG_FLAG_MENU_ITEM_ENCOUNTER_ONOFF]   = {sDebugText_Flags_SwitchEncounter,    DEBUG_FLAG_MENU_ITEM_ENCOUNTER_ONOFF},
+    [DEBUG_FLAG_MENU_ITEM_TRAINER_SEE_ONOFF] = {sDebugText_Flags_SwitchTrainerSee,   DEBUG_FLAG_MENU_ITEM_TRAINER_SEE_ONOFF},
+    [DEBUG_FLAG_MENU_ITEM_BAG_USE_ONOFF]     = {sDebugText_Flags_SwitchBagUse,       DEBUG_FLAG_MENU_ITEM_BAG_USE_ONOFF},
+    [DEBUG_FLAG_MENU_ITEM_CATCHING_ONOFF]    = {sDebugText_Flags_SwitchCatching,     DEBUG_FLAG_MENU_ITEM_CATCHING_ONOFF},
 };
 static const struct ListMenuItem sDebugMenu_Items_Vars[] =
 {
-    [DEBUG_VARS_MENU_ITEM_VARS] = {gDebugText_Vars_Vars, DEBUG_FLAG_MENU_ITEM_FLAGS},
+    [DEBUG_VARS_MENU_ITEM_VARS] = {sDebugText_Vars_Vars, DEBUG_FLAG_MENU_ITEM_FLAGS},
 };
 static const struct ListMenuItem sDebugMenu_Items_Give[] =
 {
-    [DEBUG_GIVE_MENU_ITEM_ITEM_X]            = {gDebugText_Give_GiveItem,           DEBUG_GIVE_MENU_ITEM_ITEM_X},
-    [DEBUG_GIVE_MENU_ITEM_ALLTMS]            = {gDebugText_Give_AllTMs,             DEBUG_GIVE_MENU_ITEM_ALLTMS},
-    [DEBUG_GIVE_MENU_ITEM_POKEMON_SIMPLE]    = {gDebugText_Give_GivePokemonSimple,  DEBUG_GIVE_MENU_ITEM_POKEMON_SIMPLE},
-    [DEBUG_GIVE_MENU_ITEM_POKEMON_COMPLEX]   = {gDebugText_Give_GivePokemonComplex, DEBUG_GIVE_MENU_ITEM_POKEMON_COMPLEX},
-    [DEBUG_GIVE_MENU_ITEM_MAX_MONEY]         = {gDebugText_Give_MaxMoney,           DEBUG_GIVE_MENU_ITEM_MAX_MONEY},
-    [DEBUG_GIVE_MENU_ITEM_MAX_COINS]         = {gDebugText_Give_MaxCoins,           DEBUG_GIVE_MENU_ITEM_MAX_COINS},
-    [DEBUG_GIVE_MENU_ITEM_MAX_BATTLE_POINTS] = {gDebugText_Give_BattlePoints,       DEBUG_GIVE_MENU_ITEM_MAX_BATTLE_POINTS},
-    [DEBUG_GIVE_MENU_ITEM_DAYCARE_EGG]       = {gDebugText_Give_DaycareEgg,         DEBUG_GIVE_MENU_ITEM_DAYCARE_EGG},
-    [DEBUG_GIVE_MENU_ITEM_FILL_PC]           = {gDebugText_Give_FillPc,             DEBUG_GIVE_MENU_ITEM_FILL_PC},
-    [DEBUG_GIVE_MENU_ITEM_CHEAT]             = {gDebugText_Give_GiveCHEAT,          DEBUG_GIVE_MENU_ITEM_CHEAT},
+    [DEBUG_GIVE_MENU_ITEM_ITEM_X]            = {sDebugText_Give_GiveItem,           DEBUG_GIVE_MENU_ITEM_ITEM_X},
+    [DEBUG_GIVE_MENU_ITEM_ALLTMS]            = {sDebugText_Give_AllTMs,             DEBUG_GIVE_MENU_ITEM_ALLTMS},
+    [DEBUG_GIVE_MENU_ITEM_POKEMON_SIMPLE]    = {sDebugText_Give_GivePokemonSimple,  DEBUG_GIVE_MENU_ITEM_POKEMON_SIMPLE},
+    [DEBUG_GIVE_MENU_ITEM_POKEMON_COMPLEX]   = {sDebugText_Give_GivePokemonComplex, DEBUG_GIVE_MENU_ITEM_POKEMON_COMPLEX},
+    [DEBUG_GIVE_MENU_ITEM_MAX_MONEY]         = {sDebugText_Give_MaxMoney,           DEBUG_GIVE_MENU_ITEM_MAX_MONEY},
+    [DEBUG_GIVE_MENU_ITEM_MAX_COINS]         = {sDebugText_Give_MaxCoins,           DEBUG_GIVE_MENU_ITEM_MAX_COINS},
+    [DEBUG_GIVE_MENU_ITEM_MAX_BATTLE_POINTS] = {sDebugText_Give_BattlePoints,       DEBUG_GIVE_MENU_ITEM_MAX_BATTLE_POINTS},
+    [DEBUG_GIVE_MENU_ITEM_DAYCARE_EGG]       = {sDebugText_Give_DaycareEgg,         DEBUG_GIVE_MENU_ITEM_DAYCARE_EGG},
+    [DEBUG_GIVE_MENU_ITEM_FILL_PC]           = {sDebugText_Give_FillPc,             DEBUG_GIVE_MENU_ITEM_FILL_PC},
+    [DEBUG_GIVE_MENU_ITEM_CHEAT]             = {sDebugText_Give_GiveCHEAT,          DEBUG_GIVE_MENU_ITEM_CHEAT},
 };
 static const struct ListMenuItem sDebugMenu_Items_Sound[] =
 {
-    [DEBUG_SOUND_MENU_ITEM_SE]  = {gDebugText_Sound_SE,  DEBUG_SOUND_MENU_ITEM_SE},
-    [DEBUG_SOUND_MENU_ITEM_MUS] = {gDebugText_Sound_MUS, DEBUG_SOUND_MENU_ITEM_MUS},
+    [DEBUG_SOUND_MENU_ITEM_SE]  = {sDebugText_Sound_SE,  DEBUG_SOUND_MENU_ITEM_SE},
+    [DEBUG_SOUND_MENU_ITEM_MUS] = {sDebugText_Sound_MUS, DEBUG_SOUND_MENU_ITEM_MUS},
 };
 
 // *******************************
@@ -1241,13 +1241,13 @@ static void DebugTask_HandleMenuInput_Main(u8 taskId)
     void (*func)(u8);
     u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         if ((func = sDebugMenu_Actions_Main[input]) != NULL)
             func(taskId);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Debug_DestroyMenu_Full(taskId);
@@ -1259,13 +1259,13 @@ static void DebugTask_HandleMenuInput_Utilities(u8 taskId)
     void (*func)(u8);
     u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         if ((func = sDebugMenu_Actions_Utilities[input]) != NULL)
             func(taskId);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Debug_DestroyMenu(taskId);
@@ -1277,13 +1277,13 @@ static void DebugTask_HandleMenuInput_Scripts(u8 taskId)
     void (*func)(u8);
     u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         if ((func = sDebugMenu_Actions_Scripts[input]) != NULL)
             func(taskId);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Debug_DestroyMenu(taskId);
@@ -1446,13 +1446,13 @@ static void DebugTask_HandleMenuInput_Flags(u8 taskId)
     void (*func)(u8);
     u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         if ((func = sDebugMenu_Actions_Flags[input]) != NULL)
             func(taskId);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Debug_DestroyMenu(taskId);
@@ -1464,13 +1464,13 @@ static void DebugTask_HandleMenuInput_Vars(u8 taskId)
     void (*func)(u8);
     u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         if ((func = sDebugMenu_Actions_Vars[input]) != NULL)
             func(taskId);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Debug_DestroyMenu(taskId);
@@ -1482,13 +1482,13 @@ static void DebugTask_HandleMenuInput_Give(u8 taskId)
     void (*func)(u8);
     u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         if ((func = sDebugMenu_Actions_Give[input]) != NULL)
             func(taskId);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Debug_DestroyMenu(taskId);
@@ -1500,13 +1500,13 @@ static void DebugTask_HandleMenuInput_Sound(u8 taskId)
     void (*func)(u8);
     u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         if ((func = sDebugMenu_Actions_Sound[input]) != NULL)
             func(taskId);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Debug_DestroyMenu(taskId);
@@ -1652,27 +1652,27 @@ static void DebugAction_Util_Warp_Warp(u8 taskId)
 }
 static void DebugAction_Util_Warp_SelectMapGroup(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > MAP_GROUPS_COUNT - 1)
                 gTasks[taskId].data[3] = MAP_GROUPS_COUNT - 1;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 0)
                 gTasks[taskId].data[3] = 0;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < 2)
                 gTasks[taskId].data[4] += 1;
@@ -1686,7 +1686,7 @@ static void DebugAction_Util_Warp_SelectMapGroup(u8 taskId)
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         gTasks[taskId].data[5] = gTasks[taskId].data[3];
         gTasks[taskId].data[3] = 0;
@@ -1702,7 +1702,7 @@ static void DebugAction_Util_Warp_SelectMapGroup(u8 taskId)
 
         gTasks[taskId].func = DebugAction_Util_Warp_SelectMap;
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         DebugAction_DestroyExtraWindow(taskId);
@@ -1712,27 +1712,27 @@ static void DebugAction_Util_Warp_SelectMap(u8 taskId)
 {
     u8 max_value = MAP_GROUP_COUNT[gTasks[taskId].data[5]]; //maps in the selected map group
 
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > max_value - 1)
                 gTasks[taskId].data[3] = max_value - 1;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 0)
                 gTasks[taskId].data[3] = 0;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < 2)
                 gTasks[taskId].data[4] += 1;
@@ -1747,7 +1747,7 @@ static void DebugAction_Util_Warp_SelectMap(u8 taskId)
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         gTasks[taskId].data[6] = gTasks[taskId].data[3];
         gTasks[taskId].data[3] = 0;
@@ -1759,7 +1759,7 @@ static void DebugAction_Util_Warp_SelectMap(u8 taskId)
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
         gTasks[taskId].func = DebugAction_Util_Warp_SelectWarp;
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         DebugAction_DestroyExtraWindow(taskId);
@@ -1767,16 +1767,16 @@ static void DebugAction_Util_Warp_SelectMap(u8 taskId)
 }
 static void DebugAction_Util_Warp_SelectWarp(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > 10)
                 gTasks[taskId].data[3] = 10;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 0)
@@ -1789,7 +1789,7 @@ static void DebugAction_Util_Warp_SelectWarp(u8 taskId)
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         gTasks[taskId].data[7] = gTasks[taskId].data[3];
         //WARP
@@ -1799,7 +1799,7 @@ static void DebugAction_Util_Warp_SelectWarp(u8 taskId)
         ResetInitialPlayerAvatarState();
         DebugAction_DestroyExtraWindow(taskId);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         DebugAction_DestroyExtraWindow(taskId);
@@ -1838,12 +1838,12 @@ static void DebugAction_Util_PoisonMons(u8 taskId)
 
 static void DebugAction_Util_CheckSaveBlock(u8 taskId)
 {
-    static const u8 gDebugText_SaveBlockSize[] =  _("SaveBlock1 is {STR_VAR_1} bytes long.\nMax size is 15872 bytes.\pSaveBlock2 is {STR_VAR_2} bytes long.\nMax size is 3968 bytes.\pPokemonStorage is {STR_VAR_3} bytes long.\nMax size is 35712 bytes.");
+    static const u8 sDebugText_SaveBlockSize[] =  _("SaveBlock1 is {STR_VAR_1} bytes long.\nMax size is 15872 bytes.\pSaveBlock2 is {STR_VAR_2} bytes long.\nMax size is 3968 bytes.\pPokemonStorage is {STR_VAR_3} bytes long.\nMax size is 35712 bytes.");
 
     ConvertIntToDecimalStringN(gStringVar1, sizeof(struct SaveBlock1), STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar2, sizeof(struct SaveBlock2), STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar3, sizeof(struct PokemonStorage), STR_CONV_MODE_LEFT_ALIGN, 6);
-    StringExpandPlaceholders(gStringVar4, gDebugText_SaveBlockSize);
+    StringExpandPlaceholders(gStringVar4, sDebugText_SaveBlockSize);
 
     Debug_DestroyMenu_Full(taskId);
     LockPlayerFieldControls();
@@ -1899,28 +1899,28 @@ static void DebugAction_Util_Weather(u8 taskId)
 }
 static void DebugAction_Util_Weather_SelectId(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > WEATHER_ROUTE123_CYCLE)
                 gTasks[taskId].data[3] = WEATHER_ROUTE123_CYCLE;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < WEATHER_NONE)
                 gTasks[taskId].data[3] = WEATHER_NONE;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < 2)
                 gTasks[taskId].data[4] += 1;
@@ -1938,7 +1938,7 @@ static void DebugAction_Util_Weather_SelectId(u8 taskId)
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         if (gTasks[taskId].data[3] <= 14 || gTasks[taskId].data[3] >= 20)
         {
@@ -1946,7 +1946,7 @@ static void DebugAction_Util_Weather_SelectId(u8 taskId)
             SetWeather(gTasks[taskId].data[5]);
         }
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         DebugAction_DestroyExtraWindow(taskId);
@@ -2090,13 +2090,13 @@ static void DebugAction_Flags_Flags(u8 taskId)
     //Display initial Flag
     ConvertIntToDecimalStringN(gStringVar1, 1, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_FLAGS);
     ConvertIntToHexStringN(gStringVar2, 1, STR_CONV_MODE_LEFT_ALIGN, 3);
-    StringExpandPlaceholders(gStringVar1, gDebugText_Flags_FlagHex);
+    StringExpandPlaceholders(gStringVar1, sDebugText_Flags_FlagHex);
     if (FlagGet(FLAG_TEMP_1) == TRUE)
-        StringCopyPadded(gStringVar2, gDebugText_Flags_FlagSet, CHAR_SPACE, 15);
+        StringCopyPadded(gStringVar2, sDebugText_Flags_FlagSet, CHAR_SPACE, 15);
     else
-        StringCopyPadded(gStringVar2, gDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
+        StringCopyPadded(gStringVar2, sDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
     StringCopy(gStringVar3, gText_DigitIndicator[0]);
-    StringExpandPlaceholders(gStringVar4, gDebugText_Flags_Flag);
+    StringExpandPlaceholders(gStringVar4, sDebugText_Flags_Flag);
     AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Flags_FlagsSelect;
@@ -2106,16 +2106,16 @@ static void DebugAction_Flags_Flags(u8 taskId)
 }
 static void DebugAction_Flags_FlagsSelect(u8 taskId)
 {
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
         FlagToggle(gTasks[taskId].data[3]);
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         DebugAction_DestroyExtraWindow(taskId);
         return;
     }
 
-    if (gMain.newKeys & DPAD_UP)
+    if (JOY_NEW(DPAD_UP))
     {
         PlaySE(SE_SELECT);
         gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
@@ -2123,7 +2123,7 @@ static void DebugAction_Flags_FlagsSelect(u8 taskId)
             gTasks[taskId].data[3] = FLAGS_COUNT - 1;
         }
     }
-    if (gMain.newKeys & DPAD_DOWN)
+    if (JOY_NEW(DPAD_DOWN))
     {
         PlaySE(SE_SELECT);
         gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
@@ -2131,7 +2131,7 @@ static void DebugAction_Flags_FlagsSelect(u8 taskId)
             gTasks[taskId].data[3] = 1;
         }
     }
-    if (gMain.newKeys & DPAD_LEFT)
+    if (JOY_NEW(DPAD_LEFT))
     {
         PlaySE(SE_SELECT);
         gTasks[taskId].data[4] -= 1;
@@ -2140,7 +2140,7 @@ static void DebugAction_Flags_FlagsSelect(u8 taskId)
             gTasks[taskId].data[4] = 0;
         }
     }
-    if (gMain.newKeys & DPAD_RIGHT)
+    if (JOY_NEW(DPAD_RIGHT))
     {
         PlaySE(SE_SELECT);
         gTasks[taskId].data[4] += 1;
@@ -2150,17 +2150,17 @@ static void DebugAction_Flags_FlagsSelect(u8 taskId)
         }
     }
 
-    if (gMain.newKeys & DPAD_ANY || gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(DPAD_ANY) || JOY_NEW(A_BUTTON))
     {
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_FLAGS);
         ConvertIntToHexStringN(gStringVar2, gTasks[taskId].data[3], STR_CONV_MODE_LEFT_ALIGN, 3);
-        StringExpandPlaceholders(gStringVar1, gDebugText_Flags_FlagHex);
+        StringExpandPlaceholders(gStringVar1, sDebugText_Flags_FlagHex);
         if (FlagGet(gTasks[taskId].data[3]) == TRUE)
-            StringCopyPadded(gStringVar2, gDebugText_Flags_FlagSet, CHAR_SPACE, 15);
+            StringCopyPadded(gStringVar2, sDebugText_Flags_FlagSet, CHAR_SPACE, 15);
         else
-            StringCopyPadded(gStringVar2, gDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
+            StringCopyPadded(gStringVar2, sDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
         StringCopy(gStringVar3, gText_DigitIndicator[gTasks[taskId].data[4]]);
-        StringExpandPlaceholders(gStringVar4, gDebugText_Flags_Flag);
+        StringExpandPlaceholders(gStringVar4, sDebugText_Flags_Flag);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 }
@@ -2348,11 +2348,11 @@ static void DebugAction_Vars_Vars(u8 taskId)
     //Display initial Variable
     ConvertIntToDecimalStringN(gStringVar1, VARS_START, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
     ConvertIntToHexStringN(gStringVar2, VARS_START, STR_CONV_MODE_LEFT_ALIGN, 4);
-    StringExpandPlaceholders(gStringVar1, gDebugText_Vars_VariableHex);
+    StringExpandPlaceholders(gStringVar1, sDebugText_Vars_VariableHex);
     ConvertIntToDecimalStringN(gStringVar3, 0, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
     StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
     StringCopy(gStringVar2, gText_DigitIndicator[0]);
-    StringExpandPlaceholders(gStringVar4, gDebugText_Vars_Variable);
+    StringExpandPlaceholders(gStringVar4, sDebugText_Vars_Variable);
     AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Vars_Select;
@@ -2364,38 +2364,38 @@ static void DebugAction_Vars_Vars(u8 taskId)
 
 static void DebugAction_Vars_Select(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_UP)
+    if (JOY_NEW(DPAD_UP))
     {
         gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
         if (gTasks[taskId].data[3] > VARS_END)
             gTasks[taskId].data[3] = VARS_END;
     }
-    if (gMain.newKeys & DPAD_DOWN)
+    if (JOY_NEW(DPAD_DOWN))
     {
         gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
         if (gTasks[taskId].data[3] < VARS_START)
             gTasks[taskId].data[3] = VARS_START;
     }
-    if (gMain.newKeys & DPAD_LEFT)
+    if (JOY_NEW(DPAD_LEFT))
     {
         gTasks[taskId].data[4] -= 1;
         if (gTasks[taskId].data[4] < 0)
             gTasks[taskId].data[4] = 0;
     }
-    if (gMain.newKeys & DPAD_RIGHT)
+    if (JOY_NEW(DPAD_RIGHT))
     {
         gTasks[taskId].data[4] += 1;
         if (gTasks[taskId].data[4] > DEBUG_NUMBER_DIGITS_VARIABLES - 1)
             gTasks[taskId].data[4] = DEBUG_NUMBER_DIGITS_VARIABLES - 1;
     }
 
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
         ConvertIntToHexStringN(gStringVar2, gTasks[taskId].data[3], STR_CONV_MODE_LEFT_ALIGN, 4);
-        StringExpandPlaceholders(gStringVar1, gDebugText_Vars_VariableHex);
+        StringExpandPlaceholders(gStringVar1, sDebugText_Vars_VariableHex);
         if (VarGetIfExist(gTasks[taskId].data[3]) == 65535) //Current value, if 65535 the value hasnt been set
             gTasks[taskId].data[5] = 0;
         else
@@ -2404,11 +2404,11 @@ static void DebugAction_Vars_Select(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]); //Current digit
 
         //Combine str's to full window string
-        StringExpandPlaceholders(gStringVar4, gDebugText_Vars_Variable);
+        StringExpandPlaceholders(gStringVar4, sDebugText_Vars_Variable);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         gTasks[taskId].data[4] = 0;
 
@@ -2416,7 +2416,7 @@ static void DebugAction_Vars_Select(u8 taskId)
 
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
         ConvertIntToHexStringN(gStringVar2, gTasks[taskId].data[3], STR_CONV_MODE_LEFT_ALIGN, 4);
-        StringExpandPlaceholders(gStringVar1, gDebugText_Vars_VariableHex);
+        StringExpandPlaceholders(gStringVar1, sDebugText_Vars_VariableHex);
         if (VarGetIfExist(gTasks[taskId].data[3]) == 65535) //Current value if 65535 the value hasnt been set
             gTasks[taskId].data[5] = 0;
         else
@@ -2424,13 +2424,13 @@ static void DebugAction_Vars_Select(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[5], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]); //Current digit
-        StringExpandPlaceholders(gStringVar4, gDebugText_Vars_VariableValueSet);
+        StringExpandPlaceholders(gStringVar4, sDebugText_Vars_VariableValueSet);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
         gTasks[taskId].data[6] = gTasks[taskId].data[5]; //New value selector
         gTasks[taskId].func = DebugAction_Vars_SetValue;
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         DebugAction_DestroyExtraWindow(taskId);
@@ -2439,7 +2439,7 @@ static void DebugAction_Vars_Select(u8 taskId)
 }
 static void DebugAction_Vars_SetValue(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_UP)
+    if (JOY_NEW(DPAD_UP))
     {
         if (gTasks[taskId].data[6] + sPowersOfTen[gTasks[taskId].data[4]] <= 32000)
             gTasks[taskId].data[6] += sPowersOfTen[gTasks[taskId].data[4]];
@@ -2449,14 +2449,14 @@ static void DebugAction_Vars_SetValue(u8 taskId)
         if (gTasks[taskId].data[6] >= 32000)
             gTasks[taskId].data[6] = 32000 - 1;
     }
-    if (gMain.newKeys & DPAD_DOWN)
+    if (JOY_NEW(DPAD_DOWN))
     {
         gTasks[taskId].data[6] -= sPowersOfTen[gTasks[taskId].data[4]];
         if (gTasks[taskId].data[6] < 0){
             gTasks[taskId].data[6] = 0;
         }
     }
-    if (gMain.newKeys & DPAD_LEFT)
+    if (JOY_NEW(DPAD_LEFT))
     {
         gTasks[taskId].data[4] -= 1;
         if (gTasks[taskId].data[4] < 0)
@@ -2464,7 +2464,7 @@ static void DebugAction_Vars_SetValue(u8 taskId)
             gTasks[taskId].data[4] = 0;
         }
     }
-    if (gMain.newKeys & DPAD_RIGHT)
+    if (JOY_NEW(DPAD_RIGHT))
     {
         gTasks[taskId].data[4] += 1;
         if (gTasks[taskId].data[4] > 4)
@@ -2473,30 +2473,30 @@ static void DebugAction_Vars_SetValue(u8 taskId)
         }
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         VarSet(gTasks[taskId].data[3], gTasks[taskId].data[6]);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         DebugAction_DestroyExtraWindow(taskId);
         return;
     }
 
-    if (gMain.newKeys & DPAD_ANY || gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(DPAD_ANY) || JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
 
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
         ConvertIntToHexStringN(gStringVar2, gTasks[taskId].data[3], STR_CONV_MODE_LEFT_ALIGN, 4);
-        StringExpandPlaceholders(gStringVar1, gDebugText_Vars_VariableHex);
+        StringExpandPlaceholders(gStringVar1, sDebugText_Vars_VariableHex);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[6], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]); //Current digit
-        StringExpandPlaceholders(gStringVar4, gDebugText_Vars_VariableValueSet);
+        StringExpandPlaceholders(gStringVar4, sDebugText_Vars_VariableValueSet);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 }
@@ -2524,7 +2524,7 @@ static void DebugAction_Give_Item(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
     CopyItemName(1, gStringVar1);
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-    StringExpandPlaceholders(gStringVar4, gDebugText_ItemID);
+    StringExpandPlaceholders(gStringVar4, sDebugText_ItemID);
     AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Give_Item_SelectId;
@@ -2538,28 +2538,28 @@ static void DebugAction_Give_Item(u8 taskId)
 }
 static void DebugAction_Give_Item_SelectId(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] >= ITEMS_COUNT)
                 gTasks[taskId].data[3] = ITEMS_COUNT - 1;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 1)
                 gTasks[taskId].data[3] = 1;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < DEBUG_NUMBER_DIGITS_ITEMS - 1)
                 gTasks[taskId].data[4] += 1;
@@ -2569,7 +2569,7 @@ static void DebugAction_Give_Item_SelectId(u8 taskId)
         CopyItemName(gTasks[taskId].data[3], gStringVar1);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-        StringExpandPlaceholders(gStringVar4, gDebugText_ItemID);
+        StringExpandPlaceholders(gStringVar4, sDebugText_ItemID);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
         FreeSpriteTilesByTag(ITEM_TAG);                         //Destroy item icon
@@ -2582,7 +2582,7 @@ static void DebugAction_Give_Item_SelectId(u8 taskId)
         gSprites[gTasks[taskId].data[6]].oam.priority = 0;
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         gTasks[taskId].data[5] = gTasks[taskId].data[3];
         gTasks[taskId].data[3] = 1;
@@ -2591,12 +2591,12 @@ static void DebugAction_Give_Item_SelectId(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEM_QUANTITY);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, gDebugText_ItemQuantity);
+        StringExpandPlaceholders(gStringVar4, sDebugText_ItemQuantity);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Item_SelectQuantity;
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         FreeSpriteTilesByTag(ITEM_TAG);                         //Destroy item icon
         FreeSpritePaletteByTag(ITEM_TAG);                       //Destroy item icon
@@ -2609,28 +2609,28 @@ static void DebugAction_Give_Item_SelectId(u8 taskId)
 }
 static void DebugAction_Give_Item_SelectQuantity(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] >= 100)
                 gTasks[taskId].data[3] = 99;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 1)
                 gTasks[taskId].data[3] = 1;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < 2)
                 gTasks[taskId].data[4] += 1;
@@ -2639,11 +2639,11 @@ static void DebugAction_Give_Item_SelectQuantity(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEM_QUANTITY);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, gDebugText_ItemQuantity);
+        StringExpandPlaceholders(gStringVar4, sDebugText_ItemQuantity);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         FreeSpriteTilesByTag(ITEM_TAG);                         //Destroy item icon
         FreeSpritePaletteByTag(ITEM_TAG);                       //Destroy item icon
@@ -2654,7 +2654,7 @@ static void DebugAction_Give_Item_SelectQuantity(u8 taskId)
         AddBagItem(gTasks[taskId].data[5], gTasks[taskId].data[3]);
         DebugAction_DestroyExtraWindow(taskId);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         FreeSpriteTilesByTag(ITEM_TAG);                         //Destroy item icon
         FreeSpritePaletteByTag(ITEM_TAG);                       //Destroy item icon
@@ -2719,7 +2719,7 @@ static void DebugAction_Give_PokemonSimple(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, 3);
     StringCopy(gStringVar1, gSpeciesNames[1]);
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-    StringExpandPlaceholders(gStringVar4, gDebugText_PokemonID);
+    StringExpandPlaceholders(gStringVar4, sDebugText_PokemonID);
     AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
 
     //Set task data
@@ -2757,7 +2757,7 @@ static void DebugAction_Give_PokemonComplex(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, 4);
     StringCopy(gStringVar1, gSpeciesNames[1]);
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-    StringExpandPlaceholders(gStringVar4, gDebugText_PokemonID);
+    StringExpandPlaceholders(gStringVar4, sDebugText_PokemonID);
     AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Give_Pokemon_SelectId;
@@ -2774,28 +2774,28 @@ static void DebugAction_Give_PokemonComplex(u8 taskId)
 
 static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] >= NUM_SPECIES)
                 gTasks[taskId].data[3] = NUM_SPECIES - 1;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 1)
                 gTasks[taskId].data[3] = 1;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < DEBUG_NUMBER_DIGITS_ITEMS - 1)
                 gTasks[taskId].data[4] += 1;
@@ -2805,7 +2805,7 @@ static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
         StringCopy(gStringVar1, gSpeciesNames[gTasks[taskId].data[3]]); //CopyItemName(gTasks[taskId].data[3], gStringVar1);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 4);
-        StringExpandPlaceholders(gStringVar4, gDebugText_PokemonID);
+        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonID);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
         FreeAndDestroyMonIconSprite(&gSprites[gTasks[taskId].data[6]]);
@@ -2815,7 +2815,7 @@ static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
         gSprites[gTasks[taskId].data[6]].oam.priority = 0;
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         sDebugMonData->mon_speciesId = gTasks[taskId].data[3]; //Species ID
         gTasks[taskId].data[3] = 1;
@@ -2824,12 +2824,12 @@ static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 3);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, gDebugText_PokemonLevel);
+        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonLevel);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectLevel;
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Free(sDebugMonData); //Frees EWRAM of MonData Struct
@@ -2840,28 +2840,28 @@ static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
 }
 static void DebugAction_Give_Pokemon_SelectLevel(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > 100)
                 gTasks[taskId].data[3] = 100;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 1)
                 gTasks[taskId].data[3] = 1;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < 2)
                 gTasks[taskId].data[4] += 1;
@@ -2870,11 +2870,11 @@ static void DebugAction_Give_Pokemon_SelectLevel(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 3);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, gDebugText_PokemonLevel);
+        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonLevel);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         FreeMonIconPalettes();
         FreeAndDestroyMonIconSprite(&gSprites[gTasks[taskId].data[6]]); //Destroy pokemon sprite
@@ -2893,14 +2893,14 @@ static void DebugAction_Give_Pokemon_SelectLevel(u8 taskId)
 
             ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 0);
             StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
-            StringCopyPadded(gStringVar2, gDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonShiny);
+            StringCopyPadded(gStringVar2, sDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonShiny);
             AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
             gTasks[taskId].func = DebugAction_Give_Pokemon_SelectShiny;
         }
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Free(sDebugMonData); //Frees EWRAM of MonData Struct
@@ -2912,17 +2912,17 @@ static void DebugAction_Give_Pokemon_SelectLevel(u8 taskId)
 //If complex
 static void DebugAction_Give_Pokemon_SelectShiny(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > 1)
                 gTasks[taskId].data[3] = 1;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 0)
@@ -2930,16 +2930,16 @@ static void DebugAction_Give_Pokemon_SelectShiny(u8 taskId)
         }
 
         if (gTasks[taskId].data[3] == 1)
-            StringCopyPadded(gStringVar2, gDebugText_Flags_FlagSet, CHAR_SPACE, 15);
+            StringCopyPadded(gStringVar2, sDebugText_Flags_FlagSet, CHAR_SPACE, 15);
         else
-            StringCopyPadded(gStringVar2, gDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
+            StringCopyPadded(gStringVar2, sDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 0);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, gDebugText_PokemonShiny);
+        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonShiny);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         sDebugMonData->isShiny = gTasks[taskId].data[3]; //isShiny
         gTasks[taskId].data[3] = 0;
@@ -2949,12 +2949,12 @@ static void DebugAction_Give_Pokemon_SelectShiny(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar1, gNatureNamePointers[0]);
-        StringExpandPlaceholders(gStringVar4, gDebugText_PokemonNature);
+        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonNature);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectNature;
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Free(sDebugMonData); //Frees EWRAM of MonData Struct
@@ -2963,17 +2963,17 @@ static void DebugAction_Give_Pokemon_SelectShiny(u8 taskId)
 }
 static void DebugAction_Give_Pokemon_SelectNature(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > NUM_NATURES-1)
                 gTasks[taskId].data[3] = NUM_NATURES-1;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 0)
@@ -2984,11 +2984,11 @@ static void DebugAction_Give_Pokemon_SelectNature(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar1, gNatureNamePointers[gTasks[taskId].data[3]]);
-        StringExpandPlaceholders(gStringVar4, gDebugText_PokemonNature);
+        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonNature);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         u8 abilityId;
         sDebugMonData->mon_natureId = gTasks[taskId].data[3]; //NatureId
@@ -3000,12 +3000,12 @@ static void DebugAction_Give_Pokemon_SelectNature(u8 taskId)
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         abilityId = GetAbilityBySpecies(sDebugMonData->mon_speciesId, 0);
         StringCopy(gStringVar1, gAbilityNames[abilityId]);
-        StringExpandPlaceholders(gStringVar4, gDebugText_PokemonAbility);
+        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonAbility);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectAbility;
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Free(sDebugMonData); //Frees EWRAM of MonData Struct
@@ -3018,17 +3018,17 @@ static void DebugAction_Give_Pokemon_SelectAbility(u8 taskId)
     u8 abilityCount = NUM_ABILITY_SLOTS - 1; //-1 for proper iteration
     u8 i = 0;
 
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > abilityCount)
                 gTasks[taskId].data[3] = abilityCount;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 0)
@@ -3044,11 +3044,11 @@ static void DebugAction_Give_Pokemon_SelectAbility(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar1, gAbilityNames[abilityId]);
-        StringExpandPlaceholders(gStringVar4, gDebugText_PokemonAbility);
+        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonAbility);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         sDebugMonData->mon_abilityNum = gTasks[taskId].data[3] - i; //AbilityNum
         gTasks[taskId].data[3] = 0;
@@ -3057,12 +3057,12 @@ static void DebugAction_Give_Pokemon_SelectAbility(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_0);
+        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_0);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectIVs;
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Free(sDebugMonData); //Frees EWRAM of MonData Struct
@@ -3071,28 +3071,28 @@ static void DebugAction_Give_Pokemon_SelectAbility(u8 taskId)
 }
 static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > 31)
                 gTasks[taskId].data[3] = 31;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 0)
                 gTasks[taskId].data[3] = 0;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < 2)
                 gTasks[taskId].data[4] += 1;
@@ -3104,29 +3104,29 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
         switch (gTasks[taskId].data[7])
         {
         case 0:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_0);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_0);
             break;
         case 1:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_1);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_1);
             break;
         case 2:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_2);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_2);
             break;
         case 3:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_3);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_3);
             break;
         case 4:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_4);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_4);
             break;
         case 5:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_5);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_5);
             break;
         }
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
     //If A or B button
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         switch (gTasks[taskId].data[7])
         {
@@ -3163,22 +3163,22 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
             switch (gTasks[taskId].data[7])
             {
             case 0:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_0);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_0);
                 break;
             case 1:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_1);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_1);
                 break;
             case 2:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_2);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_2);
                 break;
             case 3:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_3);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_3);
                 break;
             case 4:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_4);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_4);
                 break;
             case 5:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonIV_5);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_5);
                 break;
             }
             AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
@@ -3195,13 +3195,13 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
             StringCopy(gStringVar1, gMoveNames[gTasks[taskId].data[3]]);
             StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
             ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 3);
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonMove_0);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_0);
             AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
 
             gTasks[taskId].func = DebugAction_Give_Pokemon_Move;
         }
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Free(sDebugMonData); //Frees EWRAM of MonData Struct
@@ -3210,28 +3210,28 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
 }
 static void DebugAction_Give_Pokemon_Move(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
         PlaySE(SE_SELECT);
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] >= MOVES_COUNT)
                 gTasks[taskId].data[3] = MOVES_COUNT - 1;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 0)
                 gTasks[taskId].data[3] = 0;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < 3)
                 gTasks[taskId].data[4] += 1;
@@ -3244,22 +3244,22 @@ static void DebugAction_Give_Pokemon_Move(u8 taskId)
         switch (gTasks[taskId].data[7])
         {
         case 0:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonMove_0);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_0);
             break;
         case 1:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonMove_1);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_1);
             break;
         case 2:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonMove_2);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_2);
             break;
         case 3:
-            StringExpandPlaceholders(gStringVar4, gDebugText_PokemonMove_3);
+            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_3);
             break;
         }
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         //If MOVE_NONE selected, stop asking for additional moves
         if (gTasks[taskId].data[3] == 0)
@@ -3296,16 +3296,16 @@ static void DebugAction_Give_Pokemon_Move(u8 taskId)
             switch (gTasks[taskId].data[7])
             {
             case 0:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonMove_0);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_0);
                 break;
             case 1:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonMove_1);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_1);
                 break;
             case 2:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonMove_2);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_2);
                 break;
             case 3:
-                StringExpandPlaceholders(gStringVar4, gDebugText_PokemonMove_3);
+                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_3);
                 break;
             }
             AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
@@ -3321,7 +3321,7 @@ static void DebugAction_Give_Pokemon_Move(u8 taskId)
             gTasks[taskId].func = DebugAction_Give_Pokemon_ComplexCreateMon;
         }
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         Free(sDebugMonData); //Frees EWRAM of MonData Struct
@@ -3509,16 +3509,15 @@ static void Task_WaitFadeAccessPC(u8 taskId)
 static void DebugAction_AccessPC(u8 taskId)
 {
     Debug_DestroyMenu_Full(taskId);
-    CleanupOverworldWindowsAndTilemaps();
-    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-    CreateTask(Task_WaitFadeAccessPC, 0);
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(EventScript_PC);
 }
 
 
 // *******************************
 // Sound Scripts
-static const u8 *const gBGMNames[];
-static const u8 *const gSENames[];
+static const u8 *const sBGMNames[];
+static const u8 *const sSENames[];
 static void DebugAction_Sound_SE(u8 taskId)
 {
     u8 windowId;
@@ -3536,8 +3535,8 @@ static void DebugAction_Sound_SE(u8 taskId)
     //Display initial ID
     StringCopy(gStringVar2, gText_DigitIndicator[0]);
     ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-    StringCopyPadded(gStringVar1, gSENames[0], CHAR_SPACE, 35);
-    StringExpandPlaceholders(gStringVar4, gDebugText_Sound_SE_ID);
+    StringCopyPadded(gStringVar1, sSENames[0], CHAR_SPACE, 35);
+    StringExpandPlaceholders(gStringVar4, sDebugText_Sound_SE_ID);
     AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
 
     StopMapMusic(); //Stop map music to better hear sounds
@@ -3550,45 +3549,45 @@ static void DebugAction_Sound_SE(u8 taskId)
 }
 static void DebugAction_Sound_SE_SelectId(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > END_SE)
                 gTasks[taskId].data[3] = END_SE;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < 1)
                 gTasks[taskId].data[3] = 1;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < DEBUG_NUMBER_DIGITS_ITEMS - 1)
                 gTasks[taskId].data[4] += 1;
         }
 
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
-        StringCopyPadded(gStringVar1, gSENames[gTasks[taskId].data[3]-1], CHAR_SPACE, 35);
+        StringCopyPadded(gStringVar1, sSENames[gTasks[taskId].data[3]-1], CHAR_SPACE, 35);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-        StringExpandPlaceholders(gStringVar4, gDebugText_Sound_SE_ID);
+        StringExpandPlaceholders(gStringVar4, sDebugText_Sound_SE_ID);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         m4aSongNumStop(gTasks[taskId].data[5]);
         gTasks[taskId].data[5] = gTasks[taskId].data[3];
         m4aSongNumStart(gTasks[taskId].data[3]);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         m4aSongNumStop(gTasks[taskId].data[5]);
@@ -3613,8 +3612,8 @@ static void DebugAction_Sound_MUS(u8 taskId)
     //Display initial ID
     StringCopy(gStringVar2, gText_DigitIndicator[0]);
     ConvertIntToDecimalStringN(gStringVar3, START_MUS, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-    StringCopyPadded(gStringVar1, gBGMNames[0], CHAR_SPACE, 35);
-    StringExpandPlaceholders(gStringVar4, gDebugText_Sound_MUS_ID);
+    StringCopyPadded(gStringVar1, sBGMNames[0], CHAR_SPACE, 35);
+    StringExpandPlaceholders(gStringVar4, sDebugText_Sound_MUS_ID);
     AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
 
     StopMapMusic(); //Stop map music to better hear new music
@@ -3627,45 +3626,45 @@ static void DebugAction_Sound_MUS(u8 taskId)
 }
 static void DebugAction_Sound_MUS_SelectId(u8 taskId)
 {
-    if (gMain.newKeys & DPAD_ANY)
+    if (JOY_NEW(DPAD_ANY))
     {
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] > END_MUS)
                 gTasks[taskId].data[3] = END_MUS;
         }
-        if (gMain.newKeys & DPAD_DOWN)
+        if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].data[3] -= sPowersOfTen[gTasks[taskId].data[4]];
             if (gTasks[taskId].data[3] < START_MUS)
                 gTasks[taskId].data[3] = START_MUS;
         }
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gTasks[taskId].data[4] > 0)
                 gTasks[taskId].data[4] -= 1;
         }
-        if (gMain.newKeys & DPAD_RIGHT)
+        if (JOY_NEW(DPAD_RIGHT))
         {
             if (gTasks[taskId].data[4] < DEBUG_NUMBER_DIGITS_ITEMS - 1)
                 gTasks[taskId].data[4] += 1;
         }
 
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
-        StringCopyPadded(gStringVar1, gBGMNames[gTasks[taskId].data[3]-START_MUS], CHAR_SPACE, 35);
+        StringCopyPadded(gStringVar1, sBGMNames[gTasks[taskId].data[3]-START_MUS], CHAR_SPACE, 35);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-        StringExpandPlaceholders(gStringVar4, gDebugText_Sound_MUS_ID);
+        StringExpandPlaceholders(gStringVar4, sDebugText_Sound_MUS_ID);
         AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
     }
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         m4aSongNumStop(gTasks[taskId].data[5]);
         gTasks[taskId].data[5] = gTasks[taskId].data[3];
         m4aSongNumStart(gTasks[taskId].data[3]);
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         // m4aSongNumStop(gTasks[taskId].data[5]);   //Uncomment if music should stop after leaving menu
@@ -4212,7 +4211,7 @@ SOUND_LIST_BGM
 #undef X
 
 #define X(songId) sBGMName_##songId,
-static const u8 *const gBGMNames[] =
+static const u8 *const sBGMNames[] =
 {
 SOUND_LIST_BGM
 };
@@ -4224,7 +4223,7 @@ SOUND_LIST_SE
 #undef X
 
 #define X(songId) sSEName_##songId,
-static const u8 *const gSENames[] =
+static const u8 *const sSENames[] =
 {
 SOUND_LIST_SE
 };

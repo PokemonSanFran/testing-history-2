@@ -359,6 +359,8 @@ Quest_Restoretreasureisland_Reward_Dialogue::
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_ExpandedPlaceholder_Empty
+	callnative ClearMugshot
+	closemessage
 	opendoor 5, 12
 	waitdooranim
 	applymovement 2, Common_Movement_WalkUp

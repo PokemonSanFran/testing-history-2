@@ -28,7 +28,6 @@
 #include "accept_letter.h"
 #include "accept_letter_text.h"
 #include "printf.h"
-#include "mgba.h" //https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
 #include "random.h"
 #include "strings.h"
 
@@ -85,7 +84,7 @@ void DisplayLetter(void)
     ResetPaletteFade();
     FreeAllSpritePalettes();
     LoadPalette(sDiplomaPalettes, 0, 64);
-    sDiplomaTilemapPtr = malloc(0x1000);
+    sDiplomaTilemapPtr = Alloc(0x1000);
     InitDiplomaBg();
     InitDiplomaWindow();
     ResetTempTileDataBuffers();
