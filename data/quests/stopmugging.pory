@@ -3,26 +3,19 @@ const ROSE = 1
 const VICTIM = 2
 const MUGGERA = 3
 const MUGGERB = 4
+const FLAG_HIDE_VICTIM = FLAG_TEMP_2
+const FLAG_HIDE_MUGGERS = FLAG_TEMP_3
+
+//Quest_StopMugging_
+//gText_StopMugging_
 
 script Quest_StopMugging_HideObject_Script{
-    if (defeated(TRAINER_MUGGERA_MUGGERB)){
-        call(Quest_StopMugging_HideVictim_Script)
+    setflag(FLAG_HIDE_VICTIM)
 
-            questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_STOPMUGGING)
-
-            if (var(VAR_RESULT)){
-                call(Quest_StopMugging_HideMuggers_Script)
-            }
+    questmenu(QUEST_MENU_CHECK_ACTIVE, QUEST_STOPMUGGING)
+    if (!var(VAR_RESULT)){
+        setflag(FLAG_HIDE_MUGGERS)
     }
-}
-
-script Quest_StopMugging_HideVictim_Script{
-        removeobject(VICTIM)
-        setflag(FLAG_TEMP_2)
-}
-
-script Quest_StopMugging_HideMuggers_Script{
-    setflag(FLAG_TEMP_3)
 }
 
 script Quest_StopMugging_Trigger_Script {
@@ -32,154 +25,90 @@ script Quest_StopMugging_Trigger_Script {
             release
                 end
         }
-
-    questmenu(QUEST_MENU_CHECK_ACTIVE, QUEST_STOPMUGGING)
-        if (var(VAR_RESULT)){
-            call(Quest_StopMugging_ResumeMugging_Dialogue)
-        } else {
-            call(Quest_StopMugging_Main_Dialogue)
-        }
+    goto(Quest_StopMugging_RunIntoPlayer_Script)
 }
 
-script Quest_StopMugging_MoveIntoPlace_Script {
-    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
-
-        if (var(VAR_TEMP_0) == 15){
-            applymovement(PLAYER,Common_Movement_WalkRight)
-        }
-    waitmovement(0)
-    applymovement(PLAYER,Common_Movement_WalkUp)
-    waitmovement(0)
-
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_StopMugging_Hey,MSGBOX_DEFAULT)
-        callnative(ClearMugshot)
-        closemessage
-
-        playse(SE_PIN)
-        applymovement(MUGGERA,Common_Movement_ExclamationMark)
-        applymovement(MUGGERB,Common_Movement_ExclamationMark)
-        waitmovement(MUGGERA)
-        waitmovement(MUGGERB)
-
-        applymovement(MUGGERA,Quest_StopMugging_WalkToPlayerA_Movement)
-        applymovement(MUGGERB,Quest_StopMugging_WalkToPlayerB_Movement)
-        waitmovement(0)
-}
-
-script Quest_StopMugging_Main_Dialogue {
-    startquest(QUEST_STOPMUGGING)
-        msgbox(gText_StopMugging_HurryItUp,MSGBOX_DEFAULT)
-        msgbox(gText_StopMugging_OhArceusOkay,MSGBOX_DEFAULT)
-        msgbox(gText_StopMugging_IfYouDontHurry,MSGBOX_DEFAULT)
-        closemessage
-
-        call(Quest_StopMugging_MoveIntoPlace_Script)
-
-        msgbox(gText_StopMugging_TheHellDo,MSGBOX_DEFAULT)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_StopMugging_GetOutOfHere,MSGBOX_DEFAULT)
-        callnative(ClearMugshot)
-        goto(Quest_StopMugging_StartBattle_Script)
-}
-
-script Quest_StopMugging_StartBattle_Script {
+script Quest_StopMugging_RunIntoPlayer_Dialogue{
     lock
-        msgbox(gText_StopMugging_GuessWereGetting,MSGBOX_DEFAULT)
-        closemessage
-        trainerbattle_no_intro(TRAINER_MUGGERA_MUGGERB,gText_StopMugging_Shit)
-        goto(Quest_StopMugging_PostBattle_Dialogue)
-}
 
-script Quest_StopMugging_ResumeMugging_Dialogue {
-    call(Quest_StopMugging_MoveIntoPlace_Script)
-        msgbox(gText_StopMugging_YouAgain,MSGBOX_DEFAULT)
+    msgbox(gText_StopMugging_StopThem)
+    closemessage
+
+    applymovement(MUGGERA,Quest_StopMugging_SlamIntoPlayerA_Movement)
+    applymovement(MUGGERB,Quest_StopMugging_SlamIntoPlayerB_Movement)
+    waitmovement(MUGGERB)
+    applymovement(PLAYER,Quest_StopMugging_FlyBackwards_Movement)
+    waitmovement(PLAYER)
+    delay(30)
+    applymovement(VICTIM,Quest_StopMugging_CatchUp_Movement)
+    waitmovement(VICTIM)
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_STOPMUGGING)
+    if (var(VAR_RESULT)){
         goto(Quest_StopMugging_StartBattle_Script)
+    }
+
+    msgbox(gText_StopMugging_TheyTook)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_StopMugging_WhatTheHell)
+    callnative(ClearMugshot)
+
+    msgbox(gText_StopMugging_WeNeedThat)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_StopMugging_YouNeedSomebodyElse)
+    callnative(ClearMugshot)
+
+    msgbox(gText_StopMugging_YouDontUnderstand)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_StopMugging_YouTriedToMug)
+    callnative(ClearMugshot)
+
+    goto(Quest_StopMugging_StartBattle_Script)
 }
 
-script Quest_StopMugging_PostBattle_Dialogue {
-    call(Quest_StopMugging_HideObject_Script)
-        lock
-        msgbox(gText_StopMugging_DamnYoureScary,MSGBOX_DEFAULT)
-        setvar(VAR_0x8000, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_StopMugging_LeaveNow,MSGBOX_DEFAULT)
-        callnative(ClearMugshot)
-        closemessage
+script Quest_StopMugging_StartBattle_Script{
+    msgbox(gText_StopMugging_WeDontHaveTimeFor)
+    closemessage
 
-        applymovement(MUGGERA,Quest_StopMugging_WalkAwayA_Movement)
-        applymovement(MUGGERB,Quest_StopMugging_WalkAwayB_Movement)
-        waitmovement(0)
-        removeobject(MUGGERA)
-        removeobject(MUGGERB)
-        completequest(QUEST_STOPMUGGING)
-        end
+    applymovement(MUGGERB,Common_Movement_WalkRight)
+    waitmovement(MUGGERB)
+
+    trainerbattle_continue_after_lose(TRAINER_MUGGERA_MUGGERB,gText_StopMugging_Shit)
+    goto(Quest_StopMugging_PostBattle_Dialogue)
 }
 
-movement Quest_StopMugging_WalkToPlayerA_Movement {
-        walk_down
-        face_right
-        step_end
+script Quest_StopMugging_PostBattle_Script{
+    if (defeated(TRAINER_MUGGERA_MUGGERB)){
+        goto(Quest_StopMugging_DefeatedMuggers_Dialogue)
+    }else{
+        goto(Quest_StopMugging_LostMuggers_Dialogue)
+    }
 }
 
-movement Quest_StopMugging_WalkToPlayerB_Movement {
-    walk_down
-        step_end
-}
+script Quest_StopMugging_DefeatedMuggers_Dialogue{
+    lock
 
-movement Quest_StopMugging_WalkAwayA_Movement {
-    walk_down * 6
-        step_end
-}
+    msgbox(gText_StopMugging_DamnThisGuy)
 
-movement Quest_StopMugging_WalkAwayB_Movement {
-    walk_left
-        walk_down * 6
-        step_end
-}
 
-text gText_StopMugging_HurryItUp{
-    format("Hurry it up, your phone and your wallet!")
-}
+    applymovement(MUGGERA,Quest_StopMugging_LookAround)
+    delay(16)
+    msgbox(gText_StopMugging_ShitIDroppedThePhone)
 
-text gText_StopMugging_OhArceusOkay{
-    format("*sob* Oh Arceus okay, please don't hurt me...")
-}
+    applymovement(MUGGERB,Quest_StopMugging_LookAround)
+    delay(16)
+    msgbox(gText_StopMugging_TheAssholeMust)
+    
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot)
+    msgbox(gText_StopMugging_NowGetOut)
+    callnative(ClearMugshot)
 
-text gText_StopMugging_IfYouDontHurry{
-    format("If you don't hurry up, we're gonna have a problem.")
-}
+    applymovement(MUGGERB,Quest_StopMugging_WalkAwayA_Movement)
 
-text gText_StopMugging_Hey{
-    format("Hey!")
-}
-
-text gText_StopMugging_TheHellDo{
-    format("The hell do you want?")
-}
-
-text gText_StopMugging_GetOutOfHere{
-    format("Get out of here! Leave them alone!")
-}
-
-text gText_StopMugging_GuessWereGetting{
-    format("Guess we're getting two wallets in one alley!")
-}
-
-text gText_StopMugging_Shit{
-    format("Shit!")
-}
-
-text gText_StopMugging_DamnYoureScary{
-    format("Damn, you're scary as all hell, we don't want no trouble...")
-}
-
-text gText_StopMugging_LeaveNow{
-    format("Leave. Now.")
-}
-
-text gText_StopMugging_YouAgain{
-    format("You again? Didn't we already kick your ass once?")
-}

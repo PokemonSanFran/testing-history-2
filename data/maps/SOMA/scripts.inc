@@ -16,7 +16,7 @@ SOMA_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 SOMA_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_SOMA_STATE, 1, WowYoureStrong_WalkToPlayer_Script
+	map_script_2 VAR_SALESFORCETOWER_CONFERENCE_STATE, DEFEATED_WHITNEY, WowYoureStrong_WalkToPlayer_Script
 	.2byte 0
 
 

@@ -1,27 +1,11 @@
 Quest_StopMugging_HideObject_Script::
-	checktrainerflag TRAINER_MUGGERA_MUGGERB
-	goto_if 1, Quest_StopMugging_HideObject_Script_1
+	setflag FLAG_TEMP_2
+	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_STOPMUGGING
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_StopMugging_HideObject_Script_1
 	return
 
 Quest_StopMugging_HideObject_Script_1:
-	call Quest_StopMugging_HideVictim_Script
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_STOPMUGGING
-	compare VAR_RESULT, 0
-	goto_if_ne Quest_StopMugging_HideObject_Script_3
-	return
-
-Quest_StopMugging_HideObject_Script_3:
-	call Quest_StopMugging_HideMuggers_Script
-	return
-
-
-Quest_StopMugging_HideVictim_Script::
-	removeobject 2
-	setflag FLAG_TEMP_2
-	return
-
-
-Quest_StopMugging_HideMuggers_Script::
 	setflag FLAG_TEMP_3
 	return
 
@@ -76,6 +60,12 @@ Quest_StopMugging_MoveIntoPlace_Script_2:
 
 Quest_StopMugging_Main_Dialogue::
 	startquest QUEST_STOPMUGGING
+	addobject 3
+	addobject 4
+	addobject 2
+	applymovement 3, Quest_StopMugging_WalkAwayA_Movement
+	applymovement 4, Quest_StopMugging_WalkAwayA_Movement
+	waitmovement 4
 	msgbox gText_StopMugging_HurryItUp, MSGBOX_DEFAULT
 	msgbox gText_StopMugging_OhArceusOkay, MSGBOX_DEFAULT
 	msgbox gText_StopMugging_IfYouDontHurry, MSGBOX_DEFAULT

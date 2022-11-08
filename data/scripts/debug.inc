@@ -60,10 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	additem ITEM_FLAME_ORB, 1
-	additem ITEM_TM27, 1
-	givemon SPECIES_SHROOMISH, 1, ITEM_NONE
-	givemon SPECIES_BEHEEYEM, 1, ITEM_NONE
+	warp MAP_SOMA, 16, 15
 	return
 
 
