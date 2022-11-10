@@ -3885,6 +3885,11 @@ void ResetHealLocationFromDewford(void)
         SetLastHealLocationWarp(HEAL_LOCATION_PETALBURG_CITY);
 }
 
+void ResetHealLocationToSOMA(void)
+{
+    SetLastHealLocationWarp(HEAL_LOCATION_SOMA);
+}
+
 bool8 InPokemonCenter(void)
 {
     static const u16 sPokemonCenters[] =
