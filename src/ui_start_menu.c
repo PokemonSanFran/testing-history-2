@@ -68,6 +68,7 @@ static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8  currentAppId = 0;
 static EWRAM_DATA bool8 areYouOnSecondScreen = FALSE;
+static EWRAM_DATA u8  appToMove = 255;
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -79,6 +80,7 @@ static void Menu_InitWindows(void);
 static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
+static u8 GetCurrentAppfromIndex(u8 index);
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -117,11 +119,14 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
     },
 };
 
-static const u32 sMenuTiles[]           = INCBIN_U32("graphics/start_menu/tiles.4bpp.lz");
-static const u32 sMenuTilemap[]         = INCBIN_U32("graphics/start_menu/tilemap.bin.lz");
-static const u16 sMenuPalette[]         = INCBIN_U16("graphics/start_menu/palette.gbapal");
-static const u8 sStartMenuCursor_Gfx[]  = INCBIN_U8("graphics/start_menu/menu_cursor.4bpp");
-static const u8 sStartMenuRowIcon_Gfx[] = INCBIN_U8("graphics/start_menu/menu_row_icon.4bpp");
+static const u32 sMenuTiles[]                   = INCBIN_U32("graphics/start_menu/tiles.4bpp.lz");
+static const u32 sMenuTilemap[]                 = INCBIN_U32("graphics/start_menu/tilemap.bin.lz");
+static const u16 sMenuPalette[]                 = INCBIN_U16("graphics/start_menu/palette.gbapal");
+static const u8 sStartMenuCursor_Gfx[]          = INCBIN_U8("graphics/start_menu/menu_cursor.4bpp");
+static const u8 sStartMenuCursorMoveMode_Gfx[]  = INCBIN_U8("graphics/start_menu/menu_cursor_move.4bpp");
+static const u8 sStartMenuCursorMoveMode2_Gfx[] = INCBIN_U8("graphics/start_menu/menu_cursor_move2.4bpp");
+static const u8 sStartMenuMoveModeText_Gfx[]    = INCBIN_U8("graphics/start_menu/move_mode.4bpp");
+static const u8 sStartMenuRowIcon_Gfx[]         = INCBIN_U8("graphics/start_menu/menu_row_icon.4bpp");
 
 enum Colors
 {
@@ -163,6 +168,15 @@ void Menu_Init(MainCallback callback)
     // initialize stuff
     sMenuDataPtr->gfxLoadState = 0;
     sMenuDataPtr->savedCallback = callback;
+
+    //Initialize the apps the first time you open the start menu
+    if(!FlagGet(FLAG_START_MENU_SETUP)){
+        u8 i;
+        for(i = 0; i < NUM_TOTAL_APPS; i++){
+            gSaveBlock2Ptr->startMenuAppIndex[i] = i;
+        }
+        FlagSet(FLAG_START_MENU_SETUP);
+    }
 
     SetMainCallback2(Menu_RunSetup);
 }
@@ -348,7 +362,7 @@ static const u8 sText_App_None[] = _("No App");
 static const u8 sText_App_Pokemon[] = _("Pokémon");
 static const u8 sText_App_Bag[]     = _("Bag");
 static const u8 sText_App_Map[]     = _("Map");
-static const u8 sText_App_Quest[]  = _("Quest");
+static const u8 sText_App_Quest[]   = _("Quest");
 static const u8 sText_App_Dexnav[]  = _("Dexnav");
 static const u8 sText_App_Pokedex[] = _("Pokédex");
 static const u8 sText_App_Twitter[] = _("Twitter");
@@ -405,7 +419,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     if(areYouOnSecondScreen)
         CurrentApp = CurrentApp + 6;
 
-    switch(CurrentApp){
+    switch(GetCurrentAppfromIndex(CurrentApp)){
         case APP_POKEMON:
             str_SelectedOption  = sText_App_Pokemon;	
         break;
@@ -455,7 +469,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         else
             j = i;
 
-        switch(j){
+        switch(GetCurrentAppfromIndex(j)){
             case APP_POKEMON:
                 BlitBitmapToWindow(windowId, sStartMenuApp_Pokemon_Gfx, (x*8), (y*8), 24, 24);
             break;
@@ -497,14 +511,51 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
             x++;
     }
 
+    // Selected App to Move --------------------------------------------------------------------------------------------------------
+    if(appToMove != 255 && FlagGet(FLAG_START_MENU_MOVE_MODE) && ((areYouOnSecondScreen && appToMove >= 6) || (!areYouOnSecondScreen && appToMove < 6))){
+        if(appToMove < 6){
+            x = (appToMove*4)+3;
+            y = 6;
+
+            if(appToMove < 3)
+                BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode2_Gfx, (x*8), (y*8), 24, 24);
+            else
+                BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode2_Gfx, ((x + 1)*8), (y*8), 24, 24);
+        }
+        else{
+            x = ((appToMove - 6)*4)+3;
+            y = 6;
+
+            if((appToMove - 6) < 3)
+                BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode2_Gfx, (x*8), (y*8), 24, 24);
+            else
+                BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode2_Gfx, ((x + 1)*8), (y*8), 24, 24);
+        }
+    }
+
+    // Move Mode Text --------------------------------------------------------------------------------------------------------
+    x = 5;
+	y = 0;
+
+    if(FlagGet(FLAG_START_MENU_MOVE_MODE))
+        BlitBitmapToWindow(windowId, sStartMenuMoveModeText_Gfx, (x*8), (y*8), 72, 16);
+
     // Selection Sprite --------------------------------------------------------------------------------------------------------
 	x = (currentAppId*4)+3;
 	y = 6;
 
-    if(currentAppId < 3)
-		BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, (x*8), (y*8), 24, 24);
-	else
-		BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, ((x + 1)*8), (y*8), 24, 24);
+    if(!FlagGet(FLAG_START_MENU_MOVE_MODE)){
+        if(currentAppId < 3)
+            BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, (x*8), (y*8), 24, 24);
+        else
+            BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, ((x + 1)*8), (y*8), 24, 24);
+    }
+    else{
+        if(currentAppId < 3)
+            BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode_Gfx, (x*8), (y*8), 24, 24);
+        else
+            BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode_Gfx, ((x + 1)*8), (y*8), 24, 24);
+    }
 
     // Screen Indicator --------------------------------------------------------------------------------------------------------
     x = 14;
@@ -519,7 +570,6 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     }
 
     //Time --------------------------------------------------------------------------------------------------------------------
-
 	x = 18;
 	y = 2;
 	ConvertIntToDecimalStringN(gStringVar2, hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
@@ -531,14 +581,12 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8) + 1, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
 
     // Current Location --------------------------------------------------------------------------------------------------------------------
-
 	x = 4;
 	y = 10;
     GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
 	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar1);
 
     // Quest Information --------------------------------------------------------------------------------------------------------------------
-
 	x = 0;
 	y = 14;
 	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_App_None);
@@ -627,6 +675,17 @@ void Task_OpenOptionsMenuStartMenu(u8 taskId)
     }
 }
 
+static u8 GetCurrentAppfromIndex(u8 index)
+{
+    return gSaveBlock2Ptr->startMenuAppIndex[index];
+}
+
+static void ClearStartMenuDataBeforeExit()
+{
+    appToMove = 255;
+    FlagClear(FLAG_START_MENU_MOVE_MODE);
+}
+
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
 {
@@ -635,9 +694,10 @@ static void Task_MenuMain(u8 taskId)
     if(areYouOnSecondScreen)
         CurrentApp = CurrentApp + 6;
 
-    if (JOY_NEW(B_BUTTON))
+    if (JOY_NEW(B_BUTTON) || JOY_NEW(START_BUTTON))
     {
         PlaySE(SE_PC_OFF);
+        ClearStartMenuDataBeforeExit();
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_MenuTurnOff;
     }
@@ -656,54 +716,71 @@ static void Task_MenuMain(u8 taskId)
 
     if (JOY_NEW(A_BUTTON))
     {
-        switch(CurrentApp)
-		{
-            case APP_BAG:
-                PlaySE(SE_SELECT);
-                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].func = Task_OpenBagFromStartMenu;
-            break;
-            case APP_POKEDEX:
-                PlaySE(SE_SELECT);
-                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].func = Task_OpenPokedexFromStartMenu;
-            break;
-            case APP_POKEMON:
-                PlaySE(SE_SELECT);
-                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].func = Task_OpenPokemonPartyFromStartMenu;
-            case APP_PROFILE:
-                PlaySE(SE_SELECT);
-                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].func = Task_OpenTrainerCardFromStartMenu;
-            break;
-            case APP_OPTIONS:
-                PlaySE(SE_SELECT);
-                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].func = Task_OpenOptionsMenuStartMenu;
-            break;
-            case APP_QUEST:
-                PlaySE(SE_PC_OFF);
-                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].func = Task_QuestMenu_OpenFromStartMenu;
-            break;
-            case APP_TWITTER:
-                PlaySE(SE_PC_OFF);
-                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].func = Task_MenuTurnOff;
-            break;
-            case APP_MAP:
-                PlaySE(SE_PC_OFF);
-                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].func = Task_MenuTurnOff;
-            break;
-            case APP_AMAZON:
-                PlaySE(SE_PC_OFF);
-                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].func = Task_MenuTurnOff;
-            break;
+        if(!FlagGet(FLAG_START_MENU_MOVE_MODE)){
+            ClearStartMenuDataBeforeExit();
+            switch(GetCurrentAppfromIndex(CurrentApp))
+            {
+                case APP_BAG:
+                    PlaySE(SE_SELECT);
+                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                    gTasks[taskId].func = Task_OpenBagFromStartMenu;
+                break;
+                case APP_POKEDEX:
+                    PlaySE(SE_SELECT);
+                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                    gTasks[taskId].func = Task_OpenPokedexFromStartMenu;
+                break;
+                case APP_POKEMON:
+                    PlaySE(SE_SELECT);
+                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                    gTasks[taskId].func = Task_OpenPokemonPartyFromStartMenu;
+                break;
+                case APP_PROFILE:
+                    PlaySE(SE_SELECT);
+                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                    gTasks[taskId].func = Task_OpenTrainerCardFromStartMenu;
+                break;
+                case APP_OPTIONS:
+                    PlaySE(SE_SELECT);
+                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                    gTasks[taskId].func = Task_OpenOptionsMenuStartMenu;
+                break;
+                case APP_QUEST:
+                    PlaySE(SE_SELECT);
+                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                    gTasks[taskId].func = Task_QuestMenu_OpenFromStartMenu;
+                break;
+                case APP_TWITTER:
+                    PlaySE(SE_PC_OFF);
+                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                    gTasks[taskId].func = Task_MenuTurnOff;
+                break;
+                case APP_MAP:
+                    PlaySE(SE_PC_OFF);
+                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                    gTasks[taskId].func = Task_MenuTurnOff;
+                break;
+                case APP_AMAZON:
+                    PlaySE(SE_PC_OFF);
+                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                    gTasks[taskId].func = Task_MenuTurnOff;
+                break;
+            }
         }
-    }   
+        else{
+            u8 tempAppIndex;
+            if(appToMove == 255){
+                appToMove = CurrentApp;
+            }
+            else{
+                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[appToMove];
+                gSaveBlock2Ptr->startMenuAppIndex[appToMove] = tempAppIndex;
+                appToMove = 255;
+            }
+            PlaySE(SE_SELECT);
+        }
+    } 
 	
 	if(JOY_NEW(DPAD_LEFT))
 	{
@@ -714,6 +791,17 @@ static void Task_MenuMain(u8 taskId)
 			currentAppId = NUM_APPS_PER_SCREEN-1;
             areYouOnSecondScreen = !areYouOnSecondScreen;
         }
+		PlaySE(SE_SELECT);
+	}
+
+    if(JOY_NEW(SELECT_BUTTON))
+	{
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE))
+            FlagClear(FLAG_START_MENU_MOVE_MODE);
+        else
+            FlagSet(FLAG_START_MENU_MOVE_MODE);
+        
+        appToMove = 255;
 		PlaySE(SE_SELECT);
 	}
 	
