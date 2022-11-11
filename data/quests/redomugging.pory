@@ -1,0 +1,26 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const MUGGER_A_ALCATRAZ = 13
+const MUGGER_B_ALCATRAZ = 14
+const VICTIM = 3
+const FLAG_HIDE_VICTIM = FLAG_TEMP_1
+const FLAG_HIDE_MUGGERS = FLAG_TEMP_3
+
+//gText_Redomugging_
+//Quest_Redomugging_
+
+script Quest_Redomugging_Hide_Victim_Script{
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_STOPMUGGING)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_VICTIM) 
+        }
+    return
+}
+
+script Quest_Redomugging_Hide_Muggers_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_STOPMUGGING)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_MUGGERS) 
+        }
+    return
+}

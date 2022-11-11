@@ -1,6 +1,7 @@
 mapscripts SOMA_Newspaper_MapScripts{
     MAP_SCRIPT_ON_TRANSITION {
-        goto(SOMA_Newspaper_MapScripts_OnTransition)
+        call(Manhunt_HideBianca_Newspaper_Script)
+        call(Quest_Redomugging_Hide_Victim_Script)
     }
 }
 
@@ -23,8 +24,4 @@ script SOMA_Newspaper_InteractCherie_Event_Script {
         }
     release
         end
-}
-
-script SOMA_Newspaper_MapScripts_OnTransition {
-    setflag(FLAG_TEMP_2) //Hide Bianca 
 }

@@ -1,6 +1,7 @@
 mapscripts Alcatraz_B2F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(Alcatraz_B2F_MapScripts_OnTransition)
+        call(Quest_Redomugging_Hide_Muggers_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ALCATRAZ_STATE, PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT: YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue 

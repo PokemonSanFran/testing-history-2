@@ -1217,6 +1217,7 @@ Script_RemoveTint::
 .include "data/quests/bringfruit.inc"
 .include "data/quests/bringfiretype.inc"
 .include "data/quests/stopmugging.inc"
+.include "data/quests/redomugging.inc"
 .include "data/quests/stolentrade.inc"
 .include "data/quests/hauntabuilding.inc"
 .include "data/quests/rabiesoutbreak.inc"

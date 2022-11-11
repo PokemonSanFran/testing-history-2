@@ -9,6 +9,11 @@ const FLAG_HIDE_NERDS_COPS_SALESFORCETOWER = FLAG_TEMP_1
 const FLAG_HIDE_BIANCA_SALESFORCETOWER = FLAG_TEMP_3
 const FLAG_HIDE_SABRINA_SALESFORCETOWER = FLAG_TEMP_5
 
+script Manhunt_HideBianca_Newspaper_Script{
+    setflag(FLAG_HIDE_BIANCA)
+    return
+}
+
 script Manhunt_ShowSabrina_Script{
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_MANHUNT)
     if(var(VAR_RESULT)){
