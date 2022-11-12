@@ -5265,7 +5265,7 @@
       "id": "LAYOUT_SOMA_NEWSPAPER",
       "name": "SOMA_Newspaper_Layout",
       "width": 16,
-      "height": 10,
+      "height": 17,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/SOMA_Newspaper/border.bin",

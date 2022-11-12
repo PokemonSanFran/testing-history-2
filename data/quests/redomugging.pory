@@ -18,14 +18,281 @@ script Quest_Redomugging_Hide_Victim_Script{
 }
 
 script Quest_Redomugging_Hide_Muggers_Script{
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_STOPMUGGING)
-        if (!var(VAR_RESULT)){
-            setflag(FLAG_HIDE_MUGGERS) 
+    setvar(VAR_TEMP_0,0)
+
+        if (var(VAR_ALCATRAZ_STATE) > PRE_SPEECHSPEECH){
+            addvar(VAR_TEMP_0,1)
         }
+
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_STOPMUGGING)
+        if (var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+
+    if (var(VAR_TEMP_0) != 2){
+        setflag(FLAG_HIDE_MUGGERS)
+    }
     return
 }
 
-script Quest_Redomugging_StartQuest_Dialogue{
+script Quest_Redomugging_Interact_Script{
     lock
-    startquest(QUEST_REDOMUGGING)
+        faceplayer
+        returnqueststate(QUEST_REDOMUGGING)
+
+        switch(var(VAR_RESULT)){
+            case QUEST_MENU_SET_ACTIVE: call(Quest_Redomugging_Active_Dialogue)
+            case QUEST_MENU_COMPLETE_QUEST: call(Quest_Redomugging_Completed_Dialogue)
+            case QUEST_MENU_SET_REWARD: call(Quest_Redomugging_Reward_Dialogue)
+            default: call(Quest_Redomugging_StartQuest_Dialogue)
+        }
+    release
+        end
+}
+
+script Quest_Redomugging_StartQuest_Dialogue{
+        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+        callnative(DrawMugshot)
+        msgbox(gText_Redomugging_WaitArentYou)
+        callnative(ClearMugshot)
+
+        msgbox(gText_Redomugging_OhHellNot)
+
+        callnative(DrawMugshot) 
+        msgbox(gText_Redomugging_WaitDidIPick)
+        callnative(ClearMugshot)
+
+        msgbox(gText_Redomugging_NahWereStill)
+
+        callnative(DrawMugshot) 
+        msgbox(gText_Redomugging_SinceWhenDo)
+        callnative(ClearMugshot)
+
+        msgbox(gText_Redomugging_ThePersonWe)
+        msgbox(gText_Redomugging_WeCaughtThem)
+        msgbox(gText_Redomugging_YeahWeWere)
+
+        callnative(DrawMugshot) 
+        msgbox(gText_Redomugging_FramingYouGuys)
+        callnative(ClearMugshot)
+
+        msgbox(gText_Redomugging_ExactlyWeCant)
+
+        callnative(DrawMugshot) 
+        msgbox(gText_Redomugging_IsItToo)
+        callnative(ClearMugshot)
+
+        msgbox(gText_Redomugging_MaybeNot)
+        msgbox(gText_Redomugging_MaybeHeadDownTo)
+        closemessage
+
+        startquest(QUEST_REDOMUGGING)
+        return 
+}
+
+script Quest_Redomugging_Active_Dialogue{
+    msgbox(gText_Redomugging_AnyLuck,MSGBOX_NPC)
+    return 
+}
+
+script Quest_Redomugging_Interact_Victim_Script{
+    lock
+    returnqueststate(QUEST_REDOMUGGING)
+
+    switch(var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE: call(Quest_Redomugging_StealPhone_Dialogue)
+        case QUEST_MENU_COMPLETE_QUEST: call(Quest_Redomugging_MissingPhone_Dialogue)
+        default: call(Quest_Redomugging_TooBusy_Dialogue)
+    }
+    closemessage
+    release
+    end
+}
+
+script Quest_Redomugging_TooBusy_Dialogue{
+    msgbox(gText_Redomugging_Sorry)
+    return
+}
+
+//PSF TODO When the office workers see you and you have the FameChecker, warp you back to the interview chair
+//https://github.com/pret/pokeemerald/wiki/Trainer-Scripts
+
+script Quest_Redomugging_StealPhone_Dialogue{
+    faceplayer
+    msgbox(gText_Redomugging_HeyThereHow)
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(VICTIM,Common_Movement_ExclamationMark)
+    waitmovement(VICTIM)
+
+    msgbox(gText_Redomugging_ChampionPlayer)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot) 
+    msgbox(gText_Redomugging_YeahThatWasMe)
+    callnative(ClearMugshot)
+
+    msgbox(gText_Redomugging_WhatBringsYou)
+
+    callnative(DrawMugshot)
+    msgbox(gText_Redomugging_UhIWanted)
+    callnative(CleaMugshot)
+
+    msgbox(gText_Redomugging_WowYouReallyAre)
+    msgbox(gText_Redomugging_WhileYoureHere)
+    closemessage
+
+    fadescreen(FADE_TO_BLACK)
+    delay(120)
+    setobjectxy(PLAYER,12,15)
+    TeleportCamera(12,15)
+    fadescreen(FADE_FROM_BLACK)
+
+    msgbox(gText_Redomugging_OhManThisIsGreat)
+    closemessage
+
+    applymovement(VICTIM,Quest_Redomugging_LeaveRoom_Movement)
+    dofieldeffectsparkle(12,14,0)   
+    waitfieldeffect(FLDEFF_SPARKLE)
+    delay(10)
+    waitmovement(VICTIM)
+    removeobject(VICTIM)
+
+    applymovement(PLAYER,Common_Movement_FaceUp)
+    waitmovement(PLAYER)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot) 
+    msgbox(gText_Redomugging_OkayGottaGrab)
+    callnative(ClearMugshot)
+
+    applymovement(PLAYER,Common_Movement_WalkInPlaceUp)
+    waitmovement(PLAYER)
+    giveitem(ITEM_FAME_CHECKER)
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_REDOMUGGING)
+    return
+}
+
+script Quest_Redomugging_SpottedByReporter_Script{
+
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_REDOMUGGING)
+
+        if (var(VAR_RESULT)){
+            lock
+                faceplayer
+                msgbox(gText_Redomugging_HeyWerentYouMid)
+                closemessage
+
+                fadescreen(FADE_TO_BLACK)
+                delay(30)
+                setobjectxy(PLAYER,12,15)
+                TeleportCamera(12,15)
+                fadescreen(FADE_FROM_BLACK)
+
+                setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+                callnative(DrawMugshot) 
+                msgbox(gText_IGottaGet)
+                callnative(ClearMugshot)
+        }
+    release
+        end
+}
+
+script Quest_Redomugging_MissingPhone_Dialogue{
+    msgbox(gText_Redomugging_HeyYouDisappeared,MSGBOX_NPC)
+    return
+}
+
+script Quest_Redomugging_Reward_Dialogue{
+    msgbox(gText_Redomugging_YouDidAwesome)
+
+    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+    callnative(DrawMugshot) 
+    msgbox(gText_Redomugging_Thanks)
+    callnative(ClearMugshot)
+
+    msgbox(gText_Redomugging_WellTakeThat)
+    closemessage
+
+    msgbox(gText_Redomugging_PlayerGave,MSGBOX_AUTOCLOSE)
+    removeitem(ITEM_FAME_CHECKER)
+
+    msgbox(gText_Redomugging_AwesomeWellGive)
+    closemessage
+
+    applymovement(MUGGER_B_ALCATRAZ,Quest_Redomugging_WalkOffScreen_Movement)
+    completequest(QUEST_REDOMUGGING)
+    waitmovement(MUGGER_B_ALCATRAZ)
+    removeobject(MUGGER_B_ALCATRAZ)
+    return 
+}
+
+script Quest_Redomugging_Completed_Dialogue{
+    msgbox(gText_Redomugging_EvenBetterThan,MSGBOX_NPC)
+    return 
+}
+text gText_Redomugging_WaitArentYou{
+    format("")
+}
+text gText_Redomugging_OhHellNot{
+    format("")
+}
+text gText_Redomugging_WaitDidIPick{
+    format("")
+}
+text gText_Redomugging_NahWereStill{
+    format("")
+}
+text gText_Redomugging_SinceWhenDo{
+    format("")
+}
+text gText_Redomugging_ThePersonWe{
+    format("")
+}
+text gText_Redomugging_WeCaughtThem{
+    format("")
+}
+text gText_Redomugging_YeahWeWere{
+    format("")
+}
+text gText_Redomugging_FramingYouGuys{
+    format("")
+}
+text gText_Redomugging_ExactlyWeCant{
+    format("")
+}
+text gText_Redomugging_IsItToo{
+    format("")
+}
+text gText_Redomugging_MaybeNot{
+    format("")
+}
+text gText_Redomugging_MaybeHeadDownTo{
+    format("")
+}
+text gText_Redomugging_AnyLuck{
+    format("")
+}
+text gText_Redomugging_YouDidAwesome{
+    format("")
+}
+text gText_Redomugging_Thanks{
+    format("")
+}
+text gText_Redomugging_WellTakeThat{
+    format("")
+}
+text gText_Redomugging_PlayerGave{
+    format("")
+}
+text gText_Redomugging_AwesomeWellGive{
+    format("")
+}
+text gText_Redomugging_EvenBetterThan{
+    format("")
+}
+movement Quest_Redomugging_WalkOffScreen_Movement{
+    walk_up * 6
+    step_end
 }
