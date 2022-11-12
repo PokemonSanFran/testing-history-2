@@ -61,14 +61,14 @@ enum WindowIds
 
 //Defines
 #define  NNUM_DIFFERENT_SCREENS 2
-#define  NUM_APPS_PER_SCREEN    6
+#define  NUM_APPS_PER_SCREEN    5
 
 //==========EWRAM==========//
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8  currentAppId = 0;
 static EWRAM_DATA bool8 areYouOnSecondScreen = FALSE;
-static EWRAM_DATA u8  appToMove = 255;
+static EWRAM_DATA bool8 isAppSelectedForMove = FALSE;
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -417,7 +417,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     y = 10;
 
     if(areYouOnSecondScreen)
-        CurrentApp = CurrentApp + 6;
+        CurrentApp = CurrentApp + NUM_APPS_PER_SCREEN;
 
     switch(GetCurrentAppfromIndex(CurrentApp)){
         case APP_POKEMON:
@@ -465,7 +465,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
     for(i = 0; i < NUM_APPS_PER_SCREEN; i++){
         if(areYouOnSecondScreen)
-            j = i + 6;
+            j = i + NUM_APPS_PER_SCREEN;
         else
             j = i;
 
@@ -509,28 +509,6 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         if(i == 2)
             x++;
-    }
-
-    // Selected App to Move --------------------------------------------------------------------------------------------------------
-    if(appToMove != 255 && FlagGet(FLAG_START_MENU_MOVE_MODE) && ((areYouOnSecondScreen && appToMove >= 6) || (!areYouOnSecondScreen && appToMove < 6))){
-        if(appToMove < 6){
-            x = (appToMove*4)+3;
-            y = 6;
-
-            if(appToMove < 3)
-                BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode2_Gfx, (x*8), (y*8), 24, 24);
-            else
-                BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode2_Gfx, ((x + 1)*8), (y*8), 24, 24);
-        }
-        else{
-            x = ((appToMove - 6)*4)+3;
-            y = 6;
-
-            if((appToMove - 6) < 3)
-                BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode2_Gfx, (x*8), (y*8), 24, 24);
-            else
-                BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode2_Gfx, ((x + 1)*8), (y*8), 24, 24);
-        }
     }
 
     // Move Mode Text --------------------------------------------------------------------------------------------------------
@@ -682,7 +660,7 @@ static u8 GetCurrentAppfromIndex(u8 index)
 
 static void ClearStartMenuDataBeforeExit()
 {
-    appToMove = 255;
+    isAppSelectedForMove = FALSE;
     FlagClear(FLAG_START_MENU_MOVE_MODE);
 }
 
@@ -692,7 +670,7 @@ static void Task_MenuMain(u8 taskId)
     u8 CurrentApp = currentAppId;
 
     if(areYouOnSecondScreen)
-        CurrentApp = CurrentApp + 6;
+        CurrentApp = CurrentApp + NUM_APPS_PER_SCREEN;
 
     if (JOY_NEW(B_BUTTON) || JOY_NEW(START_BUTTON))
     {
@@ -704,11 +682,53 @@ static void Task_MenuMain(u8 taskId)
 
     if(JOY_NEW(DPAD_RIGHT))
 	{
-		if(currentAppId < NUM_APPS_PER_SCREEN-1){
-			currentAppId++;
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
+            if(CurrentApp < NUM_TOTAL_APPS-1){
+                u8 tempAppIndex;
+                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp + 1];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp + 1] = tempAppIndex;
+            }
+            else{
+                u8 tempAppIndex;
+                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[0];
+                gSaveBlock2Ptr->startMenuAppIndex[0] = tempAppIndex;
+            }
+        }
+
+        if(currentAppId < NUM_APPS_PER_SCREEN-1){
+            currentAppId++;
+        }
+        else{
+            currentAppId = 0;
+            areYouOnSecondScreen = !areYouOnSecondScreen;
+        }
+        PlaySE(SE_SELECT);
+	}
+
+    if(JOY_NEW(DPAD_LEFT))
+	{
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
+            if(CurrentApp > 0){
+                u8 tempAppIndex;
+                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp - 1];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp - 1] = tempAppIndex;
+            }
+            else{
+                u8 tempAppIndex;
+                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[NUM_TOTAL_APPS-1];
+                gSaveBlock2Ptr->startMenuAppIndex[NUM_TOTAL_APPS-1] = tempAppIndex;
+            }
+        }
+
+		if(currentAppId > 0){
+			currentAppId--;
         }
 		else{
-			currentAppId = 0;
+			currentAppId = NUM_APPS_PER_SCREEN-1;
             areYouOnSecondScreen = !areYouOnSecondScreen;
         }
 		PlaySE(SE_SELECT);
@@ -768,31 +788,10 @@ static void Task_MenuMain(u8 taskId)
             }
         }
         else{
-            u8 tempAppIndex;
-            if(appToMove == 255){
-                appToMove = CurrentApp;
-            }
-            else{
-                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
-                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[appToMove];
-                gSaveBlock2Ptr->startMenuAppIndex[appToMove] = tempAppIndex;
-                appToMove = 255;
-            }
+            isAppSelectedForMove = !isAppSelectedForMove;
             PlaySE(SE_SELECT);
         }
     } 
-	
-	if(JOY_NEW(DPAD_LEFT))
-	{
-		if(currentAppId > 0){
-			currentAppId--;
-        }
-		else{
-			currentAppId = NUM_APPS_PER_SCREEN-1;
-            areYouOnSecondScreen = !areYouOnSecondScreen;
-        }
-		PlaySE(SE_SELECT);
-	}
 
     if(JOY_NEW(SELECT_BUTTON))
 	{
@@ -801,7 +800,7 @@ static void Task_MenuMain(u8 taskId)
         else
             FlagSet(FLAG_START_MENU_MOVE_MODE);
         
-        appToMove = 255;
+        isAppSelectedForMove = FALSE;
 		PlaySE(SE_SELECT);
 	}
 	
