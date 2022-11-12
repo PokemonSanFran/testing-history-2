@@ -3380,6 +3380,16 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        NULL,
 	        0
 	),
+	side_quest(
+	        gText_Quest_RedoMugging_Name,
+	        gText_Quest_RedoMugging_Desc,
+	        gText_Quest_RedoMugging_DoneDesc,
+	        gText_Quest_RedoMugging_Map,
+	        OBJ_EVENT_GFX_HIKER,
+	        OBJECT,
+	        NULL,
+	        0
+	),
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

@@ -60,8 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warp MAP_SOMA, 16, 15
-	givemon SPECIES_UNOWN, 1, ITEM_TOXIC_ORB
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_STOPMUGGING
 	return
 
 

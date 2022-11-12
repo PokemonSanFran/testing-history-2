@@ -1,6 +1,7 @@
 mapscripts Alcatraz_B2F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Alcatraz_B2F_MapScripts_OnTransition)
+        call(YouRealizeTheyreEvilRight_HideGarbodor_Script)
+        call(Alcatraz_B2F_ObjectVisibility_Script)
         call(Quest_Redomugging_Hide_Muggers_Script)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -10,21 +11,19 @@ mapscripts Alcatraz_B2F_MapScripts {
     ]
 }
 
-script Alcatraz_B2F_MapScripts_OnTransition {
-
-    call(YouRealizeTheyreEvilRight_HideGarbodor_Script)
-
-        switch(var(VAR_ALCATRAZ_STATE)){
-            case 0: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-            case FIRST_ARRIVED_ALCATRAZ: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-            case BATTLED_MALVA: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-            case PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT: call(YouRealizeTheyreEvilRight_Basement_SetUpObjects_Script)
-            case POST_YOU_REALIZE_THEYRE_EVIL_RIGHT: call(LetsGettheBandBackTogether_HideObject_Script)
-            case LAST_CHANCE_TRUE_TIMELINE_START: call(LetsGettheBandBackTogether_HideObject_Script)
-            case START_TRUE_TIMELINE: call(YouRealizeTheyreEvilRight_HideBasement_Script)
-            case PRE_SPEECHSPEECH: call(SpeechSpeechSpeech_MoveObject_Script)
-            case POST_SPEECHSPEECH: call(SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script)
-        }
+script Alcatraz_B2F_ObjectVisibility_Script{
+    switch(var(VAR_ALCATRAZ_STATE)){
+        case 0: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+        case FIRST_ARRIVED_ALCATRAZ: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+        case BATTLED_MALVA: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+        case PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT: call(YouRealizeTheyreEvilRight_Basement_SetUpObjects_Script)
+        case POST_YOU_REALIZE_THEYRE_EVIL_RIGHT: call(LetsGettheBandBackTogether_HideObject_Script)
+        case LAST_CHANCE_TRUE_TIMELINE_START: call(LetsGettheBandBackTogether_HideObject_Script)
+        case START_TRUE_TIMELINE: call(YouRealizeTheyreEvilRight_HideBasement_Script)
+        case PRE_SPEECHSPEECH: call(SpeechSpeechSpeech_MoveObject_Script)
+        case POST_SPEECHSPEECH: call(SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script)
+        return
+    }
 }
 
 script Alcatraz_B2F_Archer_Event_Script {

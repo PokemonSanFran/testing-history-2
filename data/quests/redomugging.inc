@@ -1,0 +1,29 @@
+Quest_Redomugging_Hide_Victim_Script::
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_STOPMUGGING
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_Redomugging_Hide_Victim_Script_2
+Quest_Redomugging_Hide_Victim_Script_1:
+	return
+
+Quest_Redomugging_Hide_Victim_Script_2:
+	setflag FLAG_TEMP_1
+	goto Quest_Redomugging_Hide_Victim_Script_1
+
+
+Quest_Redomugging_Hide_Muggers_Script::
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_STOPMUGGING
+	compare VAR_RESULT, 0
+	goto_if_eq Quest_Redomugging_Hide_Muggers_Script_2
+Quest_Redomugging_Hide_Muggers_Script_1:
+	return
+
+Quest_Redomugging_Hide_Muggers_Script_2:
+	setflag FLAG_TEMP_3
+	goto Quest_Redomugging_Hide_Muggers_Script_1
+
+
+Quest_Redomugging_StartQuest_Dialogue::
+	lock
+	startquest QUEST_REDOMUGGING
+	return
+

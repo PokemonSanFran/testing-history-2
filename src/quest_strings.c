@@ -508,6 +508,11 @@ const u8 gText_Quest_RestoreHaightashbury_Desc[] = _("Description");
 const u8 gText_Quest_RestoreHaightashbury_DoneDesc[] = _("DoneDescription");
 const u8 gText_Quest_RestoreHaightashbury_Map[] = _("Haightashbury");
 
+const u8 gText_Quest_RedoMugging_Name[] =_("Redo Mugging");
+const u8 gText_Quest_RedoMugging_Desc[] =_("Lorem Desc");
+const u8 gText_Quest_RedoMugging_DoneDesc[] =_("Done Desc");
+const u8 gText_Quest_RedoMugging_Map[] =_("Alcatraz");
+
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
 const u8 gText_Quest_HauntABuilding_Sub1_Desc[] = _("You brought Hunter a Litwick.");

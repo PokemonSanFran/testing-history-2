@@ -1252,6 +1252,11 @@ extern const u8 gText_Quest_RestoreTreasureisland_Sub4_Name[];
 extern const u8 gText_Quest_RestoreTreasureisland_Sub4_Desc[];
 extern const u8 gText_Quest_RestoreTreasureisland_Sub4_Map[];
 
+extern const u8 gText_Quest_RedoMugging_Name[];
+extern const u8 gText_Quest_RedoMugging_Desc[];
+extern const u8 gText_Quest_RedoMugging_DoneDesc[];
+extern const u8 gText_Quest_RedoMugging_Map[];
+
 //quest flavor
 extern const u8 gText_PlayersAdventure_Flavor1[];
 extern const u8 gText_PlayersAdventure_Flavor2[];

@@ -4,7 +4,9 @@ Alcatraz_B2F_MapScripts::
 	.byte 0
 
 Alcatraz_B2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Alcatraz_B2F_MapScripts_OnTransition
+	call YouRealizeTheyreEvilRight_HideGarbodor_Script
+	call Alcatraz_B2F_ObjectVisibility_Script
+	call Quest_Redomugging_Hide_Muggers_Script
 	return
 
 Alcatraz_B2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -14,53 +16,52 @@ Alcatraz_B2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-Alcatraz_B2F_MapScripts_OnTransition::
-	call YouRealizeTheyreEvilRight_HideGarbodor_Script
+Alcatraz_B2F_ObjectVisibility_Script::
 	switch VAR_ALCATRAZ_STATE
-	case 0, Alcatraz_B2F_MapScripts_OnTransition_2
-	case FIRST_ARRIVED_ALCATRAZ, Alcatraz_B2F_MapScripts_OnTransition_3
-	case BATTLED_MALVA, Alcatraz_B2F_MapScripts_OnTransition_4
-	case PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT, Alcatraz_B2F_MapScripts_OnTransition_5
-	case POST_YOU_REALIZE_THEYRE_EVIL_RIGHT, Alcatraz_B2F_MapScripts_OnTransition_6
-	case LAST_CHANCE_TRUE_TIMELINE_START, Alcatraz_B2F_MapScripts_OnTransition_7
-	case START_TRUE_TIMELINE, Alcatraz_B2F_MapScripts_OnTransition_8
-	case PRE_SPEECHSPEECH, Alcatraz_B2F_MapScripts_OnTransition_9
-	case POST_SPEECHSPEECH, Alcatraz_B2F_MapScripts_OnTransition_10
+	case 0, Alcatraz_B2F_ObjectVisibility_Script_2
+	case FIRST_ARRIVED_ALCATRAZ, Alcatraz_B2F_ObjectVisibility_Script_3
+	case BATTLED_MALVA, Alcatraz_B2F_ObjectVisibility_Script_4
+	case PRE_YOU_REALIZE_THEYRE_EVIL_RIGHT, Alcatraz_B2F_ObjectVisibility_Script_5
+	case POST_YOU_REALIZE_THEYRE_EVIL_RIGHT, Alcatraz_B2F_ObjectVisibility_Script_6
+	case LAST_CHANCE_TRUE_TIMELINE_START, Alcatraz_B2F_ObjectVisibility_Script_7
+	case START_TRUE_TIMELINE, Alcatraz_B2F_ObjectVisibility_Script_8
+	case PRE_SPEECHSPEECH, Alcatraz_B2F_ObjectVisibility_Script_9
+	case POST_SPEECHSPEECH, Alcatraz_B2F_ObjectVisibility_Script_10
 	return
 
-Alcatraz_B2F_MapScripts_OnTransition_2:
+Alcatraz_B2F_ObjectVisibility_Script_2:
 	call YouRealizeTheyreEvilRight_HideBasement_Script
 	return
 
-Alcatraz_B2F_MapScripts_OnTransition_3:
+Alcatraz_B2F_ObjectVisibility_Script_3:
 	call YouRealizeTheyreEvilRight_HideBasement_Script
 	return
 
-Alcatraz_B2F_MapScripts_OnTransition_4:
+Alcatraz_B2F_ObjectVisibility_Script_4:
 	call YouRealizeTheyreEvilRight_HideBasement_Script
 	return
 
-Alcatraz_B2F_MapScripts_OnTransition_5:
+Alcatraz_B2F_ObjectVisibility_Script_5:
 	call YouRealizeTheyreEvilRight_Basement_SetUpObjects_Script
 	return
 
-Alcatraz_B2F_MapScripts_OnTransition_6:
+Alcatraz_B2F_ObjectVisibility_Script_6:
 	call LetsGettheBandBackTogether_HideObject_Script
 	return
 
-Alcatraz_B2F_MapScripts_OnTransition_7:
+Alcatraz_B2F_ObjectVisibility_Script_7:
 	call LetsGettheBandBackTogether_HideObject_Script
 	return
 
-Alcatraz_B2F_MapScripts_OnTransition_8:
+Alcatraz_B2F_ObjectVisibility_Script_8:
 	call YouRealizeTheyreEvilRight_HideBasement_Script
 	return
 
-Alcatraz_B2F_MapScripts_OnTransition_9:
+Alcatraz_B2F_ObjectVisibility_Script_9:
 	call SpeechSpeechSpeech_MoveObject_Script
 	return
 
-Alcatraz_B2F_MapScripts_OnTransition_10:
+Alcatraz_B2F_ObjectVisibility_Script_10:
 	call SpeechSpeechSpeech_ProjectAssignment_ObjectSetUp_Script
 	return
 

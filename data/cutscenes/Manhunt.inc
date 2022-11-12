@@ -1,3 +1,8 @@
+Manhunt_HideBianca_Newspaper_Script::
+	setflag FLAG_TEMP_2
+	return
+
+
 Manhunt_ShowSabrina_Script::
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_MANHUNT
 	compare VAR_RESULT, 0

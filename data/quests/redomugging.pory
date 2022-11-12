@@ -11,7 +11,7 @@ const FLAG_HIDE_MUGGERS = FLAG_TEMP_3
 script Quest_Redomugging_Hide_Victim_Script{
 
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_STOPMUGGING)
-        if (var(VAR_RESULT)){
+        if (!var(VAR_RESULT)){
             setflag(FLAG_HIDE_VICTIM) 
         }
     return
@@ -19,8 +19,13 @@ script Quest_Redomugging_Hide_Victim_Script{
 
 script Quest_Redomugging_Hide_Muggers_Script{
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_STOPMUGGING)
-        if (var(VAR_RESULT)){
+        if (!var(VAR_RESULT)){
             setflag(FLAG_HIDE_MUGGERS) 
         }
     return
+}
+
+script Quest_Redomugging_StartQuest_Dialogue{
+    lock
+    startquest(QUEST_REDOMUGGING)
 }

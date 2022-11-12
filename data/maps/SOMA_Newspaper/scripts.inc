@@ -3,7 +3,8 @@ SOMA_Newspaper_MapScripts::
 	.byte 0
 
 SOMA_Newspaper_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto SOMA_Newspaper_MapScripts_OnTransition
+	call Manhunt_HideBianca_Newspaper_Script
+	call Quest_Redomugging_Hide_Victim_Script
 	return
 
 
@@ -36,11 +37,6 @@ SOMA_Newspaper_InteractCherie_Event_Script_10:
 	return
 
 SOMA_Newspaper_InteractCherie_Event_Script_11:
-	return
-
-
-SOMA_Newspaper_MapScripts_OnTransition::
-	setflag FLAG_TEMP_2
 	return
 
 
