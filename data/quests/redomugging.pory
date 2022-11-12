@@ -35,9 +35,18 @@ script Quest_Redomugging_Hide_Muggers_Script{
     return
 }
 
+script Quest_Redomugging_MovePlayer_Alcatraz_Script{
+    fadescreen(FADE_TO_BLACK)
+    setobjectxy(PLAYER,11,14)
+    turnobject(PLAYER,DIR_NORTH)
+    turnobject(MUGGER_B_ALCATRAZ,DIR_EAST)
+    TeleportCamera(11,14)
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
 script Quest_Redomugging_Interact_Script{
     lock
-        faceplayer
         returnqueststate(QUEST_REDOMUGGING)
 
         switch(var(VAR_RESULT)){
@@ -51,6 +60,7 @@ script Quest_Redomugging_Interact_Script{
 }
 
 script Quest_Redomugging_StartQuest_Dialogue{
+        call(Quest_Redomugging_MovePlayer_Alcatraz_Script)
         setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
         callnative(DrawMugshot)
         msgbox(gText_Redomugging_WaitArentYou)
@@ -137,16 +147,18 @@ script Quest_Redomugging_StealPhone_Dialogue{
 
     callnative(DrawMugshot)
     msgbox(gText_Redomugging_UhIWanted)
-    callnative(CleaMugshot)
+    callnative(ClearMugshot)
 
     msgbox(gText_Redomugging_WowYouReallyAre)
     msgbox(gText_Redomugging_WhileYoureHere)
     closemessage
 
     fadescreen(FADE_TO_BLACK)
-    delay(120)
+    delay(60)
     setobjectxy(PLAYER,12,15)
     TeleportCamera(12,15)
+    turnobject(VICTIM,DIR_EAST)
+    turnobject(PLAYER,DIR_WEST)
     fadescreen(FADE_FROM_BLACK)
 
     msgbox(gText_Redomugging_OhManThisIsGreat)
@@ -161,6 +173,9 @@ script Quest_Redomugging_StealPhone_Dialogue{
 
     applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(PLAYER)
+
+    dofieldeffectsparkle(12,14,0)   
+    waitfieldeffect(FLDEFF_SPARKLE)
 
     setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
     callnative(DrawMugshot) 
@@ -192,8 +207,27 @@ script Quest_Redomugging_SpottedByReporter_Script{
 
                 setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
                 callnative(DrawMugshot) 
-                msgbox(gText_IGottaGet)
+                msgbox(gText_Redomugging_IGottaGet)
                 callnative(ClearMugshot)
+        }
+    release
+        end
+}
+
+script Quest_Redomugging_LeaveNewspaper_Script{
+    questmenu(QUEST_MENU_CHECK_REWARD,QUEST_REDOMUGGING)
+
+        if(var(VAR_RESULT)){
+            lock
+
+                setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
+                callnative(DrawMugshot) 
+                msgbox(gText_Redomugging_INeedTo)
+                callnative(ClearMugshot)
+
+                applymovement(PLAYER,Common_Movement_WalkUp)
+                waitmovement(PLAYER)
+                closemessage
         }
     release
         end
@@ -205,6 +239,7 @@ script Quest_Redomugging_MissingPhone_Dialogue{
 }
 
 script Quest_Redomugging_Reward_Dialogue{
+    call(Quest_Redomugging_MovePlayer_Alcatraz_Script)
     msgbox(gText_Redomugging_YouDidAwesome)
 
     setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
@@ -233,66 +268,112 @@ script Quest_Redomugging_Completed_Dialogue{
     return 
 }
 text gText_Redomugging_WaitArentYou{
-    format("")
+    format("Wait, aren't you the muggers from SOMA?")
 }
 text gText_Redomugging_OhHellNot{
-    format("")
+    format("Oh hell, not again.")
 }
 text gText_Redomugging_WaitDidIPick{
-    format("")
+    format("Wait, did I pick the wrong side? There's no way Teamrocket is intentionally working with muggers.")
 }
 text gText_Redomugging_NahWereStill{
-    format("")
+    format("Nah, we're still the good guys, you just got it twisted.")
 }
 text gText_Redomugging_SinceWhenDo{
-    format("")
+    format("Since when do the good guys mug people for their phones?")
 }
 text gText_Redomugging_ThePersonWe{
-    format("")
+    format("The person we stole that phone from... they're a reporter. They're about to release a story about those riots in Tenderloin... but they got it all wrong.")
 }
 text gText_Redomugging_WeCaughtThem{
-    format("")
+    format("Our tech guys were able to see some of the stuff they were cooking up, and its crazy! They're saying we started the riot just to cause chaos and some other bullshit.")
 }
 text gText_Redomugging_YeahWeWere{
-    format("")
+    format("Without their phone, they can't log into their servers to work on the story, so we were going to steal it and hope that our guys could just wipe all their work.")
 }
 text gText_Redomugging_FramingYouGuys{
-    format("")
+    format("Hmm. Getting the story wrong seems to be normal for the news around here.")
 }
 text gText_Redomugging_ExactlyWeCant{
-    format("")
+    format("Exactly! We can't go back to SOMA now though, and that story is gonna drop any day now.")
 }
 text gText_Redomugging_IsItToo{
-    format("")
+    format("...is it too crazy to send somebody else? Could I try to grab it?")
 }
 text gText_Redomugging_MaybeNot{
-    format("")
+    format("Maybe not?")
 }
 text gText_Redomugging_MaybeHeadDownTo{
-    format("")
+    format("Maybe head to the newspaper in SOMA and see if you can get in a room with the reporter. Let us know if you get lucky!")
 }
 text gText_Redomugging_AnyLuck{
-    format("")
+    format("Any luck getting that phone?")
+}
+text gText_Redomugging_Sorry{
+    format("Sorry, I have to meet this deadline...")
+}
+text gText_Redomugging_HeyThereHow{
+    format("Hey there, how can I -")
+}
+text gText_Redomugging_ChampionPlayer{
+    format("Champion {PLAYER}! You're here! And you're the one that saved me from those muggers too. I keep telling everybody it was you, and nobody believes me.")
+}
+text gText_Redomugging_YeahThatWasMe{
+    format("Yeah, that was me.")
+}
+text gText_Redomugging_WhatBringsYou{
+    format("What are you doing here? Celebrities usually don't waltz into newspapers.")
+}
+text gText_Redomugging_UhIWanted{
+    format("Uh, I wanted to check on you! Make sure you were okay after that mugging. I know people get shaken up.")
+}
+text gText_Redomugging_WowYouReallyAre{
+    format("Wow! You really are the best. I was a little rattled, but I got my phone back and got away while you battled them. All is well!")
+}
+text gText_Redomugging_WhileYoureHere{
+    format("While you're here, how about an interview? I see you're publicly supporting Teamrocket, and I'd love to pick your brain!")
+}
+text gText_Redomugging_OhManThisIsGreat{
+    format("Oh man, this is so juicy! Okay, I gotta run to the restroom, but don't go anywhere,okay?")
+}
+text gText_Redomugging_OkayGottaGrab{
+    format("They left their phone! Perfect, let's grab it, turn it off, and get out of here.")
+}
+text gText_Redomugging_HeyWerentYouMid{
+    format("Hey, weren't you like, mid-interview?")
+}
+text gText_Redomugging_IGottaGet{
+    format("I need to get out of here without being seen...")
+}
+text gText_Redomugging_INeedTo{
+    format("I gotta get this reporter's phone to Alcatraz!")
+}
+text gText_Redomugging_HeyYouDisappeared{
+    format("Hey, you disappeared! I figured you got busy, totally fine. Sucks though, I seem to have misplaced my phone... I'm so absentminded!")
 }
 text gText_Redomugging_YouDidAwesome{
-    format("")
+    format("You did awesome, oh man!")
 }
 text gText_Redomugging_Thanks{
-    format("")
+    format("Thanks!")
 }
 text gText_Redomugging_WellTakeThat{
-    format("")
+    format("We'll take that off your hands...")
 }
 text gText_Redomugging_PlayerGave{
-    format("")
+    format("{PLAYER} gave the reporter's phone to Teamrocket.")
 }
 text gText_Redomugging_AwesomeWellGive{
-    format("")
+    format("Awesome, we'll give this to our guys and see if they stop this story from getting out.")
 }
 text gText_Redomugging_EvenBetterThan{
-    format("")
+    format("Even better than we expected - our guys were able to use that phone to wipe out all that guys shitty work. That interview about you is also gone, no worries.")
+}
+movement Quest_Redomugging_LeaveRoom_Movement{
+    walk_left * 8
+    step_end
 }
 movement Quest_Redomugging_WalkOffScreen_Movement{
-    walk_up * 6
+    walk_up * 7
     step_end
 }

@@ -65,7 +65,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_REDOMUGGING
+	warp MAP_SOMA_NEWSPAPER, 10, 15
 	return
 
 

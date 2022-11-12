@@ -72,7 +72,7 @@ script Debug_Script_1{
     questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_STOPMUGGING)
 }
 script Debug_Script_2{
-    questmenu(QUEST_MENU_SET_ACTIVE,QUEST_REDOMUGGING)
+    warp(MAP_SOMA_NEWSPAPER,10,15)
 }
 
 script Debug_Script_3{
