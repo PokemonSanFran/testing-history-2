@@ -60,7 +60,6 @@ enum WindowIds
 };
 
 //Defines
-#define  NNUM_DIFFERENT_SCREENS 2
 #define  NUM_APPS_PER_SCREEN    5
 
 //==========EWRAM==========//
