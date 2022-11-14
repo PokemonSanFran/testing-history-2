@@ -1257,6 +1257,16 @@ extern const u8 gText_Quest_RedoMugging_Desc[];
 extern const u8 gText_Quest_RedoMugging_DoneDesc[];
 extern const u8 gText_Quest_RedoMugging_Map[];
 
+extern const u8 gText_Quest_Recruitlocalartists_Sub1_Name[];
+extern const u8 gText_Quest_Recruitlocalartists_Sub1_Desc[];
+extern const u8 gText_Quest_Recruitlocalartists_Sub1_Map[];
+extern const u8 gText_Quest_Recruitlocalartists_Sub2_Name[];
+extern const u8 gText_Quest_Recruitlocalartists_Sub2_Desc[];
+extern const u8 gText_Quest_Recruitlocalartists_Sub2_Map[];
+extern const u8 gText_Quest_Recruitlocalartists_Sub3_Name[];
+extern const u8 gText_Quest_Recruitlocalartists_Sub3_Desc[];
+extern const u8 gText_Quest_Recruitlocalartists_Sub3_Map[];
+
 //quest flavor
 extern const u8 gText_PlayersAdventure_Flavor1[];
 extern const u8 gText_PlayersAdventure_Flavor2[];

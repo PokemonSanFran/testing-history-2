@@ -60,15 +60,17 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warp MAP_PRESIDIO_IMPROV, 0
+	additem ITEM_MASTER_BALL, 5
 	return
 
 
 Debug_Script_2::
+	warp MAP_MISSION, 0
 	return
 
 
 Debug_Script_3::
+	warp MAP_SALESFORCETOWER_PRODUCTION, 9, 7
 	return
 
 

@@ -48,45 +48,6 @@ struct SideQuest
 	const u8 numSubquests;
 }; 
 
-extern const struct SubQuest gHauntABuilding_Sub[QUEST_HAUNTABUILDING_SUB_COUNT];
-extern const struct SubQuest gRightingWrongs_Sub[QUEST_RIGHTINGWRONGS_SUB_COUNT];
-extern const struct SubQuest gBreakTheInternet_Sub[QUEST_BREAKTHEINTERNET_SUB_COUNT];
-extern const struct SubQuest gImprovBattling_Sub[QUEST_IMPROVBATTLING_SUB_COUNT];
-extern const struct SubQuest gInstallNatureProbes_Sub[QUEST_INSTALLNATUREPROBES_SUB_COUNT];
-extern const struct SubQuest gRestaurantExpansion1_Sub[QUEST_RESTAURANTEXPANSION1_SUB_COUNT];
-extern const struct SubQuest gRestaurantExpansion2_Sub[QUEST_RESTAURANTEXPANSION2_SUB_COUNT];
-extern const struct SubQuest gHybridCulture_Sub[QUEST_HYBRIDCULTURE_SUB_COUNT];
-extern const struct SubQuest gBuildingAnExhibit_Sub[QUEST_BUILDINGANEXHIBIT_SUB_COUNT];
-extern const struct SubQuest gBiomeResearch_Sub[QUEST_BIOMERESEARCH_SUB_COUNT];
-extern const struct SubQuest gBerrySustainability_Sub[QUEST_BERRYSUSTAINABILITY_SUB_COUNT];
-extern const struct SubQuest gContractorPorygon_Sub[QUEST_CONTRACTORPORYGON_SUB_COUNT];
-extern const struct SubQuest gGetTheBandBackTogether_Sub[QUEST_GETTHEBANDBACKTOGETHER_SUB_COUNT];
-extern const struct SubQuest gFoodTruckBureacracy_Sub[QUEST_FOODTRUCKBUREACRACY_SUB_COUNT];
-extern const struct SubQuest gDetectiveAriana_Sub[QUEST_DETECTIVEARIANA_SUB_COUNT];
-extern const struct SubQuest gChallengeOfThe7Sisters_Sub[QUEST_CHALLENGEOFTHE7SISTERS_SUB_COUNT];
-extern const struct SubQuest gCutePokemon_Sub[QUEST_CUTEPOKEMON_SUB_COUNT];
-extern const struct SubQuest gDexCompletion_Sub[QUEST_DEXCOMPLETION_SUB_COUNT];
-extern const struct SubQuest gKitchenVolunteering_Sub[QUEST_KITCHENVOLUNTEERING_SUB_COUNT];
-extern const struct SubQuest gArtisanBalls_Sub[QUEST_ARTISANBALLS_SUB_COUNT];
-extern const struct SubQuest gArtisanBalls2_Sub[QUEST_ARTISANBALLS2_SUB_COUNT];
-extern const struct SubQuest gShelterSwitcheroo_Sub[QUEST_SHELTERSWITCHEROO_SUB_COUNT];
-extern const struct SubQuest gShelterTaxiSolution_Sub[QUEST_SHELTERTAXISOLUTION_SUB_COUNT];
-extern const struct SubQuest gNeighborhoodCleanUp_Sub[QUEST_NEIGHBORHOODCLEANUP_SUB_COUNT];
-extern const struct SubQuest gNeighborhoodCleanUp2_Sub[QUEST_NEIGHBORHOODCLEANUP2_SUB_COUNT];
-extern const struct SubQuest gNeighborhoodCleanUp3_Sub[QUEST_NEIGHBORHOODCLEANUP3_SUB_COUNT];
-extern const struct SubQuest gRockCollector_Sub[QUEST_ROCKCOLLECTOR_SUB_COUNT];
-extern const struct SubQuest gHiddenGrottoMapping_Sub[QUEST_HIDDENGROTTOMAPPING_SUB_COUNT];
-extern const struct SubQuest gHiddenGrottoMapping2_Sub[QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT];
-extern const struct SubQuest gUltraWormholeResearch_Sub[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT];
-extern const struct SubQuest gWildfireRisk_Sub[QUEST_WILDFIRERISK_SUB_COUNT];
-extern const struct SubQuest gTheBoyWhoCriesWithWolves_Sub[QUEST_THEBOYWHOCRIESWITHWOLVES_SUB_COUNT];
-extern const struct SubQuest gTaxicabTurnAroundSea_Sub[QUEST_TAXICABTURNAROUNDSEA_SUB_COUNT];
-extern const struct SubQuest gTaxicabTurnAroundAir_Sub[QUEST_TAXICABTURNAROUNDAIR_SUB_COUNT];
-extern const struct SubQuest gTaxicabTurnAroundLand_Sub[QUEST_TAXICABTURNAROUNDLAND_SUB_COUNT];
-extern const struct SubQuest gPersuasivePassenger_Sub[QUEST_PERSUASIVEPASSENGER_SUB_COUNT];
-extern const struct SubQuest gBodegaBurnout_Sub[QUEST_BODEGABURNOUT_SUB_COUNT];
-extern const struct SubQuest gWarehouseWarfare_Sub[QUEST_WAREHOUSEWARFARE_SUB_COUNT];
-extern const struct SubQuest gRestoreToTheirFormerGlory_Sub[QUEST_RESTORETOTHEIRFORMERGLORY_SUB_COUNT];
 extern const struct SideQuest gSideQuests[QUEST_COUNT];
 
 enum QuestCases

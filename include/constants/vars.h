@@ -109,6 +109,7 @@
 #define VAR_ALAMEDA_STATE            0x404E 
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
+#define VAR_QUEST_RECRUITLOLCAARTISTS   0x4051
 #define VAR_OLDALE_TOWN_STATE                            0x4051
 #define VAR_ALWAYS_ZERO 0x4051
 #define VAR_DEWFORD_TOWN_STATE                           0x4052 // Unused Var

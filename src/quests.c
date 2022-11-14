@@ -2356,6 +2356,36 @@ static const struct SubQuest
             sText_Found
 	),
 };
+static const struct SubQuest
+    sRecruitLocalArtists_Sub[QUEST_RECRUITLOCALARTISTS_SUB_COUNT] = {
+	sub_quest(
+	        231,
+            gText_Quest_Recruitlocalartists_Sub1_Name,
+            gText_Quest_Recruitlocalartists_Sub1_Desc,
+            gText_Quest_Recruitlocalartists_Sub1_Map,
+	        SPECIES_SMEARGLE,
+	        PKMN,
+            sText_Caught
+	),
+	sub_quest(
+	        232,
+            gText_Quest_Recruitlocalartists_Sub2_Name,
+            gText_Quest_Recruitlocalartists_Sub2_Desc,
+            gText_Quest_Recruitlocalartists_Sub2_Map,
+	        SPECIES_SMEARGLE,
+	        PKMN,
+            sText_Caught
+	),
+	sub_quest(
+	        233,
+            gText_Quest_Recruitlocalartists_Sub3_Name,
+            gText_Quest_Recruitlocalartists_Sub3_Desc,
+            gText_Quest_Recruitlocalartists_Sub3_Map,
+	        SPECIES_SMEARGLE,
+	        PKMN,
+            sText_Caught
+	),
+};
 
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -2623,8 +2653,8 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_RecruitLocalArtists_Map,
 	        OBJ_EVENT_GFX_MAGMA_MEMBER_F,
 	        OBJECT,
-	        NULL,
-	        0
+            sRecruitLocalArtists_Sub,
+	        3
 	),
 	side_quest(
 	        gText_Quest_RestaurantExpansion1_Name,
