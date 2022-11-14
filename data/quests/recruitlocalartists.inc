@@ -173,9 +173,20 @@ Quest_Recruitlocalartists_ProgressReward_Script_5:
 
 Quest_Recruitlocalartists_StartQuest_Dialogue::
 	lock
+	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
+	compare VAR_SALESFORCETOWER_PRODUCTION_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
+	goto_if_ne Quest_Recruitlocalartists_StartQuest_Dialogue_2
+Quest_Recruitlocalartists_StartQuest_Dialogue_1:
+	applymovement 3, Common_Movement_FaceUp
+	waitmovement 3
+	callnative DrawMugshot
 	msgbox gText_Recruitlocalartists_TheseMurals
+	callnative ClearMugshot
+	closemessage
 	faceplayer
+	callnative DrawMugshot
 	msgbox gText_Recruitlocalartists_TheLocalsLove
+	callnative ClearMugshot
 	closemessage
 	applymovement 3, Quest_Recruitlocalartists_LeaveMission_Movement
 	startquest QUEST_RECRUITLOCALARTISTS
@@ -185,6 +196,14 @@ Quest_Recruitlocalartists_StartQuest_Dialogue::
 	fadescreen FADE_FROM_BLACK
 	release
 	end
+
+Quest_Recruitlocalartists_StartQuest_Dialogue_2:
+	faceplayer
+	callnative DrawMugshot
+	msgbox gText_Recruitlocalartists_HelloPlayer
+	closemessage
+	callnative ClearMugshot
+	goto Quest_Recruitlocalartists_StartQuest_Dialogue_1
 
 
 Quest_Recruitlocalartists_First_Dialogue::
@@ -353,28 +372,59 @@ Quest_Recruitlocalartists_LeaveMission_Movement:
 	step_end
 
 gText_Recruitlocalartists_Smear::
-	.string "$"
+	.string "Smear!$"
 
 gText_Recruitlocalartists_TheSmeargleRan::
-	.string "$"
+	.string "The Smeargle ran away!$"
 
 gText_Recruitlocalartists_TheMurals::
-	.string "$"
+	.string "The murals are painted by this rag tag\n"
+	.string "group! They come in, paint real fast\l"
+	.string "and then proof, they're gone!$"
 
 gText_Recruitlocalartists_ISawOne::
-	.string "$"
+	.string "I saw one of those mural painters once.\n"
+	.string "I'll tell you a secret... they're\l"
+	.string "Pokémon!$"
 
 gText_Recruitlocalartists_YouStillHavent::
-	.string "$"
+	.string "You still haven't found those mural\n"
+	.string "artists?$"
 
 gText_Recruitlocalartists_TheyWerePokemon::
-	.string "$"
+	.string "They were Pokémon?! Fascinating. Those\n"
+	.string "murals were incredibly complex and\l"
+	.string "yet... hmm.$"
 
 gText_Recruitlocalartists_WellThenIDont::
-	.string "$"
+	.string "Well then I don't want to hire them,\n"
+	.string "obviously. They're better off with a\l"
+	.string "Trainer. A shame they won't be painting\l"
+	.string "in Mission anymore, but I'll just have\l"
+	.string "to find somebody else. Thanks for your\l"
+	.string "help.$"
 
 gText_Recruitlocalartists_TheseMurals::
-	.string "$"
+	.string "These murals... they're a cornerstone of\n"
+	.string "the culture of this city. They depict\l"
+	.string "the growth and struggles of not only\l"
+	.string "this community, but the region as a\l"
+	.string "whole.$"
 
 gText_Recruitlocalartists_TheLocalsLove::
-	.string "$"
+	.string "The locals love them too. I want to\n"
+	.string "figure out how Ycombinator can work\l"
+	.string "with these artists to create a\l"
+	.string "marketing campaign that really\l"
+	.string "resonates with the people. Can you\l"
+	.string "help me track down the artists? Come\l"
+	.string "to the Production Studio in the\l"
+	.string "Salesforcetower once you've found\l"
+	.string "them.$"
+
+gText_Recruitlocalartists_HelloPlayer::
+	.string "Hello {PLAYER}. We haven't formerly\n"
+	.string "met yet, but I'm Sabrina, VP of\l"
+	.string "Marketing for Ycombinator. We've\l"
+	.string "always been very impressed with your\l"
+	.string "work.$"

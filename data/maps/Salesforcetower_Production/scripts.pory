@@ -20,7 +20,7 @@ script Salesforcetower_Production_Sabrina_Visibility_Script{
     //if (var(VAR_RESULT) < QUEST_MENU_SET_ACTIVE){
 
     questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_RECRUITLOCALARTISTS)
-
+    if(var(VAR_RESULT)){
         addvar(VAR_TEMP_1,1)
     }
 
@@ -28,7 +28,7 @@ script Salesforcetower_Production_Sabrina_Visibility_Script{
         addvar(VAR_TEMP_0,1)
     }
 
-    if(var(VAR_TEMP_0) > 0 && (var(VAR_TEMP_1) == 2)){
+    if(var(VAR_TEMP_0) > 0 || (var(VAR_TEMP_1) == 2)){
         setflag(FLAG_HIDE_SABRINA)
     }
     return

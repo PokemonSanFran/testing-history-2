@@ -4896,7 +4896,9 @@ static void Task_Main(u8 taskId)
 		ListMenuGetScrollAndRow(data[0], &sListMenuState.scroll,
 		                        &sListMenuState.row);
 
-		LoadSavedQuestMode(taskId);
+		//LoadSavedQuestMode(taskId);
+        //PSF TODO this doesn't work correctly. 
+        //The goal is when the user closes the quest menu and reopens it, the user goes back to the quest that they were previously looking at.
 
 		switch (input) {
 			case LIST_NOTHING_CHOSEN:

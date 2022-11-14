@@ -1,8 +1,16 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const SABRINA = 2
+const FLAG_HIDE_SABRINA = FLAG_TEMP_2
 
 script AlwaysWatchingWazowski_FloorWelcome_Script{
         lock
+
+        if (flag(FLAG_HIDE_SABRINA)){
+            setvar(VAR_SALESFORCETOWER_PRODUCTION_STATE,POST_ALWAYS_WATCHING_WAZOWSKI)
+            release
+            end
+        }
+
         setvar(VAR_SALESFORCETOWER_PRODUCTION_STATE,STEPPED_INTO_SABRINA_ROOM)
         setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
         callnative(DrawMugshot)

@@ -1,5 +1,6 @@
 AlwaysWatchingWazowski_FloorWelcome_Script::
 	lock
+	goto_if_set FLAG_TEMP_2, AlwaysWatchingWazowski_FloorWelcome_Script_2
 	setvar VAR_SALESFORCETOWER_PRODUCTION_STATE, STEPPED_INTO_SABRINA_ROOM
 	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
 	callnative DrawMugshot
@@ -7,6 +8,11 @@ AlwaysWatchingWazowski_FloorWelcome_Script::
 	closemessage
 	callnative ClearMugshot
 	releaseall
+	end
+
+AlwaysWatchingWazowski_FloorWelcome_Script_2:
+	setvar VAR_SALESFORCETOWER_PRODUCTION_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
+	release
 	end
 
 

@@ -118,14 +118,35 @@ script Quest_Recruitlocalartists_ProgressReward_Script{
             questmenu(QUEST_MENU_SET_REWARD,QUEST_RECRUITLOCALARTISTS)
         }
     return
+        closemessage
+
 }
 
 script Quest_Recruitlocalartists_StartQuest_Dialogue{
     lock
     //PSF TODO move player if in sabrina's walking path 
+    setvar(VAR_MUGSHOT,MUGSHOT_SABRINA)
+
+    if (var(VAR_SALESFORCETOWER_PRODUCTION_STATE) != POST_ALWAYS_WATCHING_WAZOWSKI){
+        faceplayer
+        callnative(DrawMugshot)
+        msgbox(gText_Recruitlocalartists_HelloPlayer)
+        closemessage
+        callnative(ClearMugshot)
+    }
+
+    applymovement(SABRINA_MISSION,Common_Movement_FaceUp)
+    waitmovement(SABRINA_MISSION)
+
+    callnative(DrawMugshot)
     msgbox(gText_Recruitlocalartists_TheseMurals)
+    callnative(ClearMugshot)
+    closemessage
+
     faceplayer
+    callnative(DrawMugshot)
     msgbox(gText_Recruitlocalartists_TheLocalsLove)
+    callnative(ClearMugshot)
     closemessage
 
     applymovement(SABRINA_MISSION,Quest_Recruitlocalartists_LeaveMission_Movement)
@@ -232,47 +253,51 @@ script Quest_Recruitlocalartists_Active_Dialogue{
 
 script Quest_Recruitlocalartists_CompleteQuest_Dialogue{
     lock
-        playse(SE_PIN)
-        applymovement(SABRINA_PRODUCTION,Common_Movement_ExclamationMark)
-        waitmovement(SABRINA_PRODUCTION)
-        waitse
-        msgbox(gText_Recruitlocalartists_TheyWerePokemon)
-        msgbox(gText_Recruitlocalartists_WellThenIDont)
-        completequest(QUEST_RECRUITLOCALARTISTS)
-        release
-        end
+    playse(SE_PIN)
+    applymovement(SABRINA_PRODUCTION,Common_Movement_ExclamationMark)
+    waitmovement(SABRINA_PRODUCTION)
+    waitse
+    msgbox(gText_Recruitlocalartists_TheyWerePokemon)
+    msgbox(gText_Recruitlocalartists_WellThenIDont)
+    completequest(QUEST_RECRUITLOCALARTISTS)
+    release
+    end
 }
 
 text gText_Recruitlocalartists_Smear{
-    format("")
+    format("Smear!")
 }
 text gText_Recruitlocalartists_TheSmeargleRan{
-    format("")
+    format("The Smeargle ran away!")
 }
 text gText_Recruitlocalartists_TheMurals{
-    format("")
+    format("The murals are painted by this rag tag group! They come in, paint real fast and then proof, they're gone!")
 }
 text gText_Recruitlocalartists_ISawOne{
-    format("")
+    format("I saw one of those mural painters once. I'll tell you a secret... they're Pokémon!")
 }
 text gText_Recruitlocalartists_YouStillHavent{
-    format("")
+    format("You still haven't found those mural artists?")
 }
 
 text gText_Recruitlocalartists_TheyWerePokemon{
-    format("")
+    format("They were Pokémon?! Fascinating. Those murals were incredibly complex and yet... hmm.")
 }
 
 text gText_Recruitlocalartists_WellThenIDont{
-    format("")
+    format("Well then I don't want to hire them, obviously. They're better off with a Trainer. A shame they won't be painting in Mission anymore, but I'll just have to find somebody else. Thanks for your help.")
 }
 
 text gText_Recruitlocalartists_TheseMurals{
-    format("")
+    format("These murals... they're a cornerstone of the culture of this city. They depict the growth and struggles of not only this community, but the region as a whole.")
 }
 
 text gText_Recruitlocalartists_TheLocalsLove{
-    format("")
+    format("The locals love them too. I want to figure out how Ycombinator can work with these artists to create a marketing campaign that really resonates with the people. Can you help me track down the artists? Come to the Production Studio in the Salesforcetower once you've found them.")
+}
+
+text gText_Recruitlocalartists_HelloPlayer{
+    format("Hello {PLAYER}. We haven't formerly met yet, but I'm Sabrina, VP of Marketing for Ycombinator. We've always been very impressed with your work.")
 }
 
 movement Quest_Recruitlocalartists_RunPastScreen_Movement{
