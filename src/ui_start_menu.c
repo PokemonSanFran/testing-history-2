@@ -138,8 +138,8 @@ enum Colors
 };
 static const u8 sMenuWindowFontColors[][3] = 
 {
-    [FONT_BLACK]  = {TEXT_COLOR_TRANSPARENT,  15,  13},
-    [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT,  14,  13},
+    [FONT_BLACK]  = {TEXT_COLOR_TRANSPARENT,  15, 6},
+    [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT,  5,  6},
     [FONT_RED]    = {TEXT_COLOR_TRANSPARENT,  11, 12},
     [FONT_BLUE]   = {TEXT_COLOR_TRANSPARENT,  13, 14},
 };
@@ -462,7 +462,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     AddTextPrinterParameterized4(windowId, 7, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_SelectedOption);
 
     // App Icons --------------------------------------------------------------------------------------------------------
-    x = 3;
+    x = 1;
 	y = 6;
 
     for(i = 0; i < NUM_APPS_PER_SCREEN; i++){
@@ -473,44 +473,41 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         switch(GetCurrentAppfromIndex(j)){
             case APP_POKEMON:
-                BlitBitmapToWindow(windowId, sStartMenuApp_Pokemon_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Pokemon_Gfx, (x*8), (y*8), 40, 40);
             break;
             case APP_BAG:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Bag_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Bag_Gfx, (x*8), (y*8), 40, 40);
             break;
             case APP_MAP:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Map_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Map_Gfx, (x*8), (y*8), 40, 40);
             break;			
             case APP_QUEST:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Quest_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Quest_Gfx, (x*8), (y*8), 40, 40);
             break;
             case APP_DEXNAV:		
-                BlitBitmapToWindow(windowId, sStartMenuApp_Dexnav_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Dexnav_Gfx, (x*8), (y*8), 40, 40);
             break;
             case APP_POKEDEX:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Pokedex_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Pokedex_Gfx, (x*8), (y*8), 40, 40);
             break;
             case APP_TWITTER:		
-                BlitBitmapToWindow(windowId, sStartMenuApp_Twitter_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Twitter_Gfx, (x*8), (y*8), 40, 40);
             break;
             case APP_OPTIONS:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Options_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Options_Gfx, (x*8), (y*8), 40, 40);
             break;
             case APP_PROFILE:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Profile_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Profile_Gfx, (x*8), (y*8), 40, 40);
             break;
             case APP_AMAZON:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Amazon_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Amazon_Gfx, (x*8), (y*8), 40, 40);
             break;
             default:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Default_Gfx, (x*8), (y*8), 24, 24);
+                BlitBitmapToWindow(windowId, sStartMenuApp_Default_Gfx, (x*8), (y*8), 40, 40);
             break;
         }
 
-        x = x + 4;
-
-        if(i == 2)
-            x++;
+        x = x + 6;
     }
 
     // Move Mode Text --------------------------------------------------------------------------------------------------------
@@ -521,21 +518,14 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         BlitBitmapToWindow(windowId, sStartMenuMoveModeText_Gfx, (x*8), (y*8), 72, 16);
 
     // Selection Sprite --------------------------------------------------------------------------------------------------------
-	x = (currentAppId*4)+3;
+	x = (currentAppId*6)+1;
 	y = 6;
 
-    if(!FlagGet(FLAG_START_MENU_MOVE_MODE)){
-        if(currentAppId < 3)
-            BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, (x*8), (y*8), 24, 24);
-        else
-            BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, ((x + 1)*8), (y*8), 24, 24);
-    }
-    else{
-        if(currentAppId < 3)
-            BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode_Gfx, (x*8), (y*8), 24, 24);
-        else
-            BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode_Gfx, ((x + 1)*8), (y*8), 24, 24);
-    }
+    if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
+        BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, (x*8), (y*8), 40, 40);
+    else
+		BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode_Gfx, (x*8), (y*8), 40, 40);
+    
 
     // Screen Indicator --------------------------------------------------------------------------------------------------------
     x = 14;
