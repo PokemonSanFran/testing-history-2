@@ -27,6 +27,7 @@
 #include "party_menu.h"
 #include "pokedex.h"
 #include "quests.h"
+#include "quest_flavor_lookup.h"
 #include "rtc.h"
 #include "region_map.h"
 #include "trainer_card.h"
@@ -151,7 +152,7 @@ void Task_OpenMenuFromStartMenu(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        Menu_Init(CB2_ReturnToFieldWithOpenMenu);
+        Menu_Init(CB2_ReturnToField);
         DestroyTask(taskId);
     }
 }
@@ -404,6 +405,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str_SelectedOption;
     const u8 *str_CurrentLocation = sText_Unknown_Location;
+	const u8 *str_QuestFlavorLookup = GetQuestDesc_PlayersAdventure();
     u8 i, j;
     u8 CurrentApp = currentAppId;
     u8 x = 1;
@@ -567,7 +569,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     // Quest Information --------------------------------------------------------------------------------------------------------------------
 	x = 0;
 	y = 14;
-	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_App_None);
+	
+	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
 
     // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -590,6 +593,16 @@ static void Task_MenuTurnOff(u8 taskId)
         SetMainCallback2(sMenuDataPtr->savedCallback);
         Menu_FreeResources();
         DestroyTask(taskId);
+    }
+}
+
+void Task_OpenSaveMenuStartMenu(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+		//PlayRainStoppingSoundEffect();
+		//CleanupOverworldWindowsAndTilemaps();
+		SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
     }
 }
 
@@ -672,12 +685,25 @@ static void Task_MenuMain(u8 taskId)
     if(areYouOnSecondScreen)
         CurrentApp = CurrentApp + NUM_APPS_PER_SCREEN;
 
-    if (JOY_NEW(B_BUTTON) || JOY_NEW(START_BUTTON))
+    if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_PC_OFF);
         ClearStartMenuDataBeforeExit();
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_MenuTurnOff;
+    }
+	
+	if (JOY_NEW(R_BUTTON) || JOY_NEW(L_BUTTON))
+    {
+        areYouOnSecondScreen = !areYouOnSecondScreen;
+    }
+	
+	if (JOY_NEW(START_BUTTON))
+    {
+        PlaySE(SE_PC_OFF);
+        ClearStartMenuDataBeforeExit();
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+        gTasks[taskId].func = Task_OpenSaveMenuStartMenu;
     }
 
     if(JOY_NEW(DPAD_RIGHT))
@@ -706,8 +732,62 @@ static void Task_MenuMain(u8 taskId)
         }
         PlaySE(SE_SELECT);
 	}
+	
+	if(JOY_NEW(DPAD_DOWN))
+	{
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
+            if(CurrentApp < NUM_TOTAL_APPS-1){
+                u8 tempAppIndex;
+                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp + 1];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp + 1] = tempAppIndex;
+            }
+            else{
+                u8 tempAppIndex;
+                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[0];
+                gSaveBlock2Ptr->startMenuAppIndex[0] = tempAppIndex;
+            }
+        }
+
+        if(currentAppId < NUM_APPS_PER_SCREEN-1){
+            currentAppId++;
+        }
+        else{
+            currentAppId = 0;
+            areYouOnSecondScreen = !areYouOnSecondScreen;
+        }
+        PlaySE(SE_SELECT);
+	}
 
     if(JOY_NEW(DPAD_LEFT))
+	{
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
+            if(CurrentApp > 0){
+                u8 tempAppIndex;
+                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp - 1];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp - 1] = tempAppIndex;
+            }
+            else{
+                u8 tempAppIndex;
+                tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
+                gSaveBlock2Ptr->startMenuAppIndex[CurrentApp] = gSaveBlock2Ptr->startMenuAppIndex[NUM_TOTAL_APPS-1];
+                gSaveBlock2Ptr->startMenuAppIndex[NUM_TOTAL_APPS-1] = tempAppIndex;
+            }
+        }
+
+		if(currentAppId > 0){
+			currentAppId--;
+        }
+		else{
+			currentAppId = NUM_APPS_PER_SCREEN-1;
+            areYouOnSecondScreen = !areYouOnSecondScreen;
+        }
+		PlaySE(SE_SELECT);
+	}
+	
+	if(JOY_NEW(DPAD_UP))
 	{
         if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
             if(CurrentApp > 0){
