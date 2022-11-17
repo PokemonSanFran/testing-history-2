@@ -82,6 +82,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 static u8 GetCurrentAppfromIndex(u8 index);
+static u8 GetCurrentSignal();
 static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y);
 static void DestroySpeciesIcon(u8 slot);
 
@@ -465,6 +466,11 @@ static const u8 sStartMenuApp_Profile_Move_Mode_Gfx[]  = INCBIN_U8("graphics/sta
 static const u8 sStartMenuApp_Amazon_Move_Mode_Gfx[]   = INCBIN_U8("graphics/start_menu/app_amazon_move.4bpp");
 static const u8 sStartMenuApp_Default_Move_Mode_Gfx[]  = INCBIN_U8("graphics/start_menu/app_default_move.4bpp");
 
+static const u8 sStartMenuApp_Signal_0_Gfx[]  = INCBIN_U8("graphics/start_menu/signal_0.4bpp");
+static const u8 sStartMenuApp_Signal_1_Gfx[]  = INCBIN_U8("graphics/start_menu/signal_1.4bpp");
+static const u8 sStartMenuApp_Signal_2_Gfx[]  = INCBIN_U8("graphics/start_menu/signal_2.4bpp");
+static const u8 sStartMenuApp_Signal_3_Gfx[]  = INCBIN_U8("graphics/start_menu/signal_3.4bpp");
+
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str_SelectedOption;
@@ -477,6 +483,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     u8 hours = gLocalTime.hours;
 	u8 minutes = gLocalTime.minutes;
     u8 strArray[16];
+    u8 signal = GetCurrentSignal();
 
     // Current App Title
     x = 19;
@@ -664,7 +671,24 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x = x + 4;
     }
 
-    // ------------------------------------------------------------------------------------------------------------------------------------
+    // Signal ------------------------------------------------------------------------------------------------------------------------------------
+    x = 21;
+	y = 0;
+
+    switch(signal){
+        case 0:
+            BlitBitmapToWindow(windowId, sStartMenuApp_Signal_0_Gfx, (x*8), (y*8), 16, 16);
+        break;
+        case 1:
+            BlitBitmapToWindow(windowId, sStartMenuApp_Signal_1_Gfx, (x*8), (y*8), 16, 16);
+        break;
+        case 2:
+            BlitBitmapToWindow(windowId, sStartMenuApp_Signal_2_Gfx, (x*8), (y*8), 16, 16);
+        break;
+        default:
+            BlitBitmapToWindow(windowId, sStartMenuApp_Signal_3_Gfx, (x*8), (y*8), 16, 16);
+        break;
+    }
 
     //Time --------------------------------------------------------------------------------------------------------------------
 	x = 24;
@@ -893,6 +917,13 @@ static u8 GetCurrentAppfromIndex(u8 index)
         return gSaveBlock2Ptr->startMenuAppIndex[index % NUM_TOTAL_APPS];
     else
         return gSaveBlock2Ptr->startMenuAppIndex[index];
+}
+
+static u8 GetCurrentSignal()
+{
+    //this one will be modified depending on how the story works, its not something that I will do since I'm not involved with the story
+    //here you can change the signal this menu will get in certain areas in the game
+    return 3;
 }
 
 static void ClearStartMenuDataBeforeExit()
