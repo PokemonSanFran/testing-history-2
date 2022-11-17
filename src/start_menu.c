@@ -240,6 +240,7 @@ static const struct WindowTemplate sSaveInfoWindowTemplate = {
 static void BuildStartMenuActions(void);
 static void AddStartMenuAction(u8 action);
 static void BuildNormalStartMenu(void);
+static void BuildNormalSaveStartMenu(void);
 static void BuildDebugStartMenu(void);
 static void BuildSafariZoneStartMenu(void);
 static void BuildLinkModeStartMenu(void);
@@ -311,7 +312,7 @@ static void BuildStartMenuActions(void)
     #if DEBUG_SYSTEM_ENABLE == TRUE && DEBUG_SYSTEM_IN_MENU == TRUE
         BuildDebugStartMenu();
     #else
-        BuildNormalStartMenu();
+        BuildNormalSaveStartMenu();//BuildNormalStartMenu();
     #endif
     }
 }
@@ -350,6 +351,12 @@ static void BuildNormalStartMenu(void)
 
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
+    AddStartMenuAction(MENU_ACTION_EXIT);
+}
+
+static void BuildNormalSaveStartMenu(void)
+{
+    AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
@@ -619,6 +626,18 @@ void ShowStartMenu(void)
         StopPlayerAvatar();
     }
     CreateStartMenuTask(Task_ShowStartMenu);
+    LockPlayerFieldControls();
+}
+
+void ShowUIStartMenu(void)
+{
+    if (!IsOverworldLinkActive())
+    {
+        FreezeObjectEvents();
+        PlayerFreeze();
+        StopPlayerAvatar();
+    }
+	StartMenuUiStartMenuCallback();
     LockPlayerFieldControls();
 }
 

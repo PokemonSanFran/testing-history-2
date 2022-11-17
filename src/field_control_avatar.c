@@ -20,6 +20,7 @@
 #include "match_call.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
+#include "palette.h"
 #include "pokemon.h"
 #include "safari_zone.h"
 #include "script.h"
@@ -35,6 +36,7 @@
 #include "constants/map_types.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
+#include "constants/rgb.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -190,9 +192,16 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         return TRUE;
     if (input->pressedStartButton)
     {
-        PlaySE(SE_WIN_OPEN);
+		if(!gPlayerAvatar.preventStep){
+				PlaySE(SE_WIN_OPEN);
+				BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+				ShowUIStartMenu();
+			}
+			else
+				return FALSE;
+        /*/PlaySE(SE_WIN_OPEN);
         ShowStartMenu();
-        return TRUE;
+        return TRUE;/*/
     }
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;

@@ -5046,7 +5046,7 @@ void Task_QuestMenu_OpenFromStartMenu(u8 taskId)
 	s16 *data = gTasks[taskId].data;
 	if (!gPaletteFade.active) {
 		CleanupOverworldWindowsAndTilemaps();
-		QuestMenu_Init(tItemPcParam, CB2_ReturnToFieldWithOpenMenu);
+		QuestMenu_Init(tItemPcParam, CB2_ReturnToUIMenu); //CB2_ReturnToFieldWithOpenMenu
 		DestroyTask(taskId);
 	}
 }
