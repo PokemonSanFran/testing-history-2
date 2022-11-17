@@ -44,6 +44,7 @@
 #include "constants/field_weather.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "constants/flags.h"
 
 /*
  * 
@@ -923,7 +924,11 @@ static u8 GetCurrentSignal()
 {
     //this one will be modified depending on how the story works, its not something that I will do since I'm not involved with the story
     //here you can change the signal this menu will get in certain areas in the game
-    return 3;
+    //the flag 0x89 is currently being used so I can insert it but when anyone inserts it just remove the comments below
+    //if(FlagGet(FLAG_PHONE_NO_SERVICE)) 
+    //    return 0;
+    //else
+        return 3;
 }
 
 static void ClearStartMenuDataBeforeExit()
@@ -1081,9 +1086,13 @@ static void Task_MenuMain(u8 taskId)
                     gTasks[taskId].func = Task_OpenBagFromStartMenu;
                 break;
                 case APP_POKEDEX:
-                    PlaySE(SE_SELECT);
-                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                    gTasks[taskId].func = Task_OpenPokedexFromStartMenu;
+                    if(GetCurrentSignal() != 0){
+                        PlaySE(SE_SELECT);
+                        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                        gTasks[taskId].func = Task_OpenPokedexFromStartMenu;
+                    }
+                    else
+					PlaySE(SE_BOO);
                 break;
                 case APP_POKEMON:
                     PlaySE(SE_SELECT);
@@ -1101,24 +1110,49 @@ static void Task_MenuMain(u8 taskId)
                     gTasks[taskId].func = Task_OpenOptionsMenuStartMenu;
                 break;
                 case APP_QUEST:
-                    PlaySE(SE_SELECT);
-                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                    gTasks[taskId].func = Task_QuestMenu_OpenFromStartMenu;
+                    if(GetCurrentSignal() != 0){
+                        PlaySE(SE_SELECT);
+                        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                        gTasks[taskId].func = Task_QuestMenu_OpenFromStartMenu;
+                    }
+                    else
+					    PlaySE(SE_BOO);
                 break;
                 case APP_TWITTER:
-                    PlaySE(SE_PC_OFF);
-                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                    gTasks[taskId].func = Task_MenuTurnOff;
+                    if(GetCurrentSignal() != 0){
+                        PlaySE(SE_PC_OFF);
+                        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                        gTasks[taskId].func = Task_MenuTurnOff;
+                    }
+                    else
+					    PlaySE(SE_BOO);
                 break;
                 case APP_MAP:
-                    PlaySE(SE_PC_OFF);
-                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                    gTasks[taskId].func = Task_MenuTurnOff;
+                    if(GetCurrentSignal() != 0){
+                        PlaySE(SE_PC_OFF);
+                        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                        gTasks[taskId].func = Task_MenuTurnOff;
+                    }
+                    else
+					    PlaySE(SE_BOO);
                 break;
                 case APP_AMAZON:
-                    PlaySE(SE_PC_OFF);
-                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                    gTasks[taskId].func = Task_MenuTurnOff;
+                    if(GetCurrentSignal() != 0){
+                        PlaySE(SE_PC_OFF);
+                        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                        gTasks[taskId].func = Task_MenuTurnOff;
+                    }
+                    else
+					    PlaySE(SE_BOO);
+                break;
+                case APP_DEXNAV:
+                    if(GetCurrentSignal() != 0){
+                        PlaySE(SE_PC_OFF);
+                        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                        gTasks[taskId].func = Task_MenuTurnOff;
+                    }
+                    else
+					    PlaySE(SE_BOO);
                 break;
             }
         }
