@@ -516,12 +516,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	y = 6;
 
     for(i = 0; i < NUM_APPS_PER_SCREEN; i++){
-        if(areYouOnSecondScreen)
-            j = i + NUM_APPS_PER_SCREEN;
-        else
-            j = i;
-
-        switch(GetCurrentAppfromIndex(j)){
+        switch(GetCurrentAppfromIndex(CurrentApp + NUM_TOTAL_APPS - i + 2)){
             case APP_POKEMON:
                 BlitBitmapToWindow(windowId, sStartMenuApp_Pokemon_Gfx, (x*8), (y*8), 40, 40);
             break;
@@ -573,7 +568,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     }
 
     // Selection Sprite --------------------------------------------------------------------------------------------------------
-	x = (currentAppId*6)+1;
+	x = 13;
 	y = 6;
 
     if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
@@ -626,7 +621,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     // ------------------------------------------------------------------------------------------------------------------------------------
 
     //Time --------------------------------------------------------------------------------------------------------------------
-	x = 23;
+	x = 24;
 	y = 0;
 	ConvertIntToDecimalStringN(gStringVar2, hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
 	ConvertIntToDecimalStringN(gStringVar3, minutes, STR_CONV_MODE_LEFT_ALIGN, 2);
@@ -634,7 +629,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 		StringExpandPlaceholders(gStringVar4, Time);
 	else
 		StringExpandPlaceholders(gStringVar4, Time2);
-	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
+	AddTextPrinterParameterized4(windowId, 7, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
 
     // Current Location --------------------------------------------------------------------------------------------------------------------
 	x = 1;
@@ -848,7 +843,10 @@ void Task_OpenOptionsMenuStartMenu(u8 taskId)
 
 static u8 GetCurrentAppfromIndex(u8 index)
 {
-    return gSaveBlock2Ptr->startMenuAppIndex[index];
+    if(index > NUM_TOTAL_APPS)
+        return gSaveBlock2Ptr->startMenuAppIndex[index % NUM_TOTAL_APPS];
+    else
+        return gSaveBlock2Ptr->startMenuAppIndex[index];
 }
 
 static void ClearStartMenuDataBeforeExit()
@@ -886,7 +884,7 @@ static void Task_MenuMain(u8 taskId)
         gTasks[taskId].func = Task_OpenSaveMenuStartMenu;
     }
 
-    if(JOY_NEW(DPAD_RIGHT))
+    if(JOY_NEW(DPAD_LEFT))
 	{
         if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
             if(CurrentApp < NUM_TOTAL_APPS-1){
@@ -913,7 +911,7 @@ static void Task_MenuMain(u8 taskId)
         PlaySE(SE_SELECT);
 	}
 	
-	if(JOY_NEW(DPAD_DOWN))
+	if(JOY_NEW(DPAD_UP))
 	{
         if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
             if(CurrentApp < NUM_TOTAL_APPS-1){
@@ -940,7 +938,7 @@ static void Task_MenuMain(u8 taskId)
         PlaySE(SE_SELECT);
 	}
 
-    if(JOY_NEW(DPAD_LEFT))
+    if(JOY_NEW(DPAD_RIGHT))
 	{
         if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
             if(CurrentApp > 0){
@@ -967,7 +965,7 @@ static void Task_MenuMain(u8 taskId)
 		PlaySE(SE_SELECT);
 	}
 	
-	if(JOY_NEW(DPAD_UP))
+	if(JOY_NEW(DPAD_DOWN))
 	{
         if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
             if(CurrentApp > 0){
@@ -1048,19 +1046,22 @@ static void Task_MenuMain(u8 taskId)
             }
         }
         else{
-            isAppSelectedForMove = !isAppSelectedForMove;
-            PlaySE(SE_SELECT);
+            FlagClear(FLAG_START_MENU_MOVE_MODE);
+            isAppSelectedForMove = FALSE;
+		    PlaySE(SE_SELECT);
         }
     } 
 
     if(JOY_NEW(SELECT_BUTTON))
 	{
-        if(FlagGet(FLAG_START_MENU_MOVE_MODE))
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE)){
             FlagClear(FLAG_START_MENU_MOVE_MODE);
-        else
+            isAppSelectedForMove = FALSE;
+        }
+        else{
             FlagSet(FLAG_START_MENU_MOVE_MODE);
-        
-        isAppSelectedForMove = FALSE;
+            isAppSelectedForMove = TRUE;
+        }
 		PlaySE(SE_SELECT);
 	}
 	
