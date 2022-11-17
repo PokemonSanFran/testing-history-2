@@ -924,7 +924,7 @@ static u8 GetCurrentSignal()
 {
     //this one will be modified depending on how the story works, its not something that I will do since I'm not involved with the story
     //here you can change the signal this menu will get in certain areas in the game
-    //the flag 0x89 is currently being used so I can insert it but when anyone inserts it just remove the comments below
+    //the flag 0x89 is currently being used so I can't insert it but when anyone inserts it just remove the comments below
     //if(FlagGet(FLAG_PHONE_NO_SERVICE)) 
     //    return 0;
     //else
