@@ -141,6 +141,8 @@ static const u8 sStartMenuMoveModeText_Gfx[]        = INCBIN_U8("graphics/start_
 static const u8 sStartMenuNormalModeText1_Gfx[]     = INCBIN_U8("graphics/start_menu/normal_mode_bar.4bpp");
 static const u8 sStartMenuNormalModeText2_Gfx[]     = INCBIN_U8("graphics/start_menu/normal_mode_bar_2.4bpp");
 static const u8 sStartMenuRowIcon_Gfx[]             = INCBIN_U8("graphics/start_menu/menu_row_icon.4bpp");
+
+//HP Bar
 static const u8 sStartMenu_HPBar_Gfx[]              = INCBIN_U8("graphics/start_menu/hp_bar.4bpp");
 static const u8 sStartMenu_HPBar_Full_Gfx[]         = INCBIN_U8("graphics/start_menu/hp_bar_full.4bpp");
 static const u8 sStartMenu_HPBar_90_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_90_percent.4bpp");
@@ -451,6 +453,18 @@ static const u8 sStartMenuApp_Profile_Gfx[]  = INCBIN_U8("graphics/start_menu/ap
 static const u8 sStartMenuApp_Amazon_Gfx[]   = INCBIN_U8("graphics/start_menu/app_amazon.4bpp");
 static const u8 sStartMenuApp_Default_Gfx[]  = INCBIN_U8("graphics/start_menu/app_default.4bpp");
 
+static const u8 sStartMenuApp_Pokemon_Move_Mode_Gfx[]  = INCBIN_U8("graphics/start_menu/app_pokemon_move.4bpp");
+static const u8 sStartMenuApp_Bag_Move_Mode_Gfx[]      = INCBIN_U8("graphics/start_menu/app_bag_move.4bpp");
+static const u8 sStartMenuApp_Map_Move_Mode_Gfx[]      = INCBIN_U8("graphics/start_menu/app_map_move.4bpp");
+static const u8 sStartMenuApp_Quest_Move_Mode_Gfx[]    = INCBIN_U8("graphics/start_menu/app_quest_move.4bpp");
+static const u8 sStartMenuApp_Dexnav_Move_Mode_Gfx[]   = INCBIN_U8("graphics/start_menu/app_dexnav_move.4bpp");
+static const u8 sStartMenuApp_Pokedex_Move_Mode_Gfx[]  = INCBIN_U8("graphics/start_menu/app_pokedex_move.4bpp");
+static const u8 sStartMenuApp_Twitter_Move_Mode_Gfx[]  = INCBIN_U8("graphics/start_menu/app_twitter_move.4bpp");
+static const u8 sStartMenuApp_Options_Move_Mode_Gfx[]  = INCBIN_U8("graphics/start_menu/app_options_move.4bpp");
+static const u8 sStartMenuApp_Profile_Move_Mode_Gfx[]  = INCBIN_U8("graphics/start_menu/app_profile_move.4bpp");
+static const u8 sStartMenuApp_Amazon_Move_Mode_Gfx[]   = INCBIN_U8("graphics/start_menu/app_amazon_move.4bpp");
+static const u8 sStartMenuApp_Default_Move_Mode_Gfx[]  = INCBIN_U8("graphics/start_menu/app_default_move.4bpp");
+
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str_SelectedOption;
@@ -518,39 +532,75 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     for(i = 0; i < NUM_APPS_PER_SCREEN; i++){
         switch(GetCurrentAppfromIndex(CurrentApp + NUM_TOTAL_APPS - i + 2)){
             case APP_POKEMON:
-                BlitBitmapToWindow(windowId, sStartMenuApp_Pokemon_Gfx, (x*8), (y*8), 40, 40);
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Pokemon_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Pokemon_Gfx, (x*8), (y*8), 40, 40);
             break;
-            case APP_BAG:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Bag_Gfx, (x*8), (y*8), 40, 40);
+            case APP_BAG:
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Bag_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Bag_Gfx, (x*8), (y*8), 40, 40);
             break;
-            case APP_MAP:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Map_Gfx, (x*8), (y*8), 40, 40);
+            case APP_MAP:
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Map_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Map_Gfx, (x*8), (y*8), 40, 40);
             break;			
             case APP_QUEST:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Quest_Gfx, (x*8), (y*8), 40, 40);
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Quest_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Quest_Gfx, (x*8), (y*8), 40, 40);
             break;
-            case APP_DEXNAV:		
-                BlitBitmapToWindow(windowId, sStartMenuApp_Dexnav_Gfx, (x*8), (y*8), 40, 40);
+            case APP_DEXNAV:
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Dexnav_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Dexnav_Gfx, (x*8), (y*8), 40, 40);
             break;
-            case APP_POKEDEX:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Pokedex_Gfx, (x*8), (y*8), 40, 40);
+            case APP_POKEDEX:
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Pokedex_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Pokedex_Gfx, (x*8), (y*8), 40, 40);
             break;
-            case APP_TWITTER:		
-                BlitBitmapToWindow(windowId, sStartMenuApp_Twitter_Gfx, (x*8), (y*8), 40, 40);
+            case APP_TWITTER:
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Twitter_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Twitter_Gfx, (x*8), (y*8), 40, 40);
             break;
-            case APP_OPTIONS:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Options_Gfx, (x*8), (y*8), 40, 40);
+            case APP_OPTIONS:
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Options_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Options_Gfx, (x*8), (y*8), 40, 40);
             break;
-            case APP_PROFILE:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Profile_Gfx, (x*8), (y*8), 40, 40);
+            case APP_PROFILE:
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Profile_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Profile_Gfx, (x*8), (y*8), 40, 40);
             break;
             case APP_AMAZON:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Amazon_Gfx, (x*8), (y*8), 40, 40);
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Amazon_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Amazon_Gfx, (x*8), (y*8), 40, 40);
             break;
             default:	
-                BlitBitmapToWindow(windowId, sStartMenuApp_Default_Gfx, (x*8), (y*8), 40, 40);
+                if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Default_Move_Mode_Gfx, (x*8), (y*8), 40, 40);
+                else
+                    BlitBitmapToWindow(windowId, sStartMenuApp_Default_Gfx, (x*8), (y*8), 40, 40);
             break;
         }
+
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && i != 2)
+            BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode_Gfx, (x*8), (y*8), 40, 40);
 
         x = x + 6;
     }
@@ -571,11 +621,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	x = 13;
 	y = 6;
 
-    if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
-        BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, (x*8), (y*8), 40, 40);
-    else
-		BlitBitmapToWindow(windowId, sStartMenuCursorMoveMode_Gfx, (x*8), (y*8), 40, 40);
-    
+    BlitBitmapToWindow(windowId, sStartMenuCursor_Gfx, (x*8), (y*8), 40, 40);
 
     // Screen Indicator --------------------------------------------------------------------------------------------------------
     x = 14;
@@ -843,7 +889,7 @@ void Task_OpenOptionsMenuStartMenu(u8 taskId)
 
 static u8 GetCurrentAppfromIndex(u8 index)
 {
-    if(index > NUM_TOTAL_APPS)
+    if(index >= NUM_TOTAL_APPS)
         return gSaveBlock2Ptr->startMenuAppIndex[index % NUM_TOTAL_APPS];
     else
         return gSaveBlock2Ptr->startMenuAppIndex[index];
