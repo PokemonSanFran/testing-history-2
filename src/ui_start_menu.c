@@ -646,23 +646,23 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
             u16 currentHP = GetMonData(&gPlayerParty[i], MON_DATA_HP);
 
             BlitBitmapToWindow(windowId, sStartMenu_HPBar_Gfx, (x*8), (y*8), 24, 16);
-            if(maxHP >= currentHP)
+            if(maxHP == currentHP)
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_Full_Gfx, (x*8), ((y+2)*8), 24, 8);
-            else if((maxHP * 0.9) > currentHP)
+            else if((maxHP * 0.9) < currentHP && currentHP < maxHP)
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_90_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
-            else if((maxHP * 0.8) > currentHP)
+            else if((maxHP * 0.8) < currentHP && currentHP < (maxHP * 0.9))
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_80_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
-            else if((maxHP * 0.7) > currentHP)
+            else if((maxHP * 0.7) < currentHP && currentHP < (maxHP * 0.8))
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_70_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
-            else if((maxHP * 0.6) > currentHP)
+            else if((maxHP * 0.6) < currentHP && currentHP < (maxHP * 0.7))
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_60_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
-            else if((maxHP * 0.5) > currentHP)
+            else if((maxHP * 0.5) < currentHP && currentHP < (maxHP * 0.6))
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_50_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
-            else if((maxHP * 0.4) > currentHP)
+            else if((maxHP * 0.4) < currentHP && currentHP < (maxHP * 0.5))
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_40_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
-            else if((maxHP * 0.3) > currentHP)
+            else if((maxHP * 0.3) < currentHP && currentHP < (maxHP * 0.4))
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_30_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
-            else if((maxHP * 0.2) > currentHP)
+            else if((maxHP * 0.2) < currentHP && currentHP < (maxHP * 0.3))
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_20_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
             else if(currentHP != 0)
                 BlitBitmapToWindow(windowId, sStartMenu_HPBar_10_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
