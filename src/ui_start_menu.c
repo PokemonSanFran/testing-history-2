@@ -26,6 +26,7 @@
 #include "palette.h"
 #include "party_menu.h"
 #include "pokedex.h"
+#include "pokemon_icon.h"
 #include "quests.h"
 #include "quest_flavor_lookup.h"
 #include "rtc.h"
@@ -81,6 +82,17 @@ static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 static u8 GetCurrentAppfromIndex(u8 index);
+static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y);
+static void DestroySpeciesIcon(u8 slot);
+
+//Pokemon Icons
+EWRAM_DATA static u8 PartyPokemonIcon 	 = 0;
+EWRAM_DATA static u8 PartyPokemonIcon_1  = 0;
+EWRAM_DATA static u8 PartyPokemonIcon_2  = 0;
+EWRAM_DATA static u8 PartyPokemonIcon_3  = 0;
+EWRAM_DATA static u8 PartyPokemonIcon_4  = 0;
+EWRAM_DATA static u8 PartyPokemonIcon_5  = 0;
+EWRAM_DATA static u8 PartyPokemonIcon_6  = 0;
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -112,21 +124,35 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .bg = 0,            // which bg to print text on
         .tilemapLeft = 0,   // position from left (per 8 pixels)
         .tilemapTop = 0,    // position from top (per 8 pixels)
-        .width = 29,        // width (per 8 pixels)
-        .height = 19,       // height (per 8 pixels)
+        .width = 30,        // width (per 8 pixels)
+        .height = 20,       // height (per 8 pixels)
         .paletteNum = 0,   // palette index to use for text
         .baseBlock = 1,     // tile start in VRAM
     },
 };
 
-static const u32 sMenuTiles[]                   = INCBIN_U32("graphics/start_menu/tiles.4bpp.lz");
-static const u32 sMenuTilemap[]                 = INCBIN_U32("graphics/start_menu/tilemap.bin.lz");
-static const u16 sMenuPalette[]                 = INCBIN_U16("graphics/start_menu/palette.gbapal");
-static const u8 sStartMenuCursor_Gfx[]          = INCBIN_U8("graphics/start_menu/menu_cursor.4bpp");
-static const u8 sStartMenuCursorMoveMode_Gfx[]  = INCBIN_U8("graphics/start_menu/menu_cursor_move.4bpp");
-static const u8 sStartMenuCursorMoveMode2_Gfx[] = INCBIN_U8("graphics/start_menu/menu_cursor_move2.4bpp");
-static const u8 sStartMenuMoveModeText_Gfx[]    = INCBIN_U8("graphics/start_menu/move_mode.4bpp");
-static const u8 sStartMenuRowIcon_Gfx[]         = INCBIN_U8("graphics/start_menu/menu_row_icon.4bpp");
+static const u32 sMenuTiles[]                       = INCBIN_U32("graphics/start_menu/tiles.4bpp.lz");
+static const u32 sMenuTilemap[]                     = INCBIN_U32("graphics/start_menu/tilemap.bin.lz");
+static const u16 sMenuPalette[]                     = INCBIN_U16("graphics/start_menu/palette.gbapal");
+static const u8 sStartMenuCursor_Gfx[]              = INCBIN_U8("graphics/start_menu/menu_cursor.4bpp");
+static const u8 sStartMenuCursorMoveMode_Gfx[]      = INCBIN_U8("graphics/start_menu/menu_cursor_move.4bpp");
+static const u8 sStartMenuCursorMoveMode2_Gfx[]     = INCBIN_U8("graphics/start_menu/menu_cursor_move2.4bpp");
+static const u8 sStartMenuMoveModeText_Gfx[]        = INCBIN_U8("graphics/start_menu/move_mode.4bpp");
+static const u8 sStartMenuNormalModeText1_Gfx[]     = INCBIN_U8("graphics/start_menu/normal_mode_bar.4bpp");
+static const u8 sStartMenuNormalModeText2_Gfx[]     = INCBIN_U8("graphics/start_menu/normal_mode_bar_2.4bpp");
+static const u8 sStartMenuRowIcon_Gfx[]             = INCBIN_U8("graphics/start_menu/menu_row_icon.4bpp");
+static const u8 sStartMenu_HPBar_Gfx[]              = INCBIN_U8("graphics/start_menu/hp_bar.4bpp");
+static const u8 sStartMenu_HPBar_Full_Gfx[]         = INCBIN_U8("graphics/start_menu/hp_bar_full.4bpp");
+static const u8 sStartMenu_HPBar_90_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_90_percent.4bpp");
+static const u8 sStartMenu_HPBar_80_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_80_percent.4bpp");
+static const u8 sStartMenu_HPBar_70_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_70_percent.4bpp");
+static const u8 sStartMenu_HPBar_60_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_60_percent.4bpp");
+static const u8 sStartMenu_HPBar_50_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_50_percent.4bpp");
+static const u8 sStartMenu_HPBar_40_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_40_percent.4bpp");
+static const u8 sStartMenu_HPBar_30_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_30_percent.4bpp");
+static const u8 sStartMenu_HPBar_20_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_20_percent.4bpp");
+static const u8 sStartMenu_HPBar_10_Percent_Gfx[]   = INCBIN_U8("graphics/start_menu/hp_bar_10_percent.4bpp");
+static const u8 sStartMenu_HPBar_Fainted_Gfx[]      = INCBIN_U8("graphics/start_menu/hp_bar_fainted.4bpp");
 
 enum Colors
 {
@@ -137,10 +163,10 @@ enum Colors
 };
 static const u8 sMenuWindowFontColors[][3] = 
 {
-    [FONT_BLACK]  = {TEXT_COLOR_TRANSPARENT,  15, 6},
-    [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT,  5,  6},
-    [FONT_RED]    = {TEXT_COLOR_TRANSPARENT,  11, 12},
-    [FONT_BLUE]   = {TEXT_COLOR_TRANSPARENT,  13, 14},
+    [FONT_BLACK]  = {TEXT_COLOR_TRANSPARENT,  2, TEXT_COLOR_TRANSPARENT},
+    [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT,  1,  TEXT_COLOR_TRANSPARENT},
+    [FONT_RED]    = {TEXT_COLOR_TRANSPARENT,  11, TEXT_COLOR_TRANSPARENT},
+    [FONT_BLUE]   = {TEXT_COLOR_TRANSPARENT,  13, TEXT_COLOR_TRANSPARENT},
 };
 
 //==========FUNCTIONS==========//
@@ -208,6 +234,8 @@ static void Menu_VBlankCB(void)
 
 static bool8 Menu_DoGfxSetup(void)
 {
+    u8 x,y,i;
+
     u8 taskId;
     switch (gMain.state)
     {
@@ -250,6 +278,23 @@ static bool8 Menu_DoGfxSetup(void)
         PrintToWindow(WINDOW_1, FONT_WHITE);
         taskId = CreateTask(Task_MenuWaitFadeIn, 0);
         BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
+
+        // Pokemon Icons --------------------------------------------------------------------------------------------------------------------
+        x = 2;
+        y = 3;
+
+        DestroySpeciesIcon(0);
+        DestroySpeciesIcon(1);
+        DestroySpeciesIcon(2);
+        DestroySpeciesIcon(3);
+        DestroySpeciesIcon(4);
+        DestroySpeciesIcon(5);
+
+        for(i = 0; i < PARTY_SIZE; i++){
+            if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+                ShowSpeciesIcon(i, (x*8) + 4, (y*8));
+            x = x + 4;
+        }
         gMain.state++;
         break;
     case 6:
@@ -374,6 +419,12 @@ static const u8 sText_Unknown_Location[] = _("Unknown");
 static const u8 Time[] =  _("{STR_VAR_2}:{STR_VAR_3}$");
 static const u8 Time2[] =  _("{STR_VAR_2}:0{STR_VAR_3}$");
 
+
+static const u8 sText_App_Morning[] = _("Morning");
+static const u8 sText_App_Day[]     = _("Day");
+static const u8 sText_App_Evening[] = _("Evening");
+static const u8 sText_App_Night[]   = _("Night");
+
 enum AppsIds
 {
     APP_POKEMON,
@@ -414,8 +465,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     u8 strArray[16];
 
     // Current App Title
-    x = 17;
-    y = 10;
+    x = 19;
+    y = 11;
 
     if(areYouOnSecondScreen)
         CurrentApp = CurrentApp + NUM_APPS_PER_SCREEN;
@@ -458,7 +509,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	}
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    AddTextPrinterParameterized4(windowId, 7, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_SelectedOption);
+    AddTextPrinterParameterized4(windowId, 7, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str_SelectedOption);
 
     // App Icons --------------------------------------------------------------------------------------------------------
     x = 1;
@@ -510,11 +561,16 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     }
 
     // Move Mode Text --------------------------------------------------------------------------------------------------------
-    x = 5;
-	y = 0;
+    x = 0;
+	y = 18;
 
     if(FlagGet(FLAG_START_MENU_MOVE_MODE))
-        BlitBitmapToWindow(windowId, sStartMenuMoveModeText_Gfx, (x*8), (y*8), 72, 16);
+        BlitBitmapToWindow(windowId, sStartMenuMoveModeText_Gfx, (x*8), (y*8), 96, 16);
+    else{
+        BlitBitmapToWindow(windowId, sStartMenuNormalModeText1_Gfx, (x*8), (y*8), 88, 16);
+        x = 12;
+        BlitBitmapToWindow(windowId, sStartMenuNormalModeText2_Gfx, (x*8), (y*8), 120, 16);
+    }
 
     // Selection Sprite --------------------------------------------------------------------------------------------------------
 	x = (currentAppId*6)+1;
@@ -528,43 +584,178 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
     // Screen Indicator --------------------------------------------------------------------------------------------------------
     x = 14;
-    y = 10;
+    y = 11;
 
-    if(areYouOnSecondScreen){
-        CurrentApp = CurrentApp + 6;
-        BlitBitmapToWindow(windowId, sStartMenuRowIcon_Gfx, ((x + 1)*8), (y*8), 8, 8);
+    BlitBitmapToWindow(windowId, sStartMenuRowIcon_Gfx, (x*8), (y*8), 16, 24);
+    // HP Bars --------------------------------------------------------------------------------------------------------
+    x = 1;
+    y = 3;
+
+    for(i = 0; i < PARTY_SIZE; i++){
+        if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE){
+            u16 maxHP = GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
+            u16 currentHP = GetMonData(&gPlayerParty[i], MON_DATA_HP);
+
+            BlitBitmapToWindow(windowId, sStartMenu_HPBar_Gfx, (x*8), (y*8), 24, 16);
+            if(maxHP >= currentHP)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_Full_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else if((maxHP * 0.9) > currentHP)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_90_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else if((maxHP * 0.8) > currentHP)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_80_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else if((maxHP * 0.7) > currentHP)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_70_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else if((maxHP * 0.6) > currentHP)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_60_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else if((maxHP * 0.5) > currentHP)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_50_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else if((maxHP * 0.4) > currentHP)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_40_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else if((maxHP * 0.3) > currentHP)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_30_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else if((maxHP * 0.2) > currentHP)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_20_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else if(currentHP != 0)
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_10_Percent_Gfx, (x*8), ((y+2)*8), 24, 8);
+            else
+                BlitBitmapToWindow(windowId, sStartMenu_HPBar_Fainted_Gfx, (x*8), ((y+2)*8), 24, 8);
+        }
+        x = x + 4;
     }
-    else{
-        BlitBitmapToWindow(windowId, sStartMenuRowIcon_Gfx, (x*8), (y*8), 8, 8);
-    }
+
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
     //Time --------------------------------------------------------------------------------------------------------------------
-	x = 18;
-	y = 2;
+	x = 23;
+	y = 0;
 	ConvertIntToDecimalStringN(gStringVar2, hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
 	ConvertIntToDecimalStringN(gStringVar3, minutes, STR_CONV_MODE_LEFT_ALIGN, 2);
 	if(minutes >= 10)
 		StringExpandPlaceholders(gStringVar4, Time);
 	else
 		StringExpandPlaceholders(gStringVar4, Time2);
-	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8) + 1, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
+	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
 
     // Current Location --------------------------------------------------------------------------------------------------------------------
-	x = 4;
-	y = 10;
+	x = 1;
+	y = 11;
     GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
-	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar1);
+	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar1);
+
+    // Time of the Day --------------------------------------------------------------------------------------------------------------------
+	x = 25;
+	y = 2;
+
+    if(hours >= 6 && hours < 10)
+	    StringExpandPlaceholders(gStringVar1, sText_App_Morning);
+    else if(hours < 19)
+	    StringExpandPlaceholders(gStringVar1, sText_App_Day);
+    else if(hours < 20)
+	    StringExpandPlaceholders(gStringVar1, sText_App_Evening);
+    else
+	    StringExpandPlaceholders(gStringVar1, sText_App_Night);
+
+    AddTextPrinterParameterized4(windowId, 7, (x*8), (y*8) + 2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar1);
 
     // Quest Information --------------------------------------------------------------------------------------------------------------------
 	x = 0;
 	y = 14;
 	
-	AddTextPrinterParameterized4(windowId, 7, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
-
-    // ------------------------------------------------------------------------------------------------------------------------------------
+	AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
 
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, 3);
+}
+
+static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
+{
+	u16 species = GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES);
+	u32 personality = GetMonData(&gPlayerParty[slot], MON_DATA_PERSONALITY);
+	/*/if (gBaseStats[species].flags = FLAG_GENDER_DIFFERENCE && GetGenderFromSpeciesAndPersonality(species, personality) == MON_FEMALE)
+		LoadFemaleMonIconPalette(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES));
+	else/*/
+		LoadMonIconPalette(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES));
+	
+    switch(slot){
+        case 0:
+            if (PartyPokemonIcon == 0xFF)
+                PartyPokemonIcon = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+
+            gSprites[PartyPokemonIcon].invisible = FALSE;
+            return PartyPokemonIcon;
+        break;
+        case 1:
+            if (PartyPokemonIcon_1 == 0xFF)
+                PartyPokemonIcon_1 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+
+            gSprites[PartyPokemonIcon_1].invisible = FALSE;
+            return PartyPokemonIcon_1;
+        break;
+        case 2:
+            if (PartyPokemonIcon_2 == 0xFF)
+                PartyPokemonIcon_2 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+
+            gSprites[PartyPokemonIcon_2].invisible = FALSE;
+            return PartyPokemonIcon_2;
+        break;
+        case 3:
+            if (PartyPokemonIcon_3 == 0xFF)
+                PartyPokemonIcon_3 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+
+            gSprites[PartyPokemonIcon_3].invisible = FALSE;
+            return PartyPokemonIcon_3;
+        break;
+        case 4:
+            if (PartyPokemonIcon_4 == 0xFF)
+                PartyPokemonIcon_4 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+
+            gSprites[PartyPokemonIcon_4].invisible = FALSE;
+            return PartyPokemonIcon_4;
+        break;
+        case 5:
+            if (PartyPokemonIcon_5 == 0xFF)
+                PartyPokemonIcon_5 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+
+            gSprites[PartyPokemonIcon_5].invisible = FALSE;
+            return PartyPokemonIcon_5;
+        break;
+    }
+}
+
+static void DestroySpeciesIcon(u8 slot)
+{
+    switch(slot){
+        case 0:
+            if (PartyPokemonIcon != 0xFF)
+                DestroySprite(&gSprites[PartyPokemonIcon]);
+            PartyPokemonIcon = 0xFF;
+        break;
+        case 1:
+            if (PartyPokemonIcon_1 != 0xFF)
+                DestroySprite(&gSprites[PartyPokemonIcon_1]);
+            PartyPokemonIcon_1 = 0xFF;
+        break;
+        case 2:
+            if (PartyPokemonIcon_2 != 0xFF)
+                DestroySprite(&gSprites[PartyPokemonIcon_2]);
+            PartyPokemonIcon_2 = 0xFF;
+        break;
+        case 3:
+            if (PartyPokemonIcon_3 != 0xFF)
+                DestroySprite(&gSprites[PartyPokemonIcon_3]);
+            PartyPokemonIcon_3 = 0xFF;
+        break;
+        case 4:
+            if (PartyPokemonIcon_4 != 0xFF)
+                DestroySprite(&gSprites[PartyPokemonIcon_4]);
+            PartyPokemonIcon_4 = 0xFF;
+        break;
+        case 5:
+            if (PartyPokemonIcon_5 != 0xFF)
+                DestroySprite(&gSprites[PartyPokemonIcon_5]);
+            PartyPokemonIcon_5 = 0xFF;
+        break;
+    }
 }
 
 static void Task_MenuWaitFadeIn(u8 taskId)
