@@ -203,7 +203,7 @@ void Menu_Init(MainCallback callback)
     if(!FlagGet(FLAG_START_MENU_SETUP)){
         u8 i;
         for(i = 0; i < NUM_TOTAL_APPS; i++){
-            gSaveBlock2Ptr->startMenuAppIndex[i] = i;
+            gSaveBlock2Ptr->startMenuAppIndex[i] = (NUM_TOTAL_APPS -1) - i;
         }
         FlagSet(FLAG_START_MENU_SETUP);
     }
@@ -635,7 +635,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     x = 14;
     y = 11;
 
-    BlitBitmapToWindow(windowId, sStartMenuRowIcon_Gfx, (x*8), (y*8), 16, 24);
+    if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
+        BlitBitmapToWindow(windowId, sStartMenuRowIcon_Gfx, (x*8), (y*8), 16, 24);
     // HP Bars --------------------------------------------------------------------------------------------------------
     x = 1;
     y = 3;
@@ -955,10 +956,11 @@ static void Task_MenuMain(u8 taskId)
 	
 	if (JOY_NEW(R_BUTTON) || JOY_NEW(L_BUTTON))
     {
-        areYouOnSecondScreen = !areYouOnSecondScreen;
+        if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
+            areYouOnSecondScreen = !areYouOnSecondScreen;
     }
 	
-	if (JOY_NEW(START_BUTTON))
+	if (JOY_NEW(START_BUTTON) && !FlagGet(FLAG_START_MENU_MOVE_MODE))
     {
         PlaySE(SE_PC_OFF);
         ClearStartMenuDataBeforeExit();
