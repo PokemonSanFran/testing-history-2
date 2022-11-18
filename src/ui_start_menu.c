@@ -26,6 +26,7 @@
 #include "palette.h"
 #include "party_menu.h"
 #include "pokedex.h"
+#include "pokenav.h"
 #include "pokemon_icon.h"
 #include "quests.h"
 #include "quest_flavor_lookup.h"
@@ -902,6 +903,16 @@ void Task_OpenTrainerCardFromStartMenu(u8 taskId)
     }
 }
 
+void Task_OpenPokenavStartMenu(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+		PlayRainStoppingSoundEffect();
+		CleanupOverworldWindowsAndTilemaps();
+		SetMainCallback2(CB2_InitPokeNav);  // Display PokeNav
+    }
+}  
+
 void Task_OpenOptionsMenuStartMenu(u8 taskId)
 {
     if (!gPaletteFade.active)
@@ -1131,9 +1142,9 @@ static void Task_MenuMain(u8 taskId)
                 break;
                 case APP_MAP:
                     if(GetCurrentSignal() != 0){
-                        PlaySE(SE_PC_OFF);
+                        PlaySE(SE_SELECT);
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                        gTasks[taskId].func = Task_MenuTurnOff;
+                        gTasks[taskId].func = Task_OpenPokenavStartMenu;
                     }
                     else
 					    PlaySE(SE_BOO);
