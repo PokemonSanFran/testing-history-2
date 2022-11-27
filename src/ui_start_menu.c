@@ -70,9 +70,12 @@ enum WindowIds
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8  currentAppId = 0;
+static EWRAM_DATA u8  TempAppId = 0;
 static EWRAM_DATA bool8 areYouOnSecondScreen = FALSE;
+static EWRAM_DATA bool8 areYouOnSecondScreenTemp = FALSE;
 static EWRAM_DATA bool8 isAppSelectedForMove = FALSE;
 static EWRAM_DATA bool8 shouldShowErrorMessage = FALSE;
+static EWRAM_DATA u8 startMenuAppTempIndex[NUM_TOTAL_APPS];
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -88,6 +91,8 @@ static u8 GetCurrentAppfromIndex(u8 index);
 static u8 GetCurrentSignal();
 static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y);
 static void DestroySpeciesIcon(u8 slot);
+static void StartMenuTempIndextoIndex(void);
+static void StartMenuIndextoTempIndex(void);
 
 //Pokemon Icons
 EWRAM_DATA static u8 PartyPokemonIcon 	 = 0;
@@ -210,7 +215,29 @@ void Menu_Init(MainCallback callback)
         FlagSet(FLAG_START_MENU_SETUP);
     }
 
+    StartMenuIndextoTempIndex();
+
     SetMainCallback2(Menu_RunSetup);
+}
+
+static void StartMenuTempIndextoIndex()
+{
+    u8 i;
+    for(i = 0; i < NUM_TOTAL_APPS; i++){
+        gSaveBlock2Ptr->startMenuAppIndex[i] = startMenuAppTempIndex[i];
+    }
+    currentAppId = TempAppId;
+    areYouOnSecondScreen = areYouOnSecondScreenTemp;
+}
+
+static void StartMenuIndextoTempIndex()
+{
+    u8 i;
+    for(i = 0; i < NUM_TOTAL_APPS; i++){
+        startMenuAppTempIndex[i] = GetCurrentAppfromIndex(i);
+    }
+    TempAppId = currentAppId;
+    areYouOnSecondScreenTemp = areYouOnSecondScreen;
 }
 
 static void Menu_RunSetup(void)
@@ -967,10 +994,18 @@ static void Task_MenuMain(u8 taskId)
 
     if (JOY_NEW(B_BUTTON))
     {
-        PlaySE(SE_PC_OFF);
-        ClearStartMenuDataBeforeExit();
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_MenuTurnOff;
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE)){
+            StartMenuTempIndextoIndex();
+            FlagClear(FLAG_START_MENU_MOVE_MODE);
+            isAppSelectedForMove = FALSE;
+            PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
+        else{
+            PlaySE(SE_PC_OFF);
+            ClearStartMenuDataBeforeExit();
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_MenuTurnOff;
+        }
     }
 	
 	if (JOY_NEW(R_BUTTON) || JOY_NEW(L_BUTTON))
@@ -1238,6 +1273,7 @@ static void Task_MenuMain(u8 taskId)
             isAppSelectedForMove = TRUE;
         }
 		PlaySE(SE_SELECT);
+        StartMenuIndextoTempIndex();
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
