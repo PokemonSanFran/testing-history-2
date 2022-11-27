@@ -288,13 +288,6 @@ static bool8 Menu_DoGfxSetup(void)
         x = 2;
         y = 3;
 
-        DestroySpeciesIcon(0);
-        DestroySpeciesIcon(1);
-        DestroySpeciesIcon(2);
-        DestroySpeciesIcon(3);
-        DestroySpeciesIcon(4);
-        DestroySpeciesIcon(5);
-
         for(i = 0; i < PARTY_SIZE; i++){
             if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
                 ShowSpeciesIcon(i, (x*8) + 4, (y*8));
@@ -743,46 +736,40 @@ static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
 		LoadFemaleMonIconPalette(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES));
 	else/*/
 		LoadMonIconPalette(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES));
-	
+
     switch(slot){
         case 0:
-            if (PartyPokemonIcon == 0xFF)
-                PartyPokemonIcon = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            PartyPokemonIcon = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
             gSprites[PartyPokemonIcon].invisible = FALSE;
             return PartyPokemonIcon;
         break;
         case 1:
-            if (PartyPokemonIcon_1 == 0xFF)
-                PartyPokemonIcon_1 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            PartyPokemonIcon_1 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
             gSprites[PartyPokemonIcon_1].invisible = FALSE;
             return PartyPokemonIcon_1;
         break;
         case 2:
-            if (PartyPokemonIcon_2 == 0xFF)
-                PartyPokemonIcon_2 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            PartyPokemonIcon_2 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
             gSprites[PartyPokemonIcon_2].invisible = FALSE;
             return PartyPokemonIcon_2;
         break;
         case 3:
-            if (PartyPokemonIcon_3 == 0xFF)
-                PartyPokemonIcon_3 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            PartyPokemonIcon_3 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
             gSprites[PartyPokemonIcon_3].invisible = FALSE;
             return PartyPokemonIcon_3;
         break;
         case 4:
-            if (PartyPokemonIcon_4 == 0xFF)
-                PartyPokemonIcon_4 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            PartyPokemonIcon_4 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
             gSprites[PartyPokemonIcon_4].invisible = FALSE;
             return PartyPokemonIcon_4;
         break;
         case 5:
-            if (PartyPokemonIcon_5 == 0xFF)
-                PartyPokemonIcon_5 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            PartyPokemonIcon_5 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
             gSprites[PartyPokemonIcon_5].invisible = FALSE;
             return PartyPokemonIcon_5;
@@ -969,6 +956,8 @@ static void Task_MenuMain(u8 taskId)
     {
         if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
             areYouOnSecondScreen = !areYouOnSecondScreen;
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
     }
 	
 	if (JOY_NEW(START_BUTTON) && !FlagGet(FLAG_START_MENU_MOVE_MODE))
@@ -977,6 +966,8 @@ static void Task_MenuMain(u8 taskId)
         ClearStartMenuDataBeforeExit();
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_OpenSaveMenuStartMenu;
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
     }
 
     if(JOY_NEW(DPAD_LEFT))
@@ -1004,6 +995,8 @@ static void Task_MenuMain(u8 taskId)
             areYouOnSecondScreen = !areYouOnSecondScreen;
         }
         PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 	
 	if(JOY_NEW(DPAD_UP))
@@ -1031,6 +1024,8 @@ static void Task_MenuMain(u8 taskId)
             areYouOnSecondScreen = !areYouOnSecondScreen;
         }
         PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
     if(JOY_NEW(DPAD_RIGHT))
@@ -1058,6 +1053,8 @@ static void Task_MenuMain(u8 taskId)
             areYouOnSecondScreen = !areYouOnSecondScreen;
         }
 		PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 	
 	if(JOY_NEW(DPAD_DOWN))
@@ -1085,6 +1082,8 @@ static void Task_MenuMain(u8 taskId)
             areYouOnSecondScreen = !areYouOnSecondScreen;
         }
 		PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
     if (JOY_NEW(A_BUTTON))
@@ -1188,6 +1187,8 @@ static void Task_MenuMain(u8 taskId)
             isAppSelectedForMove = FALSE;
 		    PlaySE(SE_SELECT);
         }
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
     } 
 
     if(JOY_NEW(SELECT_BUTTON))
@@ -1201,7 +1202,7 @@ static void Task_MenuMain(u8 taskId)
             isAppSelectedForMove = TRUE;
         }
 		PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
-	
-	PrintToWindow(WINDOW_1, FONT_BLACK);
 }
