@@ -1091,7 +1091,7 @@ static u8 GetNextRoomType(void)
     }
 
     nextRoomType = roomCandidates[Random() % numRoomCandidates];
-    Free(roomCandidates);
+    free(roomCandidates);
     if (nextRoomType == PIKE_ROOM_STATUS)
         TryInflictRandomStatus();
 
@@ -1370,7 +1370,7 @@ static void SetHintedRoom(void)
         }
 
         gSaveBlock2Ptr->frontier.pikeHintedRoomType = roomCandidates[Random() % count];
-        Free(roomCandidates);
+        free(roomCandidates);
         if (gSaveBlock2Ptr->frontier.pikeHintedRoomType == PIKE_ROOM_STATUS && !AtLeastOneHealthyMon())
             gSaveBlock2Ptr->frontier.pikeHintedRoomType = PIKE_ROOM_NPC;
         if (gSaveBlock2Ptr->frontier.pikeHintedRoomType == PIKE_ROOM_DOUBLE_BATTLE && !AtLeastTwoAliveMons())

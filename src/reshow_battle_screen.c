@@ -73,7 +73,7 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
         break;
     case 4:
         FreeAllSpritePalettes();
-        gReservedSpritePaletteCount = MAX_BATTLERS_COUNT;
+        gReservedSpritePaletteCount = 4;
         break;
     case 5:
         ClearSpritesHealthboxAnimData();

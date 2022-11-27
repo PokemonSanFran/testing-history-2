@@ -153,4 +153,3 @@
     .include "src/field_puzzles.o"
 	.include "src/quests.o"
 	.include "src/ui_start_menu.o"
-	.include "src/dexnav.o"

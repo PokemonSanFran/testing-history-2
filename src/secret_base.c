@@ -921,7 +921,7 @@ static void Task_ShowSecretBaseRegistryMenu(u8 taskId)
         tSelectedRow = 0;
         tScrollOffset = 0;
         ClearDialogWindowAndFrame(0, FALSE);
-        sRegistryMenu = AllocZeroed(sizeof(*sRegistryMenu));
+        sRegistryMenu = calloc(1, sizeof(*sRegistryMenu));
         tMainWindowId = AddWindow(&sRegistryWindowTemplates[0]);
         BuildRegistryMenuItems(taskId);
         FinalizeRegistryMenu(taskId);
@@ -1006,7 +1006,7 @@ static void HandleRegistryMenuInput(u8 taskId)
         ClearWindowTilemap(tMainWindowId);
         RemoveWindow(tMainWindowId);
         ScheduleBgCopyTilemapToVram(0);
-        Free(sRegistryMenu);
+        free(sRegistryMenu);
         GoToSecretBasePCRegisterMenu(taskId);
         break;
     default:

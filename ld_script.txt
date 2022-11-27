@@ -351,7 +351,6 @@ SECTIONS {
         src/quest_strings.o(.text);
         src/twitter.o(.text);
         src/ui_start_menu.o(.text);
-		src/dexnav.o(.text);
     } =0
 
     script_data :
@@ -726,7 +725,6 @@ SECTIONS {
         src/quest_strings.o(.rodata);
         src/twitter.o(.rodata);
         src/ui_start_menu.o(.rodata);
-		src/dexnav.o(.rodata);
     } =0
 
     song_data :

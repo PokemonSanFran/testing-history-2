@@ -937,7 +937,7 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
         if (itemIndex != LIST_CANCEL)
            AddBagItemIconSprite(BagGetItemIdByPocketPosition(gBagPosition.pocket + 1, itemIndex), gBagMenu->itemIconSlot);
         else
-           AddBagItemIconSprite(ITEM_LIST_END, gBagMenu->itemIconSlot);
+           AddBagItemIconSprite(-1, gBagMenu->itemIconSlot);
         gBagMenu->itemIconSlot ^= 1;
         if (!gBagMenu->inhibitItemDescriptionPrint)
             PrintItemDescription(itemIndex);

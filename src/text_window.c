@@ -81,9 +81,6 @@ static const struct TilesPal sWindowFrames[WINDOW_FRAMES_COUNT] =
     {sTextWindowFrame20_Gfx, sTextWindowFrame20_Pal}
 };
 
-static const u16 sTextWindowDexnavFrame[] = INCBIN_U16("graphics/text_window/dexnav_pal.gbapal");
-static const struct TilesPal sDexnavWindowFrame = {gTextWindowFrame1_Gfx, sTextWindowDexnavFrame};
-
 // code
 const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 {
@@ -237,9 +234,3 @@ const u16 gUnknown_8471DEC[][16] = {
     INCBIN_U16("graphics/text_window/stdpal_4.gbapal")
 };
 //begin FRLG end
-void LoadDexNavWindowGfx(u8 windowId, u16 destOffset, u8 palOffset)
-{
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sDexnavWindowFrame.tiles, 0x120, destOffset);
-    LoadPalette(sDexnavWindowFrame.pal, palOffset, 32);
-}
-

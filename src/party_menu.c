@@ -2858,7 +2858,7 @@ static bool8 TryMovePartySlot(s16 x, s16 width, u8 *leftMove, u8 *newX, u8 *newW
 {
     if (x + width < 0)
         return FALSE;
-    if (x >= 32)
+    if (x > 31)
         return FALSE;
 
     if (x < 0)
@@ -2871,7 +2871,7 @@ static bool8 TryMovePartySlot(s16 x, s16 width, u8 *leftMove, u8 *newX, u8 *newW
     {
         *leftMove = 0;
         *newX = x;
-        if (x + width >= 32)
+        if (x + width > 31)
             *newWidth = 32 - x;
         else
             *newWidth = width;
@@ -4053,7 +4053,7 @@ static void ShowOrHideHeldItemSprite(u16 item, struct PartyMenuBox *menuBox)
 
 void LoadHeldItemIcons(void)
 {
-    LoadSpriteSheet(&gSpriteSheet_HeldItem);
+    LoadSpriteSheet(&sSpriteSheet_HeldItem);
     LoadSpritePalette(&sSpritePalette_HeldItem);
 }
 
