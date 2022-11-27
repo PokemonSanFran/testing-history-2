@@ -424,6 +424,8 @@ static const u8 sText_App_Day[]     = _("Day");
 static const u8 sText_App_Evening[] = _("Evening");
 static const u8 sText_App_Night[]   = _("Night");
 
+static const u8 sText_Quest_No_Quest[]   = _("");
+
 enum AppsIds
 {
     APP_POKEMON,
@@ -480,6 +482,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	u8 minutes = gLocalTime.minutes;
     u8 strArray[16];
     u8 signal = GetCurrentSignal();
+    u8 firstFavoritedQuest = getFirstFavoriteQuest();
 
     // Current App Title
     x = 19;
@@ -723,10 +726,23 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	x = 0;
 	y = 14;
 	
-    if(!shouldShowErrorMessage)
-        str_QuestFlavorLookup = GetQuestDesc_PlayersAdventure();
-    
-	AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
+    if(!shouldShowErrorMessage){
+        if(VarGet(VAR_STORYLINE_STATE) < STORY_CLEAR){
+            str_QuestFlavorLookup = GetQuestDesc_PlayersAdventure();
+            AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
+        }  
+        else if(firstFavoritedQuest != SUB_QUEST_COUNT){
+            GenerateQuestFlavorText(firstFavoritedQuest);
+            AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar1);
+        }
+        else{
+            str_QuestFlavorLookup = sText_Quest_No_Quest;
+            AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
+        }
+    }
+    else{
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
+    }
     shouldShowErrorMessage = FALSE;
 
     PutWindowTilemap(windowId);
