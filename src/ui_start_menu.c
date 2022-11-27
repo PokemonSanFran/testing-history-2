@@ -930,11 +930,11 @@ void Task_OpenTrainerCardFromStartMenu(u8 taskId)
 		CleanupOverworldWindowsAndTilemaps();
 		
 		if (InUnionRoom())
-			ShowPlayerTrainerCard(sMenuDataPtr->savedCallback); // Display trainer card
+			ShowPlayerTrainerCard(CB2_ReturnToUIMenu); // Display trainer card
 		else if (FlagGet(FLAG_SYS_FRONTIER_PASS))
-			ShowFrontierPass(sMenuDataPtr->savedCallback); // Display frontier pass
+			ShowFrontierPass(CB2_ReturnToUIMenu); // Display frontier pass
 		else
-			ShowPlayerTrainerCard(sMenuDataPtr->savedCallback); // Display trainer card
+			ShowPlayerTrainerCard(CB2_ReturnToUIMenu); // Display trainer card
     }
 }
 
