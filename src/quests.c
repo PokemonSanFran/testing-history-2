@@ -3975,6 +3975,11 @@ u8 getFirstFavoriteQuest(){
 		if(QuestMenu_GetSetQuestState(i, FLAG_GET_FAVORITE) && QuestMenu_GetSetQuestState(i,FLAG_GET_ACTIVE))
 			return i;
 	}
+
+	for(i = 0; i < SUB_QUEST_COUNT; i++){
+		if(QuestMenu_GetSetQuestState(i,FLAG_GET_ACTIVE))
+			return i;
+	}
 	
 	return SUB_QUEST_COUNT;
 }
