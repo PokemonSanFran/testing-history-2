@@ -72,6 +72,7 @@ static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8  currentAppId = 0;
 static EWRAM_DATA bool8 areYouOnSecondScreen = FALSE;
 static EWRAM_DATA bool8 isAppSelectedForMove = FALSE;
+static EWRAM_DATA bool8 shouldShowErrorMessage = FALSE;
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -470,7 +471,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str_SelectedOption;
     const u8 *str_CurrentLocation = sText_Unknown_Location;
-	const u8 *str_QuestFlavorLookup = GetQuestDesc_PlayersAdventure();
+	const u8 *str_QuestFlavorLookup = gText_CommErrorEllipsis;
     u8 i, j;
     u8 CurrentApp = currentAppId;
     u8 x = 1;
@@ -722,7 +723,11 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	x = 0;
 	y = 14;
 	
+    if(!shouldShowErrorMessage)
+        str_QuestFlavorLookup = GetQuestDesc_PlayersAdventure();
+    
 	AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
+    shouldShowErrorMessage = FALSE;
 
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, 3);
@@ -1103,8 +1108,11 @@ static void Task_MenuMain(u8 taskId)
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
                         gTasks[taskId].func = Task_OpenPokedexFromStartMenu;
                     }
-                    else
-					PlaySE(SE_BOO);
+                    else{
+                        PlaySE(SE_BOO);
+                        shouldShowErrorMessage = TRUE;
+                    }
+					
                 break;
                 case APP_POKEMON:
                     PlaySE(SE_SELECT);
@@ -1127,8 +1135,10 @@ static void Task_MenuMain(u8 taskId)
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
                         gTasks[taskId].func = Task_QuestMenu_OpenFromStartMenu;
                     }
-                    else
-					    PlaySE(SE_BOO);
+                    else{
+                        PlaySE(SE_BOO);
+                        shouldShowErrorMessage = TRUE;
+                    }
                 break;
                 case APP_TWITTER:
                     if(GetCurrentSignal() != 0){
@@ -1136,8 +1146,10 @@ static void Task_MenuMain(u8 taskId)
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
                         gTasks[taskId].func = Task_MenuTurnOff;
                     }
-                    else
-					    PlaySE(SE_BOO);
+                    else{
+                        PlaySE(SE_BOO);
+                        shouldShowErrorMessage = TRUE;
+                    }
                 break;
                 case APP_MAP:
                     if(GetCurrentSignal() != 0){
@@ -1145,8 +1157,10 @@ static void Task_MenuMain(u8 taskId)
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
                         gTasks[taskId].func = Task_OpenPokenavStartMenu;
                     }
-                    else
-					    PlaySE(SE_BOO);
+                    else{
+                        PlaySE(SE_BOO);
+                        shouldShowErrorMessage = TRUE;
+                    }
                 break;
                 case APP_AMAZON:
                     if(GetCurrentSignal() != 0){
@@ -1154,8 +1168,10 @@ static void Task_MenuMain(u8 taskId)
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
                         gTasks[taskId].func = Task_MenuTurnOff;
                     }
-                    else
-					    PlaySE(SE_BOO);
+                    else{
+                        PlaySE(SE_BOO);
+                        shouldShowErrorMessage = TRUE;
+                    }
                 break;
                 case APP_DEXNAV:
                     if(GetCurrentSignal() != 0){
@@ -1170,15 +1186,19 @@ static void Task_MenuMain(u8 taskId)
                             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
                             gTasks[taskId].func = Task_OpenDexNavFromStartMenu;
                         }
-                        else
+                        else{
                             PlaySE(SE_BOO);
+                            shouldShowErrorMessage = TRUE;
+                        }
                         */
                         PlaySE(SE_PC_OFF);
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
                         gTasks[taskId].func = Task_MenuTurnOff;
                     }
-                    else
-					    PlaySE(SE_BOO);
+                    else{
+                        PlaySE(SE_BOO);
+                        shouldShowErrorMessage = TRUE;
+                    }
                 break;
             }
         }
