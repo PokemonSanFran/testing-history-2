@@ -48,6 +48,8 @@
 #include "quests.h"
 #include "constants/songs.h"
 #include "union_room.h"
+#include "dexnav.h"
+#include "wild_encounter.h"
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "accept_letter.h"
@@ -122,6 +124,7 @@ static bool8 StartMenuDebugCallback(void);
 static bool8 QuestMenuCallback(void);
 static bool8 TwitterCallback(void);
 static bool8 StartMenuUiStartMenuCallback(void);
+static bool8 StartMenuDexNavCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -197,6 +200,7 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_QUEST_MENU]      = {sText_QuestMenu,   {.u8_void = QuestMenuCallback}},
     [MENU_ACTION_TWITTER]         = {gText_MenuTwitter, {.u8_void = TwitterCallback}},
     [MENU_ACTION_UI_MENU]         = {sText_StartMenu,   {.u8_void = StartMenuUiStartMenuCallback}}
+    [MENU_ACTION_DEXNAV]          = {gText_MenuDexNav,  {.u8_void = StartMenuDexNavCallback}},
 };
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
@@ -323,22 +327,20 @@ static void AddStartMenuAction(u8 action)
 }
 
 static void BuildNormalStartMenu(void)
-{
+{    
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
-    {
         AddStartMenuAction(MENU_ACTION_POKEDEX);
-    }
+    
+    if (FlagGet(FLAG_SYS_DEXNAV_GET))
+        AddStartMenuAction(MENU_ACTION_DEXNAV);
+    
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
-    {
         AddStartMenuAction(MENU_ACTION_POKEMON);
-    }
 
     AddStartMenuAction(MENU_ACTION_BAG);
 
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
-    {
         AddStartMenuAction(MENU_ACTION_POKENAV);
-    }
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
 
@@ -663,7 +665,10 @@ static bool8 HandleStartMenuInput(void)
             if (GetNationalPokedexCount(FLAG_GET_SEEN) == 0)
                 return FALSE;
         }
-
+        if (sCurrentStartMenuActions[sStartMenuCursorPos] == MENU_ACTION_DEXNAV
+          && MapHasNoEncounterData())
+            return FALSE;
+        
         gMenuCallback = sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void;
 
         if (gMenuCallback != StartMenuSaveCallback
@@ -689,7 +694,7 @@ static bool8 HandleStartMenuInput(void)
     return FALSE;
 }
 
-static bool8 StartMenuPokedexCallback(void)
+bool8 StartMenuPokedexCallback(void)
 {
     if (!gPaletteFade.active)
     {
@@ -1363,7 +1368,7 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
             }
             else
             {
-                gSoftResetDisabled = 1;
+                gSoftResetDisabled = TRUE;
                 *state = 1;
             }
             break;
@@ -1377,7 +1382,7 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
             {
                 ClearContinueGameWarpStatus2();
                 *state = 3;
-                gSoftResetDisabled = 0;
+                gSoftResetDisabled = FALSE;
             }
             break;
         case 3:
@@ -1540,5 +1545,11 @@ static bool8 TwitterCallback(void)
 static bool8 StartMenuUiStartMenuCallback(void)
 {
     CreateTask(Task_OpenMenuFromStartMenu, 0);
+    return TRUE;
+}
+
+static bool8 StartMenuDexNavCallback(void)
+{
+    CreateTask(Task_OpenDexNavFromStartMenu, 0);
     return TRUE;
 }

@@ -34,4 +34,7 @@ extern const u16 gUnknown_8471DEC[][16];
 
 //end FRLG import
 
+//NEW
+void LoadDexNavWindowGfx(u8 windowId, u16 destOffset, u8 palOffset);
+
 #endif // GUARD_TEXT_WINDOW_H

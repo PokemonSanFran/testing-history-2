@@ -408,6 +408,11 @@ static const struct SpriteFrameImage sPicTable_HofMonitorSmall[] =
     {.data = sHofMonitorSmall_Gfx, .size = 0x200} // the macro breaks down here
 };
 
+/*
+[0_][] <-1    24x16
+[2 ][] <-3
+   ^-- Origin
+*/
 static const struct Subsprite sSubsprites_PokecenterMonitor[] =
 {
     {
@@ -446,6 +451,11 @@ static const struct Subsprite sSubsprites_PokecenterMonitor[] =
 
 static const struct SubspriteTable sSubspriteTable_PokecenterMonitor = subsprite_table(sSubsprites_PokecenterMonitor);
 
+/*
+[0_____][1_____]    24x16
+[2     ][3     ]
+        ^-- Origin
+*/
 static const struct Subsprite sSubsprites_HofMonitorBig[] =
 {
     {
@@ -3913,3 +3923,18 @@ u32 GetCurrentMap(void)//Used for PSF Flying Blind
     return map;
 }
 
+// new
+u8 FldEff_CaveDust(void)
+{
+    u8 spriteId;
+    
+    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_CAVE_DUST], gFieldEffectArguments[0], gFieldEffectArguments[1], 0xFF);
+    if (spriteId != MAX_SPRITES)
+    {
+        gSprites[spriteId].coordOffsetEnabled = TRUE;
+        gSprites[spriteId].data[0] = 22;
+    }
+    
+    return spriteId;
+}
