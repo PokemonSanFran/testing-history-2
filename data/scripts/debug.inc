@@ -60,36 +60,22 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	msgbox Debug_Script_1_Text_0
+	additem ITEM_FLAME_ORB, 1
+	additem ITEM_TM27, 1
+	givemon SPECIES_SHROOMISH, 1, ITEM_NONE
+	givemon SPECIES_BEHEEYEM, 1, ITEM_NONE
 	return
 
 
 Debug_Script_2::
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_RETURNDOLL
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_BRINGFRUIT
-	setvar VAR_STORYLINE_STATE, STORY_CLEAR
-	msgbox Debug_Script_2_Text_0
-	msgbox gText_Quest_ReturnDoll_Desc
-	msgbox Debug_Script_2_Text_1
 	return
 
 
 Debug_Script_3::
-	setvar VAR_STORYLINE_STATE, STORY_CLEAR
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_BRINGFIRETYPE
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RETURNDOLL
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BRINGFRUIT
-	msgbox Debug_Script_3_Text_0
-	msgbox gText_Quest_BringFruit_Desc
-	msgbox Debug_Script_3_Text_1
 	return
 
 
 Debug_Script_4::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BRINGFIRETYPE
-	questmenu QUEST_MENU_SET_REWARD, QUEST_STOPMUGGING
-	msgbox Debug_Script_4_Text_0
-	msgbox Debug_Script_3_Text_1
 	return
 
 
@@ -116,30 +102,6 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
-
-Debug_Script_1_Text_0:
-	.string "please run Script 2, then script 3, then\n"
-	.string "script 4.$"
-
-Debug_Script_2_Text_0:
-	.string "this is scenario Active and Favorite.\n"
-	.string "The start menu should display:$"
-
-Debug_Script_2_Text_1:
-	.string "Please press {START_BUTTON}, open the Quest Menu, and\n"
-	.string "press {SELECT_BUTTON} on the quest Return Doll and\l"
-	.string "Bring Fruit$"
-
-Debug_Script_3_Text_0:
-	.string "this is scenario Active. The start menu\n"
-	.string "should display:$"
-
-Debug_Script_3_Text_1:
-	.string "Please press {START_BUTTON}.$"
-
-Debug_Script_4_Text_0:
-	.string "This is scenario NULL. The start menu\n"
-	.string "should not be displaying anything.$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"
