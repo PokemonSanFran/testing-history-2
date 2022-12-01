@@ -40,6 +40,7 @@
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
+#include "ui_options_menu.h"
 #include "event_data.h"
 #include "constants/items.h"
 #include "constants/field_weather.h"
@@ -954,7 +955,8 @@ void Task_OpenOptionsMenuStartMenu(u8 taskId)
     {
 		PlayRainStoppingSoundEffect();
         CleanupOverworldWindowsAndTilemaps();
-        SetMainCallback2(CB2_InitOptionMenu); // Display option menu
+        Options_Menu_Init(CB2_ReturnToUIMenu);
+        //SetMainCallback2(Option_Menu_Init); // Display option menu
         gMain.savedCallback = CB2_ReturnToField;
     }
 }
