@@ -476,6 +476,14 @@ struct RankingHall2P
 // quest menu
 #include "constants/quests.h"
 
+//For the Options Menu
+#define NUM_OF_PRESET_OPTIONS 5 //Number of different options in the hub options
+#define NUM_OPTIONS_GAME_SETTINGS   6
+#define NUM_OPTIONS_BATTLE_SETTINGS 24
+#define NUM_OPTIONS_MUSIC_SETTINGS  4
+#define NUM_OPTIONS_VISUAL_SETTINGS 10
+#define NUM_OPTIONS_RANDOM_SETTINGS 16
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -512,12 +520,17 @@ struct SaveBlock2
 #define SUB_FLAGS_COUNT ROUND_BITS_TO_BYTES(SUB_QUEST_COUNT)
 #define QUEST_STATES 5 //Number of different quest states tracked in the saveblock
 #define NUM_TOTAL_APPS 10 //Number of Apps in the Start Menu, this is used for the moving app mechanic
-
     u8 savedQuestMode;
     u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
     u8 subQuests[SUB_FLAGS_COUNT];
    /*0x64C*/ struct BattleFrontier frontier;
     u8 startMenuAppIndex[NUM_TOTAL_APPS];
+    u8 optionsPreset[NUM_OF_PRESET_OPTIONS];
+    u8 optionsGame[NUM_OPTIONS_GAME_SETTINGS];
+    u8 optionsBattle[NUM_OPTIONS_BATTLE_SETTINGS];
+    u8 optionsVisual[NUM_OPTIONS_VISUAL_SETTINGS];
+    u8 optionsMusic[NUM_OPTIONS_MUSIC_SETTINGS];
+    u8 optionsRandom[NUM_OPTIONS_RANDOM_SETTINGS];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

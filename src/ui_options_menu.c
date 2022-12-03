@@ -53,10 +53,26 @@ enum WindowIds
 
 //Defines
 #define  NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN 5
-#define  NUM_OF_SCREENS             5
-#define  NUM_OF_prese             5
-#define  NUM_OPTIONS_PER_SCREEN     5
-#define  MAX_OPTIONS_PER_SETTING    NUMBER_OF_MON_TYPES
+#define  NUM_OF_SCREENS                             5
+#define  NUM_OPTIONS_PER_SCREEN                     5
+#define  MAX_OPTIONS_PER_SETTING                    NUMBER_OF_MON_TYPES
+
+//These are defined in include/global.h
+//#define NUM_OF_PRESET_OPTIONS         5       //Number of different options in the hub options
+//#define NUM_OPTIONS_GAME_SETTINGS     6
+//#define NUM_OPTIONS_BATTLE_SETTINGS   24
+//#define NUM_OPTIONS_MUSIC_SETTINGS    4
+//#define NUM_OPTIONS_VISUAL_SETTINGS   10
+//#define NUM_OPTIONS_RANDOM_SETTINGS   16
+
+enum OptionsIds
+{
+    GAME_SETTINGS,
+    BATTLE_SETTINGS,
+    VISUAL_SETTINGS,
+    MUSIC_SETTINGS,
+    RANDOM_SETTINGS,
+};
 
 //==========EWRAM==========//
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
@@ -66,7 +82,12 @@ static EWRAM_DATA u8  currentScreenId = 0;
 static EWRAM_DATA u8  currentCursorPosition = 0;
 static EWRAM_DATA bool8 areYouNotOnSettingsHub = FALSE;
 
-static EWRAM_DATA u8 Temporal_CurrentOptions_Hub[NUM_OF_SCREENS]; //This will be removed once we add them to the saveblock data
+static EWRAM_DATA u8 Temporal_Options_Preset_Settings[NUM_OF_PRESET_OPTIONS];       //This is a temporal data used for the Discard Feature on Leave Dialog
+static EWRAM_DATA u8 Temporal_Options_Game_Settings[NUM_OPTIONS_GAME_SETTINGS];     //This is a temporal data used for the Discard Feature on Leave Dialog
+static EWRAM_DATA u8 Temporal_Options_Battle_Settings[NUM_OPTIONS_BATTLE_SETTINGS]; //This is a temporal data used for the Discard Feature on Leave Dialog
+static EWRAM_DATA u8 Temporal_Options_Music_Settings[NUM_OPTIONS_MUSIC_SETTINGS];   //This is a temporal data used for the Discard Feature on Leave Dialog
+static EWRAM_DATA u8 Temporal_Options_Visual_Settings[NUM_OPTIONS_VISUAL_SETTINGS]; //This is a temporal data used for the Discard Feature on Leave Dialog
+static EWRAM_DATA u8 Temporal_Options_Random_Settings[NUM_OPTIONS_RANDOM_SETTINGS]; //This is a temporal data used for the Discard Feature on Leave Dialog
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -78,6 +99,84 @@ static void Menu_InitWindows(void);
 static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
+
+
+static void CopySaveBlockDataToTemporalData();
+static void CopyTemporalDataToSaveBlockData();
+
+void CopyTemporalDataToSaveBlockData()
+{
+    u8 i, j;
+
+    for(i = 0 ;i < NUM_OF_PRESET_OPTIONS; i++){
+        gSaveBlock2Ptr->optionsPreset[i] = Temporal_Options_Preset_Settings[i];
+
+        switch(i){
+            case GAME_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_GAME_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsGame[j] = Temporal_Options_Game_Settings[j];
+                }
+            break;
+            case BATTLE_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_BATTLE_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsBattle[j] = Temporal_Options_Battle_Settings[j];
+                }
+            break;
+            case VISUAL_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_VISUAL_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsVisual[j] = Temporal_Options_Visual_Settings[j];
+                }
+            break;
+            case MUSIC_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_MUSIC_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsMusic[j] = Temporal_Options_Music_Settings[j];
+                }
+            break;
+            case RANDOM_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_RANDOM_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsRandom[j] = Temporal_Options_Random_Settings[j];
+                }
+            break;
+        }
+    }
+}
+
+void CopySaveBlockDataToTemporalData()
+{
+    u8 i, j;
+
+    for(i = 0 ;i < NUM_OF_PRESET_OPTIONS; i++){
+        Temporal_Options_Preset_Settings[i] = gSaveBlock2Ptr->optionsPreset[i];
+
+        switch(i){
+            case GAME_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_GAME_SETTINGS; j++){
+                    Temporal_Options_Game_Settings[j] = gSaveBlock2Ptr->optionsGame[j];
+                }
+            break;
+            case BATTLE_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_BATTLE_SETTINGS; j++){
+                    Temporal_Options_Battle_Settings[j] = gSaveBlock2Ptr->optionsBattle[j];
+                }
+            break;
+            case VISUAL_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_VISUAL_SETTINGS; j++){
+                    Temporal_Options_Visual_Settings[j] = gSaveBlock2Ptr->optionsVisual[j];
+                }
+            break;
+            case MUSIC_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_MUSIC_SETTINGS; j++){
+                    Temporal_Options_Music_Settings[j] = gSaveBlock2Ptr->optionsMusic[j];
+                }
+            break;
+            case RANDOM_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_RANDOM_SETTINGS; j++){
+                    Temporal_Options_Random_Settings[j] = gSaveBlock2Ptr->optionsRandom[j];
+                }
+            break;
+        }
+    }
+}
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -168,6 +267,8 @@ static void Menu_RunSetup(void)
 {
     while (1)
     {
+        CopySaveBlockDataToTemporalData();
+
         if (Menu_DoGfxSetup() == TRUE)
             break;
     }
@@ -371,18 +472,9 @@ static const u8 sText_Title_Settings_Hub[]  = _("Settings Hub");
 static const u8 sText_Options_Text[]        = _("Option Description");
 
 // For Game Settings
-#define NUM_OPTIONS_GAME_SETTINGS 6
+//#define NUM_OF_PRESET_OPTIONS 5 This is defined in Global
 
-enum OptionsIds
-{
-    GAME_SETTINGS,
-    BATTLE_SETTINGS,
-    VISUAL_SETTINGS,
-    MUSIC_SETTINGS,
-    RANDOM_SETTINGS,
-};
-
-struct OptionData Hub_Options[NUM_OF_SCREENS] = {
+struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
     [GAME_SETTINGS] =
     {
         .title = _("Game Settings"),
@@ -452,7 +544,6 @@ struct OptionData Hub_Options[NUM_OF_SCREENS] = {
 };
 
 // For Game Settings
-#define NUM_OPTIONS_GAME_SETTINGS 6
 
 enum GameOptionsID
 {
@@ -533,7 +624,6 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
 };
 
 // For Battle Settings
-#define NUM_OPTIONS_BATTLE_SETTINGS 6
 
 static const u8 sText_Battle_Settings_0[]     = _("Battle Setting 0");
 static const u8 sText_Battle_Settings_1[]     = _("Battle Setting 1");
@@ -552,7 +642,6 @@ static const u8 *BattleSettings_Settings[NUM_OPTIONS_BATTLE_SETTINGS] = {
 };
 
 // For Visual Settings
-#define NUM_OPTIONS_VISUAL_SETTINGS 6
 
 static const u8 sText_Visual_Settings_0[]     = _("Visual Setting 0");
 static const u8 sText_Visual_Settings_1[]     = _("Visual Setting 1");
@@ -571,8 +660,6 @@ static const u8 *VisualSettings_Settings[NUM_OPTIONS_VISUAL_SETTINGS] = {
 };
 
 // For Music Settings
-#define NUM_OPTIONS_MUSIC_SETTINGS 6
-
 static const u8 sText_Music_Settings_0[]     = _("Music Setting 0");
 static const u8 sText_Music_Settings_1[]     = _("Music Setting 1");
 static const u8 sText_Music_Settings_2[]     = _("Music Setting 2");
@@ -585,12 +672,9 @@ static const u8 *MusicSettings_Settings[NUM_OPTIONS_MUSIC_SETTINGS] = {
     sText_Music_Settings_1,
     sText_Music_Settings_2,
     sText_Music_Settings_3,
-    sText_Music_Settings_4,
-    sText_Music_Settings_5,
 };
 
 // For Random Settings
-#define NUM_OPTIONS_RANDOM_SETTINGS 6
 
 static const u8 sText_Random_Settings_0[]     = _("Random Setting 0");
 static const u8 sText_Random_Settings_1[]     = _("Random Setting 1");
@@ -781,7 +865,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y = 2;
 
         for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-            AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, Hub_Options[i].options[Temporal_CurrentOptions_Hub[i]]);
+            AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, Hub_Options[i].options[Temporal_Options_Preset_Settings[i]]);
             y = y + 2;
         }
     }
@@ -792,7 +876,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         switch(currentScreenId){
             case GAME_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[i].options[Temporal_CurrentOptions_Hub[i]]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[i].options[Temporal_Options_Game_Settings[i]]);
                     y = y + 2;
                 }
             break;
@@ -903,14 +987,26 @@ static void Task_MenuMain(u8 taskId)
     if(JOY_NEW(DPAD_LEFT))
 	{
         if(!areYouNotOnSettingsHub){
-            if(Temporal_CurrentOptions_Hub[currentScreenId] > 0){
-			    Temporal_CurrentOptions_Hub[currentScreenId]--;
+            if(Temporal_Options_Preset_Settings[currentScreenId] > 0){
+			    Temporal_Options_Preset_Settings[currentScreenId]--;
             }
             else{
-                Temporal_CurrentOptions_Hub[currentScreenId] = Hub_Options[currentScreenId].numOptions - 1;
+                Temporal_Options_Preset_Settings[currentScreenId] = Hub_Options[currentScreenId].numOptions - 1;
             }
-            PlaySE(SE_SELECT);
         }
+        else{
+            switch(currentScreenId){
+                case GAME_SETTINGS:
+                    if(Temporal_Options_Game_Settings[currentOptionId] > 0){
+                        Temporal_Options_Game_Settings[currentOptionId]--;
+                    }
+                    else{
+                        Temporal_Options_Game_Settings[currentOptionId] = GameSettings_Settings_Options[currentScreenId].numOptions - 1;
+                    }
+                break;
+            }
+        }
+        PlaySE(SE_SELECT);
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
@@ -918,16 +1014,26 @@ static void Task_MenuMain(u8 taskId)
     if(JOY_NEW(DPAD_RIGHT))
 	{
         if(!areYouNotOnSettingsHub){
-            if(Temporal_CurrentOptions_Hub[currentScreenId] < Hub_Options[currentScreenId].numOptions - 1){
-                Temporal_CurrentOptions_Hub[currentScreenId]++;
+            if(Temporal_Options_Preset_Settings[currentScreenId] < Hub_Options[currentScreenId].numOptions - 1){
+                Temporal_Options_Preset_Settings[currentScreenId]++;
             }
             else{
-                Temporal_CurrentOptions_Hub[currentScreenId] = 0;
+                Temporal_Options_Preset_Settings[currentScreenId] = 0;
             }
-            PlaySE(SE_SELECT);
         }
-        
-
+        else{
+            switch(currentScreenId){
+                case GAME_SETTINGS:
+                    if(Temporal_Options_Game_Settings[currentOptionId] < GameSettings_Settings_Options[currentOptionId].numOptions - 1){
+                        Temporal_Options_Game_Settings[currentOptionId]++;
+                    }
+                    else{
+                        Temporal_Options_Game_Settings[currentOptionId] = 0;
+                    }
+                break;
+            }
+        }
+        PlaySE(SE_SELECT);
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
@@ -941,6 +1047,7 @@ static void Task_MenuMain(u8 taskId)
     if (JOY_NEW(B_BUTTON))
     {
         if(!areYouNotOnSettingsHub){
+            CopyTemporalDataToSaveBlockData();
             PlaySE(SE_PC_OFF);
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
             gTasks[taskId].func = Task_MenuTurnOff;
