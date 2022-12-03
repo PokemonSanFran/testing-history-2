@@ -34,6 +34,8 @@
 #include "constants/field_weather.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "printf.h"
+#include "mgba.h"
 
 /*
  * 
@@ -625,20 +627,166 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
 
 // For Battle Settings
 
-static const u8 sText_Battle_Settings_0[]     = _("Battle Setting 0");
-static const u8 sText_Battle_Settings_1[]     = _("Battle Setting 1");
-static const u8 sText_Battle_Settings_2[]     = _("Battle Setting 2");
-static const u8 sText_Battle_Settings_3[]     = _("Battle Setting 3");
-static const u8 sText_Battle_Settings_4[]     = _("Battle Setting 4");
-static const u8 sText_Battle_Settings_5[]     = _("Battle Setting 5");
+enum BattleOptionsID
+{
+    BATTLE_OPTIONS_EXPERIENCE,
+    BATTLE_OPTIONS_EXP_MULTIPLIER,
+    BATTLE_OPTIONS_LEVEL,
+    BATTLE_OPTIONS_SWITCH_STYLE,
+    BATTLE_OPTIONS_TAKE_WILD_ITEMS,
+    BATTLE_OPTIONS_LAST_USED_BALL,
+    BATTLE_OPTIONS_QUICK_RUN,
+    BATTLE_OPTIONS_BATTLE_DIFFICULTY,
+    BATTLE_OPTIONS_FAINTED_MON,
+    BATTLE_OPTIONS_FIRST_POKEMON_CATCH,
+    BATTLE_OPTIONS_NICKNAME,
+    BATTLE_OPTIONS_WITHEOUT,
+    BATTLE_OPTIONS_ITEM_HEALING,
+    BATTLE_OPTIONS_CENTER_HEALING,
+    BATTLE_OPTIONS_MOVE_HEALING,
+    BATTLE_OPTIONS_BAG_ITEMS,
+    BATTLE_OPTIONS_OPPONENTS_ITEMS,
+    BATTLE_OPTIONS_BASE_STAT_EQUALIZER,
+    BATTLE_OPTIONS_ONE_TYPE_CHALLENGE,
+    BATTLE_OPTIONS_TYPE_ICONS,
+    BATTLE_OPTIONS_ANIMATIONS,
+    BATTLE_OPTIONS_INTRO,
+    BATTLE_OPTIONS_HP_SPEED,
+    BATTLE_OPTIONS_EXP_SPEED,
+};
 
-static const u8 *BattleSettings_Settings[NUM_OPTIONS_BATTLE_SETTINGS] = {
-    sText_Battle_Settings_0,
-    sText_Battle_Settings_1,
-    sText_Battle_Settings_2,
-    sText_Battle_Settings_3,
-    sText_Battle_Settings_4,
-    sText_Battle_Settings_5,
+struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] = {
+    [BATTLE_OPTIONS_EXPERIENCE] =
+    {
+        .title = _("Experience"),
+        .options = { 
+                _("All"),
+                _("Party"),
+                _("Active"),
+            },
+        .optionDescription = _("Experience Description"),
+        .numOptions = 3,
+    },
+    [BATTLE_OPTIONS_EXP_MULTIPLIER] =
+    {
+        .title = _("Exp Multiplier"),
+        .options = { 
+                _("Normal"),
+                _("1.5"),
+                _("2"),
+                _("0"),
+            },
+        .optionDescription = _("Exp Multiplier Description"),
+        .numOptions = 4,
+    },
+    [BATTLE_OPTIONS_LEVEL] =
+    {
+        .title = _("Level"),
+        .options = { 
+                _("Level Cap"),
+                _("No Cap"),
+            },
+        .optionDescription = _("Level Description"),
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_SWITCH_STYLE] =
+    {
+        .title = _("Switch Style"),
+        .options = { 
+            _("Shift"),
+            _("Set"),
+            },
+        .optionDescription = _("Run Description"),
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_TAKE_WILD_ITEMS] =
+    {
+        .title = _("Take Wild Items"),
+        .options = { 
+                _("Never"),
+                _("Ask"),
+                _("Always"),
+            },
+        .optionDescription = _("Take Wild Items Description"),
+        .numOptions = 3,
+    },
+    [BATTLE_OPTIONS_LAST_USED_BALL] =
+    {
+        .title = _("Last Used Ball"),
+        .options = { 
+                _("Always"),
+                _("Best Ball"),
+                _("After 1 Ball"),
+            },
+        .optionDescription = _("Last Used Ball Description"),
+        .numOptions = 4,
+    },
+    [BATTLE_OPTIONS_QUICK_RUN] =
+    {
+        .title = _("Quick Run"),
+        .options = { 
+                _("B -> A"),
+                _("R"),
+                _("Off"),
+            },
+        .optionDescription = _("Quick Run Description"),
+        .numOptions = 3,
+    },
+    [BATTLE_OPTIONS_BATTLE_DIFFICULTY] =
+    {
+        .title = _("Battle Difficulty"),
+        .options = { 
+                _("Cinematic"),
+                _("Standard"),
+                _("Challenge"),
+                _("Kaizo"),
+            },
+        .optionDescription = _("Level Description"),
+        .numOptions = 4,
+    },
+    [BATTLE_OPTIONS_FAINTED_MON] =
+    {
+        .title = _("Fainted Mon"),
+        .options = { 
+                _("Allowed"),
+                _("Box"),
+                _("Release"),
+            },
+        .optionDescription = _("Fainted Mon Description"),
+        .numOptions = 3,
+    },
+    [BATTLE_OPTIONS_FIRST_POKEMON_CATCH] =
+    {
+        .title = _("First Pokemon Catch"),
+        .options = { 
+                _("Default"),
+                _("First Only"),
+                _("FDuplicate"),
+            },
+        .optionDescription = _("First Pokemon Description"),
+        .numOptions = 3,
+    },
+    [BATTLE_OPTIONS_NICKNAME] =
+    {
+        .title = _("Nickname"),
+        .options = { 
+                _("Ask"),
+                _("Forced"),
+                _("None"),
+            },
+        .optionDescription = _("Nickname Description"),
+        .numOptions = 3,
+    },
+    [BATTLE_OPTIONS_EXP_SPEED] =
+    {
+        .title = _("Level"),
+        .options = { 
+                _("Level"),
+                _("No"),
+            },
+        .optionDescription = _("Level Description"),
+        .numOptions = 2,
+    },
 };
 
 // For Visual Settings
@@ -833,7 +981,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
             break;
             case BATTLE_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings[i]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[i].title);
                     y = y + 2;
                 }
             break;
@@ -880,6 +1028,12 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                     y = y + 2;
                 }
             break;
+            case BATTLE_SETTINGS:
+                for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[i].options[Temporal_Options_Battle_Settings[i]]);
+                    y = y + 2;
+                }
+            break;
         }
         
     }
@@ -897,7 +1051,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[currentOptionId].optionDescription);
             break;
             case BATTLE_SETTINGS:
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[currentOptionId].optionDescription);
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[currentOptionId].optionDescription);
             break;
             case VISUAL_SETTINGS:
                 AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[currentOptionId].optionDescription);
@@ -1001,8 +1155,14 @@ static void Task_MenuMain(u8 taskId)
                         Temporal_Options_Game_Settings[currentOptionId]--;
                     }
                     else{
-                        Temporal_Options_Game_Settings[currentOptionId] = GameSettings_Settings_Options[currentScreenId].numOptions - 1;
+                        Temporal_Options_Game_Settings[currentOptionId] = GameSettings_Settings_Options[currentOptionId].numOptions - 1;
                     }
+                break;
+                case BATTLE_SETTINGS:
+                    if(Temporal_Options_Battle_Settings[currentOptionId] > 0)
+                        Temporal_Options_Battle_Settings[currentOptionId]--;
+                    else
+                        Temporal_Options_Battle_Settings[currentOptionId] = BattleSettings_Settings_Options[currentOptionId].numOptions - 1;
                 break;
             }
         }
@@ -1031,7 +1191,22 @@ static void Task_MenuMain(u8 taskId)
                         Temporal_Options_Game_Settings[currentOptionId] = 0;
                     }
                 break;
+                case BATTLE_SETTINGS:
+                    if(Temporal_Options_Battle_Settings[currentOptionId] < BattleSettings_Settings_Options[currentOptionId].numOptions - 1){
+                        Temporal_Options_Battle_Settings[currentOptionId]++;
+                    }
+                    else{
+                        Temporal_Options_Battle_Settings[currentOptionId] = 0;
+                    }
+                break;
             }
+
+            /*
+            BATTLE_SETTINGS,
+            VISUAL_SETTINGS,
+            MUSIC_SETTINGS,
+            RANDOM_SETTINGS,
+            */
         }
         PlaySE(SE_SELECT);
         PrintToWindow(WINDOW_1, FONT_BLACK);
