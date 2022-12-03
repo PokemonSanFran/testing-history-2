@@ -370,48 +370,6 @@ static const u8 sOptionMenuSelector[]       = INCBIN_U8("graphics/ui_menus/optio
 static const u8 sText_Title_Settings_Hub[]  = _("Settings Hub");
 static const u8 sText_Options_Text[]        = _("Option Description");
 
-static const u8 sText_Hub_Game_Settings[]   = _("Game Settings");
-static const u8 sText_Hub_Battle_Settings[] = _("Battle Settings");
-static const u8 sText_Hub_Visual_Settings[] = _("Visual Settings");
-static const u8 sText_Hub_Music_Settings[]  = _("Music Settings");
-static const u8 sText_Hub_Random_Settings[] = _("Random Settings");
-
-static const u8 sText_Screen_Descriptions_Game[]        = _("Game Settings Description");
-static const u8 sText_Screen_Descriptions_Battle[]      = _("Battle Settings Description");
-static const u8 sText_Screen_Descriptions_Visual[]      = _("Visual Settings Description");
-static const u8 sText_Screen_Descriptions_Music[]       = _("Music Settings Description");
-static const u8 sText_Screen_Descriptions_Random[]      = _("Save, Boot, Button Mode, Save Behavior,\nRun, Puzzle Difficulty, Item Sort");
-
-static const u8 sText_Settings_Option_1[]   = _("Option 1");
-static const u8 sText_Settings_Option_2[]   = _("Option 2");
-static const u8 sText_Settings_Option_3[]   = _("Option 3");
-static const u8 sText_Settings_Option_4[]   = _("Option 4");
-
-//Array Lists
-static const u8 *Hub_Text[NUM_OF_SCREENS] = {
-    sText_Hub_Game_Settings,
-    sText_Hub_Battle_Settings,
-    sText_Hub_Visual_Settings,
-    sText_Hub_Music_Settings,
-    sText_Hub_Random_Settings,
-};
-
-static const u8 *Screen_Descriptions[NUM_OF_SCREENS] = {
-    sText_Screen_Descriptions_Game,
-    sText_Screen_Descriptions_Battle,
-    sText_Screen_Descriptions_Visual,
-    sText_Screen_Descriptions_Music,
-    sText_Screen_Descriptions_Random,
-};
-
-static const u8 *GameSettings_Options[NUM_OPTIONS_PER_SCREEN] = {
-    sText_Settings_Option_1,
-    sText_Settings_Option_1,
-    sText_Settings_Option_2,
-    sText_Settings_Option_3,
-    sText_Settings_Option_4,
-};
-
 // For Game Settings
 #define NUM_OPTIONS_GAME_SETTINGS 6
 
@@ -429,65 +387,66 @@ struct OptionData Hub_Options[NUM_OF_SCREENS] = {
     {
         .title = _("Game Settings"),
         .options = { 
-            _("Option 1"),
-            _("Option 2"),
-            _("Option 3"),
-            _("Option 4"),
-            _("Option 5"),
+            _("Default"),
+            _("Speedrun"),
+            _("Custom"),
             },
         .optionDescription = _("Save, Boot, Button Mode, Save Behavior,\nRun, Puzzle Difficulty, Item Sort"),
-        .numOptions = 5,
+        .numOptions = 3,
     },
     [BATTLE_SETTINGS] =
     {
-        .title = _("Button Mode"),
+        .title = _("Battle Settings"),
         .options = { 
-            _("Option 1"),
-            _("Option 2"),
-            _("Option 3"),
-            _("Option 4"),
-            _("Option 5"),
+            _("Default"),
+            _("Speedrun"),
+            _("Nuzlocke"),
+            _("Kaizo"),
+            _("Custom"),
             },
-        .optionDescription = _("Button Mode Description"),
+        .optionDescription = _("Battle Settings Description"),
         .numOptions = 5,
     },
     [VISUAL_SETTINGS] =
     {
-        .title = _("Save Behavior"),
+        .title = _("Visual Settings"),
         .options = { 
-            _("Option 1"),
-            _("Option 2"),
-            _("Option 3"),
-            _("Option 4"),
-            _("Option 5"),
+            _("Default"),
+            _("Speedrun"),
+            _("Custom"),
             },
-        .optionDescription = _("Save Behavior Description"),
-        .numOptions = 5,
+        .optionDescription = _("Visual Settings Description"),
+        .numOptions = 3,
     },
     [MUSIC_SETTINGS] =
     {
-        .title = _("Run"),
+        .title = _("Music Settings"),
         .options = { 
-            _("Option 1"),
-            _("Option 2"),
-            _("Option 3"),
-            _("Option 4"),
-            _("Option 5"),
+            _("PSF"),
+            _("Custom"),
+            _("LGPE"),
+            _("HGSS"),
+            _("ORAS"),
+            _("BDSP"),
+            _("BW2"),
+            _("XY"),
+            _("USUM"),
+            _("SV"),
             },
-        .optionDescription = _("Run Description"),
-        .numOptions = 5,
+        .optionDescription = _("Music Settings Description"),
+        .numOptions = 10,
     },
     [RANDOM_SETTINGS] =
     {
-        .title = _("Puzzle Difficulty"),
+        .title = _("Random Settings"),
         .options = { 
-            _("Option 1"),
-            _("Option 2"),
-            _("Option 3"),
-            _("Option 4"),
-            _("Option 5"),
+            _("Default"),
+            _("Sane"),
+            _("Crazy"),
+            _("Total Chaos"),
+            _("Custom"),
             },
-        .optionDescription = _("Puzzle Difficulty Description"),
+        .optionDescription = _("Random Settings Description"),
         .numOptions = 5,
     },
 };
@@ -948,7 +907,7 @@ static void Task_MenuMain(u8 taskId)
 			    Temporal_CurrentOptions_Hub[currentScreenId]--;
             }
             else{
-                Temporal_CurrentOptions_Hub[currentScreenId] = NUM_OPTIONS_PER_SCREEN-1;
+                Temporal_CurrentOptions_Hub[currentScreenId] = Hub_Options[currentScreenId].numOptions - 1;
             }
             PlaySE(SE_SELECT);
         }
@@ -959,7 +918,7 @@ static void Task_MenuMain(u8 taskId)
     if(JOY_NEW(DPAD_RIGHT))
 	{
         if(!areYouNotOnSettingsHub){
-            if(Temporal_CurrentOptions_Hub[currentScreenId] < NUM_OPTIONS_PER_SCREEN-1){
+            if(Temporal_CurrentOptions_Hub[currentScreenId] < Hub_Options[currentScreenId].numOptions - 1){
                 Temporal_CurrentOptions_Hub[currentScreenId]++;
             }
             else{
@@ -981,8 +940,14 @@ static void Task_MenuMain(u8 taskId)
 
     if (JOY_NEW(B_BUTTON))
     {
-        PlaySE(SE_PC_OFF);
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_MenuTurnOff;
+        if(!areYouNotOnSettingsHub){
+            PlaySE(SE_PC_OFF);
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_MenuTurnOff;
+        }
+        else{
+            areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
+            PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
     }
 }
