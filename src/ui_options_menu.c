@@ -480,48 +480,37 @@ static void PressedDownButton(){
     u8 cursorPosition = (currentOptionId - currentFirstOption);
 
     if(currentOptionId < halfScreen){
-        mgba_printf(MGBA_LOG_WARN, "First If");
         currentOptionId++;
     }
 	else if(currentOptionId >= (GetCurrentScreenOptionNumber() - 1)){ //If you are in the last option go to the first one
-        mgba_printf(MGBA_LOG_WARN, "Second If");
 		currentOptionId = 0;
 		currentFirstOption = 0;
     }
     else if(currentOptionId >= (finalhalfScreen - 1)){
-        mgba_printf(MGBA_LOG_WARN, "Third If");
         currentOptionId++;
     }
 	else{
-        mgba_printf(MGBA_LOG_WARN, "Fourth If");
         currentOptionId++;
         currentFirstOption++;
     }
-
-    mgba_printf(MGBA_LOG_WARN, "Number of Options %d", GetCurrentScreenOptionNumber());
-    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", (currentOptionId - currentFirstOption));
-    mgba_printf(MGBA_LOG_WARN, "First Option %d", currentFirstOption);
-    mgba_printf(MGBA_LOG_WARN, "Current Position %d", currentOptionId);
-    mgba_printf(MGBA_LOG_WARN, "Half Screen %d", halfScreen);
-    mgba_printf(MGBA_LOG_WARN, "Final Half Screen %d", finalhalfScreen);
-    mgba_printf(MGBA_LOG_WARN, "------------------------------------------------------------------");
 }
 
 static void PressedUpButton(){
-    if(currentOptionId < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN / 2)
-		currentOptionId++;
-	else if(currentFirstOption != (GetCurrentScreenOptionNumber() - NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN))
-		currentFirstOption++;
-	else if((currentFirstOption + currentOptionId) == (GetCurrentScreenOptionNumber() - 1)){
-		currentOptionId = 0;
-		currentFirstOption = 0;
-    }
-	else
-		currentOptionId++;
+    u8 halfScreen = ((NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN) - 1) / 2;
+    u8 finalhalfScreen = GetCurrentScreenOptionNumber() - halfScreen;
+    u8 cursorPosition = (currentOptionId - currentFirstOption);
 
-    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", (currentOptionId - currentFirstOption));
-    mgba_printf(MGBA_LOG_WARN, "First Option %d", currentFirstOption);
-    mgba_printf(MGBA_LOG_WARN, "Current Position %d", currentOptionId);
+    if(currentOptionId > halfScreen && currentOptionId <= (finalhalfScreen - 1)){
+        currentOptionId--;
+        currentFirstOption--;
+    }
+	else if(currentOptionId == 0){ //If you are in the first option go to the last one
+		currentOptionId = GetCurrentScreenOptionNumber() - 1;
+		currentFirstOption = GetCurrentScreenOptionNumber() - NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN;
+    }
+    else{
+        currentOptionId--;
+    }
 }
 
 #define OPTION_NAME_LENGTH 20
@@ -1328,22 +1317,7 @@ static void Task_MenuMain(u8 taskId)
             }
         }
         else{
-            if(currentOptionId > 0){
-			    currentOptionId--;
-            }
-            else{
-                currentOptionId = GetCurrentScreenOptionNumber() - 1;
-            }
-
-            if(currentOptionId == currentOptionId){
-                if(currentFirstOption > 0){
-			        currentFirstOption--;
-                }
-                else{
-                    currentFirstOption = GetCurrentScreenOptionNumber();
-                }
-            }
-            
+            PressedUpButton();
         }
         PlaySE(SE_SELECT);
 
