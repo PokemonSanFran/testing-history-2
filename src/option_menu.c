@@ -203,12 +203,12 @@ void CB2_InitOptionMenu(void)
         gMain.state++;
         break;
     case 3:
-        LoadBgTiles(1, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+        LoadBgTiles(1, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->tiles, 0x120, 0x1A2);
         gMain.state++;
         break;
     case 4:
         LoadPalette(sOptionMenuBg_Pal, 0, sizeof(sOptionMenuBg_Pal));
-        LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 0x70, 0x20);
+        LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->pal, 0x70, 0x20);
         gMain.state++;
         break;
     case 5:
@@ -236,12 +236,12 @@ void CB2_InitOptionMenu(void)
         u8 taskId = CreateTask(Task_OptionMenuFadeIn, 0);
 
         gTasks[taskId].data[TD_MENUSELECTION] = 0;
-        gTasks[taskId].data[TD_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
-        gTasks[taskId].data[TD_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
-        gTasks[taskId].data[TD_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattleStyle;
-        gTasks[taskId].data[TD_SOUND] = gSaveBlock2Ptr->optionsSound;
-        gTasks[taskId].data[TD_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
-        gTasks[taskId].data[TD_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
+        gTasks[taskId].data[TD_TEXTSPEED] = gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_TEXT_SPEED];
+        gTasks[taskId].data[TD_BATTLESCENE] = gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_ANIMATIONS];
+        gTasks[taskId].data[TD_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_SWITCH_STYLE];
+        gTasks[taskId].data[TD_SOUND] = gSaveBlock2Ptr->optionsMusic[MUSIC_OPTIONS_SPEAKER];
+        gTasks[taskId].data[TD_BUTTONMODE] = gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_BUTTON_MODE];
+        gTasks[taskId].data[TD_FRAMETYPE] = gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE];
 
         TextSpeed_DrawChoices(gTasks[taskId].data[TD_TEXTSPEED]);
         BattleScene_DrawChoices(gTasks[taskId].data[TD_BATTLESCENE]);
@@ -358,12 +358,12 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 
 static void Task_OptionMenuSave(u8 taskId)
 {
-    gSaveBlock2Ptr->optionsTextSpeed = gTasks[taskId].data[TD_TEXTSPEED];
-    gSaveBlock2Ptr->optionsBattleSceneOff = gTasks[taskId].data[TD_BATTLESCENE];
-    gSaveBlock2Ptr->optionsBattleStyle = gTasks[taskId].data[TD_BATTLESTYLE];
-    gSaveBlock2Ptr->optionsSound = gTasks[taskId].data[TD_SOUND];
-    gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].data[TD_BUTTONMODE];
-    gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].data[TD_FRAMETYPE];
+    gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_TEXT_SPEED] = gTasks[taskId].data[TD_TEXTSPEED];
+    gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_ANIMATIONS] = gTasks[taskId].data[TD_BATTLESCENE];
+    gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_SWITCH_STYLE] = gTasks[taskId].data[TD_BATTLESTYLE];
+    gSaveBlock2Ptr->optionsMusic[MUSIC_OPTIONS_SPEAKER] = gTasks[taskId].data[TD_SOUND];
+    gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_BUTTON_MODE] = gTasks[taskId].data[TD_BUTTONMODE];
+    gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE] = gTasks[taskId].data[TD_FRAMETYPE];
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
