@@ -57,7 +57,7 @@ enum WindowIds
 #define  NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN 5
 #define  NUM_OF_SCREENS                             5
 #define  NUM_OPTIONS_PER_SCREEN                     5
-#define  MAX_OPTIONS_PER_SETTING                    NUMBER_OF_MON_TYPES
+#define  MAX_OPTIONS_PER_SETTING                    NUMBER_OF_MON_TYPES + 1
 
 //These are defined in include/global.h
 //#define NUM_OF_PRESET_OPTIONS         5       //Number of different options in the hub options
@@ -81,7 +81,7 @@ static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8  currentOptionId = 0;
 static EWRAM_DATA u8  currentScreenId = 0;
-static EWRAM_DATA u8  currentCursorPosition = 0;
+static EWRAM_DATA u8  currentFirstOption = 0;
 static EWRAM_DATA bool8 areYouNotOnSettingsHub = FALSE;
 
 static EWRAM_DATA u8 Temporal_Options_Preset_Settings[NUM_OF_PRESET_OPTIONS];       //This is a temporal data used for the Discard Feature on Leave Dialog
@@ -443,6 +443,87 @@ static void Menu_InitWindows(void)
     ScheduleBgCopyTilemapToVram(2);
 }
 
+static u8 GetCurrentScreenOptionNumber(){
+    switch(currentScreenId){
+        case GAME_SETTINGS:
+            return NUM_OPTIONS_GAME_SETTINGS;
+        break;
+        case BATTLE_SETTINGS:
+            return NUM_OPTIONS_BATTLE_SETTINGS;
+        break;
+        case VISUAL_SETTINGS:
+            return NUM_OPTIONS_VISUAL_SETTINGS;
+        break;
+        case MUSIC_SETTINGS:
+            return NUM_OPTIONS_MUSIC_SETTINGS;
+        case RANDOM_SETTINGS:
+            return NUM_OPTIONS_RANDOM_SETTINGS;
+        break;
+    }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+
+static u8 GetCurrentSlotOption(u8 option)
+{
+    return currentFirstOption + option;
+}
+
+static u8 GetCursorPosition()
+{
+    return currentOptionId - currentFirstOption;
+}
+
+static void PressedDownButton(){
+    u8 halfScreen = ((NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN) - 1) / 2;
+    u8 finalhalfScreen = GetCurrentScreenOptionNumber() - halfScreen;
+    u8 cursorPosition = (currentOptionId - currentFirstOption);
+
+    if(currentOptionId < halfScreen){
+        mgba_printf(MGBA_LOG_WARN, "First If");
+        currentOptionId++;
+    }
+	else if(currentOptionId >= (GetCurrentScreenOptionNumber() - 1)){ //If you are in the last option go to the first one
+        mgba_printf(MGBA_LOG_WARN, "Second If");
+		currentOptionId = 0;
+		currentFirstOption = 0;
+    }
+    else if(currentOptionId >= (finalhalfScreen - 1)){
+        mgba_printf(MGBA_LOG_WARN, "Third If");
+        currentOptionId++;
+    }
+	else{
+        mgba_printf(MGBA_LOG_WARN, "Fourth If");
+        currentOptionId++;
+        currentFirstOption++;
+    }
+
+    mgba_printf(MGBA_LOG_WARN, "Number of Options %d", GetCurrentScreenOptionNumber());
+    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", (currentOptionId - currentFirstOption));
+    mgba_printf(MGBA_LOG_WARN, "First Option %d", currentFirstOption);
+    mgba_printf(MGBA_LOG_WARN, "Current Position %d", currentOptionId);
+    mgba_printf(MGBA_LOG_WARN, "Half Screen %d", halfScreen);
+    mgba_printf(MGBA_LOG_WARN, "Final Half Screen %d", finalhalfScreen);
+    mgba_printf(MGBA_LOG_WARN, "------------------------------------------------------------------");
+}
+
+static void PressedUpButton(){
+    if(currentOptionId < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN / 2)
+		currentOptionId++;
+	else if(currentFirstOption != (GetCurrentScreenOptionNumber() - NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN))
+		currentFirstOption++;
+	else if((currentFirstOption + currentOptionId) == (GetCurrentScreenOptionNumber() - 1)){
+		currentOptionId = 0;
+		currentFirstOption = 0;
+    }
+	else
+		currentOptionId++;
+
+    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", (currentOptionId - currentFirstOption));
+    mgba_printf(MGBA_LOG_WARN, "First Option %d", currentFirstOption);
+    mgba_printf(MGBA_LOG_WARN, "Current Position %d", currentOptionId);
+}
+
 #define OPTION_NAME_LENGTH 20
 #define MAX_OPTION_DESCRIPTION_LENGTH 100
 
@@ -719,7 +800,7 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
                 _("After 1 Ball"),
             },
         .optionDescription = _("Last Used Ball Description"),
-        .numOptions = 4,
+        .numOptions = 3,
     },
     [BATTLE_OPTIONS_QUICK_RUN] =
     {
@@ -761,7 +842,7 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
         .options = { 
                 _("Default"),
                 _("First Only"),
-                _("FDuplicate"),
+                _("Duplicate"),
             },
         .optionDescription = _("First Pokemon Description"),
         .numOptions = 3,
@@ -777,15 +858,159 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
         .optionDescription = _("Nickname Description"),
         .numOptions = 3,
     },
+    [BATTLE_OPTIONS_WITHEOUT] =
+    {
+        .title = _("Witheout"),
+        .options = { 
+                _("Default"),
+                _("Respawn"),
+                _("Death"),
+            },
+        .optionDescription = _("Witheout Description"),
+        .numOptions = 3,
+    },
+    [BATTLE_OPTIONS_ITEM_HEALING] =
+    {
+        .title = _("Item Healing"),
+        .options = { 
+                _("Allowed"),
+                _("Disabled"),
+            },
+        .optionDescription = _("Item Healing Description"),
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_CENTER_HEALING] =
+    {
+        .title = _("Center Healing"),
+        .options = { 
+                _("Allowed"),
+                _("Disabled"),
+            },
+        .optionDescription = _("Center Healing Description"),
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_MOVE_HEALING] =
+    {
+        .title = _("Move Healing"),
+        .options = { 
+                _("Allowed"),
+                _("Disabled"),
+            },
+        .optionDescription = _("Move Healing Description"),
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_BAG_ITEMS] =
+    {
+        .title = _("Bag Items"),
+        .options = { 
+                _("Allowed"),
+                _("No Boss"),
+                _("No Trainer"),
+                _("4 Only"),
+                _("No Items"),
+            },
+        .optionDescription = _("Bag Items Description"),
+        .numOptions = 5,
+    },
+    [BATTLE_OPTIONS_OPPONENTS_ITEMS] =
+    {
+        .title = _("Opponent Items"),
+        .options = { 
+                _("Allowed"),
+                _("Disabled"),
+            },
+        .optionDescription = _("Opponent Items Description"),
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_BASE_STAT_EQUALIZER] =
+    {
+        .title = _("Base Stat Equalizer"),
+        .options = { 
+                _("Disabled"),
+                _("100"),
+                _("255"),
+                _("500"),
+            },
+        .optionDescription = _("Base Stat Equalizer Description"),
+        .numOptions = 4,
+    },
+    [BATTLE_OPTIONS_ONE_TYPE_CHALLENGE] =
+    {
+        .title = _("One Type Challenge"),
+        .options = { 
+                _("Normal"),
+                _("Fighting"),
+                _("Flying"),
+                _("Poison"),
+                _("Ground"),
+                _("Rock"),
+                _("Bug"),
+                _("Ghost"),
+                _("Steel"),
+                _("Fire"),
+                _("Water"),
+                _("Grass"),
+                _("Electric"),
+                _("Psychic"),
+                _("Ice"),
+                _("Dragon"),
+                _("Dark"),
+                _("Fairy"),
+            },
+        .optionDescription = _("Base Stat Equalizer Description"),
+        .numOptions = NUMBER_OF_MON_TYPES + 1,
+    },
+    [BATTLE_OPTIONS_TYPE_ICONS] =
+    {
+        .title = _("Type Icons"),
+        .options = { 
+                _("Show"),
+                _("Hide"),
+            },
+        .optionDescription = _("Type Icons Description"),
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_ANIMATIONS] =
+    {
+        .title = _("Animations"),
+        .options = { 
+                _("Animated"),
+                _("Skip"),
+            },
+        .optionDescription = _("Animations Description"),
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_INTRO] =
+    {
+        .title = _("Intro"),
+        .options = { 
+                _("Normal"),
+                _("Skip"),
+            },
+        .optionDescription = _("Intro Description"),
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_HP_SPEED] =
+    {
+        .title = _("Hp Speed"),
+        .options = { 
+                _("Fast"),
+                _("Normal"),
+                _("Instant"),
+            },
+        .optionDescription = _("Hp Speed Description"),
+        .numOptions = 3,
+    },
     [BATTLE_OPTIONS_EXP_SPEED] =
     {
-        .title = _("Level"),
+        .title = _("Exp Speed"),
         .options = { 
-                _("Level"),
-                _("No"),
+                _("Fast"),
+                _("Normal"),
+                _("Instant"),
             },
-        .optionDescription = _("Level Description"),
-        .numOptions = 2,
+        .optionDescription = _("Exp Speed Description"),
+        .numOptions = 3,
     },
 };
 
@@ -854,7 +1079,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     if(!areYouNotOnSettingsHub)
         y = 2 + (currentScreenId * 2);
     else
-        y = 2 + (currentOptionId * 2);
+        y = 2 + (GetCursorPosition() * 2);
 
     BlitBitmapToWindow(windowId, sOptionMenuSelector, (x*8) + 5, (y*8), 104, 24);
 
@@ -914,14 +1139,15 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     x = 7;
 	y = 1;
 
-    if((!areYouNotOnSettingsHub && currentScreenId != 0) || (areYouNotOnSettingsHub && currentOptionId != 0))
+    if((!areYouNotOnSettingsHub && currentScreenId != 0) || (areYouNotOnSettingsHub && currentFirstOption != 0))
         BlitBitmapToWindow(windowId, sOptionMenuArrow_Up, (x*8), (y*8) + 7, 16, 16);
 
     // Down Arrow --------------------------------------------------------------------------------------------------------------------
     x = 7;
 	y = 11;
 
-    if((!areYouNotOnSettingsHub && currentScreenId != (NUM_OF_SCREENS - 1)) || (areYouNotOnSettingsHub && currentOptionId != (NUM_OPTIONS_PER_SCREEN - 1)))
+    if((!areYouNotOnSettingsHub && currentScreenId != (NUM_OF_SCREENS - 1)) || 
+        (areYouNotOnSettingsHub && (currentFirstOption + NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN) <= (GetCurrentScreenOptionNumber() - 1)))
         BlitBitmapToWindow(windowId, sOptionMenuArrow_Down, (x*8), (y*8) + 7, 16, 16);
 
     // Left Arrow --------------------------------------------------------------------------------------------------------------------
@@ -929,7 +1155,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     if(!areYouNotOnSettingsHub)
         y = 2 + (currentScreenId * 2);
     else
-        y = 2 + (currentOptionId * 2);
+        y = 2 + (GetCursorPosition() * 2);
 
     BlitBitmapToWindow(windowId, sOptionMenuArrow_Left, (x*8) + 6, (y*8) + 7, 16, 16);
 
@@ -938,7 +1164,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     if(!areYouNotOnSettingsHub)
         y = 2 + (currentScreenId * 2);
     else
-        y = 2 + (currentOptionId * 2);
+        y = 2 + (GetCursorPosition() * 2);
 
     BlitBitmapToWindow(windowId, sOptionMenuArrow_Right, (x*8) + 6, (y*8) + 7, 16, 16);
 
@@ -975,31 +1201,31 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         switch(currentScreenId){
             case GAME_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[i].title);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[GetCurrentSlotOption(i)].title);
                     y = y + 2;
                 }
             break;
             case BATTLE_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[i].title);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[GetCurrentSlotOption(i)].title);
                     y = y + 2;
                 }
             break;
             case VISUAL_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, VisualSettings_Settings[i]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, VisualSettings_Settings[GetCurrentSlotOption(i)]);
                     y = y + 2;
                 }
             break;
             case MUSIC_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, MusicSettings_Settings[i]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, MusicSettings_Settings[GetCurrentSlotOption(i)]);
                     y = y + 2;
                 }
             break;
             default:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, RandomSettings_Settings[i]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, RandomSettings_Settings[GetCurrentSlotOption(i)]);
                     y = y + 2;
                 }
             break;
@@ -1013,7 +1239,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y = 2;
 
         for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-            AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, Hub_Options[i].options[Temporal_Options_Preset_Settings[i]]);
+            AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, Hub_Options[GetCurrentSlotOption(i)].options[Temporal_Options_Preset_Settings[GetCurrentSlotOption(i)]]);
             y = y + 2;
         }
     }
@@ -1024,13 +1250,13 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         switch(currentScreenId){
             case GAME_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[i].options[Temporal_Options_Game_Settings[i]]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[GetCurrentSlotOption(i)].options[Temporal_Options_Game_Settings[GetCurrentSlotOption(i)]]);
                     y = y + 2;
                 }
             break;
             case BATTLE_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[i].options[Temporal_Options_Battle_Settings[i]]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[GetCurrentSlotOption(i)].options[Temporal_Options_Battle_Settings[GetCurrentSlotOption(i)]]);
                     y = y + 2;
                 }
             break;
@@ -1098,7 +1324,7 @@ static void Task_MenuMain(u8 taskId)
 			    currentScreenId--;
             }
             else{
-                currentScreenId = NUM_OF_SCREENS-1;
+                currentScreenId = NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN - 1;
             }
         }
         else{
@@ -1106,8 +1332,18 @@ static void Task_MenuMain(u8 taskId)
 			    currentOptionId--;
             }
             else{
-                currentOptionId = NUM_OPTIONS_PER_SCREEN-1;
+                currentOptionId = GetCurrentScreenOptionNumber() - 1;
             }
+
+            if(currentOptionId == currentOptionId){
+                if(currentFirstOption > 0){
+			        currentFirstOption--;
+                }
+                else{
+                    currentFirstOption = GetCurrentScreenOptionNumber();
+                }
+            }
+            
         }
         PlaySE(SE_SELECT);
 
@@ -1117,7 +1353,7 @@ static void Task_MenuMain(u8 taskId)
     if(JOY_NEW(DPAD_DOWN))
 	{
         if(!areYouNotOnSettingsHub){
-            if(currentScreenId < NUM_OF_SCREENS-1){
+            if(currentScreenId < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN-1){
                 currentScreenId++;
             }
             else{
@@ -1125,12 +1361,7 @@ static void Task_MenuMain(u8 taskId)
             }
         }
         else{
-            if(currentOptionId < NUM_OPTIONS_PER_SCREEN-1){
-                currentOptionId++;
-            }
-            else{
-                currentOptionId = 0;
-            }
+            PressedDownButton();
         }
         PlaySE(SE_SELECT);
         
@@ -1216,6 +1447,7 @@ static void Task_MenuMain(u8 taskId)
     {
         areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
         currentOptionId = 0;
+        currentFirstOption = 0;
         PrintToWindow(WINDOW_1, FONT_BLACK);
     }
 
@@ -1229,6 +1461,8 @@ static void Task_MenuMain(u8 taskId)
         }
         else{
             areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
+            currentOptionId = 0;
+            currentFirstOption = 0;
             PrintToWindow(WINDOW_1, FONT_BLACK);
         }
     }
