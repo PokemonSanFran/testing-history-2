@@ -17,6 +17,7 @@
 #include "international_string_util.h"
 #include "main.h"
 #include "malloc.h"
+#include "main_menu.h"
 #include "menu.h"
 #include "menu_helpers.h"
 #include "palette.h"
@@ -246,6 +247,34 @@ void Task_OpenOptionsMenuFromStartMenu(u8 taskId)
         Options_Menu_Init(CB2_ReturnToFieldWithOpenMenu);
         DestroyTask(taskId);
     }
+}
+
+void CB2_InitUIOptionMenu(void)
+{
+    s32 i;
+
+    ResetSpriteData();
+    FreeAllSpritePalettes();
+    ResetTasks();
+    ResetBgsAndClearDma3BusyFlags(0);
+    DeactivateAllTextPrinters();
+
+    for (i = 0; i < 2; i++)
+        FillWindowPixelBuffer(i, PIXEL_FILL(0));
+
+    FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT);
+    LoadUserWindowBorderGfx(0, 1u, 0xD0u);
+    Menu_LoadStdPalAt(0xE0);
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG0_ON);
+    SetGpuReg(REG_OFFSET_BLDCNT, 0);
+    StopMapMusic();
+    RunTasks();
+    AnimateSprites();
+    BuildOamBuffer();
+    RunTextPrinters();
+    UpdatePaletteFade();
+    FillPalette(RGB_BLACK, 0, 2);
+    Options_Menu_Init(CB2_InitMainMenu);
 }
 
 // This is our main initialization function if you want to call the menu from elsewhere

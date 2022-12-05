@@ -18,6 +18,7 @@
 #include "mystery_event_menu.h"
 #include "naming_screen.h"
 #include "option_menu.h"
+#include "ui_options_menu.h"
 #include "overworld.h"
 #include "palette.h"
 #include "pokeball.h"
@@ -883,7 +884,7 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     ResetTasks();
     ResetSpriteData();
     FreeAllSpritePalettes();
-    if (returningFromOptionsMenu)
+    if (sCurrItemAndOptionMenuCheck & OPTION_MENU_FLAG)
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK); // fade to black
     else
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_WHITEALPHA); // fade to white
@@ -1372,8 +1373,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 DestroyTask(taskId);
                 break;
             case ACTION_OPTION:
-                gMain.savedCallback = CB2_ReinitMainMenu;
-                SetMainCallback2(CB2_InitOptionMenu);
+                SetMainCallback2(CB2_InitUIOptionMenu);
                 DestroyTask(taskId);
                 break;
             case ACTION_MYSTERY_GIFT:
