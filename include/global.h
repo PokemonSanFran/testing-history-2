@@ -480,8 +480,8 @@ struct RankingHall2P
 #define NUM_OF_PRESET_OPTIONS 5 //Number of different options in the hub options
 #define NUM_OPTIONS_GAME_SETTINGS   6
 #define NUM_OPTIONS_BATTLE_SETTINGS 24
-#define NUM_OPTIONS_MUSIC_SETTINGS  4
-#define NUM_OPTIONS_VISUAL_SETTINGS 10
+#define NUM_OPTIONS_MUSIC_SETTINGS  10
+#define NUM_OPTIONS_VISUAL_SETTINGS 5
 #define NUM_OPTIONS_RANDOM_SETTINGS 16
 
 struct SaveBlock2

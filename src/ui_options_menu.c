@@ -56,8 +56,7 @@ enum WindowIds
 //Defines
 #define  NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN 5
 #define  NUM_OF_SCREENS                             5
-#define  NUM_OPTIONS_PER_SCREEN                     5
-#define  MAX_OPTIONS_PER_SETTING                    NUMBER_OF_MON_TYPES + 1
+#define  MAX_OPTIONS_PER_SETTING                    100 // For the Volume Options
 
 //These are defined in include/global.h
 //#define NUM_OF_PRESET_OPTIONS         5       //Number of different options in the hub options
@@ -1005,38 +1004,507 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
 
 // For Visual Settings
 
-static const u8 sText_Visual_Settings_0[]     = _("Visual Setting 0");
-static const u8 sText_Visual_Settings_1[]     = _("Visual Setting 1");
-static const u8 sText_Visual_Settings_2[]     = _("Visual Setting 2");
-static const u8 sText_Visual_Settings_3[]     = _("Visual Setting 3");
-static const u8 sText_Visual_Settings_4[]     = _("Visual Setting 4");
-static const u8 sText_Visual_Settings_5[]     = _("Visual Setting 5");
+enum VisualOptionsID
+{
+    VISUAL_OPTIONS_UNITS,
+    VISUAL_OPTIONS_TEXT_SPEED,
+    VISUAL_OPTIONS_FRAME_TYPE,
+    VISUAL_OPTIONS_FONT_SWITCHER,
+    VISUAL_OPTIONS_COLOR,
+};
 
-static const u8 *VisualSettings_Settings[NUM_OPTIONS_VISUAL_SETTINGS] = {
-    sText_Visual_Settings_0,
-    sText_Visual_Settings_1,
-    sText_Visual_Settings_2,
-    sText_Visual_Settings_3,
-    sText_Visual_Settings_4,
-    sText_Visual_Settings_5,
+struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] = {
+    [VISUAL_OPTIONS_UNITS] =
+    {
+        .title = _("Units"),
+        .options = { 
+            _("Metric"),
+            _("Imperial"),
+            },
+        .optionDescription = _("Units Description"),
+        .numOptions = 2,
+    },
+    [VISUAL_OPTIONS_TEXT_SPEED] =
+    {
+        .title = _("Text Speed"),
+        .options = { 
+            _("Slow"),
+            _("Medium"),
+            _("Fast"),
+            _("Faster"),
+            _("Instant"),
+            },
+        .optionDescription = _("Text Speed Description"),
+        .numOptions = 5,
+    },
+    [VISUAL_OPTIONS_FRAME_TYPE] =
+    {
+        .title = _("Frame Type"),
+        .options = { 
+            _("Frame 1"),
+            _("Frame 2"),
+            _("Frame 3"),
+            _("Frame 4"),
+            _("Frame 5"),
+            _("Frame 6"),
+            _("Frame 7"),
+            _("Frame 8"),
+            _("Frame 9"),
+            _("Frame 10"),
+            _("Frame 11"),
+            _("Frame 12"),
+            _("Frame 13"),
+            _("Frame 14"),
+            _("Frame 15"),
+            _("Frame 16"),
+            _("Frame 17"),
+            _("Frame 18"),
+            _("Frame 19"),
+            _("Frame 20"),
+            },
+        .optionDescription = _("Frame Type Description"),
+        .numOptions = 20,
+    },
+    [VISUAL_OPTIONS_FONT_SWITCHER] =
+    {
+        .title = _("Font Switcher"),
+        .options = { 
+            _("Emerald"),
+            _("Fire Red"),
+            },
+        .optionDescription = _("Font Switcher Description"),
+        .numOptions = 2,
+    },
+    [VISUAL_OPTIONS_COLOR] =
+    {
+        .title = _("Color"),
+        .options = { 
+            _("Red"),
+            _("Green"),
+            _("Blue"),
+            _("Yellow"),
+            _("Black"),
+            _("White"),
+            _("Platinum"),
+            _("Scarlet"),
+            _("Violet"),
+            _("Custom"),
+            },
+        .optionDescription = _("Color Description"),
+        .numOptions = 10,
+    },
 };
 
 // For Music Settings
-static const u8 sText_Music_Settings_0[]     = _("Music Setting 0");
-static const u8 sText_Music_Settings_1[]     = _("Music Setting 1");
-static const u8 sText_Music_Settings_2[]     = _("Music Setting 2");
-static const u8 sText_Music_Settings_3[]     = _("Music Setting 3");
-static const u8 sText_Music_Settings_4[]     = _("Music Setting 4");
-static const u8 sText_Music_Settings_5[]     = _("Music Setting 5");
+enum MusiclOptionsID
+{
+    MUSIC_OPTIONS_SOUND_EFFECT,
+    MUSIC_OPTIONS_MUSIC,
+    MUSIC_OPTIONS_SPEAKER,
+    MUSIC_OPTIONS_SURF,
+    MUSIC_OPTIONS_BIKE,
+    MUSIC_OPTIONS_WILD,
+    MUSIC_OPTIONS_TRAINER,
+    MUSIC_OPTIONS_GYM,
+    MUSIC_OPTIONS_TOURNAMENT,
+    MUSIC_OPTIONS_CHAMPION,
+};
 
-static const u8 *MusicSettings_Settings[NUM_OPTIONS_MUSIC_SETTINGS] = {
-    sText_Music_Settings_0,
-    sText_Music_Settings_1,
-    sText_Music_Settings_2,
-    sText_Music_Settings_3,
+struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
+    [MUSIC_OPTIONS_SOUND_EFFECT] =
+    {
+        .title = _("Sound Effect"),
+        .options = { 
+            _("1"),
+            _("2"),
+            _("3"),
+            _("4"),
+            _("5"),
+            _("6"),
+            _("7"),
+            _("8"),
+            _("9"),
+            _("10"),
+            _("11"),
+            _("12"),
+            _("13"),
+            _("14"),
+            _("15"),
+            _("16"),
+            _("17"),
+            _("18"),
+            _("19"),
+            _("20"),
+            },
+        .optionDescription = _("Sound Effect Description"),
+        .numOptions = 20,
+    },
+    [MUSIC_OPTIONS_MUSIC] =
+    {
+        .title = _("Music"),
+        .options = { 
+            _("1"),
+            _("2"),
+            _("3"),
+            _("4"),
+            _("5"),
+            _("6"),
+            _("7"),
+            _("8"),
+            _("9"),
+            _("10"),
+            _("11"),
+            _("12"),
+            _("13"),
+            _("14"),
+            _("15"),
+            _("16"),
+            _("17"),
+            _("18"),
+            _("19"),
+            _("20"),
+            },
+        .optionDescription = _("Music Description"),
+        .numOptions = 20,
+    },
+    [MUSIC_OPTIONS_SPEAKER] =
+    {
+        .title = _("Speaker"),
+        .options = { 
+            _("Mono"),
+            _("Stereo"),
+            },
+        .optionDescription = _("Speaker Description"),
+        .numOptions = 2,
+    },
+    [MUSIC_OPTIONS_SURF] =
+    {
+        .title = _("Surf"),
+        .options = { 
+            _("PSF"),
+            _("LGPE"),
+            _("HGSS"),
+            _("ORAS"),
+            _("BDSP"),
+            _("BW2"),
+            _("XY"),
+            _("USUM"),
+            _("SV"),
+            },
+        .optionDescription = _("Surf Description"),
+        .numOptions = 9,
+    },
+    [MUSIC_OPTIONS_BIKE] =
+    {
+        .title = _("Bike"),
+        .options = { 
+            _("PSF"),
+            _("LGPE"),
+            _("HGSS"),
+            _("ORAS"),
+            _("BDSP"),
+            _("BW2"),
+            _("XY"),
+            _("USUM"),
+            _("SWSH"),
+            _("SV"),
+            },
+        .optionDescription = _("Bike Description"),
+        .numOptions = 10,
+    },
+    [MUSIC_OPTIONS_WILD] =
+    {
+        .title = _("Wild"),
+        .options = { 
+            _("PSF"),
+            _("LGPE"),
+            _("HGSS"),
+            _("ORAS"),
+            _("BDSP"),
+            _("BW2"),
+            _("XY"),
+            _("USUM"),
+            _("SWSH"),
+            _("SV"),
+            },
+        .optionDescription = _("Wild Description"),
+        .numOptions = 10,
+    },
+    [MUSIC_OPTIONS_TRAINER] =
+    {
+        .title = _("Trainer"),
+        .options = { 
+            _("PSF"),
+            _("LGPE"),
+            _("HGSS"),
+            _("ORAS"),
+            _("BDSP"),
+            _("BW2"),
+            _("XY"),
+            _("USUM"),
+            _("SWSH"),
+            _("SV"),
+            },
+        .optionDescription = _("Trainer Description"),
+        .numOptions = 10,
+    },
+    [MUSIC_OPTIONS_GYM] =
+    {
+        .title = _("Gym"),
+        .options = { 
+            _("PSF"),
+            _("LGPE"),
+            _("HGSS"),
+            _("ORAS"),
+            _("BDSP"),
+            _("BW2"),
+            _("XY"),
+            _("USUM"),
+            _("SWSH"),
+            _("SV"),
+            },
+        .optionDescription = _("Gym Description"),
+        .numOptions = 10,
+    },
+    [MUSIC_OPTIONS_TOURNAMENT] =
+    {
+        .title = _("Tournament"),
+        .options = { 
+            _("PSF"),
+            _("LGPE"),
+            _("HGSS"),
+            _("ORAS"),
+            _("BDSP"),
+            _("BW2"),
+            _("XY"),
+            _("USUM"),
+            _("SWSH"),
+            _("SV"),
+            },
+        .optionDescription = _("Tournament Description"),
+        .numOptions = 10,
+    },
+    [MUSIC_OPTIONS_CHAMPION] =
+    {
+        .title = _("Champion"),
+        .options = { 
+            _("PSF"),
+            _("LGPE"),
+            _("HGSS"),
+            _("ORAS"),
+            _("BDSP"),
+            _("BW2"),
+            _("XY"),
+            _("USUM"),
+            _("SWSH"),
+            _("SV"),
+            },
+        .optionDescription = _("Champion Description"),
+        .numOptions = 10,
+    },
 };
 
 // For Random Settings
+
+enum RandomOptionsID
+{
+    RANDOM_OPTIONS_STARTER,
+    RANDOM_OPTIONS_WILD_BATTLE,
+    RANDOM_OPTIONS_TRAINER_BATTLE,
+    RANDOM_OPTIONS_EVOLUTION,
+    RANDOM_OPTIONS_EVOLUTION_METHOD,
+    RANDOM_OPTIONS_TYPE_EFFECTIVENESS,
+    RANDOM_OPTIONS_BASE_STATS,
+    RANDOM_OPTIONS_TYPES,
+    RANDOM_OPTIONS_ABILITIES,
+    RANDOM_OPTIONS_LEVEL_UP_MOVES,
+    RANDOM_OPTIONS_TMS,
+    RANDOM_OPTIONS_MOVE_TUTORS,
+    RANDOM_OPTIONS_LEARNSETS,
+    RANDOM_OPTIONS_ITEMS,
+    RANDOM_OPTIONS_STATIC_ENCOUNTERS,
+    RANDOM_OPTIONS_TRAINERS,
+};
+
+struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] = {
+    [RANDOM_OPTIONS_STARTER] =
+    {
+        .title = _("Starter"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Starter Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_WILD_BATTLE] =
+    {
+        .title = _("Wild Battle"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Wild Battle Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_TRAINER_BATTLE] =
+    {
+        .title = _("Trainer Battle"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Trainer Battle Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_EVOLUTION] =
+    {
+        .title = _("Evolution"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Legends"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Evolution Description"),
+        .numOptions = 4,
+    },
+    [RANDOM_OPTIONS_EVOLUTION_METHOD] =
+    {
+        .title = _("Evolution Method"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Evolution Method Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] =
+    {
+        .title = _("Type Effectiveness"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Type Effectiveness Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_BASE_STATS] =
+    {
+        .title = _("Base Stats"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Base Stats Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_TYPES] =
+    {
+        .title = _("Types"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Types Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_ABILITIES] =
+    {
+        .title = _("Abilities"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Abilities Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_LEVEL_UP_MOVES] =
+    {
+        .title = _("Level Up Moves"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Level Up Moves Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_TMS] =
+    {
+        .title = _("TMs"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("TMs Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_MOVE_TUTORS] =
+    {
+        .title = _("Move Tutors"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Move Tutors Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_LEARNSETS] =
+    {
+        .title = _("Learnsets"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Learnsets Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_ITEMS] =
+    {
+        .title = _("Items"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Items Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_STATIC_ENCOUNTERS] =
+    {
+        .title = _("Static Encounters"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Static Encounters Description"),
+        .numOptions = 3,
+    },
+    [RANDOM_OPTIONS_TRAINERS] =
+    {
+        .title = _("Trainers"),
+        .options = { 
+            _("Default"),
+            _("Random"),
+            _("Chaos"),
+            },
+        .optionDescription = _("Trainers Description"),
+        .numOptions = 3,
+    }
+};
 
 static const u8 sText_Random_Settings_0[]     = _("Random Setting 0");
 static const u8 sText_Random_Settings_1[]     = _("Random Setting 1");
@@ -1202,19 +1670,19 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
             break;
             case VISUAL_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, VisualSettings_Settings[GetCurrentSlotOption(i)]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, VisualSettings_Settings_Options[GetCurrentSlotOption(i)].title);
                     y = y + 2;
                 }
             break;
             case MUSIC_SETTINGS:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, MusicSettings_Settings[GetCurrentSlotOption(i)]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, MusicSettings_Settings_Options[GetCurrentSlotOption(i)].title);
                     y = y + 2;
                 }
             break;
             default:
                 for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, RandomSettings_Settings[GetCurrentSlotOption(i)]);
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, RandomSettings_Settings_Options[GetCurrentSlotOption(i)].title);
                     y = y + 2;
                 }
             break;
@@ -1249,6 +1717,24 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                     y = y + 2;
                 }
             break;
+            case VISUAL_SETTINGS:
+                for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, VisualSettings_Settings_Options[GetCurrentSlotOption(i)].options[Temporal_Options_Visual_Settings[GetCurrentSlotOption(i)]]);
+                    y = y + 2;
+                }
+            break;
+            case MUSIC_SETTINGS:
+                for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, MusicSettings_Settings_Options[GetCurrentSlotOption(i)].options[Temporal_Options_Music_Settings[GetCurrentSlotOption(i)]]);
+                    y = y + 2;
+                }
+            break;
+            case RANDOM_SETTINGS:
+                for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, RandomSettings_Settings_Options[GetCurrentSlotOption(i)].options[Temporal_Options_Random_Settings[GetCurrentSlotOption(i)]]);
+                    y = y + 2;
+                }
+            break;
         }
         
     }
@@ -1269,13 +1755,13 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[currentOptionId].optionDescription);
             break;
             case VISUAL_SETTINGS:
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[currentOptionId].optionDescription);
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, VisualSettings_Settings_Options[currentOptionId].optionDescription);
             break;
             case MUSIC_SETTINGS:
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[currentOptionId].optionDescription);
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, MusicSettings_Settings_Options[currentOptionId].optionDescription);
             break;
             default:
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[currentOptionId].optionDescription);
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, RandomSettings_Settings_Options[currentOptionId].optionDescription);
             break;
         }
     }
@@ -1369,6 +1855,24 @@ static void Task_MenuMain(u8 taskId)
                     else
                         Temporal_Options_Battle_Settings[currentOptionId] = BattleSettings_Settings_Options[currentOptionId].numOptions - 1;
                 break;
+                case VISUAL_SETTINGS:
+                    if(Temporal_Options_Visual_Settings[currentOptionId] > 0)
+                        Temporal_Options_Visual_Settings[currentOptionId]--;
+                    else
+                        Temporal_Options_Visual_Settings[currentOptionId] = VisualSettings_Settings_Options[currentOptionId].numOptions - 1;
+                break;
+                case MUSIC_SETTINGS:
+                    if(Temporal_Options_Music_Settings[currentOptionId] > 0)
+                        Temporal_Options_Music_Settings[currentOptionId]--;
+                    else
+                        Temporal_Options_Music_Settings[currentOptionId] = MusicSettings_Settings_Options[currentOptionId].numOptions - 1;
+                break;
+                case RANDOM_SETTINGS:
+                    if(Temporal_Options_Random_Settings[currentOptionId] > 0)
+                        Temporal_Options_Random_Settings[currentOptionId]--;
+                    else
+                        Temporal_Options_Random_Settings[currentOptionId] = RandomSettings_Settings_Options[currentOptionId].numOptions - 1;
+                break;
             }
         }
         PlaySE(SE_SELECT);
@@ -1404,14 +1908,31 @@ static void Task_MenuMain(u8 taskId)
                         Temporal_Options_Battle_Settings[currentOptionId] = 0;
                     }
                 break;
+                case VISUAL_SETTINGS:
+                    if(Temporal_Options_Visual_Settings[currentOptionId] < VisualSettings_Settings_Options[currentOptionId].numOptions - 1){
+                        Temporal_Options_Visual_Settings[currentOptionId]++;
+                    }
+                    else{
+                        Temporal_Options_Visual_Settings[currentOptionId] = 0;
+                    }
+                break;
+                case MUSIC_SETTINGS:
+                    if(Temporal_Options_Music_Settings[currentOptionId] < MusicSettings_Settings_Options[currentOptionId].numOptions - 1){
+                        Temporal_Options_Music_Settings[currentOptionId]++;
+                    }
+                    else{
+                        Temporal_Options_Music_Settings[currentOptionId] = 0;
+                    }
+                break;
+                case RANDOM_SETTINGS:
+                    if(Temporal_Options_Random_Settings[currentOptionId] < RandomSettings_Settings_Options[currentOptionId].numOptions - 1){
+                        Temporal_Options_Random_Settings[currentOptionId]++;
+                    }
+                    else{
+                        Temporal_Options_Random_Settings[currentOptionId] = 0;
+                    }
+                break;
             }
-
-            /*
-            BATTLE_SETTINGS,
-            VISUAL_SETTINGS,
-            MUSIC_SETTINGS,
-            RANDOM_SETTINGS,
-            */
         }
         PlaySE(SE_SELECT);
         PrintToWindow(WINDOW_1, FONT_BLACK);
