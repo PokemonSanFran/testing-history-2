@@ -143,7 +143,19 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
 
 static const u32 sMenuTiles[]                       = INCBIN_U32("graphics/start_menu/tiles.4bpp.lz");
 static const u32 sMenuTilemap[]                     = INCBIN_U32("graphics/start_menu/tilemap.bin.lz");
+
 static const u16 sMenuPalette[]                     = INCBIN_U16("graphics/start_menu/palette.gbapal");
+
+static const u16 sMenuPalette_Red[]      = INCBIN_U16("graphics/start_menu/palettes/red.gbapal");
+static const u16 sMenuPalette_Black[]    = INCBIN_U16("graphics/start_menu/palettes/black.gbapal");
+static const u16 sMenuPalette_Green[]    = INCBIN_U16("graphics/start_menu/palettes/green.gbapal");
+static const u16 sMenuPalette_Blue[]     = INCBIN_U16("graphics/start_menu/palettes/blue.gbapal");
+static const u16 sMenuPalette_Platinum[] = INCBIN_U16("graphics/start_menu/palettes/platinum.gbapal");
+static const u16 sMenuPalette_Scarlet[]  = INCBIN_U16("graphics/start_menu/palettes/scarlet.gbapal");
+static const u16 sMenuPalette_Violet[]   = INCBIN_U16("graphics/start_menu/palettes/violet.gbapal");
+static const u16 sMenuPalette_White[]    = INCBIN_U16("graphics/start_menu/palettes/white.gbapal");
+static const u16 sMenuPalette_Yellow[]   = INCBIN_U16("graphics/start_menu/palettes/yellow.gbapal");
+
 static const u8 sStartMenuCursor_Gfx[]              = INCBIN_U8("graphics/start_menu/menu_cursor.4bpp");
 static const u8 sStartMenuCursorMoveMode_Gfx[]      = INCBIN_U8("graphics/start_menu/menu_cursor_move.4bpp");
 static const u8 sStartMenuCursorMoveMode2_Gfx[]     = INCBIN_U8("graphics/start_menu/menu_cursor_move2.4bpp");
@@ -403,7 +415,38 @@ static bool8 Menu_LoadGraphics(void)
         }
         break;
     case 2:
-        LoadPalette(sMenuPalette, 0, 32);
+        switch(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_COLOR]){
+            case OPTIONS_MENU_COLOR_BLACK:
+                LoadPalette(sMenuPalette_Black, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_BLUE:
+                LoadPalette(sMenuPalette_Blue, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_GREEN:
+                LoadPalette(sMenuPalette_Green, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_PLATINUM:
+                LoadPalette(sMenuPalette_Platinum, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_RED:
+                LoadPalette(sMenuPalette_Red, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_SCARLET:
+                LoadPalette(sMenuPalette_Scarlet, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_VIOLET:
+                LoadPalette(sMenuPalette_Violet, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_WHITE:
+                LoadPalette(sMenuPalette_White, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_YELLOW:
+                LoadPalette(sMenuPalette_Yellow, 0, 32);
+            break;
+            default:
+                LoadPalette(sMenuPalette, 0, 32);
+            break;
+        }
         sMenuDataPtr->gfxLoadState++;
         break;
     default:
