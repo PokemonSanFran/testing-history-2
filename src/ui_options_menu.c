@@ -2429,6 +2429,7 @@ static void Task_MenuMain(u8 taskId)
 
             currentOptionId = 0;
             currentFirstOption = 0;
+            PrintToWindow(WINDOW_1, FONT_BLACK);
         }
     }
 
@@ -2444,6 +2445,7 @@ static void Task_MenuMain(u8 taskId)
 
             currentOptionId = 0;
             currentFirstOption = 0;
+            PrintToWindow(WINDOW_1, FONT_BLACK);
         }
     }
 }
