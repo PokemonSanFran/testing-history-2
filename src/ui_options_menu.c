@@ -590,7 +590,7 @@ static const u8 sText_Title_Settings_Hub[]  = _("Settings Hub");
 static const u8 sText_Options_Text[]        = _("Option Description");
 
 
-static const u8 sText_Discard_Text[]        = _("Are you sure you want to leave without\nsaving the changes?\nA Button: Yes\nB Button: Cancel\nStart Button: Save");
+static const u8 sText_Discard_Text[]        = _("Are you sure you want to leave without\nsaving the changes?\n{A_BUTTON}: Yes\n{B_BUTTON}: Cancel\n{START_BUTTON}: Save");
 
 // Preset
 
