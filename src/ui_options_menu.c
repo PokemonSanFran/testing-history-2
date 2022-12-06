@@ -102,6 +102,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 
+static void CopyPresetDataToTemporaryData();
+static void ChangePresetDataToCustom();
 
 static void CopySaveBlockDataToTemporalData();
 static void CopyTemporalDataToSaveBlockData();
@@ -571,8 +573,7 @@ static const u8 sOptionMenuSelector[]       = INCBIN_U8("graphics/ui_menus/optio
 static const u8 sText_Title_Settings_Hub[]  = _("Settings Hub");
 static const u8 sText_Options_Text[]        = _("Option Description");
 
-// For Game Settings
-//#define NUM_OF_PRESET_OPTIONS 5 This is defined in Global
+// Preset
 
 struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
     [GAME_SETTINGS] =
@@ -591,13 +592,14 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
         .title = _("Battle Settings"),
         .options = { 
             _("Default"),
+            _("Challenge"),
             _("Speedrun"),
             _("Nuzlocke"),
             _("Kaizo"),
             _("Custom"),
             },
         .optionDescription = _("Battle Settings Description"),
-        .numOptions = 5,
+        .numOptions = 6,
     },
     [VISUAL_SETTINGS] =
     {
@@ -615,7 +617,6 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
         .title = _("Music Settings"),
         .options = { 
             _("PSF"),
-            _("Custom"),
             _("LGPE"),
             _("HGSS"),
             _("ORAS"),
@@ -623,10 +624,12 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
             _("BW2"),
             _("XY"),
             _("USUM"),
+            _("SWSH"),
             _("SV"),
+            _("Custom"),
             },
         .optionDescription = _("Music Settings Description"),
-        .numOptions = 10,
+        .numOptions = 11,
     },
     [RANDOM_SETTINGS] =
     {
@@ -643,8 +646,469 @@ struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
     },
 };
 
-// For Game Settings
+enum GamePresetOptionsID
+{
+    GAME_PRESET_DEFAULT,
+    GAME_PRESET_SPEEDRUN,
+    GAME_PRESET_CUSTOM,
+};
 
+enum BattlePresetOptionsID
+{
+    BATTLE_PRESET_DEFAULT,
+    BATTLE_PRESET_CHALLENGE,
+    BATTLE_PRESET_SPEEDRUN,
+    BATTLE_PRESET_NUZLOCKE,
+    BATTLE_PRESET_KAIZO,
+    BATTLE_PRESET_CUSTOM,
+};
+
+enum VisualPresetOptionsID
+{
+    VISUAL_PRESET_DEFAULT,
+    VISUAL_PRESET_SPEEDRUN,
+    VISUAL_PRESET_CUSTOM,
+};
+
+enum MusicPresetOptionsID
+{
+    MUSIC_PRESET_DEFAULT,
+    MUSIC_PRESET_LGPE,
+    MUSIC_PRESET_HGSS,
+    MUSIC_PRESET_ORAS,
+    MUSIC_PRESET_BDSP,
+    MUSIC_PRESET_BW2,
+    MUSIC_PRESET_XY,
+    MUSIC_PRESET_USUM,
+    MUSIC_PRESET_SWSH,
+    MUSIC_PRESET_SV,
+    MUSIC_PRESET_CUSTOM,
+};
+
+enum RandomPresetOptionsID
+{
+    RANDOM_PRESET_DEFAULT,
+    RANDOM_PRESET_SANE,
+    RANDOM_PRESET_CRAZY,
+    RANDOM_PRESET_TOTAL_CHAOS,
+    RANDOM_PRESET_CUSTOM,
+};
+
+enum RandomOptionsForOptionsMenu
+{
+    RANDOM_DEFAULT,
+    RANDOM_RANDOM,
+    RANDOM_CHAOS,
+};
+
+#define MAX_VOLUME 19
+
+static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PER_SETTING] = {
+    [GAME_SETTINGS] =
+    {
+        [GAME_PRESET_DEFAULT]  = {
+            [GAME_OPTIONS_SAVE_BOOT]         = 1, 
+            [GAME_OPTIONS_BUTTON_MODE]       = 1, 
+            [GAME_OPTIONS_SAVE_BEHAVIOR]     = 1, 
+            [GAME_OPTIONS_RUN]               = 1, 
+            [GAME_OPTIONS_PUZZLE_DIFFICULTY] = 0, 
+            [GAME_OPTIONS_ITEM_SORT]         = 2
+        },
+        [GAME_PRESET_SPEEDRUN] = {
+            [GAME_OPTIONS_SAVE_BOOT]         = 1, 
+            [GAME_OPTIONS_BUTTON_MODE]       = 1, 
+            [GAME_OPTIONS_SAVE_BEHAVIOR]     = 1, 
+            [GAME_OPTIONS_RUN]               = 2, 
+            [GAME_OPTIONS_PUZZLE_DIFFICULTY] = 0, 
+            [GAME_OPTIONS_ITEM_SORT]         = 4
+        }
+    },
+    [BATTLE_SETTINGS] =
+    {
+        [BATTLE_PRESET_DEFAULT]  = {
+            [BATTLE_OPTIONS_EXPERIENCE]             = 0, 
+            [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0, 
+            [BATTLE_OPTIONS_LEVEL]                  = 0, 
+            [BATTLE_OPTIONS_SWITCH_STYLE]           = 0, 
+            [BATTLE_OPTIONS_TAKE_WILD_ITEMS]        = 0, 
+            [BATTLE_OPTIONS_LAST_USED_BALL]         = 0,
+            [BATTLE_OPTIONS_QUICK_RUN]              = 0, 
+            [BATTLE_OPTIONS_BATTLE_DIFFICULTY]      = 0, 
+            [BATTLE_OPTIONS_FAINTED_MON]            = 0, 
+            [BATTLE_OPTIONS_FIRST_POKEMON_CATCH]    = 0, 
+            [BATTLE_OPTIONS_NICKNAME]               = 0, 
+            [BATTLE_OPTIONS_WITHEOUT]               = 0,
+            [BATTLE_OPTIONS_ITEM_HEALING]           = 0, 
+            [BATTLE_OPTIONS_CENTER_HEALING]         = 0, 
+            [BATTLE_OPTIONS_MOVE_HEALING]           = 0, 
+            [BATTLE_OPTIONS_BAG_ITEMS]              = 0, 
+            [BATTLE_OPTIONS_OPPONENTS_ITEMS]        = 0, 
+            [BATTLE_OPTIONS_BASE_STAT_EQUALIZER]    = 0,
+            [BATTLE_OPTIONS_ONE_TYPE_CHALLENGE]     = 0, 
+            [BATTLE_OPTIONS_TYPE_ICONS]             = 0, 
+            [BATTLE_OPTIONS_ANIMATIONS]             = 0, 
+            [BATTLE_OPTIONS_INTRO]                  = 0, 
+            [BATTLE_OPTIONS_HP_SPEED]               = 0, 
+            [BATTLE_OPTIONS_EXP_SPEED]              = 0
+        },
+        [BATTLE_PRESET_SPEEDRUN]  = {
+            [BATTLE_OPTIONS_EXPERIENCE]             = 0, 
+            [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0, 
+            [BATTLE_OPTIONS_LEVEL]                  = 0, 
+            [BATTLE_OPTIONS_SWITCH_STYLE]           = 0, 
+            [BATTLE_OPTIONS_TAKE_WILD_ITEMS]        = 0, 
+            [BATTLE_OPTIONS_LAST_USED_BALL]         = 0,
+            [BATTLE_OPTIONS_QUICK_RUN]              = 0, 
+            [BATTLE_OPTIONS_BATTLE_DIFFICULTY]      = 0, 
+            [BATTLE_OPTIONS_FAINTED_MON]            = 0, 
+            [BATTLE_OPTIONS_FIRST_POKEMON_CATCH]    = 0, 
+            [BATTLE_OPTIONS_NICKNAME]               = 0, 
+            [BATTLE_OPTIONS_WITHEOUT]               = 0,
+            [BATTLE_OPTIONS_ITEM_HEALING]           = 0, 
+            [BATTLE_OPTIONS_CENTER_HEALING]         = 0, 
+            [BATTLE_OPTIONS_MOVE_HEALING]           = 0, 
+            [BATTLE_OPTIONS_BAG_ITEMS]              = 0, 
+            [BATTLE_OPTIONS_OPPONENTS_ITEMS]        = 0, 
+            [BATTLE_OPTIONS_BASE_STAT_EQUALIZER]    = 0,
+            [BATTLE_OPTIONS_ONE_TYPE_CHALLENGE]     = 0, 
+            [BATTLE_OPTIONS_TYPE_ICONS]             = 0, 
+            [BATTLE_OPTIONS_ANIMATIONS]             = 0, 
+            [BATTLE_OPTIONS_INTRO]                  = 0, 
+            [BATTLE_OPTIONS_HP_SPEED]               = 0, 
+            [BATTLE_OPTIONS_EXP_SPEED]              = 0
+        },
+        [BATTLE_PRESET_NUZLOCKE]  = {
+            [BATTLE_OPTIONS_EXPERIENCE]             = 0, 
+            [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0, 
+            [BATTLE_OPTIONS_LEVEL]                  = 0, 
+            [BATTLE_OPTIONS_SWITCH_STYLE]           = 0, 
+            [BATTLE_OPTIONS_TAKE_WILD_ITEMS]        = 0, 
+            [BATTLE_OPTIONS_LAST_USED_BALL]         = 0,
+            [BATTLE_OPTIONS_QUICK_RUN]              = 0, 
+            [BATTLE_OPTIONS_BATTLE_DIFFICULTY]      = 0, 
+            [BATTLE_OPTIONS_FAINTED_MON]            = 0, 
+            [BATTLE_OPTIONS_FIRST_POKEMON_CATCH]    = 0, 
+            [BATTLE_OPTIONS_NICKNAME]               = 0, 
+            [BATTLE_OPTIONS_WITHEOUT]               = 0,
+            [BATTLE_OPTIONS_ITEM_HEALING]           = 0, 
+            [BATTLE_OPTIONS_CENTER_HEALING]         = 0, 
+            [BATTLE_OPTIONS_MOVE_HEALING]           = 0, 
+            [BATTLE_OPTIONS_BAG_ITEMS]              = 0, 
+            [BATTLE_OPTIONS_OPPONENTS_ITEMS]        = 0, 
+            [BATTLE_OPTIONS_BASE_STAT_EQUALIZER]    = 0,
+            [BATTLE_OPTIONS_ONE_TYPE_CHALLENGE]     = 0, 
+            [BATTLE_OPTIONS_TYPE_ICONS]             = 0, 
+            [BATTLE_OPTIONS_ANIMATIONS]             = 0, 
+            [BATTLE_OPTIONS_INTRO]                  = 0, 
+            [BATTLE_OPTIONS_HP_SPEED]               = 0, 
+            [BATTLE_OPTIONS_EXP_SPEED]              = 0
+        },
+        [BATTLE_PRESET_KAIZO]  = {
+            [BATTLE_OPTIONS_EXPERIENCE]             = 0, 
+            [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0, 
+            [BATTLE_OPTIONS_LEVEL]                  = 0, 
+            [BATTLE_OPTIONS_SWITCH_STYLE]           = 0, 
+            [BATTLE_OPTIONS_TAKE_WILD_ITEMS]        = 0, 
+            [BATTLE_OPTIONS_LAST_USED_BALL]         = 0,
+            [BATTLE_OPTIONS_QUICK_RUN]              = 0, 
+            [BATTLE_OPTIONS_BATTLE_DIFFICULTY]      = 0, 
+            [BATTLE_OPTIONS_FAINTED_MON]            = 0, 
+            [BATTLE_OPTIONS_FIRST_POKEMON_CATCH]    = 0, 
+            [BATTLE_OPTIONS_NICKNAME]               = 0, 
+            [BATTLE_OPTIONS_WITHEOUT]               = 0,
+            [BATTLE_OPTIONS_ITEM_HEALING]           = 0, 
+            [BATTLE_OPTIONS_CENTER_HEALING]         = 0, 
+            [BATTLE_OPTIONS_MOVE_HEALING]           = 0, 
+            [BATTLE_OPTIONS_BAG_ITEMS]              = 0, 
+            [BATTLE_OPTIONS_OPPONENTS_ITEMS]        = 0, 
+            [BATTLE_OPTIONS_BASE_STAT_EQUALIZER]    = 0,
+            [BATTLE_OPTIONS_ONE_TYPE_CHALLENGE]     = 0, 
+            [BATTLE_OPTIONS_TYPE_ICONS]             = 0, 
+            [BATTLE_OPTIONS_ANIMATIONS]             = 0, 
+            [BATTLE_OPTIONS_INTRO]                  = 0, 
+            [BATTLE_OPTIONS_HP_SPEED]               = 0, 
+            [BATTLE_OPTIONS_EXP_SPEED]              = 0
+        },
+    },
+    [VISUAL_SETTINGS] =
+    {
+        [VISUAL_PRESET_DEFAULT]  = {
+            [VISUAL_OPTIONS_UNITS]           = 1, 
+            [VISUAL_OPTIONS_TEXT_SPEED]      = 2, 
+            [VISUAL_OPTIONS_FRAME_TYPE]      = 0, 
+            [VISUAL_OPTIONS_FONT_SWITCHER]   = 0, 
+            [VISUAL_OPTIONS_COLOR]           = 6, 
+        },
+        [VISUAL_PRESET_SPEEDRUN] = {
+            [VISUAL_OPTIONS_UNITS]           = 1, 
+            [VISUAL_OPTIONS_TEXT_SPEED]      = 4, 
+            [VISUAL_OPTIONS_FRAME_TYPE]      = 0, 
+            [VISUAL_OPTIONS_FONT_SWITCHER]   = 0, 
+            [VISUAL_OPTIONS_COLOR]           = 6, 
+        }
+    },
+    [MUSIC_SETTINGS] =
+    {
+        [MUSIC_PRESET_DEFAULT]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_DEFAULT, 
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_DEFAULT, 
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_DEFAULT, 
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_DEFAULT, 
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_DEFAULT, 
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_DEFAULT, 
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_DEFAULT, 
+        },
+        [MUSIC_PRESET_LGPE]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_LGPE, 
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_LGPE, 
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_LGPE, 
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_LGPE, 
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_LGPE, 
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_LGPE, 
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_LGPE, 
+        },
+        [MUSIC_PRESET_HGSS]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_HGSS, 
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_HGSS, 
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_HGSS, 
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_HGSS, 
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_HGSS, 
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_HGSS, 
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_HGSS, 
+        },
+        [MUSIC_PRESET_ORAS]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_ORAS, 
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_ORAS, 
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_ORAS, 
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_ORAS, 
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_ORAS, 
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_ORAS, 
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_ORAS, 
+        },
+        [MUSIC_PRESET_BDSP]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_BDSP,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_BDSP,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_BDSP,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_BDSP,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_BDSP,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_BDSP,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_BDSP,
+        },
+        [MUSIC_PRESET_BW2]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_BW2,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_BW2,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_BW2,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_BW2,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_BW2,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_BW2,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_BW2,
+        },
+        [MUSIC_PRESET_XY]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_XY,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_XY,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_XY,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_XY,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_XY,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_XY,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_XY,
+        },
+        [MUSIC_PRESET_USUM]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_USUM,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_USUM,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_USUM,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_USUM,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_USUM,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_USUM,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_USUM,
+        },
+        [MUSIC_PRESET_SWSH]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_SWSH,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_SWSH,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_SWSH,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_SWSH,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_SWSH,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_SWSH,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_SWSH,
+        },
+        [MUSIC_PRESET_SV]  = {
+            [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
+            [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
+            [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
+            [MUSIC_OPTIONS_SURF]             = MUSIC_PRESET_DEFAULT,
+            [MUSIC_OPTIONS_BIKE]             = MUSIC_PRESET_DEFAULT,
+            [MUSIC_OPTIONS_WILD]             = MUSIC_PRESET_SV,
+            [MUSIC_OPTIONS_TRAINER]          = MUSIC_PRESET_SV,
+            [MUSIC_OPTIONS_GYM]              = MUSIC_PRESET_SV,
+            [MUSIC_OPTIONS_TOURNAMENT]       = MUSIC_PRESET_SV,
+            [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_SV,
+        },
+    }, 
+    [RANDOM_SETTINGS] =
+    {
+        [RANDOM_PRESET_DEFAULT]  = {
+            [RANDOM_OPTIONS_STARTER]            = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_TYPES]              = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_TMS]                = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_ITEMS]              = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_DEFAULT, 
+        },
+        [RANDOM_PRESET_SANE]  = {
+            [RANDOM_OPTIONS_STARTER]            = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_TYPES]              = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_TMS]                = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_ITEMS]              = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_DEFAULT, 
+            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_DEFAULT, 
+        },
+        [RANDOM_PRESET_CRAZY]  = {
+            [RANDOM_OPTIONS_STARTER]            = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_TYPES]              = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_TMS]                = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_ITEMS]              = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_RANDOM, 
+            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_RANDOM, 
+        },
+        [RANDOM_PRESET_TOTAL_CHAOS]  = {
+            [RANDOM_OPTIONS_STARTER]            = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_EVOLUTION]          = RANDOM_CHAOS + 1, 
+            [RANDOM_OPTIONS_EVOLUTION_METHOD]   = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_TYPE_EFFECTIVENESS] = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_BASE_STATS]         = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_TYPES]              = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_ABILITIES]          = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_LEVEL_UP_MOVES]     = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_TMS]                = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_MOVE_TUTORS]        = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_LEARNSETS]          = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_ITEMS]              = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_STATIC_ENCOUNTERS]  = RANDOM_CHAOS, 
+            [RANDOM_OPTIONS_TRAINERS]           = RANDOM_CHAOS, 
+        },
+    },
+};
+
+void CopyPresetDataToTemporaryData()
+{
+    u8 i, j;
+
+    switch(currentScreenId){
+        case GAME_SETTINGS:
+            for(i = 0 ;i < NUM_OPTIONS_GAME_SETTINGS; i++){
+                if(Temporal_Options_Preset_Settings[currentScreenId] != GAME_PRESET_CUSTOM)
+                    Temporal_Options_Game_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
+            }
+        break;
+        case BATTLE_SETTINGS:
+            for(i = 0 ;i < NUM_OPTIONS_BATTLE_SETTINGS; i++){
+                if(Temporal_Options_Preset_Settings[currentScreenId] != BATTLE_PRESET_CUSTOM)
+                    Temporal_Options_Battle_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
+            }
+        break;
+        case VISUAL_SETTINGS:
+            for(i = 0 ;i < NUM_OPTIONS_VISUAL_SETTINGS; i++){
+                if(Temporal_Options_Preset_Settings[currentScreenId] != VISUAL_PRESET_CUSTOM)
+                    Temporal_Options_Visual_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
+            }
+        break;
+        case MUSIC_SETTINGS:
+            for(i = 0 ;i < NUM_OPTIONS_MUSIC_SETTINGS; i++){
+                if(Temporal_Options_Preset_Settings[currentScreenId] != MUSIC_PRESET_CUSTOM)
+                    Temporal_Options_Music_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
+            }
+        break;
+        case RANDOM_SETTINGS:
+            for(i = 0 ;i < NUM_OPTIONS_RANDOM_SETTINGS; i++){
+                if(Temporal_Options_Preset_Settings[currentScreenId] != RANDOM_PRESET_CUSTOM)
+                    Temporal_Options_Random_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
+            }
+        break;
+    }
+}
+
+void ChangePresetDataToCustom()
+{
+    u8 i, j;
+
+    switch(currentScreenId){
+        case GAME_SETTINGS:
+            Temporal_Options_Preset_Settings[currentScreenId] = GAME_PRESET_CUSTOM;
+        break;
+        case BATTLE_SETTINGS:
+            Temporal_Options_Preset_Settings[currentScreenId] = BATTLE_PRESET_CUSTOM;
+        break;
+        case VISUAL_SETTINGS:
+            Temporal_Options_Preset_Settings[currentScreenId] = VISUAL_PRESET_CUSTOM;
+        break;
+        case MUSIC_SETTINGS:
+            Temporal_Options_Preset_Settings[currentScreenId] = MUSIC_PRESET_CUSTOM;
+        break;
+        case RANDOM_SETTINGS:
+            Temporal_Options_Preset_Settings[currentScreenId] = RANDOM_PRESET_CUSTOM;
+        break;
+    }
+}
+
+// For Game Settings
 struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
     [GAME_OPTIONS_SAVE_BOOT] =
     {
@@ -1275,26 +1739,6 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
 
 // For Random Settings
 
-enum RandomOptionsID
-{
-    RANDOM_OPTIONS_STARTER,
-    RANDOM_OPTIONS_WILD_BATTLE,
-    RANDOM_OPTIONS_TRAINER_BATTLE,
-    RANDOM_OPTIONS_EVOLUTION,
-    RANDOM_OPTIONS_EVOLUTION_METHOD,
-    RANDOM_OPTIONS_TYPE_EFFECTIVENESS,
-    RANDOM_OPTIONS_BASE_STATS,
-    RANDOM_OPTIONS_TYPES,
-    RANDOM_OPTIONS_ABILITIES,
-    RANDOM_OPTIONS_LEVEL_UP_MOVES,
-    RANDOM_OPTIONS_TMS,
-    RANDOM_OPTIONS_MOVE_TUTORS,
-    RANDOM_OPTIONS_LEARNSETS,
-    RANDOM_OPTIONS_ITEMS,
-    RANDOM_OPTIONS_STATIC_ENCOUNTERS,
-    RANDOM_OPTIONS_TRAINERS,
-};
-
 struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] = {
     [RANDOM_OPTIONS_STARTER] =
     {
@@ -1843,6 +2287,8 @@ static void Task_MenuMain(u8 taskId)
                         Temporal_Options_Random_Settings[currentOptionId] = RandomSettings_Settings_Options[currentOptionId].numOptions - 1;
                 break;
             }
+
+            ChangePresetDataToCustom();
         }
         PlaySE(SE_SELECT);
 
@@ -1902,6 +2348,8 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
             }
+
+            ChangePresetDataToCustom();
         }
         PlaySE(SE_SELECT);
         PrintToWindow(WINDOW_1, FONT_BLACK);
@@ -1910,6 +2358,7 @@ static void Task_MenuMain(u8 taskId)
     if (JOY_NEW(A_BUTTON))
     {
         areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
+        CopyPresetDataToTemporaryData();
         currentOptionId = 0;
         currentFirstOption = 0;
         PrintToWindow(WINDOW_1, FONT_BLACK);
