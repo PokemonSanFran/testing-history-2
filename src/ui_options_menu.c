@@ -231,8 +231,15 @@ static const u32 sMenuTiles[]   = INCBIN_U32("graphics/ui_menus/options_menu/til
 static const u32 sMenuTilemap[] = INCBIN_U32("graphics/ui_menus/options_menu/tilemap.bin.lz");
 static const u16 sMenuPalette[] = INCBIN_U16("graphics/ui_menus/options_menu/palette.gbapal");
 
-static const u16 sMenuPalette_Red[] = INCBIN_U16("graphics/ui_menus/options_menu/palette_red.gbapal");
-
+static const u16 sMenuPalette_Red[]      = INCBIN_U16("graphics/ui_menus/options_menu/palettes/red.gbapal");
+static const u16 sMenuPalette_Black[]    = INCBIN_U16("graphics/ui_menus/options_menu/palettes/black.gbapal");
+static const u16 sMenuPalette_Green[]    = INCBIN_U16("graphics/ui_menus/options_menu/palettes/green.gbapal");
+static const u16 sMenuPalette_Blue[]     = INCBIN_U16("graphics/ui_menus/options_menu/palettes/blue.gbapal");
+static const u16 sMenuPalette_Platinum[] = INCBIN_U16("graphics/ui_menus/options_menu/palettes/platinum.gbapal");
+static const u16 sMenuPalette_Scarlet[]  = INCBIN_U16("graphics/ui_menus/options_menu/palettes/scarlet.gbapal");
+static const u16 sMenuPalette_Violet[]   = INCBIN_U16("graphics/ui_menus/options_menu/palettes/violet.gbapal");
+static const u16 sMenuPalette_White[]    = INCBIN_U16("graphics/ui_menus/options_menu/palettes/white.gbapal");
+static const u16 sMenuPalette_Yellow[]   = INCBIN_U16("graphics/ui_menus/options_menu/palettes/yellow.gbapal");
 enum Colors
 {
     FONT_BLACK,
@@ -480,8 +487,32 @@ static bool8 Menu_LoadGraphics(void)
         break;
     case 2:
         switch(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_COLOR]){
+            case OPTIONS_MENU_COLOR_BLACK:
+                LoadPalette(sMenuPalette_Black, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_BLUE:
+                LoadPalette(sMenuPalette_Blue, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_GREEN:
+                LoadPalette(sMenuPalette_Green, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_PLATINUM:
+                LoadPalette(sMenuPalette_Platinum, 0, 32);
+            break;
             case OPTIONS_MENU_COLOR_RED:
                 LoadPalette(sMenuPalette_Red, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_SCARLET:
+                LoadPalette(sMenuPalette_Scarlet, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_VIOLET:
+                LoadPalette(sMenuPalette_Violet, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_WHITE:
+                LoadPalette(sMenuPalette_White, 0, 32);
+            break;
+            case OPTIONS_MENU_COLOR_YELLOW:
+                LoadPalette(sMenuPalette_Yellow, 0, 32);
             break;
             default:
                 LoadPalette(sMenuPalette, 0, 32);
@@ -2690,6 +2721,45 @@ static void Task_MenuTurnOff(u8 taskId)
     }
 }
 
+static void RecolorWindow(){
+    FreeAllSpritePalettes();
+    switch(Temporal_Options_Visual_Settings[VISUAL_OPTIONS_COLOR]){
+        case OPTIONS_MENU_COLOR_BLACK:
+            LoadPalette(sMenuPalette_Black, 0, 32);
+        break;
+        case OPTIONS_MENU_COLOR_BLUE:
+            LoadPalette(sMenuPalette_Blue, 0, 32);
+        break;
+        case OPTIONS_MENU_COLOR_GREEN:
+            LoadPalette(sMenuPalette_Green, 0, 32);
+        break;
+        case OPTIONS_MENU_COLOR_PLATINUM:
+            LoadPalette(sMenuPalette_Platinum, 0, 32);
+        break;
+        case OPTIONS_MENU_COLOR_RED:
+            LoadPalette(sMenuPalette_Red, 0, 32);
+        break;
+        case OPTIONS_MENU_COLOR_SCARLET:
+            LoadPalette(sMenuPalette_Scarlet, 0, 32);
+        break;
+        case OPTIONS_MENU_COLOR_VIOLET:
+            LoadPalette(sMenuPalette_Violet, 0, 32);
+        break;
+        case OPTIONS_MENU_COLOR_WHITE:
+            LoadPalette(sMenuPalette_White, 0, 32);
+        break;
+        case OPTIONS_MENU_COLOR_YELLOW:
+            LoadPalette(sMenuPalette_Yellow, 0, 32);
+        break;
+        default:
+            LoadPalette(sMenuPalette, 0, 32);
+        break;
+    }
+    mgba_printf(MGBA_LOG_WARN, "Color %d", Temporal_Options_Visual_Settings[VISUAL_OPTIONS_COLOR]);
+    //SetMainCallback2(CB2_InitUIOptionMenu);
+    //DestroyTask(taskId);
+}
+
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
 {
@@ -2759,8 +2829,12 @@ static void Task_MenuMain(u8 taskId)
                 case VISUAL_SETTINGS:
                     if(Temporal_Options_Visual_Settings[currentOptionId] > 0)
                         Temporal_Options_Visual_Settings[currentOptionId]--;
-                    else
+                    else{
                         Temporal_Options_Visual_Settings[currentOptionId] = VisualSettings_Settings_Options[currentOptionId].numOptions - 1;
+                    } 
+
+                    if(currentOptionId == VISUAL_OPTIONS_COLOR)
+                        RecolorWindow();
                 break;
                 case MUSIC_SETTINGS:
                     if(Temporal_Options_Music_Settings[currentOptionId] > 0)
@@ -2818,6 +2892,9 @@ static void Task_MenuMain(u8 taskId)
                     else{
                         Temporal_Options_Visual_Settings[currentOptionId] = 0;
                     }
+
+                    if(currentOptionId == VISUAL_OPTIONS_COLOR)
+                        RecolorWindow();
                 break;
                 case MUSIC_SETTINGS:
                     if(Temporal_Options_Music_Settings[currentOptionId] < MusicSettings_Settings_Options[currentOptionId].numOptions - 1){
@@ -2848,7 +2925,7 @@ static void Task_MenuMain(u8 taskId)
         if(!areYouNotOnSettingsHub && !ShouldShowDiscardDialogue){
             areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
             CopyPresetDataToTemporaryData();
-            CopyCustomPresetDataToPresetData();
+            //CopyCustomPresetDataToPresetData();
             currentOptionId = 0;
             currentFirstOption = 0;
             PrintToWindow(WINDOW_1, FONT_BLACK);
