@@ -590,8 +590,11 @@ static const u8 sText_Title_Settings_Hub[]  = _("Settings Hub");
 static const u8 sText_Options_Text[]        = _("Option Description");
 
 
-static const u8 sText_Discard_Text[]        = _("Are you sure you want to leave without\nsaving the changes?\n{A_BUTTON}: Yes\n{B_BUTTON}: Cancel\n{START_BUTTON}: Save");
+static const u8 sText_Discard_Text[]        = _("Are you sure you want to leave without\nsaving the changes?");
 
+static const u8 sText_Help_Bar_Discard[]        = _("{A_BUTTON} Yes {B_BUTTON} Cancel {START_BUTTON} Save");
+static const u8 sText_Help_Bar_Settings_Hub[]   = _("{DPAD_LEFT}{DPAD_RIGHT} Preset {A_BUTTON} Explore {B_BUTTON} Discard {START_BUTTON} Save");
+static const u8 sText_Help_Bar_Settings_Page[]  = _("{DPAD_LEFT}{DPAD_RIGHT} Change {B_BUTTON} Discard {START_BUTTON} Save {L_BUTTON}{R_BUTTON} Next Page");
 // Preset
 
 struct OptionData Hub_Options[NUM_OF_PRESET_OPTIONS] = {
@@ -2175,7 +2178,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     // Only gets displayed you are on the Settings Hub
     x = 0;
     y = 14;
-    if(ShouldShowDiscardDialogue){//asdf
+    if(ShouldShowDiscardDialogue){
         AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Discard_Text);
     }
     else if(!areYouNotOnSettingsHub){
@@ -2199,6 +2202,19 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, RandomSettings_Settings_Options[currentOptionId].optionDescription);
             break;
         }
+    }
+
+    // Help Bar --------------------------------------------------------------------------------------------------------------------
+    x = 0;
+    y = 18;
+    if(ShouldShowDiscardDialogue){
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Discard);
+    }
+    else if(!areYouNotOnSettingsHub){
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Settings_Hub);
+    }
+    else{
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Settings_Page);
     }
 
     // --------------------------------------------------------------------------------------------------------------------
