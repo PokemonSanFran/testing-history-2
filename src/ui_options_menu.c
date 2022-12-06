@@ -79,6 +79,7 @@ enum OptionsIds
 //==========EWRAM==========//
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
+static EWRAM_DATA bool8 ShouldShowDiscardDialogue = FALSE;
 static EWRAM_DATA u8  currentOptionId = 0;
 static EWRAM_DATA u8  currentScreenId = 0;
 static EWRAM_DATA u8  currentFirstOption = 0;
@@ -390,6 +391,21 @@ static void Menu_FreeResources(void)
 {
     try_free(sMenuDataPtr);
     try_free(sBg1TilemapBuffer);
+
+    ShouldShowDiscardDialogue = FALSE;
+
+    try_free(ShouldShowDiscardDialogue);
+    try_free(currentOptionId);
+    try_free(currentScreenId);
+    try_free(currentFirstOption);
+    try_free(areYouNotOnSettingsHub);
+
+    try_free(Temporal_Options_Preset_Settings);
+    try_free(Temporal_Options_Game_Settings);
+    try_free(Temporal_Options_Battle_Settings);
+    try_free(Temporal_Options_Music_Settings);
+    try_free(Temporal_Options_Visual_Settings);
+    try_free(Temporal_Options_Random_Settings);
     FreeAllWindowBuffers();
 }
 
@@ -572,6 +588,9 @@ static const u8 sOptionMenuSelector[]       = INCBIN_U8("graphics/ui_menus/optio
 //Text
 static const u8 sText_Title_Settings_Hub[]  = _("Settings Hub");
 static const u8 sText_Options_Text[]        = _("Option Description");
+
+
+static const u8 sText_Discard_Text[]        = _("Are you sure you want to leave without\nsaving the changes?\nA Button: Yes\nB Button: Cancel\nStart Button: Save");
 
 // Preset
 
@@ -1126,7 +1145,7 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
         .options = { 
             _("Normal"),
             _("LR"),
-            _("L = A"),
+            _("L : A"),
             },
         .optionDescription = _("Button Mode Description"),
         .numOptions = 3,
@@ -2156,7 +2175,10 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     // Only gets displayed you are on the Settings Hub
     x = 0;
     y = 14;
-    if(!areYouNotOnSettingsHub){
+    if(ShouldShowDiscardDialogue){//asdf
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Discard_Text);
+    }
+    else if(!areYouNotOnSettingsHub){
         AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, Hub_Options[currentScreenId].optionDescription);
     }
     else{
@@ -2205,7 +2227,7 @@ static void Task_MenuTurnOff(u8 taskId)
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
 {
-    if(JOY_NEW(DPAD_UP))
+    if(JOY_NEW(DPAD_UP) && !ShouldShowDiscardDialogue)
 	{
         if(!areYouNotOnSettingsHub){
             if(currentScreenId > 0){
@@ -2223,7 +2245,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_DOWN))
+    if(JOY_NEW(DPAD_DOWN) && !ShouldShowDiscardDialogue)
 	{
         if(!areYouNotOnSettingsHub){
             if(currentScreenId < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN-1){
@@ -2242,7 +2264,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_LEFT))
+    if(JOY_NEW(DPAD_LEFT) && !ShouldShowDiscardDialogue)
 	{
         if(!areYouNotOnSettingsHub){
             if(Temporal_Options_Preset_Settings[currentScreenId] > 0){
@@ -2295,7 +2317,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_RIGHT))
+    if(JOY_NEW(DPAD_RIGHT) && !ShouldShowDiscardDialogue)
 	{
         if(!areYouNotOnSettingsHub){
             if(Temporal_Options_Preset_Settings[currentScreenId] < Hub_Options[currentScreenId].numOptions - 1){
@@ -2357,14 +2379,35 @@ static void Task_MenuMain(u8 taskId)
 
     if (JOY_NEW(A_BUTTON))
     {
-        areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
-        CopyPresetDataToTemporaryData();
-        currentOptionId = 0;
-        currentFirstOption = 0;
-        PrintToWindow(WINDOW_1, FONT_BLACK);
+        if(!areYouNotOnSettingsHub && !ShouldShowDiscardDialogue){
+            areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
+            CopyPresetDataToTemporaryData();
+            currentOptionId = 0;
+            currentFirstOption = 0;
+            PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
+        else if(ShouldShowDiscardDialogue){
+            PlaySE(SE_PC_OFF);
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_MenuTurnOff;
+        }
     }
 
     if (JOY_NEW(B_BUTTON))
+    {
+        if(!areYouNotOnSettingsHub){
+            ShouldShowDiscardDialogue = !ShouldShowDiscardDialogue;
+            PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
+        else{
+            areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
+            currentOptionId = 0;
+            currentFirstOption = 0;
+            PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
+    }
+
+    if (JOY_NEW(START_BUTTON))
     {
         if(!areYouNotOnSettingsHub){
             CopyTemporalDataToSaveBlockData();
@@ -2372,11 +2415,35 @@ static void Task_MenuMain(u8 taskId)
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
             gTasks[taskId].func = Task_MenuTurnOff;
         }
-        else{
-            areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
+    }
+
+    if (JOY_NEW(L_BUTTON) && !ShouldShowDiscardDialogue)
+    {
+        if(areYouNotOnSettingsHub){
+            if(currentScreenId > 0){
+			    currentScreenId--;
+            }
+            else{
+                currentScreenId = NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN - 1;
+            }
+
             currentOptionId = 0;
             currentFirstOption = 0;
-            PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
+    }
+
+    if (JOY_NEW(R_BUTTON) && !ShouldShowDiscardDialogue)
+    {
+        if(areYouNotOnSettingsHub){
+            if(currentScreenId < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN-1){
+                currentScreenId++;
+            }
+            else{
+                currentScreenId = 0;
+            }
+
+            currentOptionId = 0;
+            currentFirstOption = 0;
         }
     }
 }
