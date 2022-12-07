@@ -233,7 +233,7 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
 
 static const u32 sMenuTiles[]   = INCBIN_U32("graphics/ui_menus/options_menu/tiles.4bpp.lz");
 static const u32 sMenuTilemap[] = INCBIN_U32("graphics/ui_menus/options_menu/tilemap.bin.lz");
-static const u16 sMenuPalette[] = INCBIN_U16("graphics/ui_menus/options_menu/palette.gbapal");
+static const u16 sMenuPalette[] = INCBIN_U16("graphics/ui_menus/options_menu/palette_custom.gbapal");
 
 static const u16 sMenuPalette_Red[]      = INCBIN_U16("graphics/ui_menus/options_menu/palettes/red.gbapal");
 static const u16 sMenuPalette_Black[]    = INCBIN_U16("graphics/ui_menus/options_menu/palettes/black.gbapal");
@@ -2860,6 +2860,12 @@ static void Task_MenuMain(u8 taskId)
             else{
                 Temporal_Options_Preset_Settings[currentScreenId] = Hub_Options[currentScreenId].numOptions - 1;
             }
+
+            /*/if(currentScreenId == VISUAL_SETTINGS){
+                CopyPresetDataToTemporaryData();
+                CopyCustomPresetDataToPresetData();
+                RecolorWindow();
+            }  /*/
         }
         else{
             switch(currentScreenId){
@@ -2925,6 +2931,12 @@ static void Task_MenuMain(u8 taskId)
             else{
                 Temporal_Options_Preset_Settings[currentScreenId] = 0;
             }
+
+            /*/if(currentScreenId == VISUAL_SETTINGS){
+                CopyPresetDataToTemporaryData();
+                CopyCustomPresetDataToPresetData();
+                RecolorWindow();
+            }  /*/
         }
         else{
             switch(currentScreenId){
@@ -2995,6 +3007,11 @@ static void Task_MenuMain(u8 taskId)
             CopyCustomPresetDataToPresetData();
             currentOptionId = 0;
             currentFirstOption = 0;
+
+            if(currentScreenId == VISUAL_SETTINGS){
+                RecolorWindow();
+            }  
+
             PrintToWindow(WINDOW_1, FONT_BLACK);
         }
         else if(areYouNotOnSettingsHub && ShouldShowDiscardDialogue){
