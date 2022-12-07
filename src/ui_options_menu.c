@@ -996,7 +996,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
     [MUSIC_SETTINGS] =
     {
         [MUSIC_PRESET_DEFAULT]  = {
-            [MUSIC_OPTIONS_PRESET]          = MUSIC_PRESET_DEFAULT, 
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_DEFAULT, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -3092,6 +3092,8 @@ static void Task_MenuMain(u8 taskId)
                         Temporal_Options_Random_Settings[0]++;
                     break;
                 }
+
+                mgba_printf(MGBA_LOG_WARN, "Asdf3 %d", MusicSettings_Settings_Options[0].numOptions);
             }
             else{
                 switch(currentScreenId){
@@ -3110,9 +3112,9 @@ static void Task_MenuMain(u8 taskId)
                     default:
                         Temporal_Options_Random_Settings[0] = 0;
                     break;
-
-                    
                 }
+
+                mgba_printf(MGBA_LOG_WARN, "Asdf2 %d", MusicSettings_Settings_Options[0].numOptions);
             }
 
             mgba_printf(MGBA_LOG_WARN, "Asdf %d", Temporal_Options_Music_Settings[0]);
