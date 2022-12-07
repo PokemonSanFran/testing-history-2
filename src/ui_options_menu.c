@@ -85,18 +85,12 @@ static EWRAM_DATA u8  currentScreenId = 0;
 static EWRAM_DATA u8  currentFirstOption = 0;
 static EWRAM_DATA bool8 areYouNotOnSettingsHub = FALSE;
 
-static EWRAM_DATA u8 Temporal_Options_Preset_Settings[NUM_OF_PRESET_OPTIONS];       //This is a temporal data used for the Discard Feature on Leave Dialog
+//static EWRAM_DATA u8 Temporal_Options_Preset_Settings[NUM_OF_PRESET_OPTIONS];       //This is a temporal data used for the Discard Feature on Leave Dialog
 static EWRAM_DATA u8 Temporal_Options_Game_Settings[NUM_OPTIONS_GAME_SETTINGS];     //This is a temporal data used for the Discard Feature on Leave Dialog
 static EWRAM_DATA u8 Temporal_Options_Battle_Settings[NUM_OPTIONS_BATTLE_SETTINGS]; //This is a temporal data used for the Discard Feature on Leave Dialog
 static EWRAM_DATA u8 Temporal_Options_Music_Settings[NUM_OPTIONS_MUSIC_SETTINGS];   //This is a temporal data used for the Discard Feature on Leave Dialog
 static EWRAM_DATA u8 Temporal_Options_Visual_Settings[NUM_OPTIONS_VISUAL_SETTINGS]; //This is a temporal data used for the Discard Feature on Leave Dialog
 static EWRAM_DATA u8 Temporal_Options_Random_Settings[NUM_OPTIONS_RANDOM_SETTINGS]; //This is a temporal data used for the Discard Feature on Leave Dialog
-
-static EWRAM_DATA u8 Custom_Preset_Options_Game_Settings[NUM_OPTIONS_GAME_SETTINGS];     //This is a temporal data used for the Discard Feature on Leave Dialog
-static EWRAM_DATA u8 Custom_Preset_Options_Battle_Settings[NUM_OPTIONS_BATTLE_SETTINGS]; //This is a temporal data used for the Discard Feature on Leave Dialog
-static EWRAM_DATA u8 Custom_Preset_Options_Music_Settings[NUM_OPTIONS_MUSIC_SETTINGS];   //This is a temporal data used for the Discard Feature on Leave Dialog
-static EWRAM_DATA u8 Custom_Preset_Options_Visual_Settings[NUM_OPTIONS_VISUAL_SETTINGS]; //This is a temporal data used for the Discard Feature on Leave Dialog
-static EWRAM_DATA u8 Custom_Preset_Options_Random_Settings[NUM_OPTIONS_RANDOM_SETTINGS]; //This is a temporal data used for the Discard Feature on Leave Dialog
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -109,13 +103,12 @@ static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 
-static void CopyPresetDataToTemporaryData();
-static void UpdateCustomPresetData(u8 screenID);
-static void CopyCustomPresetDataToPresetData();
+static void HandlePresetData();
 static void ChangePresetDataToCustom();
 
 static void CopySaveBlockDataToTemporalData();
 static void CopyTemporalDataToSaveBlockData();
+static void ResetSaveBlocData();
 bool8 AreYouOnCustomPresetData();
 
 void CopyTemporalDataToSaveBlockData()
@@ -123,8 +116,6 @@ void CopyTemporalDataToSaveBlockData()
     u8 i, j;
 
     for(i = 0 ;i < NUM_OF_PRESET_OPTIONS; i++){
-        gSaveBlock2Ptr->optionsPreset[i] = Temporal_Options_Preset_Settings[i];
-
         switch(i){
             case GAME_SETTINGS:
                 for(j = 0 ;j < NUM_OPTIONS_GAME_SETTINGS; j++){
@@ -160,8 +151,6 @@ void CopySaveBlockDataToTemporalData()
     u8 i, j;
 
     for(i = 0 ;i < NUM_OF_PRESET_OPTIONS; i++){
-        Temporal_Options_Preset_Settings[i] = gSaveBlock2Ptr->optionsPreset[i];
-
         switch(i){
             case GAME_SETTINGS:
                 for(j = 0 ;j < NUM_OPTIONS_GAME_SETTINGS; j++){
@@ -190,8 +179,41 @@ void CopySaveBlockDataToTemporalData()
             break;
         }
     }
+}
 
-    UpdateCustomPresetData(i);
+void ResetSaveBlocData()
+{
+    u8 i, j;
+
+    for(i = 0 ;i < NUM_OF_PRESET_OPTIONS; i++){
+        switch(i){
+            case GAME_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_GAME_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsGame[j] = 0;
+                }
+            break;
+            case BATTLE_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_BATTLE_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsBattle[j] = 0;
+                }
+            break;
+            case VISUAL_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_VISUAL_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsVisual[j] = 0;
+                }
+            break;
+            case MUSIC_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_MUSIC_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsMusic[j] = 0;
+                }
+            break;
+            case RANDOM_SETTINGS:
+                for(j = 0 ;j < NUM_OPTIONS_RANDOM_SETTINGS; j++){
+                    gSaveBlock2Ptr->optionsRandom[j] = 0;
+                }
+            break;
+        }
+    }
 }
 
 //==========CONST=DATA==========//
@@ -318,8 +340,11 @@ void Options_Menu_Init(MainCallback callback)
 
 static void Menu_RunSetup(void)
 {
+    FlagClear(FLAG_OPTION_MENU_SETUP);
+
     //Initializes Data for the First Time
     if(!FlagGet(FLAG_OPTION_MENU_SETUP)){
+        ResetSaveBlocData();
         ChangePresetDataToCustom();
         FlagSet(FLAG_OPTION_MENU_SETUP);
     }
@@ -426,18 +451,12 @@ static void Menu_FreeResources(void)
     try_free(currentFirstOption);
     try_free(areYouNotOnSettingsHub);
 
-    try_free(Temporal_Options_Preset_Settings);
+    //try_free(Temporal_Options_Preset_Settings);
     try_free(Temporal_Options_Game_Settings);
     try_free(Temporal_Options_Battle_Settings);
     try_free(Temporal_Options_Music_Settings);
     try_free(Temporal_Options_Visual_Settings);
     try_free(Temporal_Options_Random_Settings);
-
-    try_free(Custom_Preset_Options_Game_Settings);
-    try_free(Custom_Preset_Options_Battle_Settings);
-    try_free(Custom_Preset_Options_Music_Settings);
-    try_free(Custom_Preset_Options_Visual_Settings);
-    try_free(Custom_Preset_Options_Random_Settings);
     
     FreeAllWindowBuffers();
 }
@@ -826,6 +845,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
     [GAME_SETTINGS] =
     {
         [GAME_PRESET_DEFAULT]  = {
+            [GAME_OPTIONS_PRESET]            = GAME_PRESET_DEFAULT, 
             [GAME_OPTIONS_SAVE_BOOT]         = 1, 
             [GAME_OPTIONS_BUTTON_MODE]       = 1, 
             [GAME_OPTIONS_SAVE_BEHAVIOR]     = 1, 
@@ -834,6 +854,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [GAME_OPTIONS_ITEM_SORT]         = 2
         },
         [GAME_PRESET_SPEEDRUN] = {
+            [GAME_OPTIONS_PRESET]            = GAME_PRESET_SPEEDRUN, 
             [GAME_OPTIONS_SAVE_BOOT]         = 1, 
             [GAME_OPTIONS_BUTTON_MODE]       = 1, 
             [GAME_OPTIONS_SAVE_BEHAVIOR]     = 1, 
@@ -845,6 +866,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
     [BATTLE_SETTINGS] =
     {
         [BATTLE_PRESET_DEFAULT]  = {
+            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_DEFAULT, 
             [BATTLE_OPTIONS_EXPERIENCE]             = 0, 
             [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0, 
             [BATTLE_OPTIONS_LEVEL]                  = 0, 
@@ -871,6 +893,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_EXP_SPEED]              = 0
         },
         [BATTLE_PRESET_SPEEDRUN]  = {
+            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_SPEEDRUN, 
             [BATTLE_OPTIONS_EXPERIENCE]             = 0, 
             [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0, 
             [BATTLE_OPTIONS_LEVEL]                  = 0, 
@@ -897,6 +920,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_EXP_SPEED]              = 0
         },
         [BATTLE_PRESET_NUZLOCKE]  = {
+            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_NUZLOCKE, 
             [BATTLE_OPTIONS_EXPERIENCE]             = 0, 
             [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0, 
             [BATTLE_OPTIONS_LEVEL]                  = 0, 
@@ -923,6 +947,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_EXP_SPEED]              = 0
         },
         [BATTLE_PRESET_KAIZO]  = {
+            [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_KAIZO, 
             [BATTLE_OPTIONS_EXPERIENCE]             = 0, 
             [BATTLE_OPTIONS_EXP_MULTIPLIER]         = 0, 
             [BATTLE_OPTIONS_LEVEL]                  = 0, 
@@ -952,6 +977,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
     [VISUAL_SETTINGS] =
     {
         [VISUAL_PRESET_DEFAULT]  = {
+            [VISUAL_OPTIONS_PRESET]          = VISUAL_PRESET_DEFAULT, 
             [VISUAL_OPTIONS_UNITS]           = 1, 
             [VISUAL_OPTIONS_TEXT_SPEED]      = 2, 
             [VISUAL_OPTIONS_FRAME_TYPE]      = 0, 
@@ -959,6 +985,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [VISUAL_OPTIONS_COLOR]           = 6, 
         },
         [VISUAL_PRESET_SPEEDRUN] = {
+            [VISUAL_OPTIONS_PRESET]          = VISUAL_PRESET_SPEEDRUN, 
             [VISUAL_OPTIONS_UNITS]           = 1, 
             [VISUAL_OPTIONS_TEXT_SPEED]      = 4, 
             [VISUAL_OPTIONS_FRAME_TYPE]      = 0, 
@@ -969,6 +996,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
     [MUSIC_SETTINGS] =
     {
         [MUSIC_PRESET_DEFAULT]  = {
+            [MUSIC_OPTIONS_PRESET]          = MUSIC_PRESET_DEFAULT, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -981,6 +1009,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_DEFAULT, 
         },
         [MUSIC_PRESET_LGPE]  = {
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_LGPE, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -993,6 +1022,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_LGPE, 
         },
         [MUSIC_PRESET_HGSS]  = {
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_HGSS, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -1017,6 +1047,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_ORAS, 
         },
         [MUSIC_PRESET_BDSP]  = {
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_BDSP, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -1029,6 +1060,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_BDSP,
         },
         [MUSIC_PRESET_BW2]  = {
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_BW2, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -1041,6 +1073,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_BW2,
         },
         [MUSIC_PRESET_XY]  = {
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_XY, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -1053,6 +1086,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_XY,
         },
         [MUSIC_PRESET_USUM]  = {
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_USUM, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -1065,6 +1099,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_USUM,
         },
         [MUSIC_PRESET_SWSH]  = {
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_SWSH, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME,
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -1077,6 +1112,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [MUSIC_OPTIONS_CHAMPION]         = MUSIC_PRESET_SWSH,
         },
         [MUSIC_PRESET_SV]  = {
+            [MUSIC_OPTIONS_PRESET]           = MUSIC_PRESET_SV, 
             [MUSIC_OPTIONS_SOUND_EFFECT]     = MAX_VOLUME, 
             [MUSIC_OPTIONS_MUSIC]            = MAX_VOLUME, 
             [MUSIC_OPTIONS_SPEAKER]          = OPTIONS_SOUND_STEREO,
@@ -1092,6 +1128,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
     [RANDOM_SETTINGS] =
     {
         [RANDOM_PRESET_DEFAULT]  = {
+            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_DEFAULT, 
             [RANDOM_OPTIONS_STARTER]            = RANDOM_DEFAULT, 
             [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_DEFAULT, 
             [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_DEFAULT, 
@@ -1110,6 +1147,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [RANDOM_OPTIONS_TRAINERS]           = RANDOM_DEFAULT, 
         },
         [RANDOM_PRESET_SANE]  = {
+            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_SANE, 
             [RANDOM_OPTIONS_STARTER]            = RANDOM_RANDOM, 
             [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_RANDOM, 
             [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_DEFAULT, 
@@ -1128,6 +1166,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [RANDOM_OPTIONS_TRAINERS]           = RANDOM_DEFAULT, 
         },
         [RANDOM_PRESET_CRAZY]  = {
+            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_CRAZY, 
             [RANDOM_OPTIONS_STARTER]            = RANDOM_RANDOM, 
             [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_RANDOM, 
             [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_RANDOM, 
@@ -1146,6 +1185,7 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [RANDOM_OPTIONS_TRAINERS]           = RANDOM_RANDOM, 
         },
         [RANDOM_PRESET_TOTAL_CHAOS]  = {
+            [RANDOM_OPTIONS_PRESET]             = RANDOM_PRESET_TOTAL_CHAOS, 
             [RANDOM_OPTIONS_STARTER]            = RANDOM_CHAOS, 
             [RANDOM_OPTIONS_WILD_BATTLE]        = RANDOM_CHAOS, 
             [RANDOM_OPTIONS_TRAINER_BATTLE]     = RANDOM_CHAOS, 
@@ -1166,31 +1206,67 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
     },
 };
 
-void UpdateCustomPresetData(u8 screenID)
+void HandlePresetData()
 {
     u8 i, j;
 
-    switch(screenID){
-        case GAME_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_GAME_SETTINGS; i++)
-                Custom_Preset_Options_Game_Settings[i] = Temporal_Options_Game_Settings[i];
-        break;
-        case BATTLE_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_BATTLE_SETTINGS; i++)
-                Custom_Preset_Options_Battle_Settings[i] = Temporal_Options_Battle_Settings[i];
-        break;
-        case VISUAL_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_VISUAL_SETTINGS; i++)
-                Custom_Preset_Options_Visual_Settings[i] = Temporal_Options_Visual_Settings[i];
-        break;
-        case MUSIC_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_MUSIC_SETTINGS; i++)
-                Custom_Preset_Options_Music_Settings[i] = Temporal_Options_Music_Settings[i];
-        break;
-        case RANDOM_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_RANDOM_SETTINGS; i++)
-                Custom_Preset_Options_Random_Settings[i] = Temporal_Options_Random_Settings[i];
-        break;
+    if(AreYouOnCustomPresetData()){
+        switch(currentScreenId){
+            case GAME_SETTINGS:
+                for(i = 1 ;i < NUM_OPTIONS_GAME_SETTINGS; i++){
+                    Temporal_Options_Game_Settings[i] = gSaveBlock2Ptr->optionsGame[i];
+                }
+            break;
+            case BATTLE_SETTINGS:
+                for(i = 1 ;i < NUM_OPTIONS_BATTLE_SETTINGS; i++){
+                    Temporal_Options_Battle_Settings[i] = gSaveBlock2Ptr->optionsBattle[i];
+                }
+            break;
+            case VISUAL_SETTINGS:
+                for(i = 1 ;i < NUM_OPTIONS_VISUAL_SETTINGS; i++){
+                    Temporal_Options_Visual_Settings[i] = gSaveBlock2Ptr->optionsVisual[i];
+                }
+            break;
+            case MUSIC_SETTINGS:
+                for(i = 1 ;i < NUM_OPTIONS_MUSIC_SETTINGS; i++){
+                    Temporal_Options_Music_Settings[i] = gSaveBlock2Ptr->optionsMusic[i];
+                }
+            break;
+            case RANDOM_SETTINGS:
+                for(i = 1 ;i < NUM_OPTIONS_RANDOM_SETTINGS; i++){
+                    Temporal_Options_Random_Settings[i] = gSaveBlock2Ptr->optionsRandom[i];
+                }
+            break;
+        }
+    }
+    else{
+        switch(currentScreenId){
+            case GAME_SETTINGS:
+                for(i = 0 ;i < NUM_OPTIONS_GAME_SETTINGS; i++){
+                    Temporal_Options_Game_Settings[i] = Preset_Options[GAME_SETTINGS][Temporal_Options_Game_Settings[0]][i];
+                }
+            break;
+            case BATTLE_SETTINGS:
+                for(i = 0 ;i < NUM_OPTIONS_BATTLE_SETTINGS; i++){
+                    Temporal_Options_Battle_Settings[i] = Preset_Options[BATTLE_SETTINGS][Temporal_Options_Battle_Settings[0]][i];
+                }
+            break;
+            case VISUAL_SETTINGS:
+                for(i = 0 ;i < NUM_OPTIONS_VISUAL_SETTINGS; i++){
+                    Temporal_Options_Visual_Settings[i] = Preset_Options[VISUAL_SETTINGS][Temporal_Options_Visual_Settings[0]][i];
+                }
+            break;
+            case MUSIC_SETTINGS:
+                for(i = 0 ;i < NUM_OPTIONS_MUSIC_SETTINGS; i++){
+                    Temporal_Options_Music_Settings[i] = Preset_Options[MUSIC_SETTINGS][Temporal_Options_Music_Settings[0]][i];
+                }
+            break;
+            case RANDOM_SETTINGS:
+                for(i = 0 ;i < NUM_OPTIONS_RANDOM_SETTINGS; i++){
+                    Temporal_Options_Random_Settings[i] = Preset_Options[RANDOM_SETTINGS][Temporal_Options_Random_Settings[0]][i];
+                }
+            break;
+        }
     }
 }
 
@@ -1198,131 +1274,49 @@ bool8 AreYouOnCustomPresetData()
 {
     switch(currentScreenId){
         case GAME_SETTINGS:
-            return (Temporal_Options_Preset_Settings[currentScreenId] == GAME_PRESET_CUSTOM);
+            return (Temporal_Options_Game_Settings[0] == GAME_PRESET_CUSTOM);
         break;
         case BATTLE_SETTINGS:
-            return (Temporal_Options_Preset_Settings[currentScreenId] == BATTLE_PRESET_CUSTOM);
+            return (Temporal_Options_Battle_Settings[0] == BATTLE_PRESET_CUSTOM);
         break;
          case VISUAL_SETTINGS:
-            return (Temporal_Options_Preset_Settings[currentScreenId] == VISUAL_PRESET_CUSTOM);
+            return (Temporal_Options_Visual_Settings[0] == VISUAL_PRESET_CUSTOM);
         break;
         case MUSIC_SETTINGS:
-            return (Temporal_Options_Preset_Settings[currentScreenId] == MUSIC_PRESET_CUSTOM);
+            return (Temporal_Options_Music_Settings[0] == MUSIC_PRESET_CUSTOM);
         break;
         case RANDOM_SETTINGS:
-            return (Temporal_Options_Preset_Settings[currentScreenId] == RANDOM_PRESET_CUSTOM);
-        break;
-    }
-}
-
-void CopyPresetDataToTemporaryData()
-{
-    u8 i, j;
-
-    switch(currentScreenId){
-        case GAME_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_GAME_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] != GAME_PRESET_CUSTOM){
-                    Custom_Preset_Options_Game_Settings[i] = Temporal_Options_Game_Settings[i];
-                    Temporal_Options_Game_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
-                }
-            }
-        break;
-        case BATTLE_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_BATTLE_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] != BATTLE_PRESET_CUSTOM){
-                    Custom_Preset_Options_Battle_Settings[i] = Temporal_Options_Battle_Settings[i];
-                    Temporal_Options_Battle_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
-                }
-            }
-        break;
-        case VISUAL_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_VISUAL_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] != VISUAL_PRESET_CUSTOM){
-                    Custom_Preset_Options_Visual_Settings[i] = Temporal_Options_Visual_Settings[i];
-                    Temporal_Options_Visual_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
-                }
-            }
-        break;
-        case MUSIC_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_MUSIC_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] != MUSIC_PRESET_CUSTOM){
-                    Custom_Preset_Options_Music_Settings[i] = Temporal_Options_Music_Settings[i];
-                    Temporal_Options_Music_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
-                }
-            }
-        break;
-        case RANDOM_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_RANDOM_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] != RANDOM_PRESET_CUSTOM){
-                    Custom_Preset_Options_Random_Settings[i] = Temporal_Options_Random_Settings[i];
-                    Temporal_Options_Random_Settings[i] = Preset_Options[currentScreenId][Temporal_Options_Preset_Settings[currentScreenId]][i];
-                }
-            }
-        break;
-    }
-}
-
-void CopyCustomPresetDataToPresetData()
-{
-    u8 i, j;
-
-    switch(currentScreenId){
-        case GAME_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_GAME_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] == GAME_PRESET_CUSTOM){
-                    Temporal_Options_Game_Settings[i] = Custom_Preset_Options_Game_Settings[i];
-                }
-            }
-        break;
-        case BATTLE_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_BATTLE_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] == BATTLE_PRESET_CUSTOM){
-                    Temporal_Options_Battle_Settings[i] = Custom_Preset_Options_Battle_Settings[i];
-                }
-            }
-        break;
-        case VISUAL_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_VISUAL_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] == VISUAL_PRESET_CUSTOM){
-                    Temporal_Options_Visual_Settings[i] = Custom_Preset_Options_Visual_Settings[i];
-                }
-            }
-        break;
-        case MUSIC_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_MUSIC_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] == MUSIC_PRESET_CUSTOM){
-                    Temporal_Options_Music_Settings[i] = Custom_Preset_Options_Music_Settings[i];
-                }
-            }
-        break;
-        case RANDOM_SETTINGS:
-            for(i = 0 ;i < NUM_OPTIONS_RANDOM_SETTINGS; i++){
-                if(Temporal_Options_Preset_Settings[currentScreenId] == RANDOM_PRESET_CUSTOM){
-                    Temporal_Options_Random_Settings[i] = Custom_Preset_Options_Random_Settings[i];
-                }
-            }
+            return (Temporal_Options_Random_Settings[0] == RANDOM_PRESET_CUSTOM);
         break;
     }
 }
 
 void ChangePresetDataToCustom()
 {
-    gSaveBlock2Ptr->optionsPreset[GAME_SETTINGS] = GAME_PRESET_CUSTOM;
-    gSaveBlock2Ptr->optionsPreset[BATTLE_SETTINGS] = BATTLE_PRESET_CUSTOM;
-    gSaveBlock2Ptr->optionsPreset[VISUAL_SETTINGS] = VISUAL_PRESET_CUSTOM;
-    gSaveBlock2Ptr->optionsPreset[MUSIC_SETTINGS] = MUSIC_PRESET_CUSTOM;
-    gSaveBlock2Ptr->optionsPreset[RANDOM_SETTINGS] = RANDOM_PRESET_CUSTOM;
-
-    Temporal_Options_Preset_Settings[GAME_SETTINGS] = GAME_PRESET_CUSTOM;
-    Temporal_Options_Preset_Settings[BATTLE_SETTINGS] = BATTLE_PRESET_CUSTOM;
-    Temporal_Options_Preset_Settings[VISUAL_SETTINGS] = VISUAL_PRESET_CUSTOM;
-    Temporal_Options_Preset_Settings[MUSIC_SETTINGS] = MUSIC_PRESET_CUSTOM;
-    Temporal_Options_Preset_Settings[RANDOM_SETTINGS] = RANDOM_PRESET_CUSTOM;
+    gSaveBlock2Ptr->optionsGame[0] = GAME_PRESET_CUSTOM;
+    gSaveBlock2Ptr->optionsBattle[0] = BATTLE_PRESET_CUSTOM;
+    gSaveBlock2Ptr->optionsVisual[0] = VISUAL_PRESET_CUSTOM;
+    gSaveBlock2Ptr->optionsMusic[0] = MUSIC_PRESET_CUSTOM;
+    gSaveBlock2Ptr->optionsRandom[0] = RANDOM_PRESET_CUSTOM;
 }
 
 // For Game Settings asdf
 struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
+    [GAME_OPTIONS_PRESET] =
+    {
+        .title = _("Game Settings"),
+        .options = { 
+            _("Default"),
+            _("Speedrun"),
+            _("Custom"),
+            },
+        .optionDescription = { 
+            _("Default Description"),
+            _("Speedrun Description"),
+            _("Custom Description"),
+            },
+        .numOptions = 3,
+    },
     [GAME_OPTIONS_SAVE_BOOT] =
     {
         .title = _("Save Boot"),
@@ -1416,6 +1410,27 @@ struct OptionData GameSettings_Settings_Options[NUM_OPTIONS_GAME_SETTINGS] = {
 // For Battle Settings
 
 struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] = {
+    [BATTLE_OPTIONS_PRESET] =
+    {
+        .title = _("Battle Settings"),
+        .options = { 
+            _("Default"),
+            _("Challenge"),
+            _("Speedrun"),
+            _("Nuzlocke"),
+            _("Kaizo"),
+            _("Custom"),
+            },
+        .optionDescription = { 
+            _("Default Description"),
+            _("Challenge Description"),
+            _("Speedrun Description"),
+            _("Nuzlocke Description"),
+            _("Kaizo Description"),
+            _("Custom Description"),
+            },
+        .numOptions = 6,
+    },
     [BATTLE_OPTIONS_EXPERIENCE] =
     {
         .title = _("Experience"),
@@ -1800,6 +1815,21 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
 // For Visual Settings
 
 struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] = {
+    [VISUAL_OPTIONS_PRESET] =
+    {
+        .title = _("Visual Settings"),
+        .options = { 
+            _("Default"),
+            _("Speedrun"),
+            _("Custom"),
+            },
+        .optionDescription = { 
+            _("Default Description"),
+            _("Speedrun Description"),
+            _("Custom Description"),
+            },
+        .numOptions = 3,
+    },
     [VISUAL_OPTIONS_UNITS] =
     {
         .title = _("Units"),
@@ -1928,6 +1958,37 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
 // For Music Settings
 
 struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
+    [MUSIC_OPTIONS_PRESET] =
+    {
+        .title = _("Music Settings"),
+        .options = { 
+            _("PSF"),
+            _("LGPE"),
+            _("HGSS"),
+            _("ORAS"),
+            _("BDSP"),
+            _("BW2"),
+            _("XY"),
+            _("USUM"),
+            _("SWSH"),
+            _("SV"),
+            _("Custom"),
+            },
+        .optionDescription = { 
+            _("PSF Description"),
+            _("LGPE Description"),
+            _("HGSS Description"),
+            _("ORAS Description"),
+            _("BDSP Description"),
+            _("BW2 Description"),
+            _("XY Description"),
+            _("USUM Description"),
+            _("SWSH Description"),
+            _("SV Description"),
+            _("Custom Description"),
+            },
+        .numOptions = 11,
+    },
     [MUSIC_OPTIONS_SOUND_EFFECT] =
     {
         .title = _("Sound Effect"),
@@ -2245,6 +2306,25 @@ struct OptionData MusicSettings_Settings_Options[NUM_OPTIONS_MUSIC_SETTINGS] = {
 // For Random Settings
 
 struct OptionData RandomSettings_Settings_Options[NUM_OPTIONS_RANDOM_SETTINGS] = {
+    [RANDOM_OPTIONS_PRESET] =
+    {
+        .title = _("Random Settings"),
+        .options = { 
+            _("Default"),
+            _("Sane"),
+            _("Crazy"),
+            _("Total Chaos"),
+            _("Custom"),
+            },
+        .optionDescription = { 
+            _("Default Description"),
+            _("Sane Description"),
+            _("Crazy Description"),
+            _("Total Chaos Description"),
+            _("Custom Description"),
+            },
+        .numOptions = 5,
+    },
     [RANDOM_OPTIONS_STARTER] =
     {
         .title = _("Starter"),
@@ -2663,7 +2743,24 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y = 2;
 
         for(i = 0; i < NUM_OF_POSSIBLE_OPTIONS_THAT_FIT_ON_SCREEN; i++){
-            AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, Hub_Options[GetCurrentSlotOption(i)].options[Temporal_Options_Preset_Settings[GetCurrentSlotOption(i)]]);
+
+            switch(i){
+                case GAME_SETTINGS:
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[0].options[Temporal_Options_Game_Settings[0]]);
+                break;
+                case BATTLE_SETTINGS:
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[0].options[Temporal_Options_Battle_Settings[0]]);
+                break;
+                case VISUAL_SETTINGS:
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, VisualSettings_Settings_Options[0].options[Temporal_Options_Visual_Settings[0]]);
+                break;
+                case MUSIC_SETTINGS:
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, MusicSettings_Settings_Options[0].options[Temporal_Options_Music_Settings[0]]);
+                break;
+                case RANDOM_SETTINGS:
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 6, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, RandomSettings_Settings_Options[0].options[Temporal_Options_Random_Settings[0]]);
+                break;
+            }
             y = y + 2;
         }
     }
@@ -2714,7 +2811,23 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Discard_Text);
     }
     else if(!areYouNotOnSettingsHub){
-        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, Hub_Options[currentScreenId].optionDescription[Temporal_Options_Preset_Settings[currentScreenId]]);
+        switch(currentScreenId){
+            case GAME_SETTINGS:
+                AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, GameSettings_Settings_Options[0].optionDescription[Temporal_Options_Game_Settings[0]]);
+            break;
+            case BATTLE_SETTINGS:
+                AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, BattleSettings_Settings_Options[0].optionDescription[Temporal_Options_Battle_Settings[0]]);
+            break;
+            case VISUAL_SETTINGS:
+                AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, VisualSettings_Settings_Options[0].optionDescription[Temporal_Options_Visual_Settings[0]]);
+            break;
+            case MUSIC_SETTINGS:
+                AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, MusicSettings_Settings_Options[0].optionDescription[Temporal_Options_Music_Settings[0]]);
+            break;
+            case RANDOM_SETTINGS:
+                AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, RandomSettings_Settings_Options[0].optionDescription[Temporal_Options_Random_Settings[0]]);
+            break;
+        }
     }
     else{
         switch(currentScreenId){
@@ -2853,34 +2966,67 @@ static void Task_MenuMain(u8 taskId)
 
     if(JOY_NEW(DPAD_LEFT) && !ShouldShowDiscardDialogue)
 	{
-        if(!areYouNotOnSettingsHub){
-            if(Temporal_Options_Preset_Settings[currentScreenId] > 0){
-			    Temporal_Options_Preset_Settings[currentScreenId]--;
+        if(!areYouNotOnSettingsHub || currentOptionId == 0){
+            if((currentScreenId == GAME_SETTINGS && Temporal_Options_Game_Settings[0] > 0) ||
+               (currentScreenId == BATTLE_SETTINGS && Temporal_Options_Battle_Settings[0] > 0) ||
+               (currentScreenId == VISUAL_SETTINGS && Temporal_Options_Visual_Settings[0] > 0) ||
+               (currentScreenId == MUSIC_SETTINGS && Temporal_Options_Music_Settings[0] > 0) ||
+               (currentScreenId == RANDOM_SETTINGS && Temporal_Options_Random_Settings[0] > 0)){
+                switch(currentScreenId){
+                    case GAME_SETTINGS:
+                        Temporal_Options_Game_Settings[0]--;
+                    break;
+                    case BATTLE_SETTINGS:
+                        Temporal_Options_Battle_Settings[0]--;
+                    break;
+                    case VISUAL_SETTINGS:
+                        Temporal_Options_Visual_Settings[0]--;
+                    break;
+                    case MUSIC_SETTINGS:
+                        Temporal_Options_Music_Settings[0]--;
+                    break;
+                    default:
+                        Temporal_Options_Random_Settings[0]--;
+                    break;
+                }
             }
             else{
-                Temporal_Options_Preset_Settings[currentScreenId] = Hub_Options[currentScreenId].numOptions - 1;
+                switch(currentScreenId){
+                    case GAME_SETTINGS:
+                        Temporal_Options_Game_Settings[0] = GameSettings_Settings_Options[0].numOptions - 1;
+                    break;
+                    case BATTLE_SETTINGS:
+                        Temporal_Options_Battle_Settings[0] = BattleSettings_Settings_Options[0].numOptions - 1;
+                    break;
+                    case VISUAL_SETTINGS:
+                        Temporal_Options_Visual_Settings[0] = VisualSettings_Settings_Options[0].numOptions - 1;
+                    break;
+                    case MUSIC_SETTINGS:
+                        Temporal_Options_Music_Settings[0] = MusicSettings_Settings_Options[0].numOptions - 1;
+                    break;
+                    default:
+                        Temporal_Options_Random_Settings[0] = RandomSettings_Settings_Options[0].numOptions - 1;
+                    break;
+                }
             }
 
-            /*/if(currentScreenId == VISUAL_SETTINGS){
-                CopyPresetDataToTemporaryData();
-                CopyCustomPresetDataToPresetData();
+            HandlePresetData();
+            if(currentScreenId == VISUAL_SETTINGS)
                 RecolorWindow();
-            }  /*/
         }
         else{
             switch(currentScreenId){
                 case GAME_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == GAME_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Game_Settings[currentOptionId] > 0){
                             Temporal_Options_Game_Settings[currentOptionId]--;
                         }
-                        else{
+                        else
                             Temporal_Options_Game_Settings[currentOptionId] = GameSettings_Settings_Options[currentOptionId].numOptions - 1;
-                        }
                     }
                 break;
                 case BATTLE_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == BATTLE_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Battle_Settings[currentOptionId] > 0)
                             Temporal_Options_Battle_Settings[currentOptionId]--;
                         else
@@ -2888,19 +3034,18 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case VISUAL_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == VISUAL_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Visual_Settings[currentOptionId] > 0)
                             Temporal_Options_Visual_Settings[currentOptionId]--;
-                        else{
+                        else
                             Temporal_Options_Visual_Settings[currentOptionId] = VisualSettings_Settings_Options[currentOptionId].numOptions - 1;
-                        } 
 
                         if(currentOptionId == VISUAL_OPTIONS_COLOR)
                             RecolorWindow();
                     }
                 break;
                 case MUSIC_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == MUSIC_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Music_Settings[currentOptionId] > 0)
                             Temporal_Options_Music_Settings[currentOptionId]--;
                         else
@@ -2908,7 +3053,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case RANDOM_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == RANDOM_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Random_Settings[currentOptionId] > 0)
                             Temporal_Options_Random_Settings[currentOptionId]--;
                         else
@@ -2924,73 +3069,106 @@ static void Task_MenuMain(u8 taskId)
 
     if(JOY_NEW(DPAD_RIGHT) && !ShouldShowDiscardDialogue)
 	{
-        if(!areYouNotOnSettingsHub){
-            if(Temporal_Options_Preset_Settings[currentScreenId] < Hub_Options[currentScreenId].numOptions - 1){
-                Temporal_Options_Preset_Settings[currentScreenId]++;
+        if(!areYouNotOnSettingsHub || currentOptionId == 0){
+            if((currentScreenId == GAME_SETTINGS   && Temporal_Options_Game_Settings[0]   <= GameSettings_Settings_Options[0].numOptions - 1) ||
+               (currentScreenId == BATTLE_SETTINGS && Temporal_Options_Battle_Settings[0] <= BattleSettings_Settings_Options[0].numOptions - 1) ||
+               (currentScreenId == VISUAL_SETTINGS && Temporal_Options_Visual_Settings[0] <= VisualSettings_Settings_Options[0].numOptions - 1) ||
+               (currentScreenId == MUSIC_SETTINGS  && Temporal_Options_Music_Settings[0]  <= MusicSettings_Settings_Options[0].numOptions - 1) ||
+               (currentScreenId == RANDOM_SETTINGS && Temporal_Options_Random_Settings[0] <= RandomSettings_Settings_Options[0].numOptions - 1)){
+                switch(currentScreenId){
+                    case GAME_SETTINGS:
+                        Temporal_Options_Game_Settings[0]++;
+                    break;
+                    case BATTLE_SETTINGS:
+                        Temporal_Options_Battle_Settings[0]++;
+                    break;
+                    case VISUAL_SETTINGS:
+                        Temporal_Options_Visual_Settings[0]++;
+                    break;
+                    case MUSIC_SETTINGS:
+                        Temporal_Options_Music_Settings[0]++;
+                    break;
+                    default:
+                        Temporal_Options_Random_Settings[0]++;
+                    break;
+                }
             }
             else{
-                Temporal_Options_Preset_Settings[currentScreenId] = 0;
+                switch(currentScreenId){
+                    case GAME_SETTINGS:
+                        Temporal_Options_Game_Settings[0] = 0;
+                    break;
+                    case BATTLE_SETTINGS:
+                        Temporal_Options_Battle_Settings[0] = 0;
+                    break;
+                    case VISUAL_SETTINGS:
+                        Temporal_Options_Visual_Settings[0] = 0;
+                    break;
+                    case MUSIC_SETTINGS:
+                        Temporal_Options_Music_Settings[0] = 0;
+                    break;
+                    default:
+                        Temporal_Options_Random_Settings[0] = 0;
+                    break;
+
+                    
+                }
             }
 
-            /*/if(currentScreenId == VISUAL_SETTINGS){
-                CopyPresetDataToTemporaryData();
-                CopyCustomPresetDataToPresetData();
+            mgba_printf(MGBA_LOG_WARN, "Asdf %d", Temporal_Options_Music_Settings[0]);
+            HandlePresetData();
+
+            if(currentScreenId == VISUAL_SETTINGS)
                 RecolorWindow();
-            }  /*/
         }
         else{
             switch(currentScreenId){
                 case GAME_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == GAME_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Game_Settings[currentOptionId] < GameSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Game_Settings[currentOptionId]++;
                         }
-                        else{
+                        else
                             Temporal_Options_Game_Settings[currentOptionId] = 0;
-                        }
                     }
                 break;
                 case BATTLE_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == BATTLE_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Battle_Settings[currentOptionId] < BattleSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Battle_Settings[currentOptionId]++;
                         }
-                        else{
+                        else
                             Temporal_Options_Battle_Settings[currentOptionId] = 0;
-                        }
                     }
                 break;
                 case VISUAL_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == VISUAL_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Visual_Settings[currentOptionId] < VisualSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Visual_Settings[currentOptionId]++;
                         }
-                        else{
+                        else
                             Temporal_Options_Visual_Settings[currentOptionId] = 0;
-                        }
 
                         if(currentOptionId == VISUAL_OPTIONS_COLOR)
                             RecolorWindow();
                     }
                 break;
                 case MUSIC_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == MUSIC_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Music_Settings[currentOptionId] < MusicSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Music_Settings[currentOptionId]++;
                         }
-                        else{
+                        else
                             Temporal_Options_Music_Settings[currentOptionId] = 0;
-                        }
                     }
                 break;
                 case RANDOM_SETTINGS:
-                    if(Temporal_Options_Preset_Settings[currentScreenId] == RANDOM_PRESET_CUSTOM){
+                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
                         if(Temporal_Options_Random_Settings[currentOptionId] < RandomSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Random_Settings[currentOptionId]++;
                         }
-                        else{
+                        else
                             Temporal_Options_Random_Settings[currentOptionId] = 0;
-                        }
                     }
                 break;
             }
@@ -3003,8 +3181,7 @@ static void Task_MenuMain(u8 taskId)
     {
         if(!areYouNotOnSettingsHub && !ShouldShowDiscardDialogue){
             areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
-            CopyPresetDataToTemporaryData();
-            CopyCustomPresetDataToPresetData();
+            HandlePresetData();
             currentOptionId = 0;
             currentFirstOption = 0;
 
@@ -3052,7 +3229,6 @@ static void Task_MenuMain(u8 taskId)
             gTasks[taskId].func = Task_MenuTurnOff;
         }
         else{
-            UpdateCustomPresetData(currentScreenId);
             areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
             currentOptionId = 0;
             currentFirstOption = 0;
