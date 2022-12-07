@@ -1242,27 +1242,27 @@ void HandlePresetData()
     else{
         switch(currentScreenId){
             case GAME_SETTINGS:
-                for(i = 0 ;i < NUM_OPTIONS_GAME_SETTINGS; i++){
+                for(i = 1 ;i < NUM_OPTIONS_GAME_SETTINGS; i++){
                     Temporal_Options_Game_Settings[i] = Preset_Options[GAME_SETTINGS][Temporal_Options_Game_Settings[0]][i];
                 }
             break;
             case BATTLE_SETTINGS:
-                for(i = 0 ;i < NUM_OPTIONS_BATTLE_SETTINGS; i++){
+                for(i = 1 ;i < NUM_OPTIONS_BATTLE_SETTINGS; i++){
                     Temporal_Options_Battle_Settings[i] = Preset_Options[BATTLE_SETTINGS][Temporal_Options_Battle_Settings[0]][i];
                 }
             break;
             case VISUAL_SETTINGS:
-                for(i = 0 ;i < NUM_OPTIONS_VISUAL_SETTINGS; i++){
+                for(i = 1 ;i < NUM_OPTIONS_VISUAL_SETTINGS; i++){
                     Temporal_Options_Visual_Settings[i] = Preset_Options[VISUAL_SETTINGS][Temporal_Options_Visual_Settings[0]][i];
                 }
             break;
             case MUSIC_SETTINGS:
-                for(i = 0 ;i < NUM_OPTIONS_MUSIC_SETTINGS; i++){
+                for(i = 1 ;i < NUM_OPTIONS_MUSIC_SETTINGS; i++){
                     Temporal_Options_Music_Settings[i] = Preset_Options[MUSIC_SETTINGS][Temporal_Options_Music_Settings[0]][i];
                 }
             break;
             case RANDOM_SETTINGS:
-                for(i = 0 ;i < NUM_OPTIONS_RANDOM_SETTINGS; i++){
+                for(i = 1 ;i < NUM_OPTIONS_RANDOM_SETTINGS; i++){
                     Temporal_Options_Random_Settings[i] = Preset_Options[RANDOM_SETTINGS][Temporal_Options_Random_Settings[0]][i];
                 }
             break;
@@ -2967,47 +2967,38 @@ static void Task_MenuMain(u8 taskId)
     if(JOY_NEW(DPAD_LEFT) && !ShouldShowDiscardDialogue)
 	{
         if(!areYouNotOnSettingsHub || currentOptionId == 0){
-            if((currentScreenId == GAME_SETTINGS && Temporal_Options_Game_Settings[0] > 0) ||
-               (currentScreenId == BATTLE_SETTINGS && Temporal_Options_Battle_Settings[0] > 0) ||
-               (currentScreenId == VISUAL_SETTINGS && Temporal_Options_Visual_Settings[0] > 0) ||
-               (currentScreenId == MUSIC_SETTINGS && Temporal_Options_Music_Settings[0] > 0) ||
-               (currentScreenId == RANDOM_SETTINGS && Temporal_Options_Random_Settings[0] > 0)){
-                switch(currentScreenId){
-                    case GAME_SETTINGS:
+            //For Presets
+            switch(currentScreenId){
+                case GAME_SETTINGS:
+                    if(Temporal_Options_Game_Settings[0] > 0)
                         Temporal_Options_Game_Settings[0]--;
-                    break;
-                    case BATTLE_SETTINGS:
-                        Temporal_Options_Battle_Settings[0]--;
-                    break;
-                    case VISUAL_SETTINGS:
-                        Temporal_Options_Visual_Settings[0]--;
-                    break;
-                    case MUSIC_SETTINGS:
-                        Temporal_Options_Music_Settings[0]--;
-                    break;
-                    default:
-                        Temporal_Options_Random_Settings[0]--;
-                    break;
-                }
-            }
-            else{
-                switch(currentScreenId){
-                    case GAME_SETTINGS:
+                    else
                         Temporal_Options_Game_Settings[0] = GameSettings_Settings_Options[0].numOptions - 1;
-                    break;
-                    case BATTLE_SETTINGS:
+                break;
+                case BATTLE_SETTINGS:
+                    if(Temporal_Options_Battle_Settings[0] > 0)
+                        Temporal_Options_Battle_Settings[0]--;
+                    else
                         Temporal_Options_Battle_Settings[0] = BattleSettings_Settings_Options[0].numOptions - 1;
-                    break;
-                    case VISUAL_SETTINGS:
+                break;
+                case VISUAL_SETTINGS:
+                    if(Temporal_Options_Visual_Settings[0] > 0)
+                        Temporal_Options_Visual_Settings[0]--;
+                    else
                         Temporal_Options_Visual_Settings[0] = VisualSettings_Settings_Options[0].numOptions - 1;
-                    break;
-                    case MUSIC_SETTINGS:
+                break;
+                case MUSIC_SETTINGS:
+                    if(Temporal_Options_Music_Settings[0] > 0)
+                        Temporal_Options_Music_Settings[0]--;
+                    else
                         Temporal_Options_Music_Settings[0] = MusicSettings_Settings_Options[0].numOptions - 1;
-                    break;
-                    default:
+                break;
+                case RANDOM_SETTINGS:
+                    if(Temporal_Options_Random_Settings[0] > 0)
+                        Temporal_Options_Random_Settings[0]--;
+                    else
                         Temporal_Options_Random_Settings[0] = RandomSettings_Settings_Options[0].numOptions - 1;
-                    break;
-                }
+                break;
             }
 
             HandlePresetData();
@@ -3015,9 +3006,10 @@ static void Task_MenuMain(u8 taskId)
                 RecolorWindow();
         }
         else{
+            // For Other Options
             switch(currentScreenId){
                 case GAME_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Game_Settings[currentOptionId] > 0){
                             Temporal_Options_Game_Settings[currentOptionId]--;
                         }
@@ -3026,7 +3018,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case BATTLE_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Battle_Settings[currentOptionId] > 0)
                             Temporal_Options_Battle_Settings[currentOptionId]--;
                         else
@@ -3034,7 +3026,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case VISUAL_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Visual_Settings[currentOptionId] > 0)
                             Temporal_Options_Visual_Settings[currentOptionId]--;
                         else
@@ -3045,7 +3037,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case MUSIC_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Music_Settings[currentOptionId] > 0)
                             Temporal_Options_Music_Settings[currentOptionId]--;
                         else
@@ -3053,7 +3045,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case RANDOM_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Random_Settings[currentOptionId] > 0)
                             Temporal_Options_Random_Settings[currentOptionId]--;
                         else
@@ -3070,63 +3062,49 @@ static void Task_MenuMain(u8 taskId)
     if(JOY_NEW(DPAD_RIGHT) && !ShouldShowDiscardDialogue)
 	{
         if(!areYouNotOnSettingsHub || currentOptionId == 0){
-            if((currentScreenId == GAME_SETTINGS   && Temporal_Options_Game_Settings[0]   <= GameSettings_Settings_Options[0].numOptions - 1) ||
-               (currentScreenId == BATTLE_SETTINGS && Temporal_Options_Battle_Settings[0] <= BattleSettings_Settings_Options[0].numOptions - 1) ||
-               (currentScreenId == VISUAL_SETTINGS && Temporal_Options_Visual_Settings[0] <= VisualSettings_Settings_Options[0].numOptions - 1) ||
-               (currentScreenId == MUSIC_SETTINGS  && Temporal_Options_Music_Settings[0]  <= MusicSettings_Settings_Options[0].numOptions - 1) ||
-               (currentScreenId == RANDOM_SETTINGS && Temporal_Options_Random_Settings[0] <= RandomSettings_Settings_Options[0].numOptions - 1)){
-                switch(currentScreenId){
-                    case GAME_SETTINGS:
+            //For Presets
+            switch(currentScreenId){
+                case GAME_SETTINGS:
+                    if(Temporal_Options_Game_Settings[0] < GameSettings_Settings_Options[0].numOptions - 1)
                         Temporal_Options_Game_Settings[0]++;
-                    break;
-                    case BATTLE_SETTINGS:
-                        Temporal_Options_Battle_Settings[0]++;
-                    break;
-                    case VISUAL_SETTINGS:
-                        Temporal_Options_Visual_Settings[0]++;
-                    break;
-                    case MUSIC_SETTINGS:
-                        Temporal_Options_Music_Settings[0]++;
-                    break;
-                    default:
-                        Temporal_Options_Random_Settings[0]++;
-                    break;
-                }
-
-                mgba_printf(MGBA_LOG_WARN, "Asdf3 %d", MusicSettings_Settings_Options[0].numOptions);
-            }
-            else{
-                switch(currentScreenId){
-                    case GAME_SETTINGS:
+                    else
                         Temporal_Options_Game_Settings[0] = 0;
-                    break;
-                    case BATTLE_SETTINGS:
+                break;
+                case BATTLE_SETTINGS:
+                    if(Temporal_Options_Battle_Settings[0] < BattleSettings_Settings_Options[0].numOptions - 1)
+                        Temporal_Options_Battle_Settings[0]++;
+                    else
                         Temporal_Options_Battle_Settings[0] = 0;
-                    break;
-                    case VISUAL_SETTINGS:
+                break;
+                case VISUAL_SETTINGS:
+                    if(Temporal_Options_Visual_Settings[0] < VisualSettings_Settings_Options[0].numOptions - 1)
+                        Temporal_Options_Visual_Settings[0]++;
+                    else
                         Temporal_Options_Visual_Settings[0] = 0;
-                    break;
-                    case MUSIC_SETTINGS:
+                break;
+                case MUSIC_SETTINGS:
+                    if(Temporal_Options_Music_Settings[0] < MusicSettings_Settings_Options[0].numOptions - 1)
+                        Temporal_Options_Music_Settings[0]++;
+                    else
                         Temporal_Options_Music_Settings[0] = 0;
-                    break;
-                    default:
+                break;
+                case RANDOM_SETTINGS:
+                    if(Temporal_Options_Random_Settings[0] < RandomSettings_Settings_Options[0].numOptions - 1)
+                        Temporal_Options_Random_Settings[0]++;
+                    else
                         Temporal_Options_Random_Settings[0] = 0;
-                    break;
-                }
-
-                mgba_printf(MGBA_LOG_WARN, "Asdf2 %d", MusicSettings_Settings_Options[0].numOptions);
+                break;
             }
 
-            mgba_printf(MGBA_LOG_WARN, "Asdf %d", Temporal_Options_Music_Settings[0]);
             HandlePresetData();
-
             if(currentScreenId == VISUAL_SETTINGS)
                 RecolorWindow();
         }
         else{
+            //For other Options
             switch(currentScreenId){
                 case GAME_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Game_Settings[currentOptionId] < GameSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Game_Settings[currentOptionId]++;
                         }
@@ -3135,7 +3113,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case BATTLE_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Battle_Settings[currentOptionId] < BattleSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Battle_Settings[currentOptionId]++;
                         }
@@ -3144,7 +3122,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case VISUAL_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Visual_Settings[currentOptionId] < VisualSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Visual_Settings[currentOptionId]++;
                         }
@@ -3156,7 +3134,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case MUSIC_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Music_Settings[currentOptionId] < MusicSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Music_Settings[currentOptionId]++;
                         }
@@ -3165,7 +3143,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                 break;
                 case RANDOM_SETTINGS:
-                    if(AreYouOnCustomPresetData() || currentOptionId == 0){
+                    if(AreYouOnCustomPresetData()){
                         if(Temporal_Options_Random_Settings[currentOptionId] < RandomSettings_Settings_Options[currentOptionId].numOptions - 1){
                             Temporal_Options_Random_Settings[currentOptionId]++;
                         }
@@ -3231,6 +3209,7 @@ static void Task_MenuMain(u8 taskId)
             gTasks[taskId].func = Task_MenuTurnOff;
         }
         else{
+            CopyTemporalDataToSaveBlockData();
             areYouNotOnSettingsHub = !areYouNotOnSettingsHub;
             currentOptionId = 0;
             currentFirstOption = 0;
