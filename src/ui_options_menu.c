@@ -340,8 +340,6 @@ void Options_Menu_Init(MainCallback callback)
 
 static void Menu_RunSetup(void)
 {
-    FlagClear(FLAG_OPTION_MENU_SETUP);
-
     //Initializes Data for the First Time
     if(!FlagGet(FLAG_OPTION_MENU_SETUP)){
         ResetSaveBlocData();
@@ -2919,9 +2917,6 @@ static void RecolorWindow(){
             LoadPalette(sMenuPalette, 0, 32);
         break;
     }
-    mgba_printf(MGBA_LOG_WARN, "Color %d", Temporal_Options_Visual_Settings[VISUAL_OPTIONS_COLOR]);
-    //SetMainCallback2(CB2_InitUIOptionMenu);
-    //DestroyTask(taskId);
 }
 
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
