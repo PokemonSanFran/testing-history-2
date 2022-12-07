@@ -55,7 +55,7 @@
 #define FLAG_START_MENU_MOVE_MODE   0x2A // For the Start Menu
 #define FLAG_DEFEATED_GARDEN_BOSS 0x2A
 #define FLAG_START_MENU_SETUP       0x2B // Is used the first time you open the start menu to set up the app orders
-#define FLAG_UNUSED_0x2C 0x2C // Unused Flag
+#define FLAG_OPTION_MENU_SETUP 0x2C // Is used the first time you open the options menu to set up the configuration
 #define FLAG_UNUSED_0x2D 0x2D // Unused Flag
 #define FLAG_UNUSED_0x2E 0x2E// Unused Flag
 #define FLAG_UNUSED_0x2F 0x2F   // Unused Flag

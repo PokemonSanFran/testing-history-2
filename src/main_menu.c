@@ -18,6 +18,7 @@
 #include "mystery_event_menu.h"
 #include "naming_screen.h"
 #include "option_menu.h"
+#include "ui_options_menu.h"
 #include "overworld.h"
 #include "palette.h"
 #include "pokeball.h"
@@ -883,7 +884,7 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     ResetTasks();
     ResetSpriteData();
     FreeAllSpritePalettes();
-    if (returningFromOptionsMenu)
+    if (sCurrItemAndOptionMenuCheck & OPTION_MENU_FLAG)
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK); // fade to black
     else
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_WHITEALPHA); // fade to white
@@ -1372,8 +1373,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 DestroyTask(taskId);
                 break;
             case ACTION_OPTION:
-                gMain.savedCallback = CB2_ReinitMainMenu;
-                SetMainCallback2(CB2_InitOptionMenu);
+                SetMainCallback2(CB2_InitUIOptionMenu);
                 DestroyTask(taskId);
                 break;
             case ACTION_MYSTERY_GIFT:
@@ -3221,8 +3221,8 @@ static void MainMenu_FormatSavegameBadges(void)
 
 static void LoadMainMenuWindowFrameTiles(u8 bgId, u16 tileOffset)
 {
-    LoadBgTiles(bgId, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, tileOffset);
-    LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 32, 32);
+    LoadBgTiles(bgId, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->tiles, 0x120, tileOffset);
+    LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->pal, 32, 32);
 }
 
 static void DrawMainMenuWindowBorder(const struct WindowTemplate *template, u16 baseTileNum)

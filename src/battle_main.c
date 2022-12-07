@@ -2976,7 +2976,7 @@ static void BattleStartClearSetData(void)
 
     if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED))
     {
-        if (!(gBattleTypeFlags & BATTLE_TYPE_LINK) && gSaveBlock2Ptr->optionsBattleSceneOff == TRUE)
+        if (!(gBattleTypeFlags & BATTLE_TYPE_LINK) && gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_ANIMATIONS] == TRUE)
             gHitMarker |= HITMARKER_NO_ANIMATIONS;
     }
     else if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK)) && GetBattleSceneInRecordedBattle())
@@ -2984,7 +2984,7 @@ static void BattleStartClearSetData(void)
         gHitMarker |= HITMARKER_NO_ANIMATIONS;
     }
 
-    gBattleScripting.battleStyle = gSaveBlock2Ptr->optionsBattleStyle;
+    gBattleScripting.battleStyle = gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_SWITCH_STYLE];
 	gBattleScripting.expOnCatch = (B_EXP_CATCH >= GEN_6);
 	gBattleScripting.monCaught = FALSE;
 

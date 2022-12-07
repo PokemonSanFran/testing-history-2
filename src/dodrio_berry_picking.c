@@ -4609,7 +4609,7 @@ static void LoadGfx(void)
         sGfx->state++;
         break;
     case 4:
-        LoadWindowFrameGfx(gSaveBlock2Ptr->optionsWindowFrameType);
+        LoadWindowFrameGfx(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE]);
         LoadUserWindowFrameGfx();
         sGfx->state++;
         break;

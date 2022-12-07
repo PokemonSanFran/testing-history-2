@@ -391,8 +391,8 @@ bool32 MoveRecordedBattleToSaveData(void)
     battleSave->lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     battleSave->frontierFacility = sFrontierFacility;
     battleSave->frontierBrainSymbol = sFrontierBrainSymbol;
-    battleSave->battleScene = gSaveBlock2Ptr->optionsBattleSceneOff;
-    battleSave->textSpeed = gSaveBlock2Ptr->optionsTextSpeed;
+    battleSave->battleScene = gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_ANIMATIONS];
+    battleSave->textSpeed = gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_TEXT_SPEED];
     battleSave->AI_scripts = sAI_Scripts;
 
     if (gTrainerBattleOpponent_A >= TRAINER_RECORD_MIXING_FRIEND && gTrainerBattleOpponent_A < TRAINER_RECORD_MIXING_APPRENTICE)
