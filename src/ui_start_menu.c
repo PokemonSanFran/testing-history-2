@@ -41,6 +41,7 @@
 #include "task.h"
 #include "text_window.h"
 #include "ui_options_menu.h"
+#include "ui_amazon.h"
 #include "event_data.h"
 #include "constants/items.h"
 #include "constants/field_weather.h"
@@ -1004,6 +1005,18 @@ void Task_OpenOptionsMenuStartMenu(u8 taskId)
     }
 }
 
+void Task_OpenAmazonStartMenu(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        PlayRainStoppingSoundEffect();
+        CleanupOverworldWindowsAndTilemaps();
+        Amazon_Init(CB2_ReturnToUIMenu);
+        //SetMainCallback2(Option_Menu_Init); // Display option menu
+        gMain.savedCallback = CB2_ReturnToUIMenu;
+    }
+}  
+
 static u8 GetCurrentAppfromIndex(u8 index)
 {
     if(index >= NUM_TOTAL_APPS)
@@ -1260,9 +1273,9 @@ static void Task_MenuMain(u8 taskId)
                 break;
                 case APP_AMAZON:
                     if(GetCurrentSignal() != 0){
-                        PlaySE(SE_PC_OFF);
+                        PlaySE(SE_SELECT);
                         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                        gTasks[taskId].func = Task_MenuTurnOff;
+                        gTasks[taskId].func = Task_OpenAmazonStartMenu;
                     }
                     else{
                         PlaySE(SE_BOO);

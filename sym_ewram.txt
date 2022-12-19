@@ -154,3 +154,4 @@
 	.include "src/quests.o"
 	.include "src/ui_start_menu.o"
 	.include "src/ui_options_menu.o"
+	.include "src/ui_amazon.o"
