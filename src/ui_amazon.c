@@ -475,14 +475,16 @@ static const u8 sText_Help_Bar[]  = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str = sText_Help_Bar;
-    u8 i;
+    u8 i, x2, y2;
     u8 x = 1;
     u8 y = 1;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     // Row Icons
     x = 1;
-    y = 3;
+    y = 2;
+    x2 = 0;
+    y2 = 4;
 
     for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
         //if(GetCurrentRow(i) == currentFirstShownRow + i)
@@ -490,47 +492,48 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         switch(GetCurrentRow(i)){
             case ROW_BUY_AGAIN:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_RECOMMENDED:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_MEDICINE:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_POKEBALLS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_OTHER_ITEMS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_POWER_UPS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_BATTLE_ITEMS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_BERRIES:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_TMS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_TREASURES:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_MEGA_STONES:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_Z_CRYSTALS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             default:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
         }
 
         y = y + 3;
+        y2 = y2 + 2;
     }
 
     // Row Names
