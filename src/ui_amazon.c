@@ -51,9 +51,35 @@ enum WindowIds
     WINDOW_1,
 };
 
+enum RowIds
+{
+    ROW_BUY_AGAIN,
+    ROW_RECOMMENDED,
+    ROW_MEDICINE,
+    ROW_POKEBALLS,
+    ROW_OTHER_ITEMS,
+    ROW_POWER_UPS,
+    ROW_BATTLE_ITEMS,
+    ROW_BERRIES,
+    ROW_TMS,
+    ROW_TREASURES,
+    ROW_MEGA_STONES,
+    ROW_Z_CRYSTALS,
+    NUM_ROWS
+};
+
+#define NUM_ITEMS_PER_ROW 5
+#define NUM_MAX_ICONS_ROWNS_ON_SCREEN 5
+#define NUM_MAX_ROWNS_ON_SCREEN 3
+
 //==========EWRAM==========//
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
+
+static EWRAM_DATA u8  currentRow = 0;
+static EWRAM_DATA u8  currentItem = 0;
+static EWRAM_DATA u8  currentScreenId = 0;
+static EWRAM_DATA u8  currentFirstShownRow = 0;
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -327,14 +353,208 @@ static void Menu_InitWindows(void)
     ScheduleBgCopyTilemapToVram(2);
 }
 
+// --------------------------------------------------------------------------------------------------------------------
+
+static u8 GetCurrentRow(u8 row)
+{
+    if(currentFirstShownRow + row < NUM_ROWS)
+        return currentFirstShownRow + row;
+    else
+        return (currentFirstShownRow + row) % NUM_ROWS;
+}
+
+static u8 GetCursorPosition()
+{
+    return currentRow - currentFirstShownRow;
+}
+
+static void PressedDownButton(){
+    u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+    u8 finalhalfScreen = NUM_ROWS - halfScreen;
+    u8 cursorPosition = (currentRow - currentFirstShownRow);
+
+    if(currentRow < halfScreen){
+        currentRow++;
+    }
+	else if(currentRow >= (NUM_ROWS - 1)){ //If you are in the last option go to the first one
+		currentRow = 0;
+		currentFirstShownRow = 0;
+    }
+    else if(currentRow >= (finalhalfScreen - 1)){
+        currentRow++;
+    }
+	else{
+        currentRow++;
+        currentFirstShownRow++;
+    }
+}
+
+static void PressedUpButton(){
+    u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+    u8 finalhalfScreen = NUM_ROWS - halfScreen;
+    u8 cursorPosition = (currentRow - currentFirstShownRow);
+
+    if(currentRow > halfScreen && currentRow <= (finalhalfScreen - 1)){
+        currentRow--;
+        currentFirstShownRow--;
+    }
+	else if(currentRow == 0){ //If you are in the first option go to the last one
+		currentRow = NUM_ROWS - 1;
+		currentFirstShownRow = NUM_ROWS - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+    }
+    else{
+        currentRow--;
+    }
+}
+
+
+#define ROW_NAME_LENGTH 20
+
+struct AmazonRowData
+{
+    const u8 title[ROW_NAME_LENGTH];
+};
+
+struct AmazonRowData Amazon_Rows[NUM_ROWS] = {
+    [ROW_BUY_AGAIN] =
+    {
+        .title = _("Buy Again"),
+    },
+    [ROW_RECOMMENDED] =
+    {
+        .title = _("Recommended"),
+    },
+    [ROW_MEDICINE] =
+    {
+        .title = _("Medicine"),
+    },
+    [ROW_POKEBALLS] =
+    {
+        .title = _("Pokeballs"),
+    },
+    [ROW_OTHER_ITEMS] =
+    {
+        .title = _("Other Items"),
+    },
+    [ROW_POWER_UPS] =
+    {
+        .title = _("Power-Ups"),
+    },
+    [ROW_BATTLE_ITEMS] =
+    {
+        .title = _("Battle Items"),
+    },
+    [ROW_BERRIES] =
+    {
+        .title = _("Berris"),
+    },
+    [ROW_TMS] =
+    {
+        .title = _("TMs"),
+    },
+    [ROW_TREASURES] =
+    {
+        .title = _("Treasures"),
+    },
+    [ROW_MEGA_STONES] =
+    {
+        .title = _("Mega Stones"),
+    },
+    [ROW_Z_CRYSTALS] =
+    {
+        .title = _("Z-Crystals"),
+    },
+};
+
+//Graphics
+static const u8 sRowIcon_0[]        = INCBIN_U8("graphics/ui_menus/amazon/icon_0.4bpp");
+static const u8 sRowSelector[]      = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
+
+
 static const u8 sText_Help_Bar[]  = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str = sText_Help_Bar;
+    u8 i;
     u8 x = 1;
     u8 y = 1;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    // Row Icons
+    x = 1;
+    y = 3;
+
+    for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
+        //if(GetCurrentRow(i) == currentFirstShownRow + i)
+        //    BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8), ((y-1)*8), 32, 24);
+
+        switch(GetCurrentRow(i)){
+            case ROW_BUY_AGAIN:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_RECOMMENDED:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_MEDICINE:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_POKEBALLS:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_OTHER_ITEMS:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_POWER_UPS:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_BATTLE_ITEMS:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_BERRIES:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_TMS:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_TREASURES:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_MEGA_STONES:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            case ROW_Z_CRYSTALS:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+            default:
+                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8), (y*8), 16, 16);
+            break;
+        }
+
+        y = y + 3;
+    }
+
+    // Row Names
+    x = 4;
+
+    for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
+        str = Amazon_Rows[GetCursorPosition() + i].title;
+
+        switch(i){
+            case 0:
+                y = 2;
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str);
+            break;
+            case 1:
+                y = 7;
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str);
+            break;
+            case 2:
+                y = 13;
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str);
+            break;
+        }
+    }
+
     // Help Bar --------------------------------------------------------------------------------------------------------------------
 	x = 0;
 	y = 18;
@@ -372,4 +592,20 @@ static void Task_MenuMain(u8 taskId)
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_MenuTurnOff;
     }
+
+    if(JOY_NEW(DPAD_UP))
+	{
+        PressedUpButton();
+        PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
+	}
+
+    if(JOY_NEW(DPAD_DOWN))
+	{
+        PressedDownButton();
+        PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
+	}
 }
