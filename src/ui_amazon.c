@@ -532,6 +532,535 @@ struct AmazonRowData
     const u8 title[ROW_NAME_LENGTH];
 };
 
+struct AmazonItemData
+{
+    u16 item;
+    u8  martType;
+    u8  reqBadges;
+    bool8 questArtisanItem;
+    u16 reqVarState;
+};
+
+#define MAX_ITEMS_PER_ROWS 30
+
+enum MartTypes
+{
+    MART_TYPE_NONE,
+    MART_TYPE_BLACK_BELT,
+    MART_TYPE_AROMA_LADY,
+    MART_TYPE_HIKER,
+    MART_TYPE_SCIENTIST,
+    MART_TYPE_ACE_TRAINER,
+};
+
+struct AmazonItemData Amazon_Items[NUM_ROWS][MAX_ITEMS_PER_ROWS] = {
+    [ROW_BUY_AGAIN] =
+    {
+        {
+            .item = ITEM_POKE_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_GREAT_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_ULTRA_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_PREMIER_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_HEAL_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_RECOMMENDED] =
+    {
+        {
+            .item = ITEM_REPEL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_SUPER_REPEL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_MAX_REPEL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_LURE,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_SUPER_LURE,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_MEDICINE] =
+    {
+        {
+            .item = ITEM_POTION,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_SUPER_POTION,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_HYPER_POTION,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_MAX_POTION,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_FULL_RESTORE,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_REVIVE,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_POKEBALLS] =
+    {
+        {
+            .item = ITEM_POKE_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_GREAT_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_ULTRA_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_PREMIER_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_HEAL_BALL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_OTHER_ITEMS] =
+    {
+        {
+            .item = ITEM_REPEL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_SUPER_REPEL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_MAX_REPEL,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_LURE,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_SUPER_LURE,
+            .martType = MART_TYPE_HIKER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_POWER_UPS] =
+    {
+        {
+            .item = ITEM_HP_UP,
+            .martType = MART_TYPE_SCIENTIST,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_PROTEIN,
+            .martType = MART_TYPE_SCIENTIST,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_IRON,
+            .martType = MART_TYPE_SCIENTIST,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_CALCIUM,
+            .martType = MART_TYPE_SCIENTIST,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_ZINC,
+            .martType = MART_TYPE_SCIENTIST,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_BATTLE_ITEMS] =
+    {
+        {
+            .item = ITEM_X_ATTACK,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 3,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_X_DEFENSE,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 3,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_X_SP_ATK,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 3,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_X_SP_DEF,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 3,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_X_SPEED,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 3,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_DIRE_HIT,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 3,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_GUARD_SPEC,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 3,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_POKE_DOLL,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 12,
+        },
+        {
+            .item = ITEM_FLUFFY_TAIL,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 12,
+        },
+        {
+            .item = ITEM_POKE_TOY,
+            .martType = MART_TYPE_BLACK_BELT,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 12,
+        },
+    },
+    [ROW_BERRIES] =
+    {
+        {
+            .item = ITEM_CHERI_BERRY,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_CHESTO_BERRY,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_PECHA_BERRY,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_RAWST_BERRY,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_ASPEAR_BERRY,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_LEPPA_BERRY,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 3,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_TMS] =
+    {
+        {
+            .item = ITEM_TM01,
+            .martType = MART_TYPE_ACE_TRAINER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_TM02,
+            .martType = MART_TYPE_ACE_TRAINER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_TM03,
+            .martType = MART_TYPE_ACE_TRAINER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_TM04,
+            .martType = MART_TYPE_ACE_TRAINER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_TM05,
+            .martType = MART_TYPE_ACE_TRAINER,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_TREASURES] =
+    {
+        {
+            .item = ITEM_MAX_MUSHROOMS,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_NUGGET,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_BIG_NUGGET,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_TINY_MUSHROOM,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_BIG_MUSHROOM,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_MEGA_STONES] =
+    {
+        {
+            .item = ITEM_VENUSAURITE,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_CHARIZARDITE_X,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_CHARIZARDITE_Y,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_BLASTOISINITE,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_BEEDRILLITE,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+    [ROW_Z_CRYSTALS] =
+    {
+        {
+            .item = ITEM_NORMALIUM_Z,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_FIRIUM_Z,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_WATERIUM_Z,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_ELECTRIUM_Z,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_GRASSIUM_Z,
+            .martType = MART_TYPE_NONE,
+            .reqBadges = 0,
+            .questArtisanItem = FALSE,
+            .reqVarState = 0,
+        },
+    },
+};
+
 struct AmazonRowData Amazon_Rows[NUM_ROWS] = {
     [ROW_BUY_AGAIN] =
     {
@@ -592,7 +1121,7 @@ static const u8 sText_Help_Bar[]  = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str = sText_Help_Bar;
-    u8 i, j, x2, y2;
+    u8 i, j, x2, y2, itemID;
     u8 x = 1;
     u8 y = 1;
 
@@ -665,13 +1194,15 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     y = 5;
     x2 = 6;
     y2 = 6;
+    itemID = 0;
+
     for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
         for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
-            u8 id = ((j + 1) * (i + 1)) - 1;
-            CreateItemIcon(ITEM_JAW_FOSSIL + id, id, (x * 8) + x2, (y * 8) + y2);
+            CreateItemIcon(Amazon_Items[(currentRow + i) % NUM_ROWS][j].item, itemID, (x * 8) + x2, (y * 8) + y2);
 
             x = x + 5;
             x2 = x2 + 2;
+            itemID++;
         }
         x = 6;
         x2 = 6;
