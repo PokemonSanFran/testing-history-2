@@ -34,6 +34,8 @@
 #include "constants/field_weather.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "printf.h"
+#include "mgba.h"
 
 /*
  * 
@@ -387,6 +389,11 @@ static void PressedDownButton(){
         currentRow++;
         currentFirstShownRow++;
     }
+    
+    mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentRow);
+    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
+    mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownRow);
+    mgba_printf(MGBA_LOG_WARN, "------------------------------------");
 }
 
 static void PressedUpButton(){
@@ -405,8 +412,38 @@ static void PressedUpButton(){
     else{
         currentRow--;
     }
+
+    mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentRow);
+    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
+    mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownRow);
+    mgba_printf(MGBA_LOG_WARN, "------------------------------------");
 }
 
+static void PressedRightButton(){
+
+    if(currentItem < NUM_ITEMS_PER_ROW - 1){
+        currentItem++;
+    }
+	else{
+		currentItem = 0;
+    }
+    
+    mgba_printf(MGBA_LOG_WARN, "Current Item %d", currentItem);
+    mgba_printf(MGBA_LOG_WARN, "------------------------------------");
+}
+
+static void PressedLeftButton(){
+
+    if(currentItem > 0){
+        currentItem--;
+    }
+	else{
+		currentItem = NUM_ITEMS_PER_ROW - 1;
+    }
+    
+    mgba_printf(MGBA_LOG_WARN, "Current Item %d", currentItem);
+    mgba_printf(MGBA_LOG_WARN, "------------------------------------");
+}
 
 #define ROW_NAME_LENGTH 20
 
@@ -446,7 +483,7 @@ struct AmazonRowData Amazon_Rows[NUM_ROWS] = {
     },
     [ROW_BERRIES] =
     {
-        .title = _("Berris"),
+        .title = _("Berries"),
     },
     [ROW_TMS] =
     {
@@ -469,7 +506,7 @@ struct AmazonRowData Amazon_Rows[NUM_ROWS] = {
 //Graphics
 static const u8 sRowIcon_0[]        = INCBIN_U8("graphics/ui_menus/amazon/icon_0.4bpp");
 static const u8 sRowSelector[]      = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
-
+static const u8 sBuySelector[]      = INCBIN_U8("graphics/ui_menus/amazon/selector1.4bpp");
 
 static const u8 sText_Help_Bar[]  = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
 static void PrintToWindow(u8 windowId, u8 colorIdx)
@@ -487,10 +524,10 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     y2 = 4;
 
     for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
-        //if(GetCurrentRow(i) == currentFirstShownRow + i)
-        //    BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8), ((y-1)*8), 32, 24);
+        if(currentRow == currentFirstShownRow + i)
+            BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8) + x2, ((y-1)*8) + y2 + 4, 32, 24);
 
-        switch(GetCurrentRow(i)){
+        switch(currentFirstShownRow + i){
             case ROW_BUY_AGAIN:
                 BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
@@ -536,11 +573,16 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y2 = y2 + 2;
     }
 
+    //Buy Icon
+    x = (5 * currentItem) + 5;
+    y = 5;
+    BlitBitmapToWindow(windowId, sBuySelector, (x*8), (y*8), 32, 16);
+
     // Row Names
     x = 4;
 
     for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
-        str = Amazon_Rows[GetCursorPosition() + i].title;
+        str = Amazon_Rows[(currentRow + i) % NUM_ROWS].title;
 
         switch(i){
             case 0:
@@ -607,6 +649,22 @@ static void Task_MenuMain(u8 taskId)
     if(JOY_NEW(DPAD_DOWN))
 	{
         PressedDownButton();
+        PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
+	}
+
+    if(JOY_NEW(DPAD_RIGHT))
+	{
+        PressedRightButton();
+        PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
+	}
+
+    if(JOY_NEW(DPAD_LEFT))
+	{
+        PressedLeftButton();
         PlaySE(SE_SELECT);
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
