@@ -9,6 +9,7 @@
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "item.h"
+#include "item_icon.h"
 #include "item_menu.h"
 #include "item_menu_icons.h"
 #include "list_menu.h"
@@ -34,6 +35,7 @@
 #include "constants/field_weather.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "constants/items.h"
 #include "printf.h"
 #include "mgba.h"
 
@@ -82,6 +84,22 @@ static EWRAM_DATA u8  currentRow = 0;
 static EWRAM_DATA u8  currentItem = 0;
 static EWRAM_DATA u8  currentScreenId = 0;
 static EWRAM_DATA u8  currentFirstShownRow = 0;
+
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_0[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_1[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_2[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_3[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_4[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_5[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_6[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_7[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_8[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_9[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_10[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_11[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_12[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_13[12] = {0};
+static EWRAM_DATA u8 sItemMenuIconSpriteIds_14[12] = {0};
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -355,6 +373,68 @@ static void Menu_InitWindows(void)
     ScheduleBgCopyTilemapToVram(2);
 }
 
+static void CreateItemIcon(u16 itemId, u8 idx, u8 x, u8 y)
+{
+    u8 * ptr;
+    u8 spriteId;
+
+    switch(idx){
+        case 0:
+            ptr = &sItemMenuIconSpriteIds_0[10];
+        break;
+        case 1:
+            ptr = &sItemMenuIconSpriteIds_1[10];
+        break;
+        case 2:
+            ptr = &sItemMenuIconSpriteIds_2[10];
+        break;
+        case 3:
+            ptr = &sItemMenuIconSpriteIds_3[10];
+        break;
+        case 4:
+            ptr = &sItemMenuIconSpriteIds_4[10];
+        break;
+        case 5:
+            ptr = &sItemMenuIconSpriteIds_5[10];
+        break;
+        case 6:
+            ptr = &sItemMenuIconSpriteIds_6[10];
+        break;
+        case 7:
+            ptr = &sItemMenuIconSpriteIds_7[10];
+        break;
+        case 8:
+            ptr = &sItemMenuIconSpriteIds_8[10];
+        break;
+        case 9:
+            ptr = &sItemMenuIconSpriteIds_9[10];
+        break;
+        case 10:
+            ptr = &sItemMenuIconSpriteIds_10[10];
+        break;
+        case 11:
+            ptr = &sItemMenuIconSpriteIds_11[10];
+        break;
+        case 12:
+            ptr = &sItemMenuIconSpriteIds_12[10];
+        break;
+        case 13:
+            ptr = &sItemMenuIconSpriteIds_13[10];
+        break;
+        case 14:
+            ptr = &sItemMenuIconSpriteIds_14[10];
+        break;
+    }
+
+    FreeSpriteTilesByTag(102 + idx);
+    FreeSpritePaletteByTag(102 + idx);
+    spriteId = AddItemIconSprite(102 + idx, 102 + idx, itemId);
+        
+    ptr[idx] = spriteId;
+    gSprites[spriteId].x2 = x; //24;
+    gSprites[spriteId].y2 = y; //140;
+}
+
 // --------------------------------------------------------------------------------------------------------------------
 
 static u8 GetCurrentRow(u8 row)
@@ -512,11 +592,12 @@ static const u8 sText_Help_Bar[]  = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str = sText_Help_Bar;
-    u8 i, x2, y2;
+    u8 i, j, x2, y2;
     u8 x = 1;
     u8 y = 1;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+
     // Row Icons
     x = 1;
     y = 2;
@@ -574,9 +655,29 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     }
 
     //Buy Icon
-    x = (5 * currentItem) + 5;
+    x = (5 * currentItem) + 4;
     y = 5;
-    BlitBitmapToWindow(windowId, sBuySelector, (x*8), (y*8), 32, 16);
+    x2 = (2 * currentItem) + 2;
+    BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 32, 16);
+
+    // Item Icon
+    x = 6;
+    y = 5;
+    x2 = 6;
+    y2 = 6;
+    for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
+        for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
+            u8 id = ((j + 1) * (i + 1)) - 1;
+            CreateItemIcon(ITEM_JAW_FOSSIL + id, id, (x * 8) + x2, (y * 8) + y2);
+
+            x = x + 5;
+            x2 = x2 + 2;
+        }
+        x = 6;
+        x2 = 6;
+        y = y + 5;
+        y2 = y2 + 2;
+    }
 
     // Row Names
     x = 4;
