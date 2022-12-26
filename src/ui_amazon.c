@@ -20,6 +20,7 @@
 #include "malloc.h"
 #include "menu.h"
 #include "menu_helpers.h"
+#include "money.h"
 #include "palette.h"
 #include "party_menu.h"
 #include "scanline_effect.h"
@@ -1113,11 +1114,25 @@ struct AmazonRowData Amazon_Rows[NUM_ROWS] = {
 };
 
 //Graphics
-static const u8 sRowIcon_0[]        = INCBIN_U8("graphics/ui_menus/amazon/icon_0.4bpp");
+static const u8 sRowIcon_0[]                = INCBIN_U8("graphics/ui_menus/amazon/icon_0.4bpp");
+static const u8 sRowIcon_1[]                = INCBIN_U8("graphics/ui_menus/amazon/icon_1.4bpp");
+static const u8 sRowIcon_2[]                = INCBIN_U8("graphics/ui_menus/amazon/icon_2.4bpp");
+static const u8 sRowIcon_Pokeball[]         = INCBIN_U8("graphics/ui_menus/amazon/icon_pokeball.4bpp");
+static const u8 sRowIcon_Potion[]           = INCBIN_U8("graphics/ui_menus/amazon/icon_potion.4bpp");
+static const u8 sRowIcon_TM[]               = INCBIN_U8("graphics/ui_menus/amazon/icon_tm.4bpp");
+static const u8 sRowIcon_Berries[]          = INCBIN_U8("graphics/ui_menus/amazon/icon_berries.4bpp");
+static const u8 sRowIcon_Candy[]            = INCBIN_U8("graphics/ui_menus/amazon/icon_candy.4bpp");
+static const u8 sRowIcon_Key[]              = INCBIN_U8("graphics/ui_menus/amazon/icon_key.4bpp");
+
 static const u8 sRowSelector[]      = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
 static const u8 sBuySelector[]      = INCBIN_U8("graphics/ui_menus/amazon/selector1.4bpp");
 
 static const u8 sText_Help_Bar[]  = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
+static const u8 sText_Money_Bar[]  = _("Money: ¥{STR_VAR_1}");
+static const u8 sText_FirstRowName[]  = _("{STR_VAR_1}: {STR_VAR_2}");
+
+#define MAX_MONEY 999999
+
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str = sText_Help_Bar;
@@ -1145,34 +1160,34 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_MEDICINE:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_Potion, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_POKEBALLS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_Pokeball, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_OTHER_ITEMS:
                 BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_POWER_UPS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_Candy, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_BATTLE_ITEMS:
                 BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_BERRIES:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_Berries, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_TMS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_TM, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_TREASURES:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_2, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_MEGA_STONES:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_1, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             case ROW_Z_CRYSTALS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                BlitBitmapToWindow(windowId, sRowIcon_Key, (x*8) + x2, (y*8) + y2, 16, 16);
             break;
             default:
                 BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
@@ -1214,20 +1229,29 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     x = 4;
 
     for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
-        str = Amazon_Rows[(currentRow + i) % NUM_ROWS].title;
+        if(i == 0){
+            str = Amazon_Rows[(currentRow + i) % NUM_ROWS].title;
+            StringCopy(gStringVar1, str);
+            str = gItems[Amazon_Items[(currentRow) % NUM_ROWS][currentItem].item].name;
+            StringCopy(gStringVar2, str);
+            StringExpandPlaceholders(gStringVar4, sText_FirstRowName);
+        }
+        else{
+            StringCopy(gStringVar4, Amazon_Rows[(currentRow + i) % NUM_ROWS].title);
+        }
 
         switch(i){
             case 0:
                 y = 2;
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str);
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
             break;
             case 1:
                 y = 7;
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str);
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
             break;
             case 2:
                 y = 13;
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str);
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
             break;
         }
     }
@@ -1237,6 +1261,15 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	y = 18;
 
     AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar);
+    // Money --------------------------------------------------------------------------------------------------------------------
+	x = 20;
+	y = 0;
+    AddMoney(&gSaveBlock1Ptr->money, MAX_MONEY);
+    ConvertIntToDecimalStringN(gStringVar1, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_RIGHT_ALIGN, 6);
+    StringExpandPlaceholders(gStringVar4, sText_Money_Bar);
+
+    AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
+
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, 3);
 }
