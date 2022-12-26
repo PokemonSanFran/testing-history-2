@@ -1207,7 +1207,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x = 6;
         x2 = 6;
         y = y + 5;
-        y2 = y2 + 2;
+        y2 = y2 + 4;
     }
 
     // Row Names
