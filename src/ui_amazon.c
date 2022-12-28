@@ -1209,10 +1209,10 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
         for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
             if(i == 0){
-                CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
             }
             else{
-                CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % itemNum[i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
             }
             
             x = x + 5;
