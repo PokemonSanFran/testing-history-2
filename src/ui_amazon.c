@@ -90,6 +90,7 @@ static EWRAM_DATA u8  currentFirstShownItem = 0;
 
 static EWRAM_DATA u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
 static EWRAM_DATA u8  itemNum[NUM_ROWS];
+static EWRAM_DATA bool8 rowsSorted = FALSE;
 
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_0[12] = {0};
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_1[12] = {0};
@@ -446,12 +447,14 @@ static void CreateItemIcon(u16 itemId, u8 idx, u8 x, u8 y)
 
 // --------------------------------------------------------------------------------------------------------------------
 
-static u8 GetCurrentRow(u8 row)
-{
-    if(currentFirstShownRow + row < NUM_ROWS)
-        return currentFirstShownRow + row;
-    else
-        return (currentFirstShownRow + row) % NUM_ROWS;
+u8 GetCurrentRow(){
+    /*/if(rowsSorted){
+        return (currentRow + 2) % NUM_ROWS;
+    }
+    else{
+       return currentRow % NUM_ROWS;
+    }*/
+    return currentRow % NUM_ROWS;
 }
 
 static u8 GetCursorPosition()
@@ -1141,7 +1144,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     y2 = 4;
 
     for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
-        if(currentRow == currentFirstShownRow + i)
+        if(GetCurrentRow() == currentFirstShownRow + i)
             BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8) + x2, ((y-1)*8) + y2 + 4, 32, 24);
 
         switch(currentFirstShownRow + i){
@@ -1206,10 +1209,10 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
         for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
             if(i == 0){
-                CreateItemIcon(currentRowItemList[(currentRow + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[i]], itemID, (x * 8) + x2, (y * 8) + y2);
             }
             else{
-                CreateItemIcon(currentRowItemList[(currentRow + i) % NUM_ROWS][j % itemNum[i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % itemNum[i]], itemID, (x * 8) + x2, (y * 8) + y2);
             }
             
             x = x + 5;
@@ -1229,12 +1232,12 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         if(i == 0){
             str = Amazon_Rows[(currentRow + i) % NUM_ROWS].title;
             StringCopy(gStringVar1, str);
-            str = gItems[currentRowItemList[(currentRow) % NUM_ROWS][currentItem]].name;
+            str = gItems[currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem]].name;
             StringCopy(gStringVar2, str);
             StringExpandPlaceholders(gStringVar4, sText_FirstRowName);
         }
         else{
-            StringCopy(gStringVar4, Amazon_Rows[(currentRow + i) % NUM_ROWS].title);
+            StringCopy(gStringVar4, Amazon_Rows[(GetCurrentRow() + i) % NUM_ROWS].title);
         }
 
         switch(i){
@@ -1299,6 +1302,15 @@ static void Task_MenuMain(u8 taskId)
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_MenuTurnOff;
     }
+
+    //
+    if(JOY_NEW(START_BUTTON))
+	{
+        rowsSorted = !rowsSorted;
+        PlaySE(SE_SELECT);
+
+        PrintToWindow(WINDOW_1, FONT_BLACK);
+	}
 
     if(JOY_NEW(DPAD_UP))
 	{
