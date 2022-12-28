@@ -76,6 +76,7 @@ enum RowIds
 #define NUM_ITEMS_PER_ROW 5
 #define NUM_MAX_ICONS_ROWNS_ON_SCREEN 5
 #define NUM_MAX_ROWNS_ON_SCREEN 3
+#define NUM_MAX_ITEMS_PER_ROW 20
 
 //==========EWRAM==========//
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
@@ -85,6 +86,10 @@ static EWRAM_DATA u8  currentRow = 0;
 static EWRAM_DATA u8  currentItem = 0;
 static EWRAM_DATA u8  currentScreenId = 0;
 static EWRAM_DATA u8  currentFirstShownRow = 0;
+static EWRAM_DATA u8  currentFirstShownItem = 0;
+
+static EWRAM_DATA u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
+static EWRAM_DATA u8  itemNum[NUM_ROWS];
 
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_0[12] = {0};
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_1[12] = {0};
@@ -112,6 +117,7 @@ static void Menu_InitWindows(void);
 static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
+static void AmazonItemInitializeArrayList(void);
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -194,6 +200,8 @@ void Amazon_Init(MainCallback callback)
     // initialize stuff
     sMenuDataPtr->gfxLoadState = 0;
     sMenuDataPtr->savedCallback = callback;
+
+    AmazonItemInitializeArrayList();
 
     SetMainCallback2(Menu_RunSetup);
 }
@@ -455,6 +463,8 @@ static void PressedDownButton(){
     u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
     u8 finalhalfScreen = NUM_ROWS - halfScreen;
     u8 cursorPosition = (currentRow - currentFirstShownRow);
+    currentItem = 0;
+	currentFirstShownItem = 0;
 
     if(currentRow < halfScreen){
         currentRow++;
@@ -481,6 +491,8 @@ static void PressedUpButton(){
     u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
     u8 finalhalfScreen = NUM_ROWS - halfScreen;
     u8 cursorPosition = (currentRow - currentFirstShownRow);
+    currentItem = 0;
+	currentFirstShownItem = 0;
 
     if(currentRow > halfScreen && currentRow <= (finalhalfScreen - 1)){
         currentRow--;
@@ -501,12 +513,23 @@ static void PressedUpButton(){
 }
 
 static void PressedRightButton(){
+    u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+    u8 finalhalfScreen = itemNum[currentRow] - halfScreen;
+    u8 cursorPosition = (currentItem - currentFirstShownItem);
 
-    if(currentItem < NUM_ITEMS_PER_ROW - 1){
+    if(currentItem < halfScreen){
+        currentItem++;
+    }
+	else if(currentItem >= (itemNum[currentRow] - 1)){ //If you are in the last option go to the first one
+		currentItem = 0;
+		currentFirstShownItem = 0;
+    }
+    else if(currentItem >= (finalhalfScreen - 1)){
         currentItem++;
     }
 	else{
-		currentItem = 0;
+        currentItem++;
+        currentFirstShownItem++;
     }
     
     mgba_printf(MGBA_LOG_WARN, "Current Item %d", currentItem);
@@ -514,15 +537,25 @@ static void PressedRightButton(){
 }
 
 static void PressedLeftButton(){
+    u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+    u8 finalhalfScreen = itemNum[currentRow] - halfScreen;
+    u8 cursorPosition = (currentItem - currentFirstShownItem);
 
-    if(currentItem > 0){
+    if(currentItem > halfScreen && currentItem <= (finalhalfScreen - 1)){
+        currentItem--;
+        currentFirstShownItem--;
+    }
+	else if(currentItem == 0){ //If you are in the first option go to the last one
+		currentItem = itemNum[currentRow] - 1;
+		currentFirstShownItem = itemNum[currentRow] - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+    }
+    else{
         currentItem--;
     }
-	else{
-		currentItem = NUM_ITEMS_PER_ROW - 1;
-    }
-    
-    mgba_printf(MGBA_LOG_WARN, "Current Item %d", currentItem);
+
+    mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentItem);
+    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
+    mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownItem);
     mgba_printf(MGBA_LOG_WARN, "------------------------------------");
 }
 
@@ -543,9 +576,7 @@ struct AmazonItemData
     u16 reqVarState;
 };
 
-#define MAX_ITEMS_PER_ROWS 30
-
-struct AmazonItemData Amazon_Items[NUM_ROWS][MAX_ITEMS_PER_ROWS] = {
+struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     [ROW_BUY_AGAIN] =
     {
         {
@@ -576,6 +607,18 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][MAX_ITEMS_PER_ROWS] = {
             .item = ITEM_HEAL_BALL,
             .isVarChecked = FALSE,
             .reqFlagVar = FLAG_NONE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_CHERISH_BALL,
+            .isVarChecked = FALSE,
+            .reqFlagVar = FLAG_NONE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_MASTER_BALL,
+            .isVarChecked = FALSE,
+            .reqFlagVar = FLAG_CAUGHT_HO_OH,
             .reqVarState = 0,
         },
     },
@@ -986,6 +1029,31 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][MAX_ITEMS_PER_ROWS] = {
     },
 };
 
+void AmazonItemInitializeArrayList()
+{
+    u8 i, j;
+
+    for(i = 0; i < NUM_ROWS; i++){
+        itemNum[i] = 0;
+        for(j = 0; j < NUM_MAX_ITEMS_PER_ROW; j++){
+            if(Amazon_Items[i][j].item != ITEM_NONE){
+                if(Amazon_Items[i][j].isVarChecked){
+                    if(VarGet(Amazon_Items[i][j].reqFlagVar) == Amazon_Items[i][j].reqVarState){
+                        currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
+                        itemNum[i]++;
+                    }
+                }
+                else{
+                    if(FlagGet(Amazon_Items[i][j].reqFlagVar) || Amazon_Items[i][j].reqFlagVar == FLAG_NONE){
+                        currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
+                        itemNum[i]++;
+                    }
+                }
+            }
+        }
+    }
+}
+
 struct AmazonRowData Amazon_Rows[NUM_ROWS] = {
     [ROW_BUY_AGAIN] =
     {
@@ -1123,9 +1191,9 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     }
 
     //Buy Icon
-    x = (5 * currentItem) + 4;
+    x = (5 * (currentItem - currentFirstShownItem)) + 4;
     y = 5;
-    x2 = (2 * currentItem) + 2;
+    x2 = (2 * (currentItem - currentFirstShownItem)) + 2;
     BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 32, 16);
 
     // Item Icon
@@ -1137,8 +1205,13 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
     for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
         for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
-            CreateItemIcon(Amazon_Items[(currentRow + i) % NUM_ROWS][j].item, itemID, (x * 8) + x2, (y * 8) + y2);
-
+            if(i == 0){
+                CreateItemIcon(currentRowItemList[(currentRow + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[i]], itemID, (x * 8) + x2, (y * 8) + y2);
+            }
+            else{
+                CreateItemIcon(currentRowItemList[(currentRow + i) % NUM_ROWS][j % itemNum[i]], itemID, (x * 8) + x2, (y * 8) + y2);
+            }
+            
             x = x + 5;
             x2 = x2 + 2;
             itemID++;
@@ -1156,7 +1229,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         if(i == 0){
             str = Amazon_Rows[(currentRow + i) % NUM_ROWS].title;
             StringCopy(gStringVar1, str);
-            str = gItems[Amazon_Items[(currentRow) % NUM_ROWS][currentItem].item].name;
+            str = gItems[currentRowItemList[(currentRow) % NUM_ROWS][currentItem]].name;
             StringCopy(gStringVar2, str);
             StringExpandPlaceholders(gStringVar4, sText_FirstRowName);
         }
