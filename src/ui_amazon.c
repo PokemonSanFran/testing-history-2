@@ -81,6 +81,7 @@ enum RowIds
 //==========EWRAM==========//
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
+static EWRAM_DATA u8 *sBg1TilemapBuyBuffer = NULL;
 
 static EWRAM_DATA u8  currentRow = 0;
 static EWRAM_DATA u8  currentItem = 0;
@@ -91,6 +92,7 @@ static EWRAM_DATA u8  currentFirstShownItem = 0;
 static EWRAM_DATA u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
 static EWRAM_DATA u8  itemNum[NUM_ROWS];
 static EWRAM_DATA bool8 rowsSorted = FALSE;
+static EWRAM_DATA bool8 buyScreen = FALSE;
 
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_0[12] = {0};
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_1[12] = {0};
@@ -159,6 +161,7 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
 
 static const u32 sMenuTiles[]   = INCBIN_U32("graphics/ui_menus/amazon/tiles.4bpp.lz");
 static const u32 sMenuTilemap[] = INCBIN_U32("graphics/ui_menus/amazon/tilemap.bin.lz");
+static const u32 sMenuTilemapBuy[] = INCBIN_U32("graphics/ui_menus/amazon/tilemap_buy.bin.lz");
 static const u16 sMenuPalette[] = INCBIN_U16("graphics/ui_menus/amazon/palette.gbapal");
 
 enum Colors
@@ -300,6 +303,7 @@ static void Menu_FreeResources(void)
 {
     try_free(sMenuDataPtr);
     try_free(sBg1TilemapBuffer);
+    try_free(sBg1TilemapBuyBuffer);
     FreeAllWindowBuffers();
 }
 
@@ -324,20 +328,38 @@ static void Menu_FadeAndBail(void)
 
 static bool8 Menu_InitBgs(void)
 {
-    ResetAllBgsCoordinates();
-    sBg1TilemapBuffer = Alloc(0x800);
-    if (sBg1TilemapBuffer == NULL)
-        return FALSE;
+    if(!buyScreen){
+        ResetAllBgsCoordinates();
+        sBg1TilemapBuffer = Alloc(0x800);
+        if (sBg1TilemapBuffer == NULL)
+            return FALSE;
 
-    memset(sBg1TilemapBuffer, 0, 0x800);
-    ResetBgsAndClearDma3BusyFlags(0);
-    InitBgsFromTemplates(0, sMenuBgTemplates, NELEMS(sMenuBgTemplates));
-    SetBgTilemapBuffer(1, sBg1TilemapBuffer);
-    ScheduleBgCopyTilemapToVram(1);
-    ShowBg(0);
-    ShowBg(1);
-    ShowBg(2);
-    return TRUE;
+        memset(sBg1TilemapBuffer, 0, 0x800);
+        ResetBgsAndClearDma3BusyFlags(0);
+        InitBgsFromTemplates(0, sMenuBgTemplates, NELEMS(sMenuBgTemplates));
+        SetBgTilemapBuffer(1, sBg1TilemapBuffer);
+        ScheduleBgCopyTilemapToVram(1);
+        ShowBg(0);
+        ShowBg(1);
+        ShowBg(2);
+        return TRUE;
+    }
+    else{
+        ResetAllBgsCoordinates();
+        sBg1TilemapBuyBuffer = Alloc(0x800);
+        if (sBg1TilemapBuyBuffer == NULL)
+            return FALSE;
+
+        memset(sBg1TilemapBuyBuffer, 0, 0x800);
+        ResetBgsAndClearDma3BusyFlags(0);
+        InitBgsFromTemplates(0, sMenuBgTemplates, NELEMS(sMenuBgTemplates));
+        SetBgTilemapBuffer(1, sBg1TilemapBuyBuffer);
+        ScheduleBgCopyTilemapToVram(1);
+        ShowBg(0);
+        ShowBg(1);
+        ShowBg(2);
+        return TRUE;
+    }
 }
 
 static bool8 Menu_LoadGraphics(void)
@@ -353,6 +375,7 @@ static bool8 Menu_LoadGraphics(void)
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
             LZDecompressWram(sMenuTilemap, sBg1TilemapBuffer);
+            LZDecompressWram(sMenuTilemapBuy, sBg1TilemapBuyBuffer);
             sMenuDataPtr->gfxLoadState++;
         }
         break;
@@ -564,7 +587,7 @@ static void PressedLeftButton(){
 
 #define ROW_NAME_LENGTH 20
 #define FLAG_NONE 0
-
+#define VAR_NONE 0
 
 struct AmazonRowData
 {
@@ -574,8 +597,9 @@ struct AmazonRowData
 struct AmazonItemData
 {
     u16 item;
-    bool8 isVarChecked;
-    u16 reqFlagVar;
+    u8  numBadges;
+    u16 reqFlag;
+    u16 reqVar;
     u16 reqVarState;
 };
 
@@ -584,44 +608,51 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_POKE_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_GREAT_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_ULTRA_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_PREMIER_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_HEAL_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_CHERISH_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_MASTER_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_CAUGHT_HO_OH,
+            .numBadges = 9,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -629,32 +660,37 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_REPEL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_SUPER_REPEL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_MAX_REPEL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_LURE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_SUPER_LURE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -662,38 +698,44 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_POTION,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_SUPER_POTION,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_HYPER_POTION,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_MAX_POTION,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_FULL_RESTORE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_REVIVE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -701,32 +743,37 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_POKE_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_GREAT_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_ULTRA_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_PREMIER_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_HEAL_BALL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -734,32 +781,37 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_REPEL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_SUPER_REPEL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_MAX_REPEL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_LURE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_SUPER_LURE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -767,32 +819,37 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_HP_UP,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_PROTEIN,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_IRON,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_CALCIUM,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_ZINC,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -800,62 +857,72 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_X_ATTACK,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_X_DEFENSE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_X_SP_ATK,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_X_SP_DEF,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_X_SPEED,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_DIRE_HIT,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_GUARD_SPEC,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_POKE_DOLL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_FLUFFY_TAIL,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_POKE_TOY,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -863,38 +930,44 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_CHERI_BERRY,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_CHESTO_BERRY,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_PECHA_BERRY,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_RAWST_BERRY,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_ASPEAR_BERRY,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_LEPPA_BERRY,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -902,32 +975,37 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_TM01,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_TM02,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_TM03,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_TM04,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_TM05,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -935,32 +1013,37 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_MAX_MUSHROOMS,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_NUGGET,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_BIG_NUGGET,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_TINY_MUSHROOM,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_BIG_MUSHROOM,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -968,32 +1051,37 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_VENUSAURITE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_CHARIZARDITE_X,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_CHARIZARDITE_Y,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_BLASTOISINITE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_BEEDRILLITE,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -1001,32 +1089,37 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_NORMALIUM_Z,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_FIRIUM_Z,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_WATERIUM_Z,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_ELECTRIUM_Z,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
         {
             .item = ITEM_GRASSIUM_Z,
-            .isVarChecked = FALSE,
-            .reqFlagVar = FLAG_NONE,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
             .reqVarState = 0,
         },
     },
@@ -1035,22 +1128,33 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
 void AmazonItemInitializeArrayList()
 {
     u8 i, j;
+    bool8 canBuy = TRUE;
+    u16 badgeFlag;
+    u8 numbadges = 0;
+    
+    for (badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++){
+        if (FlagGet(badgeFlag))
+        numbadges++;
+    }
 
     for(i = 0; i < NUM_ROWS; i++){
         itemNum[i] = 0;
         for(j = 0; j < NUM_MAX_ITEMS_PER_ROW; j++){
             if(Amazon_Items[i][j].item != ITEM_NONE){
-                if(Amazon_Items[i][j].isVarChecked){
-                    if(VarGet(Amazon_Items[i][j].reqFlagVar) == Amazon_Items[i][j].reqVarState){
-                        currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
-                        itemNum[i]++;
-                    }
-                }
-                else{
-                    if(FlagGet(Amazon_Items[i][j].reqFlagVar) || Amazon_Items[i][j].reqFlagVar == FLAG_NONE){
-                        currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
-                        itemNum[i]++;
-                    }
+                canBuy = TRUE;
+
+                if(VarGet(Amazon_Items[i][j].reqVar) < Amazon_Items[i][j].reqVarState && Amazon_Items[i][j].reqVar != VAR_NONE)
+                    canBuy = FALSE;
+
+                if(!FlagGet(Amazon_Items[i][j].reqFlag) && Amazon_Items[i][j].reqFlag != FLAG_NONE)
+                    canBuy = FALSE;
+
+                if(numbadges < Amazon_Items[i][j].numBadges && Amazon_Items[i][j].numBadges != 0)
+                    canBuy = FALSE;
+
+                if(canBuy){
+                    currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
+                    itemNum[i]++;
                 }
             }
         }
@@ -1286,12 +1390,29 @@ static void Task_MenuTurnOff(u8 taskId)
 
     if (!gPaletteFade.active)
     {
-        SetMainCallback2(sMenuDataPtr->savedCallback);
         Menu_FreeResources();
+        SetMainCallback2(sMenuDataPtr->savedCallback);
         DestroyTask(taskId);
     }
 }
 
+static void Task_MenuBuy(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    if (!gPaletteFade.active)
+    {
+        if(buyScreen)
+            mgba_printf(MGBA_LOG_WARN, "Buy Screen");
+        else
+            mgba_printf(MGBA_LOG_WARN, "Not Buy Screen");
+
+        Menu_FreeResources();
+        Amazon_Init(CB2_ReturnToUIMenu);
+        gMain.savedCallback = CB2_ReturnToUIMenu;
+        DestroyTask(taskId);
+    }
+}
 
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
@@ -1301,6 +1422,14 @@ static void Task_MenuMain(u8 taskId)
         PlaySE(SE_PC_OFF);
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_MenuTurnOff;
+    }
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        buyScreen = !buyScreen;
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+        gTasks[taskId].func = Task_MenuBuy;
     }
 
     //
@@ -1343,4 +1472,5 @@ static void Task_MenuMain(u8 taskId)
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
+
 }
