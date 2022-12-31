@@ -585,6 +585,9 @@ enum OptionsMenuColorID
     OPTIONS_MENU_COLOR_CUSTOM,
 };
 
+//For the Amazon Menu
+#define MAX_AMAZON_BUY_AGAIN_ITEMS 5
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -631,6 +634,7 @@ struct SaveBlock2
     u8 optionsVisual[NUM_OPTIONS_VISUAL_SETTINGS];
     u8 optionsMusic[NUM_OPTIONS_MUSIC_SETTINGS];
     u8 optionsRandom[NUM_OPTIONS_RANDOM_SETTINGS];
+    u16 amazonBuyAgainItem[MAX_AMAZON_BUY_AGAIN_ITEMS];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

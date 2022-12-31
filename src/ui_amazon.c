@@ -604,58 +604,6 @@ struct AmazonItemData
 };
 
 struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
-    [ROW_BUY_AGAIN] =
-    {
-        {
-            .item = ITEM_POKE_BALL,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_GREAT_BALL,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_ULTRA_BALL,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_PREMIER_BALL,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_HEAL_BALL,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_CHERISH_BALL,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_MASTER_BALL,
-            .numBadges = 9,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-    },
     [ROW_RECOMMENDED] =
     {
         {
@@ -1140,7 +1088,7 @@ void AmazonItemInitializeArrayList()
     for(i = 0; i < NUM_ROWS; i++){
         itemNum[i] = 0;
         for(j = 0; j < NUM_MAX_ITEMS_PER_ROW; j++){
-            if(Amazon_Items[i][j].item != ITEM_NONE){
+            if(Amazon_Items[i][j].item != ITEM_NONE && i != ROW_BUY_AGAIN){
                 canBuy = TRUE;
 
                 if(VarGet(Amazon_Items[i][j].reqVar) < Amazon_Items[i][j].reqVarState && Amazon_Items[i][j].reqVar != VAR_NONE)
@@ -1156,6 +1104,13 @@ void AmazonItemInitializeArrayList()
                     currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
                     itemNum[i]++;
                 }
+            }
+            else if(i == ROW_BUY_AGAIN && j < MAX_AMAZON_BUY_AGAIN_ITEMS){
+                if(gSaveBlock2Ptr->amazonBuyAgainItem[j] == ITEM_NONE)
+                    gSaveBlock2Ptr->amazonBuyAgainItem[j] = ITEM_POKE_BALL;
+
+                currentRowItemList[i][itemNum[i]] = gSaveBlock2Ptr->amazonBuyAgainItem[j];
+                itemNum[i]++;
             }
         }
     }
