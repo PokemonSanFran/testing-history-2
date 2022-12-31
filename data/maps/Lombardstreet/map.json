@@ -41,7 +41,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OldAssholeAppears_Interact_Script",
-      "flag": "FLAG_DEFEATED_RIVAL_ROUTE103"
+      "flag": "FLAG_TEMP_1"
     }
   ],
   "warp_events": [

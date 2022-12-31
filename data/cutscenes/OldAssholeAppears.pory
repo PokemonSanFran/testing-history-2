@@ -1,6 +1,13 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
 
+script OldAssholeAppears_HideBianca_Script{
+    if (var(VAR_LOMBARDSTREET_STATE) > SAVE_BIANCA_LOMBARD){
+        setflag(FLAG_TEMP_1)
+    }
+    return
+}
+
 script OldAssholeAppears_WalktoBianca_Script {
     lockall
     setvar(VAR_LOMBARDSTREET_STATE, NOT_SEEN_BIANCA_LOMBARD)

@@ -1,6 +1,10 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1
 
 mapscripts Lombardstreet_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{
+        call(OldAssholeAppears_HideBianca_Script) 
+    }
 }
 
