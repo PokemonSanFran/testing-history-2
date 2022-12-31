@@ -25,6 +25,8 @@ ImProbablyBetterThanYou_StandingOutside_Dialogue::
 
 ImProbablyBetterThanYou_BiancaIntro_Dialogue::
 	setvar VAR_PLAYER_HOME_STATE, HAS_MET_BIANCA
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
 	lockall
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	playse SE_PIN

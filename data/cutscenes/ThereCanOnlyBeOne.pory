@@ -153,7 +153,7 @@ script ThereCanOnlyBeOne_StarterSelectEnd_Script {
 
 script ThereCanOnlyBeOne_WarpPlayer_Script {
   lock 
-      clearflag(FLAG_SPAWN_INVISIBLE)
+  clearflag(FLAG_SPAWN_INVISIBLE)
   warpsilent(MAP_SOUTHBAY, 255, 3, 10)
 }
 

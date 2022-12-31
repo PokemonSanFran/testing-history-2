@@ -1,5 +1,4 @@
 OldAssholeAppears_HideBianca_Script::
-	call Debug_Weather
 	compare VAR_LOMBARDSTREET_STATE, SAVE_BIANCA_LOMBARD
 	goto_if_gt OldAssholeAppears_HideBianca_Script_2
 OldAssholeAppears_HideBianca_Script_1:
