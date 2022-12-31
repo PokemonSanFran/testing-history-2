@@ -7,4 +7,3 @@ mapscripts Lombardstreet_MapScripts {
         call(OldAssholeAppears_HideBianca_Script) 
     }
 }
-

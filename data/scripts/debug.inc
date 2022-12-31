@@ -68,6 +68,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
+	call OldAssholeAppears_HideBianca_Script
 	return
 
 

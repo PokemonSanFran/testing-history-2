@@ -1,3 +1,15 @@
+OldAssholeAppears_HideBianca_Script::
+	call Debug_Weather
+	compare VAR_LOMBARDSTREET_STATE, SAVE_BIANCA_LOMBARD
+	goto_if_gt OldAssholeAppears_HideBianca_Script_2
+OldAssholeAppears_HideBianca_Script_1:
+	return
+
+OldAssholeAppears_HideBianca_Script_2:
+	setflag FLAG_TEMP_1
+	goto OldAssholeAppears_HideBianca_Script_1
+
+
 OldAssholeAppears_WalktoBianca_Script::
 	lockall
 	setvar VAR_LOMBARDSTREET_STATE, NOT_SEEN_BIANCA_LOMBARD

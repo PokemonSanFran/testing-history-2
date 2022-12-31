@@ -75,6 +75,7 @@ script Debug_Script_1{
     givemon(SPECIES_BEHEEYEM,1,ITEM_NONE)
 }
 script Debug_Script_2{
+    call(OldAssholeAppears_HideBianca_Script)
 }
 
 script Debug_Script_3{

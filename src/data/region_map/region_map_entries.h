@@ -292,8 +292,8 @@ const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_INSIDE_OF_TRUCK] = { 0, 0, 1, 1, sMapName_INSIDE_OF_TRUCK},
     [MAPSEC_SKY_PILLAR] = { 19, 10, 1, 1, sMapName_SKY_PILLAR},
     [MAPSEC_SECRET_BASE] = { 0, 0, 1, 1, sMapName_SECRET_BASE},
-    [MAPSEC_DYNAMIC] = { 0, 0, 1, 1, sMapName_},
     /*
+    [MAPSEC_DYNAMIC] = { 0, 0, 1, 1, sMapName_},
     [MAPSEC_PALLET_TOWN] = { 0, 0, 1, 1, sMapName_PALLET_TOWN},
     [MAPSEC_VIRIDIAN_CITY] = { 0, 0, 1, 1, sMapName_VIRIDIAN_CITY},
     [MAPSEC_PEWTER_CITY] = { 0, 0, 1, 1, sMapName_PEWTER_CITY},

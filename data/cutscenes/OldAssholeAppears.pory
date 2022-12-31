@@ -1,9 +1,11 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1
 
 script OldAssholeAppears_HideBianca_Script{
+    call(Debug_Weather)
     if (var(VAR_LOMBARDSTREET_STATE) > SAVE_BIANCA_LOMBARD){
-        setflag(FLAG_TEMP_1)
+        setflag(FLAG_HIDE_BIANCA)
     }
     return
 }

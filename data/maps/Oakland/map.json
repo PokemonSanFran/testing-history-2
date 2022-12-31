@@ -120,14 +120,14 @@
       "y": 28,
       "elevation": 0,
       "dest_map": "MAP_OAKLAND_WAREHOUSE",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 15,
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_OAKLAND_WAREHOUSE",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

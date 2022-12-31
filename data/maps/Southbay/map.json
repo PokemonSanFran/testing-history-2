@@ -14,9 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "up",
+      "map": "MAP_PSFROUTE17",
       "offset": -1,
-      "map": "MAP_PSFROUTE17"
+      "direction": "up"
     }
   ],
   "object_events": [
@@ -53,14 +53,14 @@
       "y": 9,
       "elevation": 0,
       "dest_map": "MAP_SOUTHBAY_COMPOUND_1F",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 10,
       "y": 26,
       "elevation": 0,
       "dest_map": "MAP_SOUTHBAY_POKEMON_CENTER_1F",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
