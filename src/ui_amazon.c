@@ -81,15 +81,16 @@ enum RowIds
 //==========EWRAM==========//
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
-static EWRAM_DATA u8 *sBg1TilemapBuyBuffer = NULL;
 
 static EWRAM_DATA u8  currentRow = 0;
 static EWRAM_DATA u8  currentItem = 0;
 static EWRAM_DATA u8  currentScreenId = 0;
 static EWRAM_DATA u8  currentFirstShownRow = 0;
 static EWRAM_DATA u8  currentFirstShownItem = 0;
+static EWRAM_DATA u8  itemQuantity = 1;
 
 static EWRAM_DATA u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
+static EWRAM_DATA u8 spriteIDs[15];
 static EWRAM_DATA u8  itemNum[NUM_ROWS];
 static EWRAM_DATA bool8 rowsSorted = FALSE;
 static EWRAM_DATA bool8 buyScreen = FALSE;
@@ -121,6 +122,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 static void AmazonItemInitializeArrayList(void);
+static void DestroyAllItemIcons(void);
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -159,10 +161,10 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
     },
 };
 
-static const u32 sMenuTiles[]   = INCBIN_U32("graphics/ui_menus/amazon/tiles.4bpp.lz");
-static const u32 sMenuTilemap[] = INCBIN_U32("graphics/ui_menus/amazon/tilemap.bin.lz");
-static const u32 sMenuTilemapBuy[] = INCBIN_U32("graphics/ui_menus/amazon/tilemap_buy.bin.lz");
-static const u16 sMenuPalette[] = INCBIN_U16("graphics/ui_menus/amazon/palette.gbapal");
+static const u32 sMenuTiles[]       = INCBIN_U32("graphics/ui_menus/amazon/tiles.4bpp.lz");
+static const u32 sMenuTilemap[]     = INCBIN_U32("graphics/ui_menus/amazon/tilemap.bin.lz");
+static const u32 sMenuTilemapBuy[]  = INCBIN_U32("graphics/ui_menus/amazon/tilemap_buy.bin.lz");
+static const u16 sMenuPalette[]     = INCBIN_U16("graphics/ui_menus/amazon/palette.gbapal");
 
 enum Colors
 {
@@ -303,7 +305,8 @@ static void Menu_FreeResources(void)
 {
     try_free(sMenuDataPtr);
     try_free(sBg1TilemapBuffer);
-    try_free(sBg1TilemapBuyBuffer);
+    buyScreen = FALSE;
+    try_free(buyScreen);
     FreeAllWindowBuffers();
 }
 
@@ -328,37 +331,51 @@ static void Menu_FadeAndBail(void)
 
 static bool8 Menu_InitBgs(void)
 {
-    if(!buyScreen){
-        ResetAllBgsCoordinates();
-        sBg1TilemapBuffer = Alloc(0x800);
-        if (sBg1TilemapBuffer == NULL)
-            return FALSE;
+    ResetAllBgsCoordinates();
+    sBg1TilemapBuffer = Alloc(0x800);
+    if (sBg1TilemapBuffer == NULL)
+        return FALSE;
 
-        memset(sBg1TilemapBuffer, 0, 0x800);
-        ResetBgsAndClearDma3BusyFlags(0);
-        InitBgsFromTemplates(0, sMenuBgTemplates, NELEMS(sMenuBgTemplates));
-        SetBgTilemapBuffer(1, sBg1TilemapBuffer);
-        ScheduleBgCopyTilemapToVram(1);
-        ShowBg(0);
-        ShowBg(1);
-        ShowBg(2);
-        return TRUE;
+    memset(sBg1TilemapBuffer, 0, 0x800);
+    ResetBgsAndClearDma3BusyFlags(0);
+    InitBgsFromTemplates(0, sMenuBgTemplates, NELEMS(sMenuBgTemplates));
+    SetBgTilemapBuffer(1, sBg1TilemapBuffer);
+    ScheduleBgCopyTilemapToVram(1);
+    ShowBg(0);
+    ShowBg(1);
+    ShowBg(2);
+    return TRUE;
+}
+
+static void Menu_ChangeTilemap(void)
+{
+    try_free(sBg1TilemapBuffer);
+    sBg1TilemapBuffer == NULL;
+
+    ResetAllBgsCoordinates();
+    sBg1TilemapBuffer = Alloc(0x800);
+
+    memset(sBg1TilemapBuffer, 0, 0x800);
+    ResetBgsAndClearDma3BusyFlags(0);
+    InitBgsFromTemplates(0, sMenuBgTemplates, NELEMS(sMenuBgTemplates));
+    SetBgTilemapBuffer(1, sBg1TilemapBuffer);
+    ScheduleBgCopyTilemapToVram(1);
+    ShowBg(0);
+    ShowBg(1);
+    ShowBg(2);
+
+    buyScreen = !buyScreen;
+    ResetTempTileDataBuffers();
+    DecompressAndCopyTileDataToVram(1, sMenuTiles, 0, 0, 0);
+    FreeTempTileDataBuffersIfPossible();
+
+    if(buyScreen){
+        DestroyAllItemIcons();
+        LZDecompressWram(sMenuTilemapBuy, sBg1TilemapBuffer);
     }
     else{
-        ResetAllBgsCoordinates();
-        sBg1TilemapBuyBuffer = Alloc(0x800);
-        if (sBg1TilemapBuyBuffer == NULL)
-            return FALSE;
-
-        memset(sBg1TilemapBuyBuffer, 0, 0x800);
-        ResetBgsAndClearDma3BusyFlags(0);
-        InitBgsFromTemplates(0, sMenuBgTemplates, NELEMS(sMenuBgTemplates));
-        SetBgTilemapBuffer(1, sBg1TilemapBuyBuffer);
-        ScheduleBgCopyTilemapToVram(1);
-        ShowBg(0);
-        ShowBg(1);
-        ShowBg(2);
-        return TRUE;
+        DestroyAllItemIcons();
+        LZDecompressWram(sMenuTilemap, sBg1TilemapBuffer);
     }
 }
 
@@ -375,7 +392,6 @@ static bool8 Menu_LoadGraphics(void)
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
             LZDecompressWram(sMenuTilemap, sBg1TilemapBuffer);
-            LZDecompressWram(sMenuTilemapBuy, sBg1TilemapBuyBuffer);
             sMenuDataPtr->gfxLoadState++;
         }
         break;
@@ -462,10 +478,25 @@ static void CreateItemIcon(u16 itemId, u8 idx, u8 x, u8 y)
     FreeSpriteTilesByTag(102 + idx);
     FreeSpritePaletteByTag(102 + idx);
     spriteId = AddItemIconSprite(102 + idx, 102 + idx, itemId);
+    mgba_printf(MGBA_LOG_WARN, "SpriteID %d ID %d", idx, spriteId);
+    //currentRowItemList[ROW_BUY_AGAIN][MAX_AMAZON_BUY_AGAIN_ITEMS + idx] = spriteId; //To reutilize VRAM
+    spriteIDs[idx] = spriteId;
         
     ptr[idx] = spriteId;
     gSprites[spriteId].x2 = x; //24;
     gSprites[spriteId].y2 = y; //140;
+}
+
+static void DestroyAllItemIcons()
+{
+    u8 i;
+
+    for(i = 0; i < MAX_SPRITES; i++){
+        FreeSpriteTilesByTag(102 + i);
+        FreeSpritePaletteByTag(102 + i);
+
+        DestroySpriteAndFreeResources(&gSprites[i]);
+    }
 }
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -485,57 +516,117 @@ static u8 GetCursorPosition()
     return currentRow - currentFirstShownRow;
 }
 
-static void PressedDownButton(){
-    u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-    u8 finalhalfScreen = NUM_ROWS - halfScreen;
-    u8 cursorPosition = (currentRow - currentFirstShownRow);
-    currentItem = 0;
-	currentFirstShownItem = 0;
+enum PriceTypes
+{
+    PRICE_ITEM,
+    PRICE_DRONE,
+    PRICE_FINAL,
+};
 
-    if(currentRow < halfScreen){
-        currentRow++;
+static u16 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
+{
+    u16 finalprice = 0;
+    u8 droneFeePercentage = 10;
+    u16 itemPrice = (quantity + 1)* gItems[itemID].price;
+    u16 dronePrice = ((quantity + 1)* gItems[itemID].price)/ droneFeePercentage;
+    u16 totalPrice = itemPrice + dronePrice;
+    //asdf
+    //buyableItems * itemPrice = GetMoney(&gSaveBlock1Ptr->money);
+    //buyableItems = GetMoney(&gSaveBlock1Ptr->money) / itemPrice;
+
+    switch(type){
+        case PRICE_ITEM:
+            return itemPrice;
+        break;
+        case PRICE_DRONE:
+            return dronePrice;
+        break;
+        case PRICE_FINAL:
+            return totalPrice;
+        break;
     }
-	else if(currentRow >= (NUM_ROWS - 1)){ //If you are in the last option go to the first one
-		currentRow = 0;
-		currentFirstShownRow = 0;
+
+    return 0;
+}
+
+static void PressedDownButton(){
+    if(!buyScreen){
+        u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+        u8 finalhalfScreen = NUM_ROWS - halfScreen;
+        u8 cursorPosition = (currentRow - currentFirstShownRow);
+        currentItem = 0;
+        currentFirstShownItem = 0;
+
+        if(currentRow < halfScreen){
+            currentRow++;
+        }
+        else if(currentRow >= (NUM_ROWS - 1)){ //If you are in the last option go to the first one
+            currentRow = 0;
+            currentFirstShownRow = 0;
+        }
+        else if(currentRow >= (finalhalfScreen - 1)){
+            currentRow++;
+        }
+        else{
+            currentRow++;
+            currentFirstShownRow++;
+        }
+        
+        mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentRow);
+        mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
+        mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownRow);
+        mgba_printf(MGBA_LOG_WARN, "------------------------------------");
     }
-    else if(currentRow >= (finalhalfScreen - 1)){
-        currentRow++;
+    else{
+        u16 itemID = currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem];
+        u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
+
+        if (buyableItems > MAX_BAG_ITEM_CAPACITY)
+            buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
+
+        if(itemQuantity != 0)
+            itemQuantity--;
+        else
+            itemQuantity = buyableItems - 1;
     }
-	else{
-        currentRow++;
-        currentFirstShownRow++;
-    }
-    
-    mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentRow);
-    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
-    mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownRow);
-    mgba_printf(MGBA_LOG_WARN, "------------------------------------");
 }
 
 static void PressedUpButton(){
-    u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-    u8 finalhalfScreen = NUM_ROWS - halfScreen;
-    u8 cursorPosition = (currentRow - currentFirstShownRow);
-    currentItem = 0;
-	currentFirstShownItem = 0;
+    if(!buyScreen){
+        u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+        u8 finalhalfScreen = NUM_ROWS - halfScreen;
+        u8 cursorPosition = (currentRow - currentFirstShownRow);
+        currentItem = 0;
+        currentFirstShownItem = 0;
 
-    if(currentRow > halfScreen && currentRow <= (finalhalfScreen - 1)){
-        currentRow--;
-        currentFirstShownRow--;
-    }
-	else if(currentRow == 0){ //If you are in the first option go to the last one
-		currentRow = NUM_ROWS - 1;
-		currentFirstShownRow = NUM_ROWS - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+        if(currentRow > halfScreen && currentRow <= (finalhalfScreen - 1)){
+            currentRow--;
+            currentFirstShownRow--;
+        }
+        else if(currentRow == 0){ //If you are in the first option go to the last one
+            currentRow = NUM_ROWS - 1;
+            currentFirstShownRow = NUM_ROWS - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+        }
+        else{
+            currentRow--;
+        }
+
+        mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentRow);
+        mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
+        mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownRow);
+        mgba_printf(MGBA_LOG_WARN, "------------------------------------");
     }
     else{
-        currentRow--;
-    }
+        //asdf
+        u16 itemID = currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem];
+        u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
+        mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
 
-    mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentRow);
-    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
-    mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownRow);
-    mgba_printf(MGBA_LOG_WARN, "------------------------------------");
+        if(itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > itemQuantity + 1)
+            itemQuantity++;
+        else
+            itemQuantity = 0;
+    }
 }
 
 static void PressedRightButton(){
@@ -1181,149 +1272,255 @@ static const u8 sRowIcon_Key[]              = INCBIN_U8("graphics/ui_menus/amazo
 static const u8 sRowSelector[]      = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
 static const u8 sBuySelector[]      = INCBIN_U8("graphics/ui_menus/amazon/selector1.4bpp");
 
-static const u8 sText_Help_Bar[]  = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
-static const u8 sText_Money_Bar[]  = _("Money: ¥{STR_VAR_1}");
-static const u8 sText_FirstRowName[]  = _("{STR_VAR_1}: {STR_VAR_2}");
+static const u8 sText_Help_Bar[]        = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
+static const u8 sText_Help_Bar_Buy[]    = _("{DPAD_UPDOWN} +1/-1 {DPAD_LEFTRIGHT} +5/-5 {A_BUTTON} Buy Now {B_BUTTON} Cancel");
+static const u8 sText_Money_Bar[]       = _("Money: ¥{STR_VAR_1}");
+static const u8 sText_FirstRowName[]    = _("{STR_VAR_1}: {STR_VAR_2}");
+static const u8 sText_ItemNameOwned[]   = _("{STR_VAR_1} - {STR_VAR_2} Owned");
+static const u8 sText_ItemCost[]        = _("Item Cost:    {STR_VAR_1}");
+static const u8 sText_DroneFee[]        = _("Drone Fee:    {STR_VAR_1}");
+static const u8 sText_OrderTotal[]      = _("Order Total: {STR_VAR_1}");
 
 #define MAX_MONEY 999999
 
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
     const u8 *str = sText_Help_Bar;
-    u8 i, j, x2, y2, itemID;
+    u8 i, j, x2, y2;
     u8 x = 1;
     u8 y = 1;
+    u16 quantity;
+    u16 itemID;
+    u8 droneFeePercentage;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
-    // Row Icons
-    x = 1;
-    y = 2;
-    x2 = 0;
-    y2 = 4;
+    if(!buyScreen){
+        // Row Icons
+        x = 1;
+        y = 2;
+        x2 = 0;
+        y2 = 4;
 
-    for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
-        if(GetCurrentRow() == currentFirstShownRow + i)
-            BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8) + x2, ((y-1)*8) + y2 + 4, 32, 24);
+        for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
+            if(GetCurrentRow() == currentFirstShownRow + i)
+                BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8) + x2, ((y-1)*8) + y2 + 4, 32, 24);
 
-        switch(currentFirstShownRow + i){
-            case ROW_BUY_AGAIN:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_RECOMMENDED:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_MEDICINE:
-                BlitBitmapToWindow(windowId, sRowIcon_Potion, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_POKEBALLS:
-                BlitBitmapToWindow(windowId, sRowIcon_Pokeball, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_OTHER_ITEMS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_POWER_UPS:
-                BlitBitmapToWindow(windowId, sRowIcon_Candy, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_BATTLE_ITEMS:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_BERRIES:
-                BlitBitmapToWindow(windowId, sRowIcon_Berries, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_TMS:
-                BlitBitmapToWindow(windowId, sRowIcon_TM, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_TREASURES:
-                BlitBitmapToWindow(windowId, sRowIcon_2, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_MEGA_STONES:
-                BlitBitmapToWindow(windowId, sRowIcon_1, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            case ROW_Z_CRYSTALS:
-                BlitBitmapToWindow(windowId, sRowIcon_Key, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
-            default:
-                BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
-            break;
+            switch(currentFirstShownRow + i){
+                case ROW_BUY_AGAIN:
+                    BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_RECOMMENDED:
+                    BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_MEDICINE:
+                    BlitBitmapToWindow(windowId, sRowIcon_Potion, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_POKEBALLS:
+                    BlitBitmapToWindow(windowId, sRowIcon_Pokeball, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_OTHER_ITEMS:
+                    BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_POWER_UPS:
+                    BlitBitmapToWindow(windowId, sRowIcon_Candy, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_BATTLE_ITEMS:
+                    BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_BERRIES:
+                    BlitBitmapToWindow(windowId, sRowIcon_Berries, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_TMS:
+                    BlitBitmapToWindow(windowId, sRowIcon_TM, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_TREASURES:
+                    BlitBitmapToWindow(windowId, sRowIcon_2, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_MEGA_STONES:
+                    BlitBitmapToWindow(windowId, sRowIcon_1, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                case ROW_Z_CRYSTALS:
+                    BlitBitmapToWindow(windowId, sRowIcon_Key, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+                default:
+                    BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
+                break;
+            }
+
+            y = y + 3;
+            y2 = y2 + 2;
         }
 
-        y = y + 3;
-        y2 = y2 + 2;
-    }
+        //Buy Icon
+        x = (5 * (currentItem - currentFirstShownItem)) + 4;
+        y = 5;
+        x2 = (2 * (currentItem - currentFirstShownItem)) + 2;
+        BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 32, 16);
 
-    //Buy Icon
-    x = (5 * (currentItem - currentFirstShownItem)) + 4;
-    y = 5;
-    x2 = (2 * (currentItem - currentFirstShownItem)) + 2;
-    BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 32, 16);
+        // Item Icon
+        x = 6;
+        y = 5;
+        x2 = 6;
+        y2 = 6;
+        itemID = 0;
 
-    // Item Icon
-    x = 6;
-    y = 5;
-    x2 = 6;
-    y2 = 6;
-    itemID = 0;
+        for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
+            for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
+                if(i == 0){
+                    CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                }
+                else{
+                    CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                }
+                
+                x = x + 5;
+                x2 = x2 + 2;
+                itemID++;
+            }
+            x = 6;
+            x2 = 6;
+            y = y + 5;
+            y2 = y2 + 4;
+        }
 
-    for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
-        for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
+        // Row Names
+        x = 4;
+
+        for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
             if(i == 0){
-                CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                str = Amazon_Rows[(currentRow + i) % NUM_ROWS].title;
+                StringCopy(gStringVar1, str);
+                str = gItems[currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem]].name;
+                StringCopy(gStringVar2, str);
+                StringExpandPlaceholders(gStringVar4, sText_FirstRowName);
             }
             else{
-                CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                StringCopy(gStringVar4, Amazon_Rows[(GetCurrentRow() + i) % NUM_ROWS].title);
             }
+
+            switch(i){
+                case 0:
+                    y = 2;
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
+                break;
+                case 1:
+                    y = 7;
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
+                break;
+                case 2:
+                    y = 13;
+                    AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
+                break;
+            }
+        }
+
+        // Help Bar --------------------------------------------------------------------------------------------------------------------
+        x = 0;
+        y = 18;
+
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar);
+    }
+    else{
+        //Item Icon --------------------------------------------------------------------------------------------------------------------
+        x = 3;
+        y = 6;
+        x2 = 0;
+        y2 = 0;
+        itemID = currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem];
+        CreateItemIcon(itemID, 0, (x * 8) + x2, (y * 8) + y2);
+
+        //Item Name --------------------------------------------------------------------------------------------------------------------
+        x = 1;
+        y = 2;
+        x2 = 0;
+        y2 = 0;
+
+        str = gItems[itemID].name;
+        quantity = CountTotalItemQuantityInBag(itemID);
+        StringCopy(gStringVar1, str);
+	    ConvertIntToDecimalStringN(gStringVar2, quantity, STR_CONV_MODE_LEFT_ALIGN, 4);
+        StringExpandPlaceholders(gStringVar4, sText_ItemNameOwned);
+
+        AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
             
-            x = x + 5;
-            x2 = x2 + 2;
-            itemID++;
-        }
-        x = 6;
-        x2 = 6;
-        y = y + 5;
-        y2 = y2 + 4;
+        //Item Price --------------------------------------------------------------------------------------------------------------------
+        x = 26;
+        y = 2;
+        x2 = 0;
+        y2 = 0;
+
+	    ConvertIntToDecimalStringN(gStringVar1, gItems[itemID].price, STR_CONV_MODE_LEFT_ALIGN, 5);
+	    //ConvertIntToDecimalStringN(gStringVar1, MAX_MONEY, STR_CONV_MODE_LEFT_ALIGN, 5);
+
+        AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar1);
+              
+        //Item Description --------------------------------------------------------------------------------------------------------------------
+        x = 5;
+        y = 4;
+        x2 = 0;
+        y2 = 0;
+        str = gItems[itemID].description;
+        AddTextPrinterParameterized4(windowId, 5, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str); 
+
+        //Item Cost --------------------------------------------------------------------------------------------------------------------
+        x = 16;
+        y = 10;
+        x2 = 0;
+        y2 = 0;
+
+        quantity = GetCurrentItemPrice(itemQuantity, itemID, PRICE_ITEM);
+	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
+        StringExpandPlaceholders(gStringVar4, sText_ItemCost);
+
+        AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
+
+        //Drone Fee --------------------------------------------------------------------------------------------------------------------
+        x = 16;
+        y = 12;
+        x2 = 0;
+        y2 = 0;
+
+        quantity = GetCurrentItemPrice(itemQuantity, itemID, PRICE_DRONE);
+	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
+        StringExpandPlaceholders(gStringVar4, sText_DroneFee);
+
+        AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
+
+        //Order Total --------------------------------------------------------------------------------------------------------------------
+        x = 16;
+        y = 14;
+        x2 = 0;
+        y2 = 0;
+
+        quantity = GetCurrentItemPrice(itemQuantity, itemID, PRICE_FINAL);
+	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
+        StringExpandPlaceholders(gStringVar4, sText_OrderTotal);
+
+        AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
+
+        //Item Quantity --------------------------------------------------------------------------------------------------------------------
+        x = 12;
+        y = 12;
+        x2 = 4;
+        y2 = 0;
+
+        quantity = itemQuantity + 1;
+	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
+
+        AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar1);
+
+        // Help Bar --------------------------------------------------------------------------------------------------------------------
+        x = 0;
+        y = 18;
+
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Buy);  
     }
 
-    // Row Names
-    x = 4;
-
-    for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
-        if(i == 0){
-            str = Amazon_Rows[(currentRow + i) % NUM_ROWS].title;
-            StringCopy(gStringVar1, str);
-            str = gItems[currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem]].name;
-            StringCopy(gStringVar2, str);
-            StringExpandPlaceholders(gStringVar4, sText_FirstRowName);
-        }
-        else{
-            StringCopy(gStringVar4, Amazon_Rows[(GetCurrentRow() + i) % NUM_ROWS].title);
-        }
-
-        switch(i){
-            case 0:
-                y = 2;
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
-            break;
-            case 1:
-                y = 7;
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 4, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
-            break;
-            case 2:
-                y = 13;
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
-            break;
-        }
-    }
-
-    // Help Bar --------------------------------------------------------------------------------------------------------------------
-	x = 0;
-	y = 18;
-
-    AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar);
     // Money --------------------------------------------------------------------------------------------------------------------
-	x = 20;
-	y = 0;
-    AddMoney(&gSaveBlock1Ptr->money, MAX_MONEY);
+    x = 20;
+    y = 0;
+    //AddMoney(&gSaveBlock1Ptr->money, MAX_MONEY);
     ConvertIntToDecimalStringN(gStringVar1, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_RIGHT_ALIGN, 6);
     StringExpandPlaceholders(gStringVar4, sText_Money_Bar);
 
@@ -1374,17 +1571,26 @@ static void Task_MenuMain(u8 taskId)
 {
     if (JOY_NEW(B_BUTTON))
     {
-        PlaySE(SE_PC_OFF);
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_MenuTurnOff;
+        if(buyScreen){
+            itemQuantity = 0;
+            PlaySE(SE_SELECT);
+            Menu_ChangeTilemap();
+            PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
+        else{
+            PlaySE(SE_PC_OFF);
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_MenuTurnOff;
+        }
     }
 
     if (JOY_NEW(A_BUTTON))
     {
-        PlaySE(SE_SELECT);
-        buyScreen = !buyScreen;
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_MenuBuy;
+        if(!buyScreen){
+            PlaySE(SE_SELECT);
+            Menu_ChangeTilemap();
+            PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
     }
 
     //
