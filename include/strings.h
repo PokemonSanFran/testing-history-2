@@ -3129,4 +3129,9 @@ extern const u8 gText_Amazon[];
 extern const u8 gText_PokemonPsychoShift[];
 extern const u8 gText_PokemonEffectSpore[];
 
+//Debug Start
+extern const u8 gText_WhereWeDropping[];
+extern const u8 gText_StarterChoice[];
+extern const u8 gText_BeforeFirst[];
+extern const u8 gText_AfterFirst[];
 #endif // GUARD_STRINGS_H

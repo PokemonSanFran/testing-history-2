@@ -27,7 +27,7 @@ script ThereCanOnlyBeOne_Debug_Script{
 }
 
 script ThereCanOnlyBeOne_Narrator_Dialogue {
-    call(ThereCanOnlyBeOne_Debug_Script)
+call(ThereCanOnlyBeOne_Debug_Script)
   msgbox(gText_ThereCanOnlyBe_DueToTheDelicateEcosystem)
   closemessage
   setvar(VAR_STARTER_MON, 9)

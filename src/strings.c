@@ -1914,3 +1914,9 @@ const u8 gText_Amazon[] =_("Amazon");
 //Quest_Restoretreasureisland
 const u8 gText_PokemonPsychoShift[] = _("a Pokemon that knows \nthe move Psycho Shift");
 const u8 gText_PokemonEffectSpore[] = _("a Pokemon that has \nthe ability Effect Spore");
+
+//Debug Start
+const u8 gText_WhereWeDropping[] = _("Where do you want to go?");
+const u8 gText_StarterChoice[] =_("Starter selection");
+const u8 gText_BeforeFirst[] =_("Before meeting Bianca");
+const u8 gText_AfterFirst[] =_("After first cutscene");

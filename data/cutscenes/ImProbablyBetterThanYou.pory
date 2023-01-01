@@ -12,8 +12,8 @@ script ImProbablyBetterThanYou_ObjectSetUp{
 
 script ImProbablyBetterThanYou_MovePlayerInside_Script {
     warpdoor(MAP_SOUTHBAY_COMPOUND_1F,255,5,9)
-        waitstate
-        end
+    waitstate
+    end
 }
 
 script ImProbablyBetterThanYou_StandingOutside_Dialogue {
