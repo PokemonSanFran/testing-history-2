@@ -4349,7 +4349,7 @@ u8 CheckNumAlcatrazExhibitDefeated(void)
     }
 
     if (count > 5){
-        VarSet(VAR_ALCATRAZ_EXHIBIT_STATE,2);
+        VarSet(VAR_ALCATRAZ_EXHIBIT_STATE,ALCATRAZ_EXHIBIT_FINISH);
     }
 
     gSpecialVar_Result = count;

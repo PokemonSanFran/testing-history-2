@@ -284,8 +284,9 @@ void JumpPlayerToStoryPoint(u8 chosenStoryPoint, u8 taskId)
             JumpPlayerTo_SorryAboutMyFriends();
             break;
         case JUMPPLAYER_THESTORYSOFAR:
-            JumpPlayerTo_TheStorySoFar();
+            /*JumpPlayerTo_TheStorySoFar();
             break;
+            */
         case JUMPPLAYER_YOUNGPADAWAN:
             JumpPlayerTo_YoungPadawan();
             break;
@@ -498,6 +499,7 @@ void JumpPlayerTo_EnterFalkner(){
     JumpPlayerTo_ReadySetI();
     gSpecialVar_Result = AddBagItem(ITEM_TM01,1);
     FlagSet(FLAG_BADGE01_GET);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_ROXANNE_1);
     VarSet(VAR_FALKNER_STATE,BATTLE_1_COMPLETE);
     VarSet(VAR_GYM_1_STATE,GYM_DEFEATED_LEADER);
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
@@ -507,7 +509,8 @@ void JumpPlayerTo_EnterBugsy(){
     JumpPlayerTo_ReadySetI();
     gSpecialVar_Result = AddBagItem(ITEM_TM02,1);
     FlagSet(FLAG_BADGE02_GET);
-    VarSet(VAR_FALKNER_STATE,BATTLE_2_COMPLETE);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_BRAWLY_1);
+    VarSet(VAR_BUGSY_STATE,BATTLE_2_COMPLETE);
     VarSet(VAR_GYM_2_STATE,GYM_DEFEATED_LEADER);
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
     SetWarpDestination(0,18,0,-1,-1);
@@ -516,6 +519,7 @@ void JumpPlayerTo_EnterWhitney(){
     JumpPlayerTo_ReadySetI();
     gSpecialVar_Result = AddBagItem(ITEM_TM03,1);
     FlagSet(FLAG_BADGE03_GET);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_WATTSON_1);
     VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE,DEFEATED_WHITNEY);
     VarSet(VAR_WHITNEY_STATE,BATTLE_1_COMPLETE);
     VarSet(VAR_GYM_3_STATE,GYM_DEFEATED_LEADER);
@@ -527,6 +531,7 @@ void JumpPlayerTo_NewAssholeAppears(){
     JumpPlayerTo_ReadySetI();
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
     VarSet(VAR_PSFROUTE9_STATE,DEFEATED_ARCHER_PSFROUTE9);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_MAUVILLE);
     SetWarpDestination(0,9,0,-1,-1);
 
 }
@@ -534,20 +539,23 @@ void JumpPlayerTo_OldAssholeAppears(){
     JumpPlayerTo_ReadySetI();
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
     VarSet(VAR_LOMBARDSTREET_STATE,DEFEATED_BIANCA_LOMBARD);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_BRENDAN_ROUTE_103_MUDKIP);
     SetWarpDestination(0,19,0,-1,-1);
 
 }
 void JumpPlayerTo_GroupofAssholesAppears(){
     JumpPlayerTo_ReadySetI();
+    gSpecialVar_Result = AddBagItem(ITEM_MACH_BIKE,1);
     VarSet(VAR_GROUP_OF_ASSHOLES_STATE,PLAYER_HAS_DEFEATED_TEAM_ROCKET);
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
-    SetWarpDestination(0,21,0,-1,-1);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_IHSAN_AND_EMMITT);
+    SetWarpDestination(0,21,0,31,6);
 
 }
 void JumpPlayerTo_FlyingBlind(){
     JumpPlayerTo_ReadySetI();
-    VarSet(VAR_FAINTED_FOG_STATE,1);
-    SetWarpDestination(0,22,0,-1,-1);
+    VarSet(VAR_FAINTED_FOG_STATE,2);
+    SetWarpDestination(0,22,0,79,15);
 
 }
 void JumpPlayerTo_WowYoureStrong(){
@@ -564,7 +572,7 @@ void JumpPlayerTo_TheGangsAllHere(){
 
 }
 void JumpPlayerTo_AlwaysWatchingWazokwski(){
-    JumpPlayerTo_ReadySetI();
+    JumpPlayerTo_WowYoureStrong();
     VarSet(VAR_SALESFORCETOWER_PRODUCTION_STATE,POST_ALWAYS_WATCHING_WAZOWSKI);
     SetWarpDestination(10,17,255,9,7);
 
@@ -580,7 +588,6 @@ void JumpPlayerTo_HowDoWeGetHome(){
     VarSet(VAR_DOGPATCH_STATE,POST_HOW_DO_WE_GET_HOME);
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
     SetWarpDestination(0,5,255,11,21);
-
 }
 
 void JumpPlayerTo_AaandWereBack(){
@@ -602,27 +609,27 @@ void JumpPlayerTo_AssholesHome(){
     JumpPlayerTo_AaandWereBack();
     VarSet(VAR_ALAMEDA_STATE,DEFEATED_ARCHER_ALAMEDA);
     VarSet(VAR_STORYLINE_STATE,STORY_DEFEAT_ARCHER_ALAMEDA);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_VR_1);
     SetWarpDestination(0,23,255,20,5);
-
 }
 void JumpPlayerTo_HousingProtest(){
     JumpPlayerTo_AssholesHome();
     VarSet(VAR_STORYLINE_STATE,STORY_DEFEAT_BERKELEY_PROTEST);
     VarSet(VAR_PSFROUTE63_STATE,DEFEATED_TEAMROCKET_PSFROUTE63);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_GRUNT_AQUA_HIDEOUT_1);
     SetWarpDestination(0,28,255,7,14);
-
 }
 void JumpPlayerTo_swagbag2(){
     JumpPlayerTo_HousingProtest();
     VarSet(VAR_BERKELEY_STATE, SWAGBAG_2_COMPLETE);
-    SetWarpDestination(0,29,1,-1,-1);
-
+    SetWarpDestination(0,29,1,4,13);
 }
 void JumpPlayerTo_EnterMorty(){
     JumpPlayerTo_swagbag2();
     gSpecialVar_Result = AddBagItem(ITEM_TM04,1);
     FlagSet(FLAG_CONSTRUCTION_BREAKING_NEWS);
     FlagSet(FLAG_BADGE04_GET);
+    FlagSet(TRAINER_FLAGS_START+ TRAINER_FLANNERY_1);
     VarSet(VAR_MORTY_STATE,BATTLE_1_COMPLETE);
     VarSet(VAR_GYM_4_STATE,GYM_DEFEATED_LEADER);
     VarSet(VAR_BERKELEY_STATE,DEFEATED_MORTY);
@@ -636,20 +643,28 @@ void JumpPlayerTo_SorryAboutMyFriends(){
     VarSet(VAR_FERRY_STATE,FERRY_ALCATRAZ_AVAILABLE);
     gSpecialVar_Result = AddBagItem(ITEM_MYSTIC_TICKET,1);
     SetWarpDestination(0,29,0,-1,-1);
-
 }
+
+/*
 void JumpPlayerTo_TheStorySoFar(){
     JumpPlayerTo_SorryAboutMyFriends();
-    VarSet(VAR_ALCATRAZ_EXHIBIT_STATE,ALCATRAZ_EXHIBIT_REWARD);
-    VarSet(VAR_ALCATRAZ_STATE,FIRST_ARRIVED_ALCATRAZ);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_ALBERTO);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_ED);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_DECLAN);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_FREDRICK);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_ZANDER);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_LEAH);
+    VarSet(VAR_ALCATRAZ_EXHIBIT_STATE,ALCATRAZ_EXHIBIT_FINISH);
     SetWarpDestination(0,30,255,37,59);
-
 }
-void JumpPlayerTo_YoungPadawan(){
-    u8 storyline = 0;
-    storyline = VarGet(VAR_STORYLINE_STATE);
+*/
 
-    JumpPlayerTo_TheStorySoFar();
+void JumpPlayerTo_YoungPadawan(){
+    //u8 storyline;
+    //JumpPlayerTo_TheStorySoFar();
+    u8 storyline = VarGet(VAR_STORYLINE_STATE);
+    JumpPlayerTo_SorryAboutMyFriends();
+
     if (storyline < STORY_COMPLETE_ALCATRAZ){
         VarSet(VAR_STORYLINE_STATE,STORY_COMPLETE_ALCATRAZ);
     }else{
@@ -659,14 +674,14 @@ void JumpPlayerTo_YoungPadawan(){
     VarSet(VAR_ALCATRAZ_STATE,BATTLED_MALVA);
     VarSet(VAR_ALCATRAZ_EXHIBIT_STATE,ALCATRAZ_EXHIBIT_COMPLETE);
     gSpecialVar_Result = AddBagItem(ITEM_GO_GOGGLES,1);
+    gSpecialVar_Result = AddBagItem(ITEM_MACHO_BRACE,1);
     SetWarpDestination(0,30,255,37,59);
-
 }
+
 void JumpPlayerTo_WaitYouWentWhere(){
     JumpPlayerTo_YoungPadawan();
     VarSet(VAR_WAIT_YOU_WENT_WHERE,POST_WAITYOUWENTWHERE);
     SetWarpDestination(0,13,255,3,1);
-
 }
 void JumpPlayerTo_EnterChuck(){
     JumpPlayerTo_YoungPadawan();
@@ -676,15 +691,15 @@ void JumpPlayerTo_EnterChuck(){
     VarSet(VAR_CHUCK_STATE,BATTLE_1_COMPLETE);
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
     VarSet(VAR_FORTPOINT_STATE,DEFEATED_CHUCK);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_NORMAN_1);
     SetWarpDestination(0,31,0,-1,-1);
-
 }
 void JumpPlayerTo_YouLookTired(){
     JumpPlayerTo_EnterChuck();
     VarSet(VAR_FORTPOINT_STATE,MET_KOGA_OUTSIDE_GYM);
     SetWarpDestination(0,31,0,-1,-1);
-
 }
+
 void JumpPlayerTo_Kogasraisondetre(){
     JumpPlayerTo_YouLookTired();
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
