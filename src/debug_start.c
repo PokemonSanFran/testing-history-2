@@ -291,6 +291,7 @@ static void DebugStart_NewGame(void)
 	gFieldCallback2 = NULL;
 	DoMapLoadLoop(&gMain.state);
 	SetFieldVBlankCallback();
+    SeedRngAndSetTrainerId();
 }
 
 static void DebugStart_BeginAdventure(void)

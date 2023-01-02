@@ -1850,6 +1850,18 @@ static void DebugAction_Util_CheckSaveBlock(u8 taskId)
     ScriptContext_SetupScript(Debug_ShowFieldMessageStringVar4);
 }
 
+static void DebugAction_Util_CheckStoryline(u8 taskId)
+{
+    static const u8 sDebugText_CheckVariables[] =  _("VAR_STORYLINE_STATE is at {STR_VAR_1}");
+
+    ConvertIntToDecimalStringN(gStringVar1, VarGet(VAR_STORYLINE_STATE), STR_CONV_MODE_LEFT_ALIGN, 6);
+    StringExpandPlaceholders(gStringVar1, sDebugText_CheckVariables);
+
+    Debug_DestroyMenu_Full(taskId);
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(Debug_ShowFieldMessageStringVar4);
+}
+
 static const u8 sWeatherNames[22][24] = {
     [WEATHER_NONE]               = _("NONE"),
     [WEATHER_SUNNY_CLOUDS]       = _("SUNNY CLOUDS"),

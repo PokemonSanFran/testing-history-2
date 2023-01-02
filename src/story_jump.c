@@ -711,6 +711,7 @@ void JumpPlayerTo_BeachBattle(){
     JumpPlayerTo_YoungPadawan();
     VarSet(VAR_BEACH_BATTLE_STATE,POST_BEACH_BATTLE);
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
+    FlagSet(TRAINER_FLAGS_START + TRAINER_MAY_ROUTE_110_MUDKIP);
     SetWarpDestination(0,34,255,10,23);
 }
 void JumpPlayerTo_EnterJasmine(){
@@ -720,6 +721,7 @@ void JumpPlayerTo_EnterJasmine(){
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
     VarSet(VAR_GYM_6_STATE,GYM_DEFEATED_LEADER);
     VarSet(VAR_JASMINE_STATE,BATTLE_1_COMPLETE);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_WINONA_1);
     SetWarpDestination(0,37,0,-1,-1);
 }
 void JumpPlayerTo_ANewStrike(){
@@ -733,18 +735,20 @@ void JumpPlayerTo_AndWeMarchOn(){
     SetWarpDestination(0,38,255,23,7);
 }
 void JumpPlayerTo_EnterPryce(){
-    JumpPlayerTo_YoungPadawan();
+    JumpPlayerTo_AndWeMarchOn();
     gSpecialVar_Result = AddBagItem(ITEM_TM07,1);
     FlagSet(FLAG_BADGE07_GET);
     VarSet(VAR_PRYCE_STATE,BATTLE_1_COMPLETE);
     VarSet(VAR_GYM_7_STATE,GYM_DEFEATED_LEADER);
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
+    FlagSet(TRAINER_FLAGS_START + TRAINER_TATE_AND_LIZA_1);
     SetWarpDestination(0,38,0,-1,-1);
 }
 void JumpPlayerTo_Battle8(){
     JumpPlayerTo_YoungPadawan();
     VarSet(VAR_BATTLE_8_STATE,DEFEATED_ARCHER_PAINTEDLADIES);
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
+    FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_VR_3);
     SetWarpDestination(0,40,255,19,16);
 }
 void JumpPlayerTo_EnterClair(){
@@ -754,6 +758,7 @@ void JumpPlayerTo_EnterClair(){
     VarSet(VAR_CLAIR_STATE,BATTLE_1_COMPLETE);
     VarSet(VAR_GYM_8_STATE,GYM_DEFEATED_LEADER);
     VarSet(VAR_STORYLINE_STATE,(VarGet(VAR_STORYLINE_STATE)+1));
+    FlagSet(TRAINER_FLAGS_START + TRAINER_JUAN_1);
     SetWarpDestination(0,42,0,-1,-1);
 }
 void JumpPlayerTo_TheStrikeStrikesBack(){
@@ -761,7 +766,6 @@ void JumpPlayerTo_TheStrikeStrikesBack(){
     JumpPlayerTo_BeachBattle();
     JumpPlayerTo_EnterJasmine();
     JumpPlayerTo_ANewStrike();
-    JumpPlayerTo_AndWeMarchOn();
     JumpPlayerTo_EnterPryce();
     JumpPlayerTo_Battle8();
     JumpPlayerTo_EnterClair();
