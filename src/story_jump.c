@@ -1008,19 +1008,12 @@ void JumpPlayerTo_YouRealizeTheyreEvilRight()
 }
 void JumpPlayerTo_CongratsYoureanAsshole()
 {
-	u8 storyline = 0;
+	u8 storyline = VarGet(VAR_STORYLINE_STATE);
 
+	JumpPlayerTo_YouRealizeTheyreEvilRight();
 	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, START_FALSE_TIMELINE);
 	FlagSet(FLAG_TIMELINE_FALSE);
-
-	storyline = VarGet(VAR_STORYLINE_STATE);
-	JumpPlayerTo_YouRealizeTheyreEvilRight();
-
-	if (storyline < STORY_1ST_TEAMROCKET_TAKEDOWN) {
-		VarSet(VAR_STORYLINE_STATE, STORY_START_FALSE_TIMELINE);
-	} else {
-		VarSet(VAR_STORYLINE_STATE, storyline);
-	}
+    SetStorylineVariableToCorrectPlace(storyline, STORY_START_FALSE_TIMELINE);
 	SetWarpDestination(10, 18, 255, 17, 29);
 }
 void JumpPlayerTo_YouHaveYourOrders()
@@ -1037,6 +1030,7 @@ void JumpPlayerTo_HowDisappointing()
 	IncrementStorylineVariable();
 	QuestMenu_GetSetQuestState(QUEST_HOW_DISAPPOINTING, FLAG_SET_COMPLETED);
 	VarSet(VAR_HOW_DISAPPOINTING_STATE, HOW_DISAPPOINTING_COMPLETE);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_SHELLY_WEATHER_INSTITUTE);
 	SetWarpDestination(10, 18, 255, 32, 53);
 }
 void JumpPlayerTo_LetsBurnThisMotherDown()
@@ -1045,6 +1039,7 @@ void JumpPlayerTo_LetsBurnThisMotherDown()
 	QuestMenu_GetSetQuestState(QUEST_LETS_BURN_THIS_MOTHER_DOWN, FLAG_SET_UNLOCKED);
 	QuestMenu_GetSetQuestState(QUEST_LETS_BURN_THIS_MOTHER_DOWN, FLAG_SET_COMPLETED);
 	VarSet(VAR_LETS_BURN_THIS_MOTHER_STATE, BURN_MOTHER_COMPLETE);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_VR_5);
 	IncrementStorylineVariable();
 	SetWarpDestination(10, 18, 255, 34, 5);
 }
@@ -1054,6 +1049,7 @@ void JumpPlayerTo_Manhunt()
 	QuestMenu_GetSetQuestState(QUEST_MANHUNT, FLAG_SET_UNLOCKED);
 	QuestMenu_GetSetQuestState(QUEST_MANHUNT, FLAG_SET_COMPLETED);
 	VarSet(VAR_MANHUNT_STATE, MANHUNT_COMPLETE);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_MATT);
 	IncrementStorylineVariable();
 	SetWarpDestination(10, 18, 255, 5, 5);
 }
@@ -1069,6 +1065,7 @@ void JumpPlayerTo_MaybeIFuckedUp()
 {
 	JumpPlayerTo_ExhibitionBattle();
 	VarSet(VAR_STORYLINE_STATE, STORY_RECIEVED_BAMBOO_STAR);
+	AddBagItem(ITEM_METEORITE, 1);
 	SetWarpDestination(0, 6, 1, -1, -1);
 }
 void JumpPlayerTo_OkayLetsFixit()
