@@ -504,12 +504,12 @@ static void DestroyAllItemIcons()
 // --------------------------------------------------------------------------------------------------------------------
 
 u8 GetCurrentRow(){
-    /*/if(rowsSorted){
+    if(rowsSorted){
         return (currentRow + 2) % NUM_ROWS;
     }
     else{
        return currentRow % NUM_ROWS;
-    }*/
+    }
     return currentRow % NUM_ROWS;
 }
 
@@ -1193,6 +1193,9 @@ void AmazonItemInitializeArrayList()
                 if(numbadges < Amazon_Items[i][j].numBadges && Amazon_Items[i][j].numBadges != 0)
                     canBuy = FALSE;
 
+                /*if(gItems[Amazon_Items[i][j].item].price == 0)
+                    canBuy = FALSE;*/
+
                 if(canBuy){
                     currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
                     itemNum[i]++;
@@ -1280,9 +1283,9 @@ static const u8 sText_Help_Bar_Buy[]    = _("{DPAD_UPDOWN} +1/-1 {DPAD_LEFTRIGHT
 static const u8 sText_Money_Bar[]       = _("Money: ¥{STR_VAR_1}");
 static const u8 sText_FirstRowName[]    = _("{STR_VAR_1}: {STR_VAR_2}");
 static const u8 sText_ItemNameOwned[]   = _("{STR_VAR_1} - {STR_VAR_2} Owned");
-static const u8 sText_ItemCost[]        = _("Item Cost:    {STR_VAR_1}");
-static const u8 sText_DroneFee[]        = _("Drone Fee:    {STR_VAR_1}");
-static const u8 sText_OrderTotal[]      = _("Order Total: {STR_VAR_1}");
+static const u8 sText_ItemCost[]        = _("Item Cost:    ¥{STR_VAR_1}");
+static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥{STR_VAR_1}");
+static const u8 sText_OrderTotal[]      = _("Order Total: ¥{STR_VAR_1}");
 
 
 static const u8 sText_OrderDelivered[]       = _("Order Delivered!");
@@ -1314,10 +1317,15 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y2 = 4;
 
         for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
-            if(GetCurrentRow() == currentFirstShownRow + i)
+            if(currentRow % NUM_ROWS == currentFirstShownRow + i)
                 BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8) + x2, ((y-1)*8) + y2 + 4, 32, 24);
 
-            switch(currentFirstShownRow + i){
+            if(rowsSorted)
+                droneFeePercentage = 2;
+            else
+                droneFeePercentage = 0;
+
+            switch((currentFirstShownRow + i + droneFeePercentage) % NUM_ROWS){
                 case ROW_BUY_AGAIN:
                     BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
                 break;
@@ -1378,11 +1386,13 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
             for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
-                if(i == 0){
-                    CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
-                }
-                else{
-                    CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                if(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[GetCurrentRow() + i]] != ITEM_NONE){
+                    if(i == 0){
+                        CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                    }
+                    else{
+                        CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                    }
                 }
                 
                 x = x + 5;
@@ -1400,9 +1410,9 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
             if(i == 0){
-                str = Amazon_Rows[(currentRow + i) % NUM_ROWS].title;
+                str = Amazon_Rows[GetCurrentRow()].title;
                 StringCopy(gStringVar1, str);
-                str = gItems[currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem]].name;
+                str = gItems[currentRowItemList[GetCurrentRow()][currentItem]].name;
                 StringCopy(gStringVar2, str);
                 StringExpandPlaceholders(gStringVar4, sText_FirstRowName);
             }
@@ -1705,10 +1715,12 @@ static void Task_MenuMain(u8 taskId)
     //
     if(JOY_NEW(START_BUTTON) && !buyWindow)
 	{
-        rowsSorted = !rowsSorted;
-        PlaySE(SE_SELECT);
+        if(!buyScreen){
+            rowsSorted = !rowsSorted;
+            PlaySE(SE_SELECT);
 
-        PrintToWindow(WINDOW_1, FONT_BLACK);
+            PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
 	}
 
     if(JOY_NEW(DPAD_UP) && !buyWindow)
