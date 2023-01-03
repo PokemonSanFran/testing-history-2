@@ -525,16 +525,31 @@ enum PriceTypes
     PRICE_FINAL,
 };
 
+u8 getDroneFee(){
+    u8 droneFeePercentage = 0;
+
+    if(!FlagGet(FLAG_TIMELINE_TRUE) && GetCurrentRow() != ROW_RECOMMENDED)
+        droneFeePercentage = 20;
+
+    if(!FlagGet(FLAG_TIMELINE_TRUE) && GetCurrentRow() == ROW_RECOMMENDED)
+        droneFeePercentage = 22;
+
+    if(FlagGet(FLAG_TIMELINE_TRUE) && GetCurrentRow() != ROW_RECOMMENDED)
+        droneFeePercentage = 50;
+
+    if(!FlagGet(FLAG_TIMELINE_TRUE) && GetCurrentRow() == ROW_RECOMMENDED)
+        droneFeePercentage = 52;
+    
+    return droneFeePercentage;
+}
+
 static u16 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
 {
-    u16 finalprice = 0;
-    u8 droneFeePercentage = 10;
     u16 itemPrice = (quantity + 1)* gItems[itemID].price;
-    u16 dronePrice = ((quantity + 1)* gItems[itemID].price)/ droneFeePercentage;
+    u16 dronePrice = (itemPrice * getDroneFee()) / 100;
     u16 totalPrice = itemPrice + dronePrice;
-    //asdf
-    //buyableItems * itemPrice = GetMoney(&gSaveBlock1Ptr->money);
-    //buyableItems = GetMoney(&gSaveBlock1Ptr->money) / itemPrice;
+
+    mgba_printf(MGBA_LOG_WARN, "Drone Price %d", dronePrice);
 
     switch(type){
         case PRICE_ITEM:
@@ -1283,9 +1298,11 @@ static const u8 sText_Help_Bar_Buy[]    = _("{DPAD_UPDOWN} +1/-1 {DPAD_LEFTRIGHT
 static const u8 sText_Money_Bar[]       = _("Money: ¥{STR_VAR_1}");
 static const u8 sText_FirstRowName[]    = _("{STR_VAR_1}: {STR_VAR_2}");
 static const u8 sText_ItemNameOwned[]   = _("{STR_VAR_1} - {STR_VAR_2} Owned");
-static const u8 sText_ItemCost[]        = _("Item Cost:    ¥{STR_VAR_1}");
-static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥{STR_VAR_1}");
-static const u8 sText_OrderTotal[]      = _("Order Total: ¥{STR_VAR_1}");
+static const u8 sText_ItemCost[]        = _("Item Cost:    ¥ {STR_VAR_1}");
+static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥ {STR_VAR_1}");
+//static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥ {STR_VAR_1} ({STR_VAR_2}%)");
+static const u8 sText_OrderTotal[]      = _("Order Total: ¥ {STR_VAR_1}");
+static const u8 sText_ItemPrice[]      = _("¥ {STR_VAR_1}");
 
 
 static const u8 sText_OrderDelivered[]       = _("Order Delivered!");
@@ -1466,15 +1483,16 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
             
         //Item Price --------------------------------------------------------------------------------------------------------------------
-        x = 26;
+        x = 25;
         y = 2;
         x2 = 0;
         y2 = 0;
 
 	    ConvertIntToDecimalStringN(gStringVar1, gItems[itemID].price, STR_CONV_MODE_LEFT_ALIGN, 5);
 	    //ConvertIntToDecimalStringN(gStringVar1, MAX_MONEY, STR_CONV_MODE_LEFT_ALIGN, 5);
+        StringExpandPlaceholders(gStringVar4, sText_ItemPrice);
 
-        AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar1);
+        AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
               
         //Item Description --------------------------------------------------------------------------------------------------------------------
         x = 5;
@@ -1504,6 +1522,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         quantity = GetCurrentItemPrice(itemQuantity, itemID, PRICE_DRONE);
 	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
+	    ConvertIntToDecimalStringN(gStringVar2, getDroneFee(), STR_CONV_MODE_LEFT_ALIGN, 2);
         StringExpandPlaceholders(gStringVar4, sText_DroneFee);
 
         AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
