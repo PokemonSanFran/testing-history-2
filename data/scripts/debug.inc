@@ -60,11 +60,12 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	addvar VAR_STORYLINE_STATE, 1
+	warpsilent MAP_OAKLAND, 0
 	return
 
 
 Debug_Script_2::
+	warpsilent MAP_ALCATRAZ_B2F, 0
 	return
 
 

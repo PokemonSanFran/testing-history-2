@@ -479,13 +479,12 @@ void IncrementStorylineVariable()
 	VarSet(VAR_STORYLINE_STATE, (VarGet(VAR_STORYLINE_STATE) + 1));
 }
 
-void SetStorylineVariableToCorrectPlace(u8 originalStoryline, u8 newStoryline)
+void PreventVariableFromReversion(u16 adjustedVariable, u8 originalValue, u8 newValue)
 {
-
-	if (originalStoryline < newStoryline) {
-		VarSet(VAR_STORYLINE_STATE, newStoryline);
+	if (originalValue < newValue) {
+		VarSet(adjustedVariable, newValue);
 	} else {
-		VarSet(VAR_STORYLINE_STATE, originalStoryline);
+		VarSet(adjustedVariable, originalValue);
 	}
 }
 
@@ -695,7 +694,7 @@ void JumpPlayerTo_YoungPadawan()
 {
 	u8 storyline = VarGet(VAR_STORYLINE_STATE);
 	JumpPlayerTo_SorryAboutMyFriends();
-	SetStorylineVariableToCorrectPlace(storyline, STORY_COMPLETE_ALCATRAZ);
+	PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline, STORY_COMPLETE_ALCATRAZ);
 	VarSet(VAR_ALCATRAZ_STATE, BATTLED_MALVA);
 	VarSet(VAR_ALCATRAZ_EXHIBIT_STATE, ALCATRAZ_EXHIBIT_COMPLETE);
 	AddBagItem(ITEM_GO_GOGGLES, 1);
@@ -1013,7 +1012,7 @@ void JumpPlayerTo_CongratsYoureanAsshole()
 	JumpPlayerTo_YouRealizeTheyreEvilRight();
 	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, START_FALSE_TIMELINE);
 	FlagSet(FLAG_TIMELINE_FALSE);
-    SetStorylineVariableToCorrectPlace(storyline, STORY_START_FALSE_TIMELINE);
+    PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline, STORY_START_FALSE_TIMELINE);
 	SetWarpDestination(10, 18, 255, 17, 29);
 }
 void JumpPlayerTo_YouHaveYourOrders()
@@ -1093,6 +1092,7 @@ void JumpPlayerTo_MaskOff()
 	JumpPlayerTo_LetsGettheBandBackTogether();
 	VarSet(VAR_MASK_OFF_STATE, DEFEATED_MASK_OFF_GIOVANNI);
 	VarSet(VAR_STORYLINE_STATE, STORY_DEFEATED_GIOVANNI);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_SHELLY_SEAFLOOR_CAVERN);
 	SetWarpDestination(0, 65, 255, 22, 26);
 }
 void JumpPlayerTo_LockedOut()
@@ -1103,28 +1103,21 @@ void JumpPlayerTo_LockedOut()
 }
 void JumpPlayerTo_LetsFixThis()
 {
-	u8 storyline = 0;
-
-	storyline = VarGet(VAR_STORYLINE_STATE);
+	u8 storyline = VarGet(VAR_STORYLINE_STATE);
+    u8 alcatrazState = VarGet(VAR_ALCATRAZ_STATE);
+    u8 warehouseState = VarGet(VAR_WAREHOUSE_RAVE_STATE);
+        
 	JumpPlayerTo_LockedOut();
-	VarSet(VAR_STORYLINE_STATE, STORY_RECIVED_RAVE_INVITE);
-
-	if (storyline < STORY_RAVE_OR_SPEECH_COMPLETE) {
-		VarSet(VAR_STORYLINE_STATE, STORY_RECIVED_RAVE_INVITE);
-	} else {
-		VarSet(VAR_STORYLINE_STATE, storyline);
-	}
-
-	VarSet(VAR_ALAMEDA_STATE, PRE_SPEECHSPEECH);
-	VarSet(VAR_WAREHOUSE_RAVE_STATE, GOT_RAVE_MESSAGE);
-	FlagSet(FLAG_LOCKEDOUT_PLAYED);
+    PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline, STORY_RECIVED_RAVE_INVITE);
+    PreventVariableFromReversion(VAR_ALCATRAZ_STATE, alcatrazState, PRE_SPEECHSPEECH);
+    PreventVariableFromReversion(VAR_WAREHOUSE_RAVE_STATE, warehouseState, GOT_RAVE_MESSAGE);
 	SetWarpDestination(0, 73, 0, -1, -1);
 }
 void JumpPlayerTo_WarehouseRave()
 {
 	JumpPlayerTo_LetsFixThis();
-	VarSet(VAR_WAREHOUSE_RAVE_STATE, TOLD_ARCHER_ABOUT_KOGA);
 	IncrementStorylineVariable();
+	VarSet(VAR_WAREHOUSE_RAVE_STATE, TOLD_ARCHER_ABOUT_KOGA);
 	SetWarpDestination(0, 27, 1, -1, -1);
 }
 void JumpPlayerTo_SpeechSpeechSpeech()
@@ -1152,7 +1145,7 @@ void JumpPlayerTo_ThisIsntRandom()
 {
 	JumpPlayerTo_Earthquake();
 	VarSet(VAR_UNDERGROUNDLAB_STATE, FREED_LAB_POKEMON_2);
-	SetWarpDestination(0, 78, 255, 30, 5);
+	SetWarpDestination(0, 78, 255, 24, 4);
 }
 void JumpPlayerTo_WaitEvenThen()
 {
@@ -1175,7 +1168,8 @@ void JumpPlayerTo_ImIn()
 	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, TRUE_RAID_START);
 	VarSet(VAR_TOWER_RAID_STATE, DEFEATED_BIANCA_SALESFORCETOWER);
 	AddBagItem(ITEM_MAGMA_EMBLEM, 1);
-	SetWarpDestination(0, 79, 0, -1, -1);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_MAY_LILYCOVE_MUDKIP);
+	SetWarpDestination(10, 18, 1, -1, -1);
 }
 void JumpPlayerTo_YouCantStopMe()
 {
@@ -1188,6 +1182,8 @@ void JumpPlayerTo_WeCanStopYouActually()
 	JumpPlayerTo_YouCantStopMe();
 	VarSet(VAR_STORYLINE_STATE, STORY_CLEAR);
 	VarSet(VAR_TOWER_RAID_STATE, DEFEATED_ROSE_SALESFORCETOWER);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_MAXIE_MAGMA_HIDEOUT);
+    FlagSet(TRAINER_FLAGS_START + TRAINER_STEVEN);
 	SetWarpDestination(0, 80, 0, -1, -1);
 }
 
