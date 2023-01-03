@@ -52,10 +52,8 @@
 #include "constants/species.h"
 #include "constants/weather.h"
 
-extern u8 LetsGrabLunch_CheckRestorationProgress_Script[];
-extern u8 ExhibitionBattle_TimeSkip_Script[];
-
-enum {
+enum
+{
 	JUMPPLAYER_SWAGBAG,
 	JUMPPLAYER_READYSETI,
 	JUMPPLAYER_ENTERFALKNER,
@@ -138,90 +136,93 @@ enum {
 	JUMPPLAYER_WECANSTOPYOUACTUALLY
 };
 
-static void JumpPlayerTo_swagbag(void);
-static void JumpPlayerTo_ReadySetI(void);
-static void JumpPlayerTo_EnterFalkner(void);
-static void JumpPlayerTo_EnterBugsy(void);
-static void JumpPlayerTo_EnterWhitney(void);
-static void JumpPlayerTo_NewAssholeAppears(void);
-static void JumpPlayerTo_OldAssholeAppears(void);
-static void JumpPlayerTo_GroupofAssholesAppears(void);
-static void JumpPlayerTo_FlyingBlind(void);
-static void JumpPlayerTo_WowYoureStrong(void);
-static void JumpPlayerTo_TheGangsAllHere(void);
-static void JumpPlayerTo_AlwaysWatchingWazokwski(void);
-static void JumpPlayerTo_EnterAriana(void);
-static void JumpPlayerTo_HowDoWeGetHome(void);
-static void JumpPlayerTo_AaandWereBack(void);
-static void JumpPlayerTo_AssholesHome(void);
-static void JumpPlayerTo_HousingProtest(void);
-static void JumpPlayerTo_swagbag2(void);
-static void JumpPlayerTo_EnterMorty(void);
-static void JumpPlayerTo_SorryAboutMyFriends(void);
-static void JumpPlayerTo_TheStorySoFar(void);
-static void JumpPlayerTo_YoungPadawan(void);
-static void JumpPlayerTo_WaitYouWentWhere(void);
-static void JumpPlayerTo_EnterChuck(void);
-static void JumpPlayerTo_YouLookTired(void);
-static void JumpPlayerTo_Kogasraisondetre(void);
-static void JumpPlayerTo_BeachBattle(void);
-static void JumpPlayerTo_EnterJasmine(void);
-static void JumpPlayerTo_ANewStrike(void);
-static void JumpPlayerTo_AndWeMarchOn(void);
-static void JumpPlayerTo_EnterPryce(void);
-static void JumpPlayerTo_Battle8(void);
-static void JumpPlayerTo_EnterClair(void);
-static void JumpPlayerTo_TheStrikeStrikesBack(void);
-static void JumpPlayerTo_VSGarbodor(void);
-static void JumpPlayerTo_UnknownAlcatrazCutscene(void);
-static void JumpPlayerTo_OffYouGo(void);
-static void JumpPlayerTo_IGuessWeShouldBeNiceNow(void);
-static void JumpPlayerTo_EntertheMaster(void);
-static void JumpPlayerTo_HaveYouSeenTheNews(void);
-static void JumpPlayerTo_WelcometotheWarRoom(void);
-static void JumpPlayerTo_SurvivalChance333(void);
-static void JumpPlayerTo_WhyAreYouHelpingThem(void);
-static void JumpPlayerTo_WhyAreYouHelpingThemSleep(void);
-static void JumpPlayerTo_HeresHowThisIsGoingToGo(void);
-static void JumpPlayerTo_WhyDidntYouRatMeOut(void);
-static void JumpPlayerTo_GroupStages(void);
-static void JumpPlayerTo_Finals(void);
-static void JumpPlayerTo_WaitHeDidWhat(void);
-static void JumpPlayerTo_WelcometotheHallofFame(void);
-static void JumpPlayerTo_BeingChampionisHard(void);
-static void JumpPlayerTo_LetsGrabLunch(void);
-static void JumpPlayerTo_RestoreChinatown(void);
-static void JumpPlayerTo_RestoreTreasureIsland(void);
-static void JumpPlayerTo_RestoreMarin(void);
-static void JumpPlayerTo_RestoreHaightAshbury(void);
-static void JumpPlayerTo_YouRealizeWereEvilRight(void);
-static void JumpPlayerTo_YouRealizeTheyreEvilRight(void);
-static void JumpPlayerTo_CongratsYoureanAsshole(void);
-static void JumpPlayerTo_YouHaveYourOrders(void);
-static void JumpPlayerTo_HowDisappointing(void);
-static void JumpPlayerTo_LetsBurnThisMotherDown(void);
-static void JumpPlayerTo_Manhunt(void);
-static void JumpPlayerTo_ExhibitionBattle(void);
-static void JumpPlayerTo_MaybeIFuckedUp(void);
-static void JumpPlayerTo_OkayLetsFixit(void);
-static void JumpPlayerTo_LetsGettheBandBackTogether(void);
-static void JumpPlayerTo_MaskOff(void);
-static void JumpPlayerTo_LetsFixThis(void);
-static void JumpPlayerTo_LockedOut(void);
-static void JumpPlayerTo_WarehouseRave(void);
-static void JumpPlayerTo_SpeechSpeechSpeech(void);
-static void JumpPlayerTo_OneDown(void);
-static void JumpPlayerTo_Earthquake(void);
-static void JumpPlayerTo_ThisIsntRandom(void);
-static void JumpPlayerTo_WaitEvenThen(void);
-static void JumpPlayerTo_LetsFinishThis(void);
-static void JumpPlayerTo_ImIn(void);
-static void JumpPlayerTo_YouCantStopMe(void);
-static void JumpPlayerTo_WeCanStopYouActually(void);
+static void IncrementStorylineVariable();
+static void PreventVariableFromReversion(u16, u8, u8);
+static void JumpPlayerTo_swagbag();
+static void JumpPlayerTo_ReadySetI();
+static void JumpPlayerTo_EnterFalkner();
+static void JumpPlayerTo_EnterBugsy();
+static void JumpPlayerTo_EnterWhitney();
+static void JumpPlayerTo_NewAssholeAppears();
+static void JumpPlayerTo_OldAssholeAppears();
+static void JumpPlayerTo_GroupofAssholesAppears();
+static void JumpPlayerTo_FlyingBlind();
+static void JumpPlayerTo_WowYoureStrong();
+static void JumpPlayerTo_TheGangsAllHere();
+static void JumpPlayerTo_AlwaysWatchingWazokwski();
+static void JumpPlayerTo_EnterAriana();
+static void JumpPlayerTo_HowDoWeGetHome();
+static void JumpPlayerTo_AaandWereBack();
+static void JumpPlayerTo_AssholesHome();
+static void JumpPlayerTo_HousingProtest();
+static void JumpPlayerTo_swagbag2();
+static void JumpPlayerTo_EnterMorty();
+static void JumpPlayerTo_SorryAboutMyFriends();
+static void JumpPlayerTo_TheStorySoFar();
+static void JumpPlayerTo_YoungPadawan();
+static void JumpPlayerTo_WaitYouWentWhere();
+static void JumpPlayerTo_EnterChuck();
+static void JumpPlayerTo_YouLookTired();
+static void JumpPlayerTo_Kogasraisondetre();
+static void JumpPlayerTo_BeachBattle();
+static void JumpPlayerTo_EnterJasmine();
+static void JumpPlayerTo_ANewStrike();
+static void JumpPlayerTo_AndWeMarchOn();
+static void JumpPlayerTo_EnterPryce();
+static void JumpPlayerTo_Battle8();
+static void JumpPlayerTo_EnterClair();
+static void JumpPlayerTo_TheStrikeStrikesBack();
+static void JumpPlayerTo_VSGarbodor();
+static void JumpPlayerTo_UnknownAlcatrazCutscene();
+static void JumpPlayerTo_OffYouGo();
+static void JumpPlayerTo_IGuessWeShouldBeNiceNow();
+static void JumpPlayerTo_EntertheMaster();
+static void JumpPlayerTo_HaveYouSeenTheNews();
+static void JumpPlayerTo_WelcometotheWarRoom();
+static void JumpPlayerTo_SurvivalChance333();
+static void JumpPlayerTo_WhyAreYouHelpingThem();
+static void JumpPlayerTo_WhyAreYouHelpingThemSleep();
+static void JumpPlayerTo_HeresHowThisIsGoingToGo();
+static void JumpPlayerTo_WhyDidntYouRatMeOut();
+static void JumpPlayerTo_GroupStages();
+static void JumpPlayerTo_Finals();
+static void JumpPlayerTo_WaitHeDidWhat();
+static void JumpPlayerTo_WelcometotheHallofFame();
+static void JumpPlayerTo_BeingChampionisHard();
+static void JumpPlayerTo_LetsGrabLunch();
+static void JumpPlayerTo_RestoreChinatown();
+static void JumpPlayerTo_RestoreTreasureIsland();
+static void JumpPlayerTo_RestoreMarin();
+static void JumpPlayerTo_RestoreHaightAshbury();
+static void JumpPlayerTo_YouRealizeWereEvilRight();
+static void JumpPlayerTo_YouRealizeTheyreEvilRight();
+static void JumpPlayerTo_CongratsYoureanAsshole();
+static void JumpPlayerTo_YouHaveYourOrders();
+static void JumpPlayerTo_HowDisappointing();
+static void JumpPlayerTo_LetsBurnThisMotherDown();
+static void JumpPlayerTo_Manhunt();
+static void JumpPlayerTo_ExhibitionBattle();
+static void JumpPlayerTo_MaybeIFuckedUp();
+static void JumpPlayerTo_OkayLetsFixit();
+static void JumpPlayerTo_LetsGettheBandBackTogether();
+static void JumpPlayerTo_MaskOff();
+static void JumpPlayerTo_LetsFixThis();
+static void JumpPlayerTo_LockedOut();
+static void JumpPlayerTo_WarehouseRave();
+static void JumpPlayerTo_SpeechSpeechSpeech();
+static void JumpPlayerTo_OneDown();
+static void JumpPlayerTo_Earthquake();
+static void JumpPlayerTo_ThisIsntRandom();
+static void JumpPlayerTo_WaitEvenThen();
+static void JumpPlayerTo_LetsFinishThis();
+static void JumpPlayerTo_ImIn();
+static void JumpPlayerTo_YouCantStopMe();
+static void JumpPlayerTo_WeCanStopYouActually();
 
 void JumpPlayerToStoryPoint(u8 chosenStoryPoint, u8 taskId)
 {
-	switch (chosenStoryPoint) {
+	switch (chosenStoryPoint)
+	{
 		case JUMPPLAYER_SWAGBAG:
 			JumpPlayerTo_swagbag();
 			break;
@@ -469,21 +470,23 @@ void JumpPlayerToStoryPoint(u8 chosenStoryPoint, u8 taskId)
 void WarpPlayerAfterVarSet()
 {
 	DoWarp();
-	//ScriptContext_SetupScript(ExhibitionBattle_TimeSkip_Script);
-	//ScriptContext_SetupScript(LetsGrabLunch_CheckRestorationProgress_Script);
 	ResetInitialPlayerAvatarState();
 }
 
-void IncrementStorylineVariable()
+static void IncrementStorylineVariable()
 {
 	VarSet(VAR_STORYLINE_STATE, (VarGet(VAR_STORYLINE_STATE) + 1));
 }
 
-void PreventVariableFromReversion(u16 adjustedVariable, u8 originalValue, u8 newValue)
+static void PreventVariableFromReversion(u16 adjustedVariable,
+            u8 originalValue, u8 newValue)
 {
-	if (originalValue < newValue) {
+	if (originalValue < newValue)
+	{
 		VarSet(adjustedVariable, newValue);
-	} else {
+	}
+	else
+	{
 		VarSet(adjustedVariable, originalValue);
 	}
 }
@@ -596,7 +599,8 @@ void JumpPlayerTo_TheGangsAllHere()
 void JumpPlayerTo_AlwaysWatchingWazokwski()
 {
 	JumpPlayerTo_WowYoureStrong();
-	VarSet(VAR_SALESFORCETOWER_PRODUCTION_STATE, POST_ALWAYS_WATCHING_WAZOWSKI);
+	VarSet(VAR_SALESFORCETOWER_PRODUCTION_STATE,
+	       POST_ALWAYS_WATCHING_WAZOWSKI);
 	SetWarpDestination(10, 17, 255, 9, 7);
 
 }
@@ -676,6 +680,8 @@ void JumpPlayerTo_SorryAboutMyFriends()
 	SetWarpDestination(0, 29, 0, -1, -1);
 }
 
+
+// The script on Alcatraz makes it so if you talk to the attendant, your progress variable gets reset unless you're done. Rather than fix the story jump here, the better solution is just to code a debug way to trigger completion of all the Trainers.
 /*
 void JumpPlayerTo_TheStorySoFar(){
     JumpPlayerTo_SorryAboutMyFriends();
@@ -694,7 +700,8 @@ void JumpPlayerTo_YoungPadawan()
 {
 	u8 storyline = VarGet(VAR_STORYLINE_STATE);
 	JumpPlayerTo_SorryAboutMyFriends();
-	PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline, STORY_COMPLETE_ALCATRAZ);
+	PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline,
+	                             STORY_COMPLETE_ALCATRAZ);
 	VarSet(VAR_ALCATRAZ_STATE, BATTLED_MALVA);
 	VarSet(VAR_ALCATRAZ_EXHIBIT_STATE, ALCATRAZ_EXHIBIT_COMPLETE);
 	AddBagItem(ITEM_GO_GOGGLES, 1);
@@ -804,7 +811,7 @@ void JumpPlayerTo_TheStrikeStrikesBack()
 	JumpPlayerTo_EnterPryce();
 	JumpPlayerTo_Battle8();
 	JumpPlayerTo_EnterClair();
-    JumpPlayerTo_ANewStrike();
+	JumpPlayerTo_ANewStrike();
 	VarSet(VAR_CONSTRUCTION_STRIKE_STATE, START_VS_GARBODOR);
 	VarSet(VAR_STORYLINE_STATE, STORY_CALLED_TO_CONSTRUCTION);
 	SetWarpDestination(0, 6, 0, -1, -1);
@@ -813,11 +820,11 @@ void JumpPlayerTo_VSGarbodor()
 {
 	JumpPlayerTo_TheStrikeStrikesBack();
 	VarSet(VAR_CONSTRUCTION_STRIKE_STATE, TEAM_ROCKET_ARRESTED);
-    VarSet(VAR_INNER_CONSTRUCTION_SITE_STATE,PLAYER_LEFT_SIDE);
-    FlagSet(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY);
-    FlagSet(FLAG_DEFEATED_RIVAL_ROUTE_104);
-    FlagSet(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE);
-    FlagSet(FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE);
+	VarSet(VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_LEFT_SIDE);
+	FlagSet(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY);
+	FlagSet(FLAG_DEFEATED_RIVAL_ROUTE_104);
+	FlagSet(FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE);
+	FlagSet(FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE);
 	VarSet(VAR_STORYLINE_STATE, STORY_NEED_SLEEP_BEFORE_SIEBOLD);
 	SetWarpDestination(2, 1, 0, -1, -1);
 }
@@ -851,13 +858,13 @@ void JumpPlayerTo_HaveYouSeenTheNews()
 	JumpPlayerTo_EntertheMaster();
 	VarSet(VAR_MUIRWOODS_STATE, POST_HAVE_YOU_SEEN_THE_NEWS);
 	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM);
-	//SetWarpDestination(10, 18, 255, 17, 29);
 	SetWarpDestination(10, 17, 1, -1, -1);
 }
 void JumpPlayerTo_WelcometotheWarRoom()
 {
 	JumpPlayerTo_HaveYouSeenTheNews();
-	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_WELCOME_TO_THE_WAR_ROOM);
+	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE,
+	       POST_WELCOME_TO_THE_WAR_ROOM);
 	VarSet(VAR_FERRYBUILDING_STATE, CHIEF_LEFT_WAR_ROOM);
 	SetWarpDestination(10, 18, 255, 17, 29);
 }
@@ -874,7 +881,7 @@ void JumpPlayerTo_WhyAreYouHelpingThem()
 	VarSet(VAR_NAVALBASE_STATE, DEFEATED_ARCHER_NAVALBASE);
 	VarSet(VAR_PLAYER_HOME_STATE, NEXT_DAY_CHAMPIONSHIP);
 	VarSet(VAR_STORYLINE_STATE, STORY_COMPLETED_NAVAL_BASE);
-    FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_VR_2);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_VR_2);
 	SetWarpDestination(0, 23, 0, -1, -1);
 }
 
@@ -939,7 +946,7 @@ void JumpPlayerTo_BeingChampionisHard()
 void JumpPlayerTo_LetsGrabLunch()
 {
 	JumpPlayerTo_BeingChampionisHard();
-    FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_VR_4);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_VR_4);
 	VarSet(VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION);
 	SetWarpDestination(0, 60, 255, 14, 9);
 }
@@ -957,13 +964,20 @@ void JumpPlayerTo_RestoreChinatown()
 	FlagSet(TRAINER_FLAGS_START + TRAINER_BLACKBELT_F);
 	FlagSet(TRAINER_FLAGS_START + TRAINER_BLACKBELT_G);
 
-	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED, SUB_QUEST_1);
-	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED, SUB_QUEST_2);
-	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED, SUB_QUEST_3);
-	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED, SUB_QUEST_4);
-	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED, SUB_QUEST_5);
-	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED, SUB_QUEST_6);
-	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED, SUB_QUEST_7);
+	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED,
+	                              SUB_QUEST_1);
+	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED,
+	                              SUB_QUEST_2);
+	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED,
+	                              SUB_QUEST_3);
+	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED,
+	                              SUB_QUEST_4);
+	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED,
+	                              SUB_QUEST_5);
+	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED,
+	                              SUB_QUEST_6);
+	QuestMenu_GetSetSubquestState(QUEST_RESTORECHINATOWN, FLAG_SET_COMPLETED,
+	                              SUB_QUEST_7);
 
 	VarSet(VAR_QUEST_RESTORECHINATOWN, RESTORECHINATOWN_COMPLETE);
 	SetWarpDestination(0, 98, 0, -1, -1);
@@ -971,8 +985,10 @@ void JumpPlayerTo_RestoreChinatown()
 void JumpPlayerTo_RestoreTreasureIsland()
 {
 	JumpPlayerTo_LetsGrabLunch();
-	QuestMenu_GetSetQuestState(QUEST_RESTORETREASUREISLAND, FLAG_SET_UNLOCKED);
-	QuestMenu_GetSetQuestState(QUEST_RESTORETREASUREISLAND, FLAG_SET_COMPLETED);
+	QuestMenu_GetSetQuestState(QUEST_RESTORETREASUREISLAND,
+	                           FLAG_SET_UNLOCKED);
+	QuestMenu_GetSetQuestState(QUEST_RESTORETREASUREISLAND,
+	                           FLAG_SET_COMPLETED);
 	SetWarpDestination(0, 59, 255, 3, 15);
 }
 void JumpPlayerTo_RestoreMarin()
@@ -987,13 +1003,15 @@ void JumpPlayerTo_RestoreHaightAshbury()
 {
 	JumpPlayerTo_LetsGrabLunch();
 	QuestMenu_GetSetQuestState(QUEST_RESTOREHAIGHTASHBURY, FLAG_SET_UNLOCKED);
-	QuestMenu_GetSetQuestState(QUEST_RESTOREHAIGHTASHBURY, FLAG_SET_COMPLETED);
+	QuestMenu_GetSetQuestState(QUEST_RESTOREHAIGHTASHBURY,
+	                           FLAG_SET_COMPLETED);
 	SetWarpDestination(0, 38, 255, 7, 27);
 }
 void JumpPlayerTo_YouRealizeWereEvilRight()
 {
 	JumpPlayerTo_RestoreHaightAshbury();
-	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_YOU_REALIZE_WERE_EVIL_RIGHT);
+	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE,
+	       POST_YOU_REALIZE_WERE_EVIL_RIGHT);
 	FlagSet(FLAG_ARCHER_CALL_ALCATRAZ);
 	VarSet(VAR_STORYLINE_STATE, STORY_POST_YOU_REALIZE_WERE_EVIL);
 	SetWarpDestination(10, 18, 255, 17, 29);
@@ -1003,7 +1021,7 @@ void JumpPlayerTo_YouRealizeTheyreEvilRight()
 	JumpPlayerTo_YouRealizeWereEvilRight();
 	VarSet(VAR_ALCATRAZ_STATE, POST_YOU_REALIZE_THEYRE_EVIL_RIGHT);
 	FlagClear(FLAG_ARCHER_CALL_ALCATRAZ);
-    SetWarpDestination(0,62,255,4,13);
+	SetWarpDestination(0, 62, 255, 4, 13);
 }
 void JumpPlayerTo_CongratsYoureanAsshole()
 {
@@ -1012,7 +1030,8 @@ void JumpPlayerTo_CongratsYoureanAsshole()
 	JumpPlayerTo_YouRealizeTheyreEvilRight();
 	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, START_FALSE_TIMELINE);
 	FlagSet(FLAG_TIMELINE_FALSE);
-    PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline, STORY_START_FALSE_TIMELINE);
+	PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline,
+	                             STORY_START_FALSE_TIMELINE);
 	SetWarpDestination(10, 18, 255, 17, 29);
 }
 void JumpPlayerTo_YouHaveYourOrders()
@@ -1029,16 +1048,18 @@ void JumpPlayerTo_HowDisappointing()
 	IncrementStorylineVariable();
 	QuestMenu_GetSetQuestState(QUEST_HOW_DISAPPOINTING, FLAG_SET_COMPLETED);
 	VarSet(VAR_HOW_DISAPPOINTING_STATE, HOW_DISAPPOINTING_COMPLETE);
-    FlagSet(TRAINER_FLAGS_START + TRAINER_SHELLY_WEATHER_INSTITUTE);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_SHELLY_WEATHER_INSTITUTE);
 	SetWarpDestination(10, 18, 255, 32, 53);
 }
 void JumpPlayerTo_LetsBurnThisMotherDown()
 {
 	JumpPlayerTo_CongratsYoureanAsshole();
-	QuestMenu_GetSetQuestState(QUEST_LETS_BURN_THIS_MOTHER_DOWN, FLAG_SET_UNLOCKED);
-	QuestMenu_GetSetQuestState(QUEST_LETS_BURN_THIS_MOTHER_DOWN, FLAG_SET_COMPLETED);
+	QuestMenu_GetSetQuestState(QUEST_LETS_BURN_THIS_MOTHER_DOWN,
+	                           FLAG_SET_UNLOCKED);
+	QuestMenu_GetSetQuestState(QUEST_LETS_BURN_THIS_MOTHER_DOWN,
+	                           FLAG_SET_COMPLETED);
 	VarSet(VAR_LETS_BURN_THIS_MOTHER_STATE, BURN_MOTHER_COMPLETE);
-    FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_VR_5);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_WALLY_VR_5);
 	IncrementStorylineVariable();
 	SetWarpDestination(10, 18, 255, 34, 5);
 }
@@ -1048,7 +1069,7 @@ void JumpPlayerTo_Manhunt()
 	QuestMenu_GetSetQuestState(QUEST_MANHUNT, FLAG_SET_UNLOCKED);
 	QuestMenu_GetSetQuestState(QUEST_MANHUNT, FLAG_SET_COMPLETED);
 	VarSet(VAR_MANHUNT_STATE, MANHUNT_COMPLETE);
-    FlagSet(TRAINER_FLAGS_START + TRAINER_MATT);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_MATT);
 	IncrementStorylineVariable();
 	SetWarpDestination(10, 18, 255, 5, 5);
 }
@@ -1092,7 +1113,7 @@ void JumpPlayerTo_MaskOff()
 	JumpPlayerTo_LetsGettheBandBackTogether();
 	VarSet(VAR_MASK_OFF_STATE, DEFEATED_MASK_OFF_GIOVANNI);
 	VarSet(VAR_STORYLINE_STATE, STORY_DEFEATED_GIOVANNI);
-    FlagSet(TRAINER_FLAGS_START + TRAINER_SHELLY_SEAFLOOR_CAVERN);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_SHELLY_SEAFLOOR_CAVERN);
 	SetWarpDestination(0, 65, 255, 22, 26);
 }
 void JumpPlayerTo_LockedOut()
@@ -1104,13 +1125,16 @@ void JumpPlayerTo_LockedOut()
 void JumpPlayerTo_LetsFixThis()
 {
 	u8 storyline = VarGet(VAR_STORYLINE_STATE);
-    u8 alcatrazState = VarGet(VAR_ALCATRAZ_STATE);
-    u8 warehouseState = VarGet(VAR_WAREHOUSE_RAVE_STATE);
-        
+	u8 alcatrazState = VarGet(VAR_ALCATRAZ_STATE);
+	u8 warehouseState = VarGet(VAR_WAREHOUSE_RAVE_STATE);
+
 	JumpPlayerTo_LockedOut();
-    PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline, STORY_RECIVED_RAVE_INVITE);
-    PreventVariableFromReversion(VAR_ALCATRAZ_STATE, alcatrazState, PRE_SPEECHSPEECH);
-    PreventVariableFromReversion(VAR_WAREHOUSE_RAVE_STATE, warehouseState, GOT_RAVE_MESSAGE);
+	PreventVariableFromReversion(VAR_STORYLINE_STATE, storyline,
+	                             STORY_RECIVED_RAVE_INVITE);
+	PreventVariableFromReversion(VAR_ALCATRAZ_STATE, alcatrazState,
+	                             PRE_SPEECHSPEECH);
+	PreventVariableFromReversion(VAR_WAREHOUSE_RAVE_STATE, warehouseState,
+	                             GOT_RAVE_MESSAGE);
 	SetWarpDestination(0, 73, 0, -1, -1);
 }
 void JumpPlayerTo_WarehouseRave()
@@ -1168,7 +1192,7 @@ void JumpPlayerTo_ImIn()
 	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, TRUE_RAID_START);
 	VarSet(VAR_TOWER_RAID_STATE, DEFEATED_BIANCA_SALESFORCETOWER);
 	AddBagItem(ITEM_MAGMA_EMBLEM, 1);
-    FlagSet(TRAINER_FLAGS_START + TRAINER_MAY_LILYCOVE_MUDKIP);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_MAY_LILYCOVE_MUDKIP);
 	SetWarpDestination(10, 18, 1, -1, -1);
 }
 void JumpPlayerTo_YouCantStopMe()
@@ -1182,8 +1206,7 @@ void JumpPlayerTo_WeCanStopYouActually()
 	JumpPlayerTo_YouCantStopMe();
 	VarSet(VAR_STORYLINE_STATE, STORY_CLEAR);
 	VarSet(VAR_TOWER_RAID_STATE, DEFEATED_ROSE_SALESFORCETOWER);
-    FlagSet(TRAINER_FLAGS_START + TRAINER_MAXIE_MAGMA_HIDEOUT);
-    FlagSet(TRAINER_FLAGS_START + TRAINER_STEVEN);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_MAXIE_MAGMA_HIDEOUT);
+	FlagSet(TRAINER_FLAGS_START + TRAINER_STEVEN);
 	SetWarpDestination(0, 80, 0, -1, -1);
 }
-
