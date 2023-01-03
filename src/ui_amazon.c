@@ -23,6 +23,7 @@
 #include "money.h"
 #include "palette.h"
 #include "party_menu.h"
+#include "region_map.h"
 #include "scanline_effect.h"
 #include "script.h"
 #include "sound.h"
@@ -1289,9 +1290,12 @@ static const u8 sRowIcon_Berries[]          = INCBIN_U8("graphics/ui_menus/amazo
 static const u8 sRowIcon_Candy[]            = INCBIN_U8("graphics/ui_menus/amazon/icon_candy.4bpp");
 static const u8 sRowIcon_Key[]              = INCBIN_U8("graphics/ui_menus/amazon/icon_key.4bpp");
 
-static const u8 sRowSelector[]      = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
-static const u8 sBuySelector[]      = INCBIN_U8("graphics/ui_menus/amazon/selector1.4bpp");
-static const u8 sOrderWindow[]      = INCBIN_U8("graphics/ui_menus/amazon/orderwindow.4bpp");
+static const u8 sRowSelector[]        = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
+static const u8 sBuySelector[]        = INCBIN_U8("graphics/ui_menus/amazon/selector0.4bpp");
+static const u8 sBuySelectorNoLeft[]  = INCBIN_U8("graphics/ui_menus/amazon/selector1.4bpp");
+static const u8 sBuySelectorNoRight[] = INCBIN_U8("graphics/ui_menus/amazon/selector2.4bpp");
+static const u8 sOrderWindow[]        = INCBIN_U8("graphics/ui_menus/amazon/orderwindow.4bpp");
+static const u8 sItemSelector[]        = INCBIN_U8("graphics/ui_menus/amazon/item_selector.4bpp");
 
 static const u8 sText_Help_Bar[]        = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
 static const u8 sText_Help_Bar_Buy[]    = _("{DPAD_UPDOWN} +1/-1 {DPAD_LEFTRIGHT} +5/-5 {A_BUTTON} Buy Now {B_BUTTON} Cancel");
@@ -1303,6 +1307,7 @@ static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥ {STR_VAR_1}");
 //static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥ {STR_VAR_1} ({STR_VAR_2}%)");
 static const u8 sText_OrderTotal[]      = _("Order Total: ¥ {STR_VAR_1}");
 static const u8 sText_ItemPrice[]      = _("¥ {STR_VAR_1}");
+static const u8 sText_DeliveryTo[]        = _("Delivery to {STR_VAR_1} ({STR_VAR_2})");
 
 
 static const u8 sText_OrderDelivered[]       = _("Order Delivered!");
@@ -1323,6 +1328,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     u16 quantity;
     u16 itemID;
     u8 droneFeePercentage;
+    u8 strArray[16];
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
@@ -1388,11 +1394,21 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
             y2 = y2 + 2;
         }
 
-        //Buy Icon
+        //Item Selector
         x = (5 * (currentItem - currentFirstShownItem)) + 4;
-        y = 5;
+        y = 4;
         x2 = (2 * (currentItem - currentFirstShownItem)) + 2;
-        BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 32, 16);
+        BlitBitmapToWindow(windowId, sItemSelector, (x*8) + x2, (y*8), 32, 24);
+
+        //Buy Icon
+        y = 5;
+        x = (5 * (currentItem - currentFirstShownItem)) + 3;
+        if(currentItem == 0)
+            BlitBitmapToWindow(windowId, sBuySelectorNoLeft, (x*8) + x2, (y*8), 48, 16);
+        else if(currentItem == itemNum[GetCurrentRow()] - 1)
+            BlitBitmapToWindow(windowId, sBuySelectorNoRight, (x*8) + x2, (y*8), 48, 16);
+        else
+            BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 48, 16);
 
         // Item Icon
         x = 6;
@@ -1549,6 +1565,20 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
 
         AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar1);
+
+        //Delivery to
+        x = 1;
+        y = 16;
+
+        GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
+
+        StringCopy(&strArray[0], gSaveBlock2Ptr->playerName);
+        str = strArray;
+        StringCopy(gStringVar2, str);
+        StringExpandPlaceholders(gStringVar4, sText_DeliveryTo);
+
+        //AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);  
 
         // Help Bar --------------------------------------------------------------------------------------------------------------------
         x = 0;
