@@ -4,17 +4,12 @@ Castro_MapScripts::
 	.byte 0
 
 Castro_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Castro_MapScripts_OnTransition
+	call Quest_BlueRobbery_HideObject_Script
 	return
 
 Castro_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, 21, TheStrikeStrikesBack_PhoneCall_Dialogue
 	.2byte 0
-
-
-Castro_MapScripts_OnTransition::
-	call Quest_BlueRobbery_HideObject_Script
-	return
 
 
 gText_Castro_PlaceholderOaklandFan::

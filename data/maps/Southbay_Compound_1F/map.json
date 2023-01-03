@@ -47,21 +47,21 @@
       "y": 9,
       "elevation": 0,
       "dest_map": "MAP_SOUTHBAY",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 6,
       "y": 9,
       "elevation": 0,
       "dest_map": "MAP_SOUTHBAY",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 7,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_SOUTHBAY_COMPOUND_2F",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

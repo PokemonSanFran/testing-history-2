@@ -71,6 +71,7 @@ script Debug_Weather{
 script Debug_Script_1{
     additem(ITEM_MASTER_BALL,5)
 }
+
 script Debug_Script_2{
     warp(MAP_MISSION,0)
 }
@@ -80,6 +81,7 @@ script Debug_Script_3{
 }
 script Debug_Script_4{
 }
+
 script Debug_Script_5{
 }
 script Debug_Script_6{

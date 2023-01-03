@@ -56,6 +56,7 @@
 #include "trainer_hill.h"
 #include "trainer_pokemon_sprites.h"
 #include "tv.h"
+#include "ui_start_menu.h"
 #include "scanline_effect.h"
 #include "wild_encounter.h"
 #include "frontier_util.h"
@@ -104,7 +105,6 @@ static void CB2_LoadMap2(void);
 static void VBlankCB_Field(void);
 static void SpriteCB_LinkPlayer(struct Sprite *);
 static void ChooseAmbientCrySpecies(void);
-static void DoMapLoadLoop(u8 *);
 static bool32 LoadMapInStepsLocal(u8 *, bool32);
 static bool32 LoadMapInStepsLink(u8 *);
 static bool32 ReturnToFieldLocal(u8 *);
@@ -168,8 +168,6 @@ static u16 KeyInterCB_DeferToEventScript(u32);
 static u16 GetDirectionForDpadKey(u16);
 static void CB1_OverworldLink(void);
 static void SetKeyInterceptCallback(u16 (*func)(u32));
-static void SetFieldVBlankCallback(void);
-static void FieldClearVBlankHBlankCallbacks(void);
 static void TransitionMapMusic(void);
 static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *, u16, u8);
 static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *, u8, u16, u8);
@@ -676,9 +674,9 @@ void SetWarpDestinationToDynamicWarp(u8 unusedWarpId)
 
 void SetWarpDestinationToHealLocation(u8 healLocationId)
 {
-    const struct HealLocation *warp = GetHealLocation(healLocationId);
-    if (warp)
-        SetWarpDestination(warp->group, warp->map, WARP_ID_NONE, warp->x, warp->y);
+    const struct HealLocation *healLocation = GetHealLocation(healLocationId);
+    if (healLocation)
+        SetWarpDestination(healLocation->group, healLocation->map, WARP_ID_NONE, healLocation->x, healLocation->y);
 }
 
 void SetWarpDestinationToLastHealLocation(void)
@@ -746,9 +744,9 @@ void SetContinueGameWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)
 
 void SetContinueGameWarpToHealLocation(u8 healLocationId)
 {
-    const struct HealLocation *warp = GetHealLocation(healLocationId);
-    if (warp)
-        SetWarpData(&gSaveBlock1Ptr->continueGameWarp, warp->group, warp->map, WARP_ID_NONE, warp->x, warp->y);
+    const struct HealLocation *healLocation = GetHealLocation(healLocationId);
+    if (healLocation)
+        SetWarpData(&gSaveBlock1Ptr->continueGameWarp, healLocation->group, healLocation->map, WARP_ID_NONE, healLocation->x, healLocation->y);
 }
 
 void SetContinueGameWarpToDynamicWarp(int unused)
@@ -828,8 +826,8 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     CopySecondaryTilesetToVramUsingHeap(gMapHeader.mapLayout);
     LoadSecondaryTilesetPalette(gMapHeader.mapLayout);
 
-    for (paletteIndex = 6; paletteIndex < 13; paletteIndex++)
-        ApplyWeatherGammaShiftToPal(paletteIndex);
+    for (paletteIndex = NUM_PALS_IN_PRIMARY; paletteIndex < NUM_PALS_TOTAL; paletteIndex++)
+        ApplyWeatherColorMapToPal(paletteIndex);
 
     InitSecondaryTilesetAnimation();
     UpdateLocationHistoryForRoamer();
@@ -1681,6 +1679,12 @@ void CB2_ReturnToFieldWithOpenMenu(void)
     CB2_ReturnToField();
 }
 
+void CB2_ReturnToUIMenu(void)
+{
+    FieldClearVBlankHBlankCallbacks();
+	Menu_Init(CB2_ReturnToField);
+}
+
 void CB2_ReturnToFieldContinueScript(void)
 {
     FieldClearVBlankHBlankCallbacks();
@@ -1760,7 +1764,7 @@ void CB2_ContinueSavedGame(void)
     }
 }
 
-static void FieldClearVBlankHBlankCallbacks(void)
+void FieldClearVBlankHBlankCallbacks(void)
 {
     if (UsedPokemonCenterWarp() == TRUE)
         CloseLink();
@@ -1783,7 +1787,7 @@ static void FieldClearVBlankHBlankCallbacks(void)
     SetHBlankCallback(NULL);
 }
 
-static void SetFieldVBlankCallback(void)
+void SetFieldVBlankCallback(void)
 {
     SetVBlankCallback(VBlankCB_Field);
 }
@@ -2070,7 +2074,7 @@ static bool32 ReturnToFieldLink(u8 *state)
     return FALSE;
 }
 
-static void DoMapLoadLoop(u8 *state)
+void DoMapLoadLoop(u8 *state)
 {
     while (!LoadMapInStepsLocal(state, FALSE));
 }

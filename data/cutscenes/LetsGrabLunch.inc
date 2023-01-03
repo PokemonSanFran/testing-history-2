@@ -158,12 +158,14 @@ LetsGrabLunch_InteractArcherDiner_Dialogue::
 	setvar VAR_MUGSHOT, MUGSHOT_HUGH
 	callnative DrawMugshot
 	msgbox gText_LetsGrabLunch_ImJustPlanning
-	multichoicedefault 18, 6, MULTI_LUNCH_WARP, 1, TRUE
+	multichoicedefault 18, 6, MULTI_LUNCH_WARP, 1, FALSE
 	switch VAR_RESULT
 	case 0, LetsGrabLunch_InteractArcherDiner_Dialogue_2
 	case 1, LetsGrabLunch_InteractArcherDiner_Dialogue_3
 	case 2, LetsGrabLunch_InteractArcherDiner_Dialogue_4
 	case 3, LetsGrabLunch_InteractArcherDiner_Dialogue_5
+	case -1, LetsGrabLunch_InteractArcherDiner_Dialogue_6
+LetsGrabLunch_InteractArcherDiner_Dialogue_6:
 	goto LetsGrabLunch_CloseMenu
 	return
 

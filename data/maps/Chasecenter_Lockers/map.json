@@ -99,21 +99,21 @@
       "y": 9,
       "elevation": 0,
       "dest_map": "MAP_CHASECENTER_ENTRANCE",
-      "dest_warp_id": 2
+      "dest_warp_id": "2"
     },
     {
       "x": 10,
       "y": 9,
       "elevation": 0,
       "dest_map": "MAP_CHASECENTER_ENTRANCE",
-      "dest_warp_id": 2
+      "dest_warp_id": "2"
     },
     {
       "x": 10,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_CHASECENTER_ARENA",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

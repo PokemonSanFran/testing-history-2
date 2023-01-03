@@ -295,6 +295,11 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor1;
 	}
 
+    else if ((storyline == 0) && !FlagGet(FLAG_SYS_QUEST_MENU_GET))
+    {
+        return gText_PlayersAdventure_Flavor0;
+    }
+
 	else
 	{
 		return gText_Quest_PlayersAdventure_Desc;

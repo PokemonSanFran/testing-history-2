@@ -172,13 +172,14 @@ script LetsGrabLunch_InteractArcherDiner_Dialogue {
         callnative(DrawMugshot)
         msgbox(gText_LetsGrabLunch_ImJustPlanning)
 
-        multichoicedefault(18,6,MULTI_LUNCH_WARP,1,TRUE)
+        multichoicedefault(18,6,MULTI_LUNCH_WARP,1,FALSE)
 
         switch (var(VAR_RESULT)){
             case 0: goto(LetsGrabLunch_Chinatown)   
             case 1: goto(LetsGrabLunch_Marin)   
             case 2: goto(LetsGrabLunch_Treasureisland)   
             case 3: goto(LetsGrabLunch_Haightashbury)
+            case -1:
             default: goto(LetsGrabLunch_CloseMenu)
         }
 }

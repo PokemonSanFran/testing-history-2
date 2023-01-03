@@ -4,6 +4,7 @@
 #include "sprite.h"
 #include "gba/m4a_internal.h"
 #include "clear_save_data_menu.h"
+#include "debug_start.h"
 #include "decompress.h"
 #include "event_data.h"
 #include "intro.h"
@@ -21,6 +22,8 @@
 #include "graphics.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "naming_screen.h"
+#include "random.h"
 
 #define VERSION_BANNER_RIGHT_TILEOFFSET 64
 #define VERSION_BANNER_LEFT_X 98
@@ -29,6 +32,7 @@
 #define VERSION_BANNER_Y_GOAL 66
 #define START_BANNER_X 128
 
+#define DEBUG_START (R_BUTTON | SELECT_BUTTON)
 #define CLEAR_SAVE_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_UP)
 #define RESET_RTC_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_LEFT)
 #define A_B_START_SELECT (A_BUTTON | B_BUTTON | START_BUTTON | SELECT_BUTTON)
@@ -39,6 +43,7 @@ static void Task_TitleScreenPhase2(u8);
 static void Task_TitleScreenPhase3(u8);
 static void CB2_GoToMainMenu(void);
 static void CB2_GoToClearSaveDataScreen(void);
+static void CB2_GoToDebugStartScreen(void);
 static void CB2_GoToResetRtcScreen(void);
 static void CB2_GoToCopyrightScreen(void);
 static void UpdateLegendaryMarkingColor(u8);
@@ -636,6 +641,10 @@ static void Task_TitleScreenPhase1(u8 taskId)
         gTasks[taskId].tSkipToNext = TRUE;
         gTasks[taskId].tCounter = 0;
     }
+    else if (JOY_HELD(DEBUG_START) == DEBUG_START)
+    {
+        SetMainCallback2(CB2_GoToDebugStartScreen);
+    }
 
     if (gTasks[taskId].tCounter != 0)
     {
@@ -733,6 +742,11 @@ static void Task_TitleScreenPhase3(u8 taskId)
     {
         SetMainCallback2(CB2_GoToClearSaveDataScreen);
     }
+    //PSF TODO Remove before commerical release
+    else if (JOY_HELD(DEBUG_START) == DEBUG_START)
+    {
+        SetMainCallback2(CB2_GoToDebugStartScreen);
+    }
     else if (JOY_HELD(RESET_RTC_BUTTON_COMBO) == RESET_RTC_BUTTON_COMBO
       && CanResetRTC() == TRUE)
     {
@@ -776,6 +790,13 @@ static void CB2_GoToClearSaveDataScreen(void)
 {
     if (!UpdatePaletteFade())
         SetMainCallback2(CB2_InitClearSaveDataScreen);
+}
+
+static void CB2_GoToDebugStartScreen(void)
+{
+    if (!UpdatePaletteFade())
+        NewGameBirchSpeech_SetDefaultPlayerName(Random() % 20);
+        SetMainCallback2(CB2_InitDebugStartScreen);
 }
 
 static void CB2_GoToResetRtcScreen(void)

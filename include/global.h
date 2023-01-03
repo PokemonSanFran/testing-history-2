@@ -476,6 +476,115 @@ struct RankingHall2P
 // quest menu
 #include "constants/quests.h"
 
+//For the Options Menu
+#define NUM_OF_PRESET_OPTIONS 5 //Number of different options in the hub options
+#define NUM_OPTIONS_GAME_SETTINGS   7
+#define NUM_OPTIONS_BATTLE_SETTINGS 25
+#define NUM_OPTIONS_MUSIC_SETTINGS  11
+#define NUM_OPTIONS_VISUAL_SETTINGS 6
+#define NUM_OPTIONS_RANDOM_SETTINGS 17
+#define NUM_MAX_SETTINGS NUM_OPTIONS_BATTLE_SETTINGS
+
+enum GameOptionsID
+{
+    GAME_OPTIONS_PRESET,
+    GAME_OPTIONS_SAVE_BOOT,
+    GAME_OPTIONS_BUTTON_MODE,
+    GAME_OPTIONS_SAVE_BEHAVIOR,
+    GAME_OPTIONS_RUN,
+    GAME_OPTIONS_PUZZLE_DIFFICULTY,
+    GAME_OPTIONS_ITEM_SORT,
+};
+
+enum BattleOptionsID
+{
+    BATTLE_OPTIONS_PRESET,
+    BATTLE_OPTIONS_EXPERIENCE,
+    BATTLE_OPTIONS_EXP_MULTIPLIER,
+    BATTLE_OPTIONS_LEVEL,
+    BATTLE_OPTIONS_SWITCH_STYLE,
+    BATTLE_OPTIONS_TAKE_WILD_ITEMS,
+    BATTLE_OPTIONS_LAST_USED_BALL,
+    BATTLE_OPTIONS_QUICK_RUN,
+    BATTLE_OPTIONS_BATTLE_DIFFICULTY,
+    BATTLE_OPTIONS_FAINTED_MON,
+    BATTLE_OPTIONS_FIRST_POKEMON_CATCH,
+    BATTLE_OPTIONS_NICKNAME,
+    BATTLE_OPTIONS_WITHEOUT,
+    BATTLE_OPTIONS_ITEM_HEALING,
+    BATTLE_OPTIONS_CENTER_HEALING,
+    BATTLE_OPTIONS_MOVE_HEALING,
+    BATTLE_OPTIONS_BAG_ITEMS,
+    BATTLE_OPTIONS_OPPONENTS_ITEMS,
+    BATTLE_OPTIONS_BASE_STAT_EQUALIZER,
+    BATTLE_OPTIONS_ONE_TYPE_CHALLENGE,
+    BATTLE_OPTIONS_TYPE_ICONS,
+    BATTLE_OPTIONS_ANIMATIONS,
+    BATTLE_OPTIONS_INTRO,
+    BATTLE_OPTIONS_HP_SPEED,
+    BATTLE_OPTIONS_EXP_SPEED,
+};
+
+enum VisualOptionsID
+{
+    VISUAL_OPTIONS_PRESET,
+    VISUAL_OPTIONS_UNITS,
+    VISUAL_OPTIONS_TEXT_SPEED,
+    VISUAL_OPTIONS_FRAME_TYPE,
+    VISUAL_OPTIONS_FONT_SWITCHER,
+    VISUAL_OPTIONS_COLOR,
+};
+
+enum MusiclOptionsID
+{
+    MUSIC_OPTIONS_PRESET,
+    MUSIC_OPTIONS_SOUND_EFFECT,
+    MUSIC_OPTIONS_MUSIC,
+    MUSIC_OPTIONS_SPEAKER,
+    MUSIC_OPTIONS_SURF,
+    MUSIC_OPTIONS_BIKE,
+    MUSIC_OPTIONS_WILD,
+    MUSIC_OPTIONS_TRAINER,
+    MUSIC_OPTIONS_GYM,
+    MUSIC_OPTIONS_TOURNAMENT,
+    MUSIC_OPTIONS_CHAMPION,
+};
+
+enum RandomOptionsID
+{
+    RANDOM_OPTIONS_PRESET,
+    RANDOM_OPTIONS_STARTER,
+    RANDOM_OPTIONS_WILD_BATTLE,
+    RANDOM_OPTIONS_TRAINER_BATTLE,
+    RANDOM_OPTIONS_EVOLUTION,
+    RANDOM_OPTIONS_EVOLUTION_METHOD,
+    RANDOM_OPTIONS_TYPE_EFFECTIVENESS,
+    RANDOM_OPTIONS_BASE_STATS,
+    RANDOM_OPTIONS_TYPES,
+    RANDOM_OPTIONS_ABILITIES,
+    RANDOM_OPTIONS_LEVEL_UP_MOVES,
+    RANDOM_OPTIONS_TMS,
+    RANDOM_OPTIONS_MOVE_TUTORS,
+    RANDOM_OPTIONS_LEARNSETS,
+    RANDOM_OPTIONS_ITEMS,
+    RANDOM_OPTIONS_STATIC_ENCOUNTERS,
+    RANDOM_OPTIONS_TRAINERS,
+};
+
+enum OptionsMenuColorID
+{
+    OPTIONS_MENU_COLOR_RED,
+    OPTIONS_MENU_COLOR_GREEN,
+    OPTIONS_MENU_COLOR_BLUE,
+    OPTIONS_MENU_COLOR_YELLOW,
+    OPTIONS_MENU_COLOR_BLACK,
+    OPTIONS_MENU_COLOR_WHITE,
+    OPTIONS_MENU_COLOR_PLATINUM,
+    OPTIONS_MENU_COLOR_SCARLET,
+    OPTIONS_MENU_COLOR_VIOLET,
+    OPTIONS_MENU_COLOR_CUSTOM,
+};
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -486,12 +595,12 @@ struct SaveBlock2
     /*0x10*/ u8 playTimeMinutes;
     /*0x11*/ u8 playTimeSeconds;
     /*0x12*/ u8 playTimeVBlanks;
-    /*0x13*/ u8 optionsButtonMode;  // OPTIONS_BUTTON_MODE_[NORMAL/LR/L_EQUALS_A]
-    /*0x14*/ u16 optionsTextSpeed:3; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST]
-             u16 optionsWindowFrameType:5; // Specifies one of the 20 decorative borders for text boxes
-             u16 optionsSound:1; // OPTIONS_SOUND_[MONO/STEREO]
-             u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
-             u16 optionsBattleSceneOff:1; // whether battle animations are disabled
+    /*0x13*/ u8 optionsButtonMode;  // OPTIONS_BUTTON_MODE_[NORMAL/LR/L_EQUALS_A]                           Replaced by optionsGame[GAME_OPTIONS_BUTTON_MODE]
+    /*0x14*/ u16 optionsTextSpeed:3; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST]                                  Replaced by optionsVisual[VISUAL_OPTIONS_TEXT_SPEED]
+             u16 optionsWindowFrameType:5; // Specifies one of the 20 decorative borders for text boxes     Replaced by optionsVisual[VISUAL_OPTIONS_FRAME_TYPE]
+             u16 optionsSound:1; // OPTIONS_SOUND_[MONO/STEREO]                                             Replaced by optionsMusic[MUSIC_OPTIONS_SPEAKER]
+             u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]                                  Replaced by optionsBattle[BATTLE_OPTIONS_SWITCH_STYLE]
+             u16 optionsBattleSceneOff:1; // whether battle animations are disabled                         Replaced by optionsBattle[BATTLE_OPTIONS_ANIMATIONS]
              u16 regionMapZoom:1; // whether the map is zoomed in
     /*0x18*/ struct Pokedex pokedex;
     /*0x90*/ u8 filler_90[0x8];
@@ -511,11 +620,17 @@ struct SaveBlock2
 #define QUEST_FLAGS_COUNT ROUND_BITS_TO_BYTES(QUEST_COUNT)
 #define SUB_FLAGS_COUNT ROUND_BITS_TO_BYTES(SUB_QUEST_COUNT)
 #define QUEST_STATES 5 //Number of different quest states tracked in the saveblock
-
+#define NUM_TOTAL_APPS 10 //Number of Apps in the Start Menu, this is used for the moving app mechanic
     u8 savedQuestMode;
     u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
     u8 subQuests[SUB_FLAGS_COUNT];
    /*0x64C*/ struct BattleFrontier frontier;
+    u8 startMenuAppIndex[NUM_TOTAL_APPS];
+    u8 optionsGame[NUM_OPTIONS_GAME_SETTINGS];
+    u8 optionsBattle[NUM_OPTIONS_BATTLE_SETTINGS];
+    u8 optionsVisual[NUM_OPTIONS_VISUAL_SETTINGS];
+    u8 optionsMusic[NUM_OPTIONS_MUSIC_SETTINGS];
+    u8 optionsRandom[NUM_OPTIONS_RANDOM_SETTINGS];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

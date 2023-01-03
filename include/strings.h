@@ -976,6 +976,7 @@ extern const u8 gText_BootedUpTM[];
 extern const u8 gText_TMHMContainedVar1[];
 extern const u8 gText_PlayerUsedVar2[];
 extern const u8 gText_RepelEffectsLingered[];
+extern const u8 gText_LureEffectsLingered[];
 extern const u8 gText_UsedVar2WildLured[];
 extern const u8 gText_UsedVar2WildRepelled[];
 extern const u8 gText_BoxFull[];
@@ -3128,4 +3129,9 @@ extern const u8 gText_Amazon[];
 extern const u8 gText_PokemonPsychoShift[];
 extern const u8 gText_PokemonEffectSpore[];
 
+//Debug Start
+extern const u8 gText_WhereWeDropping[];
+extern const u8 gText_StarterChoice[];
+extern const u8 gText_BeforeFirst[];
+extern const u8 gText_AfterFirst[];
 #endif // GUARD_STRINGS_H

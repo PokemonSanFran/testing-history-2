@@ -278,7 +278,7 @@ static void ReadKeys(void)
     gMain.heldKeys = gMain.heldKeysRaw;
 
     // Remap L to A if the L=A option is enabled.
-    if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
+    if (gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_BUTTON_MODE] == OPTIONS_BUTTON_MODE_L_EQUALS_A)
     {
         if (JOY_NEW(L_BUTTON))
             gMain.newKeys |= A_BUTTON;
@@ -410,9 +410,7 @@ static void IntrDummy(void)
 static void WaitForVBlank(void)
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
-
-    while (!(gMain.intrCheck & INTR_FLAG_VBLANK))
-        ;
+    VBlankIntrWait();
 }
 
 void SetTrainerHillVBlankCounter(u32 *counter)

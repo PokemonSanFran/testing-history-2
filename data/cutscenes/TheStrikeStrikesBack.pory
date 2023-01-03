@@ -28,6 +28,13 @@ script TheStrikeStrikesBack_HideObject_Script {
     return
 }
 
+script TheStrikeStrikesBack_ShowCrowd_Script{
+    setflag(FLAG_HIDE_ROSE)
+    setflag(FLAG_HIDE_ROCKET_POLICE)
+    setflag(FLAG_HIDE_OAK)
+    setflag(FLAG_HIDE_BIANCA)
+}
+
 script TheStrikeStrikesBack_UnblockConstruction_Script {
     if (var(VAR_CONSTRUCTION_STRIKE_STATE)) {
         setmetatile(21,19,0x211,FALSE)
@@ -74,7 +81,7 @@ script TheStrikeStrikesBack_CrowdFacesNorth_Script {
         waitmovement(0)
 }
 
-script TheStrikeStrikesBack_PhoneCall_Dialogue {
+script TheStrikeStrikesBack_PhoneCall_Dialogue{
     lock
         setvar(VAR_STORYLINE_STATE,STORY_CALLED_TO_CONSTRUCTION)
         setvar(VAR_CONSTRUCTION_STRIKE_STATE,STRIKE_HAS_BEGUN)

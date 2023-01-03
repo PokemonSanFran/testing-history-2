@@ -148,7 +148,6 @@ static void PrintDetailsForCancel();
 static void GenerateAndPrintQuestDetails(s32 questId);
 static void GenerateQuestLocation(s32 questId);
 static void PrintQuestLocation(s32 questId);
-static void GenerateQuestFlavorText(s32 questId);
 static void UpdateQuestDesc(s32 questId);
 static void UpdateQuestDoneDesc(s32 questId);
 static const u8 *GetQuestDesc(s32 questId);
@@ -4134,6 +4133,22 @@ u8 GenerateList(bool8 isFiltered)
 	return numRow + offset;
 }
 
+u8 getFirstFavoriteQuest(){
+	u8 i;
+
+	for(i = 0; i < SUB_QUEST_COUNT; i++){
+		if(QuestMenu_GetSetQuestState(i, FLAG_GET_FAVORITE) && QuestMenu_GetSetQuestState(i,FLAG_GET_ACTIVE))
+			return i;
+	}
+
+	for(i = 0; i < SUB_QUEST_COUNT; i++){
+		if(QuestMenu_GetSetQuestState(i,FLAG_GET_ACTIVE))
+			return i;
+	}
+	
+	return SUB_QUEST_COUNT;
+}
+
 static void AssignCancelNameAndId(u8 numRow)
 {
 	if (IsSubsavedQuestMode()) {
@@ -5213,7 +5228,7 @@ void Task_QuestMenu_OpenFromStartMenu(u8 taskId)
 	s16 *data = gTasks[taskId].data;
 	if (!gPaletteFade.active) {
 		CleanupOverworldWindowsAndTilemaps();
-		QuestMenu_Init(tItemPcParam, CB2_ReturnToFieldWithOpenMenu);
+		QuestMenu_Init(tItemPcParam, CB2_ReturnToUIMenu); //CB2_ReturnToFieldWithOpenMenu
 		DestroyTask(taskId);
 	}
 }

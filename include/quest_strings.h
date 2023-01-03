@@ -1268,6 +1268,7 @@ extern const u8 gText_Quest_Recruitlocalartists_Sub3_Desc[];
 extern const u8 gText_Quest_Recruitlocalartists_Sub3_Map[];
 
 //quest flavor
+extern const u8 gText_PlayersAdventure_Flavor0[];
 extern const u8 gText_PlayersAdventure_Flavor1[];
 extern const u8 gText_PlayersAdventure_Flavor2[];
 extern const u8 gText_PlayersAdventure_Flavor3[];

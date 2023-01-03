@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "left",
+      "map": "MAP_PSFROUTE19",
       "offset": 9,
-      "map": "MAP_PSFROUTE19"
+      "direction": "left"
     },
     {
-      "direction": "right",
+      "map": "MAP_PSFROUTE8",
       "offset": 0,
-      "map": "MAP_PSFROUTE8"
+      "direction": "right"
     }
   ],
   "object_events": [
@@ -36,7 +36,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GroupOfAssholesAppears_GruntInteract_Script",
-      "flag": "0x501"
+      "flag": "TRAINER_FLAGS_START+TRAINER_IHSAN_AND_EMMITT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
@@ -49,7 +49,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GroupOfAssholesAppears_GruntInteract_Script",
-      "flag": "0x501"
+      "flag": "TRAINER_FLAGS_START+TRAINER_IHSAN_AND_EMMITT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
@@ -62,7 +62,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GroupOfAssholesAppears_GruntInteract_Script",
-      "flag": "0x501"
+      "flag": "TRAINER_FLAGS_START+TRAINER_IHSAN_AND_EMMITT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
@@ -75,7 +75,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GroupOfAssholesAppears_GruntInteract_Script",
-      "flag": "0x501"
+      "flag": "TRAINER_FLAGS_START+TRAINER_IHSAN_AND_EMMITT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
@@ -88,7 +88,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GroupOfAssholesAppears_GruntInteract_Script",
-      "flag": "0x501"
+      "flag": "TRAINER_FLAGS_START+TRAINER_IHSAN_AND_EMMITT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
@@ -101,7 +101,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GroupOfAssholesAppears_GruntInteract_Script",
-      "flag": "0x501"
+      "flag": "TRAINER_FLAGS_START+TRAINER_IHSAN_AND_EMMITT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_DEVON_EMPLOYEE",

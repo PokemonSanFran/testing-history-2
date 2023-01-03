@@ -1,7 +1,5 @@
 TheStorySoFar_ExplainExhibit_Dialogue::
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox gText_TheStorySoFar_WelcomeToExhibit
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
@@ -59,65 +57,72 @@ TheStorySoFar_Event_Script_6:
 
 TheStorySoFar_CheckNumberDefeated_Script::
 	special CheckNumAlcatrazExhibitDefeated
+	compare VAR_RESULT, 5
+	goto_if_gt TheStorySoFar_CheckNumberDefeated_Script_2
+TheStorySoFar_CheckNumberDefeated_Script_1:
 	msgbox gText_TheStorySoFar_YoureNotQuiteDone
 	switch VAR_RESULT
-	case 0, TheStorySoFar_CheckNumberDefeated_Script_3
-	case 1, TheStorySoFar_CheckNumberDefeated_Script_4
-	case 2, TheStorySoFar_CheckNumberDefeated_Script_5
-	case 3, TheStorySoFar_CheckNumberDefeated_Script_6
-	case 4, TheStorySoFar_CheckNumberDefeated_Script_7
-	case 5, TheStorySoFar_CheckNumberDefeated_Script_8
-TheStorySoFar_CheckNumberDefeated_Script_1:
+	case 0, TheStorySoFar_CheckNumberDefeated_Script_6
+	case 1, TheStorySoFar_CheckNumberDefeated_Script_7
+	case 2, TheStorySoFar_CheckNumberDefeated_Script_8
+	case 3, TheStorySoFar_CheckNumberDefeated_Script_9
+	case 4, TheStorySoFar_CheckNumberDefeated_Script_10
+	case 5, TheStorySoFar_CheckNumberDefeated_Script_11
+TheStorySoFar_CheckNumberDefeated_Script_4:
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 37
-	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_11
-TheStorySoFar_CheckNumberDefeated_Script_9:
+	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_14
+TheStorySoFar_CheckNumberDefeated_Script_12:
 	closemessage
 	release
 	end
 
-TheStorySoFar_CheckNumberDefeated_Script_3:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat6
-	goto TheStorySoFar_CheckNumberDefeated_Script_1
-
-TheStorySoFar_CheckNumberDefeated_Script_4:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat5
-	goto TheStorySoFar_CheckNumberDefeated_Script_1
-
-TheStorySoFar_CheckNumberDefeated_Script_5:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat4
+TheStorySoFar_CheckNumberDefeated_Script_2:
+	goto TheStorySoFar_AwardPlayer_Script
 	goto TheStorySoFar_CheckNumberDefeated_Script_1
 
 TheStorySoFar_CheckNumberDefeated_Script_6:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat3
-	goto TheStorySoFar_CheckNumberDefeated_Script_1
+	msgbox gText_TheStorySoFar_YouNeedToDefeat6
+	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_7:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat2
-	goto TheStorySoFar_CheckNumberDefeated_Script_1
+	msgbox gText_TheStorySoFar_YouNeedToDefeat5
+	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_8:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat1
-	goto TheStorySoFar_CheckNumberDefeated_Script_1
+	msgbox gText_TheStorySoFar_YouNeedToDefeat4
+	goto TheStorySoFar_CheckNumberDefeated_Script_4
+
+TheStorySoFar_CheckNumberDefeated_Script_9:
+	msgbox gText_TheStorySoFar_YouNeedToDefeat3
+	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_10:
-	msgbox gText_TheStorySoFar_AreYouSure, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_15
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-	call ResetAlcatrazExhibit_Script
-TheStorySoFar_CheckNumberDefeated_Script_14:
-	waitmovement 0
-	goto TheStorySoFar_CheckNumberDefeated_Script_9
+	msgbox gText_TheStorySoFar_YouNeedToDefeat2
+	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_11:
-	compare VAR_TEMP_1, 60
-	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_10
-	goto TheStorySoFar_CheckNumberDefeated_Script_9
+	msgbox gText_TheStorySoFar_YouNeedToDefeat1
+	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
-TheStorySoFar_CheckNumberDefeated_Script_15:
+TheStorySoFar_CheckNumberDefeated_Script_13:
+	msgbox gText_TheStorySoFar_AreYouSure, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_18
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	call ResetAlcatrazExhibit_Script
+TheStorySoFar_CheckNumberDefeated_Script_17:
+	waitmovement 0
+	goto TheStorySoFar_CheckNumberDefeated_Script_12
+
+TheStorySoFar_CheckNumberDefeated_Script_14:
+	compare VAR_TEMP_1, 60
+	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_13
+	goto TheStorySoFar_CheckNumberDefeated_Script_12
+
+TheStorySoFar_CheckNumberDefeated_Script_18:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-	goto TheStorySoFar_CheckNumberDefeated_Script_14
+	goto TheStorySoFar_CheckNumberDefeated_Script_17
 
 
 TheStorySoFar_AwardPlayer_Script::

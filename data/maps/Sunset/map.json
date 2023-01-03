@@ -157,14 +157,14 @@
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_SUNSET_APARTMENT",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 15,
       "y": 13,
       "elevation": 0,
       "dest_map": "MAP_SUNSET_SABRINA_HOUSE",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

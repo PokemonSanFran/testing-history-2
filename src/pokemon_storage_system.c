@@ -1668,18 +1668,10 @@ static void FieldTask_ReturnToPcMenu(void)
     MainCallback vblankCb = gMain.vblankCallback;
 
     SetVBlankCallback(NULL);
-    if (!FlagGet(DEBUG_FLAG_PC_FROM_DEBUG_MENU))
-    {
-        taskId = CreateTask(Task_PCMainMenu, 80);
-        gTasks[taskId].tState = 0;
-        gTasks[taskId].tSelectedOption = sPreviousBoxOption;
-        Task_PCMainMenu(taskId);
-    }
-    else
-    {
-        FlagClear(DEBUG_FLAG_PC_FROM_DEBUG_MENU);
-        ScriptContext_Enable();
-    }
+    taskId = CreateTask(Task_PCMainMenu, 80);
+    gTasks[taskId].tState = 0;
+    gTasks[taskId].tSelectedOption = sPreviousBoxOption;
+    Task_PCMainMenu(taskId);
     SetVBlankCallback(vblankCb);
     FadeInFromBlack();
 }
@@ -7182,7 +7174,7 @@ static u8 InBoxInput_Normal(void)
         if (JOY_NEW(B_BUTTON))
             return INPUT_PRESSED_B;
 
-        if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR)
+        if (gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_BUTTON_MODE] == OPTIONS_BUTTON_MODE_LR)
         {
             if (JOY_HELD(L_BUTTON))
                 return INPUT_SCROLL_LEFT;
@@ -7351,7 +7343,7 @@ static u8 InBoxInput_MovingMultiple(void)
     }
     else
     {
-        if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR)
+        if (gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_BUTTON_MODE] == OPTIONS_BUTTON_MODE_LR)
         {
             if (JOY_HELD(L_BUTTON))
                 return INPUT_SCROLL_LEFT;
@@ -7519,7 +7511,7 @@ static u8 HandleInput_OnBox(void)
         if (JOY_HELD(DPAD_RIGHT))
             return INPUT_SCROLL_RIGHT;
 
-        if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR)
+        if (gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_BUTTON_MODE] == OPTIONS_BUTTON_MODE_LR)
         {
             if (JOY_HELD(L_BUTTON))
                 return INPUT_SCROLL_LEFT;
@@ -8880,14 +8872,14 @@ static void TakeItemFromMon(u8 cursorArea, u8 cursorPos)
     if (cursorArea == CURSOR_AREA_IN_BOX)
     {
         SetCurrentBoxMonData(cursorPos, MON_DATA_HELD_ITEM, &itemId);
-        SetBoxMonIconObjMode(cursorPos, 1);
+        SetBoxMonIconObjMode(cursorPos, ST_OAM_OBJ_BLEND);
         SetMonFormPSS(&gPokemonStoragePtr->boxes[StorageGetCurrentBox()][cursorPos]);
     }
     else
     {
         struct Pokemon *mon = &gPlayerParty[cursorPos];
         SetMonData(&gPlayerParty[cursorPos], MON_DATA_HELD_ITEM, &itemId);
-        SetPartyMonIconObjMode(cursorPos, 1);
+        SetPartyMonIconObjMode(cursorPos, ST_OAM_OBJ_BLEND);
         SetMonFormPSS(&mon->box);
     }
 
@@ -8952,14 +8944,14 @@ static void GiveItemToMon(u8 cursorArea, u8 cursorPos)
     if (cursorArea == CURSOR_AREA_IN_BOX)
     {
         SetCurrentBoxMonData(cursorPos, MON_DATA_HELD_ITEM, &sStorage->movingItemId);
-        SetBoxMonIconObjMode(cursorPos, 0);
+        SetBoxMonIconObjMode(cursorPos, ST_OAM_OBJ_NORMAL);
         SetMonFormPSS(&gPokemonStoragePtr->boxes[StorageGetCurrentBox()][cursorPos]);
     }
     else
     {
         struct Pokemon *mon = &gPlayerParty[cursorPos];
         SetMonData(&gPlayerParty[cursorPos], MON_DATA_HELD_ITEM, &sStorage->movingItemId);
-        SetPartyMonIconObjMode(cursorPos, 0);
+        SetPartyMonIconObjMode(cursorPos, ST_OAM_OBJ_NORMAL);
         SetMonFormPSS(&mon->box);
     }
 }
@@ -8979,14 +8971,14 @@ static void MoveItemFromMonToBag(u8 cursorArea, u8 cursorPos)
     if (cursorArea == CURSOR_AREA_IN_BOX)
     {
         SetCurrentBoxMonData(cursorPos, MON_DATA_HELD_ITEM, &itemId);
-        SetBoxMonIconObjMode(cursorPos, 1);
+        SetBoxMonIconObjMode(cursorPos, ST_OAM_OBJ_BLEND);
         SetMonFormPSS(&gPokemonStoragePtr->boxes[StorageGetCurrentBox()][cursorPos]);
     }
     else
     {
         struct Pokemon *mon = &gPlayerParty[cursorPos];
         SetMonData(&gPlayerParty[cursorPos], MON_DATA_HELD_ITEM, &itemId);
-        SetPartyMonIconObjMode(cursorPos, 1);
+        SetPartyMonIconObjMode(cursorPos, ST_OAM_OBJ_BLEND);
         SetMonFormPSS(&mon->box);
     }
 }

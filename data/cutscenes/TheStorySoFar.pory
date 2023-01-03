@@ -4,8 +4,6 @@ const FLAG_HIDE_MALVA = FLAG_TEMP_2
 
 script TheStorySoFar_ExplainExhibit_Dialogue {
     lock
-        applymovement(PLAYER,Common_Movement_FaceRight)
-        waitmovement(PLAYER)
         msgbox(gText_TheStorySoFar_WelcomeToExhibit)
         closemessage
         applymovement(PLAYER,Common_Movement_WalkUp)
@@ -41,6 +39,9 @@ script TheStorySoFar_Event_Script {
 
 script TheStorySoFar_CheckNumberDefeated_Script {
     special(CheckNumAlcatrazExhibitDefeated)
+        if (var(VAR_RESULT) > 5){
+            goto(TheStorySoFar_AwardPlayer_Script)
+        }
         msgbox(gText_TheStorySoFar_YoureNotQuiteDone)
 
         switch (var(VAR_RESULT)) {

@@ -6,6 +6,7 @@ Treasureisland_MapScripts::
 Treasureisland_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call LetsGrabLunch_HideArcher_Outside_Script
 	call Quest_Restoretreasureisland_HideCilan_Outside_Script
+	call LetsGrabLunch_CheckRestorationProgress_Script
 	return
 
 Treasureisland_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

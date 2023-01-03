@@ -11,7 +11,7 @@ Lakemerritt_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 Lakemerritt_ObjectVisibility_Script::
 	call Manhunt_HideBianca_Script
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ARCHIE
-	goto_if_set FLAG_TIMELINE_TRUE, Lakemerritt_ObjectVisibility_Script_10
+	goto_if_set FLAG_TIMELINE_TRUE, Lakemerritt_ObjectVisibility_Script_11
 Lakemerritt_ObjectVisibility_Script_8:
 	goto_if_set FLAG_TIMELINE_FALSE, Lakemerritt_ObjectVisibility_Script_7
 Lakemerritt_ObjectVisibility_Script_6:
@@ -35,8 +35,13 @@ Lakemerritt_ObjectVisibility_Script_7:
 	goto Lakemerritt_ObjectVisibility_Script_6
 
 Lakemerritt_ObjectVisibility_Script_10:
+	compare VAR_MASK_OFF_STATE, DEFEATED_MASK_OFF_GIOVANNI
+	goto_if_lt Lakemerritt_ObjectVisibility_Script_2
+	goto Lakemerritt_ObjectVisibility_Script_8
+
+Lakemerritt_ObjectVisibility_Script_11:
 	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_3
-	goto_if_gt Lakemerritt_ObjectVisibility_Script_2
+	goto_if_gt Lakemerritt_ObjectVisibility_Script_10
 	goto Lakemerritt_ObjectVisibility_Script_8
 
 

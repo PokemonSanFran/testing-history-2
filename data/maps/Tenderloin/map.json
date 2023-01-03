@@ -232,14 +232,14 @@
       "y": 16,
       "elevation": 0,
       "dest_map": "MAP_TENDERLOIN_LIBRARY",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 14,
       "y": 30,
       "elevation": 0,
       "dest_map": "MAP_TENDERLOIN_TROLLEY_HQ",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

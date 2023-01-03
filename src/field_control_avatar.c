@@ -20,6 +20,7 @@
 #include "match_call.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
+#include "palette.h"
 #include "pokemon.h"
 #include "safari_zone.h"
 #include "script.h"
@@ -35,9 +36,10 @@
 #include "constants/map_types.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
+#include "constants/rgb.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
-static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
+static EWRAM_DATA u16 sPrevMetatileBehavior = 0;
 
 u8 gSelectedObjectEvent;
 
@@ -190,9 +192,16 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         return TRUE;
     if (input->pressedStartButton)
     {
-        PlaySE(SE_WIN_OPEN);
+		if(!gPlayerAvatar.preventStep){
+				PlaySE(SE_WIN_OPEN);
+				BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+				ShowUIStartMenu();
+			}
+			else
+				return FALSE;
+        /*/PlaySE(SE_WIN_OPEN);
         ShowStartMenu();
-        return TRUE;
+        return TRUE;/*/
     }
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
@@ -695,18 +704,18 @@ static bool8 CheckStandardWildEncounter(u16 metatileBehavior)
     if (sWildEncounterImmunitySteps < 4)
     {
         sWildEncounterImmunitySteps++;
-        sPreviousPlayerMetatileBehavior = metatileBehavior;
+        sPrevMetatileBehavior = metatileBehavior;
         return FALSE;
     }
 
-    if (StandardWildEncounter(metatileBehavior, sPreviousPlayerMetatileBehavior) == TRUE)
+    if (StandardWildEncounter(metatileBehavior, sPrevMetatileBehavior) == TRUE)
     {
         sWildEncounterImmunitySteps = 0;
-        sPreviousPlayerMetatileBehavior = metatileBehavior;
+        sPrevMetatileBehavior = metatileBehavior;
         return TRUE;
     }
 
-    sPreviousPlayerMetatileBehavior = metatileBehavior;
+    sPrevMetatileBehavior = metatileBehavior;
     return FALSE;
 }
 
@@ -839,7 +848,7 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
         warpEvent = &gMapHeader.events->warps[warpEventId];
     }
 
-    if (warpEvent->mapNum == MAP_NUM(NONE))
+    if (warpEvent->mapNum == MAP_NUM(DYNAMIC))
     {
         SetWarpDestinationToDynamicWarp(warpEvent->warpId);
     }
@@ -850,7 +859,7 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
         SetWarpDestinationToMapWarp(warpEvent->mapGroup, warpEvent->mapNum, warpEvent->warpId);
         UpdateEscapeWarp(position->x, position->y);
         mapHeader = Overworld_GetMapHeaderByGroupAndId(warpEvent->mapGroup, warpEvent->mapNum);
-        if (mapHeader->events->warps[warpEvent->warpId].mapNum == MAP_NUM(NONE))
+        if (mapHeader->events->warps[warpEvent->warpId].mapNum == MAP_NUM(DYNAMIC))
             SetDynamicWarp(mapHeader->events->warps[warpEventId].warpId, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, warpEventId);
     }
 }
@@ -908,7 +917,7 @@ static u8 *TryRunCoordEventScript(struct CoordEvent *coordEvent)
             DoCoordEventWeather(coordEvent->trigger);
             return NULL;
         }
-        if (coordEvent->trigger == 0)
+        if (coordEvent->trigger == TRIGGER_RUN_IMMEDIATELY)
         {
             RunScriptImmediately(coordEvent->script);
             return NULL;
