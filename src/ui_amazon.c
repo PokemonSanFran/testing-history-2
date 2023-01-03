@@ -94,6 +94,8 @@ static EWRAM_DATA u8 spriteIDs[15];
 static EWRAM_DATA u8  itemNum[NUM_ROWS];
 static EWRAM_DATA bool8 rowsSorted = FALSE;
 static EWRAM_DATA bool8 buyScreen = FALSE;
+static EWRAM_DATA bool8 buyWindow = FALSE;
+static EWRAM_DATA bool8 notEnoughMoneyWindow = FALSE;
 
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_0[12] = {0};
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_1[12] = {0};
@@ -1271,6 +1273,7 @@ static const u8 sRowIcon_Key[]              = INCBIN_U8("graphics/ui_menus/amazo
 
 static const u8 sRowSelector[]      = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
 static const u8 sBuySelector[]      = INCBIN_U8("graphics/ui_menus/amazon/selector1.4bpp");
+static const u8 sOrderWindow[]      = INCBIN_U8("graphics/ui_menus/amazon/orderwindow.4bpp");
 
 static const u8 sText_Help_Bar[]        = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
 static const u8 sText_Help_Bar_Buy[]    = _("{DPAD_UPDOWN} +1/-1 {DPAD_LEFTRIGHT} +5/-5 {A_BUTTON} Buy Now {B_BUTTON} Cancel");
@@ -1280,6 +1283,14 @@ static const u8 sText_ItemNameOwned[]   = _("{STR_VAR_1} - {STR_VAR_2} Owned");
 static const u8 sText_ItemCost[]        = _("Item Cost:    {STR_VAR_1}");
 static const u8 sText_DroneFee[]        = _("Drone Fee:    {STR_VAR_1}");
 static const u8 sText_OrderTotal[]      = _("Order Total: {STR_VAR_1}");
+
+
+static const u8 sText_OrderDelivered[]       = _("Order Delivered!");
+static const u8 sText_ThanksForBuying[]      = _("Thanks you for using Amazon");
+static const u8 sText_ItemNumber[]           = _("You got {STR_VAR_1} x{STR_VAR_2}");
+
+
+static const u8 sText_noEnoughMoney[]        = _("You don't have enough money for this!");
 
 #define MAX_MONEY 999999
 
@@ -1514,7 +1525,37 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x = 0;
         y = 18;
 
-        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Buy);  
+        if(!notEnoughMoneyWindow)
+            AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Buy);  
+        else
+            AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_noEnoughMoney);  
+    
+        // Order Delivered --------------------------------------------------------------------------------------------------------------------
+        if(buyWindow){
+            if(!notEnoughMoneyWindow){
+                x = 5;
+                y = 5;
+
+                BlitBitmapToWindow(windowId, sOrderWindow, (x*8), (y*8), 152, 72);
+
+                x = 5;
+                y = 5;
+                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 0, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_OrderDelivered);  
+                
+                x = 6;
+                y = 8;
+                AddTextPrinterParameterized4(windowId, 8, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, sText_ThanksForBuying); 
+
+                
+                x = 6;
+                y = 10;
+                str = gItems[itemID].name;
+                StringCopy(gStringVar1, str); 
+                ConvertIntToDecimalStringN(gStringVar2, quantity, STR_CONV_MODE_LEFT_ALIGN, 2);  
+                StringExpandPlaceholders(gStringVar4, sText_ItemNumber);
+                AddTextPrinterParameterized4(windowId, 8, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
+            }
+        }
     }
 
     // Money --------------------------------------------------------------------------------------------------------------------
@@ -1528,6 +1569,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, 3);
+
+    notEnoughMoneyWindow = FALSE;
 }
 
 static void Task_MenuWaitFadeIn(u8 taskId)
@@ -1566,21 +1609,68 @@ static void Task_MenuBuy(u8 taskId)
     }
 }
 
+static void buynewItem(u16 itemId, u8 quantity){
+    u16 price = GetCurrentItemPrice(quantity, itemId, PRICE_FINAL);
+    u8 i;
+    bool8 newItem = TRUE;
+    u8 oldItem;
+
+    RemoveMoney(&gSaveBlock1Ptr->money, price);
+    AddBagItem(itemId, quantity + 1);
+
+    buyWindow = TRUE;
+
+    for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++){
+        if(itemId == gSaveBlock2Ptr->amazonBuyAgainItem[i]){
+            newItem = FALSE;
+            oldItem = i;
+        }
+    }
+
+    if(newItem){
+        for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS - 1; i++){
+            gSaveBlock2Ptr->amazonBuyAgainItem[(MAX_AMAZON_BUY_AGAIN_ITEMS - i) - 1] = gSaveBlock2Ptr->amazonBuyAgainItem[(MAX_AMAZON_BUY_AGAIN_ITEMS - i) - 2];
+        }
+        gSaveBlock2Ptr->amazonBuyAgainItem[0] = itemId;
+    }
+    else{
+        //gSaveBlock2Ptr->amazonBuyAgainItem[oldItem] = ITEM_NONE;
+
+        //for(i = 0; i < oldItem; i++){
+        //    gSaveBlock2Ptr->amazonBuyAgainItem[i+1] = gSaveBlock2Ptr->amazonBuyAgainItem[i];
+        //}
+    }
+
+    for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++)
+        currentRowItemList[ROW_BUY_AGAIN][i] = gSaveBlock2Ptr->amazonBuyAgainItem[i];
+            
+    PrintToWindow(WINDOW_1, FONT_BLACK);
+
+    //buyWindow = FALSE;
+}
+
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
 {
     if (JOY_NEW(B_BUTTON))
     {
-        if(buyScreen){
-            itemQuantity = 0;
-            PlaySE(SE_SELECT);
-            Menu_ChangeTilemap();
-            PrintToWindow(WINDOW_1, FONT_BLACK);
+        if(!buyWindow){
+            if(buyScreen){
+                itemQuantity = 0;
+                PlaySE(SE_SELECT);
+                Menu_ChangeTilemap();
+                PrintToWindow(WINDOW_1, FONT_BLACK);
+            }
+            else{
+                PlaySE(SE_PC_OFF);
+                BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                gTasks[taskId].func = Task_MenuTurnOff;
+            }
         }
         else{
-            PlaySE(SE_PC_OFF);
-            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-            gTasks[taskId].func = Task_MenuTurnOff;
+            itemQuantity = 0;
+            buyWindow = FALSE;
+            PrintToWindow(WINDOW_1, FONT_BLACK);
         }
     }
 
@@ -1591,10 +1681,29 @@ static void Task_MenuMain(u8 taskId)
             Menu_ChangeTilemap();
             PrintToWindow(WINDOW_1, FONT_BLACK);
         }
+        else{
+            if(buyWindow){
+                itemQuantity = 0;
+                buyWindow = FALSE;
+                PrintToWindow(WINDOW_1, FONT_BLACK);
+            }
+            else{
+                if(GetMoney(&gSaveBlock1Ptr->money) >= GetCurrentItemPrice(itemQuantity, currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem], PRICE_FINAL)){
+                    buynewItem(currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem], itemQuantity);
+                    PlaySE(SE_SHOP);
+                }
+                else{
+                    notEnoughMoneyWindow = TRUE;
+                    PlaySE(SE_FAILURE);
+                }
+                //Menu_ChangeTilemap();
+                PrintToWindow(WINDOW_1, FONT_BLACK);
+            }
+        }
     }
 
     //
-    if(JOY_NEW(START_BUTTON))
+    if(JOY_NEW(START_BUTTON) && !buyWindow)
 	{
         rowsSorted = !rowsSorted;
         PlaySE(SE_SELECT);
@@ -1602,7 +1711,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_UP))
+    if(JOY_NEW(DPAD_UP) && !buyWindow)
 	{
         PressedUpButton();
         PlaySE(SE_SELECT);
@@ -1610,7 +1719,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_DOWN))
+    if(JOY_NEW(DPAD_DOWN) && !buyWindow)
 	{
         PressedDownButton();
         PlaySE(SE_SELECT);
@@ -1618,7 +1727,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_RIGHT))
+    if(JOY_NEW(DPAD_RIGHT) && !buyWindow)
 	{
         PressedRightButton();
         PlaySE(SE_SELECT);
@@ -1626,7 +1735,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_LEFT))
+    if(JOY_NEW(DPAD_LEFT) && !buyWindow)
 	{
         PressedLeftButton();
         PlaySE(SE_SELECT);
