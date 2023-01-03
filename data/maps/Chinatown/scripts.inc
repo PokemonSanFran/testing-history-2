@@ -10,6 +10,7 @@ Chinatown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_CulturalPurity_HideBackUp_Script
 	call Quest_CulturalPurity_MoveGuard_Script
 	call Quest_Restorechinatown_HidePewfatOutside_Script
+	call LetsGrabLunch_CheckRestorationProgress_Script
 	return
 
 Chinatown_MapScripts_MAP_SCRIPT_ON_LOAD:

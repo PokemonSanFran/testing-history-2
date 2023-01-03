@@ -19,6 +19,7 @@
 #include "play_time.h"
 #include "script.h"
 #include "field_screen_effect.h"
+#include "random.h"
 
 extern const u8 gText_WhereWeDropping[];
 extern const u8 gText_StarterChoice[];
@@ -278,6 +279,12 @@ static void Task_GoToAfterBianca(u8 taskId)
 	DebugStart_BeginAdventure();
 }
 
+static void DebugStart_GenerateID(void)
+{
+    u32 trainerId = ((Random() << 16) | Random());
+    SetTrainerId(trainerId, gSaveBlock2Ptr->playerTrainerId);
+}
+
 static void DebugStart_NewGame(void)
 {
 	FieldClearVBlankHBlankCallbacks();
@@ -291,7 +298,7 @@ static void DebugStart_NewGame(void)
 	gFieldCallback2 = NULL;
 	DoMapLoadLoop(&gMain.state);
 	SetFieldVBlankCallback();
-    SeedRngAndSetTrainerId();
+    DebugStart_GenerateID();
 }
 
 static void DebugStart_BeginAdventure(void)

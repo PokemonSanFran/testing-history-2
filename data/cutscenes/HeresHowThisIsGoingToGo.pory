@@ -10,13 +10,23 @@ const FLAG_HIDE_OAK = FLAG_TEMP_4
 const FLAG_HIDE_SABRINA = FLAG_TEMP_6
 
 script HeresHowThisIsGoingToGo_ObjectSetUp_Script{
-        setflag(FLAG_HIDE_SABRINA)
-        return
+    setflag(FLAG_HIDE_SABRINA)
+    return
+}
+
+script HeresHowThisIsGoingToGo_ShowArcherandBianca{
+    setflag(FLAG_HIDE_SABRINA)
+    setflag(FLAG_HIDE_ROSE)
+    setflag(FLAG_HIDE_OAK)
+    setobjectxy(ARCHER,4,5)
+    setobjectxyperm(ARCHER,4,5)
+    return
 }
 
 script HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script {
     setflag(FLAG_HIDE_ROSE)
     setflag(FLAG_HIDE_OAK)
+    return
 }
 
 script HeresHowThisIsGoingToGo_ConstructionCompleted_Script {

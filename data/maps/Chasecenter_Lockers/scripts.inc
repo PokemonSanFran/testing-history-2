@@ -28,15 +28,16 @@ Chasecenter_Lockers_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 Chasecenter_Lockers_MapScripts_OnTransition::
 	switch VAR_STORYLINE_STATE
 	case STORY_START_CHAMPIONSHIP, Chasecenter_Lockers_MapScripts_OnTransition_2
-	case STORY_BIANCA_WON_GROUP, Chasecenter_Lockers_MapScripts_OnTransition_3
-	case STORY_READY_GROUP_STAGE, Chasecenter_Lockers_MapScripts_OnTransition_4
-	case STORY_GROUP_STATE_COMPLETE, Chasecenter_Lockers_MapScripts_OnTransition_5
-	case STORY_SEMIFINAL_COMPLETE, Chasecenter_Lockers_MapScripts_OnTransition_6
-	case STORY_WATCH_SEMIFINAL, Chasecenter_Lockers_MapScripts_OnTransition_7
-	case STORY_READY_FINALS, Chasecenter_Lockers_MapScripts_OnTransition_8
-	case STORY_SAVE_FINALS, Chasecenter_Lockers_MapScripts_OnTransition_9
-	case STORY_POST_DIANTHA, Chasecenter_Lockers_MapScripts_OnTransition_10
-	case STORY_CONGRATULATED_BY_ROSE, Chasecenter_Lockers_MapScripts_OnTransition_11
+	case STORY_CHAMPIONSHIP_EXPLAINED, Chasecenter_Lockers_MapScripts_OnTransition_3
+	case STORY_BIANCA_WON_GROUP, Chasecenter_Lockers_MapScripts_OnTransition_4
+	case STORY_READY_GROUP_STAGE, Chasecenter_Lockers_MapScripts_OnTransition_5
+	case STORY_GROUP_STATE_COMPLETE, Chasecenter_Lockers_MapScripts_OnTransition_6
+	case STORY_SEMIFINAL_COMPLETE, Chasecenter_Lockers_MapScripts_OnTransition_7
+	case STORY_WATCH_SEMIFINAL, Chasecenter_Lockers_MapScripts_OnTransition_8
+	case STORY_READY_FINALS, Chasecenter_Lockers_MapScripts_OnTransition_9
+	case STORY_SAVE_FINALS, Chasecenter_Lockers_MapScripts_OnTransition_10
+	case STORY_POST_DIANTHA, Chasecenter_Lockers_MapScripts_OnTransition_11
+	case STORY_CONGRATULATED_BY_ROSE, Chasecenter_Lockers_MapScripts_OnTransition_12
 	call WaitHeDidWhat_ObjectMidSetUp_Script
 	return
 
@@ -45,38 +46,42 @@ Chasecenter_Lockers_MapScripts_OnTransition_2:
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_3:
-	call GroupStages_Lockers_ObjectSetUp_Script
+	call HeresHowThisIsGoingToGo_ShowArcherandBianca
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_4:
-	call GroupStages_Lockers_ObjectCleanUp_Script
+	call GroupStages_Lockers_ObjectSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_5:
-	call Finals_HideObject_Script
+	call GroupStages_Lockers_ObjectCleanUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_6:
-	call WaitHeDidWhat_ObjectSetUp_Script
+	call Finals_HideObject_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_7:
-	call WaitHeDidWhat_ObjectMidSetUp_Script
+	call WaitHeDidWhat_ObjectSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_8:
-	call WaitHeDidWhat_MeltdownSetUp_Script
+	call WaitHeDidWhat_ObjectMidSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_9:
-	call WaitHeDidWhat_MeltdownPostSaveSetUp_Script
+	call WaitHeDidWhat_MeltdownSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_10:
-	call ExhibitionBattle_HideObject_Script
+	call WaitHeDidWhat_MeltdownPostSaveSetUp_Script
 	return
 
 Chasecenter_Lockers_MapScripts_OnTransition_11:
+	call ExhibitionBattle_HideObject_Script
+	return
+
+Chasecenter_Lockers_MapScripts_OnTransition_12:
 	call ExhibitionBattle_HideObject_Script
 	return
 

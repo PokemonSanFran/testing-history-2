@@ -6,6 +6,7 @@ mapscripts Treasureisland_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(LetsGrabLunch_HideArcher_Outside_Script)
         call(Quest_Restoretreasureisland_HideCilan_Outside_Script)
+        call(LetsGrabLunch_CheckRestorationProgress_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [

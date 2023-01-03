@@ -1,15 +1,11 @@
 mapscripts Castro_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Castro_MapScripts_OnTransition)
+        call(Quest_BlueRobbery_HideObject_Script)
     }
     
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
     ]
-}
-
-script Castro_MapScripts_OnTransition {
-    call(Quest_BlueRobbery_HideObject_Script)
 }
 
 text gText_Castro_PlaceholderOaklandFan{

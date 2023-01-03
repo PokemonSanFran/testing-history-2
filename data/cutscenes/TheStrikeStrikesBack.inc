@@ -7,6 +7,14 @@ TheStrikeStrikesBack_HideObject_Script::
 	return
 
 
+TheStrikeStrikesBack_ShowCrowd_Script::
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_4
+	return
+
+
 TheStrikeStrikesBack_UnblockConstruction_Script::
 	compare VAR_CONSTRUCTION_STRIKE_STATE, 0
 	goto_if_ne TheStrikeStrikesBack_UnblockConstruction_Script_2

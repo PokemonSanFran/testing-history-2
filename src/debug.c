@@ -88,6 +88,7 @@ enum { // Util
     DEBUG_UTIL_MENU_ITEM_TRAINER_NAME,
     DEBUG_UTIL_MENU_ITEM_TRAINER_GENDER,
     DEBUG_UTIL_MENU_ITEM_TRAINER_ID,
+    DEBUG_UTIL_MENU_ITEM_CHECKSTORYLINE,
 };
 enum { // Scripts
     DEBUG_UTIL_MENU_ITEM_SCRIPT_1,
@@ -324,6 +325,7 @@ static void DebugAction_Util_WatchCredits(u8 taskId);
 static void DebugAction_Util_Trainer_Name(u8 taskId);
 static void DebugAction_Util_Trainer_Gender(u8 taskId);
 static void DebugAction_Util_Trainer_Id(u8 taskId);
+static void DebugAction_Util_CheckStoryline(u8 taskId);
 
 static void DebugAction_OpenJumpAct0Menu(u8 taskId);
 static void DebugAction_OpenJumpAct1Menu(u8 taskId);
@@ -443,6 +445,7 @@ static const u8 gDebugText_Util_WatchCredits[] =             _("Watch Credits");
 static const u8 gDebugText_Util_Trainer_Name[] =             _("Trainer name");
 static const u8 gDebugText_Util_Trainer_Gender[] =           _("Toggle T. Gender");
 static const u8 gDebugText_Util_Trainer_Id[] =               _("New Trainer Id");
+static const u8 gDebugText_Util_CheckStoryline[] =           _("Check Variables");
 
 //Jump Act Menu
 static const u8 gDebugText_Jump_Act0[] = _("Act 0");
@@ -657,6 +660,7 @@ static const struct ListMenuItem sDebugMenu_Items_Utilities[] =
     [DEBUG_UTIL_MENU_ITEM_TRAINER_NAME]   = {gDebugText_Util_Trainer_Name,   DEBUG_UTIL_MENU_ITEM_TRAINER_NAME},
     [DEBUG_UTIL_MENU_ITEM_TRAINER_GENDER] = {gDebugText_Util_Trainer_Gender, DEBUG_UTIL_MENU_ITEM_TRAINER_GENDER},
     [DEBUG_UTIL_MENU_ITEM_TRAINER_ID]     = {gDebugText_Util_Trainer_Id,     DEBUG_UTIL_MENU_ITEM_TRAINER_ID},
+    [DEBUG_UTIL_MENU_ITEM_CHECKSTORYLINE]   = {gDebugText_Util_CheckStoryline, DEBUG_UTIL_MENU_ITEM_CHECKSTORYLINE},
 };
 static const struct ListMenuItem sDebugMenu_Items_Scripts[] =
 {
@@ -850,6 +854,7 @@ static void (*const sDebugMenu_Actions_Utilities[])(u8) =
     [DEBUG_UTIL_MENU_ITEM_TRAINER_NAME]   = DebugAction_Util_Trainer_Name,
     [DEBUG_UTIL_MENU_ITEM_TRAINER_GENDER] = DebugAction_Util_Trainer_Gender,
     [DEBUG_UTIL_MENU_ITEM_TRAINER_ID]     = DebugAction_Util_Trainer_Id,
+    [DEBUG_UTIL_MENU_ITEM_CHECKSTORYLINE] = DebugAction_Util_CheckStoryline,
 };
 static void (*const sDebugMenu_Actions_Scripts[])(u8) =
 {
@@ -1852,10 +1857,10 @@ static void DebugAction_Util_CheckSaveBlock(u8 taskId)
 
 static void DebugAction_Util_CheckStoryline(u8 taskId)
 {
-    static const u8 sDebugText_CheckVariables[] =  _("VAR_STORYLINE_STATE is at {STR_VAR_1}");
+    static const u8 sDebugText_SaveBlockSize[] =  _("VAR_STORYLINE_STATE is at {STR_VAR_1}.");   
 
     ConvertIntToDecimalStringN(gStringVar1, VarGet(VAR_STORYLINE_STATE), STR_CONV_MODE_LEFT_ALIGN, 6);
-    StringExpandPlaceholders(gStringVar1, sDebugText_CheckVariables);
+    StringExpandPlaceholders(gStringVar4, sDebugText_SaveBlockSize);
 
     Debug_DestroyMenu_Full(taskId);
     LockPlayerFieldControls();
@@ -2072,14 +2077,13 @@ static void DebugAction_Util_Script_10(u8 taskId)
 
 static void DebugAction_Jump_JumpPlayerToStoryPoint(u8 taskId)
 {
-
     u8 chosenStoryPoint = gTasks[taskId].data[5];
 
     JumpPlayerToStoryPoint(chosenStoryPoint, taskId);
     WarpPlayerAfterVarSet();
 
     PlaySE(SE_WARP_IN);
-    ScriptContext_Enable();
+    //ScriptContext_Enable();
     Debug_DestroyMenu_Full(taskId);
 }
 

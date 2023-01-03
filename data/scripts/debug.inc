@@ -60,7 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	callnative DebugAction_Util_CheckStoryline
+	addvar VAR_STORYLINE_STATE, 1
 	return
 
 

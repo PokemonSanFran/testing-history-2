@@ -69,7 +69,7 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    callnative(DebugAction_Util_CheckStoryline)
+    addvar(VAR_STORYLINE_STATE,1)
 }
 
 script Debug_Script_2{
