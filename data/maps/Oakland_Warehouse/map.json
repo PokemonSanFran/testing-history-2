@@ -34,28 +34,28 @@
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_OAKLAND",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 9,
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_OAKLAND",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 9,
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_OAKLAND",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 9,
       "y": 2,
       "elevation": 0,
       "dest_map": "MAP_OAKLAND",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

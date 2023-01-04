@@ -68,14 +68,14 @@
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_MISSION_GYM",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 18,
       "y": 12,
       "elevation": 0,
       "dest_map": "MAP_MISSION_CONSULTING",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

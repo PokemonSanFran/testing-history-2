@@ -102,42 +102,42 @@
       "y": 10,
       "elevation": 0,
       "dest_map": "MAP_PRESIDIO_MANSION",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 3,
       "y": 10,
       "elevation": 0,
       "dest_map": "MAP_PRESIDIO_COMPOUND_1F",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 26,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_PRESIDIO_HAUNTEDHOUSE",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 19,
       "y": 18,
       "elevation": 0,
       "dest_map": "MAP_PRESIDIO_IMPROV",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 0,
       "elevation": 0,
       "dest_map": "MAP_PRESIDIO_SQUATTERSMANSION",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 2,
       "y": 0,
       "elevation": 0,
       "dest_map": "MAP_PRESIDIO_SQUATTERSMANSION",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

@@ -7,6 +7,7 @@ Haightashbury_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call AndWeMarchOn_ObjectVisibility_Script
 	call Quest_AngelDelivery_Hide_BikerA_Script
 	call Quest_LastMusicVenue_HidePublicDrummers
+	call LetsGrabLunch_CheckRestorationProgress_Script
 	return
 
 Haightashbury_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

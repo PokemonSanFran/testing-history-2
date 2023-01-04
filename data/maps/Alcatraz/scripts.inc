@@ -35,8 +35,8 @@ ResetAlcatrazExhibit_Script::
 	clearflag TRAINER_FLAGS_START + TRAINER_FREDRICK
 	clearflag TRAINER_FLAGS_START + TRAINER_ZANDER
 	clearflag TRAINER_FLAGS_START + TRAINER_LEAH
-	compare VAR_ALCATRAZ_STATE, BATTLED_MALVA
-	goto_if_lt ResetAlcatrazExhibit_Script_1
+	compare VAR_ALCATRAZ_STATE, FIRST_ARRIVED_ALCATRAZ
+	goto_if_eq ResetAlcatrazExhibit_Script_1
 	return
 
 ResetAlcatrazExhibit_Script_1:

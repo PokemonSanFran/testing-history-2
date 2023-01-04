@@ -41,7 +41,7 @@ Psfroute22_ConstructionVisibility_Script_4:
 	goto Psfroute22_ConstructionVisibility_Script_1
 
 Psfroute22_ConstructionVisibility_Script_5:
-	call TheStrikeStrikesBack_HideObject_Script
+	call TheStrikeStrikesBack_ShowCrowd_Script
 	goto Psfroute22_ConstructionVisibility_Script_1
 
 Psfroute22_ConstructionVisibility_Script_6:

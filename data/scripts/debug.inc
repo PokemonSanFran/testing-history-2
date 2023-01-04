@@ -60,14 +60,12 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	additem ITEM_FLAME_ORB, 1
-	additem ITEM_TM27, 1
-	givemon SPECIES_SHROOMISH, 1, ITEM_NONE
-	givemon SPECIES_BEHEEYEM, 1, ITEM_NONE
+	warpsilent MAP_OAKLAND, 0
 	return
 
 
 Debug_Script_2::
+	warpsilent MAP_ALCATRAZ_B2F, 0
 	return
 
 

@@ -12,6 +12,7 @@ Marin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_BerrySustaiability_HideLeader_Script
 	call Quest_GetTheBand_HideBikerD_Script
 	call IGuessWeShouldBeNiceNow_HidePopup_Script
+	call LetsGrabLunch_CheckRestorationProgress_Script
 	return
 
 Marin_MapScripts_MAP_SCRIPT_ON_LOAD:

@@ -86,14 +86,14 @@
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_JAPANTOWN",
-      "dest_warp_id": 3
+      "dest_warp_id": "3"
     },
     {
       "x": 10,
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_JAPANTOWN",
-      "dest_warp_id": 3
+      "dest_warp_id": "3"
     }
   ],
   "coord_events": [

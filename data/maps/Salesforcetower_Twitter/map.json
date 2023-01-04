@@ -22,21 +22,21 @@
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_AMAZON",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 8,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_PARK",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 4,
       "y": 2,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_ELEVATOR",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

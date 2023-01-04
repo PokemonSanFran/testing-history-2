@@ -33,7 +33,7 @@ script ResetAlcatrazExhibit_Script {
         clearflag(TRAINER_FLAGS_START + TRAINER_ZANDER)
         clearflag(TRAINER_FLAGS_START + TRAINER_LEAH)
 
-        if (var(VAR_ALCATRAZ_STATE) < BATTLED_MALVA){
+        if (var(VAR_ALCATRAZ_STATE) == FIRST_ARRIVED_ALCATRAZ){
             setvar(VAR_ALCATRAZ_EXHIBIT_STATE,0)
         }
 }

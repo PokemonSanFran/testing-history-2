@@ -34,28 +34,28 @@
       "y": 31,
       "elevation": 0,
       "dest_map": "MAP_PSFROUTE61",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 49,
       "y": 31,
       "elevation": 0,
       "dest_map": "MAP_PSFROUTE61",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 24,
       "y": 21,
       "elevation": 0,
       "dest_map": "MAP_MUIRWOODS_INNER",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 25,
       "y": 21,
       "elevation": 0,
       "dest_map": "MAP_MUIRWOODS_INNER",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

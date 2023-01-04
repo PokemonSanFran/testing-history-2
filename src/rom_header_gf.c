@@ -6,6 +6,15 @@
 #include "item.h"
 #include "pokeball.h"
 
+// The purpose of this struct is for outside applications to be
+// able to access parts of the ROM or its save file, like a public API.
+// In vanilla, it was used by Colosseum and XD to access pokemon graphics.
+// 
+// If this struct is rearranged in any way, it defeats the purpose of 
+// having it at all. Applications like PKHex or streaming HUDs may find
+// these values useful, so there's some potential benefit to keeping it.
+// If there's a compilation problem below, just comment out the assignment
+// instead of changing this struct.
 struct GFRomHeader
 {
     u32 version;
@@ -24,7 +33,8 @@ struct GFRomHeader
     u32 flagsOffset;
     u32 varsOffset;
     u32 pokedexOffset;
-    u32 seenOffset;
+    u32 seen1Offset;
+    u32 seen2Offset;
     u32 pokedexVar;
     u32 pokedexFlag;
     u32 mysteryEventFlag;
@@ -77,7 +87,9 @@ struct GFRomHeader
     u8 pcItemsCount;
     u32 pcItemsOffset;
     u32 giftRibbonsOffset;
+#ifndef FREE_ENIGMA_BERRY
     u32 enigmaBerryOffset;
+    #endif
     u32 enigmaBerrySize;
     const u8 *moveDescriptions;
     u32 unk20;
@@ -103,7 +115,8 @@ static const struct GFRomHeader sGFRomHeader = {
     .flagsOffset = offsetof(struct SaveBlock1, flags),
     .varsOffset = offsetof(struct SaveBlock1, vars),
     .pokedexOffset = offsetof(struct SaveBlock2, pokedex),
-    .seenOffset = offsetof(struct SaveBlock1, dexSeen),
+    .seen1Offset = offsetof(struct SaveBlock1, dexSeen),
+    .seen2Offset = offsetof(struct SaveBlock1, dexSeen), // dex flags are combined, just provide the same pointer
     .pokedexVar = VAR_NATIONAL_DEX - VARS_START,
     .pokedexFlag = FLAG_RECEIVED_POKEDEX_FROM_BIRCH,
     .mysteryEventFlag = FLAG_SYS_MYSTERY_EVENT_ENABLE,
@@ -157,7 +170,9 @@ static const struct GFRomHeader sGFRomHeader = {
     .pcItemsCount = PC_ITEMS_COUNT,
     .pcItemsOffset = offsetof(struct SaveBlock1, pcItems),
     .giftRibbonsOffset = offsetof(struct SaveBlock1, giftRibbons),
+#ifndef FREE_ENIGMA_BERRY
     .enigmaBerryOffset = offsetof(struct SaveBlock1, enigmaBerry),
+    #endif
     .enigmaBerrySize = sizeof(struct EnigmaBerry),
     .moveDescriptions = NULL,
     .unk20 = 0x00000000, // 0xFFFFFFFF in FRLG

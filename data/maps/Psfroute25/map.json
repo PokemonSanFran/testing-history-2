@@ -60,14 +60,14 @@
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_PSFROUTE8",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 39,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_UNDERGROUNDLAB",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

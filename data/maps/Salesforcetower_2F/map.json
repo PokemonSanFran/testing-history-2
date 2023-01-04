@@ -268,35 +268,35 @@
       "y": 39,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_ELEVATOR",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 6,
       "y": 36,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_1F",
-      "dest_warp_id": 3
+      "dest_warp_id": "3"
     },
     {
       "x": 8,
       "y": 39,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_ELEVATOR",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 0,
       "y": 2,
       "elevation": 0,
       "dest_map": "MAP_SUNSET_SABRINA_HOUSE",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 12,
       "y": 36,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_3F",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

@@ -158,7 +158,6 @@ msgbox(gText_MaskOff_AllowMeTo)
     callnative(ClearMugshot)
     closemessage
 
-
     fadescreen(FADE_TO_BLACK)
     call(MaskOff_TransformObject_Script)
     lock

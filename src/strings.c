@@ -273,6 +273,7 @@ const u8 gText_BootedUpHM[] = _("Booted up an HM.");
 const u8 gText_TMHMContainedVar1[] = _("It contained\n{STR_VAR_1}.\pTeach {STR_VAR_1}\nto a POKéMON?");
 const u8 gText_PlayerUsedVar2[] = _("{PLAYER} used the\n{STR_VAR_2}.{PAUSE_UNTIL_PRESS}");
 const u8 gText_RepelEffectsLingered[] = _("But the effects of a REPEL\nlingered from earlier.{PAUSE_UNTIL_PRESS}");
+const u8 gText_LureEffectsLingered[] = _("But the effects of a Lure\nlingered from earlier.{PAUSE_UNTIL_PRESS}");
 const u8 gText_UsedVar2WildLured[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild POKéMON will be lured.{PAUSE_UNTIL_PRESS}");
 const u8 gText_UsedVar2WildRepelled[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild POKéMON will be repelled.{PAUSE_UNTIL_PRESS}");
 const u8 gText_BoxFull[] = _("The BOX is full.{PAUSE_UNTIL_PRESS}");
@@ -1913,3 +1914,9 @@ const u8 gText_Amazon[] =_("Amazon");
 //Quest_Restoretreasureisland
 const u8 gText_PokemonPsychoShift[] = _("a Pokemon that knows \nthe move Psycho Shift");
 const u8 gText_PokemonEffectSpore[] = _("a Pokemon that has \nthe ability Effect Spore");
+
+//Debug Start
+const u8 gText_WhereWeDropping[] = _("Where do you want to go?");
+const u8 gText_StarterChoice[] =_("Starter selection");
+const u8 gText_BeforeFirst[] =_("Before meeting Bianca");
+const u8 gText_AfterFirst[] =_("After first cutscene");

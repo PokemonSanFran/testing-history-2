@@ -1,3 +1,8 @@
 Lombardstreet_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Lombardstreet_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Lombardstreet_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call OldAssholeAppears_HideBianca_Script
+	return
 

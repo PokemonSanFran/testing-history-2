@@ -42,6 +42,7 @@ mapscripts Salesforcetower_Leagueops_MapScripts{
     VAR_LETS_BURN_THIS_MOTHER_STATE,DEFEATED_ARCHER_ALCATRAZ: LetsBurnThisMotherDown_MissionComplete_Dialogue
     VAR_HOW_DISAPPOINTING_STATE,DEFEATED_ARIANA_CHINATOWN: HowDisappointing_MissionComplete_Dialogue
     VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI: Manhunt_MissionComplete_Dialogue
+    VAR_STORYLINE_STATE,STORY_3RD_TEAMROCKET_TAKEDOWN: ExhibitionBattle_CheckMissionProgress_Script
     VAR_STORYLINE_STATE,STORY_TEAMROCKET_FINISHED: ExhibitionBattle_TimeSkip_Script
     ]
     MAP_SCRIPT_ON_LOAD {

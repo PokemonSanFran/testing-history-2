@@ -73,14 +73,14 @@
       "y": 2,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_ELEVATOR",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 4,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_10F",
-      "dest_warp_id": 2
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [

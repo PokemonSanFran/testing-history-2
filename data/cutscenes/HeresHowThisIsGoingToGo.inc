@@ -3,6 +3,15 @@ HeresHowThisIsGoingToGo_ObjectSetUp_Script::
 	return
 
 
+HeresHowThisIsGoingToGo_ShowArcherandBianca::
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_4
+	setobjectxy 3, 4, 5
+	setobjectxyperm 3, 4, 5
+	return
+
+
 HeresHowThisIsGoingToGo_Lockers_ObjectCleanUp_Script::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_4
