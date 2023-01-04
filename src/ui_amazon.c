@@ -90,7 +90,7 @@ static EWRAM_DATA u8  currentFirstShownRow = 0;
 static EWRAM_DATA u8  currentFirstShownItem = 0;
 static EWRAM_DATA u8  itemQuantity = 1;
 
-static EWRAM_DATA u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
+static EWRAM_DATA u8 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW]; // should be u16, need to know how to handle EWRAM better
 static EWRAM_DATA u8 spriteIDs[15];
 static EWRAM_DATA u8  itemNum[NUM_ROWS];
 static EWRAM_DATA bool8 rowsSorted = FALSE;
