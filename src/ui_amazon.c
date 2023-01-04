@@ -83,20 +83,19 @@ enum RowIds
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 
-static EWRAM_DATA u8  currentRow = 0;
-static EWRAM_DATA u8  currentItem = 0;
-static EWRAM_DATA u8  currentScreenId = 0;
-static EWRAM_DATA u8  currentFirstShownRow = 0;
-static EWRAM_DATA u8  currentFirstShownItem = 0;
-static EWRAM_DATA u8  itemQuantity = 1;
+static EWRAM_DATA u8  currentRow = 0;             //Max 12
+static EWRAM_DATA u8  currentItem = 0;            //Max 20
+static EWRAM_DATA u8  currentFirstShownRow = 0;   //Max 9
+static EWRAM_DATA u8  currentFirstShownItem = 0;  //Max 14
+static EWRAM_DATA u8  itemQuantity = 1;           //Max 99
 
-static EWRAM_DATA u8 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW]; // should be u16, need to know how to handle EWRAM better
-static EWRAM_DATA u8 spriteIDs[15];
-static EWRAM_DATA u8  itemNum[NUM_ROWS];
 static EWRAM_DATA bool8 rowsSorted = FALSE;
 static EWRAM_DATA bool8 buyScreen = FALSE;
 static EWRAM_DATA bool8 buyWindow = FALSE;
 static EWRAM_DATA bool8 notEnoughMoneyWindow = FALSE;
+
+static EWRAM_DATA u8 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW]; // should be u16, need to know how to handle EWRAM better
+static EWRAM_DATA u8 spriteIDs[15];
 
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_0[12] = {0};
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_1[12] = {0};
@@ -310,6 +309,37 @@ static void Menu_FreeResources(void)
     try_free(sBg1TilemapBuffer);
     buyScreen = FALSE;
     try_free(buyScreen);
+
+    try_free(currentRow);
+    try_free(currentItem);
+    try_free(currentFirstShownRow);
+    try_free(currentFirstShownItem);
+    try_free(itemQuantity);
+
+    try_free(rowsSorted);
+    try_free(buyScreen);
+    try_free(buyWindow);
+    try_free(notEnoughMoneyWindow);
+
+    try_free(currentRowItemList);
+    try_free(spriteIDs);
+
+    try_free(sItemMenuIconSpriteIds_0);
+    try_free(sItemMenuIconSpriteIds_1);
+    try_free(sItemMenuIconSpriteIds_2);
+    try_free(sItemMenuIconSpriteIds_3);
+    try_free(sItemMenuIconSpriteIds_4);
+    try_free(sItemMenuIconSpriteIds_5);
+    try_free(sItemMenuIconSpriteIds_6);
+    try_free(sItemMenuIconSpriteIds_7);
+    try_free(sItemMenuIconSpriteIds_8);
+    try_free(sItemMenuIconSpriteIds_9);
+    try_free(sItemMenuIconSpriteIds_10);
+    try_free(sItemMenuIconSpriteIds_11);
+    try_free(sItemMenuIconSpriteIds_12);
+    try_free(sItemMenuIconSpriteIds_13);
+    try_free(sItemMenuIconSpriteIds_14);
+
     FreeAllWindowBuffers();
 }
 
@@ -544,6 +574,39 @@ u8 getDroneFee(){
     return droneFeePercentage;
 }
 
+u8 getCurrentRowItemNum(){
+    u8 i, itemNum;
+
+    itemNum = 0;
+
+    for(i = 0; i < 20; i++){
+        if(currentRowItemList[GetCurrentRow()][i] != ITEM_NONE)
+            itemNum++;
+    }
+
+    return itemNum;
+}
+
+u8 getRowItemNum(u8 row){
+    u8 i, itemNum;
+
+    itemNum = 0;
+
+    if(rowsSorted){
+        row = (row + 2) % NUM_ROWS;
+    }
+    else{
+       row = row % NUM_ROWS;
+    }
+
+    for(i = 0; i < 20; i++){
+        if(currentRowItemList[row][i] != ITEM_NONE)
+            itemNum++;
+    }
+
+    return itemNum;
+}
+
 static u16 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
 {
     u16 itemPrice = (quantity + 1)* gItems[itemID].price;
@@ -650,14 +713,17 @@ static void PressedUpButton(){
 }
 
 static void PressedRightButton(){
+    u8 itemNum, finalhalfScreen;
     u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-    u8 finalhalfScreen = itemNum[currentRow] - halfScreen;
     u8 cursorPosition = (currentItem - currentFirstShownItem);
+
+    itemNum = getCurrentRowItemNum();
+    finalhalfScreen = itemNum - halfScreen;
 
     if(currentItem < halfScreen){
         currentItem++;
     }
-	else if(currentItem >= (itemNum[currentRow] - 1)){ //If you are in the last option go to the first one
+	else if(currentItem >= (itemNum - 1)){ //If you are in the last option go to the first one
 		currentItem = 0;
 		currentFirstShownItem = 0;
     }
@@ -674,17 +740,20 @@ static void PressedRightButton(){
 }
 
 static void PressedLeftButton(){
+    u8 itemNum, finalhalfScreen;
     u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-    u8 finalhalfScreen = itemNum[currentRow] - halfScreen;
     u8 cursorPosition = (currentItem - currentFirstShownItem);
+
+    itemNum = getCurrentRowItemNum();
+    finalhalfScreen = itemNum - halfScreen;
 
     if(currentItem > halfScreen && currentItem <= (finalhalfScreen - 1)){
         currentItem--;
         currentFirstShownItem--;
     }
 	else if(currentItem == 0){ //If you are in the first option go to the last one
-		currentItem = itemNum[currentRow] - 1;
-		currentFirstShownItem = itemNum[currentRow] - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+		currentItem = itemNum - 1;
+		currentFirstShownItem = itemNum - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
     }
     else{
         currentItem--;
@@ -1190,6 +1259,7 @@ void AmazonItemInitializeArrayList()
     bool8 canBuy = TRUE;
     u16 badgeFlag;
     u8 numbadges = 0;
+    u8 itemNum[NUM_ROWS];
     
     for (badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++){
         if (FlagGet(badgeFlag))
@@ -1331,6 +1401,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     u16 itemID;
     u8 droneFeePercentage;
     u8 strArray[16];
+    u8 itemNum = getCurrentRowItemNum();
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
@@ -1407,7 +1478,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x = (5 * (currentItem - currentFirstShownItem)) + 3;
         if(currentItem == 0)
             BlitBitmapToWindow(windowId, sBuySelectorNoLeft, (x*8) + x2, (y*8), 48, 16);
-        else if(currentItem == itemNum[GetCurrentRow()] - 1)
+        else if(currentItem == itemNum - 1)
             BlitBitmapToWindow(windowId, sBuySelectorNoRight, (x*8) + x2, (y*8), 48, 16);
         else
             BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 48, 16);
@@ -1421,12 +1492,12 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
             for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
-                if(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[GetCurrentRow() + i]] != ITEM_NONE){
+                if(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % getRowItemNum(GetCurrentRow() + i)] != ITEM_NONE){
                     if(i == 0){
-                        CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                        CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum], itemID, (x * 8) + x2, (y * 8) + y2);
                     }
                     else{
-                        CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % itemNum[GetCurrentRow() + i]], itemID, (x * 8) + x2, (y * 8) + y2);
+                        CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % getRowItemNum(GetCurrentRow() + i)], itemID, (x * 8) + x2, (y * 8) + y2);
                     }
                 }
                 
