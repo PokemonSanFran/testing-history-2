@@ -527,7 +527,7 @@ enum PriceTypes
 };
 
 u8 getDroneFee(){
-    u8 droneFeePercentage = 0;
+    u8 droneFeePercentage = 20;
 
     if(!FlagGet(FLAG_TIMELINE_TRUE) && GetCurrentRow() != ROW_RECOMMENDED)
         droneFeePercentage = 20;
@@ -538,7 +538,7 @@ u8 getDroneFee(){
     if(FlagGet(FLAG_TIMELINE_TRUE) && GetCurrentRow() != ROW_RECOMMENDED)
         droneFeePercentage = 50;
 
-    if(!FlagGet(FLAG_TIMELINE_TRUE) && GetCurrentRow() == ROW_RECOMMENDED)
+    if(FlagGet(FLAG_TIMELINE_TRUE) && GetCurrentRow() == ROW_RECOMMENDED)
         droneFeePercentage = 52;
     
     return droneFeePercentage;
@@ -599,13 +599,15 @@ static void PressedDownButton(){
         u16 itemID = currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem];
         u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
 
-        if (buyableItems > MAX_BAG_ITEM_CAPACITY)
-            buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
+        if(buyableItems != 0){
+            if (buyableItems > MAX_BAG_ITEM_CAPACITY)
+                buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
 
-        if(itemQuantity != 0)
-            itemQuantity--;
-        else
-            itemQuantity = buyableItems - 1;
+            if(itemQuantity != 0)
+                itemQuantity--;
+            else
+                itemQuantity = buyableItems - 1;
+        }
     }
 }
 
@@ -1219,7 +1221,7 @@ void AmazonItemInitializeArrayList()
             }
             else if(i == ROW_BUY_AGAIN && j < MAX_AMAZON_BUY_AGAIN_ITEMS){
                 if(gSaveBlock2Ptr->amazonBuyAgainItem[j] == ITEM_NONE)
-                    gSaveBlock2Ptr->amazonBuyAgainItem[j] = ITEM_POKE_BALL;
+                    gSaveBlock2Ptr->amazonBuyAgainItem[j] = ITEM_ORAN_BERRY+ j;
 
                 currentRowItemList[i][itemNum[i]] = gSaveBlock2Ptr->amazonBuyAgainItem[j];
                 itemNum[i]++;
@@ -1690,20 +1692,24 @@ static void buynewItem(u16 itemId, u8 quantity){
         for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS - 1; i++){
             gSaveBlock2Ptr->amazonBuyAgainItem[(MAX_AMAZON_BUY_AGAIN_ITEMS - i) - 1] = gSaveBlock2Ptr->amazonBuyAgainItem[(MAX_AMAZON_BUY_AGAIN_ITEMS - i) - 2];
         }
-        gSaveBlock2Ptr->amazonBuyAgainItem[0] = itemId;
     }
     else{
-        //gSaveBlock2Ptr->amazonBuyAgainItem[oldItem] = ITEM_NONE;
+        gSaveBlock2Ptr->amazonBuyAgainItem[oldItem] = ITEM_NONE;
 
-        //for(i = 0; i < oldItem; i++){
-        //    gSaveBlock2Ptr->amazonBuyAgainItem[i+1] = gSaveBlock2Ptr->amazonBuyAgainItem[i];
-        //}
+        for(i = 0; i < oldItem; i++){
+            gSaveBlock2Ptr->amazonBuyAgainItem[oldItem - i] = gSaveBlock2Ptr->amazonBuyAgainItem[oldItem - i -1];
+        }
     }
+    gSaveBlock2Ptr->amazonBuyAgainItem[0] = itemId;
 
     for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++)
         currentRowItemList[ROW_BUY_AGAIN][i] = gSaveBlock2Ptr->amazonBuyAgainItem[i];
-            
+         
+    if(GetCurrentRow() == ROW_BUY_AGAIN)
+        currentItem = 0;
+       
     PrintToWindow(WINDOW_1, FONT_BLACK);
+
 
     //buyWindow = FALSE;
 }

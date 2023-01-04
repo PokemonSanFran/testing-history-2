@@ -278,7 +278,7 @@ gText_ThereCanOnlyBe_StarterSelectMareanieDesc::
 
 gText_ThereCanOnlyBe_StarterSelectAronDesc::
 	.string "{STR_VAR_1} leverages its high\n"
-	.string "Attack and Defense to provide\l"
+	.string "Attack and Defense to provide \l"
 	.string "physical support.$"
 
 gText_ThereCanOnlyBe_StarterSelectSwinubDesc::
