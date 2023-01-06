@@ -76,16 +76,16 @@ enum RowIds
 struct AmazonMenuResources {
 	MainCallback savedCallback;     // determines callback to run when we exit. e.g. where do we want to go after closing the menu
     u8 gfxLoadState;
-	u8 currentRow:4;                //Max 12
-	u8 currentFirstShownRow:4;      //Max 9
-	u8 currentItem:5;               //Max 20
-	u8 rowsSorted:1;                //bool8
-	u8 buyScreen:1;                 //bool8
-	u8 buyWindow:1;                 //bool8
-	u8 itemQuantity:7;              //Max 99
-	u8 currentFirstShownItem:4;     //Max 14
-	u8 notEnoughMoneyWindow:1;      //bool8
-	u8 filler1:3;                   //Max 8
+	u16 currentRow:4;                //Max 12
+	u16 currentFirstShownRow:4;      //Max 9
+	u16 currentItem:5;               //Max 20
+	u16 rowsSorted:1;                //bool8
+	u16 buyScreen:1;                 //bool8
+	u16 buyWindow:1;                 //bool8
+	u16 itemQuantity:7;              //Max 99
+	u16 currentFirstShownItem:4;     //Max 14
+	u16 notEnoughMoneyWindow:1;      //bool8
+	u16 filler1:3;                   //Max 8
 	u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
 	u8 spriteIDs[15];
     u8 sItemMenuIconSpriteIds_0[12];
@@ -103,11 +103,14 @@ struct AmazonMenuResources {
     u8 sItemMenuIconSpriteIds_12[12];
     u8 sItemMenuIconSpriteIds_13[12];
     u8 sItemMenuIconSpriteIds_14[12];
+    u8 AmazonUpDownArrowsTask;
+    u8 AmazonLeftRightArrowsTask;
 };
 
 //==========EWRAM==========//
 static EWRAM_DATA struct AmazonMenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
+static EWRAM_DATA u16 currentScrollableRow = 0;
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -121,6 +124,9 @@ static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 static void AmazonItemInitializeArrayList(void);
 static void DestroyAllItemIcons(void);
+
+static void CreateAmazonSwitchArrowPair(void);
+static void DestroyAmazonSwitchArrowPair(void);
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -219,6 +225,8 @@ void Amazon_Init(MainCallback callback)
     sMenuDataPtr->buyWindow = FALSE;
     sMenuDataPtr->notEnoughMoneyWindow = FALSE;
 
+    sMenuDataPtr->AmazonUpDownArrowsTask = TASK_NONE;
+
     AmazonItemInitializeArrayList();
     
     mgba_printf(MGBA_LOG_WARN, "The Amazon EWRAM is using %d bytes out of 32770", size);
@@ -250,6 +258,50 @@ static void Menu_VBlankCB(void)
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
 }
+
+// Arrow Functions -------------------------------------------------------------------------------------------------------
+
+#define TAG_POCKET_SCROLL_ARROW 110
+#define TAG_AMAZON_SCROLL_ARROW 100
+
+#define UP_ARROW_X 136
+#define UP_ARROW_Y 8
+
+#define DOWN_ARROW_X UP_ARROW_X
+#define DOWN_ARROW_Y 144
+
+static const struct ScrollArrowsTemplate sAmazonArrowsTemplate = {
+    .fullyUpThreshold = ROW_BUY_AGAIN,
+    .firstArrowType = SCROLL_ARROW_UP,
+    .firstX = UP_ARROW_X,
+    .firstY =  UP_ARROW_Y,
+
+    .fullyDownThreshold = NUM_ROWS - 1,
+    .secondArrowType = SCROLL_ARROW_DOWN,
+    .secondX = DOWN_ARROW_X,
+    .secondY = DOWN_ARROW_Y,
+
+    .tileTag = TAG_AMAZON_SCROLL_ARROW,
+    .palTag = TAG_AMAZON_SCROLL_ARROW,
+    .palNum = 0,
+};
+
+static void CreateAmazonSwitchArrowPair(void)
+{
+    if (sMenuDataPtr->AmazonUpDownArrowsTask == TASK_NONE)
+        sMenuDataPtr->AmazonUpDownArrowsTask = AddScrollIndicatorArrowPair(&sAmazonArrowsTemplate, &currentScrollableRow);
+}
+
+static void DestroyAmazonSwitchArrowPair(void)
+{
+    if (sMenuDataPtr->AmazonUpDownArrowsTask != TASK_NONE)
+    {
+        RemoveScrollIndicatorArrowPair(sMenuDataPtr->AmazonUpDownArrowsTask);
+        sMenuDataPtr->AmazonUpDownArrowsTask = TASK_NONE;
+    }
+}
+
+// -------------------------------------------------------------------------------------------------------
 
 static bool8 Menu_DoGfxSetup(void)
 {
@@ -304,6 +356,7 @@ static bool8 Menu_DoGfxSetup(void)
     default:
         SetVBlankCallback(Menu_VBlankCB);
         SetMainCallback2(Menu_MainCB);
+        CreateAmazonSwitchArrowPair();
         return TRUE;
     }
     return FALSE;
@@ -514,6 +567,7 @@ static void DestroyAllItemIcons()
 // --------------------------------------------------------------------------------------------------------------------
 
 u8 GetCurrentRow(){
+
     if(sMenuDataPtr->rowsSorted){
         return (sMenuDataPtr->currentRow + 2) % NUM_ROWS;
     }
@@ -631,8 +685,12 @@ static void PressedDownButton(){
             sMenuDataPtr->currentRow++;
             sMenuDataPtr->currentFirstShownRow++;
         }
+
+        
+        currentScrollableRow = sMenuDataPtr->currentRow;
         
         mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentRow);
+        mgba_printf(MGBA_LOG_WARN, "Current Row 2 %d", currentScrollableRow);
         mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
         mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownRow);
         mgba_printf(MGBA_LOG_WARN, "------------------------------------");
@@ -673,7 +731,10 @@ static void PressedUpButton(){
             sMenuDataPtr->currentRow--;
         }
 
+        currentScrollableRow = sMenuDataPtr->currentRow;
+
         mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentRow);
+        mgba_printf(MGBA_LOG_WARN, "Current Row 2 %d", currentScrollableRow);
         mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
         mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownRow);
         mgba_printf(MGBA_LOG_WARN, "------------------------------------");
@@ -1375,24 +1436,27 @@ static const u8 sRowIcon_Berries[]          = INCBIN_U8("graphics/ui_menus/amazo
 static const u8 sRowIcon_Candy[]            = INCBIN_U8("graphics/ui_menus/amazon/icon_candy.4bpp");
 static const u8 sRowIcon_Key[]              = INCBIN_U8("graphics/ui_menus/amazon/icon_key.4bpp");
 
-static const u8 sRowSelector[]        = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
-static const u8 sBuySelector[]        = INCBIN_U8("graphics/ui_menus/amazon/selector0.4bpp");
-static const u8 sBuySelectorNoLeft[]  = INCBIN_U8("graphics/ui_menus/amazon/selector1.4bpp");
-static const u8 sBuySelectorNoRight[] = INCBIN_U8("graphics/ui_menus/amazon/selector2.4bpp");
-static const u8 sOrderWindow[]        = INCBIN_U8("graphics/ui_menus/amazon/orderwindow.4bpp");
+static const u8 sRowSelector[]         = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
+static const u8 sBuySelector[]         = INCBIN_U8("graphics/ui_menus/amazon/selector0.4bpp");
+static const u8 sBuySelectorNoLeft[]   = INCBIN_U8("graphics/ui_menus/amazon/selector1.4bpp");
+static const u8 sBuySelectorNoRight[]  = INCBIN_U8("graphics/ui_menus/amazon/selector2.4bpp");
+static const u8 sOrderWindow[]         = INCBIN_U8("graphics/ui_menus/amazon/orderwindow.4bpp");
 static const u8 sItemSelector[]        = INCBIN_U8("graphics/ui_menus/amazon/item_selector.4bpp");
+static const u8 sUpArrow[]             = INCBIN_U8("graphics/ui_menus/amazon/arrow_up.4bpp");
+static const u8 sDownArrow[]           = INCBIN_U8("graphics/ui_menus/amazon/arrow_down.4bpp");
 
 static const u8 sText_Help_Bar[]        = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
 static const u8 sText_Help_Bar_Buy[]    = _("{DPAD_UPDOWN} +1/-1 {DPAD_LEFTRIGHT} +5/-5 {A_BUTTON} Buy Now {B_BUTTON} Cancel");
 static const u8 sText_Money_Bar[]       = _("Money: ¥{STR_VAR_1}");
+static const u8 sText_Price[]           = _("Price: ¥{STR_VAR_1}");
 static const u8 sText_FirstRowName[]    = _("{STR_VAR_1}: {STR_VAR_2}");
 static const u8 sText_ItemNameOwned[]   = _("{STR_VAR_1} - {STR_VAR_2} Owned");
 static const u8 sText_ItemCost[]        = _("Item Cost:    ¥ {STR_VAR_1}");
 static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥ {STR_VAR_1}");
-//static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥ {STR_VAR_1} ({STR_VAR_2}%)");
+//static const u8 sText_DroneFee[]      = _("Drone Fee:    ¥ {STR_VAR_1} ({STR_VAR_2}%)");
 static const u8 sText_OrderTotal[]      = _("Order Total: ¥ {STR_VAR_1}");
-static const u8 sText_ItemPrice[]      = _("¥ {STR_VAR_1}");
-static const u8 sText_DeliveryTo[]        = _("Delivery to {STR_VAR_1} ({STR_VAR_2})");
+static const u8 sText_ItemPrice[]       = _("¥ {STR_VAR_1}");
+static const u8 sText_DeliveryTo[]      = _("Delivery to {STR_VAR_1} ({STR_VAR_2})");
 
 
 static const u8 sText_OrderDelivered[]       = _("Order Delivered!");
@@ -1486,6 +1550,20 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x2 = (2 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 2;
         BlitBitmapToWindow(windowId, sItemSelector, (x*8) + x2, (y*8), 32, 24);
 
+        /*/Up Arrow 
+        if(sMenuDataPtr->currentRow != 0){
+            x = 15;
+            y = 0;
+            BlitBitmapToWindow(windowId, sUpArrow, (x*8), (y*8), 32, 16);
+        }
+
+        //Down Arrow 
+        if(sMenuDataPtr->currentRow != NUM_ROWS - 1){
+            x = 15;
+            y = 18;
+            BlitBitmapToWindow(windowId, sDownArrow, (x*8), (y*8), 32, 16);
+        }/*/
+
         //Buy Icon
         y = 5;
         x = (5 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 3;
@@ -1554,6 +1632,15 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 break;
             }
         }
+
+        // Item Price --------------------------------------------------------------------------------------------------------------------
+        x = 20;
+        y = 2;
+        quantity = GetCurrentItemPrice(sMenuDataPtr->itemQuantity, sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem], PRICE_ITEM);
+	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
+        StringExpandPlaceholders(gStringVar4, sText_Price);
+
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
 
         // Help Bar --------------------------------------------------------------------------------------------------------------------
         x = 0;
