@@ -46,12 +46,6 @@
  */
 
 //==========DEFINES==========//
-struct MenuResources
-{
-    MainCallback savedCallback;     // determines callback to run when we exit. e.g. where do we want to go after closing the menu
-    u8 gfxLoadState;
-};
-
 enum WindowIds
 {
     WINDOW_1,
@@ -79,22 +73,37 @@ enum RowIds
 #define NUM_MAX_ROWNS_ON_SCREEN 3
 #define NUM_MAX_ITEMS_PER_ROW 20
 
+struct AmazonMenuResources {
+	MainCallback savedCallback;     // determines callback to run when we exit. e.g. where do we want to go after closing the menu
+    u8 gfxLoadState;
+	u8 currentRow;
+	u8 currentItem;
+	u8 currentFirstShownRow;
+	u8 currentFirstShownItem;
+	u8 itemQuantity;
+	bool8 rowsSorted;
+	bool8 buyScreen;
+	bool8 buyWindow;
+	bool8 notEnoughMoneyWindow;
+	u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
+};
+
 //==========EWRAM==========//
-static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
+static EWRAM_DATA struct AmazonMenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 
-static EWRAM_DATA u8  currentRow = 0;             //Max 12
-static EWRAM_DATA u8  currentItem = 0;            //Max 20
-static EWRAM_DATA u8  currentFirstShownRow = 0;   //Max 9
-static EWRAM_DATA u8  currentFirstShownItem = 0;  //Max 14
-static EWRAM_DATA u8  itemQuantity = 1;           //Max 99
+//static EWRAM_DATA u8  currentRow = 0;             //Max 12
+//static EWRAM_DATA u8  currentItem = 0;            //Max 20
+//static EWRAM_DATA u8  currentFirstShownRow = 0;   //Max 9
+//static EWRAM_DATA u8  currentFirstShownItem = 0;  //Max 14
+//static EWRAM_DATA u8  itemQuantity = 1;           //Max 99
 
-static EWRAM_DATA bool8 rowsSorted = FALSE;
-static EWRAM_DATA bool8 buyScreen = FALSE;
-static EWRAM_DATA bool8 buyWindow = FALSE;
-static EWRAM_DATA bool8 notEnoughMoneyWindow = FALSE;
+//static EWRAM_DATA bool8 rowsSorted = FALSE;
+//static EWRAM_DATA bool8 buyScreen = FALSE;
+//static EWRAM_DATA bool8 buyWindow = FALSE;
+//static EWRAM_DATA bool8 notEnoughMoneyWindow = FALSE;
 
-static EWRAM_DATA u8 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW]; // should be u16, need to know how to handle EWRAM better
+//static EWRAM_DATA u8 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW]; // should be u16, need to know how to handle EWRAM better
 static EWRAM_DATA u8 spriteIDs[15];
 
 static EWRAM_DATA u8 sItemMenuIconSpriteIds_0[12] = {0};
@@ -199,7 +208,9 @@ void Task_OpenAmazonFromStartMenu(u8 taskId)
 // This is our main initialization function if you want to call the menu from elsewhere
 void Amazon_Init(MainCallback callback)
 {
-    if ((sMenuDataPtr = AllocZeroed(sizeof(struct MenuResources))) == NULL)
+    u16 size = sizeof(struct AmazonMenuResources);
+
+    if ((sMenuDataPtr = AllocZeroed(sizeof(struct AmazonMenuResources))) == NULL)
     {
         SetMainCallback2(callback);
         return;
@@ -209,7 +220,21 @@ void Amazon_Init(MainCallback callback)
     sMenuDataPtr->gfxLoadState = 0;
     sMenuDataPtr->savedCallback = callback;
 
+    
+    sMenuDataPtr->currentRow = 0;
+    sMenuDataPtr->currentItem = 0;
+    sMenuDataPtr->currentFirstShownRow  = 0;
+    sMenuDataPtr->currentFirstShownItem = 0;
+    sMenuDataPtr->itemQuantity  = 0;
+
+    sMenuDataPtr->rowsSorted = FALSE;
+    sMenuDataPtr->buyScreen = FALSE;
+    sMenuDataPtr->buyWindow = FALSE;
+    sMenuDataPtr->notEnoughMoneyWindow = FALSE;
+
     AmazonItemInitializeArrayList();
+    
+    mgba_printf(MGBA_LOG_WARN, "The Amazon EWRAM is using %d bytes out of 256kb", size);
 
     SetMainCallback2(Menu_RunSetup);
 }
@@ -307,21 +332,6 @@ static void Menu_FreeResources(void)
 {
     try_free(sMenuDataPtr);
     try_free(sBg1TilemapBuffer);
-    buyScreen = FALSE;
-    try_free(buyScreen);
-
-    try_free(currentRow);
-    try_free(currentItem);
-    try_free(currentFirstShownRow);
-    try_free(currentFirstShownItem);
-    try_free(itemQuantity);
-
-    try_free(rowsSorted);
-    try_free(buyScreen);
-    try_free(buyWindow);
-    try_free(notEnoughMoneyWindow);
-
-    try_free(currentRowItemList);
     try_free(spriteIDs);
 
     try_free(sItemMenuIconSpriteIds_0);
@@ -397,12 +407,12 @@ static void Menu_ChangeTilemap(void)
     ShowBg(1);
     ShowBg(2);
 
-    buyScreen = !buyScreen;
+    sMenuDataPtr->buyScreen = !sMenuDataPtr->buyScreen;
     ResetTempTileDataBuffers();
     DecompressAndCopyTileDataToVram(1, sMenuTiles, 0, 0, 0);
     FreeTempTileDataBuffersIfPossible();
 
-    if(buyScreen){
+    if(sMenuDataPtr->buyScreen){
         DestroyAllItemIcons();
         LZDecompressWram(sMenuTilemapBuy, sBg1TilemapBuffer);
     }
@@ -535,18 +545,18 @@ static void DestroyAllItemIcons()
 // --------------------------------------------------------------------------------------------------------------------
 
 u8 GetCurrentRow(){
-    if(rowsSorted){
-        return (currentRow + 2) % NUM_ROWS;
+    if(sMenuDataPtr->rowsSorted){
+        return (sMenuDataPtr->currentRow + 2) % NUM_ROWS;
     }
     else{
-       return currentRow % NUM_ROWS;
+       return sMenuDataPtr->currentRow % NUM_ROWS;
     }
-    return currentRow % NUM_ROWS;
+    return sMenuDataPtr->currentRow % NUM_ROWS;
 }
 
 static u8 GetCursorPosition()
 {
-    return currentRow - currentFirstShownRow;
+    return sMenuDataPtr->currentRow - sMenuDataPtr->currentFirstShownRow;
 }
 
 enum PriceTypes
@@ -580,7 +590,7 @@ u8 getCurrentRowItemNum(){
     itemNum = 0;
 
     for(i = 0; i < 20; i++){
-        if(currentRowItemList[GetCurrentRow()][i] != ITEM_NONE)
+        if(sMenuDataPtr->currentRowItemList[GetCurrentRow()][i] != ITEM_NONE)
             itemNum++;
     }
 
@@ -592,7 +602,7 @@ u8 getRowItemNum(u8 row){
 
     itemNum = 0;
 
-    if(rowsSorted){
+    if(sMenuDataPtr->rowsSorted){
         row = (row + 2) % NUM_ROWS;
     }
     else{
@@ -600,7 +610,7 @@ u8 getRowItemNum(u8 row){
     }
 
     for(i = 0; i < 20; i++){
-        if(currentRowItemList[row][i] != ITEM_NONE)
+        if(sMenuDataPtr->currentRowItemList[row][i] != ITEM_NONE)
             itemNum++;
     }
 
@@ -631,137 +641,137 @@ static u16 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
 }
 
 static void PressedDownButton(){
-    if(!buyScreen){
+    if(!sMenuDataPtr->buyScreen){
         u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
         u8 finalhalfScreen = NUM_ROWS - halfScreen;
-        u8 cursorPosition = (currentRow - currentFirstShownRow);
-        currentItem = 0;
-        currentFirstShownItem = 0;
+        u8 cursorPosition = (sMenuDataPtr->currentRow - sMenuDataPtr->currentFirstShownRow);
+        sMenuDataPtr->currentItem = 0;
+        sMenuDataPtr->currentFirstShownItem = 0;
 
-        if(currentRow < halfScreen){
-            currentRow++;
+        if(sMenuDataPtr->currentRow < halfScreen){
+            sMenuDataPtr->currentRow++;
         }
-        else if(currentRow >= (NUM_ROWS - 1)){ //If you are in the last option go to the first one
-            currentRow = 0;
-            currentFirstShownRow = 0;
+        else if(sMenuDataPtr->currentRow >= (NUM_ROWS - 1)){ //If you are in the last option go to the first one
+            sMenuDataPtr->currentRow = 0;
+            sMenuDataPtr->currentFirstShownRow = 0;
         }
-        else if(currentRow >= (finalhalfScreen - 1)){
-            currentRow++;
+        else if(sMenuDataPtr->currentRow >= (finalhalfScreen - 1)){
+            sMenuDataPtr->currentRow++;
         }
         else{
-            currentRow++;
-            currentFirstShownRow++;
+            sMenuDataPtr->currentRow++;
+            sMenuDataPtr->currentFirstShownRow++;
         }
         
-        mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentRow);
+        mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentRow);
         mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
-        mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownRow);
+        mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownRow);
         mgba_printf(MGBA_LOG_WARN, "------------------------------------");
     }
     else{
-        u16 itemID = currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem];
+        u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
         u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
 
         if(buyableItems != 0){
             if (buyableItems > MAX_BAG_ITEM_CAPACITY)
                 buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
 
-            if(itemQuantity != 0)
-                itemQuantity--;
+            if(sMenuDataPtr->itemQuantity != 0)
+                sMenuDataPtr->itemQuantity--;
             else
-                itemQuantity = buyableItems - 1;
+                sMenuDataPtr->itemQuantity = buyableItems - 1;
         }
     }
 }
 
 static void PressedUpButton(){
-    if(!buyScreen){
+    if(!sMenuDataPtr->buyScreen){
         u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
         u8 finalhalfScreen = NUM_ROWS - halfScreen;
-        u8 cursorPosition = (currentRow - currentFirstShownRow);
-        currentItem = 0;
-        currentFirstShownItem = 0;
+        u8 cursorPosition = (sMenuDataPtr->currentRow - sMenuDataPtr->currentFirstShownRow);
+        sMenuDataPtr->currentItem = 0;
+        sMenuDataPtr->currentFirstShownItem = 0;
 
-        if(currentRow > halfScreen && currentRow <= (finalhalfScreen - 1)){
-            currentRow--;
-            currentFirstShownRow--;
+        if(sMenuDataPtr->currentRow > halfScreen && sMenuDataPtr->currentRow <= (finalhalfScreen - 1)){
+            sMenuDataPtr->currentRow--;
+            sMenuDataPtr->currentFirstShownRow--;
         }
-        else if(currentRow == 0){ //If you are in the first option go to the last one
-            currentRow = NUM_ROWS - 1;
-            currentFirstShownRow = NUM_ROWS - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+        else if(sMenuDataPtr->currentRow == 0){ //If you are in the first option go to the last one
+            sMenuDataPtr->currentRow = NUM_ROWS - 1;
+            sMenuDataPtr->currentFirstShownRow = NUM_ROWS - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
         }
         else{
-            currentRow--;
+            sMenuDataPtr->currentRow--;
         }
 
-        mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentRow);
+        mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentRow);
         mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
-        mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownRow);
+        mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownRow);
         mgba_printf(MGBA_LOG_WARN, "------------------------------------");
     }
     else{
         //asdf
-        u16 itemID = currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem];
+        u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
         u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
         mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
 
-        if(itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > itemQuantity + 1)
-            itemQuantity++;
+        if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > sMenuDataPtr->itemQuantity + 1)
+            sMenuDataPtr->itemQuantity++;
         else
-            itemQuantity = 0;
+            sMenuDataPtr->itemQuantity = 0;
     }
 }
 
 static void PressedRightButton(){
     u8 itemNum, finalhalfScreen;
     u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-    u8 cursorPosition = (currentItem - currentFirstShownItem);
+    u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
 
     itemNum = getCurrentRowItemNum();
     finalhalfScreen = itemNum - halfScreen;
 
-    if(currentItem < halfScreen){
-        currentItem++;
+    if(sMenuDataPtr->currentItem < halfScreen){
+        sMenuDataPtr->currentItem++;
     }
-	else if(currentItem >= (itemNum - 1)){ //If you are in the last option go to the first one
-		currentItem = 0;
-		currentFirstShownItem = 0;
+	else if(sMenuDataPtr->currentItem >= (itemNum - 1)){ //If you are in the last option go to the first one
+		sMenuDataPtr->currentItem = 0;
+		sMenuDataPtr->currentFirstShownItem = 0;
     }
-    else if(currentItem >= (finalhalfScreen - 1)){
-        currentItem++;
+    else if(sMenuDataPtr->currentItem >= (finalhalfScreen - 1)){
+        sMenuDataPtr->currentItem++;
     }
 	else{
-        currentItem++;
-        currentFirstShownItem++;
+        sMenuDataPtr->currentItem++;
+        sMenuDataPtr->currentFirstShownItem++;
     }
     
-    mgba_printf(MGBA_LOG_WARN, "Current Item %d", currentItem);
+    mgba_printf(MGBA_LOG_WARN, "Current Item %d", sMenuDataPtr->currentItem);
     mgba_printf(MGBA_LOG_WARN, "------------------------------------");
 }
 
 static void PressedLeftButton(){
     u8 itemNum, finalhalfScreen;
     u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-    u8 cursorPosition = (currentItem - currentFirstShownItem);
+    u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
 
     itemNum = getCurrentRowItemNum();
     finalhalfScreen = itemNum - halfScreen;
 
-    if(currentItem > halfScreen && currentItem <= (finalhalfScreen - 1)){
-        currentItem--;
-        currentFirstShownItem--;
+    if(sMenuDataPtr->currentItem > halfScreen && sMenuDataPtr->currentItem <= (finalhalfScreen - 1)){
+        sMenuDataPtr->currentItem--;
+        sMenuDataPtr->currentFirstShownItem--;
     }
-	else if(currentItem == 0){ //If you are in the first option go to the last one
-		currentItem = itemNum - 1;
-		currentFirstShownItem = itemNum - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+	else if(sMenuDataPtr->currentItem == 0){ //If you are in the first option go to the last one
+		sMenuDataPtr->currentItem = itemNum - 1;
+		sMenuDataPtr->currentFirstShownItem = itemNum - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
     }
     else{
-        currentItem--;
+        sMenuDataPtr->currentItem--;
     }
 
-    mgba_printf(MGBA_LOG_WARN, "Current Row %d", currentItem);
+    mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentItem);
     mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
-    mgba_printf(MGBA_LOG_WARN, "First Row %d", currentFirstShownItem);
+    mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownItem);
     mgba_printf(MGBA_LOG_WARN, "------------------------------------");
 }
 
@@ -1285,7 +1295,8 @@ void AmazonItemInitializeArrayList()
                     canBuy = FALSE;*/
 
                 if(canBuy){
-                    currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
+                    sMenuDataPtr->currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
+                    //currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
                     itemNum[i]++;
                 }
             }
@@ -1293,7 +1304,7 @@ void AmazonItemInitializeArrayList()
                 if(gSaveBlock2Ptr->amazonBuyAgainItem[j] == ITEM_NONE)
                     gSaveBlock2Ptr->amazonBuyAgainItem[j] = ITEM_ORAN_BERRY+ j;
 
-                currentRowItemList[i][itemNum[i]] = gSaveBlock2Ptr->amazonBuyAgainItem[j];
+                sMenuDataPtr->currentRowItemList[i][itemNum[i]] = gSaveBlock2Ptr->amazonBuyAgainItem[j];
                 itemNum[i]++;
             }
         }
@@ -1405,7 +1416,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
-    if(!buyScreen){
+    if(!sMenuDataPtr->buyScreen){
         // Row Icons
         x = 1;
         y = 2;
@@ -1413,15 +1424,15 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y2 = 4;
 
         for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
-            if(currentRow % NUM_ROWS == currentFirstShownRow + i)
+            if(sMenuDataPtr->currentRow % NUM_ROWS == sMenuDataPtr->currentFirstShownRow + i)
                 BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8) + x2, ((y-1)*8) + y2 + 4, 32, 24);
 
-            if(rowsSorted)
+            if(sMenuDataPtr->rowsSorted)
                 droneFeePercentage = 2;
             else
                 droneFeePercentage = 0;
 
-            switch((currentFirstShownRow + i + droneFeePercentage) % NUM_ROWS){
+            switch((sMenuDataPtr->currentFirstShownRow + i + droneFeePercentage) % NUM_ROWS){
                 case ROW_BUY_AGAIN:
                     BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
                 break;
@@ -1468,17 +1479,17 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         }
 
         //Item Selector
-        x = (5 * (currentItem - currentFirstShownItem)) + 4;
+        x = (5 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 4;
         y = 4;
-        x2 = (2 * (currentItem - currentFirstShownItem)) + 2;
+        x2 = (2 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 2;
         BlitBitmapToWindow(windowId, sItemSelector, (x*8) + x2, (y*8), 32, 24);
 
         //Buy Icon
         y = 5;
-        x = (5 * (currentItem - currentFirstShownItem)) + 3;
-        if(currentItem == 0)
+        x = (5 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 3;
+        if(sMenuDataPtr->currentItem == 0)
             BlitBitmapToWindow(windowId, sBuySelectorNoLeft, (x*8) + x2, (y*8), 48, 16);
-        else if(currentItem == itemNum - 1)
+        else if(sMenuDataPtr->currentItem == itemNum - 1)
             BlitBitmapToWindow(windowId, sBuySelectorNoRight, (x*8) + x2, (y*8), 48, 16);
         else
             BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 48, 16);
@@ -1492,12 +1503,12 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
             for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
-                if(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % getRowItemNum(GetCurrentRow() + i)] != ITEM_NONE){
+                if(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(sMenuDataPtr->currentFirstShownItem + j) % getRowItemNum(GetCurrentRow() + i)] != ITEM_NONE){
                     if(i == 0){
-                        CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(currentFirstShownItem + j) % itemNum], itemID, (x * 8) + x2, (y * 8) + y2);
+                        CreateItemIcon(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(sMenuDataPtr->currentFirstShownItem + j) % itemNum], itemID, (x * 8) + x2, (y * 8) + y2);
                     }
                     else{
-                        CreateItemIcon(currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % getRowItemNum(GetCurrentRow() + i)], itemID, (x * 8) + x2, (y * 8) + y2);
+                        CreateItemIcon(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % getRowItemNum(GetCurrentRow() + i)], itemID, (x * 8) + x2, (y * 8) + y2);
                     }
                 }
                 
@@ -1518,7 +1529,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
             if(i == 0){
                 str = Amazon_Rows[GetCurrentRow()].title;
                 StringCopy(gStringVar1, str);
-                str = gItems[currentRowItemList[GetCurrentRow()][currentItem]].name;
+                str = gItems[sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem]].name;
                 StringCopy(gStringVar2, str);
                 StringExpandPlaceholders(gStringVar4, sText_FirstRowName);
             }
@@ -1554,7 +1565,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y = 6;
         x2 = 0;
         y2 = 0;
-        itemID = currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem];
+        itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
         CreateItemIcon(itemID, 0, (x * 8) + x2, (y * 8) + y2);
 
         //Item Name --------------------------------------------------------------------------------------------------------------------
@@ -1597,7 +1608,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x2 = 0;
         y2 = 0;
 
-        quantity = GetCurrentItemPrice(itemQuantity, itemID, PRICE_ITEM);
+        quantity = GetCurrentItemPrice(sMenuDataPtr->itemQuantity, itemID, PRICE_ITEM);
 	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
         StringExpandPlaceholders(gStringVar4, sText_ItemCost);
 
@@ -1609,7 +1620,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x2 = 0;
         y2 = 0;
 
-        quantity = GetCurrentItemPrice(itemQuantity, itemID, PRICE_DRONE);
+        quantity = GetCurrentItemPrice(sMenuDataPtr->itemQuantity, itemID, PRICE_DRONE);
 	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
 	    ConvertIntToDecimalStringN(gStringVar2, getDroneFee(), STR_CONV_MODE_LEFT_ALIGN, 2);
         StringExpandPlaceholders(gStringVar4, sText_DroneFee);
@@ -1622,7 +1633,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x2 = 0;
         y2 = 0;
 
-        quantity = GetCurrentItemPrice(itemQuantity, itemID, PRICE_FINAL);
+        quantity = GetCurrentItemPrice(sMenuDataPtr->itemQuantity, itemID, PRICE_FINAL);
 	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
         StringExpandPlaceholders(gStringVar4, sText_OrderTotal);
 
@@ -1634,7 +1645,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x2 = 4;
         y2 = 0;
 
-        quantity = itemQuantity + 1;
+        quantity = sMenuDataPtr->itemQuantity + 1;
 	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
 
         AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar1);
@@ -1657,14 +1668,14 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x = 0;
         y = 18;
 
-        if(!notEnoughMoneyWindow)
+        if(!sMenuDataPtr->notEnoughMoneyWindow)
             AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Buy);  
         else
             AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_noEnoughMoney);  
     
         // Order Delivered --------------------------------------------------------------------------------------------------------------------
-        if(buyWindow){
-            if(!notEnoughMoneyWindow){
+        if(sMenuDataPtr->buyWindow){
+            if(!sMenuDataPtr->notEnoughMoneyWindow){
                 x = 5;
                 y = 5;
 
@@ -1702,7 +1713,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, 3);
 
-    notEnoughMoneyWindow = FALSE;
+    sMenuDataPtr->notEnoughMoneyWindow = FALSE;
 }
 
 static void Task_MenuWaitFadeIn(u8 taskId)
@@ -1729,7 +1740,7 @@ static void Task_MenuBuy(u8 taskId)
 
     if (!gPaletteFade.active)
     {
-        if(buyScreen)
+        if(sMenuDataPtr->buyScreen)
             mgba_printf(MGBA_LOG_WARN, "Buy Screen");
         else
             mgba_printf(MGBA_LOG_WARN, "Not Buy Screen");
@@ -1750,7 +1761,7 @@ static void buynewItem(u16 itemId, u8 quantity){
     RemoveMoney(&gSaveBlock1Ptr->money, price);
     AddBagItem(itemId, quantity + 1);
 
-    buyWindow = TRUE;
+    sMenuDataPtr->buyWindow = TRUE;
 
     for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++){
         if(itemId == gSaveBlock2Ptr->amazonBuyAgainItem[i]){
@@ -1774,10 +1785,10 @@ static void buynewItem(u16 itemId, u8 quantity){
     gSaveBlock2Ptr->amazonBuyAgainItem[0] = itemId;
 
     for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++)
-        currentRowItemList[ROW_BUY_AGAIN][i] = gSaveBlock2Ptr->amazonBuyAgainItem[i];
+        sMenuDataPtr->currentRowItemList[ROW_BUY_AGAIN][i] = gSaveBlock2Ptr->amazonBuyAgainItem[i];
          
     if(GetCurrentRow() == ROW_BUY_AGAIN)
-        currentItem = 0;
+        sMenuDataPtr->currentItem = 0;
        
     PrintToWindow(WINDOW_1, FONT_BLACK);
 
@@ -1790,9 +1801,9 @@ static void Task_MenuMain(u8 taskId)
 {
     if (JOY_NEW(B_BUTTON))
     {
-        if(!buyWindow){
-            if(buyScreen){
-                itemQuantity = 0;
+        if(!sMenuDataPtr->buyWindow){
+            if(sMenuDataPtr->buyScreen){
+                sMenuDataPtr->itemQuantity = 0;
                 PlaySE(SE_SELECT);
                 Menu_ChangeTilemap();
                 PrintToWindow(WINDOW_1, FONT_BLACK);
@@ -1804,32 +1815,32 @@ static void Task_MenuMain(u8 taskId)
             }
         }
         else{
-            itemQuantity = 0;
-            buyWindow = FALSE;
+            sMenuDataPtr->itemQuantity = 0;
+            sMenuDataPtr->buyWindow = FALSE;
             PrintToWindow(WINDOW_1, FONT_BLACK);
         }
     }
 
     if (JOY_NEW(A_BUTTON))
     {
-        if(!buyScreen){
+        if(!sMenuDataPtr->buyScreen){
             PlaySE(SE_SELECT);
             Menu_ChangeTilemap();
             PrintToWindow(WINDOW_1, FONT_BLACK);
         }
         else{
-            if(buyWindow){
-                itemQuantity = 0;
-                buyWindow = FALSE;
+            if(sMenuDataPtr->buyWindow){
+                sMenuDataPtr->itemQuantity = 0;
+                sMenuDataPtr->buyWindow = FALSE;
                 PrintToWindow(WINDOW_1, FONT_BLACK);
             }
             else{
-                if(GetMoney(&gSaveBlock1Ptr->money) >= GetCurrentItemPrice(itemQuantity, currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem], PRICE_FINAL)){
-                    buynewItem(currentRowItemList[(GetCurrentRow()) % NUM_ROWS][currentItem], itemQuantity);
+                if(GetMoney(&gSaveBlock1Ptr->money) >= GetCurrentItemPrice(sMenuDataPtr->itemQuantity, sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem], PRICE_FINAL)){
+                    buynewItem(sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem], sMenuDataPtr->itemQuantity);
                     PlaySE(SE_SHOP);
                 }
                 else{
-                    notEnoughMoneyWindow = TRUE;
+                    sMenuDataPtr->notEnoughMoneyWindow = TRUE;
                     PlaySE(SE_FAILURE);
                 }
                 //Menu_ChangeTilemap();
@@ -1839,17 +1850,17 @@ static void Task_MenuMain(u8 taskId)
     }
 
     //
-    if(JOY_NEW(START_BUTTON) && !buyWindow)
+    if(JOY_NEW(START_BUTTON) && !sMenuDataPtr->buyWindow)
 	{
-        if(!buyScreen){
-            rowsSorted = !rowsSorted;
+        if(!sMenuDataPtr->buyScreen){
+            sMenuDataPtr->rowsSorted = !sMenuDataPtr->rowsSorted;
             PlaySE(SE_SELECT);
 
             PrintToWindow(WINDOW_1, FONT_BLACK);
         }
 	}
 
-    if(JOY_NEW(DPAD_UP) && !buyWindow)
+    if(JOY_NEW(DPAD_UP) && !sMenuDataPtr->buyWindow)
 	{
         PressedUpButton();
         PlaySE(SE_SELECT);
@@ -1857,7 +1868,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_DOWN) && !buyWindow)
+    if(JOY_NEW(DPAD_DOWN) && !sMenuDataPtr->buyWindow)
 	{
         PressedDownButton();
         PlaySE(SE_SELECT);
@@ -1865,7 +1876,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_RIGHT) && !buyWindow)
+    if(JOY_NEW(DPAD_RIGHT) && !sMenuDataPtr->buyWindow)
 	{
         PressedRightButton();
         PlaySE(SE_SELECT);
@@ -1873,7 +1884,7 @@ static void Task_MenuMain(u8 taskId)
         PrintToWindow(WINDOW_1, FONT_BLACK);
 	}
 
-    if(JOY_NEW(DPAD_LEFT) && !buyWindow)
+    if(JOY_NEW(DPAD_LEFT) && !sMenuDataPtr->buyWindow)
 	{
         PressedLeftButton();
         PlaySE(SE_SELECT);
