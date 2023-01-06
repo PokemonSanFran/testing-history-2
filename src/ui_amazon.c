@@ -679,7 +679,6 @@ static void PressedUpButton(){
         mgba_printf(MGBA_LOG_WARN, "------------------------------------");
     }
     else{
-        //asdf
         u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
         u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
         mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
@@ -691,57 +690,91 @@ static void PressedUpButton(){
     }
 }
 
+#define LEFTRIGHT_ITEM_NUMBER_CHANGE 5
+
 static void PressedRightButton(){
-    u8 itemNum, finalhalfScreen;
-    u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-    u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
+    if(!sMenuDataPtr->buyScreen){
+        u8 itemNum, finalhalfScreen;
+        u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+        u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
 
-    itemNum = getCurrentRowItemNum();
-    finalhalfScreen = itemNum - halfScreen;
+        itemNum = getCurrentRowItemNum();
+        finalhalfScreen = itemNum - halfScreen;
 
-    if(sMenuDataPtr->currentItem < halfScreen){
-        sMenuDataPtr->currentItem++;
+        if(sMenuDataPtr->currentItem < halfScreen){
+            sMenuDataPtr->currentItem++;
+        }
+        else if(sMenuDataPtr->currentItem >= (itemNum - 1)){ //If you are in the last option go to the first one
+            sMenuDataPtr->currentItem = 0;
+            sMenuDataPtr->currentFirstShownItem = 0;
+        }
+        else if(sMenuDataPtr->currentItem >= (finalhalfScreen - 1)){
+            sMenuDataPtr->currentItem++;
+        }
+        else{
+            sMenuDataPtr->currentItem++;
+            sMenuDataPtr->currentFirstShownItem++;
+        }
+        
+        mgba_printf(MGBA_LOG_WARN, "Current Item %d", sMenuDataPtr->currentItem);
+        mgba_printf(MGBA_LOG_WARN, "------------------------------------");
     }
-	else if(sMenuDataPtr->currentItem >= (itemNum - 1)){ //If you are in the last option go to the first one
-		sMenuDataPtr->currentItem = 0;
-		sMenuDataPtr->currentFirstShownItem = 0;
+    else{
+        u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
+        u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
+        mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
+
+        if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > (sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE))
+            sMenuDataPtr->itemQuantity = sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE;
+        else if(sMenuDataPtr->itemQuantity != buyableItems)
+            sMenuDataPtr->itemQuantity = buyableItems;
+        else
+            sMenuDataPtr->itemQuantity = 0;
     }
-    else if(sMenuDataPtr->currentItem >= (finalhalfScreen - 1)){
-        sMenuDataPtr->currentItem++;
-    }
-	else{
-        sMenuDataPtr->currentItem++;
-        sMenuDataPtr->currentFirstShownItem++;
-    }
-    
-    mgba_printf(MGBA_LOG_WARN, "Current Item %d", sMenuDataPtr->currentItem);
-    mgba_printf(MGBA_LOG_WARN, "------------------------------------");
 }
 
 static void PressedLeftButton(){
-    u8 itemNum, finalhalfScreen;
-    u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-    u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
+    if(!sMenuDataPtr->buyScreen){
+        u8 itemNum, finalhalfScreen;
+        u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+        u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
 
-    itemNum = getCurrentRowItemNum();
-    finalhalfScreen = itemNum - halfScreen;
+        itemNum = getCurrentRowItemNum();
+        finalhalfScreen = itemNum - halfScreen;
 
-    if(sMenuDataPtr->currentItem > halfScreen && sMenuDataPtr->currentItem <= (finalhalfScreen - 1)){
-        sMenuDataPtr->currentItem--;
-        sMenuDataPtr->currentFirstShownItem--;
-    }
-	else if(sMenuDataPtr->currentItem == 0){ //If you are in the first option go to the last one
-		sMenuDataPtr->currentItem = itemNum - 1;
-		sMenuDataPtr->currentFirstShownItem = itemNum - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+        if(sMenuDataPtr->currentItem > halfScreen && sMenuDataPtr->currentItem <= (finalhalfScreen - 1)){
+            sMenuDataPtr->currentItem--;
+            sMenuDataPtr->currentFirstShownItem--;
+        }
+        else if(sMenuDataPtr->currentItem == 0){ //If you are in the first option go to the last one
+            sMenuDataPtr->currentItem = itemNum - 1;
+            sMenuDataPtr->currentFirstShownItem = itemNum - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+        }
+        else{
+            sMenuDataPtr->currentItem--;
+        }
+
+        mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentItem);
+        mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
+        mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownItem);
+        mgba_printf(MGBA_LOG_WARN, "------------------------------------");
     }
     else{
-        sMenuDataPtr->currentItem--;
-    }
+        u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
+        u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
 
-    mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentItem);
-    mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
-    mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownItem);
-    mgba_printf(MGBA_LOG_WARN, "------------------------------------");
+        if(buyableItems != 0){
+            if (buyableItems > MAX_BAG_ITEM_CAPACITY)
+                buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
+
+            if(sMenuDataPtr->itemQuantity >= LEFTRIGHT_ITEM_NUMBER_CHANGE)
+                sMenuDataPtr->itemQuantity = sMenuDataPtr->itemQuantity - LEFTRIGHT_ITEM_NUMBER_CHANGE;
+            else if(sMenuDataPtr->itemQuantity != 0)
+                sMenuDataPtr->itemQuantity = 0;
+            else
+                sMenuDataPtr->itemQuantity = buyableItems - 1;
+        }
+    }
 }
 
 #define ROW_NAME_LENGTH 20
