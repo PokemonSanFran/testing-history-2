@@ -87,22 +87,8 @@ struct AmazonMenuResources {
 	u16 notEnoughMoneyWindow:1;      //bool8
 	u16 filler1:3;                   //Max 8
 	u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
-	u8 spriteIDs[15];
-    u8 sItemMenuIconSpriteIds_0[12];
-    u8 sItemMenuIconSpriteIds_1[12];
-    u8 sItemMenuIconSpriteIds_2[12];
-    u8 sItemMenuIconSpriteIds_3[12];
-    u8 sItemMenuIconSpriteIds_4[12];
-    u8 sItemMenuIconSpriteIds_5[12];
-    u8 sItemMenuIconSpriteIds_6[12];
-    u8 sItemMenuIconSpriteIds_7[12];
-    u8 sItemMenuIconSpriteIds_8[12];
-    u8 sItemMenuIconSpriteIds_9[12];
-    u8 sItemMenuIconSpriteIds_10[12];
-    u8 sItemMenuIconSpriteIds_11[12];
-    u8 sItemMenuIconSpriteIds_12[12];
-    u8 sItemMenuIconSpriteIds_13[12];
-    u8 sItemMenuIconSpriteIds_14[12];
+	u8 spriteIDs[18];
+    u8 sItemMenuBuyIcon[12];
     u8 AmazonUpDownArrowsTask;
     u8 AmazonLeftRightArrowsTask;
 };
@@ -301,8 +287,100 @@ static void DestroyAmazonSwitchArrowPair(void)
     }
 }
 
-// -------------------------------------------------------------------------------------------------------
+// Buy Icon Sprite -------------------------------------------------------------------------------------------------------
 
+#define TAG_AMAZON_INTERFACE 0 // Tile and pal tag used for all interface sprites.
+#define SPRITE_BUY_ICON_ID   2
+#define PAL_BUY_ICON         0
+
+enum BuyIconsSpriteIDs
+{
+    ICON_ALL,
+    ICON_NO_LEFT,
+    ICON_NO_RIGHT,
+};
+
+static const struct OamData sOamData_BuyIcon =
+{
+    .x = 32,
+    .y = 32,
+    .affineMode = ST_OAM_AFFINE_NORMAL,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(64x64),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const union AnimCmd sAnim_AmazonBuyIcon[] =
+{
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd * const sAnims_AmazonBuyIcon[] =
+{
+    sAnim_AmazonBuyIcon,
+};
+
+static const union AffineAnimCmd sAffineAnim_AmazonBuyIcon[] =
+{
+    AFFINEANIMCMD_FRAME(256, 256, 0, 0),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd * const sAffineAnims_AmazonBuyIcon[] =
+{
+    [ICON_ALL] = sAffineAnim_AmazonBuyIcon,
+    [ICON_NO_LEFT] = sAffineAnim_AmazonBuyIcon,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_AmazonBuyIcon = {gBattleAmazonBuyIcon_Gfx, 0x0800, TAG_AMAZON_INTERFACE};
+
+static const struct SpritePalette sAmazonInterfaceSpritePalette[] =
+{
+    {sMenuPalette, 0},
+    {0}
+};
+
+static const struct SpriteTemplate sSpriteTemplate_AmazonBuyIcon =
+{
+    .tileTag = TAG_AMAZON_INTERFACE,
+    .paletteTag = TAG_AMAZON_INTERFACE,
+    .oam = &sOamData_BuyIcon,
+    .anims = sAnims_AmazonBuyIcon,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AmazonBuyIcon,
+    .callback = SpriteCallbackDummy
+};
+
+static void CreateBuyIconSprite(void)
+{
+    u8 x, y, x2;
+
+    u8 spriteId;
+    LoadCompressedSpriteSheet(&sSpriteSheet_AmazonBuyIcon);
+    //LoadCompressedPalette(gBattleAmazonBuyIcon_Pal, 15 * 0x10, 16);
+    //LoadSpritePalettes(sAmazonInterfaceSpritePalette);
+
+    spriteId = CreateSprite(&sSpriteTemplate_AmazonBuyIcon, 32, 32, 0);
+    sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID] = spriteId;
+
+    y = 5;
+    x = (5 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 3;
+    x2 = 0;
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].x2 = (x * 8) + x2;
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].y2 = y * 8;
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].oam = sOamData_BuyIcon;
+    mgba_printf(MGBA_LOG_WARN, "Buy Icon ID %d", sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]);
+}
+
+// -------------------------------------------------------------------------------------------------------
 static bool8 Menu_DoGfxSetup(void)
 {
     u8 taskId;
@@ -344,6 +422,8 @@ static bool8 Menu_DoGfxSetup(void)
         gMain.state++;
         break;
     case 5:
+        CreateAmazonSwitchArrowPair();
+        CreateBuyIconSprite();
         PrintToWindow(WINDOW_1, FONT_WHITE);
         taskId = CreateTask(Task_MenuWaitFadeIn, 0);
         BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
@@ -356,7 +436,6 @@ static bool8 Menu_DoGfxSetup(void)
     default:
         SetVBlankCallback(Menu_VBlankCB);
         SetMainCallback2(Menu_MainCB);
-        CreateAmazonSwitchArrowPair();
         return TRUE;
     }
     return FALSE;
@@ -488,66 +567,21 @@ static void Menu_InitWindows(void)
     ScheduleBgCopyTilemapToVram(2);
 }
 
+#define MAX_ITEM_SPRITES 16
+#define FIRST_ITEM_SPRITE_ID 3
+
 static void CreateItemIcon(u16 itemId, u8 idx, u8 x, u8 y)
 {
     u8 * ptr;
     u8 spriteId;
+    u8 newspriteID = FIRST_ITEM_SPRITE_ID + idx;
+    u8 oldspriteID = sMenuDataPtr->spriteIDs[newspriteID];
 
-    switch(idx){
-        case 0:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_0[10];
-        break;
-        case 1:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_1[10];
-        break;
-        case 2:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_2[10];
-        break;
-        case 3:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_3[10];
-        break;
-        case 4:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_4[10];
-        break;
-        case 5:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_5[10];
-        break;
-        case 6:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_6[10];
-        break;
-        case 7:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_7[10];
-        break;
-        case 8:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_8[10];
-        break;
-        case 9:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_9[10];
-        break;
-        case 10:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_10[10];
-        break;
-        case 11:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_11[10];
-        break;
-        case 12:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_12[10];
-        break;
-        case 13:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_13[10];
-        break;
-        case 14:
-            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_14[10];
-        break;
-    }
-
-    FreeSpriteTilesByTag(102 + idx);
-    FreeSpritePaletteByTag(102 + idx);
-    spriteId = AddItemIconSprite(102 + idx, 102 + idx, itemId);
-    mgba_printf(MGBA_LOG_WARN, "SpriteID %d ID %d", idx, spriteId);
-    sMenuDataPtr->spriteIDs[idx] = spriteId;
+    spriteId = AddItemIconSprite(newspriteID, newspriteID, itemId);
+    sMenuDataPtr->spriteIDs[newspriteID] = spriteId;
+    mgba_printf(MGBA_LOG_WARN, "Created an Icon at the ID  %d", spriteId);
         
-    ptr[idx] = spriteId;
+    //ptr[idx] = spriteId;
     gSprites[spriteId].x2 = x; //24;
     gSprites[spriteId].y2 = y; //140;
 }
@@ -555,12 +589,19 @@ static void CreateItemIcon(u16 itemId, u8 idx, u8 x, u8 y)
 static void DestroyAllItemIcons()
 {
     u8 i;
+    u8 newspriteID = 0;
+    u8 oldspriteID = 0;
 
-    for(i = 0; i < MAX_SPRITES; i++){
-        FreeSpriteTilesByTag(102 + i);
-        FreeSpritePaletteByTag(102 + i);
+    for(i = 0; i < MAX_ITEM_SPRITES; i++){
+        newspriteID = FIRST_ITEM_SPRITE_ID + i;
+        oldspriteID = sMenuDataPtr->spriteIDs[newspriteID];
 
-        DestroySpriteAndFreeResources(&gSprites[i]);
+        if(sMenuDataPtr->spriteIDs[newspriteID] != 0){
+            FreeSpriteTilesByTag(newspriteID);
+            FreeSpritePaletteByTag(newspriteID);
+            DestroySpriteAndFreeResources(&gSprites[oldspriteID]);
+            mgba_printf(MGBA_LOG_WARN, "Deleted Item ID %d with the Sprite ID  %d", i, oldspriteID);
+        }
     }
 }
 
@@ -1565,14 +1606,17 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         }/*/
 
         //Buy Icon
+        gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].invisible = FALSE;
         y = 5;
         x = (5 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 3;
-        if(sMenuDataPtr->currentItem == 0)
+        gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].x2 = (x * 8) + x2;
+        gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].y2 = y * 8;
+        /*if(sMenuDataPtr->currentItem == 0)
             BlitBitmapToWindow(windowId, sBuySelectorNoLeft, (x*8) + x2, (y*8), 48, 16);
         else if(sMenuDataPtr->currentItem == itemNum - 1)
             BlitBitmapToWindow(windowId, sBuySelectorNoRight, (x*8) + x2, (y*8), 48, 16);
         else
-            BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 48, 16);
+            BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 48, 16);*/
 
         // Item Icon
         x = 6;
@@ -1580,6 +1624,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x2 = 6;
         y2 = 6;
         itemID = 0;
+        DestroyAllItemIcons();
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
             for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
@@ -1649,6 +1694,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar);
     }
     else{
+        gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].invisible = TRUE;
+
         //Item Icon --------------------------------------------------------------------------------------------------------------------
         x = 3;
         y = 6;
