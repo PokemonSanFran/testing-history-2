@@ -76,51 +76,38 @@ enum RowIds
 struct AmazonMenuResources {
 	MainCallback savedCallback;     // determines callback to run when we exit. e.g. where do we want to go after closing the menu
     u8 gfxLoadState;
-	u8 currentRow;
-	u8 currentItem;
-	u8 currentFirstShownRow;
-	u8 currentFirstShownItem;
-	u8 itemQuantity;
-	bool8 rowsSorted;
-	bool8 buyScreen;
-	bool8 buyWindow;
-	bool8 notEnoughMoneyWindow;
+	u8 currentRow:4;                //Max 12
+	u8 currentFirstShownRow:4;      //Max 9
+	u8 currentItem:5;               //Max 20
+	u8 rowsSorted:1;                //bool8
+	u8 buyScreen:1;                 //bool8
+	u8 buyWindow:1;                 //bool8
+	u8 itemQuantity:7;              //Max 99
+	u8 currentFirstShownItem:4;     //Max 14
+	u8 notEnoughMoneyWindow:1;      //bool8
+	u8 filler1:3;                   //Max 8
 	u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
+	u8 spriteIDs[15];
+    u8 sItemMenuIconSpriteIds_0[12];
+    u8 sItemMenuIconSpriteIds_1[12];
+    u8 sItemMenuIconSpriteIds_2[12];
+    u8 sItemMenuIconSpriteIds_3[12];
+    u8 sItemMenuIconSpriteIds_4[12];
+    u8 sItemMenuIconSpriteIds_5[12];
+    u8 sItemMenuIconSpriteIds_6[12];
+    u8 sItemMenuIconSpriteIds_7[12];
+    u8 sItemMenuIconSpriteIds_8[12];
+    u8 sItemMenuIconSpriteIds_9[12];
+    u8 sItemMenuIconSpriteIds_10[12];
+    u8 sItemMenuIconSpriteIds_11[12];
+    u8 sItemMenuIconSpriteIds_12[12];
+    u8 sItemMenuIconSpriteIds_13[12];
+    u8 sItemMenuIconSpriteIds_14[12];
 };
 
 //==========EWRAM==========//
 static EWRAM_DATA struct AmazonMenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
-
-//static EWRAM_DATA u8  currentRow = 0;             //Max 12
-//static EWRAM_DATA u8  currentItem = 0;            //Max 20
-//static EWRAM_DATA u8  currentFirstShownRow = 0;   //Max 9
-//static EWRAM_DATA u8  currentFirstShownItem = 0;  //Max 14
-//static EWRAM_DATA u8  itemQuantity = 1;           //Max 99
-
-//static EWRAM_DATA bool8 rowsSorted = FALSE;
-//static EWRAM_DATA bool8 buyScreen = FALSE;
-//static EWRAM_DATA bool8 buyWindow = FALSE;
-//static EWRAM_DATA bool8 notEnoughMoneyWindow = FALSE;
-
-//static EWRAM_DATA u8 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW]; // should be u16, need to know how to handle EWRAM better
-static EWRAM_DATA u8 spriteIDs[15];
-
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_0[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_1[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_2[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_3[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_4[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_5[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_6[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_7[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_8[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_9[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_10[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_11[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_12[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_13[12] = {0};
-static EWRAM_DATA u8 sItemMenuIconSpriteIds_14[12] = {0};
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -234,7 +221,7 @@ void Amazon_Init(MainCallback callback)
 
     AmazonItemInitializeArrayList();
     
-    mgba_printf(MGBA_LOG_WARN, "The Amazon EWRAM is using %d bytes out of 256kb", size);
+    mgba_printf(MGBA_LOG_WARN, "The Amazon EWRAM is using %d bytes out of 32770", size);
 
     SetMainCallback2(Menu_RunSetup);
 }
@@ -332,23 +319,6 @@ static void Menu_FreeResources(void)
 {
     try_free(sMenuDataPtr);
     try_free(sBg1TilemapBuffer);
-    try_free(spriteIDs);
-
-    try_free(sItemMenuIconSpriteIds_0);
-    try_free(sItemMenuIconSpriteIds_1);
-    try_free(sItemMenuIconSpriteIds_2);
-    try_free(sItemMenuIconSpriteIds_3);
-    try_free(sItemMenuIconSpriteIds_4);
-    try_free(sItemMenuIconSpriteIds_5);
-    try_free(sItemMenuIconSpriteIds_6);
-    try_free(sItemMenuIconSpriteIds_7);
-    try_free(sItemMenuIconSpriteIds_8);
-    try_free(sItemMenuIconSpriteIds_9);
-    try_free(sItemMenuIconSpriteIds_10);
-    try_free(sItemMenuIconSpriteIds_11);
-    try_free(sItemMenuIconSpriteIds_12);
-    try_free(sItemMenuIconSpriteIds_13);
-    try_free(sItemMenuIconSpriteIds_14);
 
     FreeAllWindowBuffers();
 }
@@ -472,49 +442,49 @@ static void CreateItemIcon(u16 itemId, u8 idx, u8 x, u8 y)
 
     switch(idx){
         case 0:
-            ptr = &sItemMenuIconSpriteIds_0[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_0[10];
         break;
         case 1:
-            ptr = &sItemMenuIconSpriteIds_1[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_1[10];
         break;
         case 2:
-            ptr = &sItemMenuIconSpriteIds_2[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_2[10];
         break;
         case 3:
-            ptr = &sItemMenuIconSpriteIds_3[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_3[10];
         break;
         case 4:
-            ptr = &sItemMenuIconSpriteIds_4[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_4[10];
         break;
         case 5:
-            ptr = &sItemMenuIconSpriteIds_5[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_5[10];
         break;
         case 6:
-            ptr = &sItemMenuIconSpriteIds_6[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_6[10];
         break;
         case 7:
-            ptr = &sItemMenuIconSpriteIds_7[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_7[10];
         break;
         case 8:
-            ptr = &sItemMenuIconSpriteIds_8[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_8[10];
         break;
         case 9:
-            ptr = &sItemMenuIconSpriteIds_9[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_9[10];
         break;
         case 10:
-            ptr = &sItemMenuIconSpriteIds_10[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_10[10];
         break;
         case 11:
-            ptr = &sItemMenuIconSpriteIds_11[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_11[10];
         break;
         case 12:
-            ptr = &sItemMenuIconSpriteIds_12[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_12[10];
         break;
         case 13:
-            ptr = &sItemMenuIconSpriteIds_13[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_13[10];
         break;
         case 14:
-            ptr = &sItemMenuIconSpriteIds_14[10];
+            ptr = &sMenuDataPtr->sItemMenuIconSpriteIds_14[10];
         break;
     }
 
@@ -522,8 +492,7 @@ static void CreateItemIcon(u16 itemId, u8 idx, u8 x, u8 y)
     FreeSpritePaletteByTag(102 + idx);
     spriteId = AddItemIconSprite(102 + idx, 102 + idx, itemId);
     mgba_printf(MGBA_LOG_WARN, "SpriteID %d ID %d", idx, spriteId);
-    //currentRowItemList[ROW_BUY_AGAIN][MAX_AMAZON_BUY_AGAIN_ITEMS + idx] = spriteId; //To reutilize VRAM
-    spriteIDs[idx] = spriteId;
+    sMenuDataPtr->spriteIDs[idx] = spriteId;
         
     ptr[idx] = spriteId;
     gSprites[spriteId].x2 = x; //24;
