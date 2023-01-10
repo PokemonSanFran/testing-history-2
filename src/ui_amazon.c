@@ -1358,20 +1358,6 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     [ROW_MEGA_STONES] =
     {
         {
-            .item = ITEM_POKE_BALL,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_ULTRA_BALL,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
             .item = ITEM_VENUSAURITE,
             .numBadges = 0,
             .reqFlag = FLAG_NONE,
