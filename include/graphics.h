@@ -7314,6 +7314,7 @@ extern const u32 gPokeblock_Gfx[];
 
 extern const u32 gItemIcon_QuestionMark[];
 extern const u32 gItemIconPalette_QuestionMark[];
+extern const u32 gItemIcon_NoItem[];
 
 // Decorations
 extern const u32 gDecorIcon_HeavyDesk[];
@@ -10418,7 +10419,4 @@ extern const u16 gMonMarkingsMenu_Pal[];
 //New to PSF
 extern const u32 gItemIcon_FashionCase[];
 extern const u32 gItemIconPalette_FashionCase[];
-
-extern const u32 gBattleAmazonBuyIcon_Gfx[];
-extern const u32 gBattleAmazonBuyIcon_Pal[];
 #endif //GUARD_GRAPHICS_H

@@ -9,6 +9,7 @@
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "item.h"
+#include "trig.h"
 #include "item_icon.h"
 #include "item_menu.h"
 #include "item_menu_icons.h"
@@ -87,7 +88,7 @@ struct AmazonMenuResources {
 	u16 notEnoughMoneyWindow:1;      //bool8
 	u16 filler1:3;                   //Max 8
 	u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
-	u8 spriteIDs[18];
+	u8 spriteIDs[20];
     u8 sItemMenuBuyIcon[12];
     u8 AmazonUpDownArrowsTask;
     u8 AmazonLeftRightArrowsTask;
@@ -96,7 +97,6 @@ struct AmazonMenuResources {
 //==========EWRAM==========//
 static EWRAM_DATA struct AmazonMenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
-static EWRAM_DATA u16 currentScrollableRow = 0;
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -245,139 +245,246 @@ static void Menu_VBlankCB(void)
     TransferPlttBuffer();
 }
 
-// Arrow Functions -------------------------------------------------------------------------------------------------------
+u8 GetCurrentRow(){
 
-#define TAG_POCKET_SCROLL_ARROW 110
-#define TAG_AMAZON_SCROLL_ARROW 100
-
-#define UP_ARROW_X 136
-#define UP_ARROW_Y 8
-
-#define DOWN_ARROW_X UP_ARROW_X
-#define DOWN_ARROW_Y 144
-
-static const struct ScrollArrowsTemplate sAmazonArrowsTemplate = {
-    .fullyUpThreshold = ROW_BUY_AGAIN,
-    .firstArrowType = SCROLL_ARROW_UP,
-    .firstX = UP_ARROW_X,
-    .firstY =  UP_ARROW_Y,
-
-    .fullyDownThreshold = NUM_ROWS - 1,
-    .secondArrowType = SCROLL_ARROW_DOWN,
-    .secondX = DOWN_ARROW_X,
-    .secondY = DOWN_ARROW_Y,
-
-    .tileTag = TAG_AMAZON_SCROLL_ARROW,
-    .palTag = TAG_AMAZON_SCROLL_ARROW,
-    .palNum = 0,
-};
-
-static void CreateAmazonSwitchArrowPair(void)
-{
-    if (sMenuDataPtr->AmazonUpDownArrowsTask == TASK_NONE)
-        sMenuDataPtr->AmazonUpDownArrowsTask = AddScrollIndicatorArrowPair(&sAmazonArrowsTemplate, &currentScrollableRow);
+    if(sMenuDataPtr->rowsSorted){
+        return (sMenuDataPtr->currentRow + 2) % NUM_ROWS;
+    }
+    else{
+       return sMenuDataPtr->currentRow % NUM_ROWS;
+    }
+    return sMenuDataPtr->currentRow % NUM_ROWS;
 }
 
-static void DestroyAmazonSwitchArrowPair(void)
+u8 getCurrentRowItemNum(){
+    u8 i, itemNum;
+
+    itemNum = 0;
+
+    for(i = 0; i < 20; i++){
+        if(sMenuDataPtr->currentRowItemList[GetCurrentRow()][i] != ITEM_NONE)
+            itemNum++;
+    }
+
+    return itemNum;
+}
+
+// Sprite Callback -------------------------------------------------------------------------------------------------------
+
+static void SpriteCB_BuyIcon(struct Sprite *sprite)
 {
-    if (sMenuDataPtr->AmazonUpDownArrowsTask != TASK_NONE)
-    {
-        RemoveScrollIndicatorArrowPair(sMenuDataPtr->AmazonUpDownArrowsTask);
-        sMenuDataPtr->AmazonUpDownArrowsTask = TASK_NONE;
+    if(sMenuDataPtr->buyScreen)
+        sprite->invisible = TRUE;
+    else{
+        u8 num = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
+        u8 x = (5 * num);
+        sprite->x2 = (x * 8) + (2 * num);
+        sprite->invisible = FALSE;
     }
 }
 
+static void SpriteCB_AmazonInvisibleOnBuyMenu(struct Sprite *sprite)
+{
+    if(sMenuDataPtr->buyScreen)
+        sprite->invisible = TRUE;
+    else{
+        sprite->invisible = FALSE;
+    }
+}
+
+static void SpriteCallback_UpArrow(struct Sprite *sprite)
+{
+    u8 val = sprite->data[0];
+    sprite->y2 = gSineTable[val] / 128;
+    sprite->data[0] += 8;
+
+    if(sMenuDataPtr->buyScreen || sMenuDataPtr->currentRow == ROW_BUY_AGAIN)
+        sprite->invisible = TRUE;
+    else
+        sprite->invisible = FALSE;
+}
+
+static void SpriteCallback_DownArrow(struct Sprite *sprite)
+{
+    u8 val = sprite->data[0] + 128;
+    sprite->y2 = gSineTable[val] / 128;
+    sprite->data[0] += 8;
+
+    if(sMenuDataPtr->buyScreen || sMenuDataPtr->currentRow == NUM_ROWS - 1)
+        sprite->invisible = TRUE;
+    else
+        sprite->invisible = FALSE;
+}
+
+#define LEFT_ARROW_X 30
+#define LEFT_ARROW_Y 43
+#define RIGHT_ARROW_X 70
+#define RIGHT_ARROW_Y 43
+
+static void SpriteCallback_LeftArrow(struct Sprite *sprite)
+{
+    u8 num = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
+    u8 x = (5 * num);
+    u8 val = sprite->data[0] + 128;
+    sprite->x = LEFT_ARROW_X + (x * 8) + (2 * num);
+
+    sprite->x2 = gSineTable[val] / 128;
+    sprite->data[0] += 8;
+
+    if(sMenuDataPtr->buyScreen || sMenuDataPtr->currentItem == 0)
+        sprite->invisible = TRUE;
+    else
+        sprite->invisible = FALSE;
+}
+
+static void SpriteCallback_RightArrow(struct Sprite *sprite)
+{
+    u8 itemNum = getCurrentRowItemNum();
+    u8 val = sprite->data[0];
+    u8 num = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
+    u8 x = (5 * num);
+
+    sprite->x = RIGHT_ARROW_X + (x * 8) + (2 * num);
+    sprite->x2 = gSineTable[val] / 128;
+    sprite->data[0] += 8;
+
+    if(sMenuDataPtr->buyScreen || sMenuDataPtr->currentItem == itemNum - 1)
+        sprite->invisible = TRUE;
+    else
+        sprite->invisible = FALSE;
+}
+
 // Buy Icon Sprite -------------------------------------------------------------------------------------------------------
-
 #define TAG_AMAZON_INTERFACE 0 // Tile and pal tag used for all interface sprites.
-#define SPRITE_BUY_ICON_ID   2
-#define PAL_BUY_ICON         0
+#define PAL_UI_SPRITES 0
 
-enum BuyIconsSpriteIDs
+enum AmazonSpriteIDs
 {
-    ICON_ALL,
-    ICON_NO_LEFT,
-    ICON_NO_RIGHT,
+    SPRITE_BUY_ICON_ID,
+    SPRITE_UP_ARROW,
+    SPRITE_DOWN_ARROW,
+    SPRITE_LEFT_ARROW,
+    SPRITE_RIGHT_ARROW,
+    NUM_AMAZON_SPRITES,
 };
 
-static const struct OamData sOamData_BuyIcon =
-{
-    .x = 32,
-    .y = 32,
-    .affineMode = ST_OAM_AFFINE_NORMAL,
-    .objMode = ST_OAM_OBJ_NORMAL,
-    .mosaic = FALSE,
-    .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(64x64),
-    .matrixNum = 0,
-    .size = SPRITE_SIZE(64x64),
-    .tileNum = 0,
-    .priority = 1,
-    .paletteNum = 0,
-    .affineParam = 0,
+enum {
+    GFXTAG_BUY_ICON = TAG_AMAZON_INTERFACE,
+    GFXTAG_UP_ARROW,
+    GFXTAG_DOWN_ARROW,
+    GFXTAG_LEFT_ARROW,
+    GFXTAG_RIGHT_ARROW,
 };
 
-static const union AnimCmd sAnim_AmazonBuyIcon[] =
-{
-    ANIMCMD_FRAME(0, 4),
-    ANIMCMD_END,
-};
+static const u32 gBattleAmazonBuyIcon_Gfx[]    = INCBIN_U32("graphics/ui_menus/amazon/buyicon.4bpp.lz");
+static const u32 gBattleAmazonUpArrow_Gfx[]    = INCBIN_U32("graphics/ui_menus/amazon/arrow_up.4bpp.lz");
+static const u32 gBattleAmazonDownArrow_Gfx[]  = INCBIN_U32("graphics/ui_menus/amazon/arrow_down.4bpp.lz");
+static const u32 gBattleAmazonLeftArrow_Gfx[]  = INCBIN_U32("graphics/ui_menus/amazon/arrow_left.4bpp.lz");
+static const u32 gBattleAmazonRightArrow_Gfx[] = INCBIN_U32("graphics/ui_menus/amazon/arrow_right.4bpp.lz");
 
-static const union AnimCmd * const sAnims_AmazonBuyIcon[] =
-{
-    sAnim_AmazonBuyIcon,
-};
-
-static const union AffineAnimCmd sAffineAnim_AmazonBuyIcon[] =
-{
-    AFFINEANIMCMD_FRAME(256, 256, 0, 0),
-    AFFINEANIMCMD_END,
-};
-
-static const union AffineAnimCmd * const sAffineAnims_AmazonBuyIcon[] =
-{
-    [ICON_ALL] = sAffineAnim_AmazonBuyIcon,
-    [ICON_NO_LEFT] = sAffineAnim_AmazonBuyIcon,
-};
-
-static const struct CompressedSpriteSheet sSpriteSheet_AmazonBuyIcon = {gBattleAmazonBuyIcon_Gfx, 0x0800, TAG_AMAZON_INTERFACE};
-
-static const struct SpritePalette sAmazonInterfaceSpritePalette[] =
-{
-    {sMenuPalette, 0},
-    {0}
-};
-
-static const struct SpriteTemplate sSpriteTemplate_AmazonBuyIcon =
-{
-    .tileTag = TAG_AMAZON_INTERFACE,
-    .paletteTag = TAG_AMAZON_INTERFACE,
-    .oam = &sOamData_BuyIcon,
-    .anims = sAnims_AmazonBuyIcon,
-    .images = NULL,
-    .affineAnims = sAffineAnims_AmazonBuyIcon,
-    .callback = SpriteCallbackDummy
-};
+static const struct SpritePalette sAmazonInterfaceSpritePalette[] = {sMenuPalette, PAL_UI_SPRITES};
 
 static void CreateBuyIconSprite(void)
 {
-    u8 x, y, x2;
-
     u8 spriteId;
-    LoadCompressedSpriteSheet(&sSpriteSheet_AmazonBuyIcon);
-    //LoadCompressedPalette(gBattleAmazonBuyIcon_Pal, 15 * 0x10, 16);
-    //LoadSpritePalettes(sAmazonInterfaceSpritePalette);
+    u8 SpriteTag = GFXTAG_BUY_ICON;
+    struct CompressedSpriteSheet sSpriteSheet_AmazonBuyIcon = {gBattleAmazonBuyIcon_Gfx, 0x0800, SpriteTag};
+    struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
 
-    spriteId = CreateSprite(&sSpriteTemplate_AmazonBuyIcon, 32, 32, 0);
+    TempSpriteTemplate.tileTag = SpriteTag;
+    TempSpriteTemplate.callback = SpriteCB_BuyIcon;
+
+    LoadCompressedSpriteSheet(&sSpriteSheet_AmazonBuyIcon);
+    LoadSpritePalette(sAmazonInterfaceSpritePalette);
+    spriteId = CreateSprite(&TempSpriteTemplate, 38, 43, 0);
     sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID] = spriteId;
 
-    y = 5;
-    x = (5 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 3;
-    x2 = 0;
-    gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].x2 = (x * 8) + x2;
-    gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].y2 = y * 8;
-    gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].oam = sOamData_BuyIcon;
-    mgba_printf(MGBA_LOG_WARN, "Buy Icon ID %d", sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]);
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].oam.shape = SPRITE_SHAPE(32x16);
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].oam.size = SPRITE_SIZE(32x16);
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].oam.priority = 1;
+}
+
+#define UP_ARROW_X 120
+#define UP_ARROW_Y 0
+
+static void CreateUpArrowSprite(void)
+{
+    u8 x, y, spriteId;
+    u8 SpriteTag = GFXTAG_UP_ARROW;
+    struct CompressedSpriteSheet sSpriteSheet_AmazonUpArrow = {gBattleAmazonUpArrow_Gfx, 0x0800, SpriteTag};
+    struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
+
+    TempSpriteTemplate.tileTag = SpriteTag;
+    TempSpriteTemplate.callback = SpriteCallback_UpArrow;
+
+    LoadCompressedSpriteSheet(&sSpriteSheet_AmazonUpArrow);
+    spriteId = CreateSprite(&TempSpriteTemplate, UP_ARROW_X, UP_ARROW_Y, 0);
+    sMenuDataPtr->spriteIDs[SPRITE_UP_ARROW] = spriteId;
+
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_UP_ARROW]].oam.shape = SPRITE_SHAPE(32x16);
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_UP_ARROW]].oam.size = SPRITE_SIZE(32x16);
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_UP_ARROW]].oam.priority = 1;
+}
+
+#define DOWN_ARROW_X UP_ARROW_X
+#define DOWN_ARROW_Y 146
+
+static void CreateDownArrowSprite(void)
+{
+    u8 x, y, spriteId;
+    u8 SpriteTag = GFXTAG_DOWN_ARROW;
+    struct CompressedSpriteSheet sSpriteSheet_AmazonDownArrow = {gBattleAmazonDownArrow_Gfx, 0x0800, SpriteTag};
+    struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
+
+    TempSpriteTemplate.tileTag = SpriteTag;
+    TempSpriteTemplate.callback = SpriteCallback_DownArrow;
+
+    LoadCompressedSpriteSheet(&sSpriteSheet_AmazonDownArrow);
+    spriteId = CreateSprite(&TempSpriteTemplate, DOWN_ARROW_X, DOWN_ARROW_Y, 0);
+    sMenuDataPtr->spriteIDs[SPRITE_DOWN_ARROW] = spriteId;
+
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_DOWN_ARROW]].oam.shape = SPRITE_SHAPE(32x16);
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_DOWN_ARROW]].oam.size = SPRITE_SIZE(32x16);
+    gSprites[sMenuDataPtr->spriteIDs[SPRITE_DOWN_ARROW]].oam.priority = 1;
+}
+
+
+static void CreateLeftArrowSprite(void)
+{
+    u8 x, y, spriteId;
+    u8 SpriteTag = GFXTAG_LEFT_ARROW;
+    struct CompressedSpriteSheet sSpriteSheet_AmazonLeftArrow = {gBattleAmazonLeftArrow_Gfx, 0x0800, SpriteTag};
+    struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
+
+    TempSpriteTemplate.tileTag  = SpriteTag;
+    TempSpriteTemplate.callback = SpriteCallback_LeftArrow;
+
+    LoadCompressedSpriteSheet(&sSpriteSheet_AmazonLeftArrow);
+    spriteId = CreateSprite(&TempSpriteTemplate, LEFT_ARROW_X, LEFT_ARROW_Y, 0);
+    sMenuDataPtr->spriteIDs[SpriteTag] = spriteId;
+
+    gSprites[sMenuDataPtr->spriteIDs[SpriteTag]].oam.shape = SPRITE_SHAPE(8x16);
+    gSprites[sMenuDataPtr->spriteIDs[SpriteTag]].oam.size = SPRITE_SIZE(8x16);
+    gSprites[sMenuDataPtr->spriteIDs[SpriteTag]].oam.priority = 1;
+}
+
+static void CreateRightArrowSprite(void)
+{
+    u8 x, y, spriteId;
+    u8 SpriteTag = GFXTAG_RIGHT_ARROW;
+    struct CompressedSpriteSheet sSpriteSheet_AmazonLeftArrow = {gBattleAmazonRightArrow_Gfx, 0x0800, SpriteTag};
+    struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
+
+    TempSpriteTemplate.tileTag  = SpriteTag;
+    TempSpriteTemplate.callback = SpriteCallback_RightArrow;
+
+    LoadCompressedSpriteSheet(&sSpriteSheet_AmazonLeftArrow);
+    spriteId = CreateSprite(&TempSpriteTemplate, RIGHT_ARROW_X, RIGHT_ARROW_Y, 0);
+    sMenuDataPtr->spriteIDs[SpriteTag] = spriteId;
+
+    gSprites[sMenuDataPtr->spriteIDs[SpriteTag]].oam.shape = SPRITE_SHAPE(8x16);
+    gSprites[sMenuDataPtr->spriteIDs[SpriteTag]].oam.size = SPRITE_SIZE(8x16);
+    gSprites[sMenuDataPtr->spriteIDs[SpriteTag]].oam.priority = 1;
 }
 
 // -------------------------------------------------------------------------------------------------------
@@ -422,8 +529,11 @@ static bool8 Menu_DoGfxSetup(void)
         gMain.state++;
         break;
     case 5:
-        CreateAmazonSwitchArrowPair();
         CreateBuyIconSprite();
+        CreateUpArrowSprite();
+        CreateDownArrowSprite();
+        CreateLeftArrowSprite();
+        CreateRightArrowSprite();
         PrintToWindow(WINDOW_1, FONT_WHITE);
         taskId = CreateTask(Task_MenuWaitFadeIn, 0);
         BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
@@ -568,20 +678,16 @@ static void Menu_InitWindows(void)
 }
 
 #define MAX_ITEM_SPRITES 16
-#define FIRST_ITEM_SPRITE_ID 3
+#define FIRST_ITEM_SPRITE_ID NUM_AMAZON_SPRITES
 
 static void CreateItemIcon(u16 itemId, u8 idx, u8 x, u8 y)
 {
-    u8 * ptr;
     u8 spriteId;
     u8 newspriteID = FIRST_ITEM_SPRITE_ID + idx;
-    u8 oldspriteID = sMenuDataPtr->spriteIDs[newspriteID];
 
     spriteId = AddItemIconSprite(newspriteID, newspriteID, itemId);
+
     sMenuDataPtr->spriteIDs[newspriteID] = spriteId;
-    mgba_printf(MGBA_LOG_WARN, "Created an Icon at the ID  %d", spriteId);
-        
-    //ptr[idx] = spriteId;
     gSprites[spriteId].x2 = x; //24;
     gSprites[spriteId].y2 = y; //140;
 }
@@ -600,23 +706,11 @@ static void DestroyAllItemIcons()
             FreeSpriteTilesByTag(newspriteID);
             FreeSpritePaletteByTag(newspriteID);
             DestroySpriteAndFreeResources(&gSprites[oldspriteID]);
-            mgba_printf(MGBA_LOG_WARN, "Deleted Item ID %d with the Sprite ID  %d", i, oldspriteID);
         }
     }
 }
 
 // --------------------------------------------------------------------------------------------------------------------
-
-u8 GetCurrentRow(){
-
-    if(sMenuDataPtr->rowsSorted){
-        return (sMenuDataPtr->currentRow + 2) % NUM_ROWS;
-    }
-    else{
-       return sMenuDataPtr->currentRow % NUM_ROWS;
-    }
-    return sMenuDataPtr->currentRow % NUM_ROWS;
-}
 
 static u8 GetCursorPosition()
 {
@@ -648,19 +742,6 @@ u8 getDroneFee(){
     return droneFeePercentage;
 }
 
-u8 getCurrentRowItemNum(){
-    u8 i, itemNum;
-
-    itemNum = 0;
-
-    for(i = 0; i < 20; i++){
-        if(sMenuDataPtr->currentRowItemList[GetCurrentRow()][i] != ITEM_NONE)
-            itemNum++;
-    }
-
-    return itemNum;
-}
-
 u8 getRowItemNum(u8 row){
     u8 i, itemNum;
 
@@ -687,8 +768,6 @@ static u16 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
     u16 dronePrice = (itemPrice * getDroneFee()) / 100;
     u16 totalPrice = itemPrice + dronePrice;
 
-    mgba_printf(MGBA_LOG_WARN, "Drone Price %d", dronePrice);
-
     switch(type){
         case PRICE_ITEM:
             return itemPrice;
@@ -706,35 +785,29 @@ static u16 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
 
 static void PressedDownButton(){
     if(!sMenuDataPtr->buyScreen){
-        u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-        u8 finalhalfScreen = NUM_ROWS - halfScreen;
-        u8 cursorPosition = (sMenuDataPtr->currentRow - sMenuDataPtr->currentFirstShownRow);
-        sMenuDataPtr->currentItem = 0;
-        sMenuDataPtr->currentFirstShownItem = 0;
+        do{
+            u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+            u8 finalhalfScreen = NUM_ROWS - halfScreen;
+            u8 cursorPosition = (sMenuDataPtr->currentRow - sMenuDataPtr->currentFirstShownRow);
+            sMenuDataPtr->currentItem = 0;
+            sMenuDataPtr->currentFirstShownItem = 0;
 
-        if(sMenuDataPtr->currentRow < halfScreen){
-            sMenuDataPtr->currentRow++;
+            if(sMenuDataPtr->currentRow < halfScreen){
+                sMenuDataPtr->currentRow++;
+            }
+            else if(sMenuDataPtr->currentRow >= (NUM_ROWS - 1)){ //If you are in the last option go to the first one
+                sMenuDataPtr->currentRow = 0;
+                sMenuDataPtr->currentFirstShownRow = 0;
+            }
+            else if(sMenuDataPtr->currentRow >= (finalhalfScreen - 1)){
+                sMenuDataPtr->currentRow++;
+            }
+            else{
+                sMenuDataPtr->currentRow++;
+                sMenuDataPtr->currentFirstShownRow++;
+            }
         }
-        else if(sMenuDataPtr->currentRow >= (NUM_ROWS - 1)){ //If you are in the last option go to the first one
-            sMenuDataPtr->currentRow = 0;
-            sMenuDataPtr->currentFirstShownRow = 0;
-        }
-        else if(sMenuDataPtr->currentRow >= (finalhalfScreen - 1)){
-            sMenuDataPtr->currentRow++;
-        }
-        else{
-            sMenuDataPtr->currentRow++;
-            sMenuDataPtr->currentFirstShownRow++;
-        }
-
-        
-        currentScrollableRow = sMenuDataPtr->currentRow;
-        
-        mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentRow);
-        mgba_printf(MGBA_LOG_WARN, "Current Row 2 %d", currentScrollableRow);
-        mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
-        mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownRow);
-        mgba_printf(MGBA_LOG_WARN, "------------------------------------");
+        while(sMenuDataPtr->currentRowItemList[GetCurrentRow()][0] == ITEM_NONE);
     }
     else{
         u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
@@ -754,31 +827,26 @@ static void PressedDownButton(){
 
 static void PressedUpButton(){
     if(!sMenuDataPtr->buyScreen){
-        u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
-        u8 finalhalfScreen = NUM_ROWS - halfScreen;
-        u8 cursorPosition = (sMenuDataPtr->currentRow - sMenuDataPtr->currentFirstShownRow);
-        sMenuDataPtr->currentItem = 0;
-        sMenuDataPtr->currentFirstShownItem = 0;
+        do{
+            u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
+            u8 finalhalfScreen = NUM_ROWS - halfScreen;
+            u8 cursorPosition = (sMenuDataPtr->currentRow - sMenuDataPtr->currentFirstShownRow);
+            sMenuDataPtr->currentItem = 0;
+            sMenuDataPtr->currentFirstShownItem = 0;
 
-        if(sMenuDataPtr->currentRow > halfScreen && sMenuDataPtr->currentRow <= (finalhalfScreen - 1)){
-            sMenuDataPtr->currentRow--;
-            sMenuDataPtr->currentFirstShownRow--;
+            if(sMenuDataPtr->currentRow > halfScreen && sMenuDataPtr->currentRow <= (finalhalfScreen - 1)){
+                sMenuDataPtr->currentRow--;
+                sMenuDataPtr->currentFirstShownRow--;
+            }
+            else if(sMenuDataPtr->currentRow == 0){ //If you are in the first option go to the last one
+                sMenuDataPtr->currentRow = NUM_ROWS - 1;
+                sMenuDataPtr->currentFirstShownRow = NUM_ROWS - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+            }
+            else{
+                sMenuDataPtr->currentRow--;
+            }
         }
-        else if(sMenuDataPtr->currentRow == 0){ //If you are in the first option go to the last one
-            sMenuDataPtr->currentRow = NUM_ROWS - 1;
-            sMenuDataPtr->currentFirstShownRow = NUM_ROWS - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
-        }
-        else{
-            sMenuDataPtr->currentRow--;
-        }
-
-        currentScrollableRow = sMenuDataPtr->currentRow;
-
-        mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentRow);
-        mgba_printf(MGBA_LOG_WARN, "Current Row 2 %d", currentScrollableRow);
-        mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
-        mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownRow);
-        mgba_printf(MGBA_LOG_WARN, "------------------------------------");
+        while(sMenuDataPtr->currentRowItemList[GetCurrentRow()][0] == ITEM_NONE);
     }
     else{
         u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
@@ -817,14 +885,16 @@ static void PressedRightButton(){
             sMenuDataPtr->currentItem++;
             sMenuDataPtr->currentFirstShownItem++;
         }
-        
-        mgba_printf(MGBA_LOG_WARN, "Current Item %d", sMenuDataPtr->currentItem);
-        mgba_printf(MGBA_LOG_WARN, "------------------------------------");
+
+        if(sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem] == ITEM_NONE){ //If you are in the last option go to the first one
+            sMenuDataPtr->currentItem = 0;
+            sMenuDataPtr->currentFirstShownItem = 0;
+        }
     }
     else{
         u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
         u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
-        mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
+        //mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
 
         if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > (sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE))
             sMenuDataPtr->itemQuantity = sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE;
@@ -850,16 +920,12 @@ static void PressedLeftButton(){
         }
         else if(sMenuDataPtr->currentItem == 0){ //If you are in the first option go to the last one
             sMenuDataPtr->currentItem = itemNum - 1;
-            sMenuDataPtr->currentFirstShownItem = itemNum - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+            if(itemNum > NUM_MAX_ICONS_ROWNS_ON_SCREEN)
+                sMenuDataPtr->currentFirstShownItem = itemNum - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
         }
         else{
             sMenuDataPtr->currentItem--;
         }
-
-        mgba_printf(MGBA_LOG_WARN, "Current Row %d", sMenuDataPtr->currentItem);
-        mgba_printf(MGBA_LOG_WARN, "Cursor Position %d", cursorPosition);
-        mgba_printf(MGBA_LOG_WARN, "First Row %d", sMenuDataPtr->currentFirstShownItem);
-        mgba_printf(MGBA_LOG_WARN, "------------------------------------");
     }
     else{
         u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
@@ -1292,6 +1358,20 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     [ROW_MEGA_STONES] =
     {
         {
+            .item = ITEM_POKE_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+        },
+        {
+            .item = ITEM_ULTRA_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+        },
+        {
             .item = ITEM_VENUSAURITE,
             .numBadges = 0,
             .reqFlag = FLAG_NONE,
@@ -1376,11 +1456,14 @@ void AmazonItemInitializeArrayList()
     u8 itemNum[NUM_ROWS];
     
     for (badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++){
-        if (FlagGet(badgeFlag))
-        numbadges++;
+        if(FlagGet(badgeFlag))
+            numbadges++;
     }
 
     for(i = 0; i < NUM_ROWS; i++){
+        for(j = 0; j < NUM_MAX_ITEMS_PER_ROW; j++)
+            sMenuDataPtr->currentRowItemList[i][j] = ITEM_NONE;
+
         itemNum[i] = 0;
         for(j = 0; j < NUM_MAX_ITEMS_PER_ROW; j++){
             if(Amazon_Items[i][j].item != ITEM_NONE && i != ROW_BUY_AGAIN){
@@ -1395,8 +1478,8 @@ void AmazonItemInitializeArrayList()
                 if(numbadges < Amazon_Items[i][j].numBadges && Amazon_Items[i][j].numBadges != 0)
                     canBuy = FALSE;
 
-                /*if(gItems[Amazon_Items[i][j].item].price == 0)
-                    canBuy = FALSE;*/
+                if(gItems[Amazon_Items[i][j].item].price == 0)
+                    canBuy = FALSE;
 
                 if(canBuy){
                     sMenuDataPtr->currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
@@ -1478,13 +1561,8 @@ static const u8 sRowIcon_Candy[]            = INCBIN_U8("graphics/ui_menus/amazo
 static const u8 sRowIcon_Key[]              = INCBIN_U8("graphics/ui_menus/amazon/icon_key.4bpp");
 
 static const u8 sRowSelector[]         = INCBIN_U8("graphics/ui_menus/amazon/row_selector.4bpp");
-static const u8 sBuySelector[]         = INCBIN_U8("graphics/ui_menus/amazon/selector0.4bpp");
-static const u8 sBuySelectorNoLeft[]   = INCBIN_U8("graphics/ui_menus/amazon/selector1.4bpp");
-static const u8 sBuySelectorNoRight[]  = INCBIN_U8("graphics/ui_menus/amazon/selector2.4bpp");
 static const u8 sOrderWindow[]         = INCBIN_U8("graphics/ui_menus/amazon/orderwindow.4bpp");
 static const u8 sItemSelector[]        = INCBIN_U8("graphics/ui_menus/amazon/item_selector.4bpp");
-static const u8 sUpArrow[]             = INCBIN_U8("graphics/ui_menus/amazon/arrow_up.4bpp");
-static const u8 sDownArrow[]           = INCBIN_U8("graphics/ui_menus/amazon/arrow_down.4bpp");
 
 static const u8 sText_Help_Bar[]        = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
 static const u8 sText_Help_Bar_Buy[]    = _("{DPAD_UPDOWN} +1/-1 {DPAD_LEFTRIGHT} +5/-5 {A_BUTTON} Buy Now {B_BUTTON} Cancel");
@@ -1520,6 +1598,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     u8 droneFeePercentage;
     u8 strArray[16];
     u8 itemNum = getCurrentRowItemNum();
+    u8 temp;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
@@ -1591,55 +1670,23 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x2 = (2 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 2;
         BlitBitmapToWindow(windowId, sItemSelector, (x*8) + x2, (y*8), 32, 24);
 
-        /*/Up Arrow 
-        if(sMenuDataPtr->currentRow != 0){
-            x = 15;
-            y = 0;
-            BlitBitmapToWindow(windowId, sUpArrow, (x*8), (y*8), 32, 16);
-        }
-
-        //Down Arrow 
-        if(sMenuDataPtr->currentRow != NUM_ROWS - 1){
-            x = 15;
-            y = 18;
-            BlitBitmapToWindow(windowId, sDownArrow, (x*8), (y*8), 32, 16);
-        }/*/
-
-        //Buy Icon
-        gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].invisible = FALSE;
-        y = 5;
-        x = (5 * (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem)) + 3;
-        gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].x2 = (x * 8) + x2;
-        gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].y2 = y * 8;
-        /*if(sMenuDataPtr->currentItem == 0)
-            BlitBitmapToWindow(windowId, sBuySelectorNoLeft, (x*8) + x2, (y*8), 48, 16);
-        else if(sMenuDataPtr->currentItem == itemNum - 1)
-            BlitBitmapToWindow(windowId, sBuySelectorNoRight, (x*8) + x2, (y*8), 48, 16);
-        else
-            BlitBitmapToWindow(windowId, sBuySelector, (x*8) + x2, (y*8), 48, 16);*/
-
         // Item Icon
         x = 6;
         y = 5;
         x2 = 6;
         y2 = 6;
-        itemID = 0;
+        temp = 0;
         DestroyAllItemIcons();
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
             for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
-                if(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(sMenuDataPtr->currentFirstShownItem + j) % getRowItemNum(GetCurrentRow() + i)] != ITEM_NONE){
-                    if(i == 0){
-                        CreateItemIcon(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(sMenuDataPtr->currentFirstShownItem + j) % itemNum], itemID, (x * 8) + x2, (y * 8) + y2);
-                    }
-                    else{
-                        CreateItemIcon(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j % getRowItemNum(GetCurrentRow() + i)], itemID, (x * 8) + x2, (y * 8) + y2);
-                    }
-                }
+                itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(sMenuDataPtr->currentFirstShownItem + j)];
+
+                CreateItemIcon(itemID, temp, (x * 8) + x2, (y * 8) + y2);
                 
                 x = x + 5;
                 x2 = x2 + 2;
-                itemID++;
+                temp++;
             }
             x = 6;
             x2 = 6;
@@ -1651,7 +1698,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x = 4;
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
-            if(i == 0){
+            if(i == 0 && sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem] != ITEM_NONE){
                 str = Amazon_Rows[GetCurrentRow()].title;
                 StringCopy(gStringVar1, str);
                 str = gItems[sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem]].name;
@@ -1685,7 +1732,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
         StringExpandPlaceholders(gStringVar4, sText_Price);
 
-        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
+        if(sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem] != ITEM_NONE)
+            AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
 
         // Help Bar --------------------------------------------------------------------------------------------------------------------
         x = 0;
@@ -1694,8 +1742,6 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar);
     }
     else{
-        gSprites[sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID]].invisible = TRUE;
-
         //Item Icon --------------------------------------------------------------------------------------------------------------------
         x = 3;
         y = 6;
@@ -1876,11 +1922,6 @@ static void Task_MenuBuy(u8 taskId)
 
     if (!gPaletteFade.active)
     {
-        if(sMenuDataPtr->buyScreen)
-            mgba_printf(MGBA_LOG_WARN, "Buy Screen");
-        else
-            mgba_printf(MGBA_LOG_WARN, "Not Buy Screen");
-
         Menu_FreeResources();
         Amazon_Init(CB2_ReturnToUIMenu);
         gMain.savedCallback = CB2_ReturnToUIMenu;
