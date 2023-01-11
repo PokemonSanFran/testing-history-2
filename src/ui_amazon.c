@@ -1616,6 +1616,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     u8 strArray[16];
     u8 itemNum = getCurrentRowItemNum();
     u8 temp;
+    u8 itemRow[NUM_MAX_ICONS_ROWNS_ON_SCREEN];
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
@@ -1627,15 +1628,28 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y2 = 4;
 
         for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
+            switch(i){
+                case 0:
+                    if(sMenuDataPtr->rowsSorted)
+                        itemRow[i] = 2;
+                    else
+                        itemRow[i] = 0;
+                break;
+                default:
+                    itemRow[i] = itemRow[i-1] + 1;
+                    if(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + itemRow[i]) % NUM_ROWS][0] == ITEM_NONE){
+                        do{
+                            itemRow[i]++;
+                        }
+                        while(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + itemRow[i]) % NUM_ROWS][0] == ITEM_NONE);
+                    }
+                break;
+            }
+
             if(sMenuDataPtr->currentRow % NUM_ROWS == sMenuDataPtr->currentFirstShownRow + i)
                 BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8) + x2, ((y-1)*8) + y2 + 4, 32, 24);
 
-            if(sMenuDataPtr->rowsSorted)
-                droneFeePercentage = 2;
-            else
-                droneFeePercentage = 0;
-
-            switch((sMenuDataPtr->currentFirstShownRow + i + droneFeePercentage) % NUM_ROWS){
+            switch((sMenuDataPtr->currentFirstShownRow + i + itemRow[0])){
                 case ROW_BUY_AGAIN:
                     BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
                 break;
@@ -1672,9 +1686,6 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 case ROW_Z_CRYSTALS:
                     BlitBitmapToWindow(windowId, sRowIcon_Key, (x*8) + x2, (y*8) + y2, 16, 16);
                 break;
-                default:
-                    BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
-                break;
             }
 
             y = y + 3;
@@ -1697,10 +1708,15 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
             for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
-                if(i == 0)
-                    itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(sMenuDataPtr->currentFirstShownItem + j)];
-                else
-                    itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j];
+                switch(i){
+                    case 0:
+                        itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][(sMenuDataPtr->currentFirstShownItem + j)];
+                    break;
+                    case 1:
+                    case 2:
+                        itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow() + itemRow[i]) % NUM_ROWS][j];
+                    break;
+                }
                 
                 CreateItemIcon(itemID, temp, (x * 8) + x2, (y * 8) + y2);
                 
@@ -1718,15 +1734,18 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x = 4;
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
-            if(i == 0 && sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem] != ITEM_NONE){
-                str = Amazon_Rows[GetCurrentRow()].title;
-                StringCopy(gStringVar1, str);
-                str = gItems[sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem]].name;
-                StringCopy(gStringVar2, str);
-                StringExpandPlaceholders(gStringVar4, sText_FirstRowName);
-            }
-            else{
-                StringCopy(gStringVar4, Amazon_Rows[(GetCurrentRow() + i) % NUM_ROWS].title);
+            switch(i){
+                case 0:
+                    str = Amazon_Rows[GetCurrentRow()].title;
+                    StringCopy(gStringVar1, str);
+                    str = gItems[sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem]].name;
+                    StringCopy(gStringVar2, str);
+                    StringExpandPlaceholders(gStringVar4, sText_FirstRowName);
+                break;
+                case 1:
+                case 2:
+                    StringCopy(gStringVar4, Amazon_Rows[(GetCurrentRow() + itemRow[i]) % NUM_ROWS].title);
+                break;
             }
 
             switch(i){
