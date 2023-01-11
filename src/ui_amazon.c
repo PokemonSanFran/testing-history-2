@@ -214,6 +214,9 @@ void Amazon_Init(MainCallback callback)
     sMenuDataPtr->AmazonUpDownArrowsTask = TASK_NONE;
 
     AmazonItemInitializeArrayList();
+
+    if(gSaveBlock2Ptr->amazonBuyAgainItem[0] == ITEM_NONE && !sMenuDataPtr->rowsSorted)
+        sMenuDataPtr->currentRow = ROW_RECOMMENDED;
     
     mgba_printf(MGBA_LOG_WARN, "The Amazon EWRAM is using %d bytes out of 32770", size);
 
@@ -1504,10 +1507,7 @@ void AmazonItemInitializeArrayList()
                     itemNum[i]++;
                 }
             }
-            else if(i == ROW_BUY_AGAIN && j < MAX_AMAZON_BUY_AGAIN_ITEMS){
-                if(gSaveBlock2Ptr->amazonBuyAgainItem[j] == ITEM_NONE)
-                    gSaveBlock2Ptr->amazonBuyAgainItem[j] = ITEM_ORAN_BERRY+ j;
-
+            else if(i == ROW_BUY_AGAIN && j < MAX_AMAZON_BUY_AGAIN_ITEMS && gSaveBlock2Ptr->amazonBuyAgainItem[j] != ITEM_NONE){
                 sMenuDataPtr->currentRowItemList[i][itemNum[i]] = gSaveBlock2Ptr->amazonBuyAgainItem[j];
                 itemNum[i]++;
             }
@@ -1899,6 +1899,14 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 ConvertIntToDecimalStringN(gStringVar2, quantity, STR_CONV_MODE_LEFT_ALIGN, 2);  
                 StringExpandPlaceholders(gStringVar4, sText_ItemNumber);
                 AddTextPrinterParameterized4(windowId, 8, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
+
+                /*
+                //Item Icon --------------------------------------------------------------------------------------------------------------------
+                x = 0;
+                y = 0;
+                x2 = 0;
+                y2 = 0;
+                MoveCurrenItemIcon(sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem, (x * 8) + x2, (y * 8) + y2);*/
             }
         }
     }
