@@ -215,8 +215,13 @@ void Amazon_Init(MainCallback callback)
 
     AmazonItemInitializeArrayList();
 
-    if(gSaveBlock2Ptr->amazonBuyAgainItem[0] == ITEM_NONE && !sMenuDataPtr->rowsSorted)
-        sMenuDataPtr->currentRow = ROW_RECOMMENDED;
+    if(gSaveBlock2Ptr->amazonBuyAgainItem[0] == ITEM_NONE && 
+      !sMenuDataPtr->rowsSorted){
+        if(gSaveBlock2Ptr->amazonBuyAgainItem[ROW_RECOMMENDED] != ITEM_NONE)
+            sMenuDataPtr->currentRow = ROW_RECOMMENDED;
+        else
+            sMenuDataPtr->currentRow = ROW_MEDICINE;
+    }
     
     mgba_printf(MGBA_LOG_WARN, "The Amazon EWRAM is using %d bytes out of 32770", size);
 
@@ -1699,11 +1704,14 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         for(i = 0; i < NUM_MAX_ICONS_ROWNS_ON_SCREEN; i++ ){
             switch(i){
-                case 0:
-                    if(sMenuDataPtr->rowsSorted)
-                        itemRow[i] = 2;
-                    else
-                        itemRow[i] = 0;
+                case 1:
+                    itemRow[i] = i;
+                    if(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + itemRow[i]) % NUM_ROWS][0] == ITEM_NONE){
+                        do{
+                            itemRow[i]++;
+                        }
+                        while(sMenuDataPtr->currentRowItemList[(GetCurrentRow() + itemRow[i]) % NUM_ROWS][0] == ITEM_NONE);
+                    }
                 break;
                 default:
                     itemRow[i] = itemRow[i-1] + 1;
@@ -1716,10 +1724,15 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 break;
             }
 
+            if(sMenuDataPtr->rowsSorted)
+                temp = 2;
+            else
+                temp = 0;
+
             if(sMenuDataPtr->currentRow % NUM_ROWS == sMenuDataPtr->currentFirstShownRow + i)
                 BlitBitmapToWindow(windowId, sRowSelector, ((x-1)*8) + x2, ((y-1)*8) + y2 + 4, 32, 24);
 
-            switch((sMenuDataPtr->currentFirstShownRow + i + itemRow[0])){
+            switch((sMenuDataPtr->currentFirstShownRow + i + temp)){
                 case ROW_BUY_AGAIN:
                     BlitBitmapToWindow(windowId, sRowIcon_0, (x*8) + x2, (y*8) + y2, 16, 16);
                 break;
