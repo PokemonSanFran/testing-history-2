@@ -112,6 +112,7 @@ static void AmazonItemInitializeArrayList(void);
 static void DestroyAllItemIcons(void);
 static void EnableAllItemIcons(void);
 static void DisableAllItemIcons(void);
+static void MoveCurrenItemIcon(u8 idx, u8 x, u8 y);
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -725,6 +726,16 @@ static void DisableAllItemIcons()
     for(i = 0; i < MAX_ITEM_SPRITES; i++){
         gSprites[sMenuDataPtr->spriteIDs[FIRST_ITEM_SPRITE_ID + i]].invisible = TRUE;
     }
+}
+
+static void MoveCurrenItemIcon(u8 idx, u8 x, u8 y)
+{
+    u8 newspriteID = FIRST_ITEM_SPRITE_ID + idx;
+    u8 spriteId = sMenuDataPtr->spriteIDs[newspriteID];
+
+    gSprites[spriteId].invisible = FALSE;
+    gSprites[spriteId].x2 = x; //24;
+    gSprites[spriteId].y2 = y; //140;
 }
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -1757,7 +1768,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x2 = 0;
         y2 = 0;
         itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
-        CreateItemIcon(itemID, 0, (x * 8) + x2, (y * 8) + y2);
+        MoveCurrenItemIcon(sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem, (x * 8) + x2, (y * 8) + y2);
 
         //Item Name --------------------------------------------------------------------------------------------------------------------
         x = 1;
