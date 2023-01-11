@@ -110,9 +110,8 @@ static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 static void AmazonItemInitializeArrayList(void);
 static void DestroyAllItemIcons(void);
-
-static void CreateAmazonSwitchArrowPair(void);
-static void DestroyAmazonSwitchArrowPair(void);
+static void EnableAllItemIcons(void);
+static void DisableAllItemIcons(void);
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -625,11 +624,11 @@ static void Menu_ChangeTilemap(void)
     FreeTempTileDataBuffersIfPossible();
 
     if(sMenuDataPtr->buyScreen){
-        DestroyAllItemIcons();
+        DisableAllItemIcons();
         LZDecompressWram(sMenuTilemapBuy, sBg1TilemapBuffer);
     }
     else{
-        DestroyAllItemIcons();
+        EnableAllItemIcons();
         LZDecompressWram(sMenuTilemap, sBg1TilemapBuffer);
     }
 }
@@ -707,6 +706,24 @@ static void DestroyAllItemIcons()
             FreeSpritePaletteByTag(newspriteID);
             DestroySpriteAndFreeResources(&gSprites[oldspriteID]);
         }
+    }
+}
+
+static void EnableAllItemIcons()
+{
+    u8 i;
+
+    for(i = 0; i < MAX_ITEM_SPRITES; i++){
+        gSprites[sMenuDataPtr->spriteIDs[FIRST_ITEM_SPRITE_ID + i]].invisible = FALSE;
+    }
+}
+
+static void DisableAllItemIcons()
+{
+    u8 i;
+
+    for(i = 0; i < MAX_ITEM_SPRITES; i++){
+        gSprites[sMenuDataPtr->spriteIDs[FIRST_ITEM_SPRITE_ID + i]].invisible = TRUE;
     }
 }
 
@@ -851,7 +868,7 @@ static void PressedUpButton(){
     else{
         u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
         u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
-        mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
+        //mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
 
         if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > sMenuDataPtr->itemQuantity + 1)
             sMenuDataPtr->itemQuantity++;
@@ -1467,6 +1484,9 @@ void AmazonItemInitializeArrayList()
                 if(gItems[Amazon_Items[i][j].item].price == 0)
                     canBuy = FALSE;
 
+                if(i == ROW_TMS && CheckBagHasItem(Amazon_Items[i][j].item, 1))//Removes TMs that you already have
+                    canBuy = FALSE;
+
                 if(canBuy){
                     sMenuDataPtr->currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
                     //currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
@@ -1666,8 +1686,11 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         for(i = 0; i < NUM_MAX_ROWNS_ON_SCREEN; i++ ){
             for(j = 0; j < NUM_MAX_ICONS_ROWNS_ON_SCREEN; j++ ){
-                itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(sMenuDataPtr->currentFirstShownItem + j)];
-
+                if(i == 0)
+                    itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][(sMenuDataPtr->currentFirstShownItem + j)];
+                else
+                    itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow() + i) % NUM_ROWS][j];
+                
                 CreateItemIcon(itemID, temp, (x * 8) + x2, (y * 8) + y2);
                 
                 x = x + 5;
@@ -1926,37 +1949,36 @@ static void buynewItem(u16 itemId, u8 quantity){
 
     sMenuDataPtr->buyWindow = TRUE;
 
-    for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++){
-        if(itemId == gSaveBlock2Ptr->amazonBuyAgainItem[i]){
-            newItem = FALSE;
-            oldItem = i;
+    if(GetCurrentRow() != ROW_TMS){
+        for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++){
+            if(itemId == gSaveBlock2Ptr->amazonBuyAgainItem[i]){
+                newItem = FALSE;
+                oldItem = i;
+            }
         }
-    }
 
-    if(newItem){
-        for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS - 1; i++){
-            gSaveBlock2Ptr->amazonBuyAgainItem[(MAX_AMAZON_BUY_AGAIN_ITEMS - i) - 1] = gSaveBlock2Ptr->amazonBuyAgainItem[(MAX_AMAZON_BUY_AGAIN_ITEMS - i) - 2];
+        if(newItem){
+            for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS - 1; i++){
+                gSaveBlock2Ptr->amazonBuyAgainItem[(MAX_AMAZON_BUY_AGAIN_ITEMS - i) - 1] = gSaveBlock2Ptr->amazonBuyAgainItem[(MAX_AMAZON_BUY_AGAIN_ITEMS - i) - 2];
+            }
         }
-    }
-    else{
-        gSaveBlock2Ptr->amazonBuyAgainItem[oldItem] = ITEM_NONE;
+        else{
+            gSaveBlock2Ptr->amazonBuyAgainItem[oldItem] = ITEM_NONE;
 
-        for(i = 0; i < oldItem; i++){
-            gSaveBlock2Ptr->amazonBuyAgainItem[oldItem - i] = gSaveBlock2Ptr->amazonBuyAgainItem[oldItem - i -1];
+            for(i = 0; i < oldItem; i++){
+                gSaveBlock2Ptr->amazonBuyAgainItem[oldItem - i] = gSaveBlock2Ptr->amazonBuyAgainItem[oldItem - i -1];
+            }
         }
-    }
-    gSaveBlock2Ptr->amazonBuyAgainItem[0] = itemId;
+        gSaveBlock2Ptr->amazonBuyAgainItem[0] = itemId;
 
-    for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++)
-        sMenuDataPtr->currentRowItemList[ROW_BUY_AGAIN][i] = gSaveBlock2Ptr->amazonBuyAgainItem[i];
-         
-    if(GetCurrentRow() == ROW_BUY_AGAIN)
-        sMenuDataPtr->currentItem = 0;
+        for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++)
+            sMenuDataPtr->currentRowItemList[ROW_BUY_AGAIN][i] = gSaveBlock2Ptr->amazonBuyAgainItem[i];
+            
+        if(GetCurrentRow() == ROW_BUY_AGAIN)
+            sMenuDataPtr->currentItem = 0;
+    }
        
     PrintToWindow(WINDOW_1, FONT_BLACK);
-
-
-    //buyWindow = FALSE;
 }
 
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
