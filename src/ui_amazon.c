@@ -73,22 +73,23 @@ enum RowIds
 #define NUM_ITEMS_PER_ROW 5
 #define NUM_MAX_ICONS_ROWNS_ON_SCREEN 5
 #define NUM_MAX_ROWNS_ON_SCREEN 3
-#define NUM_MAX_ITEMS_PER_ROW 20
+#define NUM_MAX_ITEMS_PER_ROW 150
 
 struct AmazonMenuResources {
 	MainCallback savedCallback;     // determines callback to run when we exit. e.g. where do we want to go after closing the menu
     u8 gfxLoadState;
 	u16 currentRow:4;                //Max 12
 	u16 currentFirstShownRow:4;      //Max 9
-	u16 currentItem:5;               //Max 20
+	u16 currentItem:8;               //Max 255
+	u16 currentFirstShownItem:8;     //Max 255
+	u16 itemQuantity:7;              //Max 99
+	u16 notEnoughMoneyWindow:1;      //bool8
 	u16 rowsSorted:1;                //bool8
 	u16 buyScreen:1;                 //bool8
 	u16 buyWindow:1;                 //bool8
-	u16 itemQuantity:7;              //Max 99
-	u16 currentFirstShownItem:4;     //Max 14
-	u16 notEnoughMoneyWindow:1;      //bool8
-	u16 filler1:3;                   //Max 8
+	u16 filler:5;                    //Filler
 	u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
+	u16 itemNum[NUM_ROWS];
 	u8 spriteIDs[20];
     u8 sItemMenuBuyIcon[12];
     u8 AmazonUpDownArrowsTask;
@@ -266,16 +267,7 @@ u8 GetCurrentRow(){
 }
 
 u8 getCurrentRowItemNum(){
-    u8 i, itemNum;
-
-    itemNum = 0;
-
-    for(i = 0; i < 20; i++){
-        if(sMenuDataPtr->currentRowItemList[GetCurrentRow()][i] != ITEM_NONE)
-            itemNum++;
-    }
-
-    return itemNum;
+    return sMenuDataPtr->itemNum[(GetCurrentRow()) % NUM_ROWS];
 }
 
 // Sprite Callback -------------------------------------------------------------------------------------------------------
@@ -348,7 +340,6 @@ static void SpriteCallback_LeftArrow(struct Sprite *sprite)
 
 static void SpriteCallback_RightArrow(struct Sprite *sprite)
 {
-    u8 itemNum = getCurrentRowItemNum();
     u8 val = sprite->data[0];
     u8 num = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
     u8 x = (5 * num);
@@ -357,7 +348,7 @@ static void SpriteCallback_RightArrow(struct Sprite *sprite)
     sprite->x2 = gSineTable[val] / 128;
     sprite->data[0] += 8;
 
-    if(sMenuDataPtr->buyScreen || sMenuDataPtr->currentItem == itemNum - 1)
+    if(sMenuDataPtr->buyScreen || sMenuDataPtr->currentItem == sMenuDataPtr->itemNum[(GetCurrentRow()) % NUM_ROWS] - 1)
         sprite->invisible = TRUE;
     else
         sprite->invisible = FALSE;
@@ -780,9 +771,7 @@ u8 getDroneFee(){
 }
 
 u8 getRowItemNum(u8 row){
-    u8 i, itemNum;
-
-    itemNum = 0;
+    u8 i;
 
     if(sMenuDataPtr->rowsSorted){
         row = (row + 2) % NUM_ROWS;
@@ -791,12 +780,7 @@ u8 getRowItemNum(u8 row){
        row = row % NUM_ROWS;
     }
 
-    for(i = 0; i < 20; i++){
-        if(sMenuDataPtr->currentRowItemList[row][i] != ITEM_NONE)
-            itemNum++;
-    }
-
-    return itemNum;
+    return sMenuDataPtr->itemNum[row];
 }
 
 static u16 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
@@ -901,17 +885,16 @@ static void PressedUpButton(){
 
 static void PressedRightButton(){
     if(!sMenuDataPtr->buyScreen){
-        u8 itemNum, finalhalfScreen;
+        u8 finalhalfScreen;
         u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
         u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
 
-        itemNum = getCurrentRowItemNum();
-        finalhalfScreen = itemNum - halfScreen;
+        finalhalfScreen = sMenuDataPtr->itemNum[(GetCurrentRow()) % NUM_ROWS] - halfScreen;
 
         if(sMenuDataPtr->currentItem < halfScreen){
             sMenuDataPtr->currentItem++;
         }
-        else if(sMenuDataPtr->currentItem >= (itemNum - 1)){ //If you are in the last option go to the first one
+        else if(sMenuDataPtr->currentItem >= (sMenuDataPtr->itemNum[(GetCurrentRow()) % NUM_ROWS] - 1)){ //If you are in the last option go to the first one
             sMenuDataPtr->currentItem = 0;
             sMenuDataPtr->currentFirstShownItem = 0;
         }
@@ -927,6 +910,8 @@ static void PressedRightButton(){
             sMenuDataPtr->currentItem = 0;
             sMenuDataPtr->currentFirstShownItem = 0;
         }
+
+        mgba_printf(MGBA_LOG_WARN, "Current Item %d, Current First Item %d", sMenuDataPtr->currentItem, sMenuDataPtr->currentFirstShownItem);
     }
     else{
         u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
@@ -944,21 +929,20 @@ static void PressedRightButton(){
 
 static void PressedLeftButton(){
     if(!sMenuDataPtr->buyScreen){
-        u8 itemNum, finalhalfScreen;
+        u8 finalhalfScreen;
         u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
         u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
 
-        itemNum = getCurrentRowItemNum();
-        finalhalfScreen = itemNum - halfScreen;
+        finalhalfScreen = sMenuDataPtr->itemNum[(GetCurrentRow()) % NUM_ROWS] - halfScreen;
 
         if(sMenuDataPtr->currentItem > halfScreen && sMenuDataPtr->currentItem <= (finalhalfScreen - 1)){
             sMenuDataPtr->currentItem--;
             sMenuDataPtr->currentFirstShownItem--;
         }
         else if(sMenuDataPtr->currentItem == 0){ //If you are in the first option go to the last one
-            sMenuDataPtr->currentItem = itemNum - 1;
-            if(itemNum > NUM_MAX_ICONS_ROWNS_ON_SCREEN)
-                sMenuDataPtr->currentFirstShownItem = itemNum - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+            sMenuDataPtr->currentItem = sMenuDataPtr->itemNum[(GetCurrentRow()) % NUM_ROWS] - 1;
+            if(sMenuDataPtr->itemNum[(GetCurrentRow()) % NUM_ROWS] > NUM_MAX_ICONS_ROWNS_ON_SCREEN)
+                sMenuDataPtr->currentFirstShownItem = sMenuDataPtr->itemNum[(GetCurrentRow()) % NUM_ROWS] - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
         }
         else{
             sMenuDataPtr->currentItem--;
@@ -1330,7 +1314,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     {
         {
             .item = ITEM_HP_UP,
-            .numBadges = 0,
+            .numBadges = 2,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
@@ -1338,7 +1322,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
         },
         {
             .item = ITEM_PROTEIN,
-            .numBadges = 0,
+            .numBadges = 2,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
@@ -1346,7 +1330,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
         },
         {
             .item = ITEM_IRON,
-            .numBadges = 0,
+            .numBadges = 2,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
@@ -1354,7 +1338,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
         },
         {
             .item = ITEM_CALCIUM,
-            .numBadges = 0,
+            .numBadges = 2,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
@@ -1362,7 +1346,919 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
         },
         {
             .item = ITEM_ZINC,
-            .numBadges = 0,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_CARBOS,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_PP_UP,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_PP_MAX,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_HEALTH_FEATHER,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_MUSCLE_FEATHER,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_RESIST_FEATHER,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_GENIUS_FEATHER,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_CLEVER_FEATHER,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SWIFT_FEATHER,
+            .numBadges = 2,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ABILITY_CAPSULE,
+            .numBadges = 4,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ABILITY_PATCH,
+            .numBadges = 4,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_LONELY_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ADAMANT_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_NAUGHTY_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_BRAVE_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_BOLD_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_IMPISH_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_LAX_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_RELAXED_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_MODEST_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_MILD_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_RASH_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_QUIET_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_CALM_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_GENTLE_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_CAREFUL_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SASSY_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_TIMID_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_HASTY_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_JOLLY_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_NAIVE_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SERIOUS_MINT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_FIRE_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_WATER_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_THUNDER_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_LEAF_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ICE_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SUN_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_MOON_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SHINY_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_DUSK_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_DAWN_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SWEET_APPLE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_TART_APPLE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_CRACKED_POT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_CHIPPED_POT,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_GALARICA_CUFF,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_GALARICA_WREATH,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_DRAGON_SCALE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_UPGRADE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_PROTECTOR,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ELECTIRIZER,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_MAGMARIZER,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_DUBIOUS_DISC,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_REAPER_CLOTH,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_PRISM_SCALE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_WHIPPED_DREAM,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SACHET,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_OVAL_STONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_STRAWBERRY_SWEET,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_LOVE_SWEET,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_BERRY_SWEET,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_CLOVER_SWEET,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_FLOWER_SWEET,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_STAR_SWEET,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_RIBBON_SWEET,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_EVERSTONE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_RED_NECTAR,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_YELLOW_NECTAR,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_PINK_NECTAR,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_PURPLE_NECTAR,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_FLAME_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SPLASH_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ZAP_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_MEADOW_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ICICLE_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_FIST_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_TOXIC_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_EARTH_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SKY_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_MIND_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_INSECT_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_STONE_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SPOOKY_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_DRACO_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_DREAD_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_IRON_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_PIXIE_PLATE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_DOUSE_DRIVE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_SHOCK_DRIVE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_BURN_DRIVE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_CHILL_DRIVE,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_FIRE_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_WATER_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ELECTRIC_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_GRASS_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ICE_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_FIGHTING_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_POISON_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_GROUND_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_FLYING_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_PSYCHIC_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_BUG_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ROCK_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_ROCK_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_GHOST_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_DRAGON_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_DARK_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_STEEL_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_FAIRY_MEMORY,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_RUSTED_SWORD,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_RUSTED_SHIELD,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_RED_ORB,
+            .numBadges = 3,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_BLUE_ORB,
+            .numBadges = 3,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
@@ -1619,7 +2515,6 @@ void AmazonItemInitializeArrayList()
     bool8 canBuy = TRUE;
     u16 badgeFlag;
     u8 numbadges = 0;
-    u8 itemNum[NUM_ROWS];
     
     for (badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++){
         if(FlagGet(badgeFlag))
@@ -1630,7 +2525,7 @@ void AmazonItemInitializeArrayList()
         for(j = 0; j < NUM_MAX_ITEMS_PER_ROW; j++)
             sMenuDataPtr->currentRowItemList[i][j] = ITEM_NONE;
 
-        itemNum[i] = 0;
+        sMenuDataPtr->itemNum[i] = 0;
         for(j = 0; j < NUM_MAX_ITEMS_PER_ROW; j++){
             if(Amazon_Items[i][j].item != ITEM_NONE && i != ROW_BUY_AGAIN){
                 canBuy = TRUE;
@@ -1654,16 +2549,18 @@ void AmazonItemInitializeArrayList()
                     canBuy = FALSE;
 
                 if(canBuy){
-                    sMenuDataPtr->currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
+                    sMenuDataPtr->currentRowItemList[i][sMenuDataPtr->itemNum[i]] = Amazon_Items[i][j].item;
                     //currentRowItemList[i][itemNum[i]] = Amazon_Items[i][j].item;
-                    itemNum[i]++;
+                    sMenuDataPtr->itemNum[i]++;
                 }
             }
             else if(i == ROW_BUY_AGAIN && j < MAX_AMAZON_BUY_AGAIN_ITEMS && gSaveBlock2Ptr->amazonBuyAgainItem[j] != ITEM_NONE){
-                sMenuDataPtr->currentRowItemList[i][itemNum[i]] = gSaveBlock2Ptr->amazonBuyAgainItem[j];
-                itemNum[i]++;
+                sMenuDataPtr->currentRowItemList[i][sMenuDataPtr->itemNum[i]] = gSaveBlock2Ptr->amazonBuyAgainItem[j];
+                sMenuDataPtr->itemNum[i]++;
             }
         }
+
+        mgba_printf(MGBA_LOG_WARN, "Number of items in the row %d is %d", i, sMenuDataPtr->itemNum[i]);
     }
 }
 
