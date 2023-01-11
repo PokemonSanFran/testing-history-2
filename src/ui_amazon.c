@@ -9,7 +9,6 @@
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "item.h"
-#include "trig.h"
 #include "item_icon.h"
 #include "item_menu.h"
 #include "item_menu_icons.h"
@@ -32,7 +31,9 @@
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
+#include "trig.h"
 #include "overworld.h"
+#include "quests.h"
 #include "event_data.h"
 #include "constants/items.h"
 #include "constants/field_weather.h"
@@ -984,6 +985,7 @@ static void PressedLeftButton(){
 #define ROW_NAME_LENGTH 20
 #define FLAG_NONE 0
 #define VAR_NONE 0
+#define QUEST_NONE 0
 
 struct AmazonRowData
 {
@@ -997,6 +999,7 @@ struct AmazonItemData
     u16 reqFlag;
     u16 reqVar;
     u16 reqVarState;
+    u16 reqQuest;
 };
 
 struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
@@ -1008,6 +1011,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
     [ROW_MEDICINE] =
@@ -1018,6 +1022,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_SUPER_POTION,
@@ -1025,6 +1030,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_HYPER_POTION,
@@ -1032,6 +1038,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_MAX_POTION,
@@ -1039,6 +1046,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_FULL_RESTORE,
@@ -1046,6 +1054,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_REVIVE,
@@ -1053,6 +1062,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_MAX_REVIVE,
@@ -1060,6 +1070,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_ENERGY_POWDER,
@@ -1067,6 +1078,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_ENERGY_ROOT,
@@ -1074,6 +1086,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_REVIVAL_HERB,
@@ -1081,6 +1094,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_ANTIDOTE,
@@ -1088,6 +1102,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_PARALYZE_HEAL,
@@ -1095,6 +1110,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_BURN_HEAL,
@@ -1102,6 +1118,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_ICE_HEAL,
@@ -1109,6 +1126,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_AWAKENING,
@@ -1116,6 +1134,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_FULL_HEAL,
@@ -1123,6 +1142,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_ETHER,
@@ -1130,6 +1150,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_MAX_ETHER,
@@ -1137,6 +1158,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_ELIXIR,
@@ -1144,6 +1166,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_MAX_ELIXIR,
@@ -1151,6 +1174,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
     [ROW_POKEBALLS] =
@@ -1161,27 +1185,23 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_GREAT_BALL,
-            .numBadges = 0,
+            .numBadges = 3,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_ULTRA_BALL,
-            .numBadges = 0,
+            .numBadges = 5,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
-        },
-        {
-            .item = ITEM_PREMIER_BALL,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_HEAL_BALL,
@@ -1189,6 +1209,79 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_REPEAT_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_LUXURY_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_LEVEL_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_ARTISANBALLS3,
+        },
+        {
+            .item = ITEM_LURE_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_ARTISANBALLS3,
+        },
+        {
+            .item = ITEM_MOON_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_ARTISANBALLS3,
+        },
+        {
+            .item = ITEM_FRIEND_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_ARTISANBALLS3,
+        },
+        {
+            .item = ITEM_LOVE_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_ARTISANBALLS3,
+        },
+        {
+            .item = ITEM_FAST_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_ARTISANBALLS3,
+        },
+        {
+            .item = ITEM_HEAVY_BALL,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_ARTISANBALLS3,
         },
     },
     [ROW_OTHER_ITEMS] =
@@ -1199,6 +1292,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_SUPER_REPEL,
@@ -1206,6 +1300,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_MAX_REPEL,
@@ -1220,6 +1315,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_SUPER_LURE,
@@ -1227,6 +1323,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
     [ROW_POWER_UPS] =
@@ -1237,6 +1334,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_PROTEIN,
@@ -1244,6 +1342,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_IRON,
@@ -1251,6 +1350,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_CALCIUM,
@@ -1258,6 +1358,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_ZINC,
@@ -1265,6 +1366,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
     [ROW_BATTLE_ITEMS] =
@@ -1275,6 +1377,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_X_DEFENSE,
@@ -1282,6 +1385,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_X_SP_ATK,
@@ -1289,6 +1393,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_X_SP_DEF,
@@ -1296,6 +1401,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_X_SPEED,
@@ -1303,6 +1409,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_DIRE_HIT,
@@ -1310,6 +1417,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_GUARD_SPEC,
@@ -1317,6 +1425,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_POKE_DOLL,
@@ -1324,6 +1433,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_FLUFFY_TAIL,
@@ -1331,6 +1441,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_POKE_TOY,
@@ -1338,6 +1449,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
     [ROW_BERRIES] =
@@ -1348,6 +1460,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_CHESTO_BERRY,
@@ -1355,6 +1468,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_PECHA_BERRY,
@@ -1362,6 +1476,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_RAWST_BERRY,
@@ -1369,6 +1484,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_ASPEAR_BERRY,
@@ -1376,6 +1492,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_LEPPA_BERRY,
@@ -1383,6 +1500,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
     [ROW_TMS] =
@@ -1393,6 +1511,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_TM02,
@@ -1400,6 +1519,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_TM03,
@@ -1407,6 +1527,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_TM04,
@@ -1414,6 +1535,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_TM05,
@@ -1421,6 +1543,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
     [ROW_TREASURES] =
@@ -1431,6 +1554,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_NUGGET,
@@ -1438,6 +1562,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_BIG_NUGGET,
@@ -1445,6 +1570,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_TINY_MUSHROOM,
@@ -1452,6 +1578,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
         {
             .item = ITEM_BIG_MUSHROOM,
@@ -1459,82 +1586,29 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
     [ROW_MEGA_STONES] =
     {
         {
-            .item = ITEM_VENUSAURITE,
+            .item = ITEM_NONE,
             .numBadges = 0,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
-        },
-        {
-            .item = ITEM_CHARIZARDITE_X,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_CHARIZARDITE_Y,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_BLASTOISINITE,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_BEEDRILLITE,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
     [ROW_Z_CRYSTALS] =
     {
         {
-            .item = ITEM_NORMALIUM_Z,
+            .item = ITEM_NONE,
             .numBadges = 0,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
             .reqVarState = 0,
-        },
-        {
-            .item = ITEM_FIRIUM_Z,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_WATERIUM_Z,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_ELECTRIUM_Z,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-        },
-        {
-            .item = ITEM_GRASSIUM_Z,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
         },
     },
 };
@@ -1568,6 +1642,9 @@ void AmazonItemInitializeArrayList()
                     canBuy = FALSE;
 
                 if(numbadges < Amazon_Items[i][j].numBadges && Amazon_Items[i][j].numBadges != 0)
+                    canBuy = FALSE;
+
+                if(!QuestMenu_GetSetQuestState(Amazon_Items[i][j].reqQuest, FLAG_GET_COMPLETED) && Amazon_Items[i][j].reqQuest != QUEST_NONE)
                     canBuy = FALSE;
 
                 if(gItems[Amazon_Items[i][j].item].price == 0)
