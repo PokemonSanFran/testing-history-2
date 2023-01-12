@@ -24,6 +24,7 @@
 #include "palette.h"
 #include "party_menu.h"
 #include "region_map.h"
+#include "random.h"
 #include "scanline_effect.h"
 #include "script.h"
 #include "sound.h"
@@ -40,6 +41,7 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 #include "constants/items.h"
+#include "constants/party_menu.h"
 #include "printf.h"
 #include "mgba.h"
 
@@ -111,6 +113,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 static void AmazonItemInitializeArrayList(void);
+static void RecommendedInitializeArrayList(void);
 static void DestroyAllItemIcons(void);
 static void EnableAllItemIcons(void);
 static void DisableAllItemIcons(void);
@@ -216,6 +219,7 @@ void Amazon_Init(MainCallback callback)
     sMenuDataPtr->AmazonUpDownArrowsTask = TASK_NONE;
 
     AmazonItemInitializeArrayList();
+    RecommendedInitializeArrayList();
 
     if(gSaveBlock2Ptr->amazonBuyAgainItem[0] == ITEM_NONE && 
       !sMenuDataPtr->rowsSorted){
@@ -225,7 +229,7 @@ void Amazon_Init(MainCallback callback)
             sMenuDataPtr->currentRow = ROW_MEDICINE;
     }
     
-    mgba_printf(MGBA_LOG_WARN, "The Amazon EWRAM is using %d bytes out of 32770", size);
+    //mgba_printf(MGBA_LOG_WARN, "The Amazon EWRAM is using %d bytes out of 32770", size);
 
     SetMainCallback2(Menu_RunSetup);
 }
@@ -831,17 +835,19 @@ static void PressedDownButton(){
         while(sMenuDataPtr->currentRowItemList[GetCurrentRow()][0] == ITEM_NONE);
     }
     else{
-        u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
-        u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
+        if(GetCurrentRow() != ROW_TMS && GetCurrentRow() != ROW_Z_CRYSTALS && GetCurrentRow() != ROW_MEGA_STONES){
+            u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
+            u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
 
-        if(buyableItems != 0){
-            if (buyableItems > MAX_BAG_ITEM_CAPACITY)
-                buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
+            if(buyableItems != 0){
+                if (buyableItems > MAX_BAG_ITEM_CAPACITY)
+                    buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
 
-            if(sMenuDataPtr->itemQuantity != 0)
-                sMenuDataPtr->itemQuantity--;
-            else
-                sMenuDataPtr->itemQuantity = buyableItems - 1;
+                if(sMenuDataPtr->itemQuantity != 0)
+                    sMenuDataPtr->itemQuantity--;
+                else
+                    sMenuDataPtr->itemQuantity = buyableItems - 1;
+            }
         }
     }
 }
@@ -870,14 +876,15 @@ static void PressedUpButton(){
         while(sMenuDataPtr->currentRowItemList[GetCurrentRow()][0] == ITEM_NONE);
     }
     else{
-        u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
-        u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
-        //mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
+        if(GetCurrentRow() != ROW_TMS && GetCurrentRow() != ROW_Z_CRYSTALS && GetCurrentRow() != ROW_MEGA_STONES){
+            u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
+            u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
 
-        if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > sMenuDataPtr->itemQuantity + 1)
-            sMenuDataPtr->itemQuantity++;
-        else
-            sMenuDataPtr->itemQuantity = 0;
+            if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > sMenuDataPtr->itemQuantity + 1)
+                sMenuDataPtr->itemQuantity++;
+            else
+                sMenuDataPtr->itemQuantity = 0;
+        }
     }
 }
 
@@ -911,19 +918,19 @@ static void PressedRightButton(){
             sMenuDataPtr->currentFirstShownItem = 0;
         }
 
-        mgba_printf(MGBA_LOG_WARN, "Current Item %d, Current First Item %d", sMenuDataPtr->currentItem, sMenuDataPtr->currentFirstShownItem);
     }
     else{
-        u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
-        u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
-        //mgba_printf(MGBA_LOG_WARN, "buyableItems %d", buyableItems);
+        if(GetCurrentRow() != ROW_TMS && GetCurrentRow() != ROW_Z_CRYSTALS && GetCurrentRow() != ROW_MEGA_STONES){
+            u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
+            u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
 
-        if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > (sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE))
-            sMenuDataPtr->itemQuantity = sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE;
-        else if(sMenuDataPtr->itemQuantity != buyableItems)
-            sMenuDataPtr->itemQuantity = buyableItems;
-        else
-            sMenuDataPtr->itemQuantity = 0;
+            if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > (sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE))
+                sMenuDataPtr->itemQuantity = sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE;
+            else if(sMenuDataPtr->itemQuantity != buyableItems)
+                sMenuDataPtr->itemQuantity = buyableItems;
+            else
+                sMenuDataPtr->itemQuantity = 0;
+        }
     }
 }
 
@@ -949,19 +956,21 @@ static void PressedLeftButton(){
         }
     }
     else{
-        u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
-        u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
+        if(GetCurrentRow() != ROW_TMS && GetCurrentRow() != ROW_Z_CRYSTALS && GetCurrentRow() != ROW_MEGA_STONES){
+            u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
+            u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
 
-        if(buyableItems != 0){
-            if (buyableItems > MAX_BAG_ITEM_CAPACITY)
-                buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
+            if(buyableItems != 0){
+                if (buyableItems > MAX_BAG_ITEM_CAPACITY)
+                    buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
 
-            if(sMenuDataPtr->itemQuantity >= LEFTRIGHT_ITEM_NUMBER_CHANGE)
-                sMenuDataPtr->itemQuantity = sMenuDataPtr->itemQuantity - LEFTRIGHT_ITEM_NUMBER_CHANGE;
-            else if(sMenuDataPtr->itemQuantity != 0)
-                sMenuDataPtr->itemQuantity = 0;
-            else
-                sMenuDataPtr->itemQuantity = buyableItems - 1;
+                if(sMenuDataPtr->itemQuantity >= LEFTRIGHT_ITEM_NUMBER_CHANGE)
+                    sMenuDataPtr->itemQuantity = sMenuDataPtr->itemQuantity - LEFTRIGHT_ITEM_NUMBER_CHANGE;
+                else if(sMenuDataPtr->itemQuantity != 0)
+                    sMenuDataPtr->itemQuantity = 0;
+                else
+                    sMenuDataPtr->itemQuantity = buyableItems - 1;
+            }
         }
     }
 }
@@ -3370,7 +3379,23 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     [ROW_TMS] =
     {
         {
-            .item = ITEM_NONE,
+            .item = ITEM_TM09,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_TM10,
+            .numBadges = 0,
+            .reqFlag = FLAG_NONE,
+            .reqVar = VAR_NONE,
+            .reqVarState = 0,
+            .reqQuest = QUEST_NONE,
+        },
+        {
+            .item = ITEM_TM11,
             .numBadges = 0,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
@@ -3449,7 +3474,8 @@ void AmazonItemInitializeArrayList()
                 if(gItems[Amazon_Items[i][j].item].price == 0)
                     canBuy = FALSE;
 
-                if(i == ROW_TMS && CheckBagHasItem(Amazon_Items[i][j].item, 1))//Removes TMs that you already have
+                if((i == ROW_TMS || i == ROW_Z_CRYSTALS || i == ROW_MEGA_STONES) && 
+                    CheckBagHasItem(Amazon_Items[i][j].item, 1))//Removes TMs/Mega Stones/Z Crystals that you already have
                     canBuy = FALSE;
 
                 if(canBuy){
@@ -3462,6 +3488,300 @@ void AmazonItemInitializeArrayList()
                 sMenuDataPtr->currentRowItemList[i][sMenuDataPtr->itemNum[i]] = gSaveBlock2Ptr->amazonBuyAgainItem[j];
                 sMenuDataPtr->itemNum[i]++;
             }
+        }
+    }
+}
+
+enum CarouselTypes
+{
+    CAROUSEL_NEED_TO_HEAL,
+    CAROUSEL_TOURNAMENT_PREP,
+    CAROUSEL_FOREST_EXPLORE,
+    CAROUSEL_CAVE_EXPLORE,
+    CAROUSEL_WATER_EXPLORE,
+    CAROUSEL_ROUTE_EXPLORE,
+    CAROUSEL_RANDOM,
+    NUM_CAROUSELS,
+};
+
+#define NUM_RECOMMENDED_ITEMS 5
+
+u8 getCarouselType(){
+    u8 i;
+    u16 currentHP = 0;
+    u16 maxHP = 0;
+    u16 partyHP;
+    u8 partyStatus = 0;
+    u8 PartySize = 0;
+    u16 temp;
+    struct Pokemon *pokemon = gPlayerParty;
+
+    if(VarGet(VAR_STORYLINE_STATE) > STORY_COMPLETED_NAVAL_BASE && VarGet(VAR_STORYLINE_STATE) < STORY_EXPLORE_TREASUREISLAND)
+        return CAROUSEL_TOURNAMENT_PREP;
+
+    //Calculate the number of Pokemon in your party
+    for (i = 0; i < PARTY_SIZE; i++, i++)
+    {
+        temp = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        if (temp != SPECIES_NONE)
+        {
+            PartySize++;
+        }
+    }
+
+    //Calculate the Max HP and Current HP of your party
+    for (i = 0; i < PartySize; i++, i++)
+    {
+        currentHP += GetMonData(&gPlayerParty[i], MON_DATA_HP);
+        maxHP += GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
+    }
+
+    //Calculate the Max HP and Current HP of your party asdf
+    for (i = 0; i < PartySize; i++, i++)
+    {
+        temp = GetMonAilment(&gPlayerParty[i]);
+        if(temp != AILMENT_NONE && temp != AILMENT_PKRS)
+            partyStatus++;
+    }
+
+    partyStatus = 100 - ((partyStatus / PartySize) * 100);
+
+    partyHP = (currentHP / maxHP) * 100;
+
+    if(partyHP < 26 || partyStatus < 33)
+        return CAROUSEL_TOURNAMENT_PREP;
+
+    if((gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE5) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE5)) || 
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE61) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE61)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(GLDNGTEPARK) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(GLDNGTEPARK)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MARIN) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MARIN)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE7) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE7)))
+        return CAROUSEL_FOREST_EXPLORE;
+
+    /*if((gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE15) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE15)) || 
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE20) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE20)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE30) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE30)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE32) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE32)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE51) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE51)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE62) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE62)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE72) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE72)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE76) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE76)))
+        return CAROUSEL_WATER_EXPLORE;*/
+
+    if((gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE1) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE1)) || 
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE2) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE2)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE8) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE8)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE9) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE9)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE11) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE11)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE12) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE12)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE13) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE13)) || 
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE14) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE14)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE17) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE17)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE18) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE18)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE19) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE19)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE21) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE21)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE22) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE22)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE25) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE25)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE30) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE30)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE38) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE38)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE43) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE43)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE49) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE49)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE61) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE61)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE63) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE63)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE70) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE70)))
+        return CAROUSEL_ROUTE_EXPLORE;
+
+    if((gSaveBlock1Ptr->location.mapNum == MAP_NUM(ALCATRAZ) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ALCATRAZ)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(GLDNGTEBRIDGE) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(GLDNGTEBRIDGE)))
+        return CAROUSEL_CAVE_EXPLORE;
+
+    return CAROUSEL_RANDOM;
+}
+
+void RecommendedInitializeArrayList(){
+    u8 i;
+    u8 CarouselType = getCarouselType();
+    u8 randRow, randItemNum, randRow2;
+    u8 availableRows[] = {
+        ROW_MEDICINE,
+        ROW_POKEBALLS,
+        ROW_OTHER_ITEMS,
+        ROW_POWER_UPS,
+        ROW_BATTLE_ITEMS,
+        ROW_BERRIES,
+    };
+
+    /*u8 availableTournamentRows[] = {
+        ROW_BATTLE_ITEMS,
+        ROW_TMS,
+    };*/
+    //TMs would cause issues in the recommended row
+
+    u8 availableFieldRows[] = {
+        ROW_POKEBALLS,
+        ROW_OTHER_ITEMS,
+    };
+
+    for(i = 0; i < NUM_RECOMMENDED_ITEMS; i++){
+        switch(CarouselType){
+            case CAROUSEL_NEED_TO_HEAL:
+                do{
+                    //randRow = NeedToHealRows[Random() % (sizeof(NeedToHealRows)/sizeof(NeedToHealRows[0]))];
+                    randRow = ROW_MEDICINE;
+                    randItemNum = (Random() + i)% sMenuDataPtr->itemNum[randRow];
+                    sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] = sMenuDataPtr->currentRowItemList[randRow][randItemNum];
+                }
+                while(sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == ITEM_NONE || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][0] && i != 0) || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][1] && i != 1) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][2] && i != 2) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][3] && i != 3) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][4] && i != 4) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][5] && i != 5) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][6] && i != 6) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][7] && i != 7) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][8] && i != 8) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][9] && i != 9));
+                sMenuDataPtr->itemNum[ROW_RECOMMENDED]++;
+
+            break;
+            case CAROUSEL_TOURNAMENT_PREP:
+                do{
+                    //randRow = NeedToHealRows[Random() % (sizeof(NeedToHealRows)/sizeof(NeedToHealRows[0]))];
+                    randRow = ROW_BATTLE_ITEMS;
+                    randItemNum = (Random() + i)% sMenuDataPtr->itemNum[randRow];
+                    sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] = sMenuDataPtr->currentRowItemList[randRow][randItemNum];
+                }
+                while(sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == ITEM_NONE || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][0] && i != 0) || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][1] && i != 1) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][2] && i != 2) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][3] && i != 3) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][4] && i != 4) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][5] && i != 5) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][6] && i != 6) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][7] && i != 7) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][8] && i != 8) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][9] && i != 9));
+                sMenuDataPtr->itemNum[ROW_RECOMMENDED]++;
+
+            break;
+            case CAROUSEL_WATER_EXPLORE:
+                do{
+                    randRow = availableFieldRows[Random() % (sizeof(availableFieldRows)/sizeof(availableFieldRows[0]))];
+                    randItemNum = (Random() + i)% sMenuDataPtr->itemNum[randRow];
+                    sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] = sMenuDataPtr->currentRowItemList[randRow][randItemNum];
+                }
+                while(sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == ITEM_NONE || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_REPEL       &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_SUPER_REPEL &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_MAX_REPEL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_LURE        &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_SUPER_LURE  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_MAX_LURE    &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_POKE_BALL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_GREAT_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_ULTRA_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_NET_BALL    &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_DIVE_BALL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_LURE_BALL) ||
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][0] && i != 0) || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][1] && i != 1) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][2] && i != 2) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][3] && i != 3) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][4] && i != 4) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][5] && i != 5) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][6] && i != 6) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][7] && i != 7) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][8] && i != 8) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][9] && i != 9));
+                sMenuDataPtr->itemNum[ROW_RECOMMENDED]++;
+
+            break;
+            case CAROUSEL_CAVE_EXPLORE:
+                do{
+                    randRow = availableFieldRows[Random() % (sizeof(availableFieldRows)/sizeof(availableFieldRows[0]))];
+                    randItemNum = (Random() + i)% sMenuDataPtr->itemNum[randRow];
+                    sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] = sMenuDataPtr->currentRowItemList[randRow][randItemNum];
+                }
+                while(sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == ITEM_NONE || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_REPEL       &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_SUPER_REPEL &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_MAX_REPEL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_LURE        &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_SUPER_LURE  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_MAX_LURE    &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_POKE_BALL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_GREAT_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_ULTRA_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_DUSK_BALL) ||
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][0] && i != 0) || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][1] && i != 1) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][2] && i != 2) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][3] && i != 3) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][4] && i != 4) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][5] && i != 5) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][6] && i != 6) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][7] && i != 7) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][8] && i != 8) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][9] && i != 9));
+                sMenuDataPtr->itemNum[ROW_RECOMMENDED]++;
+
+            break;
+            case CAROUSEL_ROUTE_EXPLORE:
+                do{
+                    randRow = availableFieldRows[Random() % (sizeof(availableFieldRows)/sizeof(availableFieldRows[0]))];
+                    randItemNum = (Random() + i)% sMenuDataPtr->itemNum[randRow];
+                    sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] = sMenuDataPtr->currentRowItemList[randRow][randItemNum];
+                }
+                while(sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == ITEM_NONE || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_REPEL       &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_SUPER_REPEL &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_MAX_REPEL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_LURE        &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_SUPER_LURE  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_MAX_LURE    &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_POKE_BALL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_GREAT_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_ULTRA_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_HEAL_BALL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_TIMER_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_QUICK_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_REPEAT_BALL &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_LUXURY_BALL) ||
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][0] && i != 0) || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][1] && i != 1) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][2] && i != 2) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][3] && i != 3) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][4] && i != 4) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][5] && i != 5) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][6] && i != 6) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][7] && i != 7) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][8] && i != 8) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][9] && i != 9));
+                sMenuDataPtr->itemNum[ROW_RECOMMENDED]++;
+
+            break;
+            default:
+                do{
+                    randRow = availableRows[Random() % (sizeof(availableRows)/sizeof(availableRows[0]))];
+                    randItemNum = (Random() + i)% sMenuDataPtr->itemNum[randRow];
+                    sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] = sMenuDataPtr->currentRowItemList[randRow][randItemNum];
+                }
+                while(sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == ITEM_NONE || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][0] && i != 0) || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][1] && i != 1) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][2] && i != 2) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][3] && i != 3) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][4] && i != 4) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][5] && i != 5) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][6] && i != 6) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][7] && i != 7) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][8] && i != 8) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][9] && i != 9));
+                sMenuDataPtr->itemNum[ROW_RECOMMENDED]++;
+
+            break;
         }
     }
 }
@@ -3946,7 +4266,7 @@ static void buynewItem(u16 itemId, u8 quantity){
 
     sMenuDataPtr->buyWindow = TRUE;
 
-    if(GetCurrentRow() != ROW_TMS){
+    if(GetCurrentRow() != ROW_TMS && GetCurrentRow() != ROW_Z_CRYSTALS && GetCurrentRow() != ROW_MEGA_STONES){
         for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++){
             if(itemId == gSaveBlock2Ptr->amazonBuyAgainItem[i]){
                 newItem = FALSE;
@@ -3968,8 +4288,12 @@ static void buynewItem(u16 itemId, u8 quantity){
         }
         gSaveBlock2Ptr->amazonBuyAgainItem[0] = itemId;
 
-        for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++)
+        for(i = 0; i < MAX_AMAZON_BUY_AGAIN_ITEMS; i++){
             sMenuDataPtr->currentRowItemList[ROW_BUY_AGAIN][i] = gSaveBlock2Ptr->amazonBuyAgainItem[i];
+
+            if(sMenuDataPtr->itemNum[ROW_BUY_AGAIN] < MAX_AMAZON_BUY_AGAIN_ITEMS && newItem)
+                sMenuDataPtr->itemNum[ROW_BUY_AGAIN]++;
+        }
             
         if(GetCurrentRow() == ROW_BUY_AGAIN)
             sMenuDataPtr->currentItem = 0;
@@ -3989,6 +4313,9 @@ static void Task_MenuMain(u8 taskId)
                 PlaySE(SE_SELECT);
                 Menu_ChangeTilemap();
                 PrintToWindow(WINDOW_1, FONT_BLACK);
+
+                if(GetCurrentRow() == ROW_TMS || GetCurrentRow() == ROW_Z_CRYSTALS || GetCurrentRow() == ROW_MEGA_STONES)
+                    AmazonItemInitializeArrayList();
             }
             else{
                 PlaySE(SE_PC_OFF);
@@ -4015,6 +4342,26 @@ static void Task_MenuMain(u8 taskId)
                 sMenuDataPtr->itemQuantity = 0;
                 sMenuDataPtr->buyWindow = FALSE;
                 PrintToWindow(WINDOW_1, FONT_BLACK);
+
+                if(GetCurrentRow() == ROW_BUY_AGAIN|| 
+                   GetCurrentRow() == ROW_TMS || 
+                   GetCurrentRow() == ROW_Z_CRYSTALS || 
+                   GetCurrentRow() == ROW_MEGA_STONES)
+                    AmazonItemInitializeArrayList();
+
+                if(GetCurrentRow() == ROW_TMS || GetCurrentRow() == ROW_Z_CRYSTALS || GetCurrentRow() == ROW_MEGA_STONES){
+                    sMenuDataPtr->itemQuantity = 0;
+                    PlaySE(SE_SELECT);
+                    Menu_ChangeTilemap();
+
+                    sMenuDataPtr->currentItem = 0;
+
+                    if(sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem] == ITEM_NONE)
+                        sMenuDataPtr->currentRow = ROW_MEDICINE;
+                    
+                    PrintToWindow(WINDOW_1, FONT_BLACK);
+                }
+
             }
             else{
                 if(GetMoney(&gSaveBlock1Ptr->money) >= GetCurrentItemPrice(sMenuDataPtr->itemQuantity, sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem], PRICE_FINAL)){
