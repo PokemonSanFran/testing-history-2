@@ -3873,26 +3873,28 @@ static const u8 sRowSelector[]         = INCBIN_U8("graphics/ui_menus/amazon/row
 static const u8 sOrderWindow[]         = INCBIN_U8("graphics/ui_menus/amazon/orderwindow.4bpp");
 static const u8 sItemSelector[]        = INCBIN_U8("graphics/ui_menus/amazon/item_selector.4bpp");
 
-static const u8 sText_Help_Bar[]        = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
-static const u8 sText_Help_Bar_Buy[]    = _("{DPAD_UPDOWN} +1/-1 {DPAD_LEFTRIGHT} +5/-5 {A_BUTTON} Buy Now {B_BUTTON} Cancel");
-static const u8 sText_Money_Bar[]       = _("Money: ¥{STR_VAR_1}");
-static const u8 sText_Price[]           = _("Price: ¥{STR_VAR_1}");
-static const u8 sText_FirstRowName[]    = _("{STR_VAR_1}: {STR_VAR_2}");
-static const u8 sText_ItemNameOwned[]   = _("{STR_VAR_1} - {STR_VAR_2} Owned");
-static const u8 sText_ItemCost[]        = _("Item Cost:    ¥ {STR_VAR_1}");
-static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥ {STR_VAR_1}");
-//static const u8 sText_DroneFee[]      = _("Drone Fee:    ¥ {STR_VAR_1} ({STR_VAR_2}%)");
-static const u8 sText_OrderTotal[]      = _("Order Total: ¥ {STR_VAR_1}");
-static const u8 sText_ItemPrice[]       = _("¥ {STR_VAR_1}");
-static const u8 sText_DeliveryTo[]      = _("Delivery to {STR_VAR_1} ({STR_VAR_2})");
+static const u8 sText_Help_Bar[]          = _("{DPAD_UPDOWN} Rows {DPAD_LEFTRIGHT} Items {A_BUTTON} Buy {B_BUTTON} Exit {START_BUTTON} Sort Rows");
+static const u8 sText_Help_Bar_Buy[]      = _("{DPAD_UPDOWN} +1/-1 {DPAD_LEFTRIGHT} +5/-5 {A_BUTTON} Buy Now {B_BUTTON} Cancel");
+static const u8 sText_Help_Bar_Complete[] = _("{A_BUTTON} Buy More {B_BUTTON} Return {START_BUTTON} Exit");
+static const u8 sText_Money_Bar[]         = _("Money: ¥{STR_VAR_1}");
+static const u8 sText_Price[]             = _("Price: ¥{STR_VAR_1}");
+static const u8 sText_FirstRowName[]      = _("{STR_VAR_1}: {STR_VAR_2}");
+static const u8 sText_ItemNameOwned[]     = _("{STR_VAR_1} - {STR_VAR_2} Owned");
+static const u8 sText_ItemCost[]          = _("Item Cost:    ¥ {STR_VAR_1}");
+static const u8 sText_DroneFee[]          = _("Drone Fee:    ¥ {STR_VAR_1}");
+//static const u8 sText_DroneFee[]        = _("Drone Fee:    ¥ {STR_VAR_1} ({STR_VAR_2}%)");
+static const u8 sText_OrderTotal[]        = _("Order Total: ¥ {STR_VAR_1}");
+static const u8 sText_ItemPrice[]         = _("¥ {STR_VAR_1}");
+static const u8 sText_DeliveryTo[]        = _("Delivery to {STR_VAR_1} ({STR_VAR_2})");
 
 
 static const u8 sText_OrderDelivered[]       = _("Order Delivered!");
-static const u8 sText_ThanksForBuying[]      = _("Thanks you for using Amazon");
-static const u8 sText_ItemNumber[]           = _("You got {STR_VAR_1} x{STR_VAR_2}");
+static const u8 sText_ThanksForBuying[]      = _("Thank you for your purchase!");
+static const u8 sText_YouGot[]               = _("You got");
+static const u8 sText_ItemNumber[]           = _("{STR_VAR_1} x{STR_VAR_2}");
 
 
-static const u8 sText_noEnoughMoney[]        = _("You don't have enough money for this!");
+static const u8 sText_noEnoughMoney[]        = _("Your account has been declined for insufficient funds!");
 
 #define MAX_MONEY 999999
 
@@ -4073,12 +4075,6 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         if(sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem] != ITEM_NONE)
             AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar4);
-
-        // Help Bar --------------------------------------------------------------------------------------------------------------------
-        x = 0;
-        y = 18;
-
-        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar);
     }
     else{
         //Item Icon --------------------------------------------------------------------------------------------------------------------
@@ -4184,16 +4180,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
         //AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
         AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);  
-
-        // Help Bar --------------------------------------------------------------------------------------------------------------------
-        x = 0;
-        y = 18;
-
-        if(!sMenuDataPtr->notEnoughMoneyWindow)
-            AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Buy);  
-        else
-            AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_noEnoughMoney);  
-    
+        
         // Order Delivered --------------------------------------------------------------------------------------------------------------------
         if(sMenuDataPtr->buyWindow){
             if(!sMenuDataPtr->notEnoughMoneyWindow){
@@ -4207,12 +4194,15 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 0, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_OrderDelivered);  
                 
                 x = 6;
-                y = 8;
+                y = 7;
                 AddTextPrinterParameterized4(windowId, 8, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, sText_ThanksForBuying); 
 
+                x = 6;
+                y = y + 2;
+                AddTextPrinterParameterized4(windowId, 8, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, sText_YouGot); 
                 
                 x = 6;
-                y = 10;
+                y = y + 2;
                 str = gItems[itemID].name;
                 StringCopy(gStringVar1, str); 
                 ConvertIntToDecimalStringN(gStringVar2, quantity, STR_CONV_MODE_LEFT_ALIGN, 2);  
@@ -4229,6 +4219,25 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
             }
         }
     }
+    // Help Bar --------------------------------------------------------------------------------------------------------------------
+    x = 0;
+    y = 18;
+
+    if(!sMenuDataPtr->buyScreen){
+        AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar);
+    }
+    else{
+        if(!sMenuDataPtr->buyWindow){
+            if(!sMenuDataPtr->notEnoughMoneyWindow)
+                AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Buy);  
+            else
+                AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_noEnoughMoney);  
+        }
+        else{
+            AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_Help_Bar_Complete); 
+        }
+    }
+    
 
     // Money --------------------------------------------------------------------------------------------------------------------
     x = 20;
@@ -4347,7 +4356,18 @@ static void Task_MenuMain(u8 taskId)
         else{
             sMenuDataPtr->itemQuantity = 0;
             sMenuDataPtr->buyWindow = FALSE;
+            Menu_ChangeTilemap();
+
+            if(GetCurrentRow() == ROW_BUY_AGAIN|| GetCurrentRow() == ROW_TMS || GetCurrentRow() == ROW_Z_CRYSTALS || GetCurrentRow() == ROW_MEGA_STONES){
+                AmazonItemInitializeArrayList();
+                sMenuDataPtr->currentItem = 0;
+            }
+
+            if(sMenuDataPtr->currentRowItemList[GetCurrentRow()][sMenuDataPtr->currentItem] == ITEM_NONE)
+                sMenuDataPtr->currentRow = ROW_MEDICINE;
+                    
             PrintToWindow(WINDOW_1, FONT_BLACK);
+            PlaySE(SE_SELECT);
         }
     }
 
@@ -4400,13 +4420,18 @@ static void Task_MenuMain(u8 taskId)
     }
 
     //
-    if(JOY_NEW(START_BUTTON) && !sMenuDataPtr->buyWindow)
+    if(JOY_NEW(START_BUTTON))
 	{
-        if(!sMenuDataPtr->buyScreen){
+        if(!sMenuDataPtr->buyScreen && !sMenuDataPtr->buyWindow){
             sMenuDataPtr->rowsSorted = !sMenuDataPtr->rowsSorted;
             PlaySE(SE_SELECT);
 
             PrintToWindow(WINDOW_1, FONT_BLACK);
+        }
+        else if(sMenuDataPtr->buyWindow){
+            PlaySE(SE_PC_OFF);
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_MenuTurnOff;
         }
 	}
 
