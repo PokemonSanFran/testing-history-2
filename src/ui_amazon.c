@@ -3379,23 +3379,7 @@ struct AmazonItemData Amazon_Items[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW] = {
     [ROW_TMS] =
     {
         {
-            .item = ITEM_TM09,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-            .reqQuest = QUEST_NONE,
-        },
-        {
-            .item = ITEM_TM10,
-            .numBadges = 0,
-            .reqFlag = FLAG_NONE,
-            .reqVar = VAR_NONE,
-            .reqVarState = 0,
-            .reqQuest = QUEST_NONE,
-        },
-        {
-            .item = ITEM_TM11,
+            .item = ITEM_NONE,
             .numBadges = 0,
             .reqFlag = FLAG_NONE,
             .reqVar = VAR_NONE,
@@ -3536,7 +3520,7 @@ u8 getCarouselType(){
         maxHP += GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
     }
 
-    //Calculate the Max HP and Current HP of your party asdf
+    //Calculate the Ailment of your party
     for (i = 0; i < PartySize; i++, i++)
     {
         temp = GetMonAilment(&gPlayerParty[i]);
