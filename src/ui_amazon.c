@@ -3542,6 +3542,7 @@ u8 getCarouselType(){
        (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE7) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE7)))
         return CAROUSEL_FOREST_EXPLORE;
 
+    //PSF TODO Uncomment relevant lines when routes are created
     /*if((gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE15) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE15)) || 
        (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE20) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE20)) ||
        (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE30) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE30)) ||
@@ -3551,6 +3552,12 @@ u8 getCarouselType(){
        (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE72) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE72)) ||
        (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE76) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE76)))
         return CAROUSEL_WATER_EXPLORE;*/
+
+    if((gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE30) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE30)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE32) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE32)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE62) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE62)) ||
+       (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE72) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE72)))
+        return CAROUSEL_WATER_EXPLORE;
 
     if((gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE1) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE1)) || 
        (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE2) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE2)) ||
