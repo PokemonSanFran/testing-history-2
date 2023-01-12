@@ -3533,7 +3533,7 @@ u8 getCarouselType(){
     partyHP = (currentHP / maxHP) * 100;
 
     if(partyHP < 26 || partyStatus < 33)
-        return CAROUSEL_TOURNAMENT_PREP;
+        return CAROUSEL_NEED_TO_HEAL;
 
     if((gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE5) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE5)) || 
        (gSaveBlock1Ptr->location.mapNum == MAP_NUM(PSFROUTE61) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PSFROUTE61)) ||
@@ -3644,6 +3644,36 @@ void RecommendedInitializeArrayList(){
                     sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] = sMenuDataPtr->currentRowItemList[randRow][randItemNum];
                 }
                 while(sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == ITEM_NONE || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][0] && i != 0) || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][1] && i != 1) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][2] && i != 2) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][3] && i != 3) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][4] && i != 4) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][5] && i != 5) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][6] && i != 6) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][7] && i != 7) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][8] && i != 8) ||  
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][9] && i != 9));
+                sMenuDataPtr->itemNum[ROW_RECOMMENDED]++;
+
+            break;
+            case CAROUSEL_FOREST_EXPLORE:
+                do{
+                    randRow = availableFieldRows[Random() % (sizeof(availableFieldRows)/sizeof(availableFieldRows[0]))];
+                    randItemNum = (Random() + i)% sMenuDataPtr->itemNum[randRow];
+                    sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] = sMenuDataPtr->currentRowItemList[randRow][randItemNum];
+                }
+                while(sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == ITEM_NONE || 
+                      (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_REPEL       &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_SUPER_REPEL &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_MAX_REPEL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_LURE        &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_SUPER_LURE  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_MAX_LURE    &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_POKE_BALL   &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_GREAT_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_ULTRA_BALL  &&
+                       sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] != ITEM_NET_BALL) ||
                       (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][0] && i != 0) || 
                       (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][1] && i != 1) ||  
                       (sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][i] == sMenuDataPtr->currentRowItemList[ROW_RECOMMENDED][2] && i != 2) ||  
