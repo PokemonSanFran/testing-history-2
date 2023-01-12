@@ -86,10 +86,11 @@ struct AmazonMenuResources {
 	u16 currentFirstShownItem:8;     //Max 255
 	u16 itemQuantity:7;              //Max 99
 	u16 notEnoughMoneyWindow:1;      //bool8
+	u16 buyableItems:7;              //Max 99
 	u16 rowsSorted:1;                //bool8
 	u16 buyScreen:1;                 //bool8
 	u16 buyWindow:1;                 //bool8
-	u16 filler:5;                    //Filler
+	u16 filler:6;                    //Filler
 	u16 currentRowItemList[NUM_ROWS][NUM_MAX_ITEMS_PER_ROW];
 	u16 itemNum[NUM_ROWS];
 	u8 spriteIDs[20];
@@ -117,6 +118,7 @@ static void RecommendedInitializeArrayList(void);
 static void DestroyAllItemIcons(void);
 static void EnableAllItemIcons(void);
 static void DisableAllItemIcons(void);
+static void CalculateBuyableItems(void);
 static void MoveCurrenItemIcon(u8 idx, u8 x, u8 y);
 
 //==========CONST=DATA==========//
@@ -210,6 +212,7 @@ void Amazon_Init(MainCallback callback)
     sMenuDataPtr->currentFirstShownRow  = 0;
     sMenuDataPtr->currentFirstShownItem = 0;
     sMenuDataPtr->itemQuantity  = 0;
+    sMenuDataPtr->buyableItems = 1;
 
     sMenuDataPtr->rowsSorted = FALSE;
     sMenuDataPtr->buyScreen = FALSE;
@@ -627,6 +630,7 @@ static void Menu_ChangeTilemap(void)
     ResetTempTileDataBuffers();
     DecompressAndCopyTileDataToVram(1, sMenuTiles, 0, 0, 0);
     FreeTempTileDataBuffersIfPossible();
+    CalculateBuyableItems();
 
     if(sMenuDataPtr->buyScreen){
         DisableAllItemIcons();
@@ -787,11 +791,11 @@ u8 getRowItemNum(u8 row){
     return sMenuDataPtr->itemNum[row];
 }
 
-static u16 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
+static u32 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
 {
-    u16 itemPrice = (quantity + 1)* gItems[itemID].price;
-    u16 dronePrice = (itemPrice * getDroneFee()) / 100;
-    u16 totalPrice = itemPrice + dronePrice;
+    u32 itemPrice = (quantity + 1)* gItems[itemID].price;
+    u32 dronePrice = (itemPrice * getDroneFee()) / 100;
+    u32 totalPrice = itemPrice + dronePrice;
 
     switch(type){
         case PRICE_ITEM:
@@ -806,6 +810,16 @@ static u16 GetCurrentItemPrice(u8 quantity, u16 itemID, u8 type)
     }
 
     return 0;
+}
+
+static void CalculateBuyableItems(){
+    u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
+    u16 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
+
+    if (buyableItems > MAX_BAG_ITEM_CAPACITY)
+        sMenuDataPtr->buyableItems = MAX_BAG_ITEM_CAPACITY;
+    else
+        sMenuDataPtr->buyableItems = buyableItems;
 }
 
 static void PressedDownButton(){
@@ -836,17 +850,11 @@ static void PressedDownButton(){
     }
     else{
         if(GetCurrentRow() != ROW_TMS && GetCurrentRow() != ROW_Z_CRYSTALS && GetCurrentRow() != ROW_MEGA_STONES){
-            u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
-            u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
-
-            if(buyableItems != 0){
-                if (buyableItems > MAX_BAG_ITEM_CAPACITY)
-                    buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
-
+            if(sMenuDataPtr->buyableItems != 0){
                 if(sMenuDataPtr->itemQuantity != 0)
                     sMenuDataPtr->itemQuantity--;
                 else
-                    sMenuDataPtr->itemQuantity = buyableItems - 1;
+                    sMenuDataPtr->itemQuantity = sMenuDataPtr->buyableItems - 1;
             }
         }
     }
@@ -877,10 +885,7 @@ static void PressedUpButton(){
     }
     else{
         if(GetCurrentRow() != ROW_TMS && GetCurrentRow() != ROW_Z_CRYSTALS && GetCurrentRow() != ROW_MEGA_STONES){
-            u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
-            u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
-
-            if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > sMenuDataPtr->itemQuantity + 1)
+            if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && sMenuDataPtr->buyableItems > sMenuDataPtr->itemQuantity + 1)
                 sMenuDataPtr->itemQuantity++;
             else
                 sMenuDataPtr->itemQuantity = 0;
@@ -921,13 +926,11 @@ static void PressedRightButton(){
     }
     else{
         if(GetCurrentRow() != ROW_TMS && GetCurrentRow() != ROW_Z_CRYSTALS && GetCurrentRow() != ROW_MEGA_STONES){
-            u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
-            u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
-
-            if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && buyableItems > (sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE))
+            if(sMenuDataPtr->itemQuantity != MAX_BAG_ITEM_CAPACITY - 1 && 
+               (sMenuDataPtr->buyableItems - 1) > (sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE))
                 sMenuDataPtr->itemQuantity = sMenuDataPtr->itemQuantity + LEFTRIGHT_ITEM_NUMBER_CHANGE;
-            else if(sMenuDataPtr->itemQuantity != buyableItems)
-                sMenuDataPtr->itemQuantity = buyableItems;
+            else if(sMenuDataPtr->itemQuantity != sMenuDataPtr->buyableItems - 1)
+                sMenuDataPtr->itemQuantity = sMenuDataPtr->buyableItems - 1;
             else
                 sMenuDataPtr->itemQuantity = 0;
         }
@@ -957,19 +960,13 @@ static void PressedLeftButton(){
     }
     else{
         if(GetCurrentRow() != ROW_TMS && GetCurrentRow() != ROW_Z_CRYSTALS && GetCurrentRow() != ROW_MEGA_STONES){
-            u16 itemID = sMenuDataPtr->currentRowItemList[(GetCurrentRow()) % NUM_ROWS][sMenuDataPtr->currentItem];
-            u8 buyableItems = GetMoney(&gSaveBlock1Ptr->money) / GetCurrentItemPrice(0, itemID, PRICE_FINAL);
-
-            if(buyableItems != 0){
-                if (buyableItems > MAX_BAG_ITEM_CAPACITY)
-                    buyableItems = MAX_BAG_ITEM_CAPACITY - 1;
-
+            if(sMenuDataPtr->buyableItems != 0){
                 if(sMenuDataPtr->itemQuantity >= LEFTRIGHT_ITEM_NUMBER_CHANGE)
                     sMenuDataPtr->itemQuantity = sMenuDataPtr->itemQuantity - LEFTRIGHT_ITEM_NUMBER_CHANGE;
                 else if(sMenuDataPtr->itemQuantity != 0)
                     sMenuDataPtr->itemQuantity = 0;
                 else
-                    sMenuDataPtr->itemQuantity = buyableItems - 1;
+                    sMenuDataPtr->itemQuantity = sMenuDataPtr->buyableItems - 1;
             }
         }
     }
@@ -3904,7 +3901,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     u8 i, j, x2, y2;
     u8 x = 1;
     u8 y = 1;
-    u16 quantity;
+    u32 quantity;
     u16 itemID;
     u8 droneFeePercentage;
     u8 strArray[16];
@@ -4105,7 +4102,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         x2 = 0;
         y2 = 0;
 
-	    ConvertIntToDecimalStringN(gStringVar1, gItems[itemID].price, STR_CONV_MODE_LEFT_ALIGN, 5);
+	    ConvertIntToDecimalStringN(gStringVar1, gItems[itemID].price, STR_CONV_MODE_LEFT_ALIGN, 6);
 	    //ConvertIntToDecimalStringN(gStringVar1, MAX_MONEY, STR_CONV_MODE_LEFT_ALIGN, 5);
         StringExpandPlaceholders(gStringVar4, sText_ItemPrice);
 
@@ -4126,7 +4123,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y2 = 0;
 
         quantity = GetCurrentItemPrice(sMenuDataPtr->itemQuantity, itemID, PRICE_ITEM);
-	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
+	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 6);
         StringExpandPlaceholders(gStringVar4, sText_ItemCost);
 
         AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
@@ -4138,7 +4135,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y2 = 0;
 
         quantity = GetCurrentItemPrice(sMenuDataPtr->itemQuantity, itemID, PRICE_DRONE);
-	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
+	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 6);
 	    ConvertIntToDecimalStringN(gStringVar2, getDroneFee(), STR_CONV_MODE_LEFT_ALIGN, 2);
         StringExpandPlaceholders(gStringVar4, sText_DroneFee);
 
@@ -4151,7 +4148,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
         y2 = 0;
 
         quantity = GetCurrentItemPrice(sMenuDataPtr->itemQuantity, itemID, PRICE_FINAL);
-	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 5);
+	    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEFT_ALIGN, 6);
         StringExpandPlaceholders(gStringVar4, sText_OrderTotal);
 
         AddTextPrinterParameterized4(windowId, 8, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
@@ -4189,25 +4186,24 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 
                 BlitBitmapToWindow(windowId, sOrderWindow, (x*8), (y*8), 152, 72);
 
-                x = 5;
+                x = 6;
+                x2 = 0;
                 y = 5;
-                AddTextPrinterParameterized4(windowId, 8, (x*8) + 4, (y*8) + 0, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_OrderDelivered);  
+                y2 = 0;
+                AddTextPrinterParameterized4(windowId, 7, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_OrderDelivered);  
                 
-                x = 6;
                 y = 7;
-                AddTextPrinterParameterized4(windowId, 8, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, sText_ThanksForBuying); 
+                AddTextPrinterParameterized4(windowId, 7, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, sText_ThanksForBuying); 
 
-                x = 6;
                 y = y + 2;
-                AddTextPrinterParameterized4(windowId, 8, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, sText_YouGot); 
+                AddTextPrinterParameterized4(windowId, 7, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, sText_YouGot); 
                 
-                x = 6;
                 y = y + 2;
                 str = gItems[itemID].name;
                 StringCopy(gStringVar1, str); 
                 ConvertIntToDecimalStringN(gStringVar2, quantity, STR_CONV_MODE_LEFT_ALIGN, 2);  
                 StringExpandPlaceholders(gStringVar4, sText_ItemNumber);
-                AddTextPrinterParameterized4(windowId, 8, (x*8), (y*8), 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
+                AddTextPrinterParameterized4(windowId, 7, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
 
                 /*
                 //Item Icon --------------------------------------------------------------------------------------------------------------------
