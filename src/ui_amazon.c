@@ -385,6 +385,30 @@ static void SpriteCallback_RightArrow(struct Sprite *sprite)
         sprite->invisible = FALSE;
 }
 
+static void SpriteCallback_UpArrowSmall(struct Sprite *sprite)
+{
+    u8 val = sprite->data[0];
+    sprite->y2 = gSineTable[val] / 128;
+    sprite->data[0] += 8;
+
+    if(!sMenuDataPtr->buyScreen || sMenuDataPtr->itemQuantity == sMenuDataPtr->buyableItems - 1)
+        sprite->invisible = TRUE;
+    else
+        sprite->invisible = FALSE;
+}
+
+static void SpriteCallback_DownArrowSmall(struct Sprite *sprite)
+{
+    u8 val = sprite->data[0] + 128;
+    sprite->y2 = gSineTable[val] / 128;
+    sprite->data[0] += 8;
+
+    if(!sMenuDataPtr->buyScreen || sMenuDataPtr->itemQuantity == 0)
+        sprite->invisible = TRUE;
+    else
+        sprite->invisible = FALSE;
+}
+
 // Buy Icon Sprite -------------------------------------------------------------------------------------------------------
 #define TAG_AMAZON_INTERFACE 0 // Tile and pal tag used for all interface sprites.
 #define PAL_UI_SPRITES 0
@@ -396,6 +420,8 @@ enum AmazonSpriteIDs
     SPRITE_DOWN_ARROW,
     SPRITE_LEFT_ARROW,
     SPRITE_RIGHT_ARROW,
+    SPRITE_UP_ARROW_SMALL,
+    SPRITE_DOWN_ARROW_SMALL,
     NUM_AMAZON_SPRITES,
 };
 
@@ -405,13 +431,17 @@ enum {
     GFXTAG_DOWN_ARROW,
     GFXTAG_LEFT_ARROW,
     GFXTAG_RIGHT_ARROW,
+    GFXTAG_UP_ARROW_SMALL,
+    GFXTAG_DOWN_ARROW_SMALL,
 };
 
-static const u32 gBattleAmazonBuyIcon_Gfx[]    = INCBIN_U32("graphics/ui_menus/amazon/buyicon.4bpp.lz");
-static const u32 gBattleAmazonUpArrow_Gfx[]    = INCBIN_U32("graphics/ui_menus/amazon/arrow_up.4bpp.lz");
-static const u32 gBattleAmazonDownArrow_Gfx[]  = INCBIN_U32("graphics/ui_menus/amazon/arrow_down.4bpp.lz");
-static const u32 gBattleAmazonLeftArrow_Gfx[]  = INCBIN_U32("graphics/ui_menus/amazon/arrow_left.4bpp.lz");
-static const u32 gBattleAmazonRightArrow_Gfx[] = INCBIN_U32("graphics/ui_menus/amazon/arrow_right.4bpp.lz");
+static const u32 gBattleAmazonBuyIcon_Gfx[]        = INCBIN_U32("graphics/ui_menus/amazon/buyicon.4bpp.lz");
+static const u32 gBattleAmazonUpArrow_Gfx[]        = INCBIN_U32("graphics/ui_menus/amazon/arrow_up.4bpp.lz");
+static const u32 gBattleAmazonUpArrowSmall_Gfx[]   = INCBIN_U32("graphics/ui_menus/amazon/arrow_up_small.4bpp.lz");
+static const u32 gBattleAmazonDownArrow_Gfx[]      = INCBIN_U32("graphics/ui_menus/amazon/arrow_down.4bpp.lz");
+static const u32 gBattleAmazonDownArrowSmall_Gfx[] = INCBIN_U32("graphics/ui_menus/amazon/arrow_down_small.4bpp.lz");
+static const u32 gBattleAmazonLeftArrow_Gfx[]      = INCBIN_U32("graphics/ui_menus/amazon/arrow_left.4bpp.lz");
+static const u32 gBattleAmazonRightArrow_Gfx[]     = INCBIN_U32("graphics/ui_menus/amazon/arrow_right.4bpp.lz");
 
 static const struct SpritePalette sAmazonInterfaceSpritePalette[] = {sMenuPalette, PAL_UI_SPRITES};
 
@@ -518,6 +548,52 @@ static void CreateRightArrowSprite(void)
     gSprites[sMenuDataPtr->spriteIDs[SpriteTag]].oam.priority = 1;
 }
 
+static void CreateUpArrowSmallSprite(void)
+{
+    u8 x, y, spriteId;
+    u8 SpriteTag = GFXTAG_UP_ARROW_SMALL;
+    u8 SpriteID  = SPRITE_UP_ARROW_SMALL;
+    struct CompressedSpriteSheet sSpriteSheet_AmazonUpArrow = {gBattleAmazonUpArrowSmall_Gfx, 0x0800, SpriteTag};
+    struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
+
+    x = (12 * 8) + 4;
+    y = (11 * 8) + 4;
+
+    TempSpriteTemplate.tileTag = SpriteTag;
+    TempSpriteTemplate.callback = SpriteCallback_UpArrowSmall;
+
+    LoadCompressedSpriteSheet(&sSpriteSheet_AmazonUpArrow);
+    spriteId = CreateSprite(&TempSpriteTemplate, x, y, 0);
+    sMenuDataPtr->spriteIDs[SpriteID] = spriteId;
+
+    gSprites[sMenuDataPtr->spriteIDs[SpriteID]].oam.shape = SPRITE_SHAPE(16x8);
+    gSprites[sMenuDataPtr->spriteIDs[SpriteID]].oam.size = SPRITE_SIZE(16x8);
+    gSprites[sMenuDataPtr->spriteIDs[SpriteID]].oam.priority = 1;
+}
+
+static void CreateDownArrowSmallSprite(void)
+{
+    u8 x, y, spriteId;
+    u8 SpriteTag = GFXTAG_DOWN_ARROW_SMALL;
+    u8 SpriteID  = SPRITE_DOWN_ARROW_SMALL;
+    struct CompressedSpriteSheet sSpriteSheet_AmazonDownArrow = {gBattleAmazonDownArrowSmall_Gfx, 0x0800, SpriteTag};
+    struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
+
+    x = (12 * 8) + 4;
+    y = (14 * 8) + 4;
+
+    TempSpriteTemplate.tileTag = SpriteTag;
+    TempSpriteTemplate.callback = SpriteCallback_DownArrowSmall;
+
+    LoadCompressedSpriteSheet(&sSpriteSheet_AmazonDownArrow);
+    spriteId = CreateSprite(&TempSpriteTemplate, x, y, 0);
+    sMenuDataPtr->spriteIDs[SpriteID] = spriteId;
+
+    gSprites[sMenuDataPtr->spriteIDs[SpriteID]].oam.shape = SPRITE_SHAPE(16x8);
+    gSprites[sMenuDataPtr->spriteIDs[SpriteID]].oam.size = SPRITE_SIZE(16x8);
+    gSprites[sMenuDataPtr->spriteIDs[SpriteID]].oam.priority = 1;
+}
+
 // -------------------------------------------------------------------------------------------------------
 static bool8 Menu_DoGfxSetup(void)
 {
@@ -565,6 +641,8 @@ static bool8 Menu_DoGfxSetup(void)
         CreateDownArrowSprite();
         CreateLeftArrowSprite();
         CreateRightArrowSprite();
+        CreateUpArrowSmallSprite();
+        CreateDownArrowSmallSprite();
         PrintToWindow(WINDOW_1, FONT_WHITE);
         taskId = CreateTask(Task_MenuWaitFadeIn, 0);
         BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
