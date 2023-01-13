@@ -224,14 +224,17 @@ void Task_OpenMenuFromStartMenu(u8 taskId)
     }
 }
 
+#define CURRENT_APP_ID_VAR VAR_CURRENT_START_MENU_APP
+//#define DEBUG_VAR          VAR_TEMP_E
+
 // This is our main initialization function if you want to call the menu from elsewhere
 void Menu_Init(MainCallback callback)
 {
     /*
     //This is to test a EWRAM issue when opening and closing the menu a lot
-    u16 temp = VarGet(VAR_TEMP_F);
+    u16 temp = VarGet(DEBUG_VAR);
     temp++;
-    VarSet(VAR_TEMP_F, temp);
+    VarSet(DEBUG_VAR, temp);
     mgba_printf(MGBA_LOG_WARN, "Number of Start Menu Reloads: %d", temp);
     */
 
@@ -245,9 +248,17 @@ void Menu_Init(MainCallback callback)
     sMenuDataPtr->gfxLoadState = 0;
     sMenuDataPtr->savedCallback = callback;
     
-    sMenuDataPtr->currentAppId = VarGet(VAR_TEMP_F);
+    sMenuDataPtr->currentAppId = VarGet(CURRENT_APP_ID_VAR) % NUM_APPS_PER_SCREEN;
+    if(VarGet(CURRENT_APP_ID_VAR) >= NUM_APPS_PER_SCREEN){
+        sMenuDataPtr->areYouOnSecondScreen = TRUE;
+        mgba_printf(MGBA_LOG_WARN, "You are on the second screen with the icon %d", VarGet(CURRENT_APP_ID_VAR));
+    }
+    else{
+        sMenuDataPtr->areYouOnSecondScreen = FALSE;
+        mgba_printf(MGBA_LOG_WARN, "You are on the first screen with the icon %d", VarGet(CURRENT_APP_ID_VAR));
+    }
+    
     sMenuDataPtr->TempAppId = 0;
-    sMenuDataPtr->areYouOnSecondScreen = FALSE;
     sMenuDataPtr->areYouOnSecondScreenTemp = FALSE;
     sMenuDataPtr->isAppSelectedForMove = FALSE;
     sMenuDataPtr->shouldShowErrorMessage = FALSE;
@@ -1150,6 +1161,18 @@ static void Task_MenuMain(u8 taskId)
             sMenuDataPtr->currentAppId = 0;
             sMenuDataPtr->areYouOnSecondScreen = !sMenuDataPtr->areYouOnSecondScreen;
         }
+
+        if(sMenuDataPtr->areYouOnSecondScreen){
+            u8 tempAppIndex = sMenuDataPtr->currentAppId + NUM_APPS_PER_SCREEN;
+            VarSet(CURRENT_APP_ID_VAR, tempAppIndex);
+            mgba_printf(MGBA_LOG_WARN, "Second Screen App %d", tempAppIndex);
+        }
+        else{
+            u8 tempAppIndex = sMenuDataPtr->currentAppId;
+            VarSet(CURRENT_APP_ID_VAR, tempAppIndex);
+            mgba_printf(MGBA_LOG_WARN, "First Screen App %d", tempAppIndex);
+        }
+
         PlaySE(SE_SELECT);
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
@@ -1208,6 +1231,18 @@ static void Task_MenuMain(u8 taskId)
 			sMenuDataPtr->currentAppId = NUM_APPS_PER_SCREEN-1;
             sMenuDataPtr->areYouOnSecondScreen = !sMenuDataPtr->areYouOnSecondScreen;
         }
+
+		if(sMenuDataPtr->areYouOnSecondScreen){
+            u8 tempAppIndex = sMenuDataPtr->currentAppId + NUM_APPS_PER_SCREEN;
+            VarSet(CURRENT_APP_ID_VAR, tempAppIndex);
+            mgba_printf(MGBA_LOG_WARN, "Second Screen App %d", tempAppIndex);
+        }
+        else{
+            u8 tempAppIndex = sMenuDataPtr->currentAppId;
+            VarSet(CURRENT_APP_ID_VAR, tempAppIndex);
+            mgba_printf(MGBA_LOG_WARN, "First Screen App %d", tempAppIndex);
+        }
+
 		PlaySE(SE_SELECT);
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
