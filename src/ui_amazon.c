@@ -1012,12 +1012,12 @@ static void PressedRightButton(){
         u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
         u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
 
-        finalhalfScreen = sMenuDataPtr->itemNum[(GetCurrentRow()) % sMenuDataPtr->numberofRows] - halfScreen;
+        finalhalfScreen = sMenuDataPtr->itemNum[(GetCurrentRow())] - halfScreen;
 
         if(sMenuDataPtr->currentItem < halfScreen){
             sMenuDataPtr->currentItem++;
         }
-        else if(sMenuDataPtr->currentItem >= (sMenuDataPtr->itemNum[(GetCurrentRow()) % sMenuDataPtr->numberofRows] - 1)){ //If you are in the last option go to the first one
+        else if(sMenuDataPtr->currentItem >= (sMenuDataPtr->itemNum[(GetCurrentRow())])){ //If you are in the last option go to the first one
             sMenuDataPtr->currentItem = 0;
             sMenuDataPtr->currentFirstShownItem = 0;
         }
@@ -1054,16 +1054,16 @@ static void PressedLeftButton(){
         u8 halfScreen = ((NUM_MAX_ICONS_ROWNS_ON_SCREEN) - 1) / 2;
         u8 cursorPosition = (sMenuDataPtr->currentItem - sMenuDataPtr->currentFirstShownItem);
 
-        finalhalfScreen = sMenuDataPtr->itemNum[(GetCurrentRow()) % sMenuDataPtr->numberofRows] - halfScreen;
+        finalhalfScreen = sMenuDataPtr->itemNum[GetCurrentRow()] - halfScreen;
 
         if(sMenuDataPtr->currentItem > halfScreen && sMenuDataPtr->currentItem <= (finalhalfScreen - 1)){
             sMenuDataPtr->currentItem--;
             sMenuDataPtr->currentFirstShownItem--;
         }
         else if(sMenuDataPtr->currentItem == 0){ //If you are in the first option go to the last one
-            sMenuDataPtr->currentItem = sMenuDataPtr->itemNum[(GetCurrentRow()) % sMenuDataPtr->numberofRows] - 1;
-            if(sMenuDataPtr->itemNum[(GetCurrentRow()) % sMenuDataPtr->numberofRows] > NUM_MAX_ICONS_ROWNS_ON_SCREEN)
-                sMenuDataPtr->currentFirstShownItem = sMenuDataPtr->itemNum[(GetCurrentRow()) % sMenuDataPtr->numberofRows] - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
+            sMenuDataPtr->currentItem = sMenuDataPtr->itemNum[GetCurrentRow()] - 1;
+            if(sMenuDataPtr->itemNum[GetCurrentRow()] > NUM_MAX_ICONS_ROWNS_ON_SCREEN)
+                sMenuDataPtr->currentFirstShownItem = sMenuDataPtr->itemNum[GetCurrentRow()] - NUM_MAX_ICONS_ROWNS_ON_SCREEN;
         }
         else{
             sMenuDataPtr->currentItem--;
