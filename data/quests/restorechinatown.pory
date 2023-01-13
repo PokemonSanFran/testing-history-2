@@ -76,18 +76,25 @@ script Quest_Restorechinatown_HidePokemnon_Script{
 script Quest_Restorechinatown_LockGymDoor_Script{
     setvar(VAR_TEMP_0,0)
 
-        questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_RESTORECHINATOWN)
-        if (var(VAR_RESULT)){
-            addvar(VAR_TEMP_0,1)
-        }
+    //returnqueststate(QUEST_RESTORECHINATOWN)
+    //if (var(VAR_RESULT) < QUEST_MENU_SET_ACTIVE){
+    questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_RESTORECHINATOWN)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    if (var(VAR_STORYLINE_STATE) > STORY_POST_BATTLE_ARCHER_TREASUREISLAND){
+        subvar(VAR_TEMP_0,1)
+    }
 
     if (flag(FLAG_TIMELINE_FALSE)){
         addvar(VAR_TEMP_0,1)
     }
 
-        if (var(VAR_TEMP_0) > 1){
-            setmetatile(22,3,0x2B7,TRUE)
-        }
+    if (var(VAR_TEMP_0) > 0){
+        setmetatile(22,3,0x2B7,TRUE)
+        special(DrawWholeMapView)
+    }
     return
 }
 
@@ -448,4 +455,7 @@ movement Quest_Restorechinatown_ExclaimLookDown_Movement{
 movement Quest_Restorechinatown_WalkIntoGym_Movement{
     walk_up * 2
     step_end
+}
+text gText_Restorechinatown_ThisDoorIsOpen{
+    format("The door is open.")
 }

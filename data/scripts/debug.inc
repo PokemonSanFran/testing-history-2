@@ -60,12 +60,12 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	additem ITEM_MASTER_BALL, 5
+	warpsilent MAP_CHINATOWN, 22, 4
 	return
 
 
 Debug_Script_2::
-	warp MAP_MISSION, 0
+	setflag FLAG_TIMELINE_FALSE
 	return
 
 

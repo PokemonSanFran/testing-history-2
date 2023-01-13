@@ -208,7 +208,7 @@ gText_WowYoureStrong_DreamBig::
 gText_WowYoureStrong_YouShouldComeBy::
 	.string "You should come by once you're done\n"
 	.string "exploring the city proper, my office is\l"
-	.string "on the 10th floor.$"
+	.string "on the 38th floor.$"
 
 gText_WowYoureStrong_MeetingWithMayor::
 	.string "I have to run to a meeting with the\n"

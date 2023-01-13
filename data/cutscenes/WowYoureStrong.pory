@@ -176,7 +176,7 @@ text gText_WowYoureStrong_DreamBig {
 }
 
 text gText_WowYoureStrong_YouShouldComeBy {
-    format("You should come by once you're done exploring the city proper, my office is on the 10th floor.")
+    format("You should come by once you're done exploring the city proper, my office is on the 38th floor.")
 }
 
 text gText_WowYoureStrong_MeetingWithMayor {

@@ -37,11 +37,14 @@ Quest_Restorechinatown_LockGymDoor_Script::
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_Restorechinatown_LockGymDoor_Script_2
 Quest_Restorechinatown_LockGymDoor_Script_1:
-	goto_if_set FLAG_TIMELINE_FALSE, Quest_Restorechinatown_LockGymDoor_Script_5
+	compare VAR_STORYLINE_STATE, STORY_POST_BATTLE_ARCHER_TREASUREISLAND
+	goto_if_gt Quest_Restorechinatown_LockGymDoor_Script_5
 Quest_Restorechinatown_LockGymDoor_Script_4:
-	compare VAR_TEMP_0, 1
-	goto_if_gt Quest_Restorechinatown_LockGymDoor_Script_8
+	goto_if_set FLAG_TIMELINE_FALSE, Quest_Restorechinatown_LockGymDoor_Script_8
 Quest_Restorechinatown_LockGymDoor_Script_7:
+	compare VAR_TEMP_0, 0
+	goto_if_gt Quest_Restorechinatown_LockGymDoor_Script_11
+Quest_Restorechinatown_LockGymDoor_Script_10:
 	return
 
 Quest_Restorechinatown_LockGymDoor_Script_2:
@@ -49,12 +52,17 @@ Quest_Restorechinatown_LockGymDoor_Script_2:
 	goto Quest_Restorechinatown_LockGymDoor_Script_1
 
 Quest_Restorechinatown_LockGymDoor_Script_5:
-	addvar VAR_TEMP_0, 1
+	subvar VAR_TEMP_0, 1
 	goto Quest_Restorechinatown_LockGymDoor_Script_4
 
 Quest_Restorechinatown_LockGymDoor_Script_8:
-	setmetatile 22, 3, 0x2B7, TRUE
+	addvar VAR_TEMP_0, 1
 	goto Quest_Restorechinatown_LockGymDoor_Script_7
+
+Quest_Restorechinatown_LockGymDoor_Script_11:
+	setmetatile 22, 3, 0x2B7, TRUE
+	special DrawWholeMapView
+	goto Quest_Restorechinatown_LockGymDoor_Script_10
 
 
 Quest_Restorechinatown_CheckQuestCanStart_Script::

@@ -337,6 +337,10 @@ text gText_HowDisappointing_IAppreciate{
     format("I appreciate you handling that, {PLAYER}.")
 }
 
+text gText_HowDisappointing_ImSupposed{
+    format("I'm supposed to wait outside.")
+}
+
 movement HowDisappointing_WalkIntoFormationNorthLeft_Movement{
     walk_down * 3
     walk_right
