@@ -131,14 +131,10 @@ text gText_AaandWereBack_OpeningMessage {
 }
 
 text gText_AaandWereBack_FerryMessage {
-    format("A message from the BARTACRONYM System. 
-
+    format("A message from the BARTACRONYM System. \p
             The following service routes are now operational:\p
-
             Ferrybuilding to Alameda\p
-
             Alameda to Oakland\p
-
             We appreciate your patience while the remaining routes are restored.
             ","1_latin",175)
 }

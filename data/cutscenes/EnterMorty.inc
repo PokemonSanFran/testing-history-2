@@ -165,7 +165,7 @@ gText_EnterMorty_KeepingTheBabiesSafe::
 gText_EnterMorty_HeadOutToHoenn::
 	.string "I'm gonna head out to Hoenn and breed a\n"
 	.string "whole new squad! I can't wait to fight\l"
-	.string "you again, {PLAYER} .$"
+	.string "you again, {PLAYER}.$"
 
 gText_EnterMorty_BadgeGet::
 	.string "You received the MortyBadge Badge!$"

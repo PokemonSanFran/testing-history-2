@@ -157,8 +157,7 @@ text gText_EnterMorty_KeepingTheBabiesSafe {
 }
 
 text gText_EnterMorty_HeadOutToHoenn {
-        format("I'm gonna head out to Hoenn and breed a whole new squad! I can't wait to fight you again, {PLAYER}
-        .")
+        format("I'm gonna head out to Hoenn and breed a whole new squad! I can't wait to fight you again, {PLAYER}.")
 }
 
 text gText_EnterMorty_BadgeGet{
