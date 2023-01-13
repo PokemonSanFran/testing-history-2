@@ -404,7 +404,7 @@ gText_SpeechSpeechSpeech_HellYes::
 
 gText_SpeechSpeechSpeech_YouAllKnowHowCompanies::
 	.string "You all know how companies like Amazon\n"
-	.string "and Facebook have ruined our lives and\l"
+	.string "and Twitter have ruined our lives and\l"
 	.string "families. But with the combined\l"
 	.string "popularity of the Champion, Elite Four\l"
 	.string "and our manpower, I think we can hurt\l"
@@ -438,7 +438,7 @@ gText_SpeechSpeechSpeech_3LeadCharge::
 
 gText_SpeechSpeechSpeech_1LeadCharge::
 	.string "Malva will lead the charge against\n"
-	.string "Facebook.$"
+	.string "Twitter.$"
 
 gText_SpeechSpeechSpeech_IllBeHandling::
 	.string "And I’ll be handling negotiations with\n"

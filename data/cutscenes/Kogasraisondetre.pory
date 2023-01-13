@@ -470,7 +470,7 @@ text gText_KogaRaisonDetre_Shareholders{
 }
 
 text gText_KogaRaisonDetre_YeahTheCorporate{
-   format("The corporate sponsors who helped us acquire the Pokémon League. Rose saw its potential and knew we could make it even bigger. Amazon, Uber and Facebook all quickly got on board.")
+   format("The corporate sponsors who helped us acquire the Pokémon League. Rose saw its potential and knew we could make it even bigger. Amazon, Uber and Twitter all quickly got on board.")
 }
 text gText_KogaRaisonDetre_WhatDoYouMean {
     format("What do you mean?")

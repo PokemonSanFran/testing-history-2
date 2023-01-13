@@ -402,7 +402,7 @@ text gText_SpeechSpeechSpeech_HellYes {
 }
 
 text gText_SpeechSpeechSpeech_YouAllKnowHowCompanies {
-    format("You all know how companies like Amazon and Facebook have ruined our lives and families. But with the combined popularity of the Champion, Elite Four and our manpower, I think we can hurt these people where it counts: their wallets. We can’t drive these parasitic companies out of the region… but all that money has to go somewhere. Let’s use that money to strengthen the region and create a brighter future for us all.")
+    format("You all know how companies like Amazon and Twitter have ruined our lives and families. But with the combined popularity of the Champion, Elite Four and our manpower, I think we can hurt these people where it counts: their wallets. We can’t drive these parasitic companies out of the region… but all that money has to go somewhere. Let’s use that money to strengthen the region and create a brighter future for us all.")
 }
 
 text gText_SpeechSpeechSpeech_WereFinally {
@@ -426,7 +426,7 @@ text gText_SpeechSpeechSpeech_3LeadCharge {
 }
 
 text gText_SpeechSpeechSpeech_1LeadCharge {
-    format("Malva will lead the charge against Facebook.")
+    format("Malva will lead the charge against Twitter.")
 }
 
 text gText_SpeechSpeechSpeech_IllBeHandling {

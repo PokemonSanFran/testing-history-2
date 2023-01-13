@@ -521,3 +521,6 @@ Quest_Restorechinatown_WalkIntoGym_Movement:
 	walk_up
 	walk_up
 	step_end
+
+gText_Restorechinatown_ThisDoorIsOpen::
+	.string "The door is open.$"

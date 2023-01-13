@@ -22,18 +22,6 @@ Chinatown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-Chinatown_LockGymDoor_Script::
-	returnqueststate QUEST_RESTORECHINATOWN
-	compare VAR_RESULT, QUEST_MENU_UNLOCK_QUEST
-	goto_if_gt Chinatown_LockGymDoor_Script_2
-	setmetatile 22, 3, 0x2B7, TRUE
-	special DrawWholeMapView
-	return
-
-Chinatown_LockGymDoor_Script_2:
-	return
-
-
 Chinatown_GymDoor_Dialogue::
 	returnqueststate QUEST_HOW_DISAPPOINTING
 	compare VAR_RESULT, QUEST_MENU_SET_ACTIVE
@@ -45,19 +33,13 @@ Chinatown_GymDoor_Dialogue::
 	end
 
 Chinatown_GymDoor_Dialogue_2:
-	msgbox gText_ImSupposed, MSGBOX_SIGN
+	msgbox gText_HowDisappointing_ImSupposed, MSGBOX_SIGN
 	return
 
 Chinatown_GymDoor_Dialogue_5:
-	msgbox gText_Chinatown_TheDoorIsOpen, MSGBOX_SIGN
+	msgbox gText_Restorechinatown_ThisDoorIsOpen, MSGBOX_SIGN
 	return
 
-
-gText_ImSupposed::
-	.string "I'm supposed to wait outside.$"
-
-gText_Chinatown_TheDoorIsOpen::
-	.string "The door is open.$"
 
 gText_Chinatown_TheDoorIsLocked::
 	.string "The door is locked.$"

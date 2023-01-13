@@ -472,3 +472,6 @@ gText_HowDisappointing_ExcellentWorkEverybody::
 gText_HowDisappointing_IAppreciate::
 	.string "I appreciate you handling that,\n"
 	.string "{PLAYER}.$"
+
+gText_HowDisappointing_ImSupposed::
+	.string "I'm supposed to wait outside.$"

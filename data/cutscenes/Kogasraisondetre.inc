@@ -643,7 +643,7 @@ gText_KogaRaisonDetre_YeahTheCorporate::
 	.string "The corporate sponsors who helped us\n"
 	.string "acquire the Pokémon League. Rose saw\l"
 	.string "its potential and knew we could make it\l"
-	.string "even bigger. Amazon, Uber and Facebook\l"
+	.string "even bigger. Amazon, Uber and Twitter\l"
 	.string "all quickly got on board.$"
 
 gText_KogaRaisonDetre_WhatDoYouMean::

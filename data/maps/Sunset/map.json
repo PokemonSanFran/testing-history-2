@@ -14,9 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "up",
+      "map": "MAP_PSFROUTE7",
       "offset": 12,
-      "map": "MAP_PSFROUTE7"
+      "direction": "up"
     }
   ],
   "object_events": [
@@ -182,7 +182,7 @@
       "x": 1,
       "y": 17,
       "elevation": 0,
-      "var": "0",
+      "var": "VAR_ALWAYS_ZERO",
       "var_value": "0",
       "script": "Quest_CutePokemon_Debug_Script"
     }
