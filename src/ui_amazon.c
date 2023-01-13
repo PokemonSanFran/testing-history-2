@@ -808,16 +808,21 @@ static void DestroyAllItemIcons()
     u8 i;
     u8 newspriteID = 0;
     u8 oldspriteID = 0;
+    u16 palTag = 0;
+    struct SpritePalette sItemSpritePalette[] = {sMenuPalette, palTag};
 
     for(i = 0; i < MAX_ITEM_SPRITES; i++){
         newspriteID = FIRST_ITEM_SPRITE_ID + i;
         oldspriteID = sMenuDataPtr->spriteIDs[newspriteID];
+        GetSpritePaletteTagByPaletteNum(gSprites[oldspriteID].oam.paletteNum);
+        sItemSpritePalette->tag = palTag;
 
         if(sMenuDataPtr->spriteIDs[newspriteID] != 0){
             FreeSpriteTilesByTag(newspriteID);
             FreeSpritePaletteByTag(newspriteID);
             DestroySpriteAndFreeResources(&gSprites[oldspriteID]);
         }
+
     }
 }
 

@@ -48,6 +48,8 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 #include "constants/flags.h"
+#include "printf.h"
+#include "mgba.h"
 
 /*
  * 
@@ -58,6 +60,20 @@ struct MenuResources
 {
     MainCallback savedCallback;     // determines callback to run when we exit. e.g. where do we want to go after closing the menu
     u8 gfxLoadState;
+    u8 currentAppId;
+    u8 TempAppId;
+    bool8 areYouOnSecondScreen;
+    bool8 areYouOnSecondScreenTemp;
+    bool8 isAppSelectedForMove;
+    bool8 shouldShowErrorMessage;
+    u8 startMenuAppTempIndex[NUM_TOTAL_APPS];
+    u8 PartyPokemonIcon;
+    u8 PartyPokemonIcon_1;
+    u8 PartyPokemonIcon_2;
+    u8 PartyPokemonIcon_3;
+    u8 PartyPokemonIcon_4;
+    u8 PartyPokemonIcon_5;
+    u8 PartyPokemonIcon_6;
 };
 
 enum WindowIds
@@ -71,13 +87,22 @@ enum WindowIds
 //==========EWRAM==========//
 static EWRAM_DATA struct MenuResources *sMenuDataPtr = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
-static EWRAM_DATA u8  currentAppId = 0;
-static EWRAM_DATA u8  TempAppId = 0;
-static EWRAM_DATA bool8 areYouOnSecondScreen = FALSE;
-static EWRAM_DATA bool8 areYouOnSecondScreenTemp = FALSE;
-static EWRAM_DATA bool8 isAppSelectedForMove = FALSE;
-static EWRAM_DATA bool8 shouldShowErrorMessage = FALSE;
-static EWRAM_DATA u8 startMenuAppTempIndex[NUM_TOTAL_APPS];
+//static EWRAM_DATA u8  sMenuDataPtr->currentAppId = 0;
+//static EWRAM_DATA u8  sMenuDataPtr->TempAppId = 0;
+//static EWRAM_DATA bool8 sMenuDataPtr->areYouOnSecondScreen = FALSE;
+//static EWRAM_DATA bool8 sMenuDataPtr->areYouOnSecondScreenTemp = FALSE;
+//static EWRAM_DATA bool8 sMenuDataPtr->isAppSelectedForMove = FALSE;
+//static EWRAM_DATA bool8 sMenuDataPtr->shouldShowErrorMessage = FALSE;
+//static EWRAM_DATA u8 sMenuDataPtr->startMenuAppTempIndex[NUM_TOTAL_APPS];
+
+//Pokemon Icons
+//EWRAM_DATA static u8 sMenuDataPtr->PartyPokemonIcon 	 = 0;
+//EWRAM_DATA static u8 sMenuDataPtr->PartyPokemonIcon_1  = 0;
+//EWRAM_DATA static u8 sMenuDataPtr->PartyPokemonIcon_2  = 0;
+//EWRAM_DATA static u8 sMenuDataPtr->PartyPokemonIcon_3  = 0;
+//EWRAM_DATA static u8 sMenuDataPtr->PartyPokemonIcon_4  = 0;
+//EWRAM_DATA static u8 sMenuDataPtr->PartyPokemonIcon_5  = 0;
+//EWRAM_DATA static u8 sMenuDataPtr->PartyPokemonIcon_6  = 0;
 
 //==========STATIC=DEFINES==========//
 static void Menu_RunSetup(void);
@@ -95,15 +120,6 @@ static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y);
 static void DestroySpeciesIcon(u8 slot);
 static void StartMenuTempIndextoIndex(void);
 static void StartMenuIndextoTempIndex(void);
-
-//Pokemon Icons
-EWRAM_DATA static u8 PartyPokemonIcon 	 = 0;
-EWRAM_DATA static u8 PartyPokemonIcon_1  = 0;
-EWRAM_DATA static u8 PartyPokemonIcon_2  = 0;
-EWRAM_DATA static u8 PartyPokemonIcon_3  = 0;
-EWRAM_DATA static u8 PartyPokemonIcon_4  = 0;
-EWRAM_DATA static u8 PartyPokemonIcon_5  = 0;
-EWRAM_DATA static u8 PartyPokemonIcon_6  = 0;
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[] =
@@ -199,6 +215,7 @@ static const u8 sMenuWindowFontColors[][3] =
 void Task_OpenMenuFromStartMenu(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
+
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
@@ -210,6 +227,14 @@ void Task_OpenMenuFromStartMenu(u8 taskId)
 // This is our main initialization function if you want to call the menu from elsewhere
 void Menu_Init(MainCallback callback)
 {
+    /*
+    //This is to test a EWRAM issue when opening and closing the menu a lot
+    u16 temp = VarGet(VAR_TEMP_F);
+    temp++;
+    VarSet(VAR_TEMP_F, temp);
+    mgba_printf(MGBA_LOG_WARN, "Number of Start Menu Reloads: %d", temp);
+    */
+
     if ((sMenuDataPtr = AllocZeroed(sizeof(struct MenuResources))) == NULL)
     {
         SetMainCallback2(callback);
@@ -219,6 +244,21 @@ void Menu_Init(MainCallback callback)
     // initialize stuff
     sMenuDataPtr->gfxLoadState = 0;
     sMenuDataPtr->savedCallback = callback;
+    
+    sMenuDataPtr->currentAppId = VarGet(VAR_TEMP_F);
+    sMenuDataPtr->TempAppId = 0;
+    sMenuDataPtr->areYouOnSecondScreen = FALSE;
+    sMenuDataPtr->areYouOnSecondScreenTemp = FALSE;
+    sMenuDataPtr->isAppSelectedForMove = FALSE;
+    sMenuDataPtr->shouldShowErrorMessage = FALSE;
+
+    sMenuDataPtr->PartyPokemonIcon 	 = 0;
+    sMenuDataPtr->PartyPokemonIcon_1  = 0;
+    sMenuDataPtr->PartyPokemonIcon_2  = 0;
+    sMenuDataPtr->PartyPokemonIcon_3  = 0;
+    sMenuDataPtr->PartyPokemonIcon_4  = 0;
+    sMenuDataPtr->PartyPokemonIcon_5  = 0;
+    sMenuDataPtr->PartyPokemonIcon_6  = 0;
 
     //Initialize the apps the first time you open the start menu
     if(!FlagGet(FLAG_START_MENU_SETUP)){
@@ -238,20 +278,20 @@ static void StartMenuTempIndextoIndex()
 {
     u8 i;
     for(i = 0; i < NUM_TOTAL_APPS; i++){
-        gSaveBlock2Ptr->startMenuAppIndex[i] = startMenuAppTempIndex[i];
+        gSaveBlock2Ptr->startMenuAppIndex[i] = sMenuDataPtr->startMenuAppTempIndex[i];
     }
-    currentAppId = TempAppId;
-    areYouOnSecondScreen = areYouOnSecondScreenTemp;
+    sMenuDataPtr->currentAppId = sMenuDataPtr->TempAppId;
+    sMenuDataPtr->areYouOnSecondScreen = sMenuDataPtr->areYouOnSecondScreenTemp;
 }
 
 static void StartMenuIndextoTempIndex()
 {
     u8 i;
     for(i = 0; i < NUM_TOTAL_APPS; i++){
-        startMenuAppTempIndex[i] = GetCurrentAppfromIndex(i);
+        sMenuDataPtr->startMenuAppTempIndex[i] = GetCurrentAppfromIndex(i);
     }
-    TempAppId = currentAppId;
-    areYouOnSecondScreenTemp = areYouOnSecondScreen;
+    sMenuDataPtr->TempAppId = sMenuDataPtr->currentAppId;
+    sMenuDataPtr->areYouOnSecondScreenTemp = sMenuDataPtr->areYouOnSecondScreen;
 }
 
 static void Menu_RunSetup(void)
@@ -547,7 +587,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     const u8 *str_CurrentLocation = sText_Unknown_Location;
 	const u8 *str_QuestFlavorLookup = gText_CommErrorEllipsis;
     u8 i, j;
-    u8 CurrentApp = currentAppId;
+    u8 CurrentApp = sMenuDataPtr->currentAppId;
     u8 x = 1;
     u8 y = 1;
     u8 hours = gLocalTime.hours;
@@ -560,7 +600,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     x = 19;
     y = 11;
 
-    if(areYouOnSecondScreen)
+    if(sMenuDataPtr->areYouOnSecondScreen)
         CurrentApp = CurrentApp + NUM_APPS_PER_SCREEN;
 
     switch(GetCurrentAppfromIndex(CurrentApp)){
@@ -798,7 +838,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
 	x = 0;
 	y = 14;
 	
-    if(!shouldShowErrorMessage){
+    if(!sMenuDataPtr->shouldShowErrorMessage){
         if(VarGet(VAR_STORYLINE_STATE) < STORY_CLEAR){
             str_QuestFlavorLookup = GetQuestDesc_PlayersAdventure();
             AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
@@ -815,7 +855,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     else{
         AddTextPrinterParameterized4(windowId, 8, (x*8)+4, (y*8), 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, str_QuestFlavorLookup);
     }
-    shouldShowErrorMessage = FALSE;
+    sMenuDataPtr->shouldShowErrorMessage = FALSE;
 
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, 3);
@@ -832,40 +872,40 @@ static u8 ShowSpeciesIcon(u8 slot, u8 x, u8 y)
 
     switch(slot){
         case 0:
-            PartyPokemonIcon = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            sMenuDataPtr->PartyPokemonIcon = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
-            gSprites[PartyPokemonIcon].invisible = FALSE;
-            return PartyPokemonIcon;
+            gSprites[sMenuDataPtr->PartyPokemonIcon].invisible = FALSE;
+            return sMenuDataPtr->PartyPokemonIcon;
         break;
         case 1:
-            PartyPokemonIcon_1 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            sMenuDataPtr->PartyPokemonIcon_1 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
-            gSprites[PartyPokemonIcon_1].invisible = FALSE;
-            return PartyPokemonIcon_1;
+            gSprites[sMenuDataPtr->PartyPokemonIcon_1].invisible = FALSE;
+            return sMenuDataPtr->PartyPokemonIcon_1;
         break;
         case 2:
-            PartyPokemonIcon_2 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            sMenuDataPtr->PartyPokemonIcon_2 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
-            gSprites[PartyPokemonIcon_2].invisible = FALSE;
-            return PartyPokemonIcon_2;
+            gSprites[sMenuDataPtr->PartyPokemonIcon_2].invisible = FALSE;
+            return sMenuDataPtr->PartyPokemonIcon_2;
         break;
         case 3:
-            PartyPokemonIcon_3 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            sMenuDataPtr->PartyPokemonIcon_3 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
-            gSprites[PartyPokemonIcon_3].invisible = FALSE;
-            return PartyPokemonIcon_3;
+            gSprites[sMenuDataPtr->PartyPokemonIcon_3].invisible = FALSE;
+            return sMenuDataPtr->PartyPokemonIcon_3;
         break;
         case 4:
-            PartyPokemonIcon_4 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            sMenuDataPtr->PartyPokemonIcon_4 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
-            gSprites[PartyPokemonIcon_4].invisible = FALSE;
-            return PartyPokemonIcon_4;
+            gSprites[sMenuDataPtr->PartyPokemonIcon_4].invisible = FALSE;
+            return sMenuDataPtr->PartyPokemonIcon_4;
         break;
         case 5:
-            PartyPokemonIcon_5 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
+            sMenuDataPtr->PartyPokemonIcon_5 = CreateMonIcon(GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES), SpriteCB_MonIcon, x, y, 0, 0);
 
-            gSprites[PartyPokemonIcon_5].invisible = FALSE;
-            return PartyPokemonIcon_5;
+            gSprites[sMenuDataPtr->PartyPokemonIcon_5].invisible = FALSE;
+            return sMenuDataPtr->PartyPokemonIcon_5;
         break;
     }
 }
@@ -874,34 +914,34 @@ static void DestroySpeciesIcon(u8 slot)
 {
     switch(slot){
         case 0:
-            if (PartyPokemonIcon != 0xFF)
-                DestroySprite(&gSprites[PartyPokemonIcon]);
-            PartyPokemonIcon = 0xFF;
+            if (sMenuDataPtr->PartyPokemonIcon != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon]);
+            sMenuDataPtr->PartyPokemonIcon = 0xFF;
         break;
         case 1:
-            if (PartyPokemonIcon_1 != 0xFF)
-                DestroySprite(&gSprites[PartyPokemonIcon_1]);
-            PartyPokemonIcon_1 = 0xFF;
+            if (sMenuDataPtr->PartyPokemonIcon_1 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_1]);
+            sMenuDataPtr->PartyPokemonIcon_1 = 0xFF;
         break;
         case 2:
-            if (PartyPokemonIcon_2 != 0xFF)
-                DestroySprite(&gSprites[PartyPokemonIcon_2]);
-            PartyPokemonIcon_2 = 0xFF;
+            if (sMenuDataPtr->PartyPokemonIcon_2 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_2]);
+            sMenuDataPtr->PartyPokemonIcon_2 = 0xFF;
         break;
         case 3:
-            if (PartyPokemonIcon_3 != 0xFF)
-                DestroySprite(&gSprites[PartyPokemonIcon_3]);
-            PartyPokemonIcon_3 = 0xFF;
+            if (sMenuDataPtr->PartyPokemonIcon_3 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_3]);
+            sMenuDataPtr->PartyPokemonIcon_3 = 0xFF;
         break;
         case 4:
-            if (PartyPokemonIcon_4 != 0xFF)
-                DestroySprite(&gSprites[PartyPokemonIcon_4]);
-            PartyPokemonIcon_4 = 0xFF;
+            if (sMenuDataPtr->PartyPokemonIcon_4 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_4]);
+            sMenuDataPtr->PartyPokemonIcon_4 = 0xFF;
         break;
         case 5:
-            if (PartyPokemonIcon_5 != 0xFF)
-                DestroySprite(&gSprites[PartyPokemonIcon_5]);
-            PartyPokemonIcon_5 = 0xFF;
+            if (sMenuDataPtr->PartyPokemonIcon_5 != 0xFF)
+                DestroySprite(&gSprites[sMenuDataPtr->PartyPokemonIcon_5]);
+            sMenuDataPtr->PartyPokemonIcon_5 = 0xFF;
         break;
     }
 }
@@ -997,6 +1037,7 @@ void Task_OpenOptionsMenuStartMenu(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
+        Menu_FreeResources();
 		PlayRainStoppingSoundEffect();
         CleanupOverworldWindowsAndTilemaps();
         Options_Menu_Init(CB2_ReturnToUIMenu);
@@ -1009,6 +1050,7 @@ void Task_OpenAmazonStartMenu(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
+        Menu_FreeResources();
         PlayRainStoppingSoundEffect();
         CleanupOverworldWindowsAndTilemaps();
         Amazon_Init(CB2_ReturnToUIMenu);
@@ -1038,16 +1080,16 @@ static u8 GetCurrentSignal()
 
 static void ClearStartMenuDataBeforeExit()
 {
-    isAppSelectedForMove = FALSE;
+    sMenuDataPtr->isAppSelectedForMove = FALSE;
     FlagClear(FLAG_START_MENU_MOVE_MODE);
 }
 
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
 {
-    u8 CurrentApp = currentAppId;
+    u8 CurrentApp = sMenuDataPtr->currentAppId;
 
-    if(areYouOnSecondScreen)
+    if(sMenuDataPtr->areYouOnSecondScreen)
         CurrentApp = CurrentApp + NUM_APPS_PER_SCREEN;
 
     if (JOY_NEW(B_BUTTON))
@@ -1055,7 +1097,7 @@ static void Task_MenuMain(u8 taskId)
         if(FlagGet(FLAG_START_MENU_MOVE_MODE)){
             StartMenuTempIndextoIndex();
             FlagClear(FLAG_START_MENU_MOVE_MODE);
-            isAppSelectedForMove = FALSE;
+            sMenuDataPtr->isAppSelectedForMove = FALSE;
             PrintToWindow(WINDOW_1, FONT_BLACK);
         }
         else{
@@ -1069,7 +1111,7 @@ static void Task_MenuMain(u8 taskId)
 	if (JOY_NEW(R_BUTTON) || JOY_NEW(L_BUTTON))
     {
         if(!FlagGet(FLAG_START_MENU_MOVE_MODE))
-            areYouOnSecondScreen = !areYouOnSecondScreen;
+            sMenuDataPtr->areYouOnSecondScreen = !sMenuDataPtr->areYouOnSecondScreen;
 
         PrintToWindow(WINDOW_1, FONT_BLACK);
     }
@@ -1086,7 +1128,7 @@ static void Task_MenuMain(u8 taskId)
 
     if(JOY_NEW(DPAD_LEFT))
 	{
-        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && sMenuDataPtr->isAppSelectedForMove){
             if(CurrentApp < NUM_TOTAL_APPS-1){
                 u8 tempAppIndex;
                 tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
@@ -1101,12 +1143,12 @@ static void Task_MenuMain(u8 taskId)
             }
         }
 
-        if(currentAppId < NUM_APPS_PER_SCREEN-1){
-            currentAppId++;
+        if(sMenuDataPtr->currentAppId < NUM_APPS_PER_SCREEN-1){
+            sMenuDataPtr->currentAppId++;
         }
         else{
-            currentAppId = 0;
-            areYouOnSecondScreen = !areYouOnSecondScreen;
+            sMenuDataPtr->currentAppId = 0;
+            sMenuDataPtr->areYouOnSecondScreen = !sMenuDataPtr->areYouOnSecondScreen;
         }
         PlaySE(SE_SELECT);
 
@@ -1115,7 +1157,7 @@ static void Task_MenuMain(u8 taskId)
 	
 	if(JOY_NEW(DPAD_UP))
 	{
-        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && sMenuDataPtr->isAppSelectedForMove){
             if(CurrentApp < NUM_TOTAL_APPS-1){
                 u8 tempAppIndex;
                 tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
@@ -1130,12 +1172,12 @@ static void Task_MenuMain(u8 taskId)
             }
         }
 
-        if(currentAppId < NUM_APPS_PER_SCREEN-1){
-            currentAppId++;
+        if(sMenuDataPtr->currentAppId < NUM_APPS_PER_SCREEN-1){
+            sMenuDataPtr->currentAppId++;
         }
         else{
-            currentAppId = 0;
-            areYouOnSecondScreen = !areYouOnSecondScreen;
+            sMenuDataPtr->currentAppId = 0;
+            sMenuDataPtr->areYouOnSecondScreen = !sMenuDataPtr->areYouOnSecondScreen;
         }
         PlaySE(SE_SELECT);
 
@@ -1144,7 +1186,7 @@ static void Task_MenuMain(u8 taskId)
 
     if(JOY_NEW(DPAD_RIGHT))
 	{
-        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && sMenuDataPtr->isAppSelectedForMove){
             if(CurrentApp > 0){
                 u8 tempAppIndex;
                 tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
@@ -1159,12 +1201,12 @@ static void Task_MenuMain(u8 taskId)
             }
         }
 
-		if(currentAppId > 0){
-			currentAppId--;
+		if(sMenuDataPtr->currentAppId > 0){
+			sMenuDataPtr->currentAppId--;
         }
 		else{
-			currentAppId = NUM_APPS_PER_SCREEN-1;
-            areYouOnSecondScreen = !areYouOnSecondScreen;
+			sMenuDataPtr->currentAppId = NUM_APPS_PER_SCREEN-1;
+            sMenuDataPtr->areYouOnSecondScreen = !sMenuDataPtr->areYouOnSecondScreen;
         }
 		PlaySE(SE_SELECT);
 
@@ -1173,7 +1215,7 @@ static void Task_MenuMain(u8 taskId)
 	
 	if(JOY_NEW(DPAD_DOWN))
 	{
-        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && isAppSelectedForMove){
+        if(FlagGet(FLAG_START_MENU_MOVE_MODE) && sMenuDataPtr->isAppSelectedForMove){
             if(CurrentApp > 0){
                 u8 tempAppIndex;
                 tempAppIndex = gSaveBlock2Ptr->startMenuAppIndex[CurrentApp];
@@ -1188,12 +1230,12 @@ static void Task_MenuMain(u8 taskId)
             }
         }
 
-		if(currentAppId > 0){
-			currentAppId--;
+		if(sMenuDataPtr->currentAppId > 0){
+			sMenuDataPtr->currentAppId--;
         }
 		else{
-			currentAppId = NUM_APPS_PER_SCREEN-1;
-            areYouOnSecondScreen = !areYouOnSecondScreen;
+			sMenuDataPtr->currentAppId = NUM_APPS_PER_SCREEN-1;
+            sMenuDataPtr->areYouOnSecondScreen = !sMenuDataPtr->areYouOnSecondScreen;
         }
 		PlaySE(SE_SELECT);
 
@@ -1219,7 +1261,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                     else{
                         PlaySE(SE_BOO);
-                        shouldShowErrorMessage = TRUE;
+                        sMenuDataPtr->shouldShowErrorMessage = TRUE;
                     }
 					
                 break;
@@ -1246,7 +1288,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                     else{
                         PlaySE(SE_BOO);
-                        shouldShowErrorMessage = TRUE;
+                        sMenuDataPtr->shouldShowErrorMessage = TRUE;
                     }
                 break;
                 case APP_TWITTER:
@@ -1257,7 +1299,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                     else{
                         PlaySE(SE_BOO);
-                        shouldShowErrorMessage = TRUE;
+                        sMenuDataPtr->shouldShowErrorMessage = TRUE;
                     }
                 break;
                 case APP_MAP:
@@ -1268,7 +1310,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                     else{
                         PlaySE(SE_BOO);
-                        shouldShowErrorMessage = TRUE;
+                        sMenuDataPtr->shouldShowErrorMessage = TRUE;
                     }
                 break;
                 case APP_AMAZON:
@@ -1279,7 +1321,7 @@ static void Task_MenuMain(u8 taskId)
                     }
                     else{
                         PlaySE(SE_BOO);
-                        shouldShowErrorMessage = TRUE;
+                        sMenuDataPtr->shouldShowErrorMessage = TRUE;
                     }
                 break;
                 case APP_DEXNAV:
@@ -1297,7 +1339,7 @@ static void Task_MenuMain(u8 taskId)
                         }
                         else{
                             PlaySE(SE_BOO);
-                            shouldShowErrorMessage = TRUE;
+                            sMenuDataPtr->shouldShowErrorMessage = TRUE;
                         }
                         */
                         PlaySE(SE_PC_OFF);
@@ -1306,14 +1348,14 @@ static void Task_MenuMain(u8 taskId)
                     }
                     else{
                         PlaySE(SE_BOO);
-                        shouldShowErrorMessage = TRUE;
+                        sMenuDataPtr->shouldShowErrorMessage = TRUE;
                     }
                 break;
             }
         }
         else{
             FlagClear(FLAG_START_MENU_MOVE_MODE);
-            isAppSelectedForMove = FALSE;
+            sMenuDataPtr->isAppSelectedForMove = FALSE;
 		    PlaySE(SE_SELECT);
         }
 
@@ -1324,11 +1366,11 @@ static void Task_MenuMain(u8 taskId)
 	{
         if(FlagGet(FLAG_START_MENU_MOVE_MODE)){
             FlagClear(FLAG_START_MENU_MOVE_MODE);
-            isAppSelectedForMove = FALSE;
+            sMenuDataPtr->isAppSelectedForMove = FALSE;
         }
         else{
             FlagSet(FLAG_START_MENU_MOVE_MODE);
-            isAppSelectedForMove = TRUE;
+            sMenuDataPtr->isAppSelectedForMove = TRUE;
         }
 		PlaySE(SE_SELECT);
         StartMenuIndextoTempIndex();
