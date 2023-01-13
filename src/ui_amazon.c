@@ -391,7 +391,7 @@ static void SpriteCallback_UpArrowSmall(struct Sprite *sprite)
     sprite->y2 = gSineTable[val] / 128;
     sprite->data[0] += 8;
 
-    if(!sMenuDataPtr->buyScreen || sMenuDataPtr->itemQuantity == sMenuDataPtr->buyableItems - 1)
+    if(!sMenuDataPtr->buyScreen || sMenuDataPtr->itemQuantity == sMenuDataPtr->buyableItems - 1 || sMenuDataPtr->buyWindow)
         sprite->invisible = TRUE;
     else
         sprite->invisible = FALSE;
@@ -403,7 +403,7 @@ static void SpriteCallback_DownArrowSmall(struct Sprite *sprite)
     sprite->y2 = gSineTable[val] / 128;
     sprite->data[0] += 8;
 
-    if(!sMenuDataPtr->buyScreen || sMenuDataPtr->itemQuantity == 0)
+    if(!sMenuDataPtr->buyScreen || sMenuDataPtr->itemQuantity == 0 || sMenuDataPtr->buyWindow)
         sprite->invisible = TRUE;
     else
         sprite->invisible = FALSE;
@@ -4034,6 +4034,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     u8 itemNum = getCurrentRowItemNum();
     u8 temp;
     u8 itemRow[NUM_MAX_ICONS_ROWNS_ON_SCREEN];
+    int offset;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
@@ -4314,12 +4315,18 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 x2 = 0;
                 y = 5;
                 y2 = 0;
+                offset = GetStringCenterAlignXOffset(7, sText_OrderDelivered, (16 * 8));
+                x2 = offset;
                 AddTextPrinterParameterized4(windowId, 7, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, sText_OrderDelivered);  
                 
                 y = 7;
+                offset = GetStringCenterAlignXOffset(7, sText_ThanksForBuying, (16 * 8));
+                x2 = offset;
                 AddTextPrinterParameterized4(windowId, 7, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, sText_ThanksForBuying); 
 
                 y = y + 2;
+                offset = GetStringCenterAlignXOffset(7, sText_YouGot, (16 * 8));
+                x2 = offset;
                 AddTextPrinterParameterized4(windowId, 7, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, sText_YouGot); 
                 
                 y = y + 2;
@@ -4327,6 +4334,8 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
                 StringCopy(gStringVar1, str); 
                 ConvertIntToDecimalStringN(gStringVar2, quantity, STR_CONV_MODE_LEFT_ALIGN, 2);  
                 StringExpandPlaceholders(gStringVar4, sText_ItemNumber);
+                offset = GetStringCenterAlignXOffset(7, gStringVar4, (16 * 8));
+                x2 = offset;
                 AddTextPrinterParameterized4(windowId, 7, (x*8) + x2, (y*8) + y2, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, gStringVar4);
 
                 /*/Item Icon --------------------------------------------------------------------------------------------------------------------
