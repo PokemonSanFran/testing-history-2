@@ -14,6 +14,7 @@
 #define QUEST_MENU_CHECK_COMPLETE       9   //checks if questId has been completed. Returns result to gSpecialVar_Result
 #define QUEST_MENU_BUFFER_QUEST_NAME    10   //buffers a quest name to gStringVar1
 #define QUEST_MENU_SET_FAVORITE         11
+#define QUEST_MENU_UNCOMPLETE_QUEST     12
 
 // quest number defines
 #define QUEST_PLAYERSADVENTURE	0

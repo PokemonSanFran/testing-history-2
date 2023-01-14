@@ -4209,6 +4209,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 			break;
 		case FLAG_GET_COMPLETED:
 		case FLAG_SET_COMPLETED:
+        case FLAG_REMOVE_COMPLETED:
 			bit += 3;
 			break;
 		case FLAG_GET_FAVORITE:
@@ -4270,6 +4271,9 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 		case FLAG_SET_COMPLETED:
 			gSaveBlock2Ptr->questData[index] |= mask;
 			CheckFavoriteAndRemove(quest);
+			return 1;
+        case FLAG_REMOVE_COMPLETED:
+			gSaveBlock2Ptr->questData[index] &= ~mask;
 			return 1;
 		case FLAG_GET_FAVORITE:
 			return gSaveBlock2Ptr->questData[index] & mask;

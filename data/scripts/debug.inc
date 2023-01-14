@@ -60,13 +60,12 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	setvar VAR_MANHUNT_STATE, GOT_MANHUNT_CLUE_3
-	warpsilent MAP_PSFROUTE62, 24, 22
+	completequest QUEST_MANHUNT
 	return
 
 
 Debug_Script_2::
-	warpsilent MAP_ALCATRAZ_B2F, 0
+	call OkayLetsFixit_TimelineReset_Script
 	return
 
 

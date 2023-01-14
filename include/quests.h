@@ -68,6 +68,7 @@ enum QuestCases
 	FLAG_REMOVE_ACTIVE, //remove active flag from quest
 	FLAG_REMOVE_REWARD, //remove reward flag from quest
 	FLAG_REMOVE_FAVORITE, //remove favorite flag from quest
+    FLAG_REMOVE_COMPLETED, //remove completed flag from quest
 };
 
 // functions

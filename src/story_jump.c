@@ -1038,7 +1038,9 @@ void JumpPlayerTo_YouHaveYourOrders()
 {
 	JumpPlayerTo_CongratsYoureanAsshole();
 	QuestMenu_GetSetQuestState(QUEST_HOW_DISAPPOINTING, FLAG_SET_UNLOCKED);
-	QuestMenu_GetSetQuestState(QUEST_HOW_DISAPPOINTING, FLAG_SET_ACTIVE);
+    if (!QuestMenu_GetSetQuestState(QUEST_HOW_DISAPPOINTING,FLAG_GET_ACTIVE) == FLAG_GET_ACTIVE){
+        QuestMenu_GetSetQuestState(QUEST_HOW_DISAPPOINTING, FLAG_SET_ACTIVE);
+    }
 	VarSet(VAR_HOW_DISAPPOINTING_STATE, MISSION_ASSIGNED);
 	SetWarpDestination(0, 17, 255, 33, 8);
 }
@@ -1097,6 +1099,9 @@ void JumpPlayerTo_OkayLetsFixit()
 	VarSet(VAR_MANHUNT_STATE, NOT_ASSIGNED);
 	VarSet(VAR_HOW_DISAPPOINTING_STATE, NOT_ASSIGNED);
 	VarSet(VAR_HOW_DISAPPOINTING_STATE, NOT_ASSIGNED);
+    QuestMenu_GetSetQuestState(QUEST_MANHUNT,FLAG_REMOVE_COMPLETED);
+    QuestMenu_GetSetQuestState(QUEST_HOW_DISAPPOINTING,FLAG_REMOVE_COMPLETED);
+    QuestMenu_GetSetQuestState(QUEST_LETS_BURN_THIS_MOTHER_DOWN,FLAG_REMOVE_COMPLETED);
 	SetWarpDestination(0, 58, 0, -1, -1);
 }
 void JumpPlayerTo_LetsGettheBandBackTogether()
