@@ -603,7 +603,7 @@ text gText_YouRealizeTheyreEvilRight_ImHereWhere {
     format("I'm here! Where are you?")
 }
 text gText_YouRealizeTheyreEvilRight_SwimAroundThe {
-    format("Come swim around the southwest side of the island! You'll see me.")
+    format("Come swim around the northeast side of the island! You'll see me.")
 }
 text gText_YouRealizeTheyreEvilRight_WelcomeToTheReal {
     format("Welcome to the real Alcatraz. I'm going down to the second level, but you should explore here first before coming straight down.")
