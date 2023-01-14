@@ -25,41 +25,53 @@ body:
     id: repro-steps
     attributes:
       label: What are the steps to produce your problem?
-      description: Please describe the problem you are experiencing. Be as descriptive as possible.
+      description: Please give a step by step way to make the problem happen again.
       placeholder: Even when the puzzle in the SOMA Gym is cleared, I cannot get to the Gym Leader to battle - the entrance is completely blocked off.
     validations:
       required: true
-  - type: dropdown
-    id: version
+  - type: textarea
+    id: expected-result
     attributes:
-      label: Version
-      description: What version of our software are you running?
+      label: What did you expect to happen instead?
+      description: What should have happened?
+      placeholder: After step 4, I expect that when I return, the path should be clear, but it is not.
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        Please upload a gif and your save file to https://www.file.io/ and paste the links in the box below. Thank you!
+  - type: textarea
+    id: other-info
+    attributes:
+      label: Any other info? 
+      description: Any and all other information would be great, or links.
+    validations:
+      required: false
+  - type: dropdown
+    id: reporter
+    attributes:
+      label: Who are you?
+      description: This matches your Discord username, which should be the last letter of first name & the last letter of your last name.
       options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
+        - Aerun
+        - Criminon
+        - DS
+        - ES
+        - HN
+        - JS
+        - KW
+        - LS
+        - Miss Brie
+        - MM
+        - NN
+        - NS
+        - NZ
+        - Patrick Afterplay
+        - Rioluwott
+        - XE
+        - YN
+        - PSF
+        - Other
     validations:
       required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
-  - type: textarea
-    id: logs
-    attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
