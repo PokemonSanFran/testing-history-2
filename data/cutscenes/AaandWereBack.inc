@@ -153,8 +153,9 @@ gText_AaandWereBack_OpeningMessage::
 
 gText_AaandWereBack_FerryMessage::
 	.string "A message from the BARTACRONYM\n"
-	.string "System. The following service\l"
-	.string "routes are now operational:\p"
+	.string "System.\p"
+	.string "The following service routes are\n"
+	.string "now operational:\p"
 	.string "Ferrybuilding to Alameda\p"
 	.string "Alameda to Oakland\p"
 	.string "We appreciate your patience\n"

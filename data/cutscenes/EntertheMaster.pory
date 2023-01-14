@@ -4,7 +4,7 @@ const SIEBOLD = 2
 const FLAG_HIDE_BIANCA = FLAG_TEMP_1
 
 script EnterTheMaster_HideBianca_Entrance_Script{
-    if (var(VAR_MUIRWOODS_STATE) > BIANCA_WAITING_MUIRWOODS){
+    if (var(VAR_MUIRWOODS_STATE) != BIANCA_WAITING_MUIRWOODS){
         setflag(FLAG_HIDE_BIANCA)
     }
     return

@@ -1,0 +1,65 @@
+name: Bug Report
+description: Please use this form to report bugs for PSF. Thanks! 💕
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - psf 
+body:
+  - type: input
+    id: title 
+    attributes:
+      label: Bug Title 
+      description: Give your bug a clear, concise title, like a tweet.
+      placeholder: Cannot enter SOMA Gym
+    validations:
+      required: true 
+  - type: textarea
+    id: what-problem
+    attributes:
+      label: What is the problem?
+      description: Please describe the problem you are experiencing. Be as descriptive as possible.
+      placeholder: Even when the puzzle in the SOMA Gym is cleared, I cannot get to the Gym Leader to battle - the entrance is completely blocked off.
+    validations:
+      required: true
+  - type: textarea
+    id: repro-steps
+    attributes:
+      label: What are the steps to produce your problem?
+      description: Please describe the problem you are experiencing. Be as descriptive as possible.
+      placeholder: Even when the puzzle in the SOMA Gym is cleared, I cannot get to the Gym Leader to battle - the entrance is completely blocked off.
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of our software are you running?
+      options:
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

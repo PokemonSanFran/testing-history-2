@@ -1,6 +1,6 @@
 EnterTheMaster_HideBianca_Entrance_Script::
 	compare VAR_MUIRWOODS_STATE, BIANCA_WAITING_MUIRWOODS
-	goto_if_gt EnterTheMaster_HideBianca_Entrance_Script_2
+	goto_if_ne EnterTheMaster_HideBianca_Entrance_Script_2
 EnterTheMaster_HideBianca_Entrance_Script_1:
 	return
 
