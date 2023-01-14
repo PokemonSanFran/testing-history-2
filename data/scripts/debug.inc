@@ -60,17 +60,17 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	multi_fixed_2_vs_1 TRAINER_SHANNON, gText_Manhunt_OhDamnLooksLike, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
+	setvar VAR_MANHUNT_STATE, GOT_MANHUNT_CLUE_3
+	warpsilent MAP_PSFROUTE62, 24, 22
 	return
 
 
 Debug_Script_2::
-	setflag FLAG_TIMELINE_FALSE
+	warpsilent MAP_ALCATRAZ_B2F, 0
 	return
 
 
 Debug_Script_3::
-	warp MAP_SALESFORCETOWER_PRODUCTION, 9, 7
 	return
 
 
