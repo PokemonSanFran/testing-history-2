@@ -642,7 +642,7 @@ text gText_YouRealizeTheyreEvilRight_ICanFinallyProve {
     format("I can finally prove that Ycombinator is worse than we originally thought. Once I do that, I want all of us to find a way to work together to protect SanFran from their bullshit.")
 }
 text gText_YouRealizeTheyreEvilRight_DidYouDragMe {
-    format("Did you drag me out here to join a terrorist organiziation? Did you hear ANYTHING I said on the phone?")
+    format("Did you drag me out here to join a terrorist organization? Did you hear ANYTHING I said on the phone?")
 }
 text gText_YouRealizeTheyreEvilRight_YesWaitNo {
     format("Yes! Wait, no… No, Yes!")
