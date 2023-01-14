@@ -616,7 +616,7 @@ gText_YouRealizeTheyreEvilRight_ImHereWhere::
 	.string "I'm here! Where are you?$"
 
 gText_YouRealizeTheyreEvilRight_SwimAroundThe::
-	.string "Come swim around the southwest side of\n"
+	.string "Come swim around the northeast side of\n"
 	.string "the island! You'll see me.$"
 
 gText_YouRealizeTheyreEvilRight_WelcomeToTheReal::
@@ -651,7 +651,7 @@ gText_YouRealizeTheyreEvilRight_AsThePrisonPopulation::
 
 gText_YouRealizeTheyreEvilRight_TheInmateWasAlso::
 	.string "The inmate was also a member of\n"
-	.string "SanFran's indingeous population, killed\l"
+	.string "SanFran's indigenous population, killed\l"
 	.string "on the land that was stolen from their\l"
 	.string "ancestors. The occupation called for\l"
 	.string "the dissolution of the prison, transfer\l"
@@ -698,7 +698,7 @@ gText_YouRealizeTheyreEvilRight_ICanFinallyProve::
 
 gText_YouRealizeTheyreEvilRight_DidYouDragMe::
 	.string "Did you drag me out here to join a\n"
-	.string "terrorist organiziation? Did you hear\l"
+	.string "terrorist organization? Did you hear\l"
 	.string "ANYTHING I said on the phone?$"
 
 gText_YouRealizeTheyreEvilRight_YesWaitNo::
@@ -770,8 +770,8 @@ gText_YouRealizeTheyreEvilRight_VeryClever::
 	.string "Very clever, {PLAYER}! You realized\n"
 	.string "that Haze can only be passed down from\l"
 	.string "the Yamask family, and Yamask can't\l"
-	.string "learn Self-Destruct. This Garbrador\l"
-	.string "had to learn the move via TM.$"
+	.string "learn Self-Destruct. This Garbodor had\l"
+	.string "to learn the move via TM.$"
 
 gText_YouRealizeTheyreEvilRight_TheTipOff::
 	.string "The tip-off is that this Garbodor knows\n"

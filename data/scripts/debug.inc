@@ -60,7 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_CHINATOWN, 22, 4
+	multi_fixed_2_vs_1 TRAINER_SHANNON, gText_Manhunt_OhDamnLooksLike, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
 	return
 
 
