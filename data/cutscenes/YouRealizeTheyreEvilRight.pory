@@ -693,7 +693,7 @@ text gText_YouRealizeTheyreEvilRight_WaitWhichMove {
     format("Wait, which move tipped you off?")
 }
 text gText_YouRealizeTheyreEvilRight_VeryClever {
-    format("Very clever, {PLAYER}! You realized that Haze can only be passed down from the Yamask family, and Yamask can't learn Self-Destruct. This Garbrador had to learn the move via TM.")
+    format("Very clever, {PLAYER}! You realized that Haze can only be passed down from the Yamask family, and Yamask can't learn Self-Destruct. This Garbodor had to learn the move via TM.")
 }
 text gText_YouRealizeTheyreEvilRight_TheTipOff {
     format("The tip-off is that this Garbodor knows Haze.")
