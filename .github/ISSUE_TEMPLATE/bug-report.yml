@@ -1,10 +1,17 @@
 name: Bug Report
-description: Please use this form to report bugs for PSF. Thanks! 💕
+description: bug report form
 title: "[Bug]: "
 labels: ["bug", "triage"]
 assignees:
   - psf 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        ![https://v5.airtableusercontent.com/v1/14/14/1673661600000/T8ZIQJ_dqUxN6LxrGRp9JA/J3U-_KBykcUweVG9LpGOd9fDw5xZIExCQdZb-lyopoEYABfkY062gcQ6Qf9n0mrdt4lU9H_Xn4HE-kUjmD06hg/DnDF3vS4_fVvdtZQt-rYna_1LvW5WHZmwYhlx9trOeA]()
+
+        \# Internal Playtest Bug Submission Form
+        Please use this form to report bugs for PSF. Thanks! 💕
   - type: input
     id: title 
     attributes:
@@ -41,11 +48,14 @@ body:
     attributes:
       value: |
         ---
-        Our lives become **much much easier** if you can provide:
+        Our lives become **much much easier** if you can provide (open links in a new tab!):
 
         * A gif or image of the issue happening. If you're able to capture that, you can upload them to [imgur](https://imgur.com/). Please post the resulting link in the next text field.
 
-        * Your save file. This lets me figure out exactly what you did to get in the state you are in. It _should_ be the file called `pokeemerald.sav`, and you can upload it to [file.io](https://www.file.io).Please post the resulting link in the next text field.
+        * Your save file. This lets me figure out exactly what you did to get in the state you are in. It _should_ be the file called `pokeemerald.sav`, and you can upload it to [file.io](https://www.file.io). Please post the resulting link in the next text field.
+
+        * You can see on how to perfect either of these tasks [here](https://i.imgur.com/XiWo17q.gif).
+
         ---
   - type: textarea
     id: other-info
