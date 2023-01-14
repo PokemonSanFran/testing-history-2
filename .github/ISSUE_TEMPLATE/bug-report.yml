@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ![https://i.imgur.com/pTHBBTq.png]()
+        ![Game Logo](https://i.imgur.com/pTHBBTq.png)
 
         Please use this form to report bugs for PSF. Thanks! 💕
   - type: input
