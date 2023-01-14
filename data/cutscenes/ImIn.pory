@@ -631,11 +631,11 @@ text gText_ImIn_ThisPlaceIsProbably {
 }
 
 text gText_ImIn_HasAnOfficeOn {
-    format("Rose has an office on the 10th floor, I've been there myself.")
+    format("Rose has an office on the 38th floor, I've been there myself.")
 }
 
 text gText_ImIn_FloorThenLets {
-    format("10th floor then, let's move!")
+    format("38th floor then, let's move!")
 }
 
 text gText_ImIn_OfficeIsOn {
