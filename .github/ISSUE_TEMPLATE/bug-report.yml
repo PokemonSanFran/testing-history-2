@@ -40,9 +40,13 @@ body:
   - type: markdown
     attributes:
       value: |
+        ---
         Our lives become **much much easier** if you can provide:
+
         * A gif or image of the issue happening. If you're able to capture that, you can upload them to [imgur](https://imgur.com/). Please post the resulting link in the next text field.
-      * Your save file. This lets me figure out exactly what you did to get in the state you are in. It _should_ be the file called `pokeemerald.sav`, and you can upload it to [file.io](https://www.file.io).Please post the resulting link in the next text field.
+
+        * Your save file. This lets me figure out exactly what you did to get in the state you are in. It _should_ be the file called `pokeemerald.sav`, and you can upload it to [file.io](https://www.file.io).Please post the resulting link in the next text field.
+        ---
   - type: textarea
     id: other-info
     attributes:
