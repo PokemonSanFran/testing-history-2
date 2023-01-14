@@ -352,6 +352,7 @@ SECTIONS {
         src/twitter.o(.text);
         src/ui_start_menu.o(.text);
         src/ui_options_menu.o(.text);
+        src/ui_amazon.o(.text);
     } =0
 
     script_data :
@@ -727,6 +728,7 @@ SECTIONS {
         src/twitter.o(.rodata);
         src/ui_start_menu.o(.rodata);
         src/ui_options_menu.o(.rodata);
+        src/ui_amazon.o(.rodata);
     } =0
 
     song_data :

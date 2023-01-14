@@ -202,9 +202,8 @@ text gText_ThereCanOnlyBe_StarterSelectMareanieDesc {
 }
 
 text gText_ThereCanOnlyBe_StarterSelectAronDesc {
-  format("{STR_VAR_1} leverages its high Attack and Defense to provide 
-      physical support.
-      ")}
+  format("{STR_VAR_1} leverages its high Attack and Defense to provide physical support.")
+}
 
       text gText_ThereCanOnlyBe_StarterSelectSwinubDesc {
         format("{STR_VAR_1} hits most types for super- effective damage with its high attack.")
