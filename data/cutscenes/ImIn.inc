@@ -748,11 +748,11 @@ gText_ImIn_ThisPlaceIsProbably::
 	.string "Trainers. Let's spread out.$"
 
 gText_ImIn_HasAnOfficeOn::
-	.string "Rose has an office on the 10th floor,\n"
+	.string "Rose has an office on the 38th floor,\n"
 	.string "I've been there myself.$"
 
 gText_ImIn_FloorThenLets::
-	.string "10th floor then, let's move!$"
+	.string "38th floor then, let's move!$"
 
 gText_ImIn_OfficeIsOn::
 	.string "Rose's office is on Floor 10.$"
@@ -816,7 +816,8 @@ gText_ImIn_EverythingAboutIsBullshit::
 	.string "toxic. Tell me where Rose is.$"
 
 gText_ImIn_Floor::
-	.string "Floor 11.$"
+	.string "That warp panel goes to the skydeck.\n"
+	.string "His real office is there.$"
 
 gText_ImIn_AllThatTraining::
 	.string "…all that training…$"

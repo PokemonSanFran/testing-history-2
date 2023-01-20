@@ -217,7 +217,7 @@ text gText_Swagbag_InTheActualGame {
 }
 
 text gText_DontLeaveSouthbay_Text1 {
-    format("I don't think I should leave Southbay yet...")
+    format("Oak mentioned that I shouldn't leave Southbay yet! Maybe I should get some sleep...")
 }
 
 movement swagbag_TurnFaceOak_Movement{
