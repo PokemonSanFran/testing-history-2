@@ -8,6 +8,7 @@
 #include "main.h"
 #include "menu.h"
 #include "menu_helpers.h"
+#include "mugshot.h"
 #include "palette.h"
 #include "pokedex.h"
 #include "pokemon_icon.h"

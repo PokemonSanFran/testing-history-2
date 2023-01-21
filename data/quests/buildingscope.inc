@@ -41,6 +41,7 @@ Quest_BuildingScope_HideConstruction_Script::
 
 Quest_BuildingScope_Event_Script::
 	lock
+	goto Quest_BuildingScope_Employee_Active_Dialogue
 	returnqueststate QUEST_BUILDINGSCOPE
 	switch VAR_RESULT
 	case QUEST_MENU_SET_ACTIVE, Quest_BuildingScope_Event_Script_2
@@ -50,7 +51,6 @@ Quest_BuildingScope_Event_Script::
 	return
 
 Quest_BuildingScope_Event_Script_2:
-	faceplayer
 	goto Quest_BuildingScope_Employee_Active_Dialogue
 	return
 
@@ -97,7 +97,22 @@ Quest_BuildingScope_StartQuest_Dialogue::
 
 
 Quest_BuildingScope_Employee_Active_Dialogue::
-	msgbox gText_BuildingScope_OneDayIll, MSGBOX_NPC
+	setvar VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT
+	setvar VAR_MSGBOX_EMOTE, EMOTE_HAPPY
+	setvar VAR_MSGBOX_TAIL, TAIL_TALK
+	clearflag FLAG_TEMP_10
+	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_0, MSGBOX_NPC
+	setvar VAR_MSGBOX_SPEAKER, SPEAKER_JASMINE
+	setvar VAR_MSGBOX_EMOTE, EMOTE_SWEAT
+	setvar VAR_MSGBOX_TAIL, TAIL_TALK
+	setflag FLAG_TEMP_10
+	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_1, MSGBOX_NPC
+	faceplayer
+	setvar VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT
+	setvar VAR_MSGBOX_EMOTE, EMOTE_ANGRY
+	setvar VAR_MSGBOX_TAIL, TAIL_WHISPER
+	clearflag FLAG_TEMP_10
+	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_2, MSGBOX_NPC
 	end
 
 
@@ -210,6 +225,17 @@ Quest_BuildingScope_WalkToPlayer_Movement:
 	walk_down
 	walk_down
 	step_end
+
+Quest_BuildingScope_Employee_Active_Dialogue_Text_0:
+	.string "Yeah, I will go to your Gym Soon!.$"
+
+Quest_BuildingScope_Employee_Active_Dialogue_Text_1:
+	.string "I see, I may be a little busy with the\n"
+	.string "lighthouse but I see you there.$"
+
+Quest_BuildingScope_Employee_Active_Dialogue_Text_2:
+	.string "Hey, please stop eavesdropping, I'm on\n"
+	.string "the phone right now.$"
 
 gText_BuildingScope_HowBadCouldItBe::
 	.string "How bad could it be...? Come on, just\n"

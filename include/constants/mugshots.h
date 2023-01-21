@@ -80,6 +80,35 @@
 #define MUGSHOT_THORTON 75
 #define MUGSHOT_VOLKNER 76
 #define MUGSHOT_WHITNEY 77
+#define MUGSHOT_TEST 78
+
+#define MSGBOX_TEST 0
+
+//SPEAKER
+#define SPEAKER_DEFAULT 0
+#define SPEAKER_JASMINE 1
+
+//Tail
+#define TAIL_DEFAULT 0
+#define TAIL_WHISPER 1
+#define TAIL_SHOUT 2
+#define TAIL_THOUGHT 3
+#define TAIL_TALK 4
+
+//Emotions
+#define EMOTE_DEFAULT 0
+#define EMOTE_ANGRY 1
+#define EMOTE_SAD 2
+#define EMOTE_HAPPY 3
+#define EMOTE_LAUGH 4
+#define EMOTE_SWEAT 5
+#define EMOTE_SHOCK 6
+#define EMOTE_CONFUSE 7
+#define EMOTE_LOVE 8
+
+//Phone
+#define PHONE_OFF 0
+#define PHONE_ON 1
 
 //https://www.pokecommunity.com/showpost.php?p=10345947&postcount=252
 #endif

@@ -1,10 +1,14 @@
 #include "global.h"
 #include "menu.h"
+#include "mugshot.h"
+#include "event_data.h"
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
 #include "match_call.h"
 #include "field_message_box.h"
+#include "constants/mugshots.h"
+#include "constants/vars.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 
@@ -61,6 +65,7 @@ static void DestroyTask_DrawFieldMessage(void)
 
 bool8 ShowFieldMessage(const u8 *str)
 {
+    DrawMessageBoxAddOns(0);
     if (sFieldMessageBoxMode != FIELD_MESSAGE_BOX_HIDDEN)
         return FALSE;
     ExpandStringAndStartDrawFieldMessage(str, TRUE);
@@ -134,6 +139,7 @@ void HideFieldMessageBox(void)
     DestroyTask_DrawFieldMessage();
     ClearDialogWindowAndFrame(0, TRUE);
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
+    ClearMugshot();
 }
 
 u8 GetFieldMessageBoxMode(void)

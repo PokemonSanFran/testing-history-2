@@ -1,5 +1,7 @@
 #include "global.h"
+#include "international_string_util.h"
 #include "blit.h"
+#include "decompress.h"
 #include "window.h"
 #include "menu.h"
 #include "palette.h"
@@ -17,9 +19,9 @@ struct Mugshot{
     const u16* palette;
 };
 
-void DrawMugshot(void); //VAR_0x8000 = mugshot id
+//void DrawMugshot(void); //VAR_0x8000 = mugshot id
 void DrawMugshotAtPos(void); //VAR_0x8000 = mugshot id, VAR_0x8001 = x, VAR_0x8002 = y
-void ClearMugshot(void);
+//void ClearMugshot(void);
 
 static const u16 sMugshotPal_Aaron[] = INCBIN_U16("graphics/mugshots/aaron.gbapal");
 static const u32 sMugshotImg_Aaron[] = INCBIN_U32("graphics/mugshots/aaron.4bpp.lz");
@@ -255,7 +257,6 @@ static const u32 sMugshotImg_Volkner[] = INCBIN_U32("graphics/mugshots/volkner.4
 static const u16 sMugshotPal_Whitney[] = INCBIN_U16("graphics/mugshots/whitney.gbapal");
 static const u32 sMugshotImg_Whitney[] = INCBIN_U32("graphics/mugshots/whitney.4bpp.lz");
 
-
 //TODO Write a constant coordinates for mugshots for protag (left) and other people (right)
 
 static const struct Mugshot sMugshots[] = {
@@ -383,3 +384,223 @@ void DrawMugshot(void){
 void DrawMugshotAtPos(void){
     DrawMugshotCore(sMugshots + VarGet(VAR_0x8000), VarGet(VAR_0x8001), VarGet(VAR_0x8002));
 }
+
+static const u32 sMsgbox_Top[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top.4bpp.lz");
+static const u16 gMessageBox_Pal[] = INCBIN_U16("graphics/ui_menus/msgbox/message_box.gbapal");
+
+//Phone - 24 x 16
+#define PHONE_WIDTH  24
+#define PHONE_HEIGHT 16
+#define PHONE_X      72
+#define PHONE_Y      18
+
+static const u8 sMsgbox_Phone_On[] = INCBIN_U8("graphics/ui_menus/msgbox/phone/phone_on.4bpp");
+
+//Name Box - 64 x 16
+#define NAME_BOX_WIDTH  64
+#define NAME_BOX_HEIGHT 16
+#define NAME_BOX_X      0
+#define NAME_BOX_Y      10
+
+static const u8 sMsgbox_Name_Box[] = INCBIN_U8("graphics/ui_menus/msgbox/phone/name_box.4bpp");
+
+//Emotes - 48 x 32
+#define EMOTES_WIDTH  48
+#define EMOTES_HEIGHT 32
+#define EMOTES_X      63
+#define EMOTES_Y      2
+
+static const u8 sMsgbox_Emote_Angry[]   = INCBIN_U8("graphics/ui_menus/msgbox/emotes/emote_angry.4bpp");
+static const u8 sMsgbox_Emote_Confuse[] = INCBIN_U8("graphics/ui_menus/msgbox/emotes/emote_confuse.4bpp");
+static const u8 sMsgbox_Emote_Default[] = INCBIN_U8("graphics/ui_menus/msgbox/emotes/emote_default.4bpp");
+static const u8 sMsgbox_Emote_Happy[]   = INCBIN_U8("graphics/ui_menus/msgbox/emotes/emote_happy.4bpp");
+static const u8 sMsgbox_Emote_Laugh[]   = INCBIN_U8("graphics/ui_menus/msgbox/emotes/emote_laugh.4bpp");
+static const u8 sMsgbox_Emote_Love[]    = INCBIN_U8("graphics/ui_menus/msgbox/emotes/emote_love.4bpp");
+static const u8 sMsgbox_Emote_Sad[]     = INCBIN_U8("graphics/ui_menus/msgbox/emotes/emote_sad.4bpp");
+static const u8 sMsgbox_Emote_Shock[]   = INCBIN_U8("graphics/ui_menus/msgbox/emotes/emote_shock.4bpp");
+static const u8 sMsgbox_Emote_Sweat[]   = INCBIN_U8("graphics/ui_menus/msgbox/emotes/emote_sweat.4bpp");
+
+//Tails - 48 x 24
+#define TAILS_WIDTH  48
+#define TAILS_HEIGHT 24
+#define TAILS_X      97
+#define TAILS_Y      7
+
+static const u8 sMsgbox_Tail_Shout[] = INCBIN_U8("graphics/ui_menus/msgbox/tails/tail_shout.4bpp");
+static const u8 sMsgbox_Tail_Talk[] = INCBIN_U8("graphics/ui_menus/msgbox/tails/tail_talk.4bpp");
+static const u8 sMsgbox_Tail_Thought[] = INCBIN_U8("graphics/ui_menus/msgbox/tails/tail_thought.4bpp");
+static const u8 sMsgbox_Tail_Whisper[] = INCBIN_U8("graphics/ui_menus/msgbox/tails/tail_whisper.4bpp");
+
+#define SPEAKER_NAME_LENGTH     12
+#define SPEAKER_NAME_X          2
+#define SPEAKER_NAME_Y          10
+#define SPEAKER_FONT            7
+#define SPEAKER_NAME_FONT_COLOR 10
+#define SPEAKER_NAME_WIDTH      70
+
+enum Colors
+{
+    FONT_BLACK,
+    FONT_WHITE,
+};
+
+static const u8 sMenuWindowFontColors[][3] = 
+{
+    [FONT_BLACK]    = {TEXT_COLOR_TRANSPARENT,  13,   11},
+    [FONT_WHITE]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_WHITE,       TEXT_COLOR_TRANSPARENT},
+};
+
+
+//Faces
+#define GFXTAG_SPEAKER_ICON 0
+#define SPEAKER_ICON_PAL 15
+#define TAG_SWAP_LINE_TX 5110
+#define SPEAKER_ICON_X 79
+#define SPEAKER_ICON_Y 94
+
+static const u32 gSpeakerIcon_Jasmine[] = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/jasmine.4bpp.lz");
+static const u16 sSpeakerPal_Jasmine[] = INCBIN_U16("graphics/ui_menus/msgbox/npcs_icons/jasmine.gbapal");
+static const struct SpritePalette sSpeakerPal_Jasmine_SpritePalette[] = {sSpeakerPal_Jasmine, SPEAKER_ICON_PAL};
+
+struct SpeakerData
+{
+    const u8 name[SPEAKER_NAME_LENGTH];
+    //const u32 *speakerIcon;
+    //const u16 *speakerPal;
+};
+
+static const struct SpeakerData sSpeakerData[] = {
+    [SPEAKER_DEFAULT] =
+    {
+        .name = _("Grunt"),
+        //.speakerIcon = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/jasmine.4bpp.lz"),
+        //.speakerPal = INCBIN_U16("graphics/ui_menus/msgbox/npcs_icons/jasmine.gbapal"),
+    },
+    [SPEAKER_JASMINE] =
+    {
+        .name = _("Jasmine"),
+        //.speakerIcon = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/jasmine.4bpp.lz"),
+        //.speakerPal = INCBIN_U16("graphics/ui_menus/msgbox/npcs_icons/jasmine.gbapal"),
+    },
+};
+
+
+static void CreateSpeakerIconSprite(void)
+{
+    u8 spriteId;
+    u8 SpriteTag = GFXTAG_SPEAKER_ICON;
+    u8 speaker = SPEAKER_JASMINE;
+    struct CompressedSpriteSheet sSpriteSheet_Speaker_Icon = {gSpeakerIcon_Jasmine, 0x0800, SpriteTag};
+    struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
+
+    TempSpriteTemplate.tileTag = SpriteTag;
+
+    LoadCompressedSpriteSheet(&sSpriteSheet_Speaker_Icon);
+    LoadSpritePalette(sSpeakerPal_Jasmine_SpritePalette);
+    //LoadSpritePalette(sSpeakerPal_Jasmine, GFXTAG_SPEAKER_ICON, 32);
+    spriteId = CreateSprite(&TempSpriteTemplate, SPEAKER_ICON_X, SPEAKER_ICON_Y, 2);
+    //sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID] = spriteId;
+
+    gSprites[spriteId].oam.shape = SPRITE_SHAPE(32x32);
+    gSprites[spriteId].oam.size = SPRITE_SIZE(32x32);
+    gSprites[spriteId].oam.priority = 1;
+}
+
+//TODO Write a constant coordinates for mugshots for protag (left) and other people (right)
+
+static const struct Mugshot sNewMugshots[] = {
+    [MSGBOX_TEST] = {.x = 110, .y = 109, .width = 240, .height = 32, .image = sMsgbox_Top, .palette = gMessageBox_Pal},
+};
+
+void DrawMessageBoxAddOns(u8 windowId){
+    const struct Mugshot* const mugshot = sNewMugshots + MSGBOX_TEST;//VarGet(VAR_0x8000);
+    struct WindowTemplate t;
+    u8 speaker = VarGet(VAR_MSGBOX_SPEAKER);
+    const u8 *str = sSpeakerData[speaker].name;
+    u8 emote = VarGet(VAR_MSGBOX_EMOTE);
+    u8 tail = VarGet(VAR_MSGBOX_TAIL);
+    u8 onPhone = FlagGet(FLAG_TEMP_10);
+    int offset;
+
+    //int tilemaptop = mugshot->x;
+    //int tilemapleft = mugshot->y;
+    int tilemaptop = 74;
+    int tilemapleft = 0;
+    
+    if(sMugshotWindow != 0){
+        ClearMugshot();
+    }
+    
+    SetWindowTemplateFields(&t, 0, tilemapleft, tilemaptop, mugshot->width/8, mugshot->height/8, MUGSHOT_PALETTE_NUM, 0x40);
+    windowId = AddWindow(&t);
+    sMugshotWindow = windowId + 1;
+    
+    LoadPalette(mugshot->palette, 16 * MUGSHOT_PALETTE_NUM, 32);
+    CopyToWindowPixelBuffer(windowId, (const void*)mugshot->image, 0, 0);
+
+    BlitBitmapToWindow(windowId, sMsgbox_Name_Box, NAME_BOX_X, NAME_BOX_Y, NAME_BOX_WIDTH, NAME_BOX_HEIGHT);
+
+    //Emotes
+    switch(emote){
+        case EMOTE_ANGRY:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Angry, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
+        case EMOTE_CONFUSE:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Confuse, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
+        case EMOTE_DEFAULT:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Default, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
+        case EMOTE_HAPPY:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Happy, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
+        case EMOTE_LAUGH:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Laugh, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
+        case EMOTE_LOVE:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Love, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
+        case EMOTE_SAD:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Sad, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
+        case EMOTE_SWEAT:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Sweat, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
+        case EMOTE_SHOCK:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Shock, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
+    }
+
+    //Tails
+    switch(tail){
+        case TAIL_DEFAULT:
+        case TAIL_TALK:
+            BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+        break;
+        case TAIL_WHISPER:
+            BlitBitmapToWindow(windowId, sMsgbox_Tail_Whisper, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+        break;
+        case TAIL_SHOUT:
+            BlitBitmapToWindow(windowId, sMsgbox_Tail_Shout, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+        break;
+        case TAIL_THOUGHT:
+            BlitBitmapToWindow(windowId, sMsgbox_Tail_Thought, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+        break;
+    }
+
+    
+    //Phone
+    if(onPhone)
+        BlitBitmapToWindow(windowId, sMsgbox_Phone_On, PHONE_X, PHONE_Y, PHONE_WIDTH, PHONE_HEIGHT);
+
+    //Speaker Icon
+    //CreateSpeakerIconSprite();
+
+    //str = sSpeakerData[speaker].name;
+    //68
+    offset = GetStringCenterAlignXOffset(SPEAKER_FONT, str, SPEAKER_NAME_WIDTH);
+    AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X + offset, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str);
+    PutWindowRectTilemap(windowId, 0, 0, mugshot->width/8, mugshot->height/8);
+    CopyWindowToVram(windowId, 3);
+}
+
