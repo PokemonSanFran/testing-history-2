@@ -268,5 +268,6 @@ gText_Swagbag_InTheActualGame::
 	.string "getr answers to. Tutorial level shit.$"
 
 gText_DontLeaveSouthbay_Text1::
-	.string "I don't think I should leave Southbay\n"
-	.string "yet...$"
+	.string "Oak mentioned that I shouldn't leave\n"
+	.string "Southbay yet! Maybe I should get some\l"
+	.string "sleep...$"

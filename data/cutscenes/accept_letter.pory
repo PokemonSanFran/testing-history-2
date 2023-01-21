@@ -1,0 +1,43 @@
+text gText_AcceptLetter_CongratulationsPlayer {
+    "Congratulations, {PLAYER}!\n\nWe are pleased to inform you that your \napplication to the YCombinator Kickstart Grant \n(powered by {STR_VAR_1}) has been accepted. \n\nOur mission is to find the best and \nbrightest young Pokémon Trainers and \nhelp accelerate their careers."
+}
+
+text gText_AcceptLetter_CongratulationsPlayer2{
+    format("Congratulations, {PLAYER}, you’ve been selected!")
+}
+
+text gText_AcceptLetter_WeArePleased{
+    format("We are pleased to inform you that your application to the YC Kickstart Grant (powered by {STR_VAR_1}) has been accepted. Our mission is to find the best and brightest young Pokémon Trainers and help accelerate their careers.")
+}
+
+text gText_AcceptLetter_AsAKickstart{
+    format("As a YC Kickstart Grant recipient, you will")
+}
+
+text gText_AcceptLetter_BeFlownTo{
+    format("- Be flown to the SanFran region in September.")
+}
+
+text gText_AcceptLetter_ParticipateInTheFirst{
+    format("- Participate in the first season of the NEW YC Sanctioned Pokémon League!")
+}
+
+text gText_AcceptLetter_RecieveAllTheBenefits{
+    format("- Receive all the benefits of joining the YC family, including housing, a stipend, and a toolkit of the best swag around.")
+}
+
+text gText_AcceptLetter_PleaseSignTheAttached{
+    format("Please sign the attached documents and mail them to YC Headquarters by April 17, 2019, to finalize your acceptance.")
+}
+
+text gText_AcceptLetter_WereStoked{
+    format("We’re stoked to see what you can do!")
+}
+
+text gText_AcceptLetter_Sincerely{
+    format("Sincerely,")
+}
+
+text gText_AcceptLetter_TheYCFamily{
+    format("The YC Family")
+}

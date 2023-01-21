@@ -5,6 +5,7 @@
  * How do I display a second screen or allow the player to scroll down?
  * How do I change the background?
  * Why does this throw errors when run?
+ * Use the rest of the text in data/cutscenes/accpt_letter.pory
  */
 #include "global.h"
 #include "main_menu.h"
@@ -26,7 +27,7 @@
 #include "constants/rgb.h"
 
 #include "accept_letter.h"
-#include "accept_letter_text.h"
+#include "event_scripts.h"
 #include "printf.h"
 #include "random.h"
 #include "strings.h"
@@ -39,6 +40,7 @@ static void DisplayDiplomaText(void);
 static void InitDiplomaBg(void);
 static void InitDiplomaWindow(void);
 static void PrintDiplomaText(u8 *, u8, u8);
+extern u8 gText_AcceptLetter_CongratulationsPlayer[];
 
 EWRAM_DATA static u8 *sDiplomaTilemapPtr = NULL;
 
@@ -150,7 +152,7 @@ static void GenerateCorporateSponsor()
 static void DisplayDiplomaText(void)
 {
     GenerateCorporateSponsor();
-    StringExpandPlaceholders(gStringVar4, gText_AcceptLetterText1);
+    StringExpandPlaceholders(gStringVar4, gText_AcceptLetter_CongratulationsPlayer);
     PrintDiplomaText(gStringVar4, 0, 0);
     PutWindowTilemap(0);
     CopyWindowToVram(0, 3);

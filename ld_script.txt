@@ -342,7 +342,6 @@ SECTIONS {
         src/mgba.o(.text);
         src/printf.o(.text);
         src/accept_letter.o(.text);
-        src/accept_letter_text.o(.text);
         src/mugshot.o(.text)
         src/pokemon_debug.o(.text);
         src/field_puzzles.o(.text);
@@ -718,7 +717,6 @@ SECTIONS {
         data/sound_data.o(.rodata);
         src/printf.o(.rodata);
         src/accept_letter.o(.rodata);
-        src/accept_letter_text.o(.rodata);
         src/mugshot.o(.rodata);
         src/pokemon_debug.o(.rodata);
         src/field_puzzles.o(.rodata);
