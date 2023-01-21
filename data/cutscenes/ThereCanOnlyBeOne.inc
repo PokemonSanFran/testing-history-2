@@ -46,7 +46,7 @@ ThereCanOnlyBeOne_Narrator_Dialogue::
 ThereCanOnlyBeOne_StarterSelectMenu_Script::
 	msgbox gText_ThereCanOnlyBe_PleaseChooseAPokemon
 	closemessage
-	multichoice 0, 0, MULTI_STARTER_SELECT, TRUE
+	multichoice2 0, 0, ThereCanOnlyBeOne_StarterList, 1, 1, 0
 	switch VAR_RESULT
 	case 0, ThereCanOnlyBeOne_StarterSelectMenu_Script_3
 	case 1, ThereCanOnlyBeOne_StarterSelectMenu_Script_4
@@ -63,20 +63,20 @@ ThereCanOnlyBeOne_StarterSelectMenu_Script_1:
 
 ThereCanOnlyBeOne_StarterSelectMenu_Script_3:
 	setvar VAR_STARTER_MON, 0
-	bufferspeciesname 0, SPECIES_POLIWHIRL
-	msgbox gText_ThereCanOnlyBe_StarterSelectPoliwhirlDesc
+	bufferspeciesname 0, SPECIES_SCYTHER
+	msgbox gText_ThereCanOnlyBe_StarterSelectScytherDesc
 	goto ThereCanOnlyBeOne_StarterSelectMenu_Script_1
 
 ThereCanOnlyBeOne_StarterSelectMenu_Script_4:
 	setvar VAR_STARTER_MON, 1
-	bufferspeciesname 0, SPECIES_FLETCHINDER
-	msgbox gText_ThereCanOnlyBe_StarterSelectFletchinderDesc
+	bufferspeciesname 0, SPECIES_CHARMANDER
+	msgbox gText_ThereCanOnlyBe_StarterSelectCharcadetDesc
 	goto ThereCanOnlyBeOne_StarterSelectMenu_Script_1
 
 ThereCanOnlyBeOne_StarterSelectMenu_Script_5:
 	setvar VAR_STARTER_MON, 2
 	bufferspeciesname 0, SPECIES_PETILIL
-	msgbox gText_ThereCanOnlyBe_StarterSelectFletchinderDesc
+	msgbox gText_ThereCanOnlyBe_StarterSelectCharcadetDesc
 	goto ThereCanOnlyBeOne_StarterSelectMenu_Script_1
 
 ThereCanOnlyBeOne_StarterSelectMenu_Script_6:
@@ -161,13 +161,13 @@ ThereCanOnlyBeOne_StarterSelectConfirm_Script_1:
 	return
 
 ThereCanOnlyBeOne_StarterSelectConfirm_Script_6:
-	givecustommon SPECIES_POLIWHIRL, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
-	bufferspeciesname 0, SPECIES_POLIWHIRL
+	givecustommon SPECIES_SCYTHER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 2
+	bufferspeciesname 0, SPECIES_SCYTHER
 	goto ThereCanOnlyBeOne_StarterSelectConfirm_Script_4
 
 ThereCanOnlyBeOne_StarterSelectConfirm_Script_7:
-	givecustommon SPECIES_FLETCHINDER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 1
-	bufferspeciesname 0, SPECIES_FLETCHINDER
+	givecustommon SPECIES_CHARMANDER, 22, ITEM_SITRUS_BERRY, ITEM_GREAT_BALL, , 1
+	bufferspeciesname 0, SPECIES_CHARMANDER
 	goto ThereCanOnlyBeOne_StarterSelectConfirm_Script_4
 
 ThereCanOnlyBeOne_StarterSelectConfirm_Script_8:
@@ -224,6 +224,18 @@ ThereCanOnlyBeOne_WarpPlayer_Script::
 	return
 
 
+ThereCanOnlyBeOne_StarterList::
+	.string "Scyther$"
+	.string "Charcadet$"
+	.string "Petilil$"
+	.string "Flaaffy$"
+	.string "Mareanie$"
+	.string "Aron$"
+	.string "Swinub$"
+	.string "Hattrem$"
+	.string "Pancham$"
+	.string "$"
+
 gText_ThereCanOnlyBe_AlmostPackedAndReady::
 	.string "Almost packed and ready to go! I still\n"
 	.string "can't believe I made it...$"
@@ -256,13 +268,14 @@ gText_ThereCanOnlyBe_StarterSelectSummaryErrorMessage::
 	.string "In the next version, this will lead to\n"
 	.string "the Pokémon summary screen.$"
 
-gText_ThereCanOnlyBe_StarterSelectPoliwhirlDesc::
-	.string "{STR_VAR_1} excels in the rain and\n"
-	.string "gives plenty of options for Trainers.$"
+gText_ThereCanOnlyBe_StarterSelectScytherDesc::
+	.string "{STR_VAR_1} uses its Ability and\n"
+	.string "Speed to overwhelm opponents.$"
 
-gText_ThereCanOnlyBe_StarterSelectFletchinderDesc::
-	.string "{STR_VAR_1} can provide offense or\n"
-	.string "support with its high Speed.$"
+gText_ThereCanOnlyBe_StarterSelectCharcadetDesc::
+	.string "{STR_VAR_1} evolves into powerful\n"
+	.string "Fire-type Pokemon with physical or\l"
+	.string "special coverage.$"
 
 gText_ThereCanOnlyBe_StarterSelectPetililDesc::
 	.string "{STR_VAR_1} best utilizies its high\n"
