@@ -343,7 +343,7 @@
 #define VAR_MSGBOX_EMOTE                                 0x40F9 // Unused Var
 #define VAR_MSGBOX_TAIL                                  0x40FA // Unused Var
 #define VAR_MSGBOX_SPEAKER                               0x40FB // Unused Var
-#define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
+#define VAR_MSGBOX_PHONE                                 0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
 #define VAR_QUEST_RESTOREMARIN 0x40FE // Previously Unused Var

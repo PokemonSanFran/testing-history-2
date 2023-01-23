@@ -519,7 +519,7 @@ void DrawMessageBoxAddOns(u8 windowId){
     const u8 *str = sSpeakerData[speaker].name;
     u8 emote = VarGet(VAR_MSGBOX_EMOTE);
     u8 tail = VarGet(VAR_MSGBOX_TAIL);
-    u8 onPhone = FlagGet(FLAG_TEMP_10);
+    u8 onPhone = VarGet(VAR_MSGBOX_PHONE);
     int offset;
 
     //int tilemaptop = mugshot->x;
