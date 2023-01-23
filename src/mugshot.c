@@ -456,6 +456,7 @@ static const u8 sMenuWindowFontColors[][3] =
 //Faces
 #define GFXTAG_SPEAKER_ICON 0x2722 //same as money label
 #define SPEAKER_ICON_PAL 15
+#define SPEAKER_ICON_PAL_NUM 5
 #define SPEAKER_ICON_X 77
 #define SPEAKER_ICON_Y 86
 #define SPEAKER_ICON_SUBPRIORITY 0
@@ -492,28 +493,34 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
 
 void DestroySpeakerIconSprite(void){
     u8 newspriteID = VarGet(VAR_UNUSED_0x40FD);
+    u16 PaletteTag = VarGet(VAR_UNUSED_0x40FE);
 
     if(newspriteID != 0){
         FreeSpriteTilesByTag(GFXTAG_SPEAKER_ICON);
-        FreeSpritePaletteByTag(SPEAKER_ICON_PAL);
+        FreeSpritePaletteByTag(PaletteTag);
         DestroySpriteAndFreeResources(&gSprites[newspriteID]);
         VarSet(VAR_UNUSED_0x40FD, 0);
+        VarSet(VAR_UNUSED_0x40FE, 0);
         mgba_printf(MGBA_LOG_WARN, "Destroyed Sprite Num: %d", newspriteID);
     }
 }
 
 static void CreateSpeakerIconSprite(u16 speaker)
 {
+    u8 palnum, paltag;
     u8 spriteId = MAX_SPRITES;
     u16 SpriteTag = GFXTAG_SPEAKER_ICON;
-    u16 PaletteTag = SPEAKER_ICON_PAL;
     struct CompressedSpriteSheet sSpriteSheet_Speaker_Icon;
     struct CompressedSpritePalette spritePalette;
     struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
     DestroySpeakerIconSprite();
 
     TempSpriteTemplate.tileTag = SpriteTag;
-    FreeSpritePaletteByTag(PaletteTag);
+    //FreeSpritePaletteByTag(PaletteTag);
+    palnum = AllocSpritePalette(SPEAKER_ICON_PAL_NUM);
+    paltag = GetSpritePaletteTagByPaletteNum(palnum);
+    VarSet(VAR_UNUSED_0x40FE, paltag);
+    FreeSpritePaletteByTag(paltag);
     
     sSpriteSheet_Speaker_Icon.data = sSpeakerData[speaker].speakerIcon;
     sSpriteSheet_Speaker_Icon.size = 0x0800;
@@ -521,7 +528,7 @@ static void CreateSpeakerIconSprite(u16 speaker)
     LoadCompressedSpriteSheet(&sSpriteSheet_Speaker_Icon);
 
     spritePalette.data = sSpeakerData[speaker].speakerPal;
-    spritePalette.tag = PaletteTag;
+    spritePalette.tag = paltag;
     LoadCompressedSpritePalette(&spritePalette);
 
     spriteId = CreateSprite(&TempSpriteTemplate, 0, 0, 0);
@@ -534,7 +541,7 @@ static void CreateSpeakerIconSprite(u16 speaker)
         gSprites[spriteId].x = SPEAKER_ICON_X;
         gSprites[spriteId].y = SPEAKER_ICON_Y;
         gSprites[spriteId].oam.priority = 4;
-        gSprites[spriteId].oam.paletteNum = 14;
+        gSprites[spriteId].oam.paletteNum = palnum;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
     }
 
