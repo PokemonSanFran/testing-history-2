@@ -97,9 +97,9 @@ Quest_BuildingScope_StartQuest_Dialogue::
 
 
 Quest_BuildingScope_Employee_Active_Dialogue::
-	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_0, MSGBOX_NPC, SPEAKER_DEFAULT, EMOTE_HAPPY, TAIL_TALK, FALSE
-	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_1, MSGBOX_NPC, SPEAKER_JASMINE, EMOTE_SWEAT, TAIL_TALK, TRUE
-	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_2, MSGBOX_NPC, SPEAKER_DEFAULT, EMOTE_ANGRY, TAIL_WHISPER, FALSE
+	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_0, MSGBOX_NPC, SPEAKER_DEFAULT, TAIL_TALK, EMOTE_HAPPY, FALSE
+	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_1, MSGBOX_NPC, SPEAKER_JASMINE, TAIL_TALK, EMOTE_SWEAT, TRUE
+	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_2, MSGBOX_NPC, SPEAKER_DEFAULT, TAIL_WHISPER, EMOTE_ANGRY, FALSE
 	end
 
 

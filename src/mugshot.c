@@ -472,7 +472,7 @@ struct SpeakerData
 static const struct SpeakerData sSpeakerData[] = {
     [SPEAKER_DEFAULT] =
     {
-        .name = _("Grunt"),
+        .name = _("NPC"),
         //.speakerIcon = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/jasmine.4bpp.lz"),
         //.speakerPal = INCBIN_U16("graphics/ui_menus/msgbox/npcs_icons/jasmine.gbapal"),
     },
@@ -548,9 +548,6 @@ void DrawMessageBoxAddOns(u8 windowId){
         case EMOTE_CONFUSE:
             BlitBitmapToWindow(windowId, sMsgbox_Emote_Confuse, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
         break;
-        case EMOTE_DEFAULT:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Default, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
         case EMOTE_HAPPY:
             BlitBitmapToWindow(windowId, sMsgbox_Emote_Happy, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
         break;
@@ -569,11 +566,13 @@ void DrawMessageBoxAddOns(u8 windowId){
         case EMOTE_SHOCK:
             BlitBitmapToWindow(windowId, sMsgbox_Emote_Shock, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
         break;
+        default:
+            BlitBitmapToWindow(windowId, sMsgbox_Emote_Default, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+        break;
     }
 
     //Tails
     switch(tail){
-        case TAIL_DEFAULT:
         case TAIL_TALK:
             BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
         break;
@@ -585,6 +584,9 @@ void DrawMessageBoxAddOns(u8 windowId){
         break;
         case TAIL_THOUGHT:
             BlitBitmapToWindow(windowId, sMsgbox_Tail_Thought, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+        break;
+        default:
+            BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
         break;
     }
 
@@ -602,5 +604,10 @@ void DrawMessageBoxAddOns(u8 windowId){
     AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X + offset, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str);
     PutWindowRectTilemap(windowId, 0, 0, mugshot->width/8, mugshot->height/8);
     CopyWindowToVram(windowId, 3);
+    //Cleans Vars before calling this again
+    VarSet(VAR_MSGBOX_PHONE, PHONE_OFF);
+    VarSet(VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT);
+    VarSet(VAR_MSGBOX_EMOTE, EMOTE_DEFAULT);
+    VarSet(VAR_MSGBOX_TAIL, TAIL_DEFAULT);
 }
 

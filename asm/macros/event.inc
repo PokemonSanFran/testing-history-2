@@ -2024,12 +2024,12 @@
 
 	@ Buffers the given text and calls the relevant standard message script (see gStdScripts).
 	.macro msgbox text:req, type=MSGBOX_DEFAULT, speaker=SPEAKER_DEFAULT, tail=TAIL_DEFAULT, emote=EMOTE_DEFAULT, phone=PHONE_OFF
+	setvar VAR_MSGBOX_SPEAKER, \speaker
+	setvar VAR_MSGBOX_TAIL, \tail
+	setvar VAR_MSGBOX_EMOTE, \emote
+	setvar VAR_MSGBOX_PHONE, \phone
 	loadword 0, \text
 	callstd \type
-	setorcopyvar VAR_MSGBOX_SPEAKER, \speaker
-    setorcopyvar VAR_MSGBOX_TAIL, \tail
-    setorcopyvar VAR_MSGBOX_EMOTE, \emote
-    setorcopyvar VAR_MSGBOX_PHONE, \phone
 	.endm
 
 	@ Gives 'amount' of the specified 'item' to the player and prints a message with fanfare.
