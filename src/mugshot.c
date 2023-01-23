@@ -494,10 +494,11 @@ void DestroySpeakerIconSprite(void){
     u8 newspriteID = VarGet(VAR_UNUSED_0x40FD);
 
     if(newspriteID != 0){
-        FreeSpriteTilesByTag(newspriteID);
-        FreeSpritePaletteByTag(newspriteID);
+        FreeSpriteTilesByTag(GFXTAG_SPEAKER_ICON);
+        FreeSpritePaletteByTag(SPEAKER_ICON_PAL);
         DestroySpriteAndFreeResources(&gSprites[newspriteID]);
         VarSet(VAR_UNUSED_0x40FD, 0);
+        mgba_printf(MGBA_LOG_WARN, "Destroyed Sprite Num: %d", newspriteID);
     }
 }
 
@@ -509,8 +510,10 @@ static void CreateSpeakerIconSprite(u16 speaker)
     struct CompressedSpriteSheet sSpriteSheet_Speaker_Icon;
     struct CompressedSpritePalette spritePalette;
     struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
+    DestroySpeakerIconSprite();
 
     TempSpriteTemplate.tileTag = SpriteTag;
+    FreeSpritePaletteByTag(PaletteTag);
     
     sSpriteSheet_Speaker_Icon.data = sSpeakerData[speaker].speakerIcon;
     sSpriteSheet_Speaker_Icon.size = 0x0800;
@@ -531,13 +534,13 @@ static void CreateSpeakerIconSprite(u16 speaker)
         gSprites[spriteId].x = SPEAKER_ICON_X;
         gSprites[spriteId].y = SPEAKER_ICON_Y;
         gSprites[spriteId].oam.priority = 4;
-        gSprites[spriteId].oam.paletteNum = PaletteTag;
+        gSprites[spriteId].oam.paletteNum = 14;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
     }
 
     VarSet(VAR_UNUSED_0x40FD, spriteId);
     VarSet(VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT);
-    mgba_printf(MGBA_LOG_WARN, "Destroyed Sprite Num: %d", spriteId);
+    mgba_printf(MGBA_LOG_WARN, "New Sprite: %d", spriteId);
 }
 
 //TODO Write a constant coordinates for mugshots for protag (left) and other people (right)
