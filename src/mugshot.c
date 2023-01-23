@@ -7,6 +7,8 @@
 #include "palette.h"
 #include "event_data.h"
 #include "constants/mugshots.h"
+#include "printf.h"
+#include "mgba.h"
 
 #define MUGSHOT_PALETTE_NUM 13
 
@@ -452,58 +454,90 @@ static const u8 sMenuWindowFontColors[][3] =
 
 
 //Faces
-#define GFXTAG_SPEAKER_ICON 0
+#define GFXTAG_SPEAKER_ICON 0x2722 //same as money label
 #define SPEAKER_ICON_PAL 15
-#define TAG_SWAP_LINE_TX 5110
-#define SPEAKER_ICON_X 79
-#define SPEAKER_ICON_Y 94
+#define SPEAKER_ICON_X 77
+#define SPEAKER_ICON_Y 86
+#define SPEAKER_ICON_SUBPRIORITY 0
+#define SPEAKER_ICON_PRIORITY 0
+
+static const u32 gSpeakerIcon_Grunt[] = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/grunt.4bpp.lz");
+static const u32 sSpeakerPal_Grunt[] = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/grunt.gbapal.lz");
 
 static const u32 gSpeakerIcon_Jasmine[] = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/jasmine.4bpp.lz");
-static const u16 sSpeakerPal_Jasmine[] = INCBIN_U16("graphics/ui_menus/msgbox/npcs_icons/jasmine.gbapal");
-static const struct SpritePalette sSpeakerPal_Jasmine_SpritePalette[] = {sSpeakerPal_Jasmine, SPEAKER_ICON_PAL};
+static const u32 sSpeakerPal_Jasmine[] = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/jasmine.gbapal.lz");
 
 struct SpeakerData
 {
     const u8 name[SPEAKER_NAME_LENGTH];
-    //const u32 *speakerIcon;
-    //const u16 *speakerPal;
+    const u32 *speakerIcon;
+    const u32 *speakerPal;
 };
 
-static const struct SpeakerData sSpeakerData[] = {
+#define NUM_SPEAKERS 200
+static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
     [SPEAKER_DEFAULT] =
     {
         .name = _("NPC"),
-        //.speakerIcon = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/jasmine.4bpp.lz"),
-        //.speakerPal = INCBIN_U16("graphics/ui_menus/msgbox/npcs_icons/jasmine.gbapal"),
+        .speakerIcon = gSpeakerIcon_Grunt,
+        .speakerPal = sSpeakerPal_Grunt,
     },
     [SPEAKER_JASMINE] =
     {
         .name = _("Jasmine"),
-        //.speakerIcon = INCBIN_U32("graphics/ui_menus/msgbox/npcs_icons/jasmine.4bpp.lz"),
-        //.speakerPal = INCBIN_U16("graphics/ui_menus/msgbox/npcs_icons/jasmine.gbapal"),
+        .speakerIcon = gSpeakerIcon_Jasmine,
+        .speakerPal = sSpeakerPal_Jasmine,
     },
 };
 
+void DestroySpeakerIconSprite(void){
+    u8 newspriteID = VarGet(VAR_UNUSED_0x40FD);
 
-static void CreateSpeakerIconSprite(void)
+    if(newspriteID != 0){
+        FreeSpriteTilesByTag(newspriteID);
+        FreeSpritePaletteByTag(newspriteID);
+        DestroySpriteAndFreeResources(&gSprites[newspriteID]);
+        VarSet(VAR_UNUSED_0x40FD, 0);
+    }
+}
+
+static void CreateSpeakerIconSprite(u16 speaker)
 {
-    u8 spriteId;
-    u8 SpriteTag = GFXTAG_SPEAKER_ICON;
-    u8 speaker = SPEAKER_JASMINE;
-    struct CompressedSpriteSheet sSpriteSheet_Speaker_Icon = {gSpeakerIcon_Jasmine, 0x0800, SpriteTag};
+    u8 spriteId = MAX_SPRITES;
+    u16 SpriteTag = GFXTAG_SPEAKER_ICON;
+    u16 PaletteTag = SPEAKER_ICON_PAL;
+    struct CompressedSpriteSheet sSpriteSheet_Speaker_Icon;
+    struct CompressedSpritePalette spritePalette;
     struct SpriteTemplate TempSpriteTemplate = gDummySpriteTemplate;
 
     TempSpriteTemplate.tileTag = SpriteTag;
-
+    
+    sSpriteSheet_Speaker_Icon.data = sSpeakerData[speaker].speakerIcon;
+    sSpriteSheet_Speaker_Icon.size = 0x0800;
+    sSpriteSheet_Speaker_Icon.tag = SpriteTag;
     LoadCompressedSpriteSheet(&sSpriteSheet_Speaker_Icon);
-    LoadSpritePalette(sSpeakerPal_Jasmine_SpritePalette);
-    //LoadSpritePalette(sSpeakerPal_Jasmine, GFXTAG_SPEAKER_ICON, 32);
-    spriteId = CreateSprite(&TempSpriteTemplate, SPEAKER_ICON_X, SPEAKER_ICON_Y, 2);
-    //sMenuDataPtr->spriteIDs[SPRITE_BUY_ICON_ID] = spriteId;
 
-    gSprites[spriteId].oam.shape = SPRITE_SHAPE(32x32);
-    gSprites[spriteId].oam.size = SPRITE_SIZE(32x32);
-    gSprites[spriteId].oam.priority = 1;
+    spritePalette.data = sSpeakerData[speaker].speakerPal;
+    spritePalette.tag = PaletteTag;
+    LoadCompressedSpritePalette(&spritePalette);
+
+    spriteId = CreateSprite(&TempSpriteTemplate, 0, 0, 0);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        gSprites[spriteId].oam.shape = SPRITE_SHAPE(32x32);
+        gSprites[spriteId].oam.size = SPRITE_SIZE(32x32);
+
+        gSprites[spriteId].x = SPEAKER_ICON_X;
+        gSprites[spriteId].y = SPEAKER_ICON_Y;
+        gSprites[spriteId].oam.priority = 4;
+        gSprites[spriteId].oam.paletteNum = PaletteTag;
+        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+    }
+
+    VarSet(VAR_UNUSED_0x40FD, spriteId);
+    VarSet(VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT);
+    mgba_printf(MGBA_LOG_WARN, "Destroyed Sprite Num: %d", spriteId);
 }
 
 //TODO Write a constant coordinates for mugshots for protag (left) and other people (right)
@@ -596,7 +630,7 @@ void DrawMessageBoxAddOns(u8 windowId){
         BlitBitmapToWindow(windowId, sMsgbox_Phone_On, PHONE_X, PHONE_Y, PHONE_WIDTH, PHONE_HEIGHT);
 
     //Speaker Icon
-    //CreateSpeakerIconSprite();
+    CreateSpeakerIconSprite(speaker);
 
     //str = sSpeakerData[speaker].name;
     //68
@@ -606,8 +640,10 @@ void DrawMessageBoxAddOns(u8 windowId){
     CopyWindowToVram(windowId, 3);
     //Cleans Vars before calling this again
     VarSet(VAR_MSGBOX_PHONE, PHONE_OFF);
-    VarSet(VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT);
     VarSet(VAR_MSGBOX_EMOTE, EMOTE_DEFAULT);
     VarSet(VAR_MSGBOX_TAIL, TAIL_DEFAULT);
+    //VarSet(VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT);
+    //VarSet(VAR_UNUSED_0x40FD, SPEAKER_DEFAULT);
+    //DestroySpeakerIconSprite();
 }
 
