@@ -489,6 +489,12 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Jasmine,
         .speakerPal = sSpeakerPal_Jasmine,
     },
+    [SPEAKER_GRUNT] =
+    {
+        .name = _("Grunt"),
+        .speakerIcon = gSpeakerIcon_Grunt,
+        .speakerPal = sSpeakerPal_Grunt,
+    },
 };
 
 void DestroySpeakerIconSprite(void){
@@ -559,15 +565,12 @@ static const struct Mugshot sNewMugshots[] = {
 void DrawMessageBoxAddOns(u8 windowId){
     const struct Mugshot* const mugshot = sNewMugshots + MSGBOX_TEST;//VarGet(VAR_0x8000);
     struct WindowTemplate t;
+    int offset;
     u8 speaker = VarGet(VAR_MSGBOX_SPEAKER);
     const u8 *str = sSpeakerData[speaker].name;
     u8 emote = VarGet(VAR_MSGBOX_EMOTE);
     u8 tail = VarGet(VAR_MSGBOX_TAIL);
     u8 onPhone = VarGet(VAR_MSGBOX_PHONE);
-    int offset;
-
-    //int tilemaptop = mugshot->x;
-    //int tilemapleft = mugshot->y;
     int tilemaptop = 74;
     int tilemapleft = 0;
     
@@ -578,74 +581,76 @@ void DrawMessageBoxAddOns(u8 windowId){
     SetWindowTemplateFields(&t, 0, tilemapleft, tilemaptop, mugshot->width/8, mugshot->height/8, MUGSHOT_PALETTE_NUM, 0x40);
     windowId = AddWindow(&t);
     sMugshotWindow = windowId + 1;
-    
+        
     LoadPalette(mugshot->palette, 16 * MUGSHOT_PALETTE_NUM, 32);
     CopyToWindowPixelBuffer(windowId, (const void*)mugshot->image, 0, 0);
 
-    BlitBitmapToWindow(windowId, sMsgbox_Name_Box, NAME_BOX_X, NAME_BOX_Y, NAME_BOX_WIDTH, NAME_BOX_HEIGHT);
+    if(speaker != SPEAKER_DEFAULT && speaker < NUM_SPEAKERS){
+        //Name Box
+        BlitBitmapToWindow(windowId, sMsgbox_Name_Box, NAME_BOX_X, NAME_BOX_Y, NAME_BOX_WIDTH, NAME_BOX_HEIGHT);
 
-    //Emotes
-    switch(emote){
-        case EMOTE_ANGRY:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Angry, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
-        case EMOTE_CONFUSE:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Confuse, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
-        case EMOTE_HAPPY:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Happy, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
-        case EMOTE_LAUGH:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Laugh, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
-        case EMOTE_LOVE:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Love, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
-        case EMOTE_SAD:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Sad, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
-        case EMOTE_SWEAT:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Sweat, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
-        case EMOTE_SHOCK:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Shock, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
-        default:
-            BlitBitmapToWindow(windowId, sMsgbox_Emote_Default, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
-        break;
+        //Emotes
+        switch(emote){
+            case EMOTE_ANGRY:
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Angry, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+            break;
+            case EMOTE_CONFUSE:
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Confuse, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+            break;
+            case EMOTE_HAPPY:
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Happy, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+            break;
+            case EMOTE_LAUGH:
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Laugh, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+            break;
+            case EMOTE_LOVE:
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Love, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+            break;
+            case EMOTE_SAD:
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Sad, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+            break;
+            case EMOTE_SWEAT:
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Sweat, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+            break;
+            case EMOTE_SHOCK:
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Shock, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+            break;
+            default:
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Default, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+            break;
+        }
+
+        //Tails
+        switch(tail){
+            case TAIL_TALK:
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+            break;
+            case TAIL_WHISPER:
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Whisper, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+            break;
+            case TAIL_SHOUT:
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Shout, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+            break;
+            case TAIL_THOUGHT:
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Thought, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+            break;
+            default:
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+            break;
+        }
+
+        
+        //Phone
+        if(onPhone)
+            BlitBitmapToWindow(windowId, sMsgbox_Phone_On, PHONE_X, PHONE_Y, PHONE_WIDTH, PHONE_HEIGHT);
+
+        //Speaker Icon
+        CreateSpeakerIconSprite(speaker);
+
+        //Speaker Name
+        offset = GetStringCenterAlignXOffset(SPEAKER_FONT, str, SPEAKER_NAME_WIDTH);
+        AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X + offset, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str);
     }
-
-    //Tails
-    switch(tail){
-        case TAIL_TALK:
-            BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
-        break;
-        case TAIL_WHISPER:
-            BlitBitmapToWindow(windowId, sMsgbox_Tail_Whisper, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
-        break;
-        case TAIL_SHOUT:
-            BlitBitmapToWindow(windowId, sMsgbox_Tail_Shout, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
-        break;
-        case TAIL_THOUGHT:
-            BlitBitmapToWindow(windowId, sMsgbox_Tail_Thought, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
-        break;
-        default:
-            BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
-        break;
-    }
-
-    
-    //Phone
-    if(onPhone)
-        BlitBitmapToWindow(windowId, sMsgbox_Phone_On, PHONE_X, PHONE_Y, PHONE_WIDTH, PHONE_HEIGHT);
-
-    //Speaker Icon
-    CreateSpeakerIconSprite(speaker);
-
-    //str = sSpeakerData[speaker].name;
-    //68
-    offset = GetStringCenterAlignXOffset(SPEAKER_FONT, str, SPEAKER_NAME_WIDTH);
-    AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X + offset, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str);
     PutWindowRectTilemap(windowId, 0, 0, mugshot->width/8, mugshot->height/8);
     CopyWindowToVram(windowId, 3);
     //Cleans Vars before calling this again

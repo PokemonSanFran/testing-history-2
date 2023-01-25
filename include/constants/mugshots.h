@@ -87,6 +87,8 @@
 //SPEAKER
 #define SPEAKER_DEFAULT 0
 #define SPEAKER_JASMINE 1
+#define SPEAKER_GRUNT   2
+#define NUM_SPEAKERS    3
 
 //Tail
 #define TAIL_DEFAULT 0
