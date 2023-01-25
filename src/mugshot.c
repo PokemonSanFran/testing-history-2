@@ -398,13 +398,21 @@ static const u16 gMessageBox_Pal[] = INCBIN_U16("graphics/ui_menus/msgbox/messag
 
 static const u8 sMsgbox_Phone_On[] = INCBIN_U8("graphics/ui_menus/msgbox/phone/phone_on.4bpp");
 
-//Name Box - 64 x 16
-#define NAME_BOX_WIDTH  64
+//Name Box - 56 x 16
+#define NAME_BOX_WIDTH  8
 #define NAME_BOX_HEIGHT 16
-#define NAME_BOX_X      0
+#define NAME_BOX_X      8
 #define NAME_BOX_Y      10
 
 static const u8 sMsgbox_Name_Box[] = INCBIN_U8("graphics/ui_menus/msgbox/phone/name_box.4bpp");
+
+//Name Box Bottom - 8 x 16
+#define NAME_BOX_BOTTOM_WIDTH  8
+#define NAME_BOX_BOTTOM_HEIGHT 16
+#define NAME_BOX_BOTTOM_X      0
+#define NAME_BOX_BOTTOM_Y      10
+
+static const u8 sMsgbox_Name_Box_Bottom[] = INCBIN_U8("graphics/ui_menus/msgbox/phone/name_box_bottom.4bpp");
 
 //Emotes - 48 x 32
 #define EMOTES_WIDTH  48
@@ -434,11 +442,12 @@ static const u8 sMsgbox_Tail_Thought[] = INCBIN_U8("graphics/ui_menus/msgbox/tai
 static const u8 sMsgbox_Tail_Whisper[] = INCBIN_U8("graphics/ui_menus/msgbox/tails/tail_whisper.4bpp");
 
 #define SPEAKER_NAME_LENGTH     12
-#define SPEAKER_NAME_X          2
+#define SPEAKER_NAME_X          8
 #define SPEAKER_NAME_Y          10
 #define SPEAKER_FONT            7
 #define SPEAKER_NAME_FONT_COLOR 10
 #define SPEAKER_NAME_WIDTH      70
+#define MAX_SPEAKER_NAME_WIDTH  79
 
 enum Colors
 {
@@ -451,7 +460,6 @@ static const u8 sMenuWindowFontColors[][3] =
     [FONT_BLACK]    = {TEXT_COLOR_TRANSPARENT,  13,   11},
     [FONT_WHITE]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_WHITE,       TEXT_COLOR_TRANSPARENT},
 };
-
 
 //Faces
 #define GFXTAG_SPEAKER_ICON 0x2722 //same as money label
@@ -511,7 +519,7 @@ void DestroySpeakerIconSprite(void){
     }
 }
 
-static void CreateSpeakerIconSprite(u16 speaker)
+static void CreateSpeakerIconSprite(u16 speaker, u8 offset)
 {
     u8 palnum, paltag;
     u8 spriteId = MAX_SPRITES;
@@ -544,7 +552,7 @@ static void CreateSpeakerIconSprite(u16 speaker)
         gSprites[spriteId].oam.shape = SPRITE_SHAPE(32x32);
         gSprites[spriteId].oam.size = SPRITE_SIZE(32x32);
 
-        gSprites[spriteId].x = SPEAKER_ICON_X;
+        gSprites[spriteId].x = SPEAKER_ICON_X - offset;
         gSprites[spriteId].y = SPEAKER_ICON_Y;
         gSprites[spriteId].oam.priority = 4;
         gSprites[spriteId].oam.paletteNum = palnum;
@@ -565,7 +573,7 @@ static const struct Mugshot sNewMugshots[] = {
 void DrawMessageBoxAddOns(u8 windowId){
     const struct Mugshot* const mugshot = sNewMugshots + MSGBOX_TEST;//VarGet(VAR_0x8000);
     struct WindowTemplate t;
-    int offset;
+    int offset, offset2;
     u8 speaker = VarGet(VAR_MSGBOX_SPEAKER);
     const u8 *str = sSpeakerData[speaker].name;
     u8 emote = VarGet(VAR_MSGBOX_EMOTE);
@@ -573,6 +581,7 @@ void DrawMessageBoxAddOns(u8 windowId){
     u8 onPhone = VarGet(VAR_MSGBOX_PHONE);
     int tilemaptop = 74;
     int tilemapleft = 0;
+    u8 i, x, y;
     
     if(sMugshotWindow != 0){
         ClearMugshot();
@@ -586,70 +595,86 @@ void DrawMessageBoxAddOns(u8 windowId){
     CopyToWindowPixelBuffer(windowId, (const void*)mugshot->image, 0, 0);
 
     if(speaker != SPEAKER_DEFAULT && speaker < NUM_SPEAKERS){
+        //Name Width
+        if(onPhone)
+            offset = GetStringRightAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH) - 8 - PHONE_WIDTH;
+        else
+            offset = GetStringRightAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH) - 16;
+        offset2 = MAX_SPEAKER_NAME_WIDTH - GetStringRightAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH);
+        if(EMOTES_X < offset)
+            offset = EMOTES_X;
+        mgba_printf(MGBA_LOG_WARN, "offset %d", offset);
         //Name Box
-        BlitBitmapToWindow(windowId, sMsgbox_Name_Box, NAME_BOX_X, NAME_BOX_Y, NAME_BOX_WIDTH, NAME_BOX_HEIGHT);
+        x = 0;
+        y = 0;
+        for(i = 0; i <= offset2/8; i++){
+            BlitBitmapToWindow(windowId, sMsgbox_Name_Box, NAME_BOX_X + x, NAME_BOX_Y, NAME_BOX_WIDTH, NAME_BOX_HEIGHT);
+            x = x + 8;
+            mgba_printf(MGBA_LOG_WARN, "Time %d X Value: %d", i, NAME_BOX_X + x);
+        }
+        BlitBitmapToWindow(windowId, sMsgbox_Name_Box_Bottom, NAME_BOX_BOTTOM_X, NAME_BOX_BOTTOM_Y, NAME_BOX_BOTTOM_WIDTH, NAME_BOX_BOTTOM_HEIGHT);
 
         //Emotes
         switch(emote){
             case EMOTE_ANGRY:
-                BlitBitmapToWindow(windowId, sMsgbox_Emote_Angry, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Angry, EMOTES_X - offset, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
             break;
             case EMOTE_CONFUSE:
-                BlitBitmapToWindow(windowId, sMsgbox_Emote_Confuse, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Confuse, EMOTES_X - offset, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
             break;
             case EMOTE_HAPPY:
-                BlitBitmapToWindow(windowId, sMsgbox_Emote_Happy, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Happy, EMOTES_X - offset, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
             break;
             case EMOTE_LAUGH:
-                BlitBitmapToWindow(windowId, sMsgbox_Emote_Laugh, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Laugh, EMOTES_X - offset, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
             break;
             case EMOTE_LOVE:
-                BlitBitmapToWindow(windowId, sMsgbox_Emote_Love, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Love, EMOTES_X - offset, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
             break;
             case EMOTE_SAD:
-                BlitBitmapToWindow(windowId, sMsgbox_Emote_Sad, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Sad, EMOTES_X - offset, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
             break;
             case EMOTE_SWEAT:
-                BlitBitmapToWindow(windowId, sMsgbox_Emote_Sweat, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Sweat, EMOTES_X - offset, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
             break;
             case EMOTE_SHOCK:
-                BlitBitmapToWindow(windowId, sMsgbox_Emote_Shock, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Shock, EMOTES_X - offset, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
             break;
             default:
-                BlitBitmapToWindow(windowId, sMsgbox_Emote_Default, EMOTES_X, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Emote_Default, EMOTES_X - offset, EMOTES_Y, EMOTES_WIDTH, EMOTES_HEIGHT);
             break;
         }
 
         //Tails
         switch(tail){
             case TAIL_TALK:
-                BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X - offset, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
             break;
             case TAIL_WHISPER:
-                BlitBitmapToWindow(windowId, sMsgbox_Tail_Whisper, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Whisper, TAILS_X - offset, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
             break;
             case TAIL_SHOUT:
-                BlitBitmapToWindow(windowId, sMsgbox_Tail_Shout, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Shout, TAILS_X - offset, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
             break;
             case TAIL_THOUGHT:
-                BlitBitmapToWindow(windowId, sMsgbox_Tail_Thought, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Thought, TAILS_X - offset, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
             break;
             default:
-                BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
+                BlitBitmapToWindow(windowId, sMsgbox_Tail_Talk, TAILS_X - offset, TAILS_Y, TAILS_WIDTH, TAILS_HEIGHT);
             break;
         }
 
         
         //Phone
         if(onPhone)
-            BlitBitmapToWindow(windowId, sMsgbox_Phone_On, PHONE_X, PHONE_Y, PHONE_WIDTH, PHONE_HEIGHT);
+            BlitBitmapToWindow(windowId, sMsgbox_Phone_On, PHONE_X - offset, PHONE_Y, PHONE_WIDTH, PHONE_HEIGHT);
 
         //Speaker Icon
-        CreateSpeakerIconSprite(speaker);
+        CreateSpeakerIconSprite(speaker, offset);
 
         //Speaker Name
-        offset = GetStringCenterAlignXOffset(SPEAKER_FONT, str, SPEAKER_NAME_WIDTH);
-        AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X + offset, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str);
+        //offset = GetStringCenterAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH);
+        AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str);
     }
     PutWindowRectTilemap(windowId, 0, 0, mugshot->width/8, mugshot->height/8);
     CopyWindowToVram(windowId, 3);
