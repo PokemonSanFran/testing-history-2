@@ -390,11 +390,11 @@ void DrawMugshotAtPos(void){
 static const u32 sMsgbox_Top[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top.4bpp.lz");
 static const u16 gMessageBox_Pal[] = INCBIN_U16("graphics/ui_menus/msgbox/message_box.gbapal");
 
-//Phone - 24 x 16
-#define PHONE_WIDTH  24
+//Phone - 16 x 16
+#define PHONE_WIDTH  16
 #define PHONE_HEIGHT 16
-#define PHONE_X      72
-#define PHONE_Y      18
+#define PHONE_X      65
+#define PHONE_Y      11
 
 static const u8 sMsgbox_Phone_On[] = INCBIN_U8("graphics/ui_menus/msgbox/phone/phone_on.4bpp");
 

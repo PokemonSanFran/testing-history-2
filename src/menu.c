@@ -177,7 +177,7 @@ u16 RunTextPrintersAndIsPrinter0Active(void)
 
 u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed, void (*callback)(struct TextPrinterTemplate *, u16), u8 fgColor, u8 bgColor, u8 shadowColor)
 {
-    struct TextPrinterTemplate printer;
+    struct TextPrinterTemplate printer;//Todo Msgbox
 
     printer.currentChar = str;
     printer.windowId = windowId;
