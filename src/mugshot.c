@@ -1,6 +1,7 @@
 #include "global.h"
 #include "international_string_util.h"
 #include "blit.h"
+#include "bg.h"
 #include "decompress.h"
 #include "window.h"
 #include "menu.h"
@@ -387,6 +388,14 @@ void DrawMugshotAtPos(void){
     DrawMugshotCore(sMugshots + VarGet(VAR_0x8000), VarGet(VAR_0x8001), VarGet(VAR_0x8002));
 }
 
+//Name Msgbox Bottom - 240 x 8
+#define MESSAGE_BOX_WIDTH  240
+#define MESSAGE_BOX_HEIGHT 8
+#define MESSAGE_BOX_X      0
+#define MESSAGE_BOX_Y      24
+
+static const u8 sMsgbox_Top_Small[] = INCBIN_U8("graphics/ui_menus/msgbox/phone/msgbox_top_small.4bpp");
+
 static const u32 sMsgbox_Top[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top.4bpp.lz");
 static const u16 gMessageBox_Pal[] = INCBIN_U16("graphics/ui_menus/msgbox/message_box.gbapal");
 
@@ -581,7 +590,7 @@ void DrawMessageBoxAddOns(u8 windowId){
     u8 onPhone = VarGet(VAR_MSGBOX_PHONE);
     int tilemaptop = 74;
     int tilemapleft = 0;
-    u8 i, x, y;
+    u8 i, x, y, bg;
     
     if(sMugshotWindow != 0){
         ClearMugshot();
@@ -593,6 +602,7 @@ void DrawMessageBoxAddOns(u8 windowId){
         
     LoadPalette(mugshot->palette, 16 * MUGSHOT_PALETTE_NUM, 32);
     CopyToWindowPixelBuffer(windowId, (const void*)mugshot->image, 0, 0);
+    //BlitBitmapToWindow(windowId, sMsgbox_Top_Small, MESSAGE_BOX_X, MESSAGE_BOX_Y, MESSAGE_BOX_WIDTH, MESSAGE_BOX_HEIGHT);
 
     if(speaker != SPEAKER_DEFAULT && speaker < NUM_SPEAKERS){
         //Name Width
