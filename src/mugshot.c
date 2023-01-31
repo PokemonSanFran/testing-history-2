@@ -585,6 +585,16 @@ static const u32 sMsgbox_Top_0[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_t
 static const u32 sMsgbox_Top_1[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top_smallest_1.4bpp.lz");
 static const u32 sMsgbox_Top_2[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top_smallest_2.4bpp.lz");
 
+void ClearMessageBoxAddOns(void){
+    DestroySpeakerIconSprite();
+    if(sMugshotWindow != 0){
+        ClearStdWindowAndFrameToTransparent(sMugshotWindow - 1, 0);
+        CopyWindowToVram(sMugshotWindow - 1, 3);
+        RemoveWindow(sMugshotWindow - 1);
+        sMugshotWindow = 0;
+    }
+}
+
 void DrawMessageBoxAddOns(u8 windowId){
     const u16* palette = gMessageBox_Pal;
     struct WindowTemplate t;
@@ -597,7 +607,7 @@ void DrawMessageBoxAddOns(u8 windowId){
     u8 i, x, y;
     
     if(sMugshotWindow != 0){
-        ClearMugshot();
+        ClearMessageBoxAddOns();
     }
     
     SetWindowTemplateFields(&t, 0, WINDOW_TILELEFT, WINDOW_TILETOP, NEW_WINDOW_WIDTH/8, NEW_WINDOW_HEIGHT/8, MUGSHOT_PALETTE_NUM, 0x40);
@@ -695,6 +705,7 @@ void DrawMessageBoxAddOns(u8 windowId){
         //offset = GetStringCenterAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH);
         AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str);
     }
+
     PutWindowRectTilemap(windowId, 0, 0, NEW_WINDOW_WIDTH/8, NEW_WINDOW_HEIGHT/8);
     CopyWindowToVram(windowId, 3);
     //Cleans Vars before calling this again

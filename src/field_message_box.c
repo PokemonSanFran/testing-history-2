@@ -137,10 +137,9 @@ static void StartDrawFieldMessage(void)
 void HideFieldMessageBox(void)
 {
     DestroyTask_DrawFieldMessage();
+    ClearMessageBoxAddOns();
     ClearDialogWindowAndFrame(0, TRUE);
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
-    ClearMugshot();
-    DestroySpeakerIconSprite();
 }
 
 u8 GetFieldMessageBoxMode(void)
