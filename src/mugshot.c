@@ -347,6 +347,8 @@ static const struct Mugshot sMugshots[] = {
 
 //WindowId + 1, 0 if window is not open
 static EWRAM_DATA u8 sMugshotWindow = 0;
+static EWRAM_DATA u8 sPortaitSpriteID = 0;
+static EWRAM_DATA u8 sPortaitPaletteID = 0;
 
 void ClearMugshot(void){
     if(sMugshotWindow != 0){
@@ -395,8 +397,6 @@ void DrawMugshotAtPos(void){
 #define MESSAGE_BOX_Y      24
 
 static const u8 sMsgbox_Top_Small[] = INCBIN_U8("graphics/ui_menus/msgbox/phone/msgbox_top_small.4bpp");
-
-static const u32 sMsgbox_Top[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top.4bpp.lz");
 static const u16 gMessageBox_Pal[] = INCBIN_U16("graphics/ui_menus/msgbox/message_box.gbapal");
 
 //Phone - 16 x 16
@@ -515,16 +515,13 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
 };
 
 void DestroySpeakerIconSprite(void){
-    u8 newspriteID = VarGet(VAR_UNUSED_0x40FD);
-    u16 PaletteTag = VarGet(VAR_UNUSED_0x40FE);
-
-    if(newspriteID != 0){
+    if(sPortaitSpriteID != 0){
         FreeSpriteTilesByTag(GFXTAG_SPEAKER_ICON);
-        FreeSpritePaletteByTag(PaletteTag);
-        DestroySpriteAndFreeResources(&gSprites[newspriteID]);
-        VarSet(VAR_UNUSED_0x40FD, 0);
-        VarSet(VAR_UNUSED_0x40FE, 0);
-        mgba_printf(MGBA_LOG_WARN, "Destroyed Sprite Num: %d", newspriteID);
+        FreeSpritePaletteByTag(sPortaitPaletteID);
+        DestroySpriteAndFreeResources(&gSprites[sPortaitSpriteID]);
+        sPortaitSpriteID = 0;
+        VarSet(sPortaitPaletteID, 0);
+        mgba_printf(MGBA_LOG_WARN, "Destroyed Sprite Num: %d", sPortaitSpriteID);
     }
 }
 
@@ -542,7 +539,7 @@ static void CreateSpeakerIconSprite(u16 speaker, u8 offset)
     //FreeSpritePaletteByTag(PaletteTag);
     palnum = AllocSpritePalette(SPEAKER_ICON_PAL_NUM);
     paltag = GetSpritePaletteTagByPaletteNum(palnum);
-    VarSet(VAR_UNUSED_0x40FE, paltag);
+    sPortaitPaletteID = paltag;
     FreeSpritePaletteByTag(paltag);
     
     sSpriteSheet_Speaker_Icon.data = sSpeakerData[speaker].speakerIcon;
@@ -568,19 +565,28 @@ static void CreateSpeakerIconSprite(u16 speaker, u8 offset)
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
     }
 
-    VarSet(VAR_UNUSED_0x40FD, spriteId);
+    sPortaitSpriteID = spriteId;
     VarSet(VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT);
     mgba_printf(MGBA_LOG_WARN, "New Sprite: %d", spriteId);
 }
 
 //TODO Write a constant coordinates for mugshots for protag (left) and other people (right)
 
-static const struct Mugshot sNewMugshots[] = {
-    [MSGBOX_TEST] = {.x = 110, .y = 109, .width = 240, .height = 32, .image = sMsgbox_Top, .palette = gMessageBox_Pal},
-};
+#define WINDOW_SIZE 30 - 2
+#define WINDOW_TITLEOFFSET 90
+#define WINDOW_X 110
+#define WINDOW_Y 109
+#define NEW_WINDOW_WIDTH 240
+#define NEW_WINDOW_HEIGHT 32
+#define WINDOW_TILETOP 74
+#define WINDOW_TILELEFT 0
+
+static const u32 sMsgbox_Top_0[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top_smallest_0.4bpp.lz");
+static const u32 sMsgbox_Top_1[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top_smallest_1.4bpp.lz");
+static const u32 sMsgbox_Top_2[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top_smallest_2.4bpp.lz");
 
 void DrawMessageBoxAddOns(u8 windowId){
-    const struct Mugshot* const mugshot = sNewMugshots + MSGBOX_TEST;//VarGet(VAR_0x8000);
+    const u16* palette = gMessageBox_Pal;
     struct WindowTemplate t;
     int offset, offset2;
     u8 speaker = VarGet(VAR_MSGBOX_SPEAKER);
@@ -588,21 +594,24 @@ void DrawMessageBoxAddOns(u8 windowId){
     u8 emote = VarGet(VAR_MSGBOX_EMOTE);
     u8 tail = VarGet(VAR_MSGBOX_TAIL);
     u8 onPhone = VarGet(VAR_MSGBOX_PHONE);
-    int tilemaptop = 74;
-    int tilemapleft = 0;
-    u8 i, x, y, bg;
+    u8 i, x, y;
     
     if(sMugshotWindow != 0){
         ClearMugshot();
     }
     
-    SetWindowTemplateFields(&t, 0, tilemapleft, tilemaptop, mugshot->width/8, mugshot->height/8, MUGSHOT_PALETTE_NUM, 0x40);
+    SetWindowTemplateFields(&t, 0, WINDOW_TILELEFT, WINDOW_TILETOP, NEW_WINDOW_WIDTH/8, NEW_WINDOW_HEIGHT/8, MUGSHOT_PALETTE_NUM, 0x40);
     windowId = AddWindow(&t);
     sMugshotWindow = windowId + 1;
         
-    LoadPalette(mugshot->palette, 16 * MUGSHOT_PALETTE_NUM, 32);
-    CopyToWindowPixelBuffer(windowId, (const void*)mugshot->image, 0, 0);
-    //BlitBitmapToWindow(windowId, sMsgbox_Top_Small, MESSAGE_BOX_X, MESSAGE_BOX_Y, MESSAGE_BOX_WIDTH, MESSAGE_BOX_HEIGHT);
+    LoadPalette(palette, 16 * MUGSHOT_PALETTE_NUM, 32);
+    //Top Left Part
+    CopyToWindowPixelBuffer(windowId, (const void*)sMsgbox_Top_0, 0, WINDOW_TITLEOFFSET);
+    //Top Part
+    for(i = 0; i < WINDOW_SIZE; i++)
+        CopyToWindowPixelBuffer(windowId, (const void*)sMsgbox_Top_1, 0, WINDOW_TITLEOFFSET + 1 + i);
+    //Top Right Part
+    CopyToWindowPixelBuffer(windowId, (const void*)sMsgbox_Top_2, 0, WINDOW_TITLEOFFSET + 1 + WINDOW_SIZE);
 
     if(speaker != SPEAKER_DEFAULT && speaker < NUM_SPEAKERS){
         //Name Width
@@ -686,14 +695,11 @@ void DrawMessageBoxAddOns(u8 windowId){
         //offset = GetStringCenterAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH);
         AddTextPrinterParameterized4(windowId, SPEAKER_FONT, SPEAKER_NAME_X, SPEAKER_NAME_Y, 0, 0, sMenuWindowFontColors[FONT_BLACK], 0xFF, str);
     }
-    PutWindowRectTilemap(windowId, 0, 0, mugshot->width/8, mugshot->height/8);
+    PutWindowRectTilemap(windowId, 0, 0, NEW_WINDOW_WIDTH/8, NEW_WINDOW_HEIGHT/8);
     CopyWindowToVram(windowId, 3);
     //Cleans Vars before calling this again
     VarSet(VAR_MSGBOX_PHONE, PHONE_OFF);
     VarSet(VAR_MSGBOX_EMOTE, EMOTE_DEFAULT);
     VarSet(VAR_MSGBOX_TAIL, TAIL_DEFAULT);
-    //VarSet(VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT);
-    //VarSet(VAR_UNUSED_0x40FD, SPEAKER_DEFAULT);
-    //DestroySpeakerIconSprite();
 }
 
