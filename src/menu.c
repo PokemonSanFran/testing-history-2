@@ -98,7 +98,7 @@ static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
         .tilemapLeft = 1,
         .tilemapTop = 14,
         .width = 28,
-        .height = 4,
+        .height = 6,
         .paletteNum = 15,
         .baseBlock = 0x194
     },
@@ -328,7 +328,7 @@ static void WindowFunc_DrawStandardFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u
 }
 
 static void WindowFunc_DrawDialogueFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
-{   //          _
+{   /*/          _
     //Top Left |
     FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 5, tilemapLeft - 1, tilemapTop, 1, 1, DLG_WINDOW_PALETTE_NUM);
     //Left Bar | <-
@@ -344,6 +344,7 @@ static void WindowFunc_DrawDialogueFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u
     FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(DLG_WINDOW_BASE_TILE_NUM + 12), tilemapLeft, tilemapTop + height, width, 1, DLG_WINDOW_PALETTE_NUM);
     //Bottom Right _|
     FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(DLG_WINDOW_BASE_TILE_NUM + 13), tilemapLeft + width, tilemapTop + height, 1, 1, DLG_WINDOW_PALETTE_NUM);
+    /*/
 }
 
 static void WindowFunc_ClearStdWindowAndFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)

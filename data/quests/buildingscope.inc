@@ -97,9 +97,9 @@ Quest_BuildingScope_StartQuest_Dialogue::
 
 
 Quest_BuildingScope_Employee_Active_Dialogue::
-	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_0, MSGBOX_NPC, SPEAKER_GRUNT, TAIL_TALK, EMOTE_HAPPY, FALSE
-	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_1, MSGBOX_NPC, SPEAKER_JASMINE, TAIL_TALK, EMOTE_SWEAT, TRUE
-	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_2, MSGBOX_NPC, SPEAKER_GRUNT, TAIL_WHISPER, EMOTE_ANGRY, FALSE
+	msgbox AquaHideout_TestText, MSGBOX_NPC, SPEAKER_KAREN, TAIL_TALK, EMOTE_HAPPY, FALSE
+	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_0, MSGBOX_NPC, SPEAKER_JASMINE, TAIL_TALK, EMOTE_SWEAT, TRUE
+	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_1, MSGBOX_NPC, SPEAKER_GRUNT, TAIL_WHISPER, EMOTE_ANGRY, FALSE
 	end
 
 
@@ -214,13 +214,10 @@ Quest_BuildingScope_WalkToPlayer_Movement:
 	step_end
 
 Quest_BuildingScope_Employee_Active_Dialogue_Text_0:
-	.string "Yeah, I will go to your Gym Soon!.$"
-
-Quest_BuildingScope_Employee_Active_Dialogue_Text_1:
 	.string "I see, I may be a little busy with the\n"
 	.string "lighthouse but I see you there.$"
 
-Quest_BuildingScope_Employee_Active_Dialogue_Text_2:
+Quest_BuildingScope_Employee_Active_Dialogue_Text_1:
 	.string "Hey, please stop eavesdropping, I'm on\n"
 	.string "the phone right now.$"
 
@@ -325,3 +322,10 @@ gText_BuildingScope_WeHired::
 	.string "Vermilion City to work on the building.\l"
 	.string "we might even be done AHEAD of\l"
 	.string "schedule!$"
+
+AquaHideout_TestText::
+	.string "Our Hideout's secret?\n"
+	.string "Well, let's just say…\n"
+	.string "There's a submarine at the far end!\p"
+	.string "But, by now…\n"
+	.string "Kekekeke…$"

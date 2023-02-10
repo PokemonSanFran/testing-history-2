@@ -96,7 +96,7 @@ script Quest_BuildingScope_StartQuest_Dialogue{
 }
 
 script Quest_BuildingScope_Employee_Active_Dialogue{
-    msgbox(format("Yeah, I will go to your Gym Soon!."),MSGBOX_NPC, SPEAKER_GRUNT, TAIL_TALK, EMOTE_HAPPY, FALSE)
+    msgbox(AquaHideout_TestText,MSGBOX_NPC, SPEAKER_GRUNT, TAIL_TALK, EMOTE_HAPPY, FALSE)
     msgbox(format("I see, I may be a little busy with the lighthouse but I see you there."),MSGBOX_NPC, SPEAKER_JASMINE, TAIL_TALK, EMOTE_SWEAT, TRUE)
     msgbox(format("Hey, please stop eavesdropping, I'm on the phone right now."),MSGBOX_NPC, SPEAKER_GRUNT, TAIL_WHISPER, EMOTE_ANGRY, FALSE)
     //msgbox(gText_BuildingScope_OneDayIll,MSGBOX_NPC)
@@ -283,6 +283,15 @@ text gText_BuildingScope_IllSendSomebody{
 text gText_BuildingScope_WeHired{
     format("we hired the best contractors from Vermilion City to work on the building. we might even be done AHEAD of schedule!")
 }
+
+text AquaHideout_TestText{
+	"Our Hideout's secret?\n"
+	"Well, let's just say…\n"
+	"There's a submarine at the far end!\p"
+	"But, by now…\n"
+	"Kekekeke…$"
+}
+
 movement Quest_BuildingScope_WalkToPlayer_Movement{
     walk_down * 5
     step_end

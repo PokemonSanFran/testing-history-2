@@ -85,10 +85,49 @@
 #define MSGBOX_TEST 0
 
 //SPEAKER
-#define SPEAKER_DEFAULT 0
-#define SPEAKER_JASMINE 1
-#define SPEAKER_GRUNT   2
-#define NUM_SPEAKERS    3
+#define SPEAKER_DEFAULT             0
+#define SPEAKER_JASMINE             1
+#define SPEAKER_GRUNT               2
+#define SPEAKER_BLAINE              3
+#define SPEAKER_BROCK               4
+#define SPEAKER_BRUNO               5
+#define SPEAKER_BUG_CATCHER         6
+#define SPEAKER_BUGSY               7
+#define SPEAKER_CHUCK               8
+#define SPEAKER_CLAIR               9
+#define SPEAKER_ELM                 10
+#define SPEAKER_ERIKA               11
+#define SPEAKER_FALKNER             12
+#define SPEAKER_FISHERMAN           13
+#define SPEAKER_GIOVANNI            14
+#define SPEAKER_GIRL                15
+#define SPEAKER_GREEN               16
+#define SPEAKER_JANINE              17
+#define SPEAKER_KAREN               18
+#define SPEAKER_KID                 19
+#define SPEAKER_KOGA                20
+#define SPEAKER_KURT                21
+#define SPEAKER_LANCE               22
+#define SPEAKER_LT_SURGE            23
+#define SPEAKER_MAN                 24
+#define SPEAKER_MISTY               25
+#define SPEAKER_MORTY               26
+#define SPEAKER_OLD_MAN             27
+#define SPEAKER_OLD_WOMAN           28
+#define SPEAKER_POLICEMAN           29
+#define SPEAKER_PRYCE               30
+#define SPEAKER_RED                 31
+#define SPEAKER_ROCKET_GRUNT_MALE   32
+#define SPEAKER_ROCKET_GRUNT_FEMALE 33
+#define SPEAKER_SABRINA             34
+#define SPEAKER_SILVER              35
+#define SPEAKER_STEVEN              36
+#define SPEAKER_SWIMMER_MALE        37
+#define SPEAKER_WHITNEY             38
+#define SPEAKER_WILL                39
+#define SPEAKER_WOMAN               40
+#define SPEAKER_YOUNGSTER           41
+#define NUM_SPEAKERS                42
 
 //Tail
 #define TAIL_DEFAULT 0
