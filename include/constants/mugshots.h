@@ -127,7 +127,34 @@
 #define SPEAKER_WILL                39
 #define SPEAKER_WOMAN               40
 #define SPEAKER_YOUNGSTER           41
-#define NUM_SPEAKERS                42
+#define SPEAKER_FIREBREATHER        42
+#define SPEAKER_BEAUTY              43
+#define SPEAKER_BIRD_KEEPER         44
+#define SPEAKER_BLACK_BELT          45
+#define SPEAKER_EUSINE              46
+#define SPEAKER_WAITER              47
+#define SPEAKER_PROTON              48
+#define SPEAKER_PETREL              49
+#define SPEAKER_ARIANA              50
+#define SPEAKER_ARCHER              51
+#define SPEAKER_COLLECTOR           52
+#define SPEAKER_BILL                53
+#define SPEAKER_BOARDER             54
+#define SPEAKER_JUGGLER             55
+#define SPEAKER_KIMONO_GIRL         56
+#define SPEAKER_LASS                57
+#define SPEAKER_MEDIUM              58
+#define SPEAKER_MEDIUM_2            59
+#define SPEAKER_POKE_MANIAC         60
+#define SPEAKER_SAGE                61
+#define SPEAKER_SUPER_NERD          62
+#define SPEAKER_ACE_TRAINER_M       63
+#define SPEAKER_ACE_TRAINER_F       64
+#define SPEAKER_LI                  65
+#define SPEAKER_AROMA_LADY          66
+#define SPEAKER_BATTLE_GIRL         67
+#define SPEAKER_MOM                 68
+#define NUM_SPEAKERS                69
 
 //Tail
 #define TAIL_DEFAULT 0

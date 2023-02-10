@@ -599,6 +599,88 @@ static const u32 sSpeakerPal_Woman[]  = INCBIN_U32("graphics/ui_menus/msgbox/cha
 static const u32 gSpeakerIcon_Youngster[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/youngster.4bpp.lz");
 static const u32 sSpeakerPal_Youngster[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/youngster.gbapal.lz");
 
+//
+static const u32 gSpeakerIcon_Ace_Trainer_F[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/ace_trainer_f.4bpp.lz");
+static const u32 sSpeakerPal_Ace_Trainer_F[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/ace_trainer_f.gbapal.lz");
+
+static const u32 gSpeakerIcon_Ace_Trainer_M[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/ace_trainer_m.4bpp.lz");
+static const u32 sSpeakerPal_Ace_Trainer_M[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/ace_trainer_m.gbapal.lz");
+
+static const u32 gSpeakerIcon_Archer[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/archer.4bpp.lz");
+static const u32 sSpeakerPal_Archer[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/archer.gbapal.lz");
+
+static const u32 gSpeakerIcon_Ariana[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/ariana.4bpp.lz");
+static const u32 sSpeakerPal_Ariana[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/ariana.gbapal.lz");
+
+static const u32 gSpeakerIcon_Aroma_Lady[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/aroma_lady.4bpp.lz");
+static const u32 sSpeakerPal_Aroma_Lady[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/aroma_lady.gbapal.lz");
+
+static const u32 gSpeakerIcon_Battle_Girl[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/battle_girl.4bpp.lz");
+static const u32 sSpeakerPal_Battle_Girl[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/battle_girl.gbapal.lz");
+
+static const u32 gSpeakerIcon_Beauty[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/beauty.4bpp.lz");
+static const u32 sSpeakerPal_Beauty[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/beauty.gbapal.lz");
+
+static const u32 gSpeakerIcon_Bill[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/bill.4bpp.lz");
+static const u32 sSpeakerPal_Bill[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/bill.gbapal.lz");
+
+static const u32 gSpeakerIcon_Bird_Keeper[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/bird_keeper.4bpp.lz");
+static const u32 sSpeakerPal_Bird_Keeper[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/bird_keeper.gbapal.lz");
+
+static const u32 gSpeakerIcon_Black_Belt[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/black_belt.4bpp.lz");
+static const u32 sSpeakerPal_Black_Belt[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/black_belt.gbapal.lz");
+
+static const u32 gSpeakerIcon_Boarder[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/boarder.4bpp.lz");
+static const u32 sSpeakerPal_Boarder[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/boarder.gbapal.lz");
+
+static const u32 gSpeakerIcon_Collector[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/collector.4bpp.lz");
+static const u32 sSpeakerPal_Collector[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/collector.gbapal.lz");
+
+static const u32 gSpeakerIcon_Eusine[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/eusine.4bpp.lz");
+static const u32 sSpeakerPal_Eusine[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/eusine.gbapal.lz");
+
+static const u32 gSpeakerIcon_Juggler[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/juggler.4bpp.lz");
+static const u32 sSpeakerPal_Juggler[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/juggler.gbapal.lz");
+
+static const u32 gSpeakerIcon_Kimono_Girl[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/kimono_girl.4bpp.lz");
+static const u32 sSpeakerPal_Kimono_Girl[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/kimono_girl.gbapal.lz");
+
+static const u32 gSpeakerIcon_Lass[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/lass.4bpp.lz");
+static const u32 sSpeakerPal_Lass[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/lass.gbapal.lz");
+
+static const u32 gSpeakerIcon_Li[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/li.4bpp.lz");
+static const u32 sSpeakerPal_Li[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/li.gbapal.lz");
+
+static const u32 gSpeakerIcon_Medium[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/medium.4bpp.lz");
+static const u32 sSpeakerPal_Medium[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/medium.gbapal.lz");
+
+static const u32 gSpeakerIcon_Medium_2[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/medium_2.4bpp.lz");
+static const u32 sSpeakerPal_Medium_2[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/medium_2.gbapal.lz");
+
+static const u32 gSpeakerIcon_Mom[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/mom.4bpp.lz");
+static const u32 sSpeakerPal_Mom[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/mom.gbapal.lz");
+
+static const u32 gSpeakerIcon_Petrel[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/petrel.4bpp.lz");
+static const u32 sSpeakerPal_Petrel[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/petrel.gbapal.lz");
+
+static const u32 gSpeakerIcon_Poke_Maniac[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/poke_maniac.4bpp.lz");
+static const u32 sSpeakerPal_Poke_Maniac[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/poke_maniac.gbapal.lz");
+
+static const u32 gSpeakerIcon_Proton[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/proton.4bpp.lz");
+static const u32 sSpeakerPal_Proton[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/proton.gbapal.lz");
+
+static const u32 gSpeakerIcon_Sage[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/sage.4bpp.lz");
+static const u32 sSpeakerPal_Sage[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/sage.gbapal.lz");
+
+static const u32 gSpeakerIcon_Super_Nerd[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/super_nerd.4bpp.lz");
+static const u32 sSpeakerPal_Super_Nerd[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/super_nerd.gbapal.lz");
+
+static const u32 gSpeakerIcon_Waiter[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/waiter.4bpp.lz");
+static const u32 sSpeakerPal_Waiter[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/waiter.gbapal.lz");
+
+static const u32 gSpeakerIcon_Firebreather[] = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/firebreather.4bpp.lz");
+static const u32 sSpeakerPal_Firebreather[]  = INCBIN_U32("graphics/ui_menus/msgbox/character_heads/firebreather.gbapal.lz");
+
 struct SpeakerData
 {
     const u8 name[SPEAKER_NAME_LENGTH];
@@ -853,6 +935,168 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .name = _("Youngster"),
         .speakerIcon = gSpeakerIcon_Youngster,
         .speakerPal = sSpeakerPal_Youngster,
+    },
+    [SPEAKER_FIREBREATHER] =
+    {
+        .name = _("Firebreather"),
+        .speakerIcon = gSpeakerIcon_Firebreather,
+        .speakerPal = sSpeakerPal_Firebreather,
+    },
+    [SPEAKER_BEAUTY] =
+    {
+        .name = _("Beauty"),
+        .speakerIcon = gSpeakerIcon_Beauty,
+        .speakerPal = sSpeakerPal_Beauty,
+    },
+    [SPEAKER_BIRD_KEEPER] =
+    {
+        .name = _("Bird Keeper"),
+        .speakerIcon = gSpeakerIcon_Bird_Keeper,
+        .speakerPal = sSpeakerPal_Bird_Keeper,
+    },
+    [SPEAKER_BLACK_BELT] =
+    {
+        .name = _("Black Belt"),
+        .speakerIcon = gSpeakerIcon_Black_Belt,
+        .speakerPal = sSpeakerPal_Black_Belt,
+    },
+    [SPEAKER_EUSINE] =
+    {
+        .name = _("Eusine"),
+        .speakerIcon = gSpeakerIcon_Eusine,
+        .speakerPal = sSpeakerPal_Eusine,
+    },
+    [SPEAKER_PROTON] =
+    {
+        .name = _("Proton"),
+        .speakerIcon = gSpeakerIcon_Proton,
+        .speakerPal = sSpeakerPal_Proton,
+    },
+    [SPEAKER_PETREL] =
+    {
+        .name = _("Petrel"),
+        .speakerIcon = gSpeakerIcon_Petrel,
+        .speakerPal = sSpeakerPal_Petrel,
+    },
+    [SPEAKER_ARIANA] =
+    {
+        .name = _("Ariana"),
+        .speakerIcon = gSpeakerIcon_Ariana,
+        .speakerPal = sSpeakerPal_Ariana,
+    },
+    [SPEAKER_ARCHER] =
+    {
+        .name = _("Archer"),
+        .speakerIcon = gSpeakerIcon_Archer,
+        .speakerPal = sSpeakerPal_Archer,
+    },
+    [SPEAKER_COLLECTOR] =
+    {
+        .name = _("Collector"),
+        .speakerIcon = gSpeakerIcon_Collector,
+        .speakerPal = sSpeakerPal_Collector,
+    },
+    [SPEAKER_BILL] =
+    {
+        .name = _("Bill"),
+        .speakerIcon = gSpeakerIcon_Bill,
+        .speakerPal = sSpeakerPal_Bill,
+    },
+    [SPEAKER_BOARDER] =
+    {
+        .name = _("Boarder"),
+        .speakerIcon = gSpeakerIcon_Boarder,
+        .speakerPal = sSpeakerPal_Boarder,
+    },
+    [SPEAKER_JUGGLER] =
+    {
+        .name = _("Juggler"),
+        .speakerIcon = gSpeakerIcon_Juggler,
+        .speakerPal = sSpeakerPal_Juggler,
+    },
+    [SPEAKER_KIMONO_GIRL] =
+    {
+        .name = _("Kimono Girl"),
+        .speakerIcon = gSpeakerIcon_Kimono_Girl,
+        .speakerPal = sSpeakerPal_Kimono_Girl,
+    },
+    [SPEAKER_LASS] =
+    {
+        .name = _("Lass"),
+        .speakerIcon = gSpeakerIcon_Lass,
+        .speakerPal = sSpeakerPal_Lass,
+    },
+    [SPEAKER_MEDIUM] =
+    {
+        .name = _("Medium"),
+        .speakerIcon = gSpeakerIcon_Medium,
+        .speakerPal = sSpeakerPal_Medium,
+    },
+    [SPEAKER_MEDIUM_2] =
+    {
+        .name = _("Medium"),
+        .speakerIcon = gSpeakerIcon_Medium_2,
+        .speakerPal = sSpeakerPal_Medium_2,
+    },
+    [SPEAKER_POKE_MANIAC] =
+    {
+        .name = _("Poke Maniac"),
+        .speakerIcon = gSpeakerIcon_Poke_Maniac,
+        .speakerPal = sSpeakerPal_Poke_Maniac,
+    },
+    [SPEAKER_SAGE] =
+    {
+        .name = _("Sage"),
+        .speakerIcon = gSpeakerIcon_Sage,
+        .speakerPal = sSpeakerPal_Sage,
+    },
+    [SPEAKER_SUPER_NERD] =
+    {
+        .name = _("Super Nerd"),
+        .speakerIcon = gSpeakerIcon_Super_Nerd,
+        .speakerPal = sSpeakerPal_Super_Nerd,
+    },
+    [SPEAKER_ACE_TRAINER_M] =
+    {
+        .name = _("Ace Trainer"),
+        .speakerIcon = gSpeakerIcon_Ace_Trainer_M,
+        .speakerPal = sSpeakerPal_Ace_Trainer_M,
+    },
+    [SPEAKER_ACE_TRAINER_F] =
+    {
+        .name = _("Ace Trainer"),
+        .speakerIcon = gSpeakerIcon_Ace_Trainer_F,
+        .speakerPal = sSpeakerPal_Ace_Trainer_F,
+    },
+    [SPEAKER_LI] =
+    {
+        .name = _("Li"),
+        .speakerIcon = gSpeakerIcon_Li,
+        .speakerPal = sSpeakerPal_Li,
+    },
+    [SPEAKER_AROMA_LADY] =
+    {
+        .name = _("Aroma Lady"),
+        .speakerIcon = gSpeakerIcon_Aroma_Lady,
+        .speakerPal = sSpeakerPal_Aroma_Lady,
+    },
+    [SPEAKER_BATTLE_GIRL] =
+    {
+        .name = _("Battle Girl"),
+        .speakerIcon = gSpeakerIcon_Battle_Girl,
+        .speakerPal = sSpeakerPal_Battle_Girl,
+    },
+    [SPEAKER_MOM] =
+    {
+        .name = _("Mom"),
+        .speakerIcon = gSpeakerIcon_Mom,
+        .speakerPal = sSpeakerPal_Mom,
+    },
+    [SPEAKER_WAITER] =
+    {
+        .name = _("Waiter"),
+        .speakerIcon = gSpeakerIcon_Waiter,
+        .speakerPal = sSpeakerPal_Waiter,
     },
 };
 
