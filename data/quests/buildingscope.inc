@@ -97,7 +97,7 @@ Quest_BuildingScope_StartQuest_Dialogue::
 
 
 Quest_BuildingScope_Employee_Active_Dialogue::
-	msgbox AquaHideout_TestText, MSGBOX_NPC, SPEAKER_KAREN, TAIL_TALK, EMOTE_HAPPY, FALSE
+	msgbox AquaHideout_TestText, MSGBOX_NPC, SPEAKER_GRUNT, TAIL_TALK, EMOTE_HAPPY, FALSE
 	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_0, MSGBOX_NPC, SPEAKER_JASMINE, TAIL_TALK, EMOTE_SWEAT, TRUE
 	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_1, MSGBOX_NPC, SPEAKER_GRUNT, TAIL_WHISPER, EMOTE_ANGRY, FALSE
 	end
