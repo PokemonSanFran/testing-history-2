@@ -96,9 +96,9 @@ static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
     {
         .bg = 0,
         .tilemapLeft = 1,
-        .tilemapTop = 14,
+        .tilemapTop = 13, //originally 14
         .width = 28,
-        .height = 5,
+        .height = 6,
         .paletteNum = 15,
         .baseBlock = 0x234 //originally 0x194
     },
@@ -109,7 +109,7 @@ static const struct WindowTemplate sYesNo_WindowTemplates =
 {
     .bg = 0,
     .tilemapLeft = 21,
-    .tilemapTop = 8,//originally 9
+    .tilemapTop = 7, //originally 9
     .width = 5,
     .height = 4,
     .paletteNum = 15,
@@ -183,7 +183,7 @@ u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed
 
     printer.currentChar = str;
     printer.windowId = windowId;
-    printer.fontId = FONT_SMALL; //fontId;
+    printer.fontId = fontId;
     printer.x = 0;
     printer.y = 0;
     printer.currentX = 0;

@@ -475,7 +475,7 @@ static const u8 sMenuWindowFontColors[][3] =
 #define SPEAKER_ICON_PAL 15
 #define SPEAKER_ICON_PAL_NUM 5
 #define SPEAKER_ICON_X 77
-#define SPEAKER_ICON_Y 86
+#define SPEAKER_ICON_Y 78
 #define SPEAKER_ICON_SUBPRIORITY 0
 #define SPEAKER_ICON_PRIORITY 0
 
@@ -1164,7 +1164,7 @@ static void CreateSpeakerIconSprite(u16 speaker, u8 offset)
 #define WINDOW_Y 109
 #define NEW_WINDOW_WIDTH 240
 #define NEW_WINDOW_HEIGHT 32
-#define WINDOW_TILETOP 74
+#define WINDOW_TILETOP 74 - 1
 #define WINDOW_TILELEFT 0
 
 static const u32 sMsgbox_Top_0[] = INCBIN_U32("graphics/ui_menus/msgbox/msgbox_top_smallest_0.4bpp.lz");
