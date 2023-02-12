@@ -98,9 +98,9 @@ static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
         .tilemapLeft = 1,
         .tilemapTop = 14,
         .width = 28,
-        .height = 6,
+        .height = 5,
         .paletteNum = 15,
-        .baseBlock = 0x194
+        .baseBlock = 0x234 //originally 0x194
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -109,7 +109,7 @@ static const struct WindowTemplate sYesNo_WindowTemplates =
 {
     .bg = 0,
     .tilemapLeft = 21,
-    .tilemapTop = 9,
+    .tilemapTop = 8,//originally 9
     .width = 5,
     .height = 4,
     .paletteNum = 15,
@@ -183,7 +183,7 @@ u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed
 
     printer.currentChar = str;
     printer.windowId = windowId;
-    printer.fontId = fontId;
+    printer.fontId = FONT_SMALL; //fontId;
     printer.x = 0;
     printer.y = 0;
     printer.currentX = 0;
@@ -328,7 +328,7 @@ static void WindowFunc_DrawStandardFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u
 }
 
 static void WindowFunc_DrawDialogueFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
-{   /*/          _
+{   //asdf      _
     //Top Left |
     FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 5, tilemapLeft - 1, tilemapTop, 1, 1, DLG_WINDOW_PALETTE_NUM);
     //Left Bar | <-
@@ -344,7 +344,7 @@ static void WindowFunc_DrawDialogueFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u
     FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(DLG_WINDOW_BASE_TILE_NUM + 12), tilemapLeft, tilemapTop + height, width, 1, DLG_WINDOW_PALETTE_NUM);
     //Bottom Right _|
     FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(DLG_WINDOW_BASE_TILE_NUM + 13), tilemapLeft + width, tilemapTop + height, 1, 1, DLG_WINDOW_PALETTE_NUM);
-    /*/
+    //
 }
 
 static void WindowFunc_ClearStdWindowAndFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
@@ -650,6 +650,8 @@ void DrawStdFrameWithCustomTile(u8 windowId, bool8 copyToVram, u16 baseTileNum)
 
 static void WindowFunc_DrawStdFrameWithCustomTileAndPalette(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
 {
+    //Yesno box
+    //Top Left |
     FillBgTilemapBufferRect(bg,
                             sTileNum + 0,
                             tilemapLeft - 1,
