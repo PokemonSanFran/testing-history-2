@@ -4,11 +4,7 @@ const SABRINA = 2
 script AlwaysWatchingWazowski_FloorWelcome_Script{
         lock
         setvar(VAR_SALESFORCETOWER_PRODUCTION_STATE,STEPPED_INTO_SABRINA_ROOM)
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_WelcomePlayer)
-        closemessage
-        callnative(ClearMugshot)
+        msgbox(gText_AlwaysWatchingWazowski_WelcomePlayer,MSGBOX_DEFAULT,SPEAKER_SABRINA)
         releaseall
         end
 }
@@ -32,47 +28,31 @@ script AlwaysWatchingWazowski_MovePlayerIntoPlace_Script{
 }
 
 script AlwaysWatchingWazowski_Intro_Dialogue{
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_IImagineAllTheScreens)
+        msgbox(gText_AlwaysWatchingWazowski_IImagineAllTheScreens,MSGBOX_DEFAULT,SPEAKER_SABRINA)
 
         if(var(VAR_SOMA_STATE) > START_THE_GANGS_ALL_HERE){
-            msgbox(gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime)
+            msgbox(gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime,MSGBOX_DEFAULT,SPEAKER_SABRINA)
         }   else {
-            msgbox(gText_AlwaysWatchingWazowski_IWishYouHadVisited)
+            msgbox(gText_AlwaysWatchingWazowski_IWishYouHadVisited,MSGBOX_DEFAULT,SPEAKER_SABRINA)
         }
     goto(AlwaysWatchingWazowski_HowDidYouKnow_Dialogue)
 }
 
 script AlwaysWatchingWazowski_HowDidYouKnow_Dialogue{
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_WaitHowDidYouKnow)
-        closemessage
+        msgbox(gText_AlwaysWatchingWazowski_WaitHowDidYouKnow,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_TALK,EMOTE_CONFUSE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_LookAroundDoYouThink)
-        msgbox(gText_AlwaysWatchingWazowski_SecurityUsedToAlsoPerform)
+        msgbox(gText_AlwaysWatchingWazowski_LookAroundDoYouThink,MSGBOX_DEFAULT,SPEAKER_SABRINA)
+        msgbox(gText_AlwaysWatchingWazowski_SecurityUsedToAlsoPerform,MSGBOX_DEFAULT,SPEAKER_SABRINA)
         goto(AlwaysWatchingWazowski_MarketingandProduction_Dialogue)
 }
 script AlwaysWatchingWazowski_MarketingandProduction_Dialogue{
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_OhOkayYeah)
+        msgbox(gText_AlwaysWatchingWazowski_OhOkayYeah,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_WeDevelopContent)
+        msgbox(gText_AlwaysWatchingWazowski_WeDevelopContent,MSGBOX_DEFAULT,SPEAKER_SABRINA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_WhatDoYouMeanMe)
+        msgbox(gText_AlwaysWatchingWazowski_WhatDoYouMeanMe,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_YouCanSeeForYourself)
-        callnative(ClearMugshot)
+        msgbox(gText_AlwaysWatchingWazowski_YouCanSeeForYourself,MSGBOX_DEFAULT,SPEAKER_SABRINA)
         closemessage
         goto(AlwaysWatchingWazowski_ProgramCutscene_Script)
 }
@@ -80,31 +60,18 @@ script AlwaysWatchingWazowski_ProgramCutscene_Script{
         applymovement(PLAYER,Common_Movement_FaceLeft)
         fadescreen(FADE_TO_BLACK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_OurBiggestContentInitiative)
+        msgbox(gText_AlwaysWatchingWazowski_OurBiggestContentInitiative,MSGBOX_DEFAULT,SPEAKER_SABRINA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_WhatDoYouMean)
+        msgbox(gText_AlwaysWatchingWazowski_WhatDoYouMean,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_TensOfThousandsOfKids)
+        msgbox(gText_AlwaysWatchingWazowski_TensOfThousandsOfKids,MSGBOX_DEFAULT,SPEAKER_SABRINA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_ToPutItSimply)
+        msgbox(gText_AlwaysWatchingWazowski_ToPutItSimply,MSGBOX_DEFAULT,SPEAKER_SABRINA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_HistoricallyOurInRegion)
+        msgbox(gText_AlwaysWatchingWazowski_HistoricallyOurInRegion,MSGBOX_DEFAULT,SPEAKER_SABRINA)
 
         if (var(VAR_PSFROUTE9_STATE) > HAS_NOT_MET_ARCHER){
-            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-                callnative(DrawMugshot)
-                msgbox(gText_AlwaysWatchingWazowski_WaitHesDoingTheLeagueChallenge)
-                callnative(ClearMugshot)
+                msgbox(gText_AlwaysWatchingWazowski_WaitHesDoingTheLeagueChallenge,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         }
     closemessage
         fadescreen(FADE_FROM_BLACK)
@@ -113,25 +80,20 @@ script AlwaysWatchingWazowski_ProgramCutscene_Script{
 }
 script AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue{
         applymovement(PLAYER,Common_Movement_FaceUp)
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_IImagineThisHasBeenVery)
+        msgbox(gText_AlwaysWatchingWazowski_IImagineThisHasBeenVery,MSGBOX_DEFAULT,SPEAKER_SABRINA)
 
         applymovement(SABRINA,Common_Movement_FaceUp)
 
         fadedefaultbgm
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_AlwaysWatchingWazowski_SorryToBugYou)
-        callnative(ClearMugshot)
-        closemessage    
+        msgbox(gText_AlwaysWatchingWazowski_SorryToBugYou,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        closemessage
         releaseall
         end
 }
 script AlwaysWatchingWazowski_IgnoringPlayer_Dialogue{
     lockall    
-        msgbox(gText_AlwaysWatchingWazowski__IgnorePlayer)
+        msgbox(gText_AlwaysWatchingWazowski__IgnorePlayer,SPEAKER_MARKETING_STAFF)
         closemessage
         releaseall
         end

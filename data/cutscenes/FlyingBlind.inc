@@ -41,35 +41,27 @@ FlyingBlind_CheckFainted_Script_3:
 	goto FlyingBlind_CheckFainted_Script_2
 
 
+FlyingBlind_DetermineLocation_Script::
+	special GetCurrentMap
+	setvar VAR_DYNAMIC_SPEAKER, SPEAKER_SIEBOLD
+	return
+
+
 FlyingBlind_Dialogue::
 	lockall
+	call FlyingBlind_DetermineLocation_Script
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	msgbox gText_FlyingBlind_NotSoEasy
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_FlyingBlind_GuessingYouSaw
-	callnative ClearMugshot
-	msgbox gText_FlyingBlind_NotJustYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_FlyingBlind_Karl
-	callnative ClearMugshot
-	msgbox gText_FlyingBlind_YouReallyBrandNew
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_FlyingBlind_WaitTheFogHas
-	callnative ClearMugshot
-	msgbox gText_FlyingBlind_NotVeryWell
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_FlyingBlind_NoResponse
-	callnative ClearMugshot
-	msgbox gText_FlyingBlind_EverSinceYouPeople
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_FlyingBlind_GottaFindSomebody
-	msgbox gText_FlyingBlind_ThankYouSoMuch
-	callnative ClearMugshot
+	msgbox gText_FlyingBlind_NotSoEasy, , VAR_DYNAMIC_SPEAKER, , EMOTE_LAUGH
+	msgbox gText_FlyingBlind_GuessingYouSaw, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_FlyingBlind_NotJustYou, , VAR_DYNAMIC_SPEAKER
+	msgbox gText_FlyingBlind_Karl, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_FlyingBlind_YouReallyBrandNew, , VAR_DYNAMIC_SPEAKER
+	msgbox gText_FlyingBlind_WaitTheFogHas, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_FlyingBlind_NotVeryWell, , VAR_DYNAMIC_SPEAKER
+	msgbox gText_FlyingBlind_NoResponse, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_FlyingBlind_EverSinceYouPeople, , VAR_DYNAMIC_SPEAKER
+	msgbox gText_FlyingBlind_GottaFindSomebody, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_THOUGHT
+	msgbox gText_FlyingBlind_ThankYouSoMuch, , SPEAKER_ZOEY
 	setvar VAR_FAINTED_FOG_STATE, 2
 	call Homeless_CheckMoney_Script
 	closemessage
@@ -122,9 +114,9 @@ gText_FlyingBlind_EverSinceYouPeople::
 	.string "out.$"
 
 gText_FlyingBlind_GottaFindSomebody::
-	.string "(I've gotta find somebody that has\n"
+	.string "I've gotta find somebody that has\n"
 	.string "Go-Goggles, then. I don't have time to\l"
-	.string "wait!)$"
+	.string "wait!$"
 
 gText_FlyingBlind_ThankYouSoMuch::
 	.string "Thank you so much for your help.$"

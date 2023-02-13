@@ -13,9 +13,7 @@ script LetsFixThis_EliteVideo_Dialogue {
 
         //PSF TODO show video
 
-        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_PeopleOf)
+        msgbox(gText_LetsFixThis_PeopleOf,,SPEAKER_SIEBOLD)
 
         setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
         callnative(DrawMugshot)

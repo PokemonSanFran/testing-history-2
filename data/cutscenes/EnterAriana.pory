@@ -62,7 +62,7 @@ script EnterAriana_PreventPlayerProgress_Dialogue{
 
     applymovement(PLAYER,Common_Movement_FaceDown)
     waitmovement(PLAYER)
-    msgbox(gText_EnterAriana_NoCutting)
+    msgbox(gText_EnterAriana_NoCutting,MSGBOX_DEFAULT,SPEAKER_RESIDENT_A)
     closemessage
 
     applymovement(PLAYER,Common_Movement_WalkRight)
@@ -73,30 +73,18 @@ script EnterAriana_PreventPlayerProgress_Dialogue{
 
 script EnterAriana_Intro_Dialogue{
     lockall
-        msgbox(gText_EnterAriana_WhoTheHell)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_NoSorry)
-        callnative(ClearMugshot)
-        msgbox(gText_EnterAriana_TryingToHelpEverybody)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_ImNotInLine)
-        callnative(ClearMugshot)
-        msgbox(gText_EnterAriana_SwearToArceus)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_WaitListen)
-        callnative(ClearMugshot)
-        msgbox(gText_EnterAriana_NoPunk)
+        msgbox(gText_EnterAriana_WhoTheHell,MSGBOX_DEFAULT,SPEAKER_SIARL,,EMOTE_ANGRY)
+        msgbox(gText_EnterAriana_NoSorry,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                msgbox(gText_EnterAriana_TryingToHelpEverybody,MSGBOX_DEFAULT,SPEAKER_SIARL,,EMOTE_ANGRY)
+        msgbox(gText_EnterAriana_ImNotInLine,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                msgbox(gText_EnterAriana_SwearToArceus,MSGBOX_DEFAULT,SPEAKER_SIARL,TAIL_SHOUT,EMOTE_ANGRY)
+        msgbox(gText_EnterAriana_WaitListen,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_SHOUT)
+                msgbox(gText_EnterAriana_NoPunk,MSGBOX_DEFAULT,SPEAKER_SIARL,TAIL_SHOUT,EMOTE_ANGRY)
         applymovement(ARIANA,Common_Movement_FaceDown)
         playbgm(MUS_RG_ENCOUNTER_ROCKET,FALSE)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_HoldOn)
+        msgbox(gText_EnterAriana_HoldOn,MSGBOX_DEFAULT,SPEAKER_ARIANA)
         closemessage
-        callnative(ClearMugshot)
-        applymovement(ARIANA,EnterAriana_ArianaWalkToPlayer_Movement)
+                applymovement(ARIANA,EnterAriana_ArianaWalkToPlayer_Movement)
         waitmovement(ARIANA)
         applymovement(SIARL,Common_Movement_FaceRight)
         waitmovement(SIARL)
@@ -104,70 +92,46 @@ script EnterAriana_Intro_Dialogue{
 }
 
 script EnterAriana_Explain_Dialogue{
-    setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_DidYouListen)
+        msgbox(gText_EnterAriana_DidYouListen,MSGBOX_DEFAULT,SPEAKER_ARIANA)
         closemessage
-        callnative(ClearMugshot)
-        applymovement(SIARL,Common_Movement_FaceDown)
+                applymovement(SIARL,Common_Movement_FaceDown)
         waitmovement(SIARL)
         applymovement(SIARL,Common_Movement_Delay48)
         waitmovement(SIARL)
         applymovement(SIARL,Common_Movement_FaceRight)
         waitmovement(SIARL)
-        msgbox(gText_EnterAriana_TryingToCut)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_WhatYouHeard)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_EnterAriana_TryingToCut,MSGBOX_DEFAULT,SPEAKER_SIARL,,EMOTE_ANGRY)
+        msgbox(gText_EnterAriana_WhatYouHeard,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
         applymovement(ARIANA,Common_Movement_FaceDown)
         waitmovement(ARIANA)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_WhatProblem)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_AsshatInterrupted)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_EnterAriana_WhatProblem,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+        msgbox(gText_EnterAriana_AsshatInterrupted,MSGBOX_DEFAULT,SPEAKER_ZOEY,,EMOTE_ANGRY)
+                closemessage
         goto(EnterAriana_Apology_Dialogue)
 }
 
 script EnterAriana_Apology_Dialogue{
     applymovement(ARIANA,Common_Movement_FaceLeft)
         waitmovement(ARIANA)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_ShouldntTheCones)
-        callnative(ClearMugshot)
-        msgbox(gText_EnterAriana_IForgotToSet)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_BeratedSomebody)
-        callnative(ClearMugshot)
-        msgbox(gText_EnterAriana_Sorry)
+        msgbox(gText_EnterAriana_ShouldntTheCones,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                msgbox(gText_EnterAriana_IForgotToSet,MSGBOX_DEFAULT,SPEAKER_SIARL,TAIL_WHISPER,EMOTE_SWEAT)
+        msgbox(gText_EnterAriana_BeratedSomebody,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                msgbox(gText_EnterAriana_Sorry,MSGBOX_DEFAULT,SPEAKER_SIARL)
         closemessage
         applymovement(ARIANA,Common_Movement_FaceDown)
         waitmovement(ARIANA)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_WhatsYourName)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_EnterAriana_WhatsYourName,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
         applymovement(ARIANA,Common_Movement_FaceLeft)
         waitmovement(ARIANA)
         applymovement(SIARL,Common_Movement_FaceDown)
         waitmovement(SIARL)
-        msgbox(gText_EnterAriana_IGotHeated)
-        callnative(ClearMugshot)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_DontRuin)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_EnterAriana_IGotHeated,,SPEAKER_SIARL)
+                msgbox(gText_EnterAriana_DontRuin,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
         applymovement(SIARL,Common_Movement_FaceRight)
-        msgbox(gText_EnterAriana_ShouldBeNear)
+        msgbox(gText_EnterAriana_ShouldBeNear,,SPEAKER_SIARL)
         closemessage
 
 
@@ -179,11 +143,8 @@ script EnterAriana_Apology_Dialogue{
         waitmovement(SIARL)
 
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_NeedToWalk)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_EnterAriana_NeedToWalk,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
         //Debug_Hop:
         //setobjectxy(ARIANA,4,25) 
 
@@ -194,32 +155,15 @@ script EnterAriana_Apology_Dialogue{
 }
 
 script EnterAriana_ExplainHope_Dialogue{
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_WhatIsEverybody)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_Hope)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_WaitHope)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_ICanGet)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_ThatsAmazing)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_CityIsntSuperChill)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_ButYoureHelping)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_YoureNotFromHere)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_EnterAriana_WhatIsEverybody,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_EnterAriana_Hope,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+        msgbox(gText_EnterAriana_WaitHope,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_EnterAriana_ICanGet,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+        msgbox(gText_EnterAriana_ThatsAmazing,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_EnterAriana_CityIsntSuperChill,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+        msgbox(gText_EnterAriana_ButYoureHelping,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_EnterAriana_YoureNotFromHere,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
         //Debug_Cones:
         applymovement(ARIANA,EnterAriana_PlaceConesA_Movement)
         waitmovement(ARIANA)
@@ -232,11 +176,8 @@ script EnterAriana_ExplainHope_Dialogue{
         special(DrawWholeMapView)
         applymovement(ARIANA,EnterAriana_PlaceConesC_Movement)
         waitmovement(ARIANA)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_BetweenTheCones)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_EnterAriana_BetweenTheCones,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
         call(EnterAriana_MoveLine_Script)
         goto(EnterAriana_GiveKeystone_Dialogue)
 }
@@ -258,23 +199,14 @@ script EnterAriana_MoveLine_Script{
 script EnterAriana_GiveKeystone_Dialogue{
         applymovement(ARIANA,EnterAriana_FacePlayer_Movement)
         waitmovement(ARIANA)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_ThereYouGo)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_AGym)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_WellGoodLuck)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_EnterAriana_ThereYouGo,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+        msgbox(gText_EnterAriana_AGym,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_EnterAriana_WellGoodLuck,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
         applymovement(ARIANA,Common_Movement_WalkInPlaceUp)
         waitmovement(ARIANA)
         giveitem(ITEM_MEGA_RING)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_IfYouHaveThat)
+        msgbox(gText_EnterAriana_IfYouHaveThat,MSGBOX_DEFAULT,SPEAKER_ARIANA)
 
         special(CheckMegaEvolutionPartyMember)
 
@@ -292,28 +224,17 @@ script EnterAriana_GiveKeystone_Dialogue{
                 case 4: bufferpartymonnick(0,4)
                 case 5: bufferpartymonnick(0,5)
             }
-
-            setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-                callnative(DrawMugshot)
-
                 if (var(VAR_TEMP_2) != 1){
-                    msgbox(gTextEnterAriana_CanMegaEvolve)
+                    msgbox(gTextEnterAriana_CanMegaEvolve,MSGBOX_DEFAULT,SPEAKER_ARIANA)
                 }
                 else{
-                    msgbox(gTextEnterAriana_CanMegaEvolveSomeday)
+                    msgbox(gTextEnterAriana_CanMegaEvolveSomeday,MSGBOX_DEFAULT,SPEAKER_ARIANA)
                 }
         }
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_ThankYouSo)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_HopeThatMakes)
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_EnterAriana_IGottaGo)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_EnterAriana_ThankYouSo,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_EnterAriana_HopeThatMakes,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+        msgbox(gText_EnterAriana_IGottaGo,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
         applymovement(ARIANA,EnterAriana_WalkAway_Movement)
         waitmovement(ARIANA)
         removeobject(ARIANA)
@@ -325,7 +246,7 @@ script EnterAriana_GiveKeystone_Dialogue{
 }
 
 script EnterAriana_GruntApologize_Dialogue {
-        msgbox(gText_EnterAriana_SorryAgain,MSGBOX_NPC)
+        msgbox(gText_EnterAriana_SorryAgain,MSGBOX_NPC,SPEAKER_SIARL)
         end
 }
 

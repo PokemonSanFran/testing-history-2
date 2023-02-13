@@ -95,28 +95,18 @@ HeresHowThisIsGoingToGo_ExplainLeagueDialogue::
 	applymovement 2, Common_Movement_FaceUp
 	applymovement 3, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_HeresHowThisIsGoingToGo_CongratulationsOnAll
+	msgbox gText_HeresHowThisIsGoingToGo_CongratulationsOnAll, , SPEAKER_ROSE
 	callnative ClearMugshot
 	msgbox gText_HeresHowThisIsGoingToGo_WooYay
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_HeresHowThisIsGoingToGo_ImSureNone
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_HeresHowThisIsGoingToGo_WaitIDid
+	msgbox gText_HeresHowThisIsGoingToGo_ImSureNone, , SPEAKER_ROSE
+	msgbox gText_HeresHowThisIsGoingToGo_WaitIDid, , SPEAKER_BIANCA
 	callnative ClearMugshot
 	msgbox gText_HeresHowThisIsGoingToGo_DotDotDot
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_HeresHowThisIsGoingToGo_SoIllGoOver
+	msgbox gText_HeresHowThisIsGoingToGo_SoIllGoOver, , SPEAKER_ROSE
 	closemessage
 	callnative ClearMugshot
 	applymovement 1, Common_Movement_FaceLeft
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_HeresHowThisIsGoingToGo_YourGroupsAnd
+	msgbox gText_HeresHowThisIsGoingToGo_YourGroupsAnd, , SPEAKER_ROSE
 	callnative ClearMugshot
 	closemessage
 	fadescreen FADE_TO_BLACK

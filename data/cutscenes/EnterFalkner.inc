@@ -7,20 +7,14 @@ EnterFalkner_StartGymBattle_ObjectSetup_Script::
 EnterFalkner_PutMeatInOven_Dialogue::
 	lockall
 	setvar VAR_GYM_1_STATE, GYM_SAVE_BEFORE_LEADER
-	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
-	callnative DrawMugshot
-	msgbox gText_EnterFalkner_OneMoreLadle
-	callnative ClearMugshot
+	msgbox gText_EnterFalkner_OneMoreLadle, , SPEAKER_FALKNER
 	closemessage
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
 	applymovement 1, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	closemessage
-	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
-	callnative DrawMugshot
-	msgbox gText_EnterFalkner_MeatsInOven, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterFalkner_MeatsInOven, MSGBOX_NPC, SPEAKER_FALKNER
 	closemessage
 	call EnterFalkner_DetermineMovementToBattlefield_Script
 	goto EnterFalkner_Intro_Dialogue
@@ -51,11 +45,8 @@ EnterFalkner_DetermineMovementToBattlefield_Script_5:
 
 EnterFalkner_Intro_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
-	callnative DrawMugshot
-	msgbox gText_EnterFalkner_MyLatestCreation
+	msgbox gText_EnterFalkner_MyLatestCreation, , SPEAKER_FALKNER
 	msgbox gText_EnterFalkner_YourSenseOfTaste
-	callnative ClearMugshot
 	call Common_EventScript_SaveGame
 	closemessage
 	goto EnterFalkner_StartGymBattle_Script
@@ -64,8 +55,6 @@ EnterFalkner_Intro_Dialogue::
 
 EnterFalkner_StartGymBattle_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
 	trainerbattle_single TRAINER_ROXANNE_1, gText_EnterFalkner_IThinkYouTalk, gText_EnterFalkner_WoahSuperSour, EnterFalkner_FalknerDefeated_Script, NO_MUSIC
 	return
 
@@ -75,17 +64,11 @@ EnterFalkner_FalknerDefeated_Script::
 	setflag FLAG_BADGE01_GET
 	setvar VAR_GYM_1_STATE, GYM_DEFEATED_LEADER
 	setvar VAR_FALKNER_STATE, BATTLE_1_COMPLETE
-	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
-	callnative DrawMugshot
-	msgbox gText_EnterFalkner_ThatWasDelicious
-	callnative ClearMugshot
+	msgbox gText_EnterFalkner_ThatWasDelicious, , SPEAKER_FALKNER
 	msgbox gText_EnterFalkner_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM01
-	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
-	callnative DrawMugshot
-	msgbox gText_EnterFalkner_OhTheMeat
-	callnative ClearMugshot
+	msgbox gText_EnterFalkner_OhTheMeat, , SPEAKER_FALKNER
 	closemessage
 	call EnterFalkner_DetermineMovementBackToStove_Script
 	waitmovement 0
@@ -110,10 +93,7 @@ EnterFalkner_DetermineMovementBackToStove_Script_1:
 EnterFalkner_PostDefeat1_Dialogue::
 	lockall
 	setvar VAR_GYM_1_STATE, GYM_DEFEATED_LEADER
-	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
-	callnative DrawMugshot
-	msgbox gText_EnterFalkner_WithThatBadge, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterFalkner_WithThatBadge, MSGBOX_NPC, SPEAKER_FALKNER
 	applymovement 1, Common_Movement_FaceUp
 	waitmovement 0
 	closemessage
@@ -123,10 +103,7 @@ EnterFalkner_PostDefeat1_Dialogue::
 
 EnterFalkner_PostDefeat2_Dialogue::
 	lockall
-	setvar VAR_MUGSHOT, MUGSHOT_FALKNER
-	callnative DrawMugshot
-	msgbox gText_EnterFalkner_LetsCookTogether
-	callnative ClearMugshot
+	msgbox gText_EnterFalkner_LetsCookTogether, , SPEAKER_FALKNER
 	closemessage
 	releaseall
 	end

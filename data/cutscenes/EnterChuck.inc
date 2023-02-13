@@ -21,32 +21,16 @@ EnterChuck_Event_Script_4:
 
 EnterChuck_Intro_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_AintItBeautiful, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_DoYouKnow
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_NoWh
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_IllTellYouWhy
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_YaKnowWhat
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_WeWould
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_WeWouldBlowThem
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_ThatRawPower
-	callnative ClearMugshot
+	msgbox gText_EnterChuck_AintItBeautiful, MSGBOX_NPC, SPEAKER_CHUCK
+	msgbox gText_EnterChuck_DoYouKnow, MSGBOX_DEFAULT, SPEAKER_CHUCK
+	msgbox gText_EnterChuck_NoWh, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterChuck_IllTellYouWhy, MSGBOX_DEFAULT, SPEAKER_CHUCK, TAIL_SHOUT
+	msgbox gText_EnterChuck_YaKnowWhat, MSGBOX_DEFAULT, SPEAKER_CHUCK
+	msgbox gText_EnterChuck_WeWould, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterChuck_WeWouldBlowThem, MSGBOX_DEFAULT, SPEAKER_CHUCK, TAIL_SHOUT, EMOTE_HAPPY
+	msgbox gText_EnterChuck_ThatRawPower, MSGBOX_DEFAULT, SPEAKER_CHUCK
 	setvar VAR_GYM_5_STATE, GYM_SAVE_BEFORE_LEADER
+	closemessage
 	call Common_EventScript_SaveGame
 	closemessage
 	goto EnterChuck_StartBattle_Script
@@ -54,8 +38,6 @@ EnterChuck_Intro_Dialogue::
 
 
 EnterChuck_StartBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
 	trainerbattle_single TRAINER_NORMAN_1, gText_EnterChuck_NowImGonnaShow, gText_EnterChuck_ManDown, EnterChuck_ChuckDefeated_Script, NO_MUSIC
 	return
 
@@ -65,10 +47,8 @@ EnterChuck_ChuckDefeated_Script::
 	setflag FLAG_BADGE05_GET
 	setvar VAR_GYM_5_STATE, GYM_DEFEATED_LEADER
 	setvar VAR_CHUCK_STATE, BATTLE_1_COMPLETE
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_YoureNoJoke
-	callnative ClearMugshot
+	msgbox gText_EnterChuck_YoureNoJoke, MSGBOX_DEFAULT, SPEAKER_CHUCK
+	closemessage
 	msgbox gText_EnterChuck_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM05
@@ -82,10 +62,7 @@ EnterChuck_ChuckDefeated_Script::
 EnterChuck_PostDefeat1_Dialogue::
 	setvar VAR_GYM_5_STATE, GYM_EXPLAINED_BADGE_AND_TM
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_MaybeMyDefense, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterChuck_MaybeMyDefense, MSGBOX_NPC, SPEAKER_CHUCK
 	closemessage
 	release
 	end
@@ -93,10 +70,7 @@ EnterChuck_PostDefeat1_Dialogue::
 
 EnterChuck_PostDefeat2_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_CHUCK
-	callnative DrawMugshot
-	msgbox gText_EnterChuck_ManTheCompetition, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterChuck_ManTheCompetition, MSGBOX_NPC, SPEAKER_CHUCK
 	closemessage
 	release
 	end

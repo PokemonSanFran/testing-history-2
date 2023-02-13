@@ -36,82 +36,43 @@ script LetsFinishThis_MovePlayer_Script {
 script LetsFinishThis_Debrief_Dialogue {
     lock
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_IDontThinkIm)
+        msgbox(gText_LetsFinishThis_IDontThinkIm,,SPEAKER_DRASNA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_ThatPartDoesnt)
+        msgbox(gText_LetsFinishThis_ThatPartDoesnt,,SPEAKER_SIEBOLD)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_ButInnocentPeople)
+        msgbox(gText_LetsFinishThis_ButInnocentPeople,,SPEAKER_MALVA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_PerfevtlySane)
+        msgbox(gText_LetsFinishThis_PerfevtlySane,,SPEAKER_WIKSTROM)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_ButTheyWerentAlways)
+        msgbox(gText_LetsFinishThis_ButTheyWerentAlways,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_HasAlwaysBeenRuthless)
+        msgbox(gText_LetsFinishThis_HasAlwaysBeenRuthless,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_ThatsWhatIMean)
+        msgbox(gText_LetsFinishThis_ThatsWhatIMean,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_PerhapsDesperate)
+        msgbox(gText_LetsFinishThis_PerhapsDesperate,,SPEAKER_SIEBOLD)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_MaybeNowItsTime)
+        msgbox(gText_LetsFinishThis_MaybeNowItsTime,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_NowMightBeTheTime)
+        msgbox(gText_LetsFinishThis_NowMightBeTheTime,,SPEAKER_DRASNA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_PublicSentimentIsStrong)
+        msgbox(gText_LetsFinishThis_PublicSentimentIsStrong,,SPEAKER_MALVA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_EvenIfWePullIt)
+        msgbox(gText_LetsFinishThis_EvenIfWePullIt,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_TheyCameForTheKings)
+        msgbox(gText_LetsFinishThis_TheyCameForTheKings,,SPEAKER_WIKSTROM)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_SoBreakInto)
+        msgbox(gText_LetsFinishThis_SoBreakInto,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_APublicConfession)
+        msgbox(gText_LetsFinishThis_APublicConfession,,SPEAKER_SIEBOLD)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_IWasBeingSarcastic)
+        msgbox(gText_LetsFinishThis_IWasBeingSarcastic,,SPEAKER_ARCHER,TAIL_SHOUT,EMOTE_SHOCK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_TheHardestPartOfThatPlan)
+        msgbox(gText_LetsFinishThis_TheHardestPartOfThatPlan,,SPEAKER_WIKSTROM)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_TwoOldCoots)
+        msgbox(gText_LetsFinishThis_TwoOldCoots,,SPEAKER_MALVA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_TheWarpPanels)
-        callnative(ClearMugshot)
+        msgbox(gText_LetsFinishThis_TheWarpPanels,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         closemessage
         goto(LetsFinishThis_GoToFlashback_Script)
 }
@@ -127,29 +88,21 @@ script LetsFinishThis_GoToFlashback_Script {
 script LetsFinishThis_StartPlanning_Dialogue {
     lock
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_NobodyHasSeen)
+        msgbox(gText_LetsFinishThis_NobodyHasSeen,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_WhatAbout)
-        callnative(ClearMugshot)
+        msgbox(gText_LetsFinishThis_WhatAbout,,SPEAKER_SIEBOLD)
         closemessage
 
         applymovement(PLAYER, Common_Movement_FaceDown)
         applymovement(WIKSTROM, LetsFinishThis_WalkToPlayer)
         waitmovement(WIKSTROM)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFinishThis_WereOntoSomething)
-        callnative(ClearMugshot)
+        msgbox(gText_LetsFinishThis_WereOntoSomething,,SPEAKER_WIKSTROM)
         closemessage
 
         applymovement(WIKSTROM, LetsFinishThis_WalkAway)
         waitmovement(WIKSTROM)
-        
+
         setvar(VAR_STORYLINE_STATE,STORY_BEFORE_SABRINA_BREAKIN)
 
         release

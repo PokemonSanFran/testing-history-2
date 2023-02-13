@@ -688,7 +688,6 @@ struct SpeakerData
     const u32 *speakerPal;
 };
 
-#define NUM_SPEAKERS 200
 static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
     [SPEAKER_DEFAULT] =
     {
@@ -1097,6 +1096,318 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .name = _("Waiter"),
         .speakerIcon = gSpeakerIcon_Waiter,
         .speakerPal = sSpeakerPal_Waiter,
+    },
+    [SPEAKER_NEWS] =
+    {
+        .name = _("News"),
+        .speakerIcon = gSpeakerIcon_Rocket_Grunt_M,
+        .speakerPal = sSpeakerPal_Rocket_Grunt_M,
+    },
+    [SPEAKER_ZOEY] =
+    {
+        .name = _("Zoey"),
+        .speakerIcon = gSpeakerIcon_Mom,
+        .speakerPal = sSpeakerPal_Mom,
+    },
+    [SPEAKER_BIANCA] = 
+    {
+        .name = _("Bianca"),
+        .speakerIcon = gSpeakerIcon_Silver,
+        .speakerPal = sSpeakerPal_Silver,
+    },
+    [SPEAKER_BART] =
+    {
+        .name = _("B.A.R.T."),
+        .speakerIcon = gSpeakerIcon_Policeman,
+        .speakerPal = sSpeakerPal_Policeman,
+    },
+    [SPEAKER_MARKETING_STAFF] =
+    {
+        .name = _("Marketing Staff"),
+        .speakerIcon = gSpeakerIcon_Collector,
+        .speakerPal = sSpeakerPal_Collector,
+    },
+    [SPEAKER_ANNOUNCER] = 
+    {
+        .name = _("Announcer"),
+        .speakerIcon = gSpeakerIcon_Collector,
+        .speakerPal = sSpeakerPal_Collector,
+    },
+    [SPEAKER_MALVA] =
+    {
+        .name = _("Malva"),
+        .speakerIcon = gSpeakerIcon_Will,
+        .speakerPal = sSpeakerPal_Will,
+    },
+    [SPEAKER_CROWD_A] =
+    {
+        .name = _("Crowd Member"),
+        .speakerIcon = gSpeakerIcon_Ace_Trainer_M,
+        .speakerPal = sSpeakerPal_Ace_Trainer_M,
+    },
+    [SPEAKER_CROWD_B] =
+    {
+        .name = _("Crowd Member"),
+        .speakerIcon = gSpeakerIcon_Ace_Trainer_F,
+        .speakerPal = sSpeakerPal_Ace_Trainer_F,
+    },
+    [SPEAKER_CROWD_C] =
+    {
+        .name = _("Crowd Member"),
+        .speakerIcon = gSpeakerIcon_Old_Man,
+        .speakerPal = sSpeakerPal_Old_Man,
+    },
+    [SPEAKER_CROWD_D] =
+    {
+        .name = _("Crowd Member"),
+        .speakerIcon = gSpeakerIcon_Woman,
+        .speakerPal = sSpeakerPal_Woman,
+    },
+    [SPEAKER_RUPERT] =
+    {
+        .name = _("Rupert"),
+        .speakerIcon = gSpeakerIcon_Kid,
+        .speakerPal = sSpeakerPal_Kid,
+    },
+    [SPEAKER_OAK] =
+    {
+        .name = _("Oak"),
+        .speakerIcon = gSpeakerIcon_Elm,
+        .speakerPal = sSpeakerPal_Elm,
+    },
+        [SPEAKER_RESIDENT_A] =
+    {
+        .name = _("Resident"),
+        .speakerIcon = gSpeakerIcon_Ace_Trainer_M,
+        .speakerPal = sSpeakerPal_Ace_Trainer_M,
+    },
+    [SPEAKER_RESIDENT_B] =
+    {
+        .name = _("Resident"),
+        .speakerIcon = gSpeakerIcon_Ace_Trainer_F,
+        .speakerPal = sSpeakerPal_Ace_Trainer_F,
+    },
+    [SPEAKER_RESIDENT_C] =
+    {
+        .name = _("Resident"),
+        .speakerIcon = gSpeakerIcon_Old_Man,
+        .speakerPal = sSpeakerPal_Old_Man,
+    },
+    [SPEAKER_RESIDENT_D] =
+    {
+        .name = _("Resident"),
+        .speakerIcon = gSpeakerIcon_Woman,
+        .speakerPal = sSpeakerPal_Woman,
+    },
+    [SPEAKER_SIARL] = 
+    {
+        .name =_("Siarl"),
+        .speakerIcon = gSpeakerIcon_Rocket_Grunt_M,
+        .speakerPal = sSpeakerPal_Rocket_Grunt_M,
+    },
+    [SPEAKER_SIEBOLD] = 
+    {
+        .name =_("Siebold"),
+        .speakerIcon = gSpeakerIcon_Bruno,
+        .speakerPal = sSpeakerPal_Bruno,
+    },
+    [SPEAKER_DAGMAR] =
+    {
+        .name = _("Dagmar"),
+        .speakerIcon = gSpeakerIcon_Old_Man,
+        .speakerPal = sSpeakerPal_Old_Man,
+    },
+    [SPEAKER_GURL] =
+    {
+        .name = _("Gurl"),
+        .speakerIcon = gSpeakerIcon_Woman,
+        .speakerPal = sSpeakerPal_Woman,
+    },
+    [SPEAKER_LEAGUE_STAFF_A] =
+    {
+        .name = _("League Staff"),
+        .speakerIcon = gSpeakerIcon_Black_Belt,
+        .speakerPal = sSpeakerPal_Black_Belt,
+    },
+    [SPEAKER_DAVID] = 
+    {
+        .name = _("David"),
+        .speakerIcon = gSpeakerIcon_Waiter,
+        .speakerPal = sSpeakerPal_Waiter,
+    },
+    [SPEAKER_ISHAN] = 
+    {
+        .name =_("Ishan"),
+        .speakerIcon = gSpeakerIcon_Rocket_Grunt_F,
+        .speakerPal = sSpeakerPal_Rocket_Grunt_F,
+    },
+    [SPEAKER_ROCKET_MEMBER_A] =
+    {
+        .name = _("Teamrocket Member"),
+        .speakerIcon = gSpeakerIcon_Rocket_Grunt_M,
+        .speakerPal = sSpeakerPal_Rocket_Grunt_M,
+    },
+    [SPEAKER_ROCKET_MEMBER_B] =
+    {
+        .name = _("Teamrocket Member"),
+        .speakerIcon = gSpeakerIcon_Rocket_Grunt_F,
+        .speakerPal = sSpeakerPal_Rocket_Grunt_F,
+    },
+    [SPEAKER_ROSE] = 
+    {
+        .name = _("Rose"),
+        .speakerIcon = gSpeakerIcon_Proton,
+        .speakerPal = sSpeakerPal_Proton,
+    },
+    [SPEAKER_VITOMIR] =
+    {
+        .name = _("Vitomir"),
+        .speakerIcon = gSpeakerIcon_Rocket_Grunt_F,
+        .speakerPal = sSpeakerPal_Rocket_Grunt_F,
+    },
+    [SPEAKER_RABIA] =
+    {
+        .name = _("Rabia"),
+        .speakerIcon = gSpeakerIcon_Rocket_Grunt_F,
+        .speakerPal = sSpeakerPal_Rocket_Grunt_F,
+    },
+    [SPEAKER_LANDLORD] =
+    {
+        .name = _("Landlord"),
+        .speakerIcon = gSpeakerIcon_Juggler,
+        .speakerPal = sSpeakerPal_Juggler,
+    },
+    [SPEAKER_PROTEST_A] =
+    {
+        .name = _("Protestor"),
+        .speakerIcon = gSpeakerIcon_Aroma_Lady,
+        .speakerPal = sSpeakerPal_Aroma_Lady,
+    },
+    [SPEAKER_PROTEST_B] =
+    {
+        .name = _("Protestor"),
+        .speakerIcon = gSpeakerIcon_Beauty,
+        .speakerPal = sSpeakerPal_Beauty,
+    },
+    [SPEAKER_PROTEST_C] =
+    {
+        .name = _("Protestor"),
+        .speakerIcon = gSpeakerIcon_Bug_Catcher,
+        .speakerPal = sSpeakerPal_Bug_Catcher,
+    },
+    [SPEAKER_PROTEST_D] =
+    {
+        .name = _("Protestor"),
+        .speakerIcon = gSpeakerIcon_Collector,
+        .speakerPal = sSpeakerPal_Collector,
+    },
+        [SPEAKER_JULIUS] =
+    {
+        .name = _("Julius"),
+        .speakerIcon = gSpeakerIcon_Man,
+        .speakerPal = sSpeakerPal_Man,
+    },
+    [SPEAKER_MADISON] =
+    {
+        .name = _("Madison"),
+        .speakerIcon = gSpeakerIcon_Woman,
+        .speakerPal = sSpeakerPal_Woman,
+    },
+    [SPEAKER_STRANDED_A] =
+    {
+        .name = _("Stranded Citizen"),
+        .speakerIcon = gSpeakerIcon_Collector,
+        .speakerPal = sSpeakerPal_Collector,
+    },
+    [SPEAKER_STRANDED_B] =
+    {
+        .name = _("Stranded Citizen"),
+        .speakerIcon = gSpeakerIcon_Firebreather,
+        .speakerPal = sSpeakerPal_Firebreather,
+    },
+    [SPEAKER_RESIDENT_E] =
+    {
+        .name = _("Resident"),
+        .speakerIcon = gSpeakerIcon_Girl,
+        .speakerPal = sSpeakerPal_Girl,
+    },
+    [SPEAKER_RESIDENT_F] =
+    {
+        .name = _("Resident"),
+        .speakerIcon = gSpeakerIcon_Fisherman,
+        .speakerPal = sSpeakerPal_Fisherman,
+    },
+    [SPEAKER_DRASNA] = 
+    {
+        .name = _("Drasna"),
+        .speakerIcon = gSpeakerIcon_Steven,
+        .speakerPal = sSpeakerPal_Steven,
+    },
+    [SPEAKER_WIKSTROM] =
+    {
+        .name = _("Wikstrom"),
+        .speakerIcon = gSpeakerIcon_Karen,
+        .speakerPal = sSpeakerPal_Karen,
+    },
+    [SPEAKER_ALEKSANDER] =
+    {
+        .name = _("Aleksander"),
+        .speakerIcon = gSpeakerIcon_Kid,
+        .speakerPal = sSpeakerPal_Kid,
+    },
+    [SPEAKER_SUMMER] =
+    {
+        .name = _("Summer"),
+        .speakerIcon = gSpeakerIcon_Girl,
+        .speakerPal = sSpeakerPal_Girl,
+    },
+    [SPEAKER_MAID] =
+    {
+        .name = _("Maid"),
+        .speakerIcon = gSpeakerIcon_Woman,
+        .speakerPal = sSpeakerPal_Woman,
+    },
+    [SPEAKER_NEWS_B] =
+    {
+        .name = _("News"),
+        .speakerIcon = gSpeakerIcon_Li,
+        .speakerPal = sSpeakerPal_Li,
+    },
+        [SPEAKER_ARNAV] =
+    {
+        .name = _("Arnav"),
+        .speakerIcon = gSpeakerIcon_Li,
+        .speakerPal = sSpeakerPal_Li,
+    },
+    [SPEAKER_OLIVER] =
+    {
+        .name = _("Oliver"),
+        .speakerIcon = gSpeakerIcon_Li,
+        .speakerPal = sSpeakerPal_Li,
+    },
+    [SPEAKER_MAYOR] =
+    {
+        .name = _("Mayor"),
+        .speakerIcon = gSpeakerIcon_Li,
+        .speakerPal = sSpeakerPal_Li,
+    },
+    [SPEAKER_CHIEF] =
+    {
+        .name = _("Chief"),
+        .speakerIcon = gSpeakerIcon_Li,
+        .speakerPal = sSpeakerPal_Li,
+    },
+    [SPEAKER_CILAN] =
+    {
+        .name = _("Cilan"),
+        .speakerIcon = gSpeakerIcon_Brock,
+        .speakerPal = sSpeakerPal_Brock,
+    },
+    [SPEAKER_LENORA] =
+    {
+        .name = _("Lenora"),
+        .speakerIcon = gSpeakerIcon_Misty,
+        .speakerPal = sSpeakerPal_Misty,
     },
 };
 

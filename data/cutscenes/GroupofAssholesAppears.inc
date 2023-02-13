@@ -12,10 +12,7 @@ GroupOfAssholesAppears_CheckPartySize_1:
 
 GroupOfAssholesAppears_MovePlayerAway_Script::
 	lockall
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_GroupOfAssholesAppears_IThinkINeedMore
-	callnative ClearMugshot
+	msgbox gText_GroupOfAssholesAppears_IThinkINeedMore, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	call GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script
 	releaseall
@@ -39,27 +36,22 @@ GroupOfAssholesAppears_DecidePlayerMovement_NotEnoughMons_Script_3:
 GroupOfAssholesAppears_GroupAssault_Dialogue::
 	lockall
 	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
-	applymovement 1, Common_Movement_WalkInPlaceRight
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_YouShouldBeAshamed
-	applymovement 2, Common_Movement_WalkInPlaceUp
+	msgbox gText_GroupOfAssholesAppears_YouShouldBeAshamed, , SPEAKER_ROCKET_MEMBER_A
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_HaventYouDoneEnough
-	applymovement 3, Common_Movement_WalkInPlaceUp
+	msgbox gText_GroupOfAssholesAppears_HaventYouDoneEnough, , SPEAKER_ROCKET_MEMBER_A
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_GiveJelenaBack
+	msgbox gText_GroupOfAssholesAppears_GiveJelenaBack, , SPEAKER_ROCKET_MEMBER_A
 	applymovement 7, GroupOfAssholesAppears_LookAround_Movement
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_IDontKnowWho
-	applymovement 4, Common_Movement_WalkInPlaceUp
+	msgbox gText_GroupOfAssholesAppears_IDontKnowWho, , SPEAKER_DAVID
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_WeDontWantToHear
+	msgbox gText_GroupOfAssholesAppears_WeDontWantToHear, , SPEAKER_ROCKET_MEMBER_A
 	applymovement 7, Common_Movement_FaceLeft
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_RuinLives
-	applymovement 5, Common_Movement_WalkInPlaceUp
+	msgbox gText_GroupOfAssholesAppears_RuinLives, , SPEAKER_DAVID
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_NotIfWeHave
+	msgbox gText_GroupOfAssholesAppears_NotIfWeHave, , SPEAKER_ROCKET_MEMBER_B
 	closemessage
 	call GroupOfAssholesAppears_PlayerToDavid_Script
 	goto GroupOfAssholesAppears_PlayerIntervene_Dialogue
@@ -84,32 +76,24 @@ GroupOfAssholesAppears_PlayerToDavid_Script_3:
 
 
 GroupOfAssholesAppears_PlayerIntervene_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_GroupOfAssholesAppears_WhatTheHell
-	callnative ClearMugshot
+	msgbox gText_GroupOfAssholesAppears_WhatTheHell, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	applymovement 2, Common_Movement_FaceRight
 	applymovement 3, Common_Movement_FaceRight
 	applymovement 5, Common_Movement_FaceLeft
 	applymovement 4, Common_Movement_FaceLeft
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_NothingWrongWith
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_GroupOfAssholesAppears_ThisIsntAProtest
-	callnative ClearMugshot
+	msgbox gText_GroupOfAssholesAppears_NothingWrongWith, , SPEAKER_ROCKET_MEMBER_A
+	msgbox gText_GroupOfAssholesAppears_ThisIsntAProtest, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	applymovement 7, Common_Movement_FaceDown
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_OhThankArceus
+	msgbox gText_GroupOfAssholesAppears_OhThankArceus, , SPEAKER_DAVID
 	closemessage
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, GroupOfAssholesAppears_LookAround_Movement
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_HeMightBeAsking
-	callnative ClearMugshot
+	msgbox gText_GroupOfAssholesAppears_HeMightBeAsking, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	setvar VAR_GROUP_OF_ASSHOLES_STATE, SAVE_TEAMROCKET_FISHERMANSWHARF
+	closemessage
 	call Common_EventScript_SaveGame
 	closemessage
 	goto GroupOfAssholes_StartBattle_Script
@@ -131,7 +115,7 @@ GroupOfAssholes_PostSaveTrigger_Script::
 
 GroupOfAssholesAppears_GruntInteract_Script::
 	lockall
-	msgbox gText_GroupOfAssholesAppears_GoDefend, MSGBOX_NPC
+	msgbox gText_GroupOfAssholesAppears_GoDefend, MSGBOX_NPC, SPEAKER_ROCKET_MEMBER_B
 	end
 
 
@@ -139,7 +123,7 @@ GroupOfAssholes_StartBattle_Script::
 	lockall
 	applymovement 7, Common_Movement_FaceDown
 	waitmovement 0
-	msgbox gText_GroupOfAssholesAppears_WhoTheHellYouThink
+	msgbox gText_GroupOfAssholesAppears_WhoTheHellYouThink, , SPEAKER_ISHAN
 	trainerbattle_no_intro TRAINER_IHSAN_AND_EMMITT, gText_GroupOfAssholesAppears_WoahWhoDidWePick
 	goto GroupOfAssholesAppears_GroupLeaves_Dialogue
 	closemessage
@@ -149,8 +133,8 @@ GroupOfAssholes_StartBattle_Script::
 GroupOfAssholesAppears_GroupLeaves_Dialogue::
 	lockall
 	setvar VAR_GROUP_OF_ASSHOLES_STATE, PLAYER_HAS_DEFEATED_TEAM_ROCKET
-	msgbox gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent
-	msgbox gText_GroupOfAssholesAppears_YouBothMakeMeSick
+	msgbox gText_GroupOfAssholesAppears_PfftLooksLikeTheLeagueSent, SPEAKER_ROCKET_MEMBER_B
+	msgbox gText_GroupOfAssholesAppears_YouBothMakeMeSick, SPEAKER_ISHAN
 	closemessage
 	applymovement 1, GroupOfAssholesAppears_LeaveFishermanswharf_Slot1_Movement
 	applymovement 2, GroupOfAssholesAppears_LeaveFishermanswharf_Slot2_Movement
@@ -166,46 +150,32 @@ GroupOfAssholesAppears_GroupLeaves_Dialogue::
 	removeobject 5
 	removeobject 6
 	fadedefaultbgm
-	msgbox gText_GroupOfAssholesAppears_DontComeBackAssholes
+	msgbox gText_GroupOfAssholesAppears_DontComeBackAssholes, SPEAKER_DAVID, TAIL_SHOUT, EMOTE_ANGRY
 	goto GroupOfAssholesAppears_ExplainTeam_Dialogue
 	return
 
 
 GroupOfAssholesAppears_ExplainTeam_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	msgbox gText_GroupOfAssholesAppears_ThankYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_GroupOfAssholesAppears_AreYouGoing
-	callnative ClearMugshot
-	msgbox gText_GroupOfAssholesAppears_GonnaNeedToPop
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_GroupOfAssholesAppears_WhyWereTheyBullying
-	callnative ClearMugshot
-	msgbox gText_GroupOfAssholesAppears_SomethingStupidLikeThat
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_GroupOfAssholesAppears_ThatDoesntMakeAny
-	callnative ClearMugshot
-	msgbox gText_GroupOfAssholesAppears_MementoBoutique
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_GroupOfAssholesAppears_ASouvenirShop
-	callnative ClearMugshot
-	msgbox gText_GroupOfAssholesAppears_WhenIPitchedIt
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_GroupOfAssholesAppears_ThatMakesSense
-	callnative ClearMugshot
+	msgbox gText_GroupOfAssholesAppears_ThankYou, SPEAKER_DAVID, , EMOTE_LOVE
+	msgbox gText_GroupOfAssholesAppears_AreYouGoing, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_GroupOfAssholesAppears_GonnaNeedToPop, , SPEAKER_DAVID, , EMOTE_SWEAT
+	msgbox gText_GroupOfAssholesAppears_WhyWereTheyBullying, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_GroupOfAssholesAppears_SomethingStupidLikeThat, , SPEAKER_DAVID
+	msgbox gText_GroupOfAssholesAppears_ThatDoesntMakeAny, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_GroupOfAssholesAppears_MementoBoutique, , SPEAKER_DAVID, , EMOTE_HAPPY
+	msgbox gText_GroupOfAssholesAppears_ASouvenirShop, MSGBOX_DEFAULT, SPEAKER_ZOEY, , EMOTE_CONFUSE
+	msgbox gText_GroupOfAssholesAppears_WhenIPitchedIt, , SPEAKER_DAVID
+	msgbox gText_GroupOfAssholesAppears_ThatMakesSense, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	goto GroupOfAssholesAppears_GiveRewards_Dialogue
 	return
 
 
 GroupOfAssholesAppears_GiveRewards_Dialogue::
-	msgbox gText_GroupOfAssholesAppears_YoullHaveToCome
+	msgbox gText_GroupOfAssholesAppears_YoullHaveToCome, , SPEAKER_DAVID, , EMOTE_LOVE
+	closemessage
 	giveitem ITEM_MACH_BIKE
-	msgbox gText_GroupOfAssholesAppears_IfYouPutThatOn
+	msgbox gText_GroupOfAssholesAppears_IfYouPutThatOn, , SPEAKER_DAVID
 	closemessage
 	addvar VAR_STORYLINE_STATE, 1
 	call Act1_1_Check_Script
@@ -218,14 +188,14 @@ GroupOfAssholesAppears_LookForXanax_Dialogue::
 	applymovement 7, GroupOfAssholesAppears_LookAround_Movement
 	compare VAR_GROUP_OF_ASSHOLES_STATE, SAVE_TEAMROCKET_FISHERMANSWHARF
 	goto_if_eq GroupOfAssholesAppears_LookForXanax_Dialogue_2
-	msgbox gText_GroupOfAssholesAppears_WhereDidIPut
+	msgbox gText_GroupOfAssholesAppears_WhereDidIPut, , SPEAKER_DAVID, TAIL_WHISPER
 GroupOfAssholesAppears_LookForXanax_Dialogue_1:
 	closemessage
 	releaseall
 	end
 
 GroupOfAssholesAppears_LookForXanax_Dialogue_2:
-	msgbox gText_GroupOfAssholesAppears_Cries
+	msgbox gText_GroupOfAssholesAppears_Cries, , SPEAKER_DAVID, , EMOTE_SAD
 	goto GroupOfAssholesAppears_LookForXanax_Dialogue_1
 
 

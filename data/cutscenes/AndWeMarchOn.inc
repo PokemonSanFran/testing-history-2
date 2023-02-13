@@ -49,14 +49,11 @@ AndWeMarchOn_StartParadeMovement_Script::
 	applymovement 9, AndWeMarchOn_ParadeProcession_Movement
 	applymovement 8, AndWeMarchOn_ParadeProcession_Movement
 	applymovement 7, AndWeMarchOn_ParadeProcession_Movement
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_WowPeopleHere
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_WowPeopleHere, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_CONFUSE
 	closemessage
 	waitmovement 0
 	special RemoveCameraObject
-	msgbox gText_AndWeMarchOn_AndNowSomeWords
+	msgbox gText_AndWeMarchOn_AndNowSomeWords, MSGBOX_DEFAULT, SPEAKER_ANNOUNCER
 	closemessage
 	goto AndWeMarchOn_Opening_Dialogue
 	return
@@ -69,20 +66,13 @@ AndWeMarchOn_Opening_Dialogue::
 	playse SE_APPLAUSE
 	applymovement 5, AndWeMarchOn_WalkToFloatCenter_Movement
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_SanFran
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_SanFran, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT, EMOTE_HAPPY
 	closemessage
 	playse SE_BANG
 	waitse
 	playse SE_BANG
 	waitse
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_ThankYouForSupporting
-	callnative ClearMugshot
-	closemessage
+	msgbox gText_AndWeMarchOn_ThankYouForSupporting, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT, EMOTE_HAPPY
 	playse SE_APPLAUSE
 	waitse
 	applymovement 5, AndWeMarchOn_PaceBackForth_Movement
@@ -92,49 +82,34 @@ AndWeMarchOn_Opening_Dialogue::
 
 
 AndWeMarchOn_InviteOntoStage_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_WeHaveASpecialGuest
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_WeHaveASpecialGuest, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT, EMOTE_HAPPY
 	closemessage
 	applymovement 26, AndWeMarchOn_WalkOntoStage_Movement
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_RupertHereIsTheWinner
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_RupertHereIsTheWinner, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT
 	closemessage
-	msgbox gText_AndWeMarchOn_Boo
-	msgbox gText_AndWeMarchOn_LetsGo
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_ButThatsNotGoing
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_Boo, MSGBOX_DEFAULT, SPEAKER_CROWD_A
+	msgbox gText_AndWeMarchOn_LetsGo, MSGBOX_DEFAULT, SPEAKER_CROWD_B
+	msgbox gText_AndWeMarchOn_ButThatsNotGoing, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT
 	closemessage
-	msgbox gText_AndWeMarchOn_YayRupert
+	msgbox gText_AndWeMarchOn_YayRupert, MSGBOX_DEFAULT, SPEAKER_CROWD_C
 	goto AndWeMarchOn_StartCutsceneBattle_Script
 	return
 
 
 AndWeMarchOn_StartCutsceneBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_RupertAreYouReady
-	callnative ClearMugshot
-	msgbox gText_AndWeMarchOn_Woo
-	msgbox gText_AndWeMarchOn_Yeah
+	msgbox gText_AndWeMarchOn_RupertAreYouReady, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT
+	msgbox gText_AndWeMarchOn_Woo, MSGBOX_DEFAULT, SPEAKER_CROWD_D
+	msgbox gText_AndWeMarchOn_Yeah, MSGBOX_DEFAULT, SPEAKER_CROWD_A
 	closemessage
 	applymovement 5, AndWeMarchOn_WalkToLeftSide_Movement
 	applymovement 26, AndWeMarchOn_LookAroundCrowd_Movement
 	waitmovement 0
 	applymovement 26, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_LetsRock
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_LetsRock, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT
 	closemessage
-	msgbox gText_AndWeMarchOn_AndOurBattle
+	msgbox gText_AndWeMarchOn_AndOurBattle, MSGBOX_DEFAULT, SPEAKER_ANNOUNCER
 	closemessage
 	goto AndWeMarchOn_CutsceneBattleScript
 	return
@@ -162,12 +137,9 @@ AndWeMarchOn_CutsceneBattleScript::
 	waitmoncry
 	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
 	waitmoncry
-	msgbox gText_AndWeMarchOn_AttackPatternSigma
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_HelpingHand
+	msgbox gText_AndWeMarchOn_AttackPatternSigma, MSGBOX_DEFAULT, SPEAKER_RUPERT
+	msgbox gText_AndWeMarchOn_HelpingHand, MSGBOX_DEFAULT, SPEAKER_MALVA
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, AndWeMarchOn_Attack_Movement
 	applymovement 2, AndWeMarchOn_Attack_Movement
 	waitmovement 0
@@ -181,20 +153,14 @@ AndWeMarchOn_CutsceneBattleScript::
 	playse SE_FAINT
 	waitse
 	fadescreen FADE_FROM_BLACK
-	msgbox gText_AndWeMarchOn_AndWithASupercharged
+	msgbox gText_AndWeMarchOn_AndWithASupercharged, MSGBOX_DEFAULT, SPEAKER_ANNOUNCER
 	goto AndWeMarchOn_PostBattle_Dialogue
 	return
 
 
 AndWeMarchOn_PostBattle_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_DamnThatsHow
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_LetsGiveItUp
-	closemessage
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_DamnThatsHow, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_SHOCK
+	msgbox gText_AndWeMarchOn_LetsGiveItUp, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT, EMOTE_HAPPY
 	playse SE_APPLAUSE
 	waitse
 	playse SE_BALL_OPEN
@@ -210,42 +176,28 @@ AndWeMarchOn_PostBattle_Dialogue::
 
 
 AndWeMarchOn_PostBattleSpeech_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_ItsBeenAWildYear
+	msgbox gText_AndWeMarchOn_ItsBeenAWildYear, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT
+	closemessage
 	playse SE_APPLAUSE
 	waitse
 	applymovement 5, AndWeMarchOn_WalkToSouthStage_Movement
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_OhItsNotAllBad
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_OhItsNotAllBad, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT
 	closemessage
 	applymovement 5, AndWeMarchOn_WalkToNorthStage_Movement
 	waitmovement 0
-	msgbox gText_AndWeMarchOn_Boo
-	msgbox gText_AndWeMarchOn_FuckTheseGuys
-	msgbox gText_AndWeMarchOn_GiveUsBackOur
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_ButHeyItsNot
-	callnative ClearMugshot
-	closemessage
-	msgbox gText_AndWeMarchOn_Traitor
-	msgbox gText_AndWeMarchOn_DownWith
-	msgbox gText_AndWeMarchOn_WhatASlimeball
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_JustNotTheWay
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_Boo, MSGBOX_DEFAULT, SPEAKER_CROWD_B
+	msgbox gText_AndWeMarchOn_FuckTheseGuys, MSGBOX_DEFAULT, SPEAKER_CROWD_C, TAIL_SHOUT, EMOTE_ANGRY
+	msgbox gText_AndWeMarchOn_GiveUsBackOur, MSGBOX_DEFAULT, SPEAKER_CROWD_D, TAIL_SHOUT, EMOTE_ANGRY
+	msgbox gText_AndWeMarchOn_ButHeyItsNot, MSGBOX_DEFAULT, SPEAKER_MALVA, TAIL_SHOUT
+	msgbox gText_AndWeMarchOn_Traitor, MSGBOX_DEFAULT, SPEAKER_CROWD_A, TAIL_SHOUT, EMOTE_ANGRY
+	msgbox gText_AndWeMarchOn_DownWith, MSGBOX_DEFAULT, SPEAKER_CROWD_B, TAIL_SHOUT, EMOTE_ANGRY
+	msgbox gText_AndWeMarchOn_WhatASlimeball, MSGBOX_DEFAULT, SPEAKER_CROWD_C, TAIL_SHOUT, EMOTE_ANGRY
+	msgbox gText_AndWeMarchOn_JustNotTheWay, MSGBOX_DEFAULT, SPEAKER_MALVA
 	closemessage
 	applymovement 5, AndWeMarchOn_GoBackToCenter_Movement
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_AndWeMarchOn_WeveGotAResponsibility
-	callnative ClearMugshot
+	msgbox gText_AndWeMarchOn_WeveGotAResponsibility, MSGBOX_DEFAULT, SPEAKER_MALVA
 	closemessage
 	goto AndWeMarchOn_ParadeEnd_Script
 	return

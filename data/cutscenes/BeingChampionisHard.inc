@@ -23,58 +23,26 @@ BeingChampionIsHard_PostTimeSkip::
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER, BeingChampionIsHard_WalkToOak
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_SighGoodMorning
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_GoodMorningChampion
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_ItsAlmostBeenAMonth
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_OfCourseNot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_PleaseArceusLetItBe
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_YouveActuallyGotNothing
+	msgbox gText_BeingChampionIsHard_SighGoodMorning, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_BeingChampionIsHard_GoodMorningChampion, MSGBOX_DEFAULT, SPEAKER_OAK
+	msgbox gText_BeingChampionIsHard_ItsAlmostBeenAMonth, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_BeingChampionIsHard_OfCourseNot, MSGBOX_DEFAULT, SPEAKER_OAK
+	msgbox gText_BeingChampionIsHard_PleaseArceusLetItBe, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_SAD
+	msgbox gText_BeingChampionIsHard_YouveActuallyGotNothing, MSGBOX_DEFAULT, SPEAKER_OAK
 	closemessage
-	callnative ClearMugshot
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_YouWereStarting
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_YouCouldTell
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_ThisIsOurFirst
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_WoWWhatToDo
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_YouShouldGoTo
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_ThatsWhereTheyFilm
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_ThereAlsoUsed
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_SoundsLikeItll
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_BeingChampionIsHard_ThePleasureIsAllOurs
+	msgbox gText_BeingChampionIsHard_YouWereStarting, MSGBOX_DEFAULT, SPEAKER_OAK
+	msgbox gText_BeingChampionIsHard_YouCouldTell, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_TALK, EMOTE_SWEAT
+	msgbox gText_BeingChampionIsHard_ThisIsOurFirst, MSGBOX_DEFAULT, SPEAKER_OAK
+	msgbox gText_BeingChampionIsHard_WoWWhatToDo, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_BeingChampionIsHard_YouShouldGoTo, MSGBOX_DEFAULT, SPEAKER_OAK
+	msgbox gText_BeingChampionIsHard_ThatsWhereTheyFilm, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_BeingChampionIsHard_ThereAlsoUsed, MSGBOX_DEFAULT, SPEAKER_OAK
+	msgbox gText_BeingChampionIsHard_SoundsLikeItll, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_TALK, EMOTE_HAPPY
+	msgbox gText_BeingChampionIsHard_ThePleasureIsAllOurs, MSGBOX_DEFAULT, SPEAKER_OAK
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	playse SE_EXIT
@@ -130,7 +98,7 @@ gText_BeingChampionIsHard_YouWereStarting::
 	.string "So we're giving you a few days off.$"
 
 gText_BeingChampionIsHard_YouCouldTell::
-	.string "eh heh, you could tell?$"
+	.string "You could tell?$"
 
 gText_BeingChampionIsHard_ThisIsOurFirst::
 	.string "It's fine. This is our first time doing\n"

@@ -1,6 +1,7 @@
 #ifndef GUARD_CONSTANTS_MUGSHOTS_H
 #define GUARD_CONSTANTS_MUGSHOTS_H
 
+//https://www.pokecommunity.com/showpost.php?p=10345947&postcount=252
 //Add your mugshot constants here
 #define MUGSHOT_DAWN 0
 #define MUGSHOT_ETHAN 1
@@ -154,7 +155,59 @@
 #define SPEAKER_AROMA_LADY          66
 #define SPEAKER_BATTLE_GIRL         67
 #define SPEAKER_MOM                 68
-#define NUM_SPEAKERS                69
+#define NUM_SPEAKERS 999
+
+//PSF names
+#define SPEAKER_NEWS                69
+#define SPEAKER_ZOEY                70
+#define SPEAKER_BIANCA              71
+#define SPEAKER_BART                72
+#define SPEAKER_MARKETING_STAFF     73
+#define SPEAKER_ANNOUNCER           74
+#define SPEAKER_MALVA               75
+#define SPEAKER_CROWD_A             76
+#define SPEAKER_CROWD_B             77
+#define SPEAKER_CROWD_C             78
+#define SPEAKER_CROWD_D             79
+#define SPEAKER_RUPERT              80
+#define SPEAKER_OAK                 81
+#define SPEAKER_RESIDENT_A          82
+#define SPEAKER_RESIDENT_B          83
+#define SPEAKER_RESIDENT_C          84
+#define SPEAKER_RESIDENT_D          85
+#define SPEAKER_SIARL               86
+#define SPEAKER_SIEBOLD             87
+#define SPEAKER_DAGMAR              88
+#define SPEAKER_GURL                89
+#define SPEAKER_LEAGUE_STAFF_A      90
+#define SPEAKER_ROCKET_MEMBER_A     91
+#define SPEAKER_ROCKET_MEMBER_B     92
+#define SPEAKER_DAVID               93
+#define SPEAKER_ISHAN               94
+#define SPEAKER_ROSE                95
+#define SPEAKER_PROTEST_A           96
+#define SPEAKER_PROTEST_B           97
+#define SPEAKER_PROTEST_C           98
+#define SPEAKER_PROTEST_D           99
+#define SPEAKER_VITOMIR             100
+#define SPEAKER_RABIA               101
+#define SPEAKER_LANDLORD            102
+#define SPEAKER_JULIUS              103
+#define SPEAKER_MADISON             104
+#define SPEAKER_STRANDED_A          105
+#define SPEAKER_STRANDED_B          106
+#define SPEAKER_RESIDENT_E          107
+#define SPEAKER_RESIDENT_F          108
+#define SPEAKER_DRASNA              109
+#define SPEAKER_WIKSTROM            110
+#define SPEAKER_ALEKSANDER          111
+#define SPEAKER_SUMMER              112
+#define SPEAKER_MAID                113
+#define SPEAKER_NEWS_B              114
+#define SPEAKER_ARNAV               115
+#define SPEAKER_OLIVER              116
+#define SPEAKER_MAYOR               117
+#define SPEAKER_CHIEF               118
 
 //Tail
 #define TAIL_DEFAULT 0
@@ -178,5 +231,4 @@
 #define PHONE_OFF 0
 #define PHONE_ON 1
 
-//https://www.pokecommunity.com/showpost.php?p=10345947&postcount=252
 #endif

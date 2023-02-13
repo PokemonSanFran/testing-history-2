@@ -60,19 +60,10 @@ EnterTheMaster_WalkingTrigger_Script::
 
 EnterTheMaster_Ready_Dialogue::
 	setvar VAR_MUIRWOODS_STATE, BIANCA_ENTERED_MUIRWOODS
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_MorningReady
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_AsReadyAs
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_DaddySentAnother
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_ThanksDad
-	callnative ClearMugshot
+	msgbox gText_EnterTheMaster_MorningReady, , SPEAKER_BIANCA
+	msgbox gText_EnterTheMaster_AsReadyAs, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterTheMaster_DaddySentAnother, , SPEAKER_BIANCA
+	msgbox gText_EnterTheMaster_ThanksDad, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	applymovement 1, EnterTheMaster_WalkIntoWoods
 	waitmovement 0
@@ -85,8 +76,6 @@ EnterTheMaster_Ready_Dialogue::
 
 EnterTheMaster_InteractFollower_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
 	random 4
 	switch VAR_RESULT
 	case 0, EnterTheMaster_InteractFollower_Script_3
@@ -95,35 +84,31 @@ EnterTheMaster_InteractFollower_Script::
 	case 3, EnterTheMaster_InteractFollower_Script_6
 EnterTheMaster_InteractFollower_Script_1:
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
 EnterTheMaster_InteractFollower_Script_3:
-	msgbox gText_EnterTheMaster_HowDoYouThink, MSGBOX_NPC
+	msgbox gText_EnterTheMaster_HowDoYouThink, MSGBOX_NPC, SPEAKER_BIANCA
 	goto EnterTheMaster_InteractFollower_Script_1
 
 EnterTheMaster_InteractFollower_Script_4:
-	msgbox gText_EnterTheMaster_YouKnow, MSGBOX_NPC
+	msgbox gText_EnterTheMaster_YouKnow, MSGBOX_NPC, SPEAKER_BIANCA
 	goto EnterTheMaster_InteractFollower_Script_1
 
 EnterTheMaster_InteractFollower_Script_5:
-	msgbox gText_EnterTheMaster_IThoughtGymLeaders, MSGBOX_NPC
+	msgbox gText_EnterTheMaster_IThoughtGymLeaders, MSGBOX_NPC, SPEAKER_BIANCA
 	goto EnterTheMaster_InteractFollower_Script_1
 
 EnterTheMaster_InteractFollower_Script_6:
-	msgbox gText_EnterTheMaster_DoYouThinkTheyre, MSGBOX_NPC
+	msgbox gText_EnterTheMaster_DoYouThinkTheyre, MSGBOX_NPC, SPEAKER_BIANCA
 	goto EnterTheMaster_InteractFollower_Script_1
 
 
 EnterTheMaster_LeaveWoods_Script::
 	lock
 	faceplayer
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_TiredAlready
+	msgbox gText_EnterTheMaster_TiredAlready, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	return
 
 
@@ -134,17 +119,10 @@ EnterTheMaster_CompleteMaze_Dialogue::
 	setobjectxy 1, 24, 22
 	setobjectxyperm 1, 24, 22
 	faceplayer
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_IDontThinkTheres
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_YouThinkTheyve
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_TheyreGettingPaid
+	msgbox gText_EnterTheMaster_IDontThinkTheres, , SPEAKER_BIANCA
+	msgbox gText_EnterTheMaster_YouThinkTheyve, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterTheMaster_TheyreGettingPaid, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, EnterTheMaster_WalkIntoWoods
 	waitmovement 0
 	playse SE_EXIT
@@ -158,78 +136,41 @@ EnterTheMaster_ClearingIntro_Dialogue::
 	setvar VAR_MUIRWOODS_STATE, MET_SIEBOLD
 	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachSiebold
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_WelcomeTo
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_ThanksYoure
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_AndMyNotebook
-	callnative ClearMugshot
+	msgbox gText_EnterTheMaster_WelcomeTo, , SPEAKER_SIEBOLD
+	msgbox gText_EnterTheMaster_ThanksYoure, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterTheMaster_AndMyNotebook, , SPEAKER_SIEBOLD
 	closemessage
 	applymovement 2, Common_Movement_FaceLeft
 	applymovement 1, EnterTheMaster_GiveNotebook
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_GettingThemToBattle
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_IsThatWhatYoure
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_EveryClientAlways
+	msgbox gText_EnterTheMaster_GettingThemToBattle, , SPEAKER_SIEBOLD
+	msgbox gText_EnterTheMaster_IsThatWhatYoure, , SPEAKER_BIANCA
+	msgbox gText_EnterTheMaster_EveryClientAlways, , SPEAKER_SIEBOLD
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, EnterTheMaster_StandNextToPlayer
 	waitmovement 0
 	applymovement 2, EnterTheMaster_Pace
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_AreEitherOfYou
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_YeahThatsTheBattleFrontier
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_HmmTheSmartass
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_OhDoesEachPart
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_SorryDidntGoTo
+	msgbox gText_EnterTheMaster_AreEitherOfYou, , SPEAKER_SIEBOLD
+	msgbox gText_EnterTheMaster_YeahThatsTheBattleFrontier, , SPEAKER_BIANCA
+	msgbox gText_EnterTheMaster_HmmTheSmartass, , SPEAKER_SIEBOLD
+	msgbox gText_EnterTheMaster_OhDoesEachPart, , SPEAKER_BIANCA
+	msgbox gText_EnterTheMaster_SorryDidntGoTo, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	applymovement 1, Common_Movement_FaceRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_ScottIsTheFounder
+	msgbox gText_EnterTheMaster_ScottIsTheFounder, , SPEAKER_BIANCA
 	fadescreen FADE_TO_BLACK
 	msgbox gText_EnterTheMaster_OneEternity
 	applymovement 1, Common_Movement_FaceUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_AndSoConcludes
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_SortaKindaNotReally
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_Oh
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_SoWhatsNext
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_EnterTheMaster_WellUntilNSFigures
-	callnative ClearMugshot
+	msgbox gText_EnterTheMaster_AndSoConcludes, , SPEAKER_BIANCA
+	msgbox gText_EnterTheMaster_SortaKindaNotReally, , SPEAKER_SIEBOLD
+	msgbox gText_EnterTheMaster_Oh, , SPEAKER_BIANCA
+	msgbox gText_EnterTheMaster_SoWhatsNext, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterTheMaster_WellUntilNSFigures, MSGBOX_DEFAULT, SPEAKER_SIEBOLD
 	closemessage
 	end
 

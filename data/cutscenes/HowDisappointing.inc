@@ -73,14 +73,10 @@ HowDisappointing_StartRaid_Dialogue::
 	msgbox gText_HowDisappointing_YesSir
 	waitmovement 3
 	msgbox gText_HowDisappointing_OhAndChampion
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_YeahQuestion
+	msgbox gText_HowDisappointing_YeahQuestion, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	callnative ClearMugshot
 	msgbox gText_HowDisappointing_TryToNotLet
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_Yeah
+	msgbox gText_HowDisappointing_Yeah, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	callnative ClearMugshot
 	msgbox gText_HowDisappointing_Hehehehee
 	closemessage
@@ -158,24 +154,12 @@ HowDisappointing_Interfact_Ariana_Script::
 	goto_if_eq HowDisappointing_Interfact_Ariana_Script_2
 HowDisappointing_Interfact_Ariana_Script_1:
 	setvar VAR_HOW_DISAPPOINTING_STATE, SAVED_BEFORE_ARIANA
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_HowDisappointing, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_ImTiredOfYou
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_IveNeverLied
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_ThenWhyAreYou
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_TheseCompanies
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_AllISeeIs
+	msgbox gText_HowDisappointing_HowDisappointing, MSGBOX_NPC, SPEAKER_ARIANA
+	msgbox gText_HowDisappointing_ImTiredOfYou, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_HowDisappointing_IveNeverLied, , SPEAKER_ARIANA
+	msgbox gText_HowDisappointing_ThenWhyAreYou, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_HowDisappointing_TheseCompanies, , SPEAKER_ARIANA
+	msgbox gText_HowDisappointing_AllISeeIs, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	callnative ClearMugshot
 	call Common_EventScript_SaveGame
 	goto HowDisappointing_StartBattle_Script
@@ -188,9 +172,7 @@ HowDisappointing_Interfact_Ariana_Script_2:
 
 HowDisappointing_StartBattle_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_SighHowDisappointing, MSGBOX_NPC
+	msgbox gText_HowDisappointing_SighHowDisappointing, MSGBOX_NPC, SPEAKER_ARIANA
 	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_SHELLY_WEATHER_INSTITUTE, gText_HowDisappointing_YouAllDidYour
 	goto HowDisappointing_ArrestScene_Dialogue
@@ -216,9 +198,7 @@ HowDisappointing_MissionComplete_Dialogue::
 	lock
 	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_HOW_DISAPPOINTING_STATE, HOW_DISAPPOINTING_COMPLETE
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_HowDisappointing_ExcellentWorkEverybody
+	msgbox gText_HowDisappointing_ExcellentWorkEverybody, , SPEAKER_ROSE, , EMOTE_HAPPY
 	callnative ClearMugshot
 	closemessage
 	applymovement 4, Common_Movement_WalkUp

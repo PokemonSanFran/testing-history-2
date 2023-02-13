@@ -52,57 +52,36 @@ script IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue {
     applymovement(BIANCA,IGuessWeShouldBeNiceNow_WalkToPlayer)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_TookLongEnough)
+        msgbox(gText_IGuessWeShouldBeNiceNow_TookLongEnough,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_WeCantComplete)
+        msgbox(gText_IGuessWeShouldBeNiceNow_WeCantComplete,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_OhShitWellUh)
+        msgbox(gText_IGuessWeShouldBeNiceNow_OhShitWellUh,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow)
+        msgbox(gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive)
+        msgbox(gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive,,SPEAKER_BIANCA)
 
         applymovement(BIANCA,Common_Movement_FaceUp)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_IAnalyzedTheRoom)
+        msgbox(gText_IGuessWeShouldBeNiceNow_IAnalyzedTheRoom,,SPEAKER_BIANCA)
 
         applymovement(BIANCA,Common_Movement_FaceLeft)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_YouSolvePuzzleA)
+        msgbox(gText_IGuessWeShouldBeNiceNow_YouSolvePuzzleA,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_AndThenISolvePuzzle)
+        msgbox(gText_IGuessWeShouldBeNiceNow_AndThenISolvePuzzle,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze,,SPEAKER_BIANCA)
+                closemessage
         setvar(VAR_ROBINWILLIAMSTUNNEL_STATE,BIANCA_EXPLAINED_PUZZLE)
         goto (IGuessWeShouldBeNiceNow_AskPlayer_Script)
 }
 
 script IGuessWeShouldBeNiceNow_AskPlayer_Script {
         lock
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_Ready,MSGBOX_YESNO)
+        msgbox(gText_IGuessWeShouldBeNiceNow_Ready,MSGBOX_YESNO,,SPEAKER_BIANCA)
 
         if (var(VAR_RESULT) == NO) {
             goto(IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue)
@@ -112,33 +91,24 @@ script IGuessWeShouldBeNiceNow_AskPlayer_Script {
 }
 
 script IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue {
-    setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_WellGoGetReady)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_WellGoGetReady,,SPEAKER_BIANCA)
+                closemessage
         end
 }
 
 script IGuessWeShouldBeNiceNow_StartPuzzle_Script {
         setvar(VAR_ROBINWILLIAMSTUNNEL_STATE,PUZZLE_1_UNSOLVED)
         lock
-        callnative(ClearMugshot)
-        closemessage
+                closemessage
         applymovement(BIANCA,IGuessWeShouldBeNiceNow_WalkIntoMaze)
         waitmovement(0)
             setobjectxy(BIANCA,15,19)
             setobjectxyperm(BIANCA,15,19)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_IMemorizedThisWhile)
+        msgbox(gText_IGuessWeShouldBeNiceNow_IMemorizedThisWhile,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_OnIt)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_OnIt,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
         release
         end
 }
@@ -148,15 +118,10 @@ script IGuessWeShouldBeNiceNow_SolvedPuzzleA {
         playse(SE_SWITCH)
         waitse
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_OkayYourTurn)
+        msgbox(gText_IGuessWeShouldBeNiceNow_OkayYourTurn,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_LetsSeeOhWow)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_LetsSeeOhWow,,SPEAKER_BIANCA)
+                closemessage
 }
 
 script IGuessWeShouldBeNiceNow_SolvedPuzzleB {
@@ -181,21 +146,15 @@ script IGuessWeShouldBeNiceNow_SolvedPuzzleB {
         applymovement(PLAYER,IGuessWeShouldBeNiceNow_WalkRight)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_SomethingIsMissing)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_SomethingIsMissing,,SPEAKER_BIANCA)
+                closemessage
 
         applymovement(PLAYER,IGuessWeShouldBeNiceNow_ApproachBookB)
         applymovement(BIANCA,IGuessWeShouldBeNiceNow_ApproachBookA)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_IfIWereACrustyOld)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_IfIWereACrustyOld,,SPEAKER_BIANCA)
+                closemessage
 
         applymovement(BIANCA,Common_Movement_WalkUp)
         waitmovement(0)
@@ -213,12 +172,9 @@ script IGuessWeShouldBeNiceNow_BossProtectBook_Script {
         addobject(BOSSPKMNB)
         addobject(BOSSPKMNC)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_BingoIllTake)
+        msgbox(gText_IGuessWeShouldBeNiceNow_BingoIllTake,,SPEAKER_BIANCA)
         closemessage
-        callnative(ClearMugshot)
-        applymovement(PLAYER,Common_Movement_WalkUp)
+                applymovement(PLAYER,Common_Movement_WalkUp)
             waitmovement(0)
         call(Common_EventScript_SaveGame)
         goto(IGuessWeShouldBeNiceNow_CoreEncounter_Script)
@@ -245,11 +201,8 @@ script IGuessWeShouldBeNiceNow_CoreEncounter_Script {
 
 script IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue {
     lock
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-    msgbox(gText_IGuessWeShouldBeNiceNow_Ready,MSGBOX_NPC)
-        callnative(ClearMugshot)
-    applymovement(BIANCA,Common_Movement_FaceUp)
+    msgbox(gText_IGuessWeShouldBeNiceNow_Ready,MSGBOX_NPC,SPEAKER_BIANCA)
+            applymovement(BIANCA,Common_Movement_FaceUp)
     waitmovement(0)
     release
     end
@@ -270,35 +223,20 @@ script IGuessWeShouldBeNiceNow_ClearBossPokemon_Script {
 script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
     applymovement(BIANCA,Common_Movement_FaceLeft)
     applymovement(PLAYER,Common_Movement_FaceRight)
-    setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_OkayImStarting)
+        msgbox(gText_IGuessWeShouldBeNiceNow_OkayImStarting,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_WhatAmIMissing)
+        msgbox(gText_IGuessWeShouldBeNiceNow_WhatAmIMissing,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_ThosePuzzlesWerent)
+        msgbox(gText_IGuessWeShouldBeNiceNow_ThosePuzzlesWerent,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_YeahIHadToThink)
+        msgbox(gText_IGuessWeShouldBeNiceNow_YeahIHadToThink,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_ExactlyYouHad)
+        msgbox(gText_IGuessWeShouldBeNiceNow_ExactlyYouHad,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_SoTheyreTraining)
+        msgbox(gText_IGuessWeShouldBeNiceNow_SoTheyreTraining,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast,,SPEAKER_BIANCA)
+                closemessage
 
         applymovement(BIANCA,IGuessWeShouldBeNiceNow_GetBook)
         waitmovement(0)
@@ -306,16 +244,12 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
         waitmovement(0)
         removeobject(4)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_SaysOnTheBack)
+        msgbox(gText_IGuessWeShouldBeNiceNow_SaysOnTheBack,,SPEAKER_BIANCA)
 
         applymovement(BIANCA,IGuessWeShouldBeNiceNow_LookAround)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting,MSGBOX_YESNO)
+        msgbox(gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting,MSGBOX_YESNO,,SPEAKER_BIANCA)
         setvar(VAR_ROUTE115_STATE,1)
 
         if (var(VAR_RESULT) == YES) {
@@ -357,61 +291,36 @@ script IGuessWeShouldBeNiceNow_End_Dialogue {
     //PSF TODO move to inside of the airbnb behind a sleep script    
         setvar(VAR_MUIRWOODS_STATE,BIANCA_WAITING_MUIRWOODS)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming)
+        msgbox(gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_WhatTookYouSoLong)
+        msgbox(gText_IGuessWeShouldBeNiceNow_WhatTookYouSoLong,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_ISpottedAnInteresting)
+        msgbox(gText_IGuessWeShouldBeNiceNow_ISpottedAnInteresting,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_WaitWhat)
+        msgbox(gText_IGuessWeShouldBeNiceNow_WaitWhat,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_AllOfMyPokemon)
+        msgbox(gText_IGuessWeShouldBeNiceNow_AllOfMyPokemon,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_IDidntKnow)
+        msgbox(gText_IGuessWeShouldBeNiceNow_IDidntKnow,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_DaddyOwnsA)
+        msgbox(gText_IGuessWeShouldBeNiceNow_DaddyOwnsA,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_WaitWhatIThought)
+        msgbox(gText_IGuessWeShouldBeNiceNow_WaitWhatIThought,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace,,SPEAKER_BIANCA)
+                closemessage
 
         applymovement(BIANCA,IGuessWeShouldBeNiceNow_GestureHouse)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_ImGonnaCrash)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_ImGonnaCrash,,SPEAKER_BIANCA)
+                closemessage
 
 
         applymovement(BIANCA,IGuessWeShouldBeNiceNow_WalkTowardsHouse_Movement)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
 
         waitmovement(BIANCA)
         removeobject(BIANCA)

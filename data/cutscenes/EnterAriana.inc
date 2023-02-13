@@ -56,7 +56,7 @@ EnterAriana_PreventPlayerProgress_Dialogue_4:
 	waitse
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox gText_EnterAriana_NoCutting
+	msgbox gText_EnterAriana_NoCutting, MSGBOX_DEFAULT, SPEAKER_RESIDENT_A
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -82,29 +82,17 @@ EnterAriana_PreventPlayerProgress_Dialogue_8:
 
 EnterAriana_Intro_Dialogue::
 	lockall
-	msgbox gText_EnterAriana_WhoTheHell
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_NoSorry
-	callnative ClearMugshot
-	msgbox gText_EnterAriana_TryingToHelpEverybody
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_ImNotInLine
-	callnative ClearMugshot
-	msgbox gText_EnterAriana_SwearToArceus
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_WaitListen
-	callnative ClearMugshot
-	msgbox gText_EnterAriana_NoPunk
+	msgbox gText_EnterAriana_WhoTheHell, MSGBOX_DEFAULT, SPEAKER_SIARL, , EMOTE_ANGRY
+	msgbox gText_EnterAriana_NoSorry, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterAriana_TryingToHelpEverybody, MSGBOX_DEFAULT, SPEAKER_SIARL, , EMOTE_ANGRY
+	msgbox gText_EnterAriana_ImNotInLine, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterAriana_SwearToArceus, MSGBOX_DEFAULT, SPEAKER_SIARL, TAIL_SHOUT, EMOTE_ANGRY
+	msgbox gText_EnterAriana_WaitListen, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_SHOUT
+	msgbox gText_EnterAriana_NoPunk, MSGBOX_DEFAULT, SPEAKER_SIARL, TAIL_SHOUT, EMOTE_ANGRY
 	applymovement 1, Common_Movement_FaceDown
 	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_HoldOn
+	msgbox gText_EnterAriana_HoldOn, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, EnterAriana_ArianaWalkToPlayer_Movement
 	waitmovement 1
 	applymovement 2, Common_Movement_FaceRight
@@ -114,32 +102,21 @@ EnterAriana_Intro_Dialogue::
 
 
 EnterAriana_Explain_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_DidYouListen
+	msgbox gText_EnterAriana_DidYouListen, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
-	callnative ClearMugshot
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 2
 	applymovement 2, Common_Movement_Delay48
 	waitmovement 2
 	applymovement 2, Common_Movement_FaceRight
 	waitmovement 2
-	msgbox gText_EnterAriana_TryingToCut
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_WhatYouHeard
-	callnative ClearMugshot
+	msgbox gText_EnterAriana_TryingToCut, MSGBOX_DEFAULT, SPEAKER_SIARL, , EMOTE_ANGRY
+	msgbox gText_EnterAriana_WhatYouHeard, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_WhatProblem
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_AsshatInterrupted
-	callnative ClearMugshot
+	msgbox gText_EnterAriana_WhatProblem, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_EnterAriana_AsshatInterrupted, MSGBOX_DEFAULT, SPEAKER_ZOEY, , EMOTE_ANGRY
 	closemessage
 	goto EnterAriana_Apology_Dialogue
 	return
@@ -148,37 +125,24 @@ EnterAriana_Explain_Dialogue::
 EnterAriana_Apology_Dialogue::
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_ShouldntTheCones
-	callnative ClearMugshot
-	msgbox gText_EnterAriana_IForgotToSet
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_BeratedSomebody
-	callnative ClearMugshot
-	msgbox gText_EnterAriana_Sorry
+	msgbox gText_EnterAriana_ShouldntTheCones, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_EnterAriana_IForgotToSet, MSGBOX_DEFAULT, SPEAKER_SIARL, TAIL_WHISPER, EMOTE_SWEAT
+	msgbox gText_EnterAriana_BeratedSomebody, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_EnterAriana_Sorry, MSGBOX_DEFAULT, SPEAKER_SIARL
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_WhatsYourName
-	callnative ClearMugshot
+	msgbox gText_EnterAriana_WhatsYourName, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 1
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 2
-	msgbox gText_EnterAriana_IGotHeated
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_DontRuin
-	callnative ClearMugshot
+	msgbox gText_EnterAriana_IGotHeated, , SPEAKER_SIARL
+	msgbox gText_EnterAriana_DontRuin, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	applymovement 2, Common_Movement_FaceRight
-	msgbox gText_EnterAriana_ShouldBeNear
+	msgbox gText_EnterAriana_ShouldBeNear, , SPEAKER_SIARL
 	closemessage
 	applymovement 1, EnterAriana_HopOverTable_Movement
 	waitmovement 1
@@ -186,10 +150,7 @@ EnterAriana_Apology_Dialogue::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 2
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_NeedToWalk
-	callnative ClearMugshot
+	msgbox gText_EnterAriana_NeedToWalk, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	applymovement 1, EnterAriana_WalkToLine_Movement
 	applymovement OBJ_EVENT_ID_PLAYER, EnterAriana_PlayerWalkToLine_Movement
@@ -198,31 +159,14 @@ EnterAriana_Apology_Dialogue::
 
 
 EnterAriana_ExplainHope_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_WhatIsEverybody
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_Hope
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_WaitHope
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_ICanGet
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_ThatsAmazing
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_CityIsntSuperChill
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_ButYoureHelping
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_YoureNotFromHere
-	callnative ClearMugshot
+	msgbox gText_EnterAriana_WhatIsEverybody, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterAriana_Hope, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_EnterAriana_WaitHope, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterAriana_ICanGet, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_EnterAriana_ThatsAmazing, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterAriana_CityIsntSuperChill, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_EnterAriana_ButYoureHelping, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterAriana_YoureNotFromHere, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	applymovement 1, EnterAriana_PlaceConesA_Movement
 	waitmovement 1
@@ -235,10 +179,7 @@ EnterAriana_ExplainHope_Dialogue::
 	special DrawWholeMapView
 	applymovement 1, EnterAriana_PlaceConesC_Movement
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_BetweenTheCones
-	callnative ClearMugshot
+	msgbox gText_EnterAriana_BetweenTheCones, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	call EnterAriana_MoveLine_Script
 	goto EnterAriana_GiveKeystone_Dialogue
@@ -263,37 +204,21 @@ EnterAriana_MoveLine_Script::
 EnterAriana_GiveKeystone_Dialogue::
 	applymovement 1, EnterAriana_FacePlayer_Movement
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_ThereYouGo
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_AGym
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_WellGoodLuck
-	callnative ClearMugshot
+	msgbox gText_EnterAriana_ThereYouGo, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_EnterAriana_AGym, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterAriana_WellGoodLuck, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	applymovement 1, Common_Movement_WalkInPlaceUp
 	waitmovement 1
 	giveitem ITEM_MEGA_RING
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_IfYouHaveThat
+	msgbox gText_EnterAriana_IfYouHaveThat, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	special CheckMegaEvolutionPartyMember
 	compare VAR_TEMP_1, 6
 	goto_if_lt EnterAriana_GiveKeystone_Dialogue_2
 EnterAriana_GiveKeystone_Dialogue_1:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_ThankYouSo
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_HopeThatMakes
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_EnterAriana_IGottaGo
-	callnative ClearMugshot
+	msgbox gText_EnterAriana_ThankYouSo, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterAriana_HopeThatMakes, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_EnterAriana_IGottaGo, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	applymovement 1, EnterAriana_WalkAway_Movement
 	waitmovement 1
@@ -313,11 +238,9 @@ EnterAriana_GiveKeystone_Dialogue_2:
 	case 4, EnterAriana_GiveKeystone_Dialogue_10
 	case 5, EnterAriana_GiveKeystone_Dialogue_11
 EnterAriana_GiveKeystone_Dialogue_4:
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
 	compare VAR_TEMP_2, 1
 	goto_if_ne EnterAriana_GiveKeystone_Dialogue_12
-	msgbox gTextEnterAriana_CanMegaEvolveSomeday
+	msgbox gTextEnterAriana_CanMegaEvolveSomeday, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	goto EnterAriana_GiveKeystone_Dialogue_1
 
 EnterAriana_GiveKeystone_Dialogue_6:
@@ -345,12 +268,12 @@ EnterAriana_GiveKeystone_Dialogue_11:
 	goto EnterAriana_GiveKeystone_Dialogue_4
 
 EnterAriana_GiveKeystone_Dialogue_12:
-	msgbox gTextEnterAriana_CanMegaEvolve
+	msgbox gTextEnterAriana_CanMegaEvolve, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	goto EnterAriana_GiveKeystone_Dialogue_1
 
 
 EnterAriana_GruntApologize_Dialogue::
-	msgbox gText_EnterAriana_SorryAgain, MSGBOX_NPC
+	msgbox gText_EnterAriana_SorryAgain, MSGBOX_NPC, SPEAKER_SIARL
 	end
 
 

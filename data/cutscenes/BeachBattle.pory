@@ -21,11 +21,9 @@ script BeachBattle_BattleSetUp_Script {
 
 script BeachBattle_BiancaWalkToPlayer {
     lock
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_BeachBattle_HeyPlayer)
+        msgbox(gText_BeachBattle_HeyPlayer,MSGBOX_DEFAULT,SPEAKER_BIANCA)
         closemessage
-        callnative(ClearMugshot)
+
         playse(SE_PIN)
         clearflag(FLAG_TEMP_1)
         addobject(BIANCA)
@@ -53,17 +51,15 @@ script BeachBattle_Bianca_Event_Script {
 script BeachBattle_Approach_Dialogue {
         setvar(VAR_BEACH_BATTLE_STATE,SAVE_BIANCA_BEACH)
         setobjectxyperm(BIANCA,10,24) 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_BeachBattle_ImHeadingNorth)
+        msgbox(gText_BeachBattle_ImHeadingNorth,MSGBOX_DEFAULT,SPEAKER_BIANCA)
 
         special(GetNumberOfBadges)
 
         switch (var(VAR_RESULT)) {
-            case 8: msgbox(gText_BeachBattle_OhShit)
+            case 8: msgbox(gText_BeachBattle_OhShit,MSGBOX_DEFAULT,SPEAKER_BIANCA,TAIL_TALK,EMOTE_SHOCK)
             case 7: goto(BeachBattle_SevenBadges_Dialogue)
-            case 6: msgbox(gText_BeachBattle_TwoLeft) 
-            case 5: msgbox(gText_BeachBattle_HmmOnlyFive)
+            case 6: msgbox(gText_BeachBattle_TwoLeft,MSGBOX_DEFAULT,SPEAKER_BIANCA)
+            case 5: msgbox(gText_BeachBattle_HmmOnlyFive,MSGBOX_DEFAULT,SPEAKER_BIANCA)
             case 4: goto(BeachBattle_FourBadges_Dialogue)
         }
         goto(BeachBattle_SaveProgress)
@@ -71,25 +67,21 @@ script BeachBattle_Approach_Dialogue {
 
 
 script BeachBattle_SevenBadges_Dialogue {
-    msgbox(gText_BeachBattle_OhNiceLastOne)
+    msgbox(gText_BeachBattle_OhNiceLastOne,MSGBOX_DEFAULT,SPEAKER_BIANCA,TAIL_TALK,EMOTE_HAPPY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_BeachBattle_JustTheOneIn)
+        msgbox(gText_BeachBattle_JustTheOneIn,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         goto(BeachBattle_SaveProgress)
 }
 
 script BeachBattle_FourBadges_Dialogue {
-        msgbox(gText_BeachBattle_ImNotSureThatSlow)
+        msgbox(gText_BeachBattle_ImNotSureThatSlow,MSGBOX_DEFAULT,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_BeachBattle_IveBeenALittleDistracted)
+        msgbox(gText_BeachBattle_IveBeenALittleDistracted,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         goto(BeachBattle_SaveProgress)
 }
 
 script BeachBattle_SaveProgress {
-    callnative(ClearMugshot)
+    closemessage
     call(Common_EventScript_SaveGame)
     closemessage
     goto(BeachBattle_StartBattle_Script)
@@ -97,12 +89,11 @@ script BeachBattle_SaveProgress {
 
 script BeachBattle_StartBattle_Script {
     lock
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_BeachBattle_MyBrainIsScrambled)
+        msgbox(gText_BeachBattle_MyBrainIsScrambled,MSGBOX_DEFAULT,SPEAKER_BIANCA)
+        closemessage
         trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_MUDKIP,gText_BeachBattle_ImLegitShook)
         closemessage
-        callnative(ClearMugshot)
+
         goto(BeachBattle_PostBattle_Dialogue)
 }
 
@@ -112,20 +103,16 @@ script BeachBattle_PostBattle_Dialogue {
         playbgm(MUS_ENCOUNTER_BRENDAN,TRUE)
         setvar(VAR_BEACH_BATTLE_STATE,POST_BEACH_BATTLE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_BeachBattle_WellImNotSurprised)
+        msgbox(gText_BeachBattle_WellImNotSurprised,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_BeachBattle_UghIShouldBe)
+        msgbox(gText_BeachBattle_UghIShouldBe,MSGBOX_DEFAULT,SPEAKER_BIANCA)
 
         if (flag(FLAG_BADGE05_GET)){
-            msgbox(gText_BeachBattle_IfItTakesATeam)
+            msgbox(gText_BeachBattle_IfItTakesATeam,TAIL_WHISPER,SPEAKER_BIANCA)
         }
 
-    msgbox(gText_BeachBattle_NextTimeIllHave)
-        callnative(ClearMugshot)
+    msgbox(gText_BeachBattle_NextTimeIllHave,TAIL_TALK,SPEAKER_BIANCA)
+
         closemessage
 
         applymovement(BIANCA,BeachBattle_WalkAway)

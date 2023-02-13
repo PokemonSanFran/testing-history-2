@@ -3,11 +3,11 @@
 
 #include "gba/types.h"
 
-#define MGBA_LOG_FATAL  (0)
-#define MGBA_LOG_ERROR  (1)
-#define MGBA_LOG_WARN   (2)
-#define MGBA_LOG_INFO   (3)
-#define MGBA_LOG_DEBUG  (4)
+//#define MGBA_LOG_FATAL  (0)
+//#define MGBA_LOG_ERROR  (1)
+//#define MGBA_LOG_WARN   (2)
+//#define MGBA_LOG_INFO   (3)
+//#define MGBA_LOG_DEBUG  (4)
 
 #ifdef NDEBUG
 #define DebugPrintf(pBuf, ...)

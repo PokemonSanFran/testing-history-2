@@ -26,9 +26,7 @@ Finals_StopPlayerLeaveLockers_Script::
 	lock
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_Finals_YourMatchIsUp
+	msgbox gText_Finals_YourMatchIsUp, , SPEAKER_BIANCA
 	closemessage
 	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp

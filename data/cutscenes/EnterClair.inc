@@ -21,25 +21,15 @@ EnterClair_Event_Script_4:
 
 EnterClair_AskAboutGym_Dialogue::
 	setvar VAR_GYM_8_STATE, GYM_SAVE_BEFORE_LEADER
-	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
-	callnative DrawMugshot
-	msgbox gText_EnterClair_SkatingAround, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterClair_ItsInteresting
-	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
-	callnative DrawMugshot
-	msgbox gText_EnterClair_OhComeOn
+	msgbox gText_EnterClair_SkatingAround, MSGBOX_NPC, SPEAKER_CLAIR
+	msgbox gText_EnterClair_ItsInteresting, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterClair_OhComeOn, , SPEAKER_CLAIR
 	setvar VAR_MUGSHOT, MUGSHOT_HILDA
 	callnative DrawMugshot
 	msgbox gText_EnterClair_WeirdItsWeird
-	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
-	callnative DrawMugshot
-	msgbox gText_EnterClair_IveAlwaysSaid
-	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
-	callnative DrawMugshot
-	msgbox gText_EnterClair_WhenIWasAwarded
-	callnative ClearMugshot
+	msgbox gText_EnterClair_IveAlwaysSaid, , SPEAKER_CLAIR
+	msgbox gText_EnterClair_WhenIWasAwarded, , SPEAKER_CLAIR
+	closemessage
 	call Common_EventScript_SaveGame
 	closemessage
 	goto EnterClair_StartGymBattle_Script
@@ -47,22 +37,16 @@ EnterClair_AskAboutGym_Dialogue::
 
 
 EnterClair_FacePlayerBeforeBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
-	callnative DrawMugshot
-	msgbox gText_EnterClair_ButTheyNeverWill, MSGBOX_NPC
+	msgbox gText_EnterClair_ButTheyNeverWill, MSGBOX_NPC, , SPEAKER_CLAIR
 	closemessage
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_JUAN_1, gText_EnterClair_AhIGotTooGreedy
 	goto EnterClair_ClairDeafeated_Script
 	return
 
 
 EnterClair_StartGymBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
-	callnative DrawMugshot
-	msgbox gText_EnterClair_ButTheyNeverWill
+	msgbox gText_EnterClair_ButTheyNeverWill, , SPEAKER_CLAIR
 	closemessage
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_JUAN_1, gText_EnterClair_AhIGotTooGreedy
 	goto EnterClair_ClairDeafeated_Script
 	return
@@ -84,22 +68,16 @@ EnterClair_ClairDeafeated_Script::
 EnterClair_PostGymBattle1_Dialogue::
 	lock
 	setvar VAR_GYM_8_STATE, GYM_EXPLAINED_BADGE_AND_TM
-	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
-	callnative DrawMugshot
-	msgbox gText_EnterClair_ThatTMwill, MSGBOX_NPC
+	msgbox gText_EnterClair_ThatTMwill, MSGBOX_NPC, , SPEAKER_CLAIR
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
 
 EnterClair_PostGymBattle2_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_CLAIR
-	callnative DrawMugshot
-	msgbox gText_EnterClair_IGetSoEmotional, MSGBOX_NPC
+	msgbox gText_EnterClair_IGetSoEmotional, MSGBOX_NPC, , SPEAKER_CLAIR
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 

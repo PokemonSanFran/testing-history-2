@@ -33,25 +33,20 @@ LetsBurnThisMotherDown_Interact_Oak_Script_3:
 
 
 LetsBurnThisMotherDown_ActiveQuest_Dialogue::
-	msgbox gText_LetsBurnThisMotherDown_YoureCloserToThe, MSGBOX_NPC
+	msgbox gText_LetsBurnThisMotherDown_YoureCloserToThe, MSGBOX_NPC, SPEAKER_OAK
 	end
 
 
 LetsBurnThisMotherDown_CompleteQuest_Dialogue::
-	msgbox gText_LetsBurnThisMotherDown_ImStillShocked, MSGBOX_NPC
+	msgbox gText_LetsBurnThisMotherDown_ImStillShocked, MSGBOX_NPC, SPEAKER_OAK
 	end
 
 
 LetsBurnThisMotherDown_StartQuest_Dialogue::
 	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, ASSIGNED_BURN_MOTHER
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_WeStillNeedToFind, MSGBOX_NPC
-	msgbox gText_LetsBurnThisMotherDown_YoureCloserToThe
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_INeedToTalk
-	callnative ClearMugshot
+	msgbox gText_LetsBurnThisMotherDown_WeStillNeedToFind, MSGBOX_NPC, SPEAKER_OAK
+	msgbox gText_LetsBurnThisMotherDown_YoureCloserToThe, , SPEAKER_OAK
+	msgbox gText_LetsBurnThisMotherDown_INeedToTalk, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	startquest QUEST_LETS_BURN_THIS_MOTHER_DOWN
 	closemessage
 	release
@@ -75,28 +70,15 @@ LetsBurnThisMotherDown_ConfrontPlayer::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	applymovement 5, LetsBurnThisMotherDown_WalkTowardsPlayer
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_YouChoseTheWrong
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_IKnowYouWant
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_YouDontThinkWeve
+	msgbox gText_LetsBurnThisMotherDown_YouChoseTheWrong, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_LetsBurnThisMotherDown_IKnowYouWant, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_LetsBurnThisMotherDown_YouDontThinkWeve, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	applymovement 5, Common_Movement_WalkDown
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_TheyIgnoreUs
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_DotDotDot
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_IAlwaysHeld
+	msgbox gText_LetsBurnThisMotherDown_TheyIgnoreUs, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_LetsBurnThisMotherDown_DotDotDot, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_LetsBurnThisMotherDown_IAlwaysHeld, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	call Common_EventScript_SaveGame
 	closemessage
 	goto LetsBurnThisMotherDown_StartBattle_Script
@@ -116,11 +98,8 @@ LetsBurnThisMotherDown_StartBattle_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, LetsBurnThisMotherDown_WalkFromUp
 LetsBurnThisMotherDown_StartBattle_Script_1:
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_ImGoingForRevolution
+	msgbox gText_LetsBurnThisMotherDown_ImGoingForRevolution, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_WALLY_VR_5, gText_LetsBurnThisMotherDown_DamnIt
 	goto LetsBurnThisMotherDown_PostBattle_Dialogue
 	return
@@ -136,20 +115,12 @@ LetsBurnThisMotherDown_StartBattle_Script_3:
 LetsBurnThisMotherDown_PostBattle_Dialogue::
 	setvar VAR_LETS_BURN_THIS_MOTHER_STATE, DEFEATED_ARCHER_ALCATRAZ
 	questmenu QUEST_MENU_SET_REWARD, QUEST_LETS_BURN_THIS_MOTHER_DOWN
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_ItDoesntMatter
-	callnative ClearMugshot
+	msgbox gText_LetsBurnThisMotherDown_ItDoesntMatter, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	applymovement 5, LetsBurnThisMotherDown_WalkBackwards
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_ItsNotFair
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_HyperBeam
-	callnative ClearMugshot
+	msgbox gText_LetsBurnThisMotherDown_ItsNotFair, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_LetsBurnThisMotherDown_HyperBeam, , SPEAKER_BIANCA
 	closemessage
 	playse SE_M_HYPER_BEAM
 	waitse
@@ -162,25 +133,12 @@ LetsBurnThisMotherDown_PostBattle_Dialogue::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	applymovement 6, LetsBurnThisMotherDown_Attack
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_WhatTheHell
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_IFollowedYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_NoITheyreNot
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_YeahNoShit
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_IKnow
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_TheCopsShould
-	callnative ClearMugshot
+	msgbox gText_LetsBurnThisMotherDown_WhatTheHell, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_LetsBurnThisMotherDown_IFollowedYou, , SPEAKER_BIANCA
+	msgbox gText_LetsBurnThisMotherDown_NoITheyreNot, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_LetsBurnThisMotherDown_YeahNoShit, , SPEAKER_BIANCA
+	msgbox gText_LetsBurnThisMotherDown_IKnow, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_LetsBurnThisMotherDown_TheCopsShould, , SPEAKER_BIANCA
 	closemessage
 	clearflag FLAG_TEMP_7
 	addobject 7
@@ -205,24 +163,14 @@ LetsBurnThisMother_ShowRose_Script::
 LetsBurnThisMotherDown_MissionComplete_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_ImSorryIReally
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_YoureYoung
-	callnative ClearMugshot
+	msgbox gText_LetsBurnThisMotherDown_ImSorryIReally, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_LetsBurnThisMotherDown_YoureYoung, , SPEAKER_ROSE
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	applymovement 5, Common_Movement_FaceUp
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_ImStillShocked
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_LetsBurnThisMotherDown_ThePoliceTold
+	msgbox gText_LetsBurnThisMotherDown_ImStillShocked, , SPEAKER_OAK
+	msgbox gText_LetsBurnThisMotherDown_ThePoliceTold, , SPEAKER_ROSE
 	closemessage
-	callnative ClearMugshot
 	addvar VAR_STORYLINE_STATE, 1
 	applymovement 5, LetsBurnThisMotherDown_LeaveRoom
 	waitmovement 5

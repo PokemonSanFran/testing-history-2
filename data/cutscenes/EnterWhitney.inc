@@ -34,22 +34,14 @@ EnterWhitney_WalkToBattlefield_Script::
 
 EnterWhitney_MuseumArrangement_Dialogue::
 	setvar VAR_GYM_3_STATE, GYM_LEADER_ON_BATTLEFIELD
-	setvar VAR_MUGSHOT, MUGSHOT_WHITNEY
-	msgbox gText_EnterWhitney_IWasThinking, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterWhitney_IWasThinking, MSGBOX_NPC, SPEAKER_WHITNEY
 	closemessage
 	applymovement 1, WhitneyLookAround_Movement
 	waitmovement 0
 	callnative DrawMugshot
 	msgbox gText_EnterWhitney_HasYourVisit
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterWhitney_UhYup
-	setvar VAR_MUGSHOT, MUGSHOT_WHITNEY
-	callnative DrawMugshot
-	msgbox gText_EnterWhitney_ICanHearTheOrre
-	callnative ClearMugshot
+	msgbox gText_EnterWhitney_UhYup, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterWhitney_ICanHearTheOrre, , SPEAKER_WHITNEY
 	call Common_EventScript_SaveGame
 	closemessage
 	goto EnterWhitney_StartBattle_Script
@@ -57,8 +49,6 @@ EnterWhitney_MuseumArrangement_Dialogue::
 
 
 EnterWhitney_StartBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_WHITNEY
-	callnative DrawMugshot
 	trainerbattle_single TRAINER_WATTSON_1, gText_EnterWhitney_LetsSeeHow, gText_EnterWhitney_IfThisBattle, EnterWhitney_Defeated_Script, NO_MUSIC
 	return
 
@@ -69,10 +59,8 @@ EnterWhitney_Defeated_Script::
 	setvar VAR_GYM_3_STATE, GYM_DEFEATED_LEADER
 	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_WHITNEY_STATE, BATTLE_1_COMPLETE
-	setvar VAR_MUGSHOT, MUGSHOT_WHITNEY
-	msgbox gText_EnterWhitney_WowIllReallyNeed
+	msgbox gText_EnterWhitney_WowIllReallyNeed, , SPEAKER_WHITNEY
 	closemessage
-	callnative ClearMugshot
 	msgbox gText_EnterWhitney_YouRecieved
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM34
@@ -83,19 +71,14 @@ EnterWhitney_Defeated_Script::
 
 EnterWhitney_PostBattle_Dialogue::
 	setvar VAR_GYM_3_STATE, GYM_EXPLAINED_BADGE_AND_TM
-	setvar VAR_MUGSHOT, MUGSHOT_WHITNEY
-	msgbox gText_EnterWhitney_ThatPositiveSanction, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterWhitney_ThatPositiveSanction, MSGBOX_NPC, SPEAKER_WHITNEY
 	closemessage
 	releaseall
 	end
 
 
 EnterWhitney_PostBattle_Dialogue2::
-	setvar VAR_MUGSHOT, MUGSHOT_WHITNEY
-	callnative DrawMugshot
-	msgbox gText_EnterWhitney_WellNeedToBattle, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterWhitney_WellNeedToBattle, MSGBOX_NPC, SPEAKER_WHITNEY
 	closemessage
 	releaseall
 	end

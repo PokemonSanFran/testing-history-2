@@ -37,8 +37,8 @@ HowDoWeGetHome_FerryFixed_Script_2:
 HowDoWeGetHome_YellingDistance_Dialogue::
 	setvar VAR_DOGPATCH_STATE, POST_HOW_DO_WE_GET_HOME
 	locktarget
-	msgbox gText_HowDoWeGetHome_LookWeDontWant
-	msgbox gText_HowDoWeGetHome_OrJustLeave
+	msgbox gText_HowDoWeGetHome_LookWeDontWant, , SPEAKER_JULIUS
+	msgbox gText_HowDoWeGetHome_OrJustLeave, , SPEAKER_MADISON
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 	fadescreen FADE_TO_BLACK
@@ -47,8 +47,8 @@ HowDoWeGetHome_YellingDistance_Dialogue::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	TeleportCamera 7, 22
 	fadescreen FADE_FROM_BLACK
-	msgbox gText_HowDoWeGetHome_LosersYouWannaSay
-	msgbox gText_HowDoWeGetHome_YouThinkYouScareMe
+	msgbox gText_HowDoWeGetHome_LosersYouWannaSay, , SPEAKER_JULIUS
+	msgbox gText_HowDoWeGetHome_YouThinkYouScareMe, , SPEAKER_MADISON
 	closemessage
 	goto HowDoWeGetHome_ArianaGetsInvolved_Dialogue
 	return
@@ -58,20 +58,14 @@ HowDoWeGetHome_ArianaGetsInvolved_Dialogue::
 	applymovement 21, HowDoWeGetHome_LeaveFight_Movement
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_HowDoWeGetHome_YoChillOut
+	msgbox gText_HowDoWeGetHome_YoChillOut, , SPEAKER_ARIANA
 	callnative ClearMugshot
 	closemessage
 	call HowDoWeGetHome_ArianaEntrance_Script
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_HowDoWeGetHome_WereDoneWithThisBeef
+	msgbox gText_HowDoWeGetHome_WereDoneWithThisBeef, , SPEAKER_ARIANA
 	callnative ClearMugshot
-	msgbox gText_HowDoWeGetHome_ShouldntIMessYou
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_HowDoWeGetHome_TheWayYouThinkItIs
+	msgbox gText_HowDoWeGetHome_ShouldntIMessYou, , SPEAKER_MADISON
+	msgbox gText_HowDoWeGetHome_TheWayYouThinkItIs, , SPEAKER_ARIANA
 	callnative ClearMugshot
 	goto HowDoWeGetHome_CrowdRecgonizesAriana_Dialogue
 	return
@@ -81,17 +75,17 @@ HowDoWeGetHome_CrowdRecgonizesAriana_Dialogue::
 	applymovement 14, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceUp
 	applymovement 11, Common_Movement_FaceLeft
-	msgbox gText_HowDoWeGetHome_IThinkThats
+	msgbox gText_HowDoWeGetHome_IThinkThats, , SPEAKER_STRANDED_A
 	applymovement 2, Common_Movement_FaceRight
 	applymovement 12, Common_Movement_FaceLeft
 	applymovement 4, Common_Movement_FaceRight
 	applymovement 10, Common_Movement_FaceLeft
-	msgbox gText_HowDoWeGetHome_BetterBackDown
+	msgbox gText_HowDoWeGetHome_BetterBackDown, , SPEAKER_RESIDENT_E
 	applymovement 5, Common_Movement_FaceDown
-	msgbox gText_HowDoWeGetHome_ThreeTrainersAtOnce
+	msgbox gText_HowDoWeGetHome_ThreeTrainersAtOnce, , SPEAKER_RESIDENT_F
 	applymovement 13, Common_Movement_FaceDown
 	applymovement 9, Common_Movement_FaceUp
-	msgbox gText_HowDoWeGetHome_Worldstar
+	msgbox gText_HowDoWeGetHome_Worldstar, , SPEAKER_RESIDENT_B
 	closemessage
 	goto HowDoWeGetHome_MadisonHowDoWeGetHome_Dialogue
 	return
@@ -102,7 +96,7 @@ HowDoWeGetHome_MadisonHowDoWeGetHome_Dialogue::
 	waitmovement 0
 	applymovement 6, Common_Movement_FaceDown
 	waitmovement 0
-	msgbox gText_HowDoWeGetHome_YouKnowWhatWhatever
+	msgbox gText_HowDoWeGetHome_YouKnowWhatWhatever, , SPEAKER_MADISON
 	closemessage
 	applymovement 6, HowDoWeGetHome_Madison_LeaveFight_Movement
 	applymovement OBJ_EVENT_ID_PLAYER, HowDoWeGetHome_MoveOutOfWay_Movement

@@ -19,11 +19,8 @@ script ImProbablyBetterThanYou_MovePlayerInside_Script {
 script ImProbablyBetterThanYou_StandingOutside_Dialogue {
     lockall
         setvar(VAR_PLAYER_HOME_STATE,HAS_NOT_MET_BIANCA)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImProbablyBetterThanYou_DeepBreath)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_ImProbablyBetterThanYou_DeepBreath,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
         call(ImProbablyBetterThanYou_MovePlayerInside_Script)
         applymovement(PLAYER,Common_Movement_WalkUp)
         waitmovement(0)
@@ -40,52 +37,40 @@ script ImProbablyBetterThanYou_BiancaIntro_Dialogue {
         waitmovement(0)
         applymovement(BIANCA,ImProbablyBetterThanYou_WalkToPlayer)
         waitmovement(0)
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImProbablyBetterThanYou_YouMustBe)
-        msgbox(gText_ImProbablyBetterThanYou_WelcomeToTheMost)
+        msgbox(gText_ImProbablyBetterThanYou_YouMustBe,,SPEAKER_BIANCA)
+        msgbox(gText_ImProbablyBetterThanYou_WelcomeToTheMost,,SPEAKER_BIANCA)
         closemessage
-        callnative(ClearMugshot)
-        goto (ImProbablyBetterThanYou_KindaShabby_Dialogue) 
+                goto (ImProbablyBetterThanYou_KindaShabby_Dialogue) 
         end
 }
 
 script ImProbablyBetterThanYou_KindaShabby_Dialogue {
         applymovement(BIANCA,ImProbablyBetterThanYou_LookAround)
         waitmovement(0)
-        msgbox(gText_ImProbablyBetterThanYou_KindaShabbyHuh)
+        msgbox(gText_ImProbablyBetterThanYou_KindaShabbyHuh,,SPEAKER_BIANCA)
         closemessage
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImProbablyBetterThanYou_OhYeahUh)
-        msgbox(gText_ImProbablyBetterThanYou_ThisHouseIsFriggin)
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImProbablyBetterThanYou_MyFlightWasEarlierToday)
+        msgbox(gText_ImProbablyBetterThanYou_OhYeahUh,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_ImProbablyBetterThanYou_ThisHouseIsFriggin,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+        msgbox(gText_ImProbablyBetterThanYou_MyFlightWasEarlierToday,,SPEAKER_BIANCA)
         goto(ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue) 
         end
 }
 
 script ImProbablyBetterThanYou_FoodAndWhereYouFrom_Dialogue {
-        msgbox(gText_ImProbablyBetterThanYou_IOrderedSomeFoodToo)
-        msgbox(gText_ImProbablyBetterThanYou_WhereAreYouFrom)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImProbablyBetterThanYou_AgateVillageOrre)
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImProbablyBetterThanYou_UndellaTownUnova)
+        msgbox(gText_ImProbablyBetterThanYou_IOrderedSomeFoodToo,,SPEAKER_BIANCA)
+        msgbox(gText_ImProbablyBetterThanYou_WhereAreYouFrom,,SPEAKER_BIANCA)
+        msgbox(gText_ImProbablyBetterThanYou_AgateVillageOrre,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        msgbox(gText_ImProbablyBetterThanYou_UndellaTownUnova,,SPEAKER_BIANCA)
         goto (ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue)
         end
 }
 
 script ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue {
-        msgbox(gText_ImProbablyBetterThanYou_IKnowOurOrientation)
+        msgbox(gText_ImProbablyBetterThanYou_IKnowOurOrientation,,SPEAKER_BIANCA)
         applymovement(BIANCA,ImProbablyBetterThanYou_GestureUpstairs)
         waitmovement(0)
-        msgbox(gText_ImProbablyBetterThanYou_ButBothRooms)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_ImProbablyBetterThanYou_ButBothRooms,,SPEAKER_BIANCA,,EMOTE_LAUGH)
+                closemessage
         applymovement(BIANCA,ImProbablyBetterThanYou_WalkToCouch)
         waitmovement(0)
         fadedefaultbgm
@@ -95,11 +80,8 @@ script ImProbablyBetterThanYou_TookTheLeftBedroom_Dialogue {
 
 script ImProbablyBetterThanYou_PreventPlayerLeaving_Script {
     lockall
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImProbablyBetterThanYou_IShouldCheckOut)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_ImProbablyBetterThanYou_IShouldCheckOut,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_THOUGHT)
+                closemessage
         applymovement(PLAYER,Common_Movement_WalkUp)
         waitmovement(0)
         releaseall
@@ -107,21 +89,17 @@ script ImProbablyBetterThanYou_PreventPlayerLeaving_Script {
 }
 
 script ImProbablyBetterThanYou_Annoyed_Dialogue {
-    setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-
     switch (var(VAR_TALKED_BIANCA)) {
         case 1: 
-            msgbox(gText_ImProbablyBetterThanYou_OhManAreYouTrying,MSGBOX_NPC)
+            msgbox(gText_ImProbablyBetterThanYou_OhManAreYouTrying,MSGBOX_NPC,,SPEAKER_BIANCA)
             addvar(VAR_TALKED_BIANCA,1)
         case 2:
             msgbox(gText_ImProbablyBetterThanYou_NomNomNom)
         default:
-            msgbox(gText_ImProbablyBetterThanYou_GoCheckOutYourRoom,MSGBOX_NPC)
+            msgbox(gText_ImProbablyBetterThanYou_GoCheckOutYourRoom,MSGBOX_NPC,SPEAKER_BIANCA)
             setvar(VAR_TALKED_BIANCA,1)
     }
-    callnative(ClearMugshot)
-    closemessage
+        closemessage
         applymovement(BIANCA,ImProbablyBetterThanYou_GoBackToFood)
             waitmovement(0)
 }
@@ -148,7 +126,7 @@ text gText_ImProbablyBetterThanYou_OhYeahUh {
 }
 
 text gText_ImProbablyBetterThanYou_ThisHouseIsFriggin {
-    format("*internal* This house is friggin' huge! Bigger than anywhere I've ever stayed, that's for sure...")
+    format("This house is friggin' huge! Bigger than anywhere I've ever stayed, that's for sure...")
 }
 
 text gText_ImProbablyBetterThanYou_MyFlightWasEarlierToday {

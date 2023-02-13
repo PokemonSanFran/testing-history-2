@@ -38,19 +38,16 @@ HousingProtest_CleanUp_Script::
 
 HousingProtest_StartChanting_Dialogue::
 	locktarget
-	msgbox gText_HousingProtest_RichAndRude
+	msgbox gText_HousingProtest_RichAndRude, , SPEAKER_PROTEST_A, TAIL_SHOUT, EMOTE_ANGRY
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	msgbox gText_HousingProtest_YoureNoGood
+	msgbox gText_HousingProtest_YoureNoGood, , SPEAKER_PROTEST_B, TAIL_SHOUT, EMOTE_ANGRY
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HousingProtest_EverybodySoAngry
-	callnative ClearMugshot
-	msgbox gText_HousingProtest_ArentGoingToStand
-	msgbox gText_HousingProtest_CantKeepPushing
-	msgbox gText_HousingProtest_DeserveToLive
+	msgbox gText_HousingProtest_EverybodySoAngry, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_HousingProtest_ArentGoingToStand, , SPEAKER_PROTEST_B, TAIL_SHOUT, EMOTE_ANGRY
+	msgbox gText_HousingProtest_CantKeepPushing, , SPEAKER_PROTEST_C, TAIL_SHOUT, EMOTE_ANGRY
+	msgbox gText_HousingProtest_DeserveToLive, , SPEAKER_PROTEST_D, TAIL_SHOUT, EMOTE_ANGRY
 	closemessage
 	goto HousingProtest_LandlordWalkOutside_Script
 	return
@@ -114,7 +111,7 @@ HousingProtest_LandlordWalkOutside_Script::
 
 
 HousingProtest_LandlordTalkToCrowd_Dialogue::
-	msgbox gText_HousingProtest_WeCanComeTo
+	msgbox gText_HousingProtest_WeCanComeTo, , SPEAKER_LANDLORD
 	closemessage
 	call HousingProtest_MovePlayerIntoPosition
 	clearflag FLAG_TEMP_1
@@ -127,17 +124,17 @@ HousingProtest_LandlordTalkToCrowd_Dialogue::
 	applymovement 12, Common_Movement_ExclamationMark
 	playse SE_PIN
 	waitmovement 0
-	msgbox gText_HousingProtest_OnlyThingWereUnderstanding
+	msgbox gText_HousingProtest_OnlyThingWereUnderstanding, , SPEAKER_RABIA
 	closemessage
 	applymovement 12, HousingProtest_BackUp
 	waitmovement 0
-	msgbox gText_HousingProtest_AreYouTrying
-	msgbox gText_HousingProtest_TheyCantArrest
-	msgbox gText_HousingProtest_AintGonnaBeNothing
+	msgbox gText_HousingProtest_AreYouTrying, , SPEAKER_LANDLORD
+	msgbox gText_HousingProtest_TheyCantArrest, , SPEAKER_RABIA
+	msgbox gText_HousingProtest_AintGonnaBeNothing, , SPEAKER_VITOMIR
 	closemessage
 	applymovement 10, Common_Movement_FaceRight
 	applymovement 11, Common_Movement_FaceRight
-	msgbox gText_HousingProtest_PeopleCantStayHere
+	msgbox gText_HousingProtest_PeopleCantStayHere, , SPEAKER_VITOMIR
 	closemessage
 	applymovement 1, Common_Movement_FaceLeft
 	applymovement 2, Common_Movement_FaceLeft
@@ -151,12 +148,12 @@ HousingProtest_LandlordTalkToCrowd_Dialogue::
 	waitmovement 0
 	applymovement 6, Common_Movement_ExclamationMark
 	waitmovement 0
-	msgbox gText_HousingProtest_Yeah
+	msgbox gText_HousingProtest_Yeah, , SPEAKER_PROTEST_A, TAIL_SHOUT, EMOTE_ANGRY
 	applymovement 3, Common_Movement_ExclamationMark
-	msgbox gText_HousingProtest_LetsDoThis
+	msgbox gText_HousingProtest_LetsDoThis, , SPEAKER_PROTEST_C, TAIL_SHOUT, EMOTE_ANGRY
 	waitmovement 0
 	applymovement 2, Common_Movement_ExclamationMark
-	msgbox gText_HousingProtest_ScrewThese
+	msgbox gText_HousingProtest_ScrewThese, , SPEAKER_PROTEST_D, TAIL_SHOUT, EMOTE_ANGRY
 	waitmovement 0
 	closemessage
 	applymovement 10, Common_Movement_FaceUp
@@ -168,26 +165,17 @@ HousingProtest_LandlordTalkToCrowd_Dialogue::
 	addobject 13
 	playmoncry SPECIES_TURTONATOR, CRY_MODE_ENCOUNTER
 	waitmoncry
-	msgbox gText_HousingProtest_ToTryReason
-	msgbox gText_HousingProtest_AintAThreat
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HousingProtest_CutItOut
-	callnative ClearMugshot
+	msgbox gText_HousingProtest_ToTryReason, , SPEAKER_LANDLORD
+	msgbox gText_HousingProtest_AintAThreat, , SPEAKER_VITOMIR
+	msgbox gText_HousingProtest_CutItOut, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, HousingProtest_DefendLandlord
 	applymovement 12, HousingProtest_StepAside
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HousingProtest_EveryTimeISee
-	callnative ClearMugshot
-	msgbox gText_HousingProtest_TheseClowns
-	msgbox gText_HousingProtest_ThisAintYourBusiness
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HousingProtest_ICanTakeBoth
-	callnative ClearMugshot
+	msgbox gText_HousingProtest_EveryTimeISee, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_HousingProtest_TheseClowns, , SPEAKER_RABIA
+	msgbox gText_HousingProtest_ThisAintYourBusiness, , SPEAKER_VITOMIR
+	msgbox gText_HousingProtest_ICanTakeBoth, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	setvar VAR_PSFROUTE63_STATE, SAVE_TEAMROCKET_PSFROUTE63
 	copyobjectxytoperm 12
@@ -201,7 +189,7 @@ HousingProtest_LandlordTalkToCrowd_Dialogue::
 
 HousingProtest_StartBattle_Script::
 	lockall
-	msgbox gText_HousingProtest_FineWithMe
+	msgbox gText_HousingProtest_FineWithMe, , SPEAKER_VITOMIR
 	closemessage
 	trainerbattle_no_intro TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis
 	goto HousingProtest_PostBattle_Dialogue
@@ -212,7 +200,7 @@ HousingProtest_StartBattle_PostSave_Script::
 	locktarget
 	setobjectnewmovementtype 4, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	setobjectnewmovementtype 6, MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT
-	msgbox gText_HousingProtest_FineWithMe, MSGBOX_NPC
+	msgbox gText_HousingProtest_FineWithMe, MSGBOX_NPC, SPEAKER_RABIA
 	closemessage
 	trainerbattle_no_intro TRAINER_GRUNT_AQUA_HIDEOUT_1, gText_HousingProtest_ThisIsNotHowThis
 	goto HousingProtest_PostBattle_Dialogue
@@ -228,8 +216,8 @@ HousingProtest_PostBattle_Dialogue::
 	waitse
 	removeobject 13
 	setvar VAR_PSFROUTE63_STATE, DEFEATED_TEAMROCKET_PSFROUTE63
-	msgbox gText_HousingProtest_YouProudNow
-	msgbox gText_HousingProtest_KeepOnLicking
+	msgbox gText_HousingProtest_YouProudNow, , SPEAKER_RABIA
+	msgbox gText_HousingProtest_KeepOnLicking, , SPEAKER_VITOMIR
 	closemessage
 	call HousingProtest_GruntsAwalkAway_Script
 	releaseall
@@ -269,15 +257,15 @@ HousingProtest_InteractLandlord_Script::
 	lock
 	compare VAR_PSFROUTE63_STATE, DEFEATED_TEAMROCKET_PSFROUTE63
 	goto_if_lt HousingProtest_InteractLandlord_Script_2
-	goto_if_set FLAG_TEMP_1F, HousingProtest_InteractLandlord_Script_3
-	msgbox gText_HousingProtest_ShouldHireThatSecurity, MSGBOX_NPC
+	goto_if_unset FLAG_TEMP_1F, HousingProtest_InteractLandlord_Script_3
+	msgbox gText_HousingProtest_ShouldHireThatSecurity, MSGBOX_NPC, SPEAKER_LANDLORD
 HousingProtest_InteractLandlord_Script_1:
 	closemessage
 	release
 	end
 
 HousingProtest_InteractLandlord_Script_2:
-	msgbox gText_HousingProtest_OhGod, MSGBOX_NPC
+	msgbox gText_HousingProtest_OhGod, MSGBOX_NPC, SPEAKER_LANDLORD
 	goto HousingProtest_InteractLandlord_Script_1
 
 HousingProtest_InteractLandlord_Script_3:
@@ -287,23 +275,14 @@ HousingProtest_InteractLandlord_Script_3:
 
 HousingProtest_InteractLandlord_Dialogue::
 	setflag FLAG_TEMP_1F
-	msgbox gText_HousingProtest_HasATendency, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HousingProtest_WhyWereProtesting
-	callnative ClearMugshot
-	msgbox gText_HousingProtest_EntitledToLiveAnyWhere
-	msgbox gText_HousingProtest_SubjectToTheSameRent
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HousingProtest_SoPeopleWereComing
-	callnative ClearMugshot
-	msgbox gText_HousingProtest_IGuessSo
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HousingProtest_WhatAboutThePolice
-	callnative ClearMugshot
-	msgbox gText_HousingProtest_MoreAndMoreCommon
+	msgbox gText_HousingProtest_HasATendency, MSGBOX_NPC, SPEAKER_LANDLORD
+	msgbox gText_HousingProtest_WhyWereProtesting, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_HousingProtest_EntitledToLiveAnyWhere, , SPEAKER_LANDLORD
+	msgbox gText_HousingProtest_SubjectToTheSameRent, , SPEAKER_LANDLORD, , EMOTE_ANGRY
+	msgbox gText_HousingProtest_SoPeopleWereComing, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_HousingProtest_IGuessSo, , SPEAKER_LANDLORD
+	msgbox gText_HousingProtest_WhatAboutThePolice, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_HousingProtest_MoreAndMoreCommon, , SPEAKER_LANDLORD
 	return
 
 

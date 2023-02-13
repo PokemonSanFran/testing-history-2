@@ -20,27 +20,13 @@ EnterMorty_Event_Script_4:
 
 
 EnterMorty_MortyIntro_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_MORTY
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_SuhDude, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_MORTY
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_EvenBeenBattleResort, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_No, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_MORTY
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_BruhYouveGotta, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_OhUhSoundsCool, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_MORTY
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_ForRealISwear, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_SoundsExciting, MSGBOX_NPC
+	msgbox gText_EnterMorty_SuhDude, MSGBOX_NPC, SPEAKER_MORTY
+	msgbox gText_EnterMorty_EvenBeenBattleResort, MSGBOX_NPC, SPEAKER_MORTY
+	msgbox gText_EnterMorty_No, MSGBOX_NPC, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterMorty_BruhYouveGotta, MSGBOX_NPC, SPEAKER_MORTY
+	msgbox gText_EnterMorty_OhUhSoundsCool, MSGBOX_NPC, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterMorty_ForRealISwear, MSGBOX_NPC, SPEAKER_MORTY
+	msgbox gText_EnterMorty_SoundsExciting, MSGBOX_NPC, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	setvar VAR_GYM_4_STATE, GYM_SAVE_BEFORE_LEADER
 	call Common_EventScript_SaveGame
 	closemessage
@@ -49,8 +35,6 @@ EnterMorty_MortyIntro_Dialogue::
 
 
 EnterMorty_StartGymBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_MORTY
-	callnative DrawMugshot
 	trainerbattle_single TRAINER_FLANNERY_1, gText_EnterMorty_HaHaNoYeah, gText_EnterMorty_ImNotTrippin, EnterMorty_MortyDefeated_Script, NO_MUSIC
 	return
 
@@ -63,9 +47,7 @@ EnterMorty_MortyDefeated_Script::
 	setvar VAR_BERKELEY_STATE, DEFEATED_MORTY
 	setvar VAR_STORYLINE_STATE, STORY_DEFEAT_MORTY
 	setvar VAR_MORTY_STATE, BATTLE_1_COMPLETE
-	setvar VAR_MUGSHOT, MUGSHOT_MORTY
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_ThatBattleWasHype, MSGBOX_NPC
+	msgbox gText_EnterMorty_ThatBattleWasHype, MSGBOX_NPC, SPEAKER_MORTY
 	msgbox gText_EnterMorty_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM17
@@ -77,9 +59,7 @@ EnterMorty_MortyDefeated_Script::
 
 EnterMorty_PostDefeat1_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_MORTY
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_KeepingTheBabiesSafe, MSGBOX_NPC
+	msgbox gText_EnterMorty_KeepingTheBabiesSafe, MSGBOX_NPC, SPEAKER_MORTY
 	callnative ClearMugshot
 	setvar VAR_GYM_4_STATE, GYM_EXPLAINED_BADGE_AND_TM
 	closemessage
@@ -89,9 +69,7 @@ EnterMorty_PostDefeat1_Dialogue::
 
 EnterMorty_PostDefeat2_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_MORTY
-	callnative DrawMugshot
-	msgbox gText_EnterMorty_HeadOutToHoenn, MSGBOX_NPC
+	msgbox gText_EnterMorty_HeadOutToHoenn, MSGBOX_NPC, SPEAKER_MORTY
 	callnative ClearMugshot
 	closemessage
 	release

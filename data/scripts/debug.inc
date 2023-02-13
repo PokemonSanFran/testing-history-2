@@ -60,12 +60,12 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	multi_fixed_2_vs_1 TRAINER_SHANNON, gText_Manhunt_OhDamnLooksLike, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
+	warpsilent MAP_PSFROUTE1
 	return
 
 
 Debug_Script_2::
-	warpsilent MAP_ALCATRAZ_B2F, 0
+	warpsilent MAP_PSFROUTE14
 	return
 
 
