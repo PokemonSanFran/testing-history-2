@@ -1130,10 +1130,6 @@ Script_RemoveTint::
 
 .include "data/scripts/twitter.inc"
 ##CUTSCENES
-##  .include "data/cutscenes/WiiWouldLikeToPlay.inc"
-##  .include "data/cutscenes/WelcometotheWorldofPokemon.inc"
-##  .include "data/cutscenes/YoureaTechBroNow.inc"
-##  .include "data/cutscenes/WhoAreYou.inc"
 .include "data/cutscenes/ThereCanOnlyBeOne.inc"
 .include "data/cutscenes/ImProbablyBetterThanYou.inc"
 .include "data/cutscenes/swagbag.inc"

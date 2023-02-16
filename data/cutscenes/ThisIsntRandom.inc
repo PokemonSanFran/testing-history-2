@@ -53,10 +53,7 @@ ThisIsntRandom_UnlockDoor_Dialogue::
 	waitse
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_OhIsLiterally
-	callnative ClearMugshot
+	msgbox gText_ThisIsntRandom_OhIsLiterally, , SPEAKER_ARIANA
 	closemessage
 	applymovement 1, ThisIsRandom_WalkDownStairsA
 	playse SE_EXIT
@@ -88,10 +85,7 @@ ThisIsntRandom_UnlockElectronicDoor_Script::
 
 ThisIsntRandom_UndergroundDoor_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_AndNowMyTurn
-	callnative ClearMugshot
+	msgbox gText_ThisIsntRandom_AndNowMyTurn, , SPEAKER_DRASNA
 	closemessage
 	applymovement 3, ThisIsntRandom_WalkToKeypad
 	waitmovement 3
@@ -100,29 +94,16 @@ ThisIsntRandom_UndergroundDoor_Dialogue::
 	playse SE_BANG
 	waitse
 	call ThisIsntRandom_UnlockElectronicDoor_Script
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_HowDidYou
-	callnative ClearMugshot
+	msgbox gText_ThisIsntRandom_HowDidYou, , SPEAKER_ARIANA
 	closemessage
 	applymovement 3, Common_Movement_FaceLeft
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_TheSecondSet
-	callnative ClearMugshot
+	msgbox gText_ThisIsntRandom_TheSecondSet, , SPEAKER_DRASNA
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_SoIsActuallyTrying
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_AboutToFindOut
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_IfWereAllGoing
-	callnative ClearMugshot
+	msgbox gText_ThisIsntRandom_SoIsActuallyTrying, , SPEAKER_ZOEY
+	msgbox gText_ThisIsntRandom_AboutToFindOut, , SPEAKER_ARCHER
+	msgbox gText_ThisIsntRandom_IfWereAllGoing, , SPEAKER_ARIANA
 	closemessage
 	applymovement 3, ThisIsntRandom_WalkDownHallwayA
 	applymovement 2, ThisIsntRandom_WalkDownHallwayB
@@ -140,25 +121,13 @@ ThisIsntRandom_UndergroundDoor_Dialogue::
 ThisIsntRandom_WalkIntoLab_Dialogue::
 	lock
 	setvar VAR_UNDERGROUNDLAB_STATE, TEAM_INSIDE_LAB
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_LooksOldAsHell
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_TakeThese
-	callnative ClearMugshot
+	msgbox gText_ThisIsntRandom_LooksOldAsHell, , SPEAKER_ARCHER
+	msgbox gText_ThisIsntRandom_TakeThese, , SPEAKER_ARIANA
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_WalkieTalkies
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_ToStayInTOuch
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_Yup
-	callnative ClearMugshot
+	msgbox gText_ThisIsntRandom_WalkieTalkies, , SPEAKER_ZOEY
+	msgbox gText_ThisIsntRandom_ToStayInTOuch, , SPEAKER_ARIANA
+	msgbox gText_ThisIsntRandom_Yup, , SPEAKER_ARCHER
 	closemessage
 	applymovement 1, ThisIsntRandom_WalkIntoLabA
 	applymovement 3, ThisIsntRandom_WalkIntoLabB
@@ -193,14 +162,11 @@ ThisIsntRandom_CheckProgressB_Script_1:
 
 ThisIsntRandom_StopProgress_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
 	random 2
 	switch VAR_RESULT
 	case 0, ThisIsntRandom_StopProgress_Script_3
 	case 1, ThisIsntRandom_StopProgress_Script_4
 ThisIsntRandom_StopProgress_Script_1:
-	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -208,11 +174,11 @@ ThisIsntRandom_StopProgress_Script_1:
 	end
 
 ThisIsntRandom_StopProgress_Script_3:
-	msgbox gText_ThisIsntRandom_ItsInPain
+	msgbox gText_ThisIsntRandom_ItsInPain, , SPEAKER_ZOEY
 	goto ThisIsntRandom_StopProgress_Script_1
 
 ThisIsntRandom_StopProgress_Script_4:
-	msgbox gText_ThisIsntRandom_IWonderIfICan
+	msgbox gText_ThisIsntRandom_IWonderIfICan, , SPEAKER_ZOEY
 	goto ThisIsntRandom_StopProgress_Script_1
 
 
@@ -222,7 +188,6 @@ ThisIsntRandom_CoreEncounter_Script::
 	goto_if_unset FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE, ThisIsntRandom_CoreEncounter_Script_2
 	goto_if_unset FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT, ThisIsntRandom_CoreEncounter_Script_3
 ThisIsntRandom_CoreEncounter_Script_1:
-	msgbox gText_VSGarbodor_Kuh
 	delay 40
 	waitmoncry
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
@@ -264,31 +229,14 @@ ThisIsntRandom_RemoveMon_Script::
 ThisIsntRandom_DefeatedFirst_Script::
 	lock
 	setvar VAR_UNDERGROUNDLAB_STATE, FREED_LAB_POKEMON_1
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_AreYouGuysSeeing
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_YeahIWasAbleTo
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_IGotAttackedButYeah
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_BothHugeProblems
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_RightLooksLikeTheyWanted
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_ButAllOfTheseMachines
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_ImJustTellingYouWhat
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_LetsKeepLooking
-	callnative ClearMugshot
+	msgbox gText_ThisIsntRandom_AreYouGuysSeeing, , SPEAKER_ZOEY
+	msgbox gText_ThisIsntRandom_YeahIWasAbleTo, , SPEAKER_ARIANA
+	msgbox gText_ThisIsntRandom_IGotAttackedButYeah, , SPEAKER_ARCHER
+	msgbox gText_ThisIsntRandom_BothHugeProblems, , SPEAKER_ARIANA
+	msgbox gText_ThisIsntRandom_RightLooksLikeTheyWanted, , SPEAKER_ARCHER
+	msgbox gText_ThisIsntRandom_ButAllOfTheseMachines, , SPEAKER_ARIANA
+	msgbox gText_ThisIsntRandom_ImJustTellingYouWhat, , SPEAKER_ARCHER
+	msgbox gText_ThisIsntRandom_LetsKeepLooking, , SPEAKER_DRASNA
 	closemessage
 	release
 	end
@@ -297,52 +245,21 @@ ThisIsntRandom_DefeatedFirst_Script::
 ThisIsntRandom_DefeatedSecond_Script::
 	lock
 	setvar VAR_UNDERGROUNDLAB_STATE, FREED_LAB_POKEMON_2
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_IFoundSomeAccessLogs
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_CanYouGetMeTheExact
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_IThinkSoHoldOn
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_ThoseMonsters
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_AreThoseDatesSpecial
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_TheSecondDateIsOne
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_SilicobraGravelerLarvitar
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_NumelPiloswineNidoking
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_TheyreAllGround
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_SoWhat
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_TheDocumentationCalledOut
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_AndGroundTypesTo
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_OhNoIDidnt
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_AndTheyAttackedUs
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ThisIsntRandom_LetsKeepGoing
-	callnative ClearMugshot
+	msgbox gText_ThisIsntRandom_IFoundSomeAccessLogs, , SPEAKER_ARIANA
+	msgbox gText_ThisIsntRandom_CanYouGetMeTheExact, , SPEAKER_DRASNA
+	msgbox gText_ThisIsntRandom_IThinkSoHoldOn, , SPEAKER_ARIANA
+	msgbox gText_ThisIsntRandom_ThoseMonsters, , SPEAKER_DRASNA
+	msgbox gText_ThisIsntRandom_AreThoseDatesSpecial, , SPEAKER_ARCHER
+	msgbox gText_ThisIsntRandom_TheSecondDateIsOne, , SPEAKER_ARIANA
+	msgbox gText_ThisIsntRandom_SilicobraGravelerLarvitar, , SPEAKER_ARCHER
+	msgbox gText_ThisIsntRandom_NumelPiloswineNidoking, , SPEAKER_DRASNA
+	msgbox gText_ThisIsntRandom_TheyreAllGround, , SPEAKER_ZOEY
+	msgbox gText_ThisIsntRandom_SoWhat, , SPEAKER_ARCHER
+	msgbox gText_ThisIsntRandom_TheDocumentationCalledOut, , SPEAKER_ARIANA
+	msgbox gText_ThisIsntRandom_AndGroundTypesTo, , SPEAKER_DRASNA
+	msgbox gText_ThisIsntRandom_OhNoIDidnt, , SPEAKER_ARIANA
+	msgbox gText_ThisIsntRandom_AndTheyAttackedUs, , SPEAKER_ARCHER
+	msgbox gText_ThisIsntRandom_LetsKeepGoing, , SPEAKER_ARIANA
 	closemessage
 	release
 	end

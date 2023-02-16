@@ -74,38 +74,20 @@ TheStrikeStrikesBack_PhoneCall_Dialogue::
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
-	waitse
-	pokenavcall TheStrikeStrikesBack_PhoneCall_Dialogue_Text_0
-	waitmessage
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_HelloPlayer
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_OhHi
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
+	msgbox gText_TheStrikeStrikesBack_HelloPlayer, , SPEAKER_ROSE, , PHONE_ON
+	msgbox gText_TheStrikeStrikesBack_OhHi, , SPEAKER_ZOEY, , PHONE_ON
 	special GetCurrentMap
 	switch VAR_RESULT
 	case 31, TheStrikeStrikesBack_PhoneCall_Dialogue_3
 	case 37, TheStrikeStrikesBack_PhoneCall_Dialogue_3
 	case 38, TheStrikeStrikesBack_PhoneCall_Dialogue_3
 	case 42, TheStrikeStrikesBack_PhoneCall_Dialogue_3
-	msgbox gText_TheStrikeStrikesBack_IKnowImLate
+	msgbox gText_TheStrikeStrikesBack_IKnowImLate, , SPEAKER_ROSE, , PHONE_ON
 TheStrikeStrikesBack_PhoneCall_Dialogue_1:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_ThankYou
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_CutToTheChase
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_SureRightNow
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_AsSoonAsYouCan
-	callnative ClearMugshot
+	msgbox gText_TheStrikeStrikesBack_ThankYou, , SPEAKER_ZOEY
+	msgbox gText_TheStrikeStrikesBack_CutToTheChase, , SPEAKER_ROSE, , PHONE_ON
+	msgbox gText_TheStrikeStrikesBack_SureRightNow, , SPEAKER_ZOEY, , PHONE_ON
+	msgbox gText_TheStrikeStrikesBack_AsSoonAsYouCan, , SPEAKER_ROSE, , PHONE_ON
 	closemessage
 	playse SE_POKENAV_HANG_UP
 	waitse
@@ -119,7 +101,7 @@ TheStrikeStrikesBack_PhoneCall_Dialogue_5:
 	end
 
 TheStrikeStrikesBack_PhoneCall_Dialogue_3:
-	msgbox gText_TheStrikeStrikesBack_CongratsOnYourFeat
+	msgbox gText_TheStrikeStrikesBack_CongratsOnYourFeat, , SPEAKER_ROSE, , PHONE_ON
 	goto TheStrikeStrikesBack_PhoneCall_Dialogue_1
 
 TheStrikeStrikesBack_PhoneCall_Dialogue_6:
@@ -133,16 +115,9 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	compare VAR_TEMP_0, 21
 	goto_if_ne TheStrikeStrikesBack_Intro_Dialogue_1
 	setvar VAR_CONSTRUCTION_STRIKE_STATE, START_VS_GARBODOR
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_AndCongratulations
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_ISawThemOn
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_WellHeresTheProblem
-	callnative ClearMugshot
+	msgbox gText_TheStrikeStrikesBack_AndCongratulations, , SPEAKER_OAK
+	msgbox gText_TheStrikeStrikesBack_ISawThemOn, , SPEAKER_ZOEY
+	msgbox gText_TheStrikeStrikesBack_WellHeresTheProblem, , SPEAKER_OAK
 	closemessage
 	call TheStrikeStrikesBack_AddRocketObjects_Script
 	applymovement 3, TheStrikeStrikesBack_WalkIntoFrame
@@ -150,27 +125,13 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	applymovement 5, TheStrikeStrikesBack_WalkIntoFrame
 	waitmovement 0
 	call TheStrikeStrikesBack_CrowdFacesNorth_Script
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_MyNameIs
-	callnative ClearMugshot
+	msgbox gText_TheStrikeStrikesBack_MyNameIs, , SPEAKER_GIOVANNI
 	closemessage
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_WeAreFighting
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_TheCityDoubles
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_ManagementTriples
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_TheCityQuadruples
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_TheseDemandsAreMore
-	callnative ClearMugshot
+	msgbox gText_TheStrikeStrikesBack_WeAreFighting, , SPEAKER_GIOVANNI
+	msgbox gText_TheStrikeStrikesBack_TheCityDoubles, , SPEAKER_DRASNA
+	msgbox gText_TheStrikeStrikesBack_ManagementTriples, , SPEAKER_DRASNA
+	msgbox gText_TheStrikeStrikesBack_TheCityQuadruples, , SPEAKER_DRASNA
+	msgbox gText_TheStrikeStrikesBack_TheseDemandsAreMore, , SPEAKER_DRASNA
 	closemessage
 	applymovement 3, TheStrikeStrikesBack_WalkOutFrame
 	applymovement 4, TheStrikeStrikesBack_WalkOutFrame
@@ -181,29 +142,17 @@ TheStrikeStrikesBack_Intro_Dialogue::
 	applymovement 7, Common_Movement_FaceLeft
 	applymovement 6, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_SighOfCourse
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_WaitWhatThatsInsane
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_AgreedAndThats
-	msgbox gText_TheStrikeStrikesBack_ThePoliceAreWorking
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_AgitatedWildGarbodor
-	callnative ClearMugshot
+	msgbox gText_TheStrikeStrikesBack_SighOfCourse, , SPEAKER_OAK
+	msgbox gText_TheStrikeStrikesBack_WaitWhatThatsInsane, , SPEAKER_ZOEY
+	msgbox gText_TheStrikeStrikesBack_AgreedAndThats, , SPEAKER_OAK
+	msgbox gText_TheStrikeStrikesBack_ThePoliceAreWorking, , SPEAKER_OAK
+	msgbox gText_TheStrikeStrikesBack_AgitatedWildGarbodor, , SPEAKER_OAK
 	closemessage
 	applymovement 2, TheStrikeStrikesBack_WalkOutFrame
 	waitmovement 0
 	applymovement 1, TheStrikeStrikesBack_GoToPlayer
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_TheStrikeStrikesBack_IllBeInThere
-	callnative ClearMugshot
+	msgbox gText_TheStrikeStrikesBack_IllBeInThere, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, TheStrikeStrikesBack_WalkOutFrame
 	waitmovement 0
@@ -253,9 +202,6 @@ TheStrikeStrikesBack_GoToPlayer:
 	walk_left
 	face_up
 	step_end
-
-TheStrikeStrikesBack_PhoneCall_Dialogue_Text_0:
-	.string "This phone is ringing.$"
 
 gText_TheStrikeStrikesBack_CongratsOnAll::
 	.string "Hey {PLAYER}. Congrats on all eight\n"

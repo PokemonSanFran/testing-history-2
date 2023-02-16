@@ -17,11 +17,8 @@ Chasecenter_Entrance_KeepPlayerInside_Script_2:
 	goto Chasecenter_Entrance_KeepPlayerInside_Script_1
 
 Chasecenter_Entrance_KeepPlayerInside_Script_5:
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_GroupStages_OhRight
+	msgbox gText_GroupStages_OhRight, , SPEAKER_ZOEY, TAIL_THOUGHT
 	closemessage
-	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
 	goto Chasecenter_Entrance_KeepPlayerInside_Script_4

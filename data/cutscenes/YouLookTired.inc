@@ -69,32 +69,17 @@ YouLookTired_Intro_Dialogue::
 	playbgm MUS_MT_PYRE, FALSE
 	applymovement 1, Common_Movement_FaceRight
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_SorryToInterrupt
-	callnative ClearMugshot
+	msgbox gText_YouLookTired_SorryToInterrupt, , SPEAKER_KOGA
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 1, YouLookTired_KogaWalksToPlayer_Movement
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_YeahWhatsUp
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_GladIWasAbleToRun
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_IGuessYouDoToo
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_ChiefOperatingOfficer
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_IKeepHearingThat
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
+	msgbox gText_YouLookTired_YeahWhatsUp, , SPEAKER_ZOEY
+	msgbox gText_YouLookTired_GladIWasAbleToRun, , SPEAKER_KOGA
+	msgbox gText_YouLookTired_IGuessYouDoToo, , SPEAKER_ZOEY
+	msgbox gText_YouLookTired_ChiefOperatingOfficer, , SPEAKER_KOGA
+	msgbox gText_YouLookTired_IKeepHearingThat, , SPEAKER_ZOEY
 	goto YouLookTired_BadgeJudge_Script
 	return
 
@@ -103,52 +88,33 @@ YouLookTired_BadgeJudge_Script::
 	special GetNumberOfBadges
 	compare VAR_RESULT, 8
 	goto_if_eq YouLookTired_BadgeJudge_Script_2
-	msgbox gText_YouLookTired_CanBeAHandful
+	msgbox gText_YouLookTired_CanBeAHandful, , SPEAKER_KOGA
 YouLookTired_BadgeJudge_Script_1:
 	goto YouLookTired_AcceptInvite_Dialogue
 	return
 
 YouLookTired_BadgeJudge_Script_2:
-	msgbox gText_YouLookTired_FormallYCombinatorongratulate
+	msgbox gText_YouLookTired_FormallYCombinatorongratulate, , SPEAKER_KOGA
 	goto YouLookTired_BadgeJudge_Script_1
 
 
 YouLookTired_AcceptInvite_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_ItsBeenAnInterestingRide
-	msgbox gText_YouLookTired_WaitDidntISeeYou
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_WhereDidYou
-	msgbox gText_YouLookTired_IImagineYoureProbably
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_ItHasBeenAWhile
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_WontBeAnIssue
-	callnative ClearMugshot
+	msgbox gText_YouLookTired_ItsBeenAnInterestingRide, , SPEAKER_ZOEY
+	msgbox gText_YouLookTired_WaitDidntISeeYou, SPEAKER_ZOEY
+	msgbox gText_YouLookTired_WhereDidYou, , SPEAKER_KOGA
+	msgbox gText_YouLookTired_IImagineYoureProbably, , SPEAKER_KOGA
+	msgbox gText_YouLookTired_ItHasBeenAWhile, , SPEAKER_ZOEY
+	msgbox gText_YouLookTired_WontBeAnIssue, , SPEAKER_KOGA
 	closemessage
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_WestOfHere
-	callnative ClearMugshot
+	msgbox gText_YouLookTired_WestOfHere, , SPEAKER_KOGA
 	closemessage
 	applymovement 1, Common_Movement_FacePlayer
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_MyHouseHas
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_IllSeeYouForDinner
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouLookTired_YesThanksAgain
-	callnative ClearMugshot
+	msgbox gText_YouLookTired_MyHouseHas, , SPEAKER_KOGA
+	msgbox gText_YouLookTired_IllSeeYouForDinner, , SPEAKER_KOGA
+	msgbox gText_YouLookTired_YesThanksAgain, , SPEAKER_ZOEY
 	closemessage
 	call YouLookTired_WalkAway_Script
 	waitmovement 0

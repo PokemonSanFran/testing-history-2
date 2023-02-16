@@ -80,91 +80,79 @@ Alcatraz_B2F_Archer_Event_Script_3:
 
 Alcatraz_B2F_Malva_Event_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
 	case STORY_RAVE_OR_SPEECH_COMPLETE, Alcatraz_B2F_Malva_Event_Script_3
 	case STORY_RAVE_AND_SPEECH_COMPLETE, Alcatraz_B2F_Malva_Event_Script_4
 Alcatraz_B2F_Malva_Event_Script_1:
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
 Alcatraz_B2F_Malva_Event_Script_3:
-	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
+	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC, SPEAKER_MALVA
 	goto Alcatraz_B2F_Malva_Event_Script_1
 
 Alcatraz_B2F_Malva_Event_Script_4:
-	msgbox Alcatraz_B2F_Malva_Event_Script_Text_0, MSGBOX_NPC
+	msgbox Alcatraz_B2F_Malva_Event_Script_Text_0, MSGBOX_NPC, SPEAKER_MALVA
 	addvar VAR_STORYLINE_STATE, 1
 	goto Alcatraz_B2F_Malva_Event_Script_1
 
 
 Alcatraz_B2F_Drasna_Event_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
 	case STORY_RAVE_OR_SPEECH_COMPLETE, Alcatraz_B2F_Drasna_Event_Script_3
 	case STORY_RAVE_AND_SPEECH_COMPLETE, Alcatraz_B2F_Drasna_Event_Script_4
 Alcatraz_B2F_Drasna_Event_Script_1:
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
 Alcatraz_B2F_Drasna_Event_Script_3:
-	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
+	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC, SPEAKER_DRASNA
 	goto Alcatraz_B2F_Drasna_Event_Script_1
 
 Alcatraz_B2F_Drasna_Event_Script_4:
-	msgbox Alcatraz_B2F_Drasna_Event_Script_Text_0, MSGBOX_NPC
+	msgbox Alcatraz_B2F_Drasna_Event_Script_Text_0, MSGBOX_NPC, SPEAKER_DRASNA
 	goto Alcatraz_B2F_Drasna_Event_Script_1
 
 
 Alcatraz_B2F_Siebold_Event_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_MARSHAL
-	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
 	case STORY_RAVE_OR_SPEECH_COMPLETE, Alcatraz_B2F_Siebold_Event_Script_3
 	case STORY_RAVE_AND_SPEECH_COMPLETE, Alcatraz_B2F_Siebold_Event_Script_4
 Alcatraz_B2F_Siebold_Event_Script_1:
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
 Alcatraz_B2F_Siebold_Event_Script_3:
-	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
+	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC, SPEAKER_SIEBOLD
 	goto Alcatraz_B2F_Siebold_Event_Script_1
 
 Alcatraz_B2F_Siebold_Event_Script_4:
-	msgbox Alcatraz_B2F_Siebold_Event_Script_Text_0, MSGBOX_NPC
+	msgbox Alcatraz_B2F_Siebold_Event_Script_Text_0, MSGBOX_NPC, SPEAKER_SIEBOLD
 	addvar VAR_STORYLINE_STATE, 1
 	goto Alcatraz_B2F_Siebold_Event_Script_1
 
 
 Alcatraz_B2F_Wikstrom_Event_Script::
 	lock
-	setvar VAR_0x8000, MUGSHOT_CAITLIN
-	callnative DrawMugshot
 	switch VAR_STORYLINE_STATE
 	case STORY_RAVE_OR_SPEECH_COMPLETE, Alcatraz_B2F_Wikstrom_Event_Script_3
 	case STORY_RAVE_AND_SPEECH_COMPLETE, Alcatraz_B2F_Wikstrom_Event_Script_4
 Alcatraz_B2F_Wikstrom_Event_Script_1:
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
 Alcatraz_B2F_Wikstrom_Event_Script_3:
-	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC
+	msgbox gText_SpeechSpeechSpeech_GoWarehouseRave, MSGBOX_NPC, SPEAKER_WIKSTROM
 	goto Alcatraz_B2F_Wikstrom_Event_Script_1
 
 Alcatraz_B2F_Wikstrom_Event_Script_4:
-	msgbox Alcatraz_B2F_Siebold_Event_Script_Text_0, MSGBOX_NPC
+	msgbox Alcatraz_B2F_Siebold_Event_Script_Text_0, MSGBOX_NPC, SPEAKER_WIKSTROM
 	addvar VAR_STORYLINE_STATE, 1
 	goto Alcatraz_B2F_Wikstrom_Event_Script_1
 

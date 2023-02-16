@@ -57,13 +57,8 @@ WaitEvenThen_PrepareBossEncounter_Dialogue::
 	applymovement 2, WaitEvenThen_WalkToSleepingC
 	applymovement 3, WaitEvenThen_WalkToSleepingD
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_WaitEvenThen_IFoundTheAccess
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WaitEvenThen_AndICanHandle
-	callnative ClearMugshot
+	msgbox gText_WaitEvenThen_IFoundTheAccess, , SPEAKER_DRASNA
+	msgbox gText_WaitEvenThen_AndICanHandle, , SPEAKER_ARCHER
 	closemessage
 	applymovement 3, WaitEvenThen_WalkToComputer
 	waitmovement 3
@@ -149,34 +144,21 @@ WaitEvenThen_PostBossDialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 1, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceDown
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WaitEvenThen_DamnAPowerSpot
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_WaitEvenThen_AndTheGovernment
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_WaitEvenThen_IllHaveSomeOther
-	callnative ClearMugshot
+	msgbox gText_WaitEvenThen_DamnAPowerSpot, , SPEAKER_ARCHER
+	msgbox gText_WaitEvenThen_AndTheGovernment, , SPEAKER_DRASNA
+	msgbox gText_WaitEvenThen_IllHaveSomeOther, , SPEAKER_ARIANA
 	closemessage
 	applymovement 3, WaitEvenThen_LeaveLabA
 	applymovement 2, WaitEvenThen_LeaveLabB
 	waitmovement 2
 	applymovement 1, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WaitEvenThen_ComingWithMe, MSGBOX_YESNO
-	callnative ClearMugshot
+	msgbox gText_WaitEvenThen_ComingWithMe, MSGBOX_YESNO, , SPEAKER_ARCHER
 	closemessage
 	compare VAR_RESULT, YES
 	goto_if_eq WaitEvenThen_PostBossDialogue_2
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WaitEvenThen_MeetUsIn
+	msgbox gText_WaitEvenThen_MeetUsIn, , SPEAKER_ARCHER
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, WaitEvenThen_WalkAwayFromPlayer
 	waitmovement 1
 	removeobject 1

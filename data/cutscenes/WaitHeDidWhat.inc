@@ -70,13 +70,8 @@ WaitHeDidWhat_CalledToSkybox_Script::
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
-	waitse
-	pokenavcall WaitHeDidWhat_CalledToSkybox_Script_Text_0
 	waitmessage
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WaitHeDidWhat_CongratsComeOnUp
-	callnative ClearMugshot
+	msgbox gText_WaitHeDidWhat_CongratsComeOnUp, , SPEAKER_LANCE, , PHONE_ON
 	playse SE_POKENAV_HANG_UP
 	waitse
 	setvar VAR_STORYLINE_STATE, STORY_WATCH_SEMIFINAL
@@ -87,10 +82,7 @@ WaitHeDidWhat_CalledToSkybox_Script::
 WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 	setvar VAR_STORYLINE_STATE, STORY_READY_FINALS
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WaitHeDidWhat_GoodShitDownThere
-	callnative ClearMugshot
+	msgbox gText_WaitHeDidWhat_GoodShitDownThere, , SPEAKER_BIANCA
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, WaitHeDidWhat_GetOutOfWay
 	opendoor 9, 1
@@ -114,10 +106,7 @@ WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 	applymovement 7, Common_Movement_ExclamationMark
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WaitHeDidWhat_HolyShit
-	callnative ClearMugshot
+	msgbox gText_WaitHeDidWhat_HolyShit, , SPEAKER_ZOEY
 	msgbox gText_WaitHeDidWhat_WellTakeAQuick
 	closemessage
 	applymovement 5, WaitHeDidWhat_EncouragePlayer
@@ -125,17 +114,11 @@ WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WaitHeDidWhat_MakeSureYouGive
+	msgbox gText_WaitHeDidWhat_MakeSureYouGive, , SPEAKER_ROSE
 	closemessage
-	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WaitHeDidWhat_GoodLuck
-	callnative ClearMugshot
+	msgbox gText_WaitHeDidWhat_GoodLuck, , SPEAKER_OAK
 	closemessage
 	release
 	end
@@ -143,32 +126,29 @@ WaitHeDidWhat_WatchOtherSemifinal_Dialogue::
 
 WaitHeDidWhat_BiancaMeltdown_Dialogue::
 	random 4
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
 	switch VAR_RESULT
 	case 0, WaitHeDidWhat_BiancaMeltdown_Dialogue_3
 	case 1, WaitHeDidWhat_BiancaMeltdown_Dialogue_4
 	case 2, WaitHeDidWhat_BiancaMeltdown_Dialogue_5
 	case 3, WaitHeDidWhat_BiancaMeltdown_Dialogue_6
 WaitHeDidWhat_BiancaMeltdown_Dialogue_1:
-	callnative ClearMugshot
 	closemessage
 	return
 
 WaitHeDidWhat_BiancaMeltdown_Dialogue_3:
-	msgbox gText_WaitHeDidWhat_ILostToThat
+	msgbox gText_WaitHeDidWhat_ILostToThat, , SPEAKER_BIANCA
 	goto WaitHeDidWhat_BiancaMeltdown_Dialogue_1
 
 WaitHeDidWhat_BiancaMeltdown_Dialogue_4:
-	msgbox gText_WaitHeDidWhat_GetTheFuck
+	msgbox gText_WaitHeDidWhat_GetTheFuck, , SPEAKER_BIANCA
 	goto WaitHeDidWhat_BiancaMeltdown_Dialogue_1
 
 WaitHeDidWhat_BiancaMeltdown_Dialogue_5:
-	msgbox gText_WaitHeDidWhat_HowCouldThisHappen
+	msgbox gText_WaitHeDidWhat_HowCouldThisHappen, , SPEAKER_BIANCA
 	goto WaitHeDidWhat_BiancaMeltdown_Dialogue_1
 
 WaitHeDidWhat_BiancaMeltdown_Dialogue_6:
-	msgbox gText_WaitHeDidWhat_AbsoluteBullshit
+	msgbox gText_WaitHeDidWhat_AbsoluteBullshit, , SPEAKER_BIANCA
 	goto WaitHeDidWhat_BiancaMeltdown_Dialogue_1
 
 
@@ -193,13 +173,8 @@ WaitHeDidWhat_WalkIntoChampionshipPosition::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, WaitHeDidWhat_WalkToBattlefieldPosition
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WaitHeDidWhat_IDontThinkYouCan
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WaitHeDidWhat_ImReallyHappy
-	callnative ClearMugshot
+	msgbox gText_WaitHeDidWhat_IDontThinkYouCan, , SPEAKER_ARCHER
+	msgbox gText_WaitHeDidWhat_ImReallyHappy, , SPEAKER_ZOEY
 	setvar VAR_STORYLINE_STATE, STORY_SAVE_FINALS
 	call Common_EventScript_SaveGame
 	goto WaitHeDidWhat_StartBattle_Script
@@ -211,12 +186,9 @@ WaitHeDidWhat_StartBattle_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WaitHeDidWhat_ForPsfregion
+	msgbox gText_WaitHeDidWhat_ForPsfregion, , SPEAKER_ARCHER
 	trainerbattle_no_intro TRAINER_STEVEN, gText_WaitHeDidWhat_SoClose
 	closemessage
-	callnative ClearMugshot
 	goto WelcomeToTheHallOfFame_PostBattle_Dialogue
 	return
 
@@ -275,9 +247,6 @@ WaitHeDidWhat_WalkToArena:
 	walk_up
 	delay_16
 	step_end
-
-WaitHeDidWhat_CalledToSkybox_Script_Text_0:
-	.string "This phone is ringing.$"
 
 gText_WaitHeDidWhat_AreYouReady::
 	.string "Are you ready to battle for the\n"

@@ -20,10 +20,8 @@ script WhyDidntYouRatMeOut_StopPlayerLeaving {
         applymovement(ARCHER,Common_Movement_FaceDown)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_HeyWait)
-        callnative(ClearMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_HeyWait,,SPEAKER_ARCHER)
+        
         closemessage
 
         applymovement(PLAYER,Common_Movement_FaceUp)
@@ -37,10 +35,8 @@ script WhyDidntYouRatMeOut_StopPlayerLeaving {
         }
     waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_CanWeTalk)
-        callnative(ClearMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_CanWeTalk,,SPEAKER_ARCHER)
+        
         closemessage
 
         playse(SE_EXIT)
@@ -51,102 +47,62 @@ script WhyDidntYouRatMeOut_ConversationInStands {
         applymovement(PLAYER,WhyDidntYouRatMeOut_WalkSlowlyUpStairsLeft)
         applymovement(1,WhyDidntYouRatMeOut_WalkSlowlyUpStairsRight)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_WhatDoYouWant)
+        msgbox(gText_WhyDidntYouRatMeOut_WhatDoYouWant,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_IDidntThinkWed)
+        msgbox(gText_WhyDidntYouRatMeOut_IDidntThinkWed,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_IsSomethingWrongWith)
+        msgbox(gText_WhyDidntYouRatMeOut_IsSomethingWrongWith,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_ThatsNotWhatI)
+        msgbox(gText_WhyDidntYouRatMeOut_ThatsNotWhatI,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_UhHuh)
+        msgbox(gText_WhyDidntYouRatMeOut_UhHuh,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_WhenYouWalkedIn)
+        msgbox(gText_WhyDidntYouRatMeOut_WhenYouWalkedIn,,SPEAKER_ARCHER)
 
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_WhyDidntYou)
+        msgbox(gText_WhyDidntYouRatMeOut_WhyDidntYou,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_IStillHaventDecided)
+        msgbox(gText_WhyDidntYouRatMeOut_IStillHaventDecided,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_WaitShit)
+        msgbox(gText_WhyDidntYouRatMeOut_WaitShit,,SPEAKER_ARCHER)
         closemessage
-        callnative(ClearMugshot)
+        
         applymovement(1,WhyDidntYouRatMeOut_WalkBackward)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_NoCalmDown)
-        callnative(ClearMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_NoCalmDown,,SPEAKER_ZOEY)
+        
         closemessage
 
         applymovement(1,Common_Movement_WalkLeft)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_LookPlayer)
+        msgbox(gText_WhyDidntYouRatMeOut_LookPlayer,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_NoYouLook)
+        msgbox(gText_WhyDidntYouRatMeOut_NoYouLook,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_WasNiceToMe4)
+        msgbox(gText_WhyDidntYouRatMeOut_WasNiceToMe4,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_ThankYouAndImSorry)
+        msgbox(gText_WhyDidntYouRatMeOut_ThankYouAndImSorry,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_UhHuhLetsSeeHow)
+        msgbox(gText_WhyDidntYouRatMeOut_UhHuhLetsSeeHow,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_NoSeriouslyItMeans)
+        msgbox(gText_WhyDidntYouRatMeOut_NoSeriouslyItMeans,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_LikeEveryOtherTime)
+        msgbox(gText_WhyDidntYouRatMeOut_LikeEveryOtherTime,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_YouKnowThem)
+        msgbox(gText_WhyDidntYouRatMeOut_YouKnowThem,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_YeahTheyreIn)
-        callnative(ClearMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_YeahTheyreIn,,SPEAKER_ZOEY)
+        
         closemessage
 
         playse(SE_POKENAV_CALL)
         waitse
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_MyGroupIsStarting)
-        callnative(ClearMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_MyGroupIsStarting,,SPEAKER_ARCHER)
+        
         closemessage
 
         clearflag(FLAG_TEMP_2)
@@ -156,18 +112,12 @@ script WhyDidntYouRatMeOut_ConversationInStands {
         waitmovement(0)
         removeobject(1)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_OhDoYouKnowThat)
+        msgbox(gText_WhyDidntYouRatMeOut_OhDoYouKnowThat,,SPEAKER_OAK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_UhYeahWeMet)
+        msgbox(gText_WhyDidntYouRatMeOut_UhYeahWeMet,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WhyDidntYouRatMeOut_IMeantToTell)
-        callnative(ClearMugshot)
+        msgbox(gText_WhyDidntYouRatMeOut_IMeantToTell,,SPEAKER_OAK)
+        
         closemessage
 
         playse(SE_EXIT)
@@ -209,11 +159,9 @@ script WhyDidntYouRatMeOut_WatchBiancaMatches {
     applymovement(PLAYER,Common_Movement_FaceRight)
     waitmovement(0)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_WhyDidntYouRatMeOut_YourGroupIsNext)
+    msgbox(gText_WhyDidntYouRatMeOut_YourGroupIsNext,,SPEAKER_OAK)
     closemessage
-    callnative(ClearMugshot)
+    
     setvar(VAR_STORYLINE_STATE,STORY_BIANCA_WON_GROUP)
 
     releaseall

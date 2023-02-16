@@ -32,8 +32,6 @@ EnterJasmine_Intro_Dialogue::
 
 
 EnterJasmine_StartGymBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
 	trainerbattle_single TRAINER_WINONA_1, gText_EnterJasmine_LetsSeeHowCareful, gText_EnterJasmine_WrongSoil, EnterJasmine_PostGymBattle_Script, NO_MUSIC
 	return
 

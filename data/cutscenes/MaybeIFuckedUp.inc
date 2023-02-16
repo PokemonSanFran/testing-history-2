@@ -13,36 +13,28 @@ MaybeIFuckedUp_Dialogue::
 	setvar VAR_STORYLINE_STATE, STORY_RECIEVED_BAMBOO_STAR
 	applymovement 12, MaybeIFuckedUp_WalkToPlayer
 	waitmovement 0
-	msgbox gText_MaybeIFuckedUp_ExcuseMeLad
+	msgbox gText_MaybeIFuckedUp_ExcuseMeLad, , SPEAKER_ORI
 	closemessage
 	applymovement 12, Common_Movement_WalkUp
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaybeIFuckedUp_OhHi
+	msgbox gText_MaybeIFuckedUp_OhHi, , SPEAKER_ZOEY
 	callnative ClearMugshot
-	msgbox gText_MaybeIFuckedUp_ItsGoodToMeetYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaybeIFuckedUp_ItHasBeenACrazy
+	msgbox gText_MaybeIFuckedUp_ItsGoodToMeetYou, , SPEAKER_ORI
+	msgbox gText_MaybeIFuckedUp_ItHasBeenACrazy, , SPEAKER_ZOEY
 	callnative ClearMugshot
-	msgbox gText_MaybeIFuckedUp_YourDecisions
+	msgbox gText_MaybeIFuckedUp_YourDecisions, , SPEAKER_ORI
 	giveitem ITEM_METEORITE, 1
-	msgbox gText_MaybeIFuckedUp_AskYourself
-	msgbox gText_MaybeIFuckedUp_IfYouFindYourself
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaybeIFuckedUp_UhOkay
+	msgbox gText_MaybeIFuckedUp_AskYourself, , SPEAKER_ORI
+	msgbox gText_MaybeIFuckedUp_IfYouFindYourself, , SPEAKER_ORI
+	msgbox gText_MaybeIFuckedUp_UhOkay, , SPEAKER_ZOEY
 	callnative ClearMugshot
-	msgbox gText_MaybeIFuckedUp_OfCourse
+	msgbox gText_MaybeIFuckedUp_OfCourse, , SPEAKER_ORI
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, MaybeIFuckedUp_WatchOriWalk
 	applymovement 12, MaybeIFuckedUp_WalkOffScreen
 	waitmovement 12
 	removeobject 12
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaybeIFuckedUp_WhatTheHellWasThat
+	msgbox gText_MaybeIFuckedUp_WhatTheHellWasThat, , SPEAKER_ZOEY
 	callnative ClearMugshot
 	release
 	end

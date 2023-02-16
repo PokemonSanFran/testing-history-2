@@ -69,13 +69,9 @@ script WaitHeDidWhat_CalledToSkybox_Script {
         playse(SE_POKENAV_CALL)
         waitse
         playse(SE_POKENAV_CALL)
-        waitse
-        pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
         waitmessage
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitHeDidWhat_CongratsComeOnUp)
-        callnative(ClearMugshot)
+        msgbox(gText_WaitHeDidWhat_CongratsComeOnUp,,SPEAKER_LANCE,,PHONE_ON)
+        
         playse(SE_POKENAV_HANG_UP)
         waitse
         setvar(VAR_STORYLINE_STATE,STORY_WATCH_SEMIFINAL)
@@ -87,10 +83,8 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
         setvar(VAR_STORYLINE_STATE,STORY_READY_FINALS)
         lock
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitHeDidWhat_GoodShitDownThere)
-        callnative(ClearMugshot)
+        msgbox(gText_WaitHeDidWhat_GoodShitDownThere,,SPEAKER_BIANCA)
+        
         closemessage
 
         applymovement(PLAYER,WaitHeDidWhat_GetOutOfWay)
@@ -118,10 +112,8 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
         applymovement(PLAYER,Common_Movement_ExclamationMark)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitHeDidWhat_HolyShit)
-        callnative(ClearMugshot)
+        msgbox(gText_WaitHeDidWhat_HolyShit,,SPEAKER_ZOEY)
+        
 
         msgbox(gText_WaitHeDidWhat_WellTakeAQuick)
         closemessage
@@ -132,18 +124,14 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
 
         applymovement(PLAYER, Common_Movement_FaceLeft)
         waitmovement(0)
-        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitHeDidWhat_MakeSureYouGive)
+        msgbox(gText_WaitHeDidWhat_MakeSureYouGive,,SPEAKER_ROSE)
         closemessage
-        callnative(ClearMugshot)
+        
 
         applymovement(PLAYER, Common_Movement_FaceRight)
         waitmovement(0)
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitHeDidWhat_GoodLuck)
-        callnative(ClearMugshot)
+        msgbox(gText_WaitHeDidWhat_GoodLuck,,SPEAKER_OAK)
+        
         closemessage
         release
         end
@@ -151,17 +139,15 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
 
 script WaitHeDidWhat_BiancaMeltdown_Dialogue {
     random(4)
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
 
         switch (var(VAR_RESULT)) {
-            case 0:msgbox(gText_WaitHeDidWhat_ILostToThat)
-            case 1:msgbox(gText_WaitHeDidWhat_GetTheFuck)
-            case 2:msgbox(gText_WaitHeDidWhat_HowCouldThisHappen)
-            case 3:msgbox(gText_WaitHeDidWhat_AbsoluteBullshit)
+            case 0:msgbox(gText_WaitHeDidWhat_ILostToThat,,SPEAKER_BIANCA)
+            case 1:msgbox(gText_WaitHeDidWhat_GetTheFuck,,SPEAKER_BIANCA)
+            case 2:msgbox(gText_WaitHeDidWhat_HowCouldThisHappen,,SPEAKER_BIANCA)
+            case 3:msgbox(gText_WaitHeDidWhat_AbsoluteBullshit,,SPEAKER_BIANCA)
         }
 
-    callnative(ClearMugshot)
+    
         closemessage
 }
 
@@ -182,15 +168,11 @@ script WaitHeDidWhat_WalkIntoChampionshipPosition {
     lock
         applymovement(PLAYER,WaitHeDidWhat_WalkToBattlefieldPosition)
         waitmovement(0)
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitHeDidWhat_IDontThinkYouCan)
+        msgbox(gText_WaitHeDidWhat_IDontThinkYouCan,,SPEAKER_ARCHER)
 
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitHeDidWhat_ImReallyHappy)
-        callnative(ClearMugshot)
+        msgbox(gText_WaitHeDidWhat_ImReallyHappy,,SPEAKER_ZOEY)
+        
         setvar(VAR_STORYLINE_STATE,STORY_SAVE_FINALS)
 
         call(Common_EventScript_SaveGame)
@@ -202,12 +184,10 @@ script WaitHeDidWhat_StartBattle_Script{
         applymovement(PLAYER,Common_Movement_WalkRight)
         applymovement(1,Common_Movement_WalkLeft)
         waitmovement(0)
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitHeDidWhat_ForPsfregion)
+        msgbox(gText_WaitHeDidWhat_ForPsfregion,,SPEAKER_ARCHER)
         trainerbattle_no_intro(TRAINER_STEVEN,gText_WaitHeDidWhat_SoClose)
         closemessage
-        callnative(ClearMugshot)
+        
         goto(WelcomeToTheHallOfFame_PostBattle_Dialogue)
 }
 

@@ -39,8 +39,7 @@ script EnterWhitney_MuseumArrangement_Dialogue {
         closemessage
     applymovement(WHITNEY, WhitneyLookAround_Movement)
     waitmovement(0)
-    callnative(DrawMugshot)
-    msgbox(gText_EnterWhitney_HasYourVisit)
+    msgbox(gText_EnterWhitney_HasYourVisit,,SPEAKER_WHITNEY)
         msgbox(gText_EnterWhitney_UhYup,MSGBOX_DEFAULT,SPEAKER_ZOEY)
     msgbox(gText_EnterWhitney_ICanHearTheOrre,,SPEAKER_WHITNEY)
         call(Common_EventScript_SaveGame)

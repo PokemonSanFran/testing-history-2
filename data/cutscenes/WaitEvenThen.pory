@@ -75,14 +75,10 @@ script WaitEvenThen_PrepareBossEncounter_Dialogue {
         applymovement(DRASNA,WaitEvenThen_WalkToSleepingD)
         waitmovement(DRASNA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitEvenThen_IFoundTheAccess)
+        msgbox(gText_WaitEvenThen_IFoundTheAccess,,SPEAKER_DRASNA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitEvenThen_AndICanHandle)
-        callnative(ClearMugshot)
+        msgbox(gText_WaitEvenThen_AndICanHandle,,SPEAKER_ARCHER)
+        
         closemessage
 
         applymovement(DRASNA,WaitEvenThen_WalkToComputer)
@@ -168,18 +164,12 @@ script WaitEvenThen_PostBossDialogue {
         applymovement(ARCHER,Common_Movement_FaceDown)
         applymovement(DRASNA,Common_Movement_FaceDown)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitEvenThen_DamnAPowerSpot)
+        msgbox(gText_WaitEvenThen_DamnAPowerSpot,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitEvenThen_AndTheGovernment)
+        msgbox(gText_WaitEvenThen_AndTheGovernment,,SPEAKER_DRASNA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitEvenThen_IllHaveSomeOther)
-        callnative(ClearMugshot)
+        msgbox(gText_WaitEvenThen_IllHaveSomeOther,,SPEAKER_ARIANA)
+        
         closemessage
 
         applymovement(DRASNA,WaitEvenThen_LeaveLabA)
@@ -189,21 +179,17 @@ script WaitEvenThen_PostBossDialogue {
         applymovement(ARCHER,Common_Movement_FaceLeft)
         applymovement(PLAYER,Common_Movement_FaceRight)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitEvenThen_ComingWithMe,MSGBOX_YESNO)
-        callnative(ClearMugshot)
+        msgbox(gText_WaitEvenThen_ComingWithMe,MSGBOX_YESNO,,SPEAKER_ARCHER)
+        
         closemessage
 
         if (var(VAR_RESULT) == YES){
             warp(MAP_ALAMEDA,255,34,13)
                 end
         }else {
-            setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-                callnative(DrawMugshot)
-                msgbox(gText_WaitEvenThen_MeetUsIn)
+                msgbox(gText_WaitEvenThen_MeetUsIn,,SPEAKER_ARCHER)
                 closemessage
-                callnative(ClearMugshot)
+                
                 applymovement(ARCHER,WaitEvenThen_WalkAwayFromPlayer)
                 waitmovement(ARCHER)
 

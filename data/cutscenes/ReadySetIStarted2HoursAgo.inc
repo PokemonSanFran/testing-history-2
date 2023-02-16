@@ -34,10 +34,7 @@ TwoHoursAgo_FashionCaseReminder_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhatOutfitDoYou
-	callnative ClearMugshot
+	msgbox gText_WhatOutfitDoYou, , SPEAKER_ZOEY, , EMOTE_SHOCK
 	msgbox gText_YouCanChangeYourOutfit
 	closemessage
 	release
@@ -45,8 +42,7 @@ TwoHoursAgo_FashionCaseReminder_Script::
 
 
 TwoHoursAgo_TheyreEager_Dialogue::
-	msgbox gText_TwoHoursAgo_LooksLikeWokeUp, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_TwoHoursAgo_LooksLikeWokeUp, MSGBOX_NPC, SPEAKER_OAK
 	goto TwoHoursAgo_ExplainLeague_ObjectSetUp_Script
 	return
 
@@ -68,9 +64,9 @@ TwoHoursAgo_ExplainLeague_Script::
 	setflag FLAG_RECIEVED_LEFTOVERS
 	setflag FLAG_TEMP_1F
 	lockall
-	msgbox gText_TwoHoursAgo_YoureInARace
-	msgbox gText_TwoHoursAgo_TheTouranemtnWillTest
-	msgbox gText_TwoHoursAgo_WeExpectTheBest
+	msgbox gText_TwoHoursAgo_YoureInARace, , SPEAKER_OAK
+	msgbox gText_TwoHoursAgo_TheTouranemtnWillTest, , SPEAKER_OAK
+	msgbox gText_TwoHoursAgo_WeExpectTheBest, , SPEAKER_OAK
 	closemessage
 	fadescreen FADE_FROM_BLACK
 	goto TwoHoursAgo_LeftoversPokeballs_Dialogue
@@ -79,9 +75,7 @@ TwoHoursAgo_ExplainLeague_Script::
 
 TwoHoursAgo_LeftoversPokeballs_Dialogue::
 	setflag FLAG_TEMP_1F
-	callnative DrawMugshot
-	msgbox gText_TwoHoursAgo_CafeIsAlwaysSoDelicious
-	callnative ClearMugshot
+	msgbox gText_TwoHoursAgo_CafeIsAlwaysSoDelicious, SPEAKER_OAK
 	lockall
 	giveitem ITEM_LEFTOVERS
 	giveitem ITEM_POKE_BALL, 5
@@ -92,8 +86,7 @@ TwoHoursAgo_LeftoversPokeballs_Dialogue::
 
 TwoHoursAgo_ExplainLeftovers_Dialouge::
 	bufferleadmonspeciesname 0
-	msgbox gText_TwoHoursAgo_CanHoldThose, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_TwoHoursAgo_CanHoldThose, MSGBOX_NPC, , SPEAKER_OAK
 	return
 
 

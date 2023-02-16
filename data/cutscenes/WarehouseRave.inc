@@ -74,40 +74,23 @@ WarehouseRave_LockDoors_Script::
 
 WarehouseRave_Intro_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_IsThisPlace
+	msgbox gText_WarehouseRave_IsThisPlace, , SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	call WarehouseRave_LockDoors_Script
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_WhatTheHell
+	msgbox gText_WarehouseRave_WhatTheHell, , SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	clearflag FLAG_TEMP_1
 	addobject 1
 	applymovement 1, WarehouseRave_WalkOutShadows
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_ImSorryWeHad
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_WhyAmITrapped
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_HasBeenPredicting
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_SoIDecideTo
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_HasInstructed
-	callnative ClearMugshot
+	msgbox gText_WarehouseRave_ImSorryWeHad, , SPEAKER_KOGA
+	msgbox gText_WarehouseRave_WhyAmITrapped, , SPEAKER_ZOEY
+	msgbox gText_WarehouseRave_HasBeenPredicting, , SPEAKER_KOGA
+	msgbox gText_WarehouseRave_SoIDecideTo, , SPEAKER_ZOEY
+	msgbox gText_WarehouseRave_HasInstructed, , SPEAKER_KOGA
 	closemessage
 	setvar VAR_WAREHOUSE_RAVE_STATE, SAVE_KOGA_OAKLAND
 	applymovement OBJ_EVENT_ID_PLAYER, WarehouseRave_WalkToBattle
@@ -126,12 +109,9 @@ Warehourse_Interact_Script::
 
 WarehouseRave_Battle_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_PrepareToFight
+	msgbox gText_WarehouseRave_PrepareToFight, , SPEAKER_KOGA
 	trainerbattle_no_intro TRAINER_TABITHA_MT_CHIMNEY, gText_WarehouseRave_YesTheyllBelieve
 	closemessage
-	callnative ClearMugshot
 	goto WarehouseRave_PostBattle_Script
 	return
 
@@ -139,22 +119,11 @@ WarehouseRave_Battle_Script::
 WarehouseRave_PostBattle_Script::
 	lock
 	setvar VAR_WAREHOUSE_RAVE_STATE, DEFEATED_KOGA_OAKLAND
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_IFailedToKill
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_JustLike
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_YouNeedToGet
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_WaitWhyAreYou
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_Now
-	callnative ClearMugshot
+	msgbox gText_WarehouseRave_IFailedToKill, , SPEAKER_KOGA
+	msgbox gText_WarehouseRave_JustLike, , SPEAKER_ZOEY
+	msgbox gText_WarehouseRave_YouNeedToGet, , SPEAKER_KOGA
+	msgbox gText_WarehouseRave_WaitWhyAreYou, , SPEAKER_ZOEY
+	msgbox gText_WarehouseRave_Now, , SPEAKER_KOGA
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, WarehouseRave_RunOutTheWarehouse
 	waitmovement 0
@@ -173,50 +142,27 @@ WarehouseRave_OutsideWarehouse_Dialogue::
 	applymovement 1, WarehouseRave_RunToPlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_WhenIGotHere
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_ItWasATrap
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_HolyShitThatWas
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_TheBattleFelt
-	callnative ClearMugshot
+	msgbox gText_WarehouseRave_WhenIGotHere, , SPEAKER_ARCHER
+	msgbox gText_WarehouseRave_ItWasATrap, , SPEAKER_ZOEY
+	msgbox gText_WarehouseRave_HolyShitThatWas, , SPEAKER_ARCHER
+	msgbox gText_WarehouseRave_TheBattleFelt, , SPEAKER_ZOEY
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_AndThenHeToldMe
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_ThatDoesntMake
-	callnative ClearMugshot
+	msgbox gText_WarehouseRave_AndThenHeToldMe, , SPEAKER_ZOEY
+	msgbox gText_WarehouseRave_ThatDoesntMake, , SPEAKER_ARCHER
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_WhatDoYouMean
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_CameToTown
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_MaybeItIsGuilt
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WarehouseRave_WhateverImGlad
+	msgbox gText_WarehouseRave_WhatDoYouMean, , SPEAKER_ZOEY
+	msgbox gText_WarehouseRave_CameToTown, , SPEAKER_ARCHER
+	msgbox gText_WarehouseRave_MaybeItIsGuilt, , SPEAKER_ZOEY
+	msgbox gText_WarehouseRave_WhateverImGlad, , SPEAKER_ARCHER
 	compare VAR_STORYLINE_STATE, STORY_RECIVED_RAVE_INVITE
 	goto_if_ne WarehouseRave_OutsideWarehouse_Dialogue_2
 	msgbox gText_WarehouseRave_GladYouDidnt
 WarehouseRave_OutsideWarehouse_Dialogue_1:
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, WarehouseRave_LeaveCity
 	waitmovement 0
 	removeobject 1

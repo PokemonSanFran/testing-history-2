@@ -61,25 +61,12 @@ TheGangsAllHere_WhatBringsYou_Dialogue::
 	lock
 	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, START_THE_GANGS_ALL_HERE
 	playbgm MUS_RG_FOLLOW_ME, FALSE
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_WhatBringsYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_ToldMeToVisit
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_IsThisWhereYouWork
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_TheTowerYes
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_IHaventBeen
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_OfCourseNot
-	callnative ClearMugshot
+	msgbox gText_TheGangsAllHere_WhatBringsYou, , SPEAKER_OAK
+	msgbox gText_TheGangsAllHere_ToldMeToVisit, , SPEAKER_ZOEY
+	msgbox gText_TheGangsAllHere_IsThisWhereYouWork, , SPEAKER_ZOEY
+	msgbox gText_TheGangsAllHere_TheTowerYes, , SPEAKER_OAK
+	msgbox gText_TheGangsAllHere_IHaventBeen, , SPEAKER_OAK
+	msgbox gText_TheGangsAllHere_OfCourseNot, , SPEAKER_ZOEY
 	closemessage
 	special HealPlayerParty
 	applymovement 3, FollowMe_Movement
@@ -93,10 +80,7 @@ TheGangsAllHere_WhatBringsYou_Dialogue::
 
 TheGangsAllHere_OfficeIsntThatWay_Script::
 	lockall
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_OfficeIsntThatWay
-	callnative ClearMugshot
+	msgbox gText_TheGangsAllHere_OfficeIsntThatWay, , SPEAKER_OAK
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_OfficeIsntThatWay_Movement
 	return
@@ -117,11 +101,8 @@ TheGangsAllHere_WalkHallway_Script::
 TheGangsAllHere_ThisIsOffice_Script::
 	lock
 	faceplayer
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_ThisIsOffice
+	msgbox gText_TheGangsAllHere_ThisIsOffice, , SPEAKER_OAK
 	closemessage
-	callnative ClearMugshot
 	call TheGangsAllHere_WalkHallway_Script
 	goto TheGangsAllHere_ComeOnIn_Dialogue
 	return
@@ -134,53 +115,35 @@ TheGangsAllHere_ComeOnIn_Dialogue::
 	applymovement 5, Common_Movement_ExclamationMark
 	waitmovement 5
 	applymovement 5, TheGangsAllHere_RoseWalkToDoor_Movement
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_ComeOnIn
+	msgbox gText_TheGangsAllHere_ComeOnIn, , SPEAKER_ROSE
 	closemessage
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_AsYouAsked
+	msgbox gText_TheGangsAllHere_AsYouAsked, , SPEAKER_OAK
 	closemessage
-	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 3, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_IThoughtYouSaid
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_IDidIsee
+	msgbox gText_TheGangsAllHere_IThoughtYouSaid, , SPEAKER_ZOEY
+	msgbox gText_TheGangsAllHere_IDidIsee, , SPEAKER_OAK
 	goto TheGangsAllHere_NotIntentionally_Dialogue
 	end
 
 
 TheGangsAllHere_NotIntentionally_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_NotIntentionally
+	msgbox gText_TheGangsAllHere_NotIntentionally, , SPEAKER_ROSE
 	compare VAR_SALESFORCETOWER_PRODUCTION_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
 	goto_if_eq TheGangsAllHere_NotIntentionally_Dialogue_2
 TheGangsAllHere_NotIntentionally_Dialogue_1:
 	msgbox gText_TheGangsAllHere_InAnyCase
-	callnative ClearMugshot
 	applymovement 3, Common_Movement_WalkInPlaceDown
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_ImThrilledTheTiming
+	msgbox gText_TheGangsAllHere_ImThrilledTheTiming, , SPEAKER_ROSE
 	closemessage
-	callnative ClearMugshot
 	goto TheGangsAllHere_GiveDowsingMachine_Script
 	end
 
 TheGangsAllHere_NotIntentionally_Dialogue_2:
 	msgbox gText_TheGangsAllHere_PleaseTellMe
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_IHeardWonderfulThings
+	msgbox gText_TheGangsAllHere_IHeardWonderfulThings, , SPEAKER_OAK
 	goto TheGangsAllHere_NotIntentionally_Dialogue_1
 
 
@@ -194,24 +157,15 @@ TheGangsAllHere_GiveDowsingMachine_Script::
 
 
 TheGangsAllHere_GiveDowsingMachine_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_TheVSSeekerWillAlert
-	callnative ClearMugshot
+	msgbox gText_TheGangsAllHere_TheVSSeekerWillAlert, , SPEAKER_ROSE
 	applymovement 3, Common_Movement_FacePlayer
 	waitmovement 3
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_NotToPlaceAnyUndue
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_OhWowThatMeans
+	msgbox gText_TheGangsAllHere_NotToPlaceAnyUndue, , SPEAKER_OAK
+	msgbox gText_TheGangsAllHere_OhWowThatMeans, , SPEAKER_ZOEY
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_WeKnowButNoPressure
+	msgbox gText_TheGangsAllHere_WeKnowButNoPressure, , SPEAKER_ROSE
 	goto TheGangsAllHere_EndScene_Dialogue
 	return
 
@@ -219,21 +173,14 @@ TheGangsAllHere_GiveDowsingMachine_Dialogue::
 TheGangsAllHere_EndScene_Dialogue::
 	msgbox gText_TheGangsAllHere_TimeForNumber7
 	closemessage
-	callnative ClearMugshot
 	applymovement 3, Common_Movement_FaceDown
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_WeShall
-	callnative ClearMugshot
+	msgbox gText_TheGangsAllHere_WeShall, , SPEAKER_OAK
 	applymovement 3, Common_Movement_FacePlayer
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_TheGangsAllHere_FeelFreeToContinue
+	msgbox gText_TheGangsAllHere_FeelFreeToContinue, , SPEAKER_OAK
 	compare VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
 	goto_if_ne TheGangsAllHere_EndScene_Dialogue_2
 TheGangsAllHere_EndScene_Dialogue_1:
-	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, TheGangsAllHere_WatchPairLeave_Movement
 	applymovement 5, TheGangsAllHere_RoseWalkOut_Movement

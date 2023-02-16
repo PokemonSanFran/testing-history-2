@@ -22,10 +22,7 @@ LetsGettheBandBackTogether_PreventPlayerEnterTower_Script_1:
 
 LetsGettheBandBackTogether_PreventPlayerEnterTower_Script_2:
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_IDontThinkIShould
-	callnative ClearMugshot
+	msgbox gText_LetsGetTheBandBackTogether_IDontThinkIShould, , SPEAKER_ZOEY
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
 	waitmovement 0
@@ -41,84 +38,50 @@ LetsGettheBandBackTogether_MeetInBasement_Script_1:
 	waitse
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_IDidntThinkYouWere, MSGBOX_NPC
-	goto_if_set FLAG_TIMELINE_TIMETRAVEL, LetsGettheBandBackTogether_MeetInBasement_Script_5
-LetsGettheBandBackTogether_MeetInBasement_Script_4:
-	msgbox gText_LetsGetTheBandBackTogether_IReallyThinkWith
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_WaitTheEliteFour
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_OkayKindaThatsActually
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_WhatAmIMissing
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_LetsSplitUp
-	msgbox gText_LetsGetTheBandBackTogether_BeforeWeStart
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_OhYeahOfCourse
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_IllWriteUpAPost
-	setvar VAR_ALCATRAZ_STATE, LAST_CHANCE_TRUE_TIMELINE_START
-	callnative ClearMugshot
-	closemessage
-	release
-	end
+	msgbox gText_LetsGetTheBandBackTogether_IDidntThinkYouWere, MSGBOX_NPC, , SPEAKER_ARCHER
+	goto_if_set FLAG_TIMELINE_TIMETRAVEL, LetsGettheBandBackTogether_MeetInBasement_Script_4
+	return
 
 LetsGettheBandBackTogether_MeetInBasement_Script_2:
 	goto LetsGettheBandBackTogether_TrueTimelineSplit_Script
 	goto LetsGettheBandBackTogether_MeetInBasement_Script_1
 
-LetsGettheBandBackTogether_MeetInBasement_Script_5:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_IHadAnInsane
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	goto LetsGettheBandBackTogether_MeetInBasement_Script_4
+LetsGettheBandBackTogether_MeetInBasement_Script_4:
+	msgbox gText_LetsGetTheBandBackTogether_IHadAnInsane, , SPEAKER_ZOEY
+	msgbox gText_LetsGetTheBandBackTogether_IReallyThinkWith, , SPEAKER_ARCHER
+	msgbox gText_LetsGetTheBandBackTogether_WaitTheEliteFour, , SPEAKER_ZOEY
+	msgbox gText_LetsGetTheBandBackTogether_OkayKindaThatsActually, , SPEAKER_ARCHER
+	msgbox gText_LetsGetTheBandBackTogether_WhatAmIMissing, , SPEAKER_ZOEY
+	msgbox gText_LetsGetTheBandBackTogether_HasntBeenHeardFromEver, , SPEAKER_ARCHER
+	msgbox gText_LetsGetTheBandBackTogether_LetsSplitUp, , SPEAKER_ARCHER
+	msgbox gText_LetsGetTheBandBackTogether_BeforeWeStart, , SPEAKER_ARCHER
+	msgbox gText_LetsGetTheBandBackTogether_OhYeahOfCourse, , SPEAKER_ZOEY
+	msgbox gText_LetsGetTheBandBackTogether_IllWriteUpAPost, , SPEAKER_ARCHER
+	setvar VAR_ALCATRAZ_STATE, LAST_CHANCE_TRUE_TIMELINE_START
+	closemessage
+	release
+	end
 
 
 LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	lock
 	faceplayer
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_ReadyToGoLive, MSGBOX_YESNO
+	msgbox gText_LetsGetTheBandBackTogether_ReadyToGoLive, MSGBOX_YESNO, , SPEAKER_ARCHER
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGettheBandBackTogether_TrueTimelineSplit_Script_2
 	setvar VAR_ALCATRAZ_STATE, START_TRUE_TIMELINE
 	setvar VAR_STORYLINE_STATE, STORY_START_TRUE_TIMELINE
 	setflag FLAG_TIMELINE_TRUE
 	setvar VAR_MASK_OFF_STATE, ASSIGNED_MASK_OFF
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_Yes
-	callnative ClearMugshot
+	msgbox gText_LetsGetTheBandBackTogether_Yes, , SPEAKER_ARCHER
 	closemessage
 	fadescreen FADE_TO_BLACK
-	msgbox gText_LetsGetTheBandBackTogether_WereSickOf
+	msgbox gText_LetsGetTheBandBackTogether_WereSickOf, , SPEAKER_ARCHER, TAIL_SHOUT, PHONE_ON
 	closemessage
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_LetsSplitUp
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_AnyLeads
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_OkayGetGoing
-	callnative ClearMugshot
+	msgbox gText_LetsGetTheBandBackTogether_LetsSplitUp, , SPEAKER_ARCHER
+	msgbox gText_LetsGetTheBandBackTogether_AnyLeads, , SPEAKER_ZOEY
+	msgbox gText_LetsGetTheBandBackTogether_OkayGetGoing, , SPEAKER_ARCHER
 	closemessage
 	applymovement 1, LetsGettheBandBackTogether_WalkOffScreen
 	waitmovement 1
@@ -129,10 +92,7 @@ LetsGettheBandBackTogether_TrueTimelineSplit_Script::
 	end
 
 LetsGettheBandBackTogether_TrueTimelineSplit_Script_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGetTheBandBackTogether_YeahIGetIt
-	callnative ClearMugshot
+	msgbox gText_LetsGetTheBandBackTogether_YeahIGetIt, , SPEAKER_ARCHER
 	closemessage
 	release
 	end

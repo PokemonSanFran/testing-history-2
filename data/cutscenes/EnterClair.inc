@@ -24,9 +24,7 @@ EnterClair_AskAboutGym_Dialogue::
 	msgbox gText_EnterClair_SkatingAround, MSGBOX_NPC, SPEAKER_CLAIR
 	msgbox gText_EnterClair_ItsInteresting, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	msgbox gText_EnterClair_OhComeOn, , SPEAKER_CLAIR
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterClair_WeirdItsWeird
+	msgbox gText_EnterClair_WeirdItsWeird, , SPEAKER_ZOEY
 	msgbox gText_EnterClair_IveAlwaysSaid, , SPEAKER_CLAIR
 	msgbox gText_EnterClair_WhenIWasAwarded, , SPEAKER_CLAIR
 	closemessage

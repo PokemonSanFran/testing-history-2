@@ -15,18 +15,12 @@ script LetsFixThis_EliteVideo_Dialogue {
 
         msgbox(gText_LetsFixThis_PeopleOf,,SPEAKER_SIEBOLD)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_WeWillBeGiving)
+        msgbox(gText_LetsFixThis_WeWillBeGiving,,SPEAKER_WIKSTROM)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_WePrayTheGovernment)
+        msgbox(gText_LetsFixThis_WePrayTheGovernment,,SPEAKER_DRASNA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_ButWeWillNot)
-        callnative(ClearMugshot)
+        msgbox(gText_LetsFixThis_ButWeWillNot,,SPEAKER_MALVA)
+        
         closemessage
 
         goto(LetsFixThis_GetMessage_Dialogue)
@@ -43,38 +37,22 @@ script LetsFixThis_GetMessage_Dialogue {
         pokenavcall("You have a new text.")
         waitmessage
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_OhLooksLike)
+        msgbox(gText_LetsFixThis_OhLooksLike,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_ComeCelebrate)
+        msgbox(gText_LetsFixThis_ComeCelebrate,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_SoundsLikeIt)
+        msgbox(gText_LetsFixThis_SoundsLikeIt,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_IMightGoALittle)
+        msgbox(gText_LetsFixThis_IMightGoALittle,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_WhatreThey)
+        msgbox(gText_LetsFixThis_WhatreThey,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_TheyWantAllHands)
+        msgbox(gText_LetsFixThis_TheyWantAllHands,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_GuessIShould)
+        msgbox(gText_LetsFixThis_GuessIShould,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsFixThis_ActuallyGivenHowMuch)
-        callnative(ClearMugshot)
+        msgbox(gText_LetsFixThis_ActuallyGivenHowMuch,,SPEAKER_ARCHER)
+        
         closemessage
 
         setvar(VAR_ALCATRAZ_STATE,PRE_SPEECHSPEECH)

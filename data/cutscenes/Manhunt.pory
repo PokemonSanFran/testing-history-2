@@ -37,12 +37,12 @@ script Manhunt_Interact_Sabrina_Script{
 }
 
 script Manhunt_ActiveQuest_Dialogue{
-    msgbox(gText_Manhunt_EverySecond,MSGBOX_NPC)
+    msgbox(gText_Manhunt_EverySecond,MSGBOX_NPC,SPEAKER_SABRINA)
     end
 }
 
 script Manhunt_CompleteQuest_Dialogue{
-    msgbox(gText_Manhunt_IllBeBack,MSGBOX_NPC)
+    msgbox(gText_Manhunt_IllBeBack,MSGBOX_NPC,SPEAKER_SABRINA)
     end
 }
 
@@ -51,10 +51,8 @@ script Manhunt_Assignment_Dialogue {
 
         setvar(VAR_MANHUNT_STATE,ASSIGNED_FIND_GIOVANNI)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_GoFind,MSGBOX_NPC)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_GoFind,MSGBOX_NPC,SPEAKER_SABRINA)
+        
 
         startquest(QUEST_MANHUNT)
         release
@@ -70,55 +68,41 @@ script Manhunt_Cherie_Battle_Script {
         addobject(BIANCA)
         applymovement(BIANCA,Manhunt_WalkInNewspaper)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_HeyWereTrying,MSGBOX_NPC)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_HeyWereTrying,MSGBOX_NPC,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_YeahIWrote)
+        msgbox(gText_Manhunt_YeahIWrote,,SPEAKER_CHERIE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_Blessed)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_Blessed,,SPEAKER_BIANCA)
+        
 
-        msgbox(gText_Manhunt_WaitYoureThatKid)
+        msgbox(gText_Manhunt_WaitYoureThatKid,,SPEAKER_CHERIE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_ThatsUs)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_ThatsUs,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_IShouldHaveRecognized)
+        msgbox(gText_Manhunt_IShouldHaveRecognized,,SPEAKER_CHERIE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_HeyWeJustWant)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_HeyWeJustWant,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_AsAMatterOfFact)
+        msgbox(gText_Manhunt_AsAMatterOfFact,,SPEAKER_CHERIE)
         multi_fixed_2_vs_1(TRAINER_RICK,gText_Manhunt_PleaseDontHurtUs,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_1)
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_StartTalking)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_StartTalking,,SPEAKER_BIANCA)
+        
 
-        msgbox(gText_Manhunt_ISwearIDontKnow)
+        msgbox(gText_Manhunt_ISwearIDontKnow,,SPEAKER_CHERIE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_IKnowYouKnow)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_IKnowYouKnow,,SPEAKER_BIANCA)
+        
 
-        msgbox(gText_Manhunt_TheOnlyLeadIHave)
+        msgbox(gText_Manhunt_TheOnlyLeadIHave,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_ThatsAStart)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_ThatsAStart,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_NowPleaseLeave,MSGBOX_AUTOCLOSE)
+        msgbox(gText_Manhunt_NowPleaseLeave,MSGBOX_AUTOCLOSE,SPEAKER_BIANCA)
         applymovement(BIANCA,Manhunt_LeaveNewspaper)
         waitmovement(0)
         playse(SE_EXIT)
@@ -136,44 +120,34 @@ script Manhunt_Teodoro_Battle_Script {
         clearflag(FLAG_HIDE_BIANCA)
         addobject(BIANCA)
         applymovement(BIANCA,Manhunt_WalkIntoConsulting)
-        msgbox(gText_Manhunt_WhatAreSomeKids,MSGBOX_NPC)
+        msgbox(gText_Manhunt_WhatAreSomeKids,MSGBOX_NPC,SPEAKER_TEODORO)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_YouGonnaMakeThisEasy)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_YouGonnaMakeThisEasy,,SPEAKER_BIANCA)
+        
 
-        msgbox(gText_Manhunt_WhatTheHellAreYou)
+        msgbox(gText_Manhunt_WhatTheHellAreYou,,SPEAKER_TEODORO)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_WeKnowYoureWorkingWith)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_WeKnowYoureWorkingWith,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_YeahIDidSomeWork)
+        msgbox(gText_Manhunt_YeahIDidSomeWork,,SPEAKER_TEODORO)
         multi_fixed_2_vs_1(TRAINER_ALLEN,gText_Manhunt_DamnPunks,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_2)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_WhatDoYouKnow)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_WhatDoYouKnow,,SPEAKER_BIANCA)
+        
 
-        msgbox(gText_Manhunt_LookIDontKnowWhat)
+        msgbox(gText_Manhunt_LookIDontKnowWhat,,SPEAKER_TEODORO)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_GoodInTheWorld)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_GoodInTheWorld,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_TheOnlyWeirdThing)
+        msgbox(gText_Manhunt_TheOnlyWeirdThing,,SPEAKER_TEODORO)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_ThatsInCastro)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_ThatsInCastro,,SPEAKER_BIANCA)
+        
 
-        msgbox(gText_Manhunt_GodForbidSomeGoodPeople,MSGBOX_AUTOCLOSE)
+        msgbox(gText_Manhunt_GodForbidSomeGoodPeople,MSGBOX_AUTOCLOSE,SPEAKER_TEODORO)
         applymovement(BIANCA,Manhunt_LeaveConsulting)
         waitmovement(0)
         playse(SE_EXIT)
@@ -195,54 +169,42 @@ script Manhunt_Dudley_Battle_Script {
         applymovement(BIANCA,Manhunt_WalkIntoBallShop)
         applymovement(1,Manhunt_ExclaimAndTurn)
 
-        msgbox(gText_Manhunt_HowCanIHelp,MSGBOX_NPC)
+        msgbox(gText_Manhunt_HowCanIHelp,MSGBOX_NPC,SPEAKER_DUDLEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_CutTheShit)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_CutTheShit,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_WoahTheChampion)
+        msgbox(gText_Manhunt_WoahTheChampion,SPEAKER_DUDLEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_WhatDoYouKnow)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_WhatDoYouKnow,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_YeahTheyreOneOf)
+        msgbox(gText_Manhunt_YeahTheyreOneOf,,SPEAKER_DUDLEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_BecauseWereBusting)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_BecauseWereBusting,,SPEAKER_BIANCA)
+        
 
-        msgbox(gText_Manhunt_WhatDidTheyBuy)
+        msgbox(gText_Manhunt_WhatDidTheyBuy,,SPEAKER_DUDLEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_ImSureWeCanHelp)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_ImSureWeCanHelp,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_WoahWaitHold)
+        msgbox(gText_Manhunt_WoahWaitHold,,SPEAKER_DUDLEY)
         multi_fixed_2_vs_1(TRAINER_TIANA,gText_Manhunt_ShitMan,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_3)
 
-        msgbox(gText_Manhunt_ShitMan)
+        msgbox(gText_Manhunt_ShitMan,,SPEAKER_DUDLEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_AndWereDoingOurs)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_AndWereDoingOurs,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_TheyBoughtABunch)
+        msgbox(gText_Manhunt_TheyBoughtABunch,,SPEAKER_DUDLEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_WhatElse)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_WhatElse,,SPEAKER_BIANCA)
+        
 
-        msgbox(gText_Manhunt_OneTimeTheyHadDelivered)
-        msgbox(gText_Manhunt_Sob,MSGBOX_AUTOCLOSE)
+        msgbox(gText_Manhunt_OneTimeTheyHadDelivered,,SPEAKER_DUDLEY)
+        msgbox(gText_Manhunt_Sob,MSGBOX_AUTOCLOSE,SPEAKER_DUDLEY)
         applymovement(BIANCA,Manhunt_LeaveBallShop)
         waitmovement(0)
         playse(SE_EXIT)
@@ -268,19 +230,17 @@ script Manhunt_Matthew_Battle_Script {
         waitmovement(0)
         applymovement(MATTHEW,Common_Movement_FacePlayer)
         waitmovement(MATTHEW)
-        msgbox(gText_Manhunt_OhDamnLooksLike)
+        msgbox(gText_Manhunt_OhDamnLooksLike,,SPEAKER_MATTHEW)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_WhosHe)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_WhosHe,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_Manhunt_YeahToldMeYoud)
+        msgbox(gText_Manhunt_YeahToldMeYoud,,SPEAKER_MATTHEW)
 
         multi_fixed_2_vs_1(TRAINER_SHANNON,gText_Manhunt_OhDamnLooksLike,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,GOT_MANHUNT_CLUE_4)
 
-        msgbox(gText_Manhunt_IFeelBadForAll,MSGBOX_AUTOCLOSE)
+        msgbox(gText_Manhunt_IFeelBadForAll,MSGBOX_AUTOCLOSE,SPEAKER_MATTHEW)
         applymovement(BIANCA,Manhunt_LeaveRoute)
         waitmovement(0)
         removeobject(BIANCA)
@@ -298,36 +258,28 @@ script Manhunt_Encounter_Giovanni_Dialogue {
         applymovement(BIANCA,Manhunt_ApproachAtLake)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_StopHurtingPeople,MSGBOX_NPC)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_StopHurtingPeople,MSGBOX_NPC,SPEAKER_GIOVANNI)
+        
         lock
 
         multi_fixed_2_vs_1(TRAINER_MATT,gText_Manhunt_IfIDontHave,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
         setvar(VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI)
         addvar(VAR_STORYLINE_STATE,1)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_IWontFightYouAnyFurther)
+        msgbox(gText_Manhunt_IWontFightYouAnyFurther,,SPEAKER_GIOVANNI)
 
         if(var(VAR_STORYLINE_STATE) == STORY_3RD_TEAMROCKET_TAKEDOWN){
-            msgbox(gText_Manhunt_TheRegionIsYours)
+            msgbox(gText_Manhunt_TheRegionIsYours,,SPEAKER_GIOVANNI)
         }
-        callnative(ClearMugshot)
 
-        pokenavcall("This phone is ringing.")
-        waitmessage
+        playse(SE_POKENAV_CALL)
+        waitse
+        playse(SE_POKENAV_CALL)
+        
+        msgbox(gText_Manhunt_IllBeAtTheEntrance,,SPEAKER_ZOEY,,PHONE_ON)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_IllBeAtTheEntrance)
-
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_WhatWaitUhOkay)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_WhatWaitUhOkay,,SPEAKER_ROSE,EMOTE_SHOCK,PHONE_ON)
+        
         warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS,5,5)
 }
 
@@ -340,10 +292,8 @@ script Manhunt_MissionComplete_Dialogue {
         applymovement(SABRINA,Common_Movement_FaceDown)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_Manhunt_GoodWork)
-        callnative(ClearMugshot)
+        msgbox(gText_Manhunt_GoodWork,,SPEAKER_SABRINA)
+        
         release
         completequest(QUEST_MANHUNT)
         call(ExhibitionBattle_TimeSkip_Script)

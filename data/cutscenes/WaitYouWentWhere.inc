@@ -36,49 +36,25 @@ WaitYouWentWhere_PlayerSetUp_Script_2:
 
 WaitYouWentWhere_FirstInteract_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_WelcomeBackFrom, MSGBOX_NPC
+	msgbox gText_WaitYouWentWhere_WelcomeBackFrom, MSGBOX_NPC, SPEAKER_OAK
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_YeahThanksFor
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_IHaveSomeBusiness
+	msgbox gText_WaitYouWentWhere_YeahThanksFor, , SPEAKER_ZOEY
+	msgbox gText_WaitYouWentWhere_IHaveSomeBusiness, , SPEAKER_OAK
 	closemessage
 	callnative ClearMugshot
 	call WaitYouWentWhere_PlayerSetUp_Script
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Player_WaitYouWentWhere_WalkWest
 	applymovement 1, Oak_WaitYouWentWhere_WalkWest
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_IActuallyJustGot
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_ThePassWeGave
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_GaveMeAPass
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_WhatAPainIn
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_YeahIveSeenThem
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_YesBeforeWeRevamped
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_OrreHasALot
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_NoOffense
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WaitYouWentWhere_GoingThisWay
+	msgbox gText_WaitYouWentWhere_IActuallyJustGot, , SPEAKER_ZOEY
+	msgbox gText_WaitYouWentWhere_ThePassWeGave, , SPEAKER_OAK
+	msgbox gText_WaitYouWentWhere_GaveMeAPass, , SPEAKER_ZOEY
+	msgbox gText_WaitYouWentWhere_WhatAPainIn, , SPEAKER_OAK
+	msgbox gText_WaitYouWentWhere_YeahIveSeenThem, , SPEAKER_ZOEY
+	msgbox gText_WaitYouWentWhere_YesBeforeWeRevamped, , SPEAKER_OAK
+	msgbox gText_WaitYouWentWhere_OrreHasALot, , SPEAKER_ZOEY
+	msgbox gText_WaitYouWentWhere_NoOffense, , SPEAKER_OAK
+	msgbox gText_WaitYouWentWhere_GoingThisWay, , SPEAKER_OAK
 	callnative ClearMugshot
 	closemessage
 	applymovement 1, WaitYouWentWhere_WalkUpHill

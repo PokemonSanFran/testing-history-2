@@ -20,7 +20,7 @@ CongratsYoureAnAsshole_Intro_Dialogue_1:
 	msgbox gText_CongratsYoureanAsshole_WelcomeBack, MSGBOX_NPC, SPEAKER_OAK
 	msgbox gText_CongratsYoureanAsshole_YeahIWantToWork, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
-	msgbox gText_CongratsYoureanAsshole_WevePreparedAStatement, MSGBOX_DEFAULT, SPEAKER_LANCE
+	msgbox gText_CongratsYoureanAsshole_WevePreparedAStatement, MSGBOX_DEFAULT, SPEAKER_OAK
 	msgbox gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal, MSGBOX_DEFAULT, SPEAKER_KOGA
 	applymovement 9, Common_Movement_WalkInPlaceLeft
 	waitmovement 9

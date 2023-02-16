@@ -60,7 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_PSFROUTE1
+	msgbox gText_GroupStages_OhRight, , SPEAKER_ZOEY, TAIL_THOUGHT
 	return
 
 

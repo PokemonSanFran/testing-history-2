@@ -20,17 +20,14 @@ MaskOff_QuestH_Dialogue::
 	compare VAR_MASK_OFF_STATE, ASSIGNED_MASK_OFF
 	goto_if_eq MaskOff_QuestH_Dialogue_2
 MaskOff_QuestH_Dialogue_1:
-	msgbox gText_MaskOff_IRememberMeeting
-	msgbox gText_MaskOff_HeSaidEvenThen
-	msgbox gText_MaskOff_IThinkThatAccident
+	msgbox gText_MaskOff_IRememberMeeting, , SPEAKER_CHERIE
+	msgbox gText_MaskOff_HeSaidEvenThen, , SPEAKER_CHERIE
+	msgbox gText_MaskOff_IThinkThatAccident, , SPEAKER_CHERIE
 	closemessage
 	return
 
 MaskOff_QuestH_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_WhatCanYou
-	callnative ClearMugshot
+	msgbox gText_MaskOff_WhatCanYou, , SPEAKER_ZOEY
 	addvar VAR_MASK_OFF_STATE, 1
 	goto MaskOff_QuestH_Dialogue_1
 
@@ -40,16 +37,13 @@ MaskOff_QuestF_Dialogue::
 	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_1
 	goto_if_eq MaskOff_QuestF_Dialogue_2
 MaskOff_QuestF_Dialogue_1:
-	msgbox gText_MaskOff_IMissWorking
-	msgbox gText_MaskOff_HeWouldLeaveRight
+	msgbox gText_MaskOff_IMissWorking, , SPEAKER_TEODORO
+	msgbox gText_MaskOff_HeWouldLeaveRight, , SPEAKER_TEODORO
 	closemessage
 	return
 
 MaskOff_QuestF_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_WhatCanYou
-	callnative ClearMugshot
+	msgbox gText_MaskOff_WhatCanYou, , SPEAKER_ZOEY
 	addvar VAR_MASK_OFF_STATE, 1
 	goto MaskOff_QuestF_Dialogue_1
 
@@ -59,17 +53,14 @@ MaskOff_QuestI_Dialogue::
 	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_2
 	goto_if_eq MaskOff_QuestI_Dialogue_2
 MaskOff_QuestI_Dialogue_1:
-	msgbox gText_MaskOff_UsedToCome
-	msgbox gText_MaskOff_TheyWouldJust
-	msgbox gText_MaskOff_IThinkSoHe
+	msgbox gText_MaskOff_UsedToCome, , SPEAKER_FANNY
+	msgbox gText_MaskOff_TheyWouldJust, , SPEAKER_FANNY
+	msgbox gText_MaskOff_IThinkSoHe, , SPEAKER_FANNY
 	closemessage
 	return
 
 MaskOff_QuestI_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_WhatCanYou
-	callnative ClearMugshot
+	msgbox gText_MaskOff_WhatCanYou, , SPEAKER_ZOEY
 	addvar VAR_MASK_OFF_STATE, 1
 	goto MaskOff_QuestI_Dialogue_1
 
@@ -79,16 +70,13 @@ MaskOff_QuestD_Dialogue::
 	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_2
 	goto_if_eq MaskOff_QuestD_Dialogue_2
 MaskOff_QuestD_Dialogue_1:
-	msgbox gText_MaskOff_UsedToBeHere
-	msgbox gText_MaskOff_BookwormsTendToBe
+	msgbox gText_MaskOff_UsedToBeHere, , SPEAKER_DUDLEY
+	msgbox gText_MaskOff_BookwormsTendToBe, , SPEAKER_DUDLEY
 	closemessage
 	return
 
 MaskOff_QuestD_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_WhatCanYou
-	callnative ClearMugshot
+	msgbox gText_MaskOff_WhatCanYou, , SPEAKER_ZOEY
 	addvar VAR_MASK_OFF_STATE, 1
 	goto MaskOff_QuestD_Dialogue_1
 
@@ -104,17 +92,14 @@ MaskOff_QuestG_Dialogue::
 	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_3
 	goto_if_eq MaskOff_QuestG_Dialogue_2
 MaskOff_QuestG_Dialogue_1:
-	msgbox gText_MaskOff_GaveATalkHereOnce
-	msgbox gText_MaskOff_WhateverHeDidWorked
-	msgbox gText_MaskOff_WhenverHeLeft
+	msgbox gText_MaskOff_GaveATalkHereOnce, , SPEAKER_CRAIG
+	msgbox gText_MaskOff_WhateverHeDidWorked, , SPEAKER_CRAIG
+	msgbox gText_MaskOff_WhenverHeLeft, , SPEAKER_CRAIG
 	closemessage
 	return
 
 MaskOff_QuestG_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_WhatCanYou
-	callnative ClearMugshot
+	msgbox gText_MaskOff_WhatCanYou, , SPEAKER_ZOEY
 	addvar VAR_MASK_OFF_STATE, 1
 	goto MaskOff_QuestG_Dialogue_1
 
@@ -124,17 +109,14 @@ MaskOff_QuestA_Dialogue::
 	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_5
 	goto_if_eq MaskOff_QuestA_Dialogue_2
 MaskOff_QuestA_Dialogue_1:
-	msgbox gText_MaskOff_IUsedToSee
-	msgbox gText_MaskOff_HeWorkedInThe
-	msgbox gText_MaskOff_WatchingHimBattle
+	msgbox gText_MaskOff_IUsedToSee, , SPEAKER_ANTONE
+	msgbox gText_MaskOff_HeWorkedInThe, , SPEAKER_ANTONE
+	msgbox gText_MaskOff_WatchingHimBattle, , SPEAKER_ANTONE
 	closemessage
 	return
 
 MaskOff_QuestA_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_WhatCanYou
-	callnative ClearMugshot
+	msgbox gText_MaskOff_WhatCanYou, , SPEAKER_ZOEY
 	goto MaskOff_QuestA_Dialogue_1
 
 
@@ -143,17 +125,14 @@ MaskOff_QuestE_Dialogue::
 	compare VAR_MASK_OFF_STATE, GOT_MASK_OFF_CLUE_4
 	goto_if_eq MaskOff_QuestE_Dialogue_2
 MaskOff_QuestE_Dialogue_1:
-	msgbox gText_MaskOff_WasBornAndRaised
-	msgbox gText_MaskOff_IKnowHeUsedToLive
-	msgbox gText_MaskOff_ItUsedToBeSuper
+	msgbox gText_MaskOff_WasBornAndRaised, , SPEAKER_MATTHEW
+	msgbox gText_MaskOff_IKnowHeUsedToLive, , SPEAKER_MATTHEW
+	msgbox gText_MaskOff_ItUsedToBeSuper, , SPEAKER_MATTHEW
 	closemessage
 	return
 
 MaskOff_QuestE_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_WhatCanYou
-	callnative ClearMugshot
+	msgbox gText_MaskOff_WhatCanYou, , SPEAKER_ZOEY
 	goto MaskOff_QuestE_Dialogue_1
 
 
@@ -161,10 +140,7 @@ MaskOff_Encounter_Giovanni_Dialogue::
 	lock
 	setvar VAR_MASK_OFF_STATE, SAVE_GIOVANNI_LAKEMERRITT_TRUE
 	call Common_EventScript_SaveGame
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_MaskOff_FancyABattle, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_MaskOff_FancyABattle, MSGBOX_NPC, SPEAKER_GIOVANNI
 	lock
 	trainerbattle_no_intro TRAINER_SHELLY_SEAFLOOR_CAVERN, gText_GroupStages_Placeholder
 	setvar VAR_MASK_OFF_STATE, DEFEATED_MASK_OFF_GIOVANNI
@@ -174,64 +150,33 @@ MaskOff_Encounter_Giovanni_Dialogue::
 
 
 MaskOff_PostBattle_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_MaskOff_YouveMadeIncredible
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_ItsNiceToNotGet
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_MaskOff_YouWontNeedTo
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_WhatDoYouMean
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_MaskOff_AllowMeTo
-	callnative ClearMugshot
+	msgbox gText_MaskOff_YouveMadeIncredible, , SPEAKER_GIOVANNI
+	msgbox gText_MaskOff_ItsNiceToNotGet, , SPEAKER_ZOEY
+	msgbox gText_MaskOff_YouWontNeedTo, , SPEAKER_GIOVANNI
+	msgbox gText_MaskOff_WhatDoYouMean, , SPEAKER_ZOEY
+	msgbox gText_MaskOff_AllowMeTo, , SPEAKER_GIOVANNI
 	closemessage
 	fadescreen FADE_TO_BLACK
 	call MaskOff_TransformObject_Script
 	lock
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_MaskOff_TheOneAndOnly, MSGBOX_NPC
+	msgbox gText_MaskOff_TheOneAndOnly, MSGBOX_NPC, SPEAKER_WIKSTROM
 	lock
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_MaskOff_IFormedTeamRocket
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_ButWhyGo
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_MaskOff_IHidMyIdentity
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_ThingsAre
-	callnative ClearMugshot
+	msgbox gText_MaskOff_IFormedTeamRocket, , SPEAKER_WIKSTROM
+	msgbox gText_MaskOff_ButWhyGo, , SPEAKER_ZOEY
+	msgbox gText_MaskOff_IHidMyIdentity, , SPEAKER_WIKSTROM
+	msgbox gText_MaskOff_ThingsAre, , SPEAKER_ZOEY
 	closemessage
 	fadescreen FADE_TO_BLACK
 	delay 32
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_MaskOff_ISee
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_MaskOff_WaitWhatDO
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_MaskOff_IHaventExplicitly
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_MaskOff_IShouldApologize
-	callnative ClearMugshot
+	msgbox gText_MaskOff_ISee, , SPEAKER_WIKSTROM
+	msgbox gText_MaskOff_WaitWhatDO, , SPEAKER_ZOEY
+	msgbox gText_MaskOff_IHaventExplicitly, , SPEAKER_WIKSTROM
+	msgbox gText_MaskOff_IShouldApologize, , SPEAKER_WIKSTROM
 	closemessage
 	goto MaskOff_End_Dialogue
 	return

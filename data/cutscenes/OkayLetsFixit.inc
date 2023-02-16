@@ -27,20 +27,14 @@ OkayLetsFixit_ReachTop_Script::
 	clearflag FLAG_TEMP_1
 	addobject 1
 	fadescreen FADE_FROM_WHITE
-	msgbox gText_OkayLetsFixIt_ImGladYouCame
+	msgbox gText_OkayLetsFixIt_ImGladYouCame, , SPEAKER_HIKO
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, OkayLetsFixit_LookAround
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OkayLetsFixIt_WhatWhereDidYou
-	callnative ClearMugshot
-	msgbox gText_OkayLetsFixIt_HaveYouRealized
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OkayLetsFixIt_InComingHere
-	callnative ClearMugshot
-	msgbox gText_OkayLetsFixIt_LetsLookBack
+	msgbox gText_OkayLetsFixIt_WhatWhereDidYou, , SPEAKER_ZOEY
+	msgbox gText_OkayLetsFixIt_HaveYouRealized, , SPEAKER_HIKO
+	msgbox gText_OkayLetsFixIt_InComingHere, , SPEAKER_ZOEY
+	msgbox gText_OkayLetsFixIt_LetsLookBack, , SPEAKER_HIKO
 	closemessage
 	warpsilent MAP_OKAY_LETS_FIXIT_FLASHBACK, 255, 9, 4
 	end
@@ -53,25 +47,16 @@ OkayLetsFixit_ReachTop_Script_2:
 OkayLetsFixit_StartFlashback_Script::
 	lock
 	setvar VAR_STORYLINE_STATE, STORY_BEGIN_LETS_FIX_IT
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OkayLetsFixIt_ThisWasTheNight
-	callnative ClearMugshot
+	msgbox gText_OkayLetsFixIt_ThisWasTheNight, , SPEAKER_ZOEY
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 1
-	msgbox gText_OkayLetsFixIt_Why
+	msgbox gText_OkayLetsFixIt_Why, , SPEAKER_HIKO
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OkayLetsFixIt_IWasTryingToHelp
-	callnative ClearMugshot
-	msgbox gText_OkayLetsFixIt_WouldYouChoose
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OkayLetsFixIt_IfICouldDoItOver
+	msgbox gText_OkayLetsFixIt_IWasTryingToHelp, , SPEAKER_ZOEY
+	msgbox gText_OkayLetsFixIt_WouldYouChoose, , SPEAKER_HIKO
+	msgbox gText_OkayLetsFixIt_IfICouldDoItOver, , SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	delay 30
 	warpsilent MAP_TWINPEAKS, 255, 17, 43
 	end
@@ -91,11 +76,8 @@ OkayLetsFixit_ReturnToPeak_Script::
 	waitmovement OBJ_EVENT_ID_CAMERA
 	waitmovement 1
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OkayLetsFixIt_WaitWhatWhoAreYou
-	callnative ClearMugshot
-	msgbox gText_OkayLetsFixIt_IHopeYouMake
+	msgbox gText_OkayLetsFixIt_WaitWhatWhoAreYou, , SPEAKER_ZOEY
+	msgbox gText_OkayLetsFixIt_IHopeYouMake, , SPEAKER_HIKO
 	closemessage
 	playse SE_ORB
 	fadescreen FADE_TO_WHITE

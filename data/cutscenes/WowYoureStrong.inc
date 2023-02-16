@@ -32,26 +32,11 @@ WowYoureStrong_WalkToPlayer_Script::
 
 
 WowYoureStrong_Intro_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WowYoureStrong_WhatAShow
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WowYoureStrong_OhUhThanksALot
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WowYoureStrong_WhereMyManners
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WowYoureStrong_ShouldHaveKnown
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WowYoureStrong_DreamBig
-	callnative ClearMugshot
+	msgbox gText_WowYoureStrong_WhatAShow, , SPEAKER_ROSE
+	msgbox gText_WowYoureStrong_OhUhThanksALot, , SPEAKER_ZOEY
+	msgbox gText_WowYoureStrong_WhereMyManners, , SPEAKER_ROSE
+	msgbox gText_WowYoureStrong_ShouldHaveKnown, , SPEAKER_ZOEY
+	msgbox gText_WowYoureStrong_DreamBig, , SPEAKER_ROSE
 	goto WowYoureStrong_ShowTower_Script
 	return
 
@@ -62,11 +47,9 @@ WowYoureStrong_ShowTower_Script::
 	special SpawnCameraObject
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_CAMERA, WowYoureStrong_PanCameraUp_Movement
-	callnative DrawMugshot
-	msgbox gText_WowYoureStrong_YouShouldComeBy
+	msgbox gText_WowYoureStrong_YouShouldComeBy, , SPEAKER_ROSE
 	waitmovement OBJ_EVENT_ID_CAMERA
 	closemessage
-	callnative ClearMugshot
 	fadescreen FADE_TO_BLACK
 	TeleportCamera 28, 24
 	special RemoveCameraObject
@@ -76,9 +59,7 @@ WowYoureStrong_ShowTower_Script::
 
 
 WowYoureStrong_End_Dialouge::
-	callnative DrawMugshot
-	msgbox gText_WowYoureStrong_MeetingWithMayor
-	callnative ClearMugshot
+	msgbox gText_WowYoureStrong_MeetingWithMayor, , SPEAKER_ROSE
 	closemessage
 	applymovement 1, WowYoureStrong_WalkToMayor_Movement
 	waitmovement 1
@@ -97,40 +78,30 @@ WowYoureStrong_End_Dialouge_2:
 WowYourStrong_ArcherConfrontation_Dialogue::
 	applymovement 10, WowYoureStrong_ArcherToPlayer_Movement
 	waitmovement 10
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WowYoureStrong_IDontGetIt
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
+	msgbox gText_WowYoureStrong_IDontGetIt, , SPEAKER_ARCHER
 	compare VAR_PSFROUTE9_STATE, DEFEATED_ARCHER_PSFROUTE9
 	goto_if_eq WowYourStrong_ArcherConfrontation_Dialogue_2
-	msgbox gText_WowYoureStrong_WhatAreYouTalking
+	msgbox gText_WowYoureStrong_WhatAreYouTalking, , SPEAKER_ZOEY
 WowYourStrong_ArcherConfrontation_Dialogue_1:
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WowYoureStrong_IJustCant
+	msgbox gText_WowYoureStrong_IJustCant, , SPEAKER_ARCHER
 	closemessage
-	callnative ClearMugshot
 	applymovement 10, WowYoureStrong_WalkToMayor_Movement
 	waitmovement 10
 	removeobject 10
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
 	compare VAR_PSFROUTE9_STATE, DEFEATED_ARCHER_PSFROUTE9
 	goto_if_eq WowYourStrong_ArcherConfrontation_Dialogue_6
-	msgbox gText_WowYoureStrong_ThisRegionHasSome
+	msgbox gText_WowYoureStrong_ThisRegionHasSome, , SPEAKER_ZOEY
 WowYourStrong_ArcherConfrontation_Dialogue_5:
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
 WowYourStrong_ArcherConfrontation_Dialogue_2:
-	msgbox gText_WowYoureStrong_YouAgain
+	msgbox gText_WowYoureStrong_YouAgain, , SPEAKER_ZOEY
 	goto WowYourStrong_ArcherConfrontation_Dialogue_1
 
 WowYourStrong_ArcherConfrontation_Dialogue_6:
-	msgbox gText_WowYoureStrong_IHopeThats
+	msgbox gText_WowYoureStrong_IHopeThats, , SPEAKER_ZOEY
 	goto WowYourStrong_ArcherConfrontation_Dialogue_5
 
 

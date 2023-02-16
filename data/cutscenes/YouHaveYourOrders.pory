@@ -54,114 +54,74 @@ script YouHaveYourOrders_CompleteQuest_Dialogue{
 script YouHaveYourOrders_Assignment_Dialogue {
     setvar(VAR_HOW_DISAPPOINTING_STATE,MISSION_ASSIGNED)
     
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_AreYouSure,MSGBOX_NPC)
+msgbox(gText_YouHaveYourOrders_AreYouSure,MSGBOX_NPC,,SPEAKER_KOGA)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_ItCantBeTougher)
+msgbox(gText_YouHaveYourOrders_ItCantBeTougher,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_HmmGoodPoint)
-    callnative(ClearMugshot)
+msgbox(gText_YouHaveYourOrders_HmmGoodPoint,,SPEAKER_KOGA)
+    
     closemessage
 
     applymovement(KOGA,YouHaveYourOrders_PaceInOffice)
     waitmovement(0)
     
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_LawEnforcementHasConfirmed)
+msgbox(gText_YouHaveYourOrders_LawEnforcementHasConfirmed,,SPEAKER_KOGA)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_WhyAllAtOnce)
+msgbox(gText_YouHaveYourOrders_WhyAllAtOnce,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_ThatWouldCompletelyCut)
+msgbox(gText_YouHaveYourOrders_ThatWouldCompletelyCut,,SPEAKER_KOGA)
 
-setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_CongratsYoureanAsshole_OhWoWYouGuys)
+msgbox(gText_CongratsYoureanAsshole_OhWoWYouGuys,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_CorrectEachOfUs)
+msgbox(gText_YouHaveYourOrders_CorrectEachOfUs,,SPEAKER_KOGA)
 
 if (var(VAR_STORYLINE_STATE) == STORY_START_FALSE_TIMELINE){
-setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_TheyInvolved)
+msgbox(gText_YouHaveYourOrders_TheyInvolved,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_WeHiredThem)
+msgbox(gText_YouHaveYourOrders_WeHiredThem,,SPEAKER_KOGA)
 }
 
     //If the player has converted the Haightashbury Gym: PSF TODO
 
     if (!var(VAR_TEMP_0)){
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_WhatAbout)
+msgbox(gText_YouHaveYourOrders_WhatAbout,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_OurIntelligenceTells)
+msgbox(gText_YouHaveYourOrders_OurIntelligenceTells,,SPEAKER_KOGA)
     }
 
     applymovement(KOGA,YouHaveYourOrders_LookOutWindow)
     waitmovement(0)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_ThankYouAsUsual)
+msgbox(gText_YouHaveYourOrders_ThankYouAsUsual,,SPEAKER_KOGA)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_IStillFeelLike)
-    callnative(ClearMugshot)
+msgbox(gText_YouHaveYourOrders_IStillFeelLike,,SPEAKER_ZOEY)
+    
     closemessage
 
     applymovement(KOGA,Common_Movement_FacePlayer)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_InCaseYouHavent)
-    callnative(ClearMugshot)
+msgbox(gText_YouHaveYourOrders_InCaseYouHavent,,SPEAKER_KOGA)
+    
     closemessage
 
     playse(SE_PIN)
     applymovement(PLAYER,Common_Movement_ExclamationMark)
     waitmovement(0)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_YouWereAGym)
+msgbox(gText_YouHaveYourOrders_YouWereAGym,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_ItWasOneOfMyGreatest)
+msgbox(gText_YouHaveYourOrders_ItWasOneOfMyGreatest,,SPEAKER_KOGA)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_WasThatHard)
+msgbox(gText_YouHaveYourOrders_WasThatHard,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_AtTheTimeNo)
+msgbox(gText_YouHaveYourOrders_AtTheTimeNo,,SPEAKER_KOGA)
 
     applymovement(KOGA,YouHaveYourOrders_LookOutWindow)
     waitmovement(0)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_N)
-    callnative(DrawMugshot)
-msgbox(gText_YouHaveYourOrders_ICouldGoShut)
-    callnative(ClearMugshot)
+msgbox(gText_YouHaveYourOrders_ICouldGoShut,,SPEAKER_KOGA)
+    
 
     startquest(QUEST_HOW_DISAPPOINTING)
 

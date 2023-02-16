@@ -208,6 +208,30 @@
 #define SPEAKER_OLIVER              116
 #define SPEAKER_MAYOR               117
 #define SPEAKER_CHIEF               118
+#define SPEAKER_CILAN               119
+#define SPEAKER_LENORA              120
+#define SPEAKER_DOOR                121
+#define SPEAKER_TEODORO             122
+#define SPEAKER_DUDLEY              123
+#define SPEAKER_CHERIE              124
+#define SPEAKER_MATTHEW             125
+#define SPEAKER_FANNY               126
+#define SPEAKER_CRAIG               127
+#define SPEAKER_ANTONE              128
+#define SPEAKER_ORI                 129
+#define SPEAKER_HIKO                130
+#define SPEAKER_POLICE              131
+#define SPEAKER_MACK                132
+#define SPEAKER_TYZONN              133 
+#define SPEAKER_WILL2               134
+#define SPEAKER_RONNY               135
+#define SPEAKER_DAX                 136
+#define SPEAKER_BRENNAN             137
+#define SPEAKER_ATTENDANT           138
+#define SPEAKER_SPEAKER             139
+#define SPEAKER_GHOST               140
+#define SPEAKER_ISMAIL              141
+#define SPEAKER_STAN_SOMA           142
 
 //Tail
 #define TAIL_DEFAULT 0

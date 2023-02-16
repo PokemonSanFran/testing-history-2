@@ -12,57 +12,32 @@ YoungPadawan_Intro_Dialogue::
 	waitmovement 9
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_WowYouLookTired
+	msgbox gText_YoungPadawan_WowYouLookTired, , SPEAKER_MALVA
 	call Common_EventScript_OutOfCenterPartyHeal
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_DidTheChallenge
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_ThankYou
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_DontMentionIt
-	callnative ClearMugshot
+	msgbox gText_YoungPadawan_DidTheChallenge, , SPEAKER_MALVA
+	msgbox gText_YoungPadawan_ThankYou, , SPEAKER_ZOEY
+	msgbox gText_YoungPadawan_DontMentionIt, , SPEAKER_MALVA
 	closemessage
 	applymovement 9, YoungPadawan_LookAtOcean_Movement
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 9
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_LearnALot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_TheStoryOfTheIsland
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_ThatQuakeWasOne
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_HistoryBooksAreCrazy
-	callnative ClearMugshot
+	msgbox gText_YoungPadawan_LearnALot, , SPEAKER_MALVA
+	msgbox gText_YoungPadawan_TheStoryOfTheIsland, , SPEAKER_ZOEY
+	msgbox gText_YoungPadawan_ThatQuakeWasOne, , SPEAKER_MALVA
+	msgbox gText_YoungPadawan_HistoryBooksAreCrazy, , SPEAKER_MALVA
 	closemessage
 	applymovement 9, YoungPadawan_WalkBackToPlayer_Movement
 	waitmovement 9
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_MakesYouWonder
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_MakesSenseYeah
+	msgbox gText_YoungPadawan_MakesYouWonder, , SPEAKER_MALVA
+	msgbox gText_YoungPadawan_MakesSenseYeah, , SPEAKER_ZOEY
 	goto YoungPadawan_StartBattle_Script
 	return
 
 
 YoungPadawan_StartBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_YouveGotAGoodSpirit
-	callnative ClearMugshot
+	msgbox gText_YoungPadawan_YouveGotAGoodSpirit, , SPEAKER_MALVA
 	closemessage
 	trainerbattle_continue_after_lose TRAINER_SIDNEY, gText_YoungPadawan_DontBeatYourselfUp
 	goto YoungPadawan_PostBattle_Dialogue
@@ -70,14 +45,9 @@ YoungPadawan_StartBattle_Script::
 
 
 YoungPadawan_Secret_Dialogue::
-	msgbox gText_YoungPadawan_DidYouHack
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_GotItYouWon
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_KeepItSecretToo
-	callnative ClearMugshot
+	msgbox gText_YoungPadawan_DidYouHack, , SPEAKER_MALVA
+	msgbox gText_YoungPadawan_GotItYouWon, , SPEAKER_ZOEY
+	msgbox gText_YoungPadawan_KeepItSecretToo, , SPEAKER_MALVA
 	closemessage
 	additem ITEM_POWER_ANKLET, 1
 	additem ITEM_POWER_BAND, 1
@@ -93,31 +63,18 @@ YoungPadawan_Secret_Dialogue::
 
 
 YoungPadawan_PostBattle_Dialogue::
-	lock
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
 	checktrainerflag TRAINER_SIDNEY
 	goto_if 1, YoungPadawan_PostBattle_Dialogue_2
 	special HealPlayerParty
-	msgbox gText_YoungPadawan_KeepTraining
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_IveNeverBattled
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_YeahTotally
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_UntilThenHeres
+	msgbox gText_YoungPadawan_KeepTraining, , SPEAKER_MALVA
+	msgbox gText_YoungPadawan_IveNeverBattled, , SPEAKER_ZOEY
+	msgbox gText_YoungPadawan_YeahTotally, , SPEAKER_ZOEY
+	msgbox gText_YoungPadawan_UntilThenHeres, , SPEAKER_MALVA
 	closemessage
-	callnative ClearMugshot
 YoungPadawan_PostBattle_Dialogue_1:
 	giveitem ITEM_GO_GOGGLES, 1
 	setvar VAR_STORYLINE_STATE, STORY_COMPLETE_ALCATRAZ
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_YoungPadawan_ThoseCanBeTough
-	callnative ClearMugshot
+	msgbox gText_YoungPadawan_ThoseCanBeTough, , SPEAKER_MALVA
 	closemessage
 	applymovement 9, YoungPadawan_WalkUpStairs_Movement
 	waitmovement 9

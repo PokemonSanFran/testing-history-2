@@ -19,16 +19,8 @@ YouRealizeWereEvilRight_PhoneCall_Dialogue::
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
-	waitse
-	pokenavcall YouRealizeWereEvilRight_PhoneCall_Dialogue_Text_0
-	waitmessage
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_SorryToBotherYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_YeahImOnMyWay
-	callnative ClearMugshot
+	msgbox gText_YouRealizeWereEvilRight_SorryToBotherYou, , SPEAKER_OAK, , PHONE_ON
+	msgbox gText_YouRealizeWereEvilRight_YeahImOnMyWay, , SPEAKER_ZOEY, , PHONE_ON
 	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT
 	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 17, 29
 	return
@@ -42,68 +34,33 @@ YouRealizeWereEvilRight_Open_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	setflag FLAG_ARCHER_CALL_ALCATRAZ
 	setvar VAR_STORYLINE_STATE, STORY_POST_YOU_REALIZE_WERE_EVIL
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_WereEnamored
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_ItsBeenSuperRewarding
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_HoweverTheNext
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_ItWouldBeBetter
-	callnative ClearMugshot
+	msgbox gText_YouRealizeWereEvilRight_WereEnamored, , SPEAKER_OAK
+	msgbox gText_YouRealizeWereEvilRight_ItsBeenSuperRewarding, , SPEAKER_ZOEY
+	msgbox gText_YouRealizeWereEvilRight_HoweverTheNext, , SPEAKER_OAK
+	msgbox gText_YouRealizeWereEvilRight_ItWouldBeBetter, , SPEAKER_SABRINA
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_AreYouSayingIHave
-	callnative ClearMugshot
+	msgbox gText_YouRealizeWereEvilRight_AreYouSayingIHave, , SPEAKER_ZOEY
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_WereNotHere
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_WaitI
-	callnative ClearMugshot
+	msgbox gText_YouRealizeWereEvilRight_WereNotHere, , SPEAKER_OAK
+	msgbox gText_YouRealizeWereEvilRight_WaitI, , SPEAKER_ZOEY
 	closemessage
 	applymovement 9, YouRealizeWereEvilRight_WalkToTable
 	waitmovement 9
 	setobjectxy 9, 21, 29
 	setobjectxyperm 9, 21, 29
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_ExcellentTiming
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_IThinkYourKindness
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_ShitUsedToBe
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_UsedToBeASmall
-	callnative ClearMugshot
+	msgbox gText_YouRealizeWereEvilRight_ExcellentTiming, , SPEAKER_OAK
+	msgbox gText_YouRealizeWereEvilRight_IThinkYourKindness, , SPEAKER_KOGA
+	msgbox gText_YouRealizeWereEvilRight_ShitUsedToBe, , SPEAKER_ZOEY
+	msgbox gText_YouRealizeWereEvilRight_UsedToBeASmall, , SPEAKER_KOGA
 	closemessage
 	applymovement 3, YouRealizeWereEvilRight_MoveAwayFromTable
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_HidingBehindTheirMask
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_WasActingInGoodFaith
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_TheLocalPolice
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouRealizeWereEvilRight_IKnowThis
-	callnative ClearMugshot
+	msgbox gText_YouRealizeWereEvilRight_HidingBehindTheirMask, , SPEAKER_OAK
+	msgbox gText_YouRealizeWereEvilRight_WasActingInGoodFaith, , SPEAKER_OAK
+	msgbox gText_YouRealizeWereEvilRight_TheLocalPolice, , SPEAKER_SABRINA
+	msgbox gText_YouRealizeWereEvilRight_IKnowThis, , SPEAKER_OAK
 	closemessage
 	return
 
@@ -127,9 +84,6 @@ YouRealizeWereEvilRight_MoveAwayFromTable:
 	walk_up
 	face_right
 	step_end
-
-YouRealizeWereEvilRight_PhoneCall_Dialogue_Text_0:
-	.string "This phone is ringing.$"
 
 gText_YouRealizeWereEvilRight_SorryToBotherYou::
 	.string "Hello {PLAYER}! Sorry to bother you,\n"

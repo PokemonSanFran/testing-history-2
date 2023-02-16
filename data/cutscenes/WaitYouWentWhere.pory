@@ -27,17 +27,11 @@ script WaitYouWentWhere_PlayerSetUp_Script {
 
 script WaitYouWentWhere_FirstInteract_Dialogue {
     lock
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_WelcomeBackFrom,MSGBOX_NPC)
+        msgbox(gText_WaitYouWentWhere_WelcomeBackFrom,MSGBOX_NPC,SPEAKER_OAK)
         lock //MSGBOX_NPC turns off the earlier lock
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_YeahThanksFor)
+        msgbox(gText_WaitYouWentWhere_YeahThanksFor,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_IHaveSomeBusiness)
+        msgbox(gText_WaitYouWentWhere_IHaveSomeBusiness,,SPEAKER_OAK)
         closemessage
         callnative(ClearMugshot)
 
@@ -47,41 +41,23 @@ script WaitYouWentWhere_FirstInteract_Dialogue {
         applymovement(PLAYER,Player_WaitYouWentWhere_WalkWest)
         applymovement(OAK,Oak_WaitYouWentWhere_WalkWest)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_IActuallyJustGot)
+        msgbox(gText_WaitYouWentWhere_IActuallyJustGot,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_ThePassWeGave)
+        msgbox(gText_WaitYouWentWhere_ThePassWeGave,,SPEAKER_OAK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_GaveMeAPass)
+        msgbox(gText_WaitYouWentWhere_GaveMeAPass,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_WhatAPainIn)
+        msgbox(gText_WaitYouWentWhere_WhatAPainIn,,SPEAKER_OAK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_YeahIveSeenThem)
+        msgbox(gText_WaitYouWentWhere_YeahIveSeenThem,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_YesBeforeWeRevamped)
+        msgbox(gText_WaitYouWentWhere_YesBeforeWeRevamped,,SPEAKER_OAK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_OrreHasALot)
+        msgbox(gText_WaitYouWentWhere_OrreHasALot,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_NoOffense)
+        msgbox(gText_WaitYouWentWhere_NoOffense,,SPEAKER_OAK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_WaitYouWentWhere_GoingThisWay)
+        msgbox(gText_WaitYouWentWhere_GoingThisWay,,SPEAKER_OAK)
         callnative(ClearMugshot)
         closemessage
 
