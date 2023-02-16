@@ -192,7 +192,6 @@ Salesforcetower_Leagueops_Bianca_Event_Script::
 	call ImIn_InteractBiancaBattle_Script
 	call ImIn_PostBiancaBattle_Interact_Dialogue
 	closemessage
-	callnative ClearMugshot
 	return
 
 

@@ -94,7 +94,6 @@ Chasecenter_Lockers_Bianca_Event_Script::
 	case STORY_CONGRATULATED_BY_ROSE, Chasecenter_Lockers_Bianca_Event_Script_4
 Chasecenter_Lockers_Bianca_Event_Script_1:
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 

@@ -18,10 +18,8 @@ script Quest_FreshwaterEvolution_CheckPartyAndQuest_Script{
 }
 
 script Quest_FreshwaterEvolution_AlreadyShiny_Dialogue{
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Quest_FreshwaterEvolution_OhWaitYoure,MSGBOX_DEFAULT)
-        callnative(ClearMugshot)
+        msgbox(gText_Quest_FreshwaterEvolution_OhWaitYoure,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        
         closemessage
         call(Quest_FreshwaterEvolution_Recall_Script)
         applymovement(PLAYER,Common_Movement_WalkUp)
@@ -51,10 +49,7 @@ script Quest_FreshwaterEvolution_StartCutscene_Dialogue{
 
    bufferleadmonspeciesname(STR_VAR_1)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_FreshwaterEvolution_OkayLetsSee,MSGBOX_DEFAULT)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_FreshwaterEvolution_OkayLetsSee,MSGBOX_DEFAULT,SPEAKER_ZOEY)
     closemessage
 
     applymovement(PLAYER,Common_Movement_FaceDown)
@@ -79,10 +74,7 @@ script Quest_FreshwaterEvolution_StartCutscene_Dialogue{
 
     call(Quest_FreshwaterEvolution_Recall_Script)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_FreshwaterEvolution_TheColorChangedBut,MSGBOX_DEFAULT)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_FreshwaterEvolution_TheColorChangedBut,MSGBOX_DEFAULT,SPEAKER_ZOEY)
     goto(Quest_FreshwaterEvolution_BystanderScene_Script)
 }
 
@@ -91,20 +83,16 @@ script Quest_FreshwaterEvolution_BystanderScene_Script{
     waitmovement(BYSTANDER)
     applymovement(PLAYER,Common_Movement_FaceUp)
 
-    msgbox(gText_Quest_FreshwaterEvolution_HahaAreYouTrying,MSGBOX_DEFAULT)
+    msgbox(gText_Quest_FreshwaterEvolution_HahaAreYouTrying,MSGBOX_DEFAULT,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_FreshwaterEvolution_YeahYouKnow,MSGBOX_DEFAULT)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_FreshwaterEvolution_YeahYouKnow,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_Quest_FreshwaterEvolution_BeenSeeingIt,MSGBOX_DEFAULT)
-    msgbox(gText_Quest_FreshwaterEvolution_ThereIsSomething,MSGBOX_DEFAULT)
+    msgbox(gText_Quest_FreshwaterEvolution_BeenSeeingIt,MSGBOX_DEFAULT,SPEAKER_DEFAULT)
+    msgbox(gText_Quest_FreshwaterEvolution_ThereIsSomething,MSGBOX_DEFAULT,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_FreshwaterEvolution_GoodToKnow,MSGBOX_DEFAULT)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_FreshwaterEvolution_GoodToKnow,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+    
 
     closemessage
     completequest(QUEST_FRESHWATEREVOLUTION)

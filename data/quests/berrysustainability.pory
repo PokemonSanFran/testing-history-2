@@ -90,26 +90,20 @@ script Quest_BerrySustaiability_Event_Script{
 }
 
 script Quest_BerrySustaiability_StartQuest_Dialogue{
-    setvar(VAR_MUGSHOT,MUGSHOT_JASMINE)
-    callnative(DrawMugshot)
-    msgbox(gText_BerrySustaiability_GetBerries,MSGBOX_NPC)
-    callnative(ClearMugshot)
+    msgbox(gText_BerrySustaiability_GetBerries,MSGBOX_NPC,SPEAKER_JASMINE)
+    
 
     startquest(QUEST_BERRYSUSTAINABILITY)
     end
 }
 script Quest_BerrySustaiability_Active_Dialogue{
-    setvar(VAR_MUGSHOT,MUGSHOT_JASMINE)
-    callnative(DrawMugshot)
-    msgbox(gText_BerrySustaiability_DidYouFind,MSGBOX_NPC)
-    callnative(ClearMugshot)
+    msgbox(gText_BerrySustaiability_DidYouFind,MSGBOX_NPC,SPEAKER_JASMINE)
+    
     end
 }
 script Quest_BerrySustaiability_Reward_Dialogue{
-    setvar(VAR_MUGSHOT,MUGSHOT_JASMINE)
-    callnative(DrawMugshot)
-    msgbox(gText_BerrySustaiability_YouFoundThem,MSGBOX_NPC)
-    callnative(ClearMugshot)
+    msgbox(gText_BerrySustaiability_YouFoundThem,MSGBOX_NPC,SPEAKER_JASMINE)
+    
 
     giveitem(ITEM_GANLON_BERRY,1)
     waitmessage
@@ -119,10 +113,8 @@ script Quest_BerrySustaiability_Reward_Dialogue{
     end
 }
 script Quest_BerrySustaiability_Complete_Dialogue{
-    setvar(VAR_MUGSHOT,MUGSHOT_JASMINE)
-    callnative(DrawMugshot)
-    msgbox(gText_BerrySustaiability_ThanksFor,MSGBOX_NPC)
-    callnative(ClearMugshot)
+    msgbox(gText_BerrySustaiability_ThanksFor,MSGBOX_NPC,SPEAKER_JASMINE)
+    
     applymovement(JASMINE,Quest_BerrySustaiability_LeaveMarin_Movement)
     waitmovement(JASMINE)
     removeobject(JASMINE)

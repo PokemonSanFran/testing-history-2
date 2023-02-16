@@ -31,18 +31,18 @@ Quest_HauntABuilding_Interact_Script_1:
 
 Quest_HauntABuilding_Activate_Dialogue::
 	lock
-	msgbox gText_HauntABuilding_IDontKnow, MSGBOX_DEFAULT
-	msgbox gText_HauntABuilding_OhMaybeYou, MSGBOX_NPC
-	msgbox gText_HauntABuilding_IToldTheDeveloper, MSGBOX_NPC
-	msgbox gText_HauntABuilding_IWouldDoIt, MSGBOX_NPC
-	msgbox gText_HauntABuilding_BringSomeScary, MSGBOX_NPC
+	msgbox gText_HauntABuilding_IDontKnow, MSGBOX_DEFAULT, SPEAKER_DEFAULT
+	msgbox gText_HauntABuilding_OhMaybeYou, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_HauntABuilding_IToldTheDeveloper, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_HauntABuilding_IWouldDoIt, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_HauntABuilding_BringSomeScary, MSGBOX_NPC, SPEAKER_DEFAULT
 	startquest QUEST_HAUNTABUILDING
 	release
 	end
 
 
 Quest_HauntABuilding_AskPokemon_Dialogue::
-	msgbox gText_HauntABuilding_DoYouHaveAScary, MSGBOX_NPC
+	msgbox gText_HauntABuilding_DoYouHaveAScary, MSGBOX_NPC, SPEAKER_DEFAULT
 	goto Quest_HauntABuilding_CheckPokemon_Script
 	return
 
@@ -159,7 +159,7 @@ Quest_HauntABuilding_TakePokemon_Script::
 
 Quest_HauntABuilding_TakePokemon_Dialogue::
 	call Quest_HauntABuilding_TakePokemon_Script
-	msgbox gText_HauntABuilding_OhPerfect, MSGBOX_NPC
+	msgbox gText_HauntABuilding_OhPerfect, MSGBOX_NPC, SPEAKER_DEFAULT
 	call Quest_HauntABuilding_AllPokemonCheck_Script
 	compare VAR_TEMP_0, 6
 	goto_if_eq Quest_HauntABuilding_TakePokemon_Dialogue_2
@@ -225,17 +225,17 @@ Quest_HauntABuilding_AllPokemonCheck_Script_16:
 
 
 Quest_HauntABuilding_NoPokemon_Dialogue::
-	msgbox gText_HauntABuilding_NothingYet, MSGBOX_NPC
+	msgbox gText_HauntABuilding_NothingYet, MSGBOX_NPC, SPEAKER_DEFAULT
 	end
 
 
 Quest_HauntABuilding_LastPokemon_Dialogue::
-	msgbox gText_HauntABuilding_YouCantGiveMe, MSGBOX_NPC
+	msgbox gText_HauntABuilding_YouCantGiveMe, MSGBOX_NPC, SPEAKER_DEFAULT
 	end
 
 
 Quest_HauntABuilding_AllPokemon_Dialogue::
-	msgbox gText_HauntABuilding_OhIThinkWereReady, MSGBOX_NPC
+	msgbox gText_HauntABuilding_OhIThinkWereReady, MSGBOX_NPC, SPEAKER_DEFAULT
 	goto Quest_HauntABuilding_ScareCutscene_Script
 	return
 
@@ -247,12 +247,12 @@ Quest_HauntABuilding_ScareCutscene_Script::
 	applymovement 1, Common_Movement_FaceLeft
 	applymovement 2, HauntABuilding_WalkToPair_Movement
 	waitmovement 0
-	msgbox gText_HauntABuilding_OkayImHere, MSGBOX_DEFAULT
+	msgbox gText_HauntABuilding_OkayImHere, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	closemessage
 	playmoncry SPECIES_GENGAR, CRY_MODE_ENCOUNTER
 	waitmoncry
 	playbgm MUS_MT_PYRE, TRUE
-	msgbox gText_HauntABuilding_WhatWasThat, MSGBOX_DEFAULT
+	msgbox gText_HauntABuilding_WhatWasThat, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	closemessage
 	fadescreenspeed FADE_TO_BLACK, 0
 	call Quest_HauntABuilding_MoveDeveloper_Script
@@ -260,7 +260,7 @@ Quest_HauntABuilding_ScareCutscene_Script::
 	playse SE_PIN
 	applymovement 2, Common_Movement_ExclamationMark
 	waitmovement 0
-	msgbox gText_HauntABuilding_HowDidI, MSGBOX_DEFAULT
+	msgbox gText_HauntABuilding_HowDidI, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	closemessage
 	fadescreenspeed FADE_TO_BLACK, 0
 	playmoncry SPECIES_TREVENANT, CRY_MODE_ENCOUNTER
@@ -270,7 +270,7 @@ Quest_HauntABuilding_ScareCutscene_Script::
 	playse SE_PIN
 	applymovement 2, Common_Movement_ExclamationMark
 	waitmovement 0
-	msgbox gText_HauntABuilding_ImOuttaHere, MSGBOX_DEFAULT
+	msgbox gText_HauntABuilding_ImOuttaHere, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	closemessage
 	applymovement 2, HauntABuilding_Flee_Movement
 	waitmovement 0
@@ -302,9 +302,9 @@ Quest_HauntABuilding_MakeGhostsVisibleA_Script::
 
 Quest_HauntABuilding_ThankPlayer_Dialogue::
 	fadedefaultbgm
-	msgbox gText_HauntABuilding_ItWorked, MSGBOX_NPC
+	msgbox gText_HauntABuilding_ItWorked, MSGBOX_NPC, SPEAKER_DEFAULT
 	call Quest_HauntABuilding_GiveReward_Script
-	msgbox gText_HauntABuilding_ImGoingToCelebrate, MSGBOX_NPC
+	msgbox gText_HauntABuilding_ImGoingToCelebrate, MSGBOX_NPC, SPEAKER_DEFAULT
 	closemessage
 	applymovement 1, HauntABuilding_LeaveHouse_Movement
 	waitmovement 0
@@ -359,12 +359,9 @@ Quest_HauntABuilding_EndQuest_Dialogue::
 	applymovement 3, HauntABuilding_ApproachPlayer_Movement
 	waitmovement 3
 	lock
-	msgbox gText_HauntABuilding_WhatWereYouDoing, MSGBOX_DEFAULT
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HauntABuilding_WhatDoYouMean, MSGBOX_DEFAULT
-	callnative ClearMugshot
-	msgbox gText_HauntABuilding_AFriend, MSGBOX_DEFAULT
+	msgbox gText_HauntABuilding_WhatWereYouDoing, MSGBOX_DEFAULT, SPEAKER_DEFAULT
+	msgbox gText_HauntABuilding_WhatDoYouMean, MSGBOX_DEFAULT, SPEAKER_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_HauntABuilding_AFriend, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	closemessage
 	completequest QUEST_HAUNTABUILDING
 	release

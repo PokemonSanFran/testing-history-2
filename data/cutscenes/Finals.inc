@@ -28,7 +28,6 @@ Finals_StopPlayerLeaveLockers_Script::
 	waitmovement 0
 	msgbox gText_Finals_YourMatchIsUp, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
 	release

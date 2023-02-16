@@ -39,29 +39,23 @@ script Quest_LastMusicVenue_ChangeMusic{
 }
 
 script Quest_LastMusicVenue_StartQuest_Script{
-    msgbox(gText_Quest_LastMusicVenue_IHopeYoureNot,MSGBOX_NPC)
+    msgbox(gText_Quest_LastMusicVenue_IHopeYoureNot,MSGBOX_NPC,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_LastMusicVenue_WhyIsThat,MSGBOX_NPC)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_LastMusicVenue_WhyIsThat,MSGBOX_NPC,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_Quest_LastMusicVenue_ItsAViciousCycle,MSGBOX_NPC)
-    msgbox(gText_Quest_LastMusicVenue_YoureYoungDoYouKnow,MSGBOX_NPC)
+    msgbox(gText_Quest_LastMusicVenue_ItsAViciousCycle,MSGBOX_NPC,SPEAKER_DEFAULT)
+    msgbox(gText_Quest_LastMusicVenue_YoureYoungDoYouKnow,MSGBOX_NPC,SPEAKER_DEFAULT)
 
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_DRUMCIRCLE)
-    
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-
     if (var(VAR_RESULT)){
-        msgbox(gText_Quest_LastMusicVenue_ActuallyIMetSome,MSGBOX_NPC)
-        msgbox(gText_Quest_LastMusicVenue_TheDrumCircle,MSGBOX_NPC)
+        msgbox(gText_Quest_LastMusicVenue_ActuallyIMetSome,MSGBOX_NPC,SPEAKER_ZOEY)
+        msgbox(gText_Quest_LastMusicVenue_TheDrumCircle,MSGBOX_NPC,SPEAKER_ZOEY,TAIL_THOUGHT)
     }else{
-        msgbox(gText_Quest_LastMusicVenue_IllKeepMyEyesPeeled,MSGBOX_NPC)
+        msgbox(gText_Quest_LastMusicVenue_IllKeepMyEyesPeeled,MSGBOX_NPC,SPEAKER_ZOEY)
     }
 
-    callnative(ClearMugshot)
+    
 
     startquest(QUEST_LASTMUSICVENUEINSANFRANCISCO)
     release
@@ -69,38 +63,30 @@ script Quest_LastMusicVenue_StartQuest_Script{
 }
 
 script Quest_LastMusicVenue_Active_Dialogue{
-    msgbox(gText_Quest_LastMusicVenue_AnyLuck,MSGBOX_NPC)
+    msgbox(gText_Quest_LastMusicVenue_AnyLuck,MSGBOX_NPC,SPEAKER_DEFAULT)
 
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_DRUMCIRCLE)
-    
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-
     if (var(VAR_RESULT)){
-        msgbox(gText_Quest_LastMusicVenue_IHavent,MSGBOX_NPC)
+        msgbox(gText_Quest_LastMusicVenue_IHavent,MSGBOX_NPC,SPEAKER_ZOEY)
     }else{
-        msgbox(gText_Quest_LastMusicVenue_ImStillLooking,MSGBOX_NPC)
+        msgbox(gText_Quest_LastMusicVenue_ImStillLooking,MSGBOX_NPC,SPEAKER_ZOEY)
     }
 
-    callnative(ClearMugshot)
+    
     release
     end
 }
 
 script Quest_LastMusicVenue_InformDrummers_Dialogue{
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_LastMusicVenue_HaveYouGuysSeen)
-    callnative(ClearMugshot)
+    msgbox(gText_LastMusicVenue_HaveYouGuysSeen,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_LastMusicVenue_Nah)
+    msgbox(gText_LastMusicVenue_Nah,,SPEAKER_TONALLI)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_LastMusicVenue_YouNeed)
-    callnative(ClearMugshot)
+    msgbox(gText_LastMusicVenue_YouNeed,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_LastMusicVenue_ThisCouldBe)
+    msgbox(gText_LastMusicVenue_ThisCouldBe,,SPEAKER_DRUMMER_B)
     closemessage
 
     fadescreen(FADE_TO_BLACK)
@@ -116,8 +102,8 @@ script Quest_LastMusicVenue_InformDrummers_Dialogue{
 }
 
 script Quest_LastMusicVenue_Reward_Dialogue{
-    msgbox(gText_Quest_LastMusicVenue_TheseDrummers,MSGBOX_NPC)
-    msgbox(gText_Quest_LastMusicVenue_TurnsOutTheyKnow,MSGBOX_NPC)
+    msgbox(gText_Quest_LastMusicVenue_TheseDrummers,MSGBOX_NPC,SPEAKER_DEFAULT)
+    msgbox(gText_Quest_LastMusicVenue_TurnsOutTheyKnow,MSGBOX_NPC,SPEAKER_DEFAULT)
     call(Quest_LastMusicVenue_GiveReward_Script)
     completequest(QUEST_LASTMUSICVENUEINSANFRANCISCO)
     release

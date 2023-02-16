@@ -38,34 +38,30 @@ script Quest_Hang20_CheckPreCompletion{
     return
 }
 
+//PSF TODO should this be morty's first quest?
+
 script Quest_Hang20_StartQuest_Dialogue{
 
     call(Quest_Hang20_CheckPreCompletion)
 
-    msgbox(gText_Hang20_HeyYouNewHere)
+    msgbox(gText_Hang20_HeyYouNewHere,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Hang20_YeahOrre)
-    callnative(ClearMugshot)
+    msgbox(gText_Hang20_YeahOrre,,SPEAKER_ZOEY)
     
-    msgbox(gText_Hang20_OhDamnThatsLandLocked)
+    
+    msgbox(gText_Hang20_OhDamnThatsLandLocked,,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Hang20_WereTouchingTheSea)
-    callnative(ClearMugshot)
+    msgbox(gText_Hang20_WereTouchingTheSea,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_Hang20_NoWaves)
-    msgbox(gText_Hang20_DoYouWannaLearn)
+    msgbox(gText_Hang20_NoWaves,,SPEAKER_DEFAULT)
+    msgbox(gText_Hang20_DoYouWannaLearn,,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Hang20_OhIveNever)
-    callnative(ClearMugshot)
+    msgbox(gText_Hang20_OhIveNever,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_Hang20_ItsToughSoWeGotta)
-    msgbox(gText_Hang20_WellTeachYouToSurfIf)
+    msgbox(gText_Hang20_ItsToughSoWeGotta,,SPEAKER_DEFAULT)
+    msgbox(gText_Hang20_WellTeachYouToSurfIf,,SPEAKER_DEFAULT)
 
     closemessage
     startquest(QUEST_HANG20)
@@ -75,49 +71,47 @@ script Quest_Hang20_StartQuest_Dialogue{
 
 script Quest_Hang20_Active_Dialogue{
     if (var(VAR_DEFEATED_PACIFICA_COUNT) > 28){
-        msgbox(gText_Hang20_AlmostThere,MSGBOX_NPC)
+        msgbox(gText_Hang20_AlmostThere,MSGBOX_NPC,SPEAKER_DEFAULT)
     }elif (var(VAR_DEFEATED_PACIFICA_COUNT) > 20){
-        msgbox(gText_Hang20_MaybeYoureTough,MSGBOX_NPC)
+        msgbox(gText_Hang20_MaybeYoureTough,MSGBOX_NPC,SPEAKER_DEFAULT)
     }elif (var(VAR_DEFEATED_PACIFICA_COUNT) > 10){
-        msgbox(gText_Hang20_SawYouKickingAss,MSGBOX_NPC)
+        msgbox(gText_Hang20_SawYouKickingAss,MSGBOX_NPC,SPEAKER_DEFAULT)
     }else{
-        msgbox(gText_Hang20_WellTeachYouToSurfIf,MSGBOX_NPC)
+        msgbox(gText_Hang20_WellTeachYouToSurfIf,MSGBOX_NPC,SPEAKER_DEFAULT)
     }
     end
 }
 
 script Quest_Hang20_Reward_Dialogue{
-    msgbox(gText_Hang20_DamnYouAreTough)
-    msgbox(gText_Hang20_AlthoughIAlreadyKnew)
+    msgbox(gText_Hang20_DamnYouAreTough,,SPEAKER_DEFAULT)
+    msgbox(gText_Hang20_AlthoughIAlreadyKnew,,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Hang20_WaitYouKnew)
-    callnative(ClearMugshot)
+    msgbox(gText_Hang20_WaitYouKnew,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_Hang20_AnywaysWeGotYouABoard)
+    msgbox(gText_Hang20_AnywaysWeGotYouABoard,,SPEAKER_DEFAULT)
     giveitem(ITEM_SOOT_SACK,1)
 
-    msgbox(gText_Hang20_OkaySoHeresHow)
+    msgbox(gText_Hang20_OkaySoHeresHow,,SPEAKER_DEFAULT)
     fadescreen(FADE_TO_BLACK)
     delay(32)
     fadescreen(FADE_FROM_BLACK)
-    msgbox(gText_Hang20_YoureANatural)
+    msgbox(gText_Hang20_YoureANatural,,SPEAKER_DEFAULT)
     completequest(QUEST_HANG20)
     release
     end
 }
 
 script Quest_Hang20_Completed_Dialogue{
-    msgbox(gText_Hang20_HowsTheWaves,MSGBOX_NPC)
+    msgbox(gText_Hang20_HowsTheWaves,MSGBOX_NPC,SPEAKER_DEFAULT)
     end
 }
 
 script Quest_Hang20_Secret_Dialogue{
-    msgbox(gText_Hang20_OhShitYoure) 
-    msgbox(gText_Hang20_YoureSuperTough)
+    msgbox(gText_Hang20_OhShitYoure,,SPEAKER_DEFAULT)
+    msgbox(gText_Hang20_YoureSuperTough,,SPEAKER_DEFAULT)
     giveitem(ITEM_SOOT_SACK,1)
-    msgbox(gText_Hang20_JustWalkUp)
+    msgbox(gText_Hang20_JustWalkUp,,SPEAKER_DEFAULT)
     questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_HANG20)
     release
     end

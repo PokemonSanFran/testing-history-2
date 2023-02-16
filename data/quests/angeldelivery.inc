@@ -90,10 +90,7 @@ Quest_AngelDelivery_BikerB_Reward_Dialogue::
 
 Quest_AngelDelivery_StartBattle_Cutscene::
 	call Dogpatch_BIkerhq_GuardsBlockDoor_Cutscene
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AngelDelivery_WaitThePassword
-	callnative ClearMugshot
+	msgbox gText_AngelDelivery_WaitThePassword, , SPEAKER_ZOEY
 	closemessage
 	playse SE_PIN
 	applymovement 1, Common_Movement_QuestionMark

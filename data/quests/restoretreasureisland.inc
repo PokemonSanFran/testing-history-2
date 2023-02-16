@@ -56,12 +56,9 @@ Quest_Restoretreasureisland_Interact_Script_4:
 Quest_Restoretreasureisland_Intro_Dialogue::
 	lock
 	setvar VAR_QUEST_RESTORETREASUREISLAND, SAVE_BEFORE_CILAN_BATTLE
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_ExpandedPlaceholder_Empty
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExpandedPlaceholder_Empty
+	msgbox gText_ExpandedPlaceholder_Empty, , SPEAKER_CILAN
+	msgbox gText_ExpandedPlaceholder_Empty, , SPEAKER_ZOEY
+	closemessage
 	call Common_EventScript_SaveGame
 	closemessage
 	goto Quest_Restoretreasureisland_StartBattle_Script
@@ -70,31 +67,22 @@ Quest_Restoretreasureisland_Intro_Dialogue::
 
 Quest_Restoretreasureisland_StartBattle_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_ExpandedPlaceholder_Empty
+	msgbox gText_ExpandedPlaceholder_Empty, , SPEAKER_CILAN
 	trainerbattle_no_intro TRAINER_CILAN_TREASUREISLAND, gText_ExpandedPlaceholder_Empty
 	closemessage
-	callnative ClearMugshot
 	goto Quest_Restoretreasureisland_PostBattle_Dialogue
 	return
 
 
 Quest_Restoretreasureisland_PostBattle_Dialogue::
 	setvar VAR_QUEST_RESTORETREASUREISLAND, DEFEATED_CILAN
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_ExpandedPlaceholder_Empty
-	callnative ClearMugshot
+	msgbox gText_ExpandedPlaceholder_Empty, , SPEAKER_CILAN
 	startquest QUEST_RESTORETREASUREISLAND
 	return
 
 
 Quest_Restoretreasureisland_Active_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_Restoretreasureisland_DoYouHave
-	callnative ClearMugshot
+	msgbox gText_Restoretreasureisland_DoYouHave, , SPEAKER_CILAN
 	multichoice2 1, 1, Quest_Restoretreasureisland_CheckList, 0, 1, 0
 	closemessage
 	switch VAR_RESULT
@@ -128,27 +116,18 @@ Quest_Restoretreasureisland_Active_Script_6:
 
 
 Quest_Restoretreasureisland_Cancel_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_Restoretreasureisland_NothingWellThen, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_Restoretreasureisland_NothingWellThen, MSGBOX_NPC, SPEAKER_CILAN
 	end
 
 
 Quest_Restoretreasureisland_AlreadyDone_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_Restoretreasureisland_WaitYouAlready
-	callnative ClearMugshot
+	msgbox gText_Restoretreasureisland_WaitYouAlready, , SPEAKER_CILAN
 	goto Quest_Restoretreasureisland_Active_Script
 	return
 
 
 Quest_Restoretreasureisland_ConfirmTake_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_Restoretreasureisland_HeyYouSure, MSGBOX_YESNO
-	callnative ClearMugshot
+	msgbox gText_Restoretreasureisland_HeyYouSure, MSGBOX_YESNO, SPEAKER_CILAN
 	compare VAR_RESULT, NO
 	goto_if_eq Quest_Restoretreasureisland_ConfirmTake_Dialogue_1
 	msgbox gText_Restoretreasureisland_Thanks
@@ -227,10 +206,7 @@ Quest_Restoretreasureisland_Handle_FlameOrb_Script_1:
 	checkitem ITEM_FLAME_ORB, 1
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_Restoretreasureisland_Handle_FlameOrb_Script_4
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_Restoretreasureisland_YouDontHave
-	callnative ClearMugshot
+	msgbox gText_Restoretreasureisland_YouDontHave, , SPEAKER_CILAN
 	goto Quest_Restoretreasureisland_Active_Script
 	return
 
@@ -256,10 +232,7 @@ Quest_Restoretreasureisland_Handle_TR27_Script_1:
 	checkitem ITEM_TM27, 1
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_Restoretreasureisland_Handle_TR27_Script_4
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_Restoretreasureisland_YouDontHave
-	callnative ClearMugshot
+	msgbox gText_Restoretreasureisland_YouDontHave, , SPEAKER_CILAN
 	goto Quest_Restoretreasureisland_Active_Script
 	return
 
@@ -290,10 +263,7 @@ Quest_Restoretreasureisland_Handle_PsychoShift_Script_1:
 Quest_Restoretreasureisland_Handle_PsychoShift_Script_4:
 	compare VAR_RESULT, SPECIES_BEHEEYEM
 	goto_if_eq Quest_Restoretreasureisland_Handle_PsychoShift_Script_7
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_Restoretreasureisland_YouDontHave
-	callnative ClearMugshot
+	msgbox gText_Restoretreasureisland_YouDontHave, , SPEAKER_CILAN
 	goto Quest_Restoretreasureisland_Active_Script
 	return
 
@@ -328,10 +298,7 @@ Quest_Restoretreasureisland_Handle_EffectSpore_Script_1:
 Quest_Restoretreasureisland_Handle_EffectSpore_Script_4:
 	compare VAR_RESULT, SPECIES_SHROOMISH
 	goto_if_eq Quest_Restoretreasureisland_Handle_EffectSpore_Script_7
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_Restoretreasureisland_YouDontHave
-	callnative ClearMugshot
+	msgbox gText_Restoretreasureisland_YouDontHave, , SPEAKER_CILAN
 	goto Quest_Restoretreasureisland_Active_Script
 	return
 
@@ -353,13 +320,8 @@ Quest_Restoretreasureisland_Handle_EffectSpore_Script_7:
 
 Quest_Restoretreasureisland_Reward_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_CILAN
-	callnative DrawMugshot
-	msgbox gText_ExpandedPlaceholder_Empty
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExpandedPlaceholder_Empty
-	callnative ClearMugshot
+	msgbox gText_ExpandedPlaceholder_Empty, , SPEAKER_CILAN
+	msgbox gText_ExpandedPlaceholder_Empty, , SPEAKER_ZOEY
 	closemessage
 	opendoor 5, 12
 	waitdooranim

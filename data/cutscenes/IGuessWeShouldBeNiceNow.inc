@@ -244,7 +244,6 @@ IGuessWeShouldBeNiceNow_PostBoss_Dialogue::
 	msgbox gText_IGuessWeShouldBeNiceNow_WellTheChallenges
 IGuessWeShouldBeNiceNow_PostBoss_Dialogue_1:
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, IGuessWeShouldBeNiceNow_LeaveCave
 	waitmovement 0
 	removeobject 1

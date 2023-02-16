@@ -18,16 +18,13 @@ MaybeIFuckedUp_Dialogue::
 	applymovement 12, Common_Movement_WalkUp
 	waitmovement 0
 	msgbox gText_MaybeIFuckedUp_OhHi, , SPEAKER_ZOEY
-	callnative ClearMugshot
 	msgbox gText_MaybeIFuckedUp_ItsGoodToMeetYou, , SPEAKER_ORI
 	msgbox gText_MaybeIFuckedUp_ItHasBeenACrazy, , SPEAKER_ZOEY
-	callnative ClearMugshot
 	msgbox gText_MaybeIFuckedUp_YourDecisions, , SPEAKER_ORI
 	giveitem ITEM_METEORITE, 1
 	msgbox gText_MaybeIFuckedUp_AskYourself, , SPEAKER_ORI
 	msgbox gText_MaybeIFuckedUp_IfYouFindYourself, , SPEAKER_ORI
 	msgbox gText_MaybeIFuckedUp_UhOkay, , SPEAKER_ZOEY
-	callnative ClearMugshot
 	msgbox gText_MaybeIFuckedUp_OfCourse, , SPEAKER_ORI
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, MaybeIFuckedUp_WatchOriWalk
@@ -35,7 +32,6 @@ MaybeIFuckedUp_Dialogue::
 	waitmovement 12
 	removeobject 12
 	msgbox gText_MaybeIFuckedUp_WhatTheHellWasThat, , SPEAKER_ZOEY
-	callnative ClearMugshot
 	release
 	end
 

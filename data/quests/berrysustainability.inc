@@ -121,27 +121,18 @@ Quest_BerrySustaiability_Event_Script_4:
 
 
 Quest_BerrySustaiability_StartQuest_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
-	msgbox gText_BerrySustaiability_GetBerries, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_BerrySustaiability_GetBerries, MSGBOX_NPC, SPEAKER_JASMINE
 	startquest QUEST_BERRYSUSTAINABILITY
 	end
 
 
 Quest_BerrySustaiability_Active_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
-	msgbox gText_BerrySustaiability_DidYouFind, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_BerrySustaiability_DidYouFind, MSGBOX_NPC, SPEAKER_JASMINE
 	end
 
 
 Quest_BerrySustaiability_Reward_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
-	msgbox gText_BerrySustaiability_YouFoundThem, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_BerrySustaiability_YouFoundThem, MSGBOX_NPC, SPEAKER_JASMINE
 	giveitem ITEM_GANLON_BERRY, 1
 	waitmessage
 	closemessage
@@ -151,10 +142,7 @@ Quest_BerrySustaiability_Reward_Dialogue::
 
 
 Quest_BerrySustaiability_Complete_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
-	msgbox gText_BerrySustaiability_ThanksFor, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_BerrySustaiability_ThanksFor, MSGBOX_NPC, SPEAKER_JASMINE
 	applymovement 5, Quest_BerrySustaiability_LeaveMarin_Movement
 	waitmovement 5
 	removeobject 5

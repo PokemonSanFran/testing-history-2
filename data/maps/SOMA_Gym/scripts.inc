@@ -28,8 +28,6 @@ SOMA_Gym_MapScripts_OnTransition_3:
 
 Whitney_Event_Script::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_WHITNEY
-	callnative DrawMugshot
 	switch VAR_GYM_3_STATE
 	case 2, Whitney_Event_Script_2
 	case 3, Whitney_Event_Script_3

@@ -52,7 +52,6 @@ EnterMorty_MortyDefeated_Script::
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM17
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
@@ -60,7 +59,6 @@ EnterMorty_MortyDefeated_Script::
 EnterMorty_PostDefeat1_Dialogue::
 	lock
 	msgbox gText_EnterMorty_KeepingTheBabiesSafe, MSGBOX_NPC, SPEAKER_MORTY
-	callnative ClearMugshot
 	setvar VAR_GYM_4_STATE, GYM_EXPLAINED_BADGE_AND_TM
 	closemessage
 	release
@@ -70,7 +68,6 @@ EnterMorty_PostDefeat1_Dialogue::
 EnterMorty_PostDefeat2_Dialogue::
 	lock
 	msgbox gText_EnterMorty_HeadOutToHoenn, MSGBOX_NPC, SPEAKER_MORTY
-	callnative ClearMugshot
 	closemessage
 	release
 	end

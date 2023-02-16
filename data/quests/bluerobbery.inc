@@ -45,33 +45,26 @@ Quest_BlueRobbery_FakeRobber_Event_Script_5:
 
 
 Quest_BlueRobbery_FakeRobber_Dialogue::
-	msgbox gText_BlueRobbery_ILoveMyWobbuffet, MSGBOX_NPC
+	msgbox gText_BlueRobbery_ILoveMyWobbuffet, MSGBOX_NPC, SPEAKER_DEFAULT
 	applymovement 1, BlueRobbery_FaceLove_Movement
 	playse SE_BIKE_HOP
 	applymovement 2, BlueRobbery_FaceHop_Movement
 	waitse
 	waitmovement 0
 	playmoncry SPECIES_WOBBUFFET, CRY_MODE_ENCOUNTER
-	msgbox gText_BlueRobbery_Wobb, MSGBOX_AUTOCLOSE
+	msgbox gText_BlueRobbery_Wobb, MSGBOX_AUTOCLOSE, SPEAKER_DEFAULT
 	waitmoncry
 	release
 	end
 
 
 Quest_BlueRobbery_PreBattle_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BlueRobbery_IThinkThat
-	msgbox gText_BlueRobbery_BoldOfYou, MSGBOX_DEFAULT
-	callnative ClearMugshot
-	msgbox gText_BlueRobbery_OhArceus, MSGBOX_NPC
-	callnative DrawMugshot
-	msgbox gText_BlueRobbery_HowCanYou, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_BlueRobbery_ItsNot, MSGBOX_NPC
-	callnative DrawMugshot
-	msgbox gText_BlueRobbery_LikelyStory, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_BlueRobbery_IThinkThat, , SPEAKER_ZOEY, TAIL_THOUGHT
+	msgbox gText_BlueRobbery_BoldOfYou, MSGBOX_DEFAULT, SPEAKER_ZOEY, , EMOTE_ANGRY
+	msgbox gText_BlueRobbery_OhArceus, MSGBOX_NPC, , SPEAKER_DEFAULT
+	msgbox gText_BlueRobbery_HowCanYou, MSGBOX_NPC, , SPEAKER_ZOEY
+	msgbox gText_BlueRobbery_ItsNot, MSGBOX_NPC, , SPEAKER_DEFAULT
+	msgbox gText_BlueRobbery_LikelyStory, MSGBOX_NPC, , SPEAKER_ZOEY
 	closemessage
 	trainerbattle_no_intro TRAINER_FAKEROBBER, gText_BlueRobbery_LeaveMeAlone
 	goto Quest_BlueRobbery_PostBattle_Script
@@ -85,10 +78,8 @@ Quest_BlueRobbery_PostBattle_Script::
 	setflag FLAG_TEMP_2
 	removeobject 2
 	clearflag FLAG_TEMP_1
-	msgbox gText_BlueRobbery_AreYouHappy, MSGBOX_NPC
-	callnative DrawMugshot
-	msgbox gText_BlueRobbery_IDontUnderstand, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_BlueRobbery_AreYouHappy, MSGBOX_NPC, , SPEAKER_DEFAULT
+	msgbox gText_BlueRobbery_IDontUnderstand, MSGBOX_NPC, , SPEAKER_ZOEY
 	addobject 3
 	applymovement OBJ_EVENT_ID_PLAYER, BlueRobbery_GetOutOfWay_Movement
 	applymovement 3, BlueRobbery_WalkToArrest_Movement

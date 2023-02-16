@@ -17,10 +17,7 @@ Quest_FreshwaterEvolution_CheckPartyAndQuest_Script_2:
 
 
 Quest_FreshwaterEvolution_AlreadyShiny_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_FreshwaterEvolution_OhWaitYoure, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_Quest_FreshwaterEvolution_OhWaitYoure, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	call Quest_FreshwaterEvolution_Recall_Script
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
@@ -44,10 +41,7 @@ Quest_FreshwaterEvolution_StartCutscene_Dialogue::
 	goto_if_eq Quest_FreshwaterEvolution_StartCutscene_Dialogue_2
 Quest_FreshwaterEvolution_StartCutscene_Dialogue_1:
 	bufferleadmonspeciesname STR_VAR_1
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_FreshwaterEvolution_OkayLetsSee, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_Quest_FreshwaterEvolution_OkayLetsSee, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 2, Quest_FreshwaterEvolution_JumpIntoWater_Movement
@@ -67,10 +61,7 @@ Quest_FreshwaterEvolution_StartCutscene_Dialogue_1:
 	msgbox gText_Quest_FreshwaterEvolution_LooksVery, MSGBOX_DEFAULT
 	closemessage
 	call Quest_FreshwaterEvolution_Recall_Script
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_FreshwaterEvolution_TheColorChangedBut, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_Quest_FreshwaterEvolution_TheColorChangedBut, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	goto Quest_FreshwaterEvolution_BystanderScene_Script
 	return
 
@@ -83,17 +74,11 @@ Quest_FreshwaterEvolution_BystanderScene_Script::
 	applymovement 1, Quest_FreshwaterEvolution_WalkToPlayer_Movement
 	waitmovement 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	msgbox gText_Quest_FreshwaterEvolution_HahaAreYouTrying, MSGBOX_DEFAULT
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_FreshwaterEvolution_YeahYouKnow, MSGBOX_DEFAULT
-	callnative ClearMugshot
-	msgbox gText_Quest_FreshwaterEvolution_BeenSeeingIt, MSGBOX_DEFAULT
-	msgbox gText_Quest_FreshwaterEvolution_ThereIsSomething, MSGBOX_DEFAULT
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_FreshwaterEvolution_GoodToKnow, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_Quest_FreshwaterEvolution_HahaAreYouTrying, MSGBOX_DEFAULT, SPEAKER_DEFAULT
+	msgbox gText_Quest_FreshwaterEvolution_YeahYouKnow, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_Quest_FreshwaterEvolution_BeenSeeingIt, MSGBOX_DEFAULT, SPEAKER_DEFAULT
+	msgbox gText_Quest_FreshwaterEvolution_ThereIsSomething, MSGBOX_DEFAULT, SPEAKER_DEFAULT
+	msgbox gText_Quest_FreshwaterEvolution_GoodToKnow, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	completequest QUEST_FRESHWATEREVOLUTION
 	release

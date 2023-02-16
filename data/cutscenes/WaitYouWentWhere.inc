@@ -41,7 +41,6 @@ WaitYouWentWhere_FirstInteract_Dialogue::
 	msgbox gText_WaitYouWentWhere_YeahThanksFor, , SPEAKER_ZOEY
 	msgbox gText_WaitYouWentWhere_IHaveSomeBusiness, , SPEAKER_OAK
 	closemessage
-	callnative ClearMugshot
 	call WaitYouWentWhere_PlayerSetUp_Script
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Player_WaitYouWentWhere_WalkWest
@@ -55,7 +54,6 @@ WaitYouWentWhere_FirstInteract_Dialogue::
 	msgbox gText_WaitYouWentWhere_OrreHasALot, , SPEAKER_ZOEY
 	msgbox gText_WaitYouWentWhere_NoOffense, , SPEAKER_OAK
 	msgbox gText_WaitYouWentWhere_GoingThisWay, , SPEAKER_OAK
-	callnative ClearMugshot
 	closemessage
 	applymovement 1, WaitYouWentWhere_WalkUpHill
 	waitmovement 0

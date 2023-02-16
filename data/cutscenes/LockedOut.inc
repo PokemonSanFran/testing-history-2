@@ -26,7 +26,6 @@ LockedOut_PreventPlayer_Script_5:
 LockedOut_PhoneCall_Dialogue::
 	setflag FLAG_LOCKEDOUT_PLAYED
 	msgbox gText_LockedOut_ShitWait, , SPEAKER_ZOEY
-	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LockedOut_TryDoorAgain
 	waitmovement 0
@@ -45,7 +44,6 @@ LockedOut_PhoneCall_Dialogue::
 	msgbox gText_LockedOut_ThatsActuallyWhy, , SPEAKER_ARCHER
 	msgbox gText_LockedOut_IActuallyHadnt, , SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	playse SE_POKENAV_HANG_UP
 	waitse
 	goto LockedOut_WarpPlayer_Script

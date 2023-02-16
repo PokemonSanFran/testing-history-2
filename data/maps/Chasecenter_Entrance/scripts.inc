@@ -17,7 +17,7 @@ Chasecenter_Entrance_KeepPlayerInside_Script_2:
 	goto Chasecenter_Entrance_KeepPlayerInside_Script_1
 
 Chasecenter_Entrance_KeepPlayerInside_Script_5:
-	msgbox gText_GroupStages_OhRight, , SPEAKER_ZOEY, TAIL_THOUGHT
+	msgbox gText_GroupStages_OhRight, , SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_SWEAT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0

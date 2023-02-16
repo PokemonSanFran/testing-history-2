@@ -15,7 +15,6 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	compare VAR_RESULT, NO
 	goto_if_eq HaveYouSeenTheNews_AskHelp_Dialogue_1
 	msgbox gText_HaveYouSeenTheNews_CoolTheCar, , SPEAKER_BIANCA
-	callnative ClearMugshot
 	closemessage
 	releaseall
 	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 17, 29

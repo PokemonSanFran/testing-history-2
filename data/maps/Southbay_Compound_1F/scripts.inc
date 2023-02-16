@@ -69,8 +69,6 @@ Bianca_Southbay_Compound_1F_InteractScript_2:
 
 Oak_Southbay_Compound_1F_InteractScript::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_LANCE
-	callnative DrawMugshot
 	compare VAR_PLAYER_HOME_STATE, OPENED_FASHION_CASE
 	goto_if_eq Oak_Southbay_Compound_1F_InteractScript_2
 	call swagbag_HelpPlayer_Script

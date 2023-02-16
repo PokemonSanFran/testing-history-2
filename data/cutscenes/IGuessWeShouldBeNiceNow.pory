@@ -258,7 +258,7 @@ script IGuessWeShouldBeNiceNow_PostBoss_Dialogue {
             msgbox(gText_IGuessWeShouldBeNiceNow_WellTheChallenges)
         }
         closemessage
-        callnative(ClearMugshot)    
+            
 
         applymovement(BIANCA,IGuessWeShouldBeNiceNow_LeaveCave)
         waitmovement(0)

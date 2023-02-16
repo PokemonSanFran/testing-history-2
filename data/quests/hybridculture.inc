@@ -75,47 +75,29 @@ Quest_HybridCulture_Event_Script_4:
 
 
 Quest_HybridCulture_StartQuest_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_HybridCulture_HeyThanksFor, MSGBOX_NPC
-	msgbox gText_HybridCulture_IThinkINeedToLearn, MSGBOX_NPC
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HybridCulture_HaveYouStarted, MSGBOX_NPC
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_HybridCulture_IHaventYet, MSGBOX_NPC
-	msgbox gText_HybridCulture_CanYouHelp, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_HybridCulture_HeyThanksFor, MSGBOX_NPC, SPEAKER_BUGSY
+	msgbox gText_HybridCulture_IThinkINeedToLearn, MSGBOX_NPC, SPEAKER_BUGSY
+	msgbox gText_HybridCulture_HaveYouStarted, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_HybridCulture_IHaventYet, MSGBOX_NPC, SPEAKER_BUGSY
+	msgbox gText_HybridCulture_CanYouHelp, MSGBOX_NPC, SPEAKER_BUGSY
 	startquest QUEST_HYBRIDCULTURE
 	end
 
 
 Quest_HybridCulture_Active_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_HybridCulture_HaveYouHad, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_HybridCulture_HaveYouHad, MSGBOX_NPC, SPEAKER_BUGSY
 	end
 
 
 Quest_HybridCulture_Reward_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_HybridCulture_OhWhatDidYouLearn, MSGBOX_NPC
+	msgbox gText_HybridCulture_OhWhatDidYouLearn, MSGBOX_NPC, SPEAKER_BUGSY
 	closemessage
-	callnative ClearMugshot
 	fadescreen FADE_TO_BLACK
 	msgbox gText_HybridCulture_PlayerExplained
 	closemessage
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_HybridCulture_ThankYou, MSGBOX_NPC
+	msgbox gText_HybridCulture_ThankYou, MSGBOX_NPC, SPEAKER_BUGSY
 	closemessage
-	callnative ClearMugshot
 	call Quest_HybridCulture_GiveReward_Script
 	completequest QUEST_HYBRIDCULTURE
 	setvar VAR_BUGSY_STATE, QUEST_2_COMPLETE
@@ -128,11 +110,8 @@ Quest_HybridCulture_GiveReward_Script::
 
 
 Quest_HybridCulture_Complete_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_HybridCulture_IHaveSoMuch, MSGBOX_NPC
+	msgbox gText_HybridCulture_IHaveSoMuch, MSGBOX_NPC, SPEAKER_BUGSY
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, Quest_HybridCulture_WalkBackIntoGym_Movement
 	waitmovement 1
 	opendoor 17, 6

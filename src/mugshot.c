@@ -1535,6 +1535,78 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Man,
         .speakerPal = sSpeakerPal_Man,
     },
+    [SPEAKER_TROLLEY_GUY] =
+    {
+        .name = _("Trolley Guy"),
+        .speakerIcon = gSpeakerIcon_Man,
+        .speakerPal = sSpeakerPal_Man,
+    },
+    [SPEAKER_HESTER] =
+    {
+        .name = _("Hester"),
+        .speakerIcon = gSpeakerIcon_Kid,
+        .speakerPal = sSpeakerPal_Kid,
+    },
+    [SPEAKER_YCOMBINATOR_STAFF] =
+    {
+        .name = _("Ycombinator Staff"),
+        .speakerIcon = gSpeakerIcon_Firebreather,
+        .speakerPal = sSpeakerPal_Firebreather,
+    },
+    [SPEAKER_TONALLI] =
+    {
+        .name = _("Tonalli"),
+        .speakerIcon = gSpeakerIcon_Firebreather,
+        .speakerPal = sSpeakerPal_Firebreather,
+    },
+    [SPEAKER_DRUMMER_B] =
+    {
+        .name = _("Drummer"),
+        .speakerIcon = gSpeakerIcon_Swimmer_M,
+        .speakerPal = sSpeakerPal_Swimmer_M,
+    },
+    [SPEAKER_DRUMMER_C] =
+    {
+        .name = _("Drummer"),
+        .speakerIcon = gSpeakerIcon_Woman,
+        .speakerPal = sSpeakerPal_Woman,
+    },
+    [SPEAKER_DRUMMER_D] =
+    {
+        .name = _("Drummer"),
+        .speakerIcon = gSpeakerIcon_Bug_Catcher,
+        .speakerPal = sSpeakerPal_Bug_Catcher,
+    },
+    [SPEAKER_LIIDIA] =
+    {
+        .name = ("Liidia"),
+        .speakerIcon = gSpeakerIcon_Kid,
+        .speakerPal = sSpeakerPal_Kid,
+    },
+    [SPEAKER_RAINER] =
+    {
+        .name = ("Rainer"),
+        .speakerIcon = gSpeakerIcon_Woman,
+        .speakerPal = sSpeakerPal_Woman,
+    },
+    [SPEAKER_BRONSON] =
+    {
+        .name = _("Bronson"),
+        .speakerIcon = gSpeakerIcon_Lt_Surge,
+        .speakerPal = sSpeakerPal_Lt_Surge,
+    },
+    [SPEAKER_SHASHI] =
+    {
+        .name = _("Shashi"),
+        .speakerIcon = gSpeakerIcon_Erika,
+        .speakerPal = sSpeakerPal_Erika,
+    },
+    [SPEAKER_LEAH] =
+    {
+        .name = _("Leah"),
+        .speakerIcon = gSpeakerIcon_Woman,
+        .speakerPal = sSpeakerPal_Woman,
+    },
 };
 
 void DestroySpeakerIconSprite(void){

@@ -78,16 +78,16 @@ Quest_BuildingScope_CheckBadges_Script_1:
 
 
 Quest_BuildingScope_ScaredEmployee_Dialogue::
-	msgbox gText_BuildingScope_HowBadCouldItBe
+	msgbox gText_BuildingScope_HowBadCouldItBe, , SPEAKER_YCOMBINATOR_STAFF
 	release
 	end
 
 
 Quest_BuildingScope_StartQuest_Dialogue::
 	faceplayer
-	msgbox gText_BuildingScope_OhYourePlayer
-	msgbox gText_BuildingScope_TheresABuildingIn
-	msgbox gText_BuildingScope_AnimalsOrPokemon
+	msgbox gText_BuildingScope_OhYourePlayer, , SPEAKER_YCOMBINATOR_STAFF
+	msgbox gText_BuildingScope_TheresABuildingIn, , SPEAKER_YCOMBINATOR_STAFF
+	msgbox gText_BuildingScope_AnimalsOrPokemon, , SPEAKER_YCOMBINATOR_STAFF
 	closemessage
 	applymovement 5, Common_Movement_WalkDown
 	waitmovement 5
@@ -97,9 +97,7 @@ Quest_BuildingScope_StartQuest_Dialogue::
 
 
 Quest_BuildingScope_Employee_Active_Dialogue::
-	msgbox AquaHideout_TestText, MSGBOX_YESNO, SPEAKER_GRUNT, TAIL_TALK, EMOTE_HAPPY, FALSE
-	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_0, MSGBOX_NPC, SPEAKER_JASMINE, TAIL_TALK, EMOTE_SWEAT, TRUE
-	msgbox Quest_BuildingScope_Employee_Active_Dialogue_Text_1, MSGBOX_NPC, SPEAKER_GRUNT, TAIL_WHISPER, EMOTE_ANGRY, FALSE
+	msgbox gText_BuildingScope_OneDayIll, MSGBOX_NPC, SPEAKER_YCOMBINATOR_STAFF
 	end
 
 
@@ -125,11 +123,11 @@ Quest_BuildingScope_Squatters_Cutscene_2:
 
 
 Quest_BuildingScope_BattleSquatters_Script::
-	msgbox gText_BuildingScope_FinallyHadTheBalls
+	msgbox gText_BuildingScope_FinallyHadTheBalls, , SPEAKER_DEFAULT
 	trainerbattle_no_intro TRAINER_LOLA_1, gText_BuildingScope_WhyWontYou
-	msgbox gText_BuildingScope_ThrowingGasAtUs
+	msgbox gText_BuildingScope_ThrowingGasAtUs, , SPEAKER_DEFAULT
 	trainerbattle_no_intro TRAINER_LOLA_2, gText_BuildingScope_YouDisgustMe
-	msgbox gText_BuildingSCope_NothingIsEverGood
+	msgbox gText_BuildingSCope_NothingIsEverGood, , SPEAKER_RAINER
 	trainerbattle_no_intro TRAINER_LOLA_3, gText_BuildingScope_Scum
 	goto Quest_BuildingScope_PostBattle_Dialogue
 	return
@@ -137,21 +135,12 @@ Quest_BuildingScope_BattleSquatters_Script::
 
 Quest_BuildingScope_PostBattle_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BuildingScope_NobodyIsTryingTo
-	callnative ClearMugshot
-	msgbox gText_BuildingScope_ThrowingShitAt
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BuildingScope_SomebodyAskedMe
-	callnative ClearMugshot
-	msgbox gText_BuildingScope_UhHuhPokemon
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BuildingScope_LookTheGuyIWas
-	callnative ClearMugshot
-	msgbox gText_BuildingScope_NotLikeWeGotAnywhere
+	msgbox gText_BuildingScope_NobodyIsTryingTo, , SPEAKER_ZOEY
+	msgbox gText_BuildingScope_ThrowingShitAt, , SPEAKER_DEFAULT
+	msgbox gText_BuildingScope_SomebodyAskedMe, , SPEAKER_ZOEY
+	msgbox gText_BuildingScope_UhHuhPokemon, , SPEAKER_DEFAULT
+	msgbox gText_BuildingScope_LookTheGuyIWas, , SPEAKER_ZOEY
+	msgbox gText_BuildingScope_NotLikeWeGotAnywhere, , SPEAKER_DEFAULT
 	closemessage
 	questmenu QUEST_MENU_SET_REWARD, QUEST_BUILDINGSCOPE
 	release
@@ -159,17 +148,11 @@ Quest_BuildingScope_PostBattle_Dialogue::
 
 
 Quest_BuildingScope_Reward_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BuildingScope_IGotInto
-	callnative ClearMugshot
-	msgbox gText_BuildingScope_WaitPeopleWere
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BuildingScope_YeahTheyWere
-	callnative ClearMugshot
-	msgbox gText_BuildingScope_OhWowWell
-	msgbox gText_BuildingScope_IllSendSomebody
+	msgbox gText_BuildingScope_IGotInto, , SPEAKER_ZOEY
+	msgbox gText_BuildingScope_WaitPeopleWere, , SPEAKER_YCOMBINATOR_STAFF
+	msgbox gText_BuildingScope_YeahTheyWere, , SPEAKER_ZOEY
+	msgbox gText_BuildingScope_OhWowWell, , SPEAKER_YCOMBINATOR_STAFF
+	msgbox gText_BuildingScope_IllSendSomebody, , SPEAKER_YCOMBINATOR_STAFF
 	showmoneybox 0, 0
 	waitbuttonpress
 	addmoney 50000
@@ -185,7 +168,7 @@ Quest_BuildingScope_Reward_Dialogue::
 
 
 Quest_BuildingScope_PostQuest_Dialogue::
-	msgbox gText_BuildingScope_WeHired, MSGBOX_NPC
+	msgbox gText_BuildingScope_WeHired, MSGBOX_NPC, , SPEAKER_YCOMBINATOR_STAFF
 	end
 
 
@@ -212,14 +195,6 @@ Quest_BuildingScope_WalkToPlayer_Movement:
 	walk_down
 	walk_down
 	step_end
-
-Quest_BuildingScope_Employee_Active_Dialogue_Text_0:
-	.string "I see, I may be a little busy with the\n"
-	.string "lighthouse but I see you there.$"
-
-Quest_BuildingScope_Employee_Active_Dialogue_Text_1:
-	.string "Hey, please stop eavesdropping, I'm on\n"
-	.string "the phone right now.$"
 
 gText_BuildingScope_HowBadCouldItBe::
 	.string "How bad could it be...? Come on, just\n"

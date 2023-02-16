@@ -39,60 +39,45 @@ Quest_LastMusicVenue_ChangeMusic::
 
 
 Quest_LastMusicVenue_StartQuest_Script::
-	msgbox gText_Quest_LastMusicVenue_IHopeYoureNot, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_LastMusicVenue_WhyIsThat, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_Quest_LastMusicVenue_ItsAViciousCycle, MSGBOX_NPC
-	msgbox gText_Quest_LastMusicVenue_YoureYoungDoYouKnow, MSGBOX_NPC
+	msgbox gText_Quest_LastMusicVenue_IHopeYoureNot, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_Quest_LastMusicVenue_WhyIsThat, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_LastMusicVenue_ItsAViciousCycle, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_Quest_LastMusicVenue_YoureYoungDoYouKnow, MSGBOX_NPC, SPEAKER_DEFAULT
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_DRUMCIRCLE
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_LastMusicVenue_StartQuest_Script_2
-	msgbox gText_Quest_LastMusicVenue_IllKeepMyEyesPeeled, MSGBOX_NPC
+	msgbox gText_Quest_LastMusicVenue_IllKeepMyEyesPeeled, MSGBOX_NPC, SPEAKER_ZOEY
 Quest_LastMusicVenue_StartQuest_Script_1:
-	callnative ClearMugshot
 	startquest QUEST_LASTMUSICVENUEINSANFRANCISCO
 	release
 	end
 
 Quest_LastMusicVenue_StartQuest_Script_2:
-	msgbox gText_Quest_LastMusicVenue_ActuallyIMetSome, MSGBOX_NPC
-	msgbox gText_Quest_LastMusicVenue_TheDrumCircle, MSGBOX_NPC
+	msgbox gText_Quest_LastMusicVenue_ActuallyIMetSome, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_LastMusicVenue_TheDrumCircle, MSGBOX_NPC, SPEAKER_ZOEY, TAIL_THOUGHT
 	goto Quest_LastMusicVenue_StartQuest_Script_1
 
 
 Quest_LastMusicVenue_Active_Dialogue::
-	msgbox gText_Quest_LastMusicVenue_AnyLuck, MSGBOX_NPC
+	msgbox gText_Quest_LastMusicVenue_AnyLuck, MSGBOX_NPC, SPEAKER_DEFAULT
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_DRUMCIRCLE
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_LastMusicVenue_Active_Dialogue_2
-	msgbox gText_Quest_LastMusicVenue_ImStillLooking, MSGBOX_NPC
+	msgbox gText_Quest_LastMusicVenue_ImStillLooking, MSGBOX_NPC, SPEAKER_ZOEY
 Quest_LastMusicVenue_Active_Dialogue_1:
-	callnative ClearMugshot
 	release
 	end
 
 Quest_LastMusicVenue_Active_Dialogue_2:
-	msgbox gText_Quest_LastMusicVenue_IHavent, MSGBOX_NPC
+	msgbox gText_Quest_LastMusicVenue_IHavent, MSGBOX_NPC, SPEAKER_ZOEY
 	goto Quest_LastMusicVenue_Active_Dialogue_1
 
 
 Quest_LastMusicVenue_InformDrummers_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LastMusicVenue_HaveYouGuysSeen
-	callnative ClearMugshot
-	msgbox gText_LastMusicVenue_Nah
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LastMusicVenue_YouNeed
-	callnative ClearMugshot
-	msgbox gText_LastMusicVenue_ThisCouldBe
+	msgbox gText_LastMusicVenue_HaveYouGuysSeen, , SPEAKER_ZOEY
+	msgbox gText_LastMusicVenue_Nah, , SPEAKER_TONALLI
+	msgbox gText_LastMusicVenue_YouNeed, , SPEAKER_ZOEY
+	msgbox gText_LastMusicVenue_ThisCouldBe, , SPEAKER_DRUMMER_B
 	closemessage
 	fadescreen FADE_TO_BLACK
 	removeobject 23
@@ -106,8 +91,8 @@ Quest_LastMusicVenue_InformDrummers_Dialogue::
 
 
 Quest_LastMusicVenue_Reward_Dialogue::
-	msgbox gText_Quest_LastMusicVenue_TheseDrummers, MSGBOX_NPC
-	msgbox gText_Quest_LastMusicVenue_TurnsOutTheyKnow, MSGBOX_NPC
+	msgbox gText_Quest_LastMusicVenue_TheseDrummers, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_Quest_LastMusicVenue_TurnsOutTheyKnow, MSGBOX_NPC, SPEAKER_DEFAULT
 	call Quest_LastMusicVenue_GiveReward_Script
 	completequest QUEST_LASTMUSICVENUEINSANFRANCISCO
 	release

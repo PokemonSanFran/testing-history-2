@@ -16,24 +16,24 @@ script Quest_BetweenAStoneAndAHardPlace_Event_Script{
 }
 
 script Quest_BetweenAStoneAndAHardPlace_Active_Dialogue{
-    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear,MSGBOX_NPC)
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
     buffernumberstring(STR_VAR_1,VAR_NUM_TROLLEY_RIDES)
 
     switch(var(VAR_NUM_TROLLEY_RIDES)){
         case 0:
-            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_YouShouldTry,MSGBOX_NPC)
+            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_YouShouldTry,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
         case 1:
         case 2:
         case 3:
-            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_AreYouNew,MSGBOX_NPC)
+            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_AreYouNew,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
         case 4:
         case 5:
         case 6:
-            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_YoureARegular,MSGBOX_NPC)
+            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_YoureARegular,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
         case 7:
         case 8:
         case 9:
-            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly,MSGBOX_NPC)
+            msgbox(gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
     }
 
     incrementgamestat(GAME_STAT_TROLLEY_RIDES)
@@ -42,8 +42,8 @@ script Quest_BetweenAStoneAndAHardPlace_Active_Dialogue{
 }
 
 script Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue{
-    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying,MSGBOX_NPC)
-    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership,MSGBOX_NPC)
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
 
     random(10)
     switch(var(VAR_RESULT)){
@@ -59,11 +59,9 @@ script Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue{
         case 9: giveitem(ITEM_DAWN_STONE)
     }
 
-    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont,MSGBOX_NPC)
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_Yeah,MSGBOX_NPC)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_Yeah,MSGBOX_NPC,SPEAKER_ZOEY)
+    
 
     completequest(QUEST_BETWEENASTONEANDAHARD)
     release
@@ -71,7 +69,7 @@ script Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue{
 }
 
 script Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue{
-    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot,MSGBOX_NPC)
+    msgbox(gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
     end
 }
 

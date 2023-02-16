@@ -23,11 +23,11 @@ Quest_DrumCircle_Interact_Event_Script_4:
 
 
 Quest_DrumCircle_ExplainQuest_Dialogue::
-	msgbox gText_DrumCircle_YoureATrainerWantAChallenge
-	msgbox gText_DrumCircle_BattleAllOfUs
-	msgbox gText_DrumCircle_IfYouWin
-	msgbox gText_DrumCircle_IfYouLose
-	msgbox gText_DrumCircle_WhatDoYouSay, MSGBOX_YESNO
+	msgbox gText_DrumCircle_YoureATrainerWantAChallenge, , SPEAKER_TONALLI
+	msgbox gText_DrumCircle_BattleAllOfUs, , SPEAKER_DRUMMER_B
+	msgbox gText_DrumCircle_IfYouWin, , SPEAKER_DRUMMER_C
+	msgbox gText_DrumCircle_IfYouLose, , SPEAKER_DRUMMER_D
+	msgbox gText_DrumCircle_WhatDoYouSay, MSGBOX_YESNO, SPEAKER_TONALLI
 	compare VAR_RESULT, YES
 	goto_if_eq Quest_DrumCircle_ExplainQuest_Dialogue_1
 	goto Quest_DrumCircle_DeclineQuest_Dialogue
@@ -39,20 +39,20 @@ Quest_DrumCircle_ExplainQuest_Dialogue_1:
 
 
 Quest_DrumCircle_DeclineQuest_Dialogue::
-	msgbox gText_DrumCircle_HehNotReady
+	msgbox gText_DrumCircle_HehNotReady, , SPEAKER_TONALLI
 	release
 	end
 
 
 Quest_DrumCircle_StartQuest_Dialogue::
-	msgbox gText_DrumCircle_ThatsWhatImTalking
+	msgbox gText_DrumCircle_ThatsWhatImTalking, , SPEAKER_TONALLI
 	startquest QUEST_DRUMCIRCLE
 	goto Quest_DrumCircle_ActiveDialogue
 	return
 
 
 Quest_DrumCircle_ActiveDialogue::
-	msgbox gText_DrumCircle_WantAHeal, MSGBOX_YESNO
+	msgbox gText_DrumCircle_WantAHeal, MSGBOX_YESNO, SPEAKER_TONALLI
 	compare VAR_RESULT, YES
 	goto_if_eq Quest_DrumCircle_ActiveDialogue_2
 Quest_DrumCircle_ActiveDialogue_1:
@@ -70,7 +70,7 @@ Quest_DrumCircle_BattleA_Script::
 	waitse
 	waitmovement 23
 	closemessage
-	msgbox gText_DrumCircle_MyTurn
+	msgbox gText_DrumCircle_MyTurn, , SPEAKER_DRUMMER_D
 	trainerbattle_no_intro TRAINER_DUSTY_2, gText_DrumCircle_OhNo
 	goto Quest_DrumCircle_BattleB_Script
 	return
@@ -82,7 +82,7 @@ Quest_DrumCircle_BattleB_Script::
 	waitse
 	waitmovement 24
 	closemessage
-	msgbox gText_DrumCircle_MyTurn
+	msgbox gText_DrumCircle_MyTurn, , SPEAKER_DRUMMER_C
 	trainerbattle_no_intro TRAINER_DUSTY_3, gText_DrumCircle_OhNo
 	goto Quest_DrumCircle_BattleC_Script
 	return
@@ -94,7 +94,7 @@ Quest_DrumCircle_BattleC_Script::
 	waitse
 	waitmovement 25
 	closemessage
-	msgbox gText_DrumCircle_MyTurn
+	msgbox gText_DrumCircle_MyTurn, , SPEAKER_DRUMMER_B
 	trainerbattle_no_intro TRAINER_DUSTY_4, gText_DrumCircle_OhNo
 	goto Quest_DrumCircle_BattleD_Script
 	return
@@ -106,21 +106,21 @@ Quest_DrumCircle_BattleD_Script::
 	waitse
 	waitmovement 26
 	closemessage
-	msgbox gText_DrumCircle_MyTurn
+	msgbox gText_DrumCircle_MyTurn, , SPEAKER_TONALLI
 	trainerbattle_no_intro TRAINER_DUSTY_5, gText_DrumCircle_OhNo
 	goto Quest_DrumCircle_RewardCutscene
 	return
 
 
 Quest_DrumCircle_RewardCutscene::
-	msgbox gText_DrumCircle_YoureNoJoke
-	msgbox gText_DrumCircle_WayToGoIdiot
-	msgbox gText_DrumCircle_DudeIsntThat
-	msgbox gText_DrumCircle_HowWasISupposed
-	msgbox gText_DrumCircle_ThatWasOneOfAKind
-	msgbox gText_DrumCircle_IgnoreThemYouWon
+	msgbox gText_DrumCircle_YoureNoJoke, , SPEAKER_DRUMMER_B
+	msgbox gText_DrumCircle_WayToGoIdiot, , SPEAKER_DRUMMER_D
+	msgbox gText_DrumCircle_DudeIsntThat, , SPEAKER_DRUMMER_C
+	msgbox gText_DrumCircle_HowWasISupposed, , SPEAKER_TONALLI
+	msgbox gText_DrumCircle_ThatWasOneOfAKind, , SPEAKER_DRUMMER_D
+	msgbox gText_DrumCircle_IgnoreThemYouWon, , SPEAKER_TONALLI
 	giveitem ITEM_OLD_GATEAU, 1
-	msgbox gText_DrumCircle_ComeBackSoWeCanWin
+	msgbox gText_DrumCircle_ComeBackSoWeCanWin, , SPEAKER_TONALLI
 	completequest QUEST_DRUMCIRCLE
 	release
 	end
@@ -139,12 +139,9 @@ Quest_DrumCircle_CheckVenueCompletion_Script_1:
 
 
 Quest_DrumCircle_Completed_NoVenue_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_DrumCircle_YouGuysAreDrummers
-	callnative ClearMugshot
-	msgbox gText_DrumCircle_WeLostOurVenue
-	msgbox gText_DrumCircle_MakingEnds
+	msgbox gText_DrumCircle_YouGuysAreDrummers, , SPEAKER_ZOEY
+	msgbox gText_DrumCircle_WeLostOurVenue, , SPEAKER_TONALLI
+	msgbox gText_DrumCircle_MakingEnds, , SPEAKER_TONALLI
 	closemessage
 	release
 	end

@@ -27,7 +27,7 @@ script SOMA_SocialMediaReporter_Dialogue{
     msgbox(gText_SOMA_SocialMediaIs,MSGBOX_NPC,SPEAKER_ISMAIL)
 
     msgbox(gText_SOMA_TotallyIHunted,MSGBOX_DEFAULT,,SPEAKER_ZOEY)
-    callnative(ClearMugshot)
+    
 
     msgbox(gText_SOMA_OhRight,MSGBOX_DEFAULT,SPEAKER_ISMAIL)
     closemessage

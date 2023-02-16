@@ -74,10 +74,8 @@ HowDisappointing_StartRaid_Dialogue::
 	waitmovement 3
 	msgbox gText_HowDisappointing_OhAndChampion
 	msgbox gText_HowDisappointing_YeahQuestion, MSGBOX_DEFAULT, SPEAKER_ZOEY
-	callnative ClearMugshot
 	msgbox gText_HowDisappointing_TryToNotLet
 	msgbox gText_HowDisappointing_Yeah, MSGBOX_DEFAULT, SPEAKER_ZOEY
-	callnative ClearMugshot
 	msgbox gText_HowDisappointing_Hehehehee
 	closemessage
 	goto HowDisappointing_RaidMovement_Script
@@ -160,7 +158,6 @@ HowDisappointing_Interfact_Ariana_Script_1:
 	msgbox gText_HowDisappointing_ThenWhyAreYou, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	msgbox gText_HowDisappointing_TheseCompanies, , SPEAKER_ARIANA
 	msgbox gText_HowDisappointing_AllISeeIs, MSGBOX_DEFAULT, SPEAKER_ZOEY
-	callnative ClearMugshot
 	call Common_EventScript_SaveGame
 	goto HowDisappointing_StartBattle_Script
 	return
@@ -173,7 +170,6 @@ HowDisappointing_Interfact_Ariana_Script_2:
 HowDisappointing_StartBattle_Script::
 	lock
 	msgbox gText_HowDisappointing_SighHowDisappointing, MSGBOX_NPC, SPEAKER_ARIANA
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_SHELLY_WEATHER_INSTITUTE, gText_HowDisappointing_YouAllDidYour
 	goto HowDisappointing_ArrestScene_Dialogue
 	return
@@ -199,7 +195,6 @@ HowDisappointing_MissionComplete_Dialogue::
 	addvar VAR_STORYLINE_STATE, 1
 	setvar VAR_HOW_DISAPPOINTING_STATE, HOW_DISAPPOINTING_COMPLETE
 	msgbox gText_HowDisappointing_ExcellentWorkEverybody, , SPEAKER_ROSE, , EMOTE_HAPPY
-	callnative ClearMugshot
 	closemessage
 	applymovement 4, Common_Movement_WalkUp
 	applymovement 7, Common_Movement_WalkUp

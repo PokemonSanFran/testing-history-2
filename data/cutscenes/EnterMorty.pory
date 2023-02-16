@@ -54,7 +54,7 @@ msgbox(gText_EnterMorty_ThatBattleWasHype,MSGBOX_NPC,SPEAKER_MORTY)
     call(Common_EventScript_PlayGymBadgeFanfare)
     giveitem(ITEM_TM17)
     closemessage
-    callnative(ClearMugshot)
+    
     release
     end
 }
@@ -62,7 +62,7 @@ msgbox(gText_EnterMorty_ThatBattleWasHype,MSGBOX_NPC,SPEAKER_MORTY)
 script EnterMorty_PostDefeat1_Dialogue {
     lock
 msgbox(gText_EnterMorty_KeepingTheBabiesSafe,MSGBOX_NPC,SPEAKER_MORTY)
-    callnative(ClearMugshot)
+    
     setvar(VAR_GYM_4_STATE,GYM_EXPLAINED_BADGE_AND_TM)
     closemessage
     release
@@ -72,7 +72,7 @@ msgbox(gText_EnterMorty_KeepingTheBabiesSafe,MSGBOX_NPC,SPEAKER_MORTY)
 script EnterMorty_PostDefeat2_Dialogue {
     lock
 msgbox(gText_EnterMorty_HeadOutToHoenn,MSGBOX_NPC,SPEAKER_MORTY)
-		callnative(ClearMugshot)
+		
     closemessage
     release
     end

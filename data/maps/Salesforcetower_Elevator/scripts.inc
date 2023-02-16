@@ -35,11 +35,8 @@ Salesforcetower_Elevator_AttendantMissing_Dialogue_1:
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Salesforcetower_Elevator_TheAttendantIsGone
+	msgbox gText_Salesforcetower_Elevator_TheAttendantIsGone, , SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_SHOCK
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
@@ -50,7 +47,7 @@ Salesforcetower_Elevator_HideAttendant_Script::
 
 
 Salesforcetower_ElevatorAttendant_PickFloor_Script::
-	msgbox gText_WhichFloorWouldYouLike, MSGBOX_NPC
+	msgbox gText_WhichFloorWouldYouLike, MSGBOX_NPC, SPEAKER_ATTENDANT
 	multichoice2 1, 1, Salesforcetower_FloorList, 0, 1, 0
 	closemessage
 	switch VAR_RESULT

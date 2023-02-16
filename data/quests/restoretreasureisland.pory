@@ -39,13 +39,10 @@ script Quest_Restoretreasureisland_Intro_Dialogue{
     lock
         setvar(VAR_QUEST_RESTORETREASUREISLAND,SAVE_BEFORE_CILAN_BATTLE)
 
-        setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-        callnative(DrawMugshot)
-        msgbox(gText_ExpandedPlaceholder_Empty)
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_CILAN)
 
-        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExpandedPlaceholder_Empty)
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ZOEY)
+        closemessage
 
         call(Common_EventScript_SaveGame)
         closemessage
@@ -54,31 +51,25 @@ script Quest_Restoretreasureisland_Intro_Dialogue{
 
 script Quest_Restoretreasureisland_StartBattle_Script{
     lock
-        setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-        callnative(DrawMugshot)
-        msgbox(gText_ExpandedPlaceholder_Empty)
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_CILAN)
         trainerbattle_no_intro(TRAINER_CILAN_TREASUREISLAND,gText_ExpandedPlaceholder_Empty)
         closemessage
-        callnative(ClearMugshot)
+        
         goto(Quest_Restoretreasureisland_PostBattle_Dialogue)
 }
 
 script Quest_Restoretreasureisland_PostBattle_Dialogue{
     setvar(VAR_QUEST_RESTORETREASUREISLAND,DEFEATED_CILAN)
 
-        setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-        callnative(DrawMugshot)
-        msgbox(gText_ExpandedPlaceholder_Empty)
-        callnative(ClearMugshot)
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_CILAN)
+        
 
         startquest(QUEST_RESTORETREASUREISLAND)
 }
 
 script Quest_Restoretreasureisland_Active_Script{
-    setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-        callnative(DrawMugshot)
-        msgbox(gText_Restoretreasureisland_DoYouHave)
-        callnative(ClearMugshot)
+        msgbox(gText_Restoretreasureisland_DoYouHave,,SPEAKER_CILAN)
+        
         multichoice2(1,1,Quest_Restoretreasureisland_CheckList,0,1,0)
         closemessage
 
@@ -102,26 +93,20 @@ text Quest_Restoretreasureisland_CheckList{
 }
 
 script Quest_Restoretreasureisland_Cancel_Dialogue{
-    setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-        callnative(DrawMugshot)
-        msgbox(gText_Restoretreasureisland_NothingWellThen,MSGBOX_NPC)
-        callnative(ClearMugshot)
+        msgbox(gText_Restoretreasureisland_NothingWellThen,MSGBOX_NPC,SPEAKER_CILAN)
+        
         end
 }
 
 script Quest_Restoretreasureisland_AlreadyDone_Script{
-    setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-        callnative(DrawMugshot)
-        msgbox(gText_Restoretreasureisland_WaitYouAlready)
-        callnative(ClearMugshot)
+        msgbox(gText_Restoretreasureisland_WaitYouAlready,,SPEAKER_CILAN)
+        
         goto(Quest_Restoretreasureisland_Active_Script)
 }
 
 script Quest_Restoretreasureisland_ConfirmTake_Dialogue{
-    setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-        callnative(DrawMugshot)
-        msgbox(gText_Restoretreasureisland_HeyYouSure,MSGBOX_YESNO)
-        callnative(ClearMugshot)
+        msgbox(gText_Restoretreasureisland_HeyYouSure,MSGBOX_YESNO,SPEAKER_CILAN)
+        
 
         if (var(VAR_RESULT) == NO){
             goto(Quest_Restoretreasureisland_Cancel_Dialogue)
@@ -189,10 +174,8 @@ script Quest_Restoretreasureisland_Handle_FlameOrb_Script{
                 goto(Quest_Restoretreasureisland_HandleProgress_Dialogue)
         }
         else {
-            setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-                callnative(DrawMugshot)
-                msgbox(gText_Restoretreasureisland_YouDontHave)
-                callnative(ClearMugshot)
+                msgbox(gText_Restoretreasureisland_YouDontHave,,SPEAKER_CILAN)
+                
                 goto(Quest_Restoretreasureisland_Active_Script)
         }
 }
@@ -215,10 +198,8 @@ script Quest_Restoretreasureisland_Handle_TR27_Script{
                 goto(Quest_Restoretreasureisland_HandleProgress_Dialogue)
         }
         else {
-            setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-                callnative(DrawMugshot)
-                msgbox(gText_Restoretreasureisland_YouDontHave)
-                callnative(ClearMugshot)
+                msgbox(gText_Restoretreasureisland_YouDontHave,,SPEAKER_CILAN)
+                
                 goto(Quest_Restoretreasureisland_Active_Script)
         }
 }
@@ -254,10 +235,8 @@ script Quest_Restoretreasureisland_Handle_PsychoShift_Script{
             goto(Quest_Restoretreasureisland_HandleProgress_Dialogue)
     }
     else {
-        setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-            callnative(DrawMugshot)
-            msgbox(gText_Restoretreasureisland_YouDontHave)
-            callnative(ClearMugshot)
+            msgbox(gText_Restoretreasureisland_YouDontHave,,SPEAKER_CILAN)
+            
             goto(Quest_Restoretreasureisland_Active_Script)
     }
 }
@@ -291,10 +270,8 @@ script Quest_Restoretreasureisland_Handle_EffectSpore_Script{
             goto(Quest_Restoretreasureisland_HandleProgress_Dialogue)
     }
     else {
-        setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-            callnative(DrawMugshot)
-            msgbox(gText_Restoretreasureisland_YouDontHave)
-            callnative(ClearMugshot)
+            msgbox(gText_Restoretreasureisland_YouDontHave,,SPEAKER_CILAN)
+            
             goto(Quest_Restoretreasureisland_Active_Script)
     }
 }
@@ -302,14 +279,10 @@ script Quest_Restoretreasureisland_Handle_EffectSpore_Script{
 script Quest_Restoretreasureisland_Reward_Dialogue{
     lock
 
-        setvar(VAR_MUGSHOT,MUGSHOT_CILAN)
-        callnative(DrawMugshot)
-        msgbox(gText_ExpandedPlaceholder_Empty)
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_CILAN)
 
-        setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExpandedPlaceholder_Empty)
-        callnative(ClearMugshot)
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ZOEY)
+        
         closemessage
 
         opendoor(5,12)

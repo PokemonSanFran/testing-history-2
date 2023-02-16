@@ -45,13 +45,10 @@ Quest_StolenTrade_AskForTrade_Dialogue::
 	givemon SPECIES_BAGON, 20, ITEM_NONE
 	bufferspeciesname STR_VAR_1, SPECIES_SWIRLIX
 	bufferspeciesname STR_VAR_2, SPECIES_GURDURR
-	msgbox gText_StolenTrade_DoYouKnowHow, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_StolenTrade_YeahYouTrade, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_StolenTrade_ExactlyIWantTo, MSGBOX_NPC
-	msgbox gText_StolenTrade_WillYouTrade, MSGBOX_YESNO
+	msgbox gText_StolenTrade_DoYouKnowHow, MSGBOX_NPC, SPEAKER_BRONSON
+	msgbox gText_StolenTrade_YeahYouTrade, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_StolenTrade_ExactlyIWantTo, MSGBOX_NPC, SPEAKER_BRONSON
+	msgbox gText_StolenTrade_WillYouTrade, MSGBOX_YESNO, SPEAKER_BRONSON
 	compare VAR_RESULT, YES
 	goto_if_eq Quest_StolenTrade_AskForTrade_Dialogue_1
 	goto Quest_StoleTrade_NoTrade_Script
@@ -63,7 +60,7 @@ Quest_StolenTrade_AskForTrade_Dialogue_1:
 
 
 Quest_StoleTrade_NoTrade_Script::
-	msgbox gText_StolenTrade_NoBigDeal, MSGBOX_NPC
+	msgbox gText_StolenTrade_NoBigDeal, MSGBOX_NPC, SPEAKER_BRONSON
 	release
 	end
 
@@ -107,15 +104,12 @@ Quest_StolenTrade_DoTrade_Script_5:
 Quest_StolenTrade_RunAfterTrade_Script::
 	bufferspeciesname STR_VAR_1, SPECIES_SWIRLIX
 	bufferspeciesname STR_VAR_2, SPECIES_GURDURR
-	msgbox gText_StolenTrade_GottaGo, MSGBOX_NPC
+	msgbox gText_StolenTrade_GottaGo, MSGBOX_NPC, SPEAKER_BRONSON
 	applymovement OBJ_EVENT_ID_PLAYER, Quest_StolenTrade_WatchRunAway_Movement
 	applymovement 8, Quest_StolenTrade_RunAway_Movement
 	waitmovement 0
 	removeobject 8
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_StolenTrade_WaitWhat, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_StolenTrade_WaitWhat, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	startquest QUEST_STOLENTRADE
 	release
 	end
@@ -125,19 +119,13 @@ Quest_StolenTrade_PostTrade_Dialogue::
 	lock
 	bufferspeciesname STR_VAR_1, SPECIES_SLURPUFF
 	bufferspeciesname STR_VAR_2, SPECIES_CONKELDURR
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_StolenTrade_GimmeBackMy, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_StolenTrade_GimmeBackMy, MSGBOX_NPC, SPEAKER_ZOEY
 	closemessage
 	playse SE_PIN
 	applymovement 8, Common_Movement_ExclamationMark
 	waitmovement 0
-	msgbox gText_StolenTrade_LookImSorryBut, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_StolenTrade_IDontWannaHear, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_StolenTrade_LookImSorryBut, MSGBOX_NPC, SPEAKER_BRONSON
+	msgbox gText_StolenTrade_IDontWannaHear, MSGBOX_NPC, SPEAKER_ZOEY
 	closemessage
 	goto Quest_StolenTrade_StartBattle_Script
 	return
@@ -145,7 +133,7 @@ Quest_StolenTrade_PostTrade_Dialogue::
 
 Quest_StolenTrade_StartBattle_Script::
 	lock
-	msgbox gText_StolenTrade_ImKeepingThis, MSGBOX_DEFAULT
+	msgbox gText_StolenTrade_ImKeepingThis, MSGBOX_DEFAULT, SPEAKER_BRONSON
 	closemessage
 	trainerbattle_no_intro TRAINER_STOLENTRADE_THIEF, gText_StolenTrade_YouDontUnderstand
 	goto Quest_StolenTrade_PostBattle_Dialogue
@@ -156,12 +144,9 @@ Quest_StolenTrade_PostBattle_Dialogue::
 	lock
 	bufferspeciesname STR_VAR_1, SPECIES_SLURPUFF
 	bufferspeciesname STR_VAR_2, SPECIES_CONKELDURR
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_StolenTrade_GiveItBack, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_StolenTrade_GiveItBack, MSGBOX_NPC, SPEAKER_ZOEY
 	closemessage
-	msgbox gText_StolenTrade_OkayOkay, MSGBOX_NPC
+	msgbox gText_StolenTrade_OkayOkay, MSGBOX_NPC, SPEAKER_BRONSON
 	givemon SPECIES_CONKELDURR, 40, ITEM_NONE
 	completequest QUEST_STOLENTRADE
 	release
@@ -172,11 +157,8 @@ Quest_StolenTrade_QuestComplete_Dialogue::
 	lock
 	bufferspeciesname STR_VAR_1, SPECIES_SLURPUFF
 	bufferspeciesname STR_VAR_2, SPECIES_CONKELDURR
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_StolenTrade_YoureNotTakingBack, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_StolenTrade_NoIJustCaught, MSGBOX_NPC
+	msgbox gText_StolenTrade_YoureNotTakingBack, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_StolenTrade_NoIJustCaught, MSGBOX_NPC, SPEAKER_BRONSON
 	closemessage
 	return
 

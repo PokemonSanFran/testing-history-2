@@ -59,14 +59,11 @@ HowDoWeGetHome_ArianaGetsInvolved_Dialogue::
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 1
 	msgbox gText_HowDoWeGetHome_YoChillOut, , SPEAKER_ARIANA
-	callnative ClearMugshot
 	closemessage
 	call HowDoWeGetHome_ArianaEntrance_Script
 	msgbox gText_HowDoWeGetHome_WereDoneWithThisBeef, , SPEAKER_ARIANA
-	callnative ClearMugshot
 	msgbox gText_HowDoWeGetHome_ShouldntIMessYou, , SPEAKER_MADISON
 	msgbox gText_HowDoWeGetHome_TheWayYouThinkItIs, , SPEAKER_ARIANA
-	callnative ClearMugshot
 	goto HowDoWeGetHome_CrowdRecgonizesAriana_Dialogue
 	return
 

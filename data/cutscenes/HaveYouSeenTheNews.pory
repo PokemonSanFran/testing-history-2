@@ -39,7 +39,7 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
         removeobject(OAK)
     } else {
         msgbox(gText_HaveYouSeenTheNews_CoolTheCar,,SPEAKER_BIANCA)
-        callnative(ClearMugshot)
+        
         closemessage
         releaseall
         warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS, 17,29)

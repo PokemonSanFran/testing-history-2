@@ -232,6 +232,24 @@
 #define SPEAKER_GHOST               140
 #define SPEAKER_ISMAIL              141
 #define SPEAKER_STAN_SOMA           142
+#define SPEAKER_STAN_SOMAB          143
+#define SPEAKER_STAN_SOMAC          144
+#define SPEAKER_STAN_SOMAD          145
+#define SPEAKER_STAN_SOMAE          146
+#define SPEAKER_SERGEY              147
+#define SPEAKER_REPORTER            148
+#define SPEAKER_TROLLEY_GUY         149
+#define SPEAKER_HESTER              150
+#define SPEAKER_YCOMBINATOR_STAFF   151
+#define SPEAKER_TONALLI             152
+#define SPEAKER_DRUMMER_B           153
+#define SPEAKER_DRUMMER_C           154
+#define SPEAKER_DRUMMER_D           155
+#define SPEAKER_LIIDIA              156
+#define SPEAKER_RAINER              157
+#define SPEAKER_BRONSON             158
+#define SPEAKER_SHASHI              159
+#define SPEAKER_LEAH                160
 
 //Tail
 #define TAIL_DEFAULT 0

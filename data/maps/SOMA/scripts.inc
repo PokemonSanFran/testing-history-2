@@ -22,12 +22,9 @@ SOMA_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 SOMA_SocialMediaReporter_Dialogue::
 	setflag FLAG_MET_SOCIALMEDIA_REPORTER
-	msgbox gText_SOMA_SocialMediaIs, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SOMA_TotallyIHunted, MSGBOX_DEFAULT
-	callnative ClearMugshot
-	msgbox gText_SOMA_OhRight, MSGBOX_DEFAULT
+	msgbox gText_SOMA_SocialMediaIs, MSGBOX_NPC, SPEAKER_ISMAIL
+	msgbox gText_SOMA_TotallyIHunted, MSGBOX_DEFAULT, , SPEAKER_ZOEY
+	msgbox gText_SOMA_OhRight, MSGBOX_DEFAULT, SPEAKER_ISMAIL
 	closemessage
 	applymovement 5, SOMA_WalkInside
 	playse SE_EXIT
@@ -57,13 +54,13 @@ SOMA_Stan_PostBattle_Script::
 	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY
 	compare VAR_RESULT, 0
 	goto_if_eq SOMA_Stan_PostBattle_Script_2
-	msgbox gText_WallaceArmy_PostQuestPlaceholder1
+	msgbox gText_WallaceArmy_PostQuestPlaceholder1, , SPEAKER_STAN_SOMA
 SOMA_Stan_PostBattle_Script_1:
 	release
 	end
 
 SOMA_Stan_PostBattle_Script_2:
-	msgbox gText_WallaceArmy_PostBattlePlaceholder1
+	msgbox gText_WallaceArmy_PostBattlePlaceholder1, , SPEAKER_STAN_SOMA
 	goto SOMA_Stan_PostBattle_Script_1
 
 

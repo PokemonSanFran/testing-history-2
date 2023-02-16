@@ -54,10 +54,7 @@ Quest_StopMugging_MoveIntoPlace_Script_1:
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_StopMugging_Hey, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_StopMugging_Hey, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	playse SE_PIN
 	applymovement 3, Common_Movement_ExclamationMark
@@ -76,23 +73,20 @@ Quest_StopMugging_MoveIntoPlace_Script_2:
 
 Quest_StopMugging_Main_Dialogue::
 	startquest QUEST_STOPMUGGING
-	msgbox gText_StopMugging_HurryItUp, MSGBOX_DEFAULT
-	msgbox gText_StopMugging_OhArceusOkay, MSGBOX_DEFAULT
-	msgbox gText_StopMugging_IfYouDontHurry, MSGBOX_DEFAULT
+	msgbox gText_StopMugging_HurryItUp, MSGBOX_DEFAULT, SPEAKER_DEFAULT
+	msgbox gText_StopMugging_OhArceusOkay, MSGBOX_DEFAULT, SPEAKER_DEFAULT
+	msgbox gText_StopMugging_IfYouDontHurry, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	closemessage
 	call Quest_StopMugging_MoveIntoPlace_Script
-	msgbox gText_StopMugging_TheHellDo, MSGBOX_DEFAULT
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_StopMugging_GetOutOfHere, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_StopMugging_TheHellDo, MSGBOX_DEFAULT, SPEAKER_DEFAULT
+	msgbox gText_StopMugging_GetOutOfHere, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	goto Quest_StopMugging_StartBattle_Script
 	return
 
 
 Quest_StopMugging_StartBattle_Script::
 	lock
-	msgbox gText_StopMugging_GuessWereGetting, MSGBOX_DEFAULT
+	msgbox gText_StopMugging_GuessWereGetting, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	closemessage
 	trainerbattle_no_intro TRAINER_MUGGERA_MUGGERB, gText_StopMugging_Shit
 	goto Quest_StopMugging_PostBattle_Dialogue
@@ -101,7 +95,7 @@ Quest_StopMugging_StartBattle_Script::
 
 Quest_StopMugging_ResumeMugging_Dialogue::
 	call Quest_StopMugging_MoveIntoPlace_Script
-	msgbox gText_StopMugging_YouAgain, MSGBOX_DEFAULT
+	msgbox gText_StopMugging_YouAgain, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	goto Quest_StopMugging_StartBattle_Script
 	return
 
@@ -109,11 +103,8 @@ Quest_StopMugging_ResumeMugging_Dialogue::
 Quest_StopMugging_PostBattle_Dialogue::
 	call Quest_StopMugging_HideObject_Script
 	lock
-	msgbox gText_StopMugging_DamnYoureScary, MSGBOX_DEFAULT
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_StopMugging_LeaveNow, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_StopMugging_DamnYoureScary, MSGBOX_DEFAULT, SPEAKER_DEFAULT
+	msgbox gText_StopMugging_LeaveNow, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	applymovement 3, Quest_StopMugging_WalkAwayA_Movement
 	applymovement 4, Quest_StopMugging_WalkAwayB_Movement
