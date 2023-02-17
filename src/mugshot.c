@@ -1620,7 +1620,7 @@ void DestroySpeakerIconSprite(void){
     }
 }
 
-static void CreateSpeakerIconSprite(u16 speaker, u8 offset)
+static void CreateSpeakerIconSprite(u16 speaker, u16 offset)
 {
     u8 palnum, paltag;
     u8 spriteId = MAX_SPRITES;
