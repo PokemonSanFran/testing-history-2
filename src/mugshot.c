@@ -495,7 +495,6 @@ void DestroySpeakerIconSprite(void){
         DestroySpriteAndFreeResources(&gSprites[sPortaitSpriteID]);
         sPortaitSpriteID = 0;
         VarSet(sPortaitPaletteID, 0);
-        //mgba_printf(MGBA_LOG_WARN, "Destroyed Sprite Num: %d", sPortaitSpriteID);
     }
 }
 
@@ -541,7 +540,6 @@ static void CreateSpeakerIconSprite(u16 speaker, u16 offset)
 
     sPortaitSpriteID = spriteId;
     VarSet(VAR_MSGBOX_SPEAKER, SPEAKER_DEFAULT);
-    //mgba_printf(MGBA_LOG_WARN, "New Sprite: %d", spriteId);
 }
 
 //TODO Write a constant coordinates for mugshots for protag (left) and other people (right)
@@ -606,14 +604,12 @@ void DrawMessageBoxAddOns(u8 windowId){
         offset2 = MAX_SPEAKER_NAME_WIDTH - GetStringRightAlignXOffset(SPEAKER_FONT, str, MAX_SPEAKER_NAME_WIDTH);
         if(EMOTES_X < offset)
             offset = EMOTES_X;
-        //mgba_printf(MGBA_LOG_WARN, "offset %d", offset);
         //Name Box
         x = 0;
         y = 0;
         for(i = 0; i <= offset2/8; i++){
             BlitBitmapToWindow(windowId, sMsgbox_Name_Box, NAME_BOX_X + x, NAME_BOX_Y, NAME_BOX_WIDTH, NAME_BOX_HEIGHT);
             x = x + 8;
-            //mgba_printf(MGBA_LOG_WARN, "Time %d X Value: %d", i, NAME_BOX_X + x);
         }
         BlitBitmapToWindow(windowId, sMsgbox_Name_Box_Bottom, NAME_BOX_BOTTOM_X, NAME_BOX_BOTTOM_Y, NAME_BOX_BOTTOM_WIDTH, NAME_BOX_BOTTOM_HEIGHT);
 
