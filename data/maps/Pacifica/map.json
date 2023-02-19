@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
+      "map": "MAP_PSFROUTE5",
       "offset": 6,
-      "map": "MAP_PSFROUTE5"
+      "direction": "down"
     },
     {
-      "direction": "right",
+      "map": "MAP_PSFROUTE49",
       "offset": 15,
-      "map": "MAP_PSFROUTE49"
+      "direction": "right"
     }
   ],
   "object_events": [
@@ -91,7 +91,7 @@
       "flag": "FLAG_TEMP_3"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
+      "graphics_id": "OBJ_EVENT_GFX_FLANNERY",
       "x": 21,
       "y": 4,
       "elevation": 3,
@@ -101,7 +101,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Quest_Hang20_Interact_Script",
-      "flag": "0"
+      "flag": "FLAG_TEMP_6"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TEALA",

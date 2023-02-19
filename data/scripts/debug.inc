@@ -60,16 +60,17 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	completequest QUEST_MANHUNT
+	warpsilent MAP_PACIFICA, 20, 4
 	return
 
 
 Debug_Script_2::
-	call OkayLetsFixit_TimelineReset_Script
+	setvar VAR_MORTY_STATE, BATTLE_1_COMPLETE
 	return
 
 
 Debug_Script_3::
+	setvar VAR_DEFEATED_PACIFICA_COUNT, 30
 	return
 
 

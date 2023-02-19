@@ -3,6 +3,16 @@ Quest_Hang20_ResetCount_Script::
 	return
 
 
+Quest_Hang20_HideLeader_Script::
+	compare VAR_MORTY_STATE, BATTLE_1_COMPLETE
+	goto_if_ne Quest_Hang20_HideLeader_Script_1
+	return
+
+Quest_Hang20_HideLeader_Script_1:
+	setflag FLAG_TEMP_6
+	return
+
+
 Quest_Hang20_Debug_Script::
 	addvar VAR_TEMP_0, 1
 	setvar VAR_DEFEATED_PACIFICA_COUNT, 47
@@ -17,7 +27,6 @@ Quest_Hang20_Interact_Script::
 	switch VAR_RESULT
 	case QUEST_MENU_SET_ACTIVE, Quest_Hang20_Interact_Script_2
 	case QUEST_MENU_SET_REWARD, Quest_Hang20_Interact_Script_3
-	case QUEST_MENU_COMPLETE_QUEST, Quest_Hang20_Interact_Script_4
 	goto Quest_Hang20_StartQuest_Dialogue
 	return
 
@@ -27,10 +36,6 @@ Quest_Hang20_Interact_Script_2:
 
 Quest_Hang20_Interact_Script_3:
 	goto Quest_Hang20_Reward_Dialogue
-	return
-
-Quest_Hang20_Interact_Script_4:
-	goto Quest_Hang20_Completed_Dialogue
 	return
 
 
@@ -64,6 +69,7 @@ Quest_Hang20_StartQuest_Dialogue::
 	msgbox gText_Hang20_OhIveNever
 	callnative ClearMugshot
 	msgbox gText_Hang20_ItsToughSoWeGotta
+	msgbox gText_Hang20_WaitBeating
 	msgbox gText_Hang20_WellTeachYouToSurfIf
 	closemessage
 	startquest QUEST_HANG20
@@ -97,41 +103,50 @@ Quest_Hang20_Active_Dialogue_4:
 
 Quest_Hang20_Reward_Dialogue::
 	msgbox gText_Hang20_DamnYouAreTough
-	msgbox gText_Hang20_AlthoughIAlreadyKnew
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Hang20_WaitYouKnew
-	callnative ClearMugshot
-	msgbox gText_Hang20_AnywaysWeGotYouABoard
-	giveitem ITEM_SOOT_SACK, 1
+	giveitem ITEM_HM03, 1
 	msgbox gText_Hang20_OkaySoHeresHow
-	fadescreen FADE_TO_BLACK
-	delay 32
-	fadescreen FADE_FROM_BLACK
-	msgbox gText_Hang20_YoureANatural
+	closemessage
+	applymovement 6, Quest_Hang20_SurfAway_Movement
 	completequest QUEST_HANG20
+	waitmovement 6
+	removeobject 6
 	release
-	end
-
-
-Quest_Hang20_Completed_Dialogue::
-	msgbox gText_Hang20_HowsTheWaves, MSGBOX_NPC
 	end
 
 
 Quest_Hang20_Secret_Dialogue::
 	msgbox gText_Hang20_OhShitYoure
 	msgbox gText_Hang20_YoureSuperTough
-	giveitem ITEM_SOOT_SACK, 1
+	msgbox gText_Hang20_ImFromOrre
+	msgbox gText_Hang20_WordItsMad
+	giveitem ITEM_HM03, 1
 	msgbox gText_Hang20_JustWalkUp
+	closemessage
+	applymovement 6, Quest_Hang20_SurfAway_Movement
+	waitmovement 6
+	removeobject 6
 	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_HANG20
 	release
 	end
 
 
+Quest_Hang20_SurfAway_Movement:
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
 gText_Hang20_HeyYouNewHere::
-	.string "Hey you new here? You don't look like\n"
-	.string "you're from here.$"
+	.string "Yoooo {PLAYER}, right? You're not\n"
+	.string "SanFran born, right?$"
 
 gText_Hang20_YeahOrre::
 	.string "Yeah, I'm from Orre.$"
@@ -148,60 +163,62 @@ gText_Hang20_NoWaves::
 	.string "No waves? Damn that sucks!$"
 
 gText_Hang20_DoYouWannaLearn::
-	.string "do you wanna learn to surf$"
+	.string "You tryna learn how to ride the waves?$"
 
 gText_Hang20_OhIveNever::
-	.string "oh ive never done it but it looks cool$"
+	.string "Oh, I've never really given it a shot. Is\n"
+	.string "it hard?$"
 
 gText_Hang20_ItsToughSoWeGotta::
-	.string "its tough, so we gotta make sure you're\n"
-	.string "tough enough to handle it$"
+	.string "It's tough, so we gotta make sure you're\n"
+	.string "ready.$"
+
+gText_Hang20_WaitBeating::
+	.string "Wait, beating you doesn't make me tough\n"
+	.string "enough?$"
 
 gText_Hang20_WellTeachYouToSurfIf::
-	.string "we'll teach you to surf if you can\n"
-	.string "defeat 30 pokemon here in a row. no\l"
-	.string "healing, no changing pokemon, no\l"
-	.string "leaving.$"
+	.string "I'll teach you to Surf if you can defeat\n"
+	.string "30 Pokémon here in a row. No healing\l"
+	.string "items, no accessing the PC, no leaving\l"
+	.string "Pacifica.$"
 
 gText_Hang20_AlmostThere::
-	.string "almost there, keep at it!$"
+	.string "Keep that energy!$"
 
 gText_Hang20_MaybeYoureTough::
-	.string "maybe you're tough after al!$"
+	.string "Maybe you're tough after all!$"
 
 gText_Hang20_SawYouKickingAss::
-	.string "saw you kicking ass out there$"
+	.string "I saw you kicking ass out there!$"
 
 gText_Hang20_DamnYouAreTough::
-	.string "damn you are tough$"
-
-gText_Hang20_AlthoughIAlreadyKnew::
-	.string "although i already knew that. you're\n"
-	.string "{PLAYER}$"
-
-gText_Hang20_WaitYouKnew::
-	.string "wait you knew who i was$"
-
-gText_Hang20_AnywaysWeGotYouABoard::
-	.string "anyways, we got you a surfboard.\n"
-	.string "figured you didn't have one$"
+	.string "Okay, beating me was no fluke, you're\n"
+	.string "the real deal. Take this!$"
 
 gText_Hang20_OkaySoHeresHow::
-	.string "okay so heres how you surf....$"
-
-gText_Hang20_YoureANatural::
-	.string "you're a natural! you're ready to shred\n"
-	.string "your way around the region.$"
-
-gText_Hang20_HowsTheWaves::
-	.string "how's the waves?$"
+	.string "If you have a Pokémon in your party\n"
+	.string "that can learn Surf, you can just walk\l"
+	.string "onto the waves and handle it, no\l"
+	.string "problem. Watch!$"
 
 gText_Hang20_OhShitYoure::
-	.string "oh shit you're {PLAYER}$"
+	.string "Hey, you're {PLAYER}, right? Killer\n"
+	.string "waves, right? Not as good as back home,\l"
+	.string "but still sick.$"
 
 gText_Hang20_YoureSuperTough::
-	.string "you're super tough. do you surf? we've\n"
-	.string "got an extra board.$"
+	.string "Here to catch some waves?$"
+
+gText_Hang20_ImFromOrre::
+	.string "I'm from Orre! We're landlocked, so I\n"
+	.string "never learned to Surf.$"
+
+gText_Hang20_WordItsMad::
+	.string "Word? It's mad easy to learn though,\n"
+	.string "hold on...$"
 
 gText_Hang20_JustWalkUp::
-	.string "just walk up to the waves and press {A_BUTTON}$"
+	.string "If you've got a Pokémon that can learn\n"
+	.string "Surf, you can just walk onto the waves\l"
+	.string "now, no problem! Check it!$"
