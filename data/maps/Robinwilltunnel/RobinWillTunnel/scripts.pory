@@ -1,9 +1,0 @@
-mapscripts Robinwilltunnel_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
-        goto(Robinwilltunnel_MapScripts_OnTransition)
-    }
-}
-
-script Robinwilltunnel_MapScripts_OnTransition {
-}
-

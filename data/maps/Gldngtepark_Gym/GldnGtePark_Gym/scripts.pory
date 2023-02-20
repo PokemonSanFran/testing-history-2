@@ -1,8 +1,0 @@
-mapscripts Gldngtepark_Gym_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
-        goto(Gldngtepark_Gym_MapScripts_OnTransition)
-    }
-}
-
-script Gldngtepark_Gym_MapScripts_OnTransition {
-}
