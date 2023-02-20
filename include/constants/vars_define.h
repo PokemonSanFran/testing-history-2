@@ -336,6 +336,7 @@
 #define QUEST_1_COMPLETE     2
 #define QUEST_2_COMPLETE     3
 #define BATTLE_2_COMPLETE    4
+#define EXHIBITION_READY     5 //Used for Quest_Alohafromalola
 
 //VAR_CUTE_POKEMON_GUESS
 //Number of times you have incorrectly brought a pokemon to the girl in the Quest Cute Pokemon

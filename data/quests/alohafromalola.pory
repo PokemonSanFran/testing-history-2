@@ -1,11 +1,35 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const WHITNEY = 1
+const GUARD = 2
 
 const FLAG_HIDE_WHITNEY = FLAG_TEMP_1 
-const EXHIBITION_READY = 6
+const FLAG_HIDE_GUARD = FLAG_TEMP_2
 
-// gText_Alohafromalola
-// Quest_Alohafromalola
+// gText_Alohafromalola_
+// Quest_Alohafromalola_
+
+script Quest_Alohafromalola_SetGuardPosition{
+    returnqueststate(QUEST_ALOHAFROMALOLA)
+
+    if (var(VAR_RESULT) != QUEST_MENU_SET_ACTIVE && var(VAR_RESULT) != QUEST_MENU_SET_REWARD){
+        setflag(FLAG_HIDE_GUARD)
+    }
+}
+
+script Quest_Alohafromalola_GuardInteract_Script{
+    lock
+    returnqueststate(QUEST_ALOHAFROMALOLA)
+
+    if (var(VAR_RESULT) == QUEST_MENU_SET_ACTIVE){
+        msgbox(gText_Alohafromalola_WeArePreparing)
+    }else{
+        msgbox(gText_Alohafromalola_TheresAPrivate)
+        msgbox(gText_Alohafromalola_WaitICanPerform)
+    }
+    closemessage
+    release
+    end
+}
 
 script Quest_Alohafromalola_HideLeader_Script{
 
@@ -42,18 +66,16 @@ script Quest_Alohafromalola_StartQuest_Dialogue{
     msgbox(gText_Alohafromalola_ImSupposedTo)
     msgbox(gText_Alohafromalola_OhYouCan)
 
-    call(Quest_Alohafromalola_GenerateRandomZCrystal)
-	playfanfare(MUS_OBTAIN_ITEM)
-    msgbox(gText_Alohafromalola_WhitneyGaveYou)
-
     msgbox(gText_Alohafromalola_ComeBackTonight)
     closemessage
     startquest(QUEST_ALOHAFROMALOLA)
+    clearflag(FLAG_HIDE_GUARD)
+    addobject(GUARD)
     release
     end
 }
 
-script Quest_Alohafromalola_GenerateRandomZCrystal{
+script Quest_Alohafromalola_GenerateRandomZCrystal_Script{
     additem(ITEM_Z_POWER_RING,1)
     random(18)
 
@@ -82,11 +104,11 @@ script Quest_Alohafromalola_GenerateRandomZCrystal{
 
 script Quest_Alohafromalola_CheckTime_Script{
     gettime
-    if (var(VAR_0x8000) < 21) || (var(VAR_0x8000) > 5) {
-    msgbox(gText_Alohafromalola_ComeBackTonight)
-    release
-    end
-    }
+        if (var(VAR_0x8000) < 21 && (var(VAR_0x8000) > 5)) {
+            msgbox(gText_Alohafromalola_ComeBackTonight)
+                release
+                end
+        }
     goto(Quest_Alohafromalola_CheckParty_Script)
 }
 
@@ -96,7 +118,7 @@ script Quest_Alohafromalola_CheckParty_Script{
     checkitemspace(ITEM_POISONIUM_Z,1)
 
     if (var(VAR_RESULT)){
-        goto(Quest_Alohafromalola_StartBattle_Dialogue)
+        goto(Quest_Alohafromalola_MoveToExhibition_Dialogue)
     }
     msgbox(gText_Alohafromalola_YourParty)
     release
@@ -105,10 +127,10 @@ script Quest_Alohafromalola_CheckParty_Script{
 
 script Quest_Alohafromalola_MoveToExhibition_Dialogue{
     msgbox(gText_Alohafromalola_PerfectDidYou)
-    appplymovement(PLAYER,Quest_Alohafromalola_WalkToExhibit_Movement)
-    appplymovement(WHITNEY,Quest_Alohafromalola_WalkToExhibit_Movement)
+    applymovement(PLAYER,Quest_Alohafromalola_WalkToExhibit_Movement)
+    applymovement(WHITNEY,Quest_Alohafromalola_WalkToExhibit_Movement)
     setvar(VAR_WHITNEY_STATE,EXHIBITION_READY)
-    warpsilent(MAP_SOMA_GYM)
+    warpsilent(MAP_SOMA_GYM,0,11,17)
 }
 
 script Quest_Alohafromalola_StartBattle_Dialogue{
@@ -118,14 +140,94 @@ script Quest_Alohafromalola_StartBattle_Dialogue{
     waitmovement(WHITNEY)
 
     trainerbattle_continue_after_lose(TRAINER_ASHLEY,gText_Alohafromalola_AndZMoves)
-    goto(Quest_Alohafromalola_PostBattle_Script)
+    delay(60)
+    warpsilent(MAP_SOMA_MUSEUM_ENTRANCE,0,9,13)
+}
+
+script Quest_Alohafromalola_SetLeaderPosition{
+    setobjectxy(WHITNEY,8,13)
+    turnobject(WHITNEY,DIR_EAST)
+    turnobject(PLAYER,DIR_WEST)
+    return
 }
 
 script Quest_Alohafromalola_PostBattle_Script{
-    warpsilent(MAP_SOMA_MUSEUM_ENTRANCE,0)
+    lock
+    msgbox(gText_Alohafromalola_YouWereGreat)
+    msgbox(gText_Alohafromalola_IRealizeNowYouDont)
+    call(Quest_Alohafromalola_GenerateRandomZCrystal_Script)
+	playfanfare(MUS_OBTAIN_ITEM)
+    msgbox(gText_Alohafromalola_WhitneyGaveYou)
 
+    msgbox(gText_Alohafromalola_ImSureYouCan)
+    msgbox(gText_Alohafromalola_GoingToTheBar)
+    applymovement(WHITNEY,Quest_Alohafromalola_WalkToExhibit_Movement)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(WHITNEY)
+    fadescreen(FADE_FROM_BLACK)
+
+    setvar(VAR_WHITNEY_STATE,QUEST_1_COMPLETE)
+    completequest(QUEST_ALOHAFROMALOLA)
+    release
+    end
 }
 
+movement Quest_Alohafromalola_WalkToExhibit_Movement{
+    walk_up * 4
+    step_end
+}
+
+text gText_Alohafromalola_WeArePreparing{
+    format("")
+}
+text gText_Alohafromalola_TheresAPrivate{
+    format("")
+}
+text gText_Alohafromalola_WaitICanPerform{
+    format("")
+}
+text gText_Alohafromalola_OhManIAm{
+    format("")
+}
+text gText_Alohafromalola_OhPlayer{
+    format("")
+}
+text gText_Alohafromalola_HeyThere{
+    format("")
+}
+text gText_Alohafromalola_ImSupposedTo{
+    format("")
+}
+text gText_Alohafromalola_OhYouCan{
+    format("")
+}
+text gText_Alohafromalola_ComeBackTonight{
+    format("")
+}
+text gText_Alohafromalola_YourParty{
+    format("")
+}
+text gText_Alohafromalola_PerfectDidYou{
+    format("")
+}
+text gText_Alohafromalola_ThankYouAll{
+    format("")
+}
+text gText_Alohafromalola_AndZMoves{
+    format("")
+}
+text gText_Alohafromalola_YouWereGreat{
+    format("")
+}
+text gText_Alohafromalola_IRealizeNowYouDont{
+    format("")
+}
 text gText_Alohafromalola_WhitneyGaveYou{
     format("{PLAYER} obtained a Z-Power Rang and a Z-Crystal!")
+}
+text gText_Alohafromalola_ImSureYouCan{
+    format("")
+}
+text gText_Alohafromalola_GoingToTheBar{
+    format("")
 }

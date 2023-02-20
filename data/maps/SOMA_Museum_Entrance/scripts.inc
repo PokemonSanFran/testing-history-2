@@ -1,2 +1,15 @@
 SOMA_Museum_Entrance_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SOMA_Museum_Entrance_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SOMA_Museum_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+SOMA_Museum_Entrance_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Alohafromalola_SetLeaderPosition
+	call Quest_Alohafromalola_SetGuardPosition
+	call Quest_Alohafromalola_HideLeader_Script
+	return
+
+SOMA_Museum_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_WHITNEY_STATE, EXHIBITION_READY, Quest_Alohafromalola_PostBattle_Script
+	.2byte 0
+

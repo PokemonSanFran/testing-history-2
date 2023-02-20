@@ -8,6 +8,7 @@ SOMA_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 SOMA_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_WHITNEY_STATE, EXHIBITION_READY, Quest_Alohafromalola_StartBattle_Dialogue
 	.2byte 0
 
 

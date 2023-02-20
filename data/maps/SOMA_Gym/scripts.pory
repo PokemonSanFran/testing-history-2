@@ -1,7 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const WHITNEY = 1
 const FLAG_HIDE_WHITNEY = FLAG_TEMP_1 
-const EXHIBITION_READY = 6
 
 mapscripts SOMA_Gym_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -13,12 +12,12 @@ mapscripts SOMA_Gym_MapScripts {
 }
 
 script SOMA_Gym_MapScripts_OnTransition {
-        switch (var (VAR_GYM_3_STATE)) { 
-            case 0: return
-            case 1: setflag(FLAG_TEMP_1)
-            default: goto(EnterWhitney_StartBattle_ObjectSetup_Script)
+    switch (var (VAR_GYM_3_STATE)) { 
+        case 0: return
+        case 1: setflag(FLAG_TEMP_1)
+        default: goto(EnterWhitney_StartBattle_ObjectSetup_Script)
 
-        }
+    }
 }
 
 script Whitney_Event_Script {

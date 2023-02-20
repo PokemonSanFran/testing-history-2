@@ -60,17 +60,22 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_PACIFICA, 20, 4
+	warpsilent MAP_SOMA_MUSEUM_ENTRANCE, 1
 	return
 
 
 Debug_Script_2::
-	setvar VAR_MORTY_STATE, BATTLE_1_COMPLETE
+	initclock 22, 0
 	return
 
 
 Debug_Script_3::
-	setvar VAR_DEFEATED_PACIFICA_COUNT, 30
+	setvar VAR_WHITNEY_STATE, BATTLE_1_COMPLETE
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	setflag FLAG_BADGE05_GET
 	return
 
 
