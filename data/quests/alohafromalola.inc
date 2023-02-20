@@ -1,0 +1,143 @@
+Quest_Alohafromalola_HideLeader_Script::
+	special GetNumberOfBadges
+	compare VAR_WHITNEY_STATE, BATTLE_1_COMPLETE
+	goto_if_ne Quest_Alohafromalola_HideLeader_Script_2
+	compare VAR_RESULT, 4
+	goto_if_lt Quest_Alohafromalola_HideLeader_Script_2
+Quest_Alohafromalola_HideLeader_Script_1:
+	return
+
+Quest_Alohafromalola_HideLeader_Script_2:
+	setflag FLAG_TEMP_1
+	goto Quest_Alohafromalola_HideLeader_Script_1
+
+
+Quest_Alohafromalola_Interact_Event_Script::
+	lock
+	faceplayer
+	returnqueststate QUEST_ALOHAFROMALOLA
+	compare VAR_RESULT, QUEST_MENU_SET_ACTIVE
+	goto_if_eq Quest_Alohafromalola_Interact_Event_Script_1
+	goto Quest_Alohafromalola_StartQuest_Dialogue
+	return
+
+Quest_Alohafromalola_Interact_Event_Script_1:
+	goto Quest_Alohafromalola_CheckTime_Script
+	return
+
+
+Quest_Alohafromalola_StartQuest_Dialogue::
+	msgbox gText_Alohafromalola_OhManIAm
+	msgbox gText_Alohafromalola_OhPlayer
+	msgbox gText_Alohafromalola_HeyThere
+	msgbox gText_Alohafromalola_ImSupposedTo
+	msgbox gText_Alohafromalola_OhYouCan
+	giveitem ITEM_Z_POWER_RING, 1
+	call Quest_Alohafromalola_GenerateRandomZCrystal
+	msgbox gText_Alohafromalola_ComeBackTonight
+	closemessage
+	startquest QUEST_ALOHAFROMALOLA
+	release
+	end
+
+
+Quest_Alohafromalola_GenerateRandomZCrystal::
+	random 18
+	switch VAR_RESULT
+	case 0, Quest_Alohafromalola_GenerateRandomZCrystal_3
+	case 1, Quest_Alohafromalola_GenerateRandomZCrystal_4
+	case 2, Quest_Alohafromalola_GenerateRandomZCrystal_5
+	case 3, Quest_Alohafromalola_GenerateRandomZCrystal_6
+	case 4, Quest_Alohafromalola_GenerateRandomZCrystal_7
+	case 5, Quest_Alohafromalola_GenerateRandomZCrystal_8
+	case 6, Quest_Alohafromalola_GenerateRandomZCrystal_9
+	case 7, Quest_Alohafromalola_GenerateRandomZCrystal_10
+	case 8, Quest_Alohafromalola_GenerateRandomZCrystal_11
+	case 9, Quest_Alohafromalola_GenerateRandomZCrystal_12
+	case 10, Quest_Alohafromalola_GenerateRandomZCrystal_13
+	case 11, Quest_Alohafromalola_GenerateRandomZCrystal_14
+	case 12, Quest_Alohafromalola_GenerateRandomZCrystal_15
+	case 13, Quest_Alohafromalola_GenerateRandomZCrystal_16
+	case 14, Quest_Alohafromalola_GenerateRandomZCrystal_17
+	case 15, Quest_Alohafromalola_GenerateRandomZCrystal_18
+	case 16, Quest_Alohafromalola_GenerateRandomZCrystal_19
+	case 17, Quest_Alohafromalola_GenerateRandomZCrystal_20
+Quest_Alohafromalola_GenerateRandomZCrystal_1:
+	return
+
+Quest_Alohafromalola_GenerateRandomZCrystal_3:
+	giveitem ITEM_BUGINIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_4:
+	giveitem ITEM_DARKINIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_5:
+	giveitem ITEM_DRAGONIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_6:
+	giveitem ITEM_ELECTRIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_7:
+	giveitem ITEM_FAIRIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_8:
+	giveitem ITEM_FIGHTINIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_9:
+	giveitem ITEM_FIRIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_10:
+	giveitem ITEM_FLYINIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_11:
+	giveitem ITEM_GHOSTIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_12:
+	giveitem ITEM_GRASSIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_13:
+	giveitem ITEM_GROUNDIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_14:
+	giveitem ITEM_ICIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_15:
+	giveitem ITEM_NORMALIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_16:
+	giveitem ITEM_POISONIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_17:
+	giveitem ITEM_PSYCHIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_18:
+	giveitem ITEM_ROCKIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_19:
+	giveitem ITEM_STEELIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+Quest_Alohafromalola_GenerateRandomZCrystal_20:
+	giveitem ITEM_WATERIUM_Z, 1
+	goto Quest_Alohafromalola_GenerateRandomZCrystal_1
+
+
+Quest_Alohafromalola_CheckTime_Script::
+	return
+

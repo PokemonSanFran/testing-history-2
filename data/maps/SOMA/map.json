@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "up",
+      "map": "MAP_PSFROUTE8",
       "offset": 22,
-      "map": "MAP_PSFROUTE8"
+      "direction": "up"
     },
     {
-      "direction": "down",
+      "map": "MAP_PSFROUTE22",
       "offset": 24,
-      "map": "MAP_PSFROUTE22"
+      "direction": "down"
     }
   ],
   "object_events": [
@@ -161,8 +161,8 @@
       "x": 27,
       "y": 23,
       "elevation": 0,
-      "dest_map": "MAP_SOMA_GYM",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SOMA_MUSEUM_ENTRANCE",
+      "dest_warp_id": "1"
     },
     {
       "x": 4,
@@ -186,27 +186,6 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 28,
-      "y": 23,
-      "elevation": 0,
-      "dest_map": "MAP_SOMA_GYM",
-      "dest_warp_id": "0"
-    },
-    {
-      "x": 29,
-      "y": 23,
-      "elevation": 0,
-      "dest_map": "MAP_SOMA_GYM",
-      "dest_warp_id": "0"
-    },
-    {
-      "x": 5,
-      "y": 10,
-      "elevation": 0,
-      "dest_map": "MAP_SALESFORCETOWER_1F",
-      "dest_warp_id": "0"
-    },
-    {
       "x": 6,
       "y": 10,
       "elevation": 0,
@@ -219,6 +198,27 @@
       "elevation": 0,
       "dest_map": "MAP_SALESFORCETOWER_1F",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_SALESFORCETOWER_1F",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 29,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_SOMA_MUSEUM_ENTRANCE",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 28,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_SOMA_MUSEUM_ENTRANCE",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

@@ -171,8 +171,9 @@
 #define MAP_SOUTHBAY_POKEMON_CENTER_1F (2 | (2 << 8))
 
 // gMapGroup_IndoorSOMA
-#define MAP_SOMA_GYM       (0 | (3 << 8))
-#define MAP_SOMA_NEWSPAPER (1 | (3 << 8))
+#define MAP_SOMA_GYM             (0 | (3 << 8))
+#define MAP_SOMA_NEWSPAPER       (1 | (3 << 8))
+#define MAP_SOMA_MUSEUM_ENTRANCE (2 | (3 << 8))
 
 // gMapGroup_IndoorMission
 #define MAP_MISSION_GYM        (0 | (4 << 8))

@@ -1,0 +1,27 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const FLAG_HIDE_WHITNEY = FLAG_TEMP_1 
+
+// gText_Alohafromalola
+// Quest_Alohafromalola
+
+script Quest_Alohafromalola_HideLeader_Script{
+
+    special(GetNumberOfBadges)
+        if ((var(VAR_WHITNEY_STATE) != BATTLE_1_COMPLETE) || (var(VAR_RESULT) < 4)){
+            setflag(FLAG_HIDE_WHITNEY)
+        }
+    return
+}
+
+//talk to whitney, gives you quest
+//come back at night, check your party for 3 alola mons
+//battle can be lost
+//if nighttiem and has 3 alola mons and no other mons, warp to an arena with hella people
+//warp back to lobby, give you set a z crystals
+//
+
+script Quest_Alohafromalola_Interact_Event_Script{
+    lock
+    faceplayer
+    returnqueststate(QUEST_ALOHAFROMALOLA)
+}

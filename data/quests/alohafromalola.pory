@@ -1,0 +1,131 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const WHITNEY = 1
+
+const FLAG_HIDE_WHITNEY = FLAG_TEMP_1 
+const EXHIBITION_READY = 6
+
+// gText_Alohafromalola
+// Quest_Alohafromalola
+
+script Quest_Alohafromalola_HideLeader_Script{
+
+    special(GetNumberOfBadges)
+        if ((var(VAR_WHITNEY_STATE) != BATTLE_1_COMPLETE) || (var(VAR_RESULT) < 4)){
+            setflag(FLAG_HIDE_WHITNEY)
+        }
+    return
+}
+
+//talk to whitney, gives you quest
+//come back at night, check your party for 3 alola mons
+//battle can be lost
+//if nighttiem and has 3 alola mons and no other mons, warp to an arena with hella people
+//warp back to lobby, give you set a z crystals
+//
+
+script Quest_Alohafromalola_Interact_Event_Script{
+    lock
+    faceplayer
+    returnqueststate(QUEST_ALOHAFROMALOLA)
+
+    if (var(VAR_RESULT) == QUEST_MENU_SET_ACTIVE){
+        goto(Quest_Alohafromalola_CheckTime_Script)
+    }else{
+        goto(Quest_Alohafromalola_StartQuest_Dialogue)
+    }
+}
+
+script Quest_Alohafromalola_StartQuest_Dialogue{
+    msgbox(gText_Alohafromalola_OhManIAm)
+    msgbox(gText_Alohafromalola_OhPlayer)
+    msgbox(gText_Alohafromalola_HeyThere)
+    msgbox(gText_Alohafromalola_ImSupposedTo)
+    msgbox(gText_Alohafromalola_OhYouCan)
+
+    call(Quest_Alohafromalola_GenerateRandomZCrystal)
+	playfanfare(MUS_OBTAIN_ITEM)
+    msgbox(gText_Alohafromalola_WhitneyGaveYou)
+
+    msgbox(gText_Alohafromalola_ComeBackTonight)
+    closemessage
+    startquest(QUEST_ALOHAFROMALOLA)
+    release
+    end
+}
+
+script Quest_Alohafromalola_GenerateRandomZCrystal{
+    additem(ITEM_Z_POWER_RING,1)
+    random(18)
+
+        switch(var(VAR_RESULT)){
+            case 0: additem(ITEM_BUGINIUM_Z,1)
+            case 1: additem(ITEM_DARKINIUM_Z,1)
+            case 2: additem(ITEM_DRAGONIUM_Z,1)
+            case 3: additem(ITEM_ELECTRIUM_Z,1)
+            case 4: additem(ITEM_FAIRIUM_Z,1)
+            case 5: additem(ITEM_FIGHTINIUM_Z,1)
+            case 6: additem(ITEM_FIRIUM_Z,1)
+            case 7: additem(ITEM_FLYINIUM_Z,1)
+            case 8: additem(ITEM_GHOSTIUM_Z,1)
+            case 9: additem(ITEM_GRASSIUM_Z,1)
+            case 10: additem(ITEM_GROUNDIUM_Z,1)
+            case 11: additem(ITEM_ICIUM_Z,1)
+            case 12: additem(ITEM_NORMALIUM_Z,1)
+            case 13: additem(ITEM_POISONIUM_Z,1)
+            case 14: additem(ITEM_PSYCHIUM_Z,1)
+            case 15: additem(ITEM_ROCKIUM_Z,1)
+            case 16: additem(ITEM_STEELIUM_Z,1)
+            case 17: additem(ITEM_WATERIUM_Z,1)
+        }
+    return
+}
+
+script Quest_Alohafromalola_CheckTime_Script{
+    gettime
+    if (var(VAR_0x8000) < 21) || (var(VAR_0x8000) > 5) {
+    msgbox(gText_Alohafromalola_ComeBackTonight)
+    release
+    end
+    }
+    goto(Quest_Alohafromalola_CheckParty_Script)
+}
+
+script Quest_Alohafromalola_CheckParty_Script{
+    //PSF TODO Replace with a special to check the players party for only 3 pokemon and are from the alola dex
+    //PSF TODO figure out a way to inform players about who is in the alola dex
+    checkitemspace(ITEM_POISONIUM_Z,1)
+
+    if (var(VAR_RESULT)){
+        goto(Quest_Alohafromalola_StartBattle_Dialogue)
+    }
+    msgbox(gText_Alohafromalola_YourParty)
+    release
+    end
+}
+
+script Quest_Alohafromalola_MoveToExhibition_Dialogue{
+    msgbox(gText_Alohafromalola_PerfectDidYou)
+    appplymovement(PLAYER,Quest_Alohafromalola_WalkToExhibit_Movement)
+    appplymovement(WHITNEY,Quest_Alohafromalola_WalkToExhibit_Movement)
+    setvar(VAR_WHITNEY_STATE,EXHIBITION_READY)
+    warpsilent(MAP_SOMA_GYM)
+}
+
+script Quest_Alohafromalola_StartBattle_Dialogue{
+    msgbox(gText_Alohafromalola_ThankYouAll)
+    applymovement(PLAYER,Common_Movement_WalkRight)
+    applymovement(WHITNEY,Common_Movement_WalkLeft)
+    waitmovement(WHITNEY)
+
+    trainerbattle_continue_after_lose(TRAINER_ASHLEY,gText_Alohafromalola_AndZMoves)
+    goto(Quest_Alohafromalola_PostBattle_Script)
+}
+
+script Quest_Alohafromalola_PostBattle_Script{
+    warpsilent(MAP_SOMA_MUSEUM_ENTRANCE,0)
+
+}
+
+text gText_Alohafromalola_WhitneyGaveYou{
+    format("{PLAYER} obtained a Z-Power Rang and a Z-Crystal!")
+}

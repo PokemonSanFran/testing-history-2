@@ -1,8 +1,14 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const WHITNEY = 1
+const FLAG_HIDE_WHITNEY = FLAG_TEMP_1 
+const EXHIBITION_READY = 6
+
 mapscripts SOMA_Gym_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         goto(SOMA_Gym_MapScripts_OnTransition)
     }
     MAP_SCRIPT_ON_FRAME_TABLE[
+        VAR_WHITNEY_STATE,EXHIBITION_READY: Quest_Alohafromalola_StartBattle_Dialogue
     ]
 }
 

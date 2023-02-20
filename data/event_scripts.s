@@ -1246,7 +1246,7 @@ Script_RemoveTint::
 // .include "data/quests/restaurantexpansion3.inc"
 .include "data/quests/culturalpurity.inc"
 .include "data/quests/hybridculture.inc"
-// .include "data/quests/alohafromalola.inc"
+.include "data/quests/alohafromalola.inc"
 .include "data/quests/buildinganexhibit.inc"
 // .include "data/quests/unknownmortyquesta.inc"
 // .include "data/quests/unknownmortyquestb.inc"
@@ -1460,3 +1460,5 @@ Script_RemoveTint::
 	.include "data/maps/Salesforcetower_Top/scripts.inc"
 
 	.include "data/maps/Chinatown_Gym/scripts.inc"
+
+	.include "data/maps/SOMA_Museum_Entrance/scripts.inc"

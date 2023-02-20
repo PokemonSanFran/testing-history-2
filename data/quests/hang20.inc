@@ -4,8 +4,11 @@ Quest_Hang20_ResetCount_Script::
 
 
 Quest_Hang20_HideLeader_Script::
+	special GetNumberOfBadges
 	compare VAR_MORTY_STATE, BATTLE_1_COMPLETE
 	goto_if_ne Quest_Hang20_HideLeader_Script_1
+	compare VAR_RESULT, 5
+	goto_if_lt Quest_Hang20_HideLeader_Script_1
 	return
 
 Quest_Hang20_HideLeader_Script_1:

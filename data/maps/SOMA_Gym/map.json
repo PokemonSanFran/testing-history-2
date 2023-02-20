@@ -72,8 +72,8 @@
       "x": 5,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_SOMA",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_SOMA_MUSEUM_ENTRANCE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

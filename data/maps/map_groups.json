@@ -213,7 +213,8 @@
   ],
   "gMapGroup_IndoorSOMA": [
     "SOMA_Gym",
-    "SOMA_Newspaper"
+    "SOMA_Newspaper",
+    "SOMA_Museum_Entrance"
   ],
   "gMapGroup_IndoorMission": [
     "Mission_Gym",
