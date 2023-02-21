@@ -1,5 +1,5 @@
 const BUSINESS_MAN = 5
-const FLAG_HIDE_BUSINESS_MAN = FLAG_TEMP_3
+const FLAG_HIDE_PRYCE = FLAG_TEMP_3
 const FLAG_HIDE_DEALER = FLAG_TEMP_3
 
 //gText_ShutDownMedicineMan_
@@ -7,88 +7,89 @@ const FLAG_HIDE_DEALER = FLAG_TEMP_3
 
 script Quest_ShutDownMedicineMan_HideDealer_Script{
     questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SHUTDOWNMEDICINEMAN)
-    
-    if(var(VAR_RESULT)){
-        setflag(FLAG_HIDE_DEALER)
-    }
-    return
-}
-script Quest_ShutDownMedicineMan_HideBusinessMan_Script{
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SHUTDOWNMEDICINEMAN)
-    
-    if(var(VAR_RESULT)){
-        setflag(FLAG_HIDE_BUSINESS_MAN)
-    }
-    return
-}
-script Quest_ShutDownMedicineMan_Interact_Finnlay_Script{
-    lock
-    faceplayer
-    	returnqueststate(QUEST_SHUTDOWNMEDICINEMAN)
 
-	    switch(var(VAR_RESULT)){
-	        case QUEST_MENU_SET_ACTIVE: goto(Quest_ShutDownMedicineMan_ActiveDialogue)
+        if(var(VAR_RESULT)){
+            setflag(FLAG_HIDE_DEALER)
+        }
+    return
+}
+script Quest_ShutDownMedicineMan_ControlLeaderVisibility{
+    special(GetNumberOfBadges)
+        if ((var(VAR_PRYCE_STATE) != BATTLE_1_COMPLETE) || (var(VAR_RESULT) < 8)){
+            setflag(FLAG_HIDE_PRYCE)
+        }
+    return
+}
+script Quest_ShutDownMedicineMan_Interact_Leader_Script{
+    lock
+        faceplayer
+        returnqueststate(QUEST_SHUTDOWNMEDICINEMAN)
+
+        switch(var(VAR_RESULT)){
+            case QUEST_MENU_SET_ACTIVE: goto(Quest_ShutDownMedicineMan_ActiveDialogue)
             case QUEST_MENU_SET_REWARD: goto(Quest_ShutDownMedicineMan_Reward_Dialogue)
-	        default: goto(Quest_ShutDownMedicineMan_StartQuest_Dialogue)
-	}
+            default: goto(Quest_ShutDownMedicineMan_StartQuest_Dialogue)
+        }
 }
 
 script Quest_ShutDownMedicineMan_StartQuest_Dialogue{
     msgbox(gText_ShutDownMedicineMan_WeHaveAnAssociate,,SPEAKER_DEFAULT)
-    msgbox(gText_ShutDownMedicineMan_WantToMakeSure,,SPEAKER_DEFAULT)
-    startquest(QUEST_SHUTDOWNMEDICINEMAN)
+        msgbox(gText_ShutDownMedicineMan_WantToMakeSure,,SPEAKER_DEFAULT)
+        startquest(QUEST_SHUTDOWNMEDICINEMAN)
 }
 
 script Quest_ShutDownMedicineMan_ActiveDialogue{
     msgbox(gText_ShutDownMedicineMan_LetMeKnowWhen,MSGBOX_NPC,SPEAKER_DEFAULT)
-    end
+        end
 }
 
 script Quest_ShutDownMedicineMan_MakePurchase_Dialogue{
     lock
-    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_SHUTDOWNMEDICINEMAN)
-    
-    if(!var(VAR_RESULT)){
-        release
-        end
-    }
+        questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_SHUTDOWNMEDICINEMAN)
+
+        if(!var(VAR_RESULT)){
+            release
+                end
+        }
     questmenu(QUEST_MENU_SET_REWARD,QUEST_SHUTDOWNMEDICINEMAN)
 
-    msgbox(gText_ShutDownMedicineMan_OkayMadeThePurchase,,SPEAKER_ZOEY,TAIL_THOUGHT)
+        msgbox(gText_ShutDownMedicineMan_OkayMadeThePurchase,,SPEAKER_ZOEY,TAIL_THOUGHT)
 
-    msgbox(gText_ShutDownMedicineMan_HeyCanIGetASelfie,,SPEAKER_ZOEY)
+        msgbox(gText_ShutDownMedicineMan_HeyCanIGetASelfie,,SPEAKER_ZOEY)
 
-    msgbox(gText_ShutDownMedicineMan_OhMyGodYes,,SPEAKER_DEFAULT)
-    //PSF TODO add camera flash and camera sound effect
-    closemessage
-    release
-    end
+        msgbox(gText_ShutDownMedicineMan_OhMyGodYes,,SPEAKER_DEFAULT)
+        //PSF TODO add camera flash and camera sound effect
+        closemessage
+        release
+        end
 }
 
 script Quest_ShutDownMedicineMan_Reward_Dialogue{
     msgbox(gText_ShutDownMedicineMan_GoodWork,,SPEAKER_DEFAULT)
-    call(Quest_ShutDownMedicineMan_HandleMoney_Script)
-    opendoor(28,15)
-    waitdooranim
-    applymovement(BUSINESS_MAN,Quest_ShutDownMedicineMan_WalkInside_Movement)
-    waitmovement(BUSINESS_MAN)
-    removeobject(BUSINESS_MAN)
-    playse(SE_EXIT)
-    closedoor(28,15)
-    completequest(QUEST_SHUTDOWNMEDICINEMAN)
+        giveitem(ITEM_ABILITY_CAPSULE,1)
+        giveitem(ITEM_ABILITY_PATCH,1)
+        call(Quest_ShutDownMedicineMan_HandleMoney_Script)
+        opendoor(28,15)
+        waitdooranim
+        applymovement(BUSINESS_MAN,Quest_ShutDownMedicineMan_WalkInside_Movement)
+        waitmovement(BUSINESS_MAN)
+        removeobject(BUSINESS_MAN)
+        playse(SE_EXIT)
+        closedoor(28,15)
+        completequest(QUEST_SHUTDOWNMEDICINEMAN)
 }
 
 script Quest_ShutDownMedicineMan_HandleMoney_Script{
-	showmoneybox(0, 0)
-    waitbuttonpress
-    addmoney(2000)
-    playse(SE_SHOP)
-    updatemoneybox(0)
-    waitse
-    waitbuttonpress
-    hidemoneybox
-    closemessage
-    return
+    showmoneybox(0, 0)
+        waitbuttonpress
+        addmoney(2000)
+        playse(SE_SHOP)
+        updatemoneybox(0)
+        waitse
+        waitbuttonpress
+        hidemoneybox
+        closemessage
+        return
 }
 text gText_ShutDownMedicineMan_WeHaveAnAssociate{
     format("we have an... associate over by lakemerrit that is selling herbal products")
@@ -113,6 +114,6 @@ text gText_ShutDownMedicineMan_GoodWork{
 }
 movement Quest_ShutDownMedicineMan_WalkInside_Movement{
     walk_left
-    walk_up
-    step_end
+        walk_up
+        step_end
 }

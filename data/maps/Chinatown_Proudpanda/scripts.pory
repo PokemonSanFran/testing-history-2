@@ -1,0 +1,80 @@
+mapscripts Chinatown_Proudpanda_MapScripts{
+}
+
+script Chinatown_Proudpanda_Employee_Script{
+    lock
+    faceplayer
+    returnqueststate(QUEST_PANDA_PRIDE)
+
+    switch (var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE:
+            call(Chinatown_Proudpanda_DefaultGreeting_Dialogue)
+            goto(Quest_Pandapride_CheckParty_Script)
+        case QUEST_MENU_COMPLETE_QUEST:
+            call(Chinatown_Proudpanda_HappyGreeting_Dialogue)
+        default:
+            call(Chinatown_Proudpanda_DefaultGreeting_Dialogue)
+    }
+    goto(Chinatown_Proudpanda_Shop_Script)
+}
+
+script Chinatown_Proudpanda_HappyGreeting_Dialogue{
+    msgbox(gText_ProudPanda_Player,,SPEAKER_SHOPKEEPER,,EMOTE_HAPPY)
+    waitmessage
+    return
+}
+
+script Chinatown_Proudpanda_DefaultGreeting_Dialogue{
+    msgbox(gText_ProduPanda_WhatCan,,SPEAKER_SHOPKEEPER)
+    waitmessage
+    return
+}
+
+script Chinatown_Proudpanda_Shop_Script{
+    pokemart(ProudPandaShop)
+    goto_if_quest_complete(QUEST_PANDA_PRIDE,Chinatown_Proudpanda_HappyThanks_Dialogue)
+    goto(Chinatown_Proudpanda_DefaultThanks_Dialogue)
+}
+
+script Chinatown_Proudpanda_DefaultThanks_Dialogue{
+    msgbox(gText_Proudpanda_Thanks,,SPEAKER_SHOPKEEPER)
+    closemessage
+}
+
+script Chinatown_Proudpanda_HappyThanks_Dialogue{
+    msgbox(gText_Proudpanda_GoodToSee,,SPEAKER_SHOPKEEPER)
+    closemessage
+}
+
+mart ProudPandaShop{
+    ITEM_SILK_SCARF
+    ITEM_CHARCOAL
+    ITEM_MYSTIC_WATER
+    ITEM_MAGNET
+    ITEM_MIRACLE_SEED
+    ITEM_NEVER_MELT_ICE
+    ITEM_BLACK_BELT
+    ITEM_POISON_BARB
+    ITEM_SOFT_SAND
+    ITEM_SHARP_BEAK
+    ITEM_TWISTED_SPOON
+    ITEM_SILVER_POWDER
+    ITEM_HARD_STONE
+    ITEM_SPELL_TAG
+    ITEM_DRAGON_FANG
+    ITEM_BLACK_GLASSES
+    ITEM_METAL_COAT
+}
+
+text gText_ProduPanda_WhatCan{
+format("Welcome to the Proud Panda, what can I get for you?")
+}
+text gText_Proudpanda_Thanks{
+format("Thanks for coming in!")
+}
+text gText_ProudPanda_Player{
+format("{PLAYER}! What do you need?")
+}
+text gText_Proudpanda_GoodToSee{
+format("Good to see you {PLAYER}!")
+}

@@ -10,33 +10,35 @@ Quest_ShutDownMedicineMan_HideDealer_Script_2:
 	goto Quest_ShutDownMedicineMan_HideDealer_Script_1
 
 
-Quest_ShutDownMedicineMan_HideBusinessMan_Script::
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_SHUTDOWNMEDICINEMAN
-	compare VAR_RESULT, 0
-	goto_if_ne Quest_ShutDownMedicineMan_HideBusinessMan_Script_2
-Quest_ShutDownMedicineMan_HideBusinessMan_Script_1:
+Quest_ShutDownMedicineMan_ControlLeaderVisibility::
+	special GetNumberOfBadges
+	compare VAR_PRYCE_STATE, BATTLE_1_COMPLETE
+	goto_if_ne Quest_ShutDownMedicineMan_ControlLeaderVisibility_2
+	compare VAR_RESULT, 8
+	goto_if_lt Quest_ShutDownMedicineMan_ControlLeaderVisibility_2
+Quest_ShutDownMedicineMan_ControlLeaderVisibility_1:
 	return
 
-Quest_ShutDownMedicineMan_HideBusinessMan_Script_2:
+Quest_ShutDownMedicineMan_ControlLeaderVisibility_2:
 	setflag FLAG_TEMP_3
-	goto Quest_ShutDownMedicineMan_HideBusinessMan_Script_1
+	goto Quest_ShutDownMedicineMan_ControlLeaderVisibility_1
 
 
-Quest_ShutDownMedicineMan_Interact_Finnlay_Script::
+Quest_ShutDownMedicineMan_Interact_Leader_Script::
 	lock
 	faceplayer
 	returnqueststate QUEST_SHUTDOWNMEDICINEMAN
 	switch VAR_RESULT
-	case QUEST_MENU_SET_ACTIVE, Quest_ShutDownMedicineMan_Interact_Finnlay_Script_2
-	case QUEST_MENU_SET_REWARD, Quest_ShutDownMedicineMan_Interact_Finnlay_Script_3
+	case QUEST_MENU_SET_ACTIVE, Quest_ShutDownMedicineMan_Interact_Leader_Script_2
+	case QUEST_MENU_SET_REWARD, Quest_ShutDownMedicineMan_Interact_Leader_Script_3
 	goto Quest_ShutDownMedicineMan_StartQuest_Dialogue
 	return
 
-Quest_ShutDownMedicineMan_Interact_Finnlay_Script_2:
+Quest_ShutDownMedicineMan_Interact_Leader_Script_2:
 	goto Quest_ShutDownMedicineMan_ActiveDialogue
 	return
 
-Quest_ShutDownMedicineMan_Interact_Finnlay_Script_3:
+Quest_ShutDownMedicineMan_Interact_Leader_Script_3:
 	goto Quest_ShutDownMedicineMan_Reward_Dialogue
 	return
 
@@ -73,6 +75,8 @@ Quest_ShutDownMedicineMan_MakePurchase_Dialogue_2:
 
 Quest_ShutDownMedicineMan_Reward_Dialogue::
 	msgbox gText_ShutDownMedicineMan_GoodWork, , SPEAKER_DEFAULT
+	giveitem ITEM_ABILITY_CAPSULE, 1
+	giveitem ITEM_ABILITY_PATCH, 1
 	call Quest_ShutDownMedicineMan_HandleMoney_Script
 	opendoor 28, 15
 	waitdooranim

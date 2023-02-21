@@ -549,3 +549,4 @@ gSpecials::
     def_special GetCurrentMap
 	def_special TrySpecialOverworldEvo
     def_special ResetHealLocationToSOMA
+    def_special CheckSpecies

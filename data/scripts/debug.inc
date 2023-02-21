@@ -60,14 +60,12 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_OAKLAND_COLISEUM_OUTSIDE, 255, 10, 13
+	startquest QUEST_PANDA_PRIDE
+	warpsilent MAP_CHINATOWN_PROUDPANDA, 0
 	return
 
 
 Debug_Script_2::
-	setvar VAR_WHITNEY_STATE, EXHIBITION_READY
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	warpsilent MAP_SOMA_GYM, 255, 11, 6
 	return
 
 

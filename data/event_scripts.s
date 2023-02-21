@@ -1309,6 +1309,7 @@ Script_RemoveTint::
 .include "data/quests/restoretreasureisland.inc"
 .include "data/quests/restoremarin.inc"
 // .include "data/quests/restorehaightashbury.inc"
+.include "data/quests/pandapride.inc"
 
 ## PSF MAPS
 .include "data/maps/Presidio/scripts.inc"
@@ -1460,3 +1461,5 @@ Script_RemoveTint::
 	.include "data/maps/SOMA_Museum_Entrance/scripts.inc"
 
 	.include "data/maps/Oakland_Coliseum_Outside/scripts.inc"
+
+	.include "data/maps/Chinatown_Proudpanda/scripts.inc"

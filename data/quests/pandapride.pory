@@ -1,0 +1,40 @@
+// gText_Pandapride_
+// Quest_Pandapride_
+
+script Quest_Pandapride_CheckParty_Script{
+
+    setvar(VAR_0x8005, SPECIES_PANGORO)
+    special(CheckSpecies)
+
+    if(var(VAR_RESULT)){
+        bufferspeciesname(0,SPECIES_PANGORO)
+        goto(Quest_Pandapride_Congratulations_Dialogue)
+    }
+
+    setvar(VAR_0x8005, SPECIES_PANCHAM)
+    special(CheckSpecies)
+
+    if(var(VAR_RESULT)){
+        bufferspeciesname(0,SPECIES_PANCHAM)
+        goto(Quest_Pandapride_Congratulations_Dialogue)
+    }
+
+    goto(Chinatown_Proudpanda_Shop_Script)
+}
+
+script Quest_Pandapride_Congratulations_Dialogue{
+    msgbox(gText_Pandapride_YouSawTheAd,,SPEAKER_SHOPKEEPER,TAIL_SHOUT,EMOTE_SHOCK)
+    msgbox(gText_Pandapride_YoureTheOnly,,SPEAKER_SHOPKEEPER,,EMOTE_HAPPY)
+        giveitem(ITEM_TM30)
+        completequest(QUEST_PANDA_PRIDE)
+        release
+        end
+}
+
+text gText_Pandapride_YouSawTheAd{
+    format("Your {STR_VAR_1}! You saw the ad! I was starting to think nobody had seen it!")
+}
+
+text gText_Pandapride_YoureTheOnly{
+    format("You're the only person that followed through. I was going to give you a discount, but I think this will be more useful for you.")
+}

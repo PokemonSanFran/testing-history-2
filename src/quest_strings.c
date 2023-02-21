@@ -513,6 +513,11 @@ const u8 gText_Quest_RedoMugging_Desc[] =_("Lorem Desc");
 const u8 gText_Quest_RedoMugging_DoneDesc[] =_("Done Desc");
 const u8 gText_Quest_RedoMugging_Map[] =_("Alcatraz");
 
+const u8 gText_Quest_PandaPride_Name[] =_("Panda Pride");
+const u8 gText_Quest_PandaPride_Desc[] =_("Lorem Desc");
+const u8 gText_Quest_PandaPride_DoneDesc[] =_("Done Desc");
+const u8 gText_Quest_PandaPride_Map[] =_("Chinatown");
+
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
 const u8 gText_Quest_HauntABuilding_Sub1_Desc[] = _("You brought Hunter a Litwick.");

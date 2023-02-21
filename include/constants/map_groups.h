@@ -106,6 +106,7 @@
 #define MAP_PSFROUTE2                         (97 | (0 << 8))
 #define MAP_CHINATOWN_GYM                     (98 | (0 << 8))
 #define MAP_OAKLAND_COLISEUM_OUTSIDE          (99 | (0 << 8))
+#define MAP_CHINATOWN_PROUDPANDA              (100 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

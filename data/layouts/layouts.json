@@ -5970,6 +5970,16 @@
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/Oakland_Coliseum_Outside/border.bin",
       "blockdata_filepath": "data/layouts/Oakland_Coliseum_Outside/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHINATOWN_PROUDPANDA",
+      "name": "Chinatown_Proudpanda_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Chinatown_Proudpanda/border.bin",
+      "blockdata_filepath": "data/layouts/Chinatown_Proudpanda/map.bin"
     }
   ]
 }

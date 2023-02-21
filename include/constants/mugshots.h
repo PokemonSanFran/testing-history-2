@@ -251,6 +251,7 @@
 #define SPEAKER_SHASHI              159
 #define SPEAKER_LEAH                160
 #define SPEAKER_GUARD               161
+#define SPEAKER_SHOPKEEPER          162
 
 //Tail
 #define TAIL_DEFAULT 0

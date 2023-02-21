@@ -3419,6 +3419,16 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        NULL,
 	        0
 	),
+	side_quest(
+	        gText_Quest_PandaPride_Name,
+	        gText_Quest_PandaPride_Desc,
+	        gText_Quest_PandaPride_DoneDesc,
+	        gText_Quest_PandaPride_Map,
+	        OBJ_EVENT_GFX_MART_EMPLOYEE,
+	        OBJECT,
+	        NULL,
+	        0
+	),
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
