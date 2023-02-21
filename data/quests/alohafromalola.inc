@@ -210,7 +210,7 @@ Quest_Alohafromalola_MoveToExhibition_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Quest_Alohafromalola_WalkToExhibit_Movement
 	applymovement 1, Quest_Alohafromalola_WalkToExhibit_Movement
 	setvar VAR_WHITNEY_STATE, EXHIBITION_READY
-	warpsilent MAP_SOMA_GYM
+	warpsilent MAP_SOMA_GYM, 0, 11, 17
 	return
 
 
