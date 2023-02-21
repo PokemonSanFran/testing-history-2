@@ -76,32 +76,23 @@ script Earthquake_ThatNight_Dialogue {
         delay(100) //wait until after earthquake
         waitstate
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_AreYouOkay)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_Earthquake_AreYouOkay,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+                closemessage
 
-        msgbox(gText_Earthquake_OhArceus)
+        msgbox(gText_Earthquake_OhArceus,MSGBOX_DEFAULT,SPEAKER_RESIDENT_A,TAIL_SHOUT)
         closemessage
 
         applymovement(PLAYER,Earthquake_WalkOutOfBed)
 
-        msgbox(gText_Earthquake_HelpMe)
+        msgbox(gText_Earthquake_HelpMe,MSGBOX_DEFAULT,SPEAKER_RESIDENT_B,TAIL_SHOUT,EMOTE_SHOCK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ImFine)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_Earthquake_ImFine,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
 
         applymovement(ARCHER_HOUSE,Earthquake_WalkToWall)
         waitmovement(ARCHER_HOUSE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ThePowersDead)
-        callnative(ClearMugshot)
+        msgbox(gText_Earthquake_ThePowersDead,MSGBOX_DEFAULT,SPEAKER_ARCHER)
         closemessage
 
         applymovement(ARCHER_HOUSE,Earthquake_RunOutside)
@@ -119,12 +110,9 @@ script Earthquake_ThatNight_Dialogue {
 
 script Earthquake_ShowDestroyedCity_Script {
     lock
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_HolyShit)
+        msgbox(gText_Earthquake_HolyShit,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         closemessage
-        callnative(ClearMugshot)
-
+        
         fadescreen(FADE_TO_BLACK)
         TeleportCamera(11,7)
         special(SpawnCameraObject)
@@ -158,32 +146,19 @@ script Earthquake_StartRescue_Dialogue {
         applymovement(ARIANA,Earthquake_WalkToPair)
         waitmovement(ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_OhYoureOkay)
+        msgbox(gText_Earthquake_OhYoureOkay,MSGBOX_DEFAULT,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_YeahWhyDidnt)
+        msgbox(gText_Earthquake_YeahWhyDidnt,MSGBOX_DEFAULT,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_CellTowersWere)
+        msgbox(gText_Earthquake_CellTowersWere,MSGBOX_DEFAULT,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_SoundsLikeWere)
+        msgbox(gText_Earthquake_SoundsLikeWere,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ImGoingToMakeAnother)
+        msgbox(gText_Earthquake_ImGoingToMakeAnother,MSGBOX_DEFAULT,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_OfCourse)
+        msgbox(gText_Earthquake_OfCourse,MSGBOX_DEFAULT,SPEAKER_ARCHER)
         closemessage
-        callnative(ClearMugshot)
-
+        
         applymovement(ARCHER,Earthquake_WalkAwayA)
         applymovement(ARIANA,Earthquake_WalkAwayB)
         waitmovement(ARCHER)
@@ -201,122 +176,77 @@ script Earthquake_StartRescue_Dialogue {
 script Earthquake_PostRescue_Dialogue {
     lock
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_OkayThingsSeemToBe)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_Earthquake_OkayThingsSeemToBe,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
 
         fadescreen(FADE_TO_BLACK)
         call(Earthquake_PostRescue_Objects_Script)
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_WeveManagedToReestablish)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_Earthquake_WeveManagedToReestablish,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
 
         applymovement(ARIANA,Earthquake_Pace)
         waitmovement(ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_IReally)
+        msgbox(gText_Earthquake_IReally,MSGBOX_DEFAULT,SPEAKER_ARIANA)
 
         playse(SE_POKENAV_CALL)
         waitse
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_AMessageFromThe)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_Earthquake_AMessageFromThe,MSGBOX_DEFAULT,SPEAKER_ARIANA,TAIL_TALK,EMOTE_CONFUSE)
+                closemessage
 
         playse(SE_PIN)
         waitse
         applymovement(PLAYER,Common_Movement_ExclamationMark)
         waitmovement(PLAYER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ThatsATrap)
+        msgbox(gText_Earthquake_ThatsATrap,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_SHOUT,EMOTE_SHOCK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_WhatDoYouMean)
+        msgbox(gText_Earthquake_WhatDoYouMean,MSGBOX_DEFAULT,SPEAKER_ARIANA,,EMOTE_CONFUSE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ShitWeNever)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_Earthquake_ShitWeNever,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+                closemessage
 
         applymovement(ARCHER,Common_Movement_FaceUp)
         waitmovement(ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_IGotAMessage)
+        msgbox(gText_Earthquake_IGotAMessage,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
         applymovement(ARIANA,Earthquake_TurnToPlayer)
         waitmovement(ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_WaitWhat)
+        msgbox(gText_Earthquake_WaitWhat,MSGBOX_DEFAULT,SPEAKER_ARIANA,,EMOTE_SHOCK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ItGetsCrazier)
+        msgbox(gText_Earthquake_ItGetsCrazier,MSGBOX_DEFAULT,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_WeBattledBut)
+        msgbox(gText_Earthquake_WeBattledBut,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ThatDoesntMake)
+        msgbox(gText_Earthquake_ThatDoesntMake,MSGBOX_DEFAULT,SPEAKER_ARIANA,EMOTE_CONFUSE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ItsJustABunch)
+        msgbox(gText_Earthquake_ItsJustABunch,MSGBOX_DEFAULT,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_IDontThinkSo)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_Earthquake_IDontThinkSo,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
 
         applymovement(ARCHER,Common_Movement_FaceDown)
         waitmovement(ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_HowCanYouTrust)
+        msgbox(gText_Earthquake_HowCanYouTrust,MSGBOX_DEFAULT,SPEAKER_ARCHER,,EMOTE_SHOCK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_TheSecondHalf)
+        msgbox(gText_Earthquake_TheSecondHalf,MSGBOX_DEFAULT,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_SoSomebodyWantsUs)
+        msgbox(gText_Earthquake_SoSomebodyWantsUs,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_IThinkItsOn)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_Earthquake_IThinkItsOn,MSGBOX_DEFAULT,SPEAKER_ARIANA)
+                closemessage
 
         applymovement(ARCHER,Common_Movement_FaceUp)
         waitmovement(ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_FineTheThreeOfUs)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_Earthquake_FineTheThreeOfUs,MSGBOX_DEFAULT,SPEAKER_ARCHER)
+                closemessage
         setvar(VAR_STORYLINE_STATE,STORY_POST_EARTHQUAKE)
         setvar(VAR_ALAMEDA_STATE,MEET_AT_PSFROUTE8)
         goto(Earthquake_AskPlayerWarp_Script)
@@ -326,22 +256,16 @@ script Earthquake_AskPlayerWarp_Script {
     applymovement(ARCHER,Earthquake_TurnToPlayer)
         waitmovement(ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_Earthquake_ImGonnaHead,MSGBOX_YESNO)
+        msgbox(gText_Earthquake_ImGonnaHead,MSGBOX_YESNO,SPEAKER_ARCHER)
         closemessage
-        callnative(ClearMugshot)
-
+        
         if (var(VAR_RESULT) == YES){
             warpsilent(MAP_PSFROUTE8,255,10,24)
                 end
         }else {
-            setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-                callnative(DrawMugshot)
-                msgbox(gText_Earthquake_OkayWeve)
+                msgbox(gText_Earthquake_OkayWeve,MSGBOX_DEFAULT,SPEAKER_ARIANA)
                 closemessage
-                callnative(ClearMugshot)
-        }
+                        }
 
     fadescreen(FADE_TO_BLACK)
         removeobject(GRUNTA)

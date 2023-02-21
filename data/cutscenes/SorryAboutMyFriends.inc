@@ -26,49 +26,21 @@ SorryAboutMyFriends_Intro_Dialogue::
 	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
 	applymovement 5, SorryAboutMyFriends_WalkToPlayer_Movement
 	waitmovement 5
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_HowGoes
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_ItWasWait
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_YourePartOf
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_DidINotMention
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_WaitThatWas
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_UnfortunateWorldview
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_AreYouGuysHelping
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_ThereWasAProtest
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_IWasTheOneWhoShut
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_WhenTheyMentionedPowerful
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_UhHuh
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace
+	msgbox gText_SorryAboutMyFriends_HowGoes, , SPEAKER_ARIANA
+	msgbox gText_SorryAboutMyFriends_ItWasWait, , SPEAKER_ZOEY
+	msgbox gText_SorryAboutMyFriends_YourePartOf, , SPEAKER_ZOEY
+	msgbox gText_SorryAboutMyFriends_DidINotMention, , SPEAKER_ARIANA
+	msgbox gText_SorryAboutMyFriends_WaitThatWas, , SPEAKER_ZOEY
+	msgbox gText_SorryAboutMyFriends_UnfortunateWorldview, , SPEAKER_ARIANA
+	msgbox gText_SorryAboutMyFriends_AreYouGuysHelping, , SPEAKER_ZOEY
+	msgbox gText_SorryAboutMyFriends_ThereWasAProtest, , SPEAKER_ARIANA
+	msgbox gText_SorryAboutMyFriends_IWasTheOneWhoShut, , SPEAKER_ZOEY
+	msgbox gText_SorryAboutMyFriends_WhenTheyMentionedPowerful, , SPEAKER_ARIANA
+	msgbox gText_SorryAboutMyFriends_UhHuh, , SPEAKER_ZOEY
+	msgbox gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace, , SPEAKER_ARIANA
 	msgbox gText_SorryAboutMyFriends_TrackDownTheMembers
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_GotPrettyFiredUp
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_WorldNeedsMoreCompassion
+	msgbox gText_SorryAboutMyFriends_GotPrettyFiredUp, , SPEAKER_ZOEY
+	msgbox gText_SorryAboutMyFriends_WorldNeedsMoreCompassion, , SPEAKER_ARIANA
 	goto SorryAboutMyFriends_GiveTicket_Script
 	return
 
@@ -77,32 +49,17 @@ SorryAboutMyFriends_GiveTicket_Script::
 	giveitem ITEM_MYSTIC_TICKET, 1
 	setvar VAR_BERKELEY_STATE, GOT_ALCATRAZ_TICKET
 	setvar VAR_FERRY_STATE, FERRY_ALCATRAZ_AVAILABLE
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_IGiveYouALot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_IAppreciateTheGesture
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_WantedYouToGoThere
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_ExcellentPlaceToTrain
+	msgbox gText_SorryAboutMyFriends_IGiveYouALot, , SPEAKER_ARIANA
+	msgbox gText_SorryAboutMyFriends_IAppreciateTheGesture, , SPEAKER_ZOEY
+	msgbox gText_SorryAboutMyFriends_WantedYouToGoThere, , SPEAKER_ARIANA
+	msgbox gText_SorryAboutMyFriends_ExcellentPlaceToTrain, , SPEAKER_ARIANA
 	compare VAR_FAINTED_FOG_STATE, 0
 	goto_if_gt SorryAboutMyFriends_GiveTicket_Script_2
 SorryAboutMyFriends_GiveTicket_Script_1:
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_FollowSomeMoreLeads
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_AfterWeBattled
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_ThankYouEnjoy
+	msgbox gText_SorryAboutMyFriends_FollowSomeMoreLeads, , SPEAKER_ARIANA
+	msgbox gText_SorryAboutMyFriends_AfterWeBattled, , SPEAKER_ZOEY
+	msgbox gText_SorryAboutMyFriends_ThankYouEnjoy, , SPEAKER_ARIANA
 	closemessage
-	callnative ClearMugshot
 	applymovement 5, SorryAboutMyFriends_WalkSouth
 	waitmovement 5
 	removeobject 5
@@ -111,9 +68,7 @@ SorryAboutMyFriends_GiveTicket_Script_1:
 	end
 
 SorryAboutMyFriends_GiveTicket_Script_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SorryAboutMyFriends_WaitForTheFog
+	msgbox gText_SorryAboutMyFriends_WaitForTheFog, , SPEAKER_ZOEY
 	goto SorryAboutMyFriends_GiveTicket_Script_1
 
 

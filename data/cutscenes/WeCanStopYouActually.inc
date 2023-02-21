@@ -21,18 +21,10 @@ WeCanStopYouActually_FixPlayerPosition_Script_1:
 WeCanStopYouActually_PostBattle_Dialogue::
 	lock
 	call WeCanStopYouActually_FixPlayerPosition_Script
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_SoWhatsYourPlan
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_SoWhatsYourPlan, , SPEAKER_ROSE
 	msgbox gText_WeCanStopYouActually_BeepBeep
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_ThatsTheAuthorities
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_OhNo
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_ThatsTheAuthorities, , SPEAKER_ROSE
+	msgbox gText_WeCanStopYouActually_OhNo, , SPEAKER_ROSE
 	closemessage
 	applymovement 4, WeCanStopYouActually_RunToDesk
 	waitmovement 4
@@ -40,52 +32,28 @@ WeCanStopYouActually_PostBattle_Dialogue::
 	special TurnOnTVScreen
 	delay 30
 	fadescreen FADE_TO_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_IAmChiefOperatingOfficer
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_IAmChiefOperatingOfficer, , SPEAKER_KOGA
 	closemessage
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_WaitTheHell
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_WaitTheHell, , SPEAKER_ROSE
 	playse SE_POKENAV_CALL
 	waitse
 	msgbox gText_WeCanStopYouActually_Ring
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_FindThem
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_IDontCare
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_FindThem, , SPEAKER_ROSE
+	msgbox gText_WeCanStopYouActually_IDontCare, , SPEAKER_ROSE
 	closemessage
 	applymovement 4, WeCanStopYouActually_RageRun
 	waitmovement 4
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_TheyToldYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_I
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_TheyToldYou, , SPEAKER_ROSE
+	msgbox gText_WeCanStopYouActually_I, , SPEAKER_ZOEY
 	closemessage
 	applymovement 4, Common_Movement_FaceLeft
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_Security
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_WeAlreadyBeatThem
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_Security, , SPEAKER_ROSE
+	msgbox gText_WeCanStopYouActually_WeAlreadyBeatThem, , SPEAKER_ZOEY
 	closemessage
 	applymovement 4, Common_Movement_FaceDown
 	waitmovement 4
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_ImNotGoingToPrison
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_ImNotGoingToPrison, , SPEAKER_ROSE
 	closemessage
 	applymovement 4, Common_Movement_WalkDown
 	waitmovement 4
@@ -94,10 +62,7 @@ WeCanStopYouActually_PostBattle_Dialogue::
 
 
 WeCanStopYouActually_StartBossBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_AndIllFrigginKill
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_AndIllFrigginKill, , SPEAKER_ROSE
 	closemessage
 	trainerbattle_no_intro TRAINER_STEVEN, gText_WeCanStopYouActually_Nonono
 	goto WeCanStopYouActually_Arrest_Dialogue
@@ -117,10 +82,7 @@ WeCanStopYouActually_Arrest_Dialogue::
 	applymovement 3, WeCanStopYouActually_ArrestWalkInB
 	applymovement OBJ_EVENT_ID_PLAYER, WeCanStopYouActually_ArrestWalkInC
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WeCanStopYouActually_ForWhat
-	callnative ClearMugshot
+	msgbox gText_WeCanStopYouActually_ForWhat, , SPEAKER_ROSE
 	closemessage
 	warpsilent MAP_WE_CAN_STOP_YOU_ACTUALLY_CUTSCENE, 0
 	end

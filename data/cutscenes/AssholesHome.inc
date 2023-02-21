@@ -35,13 +35,9 @@ AssholesHome_BattleEvent_Script_3:
 
 AssholesHome_Archer_Dialogue::
 	setvar VAR_ALAMEDA_STATE, SAVE_ARCHER_ALAMEDA
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_JudgingFromSwarm
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_ReallyHopingLastTime
-	callnative ClearMugshot
+	msgbox gText_AssholesHome_JudgingFromSwarm, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	msgbox gText_AssholesHome_ReallyHopingLastTime, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	closemessage
 	call Common_EventScript_SaveGame
 	closemessage
 	goto AssholesHome_StartBattle_Script
@@ -50,14 +46,9 @@ AssholesHome_Archer_Dialogue::
 
 AssholesHome_StartBattle_Script::
 	lockall
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_JustCurious
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_IDoubtYoureGoing
+	msgbox gText_AssholesHome_JustCurious, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	msgbox gText_AssholesHome_IDoubtYoureGoing, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_WALLY_VR_1, gText_AssholesHome_ThrowsTheirMoney
 	goto AssholesHome_PostBattle_Dialogue
 	return
@@ -67,19 +58,12 @@ AssholesHome_PostBattle_Dialogue::
 	lockall
 	setvar VAR_STORYLINE_STATE, STORY_DEFEAT_ARCHER_ALAMEDA
 	setvar VAR_ALAMEDA_STATE, DEFEATED_ARCHER_ALAMEDA
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_SoMuchForThe
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_NameInsteadOf
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_ILikeBeingPushed
+	msgbox gText_AssholesHome_SoMuchForThe, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	msgbox gText_AssholesHome_NameInsteadOf, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_AssholesHome_ILikeBeingPushed, MSGBOX_DEFAULT, SPEAKER_ARCHER
 	compare VAR_SALESFORCETOWER_PRODUCTION_STATE, POST_ALWAYS_WATCHING_WAZOWSKI
 	goto_if_eq AssholesHome_PostBattle_Dialogue_2
 AssholesHome_PostBattle_Dialogue_1:
-	callnative ClearMugshot
 	closemessage
 	applymovement 3, AssholesHome_WalkAway_Movement
 	waitmovement 0
@@ -89,15 +73,9 @@ AssholesHome_PostBattle_Dialogue_1:
 	end
 
 AssholesHome_PostBattle_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_ISawThatYoure
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_YoureRightItsHypocritical
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AssholesHome_WhatAWeirdKid
+	msgbox gText_AssholesHome_ISawThatYoure, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_AssholesHome_YoureRightItsHypocritical, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	msgbox gText_AssholesHome_WhatAWeirdKid, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	goto AssholesHome_PostBattle_Dialogue_1
 
 

@@ -43,8 +43,6 @@ script Bianca_Southbay_Compound_1F_InteractScript {
 
 script Oak_Southbay_Compound_1F_InteractScript {
     lockall
-        setvar(VAR_0x8000, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
 
         //var is 6, has leftovers, and temp1f is set: explain lefties
         //var is 6, has leftovers, temmp1f is not set: help menu

@@ -28,38 +28,22 @@ OldAssholeAppears_WalktoBianca_Script_2:
 
 OldAssholeAppears_Intro_Dialogue::
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
 	applymovement 1, Common_Movement_FaceDown
-	msgbox gText_OldAssholeAppears_StandingOnVolcano
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_ImSorryWhat
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_RegionCloseFaultline
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_DontKnowMagical
+	msgbox gText_OldAssholeAppears_StandingOnVolcano, , SPEAKER_BIANCA
+	msgbox gText_OldAssholeAppears_ImSorryWhat, , SPEAKER_ZOEY
+	msgbox gText_OldAssholeAppears_RegionCloseFaultline, , SPEAKER_BIANCA
+	msgbox gText_OldAssholeAppears_DontKnowMagical, , SPEAKER_ZOEY
 	goto OldAssholeAppears_HealPlayer_Dialogue
 	return
 
 
 OldAssholeAppears_HealPlayer_Dialogue::
 	setvar VAR_LOMBARDSTREET_STATE, SAVE_BIANCA_LOMBARD
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_IllHealYou
+	msgbox gText_OldAssholeAppears_IllHealYou, , SPEAKER_BIANCA
 	playse SE_USE_ITEM
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_OhUhThanks
+	msgbox gText_OldAssholeAppears_OhUhThanks, , SPEAKER_ZOEY
 	special HealPlayerParty
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_DaddyShippedFullRestores
-	callnative ClearMugshot
+	msgbox gText_OldAssholeAppears_DaddyShippedFullRestores, , SPEAKER_BIANCA
 	call Common_EventScript_SaveGame
 	closemessage
 	goto OldAssholeAppears_StartBattle_Script
@@ -75,11 +59,8 @@ OldAssholeAppears_Interact_Script::
 
 OldAssholeAppears_StartBattle_Script::
 	lockall
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_HowFarBehind
+	msgbox gText_OldAssholeAppears_HowFarBehind, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_MUDKIP, gText_OldAssholeAppers_ImStartingToQuestion
 	goto OldAssholeAppears_GiveCorviknightCard_Script
@@ -89,35 +70,22 @@ OldAssholeAppears_StartBattle_Script::
 OldAssholeAppears_GiveCorviknightCard_Script::
 	lockall
 	applymovement 1, Common_Movement_FacePlayer
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_TakingThisAllSeriously
-	callnative ClearMugshot
+	msgbox gText_OldAssholeAppears_TakingThisAllSeriously, , SPEAKER_BIANCA
 	giveitem ITEM_SS_TICKET
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_FamiliarWith, MSGBOX_YESNO
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
+	msgbox gText_OldAssholeAppears_FamiliarWith, MSGBOX_YESNO, , SPEAKER_BIANCA
 	compare VAR_RESULT, 1
 	goto_if_eq OldAssholeAppears_GiveCorviknightCard_Script_2
-	msgbox gText_OldAssholeAppears_LetsYouCallARide
+	msgbox gText_OldAssholeAppears_LetsYouCallARide, , SPEAKER_BIANCA
 OldAssholeAppears_GiveCorviknightCard_Script_1:
-	msgbox gText_OldAssholeAppears_LetsYouUse
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_YouveBeenSuperNice
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OldAssholeAppears_NowWereEven
-	callnative ClearMugshot
+	msgbox gText_OldAssholeAppears_LetsYouUse, , SPEAKER_BIANCA
+	msgbox gText_OldAssholeAppears_YouveBeenSuperNice, , SPEAKER_ZOEY
+	msgbox gText_OldAssholeAppears_NowWereEven, , SPEAKER_BIANCA
 	closemessage
 	goto OldAssholeAppears_BiancaExit_Script
 	return
 
 OldAssholeAppears_GiveCorviknightCard_Script_2:
-	msgbox gText_OldAssholeAppears_ThoughtSo
+	msgbox gText_OldAssholeAppears_ThoughtSo, , SPEAKER_BIANCA
 	goto OldAssholeAppears_GiveCorviknightCard_Script_1
 
 

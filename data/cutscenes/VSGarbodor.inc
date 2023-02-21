@@ -41,9 +41,7 @@ VSGarbodor_Scouting_Dialogue::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_IDidSomeScouting
+	msgbox gText_VSGarbodor_IDidSomeScouting, , SPEAKER_BIANCA
 	multichoicedefault 18, 6, MULTI_GARBADOR_CHOOSE, 3, TRUE
 	goto VSGarbodor_ChooseSide_Script
 	return
@@ -77,10 +75,7 @@ VSGarbodor_ChooseSide_Script_4:
 
 VSGarbodor_ChooseLeft_Script::
 	setvar VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_LEFT_SIDE
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_ThenIllTakeTheRight
-	callnative ClearMugshot
+	msgbox gText_VSGarbodor_ThenIllTakeTheRight, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, VSGarbodor_WalkFurtherRight
 	delay 60
@@ -93,10 +88,7 @@ VSGarbodor_ChooseLeft_Script::
 
 VSGarbodor_ChooseRight_Script::
 	setvar VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_RIGHT_SIDE
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_CoolIWanted
-	callnative ClearMugshot
+	msgbox gText_VSGarbodor_CoolIWanted, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, VSGarbodor_WalkFurtherLeft
 	delay 60
@@ -109,21 +101,21 @@ VSGarbodor_ChooseRight_Script::
 
 VSGarbodor_TeamRocketGrunt1_Battle_Script::
 	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_5, gText_VSGarbodor_ScrewThisStadium, gText_VSGarbodor_DamnTheyWereRight, VSGarbodor_TeamRocketGrunt1_Battle_Script
-	msgbox gText_VSGarbodor_WelpIDidWhat, MSGBOX_AUTOCLOSE
+	msgbox gText_VSGarbodor_WelpIDidWhat, MSGBOX_AUTOCLOSE, SPEAKER_ROCKET_MEMBER_A
 	goto VSGarbodor_RemoveGrunt
 	end
 
 
 VSGarbodor_TeamRocketGrunt3_Battle_Script::
 	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_3, gText_VSGarbodor_IsTheName, gText_VSGarbodor_TheyDidntPrepare, VSGarbodor_TeamRocketGrunt3_Battle_Script
-	msgbox gText_VSGarbodor_OhThankGiratina, MSGBOX_AUTOCLOSE
+	msgbox gText_VSGarbodor_OhThankGiratina, MSGBOX_AUTOCLOSE, SPEAKER_ROCKET_MEMBER_B
 	goto VSGarbodor_RemoveGrunt
 	end
 
 
 VSGarbodor_TeamRocketGrunt2_Battle_Script::
 	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_2, gText_VSGarbodor_RightOnCue, gText_VSGarbodor_HmmIGuess, VSGarbodor_TeamRocketGrunt2_Battle_Script
-	msgbox gText_VSGarbodor_BeingBad, MSGBOX_AUTOCLOSE
+	msgbox gText_VSGarbodor_BeingBad, MSGBOX_AUTOCLOSE, SPEAKER_ROCKET_MEMBER_A
 	goto VSGarbodor_RemoveGrunt
 	end
 
@@ -140,7 +132,6 @@ VS_Garbodor_CoreEncounter_Script::
 	faceplayer
 	setwildbattle SPECIES_GARBODOR, 40, ITEM_NONE
 	playmoncry SPECIES_GARBODOR, CRY_MODE_ENCOUNTER
-	msgbox gText_VSGarbodor_Kuh
 	delay 40
 	waitmoncry
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
@@ -195,11 +186,8 @@ VSGarbodor_CheckDefeated_Script_7:
 
 VSGarbodor_PreventCrossingSides_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_FeelingLonely
+	msgbox gText_VSGarbodor_FeelingLonely, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	compare VAR_INNER_CONSTRUCTION_SITE_STATE, PLAYER_RIGHT_SIDE
 	goto_if_eq VSGarbodor_PreventCrossingSides_Script_2
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
@@ -256,18 +244,12 @@ VSGarbodor_MoveBianca_Script_8:
 
 VSGarbodor_DefeatedAll_Dialogue::
 	setvar VAR_CONSTRUCTION_STRIKE_STATE, DEFEATED_GARBODOR
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_GodYouWereTaking
+	msgbox gText_VSGarbodor_GodYouWereTaking, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, VSGarbodor_LookAround
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_WhateverMineWereEasy
+	msgbox gText_VSGarbodor_WhateverMineWereEasy, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	warpsilent MAP_PSFROUTE22, 255, 20, 22
 	delay 100
 	return
@@ -304,36 +286,21 @@ VSGarbodor_CleanUpPerpWalk::
 
 
 VSGarbodor_Negotiating_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_AsWeWereNegotiating
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_DoneLikeYouGuys
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_ThankYouBoth
-	callnative ClearMugshot
+	msgbox gText_VSGarbodor_AsWeWereNegotiating, , SPEAKER_ROSE
+	msgbox gText_VSGarbodor_DoneLikeYouGuys, , SPEAKER_ZOEY
+	msgbox gText_VSGarbodor_ThankYouBoth, , SPEAKER_ROSE
 	closemessage
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_YeahImBeat, MSGBOX_YESNO
+	msgbox gText_VSGarbodor_YeahImBeat, MSGBOX_YESNO, , SPEAKER_BIANCA
 	compare VAR_RESULT, NO
 	goto_if_eq VSGarbodor_Negotiating_Dialogue_1
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_LetsBounce
-	callnative ClearMugshot
+	msgbox gText_VSGarbodor_LetsBounce, , SPEAKER_BIANCA
 	closemessage
 	warpsilent MAP_SOUTHBAY_COMPOUND_1F, 7, 3
 	release
 	end
 
 VSGarbodor_Negotiating_Dialogue_1:
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_WeirdButOkay
-	callnative ClearMugshot
+	msgbox gText_VSGarbodor_WeirdButOkay, , SPEAKER_BIANCA
 	closemessage
 	call VSGarbodor_FlyWithoutPlayer_Script
 	release
@@ -371,13 +338,8 @@ VSGarbodor_ReturnToTheCompound_Dialogue::
 	goto_if_ne VSGarbodor_ReturnToTheCompound_Dialogue_1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_ImGonnaGet
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_VSGarbodor_HehWellSee
-	callnative ClearMugshot
+	msgbox gText_VSGarbodor_ImGonnaGet, , SPEAKER_BIANCA
+	msgbox gText_VSGarbodor_HehWellSee, , SPEAKER_ZOEY
 	closemessage
 	applymovement 1, VSGarbodor_WalkUpstairs
 	waitmovement 0
@@ -569,9 +531,6 @@ gText_VSGarbodor_WelpIDidWhat::
 gText_VSGarbodor_OhThankGiratina::
 	.string "Oh thank Giratina, I can go back to the\n"
 	.string "office now…$"
-
-gText_VSGarbodor_Kuh::
-	.string "Kuh!$"
 
 gText_VSGarbodor_RightOnCue::
 	.string "Right on cue, here come the heroes…$"

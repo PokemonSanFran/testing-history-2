@@ -5,7 +5,7 @@ LockedOut_PreventPlayer_Script::
 	waitmovement 0
 	playse SE_FAILURE
 	waitse
-	msgbox gText_LockedOut_AccessDenied
+	msgbox gText_LockedOut_AccessDenied, , SPEAKER_DOOR
 	closemessage
 	goto_if_unset FLAG_LOCKEDOUT_PLAYED, LockedOut_PreventPlayer_Script_5
 	call LockedOut_WarpPlayer_Script
@@ -25,16 +25,13 @@ LockedOut_PreventPlayer_Script_5:
 
 LockedOut_PhoneCall_Dialogue::
 	setflag FLAG_LOCKEDOUT_PLAYED
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LockedOut_ShitWait
-	callnative ClearMugshot
+	msgbox gText_LockedOut_ShitWait, , SPEAKER_ZOEY
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LockedOut_TryDoorAgain
 	waitmovement 0
 	playse SE_FAILURE
 	waitse
-	msgbox gText_LockedOut_AccessDenied
+	msgbox gText_LockedOut_AccessDenied, , SPEAKER_DOOR
 	closemessage
 	playse SE_POKENAV_CALL
 	waitse
@@ -42,20 +39,11 @@ LockedOut_PhoneCall_Dialogue::
 	waitse
 	pokenavcall LockedOut_PhoneCall_Dialogue_Text_0
 	waitmessage
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LockedOut_HeyIWasThinking
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LockedOut_ImLockedOut
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LockedOut_ThatsActuallyWhy
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LockedOut_IActuallyHadnt
+	msgbox gText_LockedOut_HeyIWasThinking, , SPEAKER_ARCHER
+	msgbox gText_LockedOut_ImLockedOut, , SPEAKER_ZOEY
+	msgbox gText_LockedOut_ThatsActuallyWhy, , SPEAKER_ARCHER
+	msgbox gText_LockedOut_IActuallyHadnt, , SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	playse SE_POKENAV_HANG_UP
 	waitse
 	goto LockedOut_WarpPlayer_Script

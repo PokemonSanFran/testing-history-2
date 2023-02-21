@@ -17,26 +17,14 @@ CongratsYoureAnAsshole_Intro_Dialogue::
 	goto_if_eq CongratsYoureAnAsshole_Intro_Dialogue_2
 CongratsYoureAnAsshole_Intro_Dialogue_1:
 	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, START_FALSE_TIMELINE
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_WelcomeBack, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_YeahIWantToWork
-	callnative ClearMugshot
+	msgbox gText_CongratsYoureanAsshole_WelcomeBack, MSGBOX_NPC, SPEAKER_OAK
+	msgbox gText_CongratsYoureanAsshole_YeahIWantToWork, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_WevePreparedAStatement
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal
+	msgbox gText_CongratsYoureanAsshole_WevePreparedAStatement, MSGBOX_DEFAULT, SPEAKER_OAK
+	msgbox gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal, MSGBOX_DEFAULT, SPEAKER_KOGA
 	applymovement 9, Common_Movement_WalkInPlaceLeft
 	waitmovement 9
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_TheresNoTurningBack
-	callnative ClearMugshot
+	msgbox gText_CongratsYoureanAsshole_TheresNoTurningBack, MSGBOX_DEFAULT, SPEAKER_KOGA
 	closemessage
 	return
 
@@ -47,9 +35,7 @@ CongratsYoureAnAsshole_Intro_Dialogue_2:
 
 CongratsYoureanAsshole_FalseTimelineSplit_Script::
 	faceplayer
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_WereGoingToSend, MSGBOX_YESNO
+	msgbox gText_CongratsYoureanAsshole_WereGoingToSend, MSGBOX_YESNO, SPEAKER_KOGA
 	compare VAR_RESULT, NO
 	goto_if_eq CongratsYoureanAsshole_FalseTimelineSplit_Script_1
 	setflag FLAG_TIMELINE_FALSE
@@ -57,16 +43,9 @@ CongratsYoureanAsshole_FalseTimelineSplit_Script::
 	fadescreen FADE_TO_BLACK
 	msgbox gText_CongratsYoureanAsshole_PresenceIn
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_ThankYouForThat
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_ThingsWillTake
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_ThatsTheSpirit
-	callnative ClearMugshot
+	msgbox gText_CongratsYoureanAsshole_ThankYouForThat, MSGBOX_DEFAULT, SPEAKER_SABRINA
+	msgbox gText_CongratsYoureanAsshole_ThingsWillTake, MSGBOX_DEFAULT, SPEAKER_KOGA
+	msgbox gText_CongratsYoureanAsshole_ThatsTheSpirit, MSGBOX_DEFAULT, SPEAKER_KOGA
 	closemessage
 	fadescreen FADE_TO_BLACK
 	delay 30
@@ -76,10 +55,7 @@ CongratsYoureanAsshole_FalseTimelineSplit_Script::
 	end
 
 CongratsYoureanAsshole_FalseTimelineSplit_Script_1:
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_OfCouseIfTheres
-	callnative ClearMugshot
+	msgbox gText_CongratsYoureanAsshole_OfCouseIfTheres, MSGBOX_DEFAULT, SPEAKER_KOGA
 	closemessage
 	release
 	end

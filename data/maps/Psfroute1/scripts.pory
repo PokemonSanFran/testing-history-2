@@ -47,13 +47,14 @@ script Homeless_CheckMoney_Script {
 
 script Homeless_AskDonation_Dialogue {
         showmoneybox(0,0)
-        msgbox(gText_Homeless_SpareChangeOldMan,MSGBOX_YESNO)
+        call(FlyingBlind_DetermineLocation_Script)
+        msgbox(gText_Homeless_SpareChangeOldMan,MSGBOX_YESNO,VAR_MSGBOX_SPEAKER)
         if (var(VAR_RESULT) == 1){
             removemoney(1000,0)
             updatemoneybox(0)
-            msgbox(gText_Homeless_AppreciateIt)
+            msgbox(gText_Homeless_AppreciateIt,,VAR_MSGBOX_SPEAKER)
         } else {
-            msgbox(gText_Homeless_WereAllHurtin)
+            msgbox(gText_Homeless_WereAllHurtin,,VAR_MSGBOX_SPEAKER)
         }
         hidemoneybox
 }

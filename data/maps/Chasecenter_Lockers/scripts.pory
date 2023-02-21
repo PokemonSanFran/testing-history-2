@@ -41,7 +41,7 @@ script Chasecenter_Lockers_Bianca_Event_Script {
             case STORY_CONGRATULATED_BY_ROSE: call(ExhibitionBattle_Bianca_Dialogue)
         }
     closemessage
-        callnative(ClearMugshot)
+        
         release
         end
 }

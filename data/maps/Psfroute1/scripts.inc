@@ -66,10 +66,11 @@ Homeless_CheckMoney_Script_1:
 
 Homeless_AskDonation_Dialogue::
 	showmoneybox 0, 0
-	msgbox gText_Homeless_SpareChangeOldMan, MSGBOX_YESNO
+	call FlyingBlind_DetermineLocation_Script
+	msgbox gText_Homeless_SpareChangeOldMan, MSGBOX_YESNO, VAR_MSGBOX_SPEAKER
 	compare VAR_RESULT, 1
 	goto_if_eq Homeless_AskDonation_Dialogue_2
-	msgbox gText_Homeless_WereAllHurtin
+	msgbox gText_Homeless_WereAllHurtin, , VAR_MSGBOX_SPEAKER
 Homeless_AskDonation_Dialogue_1:
 	hidemoneybox
 	return
@@ -77,7 +78,7 @@ Homeless_AskDonation_Dialogue_1:
 Homeless_AskDonation_Dialogue_2:
 	removemoney 1000, 0
 	updatemoneybox 0
-	msgbox gText_Homeless_AppreciateIt
+	msgbox gText_Homeless_AppreciateIt, , VAR_MSGBOX_SPEAKER
 	goto Homeless_AskDonation_Dialogue_1
 
 

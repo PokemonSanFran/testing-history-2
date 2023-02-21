@@ -25,62 +25,34 @@ script SorryAboutMyFriends_Intro_Dialogue {
         applymovement(ARIANA,SorryAboutMyFriends_WalkToPlayer_Movement)
         waitmovement(ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_HowGoes)
+        msgbox(gText_SorryAboutMyFriends_HowGoes,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_ItWasWait)
+        msgbox(gText_SorryAboutMyFriends_ItWasWait,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_YourePartOf)
+        msgbox(gText_SorryAboutMyFriends_YourePartOf,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_DidINotMention)
+        msgbox(gText_SorryAboutMyFriends_DidINotMention,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_WaitThatWas)
+        msgbox(gText_SorryAboutMyFriends_WaitThatWas,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_UnfortunateWorldview)
+        msgbox(gText_SorryAboutMyFriends_UnfortunateWorldview,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_AreYouGuysHelping)
+        msgbox(gText_SorryAboutMyFriends_AreYouGuysHelping,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_ThereWasAProtest)
+        msgbox(gText_SorryAboutMyFriends_ThereWasAProtest,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_IWasTheOneWhoShut)
+        msgbox(gText_SorryAboutMyFriends_IWasTheOneWhoShut,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_WhenTheyMentionedPowerful)
+        msgbox(gText_SorryAboutMyFriends_WhenTheyMentionedPowerful,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_UhHuh)
+        msgbox(gText_SorryAboutMyFriends_UhHuh,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace)
+        msgbox(gText_SorryAboutMyFriends_OurHeartsAreInTheRightPlace,,SPEAKER_ARIANA)
         msgbox(gText_SorryAboutMyFriends_TrackDownTheMembers)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_GotPrettyFiredUp)
+        msgbox(gText_SorryAboutMyFriends_GotPrettyFiredUp,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_WorldNeedsMoreCompassion)
+        msgbox(gText_SorryAboutMyFriends_WorldNeedsMoreCompassion,,SPEAKER_ARIANA)
 
         goto(SorryAboutMyFriends_GiveTicket_Script)
 }
@@ -90,41 +62,25 @@ script SorryAboutMyFriends_GiveTicket_Script {
         setvar(VAR_BERKELEY_STATE,GOT_ALCATRAZ_TICKET)
         setvar(VAR_FERRY_STATE,FERRY_ALCATRAZ_AVAILABLE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_IGiveYouALot)
+        msgbox(gText_SorryAboutMyFriends_IGiveYouALot,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_IAppreciateTheGesture)
+        msgbox(gText_SorryAboutMyFriends_IAppreciateTheGesture,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_WantedYouToGoThere)
+        msgbox(gText_SorryAboutMyFriends_WantedYouToGoThere,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_ExcellentPlaceToTrain)
+        msgbox(gText_SorryAboutMyFriends_ExcellentPlaceToTrain,,SPEAKER_ARIANA)
 
         if (var(VAR_FAINTED_FOG_STATE) > 0){
-            setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-                callnative(DrawMugshot)
-                msgbox(gText_SorryAboutMyFriends_WaitForTheFog)
+                msgbox(gText_SorryAboutMyFriends_WaitForTheFog,,SPEAKER_ZOEY)
         }
 
-    setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_FollowSomeMoreLeads)
+        msgbox(gText_SorryAboutMyFriends_FollowSomeMoreLeads,,SPEAKER_ARIANA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_AfterWeBattled)
+        msgbox(gText_SorryAboutMyFriends_AfterWeBattled,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_SorryAboutMyFriends_ThankYouEnjoy)
+        msgbox(gText_SorryAboutMyFriends_ThankYouEnjoy,,SPEAKER_ARIANA)
         closemessage
-        callnative(ClearMugshot)
+        
 
         applymovement(ARIANA,SorryAboutMyFriends_WalkSouth)
         waitmovement(ARIANA)

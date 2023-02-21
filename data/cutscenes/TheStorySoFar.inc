@@ -1,6 +1,6 @@
 TheStorySoFar_ExplainExhibit_Dialogue::
 	lock
-	msgbox gText_TheStorySoFar_WelcomeToExhibit
+	msgbox gText_TheStorySoFar_WelcomeToExhibit, , SPEAKER_ATTENDANT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -60,7 +60,7 @@ TheStorySoFar_CheckNumberDefeated_Script::
 	compare VAR_RESULT, 5
 	goto_if_gt TheStorySoFar_CheckNumberDefeated_Script_2
 TheStorySoFar_CheckNumberDefeated_Script_1:
-	msgbox gText_TheStorySoFar_YoureNotQuiteDone
+	msgbox gText_TheStorySoFar_YoureNotQuiteDone, , SPEAKER_ATTENDANT
 	switch VAR_RESULT
 	case 0, TheStorySoFar_CheckNumberDefeated_Script_6
 	case 1, TheStorySoFar_CheckNumberDefeated_Script_7
@@ -82,31 +82,31 @@ TheStorySoFar_CheckNumberDefeated_Script_2:
 	goto TheStorySoFar_CheckNumberDefeated_Script_1
 
 TheStorySoFar_CheckNumberDefeated_Script_6:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat6
+	msgbox gText_TheStorySoFar_YouNeedToDefeat6, , SPEAKER_ATTENDANT
 	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_7:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat5
+	msgbox gText_TheStorySoFar_YouNeedToDefeat5, , SPEAKER_ATTENDANT
 	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_8:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat4
+	msgbox gText_TheStorySoFar_YouNeedToDefeat4, , SPEAKER_ATTENDANT
 	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_9:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat3
+	msgbox gText_TheStorySoFar_YouNeedToDefeat3, , SPEAKER_ATTENDANT
 	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_10:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat2
+	msgbox gText_TheStorySoFar_YouNeedToDefeat2, , SPEAKER_ATTENDANT
 	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_11:
-	msgbox gText_TheStorySoFar_YouNeedToDefeat1
+	msgbox gText_TheStorySoFar_YouNeedToDefeat1, , SPEAKER_ATTENDANT
 	goto TheStorySoFar_CheckNumberDefeated_Script_4
 
 TheStorySoFar_CheckNumberDefeated_Script_13:
-	msgbox gText_TheStorySoFar_AreYouSure, MSGBOX_YESNO
+	msgbox gText_TheStorySoFar_AreYouSure, MSGBOX_YESNO, SPEAKER_ATTENDANT
 	compare VAR_RESULT, NO
 	goto_if_eq TheStorySoFar_CheckNumberDefeated_Script_18
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
@@ -128,7 +128,7 @@ TheStorySoFar_CheckNumberDefeated_Script_18:
 TheStorySoFar_AwardPlayer_Script::
 	setvar VAR_ALCATRAZ_EXHIBIT_STATE, ALCATRAZ_EXHIBIT_REWARD
 	setvar VAR_ALCATRAZ_STATE, FIRST_ARRIVED_ALCATRAZ
-	msgbox gText_TheStorySoFar_ExcellentWork
+	msgbox gText_TheStorySoFar_ExcellentWork, , SPEAKER_ATTENDANT
 	giveitem ITEM_MACHO_BRACE, 1
 	closemessage
 	goto YoungPadawan_Intro_Dialogue
@@ -138,7 +138,7 @@ TheStorySoFar_AwardPlayer_Script::
 
 TheStorySoFar_Congratulate_Dialogue::
 	lock
-	msgbox gText_TheStorySoFar_WeHopeYouReturn
+	msgbox gText_TheStorySoFar_WeHopeYouReturn, , SPEAKER_ATTENDANT
 	closemessage
 	release
 	end
@@ -146,79 +146,79 @@ TheStorySoFar_Congratulate_Dialogue::
 
 TheStorySoFar_StartBattle1_Script::
 	trainerbattle_single TRAINER_ALBERTO, gText_TheStorySoFar_IHopeYouDont, gText_TheStorySoFar_SlowDown, TheStorySoFar_ReadSign1_Dialogue, NO_MUSIC
-	msgbox gText_TheStorySoFar_DontForgetToStop, MSGBOX_AUTOCLOSE
+	msgbox gText_TheStorySoFar_DontForgetToStop, MSGBOX_AUTOCLOSE, SPEAKER_MACK
 	return
 
 
 TheStorySoFar_ReadSign1_Dialogue::
 	special CheckNumAlcatrazExhibitDefeated
 	msgbox gText_TheStorySoFar_SpeakerStarted
-	msgbox gText_TheStorySoFar_OriginallyBuiltAsAPrison, MSGBOX_SIGN
+	msgbox gText_TheStorySoFar_OriginallyBuiltAsAPrison, MSGBOX_SIGN, , SPEAKER_SPEAKER
 	return
 
 
 TheStorySoFar_StartBattle2_Script::
 	trainerbattle_single TRAINER_ED, gText_TheStorySoFar_IThinkDefense, gText_TheStorySoFar_NotStrongEnough, TheStorySoFar_ReadSign2_Dialogue, NO_MUSIC
-	msgbox gText_TheStorySoFar_TheBestOffense, MSGBOX_AUTOCLOSE
+	msgbox gText_TheStorySoFar_TheBestOffense, MSGBOX_AUTOCLOSE, SPEAKER_TYZONN
 	return
 
 
 TheStorySoFar_ReadSign2_Dialogue::
 	special CheckNumAlcatrazExhibitDefeated
 	msgbox gText_TheStorySoFar_SpeakerStarted
-	msgbox gText_TheStorySoFar_TheCriminalUnderbelly, MSGBOX_SIGN
+	msgbox gText_TheStorySoFar_TheCriminalUnderbelly, MSGBOX_SIGN, SPEAKER_SPEAKER
 	return
 
 
 TheStorySoFar_StartBattle3_Script::
 	trainerbattle_single TRAINER_DECLAN, gText_TheStorySoFar_TheresSomethingSpecial, gText_TheStorySoFar_ImNotSpecial, TheStorySoFar_ReadSign3_Dialogue, NO_MUSIC
-	msgbox gText_TheStorySoFar_ItsHardToDoAnything, MSGBOX_AUTOCLOSE
+	msgbox gText_TheStorySoFar_ItsHardToDoAnything, MSGBOX_AUTOCLOSE, SPEAKER_WILL2
 	return
 
 
 TheStorySoFar_ReadSign3_Dialogue::
 	special CheckNumAlcatrazExhibitDefeated
 	msgbox gText_TheStorySoFar_SpeakerStarted
-	msgbox gText_TheStorySoFar_ThePrisonersBeganToTurn, MSGBOX_SIGN
+	msgbox gText_TheStorySoFar_ThePrisonersBeganToTurn, MSGBOX_SIGN, SPEAKER_SPEAKER
 	return
 
 
 TheStorySoFar_StartBattle4_Script::
 	trainerbattle_single TRAINER_FREDRICK, gText_TheStorySoFar_PhysicallyDefensiveMasterpiece, gText_TheStorySoFar_ButLikeTheShip, TheStorySoFar_ReadSign4_Dialogue, NO_MUSIC
-	msgbox gText_TheStorySoFar_HumansWillAlwaysFind, MSGBOX_AUTOCLOSE
+	msgbox gText_TheStorySoFar_HumansWillAlwaysFind, MSGBOX_AUTOCLOSE, , SPEAKER_RONNY
 	return
 
 
 TheStorySoFar_ReadSign4_Dialogue::
 	special CheckNumAlcatrazExhibitDefeated
 	msgbox gText_TheStorySoFar_SpeakerStarted
-	msgbox gText_TheStorySoFar_AsTensionsBetweenThePrisoners, MSGBOX_SIGN
+	msgbox gText_TheStorySoFar_AsTensionsBetweenThePrisoners, MSGBOX_SIGN, SPEAKER_SPEAKER
 	return
 
 
 TheStorySoFar_StartBattle5_Script::
 	trainerbattle_single TRAINER_ZANDER, gText_TheStorySoFar_BrokenBonesHealEasily, gText_TheStorySoFar_SomePeopleNeverRecover, TheStorySoFar_ReadSign5_Dialogue, NO_MUSIC
-	msgbox gText_TheStorySoFar_MakingSureToTakeCare, MSGBOX_AUTOCLOSE
+	msgbox gText_TheStorySoFar_MakingSureToTakeCare, MSGBOX_AUTOCLOSE, , SPEAKER_DAX
 	return
 
 
 TheStorySoFar_ReadSign5_Dialogue::
 	special CheckNumAlcatrazExhibitDefeated
 	msgbox gText_TheStorySoFar_SpeakerStarted
-	msgbox gText_TheStorySoFar_TheNaturalDisasterLeft, MSGBOX_SIGN
+	msgbox gText_TheStorySoFar_TheNaturalDisasterLeft, MSGBOX_SIGN, SPEAKER_SPEAKER
 	return
 
 
 TheStorySoFar_StartBattle6_Script::
 	trainerbattle_single TRAINER_LEAH, gText_TheStorySoFar_HowToughAreYou, gText_TheStorySoFar_TurnsOutPrettyTough, TheStorySoFar_ReadSign6_Dialogue, NO_MUSIC
-	msgbox gText_TheStorySoFar_IHearVoicesStanding, MSGBOX_AUTOCLOSE
+	msgbox gText_TheStorySoFar_IHearVoicesStanding, MSGBOX_AUTOCLOSE, , SPEAKER_BRENNAN
 	return
 
 
 TheStorySoFar_ReadSign6_Dialogue::
 	special CheckNumAlcatrazExhibitDefeated
 	msgbox gText_TheStorySoFar_SpeakerStarted
-	msgbox gText_TheStorySoFar_ParksAndRecreation, MSGBOX_SIGN
+	msgbox gText_TheStorySoFar_ParksAndRecreation, MSGBOX_SIGN, SPEAKER_SPEAKER
 	return
 
 

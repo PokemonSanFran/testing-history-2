@@ -10,10 +10,7 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	applymovement 2, WelcomeToTheHallOfFame_MoveRoseToPodium
 	applymovement 1, WelcomeToTheHallOfFame_WalkOutOfWay
 	waitmovement 2
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheHallOfFame_ToTheHundreds
-	callnative ClearMugshot
+	msgbox gText_WelcomeToTheHallOfFame_ToTheHundreds, , SPEAKER_ROSE
 	closemessage
 	playse SE_M_ENCORE2
 	call BattleFrontier_BattleDomeBattleRoom_EventScript_AudienceLookAround
@@ -26,10 +23,7 @@ WelcomeToTheHallOfFame_PostBattle_Dialogue::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	TeleportCamera 9, 6
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheHallOfFame_AndNowLetsCreate
-	callnative ClearMugshot
+	msgbox gText_WelcomeToTheHallOfFame_AndNowLetsCreate, , SPEAKER_ROSE
 	closemessage
 	setvar VAR_CHASECENTER_TOURNAMENT_STATE, NO_TOURNAMENT
 	clearflag FLAG_CHASECENTER_TOURNAMENT_HAPPENING

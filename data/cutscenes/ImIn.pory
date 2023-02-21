@@ -145,21 +145,12 @@ script ImIn_StartHouseBreak_Script {
 
         applymovement(SIEBOLD,Common_Movement_FaceDown)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_WereCertainNobody)
+        msgbox(gText_ImIn_WereCertainNobody,,SPEAKER_SIEBOLD)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_HasntLeftWorkEarly)
+        msgbox(gText_ImIn_HasntLeftWorkEarly,,SPEAKER_DRASNA)
 
-        //PSF TODO Figure out how to show that they're talking via walkie
-
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_WereInPosition)
+        msgbox(gText_ImIn_WereInPosition,,SPEAKER_ARIANA,,,PHONE_ON)
         closemessage
-        callnative(ClearMugshot)
 
         applymovement(ARCHER,ImIn_WalkAroundHouse)
         waitmovement(ARCHER)
@@ -171,26 +162,18 @@ script ImIn_StartHouseBreak_Script {
         applymovement(PLAYER,Common_Movement_FaceRight)
         waitmovement(PLAYER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_TheSideDoorWill)
+        msgbox(gText_ImIn_TheSideDoorWill,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_LetsMoveThen)
+        msgbox(gText_ImIn_LetsMoveThen,,SPEAKER_MALVA)
         closemessage
-        callnative(ClearMugshot)
-
+        
         applymovement(ARCHER,ImIn_WalkToSideDoor)
         waitmovement(ARCHER)
 
         call(ImIn_ReleaseFromBall_Script)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_BrickBreakSureComes)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_ImIn_BrickBreakSureComes,,SPEAKER_ARCHER)
+                closemessage
 
         playse(SE_M_BRICK_BREAK)
         applymovement(PKMNA,ImIn_AttackHouse)
@@ -233,12 +216,9 @@ script ImIn_UnlockDoor_Script {
 script Imin_BeginHouseSearch_Script {
     lock
         setvar(VAR_TOWER_RAID_STATE,SEARCHING_SABRINA_HOUSE)
-        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_OkaySpreadOut)
+        msgbox(gText_ImIn_OkaySpreadOut,,SPEAKER_MALVA)
         closemessage
-        callnative(ClearMugshot)
-
+        
         applymovement(MALVA,ImIn_SpreadOutHouse)
         applymovement(DRASNA,ImIn_SpreadOutHouse)
         applymovement(SIEBOLD,ImIn_SpreadOutHouse)
@@ -267,15 +247,10 @@ script ImIn_FindLockedDoor_Script {
 
         setvar(VAR_TOWER_RAID_STATE,FOUND_SABRINA_WARP_DOOR)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_IFoundADoor)
+        msgbox(gText_ImIn_IFoundADoor,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_GuessWereAllLooking)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_ImIn_GuessWereAllLooking,,SPEAKER_ARCHER)
+                closemessage
 
         release
         end
@@ -305,23 +280,14 @@ script ImIn_EnterCorrectCode_Script {
         call(ImIn_MoveObject_BeforeWarp_Script)
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_WereIn)
+        msgbox(gText_ImIn_WereIn,,SPEAKER_SIEBOLD)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_OnceYoureAllThrough)
+        msgbox(gText_ImIn_OnceYoureAllThrough,,SPEAKER_ARIANA,,,PHONE_ON)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GRIMSLEY)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_ImTooOldFor)
+        msgbox(gText_ImIn_ImTooOldFor,,SPEAKER_DRASNA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_ThesePeopleAreFighting)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_ImIn_ThesePeopleAreFighting,,SPEAKER_KAREN)
+                closemessage
 
         applymovement(MALVA,Common_Movement_WalkRight)
         waitmovement(MALVA)
@@ -369,37 +335,23 @@ script ImIn_PostWarpSplit_Dialogue {
 
         applymovement(PLAYER,Common_Movement_WalkUp2)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_WereAllIn)
+        msgbox(gText_ImIn_WereAllIn,,SPEAKER_SIEBOLD)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_ARIANA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_LetTheMarch)
+        msgbox(gText_ImIn_LetTheMarch,,SPEAKER_ARIANA,,,PHONE_ON)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_MARSHAL)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_LetsGoSecure)
+        msgbox(gText_ImIn_LetsGoSecure,,SPEAKER_SIEBOLD)
         closemessage
-        callnative(ClearMugshot)
-
+        
         applymovement(SIEBOLD_B,ImIn_WalkAwayFromWarpA)
         applymovement(DRASNA_B,ImIn_WalkAwayFromWarpA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_CAITLIN)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_ThisPlaceIsProbably)
+        msgbox(gText_ImIn_ThisPlaceIsProbably,,SPEAKER_KAREN)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_HasAnOfficeOn)
+        msgbox(gText_ImIn_HasAnOfficeOn,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SHAUNTAL)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_FloorThenLets)
+        msgbox(gText_ImIn_FloorThenLets,,SPEAKER_MALVA)
         closemessage
-        callnative(ClearMugshot)
-
+        
         applymovement(MALVA_B,ImIn_WalkAwayFromWarpC)
         applymovement(WIKSTROM_B,ImIn_WalkAwayFromWarpC)
         applymovement(ARCHER_B,ImIn_WalkAwayFromWarpC)
@@ -427,11 +379,8 @@ script ImIn_PreventPlayerProgress_Script {
         applymovement(PLAYER,Common_Movement_FaceUp)
         waitmovement(PLAYER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_OfficeIsOn)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_ImIn_OfficeIsOn,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
 
         applymovement(PLAYER,ImIn_WalkAwayStairs)
         waitmovement(PLAYER)
@@ -447,42 +396,24 @@ script ImIn_OfficeReveal_Dialogue{
         applymovement(PLAYER,ImIn_ApproachDesk_Movement)
         waitmovement(PLAYER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_DoYouLikeMy)
+        msgbox(gText_ImIn_DoYouLikeMy,,SPEAKER_BIANCA)
         closemessage
-        callnative(ClearMugshot)
+        
+        msgbox(gText_ImIn_WhatAreYouDoing,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_WhatAreYouDoing)
+        msgbox(gText_ImIn_IDidntChooseToAlign,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_IDidntChooseToAlign)
+        msgbox(gText_ImIn_WaitTrash,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_WaitTrash)
+        msgbox(gText_ImIn_WasDestryogingThisRegion,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_WasDestryogingThisRegion)
+        msgbox(gText_ImIn_SoYouJustDontCare,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_SoYouJustDontCare)
+        msgbox(gText_ImIn_LookAllThisHelping,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_LookAllThisHelping)
-
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_DaddyWontBeAble)
+        msgbox(gText_ImIn_DaddyWontBeAble,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         closemessage
-        callnative(ClearMugshot)
-
+        
         applymovement(BIANCA,ImIn_WalkFromDesk_Movement)
         waitmovement(BIANCA)
         applymovement(PLAYER,Common_Movement_FaceRight)
@@ -495,12 +426,9 @@ script ImIn_OfficeReveal_Dialogue{
 script ImIn_StartBiancaBattle_Script {
 
     lock
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_AreDeadDoYou)
+        msgbox(gText_ImIn_AreDeadDoYou,,SPEAKER_BIANCA)
         closemessage
-        callnative(ClearMugshot)
-
+        
         trainerbattle_no_intro(TRAINER_MAY_LILYCOVE_MUDKIP,gText_ImIn_HowDoesThisKeep)
         goto(ImIn_BiancaDefeated_Dialogue)
 }
@@ -517,23 +445,14 @@ script ImIn_BiancaDefeated_Dialogue {
     lock
         setvar(VAR_TOWER_RAID_STATE,DEFEATED_BIANCA_SALESFORCETOWER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_Wheres)
+        msgbox(gText_ImIn_Wheres,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_WhatsTheSecret)
+        msgbox(gText_ImIn_WhatsTheSecret,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_EverythingAboutIsBullshit)
+        msgbox(gText_ImIn_EverythingAboutIsBullshit,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_Floor)
-        callnative(ClearMugshot)
-        call(ImIn_RevealRoseWarp_Script)
+        msgbox(gText_ImIn_Floor,,SPEAKER_BIANCA)
+                call(ImIn_RevealRoseWarp_Script)
         closemessage
         release
         end
@@ -541,11 +460,8 @@ script ImIn_BiancaDefeated_Dialogue {
 
 script ImIn_PostBiancaBattle_Interact_Dialogue{
     if(var(VAR_TOWER_RAID_STATE) == DEFEATED_BIANCA_SALESFORCETOWER){
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ImIn_AllThatTraining,MSGBOX_NPC)
-        callnative(ClearMugshot)
-    }
+        msgbox(gText_ImIn_AllThatTraining,MSGBOX_NPC,SPEAKER_BIANCA)
+            }
     return
 }
 

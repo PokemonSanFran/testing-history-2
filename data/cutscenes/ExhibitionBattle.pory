@@ -31,18 +31,14 @@ script ExhibitionBattle_PrepPlayer_Script {
         setvar(VAR_STORYLINE_STATE,STORY_SAVE_DIANTHA)
         applymovement(ROSE, ExhibitionBattle_EncouragePlayer_Movement)
         waitmovement(0)
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_OkayTime,MSGBOX_YESNO)
+        msgbox(gText_ExhibitionBattle_OkayTime,MSGBOX_YESNO,SPEAKER_OAK)
 
         if (var(VAR_RESULT) == NO){
             msgbox(gText_ExhibitionBattle_NervousStill,MSGBOX_AUTOCLOSE)
-                callnative(ClearMugshot)
-                end
+                                end
         }
 
-    callnative(ClearMugshot)
-        fadescreen(FADE_TO_BLACK)
+            fadescreen(FADE_TO_BLACK)
         msgbox(gText_ExhibitionBattle_AndNow,MSGBOX_AUTOCLOSE)
         warpsilent(MAP_CHASECENTER_ARENA,1)
 }
@@ -96,94 +92,58 @@ script ExhibitionBattle_PostBattle_Dialogue {
         waitmovement(0)
         setvar(VAR_STORYLINE_STATE,STORY_CONGRATULATED_BY_ROSE)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_ThatWasPositively)
+        msgbox(gText_ExhibitionBattle_ThatWasPositively,,SPEAKER_ROSE)
 
         if(!defeated(TRAINER_WALLACE)){
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_IveNeverSeen)
-        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-        callnative(DrawMugshot)
+        msgbox(gText_ExhibitionBattle_IveNeverSeen,MSGBOX_DEFAULT,SPEAKER_ZOEY)
         }
 
-        msgbox(gText_ExhibitionBattle_ImConvinced)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_ExhibitionBattle_ImConvinced,,SPEAKER_ROSE)
+                closemessage
         release
         end
 }
 
 script ExhibitionBattle_Bianca_Dialogue {
-            setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-            callnative(DrawMugshot)
 
         if (var(VAR_TALKED_BIANCA) > 0){
-            msgbox(gText_ExhibitionBattle_IWonderIfThat)
+            msgbox(gText_ExhibitionBattle_IWonderIfThat,,SPEAKER_BIANCA)
             return
         }
 
         setvar(VAR_TALKED_BIANCA,1)
-        msgbox(gText_ExhibitionBattle_SickBattleOut)
+        msgbox(gText_ExhibitionBattle_SickBattleOut,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_YeahIHeardALittle)
+        msgbox(gText_ExhibitionBattle_YeahIHeardALittle,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_ImHeadingUpTheir)
+        msgbox(gText_ExhibitionBattle_ImHeadingUpTheir,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_IsntThat)
+        msgbox(gText_ExhibitionBattle_IsntThat,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_IveBeenWorkignWith)
+        msgbox(gText_ExhibitionBattle_IveBeenWorkignWith,,SPEAKER_BIANCA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_IThinkYoureGonna)
+        msgbox(gText_ExhibitionBattle_IThinkYoureGonna,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 }
 
 script ExhibitionBattle_Sabrina_Dialogue {
         lock
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_IDidntSeeYour,MSGBOX_NPC)
+        msgbox(gText_ExhibitionBattle_IDidntSeeYour,MSGBOX_NPC,SPEAKER_SABRINA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_UhhThanks)
+        msgbox(gText_ExhibitionBattle_UhhThanks,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_YourWorkDismantling)
+        msgbox(gText_ExhibitionBattle_YourWorkDismantling,,SPEAKER_SABRINA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_ImHappy)
+        msgbox(gText_ExhibitionBattle_ImHappy,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_WithTheirEntireLeadership)
+        msgbox(gText_ExhibitionBattle_WithTheirEntireLeadership,,SPEAKER_SABRINA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_WaitTheEliteFour)
+        msgbox(gText_ExhibitionBattle_WaitTheEliteFour,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_NotReallyItsASlight)
+        msgbox(gText_ExhibitionBattle_NotReallyItsASlight,,SPEAKER_SABRINA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_ExhibitionBattle_NowUhYoureWelcome)
-        callnative(ClearMugshot)
-        closemessage
+        msgbox(gText_ExhibitionBattle_NowUhYoureWelcome,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+                closemessage
         release
         end
 }

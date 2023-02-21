@@ -28,26 +28,16 @@ script WowYoureStrong_WalkToPlayer_Script {
 }
 
 script WowYoureStrong_Intro_Dialogue {
-    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-    callnative(DrawMugshot)
-    msgbox(gText_WowYoureStrong_WhatAShow)
-    callnative(ClearMugshot)
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_WowYoureStrong_OhUhThanksALot)
-    callnative(ClearMugshot)
-    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-    callnative(DrawMugshot)
-    msgbox(gText_WowYoureStrong_WhereMyManners)
-    callnative(ClearMugshot)
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_WowYoureStrong_ShouldHaveKnown)
-    callnative(ClearMugshot)
-    setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-    callnative(DrawMugshot)
-    msgbox(gText_WowYoureStrong_DreamBig)
-    callnative(ClearMugshot)
+    msgbox(gText_WowYoureStrong_WhatAShow,,SPEAKER_ROSE)
+    
+    msgbox(gText_WowYoureStrong_OhUhThanksALot,,SPEAKER_ZOEY)
+    
+    msgbox(gText_WowYoureStrong_WhereMyManners,,SPEAKER_ROSE)
+    
+    msgbox(gText_WowYoureStrong_ShouldHaveKnown,,SPEAKER_ZOEY)
+    
+    msgbox(gText_WowYoureStrong_DreamBig,,SPEAKER_ROSE)
+    
     goto(WowYoureStrong_ShowTower_Script) 
 }
 
@@ -58,11 +48,10 @@ script WowYoureStrong_ShowTower_Script {
     fadescreen(FADE_FROM_BLACK)
 
     applymovement(CAMERA,WowYoureStrong_PanCameraUp_Movement)
-    callnative(DrawMugshot)
-    msgbox(gText_WowYoureStrong_YouShouldComeBy)
+    msgbox(gText_WowYoureStrong_YouShouldComeBy,,SPEAKER_ROSE)
     waitmovement(CAMERA)
     closemessage
-    callnative(ClearMugshot)
+    
 
     fadescreen(FADE_TO_BLACK)
     TeleportCamera(28,24)
@@ -73,9 +62,8 @@ script WowYoureStrong_ShowTower_Script {
 }
 
 script WowYoureStrong_End_Dialouge {
-    callnative(DrawMugshot)
-    msgbox(gText_WowYoureStrong_MeetingWithMayor)
-    callnative(ClearMugshot)
+    msgbox(gText_WowYoureStrong_MeetingWithMayor,,SPEAKER_ROSE)
+    
     closemessage
     applymovement(ROSE,WowYoureStrong_WalkToMayor_Movement)
     waitmovement(ROSE)
@@ -95,37 +83,29 @@ script WowYourStrong_ArcherConfrontation_Dialogue{
     applymovement(ARCHER,WowYoureStrong_ArcherToPlayer_Movement)
     waitmovement(ARCHER)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-    msgbox(gText_WowYoureStrong_IDontGetIt)
+    msgbox(gText_WowYoureStrong_IDontGetIt,,SPEAKER_ARCHER)
     
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
     if (var(VAR_PSFROUTE9_STATE) == DEFEATED_ARCHER_PSFROUTE9){
-        msgbox(gText_WowYoureStrong_YouAgain)
+        msgbox(gText_WowYoureStrong_YouAgain,,SPEAKER_ZOEY)
     }else{
-        msgbox(gText_WowYoureStrong_WhatAreYouTalking)
+        msgbox(gText_WowYoureStrong_WhatAreYouTalking,,SPEAKER_ZOEY)
     }
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HUGH)
-    callnative(DrawMugshot)
-    msgbox(gText_WowYoureStrong_IJustCant)
+    msgbox(gText_WowYoureStrong_IJustCant,,SPEAKER_ARCHER)
     closemessage
-    callnative(ClearMugshot)
+    
 
     applymovement(ARCHER,WowYoureStrong_WalkToMayor_Movement)
     waitmovement(ARCHER)
     removeobject(ARCHER)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
     if (var(VAR_PSFROUTE9_STATE) == DEFEATED_ARCHER_PSFROUTE9){
-        msgbox(gText_WowYoureStrong_IHopeThats)
+        msgbox(gText_WowYoureStrong_IHopeThats,,SPEAKER_ZOEY)
     }else{
-        msgbox(gText_WowYoureStrong_ThisRegionHasSome)
+        msgbox(gText_WowYoureStrong_ThisRegionHasSome,,SPEAKER_ZOEY)
     }
     closemessage
-    callnative(ClearMugshot)
+    
 
     release
     end

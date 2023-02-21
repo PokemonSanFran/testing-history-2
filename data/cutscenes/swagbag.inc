@@ -30,16 +30,9 @@ Swagbag_WelcomeToSanFran_Dialogue::
 	waitmovement 0
 	applymovement 2, swagbag_GreetPlayer
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_Swagbag_WelcomeToRegion
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Swagbag_GreatThePrivateCar
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_Swagbag_ExcellentYouveAlready
-	callnative ClearMugshot
+	msgbox gText_Swagbag_WelcomeToRegion, , SPEAKER_OAK
+	msgbox gText_Swagbag_GreatThePrivateCar, , SPEAKER_ZOEY
+	msgbox gText_Swagbag_ExcellentYouveAlready, , SPEAKER_OAK
 	closemessage
 	applymovement 1, swagbag_TurnFaceOak_Movement
 	waitmovement 1
@@ -48,9 +41,7 @@ Swagbag_WelcomeToSanFran_Dialogue::
 
 
 Swagbag_LeagueStipend_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_Swagbag_SoFirstYoullEach
+	msgbox gText_Swagbag_SoFirstYoullEach, , SPEAKER_OAK
 	msgbox gText_Swagbag_BecauseTheBoard
 	closemessage
 	addmoney 50000, 0
@@ -62,19 +53,10 @@ Swagbag_LeagueStipend_Dialogue::
 
 Swagbag_PokedexApps_Dialogue::
 	msgbox gText_Swagbag_AlsoWeveGoneAhead
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_Swagbag_InvasiveMuch
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_Swagbag_WellAskNextTime
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Swagbag_TeachyTVSoIShould
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_Swagbag_Correct
-	callnative ClearMugshot
+	msgbox gText_Swagbag_InvasiveMuch, , SPEAKER_BIANCA
+	msgbox gText_Swagbag_WellAskNextTime, , SPEAKER_OAK
+	msgbox gText_Swagbag_TeachyTVSoIShould, , SPEAKER_ZOEY
+	msgbox gText_Swagbag_Correct, , SPEAKER_OAK
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox gText_Swagbag_PlayerRecivedMoney
 	waitmessage
@@ -84,20 +66,11 @@ Swagbag_PokedexApps_Dialogue::
 
 
 Swagbag_WhenCanWeStart_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_Swagbag_IBelieveThatsEverything
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_Swagbag_YeahWhenTheTutorial
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_Swagbag_TheGymChallengeOfficially
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_Swagbag_FineIllExploreTheCity
+	msgbox gText_Swagbag_IBelieveThatsEverything, , SPEAKER_OAK
+	msgbox gText_Swagbag_YeahWhenTheTutorial, , SPEAKER_BIANCA
+	msgbox gText_Swagbag_TheGymChallengeOfficially, , SPEAKER_OAK
+	msgbox gText_Swagbag_FineIllExploreTheCity, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, swagbag_LeaveCompound
 	waitmovement 0
 	playse SE_EXIT
@@ -107,14 +80,9 @@ Swagbag_WhenCanWeStart_Dialogue::
 
 
 Swagbag_DontLeaveSouthbay_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_Swagbag_IllBeWorkingOnMyLaptop
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Swagbag_GotItThanks
+	msgbox gText_Swagbag_IllBeWorkingOnMyLaptop, , SPEAKER_OAK
+	msgbox gText_Swagbag_GotItThanks, , SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	applymovement 2, swagbag_WalkToLaptop
 	waitmovement 0
 	fadedefaultbgm
@@ -124,8 +92,7 @@ Swagbag_DontLeaveSouthbay_Dialogue::
 
 
 swagbag_HelpPlayer_Script::
-	msgbox gText_Swagbag_InTheActualGame, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_Swagbag_InTheActualGame, MSGBOX_NPC, SPEAKER_OAK
 	applymovement 2, Common_Movement_FaceRight
 	waitmovement 0
 	return
@@ -133,10 +100,7 @@ swagbag_HelpPlayer_Script::
 
 swagbag_PreventPlayerLeavingSouthbay_Event_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_DontLeaveSouthbay_Text1
-	callnative ClearMugshot
+	msgbox gText_DontLeaveSouthbay_Text1, , SPEAKER_ZOEY
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, swagbag_WalkBackwards
 	waitmovement 0

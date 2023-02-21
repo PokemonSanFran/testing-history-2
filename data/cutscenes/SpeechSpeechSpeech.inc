@@ -98,33 +98,24 @@ SpeechSpeechSpeech_PositionPlayer_Script::
 
 
 SpeechSpeechSpeech_Intro_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_ThankYouAll
-	msgbox gText_SpeechSpeechSpeech_FirstOfAll
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_ThankYouAll, , SPEAKER_GIOVANNI
+	msgbox gText_SpeechSpeechSpeech_FirstOfAll, , SPEAKER_GIOVANNI
 	closemessage
 	call SpeechSpeechSpeech_CrowdLookAround_Script
 	call SpeechSpeechSpeech_ResetFacing_Script
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_ForAllYouve
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_ForAllYouve, , SPEAKER_ARIANA
 	closemessage
 	turnvobject 13, DIR_WEST
 	delay 16
 	turnvobject 15, DIR_EAST
-	msgbox gText_SpeechSpeechSpeech_WaitWhat
+	msgbox gText_SpeechSpeechSpeech_WaitWhat, SPEAKER_ROCKET_MEMBER_A
 	turnvobject 16, DIR_EAST
 	delay 16
 	turnvobject 18, DIR_EAST
-	msgbox gText_SpeechSpeechSpeech_AreTheyEven
+	msgbox gText_SpeechSpeechSpeech_AreTheyEven, SPEAKER_ROCKET_MEMBER_B
 	closemessage
 	call SpeechSpeechSpeech_ResetFacing_Script
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_HasMyFullConfidence
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_HasMyFullConfidence, , SPEAKER_GIOVANNI
 	closemessage
 	goto SpeechSpeechSpeech_StartTransformation_Script
 	return
@@ -159,12 +150,9 @@ SpeechSpeechSpeech_StartTransformation_Script::
 
 SpeechSpeechSpeech_EliteReveal_Dialogue::
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_Us
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_Us, , SPEAKER_MALVA
 	closemessage
-	msgbox gText_SpeechSpeechSpeech_HolyShit
+	msgbox gText_SpeechSpeechSpeech_HolyShit, , SPEAKER_ROCKET_MEMBER_A
 	closemessage
 	playse SE_M_EARTHQUAKE
 	setvar VAR_0x8004, 2
@@ -180,63 +168,42 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	waitmovement 12
 	delay 100
 	waitstate
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_IsAnybodyHurt
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_IsAnybodyHurt, , SPEAKER_ARIANA
 	closemessage
-	msgbox gText_SpeechSpeechSpeech_Yeah
-	msgbox gText_SpeechSpeechSpeech_HellYes
+	msgbox gText_SpeechSpeechSpeech_Yeah, , SPEAKER_ROCKET_MEMBER_A
+	msgbox gText_SpeechSpeechSpeech_HellYes, , SPEAKER_ROCKET_MEMBER_A
 	closemessage
 	applymovement 12, SpeechSpeechSpeech_LookAround
 	waitmovement 12
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_YouAllKnowHowCompanies
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_YouAllKnowHowCompanies, , SPEAKER_ARIANA
 	closemessage
-	msgbox gText_SpeechSpeechSpeech_WereFinally
+	msgbox gText_SpeechSpeechSpeech_WereFinally, , SPEAKER_ROCKET_MEMBER_A
 	closemessage
 	applymovement 12, SpeechSpeechSpeech_LookAround
-	msgbox gText_SpeechSpeechSpeech_ThisIsInsane
+	msgbox gText_SpeechSpeechSpeech_ThisIsInsane, , SPEAKER_ROCKET_MEMBER_B
 	closemessage
 	waitmovement 12
 	applymovement 2, Common_Movement_WalkDown
 	waitmovement 2
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_WeWantToBegin
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_WeWantToBegin, , SPEAKER_DRASNA
 	closemessage
 	applymovement 5, Common_Movement_WalkDown
 	waitmovement 5
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_4LeadCharge
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_4LeadCharge, , SPEAKER_DRASNA
 	closemessage
 	applymovement 5, SpeechSpeechSpeech_WalkBackwards
 	applymovement 6, Common_Movement_WalkDown
 	waitmovement 6
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_3LeadCharge
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_3LeadCharge, , SPEAKER_DRASNA
 	closemessage
 	applymovement 6, SpeechSpeechSpeech_WalkBackwards
 	applymovement 3, Common_Movement_WalkDown
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_1LeadCharge
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_1LeadCharge, , SPEAKER_DRASNA
 	closemessage
 	applymovement 3, SpeechSpeechSpeech_WalkBackwards
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_IllBeHandling
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_IllBeHandling, , SPEAKER_MALVA
 	closemessage
 	fadescreen FADE_TO_BLACK
 	setvar VAR_ALCATRAZ_STATE, POST_SPEECHSPEECH
@@ -246,21 +213,14 @@ SpeechSpeechSpeech_EliteReveal_Dialogue::
 	applymovement 1, SpeechSpeechSpeech_WalkToPlayer
 	fadescreen FADE_FROM_BLACK
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_DamnThisShit
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_ItFeelsReally
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_SpeechSpeechSpeech_Yeah
+	msgbox gText_SpeechSpeechSpeech_DamnThisShit, , SPEAKER_ARCHER
+	msgbox gText_SpeechSpeechSpeech_ItFeelsReally, , SPEAKER_ZOEY
+	msgbox gText_SpeechSpeechSpeech_Yeah, , SPEAKER_ARCHER
 	compare VAR_STORYLINE_STATE, STORY_RAVE_AND_SPEECH_COMPLETE
 	goto_if_ne SpeechSpeechSpeech_EliteReveal_Dialogue_2
-	msgbox gText_SpeechSpeechSpeech_ByTheWay
+	msgbox gText_SpeechSpeechSpeech_ByTheWay, , SPEAKER_ARCHER
 SpeechSpeechSpeech_EliteReveal_Dialogue_1:
-	msgbox gText_SpeechSpeechSpeech_Peace
-	callnative ClearMugshot
+	msgbox gText_SpeechSpeechSpeech_Peace, , SPEAKER_ARCHER
 	closemessage
 	applymovement 1, SpeechSpeechSpeech_LeaveScreen
 	waitmovement 1
@@ -269,7 +229,7 @@ SpeechSpeechSpeech_EliteReveal_Dialogue_1:
 	end
 
 SpeechSpeechSpeech_EliteReveal_Dialogue_2:
-	msgbox gText_SpeechSpeechSpeech_YeahAlsoAre
+	msgbox gText_SpeechSpeechSpeech_YeahAlsoAre, , SPEAKER_ARCHER
 	goto SpeechSpeechSpeech_EliteReveal_Dialogue_1
 
 

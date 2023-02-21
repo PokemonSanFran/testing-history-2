@@ -1,4 +1,5 @@
 #include "global.h"
+#include "mugshot.h"
 #include "text.h"
 #include "text_window.h"
 #include "window.h"

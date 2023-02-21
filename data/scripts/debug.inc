@@ -72,6 +72,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
+	msgbox gText_GroupStages_OhRight, , SPEAKER_ZOEY, TAIL_THOUGHT
 	return
 
 

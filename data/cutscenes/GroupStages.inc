@@ -27,11 +27,8 @@ GroupStages_GreetBeforeStart_Dialogue::
 	waitmovement 2
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_GroupStages_EasyPeasy
+	msgbox gText_GroupStages_EasyPeasy, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	applymovement 2, GroupStages_LeaveLockers
 	waitmovement 2
 	playse SE_EXIT
@@ -47,7 +44,7 @@ GroupStages_GreetBeforeStart_Dialogue::
 GroupStages_PreparePlayer_Script::
 	lock
 	faceplayer
-	msgbox gText_GroupStages_OnceYouStart, MSGBOX_YESNO
+	msgbox gText_GroupStages_OnceYouStart, MSGBOX_YESNO, SPEAKER_LEAGUE_STAFF_A
 	closemessage
 	compare VAR_RESULT, YES
 	goto_if_eq GroupStages_PreparePlayer_Script_2
@@ -114,12 +111,12 @@ GroupStages_ChooseParty_Script::
 GroupStages_RoundRobinMatch_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox gText_GroupStages_Placeholder
+	msgbox gText_GroupStages_Placeholder, , SPEAKER_ANNOUNCER, TAIL_SHOUT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
 	waitmovement 1
-	msgbox gText_GroupStages_Placeholder
+	msgbox gText_GroupStages_Placeholder, , SPEAKER_ACE_TRAINER_M
 	closemessage
 	switch VAR_CHASECENTER_TOURNAMENT_STATE
 	case PRE_BATTLE_1, GroupStages_RoundRobinMatch_Script_3
@@ -150,12 +147,12 @@ GroupStages_PostRoundRobinMatch_Script::
 	compare VAR_CHASECENTER_TOURNAMENT_STATE, PRE_BATTLE_4
 	goto_if_eq GroupStages_PostRoundRobinMatch_Script_2
 GroupStages_PostRoundRobinMatch_Script_1:
-	msgbox gText_GroupStages_Placeholder
+	msgbox gText_GroupStages_Placeholder, , SPEAKER_ANNOUNCER
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_GetPlayerIntoPosition
 	applymovement 1, GroupStages_WalkOffStage
 	waitmovement 1
-	msgbox gText_GroupStages_Placeholder
+	msgbox gText_GroupStages_Placeholder, , SPEAKER_ANNOUNCER
 	call GroupStages_ChooseParty_Script
 	removeobject 1
 	call Chasecenter_Arena_MapScripts_OnTransition
@@ -172,7 +169,7 @@ GroupStages_RoundRobinGroupComplete_Script::
 	setvar VAR_STORYLINE_STATE, STORY_GROUP_STATE_COMPLETE
 	applymovement OBJ_EVENT_ID_PLAYER, GroupStages_WalkToCenterStage
 	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox gText_GroupStages_Placeholder
+	msgbox gText_GroupStages_Placeholder, SPEAKER_ANNOUNCER, TAIL_SHOUT, EMOTE_SHOCK
 	special DoDomeConfetti
 	playse SE_APPLAUSE
 	waitse

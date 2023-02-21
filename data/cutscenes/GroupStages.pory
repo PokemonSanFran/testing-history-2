@@ -39,11 +39,8 @@ script GroupStages_GreetBeforeStart_Dialogue {
         waitmovement(BIANCA)
         applymovement(PLAYER,Common_Movement_FaceRight)
         waitmovement(PLAYER)
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_GroupStages_EasyPeasy)
+        msgbox(gText_GroupStages_EasyPeasy,,SPEAKER_BIANCA)
         closemessage
-        callnative(ClearMugshot)
         applymovement(BIANCA,GroupStages_LeaveLockers)
         waitmovement(BIANCA)
         playse(SE_EXIT)
@@ -59,7 +56,7 @@ script GroupStages_GreetBeforeStart_Dialogue {
 script GroupStages_PreparePlayer_Script {
     lock
         faceplayer
-        msgbox(gText_GroupStages_OnceYouStart,MSGBOX_YESNO)
+        msgbox(gText_GroupStages_OnceYouStart,MSGBOX_YESNO,SPEAKER_LEAGUE_STAFF_A)
         closemessage
 
         if (var(VAR_RESULT) == YES){
@@ -110,12 +107,12 @@ script GroupStages_ChooseParty_Script {
 script GroupStages_RoundRobinMatch_Script {
     applymovement(PLAYER,Common_Movement_FaceRight)
         waitmovement(PLAYER)
-        msgbox(gText_GroupStages_Placeholder)
+        msgbox(gText_GroupStages_Placeholder,,SPEAKER_ANNOUNCER,TAIL_SHOUT)
         closemessage
         applymovement(PLAYER,Common_Movement_WalkRight)
         applymovement(ENTRANT,Common_Movement_WalkLeft)
         waitmovement(ENTRANT)
-        msgbox(gText_GroupStages_Placeholder)
+        msgbox(gText_GroupStages_Placeholder,,SPEAKER_ACE_TRAINER_M)
         closemessage
 
         switch (var(VAR_CHASECENTER_TOURNAMENT_STATE)){
@@ -137,13 +134,13 @@ script GroupStages_PostRoundRobinMatch_Script {
             goto(GroupStages_RoundRobinGroupComplete_Script)
         }
 
-    msgbox(gText_GroupStages_Placeholder)
+    msgbox(gText_GroupStages_Placeholder,,SPEAKER_ANNOUNCER)
         closemessage
 
         applymovement(PLAYER,GroupStages_GetPlayerIntoPosition)
         applymovement(ENTRANT,GroupStages_WalkOffStage)
         waitmovement(ENTRANT)
-        msgbox(gText_GroupStages_Placeholder)
+        msgbox(gText_GroupStages_Placeholder,,SPEAKER_ANNOUNCER)
         call(GroupStages_ChooseParty_Script)
 
         removeobject(ENTRANT)
@@ -158,7 +155,7 @@ script GroupStages_RoundRobinGroupComplete_Script {
         setvar(VAR_STORYLINE_STATE,STORY_GROUP_STATE_COMPLETE)
         applymovement(PLAYER,GroupStages_WalkToCenterStage)
         waitmovement(PLAYER)
-        msgbox(gText_GroupStages_Placeholder)
+        msgbox(gText_GroupStages_Placeholder,SPEAKER_ANNOUNCER,TAIL_SHOUT,EMOTE_SHOCK)
         special(DoDomeConfetti)
         playse(SE_APPLAUSE)
         waitse

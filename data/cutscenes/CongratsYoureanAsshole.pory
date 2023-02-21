@@ -40,45 +40,28 @@ if (var(VAR_SALESFORCETOWER_CONFERENCE_STATE) == START_FALSE_TIMELINE){
 
 setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,START_FALSE_TIMELINE)
 
-setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_CongratsYoureanAsshole_WelcomeBack,MSGBOX_NPC)
+msgbox(gText_CongratsYoureanAsshole_WelcomeBack,MSGBOX_NPC,SPEAKER_OAK)
 
-setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-callnative(DrawMugshot)
-msgbox(gText_CongratsYoureanAsshole_YeahIWantToWork)
-callnative(ClearMugshot)
+msgbox(gText_CongratsYoureanAsshole_YeahIWantToWork,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 closemessage
 
-setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-callnative(DrawMugshot)
-msgbox(gText_CongratsYoureanAsshole_WevePreparedAStatement)
+msgbox(gText_CongratsYoureanAsshole_WevePreparedAStatement,MSGBOX_DEFAULT,SPEAKER_OAK)
 
-setvar(VAR_MUGSHOT, MUGSHOT_N)
-callnative(DrawMugshot)
-msgbox(gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal)
+msgbox(gText_CongratsYoureanAsshole_WedLikeYouTwoToSignal,MSGBOX_DEFAULT,SPEAKER_KOGA)
 
 applymovement(KOGA,Common_Movement_WalkInPlaceLeft)
 waitmovement(KOGA)
 
-setvar(VAR_MUGSHOT, MUGSHOT_N)
-callnative(DrawMugshot)
-msgbox(gText_CongratsYoureanAsshole_TheresNoTurningBack)
-callnative(ClearMugshot)
+msgbox(gText_CongratsYoureanAsshole_TheresNoTurningBack,MSGBOX_DEFAULT,SPEAKER_KOGA)
 closemessage
 }
 
 script CongratsYoureanAsshole_FalseTimelineSplit_Script {
 faceplayer
-setvar(VAR_MUGSHOT, MUGSHOT_N)
-callnative(DrawMugshot)
-msgbox(gText_CongratsYoureanAsshole_WereGoingToSend,MSGBOX_YESNO)
+msgbox(gText_CongratsYoureanAsshole_WereGoingToSend,MSGBOX_YESNO,SPEAKER_KOGA)
 
 if (var(VAR_RESULT) == NO){
-setvar(VAR_MUGSHOT, MUGSHOT_N)
-callnative(DrawMugshot)
-msgbox(gText_CongratsYoureanAsshole_OfCouseIfTheres)
-callnative(ClearMugshot)
+msgbox(gText_CongratsYoureanAsshole_OfCouseIfTheres,MSGBOX_DEFAULT,SPEAKER_KOGA)
 closemessage
 release
 end
@@ -93,18 +76,12 @@ end
         msgbox(gText_CongratsYoureanAsshole_PresenceIn)
         fadescreen(FADE_FROM_BLACK)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_SABRINA)
-        callnative(DrawMugshot)
-        msgbox(gText_CongratsYoureanAsshole_ThankYouForThat)
+        msgbox(gText_CongratsYoureanAsshole_ThankYouForThat,MSGBOX_DEFAULT,SPEAKER_SABRINA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_CongratsYoureanAsshole_ThingsWillTake)
+        msgbox(gText_CongratsYoureanAsshole_ThingsWillTake,MSGBOX_DEFAULT,SPEAKER_KOGA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_CongratsYoureanAsshole_ThatsTheSpirit)
-        callnative(ClearMugshot)
+        msgbox(gText_CongratsYoureanAsshole_ThatsTheSpirit,MSGBOX_DEFAULT,SPEAKER_KOGA)
+
         closemessage
 
         fadescreen(FADE_TO_BLACK)

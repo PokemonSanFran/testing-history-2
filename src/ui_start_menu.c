@@ -235,7 +235,6 @@ void Menu_Init(MainCallback callback)
     u16 temp = VarGet(DEBUG_VAR);
     temp++;
     VarSet(DEBUG_VAR, temp);
-    mgba_printf(MGBA_LOG_WARN, "Number of Start Menu Reloads: %d", temp);
     */
 
     if ((sMenuDataPtr = AllocZeroed(sizeof(struct MenuResources))) == NULL)
@@ -251,11 +250,9 @@ void Menu_Init(MainCallback callback)
     sMenuDataPtr->currentAppId = VarGet(CURRENT_APP_ID_VAR) % NUM_APPS_PER_SCREEN;
     if(VarGet(CURRENT_APP_ID_VAR) >= NUM_APPS_PER_SCREEN){
         sMenuDataPtr->areYouOnSecondScreen = TRUE;
-        mgba_printf(MGBA_LOG_WARN, "You are on the second screen with the icon %d", VarGet(CURRENT_APP_ID_VAR));
     }
     else{
         sMenuDataPtr->areYouOnSecondScreen = FALSE;
-        mgba_printf(MGBA_LOG_WARN, "You are on the first screen with the icon %d", VarGet(CURRENT_APP_ID_VAR));
     }
     
     sMenuDataPtr->TempAppId = 0;
@@ -1165,12 +1162,10 @@ static void Task_MenuMain(u8 taskId)
         if(sMenuDataPtr->areYouOnSecondScreen){
             u8 tempAppIndex = sMenuDataPtr->currentAppId + NUM_APPS_PER_SCREEN;
             VarSet(CURRENT_APP_ID_VAR, tempAppIndex);
-            mgba_printf(MGBA_LOG_WARN, "Second Screen App %d", tempAppIndex);
         }
         else{
             u8 tempAppIndex = sMenuDataPtr->currentAppId;
             VarSet(CURRENT_APP_ID_VAR, tempAppIndex);
-            mgba_printf(MGBA_LOG_WARN, "First Screen App %d", tempAppIndex);
         }
 
         PlaySE(SE_SELECT);
@@ -1235,12 +1230,10 @@ static void Task_MenuMain(u8 taskId)
 		if(sMenuDataPtr->areYouOnSecondScreen){
             u8 tempAppIndex = sMenuDataPtr->currentAppId + NUM_APPS_PER_SCREEN;
             VarSet(CURRENT_APP_ID_VAR, tempAppIndex);
-            mgba_printf(MGBA_LOG_WARN, "Second Screen App %d", tempAppIndex);
         }
         else{
             u8 tempAppIndex = sMenuDataPtr->currentAppId;
             VarSet(CURRENT_APP_ID_VAR, tempAppIndex);
-            mgba_printf(MGBA_LOG_WARN, "First Screen App %d", tempAppIndex);
         }
 
 		PlaySE(SE_SELECT);

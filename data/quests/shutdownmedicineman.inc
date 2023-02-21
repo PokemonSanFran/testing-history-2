@@ -42,14 +42,14 @@ Quest_ShutDownMedicineMan_Interact_Finnlay_Script_3:
 
 
 Quest_ShutDownMedicineMan_StartQuest_Dialogue::
-	msgbox gText_ShutDownMedicineMan_WeHaveAnAssociate
-	msgbox gText_ShutDownMedicineMan_WantToMakeSure
+	msgbox gText_ShutDownMedicineMan_WeHaveAnAssociate, , SPEAKER_DEFAULT
+	msgbox gText_ShutDownMedicineMan_WantToMakeSure, , SPEAKER_DEFAULT
 	startquest QUEST_SHUTDOWNMEDICINEMAN
 	return
 
 
 Quest_ShutDownMedicineMan_ActiveDialogue::
-	msgbox gText_ShutDownMedicineMan_LetMeKnowWhen, MSGBOX_NPC
+	msgbox gText_ShutDownMedicineMan_LetMeKnowWhen, MSGBOX_NPC, SPEAKER_DEFAULT
 	end
 
 
@@ -59,12 +59,9 @@ Quest_ShutDownMedicineMan_MakePurchase_Dialogue::
 	compare VAR_RESULT, 0
 	goto_if_eq Quest_ShutDownMedicineMan_MakePurchase_Dialogue_2
 	questmenu QUEST_MENU_SET_REWARD, QUEST_SHUTDOWNMEDICINEMAN
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ShutDownMedicineMan_OkayMadeThePurchase
-	msgbox gText_ShutDownMedicineMan_HeyCanIGetASelfie
-	callnative ClearMugshot
-	msgbox gText_ShutDownMedicineMan_OhMyGodYes
+	msgbox gText_ShutDownMedicineMan_OkayMadeThePurchase, , SPEAKER_ZOEY, TAIL_THOUGHT
+	msgbox gText_ShutDownMedicineMan_HeyCanIGetASelfie, , SPEAKER_ZOEY
+	msgbox gText_ShutDownMedicineMan_OhMyGodYes, , SPEAKER_DEFAULT
 	closemessage
 	release
 	end
@@ -75,7 +72,7 @@ Quest_ShutDownMedicineMan_MakePurchase_Dialogue_2:
 
 
 Quest_ShutDownMedicineMan_Reward_Dialogue::
-	msgbox gText_ShutDownMedicineMan_GoodWork
+	msgbox gText_ShutDownMedicineMan_GoodWork, , SPEAKER_DEFAULT
 	call Quest_ShutDownMedicineMan_HandleMoney_Script
 	opendoor 28, 15
 	waitdooranim

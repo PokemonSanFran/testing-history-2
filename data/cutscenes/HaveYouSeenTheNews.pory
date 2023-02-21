@@ -15,31 +15,19 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
     applymovement(PLAYER, EnterTheMaster_ApproachSiebold)
     waitmovement(0)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_HaveYouSeenTheNews_WedLikeYourHelp)
+    msgbox(gText_HaveYouSeenTheNews_WedLikeYourHelp,,SPEAKER_OAK)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_HaveYouSeenTheNews_ShitWhatDid)
+    msgbox(gText_HaveYouSeenTheNews_ShitWhatDid,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE) callnative(DrawMugshot)
-    msgbox(gText_HaveYouSeenTheNews_YoureStartingToSound)
+    msgbox(gText_HaveYouSeenTheNews_YoureStartingToSound,,SPEAKER_OAK)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-    callnative(DrawMugshot)
-    msgbox(gText_HaveYouSeenTheNews_HowAreWeGoing)
+    msgbox(gText_HaveYouSeenTheNews_HowAreWeGoing,,SPEAKER_BIANCA)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_HaveYouSeenTheNews_NoTimeToExplain, MSGBOX_YESNO)
+    msgbox(gText_HaveYouSeenTheNews_NoTimeToExplain, MSGBOX_YESNO,,SPEAKER_OAK)
 
     if (var (VAR_RESULT) == NO) {
 
-        setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-        callnative(DrawMugshot)
-        msgbox(gText_HaveYouSeenTheNews_FineButDontDawdle)
-        callnative(ClearMugshot)
+        msgbox(gText_HaveYouSeenTheNews_FineButDontDawdle,,SPEAKER_OAK)
         closemessage
 
         applymovement(OAK, HaveYouSeenTheNews_LeaveClearingA)
@@ -50,10 +38,8 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
         removeobject(BIANCA)
         removeobject(OAK)
     } else {
-        setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-        callnative(DrawMugshot)
-        msgbox(gText_HaveYouSeenTheNews_CoolTheCar)
-        callnative(ClearMugshot)
+        msgbox(gText_HaveYouSeenTheNews_CoolTheCar,,SPEAKER_BIANCA)
+        
         closemessage
         releaseall
         warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS, 17,29)

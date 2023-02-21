@@ -18,9 +18,9 @@ Quest_InstallNatureProbes_Interact_Liidia_Script_3:
 
 
 Quest_InstallNatureProbes_StartQuest_Dialogue::
-	msgbox gText_InstallNatureProbes_GeezIGottaWorkTonight, MSGBOX_NPC
-	msgbox gText_InstallNatureProbes_CanYouHelp, MSGBOX_NPC
-	msgbox gText_InstallNatureProbes_YouHaveAPokedex, MSGBOX_NPC
+	msgbox gText_InstallNatureProbes_GeezIGottaWorkTonight, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_InstallNatureProbes_CanYouHelp, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_InstallNatureProbes_YouHaveAPokedex, MSGBOX_NPC, SPEAKER_DEFAULT
 	startquest QUEST_INSTALLNATUREPROBES
 	release
 	end
@@ -28,7 +28,7 @@ Quest_InstallNatureProbes_StartQuest_Dialogue::
 
 Quest_InstallNatureProbes_Active_Dialogue::
 	call Quest_InstallNatureProbes_CheckCompletionRate_Script
-	msgbox gText_InstallNatureProbes_WhatProbes, MSGBOX_NPC
+	msgbox gText_InstallNatureProbes_WhatProbes, MSGBOX_NPC, SPEAKER_DEFAULT
 	compare VAR_TEMP_1, 0
 	goto_if_eq Quest_InstallNatureProbes_Active_Dialogue_2
 Quest_InstallNatureProbes_Active_Dialogue_1:
@@ -40,15 +40,15 @@ Quest_InstallNatureProbes_Active_Dialogue_4:
 	return
 
 Quest_InstallNatureProbes_Active_Dialogue_2:
-	msgbox gText_InstallNatureProbes_TheProbeInTheForest, MSGBOX_NPC
+	msgbox gText_InstallNatureProbes_TheProbeInTheForest, MSGBOX_NPC, SPEAKER_DEFAULT
 	goto Quest_InstallNatureProbes_Active_Dialogue_1
 
 Quest_InstallNatureProbes_Active_Dialogue_5:
-	msgbox gText_InstallNatureProbes_TheProbeOnTheHill, MSGBOX_NPC
+	msgbox gText_InstallNatureProbes_TheProbeOnTheHill, MSGBOX_NPC, SPEAKER_DEFAULT
 	goto Quest_InstallNatureProbes_Active_Dialogue_4
 
 Quest_InstallNatureProbes_Active_Dialogue_7:
-	msgbox gText_InstallNatureProbes_TheProbeByTheShore, MSGBOX_NPC
+	msgbox gText_InstallNatureProbes_TheProbeByTheShore, MSGBOX_NPC, SPEAKER_DEFAULT
 	return
 
 
@@ -57,10 +57,7 @@ Quest_InstallNatureProbes_InstallForestProbe_Script::
 	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_INSTALLNATUREPROBES, SUB_QUEST_1
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_InstallNatureProbes_InstallForestProbe_Script_2
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_InstallNatureProbes_YeahThisSeemsToMatch
-	callnative ClearMugshot
+	msgbox gText_InstallNatureProbes_YeahThisSeemsToMatch, , SPEAKER_ZOEY
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_INSTALLNATUREPROBES, SUB_QUEST_1
 	call Quest_InstallNatureProbes_CheckCompletionRate_Script
 	playse SE_CONTEST_HEART
@@ -81,10 +78,7 @@ Quest_InstallNatureProbes_InstallHillProbe_Script::
 	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_INSTALLNATUREPROBES, SUB_QUEST_2
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_InstallNatureProbes_InstallHillProbe_Script_2
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_InstallNatureProbes_ThisIsAsGoodOfAHill
-	callnative ClearMugshot
+	msgbox gText_InstallNatureProbes_ThisIsAsGoodOfAHill, , SPEAKER_ZOEY
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_INSTALLNATUREPROBES, SUB_QUEST_2
 	call Quest_InstallNatureProbes_CheckCompletionRate_Script
 	playse SE_CONTEST_HEART
@@ -105,10 +99,7 @@ Quest_InstallNatureProbes_InstallShoreProbe_Script::
 	subquestmenu QUEST_MENU_CHECK_COMPLETE, QUEST_INSTALLNATUREPROBES, SUB_QUEST_3
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_InstallNatureProbes_InstallShoreProbe_Script_2
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_InstallNatureProbes_JustGottaMakeSure
-	callnative ClearMugshot
+	msgbox gText_InstallNatureProbes_JustGottaMakeSure, , SPEAKER_ZOEY
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_INSTALLNATUREPROBES, SUB_QUEST_3
 	call Quest_InstallNatureProbes_CheckCompletionRate_Script
 	playse SE_CONTEST_HEART
@@ -173,16 +164,16 @@ Quest_InstallNatureProbes_CheckCompletionRate_Script_13:
 
 
 Quest_InstallNatureProbes_Reward_Cutscene::
-	msgbox gText_InstallNatureProbes_WowYouGotAll, MSGBOX_NPC
+	msgbox gText_InstallNatureProbes_WowYouGotAll, MSGBOX_NPC, SPEAKER_DEFAULT
 	applymovement 2, Common_Movement_FaceAwayPlayer
 	waitmovement 2
 	playse SE_PC_LOGIN
 	waitse
 	applymovement 2, Common_Movement_FacePlayer
 	waitmovement 2
-	msgbox gText_InstallNatureProbes_TheTrackingIsWorking, MSGBOX_NPC
+	msgbox gText_InstallNatureProbes_TheTrackingIsWorking, MSGBOX_NPC, SPEAKER_DEFAULT
 	closemessage
-	msgbox gText_InstallNatureProbes_OkayDone, MSGBOX_NPC
+	msgbox gText_InstallNatureProbes_OkayDone, MSGBOX_NPC, SPEAKER_DEFAULT
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox gText_InstallNatureProbes_PokedexUpgradedWith
 	waitmessage
@@ -190,20 +181,20 @@ Quest_InstallNatureProbes_Reward_Cutscene::
 	closemessage
 	playse SE_POKENAV_CALL
 	waitse
-	msgbox gText_InstallNatureProbes_ThatsMyBoss
+	msgbox gText_InstallNatureProbes_ThatsMyBoss, , SPEAKER_LIIDIA
 	applymovement 2, Common_Movement_FaceAwayPlayer
 	waitmovement 2
-	msgbox gText_InstallNatureProbes_GoForLiidia
+	msgbox gText_InstallNatureProbes_GoForLiidia, , , PHONE_ON
 	closemessage
 	delay 32
-	msgbox gText_InstallNatureProbes_IUnderstand
+	msgbox gText_InstallNatureProbes_IUnderstand, , , PHONE_ON
 	closemessage
 	playse SE_POKENAV_HANG_UP
 	waitse
 	applymovement 2, Common_Movement_FacePlayer
 	waitmovement 2
-	msgbox gText_InstallNatureProbes_HeThankedMe
-	msgbox gText_InstallNatureProbes_IRealizeNow
+	msgbox gText_InstallNatureProbes_HeThankedMe, , SPEAKER_LIIDIA
+	msgbox gText_InstallNatureProbes_IRealizeNow, , SPEAKER_LIIDIA
 	closemessage
 	applymovement 2, Quest_InstallNatureProbes_LeaveStation_Movement
 	applymovement OBJ_EVENT_ID_PLAYER, Quest_InstallNatureProbes_WatchLiidiaLeave_Movement

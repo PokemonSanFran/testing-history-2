@@ -7,7 +7,7 @@ RabiesOutbreak_Officer_Event_Script_1:
 	compare VAR_RESULT, 0
 	goto_if_ne RabiesOutbreak_Officer_Event_Script_5
 RabiesOutbreak_Officer_Event_Script_4:
-	msgbox gText_RabiesOutbreak_ThisOutbreak, MSGBOX_NPC
+	msgbox gText_RabiesOutbreak_ThisOutbreak, MSGBOX_NPC, SPEAKER_DEFAULT
 	end
 
 RabiesOutbreak_Officer_Event_Script_2:
@@ -20,12 +20,9 @@ RabiesOutbreak_Officer_Event_Script_5:
 
 
 RabiesOutbreak_Reward_Dialogue::
-	msgbox gText_RabiesOutbreak_INoticed, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_RabiesOutbreak_ImHelping, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_RabiesOutbreak_Rabies, MSGBOX_NPC
+	msgbox gText_RabiesOutbreak_INoticed, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_RabiesOutbreak_ImHelping, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_RabiesOutbreak_Rabies, MSGBOX_NPC, SPEAKER_DEFAULT
 	closemessage
 	call RabiesOutbreak_GiveReward_Script
 	completequest QUEST_RABIESOUTBREAK
@@ -38,7 +35,7 @@ RabiesOutbreak_GiveReward_Script::
 
 
 RabiesOutbreak_CompleteQuest_Dialogue::
-	msgbox gText_RabiesOutbreak_CrazyWhatYou, MSGBOX_NPC
+	msgbox gText_RabiesOutbreak_CrazyWhatYou, MSGBOX_NPC, SPEAKER_DEFAULT
 	end
 
 

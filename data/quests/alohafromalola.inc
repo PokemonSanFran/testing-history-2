@@ -207,14 +207,13 @@ Quest_Alohafromalola_CheckParty_Script_2:
 
 Quest_Alohafromalola_MoveToExhibition_Dialogue::
 	msgbox gText_Alohafromalola_PerfectDidYou
-	applymovement OBJ_EVENT_ID_PLAYER, Quest_Alohafromalola_WalkToExhibit_Movement
-	applymovement 1, Quest_Alohafromalola_WalkToExhibit_Movement
 	setvar VAR_WHITNEY_STATE, EXHIBITION_READY
 	warpsilent MAP_SOMA_GYM, 0, 11, 17
 	return
 
 
 Quest_Alohafromalola_StartBattle_Dialogue::
+	setvar VAR_WHITNEY_STATE, BATTLE_1_COMPLETE
 	msgbox gText_Alohafromalola_ThankYouAll
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
@@ -239,7 +238,6 @@ Quest_Alohafromalola_PostBattle_Script::
 	call Quest_Alohafromalola_GenerateRandomZCrystal_Script
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox gText_Alohafromalola_WhitneyGaveYou
-	msgbox gText_Alohafromalola_ImSureYouCan
 	msgbox gText_Alohafromalola_GoingToTheBar
 	applymovement 1, Quest_Alohafromalola_WalkToExhibit_Movement
 	fadescreen FADE_TO_BLACK
@@ -259,56 +257,78 @@ Quest_Alohafromalola_WalkToExhibit_Movement:
 	step_end
 
 gText_Alohafromalola_WeArePreparing::
-	.string "$"
+	.string "We are preparing for a private\n"
+	.string "exhibition opening. Please come back\l"
+	.string "another time.$"
 
 gText_Alohafromalola_TheresAPrivate::
-	.string "$"
+	.string "There is a private exhibition opening\n"
+	.string "tonight. Please come back another\l"
+	.string "time.$"
 
 gText_Alohafromalola_WaitICanPerform::
-	.string "$"
+	.string "Wait, I can perform at the opening but I\n"
+	.string "can't be there?$"
 
 gText_Alohafromalola_OhManIAm::
-	.string "$"
+	.string "Oh, this is an absolute mess. Worse than\n"
+	.string "the blunder of Tohjo Falls, I'll say.$"
 
 gText_Alohafromalola_OhPlayer::
-	.string "$"
+	.string "Oh, {PLAYER}!$"
 
 gText_Alohafromalola_HeyThere::
-	.string "$"
+	.string "Hey Whitney, you seem... stressed?$"
 
 gText_Alohafromalola_ImSupposedTo::
-	.string "$"
+	.string "I'm supposed to have an exhibition\n"
+	.string "battle against one of the Alola Island\l"
+	.string "Kahunas tonight for the opening of our\l"
+	.string "'Aloha from Alola' exhibit. I just\l"
+	.string "recived a call telling me they're\l"
+	.string "cancelling! People were coming for a\l"
+	.string "real battle demonstration, and I don't\l"
+	.string "have a suitable substiute...$"
 
 gText_Alohafromalola_OhYouCan::
-	.string "$"
+	.string "Oh! You! You're skilled!$"
 
 gText_Alohafromalola_ComeBackTonight::
-	.string "$"
+	.string "Come back tonight, with 3 Pokémon that\n"
+	.string "can be found in Alola. You'll have to do\l"
+	.string "on such short notice!$"
 
 gText_Alohafromalola_YourParty::
-	.string "$"
+	.string "Your party needs to be 3 Pokémon, and\n"
+	.string "only those that can be found in Alola.\l"
+	.string "You can look at the exhibit posters\l"
+	.string "around the lobby if you're unsure of\l"
+	.string "what Pokémon are found there.$"
 
 gText_Alohafromalola_PerfectDidYou::
-	.string "$"
+	.string "Your party looks perfect, and your\n"
+	.string "timing is excellent. Let's get in there!$"
 
 gText_Alohafromalola_ThankYouAll::
-	.string "$"
+	.string "Thank you all for attending our\n"
+	.string "exhibition! For our finale, {PLAYER}\l"
+	.string "has graceiously offered to battle\l"
+	.string "against the Alolan might of Z-Moves!$"
 
 gText_Alohafromalola_AndZMoves::
-	.string "$"
+	.string "Not even Z-Moves can stop you!$"
 
 gText_Alohafromalola_YouWereGreat::
-	.string "$"
+	.string "You were astounding! Thank you so much.$"
 
 gText_Alohafromalola_IRealizeNowYouDont::
-	.string "$"
+	.string "You won even though we weren't on an\n"
+	.string "even playing field... but you can take\l"
+	.string "this! I can get another one.$"
 
 gText_Alohafromalola_WhitneyGaveYou::
-	.string "{PLAYER} obtained a Z-Power Rang and\n"
+	.string "{PLAYER} obtained a Z-Power Ring and\n"
 	.string "a Z-Crystal!$"
 
-gText_Alohafromalola_ImSureYouCan::
-	.string "$"
-
 gText_Alohafromalola_GoingToTheBar::
-	.string "$"
+	.string "And now for some Alolan liberations!$"

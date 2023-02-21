@@ -16,11 +16,8 @@ ThereCanOnlyBeOne_LoadFromSave_Script_2:
 
 ThereCanOnlyBeOne_PlayerMonologue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ThereCanOnlyBe_AlmostPackedAndReady
-	msgbox gText_ThereCanOnlyBe_ButTheRulesSay
-	callnative ClearMugshot
+	msgbox gText_ThereCanOnlyBe_AlmostPackedAndReady, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_TALK, EMOTE_HAPPY, PHONE_OFF
+	msgbox gText_ThereCanOnlyBe_ButTheRulesSay, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_TALK, EMOTE_SAD, PHONE_OFF
 	goto ThereCanOnlyBeOne_Narrator_Dialogue
 	return
 

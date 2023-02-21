@@ -17,19 +17,16 @@ script RabiesOutbreak_Officer_Event_Script{
 
     }
 
-    msgbox(gText_RabiesOutbreak_ThisOutbreak, MSGBOX_NPC)
+    msgbox(gText_RabiesOutbreak_ThisOutbreak, MSGBOX_NPC,SPEAKER_DEFAULT)
     end
 }
 
 script RabiesOutbreak_Reward_Dialogue{
-    msgbox(gText_RabiesOutbreak_INoticed,MSGBOX_NPC)
+    msgbox(gText_RabiesOutbreak_INoticed,MSGBOX_NPC,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_RabiesOutbreak_ImHelping,MSGBOX_NPC)
-    callnative(ClearMugshot)
+    msgbox(gText_RabiesOutbreak_ImHelping,MSGBOX_NPC,SPEAKER_ZOEY)
 
-    msgbox(gText_RabiesOutbreak_Rabies,MSGBOX_NPC)
+    msgbox(gText_RabiesOutbreak_Rabies,MSGBOX_NPC,SPEAKER_DEFAULT)
     closemessage
 
     call(RabiesOutbreak_GiveReward_Script)
@@ -42,7 +39,7 @@ script RabiesOutbreak_GiveReward_Script{
 }
 
 script RabiesOutbreak_CompleteQuest_Dialogue{
-    msgbox(gText_RabiesOutbreak_CrazyWhatYou,MSGBOX_NPC)
+    msgbox(gText_RabiesOutbreak_CrazyWhatYou,MSGBOX_NPC,SPEAKER_DEFAULT)
     end
 }
 

@@ -53,26 +53,14 @@ SurvivalChance333_ExplainPlan_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	delay 25
-	msgbox gText_SurvivalChance333_HeresThe
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_IsSomethingWrong
-	callnative ClearMugshot
-	msgbox gText_SurvivalChance333_ISpent15Years
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_WoahWerePlentyTough
-	callnative ClearMugshot
-	msgbox gText_SurvivalChance333_RightKidsWithZero
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_HeyWeDidntAsk
-	callnative ClearMugshot
-	msgbox gText_SurvivalChance333_AndIDidntAsk
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_IllProveIt
-	callnative ClearMugshot
+	msgbox gText_SurvivalChance333_HeresThe, , SPEAKER_CHIEF
+	msgbox gText_SurvivalChance333_IsSomethingWrong, , SPEAKER_ZOEY
+	msgbox gText_SurvivalChance333_ISpent15Years, , SPEAKER_CHIEF
+	msgbox gText_SurvivalChance333_WoahWerePlentyTough, , SPEAKER_BIANCA
+	msgbox gText_SurvivalChance333_RightKidsWithZero, , SPEAKER_CHIEF
+	msgbox gText_SurvivalChance333_HeyWeDidntAsk, , SPEAKER_ZOEY
+	msgbox gText_SurvivalChance333_AndIDidntAsk, , SPEAKER_CHIEF
+	msgbox gText_SurvivalChance333_IllProveIt, , SPEAKER_BIANCA
 	setvar VAR_FERRYBUILDING_STATE, SAVE_SURVIVAL_CHANCE_BATTLE
 	call Common_EventScript_SaveGame
 	goto SurvivalChance333_Battle_Script
@@ -80,7 +68,7 @@ SurvivalChance333_ExplainPlan_Dialogue::
 
 
 SurvivalChance333_Battle_Script::
-	msgbox gText_SurvivalChance333_WontEvenBeAFair
+	msgbox gText_SurvivalChance333_WontEvenBeAFair, , SPEAKER_CHIEF
 	closemessage
 	multi_fixed_2_vs_1 TRAINER_TIFFANY, gText_SurvivalChance333_Hmph, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
 	goto SurvivalChance333_PostBattle_Script
@@ -89,11 +77,8 @@ SurvivalChance333_Battle_Script::
 
 SurvivalChance333_PostBattle_Script::
 	setvar VAR_FERRYBUILDING_STATE, DEFEATED_SURVIVAL_CHANCE_BATTLE
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_DoYouGetItNow
-	callnative ClearMugshot
-	msgbox gText_SurvivalChance333_YoureAPairOfKids
+	msgbox gText_SurvivalChance333_DoYouGetItNow, , SPEAKER_BIANCA
+	msgbox gText_SurvivalChance333_YoureAPairOfKids, , SPEAKER_CHIEF
 	closemessage
 	setvar VAR_ALAMEDA_STATE, START_SURVIVAL_CHANCE
 	warpsilent MAP_ALAMEDA, 255, 21, 24
@@ -190,17 +175,11 @@ SurvivalChance333_ExplainOperation::
 	setvar VAR_ALAMEDA_STATE, POST_SURVIVAL_CHANCE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	msgbox gText_SurvivalChance333_SoThatsThePlan
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_OneProblemForUs
-	callnative ClearMugshot
-	msgbox gText_SurvivalChance333_HereWeGo
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_IKnowWereSupposed
-	callnative ClearMugshot
-	msgbox gText_SurvivalChance333_OhHellThatsRight
+	msgbox gText_SurvivalChance333_SoThatsThePlan, , SPEAKER_CHIEF
+	msgbox gText_SurvivalChance333_OneProblemForUs, , SPEAKER_BIANCA
+	msgbox gText_SurvivalChance333_HereWeGo, , SPEAKER_CHIEF
+	msgbox gText_SurvivalChance333_IKnowWereSupposed, , SPEAKER_BIANCA
+	msgbox gText_SurvivalChance333_OhHellThatsRight, , SPEAKER_CHIEF
 	closemessage
 	applymovement 7, SurvivalChance333_GiveTM
 	applymovement 8, SurvivalChance333_GiveTM
@@ -210,9 +189,9 @@ SurvivalChance333_ExplainOperation::
 	applymovement 7, SurvivalChance333_BackToPosition
 	applymovement 8, SurvivalChance333_BackToPosition
 	waitmovement 0
-	msgbox gText_SurvivalChance333_IAlwaysForget
-	msgbox gText_SurvivalChance333_NoSir
-	msgbox gText_SurvivalChance333_LetsGetThisParty
+	msgbox gText_SurvivalChance333_IAlwaysForget, , SPEAKER_CHIEF
+	msgbox gText_SurvivalChance333_NoSir, , SPEAKER_POLICE
+	msgbox gText_SurvivalChance333_LetsGetThisParty, , SPEAKER_CHIEF
 	closemessage
 	goto SurvivalChance333_TacticalPlan_Cutscene_Script
 	return
@@ -221,25 +200,16 @@ SurvivalChance333_ExplainOperation::
 SurvivalChance333_TacticalPlan_Cutscene_Script::
 	lock
 	call SurvivalChance333_MoveCameraFreeze_Script
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_ThoseRoutesFrozen
-	callnative ClearMugshot
+	msgbox gText_SurvivalChance333_ThoseRoutesFrozen, , SPEAKER_BIANCA
 	closemessage
 	call SurvivalChance333_MoveCameraLava_Script
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_MeltingTheBedrock
-	callnative ClearMugshot
+	msgbox gText_SurvivalChance333_MeltingTheBedrock, , SPEAKER_BIANCA
 	closemessage
 	fadescreen FADE_TO_BLACK
 	call SurvivalChance333_SetUpRaidObject_Script
 	TeleportCamera 24, 11
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_TheyllBlowTheWall
-	callnative ClearMugshot
+	msgbox gText_SurvivalChance333_TheyllBlowTheWall, , SPEAKER_BIANCA
 	closemessage
 	playse SE_M_EXPLOSION
 	waitse
@@ -250,10 +220,7 @@ SurvivalChance333_TacticalPlan_Cutscene_Script::
 	special ShakeCamera
 	waitstate
 	call SurvivalChance333_BlowOpenDoors
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_SurvivalChance333_Showtime
-	callnative ClearMugshot
+	msgbox gText_SurvivalChance333_Showtime, , SPEAKER_BIANCA
 	closemessage
 	applymovement 4, SurvivalChance333_RunInsideA
 	applymovement 5, SurvivalChance333_RunInsideB

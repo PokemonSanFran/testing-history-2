@@ -22,8 +22,6 @@ script SOMA_Gym_MapScripts_OnTransition {
 
 script Whitney_Event_Script {
     lockall
-    setvar(VAR_0x8000, MUGSHOT_WHITNEY)
-    callnative(DrawMugshot)
     switch (var (VAR_GYM_3_STATE)) {
     case 2:
         goto(EnterWhitney_MuseumArrangement_Dialogue)

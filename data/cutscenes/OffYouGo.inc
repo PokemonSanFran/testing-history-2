@@ -38,42 +38,21 @@ OffYouGo_WakeUp_Dialogue::
 	playse SE_POKENAV_CALL
 	waitse
 	playse SE_POKENAV_CALL
-	waitse
-	pokenavcall OffYouGo_WakeUp_Dialogue_Text_0
 	waitmessage
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_HuhHello
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_HeyWhereAreYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_YeahImInBed
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_ComeOnGetUp
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_WaitingForMe
-	callnative ClearMugshot
+	msgbox gText_OffYouGo_HuhHello, , SPEAKER_ZOEY, , PHONE_ON
+	msgbox gText_OffYouGo_HeyWhereAreYou, , SPEAKER_BIANCA, , PHONE_ON
+	msgbox gText_OffYouGo_YeahImInBed, , SPEAKER_ZOEY, , PHONE_ON
+	msgbox gText_OffYouGo_ComeOnGetUp, , SPEAKER_BIANCA, , PHONE_ON
+	msgbox gText_OffYouGo_WaitingForMe, , SPEAKER_ZOEY, , PHONE_ON
 	closemessage
 	msgbox gText_OffYouGo_PleaseMeetMeOn
-	msgbox gText_OffYouGo_IllBeRightOver
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_YeahIDidntSee
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_UghFine
-	callnative ClearMugshot
+	msgbox gText_OffYouGo_IllBeRightOver, , PHONE_ON
+	msgbox gText_OffYouGo_YeahIDidntSee, , SPEAKER_ZOEY
+	msgbox gText_OffYouGo_UghFine, , SPEAKER_BIANCA
 	closemessage
 	playse SE_POKENAV_HANG_UP
 	waitse
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_HowAreTheyAlways
-	callnative ClearMugshot
+	msgbox gText_OffYouGo_HowAreTheyAlways, , SPEAKER_ZOEY, TAIL_THOUGHT
 	closemessage
 	return
 
@@ -81,42 +60,21 @@ OffYouGo_WakeUp_Dialogue::
 OffYouGo_WelcomeParty_Dialogue::
 	setvar VAR_GOLDENGATEBRIDGE_STATE, POST_OFF_YOU_GO
 	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, BIANCA_INSIDE_TUNNEL
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_WelcomeToTheParty
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_HonestlyItsFine
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_NeitherWasI
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_WellYoureBothHere
-	callnative ClearMugshot
+	msgbox gText_OffYouGo_WelcomeToTheParty, , SPEAKER_BIANCA
+	msgbox gText_OffYouGo_HonestlyItsFine, , SPEAKER_OAK
+	msgbox gText_OffYouGo_NeitherWasI, , SPEAKER_ZOEY
+	msgbox gText_OffYouGo_WellYoureBothHere, , SPEAKER_OAK
 	closemessage
 	applymovement 1, Common_Movement_FaceRight
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_ThanksButWho
-	callnative ClearMugshot
+	msgbox gText_OffYouGo_ThanksButWho, , SPEAKER_BIANCA
 	closemessage
 	applymovement 2, Common_Movement_FaceLeft
 	waitmovement 2
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_AsYesYoureNot
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_SoWhereIs
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_AhYesWellTheyHave
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_WeirdOkay
-	callnative ClearMugshot
+	msgbox gText_OffYouGo_AsYesYoureNot, , SPEAKER_OAK
+	msgbox gText_OffYouGo_SoWhereIs, , SPEAKER_BIANCA
+	msgbox gText_OffYouGo_AhYesWellTheyHave, , SPEAKER_OAK
+	msgbox gText_OffYouGo_WeirdOkay, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, Common_Movement_FaceUp
 	waitmovement 1
@@ -126,23 +84,13 @@ OffYouGo_WelcomeParty_Dialogue::
 	playse SE_EXIT
 	waitse
 	removeobject 1
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_OhWait
-	callnative ClearMugshot
+	msgbox gText_OffYouGo_OhWait, , SPEAKER_OAK
 	closemessage
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 2
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_IDoWishThey
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_IllHurrySo
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_GoodLuck
-	callnative ClearMugshot
+	msgbox gText_OffYouGo_IDoWishThey, , SPEAKER_OAK
+	msgbox gText_OffYouGo_IllHurrySo, , SPEAKER_ZOEY
+	msgbox gText_OffYouGo_GoodLuck, , SPEAKER_OAK
 	closemessage
 	releaseall
 	end
@@ -151,10 +99,7 @@ OffYouGo_WelcomeParty_Dialogue::
 OffYouGo_InteractOak_Event_Script::
 	lockall
 	call OffYouGo_WarpPlayer_Script
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_OffYouGo_ItMightBeAGood, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_OffYouGo_ItMightBeAGood, MSGBOX_NPC, SPEAKER_OAK
 	closemessage
 	releaseall
 	end
@@ -166,9 +111,6 @@ OffYouGo_WalkNorth:
 	walk_up
 	walk_up
 	step_end
-
-OffYouGo_WakeUp_Dialogue_Text_0:
-	.string "This phone is ringing.$"
 
 gText_OffYouGo_RingRing::
 	.string "Ring ring…$"

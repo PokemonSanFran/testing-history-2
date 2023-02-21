@@ -21,17 +21,11 @@ script swagbag2_OakWalkOutGym_Script {
 
 script swagbag2_Intro_Dialogue {
     playbgm(MUS_RG_FOLLOW_ME, FALSE)
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_ItWasAPleasure)
+    msgbox(gText_swagbag2_ItWasAPleasure,,SPEAKER_OAK)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_ItsALot)
+    msgbox(gText_swagbag2_ItsALot,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_SoundsLikeYouveRun)
+    msgbox(gText_swagbag2_SoundsLikeYouveRun,,SPEAKER_OAK)
 
     applymovement(OAK, swagbag2_LookAwayAndBack)
     waitmovement(0)
@@ -45,81 +39,51 @@ script swagbag2_Intro_Dialogue {
 
 script swagbag2_DiscussCosts_Dialogue {
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_IAssumeYouveAlready)
+    msgbox(gText_swagbag2_IAssumeYouveAlready,,SPEAKER_OAK)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_TheyWereVeryHelpful)
+    msgbox(gText_swagbag2_TheyWereVeryHelpful,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_TheBreedingCenterStaff)
+    msgbox(gText_swagbag2_TheBreedingCenterStaff,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_TheBreedingCenterOffers)
+    msgbox(gText_swagbag2_TheBreedingCenterOffers,,SPEAKER_OAK)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_ThatsTooBad)
+    msgbox(gText_swagbag2_ThatsTooBad,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_HopefullyTheyllHaveIt)
-    callnative(ClearMugshot)
+    msgbox(gText_swagbag2_HopefullyTheyllHaveIt,,SPEAKER_OAK)
+    
 
     goto(swagbag2_Scene_End_Script)
 }
 
 script swagbag2_BringToCenter_Dialogue {
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_HaveYouSeenThe)
+    msgbox(gText_swagbag2_HaveYouSeenThe,,SPEAKER_OAK)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_NoShouldI)
+    msgbox(gText_swagbag2_NoShouldI,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_IveGotAFewMinutes)
-    callnative(ClearMugshot)
+    msgbox(gText_swagbag2_IveGotAFewMinutes,,SPEAKER_OAK)
+    
     closemessage
 
     applymovement(OAK, swagbag2_WalkToCenter)
     applymovement(PLAYER, swagbag2_PlayerWalkToCenter)
     waitmovement(0)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_DontLetTheirDemeanor)
+    msgbox(gText_swagbag2_DontLetTheirDemeanor,,SPEAKER_OAK)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_WowThatsAwesome)
+    msgbox(gText_swagbag2_WowThatsAwesome,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_YouShouldReallyTalk)
+    msgbox(gText_swagbag2_YouShouldReallyTalk,,SPEAKER_OAK)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_IWillThanks)
+    msgbox(gText_swagbag2_IWillThanks,,SPEAKER_ZOEY)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_HappyToHelp)
+    msgbox(gText_swagbag2_HappyToHelp,,SPEAKER_OAK)
 
     applymovement(OAK, swagbag2_LookAwayAndBack)
     waitmovement(0)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-    callnative(DrawMugshot)
-    msgbox(gText_swagbag2_NowIveGottaRun)
-    callnative(ClearMugshot)
+    msgbox(gText_swagbag2_NowIveGottaRun,,SPEAKER_OAK)
+    
 
     goto(swagbag2_Scene_End_Script)
 }

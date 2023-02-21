@@ -3,7 +3,7 @@ const FLAG_HIDE_SQUATTERS = FLAG_TEMP_1
 const FLAG_HIDE_CONSTRUCTION = FLAG_TEMP_2
 const EMPLOYEE = 5
 
-const SQUATTER_A = 1
+const RAINER = 1
 const SQUATTER_B = 3
 const SQUATTER_C = 4
 
@@ -75,16 +75,16 @@ script Quest_BuildingScope_CheckBadges_Script{
 }
 
 script Quest_BuildingScope_ScaredEmployee_Dialogue{
-    msgbox(gText_BuildingScope_HowBadCouldItBe)
+    msgbox(gText_BuildingScope_HowBadCouldItBe,,SPEAKER_YCOMBINATOR_STAFF)
     release
     end
 }
 
 script Quest_BuildingScope_StartQuest_Dialogue{
     faceplayer
-    msgbox(gText_BuildingScope_OhYourePlayer)
-    msgbox(gText_BuildingScope_TheresABuildingIn)
-    msgbox(gText_BuildingScope_AnimalsOrPokemon)
+    msgbox(gText_BuildingScope_OhYourePlayer,,SPEAKER_YCOMBINATOR_STAFF)
+    msgbox(gText_BuildingScope_TheresABuildingIn,,SPEAKER_YCOMBINATOR_STAFF)
+    msgbox(gText_BuildingScope_AnimalsOrPokemon,,SPEAKER_YCOMBINATOR_STAFF)
     closemessage
 
     applymovement(EMPLOYEE,Common_Movement_WalkDown)
@@ -96,7 +96,7 @@ script Quest_BuildingScope_StartQuest_Dialogue{
 }
 
 script Quest_BuildingScope_Employee_Active_Dialogue{
-    msgbox(gText_BuildingScope_OneDayIll,MSGBOX_NPC)
+    msgbox(gText_BuildingScope_OneDayIll,MSGBOX_NPC,SPEAKER_YCOMBINATOR_STAFF)
     end
 }
 
@@ -112,11 +112,11 @@ script Quest_BuildingScope_Squatters_Cutscene{
 
     applymovement(PLAYER,Common_Movement_FaceUp)
 
-    addobject(SQUATTER_A)
+    addobject(RAINER)
     addobject(SQUATTER_B)
     addobject(SQUATTER_C)
 
-    applymovement(SQUATTER_A,Quest_BuildingScope_WalkToPlayer_Movement)
+    applymovement(RAINER,Quest_BuildingScope_WalkToPlayer_Movement)
     applymovement(SQUATTER_B,Quest_BuildingScope_WalkToPlayer_Movement)
     applymovement(SQUATTER_C,Quest_BuildingScope_WalkToPlayer_Movement)
     waitmovement(SQUATTER_C)
@@ -124,37 +124,31 @@ script Quest_BuildingScope_Squatters_Cutscene{
 }
 
 script Quest_BuildingScope_BattleSquatters_Script{
-    msgbox(gText_BuildingScope_FinallyHadTheBalls)
+    msgbox(gText_BuildingScope_FinallyHadTheBalls,,SPEAKER_DEFAULT)
     trainerbattle_no_intro(TRAINER_LOLA_1,gText_BuildingScope_WhyWontYou)
-    msgbox(gText_BuildingScope_ThrowingGasAtUs)
+    msgbox(gText_BuildingScope_ThrowingGasAtUs,,SPEAKER_DEFAULT)
     trainerbattle_no_intro(TRAINER_LOLA_2,gText_BuildingScope_YouDisgustMe)
-    msgbox(gText_BuildingSCope_NothingIsEverGood)
+    msgbox(gText_BuildingSCope_NothingIsEverGood,,SPEAKER_RAINER)
     trainerbattle_no_intro(TRAINER_LOLA_3,gText_BuildingScope_Scum)
     goto(Quest_BuildingScope_PostBattle_Dialogue)
 }
 
 script Quest_BuildingScope_PostBattle_Dialogue{
     lock
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_BuildingScope_NobodyIsTryingTo)
-    callnative(ClearMugshot)
+    msgbox(gText_BuildingScope_NobodyIsTryingTo,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_BuildingScope_ThrowingShitAt)
+    msgbox(gText_BuildingScope_ThrowingShitAt,,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_BuildingScope_SomebodyAskedMe)
-    callnative(ClearMugshot)
+    msgbox(gText_BuildingScope_SomebodyAskedMe,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_BuildingScope_UhHuhPokemon)
+    msgbox(gText_BuildingScope_UhHuhPokemon,,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_BuildingScope_LookTheGuyIWas)
-    callnative(ClearMugshot)
+    msgbox(gText_BuildingScope_LookTheGuyIWas,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_BuildingScope_NotLikeWeGotAnywhere)
+    msgbox(gText_BuildingScope_NotLikeWeGotAnywhere,,SPEAKER_DEFAULT)
     closemessage
 
     questmenu(QUEST_MENU_SET_REWARD,QUEST_BUILDINGSCOPE)
@@ -163,20 +157,16 @@ script Quest_BuildingScope_PostBattle_Dialogue{
 }
 
 script Quest_BuildingScope_Reward_Dialogue{
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_BuildingScope_IGotInto)
-    callnative(ClearMugshot)
+    msgbox(gText_BuildingScope_IGotInto,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_BuildingScope_WaitPeopleWere)
+    msgbox(gText_BuildingScope_WaitPeopleWere,,SPEAKER_YCOMBINATOR_STAFF)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_BuildingScope_YeahTheyWere)
-    callnative(ClearMugshot)
+    msgbox(gText_BuildingScope_YeahTheyWere,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_BuildingScope_OhWowWell)
-    msgbox(gText_BuildingScope_IllSendSomebody)
+    msgbox(gText_BuildingScope_OhWowWell,,SPEAKER_YCOMBINATOR_STAFF)
+    msgbox(gText_BuildingScope_IllSendSomebody,,SPEAKER_YCOMBINATOR_STAFF)
 
 	showmoneybox(0, 0)
     waitbuttonpress
@@ -194,7 +184,7 @@ script Quest_BuildingScope_Reward_Dialogue{
 }
 
 script Quest_BuildingScope_PostQuest_Dialogue{
-    msgbox(gText_BuildingScope_WeHired,MSGBOX_NPC)
+    msgbox(gText_BuildingScope_WeHired,MSGBOX_NPC,,SPEAKER_YCOMBINATOR_STAFF)
     end
 }
 
@@ -280,6 +270,15 @@ text gText_BuildingScope_IllSendSomebody{
 text gText_BuildingScope_WeHired{
     format("we hired the best contractors from Vermilion City to work on the building. we might even be done AHEAD of schedule!")
 }
+
+text AquaHideout_TestText{
+	"Our Hideout's secret?\n"
+	"Well, let's just say…\n"
+	"There's a submarine at the far end!\p"
+	"But, by now…\n"
+	"Kekekeke…$"
+}
+
 movement Quest_BuildingScope_WalkToPlayer_Movement{
     walk_down * 5
     step_end

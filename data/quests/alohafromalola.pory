@@ -195,7 +195,7 @@ text gText_Alohafromalola_HeyThere{
     format("Hey Whitney, you seem... stressed?")
 }
 text gText_Alohafromalola_ImSupposedTo{
-    format("I'm supposed to have an exhibition battle against one of the Alola Island Kahunas tonight for the opening of our \"Aloha from Alola\" exhibit. I just recived a call telling me they're cancelling! People were coming for a real battle demonstration, and I don't have a suitable substiute... ")
+    format("I'm supposed to have an exhibition battle against one of the Alola Island Kahunas tonight for the opening of our 'Aloha from Alola' exhibit. I just recived a call telling me they're cancelling! People were coming for a real battle demonstration, and I don't have a suitable substiute...")
 }
 text gText_Alohafromalola_OhYouCan{
     format("Oh! You! You're skilled!")

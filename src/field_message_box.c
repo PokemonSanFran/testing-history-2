@@ -1,10 +1,16 @@
 #include "global.h"
 #include "menu.h"
+#include "mugshot.h"
+#include "event_data.h"
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
 #include "match_call.h"
 #include "field_message_box.h"
+#include "constants/mugshots.h"
+#include "constants/vars.h"
+#include "printf.h"
+#include "mgba.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 
@@ -25,15 +31,17 @@ void InitFieldMessageBox(void)
 static void Task_DrawFieldMessage(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
+    u8 windowId = 0;
+    u8 windowId2 = 1;
 
     switch (task->tState)
     {
         case 0:
-           LoadMessageBoxAndBorderGfx();
+           LoadMessageBoxAndBorderGfx(); // this one draws Window 2
            task->tState++;
            break;
         case 1:
-           DrawDialogueFrame(0, TRUE);
+           DrawDialogueFrame(windowId, TRUE);
            task->tState++;
            break;
         case 2:
@@ -63,6 +71,7 @@ bool8 ShowFieldMessage(const u8 *str)
 {
     if (sFieldMessageBoxMode != FIELD_MESSAGE_BOX_HIDDEN)
         return FALSE;
+    DrawMessageBoxAddOns(0);
     ExpandStringAndStartDrawFieldMessage(str, TRUE);
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_NORMAL;
     return TRUE;
@@ -132,6 +141,7 @@ static void StartDrawFieldMessage(void)
 void HideFieldMessageBox(void)
 {
     DestroyTask_DrawFieldMessage();
+    ClearMessageBoxAddOns();
     ClearDialogWindowAndFrame(0, TRUE);
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
 }

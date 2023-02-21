@@ -40,34 +40,17 @@ YouHaveYourOrders_CompleteQuest_Dialogue::
 
 YouHaveYourOrders_Assignment_Dialogue::
 	setvar VAR_HOW_DISAPPOINTING_STATE, MISSION_ASSIGNED
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_AreYouSure, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_ItCantBeTougher
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_HmmGoodPoint
-	callnative ClearMugshot
+	msgbox gText_YouHaveYourOrders_AreYouSure, MSGBOX_NPC, , SPEAKER_KOGA
+	msgbox gText_YouHaveYourOrders_ItCantBeTougher, , SPEAKER_ZOEY
+	msgbox gText_YouHaveYourOrders_HmmGoodPoint, , SPEAKER_KOGA
 	closemessage
 	applymovement 9, YouHaveYourOrders_PaceInOffice
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_LawEnforcementHasConfirmed
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_WhyAllAtOnce
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_ThatWouldCompletelyCut
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_CongratsYoureanAsshole_OhWoWYouGuys
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_CorrectEachOfUs
+	msgbox gText_YouHaveYourOrders_LawEnforcementHasConfirmed, , SPEAKER_KOGA
+	msgbox gText_YouHaveYourOrders_WhyAllAtOnce, , SPEAKER_ZOEY
+	msgbox gText_YouHaveYourOrders_ThatWouldCompletelyCut, , SPEAKER_KOGA
+	msgbox gText_CongratsYoureanAsshole_OhWoWYouGuys, , SPEAKER_ZOEY
+	msgbox gText_YouHaveYourOrders_CorrectEachOfUs, , SPEAKER_KOGA
 	compare VAR_STORYLINE_STATE, STORY_START_FALSE_TIMELINE
 	goto_if_eq YouHaveYourOrders_Assignment_Dialogue_2
 YouHaveYourOrders_Assignment_Dialogue_1:
@@ -76,41 +59,22 @@ YouHaveYourOrders_Assignment_Dialogue_1:
 YouHaveYourOrders_Assignment_Dialogue_4:
 	applymovement 9, YouHaveYourOrders_LookOutWindow
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_ThankYouAsUsual
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_IStillFeelLike
-	callnative ClearMugshot
+	msgbox gText_YouHaveYourOrders_ThankYouAsUsual, , SPEAKER_KOGA
+	msgbox gText_YouHaveYourOrders_IStillFeelLike, , SPEAKER_ZOEY
 	closemessage
 	applymovement 9, Common_Movement_FacePlayer
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_InCaseYouHavent
-	callnative ClearMugshot
+	msgbox gText_YouHaveYourOrders_InCaseYouHavent, , SPEAKER_KOGA
 	closemessage
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_YouWereAGym
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_ItWasOneOfMyGreatest
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_WasThatHard
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_AtTheTimeNo
+	msgbox gText_YouHaveYourOrders_YouWereAGym, , SPEAKER_ZOEY
+	msgbox gText_YouHaveYourOrders_ItWasOneOfMyGreatest, , SPEAKER_KOGA
+	msgbox gText_YouHaveYourOrders_WasThatHard, , SPEAKER_ZOEY
+	msgbox gText_YouHaveYourOrders_AtTheTimeNo, , SPEAKER_KOGA
 	applymovement 9, YouHaveYourOrders_LookOutWindow
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_ICouldGoShut
-	callnative ClearMugshot
+	msgbox gText_YouHaveYourOrders_ICouldGoShut, , SPEAKER_KOGA
 	startquest QUEST_HOW_DISAPPOINTING
 	msgbox gText_YouHaveYourOrders_DoYouWantTo, MSGBOX_YESNO
 	compare VAR_RESULT, 0
@@ -120,21 +84,13 @@ YouHaveYourOrders_Assignment_Dialogue_7:
 	end
 
 YouHaveYourOrders_Assignment_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_TheyInvolved
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_WeHiredThem
+	msgbox gText_YouHaveYourOrders_TheyInvolved, , SPEAKER_ZOEY
+	msgbox gText_YouHaveYourOrders_WeHiredThem, , SPEAKER_KOGA
 	goto YouHaveYourOrders_Assignment_Dialogue_1
 
 YouHaveYourOrders_Assignment_Dialogue_5:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_WhatAbout
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_YouHaveYourOrders_OurIntelligenceTells
+	msgbox gText_YouHaveYourOrders_WhatAbout, , SPEAKER_ZOEY
+	msgbox gText_YouHaveYourOrders_OurIntelligenceTells, , SPEAKER_KOGA
 	goto YouHaveYourOrders_Assignment_Dialogue_4
 
 YouHaveYourOrders_Assignment_Dialogue_8:

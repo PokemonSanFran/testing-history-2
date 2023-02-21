@@ -11,11 +11,8 @@ script Chasecenter_Entrance_KeepPlayerInside_Script {
         }
 
         if (flag(FLAG_CHASECENTER_TOURNAMENT_HAPPENING)){
-            setvar(VAR_0x8000, MUGSHOT_HILDA)
-            callnative(DrawMugshot)
-            msgbox(gText_GroupStages_OhRight)
+            msgbox(gText_GroupStages_OhRight,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
             closemessage
-            callnative(ClearMugshot)
             applymovement(PLAYER,Common_Movement_WalkUp)
             waitmovement(0)
         }

@@ -37,50 +37,22 @@ YouCantStopMe_MoveOakPlayer_Script::
 
 YouCantStopMe_LastChance_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_Wait
-	callnative ClearMugshot
+	msgbox gText_YouCantStopMe_Wait, , SPEAKER_OAK
 	closemessage
 	call YouCantStopMe_MoveOakPlayer_Script
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_PleaseItIsntToo
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_PeopleOnDied
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_YesItsUnforuntate
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_DoYouReally
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_IKnowYouWant
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_LookAtTheJobs
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_WeveWorkedVeryHard
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_EverybodyDeservesAGoodLife
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_DotDotDot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_TheyreNotMurderers
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_DotDotDot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_IThoughtSo
+	msgbox gText_YouCantStopMe_PleaseItIsntToo, , SPEAKER_OAK
+	msgbox gText_YouCantStopMe_PeopleOnDied, , SPEAKER_ZOEY
+	msgbox gText_YouCantStopMe_YesItsUnforuntate, , SPEAKER_OAK
+	msgbox gText_YouCantStopMe_DoYouReally, , SPEAKER_ZOEY
+	msgbox gText_YouCantStopMe_IKnowYouWant, , SPEAKER_OAK
+	msgbox gText_YouCantStopMe_LookAtTheJobs, , SPEAKER_ZOEY
+	msgbox gText_YouCantStopMe_WeveWorkedVeryHard, , SPEAKER_OAK
+	msgbox gText_YouCantStopMe_EverybodyDeservesAGoodLife, , SPEAKER_ZOEY
+	msgbox gText_YouCantStopMe_DotDotDot, , SPEAKER_OAK
+	msgbox gText_YouCantStopMe_TheyreNotMurderers, , SPEAKER_ZOEY
+	msgbox gText_YouCantStopMe_DotDotDot, , SPEAKER_OAK
+	msgbox gText_YouCantStopMe_IThoughtSo, , SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, YouCantStopMe_LeaveFloor_Movement
 	waitmovement 1
 	playse SE_EXIT
@@ -94,34 +66,16 @@ YouCantStopMe_LastChance_Dialogue::
 YouCantStopMe_Confront_Dialogue::
 	lock
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, TRUE
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_WhatDoYouWant, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_OneMassCasualty
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_HahIThinkMass
-	callnative ClearMugshot
+	msgbox gText_YouCantStopMe_WhatDoYouWant, MSGBOX_NPC, SPEAKER_ROSE
+	msgbox gText_YouCantStopMe_OneMassCasualty, , SPEAKER_ZOEY
+	msgbox gText_YouCantStopMe_HahIThinkMass, , SPEAKER_ROSE
 	closemessage
 	applymovement 4, Common_Movement_FaceUp
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_DidYouEverCare
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_ImNotJustifying
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_YouReallyDontGive
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_NopeIDoWish
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_JustAGlorified
-	callnative ClearMugshot
+	msgbox gText_YouCantStopMe_DidYouEverCare, , SPEAKER_ZOEY
+	msgbox gText_YouCantStopMe_ImNotJustifying, , SPEAKER_ROSE
+	msgbox gText_YouCantStopMe_YouReallyDontGive, , SPEAKER_ZOEY
+	msgbox gText_YouCantStopMe_NopeIDoWish, , SPEAKER_ROSE
+	msgbox gText_YouCantStopMe_JustAGlorified, , SPEAKER_ZOEY
 	closemessage
 	setvar VAR_TOWER_RAID_STATE, SAVE_ROSE_SALESFORCETOWER
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
@@ -152,11 +106,8 @@ YouCantStopMe_Confront_Dialogue_2:
 
 
 YouCantStopMe_StartBossBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_YouCantStopMe_YouWere, MSGBOX_NPC
+	msgbox gText_YouCantStopMe_YouWere, MSGBOX_NPC, SPEAKER_ROSE
 	closemessage
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_MAXIE_MAGMA_HIDEOUT, gText_YouCantStopMe_WowGuessWeShould
 	goto WeCanStopYouActually_PostBattle_Dialogue
 	return

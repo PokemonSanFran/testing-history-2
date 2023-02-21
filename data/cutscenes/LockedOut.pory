@@ -11,7 +11,7 @@ script LockedOut_PreventPlayer_Script {
         waitmovement(0)
         playse(SE_FAILURE)
         waitse
-        msgbox(gText_LockedOut_AccessDenied)
+        msgbox(gText_LockedOut_AccessDenied,,SPEAKER_DOOR)
         closemessage
 
         if (!flag(FLAG_LOCKEDOUT_PLAYED)){
@@ -26,17 +26,15 @@ script LockedOut_PreventPlayer_Script {
 
 script LockedOut_PhoneCall_Dialogue {
     setflag(FLAG_LOCKEDOUT_PLAYED)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LockedOut_ShitWait)
-        callnative(ClearMugshot)
+        msgbox(gText_LockedOut_ShitWait,,SPEAKER_ZOEY)
+        
         closemessage
 
         applymovement(PLAYER,LockedOut_TryDoorAgain)
         waitmovement(0)
         playse(SE_FAILURE)
         waitse
-        msgbox(gText_LockedOut_AccessDenied)
+        msgbox(gText_LockedOut_AccessDenied,,SPEAKER_DOOR)
         closemessage
 
         playse(SE_POKENAV_CALL)
@@ -46,23 +44,15 @@ script LockedOut_PhoneCall_Dialogue {
         pokenavcall("This phone is ringing.") 
         waitmessage
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LockedOut_HeyIWasThinking)
+        msgbox(gText_LockedOut_HeyIWasThinking,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LockedOut_ImLockedOut)
+        msgbox(gText_LockedOut_ImLockedOut,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LockedOut_ThatsActuallyWhy)
+        msgbox(gText_LockedOut_ThatsActuallyWhy,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LockedOut_IActuallyHadnt)
+        msgbox(gText_LockedOut_IActuallyHadnt,,SPEAKER_ZOEY)
         closemessage
-        callnative(ClearMugshot)
+        
 
         playse(SE_POKENAV_HANG_UP)
         waitse

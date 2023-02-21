@@ -17,7 +17,7 @@ Quest_WallaceArmy_SetMovementType_Script_1:
 
 Quest_WallaceArmy_PreQuest_Dialogue::
 	goto_if_set FLAG_IS_CHAMPION, Quest_WallaceArmy_PreQuest_Dialogue_2
-	msgbox gText_WallaceArmy_WhatMakesThemThinkTheyCanTreat, MSGBOX_NPC
+	msgbox gText_WallaceArmy_WhatMakesThemThinkTheyCanTreat, MSGBOX_NPC, SPEAKER_SHASHI
 Quest_WallaceArmy_PreQuest_Dialogue_1:
 	end
 
@@ -46,19 +46,13 @@ Quest_WallaceArmy_CheckQuestState_Script_3:
 
 
 Quest_WallaceArmy_QuestStart_Dialogue::
-	msgbox gText_WallaceArmy_TheseKidsAreGonnaRuin
-	msgbox gText_WallaceArmy_FirstTheBidNowTheDamnKids
-	msgbox gText_WallaceArmy_OhTheChampionJustWhat
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WallaceArmy_TheLeagueDidntSend
-	callnative ClearMugshot
-	msgbox gText_WallaceArmy_SighWereMarinSolar
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WallaceArmy_YouThinkTheLeague
-	callnative ClearMugshot
-	msgbox gText_WallaceArmy_LookIHaveNoIdea
+	msgbox gText_WallaceArmy_TheseKidsAreGonnaRuin, , SPEAKER_SHASHI
+	msgbox gText_WallaceArmy_FirstTheBidNowTheDamnKids, , SPEAKER_SHASHI
+	msgbox gText_WallaceArmy_OhTheChampionJustWhat, , SPEAKER_SHASHI
+	msgbox gText_WallaceArmy_TheLeagueDidntSend, , SPEAKER_ZOEY
+	msgbox gText_WallaceArmy_SighWereMarinSolar, , SPEAKER_SHASHI
+	msgbox gText_WallaceArmy_YouThinkTheLeague, , SPEAKER_ZOEY
+	msgbox gText_WallaceArmy_LookIHaveNoIdea, , SPEAKER_SHASHI
 	startquest QUEST_WALLACEARMY
 	return
 
@@ -67,7 +61,7 @@ Quest_WallaceArmy_Active_Dialogue::
 	call Quest_WallaceArmy_CheckCompletionRate_Script
 	call Quest_WallaceArmy_ListRemainingLocations_Script
 	lock
-	msgbox gText_WallaceArmy_LooksLikeThereStill
+	msgbox gText_WallaceArmy_LooksLikeThereStill, , SPEAKER_SHASHI
 	end
 
 
@@ -127,23 +121,23 @@ Quest_WallaceArmy_Reward_Cutscene::
 	goto_if_eq Quest_WallaceArmy_Reward_Cutscene_2
 	applymovement 1, Quest_WallaceArmy_ExclaimAndWalkToPlayer_Movement
 	waitmovement 1
-	msgbox gText_WallaceArmy_WereBackUp
-	msgbox gText_WallaceArmy_TheStanArmyWillNeverDie
+	msgbox gText_WallaceArmy_WereBackUp, , SPEAKER_SHASHI
+	msgbox gText_WallaceArmy_TheStanArmyWillNeverDie, , SPEAKER_DEFAULT
 	closemessage
 	call Quest_WallaceArmy_LeadStanAppearance_Script
 	applymovement OBJ_EVENT_ID_PLAYER, Quest_WallaceArmy_ExclaimAndFaceNorth_Movement
 	applymovement 1, Quest_WallaceArmy_ExclaimAndFaceNorth_Movement
 	waitmovement 1
-	msgbox gText_WallaceArmy_HowDidYouGetInHere
-	msgbox gText_WallaceArmy_WhatIsThatMusic
-	msgbox gText_WallaceArmy_OurArmyWillAlwaysPrevail
+	msgbox gText_WallaceArmy_HowDidYouGetInHere, , SPEAKER_SHASHI
+	msgbox gText_WallaceArmy_WhatIsThatMusic, , SPEAKER_SHASHI
+	msgbox gText_WallaceArmy_OurArmyWillAlwaysPrevail, , SPEAKER_LEAH
 	closemessage
 	applymovement 3, Common_Movement_WalkDown
 	waitmovement 3
-	msgbox gText_WallaceArmy_ImLeahLeaderOfTheStanArmy
-	msgbox gText_WallaceArmy_WaitYoureTheLeader
-	msgbox gText_WallaceArmy_CanItOldMan
-	msgbox gText_WallaceArmy_AndYouAttackingTheArmy
+	msgbox gText_WallaceArmy_ImLeahLeaderOfTheStanArmy, , SPEAKER_LEAH
+	msgbox gText_WallaceArmy_WaitYoureTheLeader, , SPEAKER_SHASHI
+	msgbox gText_WallaceArmy_CanItOldMan, , SPEAKER_LEAH
+	msgbox gText_WallaceArmy_AndYouAttackingTheArmy, , SPEAKER_SHASHI
 	applymovement 3, Common_Movement_WalkDown
 	waitmovement 3
 	goto Quest_WallaceArmy_StartBattle_Script
@@ -155,7 +149,7 @@ Quest_WallaceArmy_Reward_Cutscene_2:
 
 
 Quest_WallaceArmy_StartBattle_Script::
-	msgbox gText_WallaceArmy_ACrimePunishableByDeath
+	msgbox gText_WallaceArmy_ACrimePunishableByDeath, , SPEAKER_LEAH
 	trainerbattle_no_intro TRAINER_CHIP, gText_WallaceArmy_MyLord
 	closemessage
 	goto Quest_WallaceArmy_PostBattle_Script
@@ -164,21 +158,21 @@ Quest_WallaceArmy_StartBattle_Script::
 
 Quest_WallaceArmy_PostBattle_Script::
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
-	msgbox gText_WallaceArmy_WhyAreYouDefending
-	msgbox gText_WallaceArmy_WeReallyHadNothing
+	msgbox gText_WallaceArmy_WhyAreYouDefending, , SPEAKER_LEAH, TAIL_SHOUT, EMOTE_CONFUSE
+	msgbox gText_WallaceArmy_WeReallyHadNothing, , SPEAKER_SHASHI, TAIL_SHOUT
 	closemessage
 	fadescreen FADE_TO_BLACK
 	fadedefaultbgm
 	delay 32
 	call Quest_WallaceArmy_MoveAllObjects_Script
 	fadescreen FADE_FROM_BLACK
-	msgbox gText_WallaceArmy_ThatsTheWholeStorySee
-	msgbox gText_WallaceArmy_ThereWasNoWallaceAtAll
-	msgbox gText_WallaceArmy_IStillDontKnowWhoThatIs
+	msgbox gText_WallaceArmy_ThatsTheWholeStorySee, , SPEAKER_SHASHI
+	msgbox gText_WallaceArmy_ThereWasNoWallaceAtAll, , SPEAKER_LEAH
+	msgbox gText_WallaceArmy_IStillDontKnowWhoThatIs, , SPEAKER_SHASHI
 	closemessage
 	applymovement 3, Common_Movement_WalkDown
 	waitmovement 3
-	msgbox gText_WallaceArmy_ImSorryForAttacking
+	msgbox gText_WallaceArmy_ImSorryForAttacking, , SPEAKER_LEAH, , EMOTE_SWEAT
 	giveitem ITEM_LIFE_ORB, 1
 	waitmessage
 	closemessage
@@ -195,7 +189,7 @@ Quest_WallaceArmy_PostBattle_Script::
 
 
 Quest_WallaceArmy_CompleteDialogue::
-	msgbox gText_WallaceArmy_ThankYouForStopping, MSGBOX_NPC
+	msgbox gText_WallaceArmy_ThankYouForStopping, MSGBOX_NPC, SPEAKER_SHASHI
 	end
 
 

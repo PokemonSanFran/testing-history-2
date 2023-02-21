@@ -67,36 +67,27 @@ ArcherAlpha_Event_Script_3:
 
 NewAssholeAppears_Intro_Dialogue::
 	setvar VAR_PSFROUTE9_STATE, SAVED_BEFORE_ARCHER_PSFROUTE9
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_NewAssholeAppears_YouLookFamiliar, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
+	msgbox gText_NewAssholeAppears_YouLookFamiliar, MSGBOX_NPC, , SPEAKER_ARCHER
 	compare VAR_SOMA_STATE, DEFEATED_WHITNEY
 	goto_if_gt NewAssholeAppears_Intro_Dialogue_2
-	msgbox gText_NewAssholeAppears_JustStarted, MSGBOX_NPC
+	msgbox gText_NewAssholeAppears_JustStarted, , SPEAKER_ZOEY
 NewAssholeAppears_Intro_Dialogue_1:
 	goto NewAssholeAppears_BadgeJudge_Dialogue
 	return
 
 NewAssholeAppears_Intro_Dialogue_2:
-	msgbox gText_NewAssholeAppears_YeahYouHadSome, MSGBOX_NPC
+	msgbox gText_NewAssholeAppears_YeahYouHadSome, , SPEAKER_ZOEY
 	goto NewAssholeAppears_Intro_Dialogue_1
 
 
 NewAssholeAppears_BadgeJudge_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
 	special GetNumberOfBadges
 	switch VAR_RESULT
 	case 0, NewAssholeAppears_BadgeJudge_Dialogue_3
 	case 1, NewAssholeAppears_BadgeJudge_Dialogue_4
-	msgbox gText_NewAssholeAppears_ColonizersAreReallyGetting, MSGBOX_NPC
+	msgbox gText_NewAssholeAppears_ColonizersAreReallyGetting, , SPEAKER_ARCHER
 NewAssholeAppears_BadgeJudge_Dialogue_1:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NewAssholeAppears_WhatIsYourProblem, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_NewAssholeAppears_WhatIsYourProblem, , SPEAKER_ZOEY
 	lockall
 	call Common_EventScript_SaveGame
 	closemessage
@@ -104,46 +95,30 @@ NewAssholeAppears_BadgeJudge_Dialogue_1:
 	return
 
 NewAssholeAppears_BadgeJudge_Dialogue_3:
-	msgbox gText_NewAssholeAppears_NotDoingMuchGood, MSGBOX_NPC
+	msgbox gText_NewAssholeAppears_NotDoingMuchGood, , SPEAKER_ARCHER
 	goto NewAssholeAppears_BadgeJudge_Dialogue_1
 
 NewAssholeAppears_BadgeJudge_Dialogue_4:
-	msgbox gText_NewAssholeAppears_ThoughtIRecognized, MSGBOX_NPC
+	msgbox gText_NewAssholeAppears_ThoughtIRecognized, , SPEAKER_ARCHER
 	goto NewAssholeAppears_BadgeJudge_Dialogue_1
 
 
 NewAssholeAppears_StartBattle_Script::
 	lockall
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
 	trainerbattle_single TRAINER_WALLY_MAUVILLE, gText_NewAssholeAppears_GoMindYourBusiness, gText_NewAssholeAppears_YoureTough, NewAssholeAppears_PostBattle_Script, NO_MUSIC
 	closemessage
-	callnative ClearMugshot
 	return
 
 
 NewAssholeAppears_PostBattle_Script::
 	lockall
 	setvar VAR_PSFROUTE9_STATE, DEFEATED_ARCHER_PSFROUTE9
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NewAssholeAppears_Whateveryournameis, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_NewAssholeAppears_GentrificationOfMyHome, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NewAssholeAppears_YouSoundCrazyPerson, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_NewAssholeAppears_NotStupidJustIgnorant, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_NewAssholeAppears_SeeYouAround, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NewAssholeAppears_IHopeNot, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_NewAssholeAppears_Whateveryournameis, , SPEAKER_ZOEY
+	msgbox gText_NewAssholeAppears_GentrificationOfMyHome, , SPEAKER_ARCHER
+	msgbox gText_NewAssholeAppears_YouSoundCrazyPerson, , SPEAKER_ZOEY
+	msgbox gText_NewAssholeAppears_NotStupidJustIgnorant, , SPEAKER_ARCHER
+	msgbox gText_NewAssholeAppears_SeeYouAround, , SPEAKER_ARCHER
+	msgbox gText_NewAssholeAppears_IHopeNot, , SPEAKER_ZOEY
 	closemessage
 	goto NewAssholeAppears_ArcherExit_Script
 	return

@@ -26,11 +26,8 @@ BeachBattle_BattleSetUp_Script::
 
 BeachBattle_BiancaWalkToPlayer::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_BeachBattle_HeyPlayer
+	msgbox gText_BeachBattle_HeyPlayer, MSGBOX_DEFAULT, SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	playse SE_PIN
 	clearflag FLAG_TEMP_1
 	addobject 1
@@ -68,9 +65,7 @@ BeachBattle_Bianca_Event_Script_3:
 BeachBattle_Approach_Dialogue::
 	setvar VAR_BEACH_BATTLE_STATE, SAVE_BIANCA_BEACH
 	setobjectxyperm 1, 10, 24
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_BeachBattle_ImHeadingNorth
+	msgbox gText_BeachBattle_ImHeadingNorth, MSGBOX_DEFAULT, SPEAKER_BIANCA
 	special GetNumberOfBadges
 	switch VAR_RESULT
 	case 8, BeachBattle_Approach_Dialogue_3
@@ -83,7 +78,7 @@ BeachBattle_Approach_Dialogue_1:
 	return
 
 BeachBattle_Approach_Dialogue_3:
-	msgbox gText_BeachBattle_OhShit
+	msgbox gText_BeachBattle_OhShit, MSGBOX_DEFAULT, SPEAKER_BIANCA, TAIL_TALK, EMOTE_SHOCK
 	goto BeachBattle_Approach_Dialogue_1
 
 BeachBattle_Approach_Dialogue_4:
@@ -91,11 +86,11 @@ BeachBattle_Approach_Dialogue_4:
 	goto BeachBattle_Approach_Dialogue_1
 
 BeachBattle_Approach_Dialogue_5:
-	msgbox gText_BeachBattle_TwoLeft
+	msgbox gText_BeachBattle_TwoLeft, MSGBOX_DEFAULT, SPEAKER_BIANCA
 	goto BeachBattle_Approach_Dialogue_1
 
 BeachBattle_Approach_Dialogue_6:
-	msgbox gText_BeachBattle_HmmOnlyFive
+	msgbox gText_BeachBattle_HmmOnlyFive, MSGBOX_DEFAULT, SPEAKER_BIANCA
 	goto BeachBattle_Approach_Dialogue_1
 
 BeachBattle_Approach_Dialogue_7:
@@ -104,25 +99,21 @@ BeachBattle_Approach_Dialogue_7:
 
 
 BeachBattle_SevenBadges_Dialogue::
-	msgbox gText_BeachBattle_OhNiceLastOne
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeachBattle_JustTheOneIn
+	msgbox gText_BeachBattle_OhNiceLastOne, MSGBOX_DEFAULT, SPEAKER_BIANCA, TAIL_TALK, EMOTE_HAPPY
+	msgbox gText_BeachBattle_JustTheOneIn, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	goto BeachBattle_SaveProgress
 	return
 
 
 BeachBattle_FourBadges_Dialogue::
-	msgbox gText_BeachBattle_ImNotSureThatSlow
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeachBattle_IveBeenALittleDistracted
+	msgbox gText_BeachBattle_ImNotSureThatSlow, MSGBOX_DEFAULT, SPEAKER_BIANCA
+	msgbox gText_BeachBattle_IveBeenALittleDistracted, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	goto BeachBattle_SaveProgress
 	return
 
 
 BeachBattle_SaveProgress::
-	callnative ClearMugshot
+	closemessage
 	call Common_EventScript_SaveGame
 	closemessage
 	goto BeachBattle_StartBattle_Script
@@ -131,12 +122,10 @@ BeachBattle_SaveProgress::
 
 BeachBattle_StartBattle_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_BeachBattle_MyBrainIsScrambled
+	msgbox gText_BeachBattle_MyBrainIsScrambled, MSGBOX_DEFAULT, SPEAKER_BIANCA
+	closemessage
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_MUDKIP, gText_BeachBattle_ImLegitShook
 	closemessage
-	callnative ClearMugshot
 	goto BeachBattle_PostBattle_Dialogue
 	return
 
@@ -146,16 +135,11 @@ BeachBattle_PostBattle_Dialogue::
 	addvar VAR_STORYLINE_STATE, 1
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	setvar VAR_BEACH_BATTLE_STATE, POST_BEACH_BATTLE
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BeachBattle_WellImNotSurprised
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_BeachBattle_UghIShouldBe
+	msgbox gText_BeachBattle_WellImNotSurprised, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_BeachBattle_UghIShouldBe, MSGBOX_DEFAULT, SPEAKER_BIANCA
 	goto_if_set FLAG_BADGE05_GET, BeachBattle_PostBattle_Dialogue_2
 BeachBattle_PostBattle_Dialogue_1:
-	msgbox gText_BeachBattle_NextTimeIllHave
-	callnative ClearMugshot
+	msgbox gText_BeachBattle_NextTimeIllHave, TAIL_TALK, SPEAKER_BIANCA
 	closemessage
 	applymovement 1, BeachBattle_WalkAway
 	waitmovement 0
@@ -165,7 +149,7 @@ BeachBattle_PostBattle_Dialogue_1:
 	end
 
 BeachBattle_PostBattle_Dialogue_2:
-	msgbox gText_BeachBattle_IfItTakesATeam
+	msgbox gText_BeachBattle_IfItTakesATeam, TAIL_WHISPER, SPEAKER_BIANCA
 	goto BeachBattle_PostBattle_Dialogue_1
 
 

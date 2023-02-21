@@ -61,51 +61,39 @@ Quest_NoGoodDeed_Rainer_Interact_Script_3:
 
 
 Quest_NoGoodDeed_StartQuest_Dialogue::
-	msgbox gText_NoGoodDeed_HeyYou
-	msgbox gText_NoGoodDeed_YoureTheOne
-	msgbox gText_NoGoodDeed_TheyJustKickedUs
+	msgbox gText_NoGoodDeed_HeyYou, , SPEAKER_RAINER
+	msgbox gText_NoGoodDeed_YoureTheOne, , SPEAKER_RAINER
+	msgbox gText_NoGoodDeed_TheyJustKickedUs, , SPEAKER_RAINER
 	trainerbattle_no_intro TRAINER_LOLA_4, gText_NoGoodDeed_Heartless
 	goto Quest_NoGoodDeed_PostBattle_Script
 	return
 
 
 Quest_NoGoodDeed_PostBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NoGoodDeed_OkaySlowDown
-	callnative ClearMugshot
-	msgbox gText_NoGoodDeed_YouSaid
-	msgbox gText_NoGoodDeed_SoTheyCame
-	msgbox gText_NoGoodDeed_WithNoContact
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NoGoodDeed_ThatCantBeRight
-	callnative ClearMugshot
-	msgbox gText_NoGoodDeed_IToldYouBefore
+	msgbox gText_NoGoodDeed_OkaySlowDown, , SPEAKER_ZOEY
+	msgbox gText_NoGoodDeed_YouSaid, , SPEAKER_RAINER
+	msgbox gText_NoGoodDeed_SoTheyCame, , SPEAKER_RAINER
+	msgbox gText_NoGoodDeed_WithNoContact, , SPEAKER_RAINER
+	msgbox gText_NoGoodDeed_ThatCantBeRight, , SPEAKER_ZOEY
+	msgbox gText_NoGoodDeed_IToldYouBefore, , SPEAKER_RAINER
 	startquest QUEST_NOGOODDEED
 	goto Quest_NoGoodDeed_Rainer_Active_Dialogue
 	return
 
 
 Quest_NoGoodDeed_Rainer_Active_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NoGoodDeed_LetMeTalk
-	callnative ClearMugshot
-	msgbox gText_NoGoodDeed_UhHuhIllBe
+	msgbox gText_NoGoodDeed_LetMeTalk, , SPEAKER_ZOEY
+	msgbox gText_NoGoodDeed_UhHuhIllBe, , SPEAKER_RAINER
 	closemessage
 	release
 	end
 
 
 Quest_NoGoodDeed_Rainer_Reward_Dialogue::
-	msgbox gText_NoGoodDeed_HeyItMeansALot
-	msgbox gText_NoGoodDeed_TheyCameAndGot
-	msgbox gText_NoGoodDeed_IWishIHad
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NoGoodDeed_NoDontWorry
-	callnative ClearMugshot
+	msgbox gText_NoGoodDeed_HeyItMeansALot, , SPEAKER_RAINER
+	msgbox gText_NoGoodDeed_TheyCameAndGot, , SPEAKER_RAINER
+	msgbox gText_NoGoodDeed_IWishIHad, , SPEAKER_RAINER
+	msgbox gText_NoGoodDeed_NoDontWorry, , SPEAKER_ZOEY
 	applymovement 15, Common_Movement_WalkUp
 	waitmovement 15
 	playse SE_EXIT
@@ -130,38 +118,23 @@ Quest_NoGoodDeed_YCEmployee_Interact_Script_2:
 
 
 Quest_NoGoodDeed_Employee_Active_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NoGoodDeed_HeyYou
-	callnative ClearMugshot
-	msgbox gText_NoGoodDeed_PlayerRight
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NoGoodDeed_DoYouRemember
-	callnative ClearMugshot
-	msgbox gText_NoGoodDeed_YeahIThinkSo
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NoGoodDeed_ITalkedTo
-	callnative ClearMugshot
-	msgbox gText_NoGoodDeed_WeSaid
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NoGoodDeed_YouToldMe
-	callnative ClearMugshot
-	msgbox gText_NoGoodDeed_OkayOkay
+	msgbox gText_NoGoodDeed_HeyYou, , SPEAKER_ZOEY
+	msgbox gText_NoGoodDeed_PlayerRight, SPEAKER_YCOMBINATOR_STAFF
+	msgbox gText_NoGoodDeed_DoYouRemember, , SPEAKER_ZOEY
+	msgbox gText_NoGoodDeed_YeahIThinkSo, , SPEAKER_YCOMBINATOR_STAFF
+	msgbox gText_NoGoodDeed_ITalkedTo, , SPEAKER_ZOEY
+	msgbox gText_NoGoodDeed_WeSaid, , SPEAKER_YCOMBINATOR_STAFF
+	msgbox gText_NoGoodDeed_YouToldMe, , SPEAKER_ZOEY, , EMOTE_ANGRY
+	msgbox gText_NoGoodDeed_OkayOkay, , SPEAKER_YCOMBINATOR_STAFF
 	applymovement 5, Common_Movement_FaceAwayPlayer
 	waitmovement 5
-	msgbox gText_NoGoodDeed_HeyCanYou
+	msgbox gText_NoGoodDeed_HeyCanYou, SPEAKER_YCOMBINATOR_STAFF, , , PHONE_ON
 	applymovement 5, Common_Movement_FacePlayer
 	waitmovement 5
-	msgbox gText_NoGoodDeed_IMadeACall
-	msgbox gText_NoGoodDeed_YouCanGo
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_NoGoodDeed_WaitSeriously
-	callnative ClearMugshot
-	msgbox gText_NoGoodDeed_AsAMatter
+	msgbox gText_NoGoodDeed_IMadeACall, , SPEAKER_YCOMBINATOR_STAFF
+	msgbox gText_NoGoodDeed_YouCanGo, , SPEAKER_YCOMBINATOR_STAFF
+	msgbox gText_NoGoodDeed_WaitSeriously, , SPEAKER_ZOEY
+	msgbox gText_NoGoodDeed_AsAMatter, , SPEAKER_YCOMBINATOR_STAFF
 	closemessage
 	applymovement 5, Quest_NoGoodDeed_LeaveScene_Movement
 	waitmovement 5

@@ -15,10 +15,7 @@ WhyDidntYouRatMeOut_StopPlayerLeaving::
 	setflag FLAG_TEMP_2
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_HeyWait
-	callnative ClearMugshot
+	msgbox gText_WhyDidntYouRatMeOut_HeyWait, , SPEAKER_ARCHER
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
@@ -28,10 +25,7 @@ WhyDidntYouRatMeOut_StopPlayerLeaving::
 	applymovement 3, WhyDidntYouRatMeOut_WalkToPlayerRight
 WhyDidntYouRatMeOut_StopPlayerLeaving_1:
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_CanWeTalk
-	callnative ClearMugshot
+	msgbox gText_WhyDidntYouRatMeOut_CanWeTalk, , SPEAKER_ARCHER
 	closemessage
 	playse SE_EXIT
 	warpsilent MAP_CHASECENTER_STANDS, 4, 6
@@ -45,80 +39,36 @@ WhyDidntYouRatMeOut_StopPlayerLeaving_2:
 WhyDidntYouRatMeOut_ConversationInStands::
 	applymovement OBJ_EVENT_ID_PLAYER, WhyDidntYouRatMeOut_WalkSlowlyUpStairsLeft
 	applymovement 1, WhyDidntYouRatMeOut_WalkSlowlyUpStairsRight
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_WhatDoYouWant
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_IDidntThinkWed
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_IsSomethingWrongWith
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_ThatsNotWhatI
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_UhHuh
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_WhenYouWalkedIn
+	msgbox gText_WhyDidntYouRatMeOut_WhatDoYouWant, , SPEAKER_ZOEY
+	msgbox gText_WhyDidntYouRatMeOut_IDidntThinkWed, , SPEAKER_ARCHER
+	msgbox gText_WhyDidntYouRatMeOut_IsSomethingWrongWith, , SPEAKER_ZOEY
+	msgbox gText_WhyDidntYouRatMeOut_ThatsNotWhatI, , SPEAKER_ARCHER
+	msgbox gText_WhyDidntYouRatMeOut_UhHuh, , SPEAKER_ZOEY
+	msgbox gText_WhyDidntYouRatMeOut_WhenYouWalkedIn, , SPEAKER_ARCHER
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_WhyDidntYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_IStillHaventDecided
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_WaitShit
+	msgbox gText_WhyDidntYouRatMeOut_WhyDidntYou, , SPEAKER_ARCHER
+	msgbox gText_WhyDidntYouRatMeOut_IStillHaventDecided, , SPEAKER_ZOEY
+	msgbox gText_WhyDidntYouRatMeOut_WaitShit, , SPEAKER_ARCHER
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, WhyDidntYouRatMeOut_WalkBackward
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_NoCalmDown
-	callnative ClearMugshot
+	msgbox gText_WhyDidntYouRatMeOut_NoCalmDown, , SPEAKER_ZOEY
 	closemessage
 	applymovement 1, Common_Movement_WalkLeft
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_LookPlayer
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_NoYouLook
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_WasNiceToMe4
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_ThankYouAndImSorry
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_UhHuhLetsSeeHow
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_NoSeriouslyItMeans
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_LikeEveryOtherTime
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_YouKnowThem
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_YeahTheyreIn
-	callnative ClearMugshot
+	msgbox gText_WhyDidntYouRatMeOut_LookPlayer, , SPEAKER_ARCHER
+	msgbox gText_WhyDidntYouRatMeOut_NoYouLook, , SPEAKER_ZOEY
+	msgbox gText_WhyDidntYouRatMeOut_WasNiceToMe4, , SPEAKER_ZOEY
+	msgbox gText_WhyDidntYouRatMeOut_ThankYouAndImSorry, , SPEAKER_ARCHER
+	msgbox gText_WhyDidntYouRatMeOut_UhHuhLetsSeeHow, , SPEAKER_ZOEY
+	msgbox gText_WhyDidntYouRatMeOut_NoSeriouslyItMeans, , SPEAKER_ARCHER
+	msgbox gText_WhyDidntYouRatMeOut_LikeEveryOtherTime, , SPEAKER_ZOEY
+	msgbox gText_WhyDidntYouRatMeOut_YouKnowThem, , SPEAKER_ARCHER
+	msgbox gText_WhyDidntYouRatMeOut_YeahTheyreIn, , SPEAKER_ZOEY
 	closemessage
 	playse SE_POKENAV_CALL
 	waitse
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_MyGroupIsStarting
-	callnative ClearMugshot
+	msgbox gText_WhyDidntYouRatMeOut_MyGroupIsStarting, , SPEAKER_ARCHER
 	closemessage
 	clearflag FLAG_TEMP_2
 	addobject 2
@@ -126,16 +76,9 @@ WhyDidntYouRatMeOut_ConversationInStands::
 	applymovement 2, WhyDidntYouRatMeOut_EnterStands
 	waitmovement 0
 	removeobject 1
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_OhDoYouKnowThat
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_UhYeahWeMet
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_IMeantToTell
-	callnative ClearMugshot
+	msgbox gText_WhyDidntYouRatMeOut_OhDoYouKnowThat, , SPEAKER_OAK
+	msgbox gText_WhyDidntYouRatMeOut_UhYeahWeMet, , SPEAKER_ZOEY
+	msgbox gText_WhyDidntYouRatMeOut_IMeantToTell, , SPEAKER_OAK
 	closemessage
 	playse SE_EXIT
 	warpsilent MAP_CHASECENTER_SKYBOX, 10, 3
@@ -174,11 +117,8 @@ WhyDidntYouRatMeOut_WatchBiancaMatches::
 	applymovement 7, WhyDidntYouRatMeOut_WalkUpToPlayer
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WhyDidntYouRatMeOut_YourGroupIsNext
+	msgbox gText_WhyDidntYouRatMeOut_YourGroupIsNext, , SPEAKER_OAK
 	closemessage
-	callnative ClearMugshot
 	setvar VAR_STORYLINE_STATE, STORY_BIANCA_WON_GROUP
 	releaseall
 	end

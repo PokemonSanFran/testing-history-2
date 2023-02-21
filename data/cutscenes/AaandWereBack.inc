@@ -33,10 +33,7 @@ Act1_1_Check_Script_1:
 
 AaandWereBack_Monologue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_GotAllThree
-	callnative ClearMugshot
+	msgbox gText_AaandWereBack_GotAllThree, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_SWEAT, PHONE_OFF
 	closemessage
 	call AaandWereBack_WarpToCompound_Script
 	release
@@ -57,43 +54,22 @@ AaandWereBack_WarpToCompound_Script_1:
 
 
 AaandWereBack_Bianca_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_WhatsYourProgress, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_OnlyThree
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_YeahThatBusted
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_INeedToFigure
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_HardToComeBy
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_ImSureIllFigure
-	callnative ClearMugshot
+	msgbox gText_AaandWereBack_WhatsYourProgress, MSGBOX_NPC, SPEAKER_BIANCA
+	msgbox gText_AaandWereBack_OnlyThree, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_AaandWereBack_YeahThatBusted, MSGBOX_DEFAULT, SPEAKER_BIANCA
+	msgbox gText_AaandWereBack_INeedToFigure, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_AaandWereBack_HardToComeBy, MSGBOX_DEFAULT, SPEAKER_BIANCA
+	msgbox gText_AaandWereBack_ImSureIllFigure, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	return
 
 
 AaandWereBack_FerryRepaired_Dialogue::
 	setvar VAR_STORYLINE_STATE, STORY_FERRY_FIXED
-	msgbox gText_AaandWereBack_OpeningMessage, MSGBOX_POKENAV
-	waitmessage
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_ThatsDifferent
-	callnative ClearMugshot
-	pokenavcall gText_AaandWereBack_FerryMessage
-	waitmessage
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_TooBadTheresNoFerry
-	callnative ClearMugshot
+	msgbox gText_AaandWereBack_OpeningMessage, MSGBOX_DEFAULT
+	msgbox gText_AaandWereBack_ThatsDifferent, SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_CONFUSE
+	msgbox gText_AaandWereBack_FerryMessage, MSGBOX_DEFAULT, SPEAKER_BART, 0, 0, PHONE_ON
+	msgbox gText_AaandWereBack_TooBadTheresNoFerry, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_THOUGHT
 	compare VAR_FAINTED_FOG_STATE, DEFEATED_IN_FOG
 	goto_if_eq AaandWereBack_FerryRepaired_Dialogue_2
 AaandWereBack_FerryRepaired_Dialogue_1:
@@ -101,10 +77,7 @@ AaandWereBack_FerryRepaired_Dialogue_1:
 	return
 
 AaandWereBack_FerryRepaired_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AaandWereBack_FindAWayThrough
-	callnative ClearMugshot
+	msgbox gText_AaandWereBack_FindAWayThrough, SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_SWEAT
 	goto AaandWereBack_FerryRepaired_Dialogue_1
 
 

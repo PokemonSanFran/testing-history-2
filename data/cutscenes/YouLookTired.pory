@@ -51,10 +51,8 @@ script YouLookTired_Intro_Dialogue {
     applymovement(KOGA,Common_Movement_FaceRight)
     waitmovement(KOGA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_SorryToInterrupt)
-        callnative(ClearMugshot)
+        msgbox(gText_YouLookTired_SorryToInterrupt,,SPEAKER_KOGA)
+        
         closemessage
 
     applymovement(PLAYER,Common_Movement_FaceLeft)
@@ -63,28 +61,16 @@ script YouLookTired_Intro_Dialogue {
     applymovement(KOGA,YouLookTired_KogaWalksToPlayer_Movement)
     waitmovement(KOGA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_YeahWhatsUp)
+        msgbox(gText_YouLookTired_YeahWhatsUp,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_GladIWasAbleToRun)
+        msgbox(gText_YouLookTired_GladIWasAbleToRun,,SPEAKER_KOGA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_IGuessYouDoToo)
+        msgbox(gText_YouLookTired_IGuessYouDoToo,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_ChiefOperatingOfficer)
+        msgbox(gText_YouLookTired_ChiefOperatingOfficer,,SPEAKER_KOGA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_IKeepHearingThat)
+        msgbox(gText_YouLookTired_IKeepHearingThat,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
         goto(YouLookTired_BadgeJudge_Script)
 }
 
@@ -92,58 +78,42 @@ script YouLookTired_BadgeJudge_Script {
 
     special(GetNumberOfBadges)
         if (var(VAR_RESULT) == 8){
-            msgbox(gText_YouLookTired_FormallYCombinatorongratulate)
+            msgbox(gText_YouLookTired_FormallYCombinatorongratulate,,SPEAKER_KOGA)
         } else {
-            msgbox(gText_YouLookTired_CanBeAHandful)
+            msgbox(gText_YouLookTired_CanBeAHandful,,SPEAKER_KOGA)
         }
         goto(YouLookTired_AcceptInvite_Dialogue)
 }
 
 script YouLookTired_AcceptInvite_Dialogue {
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_ItsBeenAnInterestingRide)
-        msgbox(gText_YouLookTired_WaitDidntISeeYou)
+        msgbox(gText_YouLookTired_ItsBeenAnInterestingRide,,SPEAKER_ZOEY)
+        msgbox(gText_YouLookTired_WaitDidntISeeYou,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_WhereDidYou)
-        msgbox(gText_YouLookTired_IImagineYoureProbably)
+        msgbox(gText_YouLookTired_WhereDidYou,,SPEAKER_KOGA)
+        msgbox(gText_YouLookTired_IImagineYoureProbably,,SPEAKER_KOGA)
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_ItHasBeenAWhile)
+        msgbox(gText_YouLookTired_ItHasBeenAWhile,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_WontBeAnIssue)
-        callnative(ClearMugshot)
+        msgbox(gText_YouLookTired_WontBeAnIssue,,SPEAKER_KOGA)
+        
         closemessage
 
         applymovement(KOGA,Common_Movement_FaceLeft)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_WestOfHere)
-        callnative(ClearMugshot)
+        msgbox(gText_YouLookTired_WestOfHere,,SPEAKER_KOGA)
+        
         closemessage
 
         applymovement(KOGA,Common_Movement_FacePlayer)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_MyHouseHas)
+        msgbox(gText_YouLookTired_MyHouseHas,,SPEAKER_KOGA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_N)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_IllSeeYouForDinner)
+        msgbox(gText_YouLookTired_IllSeeYouForDinner,,SPEAKER_KOGA)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_YouLookTired_YesThanksAgain)
-        callnative(ClearMugshot)
+        msgbox(gText_YouLookTired_YesThanksAgain,,SPEAKER_ZOEY)
+        
         closemessage
 
         call(YouLookTired_WalkAway_Script)

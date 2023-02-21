@@ -17,9 +17,9 @@ script Quest_ChinatownTunnels_Event_Script{
     returnqueststate(QUEST_CULTURALPURITY)
 
     switch(var(VAR_RESULT)){
-        case QUEST_MENU_COMPLETE_QUEST: msgbox(gText_Quest_ChinatownTunnels_ICannotThank,MSGBOX_NPC)
+        case QUEST_MENU_COMPLETE_QUEST: msgbox(gText_Quest_ChinatownTunnels_ICannotThank,MSGBOX_NPC,SPEAKER_DEFAULT)
         case QUEST_MENU_CHECK_ACTIVE: goto(Quest_ChinatownTunnels_Active_Event_Script)
-        default: msgbox(gText_Chinatown_IMissTheOld,MSGBOX_NPC)
+        default: msgbox(gText_Chinatown_IMissTheOld,MSGBOX_NPC,SPEAKER_DEFAULT)
         }
             release
             end
@@ -36,12 +36,10 @@ script Quest_ChinatownTunnels_Active_Event_Script{
 
 script Quest_ChinatownTunnels_Intro_Dialogue{
     lock
-    msgbox(gText_Quest_ChinatownTunnels_OhoHowCanIHelp,MSGBOX_NPC)
+    msgbox(gText_Quest_ChinatownTunnels_OhoHowCanIHelp,MSGBOX_NPC,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_ChinatownTunnels_IHeardOnlineThatYou,MSGBOX_NPC)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_ChinatownTunnels_IHeardOnlineThatYou,MSGBOX_NPC,SPEAKER_ZOEY)
+        
     addvar(VAR_QUEST_CHINATOWN_TUNNELS,1)
     goto(Quest_ChinatownTunnels_BadgeCheck_Dialogue)
 }
@@ -53,7 +51,7 @@ script Quest_ChinatownTunnels_BadgeCheck_Dialogue{
         goto(Quest_ChinatownTunnels_RevealSecret_Dialogue)
     }
     else {
-        msgbox(gText_Quest_ChinatownTunnels_YoureNotStrongEnough,MSGBOX_NPC)
+        msgbox(gText_Quest_ChinatownTunnels_YoureNotStrongEnough,MSGBOX_NPC,SPEAKER_DEFAULT)
     }
     release
     end
@@ -61,7 +59,7 @@ script Quest_ChinatownTunnels_BadgeCheck_Dialogue{
 
 script Quest_ChinatownTunnels_RevealSecret_Dialogue{
     addvar(VAR_QUEST_CHINATOWN_TUNNELS,1)
-    msgbox(gText_Quest_ChinatownTunnels_HmmYouLookStrong,MSGBOX_NPC)
+    msgbox(gText_Quest_ChinatownTunnels_HmmYouLookStrong,MSGBOX_NPC,SPEAKER_DEFAULT)
     closemessage
 
     applymovement(ELDEST_OUTSIDE,Common_Movement_FaceAwayPlayer)
@@ -70,7 +68,7 @@ script Quest_ChinatownTunnels_RevealSecret_Dialogue{
 
     applymovement(ELDEST_OUTSIDE,Common_Movement_FacePlayer)
     waitmovement(ELDEST_OUTSIDE)
-    msgbox(gText_Quest_ChinatownTunnels_YouveHeardCorrectly,MSGBOX_NPC)
+    msgbox(gText_Quest_ChinatownTunnels_YouveHeardCorrectly,MSGBOX_NPC,SPEAKER_DEFAULT)
     closemessage
     release
     end
@@ -79,11 +77,9 @@ script Quest_ChinatownTunnels_RevealSecret_Dialogue{
 script Quest_ChinatownTunnels_FirstScrollWarp_Script{
     lock
     call(Chinatown_Racisthouse_ScrollNoWarp_Dialogue)
+
+    msgbox(gText_Quest_ChinatownTunnels_WaitIsThis,MSGBOX_DEFAULT,,SPEAKER_ZOEY)
     
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_ChinatownTunnels_WaitIsThis,MSGBOX_DEFAULT)
-    callnative(ClearMugshot)
 
     applymovement(PLAYER,Quest_ChinatownTunnels_PushScroll_Movement)
     delay(4)
@@ -96,7 +92,7 @@ script Quest_ChinatownTunnels_FirstScrollWarp_Script{
 }
 
 script Quest_ChinatownTunnels_WaitingScroll_Dialogue{
-    msgbox(gText_Quest_ChinatownTunnels_HaveYou,MSGBOX_NPC)
+    msgbox(gText_Quest_ChinatownTunnels_HaveYou,MSGBOX_NPC,SPEAKER_DEFAULT)
     end
 }
 
@@ -104,10 +100,8 @@ script Quest_ChinatownTunnels_Treasure_Script{
     lock
     msgbox(gText_Quest_ChinatownTunnels_ThereIsAnOrnate,MSGBOX_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_ChinatownTunnels_ThisMustBe,MSGBOX_DEFAULT)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_ChinatownTunnels_ThisMustBe,MSGBOX_DEFAULT,,SPEAKER_ZOEY)
+    
 
     msgbox(gText_Quest_ChinatownTunnels_ThatWontBe,MSGBOX_DEFAULT)
     closemessage
@@ -129,14 +123,12 @@ script Quest_ChinatownTunnels_Treasure_Script{
     applymovement(ELDEST_TUNNEL,Quest_ChinatownTunnels_WalkToPlayer_Movement)
     waitmovement(ELDEST_TUNNEL)
 
-    msgbox(gText_Quest_ChinatownTunnels_ThankYouFor,MSGBOX_NPC)
+    msgbox(gText_Quest_ChinatownTunnels_ThankYouFor,MSGBOX_NPC,SPEAKER_DEFAULT)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_ChinatownTunnels_NoProblemThisBox,MSGBOX_NPC)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_ChinatownTunnels_NoProblemThisBox,MSGBOX_NPC,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_Quest_ChinatownTunnels_IMayHaveMislead,MSGBOX_NPC)
+    msgbox(gText_Quest_ChinatownTunnels_IMayHaveMislead,MSGBOX_NPC,SPEAKER_DEFAULT)
     closemessage
 
     applymovement(ELDEST_TUNNEL,Quest_ChinatownTunnels_TakeTreasure_Movement)
@@ -154,20 +146,18 @@ script Quest_ChinatownTunnels_Treasure_Script{
     applymovement(PLAYER,Common_Movement_ExclamationMark)
     waitmovement(PLAYER)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_Quest_ChinatownTunnels_YouHad,MSGBOX_DEFAULT)
-    callnative(ClearMugshot)
+    msgbox(gText_Quest_ChinatownTunnels_YouHad,MSGBOX_DEFAULT,,SPEAKER_ZOEY)
+    
 
     applymovement(ELDEST_TUNNEL,Common_Movement_FaceLeft)
 
-    msgbox(gText_Quest_ChinatownTunnels_IUsedToLiveHere,MSGBOX_DEFAULT)
+    msgbox(gText_Quest_ChinatownTunnels_IUsedToLiveHere,MSGBOX_DEFAULT,SPEAKER_DEFAULT)
     closemessage
 
     applymovement(ELDEST_TUNNEL,Common_Movement_FaceLeft)
     waitmovement(ELDEST_TUNNEL)
 
-    msgbox(gText_Quest_ChinatownTunnels_IAsked,MSGBOX_DEFAULT)
+    msgbox(gText_Quest_ChinatownTunnels_IAsked,MSGBOX_DEFAULT,SPEAKER_DEFAULT)
     closemessage
     applymovement(ELDEST_TUNNEL,Quest_ChinatownTunnels_LeaveTunnel_Movement)
     applymovement(PLAYER,Common_Movement_FaceDown)

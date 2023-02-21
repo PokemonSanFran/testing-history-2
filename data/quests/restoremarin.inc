@@ -82,73 +82,51 @@ Quest_Restoremarin_BufferStrings_Part2_Script::
 
 
 Quest_Restoremarin_StartQuest_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_YourePlayer
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_YeahImHelping
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_AreYouHelping
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_IHearThat
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_TheBestWay
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_RightBut
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_HmmI
-	msgbox gText_Restoremarin_IHave
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_LikeTrainer
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_OhIDidnt
-	msgbox gText_Restoremarin_TheresABattle
-	msgbox gText_Restoremarin_CanYouBring
-	msgbox gText_Restoremarin_IFIWant
+	msgbox gText_Restoremarin_YourePlayer, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_YeahImHelping, , SPEAKER_ZOEY
+	msgbox gText_Restoremarin_AreYouHelping, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_IHearThat, , SPEAKER_ZOEY
+	msgbox gText_Restoremarin_TheBestWay, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_RightBut, , SPEAKER_ZOEY
+	msgbox gText_Restoremarin_HmmI, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_IHave, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_LikeTrainer, , SPEAKER_ZOEY
+	msgbox gText_Restoremarin_OhIDidnt, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_TheresABattle, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_CanYouBring, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_IFIWant, , SPEAKER_LENORA
 	call Quest_Restoremarin_BufferStrings_Part1_Script
-	msgbox gText_Restoremarin_WeNeed_A
+	msgbox gText_Restoremarin_WeNeed_A, , SPEAKER_LENORA
 	call Quest_Restoremarin_BufferStrings_Part2_Script
-	msgbox gText_Restoremarin_WeNeed_B
-	msgbox gText_Restoremarin_ComeBack
-	callnative ClearMugshot
+	msgbox gText_Restoremarin_WeNeed_B, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_ComeBack, , SPEAKER_LENORA
 	startquest QUEST_RESTOREMARIN
 	release
 	end
 
 
 Quest_Restoremarin_Active_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
 	call Quest_Restoremarin_CheckProgress_Script
 	compare VAR_TEMP_1, 1
 	goto_if_eq Quest_Restoremarin_Active_Script_2
 	compare VAR_TEMP_2, 1
 	goto_if_eq Quest_Restoremarin_Active_Script_3
 	call Quest_Restoremarin_BufferStrings_Part1_Script
-	msgbox gText_Restoremarin_WeNeed_A
+	msgbox gText_Restoremarin_WeNeed_A, , SPEAKER_LENORA
 	call Quest_Restoremarin_BufferStrings_Part2_Script
-	msgbox gText_Restoremarin_WeNeed_B
+	msgbox gText_Restoremarin_WeNeed_B, , SPEAKER_LENORA
 Quest_Restoremarin_Active_Script_1:
-	callnative ClearMugshot
 	goto Quest_Restoremarin_CheckPokemon_Script
 	return
 
 Quest_Restoremarin_Active_Script_2:
 	call Quest_Restoremarin_BufferStrings_Part2_Script
-	msgbox gText_Restoremarin_WeNeed
+	msgbox gText_Restoremarin_WeNeed, , SPEAKER_LENORA
 	goto Quest_Restoremarin_Active_Script_1
 
 Quest_Restoremarin_Active_Script_3:
 	call Quest_Restoremarin_BufferStrings_Part1_Script
-	msgbox gText_Restoremarin_WeNeed
+	msgbox gText_Restoremarin_WeNeed, , SPEAKER_LENORA
 	goto Quest_Restoremarin_Active_Script_1
 
 
@@ -194,10 +172,7 @@ Quest_Restoremarin_CheckPokemon_Script_11:
 
 
 Quest_Restoremarin_TakeMon_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Restoremarin_Excellent, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_Restoremarin_Excellent, MSGBOX_NPC, SPEAKER_LENORA
 	call Quest_Restoremarin_CheckProgress_Script
 	questmenu QUEST_MENU_CHECK_REWARD, QUEST_RESTOREMARIN
 	compare VAR_RESULT, 0
@@ -211,14 +186,11 @@ Quest_Restoremarin_TakeMon_Dialogue_2:
 
 
 Quest_Restoremarin_Cancel_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
 	call Quest_Restoremarin_BufferStrings_Part1_Script
-	msgbox gText_Restoremarin_WeNeed_A
+	msgbox gText_Restoremarin_WeNeed_A, , SPEAKER_LENORA
 	call Quest_Restoremarin_BufferStrings_Part2_Script
-	msgbox gText_Restoremarin_WeNeed_B
-	msgbox gText_Restoremarin_ComeBack
-	callnative ClearMugshot
+	msgbox gText_Restoremarin_WeNeed_B, , SPEAKER_LENORA
+	msgbox gText_Restoremarin_ComeBack, , SPEAKER_LENORA
 	closemessage
 	return
 
@@ -228,16 +200,9 @@ Quest_Restoremarin_Reward_Dialogue::
 	goto_if_eq Quest_Restoremarin_Reward_Dialogue_2
 Quest_Restoremarin_Reward_Dialogue_1:
 	setvar VAR_QUEST_RESTOREMARIN, SAVE_BEFORE_LENORA_BATTLE
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_IAskedA
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_IAbsolutely
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_HellIKindaWanna
-	callnative ClearMugshot
+	msgbox gText_Quest_Restoremarin_IAskedA, , SPEAKER_LENORA
+	msgbox gText_Quest_Restoremarin_IAbsolutely, , SPEAKER_ZOEY
+	msgbox gText_Quest_Restoremarin_HellIKindaWanna, , SPEAKER_LENORA
 	call Common_EventScript_SaveGame
 	closemessage
 	goto Quest_Restoremarin_StartBattle_Script
@@ -250,12 +215,9 @@ Quest_Restoremarin_Reward_Dialogue_2:
 
 Quest_Restoremarin_StartBattle_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_OkayChampion
+	msgbox gText_Quest_Restoremarin_OkayChampion, , SPEAKER_LENORA
 	trainerbattle_no_intro TRAINER_GRETA, gText_Quest_Restoremarin_YoureTougherThan
 	closemessage
-	callnative ClearMugshot
 	goto Quest_Restoremarin_PostBattle_Dialogue
 	return
 
@@ -263,34 +225,15 @@ Quest_Restoremarin_StartBattle_Script::
 Quest_Restoremarin_PostBattle_Dialogue::
 	lock
 	setvar VAR_QUEST_RESTOREMARIN, DEFEATED_LENORA
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_ManIfTrainersSeeYou
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_IThinkYoureGiving
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_AndICantWait
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_IsThatYourGoal
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_YeahThingsWere
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_YouCantGoBack
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_YouDontGet
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_IWasntHere
-	setvar VAR_MUGSHOT, MUGSHOT_LENORA
-	callnative DrawMugshot
-	msgbox gText_Quest_Restoremarin_YourHeartFeels
-	callnative ClearMugshot
+	msgbox gText_Quest_Restoremarin_ManIfTrainersSeeYou, , SPEAKER_LENORA
+	msgbox gText_Quest_Restoremarin_IThinkYoureGiving, , SPEAKER_ZOEY
+	msgbox gText_Quest_Restoremarin_AndICantWait, , SPEAKER_LENORA
+	msgbox gText_Quest_Restoremarin_IsThatYourGoal, , SPEAKER_ZOEY
+	msgbox gText_Quest_Restoremarin_YeahThingsWere, , SPEAKER_LENORA
+	msgbox gText_Quest_Restoremarin_YouCantGoBack, , SPEAKER_ZOEY
+	msgbox gText_Quest_Restoremarin_YouDontGet, , SPEAKER_LENORA
+	msgbox gText_Quest_Restoremarin_IWasntHere, , SPEAKER_ZOEY
+	msgbox gText_Quest_Restoremarin_YourHeartFeels, , SPEAKER_LENORA
 	closemessage
 	opendoor 12, 17
 	waitdooranim

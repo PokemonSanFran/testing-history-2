@@ -1,35 +1,16 @@
 EnterBugsy_BugsyIntro_Dialogue::
 	setvar VAR_GYM_2_STATE, GYM_SAVE_BEFORE_LEADER
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_ReachingTheSummit, MSGBOX_NPC
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_TotallyWornOut
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_YeahFromOrre
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_ManyMountainsLikeSinnoh
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_EverythingIsSoFlat
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_HikedUpAMountain
-	callnative ClearMugshot
+	msgbox gText_EnterBugsy_ReachingTheSummit, MSGBOX_NPC, SPEAKER_BUGSY
+	msgbox gText_EnterBugsy_TotallyWornOut, , SPEAKER_BUGSY
+	msgbox gText_EnterBugsy_YeahFromOrre, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_EnterBugsy_ManyMountainsLikeSinnoh, , SPEAKER_BUGSY
+	msgbox gText_EnterBugsy_EverythingIsSoFlat, , SPEAKER_BUGSY
+	msgbox gText_EnterBugsy_HikedUpAMountain, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_SHOCK
+	closemessage
 	applymovement 1, Common_Movement_FaceAwayPlayer
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_ThisCheapImitation
-	callnative ClearMugshot
+	msgbox gText_EnterBugsy_ThisCheapImitation, , SPEAKER_BUGSY, TAIL_SHOUT
 	applymovement 1, Common_Movement_FacePlayer
+	closemessage
 	call Common_EventScript_SaveGame
 	closemessage
 	goto EnterBugsy_StartGymBattle_Script
@@ -37,8 +18,6 @@ EnterBugsy_BugsyIntro_Dialogue::
 
 
 EnterBugsy_StartGymBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
 	trainerbattle_single TRAINER_BRAWLY_1, gText_EnterBugsy_EnGarde, gText_EnterBugsy_ItsAnHonorToLose, EnterBugsy_BugsyDefeated_Script, NO_MUSIC
 	return
 
@@ -48,10 +27,7 @@ EnterBugsy_BugsyDefeated_Script::
 	setflag FLAG_BADGE02_GET
 	setvar VAR_BUGSY_STATE, BATTLE_1_COMPLETE
 	setvar VAR_GYM_2_STATE, GYM_DEFEATED_LEADER
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_ExploitedMyMistakes
-	callnative ClearMugshot
+	msgbox gText_EnterBugsy_ExploitedMyMistakes, , SPEAKER_BUGSY
 	msgbox gText_EnterBugsy_BadgeGet
 	call Common_EventScript_PlayGymBadgeFanfare
 	giveitem ITEM_TM02
@@ -65,10 +41,7 @@ EnterBugsy_BugsyDefeated_Script::
 EnterBugsy_PostDefeat1_Dialogue::
 	setvar VAR_GYM_2_STATE, GYM_EXPLAINED_BADGE_AND_TM
 	lockall
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_TradedPokemonUpTo, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterBugsy_TradedPokemonUpTo, MSGBOX_NPC, , SPEAKER_BUGSY
 	closemessage
 	releaseall
 	end
@@ -76,10 +49,7 @@ EnterBugsy_PostDefeat1_Dialogue::
 
 EnterBugsy_PostDefeat2_Dialogue::
 	lockall
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_EnterBugsy_NextTimeWeBattle, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterBugsy_NextTimeWeBattle, MSGBOX_NPC, , SPEAKER_BUGSY
 	closemessage
 	releaseall
 	end
@@ -109,8 +79,8 @@ gText_EnterBugsy_EverythingIsSoFlat::
 	.string "and stale and uninspired... and pudgy.$"
 
 gText_EnterBugsy_HikedUpAMountain::
-	.string "(Flat? I hiked up a mountain just to get\n"
-	.string "here!)$"
+	.string "Flat? I hiked up a mountain just to get\n"
+	.string "here!$"
 
 gText_EnterBugsy_ThisCheapImitation::
 	.string "And Japantown... this cheap imitation.\n"

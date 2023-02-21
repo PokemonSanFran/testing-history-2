@@ -64,26 +64,17 @@ Earthquake_ThatNight_Dialogue::
 	special ShakeCamera
 	delay 100
 	waitstate
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_AreYouOkay
-	callnative ClearMugshot
+	msgbox gText_Earthquake_AreYouOkay, MSGBOX_DEFAULT, SPEAKER_ARCHER
 	closemessage
-	msgbox gText_Earthquake_OhArceus
+	msgbox gText_Earthquake_OhArceus, MSGBOX_DEFAULT, SPEAKER_RESIDENT_A, TAIL_SHOUT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Earthquake_WalkOutOfBed
-	msgbox gText_Earthquake_HelpMe
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_ImFine
-	callnative ClearMugshot
+	msgbox gText_Earthquake_HelpMe, MSGBOX_DEFAULT, SPEAKER_RESIDENT_B, TAIL_SHOUT, EMOTE_SHOCK
+	msgbox gText_Earthquake_ImFine, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	applymovement 1, Earthquake_WalkToWall
 	waitmovement 1
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_ThePowersDead
-	callnative ClearMugshot
+	msgbox gText_Earthquake_ThePowersDead, MSGBOX_DEFAULT, SPEAKER_ARCHER
 	closemessage
 	applymovement 1, Earthquake_RunOutside
 	waitmovement 1
@@ -99,11 +90,8 @@ Earthquake_ThatNight_Dialogue::
 
 Earthquake_ShowDestroyedCity_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_HolyShit
+	msgbox gText_Earthquake_HolyShit, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	fadescreen FADE_TO_BLACK
 	TeleportCamera 11, 7
 	special SpawnCameraObject
@@ -128,26 +116,13 @@ Earthquake_StartRescue_Dialogue::
 	addobject 13
 	applymovement 13, Earthquake_WalkToPair
 	waitmovement 13
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_OhYoureOkay
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_YeahWhyDidnt
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_CellTowersWere
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_SoundsLikeWere
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_ImGoingToMakeAnother
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_OfCourse
+	msgbox gText_Earthquake_OhYoureOkay, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_Earthquake_YeahWhyDidnt, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	msgbox gText_Earthquake_CellTowersWere, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_Earthquake_SoundsLikeWere, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_Earthquake_ImGoingToMakeAnother, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_Earthquake_OfCourse, MSGBOX_DEFAULT, SPEAKER_ARCHER
 	closemessage
-	callnative ClearMugshot
 	applymovement 3, Earthquake_WalkAwayA
 	applymovement 13, Earthquake_WalkAwayB
 	waitmovement 3
@@ -161,95 +136,50 @@ Earthquake_StartRescue_Dialogue::
 
 Earthquake_PostRescue_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_OkayThingsSeemToBe
-	callnative ClearMugshot
+	msgbox gText_Earthquake_OkayThingsSeemToBe, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	fadescreen FADE_TO_BLACK
 	call Earthquake_PostRescue_Objects_Script
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_WeveManagedToReestablish
-	callnative ClearMugshot
+	msgbox gText_Earthquake_WeveManagedToReestablish, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	applymovement 13, Earthquake_Pace
 	waitmovement 13
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_IReally
+	msgbox gText_Earthquake_IReally, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	playse SE_POKENAV_CALL
 	waitse
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_AMessageFromThe
-	callnative ClearMugshot
+	msgbox gText_Earthquake_AMessageFromThe, MSGBOX_DEFAULT, SPEAKER_ARIANA, TAIL_TALK, EMOTE_CONFUSE
 	closemessage
 	playse SE_PIN
 	waitse
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_ThatsATrap
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_WhatDoYouMean
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_ShitWeNever
-	callnative ClearMugshot
+	msgbox gText_Earthquake_ThatsATrap, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_SHOUT, EMOTE_SHOCK
+	msgbox gText_Earthquake_WhatDoYouMean, MSGBOX_DEFAULT, SPEAKER_ARIANA, , EMOTE_CONFUSE
+	msgbox gText_Earthquake_ShitWeNever, MSGBOX_DEFAULT, SPEAKER_ARCHER
 	closemessage
 	applymovement 3, Common_Movement_FaceUp
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_IGotAMessage
+	msgbox gText_Earthquake_IGotAMessage, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	applymovement 13, Earthquake_TurnToPlayer
 	waitmovement 13
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_WaitWhat
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_ItGetsCrazier
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_WeBattledBut
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_ThatDoesntMake
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_ItsJustABunch
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_IDontThinkSo
-	callnative ClearMugshot
+	msgbox gText_Earthquake_WaitWhat, MSGBOX_DEFAULT, SPEAKER_ARIANA, , EMOTE_SHOCK
+	msgbox gText_Earthquake_ItGetsCrazier, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	msgbox gText_Earthquake_WeBattledBut, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_Earthquake_ThatDoesntMake, MSGBOX_DEFAULT, SPEAKER_ARIANA, EMOTE_CONFUSE
+	msgbox gText_Earthquake_ItsJustABunch, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	msgbox gText_Earthquake_IDontThinkSo, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	applymovement 3, Common_Movement_FaceDown
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_HowCanYouTrust
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_TheSecondHalf
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_SoSomebodyWantsUs
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_IThinkItsOn
-	callnative ClearMugshot
+	msgbox gText_Earthquake_HowCanYouTrust, MSGBOX_DEFAULT, SPEAKER_ARCHER, , EMOTE_SHOCK
+	msgbox gText_Earthquake_TheSecondHalf, MSGBOX_DEFAULT, SPEAKER_ARIANA
+	msgbox gText_Earthquake_SoSomebodyWantsUs, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_Earthquake_IThinkItsOn, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
 	applymovement 3, Common_Movement_FaceUp
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_FineTheThreeOfUs
-	callnative ClearMugshot
+	msgbox gText_Earthquake_FineTheThreeOfUs, MSGBOX_DEFAULT, SPEAKER_ARCHER
 	closemessage
 	setvar VAR_STORYLINE_STATE, STORY_POST_EARTHQUAKE
 	setvar VAR_ALAMEDA_STATE, MEET_AT_PSFROUTE8
@@ -260,18 +190,12 @@ Earthquake_PostRescue_Dialogue::
 Earthquake_AskPlayerWarp_Script::
 	applymovement 3, Earthquake_TurnToPlayer
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Earthquake_ImGonnaHead, MSGBOX_YESNO
+	msgbox gText_Earthquake_ImGonnaHead, MSGBOX_YESNO, SPEAKER_ARCHER
 	closemessage
-	callnative ClearMugshot
 	compare VAR_RESULT, YES
 	goto_if_eq Earthquake_AskPlayerWarp_Script_2
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_Earthquake_OkayWeve
+	msgbox gText_Earthquake_OkayWeve, MSGBOX_DEFAULT, SPEAKER_ARIANA
 	closemessage
-	callnative ClearMugshot
 	fadescreen FADE_TO_BLACK
 	removeobject 15
 	removeobject 16

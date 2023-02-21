@@ -71,9 +71,9 @@ Quest_CulturalPurity_Interact_Event_Script::
 
 
 Quest_CulturalPurity_QuestStart_Dialogue::
-	msgbox gText_CulturalPurity_Player
-	msgbox gText_CulturalPurity_IReadOnline
-	msgbox gText_CulturalPurity_TheSaidToStart
+	msgbox gText_CulturalPurity_Player, , SPEAKER_BUGSY
+	msgbox gText_CulturalPurity_IReadOnline, , SPEAKER_BUGSY
+	msgbox gText_CulturalPurity_TheSaidToStart, , SPEAKER_BUGSY
 	applymovement 9, Quest_CulturalPurity_LeaderWalkAway_Movement
 	waitmovement 9
 	removeobject 9
@@ -130,7 +130,7 @@ Quest_CulturalPurity_CheckProgress_Script_14:
 Quest_CulturalPurity_BackroomA_Interact_Script::
 	lock
 	faceplayer
-	msgbox gText_CulturalPurity_GoAway
+	msgbox gText_CulturalPurity_GoAway, SPEAKER_DEFAULT
 	call Quest_CulturalPurity_CheckProgress_Script
 	compare VAR_TEMP_0, 1
 	goto_if_eq Quest_CulturalPurity_BackroomA_Interact_Script_2
@@ -139,11 +139,8 @@ Quest_CulturalPurity_BackroomA_Interact_Script_1:
 	end
 
 Quest_CulturalPurity_BackroomA_Interact_Script_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_CulturalPurity_WaitIKnowThePassword
-	callnative ClearMugshot
-	msgbox gText_CulturalPurity_OhHereYouGo
+	msgbox gText_CulturalPurity_WaitIKnowThePassword, , SPEAKER_ZOEY
+	msgbox gText_CulturalPurity_OhHereYouGo, , SPEAKER_DEFAULT
 	giveitem ITEM_KEY_TO_ROOM_1, 1
 	goto Quest_CulturalPurity_BackroomA_Interact_Script_1
 
@@ -151,7 +148,7 @@ Quest_CulturalPurity_BackroomA_Interact_Script_2:
 Quest_CulturalPurity_BackroomB_Interact_Script::
 	lock
 	faceplayer
-	msgbox gText_CulturalPurity_GoAway
+	msgbox gText_CulturalPurity_GoAway, , SPEAKER_DEFAULT
 	call Quest_CulturalPurity_CheckProgress_Script
 	compare VAR_TEMP_0, 2
 	goto_if_eq Quest_CulturalPurity_BackroomB_Interact_Script_2
@@ -160,11 +157,8 @@ Quest_CulturalPurity_BackroomB_Interact_Script_1:
 	end
 
 Quest_CulturalPurity_BackroomB_Interact_Script_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_CulturalPurity_WaitIKnowThePassword
-	callnative ClearMugshot
-	msgbox gText_CulturalPurity_OhHereYouGo
+	msgbox gText_CulturalPurity_WaitIKnowThePassword, , SPEAKER_ZOEY
+	msgbox gText_CulturalPurity_OhHereYouGo, SPEAKER_DEFAULT
 	giveitem ITEM_KEY_TO_ROOM_2, 1
 	goto Quest_CulturalPurity_BackroomB_Interact_Script_1
 
@@ -172,7 +166,7 @@ Quest_CulturalPurity_BackroomB_Interact_Script_2:
 Quest_CulturalPurity_BackroomC_Interact_Script::
 	lock
 	faceplayer
-	msgbox gText_CulturalPurity_GoAway
+	msgbox gText_CulturalPurity_GoAway, , SPEAKER_DEFAULT
 	call Quest_CulturalPurity_CheckProgress_Script
 	compare VAR_TEMP_0, 3
 	goto_if_eq Quest_CulturalPurity_BackroomC_Interact_Script_2
@@ -181,11 +175,8 @@ Quest_CulturalPurity_BackroomC_Interact_Script_1:
 	end
 
 Quest_CulturalPurity_BackroomC_Interact_Script_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_CulturalPurity_WaitIKnowThePassword
-	callnative ClearMugshot
-	msgbox gText_CulturalPurity_OhHereYouGo
+	msgbox gText_CulturalPurity_WaitIKnowThePassword, , SPEAKER_ZOEY, , SPEAKER_ZOEY
+	msgbox gText_CulturalPurity_OhHereYouGo, , SPEAKER_DEFAULT
 	giveitem ITEM_KEY_TO_ROOM_4, 1
 	goto Quest_CulturalPurity_BackroomC_Interact_Script_1
 
@@ -193,7 +184,7 @@ Quest_CulturalPurity_BackroomC_Interact_Script_2:
 Quest_CulturalPurity_BackroomD_Interact_Script::
 	lock
 	faceplayer
-	msgbox gText_CulturalPurity_GoAway
+	msgbox gText_CulturalPurity_GoAway, , SPEAKER_DEFAULT
 	call Quest_CulturalPurity_CheckProgress_Script
 	compare VAR_TEMP_0, 4
 	goto_if_eq Quest_CulturalPurity_BackroomD_Interact_Script_2
@@ -202,11 +193,8 @@ Quest_CulturalPurity_BackroomD_Interact_Script_1:
 	end
 
 Quest_CulturalPurity_BackroomD_Interact_Script_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_CulturalPurity_WaitIKnowThePassword
-	callnative ClearMugshot
-	msgbox gText_CulturalPurity_OhHereYouGo
+	msgbox gText_CulturalPurity_WaitIKnowThePassword, , SPEAKER_ZOEY, , SPEAKER_ZOEY
+	msgbox gText_CulturalPurity_OhHereYouGo, , SPEAKER_DEFAULT
 	giveitem ITEM_KEY_TO_ROOM_6, 1
 	goto Quest_CulturalPurity_BackroomD_Interact_Script_1
 
@@ -240,7 +228,7 @@ Quest_CulturalPurity_ObjectSetUp_Script::
 
 
 Quest_CulturalPurity_Racist_FirstGuard_Dialogue::
-	msgbox gText_CulturalPurity_GoAway
+	msgbox gText_CulturalPurity_GoAway, , SPEAKER_DEFAULT
 	call Quest_CulturalPurity_CheckProgress_Script
 	compare VAR_TEMP_0, 5
 	goto_if_eq Quest_CulturalPurity_Racist_FirstGuard_Dialogue_2
@@ -266,24 +254,15 @@ Quest_CulturalPurity_MakeBackupVisible_Script::
 
 
 Quest_CulturalPurity_BugsyJoin_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_CulturalPurity_IFiguredItOut
-	callnative ClearMugshot
+	msgbox gText_CulturalPurity_IFiguredItOut, , SPEAKER_BUGSY
 	call Quest_CulturalPurity_MakeBugsyVisible_Script
 	applymovement 9, Quest_CulturalPurity_BugsyWalkToGuard_Movement
 	waitmovement 9
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_CulturalPurity_IHaveTheCodeButWeNeed
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_CulturalPurity_YepGotEm
-	callnative ClearMugshot
-	msgbox gText_CulturalPurity_LetMeSee
+	msgbox gText_CulturalPurity_IHaveTheCodeButWeNeed, , SPEAKER_BUGSY
+	msgbox gText_CulturalPurity_YepGotEm, , SPEAKER_ZOEY
+	msgbox gText_CulturalPurity_LetMeSee, , SPEAKER_DEFAULT
 	call Quest_CulturalPurity_LoseTiles_Script
-	msgbox gText_CulturalPurity_HeyCleetus
+	msgbox gText_CulturalPurity_HeyCleetus, , SPEAKER_DEFAULT
 	call Quest_CulturalPurity_BackupWalkOut_Script
 	questmenu QUEST_MENU_SET_REWARD, QUEST_CULTURALPURITY
 	goto Quest_CulturalPurity_Battle_Script
@@ -311,14 +290,14 @@ Quest_CulturalPurity_BackupWalkOut_Script::
 
 
 Quest_CulturalPurity_Battle_Script::
-	msgbox gText_CulturalPurity_WellThenItsTimeForYourInitation
+	msgbox gText_CulturalPurity_WellThenItsTimeForYourInitation, , SPEAKER_DEFAULT
 	multi_fixed_2_vs_2 TRAINER_RANDALL, gText_CulturalPurity_OneOfUs, TRAINER_PARKER, gText_CulturalPurity_OneOfUs, TRAINER_BRAWLY_1, TRAINER_BACK_PIC_WALLY
 	goto Quest_CulturalPurity_PostBattle_Script
 	return
 
 
 Quest_CulturalPurity_PostBattle_Script::
-	msgbox gText_CulturalPurity_WowWelcomeInside
+	msgbox gText_CulturalPurity_WowWelcomeInside, , SPEAKER_DEFAULT
 	closemessage
 	applymovement 10, Quest_CulturalPurity_StepAside_Movement
 	waitmovement 10
@@ -338,16 +317,10 @@ Quest_CulturalPurity_InsideClubhouse_Dialogue::
 	goto_if_eq Quest_CulturalPurity_InsideClubhouse_Dialogue_2
 	applymovement 2, Quest_CulturalPurity_WalkToPlayer_Movement
 	waitmovement 2
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_CulturalPurity_NeverMind
-	callnative ClearMugshot
+	msgbox gText_CulturalPurity_NeverMind, , SPEAKER_BUGSY
 	closemessage
 	giveitem ITEM_ORAN_BERRY, 1
-	setvar VAR_MUGSHOT, MUGSHOT_BUGSY
-	callnative DrawMugshot
-	msgbox gText_CulturalPurity_IHaveSomeThiking
-	callnative ClearMugshot
+	msgbox gText_CulturalPurity_IHaveSomeThiking, , SPEAKER_BUGSY
 	closemessage
 	applymovement 2, Quest_CulturalPurity_LeaveClubhouse_Movement
 	waitmovement 2

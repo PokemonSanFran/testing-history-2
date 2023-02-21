@@ -92,24 +92,13 @@ WhyAreYouHelpingThem_StartRaid::
 	applymovement 8, WhyAreYouHelpingThem_PoliceRunIn
 	applymovement 9, WhyAreYouHelpingThem_PoliceRunIn
 	waitmovement 0
-	msgbox gText_WhyAreYouHelpingThem_StructuralBreach, MSGBOX_AUTOCLOSE
+	msgbox gText_WhyAreYouHelpingThem_StructuralBreach, MSGBOX_AUTOCLOSE, SPEAKER_SPEAKER
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_DefenseMode
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WeShouldRedefine
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_LetsSplitUp
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WhaFineIllTry
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_SeeYa
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_DefenseMode, , SPEAKER_BIANCA
+	msgbox gText_WhyAreYouHelpingThem_WeShouldRedefine, , SPEAKER_ZOEY
+	msgbox gText_WhyAreYouHelpingThem_LetsSplitUp, , SPEAKER_BIANCA
+	msgbox gText_WhyAreYouHelpingThem_WhaFineIllTry, , SPEAKER_ZOEY
+	msgbox gText_WhyAreYouHelpingThem_SeeYa, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, WhyAreYouHelpingThem_PoliceRunIn
 	waitmovement 0
@@ -127,10 +116,7 @@ WhyAreYouHelpingThem_WitnessBattle::
 	applymovement 3, WhyAreYouHelpingThem_FleeTheBattle
 	waitmovement 0
 	call WhyAreYouHelpingThem_MoveObjectBoss_Script
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_GoAfterIllHold
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_GoAfterIllHold, , SPEAKER_BIANCA
 	closemessage
 	release
 	end
@@ -141,17 +127,11 @@ WhyAreYouHelpingThem_PreBattleBoss_Script::
 	applymovement 3, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_ApproachGiovanni
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_ItsAShameThatThe
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_ItsAShameThatThe, , SPEAKER_GIOVANNI
 	closemessage
 	applymovement 3, Common_Movement_WalkLeft
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_ButBeatingYou
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_ButBeatingYou, , SPEAKER_GIOVANNI
 	closemessage
 	trainerbattle_continue_after_lose TRAINER_ARCHIE, gText_WhyAreYouHelpingThem_WaitAMinute
 	goto WhyAreYouHelpingThem_PostBattleBoss_Dialogue
@@ -164,38 +144,23 @@ WhyAreYouHelpingThem_PostBattleBoss_Dialogue::
 	call WhyAreYouHelpingThem_MoveObjectAriana_Script
 	checktrainerflag TRAINER_ARCHIE
 	goto_if 1, WhyAreYouHelpingThem_PostBattleBoss_Dialogue_2
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_IDidntEvenTouch
+	msgbox gText_WhyAreYouHelpingThem_IDidntEvenTouch, , SPEAKER_ZOEY
 WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1:
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_ImSorryYouHad
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_ImSorryYouHad, , SPEAKER_GIOVANNI
 	closemessage
 	applymovement 2, WhyAreYouHelpingThem_WalkPastPlayer
 	applymovement 3, WhyAreYouHelpingThem_HealAndFaceAdmin
 	waitmovement 0
 	call Common_EventScript_OutOfCenterPartyHeal
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_IHandledTheBrat
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_IHandledTheBrat, , SPEAKER_ARIANA
 	closemessage
 	playse SE_PIN
 	waitse
 	applymovement 2, WhyAreYouHelpingThem_ExclaimAndFacePlayer
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_DamnYouToo
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WhatWasAllThatShit
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WeveGotToHelp
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_DamnYouToo, , SPEAKER_ARIANA
+	msgbox gText_WhyAreYouHelpingThem_WhatWasAllThatShit, , SPEAKER_ZOEY
+	msgbox gText_WhyAreYouHelpingThem_WeveGotToHelp, , SPEAKER_GIOVANNI
 	closemessage
 	applymovement 3, WhyAreYouHelpingThem_BeginEscape
 	applymovement 2, WhyAreYouHelpingThem_BeginEscape
@@ -204,17 +169,12 @@ WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1:
 	return
 
 WhyAreYouHelpingThem_PostBattleBoss_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_YoureIncredible
+	msgbox gText_WhyAreYouHelpingThem_YoureIncredible, , SPEAKER_GIOVANNI
 	closemessage
-	callnative ClearMugshot
 	applymovement 3, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	giveitem ITEM_MASTER_BALL, 1
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_AndNowWeHave
+	msgbox gText_WhyAreYouHelpingThem_AndNowWeHave, , SPEAKER_GIOVANNI
 	goto WhyAreYouHelpingThem_PostBattleBoss_Dialogue_1
 
 
@@ -234,22 +194,11 @@ WhyAreYouHelpingThem_ExplodeWall_Script::
 	addobject 4
 	applymovement 4, WhyAreYouHelpingThem_WalkOutOfHole
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_ThisPlaceIs
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WeCantLeavePeople
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WeDontHaveTime
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_IThinkTheyreRight
-	setvar VAR_MUGSHOT, MUGSHOT_GIOVANNI
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_Sigh
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_ThisPlaceIs, , SPEAKER_ARCHER
+	msgbox gText_WhyAreYouHelpingThem_WeCantLeavePeople, , SPEAKER_GIOVANNI
+	msgbox gText_WhyAreYouHelpingThem_WeDontHaveTime, , SPEAKER_ARCHER
+	msgbox gText_WhyAreYouHelpingThem_IThinkTheyreRight, , SPEAKER_ARIANA
+	msgbox gText_WhyAreYouHelpingThem_Sigh, , SPEAKER_GIOVANNI
 	closemessage
 	applymovement 3, WhyAreYouHelpingThem_WalkIntoHoleA
 	applymovement 2, WhyAreYouHelpingThem_WalkIntoHoleB
@@ -260,10 +209,7 @@ WhyAreYouHelpingThem_ExplodeWall_Script::
 	removeobject 3
 	applymovement 4, WhyAreYouHelpingThem_ApproachPlayer
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_YoureWorkingWith
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_YoureWorkingWith, , SPEAKER_ZOEY
 	call Common_EventScript_SaveGame
 	goto WhyAreYouHelpingThem_StartBattle_Script
 	return
@@ -278,28 +224,18 @@ WhyAreYouHelpingThem_InteractBattle_Script::
 
 WhyAreYouHelpingThem_StartBattle_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_AlwaysHaveBeen
+	msgbox gText_WhyAreYouHelpingThem_AlwaysHaveBeen, , SPEAKER_ARCHER
 	trainerbattle_no_intro TRAINER_WALLY_VR_2, gText_WhyAreYouHelpingThem_AnotherVictory
 	closemessage
-	callnative ClearMugshot
 	goto WhyAreYouHelpingThem_PostBattle_Dialogue
 	return
 
 
 WhyAreYouHelpingThem_PostBattle_Dialogue::
 	setvar VAR_NAVALBASE_STATE, DEFEATED_ARCHER_NAVALBASE
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_TellsMeYoureAll
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WhyWouldIt
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_Player
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_TellsMeYoureAll, , SPEAKER_ZOEY
+	msgbox gText_WhyAreYouHelpingThem_WhyWouldIt, , SPEAKER_ARCHER
+	msgbox gText_WhyAreYouHelpingThem_Player, , SPEAKER_BIANCA
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	applymovement 4, WhyAreYouHelpingThem_WalkIntoHoleC
@@ -311,13 +247,8 @@ WhyAreYouHelpingThem_PostBattle_Dialogue::
 	addobject 1
 	applymovement 1, WhyAreYouHelpingThem_RunToPlayer
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_IGotKnockedOut
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_NoILostToo
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_IGotKnockedOut, , SPEAKER_BIANCA
+	msgbox gText_WhyAreYouHelpingThem_NoILostToo, , SPEAKER_ZOEY
 	closemessage
 	setvar VAR_ALAMEDA_STATE, WHY_ARE_YOU_HELPING_THEM
 	fadescreen FADE_TO_BLACK
@@ -344,9 +275,7 @@ WhyAreYouHelpingThem_MissionDebrief_Dialogue::
 	applymovement 4, Common_Movement_WalkDown
 	waitmovement 0
 	msgbox gText_WhyAreYouHelpingThem_NotBadInThere
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WannaCome, MSGBOX_YESNO
+	msgbox gText_WhyAreYouHelpingThem_WannaCome, MSGBOX_YESNO, , SPEAKER_BIANCA
 	compare VAR_RESULT, YES
 	goto_if_eq WhyAreYouHelpingThem_MissionDebrief_Dialogue_1
 	closemessage
@@ -364,35 +293,19 @@ WhyAreYouHelpingThem_BackAtCompound_Dialogue::
 	setvar VAR_PLAYER_HOME_STATE, NEXT_DAY_CHAMPIONSHIP
 	applymovement OBJ_EVENT_ID_PLAYER, WhyAreYouHelpingThem_WalkIntoHome
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WhatADay
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_ItWasADay
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_OhThatWasFast
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_DontWorryAboutIt
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_NowIveGotALot
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_WhatADay, , SPEAKER_OAK
+	msgbox gText_WhyAreYouHelpingThem_ItWasADay, , SPEAKER_ZOEY
+	msgbox gText_WhyAreYouHelpingThem_GoodNewsWhileYouWere, , SPEAKER_OAK
+	msgbox gText_WhyAreYouHelpingThem_OhThatWasFast, , SPEAKER_BIANCA
+	msgbox gText_WhyAreYouHelpingThem_DontWorryAboutIt, , SPEAKER_OAK
+	msgbox gText_WhyAreYouHelpingThem_NowIveGotALot, , SPEAKER_OAK
 	closemessage
 	applymovement 2, WhyAreYouHelpingThem_LeaveCompoundA
 	waitmovement 0
 	playse SE_EXIT
 	waitse
 	removeobject 2
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WhyAreYouHelpingThem_WeveAllGot
-	callnative ClearMugshot
+	msgbox gText_WhyAreYouHelpingThem_WeveAllGot, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, WhyAreYouHelpingThem_LeaveCompoundB
 	waitmovement 0

@@ -8,19 +8,10 @@ LetsFixThis_EliteVideo_Dialogue::
 	fadescreen FADE_TO_BLACK
 	clearflag FLAG_TEMP_1
 	addobject 1
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_PeopleOf
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_WeWillBeGiving
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_WePrayTheGovernment
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_ButWeWillNot
-	callnative ClearMugshot
+	msgbox gText_LetsFixThis_PeopleOf, , SPEAKER_SIEBOLD
+	msgbox gText_LetsFixThis_WeWillBeGiving, , SPEAKER_WIKSTROM
+	msgbox gText_LetsFixThis_WePrayTheGovernment, , SPEAKER_DRASNA
+	msgbox gText_LetsFixThis_ButWeWillNot, , SPEAKER_MALVA
 	closemessage
 	goto LetsFixThis_GetMessage_Dialogue
 	return
@@ -35,31 +26,14 @@ LetsFixThis_GetMessage_Dialogue::
 	waitse
 	pokenavcall LetsFixThis_GetMessage_Dialogue_Text_0
 	waitmessage
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_OhLooksLike
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_ComeCelebrate
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_SoundsLikeIt
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_IMightGoALittle
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_WhatreThey
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_TheyWantAllHands
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_GuessIShould
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFixThis_ActuallyGivenHowMuch
-	callnative ClearMugshot
+	msgbox gText_LetsFixThis_OhLooksLike, , SPEAKER_ARCHER
+	msgbox gText_LetsFixThis_ComeCelebrate, , SPEAKER_ARCHER
+	msgbox gText_LetsFixThis_SoundsLikeIt, , SPEAKER_ZOEY
+	msgbox gText_LetsFixThis_IMightGoALittle, , SPEAKER_ARCHER
+	msgbox gText_LetsFixThis_WhatreThey, , SPEAKER_ZOEY
+	msgbox gText_LetsFixThis_TheyWantAllHands, , SPEAKER_ARCHER
+	msgbox gText_LetsFixThis_GuessIShould, , SPEAKER_ZOEY
+	msgbox gText_LetsFixThis_ActuallyGivenHowMuch, , SPEAKER_ARCHER
 	closemessage
 	setvar VAR_ALCATRAZ_STATE, PRE_SPEECHSPEECH
 	setvar VAR_STORYLINE_STATE, STORY_RECIVED_RAVE_INVITE

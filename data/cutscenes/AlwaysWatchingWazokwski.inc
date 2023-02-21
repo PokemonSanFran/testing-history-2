@@ -2,11 +2,7 @@ AlwaysWatchingWazowski_FloorWelcome_Script::
 	lock
 	goto_if_set FLAG_TEMP_2, AlwaysWatchingWazowski_FloorWelcome_Script_2
 	setvar VAR_SALESFORCETOWER_PRODUCTION_STATE, STEPPED_INTO_SABRINA_ROOM
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_WelcomePlayer
-	closemessage
-	callnative ClearMugshot
+	msgbox gText_AlwaysWatchingWazowski_WelcomePlayer, MSGBOX_DEFAULT, SPEAKER_SABRINA
 	releaseall
 	end
 
@@ -34,48 +30,32 @@ AlwaysWatchingWazowski_MovePlayerIntoPlace_Script::
 
 
 AlwaysWatchingWazowski_Intro_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_IImagineAllTheScreens
+	msgbox gText_AlwaysWatchingWazowski_IImagineAllTheScreens, MSGBOX_DEFAULT, SPEAKER_SABRINA
 	compare VAR_SOMA_STATE, START_THE_GANGS_ALL_HERE
 	goto_if_gt AlwaysWatchingWazowski_Intro_Dialogue_2
-	msgbox gText_AlwaysWatchingWazowski_IWishYouHadVisited
+	msgbox gText_AlwaysWatchingWazowski_IWishYouHadVisited, MSGBOX_DEFAULT, SPEAKER_SABRINA
 AlwaysWatchingWazowski_Intro_Dialogue_1:
 	goto AlwaysWatchingWazowski_HowDidYouKnow_Dialogue
 	return
 
 AlwaysWatchingWazowski_Intro_Dialogue_2:
-	msgbox gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime
+	msgbox gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime, MSGBOX_DEFAULT, SPEAKER_SABRINA
 	goto AlwaysWatchingWazowski_Intro_Dialogue_1
 
 
 AlwaysWatchingWazowski_HowDidYouKnow_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_WaitHowDidYouKnow
-	closemessage
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_LookAroundDoYouThink
-	msgbox gText_AlwaysWatchingWazowski_SecurityUsedToAlsoPerform
+	msgbox gText_AlwaysWatchingWazowski_WaitHowDidYouKnow, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_TALK, EMOTE_CONFUSE
+	msgbox gText_AlwaysWatchingWazowski_LookAroundDoYouThink, MSGBOX_DEFAULT, SPEAKER_SABRINA
+	msgbox gText_AlwaysWatchingWazowski_SecurityUsedToAlsoPerform, MSGBOX_DEFAULT, SPEAKER_SABRINA
 	goto AlwaysWatchingWazowski_MarketingandProduction_Dialogue
 	return
 
 
 AlwaysWatchingWazowski_MarketingandProduction_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_OhOkayYeah
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_WeDevelopContent
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_WhatDoYouMeanMe
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_YouCanSeeForYourself
-	callnative ClearMugshot
+	msgbox gText_AlwaysWatchingWazowski_OhOkayYeah, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_AlwaysWatchingWazowski_WeDevelopContent, MSGBOX_DEFAULT, SPEAKER_SABRINA
+	msgbox gText_AlwaysWatchingWazowski_WhatDoYouMeanMe, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_AlwaysWatchingWazowski_YouCanSeeForYourself, MSGBOX_DEFAULT, SPEAKER_SABRINA
 	closemessage
 	goto AlwaysWatchingWazowski_ProgramCutscene_Script
 	return
@@ -84,21 +64,11 @@ AlwaysWatchingWazowski_MarketingandProduction_Dialogue::
 AlwaysWatchingWazowski_ProgramCutscene_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	fadescreen FADE_TO_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_OurBiggestContentInitiative
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_WhatDoYouMean
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_TensOfThousandsOfKids
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_ToPutItSimply
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_HistoricallyOurInRegion
+	msgbox gText_AlwaysWatchingWazowski_OurBiggestContentInitiative, MSGBOX_DEFAULT, SPEAKER_SABRINA
+	msgbox gText_AlwaysWatchingWazowski_WhatDoYouMean, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_AlwaysWatchingWazowski_TensOfThousandsOfKids, MSGBOX_DEFAULT, SPEAKER_SABRINA
+	msgbox gText_AlwaysWatchingWazowski_ToPutItSimply, MSGBOX_DEFAULT, SPEAKER_SABRINA
+	msgbox gText_AlwaysWatchingWazowski_HistoricallyOurInRegion, MSGBOX_DEFAULT, SPEAKER_SABRINA
 	compare VAR_PSFROUTE9_STATE, HAS_NOT_MET_ARCHER
 	goto_if_gt AlwaysWatchingWazowski_ProgramCutscene_Script_2
 AlwaysWatchingWazowski_ProgramCutscene_Script_1:
@@ -108,24 +78,16 @@ AlwaysWatchingWazowski_ProgramCutscene_Script_1:
 	return
 
 AlwaysWatchingWazowski_ProgramCutscene_Script_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_WaitHesDoingTheLeagueChallenge
-	callnative ClearMugshot
+	msgbox gText_AlwaysWatchingWazowski_WaitHesDoingTheLeagueChallenge, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	goto AlwaysWatchingWazowski_ProgramCutscene_Script_1
 
 
 AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_IImagineThisHasBeenVery
+	msgbox gText_AlwaysWatchingWazowski_IImagineThisHasBeenVery, MSGBOX_DEFAULT, SPEAKER_SABRINA
 	applymovement 2, Common_Movement_FaceUp
 	fadedefaultbgm
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_AlwaysWatchingWazowski_SorryToBugYou
-	callnative ClearMugshot
+	msgbox gText_AlwaysWatchingWazowski_SorryToBugYou, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	releaseall
 	end
@@ -133,7 +95,7 @@ AlwaysWatchingWazowski_MyProductivityHasDropped_Dialogue::
 
 AlwaysWatchingWazowski_IgnoringPlayer_Dialogue::
 	lockall
-	msgbox gText_AlwaysWatchingWazowski__IgnorePlayer
+	msgbox gText_AlwaysWatchingWazowski__IgnorePlayer, SPEAKER_MARKETING_STAFF
 	closemessage
 	releaseall
 	end

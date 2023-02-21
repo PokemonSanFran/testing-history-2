@@ -34,22 +34,11 @@ LetsGrabLunch_StartConversation_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 1, LetsGrabLunch_WalkUpToPlayer
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_HuhWhatAreYouDoing
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_TakingABreak
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_YeahBeingOfficial
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_ThisAgain
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_HeyYouBeatMe
-	callnative ClearMugshot
+	msgbox gText_LetsGrabLunch_HuhWhatAreYouDoing, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_TakingABreak, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_YeahBeingOfficial, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_ThisAgain, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_HeyYouBeatMe, , SPEAKER_ARCHER
 	call Common_EventScript_SaveGame
 	closemessage
 	goto LetsGrabLunch_StartBattle_Script
@@ -65,11 +54,8 @@ LetsGrabLunch_InteractBattle_Script::
 
 LetsGrabLunch_StartBattle_Script::
 	lockall
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_ButLetsSee
+	msgbox gText_LetsGrabLunch_ButLetsSee, , SPEAKER_ARCHER
 	closemessage
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_WALLY_VR_4, gText_LetsGrabLunch_NahNotRobbed
 	goto LetsGrabLunch_PostBattle_Dialogue
 	return
@@ -77,19 +63,10 @@ LetsGrabLunch_StartBattle_Script::
 
 LetsGrabLunch_PostBattle_Dialogue::
 	setvar VAR_STORYLINE_STATE, STORY_POST_BATTLE_ARCHER_TREASUREISLAND
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_GoodGame
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_ImGoingToBe
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_HaventYouHad
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_NahThisIsCool
-	callnative ClearMugshot
+	msgbox gText_LetsGrabLunch_GoodGame, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_ImGoingToBe, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_HaventYouHad, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_NahThisIsCool, , SPEAKER_ARCHER
 	closemessage
 	fadedefaultbgm
 	warpsilent MAP_TREASUREISLAND_RESTAURANT, 14, 9
@@ -101,63 +78,28 @@ LetsGrabLunch_DinerBooth_Dialogue::
 	lockall
 	setvar VAR_STORYLINE_STATE, STORY_ARCHER_EXPLAIN_RESTORATION
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_OkayLetsHear
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_IWantToCreate
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_HuhThatsActually
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_YeahITried
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_Who
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_OhTheOldLeaders
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_YouKnowTheyre
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_IKnowItsHard
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_HmmNeverThought
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_YeahThisSounds
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_ItWouldBeSuch
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_HahaHowCanIHelp
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_CanYouTryTalking
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_WhatAreYouGoing
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_ImGoingToBring
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_Yeah
-	callnative ClearMugshot
+	msgbox gText_LetsGrabLunch_OkayLetsHear, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_IWantToCreate, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_HuhThatsActually, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_YeahITried, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_Who, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_OhTheOldLeaders, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_YouKnowTheyre, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_IKnowItsHard, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_HmmNeverThought, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_YeahThisSounds, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_ItWouldBeSuch, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_HahaHowCanIHelp, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_CanYouTryTalking, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_WhatAreYouGoing, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_ImGoingToBring, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_Yeah, , SPEAKER_ZOEY
 	closemessage
 	end
 
 
 LetsGrabLunch_InteractArcherDiner_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_ImJustPlanning
+	msgbox gText_LetsGrabLunch_ImJustPlanning, , SPEAKER_ARCHER
 	multichoicedefault 18, 6, MULTI_LUNCH_WARP, 1, FALSE
 	switch VAR_RESULT
 	case 0, LetsGrabLunch_InteractArcherDiner_Dialogue_2
@@ -187,14 +129,13 @@ LetsGrabLunch_InteractArcherDiner_Dialogue_5:
 
 
 LetsGrabLunch_CloseMenu::
-	callnative ClearMugshot
 	closemessage
 	releaseall
 	end
 
 
 LetsGrabLunch_Chinatown::
-	msgbox gText_LetsGrabLunch_TheLeaderOfThat
+	msgbox gText_LetsGrabLunch_TheLeaderOfThat, , SPEAKER_ARCHER
 	msgbox gText_LetsGrabLunch_DoYouWantChinatown, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Chinatown_1
@@ -202,14 +143,13 @@ LetsGrabLunch_Chinatown::
 	return
 
 LetsGrabLunch_Chinatown_1:
-	callnative ClearMugshot
 	closemessage
 	releaseall
 	end
 
 
 LetsGrabLunch_Marin::
-	msgbox gText_LetsGrabLunch_WasALittle
+	msgbox gText_LetsGrabLunch_WasALittle, , SPEAKER_ARCHER
 	msgbox gText_LetsGrabLunch_DoYouWantMarin, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Marin_1
@@ -217,20 +157,15 @@ LetsGrabLunch_Marin::
 	return
 
 LetsGrabLunch_Marin_1:
-	callnative ClearMugshot
 	closemessage
 	releaseall
 	end
 
 
 LetsGrabLunch_Treasureisland::
-	msgbox gText_LetsGrabLunch_AlmostWalkedOut
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_VeryRealistic
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_TheyreIntense
+	msgbox gText_LetsGrabLunch_AlmostWalkedOut, , SPEAKER_ARCHER
+	msgbox gText_LetsGrabLunch_VeryRealistic, , SPEAKER_ZOEY
+	msgbox gText_LetsGrabLunch_TheyreIntense, , SPEAKER_ARCHER
 	msgbox gText_LetsGrabLunch_DoYouWantTreasureisland, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq LetsGrabLunch_Treasureisland_1
@@ -238,7 +173,6 @@ LetsGrabLunch_Treasureisland::
 	return
 
 LetsGrabLunch_Treasureisland_1:
-	callnative ClearMugshot
 	closemessage
 	releaseall
 	end
@@ -248,9 +182,7 @@ LetsGrabLunch_Haightashbury::
 	random 2
 	compare VAR_RESULT, 1
 	goto_if_eq LetsGrabLunch_Haightashbury_2
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_IsTheOnlyPlace
+	msgbox gText_LetsGrabLunch_IsTheOnlyPlace, , SPEAKER_ARCHER
 LetsGrabLunch_Haightashbury_1:
 	msgbox gText_LetsGrabLunch_DoYouWantHaightashbury, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -259,13 +191,10 @@ LetsGrabLunch_Haightashbury_1:
 	return
 
 LetsGrabLunch_Haightashbury_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsGrabLunch_RightHandMan
+	msgbox gText_LetsGrabLunch_RightHandMan, , SPEAKER_ARCHER
 	goto LetsGrabLunch_Haightashbury_1
 
 LetsGrabLunch_Haightashbury_5:
-	callnative ClearMugshot
 	closemessage
 	releaseall
 	end

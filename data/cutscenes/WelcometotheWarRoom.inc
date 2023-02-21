@@ -118,51 +118,35 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	call WelcomeToTheWarRoom_FaceSpeakerRose
 	applymovement 5, WelcomeToTheWarRoom_Pace_Movement
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheWarRoom_OkayEverybodyLetsHearIt
+	msgbox gText_WelcomeToTheWarRoom_OkayEverybodyLetsHearIt, , SPEAKER_ROSE
 	closemessage
-	callnative ClearMugshot
 	call WelcomeToTheWarRoom_FaceSpeakerArnav
-	msgbox gText_WelcomeToTheWarRoom_AllMajorSocialMedia
+	msgbox gText_WelcomeToTheWarRoom_AllMajorSocialMedia, , SPEAKER_ARNAV
 	call WelcomeToTheWarRoom_FaceSpeakerOliver
-	msgbox gText_WelcomeToTheWarRoom_TheNewOwnersOfOUrAccounts
+	msgbox gText_WelcomeToTheWarRoom_TheNewOwnersOfOUrAccounts, , SPEAKER_OLIVER
 	call WelcomeToTheWarRoom_FaceSpeakerChief
-	msgbox gText_WelcomeToTheWarRoom_WeveLongTheorized
+	msgbox gText_WelcomeToTheWarRoom_WeveLongTheorized, , SPEAKER_CHIEF
 	call WelcomeToTheWarRoom_FaceSpeakerMayor
-	msgbox gText_WelcomeToTheWarRoom_ThatsWhereYouKids
+	msgbox gText_WelcomeToTheWarRoom_ThatsWhereYouKids, , SPEAKER_MAYOR
 	call WelcomeToTheWarRoom_FaceSpeakerBianca
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheWarRoom_HellYeahWedLoveTo
+	msgbox gText_WelcomeToTheWarRoom_HellYeahWedLoveTo, , SPEAKER_BIANCA
 	call WelcomeToTheWarRoom_FaceSpeakerPlayer
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheWarRoom_ImHappyToHelp
+	msgbox gText_WelcomeToTheWarRoom_ImHappyToHelp, , SPEAKER_ZOEY
 	call WelcomeToTheWarRoom_FaceSpeakerRose
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheWarRoom_EverybodyUnderstand
+	msgbox gText_WelcomeToTheWarRoom_EverybodyUnderstand, , SPEAKER_ROSE
 	closemessage
-	callnative ClearMugshot
 	call WelcomeToTheWarRoom_FaceSpeakerChief
-	msgbox gText_WelcomeToTheWarRoom_WeveAlreadyOutlined
+	msgbox gText_WelcomeToTheWarRoom_WeveAlreadyOutlined, , SPEAKER_CHIEF
 	call WelcomeToTheWarRoom_FaceSpeakerBianca
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheWarRoom_WhyCantWeJust
+	msgbox gText_WelcomeToTheWarRoom_WhyCantWeJust, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	call WelcomeToTheWarRoom_FaceSpeakerChief
-	msgbox gText_WelcomeToTheWarRoom_GladToHear
+	msgbox gText_WelcomeToTheWarRoom_GladToHear, , SPEAKER_CHIEF
 	call WelcomeToTheWarRoom_FaceSpeakerBianca
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheWarRoom_GotItChief
+	msgbox gText_WelcomeToTheWarRoom_GotItChief, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	call WelcomeToTheWarRoom_FaceSpeakerChief
-	msgbox gText_WelcomeToTheWarRoom_GreatWellStartTheOperation
+	msgbox gText_WelcomeToTheWarRoom_GreatWellStartTheOperation, , SPEAKER_CHIEF
 	closemessage
 	applymovement 7, WelcomeToTheWarRoom_ChiefLeaveRoom_Movement
 	delay 30
@@ -170,7 +154,7 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	removeobject 7
 	fadescreen FADE_FROM_BLACK
 	call WelcomeToTheWarRoom_FaceSpeakerMayor
-	msgbox gText_WelcomeToTheWarRoom_DontPayHimNoMind
+	msgbox gText_WelcomeToTheWarRoom_DontPayHimNoMind, , SPEAKER_MAYOR
 	closemessage
 	applymovement 1, WelcomeToTheWarRoom_LeaveRight_Movement
 	applymovement 2, WelcomeToTheWarRoom_LeaveLeft_Movement
@@ -187,11 +171,8 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	applymovement 4, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheWarRoom_ThatsAgainYouTwo
+	msgbox gText_WelcomeToTheWarRoom_ThatsAgainYouTwo, , SPEAKER_OAK
 	closemessage
-	callnative ClearMugshot
 	applymovement 3, WelcomeToTheWarRoom_OakLeaveRoom_Movement
 	delay 30
 	fadescreen FADE_TO_BLACK
@@ -199,20 +180,16 @@ WelcomeToTheWarRoom_ExplainSitaution_Dialogue::
 	fadescreen FADE_FROM_BLACK
 	applymovement 4, Common_Movement_FaceDown
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_WelcomeToTheWarRoom_ImGoingToHeadOver, MSGBOX_YESNO
+	msgbox gText_WelcomeToTheWarRoom_ImGoingToHeadOver, MSGBOX_YESNO, SPEAKER_BIANCA
 	compare VAR_RESULT, NO
 	goto_if_eq WelcomeToTheWarRoom_ExplainSitaution_Dialogue_1
 	closemessage
-	callnative ClearMugshot
 	warpsilent MAP_PSFROUTE8, 18, 90
 	return
 
 WelcomeToTheWarRoom_ExplainSitaution_Dialogue_1:
-	msgbox gText_WelcomeToTheWarRoom_OkayIllMeetYou
+	msgbox gText_WelcomeToTheWarRoom_OkayIllMeetYou, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	applymovement 4, WelcomeToTheWarRoom_BiancaLeaveRoom_Movement
 	fadescreen FADE_TO_BLACK
 	removeobject 4

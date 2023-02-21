@@ -33,12 +33,9 @@ ExhibitionBattle_PrepPlayer_Script::
 	setvar VAR_STORYLINE_STATE, STORY_SAVE_DIANTHA
 	applymovement 5, ExhibitionBattle_EncouragePlayer_Movement
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_OkayTime, MSGBOX_YESNO
+	msgbox gText_ExhibitionBattle_OkayTime, MSGBOX_YESNO, SPEAKER_OAK
 	compare VAR_RESULT, NO
 	goto_if_eq ExhibitionBattle_PrepPlayer_Script_2
-	callnative ClearMugshot
 	fadescreen FADE_TO_BLACK
 	msgbox gText_ExhibitionBattle_AndNow, MSGBOX_AUTOCLOSE
 	warpsilent MAP_CHASECENTER_ARENA, 1
@@ -46,7 +43,6 @@ ExhibitionBattle_PrepPlayer_Script::
 
 ExhibitionBattle_PrepPlayer_Script_2:
 	msgbox gText_ExhibitionBattle_NervousStill, MSGBOX_AUTOCLOSE
-	callnative ClearMugshot
 	end
 
 
@@ -100,83 +96,47 @@ ExhibitionBattle_PostBattle_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	setvar VAR_STORYLINE_STATE, STORY_CONGRATULATED_BY_ROSE
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_ThatWasPositively
+	msgbox gText_ExhibitionBattle_ThatWasPositively, , SPEAKER_ROSE
 	checktrainerflag TRAINER_WALLACE
 	goto_if 0, ExhibitionBattle_PostBattle_Dialogue_2
 ExhibitionBattle_PostBattle_Dialogue_1:
-	msgbox gText_ExhibitionBattle_ImConvinced
-	callnative ClearMugshot
+	msgbox gText_ExhibitionBattle_ImConvinced, , SPEAKER_ROSE
 	closemessage
 	release
 	end
 
 ExhibitionBattle_PostBattle_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_IveNeverSeen
-	setvar VAR_MUGSHOT, MUGSHOT_GHETSIS
-	callnative DrawMugshot
+	msgbox gText_ExhibitionBattle_IveNeverSeen, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	goto ExhibitionBattle_PostBattle_Dialogue_1
 
 
 ExhibitionBattle_Bianca_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
 	compare VAR_TEMP_F, 0
 	goto_if_gt ExhibitionBattle_Bianca_Dialogue_2
 	setvar VAR_TEMP_F, 1
-	msgbox gText_ExhibitionBattle_SickBattleOut
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_YeahIHeardALittle
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_ImHeadingUpTheir
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_IsntThat
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_IveBeenWorkignWith
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_IThinkYoureGonna
+	msgbox gText_ExhibitionBattle_SickBattleOut, , SPEAKER_BIANCA
+	msgbox gText_ExhibitionBattle_YeahIHeardALittle, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ExhibitionBattle_ImHeadingUpTheir, , SPEAKER_BIANCA
+	msgbox gText_ExhibitionBattle_IsntThat, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ExhibitionBattle_IveBeenWorkignWith, , SPEAKER_BIANCA
+	msgbox gText_ExhibitionBattle_IThinkYoureGonna, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	return
 
 ExhibitionBattle_Bianca_Dialogue_2:
-	msgbox gText_ExhibitionBattle_IWonderIfThat
+	msgbox gText_ExhibitionBattle_IWonderIfThat, , SPEAKER_BIANCA
 	return
 
 
 ExhibitionBattle_Sabrina_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_IDidntSeeYour, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_UhhThanks
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_YourWorkDismantling
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_ImHappy
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_WithTheirEntireLeadership
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_WaitTheEliteFour
-	setvar VAR_MUGSHOT, MUGSHOT_SABRINA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_NotReallyItsASlight
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ExhibitionBattle_NowUhYoureWelcome
-	callnative ClearMugshot
+	msgbox gText_ExhibitionBattle_IDidntSeeYour, MSGBOX_NPC, SPEAKER_SABRINA
+	msgbox gText_ExhibitionBattle_UhhThanks, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ExhibitionBattle_YourWorkDismantling, , SPEAKER_SABRINA
+	msgbox gText_ExhibitionBattle_ImHappy, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ExhibitionBattle_WithTheirEntireLeadership, , SPEAKER_SABRINA
+	msgbox gText_ExhibitionBattle_WaitTheEliteFour, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ExhibitionBattle_NotReallyItsASlight, , SPEAKER_SABRINA
+	msgbox gText_ExhibitionBattle_NowUhYoureWelcome, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	release
 	end

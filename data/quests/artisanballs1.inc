@@ -110,10 +110,10 @@ Quest_ArtisanBalls1_CheckStatus_Script_3:
 
 
 Quest_ArtisanBalls1_Start_Dialogue::
-	msgbox gText_Quest_ArtisanBalls_IGotFired, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls_IGotFired, MSGBOX_NPC, SPEAKER_SERGEY
 	call Quest_ArtisanBalls1_GiveFirstSet
 	startquest QUEST_ARTISANBALLS1
-	msgbox gText_Quest_ArtisanBalls_ComeBack, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls_ComeBack, MSGBOX_NPC, SPEAKER_SERGEY
 	end
 
 
@@ -133,15 +133,15 @@ Quest_ArtisanBalls1_GiveFirstSet::
 
 
 Quest_ArtisanBalls1_Active_Dialogue::
-	msgbox gText_Quest_ArtisanBalls_HowIsProgress, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls_HowIsProgress, MSGBOX_NPC, SPEAKER_SERGEY
 	call Quest_ArtisanBalls1_During_ReplenishBalls_Script
 	compare VAR_TEMP_0, 0
 	goto_if_gt Quest_ArtisanBalls1_Active_Dialogue_2
-	msgbox gText_Quest_ArtisanBalls__ThoseBallsCanBe, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls__ThoseBallsCanBe, MSGBOX_NPC, SPEAKER_SERGEY
 	end
 
 Quest_ArtisanBalls1_Active_Dialogue_2:
-	msgbox gText_Quest_ArtisanBalls_JustMadeThatToday, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls_JustMadeThatToday, MSGBOX_NPC, SPEAKER_SERGEY
 	end
 
 
@@ -256,7 +256,7 @@ Quest_ArtisanBalls1_During_ReplenishBalls_Script_34:
 
 
 Quest_ArtisanBalls1_Reward_Dialogue::
-	msgbox gText_Quest_ArtisanBalls_SoTheyAllWork, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls_SoTheyAllWork, MSGBOX_NPC, SPEAKER_SERGEY
 	call Quest_ArtisanBalls1_GiveReward_Script
 	completequest QUEST_ARTISANBALLS1
 	end
@@ -447,7 +447,7 @@ Quest_ArtisanBalls2_BuyRandomBall_Script_9:
 
 
 Quest_ArtisanBalls2_DeclineRandomBall_Script::
-	msgbox gText_Quest_ArtisanBalls2_NoWorries, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls2_NoWorries, MSGBOX_NPC, SPEAKER_SERGEY
 	return
 
 
@@ -469,12 +469,9 @@ Quest_ArtisanBalls2_During_ProgressCheck_Script_3:
 
 
 Quest_ArtisanBalls2_Start_Dialogue::
-	msgbox gText_Quest_ArtisanBalls2_ImReadyToExpand, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ArtisanBalls2_ThatsAmazing, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_Quest_ArtisanBalls2_INeedHelp, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls2_ImReadyToExpand, MSGBOX_NPC, SPEAKER_SERGEY
+	msgbox gText_Quest_ArtisanBalls2_ThatsAmazing, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_ArtisanBalls2_INeedHelp, MSGBOX_NPC, SPEAKER_SERGEY
 	startquest QUEST_ARTISANBALLS2
 	end
 
@@ -484,12 +481,12 @@ Quest_ArtisanBalls2_Active_Dialogue::
 	call Quest_ArtisanBalls2_CheckReward_Script
 	compare VAR_TEMP_0, 0
 	goto_if_gt Quest_ArtisanBalls2_Active_Dialogue_2
-	msgbox gText_Quest_ArtisanBalls2_FindingHelp, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls2_FindingHelp, MSGBOX_NPC, SPEAKER_SERGEY
 Quest_ArtisanBalls2_Active_Dialogue_1:
 	end
 
 Quest_ArtisanBalls2_Active_Dialogue_2:
-	msgbox gText_Quest_ArtisanBalls2_WowPeopleAre, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls2_WowPeopleAre, MSGBOX_NPC, SPEAKER_SERGEY
 	goto Quest_ArtisanBalls2_Active_Dialogue_1
 
 
@@ -502,16 +499,10 @@ Quest_ArtisanBalls_TrainerA_PostBattle_Script::
 	lock
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_1
 	call Quest_ArtisanBalls2_CheckReward_Script
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ArtisanBalls2_WhereDidYouGet, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_Quest_ArtisanBalls2_MyGirlfriend, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ArtisanBalls2_OfficeManagerRight, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_Quest_ArtisanBalls2_WaitReally, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls2_WhereDidYouGet, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_ArtisanBalls2_MyGirlfriend, MSGBOX_NPC, SPEAKER_SERGEY
+	msgbox gText_Quest_ArtisanBalls2_OfficeManagerRight, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_ArtisanBalls2_WaitReally, MSGBOX_NPC, SPEAKER_SERGEY
 	fadescreen FADE_TO_BLACK
 	removeobject 1
 	fadescreen FADE_FROM_BLACK
@@ -528,16 +519,10 @@ Quest_ArtisanBalls_TrainerB_PostBattle_Script::
 	lock
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_2
 	call Quest_ArtisanBalls2_CheckReward_Script
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ArtisanBalls2_WhereDidYouGet, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_Quest_ArtisanBalls2_ISawThe, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ArtisanBalls2_YouSaidYouWereInto, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_Quest_ArtisanBalls2_OhManWhat, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls2_WhereDidYouGet, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_ArtisanBalls2_ISawThe, MSGBOX_NPC, SPEAKER_SERGEY
+	msgbox gText_Quest_ArtisanBalls2_YouSaidYouWereInto, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_ArtisanBalls2_OhManWhat, MSGBOX_NPC, SPEAKER_SERGEY
 	fadescreen FADE_TO_BLACK
 	removeobject 1
 	fadescreen FADE_FROM_BLACK
@@ -554,16 +539,10 @@ Quest_ArtisanBalls_TrainerC_PostBattle_Script::
 	lock
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_3
 	call Quest_ArtisanBalls2_CheckReward_Script
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ArtisanBalls2_WhereDidYouGet, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_Quest_ArtisanBalls2_IMetTheVendor, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ArtisanBalls2_IfYouLikeHelping, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_Quest_ArtisanBalls2_ThatWouldBe, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls2_WhereDidYouGet, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_ArtisanBalls2_IMetTheVendor, MSGBOX_NPC, SPEAKER_SERGEY
+	msgbox gText_Quest_ArtisanBalls2_IfYouLikeHelping, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_ArtisanBalls2_ThatWouldBe, MSGBOX_NPC, SPEAKER_SERGEY
 	fadescreen FADE_TO_BLACK
 	removeobject 2
 	fadescreen FADE_FROM_BLACK
@@ -608,7 +587,7 @@ Quest_ArtisanBalls2_CheckReward_Script_11:
 
 
 Quest_ArtisanBalls2_Reward_Dialogue::
-	msgbox gText_Quest_ArtisanBalls2_IThinkIHaveTheStaff, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls2_IThinkIHaveTheStaff, MSGBOX_NPC, SPEAKER_SERGEY
 	call Quest_ArtisanBalls2_GiveReward_Script
 	completequest QUEST_ARTISANBALLS2
 	end
@@ -640,7 +619,7 @@ Quest_ArtisanBalls3_GenerateMart_Script::
 	msgbox gText_Quest_ArtisanBalls3_WhatBallsDoYou
 	waitmessage
 	pokemart ArtisanBallsShop
-	msgbox gText_Quest_ArtisanBalls3_ThanksAgain, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls3_ThanksAgain, MSGBOX_NPC, SPEAKER_SERGEY
 	release
 	return
 
@@ -669,15 +648,15 @@ Quest_ArtisanBalls3_DuringProgressCheck_Script_2:
 
 
 Quest_ArtisanBalls3_Start_Dialogue::
-	msgbox gText_Quest_ArtisanBalls3_BusinessHasBeen, MSGBOX_NPC
-	msgbox gText_Quest_ArtisanBalls3_IveBeenTalkingTo, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls3_BusinessHasBeen, MSGBOX_NPC, SPEAKER_SERGEY
+	msgbox gText_Quest_ArtisanBalls3_IveBeenTalkingTo, MSGBOX_NPC, SPEAKER_SERGEY
 	startquest QUEST_ARTISANBALLS3
 	release
 	end
 
 
 Quest_ArtisanBalls3_Active_Dialogue::
-	msgbox gText_Quest_ArtisanBalls3_CantWaitToSee, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls3_CantWaitToSee, MSGBOX_NPC, SPEAKER_SERGEY
 	end
 
 
@@ -695,10 +674,7 @@ Quest_ArtisanBalls3_Reward_Cutscene::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 1
 	msgbox gText_Quest_ArtisanBalls3_DidYouHearThat, MSGBOX_DEFAULT
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ArtisanBalls3_NoButItSounds, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_Quest_ArtisanBalls3_NoButItSounds, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	msgbox gText_Quest_ArtisanBalls3_TheyWantToAcquire, MSGBOX_DEFAULT
 	call Quest_ArtisanBalls3_GiveReward_Script
 	completequest QUEST_ARTISANBALLS3
@@ -736,7 +712,7 @@ Quest_ArtisanBalls3_Post_Dialogue_4:
 
 
 Quest_ArtisanBalls_BetweenStates_Dialogue::
-	msgbox gText_Quest_ArtisanBalls3_ImSoExcitedForWhat, MSGBOX_NPC
+	msgbox gText_Quest_ArtisanBalls3_ImSoExcitedForWhat, MSGBOX_NPC, SPEAKER_SERGEY
 	end
 
 

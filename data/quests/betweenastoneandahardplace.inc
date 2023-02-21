@@ -25,7 +25,7 @@ Quest_BetweenAStoneAndAHardPlace_Event_Script_5:
 
 
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue::
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear, MSGBOX_NPC
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
 	buffernumberstring STR_VAR_1, VAR_NUM_TROLLEY_RIDES
 	switch VAR_NUM_TROLLEY_RIDES
 	case 0, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_3
@@ -44,25 +44,25 @@ Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_1:
 	end
 
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_3:
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_YouShouldTry, MSGBOX_NPC
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_YouShouldTry, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
 	goto Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_1
 
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_4:
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_AreYouNew, MSGBOX_NPC
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_AreYouNew, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
 	goto Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_1
 
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_5:
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_YoureARegular, MSGBOX_NPC
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_YoureARegular, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
 	goto Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_1
 
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_6:
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly, MSGBOX_NPC
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_OhWowOnly, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
 	goto Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_1
 
 
 Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue::
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying, MSGBOX_NPC
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership, MSGBOX_NPC
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
 	random 10
 	switch VAR_RESULT
 	case 0, Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue_3
@@ -76,11 +76,8 @@ Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue::
 	case 8, Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue_11
 	case 9, Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue_12
 Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue_1:
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_Yeah, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_Yeah, MSGBOX_NPC, SPEAKER_ZOEY
 	completequest QUEST_BETWEENASTONEANDAHARD
 	release
 	end
@@ -127,7 +124,7 @@ Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue_12:
 
 
 Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue::
-	msgbox gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot, MSGBOX_NPC
+	msgbox gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
 	end
 
 

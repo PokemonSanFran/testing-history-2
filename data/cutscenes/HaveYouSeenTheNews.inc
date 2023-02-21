@@ -7,37 +7,21 @@ HaveYouSeenTheNews_AskHelp_Dialogue::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, EnterTheMaster_ApproachSiebold
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_HaveYouSeenTheNews_WedLikeYourHelp
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_HaveYouSeenTheNews_ShitWhatDid
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_HaveYouSeenTheNews_YoureStartingToSound
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_HaveYouSeenTheNews_HowAreWeGoing
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_HaveYouSeenTheNews_NoTimeToExplain, MSGBOX_YESNO
+	msgbox gText_HaveYouSeenTheNews_WedLikeYourHelp, , SPEAKER_OAK
+	msgbox gText_HaveYouSeenTheNews_ShitWhatDid, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_HaveYouSeenTheNews_YoureStartingToSound, , SPEAKER_OAK
+	msgbox gText_HaveYouSeenTheNews_HowAreWeGoing, , SPEAKER_BIANCA
+	msgbox gText_HaveYouSeenTheNews_NoTimeToExplain, MSGBOX_YESNO, , SPEAKER_OAK
 	compare VAR_RESULT, NO
 	goto_if_eq HaveYouSeenTheNews_AskHelp_Dialogue_1
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_HaveYouSeenTheNews_CoolTheCar
-	callnative ClearMugshot
+	msgbox gText_HaveYouSeenTheNews_CoolTheCar, , SPEAKER_BIANCA
 	closemessage
 	releaseall
 	warpsilent MAP_SALESFORCETOWER_LEAGUEOPS, 17, 29
 	end
 
 HaveYouSeenTheNews_AskHelp_Dialogue_1:
-	setvar VAR_MUGSHOT, MUGSHOT_LANCE
-	callnative DrawMugshot
-	msgbox gText_HaveYouSeenTheNews_FineButDontDawdle
-	callnative ClearMugshot
+	msgbox gText_HaveYouSeenTheNews_FineButDontDawdle, , SPEAKER_OAK
 	closemessage
 	applymovement 3, HaveYouSeenTheNews_LeaveClearingA
 	applymovement 1, HaveYouSeenTheNews_LeaveClearingB

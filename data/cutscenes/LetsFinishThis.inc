@@ -29,64 +29,25 @@ LetsFinishThis_MovePlayer_Script_2:
 
 LetsFinishThis_Debrief_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_IDontThinkIm
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_ThatPartDoesnt
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_ButInnocentPeople
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_PerfevtlySane
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_ButTheyWerentAlways
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_HasAlwaysBeenRuthless
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_ThatsWhatIMean
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_PerhapsDesperate
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_MaybeNowItsTime
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_NowMightBeTheTime
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_PublicSentimentIsStrong
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_EvenIfWePullIt
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_TheyCameForTheKings
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_SoBreakInto
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_APublicConfession
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_IWasBeingSarcastic
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_TheHardestPartOfThatPlan
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_TwoOldCoots
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_TheWarpPanels
-	callnative ClearMugshot
+	msgbox gText_LetsFinishThis_IDontThinkIm, , SPEAKER_DRASNA
+	msgbox gText_LetsFinishThis_ThatPartDoesnt, , SPEAKER_SIEBOLD
+	msgbox gText_LetsFinishThis_ButInnocentPeople, , SPEAKER_MALVA
+	msgbox gText_LetsFinishThis_PerfevtlySane, , SPEAKER_WIKSTROM
+	msgbox gText_LetsFinishThis_ButTheyWerentAlways, , SPEAKER_ARCHER
+	msgbox gText_LetsFinishThis_HasAlwaysBeenRuthless, , SPEAKER_ARIANA
+	msgbox gText_LetsFinishThis_ThatsWhatIMean, , SPEAKER_ARCHER
+	msgbox gText_LetsFinishThis_PerhapsDesperate, , SPEAKER_SIEBOLD
+	msgbox gText_LetsFinishThis_MaybeNowItsTime, , SPEAKER_ARCHER
+	msgbox gText_LetsFinishThis_NowMightBeTheTime, , SPEAKER_DRASNA
+	msgbox gText_LetsFinishThis_PublicSentimentIsStrong, , SPEAKER_MALVA
+	msgbox gText_LetsFinishThis_EvenIfWePullIt, , SPEAKER_ARIANA
+	msgbox gText_LetsFinishThis_TheyCameForTheKings, , SPEAKER_WIKSTROM
+	msgbox gText_LetsFinishThis_SoBreakInto, , SPEAKER_ARCHER
+	msgbox gText_LetsFinishThis_APublicConfession, , SPEAKER_SIEBOLD
+	msgbox gText_LetsFinishThis_IWasBeingSarcastic, , SPEAKER_ARCHER, TAIL_SHOUT, EMOTE_SHOCK
+	msgbox gText_LetsFinishThis_TheHardestPartOfThatPlan, , SPEAKER_WIKSTROM
+	msgbox gText_LetsFinishThis_TwoOldCoots, , SPEAKER_MALVA
+	msgbox gText_LetsFinishThis_TheWarpPanels, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	goto LetsFinishThis_GoToFlashback_Script
 	return
@@ -102,21 +63,13 @@ LetsFinishThis_GoToFlashback_Script::
 
 LetsFinishThis_StartPlanning_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_NobodyHasSeen
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_WhatAbout
-	callnative ClearMugshot
+	msgbox gText_LetsFinishThis_NobodyHasSeen, , SPEAKER_ARIANA
+	msgbox gText_LetsFinishThis_WhatAbout, , SPEAKER_SIEBOLD
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 18, LetsFinishThis_WalkToPlayer
 	waitmovement 18
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_LetsFinishThis_WereOntoSomething
-	callnative ClearMugshot
+	msgbox gText_LetsFinishThis_WereOntoSomething, , SPEAKER_WIKSTROM
 	closemessage
 	applymovement 18, LetsFinishThis_WalkAway
 	waitmovement 18

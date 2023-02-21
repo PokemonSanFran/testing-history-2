@@ -24,14 +24,12 @@ mapscripts SOMA_MapScripts {
 
 script SOMA_SocialMediaReporter_Dialogue{
     setflag(FLAG_MET_SOCIALMEDIA_REPORTER)
-    msgbox(gText_SOMA_SocialMediaIs,MSGBOX_NPC)
+    msgbox(gText_SOMA_SocialMediaIs,MSGBOX_NPC,SPEAKER_ISMAIL)
 
-    setvar(VAR_MUGSHOT,MUGSHOT_HILDA)
-    callnative(DrawMugshot)
-    msgbox(gText_SOMA_TotallyIHunted,MSGBOX_DEFAULT)
-    callnative(ClearMugshot)
+    msgbox(gText_SOMA_TotallyIHunted,MSGBOX_DEFAULT,,SPEAKER_ZOEY)
+    
 
-    msgbox(gText_SOMA_OhRight,MSGBOX_DEFAULT)
+    msgbox(gText_SOMA_OhRight,MSGBOX_DEFAULT,SPEAKER_ISMAIL)
     closemessage
     applymovement(ISMAIL,SOMA_WalkInside)
     playse(SE_EXIT)
@@ -70,9 +68,9 @@ script SOMA_Stan_PostBattle_Script{
         call(Quest_WallaceArmy_CheckCompletionRate_Script)
         questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_WALLACEARMY)
         if (!var(VAR_RESULT)){
-            msgbox(gText_WallaceArmy_PostBattlePlaceholder1)
+            msgbox(gText_WallaceArmy_PostBattlePlaceholder1,,SPEAKER_STAN_SOMA)
         }else {
-            msgbox(gText_WallaceArmy_PostQuestPlaceholder1)
+            msgbox(gText_WallaceArmy_PostQuestPlaceholder1,,SPEAKER_STAN_SOMA)
         }
 
     release

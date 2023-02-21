@@ -130,17 +130,10 @@ ImIn_StartHouseBreak_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, ImIn_ApproachHouse
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 3, Common_Movement_FaceDown
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_ImIn_WereCertainNobody
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_ImIn_HasntLeftWorkEarly
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ImIn_WereInPosition
+	msgbox gText_ImIn_WereCertainNobody, , SPEAKER_SIEBOLD
+	msgbox gText_ImIn_HasntLeftWorkEarly, , SPEAKER_DRASNA
+	msgbox gText_ImIn_WereInPosition, , SPEAKER_ARIANA, , , PHONE_ON
 	closemessage
-	callnative ClearMugshot
 	applymovement 5, ImIn_WalkAroundHouse
 	waitmovement 5
 	applymovement 1, Common_Movement_FaceRight
@@ -149,21 +142,13 @@ ImIn_StartHouseBreak_Script::
 	applymovement 4, Common_Movement_FaceRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ImIn_TheSideDoorWill
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_ImIn_LetsMoveThen
+	msgbox gText_ImIn_TheSideDoorWill, , SPEAKER_ARCHER
+	msgbox gText_ImIn_LetsMoveThen, , SPEAKER_MALVA
 	closemessage
-	callnative ClearMugshot
 	applymovement 5, ImIn_WalkToSideDoor
 	waitmovement 5
 	call ImIn_ReleaseFromBall_Script
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ImIn_BrickBreakSureComes
-	callnative ClearMugshot
+	msgbox gText_ImIn_BrickBreakSureComes, , SPEAKER_ARCHER
 	closemessage
 	playse SE_M_BRICK_BREAK
 	applymovement 6, ImIn_AttackHouse
@@ -203,11 +188,8 @@ ImIn_UnlockDoor_Script::
 Imin_BeginHouseSearch_Script::
 	lock
 	setvar VAR_TOWER_RAID_STATE, SEARCHING_SABRINA_HOUSE
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_ImIn_OkaySpreadOut
+	msgbox gText_ImIn_OkaySpreadOut, , SPEAKER_MALVA
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, ImIn_SpreadOutHouse
 	applymovement 2, ImIn_SpreadOutHouse
 	applymovement 3, ImIn_SpreadOutHouse
@@ -231,13 +213,8 @@ Imin_BeginHouseSearch_Script::
 ImIn_FindLockedDoor_Script::
 	lock
 	setvar VAR_TOWER_RAID_STATE, FOUND_SABRINA_WARP_DOOR
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_IFoundADoor
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_ImIn_GuessWereAllLooking
-	callnative ClearMugshot
+	msgbox gText_ImIn_IFoundADoor, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ImIn_GuessWereAllLooking, , SPEAKER_ARCHER
 	closemessage
 	release
 	end
@@ -267,19 +244,10 @@ ImIn_EnterCorrectCode_Script::
 	fadescreen FADE_TO_BLACK
 	call ImIn_MoveObject_BeforeWarp_Script
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_ImIn_WereIn
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ImIn_OnceYoureAllThrough
-	setvar VAR_MUGSHOT, MUGSHOT_GRIMSLEY
-	callnative DrawMugshot
-	msgbox gText_ImIn_ImTooOldFor
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_ImIn_ThesePeopleAreFighting
-	callnative ClearMugshot
+	msgbox gText_ImIn_WereIn, , SPEAKER_SIEBOLD
+	msgbox gText_ImIn_OnceYoureAllThrough, , SPEAKER_ARIANA, , , PHONE_ON
+	msgbox gText_ImIn_ImTooOldFor, , SPEAKER_DRASNA
+	msgbox gText_ImIn_ThesePeopleAreFighting, , SPEAKER_KAREN
 	closemessage
 	applymovement 1, Common_Movement_WalkRight
 	waitmovement 1
@@ -321,30 +289,16 @@ ImIn_PostWarpSplit_Dialogue::
 	lock
 	setvar VAR_TOWER_RAID_STATE, TEAM_ENTERED_SALESFORCETOWER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp2
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_ImIn_WereAllIn
-	setvar VAR_MUGSHOT, MUGSHOT_ARIANA
-	callnative DrawMugshot
-	msgbox gText_ImIn_LetTheMarch
-	setvar VAR_MUGSHOT, MUGSHOT_MARSHAL
-	callnative DrawMugshot
-	msgbox gText_ImIn_LetsGoSecure
+	msgbox gText_ImIn_WereAllIn, , SPEAKER_SIEBOLD
+	msgbox gText_ImIn_LetTheMarch, , SPEAKER_ARIANA, , , PHONE_ON
+	msgbox gText_ImIn_LetsGoSecure, , SPEAKER_SIEBOLD
 	closemessage
-	callnative ClearMugshot
 	applymovement 5, ImIn_WalkAwayFromWarpA
 	applymovement 4, ImIn_WalkAwayFromWarpA
-	setvar VAR_MUGSHOT, MUGSHOT_CAITLIN
-	callnative DrawMugshot
-	msgbox gText_ImIn_ThisPlaceIsProbably
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_HasAnOfficeOn
-	setvar VAR_MUGSHOT, MUGSHOT_SHAUNTAL
-	callnative DrawMugshot
-	msgbox gText_ImIn_FloorThenLets
+	msgbox gText_ImIn_ThisPlaceIsProbably, , SPEAKER_KAREN
+	msgbox gText_ImIn_HasAnOfficeOn, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ImIn_FloorThenLets, , SPEAKER_MALVA
 	closemessage
-	callnative ClearMugshot
 	applymovement 3, ImIn_WalkAwayFromWarpC
 	applymovement 6, ImIn_WalkAwayFromWarpC
 	applymovement 7, ImIn_WalkAwayFromWarpC
@@ -366,10 +320,7 @@ ImIn_PreventPlayerProgress_Script::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_OfficeIsOn
-	callnative ClearMugshot
+	msgbox gText_ImIn_OfficeIsOn, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, ImIn_WalkAwayStairs
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -387,34 +338,16 @@ ImIn_OfficeReveal_Dialogue::
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	applymovement OBJ_EVENT_ID_PLAYER, ImIn_ApproachDesk_Movement
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ImIn_DoYouLikeMy
+	msgbox gText_ImIn_DoYouLikeMy, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_WhatAreYouDoing
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ImIn_IDidntChooseToAlign
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_WaitTrash
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ImIn_WasDestryogingThisRegion
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_SoYouJustDontCare
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ImIn_LookAllThisHelping
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_DaddyWontBeAble
+	msgbox gText_ImIn_WhatAreYouDoing, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ImIn_IDidntChooseToAlign, , SPEAKER_BIANCA
+	msgbox gText_ImIn_WaitTrash, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ImIn_WasDestryogingThisRegion, , SPEAKER_BIANCA
+	msgbox gText_ImIn_SoYouJustDontCare, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ImIn_LookAllThisHelping, , SPEAKER_BIANCA
+	msgbox gText_ImIn_DaddyWontBeAble, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	applymovement 4, ImIn_WalkFromDesk_Movement
 	waitmovement 4
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
@@ -426,11 +359,8 @@ ImIn_OfficeReveal_Dialogue::
 
 ImIn_StartBiancaBattle_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ImIn_AreDeadDoYou
+	msgbox gText_ImIn_AreDeadDoYou, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, gText_ImIn_HowDoesThisKeep
 	goto ImIn_BiancaDefeated_Dialogue
 	return
@@ -451,19 +381,10 @@ ImIn_InteractBiancaBattle_Script_2:
 ImIn_BiancaDefeated_Dialogue::
 	lock
 	setvar VAR_TOWER_RAID_STATE, DEFEATED_BIANCA_SALESFORCETOWER
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_Wheres
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ImIn_WhatsTheSecret
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ImIn_EverythingAboutIsBullshit
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ImIn_Floor
-	callnative ClearMugshot
+	msgbox gText_ImIn_Wheres, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ImIn_WhatsTheSecret, , SPEAKER_BIANCA
+	msgbox gText_ImIn_EverythingAboutIsBullshit, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_ImIn_Floor, , SPEAKER_BIANCA
 	call ImIn_RevealRoseWarp_Script
 	closemessage
 	release
@@ -477,10 +398,7 @@ ImIn_PostBiancaBattle_Interact_Dialogue_1:
 	return
 
 ImIn_PostBiancaBattle_Interact_Dialogue_2:
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_ImIn_AllThatTraining, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_ImIn_AllThatTraining, MSGBOX_NPC, SPEAKER_BIANCA
 	goto ImIn_PostBiancaBattle_Interact_Dialogue_1
 
 

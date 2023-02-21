@@ -31,17 +31,17 @@ Quest_BringFruit_Interact_Script_8:
 Quest_BringFruit_PostQuest_Script::
 	compare VAR_STORYLINE_STATE, STORY_WON_FINALS
 	goto_if_lt Quest_BringFruit_PostQuest_Script_2
-	msgbox gText_BringFruit_ChampionPlayerMyFriend, MSGBOX_NPC
+	msgbox gText_BringFruit_ChampionPlayerMyFriend, MSGBOX_NPC, SPEAKER_HESTER
 Quest_BringFruit_PostQuest_Script_1:
 	end
 
 Quest_BringFruit_PostQuest_Script_2:
-	msgbox gText_BringFruit_PlayerMyFriend, MSGBOX_NPC
+	msgbox gText_BringFruit_PlayerMyFriend, MSGBOX_NPC, SPEAKER_HESTER
 	goto Quest_BringFruit_PostQuest_Script_1
 
 
 Quest_BringFruit_CheckPlayerBag_Script::
-	msgbox gText_BringFruit_MuchMoreNicer, MSGBOX_NPC
+	msgbox gText_BringFruit_MuchMoreNicer, MSGBOX_NPC, SPEAKER_HESTER
 	checkitemspace ITEM_LEFTOVERS, 1
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_BringFruit_CheckPlayerBag_Script_1
@@ -70,7 +70,7 @@ Quest_BringFruit_PlayerBagHasSpace_Script::
 
 
 Quest_BringFruit_PlayerBagFull_Script::
-	msgbox gText_BringFruit_YouCarrySoMuch, MSGBOX_NPC
+	msgbox gText_BringFruit_YouCarrySoMuch, MSGBOX_NPC, SPEAKER_HESTER
 	end
 
 
@@ -78,7 +78,7 @@ Quest_BringFruit_DuringQuest_Script::
 	checkitem ITEM_WATMEL_BERRY, 6
 	compare VAR_RESULT, 0
 	goto_if_ne Quest_BringFruit_DuringQuest_Script_1
-	msgbox gText_BringFruit_PleaseDontLeave, MSGBOX_NPC
+	msgbox gText_BringFruit_PleaseDontLeave, MSGBOX_NPC, SPEAKER_HESTER
 	end
 
 Quest_BringFruit_DuringQuest_Script_1:
@@ -87,17 +87,11 @@ Quest_BringFruit_DuringQuest_Script_1:
 
 
 Quest_BringFruit_PlayerHasFruit_Script::
-	msgbox gText_BringFruit_MyFriendThose, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BringFruit_YeahYouSeemed, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_BringFruit_YesYesYes, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BringFruit_ItWasJustAFew, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_BringFruit_NoNoNo, MSGBOX_NPC
+	msgbox gText_BringFruit_MyFriendThose, MSGBOX_NPC, SPEAKER_HESTER
+	msgbox gText_BringFruit_YeahYouSeemed, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_BringFruit_YesYesYes, MSGBOX_NPC, SPEAKER_HESTER
+	msgbox gText_BringFruit_ItWasJustAFew, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_BringFruit_NoNoNo, MSGBOX_NPC, SPEAKER_HESTER
 	removeitem ITEM_WATMEL_BERRY, 6
 	questmenu QUEST_MENU_SET_REWARD, QUEST_BRINGFRUIT
 	goto Quest_BringFruit_CheckPlayerBag_Script
@@ -105,36 +99,21 @@ Quest_BringFruit_PlayerHasFruit_Script::
 
 
 Quest_BringFruit_PreQuestScript::
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BringFruit_CouldIPlease, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_BringFruit_SorryMyFriend, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BringFruit_AwThoseAre, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_BringFruit_IUsuallyGo, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BringFruit_ThatsOkayCan, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_BringFruit_IJustNeedSix, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BringFruit_OkayIThink, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_BringFruit_PleaseDontLeave, MSGBOX_NPC
-	setvar VAR_0x8000, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_BringFruit_ActuallyIllBeRight, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_BringFruit_CouldIPlease, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_BringFruit_SorryMyFriend, MSGBOX_NPC, SPEAKER_HESTER
+	msgbox gText_BringFruit_AwThoseAre, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_BringFruit_IUsuallyGo, MSGBOX_NPC, SPEAKER_HESTER
+	msgbox gText_BringFruit_ThatsOkayCan, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_BringFruit_IJustNeedSix, MSGBOX_NPC, SPEAKER_HESTER
+	msgbox gText_BringFruit_OkayIThink, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_BringFruit_PleaseDontLeave, MSGBOX_NPC, SPEAKER_HESTER
+	msgbox gText_BringFruit_ActuallyIllBeRight, MSGBOX_NPC, SPEAKER_ZOEY
 	startquest QUEST_BRINGFRUIT
 	return
 
 
 Quest_BringFruit_NotEnoughBadges::
-	msgbox gText_BringFruit_IAmStillSetting, MSGBOX_NPC
+	msgbox gText_BringFruit_IAmStillSetting, MSGBOX_NPC, SPEAKER_HESTER
 	return
 
 

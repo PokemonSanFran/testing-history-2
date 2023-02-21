@@ -1,19 +1,18 @@
 ANewStrike_BreakingNews_Dialogue::
 	clearflag FLAG_CONSTRUCTION_BREAKING_NEWS
 	lockall
-	pokenavcall gText_ANewStrike_ConstructionCrew
-	waitmessage
+	playse SE_POKENAV_CALL
+	waitse
+	playse SE_POKENAV_CALL
+	msgbox gText_ANewStrike_ConstructionCrew, MSGBOX_DEFAULT, SPEAKER_NEWS, TAIL_DEFAULT, EMOTE_DEFAULT, PHONE_ON
 	closemessage
 	goto ANewStrike_PlayerSelf_Dialogue
 	return
 
 
 ANewStrike_PlayerSelf_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_ANewStrike_OhDamn
+	msgbox gText_ANewStrike_OhDamn, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_CONFUSE, PHONE_OFF
 	closemessage
-	callnative ClearMugshot
 	releaseall
 	end
 

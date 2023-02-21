@@ -27,33 +27,24 @@ KogaRaisonDetre_MoveIntoFoyer_Script::
 
 
 KogaRaisonDetre_KidsMeetPlayer_Dialogue::
-	msgbox gText_KogaRaisonDetre_YoureHereInTheFlesh
-	msgbox gText_KogaRaisonDetre_YoureAFreak
+	msgbox gText_KogaRaisonDetre_YoureHereInTheFlesh, , SPEAKER_ALEKSANDER
+	msgbox gText_KogaRaisonDetre_YoureAFreak, , SPEAKER_SUMMER
 	closemessage
 	applymovement 1, KogaRaisonDetre_RunAroundPlayer
-	msgbox gText_KogaRaisonDetre_MaybeTheyllSign
-	msgbox gText_KogaRaisonDetre_ShutUp
-	msgbox gText_KogaRaisonDetre_ShowUsHowYouTookDown
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_AllRightAllRight
+	msgbox gText_KogaRaisonDetre_MaybeTheyllSign, , SPEAKER_ALEKSANDER
+	msgbox gText_KogaRaisonDetre_ShutUp, , SPEAKER_SUMMER
+	msgbox gText_KogaRaisonDetre_ShowUsHowYouTookDown, , SPEAKER_ALEKSANDER
+	msgbox gText_KogaRaisonDetre_AllRightAllRight, , SPEAKER_KOGA
 	applymovement 3, KogaRaisonDetre_WalkIntoFoyer
-	callnative ClearMugshot
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_YouDontWantToScare
-	callnative ClearMugshot
-	msgbox gText_KogaRaisonDetre_GonnaGoGet
+	msgbox gText_KogaRaisonDetre_YouDontWantToScare, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_GonnaGoGet, , SPEAKER_ALEKSANDER
 	closemessage
 	applymovement 1, KogaRaisonDetre_RunUpstairs
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_SorryAboutThat
-	callnative ClearMugshot
+	msgbox gText_KogaRaisonDetre_SorryAboutThat, , SPEAKER_KOGA
 	applymovement 2, Common_Movement_FaceLeft
 	waitmovement 0
-	msgbox gText_KogaRaisonDetre_OhArceus
+	msgbox gText_KogaRaisonDetre_OhArceus, , SPEAKER_SUMMER
 	closemessage
 	applymovement 2, KogaRaisonDetre_RunUpstairs
 	waitmovement 0
@@ -66,35 +57,18 @@ KogaRaisonDetre_KidsMeetPlayer_Dialogue::
 KogaRaisonDetre_CityDiscussion_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, KogaRaisonDetre_WalkFromEntrance
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_YourHouseIsBeautiful
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ItWasImportantToMe
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ButItsHardToJustify
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_IveBeenStruggling
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ItsBeenSaidThat
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ToughToBeAround
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ICompletelyUnderstand
+	msgbox gText_KogaRaisonDetre_YourHouseIsBeautiful, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_ItWasImportantToMe, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_ButItsHardToJustify, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_IveBeenStruggling, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_ItsBeenSaidThat, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_ToughToBeAround, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_ICompletelyUnderstand, , SPEAKER_KOGA
 	closemessage
 	applymovement 3, KogaRaisonDetre_WalkTowardsLiving
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ItsMuchEasier
+	msgbox gText_KogaRaisonDetre_ItsMuchEasier, , SPEAKER_KOGA
 	closemessage
-	callnative ClearMugshot
 	applymovement 3, KogaRaisonDetre_WalkToDining
 	waitmovement 0
 	setobjectxy 3, 3, 4
@@ -106,10 +80,7 @@ KogaRaisonDetre_CityDiscussion_Dialogue::
 
 KogaRaisonDetre_ComeSit_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ComeSit, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_KogaRaisonDetre_ComeSit, MSGBOX_NPC, SPEAKER_KOGA
 	setvar VAR_KOGA_RAISON_DETRE_STATE, START_KOGA_WINE_SPEECH
 	closemessage
 	release
@@ -118,11 +89,8 @@ KogaRaisonDetre_ComeSit_Dialogue::
 
 KogaRaisonDetre_InteractAtTable_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_IPickedOut
+	msgbox gText_KogaRaisonDetre_IPickedOut, , SPEAKER_KOGA
 	closemessage
-	callnative ClearMugshot
 	release
 	end
 
@@ -130,64 +98,29 @@ KogaRaisonDetre_InteractAtTable_Script::
 KogaRaisonDetre_Wine_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_HowMuch
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ThatLastPartIsImportant
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_Shareholders
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_YeahTheCorporate
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_WhatDoYouMean
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_DoYouKnowHow
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_IsntItMostly
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_UsedToBe
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_WoahWaitBigger
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_PeopleLoveBattles
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_TheBroadcasts
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_MyKidsBeingObsessed
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_WereGoingToMake
-	callnative ClearMugshot
+	msgbox gText_KogaRaisonDetre_HowMuch, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_ThatLastPartIsImportant, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_Shareholders, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_YeahTheCorporate, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_WhatDoYouMean, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_DoYouKnowHow, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_IsntItMostly, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_UsedToBe, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_WoahWaitBigger, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_PeopleLoveBattles, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_TheBroadcasts, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_MyKidsBeingObsessed, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_WereGoingToMake, , SPEAKER_KOGA
 	applymovement 3, Common_Movement_FaceAwayPlayer
 	waitmovement 3
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_IPray
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_WhatWasThat
-	callnative ClearMugshot
+	msgbox gText_KogaRaisonDetre_IPray, , SPEAKER_KOGA
+	msgbox gText_KogaRaisonDetre_WhatWasThat, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	playse SE_DING_DONG
 	waitfanfare
-	msgbox gText_KogaRaisonDetre_DinnerIsServed
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_AhLetsEat
+	msgbox gText_KogaRaisonDetre_DinnerIsServed, , SPEAKER_MAID
+	msgbox gText_KogaRaisonDetre_AhLetsEat, , SPEAKER_KOGA
 	closemessage
-	callnative ClearMugshot
 	applymovement 3, WalkToDiningRoom
 	waitmovement 0
 	release
@@ -204,10 +137,7 @@ KogaRaisonDetre_StartDinner_Script::
 	applymovement OBJ_EVENT_ID_PLAYER, WalkToTableFromRight
 KogaRaisonDetre_StartDinner_Script_1:
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_WereHonoredToHaveYou
-	callnative ClearMugshot
+	msgbox gText_KogaRaisonDetre_WereHonoredToHaveYou, , SPEAKER_KOGA
 	closemessage
 	fadescreen FADE_TO_BLACK
 	addobject 1
@@ -233,11 +163,11 @@ KogaRaisonDetre_DinnerConversation_Dialogue::
 	special DrawWholeMapView
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_CAMERA, KogaRaisonDetre_PanCamera
-	msgbox gText_KogaRaisonDetre_YourDadIsRed
+	msgbox gText_KogaRaisonDetre_YourDadIsRed, , SPEAKER_ALEKSANDER
 	closemessage
-	msgbox gText_KogaRaisonDetre_HowManyBadges
+	msgbox gText_KogaRaisonDetre_HowManyBadges, , SPEAKER_ALEKSANDER
 	closemessage
-	msgbox gText_KogaRaisonDetre_DoIHaveToEat
+	msgbox gText_KogaRaisonDetre_DoIHaveToEat, , SPEAKER_SUMMER
 	closemessage
 	fadescreen FADE_TO_BLACK
 	TeleportCamera 43, 5
@@ -252,10 +182,7 @@ KogaRaisonDetre_DinnerConversation_Dialogue::
 
 
 KogaRaisonDetre_RunToWork_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_SorryThatsMyPhone
-	callnative ClearMugshot
+	msgbox gText_KogaRaisonDetre_SorryThatsMyPhone, , SPEAKER_KOGA
 	closemessage
 	applymovement 3, KogaRaisonDetre_StepAwayFromTable
 	waitmovement 0
@@ -264,28 +191,16 @@ KogaRaisonDetre_RunToWork_Dialogue::
 	delay 32
 	applymovement 3, Common_Movement_FaceRight
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_N
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_ShitTheresAnUrgent
-	callnative ClearMugshot
+	msgbox gText_KogaRaisonDetre_ShitTheresAnUrgent, , SPEAKER_KOGA
 	closemessage
 	applymovement 3, KogaRaisonDetre_KissKids
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_WaitIThoughtThat
-	callnative ClearMugshot
-	msgbox gText_KogaRaisonDetre_YeahItDoes
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_What
-	callnative ClearMugshot
-	msgbox gText_KogaRaisonDetre_TonOfMoneyInWarp
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_OhDamnYouWerent
-	callnative ClearMugshot
-	msgbox gText_KogaRaisonDetre_IDontKnowWhy
+	msgbox gText_KogaRaisonDetre_WaitIThoughtThat, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_YeahItDoes, , SPEAKER_SUMMER
+	msgbox gText_KogaRaisonDetre_What, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_TonOfMoneyInWarp, , SPEAKER_SUMMER
+	msgbox gText_KogaRaisonDetre_OhDamnYouWerent, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_IDontKnowWhy, , SPEAKER_SUMMER
 	closemessage
 	applymovement 2, KogaRaisonDetre_LeaveDiningRoom
 	waitmovement 0
@@ -308,21 +223,18 @@ KogaRaisonDetre_NewsStory_Script::
 	fadescreen FADE_FROM_BLACK
 	special TurnOnTVScreen
 	delay 60
-	msgbox gText_KogaRaisonDetre_AndNowWeGoTo
-	msgbox gText_KogaRaisonDetre_ThanksKen
-	msgbox gText_KogaRaisonDetre_WereAlsoLearningThat
+	msgbox gText_KogaRaisonDetre_AndNowWeGoTo, , SPEAKER_NEWS
+	msgbox gText_KogaRaisonDetre_ThanksKen, , SPEAKER_NEWS_B
+	msgbox gText_KogaRaisonDetre_WereAlsoLearningThat, , SPEAKER_NEWS
 	closemessage
 	special TurnOffTVScreen
 	applymovement 4, WalkToThePlayer
 	waitmovement 0
-	msgbox gText_KogaRaisonDetre_IsThereSobAnyhingElse
+	msgbox gText_KogaRaisonDetre_IsThereSobAnyhingElse, , SPEAKER_MAID
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_AreYouOkay
-	callnative ClearMugshot
-	msgbox gText_KogaRaisonDetre_MySobSonIsInTheICU
+	msgbox gText_KogaRaisonDetre_AreYouOkay, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_KogaRaisonDetre_MySobSonIsInTheICU, , SPEAKER_MAID
 	closemessage
 	applymovement 4, KogaRaisonDetre_LeaveDiningRoomCrying
 	waitmovement 0
@@ -343,10 +255,7 @@ KogaRaisonDetre_PreventPlayerLeaving_Script_1:
 	end
 
 KogaRaisonDetre_PreventPlayerLeaving_Script_2:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_KogaRaisonDetre_HasBeenSoGenerous
-	callnative ClearMugshot
+	msgbox gText_KogaRaisonDetre_HasBeenSoGenerous, MSGBOX_DEFAULT, SPEAKER_ZOEY, TAIL_THOUGHT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
@@ -643,7 +552,7 @@ gText_KogaRaisonDetre_YeahTheCorporate::
 	.string "The corporate sponsors who helped us\n"
 	.string "acquire the Pokémon League. Rose saw\l"
 	.string "its potential and knew we could make it\l"
-	.string "even bigger. Amazon, Uber and Twitter\l"
+	.string "even bigger. Amazon, Uber and Facebook\l"
 	.string "all quickly got on board.$"
 
 gText_KogaRaisonDetre_WhatDoYouMean::

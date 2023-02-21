@@ -38,25 +38,21 @@ script OkayLetsFixit_ReachTop_Script {
         addobject(HIKO)
         fadescreen(FADE_FROM_WHITE)
 
-        msgbox(gText_OkayLetsFixIt_ImGladYouCame)
+        msgbox(gText_OkayLetsFixIt_ImGladYouCame,,SPEAKER_HIKO)
         closemessage
 
         applymovement(PLAYER, OkayLetsFixit_LookAround)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_OkayLetsFixIt_WhatWhereDidYou)
-        callnative(ClearMugshot)
+        msgbox(gText_OkayLetsFixIt_WhatWhereDidYou,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_OkayLetsFixIt_HaveYouRealized)
+        msgbox(gText_OkayLetsFixIt_HaveYouRealized,,SPEAKER_HIKO)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_OkayLetsFixIt_InComingHere)
-        callnative(ClearMugshot)
+        msgbox(gText_OkayLetsFixIt_InComingHere,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_OkayLetsFixIt_LetsLookBack)
+        msgbox(gText_OkayLetsFixIt_LetsLookBack,,SPEAKER_HIKO)
         closemessage
 
         warpsilent(MAP_OKAY_LETS_FIXIT_FLASHBACK, 255, 9, 4)
@@ -67,30 +63,24 @@ script OkayLetsFixit_StartFlashback_Script {
     lock
         setvar(VAR_STORYLINE_STATE,STORY_BEGIN_LETS_FIX_IT)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_OkayLetsFixIt_ThisWasTheNight)
-        callnative(ClearMugshot)
+        msgbox(gText_OkayLetsFixIt_ThisWasTheNight,,SPEAKER_ZOEY)
+        
 
         applymovement(HIKO, Common_Movement_FaceLeft)
         waitmovement(HIKO)
-        msgbox(gText_OkayLetsFixIt_Why)
+        msgbox(gText_OkayLetsFixIt_Why,,SPEAKER_HIKO)
 
         applymovement(PLAYER, Common_Movement_FaceRight)
         waitmovement(PLAYER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_OkayLetsFixIt_IWasTryingToHelp)
-        callnative(ClearMugshot)
+        msgbox(gText_OkayLetsFixIt_IWasTryingToHelp,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_OkayLetsFixIt_WouldYouChoose)
+        msgbox(gText_OkayLetsFixIt_WouldYouChoose,,SPEAKER_HIKO)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_OkayLetsFixIt_IfICouldDoItOver)
+        msgbox(gText_OkayLetsFixIt_IfICouldDoItOver,,SPEAKER_ZOEY)
         closemessage
-        callnative(ClearMugshot)
+        
         delay(30)
         warpsilent(MAP_TWINPEAKS, 255, 17, 43)
         end
@@ -113,12 +103,10 @@ script OkayLetsFixit_ReturnToPeak_Script {
         waitmovement(HIKO)
         waitmovement(PLAYER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_OkayLetsFixIt_WaitWhatWhoAreYou)
-        callnative(ClearMugshot)
+        msgbox(gText_OkayLetsFixIt_WaitWhatWhoAreYou,,SPEAKER_ZOEY)
+        
 
-        msgbox(gText_OkayLetsFixIt_IHopeYouMake)
+        msgbox(gText_OkayLetsFixIt_IHopeYouMake,,SPEAKER_HIKO)
         closemessage
         playse(SE_ORB)
         fadescreen(FADE_TO_WHITE) //PSF TODO Implement glowing with Hiko as source, mimic "DoOrbEffect"

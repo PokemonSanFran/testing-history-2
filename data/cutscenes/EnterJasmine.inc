@@ -21,16 +21,9 @@ EnterJasmine_Event_Script_4:
 
 EnterJasmine_Intro_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
-	msgbox gText_EnterJasmine_WatchYourStep, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
-	msgbox gText_EnterJasmine_GrowingAGarden
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
-	msgbox gText_EnterJasmine_ItsEasyToDestroy
-	callnative ClearMugshot
+	msgbox gText_EnterJasmine_WatchYourStep, MSGBOX_NPC, SPEAKER_JASMINE
+	msgbox gText_EnterJasmine_GrowingAGarden, , SPEAKER_JASMINE
+	msgbox gText_EnterJasmine_ItsEasyToDestroy, , SPEAKER_JASMINE
 	setvar VAR_GYM_6_STATE, GYM_SAVE_BEFORE_LEADER
 	call Common_EventScript_SaveGame
 	closemessage
@@ -39,8 +32,6 @@ EnterJasmine_Intro_Dialogue::
 
 
 EnterJasmine_StartGymBattle_Script::
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
 	trainerbattle_single TRAINER_WINONA_1, gText_EnterJasmine_LetsSeeHowCareful, gText_EnterJasmine_WrongSoil, EnterJasmine_PostGymBattle_Script, NO_MUSIC
 	return
 
@@ -62,10 +53,7 @@ EnterJasmine_PostGymBattle_Script::
 EnterJasmine_PostGymBattle1_Dialogue::
 	setvar VAR_GYM_6_STATE, GYM_EXPLAINED_BADGE_AND_TM
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
-	msgbox gText_EnterJasmine_ThatTechnicalMachineWill, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterJasmine_ThatTechnicalMachineWill, MSGBOX_NPC, SPEAKER_JASMINE
 	closemessage
 	release
 	end
@@ -73,10 +61,7 @@ EnterJasmine_PostGymBattle1_Dialogue::
 
 EnterJasmine_PostGymBattle2_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_JASMINE
-	callnative DrawMugshot
-	msgbox gText_EnterJasmine_AfterAGoodHaircut, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_EnterJasmine_AfterAGoodHaircut, MSGBOX_NPC, SPEAKER_JASMINE
 	closemessage
 	release
 	end

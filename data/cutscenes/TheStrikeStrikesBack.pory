@@ -21,18 +21,18 @@ const FLAG_HIDE_ORI = FLAG_TEMP_6
 
 script TheStrikeStrikesBack_HideObject_Script {
     setflag(FLAG_HIDE_ROSE)
-    setflag(FLAG_HIDE_ROCKET_POLICE)
-    setflag(FLAG_HIDE_OAK)
-    setflag(FLAG_HIDE_BIANCA)
-    setflag(FLAG_HIDE_CROWD)
-    return
+        setflag(FLAG_HIDE_ROCKET_POLICE)
+        setflag(FLAG_HIDE_OAK)
+        setflag(FLAG_HIDE_BIANCA)
+        setflag(FLAG_HIDE_CROWD)
+        return
 }
 
 script TheStrikeStrikesBack_ShowCrowd_Script{
     setflag(FLAG_HIDE_ROSE)
-    setflag(FLAG_HIDE_ROCKET_POLICE)
-    setflag(FLAG_HIDE_OAK)
-    setflag(FLAG_HIDE_BIANCA)
+        setflag(FLAG_HIDE_ROCKET_POLICE)
+        setflag(FLAG_HIDE_OAK)
+        setflag(FLAG_HIDE_BIANCA)
 }
 
 script TheStrikeStrikesBack_UnblockConstruction_Script {
@@ -45,26 +45,26 @@ script TheStrikeStrikesBack_UnblockConstruction_Script {
 
 script TheStrikeStrikesBack_ObjectSetup_Script {
     setflag(FLAG_HIDE_ROSE)
-    setflag(FLAG_HIDE_ROCKET_POLICE)
+        setflag(FLAG_HIDE_ROCKET_POLICE)
 }
 
 script TheStrikeStrikesBack_AddRocketObjects_Script{
     addobject(GIOVANNI)
-    addobject(ROCKET_A)
-    addobject(ROCKET_B)
+        addobject(ROCKET_A)
+        addobject(ROCKET_B)
 
-    setobjectxy(GIOVANNI,21,19)
-    setobjectxy(ROCKET_A,20,18)
-    setobjectxy(ROCKET_B,22,18)
-    return
+        setobjectxy(GIOVANNI,21,19)
+        setobjectxy(ROCKET_A,20,18)
+        setobjectxy(ROCKET_B,22,18)
+        return
 }
 
 script TheStrikeStrikesBack_ObjectCleanup_Script {
     removeobject(OAK)
-    removeobject(BIANCA)
-    removeobject(GIOVANNI)
-    removeobject(ROCKET_A)
-    removeobject(ROCKET_B)
+        removeobject(BIANCA)
+        removeobject(GIOVANNI)
+        removeobject(ROCKET_A)
+        removeobject(ROCKET_B)
 }
 
 script TheStrikeStrikesBack_CrowdFacesNorth_Script {
@@ -88,42 +88,23 @@ script TheStrikeStrikesBack_PhoneCall_Dialogue{
         playse(SE_POKENAV_CALL)
         waitse
         playse(SE_POKENAV_CALL)
-        waitse
-        pokenavcall("This phone is ringing.") //PSF TODO write new version of pokenavcall or msgbox_pokenav to allow for back and forth dialogue without the text box sliding down and without the pokenav intro
-        waitmessage
-        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_HelloPlayer)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_OhHi)
-
-
-        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-        callnative(DrawMugshot)
+        msgbox(gText_TheStrikeStrikesBack_HelloPlayer,,SPEAKER_ROSE,,PHONE_ON)
+        msgbox(gText_TheStrikeStrikesBack_OhHi,,SPEAKER_ZOEY,,PHONE_ON)
 
         special(GetCurrentMap)
         switch(var(VAR_RESULT)){
             case 31:
             case 37:
             case 38:
-            case 42: msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat)
-            default: msgbox(gText_TheStrikeStrikesBack_IKnowImLate)
+            case 42: msgbox(gText_TheStrikeStrikesBack_CongratsOnYourFeat,,SPEAKER_ROSE,,PHONE_ON)
+            default: msgbox(gText_TheStrikeStrikesBack_IKnowImLate,,SPEAKER_ROSE,,PHONE_ON)
         }
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_ThankYou)
-        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_CutToTheChase)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_SureRightNow)
-        setvar(VAR_MUGSHOT, MUGSHOT_GHETSIS)
-        callnative(DrawMugshot)
-        msgbox(gText_TheStrikeStrikesBack_AsSoonAsYouCan)
-        callnative(ClearMugshot)
+    msgbox(gText_TheStrikeStrikesBack_ThankYou,,SPEAKER_ZOEY)
+        msgbox(gText_TheStrikeStrikesBack_CutToTheChase,,SPEAKER_ROSE,,PHONE_ON)
+        msgbox(gText_TheStrikeStrikesBack_SureRightNow,,SPEAKER_ZOEY,,PHONE_ON)
+        msgbox(gText_TheStrikeStrikesBack_AsSoonAsYouCan,,SPEAKER_ROSE,,PHONE_ON)
+
         closemessage
         playse(SE_POKENAV_HANG_UP)
         waitse
@@ -147,20 +128,14 @@ script TheStrikeStrikesBack_Intro_Dialogue {
             warpsilent(MAP_PSFROUTE22,255,21,25)
                 waitstate
         }else{
-                setvar(VAR_CONSTRUCTION_STRIKE_STATE,START_VS_GARBODOR)
+            setvar(VAR_CONSTRUCTION_STRIKE_STATE,START_VS_GARBODOR)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_AndCongratulations)
+                msgbox(gText_TheStrikeStrikesBack_AndCongratulations,,SPEAKER_OAK)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_ISawThemOn)
+                msgbox(gText_TheStrikeStrikesBack_ISawThemOn,,SPEAKER_ZOEY)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_WellHeresTheProblem)
-                callnative(ClearMugshot)
+                msgbox(gText_TheStrikeStrikesBack_WellHeresTheProblem,,SPEAKER_OAK)
+
                 closemessage
 
                 call(TheStrikeStrikesBack_AddRocketObjects_Script)
@@ -172,32 +147,20 @@ script TheStrikeStrikesBack_Intro_Dialogue {
 
                 call(TheStrikeStrikesBack_CrowdFacesNorth_Script)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_MyNameIs)
-                callnative(ClearMugshot)
+                msgbox(gText_TheStrikeStrikesBack_MyNameIs,,SPEAKER_GIOVANNI)
+
                 closemessage
 
-                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_WeAreFighting)
+                msgbox(gText_TheStrikeStrikesBack_WeAreFighting,,SPEAKER_GIOVANNI)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_TheCityDoubles)
+                msgbox(gText_TheStrikeStrikesBack_TheCityDoubles,,SPEAKER_DRASNA)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_ManagementTriples)
+                msgbox(gText_TheStrikeStrikesBack_ManagementTriples,,SPEAKER_DRASNA)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_TheCityQuadruples)
+                msgbox(gText_TheStrikeStrikesBack_TheCityQuadruples,,SPEAKER_DRASNA)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_GIOVANNI)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_TheseDemandsAreMore)
-                callnative(ClearMugshot)
+                msgbox(gText_TheStrikeStrikesBack_TheseDemandsAreMore,,SPEAKER_DRASNA)
+
                 closemessage
 
                 applymovement(GIOVANNI,TheStrikeStrikesBack_WalkOutFrame)
@@ -211,24 +174,16 @@ script TheStrikeStrikesBack_Intro_Dialogue {
 
                 waitmovement(0)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_SighOfCourse)
+                msgbox(gText_TheStrikeStrikesBack_SighOfCourse,,SPEAKER_OAK)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_WaitWhatThatsInsane)
+                msgbox(gText_TheStrikeStrikesBack_WaitWhatThatsInsane,,SPEAKER_ZOEY)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_AgreedAndThats)
+                msgbox(gText_TheStrikeStrikesBack_AgreedAndThats,,SPEAKER_OAK)
 
-                msgbox(gText_TheStrikeStrikesBack_ThePoliceAreWorking)
+                msgbox(gText_TheStrikeStrikesBack_ThePoliceAreWorking,,SPEAKER_OAK)
 
-            setvar(VAR_MUGSHOT, MUGSHOT_LANCE)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_AgitatedWildGarbodor)
-                callnative(ClearMugshot)
+                msgbox(gText_TheStrikeStrikesBack_AgitatedWildGarbodor,,SPEAKER_OAK)
+
                 closemessage
 
                 applymovement(OAK,TheStrikeStrikesBack_WalkOutFrame)
@@ -236,10 +191,8 @@ script TheStrikeStrikesBack_Intro_Dialogue {
                 applymovement(BIANCA,TheStrikeStrikesBack_GoToPlayer)
                 waitmovement(0)
 
-                setvar(VAR_MUGSHOT, MUGSHOT_BIANCA)
-                callnative(DrawMugshot)
-                msgbox(gText_TheStrikeStrikesBack_IllBeInThere)
-                callnative(ClearMugshot)
+                msgbox(gText_TheStrikeStrikesBack_IllBeInThere,,SPEAKER_BIANCA)
+
                 closemessage
                 applymovement(BIANCA,TheStrikeStrikesBack_WalkOutFrame)
                 waitmovement(0)
@@ -256,7 +209,7 @@ movement TheStrikeStrikesBack_FaceNorth {
         step_end
 }
 movement TheStrikeStrikesBack_WalkIntoFrame {
-        walk_down * 3
+    walk_down * 3
         step_end
 }
 movement TheStrikeStrikesBack_WalkOutFrame {

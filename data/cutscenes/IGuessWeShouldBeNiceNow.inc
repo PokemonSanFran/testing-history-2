@@ -63,37 +63,18 @@ IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 1, IGuessWeShouldBeNiceNow_WalkToPlayer
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_TookLongEnough
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_WeCantComplete
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_OhShitWellUh
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive
+	msgbox gText_IGuessWeShouldBeNiceNow_TookLongEnough, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_WeCantComplete, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_OhShitWellUh, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_YouAlreadyKnow, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_ThatsFineWellLive, , SPEAKER_BIANCA
 	applymovement 1, Common_Movement_FaceUp
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_IAnalyzedTheRoom
+	msgbox gText_IGuessWeShouldBeNiceNow_IAnalyzedTheRoom, , SPEAKER_BIANCA
 	applymovement 1, Common_Movement_FaceLeft
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_YouSolvePuzzleA
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_AndThenISolvePuzzle
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_YouSolvePuzzleA, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_AndThenISolvePuzzle, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_ICouldOnlyAnalyze, , SPEAKER_BIANCA
 	closemessage
 	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, BIANCA_EXPLAINED_PUZZLE
 	goto IGuessWeShouldBeNiceNow_AskPlayer_Script
@@ -102,9 +83,7 @@ IGuessWeShouldBeNiceNow_FirstEnterMaze_Dialogue::
 
 IGuessWeShouldBeNiceNow_AskPlayer_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_Ready, MSGBOX_YESNO
+	msgbox gText_IGuessWeShouldBeNiceNow_Ready, MSGBOX_YESNO, , SPEAKER_BIANCA
 	compare VAR_RESULT, NO
 	goto_if_eq IGuessWeShouldBeNiceNow_AskPlayer_Script_1
 	goto IGuessWeShouldBeNiceNow_StartPuzzle_Script
@@ -116,10 +95,7 @@ IGuessWeShouldBeNiceNow_AskPlayer_Script_1:
 
 
 IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_WellGoGetReady
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_WellGoGetReady, , SPEAKER_BIANCA
 	closemessage
 	end
 
@@ -127,19 +103,13 @@ IGuessWeShouldBeNiceNow_PreparePlayer_Dialogue::
 IGuessWeShouldBeNiceNow_StartPuzzle_Script::
 	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, PUZZLE_1_UNSOLVED
 	lock
-	callnative ClearMugshot
 	closemessage
 	applymovement 1, IGuessWeShouldBeNiceNow_WalkIntoMaze
 	waitmovement 0
 	setobjectxy 1, 15, 19
 	setobjectxyperm 1, 15, 19
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_IMemorizedThisWhile
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_OnIt
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_IMemorizedThisWhile, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_OnIt, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	release
 	end
@@ -149,13 +119,8 @@ IGuessWeShouldBeNiceNow_SolvedPuzzleA::
 	setvar VAR_ROBINWILLIAMSTUNNEL_STATE, PUZZLE_1_SOLVED
 	playse SE_SWITCH
 	waitse
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_OkayYourTurn
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_LetsSeeOhWow
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_OkayYourTurn, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_LetsSeeOhWow, , SPEAKER_BIANCA
 	closemessage
 	return
 
@@ -179,18 +144,12 @@ IGuessWeShouldBeNiceNow_SolvedPuzzleB::
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER, IGuessWeShouldBeNiceNow_WalkRight
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_SomethingIsMissing
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_SomethingIsMissing, , SPEAKER_BIANCA
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, IGuessWeShouldBeNiceNow_ApproachBookB
 	applymovement 1, IGuessWeShouldBeNiceNow_ApproachBookA
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_IfIWereACrustyOld
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_IfIWereACrustyOld, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, Common_Movement_WalkUp
 	waitmovement 0
@@ -207,11 +166,8 @@ IGuessWeShouldBeNiceNow_BossProtectBook_Script::
 	addobject 2
 	addobject 3
 	addobject 6
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_BingoIllTake
+	msgbox gText_IGuessWeShouldBeNiceNow_BingoIllTake, , SPEAKER_BIANCA
 	closemessage
-	callnative ClearMugshot
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
 	call Common_EventScript_SaveGame
@@ -242,10 +198,7 @@ IGuessWeShouldBeNiceNow_CoreEncounter_Script_3:
 
 IGuessWeShouldBeNiceNow_ReadyPlayer_Dialogue::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_Ready, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_Ready, MSGBOX_NPC, SPEAKER_BIANCA
 	applymovement 1, Common_Movement_FaceUp
 	waitmovement 0
 	release
@@ -268,49 +221,29 @@ IGuessWeShouldBeNiceNow_ClearBossPokemon_Script::
 IGuessWeShouldBeNiceNow_PostBoss_Dialogue::
 	applymovement 1, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_OkayImStarting
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_WhatAmIMissing
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_ThosePuzzlesWerent
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_YeahIHadToThink
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_ExactlyYouHad
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_SoTheyreTraining
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_OkayImStarting, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_WhatAmIMissing, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_ThosePuzzlesWerent, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_YeahIHadToThink, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_ExactlyYouHad, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_SoTheyreTraining, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_OrTryingAtLeast, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, IGuessWeShouldBeNiceNow_GetBook
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	removeobject 4
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_SaysOnTheBack
+	msgbox gText_IGuessWeShouldBeNiceNow_SaysOnTheBack, , SPEAKER_BIANCA
 	applymovement 1, IGuessWeShouldBeNiceNow_LookAround
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting, MSGBOX_YESNO
+	msgbox gText_IGuessWeShouldBeNiceNow_WhewThatWasExhausting, MSGBOX_YESNO, , SPEAKER_BIANCA
 	setvar VAR_ROUTE115_STATE, 1
 	compare VAR_RESULT, YES
 	goto_if_eq IGuessWeShouldBeNiceNow_PostBoss_Dialogue_2
 	msgbox gText_IGuessWeShouldBeNiceNow_WellTheChallenges
 IGuessWeShouldBeNiceNow_PostBoss_Dialogue_1:
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, IGuessWeShouldBeNiceNow_LeaveCave
 	waitmovement 0
 	removeobject 1
@@ -348,47 +281,22 @@ IGuessWeShouldBeNiceNow_ExitCave_Script::
 
 IGuessWeShouldBeNiceNow_End_Dialogue::
 	setvar VAR_MUIRWOODS_STATE, BIANCA_WAITING_MUIRWOODS
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_WhatTookYouSoLong
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_ISpottedAnInteresting
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_WaitWhat
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_AllOfMyPokemon
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_IDidntKnow
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_DaddyOwnsA
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_WaitWhatIThought
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_CoolPerfectTiming, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_WhatTookYouSoLong, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_ISpottedAnInteresting, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_WaitWhat, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_AllOfMyPokemon, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_IDidntKnow, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_DaddyOwnsA, , SPEAKER_BIANCA
+	msgbox gText_IGuessWeShouldBeNiceNow_WaitWhatIThought, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_IGuessWeShouldBeNiceNow_YeahDaddysPlace, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, IGuessWeShouldBeNiceNow_GestureHouse
 	waitmovement 0
-	setvar VAR_MUGSHOT, MUGSHOT_BIANCA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_ImGonnaCrash
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_ImGonnaCrash, , SPEAKER_BIANCA
 	closemessage
 	applymovement 1, IGuessWeShouldBeNiceNow_WalkTowardsHouse_Movement
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion
-	callnative ClearMugshot
+	msgbox gText_IGuessWeShouldBeNiceNow_IHopeItsMyVersion, MSGBOX_DEFAULT, SPEAKER_ZOEY
 	closemessage
 	waitmovement 1
 	removeobject 1

@@ -26,14 +26,10 @@ Battle8_ArcherWalksOut_Script_1:
 	closedoor 19, 13
 	waitdooranim
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Battle8_HellYesSRank
+	msgbox gText_Battle8_HellYesSRank, MSGBOX_DEFAULT, SPEAKER_ARCHER, TAIL_DEFAULT, EMOTE_HAPPY
 	closemessage
-	callnative ClearMugshot
 	playse SE_PIN
 	applymovement 1, Battle8_ExclaimAndTurn_Movement
-	waitmovement 0
 	goto Battle8_ExplainAttraction_Dialogue
 	return
 
@@ -43,25 +39,15 @@ Battle8_ArcherWalksOut_Script_2:
 
 
 Battle8_ExplainAttraction_Dialogue::
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Battle8_YouKnowIWasInGoodMood
+	msgbox gText_Battle8_YouKnowIWasInGoodMood, MSGBOX_DEFAULT, SPEAKER_ARCHER
 	compare VAR_TEMP_0, 26
 	goto_if_eq Battle8_ExplainAttraction_Dialogue_2
 Battle8_ExplainAttraction_Dialogue_1:
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Battle8_GreatToSeeYouToo
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Battle8_PrimaryAttraction
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Battle8_SoWhatsTheChallenge
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Battle8_TheSistersAreExperts
-	callnative ClearMugshot
+	msgbox gText_Battle8_GreatToSeeYouToo, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Battle8_PrimaryAttraction, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	msgbox gText_Battle8_SoWhatsTheChallenge, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Battle8_TheSistersAreExperts, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	closemessage
 	call Common_EventScript_SaveGame
 	closemessage
 	goto Battle8_StartBattle_Script
@@ -69,7 +55,6 @@ Battle8_ExplainAttraction_Dialogue_1:
 
 Battle8_ExplainAttraction_Dialogue_2:
 	closemessage
-	callnative ClearMugshot
 	applymovement 1, Battle8_WalkToPlayer
 	waitmovement 0
 	goto Battle8_ExplainAttraction_Dialogue_1
@@ -77,11 +62,8 @@ Battle8_ExplainAttraction_Dialogue_2:
 
 Battle8_StartBattle_Script::
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Battle8_YouTalkALot
+	msgbox gText_Battle8_YouTalkALot, MSGBOX_NPC, SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_WALLY_VR_3, gText_Battle8_MaybeINeed
 	goto Battle8_ArcherDefeated_Dialogue
 	return
@@ -90,11 +72,8 @@ Battle8_StartBattle_Script::
 Battle8_InteractBattle_Script::
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
 	lock
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Battle8_YouTalkALot, MSGBOX_NPC
+	msgbox gText_Battle8_YouTalkALot, MSGBOX_NPC, MSGBOX_NPC, SPEAKER_ZOEY
 	closemessage
-	callnative ClearMugshot
 	trainerbattle_no_intro TRAINER_WALLY_VR_3, gText_Battle8_MaybeINeed
 	goto Battle8_ArcherDefeated_Dialogue
 	return
@@ -104,20 +83,11 @@ Battle8_ArcherDefeated_Dialogue::
 	lock
 	setvar VAR_BATTLE_8_STATE, DEFEATED_ARCHER_PAINTEDLADIES
 	addvar VAR_STORYLINE_STATE, 1
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Battle8_YouKnowItDoesnt
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Battle8_YeahThatsPart
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Battle8_WhatSituation
-	setvar VAR_MUGSHOT, MUGSHOT_HUGH
-	callnative DrawMugshot
-	msgbox gText_Battle8_NotJustLikeMe
+	msgbox gText_Battle8_YouKnowItDoesnt, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Battle8_YeahThatsPart, MSGBOX_DEFAULT, SPEAKER_ARCHER
+	msgbox gText_Battle8_WhatSituation, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Battle8_NotJustLikeMe, MSGBOX_DEFAULT, SPEAKER_ARCHER
 	closemessage
-	callnative ClearMugshot
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 18
 	goto_if_eq Battle8_ArcherDefeated_Dialogue_2

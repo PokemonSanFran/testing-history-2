@@ -28,45 +28,43 @@ script FlyingBlind_CheckFainted_Script {
         }
 }
 
+script FlyingBlind_DetermineLocation_Script{
+    special(GetCurrentMap)
+    //PSF TODO: Why doesn't this dynamically change the headshot that is used?
+
+    //switch(var(VAR_RESULT)){
+        //case 16: setvar(VAR_DYNAMIC_SPEAKER,SPEAKER_GURL)
+        //case 22: setvar(VAR_DYNAMIC_SPEAKER,SPEAKER_DAGMAR)
+        setvar(VAR_DYNAMIC_SPEAKER,SPEAKER_SIEBOLD)
+    //}
+    return
+}
+
 script FlyingBlind_Dialogue {
     lockall
+        call(FlyingBlind_DetermineLocation_Script)
         applymovement(PLAYER,Common_Movement_FaceUp)
-        msgbox(gText_FlyingBlind_NotSoEasy)
+        msgbox(gText_FlyingBlind_NotSoEasy,,VAR_DYNAMIC_SPEAKER,,EMOTE_LAUGH)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_FlyingBlind_GuessingYouSaw)
-        callnative(ClearMugshot)
+        msgbox(gText_FlyingBlind_GuessingYouSaw,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        
+        msgbox(gText_FlyingBlind_NotJustYou,,VAR_DYNAMIC_SPEAKER)
 
-        msgbox(gText_FlyingBlind_NotJustYou)
+        msgbox(gText_FlyingBlind_Karl,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        
+        msgbox(gText_FlyingBlind_YouReallyBrandNew,,VAR_DYNAMIC_SPEAKER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_FlyingBlind_Karl)
-        callnative(ClearMugshot)
+        msgbox(gText_FlyingBlind_WaitTheFogHas,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        
+        msgbox(gText_FlyingBlind_NotVeryWell,,VAR_DYNAMIC_SPEAKER)
 
-        msgbox(gText_FlyingBlind_YouReallyBrandNew)
+        msgbox(gText_FlyingBlind_NoResponse,MSGBOX_DEFAULT,SPEAKER_ZOEY)
+        
+        msgbox(gText_FlyingBlind_EverSinceYouPeople,,VAR_DYNAMIC_SPEAKER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_FlyingBlind_WaitTheFogHas)
-        callnative(ClearMugshot)
-
-        msgbox(gText_FlyingBlind_NotVeryWell)
-
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_FlyingBlind_NoResponse)
-        callnative(ClearMugshot)
-
-        msgbox(gText_FlyingBlind_EverSinceYouPeople)
-
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_FlyingBlind_GottaFindSomebody)
-        msgbox(gText_FlyingBlind_ThankYouSoMuch)
-        callnative(ClearMugshot)
-        setvar(VAR_FAINTED_FOG_STATE,2)
+        msgbox(gText_FlyingBlind_GottaFindSomebody,MSGBOX_DEFAULT,SPEAKER_ZOEY,TAIL_THOUGHT)
+        msgbox(gText_FlyingBlind_ThankYouSoMuch,,SPEAKER_ZOEY)
+                setvar(VAR_FAINTED_FOG_STATE,2)
         call(Homeless_CheckMoney_Script)
         closemessage
         release
@@ -101,7 +99,7 @@ text gText_FlyingBlind_EverSinceYouPeople {
     format("Ever since you people showed up, Go-Goggles are always out of stock. They let you see through all this nonsense. You could getcha a Pokémon that knows Defog, or meet a local takes a liking to you and offers to lend you theirs. Karl don't come through every day though, so you could try to wait it out.")
 }
 text gText_FlyingBlind_GottaFindSomebody {
-    format(" (I've gotta find somebody that has Go-Goggles, then. I don't have time to wait!)")
+    format("I've gotta find somebody that has Go-Goggles, then. I don't have time to wait!")
 }
 text gText_FlyingBlind_ThankYouSoMuch {
     format("Thank you so much for your help.")

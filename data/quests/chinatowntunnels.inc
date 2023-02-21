@@ -15,13 +15,13 @@ Quest_ChinatownTunnels_Event_Script::
 	switch VAR_RESULT
 	case QUEST_MENU_COMPLETE_QUEST, Quest_ChinatownTunnels_Event_Script_3
 	case QUEST_MENU_CHECK_ACTIVE, Quest_ChinatownTunnels_Event_Script_4
-	msgbox gText_Chinatown_IMissTheOld, MSGBOX_NPC
+	msgbox gText_Chinatown_IMissTheOld, MSGBOX_NPC, SPEAKER_DEFAULT
 Quest_ChinatownTunnels_Event_Script_1:
 	release
 	end
 
 Quest_ChinatownTunnels_Event_Script_3:
-	msgbox gText_Quest_ChinatownTunnels_ICannotThank, MSGBOX_NPC
+	msgbox gText_Quest_ChinatownTunnels_ICannotThank, MSGBOX_NPC, SPEAKER_DEFAULT
 	goto Quest_ChinatownTunnels_Event_Script_1
 
 Quest_ChinatownTunnels_Event_Script_4:
@@ -56,11 +56,8 @@ Quest_ChinatownTunnels_Active_Event_Script_5:
 
 Quest_ChinatownTunnels_Intro_Dialogue::
 	lock
-	msgbox gText_Quest_ChinatownTunnels_OhoHowCanIHelp, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ChinatownTunnels_IHeardOnlineThatYou, MSGBOX_NPC
-	callnative ClearMugshot
+	msgbox gText_Quest_ChinatownTunnels_OhoHowCanIHelp, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_Quest_ChinatownTunnels_IHeardOnlineThatYou, MSGBOX_NPC, SPEAKER_ZOEY
 	addvar VAR_QUEST_CHINATOWN_TUNNELS, 1
 	goto Quest_ChinatownTunnels_BadgeCheck_Dialogue
 	return
@@ -71,7 +68,7 @@ Quest_ChinatownTunnels_BadgeCheck_Dialogue::
 	special GetNumberOfBadges
 	compare VAR_TEMP_0, 3
 	goto_if_gt Quest_ChinatownTunnels_BadgeCheck_Dialogue_2
-	msgbox gText_Quest_ChinatownTunnels_YoureNotStrongEnough, MSGBOX_NPC
+	msgbox gText_Quest_ChinatownTunnels_YoureNotStrongEnough, MSGBOX_NPC, SPEAKER_DEFAULT
 Quest_ChinatownTunnels_BadgeCheck_Dialogue_1:
 	release
 	end
@@ -83,14 +80,14 @@ Quest_ChinatownTunnels_BadgeCheck_Dialogue_2:
 
 Quest_ChinatownTunnels_RevealSecret_Dialogue::
 	addvar VAR_QUEST_CHINATOWN_TUNNELS, 1
-	msgbox gText_Quest_ChinatownTunnels_HmmYouLookStrong, MSGBOX_NPC
+	msgbox gText_Quest_ChinatownTunnels_HmmYouLookStrong, MSGBOX_NPC, SPEAKER_DEFAULT
 	closemessage
 	applymovement 8, Common_Movement_FaceAwayPlayer
 	waitmovement 8
 	delay 16
 	applymovement 8, Common_Movement_FacePlayer
 	waitmovement 8
-	msgbox gText_Quest_ChinatownTunnels_YouveHeardCorrectly, MSGBOX_NPC
+	msgbox gText_Quest_ChinatownTunnels_YouveHeardCorrectly, MSGBOX_NPC, SPEAKER_DEFAULT
 	closemessage
 	release
 	end
@@ -99,10 +96,7 @@ Quest_ChinatownTunnels_RevealSecret_Dialogue::
 Quest_ChinatownTunnels_FirstScrollWarp_Script::
 	lock
 	call Chinatown_Racisthouse_ScrollNoWarp_Dialogue
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ChinatownTunnels_WaitIsThis, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_Quest_ChinatownTunnels_WaitIsThis, MSGBOX_DEFAULT, , SPEAKER_ZOEY
 	applymovement OBJ_EVENT_ID_PLAYER, Quest_ChinatownTunnels_PushScroll_Movement
 	delay 4
 	playse SE_PIN
@@ -114,17 +108,14 @@ Quest_ChinatownTunnels_FirstScrollWarp_Script::
 
 
 Quest_ChinatownTunnels_WaitingScroll_Dialogue::
-	msgbox gText_Quest_ChinatownTunnels_HaveYou, MSGBOX_NPC
+	msgbox gText_Quest_ChinatownTunnels_HaveYou, MSGBOX_NPC, SPEAKER_DEFAULT
 	end
 
 
 Quest_ChinatownTunnels_Treasure_Script::
 	lock
 	msgbox gText_Quest_ChinatownTunnels_ThereIsAnOrnate, MSGBOX_DEFAULT
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ChinatownTunnels_ThisMustBe, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_Quest_ChinatownTunnels_ThisMustBe, MSGBOX_DEFAULT, , SPEAKER_ZOEY
 	msgbox gText_Quest_ChinatownTunnels_ThatWontBe, MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_TEMP_2
@@ -140,12 +131,9 @@ Quest_ChinatownTunnels_Treasure_Script_1:
 	waitse
 	applymovement 2, Quest_ChinatownTunnels_WalkToPlayer_Movement
 	waitmovement 2
-	msgbox gText_Quest_ChinatownTunnels_ThankYouFor, MSGBOX_NPC
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ChinatownTunnels_NoProblemThisBox, MSGBOX_NPC
-	callnative ClearMugshot
-	msgbox gText_Quest_ChinatownTunnels_IMayHaveMislead, MSGBOX_NPC
+	msgbox gText_Quest_ChinatownTunnels_ThankYouFor, MSGBOX_NPC, SPEAKER_DEFAULT
+	msgbox gText_Quest_ChinatownTunnels_NoProblemThisBox, MSGBOX_NPC, SPEAKER_ZOEY
+	msgbox gText_Quest_ChinatownTunnels_IMayHaveMislead, MSGBOX_NPC, SPEAKER_DEFAULT
 	closemessage
 	applymovement 2, Quest_ChinatownTunnels_TakeTreasure_Movement
 	applymovement OBJ_EVENT_ID_PLAYER, Quest_ChinatownTunnels_MoveWhileTreasure_Movement
@@ -159,16 +147,13 @@ Quest_ChinatownTunnels_Treasure_Script_1:
 	waitse
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_MUGSHOT, MUGSHOT_HILDA
-	callnative DrawMugshot
-	msgbox gText_Quest_ChinatownTunnels_YouHad, MSGBOX_DEFAULT
-	callnative ClearMugshot
+	msgbox gText_Quest_ChinatownTunnels_YouHad, MSGBOX_DEFAULT, , SPEAKER_ZOEY
 	applymovement 2, Common_Movement_FaceLeft
-	msgbox gText_Quest_ChinatownTunnels_IUsedToLiveHere, MSGBOX_DEFAULT
+	msgbox gText_Quest_ChinatownTunnels_IUsedToLiveHere, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	closemessage
 	applymovement 2, Common_Movement_FaceLeft
 	waitmovement 2
-	msgbox gText_Quest_ChinatownTunnels_IAsked, MSGBOX_DEFAULT
+	msgbox gText_Quest_ChinatownTunnels_IAsked, MSGBOX_DEFAULT, SPEAKER_DEFAULT
 	closemessage
 	applymovement 2, Quest_ChinatownTunnels_LeaveTunnel_Movement
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown

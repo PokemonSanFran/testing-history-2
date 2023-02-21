@@ -25,26 +25,16 @@ script LetsGrabLunch_StartConversation_Dialogue {
         applymovement(ARCHER,LetsGrabLunch_WalkUpToPlayer)
         waitmovement(0)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_HuhWhatAreYouDoing)
+        msgbox(gText_LetsGrabLunch_HuhWhatAreYouDoing,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_TakingABreak)
+        msgbox(gText_LetsGrabLunch_TakingABreak,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_YeahBeingOfficial)
+        msgbox(gText_LetsGrabLunch_YeahBeingOfficial,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_ThisAgain)
+        msgbox(gText_LetsGrabLunch_ThisAgain,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_HeyYouBeatMe)
-        callnative(ClearMugshot)
+        msgbox(gText_LetsGrabLunch_HeyYouBeatMe,,SPEAKER_ARCHER)
+
         call(Common_EventScript_SaveGame)
         closemessage
         goto(LetsGrabLunch_StartBattle_Script)
@@ -58,11 +48,9 @@ script LetsGrabLunch_InteractBattle_Script {
 
 script LetsGrabLunch_StartBattle_Script {
     lockall
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_ButLetsSee)
+        msgbox(gText_LetsGrabLunch_ButLetsSee,,SPEAKER_ARCHER)
         closemessage
-        callnative(ClearMugshot)
+
 
         trainerbattle_no_intro(TRAINER_WALLY_VR_4,gText_LetsGrabLunch_NahNotRobbed)
         goto(LetsGrabLunch_PostBattle_Dialogue)
@@ -71,22 +59,14 @@ script LetsGrabLunch_StartBattle_Script {
 script LetsGrabLunch_PostBattle_Dialogue {
     setvar(VAR_STORYLINE_STATE,STORY_POST_BATTLE_ARCHER_TREASUREISLAND)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_GoodGame)
+        msgbox(gText_LetsGrabLunch_GoodGame,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_ImGoingToBe)
+        msgbox(gText_LetsGrabLunch_ImGoingToBe,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_HaventYouHad)
+        msgbox(gText_LetsGrabLunch_HaventYouHad,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_NahThisIsCool)
-        callnative(ClearMugshot)
+        msgbox(gText_LetsGrabLunch_NahThisIsCool,,SPEAKER_ARCHER)
+
         closemessage
         fadedefaultbgm
         warpsilent(MAP_TREASUREISLAND_RESTAURANT,14,9)
@@ -98,79 +78,45 @@ script LetsGrabLunch_DinerBooth_Dialogue {
     lockall
         setvar(VAR_STORYLINE_STATE,STORY_ARCHER_EXPLAIN_RESTORATION)
         applymovement(PLAYER,Common_Movement_FaceUp)
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_OkayLetsHear)
+        msgbox(gText_LetsGrabLunch_OkayLetsHear,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_IWantToCreate)
+        msgbox(gText_LetsGrabLunch_IWantToCreate,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_HuhThatsActually)
+        msgbox(gText_LetsGrabLunch_HuhThatsActually,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_YeahITried)
+        msgbox(gText_LetsGrabLunch_YeahITried,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_Who)
+        msgbox(gText_LetsGrabLunch_Who,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_OhTheOldLeaders)
+        msgbox(gText_LetsGrabLunch_OhTheOldLeaders,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_YouKnowTheyre)
+        msgbox(gText_LetsGrabLunch_YouKnowTheyre,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_IKnowItsHard)
+        msgbox(gText_LetsGrabLunch_IKnowItsHard,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_HmmNeverThought)
+        msgbox(gText_LetsGrabLunch_HmmNeverThought,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_YeahThisSounds)
+        msgbox(gText_LetsGrabLunch_YeahThisSounds,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_ItWouldBeSuch)
+        msgbox(gText_LetsGrabLunch_ItWouldBeSuch,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_HahaHowCanIHelp)
+        msgbox(gText_LetsGrabLunch_HahaHowCanIHelp,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_CanYouTryTalking)
+        msgbox(gText_LetsGrabLunch_CanYouTryTalking,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_WhatAreYouGoing)
+        msgbox(gText_LetsGrabLunch_WhatAreYouGoing,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_ImGoingToBring)
+        msgbox(gText_LetsGrabLunch_ImGoingToBring,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_Yeah)
-        callnative(ClearMugshot)
+        msgbox(gText_LetsGrabLunch_Yeah,,SPEAKER_ZOEY)
+
         closemessage
         end
 }
 
 script LetsGrabLunch_InteractArcherDiner_Dialogue {
 
-    setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_ImJustPlanning)
+    msgbox(gText_LetsGrabLunch_ImJustPlanning,,SPEAKER_ARCHER)
 
         multichoicedefault(18,6,MULTI_LUNCH_WARP,1,FALSE)
 
@@ -185,20 +131,20 @@ script LetsGrabLunch_InteractArcherDiner_Dialogue {
 }
 
 script LetsGrabLunch_CloseMenu{
-    callnative(ClearMugshot)
-        closemessage
+
+    closemessage
         releaseall
         end
 }
 
 script LetsGrabLunch_Chinatown {
-    msgbox(gText_LetsGrabLunch_TheLeaderOfThat)
+    msgbox(gText_LetsGrabLunch_TheLeaderOfThat,,SPEAKER_ARCHER)
 
         msgbox(gText_LetsGrabLunch_DoYouWantChinatown,MSGBOX_YESNO)
 
         if (var(VAR_RESULT) == NO){
-            callnative(ClearMugshot)
-                closemessage
+
+            closemessage
                 releaseall
                 end
         }else {
@@ -206,12 +152,12 @@ script LetsGrabLunch_Chinatown {
         }
 }
 script LetsGrabLunch_Marin {
-    msgbox(gText_LetsGrabLunch_WasALittle)
+    msgbox(gText_LetsGrabLunch_WasALittle,,SPEAKER_ARCHER)
 
         msgbox(gText_LetsGrabLunch_DoYouWantMarin,MSGBOX_YESNO)
         if (var(VAR_RESULT) == NO){
-            callnative(ClearMugshot)
-                closemessage
+
+            closemessage
                 releaseall
                 end
         }else {
@@ -219,20 +165,16 @@ script LetsGrabLunch_Marin {
         }
 }
 script LetsGrabLunch_Treasureisland {
-    msgbox(gText_LetsGrabLunch_AlmostWalkedOut)
+    msgbox(gText_LetsGrabLunch_AlmostWalkedOut,,SPEAKER_ARCHER)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HILDA)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_VeryRealistic)
+        msgbox(gText_LetsGrabLunch_VeryRealistic,,SPEAKER_ZOEY)
 
-        setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-        callnative(DrawMugshot)
-        msgbox(gText_LetsGrabLunch_TheyreIntense)
+        msgbox(gText_LetsGrabLunch_TheyreIntense,,SPEAKER_ARCHER)
 
         msgbox(gText_LetsGrabLunch_DoYouWantTreasureisland,MSGBOX_YESNO)
         if (var(VAR_RESULT) == NO){
-            callnative(ClearMugshot)
-                closemessage
+
+            closemessage
                 releaseall
                 end
         }else {
@@ -245,19 +187,15 @@ script LetsGrabLunch_Haightashbury {
     random(2)
 
         if (var(VAR_RESULT) == 1){
-            setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-                callnative(DrawMugshot)
-                msgbox(gText_LetsGrabLunch_RightHandMan)}
-        else {
-            setvar(VAR_MUGSHOT, MUGSHOT_HUGH)
-                callnative(DrawMugshot)
-                msgbox(gText_LetsGrabLunch_IsTheOnlyPlace)
-        }
+            msgbox(gText_LetsGrabLunch_RightHandMan,,SPEAKER_ARCHER)
+        }else {
+                    msgbox(gText_LetsGrabLunch_IsTheOnlyPlace,,SPEAKER_ARCHER)
+                }
 
     msgbox(gText_LetsGrabLunch_DoYouWantHaightashbury,MSGBOX_YESNO)
         if (var(VAR_RESULT) == NO){
-            callnative(ClearMugshot)
-                closemessage
+
+            closemessage
                 releaseall
                 end
         }else {
