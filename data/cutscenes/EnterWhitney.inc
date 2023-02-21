@@ -1,3 +1,18 @@
+EnterWhitney_LeaderPosition_Script::
+	switch VAR_GYM_3_STATE
+	case 0, EnterWhitney_LeaderPosition_Script_2
+	case 1, EnterWhitney_LeaderPosition_Script_3
+	goto EnterWhitney_StartBattle_ObjectSetup_Script
+	return
+
+EnterWhitney_LeaderPosition_Script_2:
+	return
+
+EnterWhitney_LeaderPosition_Script_3:
+	setflag FLAG_TEMP_1
+	return
+
+
 EnterWhitney_ObjectSetUp_Script::
 	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_LEFT
 	return
@@ -30,6 +45,32 @@ EnterWhitney_WalkToBattlefield_Script::
 	waitmovement 0
 	releaseall
 	end
+
+
+Whitney_Event_Script::
+	lockall
+	switch VAR_GYM_3_STATE
+	case 2, Whitney_Event_Script_2
+	case 3, Whitney_Event_Script_3
+	case 4, Whitney_Event_Script_4
+	case 5, Whitney_Event_Script_5
+	return
+
+Whitney_Event_Script_2:
+	goto EnterWhitney_MuseumArrangement_Dialogue
+	return
+
+Whitney_Event_Script_3:
+	goto EnterWhitney_StartBattle_Script
+	return
+
+Whitney_Event_Script_4:
+	goto EnterWhitney_PostBattle_Dialogue
+	return
+
+Whitney_Event_Script_5:
+	goto EnterWhitney_PostBattle_Dialogue2
+	return
 
 
 EnterWhitney_MuseumArrangement_Dialogue::

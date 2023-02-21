@@ -250,6 +250,7 @@
 #define SPEAKER_BRONSON             158
 #define SPEAKER_SHASHI              159
 #define SPEAKER_LEAH                160
+#define SPEAKER_GUARD               161
 
 //Tail
 #define TAIL_DEFAULT 0

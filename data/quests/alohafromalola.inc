@@ -1,16 +1,16 @@
-Quest_Alohafromalola_SetGuardPosition::
+Quest_Alohafromalola_SetGuardPosition_Script::
 	returnqueststate QUEST_ALOHAFROMALOLA
 	compare VAR_RESULT, QUEST_MENU_SET_ACTIVE
-	goto_if_ne Quest_Alohafromalola_SetGuardPosition_2
+	goto_if_ne Quest_Alohafromalola_SetGuardPosition_Script_2
 	return
 
-Quest_Alohafromalola_SetGuardPosition_1:
+Quest_Alohafromalola_SetGuardPosition_Script_1:
 	setflag FLAG_TEMP_2
 	return
 
-Quest_Alohafromalola_SetGuardPosition_2:
+Quest_Alohafromalola_SetGuardPosition_Script_2:
 	compare VAR_RESULT, QUEST_MENU_SET_REWARD
-	goto_if_ne Quest_Alohafromalola_SetGuardPosition_1
+	goto_if_ne Quest_Alohafromalola_SetGuardPosition_Script_1
 	return
 
 
@@ -19,15 +19,15 @@ Quest_Alohafromalola_GuardInteract_Script::
 	returnqueststate QUEST_ALOHAFROMALOLA
 	compare VAR_RESULT, QUEST_MENU_SET_ACTIVE
 	goto_if_eq Quest_Alohafromalola_GuardInteract_Script_2
-	msgbox gText_Alohafromalola_TheresAPrivate
-	msgbox gText_Alohafromalola_WaitICanPerform
+	msgbox gText_Alohafromalola_TheresAPrivate, , SPEAKER_GUARD
+	msgbox gText_Alohafromalola_WaitICanPerform, , SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_ANGRY
 Quest_Alohafromalola_GuardInteract_Script_1:
 	closemessage
 	release
 	end
 
 Quest_Alohafromalola_GuardInteract_Script_2:
-	msgbox gText_Alohafromalola_WeArePreparing
+	msgbox gText_Alohafromalola_WeArePreparing, , SPEAKER_GUARD
 	goto Quest_Alohafromalola_GuardInteract_Script_1
 
 
@@ -41,7 +41,7 @@ Quest_Alohafromalola_HideLeader_Script_1:
 	return
 
 Quest_Alohafromalola_HideLeader_Script_2:
-	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
 	goto Quest_Alohafromalola_HideLeader_Script_1
 
 
@@ -60,12 +60,12 @@ Quest_Alohafromalola_Interact_Event_Script_1:
 
 
 Quest_Alohafromalola_StartQuest_Dialogue::
-	msgbox gText_Alohafromalola_OhManIAm
-	msgbox gText_Alohafromalola_OhPlayer
-	msgbox gText_Alohafromalola_HeyThere
-	msgbox gText_Alohafromalola_ImSupposedTo
-	msgbox gText_Alohafromalola_OhYouCan
-	msgbox gText_Alohafromalola_ComeBackTonight
+	msgbox gText_Alohafromalola_OhManIAm, , SPEAKER_WHITNEY, TAIL_WHISPER, EMOTE_SAD
+	msgbox gText_Alohafromalola_OhPlayer, , SPEAKER_WHITNEY, , EMOTE_SHOCK
+	msgbox gText_Alohafromalola_HeyThere, , SPEAKER_ZOEY, , EMOTE_CONFUSE
+	msgbox gText_Alohafromalola_ImSupposedTo, , SPEAKER_WHITNEY, , EMOTE_ANGRY
+	msgbox gText_Alohafromalola_OhYouCan, , SPEAKER_WHITNEY, TAIL_SHOUT, EMOTE_SHOCK
+	msgbox gText_Alohafromalola_ComeBackTonight, , SPEAKER_WHITNEY, , EMOTE_HAPPY
 	closemessage
 	startquest QUEST_ALOHAFROMALOLA
 	clearflag FLAG_TEMP_2
@@ -192,11 +192,11 @@ Quest_Alohafromalola_CheckTime_Script_3:
 
 
 Quest_Alohafromalola_CheckParty_Script::
-	checkitemspace ITEM_POISONIUM_Z, 1
+	random 1
 	compare VAR_RESULT, 0
-	goto_if_ne Quest_Alohafromalola_CheckParty_Script_2
+	goto_if_eq Quest_Alohafromalola_CheckParty_Script_2
 Quest_Alohafromalola_CheckParty_Script_1:
-	msgbox gText_Alohafromalola_YourParty
+	msgbox gText_Alohafromalola_YourParty, , SPEAKER_WHITNEY
 	release
 	end
 
@@ -206,41 +206,77 @@ Quest_Alohafromalola_CheckParty_Script_2:
 
 
 Quest_Alohafromalola_MoveToExhibition_Dialogue::
-	msgbox gText_Alohafromalola_PerfectDidYou
+	msgbox gText_Alohafromalola_PerfectDidYou, , SPEAKER_WHITNEY, , EMOTE_HAPPY
 	setvar VAR_WHITNEY_STATE, EXHIBITION_READY
-	warpsilent MAP_SOMA_GYM, 0, 11, 17
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	warpsilent MAP_SOMA_GYM, 255, 11, 6
+	return
+
+
+Quest_Alohafromalola_CreateCrowd_Script::
+	createvobject OBJ_EVENT_GFX_WOMAN_5, 5, 11, 3, 3, DIR_EAST
+	createvobject OBJ_EVENT_GFX_WOMAN_5, 6, 11, 4, 3, DIR_EAST
+	createvobject OBJ_EVENT_GFX_WOMAN_5, 7, 11, 5, 3, DIR_EAST
+	createvobject OBJ_EVENT_GFX_WOMAN_5, 8, 11, 6, 3, DIR_EAST
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+
+
+Quest_Alohafromalola_SetLeaderPosition_Battle_Script::
+	compare VAR_WHITNEY_STATE, EXHIBITION_READY
+	goto_if_eq Quest_Alohafromalola_SetLeaderPosition_Battle_Script_1
+	return
+
+Quest_Alohafromalola_SetLeaderPosition_Battle_Script_1:
+	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxy 1, 15, 6
+	setobjectxyperm 1, 15, 6
 	return
 
 
 Quest_Alohafromalola_StartBattle_Dialogue::
-	setvar VAR_WHITNEY_STATE, BATTLE_1_COMPLETE
-	msgbox gText_Alohafromalola_ThankYouAll
+	call Quest_Alohafromalola_CreateCrowd_Script
+	msgbox gText_Alohafromalola_ThankYouAll, , SPEAKER_WHITNEY, TAIL_SHOUT, EMOTE_HAPPY
+	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 	applymovement 1, Common_Movement_WalkLeft
 	waitmovement 1
+	setvar VAR_WHITNEY_STATE, EXHIBITION_COMPLETE
 	trainerbattle_continue_after_lose TRAINER_ASHLEY, gText_Alohafromalola_AndZMoves
 	delay 60
-	warpsilent MAP_SOMA_MUSEUM_ENTRANCE, 0, 9, 13
+	warpsilent MAP_SOMA_MUSEUM_ENTRANCE, 255, 9, 13
 	return
 
 
-Quest_Alohafromalola_SetLeaderPosition::
-	setobjectxy 1, 8, 13
-	turnobject 1, DIR_EAST
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+Quest_Alohafromalola_SetLeaderPosition_Thanks_Script::
+	compare VAR_WHITNEY_STATE, EXHIBITION_COMPLETE
+	goto_if_eq Quest_Alohafromalola_SetLeaderPosition_Thanks_Script_2
+Quest_Alohafromalola_SetLeaderPosition_Thanks_Script_1:
 	return
+
+Quest_Alohafromalola_SetLeaderPosition_Thanks_Script_2:
+	clearflag FLAG_TEMP_3
+	setobjectxy 1, 9, 12
+	setobjectxyperm 1, 9, 12
+	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_DOWN
+	goto Quest_Alohafromalola_SetLeaderPosition_Thanks_Script_1
 
 
 Quest_Alohafromalola_PostBattle_Script::
 	lock
-	msgbox gText_Alohafromalola_YouWereGreat
-	msgbox gText_Alohafromalola_IRealizeNowYouDont
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	msgbox gText_Alohafromalola_YouWereGreat, , SPEAKER_WHITNEY, , EMOTE_HAPPY
+	msgbox gText_Alohafromalola_IRealizeNowYouDont, , SPEAKER_WHITNEY
 	call Quest_Alohafromalola_GenerateRandomZCrystal_Script
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox gText_Alohafromalola_WhitneyGaveYou
-	msgbox gText_Alohafromalola_GoingToTheBar
+	msgbox gText_Alohafromalola_GoingToTheBar, , SPEAKER_WHITNEY, , EMOTE_SWEAT
+	closemessage
 	applymovement 1, Quest_Alohafromalola_WalkToExhibit_Movement
 	fadescreen FADE_TO_BLACK
+	delay 15
 	removeobject 1
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_WHITNEY_STATE, QUEST_1_COMPLETE
@@ -250,6 +286,9 @@ Quest_Alohafromalola_PostBattle_Script::
 
 
 Quest_Alohafromalola_WalkToExhibit_Movement:
+	walk_up
+	walk_up
+	walk_up
 	walk_up
 	walk_up
 	walk_up

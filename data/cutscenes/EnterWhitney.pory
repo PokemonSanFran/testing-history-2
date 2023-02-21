@@ -1,5 +1,16 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const WHITNEY = 1
+const FLAG_HIDE_PUZZLE = FLAG_TEMP_1
+const FLAG_HIDE_WHITNEY = FLAG_TEMP_3
+
+script EnterWhitney_LeaderPosition_Script{
+    switch (var (VAR_GYM_3_STATE)) { 
+        case 0: return
+        case 1: setflag(FLAG_TEMP_1)
+        default: goto(EnterWhitney_StartBattle_ObjectSetup_Script)
+
+    }
+}
 
 script EnterWhitney_ObjectSetUp_Script {
     setobjectmovementtype(WHITNEY, MOVEMENT_TYPE_FACE_LEFT)
@@ -31,6 +42,20 @@ script EnterWhitney_WalkToBattlefield_Script {
     waitmovement(0)
     releaseall
     end
+}
+
+script Whitney_Event_Script {
+    lockall
+    switch (var (VAR_GYM_3_STATE)) {
+    case 2:
+        goto(EnterWhitney_MuseumArrangement_Dialogue)
+    case 3:
+        goto(EnterWhitney_StartBattle_Script)
+    case 4:
+        goto(EnterWhitney_PostBattle_Dialogue)
+    case 5:
+        goto(EnterWhitney_PostBattle_Dialogue2)
+    }
 }
 
 script EnterWhitney_MuseumArrangement_Dialogue {

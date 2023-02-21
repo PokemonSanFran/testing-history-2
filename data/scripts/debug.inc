@@ -72,7 +72,9 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-	msgbox gText_GroupStages_OhRight, , SPEAKER_ZOEY, TAIL_THOUGHT
+	setvar VAR_WHITNEY_STATE, EXHIBITION_READY
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	warpsilent MAP_SOMA_GYM, 255, 11, 6
 	return
 
 
