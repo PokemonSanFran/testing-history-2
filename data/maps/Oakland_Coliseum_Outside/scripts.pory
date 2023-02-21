@@ -1,0 +1,10 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const WHITNEY = 1
+const FLAG_HIDE_WHITNEY = FLAG_TEMP_1
+
+mapscripts Oakland_Coliseum_Outside_MapScripts {
+
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Quest_BuildingAnExhibit_HideLeader_Script)
+    }
+}

@@ -12,7 +12,6 @@ SOMA_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_StopMugging_HideObject_Script
 	call Twitter_HideReporter_Script
 	call WowYoureStrong_HideObject_Script
-	call Quest_BuildingAnExhibit_HideLeader_Script
 	return
 
 SOMA_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

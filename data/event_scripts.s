@@ -1458,3 +1458,5 @@ Script_RemoveTint::
 	.include "data/maps/Chinatown_Gym/scripts.inc"
 
 	.include "data/maps/SOMA_Museum_Entrance/scripts.inc"
+
+	.include "data/maps/Oakland_Coliseum_Outside/scripts.inc"

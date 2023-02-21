@@ -1,0 +1,8 @@
+Oakland_Coliseum_Outside_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Oakland_Coliseum_Outside_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Oakland_Coliseum_Outside_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_BuildingAnExhibit_HideLeader_Script
+	return
+

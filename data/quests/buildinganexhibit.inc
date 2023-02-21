@@ -9,11 +9,8 @@ Quest_BuildingAnExhibit_Debug_Script::
 
 
 Quest_BuildingAnExhibit_HideLeader_Script::
-	special GetNumberOfBadges
-	compare VAR_WHITNEY_STATE, BATTLE_1_COMPLETE
+	compare VAR_WHITNEY_STATE, QUEST_1_COMPLETE
 	goto_if_ne Quest_BuildingAnExhibit_HideLeader_Script_2
-	compare VAR_RESULT, 4
-	goto_if_lt Quest_BuildingAnExhibit_HideLeader_Script_2
 Quest_BuildingAnExhibit_HideLeader_Script_1:
 	return
 
@@ -102,7 +99,7 @@ Quest_BuildingAnExhibit_StartQuest_Dialogue::
 
 
 Quest_BuildingAnExhibit_Active_Dialogue::
-	msgbox gText_BuildingAnExhibit_ItsLikeHuntingANeedle
+	msgbox gText_BuildingAnExhibit_ItsLikeHuntingANeedle, MSGBOX_NPC
 	return
 
 
@@ -305,7 +302,7 @@ Quest_BuildingAnExhibit_Reward_Dialogue::
 	applymovement 7, Quest_BuildingAnExhibit_WalkAway_Movement
 	waitmovement 7
 	removeobject 7
-	setvar VAR_WHITNEY_STATE, QUEST_1_COMPLETE
+	setvar VAR_WHITNEY_STATE, QUEST_2_COMPLETE
 	completequest QUEST_BUILDINGANEXHIBIT
 	release
 	end

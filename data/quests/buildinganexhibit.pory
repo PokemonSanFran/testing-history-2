@@ -18,8 +18,7 @@ script Quest_BuildingAnExhibit_Debug_Script{
 
 script Quest_BuildingAnExhibit_HideLeader_Script{
     
-    special(GetNumberOfBadges)
-    if (var(VAR_WHITNEY_STATE) != BATTLE_1_COMPLETE || var(VAR_RESULT) < 4){
+    if (var(VAR_WHITNEY_STATE) != QUEST_1_COMPLETE){
         setflag(FLAG_HIDE_WHITNEY)
     }
     return
@@ -85,7 +84,7 @@ script Quest_BuildingAnExhibit_StartQuest_Dialogue{
 }
 
 script Quest_BuildingAnExhibit_Active_Dialogue{
-    msgbox(gText_BuildingAnExhibit_ItsLikeHuntingANeedle)
+    msgbox(gText_BuildingAnExhibit_ItsLikeHuntingANeedle,MSGBOX_NPC)
 }
 
 script Quest_BuildingAnExhibit_Interact_PersonA_Script{
@@ -251,7 +250,7 @@ script Quest_BuildingAnExhibit_Reward_Dialogue{
     applymovement(WHITNEY,Quest_BuildingAnExhibit_WalkAway_Movement)
     waitmovement(WHITNEY)
     removeobject(WHITNEY)
-    setvar(VAR_WHITNEY_STATE, QUEST_1_COMPLETE)
+    setvar(VAR_WHITNEY_STATE, QUEST_2_COMPLETE)
     completequest(QUEST_BUILDINGANEXHIBIT)
     release
     end

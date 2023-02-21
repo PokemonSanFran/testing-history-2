@@ -60,14 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	initclock 22, 0
-	setvar VAR_WHITNEY_STATE, BATTLE_1_COMPLETE
-	setflag FLAG_BADGE01_GET
-	setflag FLAG_BADGE02_GET
-	setflag FLAG_BADGE03_GET
-	setflag FLAG_BADGE04_GET
-	setflag FLAG_BADGE05_GET
-	warpsilent MAP_SOMA_MUSEUM_ENTRANCE, 1
+	warpsilent MAP_OAKLAND_COLISEUM_OUTSIDE, 255, 10, 13
 	return
 
 

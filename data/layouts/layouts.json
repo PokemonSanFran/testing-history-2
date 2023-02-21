@@ -5960,6 +5960,16 @@
       "secondary_tileset": "gTileset_TrainerHill",
       "border_filepath": "data/layouts/SOMA_Museum_Entrance/border.bin",
       "blockdata_filepath": "data/layouts/SOMA_Museum_Entrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_OAKLAND_COLISEUM_OUTSIDE",
+      "name": "Oakland_Coliseum_Outside_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Oakland_Coliseum_Outside/border.bin",
+      "blockdata_filepath": "data/layouts/Oakland_Coliseum_Outside/map.bin"
     }
   ]
 }
