@@ -60,16 +60,22 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	startquest QUEST_PANDA_PRIDE
-	warpsilent MAP_CHINATOWN_PROUDPANDA, 0
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_BADGE05_GET
+	setflag FLAG_BADGE08_GET
+	additem ITEM_HM08
+	additem ITEM_HM03
+	givecustommon SPECIES_SEEL, 100, ITEM_METRONOME, ITEM_DIVE_BALL, NATURE_MODEST, , , , , , , , , , , , , , MOVE_SURF, MOVE_DIVE
 	return
 
 
 Debug_Script_2::
+	warpsilent MAP_UNDERWATER_PSFROUTE15, 46, 30
 	return
 
 
 Debug_Script_3::
+	warpsilent MAP_UNDERWATER_ROUTE125, 8, 14
 	return
 
 

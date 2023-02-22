@@ -1,0 +1,16 @@
+//make cutscene of ocean floor with a sparkle
+//make a bullshit maze
+//put a shiny floatzel at the end of maze
+//give HM for Dive
+
+//Quest_Allthatglittersmightbegold_
+//gText_Allthatglittersmightbegold_
+
+script Quest_Allthatglittersmightbegold_StartSparkle{
+}
+
+script Quest_Allthatglittersmightbegold_HideShinyBoss{
+    returnqueststate(QUEST_ALLTHATGLITTERSMIGHTBEGOLD)
+
+    if (var(VAR
+}

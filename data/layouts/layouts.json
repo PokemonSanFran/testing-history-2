@@ -5980,6 +5980,26 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/Chinatown_Proudpanda/border.bin",
       "blockdata_filepath": "data/layouts/Chinatown_Proudpanda/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE15",
+      "name": "Psfroute15_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfroute15/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute15/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNDERWATER_PSFROUTE15",
+      "name": "Underwater_Psfroute15_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/Underwater_Psfroute15/border.bin",
+      "blockdata_filepath": "data/layouts/Underwater_Psfroute15/map.bin"
     }
   ]
 }

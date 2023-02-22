@@ -1283,7 +1283,7 @@ Script_RemoveTint::
 // .include "data/quests/neighborhoodcleanup4.inc"
 // .include "data/quests/rockcollector.inc"
 .include "data/quests/hang20.inc"
-// .include "data/quests/allthatglittersmightbegold.inc"
+.include "data/quests/allthatglittersmightbegold.inc"
 .include "data/quests/unknownfishingquest.inc"
 // .include "data/quests/hiddengrottomapping.inc"
 // .include "data/quests/hiddengrottomapping2.inc"
@@ -1463,3 +1463,7 @@ Script_RemoveTint::
 	.include "data/maps/Oakland_Coliseum_Outside/scripts.inc"
 
 	.include "data/maps/Chinatown_Proudpanda/scripts.inc"
+
+	.include "data/maps/Psfroute15/scripts.inc"
+
+	.include "data/maps/Underwater_Psfroute15/scripts.inc"
