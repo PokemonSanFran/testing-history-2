@@ -9,7 +9,6 @@ const SQUATTER_C = 4
 
 //Quest_BuildingScope_
 //gText_BuildingScope_
-//PSF TODO I think I want this to be the employee pacing back and forth near the house ,stopping the player from going in until they have 5 badges
 
 script Quest_BuildingScope_MoveEmployee_Script{
     returnqueststate(QUEST_BUILDINGSCOPE)

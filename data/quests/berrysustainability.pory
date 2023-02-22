@@ -38,6 +38,7 @@ script Quest_BerrySustaiability_CheckCompletionRate_Script{
     //
     //once you pick the berry, the subquest is marked as complete, but the text will remind the player to BRING the berry to jasmine
     //getting the berry in another way does not moove the quest into reward, you must actively pick all the trees in Muir Woods
+    //berries within PSF will work this way: there is a tree per berry in the game, it will yield six berries and then respawn 24 hours later. watering the berry will respawn 12 hours later. berries when used as hold items, will spawn after battle
     questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BERRYSUSTAINABILITY)
     if (var(VAR_RESULT)){
         release

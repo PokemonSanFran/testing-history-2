@@ -274,7 +274,6 @@ script IGuessWeShouldBeNiceNow_HidePopup_Script{
 }
 
 script IGuessWeShouldBeNiceNow_ExitCave_Script {
-    //PSF TODO The map name popup shows up for a second before disappearing, need to figure out why that happens
     lock
     setvar(VAR_MARIN_STATE,BIANCA_INVITED_AIRBNB)
     playse(SE_EXIT)

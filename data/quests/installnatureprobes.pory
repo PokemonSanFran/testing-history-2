@@ -174,7 +174,7 @@ script Quest_InstallNatureProbes_Reward_Cutscene
     msgbox(gText_InstallNatureProbes_PokedexUpgradedWith)
     waitmessage
     waitfanfare
-    //PSF TODO port habitat mode from FRLG
+    //PSF TODO find a different rewards for this app and update the text
     closemessage
     
     playse(SE_POKENAV_CALL)
