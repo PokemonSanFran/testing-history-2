@@ -567,6 +567,15 @@ void ClearMessageBoxAddOns(void){
     }
 }
 
+void ForceClearMessageBoxData(void){
+    sPortaitSpriteID = 0;
+    sPortaitPaletteID = 0;
+    sMugshotWindow = 0;
+    VarSet(VAR_MSGBOX_PHONE, PHONE_OFF);
+    VarSet(VAR_MSGBOX_EMOTE, EMOTE_DEFAULT);
+    VarSet(VAR_MSGBOX_TAIL, TAIL_DEFAULT);
+}
+
 void DrawMessageBoxAddOns(u8 windowId){
     const u16* palette = gMessageBox_Pal;
     struct WindowTemplate t;

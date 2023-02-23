@@ -8,5 +8,6 @@ void ClearMugshot(void);
 void DrawMessageBoxAddOns(u8 windowId);
 void ClearMessageBoxAddOns();
 void DestroySpeakerIconSprite(void);
+void ForceClearMessageBoxData(void);
 
 #endif // GUARD_UI_MUGSHOT

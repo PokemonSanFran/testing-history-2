@@ -30,6 +30,7 @@
 #include "main.h"
 #include "malloc.h"
 #include "m4a.h"
+#include "mugshot.h"
 #include "map_name_popup.h"
 #include "match_call.h"
 #include "menu.h"
@@ -560,6 +561,7 @@ void ApplyCurrentWarp(void)
     gSaveBlock1Ptr->location = sWarpDestination;
     sFixedDiveWarp = sDummyWarpData;
     sFixedHoleWarp = sDummyWarpData;
+	ForceClearMessageBoxData();
 }
 
 static void ClearDiveAndHoleWarps(void)
