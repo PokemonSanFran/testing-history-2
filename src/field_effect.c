@@ -232,8 +232,6 @@ static void SpriteCB_DeoxysRockFragment(struct Sprite *sprite);
 
 static void Task_MoveDeoxysRock(u8 taskId);
 
-u32 GetCurrentMap(void);
-
 // Static RAM declarations
 
 static u8 sActiveList[32];

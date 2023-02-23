@@ -3654,6 +3654,14 @@ static void DoBattleIntro(void)
                 {
                     HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
                 }
+
+                // If the Player sends out a Pokémon caught with an apricorn ball, and their opponent is a Gym Leader or alternatively, if they're fighting in
+                // the Chase Center Arena, set the QUEST_ARTISANBALLS3 as ready to hand out the Player a reward.
+                if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER
+                && IS_ITEM_APRICORN_BALL(GetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_POKEBALL))
+                && ((gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_LEADER || gTrainers[gTrainerBattleOpponent_B].trainerClass == TRAINER_CLASS_LEADER)
+                || GetCurrentMap() == MAP_CHASECENTER_ARENA))
+                    QuestMenu_GetSetQuestState(QUEST_ARTISANBALLS3, FLAG_SET_REWARD);
             }
 
             gBattleStruct->switchInAbilitiesCounter = 0;

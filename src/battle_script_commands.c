@@ -59,6 +59,9 @@
 #include "constants/trainers.h"
 #include "battle_util.h"
 #include "constants/pokemon.h"
+#include "quests.h"
+#include "constants/quests.h"
+#include "field_effect.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //
@@ -6347,6 +6350,14 @@ static void Cmd_switchinanim(void)
 
     BtlController_EmitSwitchInAnim(BUFFER_A, gBattlerPartyIndexes[gActiveBattler], cmd->dontClearSubstitute);
     MarkBattlerForControllerExec(gActiveBattler);
+
+    // If the Player sends out a Pokémon caught with an apricorn ball, and their opponent is a Gym Leader or alternatively, if they're fighting in
+    // the Chase Center Arena, set the QUEST_ARTISANBALLS3 as ready to hand out the Player a reward.
+    if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER
+    && IS_ITEM_APRICORN_BALL(GetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_POKEBALL))
+    && ((gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_LEADER || gTrainers[gTrainerBattleOpponent_B].trainerClass == TRAINER_CLASS_LEADER)
+    || GetCurrentMap() == MAP_CHASECENTER_ARENA))
+        QuestMenu_GetSetQuestState(QUEST_ARTISANBALLS3, FLAG_SET_REWARD);
 
     gBattlescriptCurrInstr = cmd->nextInstr;
 

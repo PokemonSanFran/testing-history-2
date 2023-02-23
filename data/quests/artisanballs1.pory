@@ -559,6 +559,8 @@ script Quest_ArtisanBalls3_DuringProgressCheck_Script {
 	returnqueststate(QUEST_ARTISANBALLS3)
 	switch (var(VAR_RESULT))
 	{
+        case QUEST_MENU_SET_REWARD:
+            goto(Quest_ArtisanBalls3_Reward_Dialogue)
 		case QUEST_MENU_SET_ACTIVE:
 			goto(Quest_ArtisanBalls3_Active_Dialogue)
 		default:
@@ -579,6 +581,10 @@ script Quest_ArtisanBalls3_Start_Dialogue {
 script Quest_ArtisanBalls3_Active_Dialogue {
     msgbox(gText_Quest_ArtisanBalls3_CantWaitToSee,MSGBOX_NPC,SPEAKER_SERGEY)
     end
+}
+
+script Quest_ArtisanBalls3_Reward_Dialogue {
+    goto(Quest_ArtisanBalls3_DebugA_Script)
 }
 
 script Quest_ArtisanBalls3_Reward_Cutscene{

@@ -1007,4 +1007,7 @@
 // Check if the item is one that can be used on a Pokemon.
 #define ITEM_HAS_EFFECT(item) ((item) >= ITEM_POTION && (item) <= LAST_BERRY_INDEX)
 
+// Check if the item is an Apricorn Ball
+#define IS_ITEM_APRICORN_BALL(item) ((item) >= ITEM_LEVEL_BALL && (item) <= ITEM_HEAVY_BALL)
+
 #endif  // GUARD_CONSTANTS_ITEMS_H
