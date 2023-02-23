@@ -4498,3 +4498,10 @@ void CheckSpecies(void)
         }
     }
 }
+
+void DeleteChosenPartyMon(void)
+{
+    struct Pokemon *pokemon = &gPlayerParty[gSpecialVar_0x8004];
+    ZeroMonData(pokemon);
+    CompactPartySlots();
+}

@@ -550,3 +550,4 @@ gSpecials::
 	def_special TrySpecialOverworldEvo
     def_special ResetHealLocationToSOMA
     def_special CheckSpecies
+	def_special DeleteChosenPartyMon

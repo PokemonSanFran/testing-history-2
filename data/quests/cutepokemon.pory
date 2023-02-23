@@ -128,12 +128,14 @@ script Quest_CutePokemon_Incorrect_Dialogue{
 
 script Quest_CutePokemon_ConfirmTake_Dialogue{
     msgbox(gText_CutePokemon_ItsSoCute,MSGBOX_YESNO)
-    //PSF TODO take pokemon from player
-    //PSF TODO write case for when its the last healthy pokemon
-
     if (var(VAR_RESULT) == NO){
         goto(Quest_CutePokemon_CancelCheck_Dialogue)
     }
+    specialvar(VAR_TEMP_1, CalculatePlayerPartyCount)
+    if (var(VAR_TEMP_1) == 1){
+        goto(Quest_CutePokemon_CancelCheck_Dialogue)
+    }
+    special(DeleteChosenPartyMon)
     return
 }
 
