@@ -56,7 +56,7 @@ Quest_Allthatglittersmightbegold_ShowVideo_Dialogue::
 	setvar VAR_TEMP_1, 0
 	call Quest_Allthatglittersmightbegold_StartSparkle_Script
 	delay 30
-	msgbox gText_Allthatglittersmightbegold_SeeThatThere, , SPEAKER_ELIOR, 
+	msgbox gText_Allthatglittersmightbegold_SeeThatThere, , SPEAKER_ELIOR, , EMOTE_SHOCK
 	closemessage
 	call Quest_Allthatglittersmightbegold_StartSparkle_Script
 	clearflag FLAG_DEFEATED_SUDOWOODO
@@ -159,10 +159,10 @@ Quest_Allthatglittersmightbegold_EmptyHanded_Dialogue::
 
 
 Quest_Allthatglittersmightbegold_Reward_Dialogue::
-	msgbox gText_Allthatglittersmightbegold_YouGotTheTreasure, , SPEAKER_ELIOR, 
+	msgbox gText_Allthatglittersmightbegold_YouGotTheTreasure, , SPEAKER_ELIOR, , EMOTE_HAPPY
 	compare VAR_QUEST_GLITTERS_GOLD_STATE, CAUGHT_SHINY
 	goto_if_eq Quest_Allthatglittersmightbegold_Reward_Dialogue_2
-	msgbox gText_Allthatglittersmightbegold_AtLeastYou, , SPEAKER_ELIOR, 
+	msgbox gText_Allthatglittersmightbegold_AShameYou, , SPEAKER_ELIOR, , EMOTE_SAD
 Quest_Allthatglittersmightbegold_Reward_Dialogue_1:
 	msgbox gText_Allthatglittersmightbegold_IWasThinking, , SPEAKER_ELIOR, 
 	call Quest_Allthatglittersmightbegold_GiveReward_Script
@@ -171,7 +171,7 @@ Quest_Allthatglittersmightbegold_Reward_Dialogue_1:
 	end
 
 Quest_Allthatglittersmightbegold_Reward_Dialogue_2:
-	msgbox gText_Allthatglittersmightbegold_AShameYou, , SPEAKER_ELIOR, 
+	msgbox gText_Allthatglittersmightbegold_AtLeastYou, , SPEAKER_ELIOR, 
 	goto Quest_Allthatglittersmightbegold_Reward_Dialogue_1
 
 
@@ -186,7 +186,7 @@ Quest_Allthatglittersmightbegold_GiveReward_Script::
 
 
 Quest_Allthatglittersmightbegold_Completed_Dialogue::
-	msgbox gText_Allthatglittersmightbegold_IfYouFind, MSGBOX_NPC, SPEAKER_ELIOR, 
+	msgbox gText_Allthatglittersmightbegold_IfYouFind, MSGBOX_NPC, SPEAKER_ELIOR, , EMOTE_HAPPY
 	return
 
 

@@ -34,6 +34,7 @@ static const u8 gUnknown_8456618[3] = {15, 1, 2}; //import from FRLG
 #define DLG_WINDOW_PALETTE_NUM 15
 #define DLG_WINDOW_BASE_TILE_NUM 0x200
 #define STD_WINDOW_PALETTE_NUM 14
+#define STD_WINDOW_PALETTE_SIZE PLTT_SIZEOF(10)
 #define STD_WINDOW_BASE_TILE_NUM 0x214
 
 struct MenuInfoIcon
@@ -220,7 +221,8 @@ void AddTextPrinterWithCustomSpeedForMessage(bool8 allowSkippingDelayWithButtonP
 
 void LoadMessageBoxAndBorderGfx(void)
 {
-    LoadMessageBoxGfx(0, DLG_WINDOW_BASE_TILE_NUM, DLG_WINDOW_PALETTE_NUM * 0x10);
+    LoadMessageBoxGfx(0, DLG_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(DLG_WINDOW_PALETTE_NUM));
+    //LoadUserWindowBorderGfx(0, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(STD_WINDOW_PALETTE_NUM)); //This one comes from Expansion merge, following line is from the msgbox changes
     LoadUserWindowBorderGfx(0, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM * 0x10); // this one draws Window 2
 }
 
@@ -365,18 +367,18 @@ void SetStandardWindowBorderStyle(u8 windowId, bool8 copyToVram)
 
 void LoadMessageBoxAndFrameGfx(u8 windowId, bool8 copyToVram)
 {
-    LoadMessageBoxGfx(windowId, DLG_WINDOW_BASE_TILE_NUM, DLG_WINDOW_PALETTE_NUM * 0x10);
-    DrawDialogFrameWithCustomTileAndPalette(windowId, copyToVram, DLG_WINDOW_BASE_TILE_NUM, 0xF);
+    LoadMessageBoxGfx(windowId, DLG_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(DLG_WINDOW_PALETTE_NUM));
+    DrawDialogFrameWithCustomTileAndPalette(windowId, copyToVram, DLG_WINDOW_BASE_TILE_NUM, DLG_WINDOW_PALETTE_NUM);
 }
 
 void Menu_LoadStdPal(void)
 {
-    LoadPalette(gStandardMenuPalette, STD_WINDOW_PALETTE_NUM * 0x10, 0x14);
+    LoadPalette(gStandardMenuPalette, BG_PLTT_ID(STD_WINDOW_PALETTE_NUM), STD_WINDOW_PALETTE_SIZE);
 }
 
 void Menu_LoadStdPalAt(u16 offset)
 {
-    LoadPalette(gStandardMenuPalette, offset, 0x14);
+    LoadPalette(gStandardMenuPalette, offset, STD_WINDOW_PALETTE_SIZE);
 }
 
 // Unused
@@ -488,7 +490,7 @@ void AddTextPrinterWithCallbackForMessage(bool8 canSpeedUp, void (*callback)(str
 
 void EraseFieldMessageBox(bool8 copyToVram)
 {
-    FillBgTilemapBufferRect(0, 0, 0, 0, 32, 32, 0x11);
+    FillBgTilemapBufferRect(0, 0, 0, 0, 32, 32, 17);
     if (copyToVram == TRUE)
         CopyBgTilemapBufferToVram(0);
 }
@@ -672,9 +674,9 @@ u8 HofPCTopBar_AddWindow(u8 bg, u8 xPos, u8 yPos, u8 palette, u16 baseTile)
     sHofPCTopBarWindowId = AddWindow(&window);
 
     if (palette > 15)
-        palette = 15 * 16;
+        palette = BG_PLTT_ID(15);
     else
-        palette *= 16;
+        palette = BG_PLTT_ID(palette);
 
     LoadPalette(sHofPC_TopBar_Pal, palette, sizeof(sHofPC_TopBar_Pal));
     return sHofPCTopBarWindowId;
@@ -1950,7 +1952,7 @@ static void UnusedBlitBitmapRect(const struct Bitmap *src, struct Bitmap *dst, u
 // Unused
 static void LoadMonIconPalAtOffset(u8 palOffset, u16 speciesId)
 {
-    LoadPalette(GetValidMonIconPalettePtr(speciesId), palOffset, 0x20);
+    LoadPalette(GetValidMonIconPalettePtr(speciesId), palOffset, PLTT_SIZE_4BPP);
 }
 
 // Unused
@@ -1977,7 +1979,7 @@ void ListMenuLoadStdPalAt(u8 palOffset, u8 palId)
             break;
     }
 
-    LoadPalette(palette, palOffset, 0x20);
+    LoadPalette(palette, palOffset, PLTT_SIZE_4BPP);
 }
 
 void BlitMenuInfoIcon(u8 windowId, u8 iconId, u16 x, u16 y)

@@ -19,18 +19,16 @@ ANewStrike_PlayerSelf_Dialogue::
 
 gText_ANewStrike_ConstructionCrew::
 	.string "BREAKING NEWS: Chasecenter\n"
-	.string "construction crew has declared\l"
-	.string "a strike.\p"
-	.string "Their demands at this time are\n"
-	.string "unclear, but this puts the\l"
-	.string "upcoming dates of the\l"
-	.string "YCombinator League\l"
-	.string "Championship in danger.\l"
-	.string "Anonymous sources claim that\l"
-	.string "TeamRocket is responsible for\l"
-	.string "instigating this protest, but\l"
-	.string "we'll have more information as\l"
-	.string "the situation develops.$"
+	.string "construction crew has declared a\l"
+	.string "strike.\n"
+	.string "Their demands at this time are unclear,\l"
+	.string "but this puts the upcoming dates of\l"
+	.string "the YCombinator League Championship\l"
+	.string "in danger. Anonymous sources claim\l"
+	.string "that TeamRocket is responsible for\l"
+	.string "instigating this protest, but we'll\l"
+	.string "have more information as the situation\l"
+	.string "develops.$"
 
 gText_ANewStrike_OhDamn::
 	.string "Oh damn. I wonder what they'll do if the\n"

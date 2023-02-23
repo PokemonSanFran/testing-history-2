@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [ default ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GAME_VERSION: EMERALD
+      GAME_REVISION: 0
+      GAME_LANGUAGE: ENGLISH
+      MODERN: 0
+      #COMPARE: 1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Checkout agbcc
+        uses: actions/checkout@master
+        with:
+          path: agbcc
+          repository: pret/agbcc
+
+      - name: Install binutils
+        run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi
+        # build-essential, git, and libpng-dev are already installed
+        # gcc-arm-none-eabi is only needed for the modern build
+        # as an alternative to dkP
+
+      - name: Install agbcc
+        run: |
+          ./build.sh
+          ./install.sh ../
+        working-directory: agbcc
+
+      - name: build
+        run: |
+          make tools
+          make -j${nproc}
+            
+      - name: upload to google drive
+        uses: mkrakowitzer/actions-googledrive@master
+        with:
+          upload-from: /home/runner/work/game_pkmnsnfrn/game_pkmnsnfrn/pokeemerald.gba
+          upload-to: Pokémon SF/Builds
+          skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
+          google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
+          google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+
+      - name: discord notifcation with commit messages 
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK }}
+          DISCORD_AVATAR: https://archives.bulbagarden.net/media/upload/c/ca/BT294.png
+          DISCORD_USERNAME: Loudred
+        uses: Ilshidur/action-discord@master
+        with:
+            args: |
+                "This build has these improvements: {{ EVENT_PAYLOAD.head_commit.message}}
+
+                📁🔗 https://bit.ly/3IgDnk9
+                "

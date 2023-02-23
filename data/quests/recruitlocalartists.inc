@@ -161,6 +161,8 @@ Quest_Recruitlocalartists_ProgressReward_Script::
 	goto_if_eq Quest_Recruitlocalartists_ProgressReward_Script_5
 Quest_Recruitlocalartists_ProgressReward_Script_4:
 	return
+	closemessage
+	return
 
 Quest_Recruitlocalartists_ProgressReward_Script_2:
 	release

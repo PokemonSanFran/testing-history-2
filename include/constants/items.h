@@ -927,11 +927,17 @@
 #define ITEM_TEA 755
 #define ITEM_RUBY 756
 #define ITEM_SAPPHIRE 757
-#define ITEM_FASHION_CASE 758
-#define ITEM_LOST_DOLL 759
-#define ITEM_SHERBET_SURPRISE 760
 
-#define ITEMS_COUNT 761
+#define ITEM_ABILITY_SHIELD 758
+#define ITEM_CLEAR_AMULET 759
+#define ITEM_PUNCHING_GLOVE 760
+#define ITEM_COVERT_CLOAK 761
+#define ITEM_LOADED_DICE 762
+#define ITEM_FASHION_CASE 763
+#define ITEM_LOST_DOLL 764
+#define ITEM_SHERBET_SURPRISE 765
+
+#define ITEMS_COUNT 766
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

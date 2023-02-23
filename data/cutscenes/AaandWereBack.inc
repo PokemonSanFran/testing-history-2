@@ -127,13 +127,12 @@ gText_AaandWereBack_OpeningMessage::
 gText_AaandWereBack_FerryMessage::
 	.string "A message from the BARTACRONYM\n"
 	.string "System.\p"
-	.string "The following service routes are\n"
-	.string "now operational:\p"
+	.string "The following service routes are now\n"
+	.string "operational:\p"
 	.string "Ferrybuilding to Alameda\p"
 	.string "Alameda to Oakland\p"
-	.string "We appreciate your patience\n"
-	.string "while the remaining routes are\l"
-	.string "restored.$"
+	.string "We appreciate your patience while the\n"
+	.string "remaining routes are restored.$"
 
 gText_AaandWereBack_ThatsDifferent::
 	.string "That's a different notification...$"

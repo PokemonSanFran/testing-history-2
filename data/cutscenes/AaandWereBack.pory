@@ -109,7 +109,7 @@ text gText_AaandWereBack_FerryMessage {
             Ferrybuilding to Alameda\p
             Alameda to Oakland\p
             We appreciate your patience while the remaining routes are restored.
-            ","1_latin",175)
+            ")
 }
 text gText_AaandWereBack_ThatsDifferent{
     format("That's a different notification...")
