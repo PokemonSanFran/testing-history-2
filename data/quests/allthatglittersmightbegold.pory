@@ -6,11 +6,65 @@
 //Quest_Allthatglittersmightbegold_
 //gText_Allthatglittersmightbegold_
 
-script Quest_Allthatglittersmightbegold_StartSparkle{
-}
-
-script Quest_Allthatglittersmightbegold_HideShinyBoss{
+script Quest_Allthatglittersmightbegold_StartSparkle_Script{
     returnqueststate(QUEST_ALLTHATGLITTERSMIGHTBEGOLD)
 
-    if (var(VAR
+    if (var(VAR_RESULT) != QUEST_MENU_COMPLETE_QUEST){
+        dofieldeffectsparkle(46, 30 0)
+        dofieldeffectsparkle(47, 31 0)
+        dofieldeffectsparkle(48, 32 0)
+        dofieldeffectsparkle(49, 33 0)
+        setvar(VAR_TEMP_1,1)
+    }
+    return
+}
+
+script Quest_Allthatglittersmightbegold_Interact_Elior_Script{
+    lock
+    faceplayer
+    returnqueststate(QUEST_ALLTHATGLITTERSMIGHTBEGOLD)
+
+    switch (var(VAR_RESULT)){
+        case QUEST_MENU_SET_ACTIVE:
+        case QUEST_MENU_COMPLETE_QUEST:
+        case QUEST_MENU_SET_REWARD:
+        default:
+    }
+}
+
+script Quest_Allthatglittersmightbegold_StartQuest_Dialogue{
+}
+
+script Quest_Allthatglittersmightbegold_ContinueAfterPhoto_Dialogue{
+    setvar(VAR_QUEST_GLITTERS_GOLD_STATE,QUEST_ASSIGNED)
+    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+}
+
+script Quest_Allthatglittersmightbegold_ShowPhoto_Script{
+    setflag(FLAG_SPAWN_INVISIBLE)
+    setflag(FLAG_HIDE_MAP_NAME_POPUP)
+    setvar(VAR_QUEST_GLITTERS_GOLD_STATE,NOT_SHOWN_PICTURE)
+    warpsilent(MAP_UNDERWATER_PSFROUTE15,46,30)
+}
+
+script Quest_Allthatglittersmightbegold_Treasure_Dialogue{
+    setvar(VAR_QUEST_GLITTERS_GOLD_STATE,SHOWN_PICTURE)
+    call(Quest_Allthatglittersmightbegold_StartSparkle_Script)
+    msgbox("yeah that's the fuckin' treasure right there")
+    closemessage
+    call(Quest_Allthatglittersmightbegold_StartSparkle_Script)
+    clearflag(FLAG_SPAWN_INVISIBLE)
+    warpsilent(MAP_PSFROUTE15,46,30)
+}
+
+script Quest_Allthatglittersmightbegold_Active_Dialogue{
+}
+
+script Quest_Allthatglittersmightbegold_Reward_Dialogue{
+}
+
+script Quest_Allthatglittersmightbegold_GiveReward_Script{
+}
+
+script Quest_Allthatglittersmightbegold_Completed_Dialogue{
 }

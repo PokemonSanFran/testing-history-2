@@ -29,7 +29,6 @@ Swagbag_WelcomeToSanFran_Dialogue::
 	applymovement 2, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement 2, swagbag_GreetPlayer
-	waitmovement 0
 	msgbox gText_Swagbag_WelcomeToRegion, , SPEAKER_OAK
 	msgbox gText_Swagbag_GreatThePrivateCar, , SPEAKER_ZOEY
 	msgbox gText_Swagbag_ExcellentYouveAlready, , SPEAKER_OAK

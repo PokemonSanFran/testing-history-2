@@ -60,6 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
+	goto Quest_Allthatglittersmightbegold_ShowPhoto_Script
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_BADGE05_GET
 	setflag FLAG_BADGE08_GET
@@ -80,6 +81,7 @@ Debug_Script_3::
 
 
 Debug_Script_4::
+	call Quest_Allthatglittersmightbegold_ShowPhoto_Script
 	return
 
 
