@@ -26,18 +26,26 @@ script Quest_Allthatglittersmightbegold_Interact_Elior_Script{
 
     switch (var(VAR_RESULT)){
         case QUEST_MENU_SET_ACTIVE:
+            goto(Quest_Allthatglittersmightbegold_Active_Dialogue)
         case QUEST_MENU_COMPLETE_QUEST:
         case QUEST_MENU_SET_REWARD:
         default:
+            goto(Quest_Allthatglittersmightbegold_StartQuest_Dialogue)
     }
 }
 
 script Quest_Allthatglittersmightbegold_StartQuest_Dialogue{
+    msgbox("yeah that was the pic")
+    goto(Quest_Allthatglittersmightbegold_ShowPhoto_Script)
 }
 
 script Quest_Allthatglittersmightbegold_ContinueAfterPhoto_Dialogue{
     setvar(VAR_QUEST_GLITTERS_GOLD_STATE,QUEST_ASSIGNED)
     clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+    msgbox("yeah that was the pic")
+    startquest(QUEST_ALLTHATGLITTERSMIGHTBEGOLD)
+    release
+    end
 }
 
 script Quest_Allthatglittersmightbegold_ShowPhoto_Script{
@@ -54,10 +62,19 @@ script Quest_Allthatglittersmightbegold_Treasure_Dialogue{
     closemessage
     call(Quest_Allthatglittersmightbegold_StartSparkle_Script)
     clearflag(FLAG_SPAWN_INVISIBLE)
-    warpsilent(MAP_PSFROUTE15,46,30)
+    warpsilent(MAP_PSFROUTE15,40,61)
 }
 
 script Quest_Allthatglittersmightbegold_Active_Dialogue{
+    warpsilent(MAP_UNDERWATER_PSFROUTE15,42,19)
+}
+
+script Quest_Allthatglittersmightbegold_ReturnSurface_Script{
+    msgbox("yo tryna go back?",MSGBOX_YESNO)
+
+    if (var(VAR_RESULT) == YES){
+        warpsilent(MAP_PSFROUTE15,40,61)
+    }
 }
 
 script Quest_Allthatglittersmightbegold_Reward_Dialogue{

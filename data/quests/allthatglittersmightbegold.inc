@@ -19,14 +19,30 @@ Quest_Allthatglittersmightbegold_Interact_Elior_Script::
 	faceplayer
 	returnqueststate QUEST_ALLTHATGLITTERSMIGHTBEGOLD
 	switch VAR_RESULT
+	case QUEST_MENU_SET_ACTIVE, Quest_Allthatglittersmightbegold_Interact_Elior_Script_2
+	case QUEST_MENU_COMPLETE_QUEST, Quest_Allthatglittersmightbegold_Interact_Elior_Script_3
+	case QUEST_MENU_SET_REWARD, Quest_Allthatglittersmightbegold_Interact_Elior_Script_3
+Quest_Allthatglittersmightbegold_Interact_Elior_Script_3:
+	goto Quest_Allthatglittersmightbegold_StartQuest_Dialogue
+	return
+
+Quest_Allthatglittersmightbegold_Interact_Elior_Script_2:
+	goto Quest_Allthatglittersmightbegold_Active_Dialogue
+	return
+
 
 Quest_Allthatglittersmightbegold_StartQuest_Dialogue::
+	msgbox Quest_Allthatglittersmightbegold_StartQuest_Dialogue_Text_0
 	return
 
 
 Quest_Allthatglittersmightbegold_ContinueAfterPhoto_Dialogue::
 	setvar VAR_QUEST_GLITTERS_GOLD_STATE, QUEST_ASSIGNED
-	return
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	msgbox Quest_Allthatglittersmightbegold_StartQuest_Dialogue_Text_0
+	startquest QUEST_ALLTHATGLITTERSMIGHTBEGOLD
+	release
+	end
 
 
 Quest_Allthatglittersmightbegold_ShowPhoto_Script::
@@ -43,13 +59,24 @@ Quest_Allthatglittersmightbegold_Treasure_Dialogue::
 	msgbox Quest_Allthatglittersmightbegold_Treasure_Dialogue_Text_0
 	closemessage
 	call Quest_Allthatglittersmightbegold_StartSparkle_Script
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	clearflag FLAG_SPAWN_INVISIBLE
-	warpsilent MAP_PSFROUTE15, 46, 30
+	warpsilent MAP_PSFROUTE15, 40, 61
 	return
 
 
 Quest_Allthatglittersmightbegold_Active_Dialogue::
+	warpsilent MAP_UNDERWATER_PSFROUTE15, 42, 19
+	return
+
+
+Quest_Allthatglittersmightbegold_ReturnSurface_Script::
+	msgbox Quest_Allthatglittersmightbegold_ReturnSurface_Script_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq Quest_Allthatglittersmightbegold_ReturnSurface_Script_1
+	return
+
+Quest_Allthatglittersmightbegold_ReturnSurface_Script_1:
+	warpsilent MAP_PSFROUTE15, 40, 61
 	return
 
 
@@ -65,5 +92,11 @@ Quest_Allthatglittersmightbegold_Completed_Dialogue::
 	return
 
 
+Quest_Allthatglittersmightbegold_StartQuest_Dialogue_Text_0:
+	.string "yeah that was the pic$"
+
 Quest_Allthatglittersmightbegold_Treasure_Dialogue_Text_0:
 	.string "yeah that's the fuckin' treasure right there$"
+
+Quest_Allthatglittersmightbegold_ReturnSurface_Script_Text_0:
+	.string "yo tryna go back?$"

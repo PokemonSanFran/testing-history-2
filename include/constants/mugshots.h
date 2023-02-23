@@ -252,6 +252,7 @@
 #define SPEAKER_LEAH                160
 #define SPEAKER_GUARD               161
 #define SPEAKER_SHOPKEEPER          162
+#define SPEAKER_ELIOR               163
 
 //Tail
 #define TAIL_DEFAULT 0
