@@ -3,7 +3,6 @@ Underwater_Psfroute15_MapScripts::
 	.byte 0
 
 Underwater_Psfroute15_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_QUEST_GLITTERS_GOLD_STATE, NOT_SHOWN_PICTURE, Quest_Allthatglittersmightbegold_Treasure_Dialogue
-	map_script_2 VAR_TEMP_1, 0, Quest_Allthatglittersmightbegold_StartSparkle_Script
+	map_script_2 VAR_QUEST_GLITTERS_GOLD_STATE, NOT_SHOWN_PICTURE, Quest_Allthatglittersmightbegold_ShowVideo_Dialogue
 	.2byte 0
 

@@ -65,6 +65,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
+	warpsilent MAP_UNDERWATER_PSFROUTE15, 45, 66
 	return
 
 

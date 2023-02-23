@@ -1,6 +1,5 @@
 mapscripts Underwater_Psfroute15_MapScripts{
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_QUEST_GLITTERS_GOLD_STATE,NOT_SHOWN_PICTURE: Quest_Allthatglittersmightbegold_Treasure_Dialogue
-        VAR_TEMP_1,0:Quest_Allthatglittersmightbegold_StartSparkle_Script
+        VAR_QUEST_GLITTERS_GOLD_STATE,NOT_SHOWN_PICTURE: Quest_Allthatglittersmightbegold_ShowVideo_Dialogue
     ]
 }

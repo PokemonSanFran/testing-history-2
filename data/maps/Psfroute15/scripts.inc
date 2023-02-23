@@ -3,6 +3,7 @@ Psfroute15_MapScripts::
 	.byte 0
 
 Psfroute15_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_QUEST_GLITTERS_GOLD_STATE, SHOWN_PICTURE, Quest_Allthatglittersmightbegold_ContinueAfterPhoto_Dialogue
+	map_script_2 VAR_QUEST_GLITTERS_GOLD_STATE, SHOWN_PICTURE, Quest_Allthatglittersmightbegold_AfterVideo_Dialogue
+	map_script_2 VAR_QUEST_GLITTERS_GOLD_STATE, POST_DIVE, Quest_Allthatglittersmightbegold_CheckSuccess_Script
 	.2byte 0
 

@@ -378,3 +378,6 @@
 #define NOT_SHOWN_PICTURE 1
 #define SHOWN_PICTURE 2 
 #define QUEST_ASSIGNED 3
+#define POST_DIVE 4
+#define CAUGHT_SHINY 4
+#define DEFEATED_SHINY 5

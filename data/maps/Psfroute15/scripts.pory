@@ -1,5 +1,6 @@
 mapscripts Psfroute15_MapScripts{
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_QUEST_GLITTERS_GOLD_STATE,SHOWN_PICTURE: Quest_Allthatglittersmightbegold_ContinueAfterPhoto_Dialogue
+        VAR_QUEST_GLITTERS_GOLD_STATE,SHOWN_PICTURE: Quest_Allthatglittersmightbegold_AfterVideo_Dialogue
+        VAR_QUEST_GLITTERS_GOLD_STATE,POST_DIVE: Quest_Allthatglittersmightbegold_CheckSuccess_Script
     ]
 }

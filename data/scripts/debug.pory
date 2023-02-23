@@ -73,6 +73,7 @@ script Debug_Script_1{
 }
 
 script Debug_Script_2{
+    warpsilent(MAP_UNDERWATER_PSFROUTE15,45,66)
 }
 
 script Debug_Script_3{
