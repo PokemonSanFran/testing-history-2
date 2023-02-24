@@ -109,7 +109,11 @@ void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
 
 void LoadUserWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
+    #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
     LoadWindowGfx(windowId, gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE], destOffset, palOffset);
+    #else
+    LoadWindowGfx(windowId, gSaveBlock2Ptr->optionsWindowFrameType, destOffset, palOffset);
+    #endif
 }
 
 void DrawTextBorderOuter(u8 windowId, u16 tileNum, u8 palNum)
@@ -192,8 +196,13 @@ const u16 *GetOverworldTextboxPalettePtr(void)
 // Effectively LoadUserWindowBorderGfx but specifying the bg directly instead of a window from that bg
 void LoadUserWindowBorderGfxOnBg(u8 bg, u16 destOffset, u8 palOffset)
 {
+    #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
     LoadBgTiles(bg, sWindowFrames[gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE]].tiles, 0x120, destOffset);
     LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->pal, palOffset, 0x20);
+    #else
+    LoadBgTiles(bg, sWindowFrames[gSaveBlock2Ptr->optionsWindowFrameType].tiles, 0x120, destOffset);
+    LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, palOffset, 0x20);
+    #endif
 }
 
 //begin FRLG import

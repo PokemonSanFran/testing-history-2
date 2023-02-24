@@ -1006,15 +1006,19 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [VISUAL_OPTIONS_PRESET]          = VISUAL_PRESET_DEFAULT, 
             [VISUAL_OPTIONS_UNITS]           = 1, 
             [VISUAL_OPTIONS_TEXT_SPEED]      = 2, 
+            #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
             [VISUAL_OPTIONS_FRAME_TYPE]      = 0, 
+            #endif
             [VISUAL_OPTIONS_FONT_SWITCHER]   = 0, 
             [VISUAL_OPTIONS_COLOR]           = 6, 
         },
         [VISUAL_PRESET_SPEEDRUN] = {
             [VISUAL_OPTIONS_PRESET]          = VISUAL_PRESET_SPEEDRUN, 
             [VISUAL_OPTIONS_UNITS]           = 1, 
-            [VISUAL_OPTIONS_TEXT_SPEED]      = 4, 
+            [VISUAL_OPTIONS_TEXT_SPEED]      = 3, 
+            #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
             [VISUAL_OPTIONS_FRAME_TYPE]      = 0, 
+            #endif
             [VISUAL_OPTIONS_FONT_SWITCHER]   = 0, 
             [VISUAL_OPTIONS_COLOR]           = 6, 
         }
@@ -1907,6 +1911,7 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
             },
         .numOptions = 4,
     },
+    #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
     [VISUAL_OPTIONS_FRAME_TYPE] =
     {
         .title = _("Frame Type"),
@@ -1956,6 +1961,7 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
             },
         .numOptions = 20,
     },
+    #endif
     [VISUAL_OPTIONS_FONT_SWITCHER] =
     {
         .title = _("Font Switcher"),
