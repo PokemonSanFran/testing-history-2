@@ -1897,17 +1897,15 @@ struct OptionData VisualSettings_Settings_Options[NUM_OPTIONS_VISUAL_SETTINGS] =
             _("Slow"),
             _("Medium"),
             _("Fast"),
-            _("Faster"),
             _("Instant"),
             },
         .optionDescription = { 
             _("Slow"),
             _("Medium"),
             _("Fast"),
-            _("Faster"),
             _("Instant"),
             },
-        .numOptions = 5,
+        .numOptions = 4,
     },
     [VISUAL_OPTIONS_FRAME_TYPE] =
     {

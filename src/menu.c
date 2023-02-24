@@ -85,8 +85,7 @@ static const u8 sTextSpeedFrameDelays[] =
 {
     [OPTIONS_TEXT_SPEED_SLOW]    = 8,
     [OPTIONS_TEXT_SPEED_MID]     = 4,
-    [OPTIONS_TEXT_SPEED_FAST]    = 2,
-    [OPTIONS_TEXT_SPEED_FASTER]  = 1,
+    [OPTIONS_TEXT_SPEED_FAST]    = 1,
     [OPTIONS_TEXT_SPEED_INSTANT] = 1,
 };
 
