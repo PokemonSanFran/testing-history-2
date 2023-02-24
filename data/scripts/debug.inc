@@ -65,11 +65,13 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-	warpsilent MAP_UNDERWATER_PSFROUTE15, 45, 66
+	givecustommon SPECIES_MEWTWO, 100, ITEM_LEFTOVERS, ITEM_LURE_BALL, NATURE_MODEST, 2, 0, 0, 4, 252, 0, 252, 31, 31, 31, 31, 31, 31, MOVE_SURF, MOVE_CALM_MIND, MOVE_SPLASH, MOVE_ICE_BEAM
+	goto Quest_Allthatglittersmightbegold_CoreEncounter_Script
 	return
 
 
 Debug_Script_3::
+	warp MAP_JAPANTOWN_BALLS, 0
 	return
 
 

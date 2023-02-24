@@ -193,11 +193,20 @@ Quest_CutePokemon_ConfirmTake_Dialogue::
 	compare VAR_RESULT, NO
 	goto_if_eq Quest_CutePokemon_ConfirmTake_Dialogue_2
 Quest_CutePokemon_ConfirmTake_Dialogue_1:
+	specialvar VAR_TEMP_1, CalculatePlayerPartyCount
+	compare VAR_TEMP_1, 1
+	goto_if_eq Quest_CutePokemon_ConfirmTake_Dialogue_5
+Quest_CutePokemon_ConfirmTake_Dialogue_4:
+	special DeleteChosenPartyMon
 	return
 
 Quest_CutePokemon_ConfirmTake_Dialogue_2:
 	goto Quest_CutePokemon_CancelCheck_Dialogue
 	goto Quest_CutePokemon_ConfirmTake_Dialogue_1
+
+Quest_CutePokemon_ConfirmTake_Dialogue_5:
+	goto Quest_CutePokemon_CancelCheck_Dialogue
+	goto Quest_CutePokemon_ConfirmTake_Dialogue_4
 
 
 Quest_CutePokemon_Sub1_Event_Script::

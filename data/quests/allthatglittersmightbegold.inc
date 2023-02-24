@@ -89,6 +89,7 @@ Quest_Allthatglittersmightbegold_CoreEncounter_Script::
 	call Quest_Allthatglittersmightbegold_StartSparkle_Script
 	call Common_EventScript_SaveGame
 	faceplayer
+	setflag FLAG_FORCE_SHINY
 	setwildbattle SPECIES_FLOATZEL, 60, ITEM_NONE
 	playmoncry SPECIES_FLOATZEL, CRY_MODE_ENCOUNTER
 	waitmoncry
@@ -99,6 +100,7 @@ Quest_Allthatglittersmightbegold_CoreEncounter_Script::
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	closemessage
 	dowildbattle
+	clearflag FLAG_FORCE_SHINY
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	switch VAR_RESULT
