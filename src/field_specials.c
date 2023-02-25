@@ -4505,3 +4505,8 @@ void DeleteChosenPartyMon(void)
     ZeroMonData(pokemon);
     CompactPartySlots();
 }
+
+u32 Script_GetGameStat(void)
+{
+    return GetGameStat(gSpecialVar_Result);
+}

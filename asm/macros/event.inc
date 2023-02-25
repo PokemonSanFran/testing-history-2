@@ -2330,3 +2330,13 @@
 	.byte \per_row
 	.byte \cursorPos
 	.endm
+
+	@ Gets the current value of gameStatId and stores it in VAR_RESULT.
+	@ Optionally, it also allows to store said value in a buffer.
+	.macro getgamestat gameStatId:req, buffer
+	setvar VAR_RESULT, \gameStatId
+	specialvar VAR_RESULT, Script_GetGameStat
+	.ifnb \buffer
+		buffernumberstring \buffer, VAR_RESULT
+	.endif
+	.endm

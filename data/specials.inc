@@ -551,3 +551,4 @@ gSpecials::
     def_special ResetHealLocationToSOMA
     def_special CheckSpecies
 	def_special DeleteChosenPartyMon
+	def_special Script_GetGameStat
