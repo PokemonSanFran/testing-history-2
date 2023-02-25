@@ -4436,6 +4436,8 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
     else
     {
         gPartyMenuUseExitCallback = TRUE;
+        if (VarGet(VAR_DEFEATED_PACIFICA_COUNT))
+            VarSet(VAR_DEFEATED_PACIFICA_COUNT, 0);
         if (!IsItemFlute(item))
         {
             PlaySE(SE_USE_ITEM);

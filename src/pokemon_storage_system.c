@@ -2812,6 +2812,8 @@ static void Task_WithdrawMon(u8 taskId)
         }
         else
         {
+            if (VarGet(VAR_DEFEATED_PACIFICA_COUNT))
+                VarSet(VAR_DEFEATED_PACIFICA_COUNT, 0);
             SaveCursorPos();
             InitMonPlaceChange(CHANGE_GRAB);
             sStorage->state = 2;
@@ -2879,6 +2881,8 @@ static void Task_DepositMenu(u8 taskId)
         default:
             if (TryStorePartyMonInBox(boxId))
             {
+                if (VarGet(VAR_DEFEATED_PACIFICA_COUNT))
+                    VarSet(VAR_DEFEATED_PACIFICA_COUNT, 0);
                 sDepositBoxId = boxId;
                 ClearBottomWindow();
                 DestroyChooseBoxMenuSprites();
