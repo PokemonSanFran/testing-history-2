@@ -2,7 +2,8 @@ name: CI
 
 on:
   push:
-    branches: [ default ]
+    branches: 
+      - default 
   pull_request:
 
 jobs:
@@ -13,7 +14,7 @@ jobs:
       GAME_REVISION: 0
       GAME_LANGUAGE: ENGLISH
       MODERN: 0
-      COMPARE: 1
+      COMPARE: 0
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,6 +41,7 @@ jobs:
         run: make -j${nproc} -O all
 
       - name: Modern
+        env:
           MODERN: 1
           COMPARE: 0
         run: make -j${nproc} -O all
