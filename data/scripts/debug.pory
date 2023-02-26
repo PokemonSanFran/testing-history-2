@@ -81,9 +81,11 @@ script Debug_Script_3{
     warp(MAP_JAPANTOWN_BALLS,0)
 }
 script Debug_Script_4{
+    multi_fixed_2_vs_1(TRAINER_WINSTON_1,gText_Manhunt_PleaseDontHurtUs,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
 }
 
 script Debug_Script_5{
+    multi_fixed_2_vs_1(TRAINER_STEVEN,gText_Manhunt_PleaseDontHurtUs,TRAINER_MAY_LILYCOVE_MUDKIP,TRAINER_BACK_PIC_MAY)
 }
 script Debug_Script_6{
     end

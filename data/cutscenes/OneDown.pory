@@ -28,6 +28,7 @@ script OneDown_SetUpObject_Script {
 }
 
 script OneDown_StartCutscene_Script {
+    //PSF TODO Ariana should now begin using Giovanni's theme as her character theme instead of the generic Team Rocket one
         msgbox(gText_OneDown_IJustGotFilled,,SPEAKER_ARIANA)
 
         msgbox(gText_OneDown_ThanksAndYouve,,SPEAKER_ZOEY)

@@ -235,7 +235,7 @@ text gText_MaskOff_HeWorkedInThe {
 }
 
 text gText_MaskOff_WatchingHimBattle {
-    format("Watching him battle was so awesome! I loved watching him use Ditto to confuse 'em before knocking them on their ass with super powerful moves... he would end matches so fast.")
+    format("Watching him battle was so awesome! His ace was always changing so it kept his opponents on their toes... right up until he knocked them on their asses.")
 }
 
 //SECTION D
@@ -275,7 +275,7 @@ text gText_MaskOff_HeWouldLeaveRight {
 //SECTION G
 
 text gText_MaskOff_GaveATalkHereOnce {
-    format("Wikstrom gave a talk here once, where he talked about the importance of training your Pokémon in their natural habitat. He says the connection to their home was where they grew the best. Never seen a book to back that up though...")
+    format("Wikstrom gave a talk here once where he emphasized the importance of training your Pokémon against versions of themselves. He said that Pokemon need to know themselves in order to know their opponents. Never seen a book to back that up though...")
 }
 
 text gText_MaskOff_WhateverHeDidWorked {
