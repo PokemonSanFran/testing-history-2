@@ -4510,3 +4510,21 @@ u32 Script_GetGameStat(void)
 {
     return GetGameStat(gSpecialVar_Result);
 }
+
+bool8 AlohaFromAlolaCheck(void)
+{
+    u8 i, count = 0;
+
+    if (CalculatePlayerPartyCount() == 3)
+    {
+        for (i = 0; i <= 3; i++)
+        {
+            u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+            if (gSpeciesInfo[species].flags & SPECIES_FLAG_ALOLA_DEX
+             || gSpeciesInfo[species].flags & SPECIES_FLAG_ALOLAN_FORM)
+                count++;
+        }
+    }
+
+    return (count == 3) ? TRUE : FALSE;
+}

@@ -112,11 +112,11 @@ script Quest_Alohafromalola_CheckTime_Script{
 }
 
 script Quest_Alohafromalola_CheckParty_Script{
-    //PSF TODO Replace with a special to check the players party for only 3 pokemon and are from the alola dex
-    //PSF TODO figure out a way to inform players about who is in the alola dex
-    random(1)
+    specialvar(VAR_RESULT, AlohaFromAlolaCheck)
 
-        if (var(VAR_RESULT) == 0){
+    //PSF TODO figure out a way to inform players about who is in the alola dex
+
+        if (var(VAR_RESULT) == TRUE){
             goto(Quest_Alohafromalola_MoveToExhibition_Dialogue)
         }
         msgbox(gText_Alohafromalola_YourParty,,SPEAKER_WHITNEY)
