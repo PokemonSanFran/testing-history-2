@@ -67,13 +67,14 @@ script Quest_GetTheBand_RemoveBikers_Script{
 }
 
 script Quest_GetTheBand_Interact_BikerA_Dialogue{
-
-    //PSF TODO write function to see if player is on bicycle or not, if not, don't run this script at all
-
-    msgbox(gText_GetTheBand_TheBikersSentYou,MSGBOX_NPC)
-    call(Quest_GetTheBand_RemoveBikers_Script)
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_GETTHEBANDBACKTOGETHER,SUB_QUEST_1)
-    call(Quest_GetTheBand_CheckProgress_Script)
+    specialvar(VAR_TEMP_1, GetPlayerAvatarBike)
+    if (var(VAR_TEMP_1) != 0){
+        msgbox(gText_GetTheBand_TheBikersSentYou,MSGBOX_NPC)
+        call(Quest_GetTheBand_RemoveBikers_Script)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_GETTHEBANDBACKTOGETHER,SUB_QUEST_1)
+        call(Quest_GetTheBand_CheckProgress_Script)
+        end
+    }
     end
 }
 
