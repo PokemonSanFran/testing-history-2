@@ -29,9 +29,7 @@ script Quest_GardenCleanUp_ClearGarden_Script{
 }
 
 script Quest_GardenCleanUp_CheckCompletion_Script{
-    //PSF TODO if first quest is completed AND it is AT LEAST the day after the completion of the first quest, go to second quest
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_GARDENCLEANUP)
-        if (var(VAR_RESULT)){
+        if (var(VAR_GARDEN_CLEANUP_QUEST_TIME) == 360){
             goto(Quest_GardenCleanUpAdvanced_Event_Script)
         }
     return

@@ -20,6 +20,8 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/metatile_labels.h"
+#include "quests.h"
+#include "constants/quests.h"
 
 /*  This file handles some persistent tasks that run in the overworld.
  *  - Task_RunTimeBasedEvents: Periodically updates local time and RTC events. Also triggers ambient cries.
@@ -151,6 +153,14 @@ static void RunTimeBasedEvents(s16 *data)
     case 0:
         if (gMain.vblankCounter1 & TIME_UPDATE_INTERVAL)
         {
+            if (QuestMenu_GetSetQuestState(QUEST_GARDENCLEANUP, FLAG_GET_COMPLETED)
+             && VarGet(VAR_GARDEN_CLEANUP_QUEST_TIME) <= 360)
+            {
+                // Increase the value of VAR_GARDEN_CLEANUP_QUEST_TIME every 4096 frames if
+                // the Player completed QUEST_GARDENCLEANUP until VAR_GARDEN_CLEANUP_QUEST_TIME
+                // reaches a value of 360.
+                VarSet(VAR_GARDEN_CLEANUP_QUEST_TIME, VarGet(VAR_GARDEN_CLEANUP_QUEST_TIME) + 1);
+            }
             DoTimeBasedEvents();
             tState++;
         }
