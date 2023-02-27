@@ -4099,6 +4099,24 @@ void CalculateMonStats(struct Pokemon *mon)
 
     SetMonData(mon, MON_DATA_LEVEL, &level);
 
+    if(gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_PERFECT_IVS] == TRUE){
+        hpIV = 31;
+        attackIV = 31;
+        defenseIV = 31;
+        speedIV = 31;
+        spAttackIV = 31;
+        spDefenseIV = 31;
+    }
+
+    if(gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_NO_EVS] == TRUE){
+        hpEV = 0;
+        attackEV = 0;
+        defenseEV = 0;
+        speedEV = 0;
+        spAttackEV = 0;
+        spDefenseEV = 0;
+    }
+
     if (species == SPECIES_SHEDINJA)
     {
         newMaxHP = 1;

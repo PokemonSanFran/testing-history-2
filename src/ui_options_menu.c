@@ -890,6 +890,8 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_INTRO]                  = 1,
             [BATTLE_OPTIONS_HP_SPEED]               = 0,
             [BATTLE_OPTIONS_EXP_SPEED]              = 0,
+            [BATTLE_OPTIONS_NO_EVS]                 = 0,
+            [BATTLE_OPTIONS_PERFECT_IVS]            = 0,
         },
         [BATTLE_PRESET_CHALLENGE]  = {
             [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_CHALLENGE, 
@@ -917,6 +919,8 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_INTRO]                  = 1,
             [BATTLE_OPTIONS_HP_SPEED]               = 0,
             [BATTLE_OPTIONS_EXP_SPEED]              = 0,
+            [BATTLE_OPTIONS_NO_EVS]                 = 0,
+            [BATTLE_OPTIONS_PERFECT_IVS]            = 0,
         },
         [BATTLE_PRESET_SPEEDRUN]  = {
             [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_SPEEDRUN, 
@@ -944,6 +948,8 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_INTRO]                  = 1,
             [BATTLE_OPTIONS_HP_SPEED]               = 2,
             [BATTLE_OPTIONS_EXP_SPEED]              = 2,
+            [BATTLE_OPTIONS_NO_EVS]                 = 0,
+            [BATTLE_OPTIONS_PERFECT_IVS]            = 0,
         },
         [BATTLE_PRESET_NUZLOCKE]  = {
             [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_NUZLOCKE, 
@@ -971,6 +977,8 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_INTRO]                  = 0,
             [BATTLE_OPTIONS_HP_SPEED]               = 0,
             [BATTLE_OPTIONS_EXP_SPEED]              = 0,
+            [BATTLE_OPTIONS_NO_EVS]                 = 0,
+            [BATTLE_OPTIONS_PERFECT_IVS]            = 0,
         },
         [BATTLE_PRESET_KAIZO]  = {
             [BATTLE_OPTIONS_PRESET]                 = BATTLE_PRESET_KAIZO, 
@@ -998,6 +1006,8 @@ static u8 Preset_Options[NUM_OF_PRESET_OPTIONS][NUM_MAX_SETTINGS][MAX_OPTIONS_PE
             [BATTLE_OPTIONS_INTRO]                  = 0,
             [BATTLE_OPTIONS_HP_SPEED]               = 0,
             [BATTLE_OPTIONS_EXP_SPEED]              = 0,
+            [BATTLE_OPTIONS_NO_EVS]                 = 0,
+            [BATTLE_OPTIONS_PERFECT_IVS]            = 0,
         },
     },
     [VISUAL_SETTINGS] =
@@ -1513,6 +1523,32 @@ struct OptionData BattleSettings_Settings_Options[NUM_OPTIONS_BATTLE_SETTINGS] =
                 _("0"),
             },
         .numOptions = 4,
+    },
+    [BATTLE_OPTIONS_NO_EVS] =
+    {
+        .title = _("No EVs"),
+        .options = { 
+                _("Disabled"),
+                _("Enabled"),
+            },
+        .optionDescription = { 
+                _("Disabled"),
+                _("Enabled"),
+            },
+        .numOptions = 2,
+    },
+    [BATTLE_OPTIONS_PERFECT_IVS] =
+    {
+        .title = _("Perfect Ivs"),
+        .options = { 
+                _("Disabled"),
+                _("Enabled"),
+            },
+        .optionDescription = { 
+                _("Disabled"),
+                _("Enabled"),
+            },
+        .numOptions = 2,
     },
     [BATTLE_OPTIONS_LEVEL] =
     {
