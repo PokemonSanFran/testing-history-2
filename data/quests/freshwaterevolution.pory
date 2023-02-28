@@ -7,7 +7,6 @@ script Quest_FreshwaterEvolution_HideObject_Script{
 }
 
 script Quest_FreshwaterEvolution_CheckPartyAndQuest_Script{
-//PSF TODO if player has Octillery in their party, buffer the nickname of the first non shiny one (or the last one)
     questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_FRESHWATEREVOLUTION)
 
     if (var(VAR_RESULT)){
@@ -41,9 +40,8 @@ script Quest_FreshwaterEvolution_StartCutscene_Dialogue{
     playmoncry(SPECIES_OCTILLERY, CRY_MODE_ENCOUNTER)
     waitmoncry
 
-    //PSF TODO if all the Octillery in your party are shiny, do this
-    //setvar(VAR_0x8000,999)
-    if (var(VAR_0x8000) == 999){
+    specialvar(VAR_0x8000, IsPartyFullOfShinyOctillery)
+    if (var(VAR_0x8000) == TRUE){
         goto(Quest_FreshwaterEvolution_AlreadyShiny_Dialogue)
     }
 
