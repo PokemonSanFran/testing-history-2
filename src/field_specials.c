@@ -4555,3 +4555,20 @@ bool8 IsPartyFullOfShinyOctillery(void)
 
     return (count == partyCount) ? TRUE : FALSE;
 }
+
+bool8 Script_CheckForMonAndMove(void)
+{
+    u8 i;
+
+    for (i = 0; i <= CalculatePlayerPartyCount(); i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        if (species == VarGet(VAR_TEMP_1) && MonKnowsMove(&gPlayerParty[i], VarGet(VAR_TEMP_2)))
+        {
+            gSpecialVar_0x8004 = i;
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}

@@ -2340,3 +2340,11 @@
 		buffernumberstring \buffer, VAR_RESULT
 	.endif
 	.endm
+
+	@ Checks if the Player has a Pokémon of the specified \species that knows the specified \moveId.
+	@ Stores the result of the comparison in \varId.
+	.macro checkspeciesandmove speciesId:req, moveId:req, varId:req
+	setvar VAR_TEMP_1, \speciesId
+	setvar VAR_TEMP_2, \moveId
+	specialvar \varId, Script_CheckForMonAndMove
+	.endm

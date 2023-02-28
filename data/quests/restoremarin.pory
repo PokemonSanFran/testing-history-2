@@ -125,7 +125,6 @@ script Quest_Restoremarin_Active_Script{
 }
 
 script Quest_Restoremarin_CheckPokemon_Script{
-    //PSF TODO this needs to be changed from "look for krabby" to "look for krabby for knock off"
     //PSF TODO need to write the script to take a pokemon from the player
     special(ChoosePartyMon)
         waitstate
@@ -134,7 +133,8 @@ script Quest_Restoremarin_CheckPokemon_Script{
         if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
             goto(Quest_Restoremarin_Cancel_Dialogue)
         }
-    if (var(VAR_RESULT) == SPECIES_KRABBY && var(VAR_TEMP_1) != 1){
+        checkspeciesandmove(SPECIES_KRABBY, MOVE_KNOCK_OFF, VAR_RESULT)
+    if (var(VAR_RESULT) == TRUE){
         subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN,SUB_QUEST_1)
             goto(Quest_Restoremarin_TakeMon_Dialogue)
     }
