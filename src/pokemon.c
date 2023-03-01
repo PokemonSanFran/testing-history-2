@@ -51,6 +51,7 @@
 #include "constants/trainers.h"
 #include "constants/union_room.h"
 #include "constants/weather.h"
+#include "field_effect.h"
 
 struct SpeciesItem
 {
@@ -3606,6 +3607,12 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     {
         value = personality & 1;
         SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
+    }
+
+    if (GetCurrentMap() == MAP_BERNALHEIGHTS && species == SPECIES_GLAMEOW)
+    {
+        value = Random() % 2;
+        SetMonData(&gEnemyParty[0], MON_DATA_POKERUS, &value);
     }
 
     GiveBoxMonInitialMoveset(boxMon);
