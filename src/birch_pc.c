@@ -86,3 +86,17 @@ void ShowPokedexRatingMessage(void)
 {
     ShowFieldMessage(GetPokedexRatingText(gSpecialVar_0x8004));
 }
+
+u8 GetPokedexCompletionRate(void)
+{
+    u16 i, count = 0;
+    u16 maxCount = NATIONAL_DEX_COUNT - 1;
+
+    for (i = SPECIES_BULBASAUR; i <= maxCount; i++)
+    {
+        if (GetSetPokedexFlag(i, FLAG_GET_CAUGHT))
+            count++;
+    }
+
+    return (count * 100) / (maxCount);
+}

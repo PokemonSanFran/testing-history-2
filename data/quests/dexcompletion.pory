@@ -41,9 +41,7 @@ script Quest_DexCompletion_Debug_Script{
 
 
 script Quest_DexCompletion_MarkQuests_Script{
-    callnative(ScriptGetPokedexInfo)
-
-    //PSF TODO replac ScriptGetPokedexInfo with a custom script that checks pokedex completion and creates a number that is a percentage
+    specialvar(VAR_0x8006, GetPokedexCompletionRate)
 
     if (var(VAR_0x8006) > 99){
         subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_DEXCOMPLETION,SUB_QUEST_2)

@@ -555,3 +555,4 @@ gSpecials::
 	def_special AlohaFromAlolaCheck
 	def_special IsPartyFullOfShinyOctillery
 	def_special Script_CheckForMonAndMove
+	def_special GetPokedexCompletionRate
