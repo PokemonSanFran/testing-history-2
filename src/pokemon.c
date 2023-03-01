@@ -8763,3 +8763,56 @@ void UpdateMonPersonality(struct BoxPokemon *boxMon, u32 personality)
     boxMon->checksum = CalculateBoxMonChecksum(boxMon);
     EncryptBoxMon(boxMon);
 }
+
+u8 CreateCustomMon(u16 species, u8 level, u16 item, u8 ball, u8 nature, u8 abilityNum, u8 *evs, u8 *ivs, u16 *moves, bool8 isShiny)
+{
+    u8 i;
+    u8 heldItem[2];
+
+    if (nature == NUM_NATURES || nature == 0xFF)
+        nature = Random() % NUM_NATURES;
+    
+    if (isShiny)
+        CreateShinyMonWithNature(&gEnemyParty[0], species, level, nature);
+    else
+        CreateMonWithNature(&gEnemyParty[0], species, level, 32, nature);
+    
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        // ev
+        if (evs[i] != 32 && evs[i] != 0xFF)
+            SetMonData(&gEnemyParty[0], MON_DATA_HP_EV + i, &evs[i]);
+        
+        // iv
+        if (ivs[i] != 32 && ivs[i] != 0xFF)
+            SetMonData(&gEnemyParty[0], MON_DATA_HP_IV + i, &ivs[i]);
+    }
+    CalculateMonStats(&gEnemyParty[0]);
+    
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (moves[i] == 0 || moves[i] == 0xFF || moves[i] > MOVES_COUNT)
+            continue;
+        
+        SetMonMoveSlot(&gEnemyParty[0], moves[i], i);
+    }
+    
+    //ability
+    if (abilityNum == 0xFF || GetAbilityBySpecies(species, abilityNum) == 0)
+    {
+        do {
+            abilityNum = Random() % 3;  // includes hidden abilities
+        } while (GetAbilityBySpecies(species, abilityNum) == 0);
+    }
+    
+    SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &abilityNum);
+    
+    //ball
+    if (ball <= POKEBALL_COUNT)
+        SetMonData(&gEnemyParty[0], MON_DATA_POKEBALL, &ball);
+    
+    //item
+    heldItem[0] = item;
+    heldItem[1] = item >> 8;
+    SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &heldItem);
+}

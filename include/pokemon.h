@@ -566,5 +566,6 @@ bool32 ShouldShowFemaleDifferences(u16 species, u32 personality);
 void TryToSetBattleFormChangeMoves(struct Pokemon *mon);
 u32 GetMonFriendshipScore(struct Pokemon *pokemon);
 void UpdateMonPersonality(struct BoxPokemon *boxMon, u32 personality);
+u8 CreateCustomMon(u16 species, u8 level, u16 item, u8 ball, u8 nature, u8 abilityNum, u8 *evs, u8 *ivs, u16 *moves, bool8 isShiny);
 
 #endif // GUARD_POKEMON_H
