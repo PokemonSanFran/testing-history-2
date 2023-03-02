@@ -353,6 +353,7 @@ static bool32 CriticalCapture(u32 odds);
 static void BestowItem(u32 battlerAtk, u32 battlerDef);
 static bool8 IsFinalStrikeEffect(u16 move);
 static void TryUpdateRoundTurnOrder(void);
+static void TryToUpdateArtisanBalls1SubQuestsState(u16 itemId);
 
 static void Cmd_attackcanceler(void);
 static void Cmd_accuracycheck(void);
@@ -15305,6 +15306,36 @@ u8 GetCatchingBattler(void)
         return GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
 }
 
+static void TryToUpdateArtisanBalls1SubQuestsState(u16 itemId)
+{
+    switch (itemId)
+    {
+    case ITEM_FAST_BALL:
+        QuestMenu_GetSetSubquestState(QUEST_ARTISANBALLS1, FLAG_SET_COMPLETED, SUB_QUEST_1);
+        break;
+    case ITEM_LEVEL_BALL:
+        QuestMenu_GetSetSubquestState(QUEST_ARTISANBALLS1, FLAG_SET_COMPLETED, SUB_QUEST_2);
+        break;
+    case ITEM_LURE_BALL:
+        QuestMenu_GetSetSubquestState(QUEST_ARTISANBALLS1, FLAG_SET_COMPLETED, SUB_QUEST_3);
+        break;
+    case ITEM_HEAVY_BALL:
+        QuestMenu_GetSetSubquestState(QUEST_ARTISANBALLS1, FLAG_SET_COMPLETED, SUB_QUEST_4);
+        break;
+    case ITEM_LOVE_BALL:
+        QuestMenu_GetSetSubquestState(QUEST_ARTISANBALLS1, FLAG_SET_COMPLETED, SUB_QUEST_5);
+        break;
+    case ITEM_FRIEND_BALL:
+        QuestMenu_GetSetSubquestState(QUEST_ARTISANBALLS1, FLAG_SET_COMPLETED, SUB_QUEST_6);
+        break;
+    case ITEM_MOON_BALL:
+        QuestMenu_GetSetSubquestState(QUEST_ARTISANBALLS1, FLAG_SET_COMPLETED, SUB_QUEST_7);
+        break;
+    default:
+        break;
+    }
+}
+
 static void Cmd_handleballthrow(void)
 {
     CMD_ARGS();
@@ -15595,6 +15626,8 @@ static void Cmd_handleballthrow(void)
                 UndoFormChange(gBattlerPartyIndexes[gBattlerTarget], GET_BATTLER_SIDE(gBattlerTarget), FALSE);
                 gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
                 SetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_POKEBALL, &gLastUsedItem);
+                if (QuestMenu_GetSetQuestState(QUEST_ARTISANBALLS1, FLAG_GET_ACTIVE))
+                    TryToUpdateArtisanBalls1SubQuestsState(gLastUsedItem);
 
                 if (CalculatePlayerPartyCount() == PARTY_SIZE)
                     gBattleCommunication[MULTISTRING_CHOOSER] = 0;
