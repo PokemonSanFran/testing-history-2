@@ -373,8 +373,7 @@ script YouRealizeTheyreEvilRight_LeaveGift_Script {
 script YouRealizeTheyreEvilRight_GiveGift_Script {
 
     givecustommon(SPECIES_GARBODOR,40,ITEM_BLACK_SLUDGE,ITEM_CHERISH_BALL,NATURE_JOLLY,2,0,0,0,0,0,0,31,31,31,31,31,31,MOVE_HAZE,MOVE_SELF_DESTRUCT,MOVE_STOMPING_TANTRUM,MOVE_SLUDGE_BOMB,TRUE) //PSF TODO give a custom ball that only YC use
-        //PSF TODO use PutZigzagoonInPlayerParty to show the player the garb
-
+	setvar(VAR_TEMP_1, SPECIES_GARBODOR)
         if (var(VAR_RESULT) == 0){
             call(YouRealizeTheyreEvilRight_SendGiftToParty_Script)
         } else {
@@ -401,7 +400,7 @@ script YouRealizeTheyreEvilRight_SendGiftToPC_Script {
         if (var(VAR_RESULT) == YES){
             call(Common_EventScript_NameReceivedBoxMon)
         }
-    call(Common_EventScript_TransferredToPC) //PSF TODO why does STR_VAR_2 store the wrong pokemon name
+    call(Common_EventScript_TransferredToPC)
 }
 
 script YouRealizeTheyreEvilRight_RecievedGiftFanfare {
