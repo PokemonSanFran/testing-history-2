@@ -1235,6 +1235,7 @@ struct SaveBlock1
     /*0x3???*/ struct TrainerHillSave trainerHill;
     #endif
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
+    /*0x3???*/ struct Pokemon stolenTrade;
     // sizeof: 0x3???
 };
 

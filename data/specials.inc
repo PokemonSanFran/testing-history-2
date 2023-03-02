@@ -557,3 +557,5 @@ gSpecials::
 	def_special Script_CheckForMonAndMove
 	def_special GetPokedexCompletionRate
 	def_special Script_GetMapName
+	def_special CopyMonToStolenTradeStorage
+	def_special CopyMonFromStolenTradeStorage

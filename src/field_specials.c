@@ -4577,3 +4577,22 @@ u8 Script_GetMapName(void)
 {
     GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
 }
+
+void CopyMonToStolenTradeStorage(void)
+{
+    CopyMon(&gSaveBlock1Ptr->stolenTrade, &gPlayerParty[gSpecialVar_0x8004], sizeof(struct Pokemon));
+}
+
+void CopyMonFromStolenTradeStorage(void)
+{
+    u8 i;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+        {
+            CopyMon(&gPlayerParty[i], &gSaveBlock1Ptr->stolenTrade, sizeof(struct Pokemon));
+            break;
+        }
+    }
+}
