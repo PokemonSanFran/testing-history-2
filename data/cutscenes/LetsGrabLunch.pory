@@ -403,6 +403,7 @@ text gText_LetsGrabLunch_DoYouWantHaightashbury {
 
 text gText_LetsGrabLunch_FastForwardAdvance {
     format("You have restored the {STR_VAR_1} Gym. Good job kid. In the main game, that nickname will be replaced with the name of wherever you are.") //PSF TODO
+    // Lunos: To store the current map's name in STR_VAR_1 please use the special(Script_GetMapName) in the script of choice.
 } 
 
 text gText_LetsGrabLunch_FastForwardBlock {

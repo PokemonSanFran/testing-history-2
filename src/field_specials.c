@@ -4572,3 +4572,8 @@ bool8 Script_CheckForMonAndMove(void)
 
     return FALSE;
 }
+
+u8 Script_GetMapName(void)
+{
+    GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
+}
