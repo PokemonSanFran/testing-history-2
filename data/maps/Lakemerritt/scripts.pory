@@ -43,8 +43,12 @@ script LakeMerritt_Herb_Dealer_Script{
 	waitmessage
 	pokemart(HerbDealerShop)
     msgbox(gText_Lakemerritt_ThanksComeAgain)
-    //PSF TODO script should only proceed to Quest_ShutDownMedicineMan_MakePurchase_Dialogue if the player actually made a purchase
-    goto(Quest_ShutDownMedicineMan_MakePurchase_Dialogue)
+    // After making a successful purchase in a Poké Mart, the Id of the map that the Player
+    // is at gets written to VAR_TEMP_1. If VAR_TEMP_1 is MAP_LAKEMERRITT in this context,
+    // that's because the Player made a successful purchase there.
+    if (var(VAR_TEMP_1) == MAP_LAKEMERRITT){
+        goto(Quest_ShutDownMedicineMan_MakePurchase_Dialogue)
+    }
 }
 
 mart HerbDealerShop{
