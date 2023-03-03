@@ -125,6 +125,7 @@ static void HandleEndTurn_FinishBattle(void);
 static void SpriteCB_UnusedBattleInit(struct Sprite *sprite);
 static void SpriteCB_UnusedBattleInit_Main(struct Sprite *sprite);
 static void TrySpecialEvolution(void);
+static void TryToOverwriteNPCTrainerPokemon(u16 trainerId, u8 partyId, u16 species);
 
 EWRAM_DATA u16 gBattle_BG0_X = 0;
 EWRAM_DATA u16 gBattle_BG0_Y = 0;
@@ -1882,6 +1883,29 @@ static void SpriteCB_UnusedBattleInit_Main(struct Sprite *sprite)
     }
 }
 
+static void TryToOverwriteNPCTrainerPokemon(u16 trainerId, u8 partyId, u16 species)
+{
+    u16 newSpecies;
+
+    switch (trainerId)
+    {
+    case TRAINER_MARCEL:
+        if (partyId == 0)
+        {
+            if (species == SPECIES_GURDURR && species == GetMonData(&gSaveBlock1Ptr->stolenTrade, MON_DATA_SPECIES))
+            {
+                newSpecies = SPECIES_CONKELDURR;
+                SetMonData(&gSaveBlock1Ptr->stolenTrade, MON_DATA_SPECIES, &newSpecies);
+                CalculateMonStats(&gSaveBlock1Ptr->stolenTrade);
+                CopyMon(&gEnemyParty[partyId], &gSaveBlock1Ptr->stolenTrade, sizeof(struct Pokemon));
+            }
+        }
+        break;
+    default:
+        break;
+    }
+}
+
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
 {
     u32 nameHash = 0;
@@ -1938,6 +1962,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                TryToOverwriteNPCTrainerPokemon(trainerNum, i, partyData[i].species);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET:
@@ -1956,6 +1981,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
+                TryToOverwriteNPCTrainerPokemon(trainerNum, i, partyData[i].species);
                 break;
             }
             case F_TRAINER_PARTY_HELD_ITEM:
@@ -1970,6 +1996,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+                TryToOverwriteNPCTrainerPokemon(trainerNum, i, partyData[i].species);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
@@ -1990,6 +2017,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
+                TryToOverwriteNPCTrainerPokemon(trainerNum, i, partyData[i].species);
                 break;
             }
             }

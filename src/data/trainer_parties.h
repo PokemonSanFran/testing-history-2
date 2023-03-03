@@ -112,7 +112,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Marcel[] = {
     {
     .iv = 100,
     .lvl = 29,
-    .species = SPECIES_MANECTRIC,
+    .species = SPECIES_GURDURR,
     },
     {
     .iv = 100,

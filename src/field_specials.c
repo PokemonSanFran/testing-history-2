@@ -4589,9 +4589,11 @@ void CopyMonFromStolenTradeStorage(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE
+         && GetMonData(&gSaveBlock1Ptr->stolenTrade, MON_DATA_SPECIES) != SPECIES_NONE)
         {
             CopyMon(&gPlayerParty[i], &gSaveBlock1Ptr->stolenTrade, sizeof(struct Pokemon));
+            memset(&gSaveBlock1Ptr->stolenTrade, 0, sizeof(gSaveBlock1Ptr->stolenTrade));
             break;
         }
     }
