@@ -161,6 +161,14 @@ static void RunTimeBasedEvents(s16 *data)
                 // reaches a value of 360.
                 VarSet(VAR_GARDEN_CLEANUP_QUEST_TIME, VarGet(VAR_GARDEN_CLEANUP_QUEST_TIME) + 1);
             }
+            if (QuestMenu_GetSetQuestState(QUEST_GEMARTIST, FLAG_GET_ACTIVE)
+             && !QuestMenu_GetSetQuestState(QUEST_GEMARTIST, FLAG_GET_COMPLETED))
+            {
+                if (CheckBagHasItem(ITEM_STARDUST, 10))
+                    QuestMenu_GetSetQuestState(QUEST_GEMARTIST, FLAG_SET_REWARD);
+                else
+                    QuestMenu_GetSetQuestState(QUEST_GEMARTIST, FLAG_SET_ACTIVE);
+            }
             DoTimeBasedEvents();
             tState++;
         }
