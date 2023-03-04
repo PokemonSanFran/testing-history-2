@@ -3,6 +3,7 @@ mapscripts Berkeley_MapScripts{
         call(swagbag2_SetUp_Object_Script)
         call(Quest_GetTheBand_HideBikerA_Script)
         call(SorryAboutMyFriends_Ariana_Visible_Script)
+        call(Quest_StealTheAxe_CheckTime_Script)
     }    
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_BERKELEY_STATE, DEFEATED_MORTY: SorryAboutMyFriends_CheckCutscene_Script
@@ -45,6 +46,19 @@ script Berkeley_Biker_Interact_Script{
     end
 }
 
+script Berkeley_University_Locked_Door_Script{
+    msgbox(gText_Berkeley_TheDoor,MSGBOX_SIGN)
+    call(Quest_StealTheAxe_LockedDoor_Dialogue)
+    release
+    end
+}
+
 text gText_Berkeley_PlaceholderBiker{
     format("i am a biker, and this is placeholder text.")
 }
+
+text gText_Berkeley_TheDoor{
+    format("The door is locked.")
+}
+
+

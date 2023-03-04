@@ -1,0 +1,133 @@
+const CHUCK = 21
+const FLAG_HIDE_CHUCK = FLAG_TEMP_5
+const FLAG_UNLOCK_DOOR = FLAG_TEMP_3
+
+//gText_StealTheAxe_
+//Quest_StealTheAxe_
+
+script Quest_StealTheAxe_HideLeader_Script{
+    special(GetNumberOfBadges)
+
+        if (var(VAR_CHUCK_STATE) != BATTLE_1_COMPLETE){
+            setflag(FLAG_HIDE_CHUCK)
+        }
+
+    if (var(VAR_RESULT) < 6){
+        setflag(FLAG_HIDE_CHUCK)
+    }
+
+    switch (var(VAR_ALAMEDA_STATE)){
+        case START_SURVIVAL_CHANCE:
+        case POST_SURVIVAL_CHANCE:
+        case WHY_ARE_YOU_HELPING_THEM:
+        case POST_EARTHQUAKE:
+        case START_EARTHQUAKE_RESCUE:
+        case POST_EARTHQUAKE_RESCUE:
+        case MEET_AT_PSFROUTE8:
+            setflag(FLAG_HIDE_CHUCK)
+    }
+}
+
+script Quest_StealTheAxe_Event_Script{
+    returnqueststate(QUEST_STEALTHEAXE)
+
+        lock
+        faceplayer
+
+        switch(var(VAR_RESULT)){
+            case QUEST_MENU_SET_REWARD:
+                goto(Quest_StealTheAxe_Reward_Dialogue)
+            case QUEST_MENU_SET_ACTIVE:
+                    goto(Quest_StealTheAxe_Active_Dialogue)
+            default:
+                        call(Quest_StealTheAxe_CheckItem_Script)
+                            goto(Quest_StealTheAxe_StartQuest_Dialogue)
+        }
+    release
+        end
+}
+
+script Quest_StealTheAxe_StartQuest_Dialogue{
+    msgbox(gText_StealTheAxe_PlayerGetToSee)
+        msgbox(gText_StealTheAxe_ShouldntYouBe)
+        msgbox(gText_StealTheAxe_ThatsExactlyWhy)
+        msgbox(gText_StealTheAxe_IJustCameFromThe)
+        msgbox(gText_StealTheAxe_IKeepHearingAbout)
+        msgbox(gText_StealTheAxe_JustLikeWhitney)
+        msgbox(gText_StealTheAxe_IStillDontKnow)
+        msgbox(gText_StealTheAxe_SomebodyWithMyCreds)
+        msgbox(gText_StealTheAxe_ButIfSomebody)
+        startquest(QUEST_STEALTHEAXE)
+        msgbox(gText_StealTheAxe_IllBeHere)
+}
+
+script Quest_StealTheAxe_Active_Dialogue{
+}
+
+script Quest_StealTheAxe_Reward_Dialogue{
+}
+
+script Quest_StealTheAxe_CheckItem_Script{
+    checkitem(ITEM_COIN_CASE,1)
+
+        if (var(VAR_RESULT)){
+            goto(Quest_StealTheAxe_SecretComplete_Dialogue)
+        }
+    return
+}
+
+script Quest_StealTheAxe_SecretComplete_Dialogue{
+}
+
+script Quest_StealTheAxe_CheckTime_Script{
+    gettime
+        if (var(VAR_0x8000) < 21 && (var(VAR_0x8000) > 5)) {
+            setflag(FLAG_UNLOCK_DOOR)
+                release
+                end
+        }
+}
+
+script Quest_StealTheAxe_LockedDoor_Dialogue{
+    returnqueststate(QUEST_STEALTHEAXE)
+        if(var(VAR_RESULT) == QUEST_MENU_SET_ACTIVE){
+            msgbox(gText_StealTheAxe_IShould,,SPEAKER_ZOEY,TAIL_THOUGHT)
+        }
+    return
+}
+
+text gText_StealTheAxe_IShould{
+    format("Hmm... I should come back tonight.")
+}
+
+text gText_StealTheAxe_PlayerGetToSee{
+    format("")
+}
+text gText_StealTheAxe_ShouldntYouBe{
+    format("")
+}
+text gText_StealTheAxe_ThatsExactlyWhy{
+    format("")
+}
+text gText_StealTheAxe_IJustCameFromThe{
+    format("")
+}
+text gText_StealTheAxe_IKeepHearingAbout{
+    format("")
+}
+text gText_StealTheAxe_JustLikeWhitney{
+    format("")
+}
+text gText_StealTheAxe_IStillDontKnow{
+    format("")
+}
+text gText_StealTheAxe_SomebodyWithMyCreds{
+    format("")
+}
+text gText_StealTheAxe_ButIfSomebody{
+    format("")
+}
+text gText_StealTheAxe_IllBeHere{
+    format("")
+}
+

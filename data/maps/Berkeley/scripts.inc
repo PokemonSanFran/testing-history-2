@@ -7,6 +7,7 @@ Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call swagbag2_SetUp_Object_Script
 	call Quest_GetTheBand_HideBikerA_Script
 	call SorryAboutMyFriends_Ariana_Visible_Script
+	call Quest_StealTheAxe_CheckTime_Script
 	return
 
 Berkeley_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -53,6 +54,16 @@ Berkeley_Biker_Interact_Script_2:
 	goto Berkeley_Biker_Interact_Script_1
 
 
+Berkeley_University_Locked_Door_Script::
+	msgbox gText_Berkeley_TheDoor, MSGBOX_SIGN
+	call Quest_StealTheAxe_LockedDoor_Dialogue
+	release
+	end
+
+
 gText_Berkeley_PlaceholderBiker::
 	.string "i am a biker, and this is placeholder\n"
 	.string "text.$"
+
+gText_Berkeley_TheDoor::
+	.string "The door is locked.$"

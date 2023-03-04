@@ -1246,7 +1246,7 @@ Script_RemoveTint::
 .include "data/quests/buildinganexhibit.inc"
 // .include "data/quests/unknownmortyquesta.inc"
 // .include "data/quests/unknownmortyquestb.inc"
-.include "data/quests/unknownchuckquesta.inc"
+.include "data/quests/stealtheaxe.inc"
 // .include "data/quests/unknownchuckquestb.inc"
 // .include "data/quests/biomeresearch.inc"
 .include "data/quests/berrysustainability.inc"
@@ -1467,3 +1467,5 @@ Script_RemoveTint::
 	.include "data/maps/Psfroute15/scripts.inc"
 
 	.include "data/maps/Underwater_Psfroute15/scripts.inc"
+
+	.include "data/maps/Berkeley_University/scripts.inc"
