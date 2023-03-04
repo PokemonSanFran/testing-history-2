@@ -144,7 +144,7 @@ static void Task_RunPerStepCallback(u8 taskId)
 #define tAmbientCryState data[1]
 #define tAmbientCryDelay data[2]
 
-#define TIME_UPDATE_INTERVAL (1 << 12)
+#define TIME_UPDATE_INTERVAL (1 << 11)
 
 static void RunTimeBasedEvents(s16 *data)
 {
@@ -154,11 +154,13 @@ static void RunTimeBasedEvents(s16 *data)
         if (gMain.vblankCounter1 & TIME_UPDATE_INTERVAL)
         {
             if (QuestMenu_GetSetQuestState(QUEST_GARDENCLEANUP, FLAG_GET_COMPLETED)
-             && VarGet(VAR_GARDEN_CLEANUP_QUEST_TIME) <= 360)
+             && QuestMenu_GetSetQuestState(QUEST_GARDENCLEANUPADVANCED, FLAG_GET_ACTIVE)
+             && !QuestMenu_GetSetQuestState(QUEST_GARDENCLEANUPADVANCED, FLAG_GET_COMPLETED)
+             && VarGet(VAR_GARDEN_CLEANUP_QUEST_TIME) <= 720)
             {
-                // Increase the value of VAR_GARDEN_CLEANUP_QUEST_TIME every 4096 frames if
-                // the Player completed QUEST_GARDENCLEANUP until VAR_GARDEN_CLEANUP_QUEST_TIME
-                // reaches a value of 360.
+                // Increase the value of VAR_GARDEN_CLEANUP_QUEST_TIME every 4096 frames which is
+                // slightly more than 1 minute, if the Player completed QUEST_GARDENCLEANUP
+                // until VAR_GARDEN_CLEANUP_QUEST_TIME reaches a value of 720 (720 minutes = 12 hours).
                 VarSet(VAR_GARDEN_CLEANUP_QUEST_TIME, VarGet(VAR_GARDEN_CLEANUP_QUEST_TIME) + 1);
             }
             if (QuestMenu_GetSetQuestState(QUEST_GEMARTIST, FLAG_GET_ACTIVE)
