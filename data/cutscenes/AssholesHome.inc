@@ -12,6 +12,7 @@ AssholesHome_WalkToPlayer_Script::
 	playbgm MUS_ENCOUNTER_CHAMPION, TRUE
 	applymovement 3, AssholesHomes_WalkToPlayer_Movement
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	goto AssholesHome_Archer_Dialogue
 	return
 
@@ -35,8 +36,8 @@ AssholesHome_BattleEvent_Script_3:
 
 AssholesHome_Archer_Dialogue::
 	setvar VAR_ALAMEDA_STATE, SAVE_ARCHER_ALAMEDA
-	msgbox gText_AssholesHome_JudgingFromSwarm, MSGBOX_DEFAULT, SPEAKER_ARCHER
-	msgbox gText_AssholesHome_ReallyHopingLastTime, MSGBOX_DEFAULT, SPEAKER_ZOEY
+	msgbox gText_AssholesHome_JudgingFromSwarm, , SPEAKER_ARCHER
+	msgbox gText_AssholesHome_ReallyHopingLastTime, , SPEAKER_ZOEY
 	closemessage
 	call Common_EventScript_SaveGame
 	closemessage

@@ -518,6 +518,11 @@ const u8 gText_Quest_PandaPride_Desc[] =_("Lorem Desc");
 const u8 gText_Quest_PandaPride_DoneDesc[] =_("Done Desc");
 const u8 gText_Quest_PandaPride_Map[] =_("Chinatown");
 
+const u8 gText_Quest_StealTheAxe_Name[] =_("Steal The Axe");
+const u8 gText_Quest_StealTheAxe_Desc[] =_("Lorem Desc");
+const u8 gText_Quest_StealTheAxe_DoneDesc[] =_("Done Desc");
+const u8 gText_Quest_StealTheAxe_Map[] =_("Alameda");
+
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
 const u8 gText_Quest_HauntABuilding_Sub1_Desc[] = _("You brought Hunter a Litwick.");

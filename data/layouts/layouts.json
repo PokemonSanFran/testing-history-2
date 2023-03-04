@@ -6000,6 +6000,16 @@
       "secondary_tileset": "gTileset_Underwater",
       "border_filepath": "data/layouts/Underwater_Psfroute15/border.bin",
       "blockdata_filepath": "data/layouts/Underwater_Psfroute15/map.bin"
+    },
+    {
+      "id": "LAYOUT_BERKELEY_UNIVERSITY",
+      "name": "Berkeley_University_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Berkeley_University/border.bin",
+      "blockdata_filepath": "data/layouts/Berkeley_University/map.bin"
     }
   ]
 }

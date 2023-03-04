@@ -6,7 +6,7 @@ Alameda_MapScripts::
 
 Alameda_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Alameda_LayoutSwap_Script
-	call Quest_UnknownChuckA_HideLeader_Script
+	call Quest_StealTheAxe_HideLeader_Script
 	call Alameda_ObjectVisibility_Script
 	call Quest_CutePokemon_HideMelissaD_Script
 	call Earthquake_HideTransport_Script

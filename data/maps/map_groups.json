@@ -232,7 +232,8 @@
   "gMapGroup_IndoorBerkeley": [
     "Berkeley_Gym",
     "Berkeley_BreedingCenter",
-    "Berkeley_IceCreamShop"
+    "Berkeley_IceCreamShop",
+    "Berkeley_University"
   ],
   "gMapGroup_IndoorFortpoint": [
     "Fortpoint_Roof"

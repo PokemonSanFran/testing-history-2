@@ -69,18 +69,28 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    warpsilent(MAP_PSFROUTE15,40,61)
+    setflag(FLAG_BADGE01_GET)
+    setflag(FLAG_BADGE02_GET)
+    setflag(FLAG_BADGE03_GET)
+    setflag(FLAG_BADGE04_GET)
+    setflag(FLAG_BADGE05_GET)
+    setflag(FLAG_BADGE06_GET)
+    setvar(VAR_CHUCK_STATE,BATTLE_1_COMPLETE)
+    warpsilent(MAP_ALAMEDA, 22,12)
 }
 
 script Debug_Script_2{
-    givecustommon(SPECIES_MEWTWO,100,ITEM_LEFTOVERS,ITEM_LURE_BALL,NATURE_MODEST,2,0,0,4,252,0,252,31,31,31,31,31,31,MOVE_SURF,MOVE_CALM_MIND,MOVE_SPLASH,MOVE_ICE_BEAM) 
-        goto(Quest_Allthatglittersmightbegold_CoreEncounter_Script)
+        initclock(14,0)
+    //startquest(QUEST_STEALTHEAXE)
+    warpsilent(MAP_BERKELEY,14,0)
 }
 
 script Debug_Script_3{
-    warp(MAP_JAPANTOWN_BALLS,0)
+    startquest(QUEST_STEALTHEAXE)
+    warpsilent(MAP_BERKELEY,14,0)
 }
 script Debug_Script_4{
+    warpsilent(MAP_BERKELEY,14,0)
 }
 
 script Debug_Script_5{

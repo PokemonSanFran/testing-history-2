@@ -1262,6 +1262,11 @@ extern const u8 gText_Quest_PandaPride_Desc[];
 extern const u8 gText_Quest_PandaPride_DoneDesc[];
 extern const u8 gText_Quest_PandaPride_Map[];
 
+extern const u8 gText_Quest_StealTheAxe_Name[];
+extern const u8 gText_Quest_StealTheAxe_Desc[];
+extern const u8 gText_Quest_StealTheAxe_DoneDesc[];
+extern const u8 gText_Quest_StealTheAxe_Map[];
+
 extern const u8 gText_Quest_Recruitlocalartists_Sub1_Name[];
 extern const u8 gText_Quest_Recruitlocalartists_Sub1_Desc[];
 extern const u8 gText_Quest_Recruitlocalartists_Sub1_Map[];

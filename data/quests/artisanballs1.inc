@@ -638,11 +638,16 @@ ArtisanBallsShop:
 Quest_ArtisanBalls3_DuringProgressCheck_Script::
 	returnqueststate QUEST_ARTISANBALLS3
 	switch VAR_RESULT
-	case QUEST_MENU_SET_ACTIVE, Quest_ArtisanBalls3_DuringProgressCheck_Script_2
+	case QUEST_MENU_SET_REWARD, Quest_ArtisanBalls3_DuringProgressCheck_Script_2
+	case QUEST_MENU_SET_ACTIVE, Quest_ArtisanBalls3_DuringProgressCheck_Script_3
 	goto Quest_ArtisanBalls3_Start_Dialogue
 	return
 
 Quest_ArtisanBalls3_DuringProgressCheck_Script_2:
+	goto Quest_ArtisanBalls3_Reward_Dialogue
+	return
+
+Quest_ArtisanBalls3_DuringProgressCheck_Script_3:
 	goto Quest_ArtisanBalls3_Active_Dialogue
 	return
 
@@ -658,6 +663,11 @@ Quest_ArtisanBalls3_Start_Dialogue::
 Quest_ArtisanBalls3_Active_Dialogue::
 	msgbox gText_Quest_ArtisanBalls3_CantWaitToSee, MSGBOX_NPC, SPEAKER_SERGEY
 	end
+
+
+Quest_ArtisanBalls3_Reward_Dialogue::
+	goto Quest_ArtisanBalls3_DebugA_Script
+	return
 
 
 Quest_ArtisanBalls3_Reward_Cutscene::

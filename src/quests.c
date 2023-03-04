@@ -2746,11 +2746,11 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        0
 	),
 	side_quest(
-	        gText_Quest_UnknownChuckQuestA_Name,
-	        gText_Quest_UnknownChuckQuestA_Desc,
-	        gText_Quest_UnknownChuckQuestA_DoneDesc,
-	        gText_Quest_UnknownChuckQuestA_Map,
-	        OBJ_EVENT_GFX_NORMAN,
+	        gText_Quest_StealTheAxe_Name,
+	        gText_Quest_StealTheAxe_Desc,
+	        gText_Quest_StealTheAxe_DoneDesc,
+	        gText_Quest_StealTheAxe_Map,
+	        OBJ_EVENT_GFX_MART_EMPLOYEE,
 	        OBJECT,
 	        NULL,
 	        0
@@ -3428,7 +3428,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJECT,
 	        NULL,
 	        0
-	),
+	)
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

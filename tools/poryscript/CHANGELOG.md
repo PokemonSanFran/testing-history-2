@@ -7,22 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 Nothing, yet.
 
-## [3.0.1] - 2023-01-08
-### Fixed
-- Fix bug where `end` and `return` commands could cause labels to not render.
-
-## [3.0.0] - 2022-11-19
-### Changed
-- Font configuration file is now called `font_config.json`, and each font in that file contains a `maxLineLength` used by `format()`. The command-line option `-fw` has been renamed to `-fc` to reflect the new name of the font configuration file.
-
-## [2.14.0] - 2022-06-27
-### Added
-- Add the ability to define sub-labels inside `script` statements. This is useful in some cases where it's more ergonomic to directly jump to a desired location inside a script, similar to C's goto labels.
-
-## [2.13.0] - 2022-06-16
-### Added
-- Add `mart` statement, which is a convenient way to define a list of items used with the decomp's `pokemart` script command. Prior to this addition, the mart data had to be encoded using Poryscript's `raw` statement.
-
 ## [2.12.0] - 2021-12-27
 ### Added
 - Add `value()` operator, which can be used on the right-hand side of a `var()` comparison. It will force a `compare_var_to_value` command to be output. This makes it possible to compare values that occupy the same range as vars (`0x4000 <= x <= 0x40FF` and `0x8000 <= x <= 0x8015`).
@@ -133,11 +117,7 @@ Nothing, yet.
 ## [1.0.0] - 2019-08-27
 Initial Release
 
-[Unreleased]: https://github.com/huderlem/poryscript/compare/3.0.1...HEAD
-[3.0.1]: https://github.com/huderlem/poryscript/compare/3.0.0...3.0.1
-[3.0.0]: https://github.com/huderlem/poryscript/compare/2.14.0...3.0.0
-[2.14.0]: https://github.com/huderlem/poryscript/compare/2.13.0...2.14.0
-[2.13.0]: https://github.com/huderlem/poryscript/compare/2.12.0...2.13.0
+[Unreleased]: https://github.com/huderlem/poryscript/compare/2.12.0...HEAD
 [2.12.0]: https://github.com/huderlem/poryscript/compare/2.11.0...2.12.0
 [2.11.0]: https://github.com/huderlem/poryscript/compare/2.10.0...2.11.0
 [2.10.0]: https://github.com/huderlem/poryscript/compare/2.9.0...2.10.0
