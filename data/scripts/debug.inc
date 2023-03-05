@@ -60,19 +60,13 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	setflag FLAG_BADGE01_GET
-	setflag FLAG_BADGE02_GET
-	setflag FLAG_BADGE03_GET
-	setflag FLAG_BADGE04_GET
-	setflag FLAG_BADGE05_GET
-	setflag FLAG_BADGE06_GET
-	setvar VAR_CHUCK_STATE, BATTLE_1_COMPLETE
-	warpsilent MAP_ALAMEDA, 22, 12
+	initclock 14, 0
+	warpsilent MAP_BERKELEY, 14, 0
 	return
 
 
 Debug_Script_2::
-	initclock 14, 0
+	initclock 21, 0
 	warpsilent MAP_BERKELEY, 14, 0
 	return
 
@@ -84,17 +78,15 @@ Debug_Script_3::
 
 
 Debug_Script_4::
-	warpsilent MAP_BERKELEY, 14, 0
 	return
 
 
 Debug_Script_5::
-	multi_fixed_2_vs_1 TRAINER_STEVEN, gText_Manhunt_PleaseDontHurtUs, TRAINER_MAY_LILYCOVE_MUDKIP, TRAINER_BACK_PIC_MAY
 	return
 
 
 Debug_Script_6::
-	end
+	return
 
 
 Debug_Script_7::

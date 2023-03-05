@@ -1,0 +1,11 @@
+//gText_Berkeley_University_
+mapscripts Berkeley_University_MapScripts{
+
+}
+
+script Berkeley_University_DisplayCase_Script{
+    bufferitemname(STR_VAR_2,ITEM_COIN_CASE)
+    //msgbox(gText_Berkeley_University_DisplayCase)
+
+    //msgbox(gText_Berkeley_University_
+}

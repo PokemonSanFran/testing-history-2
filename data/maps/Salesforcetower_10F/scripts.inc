@@ -12,7 +12,7 @@ Salesforcetower_10F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 Salesforcetower_10F_MapScripts_OnTransition::
-	switch VAR_SOMA_STATE
+	switch VAR_SALESFORCETOWER_CONFERENCE_STATE
 	case 4, Salesforcetower_10F_MapScripts_OnTransition_2
 	return
 

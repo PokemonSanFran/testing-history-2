@@ -87,6 +87,11 @@ LakeMerritt_Herb_Dealer_Script::
 	waitmessage
 	pokemart HerbDealerShop
 	msgbox gText_Lakemerritt_ThanksComeAgain
+	compare VAR_TEMP_1, MAP_LAKEMERRITT
+	goto_if_eq LakeMerritt_Herb_Dealer_Script_1
+	return
+
+LakeMerritt_Herb_Dealer_Script_1:
 	goto Quest_ShutDownMedicineMan_MakePurchase_Dialogue
 	return
 

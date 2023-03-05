@@ -7,7 +7,7 @@ Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call swagbag2_SetUp_Object_Script
 	call Quest_GetTheBand_HideBikerA_Script
 	call SorryAboutMyFriends_Ariana_Visible_Script
-	call Quest_StealTheAxe_CheckTime_Script
+	call Quest_StealTheAxe_UnlockDoor_Script
 	return
 
 Berkeley_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

@@ -36,7 +36,7 @@ script ArcherAlpha_Event_Script{
 script NewAssholeAppears_Intro_Dialogue {
     setvar(VAR_PSFROUTE9_STATE,SAVED_BEFORE_ARCHER_PSFROUTE9)
     msgbox(gText_NewAssholeAppears_YouLookFamiliar,MSGBOX_NPC,,SPEAKER_ARCHER)
-    if (var(VAR_SOMA_STATE) > DEFEATED_WHITNEY){
+    if (var(VAR_SALESFORCETOWER_CONFERENCE_STATE) > DEFEATED_WHITNEY){
         msgbox(gText_NewAssholeAppears_YeahYouHadSome,,SPEAKER_ZOEY)
     }else{
         msgbox(gText_NewAssholeAppears_JustStarted,,SPEAKER_ZOEY)

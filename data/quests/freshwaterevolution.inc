@@ -37,7 +37,8 @@ Quest_FreshwaterEvolution_StartCutscene_Dialogue::
 	addobject 2
 	playmoncry SPECIES_OCTILLERY, CRY_MODE_ENCOUNTER
 	waitmoncry
-	compare VAR_0x8000, 999
+	specialvar VAR_0x8000, IsPartyFullOfShinyOctillery
+	compare VAR_0x8000, TRUE
 	goto_if_eq Quest_FreshwaterEvolution_StartCutscene_Dialogue_2
 Quest_FreshwaterEvolution_StartCutscene_Dialogue_1:
 	bufferleadmonspeciesname STR_VAR_1

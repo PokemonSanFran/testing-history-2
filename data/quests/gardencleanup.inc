@@ -32,9 +32,8 @@ Quest_GardenCleanUp_ClearGarden_Script_2:
 
 
 Quest_GardenCleanUp_CheckCompletion_Script::
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_GARDENCLEANUP
-	compare VAR_RESULT, 0
-	goto_if_ne Quest_GardenCleanUp_CheckCompletion_Script_2
+	compare VAR_GARDEN_CLEANUP_QUEST_TIME, 360
+	goto_if_eq Quest_GardenCleanUp_CheckCompletion_Script_2
 Quest_GardenCleanUp_CheckCompletion_Script_1:
 	return
 

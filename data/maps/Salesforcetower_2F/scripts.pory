@@ -6,8 +6,8 @@ mapscripts Salesforcetower_2F_MapScripts {
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_SALESFORCETOWER_2F_STATE, PRE_WELCOME_TO_THE_WAR_ROOM: Salesforcetower_2F_MovePlayerIntoPosition_Script
-            VAR_SALESFORCETOWER_2F_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT: Salesforcetower_2F_MovePlayerIntoPosition_Script
+        VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM: Salesforcetower_2F_MovePlayerIntoPosition_Script
+            VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_YOU_REALIZE_WERE_EVIL_RIGHT: Salesforcetower_2F_MovePlayerIntoPosition_Script
             VAR_LETS_BURN_THIS_MOTHER_STATE,DEFEATED_ARCHER_ALCATRAZ: LetsBurnThisMotherDown_MissionComplete_Dialogue
             VAR_HOW_DISAPPOINTING_STATE,DEFEATED_ARIANA_CHINATOWN: HowDisappointing_MissionComplete_Dialogue
             VAR_MANHUNT_STATE,DEFEATED_MANHUNT_GIOVANNI: Manhunt_MissionComplete_Dialogue
@@ -17,7 +17,7 @@ mapscripts Salesforcetower_2F_MapScripts {
 
 script Salesforcetower_2F_MapScripts_OnTransition {
 
-    switch (var(VAR_SALESFORCETOWER_2F_STATE)){
+    switch (var(VAR_SALESFORCETOWER_CONFERENCE_STATE)){
         case 0: 
         case STEPPED_INTO_SABRINA_ROOM:
         case POST_ALWAYS_WATCHING_WAZOWSKI:
@@ -59,7 +59,7 @@ script Salesforcetower_2F_MovePlayerIntoPosition_Script {
                 fadescreen(FADE_FROM_BLACK)
         }
 
-    switch (var(VAR_SALESFORCETOWER_2F_STATE)){
+    switch (var(VAR_SALESFORCETOWER_CONFERENCE_STATE)){
         case PRE_WELCOME_TO_THE_WAR_ROOM: goto(WelcomeToTheWarRoom_ExplainSitaution_Dialogue)
         case PRE_YOU_REALIZE_WERE_EVIL_RIGHT: goto(YouRealizeWereEvilRight_Open_Dialogue)
     }

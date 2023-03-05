@@ -137,12 +137,13 @@ Quest_Restoremarin_CheckPokemon_Script::
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
 	goto_if_eq Quest_Restoremarin_CheckPokemon_Script_2
 Quest_Restoremarin_CheckPokemon_Script_1:
-	compare VAR_RESULT, SPECIES_KRABBY
-	goto_if_eq Quest_Restoremarin_CheckPokemon_Script_6
+	checkspeciesandmove SPECIES_KRABBY, MOVE_KNOCK_OFF, VAR_RESULT
+	compare VAR_RESULT, TRUE
+	goto_if_eq Quest_Restoremarin_CheckPokemon_Script_5
 Quest_Restoremarin_CheckPokemon_Script_4:
 	compare VAR_RESULT, SPECIES_COPPERAJAH
-	goto_if_eq Quest_Restoremarin_CheckPokemon_Script_11
-Quest_Restoremarin_CheckPokemon_Script_9:
+	goto_if_eq Quest_Restoremarin_CheckPokemon_Script_9
+Quest_Restoremarin_CheckPokemon_Script_7:
 	goto Quest_Restoremarin_Cancel_Dialogue
 	return
 
@@ -155,20 +156,15 @@ Quest_Restoremarin_CheckPokemon_Script_5:
 	goto Quest_Restoremarin_TakeMon_Dialogue
 	goto Quest_Restoremarin_CheckPokemon_Script_4
 
-Quest_Restoremarin_CheckPokemon_Script_6:
-	compare VAR_TEMP_1, 1
-	goto_if_ne Quest_Restoremarin_CheckPokemon_Script_5
-	goto Quest_Restoremarin_CheckPokemon_Script_4
-
-Quest_Restoremarin_CheckPokemon_Script_10:
+Quest_Restoremarin_CheckPokemon_Script_8:
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTOREMARIN, SUB_QUEST_2
 	goto Quest_Restoremarin_TakeMon_Dialogue
-	goto Quest_Restoremarin_CheckPokemon_Script_9
+	goto Quest_Restoremarin_CheckPokemon_Script_7
 
-Quest_Restoremarin_CheckPokemon_Script_11:
+Quest_Restoremarin_CheckPokemon_Script_9:
 	compare VAR_TEMP_2, 1
-	goto_if_ne Quest_Restoremarin_CheckPokemon_Script_10
-	goto Quest_Restoremarin_CheckPokemon_Script_9
+	goto_if_ne Quest_Restoremarin_CheckPokemon_Script_8
+	goto Quest_Restoremarin_CheckPokemon_Script_7
 
 
 Quest_Restoremarin_TakeMon_Dialogue::

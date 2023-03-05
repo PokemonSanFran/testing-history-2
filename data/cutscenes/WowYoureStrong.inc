@@ -1,6 +1,6 @@
 WowYoureStrong_HideObject_Script::
 	goto_if_unset FLAG_BADGE03_GET, WowYoureStrong_HideObject_Script_2
-	compare VAR_SOMA_STATE, DEFEATED_WHITNEY
+	compare VAR_SALESFORCETOWER_CONFERENCE_STATE, DEFEATED_WHITNEY
 	goto_if_gt WowYoureStrong_HideObject_Script_2
 WowYoureStrong_HideObject_Script_1:
 	compare VAR_PSFROUTE9_STATE, SAVED_BEFORE_ARCHER_PSFROUTE9
@@ -19,7 +19,7 @@ WowYoureStrong_HideObject_Script_6:
 
 WowYoureStrong_WalkToPlayer_Script::
 	lockall
-	setvar VAR_SOMA_STATE, POST_WOW_YOURE_STRONG
+	setvar VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_WOW_YOURE_STRONG
 	playse SE_PIN
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, TRUE
 	applymovement 1, Common_Movement_ExclamationMark

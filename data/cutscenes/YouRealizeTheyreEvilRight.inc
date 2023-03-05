@@ -308,6 +308,7 @@ YouRealizeTheyreEvilRight_LeaveGift_Script::
 
 YouRealizeTheyreEvilRight_GiveGift_Script::
 	givecustommon SPECIES_GARBODOR, 40, ITEM_BLACK_SLUDGE, ITEM_CHERISH_BALL, NATURE_JOLLY, 2, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_HAZE, MOVE_SELF_DESTRUCT, MOVE_STOMPING_TANTRUM, MOVE_SLUDGE_BOMB, TRUE
+	setvar VAR_TEMP_1, SPECIES_GARBODOR
 	compare VAR_RESULT, 0
 	goto_if_eq YouRealizeTheyreEvilRight_GiveGift_Script_2
 	call YouRealizeTheyreEvilRight_SendGiftToPC_Script

@@ -29,6 +29,8 @@ script Quest_StealTheAxe_HideLeader_Script{
 }
 
 script Quest_StealTheAxe_Event_Script{
+    setvar(VAR_TEMP_0,0)
+    bufferitemname(STR_VAR_2,ITEM_COIN_CASE)
     returnqueststate(QUEST_STEALTHEAXE)
 
         lock
@@ -38,33 +40,87 @@ script Quest_StealTheAxe_Event_Script{
             case QUEST_MENU_SET_REWARD:
                 goto(Quest_StealTheAxe_Reward_Dialogue)
             case QUEST_MENU_SET_ACTIVE:
-                    goto(Quest_StealTheAxe_Active_Dialogue)
+                goto(Quest_StealTheAxe_Active_Dialogue)
             default:
-                        call(Quest_StealTheAxe_CheckItem_Script)
-                            goto(Quest_StealTheAxe_StartQuest_Dialogue)
+                call(Quest_StealTheAxe_CheckItem_Script)
+                goto(Quest_StealTheAxe_StartQuest_Dialogue)
         }
     release
         end
 }
 
 script Quest_StealTheAxe_StartQuest_Dialogue{
-    msgbox(gText_StealTheAxe_PlayerGetToSee)
-        msgbox(gText_StealTheAxe_ShouldntYouBe)
-        msgbox(gText_StealTheAxe_ThatsExactlyWhy)
-        msgbox(gText_StealTheAxe_IJustCameFromThe)
-        msgbox(gText_StealTheAxe_IKeepHearingAbout)
-        msgbox(gText_StealTheAxe_JustLikeWhitney)
-        msgbox(gText_StealTheAxe_IStillDontKnow)
-        msgbox(gText_StealTheAxe_SomebodyWithMyCreds)
-        msgbox(gText_StealTheAxe_ButIfSomebody)
+        msgbox(gText_StealTheAxe_PlayerGetToSee,,SPEAKER_CHUCK)
+        msgbox(gText_StealTheAxe_ShouldntYouBe,,SPEAKER_ZOEY,,EMOTE_CONFUSE)
+        msgbox(gText_StealTheAxe_ThatsExactlyWhy,,SPEAKER_CHUCK)
+        msgbox(gText_StealTheAxe_IJustCameFromThe,,SPEAKER_CHUCK)
+        msgbox(gText_StealTheAxe_IKeepHearingAbout,,SPEAKER_CHUCK)
+        msgbox(gText_StealTheAxe_JustLikeWhitney,,SPEAKER_CHUCK,,EMOTE_ANGRY)
+        msgbox(gText_StealTheAxe_IStillDontKnow,,SPEAKER_CHUCK)
+        msgbox(gText_StealTheAxe_SomebodyWithMyCreds,,SPEAKER_CHUCK)
+        msgbox(gText_StealTheAxe_ButIfSomebody,,SPEAKER_CHUCK)
         startquest(QUEST_STEALTHEAXE)
-        msgbox(gText_StealTheAxe_IllBeHere)
+        msgbox(gText_StealTheAxe_IllBeHere,,SPEAKER_CHUCK)
+        closemessage
+        release
+        end
 }
 
 script Quest_StealTheAxe_Active_Dialogue{
+    msgbox(gText_StealTheAxe_WhatsTheSitrep,MSGBOX_NPC,SPEAKER_CHUCK)
+    msgbox(gText_StealTheAxe_GainingATactical,,SPEAKER_CHUCK)
+    closemessage
+    release
+    end
 }
 
 script Quest_StealTheAxe_Reward_Dialogue{
+    playse(SE_PIN)
+    applymovement(CHUCK,Common_Movement_ExclamationMark)
+    msgbox(gText_StealTheAxe_MissionComplete,,SPEAKER_CHUCK,TAIL_SHOUT,EMOTE_HAPPY)
+    goto(Quest_StealTheAxe_Conclusion_Dialogue)
+}
+
+script Quest_StealTheAxe_Conclusion_Dialogue{
+    applymovement(CHUCK,Common_Movement_FaceAwayPlayer)
+    waitmovement(CHUCK)
+    bufferspeciesname(STR_VAR_1,SPECIES_TOXAPEX)
+    msgbox(gText_StealTheAxe_NowLetsHave,,SPEAKER_CHUCK,TAIL_WHISPER)
+    closemessage
+    playse(SE_PIN)
+    applymovement(CHUCK,Common_Movement_ExclamationMark)
+    msgbox(gText_StealTheAxe_ItsNotDoing,,SPEAKER_CHUCK,TAIL_WHISPER,EMOTE_ANGRY)
+    msgbox(gText_StealTheAxe_StatsAreHoldingSteady,,SPEAKER_CHUCK,TAIL_WHISPER,EMOTE_ANGRY)
+    applymovement(CHUCK,Common_Movement_FacePlayer)
+    waitmovement(CHUCK)
+    msgbox(gText_StealTheAxe_IGotSomeBadIntel,,SPEAKER_CHUCK)
+    closemessage
+    call(Quest_StealTheAxe_HandleMoney_Script)
+    msgbox(gText_StealTheAxe_SeeYouOnTheBattlefield,,SPEAKER_CHUCK)
+    applymovement(CHUCK,Quest_StealTheAxe_LeaveNavalBase_Movement)
+    completequest(QUEST_STEALTHEAXE)
+    removeobject(CHUCK)
+    setvar(VAR_CHUCK_STATE,QUEST_1_COMPLETE)
+    release
+    end
+}
+
+script Quest_StealTheAxe_HandleMoney_Script{
+    showmoneybox(0, 0)
+    waitbuttonpress
+    if (var(VAR_TEMP_0) > 0){
+        addmoney(8000)
+    }
+    else{
+            addmoney(4000)
+        }
+    playse(SE_SHOP)
+    updatemoneybox(0)
+    waitse
+    waitbuttonpress
+    hidemoneybox
+    closemessage
+    return
 }
 
 script Quest_StealTheAxe_CheckItem_Script{
@@ -77,15 +133,34 @@ script Quest_StealTheAxe_CheckItem_Script{
 }
 
 script Quest_StealTheAxe_SecretComplete_Dialogue{
+    setvar(VAR_TEMP_0,1)
+        msgbox(gText_StealTheAxe_PlayerGetToSee,,SPEAKER_CHUCK)
+        msgbox(gText_StealTheAxe_IsThatTheAxe,MSGBOX_YESNO,SPEAKER_CHUCK,,EMOTE_SHOCK)
+        if (var(VAR_RESULT)){
+            goto(Quest_StealTheAxe_Conclusion_Dialogue)
+        }else{
+            msgbox(gText_StealTheAxe_ISeeWhen,,SPEAKER_CHUCK)
+        }
+    release
+        end
 }
 
-script Quest_StealTheAxe_CheckTime_Script{
+script Quest_StealTheAxe_CheckIfNight_Script{
     gettime
-        if (var(VAR_0x8000) < 21 && (var(VAR_0x8000) > 5)) {
-            setflag(FLAG_UNLOCK_DOOR)
-                release
-                end
+        setvar(VAR_TEMP_2,0)
+        if (var(VAR_0x8000) > 20 || (var(VAR_0x8000) < 6)) {
+            setvar(VAR_TEMP_2,1)
         }
+    return
+}
+
+script Quest_StealTheAxe_UnlockDoor_Script{
+    call(Quest_StealTheAxe_CheckIfNight_Script)
+    if (var(VAR_TEMP_2) == 1){
+        setflag(FLAG_UNLOCK_DOOR)
+            release
+            end
+    }
 }
 
 script Quest_StealTheAxe_LockedDoor_Dialogue{
@@ -96,38 +171,72 @@ script Quest_StealTheAxe_LockedDoor_Dialogue{
     return
 }
 
+movement Quest_StealTheAxe_LeaveNavalBase_Movement{
+    walk_up * 6
+    step_end
+}
+
 text gText_StealTheAxe_IShould{
     format("Hmm... I should come back tonight.")
 }
 
 text gText_StealTheAxe_PlayerGetToSee{
-    format("")
+    format("{PLAYER}! Good to see you.")
 }
 text gText_StealTheAxe_ShouldntYouBe{
-    format("")
+    format("Shouldn't you be fighting some war or something?")
 }
 text gText_StealTheAxe_ThatsExactlyWhy{
-    format("")
+    format("That's exactly why I'm here!")
 }
 text gText_StealTheAxe_IJustCameFromThe{
-    format("")
+    format("I just came from Berkeleyuniversity. They've got a display for the {STR_VAR_2}, one of the prized possessions of their Athletic department.")
 }
 text gText_StealTheAxe_IKeepHearingAbout{
-    format("")
+    format("I've heard rumors that this axe provides incredible power to the wielder!")
 }
 text gText_StealTheAxe_JustLikeWhitney{
-    format("")
+    format("But just like Whtiney, they've got it sealed up in some glass case! Just the intelligence that had it in our active possesion would be a huge tactical advantage!")
 }
 text gText_StealTheAxe_IStillDontKnow{
-    format("")
+    format("I still don't know what this tactical advantage is for...")
 }
 text gText_StealTheAxe_SomebodyWithMyCreds{
-    format("")
+    format("Somebody with my credentials can't be seen sneaking into Berkeleyuniversity at night, slipping past all the guards, and stealing the {STR_VAR_2} with almost zero security...")
 }
 text gText_StealTheAxe_ButIfSomebody{
-    format("")
+    format("But if somebody else did that, I would be willing to pay hansomely for it.")
 }
 text gText_StealTheAxe_IllBeHere{
-    format("")
+    format("I'll be here.")
 }
-
+text gText_StealTheAxe_WhatsTheSitrep{
+    format("What's the sitrep?")
+}
+text gText_StealTheAxe_GainingATactical{
+    format("My analysis tells me that the best strategic window to infilitate Berkeleyuniversity and get the {STR_VAR_2} is between 21:00 and 6:00.")
+}
+text gText_StealTheAxe_MissionComplete{
+    format("Mission complete!")
+}
+text gText_StealTheAxe_NowLetsHave{
+    format("Now let's have my {STR_VAR_1} hold it...")
+}
+text gText_StealTheAxe_ItsNotDoing{
+    format("...its not doing anything!")
+}
+text gText_StealTheAxe_StatsAreHoldingSteady{
+    format("Stats are holding steady... mood hasn't changed. This isn't making any difference!")
+}
+text gText_StealTheAxe_IGotSomeBadIntel{
+    format("I got some bad intel out there. I think this thing is a hunk of junk. You can keep it. And as promised...")
+}
+text gText_StealTheAxe_SeeYouOnTheBattlefield{
+    format("See you on the battlefield solider.")
+}
+text gText_StealTheAxe_IsThatTheAxe{
+    format("Is that the {STR_VAR_2}? I would pay very handsomely if I could buy it from you, {PLAYER}.")
+}
+text gText_StealTheAxe_ISeeWhen{
+    format("I see. When you change your mind, I'll be here.")
+}

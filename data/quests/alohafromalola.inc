@@ -192,8 +192,8 @@ Quest_Alohafromalola_CheckTime_Script_3:
 
 
 Quest_Alohafromalola_CheckParty_Script::
-	random 1
-	compare VAR_RESULT, 0
+	specialvar VAR_RESULT, AlohaFromAlolaCheck
+	compare VAR_RESULT, TRUE
 	goto_if_eq Quest_Alohafromalola_CheckParty_Script_2
 Quest_Alohafromalola_CheckParty_Script_1:
 	msgbox gText_Alohafromalola_YourParty, , SPEAKER_WHITNEY

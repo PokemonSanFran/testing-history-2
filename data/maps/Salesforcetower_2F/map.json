@@ -305,7 +305,7 @@
       "x": 9,
       "y": 36,
       "elevation": 0,
-      "var": "VAR_SALESFORCETOWER_2F_STATE",
+      "var": "VAR_SALESFORCETOWER_CONFERENCE_STATE",
       "var_value": "0",
       "script": "AlwaysWatchingWazowski_FloorWelcome_Script"
     },
@@ -314,7 +314,7 @@
       "x": 10,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_SALESFORCETOWER_2F_STATE",
+      "var": "VAR_SALESFORCETOWER_CONFERENCE_STATE",
       "var_value": "1",
       "script": "AlwaysWatchingWazowski_MovePlayerIntoPlace_Script"
     },
@@ -323,7 +323,7 @@
       "x": 7,
       "y": 8,
       "elevation": 0,
-      "var": "VAR_SALESFORCETOWER_2F_STATE",
+      "var": "VAR_SALESFORCETOWER_CONFERENCE_STATE",
       "var_value": "1",
       "script": "AlwaysWatchingWazowski_MovePlayerIntoPlace_Script"
     }

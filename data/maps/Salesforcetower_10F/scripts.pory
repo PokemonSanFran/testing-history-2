@@ -7,7 +7,7 @@ mapscripts Salesforcetower_10F_MapScripts {
 }
 
 script Salesforcetower_10F_MapScripts_OnTransition {
-    switch (var(VAR_SOMA_STATE)){
+    switch (var(VAR_SALESFORCETOWER_CONFERENCE_STATE)){
         case 4: call(TheGangsAllHere_ObjectCleanUp_Script)
     }
 

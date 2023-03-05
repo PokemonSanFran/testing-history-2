@@ -584,7 +584,7 @@ void JumpPlayerTo_FlyingBlind()
 void JumpPlayerTo_WowYoureStrong()
 {
 	JumpPlayerTo_EnterWhitney();
-	VarSet(VAR_SOMA_STATE, POST_WOW_YOURE_STRONG);
+	VarSet(VAR_SALESFORCETOWER_CONFERENCE_STATE, POST_WOW_YOURE_STRONG);
 	SetWarpDestination(0, 7, 0, -1, -1);
 
 }

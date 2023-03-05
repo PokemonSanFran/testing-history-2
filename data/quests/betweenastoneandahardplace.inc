@@ -26,8 +26,8 @@ Quest_BetweenAStoneAndAHardPlace_Event_Script_5:
 
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue::
 	msgbox gText_Quest_BetweenAStoneAndAHardPlace_DidYouHear, MSGBOX_NPC, SPEAKER_TROLLEY_GUY
-	buffernumberstring STR_VAR_1, VAR_NUM_TROLLEY_RIDES
-	switch VAR_NUM_TROLLEY_RIDES
+	getgamestat GAME_STAT_TROLLEY_RIDES, STR_VAR_1
+	switch VAR_RESULT
 	case 0, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_3
 	case 1, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_4
 	case 2, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_4
@@ -40,7 +40,6 @@ Quest_BetweenAStoneAndAHardPlace_Active_Dialogue::
 	case 9, Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_6
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_1:
 	incrementgamestat GAME_STAT_TROLLEY_RIDES
-	addvar VAR_NUM_TROLLEY_RIDES, 1
 	end
 
 Quest_BetweenAStoneAndAHardPlace_Active_Dialogue_3:

@@ -2750,7 +2750,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_StealTheAxe_Desc,
 	        gText_Quest_StealTheAxe_DoneDesc,
 	        gText_Quest_StealTheAxe_Map,
-	        OBJ_EVENT_GFX_MART_EMPLOYEE,
+	        OBJ_EVENT_GFX_NORMAN,
 	        OBJECT,
 	        NULL,
 	        0

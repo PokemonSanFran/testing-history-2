@@ -161,7 +161,7 @@
       "x": 8,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_SOMA_STATE",
+      "var": "VAR_SALESFORCETOWER_CONFERENCE_STATE",
       "var_value": "2",
       "script": "TheGangsAllHere_WhatBringsYou_Dialogue"
     },
@@ -170,7 +170,7 @@
       "x": 8,
       "y": 4,
       "elevation": 0,
-      "var": "VAR_SOMA_STATE",
+      "var": "VAR_SALESFORCETOWER_CONFERENCE_STATE",
       "var_value": "3",
       "script": "TheGangsAllHere_OfficeIsntThatWay_Script"
     },
@@ -179,7 +179,7 @@
       "x": 7,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_SOMA_STATE",
+      "var": "VAR_SALESFORCETOWER_CONFERENCE_STATE",
       "var_value": "3",
       "script": "TheGangsAllHere_ThisIsOffice_Script"
     },

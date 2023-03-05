@@ -54,7 +54,7 @@ Quest_DexCompletion_Debug_Script_5:
 
 
 Quest_DexCompletion_MarkQuests_Script::
-	callnative ScriptGetPokedexInfo
+	specialvar VAR_0x8006, GetPokedexCompletionRate
 	compare VAR_0x8006, 99
 	goto_if_gt Quest_DexCompletion_MarkQuests_Script_2
 Quest_DexCompletion_MarkQuests_Script_1:

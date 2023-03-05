@@ -68,7 +68,7 @@ ArcherAlpha_Event_Script_3:
 NewAssholeAppears_Intro_Dialogue::
 	setvar VAR_PSFROUTE9_STATE, SAVED_BEFORE_ARCHER_PSFROUTE9
 	msgbox gText_NewAssholeAppears_YouLookFamiliar, MSGBOX_NPC, , SPEAKER_ARCHER
-	compare VAR_SOMA_STATE, DEFEATED_WHITNEY
+	compare VAR_SALESFORCETOWER_CONFERENCE_STATE, DEFEATED_WHITNEY
 	goto_if_gt NewAssholeAppears_Intro_Dialogue_2
 	msgbox gText_NewAssholeAppears_JustStarted, , SPEAKER_ZOEY
 NewAssholeAppears_Intro_Dialogue_1:

@@ -38,7 +38,7 @@ script AlwaysWatchingWazowski_MovePlayerIntoPlace_Script{
 script AlwaysWatchingWazowski_Intro_Dialogue{
         msgbox(gText_AlwaysWatchingWazowski_IImagineAllTheScreens,MSGBOX_DEFAULT,SPEAKER_SABRINA)
 
-        if(var(VAR_SOMA_STATE) > START_THE_GANGS_ALL_HERE){
+        if(var(VAR_SALESFORCETOWER_CONFERENCE_STATE) > START_THE_GANGS_ALL_HERE){
             msgbox(gText_AlwaysWatchingWazowski_IWishHadPickedADifferentTime,MSGBOX_DEFAULT,SPEAKER_SABRINA)
         }   else {
             msgbox(gText_AlwaysWatchingWazowski_IWishYouHadVisited,MSGBOX_DEFAULT,SPEAKER_SABRINA)

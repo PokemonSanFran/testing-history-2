@@ -72,6 +72,12 @@ Quest_GetTheBand_RemoveBikers_Script::
 
 
 Quest_GetTheBand_Interact_BikerA_Dialogue::
+	specialvar VAR_TEMP_1, GetPlayerAvatarBike
+	compare VAR_TEMP_1, 0
+	goto_if_ne Quest_GetTheBand_Interact_BikerA_Dialogue_2
+	end
+
+Quest_GetTheBand_Interact_BikerA_Dialogue_2:
 	msgbox gText_GetTheBand_TheBikersSentYou, MSGBOX_NPC
 	call Quest_GetTheBand_RemoveBikers_Script
 	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_GETTHEBANDBACKTOGETHER, SUB_QUEST_1

@@ -31,7 +31,7 @@ AlwaysWatchingWazowski_MovePlayerIntoPlace_Script::
 
 AlwaysWatchingWazowski_Intro_Dialogue::
 	msgbox gText_AlwaysWatchingWazowski_IImagineAllTheScreens, MSGBOX_DEFAULT, SPEAKER_SABRINA
-	compare VAR_SOMA_STATE, START_THE_GANGS_ALL_HERE
+	compare VAR_SALESFORCETOWER_CONFERENCE_STATE, START_THE_GANGS_ALL_HERE
 	goto_if_gt AlwaysWatchingWazowski_Intro_Dialogue_2
 	msgbox gText_AlwaysWatchingWazowski_IWishYouHadVisited, MSGBOX_DEFAULT, SPEAKER_SABRINA
 AlwaysWatchingWazowski_Intro_Dialogue_1:

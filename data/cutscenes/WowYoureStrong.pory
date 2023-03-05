@@ -5,7 +5,7 @@ const FLAG_HIDE_ROSE = FLAG_TEMP_1
 const FLAG_HIDE_ARCHER = FLAG_TEMP_6
 
 script WowYoureStrong_HideObject_Script {
-    if(!flag(FLAG_BADGE03_GET) || (var(VAR_SOMA_STATE) > DEFEATED_WHITNEY)) {
+    if(!flag(FLAG_BADGE03_GET) || (var(VAR_SALESFORCETOWER_CONFERENCE_STATE) > DEFEATED_WHITNEY)) {
         setflag(FLAG_HIDE_ROSE)
         setflag(FLAG_HIDE_ARCHER)
     }
@@ -16,7 +16,7 @@ script WowYoureStrong_HideObject_Script {
 
 script WowYoureStrong_WalkToPlayer_Script {
     lockall
-    setvar(VAR_SOMA_STATE,POST_WOW_YOURE_STRONG)
+    setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE,POST_WOW_YOURE_STRONG)
     playse(SE_PIN)
     playbgm(MUS_RG_ENCOUNTER_DEOXYS,TRUE) 
     applymovement(ROSE,Common_Movement_ExclamationMark)
