@@ -60,31 +60,29 @@ Debug_Weather::
 
 
 Debug_Script_1::
+	questmenu QUEST_MENU_SET_REWARD, QUEST_THEBOYWHOCRIESWITHWOLVES
 	end
 
 
 Debug_Script_2::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_INSTALLNATUREPROBES
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_BUTONLYINMYBACKYARD
 	end
 
 
 Debug_Script_3::
-	warpsilent MAP_TREASUREISLAND_RESTAURANT, 0
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_THEBOYWHOCRIESWITHWOLVES
 	end
 
 
 Debug_Script_4::
-	warpsilent MAP_TENDERLOIN, 2, 11
 	end
 
 
 Debug_Script_5::
-	warpsilent MAP_PSFROUTE5, 0
 	end
 
 
 Debug_Script_6::
-	warpsilent MAP_MARIN, 13, 9
 	end
 
 

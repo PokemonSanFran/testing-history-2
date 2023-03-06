@@ -682,3 +682,57 @@ Marin_Ranger_Quest_Manofmanyhats_EventScript_ItemRockyHelmet::
 Marin_Ranger_Quest_Manofmanyhats_EventScript_ItemWideLens::
     finditem ITEM_WIDE_LENS 
     end
+
+Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff1::
+    finditem ITEM_ROTOM_CATALOG
+    subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_1
+    call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
+    end
+
+Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff2::
+    finditem ITEM_GRACIDEA
+    subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_2
+    call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
+    end
+
+Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff3::
+    finditem ITEM_REVEAL_GLASS
+    subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_3
+    call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
+    end
+
+Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff4::
+    finditem ITEM_DNA_SPLICERS
+    subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_4
+    call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
+    end
+
+Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff5::
+    finditem ITEM_ZYGARDE_CUBE
+    subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_5
+    call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
+    end
+
+Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff6::
+    finditem ITEM_PRISON_BOTTLE
+    subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_6
+    call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
+    end
+
+Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff7::
+    finditem ITEM_N_SOLARIZER
+    subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_7
+    call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
+    end
+
+Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff8::
+    finditem ITEM_N_LUNARIZER
+    subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_8
+    call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
+    end
+
+Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff9::
+    finditem ITEM_REINS_OF_UNITY
+    subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_9
+    call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
+    end

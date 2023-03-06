@@ -79,11 +79,8 @@
 #define FLAG_UNUSED_0x40 0x40 //Unused Flag
 #define FLAG_UNUSED_0x41 0x41 //Unused Flag
 #define FLAG_UNUSED_0x42 0x42 //Unused Flag
-#define FLAG_ITEM_MARIN_RANGER_HEADPHONES   0x42
 #define FLAG_UNUSED_0x43 0x43 //Unused Flag
-#define FLAG_ITEM_MARIN_RANGER_WIDE_LENS    0x43
 #define FLAG_UNUSED_0x44 0x44 //Unused Flag
-#define FLAG_ITEM_MARIN_RANGER_ROCKY_HELMET 0x44
 #define FLAG_HIDE_PSFROUTE61_BIANCA 0x45 // Previously Unused Flag
 #define FLAG_HIDE_MUIRWOODS_BIANCA    0x46 // Previously Unused Flag
 #define FLAG_HIDE_MUIRWOODS_SIEBOLD 0x47 //Previously Unused Flag
@@ -1054,16 +1051,28 @@
 
 // Item Ball Flags
 #define FLAG_ITEM_ROUTE_102_POTION                                  0x3E8
+#define FLAG_ITEM_MARIN_RANGER_HEADPHONES                           0x3E8
 #define FLAG_ITEM_ROUTE_116_X_SPECIAL                               0x3E9
+#define FLAG_ITEM_MARIN_RANGER_WIDE_LENS                            0x3E9
 #define FLAG_ITEM_ROUTE_104_PP_UP                                   0x3EA
+#define FLAG_ITEM_MARIN_RANGER_ROCKY_HELMET                         0x3EA
+#define FLAG_ITEM_LAKEMERCED_STUFF1                                 0x3EB
 #define FLAG_ITEM_ROUTE_105_IRON                                    0x3EB
+#define FLAG_ITEM_LAKEMERCED_STUFF2                                 0x3EC
 #define FLAG_ITEM_ROUTE_106_PROTEIN                                 0x3EC
+#define FLAG_ITEM_LAKEMERCED_STUFF3                                 0x3ED
 #define FLAG_ITEM_ROUTE_109_PP_UP                                   0x3ED
+#define FLAG_ITEM_LAKEMERCED_STUFF4                                 0x3EE
 #define FLAG_ITEM_ROUTE_109_RARE_CANDY                              0x3EE
+#define FLAG_ITEM_LAKEMERCED_STUFF5                                 0x3EF
 #define FLAG_ITEM_ROUTE_110_DIRE_HIT                                0x3EF
+#define FLAG_ITEM_LAKEMERCED_STUFF6                                 0x3F0
 #define FLAG_ITEM_ROUTE_111_TM37                                    0x3F0
+#define FLAG_ITEM_LAKEMERCED_STUFF7                                 0x3F1
 #define FLAG_ITEM_ROUTE_111_STARDUST                                0x3F1
+#define FLAG_ITEM_LAKEMERCED_STUFF8                                 0x3F2
 #define FLAG_ITEM_ROUTE_111_HP_UP                                   0x3F2
+#define FLAG_ITEM_LAKEMERCED_STUFF9                                 0x3F3
 #define FLAG_ITEM_ROUTE_112_NUGGET                                  0x3F3
 #define FLAG_ITEM_ROUTE_113_MAX_ETHER                               0x3F4
 #define FLAG_ITEM_ROUTE_113_SUPER_REPEL                             0x3F5

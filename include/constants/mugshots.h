@@ -75,7 +75,7 @@
 #define SPEAKER_AROMA_LADY          66
 #define SPEAKER_BATTLE_GIRL         67
 #define SPEAKER_MOM                 68
-#define NUM_SPEAKERS 999
+#define NUM_SPEAKERS 99999
 
 //PSF names
 #define SPEAKER_NEWS                69
@@ -174,7 +174,7 @@
 #define SPEAKER_SHOPKEEPER          162
 #define SPEAKER_ELIOR               163
 #define SPEAKER_LELAND              164
-#define SPEAKER_LIIDIA2            165
+#define SPEAKER_AMBROGIO            165
 
 //Tail
 #define TAIL_DEFAULT 0

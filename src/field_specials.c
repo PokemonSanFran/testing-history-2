@@ -4598,3 +4598,17 @@ void CopyMonFromStolenTradeStorage(void)
         }
     }
 }
+    
+void RandomlyBoostPartyMemberFriendship(void)
+{
+    u8 i = (Random() % 6);
+    struct Pokemon * pokemon;
+    pokemon = &gPlayerParty[i];
+
+    while(!GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) || GetMonData(pokemon, MON_DATA_IS_EGG))
+    {
+        i = (Random() % 6);
+        pokemon = &gPlayerParty[i];
+    }
+    AdjustFriendship(&gPlayerParty[i], FRIENDSHIP_EVENT_WALKING);
+}

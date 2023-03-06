@@ -1,0 +1,32 @@
+const AMBROGIO = 10
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+mapscripts Lakemerced_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_Theboywhocriedwithwolves_Ambrogio_Visibility_Script)
+    }
+}
+
+script Lakemerced_Membersonly_Dialogue{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BUTONLYINMYBACKYARD)
+    if (var(VAR_RESULT)){
+        release
+        end
+    }
+    lock
+    msgbox(gText_Lakemerced_Accessdenied,,SPEAKER_SPEAKER)
+    msgbox(gText_Lakemerced_Firstplacethateven,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    closemessage
+    applymovement(PLAYER,Common_Movement_WalkUp)
+    waitmovement(PLAYER)
+    release
+    end
+}
+
+text gText_Lakemerced_Accessdenied{
+    format("Access is denied. This area is members only.")
+}
+
+text gText_Lakemerced_Firstplacethateven{
+    format("First place that even Ycombinator couldn't get me into...")
+}

@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "right",
+      "map": "MAP_TENDERLOIN",
       "offset": -38,
-      "map": "MAP_TENDERLOIN"
+      "direction": "right"
     },
     {
-      "direction": "left",
+      "map": "MAP_JAPANTOWN",
       "offset": -7,
-      "map": "MAP_JAPANTOWN"
+      "direction": "left"
     }
   ],
   "object_events": [

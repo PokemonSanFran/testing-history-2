@@ -6020,6 +6020,16 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/Marin_Ranger/border.bin",
       "blockdata_filepath": "data/layouts/Marin_Ranger/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAKEMERCED",
+      "name": "Lakemerced_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Lakemerced/border.bin",
+      "blockdata_filepath": "data/layouts/Lakemerced/map.bin"
     }
   ]
 }

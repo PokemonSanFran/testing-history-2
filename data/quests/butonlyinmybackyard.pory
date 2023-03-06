@@ -60,7 +60,6 @@ script Quest_ButOnlyIn_Active_Dialogue{
 
 script Quest_ButOnlyIn_Reward_Dialogue{
     msgbox(gText_ButOnlyIn_TheHousingCrew)
-    giveitem(ITEM_LETTER,1)
     msgbox(gText_ButOnlyIn_YouKnowTheGolf)
     completequest(QUEST_BUTONLYINMYBACKYARD)
     end
@@ -102,7 +101,7 @@ text gText_ButOnlyIn_TheHousingCrew{
     format("The inspection just wrapped up but... it failed. Your work still wasn't enough. It's a bummer but we're going to work with the city to make sure this gets done right. Thank you for your help though! Take this.")
 }
 text gText_ButOnlyIn_YouKnowTheGolf{
-    format("You know the golf course over by Lakemerced? You can't get in there without an invitiation from a member. Take this and they'll let you in. There's tons of rare Pokemon on the course, so maybe it'll be worth it for you.")
+    format("You know the golf course over by Lakemerced? You can't get in there without an invitiation from a member. I'll add you to my guest list, so you should be able to get in now. There's tons of rare Pokemon on the course, so maybe it'll be worth it for you.")
 }
 text gText_ButOnlyIn_WhatAShame{
     format("What a shame...")

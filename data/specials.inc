@@ -559,3 +559,4 @@ gSpecials::
 	def_special Script_GetMapName
 	def_special CopyMonToStolenTradeStorage
 	def_special CopyMonFromStolenTradeStorage
+    def_special RandomlyBoostPartyMemberFriendship

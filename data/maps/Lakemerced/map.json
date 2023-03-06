@@ -1,0 +1,180 @@
+{
+  "id": "MAP_LAKEMERCED",
+  "name": "Lakemerced",
+  "layout": "LAYOUT_LAKEMERCED",
+  "music": "MUS_SURF",
+  "region_map_section": "MAPSEC_LAKEMERCED",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_PSFROUTE32",
+      "offset": 0,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 8,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff1",
+      "flag": "FLAG_ITEM_LAKEMERCED_STUFF1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 18,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff2",
+      "flag": "FLAG_ITEM_LAKEMERCED_STUFF2"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 51,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff3",
+      "flag": "FLAG_ITEM_LAKEMERCED_STUFF3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 40,
+      "y": 50,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff4",
+      "flag": "FLAG_ITEM_LAKEMERCED_STUFF4"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 30,
+      "y": 29,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff5",
+      "flag": "FLAG_ITEM_LAKEMERCED_STUFF5"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 41,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff6",
+      "flag": "FLAG_ITEM_LAKEMERCED_STUFF6"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 48,
+      "y": 38,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff7",
+      "flag": "FLAG_ITEM_LAKEMERCED_STUFF7"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 26,
+      "y": 37,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff8",
+      "flag": "FLAG_ITEM_LAKEMERCED_STUFF8"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 42,
+      "y": 28,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff9",
+      "flag": "FLAG_ITEM_LAKEMERCED_STUFF9"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
+      "x": 9,
+      "y": 31,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_DOWN_AND_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Quest_Theboywhocriedwithwolves_Interact_Ambrogio_Script",
+      "flag": "FLAG_TEMP_1"
+    }
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_ALWAYS_ZERO",
+      "var_value": "0",
+      "script": "Lakemerced_Membersonly_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_ALWAYS_ZERO",
+      "var_value": "0",
+      "script": "Lakemerced_Membersonly_Dialogue"
+    }
+  ],
+  "bg_events": [
+
+  ]
+}

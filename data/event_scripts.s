@@ -1077,6 +1077,7 @@ Script_RemoveTint::
 .include "data/text/frontier_brain.inc"
 .include "data/text/save.inc"
 .include "data/text/birch_speech.inc"
+.include "data/text/mutual_aid.inc"
 
 .include "data/maps/BlackMap/scripts.inc"
 .include "data/maps/Southbay/scripts.inc"
@@ -1295,7 +1296,7 @@ Script_RemoveTint::
 // .include "data/quests/unknownconstructionstrikequest.inc"
 .include "data/quests/ibelieveicanfly.inc"
 // .include "data/quests/wildfirerisk.inc"
-// .include "data/quests/theboywhocrieswithwolves.inc"
+.include "data/quests/theboywhocrieswithwolves.inc"
 // .include "data/quests/unknowntrolleyproblem.inc"
 // .include "data/quests/unknownlandfillquest.inc"
 // .include "data/quests/taxicabturnaroundsea.inc"
@@ -1471,3 +1472,5 @@ Script_RemoveTint::
 	.include "data/maps/Berkeley_University/scripts.inc"
 
 	.include "data/maps/Marin_Ranger/scripts.inc"
+
+	.include "data/maps/Lakemerced/scripts.inc"
