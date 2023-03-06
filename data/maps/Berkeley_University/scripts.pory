@@ -4,8 +4,18 @@ mapscripts Berkeley_University_MapScripts{
 }
 
 script Berkeley_University_DisplayCase_Script{
-    bufferitemname(STR_VAR_2,ITEM_COIN_CASE)
-    //msgbox(gText_Berkeley_University_DisplayCase)
+    lock
+    bufferitemname(STR_VAR_3,ITEM_COIN_CASE)
+    msgbox(gText_Berkeley_University_DisplayCase,MSGBOX_SIGN)
 
-    //msgbox(gText_Berkeley_University_
+    switch(var(VAR_BERKELEY_AXE_STATE)){
+        case AXE_UNTOUCHED: goto(Quest_StealTheAxe_AxeUntouched_Script)
+        case AXE_STOLEN:
+        case AXE_THROWN_AWAY: goto(Quest_StealTheAxe_AxeStolen_Dialogue)
+        case AXE_TURNED_OVER: goto(Quest_StealTheAxe_TurnedOverAxe_Dialogue)
+    }
+}
+
+text gText_Berkeley_University_DisplayCase{
+    format("The display case has a collection of medals, trophies, and photos.")
 }

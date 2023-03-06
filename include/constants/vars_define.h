@@ -381,3 +381,10 @@
 #define POST_DIVE 4
 #define CAUGHT_SHINY 4
 #define DEFEATED_SHINY 5
+
+//VAR_BERKELEY_AXE_STATE
+#define AXE_UNTOUCHED   0
+#define AXE_STOLEN  1
+#define AXE_THROWN_AWAY 2
+#define AXE_ASKED   3
+#define AXE_TURNED_OVER 4

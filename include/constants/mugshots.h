@@ -173,6 +173,7 @@
 #define SPEAKER_GUARD               161
 #define SPEAKER_SHOPKEEPER          162
 #define SPEAKER_ELIOR               163
+#define SPEAKER_LELAND              164
 
 //Tail
 #define TAIL_DEFAULT 0

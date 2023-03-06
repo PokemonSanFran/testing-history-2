@@ -1,3 +1,0 @@
-PlayersAdventure::
-	return
-

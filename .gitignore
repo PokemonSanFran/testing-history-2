@@ -44,3 +44,5 @@ misc/log.txt
 tools/poryscript.zip
 make.txt
 *.vimsess
+data/cutscenes/*.inc
+data/quests/*.inc

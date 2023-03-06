@@ -61,9 +61,54 @@ Berkeley_University_Locked_Door_Script::
 	end
 
 
+Berekley_Leland_Interact_Script::
+	lock
+	bufferspeciesname STR_VAR_1, SPECIES_STUFFUL
+	bufferitemname STR_VAR_3, ITEM_COIN_CASE
+	switch VAR_BERKELEY_AXE_STATE
+	case AXE_UNTOUCHED, Berekley_Leland_Interact_Script_2
+	case AXE_STOLEN, Berekley_Leland_Interact_Script_3
+	case AXE_ASKED, Berekley_Leland_Interact_Script_4
+	case AXE_THROWN_AWAY, Berekley_Leland_Interact_Script_4
+	case AXE_TURNED_OVER, Berekley_Leland_Interact_Script_5
+	return
+
+Berekley_Leland_Interact_Script_2:
+	goto Berkeley_Leland_Story_Dialogue
+	return
+
+Berekley_Leland_Interact_Script_3:
+	goto Quest_StealTheAxe_DiscussStolen_Dialogue
+	return
+
+Berekley_Leland_Interact_Script_4:
+	goto Quest_StealTheAxe_AskAxe_Dialogue
+	return
+
+Berekley_Leland_Interact_Script_5:
+	goto Quest_StealTheAxe_HasAxe_Dialogue
+	return
+
+
+Berkeley_Leland_Story_Dialogue::
+	msgbox gText_Berkeley_IAttended, MSGBOX_NPC, SPEAKER_LELAND
+	return
+
+
 gText_Berkeley_PlaceholderBiker::
 	.string "i am a biker, and this is placeholder\n"
 	.string "text.$"
 
 gText_Berkeley_TheDoor::
 	.string "The door is locked.$"
+
+gText_Berkeley_IAttended::
+	.string "You know, I used to go to\n"
+	.string "Berkeleyuniversity! I was on their\l"
+	.string "football team, and helped win the\l"
+	.string "{STR_VAR_3} so many years ago.\l"
+	.string "There's an old legend that it actually\l"
+	.string "gives the holders power, but I'm proof\l"
+	.string "that its nonsense. The {STR_VAR_3}\l"
+	.string "means so much to me and my teammates,\l"
+	.string "but its just a symbol.$"

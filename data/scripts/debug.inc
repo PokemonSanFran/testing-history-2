@@ -78,10 +78,13 @@ Debug_Script_3::
 
 
 Debug_Script_4::
+	warpsilent MAP_ALAMEDA, 26, 12
 	return
 
 
 Debug_Script_5::
+	additem ITEM_COIN_CASE, 1
+	setvar VAR_BERKELEY_AXE_STATE, AXE_THROWN_AWAY
 	return
 
 
