@@ -79,8 +79,11 @@
 #define FLAG_UNUSED_0x40 0x40 //Unused Flag
 #define FLAG_UNUSED_0x41 0x41 //Unused Flag
 #define FLAG_UNUSED_0x42 0x42 //Unused Flag
+#define FLAG_ITEM_MARIN_RANGER_HEADPHONES   0x42
 #define FLAG_UNUSED_0x43 0x43 //Unused Flag
+#define FLAG_ITEM_MARIN_RANGER_WIDE_LENS    0x43
 #define FLAG_UNUSED_0x44 0x44 //Unused Flag
+#define FLAG_ITEM_MARIN_RANGER_ROCKY_HELMET 0x44
 #define FLAG_HIDE_PSFROUTE61_BIANCA 0x45 // Previously Unused Flag
 #define FLAG_HIDE_MUIRWOODS_BIANCA    0x46 // Previously Unused Flag
 #define FLAG_HIDE_MUIRWOODS_SIEBOLD 0x47 //Previously Unused Flag

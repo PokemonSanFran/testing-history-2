@@ -69,39 +69,46 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    initclock(14,0)
-    warpsilent(MAP_BERKELEY,14,0)
+    end
 }
 
 script Debug_Script_2{
-    initclock(21,0)
-    warpsilent(MAP_BERKELEY,14,0)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_INSTALLNATUREPROBES)
+    end
 }
 
 script Debug_Script_3{
-    startquest(QUEST_STEALTHEAXE)
-    warpsilent(MAP_BERKELEY,14,0)
+    warpsilent(MAP_TREASUREISLAND_RESTAURANT,0)
+    end
 }
+
 script Debug_Script_4{
-    warpsilent(MAP_ALAMEDA,26,12)
+    warpsilent(MAP_TENDERLOIN,2,11)
+    end
 }
 
 script Debug_Script_5{
-    additem(ITEM_COIN_CASE,1)
-    setvar(VAR_BERKELEY_AXE_STATE,AXE_THROWN_AWAY)
-}
-script Debug_Script_6{
-}
-script Debug_Script_7{
-    end
-}
-script Debug_Script_8{
-    end
-}
-script Debug_Script_9{
-    end
-}
-script Debug_Script_10{
+    warpsilent(MAP_PSFROUTE5,0)
     end
 }
 
+script Debug_Script_6{
+    warpsilent(MAP_MARIN,13,9)
+    end
+}
+
+script Debug_Script_7{
+    end
+}
+
+script Debug_Script_8{
+    end
+}
+
+script Debug_Script_9{
+    end
+}
+
+script Debug_Script_10{
+    end
+}

@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
+      "map": "MAP_OAKLAND",
       "offset": -6,
-      "map": "MAP_OAKLAND"
+      "direction": "down"
     },
     {
-      "direction": "up",
+      "map": "MAP_BERKELEY",
       "offset": -5,
-      "map": "MAP_BERKELEY"
+      "direction": "up"
     }
   ],
   "object_events": [

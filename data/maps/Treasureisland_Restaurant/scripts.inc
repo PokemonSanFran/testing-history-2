@@ -5,6 +5,7 @@ Treasureisland_Restaurant_MapScripts::
 
 Treasureisland_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call LetsGrabLunch_HideArcher_Inside_Script
+	call Quest_Manofmanyhats_Liidia_Waiter_Visibility_Script
 	return
 
 Treasureisland_Restaurant_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

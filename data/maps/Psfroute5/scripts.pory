@@ -1,0 +1,7 @@
+const FLAG_HIDE_LIIDIA = FLAG_TEMP_4
+
+mapscripts Psfroute5_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_Manofmanyhats_Liidia_Fisherman_Visibility_Script)
+    }
+}

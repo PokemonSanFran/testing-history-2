@@ -13,6 +13,7 @@ Marin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_GetTheBand_HideBikerD_Script
 	call IGuessWeShouldBeNiceNow_HidePopup_Script
 	call LetsGrabLunch_CheckRestorationProgress_Script
+	call Quest_Manofmanyhats_CheckDoorLock_Script
 	return
 
 Marin_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -43,9 +44,8 @@ Marin_HideLiidia_Script_2:
 
 
 Marin_LockRangerDoor_Script::
-	checkitem ITEM_KEY_TO_ROOM_1, 1
-	compare VAR_RESULT, 0
-	goto_if_eq Marin_LockRangerDoor_Script_1
+	compare VAR_QUEST_MANOFMANYHATS, OPEN_LOCKED_DOOR
+	goto_if_lt Marin_LockRangerDoor_Script_1
 	return
 
 Marin_LockRangerDoor_Script_1:
@@ -55,15 +55,9 @@ Marin_LockRangerDoor_Script_1:
 
 Marin_RangerStationDoor_Script::
 	lock
-	checkitem ITEM_KEY_TO_ROOM_1, 1
-	compare VAR_RESULT, 0
-	goto_if_eq Marin_RangerStationDoor_Script_1
-	return
-
-Marin_RangerStationDoor_Script_1:
 	msgbox gText_Marin_TheDoorIsLocked, MSGBOX_SIGN
-	release
-	end
+	goto_if_quest_active QUEST_MANOFMANYHATS, Quest_Manofmanyhats_EnterDoorCombination_Dialogue
+	return
 
 
 Marin_Stan_Interact_Script::

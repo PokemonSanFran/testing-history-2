@@ -14,24 +14,24 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "right",
+      "map": "MAP_LOMBARDSTREET",
       "offset": 3,
-      "map": "MAP_LOMBARDSTREET"
+      "direction": "right"
     },
     {
-      "direction": "up",
+      "map": "MAP_FORTPOINT",
       "offset": -5,
-      "map": "MAP_FORTPOINT"
+      "direction": "up"
     },
     {
-      "direction": "left",
+      "map": "MAP_PRESIDIO",
       "offset": 0,
-      "map": "MAP_PRESIDIO"
+      "direction": "left"
     },
     {
-      "direction": "down",
+      "map": "MAP_PSFROUTE2",
       "offset": 0,
-      "map": "MAP_PSFROUTE2"
+      "direction": "down"
     }
   ],
   "object_events": [

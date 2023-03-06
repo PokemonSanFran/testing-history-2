@@ -2,6 +2,7 @@ mapscripts Tenderloin_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(EnterAriana_ObjectCleanUp_Script)
         call(Quest_NoGoodDeed_HideRainer_Hotel_Script)
+        call(Quest_Manofmanyhats_Liidia_Attendant_Visibility_Script)
     }
     MAP_SCRIPT_ON_LOAD {
         call(EnterAriana_SetConeTiles_Script)

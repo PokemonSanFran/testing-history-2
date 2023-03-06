@@ -6,6 +6,7 @@ Tenderloin_MapScripts::
 Tenderloin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call EnterAriana_ObjectCleanUp_Script
 	call Quest_NoGoodDeed_HideRainer_Hotel_Script
+	call Quest_Manofmanyhats_Liidia_Attendant_Visibility_Script
 	return
 
 Tenderloin_MapScripts_MAP_SCRIPT_ON_LOAD:

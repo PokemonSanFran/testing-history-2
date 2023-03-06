@@ -14,9 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "right",
+      "map": "MAP_MARIN",
       "offset": -8,
-      "map": "MAP_MARIN"
+      "direction": "right"
     }
   ],
   "object_events": [

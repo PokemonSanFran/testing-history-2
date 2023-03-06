@@ -109,6 +109,7 @@
 #define MAP_CHINATOWN_PROUDPANDA              (100 | (0 << 8))
 #define MAP_PSFROUTE15                        (101 | (0 << 8))
 #define MAP_UNDERWATER_PSFROUTE15             (102 | (0 << 8))
+#define MAP_MARIN_RANGER                      (103 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

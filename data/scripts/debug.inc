@@ -60,36 +60,32 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	initclock 14, 0
-	warpsilent MAP_BERKELEY, 14, 0
-	return
+	end
 
 
 Debug_Script_2::
-	initclock 21, 0
-	warpsilent MAP_BERKELEY, 14, 0
-	return
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_INSTALLNATUREPROBES
+	end
 
 
 Debug_Script_3::
-	startquest QUEST_STEALTHEAXE
-	warpsilent MAP_BERKELEY, 14, 0
-	return
+	warpsilent MAP_TREASUREISLAND_RESTAURANT, 0
+	end
 
 
 Debug_Script_4::
-	warpsilent MAP_ALAMEDA, 26, 12
-	return
+	warpsilent MAP_TENDERLOIN, 2, 11
+	end
 
 
 Debug_Script_5::
-	additem ITEM_COIN_CASE, 1
-	setvar VAR_BERKELEY_AXE_STATE, AXE_THROWN_AWAY
-	return
+	warpsilent MAP_PSFROUTE5, 0
+	end
 
 
 Debug_Script_6::
-	return
+	warpsilent MAP_MARIN, 13, 9
+	end
 
 
 Debug_Script_7::

@@ -4,6 +4,7 @@ const LIIDIA = 2
 const JASMINE = 3
 const FLAG_HIDE_BIANCA = FLAG_TEMP_3
 const FLAG_HIDE_LIIDIA = FLAG_TEMP_4
+const FLAG_UNLOCK_DOOR = FLAG_TEMP_2
 
 mapscripts Marin_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -15,6 +16,7 @@ mapscripts Marin_MapScripts {
             call(Quest_GetTheBand_HideBikerD_Script)
             call(IGuessWeShouldBeNiceNow_HidePopup_Script)
             call(LetsGrabLunch_CheckRestorationProgress_Script)
+            call(Quest_Manofmanyhats_CheckDoorLock_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -42,22 +44,15 @@ script Marin_HideLiidia_Script{
 }
 
 script Marin_LockRangerDoor_Script{
-    checkitem(ITEM_KEY_TO_ROOM_1,1)
-
-        if(!var(VAR_RESULT)){
+        if(var(VAR_QUEST_MANOFMANYHATS) < OPEN_LOCKED_DOOR){
             setmetatile(13,8,0x23B,TRUE)
         }
 }
 
 script Marin_RangerStationDoor_Script{
     lock
-        checkitem(ITEM_KEY_TO_ROOM_1,1)
-
-        if(!var(VAR_RESULT)){
-            msgbox(gText_Marin_TheDoorIsLocked,MSGBOX_SIGN)
-                release
-                end
-        }
+        msgbox(gText_Marin_TheDoorIsLocked,MSGBOX_SIGN)
+        goto_if_quest_active(QUEST_MANOFMANYHATS,Quest_Manofmanyhats_EnterDoorCombination_Dialogue)
 }
 
 script Marin_Stan_Interact_Script{

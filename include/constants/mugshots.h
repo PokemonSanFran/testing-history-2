@@ -174,6 +174,7 @@
 #define SPEAKER_SHOPKEEPER          162
 #define SPEAKER_ELIOR               163
 #define SPEAKER_LELAND              164
+#define SPEAKER_LIIDIA2            165
 
 //Tail
 #define TAIL_DEFAULT 0

@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_PSFROUTE5",
-      "offset": 6,
+      "offset": 0,
       "direction": "down"
     },
     {

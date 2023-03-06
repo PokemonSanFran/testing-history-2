@@ -1101,13 +1101,13 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
     },
     [SPEAKER_LIIDIA] =
     {
-        .name = ("Liidia"),
+        .name = _("Liidia"),
         .speakerIcon = gSpeakerIcon_Kid,
         .speakerPal = sSpeakerPal_Kid,
     },
     [SPEAKER_RAINER] =
     {
-        .name = ("Rainer"),
+        .name = _("Rainer"),
         .speakerIcon = gSpeakerIcon_Woman,
         .speakerPal = sSpeakerPal_Woman,
     },

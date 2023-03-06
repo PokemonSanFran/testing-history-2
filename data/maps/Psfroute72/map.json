@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
+      "map": "MAP_ALAMEDA",
       "offset": -15,
-      "map": "MAP_ALAMEDA"
+      "direction": "down"
     },
     {
-      "direction": "up",
+      "map": "MAP_PSFROUTE12",
       "offset": 0,
-      "map": "MAP_PSFROUTE12"
+      "direction": "up"
     }
   ],
   "object_events": [

@@ -1,2 +1,8 @@
 Psfroute5_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute5_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfroute5_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Manofmanyhats_Liidia_Fisherman_Visibility_Script
+	return
+

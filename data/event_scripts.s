@@ -1469,3 +1469,5 @@ Script_RemoveTint::
 	.include "data/maps/Underwater_Psfroute15/scripts.inc"
 
 	.include "data/maps/Berkeley_University/scripts.inc"
+
+	.include "data/maps/Marin_Ranger/scripts.inc"

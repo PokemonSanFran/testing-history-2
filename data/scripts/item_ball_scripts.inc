@@ -665,3 +665,20 @@ Sunset_Sabrina_House_EventScript_ItemMagmaEmblem::
 Sunset_Quest_ReturnDoll_EventScript_ItemLostDoll::
     finditem ITEM_LOST_DOLL
     end
+
+Marin_Ranger_Quest_Manofmanyhats_EventSCript_ItemHeadphones::
+    finditem ITEM_OAKS_PARCEL
+    end
+
+Marin_Ranger_Quest_Manofmanyhats_EventScript_ItemHeadphones::
+    questmenu QUEST_MENU_SET_REWARD QUEST_MANOFMANYHATS
+    finditem ITEM_OAKS_PARCEL
+    end
+
+Marin_Ranger_Quest_Manofmanyhats_EventScript_ItemRockyHelmet::
+    finditem ITEM_ROCKY_HELMET
+    end
+
+Marin_Ranger_Quest_Manofmanyhats_EventScript_ItemWideLens::
+    finditem ITEM_WIDE_LENS 
+    end

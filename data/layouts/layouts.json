@@ -4944,7 +4944,7 @@
     {
       "id": "LAYOUT_PSFROUTE5",
       "name": "Psfroute5_Layout",
-      "width": 5,
+      "width": 8,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
@@ -6010,6 +6010,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Berkeley_University/border.bin",
       "blockdata_filepath": "data/layouts/Berkeley_University/map.bin"
+    },
+    {
+      "id": "LAYOUT_MARIN_RANGER",
+      "name": "Marin_Ranger_Layout",
+      "width": 4,
+      "height": 5,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Marin_Ranger/border.bin",
+      "blockdata_filepath": "data/layouts/Marin_Ranger/map.bin"
     }
   ]
 }
