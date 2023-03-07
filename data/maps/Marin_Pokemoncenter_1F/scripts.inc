@@ -1,11 +1,11 @@
 Marin_Pokemoncenter_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Marin_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, Marin_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_LOAD
 	.byte 0
 
 Marin_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	setrespawn HEAL_LOCATION_SLATEPORT_CITY
-	call Common_EventScript_UpdateBrineyLocation
+	setrespawn HEAL_LOCATION_MARIN
 	end
 
 Marin_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_LOAD:

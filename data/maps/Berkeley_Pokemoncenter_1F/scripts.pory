@@ -1,6 +1,11 @@
 const LOCALID_NURSE = 1
 
 mapscripts Berkeley_Pokemoncenter_1F_MapScripts{
+    MAP_SCRIPT_ON_RESUME: CableClub_OnResume
+    MAP_SCRIPT_ON_TRANSITION{
+        setrespawn(HEAL_LOCATION_BERKELEY)
+        end
+    }
     MAP_SCRIPT_ON_LOAD{
     call(Quest_Restaurantexpansion_Berkeley_HangPosterTile_Script)
     }

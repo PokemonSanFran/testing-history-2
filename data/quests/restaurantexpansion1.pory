@@ -297,40 +297,40 @@ script Quest_Restaurantexpansion_HangPoster_Script{
 }
 
 script Quest_Restaurantexpansion_Haightashbury_HangPosterTile_Script{
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_1)
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_2)
     if (var(VAR_RESULT)){
-    setmetatile(12,0,0x24E,TRUE)
-    setmetatile(12,1,0x24E,TRUE)
+    setmetatile(12,0,0x24D,TRUE)
+    setmetatile(12,1,0x255,TRUE)
     special(DrawWholeMapView)
     }
     return
 }
 
 script Quest_Restaurantexpansion_Marin_HangPosterTile_Script{
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_2)
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_1)
     if (var(VAR_RESULT)){
-    setmetatile(12,0,0x24E,TRUE)
-    setmetatile(12,1,0x24E,TRUE)
+    setmetatile(12,0,0x24D,TRUE)
+    setmetatile(12,1,0x255,TRUE)
     special(DrawWholeMapView)
     }
     return
 }
 
 script Quest_Restaurantexpansion_Berkeley_HangPosterTile_Script{
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_3)
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_4)
     if (var(VAR_RESULT)){
-    setmetatile(12,0,0x24E,TRUE)
-    setmetatile(12,1,0x24E,TRUE)
+    setmetatile(12,0,0x24D,TRUE)
+    setmetatile(12,1,0x255,TRUE)
     special(DrawWholeMapView)
     }
     return
 }
 
 script Quest_Restaurantexpansion_SOMA_HangPosterTile_Script{
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_4)
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_3)
     if (var(VAR_RESULT)){
-    setmetatile(12,0,0x24E,TRUE)
-    setmetatile(12,1,0x24E,TRUE)
+    setmetatile(12,0,0x24D,TRUE)
+    setmetatile(12,1,0x255,TRUE)
     special(DrawWholeMapView)
     }
     return

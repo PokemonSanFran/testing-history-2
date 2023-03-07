@@ -606,16 +606,16 @@ const u8 gText_Quest_InstallNatureProbes_Sub3_Map[] = _("MuirWoods");
 
 const u8 gText_Quest_RestaurantExpansion1_Sub1_Name[] = _("Center 1");
 const u8 gText_Quest_RestaurantExpansion1_Sub1_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_RestaurantExpansion1_Sub1_Map[] = _("SOMA");
+const u8 gText_Quest_RestaurantExpansion1_Sub1_Map[] = _("Marin");
 const u8 gText_Quest_RestaurantExpansion1_Sub2_Name[] = _("Center 2");
 const u8 gText_Quest_RestaurantExpansion1_Sub2_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_RestaurantExpansion1_Sub2_Map[] = _("Tenderloin");
+const u8 gText_Quest_RestaurantExpansion1_Sub2_Map[] = _("Haightashbury");
 const u8 gText_Quest_RestaurantExpansion1_Sub3_Name[] = _("Center 3");
 const u8 gText_Quest_RestaurantExpansion1_Sub3_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_RestaurantExpansion1_Sub3_Map[] = _("SOMA");
 const u8 gText_Quest_RestaurantExpansion1_Sub4_Name[] = _("Center 4");
 const u8 gText_Quest_RestaurantExpansion1_Sub4_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_RestaurantExpansion1_Sub4_Map[] = _("Marin");
+const u8 gText_Quest_RestaurantExpansion1_Sub4_Map[] = _("Berkeley");
 
 const u8 gText_Quest_RestaurantExpansion2_Sub1_Name[] = _("Hostess");
 const u8 gText_Quest_RestaurantExpansion2_Sub1_Desc[] = _("Sub Lorem");

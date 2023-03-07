@@ -1,6 +1,11 @@
 const LOCALID_NURSE = 1
 
 mapscripts SOMA_Pokemoncenter_1F_MapScripts{
+    MAP_SCRIPT_ON_RESUME: CableClub_OnResume
+    MAP_SCRIPT_ON_TRANSITION{
+        setrespawn(HEAL_LOCATION_SOMA)
+        end
+    }
     MAP_SCRIPT_ON_LOAD{
         call(Quest_Restaurantexpansion_SOMA_HangPosterTile_Script)
     }

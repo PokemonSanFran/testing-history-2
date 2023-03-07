@@ -1,12 +1,11 @@
 const LOCALID_NURSE = 1
 
 mapscripts Marin_Pokemoncenter_1F_MapScripts{
+    MAP_SCRIPT_ON_RESUME: CableClub_OnResume
     MAP_SCRIPT_ON_TRANSITION{
-        setrespawn(HEAL_LOCATION_SLATEPORT_CITY)
-        call(Common_EventScript_UpdateBrineyLocation)
+        setrespawn(HEAL_LOCATION_MARIN)
         end
     }
-
     MAP_SCRIPT_ON_LOAD{
         call(Quest_Restaurantexpansion_Marin_HangPosterTile_Script)
     }
