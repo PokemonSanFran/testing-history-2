@@ -14,24 +14,24 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
+      "map": "MAP_PSFROUTE12",
       "offset": 7,
-      "map": "MAP_PSFROUTE12"
+      "direction": "down"
     },
     {
-      "direction": "up",
+      "map": "MAP_PSFROUTE63",
       "offset": 6,
-      "map": "MAP_PSFROUTE63"
+      "direction": "up"
     },
     {
-      "direction": "right",
+      "map": "MAP_PSFROUTE62",
       "offset": 17,
-      "map": "MAP_PSFROUTE62"
+      "direction": "right"
     },
     {
-      "direction": "left",
+      "map": "MAP_PSFROUTE30",
       "offset": 25,
-      "map": "MAP_PSFROUTE30"
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -112,6 +112,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Quest_NoGoodDeed_Rainer_Interact_Script",
       "flag": "FLAG_TEMP_3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M",
+      "x": 2,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_5"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ROXANNE",
+      "x": 30,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Quest_Restaurantexpansion_Meetup_Dialogue",
+      "flag": "FLAG_TEMP_4"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
+      "x": 3,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_5"
     }
   ],
   "warp_events": [

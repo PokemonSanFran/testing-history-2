@@ -14,24 +14,24 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "emerge",
+      "map": "MAP_PSFROUTE9",
       "offset": 0,
-      "map": "MAP_PSFROUTE9"
+      "direction": "emerge"
     },
     {
-      "direction": "down",
+      "map": "MAP_PSFROUTE11",
       "offset": 16,
-      "map": "MAP_PSFROUTE11"
+      "direction": "down"
     },
     {
-      "direction": "up",
+      "map": "MAP_PSFROUTE9",
       "offset": 3,
-      "map": "MAP_PSFROUTE9"
+      "direction": "up"
     },
     {
-      "direction": "left",
+      "map": "MAP_PSFROUTE14",
       "offset": 15,
-      "map": "MAP_PSFROUTE14"
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -112,6 +112,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Mission_2_Interact_Script",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ROXANNE",
+      "x": 30,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_4"
     }
   ],
   "warp_events": [

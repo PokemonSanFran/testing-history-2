@@ -6,6 +6,7 @@ mapscripts Oakland_MapScripts {
         call(WarehouseRave_HideObject_Script)
         call(Quest_GetTheBand_HideBikerC_Script)
         call(Quest_NoGoodDeed_HideRainer_Script)
+        call(Quest_Restaurantexpansion_HideObjects_Script)
     }
 }
 script Oakland_Biker_Interact_Script{

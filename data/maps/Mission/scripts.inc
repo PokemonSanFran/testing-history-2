@@ -5,6 +5,7 @@ Mission_MapScripts::
 Mission_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Recruitlocalartists_Sabrina_Visibility_Script
 	call Quest_Recruitlocalartists_Smeargle_Visibility_Script
+	call Quest_Restaurantexpansion_Mission_Leader_Visibilty_Script
 	return
 
 

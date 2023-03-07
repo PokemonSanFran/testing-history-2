@@ -1,0 +1,18 @@
+Berkeley_Pokemoncenter_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, Berkeley_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_LOAD
+	.byte 0
+
+Berkeley_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call Quest_Restaurantexpansion_Berkeley_HangPosterTile_Script
+	return
+
+
+Berkeley_Pokemoncenter_1F_EventScript_Nurse::
+	setvar VAR_0x800B, 1
+	call Common_EventScript_PkmnCenterNurse
+	call Quest_Restaurantexpansion_Marin_Nurse_Dialogue
+	waitmessage
+	waitbuttonpress
+	release
+	end
+

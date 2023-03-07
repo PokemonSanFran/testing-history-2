@@ -3,12 +3,20 @@ Mission_Gym_MapScripts::
 	.byte 0
 
 Mission_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	switch VAR_GYM_1_STATE
-	case 3, Mission_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	call EnterFalkner_StartGymBattle_ObjectSetup_Script
+	call Mission_Gym_Leader_Visibility_Script
 	return
 
-Mission_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	goto EnterFalkner_StartGymBattle_ObjectSetup_Script
+
+Mission_Gym_Leader_Visibility_Script::
+	switch VAR_FALKNER_STATE
+	case NO_BADGE, Mission_Gym_Leader_Visibility_Script_3
+	case QUEST_2_COMPLETE, Mission_Gym_Leader_Visibility_Script_3
+	case BATTLE_2_COMPLETE, Mission_Gym_Leader_Visibility_Script_3
+	setflag FLAG_TEMP_1
+	return
+
+Mission_Gym_Leader_Visibility_Script_3:
 	return
 
 

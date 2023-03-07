@@ -111,6 +111,10 @@
 #define MAP_UNDERWATER_PSFROUTE15             (102 | (0 << 8))
 #define MAP_MARIN_RANGER                      (103 | (0 << 8))
 #define MAP_LAKEMERCED                        (104 | (0 << 8))
+#define MAP_MARIN_POKEMONCENTER_1F            (105 | (0 << 8))
+#define MAP_SOMA_POKEMONCENTER_1F             (106 | (0 << 8))
+#define MAP_BERKELEY_POKEMONCENTER_1F         (107 | (0 << 8))
+#define MAP_HAIGHTASHBURY_POKEMONCENTER_1F    (108 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

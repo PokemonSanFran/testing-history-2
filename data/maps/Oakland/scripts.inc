@@ -7,6 +7,7 @@ Oakland_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call WarehouseRave_HideObject_Script
 	call Quest_GetTheBand_HideBikerC_Script
 	call Quest_NoGoodDeed_HideRainer_Script
+	call Quest_Restaurantexpansion_HideObjects_Script
 	return
 
 Oakland_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

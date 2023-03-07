@@ -6030,6 +6030,46 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Lakemerced/border.bin",
       "blockdata_filepath": "data/layouts/Lakemerced/map.bin"
+    },
+    {
+      "id": "LAYOUT_MARIN_POKEMONCENTER_1F",
+      "name": "Marin_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Marin_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Marin_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOMA_POKEMONCENTER_1F",
+      "name": "SOMA_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/SOMA_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/SOMA_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_BERKELEY_POKEMONCENTER_1F",
+      "name": "Berkeley_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Berkeley_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Berkeley_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_HAIGHTASHBURY_POKEMONCENTER_1F",
+      "name": "Haightashbury_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Haightashbury_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Haightashbury_Pokemoncenter_1F/map.bin"
     }
   ]
 }

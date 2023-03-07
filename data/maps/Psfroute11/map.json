@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
+      "map": "MAP_BERNALHEIGHTS",
       "offset": 0,
-      "map": "MAP_BERNALHEIGHTS"
+      "direction": "down"
     },
     {
-      "direction": "up",
+      "map": "MAP_MISSION",
       "offset": -16,
-      "map": "MAP_MISSION"
+      "direction": "up"
     }
   ],
   "object_events": [

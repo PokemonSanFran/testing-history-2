@@ -2,8 +2,11 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const FALKNER = 1
 
 script EnterFalkner_StartGymBattle_ObjectSetup_Script {
-  setobjectxyperm(FALKNER, 6, 5)
-  setobjectmovementtype(FALKNER, MOVEMENT_TYPE_FACE_LEFT)
+    if (var (VAR_GYM_1_STATE)== GYM_SAVE_BEFORE_LEADER) {
+        setobjectxyperm(FALKNER, 6, 5)
+        setobjectmovementtype(FALKNER, MOVEMENT_TYPE_FACE_LEFT)
+    }
+    return
 }
 
 script EnterFalkner_PutMeatInOven_Dialogue {

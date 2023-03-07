@@ -150,7 +150,11 @@
     "Psfroute15",
     "Underwater_Psfroute15",
     "Marin_Ranger",
-    "Lakemerced"
+    "Lakemerced",
+    "Marin_Pokemoncenter_1F",
+    "SOMA_Pokemoncenter_1F",
+    "Berkeley_Pokemoncenter_1F",
+    "Haightashbury_Pokemoncenter_1F"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

@@ -175,6 +175,8 @@
 #define SPEAKER_ELIOR               163
 #define SPEAKER_LELAND              164
 #define SPEAKER_AMBROGIO            165
+#define SPEAKER_JORIS               166
+#define SPEAKER_NURSE               167
 
 //Tail
 #define TAIL_DEFAULT 0

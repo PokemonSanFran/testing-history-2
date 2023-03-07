@@ -1238,9 +1238,8 @@ Script_RemoveTint::
 .include "data/quests/installnatureprobes.inc"
 .include "data/quests/manofmanyhats.inc"
 .include "data/quests/recruitlocalartists.inc"
-// .include "data/quests/restaurantexpansion1.inc"
-// .include "data/quests/restaurantexpansion2.inc"
-// .include "data/quests/restaurantexpansion3.inc"
+.include "data/quests/restaurantexpansion1.inc"
+.include "data/quests/restaurantexpansion2.inc"
 .include "data/quests/culturalpurity.inc"
 .include "data/quests/hybridculture.inc"
 .include "data/quests/alohafromalola.inc"
@@ -1474,3 +1473,11 @@ Script_RemoveTint::
 	.include "data/maps/Marin_Ranger/scripts.inc"
 
 	.include "data/maps/Lakemerced/scripts.inc"
+
+	.include "data/maps/Marin_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/SOMA_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Berkeley_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Haightashbury_Pokemoncenter_1F/scripts.inc"

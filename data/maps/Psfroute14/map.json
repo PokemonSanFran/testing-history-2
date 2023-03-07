@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "left",
+      "map": "MAP_CASTRO",
       "offset": -8,
-      "map": "MAP_CASTRO"
+      "direction": "left"
     },
     {
-      "direction": "right",
+      "map": "MAP_MISSION",
       "offset": -15,
-      "map": "MAP_MISSION"
+      "direction": "right"
     }
   ],
   "object_events": [

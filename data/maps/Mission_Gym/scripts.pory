@@ -1,12 +1,22 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const FALKNER = 1
+const FLAG_HIDE_FALKNER = FLAG_TEMP_1
 
 mapscripts Mission_Gym_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        switch (var (VAR_GYM_1_STATE)) {
-            case 3: goto(EnterFalkner_StartGymBattle_ObjectSetup_Script)
-        }
+        call(EnterFalkner_StartGymBattle_ObjectSetup_Script)
+        call(Mission_Gym_Leader_Visibility_Script)
     }
+}
+
+script Mission_Gym_Leader_Visibility_Script{
+    switch(var(VAR_FALKNER_STATE)){
+        case NO_BADGE:
+        case QUEST_2_COMPLETE:
+        case BATTLE_2_COMPLETE: return
+        default: setflag(FLAG_HIDE_FALKNER)
+    }
+    return
 }
 
 script EnterFalkner_Event_Script {

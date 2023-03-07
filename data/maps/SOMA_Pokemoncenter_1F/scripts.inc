@@ -1,0 +1,18 @@
+SOMA_Pokemoncenter_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, SOMA_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_LOAD
+	.byte 0
+
+SOMA_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call Quest_Restaurantexpansion_SOMA_HangPosterTile_Script
+	return
+
+
+SOMA_Pokemoncenter_1F_EventScript_Nurse::
+	setvar VAR_0x800B, 1
+	call Common_EventScript_PkmnCenterNurse
+	call Quest_Restaurantexpansion_Marin_Nurse_Dialogue
+	waitmessage
+	waitbuttonpress
+	release
+	end
+

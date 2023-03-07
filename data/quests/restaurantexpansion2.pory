@@ -1,0 +1,15 @@
+script Quest_Restaurantexpansion2_Leader_Interact_Script{
+    goto_if_quest_reward(QUEST_RESTAURANTEXPANSION2,Quest_Restaurantexpansion2_Reward_Dialogue)
+    goto_if_quest_active(QUEST_RESTAURANTEXPANSION2,Quest_Restaurantexpansion2_Active_Dialogue)
+    goto(Quest_Restaurantexpansion2_StartQuest)
+}
+
+script Quest_Restaurantexpansion2_StartQuest{
+}
+
+script Quest_Restaurantexpansion2_Reward_Dialogue{
+}
+
+script Quest_Restaurantexpansion2_Active_Dialogue{
+}
+

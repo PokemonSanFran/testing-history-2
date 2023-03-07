@@ -14,19 +14,19 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
+      "map": "MAP_SOMA",
       "offset": -22,
-      "map": "MAP_SOMA"
+      "direction": "down"
     },
     {
-      "direction": "left",
+      "map": "MAP_CHINATOWN",
       "offset": 16,
-      "map": "MAP_CHINATOWN"
+      "direction": "left"
     },
     {
-      "direction": "left",
+      "map": "MAP_FISHERMANSWHARF",
       "offset": 0,
-      "map": "MAP_FISHERMANSWHARF"
+      "direction": "left"
     }
   ],
   "object_events": [

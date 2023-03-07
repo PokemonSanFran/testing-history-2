@@ -1,0 +1,505 @@
+//gText_Restaurantexpansion_
+//Quest_Restaurantexpansion_
+const FLAG_HIDE_FALKNER = FLAG_TEMP_4
+const FLAG_HIDE_JORIS = FLAG_TEMP_5
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const FALKNER = 8
+const JORIS = 7
+const JORIS_KID = 9
+const NURSE = 1
+
+const MARIN_NURSE= 0
+const HAIGHTASHBURY_NURSE= 1
+const SOMA_NURSE= 2
+const BERKELEY_NURSE= 3
+
+
+script Quest_Restaurantexpansion_HideObjects_Script{
+    setflag(FLAG_HIDE_JORIS)
+
+    if(var(VAR_FALKNER_STATE) != BATTLE_1_COMPLETE){
+        setflag(FLAG_HIDE_FALKNER)
+    }
+    return
+}
+
+script Quest_Restaurantexpansion_Mission_Leader_Visibilty_Script{
+    switch(var(VAR_FALKNER_STATE)){
+        case NO_BADGE:
+        case QUEST_2_COMPLETE:
+        case BATTLE_2_COMPLETE: setflag(FLAG_HIDE_FALKNER)
+        default: return
+    }
+    return
+}
+
+script Quest_Restaurantexpansion_MovePlayer_Script{
+    fadescreen(FADE_TO_BLACK)
+    setobjectxy(PLAYER,31,19)
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    TeleportCamera(31,19)
+    fadescreen(FADE_FROM_BLACK)
+}
+
+script Quest_Restaurantexpansion_Startcutscene_Script{
+    specialvar(VAR_RESULT,GetPlayerFacingDirection)
+
+    if (var(VAR_RESULT) != DIR_WEST){
+        call(Quest_Restaurantexpansion_MovePlayer_Script)    
+    }
+    return
+}
+
+script Quest_Restaurantexpansion_Meetup_Dialogue{
+    setvar(VAR_FALKNER_STATE,CUTSCENE_COMPLETE)
+    call(Quest_Restaurantexpansion_Startcutscene_Script)
+    lock
+    msgbox(gText_Restaurantexpansion_HelloPlayer,MSGBOX_NPC,SPEAKER_FALKNER,,EMOTE_HAPPY)
+    msgbox(gText_Restaurantexpansion_AreYouHere,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_IDidntEven,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_OhCome,,SPEAKER_FALKNER)
+    closemessage
+    call(Quest_Restaurantexpansion_StartWalk_Dialogue)
+    msgbox(gText_Restaurantexpansion_IfMyRestaurant,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_ITry,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_WhatDoMeanByElevate,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_TheBestCooksAndFreshest,,SPEAKER_FALKNER)
+    closemessage
+    waitmovement(FALKNER)
+    applymovement(FALKNER,Common_Movement_FaceRight)
+    call(Quest_Restaurantexpansion_SpawnJoris_Script)
+    call(Quest_Restaurantexpansion_JorisWalkToPlayer_Script)
+    waitmovement(JORIS)
+    applymovement(FALKNER,Common_Movement_FaceDown)
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    msgbox(gText_Restaurantexpansion_HeyManYouGot,,SPEAKER_JORIS)
+    msgbox(gText_Restaurantexpansion_SorryIDont,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_ItsCool,,SPEAKER_JORIS)
+    closemessage
+    applymovement(JORIS,Quest_Restaurantexpansion_WalkAway_Movement)
+    applymovement(JORIS_KID,Quest_Restaurantexpansion_WalkAway_Movement)
+    waitmovement(JORIS)
+    msgbox(gText_Restaurantexpansion_WaitHoldOn,,SPEAKER_FALKNER,TAIL_SHOUT)
+    closemessage
+    playse(SE_PIN)
+    applymovement(JORIS,Common_Movement_ExclamationMark)
+    applymovement(FALKNER,Quest_Restaurantexpansion_WalkAway_Movement)
+    waitmovement(FALKNER)
+    msgbox(gText_Restaurantexpansion_CanIActually,,SPEAKER_FALKNER)
+    applymovement(JORIS_KID,Quest_Restaurantexpansion_Jump_Movement)
+    msgbox(gText_Restaurantexpansion_WaitReally,,SPEAKER_JORIS)
+    msgbox(gText_Restaurantexpansion_YeahThisPlaceJust,,SPEAKER_FALKNER)
+    closemessage
+    call(Quest_Restaurantexpansion_GroupWalkDoor_Script)
+    waitmovement(FALKNER)
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    msgbox(gText_Restaurantexpansion_PlayerComeTo,,SPEAKER_FALKNER)
+    closemessage
+    call(Quest_Restaurantexpansion_GoIntoShop_Script)
+    release
+    end
+}
+
+script Quest_Restaurantexpansion_StartWalk_Dialogue{
+    applymovement(FALKNER,Quest_Restaurantexpansion_WalkToShop_Movement)
+    applymovement(PLAYER,Quest_Restaurantexpansion_WalkToShop_Movement)
+    return
+}
+
+script Quest_Restaurantexpansion_SpawnJoris_Script{
+    clearflag(FLAG_HIDE_JORIS)
+    addobject(JORIS)
+    addobject(JORIS_KID)
+    return
+}
+
+script Quest_Restaurantexpansion_JorisWalkToPlayer_Script{
+    applymovement(JORIS,Quest_Restaurantexpansion_WalkToLeader_Movement)
+    applymovement(JORIS_KID,Quest_Restaurantexpansion_WalkToLeader_Movement)
+    return
+}
+
+script Quest_Restaurantexpansion_GroupWalkDoor_Script{
+    applymovement(FALKNER,Quest_Restaurantexpansion_ReturnToDoorAndLook_Movement)
+    applymovement(JORIS,Quest_Restaurantexpansion_ReturnToDoor_Movement)
+    applymovement(JORIS_KID,Quest_Restaurantexpansion_ReturnToDoor_Movement)
+    return
+}
+
+script Quest_Restaurantexpansion_GoIntoShop_Script{
+    opendoor(2,18)
+    waitdooranim
+    applymovement(FALKNER,Quest_Restaurantexpansion_GoInside_A_Movement)
+    applymovement(JORIS,Quest_Restaurantexpansion_GoInside_B_Movement)
+    applymovement(JORIS_KID,Quest_Restaurantexpansion_GoInside_C_Movement)
+    waitmovement(FALKNER)
+    waitmovement(JORIS)
+    waitmovement(JORIS_KID)
+    removeobject(FALKNER)
+    playse(SE_EXIT)
+    removeobject(JORIS)
+    playse(SE_EXIT)
+    removeobject(JORIS_KID)
+    playse(SE_EXIT)
+    closedoor(2,18)
+    return
+}
+
+script Quest_Restaurantexpansion_Leader_Interact_Script{
+    lock
+    goto_if_quest_complete(QUEST_RESTAURANTEXPANSION1,Quest_Restaurantexpansion2_Leader_Interact_Script)
+
+    goto_if_quest_reward(QUEST_RESTAURANTEXPANSION1,Quest_Restaurantexpansion_Reward_Dialogue)
+    goto_if_quest_active(QUEST_RESTAURANTEXPANSION1,Quest_Restaurantexpansion_Active_Dialogue)
+    goto(Quest_Restaurantexpansion_StartQuest)
+}
+
+script Quest_Restaurantexpansion_StartQuest{
+    msgbox(gText_Restaurantexpansion_PlayerSorryAbout,MSGBOX_NPC,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_NoProblemThat,,SPEAKER_ZOEY,,EMOTE_HAPPY)
+    msgbox(gText_Restaurantexpansion_TheyReallyOpened,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_HowCanI,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_ThatsWhy,,SPEAKER_FALKNER)
+
+    msgbox(gText_Restaurantexpansion_Wow,,SPEAKER_ZOEY,,EMOTE_SHOCK)
+
+    msgbox(gText_Restaurantexpansion_IveBeenHardAtWork,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_MeICant,,SPEAKER_ZOEY,,EMOTE_CONFUSE)
+    msgbox(gText_Restaurantexpansion_NotCookingOutreach,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_IWantToWorkWith,,SPEAKER_FALKNER)
+
+    msgbox(gText_Restaurantexpansion_KindaWeird,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    msgbox(gText_Restaurantexpansion_SureICan,,SPEAKER_ZOEY)
+    closemessage
+
+    startquest(QUEST_RESTAURANTEXPANSION1)
+    lock
+
+    msgbox(gText_Restaurantexpansion_FirstYoureGoing,,SPEAKER_FALKNER)
+    giveitem(ITEM_TEA,1)
+    msgbox(gText_Restaurantexpansion_WaitOnlyOne,,SPEAKER_ZOEY)
+}
+
+
+script Quest_Restaurantexpansion_Active_Dialogue{
+}
+
+script Quest_Restaurantexpansion_Reward_Dialogue{
+}
+
+script Quest_Restaurantexpansion_Nurse_Question_Script{
+    special(GetCurrentMap)
+
+        switch(var(VAR_RESULT)){
+            case MAP_MARIN_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Marin_Nurse_Dialogue)
+            case MAP_HAIGHTASHBURY_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Haightashbury_NurseDialogue)
+            case MAP_SOMA_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_SOMA_Nurse_Dialogue)
+            case MAP_BERKELEY_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Berkeley_Nurse_Dialogue)
+            default: return
+        }
+    return
+}
+
+script Quest_Restaurantexpansion_Marin_Nurse_Dialogue{
+    setvar(VAR_TEMP_0,0)
+
+    call_if_quest_active(QUEST_RESTAURANTEXPANSION1,Quest_Restaurantexpansion_CountProgress_Script)
+
+    checkitem(ITEM_TEA,1)
+    if (!var(VAR_RESULT) || var(VAR_TEMP_0) != MARIN_NURSE){
+        return
+    }
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_1)
+
+    msgbox(gText_Restaurantexpansion_ActuallyQuestion,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_YesILove,,SPEAKER_NURSE)
+    msgbox(gText_Restaurantexpansion_TheyreLaunchingANew,,SPEAKER_ZOEY)
+    closemessage
+    call(Quest_Restaurantexpansion_HangPoster_Script)
+    msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
+    msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    closemessage
+}
+script Quest_Restaurantexpansion_Haightashbury_NurseDialogue{
+    setvar(VAR_TEMP_0,0)
+
+    call_if_quest_active(QUEST_RESTAURANTEXPANSION1,Quest_Restaurantexpansion_CountProgress_Script)
+
+    checkitem(ITEM_TEA,1)
+    if (!var(VAR_RESULT) || var(VAR_TEMP_0) != HAIGHTASHBURY_NURSE){
+        return
+    }
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_2)
+
+    msgbox(gText_Restaurantexpansion_ActuallyQuestion,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_YesILove,,SPEAKER_NURSE)
+    msgbox(gText_Restaurantexpansion_TheyreLaunchingANew,,SPEAKER_ZOEY)
+    closemessage
+    call(Quest_Restaurantexpansion_HangPoster_Script)
+    msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
+    msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    closemessage
+}
+script Quest_Restaurantexpansion_SOMA_Nurse_Dialogue{
+    setvar(VAR_TEMP_0,0)
+
+    call_if_quest_active(QUEST_RESTAURANTEXPANSION1,Quest_Restaurantexpansion_CountProgress_Script)
+
+    checkitem(ITEM_TEA,1)
+    if (!var(VAR_RESULT) || var(VAR_TEMP_0) != SOMA_NURSE){
+        return
+    }
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_3)
+
+    msgbox(gText_Restaurantexpansion_ActuallyQuestion,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_YesILove,,SPEAKER_NURSE)
+    msgbox(gText_Restaurantexpansion_TheyreLaunchingANew,,SPEAKER_ZOEY)
+    closemessage
+    call(Quest_Restaurantexpansion_HangPoster_Script)
+    msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
+    msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    closemessage
+}
+script Quest_Restaurantexpansion_Berkeley_Nurse_Dialogue{
+    setvar(VAR_TEMP_0,0)
+
+    call_if_quest_active(QUEST_RESTAURANTEXPANSION1,Quest_Restaurantexpansion_CountProgress_Script)
+
+    checkitem(ITEM_TEA,1)
+    if (!var(VAR_RESULT) || var(VAR_TEMP_0) != BERKELEY_NURSE){
+        return
+    }
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_4)
+
+    msgbox(gText_Restaurantexpansion_ActuallyQuestion,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_YesILove,,SPEAKER_NURSE)
+    msgbox(gText_Restaurantexpansion_TheyreLaunchingANew,,SPEAKER_ZOEY)
+    closemessage
+    call(Quest_Restaurantexpansion_HangPoster_Script)
+    msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
+    msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    closemessage
+}
+
+script Quest_Restaurantexpansion_HangPoster_Script{
+    fadescreen(FADE_TO_BLACK)
+    setobjectxy(PLAYER,12,2)
+    TeleportCamera(12,2)
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    applymovement(NURSE,Common_Movement_FaceRight)
+    call(Quest_Restaurantexpansion_SOMA_HangPosterTile_Script)
+    call(Quest_Restaurantexpansion_Berkeley_HangPosterTile_Script)
+    call(Quest_Restaurantexpansion_Haightashbury_HangPosterTile_Script)
+    call(Quest_Restaurantexpansion_Marin_HangPosterTile_Script)
+    delay(8)
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
+script Quest_Restaurantexpansion_Haightashbury_HangPosterTile_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+    setmetatile(12,0,0x24E,TRUE)
+    setmetatile(12,1,0x24E,TRUE)
+    special(DrawWholeMapView)
+    }
+    return
+}
+
+script Quest_Restaurantexpansion_Marin_HangPosterTile_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+    setmetatile(12,0,0x24E,TRUE)
+    setmetatile(12,1,0x24E,TRUE)
+    special(DrawWholeMapView)
+    }
+    return
+}
+
+script Quest_Restaurantexpansion_Berkeley_HangPosterTile_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+    setmetatile(12,0,0x24E,TRUE)
+    setmetatile(12,1,0x24E,TRUE)
+    special(DrawWholeMapView)
+    }
+    return
+}
+
+script Quest_Restaurantexpansion_SOMA_HangPosterTile_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_4)
+    if (var(VAR_RESULT)){
+    setmetatile(12,0,0x24E,TRUE)
+    setmetatile(12,1,0x24E,TRUE)
+    special(DrawWholeMapView)
+    }
+    return
+}
+
+script Quest_Restaurantexpansion_CountProgress_Script{
+    setvar(VAR_TEMP_0,0)
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_1)
+        if(var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_2)
+        if(var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_3)
+        if(var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_4)
+        if(var(VAR_RESULT)){
+            addvar(VAR_TEMP_0,1)
+        }
+        return
+}
+
+movement Quest_Restaurantexpansion_WalkToShop_Movement{
+    walk_left * 28
+    step_end
+}
+
+movement Quest_Restaurantexpansion_WalkToLeader_Movement{
+    walk_up * 5
+    step_end
+}
+movement Quest_Restaurantexpansion_WalkAway_Movement{
+    walk_down * 2
+    step_end
+}
+movement Quest_Restaurantexpansion_Jump_Movement{
+    jump_in_place_up
+    step_end
+}
+movement Quest_Restaurantexpansion_ReturnToDoorAndLook_Movement{
+    walk_up * 2
+    face_player
+    step_end
+}
+movement Quest_Restaurantexpansion_ReturnToDoor_Movement{
+    walk_up * 2
+    step_end
+}
+movement Quest_Restaurantexpansion_GoInside_A_Movement{
+    walk_up
+    step_end
+}
+movement Quest_Restaurantexpansion_GoInside_B_Movement{
+    walk_up * 2
+    step_end
+}
+movement Quest_Restaurantexpansion_GoInside_C_Movement{
+    walk_left
+    walk_up * 2
+    step_end
+}
+
+text gText_Restaurantexpansion_HelloPlayer{
+    format("Hello {PLAYER}. What a delicious surprise!")
+}
+text gText_Restaurantexpansion_AreYouHere{
+    format("Are you here for the grand re-opening of the updated menu for Millenium Bakery?")
+}
+text gText_Restaurantexpansion_IDidntEven{
+    format("I didn't even know that was a thing...")
+}
+text gText_Restaurantexpansion_OhCome{
+    format("Oh! Come on, we'll go together.")
+}
+text gText_Restaurantexpansion_IfMyRestaurant{
+    format("If my restaurant is going to be at the peak of Sanfran culinary culture, there's a lot of work happening in the front of house to make that happen. I have to make sure I understand region's preferred palettes, while also making sure I can continually elevate the plates that leave my line.")
+}
+text gText_Restaurantexpansion_ITry{
+    format("I try to stay ahead of the tickets, one resturant opening at a time.")
+}
+text gText_Restaurantexpansion_WhatDoMeanByElevate{
+    format("What do you mean by elevate?")
+}
+text gText_Restaurantexpansion_TheBestCooksAndFreshest{
+    format("I'm not just trying to plate up Sanfran cuisine, I'm serving the best cuts of Sanfran cuisine. Freshest ingredients from the ground, finest Kalosian chefs, with no expense spared. I want my food to be the definitive dining experience of Sanfran!")
+}
+text gText_Restaurantexpansion_HeyManYouGot{
+    format("Hey man, you got a couple dollars for food.")
+}
+text gText_Restaurantexpansion_SorryIDont{
+    format("Sorry, I don't have anything.")
+}
+text gText_Restaurantexpansion_ItsCool{
+    format("Its cool. Come on, little man.")
+}
+text gText_Restaurantexpansion_WaitHoldOn{
+    format("Wait! Hold on.")
+}
+text gText_Restaurantexpansion_CanIActually{
+    format("Can I actually buy you dinner?")
+}
+text gText_Restaurantexpansion_WaitReally{
+    format("Wait, really? That's awful nice man.")
+}
+text gText_Restaurantexpansion_YeahThisPlaceJust{
+    format("This restaurant is experimenting with a blend of flavors tonight, and I want - hold on.")
+}
+text gText_Restaurantexpansion_PlayerComeTo{
+    format("{PLAYER}, we'll have to take a raincheck. Come see me in Mission soon!")
+}
+text gText_Restaurantexpansion_PlayerSorryAbout{
+    format("")
+}
+text gText_Restaurantexpansion_NoProblemThat{
+    format("")
+}
+text gText_Restaurantexpansion_TheyReallyOpened{
+    format("")
+}
+text gText_Restaurantexpansion_HowCanI{
+    format("")
+}
+text gText_Restaurantexpansion_ThatsWhy{
+    format("")
+}
+text gText_Restaurantexpansion_Wow{
+    format("")
+}
+text gText_Restaurantexpansion_IveBeenHardAtWork{
+    format("")
+}
+text gText_Restaurantexpansion_MeICant{
+    format("")
+}
+text gText_Restaurantexpansion_NotCookingOutreach{
+    format("")
+}
+text gText_Restaurantexpansion_IWantToWorkWith{
+    format("")
+}
+text gText_Restaurantexpansion_KindaWeird{
+    format("")
+}
+text gText_Restaurantexpansion_SureICan{
+    format("")
+}
+text gText_Restaurantexpansion_FirstYoureGoing{
+    format("")
+}
+text gText_Restaurantexpansion_WaitOnlyOne{
+    format("")
+}
+text gText_Restaurantexpansion_ActuallyQuestion{
+    format("")
+}
+text gText_Restaurantexpansion_YesILove{
+    format("")
+}
+text gText_Restaurantexpansion_TheyreLaunchingANew{
+    format("")
+}
+text gText_Restaurantexpansion_ThisIsDelicious{
+    format("")
+}
+text gText_Restaurantexpansion_ThatWentWell{
+    format("")
+}

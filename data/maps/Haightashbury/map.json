@@ -14,9 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "right",
+      "map": "MAP_PSFROUTE43",
       "offset": 8,
-      "map": "MAP_PSFROUTE43"
+      "direction": "right"
     }
   ],
   "object_events": [
@@ -372,6 +372,13 @@
       "y": 26,
       "elevation": 0,
       "dest_map": "MAP_HAIGHTASHBURY_GYM",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 34,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_HAIGHTASHBURY_POKEMONCENTER_1F",
       "dest_warp_id": "0"
     }
   ],
