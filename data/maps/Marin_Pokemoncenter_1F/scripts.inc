@@ -16,8 +16,6 @@ Marin_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_LOAD:
 Marin_Pokemoncenter_1F_EventScript_Nurse::
 	setvar VAR_0x800B, 1
 	call Common_EventScript_PkmnCenterNurse
-	waitmessage
-	waitbuttonpress
 	call Quest_Restaurantexpansion_Nurse_Question_Script
 	release
 	end

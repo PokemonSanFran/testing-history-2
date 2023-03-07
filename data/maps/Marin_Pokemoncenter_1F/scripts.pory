@@ -14,9 +14,9 @@ mapscripts Marin_Pokemoncenter_1F_MapScripts{
 script Marin_Pokemoncenter_1F_EventScript_Nurse{	
 	setvar(VAR_0x800B, LOCALID_NURSE)
 	call(Common_EventScript_PkmnCenterNurse)
-	waitmessage
-	waitbuttonpress
     call(Quest_Restaurantexpansion_Nurse_Question_Script)
+	//waitmessage
+	//waitbuttonpress
 	release
 	end
 }

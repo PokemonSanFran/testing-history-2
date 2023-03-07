@@ -38,9 +38,8 @@ script Berkeley_Stan_PostBattle_Script{
 script Berkeley_Biker_Interact_Script{
     msgbox(gText_Berkeley_PlaceholderBiker,MSGBOX_NPC)
 
-    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_GETTHEBANDBACKTOGETHER)
-
-    if(var(VAR_RESULT)){
+    call(Quest_GetTheBand_CheckQuestAndBike_Script)
+    if(var(VAR_RESULT) && (var(VAR_TEMP_1) != 0)){
         goto(Quest_GetTheBand_Interact_BikerA_Dialogue)
     }
     end

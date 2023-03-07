@@ -66,23 +66,29 @@ script Quest_GetTheBand_RemoveBikers_Script{
     return
 }
 
-script Quest_GetTheBand_Interact_BikerA_Dialogue{
+script Quest_GetTheBand_CheckQuestAndBike_Script{
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_GETTHEBANDBACKTOGETHER)
     specialvar(VAR_TEMP_1, GetPlayerAvatarBike)
-    if (var(VAR_TEMP_1) != 0){
+    return
+}
+
+script Quest_GetTheBand_Interact_BikerA_Dialogue{
         msgbox(gText_GetTheBand_TheBikersSentYou,MSGBOX_NPC)
         call(Quest_GetTheBand_RemoveBikers_Script)
         subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_GETTHEBANDBACKTOGETHER,SUB_QUEST_1)
         call(Quest_GetTheBand_CheckProgress_Script)
         end
-    }
-    end
 }
 
 script Quest_GetTheBand_Interact_BikerB_Dialogue{
+    specialvar(VAR_TEMP_1, GetPlayerAvatarBike)
+    if (var(VAR_TEMP_1) != 0){
     msgbox(gText_GetTheBand_TheBikersSentYou,MSGBOX_NPC)
     call(Quest_GetTheBand_RemoveBikers_Script)
     subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_GETTHEBANDBACKTOGETHER,SUB_QUEST_2)
     call(Quest_GetTheBand_CheckProgress_Script)
+    end
+    }
     end
 }
 

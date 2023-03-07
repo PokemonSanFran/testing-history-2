@@ -217,6 +217,9 @@ script Quest_Restaurantexpansion_Marin_Nurse_Dialogue{
     closemessage
     call(Quest_Restaurantexpansion_HangPoster_Script)
     msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
+    closemessage
+    applymovement(NURSE,Common_Movement_FaceDown)
+    waitmovement(NURSE)
     msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
     closemessage
 }
@@ -238,6 +241,7 @@ script Quest_Restaurantexpansion_Haightashbury_NurseDialogue{
     call(Quest_Restaurantexpansion_HangPoster_Script)
     msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
     msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    applymovement(NURSE,Common_Movement_FaceDown)
     closemessage
 }
 script Quest_Restaurantexpansion_SOMA_Nurse_Dialogue{
@@ -258,6 +262,7 @@ script Quest_Restaurantexpansion_SOMA_Nurse_Dialogue{
     call(Quest_Restaurantexpansion_HangPoster_Script)
     msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
     msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    applymovement(NURSE,Common_Movement_FaceDown)
     closemessage
 }
 script Quest_Restaurantexpansion_Berkeley_Nurse_Dialogue{
@@ -278,6 +283,7 @@ script Quest_Restaurantexpansion_Berkeley_Nurse_Dialogue{
     call(Quest_Restaurantexpansion_HangPoster_Script)
     msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
     msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    applymovement(NURSE,Common_Movement_FaceDown)
     closemessage
 }
 
@@ -291,10 +297,10 @@ script Quest_Restaurantexpansion_HangPoster_Script{
     special(GetCurrentMap)
 
     switch(var(VAR_RESULT)){
-        case MAP_MARIN_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_SOMA_HangPosterTile_Script)
-        case MAP_HAIGHTASHBURY_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Berkeley_HangPosterTile_Script)
-        case MAP_SOMA_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Haightashbury_HangPosterTile_Script)
-        case MAP_BERKELEY_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Marin_HangPosterTile_Script)
+        case MAP_SOMA_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_SOMA_HangPosterTile_Script)
+        case MAP_BERKELEY_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Berkeley_HangPosterTile_Script)
+        case MAP_HAIGHTASHBURY_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Haightashbury_HangPosterTile_Script)
+        case MAP_MARIN_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Marin_HangPosterTile_Script)
         default: return
     }
     delay(8)
