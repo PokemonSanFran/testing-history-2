@@ -1,6 +1,12 @@
 Haightashbury_Pokemoncenter_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Haightashbury_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, Haightashbury_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_LOAD
 	.byte 0
+
+Haightashbury_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setrespawn HEAL_LOCATION_HAIGHTASHBURY
+	end
 
 Haightashbury_Pokemoncenter_1F_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call Quest_Restaurantexpansion_Haightashbury_HangPosterTile_Script

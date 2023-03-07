@@ -11,7 +11,7 @@ Common_EventScript_PkmnCenterNurse::
 	end
 
 EventScript_PkmnCenterNurse_Goodbye::
-	message gText_WeHopeToSeeYouAgain
+	msgbox gText_WeHopeToSeeYouAgain,,SPEAKER_NURSE
 	return
 
 @ VAR_0x8004 is 1 when player has Gold Card; jumps are identical
@@ -26,11 +26,11 @@ EventScript_PkmnCenterNurse_HealPkmn::
 	end
 
 EventScript_PkmnCenterNurse_IllTakeYourPkmn::
-	message gText_IllTakeYourPkmn
+	msgbox gText_IllTakeYourPkmn,,SPEAKER_NURSE
 	return
 
 EventScript_PkmnCenterNurse_IllTakeYourPkmn2::
-	message gText_IllTakeYourPkmn2
+	msgbox gText_IllTakeYourPkmn2,,SPEAKER_NURSE
 	return
 
 EventScript_PkmnCenterNurse_TakeAndHealPkmn::
@@ -55,30 +55,30 @@ EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom::
 @ VAR_0x8004 is 1 when player has Gold Card
 EventScript_PkmnCenterNurse_ReturnPkmn::
 	goto_if_eq VAR_0x8004, 1, EventScript_PkmnCenterNurse_ReturnPkmn2
-	message gText_RestoredPkmnToFullHealth
+	msgbox gText_RestoredPkmnToFullHealth,,SPEAKER_NURSE
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
-	message gText_WeHopeToSeeYouAgain
+	msgbox gText_WeHopeToSeeYouAgain,,SPEAKER_NURSE
 	return
 
 EventScript_PkmnCenterNurse_ReturnPkmn2::
-	message gText_ThankYouForWaiting
+	msgbox gText_ThankYouForWaiting,,SPEAKER_NURSE
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
-	message gText_WeHopeToSeeYouAgain2
+	msgbox gText_WeHopeToSeeYouAgain2,,SPEAKER_NURSE
 	return
 
 EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom::
 	goto_if_set FLAG_NURSE_UNION_ROOM_REMINDER, EventScript_PkmnCenterNurse_ReturnPkmn
 	msgbox gText_RestoredPkmnToFullHealth, MSGBOX_DEFAULT, SPEAKER_NURSE
 	setflag FLAG_NURSE_UNION_ROOM_REMINDER
-	message CableClub_Text_PlayerIsWaiting
+	msgbox CableClub_Text_PlayerIsWaiting,,SPEAKER_NURSE
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
-	message gText_WeHopeToSeeYouAgain
+	msgbox gText_WeHopeToSeeYouAgain,,SPEAKER_NURSE
 	return
 
 EventScript_PkmnCenterNurse_CheckPokerus::
@@ -88,7 +88,7 @@ EventScript_PkmnCenterNurse_CheckPokerus::
 	end
 
 EventScript_PkmnCenterNurse_ExplainPokerus::
-	message gText_PokerusExplanation
+	msgbox gText_PokerusExplanation,,SPEAKER_NURSE
 	setflag FLAG_POKERUS_EXPLAINED
 	return
 
@@ -103,13 +103,13 @@ EventScript_PkmnCenterNurse_GoldCard::
 	waitmovement 0
 	msgbox gText_NoticesGoldCard, MSGBOX_YESNO, SPEAKER_NURSE
 	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_GoldCardHealPkmn
-	message gText_WeHopeToSeeYouAgain2
+	msgbox gText_WeHopeToSeeYouAgain2
 	return
 
 EventScript_PkmnCenterNurse_AskForUsual::
 	msgbox gText_YouWantTheUsual, MSGBOX_YESNO, SPEAKER_NURSE
 	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_GoldCardHealPkmn
-	message gText_WeHopeToSeeYouAgain2
+	msgbox gText_WeHopeToSeeYouAgain2,,SPEAKER_NURSE
 	return
 
 EventScript_PkmnCenterNurse_GoldCardHealPkmn::

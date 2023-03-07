@@ -287,10 +287,16 @@ script Quest_Restaurantexpansion_HangPoster_Script{
     TeleportCamera(12,2)
     applymovement(PLAYER,Common_Movement_FaceLeft)
     applymovement(NURSE,Common_Movement_FaceRight)
-    call(Quest_Restaurantexpansion_SOMA_HangPosterTile_Script)
-    call(Quest_Restaurantexpansion_Berkeley_HangPosterTile_Script)
-    call(Quest_Restaurantexpansion_Haightashbury_HangPosterTile_Script)
-    call(Quest_Restaurantexpansion_Marin_HangPosterTile_Script)
+
+    special(GetCurrentMap)
+
+    switch(var(VAR_RESULT)){
+        case MAP_MARIN_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_SOMA_HangPosterTile_Script)
+        case MAP_HAIGHTASHBURY_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Berkeley_HangPosterTile_Script)
+        case MAP_SOMA_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Haightashbury_HangPosterTile_Script)
+        case MAP_BERKELEY_POKEMONCENTER_1F: call(Quest_Restaurantexpansion_Marin_HangPosterTile_Script)
+        default: return
+    }
     delay(8)
     fadescreen(FADE_FROM_BLACK)
     return
