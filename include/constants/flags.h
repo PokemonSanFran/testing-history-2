@@ -41,11 +41,11 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
         
-#define FLAG_SYS_NO_COLLISION       0x20 // Unused Flag //DEBUG
-#define FLAG_SYS_NO_ENCOUNTER       0x21 // Unused Flag //DEBUG
-#define FLAG_SYS_NO_TRAINER_SEE     0x22 // Unused Flag //DEBUG
+#define FLAG_SYS_NO_COLLISION       0x20 //DEBUG
+#define FLAG_SYS_NO_ENCOUNTER       0x21 //DEBUG
+#define FLAG_SYS_NO_TRAINER_SEE     0x22 //DEBUG
 #define FLAG_SYS_NO_BAG_USE         0x23 // Unused Flag //DEBUG
-#define FLAG_SYS_NO_CATCHING        0x24 // Unused Flag //DEBUG
+#define FLAG_SYS_NO_CATCHING        0x24 //DEBUG
 #define FLAG_CHASECENTER_TOURNAMENT_HAPPENING 0x25 // Previously Unused Flag
 #define FLAG_SAVED_DAVID            0x26 // Previously Unused Flag
 #define FLAG_LOCKEDOUT_PLAYED 0x27 //Previously Unused Flag
@@ -56,11 +56,14 @@
 #define FLAG_DEFEATED_GARDEN_BOSS 0x2A
 #define FLAG_START_MENU_SETUP       0x2B // Is used the first time you open the start menu to set up the app orders
 #define FLAG_OPTION_MENU_SETUP 0x2C // Is used the first time you open the options menu to set up the configuration
-#define FLAG_UNUSED_0x2D 0x2D // Unused Flag
-#define FLAG_FORCE_SHINY 0x2D // Unused Flag
-#define FLAG_UNUSED_0x2E 0x2E// Unused Flag
-#define FLAG_UNUSED_0x2F 0x2F   // Unused Flag
-#define FLAG_UNUSED_0x30 0x30 // Unused Flag
+#define FLAG_UNUSED_0x2D 0x2D
+#define FLAG_FORCE_SHINY 0x2D
+#define FLAG_INVERSE_BATTLE 0x2E
+#define FLAG_UNUSED_0x2E 0x2E
+#define FLAG_FORCE_DOUBLE_WILD 0x2F
+#define FLAG_UNUSED_0x2F 0x2F
+#define FLAG_SMART_WILD_AI  0x30
+#define FLAG_UNUSED_0x30 0x30
 #define FLAG_UNUSED_0x31 0x31 // Unused Flag
 #define FLAG_UNUSED_0x32 0x32 // Unused Flag
 #define FLAG_UNUSED_0x33 0x33 // Unused Flag
