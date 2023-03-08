@@ -43,14 +43,19 @@ Berkeley_Stan_PostBattle_Script_2:
 
 Berkeley_Biker_Interact_Script::
 	msgbox gText_Berkeley_PlaceholderBiker, MSGBOX_NPC
-	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_GETTHEBANDBACKTOGETHER
+	call Quest_GetTheBand_CheckQuestAndBike_Script
 	compare VAR_RESULT, 0
-	goto_if_ne Berkeley_Biker_Interact_Script_2
+	goto_if_ne Berkeley_Biker_Interact_Script_3
 Berkeley_Biker_Interact_Script_1:
 	end
 
 Berkeley_Biker_Interact_Script_2:
 	goto Quest_GetTheBand_Interact_BikerA_Dialogue
+	goto Berkeley_Biker_Interact_Script_1
+
+Berkeley_Biker_Interact_Script_3:
+	compare VAR_TEMP_1, 0
+	goto_if_ne Berkeley_Biker_Interact_Script_2
 	goto Berkeley_Biker_Interact_Script_1
 
 

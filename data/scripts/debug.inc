@@ -60,34 +60,37 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_RESTAURANTEXPANSION1
-	additem ITEM_TEA, 1
-	warpsilent MAP_MARIN_POKEMONCENTER_1F, 0
+	warpsilent MAP_MISSION, 38, 24
 	end
 
 
 Debug_Script_2::
-	warpsilent MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F, 0
+	warpsilent MAP_MARIN_POKEMONCENTER_1F, 7, 5
 	end
 
 
 Debug_Script_3::
+	warpsilent MAP_HAIGHTASHBURY_POKEMONCENTER_1F, 7, 5
 	end
 
 
 Debug_Script_4::
+	warpsilent MAP_SOMA_POKEMONCENTER_1F, 7, 5
 	end
 
 
 Debug_Script_5::
+	warpsilent MAP_BERKELEY_POKEMONCENTER_1F, 7, 5
 	end
 
 
 Debug_Script_6::
+	setvar VAR_FALKNER_STATE, CUTSCENE_COMPLETE
 	end
 
 
 Debug_Script_7::
+	questmenu QUEST_MENU_SET_REWARD, QUEST_RESTAURANTEXPANSION1
 	end
 
 

@@ -14,9 +14,7 @@ mapscripts SOMA_Pokemoncenter_1F_MapScripts{
 script SOMA_Pokemoncenter_1F_EventScript_Nurse{
 	setvar(VAR_0x800B, LOCALID_NURSE)
 	call(Common_EventScript_PkmnCenterNurse)
-    call(Quest_Restaurantexpansion_Marin_Nurse_Dialogue)
-	waitmessage
-	waitbuttonpress
+    call(Quest_Restaurantexpansion_Nurse_Question_Script)
 	release
 	end
 }

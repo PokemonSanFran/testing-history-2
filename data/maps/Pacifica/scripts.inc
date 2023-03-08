@@ -20,14 +20,19 @@ Pacifica_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 Pacifica_Biker_Interact_Script::
 	msgbox gText_Pacifica_PlaceholderBiker, MSGBOX_NPC
-	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_GETTHEBANDBACKTOGETHER
+	call Quest_GetTheBand_CheckQuestAndBike_Script
 	compare VAR_RESULT, 0
-	goto_if_ne Pacifica_Biker_Interact_Script_2
+	goto_if_ne Pacifica_Biker_Interact_Script_3
 Pacifica_Biker_Interact_Script_1:
 	end
 
 Pacifica_Biker_Interact_Script_2:
 	goto Quest_GetTheBand_Interact_BikerB_Dialogue
+	goto Pacifica_Biker_Interact_Script_1
+
+Pacifica_Biker_Interact_Script_3:
+	compare VAR_TEMP_1, 0
+	goto_if_ne Pacifica_Biker_Interact_Script_2
 	goto Pacifica_Biker_Interact_Script_1
 
 

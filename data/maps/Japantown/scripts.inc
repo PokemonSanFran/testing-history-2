@@ -23,14 +23,19 @@ Japantown_FashionDesigner_Script::
 
 Japantown_Biker_Interact_Script::
 	msgbox gText_Japantown_PlaceholderBiker, MSGBOX_NPC
-	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_GETTHEBANDBACKTOGETHER
+	call Quest_GetTheBand_CheckQuestAndBike_Script
 	compare VAR_RESULT, 0
-	goto_if_ne Japantown_Biker_Interact_Script_2
+	goto_if_ne Japantown_Biker_Interact_Script_3
 Japantown_Biker_Interact_Script_1:
 	end
 
 Japantown_Biker_Interact_Script_2:
 	goto Quest_GetTheBand_Interact_BikerE_Dialogue
+	goto Japantown_Biker_Interact_Script_1
+
+Japantown_Biker_Interact_Script_3:
+	compare VAR_TEMP_1, 0
+	goto_if_ne Japantown_Biker_Interact_Script_2
 	goto Japantown_Biker_Interact_Script_1
 
 

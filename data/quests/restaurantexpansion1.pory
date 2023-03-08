@@ -4,6 +4,7 @@ const FLAG_HIDE_FALKNER = FLAG_TEMP_4
 const FLAG_HIDE_JORIS = FLAG_TEMP_5
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const FALKNER = 8
+const FALKNER_MISSION = 7
 const JORIS = 7
 const JORIS_KID = 9
 const NURSE = 1
@@ -12,6 +13,7 @@ const MARIN_NURSE= 0
 const HAIGHTASHBURY_NURSE= 1
 const SOMA_NURSE= 2
 const BERKELEY_NURSE= 3
+const ALL_NURSE = 4
 
 
 script Quest_Restaurantexpansion_HideObjects_Script{
@@ -173,18 +175,96 @@ script Quest_Restaurantexpansion_StartQuest{
     closemessage
 
     startquest(QUEST_RESTAURANTEXPANSION1)
-    lock
+    goto(Quest_Restaurantexpansion_GiveFood_Marin_Dialogue)
+}
 
-    msgbox(gText_Restaurantexpansion_FirstYoureGoing,,SPEAKER_FALKNER)
+script Quest_Restaurantexpansion_GiveFood_Marin_Dialogue{
+    lock
+    bufferstring(STR_VAR_1,gText_Quest_RestaurantExpansion1_Sub1_Map)
+    call(Quest_Restaurantexpansion_FoodCold_Dialogue)
+    msgbox(gText_Restaurantexpansion_FirstYoureGoing,MSGBOX_NPC,SPEAKER_FALKNER)
+    lock
     giveitem(ITEM_TEA,1)
     msgbox(gText_Restaurantexpansion_WaitOnlyOne,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_OfCourse,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion_IRegret,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_ANGRY)
+    closemessage
+    release
+    end
+}
+script Quest_Restaurantexpansion_GiveFood_Haightashbury_Dialogue{
+    lock
+    bufferstring(STR_VAR_1,gText_Quest_RestaurantExpansion1_Sub2_Map)
+    call(Quest_Restaurantexpansion_FoodCold_Dialogue)
+    msgbox(gText_Restaurantexpansion_NextIs,MSGBOX_NPC,SPEAKER_FALKNER)
+    giveitem(ITEM_TEA,1)
+    msgbox(gText_Restaurantexpansion_HowAreYouPaying,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_WellMyClients,,SPEAKER_FALKNER)
+    closemessage
+    release
+    end
+}
+script Quest_Restaurantexpansion_GiveFood_SOMA_Dialogue{
+    lock
+    bufferstring(STR_VAR_1,gText_Quest_RestaurantExpansion1_Sub3_Map)
+    call(Quest_Restaurantexpansion_FoodCold_Dialogue)
+    msgbox(gText_Restaurantexpansion_NowGoTo,MSGBOX_NPC,SPEAKER_FALKNER)
+    giveitem(ITEM_TEA,1)
+    msgbox(gText_Restaurantexpansion_HowManyOf,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_JustOneMore,,SPEAKER_FALKNER)
+    closemessage
+    release
+    end
+}
+script Quest_Restaurantexpansion_GiveFood_Berkeley_Dialogue{
+    lock
+    bufferstring(STR_VAR_1,gText_Quest_RestaurantExpansion1_Sub4_Map)
+    call(Quest_Restaurantexpansion_FoodCold_Dialogue)
+    msgbox(gText_Restaurantexpansion_LastOne,MSGBOX_NPC,SPEAKER_FALKNER)
+    giveitem(ITEM_TEA,1)
+    msgbox(gText_Restaurantexpansion_ThisIsExhausting,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
+    closemessage
+    release
+    end
+}
+
+script Quest_Restaurantexpansion_FoodCold_Dialogue{
+    checkitem(ITEM_TEA,1)
+        if (var(VAR_RESULT)){
+            msgbox(gText_Restaurantexpansion_GottaGoBeforeIt,MSGBOX_NPC,SPEAKER_FALKNER,TAIL_SHOUT,EMOTE_ANGRY)
+            closemessage
+            release
+            end
+        }
+    return
 }
 
 
 script Quest_Restaurantexpansion_Active_Dialogue{
+    lock
+    call(Quest_Restaurantexpansion_CountProgress_Script)
+
+    switch(var(VAR_TEMP_0)){
+        case MARIN_NURSE: goto(Quest_Restaurantexpansion_GiveFood_Marin_Dialogue)
+        case HAIGHTASHBURY_NURSE: goto(Quest_Restaurantexpansion_GiveFood_Haightashbury_Dialogue)
+        case SOMA_NURSE: goto(Quest_Restaurantexpansion_GiveFood_SOMA_Dialogue)
+        case BERKELEY_NURSE: goto(Quest_Restaurantexpansion_GiveFood_Berkeley_Dialogue)
+    }
 }
 
 script Quest_Restaurantexpansion_Reward_Dialogue{
+    msgbox(gText_Restaurantexpansion_PlayerThisIs,MSGBOX_NPC,SPEAKER_FALKNER,,EMOTE_HAPPY)
+    msgbox(gText_Restaurantexpansion_Itwasgood,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_NowToWorkOnHiring,,SPEAKER_FALKNER)
+    closemessage
+    applymovement(FALKNER_MISSION,Quest_Restaurantexpansion_WalkInside_Movement)
+    setvar(VAR_FALKNER_STATE,QUEST_1_COMPLETE)
+    completequest(QUEST_RESTAURANTEXPANSION1)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(FALKNER_MISSION)
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
 }
 
 script Quest_Restaurantexpansion_Nurse_Question_Script{
@@ -209,7 +289,8 @@ script Quest_Restaurantexpansion_Marin_Nurse_Dialogue{
     if (!var(VAR_RESULT) || var(VAR_TEMP_0) != MARIN_NURSE){
         return
     }
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_1)
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_1)
+    removeitem(ITEM_TEA,1)
 
     msgbox(gText_Restaurantexpansion_ActuallyQuestion,,SPEAKER_ZOEY)
     msgbox(gText_Restaurantexpansion_YesILove,,SPEAKER_NURSE)
@@ -222,7 +303,9 @@ script Quest_Restaurantexpansion_Marin_Nurse_Dialogue{
     waitmovement(NURSE)
     msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
     closemessage
+    return
 }
+
 script Quest_Restaurantexpansion_Haightashbury_NurseDialogue{
     setvar(VAR_TEMP_0,0)
 
@@ -233,17 +316,20 @@ script Quest_Restaurantexpansion_Haightashbury_NurseDialogue{
         return
     }
     subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_2)
+    removeitem(ITEM_TEA,1)
 
     msgbox(gText_Restaurantexpansion_ActuallyQuestion,,SPEAKER_ZOEY)
-    msgbox(gText_Restaurantexpansion_YesILove,,SPEAKER_NURSE)
-    msgbox(gText_Restaurantexpansion_TheyreLaunchingANew,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_NahThatsSomeRich,,SPEAKER_NURSE)
+    msgbox(gText_Restaurantexpansion_TheOwnerIsMoving,,SPEAKER_ZOEY)
     closemessage
     call(Quest_Restaurantexpansion_HangPoster_Script)
-    msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
-    msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    msgbox(gText_Restaurantexpansion_OkayThisIs,,SPEAKER_NURSE,,EMOTE_LOVE)
+    msgbox(gText_Restaurantexpansion_TwoDown,,SPEAKER_ZOEY,TAIL_THOUGHT)
     applymovement(NURSE,Common_Movement_FaceDown)
     closemessage
+    return
 }
+
 script Quest_Restaurantexpansion_SOMA_Nurse_Dialogue{
     setvar(VAR_TEMP_0,0)
 
@@ -253,18 +339,21 @@ script Quest_Restaurantexpansion_SOMA_Nurse_Dialogue{
     if (!var(VAR_RESULT) || var(VAR_TEMP_0) != SOMA_NURSE){
         return
     }
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_3)
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_3)
+    removeitem(ITEM_TEA,1)
 
     msgbox(gText_Restaurantexpansion_ActuallyQuestion,,SPEAKER_ZOEY)
-    msgbox(gText_Restaurantexpansion_YesILove,,SPEAKER_NURSE)
-    msgbox(gText_Restaurantexpansion_TheyreLaunchingANew,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_NoIDontReally,,SPEAKER_NURSE)
+    msgbox(gText_Restaurantexpansion_TheyreChangingTheir,,SPEAKER_ZOEY)
     closemessage
     call(Quest_Restaurantexpansion_HangPoster_Script)
-    msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
-    msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    msgbox(gText_Restaurantexpansion_FancyOrNot,,SPEAKER_NURSE,,EMOTE_LOVE)
+    msgbox(gText_Restaurantexpansion_IDontThinkLeader,,SPEAKER_ZOEY,TAIL_THOUGHT)
     applymovement(NURSE,Common_Movement_FaceDown)
     closemessage
+    return
 }
+
 script Quest_Restaurantexpansion_Berkeley_Nurse_Dialogue{
     setvar(VAR_TEMP_0,0)
 
@@ -274,20 +363,32 @@ script Quest_Restaurantexpansion_Berkeley_Nurse_Dialogue{
     if (!var(VAR_RESULT) || var(VAR_TEMP_0) != BERKELEY_NURSE){
         return
     }
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_4)
+subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTAURANTEXPANSION1,SUB_QUEST_4)
+    removeitem(ITEM_TEA,1)
 
     msgbox(gText_Restaurantexpansion_ActuallyQuestion,,SPEAKER_ZOEY)
-    msgbox(gText_Restaurantexpansion_YesILove,,SPEAKER_NURSE)
-    msgbox(gText_Restaurantexpansion_TheyreLaunchingANew,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion_TheyDontHaveMy,,SPEAKER_NURSE)
+    msgbox(gText_Restaurantexpansion_TheyreAddingNew,,SPEAKER_ZOEY)
     closemessage
     call(Quest_Restaurantexpansion_HangPoster_Script)
-    msgbox(gText_Restaurantexpansion_ThisIsDelicious,,SPEAKER_NURSE,,EMOTE_LOVE)
-    msgbox(gText_Restaurantexpansion_ThatWentWell,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    msgbox(gText_Restaurantexpansion_ChillVibes,,SPEAKER_NURSE)
+    bufferstring(STR_VAR_1,gText_Quest_RestaurantExpansion1_Map)
+    msgbox(gText_Restaurantexpansion_TheLastOne,,SPEAKER_ZOEY,TAIL_THOUGHT)
     applymovement(NURSE,Common_Movement_FaceDown)
     closemessage
+    return
+}
+
+script Quest_Restaurantexpansion_ProgressToReward_Script{
+    call(Quest_Restaurantexpansion_CountProgress_Script)
+    if(var(VAR_TEMP_0) == ALL_NURSE){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_RESTAURANTEXPANSION1)
+    }
+    return
 }
 
 script Quest_Restaurantexpansion_HangPoster_Script{
+    call(Quest_Restaurantexpansion_ProgressToReward_Script)
     fadescreen(FADE_TO_BLACK)
     setobjectxy(PLAYER,12,2)
     TeleportCamera(12,2)
@@ -409,6 +510,10 @@ movement Quest_Restaurantexpansion_GoInside_C_Movement{
     walk_up * 2
     step_end
 }
+movement Quest_Restaurantexpansion_WalkInside_Movement{
+    walk_left * 8
+    step_end
+}
 
 text gText_Restaurantexpansion_HelloPlayer{
     format("Hello {PLAYER}. What a delicious surprise!")
@@ -459,59 +564,138 @@ text gText_Restaurantexpansion_PlayerComeTo{
     format("{PLAYER}, we'll have to take a raincheck. Come see me in Mission soon!")
 }
 text gText_Restaurantexpansion_PlayerSorryAbout{
-    format("")
+	format("{PLAYER}, sorry about the restaurant in Oakland!")
 }
 text gText_Restaurantexpansion_NoProblemThat{
-    format("")
+	format("No problem! That was a really nice thing you did.")
 }
 text gText_Restaurantexpansion_TheyReallyOpened{
-    format("")
+	format("They really expanded my palette.")
 }
 text gText_Restaurantexpansion_HowCanI{
-    format("")
+	format("How can I serve the people of this region if the majority of the people can't afford our menu? That kid had never even heard of Cioppino. A good Cioppino? With Cloyster and Seaking? To die for!")
 }
 text gText_Restaurantexpansion_ThatsWhy{
-    format("")
+	format("That's why I'm making some changes. I'm reopening my restaurant, with a Pay What You Can model. Anybody can eat here and experience the best cuisine Sanfran has to offer.")
 }
 text gText_Restaurantexpansion_Wow{
-    format("")
+	format("Wow! That's a huge change, congratulations!")
 }
 text gText_Restaurantexpansion_IveBeenHardAtWork{
-    format("")
+	format("I've been hard at work adjusting the menu and suppliers to make sure it'll all work, but I'm ready for the next step in the recipe. That's where you come in!")
 }
 text gText_Restaurantexpansion_MeICant{
-    format("")
+	format("Me? But I can't really cook...")
 }
 text gText_Restaurantexpansion_NotCookingOutreach{
-    format("")
+	format("Not cooking. Outreach! You're a Trainer, and you've traveled around the region - you've met all the people that I wasn't serving before.")
 }
 text gText_Restaurantexpansion_IWantToWorkWith{
-    format("")
+	format("Pokémon Centers are great places where people can gather, and the front of house there are all seen as members of their local communities. I want you to deliver meals to a few key nurses, and convince them to hang some flyers in their lobbies. What'd you say?")
 }
 text gText_Restaurantexpansion_KindaWeird{
-    format("")
+	format("Kinda weird to be advertising food I've never eaten... but its for a good cause.")
 }
 text gText_Restaurantexpansion_SureICan{
-    format("")
+	format("Sure, I'm happy to help.")
 }
 text gText_Restaurantexpansion_FirstYoureGoing{
-    format("")
+	format("First, you're going to {STR_VAR_1}. A lot of my existing clients are there, and I want to whet their appetite for the grand re-opening.")
 }
 text gText_Restaurantexpansion_WaitOnlyOne{
-    format("")
+	format("Wait, I thought you wanted to do a couple different places?")
+}
+text gText_Restaurantexpansion_OfCourse{
+	format("Yeah, but I'm cooking the meals one at a time! I can't have you dragging soggy food around the region like Doordash! Deliver that one, and then come back to me for the next one.")
+}
+text gText_Restaurantexpansion_IRegret{
+	format("...I regret this now.")
+}
+text gText_Restaurantexpansion_NextIs{
+	format("Next on the menu is {STR_VAR_1}! Here you go.")
+}
+text gText_Restaurantexpansion_HowAreYouPaying{
+	format("Hey Falkner, how are you paying for this new model?")
+}
+text gText_Restaurantexpansion_WellMyClients{
+    format("Well, my clients were in a top shelf price range - money was never an object. A lot of them won't notice if I double prices! I'll keep up the same service and excellent food... well, you get it.")
+}
+text gText_Restaurantexpansion_NowGoTo{
+	format("Okay, now go to {STR_VAR_1}. Gotta get those techies that work downtown, you know?")
+}
+text gText_Restaurantexpansion_HowManyOf{
+	format("How many of these are left?")
+}
+text gText_Restaurantexpansion_JustOneMore{
+	format("Just one more after this!")
+}
+text gText_Restaurantexpansion_LastOne{
+	format("Last order for the night... {STR_VAR_1}! Students have to eat too, you know?")
+}
+
+text gText_Restaurantexpansion_ThisIsExhausting{
+	format("This is exhausting... I feel like I'm working in their kitchen!")
+}
+text gText_Restaurantexpansion_GottaGoBeforeIt{
+	format("Okay, head to {STR_VAR_1}! The food is dying in the window, and I need delivery on the fly!")
+}
+text gText_Restaurantexpansion_PlayerThisIs{
+	format("{PLAYER}, this is excellent work, three stars!")
+}
+text gText_Restaurantexpansion_Itwasgood{
+	format("It was good to help out.")
+}
+text gText_Restaurantexpansion_NowToWorkOnHiring{
+	format("Now to work on hiring...")
 }
 text gText_Restaurantexpansion_ActuallyQuestion{
-    format("")
+	format("Actually, I have a question. Have you eaten at CafeVenetia?")
 }
 text gText_Restaurantexpansion_YesILove{
-    format("")
+	format("Yes, I absolutely love their Tauros Burrito!")
 }
 text gText_Restaurantexpansion_TheyreLaunchingANew{
-    format("")
+	format("They're launching a new menu, and sent over a meal for you to try. And if you like it...")
 }
 text gText_Restaurantexpansion_ThisIsDelicious{
-    format("")
+	format("This is delicious wow! I'll absolutely tell people about this. And yeah, you can hang that right there.")
 }
 text gText_Restaurantexpansion_ThatWentWell{
-    format("")
+	format("That went well!")
+}
+text gText_Restaurantexpansion_NahThatsSomeRich{
+	format("Nah, that's some rich people food, you know?.")
+}
+text gText_Restaurantexpansion_TheOwnerIsMoving{
+	format("The owner is moving to a Pay What You Can model, which is why I'm here! They want you to try some of their new menu items and see if you like...")
+}
+text gText_Restaurantexpansion_OkayThisIs{
+	format("Okay, this is pretty tight. And you said its cheaper now? Okay, I'll have to check it out soon. And yeah, that flyer right there is perfect.")
+}
+text gText_Restaurantexpansion_TwoDown{
+	format("Two down!")
+}
+text gText_Restaurantexpansion_NoIDontReally{
+	format("No, they never had salads and that's really what I'm into right now!")
+}
+text gText_Restaurantexpansion_TheyreChangingTheir{
+	format("They're changing up their menu and expanding their options. I brought some, free of charge for you to try...")
+}
+text gText_Restaurantexpansion_FancyOrNot{
+	format("I don't know if its better than a salad, but its tasty for sure. I'll mention it to hungry Trainers. Put the flyers wherever you want!")
+}
+text gText_Restaurantexpansion_IDontThinkLeader{
+	format("I don't think Falkner realizes what he's dealing with out here...")
+}
+text gText_Restaurantexpansion_TheyDontHaveMy{
+	format("That place is too up tight, I just want somewhere casual I can eat between classes, you know?")
+}
+text gText_Restaurantexpansion_TheyreAddingNew{
+	format("They're doing a total makeover to be more relaxed, and I brought over a free meal! And I wanted to hand some posters...")
+}
+text gText_Restaurantexpansion_ChillVibes{
+    format("Chill vibes and good food? That's my kind of spot. I can talk this up all day. And yeah, right by the PC, good spot for that poster.")
+}
+text gText_Restaurantexpansion_TheLastOne{
+    format("The last one! Time to head back to {STR_VAR_1}, finally.")
 }

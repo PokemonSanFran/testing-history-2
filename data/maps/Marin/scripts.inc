@@ -93,14 +93,19 @@ Marin_HideMapNamePopup_Script::
 
 Marin_Biker_Interact_Script::
 	msgbox gText_Marin_PlaceholderBiker, MSGBOX_NPC
-	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_GETTHEBANDBACKTOGETHER
+	call Quest_GetTheBand_CheckQuestAndBike_Script
 	compare VAR_RESULT, 0
-	goto_if_ne Marin_Biker_Interact_Script_2
+	goto_if_ne Marin_Biker_Interact_Script_3
 Marin_Biker_Interact_Script_1:
 	end
 
 Marin_Biker_Interact_Script_2:
 	goto Quest_GetTheBand_Interact_BikerD_Dialogue
+	goto Marin_Biker_Interact_Script_1
+
+Marin_Biker_Interact_Script_3:
+	compare VAR_TEMP_1, 0
+	goto_if_ne Marin_Biker_Interact_Script_2
 	goto Marin_Biker_Interact_Script_1
 
 
