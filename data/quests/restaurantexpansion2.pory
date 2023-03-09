@@ -1,3 +1,14 @@
+const FLAG_HIDE_HOSTESS = FLAG_TEMP_2
+const FLAG_HIDE_CHEF = FLAG_TEMP_3
+const FLAG_HIDE_JAINTOR = FLAG_TEMP_4
+const FLAG_HIDE_BUSSER = FLAG_TEMP_5
+const FLAG_HIDE_CASHIER = FLAG_TEMP_6
+
+const FLAG_HIDE_FALKNER_MISSION = FLAG_TEMP_4
+
+
+//gText_Restaurantexpansion2_
+//Quest_Restaurantexpansion2_
 script Quest_Restaurantexpansion2_Leader_Interact_Script{
     goto_if_quest_reward(QUEST_RESTAURANTEXPANSION2,Quest_Restaurantexpansion2_Reward_Dialogue)
     goto_if_quest_active(QUEST_RESTAURANTEXPANSION2,Quest_Restaurantexpansion2_Active_Dialogue)
@@ -5,6 +16,53 @@ script Quest_Restaurantexpansion2_Leader_Interact_Script{
 }
 
 script Quest_Restaurantexpansion2_StartQuest{
+    msgbox(gText_Restaurantexpansion2_PlayerThings,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion2_Awesome,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion2_IWantToTake,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion2_ActuallyIWasnt,,SPEAKER_FALKNER)
+    msgbox(gText_Restaurantexpansion2_LetMeGuess,,SPEAKER_ZOEY)
+    msgbox(gText_Restaurantexpansion2_YouDontHaveToGoBack,,SPEAKER_FALKNER,,EMOTE_SWEAT)
+    msgbox(gText_Restaurantexpansion2_IfYouHappenToBattle,,SPEAKER_FALKNER)
+    startquest(QUEST_RESTAURANTEXPANSION2)
+    end
+}
+
+script Quest_Restaurantexpansion2_HideEmployees_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_1)
+        if (!var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_HOSTESS)
+        }
+
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_2)
+        if (!var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_CHEF)
+        }
+
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_3)
+        if (!var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_JAINTOR)
+        }
+
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_4)
+        if (!var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_BUSSER)
+        }
+
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_5)
+        if (!var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_CASHIER)
+        }
+    return
 }
 
 script Quest_Restaurantexpansion2_Reward_Dialogue{
