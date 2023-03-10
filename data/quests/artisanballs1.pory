@@ -434,7 +434,6 @@ script Quest_ArtisanBalls_TrainerB_PostBattle_Script{
     call(Quest_ArtisanBalls2_CheckReward_Script)
 
 	msgbox(gText_Quest_ArtisanBalls2_WhereDidYouGet, MSGBOX_NPC,SPEAKER_ZOEY)
-	
 
 	msgbox(gText_Quest_ArtisanBalls2_ISawThe, MSGBOX_NPC,SPEAKER_SERGEY)
 

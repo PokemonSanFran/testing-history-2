@@ -28,7 +28,6 @@ script Quest_Restaurantexpansion2_StartQuest{
 }
 
 script Quest_Restaurantexpansion2_HideEmployees_Script{
-
     subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_1)
         if (!var(VAR_RESULT))
         {
@@ -65,9 +64,170 @@ script Quest_Restaurantexpansion2_HideEmployees_Script{
     return
 }
 
+script Quest_Restaurantexpansion2_HideStaffA_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_1)
+        if (var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_HOSTESS)
+        }
+    return
+}
+
+script Quest_Restaurantexpansion2_HideStaffB_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_2)
+        if (var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_CHEF)
+        }
+    return
+}
+
+script Quest_Restaurantexpansion2_HideStaffC_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_3)
+        if (var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_JAINTOR)
+        }
+    return
+}
+
+script Quest_Restaurantexpansion2_HideStaffD_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_4)
+        if (var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_BUSSER)
+        }
+    return
+}
+
+script Quest_Restaurantexpansion2_HideStaffE_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_5)
+        if (var(VAR_RESULT))
+        {
+            setflag(FLAG_HIDE_CASHIER)
+        }
+    return
+}
+
+
+script Quest_Restaurantexpansion2_RemoveStaff_Script{
+    fadetoblack(FADE_TO_BLACK)
+    removeobject(VAR_LAST_TALKED)
+    fadetoblack(FADE_FROM_BLACK)
+    return
+}
+
+scipt Quest_Restaurantexpansion2_CancelIfNotActive_Script{
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION2)
+    if (!var(VAR_RESULT)){
+        release
+        end
+    }
+    return
+}
+
+script Quest_ArtisanBalls_TrainerA_Event_Script{
+    trainerbattle_single(TRAINER_HOSTESS,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerA_PostBattle_Script)
+}
+script Quest_ArtisanBalls_TrainerB_Event_Script{
+    trainerbattle_single(TRAINER_CHEF,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerrB_PostBattle_Script)
+}
+script Quest_ArtisanBalls_TrainerC_Event_Script{
+    trainerbattle_single(TRAINER_JAINTOR,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerC_PostBattle_Script)
+}
+script Quest_ArtisanBalls_TrainerD_Event_Script{
+    trainerbattle_single(TRAINER_BUSSER,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerD_PostBattle_Script)
+}
+script Quest_ArtisanBalls_TrainerE_Event_Script{
+    trainerbattle_single(TRAINER_CASHIER,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
+}
+
+script Quest_Restaurantexpansion2_TrainerA_PostBattle_Script{
+	lock
+    call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
+	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_1)
+    call(Quest_Restaurantexpansion2_CheckReward_Script)
+}
+script Quest_Restaurantexpansion2_TrainerB_PostBattle_Script{
+	lock
+    call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
+	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_2)
+    call(Quest_Restaurantexpansion2_CheckReward_Script)
+}
+script Quest_Restaurantexpansion2_TrainerC_PostBattle_Script{
+	lock
+    call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
+	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_3)
+    call(Quest_Restaurantexpansion2_CheckReward_Script)
+}
+script Quest_Restaurantexpansion2_TrainerD_PostBattle_Script{
+	lock
+    call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
+	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_4)
+    call(Quest_Restaurantexpansion2_CheckReward_Script)
+}
+script Quest_Restaurantexpansion2_TrainerE_PostBattle_Script{
+	lock
+    call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
+	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_5)
+    call(Quest_Restaurantexpansion2_CheckReward_Script)
+}
+
+script Quest_Restaurantexpansion2_CheckReward_Script{
+    setvar(VAR_TEMP_0,0)
+        subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_1)
+        if (var(VAR_RESULT))
+        {
+            addvar(VAR_TEMP_0,1)
+        }
+
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_2)
+        if (var(VAR_RESULT))
+        {
+            addvar(VAR_TEMP_0,1)
+        }
+
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_3)
+        if (var(VAR_RESULT))
+        {
+            addvar(VAR_TEMP_0,1)
+        }
+
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_4)
+        if (var(VAR_RESULT))
+        {
+            addvar(VAR_TEMP_0,1)
+        }
+
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_5)
+        if (var(VAR_RESULT))
+        {
+            addvar(VAR_TEMP_0,1)
+        }
+
+        if (var(VAR_TEMP_0) == 5){
+            questmenu(QUEST_MENU_SET_REWARD, QUEST_RESTAURANTEXPANSION2)
+        }
+    return
+}
+
 script Quest_Restaurantexpansion2_Reward_Dialogue{
+    completequest(QUEST_RESTAURANTEXPANSION2)
 }
 
 script Quest_Restaurantexpansion2_Active_Dialogue{
+    msgbox(gText_Restaurantexpansion2_Placeholder,,SPEAKER_FALKNER)
+    switch(var(VAR_RESULT)){
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+    }
+    release
+        end
 }
-
