@@ -4,15 +4,14 @@ mapscripts Psfroute49_MapScripts {
     }
 }
 
-script Psfroute49_EventScript_RestaurantStaffC_Script{
+script Psfroute49_EventScript_Alice_Script{
     trainerbattle_single(TRAINER_JAINTOR,gText_Restaurantexpansion2_PreBattleC,gText_Restaurantexpansion2_PostBattleC, Quest_Restaurantexpansion2_TrainerC_PostBattle_Script)
         call(Quest_Restaurantexpansion2_TrainerC_PostBattle_Script)
 }
-
-text gText_Restaurantexpansion2_PreBattleC{
-    format("")
+text gText_Alice_PreBattle{
+	format("")
+}
+text gText_Alice_PostBattle{
+	format("")
 }
 
-text gText_Restaurantexpansion2_PostBattleC{
-    format("")
-}

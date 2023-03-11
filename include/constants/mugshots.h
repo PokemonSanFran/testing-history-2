@@ -177,6 +177,11 @@
 #define SPEAKER_AMBROGIO            165
 #define SPEAKER_JORIS               166
 #define SPEAKER_NURSE               167
+#define SPEAKER_AUGUSTE             168
+#define SPEAKER_JULIA               169
+#define SPEAKER_ALICE               170
+#define SPEAKER_FERRAN              171
+#define SPEAKER_ANTHONY             172
 
 //Tail
 #define TAIL_DEFAULT 0

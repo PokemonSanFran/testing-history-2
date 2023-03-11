@@ -4,15 +4,13 @@ mapscripts Bernalheights_MapScripts {
     }
 }
 
-script Bernalheights_EventScript_RestaurantStaffB_Script{
+script Bernalheights_EventScript_Julia_Script{
     trainerbattle_single(TRAINER_CHEF,gText_Restaurantexpansion2_PreBattleB,gText_Restaurantexpansion2_PostBattleB, Quest_Restaurantexpansion2_TrainerB_PostBattle_Script)
        call(Quest_Restaurantexpansion2_TrainerB_PostBattle_Script)
 }
-
-text gText_Restaurantexpansion2_PreBattleB{
-    format("")
+text gText_Julia_PreBattle{
+	format("")
 }
-
-text gText_Restaurantexpansion2_PostBattleB{
-    format("")
+text gText_Julia_PostBattle{
+	format("")
 }

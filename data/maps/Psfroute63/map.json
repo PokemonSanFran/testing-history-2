@@ -204,7 +204,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Psfroute63_EventScript_RestaurantStaffD_Script",
+      "script": "Psfroute63_EventScript_Ferran_Script",
       "flag": "FLAG_TEMP_7"
     }
   ],

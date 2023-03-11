@@ -24,15 +24,13 @@ script Psfroute63_MapScripts_OnTransition {
     }
 }
 
-script Psfroute63_EventScript_RestaurantStaffD_Script{
+script Psfroute63_EventScript_Ferran_Script{
     trainerbattle_single(TRAINER_BUSSER,gText_Restaurantexpansion2_PreBattleD,gText_Restaurantexpansion2_PostBattleD, Quest_Restaurantexpansion2_TrainerD_PostBattle_Script)
     call(Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
 }
-
-text gText_Restaurantexpansion2_PreBattleD{
-    format("")
+text gText_Ferran_PreBattle{
+	format("")
 }
-
-text gText_Restaurantexpansion2_PostBattleD{
-    format("")
+text gText_Ferran_PostBattle{
+	format("")
 }

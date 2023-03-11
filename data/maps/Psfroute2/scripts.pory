@@ -4,15 +4,14 @@ mapscripts Psfroute2_MapScripts {
     }
 }
 
-script Psfroute2_EventScript_RestaurantStaffE_Script{
+script Psfroute2_EventScript_Anthony_Script{
     trainerbattle_single(TRAINER_CASHIER,gText_Restaurantexpansion2_PreBattleE,gText_Restaurantexpansion2_PostBattleE, Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
     call(Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
 }
 
-text gText_Restaurantexpansion2_PreBattleE{
-    format("")
+text gText_Anthony_PreBattle{
+	format("")
 }
-
-text gText_Restaurantexpansion2_PostBattleE{
-    format("")
+text gText_Anthony_PostBattle{
+	format("")
 }
