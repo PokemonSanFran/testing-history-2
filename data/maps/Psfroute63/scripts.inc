@@ -43,14 +43,14 @@ Psfroute63_MapScripts_OnTransition_4:
 	return
 
 
-Psfroute63_EventScript_RestaurantStaffD_Script::
-	trainerbattle_single TRAINER_BUSSER, gText_Restaurantexpansion2_PreBattleD, gText_Restaurantexpansion2_PostBattleD, Quest_Restaurantexpansion2_TrainerD_PostBattle_Script
+Psfroute63_EventScript_Ferran_Script::
+	trainerbattle_single TRAINER_BUSSER, gText_Ferran_PreBattle, gText_Ferran_PostBattle, Quest_Restaurantexpansion2_TrainerD_PostBattle_Script
 	call Quest_Restaurantexpansion2_TrainerE_PostBattle_Script
 	return
 
 
-gText_Restaurantexpansion2_PreBattleD::
+gText_Ferran_PreBattle::
 	.string "$"
 
-gText_Restaurantexpansion2_PostBattleD::
+gText_Ferran_PostBattle::
 	.string "$"

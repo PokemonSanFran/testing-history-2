@@ -5,7 +5,7 @@ mapscripts Psfroute2_MapScripts {
 }
 
 script Psfroute2_EventScript_Anthony_Script{
-    trainerbattle_single(TRAINER_CASHIER,gText_Restaurantexpansion2_PreBattleE,gText_Restaurantexpansion2_PostBattleE, Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
+    trainerbattle_single(TRAINER_CASHIER,gText_Anthony_PreBattle,gText_Anthony_PostBattle, Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
     call(Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
 }
 

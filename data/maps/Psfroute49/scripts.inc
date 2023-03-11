@@ -7,14 +7,14 @@ Psfroute49_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 
-Psfroute49_EventScript_RestaurantStaffC_Script::
-	trainerbattle_single TRAINER_JAINTOR, gText_Restaurantexpansion2_PreBattleC, gText_Restaurantexpansion2_PostBattleC, Quest_Restaurantexpansion2_TrainerC_PostBattle_Script
+Psfroute49_EventScript_Alice_Script::
+	trainerbattle_single TRAINER_JAINTOR, gText_Alice_PreBattle, gText_Alice_PostBattle, Quest_Restaurantexpansion2_TrainerC_PostBattle_Script
 	call Quest_Restaurantexpansion2_TrainerC_PostBattle_Script
 	return
 
 
-gText_Restaurantexpansion2_PreBattleC::
+gText_Alice_PreBattle::
 	.string "$"
 
-gText_Restaurantexpansion2_PostBattleC::
+gText_Alice_PostBattle::
 	.string "$"

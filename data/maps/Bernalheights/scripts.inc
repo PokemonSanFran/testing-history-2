@@ -7,14 +7,14 @@ Bernalheights_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 
-Bernalheights_EventScript_RestaurantStaffB_Script::
-	trainerbattle_single TRAINER_CHEF, gText_Restaurantexpansion2_PreBattleB, gText_Restaurantexpansion2_PostBattleB, Quest_Restaurantexpansion2_TrainerB_PostBattle_Script
+Bernalheights_EventScript_Julia_Script::
+	trainerbattle_single TRAINER_CHEF, gText_Julia_PreBattle, gText_Julia_PostBattle, Quest_Restaurantexpansion2_TrainerB_PostBattle_Script
 	call Quest_Restaurantexpansion2_TrainerB_PostBattle_Script
 	return
 
 
-gText_Restaurantexpansion2_PreBattleB::
+gText_Julia_PreBattle::
 	.string "$"
 
-gText_Restaurantexpansion2_PostBattleB::
+gText_Julia_PostBattle::
 	.string "$"

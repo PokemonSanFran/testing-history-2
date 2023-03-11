@@ -7,14 +7,14 @@ Psfroute2_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 
-Psfroute2_EventScript_RestaurantStaffE_Script::
-	trainerbattle_single TRAINER_CASHIER, gText_Restaurantexpansion2_PreBattleE, gText_Restaurantexpansion2_PostBattleE, Quest_Restaurantexpansion2_TrainerE_PostBattle_Script
+Psfroute2_EventScript_Anthony_Script::
+	trainerbattle_single TRAINER_CASHIER, gText_Anthony_PreBattle, gText_Anthony_PostBattle, Quest_Restaurantexpansion2_TrainerE_PostBattle_Script
 	call Quest_Restaurantexpansion2_TrainerE_PostBattle_Script
 	return
 
 
-gText_Restaurantexpansion2_PreBattleE::
+gText_Anthony_PreBattle::
 	.string "$"
 
-gText_Restaurantexpansion2_PostBattleE::
+gText_Anthony_PostBattle::
 	.string "$"

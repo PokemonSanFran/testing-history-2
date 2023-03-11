@@ -5,7 +5,7 @@ mapscripts Bernalheights_MapScripts {
 }
 
 script Bernalheights_EventScript_Julia_Script{
-    trainerbattle_single(TRAINER_CHEF,gText_Restaurantexpansion2_PreBattleB,gText_Restaurantexpansion2_PostBattleB, Quest_Restaurantexpansion2_TrainerB_PostBattle_Script)
+    trainerbattle_single(TRAINER_CHEF,gText_Julia_PreBattle,gText_Julia_PostBattle, Quest_Restaurantexpansion2_TrainerB_PostBattle_Script)
        call(Quest_Restaurantexpansion2_TrainerB_PostBattle_Script)
 }
 text gText_Julia_PreBattle{

@@ -25,7 +25,7 @@ script Psfroute63_MapScripts_OnTransition {
 }
 
 script Psfroute63_EventScript_Ferran_Script{
-    trainerbattle_single(TRAINER_BUSSER,gText_Restaurantexpansion2_PreBattleD,gText_Restaurantexpansion2_PostBattleD, Quest_Restaurantexpansion2_TrainerD_PostBattle_Script)
+    trainerbattle_single(TRAINER_BUSSER,gText_Ferran_PreBattle,gText_Ferran_PostBattle, Quest_Restaurantexpansion2_TrainerD_PostBattle_Script)
     call(Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
 }
 text gText_Ferran_PreBattle{
