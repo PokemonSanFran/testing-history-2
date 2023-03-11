@@ -14,19 +14,19 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
+      "map": "MAP_PSFROUTE17",
       "offset": 0,
-      "map": "MAP_PSFROUTE17"
+      "direction": "down"
     },
     {
-      "direction": "right",
+      "map": "MAP_PSFROUTE21",
       "offset": 9,
-      "map": "MAP_PSFROUTE21"
+      "direction": "right"
     },
     {
-      "direction": "up",
+      "map": "MAP_PSFROUTE11",
       "offset": 0,
-      "map": "MAP_PSFROUTE11"
+      "direction": "up"
     }
   ],
   "object_events": [
@@ -94,6 +94,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Quest_NeighborhoodCleanUp3_Interact_PersonC_Script",
       "flag": "FLAG_TEMP_9"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "x": 1,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Bernalheights_EventScript_RestaurantStaffB_Script",
+      "flag": "FLAG_TEMP_3"
     }
   ],
   "warp_events": [

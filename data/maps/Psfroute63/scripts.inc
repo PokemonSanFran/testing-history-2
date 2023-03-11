@@ -4,7 +4,8 @@ Psfroute63_MapScripts::
 	.byte 0
 
 Psfroute63_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Psfroute63_MapScripts_OnTransition
+	call Psfroute63_MapScripts_OnTransition
+	call Quest_Restaurantexpansion2_HideStaffD_Script
 	return
 
 Psfroute63_MapScripts_MAP_SCRIPT_ON_RESUME:
@@ -41,3 +42,15 @@ Psfroute63_MapScripts_OnTransition_4:
 	goto HousingProtest_CleanUp_Landlord_Script
 	return
 
+
+Psfroute63_EventScript_RestaurantStaffD_Script::
+	trainerbattle_single TRAINER_BUSSER, gText_Restaurantexpansion2_PreBattleD, gText_Restaurantexpansion2_PostBattleD, Quest_Restaurantexpansion2_TrainerD_PostBattle_Script
+	call Quest_Restaurantexpansion2_TrainerE_PostBattle_Script
+	return
+
+
+gText_Restaurantexpansion2_PreBattleD::
+	.string "$"
+
+gText_Restaurantexpansion2_PostBattleD::
+	.string "$"

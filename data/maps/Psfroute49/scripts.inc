@@ -1,2 +1,20 @@
 Psfroute49_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute49_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfroute49_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Restaurantexpansion2_HideStaffC_Script
+	return
+
+
+Psfroute49_EventScript_RestaurantStaffC_Script::
+	trainerbattle_single TRAINER_JAINTOR, gText_Restaurantexpansion2_PreBattleC, gText_Restaurantexpansion2_PostBattleC, Quest_Restaurantexpansion2_TrainerC_PostBattle_Script
+	call Quest_Restaurantexpansion2_TrainerC_PostBattle_Script
+	return
+
+
+gText_Restaurantexpansion2_PreBattleC::
+	.string "$"
+
+gText_Restaurantexpansion2_PostBattleC::
+	.string "$"

@@ -60,37 +60,38 @@ Debug_Weather::
 
 
 Debug_Script_1::
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION1
+	setvar VAR_FALKNER_STATE, QUEST_1_COMPLETE
 	warpsilent MAP_MISSION, 38, 24
 	end
 
 
 Debug_Script_2::
-	warpsilent MAP_MARIN_POKEMONCENTER_1F, 7, 5
+	warpsilent MAP_PSFROUTE13, 10, 11
 	end
 
 
 Debug_Script_3::
-	warpsilent MAP_HAIGHTASHBURY_POKEMONCENTER_1F, 7, 5
+	warpsilent MAP_BERNALHEIGHTS, 1, 15
 	end
 
 
 Debug_Script_4::
-	warpsilent MAP_SOMA_POKEMONCENTER_1F, 7, 5
+	warpsilent MAP_PSFROUTE49, 26, 6
 	end
 
 
 Debug_Script_5::
-	warpsilent MAP_BERKELEY_POKEMONCENTER_1F, 7, 5
+	warpsilent MAP_PSFROUTE63, 9, 34
 	end
 
 
 Debug_Script_6::
-	setvar VAR_FALKNER_STATE, CUTSCENE_COMPLETE
+	warpsilent MAP_PSFROUTE2, 41, 5
 	end
 
 
 Debug_Script_7::
-	questmenu QUEST_MENU_SET_REWARD, QUEST_RESTAURANTEXPANSION1
 	end
 
 

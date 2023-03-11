@@ -619,19 +619,19 @@ const u8 gText_Quest_RestaurantExpansion1_Sub4_Map[] = _("Berkeley");
 
 const u8 gText_Quest_RestaurantExpansion2_Sub1_Name[] = _("Hostess");
 const u8 gText_Quest_RestaurantExpansion2_Sub1_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_RestaurantExpansion2_Sub1_Map[] = _("Castro");
+const u8 gText_Quest_RestaurantExpansion2_Sub1_Map[] = _("Psfroute13");
 const u8 gText_Quest_RestaurantExpansion2_Sub2_Name[] = _("Chef");
 const u8 gText_Quest_RestaurantExpansion2_Sub2_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_RestaurantExpansion2_Sub2_Map[] = _("SouthBay");
+const u8 gText_Quest_RestaurantExpansion2_Sub2_Map[] = _("Bernalheights");
 const u8 gText_Quest_RestaurantExpansion2_Sub3_Name[] = _("Janitor");
 const u8 gText_Quest_RestaurantExpansion2_Sub3_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_RestaurantExpansion2_Sub3_Map[] = _("Presidio");
+const u8 gText_Quest_RestaurantExpansion2_Sub3_Map[] = _("Psfoute49");
 const u8 gText_Quest_RestaurantExpansion2_Sub4_Name[] = _("Busser");
 const u8 gText_Quest_RestaurantExpansion2_Sub4_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_RestaurantExpansion2_Sub4_Map[] = _("Alameda");
+const u8 gText_Quest_RestaurantExpansion2_Sub4_Map[] = _("Psfroute63");
 const u8 gText_Quest_RestaurantExpansion2_Sub5_Name[] = _("Cashier");
 const u8 gText_Quest_RestaurantExpansion2_Sub5_Desc[] = _("Sub Lorem");
-const u8 gText_Quest_RestaurantExpansion2_Sub5_Map[] = _("Haightashbury");
+const u8 gText_Quest_RestaurantExpansion2_Sub5_Map[] = _("Psfroute2");
 
 const u8 gText_Quest_HybridCulture_Sub1_Name[] = _("Food");
 const u8 gText_Quest_HybridCulture_Sub1_Desc[] = _("Poffins stuffed with flavors not\nnative to Sinnoh are a popular dessert\nat the ramen restaurant.");

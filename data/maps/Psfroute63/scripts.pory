@@ -1,6 +1,7 @@
 mapscripts Psfroute63_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Psfroute63_MapScripts_OnTransition)
+        call(Psfroute63_MapScripts_OnTransition)
+        call(Quest_Restaurantexpansion2_HideStaffD_Script)
     }
 
     MAP_SCRIPT_ON_RESUME {
@@ -16,8 +17,22 @@ script Psfroute63_MapScripts_OnResume {
 
 script Psfroute63_MapScripts_OnTransition {
     switch (var (VAR_PSFROUTE63_STATE)) {
-    case PROTEST_NOTSTARTED: goto(HousingProtest_ObjectSetUp_Script)
-    case SAVE_TEAMROCKET_PSFROUTE63: goto(HousingProtest_PostSave_ObjectSetUp_Script)
-    case DEFEATED_TEAMROCKET_PSFROUTE63: goto(HousingProtest_CleanUp_Landlord_Script)
+        case PROTEST_NOTSTARTED: goto(HousingProtest_ObjectSetUp_Script)
+        case SAVE_TEAMROCKET_PSFROUTE63: goto(HousingProtest_PostSave_ObjectSetUp_Script)
+        case DEFEATED_TEAMROCKET_PSFROUTE63: goto(HousingProtest_CleanUp_Landlord_Script)
+                                             return
     }
+}
+
+script Psfroute63_EventScript_RestaurantStaffD_Script{
+    trainerbattle_single(TRAINER_BUSSER,gText_Restaurantexpansion2_PreBattleD,gText_Restaurantexpansion2_PostBattleD, Quest_Restaurantexpansion2_TrainerD_PostBattle_Script)
+    call(Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
+}
+
+text gText_Restaurantexpansion2_PreBattleD{
+    format("")
+}
+
+text gText_Restaurantexpansion2_PostBattleD{
+    format("")
 }

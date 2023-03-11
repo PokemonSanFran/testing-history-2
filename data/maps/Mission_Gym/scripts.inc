@@ -5,6 +5,7 @@ Mission_Gym_MapScripts::
 Mission_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call EnterFalkner_StartGymBattle_ObjectSetup_Script
 	call Mission_Gym_Leader_Visibility_Script
+	call Quest_Restaurantexpansion2_HideEmployees_Script
 	return
 
 

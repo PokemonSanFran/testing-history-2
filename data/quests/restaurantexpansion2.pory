@@ -6,7 +6,6 @@ const FLAG_HIDE_CASHIER = FLAG_TEMP_6
 
 const FLAG_HIDE_FALKNER_MISSION = FLAG_TEMP_4
 
-
 //gText_Restaurantexpansion2_
 //Quest_Restaurantexpansion2_
 script Quest_Restaurantexpansion2_Leader_Interact_Script{
@@ -111,66 +110,95 @@ script Quest_Restaurantexpansion2_HideStaffE_Script{
 
 
 script Quest_Restaurantexpansion2_RemoveStaff_Script{
-    fadetoblack(FADE_TO_BLACK)
+    fadescreen(FADE_TO_BLACK)
     removeobject(VAR_LAST_TALKED)
-    fadetoblack(FADE_FROM_BLACK)
+    fadescreen(FADE_FROM_BLACK)
     return
 }
 
-scipt Quest_Restaurantexpansion2_CancelIfNotActive_Script{
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_RESTAURANTEXPANSION2)
+script Quest_Restaurantexpansion2_CancelIfNotActive_Script{
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_RESTAURANTEXPANSION2)
     if (!var(VAR_RESULT)){
+        closemessage
         release
         end
     }
     return
 }
 
-script Quest_ArtisanBalls_TrainerA_Event_Script{
-    trainerbattle_single(TRAINER_HOSTESS,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerA_PostBattle_Script)
+script Quest_Restaurantexpansion_TrainerA_Event_Script{
 }
-script Quest_ArtisanBalls_TrainerB_Event_Script{
-    trainerbattle_single(TRAINER_CHEF,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerrB_PostBattle_Script)
+script Quest_Restaurantexpansion_TrainerB_Event_Script{
 }
-script Quest_ArtisanBalls_TrainerC_Event_Script{
+script Quest_Restaurantexpansion_TrainerC_Event_Script{
     trainerbattle_single(TRAINER_JAINTOR,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerC_PostBattle_Script)
 }
-script Quest_ArtisanBalls_TrainerD_Event_Script{
+script Quest_Restaurantexpansion_TrainerD_Event_Script{
     trainerbattle_single(TRAINER_BUSSER,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerD_PostBattle_Script)
 }
-script Quest_ArtisanBalls_TrainerE_Event_Script{
+script Quest_Restaurantexpansion_TrainerE_Event_Script{
     trainerbattle_single(TRAINER_CASHIER,gText_Restaurantexpansion2_Placeholder,gText_Restaurantexpansion2_Placeholder, Quest_Restaurantexpansion2_TrainerE_PostBattle_Script)
 }
 
 script Quest_Restaurantexpansion2_TrainerA_PostBattle_Script{
 	lock
+    msgbox(gText_Restaurantexpansion2_Placeholder)
     call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
 	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_1)
     call(Quest_Restaurantexpansion2_CheckReward_Script)
+    msgbox(gText_Restaurantexpansion2_Placeholder)
+    call(Quest_Restaurantexpansion2_RemoveStaff_Script)
+    closemessage
+    release
+    end
 }
 script Quest_Restaurantexpansion2_TrainerB_PostBattle_Script{
 	lock
+    msgbox(gText_Restaurantexpansion2_Placeholder)
     call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
 	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_2)
     call(Quest_Restaurantexpansion2_CheckReward_Script)
+    msgbox(gText_Restaurantexpansion2_Placeholder)
+    call(Quest_Restaurantexpansion2_RemoveStaff_Script)
+    closemessage
+    release
+    end
 }
 script Quest_Restaurantexpansion2_TrainerC_PostBattle_Script{
 	lock
+    msgbox(gText_Restaurantexpansion2_Placeholder)
     call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
 	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_3)
     call(Quest_Restaurantexpansion2_CheckReward_Script)
+    msgbox(gText_Restaurantexpansion2_Placeholder)
+    call(Quest_Restaurantexpansion2_RemoveStaff_Script)
+    closemessage
+    release
+    end
 }
 script Quest_Restaurantexpansion2_TrainerD_PostBattle_Script{
 	lock
+    msgbox(gText_Restaurantexpansion2_Placeholder)
     call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
 	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_4)
     call(Quest_Restaurantexpansion2_CheckReward_Script)
+    msgbox(gText_Restaurantexpansion2_Placeholder)
+    call(Quest_Restaurantexpansion2_RemoveStaff_Script)
+    closemessage
+    release
+    end
 }
 script Quest_Restaurantexpansion2_TrainerE_PostBattle_Script{
 	lock
+    msgbox(gText_Restaurantexpansion2_Placeholder)
     call(Quest_Restaurantexpansion2_CancelIfNotActive_Script)
 	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_5)
     call(Quest_Restaurantexpansion2_CheckReward_Script)
+    msgbox(gText_Restaurantexpansion2_Placeholder)
+    call(Quest_Restaurantexpansion2_RemoveStaff_Script)
+    closemessage
+    release
+    end
 }
 
 script Quest_Restaurantexpansion2_CheckReward_Script{
@@ -181,13 +209,11 @@ script Quest_Restaurantexpansion2_CheckReward_Script{
             addvar(VAR_TEMP_0,1)
         }
 
-
     subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_2)
         if (var(VAR_RESULT))
         {
             addvar(VAR_TEMP_0,1)
         }
-
 
     subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_3)
         if (var(VAR_RESULT))
@@ -195,13 +221,11 @@ script Quest_Restaurantexpansion2_CheckReward_Script{
             addvar(VAR_TEMP_0,1)
         }
 
-
     subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_4)
         if (var(VAR_RESULT))
         {
             addvar(VAR_TEMP_0,1)
         }
-
 
     subquestmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RESTAURANTEXPANSION2, SUB_QUEST_5)
         if (var(VAR_RESULT))
@@ -222,12 +246,44 @@ script Quest_Restaurantexpansion2_Reward_Dialogue{
 script Quest_Restaurantexpansion2_Active_Dialogue{
     msgbox(gText_Restaurantexpansion2_Placeholder,,SPEAKER_FALKNER)
     switch(var(VAR_RESULT)){
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-        case 4:
+        case 0: msgbox(gText_Restaurantexpansion2_Placeholder,,SPEAKER_FALKNER)
+        case 1: msgbox(gText_Restaurantexpansion2_Placeholder,,SPEAKER_FALKNER)
+        case 2: msgbox(gText_Restaurantexpansion2_Placeholder,,SPEAKER_FALKNER)
+        case 3: msgbox(gText_Restaurantexpansion2_Placeholder,,SPEAKER_FALKNER)
+        case 4: msgbox(gText_Restaurantexpansion2_Placeholder,,SPEAKER_FALKNER)
     }
     release
         end
+}
+
+text gText_Restaurantexpansion2_Placeholder{
+    format("")
+}
+
+text gText_Restaurantexpansion2_PlayerThings{
+    format("{PLAYER}! Things have been coming together al dente!")
+}
+
+text gText_Restaurantexpansion2_Awesome{
+    format("I think that's good. Awesome!")
+}
+
+text gText_Restaurantexpansion2_IWantToTake{
+    format("")
+}
+
+text gText_Restaurantexpansion2_ActuallyIWasnt{
+    format("")
+}
+
+text gText_Restaurantexpansion2_LetMeGuess{
+    format("")
+}
+
+text gText_Restaurantexpansion2_YouDontHaveToGoBack{
+    format("")
+}
+
+text gText_Restaurantexpansion2_IfYouHappenToBattle{
+    format("")
 }
