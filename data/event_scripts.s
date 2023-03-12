@@ -1260,7 +1260,7 @@ Script_RemoveTint::
 // .include "data/quests/foodtruckbureacracy.inc"
 // .include "data/quests/detectiveariana.inc"
 // .include "data/quests/unknownbruceleequest.inc"
-// .include "data/quests/challengeofthe7sisters.inc"
+.include "data/quests/challengeofthe7sisters.inc"
 // .include "data/quests/esports.inc"
 .include "data/quests/cutepokemon.inc"
 .include "data/quests/wallacearmy.inc"
@@ -1481,3 +1481,5 @@ Script_RemoveTint::
 	.include "data/maps/Berkeley_Pokemoncenter_1F/scripts.inc"
 
 	.include "data/maps/Haightashbury_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Paintedladies_Entrance/scripts.inc"

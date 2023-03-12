@@ -1201,4 +1201,52 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Swimmer_M,
         .speakerPal = sSpeakerPal_Swimmer_M,
     },
+    [SPEAKER_SEVENSISTERS_TINA] =
+	{
+        .name = _("Tina"),
+        .speakerIcon = gSpeakerIcon_Ace_Trainer_F,
+        .speakerPal = sSpeakerPal_Ace_Trainer_F,
+    },
+
+	[SPEAKER_SEVENSISTERS_PAUL] =
+	{
+        .name = _("Paul"),
+        .speakerIcon = gSpeakerIcon_Kurt,
+        .speakerPal = sSpeakerPal_Kurt,
+    },
+
+	[SPEAKER_SEVENSISTERS_JON] =
+	{
+        .name = _("Jon"),
+        .speakerIcon = gSpeakerIcon_Lass,
+        .speakerPal = sSpeakerPal_Lass,
+    },
+
+	[SPEAKER_SEVENSISTERS_BRADLEY] =
+	{
+        .name = _("Bradley"),
+        .speakerIcon = gSpeakerIcon_Li,
+        .speakerPal = sSpeakerPal_Li,
+    },
+
+	[SPEAKER_SEVENSISTERS_JO] =
+	{
+        .name = _("Jo"),
+        .speakerIcon = gSpeakerIcon_Bird_Keeper,
+        .speakerPal = sSpeakerPal_Bird_Keeper,
+    },
+
+	[SPEAKER_SEVENSISTERS_HANNAH] =
+	{
+        .name = _("Hannah"),
+        .speakerIcon = gSpeakerIcon_Bug_Catcher,
+        .speakerPal = sSpeakerPal_Bug_Catcher,
+    },
+
+	[SPEAKER_SEVENSISTERS_RACHEL] =
+	{
+        .name = _("Rachel"),
+        .speakerIcon = gSpeakerIcon_Battle_Girl,
+        .speakerPal = sSpeakerPal_Battle_Girl,
+    },
 };

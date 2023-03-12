@@ -1,0 +1,163 @@
+//gText_Challengeof7Sisters_
+//Quest_Challengeof7Sisters_
+const TINA = 1
+const PAUL = 2
+const JON = 3
+const BRADLEY = 4
+const JO = 5
+const HANNAH = 6
+const RACHEL = 7
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+const CHALLENGE = 0
+const INFO = 1
+const CANCEL = 2
+
+script Quest_Challengeof7Sisters_ChallengeMenu_Dialogue{
+    msgbox(gText_Challengeof7Sisters_WelcomeToTheSeven,,SPEAKER_SEVENSISTERS_TINA)
+        msgbox(gText_Challengeof7Sisters_AreYouReadyFor,,SPEAKER_SEVENSISTERS_TINA)
+        multichoice2(0,0,Quest_Challengeof7Sisters_ChallengeMenu,0,1,0)
+
+        switch (var(VAR_RESULT)){
+            case CHALLENGE: goto(Quest_Challengeof7Sisters_StartChallenge_Dialogue)
+            case INFO: goto(Quest_Challengeof7Sisters_Explain_Dialogue)
+            case CANCEL: goto(Quest_Challengeof7Sisters_Cancel_Dialogue)
+        }
+    end
+}
+
+script Quest_Challengeof7Sisters_Explain_Dialogue{
+    msgbox(gText_Challengeof7Sisters_YoullBattleTheSeven,,SPEAKER_SEVENSISTERS_TINA)
+    msgbox(gText_Challengeof7Sisters_YouCanOnlyBring,,SPEAKER_SEVENSISTERS_TINA)
+    msgbox(gText_Challengeof7Sisters_TheGoalIsToWin,,SPEAKER_SEVENSISTERS_TINA)
+    msgbox(gText_Challengeof7Sisters_IfYouWin,,SPEAKER_SEVENSISTERS_TINA)
+    msgbox(gText_Challengeof7Sisters_WouldYouLikeToPlay,MSGBOX_YESNO,SPEAKER_SEVENSISTERS_TINA)
+
+    if (var(VAR_RESULT) == YES){
+        
+    }
+
+}
+
+script Quest_Challengeof7Sisters_Cancel_Dialogue{
+}
+
+
+script Quest_Challengeof7Sisters_StartChallenge_Dialogue{
+}
+
+script Quest_Challengeof7Sisters_CheckPartySize_Script{
+}
+
+script Quest_Challengeof7Sisters_PartyTooLarge_Dialogue{
+}
+
+script Quest_Challengeof7Sisters_WalkToBattlefield_Script{
+}
+
+script Quest_DrumCircle_StartQuestIfNotStarted_Script{
+}
+
+script Quest_Challengeof7Sisters_Battle1_Script{
+    trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_TINA,gText_Challengeof7Sisters_IDidMyBest)
+        call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
+        goto(Quest_Challengeof7Sisters_Battle2_Script)
+}
+
+script Quest_Challengeof7Sisters_SwapTinaForPaul_Script{
+}
+
+script Quest_Challengeof7Sisters_Battle2_Script{
+    call(Quest_Challengeof7Sisters_SwapTinaForPaul_Script)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_PAUL,gText_Challengeof7Sisters_IDidMyBest)
+        call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
+        goto(Quest_Challengeof7Sisters_Battle3_Script)
+}
+
+script Quest_Challengeof7Sisters_SwapPaulForJonScript{
+}
+
+script Quest_Challengeof7Sisters_Battle3_Script{
+    call(Quest_Challengeof7Sisters_SwapPaulForJonScript)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JON,gText_Challengeof7Sisters_IDidMyBest)
+        call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
+        goto(Quest_Challengeof7Sisters_Battle4_Script)
+}
+
+script Quest_Challengeof7Sisters_SwapJonForBradleyScript{
+}
+
+script Quest_Challengeof7Sisters_Battle4_Script{
+    call(Quest_Challengeof7Sisters_SwapJonForBradleyScript)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_BRADLEY,gText_Challengeof7Sisters_IDidMyBest)
+        call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
+        goto(Quest_Challengeof7Sisters_Battle5_Script)
+}
+
+script Quest_Challengeof7Sisters_SwapBradleyForJoScript{
+}
+
+script Quest_Challengeof7Sisters_Battle5_Script{
+    call(Quest_Challengeof7Sisters_SwapBradleyForJoScript)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JO,gText_Challengeof7Sisters_IDidMyBest)
+        call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
+        goto(Quest_Challengeof7Sisters_Battle6_Script)
+}
+
+script Quest_Challengeof7Sisters_SwapJoForHannahScript{
+}
+
+script Quest_Challengeof7Sisters_Battle6_Script{
+    call(Quest_Challengeof7Sisters_SwapJoForHannahScript)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_HANNAH,gText_Challengeof7Sisters_IDidMyBest)
+        call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
+        goto(Quest_Challengeof7Sisters_Battle7_Script)
+}
+
+script Quest_Challengeof7Sisters_SwapHannahForRachelScript{
+}
+
+script Quest_Challengeof7Sisters_Battle7_Script{
+    call(Quest_Challengeof7Sisters_SwapHannahForRachelScript)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_RACHEL,gText_Challengeof7Sisters_IDidMyBest)
+        call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
+        goto(Quest_Challengeof7Sisters_ChallengeOver_Dialogue)
+}
+
+script Quest_Challengeof7Sisters_AssessBattleOutcome_Script{
+    specialvar(VAR_RESULT,GetBattleOutcome)
+        if (var(VAR_RESULT) == B_OUTCOME_WON){
+            return
+        }else{
+            goto(Quest_Challengeof7Sisters_ChallengeOver_Dialogue)
+        }
+    return
+}
+
+script Quest_Challengeof7Sisters_WarpEverybodyBackToPlace_Script{
+}
+
+script Quest_Challengeof7Sisters_ChallengeOver_Dialogue{
+}
+
+script Quest_Challengeof7Sisters_JudgePerformance_Script{
+}
+
+script Quest_Challengeof7Sisters_Completed_Dialogue{
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_CHALLENGEOFTHE7SISTERS)
+    if (var(VAR_RESULT)){
+            completequest(QUEST_CHALLENGEOFTHE7SISTERS)
+        }
+    return
+}
+
+text Quest_Challengeof7Sisters_ChallengeMenu{
+    "Challenge$"
+        "Info$"
+        "Cancel$"
+        "$"
+}
+
+text gText_Challengeof7Sisters_IDidMyBest{
+    format("I did my best. I have no regrets!")
+}

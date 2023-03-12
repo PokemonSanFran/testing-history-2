@@ -8,10 +8,6 @@ Psfroute13_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Psfroute13_EventScript_Auguste_Script::
-	setvar VAR_MSGBOX_EMOTE, EMOTE_DEFAULT
-	setvar VAR_MSGBOX_TAIL, TAIL_DEFAULT
-	setvar VAR_MSGBOX_SPEAKER, SPEAKER_AUGUSTE
-	setvar VAR_MSGBOX_PHONE, PHONE_OFF
 	trainerbattle_single TRAINER_HOSTESS, gText_Auguste_PreBattle, gText_Auguste_PostBattle, Quest_Restaurantexpansion2_TrainerA_PostBattle_Script
 	call Quest_Restaurantexpansion2_TrainerA_PostBattle_Script
 	return

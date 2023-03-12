@@ -6070,6 +6070,16 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/Haightashbury_Pokemoncenter_1F/border.bin",
       "blockdata_filepath": "data/layouts/Haightashbury_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PAINTEDLADIES_ENTRANCE",
+      "name": "Paintedladies_Entrance_Layout",
+      "width": 15,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BattlePalace",
+      "border_filepath": "data/layouts/Paintedladies_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/Paintedladies_Entrance/map.bin"
     }
   ]
 }

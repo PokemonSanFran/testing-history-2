@@ -115,6 +115,7 @@
 #define MAP_SOMA_POKEMONCENTER_1F             (106 | (0 << 8))
 #define MAP_BERKELEY_POKEMONCENTER_1F         (107 | (0 << 8))
 #define MAP_HAIGHTASHBURY_POKEMONCENTER_1F    (108 | (0 << 8))
+#define MAP_PAINTEDLADIES_ENTRANCE            (109 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))
