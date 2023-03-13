@@ -13,8 +13,12 @@ const CHALLENGE = 0
 const INFO = 1
 const CANCEL = 2
 
+script Quest_Challengeof7Sisters_Welcome_Dialogue{
+    msgbox(gText_Challengeof7Sisters_WelcomeToTheSeven,MSGBOX_NPC,SPEAKER_SEVENSISTERS_TINA)
+    goto(Quest_Challengeof7Sisters_ChallengeMenu_Dialogue)
+}
+
 script Quest_Challengeof7Sisters_ChallengeMenu_Dialogue{
-    msgbox(gText_Challengeof7Sisters_WelcomeToTheSeven,,SPEAKER_SEVENSISTERS_TINA)
         msgbox(gText_Challengeof7Sisters_AreYouReadyFor,,SPEAKER_SEVENSISTERS_TINA)
         multichoice2(0,0,Quest_Challengeof7Sisters_ChallengeMenu,0,1,0)
 
@@ -28,15 +32,12 @@ script Quest_Challengeof7Sisters_ChallengeMenu_Dialogue{
 
 script Quest_Challengeof7Sisters_Explain_Dialogue{
     msgbox(gText_Challengeof7Sisters_YoullBattleTheSeven,,SPEAKER_SEVENSISTERS_TINA)
-    msgbox(gText_Challengeof7Sisters_YouCanOnlyBring,,SPEAKER_SEVENSISTERS_TINA)
-    msgbox(gText_Challengeof7Sisters_TheGoalIsToWin,,SPEAKER_SEVENSISTERS_TINA)
-    msgbox(gText_Challengeof7Sisters_IfYouWin,,SPEAKER_SEVENSISTERS_TINA)
-    msgbox(gText_Challengeof7Sisters_WouldYouLikeToPlay,MSGBOX_YESNO,SPEAKER_SEVENSISTERS_TINA)
-
-    if (var(VAR_RESULT) == YES){
-        
-    }
-
+        msgbox(gText_Challengeof7Sisters_YouCanOnlyBring,,SPEAKER_SEVENSISTERS_TINA)
+        msgbox(gText_Challengeof7Sisters_TheGoalIsToWin,,SPEAKER_SEVENSISTERS_TINA)
+        msgbox(gText_Challengeof7Sisters_IfYouWin,,SPEAKER_SEVENSISTERS_TINA)
+        msgbox(gText_Challengeof7Sisters_WouldYouLikeToPlay,MSGBOX_YESNO,SPEAKER_SEVENSISTERS_TINA)
+        closemessage
+        goto(Quest_Challengeof7Sisters_ChallengeMenu_Dialogue)
 }
 
 script Quest_Challengeof7Sisters_Cancel_Dialogue{
@@ -145,7 +146,7 @@ script Quest_Challengeof7Sisters_JudgePerformance_Script{
 
 script Quest_Challengeof7Sisters_Completed_Dialogue{
     questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_CHALLENGEOFTHE7SISTERS)
-    if (var(VAR_RESULT)){
+        if (var(VAR_RESULT)){
             completequest(QUEST_CHALLENGEOFTHE7SISTERS)
         }
     return
@@ -160,4 +161,25 @@ text Quest_Challengeof7Sisters_ChallengeMenu{
 
 text gText_Challengeof7Sisters_IDidMyBest{
     format("I did my best. I have no regrets!")
+}
+text gText_Challengeof7Sisters_WelcomeToTheSeven{
+    format("")
+}
+text gText_Challengeof7Sisters_AreYouReadyFor{
+    format("")
+}
+text gText_Challengeof7Sisters_YoullBattleTheSeven{
+    format("")
+}
+text gText_Challengeof7Sisters_YouCanOnlyBring{
+    format("")
+}
+text gText_Challengeof7Sisters_TheGoalIsToWin{
+    format("")
+}
+text gText_Challengeof7Sisters_IfYouWin{
+    format("")
+}
+text gText_Challengeof7Sisters_WouldYouLikeToPlay{
+    format("")
 }

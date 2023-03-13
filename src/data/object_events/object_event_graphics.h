@@ -375,4 +375,7 @@ const u32 gObjectEventPic_Lugia[] = INCBIN_U32("graphics/object_events/pics/poke
 const u16 gObjectEventPal_Lugia[] = INCBIN_U16("graphics/object_events/palettes/lugia.gbapal");
 const u32 gObjectEventPic_HoOh[] = INCBIN_U32("graphics/object_events/pics/pokemon/ho_oh.4bpp");
 const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/ho_oh.gbapal");
-const u32 gObjectEventPic_Pokedex[] = INCBIN_U32("graphics/object_events/pics/misc/pokedex.4bpp");
+
+//PSF exclusive 
+const u32 gObjectEventPic_ArcherNormal[] = INCBIN_U32("graphics/object_events/pics/people/archer/walking.4bpp");
+const u16 gObjectEventPal_ArcherNormal[] = INCBIN_U16("graphics/object_events/pics/people/archer/walking.gbapal");

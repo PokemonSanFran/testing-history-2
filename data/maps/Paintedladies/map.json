@@ -14,24 +14,24 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "left",
+      "map": "MAP_PSFROUTE43",
       "offset": 10,
-      "map": "MAP_PSFROUTE43"
+      "direction": "left"
     },
     {
-      "direction": "up",
+      "map": "MAP_PSFROUTE2",
       "offset": -16,
-      "map": "MAP_PSFROUTE2"
+      "direction": "up"
     },
     {
-      "direction": "down",
+      "map": "MAP_PSFROUTE13",
       "offset": 9,
-      "map": "MAP_PSFROUTE13"
+      "direction": "down"
     }
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "graphics_id": "OBJ_EVENT_GFX_ARCHER",
       "x": 19,
       "y": 15,
       "elevation": 3,
