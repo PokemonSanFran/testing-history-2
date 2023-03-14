@@ -15,11 +15,11 @@ const CANCEL = 2
 
 script Quest_Challengeof7Sisters_Welcome_Dialogue{
     msgbox(gText_Challengeof7Sisters_WelcomeToTheSeven,MSGBOX_NPC,SPEAKER_SEVENSISTERS_TINA)
-    goto(Quest_Challengeof7Sisters_ChallengeMenu_Dialogue)
+        goto(Quest_Challengeof7Sisters_ChallengeMenu_Dialogue)
 }
 
 script Quest_Challengeof7Sisters_ChallengeMenu_Dialogue{
-        msgbox(gText_Challengeof7Sisters_AreYouReadyFor,,SPEAKER_SEVENSISTERS_TINA)
+    msgbox(gText_Challengeof7Sisters_AreYouReadyFor,,SPEAKER_SEVENSISTERS_TINA)
         multichoice2(0,0,Quest_Challengeof7Sisters_ChallengeMenu,0,1,0)
 
         switch (var(VAR_RESULT)){
@@ -36,30 +36,67 @@ script Quest_Challengeof7Sisters_Explain_Dialogue{
         msgbox(gText_Challengeof7Sisters_TheGoalIsToWin,,SPEAKER_SEVENSISTERS_TINA)
         msgbox(gText_Challengeof7Sisters_IfYouWin,,SPEAKER_SEVENSISTERS_TINA)
         msgbox(gText_Challengeof7Sisters_WouldYouLikeToPlay,MSGBOX_YESNO,SPEAKER_SEVENSISTERS_TINA)
-        closemessage
-        goto(Quest_Challengeof7Sisters_ChallengeMenu_Dialogue)
+
+        if (var(VAR_RESULT) == YES){
+            goto(Quest_Challengeof7Sisters_StartChallenge_Dialogue)
+        }else{
+            goto(Quest_Challengeof7Sisters_ChallengeMenu_Dialogue)
+        }
 }
 
 script Quest_Challengeof7Sisters_Cancel_Dialogue{
+    msgbox(gText_Challengeof7Sisters_HopeToHear,,SPEAKER_SEVENSISTERS_TINA)
+    closemessage
+    release
+    end
 }
 
 
 script Quest_Challengeof7Sisters_StartChallenge_Dialogue{
+    call(Quest_Challengeof7Sisters_CheckPartySize_Script)
+    msgbox(gText_Challengeof7Sisters_LetsGetStarted)
+    closemessage
+    call(Quest_Challengeof7Sisters_WalkToBattlefield_Script)
+    goto(Quest_Challengeof7Sisters_Battle1_Script)
 }
 
 script Quest_Challengeof7Sisters_CheckPartySize_Script{
+    specialvar(VAR_RESULT,CheckPartyHasOneMon)
+    if (!var(VAR_RESULT)){
+       goto(Quest_Challengeof7Sisters_PartyTooLarge_Dialogue) 
+    }
+    return
 }
 
 script Quest_Challengeof7Sisters_PartyTooLarge_Dialogue{
+    msgbox(gText_Challengeof7Sisters_OhYourParty,,SPEAKER_SEVENSISTERS_TINA)
+    closemessage
+    release
+    end
 }
 
 script Quest_Challengeof7Sisters_WalkToBattlefield_Script{
+    applymovement(TINA,Quest_Challengeof7Sisters_TinaToBattlefield_Movement)
+    applymovement(PLAYER,Quest_Challengeof7Sisters_PlayerToBattlefield_Movement)
+    waitmovement(PLAYER)
+    return
 }
 
 script Quest_DrumCircle_StartQuestIfNotStarted_Script{
+    returnqueststate(QUEST_CHALLENGEOFTHE7SISTERS)
+
+    if (var(VAR_RESULT) < QUEST_MENU_SET_ACTIVE){
+        startquest(QUEST_CHALLENGEOFTHE7SISTERS)
+    }
+    return
 }
 
 script Quest_Challengeof7Sisters_Battle1_Script{
+    msgbox(gText_Challengeof7Sisters_ImFirst,,SPEAKER_SEVENSISTERS_TINA)
+    closemessage
+    applymovement(PLAYER,Common_Movement_WalkRight)
+    applymovement(TINA,Common_Movement_WalkLeft)
+    waitmovement(TINA)
     trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_TINA,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle2_Script)
@@ -182,4 +219,29 @@ text gText_Challengeof7Sisters_IfYouWin{
 }
 text gText_Challengeof7Sisters_WouldYouLikeToPlay{
     format("")
+}
+text gText_Challengeof7Sisters_HopeToHear{
+    format("")
+}
+text gText_Challengeof7Sisters_LetsGetStarted{
+    format("")
+}
+text gText_Challengeof7Sisters_OhYourParty{
+    format("")
+}
+text gText_Challengeof7Sisters_ImFirst{
+    format("")
+}
+movement Quest_Challengeof7Sisters_TinaToBattlefield_Movement{
+    walk_left * 1
+    walk_down * 2
+    face_left
+    step_end
+}
+
+movement Quest_Challengeof7Sisters_PlayerToBattlefield_Movement{
+    walk_left * 6
+    walk_down * 2
+    face_right
+    step_end
 }

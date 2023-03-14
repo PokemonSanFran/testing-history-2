@@ -4612,3 +4612,11 @@ void RandomlyBoostPartyMemberFriendship(void)
     }
     AdjustFriendship(&gPlayerParty[i], FRIENDSHIP_EVENT_WALKING);
 }
+
+bool8 CheckPartyHasOneMon(void)
+{
+    u8 count = 0;
+
+    count = CalculatePlayerPartyCount();
+    return (count == 1) ? TRUE : FALSE;
+}

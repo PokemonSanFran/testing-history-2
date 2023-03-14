@@ -60,7 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_PAINTEDLADIES, 19, 17
+	warpsilent MAP_PAINTEDLADIES_ENTRANCE, 13, 2
 	end
 
 
