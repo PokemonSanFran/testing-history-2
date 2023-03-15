@@ -13,6 +13,8 @@ const CHALLENGE = 0
 const INFO = 1
 const CANCEL = 2
 
+const FLAG_CHALLENGE_FAINTED = FLAG_TEMP_1
+
 script Quest_Challengeof7Sisters_Welcome_Dialogue{
     msgbox(gText_Challengeof7Sisters_WelcomeToTheSeven,MSGBOX_NPC,SPEAKER_SEVENSISTERS_TINA)
         goto(Quest_Challengeof7Sisters_ChallengeMenu_Dialogue)
@@ -46,66 +48,74 @@ script Quest_Challengeof7Sisters_Explain_Dialogue{
 
 script Quest_Challengeof7Sisters_Cancel_Dialogue{
     msgbox(gText_Challengeof7Sisters_HopeToHear,,SPEAKER_SEVENSISTERS_TINA)
-    closemessage
-    release
-    end
+        closemessage
+        release
+        end
 }
 
 
 script Quest_Challengeof7Sisters_StartChallenge_Dialogue{
     call(Quest_Challengeof7Sisters_CheckPartySize_Script)
-    msgbox(gText_Challengeof7Sisters_LetsGetStarted)
-    closemessage
-    call(Quest_Challengeof7Sisters_WalkToBattlefield_Script)
-    goto(Quest_Challengeof7Sisters_Battle1_Script)
+        msgbox(gText_Challengeof7Sisters_LetsGetStarted)
+        closemessage
+        call(Quest_Challengeof7Sisters_StartQuestIfNotStarted_Script)
+        call(Quest_Challengeof7Sisters_WalkToBattlefield_Script)
+        goto(Quest_Challengeof7Sisters_Battle1_Script)
 }
 
 script Quest_Challengeof7Sisters_CheckPartySize_Script{
     specialvar(VAR_RESULT,CheckPartyHasOneMon)
-    if (!var(VAR_RESULT)){
-       goto(Quest_Challengeof7Sisters_PartyTooLarge_Dialogue) 
-    }
+        if (!var(VAR_RESULT)){
+            goto(Quest_Challengeof7Sisters_PartyTooLarge_Dialogue) 
+        }
     return
 }
 
 script Quest_Challengeof7Sisters_PartyTooLarge_Dialogue{
     msgbox(gText_Challengeof7Sisters_OhYourParty,,SPEAKER_SEVENSISTERS_TINA)
-    closemessage
-    release
-    end
+        closemessage
+        release
+        end
 }
 
 script Quest_Challengeof7Sisters_WalkToBattlefield_Script{
     applymovement(TINA,Quest_Challengeof7Sisters_TinaToBattlefield_Movement)
-    applymovement(PLAYER,Quest_Challengeof7Sisters_PlayerToBattlefield_Movement)
-    waitmovement(PLAYER)
-    return
+        applymovement(PLAYER,Quest_Challengeof7Sisters_PlayerToBattlefield_Movement)
+        waitmovement(PLAYER)
+        return
 }
 
-script Quest_DrumCircle_StartQuestIfNotStarted_Script{
+script Quest_Challengeof7Sisters_StartQuestIfNotStarted_Script{
     returnqueststate(QUEST_CHALLENGEOFTHE7SISTERS)
 
-    if (var(VAR_RESULT) < QUEST_MENU_SET_ACTIVE){
-        startquest(QUEST_CHALLENGEOFTHE7SISTERS)
-    }
+        if (var(VAR_RESULT) < QUEST_MENU_SET_ACTIVE){
+            startquest(QUEST_CHALLENGEOFTHE7SISTERS)
+        }
     return
 }
 
 script Quest_Challengeof7Sisters_Battle1_Script{
     msgbox(gText_Challengeof7Sisters_ImFirst,,SPEAKER_SEVENSISTERS_TINA)
-    closemessage
-    applymovement(PLAYER,Common_Movement_WalkRight)
-    applymovement(TINA,Common_Movement_WalkLeft)
-    waitmovement(TINA)
-    trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_TINA,gText_Challengeof7Sisters_IDidMyBest)
+        closemessage
+        applymovement(PLAYER,Common_Movement_WalkRight)
+        applymovement(TINA,Common_Movement_WalkLeft)
+        waitmovement(TINA)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_TINA,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle2_Script)
 }
 
 script Quest_Challengeof7Sisters_SwapTinaForPaul_Script{
+    applymovement(TINA,Quest_Challengeof7Sisters_TinaFromBattlefield_Movement)
+        delay(8)
+        applymovement(PAUL,Quest_Challengeof7Sisters_PaulToBattlefield_Movement)
+        waitmovement(PAUL)
+        return
 }
 
 script Quest_Challengeof7Sisters_Battle2_Script{
+    msgbox(gText_Challengeof7Sisters_ImSecond,,SPEAKER_SEVENSISTERS_TINA)
+        closemessage
     call(Quest_Challengeof7Sisters_SwapTinaForPaul_Script)
         trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_PAUL,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
@@ -113,9 +123,16 @@ script Quest_Challengeof7Sisters_Battle2_Script{
 }
 
 script Quest_Challengeof7Sisters_SwapPaulForJonScript{
+    applymovement(PAUL,Quest_Challengeof7Sisters_PaulFromBattlefield_Movement)
+        delay(8)
+        applymovement(JON,Quest_Challengeof7Sisters_JonToBattlefield_Movement)
+        waitmovement(JON)
+
 }
 
 script Quest_Challengeof7Sisters_Battle3_Script{
+    msgbox(gText_Challengeof7Sisters_ImThird,,SPEAKER_SEVENSISTERS_TINA)
+        closemessage
     call(Quest_Challengeof7Sisters_SwapPaulForJonScript)
         trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JON,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
@@ -123,9 +140,16 @@ script Quest_Challengeof7Sisters_Battle3_Script{
 }
 
 script Quest_Challengeof7Sisters_SwapJonForBradleyScript{
+    applymovement(JON,Quest_Challengeof7Sisters_JonFromBattlefield_Movement)
+        delay(8)
+        applymovement(BRADLEY,Quest_Challengeof7Sisters_BradleyToBattlefield_Movement)
+        waitmovement(BRADLEY)
+
 }
 
 script Quest_Challengeof7Sisters_Battle4_Script{
+    msgbox(gText_Challengeof7Sisters_ImFourth,,SPEAKER_SEVENSISTERS_TINA)
+        closemessage
     call(Quest_Challengeof7Sisters_SwapJonForBradleyScript)
         trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_BRADLEY,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
@@ -133,9 +157,16 @@ script Quest_Challengeof7Sisters_Battle4_Script{
 }
 
 script Quest_Challengeof7Sisters_SwapBradleyForJoScript{
+    applymovement(BRADLEY,Quest_Challengeof7Sisters_BradleyFromBattlefield_Movement)
+        delay(8)
+        applymovement(JO,Quest_Challengeof7Sisters_JoToBattlefield_Movement)
+        waitmovement(JO)
+
 }
 
 script Quest_Challengeof7Sisters_Battle5_Script{
+    msgbox(gText_Challengeof7Sisters_ImFifth,,SPEAKER_SEVENSISTERS_TINA)
+        closemessage
     call(Quest_Challengeof7Sisters_SwapBradleyForJoScript)
         trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JO,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
@@ -143,9 +174,16 @@ script Quest_Challengeof7Sisters_Battle5_Script{
 }
 
 script Quest_Challengeof7Sisters_SwapJoForHannahScript{
+    applymovement(JO,Quest_Challengeof7Sisters_JoFromBattlefield_Movement)
+        delay(8)
+        applymovement(HANNAH,Quest_Challengeof7Sisters_HannahToBattlefield_Movement)
+        waitmovement(HANNAH)
+
 }
 
 script Quest_Challengeof7Sisters_Battle6_Script{
+    msgbox(gText_Challengeof7Sisters_ImSixth,,SPEAKER_SEVENSISTERS_TINA)
+        closemessage
     call(Quest_Challengeof7Sisters_SwapJoForHannahScript)
         trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_HANNAH,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
@@ -153,9 +191,15 @@ script Quest_Challengeof7Sisters_Battle6_Script{
 }
 
 script Quest_Challengeof7Sisters_SwapHannahForRachelScript{
+    applymovement(HANNAH,Quest_Challengeof7Sisters_HannahFromBattlefield_Movement)
+        delay(8)
+        applymovement(RACHEL,Quest_Challengeof7Sisters_RachelToBattlefield_Movement)
+        waitmovement(RACHEL)
 }
 
 script Quest_Challengeof7Sisters_Battle7_Script{
+    msgbox(gText_Challengeof7Sisters_ImSeventh,,SPEAKER_SEVENSISTERS_TINA)
+        closemessage
     call(Quest_Challengeof7Sisters_SwapHannahForRachelScript)
         trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_RACHEL,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
@@ -167,26 +211,292 @@ script Quest_Challengeof7Sisters_AssessBattleOutcome_Script{
         if (var(VAR_RESULT) == B_OUTCOME_WON){
             return
         }else{
+            call(Quest_Challengeof7Sisters_MarkLoss_Script)
             goto(Quest_Challengeof7Sisters_ChallengeOver_Dialogue)
         }
     return
 }
 
+script Quest_Challengeof7Sisters_MarkLoss_Script{
+    clearflag(FLAG_CHALLENGE_FAINTED)
+    setflag(FLAG_CHALLENGE_FAINTED)
+    return
+}
+
 script Quest_Challengeof7Sisters_WarpEverybodyBackToPlace_Script{
+    fadescreen(FADE_TO_BLACK)
+        setobjectxyperm(TINA,10,3)
+        setobjectxyperm(PAUL,9,7)
+        setobjectxyperm(JON,8,7)
+        setobjectxyperm(BRADLEY,7,7)
+        setobjectxyperm(JO,6,7)
+        setobjectxyperm(HANNAH,5,7)
+        setobjectxyperm(RACHEL,7,7)
+        applymovement(TINA,Common_Movement_FaceRight)
+        applymovement(PAUL,Common_Movement_FaceUp)
+        applymovement(JON,Common_Movement_FaceUp)
+        applymovement(BRADLEY,Common_Movement_FaceUp)
+        applymovement(JO,Common_Movement_FaceUp)
+        applymovement(HANNAH,Common_Movement_FaceUp)
+        applymovement(RACHEL,Common_Movement_FaceUp)
+        fadescreen(FADE_FROM_BLACK)
 }
 
 script Quest_Challengeof7Sisters_ChallengeOver_Dialogue{
+    lock
+    call(Quest_Challengeof7Sisters_WarpEverybodyBackToPlace_Script)
+    goto(Quest_Challengeof7Sisters_JudgePerformance_Script)
+//VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD
+//VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD
+//VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD
 }
 
+const SS_RANK = 0
+const S_RANK = 1
+const A_RANK = 2
+const B_RANK = 3
+const C_RANK = 4
+const D_RANK = 5
+const E_RANK = 6
+const FAIL = 7
+
 script Quest_Challengeof7Sisters_JudgePerformance_Script{
+    lock
+    specialvar(VAR_RESULT,Quest_Challengeof7Sisters_ConvertTurnsToRank)
+
+    switch (var(VAR_RESULT)){
+        case FAIL: goto(Quest_Challengeof7Sisters_Failed_Dialogue)
+        default: goto(Quest_Challengeof7Sisters_Completed_Dialogue)
+    }
+}
+
+script Quest_Challengeof7Sisters_Failed_Dialogue{
+    msgbox(gText_Challengeof7Sisters_ImSorryButYouFainted,,SPEAKER_SEVENSISTERS_TINA)
+    msgbox(gText_Challengeof7Sisters_HopeToHear,,SPEAKER_SEVENSISTERS_TINA)
+    closemessage
+    release
+    end
 }
 
 script Quest_Challengeof7Sisters_Completed_Dialogue{
+    specialvar(VAR_0x8006,ConvertChallengeTurnsToRank)
+    bufferstring(STR_VAR_1,VAR_0x8006)
+    bufferstring(STR_VAR_2,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
+    msgbox(gText_Challengeof7Sisters_CongratulationsYourStreak,,SPEAKER_TINA)
+    call(Quest_Challengeof7Sisters_GivePrizesAndComplete_Script)
+    msgbox(gText_Challengeof7Sisters_ItWasFun,,SPEAKER_TINA)
+    closemessage
+    release
+    end
+}
+
+script Quest_Challengeof7Sisters_GivePrizesAndComplete_Script{
+    call(Quest_Challengeof7Sisters_RankCheck1_Script)
+    call(Quest_Challengeof7Sisters_RankCheck2_Script)
+    call(Quest_Challengeof7Sisters_RankCheck3_Script)
+    call(Quest_Challengeof7Sisters_RankCheck4_Script)
+    call(Quest_Challengeof7Sisters_RankCheck5_Script)
+    call(Quest_Challengeof7Sisters_RankCheck6_Script)
+    call(Quest_Challengeof7Sisters_RankCheck7_Script)
+    return
+}
+
+script Quest_Challengeof7Sisters_RankCheck1_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_1)
+
+    if(!var(VAR_RESULT)){
+        specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
+            if (var(VAR_RESULT) == S_RANK){
+                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_1)
+                giveitem(ITEM_FIRE_GEM)
+            }
+    }
+    return
+
+script Quest_Challengeof7Sisters_RankCheck2_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_2)
+
+    if(!var(VAR_RESULT)){
+        specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
+            if (var(VAR_RESULT) >= A_RANK){
+                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_2)
+                giveitem(ITEM_WATER_GEM)
+            }
+    }
+    return
+}
+script Quest_Challengeof7Sisters_RankCheck3_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_3)
+
+    if(!var(VAR_RESULT)){
+        specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
+            if (var(VAR_RESULT) >= B_RANK){
+                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_2)
+                giveitem(ITEM_ELECTRIC_GEM)
+            }
+    }
+    return
+}
+script Quest_Challengeof7Sisters_RankCheck4_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_4)
+
+    if(!var(VAR_RESULT)){
+        specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
+            if (var(VAR_RESULT) >= C_RANK){
+                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_3)
+                giveitem(ITEM_GRASS_GEM)
+            }
+    }
+    return
+}
+script Quest_Challengeof7Sisters_RankCheck5_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_5)
+
+    if(!var(VAR_RESULT)){
+        specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
+            if (var(VAR_RESULT) >= D_RANK){
+                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_5)
+                giveitem(ITEM_ICE_GEM)
+            }
+    }
+    return
+}
+script Quest_Challengeof7Sisters_RankCheck6_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_6)
+
+    if(!var(VAR_RESULT)){
+        specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
+            if (var(VAR_RESULT) >= E_RANK){
+                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_6)
+                giveitem(ITEM_PSYCHIC_GEM)
+            }
+    }
+    return
+}
+script Quest_Challengeof7Sisters_RankCheck7_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_7)
+
+    if(!var(VAR_RESULT)){
+        specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
+            if (var(VAR_RESULT) >= F_RANK){
+                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_7)
+                giveitem(ITEM_POKE_BALL)
+            }
+    }
+    return
+}
+
+script Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script{
     questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_CHALLENGEOFTHE7SISTERS)
         if (var(VAR_RESULT)){
             completequest(QUEST_CHALLENGEOFTHE7SISTERS)
         }
     return
+}
+
+movement Quest_Challengeof7Sisters_PlayerToBattlefield_Movement{
+    walk_left * 6
+        walk_down * 2
+        face_right
+        step_end
+}
+movement Quest_Challengeof7Sisters_TinaToBattlefield_Movement{
+        walk_left * 1
+        walk_down * 2
+        face_left
+        step_end
+}
+movement Quest_Challengeof7Sisters_TinaFromBattlefield_Movement{
+        walk_right * 2
+        walk_down * 2
+        face_up
+}
+movement Quest_Challengeof7Sisters_PaulToBattlefield_Movement{
+        walk_up * 2
+        walk_left
+        step_end
+}
+movement Quest_Challengeof7Sisters_PaulFromBattlefield_Movement{
+        walk_right
+        walk_down * 2
+        face_up
+}
+movement Quest_Challengeof7Sisters_JonToBattlefield_Movement{
+    walk_up * 2
+        face_left
+        step_end
+}
+
+movement Quest_Challengeof7Sisters_JonFromBattlefield_Movement{
+        walk_down * 2
+        face_up
+        step_end
+}
+
+movement Quest_Challengeof7Sisters_BradleyToBattlefield_Movement{
+    walk_up * 2
+        face_left
+        step_end
+}
+
+movement Quest_Challengeof7Sisters_BradleyFromBattlefield_Movement{
+    walk_down * 2
+        face_up
+        step_end
+}
+
+movement Quest_Challengeof7Sisters_JoToBattlefield_Movement{
+    walk_up
+        walk_right
+        walk_up
+        face_left
+        step_end
+}
+
+movement Quest_Challengeof7Sisters_JoFromBattlefield_Movement{
+    walk_down
+        walk_left
+        walk_down
+        face_up
+        step_end
+}
+
+movement Quest_Challengeof7Sisters_HannahToBattlefield_Movement{
+    walk_up
+        walk_right * 3
+        walk_up
+        face_left
+        step_end
+}
+
+movement Quest_Challengeof7Sisters_HannahFromBattlefield_Movement{
+    walk_down
+        walk_left * 3
+        walk_down
+        face_up
+        step_end
+}
+
+movement Quest_Challengeof7Sisters_RachelToBattlefield_Movement{
+    walk_up
+        walk_right * 3
+        walk_up
+        walk_right
+        face_left
+        step_end
+}
+
+movement Quest_Challengeof7Sisters_RachelFromBattlefield_Movement{
+    walk_down
+        step_end
 }
 
 text Quest_Challengeof7Sisters_ChallengeMenu{
@@ -232,16 +542,21 @@ text gText_Challengeof7Sisters_OhYourParty{
 text gText_Challengeof7Sisters_ImFirst{
     format("")
 }
-movement Quest_Challengeof7Sisters_TinaToBattlefield_Movement{
-    walk_left * 1
-    walk_down * 2
-    face_left
-    step_end
+text gText_Challengeof7Sisters_ImSecond{
+    format("")
 }
-
-movement Quest_Challengeof7Sisters_PlayerToBattlefield_Movement{
-    walk_left * 6
-    walk_down * 2
-    face_right
-    step_end
+text gText_Challengeof7Sisters_ImThird{
+    format("")
+}
+text gText_Challengeof7Sisters_ImFourth{
+    format("")
+}
+text gText_Challengeof7Sisters_ImFifth{
+    format("")
+}
+text gText_Challengeof7Sisters_ImSixth{
+    format("")
+}
+text gText_Challengeof7Sisters_ImSeventh{
+    format("")
 }

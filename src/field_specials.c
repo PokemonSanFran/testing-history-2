@@ -30,6 +30,7 @@
 #include "pokeblock.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
+#include "quests.h"
 #include "random.h"
 #include "rayquaza_scene.h"
 #include "region_map.h"
@@ -61,6 +62,7 @@
 #include "constants/slot_machine.h"
 #include "constants/songs.h"
 #include "constants/moves.h"
+#include "constants/quests.h"
 #include "constants/party_menu.h"
 #include "constants/battle_frontier.h"
 #include "constants/weather.h"
@@ -4619,4 +4621,38 @@ bool8 CheckPartyHasOneMon(void)
 
     count = CalculatePlayerPartyCount();
     return (count == 1) ? TRUE : FALSE;
+}
+
+u8 ConvertChallengeTurnsToRank(void)
+{
+    u8 numChallengeTurns = VarGet(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD);
+    u8 challengeRank = 0;
+
+    if (numChallengeTurns < 8){
+        challengeRank = 0;
+    }
+    if (numChallengeTurns > 7){
+        challengeRank = 1;
+    }
+    if (numChallengeTurns > 14){
+        challengeRank = 2;
+    }
+    if (numChallengeTurns > 21){
+        challengeRank = 3;
+    }
+    if (numChallengeTurns > 28){
+        challengeRank = 4;
+    }
+    if (numChallengeTurns > 35){
+        challengeRank = 5;
+    }
+    if (numChallengeTurns > 42){
+        challengeRank = 6;
+    }
+
+    if (FlagGet(VAR_TEMP_1)){
+        challengeRank = 7;
+    }
+
+    return challengeRank;
 }
