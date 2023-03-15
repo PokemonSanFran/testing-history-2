@@ -32,7 +32,40 @@ script Quest_Challengeof7Sisters_ChallengeMenu_Dialogue{
     end
 }
 
+script Quest_Challengeof7Sisters_ConvertLastVars_Script{
+
+    buffernumberstring(STR_VAR_1,VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD)
+
+        setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD)
+        specialvar(VAR_0x8006,ConvertChallengeTurnsToRank)
+        buffernumberstring(STR_VAR_2,VAR_0x8006)
+        return
+}
+
+script Quest_Challengeof7Sisters_ConvertBestVars_Script{
+
+        buffernumberstring(STR_VAR_1,VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD)
+
+        setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD)
+        specialvar(VAR_0x8006,ConvertChallengeTurnsToRank)
+        buffernumberstring(STR_VAR_2,VAR_0x8006)
+        return
+}
+
 script Quest_Challengeof7Sisters_Explain_Dialogue{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_7)
+        if(var(VAR_RESULT)){
+
+            call(Quest_Challengeof7Sisters_ConvertLastVars_Script)
+                msgbox(gText_Challengeof7Sisters_YourLastRecord,,SPEAKER_SEVENSISTERS_TINA)
+            call(Quest_Challengeof7Sisters_ConvertBestVars_Script)
+                msgbox(gText_Challengeof7Sisters_YourBestRecord,,SPEAKER_SEVENSISTERS_TINA)
+                msgbox(gText_Challengeof7Sisters_IThinkYouKnowHow,MSGBOX_YESNO,SPEAKER_SEVENSISTERS_TINA)
+                if (var(VAR_RESULT) == YES){
+                    goto(Quest_Challengeof7Sisters_StartChallenge_Dialogue)
+                }
+        }
+
     msgbox(gText_Challengeof7Sisters_YoullBattleTheSeven,,SPEAKER_SEVENSISTERS_TINA)
         msgbox(gText_Challengeof7Sisters_YouCanOnlyBring,,SPEAKER_SEVENSISTERS_TINA)
         msgbox(gText_Challengeof7Sisters_TheGoalIsToWin,,SPEAKER_SEVENSISTERS_TINA)
@@ -56,7 +89,7 @@ script Quest_Challengeof7Sisters_Cancel_Dialogue{
 
 script Quest_Challengeof7Sisters_StartChallenge_Dialogue{
     call(Quest_Challengeof7Sisters_CheckPartySize_Script)
-        msgbox(gText_Challengeof7Sisters_LetsGetStarted)
+        msgbox(gText_Challengeof7Sisters_LetsGetStarted,,SPEAKER_SEVENSISTERS_TINA)
         closemessage
         call(Quest_Challengeof7Sisters_StartQuestIfNotStarted_Script)
         call(Quest_Challengeof7Sisters_WalkToBattlefield_Script)
@@ -100,7 +133,7 @@ script Quest_Challengeof7Sisters_Battle1_Script{
         applymovement(PLAYER,Common_Movement_WalkRight)
         applymovement(TINA,Common_Movement_WalkLeft)
         waitmovement(TINA)
-        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_TINA,gText_Challengeof7Sisters_IDidMyBest)
+        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_TINA,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle2_Script)
 }
@@ -114,10 +147,10 @@ script Quest_Challengeof7Sisters_SwapTinaForPaul_Script{
 }
 
 script Quest_Challengeof7Sisters_Battle2_Script{
-    msgbox(gText_Challengeof7Sisters_ImSecond,,SPEAKER_SEVENSISTERS_TINA)
-        closemessage
     call(Quest_Challengeof7Sisters_SwapTinaForPaul_Script)
-        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_PAUL,gText_Challengeof7Sisters_IDidMyBest)
+    msgbox(gText_Challengeof7Sisters_ImSecond,,SPEAKER_SEVENSISTERS_PAUL)
+        closemessage
+        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_PAUL,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle3_Script)
 }
@@ -131,10 +164,10 @@ script Quest_Challengeof7Sisters_SwapPaulForJonScript{
 }
 
 script Quest_Challengeof7Sisters_Battle3_Script{
-    msgbox(gText_Challengeof7Sisters_ImThird,,SPEAKER_SEVENSISTERS_TINA)
-        closemessage
     call(Quest_Challengeof7Sisters_SwapPaulForJonScript)
-        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JON,gText_Challengeof7Sisters_IDidMyBest)
+    msgbox(gText_Challengeof7Sisters_ImThird,,SPEAKER_SEVENSISTERS_JON)
+        closemessage
+        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JON,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle4_Script)
 }
@@ -148,10 +181,10 @@ script Quest_Challengeof7Sisters_SwapJonForBradleyScript{
 }
 
 script Quest_Challengeof7Sisters_Battle4_Script{
-    msgbox(gText_Challengeof7Sisters_ImFourth,,SPEAKER_SEVENSISTERS_TINA)
-        closemessage
     call(Quest_Challengeof7Sisters_SwapJonForBradleyScript)
-        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_BRADLEY,gText_Challengeof7Sisters_IDidMyBest)
+    msgbox(gText_Challengeof7Sisters_ImFourth,,SPEAKER_SEVENSISTERS_BRADLEY)
+        closemessage
+        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_BRADLEY,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle5_Script)
 }
@@ -165,10 +198,10 @@ script Quest_Challengeof7Sisters_SwapBradleyForJoScript{
 }
 
 script Quest_Challengeof7Sisters_Battle5_Script{
-    msgbox(gText_Challengeof7Sisters_ImFifth,,SPEAKER_SEVENSISTERS_TINA)
-        closemessage
     call(Quest_Challengeof7Sisters_SwapBradleyForJoScript)
-        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JO,gText_Challengeof7Sisters_IDidMyBest)
+    msgbox(gText_Challengeof7Sisters_ImFifth,,SPEAKER_SEVENSISTERS_JO)
+        closemessage
+        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JO,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle6_Script)
 }
@@ -182,10 +215,10 @@ script Quest_Challengeof7Sisters_SwapJoForHannahScript{
 }
 
 script Quest_Challengeof7Sisters_Battle6_Script{
-    msgbox(gText_Challengeof7Sisters_ImSixth,,SPEAKER_SEVENSISTERS_TINA)
-        closemessage
     call(Quest_Challengeof7Sisters_SwapJoForHannahScript)
-        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_HANNAH,gText_Challengeof7Sisters_IDidMyBest)
+    msgbox(gText_Challengeof7Sisters_ImSixth,,SPEAKER_SEVENSISTERS_HANNAH)
+        closemessage
+        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_HANNAH,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle7_Script)
 }
@@ -198,10 +231,10 @@ script Quest_Challengeof7Sisters_SwapHannahForRachelScript{
 }
 
 script Quest_Challengeof7Sisters_Battle7_Script{
-    msgbox(gText_Challengeof7Sisters_ImSeventh,,SPEAKER_SEVENSISTERS_TINA)
-        closemessage
     call(Quest_Challengeof7Sisters_SwapHannahForRachelScript)
-        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_RACHEL,gText_Challengeof7Sisters_IDidMyBest)
+    msgbox(gText_Challengeof7Sisters_ImSeventh,,SPEAKER_SEVENSISTERS_RACHEL)
+        closemessage
+        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_RACHEL,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_ChallengeOver_Dialogue)
 }
@@ -225,13 +258,18 @@ script Quest_Challengeof7Sisters_MarkLoss_Script{
 
 script Quest_Challengeof7Sisters_WarpEverybodyBackToPlace_Script{
     fadescreen(FADE_TO_BLACK)
+        setobjectxy(PLAYER,11,3)
+        TeleportCamera(11,3)
+        applymovement(PLAYER,Common_Movement_FaceLeft)
+        setobjectxy(TINA,10,3)
         setobjectxyperm(TINA,10,3)
         setobjectxyperm(PAUL,9,7)
         setobjectxyperm(JON,8,7)
         setobjectxyperm(BRADLEY,7,7)
         setobjectxyperm(JO,6,7)
         setobjectxyperm(HANNAH,5,7)
-        setobjectxyperm(RACHEL,7,7)
+        setobjectxy(RACHEL,4,7)
+        setobjectxyperm(RACHEL,4,7)
         applymovement(TINA,Common_Movement_FaceRight)
         applymovement(PAUL,Common_Movement_FaceUp)
         applymovement(JON,Common_Movement_FaceUp)
@@ -262,7 +300,15 @@ const FAIL = 7
 
 script Quest_Challengeof7Sisters_JudgePerformance_Script{
     lock
-    specialvar(VAR_RESULT,Quest_Challengeof7Sisters_ConvertTurnsToRank)
+    setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD,7)
+
+    setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
+
+    if (var(VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD) > value(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)){
+    setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
+    }
+
+    specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
 
     switch (var(VAR_RESULT)){
         case FAIL: goto(Quest_Challengeof7Sisters_Failed_Dialogue)
@@ -271,6 +317,7 @@ script Quest_Challengeof7Sisters_JudgePerformance_Script{
 }
 
 script Quest_Challengeof7Sisters_Failed_Dialogue{
+    special(HealPlayerParty)
     msgbox(gText_Challengeof7Sisters_ImSorryButYouFainted,,SPEAKER_SEVENSISTERS_TINA)
     msgbox(gText_Challengeof7Sisters_HopeToHear,,SPEAKER_SEVENSISTERS_TINA)
     closemessage
@@ -280,11 +327,11 @@ script Quest_Challengeof7Sisters_Failed_Dialogue{
 
 script Quest_Challengeof7Sisters_Completed_Dialogue{
     specialvar(VAR_0x8006,ConvertChallengeTurnsToRank)
-    bufferstring(STR_VAR_1,VAR_0x8006)
-    bufferstring(STR_VAR_2,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
-    msgbox(gText_Challengeof7Sisters_CongratulationsYourStreak,,SPEAKER_TINA)
+    buffernumberstring(STR_VAR_1,VAR_0x8006)
+    buffernumberstring(STR_VAR_2,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
+    msgbox(gText_Challengeof7Sisters_CongratulationsYourStreak,,SPEAKER_SEVENSISTERS_TINA)
     call(Quest_Challengeof7Sisters_GivePrizesAndComplete_Script)
-    msgbox(gText_Challengeof7Sisters_ItWasFun,,SPEAKER_TINA)
+    msgbox(gText_Challengeof7Sisters_ItWasFun,,SPEAKER_SEVENSISTERS_TINA)
     closemessage
     release
     end
@@ -306,22 +353,21 @@ script Quest_Challengeof7Sisters_RankCheck1_Script{
 
     if(!var(VAR_RESULT)){
         specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
-            if (var(VAR_RESULT) == S_RANK){
-                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
-                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+            if (var(VAR_RESULT) == SS_RANK){
                 subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_1)
+                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
                 giveitem(ITEM_FIRE_GEM)
             }
     }
     return
+}
 
 script Quest_Challengeof7Sisters_RankCheck2_Script{
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_2)
 
     if(!var(VAR_RESULT)){
         specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
-            if (var(VAR_RESULT) >= A_RANK){
-                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+            if (var(VAR_RESULT) <= S_RANK){
                 subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_2)
                 giveitem(ITEM_WATER_GEM)
             }
@@ -333,9 +379,8 @@ script Quest_Challengeof7Sisters_RankCheck3_Script{
 
     if(!var(VAR_RESULT)){
         specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
-            if (var(VAR_RESULT) >= B_RANK){
-                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
-                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_2)
+            if (var(VAR_RESULT) <= A_RANK){
+                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_3)
                 giveitem(ITEM_ELECTRIC_GEM)
             }
     }
@@ -346,9 +391,8 @@ script Quest_Challengeof7Sisters_RankCheck4_Script{
 
     if(!var(VAR_RESULT)){
         specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
-            if (var(VAR_RESULT) >= C_RANK){
-                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
-                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_3)
+            if (var(VAR_RESULT) <= B_RANK){
+                subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_4)
                 giveitem(ITEM_GRASS_GEM)
             }
     }
@@ -359,8 +403,7 @@ script Quest_Challengeof7Sisters_RankCheck5_Script{
 
     if(!var(VAR_RESULT)){
         specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
-            if (var(VAR_RESULT) >= D_RANK){
-                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+            if (var(VAR_RESULT) <= C_RANK){
                 subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_5)
                 giveitem(ITEM_ICE_GEM)
             }
@@ -372,8 +415,7 @@ script Quest_Challengeof7Sisters_RankCheck6_Script{
 
     if(!var(VAR_RESULT)){
         specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
-            if (var(VAR_RESULT) >= E_RANK){
-                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+            if (var(VAR_RESULT) <= D_RANK){
                 subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_6)
                 giveitem(ITEM_PSYCHIC_GEM)
             }
@@ -385,8 +427,7 @@ script Quest_Challengeof7Sisters_RankCheck7_Script{
 
     if(!var(VAR_RESULT)){
         specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
-            if (var(VAR_RESULT) >= F_RANK){
-                call(Quest_Challengeof7Sisters_CompleteQuestIfNotCompleted_Script)
+            if (var(VAR_RESULT) <= E_RANK){
                 subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHALLENGEOFTHE7SISTERS,SUB_QUEST_7)
                 giveitem(ITEM_POKE_BALL)
             }
@@ -496,12 +537,12 @@ movement Quest_Challengeof7Sisters_RachelToBattlefield_Movement{
 
 movement Quest_Challengeof7Sisters_RachelFromBattlefield_Movement{
     walk_down
-        step_end
+    step_end
 }
 
 text Quest_Challengeof7Sisters_ChallengeMenu{
     "Challenge$"
-        "Info$"
+        "Info / Record$"
         "Cancel$"
         "$"
 }
@@ -510,53 +551,72 @@ text gText_Challengeof7Sisters_IDidMyBest{
     format("I did my best. I have no regrets!")
 }
 text gText_Challengeof7Sisters_WelcomeToTheSeven{
-    format("")
+    format("Welcome to the Seven Sisters Challenge!")
 }
 text gText_Challengeof7Sisters_AreYouReadyFor{
-    format("")
+    format("Are you ready for the toughest challenge in SanFran?")
 }
 text gText_Challengeof7Sisters_YoullBattleTheSeven{
-    format("")
+    format("You'll battle the seven of us amazing sisters, back to back.")
 }
 text gText_Challengeof7Sisters_YouCanOnlyBring{
-    format("")
+    format("You can only bring one Pokémon with you, and there's no breaks in between.")
 }
 text gText_Challengeof7Sisters_TheGoalIsToWin{
-    format("")
+    format("The goal is to win in as few turns as possible.")
 }
 text gText_Challengeof7Sisters_IfYouWin{
-    format("")
+    format("If you can beat all of us, you get a rank depending on how many turns it took over all 7 battles. The first time you achieve a rank, you get a prize!")
+}
+text gText_Challengeof7Sisters_YourLastRecord{
+    format("Your last record was {STR_VAR_1} turns, for an {STR_VAR_2} Rank.")
+}
+text gText_Challengeof7Sisters_YourBestRecord{
+    format("Your best record is {STR_VAR_1} turns, for an {STR_VAR_2} Rank.")
+}
+
+text gText_Challengeof7Sisters_IThinkYouKnowHow{
+    format("I think you know how this works. Shall we get started?")
 }
 text gText_Challengeof7Sisters_WouldYouLikeToPlay{
-    format("")
+    format("Would you like to play?")
 }
 text gText_Challengeof7Sisters_HopeToHear{
-    format("")
+    format("Hope to hear from you soon!")
 }
 text gText_Challengeof7Sisters_LetsGetStarted{
-    format("")
+    format("Let's get started then!")
 }
 text gText_Challengeof7Sisters_OhYourParty{
-    format("")
+    format("Oh wait a second... you have more than one Pokémon with you. Deposit the rest in the PC, and talk to me when you're ready!")
 }
 text gText_Challengeof7Sisters_ImFirst{
-    format("")
+    format("I'm first up!")
 }
 text gText_Challengeof7Sisters_ImSecond{
-    format("")
+    format("I'm second!")
 }
 text gText_Challengeof7Sisters_ImThird{
-    format("")
+    format("I'm third.")
 }
 text gText_Challengeof7Sisters_ImFourth{
-    format("")
+    format("Fourth is me!")
 }
 text gText_Challengeof7Sisters_ImFifth{
-    format("")
+    format("Ready for fifth?")
 }
 text gText_Challengeof7Sisters_ImSixth{
-    format("")
+    format("Tired? This is sixth.")
 }
 text gText_Challengeof7Sisters_ImSeventh{
-    format("")
+    format("Last one!")
+}
+text gText_Challengeof7Sisters_ImSorryButYouFainted{
+	format("I'm sorry, but you fainted before you could beat all of us. Try again next time!")
+}
+text gText_Challengeof7Sisters_CongratulationsYourStreak{
+	format("Congratulations! Your streak of {STR_VAR_2} got you the {STR_VAR_1} rank!")
+}
+text gText_Challengeof7Sisters_ItWasFun{
+	format("It was fun to battle you! Maybe we'll battle again someday.")
 }

@@ -561,3 +561,4 @@ gSpecials::
 	def_special CopyMonFromStolenTradeStorage
     def_special RandomlyBoostPartyMemberFriendship
     def_special CheckPartyHasOneMon
+    def_special ConvertChallengeTurnsToRank
