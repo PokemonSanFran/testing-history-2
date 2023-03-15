@@ -91,6 +91,7 @@ script Quest_Challengeof7Sisters_StartChallenge_Dialogue{
     call(Quest_Challengeof7Sisters_CheckPartySize_Script)
         msgbox(gText_Challengeof7Sisters_LetsGetStarted,,SPEAKER_SEVENSISTERS_TINA)
         closemessage
+        setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD, 0)
         call(Quest_Challengeof7Sisters_StartQuestIfNotStarted_Script)
         call(Quest_Challengeof7Sisters_WalkToBattlefield_Script)
         goto(Quest_Challengeof7Sisters_Battle1_Script)
@@ -133,7 +134,7 @@ script Quest_Challengeof7Sisters_Battle1_Script{
         applymovement(PLAYER,Common_Movement_WalkRight)
         applymovement(TINA,Common_Movement_WalkLeft)
         waitmovement(TINA)
-        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_TINA,gText_Challengeof7Sisters_IDidMyBest)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_TINA,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle2_Script)
 }
@@ -150,7 +151,7 @@ script Quest_Challengeof7Sisters_Battle2_Script{
     call(Quest_Challengeof7Sisters_SwapTinaForPaul_Script)
     msgbox(gText_Challengeof7Sisters_ImSecond,,SPEAKER_SEVENSISTERS_PAUL)
         closemessage
-        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_PAUL,gText_Challengeof7Sisters_IDidMyBest)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_PAUL,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle3_Script)
 }
@@ -167,7 +168,7 @@ script Quest_Challengeof7Sisters_Battle3_Script{
     call(Quest_Challengeof7Sisters_SwapPaulForJonScript)
     msgbox(gText_Challengeof7Sisters_ImThird,,SPEAKER_SEVENSISTERS_JON)
         closemessage
-        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JON,gText_Challengeof7Sisters_IDidMyBest)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JON,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle4_Script)
 }
@@ -184,7 +185,7 @@ script Quest_Challengeof7Sisters_Battle4_Script{
     call(Quest_Challengeof7Sisters_SwapJonForBradleyScript)
     msgbox(gText_Challengeof7Sisters_ImFourth,,SPEAKER_SEVENSISTERS_BRADLEY)
         closemessage
-        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_BRADLEY,gText_Challengeof7Sisters_IDidMyBest)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_BRADLEY,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle5_Script)
 }
@@ -201,7 +202,7 @@ script Quest_Challengeof7Sisters_Battle5_Script{
     call(Quest_Challengeof7Sisters_SwapBradleyForJoScript)
     msgbox(gText_Challengeof7Sisters_ImFifth,,SPEAKER_SEVENSISTERS_JO)
         closemessage
-        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JO,gText_Challengeof7Sisters_IDidMyBest)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_JO,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle6_Script)
 }
@@ -218,7 +219,7 @@ script Quest_Challengeof7Sisters_Battle6_Script{
     call(Quest_Challengeof7Sisters_SwapJoForHannahScript)
     msgbox(gText_Challengeof7Sisters_ImSixth,,SPEAKER_SEVENSISTERS_HANNAH)
         closemessage
-        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_HANNAH,gText_Challengeof7Sisters_IDidMyBest)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_HANNAH,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_Battle7_Script)
 }
@@ -234,7 +235,7 @@ script Quest_Challengeof7Sisters_Battle7_Script{
     call(Quest_Challengeof7Sisters_SwapHannahForRachelScript)
     msgbox(gText_Challengeof7Sisters_ImSeventh,,SPEAKER_SEVENSISTERS_RACHEL)
         closemessage
-        //trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_RACHEL,gText_Challengeof7Sisters_IDidMyBest)
+        trainerbattle_continue_after_lose(TRAINER_SEVENSISTERS_RACHEL,gText_Challengeof7Sisters_IDidMyBest)
         call(Quest_Challengeof7Sisters_AssessBattleOutcome_Script)
         goto(Quest_Challengeof7Sisters_ChallengeOver_Dialogue)
 }
@@ -300,7 +301,6 @@ const FAIL = 7
 
 script Quest_Challengeof7Sisters_JudgePerformance_Script{
     lock
-    setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD,7)
 
     setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
 

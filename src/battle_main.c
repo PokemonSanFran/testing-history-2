@@ -5098,6 +5098,8 @@ static void RunTurnActionsFunctions(void)
 
     if (gCurrentTurnActionNumber >= gBattlersCount) // everyone did their actions, turn finished
     {
+        if (QuestMenu_GetSetQuestState(QUEST_CHALLENGEOFTHE7SISTERS, FLAG_GET_ACTIVE) && !FlagGet(FLAG_TEMP_1))
+            VarSet(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD, VarGet(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD) + 1);
         gHitMarker &= ~HITMARKER_PASSIVE_DAMAGE;
         gBattleMainFunc = sEndTurnFuncsTable[gBattleOutcome & 0x7F];
     }

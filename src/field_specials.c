@@ -4650,7 +4650,7 @@ u8 ConvertChallengeTurnsToRank(void)
         challengeRank = 6;
     }
 
-    if (FlagGet(VAR_TEMP_1)){
+    if (FlagGet(FLAG_TEMP_1)){
         challengeRank = 7;
     }
 
