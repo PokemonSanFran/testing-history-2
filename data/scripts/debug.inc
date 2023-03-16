@@ -67,6 +67,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
+	givemon SPECIES_TREECKO, 1, 0
 	end
 
 

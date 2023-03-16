@@ -1,5 +1,6 @@
 //gText_Challengeof7Sisters_
 //Quest_Challengeof7Sisters_
+
 const TINA = 1
 const PAUL = 2
 const JON = 3
@@ -12,6 +13,15 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const CHALLENGE = 0
 const INFO = 1
 const CANCEL = 2
+
+const SS_RANK = 0
+const S_RANK = 1
+const A_RANK = 2
+const B_RANK = 3
+const C_RANK = 4
+const D_RANK = 5
+const E_RANK = 6
+const FAIL = 7
 
 const FLAG_CHALLENGE_FAINTED = FLAG_TEMP_1
 
@@ -32,23 +42,35 @@ script Quest_Challengeof7Sisters_ChallengeMenu_Dialogue{
     end
 }
 
+script Quest_Challengeof7Sister_RankNumberToString_Script{
+    switch (var(VAR_0x8006)){
+        case SS_RANK: bufferstring(STR_VAR_2,"SS")
+        case S_RANK: bufferstring(STR_VAR_2,"S")
+        case A_RANK: bufferstring(STR_VAR_2,"A")
+        case B_RANK: bufferstring(STR_VAR_2,"B")
+        case C_RANK: bufferstring(STR_VAR_2,"C")
+        case D_RANK: bufferstring(STR_VAR_2,"D")
+        case E_RANK: bufferstring(STR_VAR_2,"E")
+        case FAIL: bufferstring(STR_VAR_2,"Fail")
+    }
+    return
+}
+
 script Quest_Challengeof7Sisters_ConvertLastVars_Script{
 
     buffernumberstring(STR_VAR_1,VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD)
 
-        setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD)
+        copyvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD)
         specialvar(VAR_0x8006,ConvertChallengeTurnsToRank)
-        buffernumberstring(STR_VAR_2,VAR_0x8006)
+        call(Quest_Challengeof7Sister_RankNumberToString_Script)
         return
 }
 
 script Quest_Challengeof7Sisters_ConvertBestVars_Script{
-
         buffernumberstring(STR_VAR_1,VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD)
-
-        setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD)
+        copyvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD)
         specialvar(VAR_0x8006,ConvertChallengeTurnsToRank)
-        buffernumberstring(STR_VAR_2,VAR_0x8006)
+        call(Quest_Challengeof7Sister_RankNumberToString_Script)
         return
 }
 
@@ -123,6 +145,8 @@ script Quest_Challengeof7Sisters_StartQuestIfNotStarted_Script{
     returnqueststate(QUEST_CHALLENGEOFTHE7SISTERS)
 
         if (var(VAR_RESULT) < QUEST_MENU_SET_ACTIVE){
+            setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD,0)
+            setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD,0)
             startquest(QUEST_CHALLENGEOFTHE7SISTERS)
         }
     return
@@ -285,31 +309,20 @@ script Quest_Challengeof7Sisters_ChallengeOver_Dialogue{
     lock
     call(Quest_Challengeof7Sisters_WarpEverybodyBackToPlace_Script)
     goto(Quest_Challengeof7Sisters_JudgePerformance_Script)
-//VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD
-//VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD
-//VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD
 }
 
-const SS_RANK = 0
-const S_RANK = 1
-const A_RANK = 2
-const B_RANK = 3
-const C_RANK = 4
-const D_RANK = 5
-const E_RANK = 6
-const FAIL = 7
 
 script Quest_Challengeof7Sisters_JudgePerformance_Script{
     lock
+    copyvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
 
-    setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_LAST_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
-
-    if (var(VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD) > value(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)){
-    setvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
+    if (var(VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD) > value(VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD) || var(VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD) == 0){
+    copyvar(VAR_QUEST_CHALLENGEOFTHE7SISTERS_BEST_RECORD,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
     }
 
     specialvar(VAR_RESULT,ConvertChallengeTurnsToRank)
 
+    special(HealPlayerParty)
     switch (var(VAR_RESULT)){
         case FAIL: goto(Quest_Challengeof7Sisters_Failed_Dialogue)
         default: goto(Quest_Challengeof7Sisters_Completed_Dialogue)
@@ -317,7 +330,6 @@ script Quest_Challengeof7Sisters_JudgePerformance_Script{
 }
 
 script Quest_Challengeof7Sisters_Failed_Dialogue{
-    special(HealPlayerParty)
     msgbox(gText_Challengeof7Sisters_ImSorryButYouFainted,,SPEAKER_SEVENSISTERS_TINA)
     msgbox(gText_Challengeof7Sisters_HopeToHear,,SPEAKER_SEVENSISTERS_TINA)
     closemessage
@@ -327,8 +339,8 @@ script Quest_Challengeof7Sisters_Failed_Dialogue{
 
 script Quest_Challengeof7Sisters_Completed_Dialogue{
     specialvar(VAR_0x8006,ConvertChallengeTurnsToRank)
-    buffernumberstring(STR_VAR_1,VAR_0x8006)
-    buffernumberstring(STR_VAR_2,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
+    call(Quest_Challengeof7Sister_RankNumberToString_Script)
+    buffernumberstring(STR_VAR_1,VAR_QUEST_CHALLENGEOFTHE7SISTERS_CURRENT_RECORD)
     msgbox(gText_Challengeof7Sisters_CongratulationsYourStreak,,SPEAKER_SEVENSISTERS_TINA)
     call(Quest_Challengeof7Sisters_GivePrizesAndComplete_Script)
     msgbox(gText_Challengeof7Sisters_ItWasFun,,SPEAKER_SEVENSISTERS_TINA)
@@ -615,7 +627,7 @@ text gText_Challengeof7Sisters_ImSorryButYouFainted{
 	format("I'm sorry, but you fainted before you could beat all of us. Try again next time!")
 }
 text gText_Challengeof7Sisters_CongratulationsYourStreak{
-	format("Congratulations! Your streak of {STR_VAR_2} got you the {STR_VAR_1} rank!")
+	format("Congratulations! Your streak of {STR_VAR_1} got you the {STR_VAR_2} Rank!")
 }
 text gText_Challengeof7Sisters_ItWasFun{
 	format("It was fun to battle you! Maybe we'll battle again someday.")
