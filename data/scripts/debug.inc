@@ -60,14 +60,31 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	additem ITEM_MEGA_RING
-	givecustommon SPECIES_KANGASKHAN, 100, ITEM_KANGASKHANITE, ITEM_MASTER_BALL, 0, 0, 252, 0, 252, 0, 252, 31, 31, 31, 31, 31, 31, MOVE_EARTHQUAKE, MOVE_ICE_BEAM, MOVE_SHADOW_BALL, MOVE_BRICK_BREAK
-	warpsilent MAP_PAINTEDLADIES_ENTRANCE, 13, 2
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_BIOMERESEARCH
+	setwildbattle SPECIES_JYNX, 1
+	dowildbattle
+	setwildbattle SPECIES_JYNX, 1
+	dowildbattle
+	setwildbattle SPECIES_BALTOY, 1
+	dowildbattle
+	setwildbattle SPECIES_BALTOY, 1
+	dowildbattle
+	setwildbattle SPECIES_PIDGEY, 1
+	dowildbattle
+	setwildbattle SPECIES_PIDGEY, 1
+	dowildbattle
+	setwildbattle SPECIES_SEVIPER, 1
+	dowildbattle
+	setwildbattle SPECIES_SEVIPER, 1
+	dowildbattle
 	end
 
 
 Debug_Script_2::
-	givemon SPECIES_TREECKO, 1, 0
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_BIOMERESEARCH
+	setwildbattle SPECIES_SEVIPER, 1
+	dowildbattle
+	end
 	end
 
 

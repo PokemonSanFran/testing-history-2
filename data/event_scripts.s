@@ -1248,7 +1248,7 @@ Script_RemoveTint::
 // .include "data/quests/unknownmortyquestb.inc"
 .include "data/quests/stealtheaxe.inc"
 // .include "data/quests/unknownchuckquestb.inc"
-// .include "data/quests/biomeresearch.inc"
+.include "data/quests/biomeresearch.inc"
 .include "data/quests/berrysustainability.inc"
 // .include "data/quests/theonlyheadshopintown.inc"
 // .include "data/quests/inversehallucinogenic.inc"

@@ -5165,6 +5165,7 @@ static void HandleEndTurn_BattleWon(void)
     }
     else
     {
+        CheckPokemonForBiomeResearch();
         CountDefeatedBackyard();
         CountDefeatedPacifica();
         CountDefeatedGlameow();
@@ -5261,6 +5262,69 @@ void CountDefeatedGlameow(void){
     }
 
     VarSet(VAR_DEFEATED_GLAMEOW_COUNT,defeatedGlameowCount);
+}
+
+void CheckPokemonForBiomeResearch(void){
+
+    u8 firstQuest = 0, secondQuest = 0, i = 0, questCompetionRate = 0;
+
+    for (i = 0;i < 6;i++)
+    {
+        s32 enemySpecies = GetMonData(&gEnemyParty[i],MON_DATA_SPECIES);
+
+        //Is the quest Biome Research active? If not, quit.
+        if(QuestMenu_GetSetQuestState(QUEST_BIOMERESEARCH,FLAG_GET_ACTIVE) == FALSE){
+            return;
+        }
+
+        //Is the player battling a Trainer? If so, quit.
+        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER){
+            return;
+        }
+
+        //Did you battle one of the Pokémon needed for the quest? If so, which subquests correspond to that Pokémon?
+        switch(enemySpecies){
+            case SPECIES_JYNX:
+                firstQuest = SUB_QUEST_1;
+                secondQuest = SUB_QUEST_2;
+                break;
+            case SPECIES_BALTOY:
+                firstQuest = SUB_QUEST_3;
+                secondQuest = SUB_QUEST_4;
+                break;
+            case SPECIES_PIDGEY:
+                firstQuest = SUB_QUEST_5;
+                secondQuest = SUB_QUEST_6;
+                break;
+            case SPECIES_SEVIPER:
+                firstQuest = SUB_QUEST_7;
+                secondQuest = SUB_QUEST_8;
+                break;
+            default: return;
+        }
+
+        //If the first quest for this Pokémon completed? If not, complete it. If so, complete the second one.
+        if(!QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_GET_COMPLETED,firstQuest)){
+            QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_SET_COMPLETED,firstQuest);
+            return;
+        }else{
+            QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_SET_COMPLETED,secondQuest);
+        }
+    } 
+
+    //Is sub_quest i for BiomeResearch completed? If so, increment questCompetionRate by 1.
+    for (i = 0;i < QUEST_BIOMERESEARCH_SUB_COUNT + 1;i++){
+        if(QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_GET_COMPLETED,i)){
+            questCompetionRate++;
+        }
+    }
+
+    //If questCompetionRate == QUEST_BIOMERESEARCH_SUB_COUNT, set BiomeResearch to Reward status
+    if (questCompetionRate == QUEST_BIOMERESEARCH_SUB_COUNT){
+        QuestMenu_GetSetQuestState(QUEST_BIOMERESEARCH,FLAG_REMOVE_ACTIVE);
+        QuestMenu_GetSetQuestState(QUEST_BIOMERESEARCH,FLAG_SET_REWARD);
+    }
+
 }
 
 void CountDefeatedPacifica(void){
