@@ -24,6 +24,7 @@
 #include "constants/songs.h"
 #include "naming_screen.h"
 #include "random.h"
+#include "overworld.h"
 
 #define VERSION_BANNER_RIGHT_TILEOFFSET 64
 #define VERSION_BANNER_LEFT_X 98
@@ -732,11 +733,17 @@ static void Task_TitleScreenPhase2(u8 taskId)
 // Show Rayquaza silhouette and process main title screen input
 static void Task_TitleScreenPhase3(u8 taskId)
 {
-    if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON)))
+    if ((JOY_NEW(A_BUTTON)) || ((JOY_NEW(START_BUTTON)) && gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_SAVE_BOOT] == GAME_OPTIONS_SAVE_BOOT_TRADITIONAL))
     {
         FadeOutBGM(4);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_WHITEALPHA);
         SetMainCallback2(CB2_GoToMainMenu);
+    }
+    if ((JOY_NEW(START_BUTTON)) && gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_SAVE_BOOT] == GAME_OPTIONS_SAVE_BOOT_CONTINUE)
+    {
+        FadeOutBGM(4);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_WHITEALPHA);
+        SetMainCallback2(CB2_ContinueSavedGame);
     }
     else if (JOY_HELD(CLEAR_SAVE_BUTTON_COMBO) == CLEAR_SAVE_BUTTON_COMBO)
     {

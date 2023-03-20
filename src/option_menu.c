@@ -203,12 +203,20 @@ void CB2_InitOptionMenu(void)
         gMain.state++;
         break;
     case 3:
+        #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
         LoadBgTiles(1, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->tiles, 0x120, 0x1A2);
+        #else
+        LoadBgTiles(1, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, 0x1A2);
+        #endif
         gMain.state++;
         break;
     case 4:
         LoadPalette(sOptionMenuBg_Pal, 0, sizeof(sOptionMenuBg_Pal));
+        #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
         LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE])->pal, 0x70, 0x20);
+        #else
+        LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 0x70, 0x20);
+        #endif
         gMain.state++;
         break;
     case 5:
@@ -241,7 +249,11 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].data[TD_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_SWITCH_STYLE];
         gTasks[taskId].data[TD_SOUND] = gSaveBlock2Ptr->optionsMusic[MUSIC_OPTIONS_SPEAKER];
         gTasks[taskId].data[TD_BUTTONMODE] = gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_BUTTON_MODE];
+        #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
         gTasks[taskId].data[TD_FRAMETYPE] = gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE];
+        #else
+        gTasks[taskId].data[TD_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
+        #endif
 
         TextSpeed_DrawChoices(gTasks[taskId].data[TD_TEXTSPEED]);
         BattleScene_DrawChoices(gTasks[taskId].data[TD_BATTLESCENE]);
@@ -363,7 +375,11 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsBattle[BATTLE_OPTIONS_SWITCH_STYLE] = gTasks[taskId].data[TD_BATTLESTYLE];
     gSaveBlock2Ptr->optionsMusic[MUSIC_OPTIONS_SPEAKER] = gTasks[taskId].data[TD_SOUND];
     gSaveBlock2Ptr->optionsGame[GAME_OPTIONS_BUTTON_MODE] = gTasks[taskId].data[TD_BUTTONMODE];
+    #ifdef SHOW_VISUAL_OPTIONS_FRAME_TYPE
     gSaveBlock2Ptr->optionsVisual[VISUAL_OPTIONS_FRAME_TYPE] = gTasks[taskId].data[TD_FRAMETYPE];
+    #else
+    gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].data[TD_FRAMETYPE];
+    #endif
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
