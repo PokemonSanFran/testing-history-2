@@ -85,7 +85,6 @@ Debug_Script_2::
 	setwildbattle SPECIES_SEVIPER, 1
 	dowildbattle
 	end
-	end
 
 
 Debug_Script_3::

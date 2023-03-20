@@ -70,7 +70,9 @@ void CountDefeatedGlameow(void);
 void CountDefeatedGardenMons(void);
 void CountDefeatedPacifica(void);
 void CountDefeatedBackyard(void);
-void CheckPokemonForBiomeResearch(void);
+void Quest_BiomeResearch_CheckPokemonSpecies(void);
+void Quest_BiomeResearch_MarkSubquestComplete(u8, u8);
+void Quest_BiomeResearch_CountCompletedSubquest(void);
 
 extern struct MultiPartnerMenuPokemon gMultiPartnerParty[MULTI_PARTY_SIZE];
 

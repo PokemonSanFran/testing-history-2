@@ -5165,7 +5165,7 @@ static void HandleEndTurn_BattleWon(void)
     }
     else
     {
-        CheckPokemonForBiomeResearch();
+        Quest_BiomeResearch_CheckPokemonSpecies();
         CountDefeatedBackyard();
         CountDefeatedPacifica();
         CountDefeatedGlameow();
@@ -5264,12 +5264,13 @@ void CountDefeatedGlameow(void){
     VarSet(VAR_DEFEATED_GLAMEOW_COUNT,defeatedGlameowCount);
 }
 
-void CheckPokemonForBiomeResearch(void){
+void Quest_BiomeResearch_CheckPokemonSpecies(void){
 
-    u8 firstQuest = 0, secondQuest = 0, i = 0, questCompetionRate = 0;
+    u8 i = 0, questCompetionRate = 0;
 
     for (i = 0;i < 6;i++)
     {
+        u8 firstQuest = 0, secondQuest = 0;
         s32 enemySpecies = GetMonData(&gEnemyParty[i],MON_DATA_SPECIES);
 
         //Is the quest Biome Research active? If not, quit.
@@ -5287,44 +5288,52 @@ void CheckPokemonForBiomeResearch(void){
             case SPECIES_JYNX:
                 firstQuest = SUB_QUEST_1;
                 secondQuest = SUB_QUEST_2;
-                break;
+                Quest_BiomeResearch_MarkSubquestComplete(firstQuest,secondQuest);
             case SPECIES_BALTOY:
                 firstQuest = SUB_QUEST_3;
                 secondQuest = SUB_QUEST_4;
-                break;
+                Quest_BiomeResearch_MarkSubquestComplete(firstQuest,secondQuest);
             case SPECIES_PIDGEY:
                 firstQuest = SUB_QUEST_5;
                 secondQuest = SUB_QUEST_6;
-                break;
+                Quest_BiomeResearch_MarkSubquestComplete(firstQuest,secondQuest);
             case SPECIES_SEVIPER:
                 firstQuest = SUB_QUEST_7;
                 secondQuest = SUB_QUEST_8;
-                break;
-            default: return;
+                Quest_BiomeResearch_MarkSubquestComplete(firstQuest,secondQuest);
+            default: break;
         }
+    }
+}
 
-        //If the first quest for this Pokémon completed? If not, complete it. If so, complete the second one.
-        if(!QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_GET_COMPLETED,firstQuest)){
-            QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_SET_COMPLETED,firstQuest);
-            return;
-        }else{
-            QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_SET_COMPLETED,secondQuest);
-        }
-    } 
+void Quest_BiomeResearch_MarkSubquestComplete(u8 firstQuest,u8 secondQuest){
+
+    //If the first quest for this Pokémon completed? If not, complete it. If so, complete the second one.
+    if(QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_GET_COMPLETED,firstQuest)){
+        QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_SET_COMPLETED,secondQuest);
+        Quest_BiomeResearch_CountCompletedSubquest();
+    }else{
+        QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_SET_COMPLETED,firstQuest);
+        Quest_BiomeResearch_CountCompletedSubquest();
+    }
+} 
+
+void Quest_BiomeResearch_CountCompletedSubquest(void){
+    u8 i = 0, questCompetionRate = 0;
 
     //Is sub_quest i for BiomeResearch completed? If so, increment questCompetionRate by 1.
-    for (i = 0;i < QUEST_BIOMERESEARCH_SUB_COUNT + 1;i++){
+    for (i = 0;i < QUEST_BIOMERESEARCH_SUB_COUNT;i++){
         if(QuestMenu_GetSetSubquestState(QUEST_BIOMERESEARCH,FLAG_GET_COMPLETED,i)){
             questCompetionRate++;
         }
     }
 
     //If questCompetionRate == QUEST_BIOMERESEARCH_SUB_COUNT, set BiomeResearch to Reward status
+    //questCompetionRate = QUEST_BIOMERESEARCH_SUB_COUNT;
     if (questCompetionRate == QUEST_BIOMERESEARCH_SUB_COUNT){
         QuestMenu_GetSetQuestState(QUEST_BIOMERESEARCH,FLAG_REMOVE_ACTIVE);
         QuestMenu_GetSetQuestState(QUEST_BIOMERESEARCH,FLAG_SET_REWARD);
     }
-
 }
 
 void CountDefeatedPacifica(void){

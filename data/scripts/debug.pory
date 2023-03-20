@@ -94,7 +94,6 @@ script Debug_Script_2{
     setwildbattle(SPECIES_SEVIPER,1)
     dowildbattle
     end
-    end
 }
 
 script Debug_Script_3{
