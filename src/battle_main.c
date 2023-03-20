@@ -5328,6 +5328,8 @@ void Quest_BiomeResearch_CountCompletedSubquest(void){
         }
     }
 
+    gSpecialVar_Result = questCompetionRate;
+
     //If questCompetionRate == QUEST_BIOMERESEARCH_SUB_COUNT, set BiomeResearch to Reward status
     //questCompetionRate = QUEST_BIOMERESEARCH_SUB_COUNT;
     if (questCompetionRate == QUEST_BIOMERESEARCH_SUB_COUNT){

@@ -562,3 +562,4 @@ gSpecials::
     def_special RandomlyBoostPartyMemberFriendship
     def_special CheckPartyHasOneMon
     def_special ConvertChallengeTurnsToRank
+    def_special Quest_BiomeResearch_CountCompletedSubquest

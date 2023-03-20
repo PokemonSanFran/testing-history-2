@@ -60,7 +60,6 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_BIOMERESEARCH
 	setwildbattle SPECIES_JYNX, 1
 	dowildbattle
 	setwildbattle SPECIES_JYNX, 1
@@ -81,9 +80,15 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_BIOMERESEARCH
-	setwildbattle SPECIES_SEVIPER, 1
-	dowildbattle
+	setvar VAR_JASMINE_STATE, BATTLE_1_COMPLETE
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	setflag FLAG_BADGE05_GET
+	setflag FLAG_BADGE06_GET
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_BADGE08_GET
 	end
 
 

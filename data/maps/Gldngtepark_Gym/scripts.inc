@@ -3,10 +3,22 @@ Gldngtepark_Gym_MapScripts::
 	.byte 0
 
 Gldngtepark_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto Gldngtepark_Gym_MapScripts_OnTransition
+	call Gldngtepark_Gym_LeaderVisibility_Script
 	return
 
 
-Gldngtepark_Gym_MapScripts_OnTransition::
+Gldngtepark_Gym_LeaderVisibility_Script::
+	compare VAR_JASMINE_STATE, NO_BADGE
+	goto_if_ne Gldngtepark_Gym_LeaderVisibility_Script_3
+Gldngtepark_Gym_LeaderVisibility_Script_1:
 	return
+
+Gldngtepark_Gym_LeaderVisibility_Script_2:
+	setflag FLAG_TEMP_1
+	goto Gldngtepark_Gym_LeaderVisibility_Script_1
+
+Gldngtepark_Gym_LeaderVisibility_Script_3:
+	compare VAR_JASMINE_STATE, QUEST_2_COMPLETE
+	goto_if_ne Gldngtepark_Gym_LeaderVisibility_Script_2
+	goto Gldngtepark_Gym_LeaderVisibility_Script_1
 

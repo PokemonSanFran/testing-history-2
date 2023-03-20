@@ -1,3 +1,156 @@
-script sayhat{
-    return
+const JASMINE = 3
+const FLAG_HIDE_JASMINE = FLAG_TEMP_1
+
+//gText_Biomeresearch
+//Quest_Biomeresearch
+
+script Quest_Biomeresearch_HideLeader_Script{
+    special(GetNumberOfBadges)
+        if (var(VAR_RESULT) < 7){
+            setflag(FLAG_HIDE_JASMINE)
+        }
+
+    if (var(VAR_JASMINE_STATE) != BATTLE_1_COMPLETE){
+        setflag(FLAG_HIDE_JASMINE)
+    }
+return
 }
+
+script Quest_Biomeresearch_Interact_Script{
+    lock
+        faceplayer
+
+        returnqueststate(QUEST_BIOMERESEARCH)
+
+        switch(var(VAR_RESULT)){
+            case QUEST_MENU_SET_ACTIVE:
+                goto(Quest_Biomeresearch_Active_Dialogue)
+            case QUEST_MENU_SET_REWARD:
+                goto(Quest_Biomeresearch_Reward_Dialogue)
+            default:
+                goto(Quest_Biomeresearch_StartQuest_Dialogue)
+        }
+}
+
+script Quest_Biomeresearch_StartQuest_Dialogue{
+    msgbox(gText_Biomeresearch_Player,,SPEAKER_JASMINE)
+        msgbox(gText_Biomeresearch_IveRecievedAGrant,,SPEAKER_JASMINE)
+        msgbox(gText_Biomeresearch_ICantDelgate,,SPEAKER_JASMINE)
+        msgbox(gText_Biomeresearch_LetMeSee,,SPEAKER_JASMINE)
+        startquest(QUEST_BIOMERESEARCH)
+
+        release
+        end
+}
+
+script Quest_Biomeresearch_ListPokemon_Dialogue{
+    msgbox(gText_Biomeresearch_YourPokedex,,SPEAKER_JASMINE)
+        call(Quest_Biomeresearch_BufferName1_Script)
+        msgbox(gText_Biomeresearch_YouNeedToBattle1,,SPEAKER_JASMINE)
+        call(Quest_Biomeresearch_BufferName2_Script)
+        msgbox(gText_Biomeresearch_YouNeedToBattle2,,SPEAKER_JASMINE)
+        call(Quest_Biomeresearch_BufferName3_Script)
+        msgbox(gText_Biomeresearch_YouNeedToBattle3,,SPEAKER_JASMINE)
+        call(Quest_Biomeresearch_BufferName4_Script)
+        msgbox(gText_Biomeresearch_YouNeedToBattle4,,SPEAKER_JASMINE)
+        return
+}
+
+script Quest_Biomeresearch_BufferName1_Script{
+    bufferspeciesname(STR_VAR_1,SPECIES_JYNX)
+        return
+}
+script Quest_Biomeresearch_BufferName2_Script{
+    bufferspeciesname(STR_VAR_1,SPECIES_BALTOY)
+        return
+}
+script Quest_Biomeresearch_BufferName3_Script{
+    bufferspeciesname(STR_VAR_1,SPECIES_PIDGEY)
+        return
+}
+script Quest_Biomeresearch_BufferName4_Script{
+    bufferspeciesname(STR_VAR_1,SPECIES_SEVIPER)
+        return
+}
+
+script Quest_Biomeresearch_Active_Dialogue{
+        call(Quest_Biomeresearch_ListPokemon_Dialogue)
+        special(Quest_BiomeResearch_CountCompletedSubquest)
+
+        switch(var(VAR_RESULT)){
+            case 0: msgbox(gText_Biomeresearch_YouCanUse,,SPEAKER_JASMINE)
+            case 1:
+            case 2:
+            case 3: msgbox(gText_Biomeresearch_GladTheDataLink,,SPEAKER_JASMINE)
+            case 4:
+            case 5:
+            case 6: msgbox(gText_Biomeresearch_JustMissing,,SPEAKER_JASMINE)
+            case 7: 
+        }
+    closemessage
+        release
+        end
+}
+
+script Quest_Biomeresearch_Reward_Dialogue{
+    msgbox(gText_Biomeresearch_GotItAll,,SPEAKER_JASMINE)
+        giveitem(ITEM_TM44)
+        msgbox(gText_Biomeresearch_NowNorth)
+closemessage
+        applymovement(JASMINE,Quest_Biomeresearch_LeaveArea_Movement)
+        setvar(VAR_JASMINE_STATE,QUEST_1_COMPLETE)
+        completequest(QUEST_BIOMERESEARCH)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(JASMINE)
+        fadescreen(FADE_FROM_BLACK)
+        release
+        end
+}
+
+movement Quest_Biomeresearch_LeaveArea_Movement{
+    walk_down * 6
+        step_end
+}
+text gText_Biomeresearch_Player{
+    format("{PLAYER}! Interesting timing...")
+}
+text gText_Biomeresearch_IveRecievedAGrant{
+    format("I've received a government grant to expand the capabilities of the Gym! I can upgrade all the existing habitats and hopefully take on even more displaced species.")
+}
+text gText_Biomeresearch_ICantDelgate{
+    format("With this new grant, I have a lot of work to do, but I can't delegate all a lot of it. But as for the grunt work...")
+}
+text gText_Biomeresearch_LetMeSee{
+    format("Let me see your phone. Oh fantastic, it's already enabled!")
+}
+text gText_Biomeresearch_YourPokedex{
+    format("Your Pokédex app actually records battle metadata and feeds it back to the YCombinator servers. I've made a quick change so that I can get a copy of that data too. I need some behavior data on some Pokémon, so you need to go battle...")
+}
+text gText_Biomeresearch_YouNeedToBattle1{
+    format("{STR_VAR_1}, ")
+}
+text gText_Biomeresearch_YouNeedToBattle2{
+    format("{STR_VAR_1}, ")
+}
+text gText_Biomeresearch_YouNeedToBattle3{
+    format("{STR_VAR_1}, ")
+}
+text gText_Biomeresearch_YouNeedToBattle4{
+    format("and {STR_VAR_1}. And to be sure, please battle two of each.")
+}
+text gText_Biomeresearch_GotItAll{
+    format("I got the data for each habitat. Thank you so much! Take this.")
+}
+text gText_Biomeresearch_YouCanUse{
+    format("You can use your Pokédex to see the locations for those Pokémon. Should be easy, right?")
+}
+text gText_Biomeresearch_GladTheDataLink{
+    format("Glad the data link is working...")
+}
+text gText_Biomeresearch_JustMissing{
+    format("Just missing a few more!")
+}
+text gText_Biomeresearch_NowNorth{
+    format("And now I need to head north!")
+}
+

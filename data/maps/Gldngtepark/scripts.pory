@@ -1,8 +1,12 @@
 mapscripts Gldngtepark_MapScripts {
 
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_Biomeresearch_HideLeader_Script)
+    }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE, 21: TheStrikeStrikesBack_PhoneCall_Dialogue
     ]
+
 }
 
 text gText_Gldgtepark_PlaceholderOaklandFan{

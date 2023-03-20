@@ -1,8 +1,15 @@
+const JASMINE = 1
+const FLAG_HIDE_JASMINE = FLAG_TEMP_1
+
 mapscripts Gldngtepark_Gym_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(Gldngtepark_Gym_MapScripts_OnTransition)
+        call(Gldngtepark_Gym_LeaderVisibility_Script)
     }
 }
 
-script Gldngtepark_Gym_MapScripts_OnTransition {
+script Gldngtepark_Gym_LeaderVisibility_Script{
+    if (var(VAR_JASMINE_STATE) != NO_BADGE && var(VAR_JASMINE_STATE) != QUEST_2_COMPLETE){
+        setflag(FLAG_HIDE_JASMINE)
+    }
+    return
 }
