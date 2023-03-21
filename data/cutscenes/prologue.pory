@@ -1,0 +1,88 @@
+//gText_Prologue_
+//Prologue_
+    
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const DRASNA = 1
+
+//PSF TODO move this to a C script to also gives them a bunch of items and maybe all the TMs
+
+script Prologue_SetUp_Script{
+    setvar(VAR_PROLOGUE_STATE,GIVEN_POKEMON)
+    givecustommon(SPECIES_CALYREX_ICE_RIDER,100,ITEM_WHITE_HERB,ITEM_CHERISH_BALL,NATURE_ADAMANT,0,252,252,4,0,0,0,31,31,31,31,31,31,MOVE_GLACIAL_LANCE,MOVE_HIGH_HORSEPOWER,MOVE_FLAMETHROWER,MOVE_SPACIAL_REND)
+    end
+}
+
+script Prologue_InteractDrasna_Script{
+    lock
+    msgbox(gText_Prologue_YouMadeIt,,SPEAKER_DRASNA)
+    msgbox(gText_Prologue_WeveBeenWatching,,SPEAKER_DRASNA)
+    msgbox(gText_Prologue_YoureGoingToBe,,SPEAKER_DRASNA)
+    setvar(VAR_PROLOGUE_STATE,LOST_TO_DRASNA)
+    closemessage
+    call(Common_EventScript_SaveGame)
+    trainerbattle_no_intro(TRAINER_DRASNA_PROLOGUE,gText_Prologue_Fantastic)
+    goto(Prologue_PostBattle_Script)
+    release
+    end
+}
+
+script Prologue_MoveEliteRoomObjects_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+    if (var(VAR_TEMP_0) != 6 || (var(VAR_TEMP_1) != 6)){
+        fadescreen(FADE_TO_BLACK)
+        setobjectxy(PLAYER,6,6)
+        TeleportCamera(6,6)
+        applymovement(PLAYER,Common_Movement_FaceUp)
+        applymovement(DRASNA,Common_Movement_FaceDown)
+        fadescreen(FADE_FROM_BLACK)
+    }
+    return
+}
+
+script Prologue_PostBattle_Script{
+    lock
+    playse(SE_TRUCK_DOOR)
+    call(Oaklandcoliseum_Arena_OpenExit_Script)
+    waitse
+    playbgm(MUS_HALL_OF_FAME_ROOM,TRUE)
+    msgbox(gText_Prologue_AdamYouAre,,SPEAKER_DRASNA,TAIL_SHOUT,EMOTE_HAPPY)
+    msgbox(gText_Prologue_AndPerhaps,,SPEAKER_DRASNA,TAIL_WHISPER)
+    msgbox(gText_Prologue_WearThis,,SPEAKER_DRASNA,,EMOTE_HAPPY)
+    closemessage
+    applymovement(DRASNA,Prologue_LeaveChamber_Movement)
+    applymovement(PLAYER,Common_Movement_WalkUp4)
+    waitmovement(DRASNA)
+    removeobject(DRASNA)
+    playse(SE_EXIT)
+    warpdoor(MAP_LITTLEROOT_TOWN,0)
+    release
+    end
+}
+
+text gText_Prologue_YouMadeIt{
+    format("")
+}
+text gText_Prologue_WeveBeenWatching{
+    format("")
+}
+text gText_Prologue_YoureGoingToBe{
+    format("")
+}
+text gText_Prologue_Fantastic{
+    format("")
+}
+text gText_Prologue_AdamYouAre{
+    format("Adam! You are now the Sanfran Pokémon League Champion!")
+}
+text gText_Prologue_AndPerhaps{
+    format("And perhaps, you will be Sanfran's last true Champion.")
+}
+text gText_Prologue_WearThis{
+    format("Wear this title as much as I did when I earned it! And now, for the Hall of Fame!")
+}
+
+movement Prologue_LeaveChamber_Movement{
+    walk_up * 3
+    step_end
+}

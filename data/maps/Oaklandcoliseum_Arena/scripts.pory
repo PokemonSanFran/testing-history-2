@@ -1,0 +1,65 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+mapscripts Oaklandcoliseum_Arena_MapScripts{
+    MAP_SCRIPT_ON_FRAME_TABLE[
+        VAR_PROLOGUE_STATE , GIVEN_POKEMON: Oaklandcoliseum_Arena_WalkInCloseDoor_Script
+    ]
+    MAP_SCRIPT_ON_LOAD{
+        call(Oaklandcoliseum_Arena_CloseDoorsOnLoad_Script)
+    }
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[
+        VAR_TEMP_1, 0: Oaklandcoliseum_Arena_PlayerTurnNorth_Script
+    ]
+}
+
+script Oaklandcoliseum_Arena_PlayerTurnNorth_Script{
+    turnobject(PLAYER,DIR_NORTH)
+    end
+}
+
+script Oaklandcoliseum_Arena_WalkInCloseDoor_Script{
+    lockall
+    setrespawn(HEAL_LOCATION_OAKLANDCOLISEUM_ARENA)
+    applymovement(PLAYER,Common_Movement_WalkUp6)
+    waitmovement(PLAYER)
+    playse(SE_TRUCK_DOOR)
+    call(Oaklandcoliseum_Arena_CloseDoors_Script)
+    setvar(VAR_PROLOGUE_STATE,WALKED_IN_CHAMBER)
+    releaseall
+    end
+}
+
+script Oaklandcoliseum_Arena_CloseDoorsOnLoad_Script{
+    if (var(VAR_PROLOGUE_STATE) > GIVEN_POKEMON){
+        call(Oaklandcoliseum_Arena_CloseTopDoors_Script)
+        call(Oaklandcoliseum_Arena_CloseBottomDoors_Script)
+    }
+}
+
+script Oaklandcoliseum_Arena_CloseDoors_Script{
+    call(Oaklandcoliseum_Arena_CloseTopDoors_Script)
+    call(Oaklandcoliseum_Arena_CloseBottomDoors_Script)
+    return
+}
+
+script Oaklandcoliseum_Arena_OpenExit_Script{
+    setmetatile(6,2,METATILE_EliteFour_OpenDoor_Opening,FALSE)
+    special(DrawWholeMapView)
+    return
+}
+
+script Oaklandcoliseum_Arena_CloseTopDoors_Script{
+    setmetatile(5,12,METATILE_EliteFour_EntryDoor_ClosedTop,TRUE)
+    setmetatile(6,12,METATILE_EliteFour_EntryDoor_ClosedTop,TRUE)
+    setmetatile(7,12,METATILE_EliteFour_EntryDoor_ClosedTop,TRUE)
+    special(DrawWholeMapView)
+    return
+}
+
+script Oaklandcoliseum_Arena_CloseBottomDoors_Script{
+    setmetatile(5,13,METATILE_EliteFour_EntryDoor_ClosedBottom,TRUE)
+    setmetatile(6,13,METATILE_EliteFour_EntryDoor_ClosedBottom,TRUE)
+    setmetatile(7,13,METATILE_EliteFour_EntryDoor_ClosedBottom,TRUE)
+    special(DrawWholeMapView)
+    return
+}

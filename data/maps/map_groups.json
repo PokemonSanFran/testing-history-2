@@ -155,7 +155,9 @@
     "SOMA_Pokemoncenter_1F",
     "Berkeley_Pokemoncenter_1F",
     "Haightashbury_Pokemoncenter_1F",
-    "Paintedladies_Entrance"
+    "Paintedladies_Entrance",
+    "Oaklandcoliseum_Hallway",
+    "Oaklandcoliseum_Arena"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

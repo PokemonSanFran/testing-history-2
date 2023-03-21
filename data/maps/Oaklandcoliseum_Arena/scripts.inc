@@ -1,0 +1,74 @@
+Oaklandcoliseum_Arena_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, Oaklandcoliseum_Arena_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Oaklandcoliseum_Arena_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Oaklandcoliseum_Arena_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+	.byte 0
+
+Oaklandcoliseum_Arena_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call Oaklandcoliseum_Arena_CloseDoorsOnLoad_Script
+	return
+
+Oaklandcoliseum_Arena_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_PROLOGUE_STATE, GIVEN_POKEMON, Oaklandcoliseum_Arena_WalkInCloseDoor_Script
+	.2byte 0
+
+Oaklandcoliseum_Arena_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
+	map_script_2 VAR_TEMP_1, 0, Oaklandcoliseum_Arena_PlayerTurnNorth_Script
+	.2byte 0
+
+
+Oaklandcoliseum_Arena_PlayerTurnNorth_Script::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	end
+
+
+Oaklandcoliseum_Arena_WalkInCloseDoor_Script::
+	lockall
+	setrespawn HEAL_LOCATION_OAKLANDCOLISEUM_ARENA
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp6
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_TRUCK_DOOR
+	call Oaklandcoliseum_Arena_CloseDoors_Script
+	setvar VAR_PROLOGUE_STATE, WALKED_IN_CHAMBER
+	releaseall
+	end
+
+
+Oaklandcoliseum_Arena_CloseDoorsOnLoad_Script::
+	compare VAR_PROLOGUE_STATE, GIVEN_POKEMON
+	goto_if_gt Oaklandcoliseum_Arena_CloseDoorsOnLoad_Script_1
+	return
+
+Oaklandcoliseum_Arena_CloseDoorsOnLoad_Script_1:
+	call Oaklandcoliseum_Arena_CloseTopDoors_Script
+	call Oaklandcoliseum_Arena_CloseBottomDoors_Script
+	return
+
+
+Oaklandcoliseum_Arena_CloseDoors_Script::
+	call Oaklandcoliseum_Arena_CloseTopDoors_Script
+	call Oaklandcoliseum_Arena_CloseBottomDoors_Script
+	return
+
+
+Oaklandcoliseum_Arena_OpenExit_Script::
+	setmetatile 6, 2, METATILE_EliteFour_OpenDoor_Opening, FALSE
+	special DrawWholeMapView
+	return
+
+
+Oaklandcoliseum_Arena_CloseTopDoors_Script::
+	setmetatile 5, 12, METATILE_EliteFour_EntryDoor_ClosedTop, TRUE
+	setmetatile 6, 12, METATILE_EliteFour_EntryDoor_ClosedTop, TRUE
+	setmetatile 7, 12, METATILE_EliteFour_EntryDoor_ClosedTop, TRUE
+	special DrawWholeMapView
+	return
+
+
+Oaklandcoliseum_Arena_CloseBottomDoors_Script::
+	setmetatile 5, 13, METATILE_EliteFour_EntryDoor_ClosedBottom, TRUE
+	setmetatile 6, 13, METATILE_EliteFour_EntryDoor_ClosedBottom, TRUE
+	setmetatile 7, 13, METATILE_EliteFour_EntryDoor_ClosedBottom, TRUE
+	special DrawWholeMapView
+	return
+

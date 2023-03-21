@@ -60,35 +60,11 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	setwildbattle SPECIES_JYNX, 1
-	dowildbattle
-	setwildbattle SPECIES_JYNX, 1
-	dowildbattle
-	setwildbattle SPECIES_BALTOY, 1
-	dowildbattle
-	setwildbattle SPECIES_BALTOY, 1
-	dowildbattle
-	setwildbattle SPECIES_PIDGEY, 1
-	dowildbattle
-	setwildbattle SPECIES_PIDGEY, 1
-	dowildbattle
-	setwildbattle SPECIES_SEVIPER, 1
-	dowildbattle
-	setwildbattle SPECIES_SEVIPER, 1
-	dowildbattle
+	warpsilent MAP_OAKLANDCOLISEUM_HALLWAY, 0
 	end
 
 
 Debug_Script_2::
-	setvar VAR_JASMINE_STATE, BATTLE_1_COMPLETE
-	setflag FLAG_BADGE01_GET
-	setflag FLAG_BADGE02_GET
-	setflag FLAG_BADGE03_GET
-	setflag FLAG_BADGE04_GET
-	setflag FLAG_BADGE05_GET
-	setflag FLAG_BADGE06_GET
-	setflag FLAG_BADGE07_GET
-	setflag FLAG_BADGE08_GET
 	end
 
 

@@ -1131,6 +1131,7 @@ Script_RemoveTint::
 
 .include "data/scripts/twitter.inc"
 ##CUTSCENES
+.include "data/cutscenes/prologue.inc"
 .include "data/cutscenes/accept_letter.inc"
 .include "data/cutscenes/ThereCanOnlyBeOne.inc"
 .include "data/cutscenes/ImProbablyBetterThanYou.inc"
@@ -1483,3 +1484,7 @@ Script_RemoveTint::
 	.include "data/maps/Haightashbury_Pokemoncenter_1F/scripts.inc"
 
 	.include "data/maps/Paintedladies_Entrance/scripts.inc"
+
+	.include "data/maps/Oaklandcoliseum_Hallway/scripts.inc"
+
+	.include "data/maps/Oaklandcoliseum_Arena/scripts.inc"
