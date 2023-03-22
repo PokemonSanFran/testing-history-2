@@ -508,6 +508,26 @@ extern const u8 gText_Quest_RestoreHaightashbury_Desc[];
 extern const u8 gText_Quest_RestoreHaightashbury_DoneDesc[];
 extern const u8 gText_Quest_RestoreHaightashbury_Map[];
 
+extern const u8 gText_Quest_RedoMugging_Name[];
+extern const u8 gText_Quest_RedoMugging_Desc[];
+extern const u8 gText_Quest_RedoMugging_DoneDesc[];
+extern const u8 gText_Quest_RedoMugging_Map[];
+
+extern const u8 gText_Quest_PandaPride_Name[];
+extern const u8 gText_Quest_PandaPride_Desc[];
+extern const u8 gText_Quest_PandaPride_DoneDesc[];
+extern const u8 gText_Quest_PandaPride_Map[];
+
+extern const u8 gText_Quest_StealTheAxe_Name[];
+extern const u8 gText_Quest_StealTheAxe_Desc[];
+extern const u8 gText_Quest_StealTheAxe_DoneDesc[];
+extern const u8 gText_Quest_StealTheAxe_Map[];
+
+extern const u8 gText_Quest_BecomeChampion_Name[];
+extern const u8 gText_Quest_BecomeChampion_Desc[];
+extern const u8 gText_Quest_BecomeChampion_DoneDesc[];
+extern const u8 gText_Quest_BecomeChampion_Map[];
+
 //subquests
 extern const u8 gText_Quest_HauntABuilding_Sub1_Name[];
 extern const u8 gText_Quest_HauntABuilding_Sub1_Desc[];
@@ -1252,21 +1272,6 @@ extern const u8 gText_Quest_RestoreTreasureisland_Sub4_Name[];
 extern const u8 gText_Quest_RestoreTreasureisland_Sub4_Desc[];
 extern const u8 gText_Quest_RestoreTreasureisland_Sub4_Map[];
 
-extern const u8 gText_Quest_RedoMugging_Name[];
-extern const u8 gText_Quest_RedoMugging_Desc[];
-extern const u8 gText_Quest_RedoMugging_DoneDesc[];
-extern const u8 gText_Quest_RedoMugging_Map[];
-
-extern const u8 gText_Quest_PandaPride_Name[];
-extern const u8 gText_Quest_PandaPride_Desc[];
-extern const u8 gText_Quest_PandaPride_DoneDesc[];
-extern const u8 gText_Quest_PandaPride_Map[];
-
-extern const u8 gText_Quest_StealTheAxe_Name[];
-extern const u8 gText_Quest_StealTheAxe_Desc[];
-extern const u8 gText_Quest_StealTheAxe_DoneDesc[];
-extern const u8 gText_Quest_StealTheAxe_Map[];
-
 extern const u8 gText_Quest_Recruitlocalartists_Sub1_Name[];
 extern const u8 gText_Quest_Recruitlocalartists_Sub1_Desc[];
 extern const u8 gText_Quest_Recruitlocalartists_Sub1_Map[];
@@ -1276,6 +1281,26 @@ extern const u8 gText_Quest_Recruitlocalartists_Sub2_Map[];
 extern const u8 gText_Quest_Recruitlocalartists_Sub3_Name[];
 extern const u8 gText_Quest_Recruitlocalartists_Sub3_Desc[];
 extern const u8 gText_Quest_Recruitlocalartists_Sub3_Map[];
+
+extern const u8 gText_Quest_BecomeChampion_Sub1_Name[];
+extern const u8 gText_Quest_BecomeChampion_Sub1_Desc[];
+extern const u8 gText_Quest_BecomeChampion_Sub1_DoneDesc[];
+extern const u8 gText_Quest_BecomeChampion_Sub1_Map[];
+
+extern const u8 gText_Quest_BecomeChampion_Sub2_Name[];
+extern const u8 gText_Quest_BecomeChampion_Sub2_Desc[];
+extern const u8 gText_Quest_BecomeChampion_Sub2_DoneDesc[];
+extern const u8 gText_Quest_BecomeChampion_Sub2_Map[];
+
+extern const u8 gText_Quest_BecomeChampion_Sub3_Name[];
+extern const u8 gText_Quest_BecomeChampion_Sub3_Desc[];
+extern const u8 gText_Quest_BecomeChampion_Sub3_DoneDesc[];
+extern const u8 gText_Quest_BecomeChampion_Sub3_Map[];
+
+extern const u8 gText_Quest_BecomeChampion_Sub4_Name[];
+extern const u8 gText_Quest_BecomeChampion_Sub4_Desc[];
+extern const u8 gText_Quest_BecomeChampion_Sub4_DoneDesc[];
+extern const u8 gText_Quest_BecomeChampion_Sub4_Map[];
 
 //quest flavor
 extern const u8 gText_PlayersAdventure_Flavor0[];

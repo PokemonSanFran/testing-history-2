@@ -2385,6 +2385,45 @@ static const struct SubQuest
             sText_Caught
 	),
 };
+static const struct SubQuest
+	sBecomeChampion_Sub[QUEST_BECOMECHAMPION_SUB_COUNT] = {
+	sub_quest(
+	        234,
+	        gText_Quest_BecomeChampion_Sub1_Name,
+	        gText_Quest_BecomeChampion_Sub1_Desc,
+	        gText_Quest_BecomeChampion_Sub1_Map,
+            OBJ_EVENT_GFX_SIDNEY,
+            OBJECT,
+            sText_Defeated
+	),
+	sub_quest(
+	        235,
+	        gText_Quest_BecomeChampion_Sub2_Name,
+	        gText_Quest_BecomeChampion_Sub2_Desc,
+	        gText_Quest_BecomeChampion_Sub2_Map,
+            OBJ_EVENT_GFX_GLACIA,
+            OBJECT,
+            sText_Defeated
+	),
+	sub_quest(
+	        236,
+	        gText_Quest_BecomeChampion_Sub3_Name,
+	        gText_Quest_BecomeChampion_Sub3_Desc,
+	        gText_Quest_BecomeChampion_Sub3_Map,
+            OBJ_EVENT_GFX_DRAKE,
+            OBJECT,
+            sText_Defeated
+	),
+	sub_quest(
+	        237,
+	        gText_Quest_BecomeChampion_Sub4_Name,
+	        gText_Quest_BecomeChampion_Sub4_Desc,
+	        gText_Quest_BecomeChampion_Sub4_Map,
+            OBJ_EVENT_GFX_PHOEBE,
+            OBJECT,
+            sText_Defeated
+	),
+};
 
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -3428,6 +3467,16 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJECT,
 	        NULL,
 	        0
+	),
+	side_quest(
+	        gText_Quest_BecomeChampion_Name,
+	        gText_Quest_BecomeChampion_Desc,
+	        gText_Quest_BecomeChampion_DoneDesc,
+	        gText_Quest_BecomeChampion_Map,
+	        OBJ_EVENT_GFX_PHOEBE,
+	        OBJECT,
+            sBecomeChampion_Sub,
+	        4
 	)
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////

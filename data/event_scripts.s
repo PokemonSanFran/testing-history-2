@@ -1488,3 +1488,5 @@ Script_RemoveTint::
 	.include "data/maps/Oaklandcoliseum_Hallway/scripts.inc"
 
 	.include "data/maps/Oaklandcoliseum_Arena/scripts.inc"
+
+	.include "data/maps/Oaklandcoliseum_Hall/scripts.inc"

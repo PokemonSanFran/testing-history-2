@@ -3,6 +3,7 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 mapscripts Oaklandcoliseum_Arena_MapScripts{
     MAP_SCRIPT_ON_FRAME_TABLE[
         VAR_PROLOGUE_STATE , GIVEN_POKEMON: Oaklandcoliseum_Arena_WalkInCloseDoor_Script
+        VAR_PROLOGUE_STATE,LOST_TO_DRASNA: Prologue_LostToDrasna_Script
     ]
     MAP_SCRIPT_ON_LOAD{
         call(Oaklandcoliseum_Arena_CloseDoorsOnLoad_Script)

@@ -1,0 +1,206 @@
+{
+  "id": "MAP_OAKLANDCOLISEUM_HALL",
+  "name": "Oaklandcoliseum_Hall",
+  "layout": "LAYOUT_OAKLANDCOLISEUM_HALL",
+  "music": "MUS_LILYCOVE_MUSEUM",
+  "region_map_section": "MAPSEC_OAKLANDCOLISEUM",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PHOEBE",
+      "x": 9,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Prologue_Drasna_Dialogue",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SIDNEY",
+      "x": 2,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Prologue_Malva_Dialogue",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GLACIA",
+      "x": 2,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Prologue_Siebold_Dialogue",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DRAKE",
+      "x": 9,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 14,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Prologue_Koga_Dialogue",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NOLAND",
+      "x": 14,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Prologue_Lenora_Dialogue",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LUCY",
+      "x": 15,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Prologue_Cilan_Dialogue",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
+      "x": 5,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Prologue_Oak_Dialogue",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "x": 8,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Prologue_BeginAdventure_Dialogue",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_PROLOGUE_STATE",
+      "var_value": "5",
+      "script": "Prologue_Wikstrom_Speech_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_PROLOGUE_STATE",
+      "var_value": "5",
+      "script": "Prologue_Wikstrom_Speech_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_PROLOGUE_STATE",
+      "var_value": "5",
+      "script": "Prologue_Wikstrom_Speech_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_PROLOGUE_STATE",
+      "var_value": "5",
+      "script": "Prologue_Wikstrom_Speech_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_PROLOGUE_STATE",
+      "var_value": "5",
+      "script": "Prologue_Wikstrom_Speech_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_PROLOGUE_STATE",
+      "var_value": "5",
+      "script": "Prologue_Wikstrom_Speech_Dialogue"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_PROLOGUE_STATE",
+      "var_value": "5",
+      "script": "Prologue_Wikstrom_Speech_Dialogue"
+    }
+  ],
+  "bg_events": [
+
+  ]
+}

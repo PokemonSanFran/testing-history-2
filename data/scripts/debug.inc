@@ -60,7 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_OAKLANDCOLISEUM_HALLWAY, 0
+	warpsilent MAP_OAKLANDCOLISEUM_HALLWAY, 5, 12
 	end
 
 

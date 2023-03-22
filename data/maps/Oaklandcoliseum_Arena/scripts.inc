@@ -10,6 +10,7 @@ Oaklandcoliseum_Arena_MapScripts_MAP_SCRIPT_ON_LOAD:
 
 Oaklandcoliseum_Arena_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_PROLOGUE_STATE, GIVEN_POKEMON, Oaklandcoliseum_Arena_WalkInCloseDoor_Script
+	map_script_2 VAR_PROLOGUE_STATE, LOST_TO_DRASNA, Prologue_LostToDrasna_Script
 	.2byte 0
 
 Oaklandcoliseum_Arena_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:

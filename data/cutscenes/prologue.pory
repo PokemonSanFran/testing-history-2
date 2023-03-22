@@ -1,76 +1,313 @@
 //gText_Prologue_
 //Prologue_
-    
+
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const DRASNA = 1
+const MALVA = 2
+const SIEBOLD = 3
+const WIKSTROM = 4
+const KOGA = 5
+const LENORA = 6
+const CILAN = 7
+const OAK = 8
+const GUARD = 9
 
 //PSF TODO move this to a C script to also gives them a bunch of items and maybe all the TMs
 
 script Prologue_SetUp_Script{
     setvar(VAR_PROLOGUE_STATE,GIVEN_POKEMON)
-    givecustommon(SPECIES_CALYREX_ICE_RIDER,100,ITEM_WHITE_HERB,ITEM_CHERISH_BALL,NATURE_ADAMANT,0,252,252,4,0,0,0,31,31,31,31,31,31,MOVE_GLACIAL_LANCE,MOVE_HIGH_HORSEPOWER,MOVE_FLAMETHROWER,MOVE_SPACIAL_REND)
+        call(Prologue_IntroTime_Dialogue)
+        startquest(QUEST_BECOMECHAMPION)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BECOMECHAMPION,SUB_QUEST_1)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BECOMECHAMPION,SUB_QUEST_2)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BECOMECHAMPION,SUB_QUEST_3)
+        givecustommon(SPECIES_CALYREX_ICE_RIDER,100,ITEM_WHITE_HERB,ITEM_CHERISH_BALL,NATURE_ADAMANT,0,252,252,4,0,0,0,31,31,31,31,31,31,MOVE_GLACIAL_LANCE,MOVE_HIGH_HORSEPOWER,MOVE_FLAMETHROWER,MOVE_SPACIAL_REND)
+        end
+}
+
+script Prologue_LostToDrasna_Script{
+    setvar(VAR_PROLOGUE_STATE,WALKED_IN_CHAMBER)
+    msgbox(gText_Prologue_HelpModal)
+    closemessage
+    release
     end
 }
 
 script Prologue_InteractDrasna_Script{
     lock
-    msgbox(gText_Prologue_YouMadeIt,,SPEAKER_DRASNA)
-    msgbox(gText_Prologue_WeveBeenWatching,,SPEAKER_DRASNA)
-    msgbox(gText_Prologue_YoureGoingToBe,,SPEAKER_DRASNA)
-    setvar(VAR_PROLOGUE_STATE,LOST_TO_DRASNA)
-    closemessage
-    call(Common_EventScript_SaveGame)
-    trainerbattle_no_intro(TRAINER_DRASNA_PROLOGUE,gText_Prologue_Fantastic)
-    goto(Prologue_PostBattle_Script)
-    release
-    end
+        msgbox(gText_Prologue_YouMadeIt,MSGBOX_NPC,SPEAKER_DRASNA)
+        msgbox(gText_Prologue_WeveBeenWatching,,SPEAKER_DRASNA)
+        msgbox(gText_Prologue_YoureGoingToBe,,SPEAKER_DRASNA)
+        closemessage
+        call(Common_EventScript_SaveGame)
+        setvar(VAR_PROLOGUE_STATE,LOST_TO_DRASNA)
+        trainerbattle_no_intro(TRAINER_DRASNA_PROLOGUE,gText_Prologue_Fantastic)
+        goto(Prologue_PostBattle_Script)
+        release
+        end
 }
 
 script Prologue_MoveEliteRoomObjects_Script{
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
-    if (var(VAR_TEMP_0) != 6 || (var(VAR_TEMP_1) != 6)){
-        fadescreen(FADE_TO_BLACK)
-        setobjectxy(PLAYER,6,6)
-        TeleportCamera(6,6)
-        applymovement(PLAYER,Common_Movement_FaceUp)
-        applymovement(DRASNA,Common_Movement_FaceDown)
-        fadescreen(FADE_FROM_BLACK)
-    }
+        if (var(VAR_TEMP_0) != 6 || (var(VAR_TEMP_1) != 6)){
+            fadescreen(FADE_TO_BLACK)
+                setobjectxy(PLAYER,6,6)
+                TeleportCamera(6,6)
+                applymovement(PLAYER,Common_Movement_FaceUp)
+                applymovement(DRASNA,Common_Movement_FaceDown)
+                fadescreen(FADE_FROM_BLACK)
+        }
     return
 }
 
 script Prologue_PostBattle_Script{
     lock
-    playse(SE_TRUCK_DOOR)
-    call(Oaklandcoliseum_Arena_OpenExit_Script)
-    waitse
-    playbgm(MUS_HALL_OF_FAME_ROOM,TRUE)
-    msgbox(gText_Prologue_AdamYouAre,,SPEAKER_DRASNA,TAIL_SHOUT,EMOTE_HAPPY)
-    msgbox(gText_Prologue_AndPerhaps,,SPEAKER_DRASNA,TAIL_WHISPER)
-    msgbox(gText_Prologue_WearThis,,SPEAKER_DRASNA,,EMOTE_HAPPY)
+        setvar(VAR_PROLOGUE_STATE,DEFEATED_DRASNA)
+        call(Prologue_MoveEliteRoomObjects_Script)
+        delay(16)
+        playse(SE_TRUCK_DOOR)
+        call(Oaklandcoliseum_Arena_OpenExit_Script)
+        waitse
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BECOMECHAMPION,SUB_QUEST_4)
+        completequest(QUEST_BECOMECHAMPION)
+        playbgm(MUS_HALL_OF_FAME_ROOM,TRUE)
+        msgbox(gText_Prologue_AdamYouAre,,SPEAKER_DRASNA,TAIL_SHOUT,EMOTE_HAPPY)
+        msgbox(gText_Prologue_AndPerhaps,,SPEAKER_DRASNA,TAIL_WHISPER)
+        msgbox(gText_Prologue_WearThis,,SPEAKER_DRASNA,,EMOTE_HAPPY)
+        closemessage
+        applymovement(DRASNA,Prologue_LeaveChamber_Movement)
+        applymovement(PLAYER,Common_Movement_WalkUp4)
+        waitmovement(DRASNA)
+        removeobject(DRASNA)
+        playse(SE_EXIT)
+        warpdoor(MAP_OAKLANDCOLISEUM_HALL,9,9)
+        release
+        end
+}
+
+script Prologue_PostWarp_Hall_Dialgoue{
+        setvar(VAR_PROLOGUE_STATE,WALK_INTO_HALL)
+        setrespawn(HEAL_LOCATION_OAKLANDCOLISEUM_HALL)
+        applymovement(PLAYER,Common_Movement_WalkUp)
+        waitmovement(PLAYER)
+        applymovement(GUARD,Prologue_BlockDoor_Movement)
+        setobjectxyperm(GUARD,9,9)
+        lock
+        applymovement(DRASNA,Common_Movement_FaceLeft)
+        msgbox(gText_Prolouge_ItsNotAFull,,SPEAKER_DRASNA)
+        closemessage
+        applymovement(DRASNA,Common_Movement_FaceDown)
+        msgbox(gText_Prologue_WikstromHasA,,SPEAKER_DRASNA)
+        closemessage
+        applymovement(DRASNA,Prologue_Drasna_WalkIntoPosition_Movement)
+        waitmovement(DRASNA)
+        release
+        end
+}
+
+script Prologue_Wikstrom_Speech_Dialogue{
+    lock
+        setvar(VAR_PROLOGUE_STATE,WIKSTROM_ANNOUNCE)
+        call(Prologue_SetUpSeechCrowd_Script)
+        msgbox(gText_Prologue_ThankYouAll,,SPEAKER_WIKSTROM)
+        msgbox(gText_Prologue_FirstOfCourse,,SPEAKER_WIKSTROM)
+        msgbox(gText_Prologue_IRegretToInform,,SPEAKER_WIKSTROM)
+        closemessage
+        call(Prologue_ExclaimCrowd_Script)
+        msgbox(gText_Prologue_IWillRetireAnd,,SPEAKER_WIKSTROM)
+        closemessage
+        applymovement(WIKSTROM,Common_Movement_FaceRight)
+        msgbox(gText_Prologue_ICanSoClearlySee,,SPEAKER_WIKSTROM)
+        closemessage
+        applymovement(WIKSTROM,Common_Movement_FaceLeft)
+        msgbox(gText_Prologue_AndIFearWeAreFighting,,SPEAKER_WIKSTROM)
+        closemessage
+        applymovement(WIKSTROM,Common_Movement_FaceDown)
+        msgbox(gText_Prologue_GoodLuckToAll,,SPEAKER_WIKSTROM)
+        closemessage
+        applymovement(WIKSTROM,Prologue_Leaveroom_Movement)
+        delay(30)
+        fadescreen(FADE_TO_BLACK)
+        setobjectxy(DRASNA,3,6)
+        setobjectxyperm(DRASNA,3,6)
+        removeobject(WIKSTROM)
+        call(Prologue_SetObjectsPostSpeech_Script)
+        fadescreen(FADE_FROM_BLACK)
+        release
+        end
+}
+
+script Prologue_SetObjectsPostSpeech_Script{
+    setobjectxy(DRASNA,3,6)
+        setobjectxyperm(DRASNA,3,6)
+        applymovement(DRASNA,Common_Movement_FaceLeft)
+        applymovement(MALVA,Common_Movement_FaceDown)
+        applymovement(SIEBOLD,Common_Movement_FaceUp)
+        applymovement(OAK,Common_Movement_FaceRight)
+        applymovement(KOGA,Common_Movement_FaceUp)
+        applymovement(LENORA,Common_Movement_FaceDown)
+        applymovement(CILAN,Common_Movement_FaceDown)
+        return
+}
+
+script Prologue_SetUpSeechCrowd_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+        if (var(VAR_TEMP_0) != 9 || (var(VAR_TEMP_1) != 6)){
+            fadescreen(FADE_TO_BLACK)
+                setobjectxy(PLAYER,9,6)
+                TeleportCamera(9,6)
+                applymovement(PLAYER,Common_Movement_FaceUp)
+                fadescreen(FADE_FROM_BLACK)
+        }
+    applymovement(MALVA,Common_Movement_FaceRight)
+        applymovement(SIEBOLD,Common_Movement_FaceRight)
+        applymovement(OAK,Common_Movement_FaceRight)
+        applymovement(KOGA,Common_Movement_FaceLeft)
+        applymovement(LENORA,Common_Movement_FaceLeft)
+        applymovement(CILAN,Common_Movement_FaceLeft)
+        return
+}
+
+script Prologue_ExclaimCrowd_Script{
+    playse(SE_PIN)
+        applymovement(DRASNA,Common_Movement_ExclamationMark)
+        applymovement(MALVA,Common_Movement_ExclamationMark)
+        applymovement(SIEBOLD,Common_Movement_ExclamationMark)
+        applymovement(WIKSTROM,Common_Movement_ExclamationMark)
+        applymovement(KOGA,Common_Movement_ExclamationMark)
+        applymovement(LENORA,Common_Movement_ExclamationMark)
+        applymovement(CILAN,Common_Movement_ExclamationMark)
+        applymovement(OAK,Common_Movement_ExclamationMark)
+        return
+}
+
+script Prologue_IntroTime_Dialogue{
+    fadescreen(FADE_TO_BLACK)
+        msgbox(gText_Prologue_July31)
+        closemessage
+        fadescreen(FADE_FROM_BLACK)
+        return
+}
+
+script Prologue_PostBattleTime_Dialogue{
+    fadescreen(FADE_TO_BLACK)
+        msgbox(gText_Prologue_AFewDays)
+        closemessage
+        fadescreen(FADE_FROM_BLACK)
+        goto(Prologue_PostWarp_Hall_Dialgoue)
+        return
+}
+
+script Prologue_TimeSkip_Dialogue{
+    fadescreen(FADE_TO_BLACK)
+        msgbox(gText_Prologue_March17)
+        closemessage
+        setvar(VAR_PROLOGUE_STATE,WALK_INTO_HALL)
+        fadescreen(FADE_FROM_BLACK)
+        return
+}
+
+script Prologue_BeginAdventure_Dialogue{
+    msgbox(gText_Prologue_OnceYouStep,MSGBOX_NPC,SPEAKER_GUARD)
+    msgbox(gText_Prologue_AreYouReady,MSGBOX_YESNO,SPEAKER_GUARD)
+    if (var(VAR_RESULT) == YES){
+        setflag(FLAG_SPAWN_INVISIBLE)
+        warpsilent(MAP_BLACK_MAP)
+    }
     closemessage
-    applymovement(DRASNA,Prologue_LeaveChamber_Movement)
-    applymovement(PLAYER,Common_Movement_WalkUp4)
-    waitmovement(DRASNA)
-    removeobject(DRASNA)
-    playse(SE_EXIT)
-    warpdoor(MAP_LITTLEROOT_TOWN,0)
+    end
+}
+
+script Prologue_Malva_Dialogue{
+    msgbox(gText_Prologue_HowCouldThey,MSGBOX_AUTOCLOSE,SPEAKER_MALVA,,EMOTE_SHOCK)
+    end
+}
+
+script Prologue_Siebold_Dialogue{
+    msgbox(gText_Prologue_IKnewThey,MSGBOX_AUTOCLOSE,SPEAKER_SIEBOLD,,EMOTE_SAD)
+    end
+}
+
+script Prologue_Drasna_Dialogue{
+    msgbox(gText_Prologue_OneWhiffOf,MSGBOX_AUTOCLOSE,SPEAKER_DRASNA,,EMOTE_ANGRY)
+    end
+}
+
+script Prologue_Koga_Dialogue{
+    msgbox(gText_Prologue_FirstPryceThen,MSGBOX_AUTOCLOSE,SPEAKER_KOGA)
+    end
+}
+
+script Prologue_Lenora_Dialogue{
+    msgbox(gText_Prologue_WellTakeEmHeadOn,MSGBOX_AUTOCLOSE,SPEAKER_LENORA)
+    end
+}
+
+script Prologue_Cilan_Dialogue{
+    msgbox(gText_Prologue_ItsGonnaBeAYearAndThen,MSGBOX_AUTOCLOSE,SPEAKER_CILAN)
+    end
+}
+
+script Prologue_Oak_Dialogue{
+    lock
+    msgbox(gText_Prologue_YesTheyJust,MSGBOX_AUTOCLOSE,SPEAKER_OAK,TAIL_WHISPER,,PHONE_ON)
     release
     end
 }
 
+movement Prologue_LeaveChamber_Movement{
+    walk_up * 3
+        step_end
+}
+
+movement Prologue_BlockDoor_Movement{
+    lock_facing_direction
+        walk_right
+    unlock_facing_direction
+        step_end
+}
+
+movement Prologue_Drasna_WalkIntoPosition_Movement{
+    walk_up
+        walk_left
+        walk_up
+        step_end
+}
+
+movement Prologue_Leaveroom_Movement{
+    walk_right
+        walk_down * 5
+        step_end
+}
+
+text gText_Prologue_July31{
+    format("July 31 2007. It has been roughly 7 years and 10 months since Team Rocket staged a takeover of the Goldenrod Radio Tower.")
+}
+
+text gText_Prologue_AFewDays{
+    format("A few days later...")
+}
+
+text gText_Prologue_March17{
+    format("March 17 2019. It has been roughly 4 months since the Champion of Galar prevented the Darkest Day, and 9 years and 7 months since Adam was crowned the Champion of Sanfran.")
+}
+
+text gText_Prologue_HelpModal{
+    format("In the final build, this will be a modal explaining that you can teach your Pokémon different moves from the Summary Screen.")
+}   
+
 text gText_Prologue_YouMadeIt{
-    format("")
+    format("You made it, Adam. Welcome to your final battle.")
 }
 text gText_Prologue_WeveBeenWatching{
-    format("")
+    format("We've been watching your progress for a while now, and your battles against the other three were absolutely captivating.")
 }
 text gText_Prologue_YoureGoingToBe{
-    format("")
+    format("You're being to be a great Champion to carry on the legacy of Sanfran... if you can defeat me!")
 }
 text gText_Prologue_Fantastic{
-    format("")
+    format("Fantastic work, Adam.")
 }
 text gText_Prologue_AdamYouAre{
     format("Adam! You are now the Sanfran Pokémon League Champion!")
@@ -81,8 +318,59 @@ text gText_Prologue_AndPerhaps{
 text gText_Prologue_WearThis{
     format("Wear this title as much as I did when I earned it! And now, for the Hall of Fame!")
 }
+text gText_Prolouge_ItsNotAFull{
+    format("Its not the usual celebration, but of course, with the recent news, the budget has been slashed. But we've figured a small gathering with the Elite Four and Gym Leaders would be nice.")
+}
+text gText_Prologue_WikstromHasA{
+    format("Wikstrom was waiting for us to arrive - they've got a speech prepared.")
+}
 
-movement Prologue_LeaveChamber_Movement{
-    walk_up * 3
-    step_end
+text gText_Prologue_ThankYouAll{
+    format("Thank you all for being here!")
+}
+
+text gText_Prologue_FirstOfCourse{
+    format("First of course, congratulations to the newest Champion, Adam!Despite not being from here, you've excelled in our region's competitive climate, and we've honored to cement you into our Hall of Fame.")
+}
+text gText_Prologue_IRegretToInform{
+    format("Of course, I regret to inform you all that effective immediately, I'll be stepping down as a member of the Elite Four.")
+}
+text gText_Prologue_IWillRetireAnd{
+    format("I will be retiring my career as a Trainer, and soon after, I'll be leaving the region.")
+}
+text gText_Prologue_ICanSoClearlySee{
+    format("There's no easy way to put this - I don't have any hope in the new League changes. I think this is beginning of a very dark road ahead of us - we have customs and traditions and culture built here, and we've let the dollars signs get in the way of that. For those who of you that haven't given up, and are fighting the good fight, you have my deepest respect...")
+}
+text gText_Prologue_AndIFearWeAreFighting{
+    format("but also my deepest sympathies. I fear this is a battle we've already lost, and its only a matter of time before we've stripped of everything... and I can't bear the thought of that.")
+}
+text gText_Prologue_GoodLuckToAll{
+    format("Good luck to all of you.")
+}
+text gText_Prologue_HowCouldThey{
+    format("How could they just up and leave? Just like that? No warning? No plan? What...")
+}
+text gText_Prologue_IKnewThey{
+    format("I knew they were unhappy, but this is just as much of a shock to me as it is you guys.  But... Wikstrom was always about taking action. And I guess this was their best action.")
+}
+text gText_Prologue_OneWhiffOf{
+    format("One whiff of trouble and they leave? Just like that? Fine. WHo needs them, we'll find another Elite Four member, won't we?")
+}
+text gText_Prologue_FirstPryceThen{
+    format("First Pryce sells out, now Wikstrom is quitting... perhaps I'm on the wrong side of history here.")
+}
+text gText_Prologue_WellTakeEmHeadOn{
+    format("That's so sad! Just gone, just like that. I'd give anything to go back before those announcements. So much change, so quickly!")
+}
+text gText_Prologue_ItsGonnaBeAYearAndThen{
+    format("It's gonna be a year before they change their minds and are begging to go back to the way things were, no doubt! We got a good thing going for us, and we know what we're doing. We're Gym Leaders, after all!")
+}
+text gText_Prologue_YesTheyJust{
+    format("Yes, they just... left! Walked out and quit, just like that! What now?")
+}
+text gText_Prologue_OnceYouStep{
+    format("Once you leave here, your life is going to change forever!")
+}
+text gText_Prologue_AreYouReady{
+    format("The beginning of your journey with Pokémon in Sanfran begins now. Are you absolutely ready for that? There is no going back, no matter what.")
 }

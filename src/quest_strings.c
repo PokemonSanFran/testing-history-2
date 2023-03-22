@@ -523,6 +523,11 @@ const u8 gText_Quest_StealTheAxe_Desc[] =_("Lorem Desc");
 const u8 gText_Quest_StealTheAxe_DoneDesc[] =_("Done Desc");
 const u8 gText_Quest_StealTheAxe_Map[] =_("Alameda");
 
+const u8 gText_Quest_BecomeChampion_Name[] =_("");;
+const u8 gText_Quest_BecomeChampion_Desc[] =_("");;
+const u8 gText_Quest_BecomeChampion_DoneDesc[] =_("");;
+const u8 gText_Quest_BecomeChampion_Map[] =_("");;
+
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
 const u8 gText_Quest_HauntABuilding_Sub1_Desc[] = _("You brought Hunter a Litwick.");
@@ -1243,6 +1248,26 @@ const u8 gText_Quest_Recruitlocalartists_Sub2_Map[] = _("N/A");
 const u8 gText_Quest_Recruitlocalartists_Sub3_Name[] = _("Name");
 const u8 gText_Quest_Recruitlocalartists_Sub3_Desc[] = _("Lorem Desc");
 const u8 gText_Quest_Recruitlocalartists_Sub3_Map[] = _("N/A");
+
+const u8 gText_Quest_BecomeChampion_Sub1_Name[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub1_Desc[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub1_DoneDesc[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub1_Map[] =_("");;
+
+const u8 gText_Quest_BecomeChampion_Sub2_Name[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub2_Desc[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub2_DoneDesc[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub2_Map[] =_("");;
+
+const u8 gText_Quest_BecomeChampion_Sub3_Name[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub3_Desc[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub3_DoneDesc[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub3_Map[] =_("");;
+
+const u8 gText_Quest_BecomeChampion_Sub4_Name[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub4_Desc[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub4_DoneDesc[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub4_Map[] =_("");;
 
 //quest flavor
 const u8 gText_PlayersAdventure_Flavor0[] =_("");

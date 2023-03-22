@@ -6100,6 +6100,16 @@
       "secondary_tileset": "gTileset_EliteFour",
       "border_filepath": "data/layouts/Oaklandcoliseum_Arena/border.bin",
       "blockdata_filepath": "data/layouts/Oaklandcoliseum_Arena/map.bin"
+    },
+    {
+      "id": "LAYOUT_OAKLANDCOLISEUM_HALL",
+      "name": "Oaklandcoliseum_Hall_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_LilycoveMuseum",
+      "border_filepath": "data/layouts/Oaklandcoliseum_Hall/border.bin",
+      "blockdata_filepath": "data/layouts/Oaklandcoliseum_Hall/map.bin"
     }
   ]
 }
