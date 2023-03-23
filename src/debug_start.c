@@ -22,6 +22,7 @@
 #include "random.h"
 
 extern const u8 gText_WhereWeDropping[];
+extern const u8 gText_Prolouge[];
 extern const u8 gText_StarterChoice[];
 extern const u8 gText_BeforeFirst[];
 extern const u8 gText_AfterFirst[];
@@ -30,6 +31,7 @@ extern const u8 gText_Cancel[];
 extern u8 ThereCanOnlyBeOne_Debug_Script[];
 
 static const struct MenuAction sMenuActions_DebugStartChoices[] = {
+    {gText_Prolouge, NULL},
 	{gText_StarterChoice, NULL},
 	{gText_BeforeFirst, NULL},
 	{gText_AfterFirst, NULL},
@@ -44,6 +46,7 @@ static void Task_DoDebugAskQuestion(u8 taskId);
 static void ShowDebugStartChoices(void);
 static void Task_DebugStartScreenChoice(u8 taskId);
 static void CB2_FadeAndDoReset(void);
+static void Task_GoToPrologue(u8 taskId);
 static void Task_GoToStarterChoice(u8 taskId);
 static void Task_GoToBeforeBianca(u8 taskId);
 static void Task_GoToAfterBianca(u8 taskId);
@@ -202,20 +205,25 @@ static void Task_DebugStartScreenChoice(u8 taskId)
 {
 	u8 debugConstant = Menu_ProcessInput();
 	switch (debugConstant) {
-		case 0:
+        case 0:
+            PlaySE(SE_SELECT);
+			gTasks[taskId].func = Task_GoToPrologue;
+			break;
+
+		case 1:
 			PlaySE(SE_SELECT);
 			gTasks[taskId].func = Task_GoToStarterChoice;
 			break;
-		case 1:
+		case 2:
 			PlaySE(SE_SELECT);
 			gTasks[taskId].func = Task_GoToBeforeBianca;;
 			break;
-		case 2:
+		case 3:
 			PlaySE(SE_SELECT);
 			gTasks[taskId].func = Task_GoToAfterBianca;
 			break;
 		case MENU_B_PRESSED:
-		case 3:
+		case 4:
 			PlaySE(SE_SELECT);
 			DestroyTask(taskId);
 			SetMainCallback2(CB2_FadeAndDoReset);
@@ -239,6 +247,14 @@ static void CB2_FadeAndDoReset(void)
 			}
 			break;
 	}
+}
+
+static void Task_GoToPrologue(u8 taskId)
+{
+	DebugStart_NewGame();
+    SetWarpDestination(MAP_GROUP(OAKLANDCOLISEUM_HALLWAY), MAP_NUM(OAKLANDCOLISEUM_HALLWAY), -1, 5, 12);
+    WarpIntoMap();
+	DebugStart_BeginAdventure();
 }
 
 static void Task_GoToStarterChoice(u8 taskId)

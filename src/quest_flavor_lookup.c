@@ -295,9 +295,25 @@ const u8 *GetQuestDesc_PlayersAdventure()
 		return gText_PlayersAdventure_Flavor1;
 	}
 
-    else if ((storyline == 0) && !FlagGet(FLAG_SYS_QUEST_MENU_GET))
+    //else if ((storyline == 0) && !FlagGet(FLAG_SYS_QUEST_MENU_GET))
+    else if ((storyline == 0) && VarGet(VAR_PROLOGUE_STATE) == START_ADVENTURE)
     {
         return gText_PlayersAdventure_Flavor0;
+    }
+
+    else if ((storyline == 0) && VarGet(VAR_PROLOGUE_STATE) == WIKSTROM_ANNOUNCE)
+    {
+        return gText_ChampionsAdventure_Flavor3;
+    }
+
+    else if ((storyline == 0) && VarGet(VAR_PROLOGUE_STATE) > LOST_TO_DRASNA)
+    {
+        return gText_ChampionsAdventure_Flavor2;
+    }
+
+    else if ((storyline == 0) && VarGet(VAR_PROLOGUE_STATE) > NOT_STARTED)
+    {
+        return gText_Quest_BecomeChampion_Desc;
     }
 
 	else

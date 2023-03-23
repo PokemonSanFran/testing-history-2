@@ -16,6 +16,7 @@ const GUARD = 9
 
 script Prologue_SetUp_Script{
     setvar(VAR_PROLOGUE_STATE,GIVEN_POKEMON)
+        setflag(FLAG_SYS_QUEST_MENU_GET)
         call(Prologue_IntroTime_Dialogue)
         startquest(QUEST_BECOMECHAMPION)
         subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BECOMECHAMPION,SUB_QUEST_1)
@@ -212,8 +213,9 @@ script Prologue_BeginAdventure_Dialogue{
     msgbox(gText_Prologue_OnceYouStep,MSGBOX_NPC,SPEAKER_GUARD)
     msgbox(gText_Prologue_AreYouReady,MSGBOX_YESNO,SPEAKER_GUARD)
     if (var(VAR_RESULT) == YES){
+        setvar(VAR_PROLOGUE_STATE,START_ADVENTURE)
         setflag(FLAG_SPAWN_INVISIBLE)
-        warpsilent(MAP_BLACK_MAP)
+        warpsilent(MAP_BLACK_MAP) //go to character customization
     }
     closemessage
     end

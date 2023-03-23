@@ -523,10 +523,10 @@ const u8 gText_Quest_StealTheAxe_Desc[] =_("Lorem Desc");
 const u8 gText_Quest_StealTheAxe_DoneDesc[] =_("Done Desc");
 const u8 gText_Quest_StealTheAxe_Map[] =_("Alameda");
 
-const u8 gText_Quest_BecomeChampion_Name[] =_("");;
-const u8 gText_Quest_BecomeChampion_Desc[] =_("");;
-const u8 gText_Quest_BecomeChampion_DoneDesc[] =_("");;
-const u8 gText_Quest_BecomeChampion_Map[] =_("");;
+const u8 gText_Quest_BecomeChampion_Name[] =_("Become Champion");;
+const u8 gText_Quest_BecomeChampion_Desc[] =_("Become the Champion of the Sanfran\nPokémon League by defeating the\nElite Four.");
+const u8 gText_Quest_BecomeChampion_DoneDesc[] =_("You defeated the Elite Four\nand became the Champion of the Sanfran\nPokémon League!");
+const u8 gText_Quest_BecomeChampion_Map[] =_("Oaklandcoliseum");
 
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
@@ -1249,27 +1249,25 @@ const u8 gText_Quest_Recruitlocalartists_Sub3_Name[] = _("Name");
 const u8 gText_Quest_Recruitlocalartists_Sub3_Desc[] = _("Lorem Desc");
 const u8 gText_Quest_Recruitlocalartists_Sub3_Map[] = _("N/A");
 
-const u8 gText_Quest_BecomeChampion_Sub1_Name[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub1_Desc[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub1_DoneDesc[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub1_Map[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub1_Name[] =_("Malva");
+const u8 gText_Quest_BecomeChampion_Sub1_Desc[] =_("You defeated Malva of the Sanfran\nElite Four.");
+const u8 gText_Quest_BecomeChampion_Sub1_Map[] =_("Oaklandcoliseum");
 
-const u8 gText_Quest_BecomeChampion_Sub2_Name[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub2_Desc[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub2_DoneDesc[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub2_Map[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub2_Name[] =_("Siebold");
+const u8 gText_Quest_BecomeChampion_Sub2_Desc[] =_("You defeated Siebold of the Sanfran\nElite Four.");
+const u8 gText_Quest_BecomeChampion_Sub2_Map[] =_("Oaklandcoliseum");
 
-const u8 gText_Quest_BecomeChampion_Sub3_Name[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub3_Desc[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub3_DoneDesc[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub3_Map[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub3_Name[] =_("Wikstrom");
+const u8 gText_Quest_BecomeChampion_Sub3_Desc[] =_("You defeated Wikstrom of the Sanfran\nElite Four.");
+const u8 gText_Quest_BecomeChampion_Sub3_Map[] =_("Oaklandcoliseum");
 
-const u8 gText_Quest_BecomeChampion_Sub4_Name[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub4_Desc[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub4_DoneDesc[] =_("");;
-const u8 gText_Quest_BecomeChampion_Sub4_Map[] =_("");;
+const u8 gText_Quest_BecomeChampion_Sub4_Name[] =_("Drasna");
+const u8 gText_Quest_BecomeChampion_Sub4_Desc[] =_("You defeated Drasna of the Sanfran\nElite Four.");
+const u8 gText_Quest_BecomeChampion_Sub4_Map[] =_("Oaklandcoliseum");
 
 //quest flavor
+const u8 gText_ChampionsAdventure_Flavor2[] =_("Enjoy your celebration party!");
+const u8 gText_ChampionsAdventure_Flavor3[] =_("Begin your true adventure in Sanfran!");
 const u8 gText_PlayersAdventure_Flavor0[] =_("");
 const u8 gText_PlayersAdventure_Flavor1[] =_("Explore everything eastern SanFran has\nto offer on your way to the\nChampionship.");
 const u8 gText_PlayersAdventure_Flavor2[] =_("Head back to the Compound in Southbay\nand get a good night's sleep.");

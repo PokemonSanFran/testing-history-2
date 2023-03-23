@@ -1,8 +1,13 @@
 Oaklandcoliseum_Hallway_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Oaklandcoliseum_Hallway_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Oaklandcoliseum_Hallway_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
 	.byte 0
 
 Oaklandcoliseum_Hallway_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_PROLOGUE_STATE, NOT_STARTED, Prologue_SetUp_Script
+	.2byte 0
+
+Oaklandcoliseum_Hallway_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
+	map_script_2 VAR_TEMP_1, 0, Oaklandcoliseum_Arena_PlayerTurnNorth_Script
 	.2byte 0
 

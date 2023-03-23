@@ -1918,6 +1918,7 @@ const u8 gText_PokemonEffectSpore[] = _("a Pokemon that has \nthe ability Effect
 
 //Debug Start
 const u8 gText_WhereWeDropping[] = _("Where do you want to go?");
+const u8 gText_Prolouge[] = _("Prologue");
 const u8 gText_StarterChoice[] =_("Starter selection");
 const u8 gText_BeforeFirst[] =_("Before meeting Bianca");
 const u8 gText_AfterFirst[] =_("After first cutscene");

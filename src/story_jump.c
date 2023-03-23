@@ -493,6 +493,7 @@ static void PreventVariableFromReversion(u16 adjustedVariable,
 
 void JumpPlayerTo_swagbag()
 {
+    VarSet(VAR_PROLOGUE_STATE,START_ADVENTURE);
 	VarSet(VAR_PLAYER_HOME_STATE, POST_SWAGBAG);
 	FlagSet(FLAG_SYS_POKENAV_GET);
 	FlagSet(FLAG_SYS_QUEST_MENU_GET);
