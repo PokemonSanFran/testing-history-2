@@ -32,6 +32,11 @@
       "map": "MAP_PSFROUTE2",
       "offset": 0,
       "direction": "down"
+    },
+    {
+      "map": "MAP_PALACEFINEARTS",
+      "offset": 36,
+      "direction": "up"
     }
   ],
   "object_events": [

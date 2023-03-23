@@ -1,0 +1,43 @@
+//gText_Employedeverafter_
+//Quest_Employedeverafter_
+
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const GUEST_A = 1
+const GUEST_B = 2
+const OFFICIANT = 3
+const BRIDE_A = 4
+const BRIDE_MISSING = 5
+const GUEST_C = 6
+
+script Quest_Employedeverafter_MovePlayerIntoPosition_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        if (var(VAR_TEMP_0) != 19 || (var(VAR_TEMP_1) != 28)){
+            fadescreen(FADE_TO_BLACK)
+                setobjectxy(PLAYER,19,28)
+                TeleportCamera(19,28)
+                applymovement(PLAYER,Common_Movement_FaceUp)
+                waitmovement(PLAYER)
+                fadescreen(FADE_FROM_BLACK)
+        }
+    goto(Quest_Employedeverafter_StartQuest)
+}
+
+script Quest_Employedeverafter_StartQuest{
+    lock
+    msgbox(gText_Employedeverafter_WhyWouldShe,,MSGBOX_AUTOCLOSE,SPEAKER_KATHARINA,TAIL_SHOUT,EMOTE_SAD)
+    closemessage
+    applymovement(BRIDE_A,Quest_Employedeverafter_LeaveAltar_Movement)
+    applymovement(PLAYER,Quest_Employedeverafter_WatchBridgeLeave_Movement)
+    waitmovement(PLAYER)
+    applymovement(OFFICIANT,Quest_Employedeverafter_WalkAfterBride_Movement)
+    waitmovement(OFFICIANT)
+    msgbox(gText_Employedeverafter_WhatAMess,,SPEAKER_OFFICIANT,,EMOTE_SWEAT)
+    closemessage
+    applymovement(PLAYER,Common_Movement_FaceUp)
+    waitmovement(PLAYER)
+    msgbox(gText_Employedeverafter_TheBrideGotCold,,SPEAKER_OFFICIANT)
+    msgbox(gText_Employedeverafter_EverybodyIsOff,,SPEAKER_OFFICIANT)
+
+    
+}

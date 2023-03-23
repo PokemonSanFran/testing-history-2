@@ -326,7 +326,7 @@ const u8 gText_Quest_GardenCleanupAdvanced_Map[] =_("Psfroute21");
 const u8 gText_Quest_EmployedEverAfter_Name[] = _("Employed Ever After");
 const u8 gText_Quest_EmployedEverAfter_Desc[] =_("Description");
 const u8 gText_Quest_EmployedEverAfter_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_EmployedEverAfter_Map[] =_("PalaceFineArts");
+const u8 gText_Quest_EmployedEverAfter_Map[] =_("Palacefinearts");
 
 const u8 gText_Quest_ButOnlyInMyBackyard_Name[] = _("But Only in My Backyard");
 const u8 gText_Quest_ButOnlyInMyBackyard_Desc[] =_("Description");
