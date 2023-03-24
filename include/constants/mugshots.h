@@ -191,6 +191,7 @@
 #define SPEAKER_SEVENSISTERS_RACHEL		179
 #define SPEAKER_KATHARINA               180
 #define SPEAKER_OFFICIANT               181
+#define SPEAKER_HELEN                   182
 
 //Tail
 #define TAIL_DEFAULT 0

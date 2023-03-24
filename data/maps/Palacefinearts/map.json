@@ -108,7 +108,7 @@
       "x": 18,
       "y": 28,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -117,7 +117,7 @@
       "x": 19,
       "y": 28,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -126,7 +126,7 @@
       "x": 20,
       "y": 27,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -135,7 +135,7 @@
       "x": 21,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -144,7 +144,7 @@
       "x": 22,
       "y": 25,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -153,7 +153,7 @@
       "x": 22,
       "y": 24,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -162,7 +162,7 @@
       "x": 23,
       "y": 23,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -171,7 +171,7 @@
       "x": 23,
       "y": 22,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -180,7 +180,7 @@
       "x": 22,
       "y": 21,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -189,7 +189,7 @@
       "x": 22,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -198,7 +198,7 @@
       "x": 21,
       "y": 19,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -207,7 +207,7 @@
       "x": 15,
       "y": 21,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -216,7 +216,7 @@
       "x": 20,
       "y": 19,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -225,7 +225,7 @@
       "x": 19,
       "y": 19,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -234,7 +234,7 @@
       "x": 18,
       "y": 19,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -243,7 +243,7 @@
       "x": 17,
       "y": 19,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -252,7 +252,7 @@
       "x": 16,
       "y": 19,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -261,7 +261,7 @@
       "x": 15,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -270,7 +270,7 @@
       "x": 15,
       "y": 22,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -279,7 +279,7 @@
       "x": 15,
       "y": 23,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -288,7 +288,7 @@
       "x": 15,
       "y": 24,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -297,7 +297,7 @@
       "x": 15,
       "y": 25,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -306,7 +306,7 @@
       "x": 16,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     },
@@ -315,7 +315,7 @@
       "x": 17,
       "y": 27,
       "elevation": 0,
-      "var": "VAR_EMPLOYEDEVERAFTER_STATE",
+      "var": "VAR_QUEST_EMPLOYEDEVERAFTER_STATE",
       "var_value": "0",
       "script": "Quest_Employedeverafter_MovePlayerIntoPosition_Script"
     }

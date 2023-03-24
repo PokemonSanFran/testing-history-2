@@ -1,6 +1,10 @@
 mapscripts Gldngtewilds_MapScripts {
     MAP_SCRIPT_ON_TRANSITION{
         call(Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script)
+        call(Quest_Employedeverafter_Gldngtewilds_HideBrideA_Script)
+        call(Quest_Employedeverafter_Gldngtewilds_HideBrideMissing_Script)
+        call(Quest_Employedeverafter_Gldngtewilds_HideBrideA_Script)
+        call(Quest_Employedeverafter_Gldngtewilds_PositionBrideA_Script)
     }
 }
 script Gldngtewilds_EventScript_BlackbeltF{
@@ -11,4 +15,26 @@ script Gldngtewilds_EventScript_BlackbeltF{
         }
     msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
         end
+}
+
+script Gldngtewilds_EventScript_Helen{
+    trainerbattle_single(TRAINER_HELEN,gText_Gldngtewilds_HaveYouEver,gText_Gldngtewilds_NotReadyForBattle)
+
+    if (var(VAR_QUEST_EMPLOYEDEVERAFTER_STATE) > NOT_STARTED){
+        goto(Quest_Employedeverafter_BrideMissing_Interact_Script)
+    }
+    msgbox(gText_Gldngtewilds_ImSupposedToBeGetting,MSGBOX_NPC,SPEAKER_HELEN)
+    end
+}
+
+text gText_Gldngtewilds_HaveYouEver{
+    format("")
+}
+
+text gText_Gldngtewilds_NotReadyForBattle{
+    format("")
+}
+
+text gText_Gldngtewilds_ImSupposedToBeGetting{
+    format("")
 }

@@ -60,6 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
+	warpsilent MAP_GLDNGTEWILDS, 0
 	end
 
 

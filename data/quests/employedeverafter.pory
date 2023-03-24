@@ -9,8 +9,15 @@ const BRIDE_A = 4
 const BRIDE_MISSING = 5
 const GUEST_C = 6
 
+const BRIDE_A_GLDNGTEWILDS = 2
+const BRIDE_MISSING_GLDNGTEWILDS = 3
+
 const FLAG_HIDE_BRIDE_A = FLAG_TEMP_1
 const FLAG_HIDE_BRIDE_MISSING = FLAG_TEMP_3
+
+
+const FLAG_HIDE_BRIDE_A_GLDNGTEWILDS = FLAG_TEMP_2
+const FLAG_HIDE_BRIDE_MISSING_GLDNGTEWILDS = FLAG_TEMP_3
 
 script Quest_Employedeverafter_MovePlayerIntoPosition_Script{
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
@@ -28,7 +35,7 @@ script Quest_Employedeverafter_MovePlayerIntoPosition_Script{
 
 script Quest_Employedeverafter_StartQuest{
     lock
-    setvar(VAR_EMPLOYEDEVERAFTER_STATE,LOOK_FOR_BRIDE)
+    setvar(VAR_QUEST_EMPLOYEDEVERAFTER_STATE,LOOK_FOR_BRIDE)
     msgbox(gText_Employedeverafter_WhyWouldShe,MSGBOX_AUTOCLOSE,SPEAKER_KATHARINA,TAIL_SHOUT,EMOTE_SAD)
     closemessage
     applymovement(BRIDE_A,Quest_Employedeverafter_LeaveAltar_Movement)
@@ -45,7 +52,7 @@ script Quest_Employedeverafter_StartQuest{
     msgbox(gText_Employedeverafter_EverybodyIsOff,,SPEAKER_OFFICIANT)
     msgbox(gText_Employedeverafter_IHopeSheTurns,,SPEAKER_OFFICIANT)
     closemessage
-    call(Quest_Employedeverafter_LockBride_Script)
+    call(Quest_Employedeverafter_LockAndHideBride_Script)
     startquest(QUEST_EMPLOYEDEVERAFTER)
     release
     end
@@ -56,21 +63,70 @@ script Quest_Employedeverafter_FoundBride_Dialogue{
 }
 
 script Quest_Employedeverafter_LockAndHideBride_Script{
-    if (var(VAR_EMPLOYEDEVERAFTER_STATE) == LOOK_FOR_BRIDE){
+    if (var(VAR_QUEST_EMPLOYEDEVERAFTER_STATE) == LOOK_FOR_BRIDE){
         setobjectxy(BRIDE_A,17,34)
         setobjectxyperm(BRIDE_A,17,34)
 
-        setflag(FLAG_HIDE_BRIDE_A)
         setflag(FLAG_HIDE_BRIDE_MISSING)
     }
 return
 }
 
-script Quest_Employedeverafter_HideBrideMissing_Script{
-    if (var(VAR_EMPLOYEDEVERAFTER_STATE) != FOUND_RING){
+script Quest_Employedeverafter_Palacefienarts_HideBrideMissing_Script{
+    if (var(VAR_QUEST_EMPLOYEDEVERAFTER_STATE) != FOUND_RING){
         setflag(FLAG_HIDE_BRIDE_MISSING)
     }
     return
+}
+
+script Quest_Employedeverafter_Gldngtewilds_HideBrideMissing_Script{
+    returnqueststate(QUEST_EMPLOYEDEVERAFTER)
+
+        if (var(VAR_RESULT) == QUEST_MENU_COMPLETE_QUEST){
+            setflag(FLAG_HIDE_BRIDE_MISSING_GLDNGTEWILDS)
+        }
+    return
+}
+
+script Quest_Employedeverafter_Gldngtewilds_HideBrideA_Script{
+    if (var(VAR_RESULT) == QUEST_MENU_COMPLETE_QUEST || (var(VAR_QUEST_EMPLOYEDEVERAFTER_STATE) < FOUND_BRIDE)){
+        setflag(FLAG_HIDE_BRIDE_A_GLDNGTEWILDS)
+    }
+    return
+}
+
+script Quest_Employedeverafter_Gldngtewilds_PositionBrideA_Script{
+    if (var(VAR_QUEST_EMPLOYEDEVERAFTER_STATE) == FOUND_RING){
+        setobjectxy(BRIDE_A_GLDNGTEWILDS,42,31)
+        setobjectxyperm(BRIDE_A_GLDNGTEWILDS,42,31)
+    }
+    return
+}
+
+script Quest_Employedeverafter_BrideMissing_Interact_Script{
+    switch (var(VAR_QUEST_EMPLOYEDEVERAFTER_STATE)){
+        case LOOK_FOR_BRIDE: goto(Quest_Employedeverafter_PostBattle_Dialogue)
+        case FOUND_BRIDE: goto(Quest_Employedeverafter_WonderAboutRing_Dialogue)
+        default: return
+}
+
+script Quest_Employedeverafter_BrideA_Interact_Script{
+    msgbox(gText_Employedeverafter_ICantBeleive,MSGBOX_NPC,SPEAKER_KATHARINA)
+}
+
+script Quest_Employedeverafter_PostBattle_Dialogue{
+}
+
+script Quest_Employedeverafter_WonderAboutRing_Dialogue{
+    checkitem(ITEM_POWDER_JAR,1)
+
+    if (var(VAR_RESULT)){
+        goto(Quest_Employedeverafter_FoundRing_Dialogue)
+    }
+}
+
+script Quest_Employedeverafter_FoundRing_Dialogue{
+    completequest(QUEST_EMPLOYEDEVERAFTER) 
 }
 
 movement Quest_Employedeverafter_LeaveAltar_Movement{

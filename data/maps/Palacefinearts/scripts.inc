@@ -3,8 +3,7 @@ Palacefinearts_MapScripts::
 	.byte 0
 
 Palacefinearts_MapScripts_MAP_SCRIPT_ON_LOAD:
-	call Quest_Employedeverafter_HideBrideA_Script
-	call Quest_Employedeverafter_HideBrideMissing_Script
-	call Quest_Employedeverafter_LockBride_Script
+	call Quest_Employedeverafter_Palacefienarts_HideBrideMissing_Script
+	call Quest_Employedeverafter_LockAndHideBride_Script
 	return
 
