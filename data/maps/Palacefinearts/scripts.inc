@@ -1,2 +1,10 @@
 Palacefinearts_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, Palacefinearts_MapScripts_MAP_SCRIPT_ON_LOAD
 	.byte 0
+
+Palacefinearts_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call Quest_Employedeverafter_HideBrideA_Script
+	call Quest_Employedeverafter_HideBrideMissing_Script
+	call Quest_Employedeverafter_LockBride_Script
+	return
+

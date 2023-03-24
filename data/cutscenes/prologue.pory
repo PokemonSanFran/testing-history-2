@@ -292,7 +292,7 @@ text gText_Prologue_AFewDays{
 }
 
 text gText_Prologue_March17{
-    format("March 17 2019. It has been roughly 4 months since the Champion of Galar prevented the Darkest Day, and 9 years and 7 months since Adam was crowned the Champion of Sanfran.")
+    format("March 17 2019. It has been roughly 2 years and 10 months since the first Champion of Alola was crowned, and 9 years and 7 months since Adam was crowned the Champion of Sanfran.")
 }
 
 text gText_Prologue_HelpModal{

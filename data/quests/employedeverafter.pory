@@ -9,6 +9,9 @@ const BRIDE_A = 4
 const BRIDE_MISSING = 5
 const GUEST_C = 6
 
+const FLAG_HIDE_BRIDE_A = FLAG_TEMP_1
+const FLAG_HIDE_BRIDE_MISSING = FLAG_TEMP_3
+
 script Quest_Employedeverafter_MovePlayerIntoPosition_Script{
     getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
 
@@ -25,11 +28,13 @@ script Quest_Employedeverafter_MovePlayerIntoPosition_Script{
 
 script Quest_Employedeverafter_StartQuest{
     lock
-    msgbox(gText_Employedeverafter_WhyWouldShe,,MSGBOX_AUTOCLOSE,SPEAKER_KATHARINA,TAIL_SHOUT,EMOTE_SAD)
+    setvar(VAR_EMPLOYEDEVERAFTER_STATE,LOOK_FOR_BRIDE)
+    msgbox(gText_Employedeverafter_WhyWouldShe,MSGBOX_AUTOCLOSE,SPEAKER_KATHARINA,TAIL_SHOUT,EMOTE_SAD)
     closemessage
     applymovement(BRIDE_A,Quest_Employedeverafter_LeaveAltar_Movement)
     applymovement(PLAYER,Quest_Employedeverafter_WatchBridgeLeave_Movement)
     waitmovement(PLAYER)
+    addobject(OFFICIANT)
     applymovement(OFFICIANT,Quest_Employedeverafter_WalkAfterBride_Movement)
     waitmovement(OFFICIANT)
     msgbox(gText_Employedeverafter_WhatAMess,,SPEAKER_OFFICIANT,,EMOTE_SWEAT)
@@ -38,6 +43,64 @@ script Quest_Employedeverafter_StartQuest{
     waitmovement(PLAYER)
     msgbox(gText_Employedeverafter_TheBrideGotCold,,SPEAKER_OFFICIANT)
     msgbox(gText_Employedeverafter_EverybodyIsOff,,SPEAKER_OFFICIANT)
+    msgbox(gText_Employedeverafter_IHopeSheTurns,,SPEAKER_OFFICIANT)
+    closemessage
+    call(Quest_Employedeverafter_LockBride_Script)
+    startquest(QUEST_EMPLOYEDEVERAFTER)
+    release
+    end
+}
 
+script Quest_Employedeverafter_FoundBride_Dialogue{
     
+}
+
+script Quest_Employedeverafter_LockAndHideBride_Script{
+    if (var(VAR_EMPLOYEDEVERAFTER_STATE) == LOOK_FOR_BRIDE){
+        setobjectxy(BRIDE_A,17,34)
+        setobjectxyperm(BRIDE_A,17,34)
+
+        setflag(FLAG_HIDE_BRIDE_A)
+        setflag(FLAG_HIDE_BRIDE_MISSING)
+    }
+return
+}
+
+script Quest_Employedeverafter_HideBrideMissing_Script{
+    if (var(VAR_EMPLOYEDEVERAFTER_STATE) != FOUND_RING){
+        setflag(FLAG_HIDE_BRIDE_MISSING)
+    }
+    return
+}
+
+movement Quest_Employedeverafter_LeaveAltar_Movement{
+    walk_faster_down * 13
+    step_end
+}
+movement Quest_Employedeverafter_WatchBridgeLeave_Movement{
+    delay_16
+    face_right
+    face_down
+    step_end
+}
+
+movement Quest_Employedeverafter_WalkAfterBride_Movement{
+    walk_down * 8
+    step_end
+}
+
+text gText_Employedeverafter_WhyWouldShe{
+    format("")
+}
+text gText_Employedeverafter_WhatAMess{
+    format("")
+}
+text gText_Employedeverafter_TheBrideGotCold{
+    format("")
+}
+text gText_Employedeverafter_EverybodyIsOff{
+    format("")
+}
+text gText_Employedeverafter_IHopeSheTurns{
+    format("")
 }
