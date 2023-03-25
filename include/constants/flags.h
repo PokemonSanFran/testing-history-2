@@ -83,7 +83,7 @@
 #define FLAG_UNUSED_0x41 0x41 //Unused Flag
 #define FLAG_UNUSED_0x42 0x42 //Unused Flag
 #define FLAG_UNUSED_0x43 0x43 //Unused Flag
-#define FLAG_UNUSED_0x44 0x44 //Unused Flag
+#define FLAG_QUEST_EMPLOYEDEVERAFTER_FOUND_BRIDE 0x44 //Previously Unused Flag
 #define FLAG_HIDE_PSFROUTE61_BIANCA 0x45 // Previously Unused Flag
 #define FLAG_HIDE_MUIRWOODS_BIANCA    0x46 // Previously Unused Flag
 #define FLAG_HIDE_MUIRWOODS_SIEBOLD 0x47 //Previously Unused Flag
@@ -1078,6 +1078,7 @@
 #define FLAG_ITEM_LAKEMERCED_STUFF9                                 0x3F3
 #define FLAG_ITEM_ROUTE_112_NUGGET                                  0x3F3
 #define FLAG_ITEM_ROUTE_113_MAX_ETHER                               0x3F4
+#define FLAG_ITEM_GLDNGTEWILDS_ENGAGEMENT_RING 0x3F4
 #define FLAG_ITEM_ROUTE_113_SUPER_REPEL                             0x3F5
 #define FLAG_ITEM_ROUTE_114_RARE_CANDY                              0x3F6
 #define FLAG_ITEM_ROUTE_114_PROTEIN                                 0x3F7

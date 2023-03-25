@@ -75,6 +75,7 @@ Debug_Script_3::
 
 
 Debug_Script_4::
+	warpsilent MAP_GLDNGTEWILDS, 42, 31
 	end
 
 

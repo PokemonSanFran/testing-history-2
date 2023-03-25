@@ -410,4 +410,3 @@
 #define NOT_STARTED 0
 #define LOOK_FOR_BRIDE  1
 #define FOUND_BRIDE 2
-#define FOUND_RING  3

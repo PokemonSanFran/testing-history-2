@@ -5,9 +5,9 @@ Gldngtewilds_MapScripts::
 Gldngtewilds_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Restorechinatown_HideBlackbelt_Gldngtewilds_Script
 	call Quest_Employedeverafter_Gldngtewilds_HideBrideA_Script
-	call Quest_Employedeverafter_Gldngtewilds_HideBrideMissing_Script
-	call Quest_Employedeverafter_Gldngtewilds_PositionBrideA_Script
+	call_if_quest_complete QUEST_EMPLOYEDEVERAFTER, Quest_Employedeverafter_Gldngtewilds_HideBrideMissing_Script
 	call Quest_Employedeverafter_MoveBrideA_Gldngtewilds_Script
+	call_if_quest_complete QUEST_EMPLOYEDEVERAFTER, Quest_Employedeverafter_CleanUpWeddingParty_Script
 	return
 
 
@@ -26,15 +26,9 @@ Gldngtewilds_EventScript_BlackbeltF_2:
 
 Gldngtewilds_EventScript_Helen::
 	trainerbattle_single TRAINER_HELEN, gText_Gldngtewilds_HaveYouEver, gText_Gldngtewilds_NotReadyForBattle
-	compare VAR_QUEST_EMPLOYEDEVERAFTER_STATE, NOT_STARTED
-	goto_if_gt Gldngtewilds_EventScript_Helen_2
-Gldngtewilds_EventScript_Helen_1:
+	goto_if_quest_not_inactive QUEST_EMPLOYEDEVERAFTER, Quest_Employedeverafter_BrideMissing_Interact_Script
 	msgbox gText_Gldngtewilds_ImSupposedToBeGetting, MSGBOX_NPC, SPEAKER_HELEN
 	end
-
-Gldngtewilds_EventScript_Helen_2:
-	goto Quest_Employedeverafter_BrideMissing_Interact_Script
-	goto Gldngtewilds_EventScript_Helen_1
 
 
 gText_Gldngtewilds_HaveYouEver::

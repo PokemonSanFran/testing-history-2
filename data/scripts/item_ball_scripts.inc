@@ -736,3 +736,8 @@ Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff9::
     subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_THEBOYWHOCRIESWITHWOLVES,SUB_QUEST_9
     call Quest_Theboywhocriedwithwolves_CheckSubquests_Script
     end
+
+Gldngtewilds_Quest_Employedeverafter_EventScript_EngagementRing::
+    finditem ITEM_ENGAGEMENT_RING
+	call_if_quest_active QUEST_EMPLOYEDEVERAFTER, Quest_Employedeverafter_MovePlayerIntoPosition_Script
+    end

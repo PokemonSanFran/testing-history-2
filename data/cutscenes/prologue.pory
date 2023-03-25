@@ -9,8 +9,7 @@ const WIKSTROM = 4
 const KOGA = 5
 const LENORA = 6
 const CILAN = 7
-const OAK = 8
-const GUARD = 9
+const GUARD = 8
 
 //PSF TODO move this to a C script to also gives them a bunch of items and maybe all the TMs
 
@@ -18,6 +17,7 @@ script Prologue_SetUp_Script{
     setvar(VAR_PROLOGUE_STATE,GIVEN_POKEMON)
         setflag(FLAG_SYS_QUEST_MENU_GET)
         call(Prologue_IntroTime_Dialogue)
+//PSF TODO open modal to tell player about teaching their pokemon new moves
         startquest(QUEST_BECOMECHAMPION)
         subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BECOMECHAMPION,SUB_QUEST_1)
         subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BECOMECHAMPION,SUB_QUEST_2)
@@ -139,13 +139,14 @@ script Prologue_Wikstrom_Speech_Dialogue{
         end
 }
 
+//PSF TODO use characters intro TWEWY style to introduce each character, use modified flavor text since this happens 10 years earlier
+
 script Prologue_SetObjectsPostSpeech_Script{
     setobjectxy(DRASNA,3,6)
         setobjectxyperm(DRASNA,3,6)
         applymovement(DRASNA,Common_Movement_FaceLeft)
         applymovement(MALVA,Common_Movement_FaceDown)
         applymovement(SIEBOLD,Common_Movement_FaceUp)
-        applymovement(OAK,Common_Movement_FaceRight)
         applymovement(KOGA,Common_Movement_FaceUp)
         applymovement(LENORA,Common_Movement_FaceDown)
         applymovement(CILAN,Common_Movement_FaceDown)
@@ -163,7 +164,6 @@ script Prologue_SetUpSeechCrowd_Script{
         }
     applymovement(MALVA,Common_Movement_FaceRight)
         applymovement(SIEBOLD,Common_Movement_FaceRight)
-        applymovement(OAK,Common_Movement_FaceRight)
         applymovement(KOGA,Common_Movement_FaceLeft)
         applymovement(LENORA,Common_Movement_FaceLeft)
         applymovement(CILAN,Common_Movement_FaceLeft)
@@ -179,16 +179,15 @@ script Prologue_ExclaimCrowd_Script{
         applymovement(KOGA,Common_Movement_ExclamationMark)
         applymovement(LENORA,Common_Movement_ExclamationMark)
         applymovement(CILAN,Common_Movement_ExclamationMark)
-        applymovement(OAK,Common_Movement_ExclamationMark)
         return
 }
 
 script Prologue_IntroTime_Dialogue{
     fadescreen(FADE_TO_BLACK)
-        msgbox(gText_Prologue_July31)
-        closemessage
-        fadescreen(FADE_FROM_BLACK)
-        return
+    msgbox(gText_Prologue_July31)
+    closemessage
+    fadescreen(FADE_FROM_BLACK)
+    return
 }
 
 script Prologue_PostBattleTime_Dialogue{
@@ -251,13 +250,6 @@ script Prologue_Cilan_Dialogue{
     end
 }
 
-script Prologue_Oak_Dialogue{
-    lock
-    msgbox(gText_Prologue_YesTheyJust,MSGBOX_AUTOCLOSE,SPEAKER_OAK,TAIL_WHISPER,,PHONE_ON)
-    release
-    end
-}
-
 movement Prologue_LeaveChamber_Movement{
     walk_up * 3
         step_end
@@ -306,7 +298,7 @@ text gText_Prologue_WeveBeenWatching{
     format("We've been watching your progress for a while now, and your battles against the other three were absolutely captivating.")
 }
 text gText_Prologue_YoureGoingToBe{
-    format("You're being to be a great Champion to carry on the legacy of Sanfran... if you can defeat me!")
+    format("You're going to be a great Champion to carry on the legacy of Sanfran... if you can defeat me!")
 }
 text gText_Prologue_Fantastic{
     format("Fantastic work, Adam.")
@@ -318,7 +310,7 @@ text gText_Prologue_AndPerhaps{
     format("And perhaps, you will be Sanfran's last true Champion.")
 }
 text gText_Prologue_WearThis{
-    format("Wear this title as much as I did when I earned it! And now, for the Hall of Fame!")
+    format("Wear this title with as much as I did when I earned it! And now, for the Hall of Fame!")
 }
 text gText_Prolouge_ItsNotAFull{
     format("Its not the usual celebration, but of course, with the recent news, the budget has been slashed. But we've figured a small gathering with the Elite Four and Gym Leaders would be nice.")
@@ -332,7 +324,7 @@ text gText_Prologue_ThankYouAll{
 }
 
 text gText_Prologue_FirstOfCourse{
-    format("First of course, congratulations to the newest Champion, Adam!Despite not being from here, you've excelled in our region's competitive climate, and we've honored to cement you into our Hall of Fame.")
+    format("First of course, congratulations to the newest Champion, Adam!Despite not being from here, you've excelled in our region's competitive climate, and we're honored to cement you into our Hall of Fame.")
 }
 text gText_Prologue_IRegretToInform{
     format("Of course, I regret to inform you all that effective immediately, I'll be stepping down as a member of the Elite Four.")
@@ -341,10 +333,10 @@ text gText_Prologue_IWillRetireAnd{
     format("I will be retiring my career as a Trainer, and soon after, I'll be leaving the region.")
 }
 text gText_Prologue_ICanSoClearlySee{
-    format("There's no easy way to put this - I don't have any hope in the new League changes. I think this is beginning of a very dark road ahead of us - we have customs and traditions and culture built here, and we've let the dollars signs get in the way of that. For those who of you that haven't given up, and are fighting the good fight, you have my deepest respect...")
+    format("There's no easy way to put this - I don't have any hope in the new League changes. I think this is beginning of a very dark road ahead of us - we have customs and traditions and culture built here, and they've let the money get in the way of that. For those of you that haven't given up, and are fighting the good fight, you have my deepest respect...")
 }
 text gText_Prologue_AndIFearWeAreFighting{
-    format("but also my deepest sympathies. I fear this is a battle we've already lost, and its only a matter of time before we've stripped of everything... and I can't bear the thought of that.")
+    format("but also my deepest sympathies. I fear this is a battle we've already lost, and it's only a matter of time before we've been stripped of everything... and I can't bear the thought of that.")
 }
 text gText_Prologue_GoodLuckToAll{
     format("Good luck to all of you.")
@@ -356,7 +348,7 @@ text gText_Prologue_IKnewThey{
     format("I knew they were unhappy, but this is just as much of a shock to me as it is you guys.  But... Wikstrom was always about taking action. And I guess this was their best action.")
 }
 text gText_Prologue_OneWhiffOf{
-    format("One whiff of trouble and they leave? Just like that? Fine. WHo needs them, we'll find another Elite Four member, won't we?")
+    format("One whiff of trouble and they leave? Just like that? Fine. Who needs them, we'll find another Elite Four member, won't we?")
 }
 text gText_Prologue_FirstPryceThen{
     format("First Pryce sells out, now Wikstrom is quitting... perhaps I'm on the wrong side of history here.")
