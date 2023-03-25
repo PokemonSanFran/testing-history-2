@@ -69,14 +69,17 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
+    warpsilent(MAP_PALACEFINEARTS,18,29)
     end
 }
 
 script Debug_Script_2{
+    warpsilent(MAP_GLDNGTEWILDS,36,6)
     end
 }
 
 script Debug_Script_3{
+    additem(ITEM_POWDER_JAR,1)
     end
 }
 

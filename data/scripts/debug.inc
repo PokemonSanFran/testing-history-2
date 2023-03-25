@@ -60,15 +60,17 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_GLDNGTEWILDS, 0
+	warpsilent MAP_PALACEFINEARTS, 18, 29
 	end
 
 
 Debug_Script_2::
+	warpsilent MAP_GLDNGTEWILDS, 36, 6
 	end
 
 
 Debug_Script_3::
+	additem ITEM_POWDER_JAR, 1
 	end
 
 

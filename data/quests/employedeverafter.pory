@@ -15,7 +15,6 @@ const BRIDE_MISSING_GLDNGTEWILDS = 3
 const FLAG_HIDE_BRIDE_A = FLAG_TEMP_1
 const FLAG_HIDE_BRIDE_MISSING = FLAG_TEMP_3
 
-
 const FLAG_HIDE_BRIDE_A_GLDNGTEWILDS = FLAG_TEMP_2
 const FLAG_HIDE_BRIDE_MISSING_GLDNGTEWILDS = FLAG_TEMP_3
 
@@ -58,10 +57,6 @@ script Quest_Employedeverafter_StartQuest{
     end
 }
 
-script Quest_Employedeverafter_FoundBride_Dialogue{
-    
-}
-
 script Quest_Employedeverafter_LockAndHideBride_Script{
     if (var(VAR_QUEST_EMPLOYEDEVERAFTER_STATE) == LOOK_FOR_BRIDE){
         setobjectxy(BRIDE_A,17,34)
@@ -95,6 +90,14 @@ script Quest_Employedeverafter_Gldngtewilds_HideBrideA_Script{
     return
 }
 
+script Quest_Employedeverafter_MoveBrideA_Gldngtewilds_Script{
+    if (var(VAR_QUEST_EMPLOYEDEVERAFTER_STATE) == FOUND_BRIDE){
+        setobjectxy(BRIDE_A_GLDNGTEWILDS,44,6)
+            setobjectxyperm(BRIDE_A_GLDNGTEWILDS,44,6)
+    }
+    return
+}
+
 script Quest_Employedeverafter_Gldngtewilds_PositionBrideA_Script{
     if (var(VAR_QUEST_EMPLOYEDEVERAFTER_STATE) == FOUND_RING){
         setobjectxy(BRIDE_A_GLDNGTEWILDS,42,31)
@@ -109,15 +112,34 @@ script Quest_Employedeverafter_BrideMissing_Interact_Script{
         case FOUND_BRIDE: goto(Quest_Employedeverafter_WonderAboutRing_Dialogue)
         default: return
 }
+}
 
 script Quest_Employedeverafter_BrideA_Interact_Script{
     msgbox(gText_Employedeverafter_ICantBelieve,MSGBOX_NPC,SPEAKER_KATHARINA)
+    applymovement(BRIDE_A_GLDNGTEWILDS,Common_Movement_FaceOriginalDirection)
+    waitmovement(BRIDE_A_GLDNGTEWILDS)
+    end
+}
+
+script Quest_Employedeverafter_MovePlayerIntoSecondPosition_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1)
+
+        if (var(VAR_TEMP_0) != 45 || (var(VAR_TEMP_1) != 7)){
+            fadescreen(FADE_TO_BLACK)
+                setobjectxy(PLAYER,45,7)
+                TeleportCamera(45,7)
+                applymovement(PLAYER,Common_Movement_FaceUp)
+                waitmovement(PLAYER)
+                fadescreen(FADE_FROM_BLACK)
+        }
+    return
 }
 
 script Quest_Employedeverafter_PostBattle_Dialogue{
+    call(Quest_Employedeverafter_MovePlayerIntoSecondPosition_Script)
     setvar(VAR_QUEST_EMPLOYEDEVERAFTER_STATE,FOUND_BRIDE)
     msgbox(gText_Gldngtewilds_ImSupposedToBeGetting,MSGBOX_NPC,SPEAKER_HELEN)
-    msgbox(gText_Employedeverafter_AreYouGettingMarriedAT,,SPEAKER_ZOEY,,EMOTE_CONFUSE)
+    msgbox(gText_Employedeverafter_AreYouGettingMarriedAt,,SPEAKER_ZOEY,,EMOTE_CONFUSE)
     msgbox(gText_Employedeverafter_HowDid,,SPEAKER_HELEN)
     msgbox(gText_Employedeverafter_IMetYourFiance,,SPEAKER_ZOEY)
     closemessage
@@ -138,7 +160,9 @@ script Quest_Employedeverafter_PostBattle_Dialogue{
     msgbox(gText_Employedeverafter_Kath,,SPEAKER_HELEN,,EMOTE_SHOCK)
     closemessage
 
-    applymovement(BRIDE_A_GLDNGTEWILDS,Quest_Employedeverafter_WalkUpHill_Movement)
+    addobject(BRIDE_A_GLDNGTEWILDS)
+    applymovement(BRIDE_MISSING_GLDNGTEWILDS,Common_Movement_FaceLeft)
+    applymovement(BRIDE_A_GLDNGTEWILDS,Quest_Employedeverafter_WalkToBride_Movement)
     waitmovement(BRIDE_A_GLDNGTEWILDS)
 
     msgbox(gText_Employedeverafter_IfIWasntSoRelieved,,SPEAKER_KATHARINA,,EMOTE_ANGRY)
@@ -166,6 +190,9 @@ script Quest_Employedeverafter_CheckForRing_Script{
 
 script Quest_Employedeverafter_WonderAboutRing_Dialogue{
     call(Quest_Employedeverafter_CheckForRing_Script)
+    applymovement(BRIDE_A_GLDNGTEWILDS,Common_Movement_FaceRight)
+    applymovement(BRIDE_MISSING_GLDNGTEWILDS,Common_Movement_FaceLeft)
+    waitmovement(BRIDE_MISSING_GLDNGTEWILDS)
     msgbox(gText_Employedeverafter_UghWhyDid,,SPEAKER_HELEN) 
     msgbox(gText_Employedeverafter_YoureAskingMe,,SPEAKER_KATHARINA)
     closemessage
@@ -173,24 +200,63 @@ script Quest_Employedeverafter_WonderAboutRing_Dialogue{
 }
 
 script Quest_Employedeverafter_FoundRing_Dialogue{
+    call(Quest_Employedeverafter_MovePlayerIntoSecondPosition_Script)
+    applymovement(BRIDE_A_GLDNGTEWILDS,Common_Movement_FaceDown)
+    applymovement(BRIDE_MISSING_GLDNGTEWILDS,Common_Movement_FaceDown)
+    waitmovement(BRIDE_MISSING_GLDNGTEWILDS)
     msgbox(gText_Employedeverafter_IThinkIGot,,SPEAKER_ZOEY)
+    msgbox(gText_Employedeverafter_WoahBaby,,SPEAKER_HELEN)
+    msgbox(gText_Employedeverafter_AwwYouShouldnt,,SPEAKER_KATHARINA)
+    closemessage
+    applymovement(BRIDE_A_GLDNGTEWILDS,Common_Movement_FaceRight)
+    applymovement(BRIDE_MISSING_GLDNGTEWILDS,Common_Movement_FaceLeft)
+    waitmovement(BRIDE_MISSING_GLDNGTEWILDS)
+    msgbox(gText_Employedeverafter_DoYouStillWant,,SPEAKER_KATHARINA)
+    msgbox(gText_Employedeverafter_MoreThanAnything,,SPEAKER_HELEN,,EMOTE_LOVE)
+    closemessage
+    applymovement(BRIDE_A_GLDNGTEWILDS,Common_Movement_FaceDown)
+    waitmovement(BRIDE_A_GLDNGTEWILDS)
+    msgbox(gText_Employedeverafter_MyAuntGave,,SPEAKER_KATHARINA)
+    giveitem(ITEM_TM31)
+    applymovement(BRIDE_A_GLDNGTEWILDS,Quest_Employedeverafter_WalkAway_Movement)
+    applymovement(BRIDE_MISSING_GLDNGTEWILDS,Quest_Employedeverafter_WalkAway_Movement)
     setvar(VAR_QUEST_EMPLOYEDEVERAFTER_STATE,FOUND_RING)
     completequest(QUEST_EMPLOYEDEVERAFTER) 
+    fadescreen(FADE_TO_BLACK)
+    removeobject(BRIDE_A_GLDNGTEWILDS)
+    removeobject(BRIDE_MISSING_GLDNGTEWILDS)
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
 }
 
 movement Quest_Employedeverafter_LeaveAltar_Movement{
     walk_faster_down * 13
-    step_end
+        step_end
 }
 movement Quest_Employedeverafter_WatchBridgeLeave_Movement{
     delay_16
-    face_right
-    face_down
-    step_end
+        face_right
+        face_down
+        step_end
 }
 
 movement Quest_Employedeverafter_WalkAfterBride_Movement{
     walk_down * 8
+        step_end
+}
+
+movement Quest_Employedeverafter_WalkToBride_Movement{
+    walk_right * 6
+    walk_down
+    walk_right * 2
+    step_end
+}
+
+movement Quest_Employedeverafter_WalkAway_Movement{
+    walk_left * 2
+    walk_up
+    walk_left * 6
     step_end
 }
 
@@ -207,5 +273,98 @@ text gText_Employedeverafter_EverybodyIsOff{
     format("")
 }
 text gText_Employedeverafter_IHopeSheTurns{
+    format("")
+}
+text gText_Employedeverafter_ICantBelieve{
+    format("")
+}
+text gText_Employedeverafter_AreYouGettingMarriedAt{
+    format("")
+}
+text gText_Employedeverafter_HowDid{
+    format("")
+}
+text gText_Employedeverafter_IMetYourFiance{
+    format("")
+}
+text gText_Employedeverafter_IKnowBut{
+    format("")
+}
+text gText_Employedeverafter_IGotLaidOff{
+    format("")
+}
+text gText_Employedeverafter_AndImSoScared{
+    format("")
+}
+text gText_Employedeverafter_ButIKnowSheWouldNever{
+    format("")
+}
+text gText_Employedeverafter_AndSheSaid{
+    format("")
+}
+text gText_Employedeverafter_WowThatMakesALot{
+    format("")
+}
+text gText_Employedeverafter_IDidntSay{
+    format("")
+}
+text gText_Employedeverafter_HowCouldYouBe{
+    format("")
+}
+text gText_Employedeverafter_Kath{
+    format("")
+}
+text gText_Employedeverafter_IfIWasntSoRelieved{
+    format("")
+}
+text gText_Employedeverafter_IReallyThought{
+    format("")
+}
+text gText_Employedeverafter_YeahButPlayer{
+    format("")
+}
+text gText_Employedeverafter_ImReady{
+    format("")
+}
+text gText_Employedeverafter_OkayTheresOneProblem{
+    format("")
+}
+text gText_Employedeverafter_IOnlyFoundYou{
+    format("")
+}
+text gText_Employedeverafter_AndOnTheWayUp{
+    format("")
+}
+text gText_Employedeverafter_YouDidWhat{
+    format("")
+}
+text gText_Employedeverafter_ThesePeople{
+    format("")
+}
+text gText_Employedeverafter_WhatAreWeGoing{
+    format("")
+}
+text gText_Employedeverafter_UghWhyDid{
+    format("")
+}
+text gText_Employedeverafter_YoureAskingMe{
+    format("")
+}
+text gText_Employedeverafter_IThinkIGot{
+    format("")
+}
+text gText_Employedeverafter_WoahBaby{
+    format("")
+}
+text gText_Employedeverafter_AwwYouShouldnt{
+    format("")
+}
+text gText_Employedeverafter_DoYouStillWant{
+    format("")
+}
+text gText_Employedeverafter_MoreThanAnything{
+    format("")
+}
+text gText_Employedeverafter_MyAuntGave{
     format("")
 }
