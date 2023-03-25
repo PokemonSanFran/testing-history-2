@@ -111,21 +111,70 @@ script Quest_Employedeverafter_BrideMissing_Interact_Script{
 }
 
 script Quest_Employedeverafter_BrideA_Interact_Script{
-    msgbox(gText_Employedeverafter_ICantBeleive,MSGBOX_NPC,SPEAKER_KATHARINA)
+    msgbox(gText_Employedeverafter_ICantBelieve,MSGBOX_NPC,SPEAKER_KATHARINA)
 }
 
 script Quest_Employedeverafter_PostBattle_Dialogue{
+    setvar(VAR_QUEST_EMPLOYEDEVERAFTER_STATE,FOUND_BRIDE)
+    msgbox(gText_Gldngtewilds_ImSupposedToBeGetting,MSGBOX_NPC,SPEAKER_HELEN)
+    msgbox(gText_Employedeverafter_AreYouGettingMarriedAT,,SPEAKER_ZOEY,,EMOTE_CONFUSE)
+    msgbox(gText_Employedeverafter_HowDid,,SPEAKER_HELEN)
+    msgbox(gText_Employedeverafter_IMetYourFiance,,SPEAKER_ZOEY)
+    closemessage
+    applymovement(BRIDE_MISSING_GLDNGTEWILDS,Common_Movement_FaceAwayPlayer)
+    waitmovement(BRIDE_MISSING_GLDNGTEWILDS)
+    msgbox(gText_Employedeverafter_IKnowBut,,SPEAKER_HELEN)
+    applymovement(BRIDE_MISSING_GLDNGTEWILDS,Common_Movement_FacePlayer)
+    waitmovement(BRIDE_MISSING_GLDNGTEWILDS)
+    msgbox(gText_Employedeverafter_IGotLaidOff,,SPEAKER_HELEN,EMOTE_SAD)
+    msgbox(gText_Employedeverafter_AndImSoScared,,SPEAKER_HELEN,EMOTE_SAD)
+    msgbox(gText_Employedeverafter_ButIKnowSheWouldNever,,SPEAKER_HELEN)
+    msgbox(gText_Employedeverafter_AndSheSaid,,SPEAKER_HELEN,,EMOTE_LOVE)
+    msgbox(gText_Employedeverafter_WowThatMakesALot,,SPEAKER_HELEN)
+    msgbox(gText_Employedeverafter_IDidntSay,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    closemessage
+
+    msgbox(gText_Employedeverafter_HowCouldYouBe,,SPEAKER_KATHARINA,TAIL_SHOUT,EMOTE_ANGRY)
+    msgbox(gText_Employedeverafter_Kath,,SPEAKER_HELEN,,EMOTE_SHOCK)
+    closemessage
+
+    applymovement(BRIDE_A_GLDNGTEWILDS,Quest_Employedeverafter_WalkUpHill_Movement)
+    waitmovement(BRIDE_A_GLDNGTEWILDS)
+
+    msgbox(gText_Employedeverafter_IfIWasntSoRelieved,,SPEAKER_KATHARINA,,EMOTE_ANGRY)
+    msgbox(gText_Employedeverafter_IReallyThought,,SPEAKER_KATHARINA,,EMOTE_SAD)
+    msgbox(gText_Employedeverafter_YeahButPlayer,,SPEAKER_HELEN)
+    msgbox(gText_Employedeverafter_ImReady,,SPEAKER_HELEN)
+    msgbox(gText_Employedeverafter_OkayTheresOneProblem,,SPEAKER_KATHARINA)
+    closemessage
+    msgbox(gText_Employedeverafter_IOnlyFoundYou,,SPEAKER_HELEN)
+    msgbox(gText_Employedeverafter_AndOnTheWayUp,,SPEAKER_HELEN)
+    msgbox(gText_Employedeverafter_YouDidWhat,,SPEAKER_KATHARINA,,EMOTE_SHOCK)
+    msgbox(gText_Employedeverafter_ThesePeople,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    msgbox(gText_Employedeverafter_WhatAreWeGoing,,SPEAKER_HELEN)
+    closemessage
+    end
 }
 
-script Quest_Employedeverafter_WonderAboutRing_Dialogue{
+script Quest_Employedeverafter_CheckForRing_Script{
     checkitem(ITEM_POWDER_JAR,1)
-
     if (var(VAR_RESULT)){
         goto(Quest_Employedeverafter_FoundRing_Dialogue)
     }
+    return
+}
+
+script Quest_Employedeverafter_WonderAboutRing_Dialogue{
+    call(Quest_Employedeverafter_CheckForRing_Script)
+    msgbox(gText_Employedeverafter_UghWhyDid,,SPEAKER_HELEN) 
+    msgbox(gText_Employedeverafter_YoureAskingMe,,SPEAKER_KATHARINA)
+    closemessage
+    end
 }
 
 script Quest_Employedeverafter_FoundRing_Dialogue{
+    msgbox(gText_Employedeverafter_IThinkIGot,,SPEAKER_ZOEY)
+    setvar(VAR_QUEST_EMPLOYEDEVERAFTER_STATE,FOUND_RING)
     completequest(QUEST_EMPLOYEDEVERAFTER) 
 }
 
