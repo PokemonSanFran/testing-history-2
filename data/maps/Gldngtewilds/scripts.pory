@@ -29,13 +29,13 @@ script Gldngtewilds_EventScript_Helen{
 }
 
 text gText_Gldngtewilds_HaveYouEver{
-    format("")
+    format("Have you ever gotten cold feet?")
 }
 
 text gText_Gldngtewilds_NotReadyForBattle{
-    format("")
+    format("I'm not ready for battle or marriage...")
 }
 
 text gText_Gldngtewilds_ImSupposedToBeGetting{
-    format("")
+    format("I'm supposed to be getting married today. But I don't think I can do it...")
 }

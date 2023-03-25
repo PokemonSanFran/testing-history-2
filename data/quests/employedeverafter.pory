@@ -268,110 +268,110 @@ movement Quest_Employedeverafter_WalkAway_Movement{
 }
 
 text gText_Employedeverafter_WhyWouldShe{
-    format("")
+    format("Why would she just leave me here?")
 }
 text gText_Employedeverafter_WhatAMess{
-    format("")
+    format("What a mess...")
 }
 text gText_Employedeverafter_TheBrideGotCold{
-    format("")
+    format("I think the bride got cold feet. She was supposed to be here an hour ago... but nothing.")
 }
 text gText_Employedeverafter_EverybodyIsOff{
-    format("")
+    format("Everybody is off looking for her, but we haven't had any luck.")
 }
 text gText_Employedeverafter_IHopeSheTurns{
-    format("")
+    format("I hope she turns up!")
 }
 text gText_Employedeverafter_ICantBelieve{
-    format("")
+    format("I can't believe what a day it's been...")
 }
 text gText_Employedeverafter_AreYouGettingMarriedAt{
-    format("")
+    format("Are you getting married at Palacefinearts?")
 }
 text gText_Employedeverafter_HowDid{
-    format("")
+    format("How did you know that?")
 }
 text gText_Employedeverafter_IMetYourFiance{
-    format("")
+    format("I met your finance. The whole wedding party, actually. Its super messed up for you to just leave!")
 }
 text gText_Employedeverafter_IKnowBut{
-    format("")
+    format("I know I should be there, but...")
 }
 text gText_Employedeverafter_IGotLaidOff{
-    format("")
+    format("I got laid off a few months ago. Its really hard to find work, so Katharina has been supporting both of us.")
 }
 text gText_Employedeverafter_AndImSoScared{
-    format("")
+    format("And I'm so scared that she's going to fall out of love with me if I can't hold up my end of the deal. Like, will she think I'm useless?")
 }
 text gText_Employedeverafter_ButIKnowSheWouldNever{
-    format("")
+    format("But I know she would never do that!")
 }
 text gText_Employedeverafter_AndSheSaid{
-    format("")
+    format("And she's even told me a million times that she's happy to support us, that we're a team....")
 }
 text gText_Employedeverafter_WowThatMakesALot{
-    format("")
+    format("Wow, that makes a lot of sense. Thank you, {PLAYER}!")
 }
 text gText_Employedeverafter_IDidntSay{
-    format("")
+    format("...I didn't say anything.")
 }
 text gText_Employedeverafter_HowCouldYouBe{
-    format("")
+    format("How could you be so stupid?!?!?!")
 }
 text gText_Employedeverafter_Kath{
-    format("")
+    format("Kath?")
 }
 text gText_Employedeverafter_IfIWasntSoRelieved{
-    format("")
+    format("If I wasn't so relieved, I'd be so angry!")
 }
 text gText_Employedeverafter_IReallyThought{
-    format("")
+    format("I really thought you were just going to leave me! At the altar!")
 }
 text gText_Employedeverafter_YeahButPlayer{
-    format("")
+    format("Yeah, but {PLAYER} helped talk me out it.")
 }
 text gText_Employedeverafter_ImReady{
-    format("")
+    format("I'm sorry. But I'm ready now. Let's go get married.")
 }
 text gText_Employedeverafter_OkayTheresOneProblem{
-    format("")
+    format("...there's one problem.")
 }
 text gText_Employedeverafter_IOnlyFoundYou{
-    format("")
+    format("I only found you because I was standing on top of some hill...and I saw you from there.")
 }
 text gText_Employedeverafter_AndOnTheWayUp{
-    format("")
+    format("And on the way up the hill, I was so angry... I threw your ring into a lake.")
 }
 text gText_Employedeverafter_YouDidWhat{
-    format("")
+    format("You did what?!?!?")
 }
 text gText_Employedeverafter_ThesePeople{
-    format("")
+    format("These people are insane. And perfect for each other.")
 }
 text gText_Employedeverafter_WhatAreWeGoing{
-    format("")
+    format("What are we going to do?")
 }
 text gText_Employedeverafter_UghWhyDid{
-    format("")
+    format("Ugh, why are we like this?!?")
 }
 text gText_Employedeverafter_YoureAskingMe{
-    format("")
+    format("You're asking me?")
 }
 text gText_Employedeverafter_IThinkIGot{
-    format("")
+    format("I think I got your ring from the lake.")
 }
 text gText_Employedeverafter_WoahBaby{
-    format("")
+    format("Woah baby, you went down and got it for us?")
 }
 text gText_Employedeverafter_AwwYouShouldnt{
-    format("")
+    format("Aww, you shouldn't have!")
 }
 text gText_Employedeverafter_DoYouStillWant{
-    format("")
+    format("Do you still want to do this?")
 }
 text gText_Employedeverafter_MoreThanAnything{
-    format("")
+    format("More than anything.")
 }
 text gText_Employedeverafter_MyAuntGave{
-    format("")
+    format("My aunt gave us this for our wedding... but you can have it instead.")
 }

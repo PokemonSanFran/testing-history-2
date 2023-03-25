@@ -739,5 +739,5 @@ Lakemerced_Quest_Theboywhocrieswithwolves_EventScript_ItemStuff9::
 
 Gldngtewilds_Quest_Employedeverafter_EventScript_EngagementRing::
     finditem ITEM_ENGAGEMENT_RING
-	call_if_quest_active QUEST_EMPLOYEDEVERAFTER, Quest_Employedeverafter_MovePlayerIntoPosition_Script
+    call_if_set FLAG_QUEST_EMPLOYEDEVERAFTER_FOUND_BRIDE, Quest_Employedeverafter_ProgressQuestWithRing_Script
     end

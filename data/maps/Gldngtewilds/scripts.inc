@@ -32,10 +32,11 @@ Gldngtewilds_EventScript_Helen::
 
 
 gText_Gldngtewilds_HaveYouEver::
-	.string "$"
+	.string "Have you ever gotten cold feet?$"
 
 gText_Gldngtewilds_NotReadyForBattle::
-	.string "$"
+	.string "I'm not ready for battle or marriage...$"
 
 gText_Gldngtewilds_ImSupposedToBeGetting::
-	.string "$"
+	.string "I'm supposed to be getting married\n"
+	.string "today. But I don't think I can do it...$"
