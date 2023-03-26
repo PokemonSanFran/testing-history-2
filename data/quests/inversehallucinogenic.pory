@@ -1,0 +1,51 @@
+//Quest_Inversehallucinogenic_
+//gText_Inversehallucinogenic_
+const FLAG_HIDE_GYM_TRAINERS = FLAG_TEMP_1
+const FLAG_HIDE_DRUG_TRAINERS = FLAG_TEMP_2
+
+script Quest_Inversehallucinogenic_SetGymWarp_Script{
+    returnqueststate(QUEST_INVERSEHALLUCINOGENIC)
+
+    if (var(VAR_RESULT) == QUEST_MENU_SET_ACTIVE){
+        setdynamicwarp(MAP_INSIDE_OF_TRUCK,2,2)
+    }
+    else {
+        setdynamicwarp(MAP_HAIGHTASHBURY_GYM,8,15)
+    }
+    return
+}
+
+script Quest_Inversehallucinogenic_EventScript_Merril{
+    setflag(FLAG_INVERSE_BATTLE)
+    trainerbattle_single(TRAINER_DRUG_MERRIL,gText_Blank,gText_Blank)
+    msgbox(gText_Blank)
+    release
+    end
+}
+
+script Quest_Inversehallucinogenic_EventScript_Kinsey{
+    setflag(FLAG_INVERSE_BATTLE)
+    trainerbattle_single(TRAINER_DRUG_KINSEY,gText_Blank,gText_Blank)
+    msgbox(gText_Blank)
+    release
+    end
+}
+
+script Quest_Inversehallucinogenic_EventScript_Kaley{
+    setflag(FLAG_INVERSE_BATTLE)
+    trainerbattle_single(TRAINER_DRUG_KALEY,gText_Blank,gText_Blank)
+    msgbox(gText_Blank)
+    release
+    end
+}
+
+script Quest_Inversehallucinogenic_EventScript_Torey{
+    setflag(FLAG_INVERSE_BATTLE)
+    trainerbattle_single(TRAINER_DRUG_TOREY,gText_Blank,gText_Blank)
+    msgbox(gText_Blank)
+    release
+    end
+}
+
+script Quest_Inversehallucinogenic_PryceBattle_Script{
+}

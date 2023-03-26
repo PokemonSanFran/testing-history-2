@@ -4,6 +4,7 @@ mapscripts Haightashbury_MapScripts {
         call(Quest_AngelDelivery_Hide_BikerA_Script)
         call(Quest_LastMusicVenue_HidePublicDrummers)
         call(LetsGrabLunch_CheckRestorationProgress_Script)
+        //call(Quest_Inversehallucinogenic_SetGymWarp_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [

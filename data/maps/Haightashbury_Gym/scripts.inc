@@ -16,3 +16,19 @@ Haightashbury_Gym_MapScripts_OnTransition_2:
 	goto EnterPryce_StartBattle_ObjectSetup_Script
 	return
 
+
+Haightashbury_Gym_EventScript_Merril::
+	return
+
+
+Haightashbury_Gym_EventScript_Kinsey::
+	return
+
+
+Haightashbury_Gym_EventScript_Kaley::
+	return
+
+
+Haightashbury_Gym_EventScript_Torey::
+	return
+

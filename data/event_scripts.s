@@ -1252,7 +1252,7 @@ Script_RemoveTint::
 .include "data/quests/biomeresearch.inc"
 .include "data/quests/berrysustainability.inc"
 // .include "data/quests/theonlyheadshopintown.inc"
-// .include "data/quests/inversehallucinogenic.inc"
+.include "data/quests/inversehallucinogenic.inc"
 // .include "data/quests/unknownclairquesta.inc"
 // .include "data/quests/unknownclairquestb.inc"
 .include "data/quests/contractorporygon.inc"

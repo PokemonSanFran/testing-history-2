@@ -884,7 +884,12 @@
 #define TRAINER_BUSSER                       186
 #define TRAINER_CASHIER                      187
 #define TRAINER_DRASNA_PROLOGUE              262
-#define TRAINER_HELEN                        751
+#define TRAINER_DRUG_MERRIL                  139
+#define TRAINER_DRUG_KINSEY                  140
+#define TRAINER_DRUG_KALEY                   141
+#define TRAINER_DRUG_TOREY                   142
+#define TRAINER_HELEN                      751
+
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

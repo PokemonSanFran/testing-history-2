@@ -241,7 +241,7 @@ script Prologue_Koga_Dialogue{
 }
 
 script Prologue_Lenora_Dialogue{
-    msgbox(gText_Prologue_WellTakeEmHeadOn,MSGBOX_AUTOCLOSE,SPEAKER_LENORA)
+    msgbox(gText_Prologue_HeReallyWent,MSGBOX_AUTOCLOSE,SPEAKER_LENORA,,EMOTE_ANGRY)
     end
 }
 
@@ -353,8 +353,8 @@ text gText_Prologue_OneWhiffOf{
 text gText_Prologue_FirstPryceThen{
     format("First Pryce sells out, now Wikstrom is quitting... perhaps I'm on the wrong side of history here.")
 }
-text gText_Prologue_WellTakeEmHeadOn{
-    format("That's so sad! Just gone, just like that. I'd give anything to go back before those announcements. So much change, so quickly!")
+text gText_Prologue_HeReallyWent{
+    format("That snake Pryce really went through with it! Why do this to us? To me? I don't understand... why? What do you have to gain?")
 }
 text gText_Prologue_ItsGonnaBeAYearAndThen{
     format("It's gonna be a year before they change their minds and are begging to go back to the way things were, no doubt! We got a good thing going for us, and we know what we're doing. We're Gym Leaders, after all!")

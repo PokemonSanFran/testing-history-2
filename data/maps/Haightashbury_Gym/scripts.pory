@@ -9,3 +9,15 @@ script Haightashbury_Gym_MapScripts_OnTransition {
         case 3: goto(EnterPryce_StartBattle_ObjectSetup_Script)
     }
 }
+
+script Haightashbury_Gym_EventScript_Merril{
+}
+
+script Haightashbury_Gym_EventScript_Kinsey{
+}
+
+script Haightashbury_Gym_EventScript_Kaley{
+}
+
+script Haightashbury_Gym_EventScript_Torey{
+}

@@ -7,6 +7,8 @@ script EnterPryce_StartBattle_ObjectSetup_Script {
 }
 
 script EnterPryce_Event_Script {
+    goto_if_quest_active(QUEST_INVERSEHALLUCINOGENIC,Quest_Inversehallucinogenic_PryceBattle_Script)
+    goto_if_quest_complete(QUEST_INVERSEHALLUCINOGENIC,Haightashbury_Gym_PryceRematch_Script)
     switch (var (VAR_GYM_7_STATE)) {
     case GYM_SAVE_BEFORE_LEADER:
         goto(EnterPryce_FacePlayerBeforeBattle_Script)
@@ -184,6 +186,9 @@ script EnterPryce_PostDefeat2_Dialogue {
     closemessage
         release
     end
+}
+
+script Haightashbury_Gym_PryceRematch_Script{
 }
 
 text gText_EnterPryce_StupidParade {

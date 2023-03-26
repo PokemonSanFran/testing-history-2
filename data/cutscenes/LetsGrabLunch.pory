@@ -118,16 +118,24 @@ script LetsGrabLunch_InteractArcherDiner_Dialogue {
 
     msgbox(gText_LetsGrabLunch_ImJustPlanning,,SPEAKER_ARCHER)
 
-        multichoicedefault(18,6,MULTI_LUNCH_WARP,1,FALSE)
+        multichoice2(1,1,LetsGrabLunch_LocationList,0,2,0)
 
         switch (var(VAR_RESULT)){
             case 0: goto(LetsGrabLunch_Chinatown)   
             case 1: goto(LetsGrabLunch_Marin)   
             case 2: goto(LetsGrabLunch_Treasureisland)   
-            case 3: goto(LetsGrabLunch_Haightashbury)
             case -1:
+            case 3:
             default: goto(LetsGrabLunch_CloseMenu)
         }
+}
+
+text LetsGrabLunch_LocationList{
+    "Chinatown$"
+    "Marin$"
+    "Treasureisland$"
+    "Cancel$"
+    "$"
 }
 
 script LetsGrabLunch_CloseMenu{
@@ -179,27 +187,6 @@ script LetsGrabLunch_Treasureisland {
                 end
         }else {
             warpsilent(MAP_TREASUREISLAND,3,15)
-        }
-}
-script LetsGrabLunch_Haightashbury {
-    //PSF TODO Replace this with an if statement if the ousting Pryce quest is done
-
-    random(2)
-
-        if (var(VAR_RESULT) == 1){
-            msgbox(gText_LetsGrabLunch_RightHandMan,,SPEAKER_ARCHER)
-        }else {
-                    msgbox(gText_LetsGrabLunch_IsTheOnlyPlace,,SPEAKER_ARCHER)
-                }
-
-    msgbox(gText_LetsGrabLunch_DoYouWantHaightashbury,MSGBOX_YESNO)
-        if (var(VAR_RESULT) == NO){
-
-            closemessage
-                releaseall
-                end
-        }else {
-            warpsilent(MAP_HAIGHTASHBURY,7,27)
         }
 }
 
@@ -338,7 +325,7 @@ text gText_LetsGrabLunch_HahaHowCanIHelp {
 }
 
 text gText_LetsGrabLunch_CanYouTryTalking {
-    format("Hmm. Can you try talking to Lenora or Cilan? Or maybe visit Chinatown's Gym and see what we can do? Maybe there's even hope for Haightashbury's Gym… yeah, any of those are good starts.")
+    format("Hmm. Can you try talking to Lenora or Cilan? Or maybe visit Chinatown's Gym and see what we can do? Yeah, any of those are good starts.")
 }
 
 text gText_LetsGrabLunch_WhatAreYouGoing {
@@ -366,7 +353,7 @@ text gText_LetsGrabLunch_DoYouWantChinatown {
 }
 
 text gText_LetsGrabLunch_WasALittle {
-    format("Lenora was a little receptive to my idea. They said it was a “good first step”, but wouldn't sign on unless I had a plan for dismantling the entire Psfbadfguy League, which in their eyes, is a “total failure for our Trainers”.")
+    format("Lenora was a little receptive to my idea. They said it was a “good first step”, but wouldn't sign on unless I had a plan for dismantling the entire Ycombinator League, which in their eyes, is a “total failure for our Trainers”.")
 }
 
 text gText_LetsGrabLunch_DoYouWantMarin {
@@ -387,18 +374,6 @@ text gText_LetsGrabLunch_TheyreIntense {
 
 text gText_LetsGrabLunch_DoYouWantTreasureisland {
     format("Do you want to go to Treasureisland?")
-}
-
-text gText_LetsGrabLunch_RightHandMan {
-    format("Alan was Pryce's right hand man. I wonder if he has any plans now that Pryce is gone…?")
-}
-
-text gText_LetsGrabLunch_IsTheOnlyPlace {
-    format("You know, Haightashbury is the only place that got to keep its Gym, but only because Pryce is a friggin' snake. Man, what I'd give to see him get what he deserves…")
-}
-
-text gText_LetsGrabLunch_DoYouWantHaightashbury {
-    format("Do you want to go to Haightashbury?")
 }
 
 text gText_LetsGrabLunch_FastForwardAdvance {
