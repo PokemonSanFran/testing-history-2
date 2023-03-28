@@ -65,15 +65,27 @@ Haightashbury_Gym_PryceRematch_Script_1:
 
 
 Haightashbury_Gym_PreRematch_Dialogue::
-	msgbox gText_Blank
-	trainerbattle_no_intro TRAINER_DRUG_PRYCE, gText_Blank
+	msgbox gText_Haightashbury_Gym_PlayerAreYou, MSGBOX_NPC, SPEAKER_PRYCE
+	trainerbattle_no_intro TRAINER_DRUG_PRYCE, gText_Haightashbury_Gym_IShouldTryBattlingSober
 	goto Haightashbury_Gym_PostRematch_Dialogue
 	return
 
 
 Haightashbury_Gym_PostRematch_Dialogue::
-	msgbox gText_Blank
+	msgbox gText_Haightashbury_Gym_OohImBurned, MSGBOX_NPC, SPEAKER_PRYCE
 	closemessage
 	release
 	end
 
+
+gText_Haightashbury_Gym_PlayerAreYou::
+	.string "{PLAYER}! So glad I don't have to hold\n"
+	.string "back anymore... and I can break out the\l"
+	.string "real good batches!$"
+
+gText_Haightashbury_Gym_IShouldTryBattlingSober::
+	.string "I should try battling sober some day...$"
+
+gText_Haightashbury_Gym_OohImBurned::
+	.string "Oof, I'm burned out! Let's battle again\n"
+	.string "tomorrow, okay?$"

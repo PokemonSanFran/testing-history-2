@@ -69,30 +69,27 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    warpsilent(MAP_HAIGHTASHBURY_GYM,0)
-    end
-}
-
-script Debug_Script_2{
-    startquest(QUEST_INVERSEHALLUCINOGENIC)
-    warpsilent(MAP_HAIGHTASHBURY_GYM,0)
-    end
-}
-
-script Debug_Script_3{
-    setvar(VAR_PRYCE_STATE,QUEST_1_COMPLETE)
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SHUTDOWNMEDICINEMAN)
     warpsilent(MAP_HAIGHTASHBURY,5,27)
     end
 }
 
+script Debug_Script_2{
+    setvar(VAR_PRYCE_STATE,QUEST_1_COMPLETE)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_SHUTDOWNMEDICINEMAN)
+    warpsilent(MAP_HAIGHTASHBURY,5,27)
+    end
+}
+
+script Debug_Script_3{
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN)
+    end
+}
+
 script Debug_Script_4{
-    warpsilent(MAP_PACIFICA,0)
     end
 }
 
 script Debug_Script_5{
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN)
     end
 }
 
