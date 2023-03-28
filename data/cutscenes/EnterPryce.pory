@@ -2,12 +2,12 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const PRYCE = 1
 
 script EnterPryce_StartBattle_ObjectSetup_Script {
-    setobjectxyperm(PRYCE, 11, 10)
-    setobjectmovementtype(PRYCE, MOVEMENT_TYPE_FACE_LEFT)
+    setobjectxyperm(PRYCE,3,5)
+    setobjectmovementtype(PRYCE, MOVEMENT_TYPE_FACE_RIGHT)
 }
 
 script EnterPryce_Event_Script {
-    goto_if_quest_active(QUEST_INVERSEHALLUCINOGENIC,Quest_Inversehallucinogenic_PryceBattle_Script)
+    goto_if_quest_active(QUEST_INVERSEHALLUCINOGENIC,Quest_Inversehallucinogenic_Pryce_Interact_Script)
     goto_if_quest_complete(QUEST_INVERSEHALLUCINOGENIC,Haightashbury_Gym_PryceRematch_Script)
     switch (var (VAR_GYM_7_STATE)) {
     case GYM_SAVE_BEFORE_LEADER:
@@ -22,6 +22,7 @@ script EnterPryce_Event_Script {
 }
 
 script EnterPryce_MumbleToSelf_Dialogue {
+    lock
     setvar(VAR_GYM_7_STATE, GYM_SAVE_BEFORE_LEADER)
     msgbox(gText_EnterPryce_StupidParade,,SPEAKER_PRYCE)
     closemessage
@@ -49,8 +50,11 @@ script EnterPryce_MumbleToSelf_Dialogue {
     closemessage
     
     applymovement(PRYCE, EnterPryce_TakeDrugs)
-    waitmovement(0)
-    goto(EnterPryce_CalculateMovement_Script)
+    waitmovement(PRYCE)
+    applymovement(PLAYER,Common_Movement_WalkLeft)
+    waitmovement(PLAYER)
+    goto(EnterPsf7leader_ExplainLab_Dialogue)
+    //goto(EnterPryce_CalculateMovement_Script)
 }
 
 script EnterPryce_CalculateMovement_Script {
@@ -188,9 +192,6 @@ script EnterPryce_PostDefeat2_Dialogue {
     end
 }
 
-script Haightashbury_Gym_PryceRematch_Script{
-}
-
 text gText_EnterPryce_StupidParade {
     format("*grumble* stupid fucking parade…")
 }
@@ -240,20 +241,23 @@ text gText_EnterPryce_BadgeGet {
 }
 
 movement EnterPryce_PaceLeftFrontOfDesk {
-    walk_left * 5
+    walk_right * 3
     face_up
     step_end
 }
 
 movement EnterPryce_PaceRightFrontOfDesk {
-    walk_right * 5
+    walk_left * 3
     face_up
     step_end
 }
 
 movement EnterPryce_TakeDrugs {
-    walk_left * 2
+    walk_left
     walk_in_place_slow_up
+    delay_16
+    walk_down
+    walk_right
     step_end
 }
 

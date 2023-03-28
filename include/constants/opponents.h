@@ -860,9 +860,8 @@
 #define TRAINER_MAY_PLACEHOLDER             854
 
 //PSF OPPONENTS
-#define TRAINER_MUGGERA_MUGGERB             51
 #define TRAINER_STOLENTRADE_THIEF           11
-#define TRAINER_PEWFAT  681
+#define TRAINER_MUGGERA_MUGGERB             51
 #define TRAINER_BLACKBELT_A                 88
 #define TRAINER_BLACKBELT_B                 89
 #define TRAINER_BLACKBELT_C                 90
@@ -888,6 +887,8 @@
 #define TRAINER_DRUG_KINSEY                  140
 #define TRAINER_DRUG_KALEY                   141
 #define TRAINER_DRUG_TOREY                   142
+#define TRAINER_PEWFAT                      681
+#define TRAINER_DRUG_PRYCE                  794
 #define TRAINER_HELEN                      751
 
 

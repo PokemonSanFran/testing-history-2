@@ -5004,10 +5004,10 @@
     {
       "id": "LAYOUT_HAIGHTASHBURY_GYM",
       "name": "Haightashbury_Gym_Layout",
-      "width": 17,
-      "height": 16,
+      "width": 18,
+      "height": 28,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_BattleFactory",
+      "secondary_tileset": "gTileset_DewfordGym",
       "border_filepath": "data/layouts/Haightashbury_Gym/border.bin",
       "blockdata_filepath": "data/layouts/Haightashbury_Gym/map.bin"
     },

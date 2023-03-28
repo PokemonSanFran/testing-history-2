@@ -1,6 +1,7 @@
 const BUSINESS_MAN = 5
 const FLAG_HIDE_PRYCE = FLAG_TEMP_3
 const FLAG_HIDE_DEALER = FLAG_TEMP_3
+const FLAG_HIDE_PRYCE_GYM = FLAG_TEMP_3
 
 //gText_ShutDownMedicineMan_
 //Quest_ShutDownMedicineMan_
@@ -13,6 +14,15 @@ script Quest_ShutDownMedicineMan_HideDealer_Script{
         }
     return
 }
+
+script Quest_ShutDownMedicineMan_HideLeaderInGym_Script{
+    special(GetNumberOfBadges)
+        if ((var(VAR_PRYCE_STATE) == BATTLE_1_COMPLETE) || (var(VAR_RESULT) < 8)){
+            setflag(FLAG_HIDE_PRYCE_GYM)
+        }
+    return
+}
+
 script Quest_ShutDownMedicineMan_ControlLeaderVisibility{
     special(GetNumberOfBadges)
         if ((var(VAR_PRYCE_STATE) != BATTLE_1_COMPLETE) || (var(VAR_RESULT) < 8)){
@@ -76,6 +86,7 @@ script Quest_ShutDownMedicineMan_Reward_Dialogue{
         removeobject(BUSINESS_MAN)
         playse(SE_EXIT)
         closedoor(28,15)
+        setvar(VAR_PRYCE_STATE,QUEST_1_COMPLETE)
         completequest(QUEST_SHUTDOWNMEDICINEMAN)
 }
 

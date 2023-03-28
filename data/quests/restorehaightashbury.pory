@@ -1,0 +1,21 @@
+//gText_Restorehaightashbury_
+//Quest_Restorehaightashbury_
+
+const PRYCE = 1
+const FLAG_HIDE_PRYCE_GYM = FLAG_TEMP_3
+
+script Quest_Restorehaightashbury_Leader_Visibility_Script{
+    setflag(FLAG_HIDE_PRYCE_GYM)
+}
+
+script Quest_Restorehaightashbury_Dialogue{
+    lock
+    startquest(QUEST_RESTOREHAIGHTASHBURY)
+    msgbox(gText_Blank)
+    completequest(QUEST_RESTOREHAIGHTASHBURY)
+    msgbox(gText_Blank)
+    closemessage
+    removeobject(PRYCE)
+    release
+    end
+}

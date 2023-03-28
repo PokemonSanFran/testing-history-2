@@ -60,31 +60,30 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	setflag FLAG_INVERSE_BATTLE
-	msgbox Debug_Script_1_Text_0
-	closemessage
-	trainerbattle_single TRAINER_NORMAN_5, gText_Blank, gText_Blank
+	warpsilent MAP_HAIGHTASHBURY_GYM, 0
 	end
 
 
 Debug_Script_2::
-	msgbox Debug_Script_2_Text_0
-	closemessage
-	trainerbattle_single TRAINER_NORMAN_5, gText_Blank, gText_Blank
+	startquest QUEST_INVERSEHALLUCINOGENIC
+	warpsilent MAP_HAIGHTASHBURY_GYM, 0
 	end
 
 
 Debug_Script_3::
-	givecustommon SPECIES_PANGORO, 100, ITEM_EXPERT_BELT, ITEM_DREAM_BALL, NATURE_ADAMANT, 2, 0, 252, 0, 252, 0, 4, 31, 31, 31, 31, 31, 31, MOVE_DRAIN_PUNCH, MOVE_DIG, MOVE_SUPERPOWER, MOVE_EXPLOSION
+	setvar VAR_PRYCE_STATE, QUEST_1_COMPLETE
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_SHUTDOWNMEDICINEMAN
+	warpsilent MAP_HAIGHTASHBURY, 5, 27
 	end
 
 
 Debug_Script_4::
-	warpsilent MAP_GLDNGTEWILDS, 42, 31
+	warpsilent MAP_PACIFICA, 0
 	end
 
 
 Debug_Script_5::
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTOREMARIN
 	end
 
 
@@ -107,12 +106,6 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
-
-Debug_Script_1_Text_0:
-	.string "inverse flag is now on$"
-
-Debug_Script_2_Text_0:
-	.string "inverse flag has not been touched$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"

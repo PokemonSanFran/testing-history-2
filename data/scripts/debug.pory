@@ -69,31 +69,30 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    setflag(FLAG_INVERSE_BATTLE)
-    msgbox("inverse flag is now on")
-    closemessage
-    trainerbattle_single(TRAINER_NORMAN_5,gText_Blank,gText_Blank)
+    warpsilent(MAP_HAIGHTASHBURY_GYM,0)
     end
 }
 
 script Debug_Script_2{
-    msgbox("inverse flag has not been touched")
-    closemessage
-    trainerbattle_single(TRAINER_NORMAN_5,gText_Blank,gText_Blank)
+    startquest(QUEST_INVERSEHALLUCINOGENIC)
+    warpsilent(MAP_HAIGHTASHBURY_GYM,0)
     end
 }
 
 script Debug_Script_3{
-        givecustommon(SPECIES_PANGORO,100,ITEM_EXPERT_BELT,ITEM_DREAM_BALL,NATURE_ADAMANT,2,0,252,0,252,0,4,31,31,31,31,31,31,MOVE_DRAIN_PUNCH,MOVE_DIG,MOVE_SUPERPOWER,MOVE_EXPLOSION)
+    setvar(VAR_PRYCE_STATE,QUEST_1_COMPLETE)
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SHUTDOWNMEDICINEMAN)
+    warpsilent(MAP_HAIGHTASHBURY,5,27)
     end
 }
 
 script Debug_Script_4{
-    warpsilent(MAP_GLDNGTEWILDS,42,31)
+    warpsilent(MAP_PACIFICA,0)
     end
 }
 
 script Debug_Script_5{
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RESTOREMARIN)
     end
 }
 
