@@ -87,7 +87,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_type": "TRAINER_TYPE_RUN_SCRIPT",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Quest_Inversehallucinogenic_EventScript_Torey",
       "flag": "FLAG_TEMP_2"
@@ -100,7 +100,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_type": "TRAINER_TYPE_RUN_SCRIPT",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Quest_Inversehallucinogenic_EventScript_Kaley",
       "flag": "FLAG_TEMP_2"
@@ -113,7 +113,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_type": "TRAINER_TYPE_RUN_SCRIPT",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Quest_Inversehallucinogenic_EventScript_Kinsey",
       "flag": "FLAG_TEMP_2"
@@ -126,7 +126,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
       "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_type": "TRAINER_TYPE_RUN_SCRIPT",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Quest_Inversehallucinogenic_EventScript_Merril",
       "flag": "FLAG_TEMP_2"

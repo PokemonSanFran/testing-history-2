@@ -8981,6 +8981,12 @@ u8 MovementAction_Fly_Finish(struct ObjectEvent *objectEvent, struct Sprite *spr
 {
     return TRUE;
 }
+
+u16 GetObjectEventTrainerSightFlagByObjectEventID(u8 objEventId)
+{
+    // ideally, would use the last two bytes of the object event template
+    return GetObjectEventTemplateByLocalIdAndMap(gObjectEvents[objEventId].localId, gObjectEvents[objEventId].mapNum, gObjectEvents[objEventId].mapGroup)->trainerType;
+}
 void SetObjectMovementType(void)
 {
     struct ObjectEvent *objectEvent = &gObjectEvents[GetObjectEventIdByLocalId(gSpecialVar_0x8005)];
