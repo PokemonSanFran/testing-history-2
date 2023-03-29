@@ -6,10 +6,6 @@ script Debug_ShowFieldMessageStringVar4{
     end
 }
 
-text Debug_CheckWeekDay_Text{
-    format("Aaaah, yes!\l{STR_VAR_1}s are made for dads!\lAnd dad's car!")
-}
-
 script Debug_CheatStart{
     lockall
     setflag(FLAG_SYS_POKEMON_GET)
@@ -55,11 +51,6 @@ script Debug_FlagsNotSetMessage{
     waitbuttonpress
     releaseall
     end
-}
-
-text Debug_FlagsNotSetMessage_Text{
-    //format("Feature unavailable!\nPlease define a usable flag in:\l'include/constants/overworld{UNDERSCORE}config.h`")
-    format("feature unavailable")
 }
 
 script Debug_Weather{
@@ -111,4 +102,13 @@ script Debug_Script_9{
 
 script Debug_Script_10{
     end
+}
+
+text Debug_CheckWeekDay_Text{
+    format("Aaaah, yes!\l{STR_VAR_1}s are made for dads!\lAnd dad's car!")
+}
+
+text Debug_FlagsNotSetMessage_Text{
+    //format("Feature unavailable!\nPlease define a usable flag in:\l'include/constants/overworld{UNDERSCORE}config.h`")
+    format("feature unavailable")
 }

@@ -58,7 +58,6 @@ Debug_Weather::
 	doweather
 	return
 
-
 Debug_Script_1::
 	warpsilent MAP_HAIGHTASHBURY, 5, 27
 	end
@@ -91,18 +90,14 @@ Debug_Script_6::
 Debug_Script_7::
 	end
 
-
 Debug_Script_8::
 	end
-
 
 Debug_Script_9::
 	end
 
-
 Debug_Script_10::
 	end
-
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"
