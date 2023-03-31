@@ -1,3 +1,6 @@
+//gText_NeighborhoodCleanUp_
+//Quest_NeighborhoodCleanUp_
+
 const PERSON_A =  16
 const PERSON_B = 17
 const PERSON_C = 18
@@ -11,8 +14,6 @@ const FLAG_HIDE_PERSON_C = FLAG_TEMP_9
 const FLAG_HIDE_PERSON_D = FLAG_TEMP_A
 const FLAG_HIDE_PERSON_E = FLAG_TEMP_B
 const FLAG_HIDE_COP = FLAG_TEMP_C
-//gText_NeighborhoodCleanUp_
-//Quest_NeighborhoodCleanUp_
 
 script Quest_NeighborhoodCleanUp_ObjectVisibility_Script{
     call(Quest_NeighborhoodCleanUp_HidePeople_Script)
@@ -35,11 +36,7 @@ script Quest_NeighborhoodCleanUp_HideCop_Script{
         call(Quest_NeighborhoodCleanUp_HideAll_Script)
     }
 
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP)
-    if (var(VAR_RESULT)){
-        call(Quest_NeighborhoodCleanUp_HideAll_Script)
-    }
-
+    call_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_HideAll_Script)
     return
 }
 
@@ -68,30 +65,28 @@ script Quest_NeighborhoodCleanUp_HidePeople_Script{
 }
 
 script Quest_NeighborhoodCleanUp_Interact_Cop_Script{
-    	returnqueststate(QUEST_NEIGHBORHOODCLEANUP)
-
-	    switch(var(VAR_RESULT)){
-	        case QUEST_MENU_SET_ACTIVE: goto(Quest_NeighborhoodCleanUp_Active_Dialogue)
-	        case QUEST_MENU_SET_REWARD: goto(Quest_NeighborhoodCleanUp_Reward_Dialogue)
-	        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_NeighborhoodCleanUp_Complete_Dialogue)
-	        default: goto(Quest_NeighborhoodCleanUp_StartQuest_Dialogue)
-	}
+        goto_if_quest_active(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_Active_Dialogue)
+        goto_if_quest_reward(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_Reward_Dialogue)
+        goto_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_Complete_Dialogue)
+        goto(Quest_NeighborhoodCleanUp_StartQuest_Dialogue)
 }
 
 script Quest_NeighborhoodCleanUp_StartQuest_Dialogue{
-    msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    msgbox(gText_NeighborhoodCleanUp_,MSGBOX_NPC,SPEAKER_POLICE)
     startquest(QUEST_NEIGHBORHOODCLEANUP)
     end
 }
 
 script Quest_NeighborhoodCleanUp_Active_Dialogue{
+    msgbox(gText_NeighborhoodCleanUp_,MSGBOX_NPC,SPEAKER_POLICE)
+    end
 }
 
 script Quest_NeighborhoodCleanUp_Reward_Dialogue{
-
-}
-
-script Quest_NeighborhoodCleanUp_Complete_Dialogue{
+    msgbox(gText_NeighborhoodCleanUp_,MSGBOX_NPC,SPEAKER_POLICE)
+    giveitem(ITEM_MAX_REVIVE,5)
+    msgbox(gText_NeighborhoodCleanUp_,MSGBOX_NPC,SPEAKER_POLICE)
+    completequest(QUEST_NEIGHBORHOODCLEANUP)
 }
 
 script Quest_NeighborhoodCleanUp_Interact_PersonA_Script{
