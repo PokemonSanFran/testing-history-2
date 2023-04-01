@@ -78,10 +78,6 @@ text gText_WaitYouWentWhere_YeahThanksFor {
     format("Yeah, thanks for your help. Where are you going?")
 }
 
-text gText_WaitYouWentWhere_GoodToSeeYou {
-    format("Ah {PLAYER}, wonderful to see you again. Truly, your efforts at the construction strike were nothing short of heroic.")
-}
-
 text gText_WaitYouWentWhere_YeahNoProblem {
     format("Haha, it's no problem, really.")
 }
