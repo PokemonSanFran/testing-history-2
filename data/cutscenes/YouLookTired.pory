@@ -44,7 +44,7 @@ script YouLookTired_WalkToKoga_Script {
 script YouLookTired_Intro_Dialogue {
     //PSF TODO change this str_var the player's favorite food, which is defined in the character creation process
     lock
-        bufferspeciesname(STR_VAR_1,SPECIES_SNORLAX)
+    bufferitemname(STR_VAR_1,ITEM_LAVA_COOKIE)
 
     playbgm(MUS_MT_PYRE,FALSE)
 
