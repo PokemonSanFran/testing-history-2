@@ -235,49 +235,84 @@ Access to this cutscene is blocked until after "You Look Tired".
 ## Beach Battle
 * Bianca sees Zoey walking along the beach in Pacfica.
 * Bianca barely defeats Zoey in battle.
-* Bianca looks at 
+* Bianca looks at the number of Gym Leaders that Zoey has defeated, makes a judgement based on that number, and then leaves.
 
 ## Enter Jasmine
 * Zoey defeats the Gym Leader of Gldngtepark, Jasmine.
-*
 
 ## And We March On
-*
+* Zoey witnesses a parade happening in Haightashbury, called the Doubles Parade.
+* The parade bisects the area, so one cannot cross the street until the parade is over.
+* The Doubles Parade is celebrate the culture of Double Battles and their relationship to the people of Sanfran.
+* The parade stops for the keynote address, and Malva is introduced as that speaker and one of the members of Sanfran's now defunct Elite Four.
+* Malva introduces a student onto the stage. The student is at the top of their class, and the government used to give out scholarships for skilled young Trainers, but this program has stopped since Ycombinator took over.
+* Malva offers the student a fun exhibition battle instead. Malva defeats the Trainer similarly to how they defeated Zoey.
+* Malva gives a speech bemoaning the current state of affairs:
+    * The region's traditions around battling have all been replaced
+    * All the region's battling talent has been replaced by skilless transplants
+    * Haightashbury, got to keep its official Gym status
+        * The crowd react very negatively to this, calling Pryce, the Gym Leader, a traitor
+* Malva says they all have a responsibility not to let the profit motive win and erase history
+* Parade ends and disperses. 
 
 ## Enter Pryce
+Access to this cutscene is blocked until after "And We March On".
+* Pryce is in their Gym, totally livid about the Parade and how the public feels about them.
+* Pryce sees Zoey, immedaitely drops acid, and begins the Gym Battle.
 * Zoey defeats the Gym Leader of Haightashbury, Pryce.
-*
 
 ## A New Strike
-*
+This cutscene plays after the player has defeated 5 Gym Leaders AND has walked 100 steps outside.
+* Zoey gets an alert on Twitter, claiming that Chasecenter construction crew, upcoming site of the Pokémon League Championship  has declared a strike
+    * "Their demands at this time are unclear, but this puts the upcoming dates of the YCombinator League Championship in danger. Anonymous sources claim that TeamRocket is responsible for instigating this protest."
 
 ## Battle #8
-*
+* Zoey walks past the PaintedLadies and Archer steps out.
+* Archer is excited about their new rank, and then notices Zoey.
+* Archer explains that the Paintedladies challenge - a single battle challenge native to the region.
+* The challenge used to be unique in the region, since everything was double battles, this was the only single battle challenge.
+* Archer challenges Zoey to a battle, but loses.
+* Archer leaves.
 
 ## Enter Clair
 * Zoey defeats the Gym Leader of Castro, Clair.
-*
 
 # ACT 2.2
+All the cutscenes in Act 2.2 occur in the order listed here.
 
 ## The Strike Strikes Back
-*
+* Zoey gets a call from Rose who congratulates them on getitng all defeating all eight Gym Leaders.
+* Rose asks the player to come to Psfroute22, where the Chasecenter Construction site is.
+* As Zoey arrives, Oak and Bianca are there, waiting for Zoey.
+* Oak begins to explain the situation, when a masked and hooded figure appears before the crowd, flanked by Teamrocket member.
+* They introduce themselves as Giovanni, and are the leader of Teamrocket.
+* They make it clear that they are indeed working with the construction workers and are responsible for the strike, but are hoping to reach an agreement with the government.
+* Giovanni leaves.
 
 ## VS Garbodor
-*
+* Oak explains that the strike is a coveer for Teamrocket's real plan - they've planted exploding Pokemon at the base of the strucutre, and are looking to blow it up. 
+* Oak is asking Bianca and Zoey for help as the police are keeping protestors at bay, and Oak doesn't want to impact the stock price with the news of a terrorist attack.
+* Bianca and Zoey agree to help, and go into the consutrction site, where Teamrocket and their Pokemon are found around the structure.
+* Bianca and Zoey split up and defeat the Trainers and knockout the Pokemon, and then report back to Oak.
+* Oak thanks both Trainers, and suggest they all return to the Compound in Southbay.
 
 # ACT 2.3
+The game progress after the player goes to sleep.
 
 ## Unknown Alcatraz Cutscene
-*
+* We want the player to go back to Alcatraz here, but haven't figured out a good reason to yet. Without a good reason, this can be cut.
 
 # ACT 3.1
+The game progress after the player goes to sleep.
+All the cutscenes in Act 3.1 occur in the order listed here.
 
 ## Off You Go!
-*
+* Zoey is woken up by a phone call, with Bianca wanting to know why they're late.
+* Zoey checks Twitter to see a message from Oak, requesting they all meet at the Gldngtebridge.
+* Zoey wakes up, didn't see the message and says they'll be right there.
 
 ## I Guess We Should Be Nice Now
-*
+* 
 
 ## Enter the Master
 *
