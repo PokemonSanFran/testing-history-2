@@ -1,6 +1,7 @@
 All names at this stage in the story are placeholder.
 Players generally have full control of the character between cutscenes.
 
+[![](https://mermaid.ink/img/pako:eNpdUMtOwzAQ_BVrOXBJC3k1JQckaDkg8ZLaC8Q9bJ1tEhHbleuotFH_nW2QQOIw2p3ZmZW9PShbEuSwae1e1ei8WM6lkSYsZsxQeXJi1u281c0RfWONuBIvqBtTiYVyRGYlTVS8OdvariImcXGnFG29eCLPYVaSYlmTIzFDI15NexD3xJXGPEqLx0stOL3G9TA4R8SyZue77c6OSXGx22O1xmo1PGs0uo0YMSNhpIwJBKDJaWxK_kgvjRASfE2aJOTclug-JUhzYh923i4ORkG-wXZHAXTbEj3NG6wc6n_qQ9l4635FGujzz72GswWwRfNh7V-QOeQ9fEEeh9E4iqeTOAyvs2mSRgEcIE_HSZjGWRqFN9k0SpPsFMBxWBCevgE4BIA0?type=png)](https://mermaid.live/edit#pako:eNpdUMtOwzAQ_BVrOXBJC3k1JQckaDkg8ZLaC8Q9bJ1tEhHbleuotFH_nW2QQOIw2p3ZmZW9PShbEuSwae1e1ei8WM6lkSYsZsxQeXJi1u281c0RfWONuBIvqBtTiYVyRGYlTVS8OdvariImcXGnFG29eCLPYVaSYlmTIzFDI15NexD3xJXGPEqLx0stOL3G9TA4R8SyZue77c6OSXGx22O1xmo1PGs0uo0YMSNhpIwJBKDJaWxK_kgvjRASfE2aJOTclug-JUhzYh923i4ORkG-wXZHAXTbEj3NG6wc6n_qQ9l4635FGujzz72GswWwRfNh7V-QOeQ9fEEeh9E4iqeTOAyvs2mSRgEcIE_HSZjGWRqFN9k0SpPsFMBxWBCevgE4BIA0)
 # ACT 0
 ## Prolouge
 * Player begins playing as Adam, a Trainer challenging the Pokemon League. They have already defeated the first three members of the Elite Four, and are going to battle the last one.
@@ -40,6 +41,7 @@ Players generally have full control of the character between cutscenes.
 * Zoey speaks with Oak, who is surprised that Bianca woke up and left so early. 
 * Oak explains the League Challenge to the Zoey.
 
+[![](https://mermaid.ink/img/pako:eNptU89vmzAU_lc879ALrWIDgXDYRJSm2SHrNCpFm-nhNXYAhdiRMWK0yv8-m9ANTTsA7_vB--xneMN7xQVO8KFW3b4EbdDTKpe5jNi67itZoGVdSf6cy5h9F8B7D2XCeOgLyow1C44o2qhWNygtlHUt2L00QqM11EcptGXIbKSWbdH0jiAjsSsrI8VAUfZVdChtmlLVAqXnswDdOMFnjzX_nxCwB63aM1KHd7WZyiHbqc5DP1R7o4Vdq1aycPycPZUCPYAsbqy_rtFGaOGEiKV1B32DdmD2pd24Z6tXdeyaY-X0eFx0qiuQ4JgF26gOrRTa2YbC2DGcxGcr0BlLASS3vMtewv74wdGEjQu1yc7rOGp7tI0b8zetjGiMI332semgeIGCOhiMyVuljRsWDVmmtO5R-qJag7Y9WutKSO72Ta_7y4yyeqbsMbgjoBGzg3AhwKED-ewOOL69_RRdHwt70dm1JrMpIFNAp8CfgmAKQjd-V8xH9orGLBJPve_Jo9fdhsghaogYWrsGdLBE2MMnoU9QcfvRvuUSoRybUpxEjhNbctDHHOfyYn3QGpX1co-TA9SN8HB75mDEqoJCw-kf9p5Xdmh_SDHA7fXfGH4RD59B_lTq74sW4-QN_8KJT-gd9eO5T8gsioOQerjHSXgXkNCPQkoWUUzDILp4-HVoQC6_AdmuF1U?type=png)](https://mermaid.live/edit#pako:eNptU89vmzAU_lc879ALrWIDgXDYRJSm2SHrNCpFm-nhNXYAhdiRMWK0yv8-m9ANTTsA7_vB--xneMN7xQVO8KFW3b4EbdDTKpe5jNi67itZoGVdSf6cy5h9F8B7D2XCeOgLyow1C44o2qhWNygtlHUt2L00QqM11EcptGXIbKSWbdH0jiAjsSsrI8VAUfZVdChtmlLVAqXnswDdOMFnjzX_nxCwB63aM1KHd7WZyiHbqc5DP1R7o4Vdq1aycPycPZUCPYAsbqy_rtFGaOGEiKV1B32DdmD2pd24Z6tXdeyaY-X0eFx0qiuQ4JgF26gOrRTa2YbC2DGcxGcr0BlLASS3vMtewv74wdGEjQu1yc7rOGp7tI0b8zetjGiMI332semgeIGCOhiMyVuljRsWDVmmtO5R-qJag7Y9WutKSO72Ta_7y4yyeqbsMbgjoBGzg3AhwKED-ewOOL69_RRdHwt70dm1JrMpIFNAp8CfgmAKQjd-V8xH9orGLBJPve_Jo9fdhsghaogYWrsGdLBE2MMnoU9QcfvRvuUSoRybUpxEjhNbctDHHOfyYn3QGpX1co-TA9SN8HB75mDEqoJCw-kf9p5Xdmh_SDHA7fXfGH4RD59B_lTq74sW4-QN_8KJT-gd9eO5T8gsioOQerjHSXgXkNCPQkoWUUzDILp4-HVoQC6_AdmuF1U)
 # ACT 1.1
 Each of the cutscenes in Act 1.1 can be done in any order, unless otherwise specified. The game does not progress past Act 1.1 until all the mandatory cutscenes in Act 1.1 have been completed.
 
@@ -310,138 +312,352 @@ All the cutscenes in Act 3.1 occur in the order listed here.
 * Zoey is woken up by a phone call, with Bianca wanting to know why they're late.
 * Zoey checks Twitter to see a message from Oak, requesting they all meet at the Gldngtebridge.
 * Zoey wakes up, didn't see the message and says they'll be right there.
+* Zoey arrives at Gldngtebridge, and Oak explains that the League will be delayed as they need to resolve the strike and finish construction.
+* YC has hired Siebold, a member of the disbanded Elite Four, to train the players and help prepare them for the Championship.
+* Oak relays their first training lesson - Bianca and Zoey must work together to go through Robinwilltunnel, get Siebold's journal, and bring it to Siebold in the depths of Muirwoods.
+* Bianca runs off into the cave before Oak can finished explaining that th e cave has puzzles that will require the pair to work together into the cave before Oak can finished explaining that th e cave has puzzles that will require the pair to work together.
 
 ## I Guess We Should Be Nice Now
-* 
+* Zoey catches up to Bianca in Robinwilltunnel.
+* Bianca has already realized that they can't progress with Zoey.
+* Zoey and Bianca work together to solve the puzzles, and find the notebook.
+* Before picking up the notebook, the Trainers are attacked by an unusually strong wild Pokémon.
+* Zoey and Bianca defeat the wild Pokémon, grab the notebook, and leave the tunnel.
 
 ## Enter the Master
-*
+* Zoey and Bianca make their way into the depths of Muirwoods, and find Siebold there.
+* Bianca returns Siebold's notebook.
+* Siebold begins the pair's training.
 
 # ACT 3.3
+All the cutscenes in Act 3.3 occur in the order listed here.
 
 ## Have You Seen The News?
-*
+* Near the end of the duo's training, Oak arrives to see Bianca and Zoey.
+* There is no service in Muirwoods, so none of them were aware that Teamrocket has taken over the social media accounts of Ycombinator and are blasting the Internet with anti-League propaganda.
+* The mayor has sent Oak to retrieve Bianca and Zoey and ask for their help in stopping the hack.
+* Zoey, Bianca and Oak go to the Salesforcetower.
 
 ## Welcome to the War Room.
-*
+* In a conference room in the Salesforcetower, two Ycombinator engineers explain the situation to Oak, Rose, Bianca, Zoey, the Mayor, and the Police Chief.
+* The Police Chief claims they knows where Teamrocket is operating out of. Their goal is to storm their HQ and shut things down that way.
+* The Mayor heard about Bianca and Zoey's work on the Garbodor, and want the Trainers to help with the raid.
+* The Police Chief, annoyed with the idea of children helping with a police raid, walks out, telling the pair to meet him at the ferry.
 
 ## Survival Chance = 33.3%
-*
+* Bianca and Zoey arrive at the ferry, where the Police Chief is waiting.
+* The Chief battles Bianca and Zoey at the same time, attempting to demonstrate that kids aren't suitable to help.
+* Bianca and Zoey win, and the Chief concedes they may have talent after all.
+* The trio goes to the Navalbase in Alameda.
+* The Chief explains the raid plan to the police squad, and gives Zoey and Bianca the TM for Self-Destruct, as they were taken out of circulation years ago for public safety reasons.
+* The police blow open the side of a building and rush in, storming the headquarters.
+* Zoey and Bianca split up and begin battling Teamrocket members in an attempt to shut the hack down.
+* The hackers are discovered and disabled, but the police go further, hoping to arrest leadership.
+* Zoey discovers Bianca battling with Ariana, but Bianca tells them that Giovanni is up ahead.
 
 ## Why Are You Helping Them?
-*
+* Zoey catches up the Giovanni, but Giovanni easily defeats Zoey in battle.
+* Ariana catches up to them, having defeated Bianca. Giovanni heals Zoey's Pokémon.
+* Archer blows through another wall, urging Ariana and Giovanni to escape as the police close in.
+* Archer reveals he has always worked with Team Rocket and battles Zoey to stall while Giovanni and Archer escape.
+* Zoey defeats Archer, but is distracted as Bianca finally catches up to them. Archer escapes in the confusion, undetected.
+* Lots of Teamrocket members are arrested, but Giovanni and Ariana escape.
+* At the Ycombinator Compound, Oak informs Zoey and Bianca that the League Championship would be starting tomorrow.
+* The game progresses after the player goes to sleep.
 
 # ACT 3.4
+All the cutscenes in Act 3.4 occur in the order listed here.
 
 ## Here's How This Is Going To Go....
-*
+* The 16 trainers in the Championship are in the locker room at Chasecenter. 
+    * Among the Trainers include Archer, Bianca, and Zoey. 
+* Rose and Oak are explaining how the Championship works to the Trainers.
+* Rose finishes the explanation (Round Robin -> Single Elim) and tells the Trainers they'll start in a few minutes.
 
 ## Why Didn't You Rat Me Out?
-*
+* Zoey goes to leave the room to get some fresh air, but Archer stops them and asks to talk.
+* Archer is greateful but confused that Zoey didn't report their Teamrocket affiliation to the authorites.
+* Zoey explains that they know how hard Archer worked to get here, and they know how much Archer loves Sanfran. 
+* They don't feel its their place to turn them in, and knows that if Archer is working with Teamrocket, he must believe they are trying to do good, and doesn't want to punish them for that.
+* Archer thanks Zoey and heads to the Arena for their matches.
+* Oak finds Zoey and invites them to the skybox to watch the other Group Stages.
+* Zoey watches Archer win in their group and Bianca to win their group.
 
 ## Group Stages
-*
+* Zoey leaves the skybox to prepare for their matches.
+* Zoey wins their Group Stage, and immedatiely has to do their Semifinals.
+* Zoey wins their Semifinals match.
 
 ## Wait He Did What?
-*
+* Zoey goes back to the skybox to watch the other Semifinal match, Archer vs Bianca.
+* Archer wins, stunning absolutely everybody, as Bianca was the clear favorite to win.
 
 ## Finals
-*
+* Zoey goes to the arena to battle Archer in the Finals.
+* Zoey witnesses Bianca having an absolute meltdown in the locker room.
+* Zoey battles Archer and wins.
 
 ## Welcome to the Hall of Fame.
-*
+* Rose comes onto the stage and welcomes Zoey to the Hall of Fame.
+* Credits roll.
 
 # ACT 4.1
+All the cutscenes in Act 4.1 occur in the order listed here.
 
 ## Being Champion is Hard!
-*
+* A few weeks later, Zoey is in their home, a private home in Presidio.
+* Zoey is exhausted from the media tour of being the Champion.
+* Oak comes inside and explains to Zoey that they're getting the week off, as it was obvious to sponsors that Zoey was exhausted.
+* Oak encourages Zoey to visit Treasureisland and relax.
 
 ## Let's Grab Lunch.
-*
+* Zoey runs into Archer on Treasureisland.
+* Archer is not upset about losing to Zoey and has been given plenty of oppurtunities as the runner-up.
+* Archer battles Zoey with a new team, but still loses.
+* Archer invites Zoey to lunch.
+* Archer explains their plan to take the Gyms that were previously shut down by the Ycombinator and turn them into training facilities for Sanfran trainers to help build up the skill in the region outside of Ycombinator's structures.
+* Zoey is surprisingly interested and agrees to help.
+* Archer explains that Chinatown, Marin and Treasureisland all have Gyms that can be started on, while Archer themselves is going to try to get Giovanni and Ariana on board.
 
 # ACT 4.2
+The player can choose one of these quests to complete. After completing one of them, the game progresses to Act 4.3. The player can choose to come back and complete more quests.
 
 ## Restore Chinatown
-*
+* Zoey sees two people walking into the abandoned Chinatown Gym, and follows them instead.
+* The people are startled by Zoey and attack. Zoey defeats them both.
+* The people explain that they are former Trainers of the Gym, they occasionally train there together to keep their skills honed.
+* Zoey explains Archer's initative, and the two Trainers are interested.
+* The two 
+* They ask Zoey to find their old crew member James.
+* Zoey finds James and brings them to Zac and Kevin's brainstorming session. 
+    * They decide to create a facility that teaches trainers the strengths and weaknesses of different fighting styles and types. 
+* Zoey is sent to gather other Black Belt trainers from the region, who are all old members of the Chinatown Gym, and they begin to train together to rebuild their gym.
+
 
 ## Restore Marin
-*
+* Zoey meets Lenora who agrees to assist with their plan of creating a facility that hones a Trainer's ability to adapt to new situations.
+* Lenora asks Zoey to bring specific Pokémon to help teach the moves needed for the facility.
+* After testing the facility, Lenora encourages Zoey to return and test it again. 
+* Lenora challenges Zoey to a battle, which they win, and Lenora fantasizes about bringing all the Legacy Gyms back to their former official status.
+* Zoey reminds Lenora to focus on the present and the good they are doing now.
 
 ## Restore Treasure Island
-*
+* Zoey meets Juan, who is initially unpleasant but eventually agrees to work with Archer to develop a program for Treasure Island Gym. 
+* Juan's vision for the facility involves a giant roulette that randomly assigns events to trainers challenging the facility, wanting to make sure Trainers are already ready for the unknown.
+* He asks Zoey to bring some Pokémon and items to help. 
+* After completion, Zoey convinces Juan to focus on the present and the good they're doing now, rather than attempting to destroy the present without a solid vision. 
+* Juan decides to do a dress rehearsal of the facility and fantasizes about using it to get Ycombinator to cancel their League entirely.
 
 # ACT 4.3
+All the cutscenes in Act 4.3 occur in the order listed here.
 
 ## You Realize We're Evil, Right?
-*
-
+* After completing one of the Restoration Quests, Ycombinator asks Zoey to report to the conference room in the Salesforcetower.
+* Oak expresses concern about the Zoey's involvement in the professional battling community and their affiliation with Ycombinator, indicating that it may negatively impact their sponsorship. 
+* Oak suggests the Zoey find other extracurricular activities instead. 
+* Koga walks in and reveals that their data suggests the gyms the Zoey is turning into community centers are being used as recruitment and training hubs for Teamrocket, who are getting more violent and dangerous. 
+* The local police have agreed to work with Ycombinator to eliminate Teamrocket, and they request the Zoey and Bianca's help in finishing them. 
+* Koga advises the Zoey to take some time to think about the situation before making any decisions.
+ 
 ## You Realize They're Evil, Right?
-*
+* Zoey leaves the Salesforcetower and gets a call from Archer, thanking them for their help with the Restoration project.
+* Zoey explains the conversation they just have, and Archer responds by asking Zoey to go to Alcatraz, but surf around the side of the island instead.
+* On Alcatraz, Archer shows Zoey a secret entrance and tells them to meet them down a lower floor.
+* The secret entrance leads directly inside the prison on Alcatraz, where ghosts are seen.
+* The ghosts tell the real story of Alcatraz.
+    * Alcatraz prison was used to lock away criminals, particularly from marginalized communities. 
+    * The prison riot started when a guard killed an indigenous inmate for a minor violation, leading to the occupation of the island by protestors.
+    * The protestors demanded better conditions for prisoners, dissolution of the prison, transfer of prisoners to locations with humane conditions, and the return of the land to its original owners.
+    * The protests gained national attention with the help of Drasna's support, and pressure mounted on the government to comply. An earthquake destroyed the prison, killing inmates and guards, and ending the occupation.
+* On the lowest level of the prison, Zoey meets Archer with Malva and Drasna, another member of the Elite Four.
+* Archer explains to the other three that the Ycombinator has been framing Teamrocket, planting agitators and warping the public narrative against them.
+* Archer uses a Garabodor from the construction strike, proving that only Ycombinator would have the resources to train and breed an exploding Garbodor.
+* Archer asks Drasna, Malva and Zoey to help work with Teamrocket to expose Ycombinator and start healing the region.
+* Zoey needs time to think, and leaves. Zoey goes to sleep but wakes up having not made a decision.
 
-# ACT 5 TRUE TIMELINE
-## Let's Get the Band Back Together.
-* 
-
-## Mask Off!
-* 
-
-## Let's Fix This!
-* 
-
-## Locked Out
-* 
-
-## Warehouse Rave!
-* 
-
-## Speech! Speech! Speech!
-* 
-
-## One Down...
-* 
-
-## Earthquake!
-* 
-
-## This Isn't Random...
-* 
-
-## Wait, Even Then?
-* 
-
-## Let's Finish This.
-* 
-
-## I'm In.
-* 
-
-## You Can't Stop Me!
-* 
-
-## We Can Stop You, Actually.
-* 
+# TIMELINE SPLIT
+* The player must now choose between Ycombinator and Teamrocket. Choosing one side locks the player out of choosing the other side.
 
 # ACT 5 FALSE TIMELINE
+These cutscenes occur in the order they are listed here, unless otherwise specified.
+
 ## Congrats, You're an Asshole.
-*
+* Zoey reports back to the Salesforcetower and says they'll help eliminate Teamrocket.
+* Ycombinator and Zoey put out a joint social media statement, declaring their commitment to get rid of Teamrocket once and for all.
+* Oak, Sabrina, and Koga each have a different assigned mission for Zoey.
+* Koga reveals that Ycombinator has hired Bianca to help with this effort.
 
 ## You Have Your Orders.
-*
+Access to this cutscene is blocked until after "Congrats, You're an Asshole".
+* Zoey talks to Koga. 
+* Koga reveals that they used to be the Gym Leader of Chinatown, and have been ordered to shut the restored Gym down entirely.
 
 ## How Disappointing.
-*
+Access to this cutscene is blocked until after "You Have Your Orders".
+* Zoey joins the police on another raid, with this time, the goal being preventing people from escaping.
+* Ariana escapes in the chaos but Zoey gives chase, managing to corner them in Chinatown.
+* Zoey beats Ariana in battle and Ariana is arrested.
 
 ## Let's Burn This Mother Down.
-*
+Access to this cutscene is blocked until after "Congrats, You're an Asshole".
+* Zoey talks to Oak.
+* Oak believes that Teamrocket is using a new base for their operations.
+* Asks Zoey to hunt that base down.
+* Zoey goes to Alcatraz to try to convince Archer to stop working with Teamrocket before they get arrested.
+* Archer corners Zoey in Alcatraz, furious that Zoey chose the wrong side.
+* Zoey defeats Archer in battle.
+* Archer begins to rant, but Bianca attacks them behind, surprising Zoey.
+* Bianca reveals they were following Zoey and realizes how close Archer and Zoey were.
+* Alcatraz is shut down and Archer is arrested.
 
 ## Manhunt.
-*
+Access to this cutscene is blocked until after "Congrats, You're an Asshole".
+* Zoey talks to Sabrina. 
+* Sabrina wants to track down Giovanni and have them arrested.
+* Sabrina gives Zoey a lead at the local newspaper.
+* Zoey and Bianca travel around the region, attacking people who refuse to give up more information on Giovanni.
+* Giovanni gets word and sends Zoey and Bianca a message to meet them at Lakemerritt, and to stop hurting innocent people.
+* Giovanni battles the pair and loses.
+* Giovanni surrenders, and realizes that Team Rocket is finished.
 
 ## Exhibition Battle!
-*
+Access to this cutscene is blocked until after "How Disappointing", "Let's Burn This Mother Down", and "Manhunt". This cutscene immedatitely plays after those three are completed.
+* A few months later...
+* Zoey is in the Chasecenter Arena, battling against the Kalos Pokémon League Champion, Diantha.
+* Zoey defeats Diantha, and leaves the arena for the Locker Room, where Ycombinator's staff is waiting to congratulate Zoey.
+* Each person talks to Zoey about how their efforts have made the region better and improved things for Ycombinator, and Zoey is a true world reknown celebrity.
 
 ## Maybe I Fucked Up.
-*
+Access to this cutscene is blocked until after "Exhibition Battle!".
+* Zoey goes to leave the Chasecenter, and the credits roll.
+* After the credits, an old woman approaches Zoey, asking if they have any regrets.
+* Zoey says maybe. The woman gives Zoey a Bamboo Star, and tells them if they really have regrets, bring the star to the highest point in the region.
+* The woman disappears.
 
 ## Okay, Let's Fix it.
-*
+Access to this cutscene is blocked until after "Maybe I Fucked Up."
+* Zoey brings the Bamboo Star to the top of Twinpeaks.
+* The star begins to glow and comes out of Zoey's bag. The light becomes blinding, and when it fades, an old man is standing there.
+* The man asks Zoey about regret and a flashback begins, with Zoey going back to the night where they chose to side with Ycombinator.
+* Zoey thought they were going to do the right thing, but realizes now that Ycombinator has only made things worse - they wish they could go back and fix it.
+* The flashback ends and the man begins to glow, revealing to be the Wish Pokémon Jirachi.
+* The screen fades to back, and Zoey finds themselves back at the timeline split, a few weeks prior.
+
+# ACT 5 TRUE TIMELINE
+All the cutscenes in Act 5 True occur in the order listed here, unless otherwise stated".
+## Let's Get the Band Back Together.
+* Zoey goes to Alcatraz and tells Archer they want to help expose Ycombinator.
+* Archer wants to start by finding the missing member of the Elite Four, Wikstrom, and unite with them to create a public show of force.
+* Archer splits up with Zoey but gives Zoey a lead to start on to find Giovanni.
+
+## Mask Off!
+*  Zoey travels around the region, talking to citizens and following clues until they end up at Lakemerritt.
+* They run into Giovanni at Lakemerritt, who has heard that Zoey is sympathatic to their cause.
+* Giovanni challenges Zoey to a friendly battle, which Zoey wins.
+* Zoey explains they were actually looking for Wikstrom, and explains Archer's plan.
+* Giovanni says they might be able to help, and unmasks, revealing themselves to be Wikstrom, the last Elite Four member.
+* Wikstrom explains that they started Teamrocket to push back after they saw a losing battle - they knew that change had to come from the outside, not within the League structure.
+* Wikstrom leaves to talk to the other Elite Four members and make amends, but warns Zoey that things will never be the same.
+
+## Locked Out
+This cutscene plays when the player attempts to go home after "Let's Get The Band Back Together".
+* Zoey goes to walk inside their home, but the door is locked. Their keyfob no longer works.
+* Archer calls Zoey, but Zoey interjects, claiming they're locked out.
+* Archer says they're not surprised, and this is why they called - they figured the Ycombinator perks would suddenly dry up, so Archer offers to allow Zoey to stay with them.
+
+## Let's Fix This!
+The game resumes after the player goes to sleep at Archer's home.
+* Zoey wakes up a video circulating social media, with the Elite Four announcing their return and their public pledge to heal Sanfran and take down Ycombinator.
+* Archer is excited that the wheels are finally in motion.
+* Archer and Zoey both get an email from the Teamrocket Event Bot, for a rally in Oakland in a warehouse to celebrate the return of the Elite Four.
+* Archer has some errands to run but tells Zoey that there is also a Teamrocket meeting at Alcatraz that night.
+
+## Warehouse Rave!
+* Zoey goes to the warehouse in Oakland. It is easy to find due to the lights and fog and music.
+* Upon entering, they realize the warehouse is empty.
+* The warehouse doors lock between Zoey, and Zoey realzies it is a trap.
+* Koga steps out of the fog and claims they were sent to eliminate Zoey permanently.
+* Koga and Zoey battle, but Koga orders their Pokémon to all Self-Destruct or Explode, meaning Zoey wins.
+* Zoey is confused, but Koga remarks that it looks like a real battle went down, which should give Zoey enough time to flee.
+* Zoey is still confused but Koga yells for them to run, and Zoey escapes out of a hole that was blown in the side of the warehouse.
+* Archer meets up with Zoey outside, having heard the explosion en route to the rave.
+* Zoey explains the situation to Archer, who is also in shock. Archer suggests that perhaps Koga feels some regret, and reveals that Koga used to be the Gym Leader of Chinatown but also sold out like Pryce. 
+* Archer encourages Zoey to head over to Alcatraz for the rally.
+
+## Speech! Speech! Speech!
+This cutscene can be played before Warehouse Rave.
+* The bottom floor of Alcatraz has all the remaining Teamrocket members.
+* Giovanni addresses the crowd, announcing that they will be stepping downfrom Teamrocket, effectively immedaitely.
+* Giovanni says that Ariana will be taking over as head of Teamrocket, and Giovanni is taking a leave of absence.
+* Giovanni walks behind a curtain and the Elite Four walk out from the behind a curtrain, explaining that they are joining forces with Teamrocket to finally hit Ycombinator where it hurts. The crowd goes wild.
+* An earthquake breaks out, but nobody is harmed.
+* Ariana resumes their speeech, explaining that Teamrocket will be running interference campaigns against Twitter, Uber and Facebook.
+    * By disrupting the companies operations (and therefore bottom line) they can begin to weaken Ycombinator where it actually matters.
+* Each Elite Four members is tasked with taking on a company, except Drasna, who will be opening a dialogue with the government in a show of good faith.
+
+## One Down...
+This cutscene does not play until after "Wavehouse Rave" and "Speech Speech Speech".
+* Zoey chooses a corporate sponsor and completes the quest for taking down that corporate sponsor.
+* Ariana congratulates you on your hard work and is excited to keep going.
+* Another earthquake breaks out, but nobody is hurt.
+* The game progresses after the player goes to sleep.
+
+## Earthquake!
+* Zoey and Archer are woken up by another Earthquake, but this time, they can hear people calling for help.
+* Archer goes outside and Alameda is absolutely destroyed by the quake.
+* Zoey, Archer and Ariana go around the island trying to help people, and regroup in the center of town.
+* Ariana gets a cryptic email from the Rocket Event Bot, and Archer explains its probably another trap.
+* Zoey explains the Warehouse Rave incident, to everybody's shock.
+* Ariana hesitates and says that Koga was different, and if this text is actually from him, then she trusts it.
+* Wikstrom recognizes that the coordinates in the message lead to a spot on Psfroute8.
+* Archer, Ariana, Drasna and Zoey all go to Psfroute8.
+
+## This Isn't Random...
+This cutscene plays after the player solves the riddle in the cryptic message, which tells them to use "Dig" in a certain spot on the route.
+* A door is revealed at the specific coordinates which leads underground.
+* The path goes underground and under the ocean and leads to a giant lab.
+* The team splits up to explore the Lab.
+
+## Wait, Even Then?
+* There are Pokémon in the Lab, chained to machines and being experimented on. Battling the Pokémon helps free them.
+* The team discover that the lab is for amplifying the energy of Pokémon to be used externally.
+* The Pokémon all chained up are all Ground type Pokémon.
+* Drasna and Zoey realize that the machine here are the source of the Earthquakes, and further, the Earthquakes that destroyed Alcatraz 50 years ago were from the same source - the government,and now Ycombinator, is using this weapon to attack citizens.
+* There is a final Dynamaxed Pokémon in the lab. Archer and Zoey team up to defeat it.
+
+## Let's Finish This.
+* The Elite Four and Teamrocket leadership all meet up in Alameda, and explain the Lab sitution.
+* The crowd realzies that Ycombinator is literally playing to kill, and they need to escalate in kind.
+* Archer jokes that they should all storm the Salesforcetower and force a confession out of the Ycombinator leadership, but the group begins to takethem seriously.
+* Zoey remembers that all C-Suite members have a warp panel in their homes that leads directly to their offices.
+* Siebold suggests breaking into Sabrina's place instead of Koga, since Koga's disappearance has likely triggered a police presence.
+* The group agrees to meet outside Sabrina's home in Sunset.
+
+## I'm In.
+* Siebold, Drasna, Wikstrom, Archer, Ariana and Zoey all meet outside Sabrina's house. 
+* Malva is outside the Salesforce tower, ready to start a protest to distract security.
+* The team breaks into Sabrina's house, figures out the code to the door, and are able to use the warp panel to go directly into Ycombinator's offices.
+* The group splits up and begins acending the tower.
+* Zoey reaches Rose's office in Leagueops, but Bianca is sitting in Rose's chair instead.
+* Zoey defeats Bianca and demands to know where Rose is. Bianca reveals a secret set of stairs that goes up to the observation deck.
+
+## You Can't Stop Me!
+* Rose is answering emails on the observation desk and is annoyed with Zoey's intrusion.
+* They begin to drop the mask a little, stating that Zoey is just an obstacle, and Rose will have to deal with them.
+* Zoey defeats Rose in battle.
+* Rose gets angry and begins to berate Zoey, but the TV behind them turns on.
+
+## We Can Stop You, Actually.
+* The TV shows Koga on a livestream, admitting to their and Ycombinator's crimes.
+* Rose has a meltdown, turning off the TV and calling for security.
+* Zoey informs Rose that they defeated everybody on the way up - nobody is coming to save Rose.
+* Rose attacks Zoey again with another set of six Pokémon, but is still sdefeated.
+* The police come and arrest Rose as they have another meltdown.
+
+## Epilogue
+* Ycombinator's members are prep walked out of the building.
+* A few months later...
+* A News broadcast discusses the beginning of the next season of the League and the new CEO of the Ycombinator, who has expressed excitement to move forward with the new season.
+* News broadcast discusses how Ycombinator's entire executive teamw were all charged with conspiracy and murder, but are currently waiting for trial.
+* Zoey was unavailable for comment.
+* Credits roll.
