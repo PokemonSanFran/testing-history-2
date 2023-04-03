@@ -192,6 +192,11 @@
 #define SPEAKER_KATHARINA               180
 #define SPEAKER_OFFICIANT               181
 #define SPEAKER_HELEN                   182
+#define SPEAKER_RUSTY                   183
+#define SPEAKER_WILLOW                  184
+#define SPEAKER_GRIFF                   185
+#define SPEAKER_LUNA                    186
+#define SPEAKER_MAX                     187
 
 //Tail
 #define TAIL_DEFAULT 0

@@ -188,10 +188,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_2",
-      "x": 6,
-      "y": 11,
+      "x": 5,
+      "y": 9,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -222,7 +222,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Quest_NeighborhoodCleanUp_Interact_PersonC_Script",
+      "script": "Quest_NeighborhoodCleanUp_Interact_PersonA_Script",
       "flag": "FLAG_TEMP_9"
     },
     {
