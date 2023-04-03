@@ -4,6 +4,7 @@ Bernalheights_MapScripts::
 
 Bernalheights_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Restaurantexpansion2_HideStaffB_Script
+	call Quest_NeighborhoodCleanUp3_ObjectVisibility_Script
 	return
 
 

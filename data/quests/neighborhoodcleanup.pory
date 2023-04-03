@@ -85,7 +85,7 @@ script Quest_NeighborhoodCleanUp_ProgressToReward_Script{
         addvar(VAR_TEMP_0,1)
     }
 
-    if (var(VAR_TEMP_0) == 5){
+    if (var(VAR_TEMP_0) == QUEST_NEIGHBORHOODCLEANUP_SUB_COUNT){
        questmenu(QUEST_MENU_SET_REWARD,QUEST_NEIGHBORHOODCLEANUP)
     }
     return
