@@ -60,15 +60,19 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_PRESIDIO, 0
+	warpsilent MAP_HAIGHTASHBURY, 5, 27
 	end
 
 
 Debug_Script_2::
+	setvar VAR_PRYCE_STATE, QUEST_1_COMPLETE
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_SHUTDOWNMEDICINEMAN
+	warpsilent MAP_HAIGHTASHBURY, 5, 27
 	end
 
 
 Debug_Script_3::
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_RESTOREMARIN
 	end
 
 

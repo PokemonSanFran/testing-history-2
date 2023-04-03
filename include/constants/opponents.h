@@ -890,7 +890,18 @@
 #define TRAINER_PEWFAT                      681
 #define TRAINER_DRUG_PRYCE                  794
 #define TRAINER_HELEN                      751
-
+#define TRAINER_VAGRANT_1_PSFROUTE22               143
+#define TRAINER_VAGRANT_2_PSFROUTE22               144
+#define TRAINER_VAGRANT_3_PSFROUTE22               145
+#define TRAINER_VAGRANT_4_PSFROUTE22               146
+#define TRAINER_VAGRANT_5_PSFROUTE22               147
+#define TRAINER_VAGRANT_1_DOGPATCH                 148
+#define TRAINER_VAGRANT_2_DOGPATCH                 149
+#define TRAINER_VAGRANT_3_DOGPATCH                 150
+#define TRAINER_VAGRANT_4_DOGPATCH                 151
+#define TRAINER_VAGRANT_1_BERNAL                   152
+#define TRAINER_VAGRANT_2_BERNAL                   153
+#define TRAINER_VAGRANT_3_BERNAL                   154
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

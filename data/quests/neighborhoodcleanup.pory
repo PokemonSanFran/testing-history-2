@@ -1,12 +1,12 @@
 //gText_NeighborhoodCleanUp_
 //Quest_NeighborhoodCleanUp_
 
-const PERSON_A =  16
-const PERSON_B = 17
-const PERSON_C = 18
-const PERSON_D = 19
-const PERSON_E = 20
-const COP = 21
+const PERSON_A = 13
+const PERSON_B = 14
+const PERSON_C = 15
+const PERSON_D = 16
+const PERSON_E = 17
+const COP = 18
 
 const FLAG_HIDE_PERSON_A = FLAG_TEMP_7
 const FLAG_HIDE_PERSON_B = FLAG_TEMP_8
@@ -16,9 +16,15 @@ const FLAG_HIDE_PERSON_E = FLAG_TEMP_B
 const FLAG_HIDE_COP = FLAG_TEMP_C
 
 script Quest_NeighborhoodCleanUp_ObjectVisibility_Script{
-    call(Quest_NeighborhoodCleanUp_HidePeople_Script)
-    call(Quest_NeighborhoodCleanUp_HideCop_Script)
-    return
+    if (var(VAR_STORYLINE_STATE) < STORY_WON_FINALS){
+        call(Quest_NeighborhoodCleanUp_HideAll_Script)
+            return
+    }
+
+    call_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_HideAll_Script)
+
+        call(Quest_NeighborhoodCleanUp_HideVagrant_Script)
+        return
 }
 
 script Quest_NeighborhoodCleanUp_HideAll_Script{
@@ -31,16 +37,7 @@ script Quest_NeighborhoodCleanUp_HideAll_Script{
         return
 }
 
-script Quest_NeighborhoodCleanUp_HideCop_Script{
-    if (var(VAR_STORYLINE_STATE) < STORY_WON_FINALS){
-        call(Quest_NeighborhoodCleanUp_HideAll_Script)
-    }
-
-    call_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_HideAll_Script)
-    return
-}
-
-script Quest_NeighborhoodCleanUp_HidePeople_Script{
+script Quest_NeighborhoodCleanUp_HideVagrant_Script{
     subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_1)
     if (var(VAR_RESULT)){
         setflag(FLAG_HIDE_PERSON_A)
@@ -64,6 +61,36 @@ script Quest_NeighborhoodCleanUp_HidePeople_Script{
     return
 }
 
+script Quest_NeighborhoodCleanUp_ProgressToReward_Script{
+    setvar(VAR_TEMP_0,0)
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_4)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_5)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    if (var(VAR_TEMP_0) == 5){
+       questmenu(QUEST_MENU_SET_REWARD,QUEST_NEIGHBORHOODCLEANUP)
+    }
+    return
+}
+
 script Quest_NeighborhoodCleanUp_Interact_Cop_Script{
         goto_if_quest_active(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_Active_Dialogue)
         goto_if_quest_reward(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_Reward_Dialogue)
@@ -82,6 +109,11 @@ script Quest_NeighborhoodCleanUp_Active_Dialogue{
     end
 }
 
+script Quest_NeighborhoodCleanUp_Complete_Dialogue{
+    msgbox(gText_NeighborhoodCleanUp_,MSGBOX_NPC,SPEAKER_POLICE)
+    end
+}
+
 script Quest_NeighborhoodCleanUp_Reward_Dialogue{
     msgbox(gText_NeighborhoodCleanUp_,MSGBOX_NPC,SPEAKER_POLICE)
     giveitem(ITEM_MAX_REVIVE,5)
@@ -90,31 +122,77 @@ script Quest_NeighborhoodCleanUp_Reward_Dialogue{
 }
 
 script Quest_NeighborhoodCleanUp_Interact_PersonA_Script{
+    trainerbattle_single(TRAINER_VAGRANT_1_PSFROUTE22,gText_NeighborhoodCleanUp_ThisIsPlaceholder,gText_NeighborhoodCleanUp_ThisIsPlaceholder)
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_1)
+    goto_if_quest_active(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_RemoveVagrantA_Script)
     end
 }
 script Quest_NeighborhoodCleanUp_Interact_PersonB_Script{
+    trainerbattle_single(TRAINER_VAGRANT_2_PSFROUTE22,gText_NeighborhoodCleanUp_ThisIsPlaceholder,gText_NeighborhoodCleanUp_ThisIsPlaceholder)
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_2)
+    goto_if_quest_active(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_RemoveVagrantB_Script)
     end
 }
 script Quest_NeighborhoodCleanUp_Interact_PersonC_Script{
+    trainerbattle_single(TRAINER_VAGRANT_3_PSFROUTE22,gText_NeighborhoodCleanUp_ThisIsPlaceholder,gText_NeighborhoodCleanUp_ThisIsPlaceholder)
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_3)
+    goto_if_quest_active(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_RemoveVagrantC_Script)
     end
 }
 script Quest_NeighborhoodCleanUp_Interact_PersonD_Script{
+    trainerbattle_single(TRAINER_VAGRANT_4_PSFROUTE22,gText_NeighborhoodCleanUp_ThisIsPlaceholder,gText_NeighborhoodCleanUp_ThisIsPlaceholder)
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_4)
+    goto_if_quest_active(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_RemoveVagrantD_Script)
     end
 }
 script Quest_NeighborhoodCleanUp_Interact_PersonE_Script{
+    trainerbattle_single(TRAINER_VAGRANT_5_PSFROUTE22,gText_NeighborhoodCleanUp_ThisIsPlaceholder,gText_NeighborhoodCleanUp_ThisIsPlaceholder)
+    msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    goto_if_quest_active(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp_RemoveVagrantE_Script)
+    end
+}
+script Quest_NeighborhoodCleanUp_RemoveVagrantA_Script{
+    msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_1)
+    call(Quest_NeighborhoodCleanUp_ProgressToReward_Script)
+    call(Quest_NeighborhoodCleanUp_GenericRemoveVagrant_Script)
+}
+script Quest_NeighborhoodCleanUp_RemoveVagrantB_Script{
+    msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_2)
+    call(Quest_NeighborhoodCleanUp_ProgressToReward_Script)
+    call(Quest_NeighborhoodCleanUp_GenericRemoveVagrant_Script)
+}
+script Quest_NeighborhoodCleanUp_RemoveVagrantC_Script{
+    msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_3)
+    call(Quest_NeighborhoodCleanUp_ProgressToReward_Script)
+    call(Quest_NeighborhoodCleanUp_GenericRemoveVagrant_Script)
+}
+script Quest_NeighborhoodCleanUp_RemoveVagrantD_Script{
+    msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_4)
+    call(Quest_NeighborhoodCleanUp_ProgressToReward_Script)
+    call(Quest_NeighborhoodCleanUp_GenericRemoveVagrant_Script)
+}
+script Quest_NeighborhoodCleanUp_RemoveVagrantE_Script{
     msgbox(gText_NeighborhoodCleanUp_ThisIsPlaceholder,MSGBOX_NPC)
     subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP,SUB_QUEST_5)
-    end
+    call(Quest_NeighborhoodCleanUp_ProgressToReward_Script)
+    call(Quest_NeighborhoodCleanUp_GenericRemoveVagrant_Script)
+}
+
+script Quest_NeighborhoodCleanUp_GenericRemoveVagrant_Script{
+    fadescreen(FADE_TO_BLACK)
+    removeobject(VAR_LAST_TALKED)
+    fadescreen(FADE_FROM_BLACK)
+    return
 }
 
 text gText_NeighborhoodCleanUp_ThisIsPlaceholder{
     format("this is placeholder text for neighborhood cleanup. you can't finish the quest yet.")
+}
+
+text gText_NeighborhoodCleanUp_{
+    format("")
 }
