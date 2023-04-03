@@ -19,26 +19,18 @@ script Quest_NeighborhoodCleanUp2_ObjectVisibility_Script{
 }
 
 script Quest_NeighborhoodCleanUp2_HideBeforeAfterQuest_Script{
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP)
-
-    if (!var(VAR_RESULT)){
-        call(Quest_NeighborhoodCleanUp2_HideAll_Script)
-    }
-
-    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP2)
-
-    if (var(VAR_RESULT)){
-        call(Quest_NeighborhoodCleanUp2_HideAll_Script)
-    }
+    call_if_quest_not_complete(QUEST_NEIGHBORHOODCLEANUP,Quest_NeighborhoodCleanUp2_HideAll_Script)
+        call_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP2,Quest_NeighborhoodCleanUp2_HideAll_Script)
+        return
 }
 
 script Quest_NeighborhoodCleanUp2_HideAll_Script{
-        setflag(FLAG_HIDE_PERSON_A)
-        setflag(FLAG_HIDE_PERSON_B)
-        setflag(FLAG_HIDE_PERSON_C)
-        setflag(FLAG_HIDE_PERSON_D)
-        setflag(FLAG_HIDE_COP)
-        return
+    setflag(FLAG_HIDE_PERSON_A)
+    setflag(FLAG_HIDE_PERSON_B)
+    setflag(FLAG_HIDE_PERSON_C)
+    setflag(FLAG_HIDE_PERSON_D)
+    setflag(FLAG_HIDE_COP)
+    return
 }
 
 script Quest_NeighborhoodCleanUp2_HidePeople_Script{
@@ -61,30 +53,60 @@ script Quest_NeighborhoodCleanUp2_HidePeople_Script{
     return
 }
 
-script Quest_NeighborhoodCleanUp2_Interact_Cop_Script{
-    	returnqueststate(QUEST_NEIGHBORHOODCLEANUP2)
+script Quest_NeighborhoodCleanUp2_ProgressToReward_Script{
+    setvar(VAR_TEMP_0,0)
 
-	    switch(var(VAR_RESULT)){
-	        case QUEST_MENU_SET_ACTIVE: goto(Quest_NeighborhoodCleanUp2_Active_Dialogue)
-	        case QUEST_MENU_SET_REWARD: goto(Quest_NeighborhoodCleanUp2_Reward_Dialogue)
-	        case QUEST_MENU_COMPLETE_QUEST: goto(Quest_NeighborhoodCleanUp2_Complete_Dialogue)
-	        default: goto(Quest_NeighborhoodCleanUp2_StartQuest_Dialogue)
-	}
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP2,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP2,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP2,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_NEIGHBORHOODCLEANUP2,SUB_QUEST_4)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    if (var(VAR_TEMP_0) == 4){
+       questmenu(QUEST_MENU_SET_REWARD,QUEST_NEIGHBORHOODCLEANUP2)
+    }
+    return
+}
+
+script Quest_NeighborhoodCleanUp2_Interact_Cop_Script{
+        goto_if_quest_active(QUEST_NEIGHBORHOODCLEANUP2,Quest_NeighborhoodCleanUp2_Active_Dialogue)
+        goto_if_quest_reward(QUEST_NEIGHBORHOODCLEANUP2,Quest_NeighborhoodCleanUp2_Reward_Dialogue)
+        goto_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP2,Quest_NeighborhoodCleanUp2_Complete_Dialogue)
+        goto(Quest_NeighborhoodCleanUp2_StartQuest_Dialogue)
 }
 
 script Quest_NeighborhoodCleanUp2_StartQuest_Dialogue{
-    msgbox(gText_NeighborhoodCleanUp2_ThisIsPlaceholder,MSGBOX_NPC)
-    startquest(QUEST_NEIGHBORHOODCLEANUP2)
+    msgbox(gText_NeighborhoodCleanUp2_,MSGBOX_NPC,SPEAKER_POLICE)
+    startquest(QUEST_NEIGHBORHOODCLEANUP)
     end
 }
 
 script Quest_NeighborhoodCleanUp2_Active_Dialogue{
+    msgbox(gText_NeighborhoodCleanUp2_,MSGBOX_NPC,SPEAKER_POLICE)
+    end
 }
 
 script Quest_NeighborhoodCleanUp2_Reward_Dialogue{
+    msgbox(gText_NeighborhoodCleanUp2_,MSGBOX_NPC,SPEAKER_POLICE)
+    giveitem(ITEM_MAX_REVIVE,5)
+    completequest(QUEST_NEIGHBORHOODCLEANUP)
+    goto(Quest_NeighborhoodCleanUp2_Complete_Dialogue)
 }
 
 script Quest_NeighborhoodCleanUp2_Complete_Dialogue{
+    msgbox(gText_NeighborhoodCleanUp2_,MSGBOX_NPC,SPEAKER_POLICE)
+    end
 }
 
 script Quest_NeighborhoodCleanUp2_Interact_PersonA_Script{

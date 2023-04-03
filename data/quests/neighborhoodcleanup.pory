@@ -109,16 +109,16 @@ script Quest_NeighborhoodCleanUp_Active_Dialogue{
     end
 }
 
-script Quest_NeighborhoodCleanUp_Complete_Dialogue{
-    msgbox(gText_NeighborhoodCleanUp_ThankYouForYour,MSGBOX_NPC,SPEAKER_POLICE)
-    end
-}
-
 script Quest_NeighborhoodCleanUp_Reward_Dialogue{
     msgbox(gText_NeighborhoodCleanUp_GreatJobTrainer,MSGBOX_NPC,SPEAKER_POLICE)
     giveitem(ITEM_MAX_REVIVE,5)
     completequest(QUEST_NEIGHBORHOODCLEANUP)
-    msgbox(gText_NeighborhoodCleanUp_ThankYouForYour,,SPEAKER_POLICE)
+    goto(Quest_NeighborhoodCleanUp_Complete_Dialogue)
+}
+
+script Quest_NeighborhoodCleanUp_Complete_Dialogue{
+    msgbox(gText_NeighborhoodCleanUp_ThankYouForYour,MSGBOX_NPC,SPEAKER_POLICE)
+    end
 }
 
 script Quest_NeighborhoodCleanUp_Interact_PersonA_Script{
