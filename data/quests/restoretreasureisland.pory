@@ -70,7 +70,7 @@ script Quest_Restoretreasureisland_PostBattle_Dialogue{
 script Quest_Restoretreasureisland_Active_Script{
         msgbox(gText_Restoretreasureisland_DoYouHave,,SPEAKER_CILAN)
         
-        //multichoice2(1,1,Quest_Restoretreasureisland_CheckList,0,1,0)
+        dynmultichoice(1,1,FALSE,4,0,DYN_MULTICHOICE_CB_NONE, "Flame Orb", "TR27", "Psycho Shift", "Effort Spore", "Nothing yet.")
         closemessage
 
         switch(var(VAR_RESULT)){
@@ -81,15 +81,6 @@ script Quest_Restoretreasureisland_Active_Script{
             case 4:
             case MULTI_B_PRESSED: goto(Quest_Restoretreasureisland_Cancel_Dialogue) 
         }
-}
-
-text Quest_Restoretreasureisland_CheckList{
-    "Flame Orb$"
-        "TR27$"
-        "Psycho Shift$"
-        "Effect Spore$"
-        "Nothing yet.$"
-        "$"
 }
 
 script Quest_Restoretreasureisland_Cancel_Dialogue{

@@ -38,7 +38,7 @@ call(ThereCanOnlyBeOne_Debug_Script)
 //need to figure out how to store the personality ID of the generated mon(seems totally doable ngl)
 
 text ThereCanOnlyBeOne_StarterList{
-        "Scyther$"
+    "Scyther$"
     "Charcadet$"
     "Petilil$"
     "Flaaffy$"
@@ -52,8 +52,7 @@ text ThereCanOnlyBeOne_StarterList{
 script ThereCanOnlyBeOne_StarterSelectMenu_Script {
   msgbox(gText_ThereCanOnlyBe_PleaseChooseAPokemon)
   closemessage
-  //multichoice2(0,0,ThereCanOnlyBeOne_StarterList,1,1,0)
-
+    dynmultichoice(1,1,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"Scyther","Charcadet","Petilil","Flaaffy","Mareanie","Aron","Swinub","Hattrem","Pancham")
   switch (var (VAR_RESULT)) {
   case 0:
     setvar(VAR_STARTER_MON, 0)

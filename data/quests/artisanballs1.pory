@@ -653,19 +653,28 @@ script Quest_ArtisanBalls3_ChangeDoorMetatile_Script {
 
 script Quest_ArtisanBalls_ReadBook_Dialogue{
     msgbox(gText_Quest_ArtisanBalls_WhichPokeBall)
-    //multichoice2(1,1,Quest_ArtisanBalls_CraftBallList,0,2,0)
+    dynmultipush("Level Ball", ITEM_LEVEL_BALL)
+    dynmultipush("Lure Ball", ITEM_LURE_BALL)
+    dynmultipush("Moon Ball", ITEM_MOON_BALL)
+    dynmultipush("Friend Ball", ITEM_FRIEND_BALL)
+    dynmultipush("Love Ball", ITEM_LOVE_BALL)
+    dynmultipush("Fast Ball", ITEM_FAST_BALL)
+    dynmultipush("Heavy Ball", ITEM_HEAVY_BALL)
+    dynmultipush("Close the book.", ITEMS_COUNT)
+    dynmultistack(0, 0, FALSE, 5, TRUE, 0, DYN_MULTICHOICE_CB_SHOW_ITEM)
     closemessage
 
     switch(var(VAR_RESULT)){
-        case 1: msgbox(gText_Quest_ArtisanBalls_ExplainLure)
-        case 5: msgbox(gText_Quest_ArtisanBalls_ExplainFast)
-        case 0: msgbox(gText_Quest_ArtisanBalls_ExplainLevel)
-        case 6: msgbox(gText_Quest_ArtisanBalls_ExplainHeavy)
-        case 4: msgbox(gText_Quest_ArtisanBalls_ExplainLove)
-        case 3: msgbox(gText_Quest_ArtisanBalls_ExplainFriend)
-        case 2: msgbox(gText_Quest_ArtisanBalls_ExplainMoon)
-        case 7: 
-        case MULTI_B_PRESSED: end
+        case ITEM_LURE_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainLure)
+        case ITEM_FAST_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainFast)
+        case ITEM_LEVEL_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainLevel)
+        case ITEM_HEAVY_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainHeavy)
+        case ITEM_LOVE_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainLove)
+        case ITEM_FRIEND_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainFriend)
+        case ITEM_MOON_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainMoon)
+        //PSF TODO Why doesn't pressing B work here?
+        case MULTI_B_PRESSED: 
+        case ITEMS_COUNT: end
     }
     goto(Quest_ArtisanBalls_ReadBook_Dialogue)
 }

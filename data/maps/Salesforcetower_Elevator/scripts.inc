@@ -48,6 +48,7 @@ Salesforcetower_Elevator_HideAttendant_Script::
 
 Salesforcetower_ElevatorAttendant_PickFloor_Script::
 	msgbox gText_WhichFloorWouldYouLike, MSGBOX_NPC, SPEAKER_ATTENDANT
+	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_0, Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_1, Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_2, Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_3, Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_4, Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_5, Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_6
 	closemessage
 	switch VAR_RESULT
 	case 0, Salesforcetower_ElevatorAttendant_PickFloor_Script_2
@@ -258,15 +259,26 @@ SalesforcetowerElevator_EventScript_SetFloor::
 	return
 
 
-Salesforcetower_FloorList::
+Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_0:
 	.string "Floor 1: Foyer$"
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_1:
 	.string "Floor 30: Lobby$"
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_2:
 	.string "Floor 34: Park$"
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_3:
 	.string "Floor 35: Giftshop$"
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_4:
 	.string "Floor 37: Production$"
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_5:
 	.string "Floor 38: Leagueops$"
+
+Salesforcetower_ElevatorAttendant_PickFloor_Script_Text_6:
 	.string "Cancel$"
-	.string "$"
 
 gText_Salesforcetower_Elevator_TheAttendantIsGone::
 	.string "The attendant is gone...but I don't\n"

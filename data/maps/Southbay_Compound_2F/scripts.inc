@@ -22,6 +22,7 @@ Southbay_Compound_2F_Bed_Script::
 
 BedScript_SetNewTime_Script::
 	msgbox gText_BedScript_WhenShouldWake
+	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, BedScript_SetNewTime_Script_Text_0, BedScript_SetNewTime_Script_Text_1, BedScript_SetNewTime_Script_Text_2, BedScript_SetNewTime_Script_Text_3
 	closemessage
 	switch VAR_RESULT
 	case 0, BedScript_SetNewTime_Script_3
@@ -67,15 +68,15 @@ BedScript_DetermineTimeOfDay_4:
 	return
 
 BedScript_DetermineTimeOfDay_2:
-	bufferstring STR_VAR_3, BedScript_DetermineTimeOfDay_Text_0
+	bufferstring STR_VAR_3, BedScript_SetNewTime_Script_Text_1
 	goto BedScript_DetermineTimeOfDay_1
 
 BedScript_DetermineTimeOfDay_5:
-	bufferstring STR_VAR_3, BedScript_DetermineTimeOfDay_Text_1
+	bufferstring STR_VAR_3, BedScript_SetNewTime_Script_Text_0
 	goto BedScript_DetermineTimeOfDay_4
 
 BedScript_DetermineTimeOfDay_7:
-	bufferstring STR_VAR_3, BedScript_DetermineTimeOfDay_Text_2
+	bufferstring STR_VAR_3, BedScript_SetNewTime_Script_Text_2
 	return
 
 
@@ -127,23 +128,19 @@ BedScript_AdvanceStory_Script_10:
 	goto BedScript_AdvanceStory_Script_1
 
 
-BedScript_DetermineTimeOfDay_Text_0:
-	.string "Midday$"
-
-BedScript_DetermineTimeOfDay_Text_1:
+BedScript_SetNewTime_Script_Text_0:
 	.string "Morning$"
 
-BedScript_DetermineTimeOfDay_Text_2:
+BedScript_SetNewTime_Script_Text_1:
+	.string "Midday$"
+
+BedScript_SetNewTime_Script_Text_2:
 	.string "Night$"
+
+BedScript_SetNewTime_Script_Text_3:
+	.string "Not tired yet.$"
 
 gText_BedScript_WhenShouldWake::
 	.string "It is currently {STR_VAR_3}. What\n"
 	.string "time of day do you want to wake up\l"
 	.string "tomorrow?$"
-
-BedScript_TimeOptions::
-	.string "Morning$"
-	.string "Midday$"
-	.string "Night$"
-	.string "Cancel$"
-	.string "$"

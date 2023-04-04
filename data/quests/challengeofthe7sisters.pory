@@ -32,7 +32,7 @@ script Quest_Challengeof7Sisters_Welcome_Dialogue{
 
 script Quest_Challengeof7Sisters_ChallengeMenu_Dialogue{
     msgbox(gText_Challengeof7Sisters_AreYouReadyFor,,SPEAKER_SEVENSISTERS_TINA)
-        //multichoice2(0,0,Quest_Challengeof7Sisters_ChallengeMenu,0,1,0)
+    dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE, "I challenge you!", "Info / Record", "Never mind.")
 
         switch (var(VAR_RESULT)){
             case CHALLENGE: goto(Quest_Challengeof7Sisters_StartChallenge_Dialogue)
@@ -552,12 +552,6 @@ movement Quest_Challengeof7Sisters_RachelFromBattlefield_Movement{
     step_end
 }
 
-text Quest_Challengeof7Sisters_ChallengeMenu{
-    "Challenge$"
-        "Info / Record$"
-        "Cancel$"
-        "$"
-}
 
 text gText_Challengeof7Sisters_IDidMyBest{
     format("I did my best. I have no regrets!")
