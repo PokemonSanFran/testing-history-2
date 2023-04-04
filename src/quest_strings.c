@@ -528,6 +528,11 @@ const u8 gText_Quest_BecomeChampion_Desc[] =_("Become the Champion of the Sanfra
 const u8 gText_Quest_BecomeChampion_DoneDesc[] =_("You defeated the Elite Four\nand became the Champion of the Sanfran\nPokémon League!");
 const u8 gText_Quest_BecomeChampion_Map[] =_("Oaklandcoliseum");
 
+const u8 gText_Quest_Dancebattle_Name[] =_("");
+const u8 gText_Quest_Dancebattle_Desc[] =_("");
+const u8 gText_Quest_Dancebattle_DoneDesc[] =_("");
+const u8 gText_Quest_Dancebattle_Map[] =_("");
+
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
 const u8 gText_Quest_HauntABuilding_Sub1_Desc[] = _("You brought Hunter a Litwick.");

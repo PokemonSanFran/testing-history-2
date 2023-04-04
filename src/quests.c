@@ -3477,6 +3477,16 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJECT,
             sBecomeChampion_Sub,
 	        4
+	),
+	side_quest(
+	        gText_Quest_Dancebattle_Name,
+	        gText_Quest_Dancebattle_Desc,
+	        gText_Quest_Dancebattle_DoneDesc,
+	        gText_Quest_Dancebattle_Map,
+	        OBJ_EVENT_GFX_PHOEBE,
+	        OBJECT,
+            NULL,
+	        0
 	)
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////

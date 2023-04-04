@@ -412,3 +412,10 @@
 #define NOT_STARTED 0
 #define LOOK_FOR_BRIDE  1
 #define FOUND_BRIDE 2
+
+//VAR_DANCEBATTLE_STATE
+#define NEVER_TIPPED 0
+#define TIPPED_ONCE 1
+#define TIPPED_TWICE    2
+#define TIPPED_THRICE   3
+#define TIPPED_FOUR 4

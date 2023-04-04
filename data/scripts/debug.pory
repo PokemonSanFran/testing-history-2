@@ -60,19 +60,15 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP)
-    warpsilent(MAP_DOGPATCH,14,10)
+    warpsilent(MAP_OAKLAND,5,27)
     end
 }
 
 script Debug_Script_2{
-    warpsilent(MAP_BERNALHEIGHTS,12,13)
     end
 }
 
 script Debug_Script_3{
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_NEIGHBORHOODCLEANUP2)
-    warpsilent(MAP_BERNALHEIGHTS,12,13)
     end
 }
 
