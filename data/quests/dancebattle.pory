@@ -26,7 +26,7 @@ script Quest_Dancebattle_StartPerformance_Script{
 
 script Quest_Dancebattle_BattleOrShow_Dialogue{
     msgbox(gText_Dancebattle_)
-    multichoice2(1,1,Quest_Dancebattle_BattleShow)
+    //multichoice2(1,1,Quest_Dancebattle_BattleShow)
     closemessage
 
     switch(var(VAR_RESULT)){
@@ -69,7 +69,8 @@ script Quest_Dancebattle_Dance4_Script{
 script Quest_Dancebattle_AskTip_Script{
     showmoneybox(0,0)
     msgbox(gText_Dancebattle_)
-    multichoice2(24,0,Quest_Dancebattle_TipAmount)
+    //multichoice2(24,0,Quest_Dancebattle_TipAmount)
+    dynmultichoice(24,0,FALSE,4,0,DYN_MULTICHOICE_CB_NONE, "500", "1000", "1500", "2000", "Never mind.")
     closemessage
     
     switch(var(VAR_RESULT)){

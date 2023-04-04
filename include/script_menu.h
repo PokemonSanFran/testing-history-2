@@ -1,9 +1,41 @@
 #ifndef GUARD_SCRIPT_MENU_H
 #define GUARD_SCRIPT_MENU_H
 
-#include "menu.h" //MULTICHOICE2 https://www.pokecommunity.com/showpost.php?p=10521985
+//Begin Dynamic Multichoice
+//https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+#include "list_menu.h"
+
+// The default size the stack for dynamic multichoice is initalized to
+// If you try to push an element when the stack is full, it will be reallocated
+// With increasing capacity of MULTICHOICE_DYNAMIC_STACK_INC
+
+#define MULTICHOICE_DYNAMIC_STACK_SIZE  5
+#define MULTICHOICE_DYNAMIC_STACK_INC   5
+
+//End Dynamic Multichoice
 
 extern const u8 *const gStdStrings[];
+//Begin Dynamic Multichoice
+//https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+struct DynamicMultichoiceStack
+{
+    s32 top;
+    u32 capacity;
+    struct ListMenuItem *elements;
+};
+
+void MultichoiceDynamic_InitStack(u32 capacity);
+void MultichoiceDynamic_ReallocStack(u32 newCapacity);
+bool32 MultichoiceDynamic_StackFull(void);
+bool32 MultichoiceDynamic_StackEmpty(void);
+u32 MultichoiceDynamic_StackSize(void);
+void MultichoiceDynamic_PushElement(struct ListMenuItem item);
+struct ListMenuItem *MultichoiceDynamic_PopElement(void);
+struct ListMenuItem *MultichoiceDynamic_PeekElement(void);
+struct ListMenuItem *MultichoiceDynamic_PeekElementAt(u32 index);
+void MultichoiceDynamic_DestroyStack(void);
+bool8 ScriptMenu_MultichoiceDynamic(u8 left, u8 top, u8 argc, struct ListMenuItem *items, bool8 ignoreBPress,u8 maxBeforeScroll, u32 initialRow, u32 callbackSet);
+//End Dynamic Multichoice
 
 bool8 ScriptMenu_Multichoice(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress);
 bool8 ScriptMenu_MultichoiceWithDefault(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 defaultChoice);
@@ -19,8 +51,4 @@ int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width);
 bool16 ScriptMenu_CreatePCMultichoice(void);
 void ScriptMenu_DisplayPCStartupPrompt(void);
 
-// START MULTICHOICE2 https://www.pokecommunity.com/showpost.php?p=10521985
-bool8 ScriptMenu_MultichoiceGridCustom(u8 left, u8 top, u8 cursorPos, bool8 ignoreBPress, u8 columnCount, const struct MenuAction *actions, int count);
-void DrawMultichoiceMenuCustom(u8 left, u8 top, u8 multichoiceId, u8 ignoreBPress, u8 cursorPos, const struct MenuAction *actions, int count);
-// END MULTICHOICE2 https://www.pokecommunity.com/showpost.php?p=10521985
 #endif //GUARD_SCRIPT_MENU_H

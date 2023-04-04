@@ -48,7 +48,6 @@ Salesforcetower_Elevator_HideAttendant_Script::
 
 Salesforcetower_ElevatorAttendant_PickFloor_Script::
 	msgbox gText_WhichFloorWouldYouLike, MSGBOX_NPC, SPEAKER_ATTENDANT
-	multichoice2 1, 1, Salesforcetower_FloorList, 0, 1, 0
 	closemessage
 	switch VAR_RESULT
 	case 0, Salesforcetower_ElevatorAttendant_PickFloor_Script_2

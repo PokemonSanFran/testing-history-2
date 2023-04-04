@@ -50,6 +50,12 @@
 #include "window.h"
 #include "constants/event_objects.h"
 #include "quests.h"
+//BEGIN DYNAMIC MULTICHOICE
+//https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+#include "list_menu.h"
+#include "malloc.h"
+//END DYNAMIC MULTICHOICE
+
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -70,6 +76,7 @@ extern const u8 *gStdScripts[];
 extern const u8 *gStdScripts_End[];
 
 static void CloseBrailleWindow(void);
+static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count); //https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
 
 // This is defined in here so the optimizer can't see its value when compiling
 // script.c.
@@ -1353,6 +1360,105 @@ bool8 ScrCmd_yesnobox(struct ScriptContext *ctx)
     }
 }
 
+//BEGIN DYNAMIC MULTICHOICE
+//https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count)
+{
+    u32 i,j;
+    struct ListMenuItem tmp;
+    for (i = 0; i < count - 1; ++i)
+    {
+        for (j=0; j<count - i - 1; ++j)
+        {
+            if (items[j].id > items[j+1].id)
+            {
+                tmp = items[j];
+                items[j] = items[j+1];
+                items[j+1] = tmp;
+            }
+        }
+    }
+}
+
+#define DYN_MULTICHOICE_DEFAULT_MAX_BEFORE_SCROLL 6
+
+bool8 ScrCmd_dynmultichoice(struct ScriptContext *ctx)
+{
+    u32 i;
+    u32 left = ScriptReadByte(ctx);
+    u32 top = ScriptReadByte(ctx);
+    bool32 ignoreBPress = ScriptReadByte(ctx);
+    u32 maxBeforeScroll = ScriptReadByte(ctx);
+    bool32 shouldSort = ScriptReadByte(ctx);
+    u32 initialSelected = VarGet(ScriptReadHalfword(ctx));
+    u32 callbackSet = ScriptReadByte(ctx);
+    u32 initialRow = 0;
+    // Read vararg
+    u32 argc = ScriptReadByte(ctx);
+    struct ListMenuItem *items;
+
+    if (argc == 0)
+        return;
+        return FALSE;
+
+    if (maxBeforeScroll == 0xFF)
+        maxBeforeScroll = DYN_MULTICHOICE_DEFAULT_MAX_BEFORE_SCROLL;
+
+    if ((const u8*) ScriptPeekWord(ctx) != NULL)
+    {
+        items = AllocZeroed(sizeof(struct ListMenuItem) * argc);
+        for (i = 0; i < argc; ++i)
+        {
+            u8 *nameBuffer = Alloc(100);
+            const u8 *arg = (const u8 *) ScriptReadWord(ctx);
+            StringExpandPlaceholders(nameBuffer, arg);
+            items[i].name = nameBuffer;
+            items[i].id = i;
+            if (i == initialSelected)
+                initialRow = i;
+        }
+    }
+    else
+    {
+        argc = MultichoiceDynamic_StackSize();
+        items = AllocZeroed(sizeof(struct ListMenuItem) * argc);
+        for (i = 0; i < argc; ++i)
+        {
+            struct ListMenuItem *currentItem = MultichoiceDynamic_PeekElementAt(i);
+            items[i] = *currentItem;
+            if (currentItem->id == initialSelected)
+                initialRow = i;
+        }
+        if (shouldSort)
+            DynamicMultichoiceSortList(items, argc);
+        MultichoiceDynamic_DestroyStack();
+    }
+
+    if (ScriptMenu_MultichoiceDynamic(left, top, argc, items, ignoreBPress, maxBeforeScroll, initialRow, callbackSet))
+    {
+        ScriptContext_Stop();
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+
+bool8 ScrCmd_dynmultipush(struct ScriptContext *ctx)
+{
+    u8 *nameBuffer = Alloc(100);
+    const u8 *name = (const u8*) ScriptReadWord(ctx);
+    u32 id = VarGet(ScriptReadHalfword(ctx));
+    struct ListMenuItem item;
+    StringExpandPlaceholders(nameBuffer, name);
+    item.name = nameBuffer;
+    item.id = id;
+    MultichoiceDynamic_PushElement(item);
+}
+
+//END DYNAMIC MULTICHOICE
+
 bool8 ScrCmd_multichoice(struct ScriptContext *ctx)
 {
     u8 left = ScriptReadByte(ctx);
@@ -2492,45 +2598,6 @@ bool8 ScrCmd_subquestmenu(struct ScriptContext *ctx)
 
     return TRUE;
 }
-
-// START MULTICHOICE2 https://www.pokecommunity.com/showpost.php?p=10521985
-bool8 ScrCmd_multichoice2(struct ScriptContext *ctx){
-    u8 x = ScriptReadByte(ctx);
-    u8 y = ScriptReadByte(ctx);
-    char* choices = (char*)ScriptReadWord(ctx);
-    bool8 ignoreBPress = ScriptReadByte(ctx);
-    u8 columns = ScriptReadByte(ctx);
-    u8 defaultChoice = ScriptReadByte(ctx);
-    if((u32)choices < 0x1000000){ //choices is a multichoiceId
-        if(columns > 1)
-            ScriptMenu_MultichoiceGrid(x, y, (u32)choices, ignoreBPress, columns);
-        else
-            ScriptMenu_MultichoiceWithDefault(x, y, (u32)choices, ignoreBPress, defaultChoice);
-        ScriptContext_Stop();
-        return TRUE;
-    }else{ //choices is a string
-        struct MenuAction menuItems[16] = {NULL};
-        u8 count = 0;
-        while(count < ARRAY_COUNT(menuItems)){
-		    int len = StringLength(choices);
-		    if(!len) break;
-		    menuItems[count++].text = choices;
-		    choices += len + 1;
-        }
-        if(defaultChoice >= count)
-            defaultChoice = 0;
-        if (count > 0){
-		    if(columns > 1)
-			    ScriptMenu_MultichoiceGridCustom(x, y, defaultChoice, ignoreBPress, columns, menuItems, count);
-		    else
-			    DrawMultichoiceMenuCustom(x, y, 0, ignoreBPress, defaultChoice, menuItems, count);
-            ScriptContext_Stop();
-            return TRUE;
-	    }
-    }
-    return FALSE;
-}
-// END MULTICHOICE2 https://www.pokecommunity.com/showpost.php?p=10521985
 
 bool8 ScrCmd_setcustomwildmon(struct ScriptContext *ctx)
 {

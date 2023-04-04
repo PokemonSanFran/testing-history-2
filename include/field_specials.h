@@ -3,6 +3,7 @@
 
 extern bool8 gBikeCyclingChallenge;
 extern u8 gBikeCollisions;
+extern u16 gScrollableMultichoice_ScrollOffset; //https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
 
 u8 GetLeadMonIndex(void);
 u8 IsDestinationBoxFull(void);

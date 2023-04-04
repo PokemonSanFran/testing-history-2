@@ -32,7 +32,7 @@ script Quest_Challengeof7Sisters_Welcome_Dialogue{
 
 script Quest_Challengeof7Sisters_ChallengeMenu_Dialogue{
     msgbox(gText_Challengeof7Sisters_AreYouReadyFor,,SPEAKER_SEVENSISTERS_TINA)
-        multichoice2(0,0,Quest_Challengeof7Sisters_ChallengeMenu,0,1,0)
+        //multichoice2(0,0,Quest_Challengeof7Sisters_ChallengeMenu,0,1,0)
 
         switch (var(VAR_RESULT)){
             case CHALLENGE: goto(Quest_Challengeof7Sisters_StartChallenge_Dialogue)

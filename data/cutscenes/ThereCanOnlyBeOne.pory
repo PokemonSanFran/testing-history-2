@@ -52,7 +52,7 @@ text ThereCanOnlyBeOne_StarterList{
 script ThereCanOnlyBeOne_StarterSelectMenu_Script {
   msgbox(gText_ThereCanOnlyBe_PleaseChooseAPokemon)
   closemessage
-  multichoice2(0,0,ThereCanOnlyBeOne_StarterList,1,1,0)
+  //multichoice2(0,0,ThereCanOnlyBeOne_StarterList,1,1,0)
 
   switch (var (VAR_RESULT)) {
   case 0:
@@ -96,7 +96,7 @@ script ThereCanOnlyBeOne_StarterSelectMenu_Script {
 }
 
 script ThereCanOnlyBeOne_StarterChoiceMenu_Script {
-  multichoice(50, 6, MULTI_STARTER_SUMMARY, TRUE)
+  //multichoice(50, 6, MULTI_STARTER_SUMMARY, TRUE)
 
   switch (var (VAR_RESULT)) {
   case 0:

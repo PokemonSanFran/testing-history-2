@@ -653,7 +653,7 @@ script Quest_ArtisanBalls3_ChangeDoorMetatile_Script {
 
 script Quest_ArtisanBalls_ReadBook_Dialogue{
     msgbox(gText_Quest_ArtisanBalls_WhichPokeBall)
-    multichoice2(1,1,Quest_ArtisanBalls_CraftBallList,0,2,0)
+    //multichoice2(1,1,Quest_ArtisanBalls_CraftBallList,0,2,0)
     closemessage
 
     switch(var(VAR_RESULT)){

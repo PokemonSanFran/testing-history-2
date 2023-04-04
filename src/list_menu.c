@@ -70,7 +70,7 @@ struct RedArrowCursor
 
 // this file's functions
 static u8 ListMenuInitInternal(struct ListMenuTemplate *listMenuTemplate, u16 scrollOffset, u16 selectedRow);
-static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown);
+//static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown); //https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
 static void ListMenuPrintEntries(struct ListMenu *list, u16 startIndex, u16 yOffset, u16 count);
 static void ListMenuDrawCursor(struct ListMenu *list);
 static void ListMenuCallSelectionChangedCallback(struct ListMenu *list, u8 onInit);
@@ -846,7 +846,8 @@ static void ListMenuScroll(struct ListMenu *list, u8 count, bool8 movingDown)
     }
 }
 
-static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
+//static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown) //https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+bool8 ListMenuChangeSelectionFull(struct ListMenu *list, bool32 updateCursor, bool32 callCallback, u8 count, bool8 movingDown)
 {
     u16 oldSelectedRow;
     u8 selectionChange, i, cursorCount;
@@ -866,7 +867,8 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
         } while (list->template.items[list->scrollOffset + list->selectedRow].id == LIST_HEADER);
     }
 
-    if (updateCursorAndCallCallback)
+    //if (updateCursorAndCallCallback) //https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+    if (updateCursor)
     {
         switch (selectionChange)
         {
@@ -876,7 +878,9 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
         case 1:
             ListMenuErasePrintedCursor(list, oldSelectedRow);
             ListMenuDrawCursor(list);
-            ListMenuCallSelectionChangedCallback(list, FALSE);
+            //ListMenuCallSelectionChangedCallback(list, FALSE); //https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+            if (callCallback)
+                ListMenuCallSelectionChangedCallback(list, FALSE);
             CopyWindowToVram(list->template.windowId, COPYWIN_GFX);
             break;
         case 2:
@@ -884,7 +888,9 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
             ListMenuErasePrintedCursor(list, oldSelectedRow);
             ListMenuScroll(list, cursorCount, movingDown);
             ListMenuDrawCursor(list);
-            ListMenuCallSelectionChangedCallback(list, FALSE);
+            //ListMenuCallSelectionChangedCallback(list, FALSE); //https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+            if (callCallback)
+                ListMenuCallSelectionChangedCallback(list, FALSE);
             CopyWindowToVram(list->template.windowId, COPYWIN_GFX);
             break;
         }
@@ -892,12 +898,19 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
 
     return FALSE;
 }
+//BEGIN DYNAMIC MULTICHOICE
+//https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
+{
+    ListMenuChangeSelectionFull(list, updateCursorAndCallCallback, updateCursorAndCallCallback, count , movingDown);
+}
 
 static void ListMenuCallSelectionChangedCallback(struct ListMenu *list, u8 onInit)
 {
     if (list->template.moveCursorFunc != NULL)
         list->template.moveCursorFunc(list->template.items[list->scrollOffset + list->selectedRow].id, onInit, list);
 }
+//END DYNAMIC MULTICHOICE
 
 // unused
 void ListMenuOverrideSetColors(u8 cursorPal, u8 fillValue, u8 cursorShadowPal)

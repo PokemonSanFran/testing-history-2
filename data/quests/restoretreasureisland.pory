@@ -70,7 +70,7 @@ script Quest_Restoretreasureisland_PostBattle_Dialogue{
 script Quest_Restoretreasureisland_Active_Script{
         msgbox(gText_Restoretreasureisland_DoYouHave,,SPEAKER_CILAN)
         
-        multichoice2(1,1,Quest_Restoretreasureisland_CheckList,0,1,0)
+        //multichoice2(1,1,Quest_Restoretreasureisland_CheckList,0,1,0)
         closemessage
 
         switch(var(VAR_RESULT)){

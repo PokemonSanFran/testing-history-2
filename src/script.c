@@ -180,6 +180,19 @@ u32 ScriptReadWord(struct ScriptContext *ctx)
     u32 value3 = *(ctx->scriptPtr++);
     return (((((value3 << 8) + value2) << 8) + value1) << 8) + value0;
 }
+//BEGIN DYNAMIC MULTICHOICE
+//https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+
+u32 ScriptPeekWord(struct ScriptContext *ctx)
+{
+    u32 value0 = *(ctx->scriptPtr);
+    u32 value1 = *(ctx->scriptPtr + 1);
+    u32 value2 = *(ctx->scriptPtr + 2);
+    u32 value3 = *(ctx->scriptPtr + 3);
+    return (((((value3 << 8) + value2) << 8) + value1) << 8) + value0;
+}
+
+//END DYNAMIC MULTICHOICE
 
 void LockPlayerFieldControls(void)
 {

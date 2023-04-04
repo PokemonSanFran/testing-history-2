@@ -22,7 +22,6 @@ Southbay_Compound_2F_Bed_Script::
 
 BedScript_SetNewTime_Script::
 	msgbox gText_BedScript_WhenShouldWake
-	multichoice2 1, 1, BedScript_TimeOptions, 0, 1, 0
 	closemessage
 	switch VAR_RESULT
 	case 0, BedScript_SetNewTime_Script_3

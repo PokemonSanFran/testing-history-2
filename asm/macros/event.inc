@@ -2420,25 +2420,6 @@
     call_if_eq VAR_RESULT, FALSE, \dest
     .endm
 
-    @ Multichoice2 (https://www.pokecommunity.com/showpost.php?p=10521985)
-	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
-	@ Parameters:
-	@ - x & y are tile coordinates for the top-left corner of the multichoice.
-	@ - choices can either be the id of predefined options (sMultichoiceLists)
-	@ OR a string pointer to the options (each option must end with $ and the option list ends with an empty option).
-	@ - ignoreBPress prevents backing out of the menu with the B button if set to a non-zero value.
-	@ - per_row is the number of options displayed on each horizontal row.
-	@ - cursorPos is the cursor's starting position.
-	.macro multichoice2 x:req, y:req, choices:req, ignoreBPress=0, per_row=1, cursorPos=0
-	.byte 0xe8
-	.byte \x
-	.byte \y
-	.4byte \choices
-	.byte \ignoreBPress
-	.byte \per_row
-	.byte \cursorPos
-	.endm
-
 	@ Gets the current value of gameStatId and stores it in VAR_RESULT.
 	@ Optionally, it also allows to store said value in a buffer.
 	.macro getgamestat gameStatId:req, buffer
@@ -2456,3 +2437,37 @@
 	setvar VAR_TEMP_2, \moveId
 	specialvar \varId, Script_CheckForMonAndMove
 	.endm
+
+    @ start dynamic multichoice
+    @ https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+    .macro _dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req argv:vararg
+    .byte 0xe8
+    .byte \left
+    .byte \top
+    .byte \ignoreBPress
+    .byte \maxBeforeScroll
+    .byte \shouldSort
+    .2byte \initialSelected
+    .byte \callbacks
+    .byte (.Ldynmultichoice_\@_2 - .Ldynmultichoice_\@_1) / 4
+.Ldynmultichoice_\@_1:
+    .4byte \argv
+.Ldynmultichoice_\@_2:
+    .endm
+
+    @ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
+    @ Lists of options are provided in argv.
+    @ If ignoreBPress is set to a non-zero value, then the user will not be allowed to back out of the multichoice with the B button.
+    .macro dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, initialSelected:req, callbacks:req argv:vararg
+    _dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, FALSE, \initialSelected, \callbacks, \argv
+    .endm
+
+    .macro dynmultipush name:req, id:req
+    .byte 0xe9
+    .4byte \name
+    .2byte \id
+    .endm
+    
+    .macro dynmultistack left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req
+    _dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
+    .endm

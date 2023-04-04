@@ -232,7 +232,8 @@ gScriptCmdTable::
     .4byte ScrCmd_questmenu                 @ 0xe5
     .4byte ScrCmd_subquestmenu              @ 0xe6
     .4byte ScrCmd_returnqueststate          @ 0xe7
-    .4byte ScrCmd_multichoice2              @ 0xe8 // MULTICHOICE2 https://www.pokecommunity.com/showpost.php?p=10521985
+    .4byte ScrCmd_dynmultichoice            @ 0xe8
+    .4byte ScrCmd_dynmultipush              @ 0xe9 //https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

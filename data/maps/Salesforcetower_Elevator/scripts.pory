@@ -38,7 +38,7 @@ script Salesforcetower_Elevator_HideAttendant_Script {
 
 script Salesforcetower_ElevatorAttendant_PickFloor_Script{
         msgbox(gText_WhichFloorWouldYouLike,MSGBOX_NPC,SPEAKER_ATTENDANT)
-        multichoice2(1,1,Salesforcetower_FloorList,0,1,0)
+        //multichoice2(1,1,Salesforcetower_FloorList,0,1,0)
         closemessage
 
         switch (var(VAR_RESULT)){

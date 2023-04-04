@@ -193,4 +193,10 @@
 #define STDSTRING_BATTLE_PIKE      28
 #define STDSTRING_BATTLE_PYRAMID   29
 
+// Dynamic Multichoice Callbacks
+// https://github.com/pret/pokeemerald/compare/master...SBird1337:pokeemerald:feature/dynmulti
+#define DYN_MULTICHOICE_CB_DEBUG    0
+#define DYN_MULTICHOICE_CB_SHOW_ITEM    1
+#define DYN_MULTICHOICE_CB_NONE 2
+
 #endif //GUARD_SCRIPT_MENU_CONSTANTS_H
