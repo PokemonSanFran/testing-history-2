@@ -60,7 +60,7 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    warp(MAP_JAPANTOWN_BALLS,0)
+    warp(MAP_OAKLAND,5,27)
     end
 }
 

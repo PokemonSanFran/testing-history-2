@@ -7,62 +7,100 @@ const DANCER_B = 11
 const DANCER_C = 12
 
 script Quest_Dancebattle_Interact_Event_Script{
-    goto_if_quest_complete(QUEST_DRUMCIRCLE,Quest_Dancebattle_BattleOrShow_Dialogue)
-    goto_if_quest_active(QUEST_DRUMCIRCLE,Quest_Dancebattle_StartBattles_Script)
+    goto_if_quest_complete(QUEST_DANCEBATTLE,Quest_Dancebattle_BattleOrShow_Dialogue)
+    goto_if_quest_active(QUEST_DANCEBATTLE,Quest_Dancebattle_StartBattles_Script)
     goto(Quest_Dancebattle_StartPerformance_Script)
 }
 
 script Quest_Dancebattle_StartPerformance_Script{
     lock
-    switch(var(VAR_DANCEBATTLE_STATE)){
-        case NEVER_TIPPED: goto(Quest_Dancebattle_Dance1_Script)
-        case TIPPED_ONCE: goto(Quest_Dancebattle_Dance2_Script)
-        case TIPPED_TWICE: goto(Quest_Dancebattle_Dance3_Script)
-        case TIPPED_THRICE: goto(Quest_Dancebattle_Dance4_Script)
-    }
+    goto(Quest_Dancebattle_RunDance_Script)
     release
     end 
 }
 
-script Quest_Dancebattle_BattleOrShow_Dialogue{
-    msgbox(gText_Dancebattle_)
-    dynmultichoice(1,1,TRUE,3,0,DYN_MULTICHOICE_CB_NONE, "Let's battle!", "I'm here for a show.", "Just saying hi!")
-    closemessage
-
-    switch(var(VAR_RESULT)){
-        case 0:
-        case 1:
-        case 2:
-        MULTI_B_PRESSED:
+script Quest_Dancebattle_RunDance_Script{
+    //PSF TODO create dance sequences
+    lock
+    switch(var(VAR_DANCEBATTLE_STATE)){
+        case NEVER_TIPPED: call(Quest_Dancebattle_Dance1_Script)
+        case TIPPED_ONCE: call(Quest_Dancebattle_Dance2_Script)
+        case TIPPED_TWICE: call(Quest_Dancebattle_Dance3_Script)
+        case TIPPED_THRICE: call(Quest_Dancebattle_Dance4_Script)
     }
-    return
+    waitmovement(DANCER_C)
+    call(Quest_Dancebattle_AskTip_Script)
+    release
+    end
 }
 
 script Quest_Dancebattle_Dance1_Script{
-    call(Quest_Dancebattle_AskTip_Script)
-    release
-    end
+    applymovement(DANCER_A,Common_Movement_WalkInPlaceUp)
+    applymovement(DANCER_B,Common_Movement_WalkInPlaceUp)
+    applymovement(DANCER_C,Common_Movement_WalkInPlaceUp)  
+    applymovement(DANCER_A,Common_Movement_FaceDown)
+    applymovement(DANCER_B,Common_Movement_FaceDown)
+    applymovement(DANCER_C,Common_Movement_FaceDown)  
+    return
 }
 script Quest_Dancebattle_Dance2_Script{
-    call(Quest_Dancebattle_AskTip_Script)
-    release
-    end
+    applymovement(DANCER_A,Common_Movement_WalkInPlaceLeft)
+    applymovement(DANCER_B,Common_Movement_WalkInPlaceLeft)
+    applymovement(DANCER_C,Common_Movement_WalkInPlaceLeft)  
+    applymovement(DANCER_A,Common_Movement_FaceDown)
+    applymovement(DANCER_B,Common_Movement_FaceDown)
+    applymovement(DANCER_C,Common_Movement_FaceDown)  
+    return
 }
 script Quest_Dancebattle_Dance3_Script{
-    call(Quest_Dancebattle_AskTip_Script)
-release
-end
+    applymovement(DANCER_A,Common_Movement_WalkInPlaceRight)
+    applymovement(DANCER_B,Common_Movement_WalkInPlaceRight)
+    applymovement(DANCER_C,Common_Movement_WalkInPlaceRight)  
+    applymovement(DANCER_A,Common_Movement_FaceDown)
+    applymovement(DANCER_B,Common_Movement_FaceDown)
+    applymovement(DANCER_C,Common_Movement_FaceDown)  
+    return
 }
 script Quest_Dancebattle_Dance4_Script{
-    call(Quest_Dancebattle_AskTip_Script)
-    release
-    end
+    applymovement(DANCER_A,Common_Movement_WalkInPlaceDown)
+    applymovement(DANCER_B,Common_Movement_WalkInPlaceDown)
+    applymovement(DANCER_C,Common_Movement_WalkInPlaceDown)  
+    applymovement(DANCER_A,Common_Movement_FaceDown)
+    applymovement(DANCER_B,Common_Movement_FaceDown)
+    applymovement(DANCER_C,Common_Movement_FaceDown)  
+    return
+}
+
+script Quest_Dancebattle_ConstructMenu_Script{
+    checkmoney(500)
+    if(var(VAR_RESULT)){
+        dynmultipush("¥500",0)
+    }   
+
+    checkmoney(1000)
+    if(var(VAR_RESULT)){
+        dynmultipush("¥1000",1)
+    }   
+
+    checkmoney(1500)
+    if(var(VAR_RESULT)){
+        dynmultipush("¥1500",2)
+    }   
+
+    checkmoney(2000)
+    if(var(VAR_RESULT)){
+        dynmultipush("¥2000",3)
+    }   
+
+    dynmultipush("Never mind.",4)
+    return
 }
 
 script Quest_Dancebattle_AskTip_Script{
     showmoneybox(0,0)
-    msgbox(gText_Dancebattle_)
-    dynmultichoice(24,0,FALSE,4,0,DYN_MULTICHOICE_CB_NONE, "500", "1000", "1500", "2000", "Never mind.")
+    msgbox(gText_Dancebattle_ThankYouForWatchingOur)
+    call(Quest_Dancebattle_ConstructMenu_Script)
+    dynmultistack(24,0,FALSE,4,TRUE,0,DYN_MULTICHOICE_CB_NONE)
     closemessage
     
     switch(var(VAR_RESULT)){
@@ -70,21 +108,11 @@ script Quest_Dancebattle_AskTip_Script{
         case 1: call(Quest_Dancebattle_Tip1000_Script)
         case 2: call(Quest_Dancebattle_Tip1500_Script) 
         case 3: call(Quest_Dancebattle_Tip2000_Script)
-        case 4:
-        case MULTI_B_PRESSED: 
+        default:
     }
     hidemoneybox
     release
     end
-}
-
-text Quest_Dancebattle_TipAmount{
-    "500$"
-    "1000$"
-    "1500$"
-    "2000$"
-    "Never mind."
-    "$"
 }
 
 script Quest_Dancebattle_Tip500_Script{
@@ -92,34 +120,37 @@ script Quest_Dancebattle_Tip500_Script{
     removemoney(500,0)
     updatemoneybox(0)
     hidemoneybox
-    msgbox(gText_Dancebattle_)
+    msgbox(gText_Dancebattle_HeyThanksForThe)
     call(Quest_Dancebattle_CapState_Script)
     return 
 }
+
 script Quest_Dancebattle_Tip1000_Script{
     addvar(VAR_DANCEBATTLE_STATE,2)
     removemoney(1000,0)
     updatemoneybox(0)
     hidemoneybox
-    msgbox(gText_Dancebattle_)
+    msgbox(gText_Dancebattle_WowThankYouFor)
     call(Quest_Dancebattle_CapState_Script)
     return 
 }
+
 script Quest_Dancebattle_Tip1500_Script{
     addvar(VAR_DANCEBATTLE_STATE,3)
     removemoney(1500,0)
     updatemoneybox(0)
     hidemoneybox
-    msgbox(gText_Dancebattle_)
+    msgbox(gText_Dancebattle_ThankYouForYourGenerous)
     call(Quest_Dancebattle_CapState_Script)
     return 
 }
+
 script Quest_Dancebattle_Tip2000_Script{
     addvar(VAR_DANCEBATTLE_STATE,4)
     removemoney(2000,0)
     updatemoneybox(0)
     hidemoneybox
-    msgbox(gText_Dancebattle_)
+    msgbox(gText_Dancebattle_WhoaThankYouFor)
     call(Quest_Dancebattle_CapState_Script)
     return 
 }
@@ -135,28 +166,29 @@ script Quest_Dancebattle_CapState_Script{
 }
 
 script Quest_Dancebattle_StartQuest_Script{
-    msgbox(gText_Dancebattle_)
+    msgbox(gText_Dancebattle_HeyWeveNoticed)
     startquest(QUEST_DANCEBATTLE)
+    lock
     goto(Quest_Dancebattle_StartBattles_Script)
 }
 
 script Quest_Dancebattle_StartBattles_Script{
-    msgbox(gText_Dancebattle_,MSGBOX_YESNO)
+    msgbox(gText_Dancebattle_YourPokemonLooksABit,MSGBOX_YESNO)
 
     if (var(VAR_RESULT) == YES){
         special(HealPlayerParty)
     }
-
     goto(Quest_Dancebattle_BattleA_Script)
 }
+
 script Quest_Dancebattle_BattleA_Script{
     applymovement(DANCER_A,Quest_Dancebattle_HopFace_Movement)
     playse(SE_BIKE_HOP)
     waitse
     waitmovement(DANCER_A)
     closemessage
-    msgbox(gText_Dancebattle_)
-    trainerbattle_no_intro(TRAINER_DUSTY_2,gText_Dancebattle_)
+    msgbox(gText_Dancebattle_WeveBeenPracticingHard)
+    trainerbattle_no_intro(TRAINER_DUSTY_2,gText_Dancebattle_YouGotMeThisTime)
     goto(Quest_Dancebattle_BattleB_Script)
 }
 
@@ -166,8 +198,8 @@ script Quest_Dancebattle_BattleB_Script{
     waitse
     waitmovement(DANCER_B)
     closemessage
-    msgbox(gText_Dancebattle_)
-    trainerbattle_no_intro(TRAINER_DUSTY_3,gText_Dancebattle_)
+    msgbox(gText_Dancebattle_YourePrettyGood)
+    trainerbattle_no_intro(TRAINER_DUSTY_3,gText_Dancebattle_WowYoureReally)
     goto(Quest_Dancebattle_BattleC_Script)
 }
 script Quest_Dancebattle_BattleC_Script{
@@ -176,15 +208,54 @@ script Quest_Dancebattle_BattleC_Script{
     waitse
     waitmovement(DANCER_C)
     closemessage
-    msgbox(gText_Dancebattle_)
-    trainerbattle_no_intro(TRAINER_DUSTY_4,gText_Dancebattle_)
+    msgbox(gText_Dancebattle_YouveMadeItThis)
+    trainerbattle_no_intro(TRAINER_DUSTY_4,gText_Dancebattle_ICantBelieveI)
     goto(Quest_Dancebattle_Reward_Dialogue)
 }
 script Quest_Dancebattle_Reward_Dialogue{
-    msgbox(gText_Dancebattle_)
+    msgbox(gText_Dancebattle_ImImpressedYou)
+    goto_if_quest_complete(QUEST_DANCEBATTLE,Quest_Dancebattle_FinishBattle_Script)
     giveitem(ITEM_LAVA_COOKIE,1)
-    msgbox(gText_Dancebattle_)
-    completequest(QUEST_DRUMCIRCLE)
+    msgbox(gText_Dancebattle_ThanksForComingOutAnd)
+    completequest(QUEST_DANCEBATTLE)
+    release
+    end
+}
+
+script Quest_Dancebattle_BattleOrShow_Dialogue{
+    msgbox(gText_Dancebattle_HeyThereWhatBrings)
+    dynmultichoice(1,1,TRUE,3,0,DYN_MULTICHOICE_CB_NONE, 
+"Let's battle!",
+"I'm here for a show.",
+ "Just saying hi!"
+)
+    closemessage
+
+    switch(var(VAR_RESULT)){
+        case 0:goto(Quest_Dancebattle_StartBattles_Script)
+        case 1:goto(Quest_Dancebattle_RandomDance_Script)
+        case 2:goto(Quest_DanceBattle_Cancel_Dialogue)
+        MULTI_B_PRESSED:
+    }
+    return
+}
+
+script Quest_Dancebattle_FinishBattle_Script{
+    msgbox(gText_Dancebattle_ThanksForComingOutAnd)
+    closemessage
+    release
+    end
+}
+
+script Quest_Dancebattle_RandomDance_Script{
+    random(3)
+    copyvar(VAR_DANCEBATTLE_STATE,VAR_RESULT)
+    goto(Quest_Dancebattle_RunDance_Script)
+}
+
+script Quest_DanceBattle_Cancel_Dialogue{
+    msgbox(gText_Dancebattle_DontWorryAboutIt)
+    closemessage
     release
     end
 }
@@ -196,6 +267,54 @@ movement Quest_Dancebattle_HopFace_Movement{
     step_end
 }
 
-text gText_Dancebattle_{
-    format("")
-}
+text gText_Dancebattle_ThankYouForWatchingOur{
+	format("Thank you for watching our performance! If you enjoyed it, please consider leaving a tip to help us improve our craft.")
+	}
+text gText_Dancebattle_HeyThanksForThe{
+	format("Hey, thanks for the tip! We really appreciate it!")
+	}
+text gText_Dancebattle_WowThankYouFor{
+	format("Wow, thank you for the big tip! You're really helping us out!")
+	}
+text gText_Dancebattle_ThankYouForYourGenerous{
+	format("Thank you for your generous tip! We couldn't do this without your support.")
+	}
+text gText_Dancebattle_WhoaThankYouFor{
+	format("Whoa, thank you for the huge tip! We're going to put on an even better show next time!")
+	}
+text gText_Dancebattle_HeyWeveNoticed{
+	format("Hey, we've noticed you've been really supportive of our performances. Do you want to battle us and see who's the better performer?")
+	}
+text gText_Dancebattle_YourPokemonLooksABit{
+	format("Your Pokémon looks a bit tired. Would you like us to heal them up for you?")
+	}
+text gText_Dancebattle_WeveBeenPracticingHard{
+	format("We've been practicing hard for this battle, so get ready to give it your all!")
+	}
+text gText_Dancebattle_YouGotMeThisTime{
+	format("You got me this time, but don't think it'll be easy to beat my crew!")
+	}
+text gText_Dancebattle_YourePrettyGood{
+	format("You're pretty good, but don't get too confident. I won't go down without a fight!")
+	}
+text gText_Dancebattle_WowYoureReally{
+	format("Wow, you're really something. I didn't expect to lose to you!")
+	}
+text gText_Dancebattle_YouveMadeItThis{
+	format("You've made it this far, but I won't hold back now. Let's see what you're really made of!")
+	}
+text gText_Dancebattle_ICantBelieveI{
+	format("I can't believe I lost. You're really something special!")
+	}
+text gText_Dancebattle_ImImpressedYou{
+	format("I'm impressed! You beat all three of us back to back. You're a true performer.")
+	}
+text gText_Dancebattle_ThanksForComingOutAnd{
+	format("Thanks for coming out and supporting us! We'll be here whenever you want to see us perform again.")
+	}
+text gText_Dancebattle_HeyThereWhatBrings{
+	format("Hey there! What brings you to our performance today?")
+	}
+text gText_Dancebattle_DontWorryAboutIt{
+	format("Don't worry about it! We're just happy to have you here enjoying our show.")
+	}

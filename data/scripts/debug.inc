@@ -60,7 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warp MAP_JAPANTOWN_BALLS, 0
+	warp MAP_OAKLAND, 5, 27
 	end
 
 
