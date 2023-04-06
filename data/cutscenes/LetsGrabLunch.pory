@@ -118,7 +118,12 @@ script LetsGrabLunch_InteractArcherDiner_Dialogue {
 
     msgbox(gText_LetsGrabLunch_ImJustPlanning,,SPEAKER_ARCHER)
 
-    dynmultichoice(1,1,FALSE,3,0,DYN_MULTICHOICE_CB_NONE, "Chinatown", "Marin", "Treasureisland","Nowhere yet.")
+    dynmultichoice(1,1,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,
+        "Chinatown",
+        "Marin",
+        "Treasureisland",
+        "Nowhere yet."
+    )
 
         switch (var(VAR_RESULT)){
             case 0: goto(LetsGrabLunch_Chinatown)   

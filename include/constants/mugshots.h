@@ -197,6 +197,9 @@
 #define SPEAKER_GRIFF                   185
 #define SPEAKER_LUNA                    186
 #define SPEAKER_MAX                     187
+#define SPEAKER_BLAZE                   188
+#define SPEAKER_KIKI                    189
+#define SPEAKER_EJ                      190
 
 //Tail
 #define TAIL_DEFAULT 0

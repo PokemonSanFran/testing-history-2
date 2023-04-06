@@ -97,8 +97,8 @@ script Quest_Dancebattle_ConstructMenu_Script{
 }
 
 script Quest_Dancebattle_AskTip_Script{
+    msgbox(gText_Dancebattle_ThankYouForWatchingOur,MSGBOX_NPC,SPEAKER_BLAZE)
     showmoneybox(0,0)
-    msgbox(gText_Dancebattle_ThankYouForWatchingOur)
     call(Quest_Dancebattle_ConstructMenu_Script)
     dynmultistack(24,0,FALSE,4,TRUE,0,DYN_MULTICHOICE_CB_NONE)
     closemessage
@@ -120,7 +120,7 @@ script Quest_Dancebattle_Tip500_Script{
     removemoney(500,0)
     updatemoneybox(0)
     hidemoneybox
-    msgbox(gText_Dancebattle_HeyThanksForThe)
+    msgbox(gText_Dancebattle_HeyThanksForThe,,SPEAKER_BLAZE)
     call(Quest_Dancebattle_CapState_Script)
     return 
 }
@@ -130,7 +130,7 @@ script Quest_Dancebattle_Tip1000_Script{
     removemoney(1000,0)
     updatemoneybox(0)
     hidemoneybox
-    msgbox(gText_Dancebattle_WowThankYouFor)
+    msgbox(gText_Dancebattle_WowThankYouFor,,SPEAKER_BLAZE)
     call(Quest_Dancebattle_CapState_Script)
     return 
 }
@@ -140,7 +140,7 @@ script Quest_Dancebattle_Tip1500_Script{
     removemoney(1500,0)
     updatemoneybox(0)
     hidemoneybox
-    msgbox(gText_Dancebattle_ThankYouForYourGenerous)
+    msgbox(gText_Dancebattle_ThankYouForYourGenerous,,SPEAKER_BLAZE)
     call(Quest_Dancebattle_CapState_Script)
     return 
 }
@@ -150,7 +150,7 @@ script Quest_Dancebattle_Tip2000_Script{
     removemoney(2000,0)
     updatemoneybox(0)
     hidemoneybox
-    msgbox(gText_Dancebattle_WhoaThankYouFor)
+    msgbox(gText_Dancebattle_WhoaThankYouFor,,SPEAKER_BLAZE)
     call(Quest_Dancebattle_CapState_Script)
     return 
 }
@@ -166,14 +166,14 @@ script Quest_Dancebattle_CapState_Script{
 }
 
 script Quest_Dancebattle_StartQuest_Script{
-    msgbox(gText_Dancebattle_HeyWeveNoticed)
+    msgbox(gText_Dancebattle_HeyWeveNoticed,,SPEAKER_BLAZE)
     startquest(QUEST_DANCEBATTLE)
     lock
     goto(Quest_Dancebattle_StartBattles_Script)
 }
 
 script Quest_Dancebattle_StartBattles_Script{
-    msgbox(gText_Dancebattle_YourPokemonLooksABit,MSGBOX_YESNO)
+    msgbox(gText_Dancebattle_YourPokemonLooksABit,MSGBOX_YESNO,SPEAKER_BLAZE)
 
     if (var(VAR_RESULT) == YES){
         special(HealPlayerParty)
@@ -187,7 +187,7 @@ script Quest_Dancebattle_BattleA_Script{
     waitse
     waitmovement(DANCER_A)
     closemessage
-    msgbox(gText_Dancebattle_WeveBeenPracticingHard)
+    msgbox(gText_Dancebattle_WeveBeenPracticingHard,,SPEAKER_EJ)
     trainerbattle_no_intro(TRAINER_DUSTY_2,gText_Dancebattle_YouGotMeThisTime)
     goto(Quest_Dancebattle_BattleB_Script)
 }
@@ -198,7 +198,7 @@ script Quest_Dancebattle_BattleB_Script{
     waitse
     waitmovement(DANCER_B)
     closemessage
-    msgbox(gText_Dancebattle_YourePrettyGood)
+    msgbox(gText_Dancebattle_YourePrettyGood,,SPEAKER_KIKI)
     trainerbattle_no_intro(TRAINER_DUSTY_3,gText_Dancebattle_WowYoureReally)
     goto(Quest_Dancebattle_BattleC_Script)
 }
@@ -208,26 +208,26 @@ script Quest_Dancebattle_BattleC_Script{
     waitse
     waitmovement(DANCER_C)
     closemessage
-    msgbox(gText_Dancebattle_YouveMadeItThis)
+    msgbox(gText_Dancebattle_YouveMadeItThis,,SPEAKER_BLAZE)
     trainerbattle_no_intro(TRAINER_DUSTY_4,gText_Dancebattle_ICantBelieveI)
     goto(Quest_Dancebattle_Reward_Dialogue)
 }
 script Quest_Dancebattle_Reward_Dialogue{
-    msgbox(gText_Dancebattle_ImImpressedYou)
+    msgbox(gText_Dancebattle_ImImpressedYou,,SPEAKER_BLAZE)
     goto_if_quest_complete(QUEST_DANCEBATTLE,Quest_Dancebattle_FinishBattle_Script)
     giveitem(ITEM_LAVA_COOKIE,1)
-    msgbox(gText_Dancebattle_ThanksForComingOutAnd)
+    msgbox(gText_Dancebattle_ThanksForComingOutAnd,,SPEAKER_BLAZE)
     completequest(QUEST_DANCEBATTLE)
     release
     end
 }
 
 script Quest_Dancebattle_BattleOrShow_Dialogue{
-    msgbox(gText_Dancebattle_HeyThereWhatBrings)
+    msgbox(gText_Dancebattle_HeyThereWhatBrings,,SPEAKER_BLAZE)
     dynmultichoice(1,1,TRUE,3,0,DYN_MULTICHOICE_CB_NONE, 
-"Let's battle!",
-"I'm here for a show.",
- "Just saying hi!"
+    "Let's battle!",
+    "I'm here for a show.",
+    "Just saying hi!"
 )
     closemessage
 
@@ -241,7 +241,7 @@ script Quest_Dancebattle_BattleOrShow_Dialogue{
 }
 
 script Quest_Dancebattle_FinishBattle_Script{
-    msgbox(gText_Dancebattle_ThanksForComingOutAnd)
+    msgbox(gText_Dancebattle_ThanksForComingOutAnd,,SPEAKER_BLAZE)
     closemessage
     release
     end
@@ -254,7 +254,7 @@ script Quest_Dancebattle_RandomDance_Script{
 }
 
 script Quest_DanceBattle_Cancel_Dialogue{
-    msgbox(gText_Dancebattle_DontWorryAboutIt)
+    msgbox(gText_Dancebattle_DontWorryAboutIt,,SPEAKER_BLAZE)
     closemessage
     release
     end

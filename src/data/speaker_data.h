@@ -1297,4 +1297,22 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Bird_Keeper,
         .speakerPal = sSpeakerPal_Bird_Keeper,
     },
+    [SPEAKER_BLAZE] =
+    {
+        .name = _("B-Boy Blaze"),
+        .speakerIcon = gSpeakerIcon_Petrel,
+        .speakerPal = sSpeakerPal_Petrel,
+    },
+    [SPEAKER_KIKI] =
+    {
+        .name = _("Krumpin' Kiki"),
+        .speakerIcon = gSpeakerIcon_Blaine,
+        .speakerPal = sSpeakerPal_Blaine,
+    },
+    [SPEAKER_EJ] =
+    {
+        .name = _("Electric EJ"),
+        .speakerIcon = gSpeakerIcon_Poke_Maniac,
+        .speakerPal = sSpeakerPal_Poke_Maniac,
+    },
 };
