@@ -9,19 +9,16 @@ const DANCER_C = 12
 script Quest_Dancebattle_Interact_Event_Script{
     goto_if_quest_complete(QUEST_DANCEBATTLE,Quest_Dancebattle_BattleOrShow_Dialogue)
     goto_if_quest_active(QUEST_DANCEBATTLE,Quest_Dancebattle_StartBattles_Script)
-    goto(Quest_Dancebattle_StartPerformance_Script)
-}
-
-script Quest_Dancebattle_StartPerformance_Script{
-    lock
     goto(Quest_Dancebattle_RunDance_Script)
-    release
-    end 
 }
 
 script Quest_Dancebattle_RunDance_Script{
     //PSF TODO create dance sequences
     lock
+    setvar(VAR_TEMP_0,0)
+    
+    call(Quest_Dancebattle_SetUpDanceObjects_Script)
+    
     switch(var(VAR_DANCEBATTLE_STATE)){
         case NEVER_TIPPED: call(Quest_Dancebattle_Dance1_Script)
         case TIPPED_ONCE: call(Quest_Dancebattle_Dance2_Script)
@@ -32,6 +29,42 @@ script Quest_Dancebattle_RunDance_Script{
     call(Quest_Dancebattle_AskTip_Script)
     release
     end
+}
+
+script Quest_Dancebattle_SetUpDanceObjects_Script{
+    fadescreen(FADE_TO_BLACK)
+    setobjectxy(PLAYER,5,28)
+    TeleportCamera(5,28)
+    applymovement(PLAYER,Common_Movement_FaceUp)
+    waitmovement(PLAYER)
+    call(Quest_Dancebattle_CreateCrowd_Script)
+    fadescreen(FADE_FROM_BLACK) 
+    return
+}
+
+script Quest_Dancebattle_SetUpDanceOnResume_Script{
+    call(Quest_Dancebattle_CreateCrowd_Script)
+}
+
+script Quest_Dancebattle_CreateCrowd_Script{
+    createvobject(OBJ_EVENT_GFX_WOMAN_5,13,9,27,3,DIR_WEST)
+    createvobject(OBJ_EVENT_GFX_WOMAN_5,14,8,28,3,DIR_NORTH)
+    createvobject(OBJ_EVENT_GFX_WOMAN_5,15,3,28,3,DIR_NORTH)
+    createvobject(OBJ_EVENT_GFX_WOMAN_5,22,5,24,3,DIR_SOUTH)
+    createvobject(OBJ_EVENT_GFX_WOMAN_5,23,7,24,3,DIR_SOUTH)
+    createvobject(OBJ_EVENT_GFX_WOMAN_5,24,6,28,3,DIR_NORTH)
+
+    if (var(VAR_TEMP_0) > 1){
+        createvobject(OBJ_EVENT_GFX_WOMAN_5,16,4,28,3,DIR_NORTH)
+        createvobject(OBJ_EVENT_GFX_WOMAN_5,17,9,26,3,DIR_WEST)
+        createvobject(OBJ_EVENT_GFX_WOMAN_5,18,9,28,3,DIR_NORTH)
+        }
+    if (var(VAR_TEMP_0) > 2){
+        createvobject(OBJ_EVENT_GFX_WOMAN_5,19,9,24,3,DIR_SOUTH)
+        createvobject(OBJ_EVENT_GFX_WOMAN_5,20,2,27,3,DIR_EAST)
+        createvobject(OBJ_EVENT_GFX_WOMAN_5,21,3,24,3,DIR_NORTH)
+    }
+    return
 }
 
 script Quest_Dancebattle_Dance1_Script{
@@ -110,6 +143,7 @@ script Quest_Dancebattle_AskTip_Script{
         case 3: call(Quest_Dancebattle_Tip2000_Script)
         default:
     }
+    call(Quest_Dancebattle_RemoveCrowd_Script)
     hidemoneybox
     release
     end
@@ -172,6 +206,25 @@ script Quest_Dancebattle_StartQuest_Script{
     goto(Quest_Dancebattle_StartBattles_Script)
 }
 
+script Quest_Dancebattle_RemoveCrowd_Script{
+    fadescreen(FADE_TO_BLACK)
+    removeobject(13)
+    removeobject(14)
+    removeobject(15)
+    removeobject(16)
+    removeobject(17)
+    removeobject(18)
+    removeobject(19)
+    removeobject(20)
+    removeobject(21)
+    removeobject(22)
+    removeobject(23)
+    removeobject(24)
+    callnative(DestroyVirtualObjects)
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
 script Quest_Dancebattle_StartBattles_Script{
     msgbox(gText_Dancebattle_YourPokemonLooksABit,MSGBOX_YESNO,SPEAKER_BLAZE)
 
@@ -182,6 +235,8 @@ script Quest_Dancebattle_StartBattles_Script{
 }
 
 script Quest_Dancebattle_BattleA_Script{
+    addvar(VAR_TEMP_0,1)
+    call(Quest_Dancebattle_SetUpDanceObjects_Script)
     applymovement(DANCER_A,Quest_Dancebattle_HopFace_Movement)
     playse(SE_BIKE_HOP)
     waitse
@@ -193,6 +248,8 @@ script Quest_Dancebattle_BattleA_Script{
 }
 
 script Quest_Dancebattle_BattleB_Script{
+    addvar(VAR_TEMP_0,1)
+    call(Quest_Dancebattle_SetUpDanceObjects_Script)
     applymovement(DANCER_B,Quest_Dancebattle_HopFace_Movement)
     playse(SE_BIKE_HOP)
     waitse
@@ -203,6 +260,8 @@ script Quest_Dancebattle_BattleB_Script{
     goto(Quest_Dancebattle_BattleC_Script)
 }
 script Quest_Dancebattle_BattleC_Script{
+    addvar(VAR_TEMP_0,1)
+    call(Quest_Dancebattle_SetUpDanceObjects_Script)
     applymovement(DANCER_C,Quest_Dancebattle_HopFace_Movement)
     playse(SE_BIKE_HOP)
     waitse
@@ -217,6 +276,7 @@ script Quest_Dancebattle_Reward_Dialogue{
     goto_if_quest_complete(QUEST_DANCEBATTLE,Quest_Dancebattle_FinishBattle_Script)
     giveitem(ITEM_LAVA_COOKIE,1)
     msgbox(gText_Dancebattle_ThanksForComingOutAnd,,SPEAKER_BLAZE)
+    call(Quest_Dancebattle_RemoveCrowd_Script)
     completequest(QUEST_DANCEBATTLE)
     release
     end

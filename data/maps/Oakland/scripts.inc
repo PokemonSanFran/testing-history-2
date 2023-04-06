@@ -1,5 +1,6 @@
 Oakland_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Oakland_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_RESUME, Oakland_MapScripts_MAP_SCRIPT_ON_RESUME
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Oakland_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
@@ -8,6 +9,10 @@ Oakland_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_GetTheBand_HideBikerC_Script
 	call Quest_NoGoodDeed_HideRainer_Script
 	call Quest_Restaurantexpansion_HideObjects_Script
+	return
+
+Oakland_MapScripts_MAP_SCRIPT_ON_RESUME:
+	call_if_quest_active QUEST_DANCEBATTLE, Quest_Dancebattle_CreateCrowd_Script
 	return
 
 Oakland_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
