@@ -238,8 +238,6 @@ void Amazon_Init(MainCallback callback)
             sMenuDataPtr->currentRow = ROW_MEDICINE;
     }*/
     
-    //mgba_printf(MGBA_LOG_WARN, "The Amazon EWRAM is using %d bytes out of 32770", size);
-
     SetMainCallback2(Menu_RunSetup);
 }
 

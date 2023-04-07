@@ -1,0 +1,69 @@
+//gText_Foodtruckbureaucracy_
+//Quest_Foodtruckbureaucracy_
+//WAITE Food Truck
+//DEBRA Sanitation
+//WALDRON IT
+//ISIDORE DoT
+
+script Quest_Foodtruckbureaucracy_Interact_Script{
+    goto_if_quest_active(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Active_Dialogue)
+    goto_if_quest_reward(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Reward_Dialogue)
+    goto_if_quest_complete(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Completed_Dialogue)
+    goto(Quest_Foodtruckbureaucracy_StartQuest_Dialogue)
+}
+
+script Quest_Foodtruckbureaucracy_Food_StartQuest_Dialogue{
+    startquest(QUEST_FOODTRUCKBUREACRACY)
+}
+script Quest_Foodtruckbureaucracy_Food_WaitingForFix_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_Food_AgreedToDeal_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_Food_RestateDeal_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_Reward_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_Sani_StateProblem_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_Sani_WaitingForFix_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_Sani_AgreedToDeal_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_Sani_RestateDeal_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_IT_StateProblem_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_IT_WaitingForFix_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_IT_AgreedToDeal_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_IT_RestateDeal_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_DOT_StateProblem_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_DOT_WaitingForFix_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_DOT_AgreedToDeal_Dialogue{
+	
+}
+script Quest_Foodtruckbureaucracy_DOT_RestateDeal_Dialogue{
+	
+}
+
+script Quest_Foodtruckbureaucracy_Reward_Dialogue{
+    completequest(QUEST_FOODTRUCKBUREACRACY)
+}

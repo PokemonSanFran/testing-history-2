@@ -200,6 +200,10 @@
 #define SPEAKER_BLAZE                   188
 #define SPEAKER_KIKI                    189
 #define SPEAKER_EJ                      190
+#define SPEAKER_WAITE                   191
+#define SPEAKER_DEBRA                   192
+#define SPEAKER_WALDRON                 193
+#define SPEAKER_ISIDORE                 194
 
 //Tail
 #define TAIL_DEFAULT 0

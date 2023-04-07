@@ -1258,7 +1258,7 @@ Script_RemoveTint::
 .include "data/quests/contractorporygon.inc"
 .include "data/quests/angeldelivery.inc"
 .include "data/quests/getthebandbacktogether.inc"
-// .include "data/quests/foodtruckbureacracy.inc"
+.include "data/quests/foodtruckbureaucracy.inc"
 // .include "data/quests/detectiveariana.inc"
 // .include "data/quests/unknownbruceleequest.inc"
 .include "data/quests/challengeofthe7sisters.inc"
