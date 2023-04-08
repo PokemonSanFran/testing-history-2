@@ -65,9 +65,6 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "cable_club.h"
-//https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
-#include "printf.h"
-#include "../gflib/string_util.h" //for ConvertToAscii()
 #include "quests.h"
 
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];

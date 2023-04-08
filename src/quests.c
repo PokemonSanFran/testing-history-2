@@ -3585,6 +3585,7 @@ static const u8 sQuestMenuWindowFontColors[][4] = {
 void QuestMenu_Init(u8 a0, MainCallback callback)
 {
 	u8 i;
+    DebugPrintf("i = %d. But also a = 0x%x", i, i);
 
 	if (a0 >= 2) {
 		SetMainCallback2(callback);

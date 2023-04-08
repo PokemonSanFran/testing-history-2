@@ -68,7 +68,6 @@
 #include "constants/weather.h"
 #include "constants/metatile_labels.h"
 #include "palette.h"
-#include "printf.h"
 #include "pokemon_storage_system.h"
 
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];

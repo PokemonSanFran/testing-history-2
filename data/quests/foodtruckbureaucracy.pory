@@ -5,11 +5,11 @@
 //WALDRON IT
 //ISIDORE DoT
 
-script Quest_Foodtruckbureaucracy_Interact_Script{
-    goto_if_quest_active(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Active_Dialogue)
+script Quest_Foodtruckbureaucracy_Food_Interact_Script{
+    //goto_if_quest_active(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Active_Dialogue)
     goto_if_quest_reward(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Reward_Dialogue)
-    goto_if_quest_complete(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Completed_Dialogue)
-    goto(Quest_Foodtruckbureaucracy_StartQuest_Dialogue)
+    //goto_if_quest_complete(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Completed_Dialogue)
+    goto(Quest_Foodtruckbureaucracy_Food_StartQuest_Dialogue)
 }
 
 script Quest_Foodtruckbureaucracy_Food_StartQuest_Dialogue{
@@ -22,9 +22,6 @@ script Quest_Foodtruckbureaucracy_Food_AgreedToDeal_Dialogue{
 	
 }
 script Quest_Foodtruckbureaucracy_Food_RestateDeal_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_Reward_Dialogue{
 	
 }
 script Quest_Foodtruckbureaucracy_Sani_StateProblem_Dialogue{

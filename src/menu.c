@@ -20,13 +20,6 @@
 #include "text_window.h"
 #include "window.h"
 #include "constants/songs.h"
-#include "printf.h"
-#include "mgba.h"
-
-//https://github.com/pret/pokeemerald/wiki/printf-in-mGBA
-#include "printf.h"
-#include "../gflib/string_util.h" // for ConvertToAscii()
-
 
 static EWRAM_DATA u8 sTopBarWindowId = 0; //import from FRLG
 static const u8 gUnknown_8456618[3] = {15, 1, 2}; //import from FRLG

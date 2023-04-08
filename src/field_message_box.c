@@ -9,8 +9,6 @@
 #include "field_message_box.h"
 #include "constants/mugshots.h"
 #include "constants/vars.h"
-#include "printf.h"
-#include "mgba.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 

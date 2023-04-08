@@ -48,9 +48,6 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 #include "constants/flags.h"
-#include "printf.h"
-#include "mgba.h"
-
 /*
  * 
  */

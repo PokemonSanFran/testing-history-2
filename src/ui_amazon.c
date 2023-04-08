@@ -42,8 +42,6 @@
 #include "constants/rgb.h"
 #include "constants/items.h"
 #include "constants/party_menu.h"
-#include "printf.h"
-#include "mgba.h"
 
 /*
  * 

@@ -28,7 +28,6 @@
 
 #include "accept_letter.h"
 #include "event_scripts.h"
-#include "printf.h"
 #include "random.h"
 #include "strings.h"
 

@@ -8,8 +8,6 @@
 #include "palette.h"
 #include "event_data.h"
 #include "constants/mugshots.h"
-#include "printf.h"
-#include "mgba.h"
 
 #define MUGSHOT_PALETTE_NUM 13
 

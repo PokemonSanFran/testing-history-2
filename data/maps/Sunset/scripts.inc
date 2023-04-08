@@ -21,5 +21,15 @@ Sabrina_House_LockedDoor_Script::
 	end
 
 
+Waite_Interact_Script::
+	msgbox gText_Sunset_ICantBelieve, , SPEAKER_WAITE, TAIL_WHISPER
+	special GetNumberOfBadges
+	goto_if_set FLAG_BADGE05_GET, Quest_Foodtruckbureaucracy_Food_Interact_Script
+	end
+
+
+gText_Sunset_ICantBelieve::
+	.string "I can't believe this shit!$"
+
 gText_Sunset_LockedDoor::
 	.string "The front door is locked.$"
