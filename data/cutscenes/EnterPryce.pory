@@ -24,18 +24,18 @@ script EnterPryce_Event_Script {
 script EnterPryce_MumbleToSelf_Dialogue {
     lock
     setvar(VAR_GYM_7_STATE, GYM_SAVE_BEFORE_LEADER)
-    msgbox(gText_EnterPryce_StupidParade,,SPEAKER_PRYCE)
+    msgbox(gText_EnterPryce_StupidParade,,SPEAKER_PRYCE,TAIL_WHISPER)
     closemessage
         applymovement(PRYCE, EnterPryce_PaceLeftFrontOfDesk)
     waitmovement(0)
 
-    msgbox(gText_EnterPryce_TheyJustDontUnderstand,,SPEAKER_PRYCE)
+    msgbox(gText_EnterPryce_TheyJustDontUnderstand,,SPEAKER_PRYCE,TAIL_WHISPER)
     closemessage
     
     applymovement(PRYCE, EnterPryce_PaceRightFrontOfDesk)
     waitmovement(0)
 
-    msgbox(gText_EnterPryce_LookIWasWilling,,SPEAKER_PRYCE)
+    msgbox(gText_EnterPryce_LookIWasWilling,,SPEAKER_PRYCE,TAIL_WHISPER)
 
     msgbox(gText_EnterPryce_HeyYouSeemBusy,MSGBOX_DEFAULT,SPEAKER_ZOEY)
     closemessage
@@ -193,15 +193,15 @@ script EnterPryce_PostDefeat2_Dialogue {
 }
 
 text gText_EnterPryce_StupidParade {
-    format("*grumble* stupid fucking parade…")
+    format("stupid fucking parade…")
 }
 
 text gText_EnterPryce_TheyJustDontUnderstand {
-    format("*mutter* They just don't understand… it was either their way or the highway… and I kept the Gym! And now I'm the traitor?")
+    format("They just don't understand… it was either their way or the highway… and I kept the Gym! And now I'm the traitor?")
 }
 
 text gText_EnterPryce_LookIWasWilling {
-    format("*grumble* Look, I was willing to play ball, and I was rewarded. Haters gonna just hate…")
+    format("Look, I was willing to play ball, and I was rewarded. Haters gonna just hate…")
 }
 
 text gText_EnterPryce_HeyYouSeemBusy {

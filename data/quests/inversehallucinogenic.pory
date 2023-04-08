@@ -182,7 +182,7 @@ text gText_Inversehallucinogenic_IDidnt{
 	format("I didn't lie when I told them I was with them. I tried to save them.")
 }
 text gText_Inversehallucinogenic_AfterTheFirst{
-	format("After the first iteration of the new League failed, they laid off the original Gym Leaders and eliminated the Elite Four positions. They got all the layoff emails except me.")
+	format("After the first iteration of the new League failed, they laid off the original Gym Leaders and eliminated the Elite Four positions. They all got layoff emails except me.")
 }
 text gText_Inversehallucinogenic_IGotTo{
 	format("I got to keep my job as a reward for my cooperation and obedience.")

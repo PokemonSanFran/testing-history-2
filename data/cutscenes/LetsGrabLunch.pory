@@ -94,7 +94,7 @@ script LetsGrabLunch_DinerBooth_Dialogue {
 
         msgbox(gText_LetsGrabLunch_IKnowItsHard,,SPEAKER_ARCHER)
 
-        msgbox(gText_LetsGrabLunch_HmmNeverThought,,SPEAKER_ZOEY)
+        msgbox(gText_LetsGrabLunch_HmmNeverThought,,SPEAKER_ZOEY,TAIL_THOUGHT)
 
         msgbox(gText_LetsGrabLunch_YeahThisSounds,,SPEAKER_ZOEY)
 
@@ -115,13 +115,19 @@ script LetsGrabLunch_DinerBooth_Dialogue {
 }
 
 script LetsGrabLunch_InteractArcherDiner_Dialogue {
-
     msgbox(gText_LetsGrabLunch_ImJustPlanning,,SPEAKER_ARCHER)
+    goto(LetsGrabLunch_ShowGymList_Dialogue)
+}
+
+script LetsGrabLunch_ShowGymList_Dialogue{
+    msgbox(gText_LetsGrabLunch_HaveYouDecided,,SPEAKER_ARCHER,,EMOTE_CONFUSE)
+
 
     dynmultichoice(1,1,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,
         "Chinatown",
         "Marin",
         "Treasureisland",
+        "What about Haightashbury?",
         "Nowhere yet."
     )
 
@@ -129,8 +135,7 @@ script LetsGrabLunch_InteractArcherDiner_Dialogue {
             case 0: goto(LetsGrabLunch_Chinatown)   
             case 1: goto(LetsGrabLunch_Marin)   
             case 2: goto(LetsGrabLunch_Treasureisland)   
-            case -1:
-            case 3:
+            case 3: goto(LetsGrabLunch_Haightashbury)
             default: goto(LetsGrabLunch_CloseMenu)
         }
 }
@@ -186,6 +191,12 @@ script LetsGrabLunch_Treasureisland {
         }else {
             warpsilent(MAP_TREASUREISLAND,3,15)
         }
+}
+
+script LetsGrabLunch_Haightashbury{
+    msgbox(gText_LetsGrabLunch_YouKnowId,,SPEAKER_ARCHER,,EMOTE_ANGRY)
+    closemessage
+    goto(LetsGrabLunch_ShowGymList_Dialogue)
 }
 
 script LetsGrabLunch_CheckRestorationProgress_Script{
@@ -279,7 +290,7 @@ text gText_LetsGrabLunch_OkayLetsHear {
 }
 
 text gText_LetsGrabLunch_IWantToCreate {
-    format("I want to create training centers all over SanFran, to help more Trainers get a real start, kind of like what Ycombinator gave you. I wanna use the decommissioned Gyms, like the one you saw earlier today, as those hubs.")
+    format("I want to create training centers all over SanFran, to help more Trainers get a real start, kind of like what Ycombinator gave you. I wanna use the legacy Gyms, like the one you saw earlier today, as those hubs.")
 }
 
 text gText_LetsGrabLunch_HuhThatsActually {
@@ -307,7 +318,7 @@ text gText_LetsGrabLunch_IKnowItsHard {
 }
 
 text gText_LetsGrabLunch_HmmNeverThought {
-    format("(Hmm. Never thought about it like that.)")
+    format("Hmm. Never thought about it like that.")
 }
 
 text gText_LetsGrabLunch_YeahThisSounds {
@@ -323,7 +334,7 @@ text gText_LetsGrabLunch_HahaHowCanIHelp {
 }
 
 text gText_LetsGrabLunch_CanYouTryTalking {
-    format("Hmm. Can you try talking to Lenora or Cilan? Or maybe visit Chinatown's Gym and see what we can do? Yeah, any of those are good starts.")
+    format("Hmm. Can you try talking to Lenora or Cilan? Or maybe visit Chinatown's Gym and see what we can do? Yeah, any of those are good starts, since Pryce is a lost cause...")
 }
 
 text gText_LetsGrabLunch_WhatAreYouGoing {
@@ -339,7 +350,15 @@ text gText_LetsGrabLunch_Yeah {
 }
 
 text gText_LetsGrabLunch_ImJustPlanning {
-    format("I'm just planning out my pitch to TeamRocket. What are you up to? Have you decided which place you'll hit up first?")
+    format("I'm just planning out my pitch to TeamRocket.")
+}
+
+text gText_LetsGrabLunch_HaveYouDecided{
+    format("What are you up to? Have you decided which place you'll hit up first?")
+}
+
+text gText_LetsGrabLunch_YouKnowId{
+    format("You know, I'd love to reform that Gym and take it away from Pryce... but they're a snake. There's no reasonining with them, they've fully turned.")
 }
 
 text gText_LetsGrabLunch_TheLeaderOfThat {

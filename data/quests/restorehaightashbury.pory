@@ -37,7 +37,7 @@ text gText_Restorehaightashbury_ImGoingTo{
 }
 
 text gText_Restorehaightashbury_IveActually{
-    format("I've actually been working on a similar system. I've been putting aside enough money from my Ycombinator paychecks that this place is ready to become a full fledged Battle Facility over night.")
+    format("I've actually been working on a similar system. I've been putting aside enough money from my Ycombinator paychecks that this place is ready to become a full fledged Battle Facility, effective immediately.")
 }
 
 text gText_Restorehaightashbury_SoIThink{
