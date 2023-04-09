@@ -2425,6 +2425,45 @@ static const struct SubQuest
 	),
 };
 
+static const struct SubQuest sSieboldsTraining_Sub[QUEST_RESTAURANTEXPANSION2_SUB_COUNT] = {
+	sub_quest(
+	        238,
+	        gText_Quest_SieboldsTraining_Sub1_Name,
+	        gText_Quest_SieboldsTraining_Sub1_Desc,
+	        gText_Quest_SieboldsTraining_Sub1_Map,
+	        OBJ_EVENT_GFX_LINK_RECEPTIONIST,
+	        OBJECT,
+	        sText_Recruited
+	),
+	sub_quest(
+	        239,
+	        gText_Quest_SieboldsTraining_Sub2_Name,
+	        gText_Quest_SieboldsTraining_Sub2_Desc,
+	        gText_Quest_SieboldsTraining_Sub2_Map,
+	        OBJ_EVENT_GFX_MAN_4,
+	        OBJECT,
+	        sText_Recruited
+	),
+	sub_quest(
+	        240,
+	        gText_Quest_SieboldsTraining_Sub3_Name,
+	        gText_Quest_SieboldsTraining_Sub3_Desc,
+	        gText_Quest_SieboldsTraining_Sub3_Map,
+	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M,
+	        OBJECT,
+	        sText_Recruited
+	),
+	sub_quest(
+	        241,
+	        gText_Quest_SieboldsTraining_Sub4_Name,
+	        gText_Quest_SieboldsTraining_Sub4_Desc,
+	        gText_Quest_SieboldsTraining_Sub4_Map,
+	        OBJ_EVENT_GFX_TEALA,
+	        OBJECT,
+	        sText_Recruited
+	),
+};
+
 ////////////////////////END SUBQUEST CUSTOMIZATION/////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -2715,14 +2754,14 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        5
 	),
 	side_quest(
-	        gText_Quest_RestaurantExpansion3_Name,
-	        gText_Quest_RestaurantExpansion3_Desc,
-	        gText_Quest_RestaurantExpansion3_DoneDesc,
-	        gText_Quest_RestaurantExpansion3_Map,
-	        OBJ_EVENT_GFX_ROXANNE,
+	        gText_Quest_SieboldsTraining_Name,
+	        gText_Quest_SieboldsTraining_Desc,
+	        gText_Quest_SieboldsTraining_DoneDesc,
+	        gText_Quest_SieboldsTraining_Map,
+	        OBJ_EVENT_GFX_GLACIA,
 	        OBJECT,
-	        NULL,
-	        0
+	        sSieboldsTraining_Sub,
+	        4
 	),
 	side_quest(
 	        gText_Quest_CulturalPurity_Name,

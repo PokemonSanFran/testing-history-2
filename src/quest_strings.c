@@ -143,10 +143,10 @@ const u8 gText_Quest_RestaurantExpansion2_Desc[] =_("Description");
 const u8 gText_Quest_RestaurantExpansion2_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_RestaurantExpansion2_Map[] =_("Mission");
 
-const u8 gText_Quest_RestaurantExpansion3_Name[] = _("Restaurant Expansion 3");
-const u8 gText_Quest_RestaurantExpansion3_Desc[] =_("Description");
-const u8 gText_Quest_RestaurantExpansion3_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_RestaurantExpansion3_Map[] =_("Mission");
+const u8 gText_Quest_SieboldsTraining_Name[] = _("Siebold's Training");
+const u8 gText_Quest_SieboldsTraining_Desc[] =_("Description");
+const u8 gText_Quest_SieboldsTraining_DoneDesc[] =_("DoneDescription");
+const u8 gText_Quest_SieboldsTraining_Map[] =_("Muir Woods");
 
 const u8 gText_Quest_CulturalPurity_Name[] = _("Cultural Purity");
 const u8 gText_Quest_CulturalPurity_Desc[] =_("Description");
@@ -1269,6 +1269,19 @@ const u8 gText_Quest_BecomeChampion_Sub3_Map[] =_("Oaklandcoliseum");
 const u8 gText_Quest_BecomeChampion_Sub4_Name[] =_("Drasna");
 const u8 gText_Quest_BecomeChampion_Sub4_Desc[] =_("You defeated Drasna of the Sanfran\nElite Four.");
 const u8 gText_Quest_BecomeChampion_Sub4_Map[] =_("Oaklandcoliseum");
+
+const u8 gText_Quest_SieboldsTraining_Sub1_Name[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub1_Desc[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub1_Map[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub2_Name[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub2_Desc[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub2_Map[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub3_Name[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub3_Desc[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub3_Map[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub4_Name[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub4_Desc[] = _("Lorem");
+const u8 gText_Quest_SieboldsTraining_Sub4_Map[] = _("Lorem");
 
 //quest flavor
 const u8 gText_ChampionsAdventure_Flavor2[] =_("Enjoy your celebration party!");

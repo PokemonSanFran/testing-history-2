@@ -143,10 +143,10 @@ extern const u8 gText_Quest_RestaurantExpansion2_Desc[];
 extern const u8 gText_Quest_RestaurantExpansion2_DoneDesc[];
 extern const u8 gText_Quest_RestaurantExpansion2_Map[];
 
-extern const u8 gText_Quest_RestaurantExpansion3_Name[];
-extern const u8 gText_Quest_RestaurantExpansion3_Desc[];
-extern const u8 gText_Quest_RestaurantExpansion3_DoneDesc[];
-extern const u8 gText_Quest_RestaurantExpansion3_Map[];
+extern const u8 gText_Quest_SieboldsTraining_Name[];
+extern const u8 gText_Quest_SieboldsTraining_Desc[];
+extern const u8 gText_Quest_SieboldsTraining_DoneDesc[];
+extern const u8 gText_Quest_SieboldsTraining_Map[];
 
 extern const u8 gText_Quest_CulturalPurity_Name[];
 extern const u8 gText_Quest_CulturalPurity_Desc[];
@@ -1302,6 +1302,19 @@ extern const u8 gText_Quest_BecomeChampion_Sub3_Map[];
 extern const u8 gText_Quest_BecomeChampion_Sub4_Name[];
 extern const u8 gText_Quest_BecomeChampion_Sub4_Desc[];
 extern const u8 gText_Quest_BecomeChampion_Sub4_Map[];
+
+extern const u8 gText_Quest_SieboldsTraining_Sub1_Name[];
+extern const u8 gText_Quest_SieboldsTraining_Sub1_Desc[];
+extern const u8 gText_Quest_SieboldsTraining_Sub1_Map[];
+extern const u8 gText_Quest_SieboldsTraining_Sub2_Name[];
+extern const u8 gText_Quest_SieboldsTraining_Sub2_Desc[];
+extern const u8 gText_Quest_SieboldsTraining_Sub2_Map[];
+extern const u8 gText_Quest_SieboldsTraining_Sub3_Name[];
+extern const u8 gText_Quest_SieboldsTraining_Sub3_Desc[];
+extern const u8 gText_Quest_SieboldsTraining_Sub3_Map[];
+extern const u8 gText_Quest_SieboldsTraining_Sub4_Name[];
+extern const u8 gText_Quest_SieboldsTraining_Sub4_Desc[];
+extern const u8 gText_Quest_SieboldsTraining_Sub4_Map[];
 
 //quest flavor
 extern const u8 gText_ChampionsAdventure_Flavor2[];

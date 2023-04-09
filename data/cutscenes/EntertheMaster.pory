@@ -1,7 +1,9 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
 const SIEBOLD = 2
-const FLAG_HIDE_BIANCA = FLAG_TEMP_1
+const FLAG_HIDE_BIANCA = FLAG_TEMP_1 
+const FLAG_HIDE_SIEBOLD = FLAG_TEMP_2
+const FLAG_HIDE_OAK = FLAG_TEMP_3
 
 script EnterTheMaster_HideBianca_Entrance_Script{
     if (var(VAR_MUIRWOODS_STATE) != BIANCA_WAITING_MUIRWOODS){
@@ -20,17 +22,25 @@ script EnterTheMaster_ObjectsVisible_Script{
 }
 
 script EnterTheMaster_HideObject_Script {
-    setflag(FLAG_TEMP_1)
-        setflag(FLAG_TEMP_2)
-        setflag(FLAG_TEMP_3)
+    setflag(FLAG_HIDE_BIANCA)
+        setflag(FLAG_HIDE_SIEBOLD)
+        setflag(FLAG_HIDE_OAK)
 }
 
 script EnterTheMaster_Object_SetUp_Script {
-    setflag(FLAG_TEMP_3)
+    setflag(FLAG_HIDE_OAK)
+    call_if_quest_active(QUEST_SIEBOLDSTRAINING,EnterTheMaster_RepositionBianca_Script)
 }
 
 script EnterTheMaster_Clearing_Object_SetUp_Script {
-    setflag(FLAG_TEMP_3)
+    setflag(FLAG_HIDE_OAK)
+}
+
+script EnterTheMaster_RepositionBianca_Script{
+    setobjectxy(BIANCA,2,5)
+    setobjectxyperm(BIANCA,2,5)
+    turnobject(BIANCA,DIR_NORTH)
+    return
 }
 
 script EnterTheMaster_Interact_Script {
@@ -164,6 +174,7 @@ script EnterTheMaster_ClearingIntro_Dialogue {
 
         msgbox(gText_EnterTheMaster_ScottIsTheFounder,,SPEAKER_BIANCA)
 
+        delay(16)
         fadescreen(FADE_TO_BLACK)
         msgbox(gText_EnterTheMaster_OneEternity)
         applymovement(BIANCA,Common_Movement_FaceUp)
@@ -178,14 +189,39 @@ script EnterTheMaster_ClearingIntro_Dialogue {
 
         msgbox(gText_EnterTheMaster_SoWhatsNext,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
-        msgbox(gText_EnterTheMaster_WellUntilNSFigures,MSGBOX_DEFAULT,SPEAKER_SIEBOLD)
-                closemessage
+        msgbox(gText_EnterTheMaster_IfYouGo,MSGBOX_DEFAULT,SPEAKER_SIEBOLD)
+        goto(EnterTheMaster_ExplainRobots_Dialogue)
+}
+
+script EnterTheMaster_ExplainRobots_Dialogue{
+        msgbox(gText_EnterTheMaster_IfYouTalk,MSGBOX_DEFAULT,SPEAKER_SIEBOLD)
+        msgbox(gText_EnterTheMaster_TheFirstStage,,SPEAKER_SIEBOLD)
+        msgbox(gText_EnterTheMaster_OkayLetsACrack,,SPEAKER_BIANCA)
+        closemessage
+        goto_if_quest_not_active(QUEST_SIEBOLDSTRAINING,EnterTheMaster_StartQuest_Script)
+        return
+}
+
+script EnterTheMaster_StartQuest_Script{
+        applymovement(BIANCA,EnterTheMaster_WalkToRobots)
+        fadescreen(FADE_TO_BLACK)
+        startquest(QUEST_SIEBOLDSTRAINING)
+        removeobject(BIANCA)
+        call(EnterTheMaster_RepositionBianca_Script)
+        fadescreen(FADE_FROM_BLACK)
         end
 }
 
 movement EnterTheMaster_WalkIntoWoods {
     walk_up
         step_end
+}
+
+movement EnterTheMaster_WalkToRobots{
+    walk_up
+    walk_left * 5
+    walk_up * 6
+    step_end
 }
 
 text gText_EnterTheMaster_MorningReady{
@@ -303,8 +339,20 @@ text gText_EnterTheMaster_SoWhatsNext{
     format("So what's next?")
 }
 
-text gText_EnterTheMaster_WellUntilNSFigures{
-    format("Well, until NS figures out what these quests are, just leave and come back.")
+text gText_EnterTheMaster_IfYouGo{
+    format("If you go further back into the clearing, there are eight battle simulation robots there. The ones on the right are for {PLAYER} - they're calibrated specifically based on the battle data that Ycombinator gave me for each of you.")
+}
+
+text gText_EnterTheMaster_IfYouTalk{
+    format("If you talk to them, they'll give you a refresher on how they work, but its pretty simple. The second stage of your training will be defeating the four robots that are assigned to you.")
+}
+
+text gText_EnterTheMaster_TheFirstStage{
+    format("The first stage needed you to work together, but for this one, don't help each other.")
+}
+
+text gText_EnterTheMaster_OkayLetsACrack{
+    format("Okay, let's take a crack of these!")
 }
 
 movement EnterTheMaster_GiveNotebook {

@@ -115,6 +115,8 @@ script GroupStages_RoundRobinMatch_Script {
         msgbox(gText_GroupStages_Placeholder,,SPEAKER_ACE_TRAINER_M)
         closemessage
 
+//PSF TODO these trainers as well as the one before the archer fight should be a specifically themed team that Siebold teaches you how to twart during the Enter The Master cutscene
+
         switch (var(VAR_CHASECENTER_TOURNAMENT_STATE)){
             case PRE_BATTLE_1: trainerbattle_no_intro(TRAINER_QUINCY,gText_GroupStages_Placeholder)
             case PRE_BATTLE_2: trainerbattle_no_intro(TRAINER_KATELYNN,gText_GroupStages_Placeholder)
