@@ -96,7 +96,7 @@ script GroupStages_MoveObjects_Script {
 }
 
 script GroupStages_ChooseParty_Script {
-    special(SavePlayerParty)
+        special(SavePlayerParty)
         frontier_set(FRONTIER_DATA_LVL_MODE,2)
         setvar(VAR_0x8005, 3)
         special(ChoosePartyForBattleFrontier)

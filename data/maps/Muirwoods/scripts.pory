@@ -1,11 +1,7 @@
 mapscripts Muirwoods_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        goto(EnterTheMaster_ObjectsVisible_Script)
+        call(EnterTheMaster_Muirwoods_ObjectSetup_Script)
     }
-    MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ROUTE116_STATE, 4: HaveYouSeenTheNews_SolvePuzzles_Script
-
-    ]
 }
 
 script Muirwoods_ForestSign_Script{

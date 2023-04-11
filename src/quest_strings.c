@@ -1299,6 +1299,7 @@ const u8 gText_PlayersAdventure_Flavor9[] =_("Head back to the Compound in South
 const u8 gText_PlayersAdventure_Flavor9_A[] =_("Meet Bianca and Oak on\nthe Gldngtebridge.");
 const u8 gText_PlayersAdventure_Flavor9_B[] =_("Get Siebold's journal from the\ndepths of Robinwilltunnel and\nbring it to Muirwoods.");
 const u8 gText_PlayersAdventure_Flavor10[] =_("Complete all of Siebold's challenges in\nMuirwoods.");
+const u8 gText_PlayersAdventure_HeadToSalesforce[] =_("Go to the Salesforcetower to help Ycombinator.");
 const u8 gText_PlayersAdventure_Flavor11[] =_("Join the police raid on Team Rocket's\nbase!");
 const u8 gText_PlayersAdventure_Flavor12[] =_("Head back to the Compound in Southbay.\nThe Championship begins in 3\ndays!");
 const u8 gText_PlayersAdventure_Flavor13[] =_("Go the Chasecenter and get ready for\nthe Championship!");

@@ -4,36 +4,48 @@ const SIEBOLD = 2
 const FLAG_HIDE_BIANCA = FLAG_TEMP_1 
 const FLAG_HIDE_SIEBOLD = FLAG_TEMP_2
 const FLAG_HIDE_OAK = FLAG_TEMP_3
+const FLAG_HIDE_ROBOTS = FLAG_TEMP_4
 
-script EnterTheMaster_HideBianca_Entrance_Script{
+script EnterTheMaster_Muirwoods_Entrance_ObjectSetup_Script{
     if (var(VAR_MUIRWOODS_STATE) != BIANCA_WAITING_MUIRWOODS){
         setflag(FLAG_HIDE_BIANCA)
     }
     return
 }
 
-script EnterTheMaster_ObjectsVisible_Script{
-    switch (var(VAR_MUIRWOODS_STATE)) {
-        case 1: goto(EnterTheMaster_Object_SetUp_Script)
-        case 2: goto(EnterTheMaster_Object_SetUp_Script)
-        default: goto(EnterTheMaster_HideObject_Script)
+script EnterTheMaster_Muirwoods_ObjectSetup_Script{
+    if (var(VAR_MUIRWOODS_STATE) != BIANCA_ENTERED_MUIRWOODS){
+        setflag(FLAG_HIDE_BIANCA)
     }
     return
 }
 
-script EnterTheMaster_HideObject_Script {
-    setflag(FLAG_HIDE_BIANCA)
-        setflag(FLAG_HIDE_SIEBOLD)
-        setflag(FLAG_HIDE_OAK)
+script EnterTheMaster_Muirwoods_Inner_ObjectSetup_Script{
+    switch (var(VAR_MUIRWOODS_STATE)){
+        case 0:
+        case BIANCA_WAITING_MUIRWOODS:
+        case BIANCA_ENTERED_MUIRWOODS:
+        case POST_HAVE_YOU_SEEN_THE_NEWS: call(EnterTheMaster_Muirwoods_Inner_HideObjects_Script)
+        case MUIRWOODS_MAZE_COMPLETE: 
+        case MET_SIEBOLD:call(EnterTheMaster_Inner_Object_SetUp_Script)
+        case FINISHED_SIEBOLD_PUZZLES: return
+    }
+    return
 }
 
-script EnterTheMaster_Object_SetUp_Script {
+script EnterTheMaster_Muirwoods_Inner_HideObjects_Script{
+    setflag(FLAG_HIDE_BIANCA)
+    setflag(FLAG_HIDE_SIEBOLD)
+    setflag(FLAG_HIDE_OAK)
+    setflag(FLAG_HIDE_ROBOTS)
+    return
+}
+
+script EnterTheMaster_Inner_Object_SetUp_Script {
     setflag(FLAG_HIDE_OAK)
     call_if_quest_active(QUEST_SIEBOLDSTRAINING,EnterTheMaster_RepositionBianca_Script)
-}
-
-script EnterTheMaster_Clearing_Object_SetUp_Script {
-    setflag(FLAG_HIDE_OAK)
+    call_if_quest_complete(QUEST_SIEBOLDSTRAINING,EnterTheMaster_HideBianca_Script)
+    return
 }
 
 script EnterTheMaster_RepositionBianca_Script{
@@ -41,6 +53,10 @@ script EnterTheMaster_RepositionBianca_Script{
     setobjectxyperm(BIANCA,2,5)
     turnobject(BIANCA,DIR_NORTH)
     return
+}
+
+script EnterTheMaster_HideBianca_Script{
+    setflag(FLAG_HIDE_BIANCA)
 }
 
 script EnterTheMaster_Interact_Script {
@@ -196,33 +212,18 @@ script EnterTheMaster_ClearingIntro_Dialogue {
 script EnterTheMaster_ExplainRobots_Dialogue{
         msgbox(gText_EnterTheMaster_IfYouTalk,MSGBOX_DEFAULT,SPEAKER_SIEBOLD)
         msgbox(gText_EnterTheMaster_TheFirstStage,,SPEAKER_SIEBOLD)
-        msgbox(gText_EnterTheMaster_OkayLetsACrack,,SPEAKER_BIANCA)
         closemessage
-        goto_if_quest_not_active(QUEST_SIEBOLDSTRAINING,EnterTheMaster_StartQuest_Script)
-        return
-}
-
-script EnterTheMaster_StartQuest_Script{
-        applymovement(BIANCA,EnterTheMaster_WalkToRobots)
-        fadescreen(FADE_TO_BLACK)
-        startquest(QUEST_SIEBOLDSTRAINING)
-        removeobject(BIANCA)
-        call(EnterTheMaster_RepositionBianca_Script)
-        fadescreen(FADE_FROM_BLACK)
+        goto_if_quest_not_active(QUEST_SIEBOLDSTRAINING,Quest_Sieboldstraining_StartQuest_Script)
+        release
         end
 }
+
 
 movement EnterTheMaster_WalkIntoWoods {
     walk_up
         step_end
 }
 
-movement EnterTheMaster_WalkToRobots{
-    walk_up
-    walk_left * 5
-    walk_up * 6
-    step_end
-}
 
 text gText_EnterTheMaster_MorningReady{
     format("Morning. Ready to find this old dude?")

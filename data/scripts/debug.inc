@@ -60,7 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warp MAP_OAKLAND, 5, 27
+	goto Quest_SieboldTraining_CompleteQuest_Script
 	end
 
 

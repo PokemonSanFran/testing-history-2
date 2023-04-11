@@ -226,6 +226,12 @@ const u8 *GetQuestDesc_PlayersAdventure()
 	}
 
     else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS
+            && (VarGet(VAR_MUIRWOODS_STATE) == POST_HAVE_YOU_SEEN_THE_NEWS))
+    {
+        return gText_PlayersAdventure_HeadToSalesforce;
+    }
+
+    else if (storyline == STORY_ASSIGNED_SIEBOLD_QUESTS
                 && (VarGet(VAR_MUIRWOODS_STATE) > MUIRWOODS_MAZE_COMPLETE))
 	{
 		return gText_PlayersAdventure_Flavor10;

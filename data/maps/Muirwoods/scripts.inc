@@ -1,15 +1,10 @@
 Muirwoods_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Muirwoods_MapScripts_MAP_SCRIPT_ON_TRANSITION
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Muirwoods_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Muirwoods_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto EnterTheMaster_ObjectsVisible_Script
+	call EnterTheMaster_Muirwoods_ObjectSetup_Script
 	return
-
-Muirwoods_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_ROUTE116_STATE, 4, HaveYouSeenTheNews_SolvePuzzles_Script
-	.2byte 0
 
 
 Muirwoods_ForestSign_Script::

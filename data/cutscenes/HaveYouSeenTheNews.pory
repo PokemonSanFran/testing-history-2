@@ -6,16 +6,22 @@ const OAK = 3
 script HaveYouSeenTheNews_AskHelp_Dialogue {
     setvar(VAR_MUIRWOODS_STATE, POST_HAVE_YOU_SEEN_THE_NEWS)
     setvar(VAR_SALESFORCETOWER_CONFERENCE_STATE, PRE_WELCOME_TO_THE_WAR_ROOM)
-    lockall
+    lock
+    playse(SE_EXIT)
+    waitse
+    addobject(OAK)
+    applymovement(OAK,Common_Movement_WalkUp)
+    waitmovement(OAK)
+
+    msgbox(gText_HaveYouSeenTheNews_WedLikeYourHelp,,SPEAKER_OAK)
 
     playse(SE_PIN)
     applymovement(PLAYER, Common_Movement_ExclamationMark)
-    waitmovement(0)
+    waitmovement(PLAYER)
+    applymovement(PLAYER,Common_Movement_FaceDown)
+    applymovement(BIANCA,Common_Movement_FaceDown)
+    waitmovement(BIANCA)
 
-    applymovement(PLAYER, EnterTheMaster_ApproachSiebold)
-    waitmovement(0)
-
-    msgbox(gText_HaveYouSeenTheNews_WedLikeYourHelp,,SPEAKER_OAK)
 
     msgbox(gText_HaveYouSeenTheNews_ShitWhatDid,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
@@ -30,10 +36,10 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
         msgbox(gText_HaveYouSeenTheNews_FineButDontDawdle,,SPEAKER_OAK)
         closemessage
 
-        applymovement(OAK, HaveYouSeenTheNews_LeaveClearingA)
+        applymovement(OAK, Common_Movement_WalkDown)
         applymovement(BIANCA, HaveYouSeenTheNews_LeaveClearingB)
         waitmovement(0)
-        playse(SE_EXIT)
+            playse(SE_EXIT)
         waitse
         removeobject(BIANCA)
         removeobject(OAK)

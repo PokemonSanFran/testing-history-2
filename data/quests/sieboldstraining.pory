@@ -1,0 +1,236 @@
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const BIANCA = 1
+
+//gText_Sieboldstraining_
+//Quest_Sieboldstraining_
+
+script Quest_Sieboldstraining_StartQuest_Script{
+        msgbox(gText_Sieboldstraining_OkayLetsACrack,,SPEAKER_BIANCA)
+        closemessage
+        applymovement(BIANCA,Quest_Sieboldstraining_WalkToRobots)
+        fadescreen(FADE_TO_BLACK)
+        startquest(QUEST_SIEBOLDSTRAINING)
+        call(EnterTheMaster_RepositionBianca_Script)
+        fadescreen(FADE_FROM_BLACK)
+        end
+}
+
+script Quest_Sieboldstraining_Interact_Bianca_Script{
+    lock
+    msgbox(gText_Sieboldstraining_OkayWhatIfISendOut,,SPEAKER_BIANCA,TAIL_WHISPER)
+    release
+    end
+}
+
+script Quest_Sieboldstraining_GiveMons_Script{
+    //special(SavePlayerParty)
+    return
+}
+
+script Quest_Sieboldstraining_ChooseMons_Script{
+    //choose_mons 
+    //special(ReducePlayerPartyToSelectedMons)
+    return
+}
+
+script Quest_Sieboldstraining_Battle_Setup_Script{
+    call(Quest_Sieboldstraining_GiveMons_Script)
+    call(Quest_Sieboldstraining_ChooseMons_Script)
+    return
+}
+
+script Quest_Sieboldstraining_Interact_Robot_Script{
+    lock
+    faceplayer
+    msgbox(gText_Sieboldstraining_RobotQuestion)
+
+    dynmultichoice(1,1,TRUE,4,0,DYN_MULTICHOICE_CB_NONE,
+        "Scenario 1",
+        "Scenario 2",
+        "Scenario 3",
+        "Scenario 4",
+        "Never mind.",
+    )
+
+    switch (var(VAR_RESULT)){
+        case 0:goto(Quest_Sieboldstraining_Battle_Robot1_Script)
+        case 1:goto(Quest_Sieboldstraining_Battle_Robot2_Script)
+        case 2:goto(Quest_Sieboldstraining_Battle_Robot3_Script)
+        case 3:goto(Quest_Sieboldstraining_Battle_Robot4_Script)
+    }
+    release
+    end
+}
+
+script Quest_Sieboldstraining_CheckSubquest_Script{
+    if (!var(VAR_RESULT)){
+        return
+    }
+
+    msgbox(gText_Sieboldstraining_Youvealready,MSGBOX_YESNO,SPEAKER_OAK)
+
+    if (var(VAR_RESULT) == NO){
+        goto(Quest_Sieboldstraining_Interact_Robot_Script)
+    }
+    return
+}
+
+script Quest_Sieboldstraining_Battle_Robot1_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SIEBOLDSTRAINING,SUB_QUEST_1)
+    call(Quest_Sieboldstraining_CheckSubquest_Script)
+
+    setvar(VAR_TEMP_0,1)
+    call(Quest_Sieboldstraining_Battle_Setup_Script)
+    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_1,gText_Sieboldstraining_ThisRobotIsFor)
+    msgbox(gText_Sieboldstraining_ExcellentWorkPlayer)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_SIEBOLDSTRAINING,SUB_QUEST_1)
+    call(Quest_Quest_Sieboldstraining_CheckReward_Script)
+    release
+    end
+}
+
+script Quest_Sieboldstraining_Battle_Robot2_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SIEBOLDSTRAINING,SUB_QUEST_2)
+    call(Quest_Sieboldstraining_CheckSubquest_Script)
+
+    setvar(VAR_TEMP_0,2)
+    call(Quest_Sieboldstraining_Battle_Setup_Script)
+    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_2,gText_Sieboldstraining_ThisRobotIsFor)
+    msgbox(gText_Sieboldstraining_ExcellentWorkPlayer)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_SIEBOLDSTRAINING,SUB_QUEST_2)
+    call(Quest_Quest_Sieboldstraining_CheckReward_Script)
+    release
+    end
+}
+
+script Quest_Sieboldstraining_Battle_Robot3_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SIEBOLDSTRAINING,SUB_QUEST_3)
+    call(Quest_Sieboldstraining_CheckSubquest_Script)
+
+    setvar(VAR_TEMP_0,3)
+    call(Quest_Sieboldstraining_Battle_Setup_Script)
+    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_3,gText_Sieboldstraining_ThisRobotIsFor)
+    msgbox(gText_Sieboldstraining_ExcellentWorkPlayer)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_SIEBOLDSTRAINING,SUB_QUEST_3)
+    call(Quest_Quest_Sieboldstraining_CheckReward_Script)
+    release
+    end
+}
+
+script Quest_Sieboldstraining_Battle_Robot4_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SIEBOLDSTRAINING,SUB_QUEST_4)
+    call(Quest_Sieboldstraining_CheckSubquest_Script)
+
+    setvar(VAR_TEMP_0,4)
+    call(Quest_Sieboldstraining_Battle_Setup_Script)
+    trainerbattle_continue_after_lose(TRAINER_SIEBOLD_ROBOT_4,gText_Sieboldstraining_ThisRobotIsFor)
+    msgbox(gText_Sieboldstraining_ExcellentWorkPlayer)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_SIEBOLDSTRAINING,SUB_QUEST_4)
+    call(Quest_Quest_Sieboldstraining_CheckReward_Script)
+    release
+    end
+}
+
+script Quest_Quest_Sieboldstraining_CheckReward_Script{
+    setvar(VAR_TEMP_0,0)
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SIEBOLDSTRAINING,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SIEBOLDSTRAINING,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SIEBOLDSTRAINING,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_SIEBOLDSTRAINING,SUB_QUEST_4)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+
+    if (var(VAR_TEMP_0) == QUEST_SIEBOLDSTRAINING_SUB_COUNT){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_SIEBOLDSTRAINING)     
+        goto(Quest_SieboldTraining_CompleteQuest_Script)
+    }
+    return
+}
+
+script Quest_Sieboldstraining_Interact_BiancaRobot_Script{
+    lock
+    msgbox(gText_Sieboldstraining_ThisRobotIsFor,MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script Quest_Sieboldstraining_SetUpCompletion_Script{
+    fadescreen(FADE_TO_BLACK)
+    setobjectxy(BIANCA,9,16)
+    setobjectxyperm(BIANCA,9,16)
+    setobjectxy(PLAYER,10,16)
+    applymovement(PLAYER,Common_Movement_FaceUp)
+    TeleportCamera(10,16)
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
+script Quest_SieboldTraining_CompleteQuest_Script{
+    call(Quest_Sieboldstraining_SetUpCompletion_Script)
+    msgbox(gText_Sieboldstraining_WellItsBeenQuite_Script,,SPEAKER_SIEBOLD)
+    msgbox(gText_Sieboldstraining_AWeek,,SPEAKER_BIANCA,TAIL_SHOUT,EMOTE_SHOCK)
+    msgbox(gText_Sieboldstraining_ItFeelsLike,,SPEAKER_ZOEY,,EMOTE_SHOCK)
+    msgbox(gText_Sieboldstraining_YeahTheForest,,SPEAKER_SIEBOLD)
+    completequest(QUEST_SIEBOLDSTRAINING)
+    msgbox(gText_Sieboldstraining_EitherWay,,SPEAKER_SIEBOLD)
+    closemessage
+    setvar(VAR_MUIRWOODS_STATE,FINISHED_SIEBOLD_PUZZLES)
+    end
+}
+text gText_Sieboldstraining_OkayLetsACrack{
+    format("Okay, let's take a crack at these...")
+}
+text gText_Sieboldstraining_OkayWhatIfISendOut{
+    format("Okay, what if I send out this Pokémon first...")
+}
+text gText_Sieboldstraining_RobotQuestion{
+    format("Hello {PLAYER}. Which scenario would you like to run?")
+}
+text gText_Sieboldstraining_ExcellentWorkPlayer{
+    format("Excellent work!")
+}
+text gText_Sieboldstraining_ThisRobotIsFor{
+    format("This robot is for Bianca.")
+}
+text gText_Sieboldstraining_WellItsBeenQuite_Script{
+    format("Well, it's been quite a week. Impressed you were both able to clear those puzzles so quickly.")
+}
+text gText_Sieboldstraining_AWeek{
+    format("A week?!?")
+}
+text gText_Sieboldstraining_ItFeelsLike{
+    format("It feels like maybe a day at most!")
+}
+text gText_Sieboldstraining_YeahTheForest{
+    format("Yeah, the forest has that effect on people...")
+}
+text gText_Sieboldstraining_EitherWay{
+    format("Either way, good job. Go ahead and rest -")
+}
+
+text gText_Sieboldstraining_Youvealready{
+    format("You've already completed this puzzle. Are you going to try again?")
+}
+
+movement Quest_Sieboldstraining_WalkToRobots{
+    walk_up
+    walk_left * 5
+    walk_up * 6
+    step_end
+}
+
+movement Quest_Sieboldstraining_WalkAway{
+    walk_down * 2
+    step_end
+}

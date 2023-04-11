@@ -902,6 +902,10 @@
 #define TRAINER_VAGRANT_1_BERNAL                   152
 #define TRAINER_VAGRANT_2_BERNAL                   153
 #define TRAINER_VAGRANT_3_BERNAL                   154
+#define TRAINER_SIEBOLD_ROBOT_1             156
+#define TRAINER_SIEBOLD_ROBOT_2             157
+#define TRAINER_SIEBOLD_ROBOT_3             158
+#define TRAINER_SIEBOLD_ROBOT_4             159
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

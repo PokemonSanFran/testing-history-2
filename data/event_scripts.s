@@ -1312,6 +1312,7 @@ Script_RemoveTint::
 .include "data/quests/restorehaightashbury.inc"
 .include "data/quests/pandapride.inc"
 .include "data/quests/dancebattle.inc"
+.include "data/quests/sieboldstraining.inc"
 
 ## PSF MAPS
 .include "data/maps/Presidio/scripts.inc"

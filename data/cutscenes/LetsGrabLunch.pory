@@ -122,7 +122,6 @@ script LetsGrabLunch_InteractArcherDiner_Dialogue {
 script LetsGrabLunch_ShowGymList_Dialogue{
     msgbox(gText_LetsGrabLunch_HaveYouDecided,,SPEAKER_ARCHER,,EMOTE_CONFUSE)
 
-
     dynmultichoice(1,1,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,
         "Chinatown",
         "Marin",

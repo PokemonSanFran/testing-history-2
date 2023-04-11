@@ -6,61 +6,174 @@
 //ISIDORE DoT
 
 script Quest_Foodtruckbureaucracy_Food_Interact_Script{
-    //goto_if_quest_active(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Active_Dialogue)
+    goto_if_quest_active(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Food_Active_Dialogue)
     goto_if_quest_reward(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Reward_Dialogue)
     //goto_if_quest_complete(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Completed_Dialogue)
     goto(Quest_Foodtruckbureaucracy_Food_StartQuest_Dialogue)
 }
 
+
 script Quest_Foodtruckbureaucracy_Food_StartQuest_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_ImHavingTroubleGetting,,SPEAKER_WAITE)
     startquest(QUEST_FOODTRUCKBUREACRACY)
 }
-script Quest_Foodtruckbureaucracy_Food_WaitingForFix_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_Food_AgreedToDeal_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_Food_RestateDeal_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_Sani_StateProblem_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_Sani_WaitingForFix_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_Sani_AgreedToDeal_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_Sani_RestateDeal_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_IT_StateProblem_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_IT_WaitingForFix_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_IT_AgreedToDeal_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_IT_RestateDeal_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_DOT_StateProblem_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_DOT_WaitingForFix_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_DOT_AgreedToDeal_Dialogue{
-	
-}
-script Quest_Foodtruckbureaucracy_DOT_RestateDeal_Dialogue{
-	
+
+script Quest_Foodtruckbureaucracy_Food_Active_Dialogue{
+    switch (var(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE)){
+        case DELIVERED_TO_SANITATION:
+        case DELIVERED_TO_IT:
+        case DELIVERED_TO_TRANSPORATION: goto(Quest_Foodtruckbureaucracy_Reward_Dialogue)
+        case TRANSPORT_FROM_FOOD: goto(Quest_Foodtruckbureaucracy_Food_RestateDeal_Dialogue)
+        case TALKED_TO_TRANSPORTATION: goto(Quest_Foodtruckbureaucracy_Food_AgreedToDeal_Dialogue)
+        case TALKED_TO_IT:
+        case TALKED_TO_SANITATION:
+        case TALKED_TO_FOOD: goto(Quest_Foodtruckbureaucracy_Food_WaitingForFix_Dialogue)
+        case NOT_STARTED:
+    }
 }
 
+script Quest_Foodtruckbureaucracy_Food_WaitingForFix_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_AnyProgressOnGettingMy,MSGBOX_NPC,SPEAKER_WAITE)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_Food_AgreedToDeal_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_AlrightIllAgree,MSGBOX_NPC,SPEAKER_WAITE)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_Food_RestateDeal_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_SoHaveYouMade,MSGBOX_NPC,SPEAKER_WAITE)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_Sani_StateProblem_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_WeCantSpeedUp,MSGBOX_NPC,SPEAKER_DEBRA)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_Sani_WaitingForFix_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_WereWorkingOnIt,MSGBOX_NPC,SPEAKER_DEBRA)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_Sani_AgreedToDeal_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_AlrightWellSpeed,MSGBOX_NPC,SPEAKER_DEBRA)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_Sani_RestateDeal_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_WereWaitingOnIt,MSGBOX_NPC,SPEAKER_DEBRA)
+    msgbox(gText_Foodtruckbureaucracy_GladWeCouldHelpYou,MSGBOX_NPC,SPEAKER_DEBRA)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_IT_StateProblem_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_WellUpgradeYourRouter,MSGBOX_NPC,SPEAKER_WALDRON)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_IT_WaitingForFix_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_WereWorkingOnThe,MSGBOX_NPC,SPEAKER_WALDRON)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_IT_AgreedToDeal_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_SureWellUpgrade,MSGBOX_NPC,SPEAKER_WALDRON)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_IT_RestateDeal_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_WereWaitingOnThe,MSGBOX_NPC,SPEAKER_WALDRON)
+    msgbox(gText_Foodtruckbureaucracy_GreatWereHappy,MSGBOX_NPC,SPEAKER_WALDRON)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_DOT_StateProblem_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_WellCreateATrolley,MSGBOX_NPC,SPEAKER_ISIDORE)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_DOT_WaitingForFix_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_WereStillWaiting,MSGBOX_NPC,SPEAKER_ISIDORE)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_DOT_AgreedToDeal_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_OkayWellCreate,MSGBOX_NPC,SPEAKER_ISIDORE)
+    end
+}
+
+script Quest_Foodtruckbureaucracy_DOT_RestateDeal_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_WereStillWaitingOn,MSGBOX_NPC,SPEAKER_ISIDORE)
+    msgbox(gText_Foodtruckbureaucracy_HappyToHelpEnjoy,MSGBOX_NPC,SPEAKER_ISIDORE)
+    end
+}
+
+
 script Quest_Foodtruckbureaucracy_Reward_Dialogue{
+    msgbox(gText_Foodtruckbureaucracy_ThankYouSoMuchFor,MSGBOX_NPC,SPEAKER_WAITE)
     completequest(QUEST_FOODTRUCKBUREACRACY)
+}
+
+
+text gText_Foodtruckbureaucracy_ImHavingTroubleGetting{
+    format("I'm having trouble getting my sanitation code updated, can you help me out?")
+}
+text gText_Foodtruckbureaucracy_AnyProgressOnGettingMy{
+    format("Any progress on getting my code updated?")
+}
+text gText_Foodtruckbureaucracy_AlrightIllAgree{
+    format("Alright, I'll agree to get the catering on Tuesdays as long as you speed up my code update.")
+}
+text gText_Foodtruckbureaucracy_SoHaveYouMade{
+    format("So, have you made any progress on getting my code updated? I agreed to the catering deal.")
+}
+text gText_Foodtruckbureaucracy_ThankYouSoMuchFor{
+    format("Thank you so much for your help! Here's a free meal from my truck as a reward.")
+}
+text gText_Foodtruckbureaucracy_WeCantSpeedUp{
+    format("We can't speed up the process, but we might be able to help you out if you upgrade our router.")
+}
+text gText_Foodtruckbureaucracy_WereWorkingOnIt{
+    format("We're working on it, but we need a new router from IT first.")
+}
+text gText_Foodtruckbureaucracy_AlrightWellSpeed{
+    format("Alright, we'll speed up your code update if you get the IT department to upgrade our router.")
+}
+text gText_Foodtruckbureaucracy_WereWaitingOnIt{
+    format("We're waiting on IT to upgrade our router, but we'll keep you posted.")
+}
+text gText_Foodtruckbureaucracy_GladWeCouldHelpYou{
+    format("Glad we could help you out. Let us know if you need anything else.")
+}
+text gText_Foodtruckbureaucracy_WellUpgradeYourRouter{
+    format("We'll upgrade your router if you can get the transportation department to create a trolley stop closer to us.")
+}
+text gText_Foodtruckbureaucracy_WereWorkingOnThe{
+    format("We're working on the upgrade, but we need a trolley stop closer to the building first.")
+}
+text gText_Foodtruckbureaucracy_SureWellUpgrade{
+    format("Sure, we'll upgrade your router if the transportation department creates a trolley stop closer to us.")
+}
+text gText_Foodtruckbureaucracy_WereWaitingOnThe{
+    format("We're waiting on the transportation department to create a trolley stop, but we'll keep you updated.")
+}
+text gText_Foodtruckbureaucracy_GreatWereHappy{
+    format("Great, we're happy we could help. Let us know if you need anything else.")
+}
+text gText_Foodtruckbureaucracy_WellCreateATrolley{
+    format("We'll create a trolley stop closer to you if you can get the food truck to cater every Tuesday.")
+}
+text gText_Foodtruckbureaucracy_WereStillWaiting{
+    format("We're still waiting on the food truck to agree to the catering deal.")
+}
+text gText_Foodtruckbureaucracy_OkayWellCreate{
+    format("Okay, we'll create a trolley stop closer to IT if the food truck caters every Tuesday.")
+}
+text gText_Foodtruckbureaucracy_WereStillWaitingOn{
+    format("We're still waiting on the food truck to cater, but we'll keep you posted.")
+}
+text gText_Foodtruckbureaucracy_HappyToHelpEnjoy{
+    format("Happy to help! Enjoy the new trolley stop.")
 }
