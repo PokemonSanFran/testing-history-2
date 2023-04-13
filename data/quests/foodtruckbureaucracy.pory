@@ -6,9 +6,9 @@
 //ISIDORE DoT
 
 script Quest_Foodtruckbureaucracy_Food_Interact_Script{
-    goto_if_quest_active(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Food_Active_Dialogue)
-    goto_if_quest_reward(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Reward_Dialogue)
     //goto_if_quest_complete(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Completed_Dialogue)
+    goto_if_quest_reward(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Reward_Dialogue)
+    goto_if_quest_active(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_Food_Active_Dialogue)
     goto(Quest_Foodtruckbureaucracy_Food_StartQuest_Dialogue)
 }
 
@@ -100,8 +100,8 @@ script Quest_Foodtruckbureaucracy_Sani_WaitingForFix_Dialogue{
 }
 
 script Quest_Foodtruckbureaucracy_Sani_AgreedToDeal_Dialogue{
-    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,DELIVERED_TO_SANITATION)
     questmenu(QUEST_MENU_SET_REWARD,QUEST_FOODTRUCKBUREACRACY)
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,DELIVERED_TO_SANITATION)
     msgbox(gText_Foodtruckbureaucracy_AlrightWellSpeed,MSGBOX_NPC,SPEAKER_DEBRA)
     end
 }
@@ -125,7 +125,6 @@ script Quest_Foodtruckbureaucracy_IT_WaitingForFix_Dialogue{
 }
 
 script Quest_Foodtruckbureaucracy_IT_AgreedToDeal_Dialogue{
-    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,DELIVERED_TO_IT)
     msgbox(gText_Foodtruckbureaucracy_SureWellUpgrade,MSGBOX_NPC,SPEAKER_WALDRON)
     end
 }
