@@ -5212,7 +5212,7 @@ static void HandleEndTurn_BattleLost(void)
 }
 
 static void CheckWhiteoutOnFogRoute(void) { //Used for PSF Flying Blind 
-        if (GetCurrentMap() == MAP_NUM(PSFROUTE1) || GetCurrentMap() == MAP_NUM(PSFROUTE14))
+        if (GetCurrentMap() == MAP_PSFROUTE1 || GetCurrentMap() == MAP_PSFROUTE14)
         {
             if (VarGet(VAR_FAINTED_FOG_STATE) < 1){
             VarSet(VAR_FAINTED_FOG_STATE,1);
@@ -5225,7 +5225,7 @@ static void CheckWhiteoutOnFogRoute(void) { //Used for PSF Flying Blind
 void CountDefeatedGardenMons(void){
     u8 defeatedGardenMonCount = VarGet(VAR_DEFEATED_GARDEN_POKEMON), i = 0;
 
-    if (GetCurrentMap() == MAP_NUM(PSFROUTE21))
+    if (GetCurrentMap() == MAP_PSFROUTE21)
         defeatedGardenMonCount += 1;
 
     if ((defeatedGardenMonCount > 47) && QuestMenu_GetSetQuestState(QUEST_GARDENCLEANUP,FLAG_GET_ACTIVE)){
@@ -5248,7 +5248,7 @@ void CountDefeatedGlameow(void){
     {
         s32 enemySpecies = GetMonData(&gEnemyParty[i],MON_DATA_SPECIES);
 
-        if (GetCurrentMap() == MAP_NUM(BERNALHEIGHTS) && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) && (enemySpecies == SPECIES_GLAMEOW)){
+        if (GetCurrentMap() == MAP_BERNALHEIGHTS && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) && (enemySpecies == SPECIES_GLAMEOW)){
             defeatedGlameowCount++;
         }
     }
@@ -5342,7 +5342,7 @@ void CountDefeatedPacifica(void){
 */
     u8 defeatedPacificaCount = VarGet(VAR_DEFEATED_PACIFICA_COUNT);
 
-    if (GetCurrentMap() == MAP_NUM(PACIFICA) && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))){
+    if (GetCurrentMap() == MAP_PACIFICA && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))){
         defeatedPacificaCount++;
     }
 
@@ -5362,7 +5362,7 @@ void CountDefeatedBackyard(void){
         s32 enemySpecies = GetMonData(&gEnemyParty[i],MON_DATA_SPECIES);
 
         //PSF TODO The following line currently checks if the map is correct AND its not a trainer battle, but it needs to also check if the enemy type (either of them) is flying type
-        if ((GetCurrentMap() == MAP_NUM(PSFROUTE7) || GetCurrentMap() == MAP_NUM(PSFROUTE32)) && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) && (enemySpecies)){
+        if ((GetCurrentMap() == MAP_PSFROUTE7 || GetCurrentMap() == MAP_PSFROUTE32) && (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) && (enemySpecies)){
             defeatedBackyardCount++;
         }
     }
