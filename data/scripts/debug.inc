@@ -60,7 +60,8 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	goto Quest_SieboldTraining_CompleteQuest_Script
+	call Quest_Foodtruckbureaucracy_Food_StartQuest_Dialogue
+	warpsilent MAP_SUNSET, 2
 	end
 
 

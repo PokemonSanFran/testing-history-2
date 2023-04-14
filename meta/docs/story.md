@@ -186,7 +186,7 @@ All the cutscenes in Act 1.4 occur in the order listed here.
 * After completing the challenge, Zoey is approached by another Trainer.
 * This Trainer talks about the importance of preserving history and to not trust everything at face value.
 * The Trainer, Malva, battles against Zoey. Zoey is quickly defeated and is no match.
-* Malva heals Zoey's Pokémon, tells them not to get discouraged, and to keep training.
+* Malva heals Zoey's Pokémon, tells them not to get discouraged, and to keep training. Malva also gives Zoey a pair of Go-Goggles, so they can explore western Sanfran.
 
 # ACT 2.1
 Each of the cutscenes in Act 2.1 can be done in any order, unless otherwise specified. The game does not progress past Act 2.1 until all the mandatory cutscenes in Act 2.1 have been completed.

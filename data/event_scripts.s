@@ -1494,3 +1494,5 @@ Script_RemoveTint::
 	.include "data/maps/Oaklandcoliseum_Hall/scripts.inc"
 
     .include "data/maps/Palacefinearts/scripts.inc"
+
+	.include "data/maps/Sunset_Restaurant/scripts.inc"

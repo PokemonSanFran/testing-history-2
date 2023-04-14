@@ -6120,6 +6120,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Palacefinearts/border.bin",
       "blockdata_filepath": "data/layouts/Palacefinearts/map.bin"
+    },
+    {
+      "id": "LAYOUT_SUNSET_RESTAURANT",
+      "name": "Sunset_Restaurant_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Sunset_Restaurant/border.bin",
+      "blockdata_filepath": "data/layouts/Sunset_Restaurant/map.bin"
     }
   ]
 }

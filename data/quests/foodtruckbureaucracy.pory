@@ -12,9 +12,9 @@ script Quest_Foodtruckbureaucracy_Food_Interact_Script{
     goto(Quest_Foodtruckbureaucracy_Food_StartQuest_Dialogue)
 }
 
-
 script Quest_Foodtruckbureaucracy_Food_StartQuest_Dialogue{
     msgbox(gText_Foodtruckbureaucracy_ImHavingTroubleGetting,,SPEAKER_WAITE)
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,TALKED_TO_FOOD)
     startquest(QUEST_FOODTRUCKBUREACRACY)
 }
 
@@ -22,15 +22,55 @@ script Quest_Foodtruckbureaucracy_Food_Active_Dialogue{
     switch (var(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE)){
         case DELIVERED_TO_SANITATION:
         case DELIVERED_TO_IT:
-        case DELIVERED_TO_TRANSPORATION: goto(Quest_Foodtruckbureaucracy_Reward_Dialogue)
+        case DELIVERED_TO_TRANSPORATION: goto(Quest_Foodtruckbureaucracy_Food_RestateDeal_Dialogue)
         case TRANSPORT_FROM_FOOD: goto(Quest_Foodtruckbureaucracy_Food_RestateDeal_Dialogue)
         case TALKED_TO_TRANSPORTATION: goto(Quest_Foodtruckbureaucracy_Food_AgreedToDeal_Dialogue)
         case TALKED_TO_IT:
         case TALKED_TO_SANITATION:
         case TALKED_TO_FOOD: goto(Quest_Foodtruckbureaucracy_Food_WaitingForFix_Dialogue)
-        case NOT_STARTED:
+        case NOT_STARTED: return
     }
 }
+script Quest_Foodtruckbureaucracy_Sani_Active_Dialogue{
+    switch (var(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE)){
+        case DELIVERED_TO_SANITATION:goto(Quest_Foodtruckbureaucracy_Sani_RestateDeal_Dialogue)
+        case DELIVERED_TO_IT:goto(Quest_Foodtruckbureaucracy_Sani_AgreedToDeal_Dialogue)
+        case DELIVERED_TO_TRANSPORATION:
+        case TRANSPORT_FROM_FOOD:
+        case TALKED_TO_TRANSPORTATION:
+        case TALKED_TO_IT:
+        case TALKED_TO_SANITATION:goto(Quest_Foodtruckbureaucracy_Sani_WaitingForFix_Dialogue)
+        case TALKED_TO_FOOD: goto(Quest_Foodtruckbureaucracy_Sani_StateProblem_Dialogue)
+        case NOT_STARTED: return
+    }
+}
+script Quest_Foodtruckbureaucracy_IT_Active_Dialogue{
+    switch (var(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE)){
+        case DELIVERED_TO_SANITATION:
+        case DELIVERED_TO_IT: goto(Quest_Foodtruckbureaucracy_IT_RestateDeal_Dialogue)
+        case DELIVERED_TO_TRANSPORATION: goto(Quest_Foodtruckbureaucracy_IT_AgreedToDeal_Dialogue)
+        case TRANSPORT_FROM_FOOD: goto(Quest_Foodtruckbureaucracy_IT_WaitingForFix_Dialogue)
+        case TALKED_TO_TRANSPORTATION:
+        case TALKED_TO_IT:
+        case TALKED_TO_SANITATION: goto(Quest_Foodtruckbureaucracy_IT_StateProblem_Dialogue)
+        case TALKED_TO_FOOD: 
+        case NOT_STARTED: return
+    }
+}
+script Quest_Foodtruckbureaucracy_DOT_Active_Dialogue{
+    switch (var(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE)){
+        case DELIVERED_TO_SANITATION:
+        case DELIVERED_TO_IT:
+        case DELIVERED_TO_TRANSPORATION: goto(Quest_Foodtruckbureaucracy_DOT_RestateDeal_Dialogue)
+        case TRANSPORT_FROM_FOOD: goto(Quest_Foodtruckbureaucracy_DOT_AgreedToDeal_Dialogue)
+        case TALKED_TO_TRANSPORTATION: goto(Quest_Foodtruckbureaucracy_DOT_WaitingForFix_Dialogue)
+        case TALKED_TO_IT: goto(Quest_Foodtruckbureaucracy_DOT_StateProblem_Dialogue)
+        case TALKED_TO_SANITATION:
+        case TALKED_TO_FOOD:
+        case NOT_STARTED: return
+    }
+}
+
 
 script Quest_Foodtruckbureaucracy_Food_WaitingForFix_Dialogue{
     msgbox(gText_Foodtruckbureaucracy_AnyProgressOnGettingMy,MSGBOX_NPC,SPEAKER_WAITE)
@@ -38,6 +78,7 @@ script Quest_Foodtruckbureaucracy_Food_WaitingForFix_Dialogue{
 }
 
 script Quest_Foodtruckbureaucracy_Food_AgreedToDeal_Dialogue{
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,TRANSPORT_FROM_FOOD)
     msgbox(gText_Foodtruckbureaucracy_AlrightIllAgree,MSGBOX_NPC,SPEAKER_WAITE)
     end
 }
@@ -49,6 +90,7 @@ script Quest_Foodtruckbureaucracy_Food_RestateDeal_Dialogue{
 
 script Quest_Foodtruckbureaucracy_Sani_StateProblem_Dialogue{
     msgbox(gText_Foodtruckbureaucracy_WeCantSpeedUp,MSGBOX_NPC,SPEAKER_DEBRA)
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,TALKED_TO_SANITATION)
     end
 }
 
@@ -58,6 +100,8 @@ script Quest_Foodtruckbureaucracy_Sani_WaitingForFix_Dialogue{
 }
 
 script Quest_Foodtruckbureaucracy_Sani_AgreedToDeal_Dialogue{
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,DELIVERED_TO_SANITATION)
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_FOODTRUCKBUREACRACY)
     msgbox(gText_Foodtruckbureaucracy_AlrightWellSpeed,MSGBOX_NPC,SPEAKER_DEBRA)
     end
 }
@@ -69,16 +113,19 @@ script Quest_Foodtruckbureaucracy_Sani_RestateDeal_Dialogue{
 }
 
 script Quest_Foodtruckbureaucracy_IT_StateProblem_Dialogue{
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,TALKED_TO_IT)
     msgbox(gText_Foodtruckbureaucracy_WellUpgradeYourRouter,MSGBOX_NPC,SPEAKER_WALDRON)
     end
 }
 
 script Quest_Foodtruckbureaucracy_IT_WaitingForFix_Dialogue{
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,DELIVERED_TO_IT)
     msgbox(gText_Foodtruckbureaucracy_WereWorkingOnThe,MSGBOX_NPC,SPEAKER_WALDRON)
     end
 }
 
 script Quest_Foodtruckbureaucracy_IT_AgreedToDeal_Dialogue{
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,DELIVERED_TO_IT)
     msgbox(gText_Foodtruckbureaucracy_SureWellUpgrade,MSGBOX_NPC,SPEAKER_WALDRON)
     end
 }
@@ -90,11 +137,13 @@ script Quest_Foodtruckbureaucracy_IT_RestateDeal_Dialogue{
 }
 
 script Quest_Foodtruckbureaucracy_DOT_StateProblem_Dialogue{
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,TALKED_TO_TRANSPORTATION)
     msgbox(gText_Foodtruckbureaucracy_WellCreateATrolley,MSGBOX_NPC,SPEAKER_ISIDORE)
     end
 }
 
 script Quest_Foodtruckbureaucracy_DOT_WaitingForFix_Dialogue{
+    setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,DELIVERED_TO_TRANSPORATION)
     msgbox(gText_Foodtruckbureaucracy_WereStillWaiting,MSGBOX_NPC,SPEAKER_ISIDORE)
     end
 }
