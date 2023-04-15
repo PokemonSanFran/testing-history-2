@@ -510,7 +510,7 @@ text gText_Manhunt_IllBeAtTheEntrance {
 }
 
 text gText_Manhunt_WhatWaitUhOkay {
-    format("What!? Wait uh - okay um, excellent work! I'll send the police right over. This is amazing!")
+    format("What!? Wait uh - okay um, excellent work! I was expecting an email, but this will do! I'll send the police right over. This is amazing!")
 }
 
 text gText_Manhunt_GoodWork {

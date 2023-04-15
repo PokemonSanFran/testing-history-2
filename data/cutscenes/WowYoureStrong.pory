@@ -152,7 +152,7 @@ text gText_WowYoureStrong_ShouldHaveKnown {
 }
 
 text gText_WowYoureStrong_DreamBig {
-    format("Dream big {PLAYER}! That's the attitude we wanna see. We're big dreamers over at YCombinator too. That's why we built the Salesforce Tower!")
+    format("Dream big {PLAYER}! That's the attitude we wanna see. We're big dreamers over at YCombinator too. That's why we built the Salesforce Tower! I wrote a stunning email introduction after it was completed... I'll have to forward it to you, it's really some of my best writing.")
 }
 
 text gText_WowYoureStrong_YouShouldComeBy {

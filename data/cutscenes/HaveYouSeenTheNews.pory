@@ -13,23 +13,26 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
     applymovement(OAK,Common_Movement_WalkUp)
     waitmovement(OAK)
 
-    msgbox(gText_HaveYouSeenTheNews_WedLikeYourHelp,,SPEAKER_OAK)
+    msgbox(gText_HaveYouSeenTheNews_Wheeze,,SPEAKER_OAK,,EMOTE_SWEAT)
 
     playse(SE_PIN)
+    applymovement(BIANCA, Common_Movement_ExclamationMark)
     applymovement(PLAYER, Common_Movement_ExclamationMark)
     waitmovement(PLAYER)
     applymovement(PLAYER,Common_Movement_FaceDown)
     applymovement(BIANCA,Common_Movement_FaceDown)
     waitmovement(BIANCA)
 
+    msgbox(gText_HaveYouSeenTheNews_WaitHowDidYou,,SPEAKER_BIANCA,,EMOTE_SHOCK)
 
+    msgbox(gText_HaveYouSeenTheNews_WedLikeYourHelp,,SPEAKER_OAK)
     msgbox(gText_HaveYouSeenTheNews_ShitWhatDid,MSGBOX_DEFAULT,SPEAKER_ZOEY)
 
     msgbox(gText_HaveYouSeenTheNews_YoureStartingToSound,,SPEAKER_OAK)
 
     msgbox(gText_HaveYouSeenTheNews_HowAreWeGoing,,SPEAKER_BIANCA)
 
-    msgbox(gText_HaveYouSeenTheNews_NoTimeToExplain, MSGBOX_YESNO,,SPEAKER_OAK)
+    msgbox(gText_HaveYouSeenTheNews_NoTimeToExplain,MSGBOX_YESNO,SPEAKER_OAK)
 
     if (var (VAR_RESULT) == NO) {
 
@@ -44,17 +47,23 @@ script HaveYouSeenTheNews_AskHelp_Dialogue {
         removeobject(BIANCA)
         removeobject(OAK)
     } else {
-        msgbox(gText_HaveYouSeenTheNews_CoolTheCar,,SPEAKER_BIANCA)
-        
         closemessage
-        releaseall
+        playse(SE_EXIT)
         warpsilent(MAP_SALESFORCETOWER_LEAGUEOPS, 17,29)
         end
     }
 }
 
+text gText_HaveYouSeenTheNews_Wheeze{
+    format("{PLAYER}... Bianca... We need.. oh Arceus I'm so out of breath...")
+}
+
+text gText_HaveYouSeenTheNews_WaitHowDidYou{
+    format("Oak? How did you get so deep in here? You can't battle worth shit!")
+}
+
 text gText_HaveYouSeenTheNews_WedLikeYourHelp {
-    format("We'd like your help again.")
+    format("Never mind that... okay. We'd like your help again.")
 }
 text gText_HaveYouSeenTheNews_ShitWhatDid {
     format("Shit, what did TeamRocket do now?")
@@ -73,9 +82,6 @@ text gText_HaveYouSeenTheNews_FineButDontDawdle {
 }
 text gText_HaveYouSeenTheNews_SoundsLikeYouve {
     format("Sounds like you've been deputized, kid. Just make sure you don't end up a pawn, yeah? You've got real potential.")
-}
-text gText_HaveYouSeenTheNews_CoolTheCar {
-    format("Cool, the car is waiting in Marin.")
 }
 
 movement HaveYouSeenTheNews_LeaveClearingA {

@@ -310,7 +310,7 @@ text gText_HowDisappointing_YoureUnderArrest{
 }
 
 text gText_HowDisappointing_ExcellentWorkEverybody{
-    format("Excellent work everybody! Lenora, Cilan, and Ariana have all been arrested, and all of the Gyms were successfully shut down. The region will see how quickly we’re responding to these threats, and hopefully, this will slow their efforts.")
+    format("Excellent work everybody! Lenora, Cilan, and Ariana have all been arrested, and all of the Gyms were successfully shut down. The region will see how quickly we’re responding to these threats, and hopefully, this will slow their efforts. Maybe I'll send a region wide email...")
 }
 
 text gText_HowDisappointing_IAppreciate{

@@ -476,7 +476,7 @@ text gText_VSGarbodor_WhateverMineWereEasy {
 }
 
 text gText_VSGarbodor_AsWeWereNegotiating {
-    format("As we were negotiating, things started to get a little rowdy. The police aren't taking any chances this time, so they've halted escalation… for now. How's the YCombinator Task Force?")
+    format("As we were negotiating, things started to get a little rowdy. The police aren't taking any chances this time, so they've halted escalation… for now. I'm hoping to continue the conversations over email, which are a little more civilized. How's the YCombinator Task Force?")
 }
 
 text gText_VSGarbodor_DoneLikeYouGuys {

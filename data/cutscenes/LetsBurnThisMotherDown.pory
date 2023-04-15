@@ -317,7 +317,7 @@ text gText_LetsBurnThisMotherDown_ImStillShocked {
 }
 
 text gText_LetsBurnThisMotherDown_ThePoliceTold {
-    format("The police told me they're going to treat the entire island as a crime scene and see if they can find anything else regarding TeamRocket.")
+    format("Police Chief Bill sent me an email with their current plan - they're going to treat the entire island as a crime scene and see if they can find anything else regarding TeamRocket.")
 }
 
 movement LetsBurnThisMotherDown_WalkTowardsPlayer {

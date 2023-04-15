@@ -252,7 +252,7 @@ script WeCanStopYouActaully_ArrestCutscene {
 
 
 text gText_WeCanStopYouActually_SoWhatsYourPlan {
-    format("So, what’s your plan, beat me up and try to expose me? Nobody is going to believe the terrorists that stormed our office building. You’re all going to get arrested, the money will keep flowing in, and life is going to keep moving on.")
+    format("So, what’s your plan, beat me up and try to expose me? Nobody is going to believe the terrorists that stormed our office building. There's not even a paper trail - do you know how hard it was, not sending a SINGLE email about this? You’re all going to get arrested, the money will keep flowing in, and life is going to keep moving on.")
 }
 
 text gText_WeCanStopYouActually_BeepBeep {

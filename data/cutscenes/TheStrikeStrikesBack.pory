@@ -303,7 +303,7 @@ text gText_TheStrikeStrikesBack_IllBeInThere {
     format("{PLAYER}, I'll be in there when you're ready.")
 }
 text gText_TheStrikeStrikesBack_HelloPlayer {
-    format("Hello {PLAYER}!")
+    format("Hello {PLAYER}! I was going to send an email, but Oak insisted that a call would be more appropriate...")
 }
 text gText_TheStrikeStrikesBack_OhHi {
     format("Rose! Aren't you busy...?")

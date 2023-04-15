@@ -341,7 +341,7 @@ text gText_EnterTheMaster_SoWhatsNext{
 }
 
 text gText_EnterTheMaster_IfYouGo{
-    format("If you go further back into the clearing, there are eight battle simulation robots there. The ones on the right are for {PLAYER} - they're calibrated specifically based on the battle data that Ycombinator gave me for each of you.")
+    format("If you go further back into the clearing, there are battle simulation robots there. The ones on the right are for {PLAYER} - they're calibrated specifically based on the battle data that Ycombinator gave me for each of you.")
 }
 
 text gText_EnterTheMaster_IfYouTalk{

@@ -125,6 +125,7 @@ script WaitHeDidWhat_WatchOtherSemifinal_Dialogue {
         applymovement(PLAYER, Common_Movement_FaceLeft)
         waitmovement(0)
         msgbox(gText_WaitHeDidWhat_MakeSureYouGive,,SPEAKER_ROSE)
+        msgbox(gText_WaitHeDidWhat_WhatEmail,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
         closemessage
         
 
@@ -216,7 +217,11 @@ text gText_WaitHeDidWhat_WellTakeAQuick {
 }
 
 text gText_WaitHeDidWhat_MakeSureYouGive {
-    format("Make sure you give us a good show down there!")
+    format("I sent you a motivational email to get you ready for this match! Did you get it?")
+}
+
+text gText_WaitHeDidWhat_WhatEmail {
+    format("I don't know what email he's talking about... I dont' even use my email.")
 }
 
 text gText_WaitHeDidWhat_GoodLuck {
