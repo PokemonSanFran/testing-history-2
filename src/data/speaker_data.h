@@ -900,12 +900,6 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Li,
         .speakerPal = sSpeakerPal_Li,
     },
-    [SPEAKER_MAYOR] =
-    {
-        .name = _("Mayor"),
-        .speakerIcon = gSpeakerIcon_Li,
-        .speakerPal = sSpeakerPal_Li,
-    },
     [SPEAKER_CHIEF] =
     {
         .name = _("Chief"),

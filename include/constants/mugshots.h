@@ -126,7 +126,6 @@
 #define SPEAKER_NEWS_B              114
 #define SPEAKER_ARNAV               115
 #define SPEAKER_OLIVER              116
-#define SPEAKER_MAYOR               117
 #define SPEAKER_CHIEF               118
 #define SPEAKER_CILAN               119
 #define SPEAKER_LENORA              120

@@ -163,7 +163,6 @@ script Salesforcetower_Leagueops_ClearSecondaryCharacters_Script{
     removeobject(ARNAV)
     removeobject(OLIVER)
     removeobject(BIANCA)
-    removeobject(MAYOR)
     removeobject(CHIEF)
     removeobject(ROSE)
     setflag(FLAG_HIDE_NERDS_COPS)

@@ -4,9 +4,9 @@ const OLIVER = 2
 const OAK = 3
 const BIANCA = 4
 const ROSE = 5
-const CHIEF = 7
-const SABRINA = 8
-const KOGA = 9
+const CHIEF = 6
+const SABRINA = 7
+const KOGA = 8
 
 const FLAG_HIDE_NERDS_COPS = FLAG_TEMP_1
 const FLAG_HIDE_OAK = FLAG_TEMP_2
@@ -34,7 +34,6 @@ script WelcomeToTheWarRoom_FaceSpeakerRose {
     applymovement(OLIVER,Common_Movement_FaceUp)
     applymovement(ARNAV,Common_Movement_FaceUp)
     applymovement(CHIEF,Common_Movement_FaceUp)
-    applymovement(MAYOR,Common_Movement_FaceUp)
     applymovement(OAK,Common_Movement_FaceUp)
     applymovement(BIANCA,Common_Movement_FaceUp)
     applymovement(PLAYER,Common_Movement_FaceUp)
@@ -45,7 +44,6 @@ script WelcomeToTheWarRoom_FaceSpeakerArnav {
     applymovement(OLIVER,Common_Movement_FaceRight)
     applymovement(ARNAV,Common_Movement_WalkInPlaceFasterDown)
     applymovement(CHIEF,Common_Movement_FaceUp)
-    applymovement(MAYOR,Common_Movement_FaceUp)
     applymovement(OAK,Common_Movement_FaceRight)
     applymovement(BIANCA,Common_Movement_FaceRight)
     applymovement(PLAYER,Common_Movement_FaceRight)
@@ -55,7 +53,6 @@ script WelcomeToTheWarRoom_FaceSpeakerOliver {
     applymovement(OLIVER,Common_Movement_WalkInPlaceFasterDown)
     applymovement(ARNAV,Common_Movement_FaceLeft)
     applymovement(CHIEF,Common_Movement_FaceLeft)
-    applymovement(MAYOR,Common_Movement_FaceLeft)
     applymovement(OAK,Common_Movement_FaceUp)
     applymovement(BIANCA,Common_Movement_FaceUp)
     applymovement(PLAYER,Common_Movement_FaceUp)
@@ -65,17 +62,6 @@ script WelcomeToTheWarRoom_FaceSpeakerChief {
     applymovement(OLIVER,Common_Movement_FaceRight)
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_WalkInPlaceFasterLeft)
-    applymovement(MAYOR,Common_Movement_FaceUp)
-    applymovement(OAK,Common_Movement_FaceRight)
-    applymovement(BIANCA,Common_Movement_FaceRight)
-    applymovement(PLAYER,Common_Movement_FaceRight)
-    waitmovement(0)
-}
-script WelcomeToTheWarRoom_FaceSpeakerMayor {
-    applymovement(OLIVER,Common_Movement_FaceDown)
-    applymovement(ARNAV,Common_Movement_FaceDown)
-    applymovement(CHIEF,Common_Movement_FaceDown)
-    applymovement(MAYOR,Common_Movement_WalkInPlaceFasterLeft)
     applymovement(OAK,Common_Movement_FaceRight)
     applymovement(BIANCA,Common_Movement_FaceRight)
     applymovement(PLAYER,Common_Movement_FaceRight)
@@ -85,7 +71,6 @@ script WelcomeToTheWarRoom_FaceSpeakerBianca {
     applymovement(OLIVER,Common_Movement_FaceDown)
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_FaceLeft)
-    applymovement(MAYOR,Common_Movement_FaceUp)
     applymovement(OAK,Common_Movement_FaceDown)
     applymovement(BIANCA,Common_Movement_WalkInPlaceFasterRight)
     applymovement(PLAYER,Common_Movement_FaceUp)
@@ -95,7 +80,6 @@ script WelcomeToTheWarRoom_FaceSpeakerPlayer {
     applymovement(OLIVER,Common_Movement_FaceDown)
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_FaceLeft)
-    applymovement(MAYOR,Common_Movement_FaceLeft)
     applymovement(OAK,Common_Movement_FaceDown)
     applymovement(BIANCA,Common_Movement_FaceDown)
     applymovement(PLAYER,Common_Movement_WalkInPlaceFasterRight)
@@ -105,7 +89,6 @@ script WelcomeToTheWarRoom_FaceSpeakerOak {
     applymovement(OLIVER,Common_Movement_FaceLeft)
     applymovement(ARNAV,Common_Movement_FaceDown)
     applymovement(CHIEF,Common_Movement_FaceLeft)
-    applymovement(MAYOR,Common_Movement_FaceUp)
     applymovement(OAK,Common_Movement_WalkInPlaceFasterRight)
     applymovement(BIANCA,Common_Movement_FaceUp)
     applymovement(PLAYER,Common_Movement_FaceUp)
@@ -135,8 +118,8 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         call(WelcomeToTheWarRoom_FaceSpeakerChief)
         msgbox(gText_WelcomeToTheWarRoom_WeveLongTheorized,,SPEAKER_CHIEF)
 
-        call(WelcomeToTheWarRoom_FaceSpeakerMayor)
-        msgbox(gText_WelcomeToTheWarRoom_ThatsWhereYouKids,,SPEAKER_MAYOR)
+        call(WelcomeToTheWarRoom_FaceSpeakerRose)
+        msgbox(gText_WelcomeToTheWarRoom_YouReallyImpressed,,SPEAKER_ROSE)
 
         call(WelcomeToTheWarRoom_FaceSpeakerBianca)
         msgbox(gText_WelcomeToTheWarRoom_HellYeahWedLoveTo,,SPEAKER_BIANCA)
@@ -176,19 +159,17 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
         removeobject(CHIEF)
         fadescreen(FADE_FROM_BLACK)
 
-        call(WelcomeToTheWarRoom_FaceSpeakerMayor)
-        msgbox(gText_WelcomeToTheWarRoom_DontPayHimNoMind,,SPEAKER_MAYOR)
+        call(WelcomeToTheWarRoom_FaceSpeakerRose)
+        msgbox(gText_WelcomeToTheWarRoom_DontLet,,SPEAKER_ROSE)
         closemessage
         
         applymovement(ARNAV,WelcomeToTheWarRoom_LeaveRight_Movement)
         applymovement(OLIVER,WelcomeToTheWarRoom_LeaveLeft_Movement)
         applymovement(ROSE,WelcomeToTheWarRoom_RoseLeaveRoom_Movement)
-        applymovement(MAYOR,WelcomeToTheWarRoom_ChiefLeaveRoom_Movement)
     
         
         delay(30)
         fadescreen(FADE_TO_BLACK)
-        removeobject(MAYOR)
         removeobject(ROSE)
         removeobject(ARNAV)
         removeobject(OLIVER)
@@ -247,8 +228,8 @@ text gText_WelcomeToTheWarRoom_WeveLongTheorized {
     format("We've long theorized that Navalbase is TeamRocket's primary base of operations so we've got reason to believe that they're the ones behind this cyber-attack. We have authorization to raid their headquarters and are looking -")
 }
 
-text gText_WelcomeToTheWarRoom_ThatsWhereYouKids {
-    format("That's where you kids come in! Ya really impressed me back at Chasecenter, and we'd like you to assist us in the raid. You'll work under Chief Bill, and help us shut down those clowns once and for all.")
+text gText_WelcomeToTheWarRoom_YouReallyImpressed {
+    format("Bianca, {PLAYER} you really impressed me back at Chasecenter, and we'd like you to assist as well. You'll work under Chief Bill, and help us shut down these terrorists once and for all.")
 }
 
 text gText_WelcomeToTheWarRoom_HellYeahWedLoveTo {
@@ -283,8 +264,8 @@ text gText_WelcomeToTheWarRoom_GreatWellStartTheOperation {
     format("Great. We'll start the operation as soon as you're ready. Meet me outside Navalbase.")
 }
 
-text gText_WelcomeToTheWarRoom_DontPayHimNoMind {
-    format("Don't pay him no mind, he's just a little stern. Looks like we all got jobs to do, let's get ‘er done!")
+text gText_WelcomeToTheWarRoom_DontLet {
+    format("Bianca, {PLAYER}, don't let the chief's attitude get in the way. You've all got orders, so let's get to it.")
 }
 
 text gText_WelcomeToTheWarRoom_ThatsAgainYouTwo {

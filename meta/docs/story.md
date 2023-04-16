@@ -333,13 +333,13 @@ All the cutscenes in Act 3.3 occur in the order listed here.
 ## Have You Seen The News?
 * Near the end of the duo's training, Oak arrives to see Bianca and Zoey.
 * There is no service in Muirwoods, so none of them were aware that Teamrocket has taken over the social media accounts of Ycombinator and are blasting the Internet with anti-League propaganda.
-* The mayor has sent Oak to retrieve Bianca and Zoey and ask for their help in stopping the hack.
+* Rose has sent Oak to retrieve Bianca and Zoey and ask for their help in stopping the hack.
 * Zoey, Bianca and Oak go to the Salesforcetower.
 
 ## Welcome to the War Room.
-* In a conference room in the Salesforcetower, two Ycombinator engineers explain the situation to Oak, Rose, Bianca, Zoey, the Mayor, and the Police Chief.
+* In a conference room in the Salesforcetower, two Ycombinator engineers explain the situation to Oak, Rose, Bianca, Zoey, and the Police Chief.
 * The Police Chief claims they knows where Teamrocket is operating out of. Their goal is to storm their HQ and shut things down that way.
-* The Mayor heard about Bianca and Zoey's work on the Garbodor, and want the Trainers to help with the raid.
+* Rose heard about Bianca and Zoey's work on the Garbodor, and want the Trainers to help with the raid.
 * The Police Chief, annoyed with the idea of children helping with a police raid, walks out, telling the pair to meet him at the ferry.
 
 ## Survival Chance = 33.3%

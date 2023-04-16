@@ -84,10 +84,10 @@
 #define FLAG_UNUSED_0x42 0x42 //Unused Flag
 #define FLAG_UNUSED_0x43 0x43 //Unused Flag
 #define FLAG_QUEST_EMPLOYEDEVERAFTER_FOUND_BRIDE 0x44 //Previously Unused Flag
-#define FLAG_HIDE_PSFROUTE61_BIANCA 0x45 // Previously Unused Flag
-#define FLAG_HIDE_MUIRWOODS_BIANCA    0x46 // Previously Unused Flag
-#define FLAG_HIDE_MUIRWOODS_SIEBOLD 0x47 //Previously Unused Flag
-#define FLAG_HIDE_MUIRWOODS_OAK 0x48 // Previously Unused Flag
+#define FLAG_UNUSED_0x45 0x45 //Unused Flag
+#define FLAG_UNUSED_0x46 0x46 //Unused Flag
+#define FLAG_UNUSED_0x47 0x47 //Unused Flag
+#define FLAG_UNUSED_0x48 0x48 //Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag
@@ -668,22 +668,22 @@
 #define FLAG_UNSUED_0x26A               0x26A//Unused Flag
 #define FLAG_UNUSED_0x26B 0x26B //Unused Flag
 #define FLAG_UNUSED_0x26C 0x26C // Unused Flag
-#define FLAG_HIDE_SOMA_ROSE 0x26D// Previously Unused Flag
+#define FLAG_UNSUED_0x26D 0x26D// Unused Flag
 #define FLAG_UNUSED_0x26E 0x26E //Unused Flag
-#define FLAG_HIDE_TOWER2_BIANCA 0x26F // Previously Unused Flag
-#define FLAG_HIDE_TOWER2_OAK 0x270 // Previously Unused Flag
-#define FLAG_HIDE_TOWER2_POLICE 0x271 // Previously Unused Flag
-#define FLAG_HIDE_TOWER2_MAYOR 0x272 // Previously Unused Flag
-#define FLAG_HIDE_TOWER2_ROSE 0x273 // Previously Unused Flag
-#define FLAG_HIDE_SURVIVAL_CHANCE_FERRY 0x274 // Previously Unused Flag
-#define FLAG_HIDE_SURVIVAL_CHANCE_RAID 0x275 // Previously Unused Flag
-#define FLAG_HIDE_WHYAREYOU_POLICE 0x276 // Previously Unused Flag
-#define FLAG_HIDE_WHYAREYOU_NATIVERIVAL 0x277 // Previously Unused Flag
-#define FLAG_HIDE_WHYAREYOU_PKMN 0x278 // Previously Unused Flag
-#define FLAG_HIDE_HERESHOWTHIS_PSFBADGUY 0x279 // Previously Unused Flag
-#define FLAG_HIDE_HERESHOWTHIS_ARCHER 0x27A // Previously Unused Flag
-#define FLAG_HIDE_WHYDIDNTRAT_STANDS_ARCHER 0x27B // Previously Unused Flag
-#define FLAG_HIDE_WHYDIDNTRAT_STANDS_OAK 0x27C // Previously Unused Flag
+#define FLAG_UNUSED_0x26F	0x26F // Unused Flag
+#define FLAG_UNUSED_0x270	0x270 // Unused Flag
+#define FLAG_UNUSED_0x271	0x271 // Unused Flag
+#define FLAG_UNUSED_0x272	0x272 // Unused Flag
+#define FLAG_UNUSED_0x273	0x273 // Unused Flag
+#define FLAG_UNSUED_0x274 0x274 // Unused Flag
+#define FLAG_UNSUED_0x275 0x275 // Unused Flag
+#define FLAG_UNSUED_0x276 0x276 // Unused Flag
+#define FLAG_UNSUED_0x277 0x277 // Unused Flag
+#define FLAG_UNSUED_0x278 0x278 // Unused Flag
+#define FLAG_UNSUED_0x279 0x279 // Unused Flag
+#define FLAG_UNSUED_0x27A 0x27A // Unused Flag
+#define FLAG_UNSUED_0x27B 0x27B // Unused Flag
+#define FLAG_UNSUED_0x27C 0x27C // Unused Flag
 #define FLAG_UNUSED_0x27D  0x27D // Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag
 #define FLAG_UNUSED_0x27F  0x27F // Unused Flag

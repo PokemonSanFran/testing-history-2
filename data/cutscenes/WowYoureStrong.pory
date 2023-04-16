@@ -62,10 +62,10 @@ script WowYoureStrong_ShowTower_Script {
 }
 
 script WowYoureStrong_End_Dialouge {
-    msgbox(gText_WowYoureStrong_MeetingWithMayor,,SPEAKER_ROSE)
+    msgbox(gText_WowYoureStrong_RunToMeeting,,SPEAKER_ROSE)
     
     closemessage
-    applymovement(ROSE,WowYoureStrong_WalkToMayor_Movement)
+    applymovement(ROSE,WowYoureStrong_WalkToMeeting_Movement)
     waitmovement(ROSE)
     removeobject(ROSE)
     playbgm(MUS_RG_VERMILLION,TRUE)
@@ -95,7 +95,7 @@ script WowYourStrong_ArcherConfrontation_Dialogue{
     closemessage
     
 
-    applymovement(ARCHER,WowYoureStrong_WalkToMayor_Movement)
+    applymovement(ARCHER,WowYoureStrong_WalkToMeeting_Movement)
     waitmovement(ARCHER)
     removeobject(ARCHER)
 
@@ -123,7 +123,7 @@ movement WowYoureStrong_PanCameraUp_Movement{
         step_end
 }
 
-movement WowYoureStrong_WalkToMayor_Movement {
+movement WowYoureStrong_WalkToMeeting_Movement {
     walk_left * 8
     step_end
 }
@@ -159,8 +159,8 @@ text gText_WowYoureStrong_YouShouldComeBy {
     format("You should come by once you're done exploring the city proper, my office is on the 38th floor.")
 }
 
-text gText_WowYoureStrong_MeetingWithMayor {
-    format("I have to run to a meeting with the Mayor. Again, excellent job against Whitney. I hope to see what else you can do!")
+text gText_WowYoureStrong_RunToMeeting {
+    format("I have to run to a meeting. Again, excellent job against Whitney. I hope to see what else you can do!")
 }
 
 text gText_WowYoureStrong_IDontGetIt{

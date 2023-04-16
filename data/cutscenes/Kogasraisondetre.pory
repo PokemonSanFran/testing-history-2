@@ -463,7 +463,7 @@ text gText_KogaRaisonDetre_ThanksKen {
     format("Thanks Ken. We're gathering details on the ground here, but it sounds like this riot was instigated by members of TeamRocket, culminating in violent attacks on the Tenderloin Police Force. Both sides sustained significant injury, and dozens of members of TeamRocket were taken into custody last night. Back to you, Ken.")
 }
 text gText_KogaRaisonDetre_WereAlsoLearningThat {
-    format("We're also learning that the Mayor's office released a press statement ten minutes ago, primarily addressing TeamRocket, asking for an end to the violence and begging them to “work with us, not against us”. We'll have more updates within the hour.")
+    format("We're also learning that the Police Department released a press statement ten minutes ago, primarily addressing TeamRocket, asking for an end to the violence and begging them to “work with us, not against us”. We'll have more updates within the hour.")
 }
 text gText_KogaRaisonDetre_IsThereSobAnyhingElse {
     format("Is there *sob* anything else I can get you *sob*, Lord {PLAYER}?")
