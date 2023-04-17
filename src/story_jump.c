@@ -852,6 +852,8 @@ void JumpPlayerTo_EntertheMaster()
 {
 	JumpPlayerTo_IGuessWeShouldBeNiceNow();
 	VarSet(VAR_MUIRWOODS_STATE, MET_SIEBOLD);
+	QuestMenu_GetSetQuestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_UNLOCKED);
+	QuestMenu_GetSetQuestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_ACTIVE);
 	SetWarpDestination(0, 48, 2, -1, -1);
 }
 void JumpPlayerTo_HaveYouSeenTheNews()
@@ -863,7 +865,6 @@ void JumpPlayerTo_HaveYouSeenTheNews()
     QuestMenu_GetSetSubquestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_COMPLETED, SUB_QUEST_2);
     QuestMenu_GetSetSubquestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_COMPLETED, SUB_QUEST_3);
     QuestMenu_GetSetSubquestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_COMPLETED, SUB_QUEST_4);
-	QuestMenu_GetSetQuestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_UNLOCKED);
 	QuestMenu_GetSetQuestState(QUEST_SIEBOLDSTRAINING, FLAG_SET_COMPLETED);
     
 	SetWarpDestination(10, 17, 1, -1, -1);

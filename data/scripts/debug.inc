@@ -67,6 +67,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
+	warpsilent MAP_FERRYBUILDING, 0
 	end
 
 

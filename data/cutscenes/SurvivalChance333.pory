@@ -56,15 +56,18 @@ applymovement(PLAYER,Common_Movement_FaceUp)
     waitmovement(0)
 
     delay(25)
-msgbox(gText_SurvivalChance333_HeresThe,,SPEAKER_CHIEF)
+msgbox(gText_SurvivalChance333_HeresThe,,SPEAKER_CHIEF,,EMOTE_SWEAT)
 
 msgbox(gText_SurvivalChance333_IsSomethingWrong,,SPEAKER_ZOEY)
 
 
-msgbox(gText_SurvivalChance333_ISpent15Years,,SPEAKER_CHIEF)
+msgbox(gText_SurvivalChance333_ISpent15Years,,SPEAKER_CHIEF,,EMOTE_ANGRY)
+msgbox(gText_SurvivalChance333_Next,,SPEAKER_CHIEF,,EMOTE_ANGRY)
+msgbox(gText_SurvivalChance333_Cherry,,SPEAKER_CHIEF,TAIL_SHOUT,EMOTE_ANGRY)
 
 msgbox(gText_SurvivalChance333_WoahWerePlentyTough,,SPEAKER_BIANCA)
 
+msgbox(gText_SurvivalChance333_IThinkBiancaMissed,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
 
 msgbox(gText_SurvivalChance333_RightKidsWithZero,,SPEAKER_CHIEF)
 
@@ -72,7 +75,6 @@ msgbox(gText_SurvivalChance333_HeyWeDidntAsk,,SPEAKER_ZOEY)
 
 
 msgbox(gText_SurvivalChance333_AndIDidntAsk,,SPEAKER_CHIEF)
-
 msgbox(gText_SurvivalChance333_IllProveIt,,SPEAKER_BIANCA)
 
 setvar(VAR_FERRYBUILDING_STATE,SAVE_SURVIVAL_CHANCE_BATTLE)
@@ -273,7 +275,7 @@ closemessage
 }
 
 text gText_SurvivalChance333_HeresThe {
-	format("*sigh* Here's the fuckin' plan. We're gonna -")
+	format("Here's the fuckin' plan. We're gonna -")
 }
 
 text gText_SurvivalChance333_IsSomethingWrong {
@@ -281,11 +283,22 @@ text gText_SurvivalChance333_IsSomethingWrong {
 }
 
 text gText_SurvivalChance333_ISpent15Years {
-	format("I spent 15 years in the military, dedicated my life to tactical warfare and I've never run a failed operation… and now somehow I'm doing the dirty work for some tech bros. And while I'm Ycombinator's bitch, I have to babysit two hotshots from nowhere as I try to infiltrate a terrorist organization.")
+	format("First off, I spent 15 years in the military, dedicated my life to tactical warfare and I've never run a failed operation… and now somehow I'm doing the dirty work for some tech bros.")
 
 }
+text gText_SurvivalChance333_Next{
+    format("Next, I've got the same tech bros who won a contract for 'special defense operations in the public interest' telling me how to do my job...")
+}
+text gText_SurvivalChance333_Cherry{
+    format("And the cherry on top: I have to babysit two hotshots from nowhere as I try to infiltrate a terrorist organization.")
+}
+
 text gText_SurvivalChance333_WoahWerePlentyTough {
 	format("Woah, we're plenty tough! You don't need to babysit us!")
+}
+
+text gText_SurvivalChance333_IThinkBiancaMissed{
+    format("I think Bianca missed the point and only heard that last part...")
 }
 
 text gText_SurvivalChance333_RightKidsWithZero {
