@@ -60,22 +60,22 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_SIEBOLDSTRAINING, SUB_QUEST_2
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_SIEBOLDSTRAINING, SUB_QUEST_3
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_SIEBOLDSTRAINING, SUB_QUEST_4
+	warpsilent MAP_SUNSET_RESTAURANT, 0
 	end
 
 
 Debug_Script_2::
-	warpsilent MAP_FERRYBUILDING, 0
+	warpsilent MAP_SOMA_SANITATION, 0
 	end
 
 
 Debug_Script_3::
+	warpsilent MAP_CASTRO_IT, 0
 	end
 
 
 Debug_Script_4::
+	warpsilent MAP_TENDERLOIN_TROLLEY_HQ, 0
 	end
 
 

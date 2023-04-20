@@ -14,19 +14,19 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "up",
+      "map": "MAP_PSFROUTE13",
       "offset": 0,
-      "map": "MAP_PSFROUTE13"
+      "direction": "up"
     },
     {
-      "direction": "right",
+      "map": "MAP_PSFROUTE14",
       "offset": 8,
-      "map": "MAP_PSFROUTE14"
+      "direction": "right"
     },
     {
-      "direction": "down",
+      "map": "MAP_PSFROUTE18",
       "offset": -33,
-      "map": "MAP_PSFROUTE18"
+      "direction": "down"
     }
   ],
   "object_events": [
@@ -96,6 +96,13 @@
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_CASTRO_BALL_SHOP",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 18,
+      "y": 26,
+      "elevation": 0,
+      "dest_map": "MAP_CASTRO_IT",
       "dest_warp_id": "0"
     }
   ],

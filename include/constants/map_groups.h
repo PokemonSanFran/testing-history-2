@@ -121,6 +121,8 @@
 #define MAP_OAKLANDCOLISEUM_HALL              (112 | (0 << 8))
 #define MAP_PALACEFINEARTS                    (113 | (0 << 8))
 #define MAP_SUNSET_RESTAURANT                 (114 | (0 << 8))
+#define MAP_SOMA_SANITATION                   (115 | (0 << 8))
+#define MAP_CASTRO_IT                         (116 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

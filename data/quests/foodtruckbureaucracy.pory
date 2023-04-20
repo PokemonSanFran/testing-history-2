@@ -94,8 +94,10 @@ script Quest_Foodtruckbureaucracy_Food_RestateDeal_Dialogue{
 
 script Quest_Foodtruckbureaucracy_Sani_StateProblem_Dialogue{
     setvar(VAR_QUEST_FOOD_TRUCK_BUREAUCRACY_STATE,TALKED_TO_SANITATION)
-    msgbox(gText_Foodtruckbureaucracy_HeyIsIt,SPEAKER_ZOEY)
-    msgbox(gText_Foodtruckbureaucracy_WeCantSpeedUp,MSGBOX_NPC,SPEAKER_DEBRA)
+    msgbox(gText_Foodtruckbureaucracy_HeyIsIt,MSGBOX_NPC,SPEAKER_ZOEY)
+    msgbox(gText_Foodtruckbureaucracy_Yep,,SPEAKER_DEBRA)
+    msgbox(gText_Foodtruckbureaucracy_WeCantSpeedUp,,SPEAKER_DEBRA)
+    closemessage
     end
 }
 
@@ -171,7 +173,6 @@ script Quest_Foodtruckbureaucracy_Completed_Dialogue{
     msgbox(gText_Foodtruckbureaucracy_PlayerYoureBack,MSGBOX_NPC,SPEAKER_WAITE)
 }
 
-
 text gText_Foodtruckbureaucracy_ImHavingTroubleGetting{
     format("Can you believe this?!?\nThe Sanitation Department told me its going be nine months until they can update my code. But they're going to shut me down in 3 months if I'm not up to date!\nI know the big fancy restaurants aren't waiting nine months... wish I could get down there and grease the wheels, you know? Hey, if you're over there, let me know if you hear something. I'll make it worth your while.")
 }
@@ -196,8 +197,11 @@ text gText_Foodtruckbureaucracy_ThankYouSoMuchFor{
 text gText_Foodtruckbureaucracy_HeyIsIt{
     format("Hey, is it really a nine month wait for a restaurant to get its code updated?")
 }
+text gText_Foodtruckbureaucracy_Yep{
+    format("Yep!")
+}
 text gText_Foodtruckbureaucracy_WeCantSpeedUp{
-    format("Yep! Of course, if we had a faster wireless router, maybe we could get through the queue at a quicker pace. I wonder if Information Technology in Castro could help...")
+    format("Of course, if we had a faster wireless router, maybe we could get through the queue at a quicker pace. I wonder if Information Technology in Castro could help...")
  }
 text gText_Foodtruckbureaucracy_WereWorkingOnIt{
     format("Any luck on getting that new router from IT in Castro?")

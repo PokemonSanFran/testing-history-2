@@ -16,6 +16,20 @@ script Tenderloin_TrolleyHQ_Machine_Script{
     end
 }
 
+script Tenderloin_TrolleyHQ_Interact_Clerk_Script{
+    goto_if_quest_not_inactive(QUEST_FOODTRUCKBUREACRACY,Quest_Foodtruckbureaucracy_DOT_Active_Dialogue)
+    goto(Tenderloin_TrolleyHQ_Clerk_Dialogue)
+}
+
+script Tenderloin_TrolleyHQ_Clerk_Dialogue{
+    msgbox(gText_Tenderloin_TrolleyHQ_IHateHaving,MSGBOX_NPC,SPEAKER_ISIDORE)
+    end
+}
+
+text gText_Tenderloin_TrolleyHQ_IHateHaving{
+    format("I hate having to leave the office to get food... but ordering Doordash is so expensive!")
+}
+
 text gText_Tenderloin_TrolleyHQ_DoYouHave{
     format("Do you have any idea what it takes to make sure all the trolleys run on time? Especially when ridership is down...")
 }

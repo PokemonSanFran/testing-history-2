@@ -1,46 +1,46 @@
 {
-  "id": "MAP_SUNSET_RESTAURANT",
-  "name": "Sunset_Restaurant",
-  "layout": "LAYOUT_SUNSET_RESTAURANT",
-  "music": "MUS_B_FRONTIER",
-  "region_map_section": "MAPSEC_SUNSET",
+  "id": "MAP_CASTRO_IT",
+  "name": "Castro_IT",
+  "layout": "LAYOUT_CASTRO_IT",
+  "music": "MUS_RG_VERMILLION",
+  "region_map_section": "MAPSEC_CASTRO",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
-  "allow_escaping": true,
+  "allow_escaping": false,
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_BARD",
-      "x": 9,
-      "y": 18,
+      "graphics_id": "OBJ_EVENT_GFX_TEALA",
+      "x": 2,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Quest_Foodtruckbureaucracy_Food_Interact_Script",
+      "script": "Castro_IT_Interact_Clerk_Script",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 9,
-      "y": 19,
+      "x": 2,
+      "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_SUNSET",
+      "dest_map": "MAP_CASTRO",
       "dest_warp_id": "2"
     },
     {
-      "x": 10,
-      "y": 19,
+      "x": 3,
+      "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_SUNSET",
+      "dest_map": "MAP_CASTRO",
       "dest_warp_id": "2"
     }
   ],

@@ -834,45 +834,6 @@ static const struct SubQuest sGetTheBandBackTogether_Sub[QUEST_GETTHEBANDBACKTOG
 	),
 };
 
-static const struct SubQuest sFoodTruckBureacracy_Sub[QUEST_FOODTRUCKBUREACRACY_SUB_COUNT] = {
-	sub_quest(
-	        72,
-	        gText_Quest_FoodTruckBureacracy_Sub1_Name,
-	        gText_Quest_FoodTruckBureacracy_Sub1_Desc,
-	        gText_Quest_FoodTruckBureacracy_Sub1_Map,
-	        OBJ_EVENT_GFX_BARD,
-	        OBJECT,
-	        sText_Delievered
-	),
-	sub_quest(
-	        73,
-	        gText_Quest_FoodTruckBureacracy_Sub2_Name,
-	        gText_Quest_FoodTruckBureacracy_Sub2_Desc,
-	        gText_Quest_FoodTruckBureacracy_Sub2_Map,
-	        OBJ_EVENT_GFX_PICNICKER,
-	        OBJECT,
-	        sText_Delievered
-	),
-	sub_quest(
-	        74,
-	        gText_Quest_FoodTruckBureacracy_Sub3_Name,
-	        gText_Quest_FoodTruckBureacracy_Sub3_Desc,
-	        gText_Quest_FoodTruckBureacracy_Sub3_Map,
-	        OBJ_EVENT_GFX_TEALA,
-	        OBJECT,
-	        sText_Delievered
-	),
-	sub_quest(
-	        75,
-	        gText_Quest_FoodTruckBureacracy_Sub4_Name,
-	        gText_Quest_FoodTruckBureacracy_Sub4_Desc,
-	        gText_Quest_FoodTruckBureacracy_Sub4_Map,
-	        OBJ_EVENT_GFX_GIRL_2,
-	        OBJECT,
-	        sText_Delievered
-	),
-};
-
 static const struct SubQuest sDetectiveAriana_Sub[QUEST_DETECTIVEARIANA_SUB_COUNT] = {
 	sub_quest(
 	        76,
@@ -2940,7 +2901,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_FoodTruckBureacracy_Map,
 	        OBJ_EVENT_GFX_YOUNGSTER,
 	        OBJECT,
-	        sFoodTruckBureacracy_Sub,
+            NULL,
 	        4
 	),
 	side_quest(

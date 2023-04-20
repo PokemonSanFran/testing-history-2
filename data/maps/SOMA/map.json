@@ -213,6 +213,13 @@
       "elevation": 0,
       "dest_map": "MAP_SOMA_POKEMONCENTER_1F",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 1,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_SOMA_SANITATION",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

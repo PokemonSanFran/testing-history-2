@@ -6130,6 +6130,26 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Sunset_Restaurant/border.bin",
       "blockdata_filepath": "data/layouts/Sunset_Restaurant/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOMA_SANITATION",
+      "name": "SOMA_Sanitation_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/SOMA_Sanitation/border.bin",
+      "blockdata_filepath": "data/layouts/SOMA_Sanitation/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTRO_IT",
+      "name": "Castro_IT_Layout",
+      "width": 5,
+      "height": 5,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/Castro_IT/border.bin",
+      "blockdata_filepath": "data/layouts/Castro_IT/map.bin"
     }
   ]
 }

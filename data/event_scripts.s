@@ -1496,3 +1496,7 @@ Script_RemoveTint::
     .include "data/maps/Palacefinearts/scripts.inc"
 
 	.include "data/maps/Sunset_Restaurant/scripts.inc"
+
+	.include "data/maps/SOMA_Sanitation/scripts.inc"
+
+	.include "data/maps/Castro_IT/scripts.inc"
