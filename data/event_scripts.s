@@ -1295,7 +1295,7 @@ Script_RemoveTint::
 // .include "data/quests/unknowntimetravelquest.inc"
 // .include "data/quests/unknownconstructionstrikequest.inc"
 .include "data/quests/ibelieveicanfly.inc"
-// .include "data/quests/wildfirerisk.inc"
+.include "data/quests/wildfirerisk.inc"
 .include "data/quests/theboywhocrieswithwolves.inc"
 // .include "data/quests/unknowntrolleyproblem.inc"
 // .include "data/quests/unknownlandfillquest.inc"

@@ -563,3 +563,4 @@ gSpecials::
     def_special CheckPartyHasOneMon
     def_special ConvertChallengeTurnsToRank
     def_special Quest_BiomeResearch_CountCompletedSubquest
+    def_special Quest_Wildfirerisk_GetPercentage 

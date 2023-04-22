@@ -203,6 +203,7 @@
 #define SPEAKER_DEBRA                   192
 #define SPEAKER_WALDRON                 193
 #define SPEAKER_ISIDORE                 194
+#define SPEAKER_FILIP                   195
 
 //Tail
 #define TAIL_DEFAULT 0

@@ -5377,6 +5377,70 @@ void CountDefeatedBackyard(void){
     VarSet(VAR_DEFEATED_BACKYARD_COUNT,defeatedBackyardCount);
 }
 
+u8 Quest_Wildfirerisk_GetPercentage(void)
+{
+    u8 defeatedFireCount = VarGet(VAR_QUEST_WILDFIRERISK_FIRE_COUNT);
+    u8 defeatedElectricCount = VarGet(VAR_QUEST_WILDFIRERISK_ELECTRIC_COUNT);
+    u8 defeatedFlyingCount = VarGet(VAR_QUEST_WILDFIRERISK_FLYING_COUNT);
+
+    return ((defeatedFireCount + defeatedElectricCount + defeatedFlyingCount) / 300) * 100
+}
+
+u8 Quest_Wildfirerisk_CheckDefeatedMon(void)
+{
+    u8 i = 0;
+    u8 defeatedFireCount = VarGet(VAR_QUEST_WILDFIRERISK_FIRE_COUNT);
+    u8 defeatedElectricCount = VarGet(VAR_QUEST_WILDFIRERISK_ELECTRIC_COUNT);
+    u8 defeatedFlyingCount = VarGet(VAR_QUEST_WILDFIRERISK_FLYING_COUNT);
+
+    if (!QuestMenu_GetSetQuestState(QUEST_WILDFIRERISK, FLAG_GET_ACTIVE))
+        return 0;
+
+    for (i = 0;i < 6;i++)
+    {
+        if (gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].type1 == TYPE_FIRE || gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].type2 == TYPE_FIRE){
+
+            defeatedFireCount++;
+
+            if (defeatedFireCount => 100){
+                defeatedFireCount == 100;
+                QuestMenu_GetSetSubquestState(QUEST_WILDFIRERISK,FLAG_SET_COMPLETED,SUB_QUEST_1);
+            }
+            VarSet(VAR_QUEST_WILDFIRERISK_FIRE_COUNT,defeatedFireCount);
+        }
+    }
+    for (i = 0;i < 6;i++)
+    {
+        if (gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].type1 == TYPE_ELECTRIC || gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].type2 == TYPE_ELECTRIC){
+
+            defeatedElectricCount++;
+
+            if (defeatedElectricCount => 100){
+                defeatedElectricCount == 100;
+                QuestMenu_GetSetSubquestState(QUEST_WILDELECTRICRISK,FLAG_SET_COMPLETED,SUB_QUEST_2);
+            }
+            VarSet(VAR_QUEST_WILDFIRERISK_ELECTRIC_COUNT,defeatedElectricCount);
+        }
+    }
+    for (i = 0;i < 6;i++)
+    {
+        if (gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].type1 == TYPE_FLYING || gSpeciesInfo[GetMonData(&gEnemyParty[i], MON_DATA_SPECIES)].type2 == TYPE_FLYING){
+
+            defeatedFlyingCount++;
+
+            if (defeatedFlyingCount => 100){
+                defeatedFlyingCount == 100;
+                QuestMenu_GetSetSubquestState(QUEST_WILDFLYINGRISK,FLAG_SET_COMPLETED,SUB_QUEST_3);
+            }
+            VarSet(VAR_QUEST_WILDFIRERISK_FLYING_COUNT,defeatedFlyingCount);
+        }
+    }
+
+    if (QuestMenu_GetSetQuestState(QUEST_WILDFIRERISK,FLAG_GET_COMPLETED,SUB_QUEST_1) && QuestMenu_GetSetQuestState(QUEST_WILDFIRERISK,FLAG_GET_COMPLETED,SUB_QUEST_2) && QuestMenu_GetSetQuestState(QUEST_WILDFIRERISK,FLAG_GET_COMPLETED,SUB_QUEST_3))
+        QuestMenu_GetSetQuestState(QUEST_WILDFIRERISK,FLAG_SET_REWARD);
+
+}
+
 static void HandleEndTurn_RanFromBattle(void)
 {
     gCurrentActionFuncId = 0;

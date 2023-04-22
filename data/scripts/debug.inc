@@ -60,22 +60,22 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_SUNSET_RESTAURANT, 0
+	goto Quest_Wildfirerisk_Interact_Filip_Script
 	end
 
 
 Debug_Script_2::
-	warpsilent MAP_SOMA_SANITATION, 0
+	specialvar VAR_0x8006, GetPokedexCompletionRate
+	buffernumberstring STR_VAR_1, VAR_0x8006
+	msgbox Debug_Script_2_Text_0
 	end
 
 
 Debug_Script_3::
-	warpsilent MAP_CASTRO_IT, 0
 	end
 
 
 Debug_Script_4::
-	warpsilent MAP_TENDERLOIN_TROLLEY_HQ, 0
 	end
 
 
@@ -102,6 +102,9 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
+
+Debug_Script_2_Text_0:
+	.string "{STR_VAR_1}$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"
