@@ -5,13 +5,17 @@ const FILIP = 11
 
 script Quest_Wildfirerisk_Interact_Filip_Script{
     goto_if_quest_complete(QUEST_WILDFIRERISK,Quest_Wildfirerisk_Complete_Dialogue)
+    call(Quest_Wildfirerisk_CheckQuestProgress_Script)
     goto_if_quest_reward(QUEST_WILDFIRERISK,Quest_Wildfirerisk_Reward_Dialogue)
     goto_if_quest_active(QUEST_WILDFIRERISK,Quest_Wildfirerisk_Active_Dialogue)
     goto(Quest_Wildfirerisk_StartQuest_Dialogue)
 }
 
 script Quest_Wildfirerisk_StartQuest_Dialogue{
+    applymovement(FILIP,Common_Movement_FaceAwayPlayer)
+    waitmovement(FILIP)
     msgbox(gText_Wildfirerisk_GodThisYear,,SPEAKER_FILIP,TAIL_WHISPER,EMOTE_SAD)
+    closemessage
     applymovement(FILIP,Quest_Wildfirerisk_LookAroundPanic_Movement)
     waitmovement(FILIP)
     msgbox(gText_Wildfirerisk_YouAlright,,SPEAKER_ZOEY,,EMOTE_CONFUSE)
@@ -20,52 +24,91 @@ script Quest_Wildfirerisk_StartQuest_Dialogue{
     msgbox(gText_Wildfirerisk_IWork,,SPEAKER_FILIP)
     msgbox(gText_Wildfirerisk_CanYouHelpUsKo100Firetype,,SPEAKER_FILIP)
     startquest(QUEST_WILDFIRERISK)
+    call(Quest_Wildfirerisk_CheckQuestProgress_Script)
+    goto_if_quest_reward(QUEST_WILDFIRERISK,Quest_Wildfirerisk_Secret_Dialogue)
     end
 }
 
-script Quest_Wildfirerisk_Active_Dialogue{
-    random(100)
+script Quest_Wildfirerisk_Secret_Dialogue{
+    lock
+    msgbox(gText_Wildfirerisk_NowThat,,SPEAKER_ZOEY)
+    //PSF TODO replace with a fire/flying/electric mon on a nearby route
+    random(NUM_SPECIES) 
+    bufferspeciesname(STR_VAR_1,VAR_RESULT)
+    msgbox(gText_Wildfirerisk_OhWow,,SPEAKER_FILIP,,EMOTE_SHOCK)
+    goto(Quest_Wildfirerisk_Reward_Dialogue)
+}
 
-    if (var(VAR_RESULT)>90){
+script Quest_Wildfirerisk_Active_Dialogue{
+    specialvar(VAR_RESULT,Quest_Wildfirerisk_GetPercentage)
+
+    if (var(VAR_RESULT)>89){
             msgbox(gText_Wildfirerisk_YoureAlmostThere90Progress,MSGBOX_NPC,SPEAKER_FILIP)
                 end
         }
-    elif (var(VAR_RESULT)>80){
+    elif (var(VAR_RESULT)>79){
         msgbox(gText_Wildfirerisk_Wow80ProgressYourDedication,MSGBOX_NPC,SPEAKER_FILIP)
             end
     }
-    elif (var(VAR_RESULT)>70){
+    elif (var(VAR_RESULT)>69){
         msgbox(gText_Wildfirerisk_ThankYouForMakingItTo70,MSGBOX_NPC,SPEAKER_FILIP)
             end
     }
-    elif (var(VAR_RESULT)>60){
+    elif (var(VAR_RESULT)>59){
         msgbox(gText_Wildfirerisk_YouveMade60ProgressThank,MSGBOX_NPC,SPEAKER_FILIP)
             end
     }
-    elif (var(VAR_RESULT)>50){
+    elif (var(VAR_RESULT)>49){
         msgbox(gText_Wildfirerisk_HalfwayThereThats50Progress,MSGBOX_NPC,SPEAKER_FILIP)
             end
     }
-    elif (var(VAR_RESULT)>40){
+    elif (var(VAR_RESULT)>39){
         msgbox(gText_Wildfirerisk_YouveMadeItTo40Progress,MSGBOX_NPC,SPEAKER_FILIP)
             end
     }
-    elif (var(VAR_RESULT)>30){
+    elif (var(VAR_RESULT)>29){
         msgbox(gText_Wildfirerisk_30ProgressThatsGreat,MSGBOX_NPC,SPEAKER_FILIP)
             end
     }
-    elif (var(VAR_RESULT)>20){
+    elif (var(VAR_RESULT)>19){
         msgbox(gText_Wildfirerisk_ThankYouForMaking20Progress,MSGBOX_NPC,SPEAKER_FILIP)
             end
     }
-    elif (var(VAR_RESULT)<10){
-        msgbox(gText_Wildfirerisk_HelloHowAreYouProgressingWithOur,MSGBOX_NPC,SPEAKER_FILIP)
-            end
-    }
-    elif (var(VAR_RESULT)>10){
+    elif (var(VAR_RESULT)>9){
         msgbox(gText_Wildfirerisk_ItLooksLikeYouveMade10,MSGBOX_NPC,SPEAKER_FILIP)
             end
     }
+    else{
+        msgbox(gText_Wildfirerisk_HelloHowAreYouProgressingWithOur,MSGBOX_NPC,SPEAKER_FILIP)
+            end
+    }
+}
+
+script Quest_Wildfirerisk_CheckQuestProgress_Script{
+
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_WILDFIRERISK)
+        if (var(VAR_RESULT) == FALSE){
+            return
+        }
+    setvar(VAR_TEMP_0,0)
+
+        if (var(VAR_QUEST_WILDFIRERISK_FIRE_COUNT) == 100){
+            subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WILDFIRERISK,SUB_QUEST_1)
+            addvar(VAR_TEMP_0,1)
+        }
+    if (var(VAR_QUEST_WILDFIRERISK_ELECTRIC_COUNT) == 100){
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WILDFIRERISK,SUB_QUEST_2)
+        addvar(VAR_TEMP_0,1)
+    }
+    if (var(VAR_QUEST_WILDFIRERISK_FLYING_COUNT) == 100){
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WILDFIRERISK,SUB_QUEST_3)
+        addvar(VAR_TEMP_0,1)
+    }
+
+    if (var(VAR_TEMP_0) == QUEST_WILDFIRERISK_SUB_COUNT){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_WILDFIRERISK)
+    }
+    return
 }
 
 script Quest_Wildfirerisk_Reward_Dialogue{
@@ -81,19 +124,27 @@ script Quest_Wildfirerisk_Complete_Dialogue{
 }
 
 movement Quest_Wildfirerisk_LookAroundPanic_Movement{
-    face_away_player
+    delay_16
     face_left
-    face_right
     delay_8
+    face_right
+    delay_16
     face_left
-    face_right
     delay_8
+    face_right
+    delay_16
     face_player
     step_end
 }
+text gText_Wildfirerisk_NowThat{
+    format("Now that I think about it, I'm pretty sure I've already defeated that many Pokémon.")
+}
+text gText_Wildfirerisk_OhWow{
+    format("Huh. Now that I think about it, I've been seeing way less {STR_VAR_1} around...")
+}
 
 text gText_Wildfirerisk_GodThisYear{
-format("The upcoming wildfire season has me worried.")
+format("Man, what are we going to do this year... I'm so nervous I could puke...")
 }
 
 text gText_Wildfirerisk_YouAlright{
@@ -101,7 +152,7 @@ format("Hey, you alright?")
 }
 
 text gText_Wildfirerisk_IWork{
-    format("I work for the Pacificgaselectric!")
+    format("I work for Pacificgaselectric!")
 }
 
 text gText_Wildfirerisk_CanYouHelpUsKo100Firetype{

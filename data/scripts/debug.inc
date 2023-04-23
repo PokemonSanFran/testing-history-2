@@ -60,14 +60,14 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	goto Quest_Wildfirerisk_Interact_Filip_Script
-	end
+	setvar VAR_QUEST_WILDFIRERISK_FIRE_COUNT, 10
+	setvar VAR_QUEST_WILDFIRERISK_ELECTRIC_COUNT, 10
+	setvar VAR_QUEST_WILDFIRERISK_FLYING_COUNT, 10
+	return
 
 
 Debug_Script_2::
-	specialvar VAR_0x8006, GetPokedexCompletionRate
-	buffernumberstring STR_VAR_1, VAR_0x8006
-	msgbox Debug_Script_2_Text_0
+	warpsilent MAP_SUNSET, 7, 15
 	end
 
 
@@ -102,9 +102,6 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
-
-Debug_Script_2_Text_0:
-	.string "{STR_VAR_1}$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"

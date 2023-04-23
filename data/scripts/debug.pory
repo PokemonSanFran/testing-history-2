@@ -60,14 +60,13 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    goto(Quest_Wildfirerisk_Interact_Filip_Script)
-    end
+    setvar(VAR_QUEST_WILDFIRERISK_FIRE_COUNT,10)
+    setvar(VAR_QUEST_WILDFIRERISK_ELECTRIC_COUNT,10)
+    setvar(VAR_QUEST_WILDFIRERISK_FLYING_COUNT,10)
 }
 
 script Debug_Script_2{
-    specialvar(VAR_0x8006, GetPokedexCompletionRate)
-    buffernumberstring(STR_VAR_1,VAR_0x8006)
-    msgbox(format("{STR_VAR_1}"))
+    warpsilent(MAP_SUNSET,7,15)
     end
 }
 

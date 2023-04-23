@@ -73,6 +73,7 @@ void CountDefeatedBackyard(void);
 void Quest_BiomeResearch_CheckPokemonSpecies(void);
 void Quest_BiomeResearch_MarkSubquestComplete(u8, u8);
 void Quest_BiomeResearch_CountCompletedSubquest(void);
+u8 Quest_Wildfirerisk_CheckDefeatedMon(void);
 
 extern struct MultiPartnerMenuPokemon gMultiPartnerParty[MULTI_PARTY_SIZE];
 
