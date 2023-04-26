@@ -77,6 +77,28 @@
 #define SPEAKER_MOM                 68
 #define NUM_SPEAKERS 99999
 
+//Tail
+#define TAIL_DEFAULT 0
+#define TAIL_WHISPER 1
+#define TAIL_SHOUT 2
+#define TAIL_THOUGHT 3
+#define TAIL_TALK 4
+
+//Emotions
+#define EMOTE_DEFAULT 0
+#define EMOTE_ANGRY 1
+#define EMOTE_SAD 2
+#define EMOTE_HAPPY 3
+#define EMOTE_LAUGH 4
+#define EMOTE_SWEAT 5
+#define EMOTE_SHOCK 6
+#define EMOTE_CONFUSE 7
+#define EMOTE_LOVE 8
+
+//Phone
+#define PHONE_OFF 0
+#define PHONE_ON 1
+
 //PSF names
 #define SPEAKER_NEWS                69
 #define SPEAKER_ZOEY                70
@@ -204,27 +226,6 @@
 #define SPEAKER_WALDRON                 193
 #define SPEAKER_ISIDORE                 194
 #define SPEAKER_FILIP                   195
-
-//Tail
-#define TAIL_DEFAULT 0
-#define TAIL_WHISPER 1
-#define TAIL_SHOUT 2
-#define TAIL_THOUGHT 3
-#define TAIL_TALK 4
-
-//Emotions
-#define EMOTE_DEFAULT 0
-#define EMOTE_ANGRY 1
-#define EMOTE_SAD 2
-#define EMOTE_HAPPY 3
-#define EMOTE_LAUGH 4
-#define EMOTE_SWEAT 5
-#define EMOTE_SHOCK 6
-#define EMOTE_CONFUSE 7
-#define EMOTE_LOVE 8
-
-//Phone
-#define PHONE_OFF 0
-#define PHONE_ON 1
+#define SPEAKER_GERTRUDE                196
 
 #endif

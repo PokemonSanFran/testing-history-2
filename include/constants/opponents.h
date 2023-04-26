@@ -906,6 +906,7 @@
 #define TRAINER_SIEBOLD_ROBOT_2             157
 #define TRAINER_SIEBOLD_ROBOT_3             158
 #define TRAINER_SIEBOLD_ROBOT_4             159
+#define TRAINER_GERTRUDE                    160
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

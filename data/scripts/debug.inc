@@ -60,14 +60,12 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	setvar VAR_QUEST_WILDFIRERISK_FIRE_COUNT, 10
-	setvar VAR_QUEST_WILDFIRERISK_ELECTRIC_COUNT, 10
-	setvar VAR_QUEST_WILDFIRERISK_FLYING_COUNT, 10
+	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_DETECTIVEARIANA
+	warpsilent MAP_TWINPEAKS, 37, 33
 	return
 
 
 Debug_Script_2::
-	warpsilent MAP_SUNSET, 7, 15
 	end
 
 

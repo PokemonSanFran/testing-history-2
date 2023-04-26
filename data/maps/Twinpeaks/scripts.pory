@@ -1,13 +1,13 @@
 mapscripts Twinpeaks_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        switch (var(VAR_STORYLINE_STATE)){
-            case STORY_BEGIN_LETS_FIX_IT: call(OkayLetsFixIt_ShowObject_Script)
-            default: call(OkayLetsFixit_HideObject_Script)
-        }
+        call(Quest_IBelieveICanFly_Gertrude_Visibility_Script)
+        call(OkayLetsFixIt_Object_Visibility_Script)
     }
+
     MAP_SCRIPT_ON_LOAD {
         call(Script_RemoveTint)
     }
+
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_STORYLINE_STATE,STORY_BEGIN_LETS_FIX_IT: OkayLetsFixit_ReturnToPeak_Script
     ]

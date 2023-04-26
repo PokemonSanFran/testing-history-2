@@ -5,13 +5,13 @@ const CAMERA = OBJ_EVENT_ID_CAMERA
 const FLAG_HIDE_HIKO = FLAG_TEMP_1
 const FLAG_HIDE_JIRACHI = FLAG_TEMP_2
 
-script OkayLetsFixit_HideObject_Script {
-    setflag(FLAG_HIDE_HIKO)
-        setflag(FLAG_HIDE_JIRACHI)
-}
-
-script OkayLetsFixIt_ShowObject_Script {
+script OkayLetsFixIt_Object_Visibility_Script{
     setflag(FLAG_HIDE_JIRACHI)
+
+    if (var(VAR_STORYLINE_STATE) != STORY_BEGIN_LETS_FIX_IT){
+        setflag(FLAG_HIDE_HIKO)
+    }
+    return
 }
 
 script OkayLetsFixit_ReachTop_Script {

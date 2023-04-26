@@ -5,13 +5,8 @@ Twinpeaks_MapScripts::
 	.byte 0
 
 Twinpeaks_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	switch VAR_STORYLINE_STATE
-	case STORY_BEGIN_LETS_FIX_IT, Twinpeaks_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
-	call OkayLetsFixit_HideObject_Script
-	return
-
-Twinpeaks_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	call OkayLetsFixIt_ShowObject_Script
+	call Quest_IBelieveICanFly_Gertrude_Visibility_Script
+	call OkayLetsFixIt_Object_Visibility_Script
 	return
 
 Twinpeaks_MapScripts_MAP_SCRIPT_ON_LOAD:
