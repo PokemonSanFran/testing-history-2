@@ -1,5 +1,6 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const BIANCA = 1
+const SIEBOLD = 2
 
 //gText_Sieboldstraining_
 //Quest_Sieboldstraining_
@@ -179,6 +180,8 @@ script Quest_Sieboldstraining_SetUpCompletion_Script{
 script Quest_SieboldTraining_CompleteQuest_Script{
     call(Quest_Sieboldstraining_SetUpCompletion_Script)
     setvar(VAR_MUIRWOODS_STATE,FINISHED_SIEBOLD_PUZZLES)
+    applymovement(SIEBOLD,Common_Movement_FaceDown)
+    waitmovement(SIEBOLD)
     msgbox(gText_Sieboldstraining_WellItsBeenQuite_Script,,SPEAKER_SIEBOLD)
     msgbox(gText_Sieboldstraining_AWeek,,SPEAKER_BIANCA,TAIL_SHOUT,EMOTE_SHOCK)
     msgbox(gText_Sieboldstraining_ItFeelsLike,,SPEAKER_ZOEY,,EMOTE_SHOCK)

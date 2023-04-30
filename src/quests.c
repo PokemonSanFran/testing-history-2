@@ -2975,16 +2975,6 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        2
 	),
 	side_quest(
-	        gText_Quest_CableCarDancing_Name,
-	        gText_Quest_CableCarDancing_Desc,
-	        gText_Quest_CableCarDancing_DoneDesc,
-	        gText_Quest_CableCarDancing_Map,
-	        OBJ_EVENT_GFX_COOK,
-	        OBJECT,
-	        NULL,
-	        0
-	),
-	side_quest(
 	        gText_Quest_KitchenVolunteering_Name,
 	        gText_Quest_KitchenVolunteering_Desc,
 	        gText_Quest_KitchenVolunteering_DoneDesc,

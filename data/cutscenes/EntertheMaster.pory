@@ -339,11 +339,11 @@ text gText_EnterTheMaster_SoWhatsNext{
 }
 
 text gText_EnterTheMaster_IfYouGo{
-    format("If you go further back into the clearing, there are battle simulation robots there. The ones on the right are for {PLAYER} - they're calibrated specifically based on the battle data that Ycombinator gave me for each of you.")
+    format("If you go further back into the clearing, there are battle simulation robots there. The one on the right are for {PLAYER} - they're calibrated specifically based on the battle data that Ycombinator gave me for each of you.")
 }
 
 text gText_EnterTheMaster_IfYouTalk{
-    format("If you talk to them, they'll give you a refresher on how they work, but its pretty simple. The second stage of your training will be defeating the four robots that are assigned to you.")
+    format("If you talk to them, they'll give you a refresher on how they work, but its pretty simple. The second stage of your training will be defeating the robot that are assigned to you.")
 }
 
 text gText_EnterTheMaster_TheFirstStage{

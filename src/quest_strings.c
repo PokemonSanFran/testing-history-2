@@ -273,11 +273,6 @@ const u8 gText_Quest_DexCompletion_Desc[] =_("Description");
 const u8 gText_Quest_DexCompletion_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_DexCompletion_Map[] =_("Berkeley");
 
-const u8 gText_Quest_CableCarDancing_Name[] = _("Cable Car Dancing");
-const u8 gText_Quest_CableCarDancing_Desc[] =_("Description");
-const u8 gText_Quest_CableCarDancing_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_CableCarDancing_Map[] =_("Presidio");
-
 const u8 gText_Quest_KitchenVolunteering_Name[] = _("Kitchen Volunteering");
 const u8 gText_Quest_KitchenVolunteering_Desc[] =_("Description");
 const u8 gText_Quest_KitchenVolunteering_DoneDesc[] =_("DoneDescription");

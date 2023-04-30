@@ -213,7 +213,7 @@ script WelcomeToTheWarRoom_ExplainSitaution_Dialogue {
 }
 
 text gText_WelcomeToTheWarRoom_OkayEverybodyLetsHearIt {
-    format("I read the summary email, but I want to hear it the whole story.")
+    format("I read the summary email, but I want to hear the whole story.")
 }
 
 text gText_WelcomeToTheWarRoom_AllMajorSocialMedia {

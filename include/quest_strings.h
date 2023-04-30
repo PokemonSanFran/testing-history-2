@@ -273,11 +273,6 @@ extern const u8 gText_Quest_DexCompletion_Desc[];
 extern const u8 gText_Quest_DexCompletion_DoneDesc[];
 extern const u8 gText_Quest_DexCompletion_Map[];
 
-extern const u8 gText_Quest_CableCarDancing_Name[];
-extern const u8 gText_Quest_CableCarDancing_Desc[];
-extern const u8 gText_Quest_CableCarDancing_DoneDesc[];
-extern const u8 gText_Quest_CableCarDancing_Map[];
-
 extern const u8 gText_Quest_KitchenVolunteering_Name[];
 extern const u8 gText_Quest_KitchenVolunteering_Desc[];
 extern const u8 gText_Quest_KitchenVolunteering_DoneDesc[];
