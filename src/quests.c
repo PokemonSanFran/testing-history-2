@@ -2975,6 +2975,16 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        2
 	),
 	side_quest(
+	        gText_Quest_Temporaryshelter_Name,
+	        gText_Quest_Temporaryshelter_Desc,
+	        gText_Quest_Temporaryshelter_DoneDesc,
+	        gText_Quest_Temporaryshelter_Map,
+	        OBJ_EVENT_GFX_AQUA_MEMBER_F,
+	        OBJECT,
+            NULL,
+	        0
+	),
+	side_quest(
 	        gText_Quest_KitchenVolunteering_Name,
 	        gText_Quest_KitchenVolunteering_Desc,
 	        gText_Quest_KitchenVolunteering_DoneDesc,

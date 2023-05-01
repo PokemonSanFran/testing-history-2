@@ -528,6 +528,11 @@ extern const u8 gText_Quest_Dancebattle_Desc[];
 extern const u8 gText_Quest_Dancebattle_DoneDesc[];
 extern const u8 gText_Quest_Dancebattle_Map[];
 
+extern const u8 gText_Quest_Temporaryshelter_Name[];
+extern const u8 gText_Quest_Temporaryshelter_Desc[];
+extern const u8 gText_Quest_Temporaryshelter_DoneDesc[];
+extern const u8 gText_Quest_Temporaryshelter_Map[];
+
 //subquests
 extern const u8 gText_Quest_HauntABuilding_Sub1_Name[];
 extern const u8 gText_Quest_HauntABuilding_Sub1_Desc[];

@@ -1,5 +1,6 @@
 mapscripts Psfroute70_MapScripts {
     MAP_SCRIPT_ON_TRANSITION{
         call(Quest_ArtisanBalls2_CheckTrainerB_Script)
+        call(Quest_Temporaryshelter_Object_Visibility_Script)
     }
 }

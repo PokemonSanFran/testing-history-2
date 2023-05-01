@@ -4654,7 +4654,7 @@
     {
       "id": "LAYOUT_PSFROUTE70",
       "name": "Psfroute70_Layout",
-      "width": 5,
+      "width": 19,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",

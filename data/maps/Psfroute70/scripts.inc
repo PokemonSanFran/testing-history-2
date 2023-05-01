@@ -4,5 +4,6 @@ Psfroute70_MapScripts::
 
 Psfroute70_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_ArtisanBalls2_CheckTrainerB_Script
+	call Quest_Temporaryshelter_Object_Visibility_Script
 	return
 

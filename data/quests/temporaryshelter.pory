@@ -1,0 +1,134 @@
+const FOREMAN = 5
+const FLAG_HIDE_CONSTRUCTION = FLAG_TEMP_1
+const FLAG_HIDE_KHALEEL = FLAG_TEMP_2
+
+//Quest_Temporaryshelter_
+//gText_Temporaryshelter_
+
+script Quest_Temporaryshelter_HideConstructionWorkers_Script{
+    setflag(FLAG_HIDE_CONSTRUCTION)
+    return
+}
+
+script Quest_Temporaryshelter_HideKhaleel_Script{
+    setflag(FLAG_HIDE_KHALEEL)
+    return
+}
+
+script Quest_Temporaryshelter_Object_Visibility_Script{
+    call_if_quest_not_complete(QUEST_NEIGHBORHOODCLEANUP3,Quest_Temporaryshelter_HideConstructionWorkers_Script)
+    call_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP4,Quest_Temporaryshelter_HideConstructionWorkers_Script)
+    call_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP4,Quest_Temporaryshelter_HideKhaleel_Script)
+    return
+}
+
+script Quest_Temporaryshelter_Interact_Script{
+    goto_if_quest_not_complete(QUEST_NEIGHBORHOODCLEANUP3,Quest_Temporaryshelter_Ponder_Dialogue)
+    goto_if_quest_complete(QUEST_TEMPORARYSHELTER,Quest_Temporaryshelter_Complete_Dialogue)
+    goto_if_quest_active(QUEST_TEMPORARYSHELTER,Quest_Temporaryshelter_Active_Dialogue)
+    goto(Quest_Temporaryshelter_StartQuest_Dialogue)
+}
+
+script Quest_Temporaryshelter_StartQuest_Dialogue{
+    faceplayer
+    msgbox(gText_Temporaryshelter_HeyThereGladYou,,SPEAKER_KHALEEL)
+    msgbox(gText_Temporaryshelter_ThanksForYourHelp,,SPEAKER_KHALEEL)
+    call(Quest_Temporaryshelter_CheckItem_Script)
+    startquest(QUEST_TEMPORARYSHELTER)
+}
+
+script Quest_Temporaryshelter_CheckItem_Script{
+    checkitem(ITEM_FRESH_WATER,12)
+        if (var(VAR_RESULT)){
+            goto_if_quest_not_active(QUEST_TEMPORARYSHELTER,Quest_Temporaryshelter_Secret_Dialogue)
+            goto(Quest_Temporaryshelter_AskItem_Dialogue)
+        }
+    return
+} 
+
+script Quest_Temporaryshelter_Secret_Dialogue{
+    msgbox(gText_Temporaryshelter_WowYouAlreadyHave,MSGBOX_YESNO,SPEAKER_KHALEEL)
+    goto(Quest_Temporaryshelter_RewardOrRefuse_Script)
+}
+
+script Quest_Temporaryshelter_AskItem_Dialogue{
+    msgbox(gText_Temporaryshelter_OhThankGoodness,MSGBOX_YESNO,SPEAKER_KHALEEL)
+    goto(Quest_Temporaryshelter_RewardOrRefuse_Script)
+}
+
+script Quest_Temporaryshelter_Ponder_Dialogue{
+    msgbox(gText_Temporaryshelter_HmmThisLooksLike,MSGBOX_AUTOCLOSE,SPEAKER_KHALEEL)
+    end
+}
+
+script Quest_Temporaryshelter_RewardOrRefuse_Script{
+    if (var(VAR_RESULT) == YES){
+        goto(Quest_Temporaryshelter_Reward_Dialogue)
+    }
+    msgbox(gText_Temporaryshelter_NoProblemLetMe,,SPEAKER_KHALEEL)
+
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_TEMPORARYSHELTER)
+
+    if (!var(VAR_RESULT)){
+        startquest(QUEST_TEMPORARYSHELTER)
+    }
+    closemessage
+    end
+}
+
+script Quest_Temporaryshelter_Active_Dialogue{
+    faceplayer
+    msgbox(gText_Temporaryshelter_HeyDidYouManage,,SPEAKER_KHALEEL)
+    call(Quest_Temporaryshelter_CheckItem_Script)
+    closemessage
+    end
+}
+
+script Quest_Temporaryshelter_Reward_Dialogue{
+    removeitem(ITEM_FRESH_WATER,12)
+    msgbox(gText_Temporaryshelter_ThanksForYourHelpWe,,SPEAKER_KHALEEL)
+    giveitem(ITEM_TM_51)
+    completequest(QUEST_TEMPORARYSHELTER)
+}
+
+script Quest_Temporaryshelter_Complete_Dialogue{
+    msgbox(gText_Temporaryshelter_WereAlmostDoneHere,,SPEAKER_KHALEEL)
+    closemessage
+    end
+}
+
+text gText_Temporaryshelter_HmmThisLooksLike{
+    format("Hmm, this looks like a good spot to set up a temporary shelter for the homeless. We'll need to clear away some of this debris first.")
+}
+
+text gText_Temporaryshelter_HeyThereGladYou{
+    format("Hey there, glad you could make it! We're making good progress, but we forgot to grab some water before we started. Can you help us out?")
+}
+
+text gText_Temporaryshelter_ThanksForYourHelp{
+    format("Thanks for your help! We're building a temporary shelter for homeless people in the region. Unfortunately, I forgot to grab some water before we started. Could you grab us a dozen bottles from the store?")
+}
+
+text gText_Temporaryshelter_WowYouAlreadyHave{
+    format("Wow, you already have the water bottles? That's great, thanks so much! Do you think we could have them?")
+}
+
+text gText_Temporaryshelter_HeyDidYouManage{
+    format("Hey, did you manage to get those water bottles we needed?")
+}
+
+text gText_Temporaryshelter_OhThankGoodness{
+    format("Oh, thank goodness! I was worried we wouldn't be able to finish without water. Do you think we could have those 12 water bottles you got?")
+}
+
+text gText_Temporaryshelter_ThanksForYourHelpWe{
+    format("Thanks for your help, we really appreciate it! Here, take this as a reward. You deserve it!")
+}
+
+text gText_Temporaryshelter_WereAlmostDoneHere{
+    format("We're almost done here! I'm so excited about the possibility of providing a temporary shelter for one more person who is currently homeless. Thanks again for your help.")
+}
+
+text gText_Temporaryshelter_NoProblemLetMe{
+    format("No problem! Let me know when you've got 12 Fresh Water for us.")
+}

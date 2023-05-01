@@ -528,6 +528,11 @@ const u8 gText_Quest_Dancebattle_Desc[] =_("");
 const u8 gText_Quest_Dancebattle_DoneDesc[] =_("");
 const u8 gText_Quest_Dancebattle_Map[] =_("Oakland");
 
+const u8 gText_Quest_Temporaryshelter_Name[] =_("Temporary Shelter");
+const u8 gText_Quest_Temporaryshelter_Desc[] =_("");
+const u8 gText_Quest_Temporaryshelter_DoneDesc[] =_("");
+const u8 gText_Quest_Temporaryshelter_Map[] =_("Psfroute70");
+
 //subquests
 const u8 gText_Quest_HauntABuilding_Sub1_Name[] = _("Litwick");
 const u8 gText_Quest_HauntABuilding_Sub1_Desc[] = _("You brought Hunter a Litwick.");

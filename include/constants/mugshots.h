@@ -227,5 +227,6 @@
 #define SPEAKER_ISIDORE                 194
 #define SPEAKER_FILIP                   195
 #define SPEAKER_GERTRUDE                196
+#define SPEAKER_KHALEEL                 197
 
 #endif
