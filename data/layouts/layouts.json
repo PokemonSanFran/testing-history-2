@@ -6150,6 +6150,16 @@
       "secondary_tileset": "gTileset_BattleDome",
       "border_filepath": "data/layouts/Castro_IT/border.bin",
       "blockdata_filepath": "data/layouts/Castro_IT/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE70_SHELTER",
+      "name": "Psfroute70_Shelter_Layout",
+      "width": 5,
+      "height": 5,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MeteorFalls",
+      "border_filepath": "data/layouts/Psfroute70_Shelter/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute70_Shelter/map.bin"
     }
   ]
 }

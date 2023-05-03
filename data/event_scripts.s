@@ -1281,7 +1281,7 @@ Script_RemoveTint::
 .include "data/quests/neighborhoodcleanup.inc"
 .include "data/quests/neighborhoodcleanup2.inc"
 .include "data/quests/neighborhoodcleanup3.inc"
-// .include "data/quests/neighborhoodcleanup4.inc"
+.include "data/quests/neighborhoodcleanup4.inc"
 // .include "data/quests/rockcollector.inc"
 .include "data/quests/hang20.inc"
 .include "data/quests/allthatglittersmightbegold.inc"
@@ -1501,3 +1501,5 @@ Script_RemoveTint::
 	.include "data/maps/SOMA_Sanitation/scripts.inc"
 
 	.include "data/maps/Castro_IT/scripts.inc"
+
+	.include "data/maps/Psfroute70_Shelter/scripts.inc"

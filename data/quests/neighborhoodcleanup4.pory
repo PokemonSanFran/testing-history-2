@@ -1,0 +1,56 @@
+//Quest_NeighborhoodCleanUp4_
+//gText_NeighborhoodCleanUp4_
+
+const RUSTY = 17
+const FLAG_HIDE_RUSTY = FLAG_TEMP_4
+
+script Quest_NeighborhoodCleanUp4_Object_Visibility_Script{
+    call_if_quest_not_active(QUEST_NEIGHBORHOODCLEANUP4,Quest_NeighborhoodCleanUp4_Hide_Rusty_Script)
+    return
+}
+
+script Quest_NeighborhoodCleanUp4_Hide_Rusty_Script{
+    setflag(FLAG_HIDE_RUSTY)
+    return
+}
+
+script Quest_NeighborhoodCleanUp4_Interact_Rusty_Script{
+    msgbox(gText_NeighborhoodCleanUp4_OhItsYou,MSGBOX_NPC,SPEAKER_RUSTY,,EMOTE_ANGRY)
+    msgbox(gText_NeighborhoodCleanUp4_WaitImHere,,SPEAKER_ZOEY)
+    fadescreen(FADE_TO_BLACK)
+    msgbox(gText_NeighborhoodCleanUp4_PlayerExplained,MSGBOX_AUTOCLOSE)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox(gText_NeighborhoodCleanUp4_HuhThatSoundsLike,,SPEAKER_RUSTY)
+    applymovement(RUSTY,Quest_NeighborhoodCleanUp4_WalkAway)
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_NEIGHBORHOODCLEANUP4)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(RUSTY)
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
+}
+
+script Quest_NeighborhoodCleanUp4_CompleteQuest_Dialogue{
+    msgbox(gText_NeighborhoodCleanUp4_ItsAStart,MSGBOX_NPC,SPEAKER_RUSTY)
+    completequest(QUEST_NEIGHBORHOODCLEANUP4)
+}
+movement Quest_NeighborhoodCleanUp4_WalkAway{
+    walk_down * 9
+    step_end
+}
+
+text gText_NeighborhoodCleanUp4_OhItsYou{
+	format("Oh. Its you, the bootlicker lapdog.")
+}
+text gText_NeighborhoodCleanUp4_WaitImHere{
+	format("Wait! I'm here for something good. I think I can help.")
+}
+text gText_NeighborhoodCleanUp4_PlayerExplained{
+	format("{PLAYER} explained the program that Khaleel was working on.")
+}
+text gText_NeighborhoodCleanUp4_HuhThatSoundsLike{
+	format("Huh. That sounds like something I'd be interested in after all. I'll check it out.")
+}
+text gText_NeighborhoodCleanUp4_ItsAStart{
+    format("Its a start. Thanks!")
+}

@@ -1,0 +1,46 @@
+{
+  "id": "MAP_PSFROUTE70_SHELTER",
+  "name": "Psfroute70_Shelter",
+  "layout": "LAYOUT_PSFROUTE70_SHELTER",
+  "music": "MUS_C_COMM_CENTER",
+  "region_map_section": "MAPSEC_PSFROUTE70",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "x": 2,
+      "y": 1,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Psfroute70_Shelter_Interact_Rusty_Script",
+      "flag": "FLAG_TEMP_4"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 2,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_PSFROUTE70",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

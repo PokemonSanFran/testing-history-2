@@ -15,10 +15,16 @@ script Quest_Temporaryshelter_HideKhaleel_Script{
     return
 }
 
+script Quest_Temporaryshelter_HideKhaleelAndWorkers_Script{
+    setflag(FLAG_HIDE_KHALEEL)
+    setflag(FLAG_HIDE_CONSTRUCTION)
+    return
+}
+
 script Quest_Temporaryshelter_Object_Visibility_Script{
     call_if_quest_not_complete(QUEST_NEIGHBORHOODCLEANUP3,Quest_Temporaryshelter_HideConstructionWorkers_Script)
-    call_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP4,Quest_Temporaryshelter_HideConstructionWorkers_Script)
-    call_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP4,Quest_Temporaryshelter_HideKhaleel_Script)
+    call_if_quest_reward(QUEST_NEIGHBORHOODCLEANUP4,Quest_Temporaryshelter_HideKhaleelAndWorkers_Script)
+    call_if_quest_complete(QUEST_NEIGHBORHOODCLEANUP4,Quest_Temporaryshelter_HideKhaleelAndWorkers_Script)
     return
 }
 
@@ -87,12 +93,15 @@ script Quest_Temporaryshelter_Active_Dialogue{
 script Quest_Temporaryshelter_Reward_Dialogue{
     removeitem(ITEM_FRESH_WATER,12)
     msgbox(gText_Temporaryshelter_ThanksForYourHelpWe,,SPEAKER_KHALEEL)
-    giveitem(ITEM_TM_51)
+    giveitem(ITEM_TM51)
     completequest(QUEST_TEMPORARYSHELTER)
+    msgbox(gText_Temporaryshelter_ImExcited,,SPEAKER_KHALEEL)
+    msgbox(gText_Temporaryshelter_IKnowJust,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    startquest(QUEST_NEIGHBORHOODCLEANUP4)
 }
 
 script Quest_Temporaryshelter_Complete_Dialogue{
-    msgbox(gText_Temporaryshelter_WereAlmostDoneHere,,SPEAKER_KHALEEL)
+    msgbox(gText_Temporaryshelter_WereAlmostDoneHere,MSGBOX_NPC,SPEAKER_KHALEEL)
     closemessage
     end
 }
@@ -131,4 +140,12 @@ text gText_Temporaryshelter_WereAlmostDoneHere{
 
 text gText_Temporaryshelter_NoProblemLetMe{
     format("No problem! Let me know when you've got 12 Fresh Water for us.")
+}
+
+text gText_Temporaryshelter_ImExcited{
+    format("I'm excited to see people finally using these!")
+}
+
+text gText_Temporaryshelter_IKnowJust{
+    format("I know just the person... I hope I can find Rusty!")
 }
