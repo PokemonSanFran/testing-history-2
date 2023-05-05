@@ -292,7 +292,7 @@ text gText_AndWeMarchOn_WeHaveASpecialGuest {
 }
 
 text gText_AndWeMarchOn_RupertHereIsTheWinner {
-    format("Rupert here is the winner of the Mission Preparatory School graduation tournament! NORMALLY, the winner normally gets a scholarship from the SanFran League. But our new corporate overlords have decided that growing the in-region talent isn't a budget priority!")
+    format("Rupert here is the winner of the Mission Preparatory School graduation tournament! NORMALLY, the winner gets a scholarship from the SanFran League. But our new corporate overlords have decided that growing the in-region talent isn't a budget priority!")
 }
 
 text gText_AndWeMarchOn_Boo {

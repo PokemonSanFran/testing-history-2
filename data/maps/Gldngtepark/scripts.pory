@@ -10,5 +10,5 @@ mapscripts Gldngtepark_MapScripts {
 }
 
 text gText_Gldgtepark_PlaceholderOaklandFan{
-    format("I wish i could swear my signed Champion's cape, but I know i'll just get it dirty")
+    format("I wish i could wear my signed Champion's cape, but I know i'll just get it dirty")
 }

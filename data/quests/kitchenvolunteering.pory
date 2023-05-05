@@ -1,0 +1,8 @@
+const AUGUSTA = 1
+const PLAYER = OBJ_EVENT_ID_PLAYER
+
+//gText_Kitchenvolunteering
+//Quest_Kitchenvolunteering
+
+script Quest_Kitchenvolunteering_First_Interact_Augusta_Script{
+}

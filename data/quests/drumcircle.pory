@@ -189,7 +189,7 @@ text gText_DrumCircle_IgnoreThemYouWon{
     format("look, ignore them. you won fair and square, take this.")
 }
 text gText_DrumCircle_ComeBackSoWeCanWin{
-    format("come challenge us again somebody so we can win it back!")
+    format("come challenge us again someday so we can win it back!")
 }
 text gText_DrumCircle_YouGuysAreDrummers{
     format("you guys are drummers, right? why are you doing high stakes battles?")
