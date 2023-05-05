@@ -1,8 +1,141 @@
 const AUGUSTA = 1
 const PLAYER = OBJ_EVENT_ID_PLAYER
 
-//gText_Kitchenvolunteering
-//Quest_Kitchenvolunteering
+//gText_Kitchenvolunteering_
+//Quest_Kitchenvolunteering_
 
 script Quest_Kitchenvolunteering_First_Interact_Augusta_Script{
+    goto_if_quest_complete(QUEST_KITCHENVOLUNTEERING,Quest_Kitchenvolunteering_Second_Interact_Script)
+    goto_if_quest_reward(QUEST_KITCHENVOLUNTEERING,Quest_Kitchenvolunteering_Reward_Dialogue)
+    goto_if_quest_active(QUEST_KITCHENVOLUNTEERING,Quest_Kitchenvolunteering_YoureNotDone_Dialogue)
+    goto(Quest_Kitchenvolunteering_StartQuest_Dialogue)
+}
+
+script Quest_Kitchenvolunteering_StartQuest_Dialogue{
+    msgbox(gText_Kitchenvolunteering_OhYoureHere,MSGBOX_NPC,SPEAKER_AUGUSTA)
+    msgbox(gText_Kitchenvolunteering_HeadDownToTheBasement,,SPEAKER_AUGUSTA)
+    msgbox(gText_Kitchenvolunteering_ComeBackWhenYoure,,SPEAKER_AUGUSTA)
+    call(Quest_Kitchenvolunteering_GiveKey_Dialogue)
+    msgbox(gText_Kitchenvolunteering_IThinkThey,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
+    startquest(QUEST_KITCHENVOLUNTEERING)
+    call(Quest_Kitchenvolunteering_ReturnToWork_Script)
+}
+
+script Quest_Kitchenvolunteering_ReturnToWork_Script{
+    applymovement(AUGUSTA,Common_Movement_FaceOriginalDirection)
+    waitmovement(AUGUSTA)
+    release
+    return
+}
+
+script Quest_Kitchenvolunteering_YoureNotDone_Dialogue{
+    msgbox(gText_Kitchenvolunteering_OhYoureNotDone,MSGBOX_NPC,SPEAKER_AUGUSTA)
+    call(Quest_Kitchenvolunteering_ReturnToWork_Script)
+    end
+}
+
+script Quest_Kitchenvolunteering_Reward_Dialogue{
+    call(Quest_Kitchenvolunteering_ThankPlayer_Dialogue)
+    msgbox(gText_Kitchenvolunteering_TheyNever,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
+    completequest(QUEST_KITCHENVOLUNTEERING)
+    release
+    end
+}
+
+script Quest_Kitchenvolunteering_ThankPlayer_Dialogue{
+    msgbox(gText_Kitchenvolunteering_OhThankGod,MSGBOX_NPC,SPEAKER_AUGUSTA)
+    special(RandomlyBoostPartyMemberFriendship)
+    msgbox(gText_Kitchenvolunteering_OhAndTheKey,,SPEAKER_AUGUSTA)
+    removeitem(ITEM_STORAGE_KEY,1)
+    setflag(FLAG_DAILY_KITCHEN_VOLUNTEER)
+    msgbox(gText_Kitchenvolunteering_ComeBackTomorrow,,SPEAKER_AUGUSTA)
+    call(Quest_Kitchenvolunteering_ReturnToWork_Script)
+    return
+}
+
+//PSF TODO make it so the player can only do this once per "day"
+script Quest_Kitchenvolunteering_Second_Interact_Script{
+    if (flag(FLAG_DAILY_KITCHEN_VOLUNTEER)){
+        goto(Quest_Kitchenvolunteering_TooBusy_Dialogue)
+    }
+
+    checkitem(ITEM_SECRET_KEY,1)
+    if (var(VAR_RESULT)){
+        call(Quest_Kitchenvolunteering_CheckForItem_Script)
+        goto(Quest_Kitchenvolunteering_YoureNotDone_Dialogue)
+    }
+
+    goto(Quest_Kitchenvolunteering_RepeatQuest_Dialogue)
+}
+
+script Quest_Kitchenvolunteering_CheckForItem_Script{
+    //PSF TODO change this to a random item that was previous assigned
+    checkitem(ITEM_TEA,1)
+
+    if (var(VAR_RESULT)){
+        goto(Quest_Kitchenvolunteering_ThankPlayer_Dialogue)
+            end
+    }
+    return
+}
+
+script Quest_Kitchenvolunteering_TooBusy_Dialogue{
+    msgbox(gText_Kitchenvolunteering_NowWhereDidIPut,,SPEAKER_AUGUSTA,TAIL_WHISPER)
+    closemessage
+    end
+}
+
+script Quest_Kitchenvolunteering_RepeatQuest_Dialogue{
+    msgbox(gText_Kitchenvolunteering_OhWowTheyNever,MSGBOX_NPC,SPEAKER_AUGUSTA) 
+    msgbox(gText_Kitchenvolunteering_ThisTimeCanYouGrab,,SPEAKER_AUGUSTA)
+    call(Quest_Kitchenvolunteering_GiveKey_Dialogue)
+    release
+    end
+}
+
+script Quest_Kitchenvolunteering_GiveKey_Dialogue{
+    msgbox(gText_Kitchenvolunteering_OhRightYouNeedTheKey,,SPEAKER_AUGUSTA)
+    giveitem(ITEM_STORAGE_KEY,1)
+    return
+}
+
+text gText_Kitchenvolunteering_OhYoureHere{
+    format("Oh you're here! Finally. Okay let's see...")
+}
+
+text gText_Kitchenvolunteering_HeadDownToTheBasement{
+    format("")
+}
+text gText_Kitchenvolunteering_ComeBackWhenYoure{
+    format("")
+}
+text gText_Kitchenvolunteering_IThinkThey{
+    format("")
+}
+text gText_Kitchenvolunteering_OhYoureNotDone{
+    format("")
+}
+text gText_Kitchenvolunteering_TheyNever{
+    format("")
+}
+text gText_Kitchenvolunteering_OhThankGod{
+    format("")
+}
+text gText_Kitchenvolunteering_OhAndTheKey{
+    format("")
+}
+text gText_Kitchenvolunteering_ComeBackTomorrow{
+    format("")
+}
+text gText_Kitchenvolunteering_NowWhereDidIPut{
+    format("")
+}
+text gText_Kitchenvolunteering_OhWowTheyNever{
+    format("")
+}
+text gText_Kitchenvolunteering_ThisTimeCanYouGrab{
+    format("")
+}
+text gText_Kitchenvolunteering_OhRightYouNeedTheKey{
+    format("")
 }

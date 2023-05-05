@@ -13,6 +13,5 @@ Gldngtepark_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 gText_Gldgtepark_PlaceholderOaklandFan::
-	.string "I wish i could swear my signed\n"
-	.string "Champion's cape, but I know i'll just\l"
-	.string "get it dirty$"
+	.string "I wish i could wear my signed Champion's\n"
+	.string "cape, but I know i'll just get it dirty$"

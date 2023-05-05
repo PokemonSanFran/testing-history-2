@@ -60,23 +60,19 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_COMPLETE_QUEST, QUEST_NEIGHBORHOODCLEANUP3
-	warpsilent MAP_PSFROUTE70, 14, 15
+	warpsilent MAP_TENDERLOIN, 2
 	return
 
 
 Debug_Script_2::
-	additem ITEM_FRESH_WATER, 12
 	end
 
 
 Debug_Script_3::
-	warpsilent MAP_TENDERLOIN, 17, 46
 	end
 
 
 Debug_Script_4::
-	warpsilent MAP_PSFROUTE70_SHELTER, 0
 	end
 
 

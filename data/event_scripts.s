@@ -1267,7 +1267,7 @@ Script_RemoveTint::
 .include "data/quests/wallacearmy.inc"
 .include "data/quests/dexcompletion.inc"
 // .include "data/quests/cablecardancing.inc"
-// .include "data/quests/kitchenvolunteering.inc"
+.include "data/quests/kitchenvolunteering.inc"
 .include "data/quests/artisanballs1.inc"
 // .include "data/quests/artisanballs2.inc"
 // .include "data/quests/artisanballs3.inc"
@@ -1503,3 +1503,5 @@ Script_RemoveTint::
 	.include "data/maps/Castro_IT/scripts.inc"
 
 	.include "data/maps/Psfroute70_Shelter/scripts.inc"
+
+	.include "data/maps/Tenderloin_Pantry/scripts.inc"

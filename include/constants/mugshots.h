@@ -228,5 +228,6 @@
 #define SPEAKER_FILIP                   195
 #define SPEAKER_GERTRUDE                196
 #define SPEAKER_KHALEEL                 197
+#define SPEAKER_AUGUSTA                 198
 
 #endif
