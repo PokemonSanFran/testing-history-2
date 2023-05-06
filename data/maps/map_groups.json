@@ -164,7 +164,8 @@
     "SOMA_Sanitation",
     "Castro_IT",
     "Psfroute70_Shelter",
-    "Tenderloin_Pantry"
+    "Tenderloin_Pantry",
+    "Tenderloin_Pantry_Maze"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

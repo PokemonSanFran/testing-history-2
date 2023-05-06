@@ -6170,6 +6170,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Tenderloin_Pantry/border.bin",
       "blockdata_filepath": "data/layouts/Tenderloin_Pantry/map.bin"
+    },
+    {
+      "id": "LAYOUT_TENDERLOIN_PANTRY_MAZE",
+      "name": "Tenderloin_Pantry_Maze_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Tenderloin_Pantry_Maze/border.bin",
+      "blockdata_filepath": "data/layouts/Tenderloin_Pantry_Maze/map.bin"
     }
   ]
 }

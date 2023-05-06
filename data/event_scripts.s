@@ -1505,3 +1505,5 @@ Script_RemoveTint::
 	.include "data/maps/Psfroute70_Shelter/scripts.inc"
 
 	.include "data/maps/Tenderloin_Pantry/scripts.inc"
+
+	.include "data/maps/Tenderloin_Pantry_Maze/scripts.inc"

@@ -18,7 +18,7 @@ script Tenderloin_Pantry_UnlockDoor_Script{
 
     if(var(VAR_RESULT) == YES){
         closemessage
-        warpdoor(MAP_MARIN_RANGER,0)
+        warpdoor(MAP_TENDERLOIN_PANTRY_MAZE,0)
         waitstate
         end
     }

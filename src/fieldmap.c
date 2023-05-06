@@ -1,13 +1,17 @@
 #include "global.h"
+#include "item.h"
+#include "constants/items.h"
 #include "battle_pyramid.h"
 #include "bg.h"
 #include "fieldmap.h"
 #include "fldeff.h"
 #include "fldeff_misc.h"
 #include "frontier_util.h"
+#include "mazegen.h"
 #include "menu.h"
 #include "mirage_tower.h"
 #include "overworld.h"
+#include "random.h"
 #include "palette.h"
 #include "pokenav.h"
 #include "script.h"
@@ -103,6 +107,9 @@ static void InitMapLayoutData(struct MapHeader *mapHeader)
     struct MapLayout const *mapLayout;
     int width;
     int height;
+
+    int pantryMazeLayoutId = Overworld_GetMapHeaderByGroupAndId(MAP_GROUP(TENDERLOIN_PANTRY_MAZE), MAP_NUM(TENDERLOIN_PANTRY_MAZE))->mapLayoutId;
+
     mapLayout = mapHeader->mapLayout;
     CpuFastFill16(MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
     gBackupMapLayout.map = sBackupMapData;
@@ -110,7 +117,10 @@ static void InitMapLayoutData(struct MapHeader *mapHeader)
     gBackupMapLayout.width = width;
     height = mapLayout->height + MAP_OFFSET_H;
     gBackupMapLayout.height = height;
-    if (width * height <= MAX_MAP_DATA_SIZE)
+    if (mapHeader->mapLayoutId == pantryMazeLayoutId){
+        Quest_Kitchenvolunteering_CreatePantryMaze();
+    }
+    else if (width * height <= MAX_MAP_DATA_SIZE)
     {
         InitBackupMapLayoutData(mapLayout->map, mapLayout->width, mapLayout->height);
         InitBackupMapLayoutConnections(mapHeader);

@@ -60,7 +60,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_TENDERLOIN, 2
+	warpsilent MAP_TENDERLOIN_PANTRY_MAZE, 0
 	return
 
 

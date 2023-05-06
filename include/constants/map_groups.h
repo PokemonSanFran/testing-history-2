@@ -125,6 +125,7 @@
 #define MAP_CASTRO_IT                         (116 | (0 << 8))
 #define MAP_PSFROUTE70_SHELTER                (117 | (0 << 8))
 #define MAP_TENDERLOIN_PANTRY                 (118 | (0 << 8))
+#define MAP_TENDERLOIN_PANTRY_MAZE            (119 | (0 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (1 << 8))

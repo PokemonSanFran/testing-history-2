@@ -25,7 +25,7 @@ Tenderloin_Pantry_UnlockDoor_Script::
 
 Tenderloin_Pantry_UnlockDoor_Script_2:
 	closemessage
-	warpdoor MAP_MARIN_RANGER, 0
+	warpdoor MAP_TENDERLOIN_PANTRY_MAZE, 0
 	waitstate
 	end
 
