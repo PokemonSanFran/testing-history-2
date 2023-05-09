@@ -1237,6 +1237,8 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
     /*0x3???*/ struct Pokemon stolenTrade;
     // sizeof: 0x3???
+    /*??x??*/ u16 mazeSeed;
+    u64 requireMazeItems;
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

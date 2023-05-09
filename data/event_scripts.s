@@ -1507,3 +1507,15 @@ Script_RemoveTint::
 	.include "data/maps/Tenderloin_Pantry/scripts.inc"
 
 	.include "data/maps/Tenderloin_Pantry_Maze/scripts.inc"
+
+	.include "data/maps/CaveTemplate_1/scripts.inc"
+
+	.include "data/maps/CaveTemplate_2/scripts.inc"
+
+	.include "data/maps/CaveTemplate_3/scripts.inc"
+
+	.include "data/maps/CaveTemplate_4/scripts.inc"
+
+	.include "data/maps/CaveTemplate_Water/scripts.inc"
+
+	.include "data/maps/CaveTemplate_Water1/scripts.inc"

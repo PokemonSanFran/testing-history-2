@@ -1,0 +1,5 @@
+mapscripts Tenderloin_Pantry_Maze_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION {
+        special(PlaceItemBall)
+    }
+}

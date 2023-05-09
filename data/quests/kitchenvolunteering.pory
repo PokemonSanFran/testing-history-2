@@ -15,7 +15,7 @@ script Quest_Kitchenvolunteering_StartQuest_Dialogue{
     msgbox(gText_Kitchenvolunteering_OhYoureHere,MSGBOX_NPC,SPEAKER_AUGUSTA)
     msgbox(gText_Kitchenvolunteering_HeadDownToTheBasement,,SPEAKER_AUGUSTA)
     msgbox(gText_Kitchenvolunteering_ComeBackWhenYoure,,SPEAKER_AUGUSTA)
-    call(Quest_Kitchenvolunteering_GiveKey_Dialogue)
+    call(Quest_Kitchenvolunteering_GiveKeyAndGenerateSeed_Script)
     msgbox(gText_Kitchenvolunteering_IThinkThey,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
     startquest(QUEST_KITCHENVOLUNTEERING)
     call(Quest_Kitchenvolunteering_ReturnToWork_Script)
@@ -88,15 +88,23 @@ script Quest_Kitchenvolunteering_TooBusy_Dialogue{
 script Quest_Kitchenvolunteering_RepeatQuest_Dialogue{
     msgbox(gText_Kitchenvolunteering_OhWowTheyNever,MSGBOX_NPC,SPEAKER_AUGUSTA) 
     msgbox(gText_Kitchenvolunteering_ThisTimeCanYouGrab,,SPEAKER_AUGUSTA)
-    call(Quest_Kitchenvolunteering_GiveKey_Dialogue)
+    call(Quest_Kitchenvolunteering_GiveKeyAndGenerateSeed_Script)
     release
     end
 }
 
-script Quest_Kitchenvolunteering_GiveKey_Dialogue{
+script Quest_Kitchenvolunteering_GiveKeyAndGenerateSeed_Script{
     msgbox(gText_Kitchenvolunteering_OhRightYouNeedTheKey,,SPEAKER_AUGUSTA)
     giveitem(ITEM_STORAGE_KEY,1)
+    special(GenerateMazeSeed)
+    special(Quest_Kitchenvolunteering_GenerateItemList)
     return
+}
+
+script Quest_Kitchenvolunteering_FindItem_Script{
+    special(Quest_Kitchenvolunteering_PickRandomItem)
+    callstd(STD_FIND_ITEM)
+    end
 }
 
 text gText_Kitchenvolunteering_OhYoureHere{

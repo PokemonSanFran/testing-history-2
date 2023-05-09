@@ -1,2 +1,8 @@
 Tenderloin_Pantry_Maze_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Tenderloin_Pantry_Maze_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Tenderloin_Pantry_Maze_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	special PlaceItemBall
+	return
+

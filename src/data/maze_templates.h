@@ -1,7 +1,7 @@
 const struct TemplateSet gMazeTemplates[] =
 {
     [CAVE_STAIRS_TEMPLATE_SET] = {
-        .mapBase = MAP_CAVE_BASE,
+        .mapBase = MAP_TENDERLOIN_PANTRY_MAZE,
         .templates = 
         {
             {

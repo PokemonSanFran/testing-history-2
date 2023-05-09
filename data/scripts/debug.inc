@@ -60,11 +60,15 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_TENDERLOIN_PANTRY_MAZE, 0
+	giveitem ITEM_STORAGE_KEY, 1
+	special GenerateMazeSeed
+	special Quest_Kitchenvolunteering_GenerateItemList
+	warpsilent MAP_TENDERLOIN_PANTRY, 0
 	return
 
 
 Debug_Script_2::
+	call Quest_Kitchenvolunteering_FindItem_Script
 	end
 
 

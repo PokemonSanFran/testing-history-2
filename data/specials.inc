@@ -564,3 +564,7 @@ gSpecials::
     def_special ConvertChallengeTurnsToRank
     def_special Quest_BiomeResearch_CountCompletedSubquest
     def_special Quest_Wildfirerisk_GetPercentage 
+    def_special GenerateMazeSeed
+    def_special Quest_Kitchenvolunteering_GenerateItemList
+    def_special Quest_Kitchenvolunteering_PickRandomItem
+    def_special PlaceItemBall

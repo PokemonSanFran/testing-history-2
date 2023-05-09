@@ -289,7 +289,7 @@ static void Task_GoToAfterBianca(u8 taskId)
 	//Set player to after Bianca's intro
 	VarSet(VAR_PLAYER_HOME_STATE, HAS_MET_BIANCA);
 	//Set warp to inside the player's room, then warp
-	SetWarpDestination(2, 1, 0, -1, -1);
+	SetWarpDestination(MAP_GROUP(SOUTHBAY_COMPOUND_2F), MAP_NUM(SOUTHBAY_COMPOUND_2F), 0, -1, -1);
 	DoWarp();
 	//Set callbacks and go to overworld
 	DebugStart_BeginAdventure();

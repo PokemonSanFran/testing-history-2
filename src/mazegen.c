@@ -407,17 +407,21 @@ static const u16 sMazeLootTable[][4] = {
 
 void PlaceItemBall(void)
 {
+    u8 i = 0;
+
     u16 x, y, block;
-    x = Random() % 10;
-    y = Random() % 10;
-    block = gBackupMapLayout.map[x + MAP_OFFSET + gBackupMapLayout.width * (y + MAP_OFFSET)];
-    while ((block & MAPGRID_COLLISION_MASK) >> MAPGRID_COLLISION_SHIFT)
-    {
+    for (i = 0;i < QUEST_KITCHENVOLUNTEERING_SUB_COUNT;i++){
         x = Random() % 10;
         y = Random() % 10;
         block = gBackupMapLayout.map[x + MAP_OFFSET + gBackupMapLayout.width * (y + MAP_OFFSET)];
+        while ((block & MAPGRID_COLLISION_MASK) >> MAPGRID_COLLISION_SHIFT)
+        {
+            x = Random() % 10;
+            y = Random() % 10;
+            block = gBackupMapLayout.map[x + MAP_OFFSET + gBackupMapLayout.width * (y + MAP_OFFSET)];
+        }
+        SetObjEventTemplateCoords(i+1,x,y);
     }
-    SetObjEventTemplateCoords(1, x, y);
 }
 
 void ChooseRandomItem(void)
@@ -438,8 +442,50 @@ void ChooseRandomItem(void)
 }
 
 void Quest_Kitchenvolunteering_CreatePantryMaze(void){
-    SeedRng(Random());
-    AddBagItem(ITEM_TM48, 1);
+    SeedRng(gSaveBlock1Ptr->mazeSeed);
     gMazeStruct = GenerateMazeMap(8, 5, &gMazeTemplates[CAVE_STAIRS_TEMPLATE_SET]);
     gMazeEndpoints = GetMazeEndpoints(gMazeStruct);
+}
+
+void GenerateMazeSeed(void){
+    gSaveBlock1Ptr->mazeSeed = Random();
+}
+
+void Quest_Kitchenvolunteering_GenerateItemList(void){
+    u16 i,j,temp;
+    u16 itemRange = LAST_BERRY_INDEX - FIRST_BERRY_INDEX;
+    u16 itemArray[itemRange];
+
+    for (i = 0; i < itemRange; i++) {
+        itemArray[i] = FIRST_BERRY_INDEX + i;
+    }
+
+    // Fisher-Yates shuffle
+    for (i = (itemRange) - 1; i > 0; i--) {
+        j = Random() % (i + 1);
+        temp = itemArray[i];
+        itemArray[i] = itemArray[j];
+        itemArray[j] = temp;
+    }
+
+    // Set the assigned variables using a loop
+    for (i = 0; i < QUEST_KITCHENVOLUNTEERING_SUB_COUNT; i++) {
+        VarSet(VAR_QUEST_KITCHEN_ASSIGNED_FIRST + i, itemArray[i]);
+    }
+}
+
+void Quest_Kitchenvolunteering_PickRandomItem(void){
+    u16 i,j;
+
+    for (i = 0; i <QUEST_KITCHENVOLUNTEERING_SUB_COUNT;i++){
+
+        j = VarGet(VAR_QUEST_KITCHEN_ASSIGNED_FIRST + i);
+
+        if (j != ITEM_NONE) {
+            gSpecialVar_0x8000 = j;
+            gSpecialVar_0x8001 = 1;
+            VarSet(VAR_QUEST_KITCHEN_ASSIGNED_FIRST + i,ITEM_NONE);
+            break;
+        }
+    }
 }
