@@ -1,8 +1,9 @@
 Tenderloin_Pantry_Maze_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Tenderloin_Pantry_Maze_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_LOAD, Tenderloin_Pantry_Maze_MapScripts_MAP_SCRIPT_ON_LOAD
 	.byte 0
 
-Tenderloin_Pantry_Maze_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+Tenderloin_Pantry_Maze_MapScripts_MAP_SCRIPT_ON_LOAD:
+	special Quest_Kitchenvolunteering_GenerateItemList
 	special PlaceItemBall
 	return
 

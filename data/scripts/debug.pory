@@ -62,16 +62,21 @@ script Debug_Weather{
 script Debug_Script_1{
     giveitem(ITEM_STORAGE_KEY,1)
     special(GenerateMazeSeed)
-    special(Quest_Kitchenvolunteering_GenerateItemList)
-    warpsilent(MAP_TENDERLOIN_PANTRY,0)
+    warpdoor(MAP_TENDERLOIN_PANTRY_MAZE,0)
 }
 
 script Debug_Script_2{
-    call(Quest_Kitchenvolunteering_FindItem_Script)
+    warpsilent(MAP_TENDERLOIN_PANTRY,0)
     end
 }
 
 script Debug_Script_3{
+    special(PlaceItemBall)
+    buffernumberstring(STR_VAR_1,VAR_0x8000)
+    buffernumberstring(STR_VAR_2,VAR_0x8001)
+    buffernumberstring(STR_VAR_3,VAR_0x8002)
+    msgbox("{STR_VAR_1},{STR_VAR_2} is {STR_VAR_3}")
+    closemessage
     end
 }
 

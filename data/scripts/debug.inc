@@ -62,17 +62,22 @@ Debug_Weather::
 Debug_Script_1::
 	giveitem ITEM_STORAGE_KEY, 1
 	special GenerateMazeSeed
-	special Quest_Kitchenvolunteering_GenerateItemList
-	warpsilent MAP_TENDERLOIN_PANTRY, 0
+	warpdoor MAP_TENDERLOIN_PANTRY_MAZE, 0
 	return
 
 
 Debug_Script_2::
-	call Quest_Kitchenvolunteering_FindItem_Script
+	warpsilent MAP_TENDERLOIN_PANTRY, 0
 	end
 
 
 Debug_Script_3::
+	special PlaceItemBall
+	buffernumberstring STR_VAR_1, VAR_0x8000
+	buffernumberstring STR_VAR_2, VAR_0x8001
+	buffernumberstring STR_VAR_3, VAR_0x8002
+	msgbox Debug_Script_3_Text_0
+	closemessage
 	end
 
 
@@ -103,6 +108,9 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
+
+Debug_Script_3_Text_0:
+	.string "{STR_VAR_1},{STR_VAR_2} is {STR_VAR_3}$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"

@@ -1,9 +1,11 @@
 #include "global.h"
+#include "event_object_movement.h"
 #include "event_data.h"
 #include "fieldmap.h"
 #include "item.h"
 #include "malloc.h"
 #include "mazegen.h"
+
 #include "overworld.h"
 #include "random.h"
 #include "constants/items.h"
@@ -405,22 +407,40 @@ static const u16 sMazeLootTable[][4] = {
     {ITEM_SILK_SCARF, 25, 1, 1},
 };
 
+u16 GenerateValidPositionsList(u16 *validPositions, u16 width, u16 height)
+{
+    u16 y = 0, x = 0, index = 0, validPositionsSize = 0;
+    for (y = 0; y < height; y++)
+    {
+        for (x = 0; x < width; x++)
+        {
+            index = x + width * y;
+            //if (!(gBackupMapLayout.map[index] & MAPGRID_COLLISION_MASK))
+            if (width > 0)
+            {
+                validPositions[validPositionsSize++] = index;
+            }
+        }
+    }
+    return validPositionsSize;
+}
+
 void PlaceItemBall(void)
 {
-    u8 i = 0;
+    u8 x = 0, y = 0, collison = 0, objectId = 1;
 
-    u16 x, y, block;
-    for (i = 0;i < QUEST_KITCHENVOLUNTEERING_SUB_COUNT;i++){
+    for (objectId = 1; objectId < QUEST_KITCHENVOLUNTEERING_SUB_COUNT+1;objectId++){
         x = Random() % 10;
         y = Random() % 10;
-        block = gBackupMapLayout.map[x + MAP_OFFSET + gBackupMapLayout.width * (y + MAP_OFFSET)];
-        while ((block & MAPGRID_COLLISION_MASK) >> MAPGRID_COLLISION_SHIFT)
+        collison = MapGridGetCollisionAt(x + MAP_OFFSET, y + MAP_OFFSET);
+
+        while (collison != 0)
         {
             x = Random() % 10;
             y = Random() % 10;
-            block = gBackupMapLayout.map[x + MAP_OFFSET + gBackupMapLayout.width * (y + MAP_OFFSET)];
+            collison = MapGridGetCollisionAt(x + MAP_OFFSET, y + MAP_OFFSET);
         }
-        SetObjEventTemplateCoords(i+1,x,y);
+        SetObjEventTemplateCoords(objectId, x, y);
     }
 }
 
@@ -443,7 +463,7 @@ void ChooseRandomItem(void)
 
 void Quest_Kitchenvolunteering_CreatePantryMaze(void){
     SeedRng(gSaveBlock1Ptr->mazeSeed);
-    gMazeStruct = GenerateMazeMap(8, 5, &gMazeTemplates[CAVE_STAIRS_TEMPLATE_SET]);
+    gMazeStruct = GenerateMazeMap(5, 5, &gMazeTemplates[CAVE_STAIRS_TEMPLATE_SET]);
     gMazeEndpoints = GetMazeEndpoints(gMazeStruct);
 }
 
