@@ -5,6 +5,7 @@
 #include "item.h"
 #include "malloc.h"
 #include "mazegen.h"
+#include "quests.h"
 
 #include "overworld.h"
 #include "random.h"
@@ -237,6 +238,15 @@ struct Cell **GetMazeEndpoints(struct Maze *maze)
         }
     }
 
+    for (i = 0; i < top; ++i)
+    {
+        struct Cell *cell = output[i];
+        int x_value = cell->x;
+        int y_value = cell->y;
+        int z_value = cell->x;
+    }
+
+    /*
     for (i = 0; i < top; ++i) // Sort the list of endpoints by distance.
     {
         j = i;
@@ -247,6 +257,7 @@ struct Cell **GetMazeEndpoints(struct Maze *maze)
             j--;
         }
     }
+    */
 
     return output;
 }
@@ -425,22 +436,27 @@ u16 GenerateValidPositionsList(u16 *validPositions, u16 width, u16 height)
     return validPositionsSize;
 }
 
+void RollRandomX(void){
+
+}
+
 void PlaceItemBall(void)
 {
-    u8 x = 0, y = 0, collison = 0, objectId = 1;
+    u8 collison = 0, objectId = 1, playerSpawnX = 5, playerSpawnY = 5, itemCoordinateX = 0, itemCoordinateY = 0, offsetItemCoordinateX = 0, offsetItemCoordinateY = 0;
 
     for (objectId = 1; objectId < QUEST_KITCHENVOLUNTEERING_SUB_COUNT+1;objectId++){
-        x = Random() % 10;
-        y = Random() % 10;
-        collison = MapGridGetCollisionAt(x + MAP_OFFSET, y + MAP_OFFSET);
+        offsetItemCoordinateX = (Random() % 50) + MAP_OFFSET;
+        offsetItemCoordinateY = (Random() % 50) + MAP_OFFSET;
+        collison = MapGridGetCollisionAt(offsetItemCoordinateX,offsetItemCoordinateY);
 
-        while (collison != 0)
-        {
-            x = Random() % 10;
-            y = Random() % 10;
-            collison = MapGridGetCollisionAt(x + MAP_OFFSET, y + MAP_OFFSET);
+        while ((itemCoordinateX == playerSpawnX && itemCoordinateY == playerSpawnY) || collison != 0){
+            offsetItemCoordinateX = (Random() % 50) + MAP_OFFSET;
+            offsetItemCoordinateY = (Random() % 50) + MAP_OFFSET;
+            collison = MapGridGetCollisionAt(offsetItemCoordinateX,offsetItemCoordinateY);
         }
-        SetObjEventTemplateCoords(objectId, x, y);
+        itemCoordinateX = offsetItemCoordinateX - MAP_OFFSET;
+        itemCoordinateY = offsetItemCoordinateY - MAP_OFFSET;
+        SetObjEventTemplateCoords(objectId, itemCoordinateX, itemCoordinateY);
     }
 }
 
@@ -462,9 +478,11 @@ void ChooseRandomItem(void)
 }
 
 void Quest_Kitchenvolunteering_CreatePantryMaze(void){
+    u16 x,y,z;
     SeedRng(gSaveBlock1Ptr->mazeSeed);
     gMazeStruct = GenerateMazeMap(5, 5, &gMazeTemplates[CAVE_STAIRS_TEMPLATE_SET]);
     gMazeEndpoints = GetMazeEndpoints(gMazeStruct);
+    PlaceItemBall();
 }
 
 void GenerateMazeSeed(void){
@@ -509,3 +527,8 @@ void Quest_Kitchenvolunteering_PickRandomItem(void){
         }
     }
 }
+
+/*
+f 
+ * /
+
