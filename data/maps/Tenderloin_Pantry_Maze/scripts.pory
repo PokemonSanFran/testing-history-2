@@ -1,6 +1,5 @@
 mapscripts Tenderloin_Pantry_Maze_MapScripts{
     MAP_SCRIPT_ON_LOAD{
         special(Quest_Kitchenvolunteering_GenerateItemList)
-        special(PlaceItemBall)
     }
 }

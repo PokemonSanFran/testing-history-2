@@ -407,6 +407,8 @@ struct Maze *GenerateMazeMap(u16 width, u16 height, const struct TemplateSet *te
         }
     }
 
+    MapGridSetMetatileIdAt(5 + MAP_OFFSET, 5+MAP_OFFSET, 0x33D);
+
     return &maze;
 }
 
@@ -436,13 +438,37 @@ u16 GenerateValidPositionsList(u16 *validPositions, u16 width, u16 height)
     return validPositionsSize;
 }
 
-void RollRandomX(void){
+u8 Quest_Kitchenvolunteering_CountRemainingItems(void){
+    u8 i = 0,j = 0;
 
+    for (i = 0; i <QUEST_KITCHENVOLUNTEERING_SUB_COUNT;i++){
+
+        if (QuestMenu_GetSetSubquestState(QUEST_KITCHENVOLUNTEERING,FLAG_GET_COMPLETED,(SUB_QUEST_1 + i))){
+            FlagSet(FLAG_TEMP_1 + i);
+            j++;
+        }
+    }
+    return (QUEST_KITCHENVOLUNTEERING_SUB_COUNT - j);
+}
+
+void Quest_Kitchenvolunteering_CompleteSubQuest(void){
+    u8 i = 0;
+
+    i = VarGet(VAR_LAST_TALKED) - 1;
+
+    QuestMenu_GetSetSubquestState(QUEST_KITCHENVOLUNTEERING,FLAG_SET_COMPLETED,(SUB_QUEST_1 + i));
+
+}
+
+void PlaceStairs(void){
+    MapGridSetMetatileIdAt(5, 5, 0x33D);
 }
 
 void PlaceItemBall(void)
 {
     u8 collison = 0, objectId = 1, playerSpawnX = 5, playerSpawnY = 5, itemCoordinateX = 0, itemCoordinateY = 0, offsetItemCoordinateX = 0, offsetItemCoordinateY = 0;
+
+    u8 numHiddenItems = Quest_Kitchenvolunteering_CountRemainingItems();
 
     for (objectId = 1; objectId < QUEST_KITCHENVOLUNTEERING_SUB_COUNT+1;objectId++){
         offsetItemCoordinateX = (Random() % 50) + MAP_OFFSET;
@@ -526,9 +552,21 @@ void Quest_Kitchenvolunteering_PickRandomItem(void){
             break;
         }
     }
+    Quest_Kitchenvolunteering_CompleteSubQuest();
+}
+void Quest_Kitchenvolunteering_CheckProgressAndSetReward(void){
+
+    if (Quest_Kitchenvolunteering_CountRemainingItems() == 0){
+        QuestMenu_GetSetQuestState(QUEST_KITCHENVOLUNTEERING,FLAG_REMOVE_ACTIVE);
+        QuestMenu_GetSetQuestState(QUEST_KITCHENVOLUNTEERING,FLAG_SET_REWARD);
+    }
 }
 
 /*
-f 
+ * PSF TODO
+ * Text needed for Agusta
+ * The random area of the items needs to be equal to the maximum bounds of the maze.
+ * The items need to spawn exclusively at endpoints
+ * The items need to be taken from the player. How does the game know which items to take?
+ * one idea: store everything in a u64 in the saveblock and pull from there, using subquests to mark off which ones not to use
  * /
-

@@ -104,6 +104,7 @@ script Quest_Kitchenvolunteering_GiveKeyAndGenerateSeed_Script{
 script Quest_Kitchenvolunteering_FindItem_Script{
     special(Quest_Kitchenvolunteering_PickRandomItem)
     callstd(STD_FIND_ITEM)
+    special(Quest_Kitchenvolunteering_CheckProgressAndSetReward)
     end
 }
 

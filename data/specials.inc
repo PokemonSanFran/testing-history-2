@@ -568,3 +568,4 @@ gSpecials::
     def_special Quest_Kitchenvolunteering_GenerateItemList
     def_special Quest_Kitchenvolunteering_PickRandomItem
     def_special PlaceItemBall
+    def_special Quest_Kitchenvolunteering_CheckProgressAndSetReward

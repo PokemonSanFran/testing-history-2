@@ -60,7 +60,8 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	giveitem ITEM_STORAGE_KEY, 1
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_KITCHENVOLUNTEERING
+	additem ITEM_STORAGE_KEY, 1
 	special GenerateMazeSeed
 	warpdoor MAP_TENDERLOIN_PANTRY_MAZE, 0
 	return
@@ -82,6 +83,7 @@ Debug_Script_3::
 
 
 Debug_Script_4::
+	warpdoor MAP_TENDERLOIN_PANTRY_MAZE, 0
 	end
 
 
