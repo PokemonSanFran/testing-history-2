@@ -73,12 +73,9 @@ Debug_Script_2::
 
 
 Debug_Script_3::
-	special PlaceItemBall
-	buffernumberstring STR_VAR_1, VAR_0x8000
-	buffernumberstring STR_VAR_2, VAR_0x8001
-	buffernumberstring STR_VAR_3, VAR_0x8002
-	msgbox Debug_Script_3_Text_0
-	closemessage
+	givemon SPECIES_METAGROSS, 1, ITEM_FLAME_ORB
+	givemon SPECIES_GROUDON, 100, ITEM_RED_ORB
+	trainerbattle_no_intro TRAINER_WALLACE, Debug_Script_3_Text_0
 	end
 
 
@@ -112,7 +109,7 @@ Debug_Script_10::
 
 
 Debug_Script_3_Text_0:
-	.string "{STR_VAR_1},{STR_VAR_2} is {STR_VAR_3}$"
+	.string "hey$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"

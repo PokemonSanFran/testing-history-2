@@ -379,6 +379,48 @@ static u16 SelectTemplateVariety(const struct MapTemplate *template)
     return 0;
 }
 
+void PlaceItemBall(u8 mazeWidth, u8 mazeHeight)
+{
+    u8 mazeSize = Sqrt(mazeWidth * mazeHeight);
+    u8 minDistance = mazeSize / 3;
+    u8 objectId = 1;
+    u8 collision = 0, i = 0, dx = 0, dy = 0, numPlaced = 0;
+
+    u8 itemCoords[QUEST_KITCHENVOLUNTEERING_SUB_COUNT+1][2];
+
+    // Add player spawn coordinates to itemCoords
+    itemCoords[numPlaced][0] = 5;
+    itemCoords[numPlaced][1] = 5;
+    numPlaced++;
+
+    // Generate random item coordinates until all items are placed
+    while (numPlaced < QUEST_KITCHENVOLUNTEERING_SUB_COUNT+1) {
+        u8 itemX = (Random() % mazeSize) + MAP_OFFSET;
+        u8 itemY = (Random() % mazeSize) + MAP_OFFSET;
+
+        // Check if the item collides with the maze or with another item
+        collision = MapGridGetCollisionAt(itemX, itemY);
+        for (i = 0; i < numPlaced; i++) {
+            dx = abs(itemCoords[i][0] - itemX);
+            dy = abs(itemCoords[i][1] - itemY);
+            if (dx < minDistance && dy < minDistance) {
+                collision = 1;
+                break;
+            }
+        }
+        if (collision != 0) {
+            continue;
+        }
+
+        // Add the item to the list and mark the cell as occupied
+        itemCoords[numPlaced][0] = itemX;
+        itemCoords[numPlaced][1] = itemY;
+        numPlaced++;
+        SetObjEventTemplateCoords(objectId, itemX - MAP_OFFSET, itemY - MAP_OFFSET);
+        objectId++;
+    }
+}
+
 // Generates a maze from a template layout containing map chunks. The width
 // and height describe the "chunks" that make up the map.
 struct Maze *GenerateMazeMap(u16 width, u16 height, const struct TemplateSet *templateSet)
@@ -401,14 +443,13 @@ struct Maze *GenerateMazeMap(u16 width, u16 height, const struct TemplateSet *te
             layout = Overworld_GetMapHeaderByGroupAndId(0, template.mapNumber)->mapLayout;
             variety = SelectTemplateVariety(&template);
             CopyMapChunk(sMapChunkCoordinateTable[connections][0]*templateSet->chunkWidth + 40*sVarietyOffsetTable[variety][0], \
-                        sMapChunkCoordinateTable[connections][1]*templateSet->chunkHeight + 40*sVarietyOffsetTable[variety][1], \
-                        templateSet->chunkWidth, templateSet->chunkHeight, layout, &chunk);
+                    sMapChunkCoordinateTable[connections][1]*templateSet->chunkHeight + 40*sVarietyOffsetTable[variety][1], \
+                    templateSet->chunkWidth, templateSet->chunkHeight, layout, &chunk);
             PasteMapChunk(x * templateSet->chunkWidth, y * templateSet->chunkHeight, &chunk);
         }
     }
-
-    MapGridSetMetatileIdAt(5 + MAP_OFFSET, 5+MAP_OFFSET, 0x33D);
-
+    MapGridSetMetatileIdAt(width + MAP_OFFSET, height + MAP_OFFSET, 0x33D);
+    PlaceItemBall(width * templateSet->chunkWidth,height * templateSet->chunkHeight);
     return &maze;
 }
 
@@ -464,27 +505,6 @@ void PlaceStairs(void){
     MapGridSetMetatileIdAt(5, 5, 0x33D);
 }
 
-void PlaceItemBall(void)
-{
-    u8 collison = 0, objectId = 1, playerSpawnX = 5, playerSpawnY = 5, itemCoordinateX = 0, itemCoordinateY = 0, offsetItemCoordinateX = 0, offsetItemCoordinateY = 0;
-
-    u8 numHiddenItems = Quest_Kitchenvolunteering_CountRemainingItems();
-
-    for (objectId = 1; objectId < QUEST_KITCHENVOLUNTEERING_SUB_COUNT+1;objectId++){
-        offsetItemCoordinateX = (Random() % 50) + MAP_OFFSET;
-        offsetItemCoordinateY = (Random() % 50) + MAP_OFFSET;
-        collison = MapGridGetCollisionAt(offsetItemCoordinateX,offsetItemCoordinateY);
-
-        while ((itemCoordinateX == playerSpawnX && itemCoordinateY == playerSpawnY) || collison != 0){
-            offsetItemCoordinateX = (Random() % 50) + MAP_OFFSET;
-            offsetItemCoordinateY = (Random() % 50) + MAP_OFFSET;
-            collison = MapGridGetCollisionAt(offsetItemCoordinateX,offsetItemCoordinateY);
-        }
-        itemCoordinateX = offsetItemCoordinateX - MAP_OFFSET;
-        itemCoordinateY = offsetItemCoordinateY - MAP_OFFSET;
-        SetObjEventTemplateCoords(objectId, itemCoordinateX, itemCoordinateY);
-    }
-}
 
 void ChooseRandomItem(void)
 {
@@ -504,11 +524,8 @@ void ChooseRandomItem(void)
 }
 
 void Quest_Kitchenvolunteering_CreatePantryMaze(void){
-    u16 x,y,z;
     SeedRng(gSaveBlock1Ptr->mazeSeed);
-    gMazeStruct = GenerateMazeMap(5, 5, &gMazeTemplates[CAVE_STAIRS_TEMPLATE_SET]);
-    gMazeEndpoints = GetMazeEndpoints(gMazeStruct);
-    PlaceItemBall();
+    GenerateMazeMap(2, 2, &gMazeTemplates[CAVE_STAIRS_TEMPLATE_SET]);
 }
 
 void GenerateMazeSeed(void){
@@ -560,13 +577,13 @@ void Quest_Kitchenvolunteering_CheckProgressAndSetReward(void){
         QuestMenu_GetSetQuestState(QUEST_KITCHENVOLUNTEERING,FLAG_REMOVE_ACTIVE);
         QuestMenu_GetSetQuestState(QUEST_KITCHENVOLUNTEERING,FLAG_SET_REWARD);
     }
-}
-
 /*
  * PSF TODO
- * Text needed for Agusta
  * The random area of the items needs to be equal to the maximum bounds of the maze.
- * The items need to spawn exclusively at endpoints
  * The items need to be taken from the player. How does the game know which items to take?
  * one idea: store everything in a u64 in the saveblock and pull from there, using subquests to mark off which ones not to use
- * /
+ * Text needed for Agusta
+ * The items need to spawn exclusively at endpoints
+ */
+}
+
