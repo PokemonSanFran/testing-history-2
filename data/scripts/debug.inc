@@ -73,9 +73,6 @@ Debug_Script_2::
 
 
 Debug_Script_3::
-	givemon SPECIES_METAGROSS, 1, ITEM_FLAME_ORB
-	givemon SPECIES_GROUDON, 100, ITEM_RED_ORB
-	trainerbattle_no_intro TRAINER_WALLACE, Debug_Script_3_Text_0
 	end
 
 
@@ -107,9 +104,6 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
-
-Debug_Script_3_Text_0:
-	.string "hey$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"

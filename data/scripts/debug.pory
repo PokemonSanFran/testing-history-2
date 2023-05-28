@@ -72,9 +72,6 @@ script Debug_Script_2{
 }
 
 script Debug_Script_3{
-    givemon (SPECIES_METAGROSS,1,ITEM_FLAME_ORB)
-    givemon (SPECIES_GROUDON,100,ITEM_RED_ORB)
-    trainerbattle_no_intro(TRAINER_WALLACE,"hey")
     end
 }
 
