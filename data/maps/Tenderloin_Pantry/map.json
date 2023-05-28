@@ -48,6 +48,13 @@
       "elevation": 0,
       "dest_map": "MAP_TENDERLOIN",
       "dest_warp_id": "2"
+    },
+    {
+      "x": 4,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_TENDERLOIN_PANTRY_MAZE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

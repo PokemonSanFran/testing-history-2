@@ -34,9 +34,19 @@ script Quest_Kitchenvolunteering_YoureNotDone_Dialogue{
     end
 }
 
+script Quest_Kitchenvolunteering_RemoveItem_Script{
+    removeitem(ITEM_GOLD_TEETH,1)
+    removeitem(ITEM_CARD_KEY,1)
+    removeitem(ITEM_LIFT_KEY,1)
+    removeitem(ITEM_SILPH_SCOPE,1)
+    removeitem(ITEM_TRI_PASS,1)
+    return
+}
+
 script Quest_Kitchenvolunteering_Reward_Dialogue{
     call(Quest_Kitchenvolunteering_ThankPlayer_Dialogue)
     msgbox(gText_Kitchenvolunteering_TheyNever,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
+    call(Quest_Kitchenvolunteering_RemoveItem_Script)
     completequest(QUEST_KITCHENVOLUNTEERING)
     release
     end
@@ -97,7 +107,6 @@ script Quest_Kitchenvolunteering_GiveKeyAndGenerateSeed_Script{
     msgbox(gText_Kitchenvolunteering_OhRightYouNeedTheKey,,SPEAKER_AUGUSTA)
     giveitem(ITEM_STORAGE_KEY,1)
     special(GenerateMazeSeed)
-    special(Quest_Kitchenvolunteering_GenerateItemList)
     return
 }
 
@@ -113,38 +122,38 @@ text gText_Kitchenvolunteering_OhYoureHere{
 }
 
 text gText_Kitchenvolunteering_HeadDownToTheBasement{
-    format("")
+    format("I need you to head down into the basement and grab some items for me... Item1, Item2, Item3, Item4, and Item5.")
 }
 text gText_Kitchenvolunteering_ComeBackWhenYoure{
-    format("")
+    format("Come back when you've got all five.")
 }
 text gText_Kitchenvolunteering_IThinkThey{
-    format("")
+    format("I don't think they realize that I'm the wrong person...")
 }
 text gText_Kitchenvolunteering_OhYoureNotDone{
-    format("")
+    format("Oh you're not done? Let me know when you are.")
 }
 text gText_Kitchenvolunteering_TheyNever{
-    format("")
+    format("They never realzied they've got the wrong guy...")
 }
 text gText_Kitchenvolunteering_OhThankGod{
-    format("")
+    format("Oh thank God! I'll take those. Thank you so much!")
 }
 text gText_Kitchenvolunteering_OhAndTheKey{
-    format("")
+    format("Oh! And the key. I'll take that.")
 }
 text gText_Kitchenvolunteering_ComeBackTomorrow{
-    format("")
+    format("You did good today. Come back tomorrow if you're willing to help out again.")
 }
 text gText_Kitchenvolunteering_NowWhereDidIPut{
-    format("")
+    format("Now, where did I put that ladle...")
 }
 text gText_Kitchenvolunteering_OhWowTheyNever{
-    format("")
+    format("Oh wow! They never come back.")
 }
 text gText_Kitchenvolunteering_ThisTimeCanYouGrab{
-    format("")
+    format("Okay, today I just need you to grab one Item1.")
 }
 text gText_Kitchenvolunteering_OhRightYouNeedTheKey{
-    format("")
+    format("Oh right! You need the key again. Here you go.")
 }

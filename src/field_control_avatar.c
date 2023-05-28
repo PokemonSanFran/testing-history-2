@@ -62,7 +62,7 @@ static bool8 IsArrowWarpMetatileBehavior(u16, u8);
 static s8 GetWarpEventAtMapPosition(struct MapHeader *, struct MapPosition *);
 static void SetupWarp(struct MapHeader *, s8, struct MapPosition *);
 static bool8 TryDoorWarp(struct MapPosition *, u16, u8);
-static s8 GetWarpEventAtPosition(struct MapHeader *, u16, u16, u8);
+s8 GetWarpEventAtPosition(struct MapHeader *, u16, u16, u8);
 static u8 *GetCoordEventScriptAtPosition(struct MapHeader *, u16, u16, u8);
 static struct BgEvent *GetBackgroundEventAtPosition(struct MapHeader *, u16, u16, u8);
 static bool8 TryStartCoordEventScript(struct MapPosition *);
@@ -891,7 +891,7 @@ static bool8 TryDoorWarp(struct MapPosition *position, u16 metatileBehavior, u8 
     return FALSE;
 }
 
-static s8 GetWarpEventAtPosition(struct MapHeader *mapHeader, u16 x, u16 y, u8 elevation)
+s8 GetWarpEventAtPosition(struct MapHeader *mapHeader, u16 x, u16 y, u8 elevation)
 {
     s32 i;
     struct WarpEvent *warpEvent = mapHeader->events->warps;

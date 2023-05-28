@@ -12,6 +12,7 @@
 #include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/map_groups.h"
+#include "field_control_avatar.h"
 
 // ***********************************************************************
 // mazegen.c
@@ -421,6 +422,18 @@ void PlaceItemBall(u8 mazeWidth, u8 mazeHeight)
     }
 }
 
+void PlaceStairs(u8 mazeWidth, u8 mazeHeight){
+    u8 x = 0, y= 0;
+
+    for (x = 0; x < mazeWidth;x++){
+        for (y = 0; y < mazeWidth;y++){
+            if (GetWarpEventAtPosition(&gMapHeader, x - MAP_OFFSET , y - MAP_OFFSET , 3) == 0){
+                MapGridSetMetatileIdAt(x, y, 0x33D);
+            }
+        }
+    }
+}
+
 // Generates a maze from a template layout containing map chunks. The width
 // and height describe the "chunks" that make up the map.
 struct Maze *GenerateMazeMap(u16 width, u16 height, const struct TemplateSet *templateSet)
@@ -448,7 +461,7 @@ struct Maze *GenerateMazeMap(u16 width, u16 height, const struct TemplateSet *te
             PasteMapChunk(x * templateSet->chunkWidth, y * templateSet->chunkHeight, &chunk);
         }
     }
-    MapGridSetMetatileIdAt(width + MAP_OFFSET, height + MAP_OFFSET, 0x33D);
+    PlaceStairs(width * templateSet->chunkWidth,height * templateSet->chunkHeight);
     PlaceItemBall(width * templateSet->chunkWidth,height * templateSet->chunkHeight);
     return &maze;
 }
@@ -501,11 +514,6 @@ void Quest_Kitchenvolunteering_CompleteSubQuest(void){
 
 }
 
-void PlaceStairs(void){
-    MapGridSetMetatileIdAt(5, 5, 0x33D);
-}
-
-
 void ChooseRandomItem(void)
 {
     s32 i;
@@ -525,7 +533,7 @@ void ChooseRandomItem(void)
 
 void Quest_Kitchenvolunteering_CreatePantryMaze(void){
     SeedRng(gSaveBlock1Ptr->mazeSeed);
-    GenerateMazeMap(2, 2, &gMazeTemplates[CAVE_STAIRS_TEMPLATE_SET]);
+    GenerateMazeMap(5, 5, &gMazeTemplates[CAVE_STAIRS_TEMPLATE_SET]);
 }
 
 void GenerateMazeSeed(void){
@@ -534,11 +542,12 @@ void GenerateMazeSeed(void){
 
 void Quest_Kitchenvolunteering_GenerateItemList(void){
     u16 i,j,temp;
-    u16 itemRange = LAST_BERRY_INDEX - FIRST_BERRY_INDEX;
+    u16 itemRange = ITEM_RAINBOW_PASS - ITEM_GOLD_TEETH;
     u16 itemArray[itemRange];
+    u64 mazeMemory;
 
     for (i = 0; i < itemRange; i++) {
-        itemArray[i] = FIRST_BERRY_INDEX + i;
+        itemArray[i] = ITEM_GOLD_TEETH + i;
     }
 
     // Fisher-Yates shuffle
@@ -556,21 +565,17 @@ void Quest_Kitchenvolunteering_GenerateItemList(void){
 }
 
 void Quest_Kitchenvolunteering_PickRandomItem(void){
-    u16 i,j;
+    u16 i,j,k;
 
-    for (i = 0; i <QUEST_KITCHENVOLUNTEERING_SUB_COUNT;i++){
+        i = VarGet(VAR_LAST_TALKED);
+        j = (ITEM_GOLD_TEETH - 1 + i);
 
-        j = VarGet(VAR_QUEST_KITCHEN_ASSIGNED_FIRST + i);
+        gSpecialVar_0x8000 = j;
+        gSpecialVar_0x8001 = 1;
 
-        if (j != ITEM_NONE) {
-            gSpecialVar_0x8000 = j;
-            gSpecialVar_0x8001 = 1;
-            VarSet(VAR_QUEST_KITCHEN_ASSIGNED_FIRST + i,ITEM_NONE);
-            break;
-        }
-    }
-    Quest_Kitchenvolunteering_CompleteSubQuest();
+        Quest_Kitchenvolunteering_CompleteSubQuest();
 }
+
 void Quest_Kitchenvolunteering_CheckProgressAndSetReward(void){
 
     if (Quest_Kitchenvolunteering_CountRemainingItems() == 0){
@@ -579,11 +584,12 @@ void Quest_Kitchenvolunteering_CheckProgressAndSetReward(void){
     }
 /*
  * PSF TODO
- * The random area of the items needs to be equal to the maximum bounds of the maze.
- * The items need to be taken from the player. How does the game know which items to take?
- * one idea: store everything in a u64 in the saveblock and pull from there, using subquests to mark off which ones not to use
- * Text needed for Agusta
  * The items need to spawn exclusively at endpoints
+ *
+ * send player back down
+ * sixth item spaawns
+ * player gets item 
+ * does not respawn until player finishes quest
  */
 }
 
