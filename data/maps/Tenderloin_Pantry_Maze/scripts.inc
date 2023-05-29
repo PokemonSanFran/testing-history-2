@@ -3,6 +3,6 @@ Tenderloin_Pantry_Maze_MapScripts::
 	.byte 0
 
 Tenderloin_Pantry_Maze_MapScripts_MAP_SCRIPT_ON_LOAD:
-	special Quest_Kitchenvolunteering_GenerateItemList
+	special GenerateMazeItemsSeed
 	return
 

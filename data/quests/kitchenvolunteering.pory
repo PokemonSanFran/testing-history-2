@@ -12,10 +12,10 @@ script Quest_Kitchenvolunteering_First_Interact_Augusta_Script{
 }
 
 script Quest_Kitchenvolunteering_StartQuest_Dialogue{
-    msgbox(gText_Kitchenvolunteering_OhYoureHere,MSGBOX_NPC,SPEAKER_AUGUSTA)
+    msgbox(gText_Kitchenvolunteering_OhYoureHere,,SPEAKER_AUGUSTA)
     msgbox(gText_Kitchenvolunteering_HeadDownToTheBasement,,SPEAKER_AUGUSTA)
     msgbox(gText_Kitchenvolunteering_ComeBackWhenYoure,,SPEAKER_AUGUSTA)
-    call(Quest_Kitchenvolunteering_GiveKeyAndGenerateSeed_Script)
+    call(Quest_Kitchenvolunteering_GiveKey_Script)
     msgbox(gText_Kitchenvolunteering_IThinkThey,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
     startquest(QUEST_KITCHENVOLUNTEERING)
     call(Quest_Kitchenvolunteering_ReturnToWork_Script)
@@ -35,29 +35,48 @@ script Quest_Kitchenvolunteering_YoureNotDone_Dialogue{
 }
 
 script Quest_Kitchenvolunteering_RemoveItem_Script{
-    removeitem(ITEM_GOLD_TEETH,1)
-    removeitem(ITEM_CARD_KEY,1)
-    removeitem(ITEM_LIFT_KEY,1)
-    removeitem(ITEM_SILPH_SCOPE,1)
-    removeitem(ITEM_TRI_PASS,1)
+    questmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_KITCHENVOLUNTEERING)
+        if (!var(VAR_RESULT)){
+            removeitem(ITEM_GOLD_TEETH,1)
+                removeitem(ITEM_CARD_KEY,1)
+                removeitem(ITEM_LIFT_KEY,1)
+                removeitem(ITEM_SILPH_SCOPE,1)
+                removeitem(ITEM_TRI_PASS,1)
+        }
+        else{
+            switch (var(VAR_QUEST_KITCHEN_ASSIGNED_ITEMS)){
+                case ITEM_GOLD_TEETH: removeitem(ITEM_GOLD_TEETH,1)
+                case ITEM_CARD_KEY: removeitem(ITEM_CARD_KEY,1)
+                case ITEM_LIFT_KEY: removeitem(ITEM_LIFT_KEY,1)
+                case ITEM_SILPH_SCOPE: removeitem(ITEM_SILPH_SCOPE,1)
+                case ITEM_TRI_PASS: removeitem(ITEM_TRI_PASS,1)
+            }
+        }
+    removeitem(ITEM_STORAGE_KEY,1)
     return
 }
 
+
+script Quest_Kitchenvolunteering_CompleteQuestIfNotComplete{
+    completequest(QUEST_KITCHENVOLUNTEERING)
+}
+
 script Quest_Kitchenvolunteering_Reward_Dialogue{
+    lock
+    faceplayer
     call(Quest_Kitchenvolunteering_ThankPlayer_Dialogue)
     msgbox(gText_Kitchenvolunteering_TheyNever,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
+    setflag(FLAG_DAILY_KITCHEN_VOLUNTEER)
+    special(RandomlyBoostPartyMemberFriendship)
     call(Quest_Kitchenvolunteering_RemoveItem_Script)
-    completequest(QUEST_KITCHENVOLUNTEERING)
+    call_if_quest_not_complete(QUEST_KITCHENVOLUNTEERING,Quest_Kitchenvolunteering_CompleteQuestIfNotComplete)
     release
     end
 }
 
 script Quest_Kitchenvolunteering_ThankPlayer_Dialogue{
-    msgbox(gText_Kitchenvolunteering_OhThankGod,MSGBOX_NPC,SPEAKER_AUGUSTA)
-    special(RandomlyBoostPartyMemberFriendship)
+    msgbox(gText_Kitchenvolunteering_OhThankGod,,SPEAKER_AUGUSTA)
     msgbox(gText_Kitchenvolunteering_OhAndTheKey,,SPEAKER_AUGUSTA)
-    removeitem(ITEM_STORAGE_KEY,1)
-    setflag(FLAG_DAILY_KITCHEN_VOLUNTEER)
     msgbox(gText_Kitchenvolunteering_ComeBackTomorrow,,SPEAKER_AUGUSTA)
     call(Quest_Kitchenvolunteering_ReturnToWork_Script)
     return
@@ -69,7 +88,7 @@ script Quest_Kitchenvolunteering_Second_Interact_Script{
         goto(Quest_Kitchenvolunteering_TooBusy_Dialogue)
     }
 
-    checkitem(ITEM_SECRET_KEY,1)
+    checkitem(ITEM_STORAGE_KEY,1)
     if (var(VAR_RESULT)){
         call(Quest_Kitchenvolunteering_CheckForItem_Script)
         goto(Quest_Kitchenvolunteering_YoureNotDone_Dialogue)
@@ -79,11 +98,17 @@ script Quest_Kitchenvolunteering_Second_Interact_Script{
 }
 
 script Quest_Kitchenvolunteering_CheckForItem_Script{
-    //PSF TODO change this to a random item that was previous assigned
-    checkitem(ITEM_TEA,1)
+
+    switch (var(VAR_QUEST_KITCHEN_ASSIGNED_ITEMS)){
+        case ITEM_GOLD_TEETH: checkitem(ITEM_GOLD_TEETH)
+        case ITEM_CARD_KEY: checkitem(ITEM_CARD_KEY)
+        case ITEM_LIFT_KEY: checkitem(ITEM_LIFT_KEY)
+        case ITEM_SILPH_SCOPE: checkitem(ITEM_SILPH_SCOPE)
+        case ITEM_TRI_PASS: checkitem(ITEM_TRI_PASS)
+    }
 
     if (var(VAR_RESULT)){
-        goto(Quest_Kitchenvolunteering_ThankPlayer_Dialogue)
+        goto(Quest_Kitchenvolunteering_Reward_Dialogue)
             end
     }
     return
@@ -94,24 +119,36 @@ script Quest_Kitchenvolunteering_TooBusy_Dialogue{
     closemessage
     end
 }
+script Quest_Kitchenvolunteering_BufferItemName_Script{
+    switch (var(VAR_QUEST_KITCHEN_ASSIGNED_ITEMS)){
+        case ITEM_GOLD_TEETH: bufferitemname(STR_VAR_1,ITEM_GOLD_TEETH)
+        case ITEM_CARD_KEY: bufferitemname(STR_VAR_1,ITEM_CARD_KEY)
+        case ITEM_LIFT_KEY: bufferitemname(STR_VAR_1,ITEM_LIFT_KEY)
+        case ITEM_SILPH_SCOPE: bufferitemname(STR_VAR_1,ITEM_SILPH_SCOPE)
+        case ITEM_TRI_PASS: bufferitemname(STR_VAR_1,ITEM_TRI_PASS)
+    }
+    return
+}
 
 script Quest_Kitchenvolunteering_RepeatQuest_Dialogue{
-    msgbox(gText_Kitchenvolunteering_OhWowTheyNever,MSGBOX_NPC,SPEAKER_AUGUSTA) 
+    lock
+    faceplayer
+    special(Quest_Kitchenvolunteering_ChooseRandomPantryItem)
+    msgbox(gText_Kitchenvolunteering_OhWowTheyNever,,SPEAKER_AUGUSTA) 
     msgbox(gText_Kitchenvolunteering_ThisTimeCanYouGrab,,SPEAKER_AUGUSTA)
-    call(Quest_Kitchenvolunteering_GiveKeyAndGenerateSeed_Script)
+    call(Quest_Kitchenvolunteering_GiveKey_Script)
     release
     end
 }
 
-script Quest_Kitchenvolunteering_GiveKeyAndGenerateSeed_Script{
+script Quest_Kitchenvolunteering_GiveKey_Script{
     msgbox(gText_Kitchenvolunteering_OhRightYouNeedTheKey,,SPEAKER_AUGUSTA)
     giveitem(ITEM_STORAGE_KEY,1)
-    special(GenerateMazeSeed)
     return
 }
 
 script Quest_Kitchenvolunteering_FindItem_Script{
-    special(Quest_Kitchenvolunteering_PickRandomItem)
+    special(Quest_Kitchenvolunteering_GeneratePantryItem)
     callstd(STD_FIND_ITEM)
     special(Quest_Kitchenvolunteering_CheckProgressAndSetReward)
     end
@@ -152,7 +189,7 @@ text gText_Kitchenvolunteering_OhWowTheyNever{
     format("Oh wow! They never come back.")
 }
 text gText_Kitchenvolunteering_ThisTimeCanYouGrab{
-    format("Okay, today I just need you to grab one Item1.")
+    format("Okay, today I just need you to grab a {STR_VAR_1}.")
 }
 text gText_Kitchenvolunteering_OhRightYouNeedTheKey{
     format("Oh right! You need the key again. Here you go.")

@@ -9,6 +9,7 @@
 #include "field_weather.h"
 #include "berry.h"
 #include "main.h"
+#include "mazegen.h"
 #include "overworld.h"
 #include "wallclock.h"
 
@@ -42,6 +43,7 @@ static void UpdatePerDay(struct Time *localTime)
     {
         daysSince = localTime->days - *days;
         ClearDailyFlags();
+        GenerateMazeLayoutSeed();
         UpdateDewfordTrendPerDay(daysSince);
         UpdateTVShowsPerDay(daysSince);
         UpdateWeatherPerDay(daysSince);

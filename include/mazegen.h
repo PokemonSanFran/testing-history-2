@@ -55,6 +55,6 @@ extern struct Maze *gMazeStruct;
 extern struct Cell **gMazeEndpoints;
 extern const struct TemplateSet gMazeTemplates[];
 
-void Quest_Kitchenvolunteering_CreatePantryMaze(void);
+void GenerateMazeLayoutSeed(void);
 
 #endif // GUARD_MAZEGEN_H

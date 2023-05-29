@@ -7,7 +7,7 @@
 #include "fldeff.h"
 #include "fldeff_misc.h"
 #include "frontier_util.h"
-#include "mazegen.h"
+#include "quest_logic.h"
 #include "menu.h"
 #include "mirage_tower.h"
 #include "overworld.h"

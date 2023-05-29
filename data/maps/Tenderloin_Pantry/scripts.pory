@@ -1,6 +1,5 @@
 mapscripts Tenderloin_Pantry_MapScripts{
     MAP_SCRIPT_ON_LOAD{
-        //special(PlaceItemBall)
     }
 }
 const PLAYER = OBJ_EVENT_ID_PLAYER

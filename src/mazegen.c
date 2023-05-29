@@ -2,17 +2,16 @@
 #include "event_object_movement.h"
 #include "event_data.h"
 #include "fieldmap.h"
+#include "field_control_avatar.h"
 #include "item.h"
 #include "malloc.h"
 #include "mazegen.h"
-#include "quests.h"
-
+#include "quest_logic.h"
 #include "overworld.h"
 #include "random.h"
 #include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/map_groups.h"
-#include "field_control_avatar.h"
 
 // ***********************************************************************
 // mazegen.c
@@ -67,7 +66,7 @@ static void InitMaze(struct Maze *maze)
 static u16 GetUnvisitedNeighbors(u16 x, u16 y, struct Maze *maze)
 {
     u16 output = 0;
-    
+
     if (y > 0 && !maze->cells[x][y-1].visited)
         output |= NORTH;
     if (x + 1 < maze->width && !maze->cells[x+1][y].visited)
@@ -76,7 +75,7 @@ static u16 GetUnvisitedNeighbors(u16 x, u16 y, struct Maze *maze)
         output |= SOUTH;
     if (x > 0 && !maze->cells[x-1][y].visited)
         output |= WEST;
-    
+
     return output;
 }
 
@@ -85,7 +84,7 @@ static u16 SelectRandomBit(u16 bitfield)
 {
     s32 i, count = 0;
     u16 options[16];
-    
+
     // Find 'on' bits and store in array to pick from.
     for (i = 0; i < 16; ++i)
     {
@@ -95,7 +94,7 @@ static u16 SelectRandomBit(u16 bitfield)
             count++;
         }
     }
-    
+
     return 1 << (options[Random() % count] - 1);
 }
 
@@ -110,7 +109,7 @@ static void GenerateMaze(struct Maze *maze, u16 width, u16 height, const struct 
     max = width * height;
     top = 0;
     visited = 1;
-    
+
     // init maze
     maze->width = width;
     maze->height = height;
@@ -215,54 +214,6 @@ static void GenerateMaze(struct Maze *maze, u16 width, u16 height, const struct 
     }
 }
 
-// Returns an array containing the endpoints of a maze, sorted by distance in
-// descending order.
-struct Cell **GetMazeEndpoints(struct Maze *maze)
-{
-    s32 x, y, i, j;
-    s32 distance, top = 0;
-    struct Cell *temp;
-    struct Cell **output = Alloc(MAX_SPECIAL_ROOMS * sizeof **output);
-
-    for (i = 0; i < MAX_SPECIAL_ROOMS; i++) // Initialize output as null pointers.
-        output[i] = NULL;
-
-    for (x = 0; x < maze->width; ++x) // Pick out endpoints from the maze.
-    {
-        for (y = 0; y < maze->width; ++y)
-        {
-            if (maze->cells[x][y].endpoint && top < MAX_SPECIAL_ROOMS)
-            {
-                output[top] = &maze->cells[x][y];
-                top++;
-            }
-        }
-    }
-
-    for (i = 0; i < top; ++i)
-    {
-        struct Cell *cell = output[i];
-        int x_value = cell->x;
-        int y_value = cell->y;
-        int z_value = cell->x;
-    }
-
-    /*
-    for (i = 0; i < top; ++i) // Sort the list of endpoints by distance.
-    {
-        j = i;
-        distance = output[i]->distance;
-        while (j > 0 && distance > output[j-1]->distance)
-        {
-            SWAP(output[j], output[j-1], temp)
-            j--;
-        }
-    }
-    */
-
-    return output;
-}
-
 // Copies a rectangular area of a map layout and stores it in a MapChunk struct.
 static void CopyMapChunk(u16 x, u16 y, u16 width, u16 height, const struct MapLayout *src, struct MapChunk *dest)
 {
@@ -334,7 +285,7 @@ static u16 SelectTemplateNumber(u16 templateNum, u16 connection, const struct Te
     s32 i;
     u16 rand = Random() % templateSet->templates[templateNum].totalWeight;
     u16 index;
-    
+
     switch (connection) // get the proper index for adjacency table
     {
         case NORTH:
@@ -380,25 +331,46 @@ static u16 SelectTemplateVariety(const struct MapTemplate *template)
     return 0;
 }
 
-void PlaceItemBall(u8 mazeWidth, u8 mazeHeight)
+static void PlaceStairs(u8 mazeWidth, u8 mazeHeight){
+    u8 x = 0, y= 0;
+
+    for (x = 0; x < mazeWidth;x++){
+        for (y = 0; y < mazeWidth;y++){
+            if (GetWarpEventAtPosition(&gMapHeader, x - MAP_OFFSET , y - MAP_OFFSET , 3) == 0){
+                MapGridSetMetatileIdAt(x, y, 0x33D);
+            }
+        }
+    }
+}
+
+static void PlaceItemBall(u8 mazeWidth, u8 mazeHeight)
 {
     u8 mazeSize = Sqrt(mazeWidth * mazeHeight);
     u8 minDistance = mazeSize / 3;
     u8 objectId = 1;
-    u8 collision = 0, i = 0, dx = 0, dy = 0, numPlaced = 0;
+    u8 collision = 0, i = 0, dx = 0, dy = 0, numPlaced = 0, itemPlacementAttempts = 0;
+    u8 maxAttempts = 100;
 
     u8 itemCoords[QUEST_KITCHENVOLUNTEERING_SUB_COUNT+1][2];
+    SeedRng(gSaveBlock1Ptr->mazeItemsSeed);
 
     // Add player spawn coordinates to itemCoords
     itemCoords[numPlaced][0] = 5;
     itemCoords[numPlaced][1] = 5;
     numPlaced++;
 
+
     // Generate random item coordinates until all items are placed
     while (numPlaced < QUEST_KITCHENVOLUNTEERING_SUB_COUNT+1) {
         u8 itemX = (Random() % mazeSize) + MAP_OFFSET;
         u8 itemY = (Random() % mazeSize) + MAP_OFFSET;
 
+/*
+ * PSF TODO
+ * The items need to spawn exclusively at endpoints, use gMazeEndpoints in Agustin's branch
+ * Occasionally, when leaving the maze and returning, the game will crash. I need to test this on a machine with gdb access. I suspect it is something to do with GenerateMazeItemsSeed, which moves the location of the set item everytime the player enters the maze. To repro:
+ * Go to MAP_TENDERLOIN_PANTRY, get the STORAGE_KEY, go into the maze. Leave and come back a few times, and the game should crash.
+ */
         // Check if the item collides with the maze or with another item
         collision = MapGridGetCollisionAt(itemX, itemY);
         for (i = 0; i < numPlaced; i++) {
@@ -406,6 +378,10 @@ void PlaceItemBall(u8 mazeWidth, u8 mazeHeight)
             dy = abs(itemCoords[i][1] - itemY);
             if (dx < minDistance && dy < minDistance) {
                 collision = 1;
+                itemPlacementAttempts++;
+                if (itemPlacementAttempts > maxAttempts){
+                    Quest_Kitchenvolunteering_CreatePantryMaze();
+                }
                 break;
             }
         }
@@ -422,18 +398,6 @@ void PlaceItemBall(u8 mazeWidth, u8 mazeHeight)
     }
 }
 
-void PlaceStairs(u8 mazeWidth, u8 mazeHeight){
-    u8 x = 0, y= 0;
-
-    for (x = 0; x < mazeWidth;x++){
-        for (y = 0; y < mazeWidth;y++){
-            if (GetWarpEventAtPosition(&gMapHeader, x - MAP_OFFSET , y - MAP_OFFSET , 3) == 0){
-                MapGridSetMetatileIdAt(x, y, 0x33D);
-            }
-        }
-    }
-}
-
 // Generates a maze from a template layout containing map chunks. The width
 // and height describe the "chunks" that make up the map.
 struct Maze *GenerateMazeMap(u16 width, u16 height, const struct TemplateSet *templateSet)
@@ -444,6 +408,7 @@ struct Maze *GenerateMazeMap(u16 width, u16 height, const struct TemplateSet *te
     struct MapTemplate template;
     static struct Maze maze;
     const struct MapLayout *layout;
+    u32 seed = Random();
 
     GenerateMaze(&maze, width, height, templateSet);
 
@@ -466,130 +431,14 @@ struct Maze *GenerateMazeMap(u16 width, u16 height, const struct TemplateSet *te
     return &maze;
 }
 
-static const u16 sMazeLootTotalWeight = 175;
-static const u16 sMazeLootTable[][4] = {
-    {ITEM_POKE_BALL, 50, 5, 10},   // item, weight, min, max
-    {ITEM_POTION, 50, 5, 10},
-    {ITEM_ORAN_BERRY, 50, 5, 10},
-    {ITEM_SILK_SCARF, 25, 1, 1},
-};
-
-u16 GenerateValidPositionsList(u16 *validPositions, u16 width, u16 height)
-{
-    u16 y = 0, x = 0, index = 0, validPositionsSize = 0;
-    for (y = 0; y < height; y++)
-    {
-        for (x = 0; x < width; x++)
-        {
-            index = x + width * y;
-            //if (!(gBackupMapLayout.map[index] & MAPGRID_COLLISION_MASK))
-            if (width > 0)
-            {
-                validPositions[validPositionsSize++] = index;
-            }
-        }
-    }
-    return validPositionsSize;
+void GenerateMazeLayoutSeed(void){
+    gSaveBlock1Ptr->mazeLayoutSeed = Random();
 }
 
-u8 Quest_Kitchenvolunteering_CountRemainingItems(void){
-    u8 i = 0,j = 0;
+void GenerateMazeItemsSeed(void){
+    gSaveBlock1Ptr->mazeItemsSeed = Random();
 
-    for (i = 0; i <QUEST_KITCHENVOLUNTEERING_SUB_COUNT;i++){
-
-        if (QuestMenu_GetSetSubquestState(QUEST_KITCHENVOLUNTEERING,FLAG_GET_COMPLETED,(SUB_QUEST_1 + i))){
-            FlagSet(FLAG_TEMP_1 + i);
-            j++;
-        }
-    }
-    return (QUEST_KITCHENVOLUNTEERING_SUB_COUNT - j);
-}
-
-void Quest_Kitchenvolunteering_CompleteSubQuest(void){
-    u8 i = 0;
-
-    i = VarGet(VAR_LAST_TALKED) - 1;
-
-    QuestMenu_GetSetSubquestState(QUEST_KITCHENVOLUNTEERING,FLAG_SET_COMPLETED,(SUB_QUEST_1 + i));
-
-}
-
-void ChooseRandomItem(void)
-{
-    s32 i;
-    s16 rand = Random() % sMazeLootTotalWeight;
-
-    for (i = 0; i < ARRAY_COUNT(sMazeLootTable); ++i)
-    {
-        if (rand < sMazeLootTable[i][1])
-            break;
-        else
-            rand -= sMazeLootTable[i][1];
-    }
-
-    gSpecialVar_0x8000 = sMazeLootTable[i][0];
-    gSpecialVar_0x8001 = (Random() % (sMazeLootTable[i][3] - sMazeLootTable[i][2])) + sMazeLootTable[i][2];
-}
-
-void Quest_Kitchenvolunteering_CreatePantryMaze(void){
-    SeedRng(gSaveBlock1Ptr->mazeSeed);
-    GenerateMazeMap(5, 5, &gMazeTemplates[CAVE_STAIRS_TEMPLATE_SET]);
-}
-
-void GenerateMazeSeed(void){
-    gSaveBlock1Ptr->mazeSeed = Random();
-}
-
-void Quest_Kitchenvolunteering_GenerateItemList(void){
-    u16 i,j,temp;
-    u16 itemRange = ITEM_RAINBOW_PASS - ITEM_GOLD_TEETH;
-    u16 itemArray[itemRange];
-    u64 mazeMemory;
-
-    for (i = 0; i < itemRange; i++) {
-        itemArray[i] = ITEM_GOLD_TEETH + i;
-    }
-
-    // Fisher-Yates shuffle
-    for (i = (itemRange) - 1; i > 0; i--) {
-        j = Random() % (i + 1);
-        temp = itemArray[i];
-        itemArray[i] = itemArray[j];
-        itemArray[j] = temp;
-    }
-
-    // Set the assigned variables using a loop
-    for (i = 0; i < QUEST_KITCHENVOLUNTEERING_SUB_COUNT; i++) {
-        VarSet(VAR_QUEST_KITCHEN_ASSIGNED_FIRST + i, itemArray[i]);
+    while (gSaveBlock1Ptr->mazeItemsSeed == gSaveBlock1Ptr->mazeLayoutSeed) {
+        gSaveBlock1Ptr->mazeItemsSeed = Random();
     }
 }
-
-void Quest_Kitchenvolunteering_PickRandomItem(void){
-    u16 i,j,k;
-
-        i = VarGet(VAR_LAST_TALKED);
-        j = (ITEM_GOLD_TEETH - 1 + i);
-
-        gSpecialVar_0x8000 = j;
-        gSpecialVar_0x8001 = 1;
-
-        Quest_Kitchenvolunteering_CompleteSubQuest();
-}
-
-void Quest_Kitchenvolunteering_CheckProgressAndSetReward(void){
-
-    if (Quest_Kitchenvolunteering_CountRemainingItems() == 0){
-        QuestMenu_GetSetQuestState(QUEST_KITCHENVOLUNTEERING,FLAG_REMOVE_ACTIVE);
-        QuestMenu_GetSetQuestState(QUEST_KITCHENVOLUNTEERING,FLAG_SET_REWARD);
-    }
-/*
- * PSF TODO
- * The items need to spawn exclusively at endpoints
- *
- * send player back down
- * sixth item spaawns
- * player gets item 
- * does not respawn until player finishes quest
- */
-}
-
