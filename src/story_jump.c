@@ -1023,7 +1023,7 @@ void JumpPlayerTo_YouRealizeWereEvilRight()
 	       POST_YOU_REALIZE_WERE_EVIL_RIGHT);
 	FlagSet(FLAG_ARCHER_CALL_ALCATRAZ);
 	VarSet(VAR_STORYLINE_STATE, STORY_POST_YOU_REALIZE_WERE_EVIL);
-	SetWarpDestination(10, 18, 255, 17, 29);
+	SetWarpDestination(MAP_GROUP(SALESFORCETOWER_LEAGUEOPS), MAP_NUM(SALESFORCETOWER_LEAGUEOPS), 255, 17, 29);
 }
 void JumpPlayerTo_YouRealizeTheyreEvilRight()
 {
