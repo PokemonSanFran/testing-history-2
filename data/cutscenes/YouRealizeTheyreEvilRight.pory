@@ -60,9 +60,9 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
 
         bufferpartymonnick(0,1)
 
-        msgbox(gText_YouRealizeTheyreEvilRight_AwesomeJobIn,,SPEAKER_ARCHER,,PHONE_ON)
+        msgbox(gText_YouRealizeTheyreEvilRight_AwesomeJobIn,,SPEAKER_ARCHER,,,PHONE_ON)
 
-        msgbox(gText_YouRealizeTheyreEvilRight_TheyDontLove,,SPEAKER_ZOEY,,PHONE_ON)
+        msgbox(gText_YouRealizeTheyreEvilRight_TheyDontLove,,SPEAKER_ZOEY,,,PHONE_ON)
         
         closemessage
 
@@ -70,24 +70,24 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
         delay(30)
         fadescreen(FADE_FROM_BLACK)
 
-        msgbox(gText_YouRealizeTheyreEvilRight_YouSeemSurprised,,SPEAKER_ARCHER)
+        msgbox(gText_YouRealizeTheyreEvilRight_YouSeemSurprised,,SPEAKER_ARCHER,,,PHONE_ON)
 
-        msgbox(gText_YouRealizeTheyreEvilRight_YoureNot,,SPEAKER_ZOEY)
+        msgbox(gText_YouRealizeTheyreEvilRight_YoureNot,,SPEAKER_ZOEY,,,PHONE_ON)
 
-        msgbox(gText_YouRealizeTheyreEvilRight_IveBeenTrying,,SPEAKER_ARCHER)
+        msgbox(gText_YouRealizeTheyreEvilRight_IveBeenTrying,,SPEAKER_ARCHER,,,PHONE_ON)
 
-        msgbox(gText_YouRealizeTheyreEvilRight_WhatDoYouMean,,SPEAKER_ZOEY)
+        msgbox(gText_YouRealizeTheyreEvilRight_WhatDoYouMean,,SPEAKER_ZOEY,,,PHONE_ON)
 
         checkitem(ITEM_HM03)
         if (var(VAR_RESULT)){
-            msgbox(gText_YouRealizeTheyreEvilRight_IWannaShowYou,,SPEAKER_ARCHER)
+            msgbox(gText_YouRealizeTheyreEvilRight_IWannaShowYou,,SPEAKER_ARCHER,,,PHONE_ON)
         } else {
-            msgbox(gText_YouRealizeTheyreEvilRight_YoullNeedToCross,,SPEAKER_ARCHER)
+            msgbox(gText_YouRealizeTheyreEvilRight_YoullNeedToCross,,SPEAKER_ARCHER,,,PHONE_ON)
         }
     playse(SE_POKENAV_HANG_UP)
         waitse
 
-        msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf,,SPEAKER_ZOEY)
+        msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf,,SPEAKER_ZOEY,,,PHONE_ON)
         
         closemessage
         release
@@ -101,9 +101,9 @@ script YouRealizeTheyreEvilRight_PlayerLandedDialogue {
         waitse
         playse(SE_POKENAV_CALL)
 
-        msgbox(gText_YouRealizeTheyreEvilRight_ImHereWhere,,SPEAKER_ZOEY,,PHONE_ON)
+        msgbox(gText_YouRealizeTheyreEvilRight_ImHereWhere,,SPEAKER_ZOEY,,,PHONE_ON)
 
-        msgbox(gText_YouRealizeTheyreEvilRight_SwimAroundThe,,SPEAKER_ARCHER,,PHONE_ON)
+        msgbox(gText_YouRealizeTheyreEvilRight_SwimAroundThe,,SPEAKER_ARCHER,,,PHONE_ON)
         
         closemessage
 
@@ -542,7 +542,7 @@ text gText_YouRealizeTheyreEvilRight_IHadToGo {
 format("Yeah. Bianca and I had to go down there and defeat them and your goons.")
 }
 text gText_YouRealizeTheyreEvilRight_ThisOneIsLevel {
-format("This one is Level 40. Garbodor learns Explosion at Level 53.")
+format("This one is Level 40. Garbodor learns Explosion at Level 48.")
 }
 text gText_YouRealizeTheyreEvilRight_ButTheyDefinitelyCan {
 format("But they definitely can explode… so they're using Self-Destruct instead, right?")

@@ -147,7 +147,11 @@ const u8 *GetQuestDesc_PlayersAdventure()
 	{
 		return gText_PlayersAdventure_Flavor26;
 	}
-
+    else if (storyline == STORY_POST_YOU_REALIZE_WERE_EVIL
+                && (VarGet(VAR_ALCATRAZ_STATE) < ARCHER_SUMMONED_ALCATRAZ))
+    {
+        return gText_PlayersAdventure_Flavor26;
+    }
 	else if (storyline == STORY_POST_YOU_REALIZE_WERE_EVIL
 	            && (VarGet(VAR_ALCATRAZ_STATE) < POST_YOU_REALIZE_THEYRE_EVIL_RIGHT))
 	{
