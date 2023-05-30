@@ -144,6 +144,24 @@
       "var": "VAR_TEMP_F",
       "var_value": "0",
       "script": "LetsBurnThisMotherDown_CheckActiveQuest_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ALCATRAZ_STATE",
+      "var_value": "POST_YOU_REALIZE_THEYRE_EVIL_RIGHT",
+      "script": "YouRealizeTheyreEvilRight_PreventPlayer_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_ALCATRAZ_STATE",
+      "var_value": "POST_YOU_REALIZE_THEYRE_EVIL_RIGHT",
+      "script": "YouRealizeTheyreEvilRight_PreventPlayer_Script"
     }
   ],
   "bg_events": [

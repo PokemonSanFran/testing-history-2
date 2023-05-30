@@ -184,8 +184,14 @@ script YouRealizeTheyreEvil_ReleaseGarbodor_Script {
         waitse
 }
 
+script NewDebug_script{
+    setvar(VAR_ALCATRAZ_STATE,POST_YOU_REALIZE_THEYRE_EVIL_RIGHT)
+    warp(MAP_ALCATRAZ,39,14)
+}
+
 script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
     lock
+    goto(NewDebug_script)
         applymovement(PLAYER,YouRealizeTheyreEvilRight_WalkToGroup)
         waitmovement(0)
 
@@ -407,24 +413,64 @@ script YouRealizeTheyreEvilRight_RecievedGiftFanfare {
 }
 
 script YouRealizeTheyreEvilRight_InnerMonologue_Dialogue{
-        applymovement(ARCHER,YouRealizeTheyreEvilRight_WalkAroundToPlayer)
-        waitmovement(0)
-        applymovement(PLAYER,Common_Movement_FaceLeft)
-        waitmovement(0)
+    applymovement(ARCHER,YouRealizeTheyreEvilRight_WalkAroundToPlayer)
+    waitmovement(0)
+    applymovement(PLAYER,Common_Movement_FaceLeft)
+    waitmovement(0)
 
-        msgbox(gText_YouRealizeTheyreEvilRight_LookIKnowThis,,SPEAKER_ARCHER)
-        closemessage
+    msgbox(gText_YouRealizeTheyreEvilRight_LookIKnowThis,,SPEAKER_ARCHER)
+    closemessage
 
-        fadescreen(FADE_TO_BLACK)
-              msgbox(gText_YouRealizeTheyreEvilRight_ShouldIJoin,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
+    fadescreen(FADE_TO_BLACK)
+    msgbox(gText_YouRealizeTheyreEvilRight_ShouldIJoin,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
     msgbox(gText_YouRealizeTheyreEvilRight_JoiningThemMeansGoingDeeper,,SPEAKER_ZOEY,TAIL_THOUGHT)
     msgbox(gText_YouRealizeTheyreEvilRight_ButTheirCauseIsJust,,SPEAKER_ZOEY,TAIL_THOUGHT)
     msgbox(gText_YouRealizeTheyreEvilRight_ButAtWhatCost,,SPEAKER_ZOEY,TAIL_THOUGHT)
     msgbox(gText_YouRealizeTheyreEvilRight_CantDoIt,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
     msgbox(gText_YouRealizeTheyreEvilRight_MakingTheRightChoice,,SPEAKER_ZOEY,TAIL_THOUGHT)
-    msgbox(gText_YouRealizeTheyreEvilRight_SorryIfThisDisappointsYouAll,,SPEAKER_ZOEY,TAIL_THOUGHT)
     closemessage
-        fadescreen(FADE_FROM_BLACK)
+    fadescreen(FADE_FROM_BLACK)
+    goto(YouRealizeTheyreEvilRight_Confront_Dialogue)
+}
+
+script YouRealizeTheyreEvilRight_Confront_Dialogue{
+    msgbox(gText_YouRealizeTheyreEvilRight_SorryIfThisDisappointsYouAll,,SPEAKER_ZOEY)
+    closemessage
+    playse(SE_PIN)
+    applymovement(DRASNA,Common_Movement_ExclamationMark)
+    applymovement(MALVA,Common_Movement_ExclamationMark)
+    applymovement(ARCHER,Common_Movement_ExclamationMark)
+    waitmovement(ARCHER)
+    applymovement(MALVA,Common_Movement_FacePlayer)
+    waitmovement(MALVA)
+    msgbox(gText_YouRealizeTheyreEvilRight_WaitWhat,,SPEAKER_ARCHER,,EMOTE_SHOCK)
+    msgbox(gText_YouRealizeTheyreEvilRight_WowWasWrong,,SPEAKER_MALVA,TAIL_WHISPER,EMOTE_SAD)
+    msgbox(gText_YouRealizeTheyreEvilRight_DontYouUnderstand,,SPEAKER_ARCHER,,EMOTE_ANGRY)
+    msgbox(gText_YouRealizeTheyreEvilRight_JustBecause,,SPEAKER_ZOEY,,EMOTE_ANGRY)
+    msgbox(gText_YouRealizeTheyreEvilRight_CouldntHackIt,,SPEAKER_ARCHER,TAIL_SHOUT,EMOTE_ANGRY)
+    msgbox(gText_YouRealizeTheyreEvilRight_TheyreNot,,SPEAKER_DRASNA)
+    closemessage
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    waitmovement(PLAYER)
+    msgbox(gText_YouRealizeTheyreEvilRight_TheresNothingToGet,,SPEAKER_ZOEY)
+    closemessage
+    applymovement(PLAYER,Common_Movement_WalkDown)
+    warp(MAP_ALCATRAZ,39,14)
+    waitstate
+    release
+    end
+}
+
+script YouRealizeTheyreEvilRight_PreventPlayer_Script{
+    if (!flag(FLAG_TIMELINE_TIMETRAVEL)){
+        lock
+        msgbox(gText_YouRealizeTheyreEvilRight_ThisIsntWhere,,SPEAKER_ZOEY,TAIL_THOUGHT)
+        closemessage
+        applymovement(PLAYER,Common_Movement_WalkUp)
+        waitmovement(PLAYER)
+    }
+    release
+        end
 }
 
 script YouRealizeTheyreEvilRight_CantSleep_Script{
@@ -443,21 +489,28 @@ script YouRealizeTheyreEvilRight_CantSleep_Dialogue {
 }
 
 script YouRealizeTheyreEvilRight_NoIdea_Dialogue {
-        fadescreen(FADE_FROM_BLACK)
-        setvar(VAR_STORYLINE_STATE,STORY_MORNING_OF_TIMELINE_SPLIT)
+    fadescreen(FADE_FROM_BLACK)
+    setvar(VAR_STORYLINE_STATE,STORY_MORNING_OF_TIMELINE_SPLIT)
 
-                applymovement(PLAYER,OkayLetsFixIt_PaceNightmare)
-                waitmovement(0)
+    applymovement(PLAYER,OkayLetsFixIt_PaceNightmare)
+    waitmovement(0)
 
-        if (flag(FLAG_TIMELINE_TIMETRAVEL)){
-                lock
-                msgbox(gText_OkayLetsFixIt_WhatTheHell,,SPEAKER_ZOEY)
-                }
+    if (flag(FLAG_TIMELINE_TIMETRAVEL)){
+        lock
+            msgbox(gText_OkayLetsFixIt_WhatTheHell,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+            msgbox(gText_OkayLetsFixIt_WasThatReal,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+            msgbox(gText_OkayLetsFixIt_WhatIfIt,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SAD)
+            msgbox(gText_OkayLetsFixIt_IRememberI,,SPEAKER_ZOEY,TAIL_THOUGHT)
+    }else{
 
-                msgbox(gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat,,SPEAKER_ZOEY)
-                
-                closemessage
-                }
+        msgbox(gText_YouRealizeTheyreEvilRight_ICantBelieveIAlmost,,SPEAKER_ZOEY,TAIL_THOUGHT)
+            msgbox(gText_YouRealizeTheyreEvilRight_AndTheyWantToHelp,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_ANGRY)
+            msgbox(gText_YouRealizeTheyreEvilRight_ImGoingToBeOn,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    }
+closemessage
+    release
+    end
+}
 
 text gText_YouRealizeTheyreEvilRight_HolyShit {
 format("Holy shit. That was intense. Guess I need to think all this over, but something isn't adding up.")
@@ -657,7 +710,28 @@ text gText_YouRealizeTheyreEvilRight_MakingTheRightChoice{
 text gText_YouRealizeTheyreEvilRight_SorryIfThisDisappointsYouAll{
 	format("I'm sorry if this disappoints you all, but I won't compromise mysel - my values. I'm not going to join you.")
 }
-
+text gText_YouRealizeTheyreEvilRight_WaitWhat{
+    format("Wait what? {PLAYER}, you're making a mistake!")
+}
+text gText_YouRealizeTheyreEvilRight_WowWasWrong{
+    format("Wow... Siebold was wrong about you after all.")
+}
+text gText_YouRealizeTheyreEvilRight_DontYouUnderstand{
+    format("Don't you understand? You're being used, and they're not going to stop.")
+}
+text gText_YouRealizeTheyreEvilRight_JustBecause{
+    format("Just because you couldn't hack it doesn't mean the world is against you, Kai!")
+}
+text gText_YouRealizeTheyreEvilRight_CouldntHackIt{
+    format("Couldn't hack it? I got second to you, and you had a HUGE head start!")
+}
+text gText_YouRealizeTheyreEvilRight_TheyreNot{
+    format("Kai, {PLAYER} will not get it. Its too late.")
+}
+//PSF TODO Replace PLAYER with OBJECT pronoun
+text gText_YouRealizeTheyreEvilRight_TheresNothingToGet{
+    format("I'm not giving up what I have because you guys think Ycombinator is some big bad. Teamrocket is a bunch of thugs, and if you want to throw away your legacies to work with them, fine. I won't be apart of it.")
+}
 text gText_YouRealizeTheyreEvilRight_ThisGarbodor {
 format("Hey, this Garbodor seems to have taken a liking to you, and you seem to understand it pretty well. Do you want it?")
 }
@@ -673,11 +747,20 @@ format("Archer is still waiting for me at Alcatraz…")
 text gText_YouRealizeTheyreEvilRight_DoYouWantToGo {
 format("Do you want to go to bed?")
 }
-text gText_YouRealizeTheyreEvilRight_IHaveNoIdeaWhat {
-format("…I have no idea what I'm going to do. Do I help Ycombinator and the police end TeamRocket permanently? Or do I help TeamRocket clear their name and help the people of SanFran?")
+text gText_YouRealizeTheyreEvilRight_ICantBelieveIAlmost {
+format("I can't believe I almost fell for stunt. Me? Siding with Teamrocket? After everything I've been through? And all that stuff, just because the battling is a little different?")
+}
+text gText_YouRealizeTheyreEvilRight_AndTheyWantToHelp{
+format("And they claim they want to do better for region? Ycombinator is making jobs! And bringing people like me! And stopping terrorists.")
+}
+text gText_YouRealizeTheyreEvilRight_ImGoingToBeOn{
+format("I'm going to be on the right side of history.")
 }
 text gText_YouRealizeTheyreEvilRight_ObtainedGift {
 format("{PLAYER} was given the {STR_VAR_2}.")
+}
+text gText_YouRealizeTheyreEvilRight_ThisIsntWhere{
+    format("...This isn't where I'm supposed to be.")
 }
 
 movement YouRealizeTheyreEvilRight_StepBackward {

@@ -1097,7 +1097,7 @@ void JumpPlayerTo_MaybeIFuckedUp()
 	JumpPlayerTo_ExhibitionBattle();
 	VarSet(VAR_STORYLINE_STATE, STORY_RECIEVED_BAMBOO_STAR);
 	AddBagItem(ITEM_METEORITE, 1);
-	SetWarpDestination(0, 6, 1, -1, -1);
+    SetWarpDestination(MAP_GROUP(PSFROUTE22),MAP_NUM(PSFROUTE22),1,-1,-1);
 }
 void JumpPlayerTo_OkayLetsFixit()
 {
@@ -1111,7 +1111,8 @@ void JumpPlayerTo_OkayLetsFixit()
     QuestMenu_GetSetQuestState(QUEST_MANHUNT,FLAG_REMOVE_COMPLETED);
     QuestMenu_GetSetQuestState(QUEST_HOW_DISAPPOINTING,FLAG_REMOVE_COMPLETED);
     QuestMenu_GetSetQuestState(QUEST_LETS_BURN_THIS_MOTHER_DOWN,FLAG_REMOVE_COMPLETED);
-	SetWarpDestination(0, 58, 0, -1, -1);
+    RemoveBagItem(ITEM_METEORITE,1);
+	SetWarpDestination(MAP_GROUP(PRESIDIO_COMPOUND_1F), MAP_NUM(PRESIDIO_COMPOUND_1F), 0, -1, -1);
 }
 void JumpPlayerTo_LetsGettheBandBackTogether()
 {

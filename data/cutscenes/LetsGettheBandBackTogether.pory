@@ -16,7 +16,7 @@ script LetsGettheBandBackTogether_PreventPlayerEnterTower_Script {
 
     if (flag(FLAG_TIMELINE_TIMETRAVEL)) {
         lock
-            msgbox(gText_LetsGetTheBandBackTogether_IDontThinkIShould,,SPEAKER_ZOEY)
+            msgbox(gText_LetsGetTheBandBackTogether_IDontThinkIShould,,SPEAKER_ZOEY,TAIL_THOUGHT)
 
             closemessage
             applymovement(PLAYER,Common_Movement_WalkDown)
@@ -40,8 +40,9 @@ script LetsGettheBandBackTogether_MeetInBasement_Script {
         waitmovement(ARCHER)
         msgbox(gText_LetsGetTheBandBackTogether_IDidntThinkYouWere,MSGBOX_NPC,,SPEAKER_ARCHER)
 
-        if (flag(FLAG_TIMELINE_TIMETRAVEL)){
             msgbox(gText_LetsGetTheBandBackTogether_IHadAnInsane,,SPEAKER_ZOEY)
+            msgbox(gText_LetsGetTheBandBackTogether_DamnYouDid,,SPEAKER_ARCHER)
+            msgbox(gText_LetsGetTheBandBackTogether_YouHaveNoIdea,,SPEAKER_ZOEY,,EMOTE_SWEAT)
 
                 msgbox(gText_LetsGetTheBandBackTogether_IReallyThinkWith,,SPEAKER_ARCHER)
 
@@ -64,7 +65,6 @@ script LetsGettheBandBackTogether_MeetInBasement_Script {
                 closemessage
                 release
                 end
-        }
 }
 
 script LetsGettheBandBackTogether_TrueTimelineSplit_Script {
@@ -114,19 +114,27 @@ script LetsGettheBandBackTogether_TrueTimelineSplit_Script {
 
 }
 text gText_LetsGetTheBandBackTogether_IDidntThinkYouWere {
-    format("I didn’t think you were coming back. I can’t believe it worked!")
+    format("I didn’t think you were coming back.")
 }
 
 text gText_LetsGetTheBandBackTogether_IHadAnInsane {
-    format("I had an insane dream last night, which really helped.")
+    format("I had an insane dream last night, which really helped. I'm sorry about what I said yesterday. I was wrong. You can hack it. And Ycombinator... they're actually monsters.")
+}
+
+text gText_LetsGetTheBandBackTogether_DamnYouDid{
+    format("Damn, you did more thinking than I thought.")
+}
+
+text gText_LetsGetTheBandBackTogether_YouHaveNoIdea{
+    format("You have no idea how insane that dream was... but I'm serious. I'm here to help.")
 }
 
 text gText_LetsGetTheBandBackTogether_IReallyThinkWith {
-    format("I really think with you and the Elite Four here, we’ve got a fighting chance.")
+    format("I really think with you and the Elite Four here, we’ve got a fighting chance. You serious?")
 }
 
 text gText_LetsGetTheBandBackTogether_WaitTheEliteFour {
-    format("Wait, the Elite Four too?")
+    format("Wait, the entire Elite Four?")
 }
 
 text gText_LetsGetTheBandBackTogether_OkayKindaThatsActually {

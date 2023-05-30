@@ -73,12 +73,11 @@ script OkayLetsFixit_StartFlashback_Script {
         applymovement(PLAYER, Common_Movement_FaceRight)
         waitmovement(PLAYER)
 
-        msgbox(gText_OkayLetsFixIt_IWasTryingToHelp,,SPEAKER_ZOEY)
-        
-
-        msgbox(gText_OkayLetsFixIt_WouldYouChoose,,SPEAKER_HIKO)
-
-        msgbox(gText_OkayLetsFixIt_IfICouldDoItOver,,SPEAKER_ZOEY)
+        msgbox(gText_OkayLetsFixIt_IDidntBelieve,,SPEAKER_ZOEY,TAIL_WHISPER)
+        msgbox(gText_OkayLetsFixIt_YouSawItAll,,SPEAKER_HIKO)
+        msgbox(gText_OkayLetsFixIt_ImTheChampion,,SPEAKER_ZOEY,,EMOTE_SHOCK)
+        msgbox(gText_OkayLetsFixIt_AndNow,,SPEAKER_HIKO)
+        msgbox(gText_OkayLetsFixIt_AndNowIveBecome,,SPEAKER_ZOEY,,EMOTE_SAD)
         closemessage
         
         delay(30)
@@ -165,21 +164,23 @@ text gText_OkayLetsFixIt_LetsLookBack {
 text gText_OkayLetsFixIt_ThisWasTheNight {
     format("This was the night I decided to help Ycombinator.")
 }
-
 text gText_OkayLetsFixIt_Why {
     format("Why?")
 }
-
-text gText_OkayLetsFixIt_IWasTryingToHelp {
-    format("I was trying to help. I thought that was the right thing! But… I'm not sure now")
+text gText_OkayLetsFixIt_IDidntBelieve {
+    format("I didn't believe Archer and Teamrocket.")
 }
-
-text gText_OkayLetsFixIt_WouldYouChoose {
-    format("Would you choose differently?")
+text gText_OkayLetsFixIt_YouSawItAll {
+    format("You saw it all with your own eyes, no?")
 }
-
-text gText_OkayLetsFixIt_IfICouldDoItOver {
-    format("If I could do it over? I think so. I think I made the problem worse.")
+text gText_OkayLetsFixIt_ImTheChampion {
+    format("I'm the Champion! And I wanted to be a Champion so bad... and I knew that going against Ycombinator meant that it was over. I didn't want to believe them.")
+}
+text gText_OkayLetsFixIt_AndNow{
+    format("And now?")
+}
+text gText_OkayLetsFixIt_AndNowIveBecome{
+    format("And now I've become a cog in the machine that they were trying to stop. I'm actually a part of the problem. Lives got worse because of me.")
 }
 
 text gText_OkayLetsFixIt_WaitWhatWhoAreYou {
@@ -192,6 +193,18 @@ text gText_OkayLetsFixIt_IHopeYouMake {
 
 text gText_OkayLetsFixIt_WhatTheHell {
     format("What the hell was that? That dream was… insane. What the hell did I eat for dinner?")
+}
+
+text gText_OkayLetsFixIt_WasThatReal{
+    format("Was that real? I sided with Ycombinator and... made things worse? Yeah, that was worse. It was just a dream... but it felt so real!")
+}
+
+text gText_OkayLetsFixIt_WhatIfIt{
+    format("That regret felt so real though. I was so disappointed. I was so wrong. It was all wrong!")
+}
+
+text gText_OkayLetsFixIt_IRememberI{
+    format("I remember I yelled at Archer. I told him he couldn't hack it.I called them thugs. And I left. I was disguisting. Is he still there now?")
 }
 
 movement OkayLetsFixit_WalkToPeak {
