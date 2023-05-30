@@ -184,14 +184,8 @@ script YouRealizeTheyreEvil_ReleaseGarbodor_Script {
         waitse
 }
 
-script NewDebug_script{
-    setvar(VAR_ALCATRAZ_STATE,POST_YOU_REALIZE_THEYRE_EVIL_RIGHT)
-    warp(MAP_ALCATRAZ,39,14)
-}
-
 script YouRealizeTheyreEvilRight_PlayerArrived2F_Dialogue {
     lock
-    goto(NewDebug_script)
         applymovement(PLAYER,YouRealizeTheyreEvilRight_WalkToGroup)
         waitmovement(0)
 

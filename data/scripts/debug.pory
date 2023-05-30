@@ -65,7 +65,7 @@ script Debug_Script_1{
 }
 
 script Debug_Script_2{
-    warp(MAP_ALCATRAZ_B1F,10,12)
+    warp(MAP_ALCATRAZ_B1F,12,10)
     end
 }
 
@@ -85,11 +85,12 @@ script Debug_Script_5{
 }
 
 script Debug_Script_6{
-    warp(MAP_ALCATRAZ_B1F,10,12)
+    warp(MAP_ALCATRAZ_B1F,12,10)
     end
 }
 
 script Debug_Script_7{
+    warp(MAP_TENDERLOIN_PANTRY,0)
     end
 }
 

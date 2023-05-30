@@ -60,32 +60,37 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_PRESIDIO_COMPOUND_1F, 0
+	warp MAP_ALCATRAZ, 40, 15
 	end
 
 
 Debug_Script_2::
-	warpsilent MAP_TWINPEAKS, 24, 48
+	warp MAP_ALCATRAZ_B1F, 12, 10
 	end
 
 
 Debug_Script_3::
+	warpsilent MAP_PRESIDIO_COMPOUND_1F, 0
 	end
 
 
 Debug_Script_4::
+	warpsilent MAP_TWINPEAKS, 24, 48
 	end
 
 
 Debug_Script_5::
+	warpsilent MAP_SOMA, 5, 12
 	end
 
 
 Debug_Script_6::
+	warp MAP_ALCATRAZ_B1F, 12, 10
 	end
 
 
 Debug_Script_7::
+	warp MAP_TENDERLOIN_PANTRY, 0
 	end
 
 
