@@ -1,5 +1,6 @@
 Haightashbury_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Haightashbury_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Haightashbury_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Haightashbury_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
@@ -8,6 +9,10 @@ Haightashbury_Gym_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call_if_quest_complete QUEST_RESTOREHAIGHTASHBURY, Quest_Restorehaightashbury_Leader_Visibility_Script
 	goto Haightashbury_Gym_MapScripts_OnTransition
 	return
+
+Haightashbury_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TEMP_0, 0, Quest_Inversehallucinogenic_ScreenDistortion_Script
+	.2byte 0
 
 
 Haightashbury_Gym_Leader_Visibility_Script::

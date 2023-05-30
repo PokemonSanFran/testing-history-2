@@ -7,6 +7,18 @@ const FLAG_HIDE_PRYCE_GYM = FLAG_TEMP_3
 const PRYCE_OUTSIDE = 27
 const PRYCE = 1
 
+script Quest_Inversehallucinogenic_ScreenDistortion_Script{
+    addvar(VAR_TEMP_0,1)
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_INVERSEHALLUCINOGENIC)
+
+    if (var(VAR_RESULT)){
+        callnative(ScanlineEffect_InitWave_Defaults)
+    }else{
+        callnative(ScanlineEffect_Stop)
+    }
+    return
+}
+
 script Quest_Inversehallucinogenic_HideLeaderInGym_Script{
     if ((var(VAR_PRYCE_STATE) == QUEST_1_COMPLETE)){
         setflag(FLAG_HIDE_PRYCE_GYM)
@@ -82,24 +94,28 @@ script Quest_Inversehallucinogenic_EventScript_Torey{
 
 script Quest_Inversehallucinogenic_PostBattleStory1_Script{
     clearflag(FLAG_INVERSE_BATTLE)
+    call(Quest_Inversehallucinogenic_ScreenDistortion_Script)
     msgbox(gText_Inversehallucinogenic_TheyWantIt,,SPEAKER_PRYCE)
     closemessage
     end
 }
 script Quest_Inversehallucinogenic_PostBattleStory2_Script{
     clearflag(FLAG_INVERSE_BATTLE)
+    call(Quest_Inversehallucinogenic_ScreenDistortion_Script)
     msgbox(gText_Inversehallucinogenic_LyingToLenora,,SPEAKER_PRYCE)
     closemessage
     end
 }
 script Quest_Inversehallucinogenic_PostBattleStory3_Script{
     clearflag(FLAG_INVERSE_BATTLE)
+    call(Quest_Inversehallucinogenic_ScreenDistortion_Script)
     msgbox(gText_Inversehallucinogenic_IWantedTo,,SPEAKER_PRYCE)
     closemessage
     end
 }
 script Quest_Inversehallucinogenic_PostBattleStory4_Script{
     clearflag(FLAG_INVERSE_BATTLE)
+    call(Quest_Inversehallucinogenic_ScreenDistortion_Script)
     msgbox(gText_Inversehallucinogenic_AfterTheFirst,,SPEAKER_PRYCE)
     closemessage
     end

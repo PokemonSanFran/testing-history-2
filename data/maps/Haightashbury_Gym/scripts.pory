@@ -7,6 +7,9 @@ mapscripts Haightashbury_Gym_MapScripts {
         call_if_quest_complete(QUEST_RESTOREHAIGHTASHBURY,Quest_Restorehaightashbury_Leader_Visibility_Script)
         goto(Haightashbury_Gym_MapScripts_OnTransition)
     }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0: Quest_Inversehallucinogenic_ScreenDistortion_Script
+    ]
 }
 
 script Haightashbury_Gym_Leader_Visibility_Script{
