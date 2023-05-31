@@ -12,7 +12,7 @@
 #include "mazegen.h"
 #include "overworld.h"
 #include "wallclock.h"
-#include "quest_logic.c"
+#include "quest_logic.h"
 
 static void UpdatePerDay(struct Time *localTime);
 static void UpdatePerMinute(struct Time *localTime);

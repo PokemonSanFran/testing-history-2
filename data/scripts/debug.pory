@@ -94,12 +94,14 @@ script Debug_Script_3{
     return
     //end
 }
-
 script Debug_Script_4{
+    warp(MAP_TROLLEY_UNDERGROUND_EVOLUTIONSTONES_CAVE,0)
     end
 }
 
 script Debug_Script_5{
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_ROCKCOLLECTOR)
+    special(Quest_Rockcollector_RespawnStones)
     end
 }
 
