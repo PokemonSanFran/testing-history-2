@@ -98,12 +98,13 @@ static void Quest_Kitchenvolunteering_RestoreChosenPantryItem(void){
 // the quest Rock Collector
 // ***********************************************************************
 
-u8 Quest_Rockcollector_CheckTakenStoneFlags(void){
+bool8 Quest_Rockcollector_CheckTakenStoneFlags(void){
     u16 stoneFlag = 0;
     u8 numTakenStones = 0;
     bool8 allStonesTaken = FALSE;
+    u16 rockCollectorFlags = FLAG_ITEM_ROCKCOLLECTOR_STONE_START + ROCKCOLLECTOR_STONES_COUNT;
 
-    for (stoneFlag = FLAG_ITEM_ROCKCOLLECTOR_STONE_START; stoneFlag < QUEST_ROCKCOLLECTOR_SUB_COUNT; stoneFlag++){
+    for (stoneFlag = FLAG_ITEM_ROCKCOLLECTOR_STONE_START; stoneFlag < rockCollectorFlags; stoneFlag++){
         if (FlagGet(stoneFlag)){
             numTakenStones++;
         }
@@ -140,7 +141,7 @@ void Quest_Rockcollector_TakeAllStonesFromBag(void){
 
     if(Quest_Rockcollector_CheckBagAllStones()){
         for (i = 0; i < QUEST_ROCKCOLLECTOR_SUB_COUNT; i++){
-            RemoveBagItem(FIRST_EVOLUTION_STONE_INDEX+1,1);
+            RemoveBagItem(FIRST_EVOLUTION_STONE_INDEX+i,1);
             QuestMenu_GetSetSubquestState(QUEST_ROCKCOLLECTOR,FLAG_SET_COMPLETED,(SUB_QUEST_1 + i));
         }
     }
@@ -148,17 +149,15 @@ void Quest_Rockcollector_TakeAllStonesFromBag(void){
 
 
 void Quest_Rockcollector_CheckSubquestTakeStone(void){
-    u8 i = 0, j = 0, k = 0;
     u16 currentStone, currentQuest, currentFlag;
 
-    for (i = 0; i < QUEST_ROCKCOLLECTOR_SUB_COUNT; i++){
+    for (currentQuest = 0; currentQuest < QUEST_ROCKCOLLECTOR_SUB_COUNT; currentQuest++){
 
         currentStone = FIRST_EVOLUTION_STONE_INDEX + i;
-        currentQuest = i;
         currentFlag = FLAG_ITEM_ROCKCOLLECTOR_STONE_START + i;
 
-        //if ((!QuestMenu_GetSetSubquestState(FLAG_GET_COMPLETED,QUEST_ROCKCOLLECTOR,currentQuest)) && (CheckBagHasItem(currentStone,1))){
-        if (1 == 1){
+        if ((!QuestMenu_GetSetSubquestState(QUEST_ROCKCOLLECTOR,FLAG_GET_COMPLETED,currentQuest)) && (CheckBagHasItem(currentStone,1))){
+        //if (1 == 1){
             RemoveBagItem(currentStone,1);
             CopyItemName(currentStone, gStringVar1);
             StringCopy(gStringVar2,"this");
@@ -169,13 +168,13 @@ void Quest_Rockcollector_CheckSubquestTakeStone(void){
                 k++;
             }
         }
+    }
         VarSet(VAR_TEMP_1,j);
         VarSet(VAR_TEMP_2,k);
-    }
 }
 
 u16 Quest_Rockcollector_CountRemainingSubquests(void){
-    u8 currentQuest;
+    u8 currentQuest = 0;
     u16 numRemainingQuests = QUEST_ROCKCOLLECTOR_SUB_COUNT;
 
     for (currentQuest = 0; currentQuest < QUEST_ROCKCOLLECTOR_SUB_COUNT; currentQuest++){
@@ -188,4 +187,13 @@ u16 Quest_Rockcollector_CountRemainingSubquests(void){
         gSpecialVar_Result = numRemainingQuests;
         ConvertIntToDecimalStringN(gStringVar1,numRemainingQuests,STR_CONV_MODE_LEFT_ALIGN,2);
         return numRemainingQuests;
+}
+
+void Quest_Rockcollector_RespawnStones(void){
+    u16 stoneFlag = 0;
+    u16 rockCollectorFlags = FLAG_ITEM_ROCKCOLLECTOR_STONE_START + ROCKCOLLECTOR_STONES_COUNT;
+
+    for (stoneFlag = FLAG_ITEM_ROCKCOLLECTOR_STONE_START; stoneFlag < rockCollectorFlags; stoneFlag++){
+        FlagClear(stoneFlag);
+    }
 }

@@ -12,6 +12,7 @@
 #include "mazegen.h"
 #include "overworld.h"
 #include "wallclock.h"
+#include "quest_logic.c"
 
 static void UpdatePerDay(struct Time *localTime);
 static void UpdatePerMinute(struct Time *localTime);
@@ -43,7 +44,6 @@ static void UpdatePerDay(struct Time *localTime)
     {
         daysSince = localTime->days - *days;
         ClearDailyFlags();
-        GenerateMazeLayoutSeed();
         UpdateDewfordTrendPerDay(daysSince);
         UpdateTVShowsPerDay(daysSince);
         UpdateWeatherPerDay(daysSince);
@@ -54,6 +54,8 @@ static void UpdatePerDay(struct Time *localTime)
         UpdateFrontierGambler(daysSince);
         SetShoalItemFlag(daysSince);
         SetRandomLotteryNumber(daysSince);
+        GenerateMazeLayoutSeed();
+        Quest_Rockcollector_RespawnStones();
         *days = localTime->days;
     }
 }

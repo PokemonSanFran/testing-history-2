@@ -81,16 +81,16 @@ script Debug_Script_2{
 }
 
 script Debug_Script_3{
-        additem(ITEM_FIRE_STONE,1)
-additem(ITEM_WATER_STONE,1)
-additem(ITEM_THUNDER_STONE,1)
-additem(ITEM_LEAF_STONE,1)
-additem(ITEM_MOON_STONE,1)
-additem(ITEM_SUN_STONE,1)
-additem(ITEM_SHINY_STONE,1)
-additem(ITEM_DUSK_STONE,1)
-additem(ITEM_DAWN_STONE,1)
-additem(ITEM_ICE_STONE,1)
+    additem(ITEM_FIRE_STONE,1)
+    additem(ITEM_WATER_STONE,1)
+    additem(ITEM_THUNDER_STONE,1)
+    additem(ITEM_LEAF_STONE,1)
+    additem(ITEM_MOON_STONE,1)
+    additem(ITEM_SUN_STONE,1)
+    additem(ITEM_SHINY_STONE,1)
+    additem(ITEM_DUSK_STONE,1)
+    additem(ITEM_DAWN_STONE,1)
+    additem(ITEM_ICE_STONE,1)
     return
     //end
 }

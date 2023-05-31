@@ -9,10 +9,14 @@ script Quest_Rockcollector_Event_Script{
 }
 
 script Quest_Rockcollector_StartQuest_Dialogue{
+    msgbox(gText_Quest_Rockcollector_HeyRider)
+    msgbox(gText_Quest_Rockcollector_ThePromotion)
     special(Quest_Rockcollector_CheckTakenStoneFlags)
+
     if (var(VAR_RESULT)){
         goto(Quest_Rockcollector_Secret_Dialogue)
     }
+
     startquest(QUEST_ROCKCOLLECTOR)
 }
 
@@ -22,6 +26,8 @@ script Quest_Rockcollector_Secret_Dialogue{
 }
 
 script Quest_Rockcollector_Active_Dialogue{
+//PSF TODO add yes or no dialogue for taking the stones
+//PSF Need to create the cave itself
     setvar(VAR_TEMP_1,0)
     setvar(VAR_TEMP_2,0)
 
@@ -34,7 +40,7 @@ script Quest_Rockcollector_Progress_Dialogue{
     switch (var(VAR_TEMP_1)){
         case 0: msgbox(gText_Quest_Rockcollector_HowGoes)
         case 1: msgbox(gText_Quest_Rockcollector_Awesome)
-        case 2: msgbox(gText_Quest_Rockcollector_WowTheseStones)
+        default: msgbox(gText_Quest_Rockcollector_WowTheseStones)
     }
 
     if (var(VAR_TEMP_2)){
@@ -79,7 +85,7 @@ text gText_Quest_Rockcollector_HowGoes{
     format("Have you managed to get down there and grab some stones?")
 }
 text gText_Quest_Rockcollector_Huh{
-    format("Huh, there's no dust on this stone. Did it really come from underground?")
+    format("Huh, I was expecting more dust from stones that came from underground...")
 }
 text gText_Quest_Rockcollector_YouKnowIf{
     format("You know, if you go back down there tomorrow, you might find more stones...")
