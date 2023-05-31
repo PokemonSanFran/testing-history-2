@@ -9,11 +9,23 @@ script Quest_Rockcollector_Event_Script{
 }
 
 script Quest_Rockcollector_StartQuest_Dialogue{
+    msgbox(gText_Quest_Rockcollector_YoureBack)
+    msgbox(gText_Quest_Rockcollector_IHaveATiny)
+    msgbox(gText_Quest_Rockcollector_CanITrustYou)
     special(Quest_Rockcollector_CheckTakenStoneFlags)
     if (var(VAR_RESULT)){
         goto(Quest_Rockcollector_Secret_Dialogue)
+    }else{
+        goto(Quest_Rockcollector_Reveal_Dialogue)
     }
+}
+
+script Quest_Rockcollector_Reveal_Dialogue{
     startquest(QUEST_ROCKCOLLECTOR)
+    msgbox(gText_Quest_Rockcollector_IfYouGoBehind)
+    closemessage
+    release
+    end
 }
 
 script Quest_Rockcollector_Secret_Dialogue{
@@ -44,7 +56,7 @@ script Quest_Rockcollector_Active_Dialogue{
 script Quest_Rockcollector_Refuse_Dialogue{
     msgbox(gText_Quest_Rockcollector_OhOkayWell)
     closemessage
-    release:
+    release
     end
 }
 
@@ -65,17 +77,22 @@ script Quest_Rockcollector_GoToReward_Script{
     special(Quest_Rockcollector_CountRemainingSubquests)  
 
     if (var(VAR_RESULT) == 0){
+        msgbox(gText_Quest_Rockcollector_OkayIveGot)
         goto(Quest_Rockcollector_Reward_Dialogue)
-    }else{
+    }elif(var(VAR_RESULT) < 10){
         msgbox(gText_Quest_Rockcollector_OnlyXMore)
+    }
         closemessage
         release
         end
-    }
 }
 
 script Quest_Rockcollector_Reward_Dialogue{
+    msgbox(gText_Quest_Rockcollector_ThankYouSoMuch)
+    giveitem(ITEM_TM64)
     completequest(QUEST_ROCKCOLLECTOR)
+    release
+    end
 }
 
 script Quest_Rockcollector_Complete_Dialogue{
@@ -95,6 +112,22 @@ script Quest_Rockcollector_Complete_Dialogue{
     end
 }
 
+// PSF TODO cave with evolution stones should be a tiny maze with the mining mini game on the walls available all the time, and a randomly spawning evolution stone on the ground, once a day. once a stone is picked up off the ground, it doesn't respawn until quest is completed
+//
+// trolley dude should give you the mining kit and let you keep it if you finish
+
+text gText_Quest_Rockcollector_YoureBack{
+    format("You're back! How's the trolley treating you?")
+}
+text gText_Quest_Rockcollector_IHaveATiny{
+    format("I have a tiny issue though... that promotion from before, where I gave you the stone? It's actually doing surprisingly well! But I'm running low on stones now. There's a secret spot where I usually get them from, but I sprained my ankle, so I can't go myself.")
+}
+text gText_Quest_Rockcollector_CanITrustYou{
+    format("Can I trust you? Head down there and grab one of each stone, and bring them back to me. That should hold me over until my ankle heals...")
+}
+text gText_Quest_Rockcollector_IfYouGoBehind{
+    format("If you go behind the terminal in Dogpatch, you can get underground and there are stones down there already.")
+}
 text gText_Quest_Rockcollector_Awesome{
     format("All right, great job finding this {STR_VAR_1}.")
 }
@@ -122,6 +155,12 @@ text gText_Quest_Rockcollector_OhOkayWell{
 }
 text gText_Quest_Rockcollector_YouveAlready{
     format("You've already been down there? Well, that's embarassing... I should hide the entrance better. Do you still have the stones? Can I have them instead?")
+}
+text gText_Quest_Rockcollector_OkayIveGot{
+    format("Okay, I've got one of each stone.")
+}
+text gText_Quest_Rockcollector_ThankYouSoMuch{
+    format("Thank you so much for your help! I'm not a Trainer, but somebody left this on the trolley recently. I guess you can use it!")
 }
 text gText_Quest_Rockcollector_KeepOnRiding{
     format("Keep on riding those trolleys, {PLAYER}!")
