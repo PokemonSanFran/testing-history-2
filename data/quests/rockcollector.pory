@@ -1,0 +1,86 @@
+//gText_Quest_Rockcollector_
+//Quest_Rockcollector_
+
+script Quest_Rockcollector_Event_Script{
+    goto_if_quest_complete(QUEST_ROCKCOLLECTOR,Quest_Rockcollector_Complete_Dialogue)
+    goto_if_quest_reward(QUEST_ROCKCOLLECTOR,Quest_Rockcollector_Reward_Dialogue)
+    goto_if_quest_active(QUEST_ROCKCOLLECTOR,Quest_Rockcollector_Active_Dialogue)
+    goto(Tenderloin_TrolleyHQ_CounterWorker_Dialogue)
+}
+
+script Quest_Rockcollector_StartQuest_Dialogue{
+    special(Quest_Rockcollector_CheckTakenStoneFlags)
+    if (var(VAR_RESULT)){
+        goto(Quest_Rockcollector_Secret_Dialogue)
+    }
+    startquest(QUEST_ROCKCOLLECTOR)
+}
+
+script Quest_Rockcollector_Secret_Dialogue{
+    special(Quest_Rockcollector_TakeAllStonesFromBag)
+    goto(Quest_Rockcollector_Reward_Dialogue)
+}
+
+script Quest_Rockcollector_Active_Dialogue{
+    setvar(VAR_TEMP_1,0)
+    setvar(VAR_TEMP_2,0)
+
+    special(Quest_Rockcollector_CheckSubquestTakeStone)
+    call(Quest_Rockcollector_Progress_Dialogue)
+    call(Quest_Rockcollector_GoToReward_Script)
+}
+
+script Quest_Rockcollector_Progress_Dialogue{
+    switch (var(VAR_TEMP_1)){
+        case 0: msgbox(gText_Quest_Rockcollector_HowGoes)
+        case 1: msgbox(gText_Quest_Rockcollector_Awesome)
+        case 2: msgbox(gText_Quest_Rockcollector_WowTheseStones)
+    }
+
+    if (var(VAR_TEMP_2)){
+        msgbox(gText_Quest_Rockcollector_Huh)
+    }
+    return
+}
+
+script Quest_Rockcollector_GoToReward_Script{
+    special(Quest_Rockcollector_CountRemainingSubquests)  
+
+    if (var(VAR_RESULT) == 0){
+        goto(Quest_Rockcollector_Reward_Dialogue)
+    }else{
+        msgbox(gText_Quest_Rockcollector_OnlyXMore)
+        closemessage
+        release
+        end
+    }
+}
+
+script Quest_Rockcollector_Reward_Dialogue{
+    completequest(QUEST_ROCKCOLLECTOR)
+}
+
+script Quest_Rockcollector_Complete_Dialogue{
+    //PSF TODO add daily script to clear the flags set underground, so that stones regenerate each day
+    //all stones get cleared out, one stone is randoly picked and regenerates, and happens every day
+    msgbox(gText_Quest_Rockcollector_YouKnowIf)
+}
+
+text gText_Quest_Rockcollector_Awesome{
+    format("All right, great job finding this {STR_VAR_1}.")
+}
+text gText_Quest_Rockcollector_WowTheseStones{
+    format("Wow, these stones are great!")
+}
+text gText_Quest_Rockcollector_OnlyXMore{
+    format("I think you've got... {STR_VAR_1} to go!")
+}
+text gText_Quest_Rockcollector_HowGoes{
+    format("Have you managed to get down there and grab some stones?")
+}
+text gText_Quest_Rockcollector_Huh{
+    format("Huh, there's no dust on this stone. Did it really come from underground?")
+}
+text gText_Quest_Rockcollector_YouKnowIf{
+    format("You know, if you go back down there tomorrow, you might find more stones...")
+}

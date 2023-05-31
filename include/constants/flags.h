@@ -1054,31 +1054,18 @@
 
 // Item Ball Flags
 #define FLAG_ITEM_ROUTE_102_POTION                                  0x3E8
-#define FLAG_ITEM_MARIN_RANGER_HEADPHONES                           0x3E8
 #define FLAG_ITEM_ROUTE_116_X_SPECIAL                               0x3E9
-#define FLAG_ITEM_MARIN_RANGER_WIDE_LENS                            0x3E9
 #define FLAG_ITEM_ROUTE_104_PP_UP                                   0x3EA
-#define FLAG_ITEM_MARIN_RANGER_ROCKY_HELMET                         0x3EA
-#define FLAG_ITEM_LAKEMERCED_STUFF1                                 0x3EB
 #define FLAG_ITEM_ROUTE_105_IRON                                    0x3EB
-#define FLAG_ITEM_LAKEMERCED_STUFF2                                 0x3EC
 #define FLAG_ITEM_ROUTE_106_PROTEIN                                 0x3EC
-#define FLAG_ITEM_LAKEMERCED_STUFF3                                 0x3ED
 #define FLAG_ITEM_ROUTE_109_PP_UP                                   0x3ED
-#define FLAG_ITEM_LAKEMERCED_STUFF4                                 0x3EE
 #define FLAG_ITEM_ROUTE_109_RARE_CANDY                              0x3EE
-#define FLAG_ITEM_LAKEMERCED_STUFF5                                 0x3EF
 #define FLAG_ITEM_ROUTE_110_DIRE_HIT                                0x3EF
-#define FLAG_ITEM_LAKEMERCED_STUFF6                                 0x3F0
 #define FLAG_ITEM_ROUTE_111_TM37                                    0x3F0
-#define FLAG_ITEM_LAKEMERCED_STUFF7                                 0x3F1
 #define FLAG_ITEM_ROUTE_111_STARDUST                                0x3F1
-#define FLAG_ITEM_LAKEMERCED_STUFF8                                 0x3F2
 #define FLAG_ITEM_ROUTE_111_HP_UP                                   0x3F2
-#define FLAG_ITEM_LAKEMERCED_STUFF9                                 0x3F3
 #define FLAG_ITEM_ROUTE_112_NUGGET                                  0x3F3
 #define FLAG_ITEM_ROUTE_113_MAX_ETHER                               0x3F4
-#define FLAG_ITEM_GLDNGTEWILDS_ENGAGEMENT_RING 0x3F4
 #define FLAG_ITEM_ROUTE_113_SUPER_REPEL                             0x3F5
 #define FLAG_ITEM_ROUTE_114_RARE_CANDY                              0x3F6
 #define FLAG_ITEM_ROUTE_114_PROTEIN                                 0x3F7
@@ -1237,6 +1224,36 @@
 #define FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE                       0x490
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
+
+//PSF Item Ball Scripts
+#define FLAG_ITEM_MARIN_RANGER_HEADPHONES                           0x3E8
+#define FLAG_ITEM_MARIN_RANGER_WIDE_LENS                            0x3E9
+#define FLAG_ITEM_MARIN_RANGER_ROCKY_HELMET                         0x3EA
+#define FLAG_ITEM_LAKEMERCED_STUFF1                                 0x3EB
+#define FLAG_ITEM_LAKEMERCED_STUFF2                                 0x3EC
+#define FLAG_ITEM_LAKEMERCED_STUFF3                                 0x3ED
+#define FLAG_ITEM_LAKEMERCED_STUFF4                                 0x3EE
+#define FLAG_ITEM_LAKEMERCED_STUFF5                                 0x3EF
+#define FLAG_ITEM_LAKEMERCED_STUFF6                                 0x3F0
+#define FLAG_ITEM_LAKEMERCED_STUFF7                                 0x3F1
+#define FLAG_ITEM_LAKEMERCED_STUFF8                                 0x3F2
+#define FLAG_ITEM_LAKEMERCED_STUFF9                                 0x3F3
+#define FLAG_ITEM_GLDNGTEWILDS_ENGAGEMENT_RING                      0x3F4
+
+#define FLAG_ITEM_ROCKCOLLECTOR_STONE_START    FLAG_ITEM_ROCKCOLLECTOR_CAVE_FIRE_STONE 
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_FIRE_STONE	0x3F5
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_WATER_STONE	 0x3F6
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_THUNDER_STONE	    0x3F7
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_LEAF_STONE                            0x3F8
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_MOON_STONE	       0x3F9
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_SUN_STONE	       0x3FA
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_SHINY_STONE	      0x3FB
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_DUSK_STONE	      0x3FC
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_DAWN_STONE	      0x3FD
+#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_ICE_STONE	 0x3FE
+#define FLAG_ITEM_ROCKCOLLECTOR_STONE_END    FLAG_ITEM_ROCKCOLLECTOR_CAVE_ICE_STONE
+
+#define ROCKCOLLECTOR_STONES_COUNT  (FLAG_ITEM_ROCKCOLLECTOR_STONE_END - FLAG_ITEM_ROCKCOLLECTOR_STONE_START + 1)
 
 #define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
 #define FLAG_UNUSED_0x494                                           0x494 // Unused Flag

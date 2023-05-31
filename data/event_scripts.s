@@ -1282,7 +1282,7 @@ Script_RemoveTint::
 .include "data/quests/neighborhoodcleanup2.inc"
 .include "data/quests/neighborhoodcleanup3.inc"
 .include "data/quests/neighborhoodcleanup4.inc"
-// .include "data/quests/rockcollector.inc"
+.include "data/quests/rockcollector.inc"
 .include "data/quests/hang20.inc"
 .include "data/quests/allthatglittersmightbegold.inc"
 .include "data/quests/unknownfishingquest.inc"

@@ -2,6 +2,12 @@ Tenderloin_TrolleyHQ_MapScripts::
 	.byte 0
 
 
+Tenderloin_TrolleyHQ_Manager_Quest_Script::
+	goto_if_quest_inactive QUEST_ROCKCOLLECTOR, Quest_BetweenAStoneAndAHardPlace_Event_Script
+	goto Quest_Rockcollector_Event_Script
+	return
+
+
 Tenderloin_TrolleyHQ_CounterWorker_Dialogue::
 	msgbox gText_Tenderloin_TrolleyHQ_DoYouHave, MSGBOX_NPC
 	end

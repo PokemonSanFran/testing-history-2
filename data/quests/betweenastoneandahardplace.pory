@@ -5,14 +5,10 @@
 //PSF TODO replace all uses of VAR_NUM_TROLLEY_RIDES with GAME_STAT_TROLLEY_RIDES so we're not using two variables for the same thing
 
 script Quest_BetweenAStoneAndAHardPlace_Event_Script{
-    returnqueststate(QUEST_BETWEENASTONEANDAHARD)
-
-    switch(var(VAR_RESULT)){
-        case 1: goto(Tenderloin_TrolleyHQ_CounterWorker_Dialogue)
-        case 2: goto(Quest_BetweenAStoneAndAHardPlace_Active_Dialogue)
-        case 3: goto(Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue)
-        case 4: goto(Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue)
-    }
+    goto_if_quest_complete(QUEST_BETWEENASTONEANDAHARD,Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue)
+    goto_if_quest_reward(QUEST_BETWEENASTONEANDAHARD,Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue)
+    goto_if_quest_active(QUEST_BETWEENASTONEANDAHARD,Quest_BetweenAStoneAndAHardPlace_Active_Dialogue)
+    goto(Tenderloin_TrolleyHQ_CounterWorker_Dialogue)
 }
 
 script Quest_BetweenAStoneAndAHardPlace_Active_Dialogue{
@@ -41,6 +37,7 @@ script Quest_BetweenAStoneAndAHardPlace_Active_Dialogue{
 }
 
 script Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue{
+    setflag(FLAG_TEMP_1)
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_GladToSeeYoureEnjoying,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_ForYourContinuedRidership,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
 
@@ -60,14 +57,16 @@ script Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue{
 
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_Yeah,MSGBOX_NPC,SPEAKER_ZOEY)
-    
-
     completequest(QUEST_BETWEENASTONEANDAHARD)
     release
     end
 }
 
 script Quest_BetweenAStoneAndAHardPlace_Complete_Dialogue{
+    special(GetNumberOfBadges)
+    if (!flag(FLAG_TEMP_1) || (var(VAR_RESULT) > 4)){
+        goto(Quest_Rockcollector_StartQuest_Dialogue) 
+    }
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
     end
 }
@@ -100,5 +99,5 @@ text gText_Quest_BetweenAStoneAndAHardPlace_Yeah {
     format("...yeah. Not what I was expecting. But thanks, I guess.")
 }
 text gText_Quest_BetweenAStoneAndAHardPlace_WeShouldPivot{
-    format("We should pivot to a more hoonest advertising model. I don't think I can handle more angry messages on Twitter!")
+    format("We should pivot to a more honest advertising model. I don't think I can handle more angry messages on Twitter!")
 }

@@ -568,3 +568,7 @@ gSpecials::
     def_special Quest_Kitchenvolunteering_GeneratePantryItem
     def_special Quest_Kitchenvolunteering_CheckProgressAndSetReward
     def_special Quest_Kitchenvolunteering_ChooseRandomPantryItem
+    def_special Quest_Rockcollector_CheckTakenStoneFlags
+    def_special Quest_Rockcollector_TakeAllStonesFromBag
+    def_special Quest_Rockcollector_CountRemainingSubquests
+    def_special Quest_Rockcollector_CheckSubquestTakeStone
