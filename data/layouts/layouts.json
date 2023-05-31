@@ -6240,6 +6240,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/CaveTemplate_Water1/border.bin",
       "blockdata_filepath": "data/layouts/CaveTemplate_Water1/map.bin"
+    },
+    {
+      "id": "LAYOUT_TROLLEY_UNDERGROUND_EVOLUTIONSTONES_CAVE",
+      "name": "Trolley_Underground_Evolutionstones_Cave_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Trolley_Underground_Evolutionstones_Cave/border.bin",
+      "blockdata_filepath": "data/layouts/Trolley_Underground_Evolutionstones_Cave/map.bin"
     }
   ]
 }

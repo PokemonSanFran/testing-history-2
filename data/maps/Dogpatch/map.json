@@ -306,6 +306,13 @@
       "elevation": 0,
       "dest_map": "MAP_DOGPATCH_BIKERHQ",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 24,
+      "y": 47,
+      "elevation": 0,
+      "dest_map": "MAP_TROLLEY_UNDERGROUND_EVOLUTIONSTONES_CAVE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

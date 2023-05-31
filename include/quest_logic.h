@@ -3,5 +3,6 @@
 
 void Quest_Kitchenvolunteering_CreatePantryMaze(void);
 u8 Quest_Kitchenvolunteering_CountRemainingItems(void);
+void Quest_Rockcollector_RespawnStones(void);
 
 #endif //GUARD_QUESTLOGIC_H

@@ -60,7 +60,6 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    call(Debug_Script_3)
     questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BETWEENASTONEANDAHARD)
     warp(MAP_TENDERLOIN_TROLLEY_HQ,3,3)
     end
@@ -77,10 +76,6 @@ script Debug_Script_2{
     setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_DUSK_STONE)
     setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_DAWN_STONE)
     setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_ICE_STONE)
-    end
-}
-
-script Debug_Script_3{
     additem(ITEM_FIRE_STONE,1)
     additem(ITEM_WATER_STONE,1)
     additem(ITEM_THUNDER_STONE,1)
@@ -91,21 +86,28 @@ script Debug_Script_3{
     additem(ITEM_DUSK_STONE,1)
     additem(ITEM_DAWN_STONE,1)
     additem(ITEM_ICE_STONE,1)
-    return
-    //end
+    end
 }
+
+script Debug_Script_3{
+    additem(ITEM_DAWN_STONE,1)
+    additem(ITEM_FIRE_STONE,1)
+    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_DAWN_STONE)
+    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_FIRE_STONE)
+}
+
 script Debug_Script_4{
-    warp(MAP_TROLLEY_UNDERGROUND_EVOLUTIONSTONES_CAVE,0)
+    additem(ITEM_ICE_STONE,1)
     end
 }
 
 script Debug_Script_5{
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_ROCKCOLLECTOR)
-    special(Quest_Rockcollector_RespawnStones)
+    warp(MAP_TROLLEY_UNDERGROUND_EVOLUTIONSTONES_CAVE,0)
     end
 }
 
 script Debug_Script_6{
+    special(Quest_Rockcollector_RespawnStones)
     end
 }
 

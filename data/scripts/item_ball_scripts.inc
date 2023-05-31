@@ -741,3 +741,44 @@ Gldngtewilds_Quest_Employedeverafter_EventScript_EngagementRing::
     finditem ITEM_ENGAGEMENT_RING
     call_if_set FLAG_QUEST_EMPLOYEDEVERAFTER_FOUND_BRIDE, Quest_Employedeverafter_ProgressQuestWithRing_Script
     end
+
+Sunset_Quest_Rockcollector_EventScript_Fire_Stone::
+    finditem ITEM_FIRE_STONE
+    end
+
+Sunset_Quest_Rockcollector_EventScript_Water_Stone::
+    finditem ITEM_WATER_STONE
+    end
+
+Sunset_Quest_Rockcollector_EventScript_Thunder_Stone::
+    finditem ITEM_THUNDER_STONE
+    end
+
+Sunset_Quest_Rockcollector_EventScript_Leaf_Stone::
+    finditem ITEM_LEAF_STONE
+    end
+
+Sunset_Quest_Rockcollector_EventScript_Moon_Stone::
+    finditem ITEM_MOON_STONE
+    end
+
+Sunset_Quest_Rockcollector_EventScript_Sun_Stone::
+    finditem ITEM_SUN_STONE
+    end
+
+Sunset_Quest_Rockcollector_EventScript_Shiny_Stone::
+    finditem ITEM_SHINY_STONE
+    end
+
+Sunset_Quest_Rockcollector_EventScript_Dusk_Stone::
+    finditem ITEM_DUSK_STONE
+    end
+
+Sunset_Quest_Rockcollector_EventScript_Dawn_Stone::
+    finditem ITEM_DAWN_STONE
+    end
+
+Sunset_Quest_Rockcollector_EventScript_Ice_Stone::
+    finditem ITEM_ICE_STONE
+    end
+

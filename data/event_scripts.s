@@ -1519,3 +1519,4 @@ Script_RemoveTint::
 	.include "data/maps/CaveTemplate_Water/scripts.inc"
 
 	.include "data/maps/CaveTemplate_Water1/scripts.inc"
+    .include "data/maps/Trolley_Underground_Evolutionstones_Cave/scripts.inc"

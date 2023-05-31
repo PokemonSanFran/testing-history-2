@@ -1437,7 +1437,7 @@ static const struct SubQuest sRockCollector_Sub[QUEST_ROCKCOLLECTOR_SUB_COUNT] =
 	        gText_Quest_RockCollector_Sub5_Name,
 	        gText_Quest_RockCollector_Sub5_Desc,
 	        gText_Quest_RockCollector_Sub5_Map,
-	        ITEM_MOON_STONE,
+	        ITEM_ICE_STONE,
 	        ITEM,
 	        sText_Delievered
 	),
@@ -1455,7 +1455,7 @@ static const struct SubQuest sRockCollector_Sub[QUEST_ROCKCOLLECTOR_SUB_COUNT] =
 	        gText_Quest_RockCollector_Sub7_Name,
 	        gText_Quest_RockCollector_Sub7_Desc,
 	        gText_Quest_RockCollector_Sub7_Map,
-	        ITEM_SHINY_STONE,
+	        ITEM_MOON_STONE,
 	        ITEM,
 	        sText_Delievered
 	),
@@ -1464,7 +1464,7 @@ static const struct SubQuest sRockCollector_Sub[QUEST_ROCKCOLLECTOR_SUB_COUNT] =
 	        gText_Quest_RockCollector_Sub8_Name,
 	        gText_Quest_RockCollector_Sub8_Desc,
 	        gText_Quest_RockCollector_Sub8_Map,
-	        ITEM_DUSK_BALL,
+	        ITEM_SHINY_STONE,
 	        ITEM,
 	        sText_Delievered
 	),
@@ -1473,7 +1473,7 @@ static const struct SubQuest sRockCollector_Sub[QUEST_ROCKCOLLECTOR_SUB_COUNT] =
 	        gText_Quest_RockCollector_Sub9_Name,
 	        gText_Quest_RockCollector_Sub9_Desc,
 	        gText_Quest_RockCollector_Sub9_Map,
-	        ITEM_DAWN_STONE,
+	        ITEM_DUSK_STONE,
 	        ITEM,
 	        sText_Delievered
 	),
@@ -1482,7 +1482,7 @@ static const struct SubQuest sRockCollector_Sub[QUEST_ROCKCOLLECTOR_SUB_COUNT] =
 	        gText_Quest_RockCollector_Sub10_Name,
 	        gText_Quest_RockCollector_Sub10_Desc,
 	        gText_Quest_RockCollector_Sub10_Map,
-	        ITEM_ICE_STONE,
+	        ITEM_DAWN_STONE,
 	        ITEM,
 	        sText_Delievered
 	),

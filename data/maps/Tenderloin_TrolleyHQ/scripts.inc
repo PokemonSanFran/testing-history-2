@@ -3,6 +3,8 @@ Tenderloin_TrolleyHQ_MapScripts::
 
 
 Tenderloin_TrolleyHQ_Manager_Quest_Script::
+	lock
+	faceplayer
 	goto_if_quest_inactive QUEST_ROCKCOLLECTOR, Quest_BetweenAStoneAndAHardPlace_Event_Script
 	goto Quest_Rockcollector_Event_Script
 	return

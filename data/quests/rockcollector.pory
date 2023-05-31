@@ -9,25 +9,30 @@ script Quest_Rockcollector_Event_Script{
 }
 
 script Quest_Rockcollector_StartQuest_Dialogue{
-    msgbox(gText_Quest_Rockcollector_HeyRider)
-    msgbox(gText_Quest_Rockcollector_ThePromotion)
     special(Quest_Rockcollector_CheckTakenStoneFlags)
-
     if (var(VAR_RESULT)){
         goto(Quest_Rockcollector_Secret_Dialogue)
     }
-
     startquest(QUEST_ROCKCOLLECTOR)
 }
 
 script Quest_Rockcollector_Secret_Dialogue{
+    msgbox(gText_Quest_Rockcollector_YouveAlready,MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        startquest(QUEST_ROCKCOLLECTOR)
+        goto(Quest_Rockcollector_Refuse_Dialogue)
+    }
+
     special(Quest_Rockcollector_TakeAllStonesFromBag)
     goto(Quest_Rockcollector_Reward_Dialogue)
 }
 
 script Quest_Rockcollector_Active_Dialogue{
-//PSF TODO add yes or no dialogue for taking the stones
-//PSF Need to create the cave itself
+    msgbox(gText_Quest_Rockcollector_AreYouSure,MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        goto(Quest_Rockcollector_Refuse_Dialogue)
+    }
+
     setvar(VAR_TEMP_1,0)
     setvar(VAR_TEMP_2,0)
 
@@ -36,14 +41,21 @@ script Quest_Rockcollector_Active_Dialogue{
     call(Quest_Rockcollector_GoToReward_Script)
 }
 
+script Quest_Rockcollector_Refuse_Dialogue{
+    msgbox(gText_Quest_Rockcollector_OhOkayWell)
+    closemessage
+    release:
+    end
+}
+
 script Quest_Rockcollector_Progress_Dialogue{
     switch (var(VAR_TEMP_1)){
         case 0: msgbox(gText_Quest_Rockcollector_HowGoes)
         case 1: msgbox(gText_Quest_Rockcollector_Awesome)
-        default: msgbox(gText_Quest_Rockcollector_WowTheseStones)
+        case 2: msgbox(gText_Quest_Rockcollector_WowTheseStones)
     }
 
-    if (var(VAR_TEMP_2)){
+    if (var(VAR_TEMP_2) > 0){
         msgbox(gText_Quest_Rockcollector_Huh)
     }
     return
@@ -67,9 +79,20 @@ script Quest_Rockcollector_Reward_Dialogue{
 }
 
 script Quest_Rockcollector_Complete_Dialogue{
-    //PSF TODO add daily script to clear the flags set underground, so that stones regenerate each day
-    //all stones get cleared out, one stone is randoly picked and regenerates, and happens every day
-    msgbox(gText_Quest_Rockcollector_YouKnowIf)
+    random(2)
+    if (flag(FLAG_TEMP_1)){
+        setvar(VAR_RESULT,0)
+    }
+
+    switch (var(VAR_RESULT)){
+        case 0: msgbox(gText_Quest_Rockcollector_KeepOnRiding)
+        case 1: 
+                setflag(FLAG_TEMP_1)
+                msgbox(gText_Quest_Rockcollector_YouKnowIf)
+    }
+    closemessage
+    release
+    end
 }
 
 text gText_Quest_Rockcollector_Awesome{
@@ -82,11 +105,24 @@ text gText_Quest_Rockcollector_OnlyXMore{
     format("I think you've got... {STR_VAR_1} to go!")
 }
 text gText_Quest_Rockcollector_HowGoes{
-    format("Have you managed to get down there and grab some stones?")
+    format("Looks like you haven't managed to get down there and grab some stones!")
 }
 text gText_Quest_Rockcollector_Huh{
-    format("Huh, I was expecting more dust from stones that came from underground...")
+    format("Huh, there's no dust on this stone. Did it really come from underground?")
 }
 text gText_Quest_Rockcollector_YouKnowIf{
     format("You know, if you go back down there tomorrow, you might find more stones...")
+}
+text gText_Quest_Rockcollector_AreYouSure{
+    format("Did you bring me some Evolution Stones? Are you sure I can take them??")
+}
+
+text gText_Quest_Rockcollector_OhOkayWell{
+    format("Oh okay, well let me know when you've got stones for me!")
+}
+text gText_Quest_Rockcollector_YouveAlready{
+    format("You've already been down there? Well, that's embarassing... I should hide the entrance better. Do you still have the stones? Can I have them instead?")
+}
+text gText_Quest_Rockcollector_KeepOnRiding{
+    format("Keep on riding those trolleys, {PLAYER}!")
 }
