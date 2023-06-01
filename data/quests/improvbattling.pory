@@ -2,6 +2,8 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 //Quest_ImprovBattling
 //gText_Quest_ImprovBattling
 
+//PSF TODO write spec for randbats
+
 script Quest_ImprovBattling_Event_Script{
     msgbox(format("i am a placeholder for the improv battling work."),MSGBOX_NPC)
         end

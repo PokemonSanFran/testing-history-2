@@ -1286,7 +1286,7 @@ Script_RemoveTint::
 .include "data/quests/hang20.inc"
 .include "data/quests/allthatglittersmightbegold.inc"
 .include "data/quests/unknownfishingquest.inc"
-// .include "data/quests/hiddengrottomapping.inc"
+.include "data/quests/hiddengrottomapping.inc"
 // .include "data/quests/hiddengrottomapping2.inc"
 // .include "data/quests/ultrawormholeresearch.inc"
 // .include "data/quests/unknowngovernmentsocialmediaquest.inc"
