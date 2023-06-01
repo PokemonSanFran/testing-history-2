@@ -113,6 +113,7 @@ Debug_Script_6::
 
 
 Debug_Script_7::
+	warp MAP_PSFROUTE17_GROTTO, 0
 	end
 
 

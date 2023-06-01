@@ -1520,3 +1520,7 @@ Script_RemoveTint::
 
 	.include "data/maps/CaveTemplate_Water1/scripts.inc"
     .include "data/maps/Trolley_Underground_Evolutionstones_Cave/scripts.inc"
+
+	.include "data/maps/NewMap1/scripts.inc"
+
+	.include "data/maps/Psfroute17_Grotto/scripts.inc"

@@ -52,7 +52,9 @@
     "CaveTemplate_3",
     "CaveTemplate_4",
     "CaveTemplate_Water",
-    "CaveTemplate_Water1"
+    "CaveTemplate_Water1",
+    "NewMap1",
+    "Psfroute17_Grotto"
   ],
   "gMapGroup_PsfTownsAndRoutes": [
     "Southbay",
