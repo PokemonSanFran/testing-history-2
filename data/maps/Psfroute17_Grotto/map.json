@@ -2,7 +2,7 @@
   "id": "MAP_PSFROUTE17_GROTTO",
   "name": "Psfroute17_Grotto",
   "layout": "LAYOUT_PSFROUTE17_GROTTO",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_MT_PYRE_EXTERIOR",
   "region_map_section": "MAPSEC_PSFROUTE17",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
