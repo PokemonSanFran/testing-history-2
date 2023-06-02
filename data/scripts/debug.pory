@@ -60,62 +60,38 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BETWEENASTONEANDAHARD)
-    warp(MAP_TENDERLOIN_TROLLEY_HQ,3,3)
+goto(Quest_Hiddengrotto_EnterGrotto_Dialogue)
     end
 }
-
 script Debug_Script_2{
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_FIRE_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_WATER_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_THUNDER_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_LEAF_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_MOON_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_SUN_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_SHINY_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_DUSK_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_DAWN_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_ICE_STONE)
-    additem(ITEM_FIRE_STONE,1)
-    additem(ITEM_WATER_STONE,1)
-    additem(ITEM_THUNDER_STONE,1)
-    additem(ITEM_LEAF_STONE,1)
-    additem(ITEM_MOON_STONE,1)
-    additem(ITEM_SUN_STONE,1)
-    additem(ITEM_SHINY_STONE,1)
-    additem(ITEM_DUSK_STONE,1)
-    additem(ITEM_DAWN_STONE,1)
-    additem(ITEM_ICE_STONE,1)
+    warp(MAP_PSFROUTE11,0)
     end
 }
 
 script Debug_Script_3{
-    additem(ITEM_DAWN_STONE,1)
-    additem(ITEM_FIRE_STONE,1)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_DAWN_STONE)
-    setflag(FLAG_ITEM_ROCKCOLLECTOR_CAVE_FIRE_STONE)
+    warp(MAP_PSFROUTE13,0)
+    end
 }
 
 script Debug_Script_4{
-    additem(ITEM_ICE_STONE,1)
+    warp(MAP_PSFROUTE17,0)
     end
 }
 
 script Debug_Script_5{
-    warp(MAP_TROLLEY_UNDERGROUND_EVOLUTIONSTONES_CAVE,0)
+    warp(MAP_PSFROUTE21,0)
     end
 }
 
 script Debug_Script_6{
-    special(Quest_Rockcollector_RespawnStones)
+    warp(MAP_PSFROUTE63,0)
     end
 }
 
 script Debug_Script_7{
-    warp(MAP_PSFROUTE17_GROTTO,0)
+    warp(MAP_PSFROUTE8,0)
     end
 }
-
 script Debug_Script_8{
     end
 }

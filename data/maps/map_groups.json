@@ -12,6 +12,7 @@
     "gMapGroup_IndoorPresidio",
     "gMapGroup_IndoorHaightashbury",
     "gMapGroup_Salesforcetower",
+    "gMapGroup_HiddenGrotto",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -53,8 +54,7 @@
     "CaveTemplate_4",
     "CaveTemplate_Water",
     "CaveTemplate_Water1",
-    "NewMap1",
-    "Psfroute17_Grotto"
+    "NewMap1"
   ],
   "gMapGroup_PsfTownsAndRoutes": [
     "Southbay",
@@ -297,6 +297,14 @@
     "Salesforcetower_Production",
     "Salesforcetower_Leagueops",
     "Salesforcetower_Top"
+  ],
+  "gMapGroup_HiddenGrotto": [
+      "Psfroute11_Grotto",
+      "Psfroute13_Grotto",
+      "Psfroute17_Grotto",
+      "Psfroute21_Grotto",
+      "Psfroute63_Grotto",
+      "Psfroute8_Grotto"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

@@ -6262,6 +6262,26 @@
       "blockdata_filepath": "data/layouts/NewMap1/map.bin"
     },
     {
+      "id": "LAYOUT_PSFROUTE11_GROTTO",
+      "name": "Psfroute11_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute11_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute11_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE13_GROTTO",
+      "name": "Psfroute13_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute13_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute13_Grotto/map.bin"
+    },
+    {
       "id": "LAYOUT_PSFROUTE17_GROTTO",
       "name": "Psfroute17_Grotto_Layout",
       "width": 16,
@@ -6270,6 +6290,36 @@
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Psfroute17_Grotto/border.bin",
       "blockdata_filepath": "data/layouts/Psfroute17_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE21_GROTTO",
+      "name": "Psfroute21_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute21_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute21_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE63_GROTTO",
+      "name": "Psfroute63_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute63_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute63_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE8_GROTTO",
+      "name": "Psfroute8_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute8_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute8_Grotto/map.bin"
     }
   ]
 }
