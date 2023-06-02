@@ -1,22 +1,16 @@
-script hiddengrotto{
-    return
-}
-
 script Quest_Hiddengrotto_EnterGrotto_Dialogue{
-    special(HiddenGrotto_ChooseDialogueAndLoadCorrespondingWarp)
-    msgbox(gText_Quest_Hiddengrotto_Text,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
+    lock
+    special(HiddenGrotto_LoadDiscoveredGrottoText)
+    msgbox(gText_Quest_Hiddengrotto_Blank,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
+
     if(var(VAR_RESULT) == YES){
-        goto(Quest_Hiddengrotto_PerformWarp)
+        special(HiddenGrotto_LoadGrottoAndWarpPlayer)
     }
     release
-        end
+    end
 }
 
-script Quest_Hiddengrotto_PerformWarp{
-    warpsilent(MAP_DYNAMIC,0)
-}
-
-text gText_Quest_Hiddengrotto_Text{
+text gText_Quest_Hiddengrotto_Blank{
     "{STR_VAR_1}"    
 }
 
