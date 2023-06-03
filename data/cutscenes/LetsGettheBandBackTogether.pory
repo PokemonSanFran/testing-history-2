@@ -38,7 +38,7 @@ script LetsGettheBandBackTogether_MeetInBasement_Script {
         waitse
         applymovement(ARCHER,Common_Movement_ExclamationMark)
         waitmovement(ARCHER)
-        msgbox(gText_LetsGetTheBandBackTogether_IDidntThinkYouWere,,MSGBOX_NPC,SPEAKER_ARCHER,,EMOTE_SHOCK)
+        msgbox(gText_LetsGetTheBandBackTogether_IDidntThinkYouWere,MSGBOX_NPC,SPEAKER_ARCHER,,EMOTE_SHOCK)
 
             msgbox(gText_LetsGetTheBandBackTogether_IHadAnInsane,,SPEAKER_ZOEY)
             msgbox(gText_LetsGetTheBandBackTogether_DamnYouDid,,SPEAKER_ARCHER)

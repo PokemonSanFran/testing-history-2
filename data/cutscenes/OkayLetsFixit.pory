@@ -204,7 +204,7 @@ text gText_OkayLetsFixIt_WhatIfIt{
 }
 
 text gText_OkayLetsFixIt_IRememberI{
-    format("I remember I yelled at Archer. I told him he couldn't hack it.I called them thugs. And I left. I was disguisting. Is he still there now?")
+    format("I remember I yelled at Archer. I told him he couldn't hack it. I called them thugs. And I left. I was disguisting. Is he still there now?")
 }
 
 movement OkayLetsFixit_WalkToPeak {

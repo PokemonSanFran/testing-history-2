@@ -90,7 +90,7 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
     playse(SE_POKENAV_HANG_UP)
         waitse
 
-        msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf,,SPEAKER_ZOEY,,,PHONE_ON)
+        msgbox(gText_YouRealizeTheyreEvilRight_IDontKnowIf,,SPEAKER_ZOEY,TAIL_THOUGHT)
         
         closemessage
         release
@@ -724,7 +724,7 @@ text gText_YouRealizeTheyreEvilRight_TheyreNot{
 }
 //PSF TODO Replace PLAYER with OBJECT pronoun
 text gText_YouRealizeTheyreEvilRight_TheresNothingToGet{
-    format("I'm not giving up what I have because you guys think Ycombinator is some big bad. Teamrocket is a bunch of thugs, and if you want to throw away your legacies to work with them, fine. I won't be apart of it.")
+    format("I'm not giving up what I have because you guys think Ycombinator is some big bad. Teamrocket is a bunch of thugs, and if you want to throw away your legacies to work with them, fine. I won't be a part of it.")
 }
 text gText_YouRealizeTheyreEvilRight_ThisGarbodor {
 format("Hey, this Garbodor seems to have taken a liking to you, and you seem to understand it pretty well. Do you want it?")
@@ -742,7 +742,7 @@ text gText_YouRealizeTheyreEvilRight_DoYouWantToGo {
 format("Do you want to go to bed?")
 }
 text gText_YouRealizeTheyreEvilRight_ICantBelieveIAlmost {
-format("I can't believe I almost fell for stunt. Me? Siding with Teamrocket? After everything I've been through? And all that stuff, just because the battling is a little different?")
+format("I can't believe I almost fell for that stunt. Me? Siding with Teamrocket? After everything I've been through? And all that stuff, just because the battling is a little different?")
 }
 text gText_YouRealizeTheyreEvilRight_AndTheyWantToHelp{
 format("And they claim they want to do better for region? Ycombinator is making jobs! And bringing people like me! And stopping terrorists.")
