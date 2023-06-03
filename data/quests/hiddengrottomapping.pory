@@ -1,7 +1,7 @@
-script Quest_Hiddengrotto_EnterGrotto_Dialogue{
+script Hiddengrotto_EnterGrotto_Dialogue{
     lock
     special(HiddenGrotto_LoadDiscoveredGrottoText)
-    msgbox(gText_Quest_Hiddengrotto_Blank,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
+    msgbox(gText_Hiddengrotto_Blank,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
 
     if(var(VAR_RESULT) == YES){
         special(HiddenGrotto_LoadGrottoAndWarpPlayer)
@@ -10,11 +10,23 @@ script Quest_Hiddengrotto_EnterGrotto_Dialogue{
     end
 }
 
-text gText_Quest_Hiddengrotto_Blank{
+script Quest_Hiddengrottomapping_MarkSubquestBiome_Script{
+    addvar(VAR_TEMP_0,1)
+
+    special(Quest_Hiddengrottomapping_MarkSubquestBiome)
+
+    specialvar(VAR_RESULT,Quest_Hiddengrottomapping_CheckSubquestsForReward)
+    if (var(VAR_RESULT)){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_HIDDENGROTTOMAPPING)
+    }
+    return
+}
+
+text gText_Hiddengrotto_Blank{
     "{STR_VAR_1}"    
 }
 
-text gText_Quest_Hiddengrotto_LookYouveFound{
+text gText_Hiddengrotto_LookYouveFound{
     format("Look!\nYou've found a narrow path!\pWill you follow it?")
 }
 text gText_LookIveFound{

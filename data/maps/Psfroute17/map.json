@@ -63,7 +63,7 @@
       "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Quest_Hiddengrotto_EnterGrotto_Dialogue"
+      "script": "Hiddengrotto_EnterGrotto_Dialogue"
     }
   ]
 }

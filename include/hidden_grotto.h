@@ -1,3 +1,5 @@
+#define NUM_GROTTO_ROUTES 26
+
 static const u8 gText_LookIveFound[];
 static const u8 gText_WowHiddenPath[];
 static const u8 gText_OhWhatsThis[];
@@ -18,27 +20,3 @@ static const u8 gText_ConcealedEntranceDiscovered[];
 static const u8 gText_WhatsThisCovertPathway[];
 static const u8 gText_IntriguingHiddenTrail[];
 static const u8 gText_HiddenGrottoMaterializes[];
-
-const u8* discoveredGrottoTextArray[] = 
-{
-    gText_LookIveFound,\
-    gText_WowHiddenPath,\
-    gText_OhWhatsThis,\
-    gText_AmazingHiddenTrail,\
-    gText_HmmConcealedPath,\
-    gText_MysteriousRoute,\
-    gText_OhMyConcealedGrotto,\
-    gText_IntriguingSecretPassage,\
-    gText_WhoaHiddenEntrance,\
-    gText_HiddenTrailEmerges,\
-    gText_OhWhatDoWeHave,\
-    gText_ConcealedPathwayAppears,\
-    gText_MyCuriosityPiqued,\
-    gText_LookClandestinePassage,\
-    gText_OhSecretRoute,\
-    gText_HmmObscuredPath,\
-    gText_ConcealedEntranceDiscovered,\
-    gText_WhatsThisCovertPathway,\
-    gText_IntriguingHiddenTrail,\
-    gText_HiddenGrottoMaterializes
-};

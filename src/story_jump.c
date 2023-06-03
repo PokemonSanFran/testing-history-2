@@ -521,7 +521,7 @@ void JumpPlayerTo_EnterFalkner()
 	VarSet(VAR_FALKNER_STATE, BATTLE_1_COMPLETE);
 	VarSet(VAR_GYM_1_STATE, GYM_DEFEATED_LEADER);
 	IncrementStorylineVariable();
-	SetWarpDestination(0, 8, 0, -1, -1);
+    SetWarpDestination(MAP_GROUP(MISSION_GYM),MAP_NUM(MISSION_GYM),0,-1,-1);
 }
 void JumpPlayerTo_EnterBugsy()
 {

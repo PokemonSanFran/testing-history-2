@@ -575,3 +575,5 @@ gSpecials::
     def_special Quest_Rockcollector_RespawnStones
     def_special HiddenGrotto_LoadDiscoveredGrottoText 
     def_special HiddenGrotto_LoadGrottoAndWarpPlayer
+    def_special Quest_Hiddengrottomapping_MarkSubquestBiome
+    def_special Quest_Hiddengrottomapping_CheckSubquestsForReward

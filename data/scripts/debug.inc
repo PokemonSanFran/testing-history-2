@@ -54,43 +54,39 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Weather::
+	addvar VAR_TEMP_0, 1
 	setweather WEATHER_FOG_DIAGONAL
 	doweather
 	return
 
 
 Debug_Script_1::
-	goto Quest_Hiddengrotto_EnterGrotto_Dialogue
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_HIDDENGROTTOMAPPING
 	end
 
 
 Debug_Script_2::
-	warp MAP_PSFROUTE11, 0
+	msgbox Debug_Script_2_Text_0
 	end
 
 
 Debug_Script_3::
-	warp MAP_PSFROUTE13, 0
 	end
 
 
 Debug_Script_4::
-	warp MAP_PSFROUTE17, 0
 	end
 
 
 Debug_Script_5::
-	warp MAP_PSFROUTE21, 0
 	end
 
 
 Debug_Script_6::
-	warp MAP_PSFROUTE63, 0
 	end
 
 
 Debug_Script_7::
-	warp MAP_PSFROUTE8, 0
 	end
 
 
@@ -105,6 +101,9 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
+
+Debug_Script_2_Text_0:
+	.string "{STR_VAR_1}$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"
