@@ -1,3 +1,9 @@
+const PANNEN = 1
+const FLAG_HIDE_PANNEN = FLAG_TEMP_2
+const FLAG_HIDE_JOURNAL = FLAG_TEMP_3
+
+//script Quest_Hiddengrottomapping_
+//text Hiddengrottomapping_
 script Hiddengrotto_EnterGrotto_Dialogue{
     lock
     special(HiddenGrotto_LoadDiscoveredGrottoText)
@@ -20,6 +26,69 @@ script Quest_Hiddengrottomapping_MarkSubquestBiome_Script{
         questmenu(QUEST_MENU_SET_REWARD,QUEST_HIDDENGROTTOMAPPING)
     }
     return
+}
+
+script Quest_Hiddengrottomapping_PannenVisibility_Script{
+    questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_HIDDENGROTTOMAPPING)
+    
+    if (!var(VAR_RESULT)){
+        setflag(FLAG_HIDE_PANNEN)
+    }
+    return
+}
+
+script Quest_Hiddengrottomapping_StartQuest_Dialogue{
+    addvar(VAR_TEMP_0,1)
+    questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_HIDDENGROTTOMAPPING)
+    
+    if (!var(VAR_RESULT)){
+        end
+    }
+    lock
+    applymovement(PANNEN,Quest_Hiddengrottomapping_WalkToPlayer_Movement)
+    waitmovement(PANNEN)
+    msgbox("")
+    applymovement(PANNEN,Common_Movement_FaceUp)
+    msgbox("")
+    applymovement(PANNEN,Common_Movement_FaceDown)
+    waitmovement(PANNEN)
+    msgbox("")
+    applymovement(PANNEN,Quest_Hiddengrottomapping_LeaveGrotto_Movement)
+    fadescreen(FADE_TO_BLACK)
+    startquest(QUEST_HIDDENGROTTOMAPPING)
+    removeobject(PANNEN)
+    playse(SE_EXIT)
+    waitse
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
+}
+
+script Quest_Hiddengrottomapping_StartSparkle_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HIDDENGROTTOMAPPING,SUB_QUEST_1)
+        if (!var(VAR_RESULT)){
+            dofieldeffectsparkle(8,23,1)
+        }
+    return
+}
+
+script Quest_Hiddengrottomapping_RemoveJournalPage_Script{
+    special(Quest_Hiddengrottomapping_RemoveJournalPage)
+
+    if (var(VAR_RESULT)){
+        setflag(FLAG_HIDE_JOURNAL)
+    }
+}
+
+movement Quest_Hiddengrottomapping_WalkToPlayer_Movement{
+    walk_down * 5
+    step_end
+}
+
+movement Quest_Hiddengrottomapping_LeaveGrotto_Movement{
+    walk_right
+    walk_down
+    step_end
 }
 
 text gText_Hiddengrotto_Blank{

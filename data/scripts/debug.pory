@@ -61,6 +61,7 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
+    call(Quest_Hiddengrottomapping_StartSparkle_Script)
     end
 }
 script Debug_Script_2{

@@ -61,12 +61,11 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_HIDDENGROTTOMAPPING
+	call Quest_Hiddengrottomapping_StartSparkle_Script
 	end
 
 
 Debug_Script_2::
-	msgbox Debug_Script_2_Text_0
 	end
 
 
@@ -101,9 +100,6 @@ Debug_Script_9::
 Debug_Script_10::
 	end
 
-
-Debug_Script_2_Text_0:
-	.string "{STR_VAR_1}$"
 
 Debug_CheckWeekDay_Text::
 	.string "Aaaah, yes!\l"
