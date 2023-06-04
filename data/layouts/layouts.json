@@ -6320,6 +6320,16 @@
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Psfroute8_Grotto/border.bin",
       "blockdata_filepath": "data/layouts/Psfroute8_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLDNGTEPARK_PANNEN_HOUSE",
+      "name": "Gldngtepark_Pannen_House_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Gldngtepark_Pannen_House/border.bin",
+      "blockdata_filepath": "data/layouts/Gldngtepark_Pannen_House/map.bin"
     }
   ]
 }

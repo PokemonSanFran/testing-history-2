@@ -5,7 +5,7 @@ Psfroute17_Grotto_MapScripts::
 
 Psfroute17_Grotto_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Hiddengrottomapping_PannenVisibility_Script
-	call Quest_Hiddengrottomapping_StartSparkle_Script
+	call Quest_Hiddengrottomapping2_RemoveJournalPage3_Script
 	return
 
 Psfroute17_Grotto_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

@@ -5,5 +5,6 @@ mapscripts Psfroute17_Grotto_MapScripts{
     ]
     MAP_SCRIPT_ON_TRANSITION{
         call(Quest_Hiddengrottomapping_PannenVisibility_Script)
+        call(Quest_Hiddengrottomapping2_RemoveJournalPage3_Script)
     }
 }

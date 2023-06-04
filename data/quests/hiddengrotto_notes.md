@@ -36,7 +36,7 @@ each grotto type has a subquest attached, just walking inside when quest is acti
 
 going into first grotto starts onframe cutscene with him
 
-each grotto has a hidden page of journal, sparkles on ground, found near the "back" of the grotto, picking it up subquest and it never spawns again
+three grottos have hidden page of journal, sparkles on ground, found near the "back" of the grotto, picking it up subquest and it never spawns again
 
 after first talking to wife, journal pieces are all taken and quest is actually revealed to you, you don't go into reward mode until wife has all the journal pieces, and then immediately completes
 

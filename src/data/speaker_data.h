@@ -1363,4 +1363,10 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Bill,
         .speakerPal = sSpeakerPal_Bill,
     },
+    [SPEAKER_NANCY] =
+    {
+        .name = _("Nancy"),
+        .speakerIcon = gSpeakerIcon_Kurt,
+        .speakerPal = sSpeakerPal_Kurt,
+    },
 };

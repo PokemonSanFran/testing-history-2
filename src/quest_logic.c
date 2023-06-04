@@ -285,18 +285,3 @@ bool8 Quest_Hiddengrottomapping_CheckSubquestsForReward(void){
 // This contains all the quest functions required for
 // the quest Hidden Grotto Mapping 2.
 // ***********************************************************************
-
-void Quest_Hiddengrottomapping_RemoveJournalPage(void){
-    u32 currentMapGroup = gSaveBlock1Ptr->location.mapGroup;
-    u32 currentMapNum = gSaveBlock1Ptr->location.mapNum;
-    u32 mapId = (currentMapNum | (currentMapGroup << 8));
-    u32 subquest = 0;
-    u8 i;
-
-    for (i = 0; i < NUM_GROTTO_ROUTES; i++) {
-        if (GROTTO_SUBQUEST_MAP[i][0] == mapId) {
-            if (QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING2,FLAG_GET_COMPLETED,i)){
-                FlagSet(FLAG_TEMP_3);
-            }
-        }
-    }

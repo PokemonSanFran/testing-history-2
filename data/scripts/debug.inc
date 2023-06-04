@@ -61,7 +61,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	call Quest_Hiddengrottomapping_StartSparkle_Script
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_HIDDENGROTTOMAPPING2
 	end
 
 

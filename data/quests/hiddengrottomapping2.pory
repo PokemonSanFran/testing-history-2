@@ -1,0 +1,36 @@
+script Quest_Hiddengrottomapping2_Event_Script{
+    goto_if_quest_complete(QUEST_HIDDENGROTTOMAPPING2,Quest_Hiddengrottomapping2_Complete_Dialogue)
+    goto_if_quest_active(QUEST_HIDDENGROTTOMAPPING2,Quest_Hiddengrottomapping2_Active_Dialogue)
+    goto(Gldngtepark_Pannen_Wife_Default_Dialogue)
+}
+
+script Quest_Hiddengrottomapping2_Complete_Dialogue{
+
+}
+script Quest_Hiddengrottomapping2_Active_Dialogue{
+
+}
+
+script Quest_Hiddengrottomapping2_RemoveJournalPage1_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HIDDENGROTTOMAPPING2,SUB_QUEST_1)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_JOURNAL)
+        }
+    return
+}
+
+script Quest_Hiddengrottomapping2_RemoveJournalPage2_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HIDDENGROTTOMAPPING2,SUB_QUEST_2)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_JOURNAL)
+        }
+    return
+}
+
+script Quest_Hiddengrottomapping2_RemoveJournalPage3_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HIDDENGROTTOMAPPING2,SUB_QUEST_3)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_JOURNAL)
+        }
+    return
+}

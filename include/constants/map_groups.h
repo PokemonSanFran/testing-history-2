@@ -6,13 +6,14 @@
 //
 
 // gMapGroup_Templates
-#define MAP_CAVE_TEMPLATE_1      (0 | (0 << 8))
-#define MAP_CAVE_TEMPLATE_2      (1 | (0 << 8))
-#define MAP_CAVE_TEMPLATE_3      (2 | (0 << 8))
-#define MAP_CAVE_TEMPLATE_4      (3 | (0 << 8))
-#define MAP_CAVE_TEMPLATE_WATER  (4 | (0 << 8))
-#define MAP_CAVE_TEMPLATE_WATER1 (5 | (0 << 8))
-#define MAP_NEW_MAP1             (6 | (0 << 8))
+#define MAP_CAVE_TEMPLATE_1          (0 | (0 << 8))
+#define MAP_CAVE_TEMPLATE_2          (1 | (0 << 8))
+#define MAP_CAVE_TEMPLATE_3          (2 | (0 << 8))
+#define MAP_CAVE_TEMPLATE_4          (3 | (0 << 8))
+#define MAP_CAVE_TEMPLATE_WATER      (4 | (0 << 8))
+#define MAP_CAVE_TEMPLATE_WATER1     (5 | (0 << 8))
+#define MAP_NEW_MAP1                 (6 | (0 << 8))
+#define MAP_GLDNGTEPARK_PANNEN_HOUSE (7 | (0 << 8))
 
 // gMapGroup_PsfTownsAndRoutes
 #define MAP_SOUTHBAY                                 (0 | (1 << 8))

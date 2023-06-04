@@ -72,12 +72,21 @@ script Quest_Hiddengrottomapping_StartSparkle_Script{
     return
 }
 
-script Quest_Hiddengrottomapping_RemoveJournalPage_Script{
-    special(Quest_Hiddengrottomapping_RemoveJournalPage)
+script Quest_Hiddengrottomapping_Event_Script{
+    goto_if_quest_complete(QUEST_HIDDENGROTTOMAPPING,Quest_Hiddengrottomapping_Complete_Dialogue)
+    goto_if_quest_reward(QUEST_HIDDENGROTTOMAPPING,Quest_Hiddengrottomapping_Reward_Dialogue)
+    goto_if_quest_active(QUEST_HIDDENGROTTOMAPPING,Quest_Hiddengrottomapping_Active_Dialogue)
+    goto(Gldngtepark_Pannen_Wife_Default_Dialogue)
+}
 
-    if (var(VAR_RESULT)){
-        setflag(FLAG_HIDE_JOURNAL)
-    }
+script Quest_Hiddengrottomapping_Complete_Dialogue{
+
+}
+script Quest_Hiddengrottomapping_Reward_Dialogue{
+
+}
+script Quest_Hiddengrottomapping_Active_Dialogue{
+
 }
 
 movement Quest_Hiddengrottomapping_WalkToPlayer_Movement{

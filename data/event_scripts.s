@@ -1287,7 +1287,7 @@ Script_RemoveTint::
 .include "data/quests/allthatglittersmightbegold.inc"
 .include "data/quests/unknownfishingquest.inc"
 .include "data/quests/hiddengrottomapping.inc"
-// .include "data/quests/hiddengrottomapping2.inc"
+.include "data/quests/hiddengrottomapping2.inc"
 // .include "data/quests/ultrawormholeresearch.inc"
 // .include "data/quests/unknowngovernmentsocialmediaquest.inc"
 .include "data/quests/drumcircle.inc"
@@ -1529,3 +1529,5 @@ Script_RemoveTint::
 .include "data/maps/Psfroute21_Grotto/scripts.inc"
 .include "data/maps/Psfroute63_Grotto/scripts.inc"
 .include "data/maps/Psfroute8_Grotto/scripts.inc"
+
+	.include "data/maps/Gldngtepark_Pannen_House/scripts.inc"
