@@ -9,7 +9,6 @@
 #include "../gflib/string_util.h"
 #include "quest_logic.h"
 #include "hidden_grotto.h"
-
 #include "overworld.h"
 #include "random.h"
 #include "constants/items.h"
@@ -17,18 +16,18 @@
 #include "constants/map_groups.h"
 #include "field_control_avatar.h"
 
-void Quest_Kitchenvolunteering_GeneratePantryItem(void);
-static void Quest_Kitchenvolunteering_CompleteSubQuest(void);
-void Quest_Kitchenvolunteering_CheckProgressAndSetReward(void);
-void Quest_Kitchenvolunteering_ChooseRandomPantryItem(void);
-static void Quest_Kitchenvolunteering_RestoreChosenPantryItem(void);
-
 // ***********************************************************************
 // Quest: Kitchen Volunteering
 // -----------------------------------------------------------------------
 // This contains all the quest functions required for
 // the quest Kitchen Volunteering.
 // ***********************************************************************
+
+void Quest_Kitchenvolunteering_GeneratePantryItem(void);
+static void Quest_Kitchenvolunteering_CompleteSubQuest(void);
+void Quest_Kitchenvolunteering_CheckProgressAndSetReward(void);
+void Quest_Kitchenvolunteering_ChooseRandomPantryItem(void);
+static void Quest_Kitchenvolunteering_RestoreChosenPantryItem(void);
 
 void Quest_Kitchenvolunteering_CreatePantryMaze(void){
     SeedRng(gSaveBlock1Ptr->mazeLayoutSeed);
@@ -213,6 +212,7 @@ void Quest_Rockcollector_RespawnStones(void)
 // This contains all the quest functions required for
 // the quest Hidden Grotto Mapping.
 // ***********************************************************************
+u8 Quest_Hiddengrottomapping_CountCompletedSubquests(void);
 
 const u32 GROTTO_SUBQUEST_MAP[NUM_GROTTO_ROUTES][2]=
 {
@@ -270,13 +270,27 @@ bool8 Quest_Hiddengrottomapping_CheckSubquestsForReward(void){
     u8 i;
     bool8 allSubquestsComplete = TRUE;
 
+    /*
     for (i = 0; i < QUEST_HIDDENGROTTOMAPPING_SUB_COUNT; i++){
         if (!QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING,FLAG_GET_COMPLETED,i)){
             allSubquestsComplete = FALSE;
             break;
         }
     }
-    return (allSubquestsComplete);
+    */
+    return (Quest_Hiddengrottomapping_CountCompletedSubquests() == QUEST_HIDDENGROTTOMAPPING_SUB_COUNT);
+}
+
+u8 Quest_Hiddengrottomapping_CountCompletedSubquests(void){
+    u8 i = 0, numCompletedSubquests = 0;
+
+    for (i = 0; i < QUEST_HIDDENGROTTOMAPPING_SUB_COUNT; i++){
+        if (!QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING,FLAG_GET_COMPLETED,i)){
+            numCompletedSubquests++;    
+        }
+    }
+
+    return numCompletedSubquests;
 }
 
 // ***********************************************************************
@@ -285,3 +299,28 @@ bool8 Quest_Hiddengrottomapping_CheckSubquestsForReward(void){
 // This contains all the quest functions required for
 // the quest Hidden Grotto Mapping 2.
 // ***********************************************************************
+
+u8 Quest_Hiddengrottomapping2_CountCompletedSubquests(void){
+    u8 i = 0, numCompletedSubquests = 0;
+
+    for (i = 0; i < QUEST_HIDDENGROTTOMAPPING_SUB_COUNT; i++){
+        if (!QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING2,FLAG_GET_COMPLETED,i)){
+            numCompletedSubquests++;    
+        }
+    }
+
+    return numCompletedSubquests;
+}
+
+bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
+    u16 currentJournalPage = ITEM_POKE_BALL;
+    bool8 = hasJournalPages = FALSE;
+
+    for (i = 0; i < QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT; i++){
+        if (CheckBagHasItem(currentJournalPage+1,1)){
+            RemoveBagItem(currentJournalPage+1,);
+            hasJournalPages = TRUE; 
+        }
+    }
+    return hasJournalPages;
+}

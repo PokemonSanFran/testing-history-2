@@ -1,3 +1,6 @@
+const WIFE = 1
+const FLAG_HIDE_JOURNAL = FLAG_TEMP_3
+
 script Quest_Hiddengrottomapping2_Event_Script{
     goto_if_quest_complete(QUEST_HIDDENGROTTOMAPPING2,Quest_Hiddengrottomapping2_Complete_Dialogue)
     goto_if_quest_active(QUEST_HIDDENGROTTOMAPPING2,Quest_Hiddengrottomapping2_Active_Dialogue)
@@ -8,7 +11,13 @@ script Quest_Hiddengrottomapping2_Complete_Dialogue{
 
 }
 script Quest_Hiddengrottomapping2_Active_Dialogue{
+    special(Quest_Hiddengrottomapping2_CheckForJournalPage)
+    if (var(VAR_RESULT)){
+        goto(Quest_Hiddengrottomapping2_TakeJournalPage_Script)
+    }
+}
 
+script Quest_Hiddengrottomapping2_TakeJournalPage_Script{
 }
 
 script Quest_Hiddengrottomapping2_RemoveJournalPage1_Script{

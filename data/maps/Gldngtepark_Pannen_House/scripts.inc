@@ -13,7 +13,7 @@ Gldngtepark_Pannen_House_Event_Script::
 
 Gldngtepark_Pannen_Wife_Default_Dialogue::
 	msgbox gText_Gldngtepark_Pannen_Wife_MyHusbandIs, , SPEAKER_NANCY
-	close
+	closemessage
 	end
 
 

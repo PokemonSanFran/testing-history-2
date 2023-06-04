@@ -73,20 +73,34 @@ script Quest_Hiddengrottomapping_StartSparkle_Script{
 }
 
 script Quest_Hiddengrottomapping_Event_Script{
-    goto_if_quest_complete(QUEST_HIDDENGROTTOMAPPING,Quest_Hiddengrottomapping_Complete_Dialogue)
     goto_if_quest_reward(QUEST_HIDDENGROTTOMAPPING,Quest_Hiddengrottomapping_Reward_Dialogue)
     goto_if_quest_active(QUEST_HIDDENGROTTOMAPPING,Quest_Hiddengrottomapping_Active_Dialogue)
     goto(Gldngtepark_Pannen_Wife_Default_Dialogue)
 }
 
-script Quest_Hiddengrottomapping_Complete_Dialogue{
-
-}
 script Quest_Hiddengrottomapping_Reward_Dialogue{
+    completequest(QUEST_HIDDENGROTTOMAPPING)
+    lock
+    msgbox(gText_Hiddengrotto_SighHeToldYou,,SPEAKER_NANCY)
+    msgbox(gText_Hiddengrotto_IHaventHeard,,SPEAKER_NANCY)
+    msgbox(gText_Hiddengrotto_HeTaughtMe,,SPEAKER_NANCY)
 
+    special(Quest_Hiddengrottomapping2_CheckForJournalPage)
+    if(var(VAR_RESULT) > 0){
+        startquest(QUEST_HIDDENGROTTOMAPPING2)
+        goto(Quest_Hiddengrottomapping2_TakeJournalPage_Script)
+    }
+
+    msgbox(gText_Hiddengrotto_CouldYouKeep,,SPEAKER_NANCY)
+    startquest(QUEST_HIDDENGROTTOMAPPING)
+    closemessage
+    end
 }
-script Quest_Hiddengrottomapping_Active_Dialogue{
 
+script Quest_Hiddengrottomapping_Active_Dialogue{
+    msgbox(gText_Hiddengrotto_OhYouVeMet,,SPEAKER_NANCY)
+    closemessage
+    end
 }
 
 movement Quest_Hiddengrottomapping_WalkToPlayer_Movement{
