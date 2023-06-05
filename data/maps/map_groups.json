@@ -56,7 +56,9 @@
     "CaveTemplate_Water1",
     "NewMap1",
     "Gldngtepark_Pannen_House",
-    "Psfroute15_Grotto"
+    "Psfroute15_Grotto",
+    "Psfroute32_Grotto",
+    "Psfroute62_Grotto"
   ],
   "gMapGroup_PsfTownsAndRoutes": [
     "Southbay",
@@ -179,7 +181,10 @@
     "Psfroute70_Shelter",
     "Tenderloin_Pantry",
     "Tenderloin_Pantry_Maze",
-    "Trolley_Underground_Evolutionstones_Cave"
+    "Trolley_Underground_Evolutionstones_Cave",
+    "Psfroute20",
+    "Psfroute76",
+    "Psfroute51"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

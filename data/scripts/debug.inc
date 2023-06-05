@@ -61,39 +61,47 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	questmenu QUEST_MENU_SET_ACTIVE, QUEST_HIDDENGROTTOMAPPING2
+	warpsilent MAP_PSFROUTE61_GROTTO, 0
 	end
 
 
 Debug_Script_2::
+	warpsilent MAP_PSFROUTE15_GROTTO, 0
 	end
 
 
 Debug_Script_3::
+	warpsilent MAP_PSFROUTE11_GROTTO, 0
 	end
 
 
 Debug_Script_4::
+	warpsilent MAP_PSFROUTE1_GROTTO, 0
 	end
 
 
 Debug_Script_5::
+	warpsilent MAP_PSFROUTE62_GROTTO, 0
 	end
 
 
 Debug_Script_6::
+	warpsilent MAP_PSFROUTE51_GROTTO, 0
 	end
 
 
 Debug_Script_7::
+	warpsilent MAP_PSFROUTE38_GROTTO, 0
 	end
 
 
 Debug_Script_8::
+	warpsilent MAP_PSFROUTE8_GROTTO, 0
 	end
 
 
 Debug_Script_9::
+	warpsilent MAP_GLDNGTEPARK_PANNEN_HOUSE, 0
 	end
 
 

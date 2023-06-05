@@ -15,6 +15,8 @@
 #define MAP_NEW_MAP1                 (6 | (0 << 8))
 #define MAP_GLDNGTEPARK_PANNEN_HOUSE (7 | (0 << 8))
 #define MAP_PSFROUTE15_GROTTO        (8 | (0 << 8))
+#define MAP_PSFROUTE32_GROTTO        (9 | (0 << 8))
+#define MAP_PSFROUTE62_GROTTO        (10 | (0 << 8))
 
 // gMapGroup_PsfTownsAndRoutes
 #define MAP_SOUTHBAY                                 (0 | (1 << 8))
@@ -138,6 +140,9 @@
 #define MAP_TENDERLOIN_PANTRY                        (118 | (1 << 8))
 #define MAP_TENDERLOIN_PANTRY_MAZE                   (119 | (1 << 8))
 #define MAP_TROLLEY_UNDERGROUND_EVOLUTIONSTONES_CAVE (120 | (1 << 8))
+#define MAP_PSFROUTE20                               (121 | (1 << 8))
+#define MAP_PSFROUTE76                               (122 | (1 << 8))
+#define MAP_PSFROUTE51                               (123 | (1 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (2 << 8))

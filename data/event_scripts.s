@@ -1567,3 +1567,13 @@ Script_RemoveTint::
 	.include "data/maps/Psfroute14_Grotto/scripts.inc"
 
 	.include "data/maps/Psfroute18_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute32_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute62_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute20/scripts.inc"
+
+	.include "data/maps/Psfroute76/scripts.inc"
+
+	.include "data/maps/Psfroute51/scripts.inc"

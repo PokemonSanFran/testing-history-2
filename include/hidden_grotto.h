@@ -1,4 +1,4 @@
-#define NUM_GROTTO_ROUTES 26
+#define NUM_GROTTO_ROUTES 23
 
 static const u8 gText_LookIveFound[];
 static const u8 gText_WowHiddenPath[];
