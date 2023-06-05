@@ -61,7 +61,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_PSFROUTE61, 0
+	warpsilent MAP_PSFROUTE61, 16, 4
 	end
 
 

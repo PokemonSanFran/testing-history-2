@@ -246,16 +246,18 @@ void Quest_Hiddengrottomapping_MarkSubquestBiome(void) {
     u32 currentMapNum = gSaveBlock1Ptr->location.mapNum;
     u32 mapId = (currentMapNum | (currentMapGroup << 8));
     u32 subquest = 0;
+    bool8 foundGrotto = FALSE;
     u8 i;
 
     for (i = 0; i < NUM_GROTTO_ROUTES; i++) {
         if (GROTTO_SUBQUEST_MAP[i][0] == mapId) {
             subquest = GROTTO_SUBQUEST_MAP[i][1];
+            foundGrotto = TRUE;
             break;
         }
     }
 
-    if (subquest) {
+    if (foundGrotto) {
             AddBagItem(ITEM_GREAT_BALL,1);
         if (!QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING, FLAG_GET_COMPLETED, subquest)) {
             AddBagItem(ITEM_ULTRA_BALL,1);
