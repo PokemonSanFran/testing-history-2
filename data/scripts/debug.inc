@@ -61,7 +61,7 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_PSFROUTE61_GROTTO, 0
+	warpsilent MAP_PSFROUTE61, 0
 	end
 
 
@@ -106,6 +106,7 @@ Debug_Script_9::
 
 
 Debug_Script_10::
+	call Quest_Hiddengrottomapping_MarkSubquestBiome_Script
 	end
 
 
