@@ -1,4 +1,8 @@
+//gText_Hiddengrottomapping2_
+//Quest_Hiddengrottomapping2_
+
 const WIFE = 1
+const PLAYER = OBJ_EVENT_ID_PLAYER
 const FLAG_HIDE_JOURNAL = FLAG_TEMP_3
 
 script Quest_Hiddengrottomapping2_Event_Script{
@@ -8,16 +12,64 @@ script Quest_Hiddengrottomapping2_Event_Script{
 }
 
 script Quest_Hiddengrottomapping2_Complete_Dialogue{
-
+    if (flag(FLAG_TEMP_B)){
+        msgbox(gText_Hiddengrottomapping2_INeed,,SPEAKER_NANCY)
+    }
+    msgbox(gText_Hiddengrottomapping2_IveBeenThiking,,SPEAKER_NANCY)
+    closemessage
+    end
 }
+
 script Quest_Hiddengrottomapping2_Active_Dialogue{
     special(Quest_Hiddengrottomapping2_CheckForJournalPage)
     if (var(VAR_RESULT)){
         goto(Quest_Hiddengrottomapping2_TakeJournalPage_Script)
     }
+    msgbox(gText_Hiddengrottomapping2_HeSpentALot,,SPEAKER_NANCY)
+    closemessage
+    end
+}
+
+script Quest_Hiddengrottomapping2_CountSubquestsReward_Script{
+    special(Quest_Hiddengrottomapping2_CountCompletedSubquests)
+
+    if (var(VAR_RESULT)){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_HIDDENGROTTOMAPPING2)
+        goto(Quest_Hiddengrottomapping2_Reward_Script)
+    }
+
+    return
+}
+
+script Quest_Hiddengrottomapping2_SetUpCutscene_Script{
+    fadescreen(FADE_TO_BLACK)
+    applymovement(WIFE,Common_Movement_FaceDown)
+    setobjectxy(PLAYER,6,3)
+    TeleportCamera(6,3)
+    applymovement(PLAYER,Common_Movement_FaceUp)
+    waitmovement(PLAYER)
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
+script Quest_Hiddengrottomapping2_Reward_Script{
+    call(Quest_Hiddengrottomapping2_SetUpCutscene_Script)
+    msgbox(gText_Hiddengrottomapping2_IHaveAFeeling,,SPEAKER_NANCY)
+    msgbox(gText_Hiddengrottomapping2_IDIdFind,,SPEAKER_NANCY)
+    giveitem(ITEM_PANNEN_MACGUFFIN,1)
+    applymovement(WIFE,Common_Movement_FaceUp)
+    waitmovement(WIFE)
+    setflag(FLAG_TEMP_B)
+    completequest(WIFE)
 }
 
 script Quest_Hiddengrottomapping2_TakeJournalPage_Script{
+    msgbox(gText_Hiddengrottomapping2_OhYouHave,,SPEAKER_NANCY)
+    applymovement(WIFE,Quest_Hiddengrottomapping2_WalkToWall)
+    waitmovement(WIFE)
+    call(Quest_Hiddengrottomapping2_CountSubquestsReward_Script)
+    msgbox(gText_Hiddengrottomapping2_IveTranslated,,SPEAKER_NANCY)
+    closemessage
 }
 
 script Quest_Hiddengrottomapping2_RemoveJournalPage1_Script{
@@ -42,4 +94,32 @@ script Quest_Hiddengrottomapping2_RemoveJournalPage3_Script{
             setflag(FLAG_HIDE_JOURNAL)
         }
     return
+}
+
+movement Quest_Hiddengrottomapping2_WalkToWall{
+    walk_right * 2
+    walk_up * 2 
+    step_end
+}
+
+text gText_Hiddengrottomapping2_INeed{
+    format("")
+}
+text gText_Hiddengrottomapping2_IveBeenThiking{
+    format("")
+}
+text gText_Hiddengrottomapping2_HeSpentALot{
+    format("")
+}
+text gText_Hiddengrottomapping2_IHaveAFeeling{
+    format("")
+}
+text gText_Hiddengrottomapping2_IDIdFind{
+    format("")
+}
+text gText_Hiddengrottomapping2_OhYouHave{
+    format("")
+}
+text gText_Hiddengrottomapping2_IveTranslated{
+    format("")
 }

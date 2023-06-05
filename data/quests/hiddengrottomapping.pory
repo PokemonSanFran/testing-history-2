@@ -7,7 +7,7 @@ const FLAG_HIDE_JOURNAL = FLAG_TEMP_3
 script Hiddengrotto_EnterGrotto_Dialogue{
     lock
     special(HiddenGrotto_LoadDiscoveredGrottoText)
-    msgbox(gText_Hiddengrotto_Blank,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
+    msgbox(gText_Hiddengrottomapping_Blank,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
 
     if(var(VAR_RESULT) == YES){
         special(HiddenGrotto_LoadGrottoAndWarpPlayer)
@@ -81,9 +81,9 @@ script Quest_Hiddengrottomapping_Event_Script{
 script Quest_Hiddengrottomapping_Reward_Dialogue{
     completequest(QUEST_HIDDENGROTTOMAPPING)
     lock
-    msgbox(gText_Hiddengrotto_SighHeToldYou,,SPEAKER_NANCY)
-    msgbox(gText_Hiddengrotto_IHaventHeard,,SPEAKER_NANCY)
-    msgbox(gText_Hiddengrotto_HeTaughtMe,,SPEAKER_NANCY)
+    msgbox(gText_Hiddengrottomapping_SighHeToldYou,,SPEAKER_NANCY)
+    msgbox(gText_Hiddengrottomapping_IHaventHeard,,SPEAKER_NANCY)
+    msgbox(gText_Hiddengrottomapping_HeTaughtMe,,SPEAKER_NANCY)
 
     special(Quest_Hiddengrottomapping2_CheckForJournalPage)
     if(var(VAR_RESULT) > 0){
@@ -91,14 +91,14 @@ script Quest_Hiddengrottomapping_Reward_Dialogue{
         goto(Quest_Hiddengrottomapping2_TakeJournalPage_Script)
     }
 
-    msgbox(gText_Hiddengrotto_CouldYouKeep,,SPEAKER_NANCY)
+    msgbox(gText_Hiddengrottomapping_CouldYouKeep,,SPEAKER_NANCY)
     startquest(QUEST_HIDDENGROTTOMAPPING)
     closemessage
     end
 }
 
 script Quest_Hiddengrottomapping_Active_Dialogue{
-    msgbox(gText_Hiddengrotto_OhYouVeMet,,SPEAKER_NANCY)
+    msgbox(gText_Hiddengrottomapping_OhYouVeMet,,SPEAKER_NANCY)
     closemessage
     end
 }
@@ -114,11 +114,11 @@ movement Quest_Hiddengrottomapping_LeaveGrotto_Movement{
     step_end
 }
 
-text gText_Hiddengrotto_Blank{
+text gText_Hiddengrottomapping_Blank{
     "{STR_VAR_1}"    
 }
 
-text gText_Hiddengrotto_LookYouveFound{
+text gText_Hiddengrottomapping_LookYouveFound{
     format("Look!\nYou've found a narrow path!\pWill you follow it?")
 }
 text gText_LookIveFound{
@@ -199,4 +199,19 @@ text gText_IntriguingHiddenTrail{
 
 text gText_HiddenGrottoMaterializes{
     format("A hidden grotto materializes! Do I sense a thrilling journey ahead?")
+}
+text gText_Hiddengrottomapping_SighHeToldYou{
+    format("")
+}
+text gText_Hiddengrottomapping_IHaventHeard{
+    format("")
+}
+text gText_Hiddengrottomapping_HeTaughtMe{
+    format("")
+}
+text gText_Hiddengrottomapping_CouldYouKeep{
+    format("")
+}
+text gText_Hiddengrottomapping_OhYouVeMet{
+    format("")
 }

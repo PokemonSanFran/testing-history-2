@@ -577,3 +577,5 @@ gSpecials::
     def_special HiddenGrotto_LoadGrottoAndWarpPlayer
     def_special Quest_Hiddengrottomapping_MarkSubquestBiome
     def_special Quest_Hiddengrottomapping_CheckSubquestsForReward
+    def_special Quest_Hiddengrottomapping2_CheckForJournalPage
+    def_special Quest_Hiddengrottomapping2_CountCompletedSubquests

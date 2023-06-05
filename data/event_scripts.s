@@ -1531,3 +1531,39 @@ Script_RemoveTint::
 .include "data/maps/Psfroute8_Grotto/scripts.inc"
 
 	.include "data/maps/Gldngtepark_Pannen_House/scripts.inc"
+
+	.include "data/maps/Psfroute43_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute5_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute61_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute7_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute15_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute30_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute22_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute20_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute49_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute76_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute72_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute51_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute1_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute9_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute70_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute38_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute14_Grotto/scripts.inc"
+
+	.include "data/maps/Psfroute18_Grotto/scripts.inc"

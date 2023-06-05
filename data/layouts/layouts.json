@@ -6330,6 +6330,186 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Gldngtepark_Pannen_House/border.bin",
       "blockdata_filepath": "data/layouts/Gldngtepark_Pannen_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE43_GROTTO",
+      "name": "Psfroute43_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute43_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute43_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE5_GROTTO",
+      "name": "Psfroute5_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute5_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute5_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE61_GROTTO",
+      "name": "Psfroute61_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute61_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute61_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE7_GROTTO",
+      "name": "Psfroute7_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Psfroute7_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute7_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE15_GROTTO",
+      "name": "Psfroute15_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfroute15_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute15_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE30_GROTTO",
+      "name": "Psfroute30_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfroute30_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute30_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE22_GROTTO",
+      "name": "Psfroute22_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfroute22_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute22_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE20_GROTTO",
+      "name": "Psfroute20_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfroute20_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute20_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE49_GROTTO",
+      "name": "Psfroute49_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfroute49_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute49_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE76_GROTTO",
+      "name": "Psfroute76_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfroute76_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute76_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE72_GROTTO",
+      "name": "Psfroute72_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfroute72_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute72_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE51_GROTTO",
+      "name": "Psfroute51_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Psfroute51_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute51_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE1_GROTTO",
+      "name": "Psfroute1_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Psfroute1_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute1_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE9_GROTTO",
+      "name": "Psfroute9_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Psfroute9_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute9_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE70_GROTTO",
+      "name": "Psfroute70_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Psfroute70_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute70_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE38_GROTTO",
+      "name": "Psfroute38_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Psfroute38_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute38_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE14_GROTTO",
+      "name": "Psfroute14_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Psfroute14_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute14_Grotto/map.bin"
+    },
+    {
+      "id": "LAYOUT_PSFROUTE18_GROTTO",
+      "name": "Psfroute18_Grotto_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Psfroute18_Grotto/border.bin",
+      "blockdata_filepath": "data/layouts/Psfroute18_Grotto/map.bin"
     }
   ]
 }

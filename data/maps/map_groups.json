@@ -55,7 +55,8 @@
     "CaveTemplate_Water",
     "CaveTemplate_Water1",
     "NewMap1",
-    "Gldngtepark_Pannen_House"
+    "Gldngtepark_Pannen_House",
+    "Psfroute15_Grotto"
   ],
   "gMapGroup_PsfTownsAndRoutes": [
     "Southbay",
@@ -305,7 +306,24 @@
     "Psfroute17_Grotto",
     "Psfroute21_Grotto",
     "Psfroute63_Grotto",
-    "Psfroute8_Grotto"
+    "Psfroute8_Grotto",
+    "Psfroute43_Grotto",
+    "Psfroute5_Grotto",
+    "Psfroute61_Grotto",
+    "Psfroute7_Grotto",
+    "Psfroute30_Grotto",
+    "Psfroute22_Grotto",
+    "Psfroute20_Grotto",
+    "Psfroute49_Grotto",
+    "Psfroute76_Grotto",
+    "Psfroute72_Grotto",
+    "Psfroute51_Grotto",
+    "Psfroute1_Grotto",
+    "Psfroute9_Grotto",
+    "Psfroute70_Grotto",
+    "Psfroute38_Grotto",
+    "Psfroute14_Grotto",
+    "Psfroute18_Grotto"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

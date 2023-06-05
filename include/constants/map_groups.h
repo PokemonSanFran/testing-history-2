@@ -14,6 +14,7 @@
 #define MAP_CAVE_TEMPLATE_WATER1     (5 | (0 << 8))
 #define MAP_NEW_MAP1                 (6 | (0 << 8))
 #define MAP_GLDNGTEPARK_PANNEN_HOUSE (7 | (0 << 8))
+#define MAP_PSFROUTE15_GROTTO        (8 | (0 << 8))
 
 // gMapGroup_PsfTownsAndRoutes
 #define MAP_SOUTHBAY                                 (0 | (1 << 8))
@@ -264,6 +265,23 @@
 #define MAP_PSFROUTE21_GROTTO (3 | (12 << 8))
 #define MAP_PSFROUTE63_GROTTO (4 | (12 << 8))
 #define MAP_PSFROUTE8_GROTTO  (5 | (12 << 8))
+#define MAP_PSFROUTE43_GROTTO (6 | (12 << 8))
+#define MAP_PSFROUTE5_GROTTO  (7 | (12 << 8))
+#define MAP_PSFROUTE61_GROTTO (8 | (12 << 8))
+#define MAP_PSFROUTE7_GROTTO  (9 | (12 << 8))
+#define MAP_PSFROUTE30_GROTTO (10 | (12 << 8))
+#define MAP_PSFROUTE22_GROTTO (11 | (12 << 8))
+#define MAP_PSFROUTE20_GROTTO (12 | (12 << 8))
+#define MAP_PSFROUTE49_GROTTO (13 | (12 << 8))
+#define MAP_PSFROUTE76_GROTTO (14 | (12 << 8))
+#define MAP_PSFROUTE72_GROTTO (15 | (12 << 8))
+#define MAP_PSFROUTE51_GROTTO (16 | (12 << 8))
+#define MAP_PSFROUTE1_GROTTO  (17 | (12 << 8))
+#define MAP_PSFROUTE9_GROTTO  (18 | (12 << 8))
+#define MAP_PSFROUTE70_GROTTO (19 | (12 << 8))
+#define MAP_PSFROUTE38_GROTTO (20 | (12 << 8))
+#define MAP_PSFROUTE14_GROTTO (21 | (12 << 8))
+#define MAP_PSFROUTE18_GROTTO (22 | (12 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (13 << 8))

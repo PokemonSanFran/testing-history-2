@@ -313,12 +313,14 @@ u8 Quest_Hiddengrottomapping2_CountCompletedSubquests(void){
 }
 
 bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
-    u16 currentJournalPage = ITEM_POKE_BALL;
-    bool8 = hasJournalPages = FALSE;
+    u16 currentJournalPage = ITEM_PANNEN_JOURNAL_PAGE_1;
+    bool8 hasJournalPages = FALSE;
+    u8 i;
 
     for (i = 0; i < QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT; i++){
-        if (CheckBagHasItem(currentJournalPage+1,1)){
-            RemoveBagItem(currentJournalPage+1,);
+        if (CheckBagHasItem(currentJournalPage+i,1)){
+            RemoveBagItem(currentJournalPage+i,1);
+            QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING2,FLAG_SET_COMPLETED,i);
             hasJournalPages = TRUE; 
         }
     }
