@@ -1,0 +1,11 @@
+script Hiddengrotto_EnterGrotto_Dialogue{
+    lock
+    special(HiddenGrotto_LoadDiscoveredGrottoText)
+    msgbox(gText_Hiddengrottomapping_Blank,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
+
+    if(var(VAR_RESULT) == YES){
+        special(HiddenGrotto_LoadGrottoAndWarpPlayer)
+    }
+    release
+    end
+}

@@ -7,6 +7,7 @@ Gldngtepark_Pannen_House_Event_Script::
 	faceplayer
 	goto_if_quest_inactive QUEST_HIDDENGROTTOMAPPING, Quest_Hiddengrottomapping2_Event_Script
 	goto_if_quest_active QUEST_HIDDENGROTTOMAPPING2, Quest_Hiddengrottomapping2_Event_Script
+	goto_if_quest_complete QUEST_HIDDENGROTTOMAPPING2, Quest_Hiddengrottomapping2_Complete_Dialogue
 	goto Quest_Hiddengrottomapping_Event_Script
 	return
 

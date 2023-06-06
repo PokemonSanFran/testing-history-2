@@ -216,29 +216,32 @@ u8 Quest_Hiddengrottomapping_CountCompletedSubquests(void);
 
 const u32 GROTTO_SUBQUEST_MAP[NUM_GROTTO_ROUTES][2]=
 {
-    {MAP_PSFROUTE1_GROTTO,SUB_QUEST_3},
+    {MAP_PSFROUTE1_GROTTO,SUB_QUEST_1},
     {MAP_PSFROUTE30_GROTTO,SUB_QUEST_2},
-    {MAP_PSFROUTE9_GROTTO,SUB_QUEST_3},
-    {MAP_PSFROUTE70_GROTTO,SUB_QUEST_3},
-    {MAP_PSFROUTE17_GROTTO,SUB_QUEST_4},
+    {MAP_PSFROUTE9_GROTTO,SUB_QUEST_1},
+    {MAP_PSFROUTE70_GROTTO,SUB_QUEST_1},
+    {MAP_PSFROUTE17_GROTTO,SUB_QUEST_3},
     {MAP_PSFROUTE22_GROTTO,SUB_QUEST_2},
+    {MAP_PSFROUTE20_GROTTO,SUB_QUEST_2},
     {MAP_PSFROUTE49_GROTTO,SUB_QUEST_2},
-    {MAP_PSFROUTE38_GROTTO,SUB_QUEST_2},
-    {MAP_PSFROUTE14_GROTTO,SUB_QUEST_3},
+    {MAP_PSFROUTE38_GROTTO,SUB_QUEST_1},
+    {MAP_PSFROUTE14_GROTTO,SUB_QUEST_1},
     {MAP_PSFROUTE21_GROTTO,SUB_QUEST_3},
-    {MAP_PSFROUTE7_GROTTO,SUB_QUEST_1},
-    {MAP_PSFROUTE63_GROTTO,SUB_QUEST_4},
-    {MAP_PSFROUTE11_GROTTO,SUB_QUEST_5},
+    {MAP_PSFROUTE7_GROTTO,SUB_QUEST_4},
+    {MAP_PSFROUTE63_GROTTO,SUB_QUEST_3},
+    {MAP_PSFROUTE11_GROTTO,SUB_QUEST_3},
     {MAP_PSFROUTE32_GROTTO,SUB_QUEST_5},
-    {MAP_PSFROUTE62_GROTTO,SUB_QUEST_2},
+    {MAP_PSFROUTE62_GROTTO,SUB_QUEST_5},
+    {MAP_PSFROUTE76_GROTTO,SUB_QUEST_2},
     {MAP_PSFROUTE72_GROTTO,SUB_QUEST_2},
-    {MAP_PSFROUTE18_GROTTO,SUB_QUEST_3},
-    {MAP_PSFROUTE61_GROTTO,SUB_QUEST_1},
-    {MAP_PSFROUTE43_GROTTO,SUB_QUEST_1},
-    {MAP_PSFROUTE5_GROTTO,SUB_QUEST_1},
+    {MAP_PSFROUTE18_GROTTO,SUB_QUEST_1},
+    {MAP_PSFROUTE61_GROTTO,SUB_QUEST_4},
+    {MAP_PSFROUTE43_GROTTO,SUB_QUEST_4},
+    {MAP_PSFROUTE5_GROTTO,SUB_QUEST_4},
     {MAP_PSFROUTE15_GROTTO,SUB_QUEST_2},
-    {MAP_PSFROUTE8_GROTTO,SUB_QUEST_4},
-    {MAP_PSFROUTE13_GROTTO,SUB_QUEST_4},
+    {MAP_PSFROUTE51_GROTTO,SUB_QUEST_2},
+    {MAP_PSFROUTE8_GROTTO,SUB_QUEST_3},
+    {MAP_PSFROUTE13_GROTTO,SUB_QUEST_3},
 };
 
 void Quest_Hiddengrottomapping_MarkSubquestBiome(void) {
@@ -258,12 +261,9 @@ void Quest_Hiddengrottomapping_MarkSubquestBiome(void) {
     }
 
     if (foundGrotto) {
-            AddBagItem(ITEM_GREAT_BALL,1);
         if (!QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING, FLAG_GET_COMPLETED, subquest)) {
-            AddBagItem(ITEM_ULTRA_BALL,1);
             QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING, FLAG_SET_COMPLETED, subquest);
         }
-            AddBagItem(ITEM_MASTER_BALL,1);
     }
 }
 
@@ -305,7 +305,7 @@ u8 Quest_Hiddengrottomapping2_CountCompletedSubquests(void){
     u8 i = 0, numCompletedSubquests = 0;
 
     for (i = 0; i < QUEST_HIDDENGROTTOMAPPING_SUB_COUNT; i++){
-        if (!QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING2,FLAG_GET_COMPLETED,i)){
+        if (QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING2,FLAG_GET_COMPLETED,i)){
             numCompletedSubquests++;    
         }
     }
@@ -314,13 +314,15 @@ u8 Quest_Hiddengrottomapping2_CountCompletedSubquests(void){
 }
 
 bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
-    u16 currentJournalPage = ITEM_PANNEN_JOURNAL_PAGE_1;
+    u16 currentJournalPage;
     bool8 hasJournalPages = FALSE;
     u8 i;
 
     for (i = 0; i < QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT; i++){
-        if (CheckBagHasItem(currentJournalPage+i,1)){
-            RemoveBagItem(currentJournalPage+i,1);
+        currentJournalPage = ITEM_PANNEN_JOURNAL_PAGE_1 + i;
+
+        if (CheckBagHasItem(currentJournalPage,1)){
+            RemoveBagItem(currentJournalPage,1);
             QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING2,FLAG_SET_COMPLETED,i);
             hasJournalPages = TRUE; 
         }

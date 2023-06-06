@@ -1,0 +1,50 @@
+//gText_Ultrawormholeresearch_
+//Quest_Ultrawormholeresearch_
+script Quest_Ultrawormholeresearch_HiddenElevator_Script{
+    msgbox(gText_Ultrawormholeresearch_WaitEsperanto,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
+    msgbox(gText_Ultrawormholeresearch_TakeTheBook,MSGBOX_YESNO)
+
+    if (var(VAR_RESULT) == NO){
+        closemessage
+        release
+        end
+    }
+    msgbox(gText_Ultrawormholeresearch_TheBookcase)
+    closemessage
+    call(Quest_Ultrawormholeresearch_RevealHiddenWarp_Script)
+    call(Quest_Ultrawormholeresearch_PlayerExplain_Dialogue)
+    release
+    end
+}
+
+script Quest_Ultrawormholeresearch_ShowWarp_Script{
+    //setmetatile()
+    return
+}
+
+script Quest_Ultrawormholeresearch_RevealHiddenWarp_Script{
+    fadescreen(FADE_TO_BLACK)
+    playse(SE_ROTATING_GATE)
+    call(Quest_Ultrawormholeresearch_ShowWarp_Script)
+    fadescreen(FADE_FROM_BLACK)
+    return
+}
+
+script Quest_Ultrawormholeresearch_PlayerExplain_Dialogue{
+    msgbox(gText_Ultrawormholeresearch_Whatthehell,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    closemessage
+    return
+}
+
+text gText_Ultrawormholeresearch_WaitEsperanto{
+    format("")
+}
+text gText_Ultrawormholeresearch_TakeTheBook{
+    format("")
+}
+text gText_Ultrawormholeresearch_TheBookcase{
+    format("")
+}
+text gText_Ultrawormholeresearch_Whatthehell{
+    format("")
+}

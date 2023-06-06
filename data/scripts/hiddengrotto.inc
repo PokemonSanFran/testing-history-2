@@ -1,0 +1,14 @@
+Hiddengrotto_EnterGrotto_Dialogue::
+	lock
+	special HiddenGrotto_LoadDiscoveredGrottoText
+	msgbox gText_Hiddengrottomapping_Blank, MSGBOX_YESNO, SPEAKER_ZOEY, TAIL_THOUGHT, EMOTE_CONFUSE
+	compare VAR_RESULT, YES
+	goto_if_eq Hiddengrotto_EnterGrotto_Dialogue_2
+Hiddengrotto_EnterGrotto_Dialogue_1:
+	release
+	end
+
+Hiddengrotto_EnterGrotto_Dialogue_2:
+	special HiddenGrotto_LoadGrottoAndWarpPlayer
+	goto Hiddengrotto_EnterGrotto_Dialogue_1
+

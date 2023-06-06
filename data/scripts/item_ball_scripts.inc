@@ -783,16 +783,16 @@ Sunset_Quest_Rockcollector_EventScript_Ice_Stone::
     end
 
 Quest_Hiddengrottomapping2_EventScript_Journal1::
-    finditem 1
+    finditem ITEM_PANNEN_JOURNAL_PAGE_1
     subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_HIDDENGROTTOMAPPING2,SUB_QUEST_1
     end
 
 Quest_Hiddengrottomapping2_EventScript_Journal2::
-    finditem 2
+    finditem ITEM_PANNEN_JOURNAL_PAGE_2
     subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_HIDDENGROTTOMAPPING2,SUB_QUEST_2
     end
 
 Quest_Hiddengrottomapping2_EventScript_Journal3::
-    finditem 3
+    finditem ITEM_PANNEN_JOURNAL_PAGE_3
     subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_HIDDENGROTTOMAPPING2,SUB_QUEST_3
     end

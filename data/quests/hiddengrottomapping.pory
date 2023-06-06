@@ -4,17 +4,6 @@ const FLAG_HIDE_JOURNAL = FLAG_TEMP_3
 
 //script Quest_Hiddengrottomapping_
 //text Hiddengrottomapping_
-script Hiddengrotto_EnterGrotto_Dialogue{
-    lock
-    special(HiddenGrotto_LoadDiscoveredGrottoText)
-    msgbox(gText_Hiddengrottomapping_Blank,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
-
-    if(var(VAR_RESULT) == YES){
-        special(HiddenGrotto_LoadGrottoAndWarpPlayer)
-    }
-    release
-    end
-}
 
 script Quest_Hiddengrottomapping_MarkSubquestBiome_Script{
     addvar(VAR_TEMP_0,1)
@@ -64,14 +53,6 @@ script Quest_Hiddengrottomapping_StartQuest_Dialogue{
     end
 }
 
-script Quest_Hiddengrottomapping_StartSparkle_Script{
-    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_HIDDENGROTTOMAPPING,SUB_QUEST_1)
-        if (!var(VAR_RESULT)){
-            dofieldeffectsparkle(8,23,1)
-        }
-    return
-}
-
 script Quest_Hiddengrottomapping_Event_Script{
     goto_if_quest_reward(QUEST_HIDDENGROTTOMAPPING,Quest_Hiddengrottomapping_Reward_Dialogue)
     goto_if_quest_active(QUEST_HIDDENGROTTOMAPPING,Quest_Hiddengrottomapping_Active_Dialogue)
@@ -85,14 +66,15 @@ script Quest_Hiddengrottomapping_Reward_Dialogue{
     msgbox(gText_Hiddengrottomapping_IHaventHeard,,SPEAKER_NANCY)
     msgbox(gText_Hiddengrottomapping_HeTaughtMe,,SPEAKER_NANCY)
 
-    special(Quest_Hiddengrottomapping2_CheckForJournalPage)
-    if(var(VAR_RESULT) > 0){
+    specialvar(VAR_RESULT,Quest_Hiddengrottomapping2_CheckForJournalPage)
+
+    if(var(VAR_RESULT)){
         startquest(QUEST_HIDDENGROTTOMAPPING2)
         goto(Quest_Hiddengrottomapping2_TakeJournalPage_Script)
     }
 
     msgbox(gText_Hiddengrottomapping_CouldYouKeep,,SPEAKER_NANCY)
-    startquest(QUEST_HIDDENGROTTOMAPPING)
+    startquest(QUEST_HIDDENGROTTOMAPPING2)
     closemessage
     end
 }
@@ -201,17 +183,17 @@ text gText_HiddenGrottoMaterializes{
     format("A hidden grotto materializes! Do I sense a thrilling journey ahead?")
 }
 text gText_Hiddengrottomapping_SighHeToldYou{
-    format("")
+    format("He told you to come here? Did he think he'd be here, or was he hoping I'd get the data for you...")
 }
 text gText_Hiddengrottomapping_IHaventHeard{
-    format("")
+    format("Truth be told, I haven't heard from him a while. I know he gets so caught up in his work though.")
 }
 text gText_Hiddengrottomapping_HeTaughtMe{
-    format("")
+    format("He taught me how to withdraw data from Trainer's phones, so if you let me see that for a second...")
 }
 text gText_Hiddengrottomapping_CouldYouKeep{
-    format("")
+    format("Thanks. I'll upload it to his computer. Hey, could you keep an eye out for anything that might indicate his whereabouts? Its been a while since I've seen him, and I'm starting to get worried.")
 }
 text gText_Hiddengrottomapping_OhYouVeMet{
-    format("")
+    format("Ah, so you met my husband, Pannen! Oh, and you're helping with his research. That's excellent! Maybe he'll come home more often.")
 }

@@ -61,52 +61,52 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_PSFROUTE61, 16, 4
-	end
-
-
-Debug_Script_2::
-	warpsilent MAP_PSFROUTE15_GROTTO, 0
-	end
-
-
-Debug_Script_3::
-	warpsilent MAP_PSFROUTE11_GROTTO, 0
-	end
-
-
-Debug_Script_4::
-	warpsilent MAP_PSFROUTE1_GROTTO, 0
-	end
-
-
-Debug_Script_5::
-	warpsilent MAP_PSFROUTE62_GROTTO, 0
-	end
-
-
-Debug_Script_6::
-	warpsilent MAP_PSFROUTE51_GROTTO, 0
-	end
-
-
-Debug_Script_7::
-	warpsilent MAP_PSFROUTE38_GROTTO, 0
-	end
-
-
-Debug_Script_8::
-	warpsilent MAP_PSFROUTE8_GROTTO, 0
-	end
-
-
-Debug_Script_9::
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_HIDDENGROTTOMAPPING, SUB_QUEST_1
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_HIDDENGROTTOMAPPING, SUB_QUEST_2
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_HIDDENGROTTOMAPPING, SUB_QUEST_3
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_HIDDENGROTTOMAPPING, SUB_QUEST_4
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_HIDDENGROTTOMAPPING, SUB_QUEST_5
+	questmenu QUEST_MENU_SET_REWARD, QUEST_HIDDENGROTTOMAPPING
 	warpsilent MAP_GLDNGTEPARK_PANNEN_HOUSE, 0
 	end
 
 
+Debug_Script_2::
+	warpsilent MAP_PSFROUTE51_GROTTO, 0
+	end
+
+
+Debug_Script_3::
+	warpsilent MAP_PSFROUTE38_GROTTO, 0
+	end
+
+
+Debug_Script_4::
+	warpsilent MAP_PSFROUTE8_GROTTO, 0
+	end
+
+
+Debug_Script_5::
+	end
+
+
+Debug_Script_6::
+	end
+
+
+Debug_Script_7::
+	end
+
+
+Debug_Script_8::
+	end
+
+
+Debug_Script_9::
+	end
+
+
 Debug_Script_10::
-	call Quest_Hiddengrottomapping_MarkSubquestBiome_Script
 	end
 
 

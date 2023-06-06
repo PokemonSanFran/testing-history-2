@@ -6,7 +6,6 @@ const PLAYER = OBJ_EVENT_ID_PLAYER
 const FLAG_HIDE_JOURNAL = FLAG_TEMP_3
 
 script Quest_Hiddengrottomapping2_Event_Script{
-    goto_if_quest_complete(QUEST_HIDDENGROTTOMAPPING2,Quest_Hiddengrottomapping2_Complete_Dialogue)
     goto_if_quest_active(QUEST_HIDDENGROTTOMAPPING2,Quest_Hiddengrottomapping2_Active_Dialogue)
     goto(Gldngtepark_Pannen_Wife_Default_Dialogue)
 }
@@ -21,7 +20,7 @@ script Quest_Hiddengrottomapping2_Complete_Dialogue{
 }
 
 script Quest_Hiddengrottomapping2_Active_Dialogue{
-    special(Quest_Hiddengrottomapping2_CheckForJournalPage)
+    specialvar(VAR_RESULT,Quest_Hiddengrottomapping2_CheckForJournalPage)
     if (var(VAR_RESULT)){
         goto(Quest_Hiddengrottomapping2_TakeJournalPage_Script)
     }
@@ -31,9 +30,9 @@ script Quest_Hiddengrottomapping2_Active_Dialogue{
 }
 
 script Quest_Hiddengrottomapping2_CountSubquestsReward_Script{
-    special(Quest_Hiddengrottomapping2_CountCompletedSubquests)
+    specialvar(VAR_RESULT,Quest_Hiddengrottomapping2_CountCompletedSubquests)
 
-    if (var(VAR_RESULT)){
+    if (var(VAR_RESULT) == QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT){
         questmenu(QUEST_MENU_SET_REWARD,QUEST_HIDDENGROTTOMAPPING2)
         goto(Quest_Hiddengrottomapping2_Reward_Script)
     }
@@ -55,21 +54,30 @@ script Quest_Hiddengrottomapping2_SetUpCutscene_Script{
 script Quest_Hiddengrottomapping2_Reward_Script{
     call(Quest_Hiddengrottomapping2_SetUpCutscene_Script)
     msgbox(gText_Hiddengrottomapping2_IHaveAFeeling,,SPEAKER_NANCY)
-    msgbox(gText_Hiddengrottomapping2_IDIdFind,,SPEAKER_NANCY)
+    msgbox(gText_Hiddengrottomapping2_IDidFind,,SPEAKER_NANCY)
     giveitem(ITEM_PANNEN_MACGUFFIN,1)
     applymovement(WIFE,Common_Movement_FaceUp)
     waitmovement(WIFE)
     setflag(FLAG_TEMP_B)
-    completequest(WIFE)
+    completequest(QUEST_HIDDENGROTTOMAPPING2)
+    release
+    end
 }
 
 script Quest_Hiddengrottomapping2_TakeJournalPage_Script{
     msgbox(gText_Hiddengrottomapping2_OhYouHave,,SPEAKER_NANCY)
+    closemessage
     applymovement(WIFE,Quest_Hiddengrottomapping2_WalkToWall)
     waitmovement(WIFE)
     call(Quest_Hiddengrottomapping2_CountSubquestsReward_Script)
+    applymovement(WIFE,Quest_Hiddengrottomapping2_WalkToTable)
+    waitmovement(WIFE)
     msgbox(gText_Hiddengrottomapping2_IveTranslated,,SPEAKER_NANCY)
     closemessage
+    applymovement(WIFE,Common_Movement_FaceLeft)
+    waitmovement(WIFE)
+    release
+    end
 }
 
 script Quest_Hiddengrottomapping2_RemoveJournalPage1_Script{
@@ -99,27 +107,35 @@ script Quest_Hiddengrottomapping2_RemoveJournalPage3_Script{
 movement Quest_Hiddengrottomapping2_WalkToWall{
     walk_right * 2
     walk_up * 2 
+    face_down
+    step_end
+}
+
+movement Quest_Hiddengrottomapping2_WalkToTable{
+    walk_down * 2 
+    walk_left * 2
+    face_down
     step_end
 }
 
 text gText_Hiddengrottomapping2_INeed{
-    format("")
+    format("I think I need a moment to be alone.")
 }
 text gText_Hiddengrottomapping2_IveBeenThiking{
-    format("")
+    format("I've been thinking... he's okay out there. I don't know where he is, but I get the sense he's enjoying what he's doing.")
 }
 text gText_Hiddengrottomapping2_HeSpentALot{
-    format("")
+    format("He spent a lot of time researching those Hidden Grottos... like the one you found him in! I just hope he's safe.")
 }
 text gText_Hiddengrottomapping2_IHaveAFeeling{
-    format("")
+    format("I have a feeling you're not going to find anymore pages.")
 }
-text gText_Hiddengrottomapping2_IDIdFind{
-    format("")
+text gText_Hiddengrottomapping2_IDidFind{
+    format("I found the rest of the book laying around here, and with that page, I've got all of his notes, but no clues. Just a lot of rambling about Ultra Space.")
 }
 text gText_Hiddengrottomapping2_OhYouHave{
-    format("")
+    format("Oh! You have a page from his journal!")
 }
 text gText_Hiddengrottomapping2_IveTranslated{
-    format("")
+    format("I've translated the page for you, you can read it on the wall. Let me know if you make more progress!")
 }

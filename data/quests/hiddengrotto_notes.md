@@ -41,6 +41,7 @@ three grottos have hidden page of journal, sparkles on ground, found near the "b
 after first talking to wife, journal pieces are all taken and quest is actually revealed to you, you don't go into reward mode until wife has all the journal pieces, and then immediately completes
 
 downtown SOMA sets off the key item from wife but only after beating rose and only happens once, reacts again when inside rose's office, and once more in front of a bookcase in rose's office, talking to bookcase with item in bag will open a secret elevator down (tracked with a var)
+NOTE: i don't know if i like this. need another way to get the player into the basement.
 
 ultra beast temp flag will only respawn if subquest not marked as complete
 subquest is marked as complete when you catch
