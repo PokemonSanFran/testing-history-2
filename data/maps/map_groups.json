@@ -303,7 +303,8 @@
     "Salesforcetower_Serverroom",
     "Salesforcetower_Production",
     "Salesforcetower_Leagueops",
-    "Salesforcetower_Top"
+    "Salesforcetower_Top",
+    "Salesforcetower_Lab"
   ],
   "gMapGroup_HiddenGrotto": [
     "Psfroute11_Grotto",

@@ -230,5 +230,7 @@
 #define SPEAKER_KHALEEL                 197
 #define SPEAKER_AUGUSTA                 198
 #define SPEAKER_NANCY                   199
+#define SPEAKER_PANNEN                  200
+#define SPEAKER_MADRONE                 201
 
 #endif

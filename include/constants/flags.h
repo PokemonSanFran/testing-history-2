@@ -73,16 +73,20 @@
 #define FLAG_UNSUED_0x37 0x37 //Unused Flag
 #define FLAG_UNUSED_0x38 0x38 // Unused Flag
 #define FLAG_SPAWN_INVISIBLE 0x39 // Previously Unused Flag
-#define FLAG_UNUSED_0x3A 0x3A // Unused Flag
-#define FLAG_UNSUED_0x3B 0x3B // Unused Flag
-#define FLAG_UNUSED_0x3C 0x3C // Unused Flag
-#define FLAG_UNUSED_0x3D 0x3D // Unused Flag
-#define FLAG_UNUSED_0x3E 0x3E //Unused Flag
-#define FLAG_UNUSED_0x3F 0x3F //Unused Flag
-#define FLAG_UNUSED_0x40 0x40 //Unused Flag
-#define FLAG_UNUSED_0x41 0x41 //Unused Flag
-#define FLAG_UNUSED_0x42 0x42 //Unused Flag
-#define FLAG_UNUSED_0x43 0x43 //Unused Flag
+
+#define FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM FLAG_QUEST_ULTRAWORMHOLE_DONDOZO
+#define FLAG_QUEST_ULTRAWORMHOLE_DONDOZO	 0x3A
+#define FLAG_QUEST_ULTRAWORMHOLE_VOLCARONA	 0x3B
+#define FLAG_QUEST_ULTRAWORMHOLE_DUSCLOPS	 0x3C
+#define FLAG_QUEST_ULTRAWORMHOLE_CAMERUPT	 0x3D
+#define FLAG_QUEST_ULTRAWORMHOLE_DEINO	 	 0x3E
+#define FLAG_QUEST_ULTRAWORMHOLE_NOIVERN	 0x3F
+#define FLAG_QUEST_ULTRAWORMHOLE_SHUCKLE	 0x40
+#define FLAG_QUEST_ULTRAWORMHOLE_KINGLER	 0x41
+#define FLAG_QUEST_ULTRAWORMHOLE_ORBEETLE	 0x42
+#define FLAG_QUEST_ULTRAWORMHOLE_DONPHAN	 0x43
+#define FLAG_QUEST_ULTRAWORMHOLE_LAST_TOTEM  FLAG_QUEST_ULTRAWORMHOLE_DONPHAN
+
 #define FLAG_QUEST_EMPLOYEDEVERAFTER_FOUND_BRIDE 0x44 //Previously Unused Flag
 #define FLAG_UNUSED_0x45 0x45 //Unused Flag
 #define FLAG_UNUSED_0x46 0x46 //Unused Flag
@@ -1256,16 +1260,18 @@
 
 #define ROCKCOLLECTOR_STONES_COUNT  (FLAG_ITEM_ROCKCOLLECTOR_STONE_END - FLAG_ITEM_ROCKCOLLECTOR_STONE_START + 1)
 
-#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
-#define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
-#define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
-#define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
-#define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
+#define FLAG_QUEST_
+#define FLAG_QUEST_ULTRAWORMHOLE_DONDOZO			0x493
+#define FLAG_QUEST_ULTRAWORMHOLE_VOLCARONA			0x494
+#define FLAG_QUEST_ULTRAWORMHOLE_DUSCLOPS			0x495
+#define FLAG_QUEST_ULTRAWORMHOLE_CAMERUPT			0x496
+#define FLAG_QUEST_ULTRAWORMHOLE_DEINO				0x497
+#define FLAG_QUEST_ULTRAWORMHOLE_NOIVERN			0x498
+#define FLAG_QUEST_ULTRAWORMHOLE_SHUCKLE			0x499
+#define FLAG_QUEST_ULTRAWORMHOLE_KINGLER			0x49A
+#define FLAG_QUEST_ULTRAWORMHOLE_ORBEETLE			0x49B
+#define FLAG_QUEST_ULTRAWORMHOLE_DONPHAN			0x49C
+
 #define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
 #define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
 #define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag

@@ -43,8 +43,16 @@ after first talking to wife, journal pieces are all taken and quest is actually 
 downtown SOMA sets off the key item from wife but only after beating rose and only happens once, reacts again when inside rose's office, and once more in front of a bookcase in rose's office, talking to bookcase with item in bag will open a secret elevator down (tracked with a var)
 NOTE: i don't know if i like this. need another way to get the player into the basement.
 
-ultra beast temp flag will only respawn if subquest not marked as complete
-subquest is marked as complete when you catch
+totem mons are controlled by perma flag, when caught, flag is set to prevent them being caught again, pannen calls you that the machine is updated based on the battle data
+
+cannot release totems
+
+PC uses totem flags to show which options are avaialble
+
+ultra beast are controlled by temp flag. after battle, player is gusted out of the dungeon, mystery dungeon style, allowing players to farm ultra beasts
+
+subquest is marked as complete if an ultra beast is captured
+
 there is no reward, thanks you, goes back to research
 
 GROTTO SECRETS

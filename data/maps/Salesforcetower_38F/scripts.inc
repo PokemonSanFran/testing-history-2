@@ -1,8 +1,2 @@
 Salesforcetower_38F_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Salesforcetower_38F_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
-
-Salesforcetower_38F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call_if_quest_active QUEST_ULTRAWORMHOLERESEARCH, Quest_Ultrawormholeresearch_ShowWarp_Script
-	return
-

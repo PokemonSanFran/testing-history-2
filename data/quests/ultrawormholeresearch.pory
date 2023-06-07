@@ -1,5 +1,9 @@
 //gText_Ultrawormholeresearch_
 //Quest_Ultrawormholeresearch_
+
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const MADRONE = 1
+
 script Quest_Ultrawormholeresearch_HiddenElevator_Script{
     msgbox(gText_Ultrawormholeresearch_WaitEsperanto,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
     msgbox(gText_Ultrawormholeresearch_TakeTheBook,MSGBOX_YESNO)
@@ -18,7 +22,8 @@ script Quest_Ultrawormholeresearch_HiddenElevator_Script{
 }
 
 script Quest_Ultrawormholeresearch_ShowWarp_Script{
-    //setmetatile()
+    setmetatile(0,2,0x2DF,FALSE)
+    special(DrawWholeMapView)
     return
 }
 
@@ -26,14 +31,96 @@ script Quest_Ultrawormholeresearch_RevealHiddenWarp_Script{
     fadescreen(FADE_TO_BLACK)
     playse(SE_ROTATING_GATE)
     call(Quest_Ultrawormholeresearch_ShowWarp_Script)
+    setobjectxy(PLAYER,0,3)
+    TeleportCamera(0,3)
     fadescreen(FADE_FROM_BLACK)
     return
 }
 
 script Quest_Ultrawormholeresearch_PlayerExplain_Dialogue{
-    msgbox(gText_Ultrawormholeresearch_Whatthehell,MSGBOX_YESNO,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    msgbox(gText_Ultrawormholeresearch_Whatthehell,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
     closemessage
     return
+}
+
+script Quest_Ultrawormholeresearch_Preventvoid_Script{
+    lock
+    msgbox(gText_Ultrawormholeresearch_IWouldntGo,,SPEAKER_MADRONE)
+    closemessage
+    applymovement(PLAYER,Common_Movement_WalkDown)
+    waitmovement(PLAYER)
+    msgbox(gText_Ultrawormholeresearch_IDontThink,,SPEAKER_MADRONE)
+    closemessage
+    release
+    end
+}
+
+script Quest_Ultrawormholeresearch_StartQuest_Dialogue{
+    //PSF TODO add dialogue and movement here
+    startquest(QUEST_ULTRAWORMHOLERESEARCH)
+}
+
+script Quest_Ultrawormholeresearch_ConstructMenu_Script{
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_DONDOZO)){
+        dynmultipush("Paldea",0)
+    }
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_VOLCARONA)){
+        dynmultipush("Unova",1)
+    }
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_DUSCLOPS)){
+        dynmultipush("Orre",2)
+    }
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_CAMERUPT)){
+        dynmultipush("Sinnoh",3)
+    }
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_DEINO)){
+        dynmultipush("Hoenn",4)
+    }
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_NOIVERN)){
+        dynmultipush("Alola",5)
+    }
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_SHUCKLE)){
+        dynmultipush("Kalos",6)
+    }
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_KINGLER)){
+        dynmultipush("Johto",7)
+    }
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_ORBEETLE)){
+        dynmultipush("Galar",8)
+    }
+    if(flag(FLAG_QUEST_ULTRAWORMHOLE_DONPHAN)){
+        dynmultipush("Kanto",9)
+    }
+
+    dynmultipush("Never mind.",10)
+        return
+}
+
+script Quest_Ultrawormholeresearch_ComputerSetWarp_Menu{
+    lock
+    msgbox(gText_Ultrawormholeresearch_WhichWormhole)
+    call(Quest_Ultrawormholeresearch_ConstructMenu_Script)
+    dynmultistack(0,0,FALSE,4,TRUE,0,DYN_MULTICHOICE_CB_NONE)
+    closemessage
+
+    //specialvar(VAR_QUEST_ULTRAWORMHOLE_WARP_DESTINATION,Quest_
+    switch(var(VAR_RESULT)){
+        case 0: setdynamicwarp(MAP_PALDEA,255,1,1)
+        case 1: setdynamicwarp(MAP_UNOVA,255,1,1)
+        case 2: setdynamicwarp(MAP_ORRE,255,1,1)
+        case 3: setdynamicwarp(MAP_SINNOH,255,1,1)
+        case 4: setdynamicwarp(MAP_HOENN,255,1,1)
+        case 5: setdynamicwarp(MAP_ALOLA,255,1,1)
+        case 6: setdynamicwarp(MAP_KALOS,255,1,1)
+        case 7: setdynamicwarp(MAP_JOHTO,255,1,1)
+        case 8: setdynamicwarp(MAP_GALAR,255,1,1)
+        case 9: setdynamicwarp(MAP_KANTO,255,1,1)
+        default: 
+    }
+    copyvar(VAR_QUEST_ULTRAWORMHOLE_WARP_DESTINATION,VAR_RESULT)
+    call(Quest_Ultrawormholeresearch_SetWarp_Script)
+    release
+    end
 }
 
 text gText_Ultrawormholeresearch_WaitEsperanto{
@@ -47,4 +134,12 @@ text gText_Ultrawormholeresearch_TheBookcase{
 }
 text gText_Ultrawormholeresearch_Whatthehell{
     format("")
+}
+
+text gText_Ultrawormholeresearch_IWouldntGo{
+    format("I wouldn't go in there right now if I was you.")
+}
+
+text gText_Ultrawormholeresearch_IDontThink{
+    format("I don't think you used the computer to set a warp location... if you walk up those stairs now, you're probably going to be warped into the endless void. Forever.")
 }

@@ -262,6 +262,7 @@
 #define MAP_SALESFORCETOWER_PRODUCTION (17 | (11 << 8))
 #define MAP_SALESFORCETOWER_LEAGUEOPS  (18 | (11 << 8))
 #define MAP_SALESFORCETOWER_TOP        (19 | (11 << 8))
+#define MAP_SALESFORCETOWER_LAB        (20 | (11 << 8))
 
 // gMapGroup_HiddenGrotto
 #define MAP_PSFROUTE11_GROTTO (0 | (12 << 8))

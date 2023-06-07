@@ -1,5 +1,0 @@
-mapscripts Salesforcetower_38F_MapScripts{
-    MAP_SCRIPT_ON_TRANSITION{
-        call_if_quest_active(QUEST_ULTRAWORMHOLERESEARCH,Quest_Ultrawormholeresearch_ShowWarp_Script)
-    }
-}

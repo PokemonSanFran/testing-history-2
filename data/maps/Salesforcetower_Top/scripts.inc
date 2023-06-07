@@ -4,6 +4,7 @@ Salesforcetower_Top_MapScripts::
 
 Salesforcetower_Top_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Salesforcetower_Top_ObjectVisibility_Script
+	call_if_quest_active QUEST_ULTRAWORMHOLERESEARCH, Quest_Ultrawormholeresearch_ShowWarp_Script
 	return
 
 
@@ -40,3 +41,24 @@ Salesforcetower_Top_Rose_Event_Script_1:
 	goto YouCantStopMe_Confront_Dialogue
 	return
 
+
+Salesforce_Top_Bookshelf_Dialogue::
+	lockall
+	msgbox gText_Salesforce_Top_Bookshelf_TheresABunch, MSGBOX_DEFAULT
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_HIDDENGROTTOMAPPING2
+	compare VAR_RESULT, 0
+	goto_if_ne Salesforce_Top_Bookshelf_Dialogue_2
+Salesforce_Top_Bookshelf_Dialogue_1:
+	releaseall
+	end
+
+Salesforce_Top_Bookshelf_Dialogue_2:
+	goto Quest_Ultrawormholeresearch_HiddenElevator_Script
+	goto Salesforce_Top_Bookshelf_Dialogue_1
+
+
+gText_Salesforce_Top_Bookshelf_TheresABunch::
+	.string "There's a lot of books ranging a series\n"
+	.string "of different topics, like Company\l"
+	.string "Management, System Design, Learning\l"
+	.string "Esperanto.$"

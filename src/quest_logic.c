@@ -329,3 +329,14 @@ bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
     }
     return hasJournalPages;
 }
+
+// ***********************************************************************
+// Quest: Ultra Wormhole Research
+// -----------------------------------------------------------------------
+// This contains all the quest functions required for
+// the quest Ultra Wormhole Research.
+// ***********************************************************************
+
+u32 Quest_Ultrawormholeresearch_SetDynamicWarp{
+
+}

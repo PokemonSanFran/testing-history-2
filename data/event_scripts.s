@@ -1578,3 +1578,5 @@ Script_RemoveTint::
 	.include "data/maps/Psfroute76/scripts.inc"
 
 	.include "data/maps/Psfroute51/scripts.inc"
+
+	.include "data/maps/Salesforcetower_Lab/scripts.inc"
