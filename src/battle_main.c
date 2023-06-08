@@ -21,7 +21,7 @@
 #include "dma3.h"
 #include "event_data.h"
 #include "evolution_scene.h"
-#include "field_effect.h" //Used for PSF Flying Blind
+#include "quest_logic.h"
 #include "graphics.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"

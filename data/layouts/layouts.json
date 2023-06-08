@@ -6252,16 +6252,6 @@
       "blockdata_filepath": "data/layouts/Trolley_Underground_Evolutionstones_Cave/map.bin"
     },
     {
-      "id": "LAYOUT_NEW_MAP1",
-      "name": "NewMap1_Layout",
-      "width": 10,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/NewMap1/border.bin",
-      "blockdata_filepath": "data/layouts/NewMap1/map.bin"
-    },
-    {
       "id": "LAYOUT_PSFROUTE11_GROTTO",
       "name": "Psfroute11_Grotto_Layout",
       "width": 16,
@@ -6570,6 +6560,106 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/Salesforcetower_Lab/border.bin",
       "blockdata_filepath": "data/layouts/Salesforcetower_Lab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_PALDEA",
+      "name": "Ultra_Paldea_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Paldea/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Paldea/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_UNOVA",
+      "name": "Ultra_Unova_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Unova/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Unova/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_ORRE",
+      "name": "Ultra_Orre_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Orre/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Orre/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_SINNOH",
+      "name": "Ultra_Sinnoh_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Sinnoh/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Sinnoh/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_HOENN",
+      "name": "Ultra_Hoenn_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Hoenn/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Hoenn/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_ALOLA",
+      "name": "Ultra_Alola_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Alola/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Alola/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_KALOS",
+      "name": "Ultra_Kalos_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Kalos/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Kalos/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_JOHTO",
+      "name": "Ultra_Johto_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Johto/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Johto/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_GALAR",
+      "name": "Ultra_Galar_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Galar/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Galar/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_KANTO",
+      "name": "Ultra_Kanto_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Ultra_Kanto/border.bin",
+      "blockdata_filepath": "data/layouts/Ultra_Kanto/map.bin"
     }
   ]
 }

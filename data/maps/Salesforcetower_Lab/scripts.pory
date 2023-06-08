@@ -1,0 +1,5 @@
+mapscripts Salesforcetower_Lab_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_Ultrawormholeresearch_SetDynamicWarp_Script)
+    }
+}

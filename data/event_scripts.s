@@ -954,7 +954,7 @@ gText_Sudowoodo_Attacked::
 .string "The weird tree attacked!$"
 
 gText_LegendaryFlewAway::
-.string "The {STR_VAR_1} flew away!$"
+.string "The {STR_VAR_1} ran away!$"
 
 .include "data/text/pc_transfer.inc"
 .include "data/text/questionnaire.inc"
@@ -1522,8 +1522,6 @@ Script_RemoveTint::
 	.include "data/maps/CaveTemplate_Water1/scripts.inc"
     .include "data/maps/Trolley_Underground_Evolutionstones_Cave/scripts.inc"
 
-	.include "data/maps/NewMap1/scripts.inc"
-
 .include "data/maps/Psfroute11_Grotto/scripts.inc"
 .include "data/maps/Psfroute13_Grotto/scripts.inc"
 .include "data/maps/Psfroute17_Grotto/scripts.inc"
@@ -1580,3 +1578,23 @@ Script_RemoveTint::
 	.include "data/maps/Psfroute51/scripts.inc"
 
 	.include "data/maps/Salesforcetower_Lab/scripts.inc"
+
+	.include "data/maps/Ultra_Paldea/scripts.inc"
+
+	.include "data/maps/Ultra_Unova/scripts.inc"
+
+	.include "data/maps/Ultra_Orre/scripts.inc"
+
+	.include "data/maps/Ultra_Sinnoh/scripts.inc"
+
+	.include "data/maps/Ultra_Hoenn/scripts.inc"
+
+	.include "data/maps/Ultra_Alola/scripts.inc"
+
+	.include "data/maps/Ultra_Kalos/scripts.inc"
+
+	.include "data/maps/Ultra_Johto/scripts.inc"
+
+	.include "data/maps/Ultra_Galar/scripts.inc"
+
+	.include "data/maps/Ultra_Kanto/scripts.inc"

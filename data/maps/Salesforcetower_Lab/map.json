@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": ""
+      "flag": "NULL"
     }
   ],
   "warp_events": [
@@ -65,15 +65,7 @@
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 7,
-      "y": 2,
-      "elevation": 0,
-      "var": "VAR_QUEST_ULTRAWORMHOLE_WARP_DESTINATION",
-      "var_value": "0",
-      "script": "Quest_Ultrawormholeresearch_Preventvoid_Script"
-    }
+
   ],
   "bg_events": [
     {

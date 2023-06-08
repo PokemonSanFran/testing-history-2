@@ -3,6 +3,20 @@
 
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const MADRONE = 1
+const FLAG_HIDE_TOTEM = FLAG_TEMP_1A
+
+script Quest_Ultrawormholeresearch_TryRemoveTotem_Script{
+    if (flag(FLAG_SYS_CTRL_OBJ_DELETE)){
+        specialvar(VAR_RESULT,GetBattleOutcome)
+
+            if (var(VAR_RESULT) != B_OUTCOME_CAUGHT){
+                return
+            }
+
+        removeobject(VAR_LAST_TALKED)
+            return
+    }
+}
 
 script Quest_Ultrawormholeresearch_HiddenElevator_Script{
     msgbox(gText_Ultrawormholeresearch_WaitEsperanto,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
@@ -101,26 +115,95 @@ script Quest_Ultrawormholeresearch_ComputerSetWarp_Menu{
     msgbox(gText_Ultrawormholeresearch_WhichWormhole)
     call(Quest_Ultrawormholeresearch_ConstructMenu_Script)
     dynmultistack(0,0,FALSE,4,TRUE,0,DYN_MULTICHOICE_CB_NONE)
-    closemessage
-
-    //specialvar(VAR_QUEST_ULTRAWORMHOLE_WARP_DESTINATION,Quest_
-    switch(var(VAR_RESULT)){
-        case 0: setdynamicwarp(MAP_PALDEA,255,1,1)
-        case 1: setdynamicwarp(MAP_UNOVA,255,1,1)
-        case 2: setdynamicwarp(MAP_ORRE,255,1,1)
-        case 3: setdynamicwarp(MAP_SINNOH,255,1,1)
-        case 4: setdynamicwarp(MAP_HOENN,255,1,1)
-        case 5: setdynamicwarp(MAP_ALOLA,255,1,1)
-        case 6: setdynamicwarp(MAP_KALOS,255,1,1)
-        case 7: setdynamicwarp(MAP_JOHTO,255,1,1)
-        case 8: setdynamicwarp(MAP_GALAR,255,1,1)
-        case 9: setdynamicwarp(MAP_KANTO,255,1,1)
-        default: 
-    }
     copyvar(VAR_QUEST_ULTRAWORMHOLE_WARP_DESTINATION,VAR_RESULT)
-    call(Quest_Ultrawormholeresearch_SetWarp_Script)
+    call(Quest_Ultrawormholeresearch_SetDynamicWarp_Script)
+    msgbox(gText_Ultrawormholeresearch_WarpHasBeenSet)
+    closemessage
     release
     end
+}
+
+script Quest_Ultrawormholeresearch_SetDynamicWarp_Script{
+    switch(var(VAR_QUEST_ULTRAWORMHOLE_WARP_DESTINATION)){
+                case 0:
+        	bufferstring(STR_VAR_1,"Paldea: ???")
+        	setdynamicwarp(MAP_ULTRA_PALDEA,0)
+        case 1:
+        	bufferstring(STR_VAR_1,"Unova: Relic Castle")
+        	setdynamicwarp(MAP_ULTRA_UNOVA,0)
+        case 2:
+        	bufferstring(STR_VAR_1,"Orre: Mt Battle")
+        	setdynamicwarp(MAP_ULTRA_ORRE,0)
+        case 3:
+        	bufferstring(STR_VAR_1,"Sinnoh: Stark Mountain")
+        	setdynamicwarp(MAP_ULTRA_SINNOH,0)
+        case 4:
+        	bufferstring(STR_VAR_1,"Hoenn: Meteor Falls")
+        	setdynamicwarp(MAP_ULTRA_HOENN,0)
+        case 5:
+        	bufferstring(STR_VAR_1,"Alola: Vast Poni Canyon")
+        	setdynamicwarp(MAP_ULTRA_ALOLA,0)
+        case 6:
+        	bufferstring(STR_VAR_1,"Kalos: Terminus Cave")
+        	setdynamicwarp(MAP_ULTRA_KALOS,0)
+        case 7:
+        	bufferstring(STR_VAR_1,"Johto: Whirl Islands")
+        	setdynamicwarp(MAP_ULTRA_JOHTO,0)
+        case 8:
+        	bufferstring(STR_VAR_1,"Galar: Slumbering Weld")
+        	setdynamicwarp(MAP_ULTRA_GALAR,0)
+        case 9:
+        	bufferstring(STR_VAR_1,"Kanto: Victory Road")
+        	setdynamicwarp(MAP_ULTRA_KANTO,0)
+        default: 
+                release
+                end
+    }
+    return
+}
+
+script Quest_Ultrawormholeresearch_StartTotemBattle_Script{
+    lock
+    faceplayer
+    waitse
+    special(Quest_Ultrawormholeresearch_PlayTotemCry)
+    delay(40)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    special(Quest_Ultrawormholeresearch_SetTotemBattle)
+    special(StartRegiBattle) //PSF TODO should be start totem battle
+    waitstate
+    clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    specialvar(VAR_RESULT,GetBattleOutcome)
+    switch(var(VAR_RESULT)){
+        case B_OUTCOME_CAUGHT: goto(Quest_Ultrawormholeresearch_CaughtTotem_Script)
+        case B_OUTCOME_WON: 
+        case B_OUTCOME_RAN:
+        case B_OUTCOME_PLAYER_TELEPORTED: goto(Quest_Ultrawormholeresearch_RanFromTotem_Script)
+    }
+    release
+    end
+}
+
+script Quest_Ultrawormholeresearch_CaughtTotem_Script{
+    special(Quest_Ultrawormholeresearch_SetDefeatedTotemFlag)
+    goto(Common_EventScript_RemoveStaticPokemon)
+    release
+    end
+}
+
+script Quest_Ultrawormholeresearch_RanFromTotem_Script{
+    specialvar(VAR_0x8004,Quest_Ultrawormholeresearch_BufferTotemPokemonName)
+    goto(Common_EventScript_LegendaryFlewAway)
+    release
+    end
+}
+
+script Quest_Ultrawormholeresearch_ControlTotemVisibility{
+    specialvar(VAR_RESULT,Quest_Ultrawormholeresearch_ShouldTotemNotSpawn)
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_TOTEM)
+        }
 }
 
 text gText_Ultrawormholeresearch_WaitEsperanto{
@@ -142,4 +225,12 @@ text gText_Ultrawormholeresearch_IWouldntGo{
 
 text gText_Ultrawormholeresearch_IDontThink{
     format("I don't think you used the computer to set a warp location... if you walk up those stairs now, you're probably going to be warped into the endless void. Forever.")
+}
+
+text gText_Ultrawormholeresearch_WhichWormhole{
+    format("")
+}
+
+text gText_Ultrawormholeresearch_WarpHasBeenSet{
+    format("The portal has been set to {STR_VAR_1}.")
 }

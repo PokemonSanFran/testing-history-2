@@ -579,3 +579,8 @@ gSpecials::
     def_special Quest_Hiddengrottomapping_CheckSubquestsForReward
     def_special Quest_Hiddengrottomapping2_CheckForJournalPage
     def_special Quest_Hiddengrottomapping2_CountCompletedSubquests
+    def_special Quest_Ultrawormholeresearch_SetTotemBattle
+    def_special Quest_Ultrawormholeresearch_ShouldTotemNotSpawn
+    def_special Quest_Ultrawormholeresearch_SetDefeatedTotemFlag
+    def_special Quest_Ultrawormholeresearch_BufferTotemPokemonName
+    def_special Quest_Ultrawormholeresearch_PlayTotemCry

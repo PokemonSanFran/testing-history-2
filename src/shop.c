@@ -39,7 +39,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "event_data.h"
-#include "field_effect.h"
+#include "quest_logic.h"
 
 #define TAG_SCROLL_ARROW   2100
 #define TAG_ITEM_ICON_BASE 2110

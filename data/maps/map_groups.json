@@ -54,11 +54,20 @@
     "CaveTemplate_4",
     "CaveTemplate_Water",
     "CaveTemplate_Water1",
-    "NewMap1",
     "Gldngtepark_Pannen_House",
     "Psfroute15_Grotto",
     "Psfroute32_Grotto",
-    "Psfroute62_Grotto"
+    "Psfroute62_Grotto",
+    "Ultra_Paldea",
+    "Ultra_Unova",
+    "Ultra_Orre",
+    "Ultra_Sinnoh",
+    "Ultra_Hoenn",
+    "Ultra_Alola",
+    "Ultra_Kalos",
+    "Ultra_Johto",
+    "Ultra_Galar",
+    "Ultra_Kanto"
   ],
   "gMapGroup_PsfTownsAndRoutes": [
     "Southbay",

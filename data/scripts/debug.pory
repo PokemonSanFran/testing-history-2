@@ -61,15 +61,20 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
-    warpsilent(MAP_SALESFORCETOWER_TOP,0)
+    startquest(QUEST_ULTRAWORMHOLERESEARCH)
+    additem(ITEM_MASTER_BALL,1)
+    warp(MAP_PSFROUTE14,12,4)
     end
 }
 script Debug_Script_2{
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_HIDDENGROTTOMAPPING2)
+    warp(MAP_SALESFORCETOWER_LAB,0)
     end
 }
 
 script Debug_Script_3{
+    setflag(FLAG_QUEST_ULTRAWORMHOLE_DONDOZO)
+    setflag(FLAG_QUEST_ULTRAWORMHOLE_VOLCARONA)
+    setflag(FLAG_QUEST_ULTRAWORMHOLE_KINGLER)
     end
 }
 

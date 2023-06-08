@@ -1,4 +1,5 @@
 #include "global.h"
+#include "battle.h"
 #include "event_object_movement.h"
 #include "event_data.h"
 #include "fieldmap.h"
@@ -14,7 +15,19 @@
 #include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/map_groups.h"
+#include "constants/sound.h"
 #include "field_control_avatar.h"
+#include "battle_main.h"
+#include "script_pokemon_util.h"
+#include "sound.h"
+
+u32 GetCurrentMap(void)
+{
+    u32 currentMapGroup = gSaveBlock1Ptr->location.mapGroup;
+    u32 currentMapNum = gSaveBlock1Ptr->location.mapNum;
+   
+    return (currentMapNum | (currentMapGroup << 8));
+}
 
 // ***********************************************************************
 // Quest: Kitchen Volunteering
@@ -245,15 +258,12 @@ const u32 GROTTO_SUBQUEST_MAP[NUM_GROTTO_ROUTES][2]=
 };
 
 void Quest_Hiddengrottomapping_MarkSubquestBiome(void) {
-    u32 currentMapGroup = gSaveBlock1Ptr->location.mapGroup;
-    u32 currentMapNum = gSaveBlock1Ptr->location.mapNum;
-    u32 mapId = (currentMapNum | (currentMapGroup << 8));
     u32 subquest = 0;
     bool8 foundGrotto = FALSE;
     u8 i;
 
     for (i = 0; i < NUM_GROTTO_ROUTES; i++) {
-        if (GROTTO_SUBQUEST_MAP[i][0] == mapId) {
+        if (GROTTO_SUBQUEST_MAP[i][0] == GetCurrentMap()) {
             subquest = GROTTO_SUBQUEST_MAP[i][1];
             foundGrotto = TRUE;
             break;
@@ -337,6 +347,101 @@ bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
 // the quest Ultra Wormhole Research.
 // ***********************************************************************
 
-u32 Quest_Ultrawormholeresearch_SetDynamicWarp{
+const u32 TOTEM_POKEMON_LIST[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT][9]=
+{
+    {MAP_PSFROUTE21, SPECIES_CROBAT, ITEM_LIFE_ORB, 4, 1, 0, 6, 3, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 0)},
+    {MAP_PSFROUTE14, SPECIES_TYROGUE, ITEM_FOCUS_BAND, 3, 6, 5, 2, 1, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1)},
+    {MAP_PSFROUTE62, SPECIES_AMPHAROS, ITEM_LEFTOVERS, 0, 4, 2, 6, 5, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 2)},
+    {MAP_PSFROUTE30, SPECIES_SCYTHER, ITEM_SILVER_POWDER, 5, 2, 3, 1, 0, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 3)},
+    {MAP_PSFROUTE15, SPECIES_POLITOED, ITEM_DAMP_ROCK, 1, 5, 6, 4, 2, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 4)},
+    {MAP_PSFROUTE17, SPECIES_KINGLER, ITEM_MYSTIC_WATER, 6, 3, 1, 0, 4, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 5)},
+    {MAP_PSFROUTE22, SPECIES_MUNCHLAX, ITEM_LEFTOVERS, 2, 0, 4, 5, 6, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 6)},
+    {MAP_PSFROUTE61, SPECIES_SKARMORY, ITEM_ROCKY_HELMET, 6, 2, 1, 3, 5, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 7)},
+    {MAP_PSFROUTE49, SPECIES_GARCHOMP, ITEM_CHOICE_SCARF, 4, 3, 0, 6, 1, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 8)},
+    {MAP_PSFROUTE38, SPECIES_DUSKNOIR, ITEM_SPELL_TAG, 1, 4, 6, 2, 3, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 9)},
+    //wild map, totem species, held item, totem atk, totem def, totem speed, totem spatk, totem spdef, totem flag
+};
 
+void Quest_Ultrawormholeresearch_SetTotemBoost(u8);
+
+void Quest_Ultrawormholeresearch_PlayTotemCry(void){
+    u16 totemMon = 0;
+    u8 i;
+
+    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+        if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
+            totemMon = TOTEM_POKEMON_LIST[i][1];
+            PlayCry_Script(totemMon, CRY_MODE_ENCOUNTER);
+        }
+    }
+}
+
+void Quest_Ultrawormholeresearch_SetTotemBattle(void){
+    u16 totemMon, totemHeldItem;
+    u8 i;
+
+    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+        if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
+            
+            totemMon = TOTEM_POKEMON_LIST[i][1];
+            totemHeldItem = TOTEM_POKEMON_LIST[i][2];
+
+            CreateScriptedWildMon(totemMon,100,totemHeldItem);
+            Quest_Ultrawormholeresearch_SetTotemBoost(i);
+            break;
+        }
+    }
+}
+
+void Quest_Ultrawormholeresearch_SetTotemBoost(u8 i){
+
+    u8 totemAtkBoost = TOTEM_POKEMON_LIST[i][3];
+    u8 totemDefBoost = TOTEM_POKEMON_LIST[i][4];
+    u8 totemSpeBoost = TOTEM_POKEMON_LIST[i][5];
+    u8 totemSpaBoost = TOTEM_POKEMON_LIST[i][6];
+    u8 totemSpdBoost = TOTEM_POKEMON_LIST[i][7];
+
+    gSpecialVar_0x8000 = B_POSITION_OPPONENT_LEFT;
+    gSpecialVar_0x8001 = totemAtkBoost;
+    gSpecialVar_0x8002 = totemDefBoost;
+    gSpecialVar_0x8003 = totemSpeBoost;
+    gSpecialVar_0x8004 = totemSpaBoost;
+    gSpecialVar_0x8005 = totemSpdBoost;
+    SetTotemBoost();
+}
+
+void Quest_Ultrawormholeresearch_SetDefeatedTotemFlag(void){
+    u8 i;
+    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM;
+
+    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+        if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
+            FlagSet(totemFlag + i);
+        }
+    }
+}
+
+u16 Quest_Ultrawormholeresearch_BufferTotemPokemonName(void){
+    u8 i;
+
+    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+        if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
+            return TOTEM_POKEMON_LIST[i][1];
+        }
+    }
+}
+
+bool8 Quest_Ultrawormholeresearch_ShouldTotemNotSpawn(void){
+    bool8 preventSpawn = FALSE;
+    u8 i;
+    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM;
+
+    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+        if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
+            if (!QuestMenu_GetSetQuestState(QUEST_ULTRAWORMHOLERESEARCH,FLAG_GET_ACTIVE) || (FlagGet(totemFlag + i))){
+                preventSpawn = TRUE;
+            }
+        }
+    }
+    return preventSpawn;
 }

@@ -61,7 +61,7 @@
 #include "constants/pokemon.h"
 #include "quests.h"
 #include "constants/quests.h"
-#include "field_effect.h"
+#include "quest_logic.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //

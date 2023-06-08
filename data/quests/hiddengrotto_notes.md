@@ -43,7 +43,10 @@ after first talking to wife, journal pieces are all taken and quest is actually 
 downtown SOMA sets off the key item from wife but only after beating rose and only happens once, reacts again when inside rose's office, and once more in front of a bookcase in rose's office, talking to bookcase with item in bag will open a secret elevator down (tracked with a var)
 NOTE: i don't know if i like this. need another way to get the player into the basement.
 
-totem mons are controlled by perma flag, when caught, flag is set to prevent them being caught again, pannen calls you that the machine is updated based on the battle data
+totem mons are controlled by a temp flag
+perma flag is set when they are caught, and a mapscript permanently sets the totem flag so they never appear again
+
+ flag is set to prevent them being caught again, pannen calls you that the machine is updated based on the battle data
 
 cannot release totems
 

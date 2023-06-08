@@ -1,2 +1,8 @@
 Salesforcetower_Lab_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Salesforcetower_Lab_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Salesforcetower_Lab_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Ultrawormholeresearch_SetDynamicWarp_Script
+	return
+

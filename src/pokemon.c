@@ -51,7 +51,7 @@
 #include "constants/trainers.h"
 #include "constants/union_room.h"
 #include "constants/weather.h"
-#include "field_effect.h"
+#include "quest_logic.h"
 
 struct SpeciesItem
 {
