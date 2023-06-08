@@ -349,7 +349,6 @@ bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
 
 const u32 TOTEM_POKEMON_LIST[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT][9]=
 {
-    {MAP_PSFROUTE21, SPECIES_CROBAT, ITEM_LIFE_ORB, 4, 1, 0, 6, 3, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 0)},
     {MAP_PSFROUTE14, SPECIES_TYROGUE, ITEM_FOCUS_BAND, 3, 6, 5, 2, 1, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1)},
     {MAP_PSFROUTE62, SPECIES_AMPHAROS, ITEM_LEFTOVERS, 0, 4, 2, 6, 5, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 2)},
     {MAP_PSFROUTE30, SPECIES_SCYTHER, ITEM_SILVER_POWDER, 5, 2, 3, 1, 0, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 3)},
@@ -359,6 +358,15 @@ const u32 TOTEM_POKEMON_LIST[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT][9]=
     {MAP_PSFROUTE61, SPECIES_SKARMORY, ITEM_ROCKY_HELMET, 6, 2, 1, 3, 5, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 7)},
     {MAP_PSFROUTE49, SPECIES_GARCHOMP, ITEM_CHOICE_SCARF, 4, 3, 0, 6, 1, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 8)},
     {MAP_PSFROUTE38, SPECIES_DUSKNOIR, ITEM_SPELL_TAG, 1, 4, 6, 2, 3, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 9)},
+    //PSF TODO need to make new totem formes
+    //totem formes have larger heights and weights but don't follow any specific rule
+    //shiny locked off
+    //when bred, produces a normal species of that pokemon
+    //always have one specific ability
+    //spawn with three perfect IVs
+    //Compared to their non-Totem counterparts, every Totem Pokémon's weight is increased less than appropriately to its height. If a Pokémon's density were to remain the same between its Totem and non-Totem variants, a Totem Pokémon twice the height should be eight times the weight.
+    //Not a unique form in the pokedex
+    //fixed natures and move sets and level
     //wild map, totem species, held item, totem atk, totem def, totem speed, totem spatk, totem spdef, totem flag
 };
 
@@ -412,7 +420,7 @@ void Quest_Ultrawormholeresearch_SetTotemBoost(u8 i){
 
 void Quest_Ultrawormholeresearch_SetDefeatedTotemFlag(void){
     u8 i;
-    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM;
+    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1;
 
     for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
         if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
@@ -434,7 +442,7 @@ u16 Quest_Ultrawormholeresearch_BufferTotemPokemonName(void){
 bool8 Quest_Ultrawormholeresearch_ShouldTotemNotSpawn(void){
     bool8 preventSpawn = FALSE;
     u8 i;
-    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM;
+    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1;
 
     for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
         if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {

@@ -1,6 +1,7 @@
 Psfroute22_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_RESUME, Psfroute22_MapScripts_MAP_SCRIPT_ON_RESUME
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
@@ -8,11 +9,16 @@ Psfroute22_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Psfroute22_ConstructionVisibility_Script
 	call Quest_NeighborhoodCleanUp_ObjectVisibility_Script
 	call MaybeIFuckedUp_ShowOri_Script
+	call Quest_Ultrawormholeresearch_ControlTotemVisibility
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call HeresHowThisIsGoingToGo_ConstructionCompleted_Script
 	call TheStrikeStrikesBack_UnblockConstruction_Script
+	return
+
+Psfroute22_MapScripts_MAP_SCRIPT_ON_RESUME:
+	call Quest_Ultrawormholeresearch_TryRemoveTotem_Script
 	return
 
 Psfroute22_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

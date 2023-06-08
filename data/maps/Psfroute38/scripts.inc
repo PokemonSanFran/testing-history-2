@@ -1,8 +1,13 @@
 Psfroute38_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute38_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_RESUME, Psfroute38_MapScripts_MAP_SCRIPT_ON_RESUME
 	.byte 0
 
 Psfroute38_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_VSDeoxys_HideObject_Script
+	return
+
+Psfroute38_MapScripts_MAP_SCRIPT_ON_RESUME:
+	call Quest_Ultrawormholeresearch_TryRemoveTotem_Script
 	return
 

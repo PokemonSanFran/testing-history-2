@@ -70,7 +70,16 @@ script Quest_Ultrawormholeresearch_Preventvoid_Script{
 }
 
 script Quest_Ultrawormholeresearch_StartQuest_Dialogue{
+    addvar(VAR_TEMP_0,1)
+    questmenu(QUEST_MENU_CHECK_INACTIVE,QUEST_ULTRAWORMHOLERESEARCH)
+
+    if (!var(VAR_RESULT)){
+        end
+    }
+
     //PSF TODO add dialogue and movement here
+
+    setflag(FLAG_QUEST_ULTRAWORMHOLE_DONDOZO)
     startquest(QUEST_ULTRAWORMHOLERESEARCH)
 }
 
@@ -114,7 +123,7 @@ script Quest_Ultrawormholeresearch_ComputerSetWarp_Menu{
     lock
     msgbox(gText_Ultrawormholeresearch_WhichWormhole)
     call(Quest_Ultrawormholeresearch_ConstructMenu_Script)
-    dynmultistack(0,0,FALSE,4,TRUE,0,DYN_MULTICHOICE_CB_NONE)
+    dynmultistack(0,0,TRUE,4,TRUE,0,DYN_MULTICHOICE_CB_NONE)
     copyvar(VAR_QUEST_ULTRAWORMHOLE_WARP_DESTINATION,VAR_RESULT)
     call(Quest_Ultrawormholeresearch_SetDynamicWarp_Script)
     msgbox(gText_Ultrawormholeresearch_WarpHasBeenSet)
@@ -187,13 +196,31 @@ script Quest_Ultrawormholeresearch_StartTotemBattle_Script{
 
 script Quest_Ultrawormholeresearch_CaughtTotem_Script{
     special(Quest_Ultrawormholeresearch_SetDefeatedTotemFlag)
-    goto(Common_EventScript_RemoveStaticPokemon)
+    //goto(Common_EventScript_RemoveStaticPokemon)
+    call(Quest_Ultrawormholeresearch_ProfCallPlayer_Dialogue)
+    release
+    end
+}
+
+script Quest_Ultrawormholeresearch_ProfCallPlayer_Dialogue{
+    lock
+    specialvar(VAR_0x8004,Quest_Ultrawormholeresearch_BufferTotemPokemonName)
+	bufferspeciesname(STR_VAR_1,VAR_0x8004)
+
+    call(Common_EventScript_PhoneRinging)
+
+    msgbox(gText_Ultrawormholeresearch_PlayerIs,,SPEAKER_MADRONE,,,PHONE_ON)
+    msgbox(gText_Ultrawormholeresearch_GreatJobCatching,,SPEAKER_MADRONE,,,PHONE_ON)
+    msgbox(gText_Ultrawormholeresearch_WhenYouComeBack,,SPEAKER_MADRONE,,,PHONE_ON)
+    closemessage 
+    playse(SE_POKENAV_HANG_UP)
     release
     end
 }
 
 script Quest_Ultrawormholeresearch_RanFromTotem_Script{
     specialvar(VAR_0x8004,Quest_Ultrawormholeresearch_BufferTotemPokemonName)
+	bufferspeciesname(STR_VAR_1,VAR_0x8004)
     goto(Common_EventScript_LegendaryFlewAway)
     release
     end
@@ -233,4 +260,14 @@ text gText_Ultrawormholeresearch_WhichWormhole{
 
 text gText_Ultrawormholeresearch_WarpHasBeenSet{
     format("The portal has been set to {STR_VAR_1}.")
+}
+
+text gText_Ultrawormholeresearch_PlayerIs{
+    format("{PLAYER} is that you? Excellent, this is Professor Madrone.")
+}
+text gText_Ultrawormholeresearch_GreatJobCatching{
+    format("Excellent job catching that {STR_VAR_1}. I've already sampled its environment data from your Pokédex, and I was able to open another portal!")
+}
+text gText_Ultrawormholeresearch_WhenYouComeBack{
+    format("It's already set up on the computer for you.")
 }

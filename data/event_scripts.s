@@ -828,6 +828,13 @@ waitfanfare
 removeitem VAR_0x8004
 return
 
+Common_EventScript_PhoneRinging::
+playse SE_POKENAV_CALL
+message gText_PlayerPhoneIsRinging
+waitse
+playse SE_POKENAV_CALL
+return
+
 .include "data/scripts/elite_four.inc"
 .include "data/scripts/movement.inc"
 .include "data/scripts/check_furniture.inc"
@@ -955,6 +962,9 @@ gText_Sudowoodo_Attacked::
 
 gText_LegendaryFlewAway::
 .string "The {STR_VAR_1} ran away!$"
+
+gText_PlayerPhoneIsRinging::
+.string "{PLAYER}'s phone is ringing.$"
 
 .include "data/text/pc_transfer.inc"
 .include "data/text/questionnaire.inc"

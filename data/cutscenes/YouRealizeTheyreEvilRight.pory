@@ -55,13 +55,10 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
         setvar(VAR_ALCATRAZ_STATE,ARCHER_SUMMONED_ALCATRAZ)
         clearflag(FLAG_ARCHER_CALL_ALCATRAZ)
         msgbox(gText_YouRealizeTheyreEvilRight_HolyShit,,SPEAKER_ZOEY)
-        
 
-        playse(SE_POKENAV_CALL)
-        waitse
-        playse(SE_POKENAV_CALL)
+        call(Common_EventScript_PhoneRinging)
 
-        bufferpartymonnick(0,1)
+        bufferpartymonnick(0,1) //PSF TODO replace with location of first completed quest
 
         msgbox(gText_YouRealizeTheyreEvilRight_AwesomeJobIn,,SPEAKER_ARCHER,,,PHONE_ON)
 

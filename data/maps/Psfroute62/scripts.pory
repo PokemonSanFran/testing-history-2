@@ -2,7 +2,11 @@ const FLAG_HIDE_BIANCA = FLAG_TEMP_2
 
 mapscripts Psfroute62_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+        call(Quest_Ultrawormholeresearch_ControlTotemVisibility)
         goto(Psfroute62_MapScripts_OnTransition)
+    }
+    MAP_SCRIPT_ON_RESUME{
+        call(Quest_Ultrawormholeresearch_TryRemoveTotem_Script)
     }
 }
 

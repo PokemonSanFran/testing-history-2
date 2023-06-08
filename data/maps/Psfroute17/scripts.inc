@@ -1,9 +1,15 @@
 Psfroute17_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute17_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_RESUME, Psfroute17_MapScripts_MAP_SCRIPT_ON_RESUME
 	.byte 0
 
 Psfroute17_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Restorechinatown_HideBlackbelt_Psfroute17_Script
+	call Quest_Ultrawormholeresearch_ControlTotemVisibility
+	return
+
+Psfroute17_MapScripts_MAP_SCRIPT_ON_RESUME:
+	call Quest_Ultrawormholeresearch_TryRemoveTotem_Script
 	return
 
 

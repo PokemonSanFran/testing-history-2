@@ -33,6 +33,7 @@ script Quest_Hiddengrottomapping_StartQuest_Dialogue{
     if (!var(VAR_RESULT)){
         end
     }
+
     lock
     applymovement(PANNEN,Quest_Hiddengrottomapping_WalkToPlayer_Movement)
     waitmovement(PANNEN)

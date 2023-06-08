@@ -1,2 +1,13 @@
 Psfroute14_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute14_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_RESUME, Psfroute14_MapScripts_MAP_SCRIPT_ON_RESUME
 	.byte 0
+
+Psfroute14_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Ultrawormholeresearch_ControlTotemVisibility
+	return
+
+Psfroute14_MapScripts_MAP_SCRIPT_ON_RESUME:
+	call Quest_Ultrawormholeresearch_TryRemoveTotem_Script
+	return
+

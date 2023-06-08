@@ -61,7 +61,6 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	startquest QUEST_ULTRAWORMHOLERESEARCH
 	additem ITEM_MASTER_BALL, 1
 	warp MAP_PSFROUTE14, 12, 4
 	end

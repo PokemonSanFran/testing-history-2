@@ -1,6 +1,10 @@
 mapscripts Psfroute49_MapScripts {
     MAP_SCRIPT_ON_TRANSITION{
         call(Quest_Restaurantexpansion2_HideStaffC_Script)
+        call(Quest_Ultrawormholeresearch_ControlTotemVisibility)
+    }
+    MAP_SCRIPT_ON_RESUME{
+        call(Quest_Ultrawormholeresearch_TryRemoveTotem_Script)
     }
 }
 

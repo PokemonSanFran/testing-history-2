@@ -1,20 +1,14 @@
 Psfroute21_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute21_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, Psfroute21_MapScripts_MAP_SCRIPT_ON_LOAD
-	map_script MAP_SCRIPT_ON_RESUME, Psfroute21_MapScripts_MAP_SCRIPT_ON_RESUME
 	.byte 0
 
 Psfroute21_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_ArtisanBalls2_CheckTrainerA_Script
 	call Quest_GardenCleanUpAdvanced_HideObjects_Script
-	call Quest_Ultrawormholeresearch_ControlTotemVisibility
 	return
 
 Psfroute21_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call Quest_GardenCleanUp_ClearGarden_Script
-	return
-
-Psfroute21_MapScripts_MAP_SCRIPT_ON_RESUME:
-	call Quest_Ultrawormholeresearch_TryRemoveTotem_Script
 	return
 

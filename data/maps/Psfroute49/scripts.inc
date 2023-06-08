@@ -1,9 +1,15 @@
 Psfroute49_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute49_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_RESUME, Psfroute49_MapScripts_MAP_SCRIPT_ON_RESUME
 	.byte 0
 
 Psfroute49_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Restaurantexpansion2_HideStaffC_Script
+	call Quest_Ultrawormholeresearch_ControlTotemVisibility
+	return
+
+Psfroute49_MapScripts_MAP_SCRIPT_ON_RESUME:
+	call Quest_Ultrawormholeresearch_TryRemoveTotem_Script
 	return
 
 

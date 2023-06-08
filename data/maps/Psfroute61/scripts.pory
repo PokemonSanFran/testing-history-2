@@ -2,9 +2,10 @@ mapscripts Psfroute61_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call(Quest_ArtisanBalls2_CheckTrainerC_Script)
         call(EnterTheMaster_Muirwoods_Entrance_ObjectSetup_Script)
+        call(Quest_Ultrawormholeresearch_ControlTotemVisibility)
     }
-    MAP_SCRIPT_ON_FRAME_TABLE [
-
-    ]
+    MAP_SCRIPT_ON_RESUME{
+        call(Quest_Ultrawormholeresearch_TryRemoveTotem_Script)
+    }
 }
 

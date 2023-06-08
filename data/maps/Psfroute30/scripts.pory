@@ -1,4 +1,11 @@
-mapscripts Psfroute30_MapScripts{}
+mapscripts Psfroute30_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_Ultrawormholeresearch_ControlTotemVisibility)
+    }
+    MAP_SCRIPT_ON_RESUME{
+        call(Quest_Ultrawormholeresearch_TryRemoveTotem_Script)
+    }
+}
 
 script Psfroute30_ConstructionWorker_Dialogue{
     msgbox(Psfroute30_TheBridgeIs,MSGBOX_NPC)
