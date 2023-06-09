@@ -5,6 +5,7 @@ Salesforcetower_Lab_MapScripts::
 
 Salesforcetower_Lab_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Ultrawormholeresearch_SetDynamicWarp_Script
+	call Quest_Ultrawormholeresearch_ResetUltraBeastVisbility
 	return
 
 Salesforcetower_Lab_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

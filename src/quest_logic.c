@@ -458,7 +458,6 @@ void Quest_Ultrawormholeresearch_SetDefeatedTotemFlag(void) {
     u32 mapId = GetCurrentMap();
 
     for (i = 0; i < NUM_TOTEM_MON; i++) {
-            AddBagItem(ITEM_POKE_BALL,1);
         if (TOTEM_POKEMON_LIST[i][0] == mapId) {
             FlagSet(totemFlag + i);
             return; 
@@ -525,3 +524,20 @@ void Quest_Ultrawormholeresearch_SetSubquestForUltraBeast(void){
     }
 }
 
+u16 Quest_Ultrawormholeresearch_CountRemainingSubquests(void)
+{
+    u16 numRemainingQuests = QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT;
+    u8 currentQuest;
+
+    for (currentQuest = 0; currentQuest < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; currentQuest++)
+    {
+        if (QuestMenu_GetSetSubquestState(QUEST_ULTRAWORMHOLERESEARCH, FLAG_GET_COMPLETED, currentQuest))
+        {
+            numRemainingQuests--;
+        }
+    }
+
+    gSpecialVar_Result = numRemainingQuests;
+    ConvertIntToDecimalStringN(gStringVar1, numRemainingQuests, STR_CONV_MODE_LEFT_ALIGN, 2);
+    return numRemainingQuests;
+}

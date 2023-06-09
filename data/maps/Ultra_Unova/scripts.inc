@@ -1,2 +1,13 @@
 Ultra_Unova_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, Ultra_Unova_MapScripts_MAP_SCRIPT_ON_RESUME
+	map_script MAP_SCRIPT_ON_TRANSITION, Ultra_Unova_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Ultra_Unova_MapScripts_MAP_SCRIPT_ON_RESUME:
+	call Quest_Ultrawormholeresearch_TryRemoveUltraBeast
+	return
+
+Ultra_Unova_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Ultrawormholeresearch_ControlUltraBeastVisibility_Script
+	return
+

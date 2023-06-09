@@ -4,6 +4,7 @@
 const PLAYER = OBJ_EVENT_ID_PLAYER
 const MADRONE = 1
 const FLAG_HIDE_TOTEM = FLAG_TEMP_1A
+const FLAG_HIDE_ULTRA_BEAST = FLAG_TEMP_1A
 
 script Quest_Ultrawormholeresearch_TryRemoveTotem_Script{
     if (flag(FLAG_SYS_CTRL_OBJ_DELETE)){
@@ -83,6 +84,24 @@ script Quest_Ultrawormholeresearch_StartQuest_Dialogue{
     startquest(QUEST_ULTRAWORMHOLERESEARCH)
 }
 
+script Quest_Ultrawormholeresearch_Interact_Madrone_Script{
+    lock
+    faceplayer
+    goto_if_quest_complete(QUEST_ULTRAWORMHOLERESEARCH,Quest_Ultrawormholeresearch_Complete_Dialogue)
+    goto_if_quest_reward(QUEST_ULTRAWORMHOLERESEARCH,Quest_Ultrawormholeresearch_Reward_Dialogue)
+    goto_if_quest_active(QUEST_ULTRAWORMHOLERESEARCH,Quest_Ultrawormholeresearch_Active_Dialogue)
+}
+
+script Quest_Ultrawormholeresearch_Complete_Dialogue{
+
+}
+script Quest_Ultrawormholeresearch_Reward_Dialogue{
+
+}
+script Quest_Ultrawormholeresearch_Active_Dialogue{
+
+}
+
 script Quest_Ultrawormholeresearch_ConstructMenu_Script{
     if(flag(FLAG_QUEST_ULTRAWORMHOLE_DONDOZO)){
         dynmultipush("Paldea",0)
@@ -123,7 +142,7 @@ script Quest_Ultrawormholeresearch_ComputerSetWarp_Menu{
     lock
     msgbox(gText_Ultrawormholeresearch_WhichWormhole)
     call(Quest_Ultrawormholeresearch_ConstructMenu_Script)
-    dynmultistack(0,0,TRUE,4,TRUE,0,DYN_MULTICHOICE_CB_NONE)
+    dynmultistack(0,0,TRUE,5,TRUE,0,DYN_MULTICHOICE_CB_NONE)
     copyvar(VAR_QUEST_ULTRAWORMHOLE_WARP_DESTINATION,VAR_RESULT)
     call(Quest_Ultrawormholeresearch_SetDynamicWarp_Script)
     msgbox(gText_Ultrawormholeresearch_WarpHasBeenSet)
@@ -179,6 +198,7 @@ script Quest_Ultrawormholeresearch_StartTotemBattle_Script{
     delay(40)
     waitmoncry
     setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    setflag(FLAG_QUEST_ULTRAWORMHOLE_BATTLED_ULTRA_BEAST)
     special(Quest_Ultrawormholeresearch_SetTotemBattle)
     special(StartRegiBattle) //PSF TODO should be start totem battle
     waitstate
@@ -272,6 +292,11 @@ script Quest_Ultrawormholeresearch_StartUltraBeast_Script{
 
 script Quest_Ultrawormholeresearch_CaughtUltraBeast_Script{
     special(Quest_Ultrawormholeresearch_SetSubquestForUltraBeast)
+    specialvar(VAR_RESULT,Quest_Ultrawormholeresearch_CountRemainingSubquests)
+
+    if (var(VAR_RESULT) == 0){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_ULTRAWORMHOLERESEARCH)
+    }
     goto(Common_EventScript_RemoveStaticPokemon)
 }
 
@@ -280,6 +305,22 @@ script Quest_Ultrawormholeresearch_RanFromUltraBeast_Script{
     bufferspeciesname(STR_VAR_1,VAR_0x8004)
     goto(Common_EventScript_LegendaryFlewAway)
     release
+}
+
+script Quest_Ultrawormholeresearch_ControlUltraBeastVisibility_Script{
+    if (flag(FLAG_QUEST_ULTRAWORMHOLE_BATTLED_ULTRA_BEAST)){
+            setflag(FLAG_HIDE_ULTRA_BEAST)
+    }
+    return
+}
+
+//PSF TODO once maps are built, need to make sure this actually works. Ultra Beasts should not spawn after battling them until the player goes back to the Lab
+
+script Quest_Ultrawormholeresearch_ResetUltraBeastVisbility{
+    if (flag(FLAG_QUEST_ULTRAWORMHOLE_BATTLED_ULTRA_BEAST)){
+        clearflag(FLAG_QUEST_ULTRAWORMHOLE_BATTLED_ULTRA_BEAST)
+    }
+    return
 }
 
 text gText_Ultrawormholeresearch_WaitEsperanto{
