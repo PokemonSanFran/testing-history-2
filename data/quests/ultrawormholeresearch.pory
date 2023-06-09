@@ -194,6 +194,7 @@ script Quest_Ultrawormholeresearch_StartTotemBattle_Script{
     end
 }
 
+
 script Quest_Ultrawormholeresearch_CaughtTotem_Script{
     special(Quest_Ultrawormholeresearch_SetDefeatedTotemFlag)
     //goto(Common_EventScript_RemoveStaticPokemon)
@@ -231,6 +232,54 @@ script Quest_Ultrawormholeresearch_ControlTotemVisibility{
         if (var(VAR_RESULT)){
             setflag(FLAG_HIDE_TOTEM)
         }
+}
+
+script Quest_Ultrawormholeresearch_TryRemoveUltraBeast{
+    if (flag(FLAG_SYS_CTRL_OBJ_DELETE)){
+        specialvar(VAR_RESULT,GetBattleOutcome)
+
+            if (var(VAR_RESULT) != B_OUTCOME_CAUGHT){
+                return
+            }
+
+        removeobject(VAR_LAST_TALKED)
+            return
+    }
+}
+
+script Quest_Ultrawormholeresearch_StartUltraBeast_Script{
+    lock
+    faceplayer
+    waitse
+    special(Quest_Ultrawormholeresearch_PlayUltraBeastCry)
+    delay(40)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    special(Quest_Ultrawormholeresearch_SetUltraBeastBattle)
+    special(StartRegiBattle) //PSF TODO should be start UB battle
+    waitstate
+    clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    specialvar(VAR_RESULT,GetBattleOutcome)
+    switch(var(VAR_RESULT)){
+        case B_OUTCOME_CAUGHT: goto(Quest_Ultrawormholeresearch_CaughtUltraBeast_Script)
+        case B_OUTCOME_WON: 
+        case B_OUTCOME_RAN:
+        case B_OUTCOME_PLAYER_TELEPORTED: goto(Quest_Ultrawormholeresearch_RanFromUltraBeast_Script)
+    }
+    release
+    end
+}
+
+script Quest_Ultrawormholeresearch_CaughtUltraBeast_Script{
+    special(Quest_Ultrawormholeresearch_SetSubquestForUltraBeast)
+    goto(Common_EventScript_RemoveStaticPokemon)
+}
+
+script Quest_Ultrawormholeresearch_RanFromUltraBeast_Script{
+    specialvar(VAR_0x8004,Quest_Ultrawormholeresearch_BufferUltraBeastPokemonName)
+    bufferspeciesname(STR_VAR_1,VAR_0x8004)
+    goto(Common_EventScript_LegendaryFlewAway)
+    release
 }
 
 text gText_Ultrawormholeresearch_WaitEsperanto{

@@ -347,7 +347,11 @@ bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
 // the quest Ultra Wormhole Research.
 // ***********************************************************************
 
-const u32 TOTEM_POKEMON_LIST[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT][9]=
+#define BEAST  0
+#define TOTEM  1
+#define NUM_TOTEM_MON (QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT - 1)
+
+const u32 TOTEM_POKEMON_LIST[NUM_TOTEM_MON][9]=
 {
     {MAP_PSFROUTE14, SPECIES_TYROGUE, ITEM_FOCUS_BAND, 3, 6, 5, 2, 1, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1)},
     {MAP_PSFROUTE62, SPECIES_AMPHAROS, ITEM_LEFTOVERS, 0, 4, 2, 6, 5, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 2)},
@@ -358,6 +362,7 @@ const u32 TOTEM_POKEMON_LIST[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT][9]=
     {MAP_PSFROUTE61, SPECIES_SKARMORY, ITEM_ROCKY_HELMET, 6, 2, 1, 3, 5, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 7)},
     {MAP_PSFROUTE49, SPECIES_GARCHOMP, ITEM_CHOICE_SCARF, 4, 3, 0, 6, 1, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 8)},
     {MAP_PSFROUTE38, SPECIES_DUSKNOIR, ITEM_SPELL_TAG, 1, 4, 6, 2, 3, (FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 9)},
+};
     //PSF TODO need to make new totem formes
     //totem formes have larger heights and weights but don't follow any specific rule
     //shiny locked off
@@ -368,88 +373,155 @@ const u32 TOTEM_POKEMON_LIST[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT][9]=
     //Not a unique form in the pokedex
     //fixed natures and move sets and level
     //wild map, totem species, held item, totem atk, totem def, totem speed, totem spatk, totem spdef, totem flag
+
+const u32 ULTRA_BEAST_LIST[QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT][9]=
+{
+    {MAP_ULTRA_PALDEA,SPECIES_POIPOLE,ITEM_BEAST_BALL,3,1,6,5,0},
+    {MAP_ULTRA_UNOVA,SPECIES_PHEROMOSA,ITEM_BEAST_BALL,6,4,0,5,2},
+    {MAP_ULTRA_ORRE,SPECIES_GUZZLORD,ITEM_BEAST_BALL,1,2,5,4,6},
+    {MAP_ULTRA_SINNOH,SPECIES_BLACEPHALON,ITEM_BEAST_BALL,0,3,6,2,1},
+    {MAP_ULTRA_HOENN,SPECIES_CELESTEELA,ITEM_BEAST_BALL,2,4,1,6,5},
+    {MAP_ULTRA_ALOLA,SPECIES_BUZZWOLE,ITEM_BEAST_BALL,3,0,2,6,1},
+    {MAP_ULTRA_KALOS,SPECIES_STAKATAKA,ITEM_BEAST_BALL,0,4,4,1,6},
+    {MAP_ULTRA_JOHTO,SPECIES_NIHILEGO,ITEM_BEAST_BALL,5,3,2,0,1},
+    {MAP_ULTRA_GALAR,SPECIES_KARTANA,ITEM_BEAST_BALL,1,6,5,0,4},
+    {MAP_ULTRA_KANTO,SPECIES_XURKITREE,ITEM_BEAST_BALL,6,3,0,4,2},
 };
 
-void Quest_Ultrawormholeresearch_SetTotemBoost(u8);
-
-void Quest_Ultrawormholeresearch_PlayTotemCry(void){
-    u16 totemMon = 0;
+bool8 Quest_Ultrawormholeresearch_ShouldTotemNotSpawn(void) {
+    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1;
     u8 i;
 
-    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
-        if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
-            totemMon = TOTEM_POKEMON_LIST[i][1];
-            PlayCry_Script(totemMon, CRY_MODE_ENCOUNTER);
+    if (!QuestMenu_GetSetQuestState(QUEST_ULTRAWORMHOLERESEARCH, FLAG_GET_ACTIVE)) {
+        return TRUE;
+    }
+
+    for (i = 0; i < NUM_TOTEM_MON; i++) {
+        if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap() && FlagGet(totemFlag + i)) {
+            return TRUE;
         }
     }
+
+    return FALSE;
 }
 
-void Quest_Ultrawormholeresearch_SetTotemBattle(void){
-    u16 totemMon, totemHeldItem;
+void Quest_Ultrawormholeresearch_PlayTotemCry(void) {
     u8 i;
 
-    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+    for (i = 0; i < NUM_TOTEM_MON ; i++) {
         if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
-            
-            totemMon = TOTEM_POKEMON_LIST[i][1];
-            totemHeldItem = TOTEM_POKEMON_LIST[i][2];
-
-            CreateScriptedWildMon(totemMon,100,totemHeldItem);
-            Quest_Ultrawormholeresearch_SetTotemBoost(i);
+            PlayCry_Script(TOTEM_POKEMON_LIST[i][1], CRY_MODE_ENCOUNTER);
             break;
         }
     }
 }
 
-void Quest_Ultrawormholeresearch_SetTotemBoost(u8 i){
+void Quest_Ultrawormholeresearch_SetTotemBoost(u8 type, u8 i) {
+    const u32* boostList;
+    u8 j;
 
-    u8 totemAtkBoost = TOTEM_POKEMON_LIST[i][3];
-    u8 totemDefBoost = TOTEM_POKEMON_LIST[i][4];
-    u8 totemSpeBoost = TOTEM_POKEMON_LIST[i][5];
-    u8 totemSpaBoost = TOTEM_POKEMON_LIST[i][6];
-    u8 totemSpdBoost = TOTEM_POKEMON_LIST[i][7];
+    if (type == TOTEM) {
+        boostList = &TOTEM_POKEMON_LIST[i][2];
+    } else if (type == BEAST) {
+        boostList = &ULTRA_BEAST_LIST[i][2];
+    } else {
+    }
 
     gSpecialVar_0x8000 = B_POSITION_OPPONENT_LEFT;
-    gSpecialVar_0x8001 = totemAtkBoost;
-    gSpecialVar_0x8002 = totemDefBoost;
-    gSpecialVar_0x8003 = totemSpeBoost;
-    gSpecialVar_0x8004 = totemSpaBoost;
-    gSpecialVar_0x8005 = totemSpdBoost;
+    for (j = 0; j < 5; j++) {
+        *(&gSpecialVar_0x8001 + j) = boostList[j];
+    }
+
     SetTotemBoost();
 }
 
-void Quest_Ultrawormholeresearch_SetDefeatedTotemFlag(void){
+void Quest_Ultrawormholeresearch_SetTotemBattle(void) {
+    u16 totemMon, totemHeldItem;
     u8 i;
-    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1;
+    u32 mapId = GetCurrentMap();
 
-    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
-        if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
-            FlagSet(totemFlag + i);
+    for (i = 0; i < NUM_TOTEM_MON; i++) {
+        if (TOTEM_POKEMON_LIST[i][0] == mapId) {
+            totemMon = TOTEM_POKEMON_LIST[i][1];
+            totemHeldItem = TOTEM_POKEMON_LIST[i][2];
+
+            CreateScriptedWildMon(totemMon, 100, totemHeldItem);
+            Quest_Ultrawormholeresearch_SetTotemBoost(TOTEM, i);
+            return; 
         }
     }
 }
 
-u16 Quest_Ultrawormholeresearch_BufferTotemPokemonName(void){
+void Quest_Ultrawormholeresearch_SetDefeatedTotemFlag(void) {
+    u8 i;
+    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1;
+    u32 mapId = GetCurrentMap();
+
+    for (i = 0; i < NUM_TOTEM_MON; i++) {
+            AddBagItem(ITEM_POKE_BALL,1);
+        if (TOTEM_POKEMON_LIST[i][0] == mapId) {
+            FlagSet(totemFlag + i);
+            return; 
+        }
+    }
+}
+
+u32 Quest_Ultrawormholeresearch_BufferTotemPokemonName(void){
     u8 i;
 
-    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+    for (i = 0; i < NUM_TOTEM_MON; i++) {
         if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
             return TOTEM_POKEMON_LIST[i][1];
         }
     }
 }
 
-bool8 Quest_Ultrawormholeresearch_ShouldTotemNotSpawn(void){
-    bool8 preventSpawn = FALSE;
+void Quest_Ultrawormholeresearch_PlayUltraBeastCry(void) {
     u8 i;
-    u16 totemFlag = FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM + 1;
 
     for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
-        if (TOTEM_POKEMON_LIST[i][0] == GetCurrentMap()) {
-            if (!QuestMenu_GetSetQuestState(QUEST_ULTRAWORMHOLERESEARCH,FLAG_GET_ACTIVE) || (FlagGet(totemFlag + i))){
-                preventSpawn = TRUE;
-            }
+        if (ULTRA_BEAST_LIST[i][0] == GetCurrentMap()) {
+            PlayCry_Script(ULTRA_BEAST_LIST[i][1], CRY_MODE_ENCOUNTER);
+            break;
         }
     }
-    return preventSpawn;
 }
+
+void Quest_Ultrawormholeresearch_SetUltraBeastBattle(void){
+    u16 ultraBeastMon, ultraBeastHeldItem;
+    u8 i;
+
+    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+        if (ULTRA_BEAST_LIST[i][0] == GetCurrentMap()) {
+            
+            ultraBeastMon = ULTRA_BEAST_LIST[i][1];
+            ultraBeastHeldItem = ULTRA_BEAST_LIST[i][2];
+
+            CreateScriptedWildMon(ultraBeastMon,100,ultraBeastHeldItem);
+            Quest_Ultrawormholeresearch_SetTotemBoost(BEAST,i);
+            break;
+        }
+    }
+}
+
+u32 Quest_Ultrawormholeresearch_BufferUltraBeastPokemonName(void){
+    u8 i;
+
+    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+        if (ULTRA_BEAST_LIST[i][0] == GetCurrentMap()) {
+            return ULTRA_BEAST_LIST[i][1];
+        }
+    }
+}
+
+void Quest_Ultrawormholeresearch_SetSubquestForUltraBeast(void){
+    u8 i;
+
+    for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
+        if (ULTRA_BEAST_LIST[i][0] == GetCurrentMap()) {
+            QuestMenu_GetSetSubquestState(QUEST_ULTRAWORMHOLERESEARCH,FLAG_SET_COMPLETED,i);
+            break;
+        }
+    }
+}
+

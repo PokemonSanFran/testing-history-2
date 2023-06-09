@@ -1,2 +1,8 @@
 Ultra_Alola_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, Ultra_Alola_MapScripts_MAP_SCRIPT_ON_RESUME
 	.byte 0
+
+Ultra_Alola_MapScripts_MAP_SCRIPT_ON_RESUME:
+	call Quest_Ultrawormholeresearch_TryRemoveUltraBeast
+	return
+

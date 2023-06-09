@@ -5,6 +5,7 @@ Psfroute38_MapScripts::
 
 Psfroute38_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_VSDeoxys_HideObject_Script
+	call Quest_Ultrawormholeresearch_ControlTotemVisibility
 	return
 
 Psfroute38_MapScripts_MAP_SCRIPT_ON_RESUME:

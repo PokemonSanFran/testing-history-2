@@ -584,3 +584,7 @@ gSpecials::
     def_special Quest_Ultrawormholeresearch_SetDefeatedTotemFlag
     def_special Quest_Ultrawormholeresearch_BufferTotemPokemonName
     def_special Quest_Ultrawormholeresearch_PlayTotemCry
+    def_special Quest_Ultrawormholeresearch_PlayUltraBeastCry
+    def_special Quest_Ultrawormholeresearch_SetUltraBeastBattle
+    def_special Quest_Ultrawormholeresearch_BufferUltraBeastPokemonName
+    def_special Quest_Ultrawormholeresearch_SetSubquestForUltraBeast

@@ -62,23 +62,22 @@ Debug_Weather::
 
 Debug_Script_1::
 	additem ITEM_MASTER_BALL, 1
-	warp MAP_PSFROUTE14, 12, 4
-	end
+	warp MAP_SALESFORCETOWER_LAB, 0
+	return
 
 
 Debug_Script_2::
-	warp MAP_SALESFORCETOWER_LAB, 0
+	warp MAP_PSFROUTE38, 18, 5
 	end
 
 
 Debug_Script_3::
-	setflag FLAG_QUEST_ULTRAWORMHOLE_DONDOZO
-	setflag FLAG_QUEST_ULTRAWORMHOLE_VOLCARONA
-	setflag FLAG_QUEST_ULTRAWORMHOLE_KINGLER
+	warp MAP_ULTRA_KANTO, 2, 2
 	end
 
 
 Debug_Script_4::
+	call Quest_Ultrawormholeresearch_RanFromUltraBeast_Script
 	end
 
 
