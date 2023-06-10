@@ -14,15 +14,11 @@ const ARTIST = 1
 script Quest_GemArtist_AskForGlass_Dialogue{
 	msgbox(gText_Quest_GemArtist_AhYouSaw, MSGBOX_NPC)
     call(Quest_GemArtist_CheckBag_Script)
-    if (var(VAR_RESULT))
-    {
+    if (var(VAR_RESULT)){
         goto(Quest_GemArtist_GiveFirstGem_Script)
-    }
-	else
-	{
+    }else{
         goto(Quest_GemArtist_NotEnough_Script)
 	}
-
 }
 
 script Quest_GemArtist_WantGem_Dialogue{
@@ -71,7 +67,27 @@ script Quest_GemArtist_RandomOrChosenGem_Script{
             random(17)
         }else {
             //PSF TODO get list of types that user can pick from
-            multichoice(16,0,MULTI_STARTER_SELECT,FALSE)
+            dynmultichoice(1,1,FALSE,4,0,DYN_MULTICHOICE_CB_NONE,
+                    "Normal",
+                    "Fighting",
+                    "Flying",
+                    "Poison",
+                    "Ground",
+                    "Rock",
+                    "Bug",
+                    "Ghost",
+                    "Steel",
+                    "Fire",
+                    "Water",
+                    "Grass",
+                    "Electric",
+                    "Psychic",
+                    "Ice",
+                    "Dragon",
+                    "Dark",
+                    "Fairy",
+                    "Never mind."
+                    )
             if (var(VAR_RESULT) == MULTI_B_PRESSED){
                 goto(Quest_GemArtist_CancelGem_Dialogue)
             }
@@ -79,10 +95,12 @@ script Quest_GemArtist_RandomOrChosenGem_Script{
     return
 }
 
+script Quest_GemArtist_CheckPokemon_Script{
+}
+
 script Quest_GemArtist_MakeGem_Script
 {
     call(Quest_GemArtist_RandomOrChosenGem_Script)
-
     applymovement(ARTIST,Common_Movement_FaceRight)
     waitmovement(ARTIST)
     msgbox(gText_Quest_GemArtist_NowJustToDoThis)

@@ -664,24 +664,24 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
 #define FLAG_RECIEVED_LEFTOVERS         0x264 //Previously Unused Flag
-#define FLAG_UNUSED_0x265               0x265 //Unused Flag
-#define FLAG_UNUSED_0x266               0x266 //Unused Flag
-#define FLAG_UNSUED_0x267               0x267//Unused Flag
-#define FLAG_UNSUED_0x268               0x268//Unused Flag
-#define FLAG_UNUSED_0x269               0x269//Unused Flag
-#define FLAG_UNSUED_0x26A               0x26A//Unused Flag
-#define FLAG_UNUSED_0x26B 0x26B //Unused Flag
-#define FLAG_UNUSED_0x26C 0x26C // Unused Flag
-#define FLAG_UNSUED_0x26D 0x26D// Unused Flag
-#define FLAG_UNUSED_0x26E 0x26E //Unused Flag
-#define FLAG_UNUSED_0x26F	0x26F // Unused Flag
-#define FLAG_UNUSED_0x270	0x270 // Unused Flag
-#define FLAG_UNUSED_0x271	0x271 // Unused Flag
-#define FLAG_UNUSED_0x272	0x272 // Unused Flag
-#define FLAG_UNUSED_0x273	0x273 // Unused Flag
-#define FLAG_UNSUED_0x274 0x274 // Unused Flag
-#define FLAG_UNSUED_0x275 0x275 // Unused Flag
-#define FLAG_UNSUED_0x276 0x276 // Unused Flag
+#define FLAG_CRAFTED_NORMAL_GEM				0x265
+#define FLAG_CRAFTED_FIGHTING_GEM			0x266
+#define FLAG_CRAFTED_FLYING_GEM				0x267
+#define FLAG_CRAFTED_POISON_GEM				0x268
+#define FLAG_CRAFTED_GROUND_GEM				0x269
+#define FLAG_CRAFTED_ROCK_GEM				0x26A
+#define FLAG_CRAFTED_BUG_GEM				0x26B
+#define FLAG_CRAFTED_GHOST_GEM				0x26C
+#define FLAG_CRAFTED_STEEL_GEM				0x26D
+#define FLAG_CRAFTED_FIRE_GEM				0x26E
+#define FLAG_CRAFTED_WATER_GEM				0x26F
+#define FLAG_CRAFTED_GRASS_GEM				0x270
+#define FLAG_CRAFTED_ELECTRIC_GEM			0x271
+#define FLAG_CRAFTED_PSYCHIC_GEM			0x272
+#define FLAG_CRAFTED_ICE_GEM				0x273
+#define FLAG_CRAFTED_DRAGON_GEM				0x274
+#define FLAG_CRAFTED_DARK_GEM				0x275
+#define FLAG_CRAFTED_FAIRY_GEM				0x276
 #define FLAG_UNSUED_0x277 0x277 // Unused Flag
 #define FLAG_UNSUED_0x278 0x278 // Unused Flag
 #define FLAG_UNSUED_0x279 0x279 // Unused Flag
