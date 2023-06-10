@@ -31,9 +31,6 @@ u32 GetCurrentMap(void)
 
 // ***********************************************************************
 // Quest: Kitchen Volunteering
-// -----------------------------------------------------------------------
-// This contains all the quest functions required for
-// the quest Kitchen Volunteering.
 // ***********************************************************************
 
 void Quest_Kitchenvolunteering_GeneratePantryItem(void);
@@ -106,9 +103,6 @@ static void Quest_Kitchenvolunteering_RestoreChosenPantryItem(void){
 
 // ***********************************************************************
 // Quest: Rock Collector
-// -----------------------------------------------------------------------
-// This contains all the quest functions required for
-// the quest Rock Collector
 // ***********************************************************************
 
 bool8 Quest_Rockcollector_CheckTakenStoneFlags(void)
@@ -221,9 +215,6 @@ void Quest_Rockcollector_RespawnStones(void)
 
 // ***********************************************************************
 // Quest: Hidden Grotto Mapping
-// -----------------------------------------------------------------------
-// This contains all the quest functions required for
-// the quest Hidden Grotto Mapping.
 // ***********************************************************************
 u8 Quest_Hiddengrottomapping_CountCompletedSubquests(void);
 
@@ -306,9 +297,6 @@ u8 Quest_Hiddengrottomapping_CountCompletedSubquests(void){
 
 // ***********************************************************************
 // Quest: Hidden Grotto Mapping 2
-// -----------------------------------------------------------------------
-// This contains all the quest functions required for
-// the quest Hidden Grotto Mapping 2.
 // ***********************************************************************
 
 u8 Quest_Hiddengrottomapping2_CountCompletedSubquests(void){
@@ -342,9 +330,6 @@ bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
 
 // ***********************************************************************
 // Quest: Ultra Wormhole Research
-// -----------------------------------------------------------------------
-// This contains all the quest functions required for
-// the quest Ultra Wormhole Research.
 // ***********************************************************************
 
 #define BEAST  0
@@ -540,4 +525,89 @@ u16 Quest_Ultrawormholeresearch_CountRemainingSubquests(void)
     gSpecialVar_Result = numRemainingQuests;
     ConvertIntToDecimalStringN(gStringVar1, numRemainingQuests, STR_CONV_MODE_LEFT_ALIGN, 2);
     return numRemainingQuests;
+}
+
+// ***********************************************************************
+// Quest: Gem Artist
+// ***********************************************************************
+
+u8 Quest_Gemartist_GetMonFirstMoveType(void)
+{
+    u16 firstMove = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_MOVE1, NULL);
+    u16 selectedSpecies = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
+    return gBattleMoves[firstMove].type;
+}
+
+void Quest_Gemartist_BufferFirstMoveName(void)
+{
+    u16 selectedSpecies = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
+    u16 firstMove = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_MOVE1, NULL);
+
+    gSpecialVar_0x8000 = selectedSpecies;
+    gSpecialVar_0x8001 = firstMove;
+
+            switch(Quest_Gemartist_GetMonFirstMoveType()){
+            case TYPE_NORMAL: gSpecialVar_0x8003 = ITEM_NORMAL_GEM;
+			break;
+            case TYPE_FIGHTING: gSpecialVar_0x8003 = ITEM_FIGHTING_GEM;
+			break;
+            case TYPE_FLYING: gSpecialVar_0x8003 = ITEM_FLYING_GEM;
+			break;
+            case TYPE_POISON: gSpecialVar_0x8003 = ITEM_POISON_GEM;
+			break;
+            case TYPE_GROUND: gSpecialVar_0x8003 = ITEM_GROUND_GEM;
+			break;
+            case TYPE_ROCK: gSpecialVar_0x8003 = ITEM_ROCK_GEM;
+			break;
+            case TYPE_BUG: gSpecialVar_0x8003 = ITEM_BUG_GEM;
+			break;
+            case TYPE_GHOST: gSpecialVar_0x8003 = ITEM_GHOST_GEM;
+			break;
+            case TYPE_STEEL: gSpecialVar_0x8003 = ITEM_STEEL_GEM;
+			break;
+            case TYPE_FIRE: gSpecialVar_0x8003 = ITEM_FIRE_GEM;
+			break;
+            case TYPE_WATER: gSpecialVar_0x8003 = ITEM_WATER_GEM;
+			break;
+            case TYPE_GRASS: gSpecialVar_0x8003 = ITEM_GRASS_GEM;
+			break;
+            case TYPE_ELECTRIC: gSpecialVar_0x8003 = ITEM_ELECTRIC_GEM;
+			break;
+            case TYPE_PSYCHIC: gSpecialVar_0x8003 = ITEM_PSYCHIC_GEM;
+			break;
+            case TYPE_ICE: gSpecialVar_0x8003 = ITEM_ICE_GEM;
+			break;
+            case TYPE_DRAGON: gSpecialVar_0x8003 = ITEM_DRAGON_GEM;
+			break;
+            case TYPE_DARK: gSpecialVar_0x8003 = ITEM_DARK_GEM;
+			break;
+            case TYPE_FAIRY: gSpecialVar_0x8003 = ITEM_FAIRY_GEM;
+			break;
+        }
+}
+
+void Quest_Gemartist_SetGemFlag(void)
+{
+    u16 type = gSpecialVar_Result;
+
+    if (type > TYPE_STEEL){
+        --type;
+    }
+    FlagSet(type + FLAG_CRAFTED_FIRST_GEM);
+}
+
+u8 Quest_Gemartist_CountRemainingUniqueGems(void)
+{
+    u16 numRemainingGems = NUMBER_OF_MON_TYPES - 1;
+    u16 maxNumberGems = numRemainingGems;
+    u16 currentFlag = FLAG_CRAFTED_FIRST_GEM;
+    u8 i;
+
+    for (i = 0; i < maxNumberGems; i++)
+    {
+        if (FlagGet(currentFlag+i)){
+            --numRemainingGems;
+        }
+    }
+    return numRemainingGems;
 }

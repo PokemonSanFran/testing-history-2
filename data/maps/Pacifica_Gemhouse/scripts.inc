@@ -4,25 +4,11 @@ Pacifica_Gemhouse_MapScripts::
 
 Quest_GemArtist_Event_Script::
 	lock
-	returnqueststate QUEST_GEMARTIST
-	switch VAR_RESULT
-	case 1, Quest_GemArtist_Event_Script_2
-	case 2, Quest_GemArtist_Event_Script_3
-	case 3, Quest_GemArtist_Event_Script_3
-	case 4, Quest_GemArtist_Event_Script_4
-	return
-
-Quest_GemArtist_Event_Script_2:
-	goto Pacifica_Gemhouse_Artist_Dialogue
-	return
-
-Quest_GemArtist_Event_Script_3:
-	goto Quest_GemArtist_AskForGlass_Dialogue
-	return
-
-Quest_GemArtist_Event_Script_4:
-	goto Quest_GemArtist_WantGem_Dialogue
-	return
+	goto_if_quest_complete QUEST_GEMARTIST, Quest_Gemartist_Complete_Dialogue
+	goto_if_quest_active QUEST_GEMARTIST, Quest_Gemartist_Active_Dialogue
+	goto_if_quest_inactive QUEST_GEMARTIST, Pacifica_Gemhouse_Artist_Dialogue
+	release
+	end
 
 
 Pacifica_Gemhouse_Artist_Dialogue::

@@ -589,3 +589,7 @@ gSpecials::
     def_special Quest_Ultrawormholeresearch_BufferUltraBeastPokemonName
     def_special Quest_Ultrawormholeresearch_SetSubquestForUltraBeast
     def_special Quest_Ultrawormholeresearch_CountRemainingSubquests
+    def_special Quest_Gemartist_GetMonFirstMoveType
+    def_special Quest_Gemartist_BufferFirstMoveName
+    def_special Quest_Gemartist_SetGemFlag
+    def_special Quest_Gemartist_CountRemainingUniqueGems

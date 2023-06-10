@@ -3,18 +3,11 @@ mapscripts Pacifica_Gemhouse_MapScripts{}
 script Quest_GemArtist_Event_Script
 {
 	lock
-	returnqueststate(QUEST_GEMARTIST)
-
-	switch (var(VAR_RESULT))
-	{
-		case 1:
-			goto(Pacifica_Gemhouse_Artist_Dialogue)
-		case 2:
-		case 3:
-			goto(Quest_GemArtist_AskForGlass_Dialogue)
-		case 4:
-			goto(Quest_GemArtist_WantGem_Dialogue)
-	}
+    goto_if_quest_complete(QUEST_GEMARTIST,Quest_Gemartist_Complete_Dialogue)
+    goto_if_quest_active(QUEST_GEMARTIST,Quest_Gemartist_Active_Dialogue)
+    goto_if_quest_inactive(QUEST_GEMARTIST,Pacifica_Gemhouse_Artist_Dialogue)
+    release
+    end
 }
 
 script Pacifica_Gemhouse_Artist_Dialogue
