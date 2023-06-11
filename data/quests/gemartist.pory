@@ -9,6 +9,7 @@
 //check bag, if 10 AND gem_artist is active, move to reward
 //PSF TODO run a function every frame, if bag doesn't have 10 Beach Glass _and_ quest is Reward, move back to Active
 //PSF TODO run a function every frame, if bag doesn't have 10 Beach Glass _and_ quest is Reward, move back to Active
+//https://discord.com/channels/442462691542695948/442465020291317760/1117235992382939237
 
 //gText_Gemartist
 //Quest_Gemartist
