@@ -1820,6 +1820,15 @@ static const struct SubQuest sTaxicabTurnAroundSea_Sub[QUEST_TAXICABTURNAROUNDSE
 	        PKMN,
 	        sText_Gave
 	),
+	sub_quest(
+	        179,
+	        gText_Quest_TaxicabTurnAroundSea_Sub6_Name,
+	        gText_Quest_TaxicabTurnAroundSea_Sub6_Desc,
+	        gText_Quest_TaxicabTurnAroundSea_Sub6_Map,
+	        SPECIES_LAPRAS,
+	        PKMN,
+	        sText_Gave
+	),
 };
 
 static const struct SubQuest sTaxicabTurnAroundAir_Sub[QUEST_TAXICABTURNAROUNDAIR_SUB_COUNT] = {
@@ -1864,6 +1873,15 @@ static const struct SubQuest sTaxicabTurnAroundAir_Sub[QUEST_TAXICABTURNAROUNDAI
 	        gText_Quest_TaxicabTurnAroundAir_Sub5_Name,
 	        gText_Quest_TaxicabTurnAroundAir_Sub5_Desc,
 	        gText_Quest_TaxicabTurnAroundAir_Sub5_Map,
+	        SPECIES_PIDGEOT,
+	        PKMN,
+	        sText_Gave
+	),
+	sub_quest(
+	        184,
+	        gText_Quest_TaxicabTurnAroundAir_Sub6_Name,
+	        gText_Quest_TaxicabTurnAroundAir_Sub6_Desc,
+	        gText_Quest_TaxicabTurnAroundAir_Sub6_Map,
 	        SPECIES_PIDGEOT,
 	        PKMN,
 	        sText_Gave
@@ -3312,7 +3330,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_GIRL_3,
 	        OBJECT,
 	        sTaxicabTurnAroundSea_Sub,
-	        5
+	        6
 	),
 	side_quest(
 	        gText_Quest_TaxicabTurnaroundAir_Name,
@@ -3322,7 +3340,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_GIRL_3,
 	        OBJECT,
 	        sTaxicabTurnAroundAir_Sub,
-	        5
+	        6
 	),
 	side_quest(
 	        gText_Quest_TaxicabTurnaroundLand_Name,

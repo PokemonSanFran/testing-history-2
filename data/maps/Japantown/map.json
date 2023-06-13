@@ -14,9 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "right",
+      "map": "MAP_PSFROUTE38",
       "offset": 7,
-      "map": "MAP_PSFROUTE38"
+      "direction": "right"
     }
   ],
   "object_events": [
@@ -56,7 +56,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Taxi_Interact_Dialogue",
       "flag": "0"
     },
     {

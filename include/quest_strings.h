@@ -1180,6 +1180,9 @@ extern const u8 gText_Quest_TaxicabTurnAroundSea_Sub4_Map[];
 extern const u8 gText_Quest_TaxicabTurnAroundSea_Sub5_Name[];
 extern const u8 gText_Quest_TaxicabTurnAroundSea_Sub5_Desc[];
 extern const u8 gText_Quest_TaxicabTurnAroundSea_Sub5_Map[];
+extern const u8 gText_Quest_TaxicabTurnAroundSea_Sub6_Name[];
+extern const u8 gText_Quest_TaxicabTurnAroundSea_Sub6_Desc[];
+extern const u8 gText_Quest_TaxicabTurnAroundSea_Sub6_Map[];
 
 extern const u8 gText_Quest_TaxicabTurnAroundAir_Sub1_Name[];
 extern const u8 gText_Quest_TaxicabTurnAroundAir_Sub1_Desc[];
@@ -1196,6 +1199,9 @@ extern const u8 gText_Quest_TaxicabTurnAroundAir_Sub4_Map[];
 extern const u8 gText_Quest_TaxicabTurnAroundAir_Sub5_Name[];
 extern const u8 gText_Quest_TaxicabTurnAroundAir_Sub5_Desc[];
 extern const u8 gText_Quest_TaxicabTurnAroundAir_Sub5_Map[];
+extern const u8 gText_Quest_TaxicabTurnAroundAir_Sub6_Name[];
+extern const u8 gText_Quest_TaxicabTurnAroundAir_Sub6_Desc[];
+extern const u8 gText_Quest_TaxicabTurnAroundAir_Sub6_Map[];
 
 extern const u8 gText_Quest_TaxicabTurnAroundLand_Sub1_Name[];
 extern const u8 gText_Quest_TaxicabTurnAroundLand_Sub1_Desc[];

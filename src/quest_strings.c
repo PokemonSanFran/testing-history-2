@@ -1147,6 +1147,9 @@ const u8 gText_Quest_TaxicabTurnAroundSea_Sub4_Map[] = _("Presidio");
 const u8 gText_Quest_TaxicabTurnAroundSea_Sub5_Name[] = _("Water 5");
 const u8 gText_Quest_TaxicabTurnAroundSea_Sub5_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_TaxicabTurnAroundSea_Sub5_Map[] = _("Pacifica");
+const u8 gText_Quest_TaxicabTurnAroundSea_Sub6_Name[] = _("Water 6");
+const u8 gText_Quest_TaxicabTurnAroundSea_Sub6_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_TaxicabTurnAroundSea_Sub6_Map[] = _("Alameda");
 
 const u8 gText_Quest_TaxicabTurnAroundAir_Sub1_Name[] = _("Flyer 1");
 const u8 gText_Quest_TaxicabTurnAroundAir_Sub1_Desc[] = _("Sub Lorem");
@@ -1163,6 +1166,9 @@ const u8 gText_Quest_TaxicabTurnAroundAir_Sub4_Map[] = _("SouthBay");
 const u8 gText_Quest_TaxicabTurnAroundAir_Sub5_Name[] = _("Flyer 5");
 const u8 gText_Quest_TaxicabTurnAroundAir_Sub5_Desc[] = _("Sub Lorem");
 const u8 gText_Quest_TaxicabTurnAroundAir_Sub5_Map[] = _("Oakland");
+const u8 gText_Quest_TaxicabTurnAroundAir_Sub6_Name[] = _("Flyer 6");
+const u8 gText_Quest_TaxicabTurnAroundAir_Sub6_Desc[] = _("Sub Lorem");
+const u8 gText_Quest_TaxicabTurnAroundAir_Sub6_Map[] = _("Haightashbury");
 
 const u8 gText_Quest_TaxicabTurnAroundLand_Sub1_Name[] = _("Runner 1");
 const u8 gText_Quest_TaxicabTurnAroundLand_Sub1_Desc[] = _("Sub Lorem");

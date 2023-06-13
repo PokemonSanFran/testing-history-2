@@ -1,0 +1,27 @@
+script Quest_Taxicabturnaround_Master_Event_Script{ 
+    special(GetCurrentMap)
+
+        switch (var(VAR_RESULT)){
+            case MAP_TREASUREISLAND:
+            case MAP_SUNSET:
+            case MAP_GLDNGTEPARK:
+            case MAP_PRESIDIO:
+            case MAP_PACIFICA: 
+            case MAP_ALAMEDA: goto(Quest_Taxicabturnaround)
+
+            case MAP_CASTRO:
+            case MAP_MISSION:
+            case MAP_DOGPATCH:
+            case MAP_SOUTHBAY:
+            case MAP_OAKLAND:
+            case MAP_HAIGHTASHBURY: goto(Quest_Taxicabturnaround)
+
+            case MAP_MARIN:
+            case MAP_BERKELEY:
+            case MAP_TENDERLOIN:
+            case MAP_CHINATOWN:
+            case MAP_JAPANTOWN:
+            case MAP_SOMA:
+            case MAP_BERNALHEIGHTS: goto(Quest_Taxicabturnaround)
+        }
+}

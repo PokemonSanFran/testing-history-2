@@ -58,8 +58,8 @@ script YouRealizeTheyreEvilRight_CallPlayer_Dialogue {
 
         call(Common_EventScript_PhoneRinging)
 
-        bufferpartymonnick(0,1) //PSF TODO replace with location of first completed quest
-
+        special(Script_GetMapName)
+        //PSF TODO replace with a switch statement that actually just looks at a randomly completed takedown quest
         msgbox(gText_YouRealizeTheyreEvilRight_AwesomeJobIn,,SPEAKER_ARCHER,,,PHONE_ON)
 
         msgbox(gText_YouRealizeTheyreEvilRight_TheyDontLove,,SPEAKER_ZOEY,,,PHONE_ON)

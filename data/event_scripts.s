@@ -1314,6 +1314,7 @@ Script_RemoveTint::
 // .include "data/quests/taxicabturnaroundsea.inc"
 // .include "data/quests/taxicabturnaroundair.inc"
 .include "data/quests/taxicabturnaroundland.inc"
+.include "data/quests/taxicabturnaround.inc"
 // .include "data/quests/persuasivepassenger.inc"
 // .include "data/quests/bodegaburnout.inc"
 .include "data/quests/warehousewarfare.inc"

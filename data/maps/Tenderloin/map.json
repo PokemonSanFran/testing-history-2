@@ -250,14 +250,27 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Quest_NeighborhoodCleanUp4_Interact_Rusty_Script",
       "flag": "FLAG_TEMP_4"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRUCK",
+      "x": 3,
+      "y": 55,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Taxi_Interact_Dialogue",
+      "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 14,
-      "y": 16,
+      "x": 2,
+      "y": 56,
       "elevation": 0,
-      "dest_map": "MAP_TENDERLOIN_LIBRARY",
+      "dest_map": "MAP_TENDERLOIN",
       "dest_warp_id": "0"
     },
     {
@@ -272,6 +285,13 @@
       "y": 40,
       "elevation": 0,
       "dest_map": "MAP_TENDERLOIN_PANTRY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 14,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_TENDERLOIN_LIBRARY",
       "dest_warp_id": "0"
     }
   ],
