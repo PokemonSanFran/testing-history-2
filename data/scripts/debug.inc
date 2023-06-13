@@ -54,63 +54,21 @@ Debug_FlagsNotSetMessage::
 
 
 Debug_Weather::
-	addvar VAR_TEMP_0, 1
 	setweather WEATHER_FOG_DIAGONAL
 	doweather
 	return
 
 
 Debug_Script_1::
-	givecustommon SPECIES_DITTO, 100, , , , , , , , , , , , , , , , , MOVE_TRANSFORM
-	givecustommon SPECIES_CHARIZARD, 100, , , , , , , , , , , , , , , , , MOVE_FLAMETHROWER
-	givecustommon SPECIES_BLASTOISE, 100, , , , , , , , , , , , , , , , , MOVE_HYDRO_PUMP
-	givecustommon SPECIES_PIKACHU, 100, , , , , , , , , , , , , , , , , MOVE_THUNDERBOLT
-	givecustommon SPECIES_BULBASAUR, 100, , , , , , , , , , , , , , , , , MOVE_VINE_WHIP
-	givecustommon SPECIES_ARTICUNO, 100, , , , , , , , , , , , , , , , , MOVE_ICE_BEAM
-	givecustommon SPECIES_MACHAMP, 100, , , , , , , , , , , , , , , , , MOVE_DYNAMIC_PUNCH
-	givecustommon SPECIES_NIDOKING, 100, , , , , , , , , , , , , , , , , MOVE_POISON_JAB
-	givecustommon SPECIES_GOLEM, 100, , , , , , , , , , , , , , , , , MOVE_EARTHQUAKE
-	givecustommon SPECIES_PIDGEOT, 100, , , , , , , , , , , , , , , , , MOVE_SKY_ATTACK
-	givecustommon SPECIES_MEW, 100, , , , , , , , , , , , , , , , , MOVE_PSYBEAM
-	givecustommon SPECIES_SCYTHER, 100, , , , , , , , , , , , , , , , , MOVE_FURY_CUTTER
-	givecustommon SPECIES_TYRANITAR, 100, , , , , , , , , , , , , , , , , MOVE_ROCK_SLIDE
-	givecustommon SPECIES_GENGAR, 100, , , , , , , , , , , , , , , , , MOVE_SHADOW_BALL
-	givecustommon SPECIES_DRAGONITE, 100, , , , , , , , , , , , , , , , , MOVE_DRAGON_RUSH
-	givecustommon SPECIES_AGGRON, 100, , , , , , , , , , , , , , , , , MOVE_IRON_HEAD
-	givecustommon SPECIES_ABSOL, 100, , , , , , , , , , , , , , , , , MOVE_DARK_PULSE
-	givecustommon SPECIES_GARDEVOIR, 100, , , , , , , , , , , , , , , , , MOVE_DAZZLING_GLEAM
-	additem ITEM_RARE_CANDY, 200
-	return
+	call Taxi_Interact_Dialogue
+	end
 
 
 Debug_Script_2::
-	goto_if_set FLAG_CRAFTED_STEEL_GEM, Debug_Script_2_2
-Debug_Script_2_1:
 	end
-
-Debug_Script_2_2:
-	call Debug_Weather
-	goto Debug_Script_2_1
 
 
 Debug_Script_3::
-	setflag FLAG_CRAFTED_NORMAL_GEM
-	setflag FLAG_CRAFTED_FIGHTING_GEM
-	setflag FLAG_CRAFTED_FLYING_GEM
-	setflag FLAG_CRAFTED_POISON_GEM
-	setflag FLAG_CRAFTED_GROUND_GEM
-	setflag FLAG_CRAFTED_ROCK_GEM
-	setflag FLAG_CRAFTED_BUG_GEM
-	setflag FLAG_CRAFTED_GHOST_GEM
-	setflag FLAG_CRAFTED_STEEL_GEM
-	setflag FLAG_CRAFTED_FIRE_GEM
-	setflag FLAG_CRAFTED_GRASS_GEM
-	setflag FLAG_CRAFTED_ELECTRIC_GEM
-	setflag FLAG_CRAFTED_PSYCHIC_GEM
-	setflag FLAG_CRAFTED_ICE_GEM
-	setflag FLAG_CRAFTED_DRAGON_GEM
-	setflag FLAG_CRAFTED_DARK_GEM
-	setflag FLAG_CRAFTED_FAIRY_GEM
 	end
 
 

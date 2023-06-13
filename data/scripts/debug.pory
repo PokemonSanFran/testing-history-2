@@ -60,6 +60,7 @@ script Debug_Weather{
 }
 
 script Debug_Script_1{
+    call(Taxi_Interact_Dialogue)
     end
 }
 

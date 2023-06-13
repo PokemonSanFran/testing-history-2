@@ -593,3 +593,4 @@ gSpecials::
     def_special Quest_Gemartist_BufferFirstMoveName
     def_special Quest_Gemartist_SetGemFlag
     def_special Quest_Gemartist_CountRemainingUniqueGems
+    def_special Taxi_CalculateFeeAndCharge
