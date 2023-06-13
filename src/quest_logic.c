@@ -611,3 +611,52 @@ u8 Quest_Gemartist_CountRemainingUniqueGems(void)
     }
     return numRemainingGems;
 }
+
+// ***********************************************************************
+// Quest: Taxicabturnaround
+// ***********************************************************************
+
+const u32 TAXICAB_LOCATION_MAP[QUEST_TAXICABTURNAROUND_SUB_COUNT][2]=
+{
+    {MAP_TREASUREISLAND,SUB_QUEST_1},
+    {MAP_SUNSET,SUB_QUEST_2},
+    {MAP_GLDNGTEPARK,SUB_QUEST_3},
+    {MAP_PRESIDIO,SUB_QUEST_4},
+    {MAP_PACIFICA,SUB_QUEST_5},
+    {MAP_ALAMEDA,SUB_QUEST_6},
+    {MAP_CASTRO,SUB_QUEST_7},
+    {MAP_MISSION,SUB_QUEST_8},
+    {MAP_DOGPATCH,SUB_QUEST_9},
+    {MAP_SOUTHBAY,SUB_QUEST_10},
+    {MAP_OAKLAND,SUB_QUEST_11},
+    {MAP_HAIGHTASHBURY,SUB_QUEST_12},
+    {MAP_MARIN,SUB_QUEST_13},
+    {MAP_BERKELEY,SUB_QUEST_14},
+    {MAP_TENDERLOIN,SUB_QUEST_15},
+    {MAP_CHINATOWN,SUB_QUEST_16},
+    {MAP_JAPANTOWN,SUB_QUEST_17},
+    {MAP_SOMA,SUB_QUEST_18},
+    {MAP_BERNALHEIGHTS,SUB_QUEST_19},
+};
+
+u8 Quest_Taxicabturnaround_LookUpCorrespondingSubquest(void){
+    u8 i;
+
+    for (i = 0; i < QUEST_TAXICABTURNAROUND_SUB_COUNT; i++) {
+        if (TAXICAB_LOCATION_MAP[i][0] == GetCurrentMap()) {
+            return i;
+        }
+    }
+    return 99;
+}
+
+bool8 Quest_Taxicabturnaround_IsSubquestComplete(void){
+    u8 index = Quest_Taxicabturnaround_LookUpCorrespondingSubquest();
+    u8 subquest = TAXICAB_LOCATION_MAP[index][1];
+
+    if (QuestMenu_GetSetSubquestState(QUEST_TAXICABTURNAROUND, FLAG_GET_COMPLETED, subquest)){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+}

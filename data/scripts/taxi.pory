@@ -44,7 +44,6 @@ script Taxi_ConstructMenu_Script{
     dynmultipush("No.",NO)
     dynmultipush("Yes!",YES)
 
-    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_TAXICABTURNAROUNDLAND)
     if(var(VAR_RESULT)){
         dynmultipush("Something else.",2)
     }

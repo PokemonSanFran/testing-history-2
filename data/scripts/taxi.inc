@@ -20,14 +20,13 @@ Taxi_Interact_Dialogue_3:
 	return
 
 Taxi_Interact_Dialogue_4:
-	goto Quest_Taxicabturnaroundland_Event_Script
+	goto Quest_Taxicabturnaround_Master_Event_Script
 	return
 
 
 Taxi_ConstructMenu_Script::
 	dynmultipush Taxi_ConstructMenu_Script_Text_0, NO
 	dynmultipush Taxi_ConstructMenu_Script_Text_1, YES
-	questmenu QUEST_MENU_CHECK_ACTIVE, QUEST_TAXICABTURNAROUNDLAND
 	compare VAR_RESULT, 0
 	goto_if_ne Taxi_ConstructMenu_Script_2
 Taxi_ConstructMenu_Script_1:
