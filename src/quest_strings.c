@@ -443,7 +443,7 @@ const u8 gText_Quest_TaxicabturnaroundAir_Desc[] =_("Description");
 const u8 gText_Quest_TaxicabturnaroundAir_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_TaxicabturnaroundAir_Map[] =_("Berkeley");
 
-const u8 gText_Quest_Taxicabturnaround_Name[] = _("Taxicab Turnaround - ");
+const u8 gText_Quest_Taxicabturnaround_Name[] = _("Taxicab Turnaround");
 const u8 gText_Quest_Taxicabturnaround_Desc[] =_("Description");
 const u8 gText_Quest_Taxicabturnaround_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_Taxicabturnaround_Map[] =_("Alameda");
