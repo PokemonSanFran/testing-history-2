@@ -597,3 +597,4 @@ gSpecials::
     def_special Taxi_BufferDestinationMapName
     def_special Quest_Taxicabturnaround_IsSubquestComplete
     def_special Quest_Taxicabturnaround_CheckRequiredPokemon
+    def_special Quest_Taxicabturnaround_MarkSubquestComplete

@@ -22,6 +22,7 @@ script Quest_Taxicabturnaround_NoRefusePokemon_Dialogue{
 script Quest_Taxicabturnaround_EvaluatePokemon_Script{
     special(ChoosePartyMon)
     waitstate
+
     if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
         goto(Quest_Taxicabturnaround_NoRefusePokemon_Dialogue)
     }
@@ -37,11 +38,17 @@ script Quest_Taxicabturnaround_EvaluatePokemon_Script{
     }
 
     special(HasEnoughMonsForDoubleBattle)
-        if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS){
-            goto(Quest_Taxicabturnaround_NotEnough_Dialogue)
-        }
+    if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS){
+        goto(Quest_Taxicabturnaround_NotEnough_Dialogue)
+    }
+
+    goto(Quest_Taxicabturnaround_TakeMonMarkSubquest_Script)
+}
+
+script Quest_Taxicabturnaround_TakeMonMarkSubquest_Script{
 
     special(DeleteChosenPartyMon)
+    special(Quest_Taxicabturnaround_MarkSubquestComplete)
     closemessage
     release
     end

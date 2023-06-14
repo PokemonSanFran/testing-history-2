@@ -31,6 +31,24 @@ u32 GetCurrentMap(void)
     return (currentMapNum | (currentMapGroup << 8));
 }
 
+u16 Quest_Generic_CountRemainingSubquests(u16 relevantQuest, u16 totalNumSubquests)
+{
+    u16 numRemainingQuests = totalNumSubquests;
+    u8 currentSubQuest;
+
+    for (currentSubQuest = 0; currentSubQuest < totalNumSubquests; currentSubQuest++)
+    {
+        if (QuestMenu_GetSetSubquestState(relevantQuest, FLAG_GET_COMPLETED, currentSubQuest))
+        {
+            numRemainingQuests--;
+        }
+    }
+
+    gSpecialVar_Result = numRemainingQuests;
+    ConvertIntToDecimalStringN(gStringVar1, numRemainingQuests, STR_CONV_MODE_LEFT_ALIGN, 2);
+    return numRemainingQuests;
+}
+
 // ***********************************************************************
 // Quest: Kitchen Volunteering
 // ***********************************************************************
@@ -184,20 +202,7 @@ void Quest_Rockcollector_CheckSubquestTakeStone(void)
 
 u16 Quest_Rockcollector_CountRemainingSubquests(void)
 {
-    u16 numRemainingQuests = QUEST_ROCKCOLLECTOR_SUB_COUNT;
-    u8 currentQuest;
-
-    for (currentQuest = 0; currentQuest < QUEST_ROCKCOLLECTOR_SUB_COUNT; currentQuest++)
-    {
-        if (QuestMenu_GetSetSubquestState(QUEST_ROCKCOLLECTOR, FLAG_GET_COMPLETED, currentQuest))
-        {
-            numRemainingQuests--;
-        }
-    }
-
-    gSpecialVar_Result = numRemainingQuests;
-    ConvertIntToDecimalStringN(gStringVar1, numRemainingQuests, STR_CONV_MODE_LEFT_ALIGN, 2);
-    return numRemainingQuests;
+    return Quest_Generic_CountRemainingSubquests(QUEST_ROCKCOLLECTOR,QUEST_ROCKCOLLECTOR_SUB_COUNT);
 }
 
 void Quest_Rockcollector_RespawnStones(void)
@@ -218,8 +223,6 @@ void Quest_Rockcollector_RespawnStones(void)
 // ***********************************************************************
 // Quest: Hidden Grotto Mapping
 // ***********************************************************************
-u8 Quest_Hiddengrottomapping_CountCompletedSubquests(void);
-
 const u32 GROTTO_SUBQUEST_MAP[NUM_GROTTO_ROUTES][2]=
 {
     {MAP_PSFROUTE1_GROTTO,SUB_QUEST_1},
@@ -270,6 +273,11 @@ void Quest_Hiddengrottomapping_MarkSubquestBiome(void) {
     }
 }
 
+u16 Quest_Hiddengrottomapping_CountCompletedSubquests(void){
+    return Quest_Generic_CountRemainingSubquests(QUEST_HIDDENGROTTOMAPPING,QUEST_HIDDENGROTTOMAPPING_SUB_COUNT);
+}
+
+
 bool8 Quest_Hiddengrottomapping_CheckSubquestsForReward(void){
     u8 i;
     bool8 allSubquestsComplete = TRUE;
@@ -285,32 +293,12 @@ bool8 Quest_Hiddengrottomapping_CheckSubquestsForReward(void){
     return (Quest_Hiddengrottomapping_CountCompletedSubquests() == QUEST_HIDDENGROTTOMAPPING_SUB_COUNT);
 }
 
-u8 Quest_Hiddengrottomapping_CountCompletedSubquests(void){
-    u8 i = 0, numCompletedSubquests = 0;
-
-    for (i = 0; i < QUEST_HIDDENGROTTOMAPPING_SUB_COUNT; i++){
-        if (QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING,FLAG_GET_COMPLETED,i)){
-            numCompletedSubquests++;    
-        }
-    }
-
-    return numCompletedSubquests;
-}
-
 // ***********************************************************************
 // Quest: Hidden Grotto Mapping 2
 // ***********************************************************************
 
-u8 Quest_Hiddengrottomapping2_CountCompletedSubquests(void){
-    u8 i = 0, numCompletedSubquests = 0;
-
-    for (i = 0; i < QUEST_HIDDENGROTTOMAPPING_SUB_COUNT; i++){
-        if (QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING2,FLAG_GET_COMPLETED,i)){
-            numCompletedSubquests++;    
-        }
-    }
-
-    return numCompletedSubquests;
+u16 Quest_Hiddengrottomapping2_CountCompletedSubquests(void){
+    return Quest_Generic_CountRemainingSubquests(QUEST_HIDDENGROTTOMAPPING2,QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT);
 }
 
 bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
@@ -511,22 +499,8 @@ void Quest_Ultrawormholeresearch_SetSubquestForUltraBeast(void){
     }
 }
 
-u16 Quest_Ultrawormholeresearch_CountRemainingSubquests(void)
-{
-    u16 numRemainingQuests = QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT;
-    u8 currentQuest;
-
-    for (currentQuest = 0; currentQuest < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; currentQuest++)
-    {
-        if (QuestMenu_GetSetSubquestState(QUEST_ULTRAWORMHOLERESEARCH, FLAG_GET_COMPLETED, currentQuest))
-        {
-            numRemainingQuests--;
-        }
-    }
-
-    gSpecialVar_Result = numRemainingQuests;
-    ConvertIntToDecimalStringN(gStringVar1, numRemainingQuests, STR_CONV_MODE_LEFT_ALIGN, 2);
-    return numRemainingQuests;
+u16 Quest_Ultrawormholeresearch_CountRemainingSubquests(void){
+    return Quest_Generic_CountRemainingSubquests(QUEST_ULTRAWORMHOLERESEARCH,QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT);
 }
 
 // ***********************************************************************
@@ -624,7 +598,7 @@ u8 Quest_Gemartist_CountRemainingUniqueGems(void)
 
 const u32 TAXICAB_LOCATION_MAP[QUEST_TAXICABTURNAROUND_SUB_COUNT][3]=
 {
-        {MAP_TREASUREISLAND,SUB_QUEST_1,SEA},
+    {MAP_TREASUREISLAND,SUB_QUEST_1,SEA},
     {MAP_SUNSET,SUB_QUEST_2,SEA},
     {MAP_GLDNGTEPARK,SUB_QUEST_3,SEA},
     {MAP_PRESIDIO,SUB_QUEST_4,SEA},
@@ -736,5 +710,25 @@ bool8 Quest_Taxicabturnaround_CheckRequiredPokemon(void){
             return Quest_Taxicabturnaround_CheckLandPokemon();
         default:
             return FALSE;
+    }
+}
+
+void Quest_Taxicabturnaround_MarkSubquestComplete(void){
+    u32 subquest = 0;
+    bool8 foundTaxi = FALSE;
+    u8 i;
+
+    for (i = 0; i < QUEST_TAXICABTURNAROUND_SUB_COUNT; i++) {
+        if (TAXICAB_LOCATION_MAP[i][0] == GetCurrentMap()) {
+            subquest = TAXICAB_LOCATION_MAP[i][1];
+            foundTaxi = TRUE;
+            break;
+        }
+    }
+
+    if (foundTaxi) {
+        if (!QuestMenu_GetSetSubquestState(QUEST_TAXICABTURNAROUND, FLAG_GET_COMPLETED, subquest)) {
+            QuestMenu_GetSetSubquestState(QUEST_TAXICABTURNAROUND, FLAG_SET_COMPLETED, subquest);
+        }
     }
 }

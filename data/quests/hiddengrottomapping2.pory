@@ -32,7 +32,7 @@ script Quest_Hiddengrottomapping2_Active_Dialogue{
 script Quest_Hiddengrottomapping2_CountSubquestsReward_Script{
     specialvar(VAR_RESULT,Quest_Hiddengrottomapping2_CountCompletedSubquests)
 
-    if (var(VAR_RESULT) == QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT){
+    if (var(VAR_RESULT) == 0){
         questmenu(QUEST_MENU_SET_REWARD,QUEST_HIDDENGROTTOMAPPING2)
         goto(Quest_Hiddengrottomapping2_Reward_Script)
     }
