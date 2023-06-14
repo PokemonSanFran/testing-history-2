@@ -36,7 +36,7 @@ script Taxi_Interact_Dialogue{
     switch(var(VAR_RESULT)){
         case 0: goto(Taxi_Refuse_Dialogue)
         case 1: goto(Taxi_ChooseLocation_Dialogue)
-        case 2: goto(Quest_Taxicabturnaround_Master_Event_Script)
+        case 2: goto(Quest_Taxicabturnaround_AskPokemon_Dialogue)
     }
 }
 
@@ -44,7 +44,10 @@ script Taxi_ConstructMenu_Script{
     dynmultipush("No.",NO)
     dynmultipush("Yes!",YES)
 
-    if(var(VAR_RESULT)){
+    specialvar(VAR_0x8008,Quest_Taxicabturnaround_IsSubquestComplete)
+    returnqueststate(QUEST_TAXICABTURNAROUND)
+
+    if ((var(VAR_RESULT) > QUEST_MENU_UNLOCK_QUEST) && (!var(VAR_0x8008))) {
         dynmultipush("Something else.",2)
     }
     return

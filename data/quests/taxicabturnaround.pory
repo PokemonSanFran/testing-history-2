@@ -1,27 +1,84 @@
-script Quest_Taxicabturnaround_Master_Event_Script{ 
-    special(GetCurrentMap)
+//Quest_Taxicabturnaround_
+//gText_Taxicabturnaround_
 
-        switch (var(VAR_RESULT)){
-            case MAP_TREASUREISLAND:
-            case MAP_SUNSET:
-            case MAP_GLDNGTEPARK:
-            case MAP_PRESIDIO:
-            case MAP_PACIFICA: 
-            //case MAP_ALAMEDA: goto(Quest_Taxicabturnaround)
+script Quest_Taxicabturnaround_AskPokemon_Dialogue{ 
+    msgbox(gText_Taxicabturnaround_OhTheyMentioned)
+    msgbox(gText_Taxicabturnaround_WeWantTo)
+    msgbox(gText_Taxicabturnaround_DoYouHave,MSGBOX_YESNO)
 
-            case MAP_CASTRO:
-            case MAP_MISSION:
-            case MAP_DOGPATCH:
-            case MAP_SOUTHBAY:
-            case MAP_OAKLAND:
-            //case MAP_HAIGHTASHBURY: goto(Quest_Taxicabturnaround)
+    if (var(VAR_RESULT) == NO){
+        goto(Quest_Taxicabturnaround_NoRefusePokemon_Dialogue)
+    }else{
+        goto(Quest_Taxicabturnaround_EvaluatePokemon_Script)
+    }
+}
 
-            case MAP_MARIN:
-            case MAP_BERKELEY:
-            case MAP_TENDERLOIN:
-            case MAP_CHINATOWN:
-            case MAP_JAPANTOWN:
-            case MAP_SOMA:
-            //case MAP_BERNALHEIGHTS: goto(Quest_Taxicabturnaround)
+script Quest_Taxicabturnaround_NoRefusePokemon_Dialogue{
+    msgbox(gText_Taxicabturnaround_ComeBackWhen)
+    release
+    end
+}
+
+script Quest_Taxicabturnaround_EvaluatePokemon_Script{
+    special(ChoosePartyMon)
+    waitstate
+    if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+        goto(Quest_Taxicabturnaround_NoRefusePokemon_Dialogue)
+    }
+
+    specialvar(VAR_RESULT,Quest_Taxicabturnaround_CheckRequiredPokemon)
+    if (!var(VAR_RESULT)){
+        goto(Quest_Taxicabturnaround_WrongPokemon_Dialogue)
+    }
+
+    msgbox(gText_Taxicabturnaround_AskForMon,MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO){
+        goto(Quest_Taxicabturnaround_NoRefusePokemon_Dialogue)
+    }
+
+    special(HasEnoughMonsForDoubleBattle)
+        if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS){
+            goto(Quest_Taxicabturnaround_NotEnough_Dialogue)
         }
+
+    special(DeleteChosenPartyMon)
+    closemessage
+    release
+    end
+}
+
+script Quest_Taxicabturnaround_WrongPokemon_Dialogue{
+    msgbox(gText_Taxicabturnaround_YouKnowIDont)
+    closemessage
+    release
+    end
+}
+
+script Quest_Taxicabturnaround_NotEnough_Dialogue{
+    msgbox(gText_Taxicabturnaround_ThatsYourLast)
+    closemessage
+    release
+    end
+}
+
+text gText_Taxicabturnaround_OhTheyMentioned{
+    format("")
+}
+text gText_Taxicabturnaround_WeWantTo{
+    format("")
+}
+text gText_Taxicabturnaround_DoYouHave{
+    format("")
+}
+text gText_Taxicabturnaround_ComeBackWhen{
+    format("")
+}
+text gText_Taxicabturnaround_AskForMon{
+    format("")
+}
+text gText_Taxicabturnaround_YouKnowIDont{
+    format("")
+}
+text gText_Taxicabturnaround_ThatsYourLast{
+    format("")
 }

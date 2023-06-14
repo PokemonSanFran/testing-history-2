@@ -1,5 +1,7 @@
 #include "global.h"
 #include "battle.h"
+#include "constants/moves.h"
+#include "pokedex.h"
 #include "event_object_movement.h"
 #include "event_data.h"
 #include "fieldmap.h"
@@ -616,27 +618,31 @@ u8 Quest_Gemartist_CountRemainingUniqueGems(void)
 // Quest: Taxicabturnaround
 // ***********************************************************************
 
-const u32 TAXICAB_LOCATION_MAP[QUEST_TAXICABTURNAROUND_SUB_COUNT][2]=
+#define SEA 0
+#define SKY 1
+#define LAND 2
+
+const u32 TAXICAB_LOCATION_MAP[QUEST_TAXICABTURNAROUND_SUB_COUNT][3]=
 {
-    {MAP_TREASUREISLAND,SUB_QUEST_1},
-    {MAP_SUNSET,SUB_QUEST_2},
-    {MAP_GLDNGTEPARK,SUB_QUEST_3},
-    {MAP_PRESIDIO,SUB_QUEST_4},
-    {MAP_PACIFICA,SUB_QUEST_5},
-    {MAP_ALAMEDA,SUB_QUEST_6},
-    {MAP_CASTRO,SUB_QUEST_7},
-    {MAP_MISSION,SUB_QUEST_8},
-    {MAP_DOGPATCH,SUB_QUEST_9},
-    {MAP_SOUTHBAY,SUB_QUEST_10},
-    {MAP_OAKLAND,SUB_QUEST_11},
-    {MAP_HAIGHTASHBURY,SUB_QUEST_12},
-    {MAP_MARIN,SUB_QUEST_13},
-    {MAP_BERKELEY,SUB_QUEST_14},
-    {MAP_TENDERLOIN,SUB_QUEST_15},
-    {MAP_CHINATOWN,SUB_QUEST_16},
-    {MAP_JAPANTOWN,SUB_QUEST_17},
-    {MAP_SOMA,SUB_QUEST_18},
-    {MAP_BERNALHEIGHTS,SUB_QUEST_19},
+        {MAP_TREASUREISLAND,SUB_QUEST_1,SEA},
+    {MAP_SUNSET,SUB_QUEST_2,SEA},
+    {MAP_GLDNGTEPARK,SUB_QUEST_3,SEA},
+    {MAP_PRESIDIO,SUB_QUEST_4,SEA},
+    {MAP_PACIFICA,SUB_QUEST_5,SEA},
+    {MAP_ALAMEDA,SUB_QUEST_6,SEA},
+    {MAP_CASTRO,SUB_QUEST_7,SKY},
+    {MAP_MISSION,SUB_QUEST_8,SKY},
+    {MAP_DOGPATCH,SUB_QUEST_9,SKY},
+    {MAP_SOUTHBAY,SUB_QUEST_10,SKY},
+    {MAP_OAKLAND,SUB_QUEST_11,SKY},
+    {MAP_HAIGHTASHBURY,SUB_QUEST_12,SKY},
+    {MAP_MARIN,SUB_QUEST_13,LAND},
+    {MAP_BERKELEY,SUB_QUEST_14,LAND},
+    {MAP_TENDERLOIN,SUB_QUEST_15,LAND},
+    {MAP_CHINATOWN,SUB_QUEST_16,LAND},
+    {MAP_JAPANTOWN,SUB_QUEST_17,LAND},
+    {MAP_SOMA,SUB_QUEST_18,LAND},
+    {MAP_BERNALHEIGHTS,SUB_QUEST_19,LAND},
 };
 
 u8 Quest_Taxicabturnaround_LookUpCorrespondingSubquest(void){
@@ -658,5 +664,77 @@ bool8 Quest_Taxicabturnaround_IsSubquestComplete(void){
         return TRUE;
     }else{
         return FALSE;
+    }
+}
+
+bool8 Quest_Taxicabturnaround_CheckSeaPokemon(void){
+    //11m and can learn surf 
+    u32 species = 0, height = 0;
+    u32 requiredHeight = 1100;
+    bool8 doesPokemonMatch = TRUE;
+
+    species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
+
+    height = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(species), 0);
+
+    if ((!CanLearnTeachableMove(species,MOVE_SURF)) || (height < requiredHeight)){
+
+        doesPokemonMatch = FALSE;
+    }
+
+    return doesPokemonMatch;
+}
+
+bool8 Quest_Taxicabturnaround_CheckSkyPokemon(void){
+    //80 base speed and can learn fly
+    u32 species = 0, speed = 0;
+    u32 requiredSpeed= 80;
+    bool8 doesPokemonMatch = TRUE;
+
+    species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
+
+    speed = gSpeciesInfo[species].baseSpeed;
+
+    if ((!CanLearnTeachableMove(species,MOVE_FLY)) || (speed < requiredSpeed)){
+
+        doesPokemonMatch = FALSE;
+    }
+
+    return doesPokemonMatch;
+}
+
+bool8 Quest_Taxicabturnaround_CheckLandPokemon(void){
+    //32kg and field egg group
+    u32 species = 0, weight = 0;
+    u32 requiredWeight = 320;
+    u32 eggGroup[2] = {0,0};
+    bool8 doesPokemonMatch = TRUE;
+
+    species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
+    eggGroup[0] = gSpeciesInfo[species].eggGroups[0];
+    eggGroup[1] = gSpeciesInfo[species].eggGroups[1];
+
+    weight = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(species), 1);
+
+    if (((eggGroup[0] != EGG_GROUP_FIELD) && (eggGroup[1] != EGG_GROUP_FIELD)) || (weight < requiredWeight)){
+        doesPokemonMatch = FALSE;
+    }
+
+    return doesPokemonMatch;
+}
+
+bool8 Quest_Taxicabturnaround_CheckRequiredPokemon(void){
+    u8 index = Quest_Taxicabturnaround_LookUpCorrespondingSubquest();
+    u8 neededType = TAXICAB_LOCATION_MAP[index][2];
+
+    switch(neededType){
+        case SEA:
+            return Quest_Taxicabturnaround_CheckSeaPokemon();
+        case SKY:
+            return Quest_Taxicabturnaround_CheckSkyPokemon();
+        case LAND:
+            return Quest_Taxicabturnaround_CheckLandPokemon();
+        default:
+            return FALSE;
     }
 }

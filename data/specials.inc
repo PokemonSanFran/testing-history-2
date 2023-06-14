@@ -595,3 +595,5 @@ gSpecials::
     def_special Quest_Gemartist_CountRemainingUniqueGems
     def_special Taxi_CalculateFeeAndCharge
     def_special Taxi_BufferDestinationMapName
+    def_special Quest_Taxicabturnaround_IsSubquestComplete
+    def_special Quest_Taxicabturnaround_CheckRequiredPokemon

@@ -20,20 +20,27 @@ Taxi_Interact_Dialogue_3:
 	return
 
 Taxi_Interact_Dialogue_4:
-	goto Quest_Taxicabturnaround_Master_Event_Script
+	goto Quest_Taxicabturnaround_AskPokemon_Dialogue
 	return
 
 
 Taxi_ConstructMenu_Script::
 	dynmultipush Taxi_ConstructMenu_Script_Text_0, NO
 	dynmultipush Taxi_ConstructMenu_Script_Text_1, YES
-	compare VAR_RESULT, 0
-	goto_if_ne Taxi_ConstructMenu_Script_2
+	specialvar VAR_0x8008, Quest_Taxicabturnaround_IsSubquestComplete
+	returnqueststate QUEST_TAXICABTURNAROUND
+	compare VAR_RESULT, QUEST_MENU_UNLOCK_QUEST
+	goto_if_gt Taxi_ConstructMenu_Script_3
 Taxi_ConstructMenu_Script_1:
 	return
 
 Taxi_ConstructMenu_Script_2:
 	dynmultipush Taxi_ConstructMenu_Script_Text_2, 2
+	goto Taxi_ConstructMenu_Script_1
+
+Taxi_ConstructMenu_Script_3:
+	compare VAR_0x8008, 0
+	goto_if_eq Taxi_ConstructMenu_Script_2
 	goto Taxi_ConstructMenu_Script_1
 
 

@@ -60,7 +60,11 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	call Taxi_Interact_Dialogue
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_TAXICABTURNAROUND
+	givemon SPECIES_ELECTRODE, 100, 0
+	givemon SPECIES_PIDGEY, 100, 0
+	givemon SPECIES_DRAGONITE, 100, 0
+	warpsilent MAP_HAIGHTASHBURY, 0
 	end
 
 
