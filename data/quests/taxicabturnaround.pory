@@ -46,12 +46,35 @@ script Quest_Taxicabturnaround_EvaluatePokemon_Script{
 }
 
 script Quest_Taxicabturnaround_TakeMonMarkSubquest_Script{
-
     special(DeleteChosenPartyMon)
     special(Quest_Taxicabturnaround_MarkSubquestComplete)
+    call(Quest_Taxicabturnaround_CheckReward_Script)
+
+    specialvar(VAR_RESULT,Quest_Taxicabturnaround_CheckNumberHelpedType)
+    if (var(VAR_RESULT)){
+        returnqueststate(QUEST_PERSUASIVEPASSENGER)
+        if (var(VAR_RESULT) < QUEST_MENU_SET_ACTIVE){
+            call(Quest_Taxicabturnaround_ProposePersuaive_Dialogue)
+        }
+    }
+
     closemessage
     release
     end
+}
+
+script Quest_Taxicabturnaround_CheckReward_Script{
+    specialvar(VAR_RESULT,Quest_Taxicabturnaround_CountRemainingSubquests)
+
+    if (var(VAR_RESULT) == 0){
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_TAXICABTURNAROUND)
+    }
+    return
+}
+
+script Quest_Taxicabturnaround_ProposePersuaive_Dialogue{
+    msgbox(gText_Taxicabturnaround_WordHasBeenGetting)
+    return
 }
 
 script Quest_Taxicabturnaround_WrongPokemon_Dialogue{
@@ -87,5 +110,8 @@ text gText_Taxicabturnaround_YouKnowIDont{
     format("")
 }
 text gText_Taxicabturnaround_ThatsYourLast{
+    format("")
+}
+text gText_Taxicabturnaround_WordHasBeenGetting{
     format("")
 }

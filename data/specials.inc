@@ -598,3 +598,5 @@ gSpecials::
     def_special Quest_Taxicabturnaround_IsSubquestComplete
     def_special Quest_Taxicabturnaround_CheckRequiredPokemon
     def_special Quest_Taxicabturnaround_MarkSubquestComplete
+    def_special Quest_Taxicabturnaround_CountRemainingSubquests
+    def_special Quest_Taxicabturnaround_CheckNumberHelpedType

@@ -732,3 +732,39 @@ void Quest_Taxicabturnaround_MarkSubquestComplete(void){
         }
     }
 }
+
+u16 Quest_Taxicabturnaround_CountRemainingSubquests(void){
+    return Quest_Generic_CountRemainingSubquests(QUEST_TAXICABTURNAROUND,QUEST_TAXICABTURNAROUND_SUB_COUNT);
+}
+
+bool8 Quest_Taxicabturnaround_CheckReadyForNext(void){
+    u16 numRemainingQuests = QUEST_TAXICABTURNAROUND_SUB_COUNT;
+    u8 currentSubQuest;
+    u8 questType;
+    u8 completedLand = 0, completedSky = 0, completedSea = 0;
+    u8 requiredComplete = 1;
+
+    for (currentSubQuest = 0; currentSubQuest < QUEST_TAXICABTURNAROUND_SUB_COUNT; currentSubQuest++)
+    {
+        if (QuestMenu_GetSetSubquestState(QUEST_TAXICABTURNAROUND, FLAG_GET_COMPLETED, currentSubQuest))
+        {
+            questType = TAXICAB_LOCATION_MAP[currentSubQuest][2];
+
+            switch(questType){
+                case LAND: completedLand++;
+                           break;
+                case SEA: completedSea++;
+                          break;
+                case SKY: completedSky++;
+                          break;
+                default: break;
+            }
+        }
+    }
+
+    return (\
+            (completedLand > requiredComplete) &&\
+            (completedSky > requiredComplete) &&\
+            (completedSea > requiredComplete)\
+           );
+}
