@@ -1315,7 +1315,7 @@ Script_RemoveTint::
 // .include "data/quests/taxicabturnaroundair.inc"
 .include "data/quests/taxicabturnaroundland.inc"
 .include "data/quests/taxicabturnaround.inc"
-// .include "data/quests/persuasivepassenger.inc"
+.include "data/quests/persuasivepassenger.inc"
 // .include "data/quests/bodegaburnout.inc"
 .include "data/quests/warehousewarfare.inc"
 // .include "data/quests/restoretotheirformerglory.inc"
@@ -1610,3 +1610,31 @@ Script_RemoveTint::
 	.include "data/maps/Ultra_Galar/scripts.inc"
 
 	.include "data/maps/Ultra_Kanto/scripts.inc"
+
+	.include "data/maps/Sunset_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Gldngtepark_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Tenderloin_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Pacifica_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Bernalheights_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Dogpatch_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Mission_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Chinatown_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Japantown_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Castro_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Presidio_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Oakland_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Treasureisland_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Alameda_Pokemoncenter_1F/scripts.inc"

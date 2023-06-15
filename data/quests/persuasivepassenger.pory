@@ -1,0 +1,37 @@
+//gText_Persuasivepassenger_
+//Quest_Persuasivepassenger_
+
+script Quest_Persuasivepassenger_Event_Script{
+    lock
+    faceplayer
+    goto_if_quest_complete(QUEST_PERSUASIVEPASSENGER,Quest_Persuasivepassenger_Complete_Dialogue)
+    goto_if_quest_reward(QUEST_PERSUASIVEPASSENGER,Quest_Persuasivepassenger_Reward_Dialogue)
+    goto_if_quest_active(QUEST_PERSUASIVEPASSENGER,Quest_Persuasivepassenger_Active_Dialogue)
+    goto(Quest_Persuasivepassenger_StartQuest_Script)
+}
+
+script Quest_Persuasivepassenger_StartQuest_Script{
+    startquest(QUEST_PERSUASIVEPASSENGER)
+}
+
+script Quest_Persuasivepassenger_Active_Dialogue{
+}
+
+script Quest_Persuasivepassenger_Reward_Dialogue{
+    completequest(QUEST_PERSUASIVEPASSENGER)
+}
+
+script Quest_Persuasivepassenger_Driver1_Event_Script{
+
+}
+
+script Quest_Persuasivepassenger_Driver2_Event_Script{
+
+}
+
+script Quest_Persuasivepassenger_Driver3_Event_Script{
+
+}
+
+script Quest_Persuasivepassenger_Complete_Dialogue{
+}

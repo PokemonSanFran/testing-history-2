@@ -600,3 +600,7 @@ gSpecials::
     def_special Quest_Taxicabturnaround_MarkSubquestComplete
     def_special Quest_Taxicabturnaround_CountRemainingSubquests
     def_special Quest_Taxicabturnaround_CheckReadyForNext
+    def_special Quest_Bodegaburnout_IsSubquestComplete
+    def_special Quest_Bodegaburnout_MarkSubquestComplete
+    def_special Quest_Bodegaburnout_CountRemainingSubquests
+    def_special Quest_Bodegaburnout_CheckReadyForNext

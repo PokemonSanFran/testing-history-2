@@ -203,6 +203,13 @@
       "elevation": 0,
       "dest_map": "MAP_SUNSET_RESTAURANT",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 17,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_SUNSET_POKEMONCENTER_1F",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

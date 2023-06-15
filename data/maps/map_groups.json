@@ -11,6 +11,18 @@
     "gMapGroup_IndoorFortpoint",
     "gMapGroup_IndoorPresidio",
     "gMapGroup_IndoorHaightashbury",
+    "gMapGroup_IndoorGldngtepark",
+    "gMapGroup_IndoorSunset",
+    "gMapGroup_IndoorTenderloin",
+    "gMapGroup_IndoorPacifica",
+    "gMapGroup_IndoorBernalheights",
+    "gMapGroup_IndoorDogpatch",
+    "gMapGroup_IndoorChinatown",
+    "gMapGroup_IndoorCastro",
+    "gMapGroup_IndoorOakland",
+    "gMapGroup_IndoorMarin",
+    "gMapGroup_IndoorTreasureisland",
+    "gMapGroup_IndoorAlameda",
     "gMapGroup_Salesforcetower",
     "gMapGroup_HiddenGrotto",
     "gMapGroup_IndoorLittleroot",
@@ -54,7 +66,6 @@
     "CaveTemplate_4",
     "CaveTemplate_Water",
     "CaveTemplate_Water1",
-    "Gldngtepark_Pannen_House",
     "Psfroute15_Grotto",
     "Psfroute32_Grotto",
     "Psfroute62_Grotto",
@@ -113,7 +124,6 @@
     "Paintedladies",
     "Psfroute13",
     "Castro",
-    "Castro_Gym",
     "Gldngtebridge",
     "Robinwilltunnel",
     "Marin",
@@ -128,68 +138,32 @@
     "Chasecenter_Skybox",
     "Chasecenter_Arena",
     "Chasecenter_Stands",
-    "Presidio_Compound_1F",
     "Treasureisland",
-    "Treasureisland_Restaurant",
     "Alcatraz_B1F",
     "Alcatraz_B2F",
-    "Castro_BallShop",
     "Psfroute62",
     "Lakemerritt",
     "Psfroute18",
     "Twinpeaks",
     "OkayLetsFixit_Flashback",
     "Sunset",
-    "Sunset_Apartment",
-    "Tenderloin_Library",
-    "Marin_EliteHome",
-    "Alameda_Archer_House",
-    "Oakland_Warehouse",
     "LayoutTester",
     "Alameda_PostEarthquake",
     "Psfroute25",
     "Undergroundlab",
-    "Sunset_Sabrina_House",
     "WeCanStopYouActually_Cutscene",
-    "Presidio_Hauntedhouse",
-    "Chinatown_Racisthouse",
-    "Chinatown_Tunnel",
-    "Pacifica_Gemhouse",
-    "Tenderloin_TrolleyHQ",
-    "Marin_Solar",
-    "Dogpatch_BIkerhq",
-    "Chinatown_BackroomA",
-    "Chinatown_BackroomB",
-    "Chinatown_BackroomC",
-    "Chinatown_BackroomD",
-    "Pacifica_UnionHQ",
-    "Berkeley_Research",
     "Psfroute32",
-    "Mission_Bar",
-    "SOMA_smashgg",
     "Psfroute2",
-    "Chinatown_Gym",
-    "Oakland_Coliseum_Outside",
-    "Chinatown_Proudpanda",
     "Psfroute15",
     "Underwater_Psfroute15",
-    "Marin_Ranger",
     "Lakemerced",
-    "Marin_Pokemoncenter_1F",
-    "SOMA_Pokemoncenter_1F",
-    "Berkeley_Pokemoncenter_1F",
-    "Haightashbury_Pokemoncenter_1F",
     "Paintedladies_Entrance",
+    "Oakland_Coliseum_Outside",
     "Oaklandcoliseum_Hallway",
     "Oaklandcoliseum_Arena",
     "Oaklandcoliseum_Hall",
     "Palacefinearts",
-    "Sunset_Restaurant",
-    "SOMA_Sanitation",
-    "Castro_IT",
     "Psfroute70_Shelter",
-    "Tenderloin_Pantry",
-    "Tenderloin_Pantry_Maze",
     "Trolley_Underground_Evolutionstones_Cave",
     "Psfroute20",
     "Psfroute76",
@@ -260,21 +234,29 @@
     "Southbay_PokemonCenter_1F"
   ],
   "gMapGroup_IndoorSOMA": [
+    "SOMA_smashgg",
+    "SOMA_Pokemoncenter_1F",
+    "SOMA_Sanitation",
     "SOMA_Gym",
     "SOMA_Newspaper",
     "SOMA_Museum_Entrance"
   ],
   "gMapGroup_IndoorMission": [
+    "Mission_Bar",
     "Mission_Gym",
+    "Mission_Pokemoncenter_1F",
     "Mission_Consulting"
   ],
   "gMapGroup_IndoorJapantown": [
     "Japantown_Gym",
     "Japantown_Ramen",
     "Japantown_Balls",
-    "Japantown_Musicvenue"
+    "Japantown_Musicvenue",
+    "Japantown_Pokemoncenter_1F"
   ],
   "gMapGroup_IndoorBerkeley": [
+    "Berkeley_Pokemoncenter_1F",
+    "Berkeley_Research",
     "Berkeley_Gym",
     "Berkeley_BreedingCenter",
     "Berkeley_IceCreamShop",
@@ -284,13 +266,81 @@
     "Fortpoint_Roof"
   ],
   "gMapGroup_IndoorPresidio": [
+    "Presidio_Pokemoncenter_1F",
+    "Presidio_Hauntedhouse",
+    "Presidio_Compound_1F",
     "Presidio_Mansion",
-    "Gldngtepark_Gym",
     "Presidio_Improv",
     "Presidio_Squattersmansion"
   ],
   "gMapGroup_IndoorHaightashbury": [
+    "Haightashbury_Pokemoncenter_1F",
     "Haightashbury_Gym"
+  ],
+  "gMapGroup_IndoorGldngtepark": [
+    "Gldngtepark_Pokemoncenter_1F",
+    "Gldngtepark_Pannen_House",
+    "Gldngtepark_Gym"
+  ],
+  "gMapGroup_IndoorSunset": [
+    "Sunset_Restaurant",
+    "Sunset_Sabrina_House",
+    "Sunset_Pokemoncenter_1F",
+    "Sunset_Apartment"
+  ],
+  "gMapGroup_IndoorTenderloin": [
+    "Tenderloin_TrolleyHQ",
+    "Tenderloin_Library",
+    "Tenderloin_Pantry",
+    "Tenderloin_Pantry_Maze",
+    "Tenderloin_Pokemoncenter_1F"
+  ],
+  "gMapGroup_IndoorPacifica": [
+    "Pacifica_Pokemoncenter_1F",
+    "Pacifica_UnionHQ",
+    "Pacifica_Gemhouse"
+  ],
+  "gMapGroup_IndoorBernalheights": [
+    "Bernalheights_Pokemoncenter_1F"
+  ],
+  "gMapGroup_IndoorDogpatch": [
+    "Dogpatch_Pokemoncenter_1F",
+    "Dogpatch_BIkerhq"
+  ],
+  "gMapGroup_IndoorChinatown": [
+    "Chinatown_Proudpanda",
+    "Chinatown_Gym",
+    "Chinatown_Racisthouse",
+    "Chinatown_Tunnel",
+    "Chinatown_BackroomA",
+    "Chinatown_BackroomB",
+    "Chinatown_BackroomC",
+    "Chinatown_BackroomD",
+    "Chinatown_Pokemoncenter_1F"
+  ],
+  "gMapGroup_IndoorCastro": [
+    "Castro_Pokemoncenter_1F",
+    "Castro_IT",
+    "Castro_BallShop",
+    "Castro_Gym"
+  ],
+  "gMapGroup_IndoorOakland": [
+    "Oakland_Pokemoncenter_1F",
+    "Oakland_Warehouse"
+  ],
+  "gMapGroup_IndoorMarin": [
+    "Marin_Ranger",
+    "Marin_Solar",
+    "Marin_EliteHome",
+    "Marin_Pokemoncenter_1F"
+  ],
+  "gMapGroup_IndoorTreasureisland": [
+    "Treasureisland_Pokemoncenter_1F",
+    "Treasureisland_Restaurant"
+  ],
+  "gMapGroup_IndoorAlameda": [
+    "Alameda_Archer_House",
+    "Alameda_Pokemoncenter_1F"
   ],
   "gMapGroup_Salesforcetower": [
     "Salesforcetower_1F",
@@ -687,8 +737,8 @@
     "TerraCave_End",
     "AlteringCave",
     "MeteorFalls_StevensCave",
-    "Gldngtewilds",
     "Chasecenter_Construction",
+    "Gldngtewilds",
     "Gldngtewilds_Spring"
   ],
   "gMapGroup_IndoorDynamic": [

@@ -35,7 +35,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-      "x": 9,
+      "x": 8,
       "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -113,6 +113,13 @@
       "y": 15,
       "elevation": 0,
       "dest_map": "MAP_JAPANTOWN_MUSICVENUE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 10,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_JAPANTOWN_POKEMONCENTER_1F",
       "dest_warp_id": "0"
     }
   ],

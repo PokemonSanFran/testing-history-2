@@ -138,6 +138,13 @@
       "elevation": 0,
       "dest_map": "MAP_PRESIDIO_SQUATTERSMANSION",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 24,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_PRESIDIO_POKEMONCENTER_1F",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

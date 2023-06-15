@@ -6660,6 +6660,146 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Ultra_Kanto/border.bin",
       "blockdata_filepath": "data/layouts/Ultra_Kanto/map.bin"
+    },
+    {
+      "id": "LAYOUT_SUNSET_POKEMONCENTER_1F",
+      "name": "Sunset_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Sunset_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Sunset_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLDNGTEPARK_POKEMONCENTER_1F",
+      "name": "Gldngtepark_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Gldngtepark_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Gldngtepark_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_TENDERLOIN_POKEMONCENTER_1F",
+      "name": "Tenderloin_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Tenderloin_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Tenderloin_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PACIFICA_POKEMONCENTER_1F",
+      "name": "Pacifica_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Pacifica_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Pacifica_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_BERNALHEIGHTS_POKEMONCENTER_1F",
+      "name": "Bernalheights_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Bernalheights_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Bernalheights_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOGPATCH_POKEMONCENTER_1F",
+      "name": "Dogpatch_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Dogpatch_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Dogpatch_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MISSION_POKEMONCENTER_1F",
+      "name": "Mission_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Mission_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Mission_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHINATOWN_POKEMONCENTER_1F",
+      "name": "Chinatown_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Chinatown_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Chinatown_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_JAPANTOWN_POKEMONCENTER_1F",
+      "name": "Japantown_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Japantown_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Japantown_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTRO_POKEMONCENTER_1F",
+      "name": "Castro_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Castro_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Castro_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PRESIDIO_POKEMONCENTER_1F",
+      "name": "Presidio_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Presidio_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Presidio_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_OAKLAND_POKEMONCENTER_1F",
+      "name": "Oakland_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Oakland_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Oakland_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_TREASUREISLAND_POKEMONCENTER_1F",
+      "name": "Treasureisland_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Treasureisland_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Treasureisland_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ALAMEDA_POKEMONCENTER_1F",
+      "name": "Alameda_Pokemoncenter_1F_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Alameda_Pokemoncenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Alameda_Pokemoncenter_1F/map.bin"
     }
   ]
 }

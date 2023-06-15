@@ -1286,6 +1286,12 @@ extern const u8 gText_Quest_BodegaBurnout_Sub16_Map[];
 extern const u8 gText_Quest_BodegaBurnout_Sub17_Name[];
 extern const u8 gText_Quest_BodegaBurnout_Sub17_Desc[];
 extern const u8 gText_Quest_BodegaBurnout_Sub17_Map[];
+extern const u8 gText_Quest_BodegaBurnout_Sub18_Name[];
+extern const u8 gText_Quest_BodegaBurnout_Sub18_Desc[];
+extern const u8 gText_Quest_BodegaBurnout_Sub18_Map[];
+extern const u8 gText_Quest_BodegaBurnout_Sub19_Name[];
+extern const u8 gText_Quest_BodegaBurnout_Sub19_Desc[];
+extern const u8 gText_Quest_BodegaBurnout_Sub19_Map[];
 
 extern const u8 gText_Quest_WarehouseWarfare_Sub1_Name[];
 extern const u8 gText_Quest_WarehouseWarfare_Sub1_Desc[];

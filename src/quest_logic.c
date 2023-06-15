@@ -768,3 +768,112 @@ bool8 Quest_Taxicabturnaround_CheckReadyForNext(void){
             (completedSea > requiredComplete)\
            );
 }
+
+// ***********************************************************************
+// Quest: Bodega Burnout
+// ***********************************************************************
+
+#define DELIVER 0
+#define RESCUE 1
+#define CATCH 2
+
+const u32 POKE_MART_MAP[QUEST_BODEGABURNOUT_SUB_COUNT][3]=
+{
+    {MAP_SOMA_POKEMONCENTER_1F,SUB_QUEST_1,DELIVER},
+    {MAP_SUNSET_POKEMONCENTER_1F,SUB_QUEST_2,DELIVER},
+    {MAP_GLDNGTEPARK_POKEMONCENTER_1F,SUB_QUEST_3,DELIVER},
+    {MAP_TENDERLOIN_POKEMONCENTER_1F,SUB_QUEST_4,DELIVER},
+    {MAP_PACIFICA_POKEMONCENTER_1F,SUB_QUEST_5,DELIVER},
+    {MAP_BERNALHEIGHTS_POKEMONCENTER_1F,SUB_QUEST_6,DELIVER},
+    {MAP_DOGPATCH_POKEMONCENTER_1F,SUB_QUEST_7,RESCUE},
+    {MAP_MISSION_POKEMONCENTER_1F,SUB_QUEST_8,RESCUE},
+    {MAP_CHINATOWN_POKEMONCENTER_1F,SUB_QUEST_9,RESCUE},
+    {MAP_JAPANTOWN_POKEMONCENTER_1F,SUB_QUEST_10,RESCUE},
+    {MAP_CASTRO_POKEMONCENTER_1F,SUB_QUEST_11,RESCUE},
+    {MAP_PRESIDIO_POKEMONCENTER_1F,SUB_QUEST_12,RESCUE},
+    {MAP_OAKLAND_POKEMONCENTER_1F,SUB_QUEST_13,CATCH},
+    {MAP_MARIN_POKEMONCENTER_1F,SUB_QUEST_14,CATCH},
+    {MAP_HAIGHTASHBURY_POKEMONCENTER_1F,SUB_QUEST_15,CATCH},
+    {MAP_TREASUREISLAND_POKEMONCENTER_1F,SUB_QUEST_16,CATCH},
+    {MAP_SOUTHBAY_POKEMON_CENTER_1F,SUB_QUEST_17,CATCH},
+    {MAP_ALAMEDA_POKEMONCENTER_1F,SUB_QUEST_18,CATCH},
+    {MAP_BERKELEY_POKEMONCENTER_1F,SUB_QUEST_19,CATCH},
+};
+
+u8 Quest_Bodegaburnout_LookUpCorrespondingSubquest(void){
+    u8 i;
+
+    for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
+        if (POKE_MART_MAP[i][0] == GetCurrentMap()) {
+            return i;
+        }
+    }
+    return 99;
+}
+
+bool8 Quest_Bodegaburnout_IsSubquestComplete(void){
+    u8 index = Quest_Bodegaburnout_LookUpCorrespondingSubquest();
+    u8 subquest = POKE_MART_MAP[index][1];
+
+    if (QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_GET_COMPLETED, subquest)){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+}
+
+void Quest_Bodegaburnout_MarkSubquestComplete(void){
+    u32 subquest = 0;
+    bool8 foundTaxi = FALSE;
+    u8 i;
+
+    for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
+        if (POKE_MART_MAP[i][0] == GetCurrentMap()) {
+            subquest = POKE_MART_MAP[i][1];
+            foundTaxi = TRUE;
+            break;
+        }
+    }
+
+    if (foundTaxi) {
+        if (!QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_GET_COMPLETED, subquest)) {
+            QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_SET_COMPLETED, subquest);
+        }
+    }
+}
+
+u16 Quest_Bodegaburnout_CountRemainingSubquests(void){
+    return Quest_Generic_CountRemainingSubquests(QUEST_BODEGABURNOUT,QUEST_BODEGABURNOUT_SUB_COUNT);
+}
+
+bool8 Quest_Bodegaburnout_CheckReadyForNext(void){
+    u16 numRemainingQuests = QUEST_BODEGABURNOUT_SUB_COUNT;
+    u8 currentSubQuest;
+    u8 questType;
+    u8 completedDeliver = 0, completedRescue = 0, completedCatch = 0;
+    u8 requiredComplete = 1;
+
+    for (currentSubQuest = 0; currentSubQuest < QUEST_BODEGABURNOUT_SUB_COUNT; currentSubQuest++)
+    {
+        if (QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_GET_COMPLETED, currentSubQuest))
+        {
+            questType = POKE_MART_MAP[currentSubQuest][2];
+
+            switch(questType){
+                case CATCH: completedCatch++;
+                           break;
+                case DELIVER: completedDeliver++;
+                          break;
+                case RESCUE: completedRescue++;
+                          break;
+                default: break;
+            }
+        }
+    }
+
+    return (\
+            (completedDeliver > requiredComplete) &&\
+            (completedRescue > requiredComplete) &&\
+            (completedCatch > requiredComplete)\
+           );
+}
