@@ -604,3 +604,7 @@ gSpecials::
     def_special Quest_Bodegaburnout_MarkSubquestComplete
     def_special Quest_Bodegaburnout_CountRemainingSubquests
     def_special Quest_Bodegaburnout_CheckReadyForNext
+    def_special Quest_Bodegaburnout_LoadRequestText
+    def_special Quest_Bodegaburnout_GetQuestType
+    def_special Quest_Bodegaburnout_CheckLocationAndMatchItem
+    def_special Quest_Bodegaburnout_CheckRequiredPokemon

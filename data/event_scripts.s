@@ -1316,7 +1316,7 @@ Script_RemoveTint::
 .include "data/quests/taxicabturnaroundland.inc"
 .include "data/quests/taxicabturnaround.inc"
 .include "data/quests/persuasivepassenger.inc"
-// .include "data/quests/bodegaburnout.inc"
+.include "data/quests/bodegaburnout.inc"
 .include "data/quests/warehousewarfare.inc"
 // .include "data/quests/restoretotheirformerglory.inc"
 .include "data/quests/restorechinatown.inc"

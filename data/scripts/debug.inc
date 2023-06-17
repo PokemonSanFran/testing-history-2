@@ -60,47 +60,42 @@ Debug_Weather::
 
 
 Debug_Script_1::
-	warpsilent MAP_CASTRO_POKEMONCENTER_1F, 0
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_BODEGABURNOUT
+	warpsilent MAP_BERKELEY_POKEMONCENTER_1F, 0
+	givemon SPECIES_CLEFAIRY, 100, 0
+	givemon SPECIES_PIKACHU, 100, 0
 	end
 
 
 Debug_Script_2::
-	warpsilent MAP_PRESIDIO_POKEMONCENTER_1F, 0
 	end
 
 
 Debug_Script_3::
-	warpsilent MAP_OAKLAND_POKEMONCENTER_1F, 0
 	end
 
 
 Debug_Script_4::
-	warpsilent MAP_MARIN_POKEMONCENTER_1F, 0
 	end
 
 
 Debug_Script_5::
-	warpsilent MAP_HAIGHTASHBURY_POKEMONCENTER_1F, 0
 	end
 
 
 Debug_Script_6::
-	warpsilent MAP_TREASUREISLAND_POKEMONCENTER_1F, 0
 	end
 
 
 Debug_Script_7::
-	warpsilent MAP_SOUTHBAY_POKEMON_CENTER_1F, 0
 	end
 
 
 Debug_Script_8::
-	warpsilent MAP_ALAMEDA_POKEMONCENTER_1F, 0
 	end
 
 
 Debug_Script_9::
-	warpsilent MAP_BERKELEY_POKEMONCENTER_1F, 0
 	end
 
 

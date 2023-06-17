@@ -776,6 +776,10 @@ bool8 Quest_Taxicabturnaround_CheckReadyForNext(void){
 #define DELIVER 0
 #define RESCUE 1
 #define CATCH 2
+#define CATCH_STRONG 3
+#define CATCH_COLD  4
+#define CATCH_SMART 5
+#define CATCH_FAIRY 6
 
 const u32 POKE_MART_MAP[QUEST_BODEGABURNOUT_SUB_COUNT][3]=
 {
@@ -791,13 +795,36 @@ const u32 POKE_MART_MAP[QUEST_BODEGABURNOUT_SUB_COUNT][3]=
     {MAP_JAPANTOWN_POKEMONCENTER_1F,SUB_QUEST_10,RESCUE},
     {MAP_CASTRO_POKEMONCENTER_1F,SUB_QUEST_11,RESCUE},
     {MAP_PRESIDIO_POKEMONCENTER_1F,SUB_QUEST_12,RESCUE},
-    {MAP_OAKLAND_POKEMONCENTER_1F,SUB_QUEST_13,CATCH},
-    {MAP_MARIN_POKEMONCENTER_1F,SUB_QUEST_14,CATCH},
-    {MAP_HAIGHTASHBURY_POKEMONCENTER_1F,SUB_QUEST_15,CATCH},
-    {MAP_TREASUREISLAND_POKEMONCENTER_1F,SUB_QUEST_16,CATCH},
-    {MAP_SOUTHBAY_POKEMON_CENTER_1F,SUB_QUEST_17,CATCH},
-    {MAP_ALAMEDA_POKEMONCENTER_1F,SUB_QUEST_18,CATCH},
-    {MAP_BERKELEY_POKEMONCENTER_1F,SUB_QUEST_19,CATCH},
+    {MAP_OAKLAND_POKEMONCENTER_1F,SUB_QUEST_13,CATCH_STRONG},
+    {MAP_MARIN_POKEMONCENTER_1F,SUB_QUEST_14,CATCH_STRONG},
+    {MAP_HAIGHTASHBURY_POKEMONCENTER_1F,SUB_QUEST_15,CATCH_COLD},
+    {MAP_TREASUREISLAND_POKEMONCENTER_1F,SUB_QUEST_16,CATCH_COLD},
+    {MAP_SOUTHBAY_POKEMON_CENTER_1F,SUB_QUEST_17,CATCH_SMART},
+    {MAP_ALAMEDA_POKEMONCENTER_1F,SUB_QUEST_18,CATCH_SMART},
+    {MAP_BERKELEY_POKEMONCENTER_1F,SUB_QUEST_19,CATCH_FAIRY},
+};
+
+const u8* bodegaParametersTextArray[19][2]=
+{
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
+    {gText_ExpandedPlaceholder_Ruby,gText_ExpandedPlaceholder_Emerald},
 };
 
 u8 Quest_Bodegaburnout_LookUpCorrespondingSubquest(void){
@@ -876,4 +903,142 @@ bool8 Quest_Bodegaburnout_CheckReadyForNext(void){
             (completedRescue > requiredComplete) &&\
             (completedCatch > requiredComplete)\
            );
+}
+
+u32 Quest_Bodegaburnout_GetQuestType(void){
+    u32 quest_type = 0;
+    bool8 foundTaxi = FALSE;
+    u8 i;
+
+    for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
+        if (POKE_MART_MAP[i][0] == GetCurrentMap()) {
+            return POKE_MART_MAP[i][2];
+        }
+    }
+    return 99;
+}
+
+void Quest_Bodegaburnout_LoadRequestText(void){
+    u8 i;
+
+    for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
+        if (POKE_MART_MAP[i][0] == GetCurrentMap()) {
+            StringCopy(gStringVar1,bodegaParametersTextArray[i][0]);
+            StringCopy(gStringVar2,bodegaParametersTextArray[i][1]);
+            StringCopy(gStringVar3,bodegaParametersTextArray[i][1]);
+        }
+    }
+}
+
+bool8 Quest_Bodegaburnout_CheckStrongPokemon(void){
+    u32 species = 0;
+    u32 eggGroup[2] = {0,0};
+    u32 type[2] = {0,0};
+    bool8 doesPokemonMatch = TRUE;
+
+    species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
+    eggGroup[0] = gSpeciesInfo[species].eggGroups[0];
+    eggGroup[1] = gSpeciesInfo[species].eggGroups[1];
+    type[0] = gSpeciesInfo[species].types[0];
+    type[1] = gSpeciesInfo[species].types[1];
+
+        doesPokemonMatch = FALSE;
+
+    return doesPokemonMatch;
+}
+
+bool8 Quest_Bodegaburnout_CheckColdPokemon(void){
+    u32 species = 0, weight = 0;
+    u32 requiredWeight = 320;
+    u32 eggGroup[2] = {0,0};
+    bool8 doesPokemonMatch = TRUE;
+
+    species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
+    eggGroup[0] = gSpeciesInfo[species].eggGroups[0];
+    eggGroup[1] = gSpeciesInfo[species].eggGroups[1];
+
+    weight = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(species), 1);
+
+    if (((eggGroup[0] != EGG_GROUP_FIELD) && (eggGroup[1] != EGG_GROUP_FIELD)) || (weight < requiredWeight)){
+        doesPokemonMatch = FALSE;
+    }
+
+    return doesPokemonMatch;
+}
+
+bool8 Quest_Bodegaburnout_CheckSmartPokemon(void){
+    u32 species = 0, weight = 0;
+    u32 requiredWeight = 320;
+    u32 eggGroup[2] = {0,0};
+    bool8 doesPokemonMatch = TRUE;
+
+    species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
+    eggGroup[0] = gSpeciesInfo[species].eggGroups[0];
+    eggGroup[1] = gSpeciesInfo[species].eggGroups[1];
+
+    weight = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(species), 1);
+
+    if (((eggGroup[0] != EGG_GROUP_FIELD) && (eggGroup[1] != EGG_GROUP_FIELD)) || (weight < requiredWeight)){
+        doesPokemonMatch = FALSE;
+    }
+
+    return doesPokemonMatch;
+}
+
+bool8 Quest_Bodegaburnout_CheckFairyPokemon(void){
+    u32 species = 0;
+    u32 eggGroup[2] = {0,0};
+    u32 type[2] = {0,0};
+    bool8 doesPokemonMatch = TRUE;
+
+    species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
+    eggGroup[0] = gSpeciesInfo[species].eggGroups[0];
+    eggGroup[1] = gSpeciesInfo[species].eggGroups[1];
+    type[0] = gSpeciesInfo[species].types[0];
+    type[1] = gSpeciesInfo[species].types[1];
+
+        if (
+             (eggGroup[0] != EGG_GROUP_FAIRY) &&
+             (eggGroup[1] != EGG_GROUP_FAIRY)
+             &&
+             (type[0] != TYPE_FAIRY) && 
+             (type[1] != TYPE_FAIRY)
+           )
+            {
+                doesPokemonMatch = FALSE;
+            }
+    return doesPokemonMatch;
+}
+
+bool8 Quest_Bodegaburnout_CheckRequiredPokemon(void){
+    u8 index = Quest_Bodegaburnout_LookUpCorrespondingSubquest();
+    u8 neededType = POKE_MART_MAP[index][2];
+
+    switch(neededType){
+        case CATCH_STRONG:
+            return Quest_Bodegaburnout_CheckStrongPokemon();
+        case CATCH_COLD:
+            return Quest_Bodegaburnout_CheckColdPokemon();
+        case CATCH_SMART:
+            return Quest_Bodegaburnout_CheckSmartPokemon();
+        case CATCH_FAIRY:
+            return Quest_Bodegaburnout_CheckFairyPokemon();
+        default:
+            return FALSE;
+    }
+}
+
+bool8 Quest_Bodegaburnout_CheckLocationAndMatchItem(void){
+    u8 i;
+    u16 bodegaPackage = ITEM_BODEGA_DELIVERY_FIRST;
+
+    for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
+        if (POKE_MART_MAP[i][0] == GetCurrentMap()) {
+            bodegaPackage += i;
+            gSpecialVar_0x8000 = bodegaPackage;
+            gSpecialVar_0x8001 = 1;
+            break;
+        }
+    }
+    return CheckBagHasItem(bodegaPackage,1);
 }

@@ -20,3 +20,15 @@ SOMA_Pokemoncenter_1F_EventScript_Nurse::
 	release
 	end
 
+
+SOMA_Pokemoncenter_1F_EventScript_Clerk::
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemart OldaleTown_Mart_Pokemart_Basic
+	call Quest_Bodegaburnout_CheckSubquestState_Script
+	msgbox gText_PleaseComeAgain
+	release
+	end
+
