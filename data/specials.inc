@@ -608,3 +608,7 @@ gSpecials::
     def_special Quest_Bodegaburnout_GetQuestType
     def_special Quest_Bodegaburnout_CheckLocationAndMatchItem
     def_special Quest_Bodegaburnout_CheckRequiredPokemon
+    def_special Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem
+    def_special Quest_Bodegaburnout_CheckAndSetRescueFlag
+    def_special Quest_Bodegaburnout_ClearRescueFlag
+    def_special Quest_Bodegaburnout_CompleteSubquest

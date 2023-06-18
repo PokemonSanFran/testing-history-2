@@ -83,6 +83,19 @@ Alcatraz_FerryState0_Script_5:
 	return
 
 
+Twinpeaks_EventScript_DeliveryD::
+	returnqueststate QUEST_BODEGABURNOUT
+	compare VAR_RESULT, QUEST_MENU_UNLOCK_QUEST
+	goto_if_gt Twinpeaks_EventScript_DeliveryD_2
+Twinpeaks_EventScript_DeliveryD_1:
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	end
+
+Twinpeaks_EventScript_DeliveryD_2:
+	goto Quest_Bodegaburnout_DeliveryD_Dialogue
+	goto Twinpeaks_EventScript_DeliveryD_1
+
+
 gText_Alcatraz_IveHealedYourParty::
 	.string "I've healed your party! You can battle\n"
 	.string "these Trainers as often as you like.$"

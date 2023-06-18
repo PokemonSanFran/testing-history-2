@@ -63,6 +63,19 @@ SOMA_Stan_PostBattle_Script_2:
 	goto SOMA_Stan_PostBattle_Script_1
 
 
+Twinpeaks_EventScript_DeliveryF::
+	returnqueststate QUEST_BODEGABURNOUT
+	compare VAR_RESULT, QUEST_MENU_UNLOCK_QUEST
+	goto_if_gt Twinpeaks_EventScript_DeliveryF_2
+Twinpeaks_EventScript_DeliveryF_1:
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	end
+
+Twinpeaks_EventScript_DeliveryF_2:
+	goto Quest_Bodegaburnout_DeliveryF_Dialogue
+	goto Twinpeaks_EventScript_DeliveryF_1
+
+
 gText_SOMA_SocialMediaIs::
 	.string "Social media is getting out of control!\n"
 	.string "I spend more of my day trying to verify\l"

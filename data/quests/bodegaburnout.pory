@@ -56,6 +56,7 @@ script Quest_Bodegaburnout_Deliver_Dialogue{
 
 script Quest_Bodegaburnout_Rescue_Dialogue{
     msgbox(gText_Bodegaburnout_WentMissing)
+    special(Quest_Bodegaburnout_ClearRescueFlag)
     closemessage
     release
     end
@@ -206,8 +207,67 @@ script Quest_Bodegaburnout_DeliveryA_Dialogue{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
     }else{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
-        removeitem(ITEM_BODEGA_DELIVERY_1,1)
-        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BODEGABURNOUT,SUB_QUEST_1)
+        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
     }
     end
+}
+
+script Quest_Bodegaburnout_DeliveryB_Dialogue{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    }else{
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+    }
+    end
+}
+
+script Quest_Bodegaburnout_DeliveryC_Dialogue{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    }else{
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+    }
+    end
+}
+
+script Quest_Bodegaburnout_DeliveryD_Dialogue{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_4)
+    if (var(VAR_RESULT)){
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    }else{
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+    }
+    end
+}
+
+script Quest_Bodegaburnout_DeliveryE_Dialogue{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_5)
+    if (var(VAR_RESULT)){
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    }else{
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+    }
+    end
+}
+
+script Quest_Bodegaburnout_DeliveryF_Dialogue{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_6)
+    if (var(VAR_RESULT)){
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    }else{
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+    }
+    end
+}
+
+script Quest_Bodegaburnout_RescueA_Dialogue{
+    special(Quest_Bodegaburnout_CompleteSubquest)
+    removeobject(VAR_LAST_TALKED)
 }

@@ -2641,6 +2641,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_BreakTheInternet_Map,
 	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
 	        OBJECT,
+            sBreakTheInternet_Sub,
 	        QUEST_BREAKTHEINTERNET_SUB_COUNT
 	),
 	side_quest(

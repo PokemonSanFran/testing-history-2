@@ -17,3 +17,17 @@ Twinpeaks_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_STORYLINE_STATE, STORY_BEGIN_LETS_FIX_IT, OkayLetsFixit_ReturnToPeak_Script
 	.2byte 0
 
+
+Twinpeaks_EventScript_DeliveryB::
+	trainerbattle_single TRAINER_BODEGA_3, gText_ExpandedPlaceholder_Empty, gText_ExpandedPlaceholder_Empty
+	returnqueststate QUEST_BODEGABURNOUT
+	compare VAR_RESULT, QUEST_MENU_UNLOCK_QUEST
+	goto_if_gt Twinpeaks_EventScript_DeliveryB_2
+Twinpeaks_EventScript_DeliveryB_1:
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	end
+
+Twinpeaks_EventScript_DeliveryB_2:
+	goto Quest_Bodegaburnout_DeliveryC_Dialogue
+	goto Twinpeaks_EventScript_DeliveryB_1
+

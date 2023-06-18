@@ -1262,12 +1262,19 @@
 
 #define ROCKCOLLECTOR_STONES_COUNT  (FLAG_ITEM_ROCKCOLLECTOR_STONE_END - FLAG_ITEM_ROCKCOLLECTOR_STONE_START + 1)
 
-#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
+#define FLAG_QUEST_BODEGA_RESCUE_FLAGS_START                                FLAG_QUEST_BODEGA_RESCUE1
+
+#define FLAG_QUEST_BODEGA_RESCUE1                                           0x493
+#define FLAG_QUEST_BODEGA_RESCUE2                                           0x494
+#define FLAG_QUEST_BODEGA_RESCUE3                                           0x495
+#define FLAG_QUEST_BODEGA_RESCUE4                                           0x496
+#define FLAG_QUEST_BODEGA_RESCUE5                                           0x497
+#define FLAG_QUEST_BODEGA_RESCUE6                                           0x498
+
+#define FLAG_QUEST_BODEGA_RESCUE_FLAGS_END                                  FLAG_QUEST_BODEGA_RESCUE6
+
+#define BODEGA_RESCUE_COUNT (FLAG_QUEST_BODEGA_RESCUE_FLAGS_END - FLAG_QUEST_BODEGA_RESCUE_FLAGS_START + 1)
+
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag

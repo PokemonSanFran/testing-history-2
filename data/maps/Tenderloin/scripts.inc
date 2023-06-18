@@ -14,3 +14,16 @@ Tenderloin_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call EnterAriana_SetConeTiles_Script
 	return
 
+
+Twinpeaks_EventScript_DeliveryE::
+	returnqueststate QUEST_BODEGABURNOUT
+	compare VAR_RESULT, QUEST_MENU_UNLOCK_QUEST
+	goto_if_gt Twinpeaks_EventScript_DeliveryE_2
+Twinpeaks_EventScript_DeliveryE_1:
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_AUTOCLOSE
+	end
+
+Twinpeaks_EventScript_DeliveryE_2:
+	goto Quest_Bodegaburnout_DeliveryE_Dialogue
+	goto Twinpeaks_EventScript_DeliveryE_1
+
