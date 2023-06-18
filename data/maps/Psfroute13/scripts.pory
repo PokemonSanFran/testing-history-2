@@ -1,7 +1,8 @@
 mapscripts Psfroute13_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
         call(Quest_Restaurantexpansion2_HideStaffA_Script)
-}
+        special(Quest_Bodegaburnout_CheckAndSetRescueFlag)
+    }
 }
 
 script Psfroute13_EventScript_Auguste_Script{

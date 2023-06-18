@@ -4,6 +4,7 @@ Psfroute1_MapScripts::
 
 Psfroute1_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Restorechinatown_HideBlackbelt_Psfroute1_Script
+	special Quest_Bodegaburnout_CheckAndSetRescueFlag
 	return
 
 

@@ -267,7 +267,47 @@ script Quest_Bodegaburnout_DeliveryF_Dialogue{
     end
 }
 
-script Quest_Bodegaburnout_RescueA_Dialogue{
-    special(Quest_Bodegaburnout_CompleteSubquest)
+script Quest_Bodegaburnout_RescueNPCAndCompleteSubquest_Script{
+    fadescreen(FADE_TO_BLACK)
     removeobject(VAR_LAST_TALKED)
+    fadescreen(FADE_FROM_BLACK)
+    special(Quest_Bodegaburnout_CompleteSubquest)
+    return
+}
+
+script Quest_Bodegaburnout_RescueA_Dialogue{
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    call(Quest_Bodegaburnout_RescueNPCAndCompleteSubquest_Script)
+    release
+    end
+}
+script Quest_Bodegaburnout_RescueB_Dialogue{
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    call(Quest_Bodegaburnout_RescueNPCAndCompleteSubquest_Script)
+    release
+    end
+}
+script Quest_Bodegaburnout_RescueC_Dialogue{
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    call(Quest_Bodegaburnout_RescueNPCAndCompleteSubquest_Script)
+    release
+    end
+}
+script Quest_Bodegaburnout_RescueD_Dialogue{
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    call(Quest_Bodegaburnout_RescueNPCAndCompleteSubquest_Script)
+    release
+    end
+}
+script Quest_Bodegaburnout_RescueE_Dialogue{
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    call(Quest_Bodegaburnout_RescueNPCAndCompleteSubquest_Script)
+    release
+    end
+}
+script Quest_Bodegaburnout_RescueF_Dialogue{
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    call(Quest_Bodegaburnout_RescueNPCAndCompleteSubquest_Script)
+    release
+    end
 }

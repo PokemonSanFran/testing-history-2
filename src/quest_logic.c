@@ -1057,29 +1057,31 @@ void Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem(void){
     }
 }
 
-void Quest_Bodegaburnout_CheckAndSetRescueFlag(void){
-    u8 i, j, k = 0;
-    u16 rescueFlag = FLAG_QUEST_BODEGA_RESCUE_FLAGS_START;
-    u16 numRescueQuests = 0;
-    bool8 flagStatus, questStatus;
+u8 Quest_Bodegaburnout_GetIndexFirstRescue(void){
+    u8 i;
 
     for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
         if (POKE_MART_MAP[i][2] == RESCUE){
             break;
         }
     }
+    return i;
+}
 
-    j = i - 1;
+void Quest_Bodegaburnout_CheckAndSetRescueFlag(void){
+    u8 j, k = 0;
+    u16 rescueFlag = FLAG_QUEST_BODEGA_RESCUE_FLAGS_START;
+    bool8 flagStatus;
+    bool8 questStatus = QuestMenu_GetSetQuestState(QUEST_BODEGABURNOUT, FLAG_GET_ACTIVE);
 
-    for (j; j < QUEST_BODEGABURNOUT_SUB_COUNT; j++) {
+    for (j = Quest_Bodegaburnout_GetIndexFirstRescue(); j < QUEST_BODEGABURNOUT_SUB_COUNT; j++) {
         if (POKE_MART_MAP[k][3] == GetCurrentMap()) {
             rescueFlag += k;
 
             flagStatus = FlagGet(rescueFlag);
-            questStatus = QuestMenu_GetSetQuestState(QUEST_BODEGABURNOUT, FLAG_GET_ACTIVE);
-
             if (!flagStatus && !questStatus){
                 FlagSet(rescueFlag);
+                FlagSet(FLAG_QUEST_BODEGA_RESCUE1);
             }
             break;
         }
@@ -1088,26 +1090,14 @@ void Quest_Bodegaburnout_CheckAndSetRescueFlag(void){
 }
 
 void Quest_Bodegaburnout_ClearRescueFlag(void){
-    u8 i, j, k = 0;
+    u8 j, k = 0;
     u16 rescueFlag = FLAG_QUEST_BODEGA_RESCUE_FLAGS_START;
-    u16 numRescueQuests = 0;
-    bool8 flagStatus, questStatus;
 
-    for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
-        if (POKE_MART_MAP[i][2] == RESCUE){
-            break;
-        }
-    }
-
-    j = i - 1;
-
-    for (j; j < QUEST_BODEGABURNOUT_SUB_COUNT; j++) {
-        if (POKE_MART_MAP[k][0] == GetCurrentMap()) {
+    for (j = Quest_Bodegaburnout_GetIndexFirstRescue(); j < QUEST_BODEGABURNOUT_SUB_COUNT; j++) {
+        if (POKE_MART_MAP[j][0] == GetCurrentMap()) {
             rescueFlag += k;
 
-            flagStatus = FlagGet(rescueFlag);
-
-            if (flagStatus){
+            if (FlagGet(rescueFlag)){
                 FlagClear(rescueFlag);
             }
             break;
@@ -1121,7 +1111,7 @@ void Quest_Bodegaburnout_CompleteSubquest(void){
 
     for (j = 0; j < QUEST_BODEGABURNOUT_SUB_COUNT; j++) {
         if (POKE_MART_MAP[j][3] == GetCurrentMap()) {
-            QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_SET_ACTIVE,SUB_QUEST_1);
+            QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_SET_COMPLETED,POKE_MART_MAP[j][1]);
             break;
         }
     }

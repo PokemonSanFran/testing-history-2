@@ -6,6 +6,7 @@ Psfroute8_MapScripts::
 
 Psfroute8_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call ThisIsntRandom_HideObject_AboveGround_Script
+	special Quest_Bodegaburnout_CheckAndSetRescueFlag
 	return
 
 Psfroute8_MapScripts_MAP_SCRIPT_ON_LOAD:

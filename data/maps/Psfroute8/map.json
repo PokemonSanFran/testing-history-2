@@ -81,6 +81,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Psfroute8_EventScript_BlackbeltB",
       "flag": "FLAG_TEMP_2"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CONTEST_JUDGE",
+      "x": 10,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Quest_Bodegaburnout_RescueB_Dialogue",
+      "flag": "FLAG_QUEST_BODEGA_RESCUE2"
     }
   ],
   "warp_events": [

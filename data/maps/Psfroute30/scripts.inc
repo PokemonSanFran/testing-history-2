@@ -5,6 +5,7 @@ Psfroute30_MapScripts::
 
 Psfroute30_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Ultrawormholeresearch_ControlTotemVisibility
+	special Quest_Bodegaburnout_CheckAndSetRescueFlag
 	return
 
 Psfroute30_MapScripts_MAP_SCRIPT_ON_RESUME:

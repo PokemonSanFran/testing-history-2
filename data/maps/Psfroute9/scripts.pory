@@ -1,5 +1,6 @@
 mapscripts Psfroute9_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+        special(Quest_Bodegaburnout_CheckAndSetRescueFlag)
         goto(Psfroute9_MapScripts_OnTransition)
     }
 }

@@ -4,6 +4,7 @@ Psfroute13_MapScripts::
 
 Psfroute13_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_Restaurantexpansion2_HideStaffA_Script
+	special Quest_Bodegaburnout_CheckAndSetRescueFlag
 	return
 
 

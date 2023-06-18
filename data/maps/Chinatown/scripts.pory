@@ -6,6 +6,7 @@ mapscripts Chinatown_MapScripts{
         call(Quest_CulturalPurity_MoveGuard_Script)
         call(Quest_Restorechinatown_HidePewfatOutside_Script)
         call(LetsGrabLunch_CheckRestorationProgress_Script)
+        special(Quest_Bodegaburnout_CheckAndSetRescueFlag)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [

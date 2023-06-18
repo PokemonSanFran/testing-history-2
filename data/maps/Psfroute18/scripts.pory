@@ -1,7 +1,7 @@
 mapscripts Psfroute18_MapScripts {
 }
 
-script Psfroute17_EventScript_DeliveryB{
+script Psfroute18_EventScript_DeliveryC{
     trainerbattle_single(TRAINER_BODEGA_2,gText_ExpandedPlaceholder_Empty,gText_ExpandedPlaceholder_Empty)
 
     returnqueststate(QUEST_BODEGABURNOUT)

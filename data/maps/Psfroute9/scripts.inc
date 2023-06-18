@@ -3,6 +3,7 @@ Psfroute9_MapScripts::
 	.byte 0
 
 Psfroute9_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	special Quest_Bodegaburnout_CheckAndSetRescueFlag
 	goto Psfroute9_MapScripts_OnTransition
 	return
 
