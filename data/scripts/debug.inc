@@ -61,13 +61,12 @@ Debug_Weather::
 
 Debug_Script_1::
 	questmenu QUEST_MENU_SET_ACTIVE, QUEST_BODEGABURNOUT
-	warpsilent MAP_BERKELEY_POKEMONCENTER_1F, 0
-	givemon SPECIES_CLEFAIRY, 100, 0
-	givemon SPECIES_PIKACHU, 100, 0
+	warpsilent MAP_SOMA_POKEMONCENTER_1F, 0
 	end
 
 
 Debug_Script_2::
+	warpsilent MAP_PSFROUTE17, 10, 11
 	end
 
 

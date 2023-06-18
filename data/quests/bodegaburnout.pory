@@ -46,6 +46,9 @@ script Quest_Bodegaburnout_Deliver_Dialogue{
     if (!var(VAR_RESULT)){
         callstd(STD_OBTAIN_ITEM)
     }
+    else{
+        msgbox(gText_Bodegaburnout_OhRightIGave)
+    }
     closemessage
     release
     end
@@ -53,6 +56,9 @@ script Quest_Bodegaburnout_Deliver_Dialogue{
 
 script Quest_Bodegaburnout_Rescue_Dialogue{
     msgbox(gText_Bodegaburnout_WentMissing)
+    closemessage
+    release
+    end
 }
 
 script Quest_Bodegaburnout_Catch_Dialogue{ 
@@ -97,6 +103,20 @@ script Quest_Bodegaburnout_EvaluatePokemon_Script{
     goto(Quest_Bodegaburnout_TakeMonMarkSubquest_Script)
 }
 
+script Quest_Bodegaburnout_WrongPokemon_Dialogue{
+    msgbox(gText_Bodegaburnout_YouKnowIDont)
+    closemessage
+    release
+    end
+}
+
+script Quest_Bodegaburnout_NotEnough_Dialogue{
+    msgbox(gText_Bodegaburnout_ThatsYourLast)
+    closemessage
+    release
+    end
+}
+
 script Quest_Bodegaburnout_TakeMonMarkSubquest_Script{
     special(DeleteChosenPartyMon)
     special(Quest_Bodegaburnout_MarkSubquestComplete)
@@ -124,31 +144,17 @@ script Quest_Bodegaburnout_CheckReward_Script{
     return
 }
 
-script Quest_Bodegaburnout_Warehousewarfare_Dialogue{
-    msgbox(gText_Bodegaburnout_WordHasBeenGetting)
-    return
-}
-
-script Quest_Bodegaburnout_WrongPokemon_Dialogue{
-    msgbox(gText_Bodegaburnout_YouKnowIDont)
-    closemessage
-    release
-    end
-}
-
-script Quest_Bodegaburnout_NotEnough_Dialogue{
-    msgbox(gText_Bodegaburnout_ThatsYourLast)
-    closemessage
-    release
-    end
-}
-
 script Quest_Bodegaburnout_Reward_Dialogue{
     msgbox(gText_Bodegaburnout_HeyWeAllNoticed)
     closemessage
     giveitem(ITEM_OVAL_CHARM,1)
     msgbox(gText_Bodegaburnout_YoureARealOne)
     completequest(QUEST_TAXICABTURNAROUND)
+    return
+}
+
+script Quest_Bodegaburnout_Warehousewarfare_Dialogue{
+    msgbox(gText_Bodegaburnout_WordHasBeenGetting)
     return
 }
 
@@ -184,4 +190,24 @@ text gText_Bodegaburnout_CanYouDeliever{
 }
 text gText_Bodegaburnout_WentMissing{
     format("Can you help us find our {STR_VAR_1}? We sent them over to {STR_VAR_2} but they haven't returned...")
+}
+
+text gText_Bodegaburnout_OhRightIGave{
+    format("Huh? Oh right, I gave you the package already!")
+}
+
+// ***********************************************************************
+// Related NPCs
+// ***********************************************************************
+
+script Quest_Bodegaburnout_DeliveryA_Dialogue{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+    }else{
+        msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        removeitem(ITEM_BODEGA_DELIVERY_1,1)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BODEGABURNOUT,SUB_QUEST_1)
+    }
+    end
 }

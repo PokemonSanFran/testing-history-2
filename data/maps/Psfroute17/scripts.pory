@@ -16,3 +16,15 @@ script Psfroute17_EventScript_BlackbeltE{
     msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
         end
 }
+
+script Psfroute17_EventScript_DeliveryA{
+    trainerbattle_single(TRAINER_BODEGA_1,gText_ExpandedPlaceholder_Empty,gText_ExpandedPlaceholder_Empty)
+
+    returnqueststate(QUEST_BODEGABURNOUT)
+    if(var(VAR_RESULT) > QUEST_MENU_UNLOCK_QUEST){
+        goto(Quest_Bodegaburnout_DeliveryA_Dialogue)
+    }
+
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
+        end
+}
