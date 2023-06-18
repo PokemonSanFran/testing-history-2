@@ -2532,7 +2532,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_GIRL_2,
 	        OBJECT,
 	        sHauntABuilding_Sub,
-	        6
+	        QUEST_HAUNTABUILDING_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_RabiesOutbreak_Name,
@@ -2622,7 +2622,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_BOY_1,
 	        OBJECT,
 	        sRightingWrongs_Sub,
-	        4
+            QUEST_RIGHTINGWRONGS_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_EnterTheDragon_Name,
@@ -2641,8 +2641,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        gText_Quest_BreakTheInternet_Map,
 	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
 	        OBJECT,
-	        sBreakTheInternet_Sub,
-	        3
+	        QUEST_BREAKTHEINTERNET_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_ShutDownMedicineMan_Name,
@@ -2682,7 +2681,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_RICH_BOY,
 	        OBJECT,
 	        sImprovBattling_Sub,
-	        4
+            QUEST_IMPROVBATTLING_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_ImprovBattlingChampionship_Name,
@@ -2702,7 +2701,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_ARTIST,
 	        OBJECT,
 	        sInstallNatureProbes_Sub,
-	        3
+            QUEST_INSTALLNATUREPROBES_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_ManOfManyHats_Name,
@@ -2722,7 +2721,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_MAGMA_MEMBER_F,
 	        OBJECT,
             sRecruitLocalArtists_Sub,
-	        3
+            QUEST_RECRUITLOCALARTISTS_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_RestaurantExpansion1_Name,
@@ -2732,7 +2731,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_ROXANNE,
 	        OBJECT,
 	        sRestaurantExpansion1_Sub,
-	        4
+            QUEST_RESTAURANTEXPANSION1_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_RestaurantExpansion2_Name,
@@ -2742,7 +2741,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_ROXANNE,
 	        OBJECT,
 	        sRestaurantExpansion2_Sub,
-	        5
+            QUEST_RESTAURANTEXPANSION2_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_SieboldsTraining_Name,
@@ -2752,7 +2751,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_GLACIA,
 	        OBJECT,
 	        sSieboldsTraining_Sub,
-	        4
+            QUEST_SIEBOLDSTRAINING_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_CulturalPurity_Name,
@@ -2772,7 +2771,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_BRAWLY,
 	        OBJECT,
 	        sHybridCulture_Sub,
-	        3
+	        QUEST_HYBRIDCULTURE_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_AlohaFromAlola_Name,
@@ -2792,7 +2791,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_WATTSON,
 	        OBJECT,
 	        sBuildingAnExhibit_Sub,
-	        4
+	        QUEST_BUILDINGANEXHIBIT_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_UnknownMortyQuestA_Name,
@@ -2842,7 +2841,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_WINONA,
 	        OBJECT,
 	        sBiomeResearch_Sub,
-	        8
+	        QUEST_BIOMERESEARCH_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_BerrySustainability_Name,
@@ -2852,7 +2851,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_WINONA,
 	        OBJECT,
 	        sBerrySustainability_Sub,
-	        6
+	        QUEST_BERRYSUSTAINABILITY_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_TheOnlyHeadShopInTown_Name,
@@ -2902,7 +2901,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F,
 	        OBJECT,
 	        sContractorPorygon_Sub,
-	        3
+	        QUEST_CONTRACTORPORYGON_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_AngelDelivery_Name,
@@ -2922,7 +2921,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M,
 	        OBJECT,
 	        sGetTheBandBackTogether_Sub,
-	        5
+	        QUEST_GETTHEBANDBACKTOGETHER_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_FoodTruckBureacracy_Name,
@@ -2942,7 +2941,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_MAGMA_MEMBER_F,
 	        OBJECT,
 	        sDetectiveAriana_Sub,
-	        3
+	        QUEST_DETECTIVEARIANA_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_UnknownBruceLeeQuest_Name,
@@ -2962,7 +2961,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_HEX_MANIAC,
 	        OBJECT,
 	        sChallengeOfThe7Sisters_Sub,
-	        7
+	        QUEST_CHALLENGEOFTHE7SISTERS_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_Esports_Name,
@@ -2982,7 +2981,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_WOMAN_5,
 	        OBJECT,
 	        sCutePokemon_Sub,
-	        4
+	        QUEST_CUTEPOKEMON_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_WallaceArmy_Name,
@@ -2992,7 +2991,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_SAILOR,
 	        OBJECT,
 	        sWallaceArmy_Sub,
-	        5
+	        QUEST_WALLACEARMY_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_DexCompletion_Name,
@@ -3002,7 +3001,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_SCIENTIST_2,
 	        OBJECT,
 	        sDexCompletion_Sub,
-	        2
+            QUEST_DEXCOMPLETION_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_Temporaryshelter_Name,
@@ -3022,7 +3021,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_SCIENTIST_1,
 	        OBJECT,
 	        sKitchenVolunteering_Sub,
-	        5
+            QUEST_KITCHENVOLUNTEERING_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_ArtisanBalls1_Name,
@@ -3032,7 +3031,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
 	        OBJECT,
 	        sArtisanBalls_Sub,
-	        7
+            QUEST_ARTISANBALLS_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_ArtisanBalls2_Name,
@@ -3042,7 +3041,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F,
 	        OBJECT,
 	        sArtisanBalls2_Sub,
-	        3
+            QUEST_ARTISANBALLS2_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_ArtisanBalls3_Name,
@@ -3062,7 +3061,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_FAT_MAN,
 	        OBJECT,
 	        sShelterSwitcheroo_Sub,
-	        5
+            QUEST_SHELTERSWITCHEROO_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_ShelterTaxiSolution_Name,
@@ -3072,7 +3071,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_FAT_MAN,
 	        OBJECT,
 	        sShelterTaxiSolution_Sub,
-	        5
+            QUEST_SHELTERTAXISOLUTION_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_LastMusicVenueInSanFrancisco_Name,
@@ -3132,7 +3131,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_POKEFAN_M,
 	        OBJECT,
 	        sNeighborhoodCleanUp_Sub,
-	        5
+            QUEST_NEIGHBORHOODCLEANUP_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_NeighborhoodCleanUp2_Name,
@@ -3142,7 +3141,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_POKEFAN_M,
 	        OBJECT,
 	        sNeighborhoodCleanUp2_Sub,
-	        4
+            QUEST_NEIGHBORHOODCLEANUP2_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_NeighborhoodCleanUp3_Name,
@@ -3152,7 +3151,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_POKEFAN_M,
 	        OBJECT,
 	        sNeighborhoodCleanUp3_Sub,
-	        3
+            QUEST_NEIGHBORHOODCLEANUP3_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_NeighborhoodCleanUp4_Name,
@@ -3172,7 +3171,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_COOK,
 	        OBJECT,
 	        sRockCollector_Sub,
-	        10
+            QUEST_ROCKCOLLECTOR_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_Hang20_Name,
@@ -3212,7 +3211,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_CAMPER,
 	        OBJECT,
 	        sHiddenGrottoMapping_Sub,
-	        5
+            QUEST_HIDDENGROTTOMAPPING_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_HiddenGrottoMapping2_Name,
@@ -3222,7 +3221,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_TWIN,
 	        OBJECT,
 	        sHiddenGrottoMapping2_Sub,
-	        3
+            QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_UltraWormholeResearch_Name,
@@ -3232,7 +3231,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_OLD_MAN,
 	        OBJECT,
 	        sUltraWormholeResearch_Sub,
-	        10
+            QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_UnknownGovernmentSocialMediaQuest_Name,
@@ -3302,7 +3301,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_ARTIST,
 	        OBJECT,
 	        sWildfireRisk_Sub,
-	        3
+            QUEST_WILDFIRERISK_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_TheBoyWhoCriesWithWolves_Name,
@@ -3312,7 +3311,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_GENTLEMAN,
 	        OBJECT,
 	        sTheBoyWhoCriesWithWolves_Sub,
-	        9
+            QUEST_THEBOYWHOCRIESWITHWOLVES_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_UnknownTrolleyProblem_Name,
@@ -3342,7 +3341,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_TRUCK,
 	        OBJECT,
 	        sTaxicabturnaround_Sub,
-	        19
+            QUEST_TAXICABTURNAROUND_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_PersuasivePassenger_Name,
@@ -3352,7 +3351,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_GIRL_3,
 	        OBJECT,
 	        sPersuasivePassenger_Sub,
-	        3
+            QUEST_PERSUASIVEPASSENGER_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_BodegaBurnout_Name,
@@ -3362,7 +3361,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_TWIN,
 	        OBJECT,
 	        sBodegaBurnout_Sub,
-	        17
+	        QUEST_BODEGABURNOUT_SUB_COUNT 
 	),
 	side_quest(
 	        gText_Quest_WarehouseWarfare_Name,
@@ -3372,7 +3371,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_GENTLEMAN,
 	        OBJECT,
 	        sWarehouseWarfare_Sub,
-	        3
+            QUEST_WAREHOUSEWARFARE_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_RestoreToTheirFormerGlory_Name,
@@ -3382,7 +3381,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_WALLY,
 	        OBJECT,
 	        sRestoreToTheirFormerGlory_Sub,
-	        4
+            QUEST_RESTORETOTHEIRFORMERGLORY_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_HowDisappointing_Name,
@@ -3423,7 +3422,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_BLACK_BELT,
 	        OBJECT,
             sRestoreChinatown_Sub,
-	        7
+            QUEST_RESTORECHINATOWN_SUB_COUNT
 	),
 
 	side_quest(
@@ -3434,7 +3433,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_NOLAND,
 	        OBJECT,
             sRestoreMarin_Sub,
-	        2
+            QUEST_RESTOREMARIN_SUB_COUNT
 	),
 
 	side_quest(
@@ -3445,7 +3444,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_LUCY,
 	        OBJECT,
 	        sRestoreTreasureisland_Sub,
-	        4
+            QUEST_RESTORETREASUREISLAND_SUB_COUNT
 	),
 
 	side_quest(
@@ -3486,7 +3485,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_PHOEBE,
 	        OBJECT,
             sBecomeChampion_Sub,
-	        4
+            QUEST_BECOMECHAMPION
 	),
 	side_quest(
 	        gText_Quest_Dancebattle_Name,
