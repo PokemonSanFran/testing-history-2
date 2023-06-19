@@ -120,7 +120,7 @@ script Quest_Bodegaburnout_NotEnough_Dialogue{
 
 script Quest_Bodegaburnout_TakeMonMarkSubquest_Script{
     special(DeleteChosenPartyMon)
-    special(Quest_Bodegaburnout_MarkSubquestComplete)
+    special(Quest_Bodegaburnout_Catch_MarkSubquestComplete)
     call(Quest_Bodegaburnout_CheckReward_Script)
 
     specialvar(VAR_RESULT,Quest_Bodegaburnout_CheckReadyForNext)
@@ -207,7 +207,8 @@ script Quest_Bodegaburnout_DeliveryA_Dialogue{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
     }else{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
-        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+        special(Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem)
+        call(Quest_Bodegaburnout_CheckReward_Script)
     }
     end
 }
@@ -218,7 +219,8 @@ script Quest_Bodegaburnout_DeliveryB_Dialogue{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
     }else{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
-        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+        special(Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem)
+        call(Quest_Bodegaburnout_CheckReward_Script)
     }
     end
 }
@@ -229,7 +231,8 @@ script Quest_Bodegaburnout_DeliveryC_Dialogue{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
     }else{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
-        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+        special(Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem)
+        call(Quest_Bodegaburnout_CheckReward_Script)
     }
     end
 }
@@ -240,7 +243,8 @@ script Quest_Bodegaburnout_DeliveryD_Dialogue{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
     }else{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
-        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+        special(Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem)
+        call(Quest_Bodegaburnout_CheckReward_Script)
     }
     end
 }
@@ -251,7 +255,8 @@ script Quest_Bodegaburnout_DeliveryE_Dialogue{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
     }else{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
-        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+        special(Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem)
+        call(Quest_Bodegaburnout_CheckReward_Script)
     }
     end
 }
@@ -262,7 +267,8 @@ script Quest_Bodegaburnout_DeliveryF_Dialogue{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
     }else{
         msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_AUTOCLOSE)
-        special(Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem)
+        special(Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem)
+        call(Quest_Bodegaburnout_CheckReward_Script)
     }
     end
 }
@@ -271,7 +277,8 @@ script Quest_Bodegaburnout_RescueNPCAndCompleteSubquest_Script{
     fadescreen(FADE_TO_BLACK)
     removeobject(VAR_LAST_TALKED)
     fadescreen(FADE_FROM_BLACK)
-    special(Quest_Bodegaburnout_CompleteSubquest)
+    special(Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem)
+    call(Quest_Bodegaburnout_CheckReward_Script)
     return
 }
 

@@ -789,12 +789,14 @@ const u32 POKE_MART_MAP[QUEST_BODEGABURNOUT_SUB_COUNT][4]=
     {MAP_TENDERLOIN_POKEMONCENTER_1F,SUB_QUEST_4,DELIVER,MAP_ALCATRAZ},
     {MAP_PACIFICA_POKEMONCENTER_1F,SUB_QUEST_5,DELIVER,MAP_TENDERLOIN},
     {MAP_BERNALHEIGHTS_POKEMONCENTER_1F,SUB_QUEST_6,DELIVER,MAP_SOMA},
+
     {MAP_DOGPATCH_POKEMONCENTER_1F,SUB_QUEST_7,RESCUE,MAP_PSFROUTE13},
     {MAP_MISSION_POKEMONCENTER_1F,SUB_QUEST_8,RESCUE,MAP_PSFROUTE8},
     {MAP_CHINATOWN_POKEMONCENTER_1F,SUB_QUEST_9,RESCUE,MAP_CHINATOWN},
     {MAP_JAPANTOWN_POKEMONCENTER_1F,SUB_QUEST_10,RESCUE,MAP_PSFROUTE9},
     {MAP_CASTRO_POKEMONCENTER_1F,SUB_QUEST_11,RESCUE,MAP_PSFROUTE1},
     {MAP_PRESIDIO_POKEMONCENTER_1F,SUB_QUEST_12,RESCUE,MAP_PSFROUTE30},
+
     {MAP_OAKLAND_POKEMONCENTER_1F,SUB_QUEST_13,CATCH_STRONG,},
     {MAP_MARIN_POKEMONCENTER_1F,SUB_QUEST_14,CATCH_STRONG,},
     {MAP_HAIGHTASHBURY_POKEMONCENTER_1F,SUB_QUEST_15,CATCH_COLD,},
@@ -849,7 +851,7 @@ bool8 Quest_Bodegaburnout_IsSubquestComplete(void){
     }
 }
 
-void Quest_Bodegaburnout_MarkSubquestComplete(void){
+void Quest_Bodegaburnout_Catch_MarkSubquestComplete(void){
     u32 subquest = 0;
     bool8 foundTaxi = FALSE;
     u8 i;
@@ -1043,19 +1045,6 @@ bool8 Quest_Bodegaburnout_CheckLocationAndMatchItem(void){
     return CheckBagHasItem(bodegaPackage,1);
 }
 
-void Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem(void){
-    u8 i;
-    u16 bodegaPackage = ITEM_BODEGA_DELIVERY_FIRST;
-
-    for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
-        if (POKE_MART_MAP[i][3] == GetCurrentMap()) {
-            bodegaPackage += i;
-            RemoveBagItem(bodegaPackage,1);
-            QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_SET_COMPLETED, POKE_MART_MAP[i][1]);
-            break;
-        }
-    }
-}
 
 u8 Quest_Bodegaburnout_GetIndexFirstRescue(void){
     u8 i;
@@ -1106,13 +1095,21 @@ void Quest_Bodegaburnout_ClearRescueFlag(void){
     }
 }
 
-void Quest_Bodegaburnout_CompleteSubquest(void){
-    u8 i, j, k = 0;
+void Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem(void){
+    u8 i;
+    u16 bodegaPackage = ITEM_BODEGA_DELIVERY_FIRST;
 
-    for (j = 0; j < QUEST_BODEGABURNOUT_SUB_COUNT; j++) {
-        if (POKE_MART_MAP[j][3] == GetCurrentMap()) {
-            QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_SET_COMPLETED,POKE_MART_MAP[j][1]);
+    for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
+        if (POKE_MART_MAP[i][3] == GetCurrentMap()) {
+            QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_SET_COMPLETED, POKE_MART_MAP[i][1]);
+
+            if (POKE_MART_MAP[i][2] == DELIVER) {
+                bodegaPackage += i;
+                RemoveBagItem(bodegaPackage,1);
+            }
+
             break;
         }
+
     }
 }

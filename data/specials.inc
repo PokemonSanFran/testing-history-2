@@ -601,14 +601,13 @@ gSpecials::
     def_special Quest_Taxicabturnaround_CountRemainingSubquests
     def_special Quest_Taxicabturnaround_CheckReadyForNext
     def_special Quest_Bodegaburnout_IsSubquestComplete
-    def_special Quest_Bodegaburnout_MarkSubquestComplete
+    def_special Quest_Bodegaburnout_Catch_MarkSubquestComplete
+    def_special Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem
     def_special Quest_Bodegaburnout_CountRemainingSubquests
     def_special Quest_Bodegaburnout_CheckReadyForNext
     def_special Quest_Bodegaburnout_LoadRequestText
     def_special Quest_Bodegaburnout_GetQuestType
     def_special Quest_Bodegaburnout_CheckLocationAndMatchItem
     def_special Quest_Bodegaburnout_CheckRequiredPokemon
-    def_special Quest_Bodegaburnout_Delivery_SetSubquestRemoveItem
     def_special Quest_Bodegaburnout_CheckAndSetRescueFlag
     def_special Quest_Bodegaburnout_ClearRescueFlag
-    def_special Quest_Bodegaburnout_CompleteSubquest
