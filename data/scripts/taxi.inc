@@ -1,6 +1,7 @@
 Taxi_Interact_Dialogue::
 	lock
 	call_if_quest_reward QUEST_TAXICABTURNAROUND, Quest_Taxicabturnaround_Reward_Dialogue
+	call Quest_Taxicabturnaround_CheckNextStage_Script
 	bufferstring STR_VAR_1, Taxi_Interact_Dialogue_Text_0
 	msgbox gText_Taxi_ThanksForChoosing
 	closemessage

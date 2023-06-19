@@ -775,11 +775,10 @@ bool8 Quest_Taxicabturnaround_CheckReadyForNext(void){
 
 #define DELIVER 0
 #define RESCUE 1
-#define CATCH 2
-#define CATCH_STRONG 3
-#define CATCH_COLD  4
-#define CATCH_SMART 5
-#define CATCH_FAIRY 6
+#define CATCH_STRONG 2
+#define CATCH_COLD  3
+#define CATCH_SMART 4
+#define CATCH_FAIRY 5
 
 const u32 POKE_MART_MAP[QUEST_BODEGABURNOUT_SUB_COUNT][4]=
 {
@@ -889,21 +888,25 @@ bool8 Quest_Bodegaburnout_CheckReadyForNext(void){
             questType = POKE_MART_MAP[currentSubQuest][2];
 
             switch(questType){
-                case CATCH: completedCatch++;
-                           break;
+                case CATCH_STRONG:
+                case CATCH_COLD:
+                case CATCH_SMART:
+                case CATCH_FAIRY:
+                    completedCatch++;
+                    break;
                 case DELIVER: completedDeliver++;
-                          break;
+                  break;
                 case RESCUE: completedRescue++;
-                          break;
+                 break;
                 default: break;
             }
         }
     }
 
-    return (\
-            (completedDeliver > requiredComplete) &&\
-            (completedRescue > requiredComplete) &&\
-            (completedCatch > requiredComplete)\
+    return (
+            (completedDeliver > requiredComplete) &&
+            (completedRescue > requiredComplete) &&
+            (completedCatch > requiredComplete)
            );
 }
 
@@ -1018,11 +1021,14 @@ bool8 Quest_Bodegaburnout_CheckRequiredPokemon(void){
 
     switch(neededType){
         case CATCH_STRONG:
-            return Quest_Bodegaburnout_CheckStrongPokemon();
+            //return Quest_Bodegaburnout_CheckStrongPokemon();
+            return Quest_Bodegaburnout_CheckFairyPokemon();
         case CATCH_COLD:
-            return Quest_Bodegaburnout_CheckColdPokemon();
+            //return Quest_Bodegaburnout_CheckColdPokemon();
+            return Quest_Bodegaburnout_CheckFairyPokemon();
         case CATCH_SMART:
-            return Quest_Bodegaburnout_CheckSmartPokemon();
+            //return Quest_Bodegaburnout_CheckSmartPokemon();
+            return Quest_Bodegaburnout_CheckFairyPokemon();
         case CATCH_FAIRY:
             return Quest_Bodegaburnout_CheckFairyPokemon();
         default:
@@ -1101,15 +1107,13 @@ void Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem(void){
 
     for (i = 0; i < QUEST_BODEGABURNOUT_SUB_COUNT; i++) {
         if (POKE_MART_MAP[i][3] == GetCurrentMap()) {
-            QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_SET_COMPLETED, POKE_MART_MAP[i][1]);
+            QuestMenu_GetSetSubquestState(QUEST_BODEGABURNOUT, FLAG_SET_COMPLETED,POKE_MART_MAP[i][1]);
 
             if (POKE_MART_MAP[i][2] == DELIVER) {
                 bodegaPackage += i;
                 RemoveBagItem(bodegaPackage,1);
             }
-
             break;
         }
-
     }
 }

@@ -3,7 +3,7 @@ Psfroute18_MapScripts::
 
 
 Psfroute18_EventScript_DeliveryC::
-	trainerbattle_single TRAINER_BODEGA_2, gText_ExpandedPlaceholder_Empty, gText_ExpandedPlaceholder_Empty
+	trainerbattle_single TRAINER_BODEGA_3, gText_ExpandedPlaceholder_Empty, gText_ExpandedPlaceholder_Empty
 	returnqueststate QUEST_BODEGABURNOUT
 	compare VAR_RESULT, QUEST_MENU_UNLOCK_QUEST
 	goto_if_gt Psfroute18_EventScript_DeliveryC_2
@@ -12,6 +12,6 @@ Psfroute18_EventScript_DeliveryC_1:
 	end
 
 Psfroute18_EventScript_DeliveryC_2:
-	goto Quest_Bodegaburnout_DeliveryB_Dialogue
+	goto Quest_Bodegaburnout_DeliveryC_Dialogue
 	goto Psfroute18_EventScript_DeliveryC_1
 

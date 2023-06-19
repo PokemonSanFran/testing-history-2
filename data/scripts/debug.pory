@@ -60,36 +60,31 @@ script Debug_Weather{
 }
 script Debug_Script_1{
     questmenu(QUEST_MENU_SET_ACTIVE,QUEST_BODEGABURNOUT)
-    warpsilent(MAP_DOGPATCH_POKEMONCENTER_1F,0)
+warpsilent(MAP_CHINATOWN_POKEMONCENTER_1F,0)
     end
 }
 
 script Debug_Script_2{
-    warpsilent(MAP_PSFROUTE13,10,11)
+  warpsilent(MAP_CHINATOWN,0)
     end
 }
 
 script Debug_Script_3{
-    warpsilent(MAP_PSFROUTE18,0)
     end
 }
 
 script Debug_Script_4{
-    warpsilent(MAP_ALCATRAZ,0)
     end
 }
 
 script Debug_Script_5{
-    warpsilent(MAP_TENDERLOIN,0)
     end
 }
 
 script Debug_Script_6{
-    warpsilent(MAP_SOMA,0)
     end
 }
 script Debug_Script_7{
-    warpsilent(MAP_TWINPEAKS,0)
     end
 }
 script Debug_Script_8{
