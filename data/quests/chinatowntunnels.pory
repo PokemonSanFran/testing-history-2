@@ -164,6 +164,7 @@ script Quest_ChinatownTunnels_Treasure_Script{
     waitmovement(ELDEST_TUNNEL)
     removeobject(ELDEST_TUNNEL)
     completequest(QUEST_CHINATOWNTUNNELS)
+    call_if_quest_not_active(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_CountQuestsAndProgress_Script)
     release
     end
 }

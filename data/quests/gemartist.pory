@@ -80,6 +80,7 @@ script Quest_Gemartist_CraftFirstGem_Script{
     call(Quest_Gemartist_CreateGem_Cutscene)
     msgbox(gText_Gemartist_JustLikeTheAd, MSGBOX_NPC)
     completequest(QUEST_GEMARTIST)
+    call_if_quest_not_active(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_CountQuestsAndProgress_Script)
     end
 }
 

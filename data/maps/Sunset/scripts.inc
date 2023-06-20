@@ -9,6 +9,7 @@ Sunset_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Quest_StolenTrade_HideObjectA_Script
 	call Quest_CutePokemon_HideMelissaB_Script
 	call Quest_ButOnlyIn_HideGunda_Script
+	call Quest_Breaktheinternet_SunsetGuy_Visibility_Script
 	return
 
 Sunset_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -25,6 +26,12 @@ Waite_Interact_Script::
 	msgbox gText_Sunset_ICantBelieve, , SPEAKER_WAITE, TAIL_WHISPER
 	special GetNumberOfBadges
 	goto_if_set FLAG_BADGE05_GET, Quest_Foodtruckbureaucracy_Food_Interact_Script
+	end
+
+
+Sunset_Guy_Interact_Script::
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_NPC
+	goto_if_quest_active QUEST_BREAKTHEINTERNET, Quest_Breaktheinternet_Sunset_Script
 	end
 
 

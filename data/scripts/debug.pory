@@ -59,13 +59,13 @@ script Debug_Weather{
     return
 }
 script Debug_Script_1{
-    questmenu(QUEST_MENU_SET_ACTIVE,QUEST_BODEGABURNOUT)
-warpsilent(MAP_CHINATOWN_POKEMONCENTER_1F,0)
+    questmenu(QUEST_MENU_SET_ACTIVE,QUEST_BREAKTHEINTERNET)
+    warp(MAP_MARIN,0)
     end
 }
 
 script Debug_Script_2{
-  warpsilent(MAP_CHINATOWN,0)
+    warp(MAP_SUNSET,0)
     end
 }
 
@@ -78,6 +78,12 @@ script Debug_Script_4{
 }
 
 script Debug_Script_5{
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RABIESOUTBREAK)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_ICECREAMCRAFTING)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_VSDEOXYS)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHINATOWNTUNNELS)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_FRESHWATEREVOLUTION)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_GEMARTIST)
     end
 }
 

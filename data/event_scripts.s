@@ -1242,7 +1242,7 @@ Script_RemoveTint::
 .include "data/quests/betweenastoneandahardplace.inc"
 // .include "data/quests/rightingwrongs.inc"
 // .include "data/quests/enterthedragon.inc"
-// .include "data/quests/breaktheinternet.inc"
+.include "data/quests/breaktheinternet.inc"
 .include "data/quests/shutdownmedicineman.inc"
 .include "data/quests/buildingscope.inc"
 .include "data/quests/nogooddeed.inc"
@@ -1638,3 +1638,7 @@ Script_RemoveTint::
 	.include "data/maps/Treasureisland_Pokemoncenter_1F/scripts.inc"
 
 	.include "data/maps/Alameda_Pokemoncenter_1F/scripts.inc"
+
+	.include "data/maps/Southbay_Cafe/scripts.inc"
+
+	.include "data/maps/Fakenews_Warehouse/scripts.inc"

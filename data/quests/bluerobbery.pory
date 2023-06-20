@@ -10,11 +10,11 @@ const FLAG_HIDE_FAKEROBBER = FLAG_TEMP_2
 const FLAG_HIDE_ROBBER = FLAG_TEMP_1
 
 script Quest_BlueRobbery_HideObject_Script {
-  setflag(FLAG_HIDE_POLICE)
-  questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BLUEROBBERRY)
-  if (var (VAR_RESULT)) {
-    setflag(FLAG_HIDE_FAKEROBBER)
-  }
+    setflag(FLAG_HIDE_POLICE)
+        questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BLUEROBBERRY)
+        if (var (VAR_RESULT)) {
+            setflag(FLAG_HIDE_FAKEROBBER)
+        }
 }
 
 script Quest_BlueRobbery_Restaurant_HideObject_Script {
@@ -26,166 +26,167 @@ script Quest_BlueRobbery_Restaurant_HideObject_Script {
 }
 
 script Quest_BlueRobbery_FakeRobber_Event_Script {
-  lock
-  questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_BLUEROBBERRY)
-  if (var (VAR_RESULT)) {
-    call(Quest_BlueRobbery_FakeRobber_Dialogue)
-  }
+    lock
+        questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_BLUEROBBERRY)
+        if (var (VAR_RESULT)) {
+            call(Quest_BlueRobbery_FakeRobber_Dialogue)
+        }
 
-  questmenu(QUEST_MENU_CHECK_ACTIVE, QUEST_BLUEROBBERRY)
-  if (var (VAR_RESULT)) {
-    goto(Quest_BlueRobbery_PreBattle_Dialogue)
-  }
-  release
-  end
+    questmenu(QUEST_MENU_CHECK_ACTIVE, QUEST_BLUEROBBERRY)
+        if (var (VAR_RESULT)) {
+            goto(Quest_BlueRobbery_PreBattle_Dialogue)
+        }
+    release
+        end
 }
 
 script Quest_BlueRobbery_FakeRobber_Dialogue {
-  msgbox(gText_BlueRobbery_ILoveMyWobbuffet, MSGBOX_NPC,SPEAKER_DEFAULT)
-  applymovement(FAKEROBBER, BlueRobbery_FaceLove_Movement)
-  playse(SE_BIKE_HOP)
-  applymovement(WOBBUFFET, BlueRobbery_FaceHop_Movement)
-  waitse
-  waitmovement(0)
-  playmoncry(SPECIES_WOBBUFFET, CRY_MODE_ENCOUNTER)
-  msgbox(gText_BlueRobbery_Wobb, MSGBOX_AUTOCLOSE,SPEAKER_DEFAULT)
-  waitmoncry
-  release
-  end
+    msgbox(gText_BlueRobbery_ILoveMyWobbuffet, MSGBOX_NPC,SPEAKER_DEFAULT)
+        applymovement(FAKEROBBER, BlueRobbery_FaceLove_Movement)
+        playse(SE_BIKE_HOP)
+        applymovement(WOBBUFFET, BlueRobbery_FaceHop_Movement)
+        waitse
+        waitmovement(0)
+        playmoncry(SPECIES_WOBBUFFET, CRY_MODE_ENCOUNTER)
+        msgbox(gText_BlueRobbery_Wobb, MSGBOX_AUTOCLOSE,SPEAKER_DEFAULT)
+        waitmoncry
+        release
+        end
 }
 
 script Quest_BlueRobbery_PreBattle_Dialogue {
-  msgbox(gText_BlueRobbery_IThinkThat,,SPEAKER_ZOEY,TAIL_THOUGHT)
-  msgbox(gText_BlueRobbery_BoldOfYou, MSGBOX_DEFAULT,SPEAKER_ZOEY,,EMOTE_ANGRY)
-  
-  msgbox(gText_BlueRobbery_OhArceus, MSGBOX_NPC,,SPEAKER_DEFAULT)
-  msgbox(gText_BlueRobbery_HowCanYou, MSGBOX_NPC,,SPEAKER_ZOEY)
-  
-  msgbox(gText_BlueRobbery_ItsNot, MSGBOX_NPC,,SPEAKER_DEFAULT)
-  msgbox(gText_BlueRobbery_LikelyStory, MSGBOX_NPC,,SPEAKER_ZOEY)
-  
-  closemessage
+    msgbox(gText_BlueRobbery_IThinkThat,,SPEAKER_ZOEY,TAIL_THOUGHT)
+        msgbox(gText_BlueRobbery_BoldOfYou, MSGBOX_DEFAULT,SPEAKER_ZOEY,,EMOTE_ANGRY)
 
-  trainerbattle_no_intro(TRAINER_FAKEROBBER, gText_BlueRobbery_LeaveMeAlone)
-  goto(Quest_BlueRobbery_PostBattle_Script)
+        msgbox(gText_BlueRobbery_OhArceus, MSGBOX_NPC,,SPEAKER_DEFAULT)
+        msgbox(gText_BlueRobbery_HowCanYou, MSGBOX_NPC,,SPEAKER_ZOEY)
+
+        msgbox(gText_BlueRobbery_ItsNot, MSGBOX_NPC,,SPEAKER_DEFAULT)
+        msgbox(gText_BlueRobbery_LikelyStory, MSGBOX_NPC,,SPEAKER_ZOEY)
+
+        closemessage
+
+        trainerbattle_no_intro(TRAINER_FAKEROBBER, gText_BlueRobbery_LeaveMeAlone)
+        goto(Quest_BlueRobbery_PostBattle_Script)
 }
 
 script Quest_BlueRobbery_PostBattle_Script {
-  lock
+    lock
 
-  playse(SE_BALL_OPEN)
-  waitse
-  setflag(FLAG_TEMP_2)
-  removeobject(WOBBUFFET)
+        playse(SE_BALL_OPEN)
+        waitse
+        setflag(FLAG_TEMP_2)
+        removeobject(WOBBUFFET)
 
-  clearflag(FLAG_TEMP_1)
-  msgbox(gText_BlueRobbery_AreYouHappy, MSGBOX_NPC,,SPEAKER_DEFAULT)
+        clearflag(FLAG_TEMP_1)
+        msgbox(gText_BlueRobbery_AreYouHappy, MSGBOX_NPC,,SPEAKER_DEFAULT)
 
-  msgbox(gText_BlueRobbery_IDontUnderstand, MSGBOX_NPC,,SPEAKER_ZOEY)
-  
-  addobject(POLICE)
-  applymovement(PLAYER, BlueRobbery_GetOutOfWay_Movement)
-  applymovement(POLICE, BlueRobbery_WalkToArrest_Movement)
-  waitmovement(0)
-  fadescreen(FADE_TO_BLACK)
-  removeobject(POLICE)
-  removeobject(FAKEROBBER)
-  removeobject(WOBBUFFET)
-  fadescreen(FADE_FROM_BLACK)
-  completequest(QUEST_BLUEROBBERRY)
-  release
-  end
+        msgbox(gText_BlueRobbery_IDontUnderstand, MSGBOX_NPC,,SPEAKER_ZOEY)
+
+        addobject(POLICE)
+        applymovement(PLAYER, BlueRobbery_GetOutOfWay_Movement)
+        applymovement(POLICE, BlueRobbery_WalkToArrest_Movement)
+        waitmovement(0)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(POLICE)
+        removeobject(FAKEROBBER)
+        removeobject(WOBBUFFET)
+        fadescreen(FADE_FROM_BLACK)
+        completequest(QUEST_BLUEROBBERRY)
+        call_if_quest_not_active(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_CountQuestsAndProgress_Script)
+        release
+        end
 }
 
 script Quest_BlueRobbery_DinnerBrag_Dialogue {
-  lock
-  applymovement(ROBBER, Common_Movement_WalkInPlaceRight)
-  waitmovement(0)
-  msgbox(gText_BlueRobbery_SoTwitterGot)
+    lock
+        applymovement(ROBBER, Common_Movement_WalkInPlaceRight)
+        waitmovement(0)
+        msgbox(gText_BlueRobbery_SoTwitterGot)
 
-  applymovement(FRIEND, Common_Movement_WalkInPlaceLeft)
-  waitmovement(0)
-  msgbox(gText_BlueRobbery_YeahAndThen)
+        applymovement(FRIEND, Common_Movement_WalkInPlaceLeft)
+        waitmovement(0)
+        msgbox(gText_BlueRobbery_YeahAndThen)
 
-  applymovement(ROBBER, Common_Movement_WalkInPlaceRight)
-  waitmovement(0)
-  msgbox(gText_BlueRobbery_InsaneSoTheHeat)
+        applymovement(ROBBER, Common_Movement_WalkInPlaceRight)
+        waitmovement(0)
+        msgbox(gText_BlueRobbery_InsaneSoTheHeat)
 
-  applymovement(FRIEND, Common_Movement_WalkInPlaceLeft)
-  waitmovement(0)
-  msgbox(gText_BlueRobbery_OffScotFree)
-  closemessage
-  release
-  end
+        applymovement(FRIEND, Common_Movement_WalkInPlaceLeft)
+        waitmovement(0)
+        msgbox(gText_BlueRobbery_OffScotFree)
+        closemessage
+        release
+        end
 }
 
 text gText_BlueRobbery_ILoveMyWobbuffet {
-  format("I love my Wobbuffet so much!")
+    format("I love my Wobbuffet so much!")
 }
 text gText_BlueRobbery_Wobb {
-  format("Wobb!")
+    format("Wobb!")
 }
 text gText_BlueRobbery_IThinkThat {
-  format("(I think thats the person from Twitter! The thief!)")
+    format("(I think thats the person from Twitter! The thief!)")
 }
 text gText_BlueRobbery_BoldOfYou {
-  format("Bold of you to just be out and about. Are you serious?")
+    format("Bold of you to just be out and about. Are you serious?")
 }
 text gText_BlueRobbery_OhArceus {
-  format("Oh Arceus, another one? I'm telling you, I didn't steal shit!")
+    format("Oh Arceus, another one? I'm telling you, I didn't steal shit!")
 }
 text gText_BlueRobbery_HowCanYou {
-  format("How can you say that? There's video!")
+    format("How can you say that? There's video!")
 }
 text gText_BlueRobbery_ItsNot {
-  format("It's not me! I don't even go to Tenderloin!")
+    format("It's not me! I don't even go to Tenderloin!")
 }
 text gText_BlueRobbery_LikelyStory {
-  format("Likely story. I hate when people think they can do whatever they want.")
+    format("Likely story. I hate when people think they can do whatever they want.")
 }
 text gText_BlueRobbery_LeaveMeAlone {
-  format("Leave me alone!")
+    format("Leave me alone!")
 }
 text gText_BlueRobbery_AreYouHappy {
-  format("Are you happy now? Attacking innocent people because Twitter said so?")
+    format("Are you happy now? Attacking innocent people because Twitter said so?")
 }
 text gText_BlueRobbery_IDontUnderstand {
-  format("I don't understand why you thought this would work for you!")
+    format("I don't understand why you thought this would work for you!")
 }
 text gText_BlueRobbery_SoTwitterGot {
-  format("So Twitter got the wrong person? Started a whole campaign around the wrong kid?")
+    format("So Twitter got the wrong person? Started a whole campaign around the wrong kid?")
 }
 text gText_BlueRobbery_YeahAndThen {
-  format("Yeah! And then she got arrested everything! They were celebrating saying 'We got the Tenderloin theif!'")
+    format("Yeah! And then she got arrested everything! They were celebrating saying 'We got the Tenderloin theif!'")
 }
 text gText_BlueRobbery_InsaneSoTheHeat {
-  format("Insane. So the heat is just off you? That's it?")
+    format("Insane. So the heat is just off you? That's it?")
 }
 text gText_BlueRobbery_OffScotFree {
-  format("Off scot free! Its like an angel helped me out.")
+    format("Off scot free! Its like an angel helped me out.")
 }
 
 movement BlueRobbery_FaceLove_Movement {
-  face_right
-  emote_heart
-  step_end
+    face_right
+        emote_heart
+        step_end
 }
 movement BlueRobbery_FaceHop_Movement {
-  face_left
-  jump_in_place_left
-  step_end
+    face_left
+        jump_in_place_left
+        step_end
 }
 movement BlueRobbery_GetOutOfWay_Movement {
-  walk_up
-  face_down
-  step_end
+    walk_up
+        face_down
+        step_end
 }
 movement BlueRobbery_GetOutOfWayLeft_Movement {
-  walk_right
-  walk_up
-  step_end
+    walk_right
+        walk_up
+        step_end
 }
 movement BlueRobbery_WalkToArrest_Movement {
-  walk_right * 8
-  step_end
+    walk_right * 8
+        step_end
 }

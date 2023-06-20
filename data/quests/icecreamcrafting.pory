@@ -70,6 +70,7 @@ script Quest_IceCreamCrafting_TakeBerries_Dialogue{
         waitmovement(CASHIER)
         release
         completequest(QUEST_ICECREAMCRAFTING)
+        call_if_quest_not_active(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_CountQuestsAndProgress_Script)
         end
 }
 

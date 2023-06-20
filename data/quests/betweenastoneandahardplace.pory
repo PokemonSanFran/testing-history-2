@@ -58,6 +58,7 @@ script Quest_BetweenAStoneAndAHardPlace_Reward_Dialogue{
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_AhhPleaseDont,MSGBOX_NPC,SPEAKER_TROLLEY_GUY)
     msgbox(gText_Quest_BetweenAStoneAndAHardPlace_Yeah,MSGBOX_NPC,SPEAKER_ZOEY)
     completequest(QUEST_BETWEENASTONEANDAHARD)
+    call_if_quest_not_active(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_CountQuestsAndProgress_Script)
     release
     end
 }

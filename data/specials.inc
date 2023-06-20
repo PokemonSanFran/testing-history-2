@@ -611,3 +611,5 @@ gSpecials::
     def_special Quest_Bodegaburnout_CheckRequiredPokemon
     def_special Quest_Bodegaburnout_CheckAndSetRescueFlag
     def_special Quest_Bodegaburnout_ClearRescueFlag
+    def_special Quest_Breaktheinternet_Count_CompletedSocialMedia
+    def_special Quest_Breaktheinternet_CountRemainingSubquests

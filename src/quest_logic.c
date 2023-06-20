@@ -1117,3 +1117,25 @@ void Quest_Bodegaburnout_DeliveryRescue_MarkSubquestCompleteAndRemoveItem(void){
         }
     }
 }
+
+// ***********************************************************************
+// Quest: Break The Internet
+// ***********************************************************************
+
+u8 Quest_Breaktheinternet_Count_CompletedSocialMedia(void){
+    u8 i, numCompletedQuests = 0;
+    u16 relevantQuest = SOCIAL_MEDIA_QUESTS_START;
+
+    for (i = 0; i < COUNT_SOCIAL_MEDIA_QUESTS;i++){
+        if (QuestMenu_GetSetQuestState(relevantQuest,FLAG_GET_COMPLETED)){
+            numCompletedQuests++;
+        }
+        relevantQuest++;
+    }
+    return numCompletedQuests;
+}
+
+u16 Quest_Breaktheinternet_CountRemainingSubquests(void)
+{
+    return Quest_Generic_CountRemainingSubquests(QUEST_BREAKTHEINTERNET,QUEST_BREAKTHEINTERNET_SUB_COUNT);
+}

@@ -1,0 +1,166 @@
+//gText_Breaktheinternet_
+//Quest_Breaktheinternet_
+
+const FLAG_HIDE_ISMAIL = FLAG_TEMP_1
+const FLAG_HIDE_MARIN_GIRL = FLAG_TEMP_7
+const FLAG_HIDE_SUNSET_GUY = FLAG_TEMP_7
+const FLAG_HIDE_GRUNTS = FLAG_TEMP_2
+const FLAG_HIDE_GRUNTS_WAVE_2 = FLAG_TEMP_3
+const FLAG_HIDE_FAKE_NEWS_CEO = FLAG_TEMP_4
+
+script Quest_Breaktheinternet_CountQuestsAndProgress_Script{
+    specialvar(VAR_RESULT,Quest_Breaktheinternet_Count_CompletedSocialMedia) 
+        if (var(VAR_RESULT) > 5){
+            call(Quest_Breaktheinternet_CallPlayer_Dialogue)
+        }
+    return
+}
+
+script Quest_Breaktheinternet_CallPlayer_Dialogue{
+    call(Common_EventScript_PhoneRinging)
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ISMAIL,,,PHONE_ON)
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ZOEY,,,PHONE_ON)
+        closemessage
+        release
+        end
+}
+
+script Quest_Breaktheinternet_Ismail_Visibility_Script{
+    specialvar(VAR_0x8003,Quest_Breaktheinternet_Count_CompletedSocialMedia) 
+        specialvar(VAR_0x8004,Quest_Breaktheinternet_CountRemainingSubquests)
+
+        if ((var(VAR_0x8003) < 5) || (var(VAR_0x8004) < 2)){
+            setflag(FLAG_HIDE_ISMAIL)
+        }
+    return
+}
+
+script Quest_Breaktheinternet_Ismail_Event_Script{
+    goto_if_quest_active(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_DescribeQuest_Script)
+        goto(Quest_Breaktheinternet_StartQuest_Script)
+}
+
+script Quest_Breaktheinternet_StartQuest_Script{
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ISMAIL)
+        startquest(QUEST_BREAKTHEINTERNET)
+        msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ISMAIL)
+        release
+        end
+}
+
+script Quest_Breaktheinternet_DescribeQuest_Script{
+    specialvar(VAR_0x8004,Quest_Breaktheinternet_CountRemainingSubquests)
+
+        if ((var(VAR_0x8004) == QUEST_BREAKTHEINTERNET_SUB_COUNT)){
+            goto(Quest_Breaktheinternet_Describe_FirstQuest_Dialogue)
+        }else{
+            goto(Quest_Breaktheinternet_Describe_SecondQuest_Dialogue)
+        }
+}
+
+script Quest_Breaktheinternet_Describe_FirstQuest_Dialogue{
+    msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ISMAIL)
+}
+
+script Quest_Breaktheinternet_Describe_SecondQuest_Dialogue{
+    msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ISMAIL)
+}
+
+script Quest_Breaktheinternet_Marin_Script{
+    specialvar(VAR_RESULT,Quest_Breaktheinternet_CountRemainingSubquests)
+        if (var(VAR_RESULT) != 3){
+            return
+        }
+    msgbox(gText_ExpandedPlaceholder_Empty)
+        trainerbattle_single(TRAINER_FAKENEWS1,gText_ExpandedPlaceholder_Empty,gText_ExpandedPlaceholder_Empty,Quest_Breaktheinternet_Marin_PostBattle_Script)
+}
+
+script Quest_Breaktheinternet_Marin_PostBattle_Script{
+    lock
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BREAKTHEINTERNET,SUB_QUEST_1)
+        msgbox(gText_ExpandedPlaceholder_Empty)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        fadescreen(FADE_FROM_BLACK)
+        goto(Quest_Breaktheinternet_CallAfterFirst_Dialogue)
+}
+
+script Quest_Breaktheinternet_Sunset_Script{
+    specialvar(VAR_RESULT,Quest_Breaktheinternet_CountRemainingSubquests)
+        if (var(VAR_RESULT) != 2){
+            return
+        }
+    trainerbattle_single(TRAINER_FAKENEWS2,gText_ExpandedPlaceholder_Empty,gText_ExpandedPlaceholder_Empty,Quest_Breaktheinternet_Sunset_PostBattle_Script)
+}
+
+script Quest_Breaktheinternet_Sunset_PostBattle_Script{
+    lock
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BREAKTHEINTERNET,SUB_QUEST_2)
+        msgbox(gText_ExpandedPlaceholder_Empty)
+        fadescreen(FADE_TO_BLACK)
+        removeobject(VAR_LAST_TALKED)
+        fadescreen(FADE_FROM_BLACK)
+        goto(Quest_Breaktheinternet_CallAfterSecond_Dialogue)
+}
+
+script Quest_Breaktheinternet_MarinGirl_Visibility_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BREAKTHEINTERNET,SUB_QUEST_1)
+
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_MARIN_GIRL)
+        }
+
+    return
+}
+
+script Quest_Breaktheinternet_SunsetGuy_Visibility_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BREAKTHEINTERNET,SUB_QUEST_2)
+
+        if (var(VAR_RESULT)){
+            setflag(FLAG_HIDE_SUNSET_GUY)
+        }
+
+    return
+}
+
+script Quest_Breaktheinternet_CallAfterFirst_Dialogue{
+    lock
+    call(Common_EventScript_PhoneRinging)
+
+    msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ISMAIL,,,PHONE_ON)
+    msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ZOEY,,,PHONE_ON)
+    msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ISMAIL,,,PHONE_ON)
+    closemessage 
+    playse(SE_POKENAV_HANG_UP)
+    release
+    end
+}
+
+script Quest_Breaktheinternet_CallAfterSecond_Dialogue{
+    lock
+    call(Common_EventScript_PhoneRinging)
+
+    msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ISMAIL,,,PHONE_ON)
+    msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ZOEY,,,PHONE_ON)
+    msgbox(gText_ExpandedPlaceholder_Empty,,SPEAKER_ISMAIL,,,PHONE_ON)
+    closemessage 
+    playse(SE_POKENAV_HANG_UP)
+    release
+    end
+}
+
+script Quest_Breaktheinternet_Warehouse_Grunts_Visibility_Script{
+    setflag(FLAG_HIDE_GRUNTS)
+}
+
+script Quest_Breaktheinternet_Warehouse_Grunts2_Visibility_Script{
+    setflag(FLAG_HIDE_GRUNTS_WAVE_2)
+}
+
+script Quest_Breaktheinternet_Warehouse_Ismail_Visibility_Script{
+    setflag(FLAG_HIDE_ISMAIL)
+}
+
+script Quest_Breaktheinternet_Warehouse_CEO_Visibility_Script{
+    setflag(FLAG_HIDE_FAKE_NEWS_CEO)
+}

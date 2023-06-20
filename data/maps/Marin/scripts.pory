@@ -8,15 +8,16 @@ const FLAG_UNLOCK_DOOR = FLAG_TEMP_2
 
 mapscripts Marin_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-            call(Quest_Restoremarin_HideLenora_Script)
-            call(Quest_Restoremarin_MoveLenora_Script)
-            call(Marin_HideBianca_Script)
-            call(Marin_HideLiidia_Script)
-            call(Quest_BerrySustaiability_HideLeader_Script)
-            call(Quest_GetTheBand_HideBikerD_Script)
-            call(IGuessWeShouldBeNiceNow_HidePopup_Script)
-            call(LetsGrabLunch_CheckRestorationProgress_Script)
-            call(Quest_Manofmanyhats_CheckDoorLock_Script)
+        call(Quest_Restoremarin_HideLenora_Script)
+        call(Quest_Restoremarin_MoveLenora_Script)
+        call(Marin_HideBianca_Script)
+        call(Marin_HideLiidia_Script)
+        call(Quest_BerrySustaiability_HideLeader_Script)
+        call(Quest_GetTheBand_HideBikerD_Script)
+        call(IGuessWeShouldBeNiceNow_HidePopup_Script)
+        call(LetsGrabLunch_CheckRestorationProgress_Script)
+        call(Quest_Manofmanyhats_CheckDoorLock_Script)
+        call(Quest_Breaktheinternet_MarinGirl_Visibility_Script)
     }
 
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -120,6 +121,12 @@ script Marin_Lenora_PreQuest_Dialogue{
 script Marin_Lenora_Dialogue{
     msgbox(gText_Marin_IUsedToBe,MSGBOX_NPC)
         end
+}
+
+script Marin_Girl_Interact_Script{
+    msgbox(gText_ExpandedPlaceholder_Empty,MSGBOX_NPC)
+    goto_if_quest_active(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_Marin_Script)
+    end
 }
 
 text gText_Marin_PlaceholderBiker{

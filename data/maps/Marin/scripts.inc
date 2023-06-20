@@ -14,6 +14,7 @@ Marin_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call IGuessWeShouldBeNiceNow_HidePopup_Script
 	call LetsGrabLunch_CheckRestorationProgress_Script
 	call Quest_Manofmanyhats_CheckDoorLock_Script
+	call Quest_Breaktheinternet_MarinGirl_Visibility_Script
 	return
 
 Marin_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -141,6 +142,12 @@ Marin_Lenora_PreQuest_Dialogue_1:
 
 Marin_Lenora_Dialogue::
 	msgbox gText_Marin_IUsedToBe, MSGBOX_NPC
+	end
+
+
+Marin_Girl_Interact_Script::
+	msgbox gText_ExpandedPlaceholder_Empty, MSGBOX_NPC
+	goto_if_quest_active QUEST_BREAKTHEINTERNET, Quest_Breaktheinternet_Marin_Script
 	end
 
 

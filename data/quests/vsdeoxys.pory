@@ -42,6 +42,7 @@ script Quest_VSDeoxys_CoreEnounter_Script
 script Quest_VSDeoxys_Victory_Script{
     removeobject(MINIOR)
     completequest(QUEST_VSDEOXYS)
+    call_if_quest_not_active(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_CountQuestsAndProgress_Script)
 }
 
 text gText_Quest_VSDeoxys_Cry

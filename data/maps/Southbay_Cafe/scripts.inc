@@ -1,0 +1,8 @@
+Southbay_Cafe_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Southbay_Cafe_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	.byte 0
+
+Southbay_Cafe_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Breaktheinternet_Ismail_Visibility_Script
+	return
+

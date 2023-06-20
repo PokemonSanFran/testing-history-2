@@ -911,15 +911,15 @@
 #define TRAINER_BODEGA_1					162
 #define TRAINER_BODEGA_2					163
 #define TRAINER_BODEGA_3					164
-#define TRAINER_BODEGA_4					165
-#define TRAINER_BODEGA_5					166
-#define TRAINER_BODEGA_6					167
-#define TRAINER_BODEGA_7					168
-#define TRAINER_BODEGA_8					169
-#define TRAINER_BODEGA_9					170
-#define TRAINER_BODEGA_10					171
-#define TRAINER_BODEGA_11					172
-#define TRAINER_BODEGA_12					173
+#define TRAINER_FAKENEWS1                   165
+#define TRAINER_FAKENEWS2                   166
+//#define TRAINER_167
+//#define TRAINER_168
+//#define TRAINER_169
+//#define TRAINER_170
+//#define TRAINER_171
+//#define TRAINER_172
+//#define TRAINER_173
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

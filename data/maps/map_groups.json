@@ -231,7 +231,8 @@
   "gMapGroup_IndoorSouthbay": [
     "Southbay_Compound_1F",
     "Southbay_Compound_2F",
-    "Southbay_PokemonCenter_1F"
+    "Southbay_PokemonCenter_1F",
+    "Southbay_Cafe"
   ],
   "gMapGroup_IndoorSOMA": [
     "SOMA_smashgg",
@@ -271,7 +272,8 @@
     "Presidio_Compound_1F",
     "Presidio_Mansion",
     "Presidio_Improv",
-    "Presidio_Squattersmansion"
+    "Presidio_Squattersmansion",
+    "Fakenews_Warehouse"
   ],
   "gMapGroup_IndoorHaightashbury": [
     "Haightashbury_Pokemoncenter_1F",

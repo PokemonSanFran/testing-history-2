@@ -178,6 +178,7 @@
 #define MAP_SOUTHBAY_COMPOUND_1F       (0 | (3 << 8))
 #define MAP_SOUTHBAY_COMPOUND_2F       (1 | (3 << 8))
 #define MAP_SOUTHBAY_POKEMON_CENTER_1F (2 | (3 << 8))
+#define MAP_SOUTHBAY_CAFE              (3 | (3 << 8))
 
 // gMapGroup_IndoorSOMA
 #define MAP_SOMA_SMASHGG          (0 | (4 << 8))
@@ -218,6 +219,7 @@
 #define MAP_PRESIDIO_MANSION          (3 | (9 << 8))
 #define MAP_PRESIDIO_IMPROV           (4 | (9 << 8))
 #define MAP_PRESIDIO_SQUATTERSMANSION (5 | (9 << 8))
+#define MAP_FAKENEWS_WAREHOUSE        (6 | (9 << 8))
 
 // gMapGroup_IndoorHaightashbury
 #define MAP_HAIGHTASHBURY_POKEMONCENTER_1F (0 | (10 << 8))

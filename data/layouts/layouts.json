@@ -5265,7 +5265,7 @@
       "id": "LAYOUT_SOMA_NEWSPAPER",
       "name": "SOMA_Newspaper_Layout",
       "width": 16,
-      "height": 10,
+      "height": 17,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/SOMA_Newspaper/border.bin",
@@ -6800,6 +6800,26 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/Alameda_Pokemoncenter_1F/border.bin",
       "blockdata_filepath": "data/layouts/Alameda_Pokemoncenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOUTHBAY_CAFE",
+      "name": "Southbay_Cafe_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Southbay_Cafe/border.bin",
+      "blockdata_filepath": "data/layouts/Southbay_Cafe/map.bin"
+    },
+    {
+      "id": "LAYOUT_FAKENEWS_WAREHOUSE",
+      "name": "Fakenews_Warehouse_Layout",
+      "width": 33,
+      "height": 12,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Fakenews_Warehouse/border.bin",
+      "blockdata_filepath": "data/layouts/Fakenews_Warehouse/map.bin"
     }
   ]
 }
