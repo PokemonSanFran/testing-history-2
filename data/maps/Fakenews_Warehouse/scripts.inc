@@ -1,2 +1,11 @@
 Fakenews_Warehouse_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Fakenews_Warehouse_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Fakenews_Warehouse_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call_if_quest_complete QUEST_BREAKTHEINTERNET, Quest_Breaktheinternet_Warehouse_Grunts_Visibility_Script
+	call Quest_Breaktheinternet_Warehouse_Grunts2_Visibility_Script
+	call Quest_Breaktheinternet_Warehouse_Ismail_Visibility_Script
+	call Quest_Breaktheinternet_Warehouse_CEO_Visibility_Script
+	return
+

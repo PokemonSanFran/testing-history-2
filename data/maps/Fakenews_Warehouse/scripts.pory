@@ -1,6 +1,8 @@
-script Fakenews_Warehouse_MapScripts{
-    call_if_quest_complete(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_Warehouse_Grunts_Visibility_Script)
-    call(Quest_Breaktheinternet_Warehouse_Grunts2_Visibility_Script)
-    call(Quest_Breaktheinternet_Warehouse_Ismail_Visibility_Script)
-    call(Quest_Breaktheinternet_Warehouse_CEO_Visibility_Script)
+mapscripts Fakenews_Warehouse_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION {
+        call_if_quest_complete(QUEST_BREAKTHEINTERNET,Quest_Breaktheinternet_Warehouse_Grunts_Visibility_Script)
+        call(Quest_Breaktheinternet_Warehouse_Grunts2_Visibility_Script)
+        call(Quest_Breaktheinternet_Warehouse_Ismail_Visibility_Script)
+        call(Quest_Breaktheinternet_Warehouse_CEO_Visibility_Script)
+    }
 }

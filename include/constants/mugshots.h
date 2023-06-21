@@ -232,5 +232,6 @@
 #define SPEAKER_NANCY                   199
 #define SPEAKER_PANNEN                  200
 #define SPEAKER_MADRONE                 201
+#define SPEAKER_TWITTER_CEO             202
 
 #endif

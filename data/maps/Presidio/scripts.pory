@@ -7,6 +7,7 @@ mapscripts Presidio_MapScripts {
         call(YouLookTired_BlockMansionAccess_Script)
         call(Quest_BuildingScope_MoveEmployee_Script)
         call(Quest_NoGoodDeed_HideEmployee_Script)
+        call(Quest_Breaktheinternet_WarehouseGuard_Script)
     }
 }
 

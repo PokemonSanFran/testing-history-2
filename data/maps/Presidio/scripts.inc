@@ -7,6 +7,7 @@ Presidio_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call YouLookTired_BlockMansionAccess_Script
 	call Quest_BuildingScope_MoveEmployee_Script
 	call Quest_NoGoodDeed_HideEmployee_Script
+	call Quest_Breaktheinternet_WarehouseGuard_Script
 	return
 
 Presidio_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
