@@ -101,8 +101,9 @@ script Quest_Breaktheinternet_Sunset_Script{
         if (var(VAR_RESULT) != 2){
             return
         }
-    msgbox(gText_Breaktheinternet_TwitterWhatAre)
+    msgbox(gText_Breaktheinternet_HaveYouSeen)
     trainerbattle_no_intro(TRAINER_TWITTER2,gText_Breaktheinternet_ImSoDead)
+    goto(Quest_Breaktheinternet_Sunset_PostBattle_Script)
 }
 
 script Quest_Breaktheinternet_Sunset_PostBattle_Script{
@@ -165,7 +166,7 @@ script Quest_Breaktheinternet_Note_Dialogue{
     questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_BREAKTHEINTERNET)
     if(var(VAR_RESULT)){
         lock
-        msgbox(gText_Breaktheinternet_ThereIsANote,,MSGBOX_AUTOCLOSE)
+        msgbox(gText_Breaktheinternet_ThereIsANote,MSGBOX_AUTOCLOSE)
     }
     release
     end
@@ -286,8 +287,8 @@ script Quest_Breaktheinternet_CompleteWave2_Script{
     lock
     msgbox(gText_Breaktheinternet_OurBossIsMore)
     fadescreen(FADE_TO_BLACK)
-    removeobject(WAREHOUSE_GRUNT4)
-    removeobject(WAREHOUSE_GRUNT5)
+    removeobject(7)
+    removeobject(2)
     fadescreen(FADE_FROM_BLACK)
     release
     end
@@ -494,6 +495,10 @@ text gText_Breaktheinternet_YouShouldLay{
     format("You should lay low. Seriously.")
 }
 
+text gText_Breaktheinternet_HaveYouSeen{
+    format("Why would we stop? Have you seen the stock prices?")
+}
+
 text gText_Breaktheinternet_ImSoDead{
     format("I'm so dead...")
 }
@@ -633,3 +638,4 @@ text gText_Breaktheinternet_PlayerTook{
 text gText_Breaktheinternet_ThereIsANote{
     format("There is a note on the chair. The handwriting is atrocious.\pPresidio.Warehouse.Twitter.")
 }
+
