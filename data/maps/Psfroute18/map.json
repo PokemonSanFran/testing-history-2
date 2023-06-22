@@ -2,7 +2,7 @@
   "id": "MAP_PSFROUTE18",
   "name": "Psfroute18",
   "layout": "LAYOUT_PSFROUTE18",
-  "music": "MUS_ROUTE111",
+  "music": "MUS_ROUTE113",
   "region_map_section": "MAPSEC_PSFROUTE18",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

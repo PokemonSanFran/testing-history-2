@@ -1028,7 +1028,7 @@ static void PCTurnOnEffect(struct Task *task)
     if (task->tTimer == 6)
     {
         task->tTimer = 0;
-        
+
         // Get where the PC should be, depending on where the player is looking.
         playerDirection = GetPlayerFacingDirection();
         switch (playerDirection)
@@ -1050,7 +1050,7 @@ static void PCTurnOnEffect(struct Task *task)
         // Update map
         PCTurnOnEffect_SetMetatile(task->tIsScreenOn, dx, dy);
         DrawWholeMapView();
-        
+
         // Screen flickers 5 times. Odd number and starting with the
         // screen off means the animation ends with the screen on.
         task->tIsScreenOn ^= 1;
@@ -1483,7 +1483,7 @@ bool8 IsStarterInParty(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == starter)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == starter)
             return TRUE;
     }
     return FALSE;
@@ -1576,8 +1576,8 @@ u8 GetLeadMonIndex(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_EGG
-         && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_NONE)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+         && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE)
             return i;
     }
     return 0;
@@ -1585,7 +1585,7 @@ u8 GetLeadMonIndex(void)
 
 u16 ScriptGetPartyMonSpecies(void)
 {
-    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES2, NULL);
+    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES_OR_EGG, NULL);
 }
 
 // Removed for Emerald
@@ -4430,7 +4430,7 @@ bool32 GetMegaEvolutionPartyMember(u16 species, int PartySlot, int IsEvolution)
     {
         if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE )
         {
-            if (gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION)
+            if (gEvolutionTable[species][i].method == SPECIES_FLAG_MEGA_EVOLUTION)
             {
                 VarSet(VAR_TEMP_1,PartySlot);
                 VarSet(VAR_TEMP_2,IsEvolution);
