@@ -94,6 +94,8 @@ script Quest_Rightingwrongs_PostBattle_Script{
     msgbox(gText_Rightingwrongs_NobodyCanProve)
     closemessage
     applymovement(BERKELEY_ROBBER,Quest_Rightingwrongs_TurnShock)
+    delay(8)
+    playse(SE_PIN)
     waitmovement(BERKELEY_ROBBER)
     msgbox(gText_Rightingwrongs_Professor)
     msgbox(gText_Rightingwrongs_UnfortunatelyAll)
@@ -125,7 +127,7 @@ movement Quest_Rightingwrongs_WalkTowardsPlayer{
     step_end
 }
 movement Quest_Rightingwrongs_TurnShock{
-    walk_right
+    walk_faster_right * 2
     emote_exclamation_mark
     lock_facing_direction
     walk_left
@@ -150,44 +152,45 @@ text gText_Rightingwrongs_OffScotFree {
     format("Off scot free! Its like an angel helped me out. Although I should make sure I go back to Berkeley and move the stuff. Its still hidden behind the Center...")
 }
 text gText_Rightingwrongs_DidIActually{
-    format("")
+    format("Did I actually help put somebody innnocent away?")
 }
 text gText_Rightingwrongs_IShouldnt{
-    format("")
+    format("I shouldn't confront them now... let me grab that evidence first!")
 }
 text gText_Rightingwrongs_Bingo{
-    format("")
+    format("Bingo! Now how do I pin this on the real prep...")
 }
 text gText_Rightingwrongs_HoldIt{
-    format("")
+    format("Hold it right there!")
 }
 text gText_Rightingwrongs_ITailedYou{
-    format("")
+    format("I trailed you from Japantown. You don't have much a poker face at all.")
 }
 text gText_Rightingwrongs_AreYouJust{
-    format("")
+    format("Are you just going to let that innocent person take the fall?")
 }
 text gText_Rightingwrongs_YouWantMeTo{
-    format("")
+    format("You want me to turn myself in? Fat chance. I got a lucky break, and I'm gonna take it.")
 }
 text gText_Rightingwrongs_IShouldHave{
-    format("")
+    format("I should have not engaged...")
 }
 text gText_Rightingwrongs_HowAreYou{
-    format("")
+    format("How are you okay with letting somebody innocent take the blame for your actions?")
 }
 text gText_Rightingwrongs_IDontCare{
-    format("")
+    format("I don't care!")
 }
 text gText_Rightingwrongs_NobodyCanProve{
-    format("")
+    format("Nobody can prove anything, even if you have the stuff I stole. I'm outta here.")
 }
 text gText_Rightingwrongs_Professor{
-    format("")
+    format("Professor Tree! uh... how much did you hear?")
 }
 text gText_Rightingwrongs_UnfortunatelyAll{
-    format("")
+    format("Unfortunately, all of it. A student of ours, doing such acts... we're going to have a problem here.")
 }
 text gText_Rightingwrongs_ComeWithMe{
-    format("")
+    format("Come with me. We have some phone calls to make, and an innocent girl to get out of jail...")
 }
+
