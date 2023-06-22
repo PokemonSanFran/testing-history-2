@@ -113,11 +113,6 @@ const u8 gText_Quest_ImprovBattling_Desc[] =_("Description");
 const u8 gText_Quest_ImprovBattling_DoneDesc[] =_("DoneDescription");
 const u8 gText_Quest_ImprovBattling_Map[] =_("Presidio");
 
-const u8 gText_Quest_ImprovBattlingChampionship_Name[] = _("Improv Battling Championship");
-const u8 gText_Quest_ImprovBattlingChampionship_Desc[] =_("Description");
-const u8 gText_Quest_ImprovBattlingChampionship_DoneDesc[] =_("DoneDescription");
-const u8 gText_Quest_ImprovBattlingChampionship_Map[] =_("Presidio");
-
 const u8 gText_Quest_InstallNatureProbes_Name[] = _("Install Nature Probes");
 const u8 gText_Quest_InstallNatureProbes_Desc[] =_("Help Liidia install three probes in\nMuirwoods! One deep in the forest, one\non a hill, and one near a shore.");
 const u8 gText_Quest_InstallNatureProbes_DoneDesc[] =_("You helped Liidia install nature probes\nin Muirwoods! And then they got fired.");

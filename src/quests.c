@@ -2685,16 +2685,6 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
             QUEST_IMPROVBATTLING_SUB_COUNT
 	),
 	side_quest(
-	        gText_Quest_ImprovBattlingChampionship_Name,
-	        gText_Quest_ImprovBattlingChampionship_Desc,
-	        gText_Quest_ImprovBattlingChampionship_DoneDesc,
-	        gText_Quest_ImprovBattlingChampionship_Map,
-	        OBJ_EVENT_GFX_RICH_BOY,
-	        OBJECT,
-	        NULL,
-	        0
-	),
-	side_quest(
 	        gText_Quest_InstallNatureProbes_Name,
 	        gText_Quest_InstallNatureProbes_Desc,
 	        gText_Quest_InstallNatureProbes_DoneDesc,

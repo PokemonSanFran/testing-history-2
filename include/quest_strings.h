@@ -113,11 +113,6 @@ extern const u8 gText_Quest_ImprovBattling_Desc[];
 extern const u8 gText_Quest_ImprovBattling_DoneDesc[];
 extern const u8 gText_Quest_ImprovBattling_Map[];
 
-extern const u8 gText_Quest_ImprovBattlingChampionship_Name[];
-extern const u8 gText_Quest_ImprovBattlingChampionship_Desc[];
-extern const u8 gText_Quest_ImprovBattlingChampionship_DoneDesc[];
-extern const u8 gText_Quest_ImprovBattlingChampionship_Map[];
-
 extern const u8 gText_Quest_InstallNatureProbes_Name[];
 extern const u8 gText_Quest_InstallNatureProbes_Desc[];
 extern const u8 gText_Quest_InstallNatureProbes_DoneDesc[];
