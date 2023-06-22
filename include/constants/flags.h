@@ -1232,6 +1232,7 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 //PSF Item Ball Scripts
+#define FLAG_FOUND_STOLEN_GOODS 0x13A
 #define FLAG_ITEM_MARIN_RANGER_HEADPHONES                           0x3E8
 #define FLAG_ITEM_MARIN_RANGER_WIDE_LENS                            0x3E9
 #define FLAG_ITEM_MARIN_RANGER_ROCKY_HELMET                         0x3EA

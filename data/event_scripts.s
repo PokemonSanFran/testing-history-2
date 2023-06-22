@@ -1240,7 +1240,7 @@ Script_RemoveTint::
 .include "data/quests/freshwaterevolution.inc"
 .include "data/quests/gemartist.inc"
 .include "data/quests/betweenastoneandahardplace.inc"
-// .include "data/quests/rightingwrongs.inc"
+.include "data/quests/rightingwrongs.inc"
 // .include "data/quests/enterthedragon.inc"
 .include "data/quests/breaktheinternet.inc"
 .include "data/quests/shutdownmedicineman.inc"

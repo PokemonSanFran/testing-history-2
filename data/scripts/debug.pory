@@ -59,33 +59,27 @@ script Debug_Weather{
     return
 }
 script Debug_Script_1{
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RABIESOUTBREAK)
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_ICECREAMCRAFTING)
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_VSDEOXYS)
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHINATOWNTUNNELS)
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_FRESHWATEREVOLUTION)
-    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_GEMARTIST)
-    warpsilent(MAP_SOUTHBAY_CAFE,0)
+    warp(MAP_JAPANTOWN_RAMEN,0)
     end
 }
 
 script Debug_Script_2{
-    warpsilent(MAP_MARIN,7,3)
+    questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BLUEROBBERRY)
     end
 }
 
 script Debug_Script_3{
-    warpsilent(MAP_SUNSET,6,17)
+    warp(MAP_BERKELEY,6,0)
     end
 }
 
 script Debug_Script_4{
-    warpsilent(MAP_SOUTHBAY_CAFE,0)
+    setwildbattle(SPECIES_TYROGUE,1)
+    dowildbattle
     end
 }
 
 script Debug_Script_5{
-    warp(MAP_FAKENEWS_WAREHOUSE,0)
     end
 }
 

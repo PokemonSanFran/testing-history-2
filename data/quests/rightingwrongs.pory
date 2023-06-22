@@ -1,0 +1,193 @@
+//gText_Rightingwrongs_
+//Quest_Rightingwrongs_
+
+const PLAYER = OBJ_EVENT_ID_PLAYER
+const RAMEN_ROBBER = 2
+const RAMEN_FRIEND = 3
+const FLAG_HIDE_ROBBER = FLAG_TEMP_1
+const FLAG_HIDE_BERKELEY_ROBBER = FLAG_TEMP_6
+const FLAG_HIDE_TEACHER_A = FLAG_TEMP_6
+const TEACHER_A = 10
+const BERKELEY_ROBBER = 9
+
+script Quest_Rightingwrongs_Item_Visibility_Script{
+    setflag(FLAG_FOUND_STOLEN_GOODS)
+
+    returnqueststate(QUEST_RIGHTINGWRONGS)
+    if (var(VAR_RESULT) == QUEST_MENU_SET_ACTIVE){
+        clearflag(FLAG_FOUND_STOLEN_GOODS)
+    }
+
+    return
+}
+
+script Quest_Rightingwrongs_Restaurant_HideObject_Script {
+    setflag(FLAG_HIDE_ROBBER)
+    return
+}
+
+script Quest_Rightingwrongs_Berekley_HideRobber_Script{
+    setflag(FLAG_HIDE_BERKELEY_ROBBER)
+    setflag(FLAG_TEMP_7)
+    return
+}
+
+script Quest_Rightingwrongs_StartQuest_Dialogue{
+    lock
+        applymovement(RAMEN_ROBBER, Common_Movement_WalkInPlaceRight)
+        waitmovement(0)
+        msgbox(gText_Rightingwrongs_SoTwitterGot)
+
+        applymovement(RAMEN_FRIEND, Common_Movement_WalkInPlaceLeft)
+        waitmovement(0)
+        msgbox(gText_Rightingwrongs_YeahAndThen)
+
+        applymovement(RAMEN_ROBBER, Common_Movement_WalkInPlaceRight)
+        waitmovement(0)
+        msgbox(gText_Rightingwrongs_InsaneSoTheHeat)
+
+        applymovement(RAMEN_FRIEND, Common_Movement_WalkInPlaceLeft)
+        waitmovement(0)
+        msgbox(gText_Rightingwrongs_OffScotFree)
+        closemessage
+        goto(Quest_Rightingwrongs_Inner_Dialogue)
+}
+
+script Quest_Rightingwrongs_Inner_Dialogue{
+    msgbox(gText_Rightingwrongs_DidIActually,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    msgbox(gText_Rightingwrongs_IShouldnt,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    questmenu(QUEST_MENU_CHECK_ACTIVE,QUEST_RIGHTINGWRONGS)
+    if (!var(VAR_RESULT)){
+        startquest(QUEST_RIGHTINGWRONGS)
+    }
+    closemessage
+    release
+    end
+}
+
+script Quest_Rightingwrongs_ItemBall_Script{
+    goto_if_quest_active(QUEST_RIGHTINGWRONGS,Quest_Rightingwrongs_StartBattle_Script)
+    goto_if_quest_not_active(QUEST_RIGHTINGWRONGS,Quest_Rightingwrongs_EventScript_StolenGoods)
+//PSF TODO what shop are these stolen from? where can the player return them?
+}
+
+script Quest_Rightingwrongs_StartBattle_Script{
+    lock
+    msgbox(gText_Rightingwrongs_Bingo,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_HAPPY)
+    addobject(BERKELEY_ROBBER)
+    msgbox(gText_Rightingwrongs_HoldIt,,,TAIL_SHOUT)
+    closemessage
+    applymovement(PLAYER,Common_Movement_FaceRight)
+    applymovement(BERKELEY_ROBBER,Quest_Rightingwrongs_WalkTowardsPlayer)
+    waitmovement(BERKELEY_ROBBER)
+    msgbox(gText_Rightingwrongs_ITailedYou)
+    msgbox(gText_Rightingwrongs_AreYouJust,,SPEAKER_ZOEY,TAIL_SHOUT,EMOTE_ANGRY)
+    msgbox(gText_Rightingwrongs_YouWantMeTo)
+    trainerbattle_no_intro(TRAINER_REAL_ROBBER,gText_Rightingwrongs_IShouldHave)
+    goto(Quest_Rightingwrongs_PostBattle_Script)
+}
+
+script Quest_Rightingwrongs_PostBattle_Script{
+    lock
+    msgbox(gText_Rightingwrongs_HowAreYou,,SPEAKER_ZOEY)
+    msgbox(gText_Rightingwrongs_IDontCare)
+    msgbox(gText_Rightingwrongs_NobodyCanProve)
+    closemessage
+    applymovement(BERKELEY_ROBBER,Quest_Rightingwrongs_TurnShock)
+    waitmovement(BERKELEY_ROBBER)
+    msgbox(gText_Rightingwrongs_Professor)
+    msgbox(gText_Rightingwrongs_UnfortunatelyAll)
+    msgbox(gText_Rightingwrongs_ComeWithMe)
+    closemessage
+    applymovement(TEACHER_A,Quest_Rightingwrongs_WalkOffscreen)
+    applymovement(BERKELEY_ROBBER,Quest_Rightingwrongs_WalkOffscreen)
+    completequest(QUEST_RIGHTINGWRONGS)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(TEACHER_A)
+    removeobject(BERKELEY_ROBBER)
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
+}
+
+script Quest_Rightingwrongs_Teacher_Visibility_Script{
+    getplayerxy(VAR_TEMP_0,VAR_TEMP_1) 
+    returnqueststate(QUEST_RIGHTINGWRONGS)
+    if (var(VAR_TEMP_0) == 4 && var(VAR_RESULT) == QUEST_MENU_SET_ACTIVE){
+        addobject(TEACHER_A)
+    }
+    addvar(VAR_TEMP_0,1)
+    return
+}
+
+movement Quest_Rightingwrongs_WalkTowardsPlayer{
+    walk_left * 4
+    step_end
+}
+movement Quest_Rightingwrongs_TurnShock{
+    walk_right
+    emote_exclamation_mark
+    lock_facing_direction
+    walk_left
+    unlock_facing_direction
+    step_end
+}
+movement Quest_Rightingwrongs_WalkOffscreen{
+    walk_right * 8
+    step_end
+}
+
+text gText_Rightingwrongs_SoTwitterGot {
+    format("So Twitter got the wrong person? Started a whole campaign around the wrong kid?")
+}
+text gText_Rightingwrongs_YeahAndThen {
+    format("Yeah! And then she got arrested everything! They were celebrating saying 'We got the Tenderloin theif!'")
+}
+text gText_Rightingwrongs_InsaneSoTheHeat {
+    format("Insane. So the heat is just off you? That's it?")
+}
+text gText_Rightingwrongs_OffScotFree {
+    format("Off scot free! Its like an angel helped me out. Although I should make sure I go back to Berkeley and move the stuff. Its still hidden behind the Center...")
+}
+text gText_Rightingwrongs_DidIActually{
+    format("")
+}
+text gText_Rightingwrongs_IShouldnt{
+    format("")
+}
+text gText_Rightingwrongs_Bingo{
+    format("")
+}
+text gText_Rightingwrongs_HoldIt{
+    format("")
+}
+text gText_Rightingwrongs_ITailedYou{
+    format("")
+}
+text gText_Rightingwrongs_AreYouJust{
+    format("")
+}
+text gText_Rightingwrongs_YouWantMeTo{
+    format("")
+}
+text gText_Rightingwrongs_IShouldHave{
+    format("")
+}
+text gText_Rightingwrongs_HowAreYou{
+    format("")
+}
+text gText_Rightingwrongs_IDontCare{
+    format("")
+}
+text gText_Rightingwrongs_NobodyCanProve{
+    format("")
+}
+text gText_Rightingwrongs_Professor{
+    format("")
+}
+text gText_Rightingwrongs_UnfortunatelyAll{
+    format("")
+}
+text gText_Rightingwrongs_ComeWithMe{
+    format("")
+}

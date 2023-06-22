@@ -3,7 +3,8 @@ Japantown_Ramen_MapScripts::
 	.byte 0
 
 Japantown_Ramen_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call Quest_BlueRobbery_Restaurant_HideObject_Script
+	call_if_quest_not_complete QUEST_BLUEROBBERRY, Quest_Rightingwrongs_Restaurant_HideObject_Script
+	call_if_quest_complete QUEST_RIGHTINGWRONGS, Quest_Rightingwrongs_Restaurant_HideObject_Script
 	return
 
 

@@ -1,13 +1,20 @@
 Berkeley_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, Berkeley_MapScripts_MAP_SCRIPT_ON_RETURN_TO_FIELD
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Berkeley_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 Berkeley_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Rightingwrongs_Item_Visibility_Script
+	call Quest_Rightingwrongs_Berekley_HideRobber_Script
 	call swagbag2_SetUp_Object_Script
 	call Quest_GetTheBand_HideBikerA_Script
 	call SorryAboutMyFriends_Ariana_Visible_Script
 	call Quest_StealTheAxe_UnlockDoor_Script
+	return
+
+Berkeley_MapScripts_MAP_SCRIPT_ON_RETURN_TO_FIELD:
+	goto Quest_Rightingwrongs_Teacher_Visibility_Script
 	return
 
 Berkeley_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

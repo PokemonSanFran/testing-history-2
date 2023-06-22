@@ -1,5 +1,7 @@
 mapscripts Berkeley_MapScripts{
     MAP_SCRIPT_ON_TRANSITION {
+        call(Quest_Rightingwrongs_Item_Visibility_Script)
+        call(Quest_Rightingwrongs_Berekley_HideRobber_Script)
         call(swagbag2_SetUp_Object_Script)
         call(Quest_GetTheBand_HideBikerA_Script)
         call(SorryAboutMyFriends_Ariana_Visible_Script)
@@ -8,6 +10,9 @@ mapscripts Berkeley_MapScripts{
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_BERKELEY_STATE, DEFEATED_MORTY: SorryAboutMyFriends_CheckCutscene_Script
     ]
+    MAP_SCRIPT_ON_RETURN_TO_FIELD{
+        goto(Quest_Rightingwrongs_Teacher_Visibility_Script)
+    }
 }
 
 script Berkeley_Stan_Interact_Script{

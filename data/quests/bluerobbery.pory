@@ -3,11 +3,8 @@ const CAMERA = OBJ_EVENT_ID_CAMERA
 const FAKEROBBER = 1
 const WOBBUFFET = 2
 const POLICE = 3
-const ROBBER = 2
-const FRIEND = 3
 const FLAG_HIDE_POLICE = FLAG_TEMP_1
 const FLAG_HIDE_FAKEROBBER = FLAG_TEMP_2
-const FLAG_HIDE_ROBBER = FLAG_TEMP_1
 
 script Quest_BlueRobbery_HideObject_Script {
     setflag(FLAG_HIDE_POLICE)
@@ -15,14 +12,6 @@ script Quest_BlueRobbery_HideObject_Script {
         if (var (VAR_RESULT)) {
             setflag(FLAG_HIDE_FAKEROBBER)
         }
-}
-
-script Quest_BlueRobbery_Restaurant_HideObject_Script {
-    questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_BLUEROBBERRY)
-        if (!var (VAR_RESULT)) {
-            setflag(FLAG_HIDE_ROBBER)
-        }
-    return
 }
 
 script Quest_BlueRobbery_FakeRobber_Event_Script {
@@ -98,28 +87,6 @@ script Quest_BlueRobbery_PostBattle_Script {
         end
 }
 
-script Quest_BlueRobbery_DinnerBrag_Dialogue {
-    lock
-        applymovement(ROBBER, Common_Movement_WalkInPlaceRight)
-        waitmovement(0)
-        msgbox(gText_BlueRobbery_SoTwitterGot)
-
-        applymovement(FRIEND, Common_Movement_WalkInPlaceLeft)
-        waitmovement(0)
-        msgbox(gText_BlueRobbery_YeahAndThen)
-
-        applymovement(ROBBER, Common_Movement_WalkInPlaceRight)
-        waitmovement(0)
-        msgbox(gText_BlueRobbery_InsaneSoTheHeat)
-
-        applymovement(FRIEND, Common_Movement_WalkInPlaceLeft)
-        waitmovement(0)
-        msgbox(gText_BlueRobbery_OffScotFree)
-        closemessage
-        release
-        end
-}
-
 text gText_BlueRobbery_ILoveMyWobbuffet {
     format("I love my Wobbuffet so much!")
 }
@@ -152,18 +119,6 @@ text gText_BlueRobbery_AreYouHappy {
 }
 text gText_BlueRobbery_IDontUnderstand {
     format("I don't understand why you thought this would work for you!")
-}
-text gText_BlueRobbery_SoTwitterGot {
-    format("So Twitter got the wrong person? Started a whole campaign around the wrong kid?")
-}
-text gText_BlueRobbery_YeahAndThen {
-    format("Yeah! And then she got arrested everything! They were celebrating saying 'We got the Tenderloin theif!'")
-}
-text gText_BlueRobbery_InsaneSoTheHeat {
-    format("Insane. So the heat is just off you? That's it?")
-}
-text gText_BlueRobbery_OffScotFree {
-    format("Off scot free! Its like an angel helped me out.")
 }
 
 movement BlueRobbery_FaceLove_Movement {

@@ -796,3 +796,7 @@ Quest_Hiddengrottomapping2_EventScript_Journal3::
     finditem ITEM_PANNEN_JOURNAL_PAGE_3
     subquestmenu QUEST_MENU_COMPLETE_QUEST,QUEST_HIDDENGROTTOMAPPING2,SUB_QUEST_3
     end
+
+Quest_Rightingwrongs_EventScript_StolenGoods::
+    finditem ITEM_STOLEN_GOODS
+    end
