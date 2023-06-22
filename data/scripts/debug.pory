@@ -59,32 +59,35 @@ script Debug_Weather{
     return
 }
 script Debug_Script_1{
-    questmenu(QUEST_MENU_SET_ACTIVE,QUEST_BREAKTHEINTERNET)
-        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BREAKTHEINTERNET,SUB_QUEST_1)
-        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BREAKTHEINTERNET,SUB_QUEST_2)
-    warp(MAP_FAKENEWS_WAREHOUSE,0)
-    end
-}
-
-script Debug_Script_2{
-    end
-}
-
-script Debug_Script_3{
-    end
-}
-
-script Debug_Script_4{
-    end
-}
-
-script Debug_Script_5{
     questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_RABIESOUTBREAK)
     questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_ICECREAMCRAFTING)
     questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_VSDEOXYS)
     questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_CHINATOWNTUNNELS)
     questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_FRESHWATEREVOLUTION)
     questmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_GEMARTIST)
+    warpsilent(MAP_SOUTHBAY_CAFE,0)
+    end
+}
+
+script Debug_Script_2{
+    warpsilent(MAP_MARIN,7,3)
+    end
+}
+
+script Debug_Script_3{
+    warpsilent(MAP_SUNSET,6,17)
+    end
+}
+
+script Debug_Script_4{
+    warpsilent(MAP_SOUTHBAY_CAFE,0)
+    end
+}
+
+script Debug_Script_5{
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BREAKTHEINTERNET,SUB_QUEST_1)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_BREAKTHEINTERNET,SUB_QUEST_2)
+    warp(MAP_FAKENEWS_WAREHOUSE,4,8)
     end
 }
 

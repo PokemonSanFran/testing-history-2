@@ -58,7 +58,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_ALWAYS_ZERO",
+      "var_value": "0",
+      "script": "Quest_Breaktheinternet_Note_Dialogue"
+    }
   ],
   "bg_events": [
 
