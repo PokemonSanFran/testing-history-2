@@ -2183,45 +2183,6 @@ static const struct SubQuest sWarehouseWarfare_Sub[QUEST_WAREHOUSEWARFARE_SUB_CO
 };
 
 static const struct SubQuest
-	sRestoreToTheirFormerGlory_Sub[QUEST_RESTORETOTHEIRFORMERGLORY_SUB_COUNT] = {
-	sub_quest(
-	        200,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub1_Name,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub1_Desc,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub1_Map,
-	        OBJ_EVENT_GFX_WALLY,
-	        OBJECT,
-	        sText_Restored
-	),
-	sub_quest(
-	        201,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub2_Name,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub2_Desc,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub2_Map,
-	        OBJ_EVENT_GFX_WALLY,
-	        OBJECT,
-	        sText_Restored
-	),
-	sub_quest(
-	        202,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub3_Name,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub3_Desc,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub3_Map,
-	        OBJ_EVENT_GFX_WALLY,
-	        OBJECT,
-	        sText_Restored
-	),
-	sub_quest(
-	        203,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub4_Name,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub4_Desc,
-	        gText_Quest_RestoreToTheirFormerGlory_Sub4_Map,
-	        OBJ_EVENT_GFX_WALLY,
-	        OBJECT,
-	        sText_Restored
-	),
-};
-static const struct SubQuest
 	sRestoreMarin_Sub[QUEST_RESTOREMARIN_SUB_COUNT] = {
 	sub_quest(
 	        204,
@@ -3363,16 +3324,6 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJECT,
 	        sWarehouseWarfare_Sub,
             QUEST_WAREHOUSEWARFARE_SUB_COUNT
-	),
-	side_quest(
-	        gText_Quest_RestoreToTheirFormerGlory_Name,
-	        gText_Quest_RestoreToTheirFormerGlory_Desc,
-	        gText_Quest_RestoreToTheirFormerGlory_DoneDesc,
-	        gText_Quest_RestoreToTheirFormerGlory_Map,
-	        OBJ_EVENT_GFX_WALLY,
-	        OBJECT,
-	        sRestoreToTheirFormerGlory_Sub,
-            QUEST_RESTORETOTHEIRFORMERGLORY_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_HowDisappointing_Name,
