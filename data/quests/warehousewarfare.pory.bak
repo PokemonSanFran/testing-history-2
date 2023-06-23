@@ -1,0 +1,204 @@
+//script Quest_Warehousewarfare_
+//text gText_Warehousewarfare_
+
+script Quest_Warehousewarfare_CheckBodegaProgress_Script{
+
+    setvar(VAR_TEMP_0,0)
+
+    call(Quest_Warehousewarfare_CheckBodegaProgress1_Script)
+    call(Quest_Warehousewarfare_CheckBodegaProgress2_Script)
+    call(Quest_Warehousewarfare_CheckBodegaProgress3_Script)
+    call(Quest_Warehousewarfare_CheckBodegaProgress4_Script)
+    call(Quest_Warehousewarfare_CheckBodegaProgress5_Script)
+    call(Quest_Warehousewarfare_CheckBodegaProgress6_Script)
+
+    if (var(VAR_TEMP_0) > 5){
+        call(Quest_Warehousewarfare_CallPlayer_Dialogue)
+    }
+}
+
+script Quest_Warehousewarfare_CheckBodegaProgress1_Script{
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_4)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_5)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+script Quest_Warehousewarfare_CheckBodegaProgress2_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_6)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_7)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_8)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_9)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_10)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+script Quest_Warehousewarfare_CheckBodegaProgress3_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_11)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_12)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+script Quest_Warehousewarfare_CheckBodegaProgress4_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_13)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_14)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+script Quest_Warehousewarfare_CheckBodegaProgress5_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_15)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_16)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+script Quest_Warehousewarfare_CheckBodegaProgress6_Script{
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_BODEGABURNOUT,SUB_QUEST_17)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+        return
+    }
+    return
+}
+
+
+script Quest_Warehousewarfare_CheckSubquestProgress_Script{
+    setvar(VAR_TEMP_0,0)
+
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_WAREHOUSEWARFARE,SUB_QUEST_1)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_WAREHOUSEWARFARE,SUB_QUEST_2)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+    subquestmenu(QUEST_MENU_CHECK_COMPLETE,QUEST_WAREHOUSEWARFARE,SUB_QUEST_3)
+    if (var(VAR_RESULT)){
+        addvar(VAR_TEMP_0,1)
+    }
+}
+
+script Quest_Warehousewarfare_Active_Dialogue{
+    call(Quest_Warehousewarfare_CheckSubquestProgress_Script)
+
+        switch(var(VAR_TEMP_0)){
+        case 0: goto(Quest_Warehousewarfare_ExplainBarge1_Dialogue)
+        case 1: goto(Quest_Warehousewarfare_ExplainBarge2_Dialogue)
+        case 2: goto(Quest_Warehousewarfare_ExplainBarge3_Dialogue)
+    }
+}
+
+script Quest_Warehousewarfare_ExplainBarge1_Dialogue{
+}
+
+script Quest_Warehousewarfare_ExplainBarge2_Dialogue{
+}
+
+script Quest_Warehousewarfare_ExplainBarge3_Dialogue{
+}
+
+script Quest_Warehousewarfare_Welcome_Dialogue{
+    msgbox(gText_Warehousewarfare_WelcomeTo,MSGBOX_NPC)
+    end
+}
+
+script Quest_Warehousewarfare_Reward_Dialogue{
+    msgbox(gText_Warehousewarfare_HolyMoly,MSGBOX_NPC)
+    end
+}
+
+script Quest_Warehousewarfare_Complete_Dialogue{
+    msgbox(gText_Warehousewarfare_ThanksAgain,MSGBOX_NPC)
+    end
+}
+
+text gText_Warehousewarfare_WelcomeTo{
+    format("Welcome to the Shopkeepers Union!")
+}
+text gText_Warehousewarfare_HolyMoly{
+    format("Holy moly you did it.")
+}
+text gText_Warehousewarfare_ThanksAgain{
+    format("Thanks again!")
+}

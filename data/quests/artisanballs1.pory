@@ -1,7 +1,7 @@
-//Quest_ArtisanBalls_
+//Quest_ArtisanBalls1_
 //Quest_ArtisanBalls2_
 //Quest_ArtisanBalls3_
-//gText_Quest_ArtisanBalls_
+//gText_Quest_ArtisanBalls1_
 //gText_Quest_ArtisanBalls2_
 //gText_Quest_ArtisanBalls3_
 const PLAYER = OBJ_EVENT_ID_PLAYER
@@ -102,10 +102,10 @@ script Quest_ArtisanBalls1_CheckStatus_Script {
 }
 
 script Quest_ArtisanBalls1_Start_Dialogue {
-	msgbox(gText_Quest_ArtisanBalls_IGotFired, MSGBOX_NPC,SPEAKER_SERGEY)
+	msgbox(gText_Quest_ArtisanBalls1_IGotFired, MSGBOX_NPC,SPEAKER_SERGEY)
 	call(Quest_ArtisanBalls1_GiveFirstSet)
 	startquest(QUEST_ARTISANBALLS1)
-    msgbox(gText_Quest_ArtisanBalls_ComeBack,MSGBOX_NPC,SPEAKER_SERGEY)
+    msgbox(gText_Quest_ArtisanBalls1_ComeBack,MSGBOX_NPC,SPEAKER_SERGEY)
     end
 }
 
@@ -118,7 +118,7 @@ script Quest_ArtisanBalls1_GiveFirstSet {
 	additem(ITEM_FRIEND_BALL, 1)
 	additem(ITEM_MOON_BALL, 1)
 	playfanfare(MUS_OBTAIN_ITEM)
-	msgbox(gText_Quest_ArtisanBalls_SergeyGaveYou)
+	msgbox(gText_Quest_ArtisanBalls1_SergeyGaveYou)
 	waitmessage
 	waitfanfare
 	return
@@ -127,15 +127,15 @@ script Quest_ArtisanBalls1_GiveFirstSet {
 
 script Quest_ArtisanBalls1_Active_Dialogue {
 
-    msgbox(gText_Quest_ArtisanBalls_HowIsProgress, MSGBOX_NPC,SPEAKER_SERGEY)
+    msgbox(gText_Quest_ArtisanBalls1_HowIsProgress, MSGBOX_NPC,SPEAKER_SERGEY)
     call(Quest_ArtisanBalls1_During_ReplenishBalls_Script)
 
     if (var(VAR_TEMP_0) > 0)
     {
-        msgbox(gText_Quest_ArtisanBalls_JustMadeThatToday, MSGBOX_NPC,SPEAKER_SERGEY)
+        msgbox(gText_Quest_ArtisanBalls1_JustMadeThatToday, MSGBOX_NPC,SPEAKER_SERGEY)
         end
     }
-    msgbox(gText_Quest_ArtisanBalls__ThoseBallsCanBe, MSGBOX_NPC,SPEAKER_SERGEY)
+    msgbox(gText_Quest_ArtisanBalls1__ThoseBallsCanBe, MSGBOX_NPC,SPEAKER_SERGEY)
     end
     }
 
@@ -210,7 +210,7 @@ script Quest_ArtisanBalls1_During_ReplenishBalls_Script {
 }
 
 script Quest_ArtisanBalls1_Reward_Dialogue {
-	msgbox(gText_Quest_ArtisanBalls_SoTheyAllWork, MSGBOX_NPC,SPEAKER_SERGEY)
+	msgbox(gText_Quest_ArtisanBalls1_SoTheyAllWork, MSGBOX_NPC,SPEAKER_SERGEY)
 	call(Quest_ArtisanBalls1_GiveReward_Script)
 	completequest(QUEST_ARTISANBALLS1)
 	end
@@ -398,11 +398,11 @@ script Quest_ArtisanBalls2_Active_Dialogue {
     end
 }
 
-script Quest_ArtisanBalls_TrainerA_Event_Script{
-	trainerbattle_single(TRAINER_FELIX, gText_Quest_ArtisanBalls2_YoudThink, gText_Quest_ArtisanBalls2_NotEvenClose, Quest_ArtisanBalls_TrainerA_PostBattle_Script)
+script Quest_ArtisanBalls2_TrainerA_Event_Script{
+	trainerbattle_single(TRAINER_FELIX, gText_Quest_ArtisanBalls2_YoudThink, gText_Quest_ArtisanBalls2_NotEvenClose, Quest_ArtisanBalls2_TrainerA_PostBattle_Script)
 }
 
-script Quest_ArtisanBalls_TrainerA_PostBattle_Script{
+script Quest_ArtisanBalls2_TrainerA_PostBattle_Script{
 	lock
 	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_1)
     call(Quest_ArtisanBalls2_CheckReward_Script)
@@ -424,11 +424,11 @@ script Quest_ArtisanBalls_TrainerA_PostBattle_Script{
 	release
 	end
 }
-script Quest_ArtisanBalls_TrainerB_Event_Script{
-	trainerbattle_single(TRAINER_VIOLET, gText_Quest_ArtisanBalls2_MyPersonalBrand, gText_Quest_ArtisanBalls2_IHopeGettingDefeated, Quest_ArtisanBalls_TrainerB_PostBattle_Script)
+script Quest_ArtisanBalls2_TrainerB_Event_Script{
+	trainerbattle_single(TRAINER_VIOLET, gText_Quest_ArtisanBalls2_MyPersonalBrand, gText_Quest_ArtisanBalls2_IHopeGettingDefeated, Quest_ArtisanBalls2_TrainerB_PostBattle_Script)
 }
 
-script Quest_ArtisanBalls_TrainerB_PostBattle_Script{
+script Quest_ArtisanBalls2_TrainerB_PostBattle_Script{
 	lock
 	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_2)
     call(Quest_ArtisanBalls2_CheckReward_Script)
@@ -450,11 +450,11 @@ script Quest_ArtisanBalls_TrainerB_PostBattle_Script{
 	end
 }
 
-script Quest_ArtisanBalls_TrainerC_Event_Script{
-	trainerbattle_single(TRAINER_ROSE_2, gText_Quest_ArtisanBalls2_IMissHelpingPeople, gText_Quest_ArtisanBalls2_DidIHelpYou, Quest_ArtisanBalls_TrainerC_PostBattle_Script)
+script Quest_ArtisanBalls2_TrainerC_Event_Script{
+	trainerbattle_single(TRAINER_ROSE_2, gText_Quest_ArtisanBalls2_IMissHelpingPeople, gText_Quest_ArtisanBalls2_DidIHelpYou, Quest_ArtisanBalls2_TrainerC_PostBattle_Script)
 }
 
-script Quest_ArtisanBalls_TrainerC_PostBattle_Script{
+script Quest_ArtisanBalls2_TrainerC_PostBattle_Script{
 	lock
 	subquestmenu(QUEST_MENU_COMPLETE_QUEST, QUEST_ARTISANBALLS2, SUB_QUEST_3)
     call(Quest_ArtisanBalls2_CheckReward_Script)
@@ -626,10 +626,10 @@ script Quest_ArtisanBalls3_Post_Dialogue{
     if(var(VAR_RESULT)){
 
     lock
-    msgbox(gText_Quest_ArtisanBalls_TheDoorIsLockedBut,MSGBOX_YESNO)
+    msgbox(gText_Quest_ArtisanBalls1_TheDoorIsLockedBut,MSGBOX_YESNO)
     
     if(var(VAR_RESULT) == YES){
-    msgbox(gText_Quest_ArtisanBalls_ToMyCustomers,MSGBOX_SIGN)
+    msgbox(gText_Quest_ArtisanBalls1_ToMyCustomers,MSGBOX_SIGN)
     }
 
     }
@@ -652,7 +652,7 @@ script Quest_ArtisanBalls3_ChangeDoorMetatile_Script {
 }
 
 script Quest_ArtisanBalls_ReadBook_Dialogue{
-    msgbox(gText_Quest_ArtisanBalls_WhichPokeBall)
+    msgbox(gText_Quest_ArtisanBalls1_WhichPokeBall)
     dynmultipush("Level Ball", ITEM_LEVEL_BALL)
     dynmultipush("Lure Ball", ITEM_LURE_BALL)
     dynmultipush("Moon Ball", ITEM_MOON_BALL)
@@ -665,13 +665,13 @@ script Quest_ArtisanBalls_ReadBook_Dialogue{
     closemessage
 
     switch(var(VAR_RESULT)){
-        case ITEM_LURE_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainLure)
-        case ITEM_FAST_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainFast)
-        case ITEM_LEVEL_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainLevel)
-        case ITEM_HEAVY_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainHeavy)
-        case ITEM_LOVE_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainLove)
-        case ITEM_FRIEND_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainFriend)
-        case ITEM_MOON_BALL: msgbox(gText_Quest_ArtisanBalls_ExplainMoon)
+        case ITEM_LURE_BALL: msgbox(gText_Quest_ArtisanBalls1_ExplainLure)
+        case ITEM_FAST_BALL: msgbox(gText_Quest_ArtisanBalls1_ExplainFast)
+        case ITEM_LEVEL_BALL: msgbox(gText_Quest_ArtisanBalls1_ExplainLevel)
+        case ITEM_HEAVY_BALL: msgbox(gText_Quest_ArtisanBalls1_ExplainHeavy)
+        case ITEM_LOVE_BALL: msgbox(gText_Quest_ArtisanBalls1_ExplainLove)
+        case ITEM_FRIEND_BALL: msgbox(gText_Quest_ArtisanBalls1_ExplainFriend)
+        case ITEM_MOON_BALL: msgbox(gText_Quest_ArtisanBalls1_ExplainMoon)
         //PSF TODO Why doesn't pressing B work here?
         case MULTI_B_PRESSED: 
         case ITEMS_COUNT: end
@@ -679,7 +679,7 @@ script Quest_ArtisanBalls_ReadBook_Dialogue{
     goto(Quest_ArtisanBalls_ReadBook_Dialogue)
 }
 
-text Quest_ArtisanBalls_CraftBallList{
+text Quest_ArtisanBalls1_CraftBallList{
     "Level Ball$"
     "Lure Ball$"
     "Moon Ball$"
@@ -691,54 +691,54 @@ text Quest_ArtisanBalls_CraftBallList{
     "$"
 }
 
-text gText_Quest_ArtisanBalls_WhichPokeBall{
+text gText_Quest_ArtisanBalls1_WhichPokeBall{
     format("Which craft Poké Ball would you like to read about?")
 }
 
-text gText_Quest_ArtisanBalls_ExplainFast{
+text gText_Quest_ArtisanBalls1_ExplainFast{
     format("Pokémon that are naturally very fast will be more easily captured with the Fast Ball.")
 }
-text gText_Quest_ArtisanBalls_ExplainLevel{
+text gText_Quest_ArtisanBalls1_ExplainLevel{
     format("The Level Ball is most successful when the user's Pokémon is a higher level than the wild Pokémon being captured.")
 }
-text gText_Quest_ArtisanBalls_ExplainLure{
+text gText_Quest_ArtisanBalls1_ExplainLure{
     format("The Lure Ball works best in a battle that was initated by fishing.")
 }
-text gText_Quest_ArtisanBalls_ExplainHeavy{
+text gText_Quest_ArtisanBalls1_ExplainHeavy{
     format("The Heavy Ball is less successful on light Pokémon and more successful on Heavy Pokémon!")
 }
-text gText_Quest_ArtisanBalls_ExplainLove{
+text gText_Quest_ArtisanBalls1_ExplainLove{
     format("The Love Ball works best when the user's Pokémon is the opposite gender of the wild Pokémon being captured.")
 }
-text gText_Quest_ArtisanBalls_ExplainFriend{
+text gText_Quest_ArtisanBalls1_ExplainFriend{
     format("Pokémon captured with the Friend Ball will initally be more friendly to the Trainer that captured it.")
 }
-text gText_Quest_ArtisanBalls_ExplainMoon{
+text gText_Quest_ArtisanBalls1_ExplainMoon{
     format("If the Pokémon being captured is part of an evolutionary family that uses a Moon Stone to evolve, the Moon Ball will be more effective.")
 }
 
-text gText_Quest_ArtisanBalls_IGotFired {
+text gText_Quest_ArtisanBalls1_IGotFired {
 	format("I make craft PokéBalls. I'm tired of working for somebody else, and want to open a shop selling my Balls! Would you be willing to test my PokeBalls?")
 }
-text gText_Quest_ArtisanBalls_SergeyGaveYou {
+text gText_Quest_ArtisanBalls1_SergeyGaveYou {
 	format("{PLAYER} obtained a set of craft PokéBalls!")
 }
-text gText_Quest_ArtisanBalls_ComeBack{
+text gText_Quest_ArtisanBalls1_ComeBack{
     format("That set has one of each: Fast, Level, Lure, Love, Friend and a Moon Ball. The books explain how to best use them. Come back if you need more PokeBalls.")
 }
-text gText_Quest_ArtisanBalls_HowIsProgress {
+text gText_Quest_ArtisanBalls1_HowIsProgress {
 	format("How is progress going?")
 }
-text gText_Quest_ArtisanBalls__ThoseBallsCanBe {
+text gText_Quest_ArtisanBalls1__ThoseBallsCanBe {
 	format("Those balls can be tricky to use! You gotta make sure you're picking the right targets.")
 }
-text gText_Quest_ArtisanBalls_DidYouRunOut {
+text gText_Quest_ArtisanBalls1_DidYouRunOut {
 	format("Did you run out? Here, I'll help you...")
 }
-text gText_Quest_ArtisanBalls_JustMadeThatToday {
+text gText_Quest_ArtisanBalls1_JustMadeThatToday {
 	format("Just made those today. Let me know how they do!")
 }
-text gText_Quest_ArtisanBalls_SoTheyAllWork {
+text gText_Quest_ArtisanBalls1_SoTheyAllWork {
 	format("So they all work well? Fantastic. Thank you so much for your help! Time to start reaching out and really selling them. Take this as a thanks!")
 }
 text gText_Quest_ArtisanBalls2_LookingToBuyOr{
@@ -847,10 +847,10 @@ text gText_Quest_ArtisanBalls3_ImSoExcitedForWhat{
 	format("I'm so excited for what will come next!")
 }
 //PSF TODO support @ symbols in charset
-text gText_Quest_ArtisanBalls_TheDoorIsLockedBut{
+text gText_Quest_ArtisanBalls1_TheDoorIsLockedBut{
 	format("The door is locked, but there is a sign on the door: This location has been closed. Please direct all questions to support at silph.co. Thank you for choosing Silph Co.!\pThere is another note below it. Do you want to read it?")
 }
-text gText_Quest_ArtisanBalls_ToMyCustomers{
+text gText_Quest_ArtisanBalls1_ToMyCustomers{
 	format("To my loyal customers,\nSilph laid us all off. They bought my company, took the patents, and laid us all off. I feel so... used. Thank you for your support as we grew and thank you for enjoying our products. Special thanks to {PLAYER}, who always believed in us.\p- Sergey")
 }
 movement Quest_ArtisanBalls3_LeaveRoom_Movement{

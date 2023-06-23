@@ -48,7 +48,7 @@ struct SideQuest
 	const u8 numSubquests;
 }; 
 
-extern const struct SideQuest gSideQuests[QUEST_COUNT];
+extern const struct SideQuest sSideQuests[QUEST_COUNT];
 
 enum QuestCases
 {

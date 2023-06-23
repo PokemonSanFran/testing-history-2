@@ -2424,7 +2424,7 @@ static const struct SubQuest sSieboldsTraining_Sub[QUEST_RESTAURANTEXPANSION2_SU
 
 //Declaration of side quest structures. Edits to quests are made here.
 #define side_quest(n, d, dd, m, s, st, sq, ns) {.name = n, .desc = d, .donedesc = dd, .map = m, .sprite = s, .spritetype = st, .subquests = sq, .numSubquests = ns}
-static const struct SideQuest sSideQuests[QUEST_COUNT] = {
+const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	side_quest(
 	        gText_Quest_PlayersAdventure_Name,
 	        gText_Quest_PlayersAdventure_Desc,

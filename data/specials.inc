@@ -613,3 +613,4 @@ gSpecials::
     def_special Quest_Bodegaburnout_ClearRescueFlag
     def_special Quest_Breaktheinternet_Count_CompletedSocialMedia
     def_special Quest_Breaktheinternet_CountRemainingSubquests
+    def_special Quest_Warehousewarfare_CountRemainingSubquests

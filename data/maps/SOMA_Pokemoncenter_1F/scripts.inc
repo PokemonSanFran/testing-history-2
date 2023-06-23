@@ -28,9 +28,9 @@ SOMA_Pokemoncenter_1F_EventScript_Clerk::
 	message gText_HowMayIServeYou
 	waitmessage
 	pokemart OldaleTown_Mart_Pokemart_Basic
+	msgbox gText_PleaseComeAgain
 	call Quest_Bodegaburnout_CheckSubquestState_Script
 	call Quest_Bodegaburnout_CheckNextStage_Script
-	msgbox gText_PleaseComeAgain
 	release
 	end
 

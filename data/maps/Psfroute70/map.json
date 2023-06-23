@@ -35,7 +35,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
-      "script": "Quest_ArtisanBalls_TrainerB_Event_Script",
+      "script": "Quest_ArtisanBalls2_TrainerB_Event_Script",
       "flag": "FLAG_TEMP_C"
     },
     {

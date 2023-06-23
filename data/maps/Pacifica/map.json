@@ -200,15 +200,6 @@
       "var": "0",
       "var_value": "0",
       "script": "Quest_Hang20_Debug_Script"
-    },
-    {
-      "type": "trigger",
-      "x": 36,
-      "y": 28,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "Quest_WarehouseWarfare_CallPlayer_Dialogue"
     }
   ],
   "bg_events": [

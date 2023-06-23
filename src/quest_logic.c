@@ -31,9 +31,10 @@ u32 GetCurrentMap(void)
     return (currentMapNum | (currentMapGroup << 8));
 }
 
-u16 Quest_Generic_CountRemainingSubquests(u16 relevantQuest, u16 totalNumSubquests)
+u16 Quest_Generic_CountRemainingSubquests(u16 relevantQuest)
 {
-    u16 numRemainingQuests = totalNumSubquests;
+    u16 numRemainingQuests = sSideQuests[relevantQuest].numSubquests;
+    u16 totalNumSubquests = numRemainingQuests;
     u8 currentSubQuest;
 
     for (currentSubQuest = 0; currentSubQuest < totalNumSubquests; currentSubQuest++)
@@ -202,7 +203,7 @@ void Quest_Rockcollector_CheckSubquestTakeStone(void)
 
 u16 Quest_Rockcollector_CountRemainingSubquests(void)
 {
-    return Quest_Generic_CountRemainingSubquests(QUEST_ROCKCOLLECTOR,QUEST_ROCKCOLLECTOR_SUB_COUNT);
+    return Quest_Generic_CountRemainingSubquests(QUEST_ROCKCOLLECTOR);
 }
 
 void Quest_Rockcollector_RespawnStones(void)
@@ -274,7 +275,7 @@ void Quest_Hiddengrottomapping_MarkSubquestBiome(void) {
 }
 
 u16 Quest_Hiddengrottomapping_CountCompletedSubquests(void){
-    return Quest_Generic_CountRemainingSubquests(QUEST_HIDDENGROTTOMAPPING,QUEST_HIDDENGROTTOMAPPING_SUB_COUNT);
+    return Quest_Generic_CountRemainingSubquests(QUEST_HIDDENGROTTOMAPPING);
 }
 
 
@@ -298,7 +299,7 @@ bool8 Quest_Hiddengrottomapping_CheckSubquestsForReward(void){
 // ***********************************************************************
 
 u16 Quest_Hiddengrottomapping2_CountCompletedSubquests(void){
-    return Quest_Generic_CountRemainingSubquests(QUEST_HIDDENGROTTOMAPPING2,QUEST_HIDDENGROTTOMAPPING2_SUB_COUNT);
+    return Quest_Generic_CountRemainingSubquests(QUEST_HIDDENGROTTOMAPPING2);
 }
 
 bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
@@ -500,7 +501,7 @@ void Quest_Ultrawormholeresearch_SetSubquestForUltraBeast(void){
 }
 
 u16 Quest_Ultrawormholeresearch_CountRemainingSubquests(void){
-    return Quest_Generic_CountRemainingSubquests(QUEST_ULTRAWORMHOLERESEARCH,QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT);
+    return Quest_Generic_CountRemainingSubquests(QUEST_ULTRAWORMHOLERESEARCH);
 }
 
 // ***********************************************************************
@@ -734,7 +735,7 @@ void Quest_Taxicabturnaround_MarkSubquestComplete(void){
 }
 
 u16 Quest_Taxicabturnaround_CountRemainingSubquests(void){
-    return Quest_Generic_CountRemainingSubquests(QUEST_TAXICABTURNAROUND,QUEST_TAXICABTURNAROUND_SUB_COUNT);
+    return Quest_Generic_CountRemainingSubquests(QUEST_TAXICABTURNAROUND);
 }
 
 bool8 Quest_Taxicabturnaround_CheckReadyForNext(void){
@@ -871,7 +872,7 @@ void Quest_Bodegaburnout_Catch_MarkSubquestComplete(void){
 }
 
 u16 Quest_Bodegaburnout_CountRemainingSubquests(void){
-    return Quest_Generic_CountRemainingSubquests(QUEST_BODEGABURNOUT,QUEST_BODEGABURNOUT_SUB_COUNT);
+    return Quest_Generic_CountRemainingSubquests(QUEST_BODEGABURNOUT);
 }
 
 bool8 Quest_Bodegaburnout_CheckReadyForNext(void){
@@ -1021,14 +1022,11 @@ bool8 Quest_Bodegaburnout_CheckRequiredPokemon(void){
 
     switch(neededType){
         case CATCH_STRONG:
-            //return Quest_Bodegaburnout_CheckStrongPokemon();
-            return Quest_Bodegaburnout_CheckFairyPokemon();
+            return Quest_Bodegaburnout_CheckStrongPokemon();
         case CATCH_COLD:
-            //return Quest_Bodegaburnout_CheckColdPokemon();
-            return Quest_Bodegaburnout_CheckFairyPokemon();
+            return Quest_Bodegaburnout_CheckColdPokemon();
         case CATCH_SMART:
-            //return Quest_Bodegaburnout_CheckSmartPokemon();
-            return Quest_Bodegaburnout_CheckFairyPokemon();
+            return Quest_Bodegaburnout_CheckSmartPokemon();
         case CATCH_FAIRY:
             return Quest_Bodegaburnout_CheckFairyPokemon();
         default:
@@ -1137,5 +1135,14 @@ u8 Quest_Breaktheinternet_Count_CompletedSocialMedia(void){
 
 u16 Quest_Breaktheinternet_CountRemainingSubquests(void)
 {
-    return Quest_Generic_CountRemainingSubquests(QUEST_BREAKTHEINTERNET,QUEST_BREAKTHEINTERNET_SUB_COUNT);
+    return Quest_Generic_CountRemainingSubquests(QUEST_BREAKTHEINTERNET);
+}
+
+// ***********************************************************************
+// Quest: Warehouse Warfare
+// ***********************************************************************
+
+u16 Quest_Warehousewarfare_CountRemainingSubquests(void)
+{
+    return Quest_Generic_CountRemainingSubquests(QUEST_WAREHOUSEWARFARE);
 }
