@@ -139,6 +139,73 @@ script Quest_Warehousewarfare_Guard_Dialogue{
     end
 }
 
+script Quest_Warehousewarfare_DebugBarge1_Script{
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WAREHOUSEWARFARE,SUB_QUEST_1)
+    msgbox(format("you freed the workers and shut down the engine because both were in the same room."),MSGBOX_NPC)
+    end
+}
+
+script Quest_Warehousewarfare_DebugBarge2Workers_Script{
+    setflag(FLAG_QUEST_WAREHOUSEWARFARE_BARGE2_WORKERS_CLEAR)
+    call(Quest_Warehousewarfare_CheckBarge2Progress_Script)
+    msgbox(format("you freed the workers."),MSGBOX_NPC)
+    end
+}
+
+script Quest_Warehousewarfare_DebugBarge2Engine_Script{
+    setflag(FLAG_QUEST_WAREHOUSEWARFARE_BARGE2_ENGINE_CLEAR)
+    call(Quest_Warehousewarfare_CheckBarge2Progress_Script)
+    msgbox(format("you shut down the engine."),MSGBOX_NPC)
+    end
+}
+
+script Quest_Warehousewarfare_CheckBarge2Progress_Script{
+    if (flag(FLAG_QUEST_WAREHOUSEWARFARE_BARGE2_WORKERS_CLEAR) && flag(FLAG_QUEST_WAREHOUSEWARFARE_BARGE2_ENGINE_CLEAR)){
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WAREHOUSEWARFARE,SUB_QUEST_2)
+    }
+    return
+}
+
+script Quest_Warehousewarfare_Barge3Triple_Battle_Script{
+    if (flag(FLAG_QUEST_WAREHOUSEWARFARE_BARGE3_ENGINE_CLEAR)){
+        release
+        end
+    }
+
+    lock
+    msgbox(format("this was a trap, and now you have to battle all of us!"),MSGBOX_AUTOCLOSE)
+    closemessage
+    applymovement(1,Common_Movement_WalkInPlaceUp)
+    waitmovement(1)
+    trainerbattle_no_intro(TRAINER_AMAZON_GRUNT1,gText_Warehousewarfare_GoodLuckGetting)
+    applymovement(2,Common_Movement_WalkInPlaceUp)
+    waitmovement(2)
+    trainerbattle_no_intro(TRAINER_AMAZON_GRUNT2,gText_Warehousewarfare_DidYouReallyThink)
+    applymovement(3,Common_Movement_WalkInPlaceUp)
+    waitmovement(3)
+    trainerbattle_no_intro(TRAINER_AMAZON_GRUNT3,gText_Warehousewarfare_PerhapsThisWas)
+    msgbox(format("guess you need to fight our boss"))
+    setflag(FLAG_QUEST_WAREHOUSEWARFARE_BARGE3_ENGINE_CLEAR)
+    closemessage
+    release
+    end    
+}
+
+script Quest_Warehousewarfare_Barge3_CEO_Battle_Script{
+    lock
+    msgbox(gText_Warehousewarfare_OhYouShut,MSGBOX_NPC,SPEAKER_AMAZON_CEO)
+    msgbox(gText_Warehousewarfare_IRegret,SPEAKER_AMAZON_CEO)
+    msgbox(gText_Warehousewarfare_YouAreInteresting,SPEAKER_AMAZON_CEO)
+    closemessage
+    trainerbattle_no_intro(TRAINER_AMAZON_CEO,gText_Warehousewarfare_Outstanding)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WAREHOUSEWARFARE,SUB_QUEST_3)
+    questmenu(QUEST_MENU_SET_REWARD,QUEST_WAREHOUSEWARFARE)
+    msgbox(gText_Warehousewarfare_ThisWillSlowUs)
+    closemessage
+    release
+    end
+}
+
 text gText_Warehousewarfare_WelcomeTo{
     format("Welcome to the Shopkeepers Union!")
 }
@@ -196,4 +263,28 @@ text gText_Warehousewarfare_OddlyEnough{
 }
 text gText_Warehousewarfare_YouAreNotAuthorized{
     format("")
+}
+text gText_Warehousewarfare_GoodLuckGetting{
+	format("Good luck getting out this pickle, even if you beat me.")
+}
+text gText_Warehousewarfare_DidYouReallyThink{
+	format("Did you really think this would be easy?")
+}
+text gText_Warehousewarfare_PerhapsThisWas{
+	format("Perhaps this was a bad idea for us...")
+}
+text gText_Warehousewarfare_OhYouShut{
+	format("Oh you shut down the engine... and now you're here to free the workers?")
+}
+text gText_Warehousewarfare_IRegret{
+	format("I regret to inform you, there are no workers. And of course, you fell for it, {PLAYER}.")
+}
+text gText_Warehousewarfare_YouAreInteresting{
+	format("You are interesting... but this is it for you. No more intefering with Amazon!")
+}
+text gText_Warehousewarfare_Outstanding{
+	format("Outstanding...")
+}
+text gText_Warehousewarfare_ThisWillSlowUs{
+	format("This will slow us down... but you will not defeat us. You can't.")
 }

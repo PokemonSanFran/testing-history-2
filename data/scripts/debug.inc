@@ -63,26 +63,26 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 Debug_Script_1::
 	startquest QUEST_WAREHOUSEWARFARE
-	warp MAP_PACIFICA_UNION_HQ, 0
 	end
 
 
 Debug_Script_2::
-	warp MAP_PSFROUTE51, 1
+	warp MAP_PACIFICA_UNION_HQ, 0
 	end
 
 
 Debug_Script_3::
-	warp MAP_PSFROUTE76, 1
+	warp MAP_PSFROUTE51, 1
 	end
 
 
 Debug_Script_4::
-	warp MAP_PSFROUTE20, 1
+	warp MAP_PSFROUTE76, 1
 	end
 
 
 Debug_Script_5::
+	warp MAP_PSFROUTE20, 1
 	end
 
 

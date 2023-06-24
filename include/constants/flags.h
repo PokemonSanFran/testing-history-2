@@ -1231,7 +1231,6 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
-//#define FLAG_QUEST_EXPLAINED_WAREHOUSE_WARFARE  0x9F
 //PSF Item Ball Scripts
 #define FLAG_FOUND_STOLEN_GOODS 0x13A
 #define FLAG_ITEM_MARIN_RANGER_HEADPHONES                           0x3E8
@@ -1278,9 +1277,12 @@
 #define BODEGA_RESCUE_COUNT (FLAG_QUEST_BODEGA_RESCUE_FLAGS_END - FLAG_QUEST_BODEGA_RESCUE_FLAGS_START + 1)
 #define FLAG_QUEST_WAREHOUSE_WARFARE_EXPLAINED                      0x499
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
+#define FLAG_QUEST_WAREHOUSEWARFARE_BARGE2_WORKERS_CLEAR 0x49A // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
+#define FLAG_QUEST_WAREHOUSEWARFARE_BARGE2_ENGINE_CLEAR 0x49B // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
+#define FLAG_QUEST_WAREHOUSEWARFARE_BARGE3_ENGINE_CLEAR 0x49C // Unused Flag
 #define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
 #define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
 #define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
