@@ -68,15 +68,17 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-	warp MAP_ALAMEDA, 2
+	warp MAP_PSFROUTE51, 1
 	end
 
 
 Debug_Script_3::
+	warp MAP_PSFROUTE76, 1
 	end
 
 
 Debug_Script_4::
+	warp MAP_PSFROUTE20, 1
 	end
 
 

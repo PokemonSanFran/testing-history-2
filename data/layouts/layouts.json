@@ -6840,6 +6840,16 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Amazon_Barge_2/border.bin",
       "blockdata_filepath": "data/layouts/Amazon_Barge_2/map.bin"
+    },
+    {
+      "id": "LAYOUT_AMAZON_BARGE_3",
+      "name": "Amazon_Barge_3_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Amazon_Barge_3/border.bin",
+      "blockdata_filepath": "data/layouts/Amazon_Barge_3/map.bin"
     }
   ]
 }

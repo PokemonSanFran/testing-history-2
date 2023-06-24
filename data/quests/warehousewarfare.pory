@@ -134,7 +134,7 @@ script Quest_Warehousewarfare_Barge3Guard_Visibility_Script{
 }
 
 script Quest_Warehousewarfare_Guard_Dialogue{
-    msgbox(gText_Warehousewarfare_YouAreNotAuthorized,MSGBOX,NPC)
+    msgbox(gText_Warehousewarfare_YouAreNotAuthorized,MSGBOX_NPC)
     release
     end
 }
