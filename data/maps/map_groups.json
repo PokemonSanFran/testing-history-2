@@ -78,7 +78,8 @@
     "Ultra_Kalos",
     "Ultra_Johto",
     "Ultra_Galar",
-    "Ultra_Kanto"
+    "Ultra_Kanto",
+    "Amazon_Barge_1"
   ],
   "gMapGroup_PsfTownsAndRoutes": [
     "Southbay",
@@ -167,7 +168,8 @@
     "Trolley_Underground_Evolutionstones_Cave",
     "Psfroute20",
     "Psfroute76",
-    "Psfroute51"
+    "Psfroute51",
+    "Amazon_Barge_2"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

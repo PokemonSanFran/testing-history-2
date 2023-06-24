@@ -1,0 +1,5 @@
+mapscripts Psfroute51_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        call(Quest_Warehousewarfare_Barge1Guard_Visibility_Script)
+    }
+}

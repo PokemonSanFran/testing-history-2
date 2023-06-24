@@ -6524,8 +6524,8 @@
     {
       "id": "LAYOUT_PSFROUTE20",
       "name": "Psfroute20_Layout",
-      "width": 16,
-      "height": 26,
+      "width": 24,
+      "height": 60,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mossdeep",
       "border_filepath": "data/layouts/Psfroute20/border.bin",
@@ -6534,7 +6534,7 @@
     {
       "id": "LAYOUT_PSFROUTE76",
       "name": "Psfroute76_Layout",
-      "width": 16,
+      "width": 100,
       "height": 26,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mossdeep",
@@ -6544,7 +6544,7 @@
     {
       "id": "LAYOUT_PSFROUTE51",
       "name": "Psfroute51_Layout",
-      "width": 16,
+      "width": 80,
       "height": 26,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mossdeep",
@@ -6820,6 +6820,26 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Fakenews_Warehouse/border.bin",
       "blockdata_filepath": "data/layouts/Fakenews_Warehouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_AMAZON_BARGE_1",
+      "name": "Amazon_Barge_1_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Amazon_Barge_1/border.bin",
+      "blockdata_filepath": "data/layouts/Amazon_Barge_1/map.bin"
+    },
+    {
+      "id": "LAYOUT_AMAZON_BARGE_2",
+      "name": "Amazon_Barge_2_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Amazon_Barge_2/border.bin",
+      "blockdata_filepath": "data/layouts/Amazon_Barge_2/map.bin"
     }
   ]
 }

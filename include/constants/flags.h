@@ -1276,7 +1276,7 @@
 #define FLAG_QUEST_BODEGA_RESCUE_FLAGS_END                                  FLAG_QUEST_BODEGA_RESCUE6
 
 #define BODEGA_RESCUE_COUNT (FLAG_QUEST_BODEGA_RESCUE_FLAGS_END - FLAG_QUEST_BODEGA_RESCUE_FLAGS_START + 1)
-
+#define FLAG_QUEST_WAREHOUSE_WARFARE_EXPLAINED                      0x499
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag

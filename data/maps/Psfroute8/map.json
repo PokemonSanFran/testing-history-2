@@ -27,6 +27,11 @@
       "map": "MAP_FISHERMANSWHARF",
       "offset": 0,
       "direction": "left"
+    },
+    {
+      "map": "MAP_PSFROUTE51",
+      "offset": 74,
+      "direction": "right"
     }
   ],
   "object_events": [

@@ -25,6 +25,7 @@
 #define MAP_ULTRA_JOHTO          (16 | (0 << 8))
 #define MAP_ULTRA_GALAR          (17 | (0 << 8))
 #define MAP_ULTRA_KANTO          (18 | (0 << 8))
+#define MAP_AMAZON_BARGE_1       (19 | (0 << 8))
 
 // gMapGroup_PsfTownsAndRoutes
 #define MAP_SOUTHBAY                                 (0 | (1 << 8))
@@ -114,6 +115,7 @@
 #define MAP_PSFROUTE20                               (84 | (1 << 8))
 #define MAP_PSFROUTE76                               (85 | (1 << 8))
 #define MAP_PSFROUTE51                               (86 | (1 << 8))
+#define MAP_AMAZON_BARGE_2                           (87 | (1 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (2 << 8))

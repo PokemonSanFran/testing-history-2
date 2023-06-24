@@ -1631,3 +1631,7 @@ Script_RemoveTint::
 	.include "data/maps/Southbay_Cafe/scripts.inc"
 
 	.include "data/maps/Fakenews_Warehouse/scripts.inc"
+
+	.include "data/maps/Amazon_Barge_1/scripts.inc"
+
+	.include "data/maps/Amazon_Barge_2/scripts.inc"

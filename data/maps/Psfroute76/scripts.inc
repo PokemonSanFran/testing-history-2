@@ -1,2 +1,8 @@
 Psfroute76_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Psfroute76_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Psfroute76_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call Quest_Warehousewarfare_Barge2Guard_Visibility_Script
+	return
+

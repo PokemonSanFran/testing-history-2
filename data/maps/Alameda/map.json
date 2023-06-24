@@ -17,6 +17,11 @@
       "map": "MAP_PSFROUTE72",
       "offset": 15,
       "direction": "up"
+    },
+    {
+      "map": "MAP_PSFROUTE51",
+      "offset": 14,
+      "direction": "left"
     }
   ],
   "object_events": [
