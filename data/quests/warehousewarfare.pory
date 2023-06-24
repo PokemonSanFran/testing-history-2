@@ -193,18 +193,30 @@ script Quest_Warehousewarfare_Barge3Triple_Battle_Script{
 
 script Quest_Warehousewarfare_Barge3_CEO_Battle_Script{
     lock
-    msgbox(gText_Warehousewarfare_OhYouShut,MSGBOX_NPC,SPEAKER_AMAZON_CEO)
-    msgbox(gText_Warehousewarfare_IRegret,SPEAKER_AMAZON_CEO)
-    msgbox(gText_Warehousewarfare_YouAreInteresting,SPEAKER_AMAZON_CEO)
-    closemessage
-    trainerbattle_no_intro(TRAINER_AMAZON_CEO,gText_Warehousewarfare_Outstanding)
-    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WAREHOUSEWARFARE,SUB_QUEST_3)
-    questmenu(QUEST_MENU_SET_REWARD,QUEST_WAREHOUSEWARFARE)
-    msgbox(gText_Warehousewarfare_ThisWillSlowUs)
-    closemessage
-    release
-    end
+
+        if (var(VAR_QUEST_WAREHOUSEWARFARE_STATE) != SAVED_BEFORE_AMAZON_CEO){
+            setvar(VAR_QUEST_WAREHOUSEWARFARE_STATE,SAVED_BEFORE_AMAZON_CEO)
+            msgbox(gText_Warehousewarfare_OhYouShut,MSGBOX_NPC,SPEAKER_AMAZON_CEO)
+            msgbox(gText_Warehousewarfare_IRegret,,SPEAKER_AMAZON_CEO)
+            msgbox(gText_Warehousewarfare_YouAreInteresting,,SPEAKER_AMAZON_CEO)
+            lockall
+            closemessage
+            call(Common_EventScript_SaveGame)
+            closemessage
+        }
+        trainerbattle_no_intro(TRAINER_AMAZON_CEO,gText_Warehousewarfare_Outstanding)
+        subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WAREHOUSEWARFARE,SUB_QUEST_3)
+        questmenu(QUEST_MENU_SET_REWARD,QUEST_WAREHOUSEWARFARE)
+        msgbox(gText_Warehousewarfare_ThisWillSlowUs,,SPEAKER_AMAZON_CEO)
+        closemessage
+        release
+        end
 }
+
+//PSF TODO
+// barge 1 you free the workers and turn off the engine in the same room
+// barge 2 you free the workers and turn off the engine seperately, but can be done in any order
+// barge 3 you turn off the engine which turns off the door trapping the workers, but there are no workers
 
 text gText_Warehousewarfare_WelcomeTo{
     format("Welcome to the Shopkeepers Union!")

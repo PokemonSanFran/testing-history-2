@@ -306,6 +306,8 @@ script Quest_Breaktheinternet_WarehouseSlurfpuff_Event_Script{
 
 script Quest_Breaktheinternet_StartFinalCutscene_Dialogue{
     lock
+    if (var(VAR_QUEST_BREAKTHEINTERNET_STATE) != SAVED_BEFORE_TWITTER_CEO){
+    setvar(VAR_QUEST_BREAKTHEINTERNET_STATE,SAVED_BEFORE_TWITTER_CEO)
     call(Quest_Breaktheinternet_SetPlayerPosition_Script)
     msgbox(gText_Breaktheinternet_IsThat,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
     closemessage
@@ -350,6 +352,7 @@ waitse
     waitmovement(PLAYER)
     msgbox(gText_Breaktheinternet_YouAppearToBe,,SPEAKER_TWITTER_CEO)
     closemessage
+}
     trainerbattle_no_intro(TRAINER_TWITTER_CEO,gText_Breaktheinternet_HowIsThis)
     goto(Quest_Breaktheinternet_PostCEOBattle_Dialogue)
 }

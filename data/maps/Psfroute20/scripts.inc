@@ -3,6 +3,6 @@ Psfroute20_MapScripts::
 	.byte 0
 
 Psfroute20_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call Quest_Warehousewarfare_Barge2Guard_Visibility_Script
+	call Quest_Warehousewarfare_Barge3Guard_Visibility_Script
 	return
 

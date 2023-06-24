@@ -63,7 +63,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Quest_Warehousewarfare_Barge3_CEO_Battle_Script",
       "flag": "0"
     }
   ],
@@ -82,27 +82,27 @@
       "x": 0,
       "y": 2,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ALWAYS_ZERO",
       "var_value": "0",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 2,
-      "y": 2,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "script": "Quest_Warehousewarfare_Barge3Triple_Battle_Script"
     },
     {
       "type": "trigger",
       "x": 1,
       "y": 3,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ALWAYS_ZERO",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Quest_Warehousewarfare_Barge3Triple_Battle_Script"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_ALWAYS_ZERO",
+      "var_value": "0",
+      "script": "Quest_Warehousewarfare_Barge3Triple_Battle_Script"
     }
   ],
   "bg_events": [
