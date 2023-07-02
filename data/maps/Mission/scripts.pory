@@ -28,6 +28,10 @@ script Mission_2_Interact_Script{
     }
 }
 
+script Mission_3_Interact_Script{
+    msgbox(gText_Mission_Placeholder,MSGBOX_NPC)
+}
+
 text gText_Mission_Placeholder{
     format("")
 }
