@@ -62,12 +62,13 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	startquest QUEST_WAREHOUSEWARFARE
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_PERSUASIVEPASSENGER
+	warp MAP_UBER_INTERIOR, 1, 3
 	end
 
 
 Debug_Script_2::
-	warp MAP_PACIFICA_UNION_HQ, 0
+	warp MAP_UBER_INTERIOR, 10, 3
 	end
 
 

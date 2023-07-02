@@ -21,16 +21,29 @@ script Quest_Persuasivepassenger_Reward_Dialogue{
     completequest(QUEST_PERSUASIVEPASSENGER)
 }
 
-script Quest_Persuasivepassenger_Driver1_Event_Script{
+script Quest_Persuasivepassenger_SetCutsceneVar_Script{
+    specialvar(VAR_TEMP_1,Quest_Persuasivepassenger_CountRemainingSubquests)
+    return
+}
 
+script Quest_Persuasivepassenger_Driver1_Event_Script{
+    setvar(VAR_TEMP_1,5)
+    lock
+    //special(CompleteUberDrive)
+    warp(MAP_PETALBURG_CITY,0)
 }
 
 script Quest_Persuasivepassenger_Driver2_Event_Script{
-
+    setvar(VAR_TEMP_1,5)
+    lock
+    //special(CompleteUberDrive)
+    warp(MAP_VERDANTURF_TOWN,0)
 }
 
 script Quest_Persuasivepassenger_Driver3_Event_Script{
-
+    setvar(VAR_TEMP_1,5)
+    lock
+    warp(MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM,0)
 }
 
 script Quest_Persuasivepassenger_Complete_Dialogue{

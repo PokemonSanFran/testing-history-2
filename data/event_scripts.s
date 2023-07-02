@@ -1637,3 +1637,5 @@ Script_RemoveTint::
 	.include "data/maps/Amazon_Barge_2/scripts.inc"
 
 	.include "data/maps/Amazon_Barge_3/scripts.inc"
+
+	.include "data/maps/Uber_Interior/scripts.inc"

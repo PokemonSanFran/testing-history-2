@@ -310,7 +310,7 @@ gSpecials::
 	def_special InitRoamer
 	def_special TryUpdateRusturfTunnelState
 	def_special IsGrassTypeInParty
-	def_special IsFireTypeInParty 
+	def_special IsFireTypeInParty
 	def_special DoContestHallWarp
 	def_special LoadWallyZigzagoon
 	def_special IsStarterInParty
@@ -563,7 +563,7 @@ gSpecials::
     def_special CheckPartyHasOneMon
     def_special ConvertChallengeTurnsToRank
     def_special Quest_BiomeResearch_CountCompletedSubquest
-    def_special Quest_Wildfirerisk_GetPercentage 
+    def_special Quest_Wildfirerisk_GetPercentage
     def_special GenerateMazeItemsSeed
     def_special Quest_Kitchenvolunteering_GeneratePantryItem
     def_special Quest_Kitchenvolunteering_CheckProgressAndSetReward
@@ -573,7 +573,7 @@ gSpecials::
     def_special Quest_Rockcollector_CountRemainingSubquests
     def_special Quest_Rockcollector_CheckSubquestTakeStone
     def_special Quest_Rockcollector_RespawnStones
-    def_special HiddenGrotto_LoadDiscoveredGrottoText 
+    def_special HiddenGrotto_LoadDiscoveredGrottoText
     def_special HiddenGrotto_LoadGrottoAndWarpPlayer
     def_special Quest_Hiddengrottomapping_MarkSubquestBiome
     def_special Quest_Hiddengrottomapping_CheckSubquestsForReward
@@ -614,3 +614,5 @@ gSpecials::
     def_special Quest_Breaktheinternet_Count_CompletedSocialMedia
     def_special Quest_Breaktheinternet_CountRemainingSubquests
     def_special Quest_Warehousewarfare_CountRemainingSubquests
+    def_special Quest_Persuasivepassenger_CountRemainingSubquests
+    def_special Quest_Persuasivepassenger_CheckQuestAndChooseDriver

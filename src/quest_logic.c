@@ -27,7 +27,7 @@ u32 GetCurrentMap(void)
 {
     u32 currentMapGroup = gSaveBlock1Ptr->location.mapGroup;
     u32 currentMapNum = gSaveBlock1Ptr->location.mapNum;
-   
+
     return (currentMapNum | (currentMapGroup << 8));
 }
 
@@ -313,7 +313,7 @@ bool8 Quest_Hiddengrottomapping2_CheckForJournalPage(void){
         if (CheckBagHasItem(currentJournalPage,1)){
             RemoveBagItem(currentJournalPage,1);
             QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING2,FLAG_SET_COMPLETED,i);
-            hasJournalPages = TRUE; 
+            hasJournalPages = TRUE;
         }
     }
     return hasJournalPages;
@@ -423,7 +423,7 @@ void Quest_Ultrawormholeresearch_SetTotemBattle(void) {
 
             CreateScriptedWildMon(totemMon, 100, totemHeldItem);
             Quest_Ultrawormholeresearch_SetTotemBoost(TOTEM, i);
-            return; 
+            return;
         }
     }
 }
@@ -436,7 +436,7 @@ void Quest_Ultrawormholeresearch_SetDefeatedTotemFlag(void) {
     for (i = 0; i < NUM_TOTEM_MON; i++) {
         if (TOTEM_POKEMON_LIST[i][0] == mapId) {
             FlagSet(totemFlag + i);
-            return; 
+            return;
         }
     }
 }
@@ -468,7 +468,7 @@ void Quest_Ultrawormholeresearch_SetUltraBeastBattle(void){
 
     for (i = 0; i < QUEST_ULTRAWORMHOLERESEARCH_SUB_COUNT; i++) {
         if (ULTRA_BEAST_LIST[i][0] == GetCurrentMap()) {
-            
+
             ultraBeastMon = ULTRA_BEAST_LIST[i][1];
             ultraBeastHeldItem = ULTRA_BEAST_LIST[i][2];
 
@@ -643,7 +643,7 @@ bool8 Quest_Taxicabturnaround_IsSubquestComplete(void){
 }
 
 bool8 Quest_Taxicabturnaround_CheckSeaPokemon(void){
-    //11m and can learn surf 
+    //11m and can learn surf
     u32 species = 0, height = 0;
     u32 requiredHeight = 1100;
     bool8 doesPokemonMatch = TRUE;
@@ -1007,7 +1007,7 @@ bool8 Quest_Bodegaburnout_CheckFairyPokemon(void){
              (eggGroup[0] != EGG_GROUP_FAIRY) &&
              (eggGroup[1] != EGG_GROUP_FAIRY)
              &&
-             (type[0] != TYPE_FAIRY) && 
+             (type[0] != TYPE_FAIRY) &&
              (type[1] != TYPE_FAIRY)
            )
             {
@@ -1146,3 +1146,73 @@ u16 Quest_Warehousewarfare_CountRemainingSubquests(void)
 {
     return Quest_Generic_CountRemainingSubquests(QUEST_WAREHOUSEWARFARE);
 }
+
+// ***********************************************************************
+// Quest: Persuasive Passenger
+// ***********************************************************************
+
+u16 Quest_Persuasivepassenger_CountRemainingSubquests(void)
+{
+    return Quest_Generic_CountRemainingSubquests(QUEST_PERSUASIVEPASSENGER);
+}
+
+bool8 Quest_Persuasivepassenger_ShouldPlayFirstDriver(void)
+{
+    u16 completedQuests = Quest_Persuasivepassenger_CountRemainingSubquests();
+    bool8 questActive = QuestMenu_GetSetQuestState(QUEST_PERSUASIVEPASSENGER,FLAG_GET_ACTIVE);
+    bool8 onCorrectMap = (MAP_ALAMEDA == GetCurrentMap());
+    bool8 shouldPlay = FALSE;
+
+    if ((completedQuests == 3) && (questActive) && (onCorrectMap)){
+        shouldPlay == TRUE;
+    }
+
+    return shouldPlay;
+}
+
+bool8 Quest_Persuasivepassenger_ShouldPlaySecondDriver(void)
+{
+    u16 completedQuests = Quest_Persuasivepassenger_CountRemainingSubquests();
+    bool8 questActive = QuestMenu_GetSetQuestState(QUEST_PERSUASIVEPASSENGER,FLAG_GET_ACTIVE);
+    bool8 onCorrectMap = (MAP_HAIGHTASHBURY == GetCurrentMap());
+    bool8 shouldPlay = FALSE;
+
+    if ((completedQuests == 2) && (questActive) && (onCorrectMap)){
+        shouldPlay == TRUE;
+    }
+
+    return shouldPlay;
+}
+
+bool8 Quest_Persuasivepassenger_ShouldPlayThirdDriver(void)
+{
+    u16 completedQuests = Quest_Persuasivepassenger_CountRemainingSubquests();
+    bool8 questActive = QuestMenu_GetSetQuestState(QUEST_PERSUASIVEPASSENGER,FLAG_GET_ACTIVE);
+    bool8 shouldPlay = FALSE;
+
+    if ((completedQuests == 1) && (questActive)){
+        shouldPlay == TRUE;
+    }
+
+    return shouldPlay;
+}
+
+u16 Quest_Persuasivepassenger_CheckQuestAndChooseDriver(void){
+    bool8 questActive = QuestMenu_GetSetQuestState(QUEST_PERSUASIVEPASSENGER,FLAG_GET_ACTIVE);
+    u16 questResult = 99;
+
+    if (questActive == TRUE){
+
+        if (Quest_Persuasivepassenger_ShouldPlayFirstDriver())
+            questResult = 3;
+
+        if (Quest_Persuasivepassenger_ShouldPlaySecondDriver())
+            questResult = 2;
+
+        if (Quest_Persuasivepassenger_ShouldPlayThirdDriver())
+            questResult = 1;
+
+    }
+    return questResult;
+}
+

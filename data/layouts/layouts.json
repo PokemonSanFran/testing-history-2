@@ -6850,6 +6850,16 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Amazon_Barge_3/border.bin",
       "blockdata_filepath": "data/layouts/Amazon_Barge_3/map.bin"
+    },
+    {
+      "id": "LAYOUT_UBER_INTERIOR",
+      "name": "Uber_Interior_Layout",
+      "width": 22,
+      "height": 4,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/Uber_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/Uber_Interior/map.bin"
     }
   ]
 }

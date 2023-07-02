@@ -117,6 +117,7 @@
 #define MAP_PSFROUTE51                               (86 | (1 << 8))
 #define MAP_AMAZON_BARGE_2                           (87 | (1 << 8))
 #define MAP_AMAZON_BARGE_3                           (88 | (1 << 8))
+#define MAP_UBER_INTERIOR                            (89 | (1 << 8))
 
 // gMapGroup_TownsAndRoutes
 #define MAP_PETALBURG_CITY      (0 | (2 << 8))
