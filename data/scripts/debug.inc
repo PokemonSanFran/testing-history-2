@@ -63,30 +63,26 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 Debug_Script_1::
 	questmenu QUEST_MENU_SET_ACTIVE, QUEST_PERSUASIVEPASSENGER
-	warp MAP_UBER_INTERIOR, 1, 3
-	end
-
-
-Debug_Script_2::
+	subquestmenu QUEST_MENU_COMPLETE_QUEST, QUEST_PERSUASIVEPASSENGER, SUB_QUEST_1
 	warp MAP_UBER_INTERIOR, 10, 3
 	end
 
 
+Debug_Script_2::
+	warp MAP_ALAMEDA, 33, 27
+	end
+
+
 Debug_Script_3::
-	additem ITEM_SITRUS_BERRY, 3
-	additem ITEM_HONEY, 5
-	additem ITEM_WATMEL_BERRY, 1
-	additem ITEM_LEMONADE, 2
+	warp MAP_MISSION, 7, 26
 	end
 
 
 Debug_Script_4::
-	warp MAP_PSFROUTE76, 1
 	end
 
 
 Debug_Script_5::
-	warp MAP_PSFROUTE20, 1
 	end
 
 

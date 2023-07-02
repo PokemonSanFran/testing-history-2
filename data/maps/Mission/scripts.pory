@@ -30,6 +30,11 @@ script Mission_2_Interact_Script{
 
 script Mission_3_Interact_Script{
     msgbox(gText_Mission_Placeholder,MSGBOX_NPC)
+
+    if (defeated(TRAINER_PERSUASIVE_LANDLORD)){
+       goto(Quest_Persuasivepassenger_Sibling_Dialogue)
+    }
+    end
 }
 
 text gText_Mission_Placeholder{

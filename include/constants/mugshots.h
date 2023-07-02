@@ -237,5 +237,7 @@
 #define SPEAKER_UBER_DRIVER1            204
 #define SPEAKER_UBER_DRIVER2            205
 #define SPEAKER_UBER_DRIVER3            206
+#define SPEAKER_PERSUASIVE_LANDLORD     207
+#define SPEAKER_PERSUASIVE_SIBLING      208
 
 #endif

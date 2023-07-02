@@ -47,7 +47,14 @@ Mission_2_Interact_Script_3:
 
 Mission_3_Interact_Script::
 	msgbox gText_Mission_Placeholder, MSGBOX_NPC
-	return
+	checktrainerflag TRAINER_PERSUASIVE_LANDLORD
+	goto_if 1, Mission_3_Interact_Script_2
+Mission_3_Interact_Script_1:
+	end
+
+Mission_3_Interact_Script_2:
+	goto Quest_Persuasivepassenger_Sibling_Dialogue
+	goto Mission_3_Interact_Script_1
 
 
 gText_Mission_Placeholder::

@@ -211,8 +211,25 @@ Alameda_Stan_PostBattle_Script_2:
 	goto Alameda_Stan_PostBattle_Script_1
 
 
+Alameda_Landlord_Dialogue::
+	msgbox gText_Alameda_ManAfterThese, MSGBOX_NPC
+	specialvar VAR_RESULT, Quest_Persuasivepassenger_CountRemainingSubquests
+	compare VAR_RESULT, 2
+	goto_if_eq Alameda_Landlord_Dialogue_2
+Alameda_Landlord_Dialogue_1:
+	end
+
+Alameda_Landlord_Dialogue_2:
+	goto Quest_Persuasivepassenger_Landlord_Battle_Script
+	goto Alameda_Landlord_Dialogue_1
+
+
 Alameda_Person1_Fisherman_Text_0:
 	.string "thanks for saving me!$"
 
 Alameda_Person1_Fisherman_Text_1:
 	.string "i am a dude!$"
+
+gText_Alameda_ManAfterThese::
+	.string "Man, after this rent hikes, I'm gonna\n"
+	.string "make a killing on this building!$"

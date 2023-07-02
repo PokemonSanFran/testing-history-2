@@ -10,7 +10,7 @@ mapscripts Alameda_MapScripts {
         goto(Alameda_MapScripts_OnLoad)
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_ALAMEDA_STATE, START_SURVIVAL_CHANCE: SurvivalChance333_ExplainOperation 
+        VAR_ALAMEDA_STATE, START_SURVIVAL_CHANCE: SurvivalChance333_ExplainOperation
         VAR_ALAMEDA_STATE, WHY_ARE_YOU_HELPING_THEM: WhyAreYouHelpingThem_MissionDebrief_Dialogue
         VAR_ALAMEDA_STATE, POST_EARTHQUAKE: Earthquake_ShowDestroyedCity_Script
         VAR_ALAMEDA_STATE, POST_EARTHQUAKE_RESCUE: Earthquake_PostRescue_Dialogue
@@ -60,7 +60,7 @@ script Alameda_ChooseFerryDestination_Script {
 
 script Alameda_UnlockedDestinations_Script {
     switch (var(VAR_FERRY_STATE)){
-        case FERRY_DEFAULT: 
+        case FERRY_DEFAULT:
         case FERRY_ALAMEDA_AVAILABLE: goto(Alameda_FerryState0_Script)
         case FERRY_ALCATRAZ_AVAILABLE:goto(Alameda_FerryState1_Script)
     }
@@ -123,4 +123,18 @@ script Alameda_Stan_PostBattle_Script{
 
         release
         end
+}
+
+script Alameda_Landlord_Dialogue{
+    msgbox(gText_Alameda_ManAfterThese,MSGBOX_NPC)
+
+    specialvar(VAR_RESULT,Quest_Persuasivepassenger_CountRemainingSubquests)
+    if (var(VAR_RESULT) == 2){
+       goto(Quest_Persuasivepassenger_Landlord_Battle_Script)
+    }
+    end
+}
+
+text gText_Alameda_ManAfterThese{
+    format("Man, after this rent hikes, I'm gonna make a killing on this building!")
 }

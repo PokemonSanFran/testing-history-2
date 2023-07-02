@@ -61,12 +61,12 @@ script Quest_Persuasivepassenger_HasItems_Dialogue{
 
         if (var(VAR_RESULT) == YES){
             special(Quest_Persuasivepassenger_TakeNeededItems)
+            subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_PERSUASIVEPASSENGER,SUB_QUEST_1)
             msgbox(gText_Persuasivepassenger_IGotEverything,,SPEAKER_ZOEY)
             msgbox(gText_Persuasivepassenger_PlayerGave,MSGBOX_AUTOCLOSE)
             msgbox(gText_Persuasivepassenger_ThankYouSoMuch,,SPEAKER_UBER_DRIVER1)
             msgbox(gText_Persuasivepassenger_TheUnion,,SPEAKER_ZOEY)
             msgbox(gText_Persuasivepassenger_ThatsTight,,SPEAKER_UBER_DRIVER1)
-            subquestmenu(QUEST_PERSUASIVEPASSENGER,QUEST_MENU_COMPLETE_QUEST,SUB_QUEST_1)
             closemessage
         }else{
             return
@@ -76,19 +76,108 @@ script Quest_Persuasivepassenger_HasItems_Dialogue{
 
 script Quest_Persuasivepassenger_Driver2_Event_Script{
     setvar(VAR_TEMP_1,5)
+    lock
+    msgbox(gText_Persuasivepassenger_HowYaDoin,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_YouKnow,,SPEAKER_UBER_DRIVER2)
 
-        lock
+    if (flag(FLAG_QUEST_PERSUASIVE_SIBLING)){
+        goto(Quest_Persuasivepassenger_Driver2_FoundSibling_Dialogue)
+    }
+
+    if (defeated(TRAINER_PERSUASIVE_LANDLORD)){
+        goto(Quest_Persuasivepassenger_Driver2_DefeatedLandlord_Dialogue)
+    }
+
+    msgbox(gText_Persuasivepassenger_MyBrothersLandlord,,SPEAKER_UBER_DRIVER2)
+    msgbox(gText_Persuasivepassenger_SoImTrying,,SPEAKER_UBER_DRIVER2)
+    msgbox(gText_Persuasivepassenger_WaitThreeTimes,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_YeahSoMyBrotherIsOut,,SPEAKER_UBER_DRIVER2)
+    msgbox(gText_Persuasivepassenger_ThanksForListening,,SPEAKER_UBER_DRIVER2)
+
+    goto(Quest_Persuasivepassenger_Driver2_End_Dialogue)
+}
+
+script Quest_Persuasivepassenger_Driver2_End_Dialogue{
+    msgbox(gText_Persuasivepassenger_WereAtTheSpot,,SPEAKER_UBER_DRIVER2)
         //special(CompleteUberDrive)
         warp(MAP_SUNSET,0)
 }
 
+script Quest_Persuasivepassenger_Driver2_DefeatedLandlord_Dialogue{
+    msgbox(gText_Persuasivepassenger_MyBrotherExLandlord,,SPEAKER_UBER_DRIVER2)
+    msgbox(gText_Persuasivepassenger_WellISawOnTheNews,,SPEAKER_UBER_DRIVER2)
+    msgbox(gText_Persuasivepassenger_ThatsNotWhat,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    msgbox(gText_Persuasivepassenger_ImGonnaKeepWorking,,SPEAKER_UBER_DRIVER2)
+    msgbox(gText_Persuasivepassenger_ThanksForListening,,SPEAKER_UBER_DRIVER2)
+    goto(Quest_Persuasivepassenger_Driver2_End_Dialogue)
+}
+
+script Quest_Persuasivepassenger_Driver2_FoundSibling_Dialogue{
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_PERSUASIVEPASSENGER,SUB_QUEST_2)
+    msgbox(gText_Persuasivepassenger_MyBrotherCalled,,SPEAKER_UBER_DRIVER2)
+    msgbox(gText_Persuasivepassenger_HeWasGoing,,SPEAKER_UBER_DRIVER2)
+    msgbox(gText_Persuasivepassenger_HeMentioned,,SPEAKER_UBER_DRIVER2)
+    msgbox(gText_Persuasivepassenger_OhIm,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_ThisIsMyLast,,SPEAKER_UBER_DRIVER2)
+    goto(Quest_Persuasivepassenger_Driver2_End_Dialogue)
+}
+
+script Quest_Persuasivepassenger_Landlord_Battle_Script{
+    msgbox(gText_Persuasivepassenger_AreYouTripling,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_OfCourse,,SPEAKER_PERSUASIVE_LANDLORD)
+    msgbox(gText_Persuasivepassenger_WaitYoure,,SPEAKER_PERSUASIVE_LANDLORD)
+    msgbox(gText_Persuasivepassenger_YeahAnd,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_KidsAreSoft,,SPEAKER_PERSUASIVE_LANDLORD)
+
+    trainerbattle_no_intro(TRAINER_PERSUASIVE_LANDLORD,gText_Persuasivepassenger_Wait)
+    goto(Quest_Persuasivepassenger_PostBattle_Dialogue)
+}
+
+script Quest_Persuasivepassenger_PostBattle_Dialogue{
+    msgbox(gText_Persuasivepassenger_PleaseDontHurt,,SPEAKER_PERSUASIVE_LANDLORD)
+    msgbox(gText_Persuasivepassenger_IWasntPlanning,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
+    msgbox(gText_Persuasivepassenger_IDontWantAnythingBut,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_OkayOkay,,SPEAKER_PERSUASIVE_LANDLORD)
+    msgbox(gText_Persuasivepassenger_LetsHope,,SPEAKER_ZOEY)
+    closemessage
+
+    applymovement(VAR_LAST_TALKED,Quest_Persuasivepassenger_WalkAway_Movement)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(VAR_LAST_TALKED)
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
+}
+
+script Quest_Persuasivepassenger_Sibling_Dialogue{
+    lockall
+    msgbox(gText_Persuasivepassenger_DidYouUsed,,SPEAKER_ZOEY,,EMOTE_SHOCK)
+    msgbox(gText_Persuasivepassenger_YeahHowDid,,SPEAKER_PERSUASIVE_SIBLING,,EMOTE_SHOCK)
+    msgbox(gText_Persuasivepassenger_IThinkThatGuy,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_WhatHowDo,,SPEAKER_PERSUASIVE_SIBLING)
+    msgbox(gText_Persuasivepassenger_IHeardTheTaxiUnion,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_OhWowMySibling,,SPEAKER_PERSUASIVE_SIBLING)
+    msgbox(gText_Persuasivepassenger_ThanksForLetting,,SPEAKER_PERSUASIVE_SIBLING)
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(VAR_LAST_TALKED)
+    fadescreen(FADE_FROM_BLACK)
+    release
+    end
+}
+
 script Quest_Persuasivepassenger_Driver3_Event_Script{
     setvar(VAR_TEMP_1,5)
-        lock
-        warp(MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM,0)
+    lock
+    warp(MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM,0)
 }
 
 script Quest_Persuasivepassenger_Complete_Dialogue{
+}
+
+movement Quest_Persuasivepassenger_WalkAway_Movement{
+    walk_left
+    step_end
 }
 
 text gText_Persuasivepassenger_HeyKid{
@@ -138,4 +227,109 @@ text gText_Persuasivepassenger_TheUnion{
 }
 text gText_Persuasivepassenger_ThatsTight{
     format("That's tight! Maybe I'll check them out after all. Driving for Uber is intense.")
+}
+text gText_Persuasivepassenger_HowYaDoin{
+    format("")
+}
+text gText_Persuasivepassenger_YouKnow{
+    format("")
+}
+text gText_Persuasivepassenger_MyBrothersLandlord{
+    format("")
+}
+text gText_Persuasivepassenger_SoImTrying{
+    format("")
+}
+text gText_Persuasivepassenger_WaitThreeTimes{
+    format("")
+}
+text gText_Persuasivepassenger_YeahSoMyBrotherIsOut{
+    format("")
+}
+text gText_Persuasivepassenger_ThanksForListening{
+    format("")
+}
+text gText_Persuasivepassenger_WereAtTheSpot{
+    format("")
+}
+text gText_Persuasivepassenger_MyBrotherExLandlord{
+    format("")
+}
+text gText_Persuasivepassenger_WellISawOnTheNews{
+    format("")
+}
+text gText_Persuasivepassenger_ThatsNotWhat{
+    format("")
+}
+text gText_Persuasivepassenger_ImGonnaKeepWorking{
+    format("")
+}
+text gText_Persuasivepassenger_MyBrotherCalled{
+    format("")
+}
+text gText_Persuasivepassenger_HeWasGoing{
+    format("")
+}
+text gText_Persuasivepassenger_HeMentioned{
+    format("")
+}
+text gText_Persuasivepassenger_OhIm{
+    format("")
+}
+text gText_Persuasivepassenger_ThisIsMyLast{
+    format("")
+}
+text gText_Persuasivepassenger_AreYouTripling{
+    format("")
+}
+text gText_Persuasivepassenger_OfCourse{
+    format("")
+}
+text gText_Persuasivepassenger_WaitYoure{
+    format("")
+}
+text gText_Persuasivepassenger_YeahAnd{
+    format("")
+}
+text gText_Persuasivepassenger_KidsAreSoft{
+    format("")
+}
+text gText_Persuasivepassenger_Wait{
+    format("")
+}
+text gText_Persuasivepassenger_PleaseDontHurt{
+    format("")
+}
+text gText_Persuasivepassenger_IWasntPlanning{
+    format("")
+}
+text gText_Persuasivepassenger_IDontWantAnythingBut{
+    format("")
+}
+text gText_Persuasivepassenger_OkayOkay{
+    format("")
+}
+text gText_Persuasivepassenger_LetsHope{
+    format("")
+}
+text gText_Persuasivepassenger_DidYouUsed{
+    format("")
+}
+text gText_Persuasivepassenger_YeahHowDid{
+    format("")
+}
+text gText_Persuasivepassenger_IThinkThatGuy{
+    format("")
+}
+text gText_Persuasivepassenger_WhatHowDo{
+    format("")
+}
+text gText_Persuasivepassenger_IHeardTheTaxiUnion{
+    format("")
+}
+text gText_Persuasivepassenger_OhWowMySibling{
+    format("")
+}
+text gText_Persuasivepassenger_ThanksForLetting{
+    format("")
 }
