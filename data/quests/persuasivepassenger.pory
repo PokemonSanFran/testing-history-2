@@ -169,7 +169,30 @@ script Quest_Persuasivepassenger_Sibling_Dialogue{
 script Quest_Persuasivepassenger_Driver3_Event_Script{
     setvar(VAR_TEMP_1,5)
     lock
-    warp(MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM,0)
+    if(!flag(FLAG_QUEST_PERSUASIVE_PASSENGER_PLAYER_KIDNAPPED)){
+        msgbox(gText_Persuasivepassenger_HeyPlayer,,SPEAKER_UBER_DRIVER3)
+        msgbox(gText_Persuasivepassenger_WhatTheHell,,SPEAKER_ZOEY)
+    }else{
+        msgbox(gText_Persuasivepassenger_WaitASecondHowDid,,SPEAKER_UBER_DRIVER3)
+    }
+    closemessage
+    warpsilent(MAP_UBER_HQ_BASEMENT,5,5)
+}
+
+script Quest_Persuasivepassenger_WokeUp_Dialogue{
+    lock
+    addvar(VAR_TEMP_0,1)
+
+    if(flag(FLAG_QUEST_PERSUASIVE_PASSENGER_PLAYER_KIDNAPPED)){
+        msgbox(gText_Persuasivepassenger_OkayIGuess,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SWEAT)
+    }else{
+        msgbox(gText_Persuasivepassenger_WhereAmI,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_CONFUSE)
+        setflag(FLAG_QUEST_PERSUASIVE_PASSENGER_PLAYER_KIDNAPPED)
+    }
+
+    closemessage
+    release
+    end
 }
 
 script Quest_Persuasivepassenger_Complete_Dialogue{

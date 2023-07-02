@@ -1,0 +1,5 @@
+mapscripts Uber_HQ_Basement_MapScripts{
+    MAP_SCRIPT_ON_FRAME_TABLE[
+        VAR_TEMP_0, 0: Quest_Persuasivepassenger_WokeUp_Dialogue
+    ]
+}

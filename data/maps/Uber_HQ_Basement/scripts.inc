@@ -1,2 +1,8 @@
 Uber_HQ_Basement_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Uber_HQ_Basement_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Uber_HQ_Basement_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TEMP_0, 0, Quest_Persuasivepassenger_WokeUp_Dialogue
+	.2byte 0
+
