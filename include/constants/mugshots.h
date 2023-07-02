@@ -163,7 +163,7 @@
 #define SPEAKER_HIKO                130
 #define SPEAKER_POLICE              131
 #define SPEAKER_MACK                132
-#define SPEAKER_TYZONN              133 
+#define SPEAKER_TYZONN              133
 #define SPEAKER_WILL2               134
 #define SPEAKER_RONNY               135
 #define SPEAKER_DAX                 136
@@ -234,5 +234,8 @@
 #define SPEAKER_MADRONE                 201
 #define SPEAKER_TWITTER_CEO             202
 #define SPEAKER_AMAZON_CEO              203
+#define SPEAKER_UBER_DRIVER1            204
+#define SPEAKER_UBER_DRIVER2            205
+#define SPEAKER_UBER_DRIVER3            206
 
 #endif

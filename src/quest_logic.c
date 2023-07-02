@@ -283,14 +283,6 @@ bool8 Quest_Hiddengrottomapping_CheckSubquestsForReward(void){
     u8 i;
     bool8 allSubquestsComplete = TRUE;
 
-    /*
-    for (i = 0; i < QUEST_HIDDENGROTTOMAPPING_SUB_COUNT; i++){
-        if (!QuestMenu_GetSetSubquestState(QUEST_HIDDENGROTTOMAPPING,FLAG_GET_COMPLETED,i)){
-            allSubquestsComplete = FALSE;
-            break;
-        }
-    }
-    */
     return (Quest_Hiddengrottomapping_CountCompletedSubquests() == QUEST_HIDDENGROTTOMAPPING_SUB_COUNT);
 }
 
@@ -1216,3 +1208,24 @@ u16 Quest_Persuasivepassenger_CheckQuestAndChooseDriver(void){
     return questResult;
 }
 
+bool8 Quest_Persuasivepassenger_CheckNeededItems(void){
+    bool8 hasSitrus = CheckBagHasItem(ITEM_SITRUS_BERRY,3);
+    bool8 hasHoney = CheckBagHasItem(ITEM_HONEY,5);
+    bool8 hasWatmel = CheckBagHasItem(ITEM_WATMEL_BERRY,1);
+    bool8 hasLemonade = CheckBagHasItem(ITEM_LEMONADE,2);
+
+    bool8 hasNeededItems = FALSE;
+
+    if (hasSitrus && hasHoney && hasWatmel && hasLemonade){
+        hasNeededItems = TRUE;
+    }
+    return hasNeededItems;
+}
+void Quest_Persuasivepassenger_TakeNeededItems(void){
+    if (Quest_Persuasivepassenger_CheckNeededItems()){
+        RemoveBagItem(ITEM_SITRUS_BERRY,3);
+        RemoveBagItem(ITEM_HONEY,5);
+        RemoveBagItem(ITEM_WATMEL_BERRY,1);
+        RemoveBagItem(ITEM_LEMONADE,2);
+    }
+}

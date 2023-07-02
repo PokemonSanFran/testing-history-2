@@ -311,7 +311,10 @@
   ],
   "gMapGroup_IndoorDogpatch": [
     "Dogpatch_Pokemoncenter_1F",
-    "Dogpatch_BIkerhq"
+    "Dogpatch_BIkerhq",
+    "Uber_HQ_Basement",
+    "Uber_HQ_Floor1",
+    "Uber_HQ_Floor2"
   ],
   "gMapGroup_IndoorChinatown": [
     "Chinatown_Proudpanda",

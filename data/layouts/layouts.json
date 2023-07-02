@@ -6860,6 +6860,36 @@
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/Uber_Interior/border.bin",
       "blockdata_filepath": "data/layouts/Uber_Interior/map.bin"
+    },
+    {
+      "id": "LAYOUT_UBER_HQ_BASEMENT",
+      "name": "Uber_HQ_Basement_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Uber_HQ_Basement/border.bin",
+      "blockdata_filepath": "data/layouts/Uber_HQ_Basement/map.bin"
+    },
+    {
+      "id": "LAYOUT_UBER_HQ_FLOOR1",
+      "name": "Uber_HQ_Floor1_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Uber_HQ_Floor1/border.bin",
+      "blockdata_filepath": "data/layouts/Uber_HQ_Floor1/map.bin"
+    },
+    {
+      "id": "LAYOUT_UBER_HQ_FLOOR2",
+      "name": "Uber_HQ_Floor2_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Uber_HQ_Floor2/border.bin",
+      "blockdata_filepath": "data/layouts/Uber_HQ_Floor2/map.bin"
     }
   ]
 }

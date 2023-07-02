@@ -624,7 +624,7 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Mom,
         .speakerPal = sSpeakerPal_Mom,
     },
-    [SPEAKER_BIANCA] = 
+    [SPEAKER_BIANCA] =
     {
         .name = _("Bianca"),
         .speakerIcon = gSpeakerIcon_Silver,
@@ -642,7 +642,7 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Collector,
         .speakerPal = sSpeakerPal_Collector,
     },
-    [SPEAKER_ANNOUNCER] = 
+    [SPEAKER_ANNOUNCER] =
     {
         .name = _("Announcer"),
         .speakerIcon = gSpeakerIcon_Collector,
@@ -714,13 +714,13 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Woman,
         .speakerPal = sSpeakerPal_Woman,
     },
-    [SPEAKER_SIARL] = 
+    [SPEAKER_SIARL] =
     {
         .name =_("Siarl"),
         .speakerIcon = gSpeakerIcon_Rocket_Grunt_M,
         .speakerPal = sSpeakerPal_Rocket_Grunt_M,
     },
-    [SPEAKER_SIEBOLD] = 
+    [SPEAKER_SIEBOLD] =
     {
         .name =_("Siebold"),
         .speakerIcon = gSpeakerIcon_Bruno,
@@ -744,13 +744,13 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Black_Belt,
         .speakerPal = sSpeakerPal_Black_Belt,
     },
-    [SPEAKER_DAVID] = 
+    [SPEAKER_DAVID] =
     {
         .name = _("David"),
         .speakerIcon = gSpeakerIcon_Waiter,
         .speakerPal = sSpeakerPal_Waiter,
     },
-    [SPEAKER_ISHAN] = 
+    [SPEAKER_ISHAN] =
     {
         .name =_("Ishan"),
         .speakerIcon = gSpeakerIcon_Rocket_Grunt_F,
@@ -768,7 +768,7 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Rocket_Grunt_F,
         .speakerPal = sSpeakerPal_Rocket_Grunt_F,
     },
-    [SPEAKER_ROSE] = 
+    [SPEAKER_ROSE] =
     {
         .name = _("Rose"),
         .speakerIcon = gSpeakerIcon_Proton,
@@ -852,7 +852,7 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Fisherman,
         .speakerPal = sSpeakerPal_Fisherman,
     },
-    [SPEAKER_DRASNA] = 
+    [SPEAKER_DRASNA] =
     {
         .name = _("Drasna"),
         .speakerIcon = gSpeakerIcon_Steven,
@@ -1026,7 +1026,7 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Collector,
         .speakerPal = sSpeakerPal_Collector,
     },
-    [SPEAKER_SPEAKER] = 
+    [SPEAKER_SPEAKER] =
     {
         .name = _("Speaker"),
         .speakerIcon = gSpeakerIcon_Girl,
@@ -1038,7 +1038,7 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Black_Belt,
         .speakerPal = sSpeakerPal_Black_Belt,
     },
-    [SPEAKER_ISMAIL] = 
+    [SPEAKER_ISMAIL] =
     {
         .name = _("Ismail"),
         .speakerIcon = gSpeakerIcon_Man,
@@ -1152,7 +1152,7 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Fisherman,
         .speakerPal = sSpeakerPal_Fisherman,
     },
-    [SPEAKER_LELAND] = 
+    [SPEAKER_LELAND] =
     {
         .name = _("Leland"),
         .speakerIcon = gSpeakerIcon_Old_Man,
@@ -1398,4 +1398,22 @@ static const struct SpeakerData sSpeakerData[NUM_SPEAKERS] = {
         .speakerIcon = gSpeakerIcon_Steven,
         .speakerPal = sSpeakerPal_Steven,
     },
+    [SPEAKER_UBER_DRIVER1] =
+    {
+        .name = _("Uber Driver 1"),
+        .speakerIcon = gSpeakerIcon_Brock,
+        .speakerPal = sSpeakerPal_Brock,
+    },
+    [SPEAKER_UBER_DRIVER2] =
+    {
+        .name = _("Uber Driver 2"),
+        .speakerIcon = gSpeakerIcon_Firebreather,
+        .speakerPal = sSpeakerPal_Firebreather,
+    },
+    [SPEAKER_UBER_DRIVER3] =
+    {
+        .name = _("Uber Driver 3"),
+        .speakerIcon = gSpeakerIcon_Boarder,
+        .speakerPal = sSpeakerPal_Boarder,
+    }
 };

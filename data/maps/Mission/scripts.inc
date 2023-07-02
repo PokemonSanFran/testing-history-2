@@ -45,5 +45,10 @@ Mission_2_Interact_Script_3:
 	goto Mission_2_Interact_Script_2
 
 
+Mission_3_Interact_Script::
+	msgbox gText_Mission_Placeholder, MSGBOX_NPC
+	return
+
+
 gText_Mission_Placeholder::
 	.string "$"

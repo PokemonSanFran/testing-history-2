@@ -258,6 +258,9 @@
 // gMapGroup_IndoorDogpatch
 #define MAP_DOGPATCH_POKEMONCENTER_1F (0 | (16 << 8))
 #define MAP_DOGPATCH_BIKERHQ          (1 | (16 << 8))
+#define MAP_UBER_HQ_BASEMENT          (2 | (16 << 8))
+#define MAP_UBER_HQ_FLOOR1            (3 | (16 << 8))
+#define MAP_UBER_HQ_FLOOR2            (4 | (16 << 8))
 
 // gMapGroup_IndoorChinatown
 #define MAP_CHINATOWN_PROUDPANDA       (0 | (17 << 8))

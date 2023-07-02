@@ -2,7 +2,7 @@
 #define GUARD_CONSTANTS_FLAGS_H
 
 #include "constants/opponents.h"
-//#include "constants/psf_flags.h"
+#include "constants/psf_flags.h"
 
 // Temporary Flags
 // These temporary flags are are cleared every time a map is loaded. They are used
@@ -42,57 +42,47 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
-#define FLAG_SYS_NO_COLLISION       0x20 //DEBUG
-#define FLAG_SYS_NO_ENCOUNTER       0x21 //DEBUG
-#define FLAG_SYS_NO_TRAINER_SEE     0x22 //DEBUG
-#define FLAG_SYS_NO_BAG_USE         0x23 // Unused Flag //DEBUG
-#define FLAG_SYS_NO_CATCHING        0x24 //DEBUG
-#define FLAG_CHASECENTER_TOURNAMENT_HAPPENING 0x25 // Previously Unused Flag
-#define FLAG_SAVED_DAVID            0x26 // Previously Unused Flag
-#define FLAG_LOCKEDOUT_PLAYED 0x27 //Previously Unused Flag
-#define FLAG_HIDE_MADISON    0x28 // Previously Unused Flag
-#define FLAG_UNUSED_0x29 0x29 // Unused Flag
-#define FLAG_MET_SOCIALMEDIA_REPORTER 0x29 // Unused Flag
-#define FLAG_START_MENU_MOVE_MODE   0x2A // For the Start Menu
-#define FLAG_DEFEATED_GARDEN_BOSS 0x2A
-#define FLAG_START_MENU_SETUP       0x2B // Is used the first time you open the start menu to set up the app orders
-#define FLAG_OPTION_MENU_SETUP 0x2C // Is used the first time you open the options menu to set up the configuration
-#define FLAG_UNUSED_0x2D 0x2D
-#define FLAG_FORCE_SHINY 0x2D
-#define FLAG_INVERSE_BATTLE 0x2E
-#define FLAG_UNUSED_0x2E 0x2E
-#define FLAG_FORCE_DOUBLE_WILD 0x2F
-#define FLAG_UNUSED_0x2F 0x2F
-#define FLAG_SMART_WILD_AI  0x30
-#define FLAG_UNUSED_0x30 0x30
-#define FLAG_UNUSED_0x31 0x31 // Unused Flag
-#define FLAG_UNUSED_0x32 0x32 // Unused Flag
-#define FLAG_UNUSED_0x33 0x33 // Unused Flag
-#define FLAG_UNUSED_0x34 0x34 // Unused Flag
-#define FLAG_UNSUED_0x35 0x35 // Unused Flag
-#define FLAG_UNUSED_0x36 0x36 // Unused Flag
-#define FLAG_UNSUED_0x37 0x37 //Unused Flag
-#define FLAG_UNUSED_0x38 0x38 // Unused Flag
-#define FLAG_SPAWN_INVISIBLE 0x39 // Previously Unused Flag
-
-#define FLAG_QUEST_ULTRAWORMHOLE_FIRST_TOTEM FLAG_QUEST_ULTRAWORMHOLE_DONDOZO
-#define FLAG_QUEST_ULTRAWORMHOLE_DONDOZO	 0x3A
-#define FLAG_QUEST_ULTRAWORMHOLE_VOLCARONA	 0x3B
-#define FLAG_QUEST_ULTRAWORMHOLE_DUSCLOPS	 0x3C
-#define FLAG_QUEST_ULTRAWORMHOLE_CAMERUPT	 0x3D
-#define FLAG_QUEST_ULTRAWORMHOLE_DEINO	 	 0x3E
-#define FLAG_QUEST_ULTRAWORMHOLE_NOIVERN	 0x3F
-#define FLAG_QUEST_ULTRAWORMHOLE_SHUCKLE	 0x40
-#define FLAG_QUEST_ULTRAWORMHOLE_KINGLER	 0x41
-#define FLAG_QUEST_ULTRAWORMHOLE_ORBEETLE	 0x42
-#define FLAG_QUEST_ULTRAWORMHOLE_DONPHAN	 0x43
-#define FLAG_QUEST_ULTRAWORMHOLE_LAST_TOTEM  FLAG_QUEST_ULTRAWORMHOLE_DONPHAN
-
-#define FLAG_QUEST_ULTRAWORMHOLE_BATTLED_ULTRA_BEAST    0x44
-#define FLAG_QUEST_EMPLOYEDEVERAFTER_FOUND_BRIDE 0x45
-#define FLAG_UNUSED_0x46 0x46 //Unused Flag
-#define FLAG_UNUSED_0x47 0x47 //Unused Flag
-#define FLAG_UNUSED_0x48 0x48 //Unused Flag
+#define FLAG_UNUSED_0x020    0x20 // Unused Flag
+#define FLAG_UNUSED_0x021    0x21 // Unused Flag
+#define FLAG_UNUSED_0x022    0x22 // Unused Flag
+#define FLAG_UNUSED_0x023    0x23 // Unused Flag
+#define FLAG_UNUSED_0x024    0x24 // Unused Flag
+#define FLAG_UNUSED_0x025    0x25 // Unused Flag
+#define FLAG_UNUSED_0x026    0x26 // Unused Flag
+#define FLAG_UNUSED_0x027    0x27 // Unused Flag
+#define FLAG_UNUSED_0x028    0x28 // Unused Flag
+#define FLAG_UNUSED_0x029    0x29 // Unused Flag
+#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
+#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
+#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
+#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
+#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
+#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
+#define FLAG_UNUSED_0x030    0x30 // Unused Flag
+#define FLAG_UNUSED_0x031    0x31 // Unused Flag
+#define FLAG_UNUSED_0x032    0x32 // Unused Flag
+#define FLAG_UNUSED_0x033    0x33 // Unused Flag
+#define FLAG_UNUSED_0x034    0x34 // Unused Flag
+#define FLAG_UNUSED_0x035    0x35 // Unused Flag
+#define FLAG_UNUSED_0x036    0x36 // Unused Flag
+#define FLAG_UNUSED_0x037    0x37 // Unused Flag
+#define FLAG_UNUSED_0x038    0x38 // Unused Flag
+#define FLAG_UNUSED_0x039    0x39 // Unused Flag
+#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
+#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
+#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
+#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
+#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
+#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
+#define FLAG_UNUSED_0x040    0x40 // Unused Flag
+#define FLAG_UNUSED_0x041    0x41 // Unused Flag
+#define FLAG_UNUSED_0x042    0x42 // Unused Flag
+#define FLAG_UNUSED_0x043    0x43 // Unused Flag
+#define FLAG_UNUSED_0x044    0x44 // Unused Flag
+#define FLAG_UNUSED_0x045    0x45 // Unused Flag
+#define FLAG_UNUSED_0x046    0x46 // Unused Flag
+#define FLAG_UNUSED_0x047    0x47 // Unused Flag
+#define FLAG_UNUSED_0x048    0x48 // Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag
@@ -119,7 +109,6 @@
 #define FLAG_COLLECTED_ALL_SILVER_SYMBOLS    0x5C
 #define FLAG_GOOD_LUCK_SAFARI_ZONE           0x5D // Set after talking to NPC blocking Safari Zone entrance/exit once.
 #define FLAG_RECEIVED_WAILMER_PAIL           0x5E
-#define FLAG_QUEST_PERSUASIVE_SIBLING        0x5E
 #define FLAG_RECEIVED_POKEBLOCK_CASE         0x5F
 #define FLAG_RECEIVED_SECRET_POWER           0x60
 #define FLAG_MET_TEAM_AQUA_HARBOR            0x61
@@ -166,10 +155,8 @@
 #define FLAG_PENDING_DAYCARE_EGG             0x86
 #define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87
 #define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // Set after defeating Wally outside Mauville Gym. Will activate a call later to register Wally.
-#define FLAG_CONSTRUCTION_BREAKING_NEWS      0x88
 #define FLAG_RECEIVED_HM01                   0x89
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
-#define FLAG_ARCHER_CALL_ALCATRAZ            0x8A
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
 #define FLAG_RECEIVED_6_SODA_POP             0x8C
 #define FLAG_DEFEATED_SEASHORE_HOUSE         0x8D
@@ -665,33 +652,31 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_RECIEVED_LEFTOVERS         0x264 //Previously Unused Flag
-#define FLAG_CRAFTED_FIRST_GEM              FLAG_CRAFTED_NORMAL_GEM
-#define FLAG_CRAFTED_NORMAL_GEM				0x265
-#define FLAG_CRAFTED_FIGHTING_GEM			0x266
-#define FLAG_CRAFTED_FLYING_GEM				0x267
-#define FLAG_CRAFTED_POISON_GEM				0x268
-#define FLAG_CRAFTED_GROUND_GEM				0x269
-#define FLAG_CRAFTED_ROCK_GEM				0x26A
-#define FLAG_CRAFTED_BUG_GEM				0x26B
-#define FLAG_CRAFTED_GHOST_GEM				0x26C
-#define FLAG_CRAFTED_STEEL_GEM				0x26D
-#define FLAG_CRAFTED_FIRE_GEM				0x26E
-#define FLAG_CRAFTED_WATER_GEM				0x26F
-#define FLAG_CRAFTED_GRASS_GEM				0x270
-#define FLAG_CRAFTED_ELECTRIC_GEM			0x271
-#define FLAG_CRAFTED_PSYCHIC_GEM			0x272
-#define FLAG_CRAFTED_ICE_GEM				0x273
-#define FLAG_CRAFTED_DRAGON_GEM				0x274
-#define FLAG_CRAFTED_DARK_GEM				0x275
-#define FLAG_CRAFTED_FAIRY_GEM				0x276
-#define FLAG_RECIEVED_GEMARTIST_MEGASTONE   0x277
-#define FLAG_UNSUED_0x277 0x277 // Unused Flag
-#define FLAG_UNSUED_0x278 0x278 // Unused Flag
-#define FLAG_UNSUED_0x279 0x279 // Unused Flag
-#define FLAG_UNSUED_0x27A 0x27A // Unused Flag
-#define FLAG_UNSUED_0x27B 0x27B // Unused Flag
-#define FLAG_UNSUED_0x27C 0x27C // Unused Flag
+#define FLAG_UNUSED_0x264  0x264 // Unused Flag
+#define FLAG_UNUSED_0x265  0x265 // Unused Flag
+#define FLAG_UNUSED_0x266  0x266 // Unused Flag
+#define FLAG_UNUSED_0x267  0x267 // Unused Flag
+#define FLAG_UNUSED_0x268  0x268 // Unused Flag
+#define FLAG_UNUSED_0x269  0x269 // Unused Flag
+#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
+#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
+#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
+#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
+#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
+#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
+#define FLAG_UNUSED_0x270  0x270 // Unused Flag
+#define FLAG_UNUSED_0x271  0x271 // Unused Flag
+#define FLAG_UNUSED_0x272  0x272 // Unused Flag
+#define FLAG_UNUSED_0x273  0x273 // Unused Flag
+#define FLAG_UNUSED_0x274  0x274 // Unused Flag
+#define FLAG_UNUSED_0x275  0x275 // Unused Flag
+#define FLAG_UNUSED_0x276  0x276 // Unused Flag
+#define FLAG_UNUSED_0x277  0x277 // Unused Flag
+#define FLAG_UNUSED_0x278  0x278 // Unused Flag
+#define FLAG_UNUSED_0x279  0x279 // Unused Flag
+#define FLAG_UNUSED_0x27A  0x27A // Unused Flag
+#define FLAG_UNUSED_0x27B  0x27B // Unused Flag
+#define FLAG_UNUSED_0x27C  0x27C // Unused Flag
 #define FLAG_UNUSED_0x27D  0x27D // Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag
 #define FLAG_UNUSED_0x27F  0x27F // Unused Flag
@@ -1233,58 +1218,16 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
-//PSF Item Ball Scripts
-#define FLAG_FOUND_STOLEN_GOODS 0x13A
-#define FLAG_ITEM_MARIN_RANGER_HEADPHONES                           0x3E8
-#define FLAG_ITEM_MARIN_RANGER_WIDE_LENS                            0x3E9
-#define FLAG_ITEM_MARIN_RANGER_ROCKY_HELMET                         0x3EA
-#define FLAG_ITEM_LAKEMERCED_STUFF1                                 0x3EB
-#define FLAG_ITEM_LAKEMERCED_STUFF2                                 0x3EC
-#define FLAG_ITEM_LAKEMERCED_STUFF3                                 0x3ED
-#define FLAG_ITEM_LAKEMERCED_STUFF4                                 0x3EE
-#define FLAG_ITEM_LAKEMERCED_STUFF5                                 0x3EF
-#define FLAG_ITEM_LAKEMERCED_STUFF6                                 0x3F0
-#define FLAG_ITEM_LAKEMERCED_STUFF7                                 0x3F1
-#define FLAG_ITEM_LAKEMERCED_STUFF8                                 0x3F2
-#define FLAG_ITEM_LAKEMERCED_STUFF9                                 0x3F3
-#define FLAG_ITEM_GLDNGTEWILDS_ENGAGEMENT_RING                      0x3F4
-
-#define FLAG_ITEM_ROCKCOLLECTOR_STONE_START    FLAG_ITEM_ROCKCOLLECTOR_CAVE_FIRE_STONE
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_FIRE_STONE	0x3F5
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_WATER_STONE	 0x3F6
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_THUNDER_STONE	    0x3F7
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_LEAF_STONE                            0x3F8
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_ICE_STONE	 0x3F9
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_SUN_STONE	       0x3FA
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_MOON_STONE	       0x3FB
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_SHINY_STONE	      0x3FC
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_DUSK_STONE	      0x3FD
-#define FLAG_ITEM_ROCKCOLLECTOR_CAVE_DAWN_STONE	      0x3FE
-
-#define FLAG_ITEM_ROCKCOLLECTOR_STONE_END   FLAG_ITEM_ROCKCOLLECTOR_CAVE_DAWN_STONE
-
-#define ROCKCOLLECTOR_STONES_COUNT  (FLAG_ITEM_ROCKCOLLECTOR_STONE_END - FLAG_ITEM_ROCKCOLLECTOR_STONE_START + 1)
-
-#define FLAG_QUEST_BODEGA_RESCUE_FLAGS_START                                FLAG_QUEST_BODEGA_RESCUE1
-
-#define FLAG_QUEST_BODEGA_RESCUE1                                           0x493
-#define FLAG_QUEST_BODEGA_RESCUE2                                           0x494
-#define FLAG_QUEST_BODEGA_RESCUE3                                           0x495
-#define FLAG_QUEST_BODEGA_RESCUE4                                           0x496
-#define FLAG_QUEST_BODEGA_RESCUE5                                           0x497
-#define FLAG_QUEST_BODEGA_RESCUE6                                           0x498
-
-#define FLAG_QUEST_BODEGA_RESCUE_FLAGS_END                                  FLAG_QUEST_BODEGA_RESCUE6
-
-#define BODEGA_RESCUE_COUNT (FLAG_QUEST_BODEGA_RESCUE_FLAGS_END - FLAG_QUEST_BODEGA_RESCUE_FLAGS_START + 1)
-#define FLAG_QUEST_WAREHOUSE_WARFARE_EXPLAINED                      0x499
+#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
+#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
+#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
+#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
+#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
+#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
-#define FLAG_QUEST_WAREHOUSEWARFARE_BARGE2_WORKERS_CLEAR 0x49A // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
-#define FLAG_QUEST_WAREHOUSEWARFARE_BARGE2_ENGINE_CLEAR 0x49B // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
-#define FLAG_QUEST_WAREHOUSEWARFARE_BARGE3_ENGINE_CLEAR 0x49C // Unused Flag
 #define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
 #define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
 #define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
@@ -1403,7 +1346,7 @@
 #define FLAG_SYS_POKEMON_GET                         (SYSTEM_FLAGS + 0x0) // FLAG_0x860
 #define FLAG_SYS_POKEDEX_GET                         (SYSTEM_FLAGS + 0x1)
 #define FLAG_SYS_POKENAV_GET                         (SYSTEM_FLAGS + 0x2)
-#define FLAG_SYS_QUEST_MENU_GET                      (SYSTEM_FLAGS + 0x3) // add QUESTS to start menu
+#define FLAG_UNUSED_0x863                            (SYSTEM_FLAGS + 0x3) // Unused Flag
 #define FLAG_SYS_GAME_CLEAR                          (SYSTEM_FLAGS + 0x4)
 #define FLAG_SYS_CHAT_USED                           (SYSTEM_FLAGS + 0x5)
 #define FLAG_UNLOCKED_TRENDY_SAYINGS                 (SYSTEM_FLAGS + 0x6)
@@ -1492,7 +1435,6 @@
 #define FLAG_SYS_ENC_UP_ITEM                        (SYSTEM_FLAGS + 0x4D)
 #define FLAG_SYS_ENC_DOWN_ITEM                      (SYSTEM_FLAGS + 0x4E)
 #define FLAG_SYS_BRAILLE_DIG                        (SYSTEM_FLAGS + 0x4F)
-#define FLAG_DISCOVERED_UNDERGROUNDLAB              (SYSTEM_FLAGS + 0x4F)
 #define FLAG_SYS_REGIROCK_PUZZLE_COMPLETED          (SYSTEM_FLAGS + 0x50)
 #define FLAG_SYS_BRAILLE_REGICE_COMPLETED           (SYSTEM_FLAGS + 0x51)
 #define FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED         (SYSTEM_FLAGS + 0x52)
@@ -1560,11 +1502,11 @@
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
-#define FLAG_TIMELINE_FALSE                         (SYSTEM_FLAGS + 0x85) // Previously Unused Flag
-#define FLAG_TIMELINE_TRUE                          (SYSTEM_FLAGS + 0x86) // Previously Unused Flag
-#define FLAG_HIDE_TOWER2_KOGA               (SYSTEM_FLAGS + 0x87) // Unused Flag
-#define FLAG_TIMELINE_TIMETRAVEL                    (SYSTEM_FLAGS + 0x88) // Unused Flag
-#define FLAG_PHONE_NO_SERVICE   (SYSTEM_FLAGS + 0x89) // Unused Flag
+#define FLAG_UNUSED_0x8E5                           (SYSTEM_FLAGS + 0x85) // Unused Flag
+#define FLAG_UNUSED_0x8E6                           (SYSTEM_FLAGS + 0x86) // Unused Flag
+#define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag
+#define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
+#define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
 #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag
 #define FLAG_UNUSED_0x8EB                           (SYSTEM_FLAGS + 0x8B) // Unused Flag
 #define FLAG_UNUSED_0x8EC                           (SYSTEM_FLAGS + 0x8C) // Unused Flag
@@ -1627,7 +1569,7 @@
 #define FLAG_UNUSED_0x920                           (DAILY_FLAGS_START + 0x0)  // Unused Flag
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
-#define FLAG_DAILY_KITCHEN_VOLUNTEER                (DAILY_FLAGS_START + 0x3)
+#define FLAG_UNUSED_0x923                           (DAILY_FLAGS_START + 0x3)  // Unused Flag
 #define FLAG_UNUSED_0x924                           (DAILY_FLAGS_START + 0x4)  // Unused Flag
 #define FLAG_UNUSED_0x925                           (DAILY_FLAGS_START + 0x5)  // Unused Flag
 #define FLAG_UNUSED_0x926                           (DAILY_FLAGS_START + 0x6)  // Unused Flag

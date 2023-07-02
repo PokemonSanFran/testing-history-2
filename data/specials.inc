@@ -616,3 +616,5 @@ gSpecials::
     def_special Quest_Warehousewarfare_CountRemainingSubquests
     def_special Quest_Persuasivepassenger_CountRemainingSubquests
     def_special Quest_Persuasivepassenger_CheckQuestAndChooseDriver
+    def_special Quest_Persuasivepassenger_CheckNeededItems
+    def_special Quest_Persuasivepassenger_TakeNeededItems

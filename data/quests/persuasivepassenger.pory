@@ -29,22 +29,113 @@ script Quest_Persuasivepassenger_SetCutsceneVar_Script{
 script Quest_Persuasivepassenger_Driver1_Event_Script{
     setvar(VAR_TEMP_1,5)
     lock
+
+    msgbox(gText_Persuasivepassenger_HeyKid,,SPEAKER_UBER_DRIVER1)
+    msgbox(gText_Persuasivepassenger_HowsItGoing,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_JustPickingUp,,SPEAKER_UBER_DRIVER1)
+
+    specialvar(VAR_RESULT,Quest_Persuasivepassenger_CheckNeededItems)
+    if (var(VAR_RESULT)){
+        call(Quest_Persuasivepassenger_HasItems_Dialogue)
+    }else{
+        msgbox(gText_Persuasivepassenger_MyKidIsSick,,SPEAKER_UBER_DRIVER1)
+        msgbox(gText_Persuasivepassenger_OhIHope,,SPEAKER_ZOEY)
+        bufferitemnameplural(STR_VAR_1,ITEM_SITRUS_BERRY,3)
+        bufferitemnameplural(STR_VAR_2,ITEM_HONEY,5)
+        msgbox(gText_Persuasivepassenger_MyMomUsed,,SPEAKER_UBER_DRIVER1)
+        bufferitemnameplural(STR_VAR_1,ITEM_WATMEL_BERRY,1)
+        bufferitemnameplural(STR_VAR_2,ITEM_LEMONADE,2)
+        msgbox(gText_Persuasivepassenger_IngredentsTwo,,SPEAKER_UBER_DRIVER1)
+    }
+
+    msgbox(gText_Persuasivepassenger_WereHere,,SPEAKER_UBER_DRIVER1)
+    closemessage
     //special(CompleteUberDrive)
-    warp(MAP_PETALBURG_CITY,0)
+    warp(MAP_SOMA,0)
+}
+
+script Quest_Persuasivepassenger_HasItems_Dialogue{
+    msgbox(gText_Persuasivepassenger_ForYourSickKid,,SPEAKER_ZOEY)
+    msgbox(gText_Persuasivepassenger_OhRightDidI,,SPEAKER_UBER_DRIVER1)
+    msgbox(gText_Persuasivepassenger_GiveItems,MSGBOX_YESNO)
+
+        if (var(VAR_RESULT) == YES){
+            special(Quest_Persuasivepassenger_TakeNeededItems)
+            msgbox(gText_Persuasivepassenger_IGotEverything,,SPEAKER_ZOEY)
+            msgbox(gText_Persuasivepassenger_PlayerGave,MSGBOX_AUTOCLOSE)
+            msgbox(gText_Persuasivepassenger_ThankYouSoMuch,,SPEAKER_UBER_DRIVER1)
+            msgbox(gText_Persuasivepassenger_TheUnion,,SPEAKER_ZOEY)
+            msgbox(gText_Persuasivepassenger_ThatsTight,,SPEAKER_UBER_DRIVER1)
+            subquestmenu(QUEST_PERSUASIVEPASSENGER,QUEST_MENU_COMPLETE_QUEST,SUB_QUEST_1)
+            closemessage
+        }else{
+            return
+        }
+    return
 }
 
 script Quest_Persuasivepassenger_Driver2_Event_Script{
     setvar(VAR_TEMP_1,5)
-    lock
-    //special(CompleteUberDrive)
-    warp(MAP_VERDANTURF_TOWN,0)
+
+        lock
+        //special(CompleteUberDrive)
+        warp(MAP_SUNSET,0)
 }
 
 script Quest_Persuasivepassenger_Driver3_Event_Script{
     setvar(VAR_TEMP_1,5)
-    lock
-    warp(MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM,0)
+        lock
+        warp(MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM,0)
 }
 
 script Quest_Persuasivepassenger_Complete_Dialogue{
+}
+
+text gText_Persuasivepassenger_HeyKid{
+    format("Hey kid, how are you?")
+}
+text gText_Persuasivepassenger_HowsItGoing{
+    format("Great, how's it going?")
+}
+text gText_Persuasivepassenger_JustPickingUp{
+    format("Just trying to pick up some extra shifts, get in as many rides as I can.")
+}
+text gText_Persuasivepassenger_MyKidIsSick{
+    format("My kid is sick with something fierce, so I'm trying to make some extra cash so we can buy some meds.")
+}
+text gText_Persuasivepassenger_OhIHope{
+    format("Oh! I hope they're okay...")
+}
+text gText_Persuasivepassenger_MyMomUsed{
+    format("You know, my mom used to make this insane medicine when I was little. It's hard to get the ingredients here, but I'd love to make it again... I think it was 3 {STR_VAR_1}, 5 {STR_VAR_2},")
+}
+text gText_Persuasivepassenger_IngredentsTwo{
+    format("1 {STR_VAR_1}, and 2 {STR_VAR_2}.")
+}
+text gText_Persuasivepassenger_WereHere{
+    format("Okay, we're here. Have a great day!")
+}
+text gText_Persuasivepassenger_ForYourSickKid{
+    format("For your sick kid, right?")
+}
+text gText_Persuasivepassenger_OhRightDidI{
+    format("Oh right, did I ride with you the other day?")
+}
+text gText_Persuasivepassenger_GiveItems{
+    format("Do you want to give the items to the driver?")
+}
+text gText_Persuasivepassenger_IGotEverything{
+    format("I got everything you mentioned. I'll leave it all back here for you.")
+}
+text gText_Persuasivepassenger_PlayerGave{
+    format("{PLAYER} gave the items to the driver.")
+}
+text gText_Persuasivepassenger_ThankYouSoMuch{
+    format("...thank you so much! You're like an angel, where did you come from?")
+}
+text gText_Persuasivepassenger_TheUnion{
+    format("Actually, the taxi union sent me. They're all about working together to help their fellow workers, and they heard some other drivers could use some help.")
+}
+text gText_Persuasivepassenger_ThatsTight{
+    format("That's tight! Maybe I'll check them out after all. Driving for Uber is intense.")
 }

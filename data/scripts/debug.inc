@@ -73,7 +73,10 @@ Debug_Script_2::
 
 
 Debug_Script_3::
-	warp MAP_PSFROUTE51, 1
+	additem ITEM_SITRUS_BERRY, 3
+	additem ITEM_HONEY, 5
+	additem ITEM_WATMEL_BERRY, 1
+	additem ITEM_LEMONADE, 2
 	end
 
 
