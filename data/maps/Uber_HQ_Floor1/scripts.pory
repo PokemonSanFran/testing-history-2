@@ -1,0 +1,19 @@
+//gText_Uber_HQ_Floor1_
+//Uber_HQ_Floor1_
+
+mapscripts Uber_HQ_Floor1_MapScripts{
+}
+
+script Uber_HQ_Floor1_StairsGuard_Dialogue{
+    msgbox(gText_Uber_HQ_Floor1_SorryNo,MSGBOX_NPC,SPEAKER_UBER_GRUNT2)
+
+    if (flag(FLAG_QUEST_PERSUASIVE_PASSENGER_PLAYER_KIDNAPPED)){
+        goto(Quest_Persuasivepassenger_Grunt2_Event_Script)
+    }
+
+    end
+}
+
+text gText_Uber_HQ_Floor1_SorryNo{
+    format("Sorry, no entry for non-employees.")
+}

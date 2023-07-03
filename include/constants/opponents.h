@@ -924,6 +924,9 @@
 #define TRAINER_AMAZON_GRUNT3              175
 #define TRAINER_AMAZON_CEO                 176
 #define TRAINER_PERSUASIVE_LANDLORD        177
+#define TRAINER_UBER_GRUNT1                178
+#define TRAINER_UBER_GRUNT2                179
+#define TRAINER_UBER_GRUNT3                180
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

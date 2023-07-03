@@ -239,5 +239,7 @@
 #define SPEAKER_UBER_DRIVER3            206
 #define SPEAKER_PERSUASIVE_LANDLORD     207
 #define SPEAKER_PERSUASIVE_SIBLING      208
+#define SPEAKER_UBER_GRUNT1             209
+#define SPEAKER_UBER_GRUNT2             210
 
 #endif

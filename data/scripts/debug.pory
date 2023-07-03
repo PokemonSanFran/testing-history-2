@@ -74,12 +74,13 @@ text Debug_FlagsNotSetBattleConfigMessage_Text{
 script Debug_Script_1{
     questmenu(QUEST_MENU_SET_ACTIVE,QUEST_PERSUASIVEPASSENGER)
     subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_PERSUASIVEPASSENGER,SUB_QUEST_1)
-    warp(MAP_UBER_INTERIOR,10,3)
+    subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_PERSUASIVEPASSENGER,SUB_QUEST_2)
+    warp(MAP_UBER_INTERIOR,20,3)
     end
 }
 
 script Debug_Script_2{
-    warp(MAP_ALAMEDA,33,27)
+    warp(MAP_DOGPATCH,3)
     end
 }
 
