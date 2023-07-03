@@ -637,7 +637,7 @@ bool8 Quest_Taxicabturnaround_IsSubquestComplete(void){
 bool8 Quest_Taxicabturnaround_CheckSeaPokemon(void){
     //11m and can learn surf
     u32 species = 0, height = 0;
-    u32 requiredHeight = 1100;
+    u32 requiredHeight = 110;
     bool8 doesPokemonMatch = TRUE;
 
     species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
@@ -929,54 +929,65 @@ void Quest_Bodegaburnout_LoadRequestText(void){
 }
 
 bool8 Quest_Bodegaburnout_CheckStrongPokemon(void){
-    u32 species = 0;
+    //Human-like egg group AND 18 decimeters
+    u32 species = 0, height = 0;
     u32 eggGroup[2] = {0,0};
-    u32 type[2] = {0,0};
+    u32 requiredHeight = 18;
     bool8 doesPokemonMatch = TRUE;
 
     species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
     eggGroup[0] = gSpeciesInfo[species].eggGroups[0];
     eggGroup[1] = gSpeciesInfo[species].eggGroups[1];
-    type[0] = gSpeciesInfo[species].types[0];
-    type[1] = gSpeciesInfo[species].types[1];
+    height = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(species), 0);
 
-        doesPokemonMatch = FALSE;
-
+    if (
+            (
+             (eggGroup[0] != EGG_GROUP_HUMAN_LIKE) &&
+             (eggGroup[1] != EGG_GROUP_HUMAN_LIKE)
+            )
+            ||
+            (height < requiredHeight)
+       )
+            {
+                doesPokemonMatch = FALSE;
+            }
     return doesPokemonMatch;
 }
 
 bool8 Quest_Bodegaburnout_CheckColdPokemon(void){
-    u32 species = 0, weight = 0;
-    u32 requiredWeight = 320;
-    u32 eggGroup[2] = {0,0};
+    u32 species = 0;
+    u32 type[2] = {0,0};
     bool8 doesPokemonMatch = TRUE;
 
     species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
-    eggGroup[0] = gSpeciesInfo[species].eggGroups[0];
-    eggGroup[1] = gSpeciesInfo[species].eggGroups[1];
+    type[0] = gSpeciesInfo[species].types[0];
+    type[1] = gSpeciesInfo[species].types[1];
 
-    weight = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(species), 1);
-
-    if (((eggGroup[0] != EGG_GROUP_FIELD) && (eggGroup[1] != EGG_GROUP_FIELD)) || (weight < requiredWeight)){
-        doesPokemonMatch = FALSE;
-    }
-
+        if (
+             (type[0] != TYPE_ICE) &&
+             (type[1] != TYPE_ICE)
+           )
+            {
+                doesPokemonMatch = FALSE;
+            }
     return doesPokemonMatch;
 }
 
 bool8 Quest_Bodegaburnout_CheckSmartPokemon(void){
-    u32 species = 0, weight = 0;
-    u32 requiredWeight = 320;
-    u32 eggGroup[2] = {0,0};
+    //Pokemon that like Bitter food have an easier time becoming Smart in Contest Data, so only pokemon that like bitter flavors
+    u32 species = 0, nature = 0;
     bool8 doesPokemonMatch = TRUE;
 
     species = GetMonData(&gPlayerParty[gSpecialVar_0x8004],MON_DATA_SPECIES,NULL);
-    eggGroup[0] = gSpeciesInfo[species].eggGroups[0];
-    eggGroup[1] = gSpeciesInfo[species].eggGroups[1];
+    nature = GetNature(&gPlayerParty[gSpecialVar_0x8004]);
 
-    weight = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(species), 1);
-
-    if (((eggGroup[0] != EGG_GROUP_FIELD) && (eggGroup[1] != EGG_GROUP_FIELD)) || (weight < requiredWeight)){
+    if (
+        (nature != NATURE_GENTLE) &&
+        (nature != NATURE_SASSY) &&
+        (nature != NATURE_CALM) &&
+        (nature != NATURE_CAREFUL)
+       )
+    {
         doesPokemonMatch = FALSE;
     }
 

@@ -17,8 +17,12 @@ const WAREHOUSE_GRUNT5 = 6
 const WAREHOUSE_TWITTER_CEO = 8
 const WAREHOUSE_SLURPUFF = 4
 
+script Quest_Breaktheinternet_EliteFour_Dialogue{
+    msgbox(format("you should talk to my reporter friend in SOMA."),MSGBOX_NPC,SPEAKER_MALVA)
+}
+
 script Quest_Breaktheinternet_CountQuestsAndProgress_Script{
-    specialvar(VAR_RESULT,Quest_Breaktheinternet_Count_CompletedSocialMedia) 
+    specialvar(VAR_RESULT,Quest_Breaktheinternet_Count_CompletedSocialMedia)
         if (var(VAR_RESULT) > 5){
             call(Quest_Breaktheinternet_CallPlayer_Dialogue)
         }
@@ -35,7 +39,7 @@ script Quest_Breaktheinternet_CallPlayer_Dialogue{
 }
 
 script Quest_Breaktheinternet_Ismail_Visibility_Script{
-    specialvar(VAR_0x8003,Quest_Breaktheinternet_Count_CompletedSocialMedia) 
+    specialvar(VAR_0x8003,Quest_Breaktheinternet_Count_CompletedSocialMedia)
         specialvar(VAR_0x8004,Quest_Breaktheinternet_CountRemainingSubquests)
 
         if ((var(VAR_0x8003) < 5) || (var(VAR_0x8004) < 2)){
@@ -143,7 +147,7 @@ script Quest_Breaktheinternet_CallAfterFirst_Dialogue{
     msgbox(gText_Breaktheinternet_AnyLuck,,SPEAKER_ISMAIL,,,PHONE_ON)
     msgbox(gText_Breaktheinternet_IFought,,SPEAKER_ZOEY,,,PHONE_ON)
     msgbox(gText_Breaktheinternet_HeadOverTo,,SPEAKER_ISMAIL,,,PHONE_ON)
-    closemessage 
+    closemessage
     playse(SE_POKENAV_HANG_UP)
     release
     end
@@ -156,7 +160,7 @@ script Quest_Breaktheinternet_CallAfterSecond_Dialogue{
     msgbox(gText_Breaktheinternet_OhHiUh,,SPEAKER_ISMAIL,,,PHONE_ON)
     msgbox(gText_Breaktheinternet_IBattledA,,SPEAKER_ZOEY,,,PHONE_ON)
     msgbox(gText_Breaktheinternet_UhYesComeBack,,SPEAKER_ISMAIL,,,PHONE_ON)
-    closemessage 
+    closemessage
     playse(SE_POKENAV_HANG_UP)
     release
     end
@@ -185,7 +189,7 @@ script Quest_Breaktheinternet_Warehouse_Enemy_Visibility_Script{
 
 
 script Quest_Breaktheinternet_Slurpuff_Visibility_Script{
-    setflag(FLAG_HIDE_WAREHOUSE_SLURPUFF) 
+    setflag(FLAG_HIDE_WAREHOUSE_SLURPUFF)
     return
 }
 
@@ -211,7 +215,7 @@ script Quest_Breaktheinternet_Warehouse_CEO_Visibility_Script{
 }
 
 script Quest_Breaktheinternet_WarehouseGuard_Script{
-    specialvar(VAR_RESULT,Quest_Breaktheinternet_CountRemainingSubquests) 
+    specialvar(VAR_RESULT,Quest_Breaktheinternet_CountRemainingSubquests)
         if (var(VAR_RESULT) < 2){
             setflag(FLAG_HIDE_WAREHOUSE_GUARD)
         }
@@ -247,7 +251,7 @@ script Quest_Breaktheinternet_SetPlayerPosition_Script{
 
         if (var(VAR_TEMP_0) == 1){
             fadescreen(FADE_TO_BLACK)
-            setobjectxy(PLAYER,2,8) 
+            setobjectxy(PLAYER,2,8)
             TeleportCamera(2,8)
             applymovement(PLAYER,Common_Movement_FaceLeft)
             waitmovement(PLAYER)
@@ -307,6 +311,11 @@ script Quest_Breaktheinternet_WarehouseSlurfpuff_Event_Script{
 script Quest_Breaktheinternet_StartFinalCutscene_Dialogue{
     lock
     if (var(VAR_QUEST_BREAKTHEINTERNET_STATE) != SAVED_BEFORE_TWITTER_CEO){
+
+    if(defeated(TRAINER_TWITTER_CEO_RAID)){
+        goto(Quest_Breaktheinternet_PostRaid_Twitter_CEO_Dialogue)
+    }
+
     setvar(VAR_QUEST_BREAKTHEINTERNET_STATE,SAVED_BEFORE_TWITTER_CEO)
     call(Quest_Breaktheinternet_SetPlayerPosition_Script)
     msgbox(gText_Breaktheinternet_IsThat,,SPEAKER_ZOEY,TAIL_THOUGHT,EMOTE_SHOCK)
@@ -351,10 +360,22 @@ waitse
     applymovement(PLAYER,Common_Movement_FaceDown)
     waitmovement(PLAYER)
     msgbox(gText_Breaktheinternet_YouAppearToBe,,SPEAKER_TWITTER_CEO)
+    lockall
+    closemessage
+    call(Common_EventScript_SaveGame)
     closemessage
 }
+    goto(Quest_Breaktheinternet_CEO_Battle_Script)
+}
+
+script Quest_Breaktheinternet_CEO_Battle_Script{
     trainerbattle_no_intro(TRAINER_TWITTER_CEO,gText_Breaktheinternet_HowIsThis)
     goto(Quest_Breaktheinternet_PostCEOBattle_Dialogue)
+}
+
+script Quest_Breaktheinternet_PostRaid_Twitter_CEO_Dialogue{
+    msgbox(gText_Persuasivepassenger_IShouldHaveGuessed,MSGBOX_NPC,SPEAKER_TWITTER_CEO)
+    goto(Quest_Breaktheinternet_CEO_Battle_Script)
 }
 
 script Quest_Breaktheinternet_PostCEOBattle_Dialogue{
@@ -385,7 +406,7 @@ script Quest_Breaktheinternet_GiveSlurpuff_Dialogue{
         }else {
             call(Breaktheinternet_GiveGift_Script)
         }
-    
+
         closemessage
         release
         end
@@ -400,6 +421,7 @@ script Breaktheinternet_LeaveGift_Script {
 script Breaktheinternet_GiveGift_Script {
     givecustommon(SPECIES_SLURPUFF,22,ITEM_TERRAIN_EXTENDER,ITEM_POKE_BALL,NATURE_TIMID)
     completequest(QUEST_BREAKTHEINTERNET)
+    addvar(VAR_STORYLINE_STATE,1)
 	setvar(VAR_TEMP_1, SPECIES_SLURPUFF)
         if (var(VAR_RESULT) == 0){
             call(Breaktheinternet_SendGiftToParty_Script)
@@ -487,7 +509,7 @@ text gText_Breaktheinternet_HeadOverTo{
 }
 
 text gText_Breaktheinternet_TwitterWhatAre{
-    format("Twitter, what are you talking about...? Heh, you got me.?") 
+    format("Twitter, what are you talking about...? Heh, you got me.?")
 }
 
 text gText_Breaktheinternet_TheBoss{

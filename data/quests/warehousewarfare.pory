@@ -2,6 +2,15 @@
 //text gText_Warehousewarfare_
 const FLAG_HIDE_BARGE_GUARD = FLAG_TEMP_1
 
+script Quest_Warehousewarfare_EliteFour_Dialogue{
+    msgbox(gText_Blank,MSGBOX_NPC,SPEAKER_WIKSTROM)
+
+    returnqueststate(QUEST_WAREHOUSEWARFARE)
+    if(var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST){
+        startquest(QUEST_WAREHOUSEWARFARE)
+    }
+}
+
 script Quest_Warehousewarfare_Interact_Event_Script{
     lock
     faceplayer
@@ -91,6 +100,7 @@ script Quest_Warehousewarfare_ExplainBarge3_Dialogue{
 script Quest_Warehousewarfare_Reward_Dialogue{
     msgbox(gText_Warehousewarfare_HolyMoly,MSGBOX_NPC)
     completequest(QUEST_WAREHOUSEWARFARE)
+    addvar(VAR_STORYLINE_STATE,1)
     release
     end
 }
@@ -188,29 +198,47 @@ script Quest_Warehousewarfare_Barge3Triple_Battle_Script{
     setflag(FLAG_QUEST_WAREHOUSEWARFARE_BARGE3_ENGINE_CLEAR)
     closemessage
     release
-    end    
+    end
 }
 
 script Quest_Warehousewarfare_Barge3_CEO_Battle_Script{
     lock
 
         if (var(VAR_QUEST_WAREHOUSEWARFARE_STATE) != SAVED_BEFORE_AMAZON_CEO){
-            setvar(VAR_QUEST_WAREHOUSEWARFARE_STATE,SAVED_BEFORE_AMAZON_CEO)
-            msgbox(gText_Warehousewarfare_OhYouShut,MSGBOX_NPC,SPEAKER_AMAZON_CEO)
-            msgbox(gText_Warehousewarfare_IRegret,,SPEAKER_AMAZON_CEO)
-            msgbox(gText_Warehousewarfare_YouAreInteresting,,SPEAKER_AMAZON_CEO)
-            lockall
-            closemessage
-            call(Common_EventScript_SaveGame)
-            closemessage
+
+        if(defeated(TRAINER_AMAZON_CEO_RAID)){
+            goto(Quest_Warehousewarfare_PostRaid_CEO_Dialogue)
         }
+
+        setvar(VAR_QUEST_WAREHOUSEWARFARE_STATE,SAVED_BEFORE_AMAZON_CEO)
+        msgbox(gText_Warehousewarfare_OhYouShut,MSGBOX_NPC,SPEAKER_AMAZON_CEO)
+        msgbox(gText_Warehousewarfare_IRegret,,SPEAKER_AMAZON_CEO)
+        msgbox(gText_Warehousewarfare_YouAreInteresting,,SPEAKER_AMAZON_CEO)
+        lockall
+        closemessage
+        call(Common_EventScript_SaveGame)
+        closemessage
+        }
+    goto(Quest_Warehousewarfare_CEO_Battle_Script)
+}
+
+script Quest_Warehousewarfare_CEO_Battle_Script{
         trainerbattle_no_intro(TRAINER_AMAZON_CEO,gText_Warehousewarfare_Outstanding)
+    goto(Quest_Warehousewarfare_Post_CEO_Battle_Script)
+}
+
+script Quest_Warehousewarfare_Post_CEO_Battle_Script{
         subquestmenu(QUEST_MENU_COMPLETE_QUEST,QUEST_WAREHOUSEWARFARE,SUB_QUEST_3)
         questmenu(QUEST_MENU_SET_REWARD,QUEST_WAREHOUSEWARFARE)
         msgbox(gText_Warehousewarfare_ThisWillSlowUs,,SPEAKER_AMAZON_CEO)
         closemessage
         release
         end
+}
+
+script Quest_Warehousewarfare_PostRaid_CEO_Dialogue{
+    msgbox(gText_Persuasivepassenger_IShouldHaveGuessed,MSGBOX_NPC,SPEAKER_AMAZON_CEO)
+    goto(Quest_Warehousewarfare_CEO_Battle_Script)
 }
 
 //PSF TODO

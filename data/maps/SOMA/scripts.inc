@@ -29,7 +29,9 @@ SOMA_SocialMediaReporter_Dialogue::
 	playse SE_EXIT
 	waitmovement 5
 	removeobject 5
-	return
+	call Quest_Breaktheinternet_CountQuestsAndProgress_Script
+	release
+	end
 
 
 SOMA_WalkInside:

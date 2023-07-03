@@ -241,5 +241,6 @@
 #define SPEAKER_PERSUASIVE_SIBLING      208
 #define SPEAKER_UBER_GRUNT1             209
 #define SPEAKER_UBER_GRUNT2             210
+#define SPEAKER_UBER_CEO                211
 
 #endif

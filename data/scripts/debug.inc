@@ -70,7 +70,7 @@ Debug_Script_1::
 
 
 Debug_Script_2::
-	warp MAP_DOGPATCH, 3
+	warp MAP_PRESIDIO, 0
 	end
 
 

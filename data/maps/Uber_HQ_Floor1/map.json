@@ -16,7 +16,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_3",
-      "x": 8,
+      "x": 1,
       "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -57,7 +57,7 @@
       "dest_warp_id": "3"
     },
     {
-      "x": 8,
+      "x": 1,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_UBER_HQ_BASEMENT",
@@ -75,6 +75,21 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Uber_HQ_Floor1_StairsGuard_Dialogue"
+    },
+    {
+      "type": "sign",
+      "x": 2,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Uber_HQ_Floor1_StairsGuard_Dialogue"
+    }
   ]
 }

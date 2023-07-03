@@ -2,7 +2,7 @@ script TwitterPost_RabiesOutbreak_Script {
     lock
     msgbox(gText_Twitter_RabiesOutBreak_Message, MSGBOX_DEFAULT)
 
-    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_RABIESOUTBREAK) 
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_RABIESOUTBREAK)
     if (var (VAR_RESULT)) {
         startquest(QUEST_RABIESOUTBREAK)
     } closemessage
@@ -10,8 +10,11 @@ script TwitterPost_RabiesOutbreak_Script {
 }
 
 script Twitter_HideReporter_Script {
-    questmenu(QUEST_MENU_CHECK_COMPLETE, QUEST_RABIESOUTBREAK) 
-        if (!var (VAR_RESULT) || (flag(FLAG_MET_SOCIALMEDIA_REPORTER))) {
+        if (
+            (var(VAR_ALCATRAZ_STATE) < POST_SPEECHSPEECH) ||
+            (flag(FLAG_MET_SOCIALMEDIA_REPORTER))
+           )
+        {
             setflag(FLAG_TEMP_4)
         }
 }
@@ -31,7 +34,7 @@ script TwitterPost_BlueRobbery_Script {
     showmonpic(SPECIES_QUAGSIRE, 10, 3)
     msgbox(gText_Twitter_BlueRobbery_Message, MSGBOX_DEFAULT)
     hidemonpic
-    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_BLUEROBBERRY) 
+    questmenu(QUEST_MENU_CHECK_INACTIVE, QUEST_BLUEROBBERRY)
     if (var (VAR_RESULT)) {
         startquest(QUEST_BLUEROBBERRY)
     }

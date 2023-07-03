@@ -94,8 +94,7 @@ Alcatraz_B2F_Malva_Event_Script_3:
 	goto Alcatraz_B2F_Malva_Event_Script_1
 
 Alcatraz_B2F_Malva_Event_Script_4:
-	msgbox Alcatraz_B2F_Malva_Event_Script_Text_0, MSGBOX_NPC, SPEAKER_MALVA
-	addvar VAR_STORYLINE_STATE, 1
+	goto Quest_Breaktheinternet_EliteFour_Dialogue
 	goto Alcatraz_B2F_Malva_Event_Script_1
 
 
@@ -133,8 +132,7 @@ Alcatraz_B2F_Siebold_Event_Script_3:
 	goto Alcatraz_B2F_Siebold_Event_Script_1
 
 Alcatraz_B2F_Siebold_Event_Script_4:
-	msgbox Alcatraz_B2F_Siebold_Event_Script_Text_0, MSGBOX_NPC, SPEAKER_SIEBOLD
-	addvar VAR_STORYLINE_STATE, 1
+	goto Quest_Persuasivepassenger_EliteFour_Dialogue
 	goto Alcatraz_B2F_Siebold_Event_Script_1
 
 
@@ -153,17 +151,9 @@ Alcatraz_B2F_Wikstrom_Event_Script_3:
 	goto Alcatraz_B2F_Wikstrom_Event_Script_1
 
 Alcatraz_B2F_Wikstrom_Event_Script_4:
-	msgbox Alcatraz_B2F_Siebold_Event_Script_Text_0, MSGBOX_NPC, SPEAKER_WIKSTROM
-	addvar VAR_STORYLINE_STATE, 1
+	goto Quest_Warehousewarfare_EliteFour_Dialogue
 	goto Alcatraz_B2F_Wikstrom_Event_Script_1
 
 
-Alcatraz_B2F_Malva_Event_Script_Text_0:
-	.string "you've started and finished a takedown\n"
-	.string "quest.$"
-
 Alcatraz_B2F_Drasna_Event_Script_Text_0:
 	.string "I don't have a takedown quest for you.$"
-
-Alcatraz_B2F_Siebold_Event_Script_Text_0:
-	.string "you've started and finished a takedown quest.$"

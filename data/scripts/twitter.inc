@@ -14,9 +14,8 @@ TwitterPost_RabiesOutbreak_Script_2:
 
 
 Twitter_HideReporter_Script::
-	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RABIESOUTBREAK
-	compare VAR_RESULT, 0
-	goto_if_eq Twitter_HideReporter_Script_1
+	compare VAR_ALCATRAZ_STATE, POST_SPEECHSPEECH
+	goto_if_lt Twitter_HideReporter_Script_1
 	goto_if_set FLAG_MET_SOCIALMEDIA_REPORTER, Twitter_HideReporter_Script_1
 	return
 

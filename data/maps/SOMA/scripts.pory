@@ -26,7 +26,7 @@ script SOMA_SocialMediaReporter_Dialogue{
     msgbox(gText_SOMA_SocialMediaIs,MSGBOX_NPC,SPEAKER_ISMAIL)
 
     msgbox(gText_SOMA_TotallyIHunted,MSGBOX_DEFAULT,,SPEAKER_ZOEY)
-    
+
 
     msgbox(gText_SOMA_OhRight,MSGBOX_DEFAULT,SPEAKER_ISMAIL)
     closemessage
@@ -34,6 +34,9 @@ script SOMA_SocialMediaReporter_Dialogue{
     playse(SE_EXIT)
     waitmovement(ISMAIL)
     removeobject(ISMAIL)
+    call(Quest_Breaktheinternet_CountQuestsAndProgress_Script)
+    release
+    end
 }
 
 text gText_SOMA_SocialMediaIs{

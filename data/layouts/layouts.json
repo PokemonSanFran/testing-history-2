@@ -6876,7 +6876,7 @@
       "name": "Uber_HQ_Floor1_Layout",
       "width": 20,
       "height": 10,
-      "primary_tileset": "gTileset_Building",
+      "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Uber_HQ_Floor1/border.bin",
       "blockdata_filepath": "data/layouts/Uber_HQ_Floor1/map.bin"

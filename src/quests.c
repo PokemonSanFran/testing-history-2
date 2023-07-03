@@ -3313,7 +3313,7 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_TWIN,
 	        OBJECT,
 	        sBodegaBurnout_Sub,
-	        QUEST_BODEGABURNOUT_SUB_COUNT 
+	        QUEST_BODEGABURNOUT_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_WarehouseWarfare_Name,
@@ -3427,7 +3427,7 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_PHOEBE,
 	        OBJECT,
             sBecomeChampion_Sub,
-            QUEST_BECOMECHAMPION
+            QUEST_BECOMECHAMPION_SUB_COUNT
 	),
 	side_quest(
 	        gText_Quest_Dancebattle_Name,
@@ -4166,7 +4166,7 @@ u8 getFirstFavoriteQuest(){
 		if(QuestMenu_GetSetQuestState(i,FLAG_GET_ACTIVE))
 			return i;
 	}
-	
+
 	return SUB_QUEST_COUNT;
 }
 
@@ -4937,7 +4937,7 @@ static void Task_Main(u8 taskId)
 		                        &sListMenuState.row);
 
 		//LoadSavedQuestMode(taskId);
-        //PSF TODO this doesn't work correctly. 
+        //PSF TODO this doesn't work correctly.
         //The goal is when the user closes the quest menu and reopens it, the user goes back to the quest that they were previously looking at.
 
 		switch (input) {
