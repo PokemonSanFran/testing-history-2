@@ -1,3 +1,45 @@
 Haightashbury_Gym_Lobby_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Haightashbury_Gym_Lobby_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Haightashbury_Gym_Lobby_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Haightashbury_Gym_Lobby_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
 	.byte 0
 
+Haightashbury_Gym_Lobby_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call_if_quest_complete QUEST_RESTOREHAIGHTASHBURY, Haightashbury_Gym_Lobby_RepositionAttendant_Script
+	return
+
+Haightashbury_Gym_Lobby_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_TEMP_0, 0, BattleTower_EventScript_GetChallengeStatus
+	map_script_2 VAR_TEMP_0, CHALLENGE_STATUS_SAVING, BattleTower_EventScript_QuitWithoutSaving
+	map_script_2 VAR_TEMP_0, CHALLENGE_STATUS_PAUSED, BattleTower_EventScript_ResumeChallenge
+	map_script_2 VAR_TEMP_0, CHALLENGE_STATUS_WON, BattleTower_EventScript_WonChallenge
+	map_script_2 VAR_TEMP_0, CHALLENGE_STATUS_LOST, BattleTower_EventScript_LostChallenge
+	.2byte 0
+
+Haightashbury_Gym_Lobby_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
+	map_script_2 VAR_TEMP_1, 0, BattleTower_EventScript_PlayerFaceNorth
+	.2byte 0
+
+
+Haightashbury_Gym_Lobby_RepositionAttendant_Script::
+	setobjectxyperm 1, 4, 4
+	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_DOWN
+	return
+
+
+Haightashbury_Gym_Lobby_Attendant_Singles::
+	questmenu QUEST_MENU_CHECK_COMPLETE, QUEST_RESTOREHAIGHTASHBURY
+	compare VAR_RESULT, 0
+	goto_if_ne Haightashbury_Gym_Lobby_Attendant_Singles_2
+Haightashbury_Gym_Lobby_Attendant_Singles_1:
+	msgbox gText_Haightashbury_Gym_Lobby_ThisWayTo, MSGBOX_NPC, SPEAKER_GYM_ATTENDANT
+	end
+
+Haightashbury_Gym_Lobby_Attendant_Singles_2:
+	goto BattleTower_EventScript_Attendant
+	goto Haightashbury_Gym_Lobby_Attendant_Singles_1
+
+
+gText_Haightashbury_Gym_Lobby_ThisWayTo::
+	.string "If you're here for the Gym, its right\n"
+	.string "through these doors.$"

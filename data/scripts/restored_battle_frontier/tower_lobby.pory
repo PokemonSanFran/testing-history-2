@@ -17,22 +17,6 @@ const MODE_OPEN_DOUBLES = 102
 const MODE_OPEN_MULTIS = 103
 
 mapscripts BattleTower_MapScripts{
-    MAP_SCRIPT_ON_RESUME{
-        special(TryHideBattleTowerReporter)
-            end
-    }
-
-    MAP_SCRIPT_ON_FRAME_TABLE[
-        VAR_FACILITY_CHALLENGE_STATUS, CHALLENGE_STATUS_UNKNOWN: BattleTower_EventScript_GetChallengeStatus
-        VAR_FACILITY_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING: BattleTower_EventScript_QuitWithoutSaving
-        VAR_FACILITY_CHALLENGE_STATUS, CHALLENGE_STATUS_PAUSED: BattleTower_EventScript_ResumeChallenge
-        VAR_FACILITY_CHALLENGE_STATUS, CHALLENGE_STATUS_WON: BattleTower_EventScript_WonChallenge
-        VAR_FACILITY_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST: BattleTower_EventScript_LostChallenge
-    ]
-
-    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[
-        VAR_NEED_TO_FACE_NORTH, 0:BattleTower_EventScript_PlayerFaceNorth
-    ]
 }
 
 script BattleTower_EventScript_PlayerFaceNorth{
@@ -250,10 +234,9 @@ script BattleTower_EventScript_TryEnterChallenge{
     switch(var(VAR_LAST_TALKED)){
         case ATTENDANT_SINGLES: msgbox(BattleTower_Text_SelectThreeMons, MSGBOX_DEFAULT)
         case ATTENDANT_DOUBLES: msgbox(BattleTower_Text_PleaseSelectFourMons, MSGBOX_DEFAULT)
-        case ATTENDANT_MULTIS: msgbox(BattleTower_Text_PleaseSelectTwoMons, MSGBOX_DEFAULT)
-        case ATTENDANT_LINK_MULTIS: msgbox(BattleTower_Text_PleaseSelectTwoMons2, MSGBOX_DEFAULT)
+        case ATTENDANT_MULTIS:
+        case ATTENDANT_LINK_MULTIS: msgbox(BattleTower_Text_PleaseSelectTwoMons, MSGBOX_DEFAULT)
     }
-//PSF TODO left off here
 
     fadescreen(FADE_TO_BLACK)
     frontier_get(FRONTIER_DATA_LVL_MODE)
@@ -261,7 +244,7 @@ script BattleTower_EventScript_TryEnterChallenge{
     switch(var(VAR_LAST_TALKED)){
         case ATTENDANT_SINGLES: setvar(VAR_0x8005, FRONTIER_PARTY_SIZE)
         case ATTENDANT_DOUBLES: setvar(VAR_0x8005, FRONTIER_DOUBLES_PARTY_SIZE)
-        case ATTENDANT_MULTIS: setvar(VAR_0x8005, FRONTIER_MULTI_PARTY_SIZE)
+        case ATTENDANT_MULTIS:
         case ATTENDANT_LINK_MULTIS: setvar(VAR_0x8005, FRONTIER_MULTI_PARTY_SIZE)
     }
     special(ChoosePartyForBattleFrontier)
@@ -285,13 +268,8 @@ script BattleTower_EventScript_SaveBeforeChallenge{
     closemessage
     delay(2)
 
-        //The command tower_save ultimately calls TrySavingData(SAVE_LINK), which writes data in SaveBlock1 and SaveBlock2 to the flash, but not data in PokemonStorage.
-        //The SaveGame script that follows asks the player to do a full save, which they can opt out of.
-        //As a result the player can save their party and quit without having saved the PC.
-        //This allows players to clone pokemon and their held items by withdrawing them (or erase them by despositing).
-        // https://bulbapedia.bulbagarden.net/wiki/Cloning_glitches#Battle_Tower
     if (var(VAR_LAST_TALKED) == ATTENDANT_LINK_MULTIS){
-        tower_save(0) //This line prevents the aforementioned cloning. If this line is absent, cloning will be possible.
+        tower_save(0)
     }
 
     call(Common_EventScript_SaveGame)
@@ -303,7 +281,6 @@ script BattleTower_EventScript_SaveBeforeChallenge{
     }
 
     call(BattleTower_EventScript_HandleMultiplayer)
-
     goto(BattleTower_EventScript_EnterElevator)
 }
 
@@ -460,76 +437,6 @@ script BattleTower_EventScript_ExplainChallenge{
     }
 
     goto(BattleTower_EventScript_AskEnterChallenge)
-    end
-}
-
-script BattleTower_EventScript_SinglesAttendant{
-    goto(BattleTower_EventScript_Attendant)
-}
-
-script BattleTower_EventScript_DoublesAttendant{
-    goto(BattleTower_EventScript_Attendant)
-}
-
-script BattleTower_EventScript_MultisAttendant{
-    goto(BattleTower_EventScript_Attendant)
-}
-
-script BattleTower_EventScript_LinkMultisAttendant{
-    goto(BattleTower_EventScript_Attendant)
-}
-
-script BattleTower_EventScript_FeelingsMan{
-    lock
-    faceplayer
-    message(BattleTower_Text_DescribeFeelingsAboutBattleTower)
-    waitmessage
-    multichoice(16, 4, MULTI_BATTLE_TOWER_FEELINGS, FALSE)
-    switch(var(VAR_RESULT)){
-        case 0:
-            msgbox(BattleTower_Text_FeelWhatWhenYouBegin, MSGBOX_DEFAULT)
-            setvar(VAR_0x8004, EASY_CHAT_TYPE_BATTLE_START)
-            goto(BattleTower_EventScript_EnterFeelingsEasyChat)
-        case 1:
-            msgbox(BattleTower_Text_FeelWhatWhenYouveWon, MSGBOX_DEFAULT)
-            setvar(VAR_0x8004, EASY_CHAT_TYPE_BATTLE_WON)
-            goto(BattleTower_EventScript_EnterFeelingsEasyChat)
-        case 2:
-            msgbox(BattleTower_Text_FeelWhatWhenYouveLost, MSGBOX_DEFAULT)
-            setvar(VAR_0x8004, EASY_CHAT_TYPE_BATTLE_LOST)
-            goto(BattleTower_EventScript_EnterFeelingsEasyChat)
-        case 3:
-        case MULTI_B_PRESSED:
-            msgbox(BattleTower_Text_DontThinkMuchAboutIt, MSGBOX_DEFAULT)
-    }
-    release
-        end
-}
-
-script BattleTower_EventScript_EnterFeelingsEasyChat{
-    call(Common_ShowEasyChatScreen)
-    lock
-    faceplayer
-    goto(BattleTower_EventScript_CheckFeelings)
-}
-
-script BattleTower_EventScript_CheckFeelings{
-    if (var(VAR_RESULT) == 1){
-        msgbox(BattleTower_Text_ThatsHowYouFeel, MSGBOX_DEFAULT)
-    }else{
-        msgbox(BattleTower_Text_ChangedYourMind, MSGBOX_DEFAULT)
-    }
-    release
-    end
-}
-
-script BattleTower_EventScript_Woman{
-    msgbox(BattleTower_Text_WinsInRowRecorded, MSGBOX_NPC)
-    end
-}
-
-script BattleTower_EventScript_Boy{
-    msgbox(BattleTower_Text_CanLeaveUntilLossOrSevenWins, MSGBOX_NPC)
     end
 }
 
@@ -946,10 +853,6 @@ text BattleTower_Text_TakeLinkMultisChallenge{
 
 text BattleTower_Text_ExplainLinkMultisChallenge{
     format("The BATTLE TOWER's MULTI BATTLE ROOMS are facilities for conducting MULTI BATTLES with a friend.\pYou must link with your friend using Wireless Adapters or a Game Boy Advance Game Link cable.\pYou must partner with your friend and enter two different kinds of POKéMON.\pThere are many MULTI BATTLE ROOMS in the BATTLE TOWER for team battles.\pIn a MULTI BATTLE ROOM, seven tag teams await you and your friend to make a tag-team challenge.\pIf you manage to defeat all seven teams, you will earn Battle Points.\pPlease beware that unlike other ROOMS, you may not interrupt your challenge.\pOnce you start, you must battle seven MULTI BATTLES in a row nonstop.")
-}
-
-text BattleTower_Text_PleaseSelectTwoMons2{
-    format("Now please select the two POKéMON that are to be entered.")
 }
 
 text BattleTower_Text_LinkMultiOnlyForTwoPlayers{

@@ -72,12 +72,15 @@ text Debug_FlagsNotSetBattleConfigMessage_Text{
 }
 
 script Debug_Script_1{
-    warp(MAP_HAIGHTASHBURY,1)
+    completequest(QUEST_RESTOREHAIGHTASHBURY)
+    givemon(SPECIES_VENUSAUR,100)
+    givemon(SPECIES_CHARIZARD, 100)
+    givemon(SPECIES_BLASTOISE, 100)
     end
 }
 
 script Debug_Script_2{
-    warp(MAP_PRESIDIO,0)
+    warp(MAP_HAIGHTASHBURY,1)
     end
 }
 

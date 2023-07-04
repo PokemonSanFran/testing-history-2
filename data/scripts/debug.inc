@@ -62,12 +62,15 @@ Debug_FlagsNotSetBattleConfigMessage::
 
 
 Debug_Script_1::
-	warp MAP_HAIGHTASHBURY, 1
+	completequest QUEST_RESTOREHAIGHTASHBURY
+	givemon SPECIES_VENUSAUR, 100
+	givemon SPECIES_CHARIZARD, 100
+	givemon SPECIES_BLASTOISE, 100
 	end
 
 
 Debug_Script_2::
-	warp MAP_PRESIDIO, 0
+	warp MAP_HAIGHTASHBURY, 1
 	end
 
 

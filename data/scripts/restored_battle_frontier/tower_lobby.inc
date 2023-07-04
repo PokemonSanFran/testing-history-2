@@ -1,24 +1,5 @@
 BattleTower_MapScripts::
-	map_script MAP_SCRIPT_ON_RESUME, BattleTower_MapScripts_MAP_SCRIPT_ON_RESUME
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleTower_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleTower_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
 	.byte 0
-
-BattleTower_MapScripts_MAP_SCRIPT_ON_RESUME:
-	special TryHideBattleTowerReporter
-	end
-
-BattleTower_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_TEMP_0, 0, BattleTower_EventScript_GetChallengeStatus
-	map_script_2 VAR_TEMP_0, CHALLENGE_STATUS_SAVING, BattleTower_EventScript_QuitWithoutSaving
-	map_script_2 VAR_TEMP_0, CHALLENGE_STATUS_PAUSED, BattleTower_EventScript_ResumeChallenge
-	map_script_2 VAR_TEMP_0, CHALLENGE_STATUS_WON, BattleTower_EventScript_WonChallenge
-	map_script_2 VAR_TEMP_0, CHALLENGE_STATUS_LOST, BattleTower_EventScript_LostChallenge
-	.2byte 0
-
-BattleTower_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
-	map_script_2 VAR_TEMP_1, 0, BattleTower_EventScript_PlayerFaceNorth
-	.2byte 0
 
 
 BattleTower_EventScript_PlayerFaceNorth::
@@ -229,7 +210,7 @@ BattleTower_EventScript_AskEnterChallenge::
 	case 3, BattleTower_EventScript_AskEnterChallenge_5
 	case 4, BattleTower_EventScript_AskEnterChallenge_6
 BattleTower_EventScript_AskEnterChallenge_1:
-	call BattleFrontier_ChallengeInfoExit_Menu_Script
+	call BattleFrontier_Challenge_Info_Exit_Menu_Script
 	switch VAR_RESULT
 	case 0, BattleTower_EventScript_AskEnterChallenge_8
 	case 1, BattleTower_EventScript_AskEnterChallenge_9
@@ -270,7 +251,7 @@ BattleTower_EventScript_AskEnterChallenge_11:
 	return
 
 
-BattleFrontier_ChallengeInfoExit_Menu_Script::
+BattleFrontier_Challenge_Info_Exit_Menu_Script::
 	waitmessage
 	dynmultichoice 18, 4, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, gText_Challenge, gText_Info3, gText_Exit
 	return
@@ -283,39 +264,33 @@ BattleTower_EventScript_TryEnterChallenge::
 	case 3, BattleTower_EventScript_TryEnterChallenge_5
 	case 4, BattleTower_EventScript_TryEnterChallenge_6
 BattleTower_EventScript_TryEnterChallenge_1:
-	message BattleTower_Text_WhichLevelMode
-	waitmessage
-	multichoice 17, 6, MULTI_LEVEL_MODE, FALSE
-	switch VAR_RESULT
-	case FRONTIER_LVL_TENT, BattleTower_EventScript_TryEnterChallenge_9
-	case MULTI_B_PRESSED, BattleTower_EventScript_TryEnterChallenge_10
-BattleTower_EventScript_TryEnterChallenge_7:
+	setvar VAR_RESULT, 1
 	frontier_checkineligible
 	goto_if_eq VAR_0x8004, TRUE, BattleTower_EventScript_NotEnoughValidMons
 	frontier_set FRONTIER_DATA_LVL_MODE, VAR_RESULT
 	switch VAR_LAST_TALKED
-	case 1, BattleTower_EventScript_TryEnterChallenge_13
-	case 2, BattleTower_EventScript_TryEnterChallenge_14
-	case 3, BattleTower_EventScript_TryEnterChallenge_15
-	case 4, BattleTower_EventScript_TryEnterChallenge_16
-BattleTower_EventScript_TryEnterChallenge_11:
+	case 1, BattleTower_EventScript_TryEnterChallenge_9
+	case 2, BattleTower_EventScript_TryEnterChallenge_10
+	case 3, BattleTower_EventScript_TryEnterChallenge_11
+	case 4, BattleTower_EventScript_TryEnterChallenge_11
+BattleTower_EventScript_TryEnterChallenge_7:
 	fadescreen FADE_TO_BLACK
 	frontier_get FRONTIER_DATA_LVL_MODE
 	copyvar VAR_0x8004, VAR_RESULT
 	switch VAR_LAST_TALKED
-	case 1, BattleTower_EventScript_TryEnterChallenge_19
-	case 2, BattleTower_EventScript_TryEnterChallenge_20
-	case 3, BattleTower_EventScript_TryEnterChallenge_21
-	case 4, BattleTower_EventScript_TryEnterChallenge_22
-BattleTower_EventScript_TryEnterChallenge_17:
+	case 1, BattleTower_EventScript_TryEnterChallenge_14
+	case 2, BattleTower_EventScript_TryEnterChallenge_15
+	case 3, BattleTower_EventScript_TryEnterChallenge_16
+	case 4, BattleTower_EventScript_TryEnterChallenge_16
+BattleTower_EventScript_TryEnterChallenge_12:
 	special ChoosePartyForBattleFrontier
 	waitstate
 	goto_if_eq VAR_RESULT, 0, BattleTower_EventScript_LoadPartyCancelChallenge
 	msgbox BattleTower_Text_OkayToSaveBeforeEntering, MSGBOX_YESNO
 	switch VAR_RESULT
-	case NO, BattleTower_EventScript_TryEnterChallenge_24
-	case YES, BattleTower_EventScript_TryEnterChallenge_25
-	case MULTI_B_PRESSED, BattleTower_EventScript_TryEnterChallenge_26
+	case NO, BattleTower_EventScript_TryEnterChallenge_18
+	case YES, BattleTower_EventScript_TryEnterChallenge_19
+	case MULTI_B_PRESSED, BattleTower_EventScript_TryEnterChallenge_20
 	return
 
 BattleTower_EventScript_TryEnterChallenge_3:
@@ -335,54 +310,38 @@ BattleTower_EventScript_TryEnterChallenge_6:
 	goto BattleTower_EventScript_TryEnterChallenge_1
 
 BattleTower_EventScript_TryEnterChallenge_9:
-	goto BattleTower_EventScript_CancelChallenge
+	msgbox BattleTower_Text_SelectThreeMons, MSGBOX_DEFAULT
 	goto BattleTower_EventScript_TryEnterChallenge_7
 
 BattleTower_EventScript_TryEnterChallenge_10:
-	goto BattleTower_EventScript_CancelChallenge
+	msgbox BattleTower_Text_PleaseSelectFourMons, MSGBOX_DEFAULT
 	goto BattleTower_EventScript_TryEnterChallenge_7
 
-BattleTower_EventScript_TryEnterChallenge_13:
-	msgbox BattleTower_Text_SelectThreeMons, MSGBOX_DEFAULT
-	goto BattleTower_EventScript_TryEnterChallenge_11
+BattleTower_EventScript_TryEnterChallenge_11:
+	msgbox BattleTower_Text_PleaseSelectTwoMons, MSGBOX_DEFAULT
+	goto BattleTower_EventScript_TryEnterChallenge_7
 
 BattleTower_EventScript_TryEnterChallenge_14:
-	msgbox BattleTower_Text_PleaseSelectFourMons, MSGBOX_DEFAULT
-	goto BattleTower_EventScript_TryEnterChallenge_11
+	setvar VAR_0x8005, FRONTIER_PARTY_SIZE
+	goto BattleTower_EventScript_TryEnterChallenge_12
 
 BattleTower_EventScript_TryEnterChallenge_15:
-	msgbox BattleTower_Text_PleaseSelectTwoMons, MSGBOX_DEFAULT
-	goto BattleTower_EventScript_TryEnterChallenge_11
+	setvar VAR_0x8005, FRONTIER_DOUBLES_PARTY_SIZE
+	goto BattleTower_EventScript_TryEnterChallenge_12
 
 BattleTower_EventScript_TryEnterChallenge_16:
-	msgbox BattleTower_Text_PleaseSelectTwoMons2, MSGBOX_DEFAULT
-	goto BattleTower_EventScript_TryEnterChallenge_11
-
-BattleTower_EventScript_TryEnterChallenge_19:
-	setvar VAR_0x8005, FRONTIER_PARTY_SIZE
-	goto BattleTower_EventScript_TryEnterChallenge_17
-
-BattleTower_EventScript_TryEnterChallenge_20:
-	setvar VAR_0x8005, FRONTIER_DOUBLES_PARTY_SIZE
-	goto BattleTower_EventScript_TryEnterChallenge_17
-
-BattleTower_EventScript_TryEnterChallenge_21:
 	setvar VAR_0x8005, FRONTIER_MULTI_PARTY_SIZE
-	goto BattleTower_EventScript_TryEnterChallenge_17
+	goto BattleTower_EventScript_TryEnterChallenge_12
 
-BattleTower_EventScript_TryEnterChallenge_22:
-	setvar VAR_0x8005, FRONTIER_MULTI_PARTY_SIZE
-	goto BattleTower_EventScript_TryEnterChallenge_17
-
-BattleTower_EventScript_TryEnterChallenge_24:
+BattleTower_EventScript_TryEnterChallenge_18:
 	goto BattleTower_EventScript_LoadPartyCancelChallenge
 	return
 
-BattleTower_EventScript_TryEnterChallenge_25:
+BattleTower_EventScript_TryEnterChallenge_19:
 	goto BattleTower_EventScript_SaveBeforeChallenge
 	return
 
-BattleTower_EventScript_TryEnterChallenge_26:
+BattleTower_EventScript_TryEnterChallenge_20:
 	goto BattleTower_EventScript_LoadPartyCancelChallenge
 	return
 
@@ -678,96 +637,6 @@ BattleTower_EventScript_ExplainChallenge_5:
 BattleTower_EventScript_ExplainChallenge_6:
 	msgbox BattleTower_Text_ExplainLinkMultisChallenge, MSGBOX_DEFAULT
 	goto BattleTower_EventScript_ExplainChallenge_1
-
-
-BattleTower_EventScript_SinglesAttendant::
-	goto BattleTower_EventScript_Attendant
-	return
-
-
-BattleTower_EventScript_DoublesAttendant::
-	goto BattleTower_EventScript_Attendant
-	return
-
-
-BattleTower_EventScript_MultisAttendant::
-	goto BattleTower_EventScript_Attendant
-	return
-
-
-BattleTower_EventScript_LinkMultisAttendant::
-	goto BattleTower_EventScript_Attendant
-	return
-
-
-BattleTower_EventScript_FeelingsMan::
-	lock
-	faceplayer
-	message BattleTower_Text_DescribeFeelingsAboutBattleTower
-	waitmessage
-	multichoice 16, 4, MULTI_BATTLE_TOWER_FEELINGS, FALSE
-	switch VAR_RESULT
-	case 0, BattleTower_EventScript_FeelingsMan_3
-	case 1, BattleTower_EventScript_FeelingsMan_4
-	case 2, BattleTower_EventScript_FeelingsMan_5
-	case 3, BattleTower_EventScript_FeelingsMan_6
-	case MULTI_B_PRESSED, BattleTower_EventScript_FeelingsMan_6
-BattleTower_EventScript_FeelingsMan_1:
-	release
-	end
-
-BattleTower_EventScript_FeelingsMan_3:
-	msgbox BattleTower_Text_FeelWhatWhenYouBegin, MSGBOX_DEFAULT
-	setvar VAR_0x8004, EASY_CHAT_TYPE_BATTLE_START
-	goto BattleTower_EventScript_EnterFeelingsEasyChat
-	goto BattleTower_EventScript_FeelingsMan_1
-
-BattleTower_EventScript_FeelingsMan_4:
-	msgbox BattleTower_Text_FeelWhatWhenYouveWon, MSGBOX_DEFAULT
-	setvar VAR_0x8004, EASY_CHAT_TYPE_BATTLE_WON
-	goto BattleTower_EventScript_EnterFeelingsEasyChat
-	goto BattleTower_EventScript_FeelingsMan_1
-
-BattleTower_EventScript_FeelingsMan_5:
-	msgbox BattleTower_Text_FeelWhatWhenYouveLost, MSGBOX_DEFAULT
-	setvar VAR_0x8004, EASY_CHAT_TYPE_BATTLE_LOST
-	goto BattleTower_EventScript_EnterFeelingsEasyChat
-	goto BattleTower_EventScript_FeelingsMan_1
-
-BattleTower_EventScript_FeelingsMan_6:
-	msgbox BattleTower_Text_DontThinkMuchAboutIt, MSGBOX_DEFAULT
-	goto BattleTower_EventScript_FeelingsMan_1
-
-
-BattleTower_EventScript_EnterFeelingsEasyChat::
-	call Common_ShowEasyChatScreen
-	lock
-	faceplayer
-	goto BattleTower_EventScript_CheckFeelings
-	return
-
-
-BattleTower_EventScript_CheckFeelings::
-	compare VAR_RESULT, 1
-	goto_if_eq BattleTower_EventScript_CheckFeelings_2
-	msgbox BattleTower_Text_ChangedYourMind, MSGBOX_DEFAULT
-BattleTower_EventScript_CheckFeelings_1:
-	release
-	end
-
-BattleTower_EventScript_CheckFeelings_2:
-	msgbox BattleTower_Text_ThatsHowYouFeel, MSGBOX_DEFAULT
-	goto BattleTower_EventScript_CheckFeelings_1
-
-
-BattleTower_EventScript_Woman::
-	msgbox BattleTower_Text_WinsInRowRecorded, MSGBOX_NPC
-	end
-
-
-BattleTower_EventScript_Boy::
-	msgbox BattleTower_Text_CanLeaveUntilLossOrSevenWins, MSGBOX_NPC
-	end
 
 
 BattleTower_EventScript_ShowResults::
@@ -1448,10 +1317,6 @@ BattleTower_Text_ExplainLinkMultisChallenge::
 	.string "you may not interrupt your challenge.\p"
 	.string "Once you start, you must battle seven\n"
 	.string "MULTI BATTLES in a row nonstop.$"
-
-BattleTower_Text_PleaseSelectTwoMons2::
-	.string "Now please select the two POKéMON that\n"
-	.string "are to be entered.$"
 
 BattleTower_Text_LinkMultiOnlyForTwoPlayers::
 	.string "The LINK MULTI BATTLE ROOM challenge\n"
