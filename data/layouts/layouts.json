@@ -6890,6 +6890,16 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/Uber_HQ_Floor2/border.bin",
       "blockdata_filepath": "data/layouts/Uber_HQ_Floor2/map.bin"
+    },
+    {
+      "id": "LAYOUT_HAIGHTASHBURY_GYM_LOBBY",
+      "name": "Haightashbury_Gym_Lobby_Layout",
+      "width": 21,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleFrontier",
+      "border_filepath": "data/layouts/Haightashbury_Gym_Lobby/border.bin",
+      "blockdata_filepath": "data/layouts/Haightashbury_Gym_Lobby/map.bin"
     }
   ]
 }

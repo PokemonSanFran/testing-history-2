@@ -1645,3 +1645,5 @@ Script_RemoveTint::
 	.include "data/maps/Uber_HQ_Floor1/scripts.inc"
 
 	.include "data/maps/Uber_HQ_Floor2/scripts.inc"
+
+	.include "data/maps/Haightashbury_Gym_Lobby/scripts.inc"
