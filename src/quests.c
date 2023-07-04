@@ -2806,16 +2806,6 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        QUEST_BERRYSUSTAINABILITY_SUB_COUNT
 	),
 	side_quest(
-	        gText_Quest_TheOnlyHeadShopInTown_Name,
-	        gText_Quest_TheOnlyHeadShopInTown_Desc,
-	        gText_Quest_TheOnlyHeadShopInTown_DoneDesc,
-	        gText_Quest_TheOnlyHeadShopInTown_Map,
-	        OBJ_EVENT_GFX_TATE,
-	        OBJECT,
-	        NULL,
-	        0
-	),
-	side_quest(
 	        gText_Quest_InverseHallucinogenic_Name,
 	        gText_Quest_InverseHallucinogenic_Desc,
 	        gText_Quest_InverseHallucinogenic_DoneDesc,
