@@ -1091,6 +1091,8 @@ Script_RemoveTint::
 .include "data/text/save.inc"
 .include "data/text/birch_speech.inc"
 
+.include "data/scripts/restored_battle_frontier/tower_lobby.inc"
+
 .include "data/maps/BlackMap/scripts.inc"
 .include "data/maps/Southbay/scripts.inc"
 .include "data/maps/Southbay_Compound_1F/scripts.inc"

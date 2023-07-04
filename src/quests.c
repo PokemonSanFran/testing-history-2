@@ -2483,7 +2483,7 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_GIRL_3,
 	        OBJECT,
 	        NULL,
-	        6
+	        0
 	),
 	side_quest(
 	        gText_Quest_HauntABuilding_Name,
@@ -2883,7 +2883,7 @@ const struct SideQuest sSideQuests[QUEST_COUNT] = {
 	        OBJ_EVENT_GFX_YOUNGSTER,
 	        OBJECT,
             NULL,
-	        4
+	        4 //PSF TODO should this be one quest or a bunch of subquests?
 	),
 	side_quest(
 	        gText_Quest_DetectiveAriana_Name,

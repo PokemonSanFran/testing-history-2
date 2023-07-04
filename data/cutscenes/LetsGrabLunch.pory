@@ -131,9 +131,9 @@ script LetsGrabLunch_ShowGymList_Dialogue{
     )
 
         switch (var(VAR_RESULT)){
-            case 0: goto(LetsGrabLunch_Chinatown)   
-            case 1: goto(LetsGrabLunch_Marin)   
-            case 2: goto(LetsGrabLunch_Treasureisland)   
+            case 0: goto(LetsGrabLunch_Chinatown)
+            case 1: goto(LetsGrabLunch_Marin)
+            case 2: goto(LetsGrabLunch_Treasureisland)
             case 3: goto(LetsGrabLunch_Haightashbury)
             default: goto(LetsGrabLunch_CloseMenu)
         }
@@ -395,7 +395,7 @@ text gText_LetsGrabLunch_DoYouWantTreasureisland {
 text gText_LetsGrabLunch_FastForwardAdvance {
     format("You have restored the {STR_VAR_1} Gym. Good job kid. In the main game, that nickname will be replaced with the name of wherever you are.") //PSF TODO
     // Lunos: To store the current map's name in STR_VAR_1 please use the special(Script_GetMapName) in the script of choice.
-} 
+}
 
 text gText_LetsGrabLunch_FastForwardBlock {
     format("Come back when its time to do the restoration quests. Or if you already did them, go away!")

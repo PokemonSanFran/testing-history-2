@@ -384,8 +384,8 @@
       "x": 4,
       "y": 26,
       "elevation": 0,
-      "dest_map": "MAP_HAIGHTASHBURY_GYM",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_HAIGHTASHBURY_GYM_LOBBY",
+      "dest_warp_id": "1"
     },
     {
       "x": 34,
